@@ -131,3 +131,5 @@ int main() {
 
     return EXIT_SUCCESS;
 }
+
+// https://vulkan-tutorial.com/en/Drawing_a_triangle/Setup/Validation_layers
