@@ -1,0 +1,11 @@
+{
+
+# Enable/Disable Creation of Window on Local Machine #
+LocalWindowEnabled: True,
+
+# Set Window Resolution #
+WindowResolutionX: 720,
+WindowResolutionY: 480
+
+
+}
