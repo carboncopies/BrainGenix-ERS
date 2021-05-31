@@ -16,8 +16,12 @@
 
 class Logger {
 
-    // Define "Local" Variables //
+    // Define "Local" Variables And Functions //
     private: 
+
+        // Define Local Vars //
+        bool PrintLogOutput;
+
 
         // Returns A String Of The Current UTC Time //
         std::string Get_UTC_Time() { 
@@ -42,7 +46,10 @@ class Logger {
     public: 
 
         // Define Initialization Function //
-        void InitializeLogger(bool PrintLogOutput=true) { // ** NOTE: THIS SHOULD TAKE A CONFIG DICT FROM YAML IN THE FUTRE ** //
+        void InitializeLogger(bool PrintLogOutputArgument=true) { // ** NOTE: THIS SHOULD TAKE A CONFIG DICT FROM YAML IN THE FUTRE ** //
+
+            // Update Local Config Parameters //
+            PrintLogOutput = PrintLogOutputArgument;
 
             // Print Log Key //
             if (PrintLogOutput) {
@@ -52,7 +59,7 @@ class Logger {
         };
 
         // Log An Item //
-        void Log(const char* LogItem, int LogLevel=0, bool PrintLogOutput=true) {
+        void Log(const char* LogItem, int LogLevel=0) {
 
             // Get Input Params, and Reformat Into Strings //
             std::string CurrentTime = Get_UTC_Time();
