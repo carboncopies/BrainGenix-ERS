@@ -3,9 +3,9 @@
 //======================================================================//
 
 /*
-    Description: This file is responsible for implementing the main server-side binary of the system.
+    Description: This file is responsible for implementing the logger system used by the rest of the system.
     Additonal Notes: None
-    Date Created: 2021-05-30
+    Date Created: 2021-05-31
 */
 
 #include <iostream>
