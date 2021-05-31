@@ -6,30 +6,14 @@ project(BrainGenix-ERS)
 set(CMAKE_CXX_STANDARD 14)
 
 
-include(ExternalProject)
+# Include YAML-CPP Library #
+target_include_directories(yaml-cpp PUBLIC System/ExternalLibraries/yaml-cpp-yaml-cpp-0.6.3/include/yaml-cpp)
 
-ExternalProject_Add(
-	yaml_cpp_project
-	SOURCE_DIR "${CMAKE_SOURCE_DIR}/third-party/yaml-cpp/"
-	INSTALL_DIR "${CMAKE_BINARY_DIR}/prefix"
-	CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
-)
 
-add_library(yaml-cpp UNKNOWN IMPORTED)
-set_target_properties(gmock PROPERTIES
-	IMPORTED_LOCATION ${PROJECT_BINARY_DIR}/prefix/lib/${CMAKE_STATIC_LIBRARY_PREFIX}yaml-cpp${CMAKE_STATIC_LIBRARY_SUFFIX}
-)
+target_link_libraries(main.cpp PUBLIC yaml-cpp)
 
-include_directories(SYSTEM "${PROJECT_BINARY_DIR}/prefix/include")
-
-add_dependencies(playground yaml_cpp_project) 
-
-target_link_libraries(playground
-   yaml-cpp
-)
 
 
 
 # Set Executible #
 add_executable(ERS System/main.cpp)
-target_link_libraries(yaml_cpp "/usr/local/lib")
