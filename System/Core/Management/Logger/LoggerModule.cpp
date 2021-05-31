@@ -72,17 +72,9 @@ class Logger {
             // Also, is there a way to trace back to get the calling 
             //file's name and the calling function's name?
 
-            Output += "[";
-            Output += std::to_string(LogLevel);
-            Output += "] ";
-
-            Output += "[";
-            Output += CurrentTime;
-            Output += "] ";
-
-            Output += "[";
-            Output += LogItem;
-            Output += "]\n";
+            Output += "[" + std::to_string(LogLevel) + "] ";
+            Output += "[" + CurrentTime + "] ";
+            Output += "[" + LogItem + "]\n";
 
 
             // If Log Print Enabled //
