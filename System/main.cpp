@@ -12,15 +12,21 @@
 #include <iostream>
 #include <string>
 
+#include <yaml-cpp/yaml.h>
+
 
 #include "Core/LocalWindowSystem/LocalWindowSystemModule.cpp"
 #include "Core/Management/Logger/LoggerModule.cpp"
+#include "Core/Initialization/ConfigurationLoader/ConfigurationLoaderModule.cpp"
+
 
 
 
 
 int main(){
 
+    // Load Configration File For Logger //
+    const YAML::Node LoggerConfigration = LoadConfig("Config/LoggerConfig.yaml");
 
     // Instantiate
     Logger mLogger;
