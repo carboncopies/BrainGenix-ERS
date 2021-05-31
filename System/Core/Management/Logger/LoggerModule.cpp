@@ -41,6 +41,16 @@ class Logger {
     // Define Functions //
     public: 
 
+        // Define Initialization Function //
+        void InitializeLogger(bool PrintLogOutput=true) { // ** NOTE: THIS SHOULD TAKE A CONFIG DICT FROM YAML IN THE FUTRE ** //
+
+            // Print Log Key //
+            if (PrintLogOutput) {
+                std::cout << "[Level] [Time] [Message]\n";
+            };
+
+        };
+
         // Log An Item //
         void Log(const char* LogItem, int LogLevel=0, bool PrintLogOutput=true) {
 
