@@ -10,29 +10,24 @@
 
 
 #include <iostream>
+#include <string>
 
 
 #include "Core/LocalWindowSystem/LocalWindowSystemModule.cpp"
 #include "Core/Management/Logger/LoggerModule.cpp"
 
 
+
+
 int main(){
 
 
     // Instantiate
-    Logger TestInstance;
+    Logger mLogger;
 
-    TestInstance.printdummy();
-    TestInstance.incrimentnum();
-    TestInstance.printdummy();
+    mLogger.Log("Test", 0);
 
 
-
-    std::cout << "Test\n";
-    
-
-    std::cout << test();
-    std::cout << "\n";
 
     return 0;
 }
