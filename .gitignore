@@ -1,3 +1,6 @@
+# Ignore Build Data #
+Dist/
+
 # Prerequisites
 *.d
 
