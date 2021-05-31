@@ -1,0 +1,7 @@
+{
+
+# Logger Configuration File #
+EnablePrintOutput = true,
+EnableDatabaseOutput = false,
+
+}
