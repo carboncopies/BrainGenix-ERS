@@ -24,6 +24,7 @@ int main(){
 
     // Instantiate
     Logger mLogger;
+    mLogger.InitializeLogger();
 
     mLogger.Log("Test", 0);
 
