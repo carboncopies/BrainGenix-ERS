@@ -1,5 +1,6 @@
 # Ignore Build Data #
 Dist/
+ERS
 
 # Prerequisites
 *.d
