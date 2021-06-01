@@ -74,7 +74,7 @@ class Logger {
 
             Output += "[" + std::to_string(LogLevel) + "] ";
             Output += "[" + CurrentTime + "] ";
-            Output += "[" + LogItem + "]\n";
+            Output += std::string(LogItem) + "\n";
 
 
             // If Log Print Enabled //
