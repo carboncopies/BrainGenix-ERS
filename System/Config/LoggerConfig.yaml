@@ -1,7 +1,3 @@
-{
-
-# Logger Configuration File #
-EnablePrintOutput = true,
-EnableDatabaseOutput = false,
-
-}
+# Set Logger configuration Parameters #
+EnablePrintOutput: True
+EnableDatabaseOutput: False
