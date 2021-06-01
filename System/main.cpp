@@ -15,10 +15,15 @@
 #include <yaml-cpp/yaml.h>
 
 
-#include "Core/LocalWindowSystem/LocalWindowSystemModule.cpp"
+#include "Core/IO/Video/LocalWindowSystem/LocalWindowSystemModule.cpp"
 #include "Core/Management/Logger/LoggerModule.cpp"
 #include "Core/Initialization/ConfigurationLoader/ConfigurationLoaderModule.cpp"
+//#include "Core/Initialization/RenderingModuleInstantiator/RenderingModuleInstantiator.cpp"
+#include "Core/Rendering/Visual/VisualRenderingMainModule/VisualRenderingMainModule.cpp"
 
+// NOTE TO SELF: IMPLEMENT HEADER FILES
+// NOTE TO SELF: Move Vulkan Init Function Other File
+// See Other Notes...
 
 int main(){
 
@@ -37,6 +42,8 @@ int main(){
     mLogger.Log("Logger Instantiation Successfull", 0);
 
 
+    // NOTE: MAKE LOCAL WINDOW CONF ONE ALL-INCLUSIVE CONFIGURATION FILE FOR THE ENTIRE VISUAL RENDERING SYSTEM.
+
     // Load Remaining Configuration Files //
     mLogger.Log("Loading Remaining Configuration Files");
 
@@ -45,6 +52,22 @@ int main(){
 
     mLogger.Log("Done Loading Configuration Files");
 
+
+    // Start Vulkan Test //
+
+
+    VisualRenderingPipeline ERSInstance;
+
+    try {
+        ERSInstance.InitializeConfiguration(mLogger, LocalWindowConfiguration);
+
+    } catch (const std::exception& e) {
+        
+        std::cerr << e.what() << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    return EXIT_SUCCESS;
 
 
 
