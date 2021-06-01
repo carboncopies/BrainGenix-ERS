@@ -1,3 +1,5 @@
 # Set Logger configuration Parameters #
 EnablePrintOutput: True
 EnableDatabaseOutput: False
+
+SetMinimumLogLevel: 0
