@@ -10,7 +10,7 @@ cmake CMakeLists.txt -B Dist/
 # Compile #
 echo "Compiling Binary"
 cd Dist
-make
+make -j 12
 
 # Done #
 echo "Done"
