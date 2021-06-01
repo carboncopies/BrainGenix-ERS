@@ -31,15 +31,15 @@ int main(){
     // Load Configration File For Logger //
     std::cout << "Initializing System\n";
     std::cout << "Loading Logger Configuration File\n";
-    const YAML::Node LoggerConfigration = LoadConfig("Config/LoggerConfig.yaml");
+    const YAML::Node LoggerConfiguration = LoadConfig("Config/LoggerConfig.yaml");
 
 
     // Instantiate Logger //
     std::cout << "Instantiating Logging System\n";
-    Logger mLogger;
-    mLogger.InitializeLogger();
+    LoggerClass mLogger;
+    mLogger.InitializeLogger(LoggerConfiguration);
 
-    mLogger.Log("Logger Instantiation Successfull", 0);
+    mLogger.Log("Logger Instantiation Complete");
 
 
     // NOTE: MAKE LOCAL WINDOW CONF ONE ALL-INCLUSIVE CONFIGURATION FILE FOR THE ENTIRE VISUAL RENDERING SYSTEM.
@@ -48,10 +48,9 @@ int main(){
     mLogger.Log("Loading Remaining Configuration Files");
 
     mLogger.Log("Loading WindowSystem Configuration File");
-    const YAML::Node LocalWindowConfiguration = LoadConfig("Config/WindowSystemConfig.yaml");
+    const YAML::Node VisualPipelineConfiguration = LoadConfig("Config/VisualRenderingPipelineConfiguration.yaml");
 
     mLogger.Log("Done Loading Configuration Files");
-
 
     // Start Vulkan Test //
 
@@ -59,7 +58,7 @@ int main(){
     VisualRenderingPipeline ERSInstance;
 
     try {
-        ERSInstance.InitializeConfiguration(mLogger, LocalWindowConfiguration);
+        ERSInstance.InitializeConfiguration(mLogger, VisualPipelineConfiguration);
 
     } catch (const std::exception& e) {
         
