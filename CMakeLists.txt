@@ -27,7 +27,7 @@ add_executable(ERS System/main.cpp)
 
 target_link_libraries(ERS PUBLIC yaml-cpp)
 target_link_libraries(ERS PUBLIC glfw)
-#target_link_libraries(ERS ${Vulkan_LIBRARIES})
+target_link_libraries(ERS PUBLIC vulkan)
 
 #target_include_directories(ERS PUBLIC ${Vulkan_INCLUDE_DIR})
 
