@@ -18,8 +18,9 @@
 #include "Core/IO/Video/LocalWindowSystem/LocalWindowSystemModule.cpp"
 #include "Core/Management/Logger/LoggerModule.cpp"
 #include "Core/Initialization/ConfigurationLoader/ConfigurationLoaderModule.cpp"
-//#include "Core/Initialization/RenderingModuleInstantiator/RenderingModuleInstantiator.cpp"
+
 #include "Core/Rendering/Visual/VisualRenderingMainModule/VisualRenderingMainModule.cpp"
+
 
 // NOTE TO SELF: IMPLEMENT HEADER FILES
 // NOTE TO SELF: Move Vulkan Init Function Other File
@@ -59,6 +60,7 @@ int main(){
 
     ERSInstance.InitializeConfiguration(mLogger, VisualPipelineConfiguration);
     ERSInstance.InitSystem();
+
 
     // Enter Loop //
     while (true) {
