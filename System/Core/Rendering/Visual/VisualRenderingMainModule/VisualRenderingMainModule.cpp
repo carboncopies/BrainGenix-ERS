@@ -9,7 +9,10 @@
 */ 
 
 
-#include <vulkan/vulkan.h>
+//#include <vulkan/vulkan.h>
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
 
 #include <iostream>
 #include <stdexcept>
@@ -28,6 +31,16 @@ class VisualRenderingPipeline {
         int WindowResolutionX;
         int WindowResolutionY;
 
+        std::string WindowTitle;
+
+        
+        // Set Private Ref To Logger //
+        LoggerClass Logger;
+
+
+        // Create Window Object //
+        GLFWwindow* window;
+
 
 
     // Define Externally Accessible Objects //
@@ -43,47 +56,51 @@ class VisualRenderingPipeline {
             Logger.Log("Loading Configuration File For Visual Configuration Pipeline");
 
             LocalWindowEnabled = VisualRenderingConfiguration["LocalWindowEnabled"].as<bool>();
-            WindowResolutionX = VisualRenderingConfiguration["WindowResolutionX"].as<int>();
-            WindowResolutionY = VisualRenderingConfiguration["WindowResolutionY"].as<int>();
+            WindowResolutionX = VisualRenderingConfiguration["LocalWindowResolutionX"].as<int>();
+            WindowResolutionY = VisualRenderingConfiguration["LocalWindowResolutionY"].as<int>();
+
+            WindowTitle = VisualRenderingConfiguration["LocalWindowTitle"].as<std::string>();
+
+        }
 
 
-            // IS THERE A WAY TO FIX THIS???!?!?!?!? //
-            // Log Config Params //
-            //Logger.Log("Local Window Configuration:", 0);
-            //Logger.Log("CONFIG: LocalWindowEnabled" + std::string(LocalWindowEnabled).c_str(), 0);
-            //Logger.Log("CONFIG: LocalWindowResolutionX" + std::to_string(WindowResolutionX), 0);
-            //Logger.Log("CONFIG: LocalWindowResolutionY" + std::to_string(WindowResolutionY), 0);
-            
+        void InitSystem() {
+
+            // Init Message //
+            Logger.Log("Initializing Visual Rendering System");
 
             // If LocalWindow Is Enabled, Create A Local Window //
             if (LocalWindowEnabled) {
-                
+
+                // Init GLFW //
+                glfwInit();
+
+                // Set GLFW Configuration Parameters //
+                glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+                glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+
+                // Create Window //
+                window = glfwCreateWindow(WindowResolutionX, WindowResolutionY, WindowTitle.c_str(), nullptr, nullptr);
+
             }
 
         }
 
+        void UpdateProgram() {
+            
+            // Only Run Stuff Here For GLFW (Local Window) //
+            if (LocalWindowEnabled) {
 
-        void InitVulkan() {
-
-        }
-
-        void MainLoop() {
+                // Get Local Window Events //    
+                glfwPollEvents();
+            
+            };        
+        
 
         }
 
         void Cleanup() {
 
         }
-
-    // public:
-    //     void run() {
-    //         GatherParameters();
-    //         InitVulkan();
-    //         MainLoop();
-    //         Cleanup();
-    //     }
-
-
-
 
 };
