@@ -52,21 +52,33 @@ int main(){
 
     mLogger.Log("Done Loading Configuration Files");
 
+
+
     // Start Vulkan Test //
-
-
     VisualRenderingPipeline ERSInstance;
 
-    try {
-        ERSInstance.InitializeConfiguration(mLogger, VisualPipelineConfiguration);
+    ERSInstance.InitializeConfiguration(mLogger, VisualPipelineConfiguration);
+    ERSInstance.InitSystem();
 
-    } catch (const std::exception& e) {
-        
-        std::cerr << e.what() << std::endl;
-        return EXIT_FAILURE;
+    // Enter Loop //
+    while (true) {
+        ERSInstance.UpdateProgram();
     }
 
-    return EXIT_SUCCESS;
+    ERSInstance.Cleanup();
+
+    // try {
+    //     ERSInstance.InitializeConfiguration(mLogger, VisualPipelineConfiguration);
+
+    // } catch (const std::exception& e) {
+        
+    //     std::cerr << e.what() << std::endl;
+    //     return EXIT_FAILURE;
+    // }
+
+    // return EXIT_SUCCESS;
+
+
 
 
 
