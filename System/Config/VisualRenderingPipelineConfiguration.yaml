@@ -1,11 +1,10 @@
-{
-
+## LOCAL WINDOW CONFIG ##
 # Enable/Disable Creation of Window on Local Machine #
-LocalWindowEnabled: True,
+LocalWindowEnabled: True
 
 # Set Window Resolution #
-WindowResolutionX: 720,
-WindowResolutionY: 480
+LocalWindowResolutionX: 720
+LocalWindowResolutionY: 480
 
-
-}
+# Set Window Title #
+LocalWindowTitle: "BrainGenix Environment Rendering System (ERS)"
