@@ -67,11 +67,7 @@ class Logger {
             // Create Output String //
             std::string Output;
 
-            // Is there a more elegant way to do this? I saw that std::format would be good, 
-            //but for some reason my compiler doens't support it.
-            // Also, is there a way to trace back to get the calling 
-            //file's name and the calling function's name?
-
+            // Combine Strings //
             Output += "[" + std::to_string(LogLevel) + "] ";
             Output += "[" + CurrentTime + "] ";
             Output += std::string(LogItem) + "\n";
