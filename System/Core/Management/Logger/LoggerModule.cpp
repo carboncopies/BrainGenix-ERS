@@ -14,13 +14,21 @@
 #include <cstring>
 
 
-class Logger {
+class LoggerClass {
 
     // Define "Local" Variables And Functions //
     private: 
 
         // Define Local Vars //
         bool PrintLogOutput;
+        int MinimumLogLevel = 5;
+
+
+        //-----------------------------------------------------------------------------------//
+        // NOTE: LOG LEVELS ARE AS FOLLOWS:                                                  //
+        // The smaller the number, the less important the information.                       //
+        // Log lvl 0 is the least important, and is just debugging information essentially.  //
+        //-----------------------------------------------------------------------------------//
 
 
         // Returns A String Of The Current UTC Time //
@@ -45,11 +53,13 @@ class Logger {
     // Define Functions //
     public: 
 
+
         // Define Initialization Function //
-        void InitializeLogger(bool PrintLogOutputArgument=true) { // ** NOTE: THIS SHOULD TAKE A CONFIG DICT FROM YAML IN THE FUTRE ** //
+        void InitializeLogger(YAML::Node LoggerConfiguration) { // ** NOTE: THIS SHOULD TAKE A CONFIG DICT FROM YAML IN THE FUTRE ** //
 
             // Update Local Config Parameters //
-            PrintLogOutput = PrintLogOutputArgument;
+            PrintLogOutput = LoggerConfiguration["EnablePrintOutput"].as<bool>();
+            MinimumLogLevel = LoggerConfiguration["SetMinimumLogLevel"].as<int>();
 
             // Print Log Key //
             if (PrintLogOutput) {
@@ -59,7 +69,7 @@ class Logger {
         };
 
         // Log An Item //
-        void Log(const char* LogItem, int LogLevel=0) {
+        void Log(const char* LogItem, int LogLevel=5) {
 
             // Get Input Params, and Reformat Into Strings //
             std::string CurrentTime = Get_UTC_Time();
@@ -72,10 +82,14 @@ class Logger {
             Output += "[" + CurrentTime + "] ";
             Output += std::string(LogItem) + "\n";
 
+            // Check Log Level Before Printing It //
+            if (LogLevel >= MinimumLogLevel) {
 
-            // If Log Print Enabled //
-            if (PrintLogOutput) {
-                std::cout<< Output;
+                // If Log Print Enabled //
+                if (PrintLogOutput) {
+                    std::cout << Output;
+                };
+
             };
 
         }
