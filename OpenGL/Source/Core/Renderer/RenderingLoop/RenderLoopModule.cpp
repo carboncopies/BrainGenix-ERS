@@ -8,6 +8,8 @@
     Date Created: 2021-09-22
 */   
 
+#include "Core/SystemInput/WindowInput/WindowInputModule.cpp"
+
 void MainRenderLoop(GLFWwindow* Window) {
 
     // Create System Shutdown Variable //
@@ -19,6 +21,9 @@ void MainRenderLoop(GLFWwindow* Window) {
 
         // If The GLFW Window Exists //
         if (Window != nullptr) {
+
+            // Update Window User Input //
+            ProcessWindowInput(Window);
 
             // Check For Shutdown Events //
             SystemShutdownInvoked = glfwWindowShouldClose(Window);
