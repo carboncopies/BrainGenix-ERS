@@ -84,6 +84,10 @@ class GLFWWindow {
                     LoggingSystem.Log("Setting Context To Window", 2);
                     glfwMakeContextCurrent(Window);
 
+                    // Create GLFW Resize Callback //
+                    LoggingSystem.Log("Setting Window Resize Callback Function", 3);
+                    glfwSetFramebufferSizeCallback(Window, FrameBufferSizeCallback);  
+
                     // Indicate That A Window Has Been Created //
                     return true;
                 }
