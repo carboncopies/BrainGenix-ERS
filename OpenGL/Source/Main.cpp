@@ -29,7 +29,7 @@ int main() {
     sERSLogger.InitializeLogger(SystemConfiguration);
 
     // Log Initialization //
-    sERSLogger.Log("Initialized Logger Subsystem");
+    sERSLogger.Log("Initialized Logger Subsystem", 5);
 
 
     // Create GLFW Window Based On Config //
