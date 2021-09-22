@@ -33,7 +33,8 @@ int main() {
 
 
     // Create GLFW Window Based On Config //
-    bool bWindowCreated = InitializeGLFW(SystemConfiguration, sERSLogger);
+    GLFWWindow WindowManager;
+    bool bWindowCreated = WindowManager.InitializeGLFW(SystemConfiguration, sERSLogger);
 
     return 0;
 }
