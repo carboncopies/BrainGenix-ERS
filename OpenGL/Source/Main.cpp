@@ -17,6 +17,7 @@
 #include "Core/Management/Logger/LoggerModule.cpp"
 #include "Core/Initialization/ConfigurationLoader/ConfigurationLoaderModule.cpp"
 #include "Core/Initialization/WindowLibrary/WindowLibraryModule.cpp"
+#include "Core/Initialization/GLADModule/GLADModule.cpp"
 
 
 int main() {
@@ -31,10 +32,12 @@ int main() {
     // Log Initialization //
     sERSLogger.Log("Initialized Logger Subsystem", 5);
 
-
     // Create GLFW Window Based On Config //
     GLFWWindow WindowManager;
     bool bWindowCreated = WindowManager.InitializeGLFW(SystemConfiguration, sERSLogger);
+
+    // Run GLAD Function Pointer Loader //
+    
 
     return 0;
 }
