@@ -37,7 +37,7 @@ int main() {
     bool bWindowCreated = WindowManager.InitializeGLFW(SystemConfiguration, sERSLogger);
 
     // Run GLAD Function Pointer Loader //
-    
+    GLADInitialization(sERSLogger);
 
     return 0;
 }
