@@ -3,3 +3,6 @@ EnablePrintOutput: True
 EnableDatabaseOutput: False
 
 SetMinimumLogLevel: 0
+
+# Set Window Configuration Parameters #
+WindowEnabled: True
