@@ -54,22 +54,47 @@ int main() {
 
     // Create GLFW Resize Callback //
     sERSLogger.Log("Checking If Window Resize Events Enabled", 1);
-    if (WindowManager.AllowRenderResize) {
+    if ((WindowManager.AllowRenderResize) && (Window != nullptr)) {
 
         sERSLogger.Log("Setting Window Resize Callback Function", 3);
         glfwSetFramebufferSizeCallback(Window, FrameBufferResizeCallback);
 
     }
 
+
+    // Create System Shutdown Variable //
+    bool SystemShutdownInvoked = false;
+
     // Main Render Loop //
-    while(!glfwWindowShouldClose(Window))
+    while(!SystemShutdownInvoked)
     {
-        glfwSwapBuffers(Window);
-        glfwPollEvents();    
+
+        // If The GLFW Window Exists //
+        if (Window != nullptr) {
+
+            // Check For Shutdown Events //
+            SystemShutdownInvoked = glfwWindowShouldClose(Window);
+
+
+            // GLFW Window Update //
+            glfwSwapBuffers(Window);
+            glfwPollEvents(); 
+
+        }
+
+   
     }
 
+    // If GLFW Is In Use, Shut It Down //
+    if (Window != nullptr) {
+        // Shut Down GLFW //
+        sERSLogger.Log("Shutting Down GLFW", 5);
+        sERSLogger.Log("Destroying Window", 4);
+        glfwTerminate();
+    }
 
     // Exit System //
+    sERSLogger.Log("System Shutdown", 3);
     return 0;
 }
 
