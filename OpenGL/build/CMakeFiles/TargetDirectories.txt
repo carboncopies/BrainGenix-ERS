@@ -1,7 +1,0 @@
-/home/tliao/Documents/BrainGenix-ERS/OpenGL/build/CMakeFiles/install/strip.dir
-/home/tliao/Documents/BrainGenix-ERS/OpenGL/build/CMakeFiles/install.dir
-/home/tliao/Documents/BrainGenix-ERS/OpenGL/build/CMakeFiles/list_install_components.dir
-/home/tliao/Documents/BrainGenix-ERS/OpenGL/build/CMakeFiles/rebuild_cache.dir
-/home/tliao/Documents/BrainGenix-ERS/OpenGL/build/CMakeFiles/edit_cache.dir
-/home/tliao/Documents/BrainGenix-ERS/OpenGL/build/CMakeFiles/install/local.dir
-/home/tliao/Documents/BrainGenix-ERS/OpenGL/build/CMakeFiles/myWin.dir
