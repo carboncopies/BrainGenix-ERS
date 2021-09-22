@@ -23,6 +23,7 @@ class GLFWWindow {
 
         int RenderWidth;
         int RenderHeight;
+        const bool AllowRenderResize;
 
         // Initialization Function for GLFWWindow Class //
         bool InitializeGLFW (YAML::Node ConfigFile, LoggerClass LoggingSystem) {
@@ -30,6 +31,10 @@ class GLFWWindow {
             // Check GLFW Configuration Status //
             LoggingSystem.Log("Checking Config File For 'WindowEnabled' Parameter", 3);
             const bool WindowEnabled = ConfigFile["WindowEnabled"].as<bool>();
+
+            // Check Render Window Resize Config Parameter //
+            LoggingSystem.Log("Checking Config File For 'AllowRenderResize' Parameter", 2)
+            AllowRenderResize = ConfigFile["WindowEnabled"].as<bool>();
 
             if (WindowEnabled) {
 
@@ -89,7 +94,7 @@ class GLFWWindow {
 
         }
 
-
+        // Initailizes The GL Viewport //
         void InitializeGLViewport(YAML::Node ConfigFile, LoggerClass LoggingSystem) {
 
             LoggingSystem.Log("Checking Config File For 'RenderWidthPixels' Parameter", 3);
@@ -97,8 +102,26 @@ class GLFWWindow {
             LoggingSystem.Log("Checking Config File For 'RenderHeightPixels' Parameter", 3);
             RenderHeight = ConfigFile["RenderHeightPixels"].as<int>();
 
-            LoggingSystem.Log("Initializing OpenGL Viewport");
+            LoggingSystem.Log("Initializing OpenGL Viewport", 5);
             glViewport(0,0, RenderWidth, RenderHeight);
+
+        }
+
+
+        // Create Window Resize Callback //
+        void FrameBufferSizeCallback(GLFWwindow* Window, int Width, int Height) {
+
+            // Check If Resize Allowed
+            if (AllowRenderResize) {
+
+                // Update Render Width, Height //
+                RenderWidth = Width;
+                RenderHeight = Height;
+
+                // Resize Viewport Based On Callback //
+                glViewport(0, 0, RenderWidth, RenderHeight);
+
+            }
         }
 
 
