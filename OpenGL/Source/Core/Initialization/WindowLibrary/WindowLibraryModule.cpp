@@ -13,7 +13,7 @@
 
 #include <yaml-cpp/yaml.h>
 
-void InitializeGLFW (YAML::Node ConfigFile, LoggerClass LoggingSystem) {
+bool InitializeGLFW (YAML::Node ConfigFile, LoggerClass LoggingSystem) {
     
     // Check GLFW Configuration Status //
     LoggingSystem.Log("Checking Config File For 'WindowEnabled' Parameter", 3);
@@ -56,6 +56,9 @@ void InitializeGLFW (YAML::Node ConfigFile, LoggerClass LoggingSystem) {
             LoggingSystem.Log("Failed To Create GLFW Window Object, System Will Run Headless", 7); 
             glfwTerminate();
 
+            // Indicate That A Window Has Not Been Created //
+            return false;
+
         }
         else {
             LoggingSystem.Log("Successfully Created GLFW Window Object", 3);
@@ -63,6 +66,13 @@ void InitializeGLFW (YAML::Node ConfigFile, LoggerClass LoggingSystem) {
             // Make Current Window Context //
             LoggingSystem.Log("Setting Context To Window", 2);
             glfwMakeContextCurrent(Window);
+
+            // Indicate That A Window Has Been Created //
+            return true;
         }
     }
+
+    // Indicate That A Window Has Not Been Created //
+    return false;
+
 }
