@@ -1,0 +1,15 @@
+## LOCAL WINDOW CONFIG ##
+# Enable/Disable Creation of Window on Local Machine #
+LocalWindowEnabled: True
+
+# Set Window Resolution #
+LocalWindowResolutionX: 720
+LocalWindowResolutionY: 480
+
+# Set Window Title #
+LocalWindowTitle: "BrainGenix Environment Rendering System (ERS)"
+
+
+
+## Vulkan Configuration ##
+EnableVulkanDebugging: True  # NOTE: DEBUGGING HAS A NEGATIVE PERFORMANCE IMPACT
