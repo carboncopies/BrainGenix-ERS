@@ -43,13 +43,9 @@ int main() {
     GLADInitialization(sERSLogger);
 
     // Set GLViewPort //
-    sERSLogger.Log("Checking Config File For 'RenderWidthPixels' Parameter", 3);
-    int RenderWidthPixels = SystemConfiguration["RenderWidthPixels"].as<int>();
-    sERSLogger.Log("Checking Config File For 'RenderHeightPixels' Parameter", 3);
-    int RenderHeightPixels = SystemConfiguration["RenderHeightPixels"].as<int>();
+    WindowManager.InitializeGLViewport(SystemConfiguration, sERSLogger);
 
-    sERSLogger.Log("Initializing OpenGL Viewport");
-    glViewport(0,0, RenderWidthPixels, RenderHeightPixels);
+    
 
     return 0;
 }
