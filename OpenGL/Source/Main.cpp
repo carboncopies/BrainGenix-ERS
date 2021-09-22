@@ -33,7 +33,7 @@ int main() {
 
 
     // Create GLFW Window Based On Config //
-    InitializeGLFW(SystemConfiguration, sERSLogger);
+    bool bWindowCreated = InitializeGLFW(SystemConfiguration, sERSLogger);
 
     return 0;
 }
