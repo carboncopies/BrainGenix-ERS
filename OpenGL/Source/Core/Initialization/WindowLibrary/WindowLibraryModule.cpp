@@ -21,6 +21,9 @@ class GLFWWindow {
 
     public:
 
+        int RenderWidth;
+        int RenderHeight;
+
         // Initialization Function for GLFWWindow Class //
         bool InitializeGLFW (YAML::Node ConfigFile, LoggerClass LoggingSystem) {
             
@@ -86,6 +89,17 @@ class GLFWWindow {
 
         }
 
+
+        void InitializeGLViewport(YAML::Node ConfigFile, LoggerClass LoggingSystem) {
+
+            LoggingSystem.Log("Checking Config File For 'RenderWidthPixels' Parameter", 3);
+            RenderWidth = SystemConfiguration["RenderWidthPixels"].as<int>();
+            LoggingSystem.Log("Checking Config File For 'RenderHeightPixels' Parameter", 3);
+            RenderHeight = SystemConfiguration["RenderHeightPixels"].as<int>();
+
+            LoggingSystem.Log("Initializing OpenGL Viewport");
+            glViewport(0,0, RenderWidth, RenderHeight);
+        }
 
 
 };
