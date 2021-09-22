@@ -23,7 +23,7 @@ class GLFWWindow {
 
         int RenderWidth;
         int RenderHeight;
-        const bool AllowRenderResize;
+        bool AllowRenderResize;
 
         // Initialization Function for GLFWWindow Class //
         bool InitializeGLFW (YAML::Node ConfigFile, LoggerClass LoggingSystem) {
@@ -33,7 +33,7 @@ class GLFWWindow {
             const bool WindowEnabled = ConfigFile["WindowEnabled"].as<bool>();
 
             // Check Render Window Resize Config Parameter //
-            LoggingSystem.Log("Checking Config File For 'AllowRenderResize' Parameter", 2)
+            LoggingSystem.Log("Checking Config File For 'AllowRenderResize' Parameter", 2);
             AllowRenderResize = ConfigFile["WindowEnabled"].as<bool>();
 
             if (WindowEnabled) {
