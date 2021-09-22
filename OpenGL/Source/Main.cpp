@@ -16,6 +16,7 @@
 
 #include "Core/Management/Logger/LoggerModule.cpp"
 #include "Core/Initialization/ConfigurationLoader/ConfigurationLoaderModule.cpp"
+#include "Core/Initialization/WindowLibrary/WindowLibraryModule.cpp"
 
 
 int main() {
@@ -27,20 +28,12 @@ int main() {
     LoggerClass sERSLogger;
     sERSLogger.InitializeLogger(SystemConfiguration);
 
-    glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    // Log Initialization //
+    sERSLogger.Log("Initialized Logger Subsystem");
 
 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
-if (window == NULL)
-{
-    std::cout << "Failed to create GLFW window" << std::endl;
-    glfwTerminate();
-    return -1;
-}
-glfwMakeContextCurrent(window);
+    // Create GLFW Window Based On Config //
+    InitializeGLFW(SystemConfiguration, sERSLogger);
 
     return 0;
 }
