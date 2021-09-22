@@ -10,7 +10,10 @@
 
 #include <iostream>
 
-#include <glad/glad.h>
+#include "Include/glad/glad.h"
+#include "Include/KHR/khrplatform.h"
+#include "Core/Initialization/GLADModule/glad.c"
+
 #include <GLFW/glfw3.h>
 #include <yaml-cpp/yaml.h>
 
