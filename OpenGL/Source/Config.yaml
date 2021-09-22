@@ -6,3 +6,6 @@ SetMinimumLogLevel: 0
 
 # Set Window Configuration Parameters #
 WindowEnabled: True
+WindowWidth: 800
+WindowHeight: 600
+WindowTitle: "BrainGenix-ERS"
