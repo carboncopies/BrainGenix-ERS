@@ -10,6 +10,8 @@
 
 #include <stdlib.h>
 
+
+
 void GLADInitialization(LoggerClass LoggingSystem) {
 
     // Log GLAD Start //
