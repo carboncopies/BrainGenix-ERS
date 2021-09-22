@@ -24,6 +24,6 @@ void GLADInitialization(LoggerClass LoggingSystem) {
     }
 
     // Log Initialization Successfull //
-    LoggingSystem.Log("GLAD Subsystem Initialization Successfull", 3);
+    LoggingSystem.Log("GLAD Subsystem Initialization Successful", 3);
     return;
 }
