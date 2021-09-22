@@ -21,6 +21,7 @@
 #include "Core/Initialization/ConfigurationLoader/ConfigurationLoaderModule.cpp"
 #include "Core/Initialization/WindowLibrary/WindowLibraryModule.cpp"
 #include "Core/Initialization/GLADModule/GLADModule.cpp"
+#include "Core/Renderer/RenderingLoop/RenderLoopModule.cpp"
 
 
 void FrameBufferResizeCallback(GLFWwindow* window, int width, int height)
@@ -62,28 +63,8 @@ int main() {
     }
 
 
-    // Create System Shutdown Variable //
-    bool SystemShutdownInvoked = false;
-
     // Main Render Loop //
-    while(!SystemShutdownInvoked)
-    {
-
-        // If The GLFW Window Exists //
-        if (Window != nullptr) {
-
-            // Check For Shutdown Events //
-            SystemShutdownInvoked = glfwWindowShouldClose(Window);
-
-
-            // GLFW Window Update //
-            glfwSwapBuffers(Window);
-            glfwPollEvents(); 
-
-        }
-
-   
-    }
+    MainRenderLoop(Window);
 
     // If GLFW Is In Use, Shut It Down //
     if (Window != nullptr) {
