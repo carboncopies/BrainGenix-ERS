@@ -26,7 +26,7 @@ class GLFWWindow {
         bool AllowRenderResize;
 
         // Initialization Function for GLFWWindow Class //
-        bool InitializeGLFW (YAML::Node ConfigFile, LoggerClass LoggingSystem) {
+        GLFWwindow* InitializeGLFW (YAML::Node ConfigFile, LoggerClass LoggingSystem) {
             
             // Check GLFW Configuration Status //
             LoggingSystem.Log("Checking Config File For 'WindowEnabled' Parameter", 3);
@@ -74,7 +74,7 @@ class GLFWWindow {
                     glfwTerminate();
 
                     // Indicate That A Window Has Not Been Created //
-                    return false;
+                    return nullptr;
 
                 }
                 else {
@@ -84,17 +84,15 @@ class GLFWWindow {
                     LoggingSystem.Log("Setting Context To Window", 2);
                     glfwMakeContextCurrent(Window);
 
-                    // Create GLFW Resize Callback //
-                    LoggingSystem.Log("Setting Window Resize Callback Function", 3);
-                    glfwSetFramebufferSizeCallback(Window, FrameBufferSizeCallback);  
+
 
                     // Indicate That A Window Has Been Created //
-                    return true;
+                    return Window;
                 }
             }
 
             // Indicate That A Window Has Not Been Created //
-            return false;
+            return nullptr;
 
         }
 
@@ -109,23 +107,6 @@ class GLFWWindow {
             LoggingSystem.Log("Initializing OpenGL Viewport", 5);
             glViewport(0,0, RenderWidth, RenderHeight);
 
-        }
-
-
-        // Create Window Resize Callback //
-        void FrameBufferSizeCallback(GLFWwindow* Window, int Width, int Height) {
-
-            // Check If Resize Allowed
-            if (AllowRenderResize) {
-
-                // Update Render Width, Height //
-                RenderWidth = Width;
-                RenderHeight = Height;
-
-                // Resize Viewport Based On Callback //
-                glViewport(0, 0, RenderWidth, RenderHeight);
-
-            }
         }
 
 
