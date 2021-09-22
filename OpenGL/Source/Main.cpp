@@ -23,6 +23,12 @@
 #include "Core/Initialization/GLADModule/GLADModule.cpp"
 
 
+void FrameBufferResizeCallback(GLFWwindow* window, int width, int height)
+{
+    glViewport(0, 0, width, height);
+
+}
+
 int main() {
     
     // Loading Configuration File //
@@ -37,7 +43,7 @@ int main() {
 
     // Create GLFW Window Based On Config //
     GLFWWindow WindowManager;
-    bool bWindowCreated = WindowManager.InitializeGLFW(SystemConfiguration, sERSLogger);
+    GLFWwindow* Window = WindowManager.InitializeGLFW(SystemConfiguration, sERSLogger);
 
     // Run GLAD Function Pointer Loader //
     GLADInitialization(sERSLogger);
@@ -45,7 +51,29 @@ int main() {
     // Set GLViewPort //
     WindowManager.InitializeGLViewport(SystemConfiguration, sERSLogger);
 
-    
 
+    // Create GLFW Resize Callback //
+    sERSLogger.Log("Checking If Window Resize Events Enabled", 1);
+    if (WindowManager.AllowRenderResize) {
+
+        sERSLogger.Log("Setting Window Resize Callback Function", 3);
+        glfwSetFramebufferSizeCallback(Window, FrameBufferResizeCallback);
+
+    }
+
+    // Main Render Loop //
+    while(!glfwWindowShouldClose(Window))
+    {
+        glfwSwapBuffers(Window);
+        glfwPollEvents();    
+    }
+
+
+    // Exit System //
     return 0;
 }
+
+
+
+
+  
