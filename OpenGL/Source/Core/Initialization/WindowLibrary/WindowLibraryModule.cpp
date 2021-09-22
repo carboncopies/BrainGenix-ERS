@@ -61,8 +61,8 @@ void InitializeGLFW (YAML::Node ConfigFile, LoggerClass LoggingSystem) {
             LoggingSystem.Log("Successfully Created GLFW Window Object", 3);
 
             // Make Current Window Context //
-            LoggingSYstem.Log("Setting Context To Window", 2);
-            glfwMakeContextCurrent(window);
+            LoggingSystem.Log("Setting Context To Window", 2);
+            glfwMakeContextCurrent(Window);
         }
     }
 }
