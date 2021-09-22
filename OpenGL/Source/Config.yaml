@@ -9,3 +9,7 @@ WindowEnabled: True
 WindowWidth: 800
 WindowHeight: 600
 WindowTitle: "BrainGenix-ERS"
+
+# Renderer Settings #
+RenderWidthPixels: 800
+RenderHeightPixels: 600
