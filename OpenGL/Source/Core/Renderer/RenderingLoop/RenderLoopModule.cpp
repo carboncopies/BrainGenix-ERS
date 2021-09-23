@@ -13,6 +13,10 @@
 #include "Core/AssetLoader/TextureLoaderModule.cpp"
 
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 
 void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
