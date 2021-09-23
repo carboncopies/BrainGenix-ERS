@@ -47,7 +47,7 @@ public:
         try {
 
             // Log File Read
-            Logger.Log(std::string("Reading Vertex Shader File: " + std::string(VertexPath)).c_str(), 1);
+            Logger.Log(std::string("Reading Vertex Shader File: '" + std::string(VertexPath) + "'").c_str(), 1);
 
             // Open And Read Vertex File
             VertexShaderFile.open(VertexPath);
@@ -69,7 +69,7 @@ public:
         try {
 
             // Log File Read
-            Logger.Log(std::string("Reading Fragment Shader File: " + std::string(FragmentPath)).c_str(), 1);
+            Logger.Log(std::string("Reading Fragment Shader File: '" + std::string(FragmentPath) + "'").c_str(), 1);
 
             // Open And Read Fragment File
             FragmentShaderFile.open(FragmentPath);
@@ -93,7 +93,7 @@ public:
             if(GeometryPath != nullptr) {
 
                 // Log File Read
-                Logger.Log(std::string("Reading Geometry Shader File: " + std::string(GeometryPath)).c_str(), 1);
+                Logger.Log(std::string("Reading Geometry Shader File: '" + std::string(GeometryPath) + "'").c_str(), 1);
 
                 // Open And Read Geometry File
                 GeometryShaderFile.open(GeometryPath);
@@ -127,6 +127,7 @@ public:
 
 
         // Compile Vertex Shader
+        Logger.Log(std::string("Compiling Vertex Shader: '" + std::string(VertexPath) + "'").c_str(), 1);
         Vertex = glCreateShader(GL_VERTEX_SHADER);
         glShaderSource(Vertex, 1, &VertexShaderCode, NULL);
         glCompileShader(Vertex);
@@ -134,6 +135,7 @@ public:
 
 
         // Compile Fragment Shader
+        Logger.Log(std::string("Compiling Fragment Shader: '" + std::string(FragmentPath) + "'").c_str(), 1);
         Fragment = glCreateShader(GL_FRAGMENT_SHADER);
         glShaderSource(Fragment, 1, &FragmentShaderCode, NULL);
         glCompileShader(Fragment);
@@ -143,6 +145,7 @@ public:
         // If Geometry shader Exists, Compile It
         if(GeometryPath != nullptr) {
 
+            Logger.Log(std::string("Compiling Geometry Shader: '" + std::string(GeometryPath) + "'").c_str(), 1);
             Geometry = glCreateShader(GL_GEOMETRY_SHADER);
             glShaderSource(Geometry, 1, &GeometryShaderCode, NULL);
             glCompileShader(Geometry);
@@ -154,6 +157,7 @@ public:
         ID = glCreateProgram();
 
         // Add Vertex, Fragment, Geometry Shaders To Program
+        Logger.Log(std::string("Attaching Shaders Into Shader Program With ID: " + std::string(ID)).c_str());
         glAttachShader(ID, Vertex);
         glAttachShader(ID, Fragment);
         if(GeometryPath != nullptr) {
