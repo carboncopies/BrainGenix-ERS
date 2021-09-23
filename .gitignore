@@ -1,6 +1,9 @@
 # Ignore Build Data #
 OpenGL/Makefile
 OpenGL/Dist
+OpenGL/Build
+OpenGL/bin
+OpenGL/lib
 
 # Prerequisites
 *.d
