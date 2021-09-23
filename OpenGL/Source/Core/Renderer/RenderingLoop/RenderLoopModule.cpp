@@ -12,10 +12,9 @@
 
 void MainRenderLoop(GLFWwindow* Window) {
 
-    // Create System Shutdown Variable //
+    // Create Bool Variables //
     bool SystemShutdownInvoked = false;
-
-
+    bool bWireframeMode = false;
 
 
 
@@ -23,8 +22,8 @@ void MainRenderLoop(GLFWwindow* Window) {
 
     float vertices[] = {
         0.5f,  0.5f, 0.0f,  // top right
-        0.5f, -0.5f, 0.0f,  // bottom right
-        -0.5f, -0.5f, 0.0f,  // bottom left
+        0.5f, -0.6f, 0.0f,  // bottom right
+        -0.4f, -0.5f, 0.0f,  // bottom left
         -0.5f,  0.5f, 0.0f   // top left 
     };
     unsigned int indices[] = {  // note that we start from 0!
@@ -143,8 +142,12 @@ void MainRenderLoop(GLFWwindow* Window) {
         glClear(GL_COLOR_BUFFER_BIT);
 
 
-
-        
+        // Set Drawing Mode
+        if (bWireframeMode) {
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        } else {
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        }    
 
 
 
@@ -172,6 +175,16 @@ void MainRenderLoop(GLFWwindow* Window) {
             // GLFW Window Update //
             glfwSwapBuffers(Window);
             glfwPollEvents(); 
+
+
+            if (glfwGetKey(Window, GLFW_KEY_1) == GLFW_PRESS) {
+            bWireframeMode = false;
+            }
+            if (glfwGetKey(Window, GLFW_KEY_2) == GLFW_PRESS) {
+            bWireframeMode = true;
+            }
+
+
 
         }
 
