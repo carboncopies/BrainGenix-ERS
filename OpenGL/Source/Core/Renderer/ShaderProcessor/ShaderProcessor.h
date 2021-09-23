@@ -27,58 +27,92 @@ public:
     unsigned int ID;
     // constructor generates the shader on the fly
     // ------------------------------------------------------------------------
-    Shader(LoggerClass Logger, const char* vertexPath, const char* fragmentPath, const char* geometryPath = nullptr)
+    Shader(LoggerClass Logger, const char* VertexPath, const char* FragmentPath, const char* GeometryPath = nullptr)
     {
         // Retrieve The Vertex/Fragment Source Code From FilePath
         std::string vertexCode;
         std::string ragmentCode;
         std::string geometryCode;
-        std::ifstream vShaderFile;
-        std::ifstream fShaderFile;
-        std::ifstream gShaderFile;
+        std::ifstream VertexShaderFile;
+        std::ifstream FragmentShaderFile;
+        std::ifstream GeometryShaderFile;
 
         // Enable Exceptions For ifstream
-        vShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
-        fShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
-        gShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
+        VertexShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
+        FragmentShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
+        GeometryShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
 
 
-        try 
-        {
-            // Open Vertex File
-            vShaderFile.open(vertexPath);
-
-            std::stringstream vShaderStream, fShaderStream;
-            // read file's buffer contents into streams
-            vShaderStream << vShaderFile.rdbuf();
-            fShaderStream << fShaderFile.rdbuf();		
-            // close file handlers
-            vShaderFile.close();
-            fShaderFile.close();
-            // convert stream into string
-            vertexCode = vShaderStream.str();
-            fragmentCode = fShaderStream.str();			
-            // if geometry shader path is present, also load a geometry shader
-            if(geometryPath != nullptr)
-            {
-                gShaderFile.open(geometryPath);
-                std::stringstream gShaderStream;
-                gShaderStream << gShaderFile.rdbuf();
-                gShaderFile.close();
-                geometryCode = gShaderStream.str();
-            }
-        }
-        catch (std::ifstream::failure& e)
-        {
-            Logger.Log(std::string("ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ").c_str());
-        }
-
+        // Vertex File
         try {
 
-            fShaderFile.open(fragmentPath);
-            
+            // Log File Read
+            Logger.Log(std::string("Reading Vertex Shader File: " + std::string(VertexPath)).c_str(), 1);
 
+            // Open And Read Vertex File
+            VertexShaderFile.open(vertexPath);
+            std::stringstream VertexShaderStream;
+            VertexShaderStream << VertexShaderFile.rdbuf();
+            VertexShaderFile.close();
+
+            // Convert Stream Into String
+            VertexCode = VertexShaderStream.str();
+		
+
+        } catch (std::ifstream::failure& e) {
+
+            // Log Vertex File Read/Decode Error
+            Logger.Log(std::string("ERROR::SHADER::VERTEX::FILE_NOT_SUCCESFULLY_READ").c_str());
         }
+
+        // Fragment File
+        try {
+
+            // Log File Read
+            Logger.Log(std::string("Reading Fragment Shader File: " + std::string(FragmentPath)).c_str(), 1);
+
+            // Open And Read Fragment File
+            FragmentShaderFile.open(fragmentPath);
+            std::stringstream FragmentShaderStream;
+            FragmentShaderStream << FragmentShaderFile.rdbuf();
+            FragmentShaderFile.close();
+
+            // Convert Stream Into String
+            FragmentCode = FragmentShaderStream.str();
+        } catch (std::ifstream::failure& e) {
+
+            // Log Vertex File Read/Decode Error
+            Logger.Log(std::string("ERROR::SHADER::FRAGMENT::FILE_NOT_SUCCESFULLY_READ").c_str());
+        }
+
+
+
+        // Geometry File
+        try {
+            if(GeometryPath != nullptr) {
+
+                // Log File Read
+                Logger.Log(std::string("Reading Geometry Shader File: " + std::string(GeometryPath)).c_str(), 1);
+
+                // Open And Read Geometry File
+                GeometryShaderFile.open(GeometryPath);
+                std::stringstream GeometryShaderStream;
+                GeometryShaderStream << GeometryShaderFile.rdbuf();
+                GeometryShaderFile.close();
+
+                // Convert Stream Into String
+                GeometryCode = GeometryShaderStream.str();
+            } else {
+                // Log No Geometry Shader Specified
+                Logger.Log("No Geometry Shader Specified, Skipping Geometry Shader", 1);
+            }
+
+        } catch (std::ifstream::failure& e) {
+
+            // Log Vertex File Read/Decode Error
+            Logger.Log(std::string("ERROR::SHADER::GEOMETRY::FILE_NOT_SUCCESFULLY_READ").c_str());
+        }
+
 
 
 
