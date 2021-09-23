@@ -13,6 +13,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "Source"
   "Libraries/yaml-cpp/include"
   "Libraries/glfw/include"
+  "Libraries/glm/glm/.."
   )
 
 # Targets to which this target links.

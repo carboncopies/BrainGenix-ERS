@@ -6,6 +6,7 @@ CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o: Source/Core/Initialization/GLAD
 CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o: Source/Core/Initialization/GLADModule/glad.c
 CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o: Source/Core/Initialization/WindowLibrary/WindowLibraryModule.cpp
 CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o: Source/Core/Management/Logger/LoggerModule.cpp
+CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o: Source/Core/Renderer/RenderingLoop/RenderLoopModule.cpp
 CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o: Source/Include/KHR/khrplatform.h
 CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o: Source/Include/glad/glad.h
 CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o: Source/Main.cpp
@@ -41,4 +42,6 @@ CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o: Libraries/yaml-cpp/include/yaml
 CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o: Libraries/yaml-cpp/include/yaml-cpp/stlemitter.h
 CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o: Libraries/yaml-cpp/include/yaml-cpp/traits.h
 CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o: Libraries/yaml-cpp/include/yaml-cpp/yaml.h
+CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o: Source/Core/Renderer/ShaderProcessor/ShaderProcessor.h
+CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o: Source/Core/SystemInput/WindowInput/WindowInputModule.cpp
 

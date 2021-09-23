@@ -156,6 +156,21 @@ depend:
 	cd /home/tliao/Documents/BrainGenix-ERS/OpenGL && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+# Convenience name for target.
+Libraries/glfw/CMakeFiles/uninstall.dir/rule:
+	cd /home/tliao/Documents/BrainGenix-ERS/OpenGL && $(MAKE) -f CMakeFiles/Makefile2 Libraries/glfw/CMakeFiles/uninstall.dir/rule
+.PHONY : Libraries/glfw/CMakeFiles/uninstall.dir/rule
+
+# Convenience name for target.
+uninstall: Libraries/glfw/CMakeFiles/uninstall.dir/rule
+
+.PHONY : uninstall
+
+# fast build rule for target.
+uninstall/fast:
+	cd /home/tliao/Documents/BrainGenix-ERS/OpenGL && $(MAKE) -f Libraries/glfw/CMakeFiles/uninstall.dir/build.make Libraries/glfw/CMakeFiles/uninstall.dir/build
+.PHONY : uninstall/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -168,6 +183,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... uninstall"
 .PHONY : help
 
 

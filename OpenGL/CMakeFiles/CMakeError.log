@@ -1,21 +1,21 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_e2330/fast && /usr/bin/make -f CMakeFiles/cmTC_e2330.dir/build.make CMakeFiles/cmTC_e2330.dir/build
+Run Build Command(s):/usr/bin/make cmTC_6b5f6/fast && /usr/bin/make -f CMakeFiles/cmTC_6b5f6.dir/build.make CMakeFiles/cmTC_6b5f6.dir/build
 make[1]: Entering directory '/home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_e2330.dir/src.c.o
-/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_e2330.dir/src.c.o   -c /home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_e2330
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e2330.dir/link.txt --verbose=1
-/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_e2330.dir/src.c.o  -o cmTC_e2330 
-/usr/bin/ld: CMakeFiles/cmTC_e2330.dir/src.c.o: in function `main':
+Building C object CMakeFiles/cmTC_6b5f6.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_6b5f6.dir/src.c.o   -c /home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_6b5f6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6b5f6.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_6b5f6.dir/src.c.o  -o cmTC_6b5f6 
+/usr/bin/ld: CMakeFiles/cmTC_6b5f6.dir/src.c.o: in function `main':
 src.c:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
 /usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_e2330.dir/build.make:87: cmTC_e2330] Error 1
+make[1]: *** [CMakeFiles/cmTC_6b5f6.dir/build.make:87: cmTC_6b5f6] Error 1
 make[1]: Leaving directory '/home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_e2330/fast] Error 2
+make: *** [Makefile:121: cmTC_6b5f6/fast] Error 2
 
 
 Source file was:
@@ -41,18 +41,76 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_84ada/fast && /usr/bin/make -f CMakeFiles/cmTC_84ada.dir/build.make CMakeFiles/cmTC_84ada.dir/build
+Run Build Command(s):/usr/bin/make cmTC_12bf7/fast && /usr/bin/make -f CMakeFiles/cmTC_12bf7.dir/build.make CMakeFiles/cmTC_12bf7.dir/build
 make[1]: Entering directory '/home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_84ada.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_84ada.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
-Linking C executable cmTC_84ada
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_84ada.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_84ada.dir/CheckFunctionExists.c.o  -o cmTC_84ada  -lpthreads 
+Building C object CMakeFiles/cmTC_12bf7.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_12bf7.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_12bf7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_12bf7.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_12bf7.dir/CheckFunctionExists.c.o  -o cmTC_12bf7  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_84ada.dir/build.make:87: cmTC_84ada] Error 1
+make[1]: *** [CMakeFiles/cmTC_12bf7.dir/build.make:87: cmTC_12bf7] Error 1
 make[1]: Leaving directory '/home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_84ada/fast] Error 2
+make: *** [Makefile:121: cmTC_12bf7/fast] Error 2
+
+
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7bd79/fast && /usr/bin/make -f CMakeFiles/cmTC_7bd79.dir/build.make CMakeFiles/cmTC_7bd79.dir/build
+make[1]: Entering directory '/home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7bd79.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_7bd79.dir/src.c.o   -c /home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_7bd79
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7bd79.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_7bd79.dir/src.c.o  -o cmTC_7bd79 
+/usr/bin/ld: CMakeFiles/cmTC_7bd79.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_7bd79.dir/build.make:87: cmTC_7bd79] Error 1
+make[1]: Leaving directory '/home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_7bd79/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_73619/fast && /usr/bin/make -f CMakeFiles/cmTC_73619.dir/build.make CMakeFiles/cmTC_73619.dir/build
+make[1]: Entering directory '/home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_73619.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_73619.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_73619
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_73619.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_73619.dir/CheckFunctionExists.c.o  -o cmTC_73619  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_73619.dir/build.make:87: cmTC_73619] Error 1
+make[1]: Leaving directory '/home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_73619/fast] Error 2
 
 
 

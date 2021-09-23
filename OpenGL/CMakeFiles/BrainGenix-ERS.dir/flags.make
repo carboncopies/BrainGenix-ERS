@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/tliao/Documents/BrainGenix-ERS/OpenGL/Source -I/home/tliao/Documents/BrainGenix-ERS/OpenGL/Libraries/yaml-cpp/include -I/home/tliao/Documents/BrainGenix-ERS/OpenGL/Libraries/glfw/include 
+CXX_INCLUDES = -I/home/tliao/Documents/BrainGenix-ERS/OpenGL/Source -I/home/tliao/Documents/BrainGenix-ERS/OpenGL/Libraries/yaml-cpp/include -I/home/tliao/Documents/BrainGenix-ERS/OpenGL/Libraries/glfw/include -I/home/tliao/Documents/BrainGenix-ERS/OpenGL/Libraries/glm/glm/.. 
 
