@@ -12,7 +12,7 @@
 #include "Core/Renderer/ShaderProcessor/ShaderProcessor.h"
 
 
-void MainRenderLoop(GLFWwindow* Window) {
+void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
     // Create Bool Variables //
     bool SystemShutdownInvoked = false;
@@ -23,7 +23,7 @@ void MainRenderLoop(GLFWwindow* Window) {
 
     // build and compile our shader program
     // ------------------------------------
-    Shader ourShader("Shaders/3.3.shader.vs", "Shaders/3.3.shader.fs"); // you can name your shader files however you like
+    Shader ourShader("Shaders/3.3.shader.vs", "Shaders/3.3.shader.fs", Logger); // you can name your shader files however you like
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
