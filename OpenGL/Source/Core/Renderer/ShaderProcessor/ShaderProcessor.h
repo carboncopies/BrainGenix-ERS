@@ -30,9 +30,9 @@ public:
     Shader(LoggerClass Logger, const char* VertexPath, const char* FragmentPath, const char* GeometryPath = nullptr)
     {
         // Retrieve The Vertex/Fragment Source Code From FilePath
-        std::string vertexCode;
-        std::string ragmentCode;
-        std::string geometryCode;
+        std::string VertexCode;
+        std::string FragmentCode;
+        std::string GeometryCode;
         std::ifstream VertexShaderFile;
         std::ifstream FragmentShaderFile;
         std::ifstream GeometryShaderFile;
@@ -50,7 +50,7 @@ public:
             Logger.Log(std::string("Reading Vertex Shader File: " + std::string(VertexPath)).c_str(), 1);
 
             // Open And Read Vertex File
-            VertexShaderFile.open(vertexPath);
+            VertexShaderFile.open(VertexPath);
             std::stringstream VertexShaderStream;
             VertexShaderStream << VertexShaderFile.rdbuf();
             VertexShaderFile.close();
@@ -73,7 +73,7 @@ public:
             Logger.Log(std::string("Reading Fragment Shader File: " + std::string(FragmentPath)).c_str(), 1);
 
             // Open And Read Fragment File
-            FragmentShaderFile.open(fragmentPath);
+            FragmentShaderFile.open(FragmentPath);
             std::stringstream FragmentShaderStream;
             FragmentShaderStream << FragmentShaderFile.rdbuf();
             FragmentShaderFile.close();
