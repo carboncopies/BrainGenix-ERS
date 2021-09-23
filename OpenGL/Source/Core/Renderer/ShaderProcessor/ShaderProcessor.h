@@ -56,7 +56,7 @@ class Shader
             }
             catch(std::ifstream::failure e)
             {
-                Logger.Log("Shader File Read Error", 7);
+                Logger.Log("ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ", 7);
             }
             const char* vShaderCode = vertexCode.c_str();
             const char* fShaderCode = fragmentCode.c_str();
@@ -76,9 +76,8 @@ class Shader
             if(!success)
             {
                 glGetShaderInfoLog(vertex, 512, NULL, infoLog);
-                std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+                Logger.Log(std::string("ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" + std::string(infoLog)).c_str(), 7);
             };
-            
             // similiar for Fragment Shader
             fragment = glCreateShader(GL_FRAGMENT_SHADER);
             glShaderSource(fragment, 1, &vShaderCode, NULL);
@@ -87,8 +86,8 @@ class Shader
             glGetShaderiv(fragment, GL_COMPILE_STATUS, &success);
             if(!success)
             {
-                glGetShaderInfoLog(vertex, 512, NULL, infoLog);
-                std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+                glGetShaderInfoLog(fragment, 512, NULL, infoLog);
+                Logger.Log(std::string("ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" + std::string(infoLog)).c_str(), 7);
             };
             
             // shader Program
@@ -101,7 +100,7 @@ class Shader
             if(!success)
             {
                 glGetProgramInfoLog(ID, 512, NULL, infoLog);
-                std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+                Logger.Log(std::string("ERROR::SHADER::PROGRAM::LINKING_FAILED\n" + std::string(infoLog)).c_str(), 8);
             }
             
             // delete the shaders as they're linked into our program now and no longer necessary
