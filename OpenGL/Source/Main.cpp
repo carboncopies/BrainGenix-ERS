@@ -64,7 +64,7 @@ int main() {
 
 
     // Main Render Loop //
-    MainRenderLoop(Window);
+    MainRenderLoop(Window, sERSLogger);
 
     // If GLFW Is In Use, Shut It Down //
     if (Window != nullptr) {
