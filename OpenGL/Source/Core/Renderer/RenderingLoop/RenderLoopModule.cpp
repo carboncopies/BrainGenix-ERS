@@ -23,7 +23,7 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
     // build and compile our shader program
     // ------------------------------------
-    Shader ourShader("Shaders/3.3.shader.vs", "Shaders/3.3.shader.fs", Logger); // you can name your shader files however you like
+    Shader ourShader(Logger, "Shaders/3.3.shader.vs", "Shaders/3.3.shader.fs"); // you can name your shader files however you like
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
