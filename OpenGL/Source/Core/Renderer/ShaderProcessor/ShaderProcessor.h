@@ -57,7 +57,6 @@ public:
 
             // Convert Stream Into String
             VertexCode = VertexShaderStream.str();
-            const char* VertexShaderCode = vertexCode.c_str();
 		
 
         } catch (std::ifstream::failure& e) {
@@ -80,7 +79,6 @@ public:
 
             // Convert Stream Into String
             FragmentCode = FragmentShaderStream.str();
-            const char * FragmentShaderCode = fragmentCode.c_str();
 
         } catch (std::ifstream::failure& e) {
 
@@ -105,7 +103,6 @@ public:
 
                 // Convert Stream Into String
                 GeometryCode = GeometryShaderStream.str();
-                const char * GeometryShaderCode = GeometryCode.c_str();
 
             } else {
                 // Log No Geometry Shader Specified
@@ -117,6 +114,12 @@ public:
             // Log Vertex File Read/Decode Error
             Logger.Log(std::string("ERROR::SHADER::GEOMETRY::FILE_NOT_SUCCESFULLY_READ").c_str());
         }
+
+
+        // Convert Shader Code To Const Char
+        const char* VertexShaderCode = VertexCode.c_str();
+        const char* FragmentShaderCode = FragmentCode.c_str();
+        const char* GeometryShaderCode = GeometryCode.c_str();
 
 
         // Compile Shaders
