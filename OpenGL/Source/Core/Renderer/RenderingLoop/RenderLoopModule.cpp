@@ -220,15 +220,16 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
         // If The GLFW Window Exists //
         if (Window != nullptr) {
 
-            // Update Window User Input //
-            if (glfwGetKey(Window, GLFW_KEY_W) == GLFW_PRESS) 
-                camera.ProcessKeyboard(FORWARD, DeltaTime);
-            if (glfwGetKey(Window, GLFW_KEY_S) == GLFW_PRESS)
-                camera.ProcessKeyboard(BACKWARD, DeltaTime);
-            if (glfwGetKey(Window, GLFW_KEY_A) == GLFW_PRESS)
-                camera.ProcessKeyboard(LEFT, DeltaTime);
-            if (glfwGetKey(Window, GLFW_KEY_D) == GLFW_PRESS)
-                camera.ProcessKeyboard(RIGHT, DeltaTime);
+            // // Update Window User Input //
+            // if (glfwGetKey(Window, GLFW_KEY_W) == GLFW_PRESS) 
+            //     camera.ProcessKeyboard(FORWARD, DeltaTime);
+            // if (glfwGetKey(Window, GLFW_KEY_S) == GLFW_PRESS)
+            //     camera.ProcessKeyboard(BACKWARD, DeltaTime);
+            // if (glfwGetKey(Window, GLFW_KEY_A) == GLFW_PRESS)
+            //     camera.ProcessKeyboard(LEFT, DeltaTime);
+            // if (glfwGetKey(Window, GLFW_KEY_D) == GLFW_PRESS)
+            //     camera.ProcessKeyboard(RIGHT, DeltaTime);
+            WindowInputManager.ProcessKeyboardWindowInput(DeltaTime);
 
             // Check For Shutdown Events //
             SystemShutdownInvoked = glfwWindowShouldClose(Window);
