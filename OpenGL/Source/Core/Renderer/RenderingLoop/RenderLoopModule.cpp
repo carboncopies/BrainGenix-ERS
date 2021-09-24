@@ -163,10 +163,8 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
     //glfwSetInputMode(Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 
+    // Enable Depth-Based Draw Ordering
     glEnable(GL_DEPTH_TEST); 
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
-
-
 
 
     // Main Render Loop //
@@ -185,10 +183,47 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         }    
 
+        // Update Draw Order Based On Depth
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
 
+
+
+        // bind Texture
+        glBindTexture(GL_TEXTURE_2D, texture);
+
+        // activate shader
+        ourShader.use();
         
 
+        // pass projection matrix to shader (note that in this case it could change every frame)
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        ourShader.setMat4("projection", projection);
 
+        // camera/view transformation
+        glm::mat4 view = camera.GetViewMatrix();
+        ourShader.setMat4("view", view);
+
+        // render boxes
+        glBindVertexArray(VAO);
+        for (unsigned int i = 0; i < 10; i++)
+        {
+            // calculate the model matrix for each object and pass it to shader before drawing
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, cubePositions[i]);
+            float angle = 20.0f * i;
+            model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));  
+            ourShader.setMat4("model", model);
+
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
+
+
+
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        // render container
+        glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 
 
@@ -200,46 +235,6 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
             // Check For Shutdown Events //
             SystemShutdownInvoked = glfwWindowShouldClose(Window);
-
-
-
-            // bind Texture
-            glBindTexture(GL_TEXTURE_2D, texture);
-
-            // activate shader
-            ourShader.use();
-            
-
-            // pass projection matrix to shader (note that in this case it could change every frame)
-            glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-            ourShader.setMat4("projection", projection);
-
-            // camera/view transformation
-            glm::mat4 view = camera.GetViewMatrix();
-            ourShader.setMat4("view", view);
-
-            // render boxes
-            glBindVertexArray(VAO);
-            for (unsigned int i = 0; i < 10; i++)
-            {
-                // calculate the model matrix for each object and pass it to shader before drawing
-                glm::mat4 model = glm::mat4(1.0f);
-                model = glm::translate(model, cubePositions[i]);
-                float angle = 20.0f * i;
-                model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));  
-                ourShader.setMat4("model", model);
-
-                glDrawArrays(GL_TRIANGLES, 0, 36);
-            }
-
-
-
-            glDrawArrays(GL_TRIANGLES, 0, 36);
-
-            // render container
-            glBindVertexArray(VAO);
-            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
 
 
             // GLFW Window Update //
