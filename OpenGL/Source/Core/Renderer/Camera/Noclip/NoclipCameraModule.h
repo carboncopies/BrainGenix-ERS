@@ -78,9 +78,6 @@ public:
     void ProcessKeyboard(const char* direction, float deltaTime)
     {
 
-        std::cout << std::setprecision(2) << deltaTime;
-        std::cout << "|" << direction << "\n";
-
         float velocity = MovementSpeed * deltaTime;
         if (direction == "FORWARD")
             Position += Front * velocity;
