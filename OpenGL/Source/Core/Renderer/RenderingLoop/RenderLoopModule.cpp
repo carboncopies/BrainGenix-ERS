@@ -19,16 +19,9 @@
 
 
 
-
-
-
-void MousePosCallback(GLFWwindow* Window, double xpos, double ypos);
-
 // settings
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
-
-
+unsigned int SCR_WIDTH = 800;
+unsigned int SCR_HEIGHT = 600;
 
 
 
@@ -163,14 +156,15 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
     // Set Window Callbacks
     //glfwSetFramebufferSizeCallback(Window, framebuffer_size_callback);
-    glfwSetCursorPosCallback(Window, WindowInputManager.ProcessMouseButtonWindowInput);
+    //glfwSetCursorPosCallback(Window, WindowInputManager.ProcessMouseButtonWindowInput);
     //glfwSetScrollCallback(Window, scroll_callback);
 
     // tell GLFW to capture our mouse
     //glfwSetInputMode(Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 
-
+    glEnable(GL_DEPTH_TEST); 
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
 
 
 
@@ -179,7 +173,7 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
     while(!SystemShutdownInvoked)
     {
 
-        // Rendering Commands Here //
+        // Clear Screen
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
@@ -193,8 +187,7 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
 
         
-        glEnable(GL_DEPTH_TEST); 
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
+
 
 
 
