@@ -30,7 +30,7 @@ class WindowInputClass {
 
     public:
 
-        void WindowInputClass(float ScreenWidthInput, float ScreenHeightInput, GLFWwindow *WindowInput, Camera CameraInput) {
+        WindowInputClass(float ScreenWidthInput, float ScreenHeightInput, GLFWwindow *WindowInput, Camera CameraInput) {
 
             // Define Variables
             ScreenWidth = ScreenWidthInput;
