@@ -194,7 +194,7 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
         if (Window != nullptr) {
 
             // Update Window User Input //
-            ProcessWindowInput(Window, camera);
+            WindowInputManager.ProcessWindowInput(1.0);
 
             // Check For Shutdown Events //
             SystemShutdownInvoked = glfwWindowShouldClose(Window);
