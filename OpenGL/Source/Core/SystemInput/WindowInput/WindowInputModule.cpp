@@ -49,7 +49,7 @@ class WindowInputClass {
 
         }
 
-        void ProcessKeyboardWindowInput(float DeltaTime, Camera camera) {
+        void ProcessKeyboardWindowInput(float DeltaTime) {
 
             // Set Escape Key To Exit
             if (glfwGetKey(Window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {        
@@ -57,13 +57,13 @@ class WindowInputClass {
             }
 
             if (glfwGetKey(Window, GLFW_KEY_W) == GLFW_PRESS) 
-                CameraInstance.ProcessKeyboard(FORWARD, DeltaTime);
+                CameraInstance.ProcessKeyboard("FORWARD", DeltaTime);
             if (glfwGetKey(Window, GLFW_KEY_S) == GLFW_PRESS)
-                CameraInstance.ProcessKeyboard(BACKWARD, DeltaTime);
+                CameraInstance.ProcessKeyboard("BACKWARD", DeltaTime);
             if (glfwGetKey(Window, GLFW_KEY_A) == GLFW_PRESS)
-                CameraInstance.ProcessKeyboard(LEFT, DeltaTime);
+                CameraInstance.ProcessKeyboard("LEFT", DeltaTime);
             if (glfwGetKey(Window, GLFW_KEY_D) == GLFW_PRESS)
-                CameraInstance.ProcessKeyboard(RIGHT, DeltaTime);
+                CameraInstance.ProcessKeyboard("RIGHT", DeltaTime);
 
         }
         
