@@ -49,14 +49,14 @@ class WindowInputClass {
 
         }
 
-        void ProcessKeyboardWindowInput(float DeltaTime) {
+        void ProcessKeyboardWindowInput(float DeltaTime, Camera camera) {
 
             // Set Escape Key To Exit
             if (glfwGetKey(Window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {        
                 glfwSetWindowShouldClose(Window, true);
             }
 
-            if (glfwGetKey(Window, GLFW_KEY_W) == GLFW_PRESS)
+            if (glfwGetKey(Window, GLFW_KEY_W) == GLFW_PRESS) 
                 CameraInstance.ProcessKeyboard(FORWARD, DeltaTime);
             if (glfwGetKey(Window, GLFW_KEY_S) == GLFW_PRESS)
                 CameraInstance.ProcessKeyboard(BACKWARD, DeltaTime);
