@@ -28,6 +28,17 @@ unsigned int SCR_HEIGHT = 600;
 // CameraInstance
 Camera CameraInstance(glm::vec3(0.0f, 0.0f, 3.0f));
 
+// Initialization Parameters
+bool firstMouse = true;
+float lastX = 0;
+float lastY = 0;
+
+void ProcessMouseButtonWindowInput(GLFWwindow* Window, double xpos, double ypos);
+void ProcessMouseScrollWindowInput(GLFWwindow* window, double xoffset, double yoffset);
+
+
+
+
 
 // timing
 float DeltaTime = 0.0f;	// time between current frame and last frame
@@ -48,8 +59,7 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
     // Enable Depth-Based Draw Ordering
     glEnable(GL_DEPTH_TEST); 
 
-    // Window Input Setup
-    WindowInputClass WindowInputManager(SCR_WIDTH, SCR_HEIGHT, Window, CameraInstance);
+
 
 
     // build and compile our shader program
@@ -138,15 +148,17 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
     //unsigned int texture = LoadTexture("container.jpg", Logger);
 
 
+    if (Window != nullptr) {
 
-    // Set Window Callbacks
-    //glfwSetFramebufferSizeCallback(Window, framebuffer_size_callback);
-    //glfwSetCursorPosCallback(Window, WindowInputManager.ProcessMouseButtonWindowInput);
-    //glfwSetScrollCallback(Window, scroll_callback);
+        // Set Window Callbacks
+        //glfwSetFramebufferSizeCallback(Window, framebuffer_size_callback);
+        glfwSetCursorPosCallback(Window, ProcessMouseButtonWindowInput);
+        glfwSetScrollCallback(Window, ProcessMouseScrollWindowInput);
 
-    // tell GLFW to capture our mouse
-    //glfwSetInputMode(Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        // tell GLFW to capture our mouse
+        glfwSetInputMode(Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
+    }
 
 
 
@@ -161,7 +173,7 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
 
         // Clear Screen
-        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
 
@@ -220,16 +232,19 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
         // If The GLFW Window Exists //
         if (Window != nullptr) {
 
-            // // Update Window User Input //
+            if (glfwGetKey(Window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {        
+                glfwSetWindowShouldClose(Window, true);
+            }
+
             if (glfwGetKey(Window, GLFW_KEY_W) == GLFW_PRESS) 
                 CameraInstance.ProcessKeyboard("FORWARD", DeltaTime);
-            // if (glfwGetKey(Window, GLFW_KEY_S) == GLFW_PRESS)
-            //     CameraInstance.ProcessKeyboard(BACKWARD, DeltaTime);
-            // if (glfwGetKey(Window, GLFW_KEY_A) == GLFW_PRESS)
-            //     CameraInstance.ProcessKeyboard(LEFT, DeltaTime);
-            // if (glfwGetKey(Window, GLFW_KEY_D) == GLFW_PRESS)
-            //     CameraInstance.ProcessKeyboard(RIGHT, DeltaTime);
-            WindowInputManager.ProcessKeyboardWindowInput(DeltaTime);
+            if (glfwGetKey(Window, GLFW_KEY_S) == GLFW_PRESS)
+                CameraInstance.ProcessKeyboard("BACKWARD", DeltaTime);
+            if (glfwGetKey(Window, GLFW_KEY_A) == GLFW_PRESS)
+                CameraInstance.ProcessKeyboard("LEFT", DeltaTime);
+            if (glfwGetKey(Window, GLFW_KEY_D) == GLFW_PRESS)
+                CameraInstance.ProcessKeyboard("RIGHT", DeltaTime);
+            
 
             // Check For Shutdown Events //
             SystemShutdownInvoked = glfwWindowShouldClose(Window);
@@ -251,4 +266,35 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
         }
     }
+}
+
+
+//glfw: whenever the mouse moves, this callback is called
+//-------------------------------------------------------
+void ProcessMouseButtonWindowInput(GLFWwindow* Window, double xpos, double ypos)
+{
+    if (firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+
+    lastX = xpos;
+    lastY = ypos;
+
+    CameraInstance.ProcessMouseMovement(xoffset, yoffset);
+
+}
+
+
+
+//glfw: whenever the mouse scroll wheel scrolls, this callback is called
+//----------------------------------------------------------------------
+void ProcessMouseScrollWindowInput(GLFWwindow* window, double xoffset, double yoffset)
+{
+    CameraInstance.ProcessMouseScroll(yoffset);
 }
