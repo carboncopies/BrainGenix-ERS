@@ -23,6 +23,7 @@ class WindowInputClass {
     float lastX;
     float lastY;
     
+    float x,y;
 
     // Initialization Parameters
     bool firstMouse = true;
@@ -45,9 +46,10 @@ class WindowInputClass {
             lastY = ScreenHeight / 2.0f;
 
 
+
         }
 
-        void ProcessWindowInput(float DeltaTime) {
+        void ProcessKeyboardWindowInput(float DeltaTime) {
 
             // Set Escape Key To Exit
             if (glfwGetKey(Window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {        
@@ -64,11 +66,11 @@ class WindowInputClass {
                 CameraInstance.ProcessKeyboard(RIGHT, DeltaTime);
 
         }
-
+        
 
         //glfw: whenever the mouse moves, this callback is called
         //-------------------------------------------------------
-        void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+        void ProcessMouseButtonWindowInput(GLFWwindow* Window, double xpos, double ypos)
         {
             if (firstMouse)
             {
@@ -90,7 +92,7 @@ class WindowInputClass {
 
         //glfw: whenever the mouse scroll wheel scrolls, this callback is called
         //----------------------------------------------------------------------
-        void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+        void ProcessMouseScrollWindowInput(GLFWwindow* window, double xoffset, double yoffset)
         {
             CameraInstance.ProcessMouseScroll(yoffset);
         }
