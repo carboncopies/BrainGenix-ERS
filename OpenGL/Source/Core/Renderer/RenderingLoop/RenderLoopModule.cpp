@@ -20,14 +20,17 @@
 
 
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
-void processInput(GLFWwindow *window);
+
+
+void MousePosCallback(GLFWwindow* Window, double xpos, double ypos);
 
 // settings
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
+
+
+
+
 
 // camera
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
@@ -55,7 +58,7 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
 
 
-    // set up vertex data (and buffer(s)) and configure vertex attributes
+
     // ------------------------------------------------------------------
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
@@ -158,7 +161,13 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
     // Window Input Setup
     WindowInputClass WindowInputManager(SCR_WIDTH, SCR_HEIGHT, Window, camera);
 
+    // Set Window Callbacks
+    //glfwSetFramebufferSizeCallback(Window, framebuffer_size_callback);
+    glfwSetCursorPosCallback(Window, WindowInputManager.ProcessMouseButtonWindowInput);
+    //glfwSetScrollCallback(Window, scroll_callback);
 
+    // tell GLFW to capture our mouse
+    //glfwSetInputMode(Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 
 
@@ -194,7 +203,7 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
         if (Window != nullptr) {
 
             // Update Window User Input //
-            WindowInputManager.ProcessWindowInput(1.0);
+            WindowInputManager.ProcessKeyboardWindowInput(1.0);
 
             // Check For Shutdown Events //
             SystemShutdownInvoked = glfwWindowShouldClose(Window);
@@ -265,3 +274,6 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
 
 
+void MousePosCallback(GLFWwindow* Window, double xpos, double ypos){
+    std::cout << "thing";
+}
