@@ -31,13 +31,13 @@ const unsigned int SCR_HEIGHT = 600;
 
 // camera
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
-float lastX = SCR_WIDTH / 2.0f;
-float lastY = SCR_HEIGHT / 2.0f;
-bool firstMouse = true;
+
 
 // timing
 float deltaTime = 0.0f;	// time between current frame and last frame
 float lastFrame = 0.0f;
+
+
 
 
 void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
@@ -57,7 +57,7 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
-// set up vertex data (and buffer(s)) and configure vertex attributes
+    // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
     float vertices[] = {
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -152,10 +152,11 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
     glEnableVertexAttribArray(1);
 
 
-
+    // Texture Load
     unsigned int texture = LoadTexture("container.jpg", Logger);
 
-
+    // Window Input Setup
+    WindowInputClass WindowInputManager(SCR_WIDTH, SCR_HEIGHT, Window, camera);
 
 
 
@@ -261,31 +262,6 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 }
 
 
-//glfw: whenever the mouse moves, this callback is called
-//-------------------------------------------------------
-void mouse_callback(GLFWwindow* window, double xpos, double ypos)
-{
-    if (firstMouse)
-    {
-        lastX = xpos;
-        lastY = ypos;
-        firstMouse = false;
-    }
-
-    float xoffset = xpos - lastX;
-    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
-
-    lastX = xpos;
-    lastY = ypos;
-
-    camera.ProcessMouseMovement(xoffset, yoffset);
-}
 
 
 
-//glfw: whenever the mouse scroll wheel scrolls, this callback is called
-//----------------------------------------------------------------------
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
-{
-    camera.ProcessMouseScroll(yoffset);
-}
