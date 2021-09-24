@@ -79,7 +79,7 @@ public:
     {
 
         std::cout << std::setprecision(2) << deltaTime;
-        std::cout << direction << "\n";
+        std::cout << "|" << direction << "\n";
 
         float velocity = MovementSpeed * deltaTime;
         if (direction == "FORWARD")
