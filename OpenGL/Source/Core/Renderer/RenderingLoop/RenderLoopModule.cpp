@@ -30,11 +30,12 @@ Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 
 
 // timing
-float deltaTime = 0.0f;	// time between current frame and last frame
-float lastFrame = 0.0f;
+float DeltaTime = 0.0f;	// time between current frame and last frame
+float LastFrame = 0.0f;
 
 // light pos
 glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+
 
 
 
@@ -46,6 +47,9 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
     // Enable Depth-Based Draw Ordering
     glEnable(GL_DEPTH_TEST); 
+
+    // Window Input Setup
+    WindowInputClass WindowInputManager(SCR_WIDTH, SCR_HEIGHT, Window, camera);
 
 
     // build and compile our shader program
@@ -133,8 +137,7 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
     // Texture Load
     //unsigned int texture = LoadTexture("container.jpg", Logger);
 
-    // Window Input Setup
-    WindowInputClass WindowInputManager(SCR_WIDTH, SCR_HEIGHT, Window, camera);
+
 
     // Set Window Callbacks
     //glfwSetFramebufferSizeCallback(Window, framebuffer_size_callback);
@@ -149,12 +152,18 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
 
     // Main Render Loop //
-    while(!SystemShutdownInvoked)
-    {
+    while(!SystemShutdownInvoked) {
+
+        // Update DeltaTime
+        float CurrentFrame = glfwGetTime();
+        DeltaTime = CurrentFrame - LastFrame;
+        LastFrame = CurrentFrame;
+
 
         // Clear Screen
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+
 
 
         // Set Drawing Mode
@@ -212,7 +221,14 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
         if (Window != nullptr) {
 
             // Update Window User Input //
-            WindowInputManager.ProcessKeyboardWindowInput(1.0);
+            if (glfwGetKey(Window, GLFW_KEY_W) == GLFW_PRESS) 
+                camera.ProcessKeyboard(FORWARD, DeltaTime);
+            if (glfwGetKey(Window, GLFW_KEY_S) == GLFW_PRESS)
+                camera.ProcessKeyboard(BACKWARD, DeltaTime);
+            if (glfwGetKey(Window, GLFW_KEY_A) == GLFW_PRESS)
+                camera.ProcessKeyboard(LEFT, DeltaTime);
+            if (glfwGetKey(Window, GLFW_KEY_D) == GLFW_PRESS)
+                camera.ProcessKeyboard(RIGHT, DeltaTime);
 
             // Check For Shutdown Events //
             SystemShutdownInvoked = glfwWindowShouldClose(Window);
