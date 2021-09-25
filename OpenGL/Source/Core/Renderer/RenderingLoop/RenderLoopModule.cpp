@@ -12,7 +12,7 @@
 
 #include "Core/AssetLoader/TextureLoaderModule.cpp"
 #include "Core/Renderer/Camera/Noclip/NoclipCameraModule.h"
-#include "Core/AssetLoader/Mesh.h"
+#include "Core/AssetLoader/Model.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -79,9 +79,9 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
     // build and compile our shader zprogram
     // ------------------------------------
-    Shader lightingShader(Logger, "Shaders/colors.vs", "Shaders/colors.fs");
+    Shader ourShader(Logger, "Shaders/Model.vs", "Shaders/Model.fs");
     
-    Model ourModel(FileSystem::getPath("Assets/Models/TMR/skTomRiddleMesh/skTomRiddleMesh.obj"));
+    Model ourModel(Logger, "Assets/backpack.obj");
 
 
 
@@ -134,8 +134,8 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
         ourShader.use();
 
         // view/projection transformations
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        glm::mat4 view = camera.GetViewMatrix();
+        glm::mat4 projection = glm::perspective(glm::radians(CameraInstance.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        glm::mat4 view = CameraInstance.GetViewMatrix();
         ourShader.setMat4("projection", projection);
         ourShader.setMat4("view", view);
 
@@ -144,7 +144,7 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
         model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
         ourShader.setMat4("model", model);
-        ourModel.Draw(ourShader);
+        ourModel.Render(ourShader);
 
 
         ////-------- END RENDERING CODE --------////
