@@ -3,7 +3,7 @@
 //======================================================================//
 
 /*
-    Description: This file is responsible for model importing.
+    Description: This file is responsible for holding mesh information.
     Additonal Notes: None
     Date Created: 2021-09-22
 */  
