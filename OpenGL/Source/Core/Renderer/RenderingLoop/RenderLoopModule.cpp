@@ -18,6 +18,10 @@
 #include <glm/gtc/type_ptr.hpp>
 
 
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
 
 // settings
 unsigned int SCR_WIDTH = 800;
@@ -216,7 +220,7 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
 
         // Clear Screen
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
 
@@ -289,7 +293,7 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
         lightingShader.setVec3("spotLight.direction", CameraInstance.Front);
         lightingShader.setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
                                                 //  RED   GREEN BLUE
-        lightingShader.setVec3("spotLight.diffuse", 2.0f, 0.0f, 2.0f);
+        lightingShader.setVec3("spotLight.diffuse", 2.0f, 2.0f, 2.0f);
         lightingShader.setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
         lightingShader.setFloat("spotLight.constant", 1.0f);
         lightingShader.setFloat("spotLight.linear", 0.09);
@@ -322,7 +326,7 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, cubePositions[i]);
 
-            float angle = 20.0f * i;                
+            float angle = 3.0f;                
             model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
             lightingShader.setMat4("model", model);
             glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -338,7 +342,7 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
          for (unsigned int i = 0; i < 4; i++)
          {
              model = glm::mat4(1.0f);
-             model = glm::translate(model, pointLightPositions[i]);
+             model = glm::translate(model, glm::vec3(sin(glfwGetTime()), cos(glfwGetTime()), 3.0f));//pointLightPositions[i]);
              model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
              lightCubeShader.setMat4("model", model);
              glDrawArrays(GL_TRIANGLES, 0, 36);
