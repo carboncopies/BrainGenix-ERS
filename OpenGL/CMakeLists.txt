@@ -24,6 +24,8 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
 configure_file("${SRC_DIR}/Config.yaml" "${BIN_DIR}/Config.yaml" COPYONLY)
 file(COPY "${SRC_DIR}/Shaders" DESTINATION "${BIN_DIR}")
+file(COPY "${SRC_DIR}/Assets" DESTINATION "${BIN_DIR}")
+
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${SRC_DIR}")
 
@@ -47,10 +49,14 @@ set(GLM_DIR "${LIB_DIR}/glm")
 add_subdirectory("${GLM_DIR}")
 target_link_libraries(${PROJECT_NAME} "glm" "${GLM_LIBRARIES}")
 
+## LINK STB ##
+set(STB_DIR "${LIB_DIR}/stb")
+include_directories(${STB_DIR})
+
 ## LINK ASSIMP ##
-# set(ASSIMP_DIR "${LIB_DIR}/assimp")
-# add_subdirectory("${ASSIMP_DIR}")
-# target_link_libraries(${PROJECT_NAME} "assimp" "${ASSIMP_LIBRARIES}")
+set(ASSIMP_DIR "${LIB_DIR}/assimp")
+add_subdirectory("${ASSIMP_DIR}")
+target_link_libraries(${PROJECT_NAME} "assimp" "${ASSIMP_LIBRARIES}")
 
 
 
