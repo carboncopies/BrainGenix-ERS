@@ -288,7 +288,8 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
         lightingShader.setVec3("spotLight.position", CameraInstance.Position);
         lightingShader.setVec3("spotLight.direction", CameraInstance.Front);
         lightingShader.setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
-        lightingShader.setVec3("spotLight.diffuse", 1.0f, 1.0f, 1.0f);
+                                                //  RED   GREEN BLUE
+        lightingShader.setVec3("spotLight.diffuse", 2.0f, 0.0f, 2.0f);
         lightingShader.setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
         lightingShader.setFloat("spotLight.constant", 1.0f);
         lightingShader.setFloat("spotLight.linear", 0.09);
@@ -320,10 +321,10 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
             // calculate the model matrix for each object and pass it to shader before drawing
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, cubePositions[i]);
-            float angle = 20.0f * i;
+
+            float angle = 20.0f * i;                
             model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
             lightingShader.setMat4("model", model);
-
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
 
