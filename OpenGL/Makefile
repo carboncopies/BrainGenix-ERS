@@ -94,7 +94,7 @@ install/fast: preinstall/fast
 
 # Special rule for the target list_install_components
 list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\" \"dev\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\" \"assimp-bin\" \"assimp-dev\" \"dev\" \"libassimp5.0.0-dev\""
 .PHONY : list_install_components
 
 # Special rule for the target list_install_components
@@ -689,6 +689,58 @@ joysticks/fast:
 	$(MAKE) -f Libraries/glfw/tests/CMakeFiles/joysticks.dir/build.make Libraries/glfw/tests/CMakeFiles/joysticks.dir/build
 .PHONY : joysticks/fast
 
+#=============================================================================
+# Target rules for targets named IrrXML
+
+# Build rule for target.
+IrrXML: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 IrrXML
+.PHONY : IrrXML
+
+# fast build rule for target.
+IrrXML/fast:
+	$(MAKE) -f Libraries/assimp/contrib/irrXML/CMakeFiles/IrrXML.dir/build.make Libraries/assimp/contrib/irrXML/CMakeFiles/IrrXML.dir/build
+.PHONY : IrrXML/fast
+
+#=============================================================================
+# Target rules for targets named assimp
+
+# Build rule for target.
+assimp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 assimp
+.PHONY : assimp
+
+# fast build rule for target.
+assimp/fast:
+	$(MAKE) -f Libraries/assimp/code/CMakeFiles/assimp.dir/build.make Libraries/assimp/code/CMakeFiles/assimp.dir/build
+.PHONY : assimp/fast
+
+#=============================================================================
+# Target rules for targets named assimp_cmd
+
+# Build rule for target.
+assimp_cmd: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 assimp_cmd
+.PHONY : assimp_cmd
+
+# fast build rule for target.
+assimp_cmd/fast:
+	$(MAKE) -f Libraries/assimp/tools/assimp_cmd/CMakeFiles/assimp_cmd.dir/build.make Libraries/assimp/tools/assimp_cmd/CMakeFiles/assimp_cmd.dir/build
+.PHONY : assimp_cmd/fast
+
+#=============================================================================
+# Target rules for targets named unit
+
+# Build rule for target.
+unit: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 unit
+.PHONY : unit
+
+# fast build rule for target.
+unit/fast:
+	$(MAKE) -f Libraries/assimp/test/CMakeFiles/unit.dir/build.make Libraries/assimp/test/CMakeFiles/unit.dir/build
+.PHONY : unit/fast
+
 Source/Main.o: Source/Main.cpp.o
 
 .PHONY : Source/Main.o
@@ -769,6 +821,10 @@ help:
 	@echo "... icon"
 	@echo "... events"
 	@echo "... joysticks"
+	@echo "... IrrXML"
+	@echo "... assimp"
+	@echo "... assimp_cmd"
+	@echo "... unit"
 	@echo "... Source/Main.o"
 	@echo "... Source/Main.i"
 	@echo "... Source/Main.s"

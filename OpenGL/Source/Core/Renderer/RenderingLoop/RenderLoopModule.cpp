@@ -24,6 +24,10 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
+// #include "Core/ThirdParty/imgui/imgui.h"
+// #include "Core/ThirdParty/imgui/backends/imgui_impl_glfw.h"
+// #include "Core/ThirdParty/imgui/backends/imgui_impl_opengl3.h"
+
 
 // settings
 unsigned int SCR_WIDTH = 800;
@@ -66,6 +70,23 @@ void MainRenderLoop(GLFWwindow* Window, LoggerClass Logger) {
 
     // Enable Depth-Based Draw Ordering
     glEnable(GL_DEPTH_TEST); 
+
+
+    // // Setup Dear ImGui context
+    // IMGUI_CHECKVERSION();
+    // ImGui::CreateContext();
+    // ImGuiIO& io = ImGui::GetIO(); (void)io;
+    // //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+    // //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+
+    // // Setup Dear ImGui style
+    // ImGui::StyleColorsDark();
+    // //ImGui::StyleColorsClassic();
+
+    // // Setup Platform/Renderer backends
+    // ImGui_ImplGlfw_InitForOpenGL(Window, true);
+    // ImGui_ImplOpenGL3_Init(glsl_version);
+
 
 
 

@@ -25,6 +25,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "Libraries/assimp"
   "Libraries/assimp/code"
   "Libraries/assimp/."
+  "Libraries/stb"
   "Libraries/assimp/tools/assimp_cmd"
   "Libraries/assimp/code/../include"
   )

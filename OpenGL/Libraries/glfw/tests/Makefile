@@ -58,7 +58,7 @@ CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/OpenGL
 
 # Special rule for the target list_install_components
 list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\" \"dev\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\" \"assimp-bin\" \"assimp-dev\" \"dev\" \"libassimp5.0.0-dev\""
 .PHONY : list_install_components
 
 # Special rule for the target list_install_components

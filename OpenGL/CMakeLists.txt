@@ -58,5 +58,8 @@ set(ASSIMP_DIR "${LIB_DIR}/assimp")
 add_subdirectory("${ASSIMP_DIR}")
 target_link_libraries(${PROJECT_NAME} "assimp" "${ASSIMP_LIBRARIES}")
 
+## LINK IMGUI ##
+set(IMGUI_DIR "${LIB_DIR}/imgui")
+include_directories(${IMGUI_DIR})
 
 

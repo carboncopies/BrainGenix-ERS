@@ -1,1 +1,1 @@
-/usr/bin/c++     CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o  -o Dist/BrainGenix-ERS  Libraries/yaml-cpp/libyaml-cpp.a Libraries/glfw/src/libglfw3.a /usr/lib/x86_64-linux-gnu/librt.so -lm -ldl /usr/lib/x86_64-linux-gnu/libX11.so -lpthread 
+/usr/bin/c++     CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o  -o Dist/BrainGenix-ERS  Libraries/yaml-cpp/libyaml-cpp.a Libraries/glfw/src/libglfw3.a lib/libassimp.a -lm -ldl /usr/lib/x86_64-linux-gnu/libX11.so -lpthread /usr/lib/x86_64-linux-gnu/libz.so /usr/lib/x86_64-linux-gnu/librt.so lib/libIrrXML.a 

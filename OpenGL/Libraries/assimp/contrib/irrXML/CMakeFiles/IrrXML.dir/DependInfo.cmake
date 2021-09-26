@@ -20,6 +20,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "Libraries/assimp"
   "Libraries/assimp/code"
   "Libraries/assimp/."
+  "Libraries/stb"
   )
 
 # Targets to which this target links.

@@ -81,9 +81,12 @@ Dist/BrainGenix-ERS: CMakeFiles/BrainGenix-ERS.dir/Source/Main.cpp.o
 Dist/BrainGenix-ERS: CMakeFiles/BrainGenix-ERS.dir/build.make
 Dist/BrainGenix-ERS: Libraries/yaml-cpp/libyaml-cpp.a
 Dist/BrainGenix-ERS: Libraries/glfw/src/libglfw3.a
-Dist/BrainGenix-ERS: /usr/lib/x86_64-linux-gnu/librt.so
+Dist/BrainGenix-ERS: lib/libassimp.a
 Dist/BrainGenix-ERS: /usr/lib/x86_64-linux-gnu/libm.so
 Dist/BrainGenix-ERS: /usr/lib/x86_64-linux-gnu/libX11.so
+Dist/BrainGenix-ERS: /usr/lib/x86_64-linux-gnu/libz.so
+Dist/BrainGenix-ERS: /usr/lib/x86_64-linux-gnu/librt.so
+Dist/BrainGenix-ERS: lib/libIrrXML.a
 Dist/BrainGenix-ERS: CMakeFiles/BrainGenix-ERS.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/OpenGL/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Dist/BrainGenix-ERS"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/BrainGenix-ERS.dir/link.txt --verbose=$(VERBOSE)
