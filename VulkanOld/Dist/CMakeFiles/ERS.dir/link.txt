@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/ERS.dir/System/main.cpp.o  -o ../System/ERS   -L/usr/lib/gcc/x86_64-linux-gnu/9  System/ExternalLibraries/yaml-cpp-yaml-cpp-0.6.3/libyaml-cpp.a System/ExternalLibraries/glfw-3.3.4/src/libglfw3.a -lvulkan /usr/lib/x86_64-linux-gnu/librt.so -lm -ldl /usr/lib/x86_64-linux-gnu/libX11.so -lpthread 
