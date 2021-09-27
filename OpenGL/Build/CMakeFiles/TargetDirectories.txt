@@ -1,2 +1,0 @@
-/home/tliao/Documents/BrainGenix-ERS/OpenGL/Build/CMakeFiles/rebuild_cache.dir
-/home/tliao/Documents/BrainGenix-ERS/OpenGL/Build/CMakeFiles/edit_cache.dir
