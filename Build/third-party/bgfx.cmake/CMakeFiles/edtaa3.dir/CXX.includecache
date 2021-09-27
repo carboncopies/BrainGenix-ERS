@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/edtaa3/edtaa3func.cpp
+math.h
+-
+

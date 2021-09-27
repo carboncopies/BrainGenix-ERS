@@ -1,2 +1,0 @@
-/usr/bin/ar qc libbimg.a  CMakeFiles/bimg.dir/src/image.cpp.o CMakeFiles/bimg.dir/src/image_cubemap_filter.cpp.o CMakeFiles/bimg.dir/src/image_decode.cpp.o CMakeFiles/bimg.dir/src/image_encode.cpp.o CMakeFiles/bimg.dir/src/image_gnf.cpp.o
-/usr/bin/ranlib libbimg.a

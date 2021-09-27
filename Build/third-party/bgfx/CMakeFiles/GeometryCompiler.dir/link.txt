@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/GeometryCompiler.dir/Src/RenderTools/GeometryCompiler.cpp.o CMakeFiles/GeometryCompiler.dir/generated/bounds.cpp.o CMakeFiles/GeometryCompiler.dir/generated/vertexlayout.cpp.o  -o GeometryCompiler  External/bx/libbx.a External/meshoptimizer/libmeshoptimizer.a -lpthread -ldl -lrt 

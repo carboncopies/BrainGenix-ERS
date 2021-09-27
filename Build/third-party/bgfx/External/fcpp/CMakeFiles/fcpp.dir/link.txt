@@ -1,2 +1,0 @@
-/usr/bin/ar qc libfcpp.a  CMakeFiles/fcpp.dir/cpp1.c.o CMakeFiles/fcpp.dir/cpp2.c.o CMakeFiles/fcpp.dir/cpp3.c.o CMakeFiles/fcpp.dir/cpp4.c.o CMakeFiles/fcpp.dir/cpp5.c.o CMakeFiles/fcpp.dir/cpp6.c.o
-/usr/bin/ranlib libfcpp.a

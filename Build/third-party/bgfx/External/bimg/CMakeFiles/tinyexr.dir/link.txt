@@ -1,2 +1,0 @@
-/usr/bin/ar qc libtinyexr.a  CMakeFiles/tinyexr.dir/3rdparty/tinyexr/deps/miniz/miniz.c.o
-/usr/bin/ranlib libtinyexr.a

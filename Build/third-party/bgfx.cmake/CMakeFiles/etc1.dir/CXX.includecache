@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/etc1/etc1.cpp
+etc1.h
+/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/etc1/etc1.h
+cstring
+-
+
+/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/etc1/etc1.h
+

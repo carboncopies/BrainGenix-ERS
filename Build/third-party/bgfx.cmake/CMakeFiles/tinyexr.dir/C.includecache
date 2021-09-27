@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/tinyexr/deps/miniz/miniz.c
+miniz.h
+/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/tinyexr/deps/miniz/miniz.h
+sys/stat.h
+-
+sys/utime.h
+-
+sys/utime.h
+-
+sys/utime.h
+-
+utime.h
+-
+utime.h
+-
+utime.h
+-
+
+/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/tinyexr/deps/miniz/miniz.h
+stddef.h
+-
+time.h
+-
+assert.h
+-
+stdint.h
+-
+stdlib.h
+-
+string.h
+-
+stdio.h
+-
+

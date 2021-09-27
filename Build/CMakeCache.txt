@@ -33,7 +33,13 @@ BGFX_CONFIG_RENDERER_WEBGPU:BOOL=OFF
 BGFX_CUSTOM_TARGETS:BOOL=ON
 
 //Location of bgfx.
-BGFX_DIR:STRING=/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx/External/bgfx
+BGFX_DIR:STRING=/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx
+
+//Create installation target.
+BGFX_INSTALL:BOOL=ON
+
+//Install examples and their runtimes.
+BGFX_INSTALL_EXAMPLES:BOOL=OFF
 
 //Linking type for library
 BGFX_LIBRARY_TYPE:STRING=STATIC
@@ -45,13 +51,13 @@ BGFX_OPENGLES_VERSION:STRING=
 BGFX_OPENGL_VERSION:STRING=
 
 //Location of bimg.
-BIMG_DIR:STRING=/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx/External/bimg
+BIMG_DIR:STRING=/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg
 
 //Amalgamated bx build for faster compilation
 BX_AMALGAMATED:BOOL=OFF
 
 //Location of bx.
-BX_DIR:STRING=/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx/External/bx
+BX_DIR:STRING=/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx
 
 //Value Computed by CMake
 BrainGenix-ERS_BINARY_DIR:STATIC=/home/tliao/Documents/BrainGenix-ERS/Build
@@ -320,6 +326,9 @@ Fontconfig_INCLUDE_DIR:PATH=/usr/include
 //Path to a library.
 Fontconfig_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libfontconfig.so
 
+//Git command line client
+GIT_EXECUTABLE:FILEPATH=/usr/bin/git
+
 //Path to a file.
 OPENGL_EGL_INCLUDE_DIR:PATH=/usr/include
 
@@ -346,13 +355,6 @@ OPENGL_xmesa_INCLUDE_DIR:PATH=OPENGL_xmesa_INCLUDE_DIR-NOTFOUND
 
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
-
-//Dependencies for the target
-RenderCore_LIB_DEPENDS:STATIC=general;bx;general;bimg;general;/usr/lib/x86_64-linux-gnu/libSM.so;general;/usr/lib/x86_64-linux-gnu/libICE.so;general;/usr/lib/x86_64-linux-gnu/libX11.so;general;/usr/lib/x86_64-linux-gnu/libXext.so;general;/usr/lib/x86_64-linux-gnu/libOpenGL.so;general;/usr/lib/x86_64-linux-gnu/libGLX.so;general;/usr/lib/x86_64-linux-gnu/libGLU.so;
-
-RenderDir:STRING=/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx
-
-RenderExampleDir:STRING=/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx/Example
 
 //Path to a file.
 X11_ICE_INCLUDE_PATH:PATH=/usr/include
@@ -535,10 +537,13 @@ X11_xkbfile_INCLUDE_PATH:PATH=/usr/include
 X11_xkbfile_LIB:FILEPATH=/usr/lib/x86_64-linux-gnu/libxkbfile.so
 
 //Value Computed by CMake
-bgfx_BINARY_DIR:STATIC=/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx
+bgfx_BINARY_DIR:STATIC=/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake
+
+//Dependencies for the target
+bgfx_LIB_DEPENDS:STATIC=general;bx;general;bimg;general;/usr/lib/x86_64-linux-gnu/libSM.so;general;/usr/lib/x86_64-linux-gnu/libICE.so;general;/usr/lib/x86_64-linux-gnu/libX11.so;general;/usr/lib/x86_64-linux-gnu/libXext.so;general;/usr/lib/x86_64-linux-gnu/libOpenGL.so;general;/usr/lib/x86_64-linux-gnu/libGLX.so;general;/usr/lib/x86_64-linux-gnu/libGLU.so;
 
 //Value Computed by CMake
-bgfx_SOURCE_DIR:STATIC=/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx
+bgfx_SOURCE_DIR:STATIC=/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake
 
 //Dependencies for the target
 bimg_LIB_DEPENDS:STATIC=general;bx;general;astc-codec;general;astc;general;edtaa3;general;etc1;general;etc2;general;iqa;general;squish;general;nvtt;general;pvrtc;general;tinyexr;
@@ -557,9 +562,6 @@ example-common_LIB_DEPENDS:STATIC=general;bgfx;general;bx;general;bimg;general;d
 
 //Dependencies for the target
 glsl-optimizer_LIB_DEPENDS:STATIC=general;glcpp;general;mesa;
-
-//Dependencies for the target
-glslang_LIB_DEPENDS:STATIC=general;spirv-tools;
 
 //Dependencies for the target
 nvtt_LIB_DEPENDS:STATIC=general;bx;
@@ -729,7 +731,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=15
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -790,6 +792,8 @@ FREETYPE_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 Fontconfig_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Fontconfig_LIBRARY
 Fontconfig_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GIT_EXECUTABLE
+GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OPENGL_EGL_INCLUDE_DIR
 OPENGL_EGL_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OPENGL_GLX_INCLUDE_DIR
