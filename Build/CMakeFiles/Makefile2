@@ -53,6 +53,7 @@ CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/Build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/test.dir/all
 all: third-party/bgfx.cmake/all
 
 .PHONY : all
@@ -63,6 +64,7 @@ preinstall: third-party/bgfx.cmake/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/test.dir/clean
 clean: third-party/bgfx.cmake/clean
 
 .PHONY : clean
@@ -182,6 +184,33 @@ third-party/bgfx.cmake/clean: third-party/bgfx.cmake/CMakeFiles/example-23-vecto
 .PHONY : third-party/bgfx.cmake/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/test.dir
+
+# All Build rule for target.
+CMakeFiles/test.dir/all:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/depend
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num= "Built target test"
+.PHONY : CMakeFiles/test.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
+.PHONY : CMakeFiles/test.dir/rule
+
+# Convenience name for target.
+test: CMakeFiles/test.dir/rule
+
+.PHONY : test
+
+# clean rule for target.
+CMakeFiles/test.dir/clean:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/clean
+.PHONY : CMakeFiles/test.dir/clean
+
+#=============================================================================
 # Target rules for target third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir
 
 # All Build rule for target.
@@ -294,7 +323,7 @@ third-party/bgfx.cmake/CMakeFiles/example-35-dynamic.dir/all: third-party/bgfx.c
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/example-35-dynamic.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/example-35-dynamic.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-35-dynamic.dir/rule
@@ -331,12 +360,12 @@ third-party/bgfx.cmake/CMakeFiles/example-34-mvs.dir/all: third-party/bgfx.cmake
 third-party/bgfx.cmake/CMakeFiles/example-34-mvs.dir/all: third-party/bgfx.cmake/CMakeFiles/etc1.dir/all
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/example-34-mvs.dir/build.make third-party/bgfx.cmake/CMakeFiles/example-34-mvs.dir/depend
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/example-34-mvs.dir/build.make third-party/bgfx.cmake/CMakeFiles/example-34-mvs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num= "Built target example-34-mvs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=37 "Built target example-34-mvs"
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-34-mvs.dir/all
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/example-34-mvs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 21
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/example-34-mvs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-34-mvs.dir/rule
@@ -374,12 +403,12 @@ third-party/bgfx.cmake/CMakeFiles/example-33-pom.dir/all: third-party/bgfx.cmake
 third-party/bgfx.cmake/CMakeFiles/example-33-pom.dir/all: third-party/bgfx.cmake/CMakeFiles/etc1.dir/all
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/example-33-pom.dir/build.make third-party/bgfx.cmake/CMakeFiles/example-33-pom.dir/depend
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/example-33-pom.dir/build.make third-party/bgfx.cmake/CMakeFiles/example-33-pom.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=37 "Built target example-33-pom"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num= "Built target example-33-pom"
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-33-pom.dir/all
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/example-33-pom.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 64
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 63
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/example-33-pom.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-33-pom.dir/rule
@@ -593,7 +622,7 @@ third-party/bgfx.cmake/CMakeFiles/example-26-occlusion.dir/all: third-party/bgfx
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/example-26-occlusion.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/example-26-occlusion.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-26-occlusion.dir/rule
@@ -634,7 +663,7 @@ third-party/bgfx.cmake/CMakeFiles/example-common.dir/all: third-party/bgfx.cmake
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/example-common.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/example-common.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-common.dir/rule
@@ -657,7 +686,7 @@ third-party/bgfx.cmake/CMakeFiles/glsl-optimizer.dir/all: third-party/bgfx.cmake
 third-party/bgfx.cmake/CMakeFiles/glsl-optimizer.dir/all: third-party/bgfx.cmake/CMakeFiles/glcpp.dir/all
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/glsl-optimizer.dir/build.make third-party/bgfx.cmake/CMakeFiles/glsl-optimizer.dir/depend
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/glsl-optimizer.dir/build.make third-party/bgfx.cmake/CMakeFiles/glsl-optimizer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=53,54,55,56,57,58,59,60,61,62 "Built target glsl-optimizer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=52,53,54,55,56,57,58,59,60,61,62 "Built target glsl-optimizer"
 .PHONY : third-party/bgfx.cmake/CMakeFiles/glsl-optimizer.dir/all
 
 # Build rule for subdir invocation for target.
@@ -846,7 +875,7 @@ third-party/bgfx.cmake/CMakeFiles/geometryc.dir/all: third-party/bgfx.cmake/CMak
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/geometryc.dir/rule
@@ -868,12 +897,12 @@ third-party/bgfx.cmake/CMakeFiles/geometryc.dir/clean:
 third-party/bgfx.cmake/CMakeFiles/meshoptimizer.dir/all:
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/meshoptimizer.dir/build.make third-party/bgfx.cmake/CMakeFiles/meshoptimizer.dir/depend
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/meshoptimizer.dir/build.make third-party/bgfx.cmake/CMakeFiles/meshoptimizer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=70,71 "Built target meshoptimizer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=70 "Built target meshoptimizer"
 .PHONY : third-party/bgfx.cmake/CMakeFiles/meshoptimizer.dir/all
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/meshoptimizer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/meshoptimizer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/meshoptimizer.dir/rule
@@ -969,12 +998,12 @@ third-party/bgfx.cmake/CMakeFiles/example-24-nbody.dir/clean:
 third-party/bgfx.cmake/CMakeFiles/spirv-tools.dir/all:
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/spirv-tools.dir/build.make third-party/bgfx.cmake/CMakeFiles/spirv-tools.dir/depend
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/spirv-tools.dir/build.make third-party/bgfx.cmake/CMakeFiles/spirv-tools.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98 "Built target spirv-tools"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98 "Built target spirv-tools"
 .PHONY : third-party/bgfx.cmake/CMakeFiles/spirv-tools.dir/all
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/spirv-tools.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 23
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/spirv-tools.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/spirv-tools.dir/rule
@@ -1019,7 +1048,7 @@ third-party/bgfx.cmake/CMakeFiles/shaderc.dir/all: third-party/bgfx.cmake/CMakeF
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 55
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 56
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/shaderc.dir/rule
@@ -1041,12 +1070,12 @@ third-party/bgfx.cmake/CMakeFiles/shaderc.dir/clean:
 third-party/bgfx.cmake/CMakeFiles/nvtt.dir/all: third-party/bgfx.cmake/CMakeFiles/bx.dir/all
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/nvtt.dir/build.make third-party/bgfx.cmake/CMakeFiles/nvtt.dir/depend
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/nvtt.dir/build.make third-party/bgfx.cmake/CMakeFiles/nvtt.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=72 "Built target nvtt"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=71,72 "Built target nvtt"
 .PHONY : third-party/bgfx.cmake/CMakeFiles/nvtt.dir/all
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/nvtt.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/nvtt.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/nvtt.dir/rule
@@ -1068,12 +1097,12 @@ third-party/bgfx.cmake/CMakeFiles/nvtt.dir/clean:
 third-party/bgfx.cmake/CMakeFiles/spirv-cross.dir/all:
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/spirv-cross.dir/build.make third-party/bgfx.cmake/CMakeFiles/spirv-cross.dir/depend
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/spirv-cross.dir/build.make third-party/bgfx.cmake/CMakeFiles/spirv-cross.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=75,76 "Built target spirv-cross"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=75 "Built target spirv-cross"
 .PHONY : third-party/bgfx.cmake/CMakeFiles/spirv-cross.dir/all
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/spirv-cross.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/spirv-cross.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/spirv-cross.dir/rule
@@ -1115,7 +1144,7 @@ third-party/bgfx.cmake/CMakeFiles/example-20-nanovg.dir/all: third-party/bgfx.cm
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/example-20-nanovg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 21
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/example-20-nanovg.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-20-nanovg.dir/rule
@@ -1422,12 +1451,12 @@ third-party/bgfx.cmake/CMakeFiles/example-36-sky.dir/clean:
 third-party/bgfx.cmake/CMakeFiles/iqa.dir/all:
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/iqa.dir/build.make third-party/bgfx.cmake/CMakeFiles/iqa.dir/depend
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/iqa.dir/build.make third-party/bgfx.cmake/CMakeFiles/iqa.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num= "Built target iqa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=68 "Built target iqa"
 .PHONY : third-party/bgfx.cmake/CMakeFiles/iqa.dir/all
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/iqa.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/iqa.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/iqa.dir/rule
@@ -1469,7 +1498,7 @@ third-party/bgfx.cmake/CMakeFiles/texturev.dir/all: third-party/bgfx.cmake/CMake
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/texturev.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/texturev.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/texturev.dir/rule
@@ -1491,12 +1520,12 @@ third-party/bgfx.cmake/CMakeFiles/texturev.dir/clean:
 third-party/bgfx.cmake/CMakeFiles/glslang.dir/all:
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/glslang.dir/build.make third-party/bgfx.cmake/CMakeFiles/glslang.dir/depend
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/glslang.dir/build.make third-party/bgfx.cmake/CMakeFiles/glslang.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=63,64,65,66,67,68 "Built target glslang"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=63,64,65,66,67 "Built target glslang"
 .PHONY : third-party/bgfx.cmake/CMakeFiles/glslang.dir/all
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/glslang.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/glslang.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/glslang.dir/rule
@@ -1754,7 +1783,7 @@ third-party/bgfx.cmake/CMakeFiles/bimg.dir/all: third-party/bgfx.cmake/CMakeFile
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/bimg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/bimg.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/bimg.dir/rule
@@ -1792,7 +1821,7 @@ third-party/bgfx.cmake/CMakeFiles/bgfx.dir/all: third-party/bgfx.cmake/CMakeFile
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/bgfx.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 16
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/bgfx.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/bgfx.dir/rule
@@ -1861,7 +1890,7 @@ third-party/bgfx.cmake/CMakeFiles/example-00-helloworld.dir/all: third-party/bgf
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/example-00-helloworld.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/example-00-helloworld.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-00-helloworld.dir/rule
@@ -1926,12 +1955,12 @@ third-party/bgfx.cmake/CMakeFiles/example-13-stencil.dir/clean:
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/all:
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/glcpp.dir/build.make third-party/bgfx.cmake/CMakeFiles/glcpp.dir/depend
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/glcpp.dir/build.make third-party/bgfx.cmake/CMakeFiles/glcpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=52 "Built target glcpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num= "Built target glcpp"
 .PHONY : third-party/bgfx.cmake/CMakeFiles/glcpp.dir/all
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/glcpp.dir/rule
@@ -2065,7 +2094,7 @@ third-party/bgfx.cmake/CMakeFiles/texturec.dir/all: third-party/bgfx.cmake/CMake
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/texturec.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/texturec.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/texturec.dir/rule
@@ -2172,12 +2201,12 @@ third-party/bgfx.cmake/CMakeFiles/example-10-font.dir/all: third-party/bgfx.cmak
 third-party/bgfx.cmake/CMakeFiles/example-10-font.dir/all: third-party/bgfx.cmake/CMakeFiles/etc1.dir/all
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/example-10-font.dir/build.make third-party/bgfx.cmake/CMakeFiles/example-10-font.dir/depend
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/example-10-font.dir/build.make third-party/bgfx.cmake/CMakeFiles/example-10-font.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num= "Built target example-10-font"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=17 "Built target example-10-font"
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-10-font.dir/all
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/example-10-font.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 21
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/example-10-font.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-10-font.dir/rule
@@ -2246,7 +2275,7 @@ third-party/bgfx.cmake/CMakeFiles/example-11-fontsdf.dir/all: third-party/bgfx.c
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/example-11-fontsdf.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/example-11-fontsdf.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-11-fontsdf.dir/rule
@@ -2456,12 +2485,12 @@ third-party/bgfx.cmake/CMakeFiles/example-09-hdr.dir/all: third-party/bgfx.cmake
 third-party/bgfx.cmake/CMakeFiles/example-09-hdr.dir/all: third-party/bgfx.cmake/CMakeFiles/etc1.dir/all
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/example-09-hdr.dir/build.make third-party/bgfx.cmake/CMakeFiles/example-09-hdr.dir/depend
 	$(MAKE) -f third-party/bgfx.cmake/CMakeFiles/example-09-hdr.dir/build.make third-party/bgfx.cmake/CMakeFiles/example-09-hdr.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=16,17 "Built target example-09-hdr"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=16 "Built target example-09-hdr"
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-09-hdr.dir/all
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/example-09-hdr.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 65
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 64
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/example-09-hdr.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-09-hdr.dir/rule
@@ -2546,7 +2575,7 @@ third-party/bgfx.cmake/CMakeFiles/example-32-particles.dir/all: third-party/bgfx
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/example-32-particles.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/example-32-particles.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-32-particles.dir/rule
@@ -2631,7 +2660,7 @@ third-party/bgfx.cmake/CMakeFiles/example-29-debugdraw.dir/all: third-party/bgfx
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/example-29-debugdraw.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/example-29-debugdraw.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-29-debugdraw.dir/rule
@@ -2786,7 +2815,7 @@ third-party/bgfx.cmake/CMakeFiles/geometryv.dir/all: third-party/bgfx.cmake/CMak
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/geometryv.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/geometryv.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/geometryv.dir/rule
@@ -2828,7 +2857,7 @@ third-party/bgfx.cmake/CMakeFiles/example-22-windows.dir/all: third-party/bgfx.c
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/example-22-windows.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 19
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/example-22-windows.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-22-windows.dir/rule
@@ -2870,7 +2899,7 @@ third-party/bgfx.cmake/CMakeFiles/example-25-c99.dir/all: third-party/bgfx.cmake
 
 # Build rule for subdir invocation for target.
 third-party/bgfx.cmake/CMakeFiles/example-25-c99.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 21
 	$(MAKE) -f CMakeFiles/Makefile2 third-party/bgfx.cmake/CMakeFiles/example-25-c99.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles 0
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-25-c99.dir/rule
