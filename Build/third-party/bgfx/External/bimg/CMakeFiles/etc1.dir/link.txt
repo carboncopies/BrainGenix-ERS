@@ -1,0 +1,2 @@
+/usr/bin/ar qc libetc1.a  CMakeFiles/etc1.dir/3rdparty/etc1/etc1.cpp.o
+/usr/bin/ranlib libetc1.a

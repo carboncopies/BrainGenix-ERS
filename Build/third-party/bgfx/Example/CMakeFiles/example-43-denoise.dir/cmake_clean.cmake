@@ -1,0 +1,40 @@
+file(REMOVE_RECURSE
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/essl/fs_denoise_apply_lighting.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/essl/fs_denoise_copy.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/essl/fs_denoise_deferred_combine.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/essl/fs_denoise_gbuffer.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/essl/fs_denoise_spatial_3x3.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/essl/fs_denoise_spatial_5x5.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/essl/fs_denoise_temporal.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/essl/fs_denoise_txaa.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/essl/vs_denoise_gbuffer.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/essl/vs_denoise_screenquad.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/glsl/fs_denoise_apply_lighting.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/glsl/fs_denoise_copy.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/glsl/fs_denoise_deferred_combine.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/glsl/fs_denoise_gbuffer.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/glsl/fs_denoise_spatial_3x3.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/glsl/fs_denoise_spatial_5x5.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/glsl/fs_denoise_temporal.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/glsl/fs_denoise_txaa.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/glsl/vs_denoise_gbuffer.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/glsl/vs_denoise_screenquad.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/spirv/fs_denoise_apply_lighting.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/spirv/fs_denoise_copy.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/spirv/fs_denoise_deferred_combine.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/spirv/fs_denoise_gbuffer.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/spirv/fs_denoise_spatial_3x3.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/spirv/fs_denoise_spatial_5x5.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/spirv/fs_denoise_temporal.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/spirv/fs_denoise_txaa.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/spirv/vs_denoise_gbuffer.bin"
+  "../../../../third-party/bgfx/Example/RenderExample/runtime/shaders/spirv/vs_denoise_screenquad.bin"
+  "CMakeFiles/example-43-denoise.dir/RenderExample/43-denoise/denoise.cpp.o"
+  "example-43-denoise"
+  "example-43-denoise.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/example-43-denoise.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

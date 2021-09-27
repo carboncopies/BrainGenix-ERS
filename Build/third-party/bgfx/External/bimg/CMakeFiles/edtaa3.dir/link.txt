@@ -1,0 +1,2 @@
+/usr/bin/ar qc libedtaa3.a  CMakeFiles/edtaa3.dir/3rdparty/edtaa3/edtaa3func.cpp.o
+/usr/bin/ranlib libedtaa3.a
