@@ -52,6 +52,7 @@ set_target_properties( mesa PROPERTIES FOLDER "bgfx/3rdparty" )
 # glsl-optimizer
 file( GLOB GLSL-OPTIMIZER_SOURCES ${BGFX_DIR}/3rdparty/glsl-optimizer/src/glsl/*.cpp ${BGFX_DIR}/3rdparty/glsl-optimizer/src/glsl/*.c )
 file( GLOB GLSL-OPTIMIZER_SOURCES_REMOVE ${BGFX_DIR}/3rdparty/glsl-optimizer/src/glsl/main.cpp ${BGFX_DIR}/3rdparty/glsl-optimizer/src/glsl/builtin_stubs.cpp )
+message("----------> ${GLSL-OPTIMIZER_SOURCES_REMOVE}")
 list( REMOVE_ITEM GLSL-OPTIMIZER_SOURCES ${GLSL-OPTIMIZER_SOURCES_REMOVE} )
 add_library( glsl-optimizer ${GLSL-OPTIMIZER_SOURCES} )
 target_link_libraries( glsl-optimizer glcpp mesa )

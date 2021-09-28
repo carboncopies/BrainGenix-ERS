@@ -10,9 +10,9 @@ set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 
 
 # Link BGFX
-set(BGFX_DIR "${LIB_DIR}/bgfx.cmake")
+set(BGFX_CMAKE_DIR "${LIB_DIR}/bgfx.cmake")
 
-add_subdirectory("${BGFX_DIR}")
+add_subdirectory("${BGFX_CMAKE_DIR}")
 
 # Link GLFW
 #set(GLFW_DIR "${LIB_DIR}/glfw")
