@@ -21,11 +21,10 @@ add_subdirectory("${GLFW_DIR}")
 
 
 # Add Main.cpp
-add_executable("test" "src/Main.cpp")
+add_executable("${PROJECT_NAME}" "${SRC_DIR}/Main.cpp")
 
-target_link_libraries("test",
+target_link_libraries("${PROJECT_NAME}",
 	bgfx
-	bimg
 	bx
 )
 
