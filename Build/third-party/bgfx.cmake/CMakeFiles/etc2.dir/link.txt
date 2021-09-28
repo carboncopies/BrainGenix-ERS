@@ -1,2 +1,0 @@
-/usr/bin/ar qc libetc2.a  CMakeFiles/etc2.dir/bimg/3rdparty/etc2/ProcessRGB.cpp.o CMakeFiles/etc2.dir/bimg/3rdparty/etc2/Tables.cpp.o
-/usr/bin/ranlib libetc2.a

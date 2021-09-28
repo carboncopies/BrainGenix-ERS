@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/geometryc.dir/bgfx/tools/geometryc/geometryc.cpp.o CMakeFiles/geometryc.dir/generated/bounds.cpp.o CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.o  -o geometryc  libbx.a libmeshoptimizer.a -lpthread -ldl -lrt 

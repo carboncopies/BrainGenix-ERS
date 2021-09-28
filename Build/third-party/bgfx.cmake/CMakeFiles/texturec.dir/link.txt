@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/texturec.dir/bimg/tools/texturec/texturec.cpp.o  -o texturec   -L/usr/lib/gcc/x86_64-linux-gnu/9  libbimg.a libastc-codec.a libastc.a libedtaa3.a libetc1.a libetc2.a libiqa.a libsquish.a libnvtt.a libbx.a -lpthread -ldl -lrt libpvrtc.a libtinyexr.a 

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmesa.a  CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c.o CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c.o CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.o
-/usr/bin/ranlib libmesa.a
