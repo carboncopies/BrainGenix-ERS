@@ -6,19 +6,3 @@
 
 #IncludeRegexTransform: 
 
-/home/tliao/Documents/BrainGenix-ERS/src/Main.cpp
-stdio.h
--
-SDL2/SDL.h
--
-bgfx/bgfx.h
--
-bgfx/platform.h
--
-SDL2/SDL_syswm.h
--
-fstream
--
-bx/math.h
--
-

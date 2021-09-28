@@ -79,6 +79,27 @@ test_EXTERNAL_OBJECTS =
 
 test: CMakeFiles/test.dir/src/Main.cpp.o
 test: CMakeFiles/test.dir/build.make
+test: third-party/bgfx.cmake/libbgfx.a
+test: third-party/bgfx.cmake/libbx.a
+test: third-party/bgfx.cmake/libbimg.a
+test: third-party/bgfx.cmake/libastc-codec.a
+test: third-party/bgfx.cmake/libastc.a
+test: third-party/bgfx.cmake/libedtaa3.a
+test: third-party/bgfx.cmake/libetc1.a
+test: third-party/bgfx.cmake/libetc2.a
+test: third-party/bgfx.cmake/libiqa.a
+test: third-party/bgfx.cmake/libsquish.a
+test: third-party/bgfx.cmake/libnvtt.a
+test: third-party/bgfx.cmake/libbx.a
+test: third-party/bgfx.cmake/libpvrtc.a
+test: third-party/bgfx.cmake/libtinyexr.a
+test: /usr/lib/x86_64-linux-gnu/libSM.so
+test: /usr/lib/x86_64-linux-gnu/libICE.so
+test: /usr/lib/x86_64-linux-gnu/libX11.so
+test: /usr/lib/x86_64-linux-gnu/libXext.so
+test: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+test: /usr/lib/x86_64-linux-gnu/libGLX.so
+test: /usr/lib/x86_64-linux-gnu/libGLU.so
 test: CMakeFiles/test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test.dir/link.txt --verbose=$(VERBOSE)

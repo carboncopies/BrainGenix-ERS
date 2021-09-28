@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_FLAGS =  
 
-CXX_DEFINES = 
+CXX_DEFINES = -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/include -I/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/include -I/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/3rdparty 
 

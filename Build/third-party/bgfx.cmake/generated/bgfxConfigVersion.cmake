@@ -10,20 +10,17 @@
 # The variable CVF_VERSION must be set before calling configure_file().
 
 
-set(PACKAGE_VERSION "1.115.7918
-")
+set(PACKAGE_VERSION "1.115.")
 
 if(PACKAGE_VERSION VERSION_LESS PACKAGE_FIND_VERSION)
   set(PACKAGE_VERSION_COMPATIBLE FALSE)
 else()
 
-  if("1.115.7918
-" MATCHES "^([0-9]+)\\.([0-9]+)")
+  if("1.115." MATCHES "^([0-9]+)\\.([0-9]+)")
     set(CVF_VERSION_MAJOR "${CMAKE_MATCH_1}")
     set(CVF_VERSION_MINOR "${CMAKE_MATCH_2}")
   else()
-    set(CVF_VERSION_MAJOR "1.115.7918
-")
+    set(CVF_VERSION_MAJOR "1.115.")
     set(CVF_VERSION_MINOR "")
   endif()
 
