@@ -46,7 +46,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/tliao/Documents/BrainGenix-ERS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/Build
+CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/build
 
 # Include any dependencies generated for this target.
 include third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/depend.make
@@ -58,10 +58,10 @@ include third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/progress.make
 include third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/flags.make
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_ibl_mesh.bin: ../third-party/bgfx.cmake/bgfx/examples/18-ibl/fs_ibl_mesh.sc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Compiling shader 18-ibl/fs_ibl_mesh.sc for ESSL, GLSL, SPIRV"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/fs_ibl_mesh.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_ibl_mesh.bin --platform android --type fragment
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/fs_ibl_mesh.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_ibl_mesh.bin --platform linux --type fragment --profile 120
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/fs_ibl_mesh.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/fs_ibl_mesh.bin --platform linux --type fragment --profile spirv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Compiling shader 18-ibl/fs_ibl_mesh.sc for ESSL, GLSL, SPIRV"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/fs_ibl_mesh.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_ibl_mesh.bin --platform android --type fragment
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/fs_ibl_mesh.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_ibl_mesh.bin --platform linux --type fragment --profile 120
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/fs_ibl_mesh.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/fs_ibl_mesh.bin --platform linux --type fragment --profile spirv
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_ibl_mesh.bin: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_ibl_mesh.bin
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_ibl_mesh.bin
@@ -70,10 +70,10 @@ include third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/flags.make
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/fs_ibl_mesh.bin
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_ibl_skybox.bin: ../third-party/bgfx.cmake/bgfx/examples/18-ibl/fs_ibl_skybox.sc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Compiling shader 18-ibl/fs_ibl_skybox.sc for ESSL, GLSL, SPIRV"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/fs_ibl_skybox.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_ibl_skybox.bin --platform android --type fragment
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/fs_ibl_skybox.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_ibl_skybox.bin --platform linux --type fragment --profile 120
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/fs_ibl_skybox.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/fs_ibl_skybox.bin --platform linux --type fragment --profile spirv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Compiling shader 18-ibl/fs_ibl_skybox.sc for ESSL, GLSL, SPIRV"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/fs_ibl_skybox.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_ibl_skybox.bin --platform android --type fragment
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/fs_ibl_skybox.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_ibl_skybox.bin --platform linux --type fragment --profile 120
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/fs_ibl_skybox.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/fs_ibl_skybox.bin --platform linux --type fragment --profile spirv
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_ibl_skybox.bin: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_ibl_skybox.bin
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_ibl_skybox.bin
@@ -82,10 +82,10 @@ include third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/flags.make
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/fs_ibl_skybox.bin
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_ibl_mesh.bin: ../third-party/bgfx.cmake/bgfx/examples/18-ibl/vs_ibl_mesh.sc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Compiling shader 18-ibl/vs_ibl_mesh.sc for ESSL, GLSL, SPIRV"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/vs_ibl_mesh.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_ibl_mesh.bin --platform android --type vertex
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/vs_ibl_mesh.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_ibl_mesh.bin --platform linux --type vertex --profile 120
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/vs_ibl_mesh.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/vs_ibl_mesh.bin --platform linux --type vertex --profile spirv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Compiling shader 18-ibl/vs_ibl_mesh.sc for ESSL, GLSL, SPIRV"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/vs_ibl_mesh.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_ibl_mesh.bin --platform android --type vertex
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/vs_ibl_mesh.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_ibl_mesh.bin --platform linux --type vertex --profile 120
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/vs_ibl_mesh.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/vs_ibl_mesh.bin --platform linux --type vertex --profile spirv
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_ibl_mesh.bin: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_ibl_mesh.bin
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_ibl_mesh.bin
@@ -94,10 +94,10 @@ include third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/flags.make
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/vs_ibl_mesh.bin
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_ibl_skybox.bin: ../third-party/bgfx.cmake/bgfx/examples/18-ibl/vs_ibl_skybox.sc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Compiling shader 18-ibl/vs_ibl_skybox.sc for ESSL, GLSL, SPIRV"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/vs_ibl_skybox.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_ibl_skybox.bin --platform android --type vertex
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/vs_ibl_skybox.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_ibl_skybox.bin --platform linux --type vertex --profile 120
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/vs_ibl_skybox.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/vs_ibl_skybox.bin --platform linux --type vertex --profile spirv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Compiling shader 18-ibl/vs_ibl_skybox.sc for ESSL, GLSL, SPIRV"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/vs_ibl_skybox.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_ibl_skybox.bin --platform android --type vertex
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/vs_ibl_skybox.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_ibl_skybox.bin --platform linux --type vertex --profile 120
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/vs_ibl_skybox.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/vs_ibl_skybox.bin --platform linux --type vertex --profile spirv
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_ibl_skybox.bin: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_ibl_skybox.bin
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_ibl_skybox.bin
@@ -107,16 +107,16 @@ include third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/flags.make
 
 third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/bgfx/examples/18-ibl/ibl.cpp.o: third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/bgfx/examples/18-ibl/ibl.cpp.o: ../third-party/bgfx.cmake/bgfx/examples/18-ibl/ibl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/bgfx/examples/18-ibl/ibl.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example-18-ibl.dir/bgfx/examples/18-ibl/ibl.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/ibl.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/bgfx/examples/18-ibl/ibl.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example-18-ibl.dir/bgfx/examples/18-ibl/ibl.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/ibl.cpp
 
 third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/bgfx/examples/18-ibl/ibl.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example-18-ibl.dir/bgfx/examples/18-ibl/ibl.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/ibl.cpp > CMakeFiles/example-18-ibl.dir/bgfx/examples/18-ibl/ibl.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/ibl.cpp > CMakeFiles/example-18-ibl.dir/bgfx/examples/18-ibl/ibl.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/bgfx/examples/18-ibl/ibl.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example-18-ibl.dir/bgfx/examples/18-ibl/ibl.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/ibl.cpp -o CMakeFiles/example-18-ibl.dir/bgfx/examples/18-ibl/ibl.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/18-ibl/ibl.cpp -o CMakeFiles/example-18-ibl.dir/bgfx/examples/18-ibl/ibl.cpp.s
 
 # Object files for target example-18-ibl
 example__18__ibl_OBJECTS = \
@@ -151,14 +151,14 @@ third-party/bgfx.cmake/example-18-ibl: third-party/bgfx.cmake/libdear-imgui.a
 third-party/bgfx.cmake/example-18-ibl: third-party/bgfx.cmake/libbx.a
 third-party/bgfx.cmake/example-18-ibl: third-party/bgfx.cmake/libmeshoptimizer.a
 third-party/bgfx.cmake/example-18-ibl: third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable example-18-ibl"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/example-18-ibl.dir/link.txt --verbose=$(VERBOSE)
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/font /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/font
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/images /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/images
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/meshes /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/meshes
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/shaders
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/text /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/text
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/textures /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/textures
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable example-18-ibl"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/example-18-ibl.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/font /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/font
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/images /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/images
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/meshes /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/meshes
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/shaders
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/text /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/text
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/textures /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/textures
 
 # Rule to build all files generated by this target.
 third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/build: third-party/bgfx.cmake/example-18-ibl
@@ -166,7 +166,7 @@ third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/build: third-party/bgfx.cma
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/build
 
 third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/clean:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/example-18-ibl.dir/cmake_clean.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/example-18-ibl.dir/cmake_clean.cmake
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/clean
 
 third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_ibl_mesh.bin
@@ -181,6 +181,6 @@ third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/depend: ../third-party/bgfx
 third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_ibl_skybox.bin
 third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_ibl_skybox.bin
 third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/vs_ibl_skybox.bin
-	cd /home/tliao/Documents/BrainGenix-ERS/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tliao/Documents/BrainGenix-ERS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-18-ibl.dir/depend
 

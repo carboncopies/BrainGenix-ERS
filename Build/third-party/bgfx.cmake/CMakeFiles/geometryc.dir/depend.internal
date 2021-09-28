@@ -74,7 +74,7 @@ third-party/bgfx.cmake/CMakeFiles/geometryc.dir/generated/bounds.cpp.o
  ../third-party/bgfx.cmake/bx/include/bx/rng.h
  ../third-party/bgfx.cmake/bx/include/bx/simd_t.h
  ../third-party/bgfx.cmake/bx/include/bx/uint32_t.h
- /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/bounds.cpp
+ /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/bounds.cpp
  /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/common/bounds.cpp
  /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/common/bounds.h
  /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/common/bounds.inl
@@ -115,6 +115,6 @@ third-party/bgfx.cmake/CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.o
  ../third-party/bgfx.cmake/bx/include/bx/sort.h
  ../third-party/bgfx.cmake/bx/include/bx/string.h
  ../third-party/bgfx.cmake/bx/include/bx/uint32_t.h
- /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/vertexlayout.cpp
+ /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/vertexlayout.cpp
  /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src/vertexlayout.cpp
  /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src/vertexlayout.h

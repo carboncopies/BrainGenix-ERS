@@ -46,7 +46,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/tliao/Documents/BrainGenix-ERS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/Build
+CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/build
 
 # Include any dependencies generated for this target.
 include third-party/bgfx.cmake/CMakeFiles/bx.dir/depend.make
@@ -59,276 +59,276 @@ include third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/allocator.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/allocator.cpp.o: ../third-party/bgfx.cmake/bx/src/allocator.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/allocator.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/allocator.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/allocator.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/allocator.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/allocator.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/allocator.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/allocator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/allocator.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/allocator.cpp > CMakeFiles/bx.dir/bx/src/allocator.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/allocator.cpp > CMakeFiles/bx.dir/bx/src/allocator.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/allocator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/allocator.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/allocator.cpp -o CMakeFiles/bx.dir/bx/src/allocator.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/allocator.cpp -o CMakeFiles/bx.dir/bx/src/allocator.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/bx.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/bx.cpp.o: ../third-party/bgfx.cmake/bx/src/bx.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/bx.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/bx.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/bx.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/bx.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/bx.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/bx.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/bx.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/bx.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/bx.cpp > CMakeFiles/bx.dir/bx/src/bx.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/bx.cpp > CMakeFiles/bx.dir/bx/src/bx.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/bx.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/bx.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/bx.cpp -o CMakeFiles/bx.dir/bx/src/bx.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/bx.cpp -o CMakeFiles/bx.dir/bx/src/bx.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/commandline.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/commandline.cpp.o: ../third-party/bgfx.cmake/bx/src/commandline.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/commandline.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/commandline.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/commandline.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/commandline.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/commandline.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/commandline.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/commandline.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/commandline.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/commandline.cpp > CMakeFiles/bx.dir/bx/src/commandline.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/commandline.cpp > CMakeFiles/bx.dir/bx/src/commandline.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/commandline.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/commandline.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/commandline.cpp -o CMakeFiles/bx.dir/bx/src/commandline.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/commandline.cpp -o CMakeFiles/bx.dir/bx/src/commandline.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/crtnone.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/crtnone.cpp.o: ../third-party/bgfx.cmake/bx/src/crtnone.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/crtnone.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/crtnone.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/crtnone.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/crtnone.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/crtnone.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/crtnone.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/crtnone.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/crtnone.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/crtnone.cpp > CMakeFiles/bx.dir/bx/src/crtnone.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/crtnone.cpp > CMakeFiles/bx.dir/bx/src/crtnone.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/crtnone.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/crtnone.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/crtnone.cpp -o CMakeFiles/bx.dir/bx/src/crtnone.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/crtnone.cpp -o CMakeFiles/bx.dir/bx/src/crtnone.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/debug.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/debug.cpp.o: ../third-party/bgfx.cmake/bx/src/debug.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/debug.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/debug.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/debug.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/debug.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/debug.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/debug.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/debug.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/debug.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/debug.cpp > CMakeFiles/bx.dir/bx/src/debug.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/debug.cpp > CMakeFiles/bx.dir/bx/src/debug.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/debug.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/debug.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/debug.cpp -o CMakeFiles/bx.dir/bx/src/debug.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/debug.cpp -o CMakeFiles/bx.dir/bx/src/debug.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/dtoa.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/dtoa.cpp.o: ../third-party/bgfx.cmake/bx/src/dtoa.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/dtoa.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/dtoa.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/dtoa.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/dtoa.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/dtoa.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/dtoa.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/dtoa.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/dtoa.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/dtoa.cpp > CMakeFiles/bx.dir/bx/src/dtoa.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/dtoa.cpp > CMakeFiles/bx.dir/bx/src/dtoa.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/dtoa.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/dtoa.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/dtoa.cpp -o CMakeFiles/bx.dir/bx/src/dtoa.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/dtoa.cpp -o CMakeFiles/bx.dir/bx/src/dtoa.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/easing.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/easing.cpp.o: ../third-party/bgfx.cmake/bx/src/easing.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/easing.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/easing.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/easing.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/easing.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/easing.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/easing.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/easing.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/easing.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/easing.cpp > CMakeFiles/bx.dir/bx/src/easing.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/easing.cpp > CMakeFiles/bx.dir/bx/src/easing.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/easing.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/easing.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/easing.cpp -o CMakeFiles/bx.dir/bx/src/easing.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/easing.cpp -o CMakeFiles/bx.dir/bx/src/easing.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/file.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/file.cpp.o: ../third-party/bgfx.cmake/bx/src/file.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/file.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/file.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/file.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/file.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/file.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/file.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/file.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/file.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/file.cpp > CMakeFiles/bx.dir/bx/src/file.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/file.cpp > CMakeFiles/bx.dir/bx/src/file.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/file.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/file.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/file.cpp -o CMakeFiles/bx.dir/bx/src/file.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/file.cpp -o CMakeFiles/bx.dir/bx/src/file.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/filepath.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/filepath.cpp.o: ../third-party/bgfx.cmake/bx/src/filepath.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/filepath.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/filepath.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/filepath.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/filepath.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/filepath.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/filepath.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/filepath.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/filepath.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/filepath.cpp > CMakeFiles/bx.dir/bx/src/filepath.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/filepath.cpp > CMakeFiles/bx.dir/bx/src/filepath.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/filepath.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/filepath.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/filepath.cpp -o CMakeFiles/bx.dir/bx/src/filepath.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/filepath.cpp -o CMakeFiles/bx.dir/bx/src/filepath.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/hash.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/hash.cpp.o: ../third-party/bgfx.cmake/bx/src/hash.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/hash.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/hash.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/hash.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/hash.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/hash.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/hash.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/hash.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/hash.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/hash.cpp > CMakeFiles/bx.dir/bx/src/hash.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/hash.cpp > CMakeFiles/bx.dir/bx/src/hash.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/hash.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/hash.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/hash.cpp -o CMakeFiles/bx.dir/bx/src/hash.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/hash.cpp -o CMakeFiles/bx.dir/bx/src/hash.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/math.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/math.cpp.o: ../third-party/bgfx.cmake/bx/src/math.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/math.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/math.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/math.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/math.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/math.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/math.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/math.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/math.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/math.cpp > CMakeFiles/bx.dir/bx/src/math.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/math.cpp > CMakeFiles/bx.dir/bx/src/math.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/math.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/math.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/math.cpp -o CMakeFiles/bx.dir/bx/src/math.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/math.cpp -o CMakeFiles/bx.dir/bx/src/math.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/mutex.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/mutex.cpp.o: ../third-party/bgfx.cmake/bx/src/mutex.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/mutex.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/mutex.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/mutex.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/mutex.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/mutex.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/mutex.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/mutex.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/mutex.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/mutex.cpp > CMakeFiles/bx.dir/bx/src/mutex.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/mutex.cpp > CMakeFiles/bx.dir/bx/src/mutex.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/mutex.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/mutex.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/mutex.cpp -o CMakeFiles/bx.dir/bx/src/mutex.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/mutex.cpp -o CMakeFiles/bx.dir/bx/src/mutex.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/os.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/os.cpp.o: ../third-party/bgfx.cmake/bx/src/os.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/os.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/os.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/os.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/os.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/os.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/os.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/os.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/os.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/os.cpp > CMakeFiles/bx.dir/bx/src/os.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/os.cpp > CMakeFiles/bx.dir/bx/src/os.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/os.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/os.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/os.cpp -o CMakeFiles/bx.dir/bx/src/os.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/os.cpp -o CMakeFiles/bx.dir/bx/src/os.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/process.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/process.cpp.o: ../third-party/bgfx.cmake/bx/src/process.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/process.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/process.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/process.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/process.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/process.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/process.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/process.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/process.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/process.cpp > CMakeFiles/bx.dir/bx/src/process.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/process.cpp > CMakeFiles/bx.dir/bx/src/process.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/process.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/process.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/process.cpp -o CMakeFiles/bx.dir/bx/src/process.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/process.cpp -o CMakeFiles/bx.dir/bx/src/process.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/semaphore.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/semaphore.cpp.o: ../third-party/bgfx.cmake/bx/src/semaphore.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/semaphore.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/semaphore.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/semaphore.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/semaphore.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/semaphore.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/semaphore.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/semaphore.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/semaphore.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/semaphore.cpp > CMakeFiles/bx.dir/bx/src/semaphore.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/semaphore.cpp > CMakeFiles/bx.dir/bx/src/semaphore.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/semaphore.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/semaphore.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/semaphore.cpp -o CMakeFiles/bx.dir/bx/src/semaphore.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/semaphore.cpp -o CMakeFiles/bx.dir/bx/src/semaphore.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/settings.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/settings.cpp.o: ../third-party/bgfx.cmake/bx/src/settings.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/settings.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/settings.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/settings.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/settings.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/settings.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/settings.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/settings.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/settings.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/settings.cpp > CMakeFiles/bx.dir/bx/src/settings.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/settings.cpp > CMakeFiles/bx.dir/bx/src/settings.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/settings.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/settings.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/settings.cpp -o CMakeFiles/bx.dir/bx/src/settings.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/settings.cpp -o CMakeFiles/bx.dir/bx/src/settings.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/sort.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/sort.cpp.o: ../third-party/bgfx.cmake/bx/src/sort.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/sort.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/sort.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/sort.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/sort.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/sort.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/sort.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/sort.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/sort.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/sort.cpp > CMakeFiles/bx.dir/bx/src/sort.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/sort.cpp > CMakeFiles/bx.dir/bx/src/sort.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/sort.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/sort.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/sort.cpp -o CMakeFiles/bx.dir/bx/src/sort.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/sort.cpp -o CMakeFiles/bx.dir/bx/src/sort.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/string.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/string.cpp.o: ../third-party/bgfx.cmake/bx/src/string.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/string.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/string.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/string.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/string.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/string.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/string.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/string.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/string.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/string.cpp > CMakeFiles/bx.dir/bx/src/string.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/string.cpp > CMakeFiles/bx.dir/bx/src/string.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/string.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/string.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/string.cpp -o CMakeFiles/bx.dir/bx/src/string.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/string.cpp -o CMakeFiles/bx.dir/bx/src/string.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/thread.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/thread.cpp.o: ../third-party/bgfx.cmake/bx/src/thread.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/thread.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/thread.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/thread.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/thread.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/thread.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/thread.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/thread.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/thread.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/thread.cpp > CMakeFiles/bx.dir/bx/src/thread.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/thread.cpp > CMakeFiles/bx.dir/bx/src/thread.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/thread.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/thread.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/thread.cpp -o CMakeFiles/bx.dir/bx/src/thread.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/thread.cpp -o CMakeFiles/bx.dir/bx/src/thread.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/timer.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/timer.cpp.o: ../third-party/bgfx.cmake/bx/src/timer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/timer.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/timer.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/timer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/timer.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/timer.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/timer.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/timer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/timer.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/timer.cpp > CMakeFiles/bx.dir/bx/src/timer.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/timer.cpp > CMakeFiles/bx.dir/bx/src/timer.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/timer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/timer.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/timer.cpp -o CMakeFiles/bx.dir/bx/src/timer.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/timer.cpp -o CMakeFiles/bx.dir/bx/src/timer.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/url.cpp.o: third-party/bgfx.cmake/CMakeFiles/bx.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/url.cpp.o: ../third-party/bgfx.cmake/bx/src/url.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/url.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/url.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/url.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/url.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/bx.dir/bx/src/url.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/url.cpp
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/url.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/bx.dir/bx/src/url.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/url.cpp > CMakeFiles/bx.dir/bx/src/url.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/url.cpp > CMakeFiles/bx.dir/bx/src/url.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/url.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/bx.dir/bx/src/url.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/url.cpp -o CMakeFiles/bx.dir/bx/src/url.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bx/src/url.cpp -o CMakeFiles/bx.dir/bx/src/url.cpp.s
 
 # Object files for target bx
 bx_OBJECTS = \
@@ -380,9 +380,9 @@ third-party/bgfx.cmake/libbx.a: third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/
 third-party/bgfx.cmake/libbx.a: third-party/bgfx.cmake/CMakeFiles/bx.dir/bx/src/url.cpp.o
 third-party/bgfx.cmake/libbx.a: third-party/bgfx.cmake/CMakeFiles/bx.dir/build.make
 third-party/bgfx.cmake/libbx.a: third-party/bgfx.cmake/CMakeFiles/bx.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX static library libbx.a"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/bx.dir/cmake_clean_target.cmake
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/bx.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX static library libbx.a"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/bx.dir/cmake_clean_target.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/bx.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 third-party/bgfx.cmake/CMakeFiles/bx.dir/build: third-party/bgfx.cmake/libbx.a
@@ -390,10 +390,10 @@ third-party/bgfx.cmake/CMakeFiles/bx.dir/build: third-party/bgfx.cmake/libbx.a
 .PHONY : third-party/bgfx.cmake/CMakeFiles/bx.dir/build
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/clean:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/bx.dir/cmake_clean.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/bx.dir/cmake_clean.cmake
 .PHONY : third-party/bgfx.cmake/CMakeFiles/bx.dir/clean
 
 third-party/bgfx.cmake/CMakeFiles/bx.dir/depend:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/bx.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tliao/Documents/BrainGenix-ERS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/bx.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : third-party/bgfx.cmake/CMakeFiles/bx.dir/depend
 

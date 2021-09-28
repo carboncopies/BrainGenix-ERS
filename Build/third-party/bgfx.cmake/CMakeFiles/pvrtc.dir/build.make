@@ -46,7 +46,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/tliao/Documents/BrainGenix-ERS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/Build
+CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/build
 
 # Include any dependencies generated for this target.
 include third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/depend.make
@@ -59,68 +59,68 @@ include third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/flags.make
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.o: third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.o: ../third-party/bgfx.cmake/bimg/3rdparty/pvrtc/BitScale.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/BitScale.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/BitScale.cpp
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/BitScale.cpp > CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/BitScale.cpp > CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/BitScale.cpp -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/BitScale.cpp -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.o: third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.o: ../third-party/bgfx.cmake/bimg/3rdparty/pvrtc/MortonTable.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/MortonTable.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/MortonTable.cpp
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/MortonTable.cpp > CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/MortonTable.cpp > CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/MortonTable.cpp -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/MortonTable.cpp -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.o: third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.o: ../third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp > CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp > CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.o: third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.o: ../third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp > CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp > CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.o: third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.o: ../third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcPacket.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcPacket.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcPacket.cpp
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcPacket.cpp > CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcPacket.cpp > CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcPacket.cpp -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcPacket.cpp -o CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.s
 
 # Object files for target pvrtc
 pvrtc_OBJECTS = \
@@ -140,9 +140,9 @@ third-party/bgfx.cmake/libpvrtc.a: third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/b
 third-party/bgfx.cmake/libpvrtc.a: third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.o
 third-party/bgfx.cmake/libpvrtc.a: third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/build.make
 third-party/bgfx.cmake/libpvrtc.a: third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libpvrtc.a"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/pvrtc.dir/cmake_clean_target.cmake
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pvrtc.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libpvrtc.a"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/pvrtc.dir/cmake_clean_target.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pvrtc.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/build: third-party/bgfx.cmake/libpvrtc.a
@@ -150,10 +150,10 @@ third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/build: third-party/bgfx.cmake/libpvr
 .PHONY : third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/build
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/clean:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/pvrtc.dir/cmake_clean.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/pvrtc.dir/cmake_clean.cmake
 .PHONY : third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/clean
 
 third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/depend:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tliao/Documents/BrainGenix-ERS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/depend
 

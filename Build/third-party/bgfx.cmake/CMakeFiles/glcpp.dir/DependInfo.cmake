@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c" "/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.o"
-  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c" "/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.o"
-  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c" "/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.o"
-  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c" "/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.o"
-  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c" "/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.o"
+  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c" "/home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.o"
+  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c" "/home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.o"
+  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c" "/home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.o"
+  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c" "/home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.o"
+  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c" "/home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

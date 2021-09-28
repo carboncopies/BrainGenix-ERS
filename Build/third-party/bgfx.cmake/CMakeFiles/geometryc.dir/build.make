@@ -46,7 +46,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/tliao/Documents/BrainGenix-ERS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/Build
+CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/build
 
 # Include any dependencies generated for this target.
 include third-party/bgfx.cmake/CMakeFiles/geometryc.dir/depend.make
@@ -59,42 +59,42 @@ include third-party/bgfx.cmake/CMakeFiles/geometryc.dir/flags.make
 
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/bgfx/tools/geometryc/geometryc.cpp.o: third-party/bgfx.cmake/CMakeFiles/geometryc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/bgfx/tools/geometryc/geometryc.cpp.o: ../third-party/bgfx.cmake/bgfx/tools/geometryc/geometryc.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object third-party/bgfx.cmake/CMakeFiles/geometryc.dir/bgfx/tools/geometryc/geometryc.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/geometryc.dir/bgfx/tools/geometryc/geometryc.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/geometryc/geometryc.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object third-party/bgfx.cmake/CMakeFiles/geometryc.dir/bgfx/tools/geometryc/geometryc.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/geometryc.dir/bgfx/tools/geometryc/geometryc.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/geometryc/geometryc.cpp
 
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/bgfx/tools/geometryc/geometryc.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/geometryc.dir/bgfx/tools/geometryc/geometryc.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/geometryc/geometryc.cpp > CMakeFiles/geometryc.dir/bgfx/tools/geometryc/geometryc.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/geometryc/geometryc.cpp > CMakeFiles/geometryc.dir/bgfx/tools/geometryc/geometryc.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/bgfx/tools/geometryc/geometryc.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/geometryc.dir/bgfx/tools/geometryc/geometryc.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/geometryc/geometryc.cpp -o CMakeFiles/geometryc.dir/bgfx/tools/geometryc/geometryc.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/geometryc/geometryc.cpp -o CMakeFiles/geometryc.dir/bgfx/tools/geometryc/geometryc.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/generated/bounds.cpp.o: third-party/bgfx.cmake/CMakeFiles/geometryc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/generated/bounds.cpp.o: third-party/bgfx.cmake/generated/bounds.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object third-party/bgfx.cmake/CMakeFiles/geometryc.dir/generated/bounds.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/geometryc.dir/generated/bounds.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/bounds.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object third-party/bgfx.cmake/CMakeFiles/geometryc.dir/generated/bounds.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/geometryc.dir/generated/bounds.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/bounds.cpp
 
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/generated/bounds.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/geometryc.dir/generated/bounds.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/bounds.cpp > CMakeFiles/geometryc.dir/generated/bounds.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/bounds.cpp > CMakeFiles/geometryc.dir/generated/bounds.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/generated/bounds.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/geometryc.dir/generated/bounds.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/bounds.cpp -o CMakeFiles/geometryc.dir/generated/bounds.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/bounds.cpp -o CMakeFiles/geometryc.dir/generated/bounds.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.o: third-party/bgfx.cmake/CMakeFiles/geometryc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.o: third-party/bgfx.cmake/generated/vertexlayout.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/vertexlayout.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/vertexlayout.cpp
 
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/vertexlayout.cpp > CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/vertexlayout.cpp > CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/vertexlayout.cpp -o CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/vertexlayout.cpp -o CMakeFiles/geometryc.dir/generated/vertexlayout.cpp.s
 
 # Object files for target geometryc
 geometryc_OBJECTS = \
@@ -112,8 +112,8 @@ third-party/bgfx.cmake/geometryc: third-party/bgfx.cmake/CMakeFiles/geometryc.di
 third-party/bgfx.cmake/geometryc: third-party/bgfx.cmake/libbx.a
 third-party/bgfx.cmake/geometryc: third-party/bgfx.cmake/libmeshoptimizer.a
 third-party/bgfx.cmake/geometryc: third-party/bgfx.cmake/CMakeFiles/geometryc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable geometryc"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/geometryc.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable geometryc"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/geometryc.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/build: third-party/bgfx.cmake/geometryc
@@ -121,10 +121,10 @@ third-party/bgfx.cmake/CMakeFiles/geometryc.dir/build: third-party/bgfx.cmake/ge
 .PHONY : third-party/bgfx.cmake/CMakeFiles/geometryc.dir/build
 
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/clean:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/geometryc.dir/cmake_clean.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/geometryc.dir/cmake_clean.cmake
 .PHONY : third-party/bgfx.cmake/CMakeFiles/geometryc.dir/clean
 
 third-party/bgfx.cmake/CMakeFiles/geometryc.dir/depend:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/geometryc.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tliao/Documents/BrainGenix-ERS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/geometryc.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : third-party/bgfx.cmake/CMakeFiles/geometryc.dir/depend
 

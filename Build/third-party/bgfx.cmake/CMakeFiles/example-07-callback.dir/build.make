@@ -46,7 +46,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/tliao/Documents/BrainGenix-ERS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/Build
+CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/build
 
 # Include any dependencies generated for this target.
 include third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/depend.make
@@ -58,10 +58,10 @@ include third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/progress.make
 include third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/flags.make
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_callback.bin: ../third-party/bgfx.cmake/bgfx/examples/07-callback/fs_callback.sc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Compiling shader 07-callback/fs_callback.sc for ESSL, GLSL, SPIRV"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/fs_callback.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_callback.bin --platform android --type fragment
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/fs_callback.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_callback.bin --platform linux --type fragment --profile 120
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/fs_callback.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/fs_callback.bin --platform linux --type fragment --profile spirv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Compiling shader 07-callback/fs_callback.sc for ESSL, GLSL, SPIRV"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/fs_callback.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_callback.bin --platform android --type fragment
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/fs_callback.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_callback.bin --platform linux --type fragment --profile 120
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/fs_callback.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/fs_callback.bin --platform linux --type fragment --profile spirv
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_callback.bin: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_callback.bin
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_callback.bin
@@ -70,10 +70,10 @@ include third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/flags.make
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/fs_callback.bin
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_callback.bin: ../third-party/bgfx.cmake/bgfx/examples/07-callback/vs_callback.sc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Compiling shader 07-callback/vs_callback.sc for ESSL, GLSL, SPIRV"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/vs_callback.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_callback.bin --platform android --type vertex
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/vs_callback.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_callback.bin --platform linux --type vertex --profile 120
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/vs_callback.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/vs_callback.bin --platform linux --type vertex --profile spirv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Compiling shader 07-callback/vs_callback.sc for ESSL, GLSL, SPIRV"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/vs_callback.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_callback.bin --platform android --type vertex
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/vs_callback.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_callback.bin --platform linux --type vertex --profile 120
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/vs_callback.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/vs_callback.bin --platform linux --type vertex --profile spirv
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_callback.bin: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_callback.bin
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_callback.bin
@@ -83,16 +83,16 @@ include third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/flags.make
 
 third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/bgfx/examples/07-callback/callback.cpp.o: third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/bgfx/examples/07-callback/callback.cpp.o: ../third-party/bgfx.cmake/bgfx/examples/07-callback/callback.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/bgfx/examples/07-callback/callback.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example-07-callback.dir/bgfx/examples/07-callback/callback.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/callback.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/bgfx/examples/07-callback/callback.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example-07-callback.dir/bgfx/examples/07-callback/callback.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/callback.cpp
 
 third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/bgfx/examples/07-callback/callback.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example-07-callback.dir/bgfx/examples/07-callback/callback.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/callback.cpp > CMakeFiles/example-07-callback.dir/bgfx/examples/07-callback/callback.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/callback.cpp > CMakeFiles/example-07-callback.dir/bgfx/examples/07-callback/callback.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/bgfx/examples/07-callback/callback.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example-07-callback.dir/bgfx/examples/07-callback/callback.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/callback.cpp -o CMakeFiles/example-07-callback.dir/bgfx/examples/07-callback/callback.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/07-callback/callback.cpp -o CMakeFiles/example-07-callback.dir/bgfx/examples/07-callback/callback.cpp.s
 
 # Object files for target example-07-callback
 example__07__callback_OBJECTS = \
@@ -127,14 +127,14 @@ third-party/bgfx.cmake/example-07-callback: third-party/bgfx.cmake/libdear-imgui
 third-party/bgfx.cmake/example-07-callback: third-party/bgfx.cmake/libbx.a
 third-party/bgfx.cmake/example-07-callback: third-party/bgfx.cmake/libmeshoptimizer.a
 third-party/bgfx.cmake/example-07-callback: third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable example-07-callback"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/example-07-callback.dir/link.txt --verbose=$(VERBOSE)
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/font /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/font
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/images /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/images
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/meshes /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/meshes
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/shaders
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/text /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/text
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/textures /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/textures
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable example-07-callback"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/example-07-callback.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/font /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/font
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/images /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/images
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/meshes /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/meshes
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/shaders
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/text /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/text
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/textures /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/textures
 
 # Rule to build all files generated by this target.
 third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/build: third-party/bgfx.cmake/example-07-callback
@@ -142,7 +142,7 @@ third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/build: third-party/bgf
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/build
 
 third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/clean:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/example-07-callback.dir/cmake_clean.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/example-07-callback.dir/cmake_clean.cmake
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/clean
 
 third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_callback.bin
@@ -151,6 +151,6 @@ third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/depend: ../third-party
 third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_callback.bin
 third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_callback.bin
 third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/vs_callback.bin
-	cd /home/tliao/Documents/BrainGenix-ERS/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tliao/Documents/BrainGenix-ERS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-07-callback.dir/depend
 

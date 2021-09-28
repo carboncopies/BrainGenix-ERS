@@ -46,7 +46,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/tliao/Documents/BrainGenix-ERS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/Build
+CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/build
 
 # Include any dependencies generated for this target.
 include third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/depend.make
@@ -58,10 +58,10 @@ include third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/progress.make
 include third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/flags.make
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_bunnylod.bin: ../third-party/bgfx.cmake/bgfx/examples/42-bunnylod/fs_bunnylod.sc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Compiling shader 42-bunnylod/fs_bunnylod.sc for ESSL, GLSL, SPIRV"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/fs_bunnylod.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_bunnylod.bin --platform android --type fragment
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/fs_bunnylod.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_bunnylod.bin --platform linux --type fragment --profile 120
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/fs_bunnylod.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/fs_bunnylod.bin --platform linux --type fragment --profile spirv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Compiling shader 42-bunnylod/fs_bunnylod.sc for ESSL, GLSL, SPIRV"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/fs_bunnylod.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_bunnylod.bin --platform android --type fragment
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/fs_bunnylod.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_bunnylod.bin --platform linux --type fragment --profile 120
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/fs_bunnylod.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/fs_bunnylod.bin --platform linux --type fragment --profile spirv
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_bunnylod.bin: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_bunnylod.bin
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_bunnylod.bin
@@ -70,10 +70,10 @@ include third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/flags.make
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/fs_bunnylod.bin
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_bunnylod.bin: ../third-party/bgfx.cmake/bgfx/examples/42-bunnylod/vs_bunnylod.sc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Compiling shader 42-bunnylod/vs_bunnylod.sc for ESSL, GLSL, SPIRV"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/vs_bunnylod.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_bunnylod.bin --platform android --type vertex
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/vs_bunnylod.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_bunnylod.bin --platform linux --type vertex --profile 120
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/vs_bunnylod.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/vs_bunnylod.bin --platform linux --type vertex --profile spirv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Compiling shader 42-bunnylod/vs_bunnylod.sc for ESSL, GLSL, SPIRV"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/vs_bunnylod.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_bunnylod.bin --platform android --type vertex
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/vs_bunnylod.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_bunnylod.bin --platform linux --type vertex --profile 120
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/vs_bunnylod.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/vs_bunnylod.bin --platform linux --type vertex --profile spirv
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_bunnylod.bin: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_bunnylod.bin
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_bunnylod.bin
@@ -83,29 +83,29 @@ include third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/flags.make
 
 third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/bunnylod.cpp.o: third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/bunnylod.cpp.o: ../third-party/bgfx.cmake/bgfx/examples/42-bunnylod/bunnylod.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/bunnylod.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/bunnylod.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/bunnylod.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/bunnylod.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/bunnylod.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/bunnylod.cpp
 
 third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/bunnylod.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/bunnylod.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/bunnylod.cpp > CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/bunnylod.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/bunnylod.cpp > CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/bunnylod.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/bunnylod.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/bunnylod.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/bunnylod.cpp -o CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/bunnylod.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/bunnylod.cpp -o CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/bunnylod.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/progmesh.c.o: third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/progmesh.c.o: ../third-party/bgfx.cmake/bgfx/examples/42-bunnylod/progmesh.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/progmesh.c.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/progmesh.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/progmesh.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/progmesh.c.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/progmesh.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/progmesh.c
 
 third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/progmesh.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/progmesh.c.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/progmesh.c > CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/progmesh.c.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/progmesh.c > CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/progmesh.c.i
 
 third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/progmesh.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/progmesh.c.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/progmesh.c -o CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/progmesh.c.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/42-bunnylod/progmesh.c -o CMakeFiles/example-42-bunnylod.dir/bgfx/examples/42-bunnylod/progmesh.c.s
 
 # Object files for target example-42-bunnylod
 example__42__bunnylod_OBJECTS = \
@@ -142,14 +142,14 @@ third-party/bgfx.cmake/example-42-bunnylod: third-party/bgfx.cmake/libdear-imgui
 third-party/bgfx.cmake/example-42-bunnylod: third-party/bgfx.cmake/libbx.a
 third-party/bgfx.cmake/example-42-bunnylod: third-party/bgfx.cmake/libmeshoptimizer.a
 third-party/bgfx.cmake/example-42-bunnylod: third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable example-42-bunnylod"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/example-42-bunnylod.dir/link.txt --verbose=$(VERBOSE)
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/font /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/font
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/images /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/images
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/meshes /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/meshes
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/shaders
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/text /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/text
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/textures /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/textures
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable example-42-bunnylod"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/example-42-bunnylod.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/font /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/font
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/images /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/images
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/meshes /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/meshes
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/shaders
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/text /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/text
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/textures /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/textures
 
 # Rule to build all files generated by this target.
 third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/build: third-party/bgfx.cmake/example-42-bunnylod
@@ -157,7 +157,7 @@ third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/build: third-party/bgf
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/build
 
 third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/clean:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/example-42-bunnylod.dir/cmake_clean.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/example-42-bunnylod.dir/cmake_clean.cmake
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/clean
 
 third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_bunnylod.bin
@@ -166,6 +166,6 @@ third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/depend: ../third-party
 third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_bunnylod.bin
 third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_bunnylod.bin
 third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/vs_bunnylod.bin
-	cd /home/tliao/Documents/BrainGenix-ERS/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tliao/Documents/BrainGenix-ERS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-42-bunnylod.dir/depend
 

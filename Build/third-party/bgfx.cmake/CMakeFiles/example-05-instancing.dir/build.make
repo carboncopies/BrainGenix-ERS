@@ -46,7 +46,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/tliao/Documents/BrainGenix-ERS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/Build
+CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/build
 
 # Include any dependencies generated for this target.
 include third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/depend.make
@@ -58,10 +58,10 @@ include third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/progress.mak
 include third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/flags.make
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_instancing.bin: ../third-party/bgfx.cmake/bgfx/examples/05-instancing/fs_instancing.sc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Compiling shader 05-instancing/fs_instancing.sc for ESSL, GLSL, SPIRV"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/fs_instancing.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_instancing.bin --platform android --type fragment
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/fs_instancing.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_instancing.bin --platform linux --type fragment --profile 120
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/fs_instancing.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/fs_instancing.bin --platform linux --type fragment --profile spirv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Compiling shader 05-instancing/fs_instancing.sc for ESSL, GLSL, SPIRV"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/fs_instancing.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_instancing.bin --platform android --type fragment
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/fs_instancing.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_instancing.bin --platform linux --type fragment --profile 120
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/fs_instancing.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/fs_instancing.bin --platform linux --type fragment --profile spirv
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_instancing.bin: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_instancing.bin
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/fs_instancing.bin
@@ -70,10 +70,10 @@ include third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/flags.make
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/fs_instancing.bin
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_instancing.bin: ../third-party/bgfx.cmake/bgfx/examples/05-instancing/vs_instancing.sc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Compiling shader 05-instancing/vs_instancing.sc for ESSL, GLSL, SPIRV"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/vs_instancing.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_instancing.bin --platform android --type vertex
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/vs_instancing.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_instancing.bin --platform linux --type vertex --profile 120
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/vs_instancing.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/vs_instancing.bin --platform linux --type vertex --profile spirv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Compiling shader 05-instancing/vs_instancing.sc for ESSL, GLSL, SPIRV"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/vs_instancing.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_instancing.bin --platform android --type vertex
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/vs_instancing.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_instancing.bin --platform linux --type vertex --profile 120
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && ./shaderc -f /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/vs_instancing.sc -i /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src -o /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/vs_instancing.bin --platform linux --type vertex --profile spirv
 
 ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_instancing.bin: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_instancing.bin
 	@$(CMAKE_COMMAND) -E touch_nocreate ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_instancing.bin
@@ -83,16 +83,16 @@ include third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/flags.make
 
 third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/bgfx/examples/05-instancing/instancing.cpp.o: third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/bgfx/examples/05-instancing/instancing.cpp.o: ../third-party/bgfx.cmake/bgfx/examples/05-instancing/instancing.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/bgfx/examples/05-instancing/instancing.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example-05-instancing.dir/bgfx/examples/05-instancing/instancing.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/instancing.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/bgfx/examples/05-instancing/instancing.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/example-05-instancing.dir/bgfx/examples/05-instancing/instancing.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/instancing.cpp
 
 third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/bgfx/examples/05-instancing/instancing.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/example-05-instancing.dir/bgfx/examples/05-instancing/instancing.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/instancing.cpp > CMakeFiles/example-05-instancing.dir/bgfx/examples/05-instancing/instancing.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/instancing.cpp > CMakeFiles/example-05-instancing.dir/bgfx/examples/05-instancing/instancing.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/bgfx/examples/05-instancing/instancing.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/example-05-instancing.dir/bgfx/examples/05-instancing/instancing.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/instancing.cpp -o CMakeFiles/example-05-instancing.dir/bgfx/examples/05-instancing/instancing.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/05-instancing/instancing.cpp -o CMakeFiles/example-05-instancing.dir/bgfx/examples/05-instancing/instancing.cpp.s
 
 # Object files for target example-05-instancing
 example__05__instancing_OBJECTS = \
@@ -127,14 +127,14 @@ third-party/bgfx.cmake/example-05-instancing: third-party/bgfx.cmake/libdear-img
 third-party/bgfx.cmake/example-05-instancing: third-party/bgfx.cmake/libbx.a
 third-party/bgfx.cmake/example-05-instancing: third-party/bgfx.cmake/libmeshoptimizer.a
 third-party/bgfx.cmake/example-05-instancing: third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable example-05-instancing"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/example-05-instancing.dir/link.txt --verbose=$(VERBOSE)
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/font /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/font
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/images /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/images
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/meshes /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/meshes
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/shaders
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/text /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/text
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/textures /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/textures
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable example-05-instancing"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/example-05-instancing.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/font /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/font
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/images /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/images
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/meshes /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/meshes
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/shaders /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/shaders
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/text /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/text
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cmake -E create_symlink /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/runtime/textures /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/textures
 
 # Rule to build all files generated by this target.
 third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/build: third-party/bgfx.cmake/example-05-instancing
@@ -142,7 +142,7 @@ third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/build: third-party/b
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/build
 
 third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/clean:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/example-05-instancing.dir/cmake_clean.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/example-05-instancing.dir/cmake_clean.cmake
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/clean
 
 third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/fs_instancing.bin
@@ -151,6 +151,6 @@ third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/depend: ../third-par
 third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/essl/vs_instancing.bin
 third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/glsl/vs_instancing.bin
 third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/depend: ../third-party/bgfx.cmake/bgfx/examples/runtime/shaders/spirv/vs_instancing.bin
-	cd /home/tliao/Documents/BrainGenix-ERS/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tliao/Documents/BrainGenix-ERS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : third-party/bgfx.cmake/CMakeFiles/example-05-instancing.dir/depend
 

@@ -46,7 +46,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/tliao/Documents/BrainGenix-ERS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/Build
+CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/build
 
 # Include any dependencies generated for this target.
 include third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/depend.make
@@ -59,16 +59,16 @@ include third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/flags.make
 
 third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/bimg/3rdparty/edtaa3/edtaa3func.cpp.o: third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/bimg/3rdparty/edtaa3/edtaa3func.cpp.o: ../third-party/bgfx.cmake/bimg/3rdparty/edtaa3/edtaa3func.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/bimg/3rdparty/edtaa3/edtaa3func.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/edtaa3.dir/bimg/3rdparty/edtaa3/edtaa3func.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/edtaa3/edtaa3func.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/bimg/3rdparty/edtaa3/edtaa3func.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/edtaa3.dir/bimg/3rdparty/edtaa3/edtaa3func.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/edtaa3/edtaa3func.cpp
 
 third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/bimg/3rdparty/edtaa3/edtaa3func.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/edtaa3.dir/bimg/3rdparty/edtaa3/edtaa3func.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/edtaa3/edtaa3func.cpp > CMakeFiles/edtaa3.dir/bimg/3rdparty/edtaa3/edtaa3func.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/edtaa3/edtaa3func.cpp > CMakeFiles/edtaa3.dir/bimg/3rdparty/edtaa3/edtaa3func.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/bimg/3rdparty/edtaa3/edtaa3func.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/edtaa3.dir/bimg/3rdparty/edtaa3/edtaa3func.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/edtaa3/edtaa3func.cpp -o CMakeFiles/edtaa3.dir/bimg/3rdparty/edtaa3/edtaa3func.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/edtaa3/edtaa3func.cpp -o CMakeFiles/edtaa3.dir/bimg/3rdparty/edtaa3/edtaa3func.cpp.s
 
 # Object files for target edtaa3
 edtaa3_OBJECTS = \
@@ -80,9 +80,9 @@ edtaa3_EXTERNAL_OBJECTS =
 third-party/bgfx.cmake/libedtaa3.a: third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/bimg/3rdparty/edtaa3/edtaa3func.cpp.o
 third-party/bgfx.cmake/libedtaa3.a: third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/build.make
 third-party/bgfx.cmake/libedtaa3.a: third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libedtaa3.a"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/edtaa3.dir/cmake_clean_target.cmake
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/edtaa3.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libedtaa3.a"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/edtaa3.dir/cmake_clean_target.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/edtaa3.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/build: third-party/bgfx.cmake/libedtaa3.a
@@ -90,10 +90,10 @@ third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/build: third-party/bgfx.cmake/libed
 .PHONY : third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/build
 
 third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/clean:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/edtaa3.dir/cmake_clean.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/edtaa3.dir/cmake_clean.cmake
 .PHONY : third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/clean
 
 third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/depend:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tliao/Documents/BrainGenix-ERS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : third-party/bgfx.cmake/CMakeFiles/edtaa3.dir/depend
 

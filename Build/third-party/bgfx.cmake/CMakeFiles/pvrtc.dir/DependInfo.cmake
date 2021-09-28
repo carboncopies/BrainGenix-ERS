@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/BitScale.cpp" "/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.o"
-  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/MortonTable.cpp" "/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.o"
-  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp" "/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.o"
-  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp" "/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.o"
-  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcPacket.cpp" "/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.o"
+  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/BitScale.cpp" "/home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/BitScale.cpp.o"
+  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/MortonTable.cpp" "/home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/MortonTable.cpp.o"
+  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp" "/home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcDecoder.cpp.o"
+  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp" "/home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcEncoder.cpp.o"
+  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/pvrtc/PvrTcPacket.cpp" "/home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/pvrtc.dir/bimg/3rdparty/pvrtc/PvrTcPacket.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -1,5 +1,5 @@
 # Ignore Build Data #
-build/
+Build/
 
 # Prerequisites
 *.d

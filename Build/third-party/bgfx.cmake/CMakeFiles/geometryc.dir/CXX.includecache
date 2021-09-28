@@ -308,11 +308,11 @@ new.h
 stddef.h
 ../third-party/bgfx.cmake/bx/include/tinystl/stddef.h
 
-/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/bounds.cpp
+/home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/bounds.cpp
 /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/examples/common/bounds.cpp
 -
 
-/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/vertexlayout.cpp
+/home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/vertexlayout.cpp
 /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/src/vertexlayout.cpp
 -
 

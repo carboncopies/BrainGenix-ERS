@@ -46,7 +46,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/tliao/Documents/BrainGenix-ERS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/Build
+CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/build
 
 # Include any dependencies generated for this target.
 include third-party/bgfx.cmake/CMakeFiles/mesa.dir/depend.make
@@ -59,42 +59,42 @@ include third-party/bgfx.cmake/CMakeFiles/mesa.dir/flags.make
 
 third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c.o: third-party/bgfx.cmake/CMakeFiles/mesa.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c.o: ../third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c
 
 third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c > CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c > CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c.i
 
 third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c -o CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c -o CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/main/imports.c.s
 
 third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c.o: third-party/bgfx.cmake/CMakeFiles/mesa.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c.o: ../third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c
 
 third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c > CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c > CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c.i
 
 third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c -o CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c -o CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/prog_hash_table.c.s
 
 third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.o: third-party/bgfx.cmake/CMakeFiles/mesa.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.o: ../third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c
 
 third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c > CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c > CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.i
 
 third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c -o CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c -o CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.s
 
 # Object files for target mesa
 mesa_OBJECTS = \
@@ -110,9 +110,9 @@ third-party/bgfx.cmake/libmesa.a: third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgf
 third-party/bgfx.cmake/libmesa.a: third-party/bgfx.cmake/CMakeFiles/mesa.dir/bgfx/3rdparty/glsl-optimizer/src/mesa/program/symbol_table.c.o
 third-party/bgfx.cmake/libmesa.a: third-party/bgfx.cmake/CMakeFiles/mesa.dir/build.make
 third-party/bgfx.cmake/libmesa.a: third-party/bgfx.cmake/CMakeFiles/mesa.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C static library libmesa.a"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/mesa.dir/cmake_clean_target.cmake
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mesa.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C static library libmesa.a"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/mesa.dir/cmake_clean_target.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mesa.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 third-party/bgfx.cmake/CMakeFiles/mesa.dir/build: third-party/bgfx.cmake/libmesa.a
@@ -120,10 +120,10 @@ third-party/bgfx.cmake/CMakeFiles/mesa.dir/build: third-party/bgfx.cmake/libmesa
 .PHONY : third-party/bgfx.cmake/CMakeFiles/mesa.dir/build
 
 third-party/bgfx.cmake/CMakeFiles/mesa.dir/clean:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/mesa.dir/cmake_clean.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/mesa.dir/cmake_clean.cmake
 .PHONY : third-party/bgfx.cmake/CMakeFiles/mesa.dir/clean
 
 third-party/bgfx.cmake/CMakeFiles/mesa.dir/depend:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/mesa.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tliao/Documents/BrainGenix-ERS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/mesa.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : third-party/bgfx.cmake/CMakeFiles/mesa.dir/depend
 

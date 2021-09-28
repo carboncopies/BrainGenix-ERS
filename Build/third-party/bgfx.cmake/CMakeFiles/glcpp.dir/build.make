@@ -46,7 +46,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/tliao/Documents/BrainGenix-ERS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/Build
+CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/build
 
 # Include any dependencies generated for this target.
 include third-party/bgfx.cmake/CMakeFiles/glcpp.dir/depend.make
@@ -59,68 +59,68 @@ include third-party/bgfx.cmake/CMakeFiles/glcpp.dir/flags.make
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.o: third-party/bgfx.cmake/CMakeFiles/glcpp.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.o: ../third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c > CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c > CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.i
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-lex.c.s
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.o: third-party/bgfx.cmake/CMakeFiles/glcpp.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.o: ../third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c > CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c > CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.i
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/glcpp-parse.c.s
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.o: third-party/bgfx.cmake/CMakeFiles/glcpp.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.o: ../third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c > CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c > CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.i
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/glsl/glcpp/pp.c.s
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.o: third-party/bgfx.cmake/CMakeFiles/glcpp.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.o: ../third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c > CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c > CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.i
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/hash_table.c.s
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.o: third-party/bgfx.cmake/CMakeFiles/glcpp.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.o: ../third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.o   -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c > CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c > CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.i
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c -o CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.s
 
 # Object files for target glcpp
 glcpp_OBJECTS = \
@@ -140,9 +140,9 @@ third-party/bgfx.cmake/libglcpp.a: third-party/bgfx.cmake/CMakeFiles/glcpp.dir/b
 third-party/bgfx.cmake/libglcpp.a: third-party/bgfx.cmake/CMakeFiles/glcpp.dir/bgfx/3rdparty/glsl-optimizer/src/util/ralloc.c.o
 third-party/bgfx.cmake/libglcpp.a: third-party/bgfx.cmake/CMakeFiles/glcpp.dir/build.make
 third-party/bgfx.cmake/libglcpp.a: third-party/bgfx.cmake/CMakeFiles/glcpp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C static library libglcpp.a"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/glcpp.dir/cmake_clean_target.cmake
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/glcpp.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C static library libglcpp.a"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/glcpp.dir/cmake_clean_target.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/glcpp.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/build: third-party/bgfx.cmake/libglcpp.a
@@ -150,10 +150,10 @@ third-party/bgfx.cmake/CMakeFiles/glcpp.dir/build: third-party/bgfx.cmake/libglc
 .PHONY : third-party/bgfx.cmake/CMakeFiles/glcpp.dir/build
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/clean:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/glcpp.dir/cmake_clean.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/glcpp.dir/cmake_clean.cmake
 .PHONY : third-party/bgfx.cmake/CMakeFiles/glcpp.dir/clean
 
 third-party/bgfx.cmake/CMakeFiles/glcpp.dir/depend:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/glcpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tliao/Documents/BrainGenix-ERS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/glcpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : third-party/bgfx.cmake/CMakeFiles/glcpp.dir/depend
 

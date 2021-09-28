@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/tinyexr/deps/miniz/miniz.c" "/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/tinyexr.dir/bimg/3rdparty/tinyexr/deps/miniz/miniz.c.o"
+  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/tinyexr/deps/miniz/miniz.c" "/home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/tinyexr.dir/bimg/3rdparty/tinyexr/deps/miniz/miniz.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

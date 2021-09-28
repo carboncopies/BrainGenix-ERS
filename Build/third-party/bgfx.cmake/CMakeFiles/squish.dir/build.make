@@ -46,7 +46,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/tliao/Documents/BrainGenix-ERS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/Build
+CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/build
 
 # Include any dependencies generated for this target.
 include third-party/bgfx.cmake/CMakeFiles/squish.dir/depend.make
@@ -59,120 +59,120 @@ include third-party/bgfx.cmake/CMakeFiles/squish.dir/flags.make
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/alpha.cpp.o: third-party/bgfx.cmake/CMakeFiles/squish.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/alpha.cpp.o: ../third-party/bgfx.cmake/bimg/3rdparty/libsquish/alpha.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/alpha.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/alpha.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/alpha.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/alpha.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/alpha.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/alpha.cpp
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/alpha.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/squish.dir/bimg/3rdparty/libsquish/alpha.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/alpha.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/alpha.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/alpha.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/alpha.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/alpha.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/squish.dir/bimg/3rdparty/libsquish/alpha.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/alpha.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/alpha.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/alpha.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/alpha.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/clusterfit.cpp.o: third-party/bgfx.cmake/CMakeFiles/squish.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/clusterfit.cpp.o: ../third-party/bgfx.cmake/bimg/3rdparty/libsquish/clusterfit.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/clusterfit.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/clusterfit.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/clusterfit.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/clusterfit.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/clusterfit.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/clusterfit.cpp
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/clusterfit.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/squish.dir/bimg/3rdparty/libsquish/clusterfit.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/clusterfit.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/clusterfit.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/clusterfit.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/clusterfit.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/clusterfit.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/squish.dir/bimg/3rdparty/libsquish/clusterfit.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/clusterfit.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/clusterfit.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/clusterfit.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/clusterfit.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourblock.cpp.o: third-party/bgfx.cmake/CMakeFiles/squish.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourblock.cpp.o: ../third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourblock.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourblock.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourblock.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourblock.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourblock.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourblock.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourblock.cpp
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourblock.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourblock.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourblock.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourblock.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourblock.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourblock.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourblock.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourblock.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourblock.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourblock.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourblock.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourblock.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourfit.cpp.o: third-party/bgfx.cmake/CMakeFiles/squish.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourfit.cpp.o: ../third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourfit.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourfit.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourfit.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourfit.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourfit.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourfit.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourfit.cpp
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourfit.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourfit.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourfit.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourfit.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourfit.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourfit.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourfit.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourfit.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourfit.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourfit.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourfit.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourfit.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourset.cpp.o: third-party/bgfx.cmake/CMakeFiles/squish.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourset.cpp.o: ../third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourset.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourset.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourset.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourset.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourset.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourset.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourset.cpp
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourset.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourset.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourset.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourset.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourset.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourset.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourset.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourset.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourset.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourset.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/colourset.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/colourset.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/maths.cpp.o: third-party/bgfx.cmake/CMakeFiles/squish.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/maths.cpp.o: ../third-party/bgfx.cmake/bimg/3rdparty/libsquish/maths.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/maths.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/maths.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/maths.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/maths.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/maths.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/maths.cpp
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/maths.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/squish.dir/bimg/3rdparty/libsquish/maths.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/maths.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/maths.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/maths.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/maths.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/maths.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/squish.dir/bimg/3rdparty/libsquish/maths.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/maths.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/maths.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/maths.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/maths.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/rangefit.cpp.o: third-party/bgfx.cmake/CMakeFiles/squish.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/rangefit.cpp.o: ../third-party/bgfx.cmake/bimg/3rdparty/libsquish/rangefit.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/rangefit.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/rangefit.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/rangefit.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/rangefit.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/rangefit.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/rangefit.cpp
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/rangefit.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/squish.dir/bimg/3rdparty/libsquish/rangefit.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/rangefit.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/rangefit.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/rangefit.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/rangefit.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/rangefit.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/squish.dir/bimg/3rdparty/libsquish/rangefit.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/rangefit.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/rangefit.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/rangefit.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/rangefit.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/singlecolourfit.cpp.o: third-party/bgfx.cmake/CMakeFiles/squish.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/singlecolourfit.cpp.o: ../third-party/bgfx.cmake/bimg/3rdparty/libsquish/singlecolourfit.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/singlecolourfit.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/singlecolourfit.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/singlecolourfit.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/singlecolourfit.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/singlecolourfit.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/singlecolourfit.cpp
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/singlecolourfit.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/squish.dir/bimg/3rdparty/libsquish/singlecolourfit.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/singlecolourfit.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/singlecolourfit.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/singlecolourfit.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/singlecolourfit.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/singlecolourfit.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/squish.dir/bimg/3rdparty/libsquish/singlecolourfit.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/singlecolourfit.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/singlecolourfit.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/singlecolourfit.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/singlecolourfit.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/squish.cpp.o: third-party/bgfx.cmake/CMakeFiles/squish.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/squish.cpp.o: ../third-party/bgfx.cmake/bimg/3rdparty/libsquish/squish.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/squish.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/squish.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/squish.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/squish.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/squish.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/squish.cpp
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/squish.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/squish.dir/bimg/3rdparty/libsquish/squish.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/squish.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/squish.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/squish.cpp > CMakeFiles/squish.dir/bimg/3rdparty/libsquish/squish.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/squish.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/squish.dir/bimg/3rdparty/libsquish/squish.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/squish.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/squish.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/libsquish/squish.cpp -o CMakeFiles/squish.dir/bimg/3rdparty/libsquish/squish.cpp.s
 
 # Object files for target squish
 squish_OBJECTS = \
@@ -200,9 +200,9 @@ third-party/bgfx.cmake/libsquish.a: third-party/bgfx.cmake/CMakeFiles/squish.dir
 third-party/bgfx.cmake/libsquish.a: third-party/bgfx.cmake/CMakeFiles/squish.dir/bimg/3rdparty/libsquish/squish.cpp.o
 third-party/bgfx.cmake/libsquish.a: third-party/bgfx.cmake/CMakeFiles/squish.dir/build.make
 third-party/bgfx.cmake/libsquish.a: third-party/bgfx.cmake/CMakeFiles/squish.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX static library libsquish.a"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/squish.dir/cmake_clean_target.cmake
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/squish.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX static library libsquish.a"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/squish.dir/cmake_clean_target.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/squish.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 third-party/bgfx.cmake/CMakeFiles/squish.dir/build: third-party/bgfx.cmake/libsquish.a
@@ -210,10 +210,10 @@ third-party/bgfx.cmake/CMakeFiles/squish.dir/build: third-party/bgfx.cmake/libsq
 .PHONY : third-party/bgfx.cmake/CMakeFiles/squish.dir/build
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/clean:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/squish.dir/cmake_clean.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/squish.dir/cmake_clean.cmake
 .PHONY : third-party/bgfx.cmake/CMakeFiles/squish.dir/clean
 
 third-party/bgfx.cmake/CMakeFiles/squish.dir/depend:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/squish.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tliao/Documents/BrainGenix-ERS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/squish.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : third-party/bgfx.cmake/CMakeFiles/squish.dir/depend
 

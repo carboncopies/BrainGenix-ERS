@@ -46,7 +46,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/tliao/Documents/BrainGenix-ERS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/Build
+CMAKE_BINARY_DIR = /home/tliao/Documents/BrainGenix-ERS/build
 
 # Include any dependencies generated for this target.
 include third-party/bgfx.cmake/CMakeFiles/shaderc.dir/depend.make
@@ -59,107 +59,107 @@ include third-party/bgfx.cmake/CMakeFiles/shaderc.dir/flags.make
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc.cpp.o: third-party/bgfx.cmake/CMakeFiles/shaderc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc.cpp.o: ../third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc.cpp
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc.cpp > CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc.cpp > CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc.cpp -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc.cpp -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_glsl.cpp.o: third-party/bgfx.cmake/CMakeFiles/shaderc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_glsl.cpp.o: ../third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_glsl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_glsl.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_glsl.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_glsl.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_glsl.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_glsl.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_glsl.cpp
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_glsl.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_glsl.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_glsl.cpp > CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_glsl.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_glsl.cpp > CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_glsl.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_glsl.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_glsl.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_glsl.cpp -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_glsl.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_glsl.cpp -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_glsl.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_hlsl.cpp.o: third-party/bgfx.cmake/CMakeFiles/shaderc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_hlsl.cpp.o: ../third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_hlsl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_hlsl.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_hlsl.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_hlsl.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_hlsl.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_hlsl.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_hlsl.cpp
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_hlsl.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_hlsl.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_hlsl.cpp > CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_hlsl.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_hlsl.cpp > CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_hlsl.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_hlsl.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_hlsl.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_hlsl.cpp -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_hlsl.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_hlsl.cpp -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_hlsl.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_pssl.cpp.o: third-party/bgfx.cmake/CMakeFiles/shaderc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_pssl.cpp.o: ../third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_pssl.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_pssl.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_pssl.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_pssl.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_pssl.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_pssl.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_pssl.cpp
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_pssl.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_pssl.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_pssl.cpp > CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_pssl.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_pssl.cpp > CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_pssl.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_pssl.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_pssl.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_pssl.cpp -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_pssl.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_pssl.cpp -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_pssl.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_spirv.cpp.o: third-party/bgfx.cmake/CMakeFiles/shaderc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_spirv.cpp.o: ../third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_spirv.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_spirv.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_spirv.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_spirv.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_spirv.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_spirv.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_spirv.cpp
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_spirv.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_spirv.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_spirv.cpp > CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_spirv.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_spirv.cpp > CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_spirv.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_spirv.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_spirv.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_spirv.cpp -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_spirv.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_spirv.cpp -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_spirv.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_metal.cpp.o: third-party/bgfx.cmake/CMakeFiles/shaderc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_metal.cpp.o: ../third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_metal.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_metal.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_metal.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_metal.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_metal.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_metal.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_metal.cpp
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_metal.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_metal.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_metal.cpp > CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_metal.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_metal.cpp > CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_metal.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_metal.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_metal.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_metal.cpp -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_metal.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bgfx/tools/shaderc/shaderc_metal.cpp -o CMakeFiles/shaderc.dir/bgfx/tools/shaderc/shaderc_metal.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/generated/vertexlayout.cpp.o: third-party/bgfx.cmake/CMakeFiles/shaderc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/generated/vertexlayout.cpp.o: third-party/bgfx.cmake/generated/vertexlayout.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/generated/vertexlayout.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/generated/vertexlayout.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/vertexlayout.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/generated/vertexlayout.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/generated/vertexlayout.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/vertexlayout.cpp
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/generated/vertexlayout.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/shaderc.dir/generated/vertexlayout.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/vertexlayout.cpp > CMakeFiles/shaderc.dir/generated/vertexlayout.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/vertexlayout.cpp > CMakeFiles/shaderc.dir/generated/vertexlayout.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/generated/vertexlayout.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/shaderc.dir/generated/vertexlayout.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/vertexlayout.cpp -o CMakeFiles/shaderc.dir/generated/vertexlayout.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/vertexlayout.cpp -o CMakeFiles/shaderc.dir/generated/vertexlayout.cpp.s
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/generated/shader.cpp.o: third-party/bgfx.cmake/CMakeFiles/shaderc.dir/flags.make
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/generated/shader.cpp.o: third-party/bgfx.cmake/generated/shader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/generated/shader.cpp.o"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/generated/shader.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/shader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object third-party/bgfx.cmake/CMakeFiles/shaderc.dir/generated/shader.cpp.o"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shaderc.dir/generated/shader.cpp.o -c /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/shader.cpp
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/generated/shader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/shaderc.dir/generated/shader.cpp.i"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/shader.cpp > CMakeFiles/shaderc.dir/generated/shader.cpp.i
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/shader.cpp > CMakeFiles/shaderc.dir/generated/shader.cpp.i
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/generated/shader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/shaderc.dir/generated/shader.cpp.s"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/generated/shader.cpp -o CMakeFiles/shaderc.dir/generated/shader.cpp.s
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/generated/shader.cpp -o CMakeFiles/shaderc.dir/generated/shader.cpp.s
 
 # Object files for target shaderc
 shaderc_OBJECTS = \
@@ -205,8 +205,8 @@ third-party/bgfx.cmake/shaderc: third-party/bgfx.cmake/libtinyexr.a
 third-party/bgfx.cmake/shaderc: third-party/bgfx.cmake/libglcpp.a
 third-party/bgfx.cmake/shaderc: third-party/bgfx.cmake/libmesa.a
 third-party/bgfx.cmake/shaderc: third-party/bgfx.cmake/CMakeFiles/shaderc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable shaderc"
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/shaderc.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tliao/Documents/BrainGenix-ERS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable shaderc"
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/shaderc.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/build: third-party/bgfx.cmake/shaderc
@@ -214,10 +214,10 @@ third-party/bgfx.cmake/CMakeFiles/shaderc.dir/build: third-party/bgfx.cmake/shad
 .PHONY : third-party/bgfx.cmake/CMakeFiles/shaderc.dir/build
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/clean:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/shaderc.dir/cmake_clean.cmake
+	cd /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake && $(CMAKE_COMMAND) -P CMakeFiles/shaderc.dir/cmake_clean.cmake
 .PHONY : third-party/bgfx.cmake/CMakeFiles/shaderc.dir/clean
 
 third-party/bgfx.cmake/CMakeFiles/shaderc.dir/depend:
-	cd /home/tliao/Documents/BrainGenix-ERS/Build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/shaderc.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tliao/Documents/BrainGenix-ERS/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tliao/Documents/BrainGenix-ERS /home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake /home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/shaderc.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : third-party/bgfx.cmake/CMakeFiles/shaderc.dir/depend
 

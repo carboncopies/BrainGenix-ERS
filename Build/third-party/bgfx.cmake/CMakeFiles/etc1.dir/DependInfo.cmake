@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/etc1/etc1.cpp" "/home/tliao/Documents/BrainGenix-ERS/Build/third-party/bgfx.cmake/CMakeFiles/etc1.dir/bimg/3rdparty/etc1/etc1.cpp.o"
+  "/home/tliao/Documents/BrainGenix-ERS/third-party/bgfx.cmake/bimg/3rdparty/etc1/etc1.cpp" "/home/tliao/Documents/BrainGenix-ERS/build/third-party/bgfx.cmake/CMakeFiles/etc1.dir/bimg/3rdparty/etc1/etc1.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
