@@ -10,7 +10,7 @@
 
 #include <string>
 
-#include "Core/IO/WindowManager.cpp"
+
 
 
 class GraphicsSubsystem {
@@ -30,6 +30,8 @@ class GraphicsSubsystem {
             // Create Pointers To SystemConfig and Logger
             SystemConfiguration = SystemConfigurationDict;
             Logger = LoggerInstance;
+
+            bgfx::init();
 
             // Log Graphics Init
             Logger.Log("Initializng Graphics Subsystem", 3);
@@ -63,7 +65,15 @@ class GraphicsSubsystem {
                 Logger.Log("Creating GLFW Window Surface", 3);
                 Window = glfwCreateWindow(WindowWidth, WindowHeight, WindowTitle, NULL, NULL);
 
+            } else {
+
+                // Log GLFW Disabled
+                Logger.Log("GLFW Local Window Disabled In Config File", 4);
+
             }
+
+
+
 
         }
 
