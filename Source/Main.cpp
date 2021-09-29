@@ -9,9 +9,10 @@
 */
 
 
+#include "Core/Management/LoggingSystem.cpp"
 
 #include "Core/Initialization/ConfigurationLoader.cpp"
-#include "Core/Management/LoggingSystem.cpp"
+#include "Core/Initialization/GraphicsInitialization.cpp"
 
 int main() {
 
@@ -23,5 +24,7 @@ int main() {
     sERSLogger.InitializeLogger(SystemConfiguration);
 
     sERSLogger.Log("Initialized Logger Subsystem", 5);
+
+
 
 }
