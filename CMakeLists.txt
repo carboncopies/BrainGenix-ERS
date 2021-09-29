@@ -24,4 +24,4 @@ target_link_libraries("${PROJECT_NAME}" "glfw" "${GLFW_LIBRARIES}")
 
 # Add YAML-CPP Library
 set(YAML-CPP_DIR "${LIB_DIR}/yaml-cpp")
-add_subdirectory("${YAML-CPP_DIR")
+add_subdirectory("${YAML-CPP_DIR}")
