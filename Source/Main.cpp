@@ -10,14 +10,18 @@
 
 
 
-//#include <yaml-cpp/yaml.h>
-
-//#include "Core/Initialization/ConfigurationLoader.cpp"
+#include "Core/Initialization/ConfigurationLoader.cpp"
+#include "Core/Management/LoggingSystem.cpp"
 
 int main() {
 
-
     // Load System Configuration File
-    //const YAML::Node SystemConfiguration = LoadConfig("Config.yaml");
+    const YAML::Node SystemConfiguration = LoadConfig("Config.yaml");
+
+    // Instantiate Logging Subsystem //
+    LoggerClass sERSLogger;
+    sERSLogger.InitializeLogger(SystemConfiguration);
+
+    sERSLogger.Log("Initialized Logger Subsystem", 5);
 
 }
