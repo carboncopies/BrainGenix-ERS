@@ -38,10 +38,10 @@ set(GLFW_DIR "${LIB_DIR}/glfw")
 add_subdirectory("${GLFW_DIR}")
 target_link_libraries("${PROJECT_NAME}" "glfw" "${GLFW_LIBRARIES}")
 
-# Add ASSIMP Library
-set(ASSIMP_DIR "${LIB_DIR}/assimp")
-add_subdirectory("${ASSIMP_DIR}")
-target_link_libraries("${PROJECT_NAME}" "${ASSIMP_LIBRARIES}")
+# # Add ASSIMP Library
+# set(ASSIMP_DIR "${LIB_DIR}/assimp")
+# add_subdirectory("${ASSIMP_DIR}")
+# target_link_libraries("${PROJECT_NAME}" "${ASSIMP_LIBRARIES}")
 
 # Add Bullet Library
 set(BULLET_DIR "${LIB_DIR}/bullet")
