@@ -23,9 +23,9 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
 
 
 # Add YAML-CPP Library
-set(YAML_CPP_DIR "${LIB_DIR}/yaml-cpp")
-add_subdirectory("${YAML_CPP_DIR}")
-target_link_libraries("${PROJECT_NAME}" "${YAML_CPP_LIBRARIES}")
+set(YAML_CPP_VERSION "yaml-cpp")
+add_subdirectory("${LIB_DIR}/${YAML_CPP_VERSION}")
+target_link_libraries("${PROJECT_NAME}" "${YAML_CPP_VERSION}")
 
 # Add BGFX Library
 set(BGFX_CMAKE_DIR "${LIB_DIR}/bgfx.cmake")
