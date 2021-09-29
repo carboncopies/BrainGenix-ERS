@@ -55,9 +55,13 @@ class GraphicsSubsystem {
                 Logger.Log("Checking Config File For: 'WindowTitle' Parameter", 2);
                 const char* WindowTitle = SystemConfiguration["WindowTitle"].as<std::string>().c_str();
 
-                // create window
+                // Initialize GLFW
+                Logger.Log("Initializing GLFW", 4);
                 glfwInit();
-                //Window = glfwCreateWindow()
+
+                // Create Window
+                Logger.Log("Creating GLFW Window Surface", 3)
+                Window = glfwCreateWindow(WindowWidth, WindowHeight, WindowTitle, NULL, NULL);
 
             }
 
