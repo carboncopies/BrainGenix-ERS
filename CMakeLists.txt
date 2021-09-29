@@ -44,6 +44,17 @@ add_subdirectory("${ASSIMP_DIR}")
 target_link_libraries("${PROJECT_NAME}" "${ASSIMP_LIBRARIES}")
 
 # Add CPPKafka Library
-set(CPP_KAFKA_DIR "${LIB_DIR}/cppkafka")
-add_subdirectory("${CPP_KAFKA_DIR}")
-target_link_libraries("${PROJECT_NAME}" "${CPP_KAFKA_DIR}")
+# set(CPPKAFKA_LIBRARY "${LIB_DIR}/cppkafka")
+# set(CPPKAFKA_INCLUDES "${CPPKAFKA_LIBRARY}/include")
+# include(FindPackageHandleStandardArgs)
+# include(SelectLibraryConfigurations)
+
+# find_path(CPPKAFKA_INCLUDES NAMES cppkafka.h HINTS ${CURRENT_INSTALLED_DIR} PATH_SUFFIXES cppkafka)
+
+# find_library(CPPKAFKA_LIBRARY_DEBUG NAMES cppkafka PATH_SUFFIXES lib PATHS "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}" NO_DEFAULT_PATH REQUIRED)
+# find_library(CPPKAFKA_LIBRARY_RELEASE NAMES cppkafka PATH_SUFFIXES lib PATHS "${_VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/debug" NO_DEFAULT_PATH REQUIRED)
+
+# select_library_configurations(CPPKAFKA)
+
+# #target_include_directories("${PROJECT_NAME}" "${CPPKAFKA_INCLUDES}")
+# #target_link_libraries("${PROJECT_NAME}" "${CPPKAFKA_LIBRARY}")
