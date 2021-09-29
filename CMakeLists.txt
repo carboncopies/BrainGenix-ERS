@@ -1,6 +1,10 @@
 # Set CMAKE Version, Define Project
-cmake_minimum_required (VERSION 3.16.3)
-project ("BrainGenix-ERS")
+cmake_minimum_required (VERSION 3.1...3.21)
+project(
+	"BrainGenix-ERS"
+	VERSION "0.0.1"
+	LANGUAGES CXX
+	)
 
 # Set Dirs
 set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
