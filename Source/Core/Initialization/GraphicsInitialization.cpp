@@ -60,7 +60,7 @@ class GraphicsSubsystem {
                 glfwInit();
 
                 // Create Window
-                Logger.Log("Creating GLFW Window Surface", 3)
+                Logger.Log("Creating GLFW Window Surface", 3);
                 Window = glfwCreateWindow(WindowWidth, WindowHeight, WindowTitle, NULL, NULL);
 
             }
