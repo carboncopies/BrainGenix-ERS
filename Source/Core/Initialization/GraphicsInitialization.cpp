@@ -9,7 +9,7 @@
 */ 
 
 #include <string>
-
+#include "bgfx/bgfx.h"
 
 
 
@@ -35,6 +35,14 @@ class GraphicsSubsystem {
 
             // Log Graphics Init
             Logger.Log("Initializng Graphics Subsystem", 3);
+
+
+            // Initialize BGFX
+            Logger.Log("Initializing BGFX Rendering Library", 4);
+            bgfx::init()
+
+
+
 
             // Initialize Local Window
             Logger.Log("Running Local Window Init", 3);
