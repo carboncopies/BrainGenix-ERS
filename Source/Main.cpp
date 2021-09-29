@@ -9,3 +9,9 @@
 */
 
 #include "Core/Initialization/ConfigurationLoader.cpp"
+
+int main() {
+
+
+    
+}
