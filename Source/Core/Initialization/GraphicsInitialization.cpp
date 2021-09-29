@@ -45,19 +45,21 @@ class GraphicsSubsystem {
                 // Log Window Creation
                 Logger.Log("Local Window Enabled, Creating GLFW Window", 3);
 
-                // Get Desired Window Resolution
-                Logger.Log("Reading GLFW Window Resolution Parameters", 2);
+                // Get Desired Window Params
+                Logger.Log("Reading GLFW Window Parameters", 2);
 
                 int WindowWidth;
                 int WindowHeight;
+                char* WindowTitle;
 
                 Logger.Log("Checking Config File For: 'WindowWidth' Parameter", 2);
                 WindowWidth = SystemConfiguration["WindowWidth"].as<int>();
-                Logger.Log(std::string("Read Value As: '" + std::string(WindowWidth) + "'").c_str(), 1);
 
-                Logger.Log("Checking Config File For 'WindowHeight' Parameter", 2);
+                Logger.Log("Checking Config File For: 'WindowHeight' Parameter", 2);
                 WindowHeight = SystemConfiguration["WindowHeight"].as<int>();
-                Logger.Log(std::string("Read Value As: '" + std::string(WindowHeight) + "'").c_str(), 1);
+
+                Logger.Log("Checking Config File For: 'WindowTitle' Parameter", 2);
+                WindowTitle = SystemConfiguration["WindowTitle"].as<std::string>();
 
                 // create window
                 glfwInit();
