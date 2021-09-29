@@ -57,7 +57,7 @@ class GraphicsSubsystem {
 
                 Logger.Log("Checking Config File For 'WindowHeight' Parameter", 2);
                 WindowHeight = SystemConfiguration["WindowHeight"].as<int>();
-                Logger.Log(std::string("Read Value As: '" + std::string(WindowHeight) + "'").c_str(), 1)
+                Logger.Log(std::string("Read Value As: '" + std::string(WindowHeight) + "'").c_str(), 1);
 
                 // create window
                 glfwInit();
