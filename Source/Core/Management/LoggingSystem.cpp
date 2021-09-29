@@ -55,11 +55,11 @@ class LoggerClass {
 
 
         // Define Initialization Function //
-        void InitializeLogger(YAML::Node LoggerConfiguration) { // ** NOTE: THIS SHOULD TAKE A CONFIG DICT FROM YAML IN THE FUTRE ** //
+        void InitializeLogger(YAML::Node SystemConfiguration) { // ** NOTE: THIS SHOULD TAKE A CONFIG DICT FROM YAML IN THE FUTRE ** //
 
             // Update Local Config Parameters //
-            PrintLogOutput = LoggerConfiguration["EnablePrintOutput"].as<bool>();
-            MinimumLogLevel = LoggerConfiguration["SetMinimumLogLevel"].as<int>();
+            PrintLogOutput = SystemConfiguration["EnablePrintOutput"].as<bool>();
+            MinimumLogLevel = SystemConfiguration["SetMinimumLogLevel"].as<int>();
 
             // Print Log Key //
             if (PrintLogOutput) {
