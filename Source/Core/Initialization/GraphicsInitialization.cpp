@@ -61,7 +61,7 @@ class GraphicsSubsystem {
 
                 // create window
                 glfwInit();
-                Window = glfwCreateWindow()
+                //Window = glfwCreateWindow()
 
             }
 
