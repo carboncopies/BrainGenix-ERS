@@ -42,3 +42,8 @@ target_link_libraries("${PROJECT_NAME}" "glfw" "${GLFW_LIBRARIES}")
 set(ASSIMP_DIR "${LIB_DIR}/assimp")
 add_subdirectory("${ASSIMP_DIR}")
 target_link_libraries("${PROJECT_NAME}" "${ASSIMP_LIBRARIES}")
+
+# Add CPPKafka Library
+set(CPP_KAFKA_DIR "${LIB_DIR}/cppkafka")
+add_subdirectory("${CPP_KAFKA_DIR}")
+target_link_libraries("${PROJECT_NAME}" "${CPP_KAFKA_DIR}")
