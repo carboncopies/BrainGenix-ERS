@@ -43,6 +43,17 @@ set(ASSIMP_DIR "${LIB_DIR}/assimp")
 add_subdirectory("${ASSIMP_DIR}")
 target_link_libraries("${PROJECT_NAME}" "${ASSIMP_LIBRARIES}")
 
+# Add MYSQL Library
+# set(MYSQL_CONNECTOR_DIR "${LIB_DIR}/mysql-connector-cpp")
+# include_directories("${MYSQL_CONNECTION_DIR}/include")
+# include_directories("${MYSQL_CONNECTION_DIR}/include/cppconn")
+# link_directories("${MYSQL_CONNECTION_DIR}/lib")
+
+# target_link_libraries("${PROJECT_NAME}" curl mysqlcppconn)
+# target_compile_features("${PROJECT_NAME}" PRIVATE cxx_range_for)  
+
+
+
 # Add Nuklear Library
 # set(NULKEAR_DIR "${LIB_DIR}/Nuklear")
 # add_subdirectory("${NULKEAR_DIR}")
