@@ -24,6 +24,9 @@ int main() {
 
     sERSLogger.Log("Initialized Logger Subsystem", 5);
 
+    // Initialize Graphics Subsystem
+    GraphicsSubsystem sERSGraphicsSystem;
+    sERSGraphicsSystem.InitializeGraphics(SystemConfiguration, sERSLogger);
 
 
 }
