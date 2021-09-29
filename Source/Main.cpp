@@ -1,13 +1,11 @@
-#include "bgfx/bgfx.h"
-#include "GLFW/glfw3.h"
+//======================================================================//
+// This file is part of the BrainGenix-ERS Environment Rendering System //
+//======================================================================//
 
-#define WNDW_WIDTH 1600
-#define WNDW_HEIGHT 900
+/*
+    Description: This is the main file of the system.
+    Additonal Notes: None
+    Date Created: 2021-09-28
+*/
 
-int main(void)
-{
-    glfwInit();
-    GLFWwindow* window = glfwCreateWindow(WNDW_WIDTH, WNDW_HEIGHT, "Hello, bgfx!", NULL, NULL);
-    bgfx::init();
-    return 0;
-}
+#include "Core/Initialization/ConfigurationLoader.cpp"
