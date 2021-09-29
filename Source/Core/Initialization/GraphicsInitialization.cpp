@@ -9,9 +9,11 @@
 */ 
 
 #include <string>
-#include "bgfx/bgfx.h"
-#include "GLFW/glfw3.h"
 
+#include <bgfx/bgfx.h>
+
+#include <GLFW/glfw3.h>
+#include <GLFW/glfw3native.h>
 
 
 class GraphicsSubsystem {
@@ -75,7 +77,7 @@ class GraphicsSubsystem {
                 Logger.Log("Collecting BGFX Platform Data", 3);
                 bgfx::PlatformData PlatformDataInstance;
 
-                PlatformDataInstance.nwh = glfwGetWindowAttrib(Window);
+                PlatformDataInstance.nwh = glfwGetCocoaWindow(Window);
 
                 bgfx::setPlatformData(PlatformDataInstance);
 
