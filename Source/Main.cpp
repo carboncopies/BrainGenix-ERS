@@ -8,7 +8,6 @@
     Date Created: 2021-09-28
 */
 
-#include <yaml-cpp/yaml.h>
 
 #include "Core/Initialization/ConfigurationLoader.cpp"
 
