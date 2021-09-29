@@ -12,6 +12,7 @@
 
 int main() {
 
+    // Load System Configuration File
+    const YAML::Node SystemConfiguration = LoadConfig("Config.yaml");
 
-    
 }
