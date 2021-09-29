@@ -11,19 +11,18 @@ set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 
 # Link BGFX
 set(BGFX_CMAKE_DIR "${LIB_DIR}/bgfx.cmake")
-
 add_subdirectory("${BGFX_CMAKE_DIR}")
 
 # Link GLFW
-#set(GLFW_DIR "${LIB_DIR}/glfw")
-#add_subdirectory("${GLFW_DIR}")
+set(GLFW_DIR "${LIB_DIR}/glfw")
+add_subdirectory("${GLFW_DIR}")
 
 
 
 
 # Add Main.cpp
-#add_executable("${PROJECT_NAME}" "${SRC_DIR}/Main.cpp")
+add_executable("${PROJECT_NAME}" "${SRC_DIR}/Main.cpp")
 
-#target_link_libraries("${PROJECT_NAME}", bgfx)
-#target_link_libraries("${PROJECT_NAME}", bx)
+target_link_libraries("${PROJECT_NAME}" bgfx)
+target_link_libraries("${PROJECT_NAME}" bx)
 
