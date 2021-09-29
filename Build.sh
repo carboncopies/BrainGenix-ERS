@@ -2,6 +2,6 @@ cd Build
 cmake ..
 make -j 24
 
-cd Binaries
+cd ../Binaries
 ./BrainGenix-ERS
 cd ..
