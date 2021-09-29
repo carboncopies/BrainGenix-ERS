@@ -32,16 +32,12 @@ class GraphicsSubsystem {
             SystemConfiguration = SystemConfigurationDict;
             Logger = LoggerInstance;
 
-
             // Log Graphics Init
             Logger.Log("Initializng Graphics Subsystem", 3);
-
 
             // Initialize BGFX
             Logger.Log("Initializing BGFX Rendering Library", 4);
             bgfx::init();
-
-
 
 
             // Initialize Local Window
@@ -73,6 +69,18 @@ class GraphicsSubsystem {
                 Logger.Log("Creating GLFW Window Surface", 3);
                 Window = glfwCreateWindow(WindowWidth, WindowHeight, WindowTitle, NULL, NULL);
 
+
+                // Connect BGFX To Display Surface - NOTE: THIS IS A WIP, MUST BE ABLE TO RENDER TO NETWORK DISPLAY SURFACE
+                // Get BGFX Platform Data
+                Logger.Log("Collecting BGFX Platform Data", 3);
+                bgfx::PlatformData PlatformDataInstance;
+
+                PlatformDataInstance.nwh = glfwGetWindowAttrib(Window);
+
+                bgfx::setPlatformData(PlatformDataInstance);
+
+
+
             } else {
 
                 // Log GLFW Disabled
@@ -80,9 +88,14 @@ class GraphicsSubsystem {
 
             }
 
+            
+
+
+
 
 
 
         }
+
 
 };
