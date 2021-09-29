@@ -43,6 +43,13 @@ set(ASSIMP_DIR "${LIB_DIR}/assimp")
 add_subdirectory("${ASSIMP_DIR}")
 target_link_libraries("${PROJECT_NAME}" "${ASSIMP_LIBRARIES}")
 
+# Add Nuklear Library
+# set(NULKEAR_DIR "${LIB_DIR}/Nuklear")
+# add_subdirectory("${NULKEAR_DIR}")
+# target_link_libraries("${PROJECT_NAME}" "${NULKEAR_LIBRARIES}")
+
+
+
 # Add CPPKafka Library
 # set(CPPKAFKA_LIBRARY "${LIB_DIR}/cppkafka")
 # set(CPPKAFKA_INCLUDES "${CPPKAFKA_LIBRARY}/include")
@@ -58,3 +65,5 @@ target_link_libraries("${PROJECT_NAME}" "${ASSIMP_LIBRARIES}")
 
 # #target_include_directories("${PROJECT_NAME}" "${CPPKAFKA_INCLUDES}")
 # #target_link_libraries("${PROJECT_NAME}" "${CPPKAFKA_LIBRARY}")
+
+
