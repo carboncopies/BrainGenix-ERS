@@ -10,6 +10,7 @@
 
 #include <string>
 #include "bgfx/bgfx.h"
+#include "GLFW/glfw3.h"
 
 
 
@@ -31,7 +32,6 @@ class GraphicsSubsystem {
             SystemConfiguration = SystemConfigurationDict;
             Logger = LoggerInstance;
 
-            bgfx::init();
 
             // Log Graphics Init
             Logger.Log("Initializng Graphics Subsystem", 3);
@@ -39,7 +39,7 @@ class GraphicsSubsystem {
 
             // Initialize BGFX
             Logger.Log("Initializing BGFX Rendering Library", 4);
-            bgfx::init()
+            bgfx::init();
 
 
 
