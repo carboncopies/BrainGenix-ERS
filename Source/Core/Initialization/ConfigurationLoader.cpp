@@ -3,10 +3,10 @@
 //======================================================================//
 
 /*
-    Description: This file loads the local system configuration file.
+    Description: This file is responsible for implementing the configuration loading classes.
     Additonal Notes: None
-    Date Created: 2021-09-28
-*/
+    Date Created: 2021-05-31
+*/ 
 
 #include <iostream>
 #include <string>
@@ -15,10 +15,10 @@
 
 YAML::Node LoadConfig(const char* ConfigurationPath) {
 
-    // Read Configuration
-    YAML::Node ConfigurationDictionary = YAML::LoadFile(ConfigurationPath);
+    // Read Configuration //
+    YAML::Node ConfigurationDictionary = YAML::Load(ConfigurationPath);
 
-    // Return Dictionary
+    // Return Dictionary //
     return ConfigurationDictionary;
 
 }
