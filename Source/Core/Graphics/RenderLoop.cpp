@@ -51,6 +51,8 @@ class RenderLoopClass {
             // Render Frame
             bgfx::frame();
 
+            bgfx::touch(0);
+
             // Update Counter
             FrameCounter ++;
 
