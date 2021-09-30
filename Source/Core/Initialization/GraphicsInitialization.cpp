@@ -88,6 +88,9 @@ class GraphicsSubsystem {
                 // Magic Platform Instance Stuff
                 #if BX_PLATFORM_LINUX || BX_PLATFORM_BSD 
                 
+                    // Add Nice Linux Message :)
+                    Logger.Log("Detected Linux/BSD Platform - Far Better Than Windows/OSX", 3);
+
                     #if ENTRY_CONFIG_USE_WAYLAND
                         PlatformDataInstance.ndt      = glfwGetWaylandDisplay(); 
                     #else 
@@ -97,10 +100,16 @@ class GraphicsSubsystem {
                     
                 #elif BX_PLATFORM_OSX
                 
+                        // Add Snarky OSX Message
+                        Logger.Log("Detected OSX - Yuck, You Should Use Linux/BSD", 3);
+
                         PlatformDataInstance.ndt      = NULL; 
                 
                 #elif BX_PLATFORM_WINDOWS 
                 
+                        // Add Snarky Windows Message
+                        Logger.Log("Detected Windows - Not As Bad As OSX, Still Though, You Should Use Linux/BSD", 3);
+
                         PlatformDataInstance.ndt      = NULL; 
                         PlatformDataInstance.nwh      = glfwGetWin32Window(Window);
                 
@@ -108,7 +117,7 @@ class GraphicsSubsystem {
 
                 // Log Setting Platform Data
                 Logger.Log("Setting Platform Data", 2);
-                bgfx::setPlatformData(PlatformDataInstance);
+                //bgfx::setPlatformData(PlatformDataInstance);
 
 
 
