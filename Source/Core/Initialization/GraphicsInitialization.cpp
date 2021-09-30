@@ -160,6 +160,7 @@ class GraphicsSubsystem {
                 BgfxInitConfig.type = bgfx::RendererType::OpenGL;
             }
 
+
             Logger.Log("Checking Config File For 'RenderWidthPixels' Parameter", 3);
             RenderWidthPixels = SystemConfiguration["RenderWidthPixels"].as<int>();
             BgfxInitConfig.resolution.width = RenderWidthPixels;
@@ -167,10 +168,10 @@ class GraphicsSubsystem {
             RenderHeightPixels = SystemConfiguration["RenderHeightPixels"].as<int>();            
             BgfxInitConfig.resolution.height = RenderHeightPixels;
 
+
             // Initialize BGFX
             Logger.Log("Initializing BGFX", 5);
             bgfx::init(BgfxInitConfig);
-            bgfx::renderFrame();
 
             // Set Window Redraw Paramaters
             bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x443355FF, 1.0f, 0);
