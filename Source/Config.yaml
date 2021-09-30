@@ -14,3 +14,4 @@ WindowTitle: "BrainGenix-ERS"
 RenderWidthPixels: 800
 RenderHeightPixels: 600
 AllowRenderResize: True
+RendererBackend: "Vulkan" # Choice is "Vulkan" or "OpenGL"
