@@ -12,6 +12,7 @@
 #include "Core/Initialization/ConfigurationLoader.cpp"
 #include "Core/Management/LoggingSystem.cpp"
 #include "Core/Initialization/GraphicsInitialization.cpp"
+#include "Core/Graphics/RenderLoop.cpp"
 
 int main() {
 
@@ -28,5 +29,19 @@ int main() {
     GraphicsSubsystem sERSGraphicsSystem;
     sERSGraphicsSystem.InitializeGraphics(SystemConfiguration, sERSLogger);
 
+
+    // Initialize Render Loop
+    RenderLoopClass sERSRenderLoop;
+    sERSRenderLoop.InitializeRenderLoop(sERSGraphicsSystem, sERSLogger);
+
+
+    // Main Program Loop
+    bool ProgramShouldRun = true;
+    while (ProgramShouldRun) {
+
+        // Update The Graphics
+        sERSRenderLoop.RenderLoop();
+
+    }
 
 }
