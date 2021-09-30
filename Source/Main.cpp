@@ -36,6 +36,7 @@ int main() {
 
 
     // Main Program Loop
+    Logger.Log("Entering Main Program Loop", 4);
     bool ProgramShouldRun = true;
     while (ProgramShouldRun) {
 
