@@ -59,7 +59,7 @@ class GraphicsSubsystem {
             Logger.Log("Running Local Window Init", 3);
             Logger.Log("Checking Config File For: 'WindowEnabled' Parameter", 2);
 
-            const bool LocalWindowEnabled = SystemConfiguration["WindowEnabled"].as<bool>();
+            LocalWindowEnabled = SystemConfiguration["WindowEnabled"].as<bool>();
 
             if (LocalWindowEnabled == true) {
 
@@ -125,17 +125,11 @@ class GraphicsSubsystem {
                 Logger.Log("Setting Platform Data", 2);
                 BgfxInitConfig.platformData = PlatformDataInstance;
 
-                // Set Local Window State
-                LocalWindowEnabled = true;
-
 
             } else {
 
                 // Log GLFW Disabled
                 Logger.Log("GLFW Local Window Disabled In Config File", 4);
-
-                // Set Local Window State
-                LocalWindowEnabled = false;
 
             }
 
