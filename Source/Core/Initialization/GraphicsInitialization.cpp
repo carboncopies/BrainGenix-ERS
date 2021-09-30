@@ -132,7 +132,7 @@ class GraphicsSubsystem {
             // More Platform Configuration Stuff
             Logger.Log("Setting BGFX Rendering Parameters", 3);
 
-            Logger.Log("Checking Config File For 'RendererBackend' Parameter", 2);
+            Logger.Log("Checking Config File For 'UseVulkan' Parameter", 2);
             bool UseVulkanBackend = SystemConfiguration["UseVulkan"].as<bool>();
 
             if (UseVulkanBackend) {
