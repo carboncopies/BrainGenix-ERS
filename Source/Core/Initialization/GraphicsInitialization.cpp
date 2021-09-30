@@ -21,7 +21,6 @@
 #endif
 
 #include <GLFW/glfw3.h>
-//#include "GLFW/glfw3native.h"
 
 
 class GraphicsSubsystem {
@@ -85,7 +84,6 @@ class GraphicsSubsystem {
                 Logger.Log("Collecting BGFX Platform Data", 3);
                 bgfx::PlatformData PlatformDataInstance;
 
-//                bgfx::setPlatformData(PlatformDataInstance);
 
                 // Magic Platform Instance Stuff
                 #if BX_PLATFORM_LINUX || BX_PLATFORM_BSD 
@@ -106,7 +104,11 @@ class GraphicsSubsystem {
                         PlatformDataInstance.ndt      = NULL; 
                         PlatformDataInstance.nwh      = glfwGetWin32Window(Window);
                 
-                #endif // BX_PLATFORM_*
+                #endif
+
+                // Log Setting Platform Data
+                Logger.Log("Setting Platform Data", 2);
+                bgfx::setPlatformData(PlatformDataInstance);
 
 
 
