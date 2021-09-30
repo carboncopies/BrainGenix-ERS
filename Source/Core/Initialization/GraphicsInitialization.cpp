@@ -86,6 +86,7 @@ class GraphicsSubsystem {
 
                 // Create Window
                 Logger.Log("Creating GLFW Window Surface", 3);
+                glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
                 Window = glfwCreateWindow(WindowWidth, WindowHeight, WindowTitle, NULL, NULL);
 
 
@@ -132,7 +133,7 @@ class GraphicsSubsystem {
                 Logger.Log("Setting Platform Data", 2);
                 BgfxInitConfig.platformData = PlatformDataInstance;
 
-                bgfx::glfwSetWindow(Window);
+                // bgfx::glfwSetWindow(Window);
 
 
             } else {
