@@ -10,14 +10,18 @@
 
 #include <string>
 
-#define GLFW_EXPOSE_NATIVE_COCOA
-#define GLFW_EXPOSE_NATIVE_NSGL
-
 #include <bgfx/bgfx.h>
-#include <bgfx/platform.h>
+
+
+
+#if BX_PLATFORM_LINUX || BX_PLATFORM_BSD 
+    #define GLFW_EXPOSE_NATIVE_X11
+#else
+    #define GLFW_EXPOSE_NATIVE_WIN32
+#endif
 
 #include <GLFW/glfw3.h>
-#include <GLFW/glfw3native.h>
+//#include "GLFW/glfw3native.h"
 
 
 class GraphicsSubsystem {
@@ -81,9 +85,29 @@ class GraphicsSubsystem {
                 Logger.Log("Collecting BGFX Platform Data", 3);
                 bgfx::PlatformData PlatformDataInstance;
 
-                PlatformDataInstance.nwh = glfwGetCocoaWindow(Window);
+//                bgfx::setPlatformData(PlatformDataInstance);
 
-                bgfx::setPlatformData(PlatformDataInstance);
+                // Magic Platform Instance Stuff
+                #if BX_PLATFORM_LINUX || BX_PLATFORM_BSD 
+                
+                    #if ENTRY_CONFIG_USE_WAYLAND
+                        PlatformDataInstance.ndt      = glfwGetWaylandDisplay(); 
+                    #else 
+                        PlatformDataInstance.ndt      = glfwGetX11Display(); 
+                        PlatformDataInstance.nwh      = (void*)glfwGetX11Window(Window);
+                    #endif 
+                    
+                #elif BX_PLATFORM_OSX
+                
+                        PlatformDataInstance.ndt      = NULL; 
+                
+                #elif BX_PLATFORM_WINDOWS 
+                
+                        PlatformDataInstance.ndt      = NULL; 
+                        PlatformDataInstance.nwh      = glfwGetWin32Window(Window);
+                
+                #endif // BX_PLATFORM_*
+
 
 
 
