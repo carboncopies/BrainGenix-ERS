@@ -146,7 +146,12 @@ class GraphicsSubsystem {
             }
 
 
-
+            Logger.Log("Checking Config File For 'RenderWidthPixels' Parameter", 3);
+            int RenderWidthPixels = SystemConfiguration["RenderWidthPixels"].as<int>();
+            Logger.Log("Checking Config File For 'RenderHeightPixels' Parameter", 3);
+            int RenderHeightPixels = SystemConfiguration["RenderHeightPixels"].as<int>();            
+    
+            
 
 
 
