@@ -44,9 +44,9 @@ class GraphicsSubsystem {
             // Log Graphics Init
             Logger.Log("Initializng Graphics Subsystem", 3);
 
-            // Initialize BGFX
-            Logger.Log("Initializing BGFX Rendering Library", 4);
-            bgfx::init();
+            // Create BGFX Init Object
+            Logger.Log("Creating BGFX Init Configuration", 4);
+            bgfx::Init BgfxInitConfig;
 
 
             // Initialize Local Window
@@ -117,8 +117,7 @@ class GraphicsSubsystem {
 
                 // Log Setting Platform Data
                 Logger.Log("Setting Platform Data", 2);
-                //bgfx::setPlatformData(PlatformDataInstance);
-
+                BgfxInitConfig.platformData = PlatformDataInstance;
 
 
 
@@ -130,6 +129,21 @@ class GraphicsSubsystem {
             }
 
             
+            // More Platform Configuration Stuff
+            Logger.Log("Setting BGFX Rendering Parameters", 3);
+
+            Logger.Log("Checking Config File For 'RendererBackend' Parameter", 2);
+            const char* RendererBackendName = SystemConfiguration["RendererBackend"].as<std::string>().c_str();
+
+            if (RendererBackendName == 'Vulkan') {
+                // Log Vulkan Backend
+                Logger.Log("Setting Rendering Backend To Vulkan", 1);
+                BgfxInitConfig.type = bgfx::RendererType:Vulkan;
+            } else {
+                // Log Vulkan Backend
+                Logger.Log("Setting Rendering Backend To Vulkan", 1);
+                BgfxInitConfig.type = bgfx::RendererType:Vulkan;
+            }
 
 
 
