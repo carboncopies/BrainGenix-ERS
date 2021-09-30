@@ -1,4 +1,4 @@
- //======================================================================//
+//======================================================================//
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
@@ -27,12 +27,18 @@ class GraphicsSubsystem {
 
     private:
     
-    // Declare Vars
-    YAML::Node SystemConfiguration;
-    LoggerClass Logger;
-    GLFWwindow* Window;
+        // Declare Vars
+        YAML::Node SystemConfiguration;
+        LoggerClass Logger;
+        GLFWwindow* Window;
+    
 
     public:
+
+        // Declare Config Params
+        int RenderWidthPixels;
+        int RenderHeightPixels;
+        bool LocalWindowEnabled;
 
         // Main Initialization Function
         void InitializeGraphics(YAML::Node SystemConfigurationDict, LoggerClass LoggerInstance) {
@@ -119,12 +125,17 @@ class GraphicsSubsystem {
                 Logger.Log("Setting Platform Data", 2);
                 BgfxInitConfig.platformData = PlatformDataInstance;
 
+                // Set Local Window State
+                LocalWindowEnabled = true;
 
 
             } else {
 
                 // Log GLFW Disabled
                 Logger.Log("GLFW Local Window Disabled In Config File", 4);
+
+                // Set Local Window State
+                LocalWindowEnabled = false;
 
             }
 
@@ -146,15 +157,20 @@ class GraphicsSubsystem {
             }
 
             Logger.Log("Checking Config File For 'RenderWidthPixels' Parameter", 3);
-            int RenderWidthPixels = SystemConfiguration["RenderWidthPixels"].as<int>();
+            RenderWidthPixels = SystemConfiguration["RenderWidthPixels"].as<int>();
             BgfxInitConfig.resolution.width = RenderWidthPixels;
             Logger.Log("Checking Config File For 'RenderHeightPixels' Parameter", 3);
-            int RenderHeightPixels = SystemConfiguration["RenderHeightPixels"].as<int>();            
+            RenderHeightPixels = SystemConfiguration["RenderHeightPixels"].as<int>();            
             BgfxInitConfig.resolution.height = RenderHeightPixels;
 
             // Initialize BGFX
             Logger.Log("Initializing BGFX", 5);
             bgfx::init(BgfxInitConfig);
+            bgfx::renderFrame();
+
+            // Set Window Redraw Paramaters
+            bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x443355FF, 1.0f, 0);
+            bgfx::setViewRect(0, 0, 0, RenderWidthPixels, RenderHeightPixels);
 
 
         }
