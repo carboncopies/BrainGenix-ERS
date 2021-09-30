@@ -135,14 +135,14 @@ class GraphicsSubsystem {
             Logger.Log("Checking Config File For 'RendererBackend' Parameter", 2);
             const char* RendererBackendName = SystemConfiguration["RendererBackend"].as<std::string>().c_str();
 
-            if (RendererBackendName == 'Vulkan') {
+            if (RendererBackendName == "Vulkan") {
                 // Log Vulkan Backend
                 Logger.Log("Setting Rendering Backend To Vulkan", 1);
-                BgfxInitConfig.type = bgfx::RendererType:Vulkan;
+                BgfxInitConfig.type = bgfx::RendererType::Vulkan;
             } else {
-                // Log Vulkan Backend
-                Logger.Log("Setting Rendering Backend To Vulkan", 1);
-                BgfxInitConfig.type = bgfx::RendererType:Vulkan;
+                // Log OpenGL Backend
+                Logger.Log("Setting Rendering Backend To OpenGL", 1);
+                BgfxInitConfig.type = bgfx::RendererType::OpenGL;
             }
 
 
