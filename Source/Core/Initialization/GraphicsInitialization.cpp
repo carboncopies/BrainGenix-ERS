@@ -132,6 +132,8 @@ class GraphicsSubsystem {
                 Logger.Log("Setting Platform Data", 2);
                 BgfxInitConfig.platformData = PlatformDataInstance;
 
+                bgfx::glfwSetWindow(Window);
+
 
             } else {
 
@@ -167,7 +169,6 @@ class GraphicsSubsystem {
             // Initialize BGFX
             Logger.Log("Initializing BGFX", 5);
             bgfx::init(BgfxInitConfig);
-
             bgfx::renderFrame();
 
             // Set Window Redraw Paramaters
