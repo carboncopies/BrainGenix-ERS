@@ -13,5 +13,4 @@ WindowTitle: "BrainGenix-ERS"
 # Renderer Settings #
 RenderWidthPixels: 800
 RenderHeightPixels: 600
-AllowRenderResize: True
 UseVulkan: True # If False, Defaults To OpenGL
