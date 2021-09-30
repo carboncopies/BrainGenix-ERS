@@ -11,6 +11,8 @@
 #include <string>
 
 #include <bgfx/bgfx.h>
+#include <bgfx/platform.h>
+
 
 
 #include <GLFW/glfw3.h>
@@ -165,6 +167,8 @@ class GraphicsSubsystem {
             // Initialize BGFX
             Logger.Log("Initializing BGFX", 5);
             bgfx::init(BgfxInitConfig);
+
+            bgfx::renderFrame();
 
             // Set Window Redraw Paramaters
             bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x443355FF, 1.0f, 0);
