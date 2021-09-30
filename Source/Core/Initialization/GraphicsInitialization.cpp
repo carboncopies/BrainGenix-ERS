@@ -145,14 +145,16 @@ class GraphicsSubsystem {
                 BgfxInitConfig.type = bgfx::RendererType::OpenGL;
             }
 
-
             Logger.Log("Checking Config File For 'RenderWidthPixels' Parameter", 3);
             int RenderWidthPixels = SystemConfiguration["RenderWidthPixels"].as<int>();
+            BgfxInitConfig.resolution.width = RenderWidthPixels;
             Logger.Log("Checking Config File For 'RenderHeightPixels' Parameter", 3);
             int RenderHeightPixels = SystemConfiguration["RenderHeightPixels"].as<int>();            
-    
-            
+            BgfxInitConfig.resolution.height = RenderHeightPixels;
 
+            // Initialize BGFX
+            Logger.Log("Initializing BGFX", 5);
+            bgfx::init(BgfxInitConfig);
 
 
         }
