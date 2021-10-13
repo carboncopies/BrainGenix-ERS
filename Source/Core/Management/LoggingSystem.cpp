@@ -25,7 +25,7 @@ class LoggerClass {
         int MinimumLogLevel = 5;
 
         int LogLevelTargetWidth = 5;
-        int LogTimeTargetWidth = 21;
+        int LogTimeTargetWidth = 19;
         const char* InsertString = "                                                         ";
 
 
@@ -68,7 +68,7 @@ class LoggerClass {
 
             // Print Log Key //
             if (PrintLogOutput) {
-                std::cout << "[Level] [             Time] [Message]\n";
+                std::cout << "[Level] [               Time] [Message]\n";
             };
 
         };
