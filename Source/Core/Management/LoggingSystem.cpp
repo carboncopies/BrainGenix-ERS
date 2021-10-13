@@ -8,11 +8,11 @@
     Date Created: 2021-05-31
 */
 
+#include <iomanip>
 #include <iostream>
 #include <string>
 #include <ctime>
 #include <cstring>
-#include <iomanip>
 
 
 class LoggerClass {
@@ -24,8 +24,8 @@ class LoggerClass {
         bool PrintLogOutput;
         int MinimumLogLevel = 5;
 
-        const int LogLevelWidth = 4;
-        const int LogTimeWidth = 5;
+        int LogLevelTargetWidth = 4;
+        int LogTimeTargetWidth = 5;
 
 
         //-----------------------------------------------------------------------------------//
@@ -91,15 +91,16 @@ class LoggerClass {
 
             // Pad Strings
             std::string LogLevelPadded = std::to_string(LogLevel);
-            std::string CurrentTimePadded = std::string(CurrentTime);
+            std::string CurrentTimePadded = CurrentTime;
 
-            if (LogLevelPadded.length() < LogLevelWidth) {
-                LogLevelPadded.insert(0, LogLevelWidth - LogLevelPadded.length(), " ");
+            int CurrentLogLevelLength = LogLevelPadded.length();
+            if (CurrentLogLevelLength < LogLevelTargetWidth) {
+                LogLevelPadded.insert(0, " ", LogLevelTargetWidth - CurrentLogLevelLength);
             }
 
             // Combine Strings //
             Output += "[" + LogLevelPadded + "] ";
-            Output += "[" + CurrentTime + "] ";
+            Output += "[" + CurrentTimePadded + "] ";
             Output += std::string(LogItem) + "\n";
 
             // Check Log Level Before Printing It //
