@@ -24,7 +24,7 @@ class LoggerClass {
 
         // Define Local Vars //
         YAML::Node LocalSystemConfiguration;
-        int [3] Test = {0,255,0};
+        int Test[3] = {0,255,0};
         std::map<int, int [3]> ColorLookup = {
             0, Test
         };
