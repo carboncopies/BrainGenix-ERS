@@ -71,8 +71,16 @@ class LoggerClass {
         // Log An Item //
         void Log(const char* LogItem, int LogLevel=5) {
 
-            // Get Input Params, and Reformat Into Strings //
-            std::string CurrentTime = Get_UTC_Time();
+            // Get Current Time In YYYY-MM-DD-HH-MM-SS Format
+            std::time_t RawCurrentTime;
+            std::tm* TimeInformation;
+            char TimeBuffer [80];
+
+            std::time(&RawCurrentTime);
+            TimeInformation = std::localtime(&RawCurrentTime);
+
+            std::strftime(TimeBuffer, 80, "%Y-%m-%d_%H-%M-%S", TimeInformation);
+            std::string CurrentTime = std::string(TimeBuffer);
 
             // Create Output String //
             std::string Output;
