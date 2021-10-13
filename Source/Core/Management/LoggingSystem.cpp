@@ -24,6 +24,9 @@ class LoggerClass {
         bool PrintLogOutput;
         int MinimumLogLevel = 5;
 
+        const int LogLevelWidth = 4;
+        const int LogTimeWidth = 5;
+
 
         //-----------------------------------------------------------------------------------//
         // NOTE: LOG LEVELS ARE AS FOLLOWS:                                                  //
@@ -90,8 +93,9 @@ class LoggerClass {
             std::string LogLevelPadded = std::to_string(LogLevel);
             std::string CurrentTimePadded = std::string(CurrentTime);
 
-            
-
+            if (LogLevelPadded.length() < LogLevelWidth) {
+                LogLevelPadded.insert(0, LogLevelWidth - LogLevelPadded.length(), " ");
+            }
 
             // Combine Strings //
             Output += "[" + LogLevelPadded + "] ";
