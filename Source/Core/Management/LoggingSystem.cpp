@@ -23,7 +23,19 @@ class LoggerClass {
 
         // Define Local Vars //
         YAML::Node LocalSystemConfiguration;
-        std::map<int, int [3]> ColorLookup;
+        std::map<int, int [3]> ColorLookup = {
+            0: {0,100,255},
+            1: {0,100,255},
+            2: {0,100,255},
+            3: {0,100,255},
+            4: {0,100,255},
+            5: {0,100,255},
+            6: {0,100,255},
+            7: {0,100,255},
+            8: {0,100,255},
+            9: {0,100,255},
+            10: {0,100,255}
+            };
 
         bool PrintLogOutput;
         bool ColorizeLog;
@@ -146,7 +158,7 @@ class LoggerClass {
         void ColorizeText(std::string Message, int LogLevel) {
 
             // Get Color Value
-            int ColorList [3] = {0,255,0};//LocalSystemConfiguration[]
+            int ColorList [3] = {0,255,0};//LocalSystemConfiguration[LogLevel]
 
             std::string RedString = std::to_string(ColorList[0]);
             std::string GreenString = std::to_string(ColorList[1]);
