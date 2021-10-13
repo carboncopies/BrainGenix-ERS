@@ -24,8 +24,9 @@ class LoggerClass {
         bool PrintLogOutput;
         int MinimumLogLevel = 5;
 
-        int LogLevelTargetWidth = 6;
+        int LogLevelTargetWidth = 5;
         int LogTimeTargetWidth = 5;
+        const char* InsertString = "                                                         ";
 
 
         //-----------------------------------------------------------------------------------//
@@ -96,7 +97,7 @@ class LoggerClass {
             // Pad Log Level Column
             int CurrentLogLevelLength = LogLevelPadded.length();
             if (CurrentLogLevelLength < LogLevelTargetWidth) {
-                LogLevelPadded.insert(LogLevelPadded.begin(), LogLevelTargetWidth - CurrentLogLevelLength, " "));
+                LogLevelPadded.insert(0, InsertString, LogLevelTargetWidth - CurrentLogLevelLength);
             }
 
             // Combine Strings //
