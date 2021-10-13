@@ -120,7 +120,7 @@ class LoggerClass {
 
                 // If Log Print Enabled //
                 if (PrintLogOutput) {
-                    ColorizeText(Output, LogLevel)
+                    ColorizeText(Output, LogLevel);
                 };
 
             };
@@ -130,7 +130,7 @@ class LoggerClass {
         std::string ColorizeText(std::string Message, int LogLevel) {
 
             // Colorize String
-            std::ColorString = Message;
+            std::string ColorString = Message;
 
             // Print Output To COUT
             std::cout << ColorString;
