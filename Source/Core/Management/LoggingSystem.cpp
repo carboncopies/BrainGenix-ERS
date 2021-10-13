@@ -12,6 +12,7 @@
 #include <string>
 #include <ctime>
 #include <cstring>
+#include <iomanip>
 
 
 class LoggerClass {
@@ -82,11 +83,18 @@ class LoggerClass {
             std::strftime(TimeBuffer, 80, "%Y-%m-%d_%H-%M-%S", TimeInformation);
             std::string CurrentTime = std::string(TimeBuffer);
 
-            // Create Output String //
+            // Create Output Strings //
             std::string Output;
 
+            // Pad Strings
+            std::string LogLevelPadded = std::to_string(LogLevel);
+            std::string CurrentTimePadded = std::string(CurrentTime);
+
+            
+
+
             // Combine Strings //
-            Output += "[" + std::to_string(LogLevel) + "] ";
+            Output += "[" + LogLevelPadded + "] ";
             Output += "[" + CurrentTime + "] ";
             Output += std::string(LogItem) + "\n";
 
