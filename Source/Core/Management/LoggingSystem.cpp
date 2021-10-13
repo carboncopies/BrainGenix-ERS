@@ -13,6 +13,7 @@
 #include <string>
 #include <ctime>
 #include <cstring>
+#include <map>
 
 
 class LoggerClass {
@@ -22,7 +23,11 @@ class LoggerClass {
 
         // Define Local Vars //
         YAML::Node LocalSystemConfiguration;
+        std::map<int, int [3]> ColorLookup;
+
         bool PrintLogOutput;
+        bool ColorizeLog;
+        bool ReplaceLevelWithText;
         int MinimumLogLevel = 5;
 
         int LogLevelTargetWidth = 5;
@@ -69,6 +74,11 @@ class LoggerClass {
             // Update Local Config Parameters //
             PrintLogOutput = SystemConfiguration["EnablePrintOutput"].as<bool>();
             MinimumLogLevel = SystemConfiguration["SetMinimumLogLevel"].as<int>();
+            ColorizeLog = SystemConfiguration["ColorizeLogOutput"].as<bool>();
+            ReplaceLevelWithText = SystemConfiguration["UseTextLogLevel"].as<bool>();
+
+            ColorLookup = SystemConfiguration["LogLevelColors"].as<std::map>();
+
 
             // Print Log Key //
             if (PrintLogOutput) {
@@ -120,14 +130,23 @@ class LoggerClass {
 
                 // If Log Print Enabled //
                 if (PrintLogOutput) {
-                    ColorizeText(Output, LogLevel);
+
+                    // If Colorize Enabled
+                    if (ColorizeText) {
+                        ColorizeText(Output, LogLevel);
+                    } else {
+                        std::cout << Output;
+                    }
                 };
 
             };
 
         }
 
-        std::string ColorizeText(std::string Message, int LogLevel) {
+        void ColorizeText(std::string Message, int LogLevel) {
+
+            // // Get Color Value
+            // int ColorList [3] = LocalSystemConfiguration[]
 
             // Colorize String
             std::string ColorString = Message;
