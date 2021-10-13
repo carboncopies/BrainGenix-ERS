@@ -77,7 +77,7 @@ class LoggerClass {
             ColorizeLog = SystemConfiguration["ColorizeLogOutput"].as<bool>();
             ReplaceLevelWithText = SystemConfiguration["UseTextLogLevel"].as<bool>();
 
-            ColorLookup = SystemConfiguration["LogLevelColors"].as<std::map>();
+            //ColorLookup = SystemConfiguration["LogLevelColors"]; <--- FIX ME!
 
 
             // Print Log Key //
