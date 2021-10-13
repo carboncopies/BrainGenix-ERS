@@ -25,7 +25,7 @@ class LoggerClass {
         int MinimumLogLevel = 5;
 
         int LogLevelTargetWidth = 5;
-        int LogTimeTargetWidth = 5;
+        int LogTimeTargetWidth = 21;
         const char* InsertString = "                                                         ";
 
 
@@ -68,7 +68,7 @@ class LoggerClass {
 
             // Print Log Key //
             if (PrintLogOutput) {
-                std::cout << "[Level] [Time] [Message]\n";
+                std::cout << "[Level] [             Time] [Message]\n";
             };
 
         };
@@ -102,8 +102,8 @@ class LoggerClass {
 
             // Pad Time Column
             int CurrentTimeLength = CurrentTimePadded.length();
-            if (CurrentTimeLength < TimeTargetWidth) {
-                CurrentTimePadded.insert(0, InsertString, TimeTargetWidth - CurrentTimeLength);
+            if (CurrentTimeLength < LogTimeTargetWidth) {
+                CurrentTimePadded.insert(0, InsertString, LogTimeTargetWidth - CurrentTimeLength);
             }
 
             // Combine Strings //
