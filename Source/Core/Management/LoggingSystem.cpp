@@ -146,17 +146,17 @@ class LoggerClass {
         void ColorizeText(std::string Message, int LogLevel) {
 
             // Get Color Value
-            int ColorList [3] = [int 0, int 255, int 0];//LocalSystemConfiguration[]
+            int ColorList [3] = {0,255,0};//LocalSystemConfiguration[]
 
             std::string RedString = std::to_string(ColorList[0]);
             std::string GreenString = std::to_string(ColorList[1]);
             std::string BlueString = std::to_string(ColorList[2]);
 
             std::string ColorPrefix = std::string("\x1b[38;2;") + RedString + std::string(";") + GreenString + std::string(";") + BlueString + std::string("m");
-
+            std::string ColorSuffix = "\x1b[0m";
 
             // Colorize String
-            std::string ColorString = Message;
+            std::string ColorString = ColorPrefix + Message + ColorSuffix;
 
             // Print Output To COUT
             std::cout << ColorString;
