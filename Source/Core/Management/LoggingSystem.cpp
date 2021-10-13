@@ -100,6 +100,12 @@ class LoggerClass {
                 LogLevelPadded.insert(0, InsertString, LogLevelTargetWidth - CurrentLogLevelLength);
             }
 
+            // Pad Time Column
+            int CurrentTimeLength = CurrentTimePadded.length();
+            if (CurrentTimeLength < TimeTargetWidth) {
+                CurrentTimePadded.insert(0, InsertString, TimeTargetWidth - CurrentTimeLength);
+            }
+
             // Combine Strings //
             Output += "[" + LogLevelPadded + "] ";
             Output += "[" + CurrentTimePadded + "] ";
