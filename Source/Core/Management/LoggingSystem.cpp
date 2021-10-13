@@ -14,6 +14,7 @@
 #include <ctime>
 #include <cstring>
 #include <map>
+#include <list>
 
 
 class LoggerClass {
@@ -23,8 +24,11 @@ class LoggerClass {
 
         // Define Local Vars //
         YAML::Node LocalSystemConfiguration;
-        std::map<int, int [3]> ColorLookup;
-        ColorLookup.insert(std::pair<int, int [3]>(0, {0,255,0}));
+        int [3] Test = {0,255,0};
+        std::map<int, int [3]> ColorLookup = {
+            0, Test
+        };
+
 
         bool PrintLogOutput;
         bool ColorizeLog;
