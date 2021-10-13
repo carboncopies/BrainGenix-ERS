@@ -21,6 +21,7 @@ class LoggerClass {
     private: 
 
         // Define Local Vars //
+        YAML::Node LocalSystemConfiguration;
         bool PrintLogOutput;
         int MinimumLogLevel = 5;
 
@@ -61,6 +62,9 @@ class LoggerClass {
 
         // Define Initialization Function //
         void InitializeLogger(YAML::Node SystemConfiguration) { // ** NOTE: THIS SHOULD TAKE A CONFIG DICT FROM YAML IN THE FUTRE ** //
+
+            // Make Local Copy Of System Config
+            LocalSystemConfiguration = SystemConfiguration;
 
             // Update Local Config Parameters //
             PrintLogOutput = SystemConfiguration["EnablePrintOutput"].as<bool>();
@@ -116,11 +120,20 @@ class LoggerClass {
 
                 // If Log Print Enabled //
                 if (PrintLogOutput) {
-                    std::cout << Output;
+                    ColorizeText(Output, LogLevel)
                 };
 
             };
 
+        }
+
+        std::string ColorizeText(std::string Message, int LogLevel) {
+
+            // Colorize String
+            std::ColorString = Message;
+
+            // Print Output To COUT
+            std::cout << ColorString;
         }
 
 };
