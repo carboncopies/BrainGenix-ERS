@@ -24,7 +24,7 @@ class LoggerClass {
         bool PrintLogOutput;
         int MinimumLogLevel = 5;
 
-        int LogLevelTargetWidth = 4;
+        int LogLevelTargetWidth = 6;
         int LogTimeTargetWidth = 5;
 
 
@@ -89,13 +89,14 @@ class LoggerClass {
             // Create Output Strings //
             std::string Output;
 
-            // Pad Strings
+            // Create Pad Strings
             std::string LogLevelPadded = std::to_string(LogLevel);
             std::string CurrentTimePadded = CurrentTime;
 
+            // Pad Log Level Column
             int CurrentLogLevelLength = LogLevelPadded.length();
             if (CurrentLogLevelLength < LogLevelTargetWidth) {
-                LogLevelPadded.insert(0, " ", LogLevelTargetWidth - CurrentLogLevelLength);
+                LogLevelPadded.insert(LogLevelPadded.begin(), LogLevelTargetWidth - CurrentLogLevelLength, " "));
             }
 
             // Combine Strings //
