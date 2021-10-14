@@ -10,41 +10,12 @@
 
 #include "Core/Renderer/Visual/VisualRenderer.h"
 
-#include "Core/Renderer/Visual/LocalWindowDisplaySystem.h"
 
 
 // Define Visual Renderer Class
-class VisualRenderer {
+VisualRenderer::InitializeSystem(LoggerClass sERSLogger) {
 
-    private:
+    // test
+    sERSLogger.Log("lolz", 5);
 
-
-        // Destructor
-        void CleanUp() {
-
-        }
-
-        // Initialize Vulkan API
-        void InitVulkan() {
-
-        }
-
-    public:
-
-        // Initialize VisualRendering Subsystem
-        void InitializeSystem(LoggerClass sERSLogger) {
-
-            // test
-            sERSLogger.Log("lolz", 5);
-
-        }
-
-        // Main Loop For Visual Renderer
-        void RenderLoop() {
-
-        }
-
-
-
-
-};
+}
