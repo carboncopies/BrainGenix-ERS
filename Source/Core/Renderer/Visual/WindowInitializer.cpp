@@ -3,9 +3,21 @@
 //======================================================================//
 
 /*
-    Description: This file is responsible for implementing the logger system used by the rest of the system.
+    Description: This file is responsible for implementing the visual local display system.
     Additonal Notes: None
     Date Created: 2021-10-13
 */ 
 
 
+// This Class Handles Local Machine Display Via A Local Window
+class WindowManager {
+
+    public:
+
+        // Window Initialization Function
+        void InitWindow() {
+            
+        }
+
+
+}
