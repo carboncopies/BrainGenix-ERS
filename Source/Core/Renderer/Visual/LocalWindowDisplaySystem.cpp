@@ -36,6 +36,7 @@ void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sER
 
 
     // Read Window Configuration Parameters
+    Logger.Log("Creating GLFWWindow Surface", 3);
     Logger.Log("Reading System Configuration For 'INT': 'WindowWidth'", 2);
     WindowX = SystemConfiguration["WindowWidth"].as<int>();
     Logger.Log("Reading System Configuration For 'INT': 'WindowHeight'", 2);
@@ -45,5 +46,6 @@ void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sER
     
     // Create Window
     Window = glfwCreateWindow(WindowX, WindowY, WindowTitle.c_str(), nullptr, nullptr);
+    Logger.Log("Created GLFWWindow Surface", 2);
 
 }
