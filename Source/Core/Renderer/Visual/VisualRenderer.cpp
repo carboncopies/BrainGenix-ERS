@@ -8,12 +8,12 @@
     Date Created: 2021-10-13
 */ 
 
+#include <vulkan/vulkan.h>
 
 #include "Core/Renderer/Visual/LocalWindowDisplaySystem.cpp"
 
 #include "Core/Renderer/Visual/VisualRenderer.h"
 
-#include <vulkan/vulkan.h>
 
 
 // Define VisualRenderer::InitializeSystem
