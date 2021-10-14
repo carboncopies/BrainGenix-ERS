@@ -10,6 +10,7 @@
 
 #include "Core/Renderer/Visual/VisualRenderer.h"
 
+#include "Core/Renderer/Visual/LocalWindowDisplaySystem.cpp"
 
 
 // Define Visual Renderer Class
@@ -21,6 +22,6 @@ void VisualRenderer::InitializeSystem(LoggerClass sERSLogger) {
     // Log Initialization Process
     Logger.Log("Initializing Vulkan API", 5);
 
-    
+
 
 }
