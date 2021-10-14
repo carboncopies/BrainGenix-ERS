@@ -39,13 +39,13 @@ int main() {
     sERSLogger.Log("Entering Main ERS Program Loop", 4);
     while (SystemRunning) {
 
-        MainRenderer.UpdateRender();
+        RenderingSystem.UpdateRender();
 
     }
 
 
     // Call Destructors, Shutdown System
     sERSLogger.Log("System Shutdown Invoked, Calling Destructors", 5);
-    MainRenderer.CleanUp();
+    RenderingSystem.CleanUp();
 
 }
