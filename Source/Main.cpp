@@ -11,8 +11,6 @@
 
 #include "Core/Initialization/ConfigurationLoader.cpp"
 #include "Core/Management/LoggingSystem.cpp"
-#include "Core/Initialization/GraphicsInitialization.cpp"
-#include "Core/Graphics/RenderLoop.cpp"
 
 int main() {
 
