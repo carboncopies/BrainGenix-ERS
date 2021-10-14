@@ -8,7 +8,7 @@
     Date Created: 2021-10-13
 */ 
 
-
+#include "Core/Renderer/Visual/LocalWindowDisplaySystem.h"
  
 // Define Visual Renderer Class
 class VisualRenderer {
