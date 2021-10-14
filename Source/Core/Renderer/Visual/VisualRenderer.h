@@ -18,6 +18,10 @@ class VisualRenderer {
 
         // Declare Logger
         LoggerClass Logger;
+        YAML::Node SystemConfiguration;
+
+        // Declare Config Vars
+        bool LocalWindowEnabled;
 
 
         // Initialize Vulkan API
@@ -29,7 +33,7 @@ class VisualRenderer {
     public:
 
         // Initialize VisualRendering Subsystem
-        void InitializeSystem(LoggerClass sERSLogger);
+        void InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSConfig);
 
         // Main Loop For Visual Renderer
         void RenderLoop();
