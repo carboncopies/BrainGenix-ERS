@@ -51,7 +51,7 @@ void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sER
 }
 
 // Define LocalWindowDisplaySystem::GetVulkanInitExtensions
-VkInstanceCreateInfo LocalWindowDisplaySystem::GetVulkanInitExtensions(VKInstanceCreateInfo VkCreateInfo) {
+VkInstanceCreateInfo LocalWindowDisplaySystem::GetVulkanInitExtensions(VkInstanceCreateInfo VkCreateInfo) {
 
     // Generate GLFW Required Vulkan Extensions Info
     Logger.Log("Getting GLFW Required Vulkan Extensions", 3);
