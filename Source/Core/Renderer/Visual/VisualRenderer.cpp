@@ -13,7 +13,7 @@
 
 
 // Define Visual Renderer Class
-VisualRenderer::InitializeSystem(LoggerClass sERSLogger) {
+void VisualRenderer::InitializeSystem(LoggerClass sERSLogger) {
 
     // test
     sERSLogger.Log("lolz", 5);
