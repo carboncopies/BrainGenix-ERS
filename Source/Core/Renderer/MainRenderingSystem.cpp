@@ -16,7 +16,7 @@
 
 
 // Define MainRenderer::InitRenderer
-MainRenderer::InitRenderer(LoggerClass sERSLogger, YAML::Node sERSConfig) {
+void MainRenderer::InitRenderer(LoggerClass sERSLogger, YAML::Node sERSConfig) {
 
     // Create Local References
     Logger = sERSLogger;

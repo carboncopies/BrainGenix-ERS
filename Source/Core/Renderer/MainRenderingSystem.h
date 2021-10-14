@@ -32,4 +32,4 @@ class MainRenderer {
         // Destructor
         void CleanUp();
 
-}
+};
