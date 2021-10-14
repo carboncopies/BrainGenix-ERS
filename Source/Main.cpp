@@ -22,7 +22,7 @@ int main() {
     LoggerClass sERSLogger;
     sERSLogger.InitializeLogger(SystemConfiguration);
 
-    sERSLogger.Log("Initialized Logger Subsystem", 5);
+    sERSLogger.Log("Initialized 'Management::Logger::LoggerClass'", 5);
 
     // Initialize Graphics Subsystem
     VisualRenderer sERSVisualRenderer;
