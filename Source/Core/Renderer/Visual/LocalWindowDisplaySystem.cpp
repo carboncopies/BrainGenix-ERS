@@ -28,6 +28,13 @@ void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sER
     // Initialize GLFW
     glfwInit();
 
+    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+
+    // Log Initialization
+    Logger.Log("Initialized GLFW", 0);
+
+
     // Read Window Configuration Parameters
     Logger.Log("Reading System Configuration For 'INT': 'WindowWidth'", 2);
     WindowX = SystemConfiguration["WindowWidth"].as<int>();
