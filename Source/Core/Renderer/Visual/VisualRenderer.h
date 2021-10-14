@@ -30,8 +30,6 @@ class VisualRenderer {
         // Initialize Vulkan API
         void InitVulkan();
 
-        // Destructor
-        void CleanUp();
 
     public:
 
@@ -40,6 +38,9 @@ class VisualRenderer {
 
         // Main Loop For Visual Renderer
         void RenderLoop();
+
+        // Destructor
+        void CleanUp();
 
 
 

@@ -16,7 +16,7 @@
 #include <vulkan/vulkan.h>
 
 
-// Define Visual Renderer Class
+// Define VisualRenderer::InitializeSystem
 void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSConfig) {
 
     // Create Local References
@@ -39,6 +39,23 @@ void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSCon
     //InitVulkan();
     Logger.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::Vulkan'", 3);
 
+}
 
+// Define VisualRenderer::RenderLoop
+void VisualRenderer::RenderLoop() {
+
+    // GLFW Poll Events
+    sERSLocalWindowDisplaySystem.FetchEvents();
+
+}
+
+// Define VisualRenderer::CleanUp
+void VisualRenderer::CleanUp() {
+
+    // Log Shutdown Called
+    Logger.Log("Shutting Down 'Core::Renderer::Visual::VisualRenderer'", 5);
+
+    // Call Subclass's Destructors
+    sERSLocalWindowDisplaySystem.CleanUp();
 
 }
