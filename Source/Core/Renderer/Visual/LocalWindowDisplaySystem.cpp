@@ -16,7 +16,7 @@
 void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig) {
 
     // Create Local References
-    Logger = sERSLogger
+    Logger = sERSLogger;
     SystemConfiguration = sERSConfig;
 
     // Log Initialization
