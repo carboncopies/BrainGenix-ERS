@@ -21,4 +21,6 @@ void VisualRenderer::InitializeSystem(LoggerClass sERSLogger) {
     // Log Initialization Process
     Logger.Log("Initializing Vulkan API", 5);
 
+    
+
 }

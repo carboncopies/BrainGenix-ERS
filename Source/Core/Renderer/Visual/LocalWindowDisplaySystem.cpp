@@ -8,16 +8,11 @@
     Date Created: 2021-10-13
 */ 
 
-
-// This Class Handles Local Machine Display Via A Local Window
-class LocalWindowDisplaySystem {
-
-    public:
-
-        // Window Initialization Function
-        void InitWindow() {
-            
-        }
+#include "Core/Renderer/Visual/LocalWindowDisplaySystem.h"
 
 
-};
+// Define LocalWindowDisplaySystem::InitWindow
+void LocalWindowDisplaySystem::InitWindow() {
+
+
+}
