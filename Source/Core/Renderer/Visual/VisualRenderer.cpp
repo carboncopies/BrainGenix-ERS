@@ -16,7 +16,7 @@
 // Define Visual Renderer Class
 void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSConfig) {
 
-    // Create Local Reference
+    // Create Local References
     Logger = sERSLogger;
     SystemConfiguration = sERSConfig;
 
@@ -25,7 +25,7 @@ void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSCon
     LocalWindowEnabled = SystemConfiguration["WindowEnabled"].as<bool>();
     if (LocalWindowEnabled) {
         Logger.Log("Initializing 'Core::Renderer::Visual::LocalWindowDisplaySystem'", 4);
-        
+
         Logger.Log("Initialized 'Core::Renderer::Visual::LocalWindowDisplaySystem'", 3);
     } else {
         Logger.Log("Initialization Skip 'Core::Renderer::Visual::LocalWindowDisplaySystem' Due To Config Param", 3);
@@ -33,7 +33,7 @@ void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSCon
 
     // Initialize Vulkan
     Logger.Log("Initializing 'Core::Renderer::Visual::VisualRenderer::Vulkan'", 4);
-    InitVulkan();
+    //InitVulkan();
     Logger.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::Vulkan'", 3);
 
 
