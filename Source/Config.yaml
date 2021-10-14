@@ -21,6 +21,21 @@ LogLevelColors:
     9: [255,170,0] # Severe (Non Fatal)
     10: [255,0,0] # Fatal
 
+# Set Name For Log Strings #
+LogLevelNames:
+    0: System
+    1: Config
+    2: Audit
+    3: Info
+    4: Detail
+    5: Fine
+    6: Finer
+    7: Finest
+    8: Warning
+    9: Severe
+    10: Fatal
+
+
 # Set Window Configuration Parameters #
 WindowEnabled: True
 WindowWidth: 800
