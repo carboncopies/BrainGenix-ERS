@@ -8,8 +8,8 @@
     Date Created: 2021-10-13
 */ 
 
-#ifndef VisualRenderer
-#define VisualRenderer
+// #ifndef VisualRenderer
+// #define VisualRenderer
 
  
 // Define Visual Renderer Class
