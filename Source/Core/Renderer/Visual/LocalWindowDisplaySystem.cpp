@@ -60,7 +60,7 @@ VkInstanceCreateInfo LocalWindowDisplaySystem::GetVulkanInitExtensions(VkInstanc
 
     GLFWExtensions = glfwGetRequiredInstanceExtensions(&GLFWExtensionCount);
 
-    VkCreateInfo.enabledExtnesionCount = GLFWExtensionCount;
+    VkCreateInfo.enabledExtensionCount = GLFWExtensionCount;
     VkCreateInfo.ppEnabledExtensionNames = GLFWExtensions;
 
     // Return VkCreateInfo
