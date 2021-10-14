@@ -13,15 +13,26 @@
 // Define Visual Renderer Class
 class VisualRenderer {
 
-    public:
+    private:
+
+        // Declare Logger
+        LoggerClass Logger;
+
 
         // Initialize Vulkan API
         void InitVulkan();
 
+        // Destructor
+        void CleanUp();
+
+    public:
+
+        // Initialize VisualRendering Subsystem
+        void InitializeSystem();
+
         // Main Loop For Visual Renderer
         void RenderLoop();
 
-        // Destructor
-        void CleanUp();
+
 
 };
