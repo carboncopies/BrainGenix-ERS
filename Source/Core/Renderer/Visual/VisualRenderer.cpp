@@ -13,7 +13,6 @@
 
 #include "Core/Renderer/Visual/VisualRenderer.h"
 
-
 #include <vulkan/vulkan.h>
 
 

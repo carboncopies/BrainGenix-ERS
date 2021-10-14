@@ -17,6 +17,12 @@ class LocalWindowDisplaySystem {
         LoggerClass Logger;
         YAML::Node SystemConfiguration;
 
+        GLFWwindow* Window;
+
+        int WindowX;
+        int WindowY;
+        std::string WindowTitle;
+
     public:
 
         // Window Initialization Function
