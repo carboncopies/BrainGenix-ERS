@@ -3,7 +3,7 @@
 //======================================================================//
 
 /*
-    Description: This file is responsible for implementing the logger system used by the rest of the system.
+    Description: This file is responsible for implementing the main renderer system.
     Additonal Notes: None
     Date Created: 2021-10-13
 */ 
