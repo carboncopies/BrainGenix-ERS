@@ -75,8 +75,22 @@ void VisualRenderer::CreateVulkanInstance() {
     VkCreateInfo.pApplicationInfo = &AppInfo;
 
     // If GLFW Enabled
-    if (LocalWindowEnabled) {
+    if (LocalWindowEnabled) 
         VkCreateInfo = sERSLocalWindowDisplaySystem.GetVulkanInitExtensions(VkCreateInfo);
+
+
+
+    // Validation Layers
+    VkCreateInfo.enabledLayerCount = 0;
+
+
+    // Create Vulkan Instance
+    Logger.Log("Creating Vulkan Instance", 3);
+    VkResult Result = vkCreateInstance(&VkCreateInfo, nullptr, &VulkanInstance);
+
+    if (Result != VK_SUCCESS) {
+        Logger.Log("Failed To Create Vulkan Instance", 10);
+        // program should exit here and shut down stuff...
     }
 
 
