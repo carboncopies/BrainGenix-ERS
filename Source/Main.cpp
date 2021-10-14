@@ -15,6 +15,10 @@
 
 int main() {
 
+    // Declare Variables
+    bool SystemRunning = true;
+
+
     // Load System Configuration File
     const YAML::Node SystemConfiguration = LoadConfig("Config.yaml");
 
@@ -31,5 +35,17 @@ int main() {
     sERSLogger.Log("Initialized 'Core::Renderer::MainRenderingSystem'", 4);
 
 
+    // Main Loop
+    sERSLogger.Log("Entering Main ERS Program Loop", 4);
+    while (SystemRunning) {
+
+        MainRenderer.UpdateRender();
+
+    }
+
+
+    // Call Destructors, Shutdown System
+    sERSLogger.Log("System Shutdown Invoked, Calling Destructors", 5);
+    MainRenderer.CleanUp();
 
 }
