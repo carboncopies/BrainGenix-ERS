@@ -8,6 +8,7 @@
     Date Created: 2021-10-13
 */ 
 
+#pragma once
 
 // This Class Handles Local Machine Display Via A Local Window
 class LocalWindowDisplaySystem {

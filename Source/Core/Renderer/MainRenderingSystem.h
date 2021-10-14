@@ -8,6 +8,7 @@
     Date Created: 2021-10-13
 */  
 
+#pragma once
 
 // Declare Renderer Class
 class MainRenderer {
