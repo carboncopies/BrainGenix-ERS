@@ -50,6 +50,24 @@ void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sER
 
 }
 
+// Define LocalWindowDisplaySystem::GetVulkanInitExtensions
+VKInstanceCreateInfo LocalWindowDisplaySystem::GetVulkanInitExtensions(VKInstanceCreateInfo VkCreateInfo) {
+
+    // Generate GLFW Required Vulkan Extensions Info
+    Logger.Log("Getting GLFW Required Vulkan Extensions", 3);
+    uint32_t GLFWExtensionCount = 0;
+    const char** GLFWExtensions;
+
+    GLFWExtensions = glfwGetRequiredInstanceExtensions(&GLFWExtensionCount);
+
+    VkCreateInfo.enabledExtnesionCount = GLFWExtensionCount;
+    VkCreateInfo.ppEnabledExtensionNames = GLFWExtensions;
+
+    // Return VkCreateInfo
+    return VkCreateInfo;
+
+}
+
 
 // Define LocalWindowDisplaySystem::FetchEvents
 void LocalWindowDisplaySystem::FetchEvents() {

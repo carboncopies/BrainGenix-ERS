@@ -30,6 +30,8 @@ class LocalWindowDisplaySystem {
         // Window Initialization Function
         void InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig);
 
+        // Add GLFW Extensions To VkInstanceCreateInfo
+        VKInstanceCreateInfo GetVulkanInitExtensions(VKInstanceCreateInfo VkCreateInfo);
 
         // Get Window Events
         void FetchEvents();

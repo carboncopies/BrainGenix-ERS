@@ -68,6 +68,17 @@ void VisualRenderer::CreateVulkanInstance() {
     AppInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
     AppInfo.apiVersion = VK_API_VERSION_1_0;
 
+    // Vulkan Instance Creation Information
+    Logger.Log("Generating VKInstanceCreateInfo", 3);
+    VkInstanceCreateInfo VkCreateInfo{};
+    VkCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+    VkCreateInfo.pApplicationInfo = &Appinfo;
+
+    // If GLFW Enabled
+    if (LocalWindowEnabled) {
+        VkCreateInfo = sERSLocalWindowDisplaySystem.GetVulkanInitExtensions(VkCreateInfo);
+    }
+
 
 }
 
