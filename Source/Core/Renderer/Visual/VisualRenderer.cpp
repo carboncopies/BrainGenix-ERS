@@ -15,7 +15,10 @@
 // Define Visual Renderer Class
 void VisualRenderer::InitializeSystem(LoggerClass sERSLogger) {
 
-    // test
-    sERSLogger.Log("lolz", 5);
+    // Create Local Reference
+    Logger = sERSLogger;
+
+    // Log Initialization Process
+    Logger.Log("Initializing Vulkan API", 5);
 
 }
