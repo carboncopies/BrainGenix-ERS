@@ -26,23 +26,6 @@ int main() {
     sERSLogger.Log("Initialized Logger Subsystem", 5);
 
     // Initialize Graphics Subsystem
-    GraphicsSubsystem sERSGraphicsSystem;
-    sERSGraphicsSystem.InitializeGraphics(SystemConfiguration, sERSLogger);
 
-
-    // Initialize Render Loop
-    RenderLoopClass sERSRenderLoop;
-    sERSRenderLoop.InitializeRenderLoop(sERSGraphicsSystem, sERSLogger);
-
-
-    // Main Program Loop
-    sERSLogger.Log("Entering Main Program Loop", 4);
-    bool ProgramShouldRun = true;
-    while (ProgramShouldRun) {
-
-        // Update The Graphics
-        sERSRenderLoop.RenderLoop();
-
-    }
 
 }
