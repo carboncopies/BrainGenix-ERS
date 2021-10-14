@@ -72,7 +72,7 @@ void VisualRenderer::CreateVulkanInstance() {
     Logger.Log("Generating VKInstanceCreateInfo", 3);
     VkInstanceCreateInfo VkCreateInfo{};
     VkCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-    VkCreateInfo.pApplicationInfo = &Appinfo;
+    VkCreateInfo.pApplicationInfo = &AppInfo;
 
     // If GLFW Enabled
     if (LocalWindowEnabled) {
