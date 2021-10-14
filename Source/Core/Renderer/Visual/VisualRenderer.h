@@ -16,12 +16,12 @@ class VisualRenderer {
     public:
 
         // Initialize Vulkan API
-        void InitVulkan()
+        void InitVulkan();
 
         // Main Loop For Visual Renderer
-        void RenderLoop()
+        void RenderLoop();
 
         // Destructor
-        void CleanUp()
+        void CleanUp();
 
 };
