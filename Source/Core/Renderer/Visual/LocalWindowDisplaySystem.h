@@ -18,4 +18,4 @@ class LocalWindowDisplaySystem {
         void InitWindow();
 
 
-}
+};
