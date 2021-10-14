@@ -61,7 +61,7 @@ void VisualRenderer::CreateVulkanInstance() {
     Logger.Log("Populating Vulkan 'appInfo' Struct", 3);
 
     VkApplicationInfo AppInfo{};
-    AppInfo.sType = VK_STRUCUTRE_TYPE_APPLICATION_INFO;
+    AppInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
     AppInfo.pApplicationName = "BrainGenix::ERS (Environment Rendering System)";
     AppInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
     AppInfo.pEngineName = "BrainGenix::ERS";
