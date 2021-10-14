@@ -11,7 +11,7 @@
 
 #include "Core/Initialization/ConfigurationLoader.cpp"
 #include "Core/Management/LoggingSystem.cpp"
-#include "Core/Renderer/Visual/VisualRenderer.cpp"
+#include "Core/Renderer/MainRenderingSystem.cpp"
 
 int main() {
 
@@ -24,10 +24,12 @@ int main() {
 
     sERSLogger.Log("Initialized 'Management::Logger::LoggerClass'", 5);
 
-    // Initialize Graphics Subsystem
-    VisualRenderer sERSVisualRenderer;
-    sERSVisualRenderer.InitializeSystem(sERSLogger, SystemConfiguration);
-    sERSLogger.Log("Initialized 'Renderer::Visual::VisualRenderer'", 5);
+    // Initialize Main Rendering System
+    sERSLogger.Log("Initializing 'Core::Renderer::MainRenderingSystem'", 5);
+    MainRenderer RenderingSystem;
+    RenderingSystem.InitRenderer(sERSLogger, SystemConfiguration);
+    sERSLogger.Log("Initialized 'Core::Renderer::MainRenderingSystem'", 4);
+
 
 
 }
