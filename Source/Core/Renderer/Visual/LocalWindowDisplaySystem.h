@@ -33,4 +33,7 @@ class LocalWindowDisplaySystem {
         // Get Window Events
         void FetchEvents();
 
+        // Destructor
+        void CleanUp();
+
 };

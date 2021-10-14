@@ -49,3 +49,24 @@ void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sER
     Logger.Log("Created GLFWWindow Surface", 2);
 
 }
+
+
+// Define LocalWindowDisplaySystem::FetchEvents
+void LocalWindowDisplaySystem::FetchEvents() {
+
+    // Poll Events
+    glfwPollEvents();
+
+}
+
+// Define LocalWindowDisplaySystem::CleanUp
+void LocalWindowDisplaySystem::CleanUp() {
+
+    // Cleanup System
+    Logger.Log("Tearing Down GLFW Window", 4);
+    glfwDestroyWindow(Window);
+
+    Logger.Log("Terminating GLFW", 3);
+    glfwTerminate();
+
+}
