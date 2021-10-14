@@ -23,6 +23,7 @@ class LocalWindowDisplaySystem {
         int WindowY;
         std::string WindowTitle;
 
+
     public:
 
         // Window Initialization Function

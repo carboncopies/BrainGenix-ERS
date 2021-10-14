@@ -23,7 +23,7 @@ void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sER
     SystemConfiguration = sERSConfig;
 
     // Log Initialization
-    Logger.Log("Initializing GLFW", 2);
+    Logger.Log("Initializing GLFW", 1);
 
     // Initialize GLFW
     glfwInit();
@@ -36,7 +36,7 @@ void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sER
     Logger.Log("Reading System Configuration For 'STD::STRING': 'WindowTitle'", 2);
     WindowTitle = SystemConfiguration["WindowTitle"].as<std::string>();
     
-    
-    
+    // Create Window
+    Window = glfwCreateWindow(WindowX, WindowY, WindowTitle.c_str(), nullptr, nullptr);
 
 }

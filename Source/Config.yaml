@@ -23,9 +23,12 @@ LogLevelColors:
 
 # Set Window Configuration Parameters #
 WindowEnabled: True
+WindowMonitorIndex: 0
+WindowFullScreen: False
 WindowWidth: 800
 WindowHeight: 600
 WindowTitle: "BrainGenix-ERS"
+
 
 # Renderer Settings #
 RenderWidthPixels: 800
