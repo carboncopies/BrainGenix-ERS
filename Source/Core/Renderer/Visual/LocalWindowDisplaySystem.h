@@ -30,4 +30,7 @@ class LocalWindowDisplaySystem {
         void InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig);
 
 
+        // Get Window Events
+        void FetchEvents();
+
 };

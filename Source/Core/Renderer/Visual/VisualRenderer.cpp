@@ -24,7 +24,7 @@ void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSCon
     SystemConfiguration = sERSConfig;
 
     // Initialize GLFW
-    Logger.Log("Reading System Configuration For Bool: 'WindowEnabled'", 2);
+    Logger.Log("Reading System Configuration For 'BOOL': 'WindowEnabled'", 2);
     LocalWindowEnabled = SystemConfiguration["WindowEnabled"].as<bool>();
     if (LocalWindowEnabled) {
         Logger.Log("Initializing 'Core::Renderer::Visual::LocalWindowDisplaySystem'", 4);
