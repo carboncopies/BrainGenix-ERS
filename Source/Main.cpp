@@ -25,6 +25,8 @@ int main() {
     sERSLogger.Log("Initialized Logger Subsystem", 5);
 
     // Initialize Graphics Subsystem
+    VisualRenderer sERSVisualRenderer;
+    sERSLogger.Log("Initialized 'Renderer::Visual::VisualRenderer'", 5);
 
 
 }
