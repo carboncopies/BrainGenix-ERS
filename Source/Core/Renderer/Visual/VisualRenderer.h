@@ -28,7 +28,7 @@ class VisualRenderer {
     public:
 
         // Initialize VisualRendering Subsystem
-        void InitializeSystem();
+        void InitializeSystem(LoggerClass sERSLogger);
 
         // Main Loop For Visual Renderer
         void RenderLoop();

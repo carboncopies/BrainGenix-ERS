@@ -28,8 +28,11 @@ class VisualRenderer {
     public:
 
         // Initialize VisualRendering Subsystem
-        void InitializeSystem() {
-            
+        void InitializeSystem(LoggerClass sERSLogger) {
+
+            // test
+            sERSLogger.Log("lolz", 5)
+
         }
 
         // Main Loop For Visual Renderer
