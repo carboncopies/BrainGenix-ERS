@@ -11,7 +11,7 @@
 
 #include "Core/Initialization/ConfigurationLoader.cpp"
 #include "Core/Management/LoggingSystem.cpp"
-#include "Core/Renderer/Visual/VisualRenderer.h"
+#include "Core/Renderer/Visual/VisualRenderer.cpp"
 
 int main() {
 

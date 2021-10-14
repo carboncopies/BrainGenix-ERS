@@ -8,6 +8,10 @@
     Date Created: 2021-10-13
 */ 
 
+#include "Core/Renderer/Visual/VisualRenderer.h"
+
+#include "Core/Renderer/Visual/LocalWindowDisplaySystem.h"
+
 
 // Define Visual Renderer Class
 class VisualRenderer {
@@ -31,7 +35,7 @@ class VisualRenderer {
         void InitializeSystem(LoggerClass sERSLogger) {
 
             // test
-            sERSLogger.Log("lolz", 5)
+            sERSLogger.Log("lolz", 5);
 
         }
 
