@@ -36,10 +36,41 @@ void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSCon
 
     // Initialize Vulkan
     Logger.Log("Initializing 'Core::Renderer::Visual::VisualRenderer::Vulkan'", 4);
-    //InitVulkan();
+    InitVulkan();
     Logger.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::Vulkan'", 3);
 
 }
+
+// Define VisualRenderer::InitVulakn
+void VisualRenderer::InitVulkan() {
+
+    // Log Vulkan Init Creation
+    Logger.Log("Initializng Vulkan API", 4);
+
+    // Create Vulkan Instance
+    Logger.Log("Initializng 'Core::Renderer::Visual::VisualRenderer::CreateVulkanInstance'", 3);
+    CreateVulkanInstance();
+    Logger.Log("Initializng 'Core::Renderer::Visual::VisualRenderer::CreateVulkanInstance'", 2);
+
+}
+
+// Define VisualRenderer::CreateVulkanInstance
+void VisualRenderer::CreateVulkanInstance() {
+
+    // Fill AppInfo Struct
+    Logger.Log("Populating Vulkan 'appInfo' Struct", 3);
+
+    VkApplicationInfo AppInfo{};
+    AppInfo.sType = VK_STRUCUTRE_TYPE_APPLICATION_INFO;
+    AppInfo.pApplicationName = "BrainGenix::ERS (Environment Rendering System)";
+    AppInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
+    AppInfo.pEngineName = "BrainGenix::ERS";
+    AppInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
+    AppInfo.apiVersion = VK_API_VERSION_1_0;
+
+
+}
+
 
 // Define VisualRenderer::RenderLoop
 void VisualRenderer::RenderLoop() {

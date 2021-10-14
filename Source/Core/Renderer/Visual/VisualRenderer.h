@@ -25,10 +25,14 @@ class VisualRenderer {
 
         // Delcare Class Instances
         LocalWindowDisplaySystem sERSLocalWindowDisplaySystem;
+        VkInstance VulkanInstance;
 
 
         // Initialize Vulkan API
         void InitVulkan();
+
+        // Create Vulkan Instance
+        void CreateVulkanInstance();
 
 
     public:
