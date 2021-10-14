@@ -30,3 +30,23 @@ void MainRenderer::InitRenderer(LoggerClass sERSLogger, YAML::Node sERSConfig) {
 
 
 }
+
+// Define MainRenderer::UpdateRender
+void MainRenderer::UpdateRender() {
+
+    // Update Visual Rendering System
+    sERSVisualRenderer.RenderLoop();
+
+}
+
+
+// Define MainRenderer::CleanUp
+void MainRenderer::CleanUp() {
+    
+    // Log Shutdown Called
+    Logger.Log("Shutting Down 'Core::Renderer::MainRenderingSystem'", 5);
+
+    // Shut Down Visual Renderer
+    sERSVisualRenderer.CleanUp();
+
+}
