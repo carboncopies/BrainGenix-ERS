@@ -12,10 +12,15 @@
 // This Class Handles Local Machine Display Via A Local Window
 class LocalWindowDisplaySystem {
 
+    private:
+        // Declare Private Vars
+        LoggerClass Logger;
+        YAML::Node SystemConfiguration;
+
     public:
 
         // Window Initialization Function
-        void InitWindow();
+        void InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig);
 
 
 };

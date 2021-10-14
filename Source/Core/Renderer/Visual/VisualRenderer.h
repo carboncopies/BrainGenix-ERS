@@ -23,6 +23,9 @@ class VisualRenderer {
         // Declare Config Vars
         bool LocalWindowEnabled;
 
+        // Delcare Class Instances
+        LocalWindowDisplaySystem sERSLocalWindowDisplaySystem;
+
 
         // Initialize Vulkan API
         void InitVulkan();
