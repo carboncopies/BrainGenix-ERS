@@ -19,11 +19,11 @@
 void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig) {
 
     // Create Local References
-    Logger = sERSLogger;
-    SystemConfiguration = sERSConfig;
+    Logger_ = sERSLogger;
+    SystemConfiguration_ = sERSConfig;
 
     // Log Initialization
-    Logger.Log("Initializing GLFW", 1);
+    Logger_.Log("Initializing GLFW", 1);
 
     // Initialize GLFW
     glfwInit();
@@ -32,21 +32,21 @@ void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sER
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
     // Log Initialization
-    Logger.Log("Initialized GLFW", 0);
+    Logger_.Log("Initialized GLFW", 0);
 
 
     // Read Window Configuration Parameters
-    Logger.Log("Creating GLFWWindow Surface", 3);
-    Logger.Log("Reading System Configuration For 'INT': 'WindowWidth'", 2);
-    WindowX = SystemConfiguration["WindowWidth"].as<int>();
-    Logger.Log("Reading System Configuration For 'INT': 'WindowHeight'", 2);
-    WindowY = SystemConfiguration["WindowHeight"].as<int>();
-    Logger.Log("Reading System Configuration For 'STD::STRING': 'WindowTitle'", 2);
-    WindowTitle = SystemConfiguration["WindowTitle"].as<std::string>();
+    Logger_.Log("Creating GLFWWindow Surface", 3);
+    Logger_.Log("Reading System Configuration For 'INT': 'WindowWidth'", 2);
+    WindowX_ = SystemConfiguration_["WindowWidth"].as<int>();
+    Logger_.Log("Reading System Configuration For 'INT': 'WindowHeight'", 2);
+    WindowY_ = SystemConfiguration_["WindowHeight"].as<int>();
+    Logger_.Log("Reading System Configuration For 'STD::STRING': 'WindowTitle'", 2);
+    WindowTitle_ = SystemConfiguration_["WindowTitle"].as<std::string>();
     
     // Create Window
-    Window = glfwCreateWindow(WindowX, WindowY, WindowTitle.c_str(), nullptr, nullptr);
-    Logger.Log("Created GLFWWindow Surface", 2);
+    Window_ = glfwCreateWindow(WindowX_, WindowY_, WindowTitle_.c_str(), nullptr, nullptr);
+    Logger_.Log("Created GLFWWindow Surface", 2);
 
 }
 
@@ -54,7 +54,7 @@ void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sER
 VkInstanceCreateInfo LocalWindowDisplaySystem::GetVulkanInitExtensions(VkInstanceCreateInfo VkCreateInfo) {
 
     // Generate GLFW Required Vulkan Extensions Info
-    Logger.Log("Getting GLFW Required Vulkan Extensions", 3);
+    Logger_.Log("Getting GLFW Required Vulkan Extensions", 3);
     uint32_t GLFWExtensionCount = 0;
     const char** GLFWExtensions;
 
@@ -81,10 +81,10 @@ void LocalWindowDisplaySystem::FetchEvents() {
 void LocalWindowDisplaySystem::CleanUp() {
 
     // Cleanup System
-    Logger.Log("Tearing Down GLFW Window", 4);
-    glfwDestroyWindow(Window);
+    Logger_.Log("Tearing Down GLFW Window", 4);
+    glfwDestroyWindow(Window_);
 
-    Logger.Log("Terminating GLFW", 3);
+    Logger_.Log("Terminating GLFW", 3);
     glfwTerminate();
 
 }

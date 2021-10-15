@@ -15,14 +15,14 @@ class LocalWindowDisplaySystem {
 
     private:
         // Declare Private Vars
-        LoggerClass Logger;
-        YAML::Node SystemConfiguration;
+        LoggerClass Logger_;
+        YAML::Node SystemConfiguration_;
 
-        GLFWwindow* Window;
+        GLFWwindow* Window_;
 
-        int WindowX;
-        int WindowY;
-        std::string WindowTitle;
+        int WindowX_;
+        int WindowY_;
+        std::string WindowTitle_;
 
 
     public:
