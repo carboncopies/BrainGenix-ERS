@@ -33,6 +33,7 @@ class VisualRenderer {
         // Delcare Class Instances
         LocalWindowDisplaySystem sERSLocalWindowDisplaySystem_;
         VkInstance VulkanInstance_;
+        VkPhysicalDevice PhysicalDevice_;
 
 
         // Initialize Vulkan API
@@ -44,6 +45,8 @@ class VisualRenderer {
         // Check Validation Layer Support
         bool CheckValidationLayerSupport();
 
+        // Select Physical Device
+        void PickPhysicalDevice();
 
 
     public:

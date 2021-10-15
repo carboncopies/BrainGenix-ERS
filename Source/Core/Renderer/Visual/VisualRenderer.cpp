@@ -48,15 +48,34 @@ void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSCon
 void VisualRenderer::InitVulkan() {
 
     // Log Vulkan Init Creation
-    Logger_.Log("Initializng Vulkan API", 4);
+    Logger_.Log("Initializing Vulkan API", 4);
 
     // Create Vulkan Instance
-    Logger_.Log("Initializng 'Core::Renderer::Visual::VisualRenderer::CreateVulkanInstance'", 3);
+    Logger_.Log("Initializing 'Core::Renderer::Visual::VisualRenderer::CreateVulkanInstance'", 3);
     CreateVulkanInstance();
-    Logger_.Log("Initializng 'Core::Renderer::Visual::VisualRenderer::CreateVulkanInstance'", 2);
+    Logger_.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::CreateVulkanInstance'", 2);
+
+    // Pick Physical Device
+    Logger_.Log("Initializing 'Core::Renderer::Visual::VisualRenderer::PickPhysicalDevice", 3);
+    PickPhysicalDevice();
+    Logger_.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::PickPhysicalDevice", 3);
 
 }
 
+// Define VisualRenderer::PickPhysicalDevice
+void VisualRenderer::PickPhysicalDevice() {
+
+    // Log Selection Process
+    Logger_.Log("Querying Available Graphics Processers", 5);
+
+    // Get List Of GPUS
+    uint32_t DeviceCount = 0;
+    vkEnumeratePhysicalDevices(VulkanInstance_, &DeviceCount, nullptr);
+    Logger_.Log(std::string(std::string("Found ") + std::string(DeviceCount) + std::string(" Physical Devices")).c_str(), 4);
+
+    
+
+}
 
 // Define VisualRenderer::CreateVulkanInstance
 void VisualRenderer::CreateVulkanInstance() {
