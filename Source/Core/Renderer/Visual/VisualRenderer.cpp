@@ -73,7 +73,45 @@ void VisualRenderer::PickPhysicalDevice() {
     vkEnumeratePhysicalDevices(VulkanInstance_, &DeviceCount, nullptr);
     Logger_.Log(std::string(std::string("Found ") + std::to_string(DeviceCount) + std::string(" Physical Devices")).c_str(), 4);
 
-    
+    std::vector<VkPhysicalDevice> Devices(DeviceCount);
+    vkEnumeratePhysicalDevices(VulkanInstance_, &DeviceCount, Devices.data());
+
+    // Identify Physical Devices
+    PhysicalDevice_ = VK_NULL_HANDLE;
+    for (const auto& Device : Devices) {
+
+        // Check Device
+        if (IsDeviceSuitable(Device)) {
+
+            // If Device Is Found
+            PhysicalDevice_ = Device;
+            Logger_.Log("Identified Suitable Physical Device", 4);
+            break;
+        }
+    }
+
+    // If No Suitable Device Was Found
+    if (PhysicalDevice_ == VK_NULL_HANDLE) {
+        Logger_.Log("No Suitable Physical Device Found, Exiting", 10);
+        SystemShutdownInvoked_ = true;
+    }
+
+}
+
+// Define VisualRenderer::IsDeviceSuitable
+bool VisualRenderer::IsDeviceSuitable(VkPhysicalDevice Device) {
+
+    // Get Device Properties
+    VkPhysicalDeviceProperties DeviceProperties;
+    VkPhysicalDeviceFeatures DeviceFeatures;
+
+    vkGetPhysicalDeviceProperties(Device, &DeviceProperties);
+    vkGetPhysicalDeviceFeatures(Device, &DeviceFeatures);
+
+    // Log Device Name
+    Logger_.Log(std::string("\t Found Physical Device With Name: " + std::string(DeviceProperties.deviceName)).c_str(), 4);
+
+    return false;
 
 }
 

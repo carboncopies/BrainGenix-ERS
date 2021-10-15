@@ -48,6 +48,9 @@ class VisualRenderer {
         // Select Physical Device
         void PickPhysicalDevice();
 
+        // Check If Device Is Suitable
+        bool IsDeviceSuitable(VkPhysicalDevice Device);
+
 
     public:
 
