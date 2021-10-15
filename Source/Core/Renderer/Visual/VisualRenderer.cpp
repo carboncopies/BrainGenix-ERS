@@ -83,8 +83,39 @@ void VisualRenderer::CreateVulkanInstance() {
 
 
 
-    // Validation Layers
-    VkCreateInfo.enabledLayerCount = 0;
+
+    // Check For Validation Layers
+    Logger_.Log("Reading System Configuration For 'BOOL': 'EnableValidationLayers'", 2);
+    bool ValidationLayersRequested = SystemConfiguration_["EnableValidationLayers"].as<bool>();
+
+    if (ValidationLayersRequested) {
+        
+        // Check For Validation Layer Support
+        Logger_.Log("Validation Layers Requested", 2);
+        ValidationLayersToBeUsed_ = CheckValidationLayerSupport();
+
+    } else {
+
+        // Validation Layers Not Requested
+        Logger_.Log("Validation Layers Disabled In Configuration File", 2);
+
+    }
+
+    // Enable Validation Layers If To Be Used
+    if (ValidationLayersToBeUsed_) {
+
+        // Add Validation Layers To Create Info
+        Logger_.Log("Adding Enabled Validation Layers To Vulkan Instance Creation Information", 4);
+        VkCreateInfo.enabledLayerCount = static_cast<uint32_t>(ValidationLayers_.size());
+        VkCreateInfo.ppEnabledLayerNames = ValidationLayers_.data();
+    } else {
+
+        // Disable Validation Layers
+        Logger_.Log("Disabling Validation Layers In Vulkan Creation Information", 4);
+        VkCreateInfo.enabledLayerCount = 0;
+    }
+
+
 
 
     // Create Vulkan Instance
@@ -114,28 +145,14 @@ void VisualRenderer::CreateVulkanInstance() {
     Logger_.Log(std::string(std::string("Found ") + std::to_string(ExtensionCount) + std::string(" Vulkan Extensions")).c_str(), 2);
 
     // Query Extension Information
-    // Logger_.Log("Enumerating Available Vulkan Extensions", 4);
-    // for (const auto& Extension : Extensions) {
+    Logger_.Log("Enumerating Available Vulkan Extensions", 4);
+    std::cout << "test\n" << Extensions.front().extensionName << "fdsafafdsafdsafdsa\n";
+    // for (auto& Extension : Extensions) {
     //     std::cout<<"fdsafsd";
-    //     Logger_.Log(std::string(std::string("\t Found Vulkan Extension: ") + std::string(Extension.extensionName)).c_str(), 3);
+    //     //Logger_.Log(std::string(std::string("\t Found Vulkan Extension: ") + std::string(Extension.extensionName)).c_str(), 3);
     // }
 
-    // Check For Validation Layers
-    Logger_.Log("Reading System Configuration For 'BOOL': 'EnableValidationLayers'", 2);
-    bool ValidationLayersRequested = SystemConfiguration_["EnableValidationLayers"].as<bool>();
 
-    if (ValidationLayersRequested) {
-        
-        // Check For Validation Layer Support
-        Logger_.Log("Validation Layers Requested", 2);
-        ValidationLayersToBeUsed = CheckValidationLayerSupport();
-
-    } else {
-
-        // Validation Layers Not Requested
-        Logger_.Log("Validation Layers Disabled In Configuration File", 2);
-
-    }
 
 }
 
@@ -160,7 +177,7 @@ bool VisualRenderer::CheckValidationLayerSupport() {
         Logger_.Log(std::string(std::string("Checking Available Layers For Validation Layer: ") + std::string(LayerName)).c_str(), 2);
 
         // Check If Layer In Available Layers
-        for (const auto& LayerProperties : AvailableLayers) {
+        for (const auto& LayerProperties : AvailableValidationLayers) {
             if (strcmp(LayerName, LayerProperties.layerName) == 0) {
                 
                 // Layer Found
