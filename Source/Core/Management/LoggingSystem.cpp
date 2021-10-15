@@ -59,7 +59,7 @@ void LoggerClass::InitializeLogger(YAML::Node SystemConfiguration) { // ** NOTE:
 
     // Print Log Key //
     if (PrintLogOutput) {
-        std::cout << "[ Level] [               Time] [Message]\n";
+        std::cout << "[  Level] [               Time] [Message]\n";
     };
 
 

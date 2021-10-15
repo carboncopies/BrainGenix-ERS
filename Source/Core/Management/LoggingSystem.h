@@ -25,7 +25,7 @@ class LoggerClass {
         bool UseTextLogLevel_;
         int MinimumLogLevel = 5;
 
-        int LogLevelTargetWidth = 5;
+        int LogLevelTargetWidth = 6;
         int LogTimeTargetWidth = 19;
         const char* InsertString = "                                                         ";
 
