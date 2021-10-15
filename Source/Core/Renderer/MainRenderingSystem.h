@@ -16,11 +16,11 @@ class MainRenderer {
     private:
 
         // Delcare Private Vars
-        LoggerClass Logger;
-        YAML::Node SystemConfiguration;
+        LoggerClass Logger_;
+        YAML::Node SystemConfiguration_;
 
         // Declare Class Instances
-        VisualRenderer sERSVisualRenderer;
+        VisualRenderer sERSVisualRenderer_;
 
     public:
 

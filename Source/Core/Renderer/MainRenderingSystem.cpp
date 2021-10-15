@@ -19,14 +19,14 @@
 void MainRenderer::InitRenderer(LoggerClass sERSLogger, YAML::Node sERSConfig) {
 
     // Create Local References
-    Logger = sERSLogger;
-    SystemConfiguration = sERSConfig;
+    Logger_ = sERSLogger;
+    SystemConfiguration_ = sERSConfig;
 
 
     // Initialize Graphics Subsystem
-    Logger.Log("Initializing 'Core::Renderer::MainRenderingSystem'", 5);
-    sERSVisualRenderer.InitializeSystem(sERSLogger, SystemConfiguration);
-    Logger.Log("Initialized 'Renderer::Visual::VisualRenderer'", 5);
+    Logger_.Log("Initializing 'Core::Renderer::MainRenderingSystem'", 5);
+    sERSVisualRenderer_.InitializeSystem(sERSLogger, SystemConfiguration_);
+    Logger_.Log("Initialized 'Renderer::Visual::VisualRenderer'", 5);
 
 
 }
@@ -35,7 +35,7 @@ void MainRenderer::InitRenderer(LoggerClass sERSLogger, YAML::Node sERSConfig) {
 void MainRenderer::UpdateRender() {
 
     // Update Visual Rendering System
-    sERSVisualRenderer.RenderLoop();
+    sERSVisualRenderer_.RenderLoop();
 
 }
 
@@ -44,9 +44,9 @@ void MainRenderer::UpdateRender() {
 void MainRenderer::CleanUp() {
     
     // Log Shutdown Called
-    Logger.Log("Shutting Down 'Core::Renderer::MainRenderingSystem'", 5);
+    Logger_.Log("Shutting Down 'Core::Renderer::MainRenderingSystem'", 5);
 
     // Shut Down Visual Renderer
-    sERSVisualRenderer.CleanUp();
+    sERSVisualRenderer_.CleanUp();
 
 }
