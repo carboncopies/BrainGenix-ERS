@@ -21,6 +21,9 @@ class MainRenderer {
 
         // Declare Class Instances
         VisualRenderer sERSVisualRenderer_;
+        
+        // Delcare Class Variables
+        bool ShutdownSystem;
 
     public:
 
