@@ -16,11 +16,13 @@
 
 
 // Define MainRenderer::InitRenderer
-void MainRenderer::InitRenderer(LoggerClass sERSLogger, YAML::Node sERSConfig) {
+void MainRenderer::InitRenderer(LoggerClass sERSLogger, YAML::Node sERSConfig, bool ShutdownToggle) {
 
     // Create Local References
     Logger_ = sERSLogger;
     SystemConfiguration_ = sERSConfig;
+    SystemShutdownInvoked_ = ShutdownToggle;
+
 
 
     // Initialize Graphics Subsystem
