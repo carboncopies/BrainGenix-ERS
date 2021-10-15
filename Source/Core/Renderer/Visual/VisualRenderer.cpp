@@ -20,24 +20,24 @@
 void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSConfig) {
 
     // Create Local References
-    Logger = sERSLogger;
-    SystemConfiguration = sERSConfig;
+    Logger_ = sERSLogger;
+    SystemConfiguration_ = sERSConfig;
 
     // Initialize GLFW
-    Logger.Log("Reading System Configuration For 'BOOL': 'WindowEnabled'", 2);
-    LocalWindowEnabled = SystemConfiguration["WindowEnabled"].as<bool>();
-    if (LocalWindowEnabled) {
-        Logger.Log("Initializing 'Core::Renderer::Visual::LocalWindowDisplaySystem'", 4);
-        sERSLocalWindowDisplaySystem.InitWindow(Logger, SystemConfiguration);
-        Logger.Log("Initialized 'Core::Renderer::Visual::LocalWindowDisplaySystem'", 3);
+    Logger_.Log("Reading System Configuration For 'BOOL': 'WindowEnabled'", 2);
+    LocalWindowEnabled_ = SystemConfiguration_["WindowEnabled"].as<bool>();
+    if (LocalWindowEnabled_) {
+        Logger_.Log("Initializing 'Core::Renderer::Visual::LocalWindowDisplaySystem'", 4);
+        sERSLocalWindowDisplaySystem_.InitWindow(Logger_, SystemConfiguration_);
+        Logger_.Log("Initialized 'Core::Renderer::Visual::LocalWindowDisplaySystem'", 3);
     } else {
-        Logger.Log("Initialization Skip 'Core::Renderer::Visual::LocalWindowDisplaySystem' Due To Config Param", 3);
+        Logger_.Log("Initialization Skip 'Core::Renderer::Visual::LocalWindowDisplaySystem' Due To Config Param", 3);
     };
 
     // Initialize Vulkan
-    Logger.Log("Initializing 'Core::Renderer::Visual::VisualRenderer::Vulkan'", 4);
+    Logger_.Log("Initializing 'Core::Renderer::Visual::VisualRenderer::Vulkan'", 4);
     InitVulkan();
-    Logger.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::Vulkan'", 3);
+    Logger_.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::Vulkan'", 3);
 
 }
 
@@ -45,12 +45,12 @@ void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSCon
 void VisualRenderer::InitVulkan() {
 
     // Log Vulkan Init Creation
-    Logger.Log("Initializng Vulkan API", 4);
+    Logger_.Log("Initializng Vulkan API", 4);
 
     // Create Vulkan Instance
-    Logger.Log("Initializng 'Core::Renderer::Visual::VisualRenderer::CreateVulkanInstance'", 3);
+    Logger_.Log("Initializng 'Core::Renderer::Visual::VisualRenderer::CreateVulkanInstance'", 3);
     CreateVulkanInstance();
-    Logger.Log("Initializng 'Core::Renderer::Visual::VisualRenderer::CreateVulkanInstance'", 2);
+    Logger_.Log("Initializng 'Core::Renderer::Visual::VisualRenderer::CreateVulkanInstance'", 2);
 
 }
 
@@ -58,7 +58,7 @@ void VisualRenderer::InitVulkan() {
 void VisualRenderer::CreateVulkanInstance() {
 
     // Fill AppInfo Struct
-    Logger.Log("Populating Vulkan 'appInfo' Struct", 3);
+    Logger_.Log("Populating Vulkan 'appInfo' Struct", 3);
 
     VkApplicationInfo AppInfo{};
     AppInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
@@ -69,14 +69,14 @@ void VisualRenderer::CreateVulkanInstance() {
     AppInfo.apiVersion = VK_API_VERSION_1_0;
 
     // Vulkan Instance Creation Information
-    Logger.Log("Generating VKInstanceCreateInfo", 3);
+    Logger_.Log("Generating VKInstanceCreateInfo", 3);
     VkInstanceCreateInfo VkCreateInfo{};
     VkCreateInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
     VkCreateInfo.pApplicationInfo = &AppInfo;
 
     // If GLFW Enabled
-    if (LocalWindowEnabled) 
-        VkCreateInfo = sERSLocalWindowDisplaySystem.GetVulkanInitExtensions(VkCreateInfo);
+    if (LocalWindowEnabled_) 
+        VkCreateInfo = sERSLocalWindowDisplaySystem_.GetVulkanInitExtensions(VkCreateInfo);
 
 
 
@@ -85,11 +85,11 @@ void VisualRenderer::CreateVulkanInstance() {
 
 
     // Create Vulkan Instance
-    Logger.Log("Creating Vulkan Instance", 3);
-    VkResult Result = vkCreateInstance(&VkCreateInfo, nullptr, &VulkanInstance);
+    Logger_.Log("Creating Vulkan Instance", 3);
+    VkResult Result = vkCreateInstance(&VkCreateInfo, nullptr, &VulkanInstance_);
 
     if (Result != VK_SUCCESS) {
-        Logger.Log("Failed To Create Vulkan Instance", 10);
+        Logger_.Log("Failed To Create Vulkan Instance", 10);
         // program should exit here and shut down stuff...
     }
 
@@ -101,7 +101,7 @@ void VisualRenderer::CreateVulkanInstance() {
 void VisualRenderer::RenderLoop() {
 
     // GLFW Poll Events
-    sERSLocalWindowDisplaySystem.FetchEvents();
+    sERSLocalWindowDisplaySystem_.FetchEvents();
 
 }
 
@@ -109,9 +109,9 @@ void VisualRenderer::RenderLoop() {
 void VisualRenderer::CleanUp() {
 
     // Log Shutdown Called
-    Logger.Log("Shutting Down 'Core::Renderer::Visual::VisualRenderer'", 5);
+    Logger_.Log("Shutting Down 'Core::Renderer::Visual::VisualRenderer'", 5);
 
     // Call Subclass's Destructors
-    sERSLocalWindowDisplaySystem.CleanUp();
+    sERSLocalWindowDisplaySystem_.CleanUp();
 
 }

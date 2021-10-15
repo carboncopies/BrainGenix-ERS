@@ -17,15 +17,15 @@ class VisualRenderer {
     private:
 
         // Declare Logger
-        LoggerClass Logger;
-        YAML::Node SystemConfiguration;
+        LoggerClass Logger_;
+        YAML::Node SystemConfiguration_;
 
         // Declare Config Vars
-        bool LocalWindowEnabled;
+        bool LocalWindowEnabled_;
 
         // Delcare Class Instances
-        LocalWindowDisplaySystem sERSLocalWindowDisplaySystem;
-        VkInstance VulkanInstance;
+        LocalWindowDisplaySystem sERSLocalWindowDisplaySystem_;
+        VkInstance VulkanInstance_;
 
 
         // Initialize Vulkan API
