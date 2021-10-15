@@ -29,13 +29,13 @@ target_link_libraries("${PROJECT_NAME}" "${YAML_CPP_VERSION}")
 
 # Link Vulkan Library
 find_package(Vulkan REQUIRED FATAL_ERROR)
-target_link_libraries (${PROJECT_NAME} ${Vulkan_LIBRARIES})
-
+target_link_libraries(${PROJECT_NAME} ${Vulkan_LIBRARIES})
 
 # Add GLFW Library
 set(GLFW_DIR "${LIB_DIR}/glfw")
 add_subdirectory("${GLFW_DIR}")
 target_link_libraries("${PROJECT_NAME}" "glfw" "${GLFW_LIBRARIES}")
+
 
 # # Add ASSIMP Library
 # set(ASSIMP_DIR "${LIB_DIR}/assimp")
@@ -43,9 +43,9 @@ target_link_libraries("${PROJECT_NAME}" "glfw" "${GLFW_LIBRARIES}")
 # target_link_libraries("${PROJECT_NAME}" "${ASSIMP_LIBRARIES}")
 
 # Add Bullet Library
-set(BULLET_DIR "${LIB_DIR}/bullet")
-add_subdirectory("${BULLET_DIR}")
-include_directories("${BULLET_DIR}/src")
+# set(BULLET_DIR "${LIB_DIR}/bullet")
+# add_subdirectory("${BULLET_DIR}")
+# include_directories("${BULLET_DIR}/src")
 
 
 

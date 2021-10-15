@@ -9,6 +9,7 @@
 */ 
 
 #include <vulkan/vulkan.h>
+#include <vector>
 
 #include "Core/Renderer/Visual/LocalWindowDisplaySystem.cpp"
 
@@ -100,6 +101,27 @@ void VisualRenderer::CreateVulkanInstance() {
     }
 
 
+    // Extension Support
+    Logger_.Log("Checking For Vulkan Extension Support", 4);
+    
+    // Get Number Of Extensions
+    Logger_.Log("Querying Number Of Supported Extensions", 3);
+    uint32_t ExtensionCount = 0;
+    std::vector<VkExtensionProperties> Extensions(ExtensionCount);
+
+    vkEnumerateInstanceExtensionProperties(nullptr, &ExtensionCount, Extensions.data());
+    Logger_.Log(std::string(std::string("Found ") + std::to_string(ExtensionCount) + std::string(" Vulkan Extensions")).c_str(), 2);
+
+    // Query Extension Information
+    // Logger_.Log("Enumerating Available Vulkan Extensions", 4);
+    // for (const auto& Extension : Extensions) {
+    //     std::cout<<"fdsafsd";
+    //     Logger_.Log(std::string(std::string("\t Found Vulkan Extension: ") + std::string(Extension.extensionName)).c_str(), 3);
+    // }
+
+
+
+
 
 
 }
@@ -121,5 +143,8 @@ void VisualRenderer::CleanUp() {
 
     // Call Subclass's Destructors
     sERSLocalWindowDisplaySystem_.CleanUp();
+
+    // Destroy Vulkan
+    vkDestroyInstance(VulkanInstance_, nullptr);
 
 }

@@ -16,7 +16,7 @@
 int main() {
 
     // Declare Variables
-    bool ShutdownSystemInvoked = true;
+    bool ShutdownSystemInvoked = false;
 
 
     // Load System Configuration File
