@@ -10,6 +10,7 @@
 
 #include <vulkan/vulkan.h>
 #include <vector>
+#include <cstring>
 
 #include "Core/Renderer/Visual/LocalWindowDisplaySystem.cpp"
 
@@ -119,10 +120,70 @@ void VisualRenderer::CreateVulkanInstance() {
     //     Logger_.Log(std::string(std::string("\t Found Vulkan Extension: ") + std::string(Extension.extensionName)).c_str(), 3);
     // }
 
+    // Check For Validation Layers
+    Logger_.Log("Reading System Configuration For 'BOOL': 'EnableValidationLayers'", 2);
+    bool ValidationLayersRequested = SystemConfiguration_["EnableValidationLayers"].as<bool>();
+
+    if (ValidationLayersRequested) {
+        
+        // Check For Validation Layer Support
+        Logger_.Log("Validation Layers Requested", 2);
+        ValidationLayersToBeUsed = CheckValidationLayerSupport();
+
+    } else {
+
+        // Validation Layers Not Requested
+        Logger_.Log("Validation Layers Disabled In Configuration File", 2);
+
+    }
+
+}
 
 
 
+// Define VisualRenderer::CheckValidationLayerSupport
+bool VisualRenderer::CheckValidationLayerSupport() {
 
+    // Check For Validation Layer Support
+    Logger_.Log("Checking For Validation Layer Support", 4);
+
+    uint32_t ValidationLayerCount;
+    vkEnumerateInstanceLayerProperties(&ValidationLayerCount, nullptr);
+
+    std::vector<VkLayerProperties> AvailableValidationLayers(ValidationLayerCount);
+    vkEnumerateInstanceLayerProperties(&ValidationLayerCount, AvailableValidationLayers.data());
+
+    // Iterate Through Required Layers
+    for (const char* LayerName : ValidationLayers_) {
+
+        bool ValidationLayerFound = false;
+        Logger_.Log(std::string(std::string("Checking Available Layers For Validation Layer: ") + std::string(LayerName)).c_str(), 2);
+
+        // Check If Layer In Available Layers
+        for (const auto& LayerProperties : AvailableLayers) {
+            if (strcmp(LayerName, LayerProperties.layerName) == 0) {
+                
+                // Layer Found
+                Logger_.Log(std::string(std::string("Found Validation Layer: ") + std::string(LayerName)).c_str(), 1);
+                ValidationLayerFound = true;
+                break;
+            }
+        }
+
+        // If Layer Not Found
+        if (!ValidationLayerFound) {
+            
+            // Layer NOT Found
+            Logger_.Log(std::string(std::string("Failed To Find Validation Layer: ") + std::string(LayerName)).c_str(), 6);
+            Logger_.Log("Validation Layers Disabled Due To Missing Layer(s), Please Check Your Installation Of The Vulkan SDK", 6);
+            return false;
+        }
+
+
+    }
+
+    // If All Layers Were Found, Return True
+    return true;
 
 }
 

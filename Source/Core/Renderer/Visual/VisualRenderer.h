@@ -16,13 +16,19 @@ class VisualRenderer {
 
     private:
 
-        // Declare Logger
+        // Declare Params
         LoggerClass Logger_;
         YAML::Node SystemConfiguration_;
+
+        // Define Validation Later
+        const std::vector<const char*> ValidationLayers_ = {
+            "VK_LAYER_KHRONOS_validation"
+        };
 
         // Declare Config Vars
         bool LocalWindowEnabled_;
         bool SystemShutdownInvoked_;
+        bool ValidationLayersToBeUsed_;
 
         // Delcare Class Instances
         LocalWindowDisplaySystem sERSLocalWindowDisplaySystem_;
@@ -34,6 +40,9 @@ class VisualRenderer {
 
         // Create Vulkan Instance
         void CreateVulkanInstance();
+
+        // Check Validation Layer Support
+        bool CheckValidationLayerSupport();
 
 
     public:
