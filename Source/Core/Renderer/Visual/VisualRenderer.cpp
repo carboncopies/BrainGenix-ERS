@@ -148,7 +148,7 @@ void VisualRenderer::CreateVulkanInstance() {
     // Query Extension Information
     Logger_.Log("Enumerating Available Vulkan Extensions", 4);
     for (auto& Extension : Extensions) {
-        Logger_.Log(std::string(std::string("\t Found Vulkan Extension: ") + std::string(Extension.extensionName)).c_str(), 3);
+        Logger_.Log(std::string(std::string("\t Found Vulkan Extension: ") + std::string(Extension.extensionName)).c_str(), 1);
     }
 
 
