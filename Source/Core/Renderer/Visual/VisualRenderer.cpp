@@ -71,7 +71,7 @@ void VisualRenderer::PickPhysicalDevice() {
     // Get List Of GPUS
     uint32_t DeviceCount = 0;
     vkEnumeratePhysicalDevices(VulkanInstance_, &DeviceCount, nullptr);
-    Logger_.Log(std::string(std::string("Found ") + std::string(DeviceCount) + std::string(" Physical Devices")).c_str(), 4);
+    Logger_.Log(std::string(std::string("Found ") + std::to_string(DeviceCount) + std::string(" Physical Devices")).c_str(), 4);
 
     
 
