@@ -22,6 +22,7 @@ class VisualRenderer {
 
         // Declare Config Vars
         bool LocalWindowEnabled_;
+        bool SystemShutdownInvoked_;
 
         // Delcare Class Instances
         LocalWindowDisplaySystem sERSLocalWindowDisplaySystem_;
@@ -38,7 +39,7 @@ class VisualRenderer {
     public:
 
         // Initialize VisualRendering Subsystem
-        void InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSConfig);
+        void InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSConfig, bool ShutdownToggle);
 
         // Main Loop For Visual Renderer
         void RenderLoop();

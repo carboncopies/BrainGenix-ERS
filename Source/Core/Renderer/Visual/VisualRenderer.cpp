@@ -17,11 +17,12 @@
 
 
 // Define VisualRenderer::InitializeSystem
-void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSConfig) {
+void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSConfig, bool ShutdownToggle) {
 
     // Create Local References
     Logger_ = sERSLogger;
     SystemConfiguration_ = sERSConfig;
+    SystemShutdownInvoked_ = ShutdownToggle;
 
     // Initialize GLFW
     Logger_.Log("Reading System Configuration For 'BOOL': 'WindowEnabled'", 2);
@@ -88,10 +89,17 @@ void VisualRenderer::CreateVulkanInstance() {
     Logger_.Log("Creating Vulkan Instance", 3);
     VkResult Result = vkCreateInstance(&VkCreateInfo, nullptr, &VulkanInstance_);
 
+    // Check State Of Vulkan Instance Creation
     if (Result != VK_SUCCESS) {
         Logger_.Log("Failed To Create Vulkan Instance", 10);
-        // program should exit here and shut down stuff...
+
+        // Invoke System Shutdown
+        SystemShutdownInvoked_ = true;
+    } else {
+        Logger_.Log("Created Vulkan Instance", 3);
     }
+
+
 
 
 }
