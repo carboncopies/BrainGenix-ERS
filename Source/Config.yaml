@@ -5,7 +5,7 @@ EnableDatabaseOutput: False
 SetMinimumLogLevel: 0
 
 ColorizeLogOutput: True
-UseTextLogLevel: True
+UseTextLogLevel: False
 
 # Set The Colors For Various Log Levels #
 LogLevelColors:
