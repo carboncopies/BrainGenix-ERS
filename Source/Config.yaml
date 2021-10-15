@@ -8,7 +8,7 @@ WindowTitle: "BrainGenix-ERS"
 # Renderer Settings #
 RenderWidthPixels: 800
 RenderHeightPixels: 600
-
+EnableValidationLayers: True
 
 
 # Set Logger configuration Parameters #
