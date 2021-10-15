@@ -27,11 +27,10 @@ set(YAML_CPP_VERSION "yaml-cpp")
 add_subdirectory("${LIB_DIR}/${YAML_CPP_VERSION}")
 target_link_libraries("${PROJECT_NAME}" "${YAML_CPP_VERSION}")
 
-# Add BGFX Library
-set(BGFX_CMAKE_DIR "${LIB_DIR}/bgfx.cmake")
-add_subdirectory("${BGFX_CMAKE_DIR}")
-target_link_libraries("${PROJECT_NAME}" "bgfx")
-target_link_libraries("${PROJECT_NAME}" "bx")
+# Link Vulkan Library
+find_package(Vulkan REQUIRED FATAL_ERROR)
+target_link_libraries (${PROJECT_NAME} ${Vulkan_LIBRARIES})
+
 
 # Add GLFW Library
 set(GLFW_DIR "${LIB_DIR}/glfw")

@@ -15,6 +15,7 @@
 #include <cstring>
 #include <map>
 #include <list>
+#include <array>
 
 #include "Core/Management/LoggingSystem.h"
 
@@ -34,14 +35,33 @@ void LoggerClass::InitializeLogger(YAML::Node SystemConfiguration) { // ** NOTE:
     MinimumLogLevel = SystemConfiguration["SetMinimumLogLevel"].as<int>();
     ColorizeLog = SystemConfiguration["ColorizeLogOutput"].as<bool>();
     ReplaceLevelWithText = SystemConfiguration["UseTextLogLevel"].as<bool>();
+    UseTextLogLevel_ = SystemConfiguration["UseTextLogLevel"].as<bool>();
 
-    //ColorLookup = SystemConfiguration["LogLevelColors"]; <--- FIX ME!
+    // Read Log Level Colors
+    YAML::Node ColorsNode = SystemConfiguration["LogLevelColors"];
+    for (YAML::const_iterator it=ColorsNode.begin(); it!=ColorsNode.end(); ++it) {
+        ColorLookup_[it->first.as<int>()] = {
+            it->second[0].as<int>(),
+            it->second[1].as<int>(),
+            it->second[2].as<int>()
+        };
+    }
+
+    // Read Log Level Names
+    YAML::Node NameNode = SystemConfiguration["LogLevelNames"];
+    for (YAML::const_iterator it=NameNode.begin(); it!=NameNode.end(); ++it) {
+
+        LogNameLookup_[it->first.as<int>()] = {
+            it->second.as<std::string>()
+        };
+    }
 
 
     // Print Log Key //
     if (PrintLogOutput) {
-        std::cout << "[Level] [               Time] [Message]\n";
+        std::cout << "[ Level] [               Time] [Message]\n";
     };
+
 
 };
 
@@ -63,7 +83,12 @@ void LoggerClass::Log(const char* LogItem, int LogLevel) {
     std::string Output;
 
     // Create Pad Strings
-    std::string LogLevelPadded = std::to_string(LogLevel);
+    std::string LogLevelPadded;
+    if (UseTextLogLevel_) {
+        LogLevelPadded = LogNameLookup_[LogLevel];
+    } else {
+        LogLevelPadded = std::to_string(LogLevel);
+    }
     std::string CurrentTimePadded = CurrentTime;
 
     // Pad Log Level Column
@@ -105,11 +130,11 @@ void LoggerClass::Log(const char* LogItem, int LogLevel) {
 void LoggerClass::ColorizeText(std::string Message, int LogLevel) {
 
     // Get Color Value
-    int ColorList [3] = {0,255,0};//LocalSystemConfiguration[LogLevel]
+    RGBColor ColorValue = ColorLookup_[LogLevel];
 
-    std::string RedString = std::to_string(ColorList[0]);
-    std::string GreenString = std::to_string(ColorList[1]);
-    std::string BlueString = std::to_string(ColorList[2]);
+    std::string RedString = std::to_string(ColorValue.Red);
+    std::string GreenString = std::to_string(ColorValue.Green);
+    std::string BlueString = std::to_string(ColorValue.Blue);
 
     std::string ColorPrefix = std::string("\x1b[38;2;") + RedString + std::string(";") + GreenString + std::string(";") + BlueString + std::string("m");
     std::string ColorSuffix = "\x1b[0m";

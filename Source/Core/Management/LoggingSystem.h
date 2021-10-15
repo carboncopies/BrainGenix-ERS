@@ -10,7 +10,6 @@
 
 
 
-
 class LoggerClass {
 
     // Define "Local" Variables And Functions //
@@ -23,11 +22,22 @@ class LoggerClass {
         bool PrintLogOutput;
         bool ColorizeLog;
         bool ReplaceLevelWithText;
+        bool UseTextLogLevel_;
         int MinimumLogLevel = 5;
 
         int LogLevelTargetWidth = 5;
         int LogTimeTargetWidth = 19;
         const char* InsertString = "                                                         ";
+
+
+        struct RGBColor {
+            int Red;
+            int Green;
+            int Blue;
+        };
+
+        std::map<int, RGBColor> ColorLookup_;
+        std::map<int, std::string> LogNameLookup_;
 
 
         //-----------------------------------------------------------------------------------//
