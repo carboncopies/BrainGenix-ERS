@@ -57,6 +57,7 @@ void VisualRenderer::InitVulkan() {
 
 }
 
+
 // Define VisualRenderer::CreateVulkanInstance
 void VisualRenderer::CreateVulkanInstance() {
 
@@ -146,16 +147,12 @@ void VisualRenderer::CreateVulkanInstance() {
     Logger_.Log(std::string(std::string("Found ") + std::to_string(ExtensionCount) + std::string(" Vulkan Extensions")).c_str(), 2);
 
     // Query Extension Information
-    Logger_.Log("Enumerating Available Vulkan Extensions", 4);
+    Logger_.Log("Enumerating Available Vulkan Extensions:", 4);
     for (auto& Extension : Extensions) {
         Logger_.Log(std::string(std::string("\t Found Vulkan Extension: ") + std::string(Extension.extensionName)).c_str(), 1);
     }
 
-
-
 }
-
-
 
 // Define VisualRenderer::CheckValidationLayerSupport
 bool VisualRenderer::CheckValidationLayerSupport() {
@@ -202,7 +199,6 @@ bool VisualRenderer::CheckValidationLayerSupport() {
     return true;
 
 }
-
 
 // Define VisualRenderer::RenderLoop
 void VisualRenderer::RenderLoop() {

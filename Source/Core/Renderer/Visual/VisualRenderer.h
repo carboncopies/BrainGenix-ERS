@@ -45,6 +45,7 @@ class VisualRenderer {
         bool CheckValidationLayerSupport();
 
 
+
     public:
 
         // Initialize VisualRendering Subsystem
