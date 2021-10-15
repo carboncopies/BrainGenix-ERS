@@ -9,7 +9,7 @@ WindowTitle: "BrainGenix-ERS"
 RenderWidthPixels: 800
 RenderHeightPixels: 600
 EnableValidationLayers: True
-EnableDebugLogging: True
+EnableDebugLogging: True # To Be added Later <-- https://vulkan-tutorial.com/en/Drawing_a_triangle/Setup/Validation_layers
 
 
 # Set Logger configuration Parameters #
