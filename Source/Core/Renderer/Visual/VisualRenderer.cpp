@@ -76,30 +76,29 @@ void VisualRenderer::PickPhysicalDevice() {
     std::vector<VkPhysicalDevice> Devices(DeviceCount);
     vkEnumeratePhysicalDevices(VulkanInstance_, &DeviceCount, Devices.data());
 
-    // Identify Physical Devices
+    // Create Map Of Device Suitabillity
+    std::multimap<int, VkPhysicalDevice> DeviceCandidates;
+
+    // Identify And Score Physical Devices
     PhysicalDevice_ = VK_NULL_HANDLE;
     for (const auto& Device : Devices) {
-
-        // Check Device
-        if (IsDeviceSuitable(Device)) {
-
-            // If Device Is Found
-            PhysicalDevice_ = Device;
-            Logger_.Log("Identified Suitable Physical Device", 4);
-            break;
-        }
+        int Score = RateDeviceSuitability(Device);
+        DeviceCandidates.insert(std::make_pair(Score, Device));
     }
 
-    // If No Suitable Device Was Found
-    if (PhysicalDevice_ == VK_NULL_HANDLE) {
+    // Pick Best Device Candidate
+    if (DeviceCandidates.rbegin()->first > 0) {
+        PhysicalDevice_ = DeviceCandidates.rbegin()->second;
+        Logger_.Log("Identified Suitable Physical Device", 4);
+    } else {
         Logger_.Log("No Suitable Physical Device Found, Exiting", 10);
         SystemShutdownInvoked_ = true;
     }
 
 }
 
-// Define VisualRenderer::IsDeviceSuitable
-bool VisualRenderer::IsDeviceSuitable(VkPhysicalDevice Device) {
+// Define VisualRenderer::RateDeviceSuitability
+int VisualRenderer::RateDeviceSuitability(VkPhysicalDevice Device) {
 
     // Get Device Properties
     VkPhysicalDeviceProperties DeviceProperties;
@@ -108,10 +107,32 @@ bool VisualRenderer::IsDeviceSuitable(VkPhysicalDevice Device) {
     vkGetPhysicalDeviceProperties(Device, &DeviceProperties);
     vkGetPhysicalDeviceFeatures(Device, &DeviceFeatures);
 
-    // Log Device Name
-    Logger_.Log(std::string("\t Found Physical Device With Name: " + std::string(DeviceProperties.deviceName)).c_str(), 4);
 
-    return false;
+    // Score Device -- Failure Cases
+        
+    // Check If Device Supports Geometry Shaders
+    if (!DeviceFeatures.geometryShader) {
+        return 0;
+    }
+
+
+    // Score Device -- Success Cases
+    int Score = 0;
+
+    // Check GPU Descrete Or Integrated
+    if (DeviceProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU) {
+        Score += 1000;
+    };
+
+    // Get Max Texture Size
+    Score += DeviceProperties.limits.maxImageDimension2D;
+    
+
+    // Log Device + Score
+    Logger_.Log(std::string("\t Found Physical Device With Name: " + std::string(DeviceProperties.deviceName) + std::string(", Score ") + std::to_string(Score)).c_str(), 4);
+
+    // Return Device Score
+    return Score;
 
 }
 
