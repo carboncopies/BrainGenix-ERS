@@ -91,13 +91,36 @@ void VisualRenderer::CreateLogicalDevice() {
     Logger_.Log("Setting Required Device Features", 2);
     VkPhysicalDeviceFeatures DeviceFeatures{};
 
-    // Create Logical Device
-    Logger_.Log("Creating Logical Device", 5);
+    // Configure Logical Device
+    Logger_.Log("Configuring 'VkDeviceCreateInfo' Struct", 5);
     VkDeviceCreateInfo CreateInfo{};
     CreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
     CreateInfo.pQueueCreateInfos = &QueueCreateInfo;
     CreateInfo.queueCreateInfoCount = 1;
     CreateInfo.pEnabledFeatures = &DeviceFeatures;
+
+    CreateInfo.enabledExtensionCount = 0;
+
+    if (ValidationLayersToBeUsed_) {
+        CreateInfo.enabledLayerCount = static_cast<uint32_t>(ValidationLayers_.size());
+        CreateInfo.ppEnabledLayerNames = ValidationLayers_.data();
+    } else {
+        CreateInfo.enabledLayerCount = 0;
+    }
+
+    // Creating Logical Device
+    Logger_.Log("Creating Logical Device Instance", 3);
+    if (vkCreateDevice(PhysicalDevice_, &CreateInfo, nullptr, &LogicalDevice_) != VK_SUCCESS) {
+
+        // Logical Device Creation Failure
+        Logger_.Log("Failed To Create Logical Device, System Shutting Down", 10);
+        SystemShutdownInvoked_ = true;
+    }
+
+    // Setup Graphics Queue
+    Logger_.Log("Setting Up Graphics Queue", 2);
+    vkGetDeviceQueue(LogicalDevice_, Indices.GraphicsFamily.value(), 0, &GraphicsQueue_);
+
 
 }
 
@@ -389,7 +412,10 @@ void VisualRenderer::CleanUp() {
     // Call Subclass's Destructors
     sERSLocalWindowDisplaySystem_.CleanUp();
 
-    // Destroy Vulkan
+    // Destroy LogicalDevice
+    vkDestroyDevice(LogicalDevice_, nullptr);
+
+    // Destroy Vulkan Instance
     vkDestroyInstance(VulkanInstance_, nullptr);
 
 }

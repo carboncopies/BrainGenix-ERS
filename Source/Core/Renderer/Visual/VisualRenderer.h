@@ -42,6 +42,7 @@ class VisualRenderer {
         VkInstance VulkanInstance_;
         VkPhysicalDevice PhysicalDevice_;
         VkDevice LogicalDevice_;
+        VkQueue GraphicsQueue_;
 
 
         // Initialize Vulkan API
