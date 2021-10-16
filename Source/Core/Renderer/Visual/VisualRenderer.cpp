@@ -61,10 +61,6 @@ void VisualRenderer::InitVulkan() {
     PickPhysicalDevice();
     Logger_.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::PickPhysicalDevice", 2);
 
-    // Find Queue Families
-    Logger_.Log("Initializing 'Core::Renderer::Visual::VisualRenderer::FindQueueFamilies'", 3);
-    FindQueueFamilies(PhysicalDevice_);
-    Logger_.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::FindQueueFamilies'", 2);
 
 }
 
@@ -76,10 +72,10 @@ QueueFamilyIndices VisualRenderer::FindQueueFamilies(VkPhysicalDevice Device) {
     QueueFamilyIndices Indices;
 
     // Find Graphics Queue Family
-    Logger_.Log("Querying Number Of Queue Families", 3);
+    Logger_.Log("        Querying Number Of Queue Families", 3);
     uint32_t QueueFamilyCount = 0;
     vkGetPhysicalDeviceQueueFamilyProperties(Device, &QueueFamilyCount, nullptr);
-    Logger_.Log(std::string(std::string("Found ") + std::to_string(QueueFamilyCount) + std::string(" Queue Families")).c_str(), 2);
+    Logger_.Log(std::string(std::string("        Found ") + std::to_string(QueueFamilyCount) + std::string(" Queue Families")).c_str(), 2);
 
     std::vector<VkQueueFamilyProperties> QueueFamilies(QueueFamilyCount);
     vkGetPhysicalDeviceQueueFamilyProperties(Device, &QueueFamilyCount, QueueFamilies.data());
@@ -162,7 +158,7 @@ int VisualRenderer::RateDeviceSuitability(VkPhysicalDevice Device) {
     
 
     // Log Device + Score
-    Logger_.Log(std::string("\t Found Physical Device With Name: " + std::string(DeviceProperties.deviceName) + std::string(", Score ") + std::to_string(Score)).c_str(), 4);
+    Logger_.Log(std::string("    Found Physical Device With Name: " + std::string(DeviceProperties.deviceName) + std::string(", Score ") + std::to_string(Score)).c_str(), 4);
 
 
 
