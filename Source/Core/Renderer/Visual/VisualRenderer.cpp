@@ -68,11 +68,13 @@ void VisualRenderer::InitVulkan() {
 }
 
 // Define VisualRenderer::FindQueueFamilies
-uint32_t VisualRenderer::FindQueueFamilies(VkPhysicalDevice Device) {
+QueueFamilyIndices VisualRenderer::FindQueueFamilies(VkPhysicalDevice Device) {
+
+    // Initialize Struct
+    QueueFamilyIndices Indices;
 
     // Find Graphics Queue Family
-
-    return 0;
+    return Indices;
 
 }
 

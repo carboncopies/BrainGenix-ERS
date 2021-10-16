@@ -36,6 +36,11 @@ class VisualRenderer {
         VkPhysicalDevice PhysicalDevice_;
 
 
+        // Queue Struct
+        struct QueueFamilyIndices {
+            uint32_t GraphicsFamily;
+        };
+
         // Initialize Vulkan API
         void InitVulkan();
 
@@ -52,7 +57,7 @@ class VisualRenderer {
         int RateDeviceSuitability(VkPhysicalDevice Device);
 
         // Find Queue Familys
-        uint32_t FindQueueFamilies(VkPhysicalDevice Device);
+        QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice Device);
 
 
     public:
