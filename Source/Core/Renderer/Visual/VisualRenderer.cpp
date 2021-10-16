@@ -58,7 +58,21 @@ void VisualRenderer::InitVulkan() {
     // Pick Physical Device
     Logger_.Log("Initializing 'Core::Renderer::Visual::VisualRenderer::PickPhysicalDevice", 3);
     PickPhysicalDevice();
-    Logger_.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::PickPhysicalDevice", 3);
+    Logger_.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::PickPhysicalDevice", 2);
+
+    // Find Queue Families
+    Logger_.Log("Initializing 'Core::Renderer::Visual::VisualRenderer::FindQueueFamilies'", 3);
+    FindQueueFamilies(PhysicalDevice_);
+    Logger_.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::FindQueueFamilies'", 2);
+
+}
+
+// Define VisualRenderer::FindQueueFamilies
+uint32_t VisualRenderer::FindQueueFamilies(VkPhysicalDevice Device) {
+
+    // Find Graphics Queue Family
+
+    return 0;
 
 }
 

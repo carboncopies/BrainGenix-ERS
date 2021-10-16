@@ -51,6 +51,9 @@ class VisualRenderer {
         // Rate Device Suitability
         int RateDeviceSuitability(VkPhysicalDevice Device);
 
+        // Find Queue Familys
+        uint32_t FindQueueFamilies(VkPhysicalDevice Device);
+
 
     public:
 
