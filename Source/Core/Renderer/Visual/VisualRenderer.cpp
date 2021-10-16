@@ -83,6 +83,20 @@ QueueFamilyIndices VisualRenderer::FindQueueFamilies(VkPhysicalDevice Device) {
     std::vector<VkQueueFamilyProperties> QueueFamilies(QueueFamilyCount);
     vkGetPhysicalDeviceQueueFamilyProperties(Device, &QueueFamilyCount, QueueFamilies.data());
 
+    // Iterate Through Queues
+    int Index = 0;
+    for (const auto& QueueFamily : QueueFamilies) {
+
+        // Check If Queue Family Has Required Features
+        if (QueueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT) {
+            Indices.GraphicsFamily = Index;
+        }
+
+        Index++;
+
+
+    }
+
     
 
 
