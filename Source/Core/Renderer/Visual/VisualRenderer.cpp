@@ -56,6 +56,15 @@ void VisualRenderer::InitVulkan() {
     CreateVulkanInstance();
     Logger_.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::CreateVulkanInstance'", 2);
 
+    // Create Display Surface
+    if (LocalWindowEnabled_) {
+        Logger_.Log("Initialization [ START] 'Core::Renderer::Visual::LocalWindowDisplaySystem::CreateSurface'", 3);
+        sERSLocalWindowDisplaySystem_.CreateSurface(VulkanInstance_);
+        Logger_.Log("Initialization [FINISH] 'Core::Renderer::Visual::LocalWindowDisplaySystem::CreateSurface'", 2);
+    } else {
+        Logger_.Log("Initialization [SKIP] [Configuration DISABLED] 'Core::Renderer::Visual::LocalWindowDisplaySystem::CreateSurface'", 2);
+    }
+
     // Pick Physical Device
     Logger_.Log("Initializing 'Core::Renderer::Visual::VisualRenderer::PickPhysicalDevice", 3);
     PickPhysicalDevice();

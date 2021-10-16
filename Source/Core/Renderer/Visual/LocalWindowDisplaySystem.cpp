@@ -68,6 +68,21 @@ VkInstanceCreateInfo LocalWindowDisplaySystem::GetVulkanInitExtensions(VkInstanc
 
 }
 
+// Define LocalWindowDisplaySystem::CreateSurface
+void LocalWindowDisplaySystem::CreateSurface(VkInstance VulkanInstance) {
+
+    // Create Window Surface
+    Logger_.Log("Creating Window Display Surface", 5);
+
+    HasSurfaceBeenInitialized_ = true;
+    VulkanInstance_ = VulkanInstance;
+
+    if (glfwCreateWindowSurface(VulkanInstance_, Window_, nullptr, &Surface_) != VK_SUCCESS) {
+        Logger_.Log("Failed To Create Window Display Surface", 10);
+        // Shutdown system here.
+    }
+
+}
 
 // Define LocalWindowDisplaySystem::FetchEvents
 void LocalWindowDisplaySystem::FetchEvents() {
@@ -81,6 +96,11 @@ void LocalWindowDisplaySystem::FetchEvents() {
 void LocalWindowDisplaySystem::CleanUp() {
 
     // Cleanup System
+    if (HasSurfaceBeenInitialized_) {
+        Logger_.Log("Destroying VK Display Surface", 4);
+        vkDestroySurfaceKHR(VulkanInstance_, Surface_, nullptr);
+    }
+
     Logger_.Log("Tearing Down GLFW Window", 4);
     glfwDestroyWindow(Window_);
 

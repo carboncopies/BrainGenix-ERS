@@ -19,10 +19,14 @@ class LocalWindowDisplaySystem {
         YAML::Node SystemConfiguration_;
 
         GLFWwindow* Window_;
+        VkSurfaceKHR Surface_;
+        VkInstance VulkanInstance_;
 
         int WindowX_;
         int WindowY_;
         std::string WindowTitle_;
+        bool HasSurfaceBeenInitialized_ = false;
+
 
 
     public:
@@ -35,6 +39,9 @@ class LocalWindowDisplaySystem {
 
         // Get Window Events
         void FetchEvents();
+
+        // Create Window Surface
+        void CreateSurface(VkInstance VulkanInstance);
 
         // Destructor
         void CleanUp();
