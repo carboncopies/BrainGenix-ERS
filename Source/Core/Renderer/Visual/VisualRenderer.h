@@ -60,7 +60,7 @@ class VisualRenderer {
         int RateDeviceSuitability(VkPhysicalDevice Device);
 
         // Find Queue Familys
-        QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice Device);
+        QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice Device, bool IndentLogs = true);
 
         // Create Logical Device
         void CreateLogicalDevice();

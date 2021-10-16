@@ -71,21 +71,43 @@ void VisualRenderer::InitVulkan() {
 
 // Define VisualRenderer::CreateLogicalDevice
 void VisualRenderer::CreateLogicalDevice() {
-    
+
+    // Create Logical Device
+    Logger_.Log("Getting Queue Families For Selected Device", 3);
+    QueueFamilyIndices Indices = FindQueueFamilies(PhysicalDevice_, false);
+
+    // Setup Creation Process
+    Logger_.Log("Configuring 'VkDeviceQueueCreateInfo' Struct", 3);
+    VkDeviceQueueCreateInfo QueueCreateInfo{};
+    QueueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+    QueueCreateInfo.queueFamilyIndex = Indices.GraphicsFamily.value();
+    QueueCreateInfo.queueCount = 1;
+
 }
 
 // Define VisualRenderer::FindQueueFamilies
-QueueFamilyIndices VisualRenderer::FindQueueFamilies(VkPhysicalDevice Device) {
+QueueFamilyIndices VisualRenderer::FindQueueFamilies(VkPhysicalDevice Device, bool IndentLogs) {
 
     // Initialize Struct
     QueueFamilyIndices Indices;
 
     // Find Graphics Queue Family
-    Logger_.Log("        Querying Number Of Queue Families", 3);
+    if (IndentLogs) {
+        Logger_.Log("        Querying Number Of Queue Families", 3);
+    } else {
+        Logger_.Log("Querying Number Of Queue Families", 3);
+    }
+
     uint32_t QueueFamilyCount = 0;
     vkGetPhysicalDeviceQueueFamilyProperties(Device, &QueueFamilyCount, nullptr);
-    Logger_.Log(std::string(std::string("        Found ") + std::to_string(QueueFamilyCount) + std::string(" Queue Families")).c_str(), 2);
 
+    // Check Log Indentation Level
+    if (IndentLogs) {
+        Logger_.Log(std::string(std::string("        Found ") + std::to_string(QueueFamilyCount) + std::string(" Queue Families")).c_str(), 2);
+    } else {
+        Logger_.Log(std::string(std::string("Found ") + std::to_string(QueueFamilyCount) + std::string(" Queue Families")).c_str(), 2);
+    }
+    
     std::vector<VkQueueFamilyProperties> QueueFamilies(QueueFamilyCount);
     vkGetPhysicalDeviceQueueFamilyProperties(Device, &QueueFamilyCount, QueueFamilies.data());
 
