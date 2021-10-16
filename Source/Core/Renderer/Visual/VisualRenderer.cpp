@@ -68,6 +68,7 @@ void VisualRenderer::InitVulkan() {
 
 }
 
+
 // Define VisualRenderer::FindQueueFamilies
 QueueFamilyIndices VisualRenderer::FindQueueFamilies(VkPhysicalDevice Device) {
 
@@ -97,9 +98,7 @@ QueueFamilyIndices VisualRenderer::FindQueueFamilies(VkPhysicalDevice Device) {
 
     }
 
-    
-
-
+    // Return Results
     return Indices;
 
 }
@@ -154,6 +153,12 @@ int VisualRenderer::RateDeviceSuitability(VkPhysicalDevice Device) {
         
     // Check If Device Supports Geometry Shaders
     if (!DeviceFeatures.geometryShader) {
+        return 0;
+    }
+
+    // Check If Device Supports Queue Families
+    QueueFamilyIndices Indices = FindQueueFamilies(Device);
+    if (!Indices.GraphicsFamily.has_value()) {
         return 0;
     }
 
