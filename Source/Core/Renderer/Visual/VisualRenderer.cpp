@@ -83,6 +83,22 @@ void VisualRenderer::CreateLogicalDevice() {
     QueueCreateInfo.queueFamilyIndex = Indices.GraphicsFamily.value();
     QueueCreateInfo.queueCount = 1;
 
+    // Set Queue Priority
+    float QueuePriority = 1.0f;
+    QueueCreateInfo.pQueuePriorities = &QueuePriority;
+
+    // Set Device Features
+    Logger_.Log("Setting Required Device Features", 2);
+    VkPhysicalDeviceFeatures DeviceFeatures{};
+
+    // Create Logical Device
+    Logger_.Log("Creating Logical Device", 5);
+    VkDeviceCreateInfo CreateInfo{};
+    CreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+    CreateInfo.pQueueCreateInfos = &QueueCreateInfo;
+    CreateInfo.queueCreateInfoCount = 1;
+    CreateInfo.pEnabledFeatures = &DeviceFeatures;
+
 }
 
 // Define VisualRenderer::FindQueueFamilies
