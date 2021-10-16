@@ -14,7 +14,16 @@
 
 // Queue Struct
 struct QueueFamilyIndices {
+
+    // Hold Graphcis/Present Queues
     std::optional<uint32_t> GraphicsFamily;
+    std::optional<uint32_t> PresentFamily;
+
+
+    // Checks If Struct Populated
+    bool IsComplete() {
+        return GraphicsFamily.has_value() && PresentFamily.has_value();
+    }
 };
 
 
@@ -43,6 +52,7 @@ class VisualRenderer {
         VkPhysicalDevice PhysicalDevice_;
         VkDevice LogicalDevice_;
         VkQueue GraphicsQueue_;
+        VkQueue PresentationQueue_;
 
 
         // Initialize Vulkan API

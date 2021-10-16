@@ -12,6 +12,7 @@
 #include <vector>
 #include <cstring>
 #include <optional>
+#include <set>
 
 #include "Core/Renderer/Visual/LocalWindowDisplaySystem.cpp"
 
@@ -87,14 +88,22 @@ void VisualRenderer::CreateLogicalDevice() {
 
     // Setup Creation Process
     Logger_.Log("Configuring 'VkDeviceQueueCreateInfo' Struct", 3);
-    VkDeviceQueueCreateInfo QueueCreateInfo{};
-    QueueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
-    QueueCreateInfo.queueFamilyIndex = Indices.GraphicsFamily.value();
-    QueueCreateInfo.queueCount = 1;
+    std::vector<VkDeviceQueueCreateInfo> QueueCreateInfos;
+    std::set<uint32_t> UniqueQueueFamilies = {Indices.GraphicsFamily.value(), Indices.PresentFamily.value()};
 
-    // Set Queue Priority
     float QueuePriority = 1.0f;
-    QueueCreateInfo.pQueuePriorities = &QueuePriority;
+    for (uint32_t QueueFamily : UniqueQueueFamilies) {
+
+        VkDeviceQueueCreateInfo QueueCreateInfo{};
+        QueueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+        QueueCreateInfo.queueFamilyIndex = QueueFamily;
+        QueueCreateInfo.queueCount = 1;
+        QueueCreateInfo.pQueuePriorities = &QueuePriority;
+        QueueCreateInfos.push_back(QueueCreateInfo);
+
+    }
+
+
 
     // Set Device Features
     Logger_.Log("Setting Required Device Features", 2);
@@ -103,11 +112,13 @@ void VisualRenderer::CreateLogicalDevice() {
     // Configure Logical Device
     Logger_.Log("Configuring 'VkDeviceCreateInfo' Struct", 5);
     VkDeviceCreateInfo CreateInfo{};
-    CreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
-    CreateInfo.pQueueCreateInfos = &QueueCreateInfo;
-    CreateInfo.queueCreateInfoCount = 1;
-    CreateInfo.pEnabledFeatures = &DeviceFeatures;
 
+    CreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+
+    CreateInfo.queueCreateInfoCount = static_cast<uint32_t>(QueueCreateInfos.size());
+    CreateInfo.pQueueCreateInfos = QueueCreateInfos.data();
+
+    CreateInfo.pEnabledFeatures = &DeviceFeatures;
     CreateInfo.enabledExtensionCount = 0;
 
     if (ValidationLayersToBeUsed_) {
@@ -116,6 +127,10 @@ void VisualRenderer::CreateLogicalDevice() {
     } else {
         CreateInfo.enabledLayerCount = 0;
     }
+
+    // Create 
+
+
 
     // Creating Logical Device
     Logger_.Log("Creating Logical Device Instance", 3);
@@ -163,9 +178,19 @@ QueueFamilyIndices VisualRenderer::FindQueueFamilies(VkPhysicalDevice Device, bo
     int Index = 0;
     for (const auto& QueueFamily : QueueFamilies) {
 
-        // Check If Queue Family Has Required Features
+        // Check If Queue Family Has Requred Features
         if (QueueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT) {
             Indices.GraphicsFamily = Index;
+        }
+
+        // Check For Present Support If Required
+        if (LocalWindowEnabled_) {
+            VkBool32 PresentSupport = false;
+            vkGetPhysicalDeviceSurfaceSupportKHR(Device, Index, sERSLocalWindowDisplaySystem_.Surface_, &PresentSupport);
+
+            if (PresentSupport) {
+                Indices.PresentFamily = Index;
+            }
         }
 
         Index++;
