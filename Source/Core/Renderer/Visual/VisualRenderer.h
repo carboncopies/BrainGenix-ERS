@@ -41,6 +41,7 @@ class VisualRenderer {
         LocalWindowDisplaySystem sERSLocalWindowDisplaySystem_;
         VkInstance VulkanInstance_;
         VkPhysicalDevice PhysicalDevice_;
+        VkDevice LogicalDevice_;
 
 
         // Initialize Vulkan API
@@ -60,6 +61,9 @@ class VisualRenderer {
 
         // Find Queue Familys
         QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice Device);
+
+        // Create Logical Device
+        void CreateLogicalDevice();
 
 
     public:

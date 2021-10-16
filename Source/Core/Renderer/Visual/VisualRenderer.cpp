@@ -61,9 +61,18 @@ void VisualRenderer::InitVulkan() {
     PickPhysicalDevice();
     Logger_.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::PickPhysicalDevice", 2);
 
+    // Create Logical Device
+    Logger_.Log("Initializing 'Core::Renderer::Visual::VisualRenderer::CreateLogicalDevice", 3);
+    CreateLogicalDevice();
+    Logger_.Log("Initializing 'Core::Renderer::Visual::VisualRenderer::CreateLogicalDevice", 2);
+
 
 }
 
+// Define VisualRenderer::CreateLogicalDevice
+void VisualRenderer::CreateLogicalDevice() {
+    
+}
 
 // Define VisualRenderer::FindQueueFamilies
 QueueFamilyIndices VisualRenderer::FindQueueFamilies(VkPhysicalDevice Device) {
