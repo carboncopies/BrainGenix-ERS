@@ -10,7 +10,14 @@
 
 #pragma once
 
- 
+
+
+// Queue Struct
+struct QueueFamilyIndices {
+    std::optional<uint32_t> GraphicsFamily;
+};
+
+
 // Define Visual Renderer Class
 class VisualRenderer {
 
@@ -35,11 +42,6 @@ class VisualRenderer {
         VkInstance VulkanInstance_;
         VkPhysicalDevice PhysicalDevice_;
 
-
-        // Queue Struct
-        struct QueueFamilyIndices {
-            uint32_t GraphicsFamily;
-        };
 
         // Initialize Vulkan API
         void InitVulkan();

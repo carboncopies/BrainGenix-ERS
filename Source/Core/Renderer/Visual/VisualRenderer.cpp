@@ -11,6 +11,7 @@
 #include <vulkan/vulkan.h>
 #include <vector>
 #include <cstring>
+#include <optional>
 
 #include "Core/Renderer/Visual/LocalWindowDisplaySystem.cpp"
 
@@ -74,6 +75,17 @@ QueueFamilyIndices VisualRenderer::FindQueueFamilies(VkPhysicalDevice Device) {
     QueueFamilyIndices Indices;
 
     // Find Graphics Queue Family
+    Logger_.Log("Querying Number Of Queue Families", 3);
+    uint32_t QueueFamilyCount = 0;
+    vkGetPhysicalDeviceQueueFamilyProperties(Device, &QueueFamilyCount, nullptr);
+    Logger_.Log(std::string(std::string("Found ") + std::to_string(QueueFamilyCount) + std::string(" Queue Families")).c_str(), 2);
+
+    std::vector<VkQueueFamilyProperties> QueueFamilies(QueueFamilyCount);
+    vkGetPhysicalDeviceQueueFamilyProperties(Device, &QueueFamilyCount, QueueFamilies.data());
+
+    
+
+
     return Indices;
 
 }
