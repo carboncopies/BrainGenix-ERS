@@ -12,7 +12,7 @@ EnableValidationLayers: True
 EnableDebugLogging: True # To Be added Later <-- https://vulkan-tutorial.com/en/Drawing_a_triangle/Setup/Validation_layers
 
 
-# Set Logger configuration Parameters #
+# Set Logger Configuration Parameters #
 EnablePrintOutput: True
 EnableDatabaseOutput: False
 
