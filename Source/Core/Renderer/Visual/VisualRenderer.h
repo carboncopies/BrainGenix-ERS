@@ -26,6 +26,16 @@ struct QueueFamilyIndices {
     }
 };
 
+// SwapChain Struct
+struct SwapChainSupportDetails {
+
+    // Hold Swapchain Parameters
+    VkSurfaceCapabilitiesKHR Capabilities;
+    std::vector<VkSurfaceFormatKHR> Formats;
+    std::vector<VkPresentModeKHR> PresentModes;
+
+};
+
 
 // Define Visual Renderer Class
 class VisualRenderer {
@@ -83,6 +93,9 @@ class VisualRenderer {
 
         // Check Device Swapchain Extension Support
         bool CheckDeviceExtensionSupport(VkPhysicalDevice Device, bool IndentLogs = true);
+
+        // Populate Swapchain Info
+        SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice Device, bool IndentLogs = true);
 
 
     public:

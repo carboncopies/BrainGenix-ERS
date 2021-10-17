@@ -79,6 +79,63 @@ void VisualRenderer::InitVulkan() {
 
 }
 
+// Define VisualRenderer::QuerySwapChainSupport
+SwapChainSupportDetails VisualRenderer::QuerySwapChainSupport(VkPhysicalDevice Device, bool IndentLogs) {
+
+    // Get Swap Chain Support Information
+    if (IndentLogs) {
+        Logger_.Log("        Querying Number Of Swap Chain Formats", 3);
+    } else {
+        Logger_.Log("Querying Number Of Swap Chain Formats", 3);
+    }
+    SwapChainSupportDetails Details;
+    vkGetPhysicalDeviceSurfaceCapabilitiesKHR(Device, sERSLocalWindowDisplaySystem_.Surface_, &Details.Capabilities);
+
+    // Get Number Of Formats
+    uint32_t FormatCount;
+    vkGetPhysicalDeviceSurfaceFormatsKHR(Device, sERSLocalWindowDisplaySystem_.Surface_, &FormatCount, nullptr);
+
+
+    if (FormatCount != 0) {
+        Details.Formats.resize(FormatCount);
+        vkGetPhysicalDeviceSurfaceFormatsKHR(Device, sERSLocalWindowDisplaySystem_.Surface_, &FormatCount, Details.Formats.data());
+    }
+
+    // Log Formats
+    if (IndentLogs) {
+        Logger_.Log(std::string(std::string("        Found ") + std::to_string(FormatCount) + std::string(" Formats")).c_str(), 2);
+    } else {
+        Logger_.Log(std::string(std::string("Found ") + std::to_string(FormatCount) + std::string(" Formats")).c_str(), 2);
+    }
+
+
+    // Get Number Of Present Modes
+    if (IndentLogs) {
+        Logger_.Log("        Querying Number Of Presentation Modes", 3);
+    } else {
+        Logger_.Log("Querying Number Of Presentation Modes", 3);
+    }
+    uint32_t PresentModeCount;
+    vkGetPhysicalDeviceSurfacePresentModesKHR(Device, sERSLocalWindowDisplaySystem_.Surface_, &PresentModeCount, nullptr);
+
+    if (PresentModeCount != 0) {
+        Details.PresentModes.resize(PresentModeCount);
+        vkGetPhysicalDeviceSurfacePresentModesKHR(Device, sERSLocalWindowDisplaySystem_.Surface_, &PresentModeCount, Details.PresentModes.data());
+    }
+
+    // Log Number Of Presentation Modes
+    if (IndentLogs) {
+        Logger_.Log(std::string(std::string("        Found ") + std::to_string(PresentModeCount) + std::string(" Modes")).c_str(), 2);
+    } else {
+        Logger_.Log(std::string(std::string("Found ") + std::to_string(PresentModeCount) + std::string(" Modes")).c_str(), 2);
+    }
+
+
+    // Return Results
+    return Details;
+
+}
+
 // Define VisualRenderer::CheckDeviceExtensionSupport
 bool VisualRenderer::CheckDeviceExtensionSupport(VkPhysicalDevice Device, bool IndentLogs) {
 
