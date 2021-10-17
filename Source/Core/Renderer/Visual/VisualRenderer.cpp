@@ -88,14 +88,43 @@ void VisualRenderer::CreateLogicalDevice() {
 
     // Setup Creation Process
     Logger_.Log("Configuring 'VkDeviceQueueCreateInfo' Struct", 3);
-    VkDeviceQueueCreateInfo QueueCreateInfo{};
-    QueueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
-    QueueCreateInfo.queueFamilyIndex = Indices.GraphicsFamily.value();
-    QueueCreateInfo.queueCount = 1;
+    
 
-    // Set Queue Priority
-    float QueuePriority = 1.0f;
-    QueueCreateInfo.pQueuePriorities = &QueuePriority;
+    VkDeviceQueueCreateInfo QueueCreateInfo{};
+    std::vector<VkDeviceQueueCreateInfo> QueueCreateInfos;
+
+    if (LocalWindowEnabled_) {
+
+        
+        std::set<uint32_t> UniqueQueueFamilies = {Indices.GraphicsFamily.value(), Indices.PresentFamily.value()};
+
+        float QueuePriority = 1.0f;
+        for (uint32_t QueueFamily : UniqueQueueFamilies) {
+
+            VkDeviceQueueCreateInfo QueueCreateInfo{};
+            QueueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+            QueueCreateInfo.queueFamilyIndex = QueueFamily;
+            QueueCreateInfo.queueCount = 1;
+            QueueCreateInfo.pQueuePriorities = &QueuePriority;
+            QueueCreateInfos.push_back(QueueCreateInfo);
+
+
+        }
+
+
+    } else {
+    
+        QueueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+        QueueCreateInfo.queueFamilyIndex = Indices.GraphicsFamily.value();
+        QueueCreateInfo.queueCount = 1;
+
+        // Set Queue Priority
+        float QueuePriority = 1.0f;
+        QueueCreateInfo.pQueuePriorities = &QueuePriority;
+    
+    }
+
+
 
     // Set Device Features
     Logger_.Log("Setting Required Device Features", 2);
@@ -105,10 +134,16 @@ void VisualRenderer::CreateLogicalDevice() {
     Logger_.Log("Configuring 'VkDeviceCreateInfo' Struct", 5);
     VkDeviceCreateInfo CreateInfo{};
     CreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
-    CreateInfo.pQueueCreateInfos = &QueueCreateInfo;
-    CreateInfo.queueCreateInfoCount = 1;
-    CreateInfo.pEnabledFeatures = &DeviceFeatures;
 
+    if (LocalWindowEnabled_) {
+        CreateInfo.pQueueCreateInfos = QueueCreateInfos.data();//&QueueCreateInfo;
+        CreateInfo.queueCreateInfoCount = static_cast<uint32_t>(QueueCreateInfos.size());//1;
+    } else {
+        CreateInfo.pQueueCreateInfos = &QueueCreateInfo;
+        CreateInfo.queueCreateInfoCount = 1;
+    }
+    
+    CreateInfo.pEnabledFeatures = &DeviceFeatures;
     CreateInfo.enabledExtensionCount = 0;
 
     if (ValidationLayersToBeUsed_) {
@@ -118,7 +153,6 @@ void VisualRenderer::CreateLogicalDevice() {
         CreateInfo.enabledLayerCount = 0;
     }
 
-    // Create 
 
 
 
@@ -132,10 +166,18 @@ void VisualRenderer::CreateLogicalDevice() {
     }
 
     // Setup Graphics Queue
-    Logger_.Log("Setting Up Graphics Queue", 2);
+    Logger_.Log("INIT [ START] Setting Up Graphics Queue", 3);
     vkGetDeviceQueue(LogicalDevice_, Indices.GraphicsFamily.value(), 0, &GraphicsQueue_);
+    Logger_.Log("INIT [FINISH] Set Up Graphics Queue", 2);
 
-
+    // Setup Presentation Queue
+    if (LocalWindowEnabled_) {
+        Logger_.Log("INIT [ START] Creating Presentation Queue", 3);
+        vkGetDeviceQueue(LogicalDevice_, Indices.PresentFamily.value(), 0, &PresentationQueue_);
+        Logger_.Log("INIT [FINISH] Created Presentation Queue", 2);
+    } else {
+        Logger_.Log("INIT [  SKIP] [Configuration: 'DISABLE'] Skipping Presentation Queue Creation", 4);
+    }
 }
 
 // Define VisualRenderer::FindQueueFamilies
