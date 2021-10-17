@@ -410,6 +410,12 @@ int VisualRenderer::RateDeviceSuitability(VkPhysicalDevice Device) {
         return 0;
     }
 
+    // Check If Device Has Needed Swap Chain Features
+    bool SwapChainAdequate = false;
+    if (DeviceSupportsExtensions && LocalWindowEnabled_) {
+        SwapChainSupportDetails SwapChainSupport = QuerySwapChainSupport(Device);
+        SwapChainAdequate = !SwapChainSupport.Formats.empty() && !SwapChainSupport.PresentModes.empty();
+    }
 
 
     // Return Device Score
