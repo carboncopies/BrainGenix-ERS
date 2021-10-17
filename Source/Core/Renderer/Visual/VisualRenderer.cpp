@@ -79,6 +79,13 @@ void VisualRenderer::InitVulkan() {
 
 }
 
+// Define VisualRenderer::CheckDeviceExtensionSupport
+bool VisualRenderer::CheckDeviceExtensionSupport(VkPhysicalDevice Device) {
+
+    return true;
+
+}
+
 // Define VisualRenderer::CreateLogicalDevice
 void VisualRenderer::CreateLogicalDevice() {
 
@@ -311,6 +318,11 @@ int VisualRenderer::RateDeviceSuitability(VkPhysicalDevice Device) {
         return 0;
     }
 
+    // Check If Device Supports The Needed Extensions
+    bool DeviceSupportsExtensions = CheckDeviceExtensionSupport(Device);
+    if (!DeviceSupportsExtensions) {
+        return 0;
+    }
 
 
 

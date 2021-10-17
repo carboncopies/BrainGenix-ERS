@@ -41,6 +41,11 @@ class VisualRenderer {
             "VK_LAYER_KHRONOS_validation"
         };
 
+        // Define Device Extensions
+        const std::vector<const char*> DeviceExtensions_ = {
+            VK_KHR_SWAPCHAIN_EXTENSION_NAME
+        };
+
         // Declare Config Vars
         bool LocalWindowEnabled_;
         bool SystemShutdownInvoked_;
@@ -75,6 +80,9 @@ class VisualRenderer {
 
         // Create Logical Device
         void CreateLogicalDevice();
+
+        // Check Device Swapchain Extension Support
+        bool CheckDeviceExtensionSupport(VkPhysicalDevice Device);
 
 
     public:
