@@ -80,9 +80,38 @@ void VisualRenderer::InitVulkan() {
 }
 
 // Define VisualRenderer::CheckDeviceExtensionSupport
-bool VisualRenderer::CheckDeviceExtensionSupport(VkPhysicalDevice Device) {
+bool VisualRenderer::CheckDeviceExtensionSupport(VkPhysicalDevice Device, bool IndentLogs) {
 
-    return true;
+    // Check Extensions
+    if (IndentLogs) {
+        Logger_.Log("        Querying Number Of Device Extensions", 3);
+    } else {
+        Logger_.Log("Querying Number Of Device Extensions", 3);
+    }
+    uint32_t ExtensionCount;
+    vkEnumerateDeviceExtensionProperties(Device, nullptr, &ExtensionCount, nullptr);
+
+    std::vector<VkExtensionProperties> AvailableExtensions(ExtensionCount);
+    vkEnumerateDeviceExtensionProperties(Device, nullptr, &ExtensionCount, AvailableExtensions.data());
+
+    std::set<std::string> RequiredExtensions(DeviceExtensions_.begin(), DeviceExtensions_.end());
+
+    for (const auto& Extension : AvailableExtensions) {
+
+        RequiredExtensions.erase(Extension.extensionName);
+
+    }
+
+
+    // Return Data
+    if (IndentLogs) {
+        Logger_.Log(std::string(std::string("        Found ") + std::to_string(ExtensionCount) + std::string(" Extensions")).c_str(), 2);
+    } else {
+       Logger_.Log(std::string(std::string("Found ") + std::to_string(ExtensionCount) + std::string(" Extensions")).c_str(), 2);
+    }
+
+    return RequiredExtensions.empty();
+
 
 }
 

@@ -82,7 +82,7 @@ class VisualRenderer {
         void CreateLogicalDevice();
 
         // Check Device Swapchain Extension Support
-        bool CheckDeviceExtensionSupport(VkPhysicalDevice Device);
+        bool CheckDeviceExtensionSupport(VkPhysicalDevice Device, bool IndentLogs = true);
 
 
     public:
