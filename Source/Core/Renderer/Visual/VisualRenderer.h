@@ -100,6 +100,10 @@ class VisualRenderer {
         // Choose Swapchain Format
         VkSurfaceFormatKHR ChooseSwapChainSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& AvailableFormats);
 
+        // Choose Swapchain Present Mode
+        VkPresentModeKHR ChooseSwapPresentMode(const std::vector<VkPresentModeKHR>& AvailablePresentModes);
+
+
 
     public:
 

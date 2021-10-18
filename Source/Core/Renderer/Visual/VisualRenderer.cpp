@@ -79,6 +79,19 @@ void VisualRenderer::InitVulkan() {
 
 }
 
+// Define VisualRenderer::Swapchain Present Mode
+VkPresentModeKHR VisualRenderer::ChooseSwapPresentMode(const std::vector<VkPresentModeKHR>& AvailablePresentModes) {
+
+    for (const auto& AvailablePresentMode : AvailablePresentModes) {
+        if (AvailablePresentMode == VK_PRESENT_MODE_MAILBOX_KHR) {
+            return AvailablePresentMode;
+        }
+    }
+    
+    return VK_PRESENT_MODE_FIFO_KHR;
+
+}
+
 // Define VisualRenderer::ChooseSwapChainSurfaceFormat
 VkSurfaceFormatKHR VisualRenderer::ChooseSwapChainSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& AvailableFormats) {
 
