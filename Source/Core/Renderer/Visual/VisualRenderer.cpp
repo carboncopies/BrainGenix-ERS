@@ -13,7 +13,8 @@
 #include <cstring>
 #include <optional>
 #include <set>
-
+#include <cstdint>
+#include <algorithm>
 #include "Core/Renderer/Visual/LocalWindowDisplaySystem.cpp"
 
 #include "Core/Renderer/Visual/VisualRenderer.h"
@@ -82,14 +83,32 @@ void VisualRenderer::InitVulkan() {
 // Define VisualRenderer::Swapchain Present Mode
 VkPresentModeKHR VisualRenderer::ChooseSwapPresentMode(const std::vector<VkPresentModeKHR>& AvailablePresentModes) {
 
+    // Iterate Through Presentation Modes
     for (const auto& AvailablePresentMode : AvailablePresentModes) {
         if (AvailablePresentMode == VK_PRESENT_MODE_MAILBOX_KHR) {
             return AvailablePresentMode;
         }
     }
     
+    // Fallback Mode
     return VK_PRESENT_MODE_FIFO_KHR;
 
+}
+
+// Define VisualRenderer::Swap Extent
+VkExtent2D VisualRenderer::ChooseSwapExtent(const VkSurfaceCapabilitiesKHR& Capabilities) {
+    if (Capabilities.CurrentExtent.width != UINT32_MAX) {
+        return Capabilites.CurrentExtent;
+    } else {
+            int width, height;
+            GlfwGetFrameBufferSize(Window, &Width, &Height);
+
+            VkExtent2D ActualExtent = {
+                Static_cast<unit32_t>(Width),
+                Static_Cast<unit32_t>(Height)
+            }
+    }    
+    }
 }
 
 // Define VisualRenderer::ChooseSwapChainSurfaceFormat

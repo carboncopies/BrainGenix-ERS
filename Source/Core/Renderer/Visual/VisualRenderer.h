@@ -104,6 +104,9 @@ class VisualRenderer {
         VkPresentModeKHR ChooseSwapPresentMode(const std::vector<VkPresentModeKHR>& AvailablePresentModes);
 
 
+        // Choose Swap Extent
+        VkExtent2D ChooseSwapExtent(const VkSurfaceCapabilitiesKHR& Capabilities);
+
 
     public:
 
