@@ -19,7 +19,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_
 file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${SRC_DIR}")
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 
 
 # Add YAML-CPP Library
