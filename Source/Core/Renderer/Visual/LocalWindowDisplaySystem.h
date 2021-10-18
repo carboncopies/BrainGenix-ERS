@@ -18,11 +18,9 @@ class LocalWindowDisplaySystem {
         LoggerClass Logger_;
         YAML::Node SystemConfiguration_;
 
-        GLFWwindow* Window_;
         VkInstance VulkanInstance_;
 
-        int WindowX_;
-        int WindowY_;
+
         std::string WindowTitle_;
         bool HasSurfaceBeenInitialized_ = false;
 
@@ -32,6 +30,10 @@ class LocalWindowDisplaySystem {
 
         // Make Surface A Public Attribute
         VkSurfaceKHR Surface_;
+        GLFWwindow* Window_;
+
+        int WindowX_;
+        int WindowY_;
 
         // Window Initialization Function
         void InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig);

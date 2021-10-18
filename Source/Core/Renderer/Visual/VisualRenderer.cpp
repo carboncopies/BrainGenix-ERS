@@ -103,11 +103,11 @@ VkExtent2D VisualRenderer::ChooseSwapExtent(const VkSurfaceCapabilitiesKHR& Capa
         return Capabilities.currentExtent;
     } else {
             int Width, Height;
-            GlfwGetFrameBufferSize(sERSLocalWindowDisplaySystem.Window_, &sERSLocalWindowDisplaySystem.WindowX_, &sERSLocalWindowDisplaySystem.WindowY_);
+            glfwGetFramebufferSize(sERSLocalWindowDisplaySystem_.Window_, &sERSLocalWindowDisplaySystem_.WindowX_, &sERSLocalWindowDisplaySystem_.WindowY_);
 
             VkExtent2D ActualExtent = {
-                Static_cast<unit32_t>(sERSLocalWindowDisplaySystem.WindowX_),
-                Static_Cast<unit32_t>(sERSLocalWindowDisplaySystem.WindowY_)
+                static_cast<uint32_t>(sERSLocalWindowDisplaySystem_.WindowX_),
+                static_cast<uint32_t>(sERSLocalWindowDisplaySystem_.WindowY_)
             };
 
             ActualExtent.width = std::clamp(ActualExtent.width, Capabilities.minImageExtent.width, Capabilities.maxImageExtent.width);
@@ -115,7 +115,7 @@ VkExtent2D VisualRenderer::ChooseSwapExtent(const VkSurfaceCapabilitiesKHR& Capa
 
             return ActualExtent;
     }    
-    }
+
 }
 
 // Define VisualRenderer::ChooseSwapChainSurfaceFormat
