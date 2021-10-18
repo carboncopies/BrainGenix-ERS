@@ -97,16 +97,23 @@ VkPresentModeKHR VisualRenderer::ChooseSwapPresentMode(const std::vector<VkPrese
 
 // Define VisualRenderer::Swap Extent
 VkExtent2D VisualRenderer::ChooseSwapExtent(const VkSurfaceCapabilitiesKHR& Capabilities) {
-    if (Capabilities.CurrentExtent.width != UINT32_MAX) {
-        return Capabilites.CurrentExtent;
+
+    // Get Framebuffer MaxSize Requirements
+    if (Capabilities.currentExtent.width != UINT32_MAX) {
+        return Capabilities.currentExtent;
     } else {
-            int width, height;
-            GlfwGetFrameBufferSize(Window, &Width, &Height);
+            int Width, Height;
+            GlfwGetFrameBufferSize(sERSLocalWindowDisplaySystem.Window_, &sERSLocalWindowDisplaySystem.WindowX_, &sERSLocalWindowDisplaySystem.WindowY_);
 
             VkExtent2D ActualExtent = {
-                Static_cast<unit32_t>(Width),
-                Static_Cast<unit32_t>(Height)
-            }
+                Static_cast<unit32_t>(sERSLocalWindowDisplaySystem.WindowX_),
+                Static_Cast<unit32_t>(sERSLocalWindowDisplaySystem.WindowY_)
+            };
+
+            ActualExtent.width = std::clamp(ActualExtent.width, Capabilities.minImageExtent.width, Capabilities.maxImageExtent.width);
+            ActualExtent.height = std::clamp(ActualExtent.height, Capabilities.minImageExtent.height, Capabilities.maxImageExtent.height);
+
+            return ActualExtent;
     }    
     }
 }
