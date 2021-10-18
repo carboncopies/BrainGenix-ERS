@@ -79,6 +79,28 @@ void VisualRenderer::InitVulkan() {
 
 }
 
+// Define VisualRenderer::ChooseSwapChainSurfaceFormat
+VkSurfaceFormatKHR VisualRenderer::ChooseSwapChainSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& AvailableFormats) {
+
+    // Iterate Through Formats
+    for (const auto& AvailableFormat : AvailableFormats) {
+
+        // Check Format
+        if (AvailableFormat.format == VK_FORMAT_B8G8R8A8_SRGB && AvailableFormat.colorSpace == VK_COLOR_SPACE_SRGB_NONLINEAR_KHR) {
+
+            return AvailableFormat;
+
+        }
+
+
+    }
+
+    // If Target Format Not Available, Use Whatever Is
+    return AvailableFormats[0];
+
+
+}
+
 // Define VisualRenderer::QuerySwapChainSupport
 SwapChainSupportDetails VisualRenderer::QuerySwapChainSupport(VkPhysicalDevice Device, bool IndentLogs) {
 

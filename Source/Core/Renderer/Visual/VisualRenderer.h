@@ -97,6 +97,9 @@ class VisualRenderer {
         // Populate Swapchain Info
         SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice Device, bool IndentLogs = true);
 
+        // Choose Swapchain Format
+        VkSurfaceFormatKHR ChooseSwapChainSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& AvailableFormats);
+
 
     public:
 
