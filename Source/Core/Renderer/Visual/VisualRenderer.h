@@ -68,6 +68,10 @@ class VisualRenderer {
         VkDevice LogicalDevice_;
         VkQueue GraphicsQueue_;
         VkQueue PresentationQueue_;
+        VkSwapchainKHR SwapChain_;
+        std::vector<VkImage> SwapChainImages_;
+        VkFormat SwapChainImageFormat_;
+        VkExtent2D SwapChainExtent_;
 
 
         // Initialize Vulkan API
@@ -103,9 +107,11 @@ class VisualRenderer {
         // Choose Swapchain Present Mode
         VkPresentModeKHR ChooseSwapPresentMode(const std::vector<VkPresentModeKHR>& AvailablePresentModes);
 
-
         // Choose Swap Extent
         VkExtent2D ChooseSwapExtent(const VkSurfaceCapabilitiesKHR& Capabilities);
+
+        // Create Swap Chain
+        void CreateSwapChain();
 
 
     public:

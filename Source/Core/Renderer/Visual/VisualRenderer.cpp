@@ -15,6 +15,7 @@
 #include <set>
 #include <cstdint>
 #include <algorithm>
+
 #include "Core/Renderer/Visual/LocalWindowDisplaySystem.cpp"
 
 #include "Core/Renderer/Visual/VisualRenderer.h"
@@ -75,12 +76,114 @@ void VisualRenderer::InitVulkan() {
     // Create Logical Device
     Logger_.Log("Initializing 'Core::Renderer::Visual::VisualRenderer::CreateLogicalDevice", 3);
     CreateLogicalDevice();
-    Logger_.Log("Initializing 'Core::Renderer::Visual::VisualRenderer::CreateLogicalDevice", 2);
+    Logger_.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::CreateLogicalDevice", 2);
+
+    // Create Swapchain
+    if (LocalWindowEnabled_) {
+        Logger_.Log("INIT [ START] Creating Swap Chain", 3);
+        CreateSwapChain();
+        Logger_.Log("INIT [ START] Created Swap Chain", 3);
+    } else {
+        Logger_.Log("INIT [ SKIP] [CONFIGURATION DISABLE] Skipping Swapchain Initialization", 3);
+    }
 
 
 }
 
-// Define VisualRenderer::Swapchain Present Mode
+// Define VisualRenderer::CreateSwapChain
+void VisualRenderer::CreateSwapChain() {
+
+    // Get Swapchain Support Info
+    Logger_.Log("INIT [ START] Querying Swap Chain Support Information", 3);
+    SwapChainSupportDetails SwapChainSupport = QuerySwapChainSupport(PhysicalDevice_, false);
+    Logger_.Log("INIT [FINISH] Fetched Swap Chain Support Information", 2);
+
+    // Setup Swap Chain
+    Logger_.Log("INIT [ START] Setting Up Swap Chain Surface Formats", 3);
+    VkSurfaceFormatKHR SurfaceFormat = ChooseSwapChainSurfaceFormat(SwapChainSupport.Formats);
+    Logger_.Log("INIT [FINISH] Set Up Swap Chain Surface Formats", 2);
+
+    Logger_.Log("INIT [ START] Setting Up Swap Chain Present Modes", 3);
+    VkPresentModeKHR PresentMode = ChooseSwapPresentMode(SwapChainSupport.PresentModes);
+    Logger_.Log("INIT [FINISH] Setting Up Swap Chain Present Modes", 2);
+    
+    Logger_.Log("INIT [ START] Setting Up Swap Chain Extent Capabilities", 3);
+    VkExtent2D Extent = ChooseSwapExtent(SwapChainSupport.Capabilities);
+    Logger_.Log("INIT [FINISH] Setting Up Swap Chain Extent Capabilities", 2);
+
+
+    // Set Number Of Images In SwapChain
+    Logger_.Log("INIT [ START] Setting Up Swap Chain Image Count", 3);
+    uint32_t ImageCount = SwapChainSupport.Capabilities.minImageCount + 1;
+    
+    if (SwapChainSupport.Capabilities.maxImageCount > 0 && ImageCount > SwapChainSupport.Capabilities.maxImageCount) {
+        ImageCount = SwapChainSupport.Capabilities.maxImageCount;
+    }
+
+    Logger_.Log(std::string(std::string("INIT [FINISH] Set Swap Chain Image Count To: ") + std::to_string(ImageCount)).c_str(), 2);
+
+
+    // Configure Swap Chain
+    Logger_.Log("INIT [ START] Populating Swap Chain CreateInfo Struct", 3);
+    VkSwapchainCreateInfoKHR CreateInfo{};
+
+    CreateInfo.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
+    CreateInfo.surface = sERSLocalWindowDisplaySystem_.Surface_;
+
+    CreateInfo.minImageCount = ImageCount;
+    CreateInfo.imageFormat = SurfaceFormat.format;
+    CreateInfo.imageColorSpace = SurfaceFormat.colorSpace;
+    CreateInfo.imageExtent = Extent;
+    CreateInfo.imageArrayLayers = 1;
+    CreateInfo.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
+
+    QueueFamilyIndices Indices = FindQueueFamilies(PhysicalDevice_, false);
+    uint32_t QueueFamilyIndices[] = {Indices.GraphicsFamily.value(), Indices.PresentFamily.value()};
+
+    if (Indices.GraphicsFamily != Indices.PresentFamily) {
+        CreateInfo.imageSharingMode = VK_SHARING_MODE_CONCURRENT;
+        CreateInfo.queueFamilyIndexCount = 2;
+        CreateInfo.pQueueFamilyIndices = QueueFamilyIndices;
+    } else {
+        CreateInfo.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
+        CreateInfo.queueFamilyIndexCount = 0;
+        CreateInfo.pQueueFamilyIndices = nullptr;
+
+    }
+
+    CreateInfo.preTransform = SwapChainSupport.Capabilities.currentTransform;
+    CreateInfo.compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
+    CreateInfo.presentMode = PresentMode;
+    CreateInfo.clipped = VK_TRUE;
+
+    CreateInfo.oldSwapchain = VK_NULL_HANDLE;
+
+    Logger_.Log("INIT [FINISH] Populated Swap Chain CreateInfo Struct", 2);
+
+
+    // Create Swap Chain
+    Logger_.Log("INIT [ START] Creating Swap Chain Object", 3);
+    if (vkCreateSwapchainKHR(LogicalDevice_, &CreateInfo, nullptr, &SwapChain_) != VK_SUCCESS) {
+        Logger_.Log("INIT [ERROR] Failed To Create Swap Chain", 10);
+        SystemShutdownInvoked_ = true;
+    }
+    Logger_.Log("INIT [FINISH] Created Swap Chain Object", 2);
+
+
+    // Assign To Member Variables
+    Logger_.Log("INIT [ START] Assigning Swapchain Info To Member Variables", 3);
+    vkGetSwapchainImagesKHR(LogicalDevice_, SwapChain_, &ImageCount, nullptr);
+    SwapChainImages_.resize(ImageCount);
+    vkGetSwapchainImagesKHR(LogicalDevice_, SwapChain_, &ImageCount, SwapChainImages_.data());
+
+    SwapChainImageFormat_ = SurfaceFormat.format;
+    SwapChainExtent_ = Extent;
+    Logger_.Log("INIT [ START] Assigned Swapchain Info To Member Variables", 2);
+
+
+}
+
+// Define VisualRenderer::SwapchainPresentMode
 VkPresentModeKHR VisualRenderer::ChooseSwapPresentMode(const std::vector<VkPresentModeKHR>& AvailablePresentModes) {
 
     // Iterate Through Presentation Modes
@@ -639,6 +742,9 @@ void VisualRenderer::CleanUp() {
 
     // Log Shutdown Called
     Logger_.Log("Shutting Down 'Core::Renderer::Visual::VisualRenderer'", 5);
+
+    // Destroy Swapchain
+    vkDestroySwapchainKHR(LogicalDevice_, SwapChain_, nullptr);
 
     // Call Subclass's Destructors
     sERSLocalWindowDisplaySystem_.CleanUp();
