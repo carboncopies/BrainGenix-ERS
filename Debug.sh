@@ -4,5 +4,5 @@ cmake ..
 make -j 24
 
 cd ../Binaries
-./BrainGenix-ERS
+valgrind ./BrainGenix-ERS
 cd ..

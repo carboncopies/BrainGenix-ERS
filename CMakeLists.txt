@@ -11,6 +11,9 @@ set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 set(BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Binaries")
 
+# Enable Debugging
+#set (CMAKE_BUILD_TYPE RelWithDebInfo)
+
 # Add Main.cpp
 set(SOURCES "${SRC_DIR}/Main.cpp")
 add_executable("${PROJECT_NAME}" "${SOURCES}")
@@ -19,7 +22,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_
 file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${SRC_DIR}")
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 
 
 # Add YAML-CPP Library
@@ -27,16 +30,15 @@ set(YAML_CPP_VERSION "yaml-cpp")
 add_subdirectory("${LIB_DIR}/${YAML_CPP_VERSION}")
 target_link_libraries("${PROJECT_NAME}" "${YAML_CPP_VERSION}")
 
-# Add BGFX Library
-set(BGFX_CMAKE_DIR "${LIB_DIR}/bgfx.cmake")
-add_subdirectory("${BGFX_CMAKE_DIR}")
-target_link_libraries("${PROJECT_NAME}" "bgfx")
-target_link_libraries("${PROJECT_NAME}" "bx")
+# Link Vulkan Library
+find_package(Vulkan REQUIRED FATAL_ERROR)
+target_link_libraries(${PROJECT_NAME} ${Vulkan_LIBRARIES})
 
 # Add GLFW Library
 set(GLFW_DIR "${LIB_DIR}/glfw")
 add_subdirectory("${GLFW_DIR}")
 target_link_libraries("${PROJECT_NAME}" "glfw" "${GLFW_LIBRARIES}")
+
 
 # # Add ASSIMP Library
 # set(ASSIMP_DIR "${LIB_DIR}/assimp")
@@ -44,9 +46,9 @@ target_link_libraries("${PROJECT_NAME}" "glfw" "${GLFW_LIBRARIES}")
 # target_link_libraries("${PROJECT_NAME}" "${ASSIMP_LIBRARIES}")
 
 # Add Bullet Library
-set(BULLET_DIR "${LIB_DIR}/bullet")
-add_subdirectory("${BULLET_DIR}")
-include_directories("${BULLET_DIR}/src")
+# set(BULLET_DIR "${LIB_DIR}/bullet")
+# add_subdirectory("${BULLET_DIR}")
+# include_directories("${BULLET_DIR}/src")
 
 
 

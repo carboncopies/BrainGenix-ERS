@@ -11,10 +11,13 @@
 
 #include "Core/Initialization/ConfigurationLoader.cpp"
 #include "Core/Management/LoggingSystem.cpp"
-#include "Core/Initialization/GraphicsInitialization.cpp"
-#include "Core/Graphics/RenderLoop.cpp"
+#include "Core/Renderer/MainRenderingSystem.cpp"
 
 int main() {
+
+    // Declare Variables
+    bool ShutdownSystemInvoked = false;
+
 
     // Load System Configuration File
     const YAML::Node SystemConfiguration = LoadConfig("Config.yaml");
@@ -23,26 +26,26 @@ int main() {
     LoggerClass sERSLogger;
     sERSLogger.InitializeLogger(SystemConfiguration);
 
-    sERSLogger.Log("Initialized Logger Subsystem", 5);
+    sERSLogger.Log("Initialized 'Management::Logger::LoggerClass'", 5);
 
-    // Initialize Graphics Subsystem
-    GraphicsSubsystem sERSGraphicsSystem;
-    sERSGraphicsSystem.InitializeGraphics(SystemConfiguration, sERSLogger);
-
-
-    // Initialize Render Loop
-    RenderLoopClass sERSRenderLoop;
-    sERSRenderLoop.InitializeRenderLoop(sERSGraphicsSystem, sERSLogger);
+    // Initialize Main Rendering System
+    sERSLogger.Log("Initializing 'Core::Renderer::MainRenderingSystem'", 5);
+    MainRenderer RenderingSystem;
+    RenderingSystem.InitRenderer(sERSLogger, SystemConfiguration, ShutdownSystemInvoked);
+    sERSLogger.Log("Initialized 'Core::Renderer::MainRenderingSystem'", 4);
 
 
-    // Main Program Loop
-    sERSLogger.Log("Entering Main Program Loop", 4);
-    bool ProgramShouldRun = true;
-    while (ProgramShouldRun) {
+    // Main Loop
+    sERSLogger.Log("Entering Main ERS Program Loop", 4);
+    while (!ShutdownSystemInvoked) {
 
-        // Update The Graphics
-        sERSRenderLoop.RenderLoop();
+        RenderingSystem.UpdateRender();
 
     }
+
+
+    // Call Destructors, Shutdown System
+    sERSLogger.Log("System Shutdown Invoked, Calling Destructors", 5);
+    RenderingSystem.CleanUp();
 
 }

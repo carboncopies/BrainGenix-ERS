@@ -8,90 +8,140 @@
     Date Created: 2021-05-31
 */
 
+#include <iomanip>
 #include <iostream>
 #include <string>
 #include <ctime>
 #include <cstring>
+#include <map>
+#include <list>
+#include <array>
+
+#include "Core/Management/LoggingSystem.h"
 
 
-class LoggerClass {
-
-    // Define "Local" Variables And Functions //
-    private: 
-
-        // Define Local Vars //
-        bool PrintLogOutput;
-        int MinimumLogLevel = 5;
 
 
-        //-----------------------------------------------------------------------------------//
-        // NOTE: LOG LEVELS ARE AS FOLLOWS:                                                  //
-        // The smaller the number, the less important the information.                       //
-        // Log lvl 0 is the least important, and is just debugging information essentially.  //
-        //-----------------------------------------------------------------------------------//
 
 
-        // Returns A String Of The Current UTC Time //
-        std::string Get_UTC_Time() { 
-            
-            // Get UTC String //
-            time_t CurrentTime = std::time(0);
-            char* UTCString = ctime(&CurrentTime);
+// Define LoggerClass::InitializeLogger //
+void LoggerClass::InitializeLogger(YAML::Node SystemConfiguration) { // ** NOTE: THIS SHOULD TAKE A CONFIG DICT FROM YAML IN THE FUTRE ** //
 
-            // Remove New Line From String //
-            if (UTCString[strlen(UTCString) - 1] == '\n') {
-                UTCString[strlen(UTCString) - 1] = '\0';
-            }
+    // Make Local Copy Of System Config
+    LocalSystemConfiguration = SystemConfiguration;
 
-            return UTCString;
-        }
+    // Update Local Config Parameters //
+    PrintLogOutput = SystemConfiguration["EnablePrintOutput"].as<bool>();
+    MinimumLogLevel = SystemConfiguration["SetMinimumLogLevel"].as<int>();
+    ColorizeLog = SystemConfiguration["ColorizeLogOutput"].as<bool>();
+    ReplaceLevelWithText = SystemConfiguration["UseTextLogLevel"].as<bool>();
+    UseTextLogLevel_ = SystemConfiguration["UseTextLogLevel"].as<bool>();
 
-        // Create Function That Gets Callstack? //
-        // Returns callstack as std::string?
-
-
-    // Define Functions //
-    public: 
-
-
-        // Define Initialization Function //
-        void InitializeLogger(YAML::Node SystemConfiguration) { // ** NOTE: THIS SHOULD TAKE A CONFIG DICT FROM YAML IN THE FUTRE ** //
-
-            // Update Local Config Parameters //
-            PrintLogOutput = SystemConfiguration["EnablePrintOutput"].as<bool>();
-            MinimumLogLevel = SystemConfiguration["SetMinimumLogLevel"].as<int>();
-
-            // Print Log Key //
-            if (PrintLogOutput) {
-                std::cout << "[Level] [Time] [Message]\n";
-            };
-
+    // Read Log Level Colors
+    YAML::Node ColorsNode = SystemConfiguration["LogLevelColors"];
+    for (YAML::const_iterator it=ColorsNode.begin(); it!=ColorsNode.end(); ++it) {
+        ColorLookup_[it->first.as<int>()] = {
+            it->second[0].as<int>(),
+            it->second[1].as<int>(),
+            it->second[2].as<int>()
         };
+    }
 
-        // Log An Item //
-        void Log(const char* LogItem, int LogLevel=5) {
+    // Read Log Level Names
+    YAML::Node NameNode = SystemConfiguration["LogLevelNames"];
+    for (YAML::const_iterator it=NameNode.begin(); it!=NameNode.end(); ++it) {
 
-            // Get Input Params, and Reformat Into Strings //
-            std::string CurrentTime = Get_UTC_Time();
+        LogNameLookup_[it->first.as<int>()] = {
+            it->second.as<std::string>()
+        };
+    }
 
-            // Create Output String //
-            std::string Output;
 
-            // Combine Strings //
-            Output += "[" + std::to_string(LogLevel) + "] ";
-            Output += "[" + CurrentTime + "] ";
-            Output += std::string(LogItem) + "\n";
+    // Print Log Key //
+    if (PrintLogOutput) {
+        std::cout << "[ Level] [               Time] [Message]\n";
+    };
 
-            // Check Log Level Before Printing It //
-            if (LogLevel >= MinimumLogLevel) {
-
-                // If Log Print Enabled //
-                if (PrintLogOutput) {
-                    std::cout << Output;
-                };
-
-            };
-
-        }
 
 };
+
+// Define LoggerClass::Log //
+void LoggerClass::Log(const char* LogItem, int LogLevel) {
+
+    // Get Current Time In YYYY-MM-DD-HH-MM-SS Format
+    std::time_t RawCurrentTime;
+    std::tm* TimeInformation;
+    char TimeBuffer [80];
+
+    std::time(&RawCurrentTime);
+    TimeInformation = std::localtime(&RawCurrentTime);
+
+    std::strftime(TimeBuffer, 80, "%Y-%m-%d_%H-%M-%S", TimeInformation);
+    std::string CurrentTime = std::string(TimeBuffer);
+
+    // Create Output Strings //
+    std::string Output;
+
+    // Create Pad Strings
+    std::string LogLevelPadded;
+    if (UseTextLogLevel_) {
+        LogLevelPadded = LogNameLookup_[LogLevel];
+    } else {
+        LogLevelPadded = std::to_string(LogLevel);
+    }
+    std::string CurrentTimePadded = CurrentTime;
+
+    // Pad Log Level Column
+    int CurrentLogLevelLength = LogLevelPadded.length();
+    if (CurrentLogLevelLength < LogLevelTargetWidth) {
+        LogLevelPadded.insert(0, InsertString, LogLevelTargetWidth - CurrentLogLevelLength);
+    }
+
+    // Pad Time Column
+    int CurrentTimeLength = CurrentTimePadded.length();
+    if (CurrentTimeLength < LogTimeTargetWidth) {
+        CurrentTimePadded.insert(0, InsertString, LogTimeTargetWidth - CurrentTimeLength);
+    }
+
+    // Combine Strings //
+    Output += "[" + LogLevelPadded + "] ";
+    Output += "[" + CurrentTimePadded + "] ";
+    Output += std::string(LogItem) + "\n";
+
+    // Check Log Level Before Printing It //
+    if (LogLevel >= MinimumLogLevel) {
+
+        // If Log Print Enabled //
+        if (PrintLogOutput) {
+
+            // If Colorize Enabled
+            if (ColorizeLog) {
+                ColorizeText(Output, LogLevel);
+            } else {
+                std::cout << Output;
+            }
+        };
+
+    };
+
+}
+
+// Define LoggerClass::ColorizeText
+void LoggerClass::ColorizeText(std::string Message, int LogLevel) {
+
+    // Get Color Value
+    RGBColor ColorValue = ColorLookup_[LogLevel];
+
+    std::string RedString = std::to_string(ColorValue.Red);
+    std::string GreenString = std::to_string(ColorValue.Green);
+    std::string BlueString = std::to_string(ColorValue.Blue);
+
+    std::string ColorPrefix = std::string("\x1b[38;2;") + RedString + std::string(";") + GreenString + std::string(";") + BlueString + std::string("m");
+    std::string ColorSuffix = "\x1b[0m";
+
+    // Colorize String
+    std::string ColorString = ColorPrefix + Message + ColorSuffix;
+
+    // Print Output To COUT
+    std::cout << ColorString;
+}
