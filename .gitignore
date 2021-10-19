@@ -1,6 +1,10 @@
 # Ignore Build Data #
 Build/
 Binaries/
+build/
+binaries/
+bin/
+Build-Tools/
 
 # Prerequisites
 *.d
