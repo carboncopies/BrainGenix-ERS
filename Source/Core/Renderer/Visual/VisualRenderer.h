@@ -72,6 +72,7 @@ class VisualRenderer {
         std::vector<VkImage> SwapChainImages_;
         VkFormat SwapChainImageFormat_;
         VkExtent2D SwapChainExtent_;
+        std::vector<VkImageView> SwapChainImageViews_;
 
 
         // Initialize Vulkan API
@@ -112,6 +113,9 @@ class VisualRenderer {
 
         // Create Swap Chain
         void CreateSwapChain();
+
+        // Create Image Views
+        void CreateImageViews();
 
 
     public:

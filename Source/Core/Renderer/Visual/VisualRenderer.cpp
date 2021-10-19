@@ -82,11 +82,58 @@ void VisualRenderer::InitVulkan() {
     if (LocalWindowEnabled_) {
         Logger_.Log("INIT [ START] Creating Swap Chain", 3);
         CreateSwapChain();
-        Logger_.Log("INIT [ START] Created Swap Chain", 3);
+        Logger_.Log("INIT [FINISH] Created Swap Chain", 2);
     } else {
-        Logger_.Log("INIT [ SKIP] [CONFIGURATION DISABLE] Skipping Swapchain Initialization", 3);
+        Logger_.Log("INIT [  SKIP] [CONFIGURATION DISABLE] Skipping Swapchain Initialization", 3);
     }
 
+    // Create Image Views
+    if (LocalWindowEnabled_) {
+        Logger_.Log("Initialization [ START] Creating Image Views", 3);
+        CreateImageViews();
+        Logger_.Log("Initialization [FINISH] Created Image Views", 2);
+    } else {
+        Logger_.Log("Initialization [  SKIP] [CONFIGURATION DISABLE] Skipping Image View Creation", 3);
+    }
+
+}
+
+// Define VisualRenderer::CreateImageViews
+void VisualRenderer::CreateImageViews() {
+
+    // Create Image View
+    SwapChainImageViews_.resize(SwapChainImages_.size());
+
+    // Iterate Through Image Views
+    for (size_t i = 0; i < SwapChainImages_.size(); i++) {
+
+        // Populate ImageViewCreateInfo Struct
+        VkImageViewCreateInfo CreateInfo{};
+
+        CreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
+        CreateInfo.image = SwapChainImages_[i];
+        CreateInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;
+        CreateInfo.format = SwapChainImageFormat_;
+
+        CreateInfo.components.r = VK_COMPONENT_SWIZZLE_IDENTITY;
+        CreateInfo.components.g = VK_COMPONENT_SWIZZLE_IDENTITY;
+        CreateInfo.components.b = VK_COMPONENT_SWIZZLE_IDENTITY;
+        CreateInfo.components.a = VK_COMPONENT_SWIZZLE_IDENTITY;
+
+        CreateInfo.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+        CreateInfo.subresourceRange.baseMipLevel = 0;
+        CreateInfo.subresourceRange.levelCount = 1;
+        CreateInfo.subresourceRange.baseArrayLayer = 0;
+        CreateInfo.subresourceRange.layerCount = 1; // For stereoscopic 3d application, make more layers
+
+        // Create Image View
+        if (vkCreateImageView(LogicalDevice_, &CreateInfo, nullptr, &SwapChainImageViews_[i]) != VK_SUCCESS) {
+            Logger_.Log("Failed To Create Image Views", 10);
+            SystemShutdownInvoked_ = true;
+        }
+
+
+    }
 
 }
 
@@ -746,6 +793,11 @@ void VisualRenderer::CleanUp() {
 
     // Log Shutdown Called
     Logger_.Log("Shutting Down 'Core::Renderer::Visual::VisualRenderer'", 5);
+
+    // Cleanup Image Views
+    for (auto ImageView : SwapChainImageViews_) {
+        vkDestroyImageView(LogicalDevice_, ImageView, nullptr);
+    }
 
     // Destroy Swapchain
     vkDestroySwapchainKHR(LogicalDevice_, SwapChain_, nullptr);
