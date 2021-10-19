@@ -117,6 +117,9 @@ class VisualRenderer {
         // Create Image Views
         void CreateImageViews();
 
+        // Create Graphics Pipeline
+        void CreateGraphicsPipeline();
+
 
     public:
 

@@ -98,6 +98,12 @@ void VisualRenderer::InitVulkan() {
 
 }
 
+// Define VisualRenderer::CreateGraphicsPipeline
+void VisualRenderer::CreateGraphicsPipeline() {
+    
+}
+
+
 // Define VisualRenderer::CreateImageViews
 void VisualRenderer::CreateImageViews() {
 
