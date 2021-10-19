@@ -20,7 +20,7 @@ add_executable("${PROJECT_NAME}" "${SOURCES}")
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
 file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
-file(COPY "${SRC_DIR}/Source/Shaders/" DESTINATION "${BIN_DIR}")
+file(COPY "${SRC_DIR}/Shaders/Source/" DESTINATION "${BIN_DIR}")
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${SRC_DIR}")
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
