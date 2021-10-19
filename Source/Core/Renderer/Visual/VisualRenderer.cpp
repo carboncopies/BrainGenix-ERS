@@ -393,15 +393,19 @@ void VisualRenderer::CreateLogicalDevice() {
     CreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
 
     if (LocalWindowEnabled_) {
-        CreateInfo.pQueueCreateInfos = QueueCreateInfos.data();//&QueueCreateInfo;
-        CreateInfo.queueCreateInfoCount = static_cast<uint32_t>(QueueCreateInfos.size());//1;
+        CreateInfo.queueCreateInfoCount = static_cast<uint32_t>(QueueCreateInfos.size());
+        CreateInfo.pQueueCreateInfos = QueueCreateInfos.data();
+
+        CreateInfo.enabledExtensionCount = static_cast<uint32_t>(DeviceExtensions_.size());
+        CreateInfo.ppEnabledExtensionNames = DeviceExtensions_.data();
     } else {
         CreateInfo.pQueueCreateInfos = &QueueCreateInfo;
         CreateInfo.queueCreateInfoCount = 1;
+        CreateInfo.enabledExtensionCount = 0;
     }
     
     CreateInfo.pEnabledFeatures = &DeviceFeatures;
-    CreateInfo.enabledExtensionCount = 0;
+
 
     if (ValidationLayersToBeUsed_) {
         CreateInfo.enabledLayerCount = static_cast<uint32_t>(ValidationLayers_.size());
