@@ -153,7 +153,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
 
     // Set Fixed Functions
     Logger_.Log("Creating Fixed Functions", 3);
-    VkPipelineVerteInputStateCreateInfo VertexInputInfo{};
+    VkPipelineVertexInputStateCreateInfo VertexInputInfo{};
     VertexInputInfo.stYpe = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
     VertexInputInfo.vertexBindingDescriptionCount = 0;
     VertexInputInfo.pVertexBindingDescriptions = nullptr;
@@ -255,7 +255,6 @@ void VisualRenderer::CreateGraphicsPipeline() {
 
     // Pipeline Layout
     Logger_.Log("Setting Up Pipeline", 3);
-    VkPipelineLayout PipelineLayout;
 
     VkPipelineLayoutCreateInfo PipelineLayoutInfo{};
     PipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
@@ -264,7 +263,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
     PipelineLayoutInfo.pushConstantRangeCount = 0;
     PipelineLayoutInfo.pPushConstantRanges = nullptr;
 
-    if (vkCreatePipelineLayout(LogicalDevice_, &PipelineLayoutInfo, nullptr, &PipelineLayout) != VK_SUCCESS) {
+    if (vkCreatePipelineLayout(LogicalDevice_, &PipelineLayoutInfo, nullptr, &PipelineLayout_) != VK_SUCCESS) {
         Logger_.Log("Failed To Create Pipeline Layout", 10);
         SystemShutdownInvoked_ = true;
     }
@@ -989,6 +988,9 @@ void VisualRenderer::CleanUp() {
 
     // Log Shutdown Called
     Logger_.Log("Shutting Down 'Core::Renderer::Visual::VisualRenderer'", 5);
+
+    // Destroy Pipeline
+    vkDestroyPipelineLayout(LogicalDevice_, PipelineLayout_, nullptr);
 
     // Cleanup Image Views
     for (auto ImageView : SwapChainImageViews_) {
