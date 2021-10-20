@@ -144,7 +144,7 @@ class VisualRenderer {
         void CreateCommandBuffers();
 
         // Create Semaphores
-        void CreteSemaphores();
+        void CreateSemaphores();
 
         // Draw Frame
         void DrawFrame();

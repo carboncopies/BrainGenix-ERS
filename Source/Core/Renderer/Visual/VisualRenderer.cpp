@@ -132,6 +132,12 @@ void VisualRenderer::InitVulkan() {
     Logger_.Log("Initialization [FINISH] Created Command Buffers", 2);
 
 
+    // Create Semaphores
+    Logger_.Log("Initialization [ START] Creating Semaphores", 3);
+    CreateSemaphores();
+    Logger_.Log("Initialization [FINISH] Created Semaphores", 2);
+
+
 }
 
 // Define VisualRenderer::CreateSemaphores
@@ -1232,6 +1238,12 @@ void VisualRenderer::RenderLoop() {
 // Define VisualRenderer::DrawFrame
 void VisualRenderer::DrawFrame() {
 
+    // Acquire Image From Swap Chain
+    uint32_t ImageIndex;
+    VkAcquireNextImageKHR(LogicalDevice_, SwapChain_, UINT64_MAX, ImageAvailableSemaphore_, VK_NULL_HANDLE, &ImageIndex);
+
+    
+
 }
 
 // Define VisualRenderer::CleanUp
@@ -1241,7 +1253,7 @@ void VisualRenderer::CleanUp() {
     Logger_.Log("Shutting Down 'Core::Renderer::Visual::VisualRenderer'", 5);
 
     // Cleanup Semaphores
-    vkDestroySemaphore(LogicalDevice_, RenderfinishedSemaphore_, nullptr);
+    vkDestroySemaphore(LogicalDevice_, RenderFinishedSemaphore_, nullptr);
     vkDestroySemaphore(LogicalDevice_, ImageAvailableSemaphore_, nullptr);
 
     // Destroy Command Pool
