@@ -142,7 +142,7 @@ void VisualRenderer::CreateFramebuffers() {
         FrameBufferInfo.height = SwapChainExtent_.height;
         FrameBufferInfo.layers = 1;
 
-        if (vkCreateFramebuffer(LogicalDevice_, &FrameBufferInfo, nullptr, &SwapChainFrameBuffers_[i]) != VK_SUCCESS) {
+        if (vkCreateFramebuffer(LogicalDevice_, &FrameBufferInfo, nullptr, &SwapChainFramebuffers_[i]) != VK_SUCCESS) {
             Logger_.Log("Failed To Create Framebuffer", 10);
             SystemShutdownInvoked_ = true;
         }
