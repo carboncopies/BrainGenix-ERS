@@ -126,6 +126,12 @@ void VisualRenderer::InitVulkan() {
     Logger_.Log("Initialization [FINISH] Created Command Pool", 2);
 
 
+    // Create Command Buffers
+    Logger_.Log("Initialization [ START] Creating Command Buffers", 3);
+    CreateCommandBuffers();
+    Logger_.Log("Initialization [FINISH] Created Command Buffers", 2);
+
+
 }
 
 // Define VisualRenderer::CreateCommandBuffers
