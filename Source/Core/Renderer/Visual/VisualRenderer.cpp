@@ -235,7 +235,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
     ColorBlending.logicOpEnable = VK_FALSE;
     ColorBlending.logicOp = VK_LOGIC_OP_COPY;
     ColorBlending.attachmentCount = 1;
-    ColorBlending.pAttachments = &colorBlendAttachment;
+    ColorBlending.pAttachments = &ColorBlendAttachment;
     ColorBlending.blendConstants[0] = 0.0f;
     ColorBlending.blendConstants[1] = 0.0f;
     ColorBlending.blendConstants[2] = 0.0f;
