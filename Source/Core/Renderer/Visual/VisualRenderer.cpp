@@ -188,7 +188,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
     ViewportState.viewportCount = 1;
     ViewportState.pViewports = &Viewport;
     ViewportState.scissorCount = 1;
-    ViewportSTate.pScissors = &Scissor;
+    ViewportState.pScissors = &Scissor;
 
 
     // Setup Rasterizer
