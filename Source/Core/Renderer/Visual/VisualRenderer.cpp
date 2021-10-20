@@ -345,7 +345,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
     PipelineInfo.basePipelineIndex = -1;
 
 
-    if (vkCreateGraphicsPipelines(LogicalDevice_, VK_NULL_HANDLE, 1, &PipelineInfo, nullptro &GraphicsPipeline_) != VK_SUCCESS) {
+    if (vkCreateGraphicsPipelines(LogicalDevice_, VK_NULL_HANDLE, 1, &PipelineInfo, nullptr, &GraphicsPipeline_) != VK_SUCCESS) {
         Logger_.Log("Failed To Create Graphics Pipeline", 10);
         SystemShutdownInvoked_ = true;
     }
