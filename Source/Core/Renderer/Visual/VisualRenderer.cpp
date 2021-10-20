@@ -211,7 +211,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
     Logger_.Log("Setting Up Multisampling", 3);
     VkPipelineMultisampleStateCreateInfo Multisampling{};
     Multisampling.sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
-    Multisampling.sampleShadingEanble = VK_FALSE;
+    Multisampling.sampleShadingEnable = VK_FALSE;
     Multisampling.rasterizationSamples = VK_SAMPLE_COUNT_1_BIT;
     Multisampling.minSampleShading = 1.0f;
     Multisampling.pSampleMask = nullptr;
