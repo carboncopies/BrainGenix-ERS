@@ -1242,7 +1242,29 @@ void VisualRenderer::DrawFrame() {
     uint32_t ImageIndex;
     VkAcquireNextImageKHR(LogicalDevice_, SwapChain_, UINT64_MAX, ImageAvailableSemaphore_, VK_NULL_HANDLE, &ImageIndex);
 
-    
+    // Submit To Command Buffer
+    VkSubmitInfo SubmitInfo{};
+    SubmitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
+
+    VkSemaphore WaitSemaphores[] = {ImageAvailableSemaphore};
+    VkPipelineStageFlags WaitStates[] = {VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT};
+    SubmitInfo.waitSemaphoreCount = 1;
+    SubmitInfo.pWaitSemaphores = WaitSemaphores;
+    SubmitInfo.pWaitDstStageMask = WaitStages;
+
+    SubmitInfo.commandBufferCount = 1;
+    SubmitInfo.pCommandBuffers = &commandBuffers[ImageIndex];
+
+
+    VkSemaphore SignalSemaphores[] = {RenderFinishedSemaphore};
+    SubmitInfo.signalSemaphoreCount = 1;
+    SubmitInfo.pSignalSemaphores = SignalSemaphores;
+
+    // Submit To Queue
+    if (vkQueueSubmit(GraphicsQueue, 1, &SubmitInfo, VK_NULL_HANDLE) != VK_SUCCESS) {
+        Logger_.Log("Failed To Submit Draw Command Buffer", 10);
+        SystemShutdownInvoked_ = true;
+    }
 
 }
 
