@@ -124,6 +124,9 @@ class VisualRenderer {
         // Create ShaderModule Function
         VkShaderModule CreateShaderModule(const std::vector<char>& Code);
 
+        // Create Render Pass
+        void CreateRenderPass();
+
 
     public:
 

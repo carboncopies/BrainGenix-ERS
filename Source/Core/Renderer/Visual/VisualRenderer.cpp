@@ -107,6 +107,13 @@ void VisualRenderer::InitVulkan() {
 
 }
 
+// Define VisualRenderer::CreateRenderPass
+void VisualRenderer::CreateRenderPass() {
+
+    
+
+}
+
 // Define VisualRenderer::CreateGraphicsPipeline
 void VisualRenderer::CreateGraphicsPipeline() {
     
