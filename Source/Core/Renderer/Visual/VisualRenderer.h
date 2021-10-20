@@ -79,6 +79,8 @@ class VisualRenderer {
         std::vector<VkFramebuffer> SwapChainFramebuffers_;
         VkCommandPool CommandPool_;
         std::vector<VkCommandBuffer> CommandBuffers_;
+        VkSemaphore ImageAvailableSemaphore_;
+        VkSemaphore RenderFinishedSemaphore_;
 
 
         // Initialize Vulkan API
@@ -140,6 +142,9 @@ class VisualRenderer {
 
         // Create Command Buffers
         void CreateCommandBuffers();
+
+        // Create Semaphores
+        void CreteSemaphores();
 
         // Draw Frame
         void DrawFrame();

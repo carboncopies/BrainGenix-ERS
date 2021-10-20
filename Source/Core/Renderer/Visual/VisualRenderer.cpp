@@ -134,6 +134,25 @@ void VisualRenderer::InitVulkan() {
 
 }
 
+// Define VisualRenderer::CreateSemaphores
+void VisualRenderer::CreateSemaphores() {
+
+    // Create Semaphores
+    VkSemaphoreCreateInfo SemaphoreInfo{};
+    SemaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
+
+    if (vkCreateSemaphore(LogicalDevice_, &SemaphoreInfo, nullptr, &ImageAvailableSemaphore_) != VK_SUCCESS) {
+        Logger_.Log("Failed To Create ImageAvailable Semaphore", 10);
+        SystemShutdownInvoked_ = true;
+    }
+
+    if (vkCreateSemaphore(LogicalDevice_, &SemaphoreInfo, nullptr, &RenderFinishedSemaphore_) != VK_SUCCESS) {
+        Logger_.Log("Failed To Create RenderFinished Semaphore", 10);
+        SystemShutdownInvoked_ = true;
+    }
+
+}
+
 // Define VisualRenderer::CreateCommandBuffers
 void VisualRenderer::CreateCommandBuffers() {
 
@@ -1212,7 +1231,7 @@ void VisualRenderer::RenderLoop() {
 
 // Define VisualRenderer::DrawFrame
 void VisualRenderer::DrawFrame() {
-    
+
 }
 
 // Define VisualRenderer::CleanUp
@@ -1220,6 +1239,10 @@ void VisualRenderer::CleanUp() {
 
     // Log Shutdown Called
     Logger_.Log("Shutting Down 'Core::Renderer::Visual::VisualRenderer'", 5);
+
+    // Cleanup Semaphores
+    vkDestroySemaphore(LogicalDevice_, RenderfinishedSemaphore_, nullptr);
+    vkDestroySemaphore(LogicalDevice_, ImageAvailableSemaphore_, nullptr);
 
     // Destroy Command Pool
     vkDestroyCommandPool(LogicalDevice_, CommandPool_, nullptr);
