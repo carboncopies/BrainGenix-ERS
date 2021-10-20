@@ -338,7 +338,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
 
 
     PipelineInfo.layout = PipelineLayout_;
-    PipelienInfo.renderPass = RenderPass_;
+    PipelineInfo.renderPass = RenderPass_;
     PipelineInfo.subpass = 0;
 
     PipelineInfo.basePipelineHAndle = VK_NULL_HANDLE;
