@@ -76,6 +76,7 @@ class VisualRenderer {
         VkPipelineLayout PipelineLayout_;
         VkRenderPass RenderPass_;
         VkPipeline GraphicsPipeline_;
+        std::vector<VkFramebuffer> SwapChainFramebuffers_;
 
 
         // Initialize Vulkan API
@@ -128,6 +129,9 @@ class VisualRenderer {
 
         // Create Render Pass
         void CreateRenderPass();
+
+        // Setup Framebuffers
+        void CreateFramebuffers();
 
 
     public:

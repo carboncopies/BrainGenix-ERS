@@ -113,6 +113,11 @@ void VisualRenderer::InitVulkan() {
 
 }
 
+// Define VisualRenderer::CreateFramebuffers
+void VisualRenderer::CreateFramebuffers() {
+
+}
+
 // Define VisualRenderer::CreateRenderPass
 void VisualRenderer::CreateRenderPass() {
 
