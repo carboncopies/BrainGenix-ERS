@@ -197,10 +197,6 @@ void VisualRenderer::CreateGraphicsPipeline() {
 
     Logger_.Log("Created Shader Stages", 2);
 
-    // Cleanup Shader Modules
-    vkDestroyShaderModule(LogicalDevice_, FragmentShaderModule, nullptr);
-    vkDestroyShaderModule(LogicalDevice_, VertexShaderModule, nullptr);
-
 
     // Set Fixed Functions
     Logger_.Log("Creating Fixed Functions", 3);
@@ -349,6 +345,10 @@ void VisualRenderer::CreateGraphicsPipeline() {
         Logger_.Log("Failed To Create Graphics Pipeline", 10);
         SystemShutdownInvoked_ = true;
     }
+
+    // Cleanup Shader Modules
+    vkDestroyShaderModule(LogicalDevice_, FragmentShaderModule, nullptr);
+    vkDestroyShaderModule(LogicalDevice_, VertexShaderModule, nullptr);
 
 
 }
