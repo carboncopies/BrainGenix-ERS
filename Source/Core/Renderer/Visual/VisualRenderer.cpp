@@ -98,6 +98,12 @@ void VisualRenderer::InitVulkan() {
         Logger_.Log("Initialization [  SKIP] [CONFIGURATION DISABLE] Skipping Image View Creation", 3);
     }
 
+    // Setup Render Passes
+    Logger_.Log("Initialization [ START] Creating Render Passes", 3);
+    CreateRenderPass();
+    Logger_.Log("Initialization [FINISH] Created Render Passes", 2);
+
+
 
     // Create Graphics Pipeline
     Logger_.Log("Initialization [ START] Creating Graphics Pipeline", 3);
@@ -110,7 +116,45 @@ void VisualRenderer::InitVulkan() {
 // Define VisualRenderer::CreateRenderPass
 void VisualRenderer::CreateRenderPass() {
 
-    
+    // Log Render Pass Setup
+    Logger_.LoG("Setting Up Render Passes", 3);
+
+    // Create Color Attachment
+    VkAttachmentDescription ColorAttachment{};
+    ColorAttachment.format = SwapChainImageFormat_;
+    ColorAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
+    ColorAttachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+    ColorAttachment.storeOp = VK_ATTACHMENT_STORE_OP_STORE;
+    ColorAttachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
+    ColorAttachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+    ColorAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+    ColorAttachment.finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
+
+    // Rendering Subpasses
+    VkAttachmentReference ColorAttachmentRef{};
+    ColorAttachmentRef.attachment = 0;
+    ColorAttachmentRef.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
+
+    VkSubpassDescription Subpass{};
+    Subpass.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
+    Subpass.colorAttachmentCount = 1;
+    Subpass.pColorAttachments = &ColorAttachmentRef;
+
+
+    // Create Render Pass
+    VkRenderPassCreateInfo RenderPassInfo{};
+    RenderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
+    RenderPassInfo.attachmentCount = 1;
+    RenderPassInfo.pAttachments = &ColorAttachment;
+    RenderPassInfo.subpassCount = 1;
+    RenderPassInfo.pSubpasses = &Subpass;
+
+    if (vkCreateRenderPass(LogicalDevice_, &RenderPassInfo, nullptr, &RenderPass_) != VK_SUCCESS) {
+        Logger_.Log("Failed To Create Render Pass", 10);
+        SystemShutdownInvoked = true;
+    }
+
+
 
 }
 
@@ -998,6 +1042,7 @@ void VisualRenderer::CleanUp() {
 
     // Destroy Pipeline
     vkDestroyPipelineLayout(LogicalDevice_, PipelineLayout_, nullptr);
+    vkDestroyRenderPass(LogicalDevice_, RenderPass_, nullptr);
 
     // Cleanup Image Views
     for (auto ImageView : SwapChainImageViews_) {
