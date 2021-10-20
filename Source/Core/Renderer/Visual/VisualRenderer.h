@@ -78,6 +78,7 @@ class VisualRenderer {
         VkPipeline GraphicsPipeline_;
         std::vector<VkFramebuffer> SwapChainFramebuffers_;
         VkCommandPool CommandPool_;
+        std::vector<VkCommandBuffer> CommandBuffers_;
 
 
         // Initialize Vulkan API
@@ -136,6 +137,8 @@ class VisualRenderer {
 
         // Setup Command Pool
         void CreateCommandPool();
+
+        // Create Command Buffers
 
 
     public:

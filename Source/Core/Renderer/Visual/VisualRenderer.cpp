@@ -119,6 +119,13 @@ void VisualRenderer::InitVulkan() {
         Logger_.Log("Initialization [  SKIP] [CONFIGURATION DISABLE] Skipping Framebuffer Creation", 3);
     }
 
+
+    // Create Command Pool
+    Logger_.Log("Initialization [ START] Creating Command Pool", 3);
+    CreateCommandPool();
+    Logger_.Log("Initialization [FINISH] Created Command Pool", 2);
+
+
 }
 
 // Define VisualRenderer::CreateCommandPool
