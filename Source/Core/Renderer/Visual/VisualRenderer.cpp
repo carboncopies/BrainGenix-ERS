@@ -1240,31 +1240,47 @@ void VisualRenderer::DrawFrame() {
 
     // Acquire Image From Swap Chain
     uint32_t ImageIndex;
-    VkAcquireNextImageKHR(LogicalDevice_, SwapChain_, UINT64_MAX, ImageAvailableSemaphore_, VK_NULL_HANDLE, &ImageIndex);
+    vkAcquireNextImageKHR(LogicalDevice_, SwapChain_, UINT64_MAX, ImageAvailableSemaphore_, VK_NULL_HANDLE, &ImageIndex);
 
     // Submit To Command Buffer
     VkSubmitInfo SubmitInfo{};
     SubmitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
 
-    VkSemaphore WaitSemaphores[] = {ImageAvailableSemaphore};
+    VkSemaphore WaitSemaphores[] = {ImageAvailableSemaphore_};
     VkPipelineStageFlags WaitStates[] = {VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT};
     SubmitInfo.waitSemaphoreCount = 1;
     SubmitInfo.pWaitSemaphores = WaitSemaphores;
-    SubmitInfo.pWaitDstStageMask = WaitStages;
+    SubmitInfo.pWaitDstStageMask = WaitStates;
 
     SubmitInfo.commandBufferCount = 1;
-    SubmitInfo.pCommandBuffers = &commandBuffers[ImageIndex];
+    SubmitInfo.pCommandBuffers = &CommandBuffers_[ImageIndex];
 
 
-    VkSemaphore SignalSemaphores[] = {RenderFinishedSemaphore};
+    VkSemaphore SignalSemaphores[] = {RenderFinishedSemaphore_};
     SubmitInfo.signalSemaphoreCount = 1;
     SubmitInfo.pSignalSemaphores = SignalSemaphores;
 
     // Submit To Queue
-    if (vkQueueSubmit(GraphicsQueue, 1, &SubmitInfo, VK_NULL_HANDLE) != VK_SUCCESS) {
+    if (vkQueueSubmit(GraphicsQueue_, 1, &SubmitInfo, VK_NULL_HANDLE) != VK_SUCCESS) {
         Logger_.Log("Failed To Submit Draw Command Buffer", 10);
         SystemShutdownInvoked_ = true;
     }
+
+    // Subpass Dependencies
+    VkSubpassDependency Dependency{};
+    Dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
+    Dependency.dstSubpass = 0;
+
+    Dependency.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+    Dependency.srcAccessMask = 0;
+
+    Dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+    Dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
+
+
+    // Add Dependency To Renderpass
+    RenderPassInfo.dependencyCount = 1;
+    RenderPassInfo.pDependencies = &Dependency;
 
 }
 
