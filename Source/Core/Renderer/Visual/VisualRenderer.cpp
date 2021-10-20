@@ -117,7 +117,7 @@ void VisualRenderer::InitVulkan() {
 void VisualRenderer::CreateRenderPass() {
 
     // Log Render Pass Setup
-    Logger_.LoG("Setting Up Render Passes", 3);
+    Logger_.Log("Setting Up Render Passes", 3);
 
     // Create Color Attachment
     VkAttachmentDescription ColorAttachment{};

@@ -75,7 +75,6 @@ class VisualRenderer {
         std::vector<VkImageView> SwapChainImageViews_;
         VkPipelineLayout PipelineLayout_;
         VkRenderPass RenderPass_;
-        VkPipelineLayout PipelineLayout_;
 
 
         // Initialize Vulkan API
