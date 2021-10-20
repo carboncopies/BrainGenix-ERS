@@ -320,6 +320,32 @@ void VisualRenderer::CreateGraphicsPipeline() {
     }
 
 
+    // Create Pipeline Object
+    Logger_.Log("Creating Graphics Pipeline Object", 3);
+    VkGraphicsPipelineCreateInfo PipelineInfo{};
+    PipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
+    PipelineInfo.stageCount = 2;
+    PipelineInfo.pStages = ShaderStages;
+
+    PipelineInfo.pVertexInputState = &VertexInputInfo;
+    PipelineInfo.pInputAssemblyState = &InputAssembly;
+    PipelineInfo.pViewportState = &ViewportState;
+    PipelineInfo.pRasterizationState = &Rasterizer;
+    PipelineInfo.pMultisampleState = &Multisampling;
+    PipelineInfo.pDepthStencilState = nullptr; // Optional
+    PipelineInfo.pColorBlendState = &ColorBlending;
+    PipelineInfo.pDynamicState = nullptr; // Optional
+
+
+    PipelineInfo.layout = PipelineLayout_;
+    PipelienInfo.renderPass = RenderPass_;
+    PipelineInfo.subpass = 0;
+
+    PipelineInfo.basePipelineHAndle = VK_NULL_HANDLE;
+    PipelineInfo.basePipelineIndex = -1;
+
+    
+
 }
 
 // Define VisualRenderer::CreateShaderModule
