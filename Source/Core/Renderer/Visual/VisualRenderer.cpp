@@ -125,7 +125,7 @@ void VisualRenderer::InitVulkan() {
 void VisualRenderer::CreateFramebuffers() {
 
     // Setup Framebuffer
-    SwapchainFramebuffers_.resize(SwapChainImageViews_.size());
+    SwapChainFramebuffers_.resize(SwapChainImageViews_.size());
 
     // Iterate Through Image Views To Create Framebuffers
     for (size_t i=0; i < SwapChainImageViews_.size(); i++) {
