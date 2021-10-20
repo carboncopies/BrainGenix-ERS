@@ -218,8 +218,16 @@ void VisualRenderer::CreateGraphicsPipeline() {
     VkViewport Viewport{};
     Viewport.x = 0.0f;
     Viewport.y = 0.0f;
-    Viewport.width = (float) SwapChainExtent_.width; // ADJUST THESE LATER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    Viewport.height = (float) SwapChainExtent_.height;
+
+    if (LocalWindowEnabled_) {
+        Viewport.width = (float) SwapChainExtent_.width; // ADJUST THESE LATER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        Viewport.height = (float) SwapChainExtent_.height;
+    } else {
+        Viewport.width = (float) SystemConfiguration_["RenderWidthPixels"].as<int>();
+        Viewport.height = (float) SystemConfiguration_["RenderHeightPixels"].as<int>();
+        
+    }
+    
     Viewport.minDepth = 0.0f;
     Viewport.maxDepth = 1.0f; 
 
