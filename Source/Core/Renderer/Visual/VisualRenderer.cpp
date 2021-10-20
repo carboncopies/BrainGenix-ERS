@@ -202,7 +202,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
     Rasterizer.cullMode = VK_CULL_MODE_BACK_BIT;
     Rasterizer.frontFace = VK_FRONT_FACE_CLOCKWISE;
     
-    Rasterizer.depthBiasEnable = FK_FALSE;
+    Rasterizer.depthBiasEnable = VK_FALSE;
     Rasterizer.depthBiasConstantFactor = 0.0f;
     Rasterizer.depthBiasClamp = 0.0f;
     Rasterizer.depthBiasSlopeFactor = 0.0f;
