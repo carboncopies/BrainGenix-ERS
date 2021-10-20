@@ -220,7 +220,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
 
     // Setup Color Blending
     Logger_.Log("Setting Up Color Blending", 3);
-    VkpipelineColorBlendAttachmentState ColorBlendAttachment{};
+    VkPipelineColorBlendAttachmentState ColorBlendAttachment{};
     ColorBlendAttachment.colorWriteMask = VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_G_BIT | VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_A_BIT;
     ColorBlendAttachment.blendEnable = VK_TRUE;  // set to false in tutorial
     ColorBlendAttachment.srcColorBlendFactor = VK_BLEND_FACTOR_ONE;
@@ -250,7 +250,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
     VkPipelineDynamicStateCreateInfo DynamicState{};
     DynamicState.sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
     DynamicState.dynamicStateCount = 2;
-    DynamicState.pDynamicStates = dynamicStates;
+    DynamicState.pDynamicStates = DynamicStates;
 
 
     // Pipeline Layout
