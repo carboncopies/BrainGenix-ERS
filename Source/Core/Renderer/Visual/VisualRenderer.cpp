@@ -155,6 +155,46 @@ void VisualRenderer::CreateCommandBuffers() {
     }
 
 
+    // Record Command Buffer
+    for (size_t i = 0; i < CommandBuffers_.size(); i++) {
+        VkCommandBufferBeginInfo BeginInfo{};
+        BeginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
+        BeginInfo.flags = 0;
+        BeginInfo.pInheritanceInfo = nullptr;
+
+        if (vkBeginCommandBuffer(CommandBuffers_[i], &BeginInfo) != VK_SUCCESS) {
+            Logger_.Log("Failed To Begin Recording Command Buffer", 10);
+            SystemShutdownInvoked_ = true;
+        }
+
+
+        // Create Renderpass Begin Info
+        VkRenderPassBeginInfo RenderPassInfo{};
+        RenderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
+        RenderPassInfo.renderPass = RenderPass_;
+        RenderPassInfo.frameBuffer = SwapChainFramebuffers[i];
+
+        RenderPassInfo.renderArea.offset = {0, 0};
+        RenderPassInfo.renderArea.extent = SwapChainExtent; // COME BACK AND FIX THIS LATER FOR OFFSCREEN RENDERING!
+
+        // Setup Clear Color
+        VkClearValue ClearColor = {{0.0f, 0.0f, 0.0f, 1.0f}};
+        RenderPassInfo.clearValueCount = 1;
+        RenderPassInfo.pClearvalues = &ClearColor;
+
+        // Render Pass Definition
+        vkCmdBeginRenderPass(CommandBuffers_[i], &RenderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
+        vkCmdBindPipeline(CommandBuffers_[i], VK_PIPELINE_BIND_POINT_GRAPHICS, GraphicsPipeline_);
+        VkCmdDraw(CommandBuffers[i], 3, 1, 0, 0);
+        vkCmdEndRenderPass(CommandBuffers_[i]);
+
+        if (vkEndCommandBuffer(CommandBuffers[i]) != VK_SUCCESS) {
+            Logger_.Log("Failed To Record Command Buffer", 10);
+            SystemShutdownInvoked_ = true;
+        }
+
+    }
+
 }
 
 // Define VisualRenderer::CreateCommandPool
