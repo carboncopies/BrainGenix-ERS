@@ -128,6 +128,26 @@ void VisualRenderer::InitVulkan() {
 
 }
 
+// Define VisualRenderer::CreateCommandBuffers
+void VisualRenderer::CreateCommandBuffers() {
+
+    // Set Command Buffer Size
+    CommandBuffers_.resize(SwapChainFramebuffers_.size());
+
+    // Setup Command Buffer
+    VkCommandBufferAllocateInfo AllocInfo{};
+    AllocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
+    AllocInfo.commandPool = CommandPool_;
+    AllocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
+    AllocInfo.commandBufferCount = (uint32_t) CommandBuffers_.size();
+
+
+    // Create Command Buffer
+    if (vkAllocateCommandBuffers(LogicalDevice_, &AllocInfo, nullptr, CommandBuffers_.data()))
+
+
+}
+
 // Define VisualRenderer::CreateCommandPool
 void VisualRenderer::CreateCommandPool() {
 
