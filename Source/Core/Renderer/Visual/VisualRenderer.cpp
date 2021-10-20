@@ -299,6 +299,17 @@ void VisualRenderer::CreateRenderPass() {
     Subpass.colorAttachmentCount = 1;
     Subpass.pColorAttachments = &ColorAttachmentRef;
 
+    // Subpass Dependencies
+    VkSubpassDependency Dependency{};
+    Dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
+    Dependency.dstSubpass = 0;
+
+    Dependency.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+    Dependency.srcAccessMask = 0;
+
+    Dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+    Dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
+
 
     // Create Render Pass
     VkRenderPassCreateInfo RenderPassInfo{};
@@ -307,6 +318,10 @@ void VisualRenderer::CreateRenderPass() {
     RenderPassInfo.pAttachments = &ColorAttachment;
     RenderPassInfo.subpassCount = 1;
     RenderPassInfo.pSubpasses = &Subpass;
+
+    // Add Dependency To Renderpass
+    RenderPassInfo.dependencyCount = 1;
+    RenderPassInfo.pDependencies = &Dependency;
 
     if (vkCreateRenderPass(LogicalDevice_, &RenderPassInfo, nullptr, &RenderPass_) != VK_SUCCESS) {
         Logger_.Log("Failed To Create Render Pass", 10);
@@ -1266,21 +1281,23 @@ void VisualRenderer::DrawFrame() {
         SystemShutdownInvoked_ = true;
     }
 
-    // Subpass Dependencies
-    VkSubpassDependency Dependency{};
-    Dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
-    Dependency.dstSubpass = 0;
 
-    Dependency.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
-    Dependency.srcAccessMask = 0;
+    // Presentation
+    VkPresentInfoKHR PresentInfo{};
+    PresentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
+    PresentInfo.waitSemaphoreCount = 1;
+    PresentInfo.pWaitSemaphores = SignalSemaphores;
 
-    Dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
-    Dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
+    VkSwapchainKHR SwapChains[] = {SwapChain_};
+    PresentInfo.swapchainCount = 1;
+    PresentInfo.pSwapchains = SwapChains;
+    PresentInfo.pImageIndices = &ImageIndex;
 
+    PresentInfo.pResults = nullptr;
 
-    // Add Dependency To Renderpass
-    RenderPassInfo.dependencyCount = 1;
-    RenderPassInfo.pDependencies = &Dependency;
+    
+    // Present
+    vkQueuePresentKHR(PresentationQueue_, &PresentInfo);
 
 }
 
