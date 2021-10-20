@@ -121,6 +121,25 @@ void VisualRenderer::InitVulkan() {
 
 }
 
+// Define VisualRenderer::CreateCommandPool
+void VisualRenderer::CreateCommandPool() {
+
+    // Find Queue Families
+    QueueFamilyIndices QueueFamilyIndices = FindQueueFamilies(PhysicalDevice_);
+
+    VkCommandPoolCreateInfo PoolInfo{};
+    PoolInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
+    PoolInfo.queueFamilyIndex = QueueFamilyIndices.GraphicsFamily.value();
+    PoolInfo.flags = 0;
+
+    // Create Command Pool
+    if (vkCreateCommandPool(LogicalDevice_, &PoolInfo, nullptr, &CommandPool_) != VK_SUCCESS) {
+        Logger_.Log("Failed To Create Command Pool", 10);
+        SystemShutdownInvoked_ = true;
+    }
+
+}
+
 // Define VisualRenderer::CreateFramebuffers
 void VisualRenderer::CreateFramebuffers() {
 
@@ -1117,6 +1136,9 @@ void VisualRenderer::CleanUp() {
 
     // Log Shutdown Called
     Logger_.Log("Shutting Down 'Core::Renderer::Visual::VisualRenderer'", 5);
+
+    // Destroy Command Pool
+    vkDestroyCommandPool(LogicalDevice_, CommandPool_, nullptr);
 
     // Destroy Framebuffer
     for (auto Framebuffer : SwapChainFramebuffers_) {
