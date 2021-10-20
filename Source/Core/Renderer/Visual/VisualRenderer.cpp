@@ -154,13 +154,13 @@ void VisualRenderer::CreateGraphicsPipeline() {
     // Set Fixed Functions
     Logger_.Log("Creating Fixed Functions", 3);
     VkPipelineVertexInputStateCreateInfo VertexInputInfo{};
-    VertexInputInfo.stYpe = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
+    VertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
     VertexInputInfo.vertexBindingDescriptionCount = 0;
     VertexInputInfo.pVertexBindingDescriptions = nullptr;
     VertexInputInfo.vertexAttributeDescriptionCount = 0;
     VertexInputInfo.pVertexAttributeDescriptions = nullptr;
 
-    VkPipelineInputAssemblyStatecreateInfo InputAssembly{};
+    VkPipelineInputAssemblyStateCreateInfo InputAssembly{};
     InputAssembly.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
     InputAssembly.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
     InputAssembly.primitiveRestartEnable = VK_FALSE;
@@ -172,7 +172,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
     Viewport.x = 0.0f;
     Viewport.y = 0.0f;
     Viewport.width = (float) SwapChainExtent_.width; // ADJUST THESE LATER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    Viewport.height = (float) SwapchainExtent_.height;
+    Viewport.height = (float) SwapChainExtent_.height;
     Viewport.minDepth = 0.0f;
     Viewport.maxDepth = 1.0f; 
 
@@ -183,7 +183,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
     Scissor.extent = SwapChainExtent_; // FILL THIS In LATER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     // Setup Viewport State
-    VkPipelineviewportStateCreateInfo ViewportState{};
+    VkPipelineViewportStateCreateInfo ViewportState{};
     ViewportState.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
     ViewportState.viewportCount = 1;
     ViewportState.pViewports = &Viewport;
