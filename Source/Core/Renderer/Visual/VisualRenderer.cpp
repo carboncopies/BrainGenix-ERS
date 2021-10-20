@@ -344,7 +344,12 @@ void VisualRenderer::CreateGraphicsPipeline() {
     PipelineInfo.basePipelineHAndle = VK_NULL_HANDLE;
     PipelineInfo.basePipelineIndex = -1;
 
-    
+
+    if (vkCreateGraphicsPipelines(LogicalDevice_, VK_NULL_HANDLE, 1, &PipelineInfo, nullptro &GraphicsPipeline_) != VK_SUCCESS) {
+        Logger_.Log("Failed To Create Graphics Pipeline", 10);
+        SystemShutdownInvoked_ = true;
+    }
+
 
 }
 
@@ -1067,6 +1072,7 @@ void VisualRenderer::CleanUp() {
     Logger_.Log("Shutting Down 'Core::Renderer::Visual::VisualRenderer'", 5);
 
     // Destroy Pipeline
+    vkDestroyPipeline(LogicalDevice_, GraphicsPipeline_, nullptr);
     vkDestroyPipelineLayout(LogicalDevice_, PipelineLayout_, nullptr);
     vkDestroyRenderPass(LogicalDevice_, RenderPass_, nullptr);
 
