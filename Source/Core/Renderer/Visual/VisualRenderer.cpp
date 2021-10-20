@@ -138,8 +138,8 @@ void VisualRenderer::CreateFramebuffers() {
         FrameBufferInfo.renderPass = RenderPass_;
         FrameBufferInfo.attachmentCount = 1;
         FrameBufferInfo.pAttachments = Attachments;
-        FrameBufferInfo.width = SwapChainExtent.width;
-        FrameBufferInfo.height = SwapChainExtent.height;
+        FrameBufferInfo.width = SwapChainExtent_.width;
+        FrameBufferInfo.height = SwapChainExtent_.height;
         FrameBufferInfo.layers = 1;
 
         if (vkCreateFramebuffer(LogicalDevice_, &FrameBufferInfo, nullptr, &SwaphChainFrameBuffers[i]) != VK_SUCCESS) {
