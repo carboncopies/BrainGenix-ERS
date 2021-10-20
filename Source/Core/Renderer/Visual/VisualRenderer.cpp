@@ -130,7 +130,7 @@ void VisualRenderer::CreateFramebuffers() {
     // Iterate Through Image Views To Create Framebuffers
     for (size_t i=0; i < SwapChainImageViews_.size(); i++) {
         VkImageView Attachments[] = {
-            SwapChainImageViews[i]
+            SwapChainImageViews_[i]
         };
 
         VkFramebufferCreateInfo FrameBufferInfo{};
