@@ -104,17 +104,51 @@ void VisualRenderer::InitVulkan() {
     Logger_.Log("Initialization [FINISH] Created Render Passes", 2);
 
 
-
     // Create Graphics Pipeline
     Logger_.Log("Initialization [ START] Creating Graphics Pipeline", 3);
     CreateGraphicsPipeline();
     Logger_.Log("Initialization [FINISH] Created Graphics Pipeline", 2);
 
 
+    // Setup Framebuffers
+    if (LocalWindowEnabled_) {
+        Logger_.Log("Initialization [ START] Creating Framebuffer", 3);
+        CreateFramebuffers();
+        Logger_.Log("Initialization [FINISH] Created Framebuffer", 2);
+    } else {
+        Logger_.Log("Initialization [  SKIP] [CONFIGURATION DISABLE] Skipping Framebuffer Creation", 3);
+    }
+
 }
 
 // Define VisualRenderer::CreateFramebuffers
 void VisualRenderer::CreateFramebuffers() {
+
+    // Setup Framebuffer
+    SwapchainFramebuffers_.resize(SwapChainImageViews_.size());
+
+    // Iterate Through Image Views To Create Framebuffers
+    for (size_t i=0; i < SwapChainImageViews_.size(); i++) {
+        VkImageView Attachments[] = {
+            SwapChainImageViews[i]
+        };
+
+        VkFramebufferCreateInfo FrameBufferInfo{};
+        FrameBufferInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
+        FrameBufferInfo.renderPass = RenderPass_;
+        FrameBufferInfo.attachmentCount = 1;
+        FrameBufferInfo.pAttachments = Attachments;
+        FrameBufferInfo.width = SwapChainExtent.width;
+        FrameBufferInfo.height = SwapChainExtent.height;
+        FrameBufferInfo.layers = 1;
+
+        if (vkCreateFramebuffer(LogicalDevice_, &FrameBufferInfo, nullptr, &SwaphChainFrameBuffers[i]) != VK_SUCCESS) {
+            Logger_.Log("Failed To Create Framebuffer", 10);
+            SystemShutdownInvoked_ = true;
+        }
+    
+    
+    }
 
 }
 
@@ -1083,6 +1117,11 @@ void VisualRenderer::CleanUp() {
 
     // Log Shutdown Called
     Logger_.Log("Shutting Down 'Core::Renderer::Visual::VisualRenderer'", 5);
+
+    // Destroy Framebuffer
+    for (auto Framebuffer : SwapChainFramebuffers_) {
+        vkDestroyFramebuffer(LogicalDevice_, Framebuffer, nullptr);
+    }
 
     // Destroy Pipeline
     vkDestroyPipeline(LogicalDevice_, GraphicsPipeline_, nullptr);
