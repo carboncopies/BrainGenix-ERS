@@ -139,6 +139,7 @@ class VisualRenderer {
         void CreateCommandPool();
 
         // Create Command Buffers
+        void CreateCommandBuffers();
 
 
     public:

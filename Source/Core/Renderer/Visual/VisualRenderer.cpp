@@ -143,7 +143,10 @@ void VisualRenderer::CreateCommandBuffers() {
 
 
     // Create Command Buffer
-    if (vkAllocateCommandBuffers(LogicalDevice_, &AllocInfo, nullptr, CommandBuffers_.data()))
+    if (vkAllocateCommandBuffers(LogicalDevice_, &AllocInfo, nullptr, CommandBuffers_.data()) != VK_SUCCESS) {
+        Logger_.Log("Failed To Create Command Buffer", 10);
+        SystemShutdownInvoked_ = true;
+    }
 
 
 }
