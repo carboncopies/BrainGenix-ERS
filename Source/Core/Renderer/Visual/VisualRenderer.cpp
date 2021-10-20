@@ -241,7 +241,34 @@ void VisualRenderer::CreateGraphicsPipeline() {
     ColorBlending.blendConstants[2] = 0.0f;
     ColorBlending.blendConstants[3] = 0.0f;
 
-    
+    // Setup Dynamic State (NOTE, THESE WILL NEED TO BE SET LATER.... WHEN DRAWING!)
+    VkDynamicState DynamicStates[] = {
+        VK_DYNAMIC_STATE_VIEWPORT,
+        VK_DYNAMIC_STATE_LINE_WIDTH
+    };
+
+    VkPipelineDynamicStateCreateInfo DynamicState{};
+    DynamicState.sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
+    DynamicState.dynamicStateCount = 2;
+    DynamicState.pDynamicStates = dynamicStates;
+
+
+    // Pipeline Layout
+    Logger_.Log("Setting Up Pipeline", 3);
+    VkPipelineLayout PipelineLayout;
+
+    VkPipelineLayoutCreateInfo PipelineLayoutInfo{};
+    PipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
+    PipelineLayoutInfo.setLayoutCount = 0;
+    PipelineLayoutInfo.pSetLayouts = nullptr;
+    PipelineLayoutInfo.pushConstantRangeCount = 0;
+    PipelineLayoutInfo.pPushConstantRanges = nullptr;
+
+    if (vkCreatePipelineLayout(LogicalDevice_, &PipelineLayoutInfo, nullptr, &PipelineLayout) != VK_SUCCESS) {
+        Logger_.Log("Failed To Create Pipeline Layout", 10);
+        SystemShutdownInvoked_ = true;
+    }
+
 
 }
 
