@@ -151,7 +151,7 @@ void VisualRenderer::CreateRenderPass() {
 
     if (vkCreateRenderPass(LogicalDevice_, &RenderPassInfo, nullptr, &RenderPass_) != VK_SUCCESS) {
         Logger_.Log("Failed To Create Render Pass", 10);
-        SystemShutdownInvoked = true;
+        SystemShutdownInvoked_ = true;
     }
 
 
