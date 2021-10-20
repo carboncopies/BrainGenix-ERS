@@ -132,7 +132,7 @@ void VisualRenderer::InitVulkan() {
 void VisualRenderer::CreateCommandPool() {
 
     // Find Queue Families
-    QueueFamilyIndices QueueFamilyIndices = FindQueueFamilies(PhysicalDevice_);
+    QueueFamilyIndices QueueFamilyIndices = FindQueueFamilies(PhysicalDevice_, false);
 
     VkCommandPoolCreateInfo PoolInfo{};
     PoolInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
