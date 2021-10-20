@@ -120,6 +120,9 @@ class VisualRenderer {
         // Create Graphics Pipeline
         void CreateGraphicsPipeline();
 
+        // Create ShaderModule Function
+        VkShaderModule CreateShaderModule(const std::vector<char>& Code);
+
 
     public:
 

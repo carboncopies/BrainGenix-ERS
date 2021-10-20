@@ -17,6 +17,7 @@
 #include <algorithm>
 
 #include "Core/Renderer/Visual/LocalWindowDisplaySystem.cpp"
+#include "Core/Loader/Shaders/ShaderLoader.cpp"
 
 #include "Core/Renderer/Visual/VisualRenderer.h"
 
@@ -78,6 +79,7 @@ void VisualRenderer::InitVulkan() {
     CreateLogicalDevice();
     Logger_.Log("Initialized 'Core::Renderer::Visual::VisualRenderer::CreateLogicalDevice", 2);
 
+
     // Create Swapchain
     if (LocalWindowEnabled_) {
         Logger_.Log("INIT [ START] Creating Swap Chain", 3);
@@ -96,13 +98,134 @@ void VisualRenderer::InitVulkan() {
         Logger_.Log("Initialization [  SKIP] [CONFIGURATION DISABLE] Skipping Image View Creation", 3);
     }
 
+
+    // Create Graphics Pipeline
+    Logger_.Log("Initialization [ START] Creating Graphics Pipeline", 3);
+    CreateGraphicsPipeline();
+    Logger_.Log("Initialization [FINISH] Created Graphics Pipeline", 2);
+
+
 }
 
 // Define VisualRenderer::CreateGraphicsPipeline
 void VisualRenderer::CreateGraphicsPipeline() {
     
+    // Load Shaders From File
+    Logger_.Log("Loading Shaders From Disk", 3);
+    auto VertexShaderCode = ReadFile("Shaders/SPIR-V/Vertex/main.spv", Logger_);
+    auto FragmentShaderCode = ReadFile("Shaders/SPIR-V/Fragment/main.spv", Logger_);
+    Logger_.Log("Finished Loading Shaders", 2);
+    
+    // Create Shader Modules
+    Logger_.Log("Creating Shader Modules", 3);
+    VkShaderModule VertexShaderModule = CreateShaderModule(VertexShaderCode);
+    VkShaderModule FragmentShaderModule = CreateShaderModule(FragmentShaderCode);
+    Logger_.Log("Created Shader Modules", 2);
+
+
+    // Setup Vertex Shader Stages
+    Logger_.Log("Creating Shader Stages", 3);
+    VkPipelineShaderStageCreateInfo VertexShaderStageInfo{};
+    VertexShaderStageInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
+    VertexShaderStageInfo.stage = VK_SHADER_STAGE_VERTEX_BIT;
+    VertexShaderStageInfo.module = VertexShaderModule;
+    VertexShaderStageInfo.pName = "main";
+
+    // Setup Fragment Shader Stages
+    VkPipelineShaderStageCreateInfo FragmentShaderStageInfo{};
+    FragmentShaderStageInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
+    FragmentShaderStageInfo.stage = VK_SHADER_STAGE_FRAGMENT_BIT;
+    FragmentShaderStageInfo.module = FragmentShaderModule;
+    FragmentShaderStageInfo.pName = "main";
+
+    // Create Array To Hold Shader Stages
+    VkPipelineShaderStageCreateInfo ShaderStages[] = {
+        VertexShaderStageInfo,
+        FragmentShaderStageInfo
+    };
+
+    Logger_.Log("Created Shader Stages", 2);
+
+    // Cleanup Shader Modules
+    vkDestroyShaderModule(LogicalDevice_, FragmentShaderModule, nullptr);
+    vkDestroyShaderModule(LogicalDevice_, VertexShaderModule, nullptr);
+
+
+    // Set Fixed Functions
+    Logger_.Log("Creating Fixed Functions", 3);
+    VkPipelineVerteInputStateCreateInfo VertexInputInfo{};
+    VertexInputInfo.stYpe = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
+    VertexInputInfo.vertexBindingDescriptionCount = 0;
+    VertexInputInfo.pVertexBindingDescriptions = nullptr;
+    VertexInputInfo.vertexAttributeDescriptionCount = 0;
+    VertexInputInfo.pVertexAttributeDescriptions = nullptr;
+
+    VkPipelineInputAssemblyStatecreateInfo InputAssembly{};
+    InputAssembly.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
+    InputAssembly.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
+    InputAssembly.primitiveRestartEnable = VK_FALSE;
+
+
+    // Setup Viewport
+    Logger_.Log("Setting Up Viewport", 3);
+    VkViewport Viewport{};
+    Viewport.x = 0.0f;
+    Viewport.y = 0.0f;
+    Viewport.width = (float) SwapChainExtent_.width; // ADJUST THESE LATER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    Viewport.height = (float) SwapchainExtent_.height;
+    Viewport.minDepth = 0.0f;
+    Viewport.maxDepth = 1.0f; 
+
+
+    // Setup Scissor Rectangle
+    VkRect2D Scissor{};
+    Scissor.offset = {0, 0};
+    Scissor.extent = SwapChainExtent_; // FILL THIS In LATER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    // Setup Viewport State
+    VkPipelineviewportStateCreateInfo ViewportState{};
+    ViewportState.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
+    ViewportState.viewportCount = 1;
+    ViewportState.pViewports = &Viewport;
+    ViewportState.scissorCount = 1;
+    ViewportSTate.pScissors = &Scissor;
+
+
+    // Setup Rasterizer
+    Logger_.Log("Setting Up Rasterizer", 3);
+    VkPipelineRasterizationStateCreateInfo Rasterizer{};
+    Rasterizer.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
+    Rasterizer.depthClampEnable = VK_FALSE;
+    Rasterizer.rasterizerDiscardEnable = VK_FALSE;
+    Rasterizer.polygonMode = VK_POLYGON_MODE_FILL; // Can set this to VK_POLYGON_MODE_ FILL, LINE, POINT (any other than fill require gpu feature to be enabled)
+    Rasterizer.lineWidth = 1.0f; // can set this to larger, but requires the "wideLines" gpu feature
+    
+
+
+
 }
 
+// Define VisualRenderer::CreateShaderModule
+VkShaderModule VisualRenderer::CreateShaderModule(const std::vector<char>& Code) {
+
+    // Configure Shader Module
+    VkShaderModuleCreateInfo CreateInfo{};
+
+    CreateInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
+    CreateInfo.codeSize = Code.size();
+    CreateInfo.pCode = reinterpret_cast<const uint32_t*>(Code.data());
+
+    // Create Shader
+    VkShaderModule ShaderModule;
+    if (vkCreateShaderModule(LogicalDevice_, &CreateInfo, nullptr, &ShaderModule) != VK_SUCCESS) {
+        Logger_.Log("Failed To Create Shader Module Instance", 10);
+        SystemShutdownInvoked_ = true;
+    }
+
+    // Return Shader Module
+    return ShaderModule;
+
+}
 
 // Define VisualRenderer::CreateImageViews
 void VisualRenderer::CreateImageViews() {
