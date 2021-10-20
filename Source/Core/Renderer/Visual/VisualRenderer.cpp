@@ -199,7 +199,27 @@ void VisualRenderer::CreateGraphicsPipeline() {
     Rasterizer.rasterizerDiscardEnable = VK_FALSE;
     Rasterizer.polygonMode = VK_POLYGON_MODE_FILL; // Can set this to VK_POLYGON_MODE_ FILL, LINE, POINT (any other than fill require gpu feature to be enabled)
     Rasterizer.lineWidth = 1.0f; // can set this to larger, but requires the "wideLines" gpu feature
+    Rasterizer.cullMode = VK_CULL_MODE_BACK_BIT;
+    Rasterizer.frontFace = VK_FRONT_FACE_CLOCKWISE;
     
+    Rasterizer.depthBiasEnable = FK_FALSE;
+    Rasterizer.depthBiasConstantFactor = 0.0f;
+    Rasterizer.depthBiasClamp = 0.0f;
+    Rasterizer.depthBiasSlopeFactor = 0.0f;
+
+    // Setup Multisampling
+    Logger_.Log("Setting Up Multisampling", 3);
+    VkPipelineMultisampleStateCreateInfo Multisampling{};
+    Multisampling.sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO;
+    Multisampling.sampleShadingEanble = VK_FALSE;
+    Multisampling.rasterizationSamples = VK_SAMPLE_COUNT_1_BIT;
+    Multisampling.minSampleShading = 1.0f;
+    Multisampling.pSampleMask = nullptr;
+    Multisampling.alphaToCoverageEnable = VK_FALSE;
+    Multisampling.alphaToOneEnable = VK_FALSE;
+
+    // Setup Color Blending
+    Logger_.Log("Setting Up Color Blending", 3);
 
 
 
