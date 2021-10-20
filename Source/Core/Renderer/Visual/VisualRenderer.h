@@ -141,6 +141,9 @@ class VisualRenderer {
         // Create Command Buffers
         void CreateCommandBuffers();
 
+        // Draw Frame
+        void DrawFrame();
+
 
     public:
 

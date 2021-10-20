@@ -172,23 +172,23 @@ void VisualRenderer::CreateCommandBuffers() {
         VkRenderPassBeginInfo RenderPassInfo{};
         RenderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
         RenderPassInfo.renderPass = RenderPass_;
-        RenderPassInfo.frameBuffer = SwapChainFramebuffers[i];
+        RenderPassInfo.framebuffer = SwapChainFramebuffers_[i];
 
         RenderPassInfo.renderArea.offset = {0, 0};
-        RenderPassInfo.renderArea.extent = SwapChainExtent; // COME BACK AND FIX THIS LATER FOR OFFSCREEN RENDERING!
+        RenderPassInfo.renderArea.extent = SwapChainExtent_; // COME BACK AND FIX THIS LATER FOR OFFSCREEN RENDERING!
 
         // Setup Clear Color
         VkClearValue ClearColor = {{0.0f, 0.0f, 0.0f, 1.0f}};
         RenderPassInfo.clearValueCount = 1;
-        RenderPassInfo.pClearvalues = &ClearColor;
+        RenderPassInfo.pClearValues = &ClearColor;
 
         // Render Pass Definition
         vkCmdBeginRenderPass(CommandBuffers_[i], &RenderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
         vkCmdBindPipeline(CommandBuffers_[i], VK_PIPELINE_BIND_POINT_GRAPHICS, GraphicsPipeline_);
-        VkCmdDraw(CommandBuffers[i], 3, 1, 0, 0);
+        vkCmdDraw(CommandBuffers_[i], 3, 1, 0, 0);
         vkCmdEndRenderPass(CommandBuffers_[i]);
 
-        if (vkEndCommandBuffer(CommandBuffers[i]) != VK_SUCCESS) {
+        if (vkEndCommandBuffer(CommandBuffers_[i]) != VK_SUCCESS) {
             Logger_.Log("Failed To Record Command Buffer", 10);
             SystemShutdownInvoked_ = true;
         }
@@ -1205,6 +1205,14 @@ void VisualRenderer::RenderLoop() {
     // GLFW Poll Events
     sERSLocalWindowDisplaySystem_.FetchEvents();
 
+    // Draw The Frame
+    DrawFrame();
+
+}
+
+// Define VisualRenderer::DrawFrame
+void VisualRenderer::DrawFrame() {
+    
 }
 
 // Define VisualRenderer::CleanUp
