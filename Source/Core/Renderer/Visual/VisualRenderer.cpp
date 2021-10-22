@@ -1272,7 +1272,7 @@ void VisualRenderer::CleanupSwapChain() {
     for (size_t i=0; i<SwapChainFramebuffers_.size(); i++) {
 
         // Destroy Framebuffers
-        vkDestroyFramebuffer(LogicalDevice_, SwapChainFrameBuffers_[i], nullptr);
+        vkDestroyFrameBuffer(LogicalDevice_, SwapChainFrameBuffers_[i], nullptr);
 
     }
 
