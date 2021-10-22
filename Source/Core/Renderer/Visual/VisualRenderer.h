@@ -87,9 +87,9 @@ class VisualRenderer {
         std::vector<VkFence> ImagesInFlight_;
         size_t CurrentFrame_;
 
-        bool FramebufferResized_ = false;
+        bool* FramebufferResized_;
 
-        
+
 
         // Initialize Vulkan API
         void InitVulkan();

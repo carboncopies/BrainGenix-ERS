@@ -36,6 +36,8 @@ class LocalWindowDisplaySystem {
         int WindowX_;
         int WindowY_;
 
+        bool FramebufferResized_ = false;
+
         // Window Initialization Function
         void InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig, bool* SystemShutdownState);
 

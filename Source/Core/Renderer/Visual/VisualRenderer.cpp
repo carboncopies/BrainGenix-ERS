@@ -1332,7 +1332,7 @@ void VisualRenderer::DrawFrame() {
 
     // Check If SwapChain Is Out Of Date
     if (Result == VK_ERROR_OUT_OF_DATE_KHR || Result == VK_SUBOPTIMAL_KHR) {
-        FramebufferResized_ = true;
+        *FramebufferResized_ = true;
         RecreateSwapChain();
         return;
     } else if (Result != VK_SUCCESS) {
