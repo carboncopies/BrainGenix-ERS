@@ -147,17 +147,25 @@ void VisualRenderer::InitVulkan() {
 void VisualRenderer::CreateSemaphores() {
 
     // Create Semaphores
+    ImageAvailableSemaphores_.resize(MaxFramesInFlight_);
+    RenderFinishedSemaphores_.resize(MaxFramesInFlight_);
+
     VkSemaphoreCreateInfo SemaphoreInfo{};
     SemaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
 
-    if (vkCreateSemaphore(LogicalDevice_, &SemaphoreInfo, nullptr, &ImageAvailableSemaphore_) != VK_SUCCESS) {
-        Logger_.Log("Failed To Create ImageAvailable Semaphore", 10);
-        SystemShutdownInvoked_ = true;
-    }
+    for (size_t i=0; i<MaxFramesInFlight_; i++) {
 
-    if (vkCreateSemaphore(LogicalDevice_, &SemaphoreInfo, nullptr, &RenderFinishedSemaphore_) != VK_SUCCESS) {
-        Logger_.Log("Failed To Create RenderFinished Semaphore", 10);
-        SystemShutdownInvoked_ = true;
+
+        if (vkCreateSemaphore(LogicalDevice_, &SemaphoreInfo, nullptr, &ImageAvailableSemaphores_[i]) != VK_SUCCESS) {
+            Logger_.Log("Failed To Create ImageAvailable Semaphore", 10);
+            SystemShutdownInvoked_ = true;
+        }
+
+        if (vkCreateSemaphore(LogicalDevice_, &SemaphoreInfo, nullptr, &RenderFinishedSemaphores_[i]) != VK_SUCCESS) {
+            Logger_.Log("Failed To Create RenderFinished Semaphore", 10);
+            SystemShutdownInvoked_ = true;
+        }
+
     }
 
 }
