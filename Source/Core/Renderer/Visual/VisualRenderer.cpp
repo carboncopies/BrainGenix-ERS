@@ -1265,6 +1265,55 @@ bool VisualRenderer::CheckValidationLayerSupport() {
 
 }
 
+// Define VisualRenderer::CleanupSwapChain
+void VisualRenderer::CleanupSwapChain() {
+
+    // Cleanup Framebuffers
+    for (size_t i=0; i<SwapChainFramebuffers_.size(); i++) {
+
+        // Destroy Framebuffers
+        vkDestroyFramebuffer(LogicalDevice_, SwapChainFrameBuffers_[i], nullptr);
+
+    }
+
+    // Clean Commandbuffers
+    vkFreeCommandBuffers(LogicalDevice_, CommandPool_, static_cast<uint32_t>(CommandBuffers_.size()), CommandBuffers.data());
+
+    // Destroy Pipeline
+    vkDestroyPipeline(LogicalDevice_, GraphicsPipeline_, nullptr);
+    vkDestroyPipelineLayout(LogicalDevice_, PipelineLayout_, nullptr);
+    vkDestroyRenderPass(LogicalDevice_, RenderPass_, nullptr);
+
+    // Cleanup Image Views
+    for (auto ImageView : SwapChainImageViews_) {
+        vkDestroyImageView(LogicalDevice_, ImageView, nullptr);
+    }
+
+    // Destroy Swapchain
+    vkDestroySwapchainKHR(LogicalDevice_, SwapChain_, nullptr);
+
+}
+
+
+
+// Define VisualRenderer::RecreateSwapChain
+void VisualRenderer::RecreateSwapChain() {
+
+    // Wait For Device To Finish Operations
+    vkDeviceWaitIdle(LogicalDevice_);
+
+
+    // Recreate Swapchain
+    CreateSwapChain();
+    CreateImageViews();
+    CreateRenderPass();
+    CreateGraphicsPipeline();
+    CreateFramebuffers();
+    CreateCommandBuffers();
+
+
+}
+
 // Define VisualRenderer::RenderLoop
 void VisualRenderer::RenderLoop() {
 
@@ -1351,6 +1400,9 @@ void VisualRenderer::CleanUp() {
     // Log Shutdown Called
     Logger_.Log("Shutting Down 'Core::Renderer::Visual::VisualRenderer'", 5);
 
+    // Cleanup Swapchain
+    CleanupSwapChain();
+
     // Cleanup Semaphores
     for (size_t i=0; i < MaxFramesInFlight_; i++ ) {
         vkDestroySemaphore(LogicalDevice_, RenderFinishedSemaphores_[i], nullptr);
@@ -1361,23 +1413,7 @@ void VisualRenderer::CleanUp() {
     // Destroy Command Pool
     vkDestroyCommandPool(LogicalDevice_, CommandPool_, nullptr);
 
-    // Destroy Framebuffer
-    for (auto Framebuffer : SwapChainFramebuffers_) {
-        vkDestroyFramebuffer(LogicalDevice_, Framebuffer, nullptr);
-    }
 
-    // Destroy Pipeline
-    vkDestroyPipeline(LogicalDevice_, GraphicsPipeline_, nullptr);
-    vkDestroyPipelineLayout(LogicalDevice_, PipelineLayout_, nullptr);
-    vkDestroyRenderPass(LogicalDevice_, RenderPass_, nullptr);
-
-    // Cleanup Image Views
-    for (auto ImageView : SwapChainImageViews_) {
-        vkDestroyImageView(LogicalDevice_, ImageView, nullptr);
-    }
-
-    // Destroy Swapchain
-    vkDestroySwapchainKHR(LogicalDevice_, SwapChain_, nullptr);
 
     // Call Subclass's Destructors
     sERSLocalWindowDisplaySystem_.CleanUp();

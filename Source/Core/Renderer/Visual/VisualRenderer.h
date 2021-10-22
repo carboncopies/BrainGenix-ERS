@@ -153,6 +153,12 @@ class VisualRenderer {
         // Draw Frame
         void DrawFrame();
 
+        // Recreate Swapchain
+        void RecreateSwapChain();
+
+        // Cleanup Old Swapchain
+        void CleanupSwapChain();
+
 
     public:
 
