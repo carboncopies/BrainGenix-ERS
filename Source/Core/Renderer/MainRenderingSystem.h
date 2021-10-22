@@ -23,12 +23,12 @@ class MainRenderer {
         VisualRenderer sERSVisualRenderer_;
         
         // Delcare Class Variables
-        bool SystemShutdownInvoked_;
+        bool* SystemShutdownInvoked_;
 
     public:
 
         // Main init Call
-        void InitRenderer(LoggerClass sERSLogger, YAML::Node sERSConfig, bool ShutdownToggle);
+        void InitRenderer(LoggerClass sERSLogger, YAML::Node sERSConfig, bool* ShutdownToggle);
 
         // Update Rendered Output
         void UpdateRender();

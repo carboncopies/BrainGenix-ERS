@@ -31,7 +31,7 @@ int main() {
     // Initialize Main Rendering System
     sERSLogger.Log("Initializing 'Core::Renderer::MainRenderingSystem'", 5);
     MainRenderer RenderingSystem;
-    RenderingSystem.InitRenderer(sERSLogger, SystemConfiguration, ShutdownSystemInvoked);
+    RenderingSystem.InitRenderer(sERSLogger, SystemConfiguration, &ShutdownSystemInvoked);
     sERSLogger.Log("Initialized 'Core::Renderer::MainRenderingSystem'", 4);
 
 
