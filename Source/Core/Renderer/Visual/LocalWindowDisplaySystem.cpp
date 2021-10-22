@@ -15,11 +15,11 @@
 
 
 
-// Define LocalWindowDisplaySystem::FrameBufferResizeCallback
+// Define FrameBufferResizeCallback
 static void FrameBufferResizeCallback(GLFWwindow* Window, int Width, int Height) {
 
-    auto App = reinterpret_cast<LocalWindowDisplaySystem*>(glfwGetWindowUserPointer(Window_));
-    App->FramebufferResized = true;
+    auto App = reinterpret_cast<LocalWindowDisplaySystem*>(glfwGetWindowUserPointer(Window));
+    App->FramebufferResized_ = true;
 
 }
 
