@@ -32,6 +32,7 @@ void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSCon
     SystemShutdownInvoked_ = ShutdownToggle;
 
     // Grab Configuration Parameters
+    Logger_.Log("Reading System Configuration for 'INT': 'MaxFramesInFlight'", 2);
     MaxFramesInFlight_ = SystemConfiguration_["MaxFramesInFlight"].as<int>();
 
     // Initialize GLFW
@@ -1277,10 +1278,6 @@ void VisualRenderer::RenderLoop() {
 
 // Define VisualRenderer::DrawFrame
 void VisualRenderer::DrawFrame() {
-
-    // Wait For Fences
-    //vkWaitForFences(LogicalDevice_, 1, &InFlightFences_[CurrentFrame_], VK_TRUE, UINT64_MAX);
-    
 
     // Acquire Image From Swap Chain
     uint32_t ImageIndex;
