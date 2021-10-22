@@ -90,6 +90,8 @@ void LocalWindowDisplaySystem::FetchEvents() {
     // Poll Events
     glfwPollEvents();
 
+    
+
 }
 
 // Define LocalWindowDisplaySystem::CleanUp

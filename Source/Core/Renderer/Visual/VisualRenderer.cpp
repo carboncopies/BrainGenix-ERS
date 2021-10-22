@@ -1257,6 +1257,10 @@ void VisualRenderer::DrawFrame() {
     uint32_t ImageIndex;
     vkAcquireNextImageKHR(LogicalDevice_, SwapChain_, UINT64_MAX, ImageAvailableSemaphore_, VK_NULL_HANDLE, &ImageIndex);
 
+    // Wait Previous Frame To Render
+
+
+
     // Submit To Command Buffer
     VkSubmitInfo SubmitInfo{};
     SubmitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
@@ -1298,6 +1302,7 @@ void VisualRenderer::DrawFrame() {
     
     // Present
     vkQueuePresentKHR(PresentationQueue_, &PresentInfo);
+    vkQueueWaitIdle(PresentationQueue_);
 
 }
 
