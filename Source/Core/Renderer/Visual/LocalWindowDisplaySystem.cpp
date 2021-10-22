@@ -15,6 +15,14 @@
 
 
 
+// Define LocalWindowDisplaySystem::FrameBufferResizeCallback
+static void FrameBufferResizeCallback(GLFWwindow* Window, int Width, int Height) {
+
+    auto App = reinterpret_cast<LocalWindowDisplaySystem*>(glfwGetWindowUserPointer(Window_));
+    App->FramebufferResized = true;
+
+}
+
 // Define LocalWindowDisplaySystem::InitWindow
 void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig, bool* SystemShutdownState) {
 
@@ -53,13 +61,7 @@ void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sER
 
 }
 
-// Define LocalWindowDisplaySystem::FrameBufferResizeCallback
-static void FrameBufferResizeCallback(GLFWwindow* Window, int Width, int Height) {
 
-    auto App = reinterpret_cast<LocalWindowDisplaySystem*>(glfwGetWindowUserPointer(Window_));
-    App->FramebufferResized = true;
-
-}
 
 // Define LocalWindowDisplaySystem::GetVulkanInitExtensions
 VkInstanceCreateInfo LocalWindowDisplaySystem::GetVulkanInitExtensions(VkInstanceCreateInfo VkCreateInfo) {
