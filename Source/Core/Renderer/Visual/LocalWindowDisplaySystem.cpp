@@ -54,7 +54,7 @@ void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sER
 }
 
 // Define LocalWindowDisplaySystem::FrameBufferResizeCallback
-static void LocalWindowDisplaySystem::FrameBufferResizeCallback(GLFWwindow* Window, int Width, int Height) {
+static void FrameBufferResizeCallback(GLFWwindow* Window, int Width, int Height) {
 
     auto App = reinterpret_cast<LocalWindowDisplaySystem*>(glfwGetWindowUserPointer(Window_));
     App->FramebufferResized = true;
