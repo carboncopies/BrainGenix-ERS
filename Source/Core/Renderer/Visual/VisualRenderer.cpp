@@ -1324,8 +1324,10 @@ void VisualRenderer::CleanUp() {
     Logger_.Log("Shutting Down 'Core::Renderer::Visual::VisualRenderer'", 5);
 
     // Cleanup Semaphores
-    vkDestroySemaphore(LogicalDevice_, RenderFinishedSemaphore_, nullptr);
-    vkDestroySemaphore(LogicalDevice_, ImageAvailableSemaphore_, nullptr);
+    for (size_t i=0; i < MaxFramesInFlight_; i++ ) {
+        vkDestroySemaphore(LogicalDevice_, RenderFinishedSemaphores_[i], nullptr);
+        vkDestroySemaphore(LogicalDevice_, ImageAvailableSemaphores_[i], nullptr);
+    }
 
     // Destroy Command Pool
     vkDestroyCommandPool(LogicalDevice_, CommandPool_, nullptr);
