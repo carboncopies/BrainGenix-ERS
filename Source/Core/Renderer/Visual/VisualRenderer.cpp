@@ -149,6 +149,7 @@ void VisualRenderer::CreateSyncObjects() {
     // Create Semaphores
     ImageAvailableSemaphores_.resize(MaxFramesInFlight_);
     RenderFinishedSemaphores_.resize(MaxFramesInFlight_);
+    InFlightFences_.resize(MaxFramesInFlight_);
 
     VkSemaphoreCreateInfo SemaphoreInfo{};
     SemaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;

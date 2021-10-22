@@ -84,6 +84,7 @@ class VisualRenderer {
         std::vector<VkSemaphore> ImageAvailableSemaphores_;
         std::vector<VkSemaphore> RenderFinishedSemaphores_;
         std::vector<VkFence> InFlightFences_;
+        std::vector<VkFence> ImagesInFlight_;
         size_t CurrentFrame_ = 0;
 
         // Initialize Vulkan API
