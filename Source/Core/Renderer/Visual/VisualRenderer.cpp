@@ -1266,17 +1266,18 @@ void VisualRenderer::DrawFrame() {
 
     // Acquire Image From Swap Chain
     uint32_t ImageIndex;
-    vkAcquireNextImageKHR(LogicalDevice_, SwapChain_, UINT64_MAX, ImageAvailableSemaphore_, VK_NULL_HANDLE, &ImageIndex);
+    vkAcquireNextImageKHR(LogicalDevice_, SwapChain_, UINT64_MAX, ImageAvailableSemaphores_[CurrentFrame_], VK_NULL_HANDLE, &ImageIndex);
 
-    // Wait Previous Frame To Render
-
+    // Get Semaphores
+    VkSemaphore WaitSemaphores[] = {ImageAvailableSemaphores_[CurrentFrame_]};
+    VkSemaphore SignalSemaphores[] = {RenderFinishedSemaphores_[i]};
 
 
     // Submit To Command Buffer
     VkSubmitInfo SubmitInfo{};
     SubmitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
 
-    VkSemaphore WaitSemaphores[] = {ImageAvailableSemaphore_};
+    
     VkPipelineStageFlags WaitStates[] = {VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT};
     SubmitInfo.waitSemaphoreCount = 1;
     SubmitInfo.pWaitSemaphores = WaitSemaphores;
@@ -1286,7 +1287,7 @@ void VisualRenderer::DrawFrame() {
     SubmitInfo.pCommandBuffers = &CommandBuffers_[ImageIndex];
 
 
-    VkSemaphore SignalSemaphores[] = {RenderFinishedSemaphore_};
+    
     SubmitInfo.signalSemaphoreCount = 1;
     SubmitInfo.pSignalSemaphores = SignalSemaphores;
 
@@ -1310,7 +1311,10 @@ void VisualRenderer::DrawFrame() {
 
     PresentInfo.pResults = nullptr;
 
-    
+
+    // Update Current Frame
+    CurrentFrame_ = (CurrentFrame_ + 1) % MaxFramesInFlight_;
+
     // Present
     vkQueuePresentKHR(PresentationQueue_, &PresentInfo);
     vkQueueWaitIdle(PresentationQueue_);

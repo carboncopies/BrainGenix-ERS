@@ -85,6 +85,7 @@ class VisualRenderer {
         
         std::vector<VkSemaphore> ImageAvailableSemaphores_;
         std::vector<VkSemaphore> RenderFinishedSemaphores_;
+        size_t CurrentFrame_ = 0;
 
         // Initialize Vulkan API
         void InitVulkan();
