@@ -51,4 +51,7 @@ class LocalWindowDisplaySystem {
         // Destructor
         void CleanUp();
 
+        // Framebuffer Resize Callback
+        static void FrameBufferResizeCallback(GLFWwindow* Window, int Width, int Height);
+
 };

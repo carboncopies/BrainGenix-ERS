@@ -30,7 +30,7 @@ void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sER
     glfwInit();
 
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+    //glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
     // Log Initialization
     Logger_.Log("Initialized GLFW", 0);
@@ -47,7 +47,17 @@ void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sER
     
     // Create Window
     Window_ = glfwCreateWindow(WindowX_, WindowY_, WindowTitle_.c_str(), nullptr, nullptr);
+    glfwSetWindowUserPointer(Window_, this);
+    glfwSetFramebufferSizeCallback(Window_, FrameBufferResizeCallback);
     Logger_.Log("Created GLFWWindow Surface", 2);
+
+}
+
+// Define LocalWindowDisplaySystem::FrameBufferResizeCallback
+static void LocalWindowDisplaySystem::FrameBufferResizeCallback(GLFWwindow* Window, int Width, int Height) {
+
+    auto App = reinterpret_cast<LocalWindowDisplaySystem*>(glfwGetWindowUserPointer(Window_));
+    App->FramebufferResized = true;
 
 }
 
