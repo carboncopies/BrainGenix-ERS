@@ -150,6 +150,10 @@ void VisualRenderer::CreateSyncObjects() {
     ImageAvailableSemaphores_.resize(MaxFramesInFlight_);
     RenderFinishedSemaphores_.resize(MaxFramesInFlight_);
     InFlightFences_.resize(MaxFramesInFlight_);
+    ImagesInFlight_.resize(MaxFramesInFlight_);
+
+    // Set Current Frame
+    CurrentFrame_ = 0;
 
     VkSemaphoreCreateInfo SemaphoreInfo{};
     SemaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
@@ -1275,12 +1279,21 @@ void VisualRenderer::RenderLoop() {
 void VisualRenderer::DrawFrame() {
 
     // Wait For Fences
-    vkWaitForFences(LogicalDevice_, 1, &InFlightFences_[CurrentFrame_], VK_TRUE, UINT64_MAX);
-    vkResetFences(LogicalDevice_, 1, &InFlightFences_[CurrentFrame_]);
+    //vkWaitForFences(LogicalDevice_, 1, &InFlightFences_[CurrentFrame_], VK_TRUE, UINT64_MAX);
+    
 
     // Acquire Image From Swap Chain
     uint32_t ImageIndex;
     vkAcquireNextImageKHR(LogicalDevice_, SwapChain_, UINT64_MAX, ImageAvailableSemaphores_[CurrentFrame_], VK_NULL_HANDLE, &ImageIndex);
+
+    // Check Fences
+    vkResetFences(LogicalDevice_, 1, &InFlightFences_[CurrentFrame_]);
+
+    if (ImagesInFlight[ImageIndex] != VK_NULL_HANDLE) {
+        vkWaitForFences(LogicalDevice_, 1, &ImagesInFlight[ImageIndex], VK_TRUE, UINT64_MAX);
+    }
+    ImagesInFlight[ImageIndex] = InFlightFences[CurrentFrame_];
+
 
     // Get Semaphores
     VkSemaphore WaitSemaphores[] = {ImageAvailableSemaphores_[CurrentFrame_]};
