@@ -23,7 +23,7 @@ class LocalWindowDisplaySystem {
 
         std::string WindowTitle_;
         bool HasSurfaceBeenInitialized_ = false;
-        bool SystemShutdownInvoked_;
+        bool* SystemShutdownInvoked_;
 
 
 
@@ -37,7 +37,7 @@ class LocalWindowDisplaySystem {
         int WindowY_;
 
         // Window Initialization Function
-        void InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig, bool ShutdownToggle);
+        void InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig, *bool SystemShutdownState);
 
         // Add GLFW Extensions To VkInstanceCreateInfo
         VkInstanceCreateInfo GetVulkanInitExtensions(VkInstanceCreateInfo VkCreateInfo);

@@ -16,7 +16,7 @@
 
 
 // Define LocalWindowDisplaySystem::InitWindow
-void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig, bool SystemShutdownState) {
+void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig, *bool SystemShutdownState) {
 
     // Create Local References
     Logger_ = sERSLogger;
