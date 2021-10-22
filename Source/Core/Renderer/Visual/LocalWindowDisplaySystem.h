@@ -37,7 +37,7 @@ class LocalWindowDisplaySystem {
         int WindowY_;
 
         // Window Initialization Function
-        void InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig);
+        void InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig, bool ShutdownToggle);
 
         // Add GLFW Extensions To VkInstanceCreateInfo
         VkInstanceCreateInfo GetVulkanInitExtensions(VkInstanceCreateInfo VkCreateInfo);
