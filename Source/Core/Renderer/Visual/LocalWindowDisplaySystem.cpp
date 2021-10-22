@@ -16,11 +16,12 @@
 
 
 // Define LocalWindowDisplaySystem::InitWindow
-void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig) {
+void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig, bool SystemShutdownState) {
 
     // Create Local References
     Logger_ = sERSLogger;
     SystemConfiguration_ = sERSConfig;
+    SystemShutdownInvoked_ = SystemShutdownState;
 
     // Log Initialization
     Logger_.Log("Initializing GLFW", 1);
@@ -90,7 +91,10 @@ void LocalWindowDisplaySystem::FetchEvents() {
     // Poll Events
     glfwPollEvents();
 
-    
+    if (glfwWindowShouldClose(Window_)) {
+        Logger_.Log("System Shutdown Invoked By LOCALWINDOW", 7);
+        SystemShutdownInvoked_ = true;
+    }
 
 }
 

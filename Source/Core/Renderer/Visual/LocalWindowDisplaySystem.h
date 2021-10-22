@@ -23,6 +23,7 @@ class LocalWindowDisplaySystem {
 
         std::string WindowTitle_;
         bool HasSurfaceBeenInitialized_ = false;
+        bool SystemShutdownInvoked_;
 
 
 
