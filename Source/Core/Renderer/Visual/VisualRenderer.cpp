@@ -160,17 +160,17 @@ void VisualRenderer::CreateSyncObjects() {
 
 
         if (vkCreateSemaphore(LogicalDevice_, &SemaphoreInfo, nullptr, &ImageAvailableSemaphores_[i]) != VK_SUCCESS) {
-            Logger_.Log("Failed To Create ImageAvailable Semaphore", 10);
+            Logger_.Log("Failed To Create ImageAvailable Semaphore Snyc Object", 10);
             SystemShutdownInvoked_ = true;
         }
 
         if (vkCreateSemaphore(LogicalDevice_, &SemaphoreInfo, nullptr, &RenderFinishedSemaphores_[i]) != VK_SUCCESS) {
-            Logger_.Log("Failed To Create RenderFinished Semaphore", 10);
+            Logger_.Log("Failed To Create RenderFinished Semaphore Snyc Object", 10);
             SystemShutdownInvoked_ = true;
         }
 
         if (vkCreateFence(LogicalDevice_, &FenceInfo, nullptr, &InFlightFences_[i]) != VK_SUCCESS) {
-            Logger_.Log("Failed To Create RenderFinished Semaphore", 10);
+            Logger_.Log("Failed To Create InFlight Fence Snyc Object", 10);
             SystemShutdownInvoked_ = true;
         }
 
@@ -1339,6 +1339,7 @@ void VisualRenderer::CleanUp() {
     for (size_t i=0; i < MaxFramesInFlight_; i++ ) {
         vkDestroySemaphore(LogicalDevice_, RenderFinishedSemaphores_[i], nullptr);
         vkDestroySemaphore(LogicalDevice_, ImageAvailableSemaphores_[i], nullptr);
+        vkDestroyFence(LogicalDevice_, InFlightFences_[i], nullptr);
     }
 
     // Destroy Command Pool
