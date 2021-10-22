@@ -1289,10 +1289,10 @@ void VisualRenderer::DrawFrame() {
     // Check Fences
     vkResetFences(LogicalDevice_, 1, &InFlightFences_[CurrentFrame_]);
 
-    if (ImagesInFlight[ImageIndex] != VK_NULL_HANDLE) {
+    if (ImagesInFlight_[ImageIndex] != VK_NULL_HANDLE) {
         vkWaitForFences(LogicalDevice_, 1, &ImagesInFlight[ImageIndex], VK_TRUE, UINT64_MAX);
     }
-    ImagesInFlight[ImageIndex] = InFlightFences[CurrentFrame_];
+    ImagesInFlight_[ImageIndex] = InFlightFences_[CurrentFrame_];
 
 
     // Get Semaphores
