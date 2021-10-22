@@ -81,7 +81,7 @@ class VisualRenderer {
         std::vector<VkCommandBuffer> CommandBuffers_;
         VkSemaphore ImageAvailableSemaphore_;
         VkSemaphore RenderFinishedSemaphore_;
-
+        int MaxFramesInFlight_;
 
         // Initialize Vulkan API
         void InitVulkan();

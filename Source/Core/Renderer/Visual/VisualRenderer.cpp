@@ -31,6 +31,9 @@ void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSCon
     SystemConfiguration_ = sERSConfig;
     SystemShutdownInvoked_ = ShutdownToggle;
 
+    // Grab Configuration Parameters
+    MaxFramesInFlight_ = SystemConfiguration_["MaxFramesInFlight"].as<int>();
+
     // Initialize GLFW
     Logger_.Log("Reading System Configuration For 'BOOL': 'WindowEnabled'", 2);
     LocalWindowEnabled_ = SystemConfiguration_["WindowEnabled"].as<bool>();
