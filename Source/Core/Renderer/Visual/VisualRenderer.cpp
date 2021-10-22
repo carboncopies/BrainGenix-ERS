@@ -1277,7 +1277,7 @@ void VisualRenderer::CleanupSwapChain() {
     }
 
     // Clean Commandbuffers
-    vkFreeCommandBuffers(LogicalDevice_, CommandPool_, static_cast<uint32_t>(CommandBuffers_.size()), CommandBuffers.data());
+    vkFreeCommandBuffers(LogicalDevice_, CommandPool_, static_cast<uint32_t>(CommandBuffers_.size()), CommandBuffers_.data());
 
     // Destroy Pipeline
     vkDestroyPipeline(LogicalDevice_, GraphicsPipeline_, nullptr);
