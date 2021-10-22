@@ -87,7 +87,7 @@ class VisualRenderer {
         std::vector<VkFence> ImagesInFlight_;
         size_t CurrentFrame_;
 
-        bool* FramebufferResized_;
+        bool* FramebufferResized_ = &sERSLocalWindowDisplaySystem_.FramebufferResized_;
 
 
 
