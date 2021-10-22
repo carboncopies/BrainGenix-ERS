@@ -1273,8 +1273,8 @@ void VisualRenderer::RenderLoop() {
 void VisualRenderer::DrawFrame() {
 
     // Wait For Fences
-    vkWaitForFences(LogicalDevice_, 1, &InFlightFences_[Currentframe], VK_TRUE, UINT64_MAX);
-    vkResetFences(LogicalDevice_, 1, &InFlightFences_[CurrentFrame]);
+    vkWaitForFences(LogicalDevice_, 1, &InFlightFences_[CurrentFrame_], VK_TRUE, UINT64_MAX);
+    vkResetFences(LogicalDevice_, 1, &InFlightFences_[CurrentFrame_]);
 
     // Acquire Image From Swap Chain
     uint32_t ImageIndex;
@@ -1282,7 +1282,7 @@ void VisualRenderer::DrawFrame() {
 
     // Get Semaphores
     VkSemaphore WaitSemaphores[] = {ImageAvailableSemaphores_[CurrentFrame_]};
-    VkSemaphore SignalSemaphores[] = {RenderFinishedSemaphores_[i]};
+    VkSemaphore SignalSemaphores[] = {RenderFinishedSemaphores_[CurrentFrame_]};
 
 
     // Submit To Command Buffer
