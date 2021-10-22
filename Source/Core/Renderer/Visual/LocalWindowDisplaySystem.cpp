@@ -16,7 +16,7 @@
 
 
 // Define LocalWindowDisplaySystem::InitWindow
-void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig, &bool SystemShutdownState) {
+void LocalWindowDisplaySystem::InitWindow(LoggerClass sERSLogger, YAML::Node sERSConfig, bool* SystemShutdownState) {
 
     // Create Local References
     Logger_ = sERSLogger;
@@ -93,7 +93,7 @@ void LocalWindowDisplaySystem::FetchEvents() {
 
     if (glfwWindowShouldClose(Window_)) {
         Logger_.Log("System Shutdown Invoked By LOCALWINDOW", 7);
-        SystemShutdownInvoked_ = true;
+        *SystemShutdownInvoked_ = true;
     }
 
 }

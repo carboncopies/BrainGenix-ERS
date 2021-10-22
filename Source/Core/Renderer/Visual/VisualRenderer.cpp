@@ -40,7 +40,7 @@ void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSCon
     LocalWindowEnabled_ = SystemConfiguration_["WindowEnabled"].as<bool>();
     if (LocalWindowEnabled_) {
         Logger_.Log("Initializing 'Core::Renderer::Visual::LocalWindowDisplaySystem'", 4);
-        sERSLocalWindowDisplaySystem_.InitWindow(Logger_, SystemConfiguration_, SystemShutdownInvoked_);
+        sERSLocalWindowDisplaySystem_.InitWindow(Logger_, SystemConfiguration_, &SystemShutdownInvoked_);
         Logger_.Log("Initialized 'Core::Renderer::Visual::LocalWindowDisplaySystem'", 3);
     } else {
         Logger_.Log("Initialization Skip 'Core::Renderer::Visual::LocalWindowDisplaySystem' Due To Config Param", 3);
