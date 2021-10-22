@@ -1272,6 +1272,10 @@ void VisualRenderer::RenderLoop() {
 // Define VisualRenderer::DrawFrame
 void VisualRenderer::DrawFrame() {
 
+    // Wait For Fences
+    vkWaitForFences(LogicalDevice_, 1, &InFlightFences_[Currentframe], VK_TRUE, UINT64_MAX);
+    vkResetFences(LogicalDevice_, 1, &InFlightFences_[CurrentFrame]);
+
     // Acquire Image From Swap Chain
     uint32_t ImageIndex;
     vkAcquireNextImageKHR(LogicalDevice_, SwapChain_, UINT64_MAX, ImageAvailableSemaphores_[CurrentFrame_], VK_NULL_HANDLE, &ImageIndex);
@@ -1300,7 +1304,7 @@ void VisualRenderer::DrawFrame() {
     SubmitInfo.pSignalSemaphores = SignalSemaphores;
 
     // Submit To Queue
-    if (vkQueueSubmit(GraphicsQueue_, 1, &SubmitInfo, VK_NULL_HANDLE) != VK_SUCCESS) {
+    if (vkQueueSubmit(GraphicsQueue_, 1, &SubmitInfo, InFlightFences_[CurrentFrame_]) != VK_SUCCESS) {
         Logger_.Log("Failed To Submit Draw Command Buffer", 10);
         SystemShutdownInvoked_ = true;
     }
