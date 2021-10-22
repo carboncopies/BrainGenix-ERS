@@ -24,7 +24,7 @@
 
 
 // Define VisualRenderer::InitializeSystem
-void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSConfig, bool ShutdownToggle) {
+void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSConfig, bool* ShutdownToggle) {
 
     // Create Local References
     Logger_ = sERSLogger;
@@ -40,7 +40,7 @@ void VisualRenderer::InitializeSystem(LoggerClass sERSLogger, YAML::Node sERSCon
     LocalWindowEnabled_ = SystemConfiguration_["WindowEnabled"].as<bool>();
     if (LocalWindowEnabled_) {
         Logger_.Log("Initializing 'Core::Renderer::Visual::LocalWindowDisplaySystem'", 4);
-        sERSLocalWindowDisplaySystem_.InitWindow(Logger_, SystemConfiguration_, &SystemShutdownInvoked_);
+        sERSLocalWindowDisplaySystem_.InitWindow(Logger_, SystemConfiguration_, SystemShutdownInvoked_);
         Logger_.Log("Initialized 'Core::Renderer::Visual::LocalWindowDisplaySystem'", 3);
     } else {
         Logger_.Log("Initialization Skip 'Core::Renderer::Visual::LocalWindowDisplaySystem' Due To Config Param", 3);
@@ -168,17 +168,17 @@ void VisualRenderer::CreateSyncObjects() {
 
         if (vkCreateSemaphore(LogicalDevice_, &SemaphoreInfo, nullptr, &ImageAvailableSemaphores_[i]) != VK_SUCCESS) {
             Logger_.Log("Failed To Create ImageAvailable Semaphore Snyc Object", 10);
-            SystemShutdownInvoked_ = true;
+            *SystemShutdownInvoked_ = true;
         }
 
         if (vkCreateSemaphore(LogicalDevice_, &SemaphoreInfo, nullptr, &RenderFinishedSemaphores_[i]) != VK_SUCCESS) {
             Logger_.Log("Failed To Create RenderFinished Semaphore Snyc Object", 10);
-            SystemShutdownInvoked_ = true;
+            *SystemShutdownInvoked_ = true;
         }
 
         if (vkCreateFence(LogicalDevice_, &FenceInfo, nullptr, &InFlightFences_[i]) != VK_SUCCESS) {
             Logger_.Log("Failed To Create InFlight Fence Snyc Object", 10);
-            SystemShutdownInvoked_ = true;
+            *SystemShutdownInvoked_ = true;
         }
 
     }
@@ -202,7 +202,7 @@ void VisualRenderer::CreateCommandBuffers() {
     // Create Command Buffer
     if (vkAllocateCommandBuffers(LogicalDevice_, &AllocInfo, CommandBuffers_.data()) != VK_SUCCESS) {
         Logger_.Log("Failed To Create Command Buffer", 10);
-        SystemShutdownInvoked_ = true;
+        *SystemShutdownInvoked_ = true;
     }
 
 
@@ -215,7 +215,7 @@ void VisualRenderer::CreateCommandBuffers() {
 
         if (vkBeginCommandBuffer(CommandBuffers_[i], &BeginInfo) != VK_SUCCESS) {
             Logger_.Log("Failed To Begin Recording Command Buffer", 10);
-            SystemShutdownInvoked_ = true;
+            *SystemShutdownInvoked_ = true;
         }
 
 
@@ -241,7 +241,7 @@ void VisualRenderer::CreateCommandBuffers() {
 
         if (vkEndCommandBuffer(CommandBuffers_[i]) != VK_SUCCESS) {
             Logger_.Log("Failed To Record Command Buffer", 10);
-            SystemShutdownInvoked_ = true;
+            *SystemShutdownInvoked_ = true;
         }
 
     }
@@ -262,7 +262,7 @@ void VisualRenderer::CreateCommandPool() {
     // Create Command Pool
     if (vkCreateCommandPool(LogicalDevice_, &PoolInfo, nullptr, &CommandPool_) != VK_SUCCESS) {
         Logger_.Log("Failed To Create Command Pool", 10);
-        SystemShutdownInvoked_ = true;
+        *SystemShutdownInvoked_ = true;
     }
 
 }
@@ -290,7 +290,7 @@ void VisualRenderer::CreateFramebuffers() {
 
         if (vkCreateFramebuffer(LogicalDevice_, &FrameBufferInfo, nullptr, &SwapChainFramebuffers_[i]) != VK_SUCCESS) {
             Logger_.Log("Failed To Create Framebuffer", 10);
-            SystemShutdownInvoked_ = true;
+            *SystemShutdownInvoked_ = true;
         }
     
     
@@ -351,7 +351,7 @@ void VisualRenderer::CreateRenderPass() {
 
     if (vkCreateRenderPass(LogicalDevice_, &RenderPassInfo, nullptr, &RenderPass_) != VK_SUCCESS) {
         Logger_.Log("Failed To Create Render Pass", 10);
-        SystemShutdownInvoked_ = true;
+        *SystemShutdownInvoked_ = true;
     }
 
 
@@ -520,7 +520,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
 
     if (vkCreatePipelineLayout(LogicalDevice_, &PipelineLayoutInfo, nullptr, &PipelineLayout_) != VK_SUCCESS) {
         Logger_.Log("Failed To Create Pipeline Layout", 10);
-        SystemShutdownInvoked_ = true;
+        *SystemShutdownInvoked_ = true;
     }
 
 
@@ -551,7 +551,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
 
     if (vkCreateGraphicsPipelines(LogicalDevice_, VK_NULL_HANDLE, 1, &PipelineInfo, nullptr, &GraphicsPipeline_) != VK_SUCCESS) {
         Logger_.Log("Failed To Create Graphics Pipeline", 10);
-        SystemShutdownInvoked_ = true;
+        *SystemShutdownInvoked_ = true;
     }
 
     // Cleanup Shader Modules
@@ -575,7 +575,7 @@ VkShaderModule VisualRenderer::CreateShaderModule(const std::vector<char>& Code)
     VkShaderModule ShaderModule;
     if (vkCreateShaderModule(LogicalDevice_, &CreateInfo, nullptr, &ShaderModule) != VK_SUCCESS) {
         Logger_.Log("Failed To Create Shader Module Instance", 10);
-        SystemShutdownInvoked_ = true;
+        *SystemShutdownInvoked_ = true;
     }
 
     // Return Shader Module
@@ -614,7 +614,7 @@ void VisualRenderer::CreateImageViews() {
         // Create Image View
         if (vkCreateImageView(LogicalDevice_, &CreateInfo, nullptr, &SwapChainImageViews_[i]) != VK_SUCCESS) {
             Logger_.Log("Failed To Create Image Views", 10);
-            SystemShutdownInvoked_ = true;
+            *SystemShutdownInvoked_ = true;
         }
 
 
@@ -697,7 +697,7 @@ void VisualRenderer::CreateSwapChain() {
     Logger_.Log("INIT [ START] Creating Swap Chain Object", 3);
     if (vkCreateSwapchainKHR(LogicalDevice_, &CreateInfo, nullptr, &SwapChain_) != VK_SUCCESS) {
         Logger_.Log("INIT [ERROR] Failed To Create Swap Chain", 10);
-        SystemShutdownInvoked_ = true;
+        *SystemShutdownInvoked_ = true;
     }
     Logger_.Log("INIT [FINISH] Created Swap Chain Object", 2);
 
@@ -955,7 +955,7 @@ void VisualRenderer::CreateLogicalDevice() {
 
         // Logical Device Creation Failure
         Logger_.Log("Failed To Create Logical Device, System Shutting Down", 10);
-        SystemShutdownInvoked_ = true;
+        *SystemShutdownInvoked_ = true;
     }
 
     // Setup Graphics Queue
@@ -1058,7 +1058,7 @@ void VisualRenderer::PickPhysicalDevice() {
         Logger_.Log("Identified Suitable Physical Device", 4);
     } else {
         Logger_.Log("No Suitable Physical Device Found, Exiting", 10);
-        SystemShutdownInvoked_ = true;
+        *SystemShutdownInvoked_ = true;
     }
 
 }
@@ -1193,7 +1193,7 @@ void VisualRenderer::CreateVulkanInstance() {
         Logger_.Log("Failed To Create Vulkan Instance", 10);
 
         // Invoke System Shutdown
-        SystemShutdownInvoked_ = true;
+        *SystemShutdownInvoked_ = true;
     } else {
         Logger_.Log("Created Vulkan Instance", 3);
     }
@@ -1318,7 +1318,7 @@ void VisualRenderer::DrawFrame() {
     // Submit To Queue
     if (vkQueueSubmit(GraphicsQueue_, 1, &SubmitInfo, InFlightFences_[CurrentFrame_]) != VK_SUCCESS) {
         Logger_.Log("Failed To Submit Draw Command Buffer", 10);
-        SystemShutdownInvoked_ = true;
+        *SystemShutdownInvoked_ = true;
     }
 
 

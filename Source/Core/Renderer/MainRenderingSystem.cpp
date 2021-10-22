@@ -27,7 +27,7 @@ void MainRenderer::InitRenderer(LoggerClass sERSLogger, YAML::Node sERSConfig, b
 
     // Initialize Graphics Subsystem
     Logger_.Log("Initializing 'Core::Renderer::MainRenderingSystem'", 5);
-    sERSVisualRenderer_.InitializeSystem(sERSLogger, SystemConfiguration_, SystemShutdownInvoked_);
+    sERSVisualRenderer_.InitializeSystem(sERSLogger, SystemConfiguration_, &SystemShutdownInvoked_);
     Logger_.Log("Initialized 'Renderer::Visual::VisualRenderer'", 5);
 
 
