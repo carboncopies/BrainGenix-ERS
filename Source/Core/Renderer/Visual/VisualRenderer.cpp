@@ -1290,7 +1290,7 @@ void VisualRenderer::DrawFrame() {
     vkResetFences(LogicalDevice_, 1, &InFlightFences_[CurrentFrame_]);
 
     if (ImagesInFlight_[ImageIndex] != VK_NULL_HANDLE) {
-        vkWaitForFences(LogicalDevice_, 1, &ImagesInFlight[ImageIndex], VK_TRUE, UINT64_MAX);
+        vkWaitForFences(LogicalDevice_, 1, &ImagesInFlight_[ImageIndex], VK_TRUE, UINT64_MAX);
     }
     ImagesInFlight_[ImageIndex] = InFlightFences_[CurrentFrame_];
 
