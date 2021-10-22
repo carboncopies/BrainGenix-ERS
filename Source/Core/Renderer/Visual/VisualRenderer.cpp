@@ -1331,7 +1331,7 @@ void VisualRenderer::DrawFrame() {
     VkResult Result = vkAcquireNextImageKHR(LogicalDevice_, SwapChain_, UINT64_MAX, ImageAvailableSemaphores_[CurrentFrame_], VK_NULL_HANDLE, &ImageIndex);
 
     // Check If SwapChain Is Out Of Date
-    if (Result == VK_ERROR_OUT_OF_DATE_KHR || Result == VK_SUBOPTIMAL_KHR)) {
+    if (Result == VK_ERROR_OUT_OF_DATE_KHR || Result == VK_SUBOPTIMAL_KHR) {
         FramebufferResized_ = true;
         RecreateSwapChain();
         return;
