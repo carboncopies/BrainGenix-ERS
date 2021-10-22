@@ -155,6 +155,7 @@ void VisualRenderer::CreateSyncObjects() {
 
     VkFenceCreateInfo FenceInfo{};
     FenceInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
+    FenceInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
 
     for (size_t i=0; i<MaxFramesInFlight_; i++) {
 
