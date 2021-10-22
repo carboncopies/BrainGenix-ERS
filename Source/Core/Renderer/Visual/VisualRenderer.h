@@ -79,12 +79,11 @@ class VisualRenderer {
         std::vector<VkFramebuffer> SwapChainFramebuffers_;
         VkCommandPool CommandPool_;
         std::vector<VkCommandBuffer> CommandBuffers_;
-        // VkSemaphore ImageAvailableSemaphore_;
-        // VkSemaphore RenderFinishedSemaphore_;
         int MaxFramesInFlight_;
         
         std::vector<VkSemaphore> ImageAvailableSemaphores_;
         std::vector<VkSemaphore> RenderFinishedSemaphores_;
+        std::vector<VkFence> InFlightFences_;
         size_t CurrentFrame_ = 0;
 
         // Initialize Vulkan API
@@ -147,8 +146,8 @@ class VisualRenderer {
         // Create Command Buffers
         void CreateCommandBuffers();
 
-        // Create Semaphores
-        void CreateSemaphores();
+        // Create Sync Objects
+        void CreateSyncObjects();
 
         // Draw Frame
         void DrawFrame();

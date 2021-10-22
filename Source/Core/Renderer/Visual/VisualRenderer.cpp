@@ -137,14 +137,14 @@ void VisualRenderer::InitVulkan() {
 
     // Create Semaphores
     Logger_.Log("Initialization [ START] Creating Semaphores", 3);
-    CreateSemaphores();
+    CreateSyncObjects();
     Logger_.Log("Initialization [FINISH] Created Semaphores", 2);
 
 
 }
 
 // Define VisualRenderer::CreateSemaphores
-void VisualRenderer::CreateSemaphores() {
+void VisualRenderer::CreateSyncObjects() {
 
     // Create Semaphores
     ImageAvailableSemaphores_.resize(MaxFramesInFlight_);
@@ -152,6 +152,9 @@ void VisualRenderer::CreateSemaphores() {
 
     VkSemaphoreCreateInfo SemaphoreInfo{};
     SemaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
+
+    VkFenceCreateInfo FenceInfo{};
+    FenceInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
 
     for (size_t i=0; i<MaxFramesInFlight_; i++) {
 
@@ -162,6 +165,11 @@ void VisualRenderer::CreateSemaphores() {
         }
 
         if (vkCreateSemaphore(LogicalDevice_, &SemaphoreInfo, nullptr, &RenderFinishedSemaphores_[i]) != VK_SUCCESS) {
+            Logger_.Log("Failed To Create RenderFinished Semaphore", 10);
+            SystemShutdownInvoked_ = true;
+        }
+
+        if (vkCreateFence(LogicalDevice_, &FenceInfo, nullptr, &InFlightFences_[i]) != VK_SUCCESS) {
             Logger_.Log("Failed To Create RenderFinished Semaphore", 10);
             SystemShutdownInvoked_ = true;
         }
