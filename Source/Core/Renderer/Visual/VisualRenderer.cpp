@@ -1445,7 +1445,7 @@ void VisualRenderer::CleanUp() {
     CleanupSwapChain();
 
     // Deallocate Vertex Buffer
-    vkDestroyBuffer(LogicalDevice, VertexBuffer_, nullptr);
+    vkDestroyBuffer(LogicalDevice_, VertexBuffer_, nullptr);
 
     // Cleanup Semaphores
     for (size_t i=0; i < MaxFramesInFlight_; i++ ) {
