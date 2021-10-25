@@ -1333,6 +1333,9 @@ void VisualRenderer::RenderLoop() {
 // Define VisualRenderer::DrawFrame
 void VisualRenderer::DrawFrame() {
 
+    // Wait For Fence
+    vkWaitForFences(LogicalDevice_, 1, &InFlightFences_[CurrentFrame_], VK_TRUE, UINT64_MAX);
+
     // Acquire Image From Swap Chain
     uint32_t ImageIndex;
     VkResult Result = vkAcquireNextImageKHR(LogicalDevice_, SwapChain_, UINT64_MAX, ImageAvailableSemaphores_[CurrentFrame_], VK_NULL_HANDLE, &ImageIndex);
