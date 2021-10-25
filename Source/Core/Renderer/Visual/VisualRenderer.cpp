@@ -149,7 +149,18 @@ void VisualRenderer::InitVulkan() {
 // Define VisualRenderer::CreateVertexBuffer
 void VisualRenderer::CreateVertexBuffer() {
 
-    
+    // Setup Buffer Struct
+    VkBufferCreateInfo BufferInfo{};
+    BufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
+    BufferInfo.size = sizeof(Vertices_[0] * Vertices_.size());
+    BufferInfo.usage = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT;
+    BufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
+
+    // Create Vertex Buffer
+    if (vkCreateBuffer(LogicalDevice_, &BufferInfo, nullptr, &VertexBuffer_) != VK_SUCCESS) {
+        Logger_.Log("Failed To Create Vertex Buffer", 10);
+        *SystemShutdownInvoked_ = true;
+    }
 
 }
 
@@ -1432,6 +1443,9 @@ void VisualRenderer::CleanUp() {
     // Cleanup Swapchain
     vkDeviceWaitIdle(LogicalDevice_);
     CleanupSwapChain();
+
+    // Deallocate Vertex Buffer
+    vkDestroyBuffer(LogicalDevice, VertexBuffer_, nullptr);
 
     // Cleanup Semaphores
     for (size_t i=0; i < MaxFramesInFlight_; i++ ) {
