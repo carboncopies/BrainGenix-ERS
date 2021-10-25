@@ -1416,6 +1416,7 @@ void VisualRenderer::CleanUp() {
     Logger_.Log("Shutting Down 'Core::Renderer::Visual::VisualRenderer'", 5);
 
     // Cleanup Swapchain
+    vkDeviceWaitIdle(LogicalDevice_);
     CleanupSwapChain();
     std::cout << "\ntest\n";
     // Cleanup Semaphores
