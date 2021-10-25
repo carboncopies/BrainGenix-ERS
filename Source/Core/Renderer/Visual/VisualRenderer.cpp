@@ -172,6 +172,7 @@ uint32_t VisualRenderer::FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFla
 void VisualRenderer::CreateVertexBuffer() {
 
     // Setup Buffer Struct
+    Logger_.Log("Setting Up Vertex Buffer", 4);
     VkBufferCreateInfo BufferInfo{};
     BufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
     BufferInfo.size = sizeof(Vertices_[0]) * Vertices_.size();
@@ -181,6 +182,19 @@ void VisualRenderer::CreateVertexBuffer() {
     // Create Vertex Buffer
     if (vkCreateBuffer(LogicalDevice_, &BufferInfo, nullptr, &VertexBuffer_) != VK_SUCCESS) {
         Logger_.Log("Failed To Create Vertex Buffer", 10);
+        *SystemShutdownInvoked_ = true;
+    }
+
+
+    // Allocate Memory
+    Logger_.Log("Allocating GPU VRAM To Vertex Buffer", 3);
+    VkMemoryAllocateInfo AllocateInfo{};
+    AllocateInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
+    AllocateInfo.allocationSize = MemoryRequirements_.size;
+    AllocateInfo.memoryTypeIndex = FindMemoryType(MemoryRequirements_.memoryTypeBits, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
+    
+    if (vkAllocateMemory(LogicalDevice_, &AllocateInfo, nullptr, &VertexBufferMemory) != VK_SUCCESS) {
+        Logger_.Log("Failed To Allocate Vertex Buffer VRAM", 10);
         *SystemShutdownInvoked_ = true;
     }
 
