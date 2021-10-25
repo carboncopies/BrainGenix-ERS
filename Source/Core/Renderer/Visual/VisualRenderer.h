@@ -36,6 +36,12 @@ struct SwapChainSupportDetails {
 
 };
 
+// Vertex Struct
+struct Vertex {
+    glm::vec2 Position;
+    glm::vec3 Color;
+}
+
 
 // Define Visual Renderer Class
 class VisualRenderer {
@@ -89,7 +95,13 @@ class VisualRenderer {
 
         bool* FramebufferResized_ = &sERSLocalWindowDisplaySystem_.FramebufferResized_;
 
-        
+        // hardcoded vertices
+        const std::vector<Vertex> Vertices = {
+        {{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
+        {{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
+        {{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}}
+        };
+
 
 
         // Initialize Vulkan API
