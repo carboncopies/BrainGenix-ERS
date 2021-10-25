@@ -1426,16 +1426,16 @@ void VisualRenderer::CleanUp() {
         vkDestroyFence(LogicalDevice_, InFlightFences_[i], nullptr);
     }
 
-    // Destroy Command Pool
-    vkDestroyCommandPool(LogicalDevice_, CommandPool_, nullptr);
-
     // Destroy LogicalDevice
     vkDestroyDevice(LogicalDevice_, nullptr);
 
-    // Destroy Vulkan Instance
-    vkDestroyInstance(VulkanInstance_, nullptr);
+    // Destroy Command Pool
+    vkDestroyCommandPool(LogicalDevice_, CommandPool_, nullptr);
 
     // Call Subclass's Destructors
     sERSLocalWindowDisplaySystem_.CleanUp();
+
+    // Destroy Vulkan Instance
+    vkDestroyInstance(VulkanInstance_, nullptr);
 
 }
