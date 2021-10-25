@@ -40,7 +40,7 @@ struct SwapChainSupportDetails {
 struct Vertex {
     glm::vec2 Position;
     glm::vec3 Color;
-}
+};
 
 
 // Define Visual Renderer Class
