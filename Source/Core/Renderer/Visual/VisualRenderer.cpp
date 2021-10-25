@@ -1337,9 +1337,6 @@ void VisualRenderer::DrawFrame() {
     uint32_t ImageIndex;
     VkResult Result = vkAcquireNextImageKHR(LogicalDevice_, SwapChain_, UINT64_MAX, ImageAvailableSemaphores_[CurrentFrame_], VK_NULL_HANDLE, &ImageIndex);
 
-
-    
-
     // Check If SwapChain Is Out Of Date
     if (Result == VK_ERROR_OUT_OF_DATE_KHR || Result == VK_SUBOPTIMAL_KHR) {
         *FramebufferResized_ = true;
@@ -1350,21 +1347,15 @@ void VisualRenderer::DrawFrame() {
         *SystemShutdownInvoked_ = true;
     }
 
-    std::cout << "test\n";
-
     // Check Fences
     if (ImagesInFlight_[ImageIndex] != VK_NULL_HANDLE) {
         vkWaitForFences(LogicalDevice_, 1, &ImagesInFlight_[ImageIndex], VK_TRUE, UINT64_MAX);
     }
     ImagesInFlight_[ImageIndex] = InFlightFences_[CurrentFrame_];
 
-
-
-
     // Get Semaphores
     VkSemaphore WaitSemaphores[] = {ImageAvailableSemaphores_[CurrentFrame_]};
     VkSemaphore SignalSemaphores[] = {RenderFinishedSemaphores_[CurrentFrame_]};
-
 
     // Submit To Command Buffer
     VkSubmitInfo SubmitInfo{};
@@ -1379,8 +1370,6 @@ void VisualRenderer::DrawFrame() {
     SubmitInfo.commandBufferCount = 1;
     SubmitInfo.pCommandBuffers = &CommandBuffers_[ImageIndex];
 
-
-    
     SubmitInfo.signalSemaphoreCount = 1;
     SubmitInfo.pSignalSemaphores = SignalSemaphores;
 
