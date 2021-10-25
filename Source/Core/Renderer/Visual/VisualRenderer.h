@@ -59,6 +59,17 @@ struct Vertex {
         // Create Array
         std::array<VkVertexInputAttributeDescription, 2> AttributeDescriptions{};
 
+        // Handle Position Data
+        AttributeDescriptions[0].binding = 0;
+        AttributeDescriptions[0].location = 0;
+        AttributeDescriptions[0].format = VK_FORMAT_R32G32_SFLOAT;
+        AttributeDescriptions[0].offset = offsetof(Vertex, Position);
+
+        // Handle Color Data
+        AttributeDescriptions[1].binding = 0;
+        AttributeDescriptions[1].location = 1;
+        AttributeDescriptions[1].format = VK_FORMAT_R32G32B32_SFLOAT;
+        AttributeDescriptions[1].offset = offsetof(Vertex, Color);
 
 
         return AttributeDescriptions;
