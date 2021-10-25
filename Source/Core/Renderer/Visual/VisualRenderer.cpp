@@ -1353,12 +1353,12 @@ void VisualRenderer::DrawFrame() {
     std::cout << "test\n";
 
     // Check Fences
-    vkResetFences(LogicalDevice_, 1, &InFlightFences_[CurrentFrame_]);
-
     if (ImagesInFlight_[ImageIndex] != VK_NULL_HANDLE) {
         vkWaitForFences(LogicalDevice_, 1, &ImagesInFlight_[ImageIndex], VK_TRUE, UINT64_MAX);
     }
     ImagesInFlight_[ImageIndex] = InFlightFences_[CurrentFrame_];
+
+
 
 
     // Get Semaphores
@@ -1383,6 +1383,9 @@ void VisualRenderer::DrawFrame() {
     
     SubmitInfo.signalSemaphoreCount = 1;
     SubmitInfo.pSignalSemaphores = SignalSemaphores;
+
+    // Reset Fence
+    vkResetFences(LogicalDevice_, 1, &InFlightFences_[CurrentFrame_]);
 
     // Submit To Queue
     if (vkQueueSubmit(GraphicsQueue_, 1, &SubmitInfo, InFlightFences_[CurrentFrame_]) != VK_SUCCESS) {
