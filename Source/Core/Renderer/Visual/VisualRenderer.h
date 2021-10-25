@@ -40,6 +40,21 @@ struct SwapChainSupportDetails {
 struct Vertex {
     glm::vec2 Position;
     glm::vec3 Color;
+
+    // Pass Vertex Data Into GPU Memory
+    static VkVertexInputBindingDescription GetBindingDescription() {
+
+        // Create Binding Descriptor
+        VkVertexInputBindingDescription BindingDescription{};
+
+        BindingDescription.binding = 0;
+        BindingDescription.stride = sizeof(Vertex);
+        BindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
+
+        return BindingDescription;
+
+    }
+
 };
 
 

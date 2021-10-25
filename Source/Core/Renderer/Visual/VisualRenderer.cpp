@@ -16,6 +16,7 @@
 #include <cstdint>
 #include <algorithm>
 #include <glm/glm.hpp>
+#include <array>
 
 #include "Core/Renderer/Visual/LocalWindowDisplaySystem.cpp"
 #include "Core/Loader/Shaders/ShaderLoader.cpp"
