@@ -412,7 +412,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
     VertexInputInfo.vertexBindingDescriptionCount = 1;
     VertexInputInfo.vertexAttributeDescriptionCount = static_cast<uint32_t>(AttributeDescriptions.size());
     VertexInputInfo.pVertexBindingDescriptions = &BindingDescription;
-    VertexInputInfo.pVertexAttributeDescriptions = AtributeDescriptions.data();
+    VertexInputInfo.pVertexAttributeDescriptions = AttributeDescriptions.data();
 
     VkPipelineInputAssemblyStateCreateInfo InputAssembly{};
     InputAssembly.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
