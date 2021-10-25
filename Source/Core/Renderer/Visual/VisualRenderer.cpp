@@ -146,6 +146,13 @@ void VisualRenderer::InitVulkan() {
 
 }
 
+// Define VisualRenderer::CreateVertexBuffer
+void VisualRenderer::CreateVertexBuffer() {
+
+    
+
+}
+
 // Define VisualRenderer::CreateSemaphores
 void VisualRenderer::CreateSyncObjects() {
 

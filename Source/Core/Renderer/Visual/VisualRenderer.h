@@ -212,6 +212,9 @@ class VisualRenderer {
         // Cleanup Old Swapchain
         void CleanupSwapChain();
 
+        // Create Vertex Buffer
+        void CreateVertexBuffer();
+
 
     public:
 
