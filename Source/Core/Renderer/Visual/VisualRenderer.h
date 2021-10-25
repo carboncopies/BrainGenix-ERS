@@ -132,7 +132,7 @@ class VisualRenderer {
         bool* FramebufferResized_ = &sERSLocalWindowDisplaySystem_.FramebufferResized_;
 
         // hardcoded vertices
-        const std::vector<Vertex> Vertices = {
+        const std::vector<Vertex> Vertices_ = {
         {{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
         {{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
         {{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}}
