@@ -152,7 +152,7 @@ void VisualRenderer::CreateVertexBuffer() {
     // Setup Buffer Struct
     VkBufferCreateInfo BufferInfo{};
     BufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
-    BufferInfo.size = sizeof(Vertices_[0] * Vertices_.size());
+    BufferInfo.size = sizeof(Vertices_[0]) * Vertices_.size();
     BufferInfo.usage = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT;
     BufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
 
