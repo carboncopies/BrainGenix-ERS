@@ -1417,7 +1417,7 @@ void VisualRenderer::CleanUp() {
 
     // Cleanup Swapchain
     CleanupSwapChain();
-
+    std::cout << "\ntest\n";
     // Cleanup Semaphores
     for (size_t i=0; i < MaxFramesInFlight_; i++ ) {
         vkDestroySemaphore(LogicalDevice_, RenderFinishedSemaphores_[i], nullptr);
