@@ -1269,10 +1269,8 @@ bool VisualRenderer::CheckValidationLayerSupport() {
 void VisualRenderer::CleanupSwapChain() {
 
     // Cleanup Framebuffers
-    for (size_t i=0; i<SwapChainFramebuffers_.size(); i++) {
-
-        // Destroy Framebuffers
-        vkDestroyFramebuffer(LogicalDevice_, SwapChainFramebuffers_[i], nullptr);
+    for (auto Framebuffer : SwapChainFramebuffers_) {
+        vkDestroyFramebuffer(LogicalDevice_, Framebuffer, nullptr);
 
     }
 
