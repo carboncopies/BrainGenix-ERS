@@ -1310,6 +1310,9 @@ void VisualRenderer::RecreateSwapChain() {
     CreateFramebuffers();
     CreateCommandBuffers();
 
+    // Resize Frames To Correct Size
+    ImagesInFlight_.resize(SwapChainImages_.size(), VK_NULL_HANDLE);
+
 
 }
 
