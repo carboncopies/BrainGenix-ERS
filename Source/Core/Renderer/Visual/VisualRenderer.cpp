@@ -1418,7 +1418,7 @@ void VisualRenderer::CleanUp() {
     // Cleanup Swapchain
     vkDeviceWaitIdle(LogicalDevice_);
     CleanupSwapChain();
-    std::cout << "\ntest\n";
+
     // Cleanup Semaphores
     for (size_t i=0; i < MaxFramesInFlight_; i++ ) {
         vkDestroySemaphore(LogicalDevice_, RenderFinishedSemaphores_[i], nullptr);
@@ -1426,11 +1426,11 @@ void VisualRenderer::CleanUp() {
         vkDestroyFence(LogicalDevice_, InFlightFences_[i], nullptr);
     }
 
-    // Destroy LogicalDevice
-    vkDestroyDevice(LogicalDevice_, nullptr);
-
     // Destroy Command Pool
     vkDestroyCommandPool(LogicalDevice_, CommandPool_, nullptr);
+
+    // Destroy LogicalDevice
+    vkDestroyDevice(LogicalDevice_, nullptr);
 
     // Call Subclass's Destructors
     sERSLocalWindowDisplaySystem_.CleanUp();
