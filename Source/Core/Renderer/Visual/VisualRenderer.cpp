@@ -688,7 +688,7 @@ void VisualRenderer::CreateSwapChain() {
     CreateInfo.presentMode = PresentMode;
     CreateInfo.clipped = VK_TRUE;
 
-    CreateInfo.oldSwapchain = SwapChain_;
+    CreateInfo.oldSwapchain = VK_NULL_HANDLE;
 
     Logger_.Log("INIT [FINISH] Populated Swap Chain CreateInfo Struct", 2);
 
