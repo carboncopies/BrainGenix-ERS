@@ -133,6 +133,7 @@ class VisualRenderer {
 
 
         VkBuffer VertexBuffer_;
+        VkMemoryRequirements MemoryRequirements_;
 
         // hardcoded vertices
         const std::vector<Vertex> Vertices_ = {
@@ -217,6 +218,9 @@ class VisualRenderer {
 
         // Create Vertex Buffer
         void CreateVertexBuffer();
+
+        // Find Memory Types
+        uint32_t FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFlags Properties);
 
 
     public:

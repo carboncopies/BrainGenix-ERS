@@ -146,6 +146,28 @@ void VisualRenderer::InitVulkan() {
 
 }
 
+// Define VisualRenderer::FindMemoryType
+uint32_t VisualRenderer::FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFlags Properties) {
+
+    // Get VRAM Properties
+    Logger_.Log("Finding VRAM Properties", 3);
+    VkGetPhysicalDeviceMemoryProperties MemoryProperties;
+    vkGetPhysicalDeviceMemoryProperties(PhysicalDevice_, &MemoryProperties);
+
+    // Iterate Through Memory Types
+    for (uint32_t i=0; i<MemoryProperties.memoryTypeCount; i++) {
+        if (TypeFilter & (1 << i) && (MemoryProperties.memoryTypes[i].propertyFlags & Properties) == Properties) {
+            return i;
+        }
+    }
+
+    // Failed
+    Logger_.Log("Failed To Find Suitable Memory Type", 10);
+    *SystemShutdownInvoked_ = true;
+
+
+}
+
 // Define VisualRenderer::CreateVertexBuffer
 void VisualRenderer::CreateVertexBuffer() {
 
