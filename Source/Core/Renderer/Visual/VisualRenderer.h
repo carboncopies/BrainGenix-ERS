@@ -68,7 +68,7 @@ class VisualRenderer {
         VkDevice LogicalDevice_;
         VkQueue GraphicsQueue_;
         VkQueue PresentationQueue_;
-        VkSwapchainKHR SwapChain_;
+        VkSwapchainKHR SwapChain_ = VK_NULL_HANDLE;
         std::vector<VkImage> SwapChainImages_;
         VkFormat SwapChainImageFormat_;
         VkExtent2D SwapChainExtent_;
@@ -89,6 +89,7 @@ class VisualRenderer {
 
         bool* FramebufferResized_ = &sERSLocalWindowDisplaySystem_.FramebufferResized_;
 
+        
 
 
         // Initialize Vulkan API

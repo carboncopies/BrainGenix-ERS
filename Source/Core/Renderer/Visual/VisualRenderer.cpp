@@ -688,7 +688,7 @@ void VisualRenderer::CreateSwapChain() {
     CreateInfo.presentMode = PresentMode;
     CreateInfo.clipped = VK_TRUE;
 
-    CreateInfo.oldSwapchain = VK_NULL_HANDLE;
+    CreateInfo.oldSwapchain = SwapChain_;
 
     Logger_.Log("INIT [FINISH] Populated Swap Chain CreateInfo Struct", 2);
 
@@ -1318,8 +1318,11 @@ void VisualRenderer::RenderLoop() {
     // GLFW Poll Events
     sERSLocalWindowDisplaySystem_.FetchEvents();
 
+
     // Draw The Frame
     DrawFrame();
+
+
 
 }
 
@@ -1330,6 +1333,9 @@ void VisualRenderer::DrawFrame() {
     uint32_t ImageIndex;
     VkResult Result = vkAcquireNextImageKHR(LogicalDevice_, SwapChain_, UINT64_MAX, ImageAvailableSemaphores_[CurrentFrame_], VK_NULL_HANDLE, &ImageIndex);
 
+
+    
+
     // Check If SwapChain Is Out Of Date
     if (Result == VK_ERROR_OUT_OF_DATE_KHR || Result == VK_SUBOPTIMAL_KHR) {
         *FramebufferResized_ = true;
@@ -1339,6 +1345,8 @@ void VisualRenderer::DrawFrame() {
         Logger_.Log("Failed To Recreate SwapChain", 10);
         *SystemShutdownInvoked_ = true;
     }
+
+    std::cout << "test\n";
 
     // Check Fences
     vkResetFences(LogicalDevice_, 1, &InFlightFences_[CurrentFrame_]);
