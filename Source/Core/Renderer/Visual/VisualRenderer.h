@@ -52,6 +52,16 @@ struct Vertex {
         BindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
 
         return BindingDescription;
+    }
+
+    static std::array<VkVertexInputAttributeDescription, 2> GetAttributeDescriptions() {
+
+        // Create Array
+        std::array<VkVertexInputAttributeDescription, 2> AttributeDescriptions{};
+
+
+
+        return AttributeDescriptions;
 
     }
 
