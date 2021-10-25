@@ -399,15 +399,20 @@ void VisualRenderer::CreateGraphicsPipeline() {
 
     Logger_.Log("Created Shader Stages", 2);
 
+    
+    // Setup Vertex Input
+    Logger_.Log("Setting Up Vertex Input", 3);
+    auto BindingDescription = Vertex::GetBindingDescription();
+    auto AttributeDescriptions = Vertex::GetAttributeDescriptions();
 
     // Set Fixed Functions
     Logger_.Log("Creating Fixed Functions", 3);
     VkPipelineVertexInputStateCreateInfo VertexInputInfo{};
     VertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
-    VertexInputInfo.vertexBindingDescriptionCount = 0;
-    VertexInputInfo.pVertexBindingDescriptions = nullptr;
-    VertexInputInfo.vertexAttributeDescriptionCount = 0;
-    VertexInputInfo.pVertexAttributeDescriptions = nullptr;
+    VertexInputInfo.vertexBindingDescriptionCount = 1;
+    VertexInputInfo.pVertexBindingDescriptions = static_cast<uint32_t>(AttributeDescriptions.size());
+    VertexInputInfo.vertexAttributeDescriptionCount = &BindingDescription;
+    VertexInputInfo.pVertexAttributeDescriptions = AtributeDescriptions.data();
 
     VkPipelineInputAssemblyStateCreateInfo InputAssembly{};
     InputAssembly.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
