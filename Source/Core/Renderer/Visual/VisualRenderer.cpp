@@ -1299,6 +1299,9 @@ void VisualRenderer::RecreateSwapChain() {
     vkDeviceWaitIdle(LogicalDevice_);
 
 
+    // Cleanup Old Swapchain
+    CleanupSwapChain();
+
     // Recreate Swapchain
     CreateSwapChain();
     CreateImageViews();
