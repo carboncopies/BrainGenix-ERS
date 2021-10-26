@@ -151,6 +151,17 @@ void VisualRenderer::InitVulkan() {
 
 }
 
+// Define VisualRenderer::CreateBuffer
+void VisualRenderer::CreateBuffer(VkDeviceSize Size, VkBufferUsageFlags Usage, VkMemoryPropertyFlags Properties, VKBuffer& Buffer, VkDeviceMemory& BufferMemory) {
+
+    // Setup Buffer
+    VkBufferCreateInfo BufferInfo{};
+    
+
+
+
+}
+
 // Define VisualRenderer::FindMemoryType
 uint32_t VisualRenderer::FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFlags Properties) {
 

@@ -138,9 +138,9 @@ class VisualRenderer {
 
         // hardcoded vertices
         const std::vector<Vertex> Vertices_ = {
-        {{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}},
-        {{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
-        {{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}}
+        {{0.0f, -0.4f}, {1.0f, 0.0f, 0.0f}},
+        {{.4f, .4f}, {0.0f, 0.0f, 1.0f}},
+        {{-0.4f, 0.4f}, {0.0f, 1.0f, 0.0f}}
         };
 
 
@@ -222,6 +222,9 @@ class VisualRenderer {
 
         // Find Memory Types
         uint32_t FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFlags Properties);
+
+        // Create Transfer Buffer
+        void CreateBuffer(VkDeviceSize Size, VkBufferUsageFlags Usage, VkMemoryPropertyFlags Properties, VKBuffer& Buffer, VkDeviceMemory& BufferMemory);
 
 
     public:
