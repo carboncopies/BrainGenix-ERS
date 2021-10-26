@@ -173,6 +173,7 @@ void VisualRenderer::CreateBuffer(VkDeviceSize Size, VkBufferUsageFlags Usage, V
 
 
     // Allocate Memory
+    Logger_.Log("Allocating GPU VRAM To Vertex Buffer", 3);
     VkMemoryAllocateInfo AllocateInfo{};
     AllocateInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
     AllocateInfo.allocationSize = MemoryRequirements.size;
@@ -214,38 +215,9 @@ uint32_t VisualRenderer::FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFla
 // Define VisualRenderer::CreateVertexBuffer
 void VisualRenderer::CreateVertexBuffer() {
 
-    // Setup Buffer Struct
-    Logger_.Log("Setting Up Vertex Buffer", 4);
-    VkBufferCreateInfo BufferInfo{};
-    BufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
-    BufferInfo.size = sizeof(Vertices_[0]) * Vertices_.size();
-    BufferInfo.usage = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT;
-    BufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
-
-    // Create Vertex Buffer
-    if (vkCreateBuffer(LogicalDevice_, &BufferInfo, nullptr, &VertexBuffer_) != VK_SUCCESS) {
-        Logger_.Log("Failed To Create Vertex Buffer", 10);
-        *SystemShutdownInvoked_ = true;
-    }
-
-
-    // Allocate Memory
-    Logger_.Log("Allocating GPU VRAM To Vertex Buffer", 3);
-
-    vkGetBufferMemoryRequirements(LogicalDevice_, VertexBuffer_, &MemoryRequirements_);
-
-    VkMemoryAllocateInfo AllocateInfo{};
-    AllocateInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
-    AllocateInfo.allocationSize = MemoryRequirements_.size;
-    AllocateInfo.memoryTypeIndex = FindMemoryType(MemoryRequirements_.memoryTypeBits, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
-    
-    if (vkAllocateMemory(LogicalDevice_, &AllocateInfo, nullptr, &VertexBufferMemory_) != VK_SUCCESS) {
-        Logger_.Log("Failed To Allocate Vertex Buffer VRAM", 10);
-        *SystemShutdownInvoked_ = true;
-    }
-
-    // Bind To Memory Buffer
-    vkBindBufferMemory(LogicalDevice_, VertexBuffer_, VertexBufferMemory_, 0);
+    // Create Buffer
+    VkDeviceSize BufferSize = sizeof(Vertices_[0] * Vertices.size());
+    CreateBuffer(BufferSize, VK_BUFFER_USAGE_VERTEX_BUFFER_BUT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, VertexBuffer_, VertexBufferMemory_);
 
     // Fill Vertex Buffer
     void* Data;
