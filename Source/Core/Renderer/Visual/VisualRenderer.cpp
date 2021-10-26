@@ -151,7 +151,7 @@ uint32_t VisualRenderer::FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFla
 
     // Get VRAM Properties
     Logger_.Log("Finding VRAM Properties", 3);
-    VkGetPhysicalDeviceMemoryProperties MemoryProperties;
+    VkPhysicalDeviceMemoryProperties MemoryProperties;
     vkGetPhysicalDeviceMemoryProperties(PhysicalDevice_, &MemoryProperties);
 
     // Iterate Through Memory Types
@@ -164,7 +164,7 @@ uint32_t VisualRenderer::FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFla
     // Failed
     Logger_.Log("Failed To Find Suitable Memory Type", 10);
     *SystemShutdownInvoked_ = true;
-
+    return 0;
 
 }
 
@@ -193,13 +193,19 @@ void VisualRenderer::CreateVertexBuffer() {
     AllocateInfo.allocationSize = MemoryRequirements_.size;
     AllocateInfo.memoryTypeIndex = FindMemoryType(MemoryRequirements_.memoryTypeBits, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
     
-    if (vkAllocateMemory(LogicalDevice_, &AllocateInfo, nullptr, &VertexBufferMemory) != VK_SUCCESS) {
+    if (vkAllocateMemory(LogicalDevice_, &AllocateInfo, nullptr, &VertexBufferMemory_) != VK_SUCCESS) {
         Logger_.Log("Failed To Allocate Vertex Buffer VRAM", 10);
         *SystemShutdownInvoked_ = true;
     }
 
     // Bind To Memory Buffer
-    vkBindBufferMemory(LogicalDevice_, VertexBuffer, VertexBufferMemory_, 0);
+    vkBindBufferMemory(LogicalDevice_, VertexBuffer_, VertexBufferMemory_, 0);
+
+    // Fill Vertex Buffer
+    void* Data;
+    vkMapMemory(LogicalDevice_, VertexBufferMemory_, 0, BufferInfo.size, 0, &Data);
+    memcpy(Data, Vertices_.data(), (size_t) BufferInfo.size);
+    vkUnmapMemory(LogicalDevice_, VertexBufferMemory_);
 
 }
 
@@ -295,7 +301,12 @@ void VisualRenderer::CreateCommandBuffers() {
         // Render Pass Definition
         vkCmdBeginRenderPass(CommandBuffers_[i], &RenderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
         vkCmdBindPipeline(CommandBuffers_[i], VK_PIPELINE_BIND_POINT_GRAPHICS, GraphicsPipeline_);
-        vkCmdDraw(CommandBuffers_[i], 3, 1, 0, 0);
+
+        VkBuffer VertexBuffers[] = {VertexBuffer_};
+        VkDeviceSize Offsets[] = {0};
+        VkCmdBindVertexBuffers(CommandBuffers_[i], 0, 1, VertexBuffers, Offsets);
+
+        vkCmdDraw(CommandBuffers_[i], static_cast<uint32_t<(Vertices_.size()), 1, 0, 0);
         vkCmdEndRenderPass(CommandBuffers_[i]);
 
         if (vkEndCommandBuffer(CommandBuffers_[i]) != VK_SUCCESS) {
