@@ -218,13 +218,16 @@ class VisualRenderer {
         void CleanupSwapChain();
 
         // Create Vertex Buffer
-        void CreateVertexBuffer();
+        void CreateBuffer();
 
         // Find Memory Types
         uint32_t FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFlags Properties);
 
         // Create Transfer Buffer
         void CreateBuffer(VkDeviceSize Size, VkBufferUsageFlags Usage, VkMemoryPropertyFlags Properties, VkBuffer& Buffer, VkDeviceMemory& BufferMemory);
+
+        // Transfer Contents Between Buffers
+        void CopyBuffer(VkBuffer SourceBuffer, VkBuffer DestinationBuffer, VkDeviceSize Size);
 
 
     public:

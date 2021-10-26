@@ -133,7 +133,7 @@ void VisualRenderer::InitVulkan() {
 
     // Create Vertex Buffer
     Logger_.Log("Initialization [ START] Creating Vertex Buffer", 3);
-    CreateVertexBuffer();
+    CreateBuffer();
     Logger_.Log("Initialization [FINISH] Created Vertex Buffer", 2);
 
 
@@ -155,7 +155,6 @@ void VisualRenderer::InitVulkan() {
 void VisualRenderer::CreateBuffer(VkDeviceSize Size, VkBufferUsageFlags Usage, VkMemoryPropertyFlags Properties, VkBuffer& Buffer, VkDeviceMemory& BufferMemory) {
 
     // Setup Buffer
-    Logger_.Log("Setting Up Transfer Buffer", 4);
     VkBufferCreateInfo BufferInfo{};
     BufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
     BufferInfo.size = Size;
@@ -163,7 +162,7 @@ void VisualRenderer::CreateBuffer(VkDeviceSize Size, VkBufferUsageFlags Usage, V
     BufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
 
     if (vkCreateBuffer(LogicalDevice_, &BufferInfo, nullptr, &VertexBuffer_) != VK_SUCCESS) {
-        Logger_.Log("Failed To Create Transfer Buffer", 10);
+        Logger_.Log("Failed To Create Buffer", 10);
         *SystemShutdownInvoked_ = true;
     }
 
@@ -173,7 +172,7 @@ void VisualRenderer::CreateBuffer(VkDeviceSize Size, VkBufferUsageFlags Usage, V
 
 
     // Allocate Memory
-    Logger_.Log("Allocating GPU VRAM To Vertex Buffer", 3);
+    Logger_.Log("Allocating GPU VRAM To Buffer", 3);
     VkMemoryAllocateInfo AllocateInfo{};
     AllocateInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
     AllocateInfo.allocationSize = MemoryRequirements.size;
@@ -212,11 +211,28 @@ uint32_t VisualRenderer::FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFla
 
 }
 
+// Define VisualRenderer::CopyBuffer
+void VisualRenderer::CopyBuffer(VkBuffer SourceBuffer, VkBuffer DestinationBuffer, VkDeviceSize Size) {
+
+    // Copy Contents
+    Logger_.Log(std::string(std::string("Copying ") + std::to_string(Size) + std::string(" Bytes Between Buffers")).c_str(), 4);
+    VkCommandBufferAllocateInfo AllocateInfo{};
+    AllocateInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
+    AllocateInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
+    AllocateInfo.commandPool = CommandPool_;
+    AllocateInfo.commandBufferCount = 1;
+
+    VkCommandBuffer CommandBuffer;
+    VkAllocateCommandBuffers(LogicalDevice_, &AllocateInfo, &CommandBuffer);
+
+}
+
 // Define VisualRenderer::CreateVertexBuffer
-void VisualRenderer::CreateVertexBuffer() {
+void VisualRenderer::CreateBuffer() {
 
     // Create Buffer
-    VkDeviceSize BufferSize = sizeof(Vertices_[0] * Vertices_.size());
+    Logger_.Log("Setting Up Vertex Buffer", 3);
+    VkDeviceSize BufferSize = sizeof(Vertices_[0]) * Vertices_.size();
     CreateBuffer(BufferSize, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, VertexBuffer_, VertexBufferMemory_);
 
     // Fill Vertex Buffer
@@ -224,6 +240,12 @@ void VisualRenderer::CreateVertexBuffer() {
     vkMapMemory(LogicalDevice_, VertexBufferMemory_, 0, BufferSize, 0, &Data);
     memcpy(Data, Vertices_.data(), (size_t) BufferSize);
     vkUnmapMemory(LogicalDevice_, VertexBufferMemory_);
+
+    // Setup Staging Buffer
+    Logger_.Log("Setting Up Staging Buffer", 3);
+    CreateBuffer(BufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, VertexBuffer_, VertexBufferMemory_);
+
+
 
 }
 
