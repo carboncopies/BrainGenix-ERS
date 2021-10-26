@@ -198,6 +198,9 @@ void VisualRenderer::CreateVertexBuffer() {
         *SystemShutdownInvoked_ = true;
     }
 
+    // Bind To Memory Buffer
+    vkBindBufferMemory(LogicalDevice_, VertexBuffer, VertexBufferMemory_, 0);
+
 }
 
 // Define VisualRenderer::CreateSemaphores
@@ -1480,8 +1483,9 @@ void VisualRenderer::CleanUp() {
     vkDeviceWaitIdle(LogicalDevice_);
     CleanupSwapChain();
 
-    // Deallocate Vertex Buffer
+    // Free VRAM
     vkDestroyBuffer(LogicalDevice_, VertexBuffer_, nullptr);
+    vkFreeMemory(LogicalDevice_, VertexBufferMemory_, nullptr);
 
     // Cleanup Semaphores
     for (size_t i=0; i < MaxFramesInFlight_; i++ ) {

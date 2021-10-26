@@ -134,6 +134,7 @@ class VisualRenderer {
 
         VkBuffer VertexBuffer_;
         VkMemoryRequirements MemoryRequirements_;
+        VkDeviceMemory VertexBufferMemory_;
 
         // hardcoded vertices
         const std::vector<Vertex> Vertices_ = {
