@@ -136,6 +136,12 @@ void VisualRenderer::InitVulkan() {
     CreateVertexBuffer();
     Logger_.Log("Initialization [FINISH] Created Vertex Buffer", 2);
 
+    // Create Vertex Buffer
+    Logger_.Log("Initialization [ START] Creating Index Buffer", 3);
+    CreateIndexBuffer();
+    Logger_.Log("Initialization [FINISH] Created Index Buffer", 2);
+
+
 
     // Create Command Buffers
     Logger_.Log("Initialization [ START] Creating Command Buffers", 3);
@@ -147,6 +153,42 @@ void VisualRenderer::InitVulkan() {
     Logger_.Log("Initialization [ START] Creating Semaphores", 3);
     CreateSyncObjects();
     Logger_.Log("Initialization [FINISH] Created Semaphores", 2);
+
+
+}
+
+// Define VisualRenderer::CreateIndexBuffer
+void VisualRenderer::CreateIndexBuffer() {
+
+    // Setup Structs
+    VkDeviceSize BufferSize = sizeof(Indices_[0]) * Indices_.size();
+
+    VkBuffer StagingBuffer;
+    VkDeviceMemory StagingBufferMemory;
+
+    // Setup Staging Buffer
+    Logger_.Log("Setting Up Staging Buffer", 3);
+    CreateBuffer(BufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, StagingBuffer, StagingBufferMemory);
+    
+    // Fill Staging Buffer
+    void* Data;
+    vkMapMemory(LogicalDevice_, StagingBufferMemory, 0, BufferSize, 0, &Data);
+    memcpy(Data, Vertices_.data(), (size_t) BufferSize);
+    vkUnmapMemory(LogicalDevice_, StagingBufferMemory);
+
+    // Setup Vertex Buffer
+    Logger_.Log("Setting Up Index Buffer", 3);
+    CreateBuffer(BufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, IndexBuffer_, IndexBufferMemory_);
+
+
+    // Copy Contents
+    Logger_.Log("Copying Data Into Vertex Buffer", 3);
+    CopyBuffer(StagingBuffer, IndexBuffer_, BufferSize);
+
+    // Cleanup Staging Buffer
+    Logger_.Log("Cleaning Staging Buffer", 3);
+    vkDestroyBuffer(LogicalDevice_, StagingBuffer, nullptr);
+    vkFreeMemory(LogicalDevice_, StagingBufferMemory, nullptr);
 
 
 }

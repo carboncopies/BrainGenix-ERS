@@ -131,16 +131,23 @@ class VisualRenderer {
 
         bool* FramebufferResized_ = &sERSLocalWindowDisplaySystem_.FramebufferResized_;
 
+        VkMemoryRequirements MemoryRequirements_;
 
         VkBuffer VertexBuffer_;
-        VkMemoryRequirements MemoryRequirements_;
         VkDeviceMemory VertexBufferMemory_;
+        VkBuffer IndexBuffer_;
+        VkDeviceMemory IndexBufferMemory_;
 
         // hardcoded vertices
         const std::vector<Vertex> Vertices_ = {
-        {{0.0f, -0.4f}, {1.0f, 0.0f, 0.0f}},
-        {{.4f, .4f}, {0.0f, 0.0f, 1.0f}},
-        {{-0.4f, 0.4f}, {0.0f, 1.0f, 0.0f}}
+            {{-0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}},
+            {{0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}},
+            {{0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}},
+            {{-0.5f, 0.5f}, {1.0f, 1.0f, 1.0f}}
+        };
+
+        const std::vector<uint16_t> Indices_ = {
+            0, 1, 2, 2, 3, 0
         };
 
 
@@ -219,6 +226,9 @@ class VisualRenderer {
 
         // Create Vertex Buffer
         void CreateVertexBuffer();
+
+        // Create Index Buffer
+        void CreateIndexBuffer();
 
         // Find Memory Types
         uint32_t FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFlags Properties);
