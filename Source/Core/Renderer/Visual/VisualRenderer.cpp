@@ -216,12 +216,12 @@ uint32_t VisualRenderer::FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFla
 void VisualRenderer::CreateVertexBuffer() {
 
     // Create Buffer
-    VkDeviceSize BufferSize = sizeof(Vertices_[0] * Vertices.size());
-    CreateBuffer(BufferSize, VK_BUFFER_USAGE_VERTEX_BUFFER_BUT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, VertexBuffer_, VertexBufferMemory_);
+    VkDeviceSize BufferSize = sizeof(Vertices_[0] * Vertices_.size());
+    CreateBuffer(BufferSize, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, VertexBuffer_, VertexBufferMemory_);
 
     // Fill Vertex Buffer
     void* Data;
-    vkMapMemory(LogicalDevice_, VertexBufferMemory_, 0, BufferInfo.size, 0, &Data);
+    vkMapMemory(LogicalDevice_, VertexBufferMemory_, 0, Buffersize, 0, &Data);
     memcpy(Data, Vertices_.data(), (size_t) BufferInfo.size);
     vkUnmapMemory(LogicalDevice_, VertexBufferMemory_);
 
