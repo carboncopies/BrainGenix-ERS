@@ -161,14 +161,14 @@ void VisualRenderer::CreateBuffer(VkDeviceSize Size, VkBufferUsageFlags Usage, V
     BufferInfo.usage = Usage;
     BufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
 
-    if (vkCreateBuffer(LogicalDevice_, &BufferInfo, nullptr, &VertexBuffer_) != VK_SUCCESS) {
+    if (vkCreateBuffer(LogicalDevice_, &BufferInfo, nullptr, &Buffer) != VK_SUCCESS) {
         Logger_.Log("Failed To Create Buffer", 10);
         *SystemShutdownInvoked_ = true;
     }
 
     // Get Memory Requirements
     VkMemoryRequirements MemoryRequirements;
-    vkGetBufferMemoryRequirements(LogicalDevice_, VertexBuffer_, &MemoryRequirements);
+    vkGetBufferMemoryRequirements(LogicalDevice_, Buffer, &MemoryRequirements);
 
 
     // Allocate Memory
@@ -257,13 +257,14 @@ void VisualRenderer::CreateVertexBuffer() {
 
     // Setup Structs
     VkDeviceSize BufferSize = sizeof(Vertices_[0]) * Vertices_.size();
+
     VkBuffer StagingBuffer;
     VkDeviceMemory StagingBufferMemory;
 
     // Setup Staging Buffer
     Logger_.Log("Setting Up Staging Buffer", 3);
-    CreateBuffer(BufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, StagingBuffer, StagingBufferMemory);
-
+    CreateBuffer(BufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, StagingBuffer, StagingBufferMemory);
+    
     // Fill Staging Buffer
     void* Data;
     vkMapMemory(LogicalDevice_, StagingBufferMemory, 0, BufferSize, 0, &Data);
@@ -272,7 +273,7 @@ void VisualRenderer::CreateVertexBuffer() {
 
     // Setup Vertex Buffer
     Logger_.Log("Setting Up Vertex Buffer", 3);
-    CreateBuffer(BufferSize, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, VertexBuffer_, VertexBufferMemory_);
+    CreateBuffer(BufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, VertexBuffer_, VertexBufferMemory_);
 
 
     // Copy Contents
