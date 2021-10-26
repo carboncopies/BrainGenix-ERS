@@ -218,7 +218,7 @@ class VisualRenderer {
         void CleanupSwapChain();
 
         // Create Vertex Buffer
-        void CreateBuffer();
+        void CreateVertexBuffer();
 
         // Find Memory Types
         uint32_t FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFlags Properties);

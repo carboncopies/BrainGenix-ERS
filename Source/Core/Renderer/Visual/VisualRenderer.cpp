@@ -133,7 +133,7 @@ void VisualRenderer::InitVulkan() {
 
     // Create Vertex Buffer
     Logger_.Log("Initialization [ START] Creating Vertex Buffer", 3);
-    CreateBuffer();
+    CreateVertexBuffer();
     Logger_.Log("Initialization [FINISH] Created Vertex Buffer", 2);
 
 
@@ -253,7 +253,7 @@ void VisualRenderer::CopyBuffer(VkBuffer SourceBuffer, VkBuffer DestinationBuffe
 }
 
 // Define VisualRenderer::CreateVertexBuffer
-void VisualRenderer::CreateBuffer() {
+void VisualRenderer::CreateVertexBuffer() {
 
     // Setup Structs
     VkDeviceSize BufferSize = sizeof(Vertices_[0]) * Vertices_.size();
