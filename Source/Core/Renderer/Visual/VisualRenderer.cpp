@@ -193,6 +193,9 @@ void VisualRenderer::CreateVertexBuffer() {
 
     // Allocate Memory
     Logger_.Log("Allocating GPU VRAM To Vertex Buffer", 3);
+
+    vkGetBufferMemoryRequirements(LogicalDevice_, VertexBuffer_, &MemoryRequirements_);
+
     VkMemoryAllocateInfo AllocateInfo{};
     AllocateInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
     AllocateInfo.allocationSize = MemoryRequirements_.size;
