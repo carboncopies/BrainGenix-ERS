@@ -155,8 +155,21 @@ void VisualRenderer::InitVulkan() {
 void VisualRenderer::CreateBuffer(VkDeviceSize Size, VkBufferUsageFlags Usage, VkMemoryPropertyFlags Properties, VKBuffer& Buffer, VkDeviceMemory& BufferMemory) {
 
     // Setup Buffer
+    Logger_.Log("Setting Up Transfer Buffer", 4);
     VkBufferCreateInfo BufferInfo{};
+    BufferInfo.sTyle = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
+    BufferInfo.size = size;
+    BufferInfo.usage = usage;
+    BufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
+
+    if (vkCreateBuffer(LogicalDevice_, &BufferInfo, nullptr, &MemoryRequirements_) != VK_SUCCESS) {
+        Logger_.Log("Failed To Create Transfer Buffer", 10);
+        *SystemShutdownInvoked_ = true;
+    }
+
     
+
+
 
 
 
