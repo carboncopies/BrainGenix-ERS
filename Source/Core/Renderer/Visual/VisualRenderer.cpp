@@ -152,25 +152,39 @@ void VisualRenderer::InitVulkan() {
 }
 
 // Define VisualRenderer::CreateBuffer
-void VisualRenderer::CreateBuffer(VkDeviceSize Size, VkBufferUsageFlags Usage, VkMemoryPropertyFlags Properties, VKBuffer& Buffer, VkDeviceMemory& BufferMemory) {
+void VisualRenderer::CreateBuffer(VkDeviceSize Size, VkBufferUsageFlags Usage, VkMemoryPropertyFlags Properties, VkBuffer& Buffer, VkDeviceMemory& BufferMemory) {
 
     // Setup Buffer
     Logger_.Log("Setting Up Transfer Buffer", 4);
     VkBufferCreateInfo BufferInfo{};
-    BufferInfo.sTyle = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
-    BufferInfo.size = size;
-    BufferInfo.usage = usage;
+    BufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
+    BufferInfo.size = Size;
+    BufferInfo.usage = Usage;
     BufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
 
-    if (vkCreateBuffer(LogicalDevice_, &BufferInfo, nullptr, &MemoryRequirements_) != VK_SUCCESS) {
+    if (vkCreateBuffer(LogicalDevice_, &BufferInfo, nullptr, &VertexBuffer_) != VK_SUCCESS) {
         Logger_.Log("Failed To Create Transfer Buffer", 10);
         *SystemShutdownInvoked_ = true;
     }
 
-    
+    // Get Memory Requirements
+    VkMemoryRequirements MemoryRequirements;
+    vkGetBufferMemoryRequirements(LogicalDevice_, VertexBuffer_, &MemoryRequirements);
 
 
+    // Allocate Memory
+    VkMemoryAllocateInfo AllocateInfo{};
+    AllocateInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
+    AllocateInfo.allocationSize = MemoryRequirements.size;
+    AllocateInfo.memoryTypeIndex = FindMemoryType(MemoryRequirements.memoryTypeBits, Properties);
 
+    if (vkAllocateMemory(LogicalDevice_, &AllocateInfo, nullptr, &BufferMemory) != VK_SUCCESS) {
+        Logger_.Log("Failed To Allocate Buffer Memory", 10);
+        *SystemShutdownInvoked_ = true;
+    }
+
+    // Bind To Memory
+    vkBindBufferMemory(LogicalDevice_, Buffer, BufferMemory, 0);
 
 
 }

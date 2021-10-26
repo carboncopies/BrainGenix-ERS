@@ -224,7 +224,7 @@ class VisualRenderer {
         uint32_t FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFlags Properties);
 
         // Create Transfer Buffer
-        void CreateBuffer(VkDeviceSize Size, VkBufferUsageFlags Usage, VkMemoryPropertyFlags Properties, VKBuffer& Buffer, VkDeviceMemory& BufferMemory);
+        void CreateBuffer(VkDeviceSize Size, VkBufferUsageFlags Usage, VkMemoryPropertyFlags Properties, VkBuffer& Buffer, VkDeviceMemory& BufferMemory);
 
 
     public:
