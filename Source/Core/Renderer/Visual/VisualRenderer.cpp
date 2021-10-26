@@ -178,7 +178,7 @@ void VisualRenderer::CreateIndexBuffer() {
 
     // Setup Vertex Buffer
     Logger_.Log("Setting Up Index Buffer", 3);
-    CreateBuffer(BufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, IndexBuffer_, IndexBufferMemory_);
+    CreateBuffer(BufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_INDEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, IndexBuffer_, IndexBufferMemory_);
 
 
     // Copy Contents
@@ -428,8 +428,11 @@ void VisualRenderer::CreateCommandBuffers() {
         VkBuffer VertexBuffers[] = {VertexBuffer_};
         VkDeviceSize Offsets[] = {0};
         vkCmdBindVertexBuffers(CommandBuffers_[i], 0, 1, VertexBuffers, Offsets);
+        vkCmdBindIndexBuffer(CommandBuffers_[i], IndexBuffer_, 0, VK_INDEX_TYPE_UINT16);
 
-        vkCmdDraw(CommandBuffers_[i], static_cast<uint32_t>(Vertices_.size()), 1, 0, 0);
+        vkCmdDrawIndexed(CommandBuffers_[i], static_cast<uint32_t>(Indices_.size()), 1, 0, 0, 0);
+
+        // vkCmdDraw(CommandBuffers_[i], static_cast<uint32_t>(Vertices_.size()), 1, 0, 0);
         vkCmdEndRenderPass(CommandBuffers_[i]);
 
         if (vkEndCommandBuffer(CommandBuffers_[i]) != VK_SUCCESS) {
@@ -1620,6 +1623,9 @@ void VisualRenderer::CleanUp() {
     // Free VRAM
     vkDestroyBuffer(LogicalDevice_, VertexBuffer_, nullptr);
     vkFreeMemory(LogicalDevice_, VertexBufferMemory_, nullptr);
+    vkDestroyBuffer(LogicalDevice_, IndexBuffer_, nullptr);
+    vkFreeMemory(LogicalDevice_, IndexBufferMemory_, nullptr);
+    
 
     // Cleanup Semaphores
     for (size_t i=0; i < MaxFramesInFlight_; i++ ) {
