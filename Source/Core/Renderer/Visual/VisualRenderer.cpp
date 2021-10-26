@@ -230,13 +230,13 @@ void VisualRenderer::CopyBuffer(VkBuffer SourceBuffer, VkBuffer DestinationBuffe
     BeginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
     BeginInfo.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
 
-    VkBuffercopy CopyRegion{};
+    VkBufferCopy CopyRegion{};
     CopyRegion.srcOffset = 0;
     CopyRegion.dstOffset = 0;
-    CopyRegions.size = Size;
+    CopyRegion.size = Size;
     vkCmdCopyBuffer(CommandBuffer, SourceBuffer, DestinationBuffer, 1, &CopyRegion);
 
-    vkEndCommandBuffer(Commandbuffer);
+    vkEndCommandBuffer(CommandBuffer);
 
     // Submit To Queue
     VkSubmitInfo SubmitInfo{};
@@ -245,7 +245,7 @@ void VisualRenderer::CopyBuffer(VkBuffer SourceBuffer, VkBuffer DestinationBuffe
     SubmitInfo.pCommandBuffers = &CommandBuffer;
 
     vkQueueSubmit(GraphicsQueue_, 1, &SubmitInfo, VK_NULL_HANDLE);
-    vkQueueWaitIdle(GraphicsQueue);
+    vkQueueWaitIdle(GraphicsQueue_);
 
 }
 
