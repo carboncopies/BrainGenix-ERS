@@ -309,9 +309,9 @@ void VisualRenderer::CreateCommandBuffers() {
 
         VkBuffer VertexBuffers[] = {VertexBuffer_};
         VkDeviceSize Offsets[] = {0};
-        VkCmdBindVertexBuffers(CommandBuffers_[i], 0, 1, VertexBuffers, Offsets);
+        vkCmdBindVertexBuffers(CommandBuffers_[i], 0, 1, VertexBuffers, Offsets);
 
-        vkCmdDraw(CommandBuffers_[i], static_cast<uint32_t<(Vertices_.size()), 1, 0, 0);
+        vkCmdDraw(CommandBuffers_[i], static_cast<uint32_t>(Vertices_.size()), 1, 0, 0);
         vkCmdEndRenderPass(CommandBuffers_[i]);
 
         if (vkEndCommandBuffer(CommandBuffers_[i]) != VK_SUCCESS) {
