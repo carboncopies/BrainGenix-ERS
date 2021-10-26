@@ -131,6 +131,11 @@ void VisualRenderer::InitVulkan() {
     CreateCommandPool();
     Logger_.Log("Initialization [FINISH] Created Command Pool", 2);
 
+    // Create Vertex Buffer
+    Logger_.Log("Initialization [ START] Creating Vertex Buffer", 3);
+    CreateVertexBuffer();
+    Logger_.Log("Initialization [FINISH] Created Vertex Buffer", 2);
+
 
     // Create Command Buffers
     Logger_.Log("Initialization [ START] Creating Command Buffers", 3);
