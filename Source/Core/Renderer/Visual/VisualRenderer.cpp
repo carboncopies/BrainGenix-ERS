@@ -230,6 +230,8 @@ void VisualRenderer::CopyBuffer(VkBuffer SourceBuffer, VkBuffer DestinationBuffe
     BeginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
     BeginInfo.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
 
+    vkBeginCommandBuffer(CommandBuffer, &BeginInfo);
+
     VkBufferCopy CopyRegion{};
     CopyRegion.srcOffset = 0;
     CopyRegion.dstOffset = 0;
