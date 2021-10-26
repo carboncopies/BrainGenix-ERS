@@ -214,7 +214,7 @@ uint32_t VisualRenderer::FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFla
 // Define VisualRenderer::CopyBuffer
 void VisualRenderer::CopyBuffer(VkBuffer SourceBuffer, VkBuffer DestinationBuffer, VkDeviceSize Size) {
 
-    // Copy Contents
+    // Create Copy Buffer
     Logger_.Log(std::string(std::string("Copying ") + std::to_string(Size) + std::string(" Bytes Between Buffers")).c_str(), 4);
     VkCommandBufferAllocateInfo AllocateInfo{};
     AllocateInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
@@ -223,7 +223,29 @@ void VisualRenderer::CopyBuffer(VkBuffer SourceBuffer, VkBuffer DestinationBuffe
     AllocateInfo.commandBufferCount = 1;
 
     VkCommandBuffer CommandBuffer;
-    VkAllocateCommandBuffers(LogicalDevice_, &AllocateInfo, &CommandBuffer);
+    vkAllocateCommandBuffers(LogicalDevice_, &AllocateInfo, &CommandBuffer);
+
+    // Copy Contents
+    VkCommandBufferBeginInfo BeginInfo{};
+    BeginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
+    BeginInfo.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
+
+    VkBuffercopy CopyRegion{};
+    CopyRegion.srcOffset = 0;
+    CopyRegion.dstOffset = 0;
+    CopyRegions.size = Size;
+    vkCmdCopyBuffer(CommandBuffer, SourceBuffer, DestinationBuffer, 1, &CopyRegion);
+
+    vkEndCommandBuffer(Commandbuffer);
+
+    // Submit To Queue
+    VkSubmitInfo SubmitInfo{};
+    SubmitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
+    SubmitInfo.commandBufferCount = 1;
+    SubmitInfo.pCommandBuffers = &CommandBuffer;
+
+    vkQueueSubmit(GraphicsQueue_, 1, &SubmitInfo, VK_NULL_HANDLE);
+    vkQueueWaitIdle(GraphicsQueue);
 
 }
 
