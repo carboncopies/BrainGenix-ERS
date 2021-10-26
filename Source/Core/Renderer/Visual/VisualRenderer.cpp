@@ -257,8 +257,8 @@ void VisualRenderer::CreateBuffer() {
 
     // Create Buffer
 
-    vkBuffer StagingBuffer;
-    vkDeviceMemory StagingBufferMemory;
+    VkBuffer StagingBuffer;
+    VkDeviceMemory StagingBufferMemory;
 
     Logger_.Log("Setting Up Vertex Buffer", 3);
     VkDeviceSize BufferSize = sizeof(Vertices_[0]) * Vertices_.size();
@@ -276,7 +276,7 @@ void VisualRenderer::CreateBuffer() {
 
     // Copy Contents
     Logger_.Log("Copying Data Into Vertex Buffer", 3);
-    CopyBuffer(StagingBuffer, VertexBuffer, BufferSize);
+    CopyBuffer(StagingBuffer, VertexBuffer_, BufferSize);
 
     // Cleanup Staging Buffer
     Logger_.Log("Cleaning Staging Buffer", 3);
