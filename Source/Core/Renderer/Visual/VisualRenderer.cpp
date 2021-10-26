@@ -221,8 +221,8 @@ void VisualRenderer::CreateVertexBuffer() {
 
     // Fill Vertex Buffer
     void* Data;
-    vkMapMemory(LogicalDevice_, VertexBufferMemory_, 0, Buffersize, 0, &Data);
-    memcpy(Data, Vertices_.data(), (size_t) BufferInfo.size);
+    vkMapMemory(LogicalDevice_, VertexBufferMemory_, 0, BufferSize, 0, &Data);
+    memcpy(Data, Vertices_.data(), (size_t) BufferSize);
     vkUnmapMemory(LogicalDevice_, VertexBufferMemory_);
 
 }
