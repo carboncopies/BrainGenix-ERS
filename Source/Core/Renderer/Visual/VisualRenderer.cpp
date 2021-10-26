@@ -264,15 +264,15 @@ void VisualRenderer::CreateBuffer() {
     VkDeviceSize BufferSize = sizeof(Vertices_[0]) * Vertices_.size();
     CreateBuffer(BufferSize, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, VertexBuffer_, VertexBufferMemory_);
 
-    // Fill Vertex Buffer
-    void* Data;
-    vkMapMemory(LogicalDevice_, VertexBufferMemory_, 0, BufferSize, 0, &Data);
-    memcpy(Data, Vertices_.data(), (size_t) BufferSize);
-    vkUnmapMemory(LogicalDevice_, VertexBufferMemory_);
-
     // Setup Staging Buffer
     Logger_.Log("Setting Up Staging Buffer", 3);
     CreateBuffer(BufferSize, VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, StagingBuffer, StagingBufferMemory);
+
+    // Fill Staging Buffer
+    void* Data;
+    vkMapMemory(LogicalDevice_, StagingBufferMemory, 0, BufferSize, 0, &Data);
+    memcpy(Data, Vertices_.data(), (size_t) BufferSize);
+    vkUnmapMemory(LogicalDevice_, StagingBufferMemory);
 
     // Copy Contents
     Logger_.Log("Copying Data Into Vertex Buffer", 3);
@@ -282,6 +282,7 @@ void VisualRenderer::CreateBuffer() {
     Logger_.Log("Cleaning Staging Buffer", 3);
     vkDestroyBuffer(LogicalDevice_, StagingBuffer, nullptr);
     vkFreeMemory(LogicalDevice_, StagingBufferMemory, nullptr);
+
 
 }
 
