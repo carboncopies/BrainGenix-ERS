@@ -177,10 +177,10 @@ void VisualRenderer::CreateUniformBuffers() {
     VkDeviceSize BufferSize = sizeof(UniformBufferObject);
 
     UniformBuffers_.resize(SwapChainImages_.size());
-    UniformBufferMemory_.resize(SwapChainImages_.size());
+    UniformBuffersMemory_.resize(SwapChainImages_.size());
 
     for (size_t i = 0; i < SwapChainImages_.size(); i++) {
-        CreateBuffer(BufferSize, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, UniformBuffers_[i], UniformBuffersMemory_[i])
+        CreateBuffer(BufferSize, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, UniformBuffers_[i], UniformBuffersMemory_[i]);
     }
 
 }
@@ -197,7 +197,7 @@ void VisualRenderer::UpdateUniformBuffer(uint32_t ImageIndex) {
     // Rotate
     UniformBufferObject UBO{};
     UBO.Model = glm::rotate(glm::mat4(1.0f), Time*glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-    UBO.View = glm::lookAt(glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f, 1.0f));
+    UBO.View = glm::lookAt(glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
     UBO.Proj = glm::perspective(glm::radians(45.0f), SwapChainExtent_.width / (float) SwapChainExtent_.height, 0.1f, 10.0f);
     UBO.Proj[1][1] *= -1;
 

@@ -148,7 +148,7 @@ class VisualRenderer {
         VkDescriptorSetLayout DescriptorSetLayout_;
 
         std::vector<VkBuffer> UniformBuffers_;
-        std::vector<VkDeviceMemory> UniformBufferMemory_;
+        std::vector<VkDeviceMemory> UniformBuffersMemory_;
 
         // hardcoded vertices
         const std::vector<Vertex> Vertices_ = {
