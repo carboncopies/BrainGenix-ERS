@@ -1577,7 +1577,7 @@ void VisualRenderer::CleanupSwapChain() {
     // Destroy Uniform Buffers
     for (size_t i = 0; i < SwapChainImages_.size(); i++) {
         vkDestroyBuffer(LogicalDevice_, UniformBuffers_[i], nullptr);
-        vkFreeMemory(LogicalDevice_, UniformBuffersMemory_[i], nullptr);)
+        vkFreeMemory(LogicalDevice_, UniformBuffersMemory_[i], nullptr);
     }
 
 }
@@ -1714,7 +1714,7 @@ void VisualRenderer::CleanUp() {
     CleanupSwapChain();
 
     // Destroy Descriptors
-    vkDestroyDescriptorSetLayout(LogicalDevice_, DescriptorSetLayout, nullptr);
+    vkDestroyDescriptorSetLayout(LogicalDevice_, DescriptorSetLayout_, nullptr);
 
     // Free VRAM
     vkDestroyBuffer(LogicalDevice_, VertexBuffer_, nullptr);
