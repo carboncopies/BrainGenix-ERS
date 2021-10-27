@@ -109,6 +109,10 @@ void VisualRenderer::InitVulkan() {
     CreateRenderPass();
     Logger_.Log("Initialization [FINISH] Created Render Passes", 2);
 
+    // Create Descriptor Set Layout
+    Logger_.Log("Initialization [ START] Creating Descriptor Set Layout", 3);
+    CreateDescriptorSetLayout();
+    Logger_.Log("Initialization [FINISH] Created Descriptor Set Layout", 2);
 
     // Create Graphics Pipeline
     Logger_.Log("Initialization [ START] Creating Graphics Pipeline", 3);
@@ -154,6 +158,33 @@ void VisualRenderer::InitVulkan() {
     CreateSyncObjects();
     Logger_.Log("Initialization [FINISH] Created Semaphores", 2);
 
+
+}
+
+// Define VisualRenderer::CreateDescriptorSetLayout
+void VisualRenderer::CreateDescriptorSetLayout() {
+
+    // Create UBO Struct
+    VkDescriptorSetLayoutBinding UBOLayoutBinding{};
+    UBOLayoutBinding.binding = 0;
+    UBOLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+    UBOLayoutBinding.descriptorCount = 1;
+
+    UBOLayoutBinding.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
+    UBOLayoutBinding.pImmutableSamplers = nullptr;
+
+    // Create Layout Info
+    VkDescriptorSetLayoutCreateInfo LayoutInfo{};
+    LayoutInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
+    LayoutInfo.bindingCount = 1;
+    LayoutInfo.pBindings = &UBOLayoutBinding;
+
+    if (vkCreateDescriptorSetLayout(LogicalDevice_, &LayoutInfo, nullptr, &DescriptorSetLayout) != VK_SUCCESS) {
+        Logger_.Log("Failed To Create Descriptor Set Layout", 10);
+        *SystemShutdownInvoked_ = true;
+    }
+
+    // Create Pipeline
 
 }
 

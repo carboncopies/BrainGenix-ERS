@@ -145,6 +145,8 @@ class VisualRenderer {
         VkBuffer IndexBuffer_;
         VkDeviceMemory IndexBufferMemory_;
 
+        VkDescriptorSetLayout DescriptorSetLayout_;
+
         // hardcoded vertices
         const std::vector<Vertex> Vertices_ = {
             {{-0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}},
@@ -236,6 +238,9 @@ class VisualRenderer {
 
         // Create Index Buffer
         void CreateIndexBuffer();
+
+        // Create Descriptor Set Layout
+        void CreateDescriptorSetLayout();
 
         // Find Memory Types
         uint32_t FindMemoryType(uint32_t TypeFilter, VkMemoryPropertyFlags Properties);
