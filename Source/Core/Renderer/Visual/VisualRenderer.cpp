@@ -179,12 +179,16 @@ void VisualRenderer::CreateDescriptorSetLayout() {
     LayoutInfo.bindingCount = 1;
     LayoutInfo.pBindings = &UBOLayoutBinding;
 
-    if (vkCreateDescriptorSetLayout(LogicalDevice_, &LayoutInfo, nullptr, &DescriptorSetLayout) != VK_SUCCESS) {
+    if (vkCreateDescriptorSetLayout(LogicalDevice_, &LayoutInfo, nullptr, &DescriptorSetLayout_) != VK_SUCCESS) {
         Logger_.Log("Failed To Create Descriptor Set Layout", 10);
         *SystemShutdownInvoked_ = true;
     }
 
     // Create Pipeline
+    VkPipelineLayoutCreateInfo PipelineLayoutInfo{};
+    PipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
+    PipelineLayoutInfo.setLayoutCount = 1;
+    PipelineLayoutInfo.pSetLayers = &DescriptorSetLayout_;
 
 }
 
@@ -1650,6 +1654,9 @@ void VisualRenderer::CleanUp() {
     // Cleanup Swapchain
     vkDeviceWaitIdle(LogicalDevice_);
     CleanupSwapChain();
+
+    // Destroy Descriptors
+    vkDestroyDescriptorSetLayout(LogicalDevice_, DescriptorSetLayout, nullptr);
 
     // Free VRAM
     vkDestroyBuffer(LogicalDevice_, VertexBuffer_, nullptr);
