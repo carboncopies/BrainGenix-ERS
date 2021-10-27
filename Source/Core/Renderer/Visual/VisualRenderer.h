@@ -78,6 +78,13 @@ struct Vertex {
 
 };
 
+// Projection Matrix Struct
+struct UniformBufferObject {
+    glm::mat4 Model;
+    glm::mat4 View;
+    glm::mat4 Proj;
+};
+
 
 // Define Visual Renderer Class
 class VisualRenderer {
