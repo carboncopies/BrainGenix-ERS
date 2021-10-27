@@ -258,7 +258,7 @@ class VisualRenderer {
         void CopyBuffer(VkBuffer SourceBuffer, VkBuffer DestinationBuffer, VkDeviceSize Size);
 
         // Update Uniform Buffers
-        void UpdateUniformBuffer(uint32_t ImageIndex);
+        void UpdateUniformBuffer(uint32_t CurrentImage);
 
 
     public:

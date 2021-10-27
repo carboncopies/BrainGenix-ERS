@@ -186,7 +186,7 @@ void VisualRenderer::CreateUniformBuffers() {
 }
 
 // Define VisualRenderer::UpdateUniformBuffer
-void VisualRenderer::UpdateUniformBuffer(uint32_t ImageIndex) {
+void VisualRenderer::UpdateUniformBuffer(uint32_t CurrentImage) {
 
     // Setup Current Time
     static auto StartTime = std::chrono::high_resolution_clock::now();
@@ -236,7 +236,7 @@ void VisualRenderer::CreateDescriptorSetLayout() {
     VkPipelineLayoutCreateInfo PipelineLayoutInfo{};
     PipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
     PipelineLayoutInfo.setLayoutCount = 1;
-    PipelineLayoutInfo.pSetLayers = &DescriptorSetLayout_;
+    PipelineLayoutInfo.pSetLayouts = &DescriptorSetLayout_;
 
 }
 
