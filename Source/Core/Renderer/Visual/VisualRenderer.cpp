@@ -8,15 +8,23 @@
     Date Created: 2021-10-13
 */ 
 
+#define GLM_FORCE_RADIANS
+
 #include <vulkan/vulkan.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
+#include <chrono>
 #include <vector>
 #include <cstring>
 #include <optional>
 #include <set>
 #include <cstdint>
 #include <algorithm>
-#include <glm/glm.hpp>
 #include <array>
+
+
+
 
 #include "Core/Renderer/Visual/LocalWindowDisplaySystem.cpp"
 #include "Core/Loader/Shaders/ShaderLoader.cpp"
@@ -140,24 +148,64 @@ void VisualRenderer::InitVulkan() {
     CreateVertexBuffer();
     Logger_.Log("Initialization [FINISH] Created Vertex Buffer", 2);
 
-    // Create Vertex Buffer
+    // Create Index Buffer
     Logger_.Log("Initialization [ START] Creating Index Buffer", 3);
     CreateIndexBuffer();
     Logger_.Log("Initialization [FINISH] Created Index Buffer", 2);
 
-
+    // Create Uniform Buffer
+    Logger_.Log("Initialization [ START] Creating Uniform Buffers", 3);
+    CreateUniformBuffers();
+    Logger_.Log("Initialization [FINISH] Created Uniform Buffers", 2);
 
     // Create Command Buffers
     Logger_.Log("Initialization [ START] Creating Command Buffers", 3);
     CreateCommandBuffers();
     Logger_.Log("Initialization [FINISH] Created Command Buffers", 2);
 
-
     // Create Semaphores
     Logger_.Log("Initialization [ START] Creating Semaphores", 3);
     CreateSyncObjects();
     Logger_.Log("Initialization [FINISH] Created Semaphores", 2);
 
+
+}
+
+// Define VisualRenderer::CreateUniformBuffers
+void VisualRenderer::CreateUniformBuffers() {
+
+    VkDeviceSize BufferSize = sizeof(UniformBufferObject_);
+
+    UniformBuffers_.resize(SwapChainImages_.size());
+    UniformBuffersMemory_.resize(SwapChainImages_.size())
+
+    for (size_t i = 0; i < SwapChainImages_.size(); i++) {
+        CreateBuffer(BufferSize, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, UniformBuffers_[i], UniformBuffersMemory_[i])
+    }
+
+}
+
+// Define VisualRenderer::UpdateUniformBuffer
+void VisualRenderer::UpdateUniformBuffer(uint32_t ImageIndex) {
+
+    // Setup Current Time
+    static auto StartTime = std::chrono::high_resolution_clock::now();
+    auto CurrentTime = std::chrono::high_resolution_clock::now();
+
+    float Time = std::chrono::duration<float, std::chrono::seconds::period>(CurrentTime - StartTime).count();
+
+    // Rotate
+    UniformBufferObject UBO{};
+    UBO.model = glm::rotate(glm::mat4(1.0f), Time*glm::radians(90.0f), glm::vec3(0,0f, 0,0f, 1,0f));
+    UBO.view = glm::lookAt(glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f, 1.0f));
+    UBO.proj = glm::perspective(glm::radians(45.0f), SwapChainExtent_.width / (float) SwapChainExtent_.height, 0.1f, 10.0f);
+    UBO.proj[1][1] *= -1;
+
+    // Map Memory
+    void* Data;
+    vkMapMemory(LogicalDevice_, UniformBuffersMemory_[CurrentImage], 0, sizeof(UBO), 0, &Data);
+    memcpy(Data, &UBO, sizeof(UBO));
+    vkUnmapMemory(LogicalDevice_, UniformBuffersMemory_[CurrentImage]);
 
 }
 
@@ -1526,6 +1574,12 @@ void VisualRenderer::CleanupSwapChain() {
     // Destroy Swapchain
     vkDestroySwapchainKHR(LogicalDevice_, SwapChain_, nullptr);
 
+    // Destroy Uniform Buffers
+    for (size_t i = 0; i < SwapChainImages_.size(); i++) {
+        vkDestroyBuffer(LogicalDevice_, UniformBuffers_[i], nullptr);
+        vkFreeMemory(LogicalDevice_, UniformBuffersMemory_[i], nullptr);)
+    }
+
 }
 
 // Define VisualRenderer::RecreateSwapChain
@@ -1544,6 +1598,7 @@ void VisualRenderer::RecreateSwapChain() {
     CreateRenderPass();
     CreateGraphicsPipeline();
     CreateFramebuffers();
+    CreateUniformBuffers();
     CreateCommandBuffers();
 
     // Resize Frames To Correct Size
@@ -1595,6 +1650,9 @@ void VisualRenderer::DrawFrame() {
     // Get Semaphores
     VkSemaphore WaitSemaphores[] = {ImageAvailableSemaphores_[CurrentFrame_]};
     VkSemaphore SignalSemaphores[] = {RenderFinishedSemaphores_[CurrentFrame_]};
+
+    // Update Uniform Buffers
+    UpdateUniformBuffer(ImageIndex);
 
     // Submit To Command Buffer
     VkSubmitInfo SubmitInfo{};
