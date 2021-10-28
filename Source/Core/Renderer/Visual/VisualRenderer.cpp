@@ -868,6 +868,13 @@ void VisualRenderer::CreateGraphicsPipeline() {
     // Pipeline Layout
     Logger_.Log("Setting Up Pipeline", 3);
 
+    // VkPipelineLayoutCreateInfo PipelineLayoutInfo{};
+    // PipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
+    // PipelineLayoutInfo.setLayoutCount = 0;
+    // PipelineLayoutInfo.pSetLayouts = nullptr;
+    // PipelineLayoutInfo.pushConstantRangeCount = 0;
+    // PipelineLayoutInfo.pPushConstantRanges = nullptr;
+
     // Create Pipeline
     VkPipelineLayoutCreateInfo PipelineLayoutInfo{};
     PipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
