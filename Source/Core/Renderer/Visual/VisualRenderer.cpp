@@ -188,7 +188,7 @@ void VisualRenderer::CreateDescriptorSets() {
     std::vector<VkDescriptorSetLayout> Layouts(SwapChainImages_.size(), DescriptorSetLayout_);
 
     VkDescriptorSetAllocateInfo AllocInfo{};
-    AllocInfo.sTyle = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
+    AllocInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
     AllocInfo.descriptorPool = DescriptorPool_;
     AllocInfo.descriptorSetCount = static_cast<uint32_t>(SwapChainImages_.size());
     AllocInfo.pSetLayouts = Layouts.data();
@@ -196,7 +196,7 @@ void VisualRenderer::CreateDescriptorSets() {
     DescriptorSets_.resize(SwapChainImages_.size());
     if (vkAllocateDescriptorSets(LogicalDevice_, &AllocInfo, DescriptorSets_.data()) != VK_SUCCESS) {
         Logger_.Log("Failed To Allocate Descriptor Sets", 10);
-        *SystemShutdownInvoked = true;
+        *SystemShutdownInvoked_ = true;
     }
 
 
@@ -206,27 +206,29 @@ void VisualRenderer::CreateDescriptorSets() {
 
         BufferInfo.buffer = UniformBuffers_[i];
         BufferInfo.offset = 0;
-        BufferInfo.range = sizeof(UniformBufferObject_);
+        BufferInfo.range = sizeof(UniformBufferObject);
+
+        VkWriteDescriptorSet DescriptorWrite{};
+
+        DescriptorWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
+        DescriptorWrite.dstSet = DescriptorSets_[i];
+        DescriptorWrite.dstBinding = 0;
+        DescriptorWrite.dstArrayElement = 0;
+        DescriptorWrite.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+        DescriptorWrite.descriptorCount = 1;
+        DescriptorWrite.pBufferInfo = &BufferInfo;
+        
+
+        vkUpdateDescriptorSets(LogicalDevice_, 1, &DescriptorWrite, 0, nullptr);
 
     }
 
-    VkWriteDescriptorSet DescriptorWrite{};
 
-    DescritorWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_BIT;
-    DescritorWrite.dstSet = DescriptorSets[i];
-    DescritorWrite.dstBinding = 0;
-    DescritorWrite.dstArrayelement = 0;
-    DescritorWrite.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-    DescritorWrite.descriptorCount = 1;
-    DescritorWrite.pBufferInfo = &BufferInfo;
-    
-
-    vkUpdateDescriptorSets(LogicalDevice, 1, &DescriptorWrite, 0, nullptr);
 
 }
 
 // Define VisualRenderer::CreateDescriptorPool
-void VisualRenderer::CreateDescriptorPol() {
+void VisualRenderer::CreateDescriptorPool() {
 
     VkDescriptorPoolSize PoolSize{};
     PoolSize.Type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
