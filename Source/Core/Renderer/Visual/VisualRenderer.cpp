@@ -231,7 +231,7 @@ void VisualRenderer::CreateDescriptorSets() {
 void VisualRenderer::CreateDescriptorPool() {
 
     VkDescriptorPoolSize PoolSize{};
-    PoolSize.Type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+    PoolSize.type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
     PoolSize.descriptorCount = static_cast<uint32_t>(SwapChainImages_.size());
 
     VkDescriptorPoolCreateInfo PoolInfo{};
