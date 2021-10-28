@@ -158,6 +158,17 @@ void VisualRenderer::InitVulkan() {
     CreateUniformBuffers();
     Logger_.Log("Initialization [FINISH] Created Uniform Buffers", 2);
 
+    // Create Descriptor Pool
+    Logger_.Log("Initialization [ START] Creating Descriptor Pool", 3);
+    CreateDescriptorPool();
+    Logger_.Log("Initialization [FINISH] Created Descriptor Pool", 2);
+
+    // Create Descriptor Sets
+    Logger_.Log("Initialization [ START] Creating Descriptor Sets", 3);
+    CreateDescriptorSets();
+    Logger_.Log("Initialization [FINISH] Created Descriptor Sets", 2);
+
+
     // Create Command Buffers
     Logger_.Log("Initialization [ START] Creating Command Buffers", 3);
     CreateCommandBuffers();
@@ -168,6 +179,69 @@ void VisualRenderer::InitVulkan() {
     CreateSyncObjects();
     Logger_.Log("Initialization [FINISH] Created Semaphores", 2);
 
+
+}
+
+// Define VisualRenderer::CreateDescriptorSets
+void VisualRenderer::CreateDescriptorSets() {
+
+    std::vector<VkDescriptorSetLayout> Layouts(SwapChainImages_.size(), DescriptorSetLayout_);
+
+    VkDescriptorSetAllocateInfo AllocInfo{};
+    AllocInfo.sTyle = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
+    AllocInfo.descriptorPool = DescriptorPool_;
+    AllocInfo.descriptorSetCount = static_cast<uint32_t>(SwapChainImages_.size());
+    AllocInfo.pSetLayouts = Layouts.data();
+
+    DescriptorSets_.resize(SwapChainImages_.size());
+    if (vkAllocateDescriptorSets(LogicalDevice_, &AllocInfo, DescriptorSets_.data()) != VK_SUCCESS) {
+        Logger_.Log("Failed To Allocate Descriptor Sets", 10);
+        *SystemShutdownInvoked = true;
+    }
+
+
+    for (size_t i = 0; i < SwapChainImages_.size(); i++) {
+
+        VkDescriptorBufferInfo BufferInfo{};
+
+        BufferInfo.buffer = UniformBuffers_[i];
+        BufferInfo.offset = 0;
+        BufferInfo.range = sizeof(UniformBufferObject_);
+
+    }
+
+    VkWriteDescriptorSet DescriptorWrite{};
+
+    DescritorWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_BIT;
+    DescritorWrite.dstSet = DescriptorSets[i];
+    DescritorWrite.dstBinding = 0;
+    DescritorWrite.dstArrayelement = 0;
+    DescritorWrite.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+    DescritorWrite.descriptorCount = 1;
+    DescritorWrite.pBufferInfo = &BufferInfo;
+    
+
+    vkUpdateDescriptorSets(LogicalDevice, 1, &DescriptorWrite, 0, nullptr);
+
+}
+
+// Define VisualRenderer::CreateDescriptorPool
+void VisualRenderer::CreateDescriptorPol() {
+
+    VkDescriptorPoolSize PoolSize{};
+    PoolSize.Type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+    PoolSize.descriptorCount = static_cast<uint32_t>(SwapChainImages_.size());
+
+    VkDescriptorPoolCreateInfo PoolInfo{};
+    PoolInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
+    PoolInfo.poolSizeCount = 1;
+    PoolInfo.pPoolSizes = &PoolSize;
+    PoolInfo.maxSets = static_cast<uint32_t>(SwapChainImages_.size());
+
+    if (vkCreateDescriptorPool(LogicalDevice_, &PoolInfo, nullptr, &DescriptorPool_) != VK_SUCCESS) {
+        Logger_.Log("Failed To Create Descriptor Pool", 10);
+        *SystemShutdownInvoked_ = true;
+    }
 
 }
 
@@ -511,8 +585,9 @@ void VisualRenderer::CreateCommandBuffers() {
         VkBuffer VertexBuffers[] = {VertexBuffer_};
         VkDeviceSize Offsets[] = {0};
         vkCmdBindVertexBuffers(CommandBuffers_[i], 0, 1, VertexBuffers, Offsets);
-
         vkCmdBindIndexBuffer(CommandBuffers_[i], IndexBuffer_, 0, VK_INDEX_TYPE_UINT16);
+
+        vkCmdBindDescriptorSets(CommandBuffers_[i], VK_PIPELINE_BIND_POINT_GRAPHICS, PipelineLayout_, 0, 1, &DescriptorSets_[i], 0, nullptr);
 
         vkCmdDrawIndexed(CommandBuffers_[i], static_cast<uint32_t>(Indices_.size()), 1, 0, 0, 0);
 
@@ -739,7 +814,7 @@ void VisualRenderer::CreateGraphicsPipeline() {
     Rasterizer.polygonMode = VK_POLYGON_MODE_FILL; // Can set this to VK_POLYGON_MODE_ FILL, LINE, POINT (any other than fill require gpu feature to be enabled)
     Rasterizer.lineWidth = 1.0f; // can set this to larger, but requires the "wideLines" gpu feature
     Rasterizer.cullMode = VK_CULL_MODE_BACK_BIT;
-    Rasterizer.frontFace = VK_FRONT_FACE_CLOCKWISE;
+    Rasterizer.frontFace = VK_FRONT_FACE_COUNTER_CLOCKWISE;
     
     Rasterizer.depthBiasEnable = VK_FALSE;
     Rasterizer.depthBiasConstantFactor = 0.0f;
@@ -1580,6 +1655,9 @@ void VisualRenderer::CleanupSwapChain() {
         vkFreeMemory(LogicalDevice_, UniformBuffersMemory_[i], nullptr);
     }
 
+    // Destroy DescriptorPool
+    vkDestroyDescriptorPool(LogicalDevice_, DescriptorPool_, nullptr);
+
 }
 
 // Define VisualRenderer::RecreateSwapChain
@@ -1599,6 +1677,8 @@ void VisualRenderer::RecreateSwapChain() {
     CreateGraphicsPipeline();
     CreateFramebuffers();
     CreateUniformBuffers();
+    CreateDescriptorPool();
+    CreateDescriptorSets();
     CreateCommandBuffers();
 
     // Resize Frames To Correct Size

@@ -150,6 +150,9 @@ class VisualRenderer {
         std::vector<VkBuffer> UniformBuffers_;
         std::vector<VkDeviceMemory> UniformBuffersMemory_;
 
+        VkDescriptorPool DescriptorPool_;
+        std::vector<VkDescriptorSet> DescriptorSets_;
+    
         // hardcoded vertices
         const std::vector<Vertex> Vertices_ = {
             {{-0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}},
@@ -259,6 +262,12 @@ class VisualRenderer {
 
         // Update Uniform Buffers
         void UpdateUniformBuffer(uint32_t CurrentImage);
+
+        // Create Descriptor Pool
+        void CreateDescriptorPool();
+
+        // Create Descriptor Sets
+        void CreateDescriptorSets();
 
 
     public:
