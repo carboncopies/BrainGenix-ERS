@@ -155,11 +155,13 @@ class VisualRenderer {
     
         // hardcoded vertices
         const std::vector<Vertex> Vertices_ = {
-            {{-0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}},
-            {{0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}},
-            {{0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}},
-            {{-0.5f, 0.5f}, {1.0f, 1.0f, 1.0f}}
+            {{-0.7f, -0.7f}, {1.0f, 0.0f, 0.0f}},
+            {{0.7f, -0.7f}, {0.0f, 1.0f, 0.0f}},
+            {{0.7f, 0.7f}, {0.0f, 0.0f, 1.0f}},
+            {{-0.7f, 0.7f}, {1.0f, 1.0f, 1.0f}}
         };
+
+
 
         const std::vector<uint16_t> Indices_ = {
             0, 1, 2, 2, 3, 0

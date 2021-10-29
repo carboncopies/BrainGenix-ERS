@@ -1,6 +1,6 @@
 mkdir -p Build
 cd Build
-cmake ..
+cmake --target BrainGenix-ERS ..
 make -j 24
 
 cd ../Binaries
