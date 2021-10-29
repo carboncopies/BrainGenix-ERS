@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16.6)
+cmake_minimum_required(VERSION 3.16.2)
 project(FreeImagePlus VERSION 3.18.0)
 
 if(WIN32)

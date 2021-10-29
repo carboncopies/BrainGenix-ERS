@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16.6)
+cmake_minimum_required(VERSION 3.16.2)
 project(FreeImagePlusTest VERSION 3.18.0)
 
 file(GLOB SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)

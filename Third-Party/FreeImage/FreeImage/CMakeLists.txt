@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16.6)
+cmake_minimum_required(VERSION 3.16.3)
 project(FreeImage VERSION 3.18.0)
 
 set(CMAKE_C_STANDARD 90)

@@ -40,6 +40,11 @@ set(GLFW_DIR "${LIB_DIR}/glfw")
 add_subdirectory("${GLFW_DIR}")
 target_link_libraries("${PROJECT_NAME}" "glfw" "${GLFW_LIBRARIES}")
 
+# Add FreeImage Library
+set(FREEIMAGE_DIR "${LIB_DIR}/FreeImage/FreeImage")
+add_subdirectory("${FREEIMAGE_DIR}")
+target_link_libraries("${PROJECT_NAME}" "FreeImage" "${FREEIMAGE_LIBRARIES}")
+
 
 # # Add ASSIMP Library
 # set(ASSIMP_DIR "${LIB_DIR}/assimp")
