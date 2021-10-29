@@ -9,3 +9,25 @@
 */  
 
 
+// Image Decoder Class
+class ImageDecoder {
+
+    private:
+
+        LoggerClass Logger_;
+
+    public:
+        
+        // Initialize Image Loader
+        void Initialize(LoggerClass Logger);
+
+        // Load Images From Local Disk
+        FIBITMAP* LoadImageFromFile(const char* FilePath);
+
+        // Decode Images In Memory
+        void DecodeImage();
+
+        // Cleanup
+        void Cleanup();
+
+};

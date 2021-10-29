@@ -1,8 +1,14 @@
+# Create Build Dir
 mkdir -p Build
-cd Build
-cmake --target BrainGenix-ERS ..
-make -j 24
 
+# Enter Build Dir
+cd Build
+
+# Make Only BrainGenix-ERS
+cmake ..
+cmake --build . --target BrainGenix-ERS -- -j 24
+
+# Run Program
 cd ../Binaries
 ./BrainGenix-ERS
 cd ..

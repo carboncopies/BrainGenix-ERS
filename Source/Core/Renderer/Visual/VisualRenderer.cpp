@@ -28,6 +28,7 @@
 
 #include "Core/Renderer/Visual/LocalWindowDisplaySystem.cpp"
 #include "Core/Loader/Shaders/ShaderLoader.cpp"
+#include "Core/Loader/Decoder/Image/ImageDecoder.cpp"
 
 #include "Core/Renderer/Visual/VisualRenderer.h"
 
