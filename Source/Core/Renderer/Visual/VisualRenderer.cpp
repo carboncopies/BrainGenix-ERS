@@ -70,6 +70,10 @@ void VisualRenderer::InitVulkan() {
     // Log Vulkan Init Creation
     Logger_.Log("Initializing Vulkan API", 4);
 
+    // MOVE THIS LATER!!!
+    // Setup Image Decoder
+    ImageDecoder_.Initialize(Logger_);
+
     // Create Vulkan Instance
     Logger_.Log("Initializing 'Core::Renderer::Visual::VisualRenderer::CreateVulkanInstance'", 3);
     CreateVulkanInstance();
@@ -144,6 +148,11 @@ void VisualRenderer::InitVulkan() {
     CreateCommandPool();
     Logger_.Log("Initialization [FINISH] Created Command Pool", 2);
 
+    // Load Image
+    Logger_.Log("Loading Texture Image ", 4);
+    CreateTextureImage();
+
+
     // Create Vertex Buffer
     Logger_.Log("Initialization [ START] Creating Vertex Buffer", 3);
     CreateVertexBuffer();
@@ -180,6 +189,21 @@ void VisualRenderer::InitVulkan() {
     CreateSyncObjects();
     Logger_.Log("Initialization [FINISH] Created Semaphores", 2);
 
+
+}
+
+// Define VisualRenderer::CreateTextureImage
+void VisualRenderer::CreateTextureImage() {
+    int TextureWidth, TextureHeight, TextureChannels;
+    ERSImage Image = ImageDecoder_.LoadImageFromFile("Assets/Texture.jpg");
+
+    TextureWidth = Image.Width;
+    TextureHeight = Image.Height;
+    TextureChannels = Image.Channels;
+
+    std::cout<<TextureChannels<<"\n";
+
+    VkDeviceSize ImageSize = TextureWidth * TextureHeight * TextureChannels;
 
 }
 

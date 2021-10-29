@@ -153,6 +153,11 @@ class VisualRenderer {
         VkDescriptorPool DescriptorPool_;
         std::vector<VkDescriptorSet> DescriptorSets_;
     
+
+        // DELETE THIS LATER!
+        ImageDecoder ImageDecoder_;
+
+
         // hardcoded vertices
         const std::vector<Vertex> Vertices_ = {
             {{-0.7f, -0.7f}, {1.0f, 0.0f, 0.0f}},
@@ -270,6 +275,9 @@ class VisualRenderer {
 
         // Create Descriptor Sets
         void CreateDescriptorSets();
+
+        // Create Texture Images
+        void CreateTextureImage();
 
 
     public:

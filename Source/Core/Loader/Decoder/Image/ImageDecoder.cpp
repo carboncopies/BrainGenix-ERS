@@ -28,11 +28,24 @@ void ImageDecoder::Initialize(LoggerClass Logger) {
 }
 
 // Loads And Decodes Images From Disk Into Memory
-FIBITMAP* ImageDecoder::LoadImageFromFile(const char* FilePath) {
+ERSImage ImageDecoder::LoadImageFromFile(const char* FilePath) {
+
+    // Create Struct
+    ERSImage ImageStruct{};
 
     // Load Image
-    return FreeImage_Load(FIF_JPEG, FilePath, JPEG_DEFAULT);
+    FREE_IMAGE_FORMAT Format = FreeImage_GetFileType(FilePath, 0);
+    ImageStruct.ImageData = FreeImage_Load(Format, FilePath);
 
+
+    // Set Properties
+    ImageStruct.Width = FreeImage_GetWidth(ImageStruct.ImageData);
+    ImageStruct.Height = FreeImage_GetHeight(ImageStruct.ImageData);
+    ImageStruct.Channels = FreeImage_GetColorsUsed(ImageStruct.ImageData);
+    std::cout<<FreeImage_GetColorsUsed(ImageStruct.ImageData)<<"\n";
+
+    // Return Data
+    return ImageStruct;
 
 }
 
