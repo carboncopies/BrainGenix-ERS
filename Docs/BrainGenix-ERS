@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-30T03:15:34.937Z" agent="5.0 (X11)" etag="x7TPJvKtMp5GXlffBDk5" version="15.6.2" type="github" pages="5">
+<mxfile host="app.diagrams.net" modified="2021-10-30T03:16:02.077Z" agent="5.0 (X11)" etag="cRplm1JL_AaQgLQ_c0kH" version="15.6.2" type="github" pages="6">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="5053" dy="1646" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -6,191 +6,6 @@
         <mxCell id="1" parent="0" />
         <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="-755" y="110" width="440" height="490" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="450" y="40" width="330" height="460" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-3" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="560" y="550" width="280" height="240" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="20" y="480" width="360" height="600" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-6" target="JZ_-G1dVuu5gJ5Ti8FHd-10">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-6" value="&lt;div&gt;Receive File Bytes&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
-          <mxGeometry x="40" y="520" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-7" value="&lt;h1&gt;Asset Importer&lt;br&gt;&lt;/h1&gt;&lt;p&gt;System provides functionality to import images, textures, materials, 3d models, audio, video, scene descriptors, animations, etc to the ERS system.&lt;/p&gt;&lt;p&gt;This diagram shows the supported codecs/file formats, the frontend wireframes, and the backend flowchart.&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="10" y="10" width="370" height="150" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-10" target="JZ_-G1dVuu5gJ5Ti8FHd-15">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-10" target="JZ_-G1dVuu5gJ5Ti8FHd-13">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-10" value="Identify Format" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="600" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-13" target="JZ_-G1dVuu5gJ5Ti8FHd-17">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-13" target="JZ_-G1dVuu5gJ5Ti8FHd-20">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-13" value="&lt;div&gt;Decode Format&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="680" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-14" value="Present Error Dialog" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="600" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-15" value="&lt;div&gt;Present Format Unknown Error&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="240" y="600" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-16" value="&lt;div&gt;Format Unknown&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="170" y="600" width="60" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-17" value="&lt;div&gt;Present Format Decode Error&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="240" y="680" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-18" value="Format Decode Error" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="170" y="670" width="60" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-20" target="JZ_-G1dVuu5gJ5Ti8FHd-22">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-20" value="Convert To Supported Format" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="760" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-22" target="JZ_-G1dVuu5gJ5Ti8FHd-24">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-22" value="Add Asset To DB" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="840" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-24" target="JZ_-G1dVuu5gJ5Ti8FHd-25">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-24" value="&lt;div&gt;Create Metadata DB Entry&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="920" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-25" value="&lt;div&gt;Return Success&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="40" y="1000" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-26" value="Asset Import Function (Backend)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="20" y="480" width="360" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-27" value="&lt;div&gt;Error Dialog (Popup) (Frontend)&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="560" y="550" width="280" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-28" value="" style="html=1;labelBackgroundColor=#ffffff;startArrow=none;startFill=0;startSize=6;endArrow=classic;endFill=1;endSize=6;jettySize=auto;orthogonalLoop=1;strokeWidth=1;dashed=1;fontSize=14;rounded=0;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-15" target="JZ_-G1dVuu5gJ5Ti8FHd-3">
-          <mxGeometry width="60" height="60" relative="1" as="geometry">
-            <mxPoint x="500" y="630" as="sourcePoint" />
-            <mxPoint x="560" y="570" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="470" y="630" />
-              <mxPoint x="470" y="670" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-29" value="" style="html=1;labelBackgroundColor=#ffffff;startArrow=none;startFill=0;startSize=6;endArrow=classic;endFill=1;endSize=6;jettySize=auto;orthogonalLoop=1;strokeWidth=1;dashed=1;fontSize=14;rounded=0;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-17" target="JZ_-G1dVuu5gJ5Ti8FHd-3">
-          <mxGeometry width="60" height="60" relative="1" as="geometry">
-            <mxPoint x="480" y="780" as="sourcePoint" />
-            <mxPoint x="500" y="820" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="470" y="710" />
-              <mxPoint x="470" y="670" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-30" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="580" y="580" width="240" height="190" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-31" value="&lt;div style=&quot;font-size: 18px&quot;&gt;&lt;font style=&quot;font-size: 18px&quot;&gt;Asset Import Error:&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 18px&quot;&gt;&lt;font style=&quot;font-size: 18px&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 18px&quot;&gt;&lt;font style=&quot;font-size: 18px&quot;&gt;{Filename} returned error: {Error String}&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="580" y="580" width="240" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-32" value="OK" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="655" y="720" width="90" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-33" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="560" y="840" width="280" height="240" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-34" value="&lt;font style=&quot;font-size: 12px&quot;&gt;Progress Dialog (Nonblocking Window) (Frontend)&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="560" y="840" width="280" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-35" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="580" y="870" width="240" height="190" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-36" value="&lt;div&gt;&lt;font style=&quot;font-size: 18px&quot;&gt;Asset Import Progress:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 18px&quot;&gt;{Filename}&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="580" y="870" width="240" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-37" value="{Current File Progress Bar}" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="590" y="960" width="220" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-38" value="{Overall Progress Bar}" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="590" y="1010" width="220" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-39" value="" style="html=1;labelBackgroundColor=#ffffff;startArrow=none;startFill=0;startSize=6;endArrow=classic;endFill=1;endSize=6;jettySize=auto;orthogonalLoop=1;strokeWidth=1;dashed=1;fontSize=14;rounded=0;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-4" target="JZ_-G1dVuu5gJ5Ti8FHd-33">
-          <mxGeometry width="60" height="60" relative="1" as="geometry">
-            <mxPoint x="500" y="740" as="sourcePoint" />
-            <mxPoint x="560" y="680" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="470" y="780" />
-              <mxPoint x="470" y="960" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-40" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="20" y="180" width="360" height="260" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-41" value="&lt;font style=&quot;font-size: 12px&quot;&gt;Asset Import Dialog Box (Frontend)&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="20" y="180" width="360" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-42" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="40" y="230" width="320" height="190" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-43" value="&lt;div&gt;Import Assets&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Drag and drop&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;or&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="40" y="230" width="320" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-44" value="Browse Files" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="155" y="360" width="90" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-45" value="Supported Asset Types" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="470" y="80" width="140" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-46" value="Meshes&#xa;Materials&#xa;Audio&#xa;Animations&#xa;Images&#xa;Videos&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontSize=12;" vertex="1" parent="JZ_-G1dVuu5gJ5Ti8FHd-45">
-          <mxGeometry y="30" width="140" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-47" value="Supported Mesh Formats" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="620" y="80" width="140" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-48" value="OBJ&#xa;COLLADA&#xa;FBX&#xa;MTL&#xa;IGES&#xa;STEP&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontSize=12;" vertex="1" parent="JZ_-G1dVuu5gJ5Ti8FHd-47">
-          <mxGeometry y="30" width="140" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-49" value="Texture Formats" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="470" y="220" width="140" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-50" value="PNG&#xa;JPG&#xa;BMP&#xa;HEIF&#xa;DNG&#xa;TIFF" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontSize=12;" vertex="1" parent="JZ_-G1dVuu5gJ5Ti8FHd-49">
-          <mxGeometry y="30" width="140" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-51" value="Audio Formats" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="620" y="220" width="140" height="120" as="geometry">
-            <mxRectangle x="620" y="220" width="110" height="30" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-52" value="MP3&#xa;WAV&#xa;FLAC&#xa;M4A&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontSize=12;" vertex="1" parent="JZ_-G1dVuu5gJ5Ti8FHd-51">
-          <mxGeometry y="30" width="140" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-53" value="Video Formats" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="470" y="360" width="140" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-54" value="x.264&#xa;x.265&#xa;MPEG&#xa;WEBM&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontSize=12;" vertex="1" parent="JZ_-G1dVuu5gJ5Ti8FHd-53">
-          <mxGeometry y="30" width="140" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-55" value="Asset Formats" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
-          <mxGeometry x="450" y="40" width="330" height="30" as="geometry" />
         </mxCell>
         <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-57" value="&lt;h1&gt;ERS System Overview&lt;br&gt;&lt;/h1&gt;&lt;div&gt;A simple explanation of the ERS system requirements and functions.&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="-850" y="10" width="370" height="150" as="geometry" />
@@ -899,6 +714,199 @@
         </mxCell>
         <mxCell id="yB9_5K9QPidn8U2pKRRh-41" value="&lt;h1&gt;Main Render Loop&lt;br&gt;&lt;/h1&gt;&lt;p&gt;The Main Render Loop needs to run a minimum of 60 times per second while maintaining a high quality render output. In order to meet this demanding requirement, the as many tasks are performed in parallel as possible. &lt;br&gt;&lt;/p&gt;&lt;p&gt;For example, with asset loading and unloading, assets are not directly loaded but rather marked for loading and marked for unloading. This way, asset management can be run asynchronously by the CPU and pushed to the GPU when assets are ready.&lt;/p&gt;&lt;p&gt;Additionally, all network operations are run asynchronously to ensure that a network bandwidth or latency issue will not cause any performance issues.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
           <mxGeometry x="-630" y="775" width="430" height="310" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="ZyVwjvSLEiEtOZGvco6h" name="Asset Importer">
+    <mxGraphModel dx="2942" dy="1152" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="zo4HmlOIPznaohywm18i-0" />
+        <mxCell id="zo4HmlOIPznaohywm18i-1" parent="zo4HmlOIPznaohywm18i-0" />
+        <mxCell id="zo4HmlOIPznaohywm18i-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="450" y="40" width="330" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-3" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="560" y="550" width="280" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="20" y="480" width="360" height="600" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="zo4HmlOIPznaohywm18i-1" source="zo4HmlOIPznaohywm18i-6" target="zo4HmlOIPznaohywm18i-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-6" value="&lt;div&gt;Receive File Bytes&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="40" y="520" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-7" value="&lt;h1&gt;Asset Importer&lt;br&gt;&lt;/h1&gt;&lt;p&gt;System provides functionality to import images, textures, materials, 3d models, audio, video, scene descriptors, animations, etc to the ERS system.&lt;/p&gt;&lt;p&gt;This diagram shows the supported codecs/file formats, the frontend wireframes, and the backend flowchart.&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="10" y="10" width="370" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="zo4HmlOIPznaohywm18i-1" source="zo4HmlOIPznaohywm18i-10" target="zo4HmlOIPznaohywm18i-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="zo4HmlOIPznaohywm18i-1" source="zo4HmlOIPznaohywm18i-10" target="zo4HmlOIPznaohywm18i-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-10" value="Identify Format" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="40" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="zo4HmlOIPznaohywm18i-1" source="zo4HmlOIPznaohywm18i-13" target="zo4HmlOIPznaohywm18i-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="zo4HmlOIPznaohywm18i-1" source="zo4HmlOIPznaohywm18i-13" target="zo4HmlOIPznaohywm18i-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-13" value="&lt;div&gt;Decode Format&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="40" y="680" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-14" value="Present Error Dialog" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="240" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-15" value="&lt;div&gt;Present Format Unknown Error&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="240" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-16" value="&lt;div&gt;Format Unknown&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="170" y="600" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-17" value="&lt;div&gt;Present Format Decode Error&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="240" y="680" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-18" value="Format Decode Error" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="170" y="670" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="zo4HmlOIPznaohywm18i-1" source="zo4HmlOIPznaohywm18i-20" target="zo4HmlOIPznaohywm18i-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-20" value="Convert To Supported Format" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="40" y="760" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="zo4HmlOIPznaohywm18i-1" source="zo4HmlOIPznaohywm18i-22" target="zo4HmlOIPznaohywm18i-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-22" value="Add Asset To DB" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="40" y="840" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="zo4HmlOIPznaohywm18i-1" source="zo4HmlOIPznaohywm18i-24" target="zo4HmlOIPznaohywm18i-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-24" value="&lt;div&gt;Create Metadata DB Entry&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="40" y="920" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-25" value="&lt;div&gt;Return Success&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="40" y="1000" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-26" value="Asset Import Function (Backend)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="20" y="480" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-27" value="&lt;div&gt;Error Dialog (Popup) (Frontend)&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="560" y="550" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-28" value="" style="html=1;labelBackgroundColor=#ffffff;startArrow=none;startFill=0;startSize=6;endArrow=classic;endFill=1;endSize=6;jettySize=auto;orthogonalLoop=1;strokeWidth=1;dashed=1;fontSize=14;rounded=0;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="zo4HmlOIPznaohywm18i-1" source="zo4HmlOIPznaohywm18i-15" target="zo4HmlOIPznaohywm18i-3">
+          <mxGeometry width="60" height="60" relative="1" as="geometry">
+            <mxPoint x="500" y="630" as="sourcePoint" />
+            <mxPoint x="560" y="570" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="470" y="630" />
+              <mxPoint x="470" y="670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-29" value="" style="html=1;labelBackgroundColor=#ffffff;startArrow=none;startFill=0;startSize=6;endArrow=classic;endFill=1;endSize=6;jettySize=auto;orthogonalLoop=1;strokeWidth=1;dashed=1;fontSize=14;rounded=0;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="zo4HmlOIPznaohywm18i-1" source="zo4HmlOIPznaohywm18i-17" target="zo4HmlOIPznaohywm18i-3">
+          <mxGeometry width="60" height="60" relative="1" as="geometry">
+            <mxPoint x="480" y="780" as="sourcePoint" />
+            <mxPoint x="500" y="820" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="470" y="710" />
+              <mxPoint x="470" y="670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-30" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="580" y="580" width="240" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-31" value="&lt;div style=&quot;font-size: 18px&quot;&gt;&lt;font style=&quot;font-size: 18px&quot;&gt;Asset Import Error:&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 18px&quot;&gt;&lt;font style=&quot;font-size: 18px&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 18px&quot;&gt;&lt;font style=&quot;font-size: 18px&quot;&gt;{Filename} returned error: {Error String}&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="580" y="580" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-32" value="OK" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="655" y="720" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-33" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="560" y="840" width="280" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-34" value="&lt;font style=&quot;font-size: 12px&quot;&gt;Progress Dialog (Nonblocking Window) (Frontend)&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="560" y="840" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-35" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="580" y="870" width="240" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-36" value="&lt;div&gt;&lt;font style=&quot;font-size: 18px&quot;&gt;Asset Import Progress:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 18px&quot;&gt;{Filename}&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="580" y="870" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-37" value="{Current File Progress Bar}" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="590" y="960" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-38" value="{Overall Progress Bar}" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="590" y="1010" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-39" value="" style="html=1;labelBackgroundColor=#ffffff;startArrow=none;startFill=0;startSize=6;endArrow=classic;endFill=1;endSize=6;jettySize=auto;orthogonalLoop=1;strokeWidth=1;dashed=1;fontSize=14;rounded=0;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="zo4HmlOIPznaohywm18i-1" source="zo4HmlOIPznaohywm18i-4" target="zo4HmlOIPznaohywm18i-33">
+          <mxGeometry width="60" height="60" relative="1" as="geometry">
+            <mxPoint x="500" y="740" as="sourcePoint" />
+            <mxPoint x="560" y="680" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="470" y="780" />
+              <mxPoint x="470" y="960" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-40" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="20" y="180" width="360" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-41" value="&lt;font style=&quot;font-size: 12px&quot;&gt;Asset Import Dialog Box (Frontend)&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="20" y="180" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-42" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="40" y="230" width="320" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-43" value="&lt;div&gt;Import Assets&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Drag and drop&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;or&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="40" y="230" width="320" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-44" value="Browse Files" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="155" y="360" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-45" value="Supported Asset Types" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=12;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="470" y="80" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-46" value="Meshes&#xa;Materials&#xa;Audio&#xa;Animations&#xa;Images&#xa;Videos&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontSize=12;" vertex="1" parent="zo4HmlOIPznaohywm18i-45">
+          <mxGeometry y="30" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-47" value="Supported Mesh Formats" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=12;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="620" y="80" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-48" value="OBJ&#xa;COLLADA&#xa;FBX&#xa;MTL&#xa;IGES&#xa;STEP&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontSize=12;" vertex="1" parent="zo4HmlOIPznaohywm18i-47">
+          <mxGeometry y="30" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-49" value="Texture Formats" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=12;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="470" y="220" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-50" value="PNG&#xa;JPG&#xa;BMP&#xa;HEIF&#xa;DNG&#xa;TIFF" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontSize=12;" vertex="1" parent="zo4HmlOIPznaohywm18i-49">
+          <mxGeometry y="30" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-51" value="Audio Formats" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=12;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="620" y="220" width="140" height="120" as="geometry">
+            <mxRectangle x="620" y="220" width="110" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-52" value="MP3&#xa;WAV&#xa;FLAC&#xa;M4A&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontSize=12;" vertex="1" parent="zo4HmlOIPznaohywm18i-51">
+          <mxGeometry y="30" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-53" value="Video Formats" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontSize=12;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="470" y="360" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-54" value="x.264&#xa;x.265&#xa;MPEG&#xa;WEBM&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontSize=12;" vertex="1" parent="zo4HmlOIPznaohywm18i-53">
+          <mxGeometry y="30" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="zo4HmlOIPznaohywm18i-55" value="Asset Formats" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="zo4HmlOIPznaohywm18i-1">
+          <mxGeometry x="450" y="40" width="330" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
