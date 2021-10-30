@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-30T03:14:58.452Z" agent="5.0 (X11)" etag="SN1FAbWxbxRBpwEs6aDN" version="15.6.2" type="github" pages="4">
+<mxfile host="app.diagrams.net" modified="2021-10-30T03:15:34.937Z" agent="5.0 (X11)" etag="x7TPJvKtMp5GXlffBDk5" version="15.6.2" type="github" pages="5">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="5053" dy="1646" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -288,176 +288,6 @@
         </mxCell>
         <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-83" value="BrainGenix::ERS Fallback Domain Server" style="rounded=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
           <mxGeometry x="-705" y="480" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-175" value="&lt;h1&gt;Sensory Data Rendering&lt;br&gt;&lt;/h1&gt;&lt;p&gt;Sensory data is rendered for every clock update. The sensory data is then fed to the SDTL kernels to convert into action potentials. &lt;br&gt;&lt;/p&gt;&lt;p&gt;The different senses are rendered on the GPUs by different pipelines. The output of this data is then sent to the SDTL for conversion into action potentials for NES.&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="-850" y="1100" width="370" height="140" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-176" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
-          <mxGeometry x="-830" y="1260" width="810" height="580" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-177" value="Main Render Loop" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="-830" y="1260" width="810" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-178" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-179" target="JZ_-G1dVuu5gJ5Ti8FHd-181">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-179" value="Get Update From Domain Server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-790" y="1300" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-180" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-181" target="JZ_-G1dVuu5gJ5Ti8FHd-183">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-181" value="Update Domain Dynamic Assets" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-640" y="1300" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-182" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-183" target="JZ_-G1dVuu5gJ5Ti8FHd-197">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-183" value="Load/Unload Required Assets" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-490" y="1300" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-184" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-185" target="JZ_-G1dVuu5gJ5Ti8FHd-208">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-500" y="1630" />
-              <mxPoint x="-425" y="1630" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-185" value="Render Olfactory Data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-560" y="1530" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-186" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-187" target="JZ_-G1dVuu5gJ5Ti8FHd-208">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-630" y="1630" />
-              <mxPoint x="-425" y="1630" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-187" value="Render Visual Sensory Data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-690" y="1530" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-188" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-189" target="JZ_-G1dVuu5gJ5Ti8FHd-208">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-760" y="1630" />
-              <mxPoint x="-425" y="1630" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-189" value="Render Auditory Sensory Data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-820" y="1530" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-190" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-191" target="JZ_-G1dVuu5gJ5Ti8FHd-208">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-370" y="1630" />
-              <mxPoint x="-425" y="1630" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-191" value="Render Vestibular Sensory Data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-430" y="1530" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-192" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-193" target="JZ_-G1dVuu5gJ5Ti8FHd-208">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-240" y="1630" />
-              <mxPoint x="-425" y="1630" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-193" value="Render Somatosensory Data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-300" y="1530" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-194" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-195" target="JZ_-G1dVuu5gJ5Ti8FHd-208">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-110" y="1630" />
-              <mxPoint x="-425" y="1630" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-195" value="Render Gustatory Data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-170" y="1530" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-196" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-197" target="JZ_-G1dVuu5gJ5Ti8FHd-206">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-197" value="Get Data From NES" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-340" y="1300" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-198" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-204" target="JZ_-G1dVuu5gJ5Ti8FHd-195">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-199" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-204" target="JZ_-G1dVuu5gJ5Ti8FHd-193">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-200" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-204" target="JZ_-G1dVuu5gJ5Ti8FHd-191">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-130" y="1490" />
-              <mxPoint x="-370" y="1490" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-201" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-204" target="JZ_-G1dVuu5gJ5Ti8FHd-185">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-130" y="1490" />
-              <mxPoint x="-500" y="1490" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-202" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-204" target="JZ_-G1dVuu5gJ5Ti8FHd-187">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-130" y="1490" />
-              <mxPoint x="-630" y="1490" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-203" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-204" target="JZ_-G1dVuu5gJ5Ti8FHd-189">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-130" y="1490" />
-              <mxPoint x="-760" y="1490" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-204" value="Update System Physics" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-190" y="1390" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-205" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-206" target="JZ_-G1dVuu5gJ5Ti8FHd-204">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-206" value="Run Function: BG::NES -&amp;gt; BG::ERS" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-190" y="1300" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-207" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-208" target="JZ_-G1dVuu5gJ5Ti8FHd-210">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-208" value="&lt;div&gt;Run Function:&lt;/div&gt;&lt;div&gt;BG::ERS -&amp;gt; BG:NES&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-485" y="1660" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-209" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-210" target="JZ_-G1dVuu5gJ5Ti8FHd-212">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-210" value="Send Action Potential Data To NES" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-340" y="1660" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-211" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JZ_-G1dVuu5gJ5Ti8FHd-212" target="JZ_-G1dVuu5gJ5Ti8FHd-213">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-212" value="Serialize Dynamic Domain Asset Updates" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-190" y="1660" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-213" value="Transmit To Domain Server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-190" y="1750" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="JZ_-G1dVuu5gJ5Ti8FHd-214" value="&lt;h1&gt;Main Render Loop&lt;br&gt;&lt;/h1&gt;&lt;p&gt;The Main Render Loop needs to run a minimum of 60 times per second while maintaining a high quality render output. In order to meet this demanding requirement, the as many tasks are performed in parallel as possible. &lt;br&gt;&lt;/p&gt;&lt;p&gt;For example, with asset loading and unloading, assets are not directly loaded but rather marked for loading and marked for unloading. This way, asset management can be run asynchronously by the CPU and pushed to the GPU when assets are ready.&lt;/p&gt;&lt;p&gt;Additionally, all network operations are run asynchronously to ensure that a network bandwidth or latency issue will not cause any performance issues.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="-640" y="1860" width="430" height="310" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -891,6 +721,184 @@
         </mxCell>
         <mxCell id="SORNEBXzX296p3ofjego-40" value="Push To GPU Memory" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
           <mxGeometry x="330" y="1750" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="I16cCPg_n7aFUrZdX0Pz" name="Sensory Data Rendering">
+    <mxGraphModel dx="3792" dy="1152" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-0" />
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-1" parent="yB9_5K9QPidn8U2pKRRh-0" />
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-2" value="&lt;h1&gt;Sensory Data Rendering&lt;br&gt;&lt;/h1&gt;&lt;p&gt;Sensory data is rendered for every clock update. The sensory data is then fed to the SDTL kernels to convert into action potentials. &lt;br&gt;&lt;/p&gt;&lt;p&gt;The different senses are rendered on the GPUs by different pipelines. The output of this data is then sent to the SDTL for conversion into action potentials for NES.&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-840" y="15" width="370" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-820" y="175" width="810" height="580" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-4" value="Main Render Loop" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-820" y="175" width="810" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-6" target="yB9_5K9QPidn8U2pKRRh-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-6" value="Get Update From Domain Server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-780" y="215" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-8" target="yB9_5K9QPidn8U2pKRRh-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-8" value="Update Domain Dynamic Assets" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-630" y="215" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-10" target="yB9_5K9QPidn8U2pKRRh-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-10" value="Load/Unload Required Assets" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-480" y="215" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-12" target="yB9_5K9QPidn8U2pKRRh-35">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-490" y="545" />
+              <mxPoint x="-415" y="545" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-12" value="Render Olfactory Data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-550" y="445" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-14" target="yB9_5K9QPidn8U2pKRRh-35">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-620" y="545" />
+              <mxPoint x="-415" y="545" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-14" value="Render Visual Sensory Data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-680" y="445" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-16" target="yB9_5K9QPidn8U2pKRRh-35">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-750" y="545" />
+              <mxPoint x="-415" y="545" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-16" value="Render Auditory Sensory Data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-810" y="445" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-18" target="yB9_5K9QPidn8U2pKRRh-35">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-360" y="545" />
+              <mxPoint x="-415" y="545" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-18" value="Render Vestibular Sensory Data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-420" y="445" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-20" target="yB9_5K9QPidn8U2pKRRh-35">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-230" y="545" />
+              <mxPoint x="-415" y="545" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-20" value="Render Somatosensory Data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-290" y="445" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-22" target="yB9_5K9QPidn8U2pKRRh-35">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-100" y="545" />
+              <mxPoint x="-415" y="545" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-22" value="Render Gustatory Data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-160" y="445" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-24" target="yB9_5K9QPidn8U2pKRRh-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-24" value="Get Data From NES" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-330" y="215" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-31" target="yB9_5K9QPidn8U2pKRRh-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-31" target="yB9_5K9QPidn8U2pKRRh-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-31" target="yB9_5K9QPidn8U2pKRRh-18">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-120" y="405" />
+              <mxPoint x="-360" y="405" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-31" target="yB9_5K9QPidn8U2pKRRh-12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-120" y="405" />
+              <mxPoint x="-490" y="405" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-31" target="yB9_5K9QPidn8U2pKRRh-14">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-120" y="405" />
+              <mxPoint x="-620" y="405" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-31" target="yB9_5K9QPidn8U2pKRRh-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-120" y="405" />
+              <mxPoint x="-750" y="405" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-31" value="Update System Physics" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-180" y="305" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-33" target="yB9_5K9QPidn8U2pKRRh-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-33" value="Run Function: BG::NES -&amp;gt; BG::ERS" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-180" y="215" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-35" target="yB9_5K9QPidn8U2pKRRh-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-35" value="&lt;div&gt;Run Function:&lt;/div&gt;&lt;div&gt;BG::ERS -&amp;gt; BG:NES&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-475" y="575" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-37" target="yB9_5K9QPidn8U2pKRRh-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-37" value="Send Action Potential Data To NES" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-330" y="575" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="yB9_5K9QPidn8U2pKRRh-1" source="yB9_5K9QPidn8U2pKRRh-39" target="yB9_5K9QPidn8U2pKRRh-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-39" value="Serialize Dynamic Domain Asset Updates" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-180" y="575" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-40" value="Transmit To Domain Server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-180" y="665" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yB9_5K9QPidn8U2pKRRh-41" value="&lt;h1&gt;Main Render Loop&lt;br&gt;&lt;/h1&gt;&lt;p&gt;The Main Render Loop needs to run a minimum of 60 times per second while maintaining a high quality render output. In order to meet this demanding requirement, the as many tasks are performed in parallel as possible. &lt;br&gt;&lt;/p&gt;&lt;p&gt;For example, with asset loading and unloading, assets are not directly loaded but rather marked for loading and marked for unloading. This way, asset management can be run asynchronously by the CPU and pushed to the GPU when assets are ready.&lt;/p&gt;&lt;p&gt;Additionally, all network operations are run asynchronously to ensure that a network bandwidth or latency issue will not cause any performance issues.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="yB9_5K9QPidn8U2pKRRh-1">
+          <mxGeometry x="-630" y="775" width="430" height="310" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
