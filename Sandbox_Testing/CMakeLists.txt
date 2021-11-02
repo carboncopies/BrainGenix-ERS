@@ -32,9 +32,10 @@ set(YAML_CPP_VERSION "yaml-cpp")
 add_subdirectory("${LIB_DIR}/${YAML_CPP_VERSION}")
 target_link_libraries("${PROJECT_NAME}" "${YAML_CPP_VERSION}")
 
-# # Link Vulkan Library
-# find_package(Vulkan REQUIRED FATAL_ERROR)
-# target_link_libraries(${PROJECT_NAME} ${Vulkan_LIBRARIES})
+# # Link Glad Library
+set(GLAD_VERSION "glad")
+include_directories("${LIB_DIR}/${GLAD_VERSION}")
+# target_link_libraries("${PROJECT_NAME}" "${GLAD_VERSION}")
 
 # Add GLFW Library
 set(GLFW_DIR "${LIB_DIR}/glfw")
