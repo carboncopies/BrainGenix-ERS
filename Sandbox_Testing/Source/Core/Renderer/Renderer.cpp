@@ -17,21 +17,25 @@
 void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger) {
 
     // Create Pointers
+    Logger->Log("Populating Renderer Member Pointers", 5);
     SystemConfiguration_ = SystemConfiguration;
     Logger_ = Logger;
 
-    Logger_.Log("ttest", 10);
+    // Initialize GLFW
+    Logger_->Log("Initializing GLFW", 5);
+    InitializeGLFW();
 
 }
 
 void Renderer::InitializeGLFW() {
 
+    // Initialize GLFW
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-
+    // Create Window Object
     GLFWwindow* Window = glfwCreateWindow(800, 600, "Jesse is a bad person", NULL, NULL);
     if (Window == NULL) {
         glfwTerminate();

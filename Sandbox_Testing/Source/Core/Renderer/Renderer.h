@@ -17,6 +17,10 @@ class Renderer {
         YAML::Node *SystemConfiguration_;
         LoggerClass *Logger_;
 
+        GLFWwindow* Window_;
+        int WindowWidth_;
+        int WindowHeight_;
+
 
         // Member Functions
         void InitializeGLFW();
