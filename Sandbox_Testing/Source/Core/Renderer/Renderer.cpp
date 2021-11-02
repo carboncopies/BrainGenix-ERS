@@ -85,7 +85,7 @@ bool Renderer::UpdateLoop() {
 
     // Check If Window Should Shutdown
     if (!glfwWindowShouldClose(Window_)) {
-        return false;
+        return true;
     }
 
 
@@ -96,6 +96,6 @@ bool Renderer::UpdateLoop() {
 
 
     // Return False
-    return true;
+    return false;
 
 }
