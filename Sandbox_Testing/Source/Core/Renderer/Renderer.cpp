@@ -37,10 +37,12 @@ void Renderer::InitializeGLFW() {
 
     // Read Out Width, Height
     WindowWidth_ = (*SystemConfiguration_)["WindowWidth"].as<int>();
+    WindowHeight_ = (*SystemConfiguration_)["WindowHeight"].as<int>();
+    WindowTitle_ = (*SystemConfiguration_)["WindowTitle"].as<int>();
 
 
     // Create Window Object
-    GLFWwindow* Window = glfwCreateWindow(800, 600, "Jesse is a bad person", NULL, NULL);
+    GLFWwindow* Window = glfwCreateWindow(WindowWidth_, WindowHeight_, WindowTitle_, NULL, NULL);
     if (Window == NULL) {
         glfwTerminate();
     }
