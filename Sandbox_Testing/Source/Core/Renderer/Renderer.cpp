@@ -65,7 +65,9 @@ void Renderer::InitializeOpenGL() {
     }
 
     // Setup Viewport
+    Logger_->Log("Read Configuration File For 'RenderWidth' Parameter", 1);
     RenderWidth_ = (*SystemConfiguration_)["RenderWidth"].as<int>();
+    Logger_->Log("Read Configuration File For 'RenderHeight' Parameter", 1);
     RenderHeight_ = (*SystemConfiguration_)["RenderHeight"].as<int>();
 
     glViewport(0, 0, RenderWidth_, RenderHeight_);
