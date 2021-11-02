@@ -35,7 +35,7 @@ int main() {
 
     // Enter Main Loop
     bool SystemShouldRun = true;
-    while (!SystemShouldRun) {
+    while (SystemShouldRun) {
 
         SystemShouldRun = sERSRenderer.UpdateLoop();
 
