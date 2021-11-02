@@ -28,6 +28,9 @@ void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *
     Logger_->Log("Initializing GLFW", 5);
     InitializeGLFW();
 
+    Logger_->Log("Initializing OpenGL", 5);
+    InitializeOpenGL();
+
 }
 
 void Renderer::InitializeGLFW() {
