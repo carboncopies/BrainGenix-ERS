@@ -53,3 +53,13 @@ void Renderer::InitializeGLFW() {
     glfwMakeContextCurrent(Window);
 
 }
+
+void Renderer::InitializeOpenGL() {
+
+    // Setup Viewport
+    RenderWidth_ = (*SystemConfiguration_)["RenderWidth"].as<int>();
+    RenderHeight_ = (*SystemConfiguration_)["RenderHeight"].as<int>();
+
+    glViewport(0, 0, RenderWidth_, RenderHeight_);
+
+}

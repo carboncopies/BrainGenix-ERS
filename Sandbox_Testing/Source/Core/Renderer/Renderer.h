@@ -22,6 +22,9 @@ class Renderer {
         int WindowHeight_;
         const char* WindowTitle_;
 
+        int RenderWidth_;
+        int RenderHeight_;
+
 
 
         // Member Functions
