@@ -36,7 +36,7 @@ void Renderer::InitializeGLFW() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Read Out Width, Height
-    WindowWidth_ = SystemConfiguration_["WindowWidth"].as<int>();
+    WindowWidth_ = (*SystemConfiguration_)["WindowWidth"].as<int>();
 
 
     // Create Window Object
