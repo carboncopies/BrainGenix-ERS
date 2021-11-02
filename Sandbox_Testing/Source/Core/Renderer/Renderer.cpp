@@ -17,6 +17,13 @@
 
 #include "Core/Renderer/Renderer.h"
 
+void FramebufferSizeCallback(GLFWwindow* Window, int Width, int Height) {
+
+    // Update Viewport
+    glViewport(0,0, Width, Height);
+
+}
+
 void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger) {
 
     // Create Pointers
@@ -33,12 +40,7 @@ void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *
 
 }
 
-void FramebufferSizeCallback(GLFWwindow* Window, int Width, int Height) {
 
-    // Update Viewport
-    glViewport(0,0, Width, Height);
-
-}
 
 void Renderer::InitializeGLFW() {
 
@@ -63,9 +65,6 @@ void Renderer::InitializeGLFW() {
         glfwTerminate();
     }
 
-    // Register Callback
-    glfwSetFramebufferSizeCallback(Window_, FramebufferSizeCallback);
-
     glfwMakeContextCurrent(Window);
 
 }
@@ -84,5 +83,8 @@ void Renderer::InitializeOpenGL() {
     RenderHeight_ = (*SystemConfiguration_)["RenderHeight"].as<int>();
 
     glViewport(0, 0, RenderWidth_, RenderHeight_);
+
+    // Register Callback
+    glfwSetFramebufferSizeCallback(Window_, FramebufferSizeCallback);
 
 }
