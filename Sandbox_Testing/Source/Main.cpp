@@ -41,4 +41,7 @@ int main() {
 
     }
 
+    // Cleanup
+    sERSRenderer.CleanUp();
+
 }

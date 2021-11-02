@@ -47,5 +47,7 @@ class Renderer {
 
         bool UpdateLoop();
 
+        void CleanUp();
+
 
 };

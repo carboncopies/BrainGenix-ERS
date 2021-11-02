@@ -90,11 +90,20 @@ bool Renderer::UpdateLoop() {
 
     // Check If System Should Shutdown
     if (glfwWindowShouldClose(Window_)) {
-        Logger_->Log("System Shutdown Invoked By LocalWindow", 8);
+        Logger_->Log("System Shutdown Invoked By LocalWindow", 2);
         return false;
     }
 
     // System Should Not Shutdown
     return true;
+
+}
+
+
+void Renderer::CleanUp() {
+
+    // Cleanup
+    Logger_->Log("Cleaning Up OpenGL/GLFW", 0);
+    glfwTerminate();
 
 }
