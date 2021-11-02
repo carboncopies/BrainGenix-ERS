@@ -31,6 +31,9 @@ class Renderer {
         void InitializeGLFW();
         void InitializeOpenGL();
 
+
+
+
     public:
 
         void InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger);

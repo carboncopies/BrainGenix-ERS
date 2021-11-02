@@ -33,6 +33,13 @@ void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *
 
 }
 
+void FramebufferSizeCallback(GLFWwindow* Window, int Width, int Height) {
+
+    // Update Viewport
+    glViewport(0,0, Width, Height);
+
+}
+
 void Renderer::InitializeGLFW() {
 
     // Initialize GLFW
@@ -55,6 +62,9 @@ void Renderer::InitializeGLFW() {
     if (Window == NULL) {
         glfwTerminate();
     }
+
+    // Register Callback
+    glfwSetFramebufferSizeCallback(Window_, FramebufferSizeCallback);
 
     glfwMakeContextCurrent(Window);
 
