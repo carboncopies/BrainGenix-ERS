@@ -19,7 +19,7 @@ set(SOURCES "${SRC_DIR}/Main.cpp")
 add_executable("${PROJECT_NAME}" "${SOURCES}")
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
-# file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
+file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
 # file(COPY "${SRC_DIR}/Shaders/" DESTINATION "${BIN_DIR}/Shaders")
 # file(COPY "${SRC_DIR}/Assets/" DESTINATION "${BIN_DIR}/Assets")
 
