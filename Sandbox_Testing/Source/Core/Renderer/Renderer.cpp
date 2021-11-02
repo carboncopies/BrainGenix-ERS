@@ -36,8 +36,11 @@ void Renderer::InitializeGLFW() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Read Out Width, Height
+    Logger_->Log("Read Configuration File For 'WindowWidth' Parameter", 1);
     WindowWidth_ = (*SystemConfiguration_)["WindowWidth"].as<int>();
+    Logger_->Log("Read Configuration File For 'WindowHeight' Parameter", 1);
     WindowHeight_ = (*SystemConfiguration_)["WindowHeight"].as<int>();
+    Logger_->Log("Read Configuration File For 'WindowTitle' Parameter", 1);
     WindowTitle_ = (*SystemConfiguration_)["WindowTitle"].as<std::string>().c_str();
 
 
