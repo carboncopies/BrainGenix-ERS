@@ -3,7 +3,6 @@ cmake_minimum_required (VERSION 3.1...3.21)
 project(
 	"BrainGenix-ERS"
 	VERSION "0.0.1"
-	LANGUAGES CXX
 	)
 
 # Set Dirs
