@@ -20,7 +20,7 @@ class Renderer {
         GLFWwindow* Window_;
         int WindowWidth_;
         int WindowHeight_;
-        char* WindowTitle_;
+        const char* WindowTitle_;
 
 
 
