@@ -96,7 +96,7 @@ bool Renderer::UpdateLoop() {
 
 
     // Update Window Stuff
-    glfwSwapBuffers(Window);
+    glfwSwapBuffers(Window_);
     glfwPollEvents();
 
 
