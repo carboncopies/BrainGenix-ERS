@@ -29,7 +29,7 @@ class Renderer {
 
         // Member Functions
         void InitializeGLFW();
-
+        void InitializeOpenGL();
 
     public:
 
