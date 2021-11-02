@@ -89,7 +89,7 @@ bool Renderer::UpdateLoop() {
 
 
     // Check If System Should Shutdown
-    if (!glfwWindowShouldClose(Window_)) {
+    if (glfwWindowShouldClose(Window_)) {
         Logger_->Log("System Shutdown Invoked By LocalWindow", 8);
         return false;
     }
