@@ -11,9 +11,20 @@
 
 class Renderer {
 
+    private:
+
+        // Member Variables
+        YAML::Node *SystemConfiguration_;
+        LoggerClass *Logger_;
+
+
+        // Member Functions
+        void InitializeGLFW();
+
+
     public:
 
-        void InitializeRenderer();
+        void InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger);
 
 
-}
+};

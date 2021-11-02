@@ -8,9 +8,23 @@
     Date Created: 2021-11-01
 */
 
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
+
 #include "Core/Renderer/Renderer.h"
 
-void Renderer::InitializeRenderer() {
+void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger) {
+
+    // Create Pointers
+    SystemConfiguration_ = SystemConfiguration;
+    Logger_ = Logger;
+
+    Logger_.Log("ttest", 10);
+
+}
+
+void Renderer::InitializeGLFW() {
 
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);

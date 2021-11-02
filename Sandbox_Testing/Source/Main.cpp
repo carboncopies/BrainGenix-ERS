@@ -14,14 +14,12 @@
 
 
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
 
 int main() {
 
     // Load System Configuration File
-    const YAML::Node SystemConfiguration = LoadConfig("Config.yaml");
+    YAML::Node SystemConfiguration = LoadConfig("Config.yaml");
 
     // Instantiate Logging Subsystem //
     LoggerClass sERSLogger;
@@ -32,7 +30,7 @@ int main() {
     // Initialize Renderer
     Renderer sERSRenderer;
     sERSLogger.Log("Initializing Renderer", 5);
-    sERSRenderer.InitializeRenderer();
+    sERSRenderer.InitializeRenderer(&SystemConfiguration, &sERSLogger);
     sERSLogger.Log("Initialized Renderer", 5);
 
 
