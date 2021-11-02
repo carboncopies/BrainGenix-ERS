@@ -17,12 +17,6 @@
 
 #include "Core/Renderer/Renderer.h"
 
-void FramebufferSizeCallback(GLFWwindow* Window, int Width, int Height) {
-
-    // Update Viewport
-    glViewport(0,0, Width, Height);
-
-}
 
 void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger) {
 
@@ -58,12 +52,12 @@ void Renderer::InitializeGLFW() {
 
 
     // Create Window Object
-    GLFWwindow* Window = glfwCreateWindow(WindowWidth_, WindowHeight_, WindowTitle_, NULL, NULL);
-    if (Window == NULL) {
+    Window_ = glfwCreateWindow(WindowWidth_, WindowHeight_, WindowTitle_, NULL, NULL);
+    if (Window_ == NULL) {
         glfwTerminate();
     }
 
-    glfwMakeContextCurrent(Window);
+    glfwMakeContextCurrent(Window_);
 
 }
 
@@ -91,7 +85,7 @@ bool Renderer::UpdateLoop() {
 
     // Check If Window Should Shutdown
     if (!glfwWindowShouldClose(Window_)) {
-        return true;
+        return false;
     }
 
 
@@ -102,6 +96,6 @@ bool Renderer::UpdateLoop() {
 
 
     // Return False
-    return false;
+    return true;
 
 }

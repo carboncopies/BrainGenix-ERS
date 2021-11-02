@@ -9,6 +9,13 @@
 */
 
 
+void FramebufferSizeCallback(GLFWwindow* Window, int Width, int Height) {
+
+    // Update Viewport
+    glViewport(0,0, Width, Height);
+
+}
+
 class Renderer {
 
     private:
