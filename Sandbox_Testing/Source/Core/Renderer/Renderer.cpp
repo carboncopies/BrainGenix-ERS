@@ -10,6 +10,7 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <stdlib.h>
 
 
 #include "Core/Renderer/Renderer.h"
