@@ -38,5 +38,7 @@ class Renderer {
 
         void InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger);
 
+        bool UpdateLoop();
+
 
 };

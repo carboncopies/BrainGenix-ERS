@@ -40,8 +40,6 @@ void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *
 
 }
 
-
-
 void Renderer::InitializeGLFW() {
 
     // Initialize GLFW
@@ -86,5 +84,24 @@ void Renderer::InitializeOpenGL() {
 
     // Register Callback
     glfwSetFramebufferSizeCallback(Window_, FramebufferSizeCallback);
+
+}
+
+bool Renderer::UpdateLoop() {
+
+    // Check If Window Should Shutdown
+    if (!glfwWindowShouldClose(Window_)) {
+        return true;
+    }
+
+
+    // Update Window Stuff
+    glfwSwapBuffers(Window);
+    glfwPollEvents();
+
+
+
+    // Return False
+    return false;
 
 }
