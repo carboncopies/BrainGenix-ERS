@@ -35,6 +35,10 @@ void Renderer::InitializeGLFW() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+    // Read Out Width, Height
+    WindowWidth_ = *SystemConfiguration_["WindowWidth"].as<int>();
+
+
     // Create Window Object
     GLFWwindow* Window = glfwCreateWindow(800, 600, "Jesse is a bad person", NULL, NULL);
     if (Window == NULL) {
