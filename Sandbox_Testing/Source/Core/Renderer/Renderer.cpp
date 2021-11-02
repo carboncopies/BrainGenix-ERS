@@ -56,6 +56,11 @@ void Renderer::InitializeGLFW() {
 
 void Renderer::InitializeOpenGL() {
 
+    // Setup GLAD
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        std::throw("GLAD Initialization Error");
+    }
+
     // Setup Viewport
     RenderWidth_ = (*SystemConfiguration_)["RenderWidth"].as<int>();
     RenderHeight_ = (*SystemConfiguration_)["RenderHeight"].as<int>();
