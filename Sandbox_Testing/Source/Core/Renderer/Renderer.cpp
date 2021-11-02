@@ -83,20 +83,18 @@ void Renderer::InitializeOpenGL() {
 
 bool Renderer::UpdateLoop() {
 
-    // Check If Window Should Shutdown
-    if (!glfwWindowShouldClose(Window_)) {
-        Logger_->Log("System Shutdown Invoked By LocalWindow", 8);
-        return false;
-    }
-
-
     // Update Window Stuff
     glfwSwapBuffers(Window_);
     glfwPollEvents();
 
 
+    // Check If System Should Shutdown
+    if (!glfwWindowShouldClose(Window_)) {
+        Logger_->Log("System Shutdown Invoked By LocalWindow", 8);
+        return false;
+    }
 
-    // Return False
+    // System Should Not Shutdown
     return true;
 
 }
