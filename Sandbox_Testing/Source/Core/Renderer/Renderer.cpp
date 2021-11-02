@@ -58,7 +58,7 @@ void Renderer::InitializeOpenGL() {
 
     // Setup GLAD
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        std::throw("GLAD Initialization Error");
+        Logger_->Log("Failed To Initialize GLAD", 10);
     }
 
     // Setup Viewport
