@@ -34,7 +34,8 @@ target_link_libraries("${PROJECT_NAME}" "${YAML_CPP_VERSION}")
 
 # # Link Glad Library
 set(GLAD_VERSION "glad")
-include_directories("${LIB_DIR}/${GLAD_VERSION}")
+include_directories("${LIB_DIR}/${GLAD_VERSION}/src")
+include_directories("${LIB_DIR}/${GLAD_VERSION}/include")
 # target_link_libraries("${PROJECT_NAME}" "${GLAD_VERSION}")
 
 # Add GLFW Library
