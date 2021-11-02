@@ -38,7 +38,7 @@ void Renderer::InitializeGLFW() {
     // Read Out Width, Height
     WindowWidth_ = (*SystemConfiguration_)["WindowWidth"].as<int>();
     WindowHeight_ = (*SystemConfiguration_)["WindowHeight"].as<int>();
-    WindowTitle_ = (*SystemConfiguration_)["WindowTitle"].as<std::string>().c_str();
+    WindowTitle_ = (*SystemConfiguration_)["WindowTitle"].as<std::string>();
 
 
     // Create Window Object
