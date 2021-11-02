@@ -29,7 +29,7 @@ struct ERSImage {
 
 
 // Image Decoder Class
-class ImageDecoder {
+class ImageDecoder 
 
     private:
 
