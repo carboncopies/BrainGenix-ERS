@@ -28,15 +28,19 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 
 
 # Add YAML-CPP Library
-set(YAML_CPP_VERSION "yaml-cpp")
-add_subdirectory("${LIB_DIR}/${YAML_CPP_VERSION}")
-target_link_libraries("${PROJECT_NAME}" "${YAML_CPP_VERSION}")
+set(YAML_CPP_DIR "yaml-cpp")
+add_subdirectory("${LIB_DIR}/${YAML_CPP_DIR}")
+target_link_libraries("${PROJECT_NAME}" "${YAML_CPP_DIR}")
 
 # # Link Glad Library
-set(GLAD_VERSION "glad")
-include_directories("${LIB_DIR}/${GLAD_VERSION}/src")
-include_directories("${LIB_DIR}/${GLAD_VERSION}/include")
+set(GLAD_DIR "glad")
+include_directories("${LIB_DIR}/${GLAD_DIR}/src")
+include_directories("${LIB_DIR}/${GLAD_DIR}/include")
 # target_link_libraries("${PROJECT_NAME}" "${GLAD_VERSION}")
+
+# Add STB_Image Library
+set(STB_IMAGE_DIR "stb")
+include_directories("${LIB_DIR}/${STB_IMAGE_DIR}")
 
 # Add GLFW Library
 set(GLFW_DIR "${LIB_DIR}/glfw")
