@@ -16,7 +16,7 @@ struct ShaderoObject{
     unsigned int VertexShader;
     unsigned int FragmentShader;
 
-}
+};
 
 
 unsigned int VertexShaderCompiler(const char* VertexText, LoggerClass *Logger_);
