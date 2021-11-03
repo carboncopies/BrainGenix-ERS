@@ -156,7 +156,7 @@ bool Renderer::UpdateLoop() {
     glClear(GL_COLOR_BUFFER_BIT);
 
 
-    // bind Texture
+    // Bind Texture
     Texture_.BindTexture();
 
 
