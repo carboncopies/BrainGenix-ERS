@@ -10,7 +10,7 @@
 
 #include "Core/Renderer/VisualRenderer/WindowInputProcessor.h"
 
-void ProcessInput(GLFWwindow* Window) {
+void ProcessInput(GLFWwindow* Window, LoggerClass *Logger_) {
 
     if (glfwGetKey(Window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
         Logger_->Log("Window Shutdown Invoked By Keyboard [ESC]", 2);

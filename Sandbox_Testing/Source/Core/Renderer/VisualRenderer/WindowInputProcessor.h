@@ -9,4 +9,4 @@
 */
 
 
-void ProcessInput(GLFWwindow* Window);
+void ProcessInput(GLFWwindow* Window, LoggerClass *Logger_);
