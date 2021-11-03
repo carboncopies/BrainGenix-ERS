@@ -31,7 +31,7 @@ void TextureManager::Initialize(LoggerClass *Logger) {
 ERSTexture TextureManager::CreateTextureFromFile(const char* FilePath) {
 
     // Log Texture
-    Logger_->Log(std::string(std::string("Loading ERSTexture From File At: '") + std::string(FilePath) + std::string(".")).c_str(), 4);
+    Logger_->Log(std::string(std::string("Loading ERSTexture From File At: '") + std::string(FilePath) + std::string("'")).c_str(), 4);
 
     // Load Image
     ERSImage Image = ImageDecoder_.LoadImageFromFile(FilePath);
