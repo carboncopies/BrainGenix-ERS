@@ -38,7 +38,7 @@ class ImageDecoder {
     public:
         
         // Initialize Image Loader
-        void Initialize(LoggerClass Logger);
+        void Initialize(LoggerClass *Logger);
 
         // Load Images From Local Disk
         ERSImage LoadImageFromFile(const char* FilePath);
