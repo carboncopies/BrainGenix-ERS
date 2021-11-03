@@ -23,6 +23,7 @@ class Renderer {
         // Member Variables
         YAML::Node *SystemConfiguration_;
         LoggerClass *Logger_;
+        ShaderObject Shader_;
 
         GLFWwindow* Window_;
         int WindowWidth_;
@@ -33,6 +34,8 @@ class Renderer {
         int RenderHeight_;
 
 
+        unsigned int VAO;
+        unsigned int shaderProgram;
 
         // Member Functions
         void InitializeGLFW();

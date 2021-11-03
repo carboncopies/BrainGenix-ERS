@@ -22,18 +22,47 @@ struct ShaderObject{
     bool _FragmentShaderInitialized = false;
     bool _ShaderProgramInitialized = false;
 
-    void PopulateVertexShader(unsigned int VertexShaderInput) {
+    // Utility Functions
+    void CompileVertexShader(const char* VertexText) {
+
+        // Compile The Vertex Shader Text Into A Binary
+        VertexShader = glCreateShader(GL_VERTEX_SHADER);
+
+        glShaderSource(VertexShader, 1, &VertexText, NULL);
+        glCompileShader(VertexShader);
+
+        // Report Compilation Status
+        int VertexSuccess;
+        char VertexInfoLog[512];
+        glGetShaderiv(VertexShader, GL_COMPILE_STATUS, &VertexSuccess);
+        if (!VertexSuccess) {
+            glGetShaderInfoLog(VertexShader, 512, NULL, VertexInfoLog);
+            std::cout<<"Shader Compile Error: " << VertexInfoLog << std::endl;
+        }
 
         // Update Vars
-        VertexShader = VertexShaderInput;
         _VertexShaderInitialized = true;
 
     }
 
-    void PopulateFragmentShader(unsigned int FragmentShaderInput) {
+    void CompileFragmentShader(const char* FragmentText) {
+
+        // Compile The Fragment Shader Text Into A Binary
+        FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+
+        glShaderSource(FragmentShader, 1, &FragmentText, NULL);
+        glCompileShader(FragmentShader);
+
+        // Report Compilation Status
+        int FragmentSuccess;
+        char FragmentInfoLog[512];
+        glGetShaderiv(FragmentShader, GL_COMPILE_STATUS, &FragmentSuccess);
+        if (!FragmentSuccess) {
+            glGetShaderInfoLog(FragmentShader, 512, NULL, FragmentInfoLog);
+            std::cout<<"Shader Compile Error: " << FragmentInfoLog << std::endl;
+        }
 
         // Update Vars
-        FragmentShader = FragmentShaderInput;
         _FragmentShaderInitialized = true;
 
     }
@@ -45,6 +74,9 @@ struct ShaderObject{
             std::cout<<"Vertex/Fragment Shader Not Yet Initialized\n";
         }
 
+        // Create Shader Program
+        ShaderProgram = glCreateProgram();
+
         // Attach Shaders To Program
         glAttachShader(ShaderProgram, VertexShader);
         glAttachShader(ShaderProgram, FragmentShader);
@@ -55,11 +87,11 @@ struct ShaderObject{
 
         // Get Link Status
         int Success;
-        char InfoLog[512];
         glGetProgramiv(ShaderProgram, GL_LINK_STATUS, &Success);
         if (!Success) {
+            char InfoLog[512];
             glGetProgramInfoLog(ShaderProgram, 512, NULL, InfoLog);
-            std::cout<<InfoLog;
+            std::cout << "SHADER LINK ERROR: " << InfoLog << std::endl;
         } else {
             _ShaderProgramInitialized = true;
         }
@@ -89,12 +121,25 @@ struct ShaderObject{
     
     }
 
+
+    // Population Functions
+    void SetBool(const std::string &Name, bool Value) const
+    {         
+        glUniform1i(glGetUniformLocation(ShaderProgram, Name.c_str()), (int)Value); 
+    }
+
+    void SetInt(const std::string &Name, int Value) const
+    { 
+        glUniform1i(glGetUniformLocation(ShaderProgram, Name.c_str()), Value); 
+    }
+
+    void SetFloat(const std::string &Name, float Value) const
+    { 
+        glUniform1f(glGetUniformLocation(ShaderProgram, Name.c_str()), Value); 
+    }
+
 };
 
-
-unsigned int VertexShaderCompiler(const char* VertexText, LoggerClass *Logger_);
-
-unsigned int FragmentShaderCompiler(const char* FragmentText, LoggerClass *Logger_);
 
 ShaderObject CreateShaderObject(const char* VertexText, const char* FragmentText, LoggerClass *Logger_);
 
