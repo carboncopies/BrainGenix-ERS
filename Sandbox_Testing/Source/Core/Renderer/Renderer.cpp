@@ -14,6 +14,7 @@
 #include <GLFW/glfw3.h>
 
 #include "Core/Renderer/Renderer.h"
+#include "Core/Renderer/VisualRenderer/WindowInputProcessor.cpp"
 
 
 void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger) {
