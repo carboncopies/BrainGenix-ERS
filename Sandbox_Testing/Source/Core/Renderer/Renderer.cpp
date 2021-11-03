@@ -12,7 +12,9 @@
 #include <glad.c>
 #include <GLFW/glfw3.h>
 
+#define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h> // deleteme after implementing ersimage
+
 
 #include "Core/Renderer/VisualRenderer/WindowInputProcessor.cpp"
 #include "Core/Renderer/VisualRenderer/ShaderManager.cpp"
