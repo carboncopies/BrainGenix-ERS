@@ -21,7 +21,7 @@ void TextureManager::Initialize(LoggerClass *Logger) {
     Logger_ = Logger;
 
     // Log Init
-    Logger_.Log("Initializing Texture Manager", 5);
+    Logger_->Log("Initializing Texture Manager", 5);
 
     // Init Image Manager Instance
     ImageDecoder_.Initialize(Logger_);
