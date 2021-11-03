@@ -14,7 +14,7 @@
 #include "Core/Loader/Shaders/ShaderLoader.h"
 
 
-static const char* ReadFile(const std::string& FileName, LoggerClass *Logger_) {
+std::string ReadFile(const std::string& FileName, LoggerClass *Logger_) {
 
     // Open File
     Logger_->Log(std::string(std::string("Opening File '") + std::string(FileName) + std::string("'")).c_str(), 4);
@@ -26,7 +26,6 @@ static const char* ReadFile(const std::string& FileName, LoggerClass *Logger_) {
         Logger_->Log("Error Opening File", 10);
     }
 
-    
 
     size_t FileSize = (size_t) File.tellg();
     std::vector<char> Buffer(FileSize);
@@ -36,7 +35,10 @@ static const char* ReadFile(const std::string& FileName, LoggerClass *Logger_) {
     File.read(Buffer.data(), FileSize);
     File.close();
 
-    return std::string(Buffer.begin(), Buffer.end()).c_str();
+
+    // Convert Vector To String
+    std::string OutputString(Buffer.begin(), Buffer.end());
+    return OutputString;
 
 
 }
