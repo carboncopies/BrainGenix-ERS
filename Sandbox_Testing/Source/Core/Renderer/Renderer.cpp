@@ -157,7 +157,7 @@ bool Renderer::UpdateLoop() {
 
 
     // bind Texture
-    glBindTexture(GL_TEXTURE_2D, Textur);
+    Texture_.BindTexture();
 
 
     Shader_.MakeActive();
