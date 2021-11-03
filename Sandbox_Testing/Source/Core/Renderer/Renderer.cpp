@@ -25,7 +25,12 @@ void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *
     SystemConfiguration_ = SystemConfiguration;
     Logger_ = Logger;
 
-    // Initialize GLFW
+    // Initialize Systems
+
+    Logger_->Log("Initializing TextureManager", 5);
+    TextureManager_.Initialize(Logger_);
+    Logger_->Log("Initialized TextureManager", 4);
+
     Logger_->Log("Initializing GLFW", 5);
     InitializeGLFW();
 

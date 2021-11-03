@@ -24,6 +24,7 @@ class Renderer {
         YAML::Node *SystemConfiguration_;
         LoggerClass *Logger_;
         ShaderObject Shader_;
+        TextureManager TextureManager_;
 
         GLFWwindow* Window_;
         int WindowWidth_;
