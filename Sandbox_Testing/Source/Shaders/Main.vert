@@ -1,6 +1,13 @@
 #version 330 core
-layout (location = 0) in vec3 aPos;
+out vec4 FragColor;
+
+in vec3 ourColor;
+in vec2 TexCoord;
+
+// texture sampler
+uniform sampler2D texture1;
+
 void main()
 {
-    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+	FragColor = texture(texture1, TexCoord);
 }
