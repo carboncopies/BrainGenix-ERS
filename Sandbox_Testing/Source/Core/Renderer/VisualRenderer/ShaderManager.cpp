@@ -37,8 +37,6 @@ unsigned int VertexShaderCompiler(const char* VertexText, LoggerClass *Logger_) 
 
 }
 
-
-
 unsigned int FragmentShaderCompiler(const char* FragmentText, LoggerClass *Logger_) {
 
     // Compile The Fragment Shader Text Into A Binary
@@ -62,5 +60,21 @@ unsigned int FragmentShaderCompiler(const char* FragmentText, LoggerClass *Logge
 
     // Return ID
     return FragmentShader;
+
+}
+
+ShaderObject CreateShaderObject(const char* VertexText, const char* FragmentText, LoggerClass *Logger_) {
+
+    // Log Shader Creation
+    Logger_->Log("Creating Shader Object", 5);
+
+    // Create Shader
+    ShaderObject ShaderStruct;
+
+    ShaderStruct.VertexShader = VertexShaderCompiler(VertexText, Logger_);
+    ShaderStruct.FragmentShader = FragmentShaderCompiler(FragmentText, Logger_);
+
+    // Return Struct
+    return ShaderStruct;
 
 }

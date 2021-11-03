@@ -11,7 +11,7 @@
 #pragma once
 
 // Structure To Hold Shader Ids
-struct ShaderoObject{
+struct ShaderObject{
 
     unsigned int VertexShader;
     unsigned int FragmentShader;
@@ -22,3 +22,6 @@ struct ShaderoObject{
 unsigned int VertexShaderCompiler(const char* VertexText, LoggerClass *Logger_);
 
 unsigned int FragmentShaderCompiler(const char* FragmentText, LoggerClass *Logger_);
+
+ShaderObject CreateShaderObject(const char* VertexText, const char* FragmentText, LoggerClass *Logger_);
+
