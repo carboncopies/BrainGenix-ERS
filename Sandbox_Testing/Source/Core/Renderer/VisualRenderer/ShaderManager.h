@@ -8,4 +8,17 @@
     Date Created: 2021-11-02
 */
 
-unsigned int ShaderCompiler(const char* ShaderText, LoggerClass *Logger_);
+#pragma once
+
+// Structure To Hold Shader Ids
+struct ShaderoObject{
+
+    unsigned int VertexShader;
+    unsigned int FragmentShader;
+
+}
+
+
+unsigned int VertexShaderCompiler(const char* VertexText, LoggerClass *Logger_);
+
+unsigned int FragmentShaderCompiler(const char* FragmentText, LoggerClass *Logger_);

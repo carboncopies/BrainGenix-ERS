@@ -15,6 +15,7 @@
 
 #include "Core/Renderer/Renderer.h"
 #include "Core/Renderer/VisualRenderer/WindowInputProcessor.cpp"
+#include "Core/Renderer/VisualRenderer/ShaderManager.cpp"
 
 
 void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger) {
