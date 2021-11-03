@@ -83,7 +83,7 @@ void Renderer::InitializeOpenGL() {
 bool Renderer::UpdateLoop() {
 
     // Process Window Input
-    ProcessInput(Window_);
+    ProcessInput(Window_, Logger_);
 
     // Rendering Commands Here
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
