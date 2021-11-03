@@ -34,8 +34,6 @@ struct ERSTexture{
 
         // Generate Texture Map
         unsigned char *ImageData = FreeImage_GetBits(Image->ImageData);
-
-
         glTexImage2D(
             GL_TEXTURE_2D,
             0,
@@ -48,6 +46,9 @@ struct ERSTexture{
             ImageData
         );
         glGenerateMipmap(GL_TEXTURE_2D);
+
+        // Deallocate Image Data
+        Image->CleanUp();
 
 
     }
