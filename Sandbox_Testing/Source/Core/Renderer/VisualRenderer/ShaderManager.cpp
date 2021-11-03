@@ -10,6 +10,10 @@
 
 #include <vector>
 
+#include "Core/Loader/Shaders/ShaderLoader.cpp"
+
+#include "Core/Renderer/VisualRenderer/ShaderManager.h"
+
 
 unsigned int VertexShaderCompiler(const char* VertexText, LoggerClass *Logger_) {
 
@@ -76,5 +80,18 @@ ShaderObject CreateShaderObject(const char* VertexText, const char* FragmentText
 
     // Return Struct
     return ShaderStruct;
+
+}
+
+ShaderObject LoadShaderFromFile(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_) {
+
+    // Load Shaders From Disk Into RAM
+    Logger_->Log("Loading Shaders From Disk", 5);
+    const char* VertexText = ReadFile(VertexPath, Logger_);
+    const char* FragmentText = ReadFile(FragmentPath, Logger_);
+
+    // Return Compiled Shader
+    return CreateShaderObject(VertexText, FragmentText, Logger_);
+
 
 }

@@ -25,3 +25,4 @@ unsigned int FragmentShaderCompiler(const char* FragmentText, LoggerClass *Logge
 
 ShaderObject CreateShaderObject(const char* VertexText, const char* FragmentText, LoggerClass *Logger_);
 
+ShaderObject LoadShaderFromFile(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_);

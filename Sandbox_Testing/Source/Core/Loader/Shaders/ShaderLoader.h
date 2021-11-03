@@ -8,4 +8,4 @@
     Date Created: 2021-09-28
 */
 
-static std::vector<char> ReadFile(const std::string& FileName, LoggerClass Logger);
+static const char* ReadFile(const std::string& FileName, LoggerClass *Logger_);

@@ -79,6 +79,9 @@ void Renderer::InitializeOpenGL() {
     // Register Callback
     glfwSetFramebufferSizeCallback(Window_, FramebufferSizeCallback);
 
+    // Setup Shaders
+    ShaderObject Shader = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
+
 }
 
 bool Renderer::UpdateLoop() {

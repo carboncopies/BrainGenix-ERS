@@ -9,20 +9,21 @@
 */
  
 #include <fstream>
+#include <string>
 
 #include "Core/Loader/Shaders/ShaderLoader.h"
 
 
-static std::vector<char> ReadFile(const std::string& FileName, LoggerClass Logger) {
+static const char* ReadFile(const std::string& FileName, LoggerClass *Logger_) {
 
     // Open File
-    Logger.Log(std::string(std::string("Opening File '") + std::string(FileName) + std::string("'")).c_str(), 4);
+    Logger_->Log(std::string(std::string("Opening File '") + std::string(FileName) + std::string("'")).c_str(), 4);
 
     std::ifstream File(FileName, std::ios::ate | std::ios::binary);
 
     // Check If File Open
     if (!File.is_open()) {
-        Logger.Log("Error Opening File", 10);
+        Logger_->Log("Error Opening File", 10);
     }
 
     
@@ -35,7 +36,7 @@ static std::vector<char> ReadFile(const std::string& FileName, LoggerClass Logge
     File.read(Buffer.data(), FileSize);
     File.close();
 
-    return Buffer;
+    return std::string(Buffer.begin(), Buffer.end()).c_str();
 
 
 }
