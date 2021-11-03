@@ -24,7 +24,10 @@ class Renderer {
         YAML::Node *SystemConfiguration_;
         LoggerClass *Logger_;
         ShaderObject Shader_;
+        ERSTexture Texture_;
         TextureManager TextureManager_;
+
+
 
         GLFWwindow* Window_;
         int WindowWidth_;
@@ -37,6 +40,7 @@ class Renderer {
 
         unsigned int VAO;
         unsigned int shaderProgram;
+
 
         // Member Functions
         void InitializeGLFW();

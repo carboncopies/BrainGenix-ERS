@@ -88,6 +88,11 @@ void Renderer::InitializeOpenGL() {
     // Setup Shaders
     Shader_ = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
 
+    // Setup Textures
+    Texture_ = TextureManager_.CreateTextureFromFile("Assets/container.jpg");
+
+
+
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
     float vertices[] = {
