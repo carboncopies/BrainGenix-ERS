@@ -155,6 +155,11 @@ bool Renderer::UpdateLoop() {
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
+
+    // bind Texture
+    glBindTexture(GL_TEXTURE_2D, Textur);
+
+
     Shader_.MakeActive();
     // // draw our first triangle
     // glUseProgram(shaderProgram);
