@@ -33,10 +33,20 @@ struct ERSTexture{
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
         // Generate Texture Map
-        unsigned char *ImageData = Image.ImageData->FreeImage_GetBits();
+        unsigned char *ImageData = Image->ImageData.FreeImage_GetBits();
 
 
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, ImageData);
+        glTexImage2D(
+            GL_TEXTURE_2D,
+            0,
+            GL_RGB,
+            Image->Width,
+            Image->Height,
+            0,
+            GL_RGB,
+            GL_UNSIGNED_BYTE,
+            ImageData
+        );
         glGenerateMipmap(GL_TEXTURE_2D);
 
 
