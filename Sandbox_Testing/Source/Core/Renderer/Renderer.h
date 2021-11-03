@@ -37,7 +37,7 @@ class Renderer {
         // Member Functions
         void InitializeGLFW();
         void InitializeOpenGL();
-
+        void ProcessInput(GLFWwindow* Window);
 
 
 

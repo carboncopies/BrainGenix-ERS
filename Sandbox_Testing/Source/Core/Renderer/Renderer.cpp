@@ -13,8 +13,6 @@
 
 #include <GLFW/glfw3.h>
 
-
-
 #include "Core/Renderer/Renderer.h"
 
 
@@ -83,6 +81,9 @@ void Renderer::InitializeOpenGL() {
 
 bool Renderer::UpdateLoop() {
 
+    // Process Window Input
+    ProcessInput(Window_);
+
     // Update Window Stuff
     glfwSwapBuffers(Window_);
     glfwPollEvents();
@@ -99,6 +100,13 @@ bool Renderer::UpdateLoop() {
 
 }
 
+void Renderer::ProcessInput(GLFWwindow* Window) {
+
+    if (glfwGetKey(Window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+        glfwSetWindowShouldClose(Window, true);
+    }
+
+}
 
 void Renderer::CleanUp() {
 
