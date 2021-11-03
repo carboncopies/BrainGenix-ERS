@@ -84,7 +84,8 @@ bool Renderer::UpdateLoop() {
     // Process Window Input
     ProcessInput(Window_);
 
-    // Render Stuff
+    // Rendering Commands Here
+    
 
 
     // Update Window Stuff
