@@ -46,4 +46,23 @@ struct ERSTexture{
 };
 
 
-class TextureManager
+// Handles The Creation And Deletion Of Textures
+class TextureManager {
+
+    private:
+
+        // Pointers
+        LoggerClass *Logger_;
+
+        // Instances
+        ImageDecoder ImageDecoder_;
+
+
+    public:
+
+        void Initialize(LoggerClass *Logger);
+
+        ERSTexture CreateTextureFromFile(const char* FilePath);
+
+
+};

@@ -11,3 +11,31 @@
 
 
 #include "Core/Renderer/VisualRenderer/TextureManager.h"
+
+
+
+void TextureManager::Initialize(LoggerClass *Logger) {
+
+    // Create Pointers
+    Logger_ = Logger;
+
+    // Log Init
+    Logger_.Log("Initializing Texture Manager", 5);
+
+    // Init Image Manager Instance
+    ImageDecoder_.Initialize(Logger_);
+
+}
+
+ERSTexture TextureManager::CreateTextureFromFile(const char* FilePath) {
+
+    // Load Image
+    ERSImage Image = ImageDecoder_.LoadImageFromFile(FilePath);
+
+    // Create Texture Struct
+    ERSTexture Texture;
+    Texture.InitializeTexture(&Image);
+
+    return Texture;
+
+}
