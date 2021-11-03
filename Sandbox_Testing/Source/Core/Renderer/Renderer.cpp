@@ -85,7 +85,8 @@ bool Renderer::UpdateLoop() {
     ProcessInput(Window_);
 
     // Rendering Commands Here
-    
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
 
 
     // Update Window Stuff
