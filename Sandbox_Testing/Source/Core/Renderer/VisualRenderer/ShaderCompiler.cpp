@@ -3,10 +3,7 @@
 //======================================================================//
 
 /*
-    Description: This is the window input processor.
+    Description: This is the shader compiler.
     Additonal Notes: None
     Date Created: 2021-11-02
 */
-
-
-void ProcessInput(GLFWwindow* Window, LoggerClass *Logger_);
