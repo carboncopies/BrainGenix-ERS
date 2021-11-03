@@ -26,10 +26,24 @@ struct ERSTexture{
         glGenTextures(1, &Texture);
         glBindTexture(GL_TEXTURE_2D, Texture);
 
-        
+        // Set Texture Properties
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        // Generate Texture Map
+        unsigned char *ImageData = Image.ImageData->FreeImage_GetBits();
+
+
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, ImageData);
+        glGenerateMipmap(GL_TEXTURE_2D);
 
 
     }
 
 
 };
+
+
+class TextureManager
