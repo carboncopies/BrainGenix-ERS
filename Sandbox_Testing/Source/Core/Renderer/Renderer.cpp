@@ -84,6 +84,9 @@ bool Renderer::UpdateLoop() {
     // Process Window Input
     ProcessInput(Window_);
 
+    // Render Stuff
+
+
     // Update Window Stuff
     glfwSwapBuffers(Window_);
     glfwPollEvents();
@@ -103,7 +106,7 @@ bool Renderer::UpdateLoop() {
 void Renderer::ProcessInput(GLFWwindow* Window) {
 
     if (glfwGetKey(Window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-        Logger_->Log("Window Shutdown Invoked By Keyboard [ESC]", 8);
+        Logger_->Log("Window Shutdown Invoked By Keyboard [ESC]", 2);
         glfwSetWindowShouldClose(Window, true);
     }
 
