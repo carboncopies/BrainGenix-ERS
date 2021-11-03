@@ -14,7 +14,7 @@
 
 
 // Initialize The Class
-void ImageDecoder::Initialize(LoggerClass Logger) {
+void ImageDecoder::Initialize(LoggerClass *Logger) {
 
     // Make Reference To Logger
     Logger_ = Logger;
