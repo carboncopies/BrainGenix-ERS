@@ -82,6 +82,8 @@ void Renderer::InitializeOpenGL() {
     // Setup Shaders
     ShaderObject Shader = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
 
+    Shader.CreateShaderPogram();
+
 }
 
 bool Renderer::UpdateLoop() {

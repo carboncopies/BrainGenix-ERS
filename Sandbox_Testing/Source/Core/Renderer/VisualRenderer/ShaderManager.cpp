@@ -75,8 +75,8 @@ ShaderObject CreateShaderObject(const char* VertexText, const char* FragmentText
     // Create Shader
     ShaderObject ShaderStruct;
 
-    ShaderStruct.VertexShader = VertexShaderCompiler(VertexText, Logger_);
-    ShaderStruct.FragmentShader = FragmentShaderCompiler(FragmentText, Logger_);
+    ShaderStruct.PopulateVertexShader(VertexShaderCompiler(VertexText, Logger_));
+    ShaderStruct.PopulateFragmentShader(FragmentShaderCompiler(FragmentText, Logger_));
 
     // Return Struct
     return ShaderStruct;
