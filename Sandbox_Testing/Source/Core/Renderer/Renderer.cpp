@@ -14,6 +14,7 @@
 
 #include "Core/Renderer/VisualRenderer/WindowInputProcessor.cpp"
 #include "Core/Renderer/VisualRenderer/ShaderManager.cpp"
+#include "Core/Renderer/VisualRenderer/TextureManager.cpp"
 
 #include "Core/Renderer/Renderer.h"
 

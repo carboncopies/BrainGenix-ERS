@@ -20,7 +20,7 @@ struct ERSImage {
     int Channels = 0;
 
     // Image Data Destructor
-    CleanUp() {
+    void CleanUp() {
         FreeImage_Unload(ImageData);
     }
 

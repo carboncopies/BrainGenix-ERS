@@ -9,6 +9,7 @@
 */
 
 
+#include "Core/Loader/Decoder/Image/ImageDecoder.cpp"
 
 #include "Core/Renderer/VisualRenderer/TextureManager.h"
 
