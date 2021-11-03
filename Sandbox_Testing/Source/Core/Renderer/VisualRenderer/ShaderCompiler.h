@@ -7,3 +7,5 @@
     Additonal Notes: None
     Date Created: 2021-11-02
 */
+
+unsigned int ShaderCompiler(const char* ShaderText, LoggerClass *Logger_);
