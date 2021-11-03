@@ -33,7 +33,7 @@ class ImageDecoder
 
     private:
 
-        LoggerClass Logger_;
+        LoggerClass *Logger_;
 
     public:
         

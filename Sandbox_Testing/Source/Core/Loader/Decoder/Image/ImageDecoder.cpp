@@ -20,9 +20,9 @@ void ImageDecoder::Initialize(LoggerClass Logger) {
     Logger_ = Logger;
 
     // Initialize System
-    Logger_.Log("Initializing Image Decoding Subsystem", 4);
+    Logger_->Log("Initializing Image Decoding Subsystem", 4);
 
-    Logger_.Log("Initializing FreeImage", 3);
+    Logger_->Log("Initializing FreeImage", 3);
     FreeImage_Initialise();
 
 }
