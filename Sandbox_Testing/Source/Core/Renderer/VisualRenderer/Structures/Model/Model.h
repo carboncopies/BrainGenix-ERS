@@ -28,7 +28,7 @@ class ERS_OBJECT_MODEL {
         void LoadModelFromFile(std::string const &Path);
 
         // Draw Model
-        void DrawModel();
+        void Draw(ERS_OBJECT_SHADER &Shader);
 
 
 

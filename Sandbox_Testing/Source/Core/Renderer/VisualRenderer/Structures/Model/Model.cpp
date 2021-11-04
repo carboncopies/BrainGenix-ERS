@@ -49,3 +49,13 @@ void ERS_OJBECT_MODEL::LoadModelFromFile(std::string const &Path) {
 
 
 }
+
+// Draw Model
+void ERS_OBJECT_MODEL::Draw(ERS_OBJECT_SHADER &Shader) {
+
+    // Draw All Meshes
+    for (unsigned int i=0; i<Meshes.size(), i++) {
+        Meshes[i].Draw(Shader);
+    }
+
+}
