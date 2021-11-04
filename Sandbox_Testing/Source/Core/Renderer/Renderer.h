@@ -28,6 +28,7 @@ class Renderer {
         ERSTexture Texture2;
         TextureManager TextureManager_;
 
+        ERSStaticMesh Cube_;
 
 
         GLFWwindow* Window_;
@@ -38,7 +39,7 @@ class Renderer {
         int RenderWidth_;
         int RenderHeight_;
 
-        unsigned int VBO, VAO;
+        
 
 
 
