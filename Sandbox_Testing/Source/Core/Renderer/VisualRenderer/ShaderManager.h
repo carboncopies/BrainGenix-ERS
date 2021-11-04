@@ -11,7 +11,7 @@
 #pragma once
 
 // Structure To Hold Shader Ids
-struct ShaderObject{
+struct ERS_OBJECT_SHADER {
 
     unsigned int ShaderProgram;
 
