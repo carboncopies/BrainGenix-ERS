@@ -8,3 +8,11 @@
     Date Created: 2021-11-04
 */
 
+struct ERSStaticMesh {
+
+    
+
+
+
+
+};

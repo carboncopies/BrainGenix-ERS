@@ -39,7 +39,7 @@ class Renderer {
         int RenderHeight_;
 
         unsigned int VBO, VAO;
-        unsigned int shaderProgram;
+
 
 
 
