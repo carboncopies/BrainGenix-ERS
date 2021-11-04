@@ -39,7 +39,7 @@ include_directories("${LIB_DIR}/${GLAD_DIR}/include")
 
 # Add GLM Library
 set(GLM_DIR "glm")
-include_directories("${LIB_DIR}/${GLM_DIR}")
+add_subdirectory("${LIB_DIR}/${GLM_DIR}")
 
 # Add GLFW Library
 set(GLFW_DIR "${LIB_DIR}/glfw")
