@@ -3,7 +3,7 @@
 //======================================================================//
 
 /*
-    Description: This file creates the ERSStaticMesh Struct/Functions.
+    Description: This file creates the ERSMesh Struct/Functions.
     Additonal Notes: None
     Date Created: 2021-11-04
 */

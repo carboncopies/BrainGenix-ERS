@@ -5,7 +5,7 @@
 /*
     Description: This is the 2d texture struct.
     Additonal Notes: None
-    Date Created: 2021-11-01
+    Date Created: 2021-11-04
 */
 
 #pragma once
