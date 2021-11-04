@@ -3,43 +3,55 @@
 //======================================================================//
 
 /*
-    Description: This file creates the ERSVertices Struct/Functions.
+    Description: This file creates the ERSMesh Struct/Functions.
     Additonal Notes: None
     Date Created: 2021-11-04
-*/
+*/ 
 
 #pragma once
 
-#include <glm/glm.hpp>
+// Holds The Mesh Object
+class ERS_OBJECT_MESH {
 
-#define MAX_BONE_INFLUENCE 4
+    private:
+
+        // OpenGL Handles
+        unsigned int VBO;
+        unsigned int EBO;
+
+        // Delcare Methods
+        void SetupMesh();
+
+    public:
+
+        // Setup Mesh Data
+        std::vector<ERS_OBJECT_VERTICES> Vertices;
+        std::vector<unsigned int> Indices;
+        std::vector<ERS_OBJECT_TEXTURE> Textures;
+
+        // Setup OpenGL Handel
+        unsigned int VAO;
+
+        // Define Helper Vars
+        _HasInitialized = false;
 
 
-struct ERS_OBJECT_VERTICES {
+        // Setup Mesh Constructor
+        ERS_OBJECT_MESH(std::vector<ERS_OBJECT_VERTICES> Vertices, std::vector<unsigned int> Indices, std::vector<ERS_OBJECT_TEXTURE> Textures) {
 
-    // Set Metadata
-    glm::vec3 Position;
-    glm::vec3 Normal;
-    glm::vec3 TexCoords;
-    glm::vec3 Tangent;
-    glm::vec3 Bitangent;
+            // Populate Data
+            this->Vertices = Vertices;
+            this->Indices = Indices;
+            this->Textures = Textures;
 
-    int BoneIDs[MAX_BONE_INFLUENCE];
-    float Weights[MAX_BONE_INFLUENCE];
+            // Initialize The Mesh
+            SetupMesh();
 
+            // Update Helper Bool
+            _HasInitialized = true;
 
-    // Set Helper Vars
-    _HasInitialized = false;
+        }
 
-
-    // Define Helper Functions
-    void Initialize() {
-        _HasInitialized = true;
-    }
-
-    void IsInitialized() {
-        return _HasInitialized;
-    }
-
+        void Draw(ERS_OBJECT_SHADER &Shader);
 
 };
