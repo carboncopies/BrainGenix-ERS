@@ -59,3 +59,28 @@ void ERS_OBJECT_MODEL::Draw(ERS_OBJECT_SHADER &Shader) {
     }
 
 }
+
+// Process Nodes
+void ERS_OBJECT_MODEL::ProcessNode(aiNode *Node, const aiScene *Scene) {
+
+    // Process Meshes In Current Node
+    for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
+        aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
+        Meshes.push_back(ProcessMesh(Mesh, Scene));
+    }
+
+    // Process Children Nodes
+    for (unsigned int i = 0; i < Node->mNumChildren; i++) {
+        ProcessNode(Node->mChildren[i], Scene);
+    }
+
+
+}
+
+// Process Mesh
+ERS_OBJECT_MESH ERS_OBJECT_MODEL::ProcessMesh(aiMesh *Mesh, const aiScene *Scene) {
+
+    
+
+}
+

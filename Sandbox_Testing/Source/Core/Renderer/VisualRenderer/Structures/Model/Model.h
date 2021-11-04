@@ -16,6 +16,11 @@ class ERS_OBJECT_MODEL {
 
     private:
 
+        void ProcessNode(aiNode *Node, const aiScene *Scene);
+
+        ERS_OBJECT_MESH ProcessMesh(aiMesh *Mesh, const aiScene *Scene);
+
+
     public:
 
         // Model Data
