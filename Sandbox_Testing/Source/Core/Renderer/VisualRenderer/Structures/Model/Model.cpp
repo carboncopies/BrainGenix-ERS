@@ -80,7 +80,133 @@ void ERS_OBJECT_MODEL::ProcessNode(aiNode *Node, const aiScene *Scene) {
 // Process Mesh
 ERS_OBJECT_MESH ERS_OBJECT_MODEL::ProcessMesh(aiMesh *Mesh, const aiScene *Scene) {
 
-    
+    // Create Data Holders
+    std::vector<ERS_OBJECT_VERTEX> Vertices;
+    std::vector<unsigned int> Indices;
+    std::vector<ERS_OBJECT_TEXTURE> Textures;
+
+    // Iterate Through Meshes' Vertices
+    for (unsigned int i = 0; i < Mesh->mNumVertices; i++) {
+
+        // Hold Vertex Data
+        ERS_OBJECT_VERTEX Vertex;
+        glm::vec3 Vector;
+
+
+        Vector.x = Mesh->mVertices[i].x;
+        Vector.y = Mesh->mVertices[i].y;
+        Vector.z = Mesh->mVertices[i].z;
+        Vertex.Position = Vector;
+
+        if (Mesh->HasNormals())
+        {
+            Vector.x = Mesh->mNormals[i].x;
+            Vector.y = Mesh->mNormals[i].y;
+            Vector.z = Mesh->mNormals[i].z;
+            Vertex.Normal = Vector;
+        }
+
+        if (Mesh->mTextureCoords[0]) {
+
+            glm::vec2 Vec;
+
+            // Get Texture Coordinates
+            Vec.x = Mesh->mTextureCoords[0][i].x;
+            Vec.y = Mesh->mTextureCoords[0][i].y;
+            Vertex.TexCoords = Vec;
+
+            // Tangent
+            Vector.x = Mesh->mTangents[i].x;
+            Vector.y = Mesh->mTangents[i].y;
+            Vector.z = Mesh->mTangents[i].z;
+            Vertex.Tangent = Vector;
+
+            // Bitangent
+            Vector.x = Mesh->mBitangents[i].x;
+            Vector.y = Mesh->mBitangents[i].y;
+            Vector.z = Mesh->mBitangents[i].z;
+            Vertex.Bitangent = Vector;
+
+        } else {
+            Vertex.TexCoords = glm::vec2(0.0f, 0.0f);
+        }
+
+        Vertices.push_bach(Vertex);
+
+
+
+    }
+
+    // Iterate Through Faces
+    for (unsigned int i = 0; i < Mesh->mNumFaces; i++) {
+
+        aiFace Face = Mesh->mFaces[i];
+
+        // Get Face Indices
+        for (unsigned int j = 0; i < Face.mNumIndices; j++) {
+            Indices.push_back(Face.mIndices[j]);
+        }
+    }
+
+    // Process Materials
+    aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
+
+    // Diffuse Maps
+    std::vector<ERS_OBJECT_TEXTURE> DiffuseMaps = loadMaterialTextures(Material, aiTextureType_DIFFUSE, "texture_diffuse");
+    Textures.insert(Textures.end(), DiffuseMaps.begin(), DiffuseMaps.end());
+    // 2. specular maps
+    std::vector<ERS_OBJECT_TEXTURE> SpecularMaps = loadMaterialTextures(Material, aiTextureType_SPECULAR, "texture_specular");
+    Textures.insert(Textures.end(), SpecularMaps.begin(), SpecularMaps.end());
+    // 3. normal maps
+    std::vector<ERS_OBJECT_TEXTURE> NormalMaps = loadMaterialTextures(Material, aiTextureType_HEIGHT, "texture_normal");
+    Textures.insert(Textures.end(), NormalMaps.begin(), NormalMaps.end());
+    // 4. height maps
+    std::vector<ERS_OBJECT_TEXTURE> HeightMaps = loadMaterialTextures(Material, aiTextureType_AMBIENT, "texture_height");
+    Textures.insert(Textures.end(), HeightMaps.begin(), HeightMaps.end());
+
+    // Mesh Object
+    return ERS_OBJECT_MESH(Vertices, Indices, Textures);
 
 }
+
+// Check Material Textures
+std::vector<ERS_TEXTURE_OBJECT> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, string TypeName) {
+
+    std::vector<ERS_TEXTURE_OBJECT> Textures;
+    for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {
+
+        aiString Str;
+        Mat->GetTexture(Type, i, &Str);
+
+        bool Skip = false;
+        
+        // Check If Texture Already Loaded
+        for (unsigned int j = 0; j < Textures_Loaded.size(); j++) {
+
+            if (std::strcmp(Textures_Loaded[j].Path.Data(), Str.C_Str()) == 0) {
+                Textures.push_back(Textures_Loaded[j]);
+                Skip = true;
+                break;
+            }
+
+        }
+        // If Texture Not Already Loaded
+        if (!Skip) {
+            
+            ERS_OBJECT_TEXTURE Texture;
+            Texture.ID = TextureFromFile(Str.C_Str(), this->Directory);
+            Texture.Type = TypeName;
+            Texture.Path = Str.C_Str();
+            Textures.push_back(Texture);
+            Textures_Loaded.push_back(Texture);
+
+        }
+
+        return Textures;
+
+    }
+
+
+}
+
 

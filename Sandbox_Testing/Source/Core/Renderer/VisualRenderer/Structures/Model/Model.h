@@ -20,6 +20,8 @@ class ERS_OBJECT_MODEL {
 
         ERS_OBJECT_MESH ProcessMesh(aiMesh *Mesh, const aiScene *Scene);
 
+        std::vector<ERS_TEXTURE_OBJECT> LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, string TypeName);
+
 
     public:
 

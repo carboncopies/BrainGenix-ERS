@@ -37,6 +37,9 @@ set(GLAD_DIR "glad")
 include_directories("${LIB_DIR}/${GLAD_DIR}/src")
 include_directories("${LIB_DIR}/${GLAD_DIR}/include")
 
+# Add STB Image Library
+add_subdirectory("${LIB_DIR}/stb")
+
 # Add GLM Library
 set(GLM_DIR "glm")
 add_subdirectory("${LIB_DIR}/${GLM_DIR}")
