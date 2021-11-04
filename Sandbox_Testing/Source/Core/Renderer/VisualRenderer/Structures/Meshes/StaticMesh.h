@@ -8,44 +8,16 @@
     Date Created: 2021-11-04
 */
 
-struct ERS_STRUCTURE_MESH_STATIC {
+struct ERS_STRUCTURE_MESH {
 
-    // Create OpenGL Handles
-    unsigned int VAO;
-    unsigned int VBO;
+    // Set Metadata
+    glm::vec3 Position;
+    glm::vec3 Normal;
+    glm::vec3 TexCoords;
+    glm::vec3 Tangent;
+    glm::vec3 Bitangent;
 
-    // Helper Bools
-    bool _HasPopulated = false;
 
-
-    // Creation Functions
-    void SetupMesh(float Vertices[]) {
-
-        // Setup Vertex Buffers
-        glGenVertexArrays(1, &VAO);
-        glGenBuffers(1, &VBO);
-
-        // Bind To Buffer
-        glBindVertexArray(VAO);
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-        // Push In Data
-        glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
-
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-        glEnableVertexAttribArray(0);
-
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-        glEnableVertexAttribArray(1);
-
-        // Update Helper Bool
-        _HasPopulated = true;
-
-    }
-
-    void BindVertexArray() {
-        glBindVertexArray(VAO);
-    } 
 
 
 
