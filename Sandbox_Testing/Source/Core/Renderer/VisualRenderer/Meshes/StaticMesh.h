@@ -38,6 +38,9 @@ struct ERSStaticMesh {
         glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
         glEnableVertexAttribArray(1);
 
+        // Update Helper Bool
+        _HasPopulated = true;
+
     }
 
     void BindVertexArray() {
