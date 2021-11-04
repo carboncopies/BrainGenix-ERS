@@ -8,7 +8,7 @@
     Date Created: 2021-11-04
 */
 
-struct ERSStaticMesh {
+struct ERS_STRUCTURE_MESH_STATIC {
 
     // Create OpenGL Handles
     unsigned int VAO;
