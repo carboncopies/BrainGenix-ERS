@@ -193,7 +193,7 @@ void Renderer::InitializeOpenGL() {
 
 }
 
-bool Renderer::UpdateLoop() {
+bool Renderer::UpdateLoop() { 
 
     // Process Window Input
     ProcessInput(Window_, Logger_);
