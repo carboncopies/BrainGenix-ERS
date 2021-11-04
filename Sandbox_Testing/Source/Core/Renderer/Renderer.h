@@ -38,9 +38,6 @@ class Renderer {
         int RenderWidth_;
         int RenderHeight_;
 
-        const unsigned int SCR_WIDTH = 800;
-        const unsigned int SCR_HEIGHT = 600;
-
         unsigned int VBO, VAO;
         unsigned int shaderProgram;
 

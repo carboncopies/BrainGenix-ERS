@@ -90,10 +90,6 @@ void Renderer::InitializeGLFW() {
 
 void Renderer::InitializeOpenGL() {
 
-    // Setup GLAD
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        Logger_->Log("Failed To Initialize GLAD", 10);
-    }
 
     // Setup Viewport
     Logger_->Log("Read Configuration File For 'RenderWidth' Parameter", 1);
@@ -101,10 +97,13 @@ void Renderer::InitializeOpenGL() {
     Logger_->Log("Read Configuration File For 'RenderHeight' Parameter", 1);
     RenderHeight_ = (*SystemConfiguration_)["RenderHeight"].as<int>();
 
-    glViewport(0, 0, RenderWidth_, RenderHeight_);
-
     // Register Callback
     glfwSetFramebufferSizeCallback(Window_, FramebufferSizeCallback);
+
+    // Setup GLAD
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        Logger_->Log("Failed To Initialize GLAD", 10);
+    }
 
 
     // Draw Faces In Front First
@@ -119,7 +118,7 @@ void Renderer::InitializeOpenGL() {
     Texture2 = TextureManager_.CreateTextureFromFile("Assets/awesomeface.png");
 
 
-// set up vertex data (and buffer(s)) and configure vertex attributes
+    // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
     float vertices[] = {
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -201,7 +200,7 @@ bool Renderer::UpdateLoop() {
 
     // Rendering Commands Here
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
     // bind Texture
@@ -216,7 +215,7 @@ bool Renderer::UpdateLoop() {
     // create transformations
     glm::mat4 view          = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     glm::mat4 projection    = glm::mat4(1.0f);
-    projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+    projection = glm::perspective(glm::radians(45.0f), (float)WindowWidth_ / (float)WindowHeight_, 0.1f, 100.0f);
     view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
     // pass transformation matrices to the shader
     Shader_.SetMat4("projection", projection); // note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
