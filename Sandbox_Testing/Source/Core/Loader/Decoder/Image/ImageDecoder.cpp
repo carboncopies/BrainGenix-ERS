@@ -36,13 +36,12 @@ ERSImage ImageDecoder::LoadImageFromFile(const char* FilePath) {
     // Load Image
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileType(FilePath, 0);
     ImageStruct.ImageData = FreeImage_Load(Format, FilePath);
-
-
+    
     // Set Properties
     ImageStruct.Width = FreeImage_GetWidth(ImageStruct.ImageData);
     ImageStruct.Height = FreeImage_GetHeight(ImageStruct.ImageData);
-    ImageStruct.Channels = FreeImage_GetColorsUsed(ImageStruct.ImageData);
-    //std::cout<<FreeImage_GetColorsUsed(ImageStruct.ImageData)<<"\n";
+    ImageStruct.Channels = FreeImage_GetLine(ImageStruct.ImageData) / FreeImage_GetWidth(ImageStruct.ImageData);
+
 
     // Return Data
     return ImageStruct;

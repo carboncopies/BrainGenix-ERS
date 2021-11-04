@@ -24,7 +24,8 @@ class Renderer {
         YAML::Node *SystemConfiguration_;
         LoggerClass *Logger_;
         ShaderObject Shader_;
-        ERSTexture Texture_;
+        ERSTexture Texture1;
+        ERSTexture Texture2;
         TextureManager TextureManager_;
 
 

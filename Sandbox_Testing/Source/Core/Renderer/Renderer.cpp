@@ -12,10 +12,6 @@
 #include <glad.c>
 #include <GLFW/glfw3.h>
 
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h> // deleteme after implementing ersimage
-
-
 #include "Core/Renderer/VisualRenderer/WindowInputProcessor.cpp"
 #include "Core/Renderer/VisualRenderer/ShaderManager.cpp"
 #include "Core/Renderer/VisualRenderer/TextureManager.cpp"
@@ -93,8 +89,8 @@ void Renderer::InitializeOpenGL() {
     Shader_ = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
 
     // Setup Textures
-    Texture_ = TextureManager_.CreateTextureFromFile("Assets/container.jpg");
-
+    Texture1 = TextureManager_.CreateTextureFromFile("Assets/container.jpg");
+    Texture2 = TextureManager_.CreateTextureFromFile("Assets/awesomeface.png");
 
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
@@ -106,11 +102,11 @@ void Renderer::InitializeOpenGL() {
         -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // bottom left
         -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // top left 
     };
-    unsigned int indices[] = {  
+    unsigned int indices[] = {
         0, 1, 3, // first triangle
         1, 2, 3  // second triangle
     };
-    
+    VBO, VAO, EBO;
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glGenBuffers(1, &EBO);
@@ -135,41 +131,13 @@ void Renderer::InitializeOpenGL() {
 
 
 
-
-
-
-    unsigned int texture;
-    glGenTextures(1, &texture);
-    glBindTexture(GL_TEXTURE_2D, texture); // all upcoming GL_TEXTURE_2D operations now have effect on this texture object
-    // set the texture wrapping parameters
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    // set texture filtering parameters
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    // load image, create texture and generate mipmaps
-    int width, height, nrChannels;
-    // The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
-    unsigned char *data = stbi_load("Assets/container.jpg", &width, &height, &nrChannels, 0);
-    if (data)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-        std::cout << "Failed to load texture" << std::endl;
-    }
-    stbi_image_free(data);
-
-
-
-
-
-
     // uncomment this call to draw in wireframe polygons.
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
+    Shader_.MakeActive();
+
+    Shader_.SetInt("texture1", 0);
+    Shader_.SetInt("texture2", 1);
 
 
 }
@@ -184,13 +152,21 @@ bool Renderer::UpdateLoop() {
     glClear(GL_COLOR_BUFFER_BIT);
 
 
-    // Bind Texture
-    Texture_.BindTexture();
+    // bind Texture
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, Texture1.Texture);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, Texture2.Texture);
 
 
-    Shader_.MakeActive();
-    glBindVertexArray(VAO);
+
+
+    // // draw our first triangle
+    // glUseProgram(shaderProgram);
+    glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
+    //glDrawArrays(GL_TRIANGLES, 0, 6);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    // glBindVertexArray(0); // no need to unbind it every time 
 
 
     // Update Window Stuff
