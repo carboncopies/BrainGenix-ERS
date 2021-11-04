@@ -11,7 +11,7 @@
 #pragma once
 
 // Holds The Mesh Object
-class ERS_OBJECT_MODEL {
+class ERS_OBJECT_MESH {
 
     private:
 
@@ -25,7 +25,7 @@ class ERS_OBJECT_MODEL {
     public:
 
         // Setup Mesh Data
-        std::vector<ERS_OBJECT_MESH> Vertices;
+        std::vector<ERS_OBJECT_VERTICES> Vertices;
         std::vector<unsigned int> Indices;
         std::vector<ERS_OBJECT_TEXTURE> Textures;
 
@@ -37,7 +37,7 @@ class ERS_OBJECT_MODEL {
 
 
         // Setup Mesh Constructor
-        ERS_OBJECT_MESH(std::vector<ERS_OBJECT_MESH> Vertices, std::vector<unsigned int> Indices, std::vector<ERS_OBJECT_TEXTURE> Textures) {
+        ERS_OBJECT_MESH(std::vector<ERS_OBJECT_VERTICES> Vertices, std::vector<unsigned int> Indices, std::vector<ERS_OBJECT_TEXTURE> Textures) {
 
             // Populate Data
             this->Vertices = Vertices;

@@ -31,7 +31,7 @@ void ERS_OBJECT_MODEL::SetupMesh() {
     
     // Populate Vertex Buffer
     glBindBuffeR(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, Vertices.size() * sizeof(ERS_OBJECT_MESH), &Vertices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, Vertices.size() * sizeof(ERS_OBJECT_VERTICES), &Vertices[0], GL_STATIC_DRAW);
 
     // Populate Element Buffer
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
@@ -42,31 +42,31 @@ void ERS_OBJECT_MODEL::SetupMesh() {
     
     // Position Data
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_MESH), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTICES), (void*)0);
 
     // Normals Data
     glEnableVertexAttribArray(1);	
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_MESH), (void*)offsetof(ERS_OBJECT_MESH, Normal));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTICES), (void*)offsetof(ERS_OBJECT_VERTICES, Normal));
 
     // Texture Coordinate Data
     glEnableVertexAttribArray(2);	
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_MESH), (void*)offsetof(ERS_OBJECT_MESH, TexCoords));
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTICES), (void*)offsetof(ERS_OBJECT_VERTICES, TexCoords));
 
     // Vertex Tangent
     glEnableVertexAttribArray(3);
-    glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_MESH), (void*)offsetof(ERS_OBJECT_MESH, Tangent));
+    glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTICES), (void*)offsetof(ERS_OBJECT_VERTICES, Tangent));
 
     // Vertex Bitangent
     glEnableVertexAttribArray(4);
-    glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_MESH), (void*)offsetof(ERS_OBJECT_MESH, Bitangent));
+    glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTICES), (void*)offsetof(ERS_OBJECT_VERTICES, Bitangent));
 
     // IDs
     glEnableVertexAttribArray(5);
-    glVertexAttribIPointer(5, 4, GL_INT, sizeof(ERS_OBJECT_MESH), (void*)offsetof(ERS_OBJECT_MESH, m_BoneIDs));
+    glVertexAttribIPointer(5, 4, GL_INT, sizeof(ERS_OBJECT_VERTICES), (void*)offsetof(ERS_OBJECT_VERTICES, BoneIDs));
 
     // Weights
     glEnableVertexAttribArray(6);
-    glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_MESH), (void*)offsetof(ERS_OBJECT_MESH, m_Weights));
+    glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTICES), (void*)offsetof(ERS_OBJECT_VERTICES, Weights));
 
     // Unbind From Vert Array
     glBindVertexArray(0);
