@@ -8,6 +8,9 @@
     Date Created: 2021-11-04
 */ 
 
+#include <vector>
+#include <string>
+
 #include "Core/Renderer/VisualRenderer/ShaderManager.cpp"
 #include "Core/Renderer/VisualRenderer/Structures/Textures/2DTexture.h"
 #include "Core/Renderer/VisualRenderer/Structures/Meshes/Mesh.h"
@@ -37,6 +40,37 @@ void ERS_OBJECT_MODEL::SetupMesh() {
 
     // Set Vertex Attribute Pointers
     
+    // Position Data
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_MESH), (void*)0);
+
+    // Normals Data
+    glEnableVertexAttribArray(1);	
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_MESH), (void*)offsetof(ERS_OBJECT_MESH, Normal));
+
+    // Texture Coordinate Data
+    glEnableVertexAttribArray(2);	
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_MESH), (void*)offsetof(ERS_OBJECT_MESH, TexCoords));
+
+    // Vertex Tangent
+    glEnableVertexAttribArray(3);
+    glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_MESH), (void*)offsetof(ERS_OBJECT_MESH, Tangent));
+
+    // Vertex Bitangent
+    glEnableVertexAttribArray(4);
+    glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_MESH), (void*)offsetof(ERS_OBJECT_MESH, Bitangent));
+
+    // IDs
+    glEnableVertexAttribArray(5);
+    glVertexAttribIPointer(5, 4, GL_INT, sizeof(ERS_OBJECT_MESH), (void*)offsetof(ERS_OBJECT_MESH, m_BoneIDs));
+
+    // Weights
+    glEnableVertexAttribArray(6);
+    glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_MESH), (void*)offsetof(ERS_OBJECT_MESH, m_Weights));
+
+    // Unbind From Vert Array
+    glBindVertexArray(0);
+
 
 
 }
@@ -44,6 +78,45 @@ void ERS_OBJECT_MODEL::SetupMesh() {
 // Draw The Mesh
 void ERS_OBJECT_MODEL::Draw(ERS_OBJECT_SHADER &Shader) {
 
+    // Bind To OpenGL Handels
+    unsigned int DiffuseHandel = 1;
+    unsigned int SpecularHandel = 1;
+    unsigned int NormalHandel = 1;
+    unsigned int HeightHandel = 1;
+
+    // Iterate Through Textures
+    for (unsigned int i = 0; i < Textures.size(); i++) {
+
+        // Get Texture Number
+        std::string Number;
+        std::string Name = Textures[i].Type;
+
+        // Detect Type
+        if (Name == "texture_diffuse")
+            Number = std::to_string(DiffuseHandel++);
+        else if(Name == "texture_specular")
+            Number = std::to_string(specularHandel++);
+        else if(Name == "texture_normal")
+            Number = std::to_string(normalHandel++);
+        else if(Name == "texture_height")
+            Number = std::to_string(heightHadel++);
+
+
+        // Set Sampler
+        glUnfirom1i(glGetUniformLocation(Shader.ShaderProgram, (Name + Number).c_str()), i);
+        
+        // Bind Texture
+        glBindTextures(GL_TEXTURE_2D, Textures[i].ID);
+
+    }
+
+    // Draw Mesh
+    glBindVertexArray(VAO);
+    glDrawElements(GL_TRIANGLES, Indices.size(), GL_UNSIGNED_INT, 0);
+    glBindVertexArray(0);
+
+    // Set Back To Default
+    glActiveTexture(GL_TEXTURE0);
 
 
 }
