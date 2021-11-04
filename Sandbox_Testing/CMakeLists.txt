@@ -36,11 +36,10 @@ target_link_libraries("${PROJECT_NAME}" "${YAML_CPP_DIR}")
 set(GLAD_DIR "glad")
 include_directories("${LIB_DIR}/${GLAD_DIR}/src")
 include_directories("${LIB_DIR}/${GLAD_DIR}/include")
-# target_link_libraries("${PROJECT_NAME}" "${GLAD_VERSION}")
 
-# Add STB_Image Library
-set(STB_IMAGE_DIR "stb")
-include_directories("${LIB_DIR}/${STB_IMAGE_DIR}")
+# Add GLM Library
+set(GLM_DIR "glm")
+include_directories("${LIB_DIR}/${GLM_DIR}")
 
 # Add GLFW Library
 set(GLFW_DIR "${LIB_DIR}/glfw")
