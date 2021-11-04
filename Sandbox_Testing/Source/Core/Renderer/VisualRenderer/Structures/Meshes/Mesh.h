@@ -8,6 +8,13 @@
     Date Created: 2021-11-04
 */
 
+#pragma once
+
+#include <glm/glm.hpp>
+
+#define MAX_BONE_INFLUENCE 4
+
+
 struct ERS_STRUCTURE_MESH {
 
     // Set Metadata
@@ -17,9 +24,22 @@ struct ERS_STRUCTURE_MESH {
     glm::vec3 Tangent;
     glm::vec3 Bitangent;
 
+    int BoneIDs[MAX_BONE_INFLUENCE];
+    float Weights[MAX_BONE_INFLUENCE];
 
 
+    // Set Helper Vars
+    _HasInitialized = false;
 
+
+    // Define Helper Functions
+    void Initialize() {
+        _HasInitialized = true;
+    }
+
+    void IsInitialized() {
+        return _HasInitialized;
+    }
 
 
 };

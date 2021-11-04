@@ -27,7 +27,7 @@ struct ERS_STRUCTURE_TEXTURE_2D {
 
     
     // Setup Helper Functions
-    void InitializeTexture() {
+    void Initialize() {
         _HasInitialized = true;
     }
 
