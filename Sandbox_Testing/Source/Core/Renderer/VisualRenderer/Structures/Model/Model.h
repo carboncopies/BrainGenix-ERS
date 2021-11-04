@@ -11,14 +11,24 @@
 #pragma once
 
 
-class Model {
+class ERS_OBJECT_MODEL {
 
 
     private:
 
+    public:
+
         // Model Data
         std::vector<ERS_OBJECT_MESH> Meshes;
+        std::Vector<ERS_OBJECT_TEXTURE> Textures_Loaded;
         std::string Directory;
+        bool GammaCorrection;
+
+        // Load Model From File
+        void LoadModelFromFile(std::string const &Path);
+
+        // Draw Model
+        void DrawModel();
 
 
 
