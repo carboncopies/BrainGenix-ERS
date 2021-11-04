@@ -8,4 +8,18 @@
     Date Created: 2021-11-04
 */ 
 
+#pragma once
 
+
+class Model {
+
+
+    private:
+
+        // Model Data
+        std::vector<ERS_OBJECT_MESH> Meshes;
+        std::string Directory;
+
+
+
+};
