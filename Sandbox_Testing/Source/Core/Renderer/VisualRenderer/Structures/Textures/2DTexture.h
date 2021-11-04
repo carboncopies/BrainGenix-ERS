@@ -13,7 +13,7 @@
 #include <string>
 
 // Structure To Hold 2D ERS Texture
-struct ERS_STRUCTURE_TEXTURE_2D {
+struct ERS_OBJECT_TEXTURE_2D {
 
     // Set OpenGL Handles
     unsigned int ID;

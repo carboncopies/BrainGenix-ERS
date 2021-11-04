@@ -15,7 +15,7 @@
 #define MAX_BONE_INFLUENCE 4
 
 
-struct ERS_STRUCTURE_MESH {
+struct ERS_OBJECT_MESH {
 
     // Set Metadata
     glm::vec3 Position;
