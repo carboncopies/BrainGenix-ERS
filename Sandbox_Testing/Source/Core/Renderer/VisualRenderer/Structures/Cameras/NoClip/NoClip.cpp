@@ -13,6 +13,7 @@ glm::mat4 ERS_OBJECT_CAMERA_NOCLIP::GetViewMatrix() {
     return glm::lookAt(Position, Position + Front, Up);
 }
 
+
 void ERS_OBJECT_CAMERA_NOCLIP::ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
 
     // Calculate Velocity
@@ -29,6 +30,7 @@ void ERS_OBJECT_CAMERA_NOCLIP::ProcessKeyboard(CameraMovement Direction, float D
         Position += Right * Velocity;
 
 }
+
 
 void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseMovement(float XOffset, float Yoffset, GLboolean ConstrainPitch = true) {
 
