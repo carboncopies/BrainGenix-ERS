@@ -71,7 +71,7 @@ class ERS_OBJECT_CAMERA_NOCLIP {
         }
 
         // Constructor With Scalar Values
-        ERS_OBJECT_CAMERA_NOCLIP(float PosX, float PosY, float PosZ, float UpX, float UpY, float UpZ, float Yaw, float Pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(DefaultSpeed), MouseSensitivity(DefaultSensitivity), Zoom(DefaultZoom)) {
+        ERS_OBJECT_CAMERA_NOCLIP(float PosX, float PosY, float PosZ, float UpX, float UpY, float UpZ, float Yaw, float Pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(DefaultSpeed), MouseSensitivity(DefaultSensitivity), Zoom(DefaultZoom) {
             Position = glm::vec3(PosX, PosY, PosZ);
             WorldUp = glm::vec3(UpX, UpY, UpZ);
             Yaw = Yaw;
