@@ -49,7 +49,7 @@ void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseMovement(float XOffset, float YOffset
             Pitch = 89.0f;
         }
         if (Pitch < -89.0f) {
-            Pitch = -89-0f;
+            Pitch = -89.0f;
         }
     }
 
