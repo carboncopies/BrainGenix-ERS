@@ -8,9 +8,6 @@
     Date Created: 2021-10-28
 */  
 
-#include "FreeImage.h"
-
-
 
 
 // Initialize The Class

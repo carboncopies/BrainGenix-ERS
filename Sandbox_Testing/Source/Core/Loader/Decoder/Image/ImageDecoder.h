@@ -10,7 +10,7 @@
 
 #pragma once
 
-
+#include "FreeImage.h"
 
 // Image Struct
 struct ERSImage {
