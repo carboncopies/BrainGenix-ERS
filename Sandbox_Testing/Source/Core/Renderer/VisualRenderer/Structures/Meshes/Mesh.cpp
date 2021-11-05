@@ -53,11 +53,11 @@ void ERS_OBJECT_MESH::SetupMesh() {
 
     // IDs
     glEnableVertexAttribArray(5);
-    glVertexAttribIPointer(5, 4, GL_INT, sizeof(ERS_OBJECT_VERTEX), (void*)offsetof(ERS_OBJECT_VERTICES, BoneIDs));
+    glVertexAttribIPointer(5, 4, GL_INT, sizeof(ERS_OBJECT_VERTEX), (void*)offsetof(ERS_OBJECT_VERTEX, BoneIDs));
 
     // Weights
     glEnableVertexAttribArray(6);
-    glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTICES), (void*)offsetof(ERS_OBJECT_VERTEX, Weights));
+    glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTEX), (void*)offsetof(ERS_OBJECT_VERTEX, Weights));
 
     // Unbind From Vert Array
     glBindVertexArray(0);
