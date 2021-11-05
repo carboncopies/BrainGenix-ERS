@@ -106,7 +106,7 @@ bool Renderer::UpdateLoop() {
     LastFrame = CurrentTime;
 
     // Process Window Input
-    ProcessInput(Window_, Logger_, Camera_, DeltaTime);
+    ProcessInput(Window_, Logger_, &Camera_, DeltaTime);
 
     // Rendering Commands Here
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
