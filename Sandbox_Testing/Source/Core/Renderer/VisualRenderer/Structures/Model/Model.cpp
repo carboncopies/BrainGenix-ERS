@@ -186,10 +186,10 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
 
         }
 
-        return Textures;
+        
 
     }
-
+    return Textures;
 
 }
 
