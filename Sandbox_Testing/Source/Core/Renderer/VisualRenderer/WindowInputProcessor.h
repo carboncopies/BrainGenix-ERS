@@ -11,3 +11,5 @@
 #pragma once
 
 void ProcessInput(GLFWwindow* Window, LoggerClass *Logger_);
+
+#include "Core/Renderer/VisualRenderer/WindowInputProcessor.cpp"
