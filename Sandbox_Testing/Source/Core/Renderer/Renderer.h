@@ -39,7 +39,7 @@ void FramebufferSizeCallback(GLFWwindow* Window, int Width, int Height) {
 
 }
 
-void MouseCallback(GLFWwindow* Window, doulbe XPos, double YPos) {
+void MouseCallback(GLFWwindow* Window, double XPos, double YPos) {
 
     // Update Positions
     if (FirstMouse) {
