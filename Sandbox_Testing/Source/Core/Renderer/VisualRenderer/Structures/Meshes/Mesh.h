@@ -10,6 +10,18 @@
 
 #pragma once
 
+
+#include <vector>
+#include <string>
+
+#include "Core/Renderer/VisualRenderer/ShaderManager.cpp"
+#include "Core/Renderer/VisualRenderer/Structures/Textures/2DTexture.h"
+#include "Core/Renderer/VisualRenderer/Structures/Vertices/Vertices.h"
+
+
+
+
+
 // Holds The Mesh Object
 class ERS_OBJECT_MESH {
 
@@ -55,3 +67,6 @@ class ERS_OBJECT_MESH {
         void Draw(ERS_OBJECT_SHADER &Shader);
 
 };
+
+
+#include "Core/Renderer/VisualRenderer/Structures/Meshes/Mesh.cpp"

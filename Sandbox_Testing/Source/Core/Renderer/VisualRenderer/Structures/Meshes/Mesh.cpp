@@ -8,15 +8,6 @@
     Date Created: 2021-11-04
 */ 
 
-#include <vector>
-#include <string>
-
-#include "Core/Renderer/VisualRenderer/ShaderManager.cpp"
-#include "Core/Renderer/VisualRenderer/Structures/Textures/2DTexture.h"
-#include "Core/Renderer/VisualRenderer/Structures/Vertices/Vertices.h"
-
-#include "Core/Renderer/VisualRenderer/Structures/Meshes/Mesh.h"
-
 
 // Setup Mesh
 void ERS_OBJECT_MODEL::SetupMesh() {
