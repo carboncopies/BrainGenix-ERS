@@ -13,7 +13,7 @@
 
 
 // Load Model From File
-void ERS_OJBECT_MODEL::LoadModelFromFile(std::string const &Path) {
+void ERS_OBJECT_MODEL::LoadModelFromFile(std::string const &Path) {
 
     // Read File
     Assimp::Importer Importer;
