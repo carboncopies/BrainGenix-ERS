@@ -34,6 +34,10 @@ void Renderer::InitializeGLFW() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+
+    stbi_set_flip_vertically_on_load(false);
+
+
     // Read Out Width, Height
     Logger_->Log("Read Configuration File For 'WindowWidth' Parameter", 1);
     WindowWidth_ = (*SystemConfiguration_)["WindowWidth"].as<int>();
@@ -84,8 +88,9 @@ void Renderer::InitializeOpenGL() {
     Shader_ = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
 
     // Load Model
+    float T1 = glfwGetTime();
     Model_.LoadModelFromFile("Assets/scene.gltf");
-
+    std::cout << "Model Loading Took: " << glfwGetTime()-T1 << " Seconds\n";
 
 
 
