@@ -16,7 +16,7 @@
 
 #include "Core/Renderer/VisualRenderer/ShaderManager.h"
 #include "Core/Renderer/VisualRenderer/Structures/Textures/2DTexture.h"
-#include "Core/Renderer/VisualRenderer/Structures/Vertices/Vertices.h"
+#include "Core/Renderer/VisualRenderer/Structures/Vertex/Vertex.h"
 
 
 
