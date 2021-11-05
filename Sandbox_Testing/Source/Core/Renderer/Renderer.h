@@ -27,7 +27,8 @@
 #include "Core/Renderer/VisualRenderer/Structures/Cameras/NoClip/NoClip.h"
 
 
-// Create Camera Object
+// Initialize
+bool FirstMouse = true;
 ERS_OBJECT_CAMERA_NOCLIP Camera_(glm::vec3(0.0f, 0.0f, 3.0f));
 
 
