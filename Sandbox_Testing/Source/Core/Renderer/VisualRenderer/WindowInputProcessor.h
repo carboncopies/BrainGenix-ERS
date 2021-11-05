@@ -8,5 +8,6 @@
     Date Created: 2021-11-02
 */
 
+#pragma once
 
 void ProcessInput(GLFWwindow* Window, LoggerClass *Logger_);
