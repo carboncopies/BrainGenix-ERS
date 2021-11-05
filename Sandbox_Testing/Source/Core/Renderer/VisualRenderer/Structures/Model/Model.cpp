@@ -23,9 +23,9 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
-#include "Core/VisualRenderer/Structures/Meshes/Mesh.cpp"
+#include "Core/Renderer/VisualRenderer/Structures/Meshes/Mesh.cpp"
 
-#include "Core/VisualRenderer/Structures/Models/Model.h"
+#include "Core/Renderer/VisualRenderer/Structures/Models/Model.h"
 
 
 // Load Model From File

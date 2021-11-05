@@ -22,7 +22,7 @@
 #include "Core/Renderer/VisualRenderer/WindowInputProcessor.cpp"
 #include "Core/Renderer/VisualRenderer/ShaderManager.cpp"
 #include "Core/Renderer/VisualRenderer/TextureManager.cpp"
-#include "Core/Renderer/VisualRenderer/Meshes/StaticMesh.cpp"
+#include "Core/Renderer/VisualRenderer/Structures/Model/Model.cpp"
 
 #include "Core/Renderer/Renderer.h"
 
