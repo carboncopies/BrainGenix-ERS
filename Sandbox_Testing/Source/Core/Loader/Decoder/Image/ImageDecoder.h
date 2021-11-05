@@ -8,6 +8,7 @@
     Date Created: 2021-10-28
 */  
 
+#pragma once
 
 // Image Struct
 struct ERSImage {
