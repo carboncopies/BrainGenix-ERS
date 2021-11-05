@@ -37,7 +37,7 @@ struct ERS_OBJECT_VERTICES {
         _HasInitialized = true;
     }
 
-    void IsInitialized() {
+    bool IsInitialized() {
         return _HasInitialized;
     }
 
