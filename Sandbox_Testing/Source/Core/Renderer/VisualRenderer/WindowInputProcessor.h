@@ -10,6 +10,6 @@
 
 #pragma once
 
-void ProcessInput(GLFWwindow* Window, LoggerClass *Logger_);
+void ProcessInput(GLFWwindow* Window, LoggerClass *Logger_, ERS_OBJECT_CAMERA_NOCLIP *Camera, float DeltaTime);
 
 #include "Core/Renderer/VisualRenderer/WindowInputProcessor.cpp"
