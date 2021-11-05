@@ -8,6 +8,28 @@
     Date Created: 2021-11-05
 */
 
+
+glm::mat4 ERS_OBJECT_CAMERA_NOCLIP::GetViewMatrix() {
+    return glm::lookAt(Position, Position + Front, Up);
+}
+
+void ERS_OBJECT_CAMERA_NOCLIP::ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
+
+    // Calculate Velocity
+    float Velocity = MovementSpeed * DeltaTime;
+
+    // Update Position(s)
+    if (Direction == FORWARD)
+        Position += Front * Velocity;
+    if (Direction == BACKWARD)
+        Position -= Front * Velocity;
+    if (Direction == LEFT)
+        Position -= Right * Velocity;
+    if (Direction == RIGHT)
+        Position += Right * Velocity;
+
+}
+
 void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseMovement(float XOffset, float Yoffset, GLboolean ConstrainPitch = true) {
 
     // Change Offset By Sensitivity

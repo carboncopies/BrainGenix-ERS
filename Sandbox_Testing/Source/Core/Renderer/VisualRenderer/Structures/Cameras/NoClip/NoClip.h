@@ -80,27 +80,10 @@ class ERS_OBJECT_CAMERA_NOCLIP {
         }
 
         // Return View Matrix
-        glm::mat4 GetViewMatrix() {
-            return glm::lookAt(Position, Position + Front, Up);
-        }
+        glm::mat4 GetViewMatrix();
 
         // Proces Keyboard Input
-        void ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
-
-            // Calculate Velocity
-            float Velocity = MovementSpeed * DeltaTime;
-
-            // Update Position(s)
-            if (Direction == FORWARD)
-                Position += Front * Velocity;
-            if (Direction == BACKWARD)
-                Position -= Front * Velocity;
-            if (Direction == LEFT)
-                Position -= Right * Velocity;
-            if (Direction == RIGHT)
-                Position += Right * Velocity;
-
-        }
+        void ProcessKeyboard(CameraMovement Direction, float DeltaTime);
 
         // Process Mouse Input
         void ProcessMouseMovement(float XOffset, float Yoffset, GLboolean ConstrainPitch = true);
