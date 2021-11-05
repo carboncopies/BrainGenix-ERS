@@ -8,4 +8,6 @@
     Date Created: 2021-09-28
 */
 
+#pragma once
+
 std::string ReadFile(const std::string& FileName, LoggerClass *Logger_);

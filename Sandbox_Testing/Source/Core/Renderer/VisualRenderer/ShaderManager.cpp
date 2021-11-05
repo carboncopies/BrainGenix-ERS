@@ -10,7 +10,7 @@
 
 #include <vector>
 
-#include "Core/Loader/Shaders/ShaderLoader.cpp"
+#include "Core/Loader/Shaders/ShaderLoader.h"
 
 #include "Core/Renderer/VisualRenderer/ShaderManager.h"
 
