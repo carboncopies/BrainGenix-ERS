@@ -8,11 +8,7 @@
     Date Created: 2021-11-02
 */
 
-#include <vector>
 
-#include "Core/Loader/Shaders/ShaderLoader.h"
-
-#include "Core/Renderer/VisualRenderer/ShaderManager.h"
 
 
 

@@ -10,6 +10,13 @@
 
 #pragma once
 
+#include <vector>
+
+#include "Core/Loader/Shaders/ShaderLoader.h"
+
+
+
+
 // Structure To Hold Shader Ids
 struct ERS_OBJECT_SHADER {
 
@@ -187,3 +194,6 @@ struct ERS_OBJECT_SHADER {
 ERS_OBJECT_SHADER CreateShaderObject(const char* VertexText, const char* FragmentText, LoggerClass *Logger_);
 
 ERS_OBJECT_SHADER LoadShaderFromFile(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_);
+
+
+#include "Core/Renderer/VisualRenderer/ShaderManager.cpp"

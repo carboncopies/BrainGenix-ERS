@@ -23,6 +23,7 @@
 #include "Core/Renderer/VisualRenderer/ShaderManager.h"
 #include "Core/Renderer/VisualRenderer/TextureManager.h"
 #include "Core/Renderer/VisualRenderer/Structures/Model/Model.h"
+#include "Core/Loader/Decoder/Texture/Texture.h"
 
 
 
