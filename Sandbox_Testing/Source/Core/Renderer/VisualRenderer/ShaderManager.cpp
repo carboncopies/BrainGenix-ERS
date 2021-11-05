@@ -17,7 +17,7 @@
 
 
 
-ShaderObject CreateShaderObject(const char* VertexText, const char* FragmentText, LoggerClass *Logger_) {
+ERS_OBJECT_SHADER CreateShaderObject(const char* VertexText, const char* FragmentText, LoggerClass *Logger_) {
 
     // Log Shader Creation
     Logger_->Log("Creating Shader Object", 5);
@@ -38,7 +38,7 @@ ShaderObject CreateShaderObject(const char* VertexText, const char* FragmentText
 
 }
 
-ShaderObject LoadShaderFromFile(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_) {
+ERS_OBJECT_SHADER LoadShaderFromFile(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_) {
 
     // Load Shaders From Disk Into RAM
     Logger_->Log("Loading Shaders From Disk", 5);

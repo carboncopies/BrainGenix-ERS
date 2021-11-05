@@ -184,6 +184,6 @@ struct ERS_OBJECT_SHADER {
 };
 
 
-ShaderObject CreateShaderObject(const char* VertexText, const char* FragmentText, LoggerClass *Logger_);
+ERS_OBJECT_SHADER CreateShaderObject(const char* VertexText, const char* FragmentText, LoggerClass *Logger_);
 
-ShaderObject LoadShaderFromFile(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_);
+ERS_OBJECT_SHADER LoadShaderFromFile(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_);

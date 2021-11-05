@@ -25,7 +25,7 @@
 
 #include "Core/Renderer/VisualRenderer/Structures/Meshes/Mesh.cpp"
 
-#include "Core/Renderer/VisualRenderer/Structures/Models/Model.h"
+#include "Core/Renderer/VisualRenderer/Structures/Model/Model.h"
 
 
 // Load Model From File
