@@ -127,7 +127,7 @@ ERS_OBJECT_MESH ERS_OBJECT_MODEL::ProcessMesh(aiMesh *Mesh, const aiScene *Scene
         aiFace Face = Mesh->mFaces[i];
 
         // Get Face Indices
-        for (unsigned int j = 0; i < Face.mNumIndices; j++) {
+        for (unsigned int j = 0; j < Face.mNumIndices; j++) {
             Indices.push_back(Face.mIndices[j]);
         }
     }
