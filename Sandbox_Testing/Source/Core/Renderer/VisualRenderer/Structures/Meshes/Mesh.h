@@ -14,6 +14,9 @@
 #include <vector>
 #include <string>
 
+#include <glad/glad.h>
+#include <glad.c>
+
 #include "Core/Renderer/VisualRenderer/ShaderManager.h"
 #include "Core/Renderer/VisualRenderer/Structures/Textures/2DTexture.h"
 #include "Core/Renderer/VisualRenderer/Structures/Vertex/Vertex.h"
