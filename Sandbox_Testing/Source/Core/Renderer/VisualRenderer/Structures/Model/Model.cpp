@@ -67,7 +67,7 @@ ERS_OBJECT_MESH ERS_OBJECT_MODEL::ProcessMesh(aiMesh *Mesh, const aiScene *Scene
     // Create Data Holders
     std::vector<ERS_OBJECT_VERTICES> Vertices;
     std::vector<unsigned int> Indices;
-    std::vector<ERS_OBJECT_TEXTURE> Textures;
+    std::vector<ERS_OBJECT_TEXTURE_2D> Textures;
 
     // Iterate Through Meshes' Vertices
     for (unsigned int i = 0; i < Mesh->mNumVertices; i++) {
