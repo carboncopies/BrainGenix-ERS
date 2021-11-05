@@ -180,7 +180,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             ERS_OBJECT_TEXTURE_2D Texture;
             Textures.ID = TextureFromFile(Str.C_Str(), this->Directory);
             Textures.Type = TypeName;
-            Texture.Path = Str.C_Str();
+            Textures.Path = Str.C_Str();
             Textures.push_back(Texture);
             Textures_Loaded.push_back(Texture);
 
