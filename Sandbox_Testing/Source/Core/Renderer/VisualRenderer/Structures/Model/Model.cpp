@@ -38,7 +38,7 @@ void ERS_OBJECT_MODEL::LoadModelFromFile(std::string const &Path) {
 void ERS_OBJECT_MODEL::Draw(ERS_OBJECT_SHADER &Shader) {
 
     // Draw All Meshes
-    for (unsigned int i=0; i<Meshes.size(), i++) {
+    for (unsigned int i=0; i<Meshes.size(); i++) {
         Meshes[i].Draw(Shader);
     }
 
