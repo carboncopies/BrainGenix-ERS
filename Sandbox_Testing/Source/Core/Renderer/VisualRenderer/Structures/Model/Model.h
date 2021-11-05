@@ -25,6 +25,8 @@
 #include <assimp/postprocess.h>
 
 #include "Core/Renderer/VisualRenderer/Structures/Meshes/Mesh.h"
+#include "Core/Renderer/VisualRenderer/Structures/Textures/2DTexture.h"
+#include "Core/Renderer/VisualRenderer/Structures/Vertices/Vertices.h"
 
 
 class ERS_OBJECT_MODEL {
@@ -36,7 +38,7 @@ class ERS_OBJECT_MODEL {
 
         ERS_OBJECT_MESH ProcessMesh(aiMesh *Mesh, const aiScene *Scene);
 
-        std::vector<ERS_TEXTURE_OBJECT> LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, string TypeName);
+        std::vector<ERS_TEXTURE_OBJECT_2D> LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, string TypeName);
 
 
     public:
