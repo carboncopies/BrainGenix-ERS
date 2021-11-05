@@ -29,7 +29,7 @@ struct ERS_OBJECT_VERTICES {
 
 
     // Set Helper Vars
-    _HasInitialized = false;
+    bool _HasInitialized = false;
 
 
     // Define Helper Functions
