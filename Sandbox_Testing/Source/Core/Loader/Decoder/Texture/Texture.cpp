@@ -11,7 +11,7 @@
 
 
 
-unsigned int TextureFromFile(const char *path, const std::string &directory, bool gamma = false) {
+unsigned int TextureFromFile(const char *path, const std::string &directory, bool gamma) {
 
 
     std::string filename = string(path);
