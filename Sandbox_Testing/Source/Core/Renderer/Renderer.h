@@ -24,11 +24,9 @@ class Renderer {
         YAML::Node *SystemConfiguration_;
         LoggerClass *Logger_;
         ERS_OBJECT_SHADER Shader_;
-        ERSTexture Texture1;
-        ERSTexture Texture2;
-        TextureManager TextureManager_;
 
-        ERS_OBJECT_MESH Cube_;
+
+
 
 
         GLFWwindow* Window_;
