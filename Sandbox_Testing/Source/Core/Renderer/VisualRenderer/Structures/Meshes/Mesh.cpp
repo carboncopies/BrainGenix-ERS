@@ -33,7 +33,7 @@ void ERS_OBJECT_MESH::SetupMesh() {
     
     // Position Data
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTICES), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTEX), (void*)0);
 
     // Normals Data
     glEnableVertexAttribArray(1);	
