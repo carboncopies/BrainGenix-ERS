@@ -39,8 +39,8 @@ void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseMovement(float XOffset, float YOffset
     YOffset *= MouseSensitivity;
 
     // Update Pitch/Yaw
-    Yaw -= XOffset;
-    Pitch += YOffset;
+    Yaw += XOffset;
+    Pitch -= YOffset;
 
     // Bound Pitch
     if (ConstrainPitch) {
