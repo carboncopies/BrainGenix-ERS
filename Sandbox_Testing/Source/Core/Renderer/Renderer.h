@@ -23,8 +23,8 @@ class Renderer {
         // Member Variables
         YAML::Node *SystemConfiguration_;
         LoggerClass *Logger_;
-        ShaderObject Shader_;
-        ERSTexture Texture1;
+        ERS_OBJECT_SHADER Shader_;
+        E Texture1;
         ERSTexture Texture2;
         TextureManager TextureManager_;
 
