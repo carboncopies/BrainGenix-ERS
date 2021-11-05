@@ -32,15 +32,6 @@
 class ERS_OBJECT_MODEL {
 
 
-    private:
-
-        void ProcessNode(aiNode *Node, const aiScene *Scene);
-
-        ERS_OBJECT_MESH ProcessMesh(aiMesh *Mesh, const aiScene *Scene);
-
-        std::vector<ERS_OBJECT_TEXTURE_2D> LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, std::string TypeName);
-
-
     public:
 
         // Model Data
@@ -54,6 +45,15 @@ class ERS_OBJECT_MODEL {
 
         // Draw Model
         void Draw(ERS_OBJECT_SHADER &Shader);
+
+
+    private:
+
+        void ProcessNode(aiNode *Node, const aiScene *Scene);
+
+        ERS_OBJECT_MESH ProcessMesh(aiMesh *Mesh, const aiScene *Scene);
+
+        std::vector<ERS_OBJECT_TEXTURE_2D> LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, std::string TypeName);
 
 
 
