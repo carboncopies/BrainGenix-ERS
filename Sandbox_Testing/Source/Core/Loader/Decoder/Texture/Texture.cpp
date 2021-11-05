@@ -8,7 +8,7 @@
     Date Created: 2021-11-04
 */ 
 
-
+#define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
 
