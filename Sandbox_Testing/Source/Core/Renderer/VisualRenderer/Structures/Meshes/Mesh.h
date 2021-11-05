@@ -39,17 +39,17 @@ class ERS_OBJECT_MESH {
         // Setup Mesh Data
         std::vector<ERS_OBJECT_VERTICES> Vertices;
         std::vector<unsigned int> Indices;
-        std::vector<ERS_OBJECT_TEXTURE> Textures;
+        std::vector<ERS_OBJECT_TEXTURE_2D> Textures;
 
         // Setup OpenGL Handel
         unsigned int VAO;
 
         // Define Helper Vars
-        _HasInitialized = false;
+        bool _HasInitialized = false;
 
 
         // Setup Mesh Constructor
-        ERS_OBJECT_MESH(std::vector<ERS_OBJECT_VERTICES> Vertices, std::vector<unsigned int> Indices, std::vector<ERS_OBJECT_TEXTURE> Textures) {
+        ERS_OBJECT_MESH(std::vector<ERS_OBJECT_VERTICES> Vertices, std::vector<unsigned int> Indices, std::vector<ERS_OBJECT_TEXTURE_2D> Textures) {
 
             // Populate Data
             this->Vertices = Vertices;
