@@ -8,6 +8,33 @@
     Date Created: 2021-11-05
 */
 
+void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseMovement(float XOffset, float Yoffset, GLboolean ConstrainPitch = true) {
+
+    // Change Offset By Sensitivity
+    XOffset *= MosueSensitivity;
+    YOffset *= MouseSensitivity;
+
+    // Update Pitch/Yaw
+    Yaw += XOffset;
+    Pitch += Yoffset;
+
+    // Bound Pitch
+    if (ConstrainPitch) {
+
+        if (Pitch > 89.0f) {
+            Patch = 89.0f;
+        }
+        if (Pitch < -89.0f) {
+            Pitch = -89-0f;
+        }
+    }
+
+    // Update Front, Right, Up Vectors
+    UpdateCameraVectors();
+
+}
+
+
 void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseScroll(float YOffset) {
 
     // Update Zoom

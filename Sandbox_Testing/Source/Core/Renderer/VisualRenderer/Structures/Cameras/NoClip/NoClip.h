@@ -103,32 +103,7 @@ class ERS_OBJECT_CAMERA_NOCLIP {
         }
 
         // Process Mouse Input
-        void ProcessMouseMovement(float XOffset, float Yoffset, GLboolean ConstrainPitch = true) {
-
-            // Change Offset By Sensitivity
-            XOffset *= MosueSensitivity;
-            YOffset *= MouseSensitivity;
-
-            // Update Pitch/Yaw
-            Yaw += XOffset;
-            Pitch += Yoffset;
-
-            // Bound Pitch
-            if (ConstrainPitch) {
-
-                if (Pitch > 89.0f) {
-                    Patch = 89.0f;
-                }
-                if (Pitch < -89.0f) {
-                    Pitch = -89-0f;
-                }
-            }
-
-            // Update Front, Right, Up Vectors
-            UpdateCameraVectors();
-
-        }
-
+        void ProcessMouseMovement(float XOffset, float Yoffset, GLboolean ConstrainPitch = true);
         void ProcessMouseScroll(float YOffset);
 
 
