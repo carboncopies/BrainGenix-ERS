@@ -19,10 +19,10 @@
 
 
 
-#include "Core/Renderer/VisualRenderer/WindowInputProcessor.cpp"
-#include "Core/Renderer/VisualRenderer/ShaderManager.cpp"
-#include "Core/Renderer/VisualRenderer/TextureManager.cpp"
-#include "Core/Renderer/VisualRenderer/Structures/Model/Model.cpp"
+#include "Core/Renderer/VisualRenderer/WindowInputProcessor.h"
+#include "Core/Renderer/VisualRenderer/ShaderManager.h"
+#include "Core/Renderer/VisualRenderer/TextureManager.h"
+#include "Core/Renderer/VisualRenderer/Structures/Model/Model.h"
 
 #include "Core/Renderer/Renderer.h"
 
