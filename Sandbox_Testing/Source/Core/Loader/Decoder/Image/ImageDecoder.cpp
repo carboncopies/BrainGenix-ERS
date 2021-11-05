@@ -10,7 +10,7 @@
 
 #include "FreeImage.h"
 
-#include "Core/Loader/Decoder/Image/ImageDecoder.h"
+
 
 
 // Initialize The Class

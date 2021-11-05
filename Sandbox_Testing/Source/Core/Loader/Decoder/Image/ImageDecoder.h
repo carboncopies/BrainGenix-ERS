@@ -10,6 +10,8 @@
 
 #pragma once
 
+#include "Core/Loader/Decoder/Image/ImageDecoder.cpp"
+
 // Image Struct
 struct ERSImage {
 
