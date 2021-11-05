@@ -94,7 +94,7 @@ void ERS_OBJECT_MESH::Draw(ERS_OBJECT_SHADER &Shader) {
 
 
         // Set Sampler
-        glUnfirom1i(glGetUniformLocation(Shader.ShaderProgram, (Name + Number).c_str()), i);
+        glUniform1i(glGetUniformLocation(Shader.ShaderProgram, (Name + Number).c_str()), i);
         
         // Bind Texture
         glBindTextures(GL_TEXTURE_2D, Textures[i].ID);
