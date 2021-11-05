@@ -10,7 +10,7 @@
 
 #pragma once
 
-
+#include "Core/Renderer/VisualRenderer/TextureManager.cpp"
 
 // Texture Struct (Could be modified later to be a material by adding multiple textures)
 struct ERSTexture{

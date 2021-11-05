@@ -11,7 +11,7 @@
 
 #include "Core/Loader/Decoder/Image/ImageDecoder.h"
 
-#include "Core/Renderer/VisualRenderer/TextureManager.h"
+
 
 
 
