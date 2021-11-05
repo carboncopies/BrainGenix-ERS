@@ -14,7 +14,7 @@
 #include <vector>
 #include <string>
 
-#include "Core/Renderer/VisualRenderer/ShaderManager.cpp"
+#include "Core/Renderer/VisualRenderer/ShaderManager.h"
 #include "Core/Renderer/VisualRenderer/Structures/Textures/2DTexture.h"
 #include "Core/Renderer/VisualRenderer/Structures/Vertices/Vertices.h"
 
