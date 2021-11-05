@@ -12,4 +12,4 @@
 #pragma once
 
 
-unsigned int TextureFromFIle(const char *Path, const std::string &Directory, bool Gamma = false);
+unsigned int TextureFromFile(const char *Path, const std::string &Directory, bool Gamma = false);
