@@ -3,7 +3,7 @@
 //======================================================================//
 
 /*
-    Description: This file creates the ERSVertices Struct/Functions.
+    Description: This file creates the ERSVerex Struct/Functions.
     Additonal Notes: None
     Date Created: 2021-11-04
 */
@@ -15,7 +15,7 @@
 #define MAX_BONE_INFLUENCE 4
 
 
-struct ERS_OBJECT_VERTICES {
+struct ERS_OBJECT_VERTEX {
 
     // Set Metadata
     glm::vec3 Position;
