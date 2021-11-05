@@ -24,6 +24,7 @@
 #include "Core/Renderer/VisualRenderer/TextureManager.h"
 #include "Core/Renderer/VisualRenderer/Structures/Model/Model.h"
 #include "Core/Loader/Decoder/Texture/Texture.h"
+#include "Core/Renderer/VisualRenderer/Structures/Cameras/NoClip/NoClip.h"
 
 
 
@@ -44,6 +45,8 @@ class Renderer {
         ERS_OBJECT_SHADER Shader_;
         ERS_OBJECT_MODEL Model_;
 
+        ERS_OBJECT_CAMERA_NOCLIP Camera_(glm::vec3(0.0f, 0.0f, 3.0f));
+        
 
 
 
