@@ -45,7 +45,7 @@ void ERS_OBJECT_MESH::SetupMesh() {
 
     // Vertex Tangent
     glEnableVertexAttribArray(3);
-    glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTEX), (void*)offsetof(ERS_OBJECT_VERTICES, Tangent));
+    glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTEX), (void*)offsetof(ERS_OBJECT_VERTEX, Tangent));
 
     // Vertex Bitangent
     glEnableVertexAttribArray(4);
