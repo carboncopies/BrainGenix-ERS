@@ -10,7 +10,7 @@
 
 #include "Core/Initialization/ConfigurationLoader.cpp"
 #include "Core/Management/LoggingSystem.cpp"
-#include "Core/Renderer/Renderer.cpp"
+#include "Core/Renderer/Renderer.h"
 
 
 
