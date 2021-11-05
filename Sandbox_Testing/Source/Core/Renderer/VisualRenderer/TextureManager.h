@@ -10,7 +10,10 @@
 
 #pragma once
 
-#include "Core/Renderer/VisualRenderer/TextureManager.cpp"
+
+#include "Core/Loader/Decoder/Image/ImageDecoder.h"
+
+
 
 // Texture Struct (Could be modified later to be a material by adding multiple textures)
 struct ERSTexture{
@@ -87,3 +90,7 @@ class TextureManager {
 
 
 };
+
+
+
+#include "Core/Renderer/VisualRenderer/TextureManager.cpp"
