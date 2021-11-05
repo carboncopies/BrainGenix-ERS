@@ -8,10 +8,7 @@
     Date Created: 2021-11-04
 */ 
 
-#include <string>
 
-
-#include "Core/Loader/Decoder/Texture/Texture.h"
 
 
 unsigned int TextureFromFile(const char *path, const std::string &directory, bool gamma = false) {

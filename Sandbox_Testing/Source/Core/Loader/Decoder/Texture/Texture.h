@@ -11,5 +11,10 @@
 
 #pragma once
 
+#include <string>
+
 
 unsigned int TextureFromFile(const char *Path, const std::string &Directory, bool Gamma = false);
+
+
+#include "Core/Loader/Decoder/Texture/Texture.h"
