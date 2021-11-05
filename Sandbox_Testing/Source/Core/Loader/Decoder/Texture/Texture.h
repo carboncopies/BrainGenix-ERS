@@ -17,4 +17,4 @@
 unsigned int TextureFromFile(const char *Path, const std::string &Directory, bool Gamma = false);
 
 
-#include "Core/Loader/Decoder/Texture/Texture.h"
+#include "Core/Loader/Decoder/Texture/Texture.cpp"

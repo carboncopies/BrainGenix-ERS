@@ -8,25 +8,6 @@
     Date Created: 2021-11-01
 */
 
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
-#include "glm/gtc/type_ptr.hpp"
-
-#include <glad/glad.h>
-#include <glad.c>
-#include <GLFW/glfw3.h>
-
-
-
-
-#include "Core/Renderer/VisualRenderer/WindowInputProcessor.h"
-#include "Core/Renderer/VisualRenderer/ShaderManager.h"
-#include "Core/Renderer/VisualRenderer/TextureManager.h"
-#include "Core/Renderer/VisualRenderer/Structures/Model/Model.h"
-
-#include "Core/Renderer/Renderer.h"
-
-
 
 
 void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger) {
