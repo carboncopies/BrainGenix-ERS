@@ -98,13 +98,10 @@ void Renderer::InitializeOpenGL() {
     // Draw Faces In Front First
     glEnable(GL_DEPTH_TEST);
 
-
     // Setup Shaders
     Shader_ = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
 
-    // Setup Textures
-    Texture1 = TextureManager_.CreateTextureFromFile("Assets/container.jpg");
-    Texture2 = TextureManager_.CreateTextureFromFile("Assets/awesomeface.png");
+
 
 
 
@@ -129,10 +126,6 @@ bool Renderer::UpdateLoop() {
 
     // Use Shader
     Shader_.MakeActive();
-
-
-
-
 
 
 
