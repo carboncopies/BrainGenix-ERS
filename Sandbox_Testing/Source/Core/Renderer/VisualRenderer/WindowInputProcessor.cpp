@@ -27,3 +27,6 @@ void ProcessInput(GLFWwindow* Window, LoggerClass *Logger_, ERS_OBJECT_CAMERA_NO
         Camera->ProcessKeyboard(RIGHT, DeltaTime);
 
 }
+
+
+
