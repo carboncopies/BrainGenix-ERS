@@ -167,7 +167,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
         // Check If Texture Already Loaded
         for (unsigned int j = 0; j < Textures_Loaded.size(); j++) {
 
-            if (std::strcmp(Textures_Loaded[j].Path.Data(), Str.C_Str()) == 0) {
+            if (std::strcmp(Textures_Loaded[j].Path.data(), Str.C_Str()) == 0) {
                 Textures.push_back(Textures_Loaded[j]);
                 Skip = true;
                 break;
