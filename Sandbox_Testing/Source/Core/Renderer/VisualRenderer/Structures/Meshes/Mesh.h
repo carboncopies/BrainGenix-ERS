@@ -49,7 +49,7 @@ class ERS_OBJECT_MESH {
 
 
         // Setup Mesh Constructor
-        ERS_OBJECT_MESH(std::vector<ERS_OBJECT_VERTICES> Vertices, std::vector<unsigned int> Indices, std::vector<ERS_OBJECT_TEXTURE_2D> Textures) {
+        ERS_OBJECT_MESH(std::vector<ERS_OBJECT_VERTEX> Vertices, std::vector<unsigned int> Indices, std::vector<ERS_OBJECT_TEXTURE_2D> Textures) {
 
             // Populate Data
             this->Vertices = Vertices;
