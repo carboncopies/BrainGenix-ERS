@@ -54,8 +54,26 @@ class ERS_OBJECT_CAMERA_NOCLIP {
         float MouseSensitivity;
         float Zoom;
 
-        // Constructor
-        ERS_OBJECT_CAMERA_NOCLIP(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f), float Yaw = DefaultYaw, float Pitch = DefaultPitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(DefaultSpeed), MouseSensitivity(DefaultSensitivity), Zoom(DefaultZoom)
+        // Constructor With Vectors
+        ERS_OBJECT_CAMERA_NOCLIP(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f), float Yaw = DefaultYaw, float Pitch = DefaultPitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(DefaultSpeed), MouseSensitivity(DefaultSensitivity), Zoom(DefaultZoom) {
+            
+            // Set Params
+            Position = Position;
+            WorldUp = Up;
+            Yaw = Yaw;
+            Pitch = Pitch;
+            UpdateCameraVectors();
+            
+        }
+
+        // Constructor With Scalar Values
+        ERS_OBJECT_CAMERA_NOCLIP(float PosX, float PosY, float PosZ, float UpX, float UpY, float UpZ, float Yaw, float Pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(DefaultSpeed), MouseSensitivity(DefaultSensitivity), Zoom(DefaultZoom)) {
+            Position = glm::vec3(PosX, PosY, PosZ);
+            WorldUp = glm::vec3(UpX, UpY, UpZ);
+            Yaw = Yaw;
+            Pitch = Pitch;
+            UpdateCameraVectors();
+        }
 
 
 
