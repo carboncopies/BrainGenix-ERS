@@ -32,7 +32,7 @@ void ERS_OBJECT_CAMERA_NOCLIP::ProcessKeyboard(CameraMovement Direction, float D
 }
 
 
-void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseMovement(float XOffset, float Yoffset, GLboolean ConstrainPitch) {
+void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch) {
 
     // Change Offset By Sensitivity
     XOffset *= MouseSensitivity;
