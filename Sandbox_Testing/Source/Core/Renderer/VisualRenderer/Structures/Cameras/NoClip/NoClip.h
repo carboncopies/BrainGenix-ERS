@@ -99,4 +99,4 @@ class ERS_OBJECT_CAMERA_NOCLIP {
 
 
 
-#include "Core/Renderer/VisualRenderer/Structures/Cameras/NoClip.cpp"
+#include "Core/Renderer/VisualRenderer/Structures/Cameras/NoClip/NoClip.cpp"
