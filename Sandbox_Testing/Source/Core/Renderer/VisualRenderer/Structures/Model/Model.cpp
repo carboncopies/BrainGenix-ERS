@@ -177,7 +177,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
         // If Texture Not Already Loaded
         if (!Skip) {
             
-            ERS_OBJECT_TEXTURE Texture;
+            ERS_OBJECT_TEXTURE_2D Texture;
             Texture.ID = TextureFromFile(Str.C_Str(), this->Directory);
             Texture.Type = TypeName;
             Texture.Path = Str.C_Str();
