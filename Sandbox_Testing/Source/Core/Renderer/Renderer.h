@@ -29,6 +29,10 @@
 
 // Initialize
 bool FirstMouse = true;
+
+float LastX = 800/2.0f;
+float LastY = 600/2.0f;
+
 ERS_OBJECT_CAMERA_NOCLIP Camera_(glm::vec3(0.0f, 0.0f, 3.0f));
 
 
@@ -54,7 +58,7 @@ void MouseCallback(GLFWwindow* Window, double XPos, double YPos) {
 
     // Calculate Offsets
     float XOffset = XPos - LastX;
-    float YOFfset = YPos - LastY;
+    float YOffset = YPos - LastY;
 
     // Update Last Positions
     LastX = XPos;
