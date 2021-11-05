@@ -22,7 +22,7 @@ void ERS_OBJECT_MESH::SetupMesh() {
     
     // Populate Vertex Buffer
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, Vertices.size() * sizeof(ERS_OBJECT_VERTICES), &Vertices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, Vertices.size() * sizeof(ERS_OBJECT_VERTEX), &Vertices[0], GL_STATIC_DRAW);
 
     // Populate Element Buffer
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
@@ -57,7 +57,7 @@ void ERS_OBJECT_MESH::SetupMesh() {
 
     // Weights
     glEnableVertexAttribArray(6);
-    glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTICES), (void*)offsetof(ERS_OBJECT_VERTICES, Weights));
+    glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTICES), (void*)offsetof(ERS_OBJECT_VERTEX, Weights));
 
     // Unbind From Vert Array
     glBindVertexArray(0);
