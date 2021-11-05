@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "Core/Loader/Decoder/Image/ImageDecoder.cpp"
+
 
 // Image Struct
 struct ERSImage {
@@ -53,3 +53,6 @@ class ImageDecoder {
         void Cleanup();
 
 };
+
+
+#include "Core/Loader/Decoder/Image/ImageDecoder.cpp"
