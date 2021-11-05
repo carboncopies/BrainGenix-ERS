@@ -41,7 +41,7 @@ void ERS_OBJECT_MESH::SetupMesh() {
 
     // Texture Coordinate Data
     glEnableVertexAttribArray(2);	
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTICES), (void*)offsetof(ERS_OBJECT_VERTICES, TexCoords));
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTEX), (void*)offsetof(ERS_OBJECT_VERTICES, TexCoords));
 
     // Vertex Tangent
     glEnableVertexAttribArray(3);
