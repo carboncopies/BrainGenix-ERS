@@ -129,22 +129,7 @@ class ERS_OBJECT_CAMERA_NOCLIP {
 
         }
 
-        void ProcessMouseScroll(float YOffset) {
-
-            // Update Zoom
-            Zoom -= (float)YOffset;
-
-            // Bound Zoom
-            if (Zoom < MinZoom)
-                Zoom = MinZoom;
-            if (Zoom > MaxZoom)
-                Zoom = MaxZoom;
-
-            // Update Vectors
-            UpdateCameraVectors();
-        
-
-        }
+        void ProcessMouseScroll(float YOffset);
 
 
     private:

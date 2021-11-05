@@ -8,7 +8,22 @@
     Date Created: 2021-11-05
 */
 
+void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseScroll(float YOffset) {
 
+    // Update Zoom
+    Zoom -= (float)YOffset;
+
+    // Bound Zoom
+    if (Zoom < MinZoom)
+        Zoom = MinZoom;
+    if (Zoom > MaxZoom)
+        Zoom = MaxZoom;
+
+    // Update Vectors
+    UpdateCameraVectors();
+
+
+}
 
 void ERS_OBJECT_CAMERA_NOCLIP::UpdateCameraVectors() {
     
