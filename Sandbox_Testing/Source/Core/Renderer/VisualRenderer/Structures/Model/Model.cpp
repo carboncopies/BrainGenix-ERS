@@ -154,7 +154,7 @@ ERS_OBJECT_MESH ERS_OBJECT_MODEL::ProcessMesh(aiMesh *Mesh, const aiScene *Scene
 }
 
 // Check Material Textures
-std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, string TypeName) {
+std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, std::string TypeName) {
 
     std::vector<ERS_OBJECT_TEXTURE_2D> Textures;
     for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {
