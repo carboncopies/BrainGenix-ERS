@@ -136,7 +136,7 @@ ERS_OBJECT_MESH ERS_OBJECT_MODEL::ProcessMesh(aiMesh *Mesh, const aiScene *Scene
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
 
     // Diffuse Maps
-    std::vector<ERS_OBJECT_TEXTURE_2D> DiffuseMaps = loadMaterialTextures(Material, aiTextureType_DIFFUSE, "texture_diffuse");
+    std::vector<ERS_OBJECT_TEXTURE_2D> DiffuseMaps = LoadMaterialTextures(Material, aiTextureType_DIFFUSE, "texture_diffuse");
     Textures.insert(Textures.end(), DiffuseMaps.begin(), DiffuseMaps.end());
     // 2. specular maps
     std::vector<ERS_OBJECT_TEXTURE_2D> SpecularMaps = loadMaterialTextures(Material, aiTextureType_SPECULAR, "texture_specular");
