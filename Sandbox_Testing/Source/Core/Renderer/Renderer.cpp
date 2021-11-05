@@ -63,7 +63,13 @@ void Renderer::InitializeOpenGL() {
     RenderHeight_ = (*SystemConfiguration_)["RenderHeight"].as<int>();
 
     // Register Callback
+    glfwMakeContextCurrent(Window);
     glfwSetFramebufferSizeCallback(Window_, FramebufferSizeCallback);
+    glfwSetCursorPosCallback(Window_, MouseCallback);
+    glfwSetScrollCallback(Window_, ScrollCallback);
+
+    // Grab Mouse
+    glfwSetInputMode(Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     // Setup GLAD
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -94,8 +100,13 @@ void Renderer::InitializeOpenGL() {
 
 bool Renderer::UpdateLoop() { 
 
+    // Update DeltaTime
+    float CurrentTime = glfwGetTime();
+    DeltaTime = CurrentTime - LastFrame;
+    LastFrame = CurrentTime;
+
     // Process Window Input
-    ProcessInput(Window_, Logger_);
+    ProcessInput(Window_, Logger_, Camera_, DeltaTime);
 
     // Rendering Commands Here
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -107,10 +118,8 @@ bool Renderer::UpdateLoop() {
 
 
 
-    glm::mat4 projection = glm::perspective(glm::radians(100.0f), (float)RenderWidth_ / (float)RenderHeight_, 0.1f, 100.0f);
-    glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 2.2f, 2.0f), 
-                                glm::vec3(0.0f, 0.0f, 0.0f), 
-                                glm::vec3(0.0f, 1.0f, 0.0f));
+    glm::mat4 projection = glm::perspective(glm::radians(Camera.Zoom), (float)RenderWidth_ / (float)RenderHeight_, 0.1f, 100.0f);
+    glm::mat4 view = Camera_.GetViewMatrix()
     Shader_.SetMat4("projection", projection);
     Shader_.SetMat4("view", view);
 

@@ -96,6 +96,9 @@ class Renderer {
         int RenderHeight_;
 
         
+        // Timing
+        float DeltaTime = 0.0f;
+        float LastFrame = 0.0f;
 
 
 
