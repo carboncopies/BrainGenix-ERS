@@ -150,31 +150,3 @@ void Renderer::CleanUp() {
 }
 
 
-// INPUT CALLBACK FUNCTIONS
-void MouseCallback(GLFWwindow* Window, doulbe XPos, double YPos) {
-
-    // Update Positions
-    if (FirstMouse) {
-
-        LastX = XPos;
-        LastY = YPos;
-
-        FirstMouse = false;
-
-    }
-
-    // Calculate Offsets
-    float XOffset = XPos - LastX;
-    float YOFfset = YPos - LastY;
-
-    // Update Last Positions
-    LastX = XPos;
-    LastY = YPos;
-
-    // Process Camera Movement
-    Camera_.ProcessMouseMovement(XOffset, YOffset);
-
-
-
-}
-
