@@ -63,7 +63,7 @@ void Renderer::InitializeOpenGL() {
     RenderHeight_ = (*SystemConfiguration_)["RenderHeight"].as<int>();
 
     // Register Callback
-    glfwMakeContextCurrent(Window);
+    glfwMakeContextCurrent(Window_);
     glfwSetFramebufferSizeCallback(Window_, FramebufferSizeCallback);
     glfwSetCursorPosCallback(Window_, MouseCallback);
     glfwSetScrollCallback(Window_, ScrollCallback);
