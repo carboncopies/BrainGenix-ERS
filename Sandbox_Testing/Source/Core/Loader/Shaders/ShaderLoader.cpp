@@ -8,10 +8,7 @@
     Date Created: 2021-09-28
 */
  
-#include <fstream>
-#include <string>
 
-#include "Core/Loader/Shaders/ShaderLoader.h"
 
 
 std::string ReadFile(const std::string& FileName, LoggerClass *Logger_) {
