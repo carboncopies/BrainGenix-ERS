@@ -149,20 +149,7 @@ class ERS_OBJECT_CAMERA_NOCLIP {
 
     private:
 
-        void UpdateCameraVectors() {
-            
-            // Calculate New Front Vector
-            glm::vec3 NewFront;
-            NewFront.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
-            NewFront.y = sin(glm::radians(Pitch));
-            NewFromt.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
-            Front = glm::normalize(NewFront);
-
-            // Calculate Right, Up Vector
-            Right = glm::normalize(glm::cross(Front, WorldUp));
-            Up = glm::normalize(glm::cross(Right, Front));
-
-        }
+        void UpdateCameraVectors();
 
 
 };
