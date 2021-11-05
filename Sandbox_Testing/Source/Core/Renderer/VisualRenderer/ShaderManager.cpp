@@ -23,7 +23,7 @@ ERS_OBJECT_SHADER CreateShaderObject(const char* VertexText, const char* Fragmen
     Logger_->Log("Creating Shader Object", 5);
 
     // Create Shader
-    ShaderObject ShaderStruct;
+    ERS_OBJECT_SHADER ShaderStruct;
 
     ShaderStruct.CompileVertexShader(VertexText);
     ShaderStruct.CompileFragmentShader(FragmentText);
