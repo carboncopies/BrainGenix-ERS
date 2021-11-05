@@ -36,7 +36,7 @@ class ERS_OBJECT_MODEL {
 
         // Model Data
         std::vector<ERS_OBJECT_MESH> Meshes;
-        std::vector<ERS_OBJECT_TEXTURE> Textures_Loaded;
+        std::vector<ERS_OBJECT_TEXTURE_2D> Textures_Loaded;
         std::string Directory;
         bool GammaCorrection;
 
