@@ -49,7 +49,7 @@ void ERS_OBJECT_MESH::SetupMesh() {
 
     // Vertex Bitangent
     glEnableVertexAttribArray(4);
-    glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTICES), (void*)offsetof(ERS_OBJECT_VERTICES, Bitangent));
+    glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTEX), (void*)offsetof(ERS_OBJECT_VERTEX, Bitangent));
 
     // IDs
     glEnableVertexAttribArray(5);
