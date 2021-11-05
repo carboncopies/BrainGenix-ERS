@@ -29,7 +29,7 @@ void ERS_OBJECT_MODEL::LoadModelFromFile(std::string const &Path) {
     Directory = Path.substr(0, Path.find_last_of("/"));
 
     // Process Root Node Recursively
-    ProcessNode(Scene->mRootNode, scene);
+    ProcessNode(Scene->mRootNode, Scene);
 
 
 }
