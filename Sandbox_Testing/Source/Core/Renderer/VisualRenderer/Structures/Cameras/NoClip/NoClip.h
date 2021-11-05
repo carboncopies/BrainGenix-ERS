@@ -75,6 +75,12 @@ class ERS_OBJECT_CAMERA_NOCLIP {
             UpdateCameraVectors();
         }
 
+        // Return View Matrix
+        glm::mat4 GetViewMatrix() {
+            return glm::lookAt(Position, Position + Front, Up);
+        }
+
+
 
 
     private:
