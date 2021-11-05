@@ -37,7 +37,7 @@ class ERS_OBJECT_MESH {
     public:
 
         // Setup Mesh Data
-        std::vector<ERS_OBJECT_VERTICES> Vertices;
+        std::vector<ERS_OBJECT_VERTEX> Vertices;
         std::vector<unsigned int> Indices;
         std::vector<ERS_OBJECT_TEXTURE_2D> Textures;
 
