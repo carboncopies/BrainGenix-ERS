@@ -77,6 +77,8 @@ void Renderer::InitializeOpenGL() {
     // Setup Shaders
     Shader_ = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
 
+    // Load Model
+    Model_.LoadModelFromFile("Assets/Test/backpack.obj");
 
 
 

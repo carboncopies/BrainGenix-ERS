@@ -42,7 +42,7 @@ class Renderer {
         YAML::Node *SystemConfiguration_;
         LoggerClass *Logger_;
         ERS_OBJECT_SHADER Shader_;
-
+        ERS_OBJECT_MODEL Model_;
 
 
 
