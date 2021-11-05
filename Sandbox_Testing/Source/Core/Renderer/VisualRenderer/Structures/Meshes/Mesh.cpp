@@ -37,7 +37,7 @@ void ERS_OBJECT_MESH::SetupMesh() {
 
     // Normals Data
     glEnableVertexAttribArray(1);	
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTICES), (void*)offsetof(ERS_OBJECT_VERTICES, Normal));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(ERS_OBJECT_VERTEX), (void*)offsetof(ERS_OBJECT_VERTEX, Normal));
 
     // Texture Coordinate Data
     glEnableVertexAttribArray(2);	
