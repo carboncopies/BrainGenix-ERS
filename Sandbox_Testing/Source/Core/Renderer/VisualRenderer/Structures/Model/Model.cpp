@@ -115,7 +115,7 @@ ERS_OBJECT_MESH ERS_OBJECT_MODEL::ProcessMesh(aiMesh *Mesh, const aiScene *Scene
             Vertex.TexCoords = glm::vec2(0.0f, 0.0f);
         }
 
-        Vertices.push_bach(Vertex);
+        Vertices.push_back(Vertex);
 
 
 
