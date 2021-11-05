@@ -65,7 +65,7 @@ void ERS_OBJECT_MODEL::ProcessNode(aiNode *Node, const aiScene *Scene) {
 ERS_OBJECT_MESH ERS_OBJECT_MODEL::ProcessMesh(aiMesh *Mesh, const aiScene *Scene) {
 
     // Create Data Holders
-    std::vector<ERS_OBJECT_VERTICES> Vertices;
+    std::vector<ERS_OBJECT_VERTEX> Vertices;
     std::vector<unsigned int> Indices;
     std::vector<ERS_OBJECT_TEXTURE_2D> Textures;
 
