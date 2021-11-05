@@ -14,7 +14,7 @@
 unsigned int TextureFromFile(const char *path, const std::string &directory, bool gamma) {
 
 
-    std::string filename = string(path);
+    std::string filename = std::string(path);
     filename = directory + '/' + filename;
 
     unsigned int textureID;
