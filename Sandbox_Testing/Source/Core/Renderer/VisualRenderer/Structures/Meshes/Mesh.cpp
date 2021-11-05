@@ -21,7 +21,7 @@ void ERS_OBJECT_MESH::SetupMesh() {
     glBindVertexArray(VAO);
     
     // Populate Vertex Buffer
-    glBindBuffeR(GL_ARRAY_BUFFER, VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, Vertices.size() * sizeof(ERS_OBJECT_VERTICES), &Vertices[0], GL_STATIC_DRAW);
 
     // Populate Element Buffer
