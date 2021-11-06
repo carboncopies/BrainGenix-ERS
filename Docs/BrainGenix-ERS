@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-06T09:00:35.814Z" agent="5.0 (X11)" etag="otP3NDTGsvaKVVn5TqFs" version="15.6.6" type="github" pages="7">
+<mxfile host="app.diagrams.net" modified="2021-11-06T09:00:58.689Z" agent="5.0 (X11)" etag="yHXz7ADgMcV0IwT3VoGx" version="15.6.6" type="github" pages="7">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2272" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -912,7 +912,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="WX2_zsgDs76FrjTG-_RD" name="Visual Rendering System">
-    <mxGraphModel dx="1422" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="981" dy="629" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="dcF8XgeMpW1X17SAHS78-0" />
         <mxCell id="dcF8XgeMpW1X17SAHS78-1" parent="dcF8XgeMpW1X17SAHS78-0" />
@@ -978,7 +978,7 @@
         <mxCell id="ha-aKCSeul26C882ak3Y-10" value="&lt;div&gt;Decoders&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
           <mxGeometry x="65" y="240" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="VEsXmNTp4vsL_97D-ilU-0" value="b" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-0" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
           <mxGeometry x="40" y="350" width="770" height="390" as="geometry" />
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="VEsXmNTp4vsL_97D-ilU-1" target="VEsXmNTp4vsL_97D-ilU-4">
