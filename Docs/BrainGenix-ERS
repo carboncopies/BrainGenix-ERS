@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-06T08:53:35.845Z" agent="5.0 (X11)" etag="wIXb_bVm-A2tpJ6OdK7c" version="15.6.6" type="github" pages="7">
+<mxfile host="app.diagrams.net" modified="2021-11-06T08:59:54.548Z" agent="5.0 (X11)" etag="BCdPQXgIdGOcv5BXbxqA" version="15.6.6" type="github" pages="7">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2272" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -1029,6 +1029,55 @@
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-12" value="Noclip" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
           <mxGeometry x="280" y="550" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-16" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="40" y="740" width="770" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="VEsXmNTp4vsL_97D-ilU-17" target="VEsXmNTp4vsL_97D-ilU-22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="425" y="830" />
+              <mxPoint x="195" y="830" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="VEsXmNTp4vsL_97D-ilU-17" target="VEsXmNTp4vsL_97D-ilU-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="VEsXmNTp4vsL_97D-ilU-17" target="VEsXmNTp4vsL_97D-ilU-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="VEsXmNTp4vsL_97D-ilU-17" target="VEsXmNTp4vsL_97D-ilU-18">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="425" y="830" />
+              <mxPoint x="655" y="830" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-17" value="Loaders" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="365" y="750" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-18" value="Shader" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="595" y="850" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-19" value="Image" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="435" y="950" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="VEsXmNTp4vsL_97D-ilU-20" target="VEsXmNTp4vsL_97D-ilU-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-20" value="Texture" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="435" y="850" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-21" value="Scene" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="285" y="850" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-22" value="Environment (BG FORMAT)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="135" y="850" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-28" value="&lt;h1&gt;Note:&lt;/h1&gt;&lt;p&gt;All loaders must have support for both local files (on disk) and database storage (over network). Database loading should be prioritized over on disk storage as it is important for the ERS use case.&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="50" y="930" width="370" height="120" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
