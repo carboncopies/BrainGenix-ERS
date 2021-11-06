@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-06T09:47:55.635Z" agent="5.0 (X11)" etag="maLPpyYMEuKmQyQqN2ZI" version="15.6.6" type="github" pages="7">
+<mxfile host="app.diagrams.net" modified="2021-11-06T09:48:46.169Z" agent="5.0 (X11)" etag="5c43uItRbG2jUP1E5dqK" version="15.6.6" type="github" pages="7">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2272" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -1220,7 +1220,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="VEsXmNTp4vsL_97D-ilU-73" value="Update Window" style="rounded=0;whiteSpace=wrap;html=1;fontColor=default;strokeColor=default;fillColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-73" value="Update Window" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
           <mxGeometry x="910" y="670" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="VEsXmNTp4vsL_97D-ilU-74" target="VEsXmNTp4vsL_97D-ilU-80">
@@ -1230,11 +1230,20 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="VEsXmNTp4vsL_97D-ilU-74" value="Encode Frame With Codec Specified In Configuration" style="rounded=0;whiteSpace=wrap;html=1;fontColor=default;strokeColor=default;fillColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-74" value="Encode Frame With Codec Specified In Configuration" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
           <mxGeometry x="1060" y="670" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-80" value="End Frame Update" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=default;strokeColor=#b85450;fillColor=#f8cecc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
           <mxGeometry x="1510" y="770" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-83" value="OpenXR?" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;fillColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="1335" y="650" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-84" value="Ray Tracing?" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;fillColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="1470" y="670" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-85" value="Physics Engine Integration?" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;fillColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="1250" y="720" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
