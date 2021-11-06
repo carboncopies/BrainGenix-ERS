@@ -2,7 +2,7 @@
 mkdir -p Build
 
 # Enter Build Dir
-cd Build
+cd ../Build
 
 # Make Only BrainGenix-ERS
 cmake ..
