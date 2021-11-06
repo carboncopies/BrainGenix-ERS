@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-06T08:42:41.686Z" agent="5.0 (X11)" etag="boDXxrpNJGG-1fIgRA-y" version="15.6.6" type="github" pages="7">
+<mxfile host="app.diagrams.net" modified="2021-11-06T08:46:45.749Z" agent="5.0 (X11)" etag="f-NO9cte67VI4UdZ5moL" version="15.6.6" type="github" pages="7">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2272" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -919,14 +919,64 @@
         <mxCell id="dcF8XgeMpW1X17SAHS78-2" value="&lt;h1&gt;Visual Rendering System&lt;br&gt;&lt;/h1&gt;&lt;p&gt;The BG::ERS Visual Rendering System provides source image data for the retina kernel or the user if used without sensory translation.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
           <mxGeometry x="10" y="10" width="470" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="ha-aKCSeul26C882ak3Y-1" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+        <mxCell id="ha-aKCSeul26C882ak3Y-1" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#666666;fillColor=#f5f5f5;fontColor=#333333;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
           <mxGeometry x="20" y="110" width="810" height="400" as="geometry" />
         </mxCell>
         <mxCell id="ha-aKCSeul26C882ak3Y-3" value="Subsystem Structure" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
           <mxGeometry x="20" y="110" width="810" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="ha-aKCSeul26C882ak3Y-4" value="Visual Rendering Main File" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+        <mxCell id="ha-aKCSeul26C882ak3Y-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontColor=default;strokeColor=default;labelBackgroundColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="ha-aKCSeul26C882ak3Y-4" target="ha-aKCSeul26C882ak3Y-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="425" y="220" />
+              <mxPoint x="575" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ha-aKCSeul26C882ak3Y-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="ha-aKCSeul26C882ak3Y-4" target="ha-aKCSeul26C882ak3Y-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ha-aKCSeul26C882ak3Y-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="ha-aKCSeul26C882ak3Y-4" target="ha-aKCSeul26C882ak3Y-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="425" y="220" />
+              <mxPoint x="725" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ha-aKCSeul26C882ak3Y-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="ha-aKCSeul26C882ak3Y-4" target="ha-aKCSeul26C882ak3Y-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="425" y="220" />
+              <mxPoint x="275" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ha-aKCSeul26C882ak3Y-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="ha-aKCSeul26C882ak3Y-4" target="ha-aKCSeul26C882ak3Y-10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="425" y="220" />
+              <mxPoint x="125" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ha-aKCSeul26C882ak3Y-4" value="Visual Rendering Main File" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#82b366;fillColor=#d5e8d4;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
           <mxGeometry x="365" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ha-aKCSeul26C882ak3Y-5" value="OpenGL Renderer" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="515" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ha-aKCSeul26C882ak3Y-7" value="&lt;div&gt;Structures&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="365" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ha-aKCSeul26C882ak3Y-8" value="(Future) Vulkan Renderer" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="665" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ha-aKCSeul26C882ak3Y-9" value="Loaders" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="215" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ha-aKCSeul26C882ak3Y-10" value="&lt;div&gt;Decoders&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="65" y="240" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
