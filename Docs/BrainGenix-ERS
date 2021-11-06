@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-06T09:06:56.616Z" agent="5.0 (X11)" etag="FH6lCRAlr8laYioanK7u" version="15.6.6" type="github" pages="7">
+<mxfile host="app.diagrams.net" modified="2021-11-06T09:17:07.634Z" agent="5.0 (X11)" etag="hKLvmWPXeHKcJihN28CO" version="15.6.6" type="github" pages="7">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2272" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -912,7 +912,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="WX2_zsgDs76FrjTG-_RD" name="Visual Rendering System">
-    <mxGraphModel dx="677" dy="434" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1185" dy="760" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="dcF8XgeMpW1X17SAHS78-0" />
         <mxCell id="dcF8XgeMpW1X17SAHS78-1" parent="dcF8XgeMpW1X17SAHS78-0" />
@@ -1080,7 +1080,7 @@
           <mxGeometry x="50" y="950" width="370" height="120" as="geometry" />
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-31" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
-          <mxGeometry x="890" y="30" width="770" height="390" as="geometry" />
+          <mxGeometry x="890" y="30" width="770" height="400" as="geometry" />
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="VEsXmNTp4vsL_97D-ilU-32" target="VEsXmNTp4vsL_97D-ilU-35">
           <mxGeometry relative="1" as="geometry">
@@ -1113,22 +1113,25 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-33" value="Image Format (PNG/JPG/DNG, etc)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
-          <mxGeometry x="1510" y="150" width="120" height="60" as="geometry" />
+          <mxGeometry x="1510" y="160" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="VEsXmNTp4vsL_97D-ilU-34" target="VEsXmNTp4vsL_97D-ilU-39">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-34" value="Model/Scene Format (OBJ/GLTF, etc)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
-          <mxGeometry x="1370" y="150" width="120" height="60" as="geometry" />
+          <mxGeometry x="1370" y="160" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="VEsXmNTp4vsL_97D-ilU-35" value="&lt;div&gt;Environment Format&lt;/div&gt;&lt;div&gt;(BrainGenix Format)&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
-          <mxGeometry x="1050" y="150" width="120" height="60" as="geometry" />
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-35" value="&lt;div&gt;Visual Environment Format&lt;/div&gt;&lt;div&gt;(BrainGenix Format)&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="1050" y="160" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-39" value="Open Asset Import Library (Assimp)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
-          <mxGeometry x="1370" y="240" width="120" height="60" as="geometry" />
+          <mxGeometry x="1370" y="250" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-41" value="FreeImage Library" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
-          <mxGeometry x="1510" y="240" width="120" height="60" as="geometry" />
+          <mxGeometry x="1510" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-46" value="&lt;h1&gt;Visual Environment Format&lt;br&gt;&lt;/h1&gt;&lt;p&gt;The Visual Environment Format (VEF) stores instancing data about models. It does not store any information about data used by other rendering systems such as Audio/Pressure/Temperature, etc. The VEF is based on the JSON format for ease of serialization and standardization. The VEF can reference other environments as well as models. The VEF is designed to be as easy to modify and understand as possible and sacrifices on size to enable that. Many other formats used within the industry, especially for real-time applications prioritize hiding the contents and making it as difficult to modify as possible. The VEF is designed to be the opposite.&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="910" y="230" width="440" height="180" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
