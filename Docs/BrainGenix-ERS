@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-06T09:05:17.593Z" agent="5.0 (X11)" etag="f5-QLWNiRiUp73VGwjwI" version="15.6.6" type="github" pages="7">
+<mxfile host="app.diagrams.net" modified="2021-11-06T09:06:56.616Z" agent="5.0 (X11)" etag="FH6lCRAlr8laYioanK7u" version="15.6.6" type="github" pages="7">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2272" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -912,7 +912,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="WX2_zsgDs76FrjTG-_RD" name="Visual Rendering System">
-    <mxGraphModel dx="569" dy="365" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="677" dy="434" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="dcF8XgeMpW1X17SAHS78-0" />
         <mxCell id="dcF8XgeMpW1X17SAHS78-1" parent="dcF8XgeMpW1X17SAHS78-0" />
@@ -1091,27 +1091,44 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="VEsXmNTp4vsL_97D-ilU-32" target="VEsXmNTp4vsL_97D-ilU-34">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1275" y="130" />
+              <mxPoint x="1430" y="130" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="VEsXmNTp4vsL_97D-ilU-32" target="VEsXmNTp4vsL_97D-ilU-33">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1275" y="130" />
-              <mxPoint x="1440" y="130" />
+              <mxPoint x="1570" y="130" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-32" value="Decoders" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
           <mxGeometry x="1215" y="50" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="VEsXmNTp4vsL_97D-ilU-33" target="VEsXmNTp4vsL_97D-ilU-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-33" value="Image Format (PNG/JPG/DNG, etc)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
-          <mxGeometry x="1380" y="150" width="120" height="60" as="geometry" />
+          <mxGeometry x="1510" y="150" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;fontColor=default;strokeColor=default;" edge="1" parent="dcF8XgeMpW1X17SAHS78-1" source="VEsXmNTp4vsL_97D-ilU-34" target="VEsXmNTp4vsL_97D-ilU-39">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-34" value="Model/Scene Format (OBJ/GLTF, etc)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
-          <mxGeometry x="1215" y="150" width="120" height="60" as="geometry" />
+          <mxGeometry x="1370" y="150" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="VEsXmNTp4vsL_97D-ilU-35" value="&lt;div&gt;Environment Format&lt;/div&gt;&lt;div&gt;(BrainGenix Format)&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
           <mxGeometry x="1050" y="150" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-39" value="Open Asset Import Library (Assimp)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="1370" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VEsXmNTp4vsL_97D-ilU-41" value="FreeImage Library" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;fontColor=default;" vertex="1" parent="dcF8XgeMpW1X17SAHS78-1">
+          <mxGeometry x="1510" y="240" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
