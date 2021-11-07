@@ -66,9 +66,9 @@ target_link_libraries("${PROJECT_NAME}" "assimp" "${ASSIMP_LIBRARIES}")
 
 
 # Add Bullet Library
-# set(BULLET_DIR "${LIB_DIR}/bullet")
-# add_subdirectory("${BULLET_DIR}")
-# include_directories("${BULLET_DIR}/src")
+set(BULLET_DIR "${LIB_DIR}/bullet")
+add_subdirectory("${BULLET_DIR}")
+include_directories("${BULLET_DIR}/src")
 
 
 
