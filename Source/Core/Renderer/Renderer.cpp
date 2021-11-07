@@ -149,7 +149,7 @@ bool Renderer::UpdateLoop() {
 
 
     // Update Window Title With FPS Counter
-    std::string NewWindowTitle = std::string(std::string("BrainGenix-ERS") + std::string(" - ") + std::to_string(1/DeltaTime) + std::string(" FPS"));
+    std::string NewWindowTitle = std::string(std::string(WindowTitle_) + std::string(" - ") + std::to_string(1/DeltaTime) + std::string(" FPS"));
     glfwSetWindowTitle(Window_, NewWindowTitle.c_str());
 
     // Check If System Should Shutdown
