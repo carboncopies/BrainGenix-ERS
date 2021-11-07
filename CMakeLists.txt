@@ -32,6 +32,10 @@ set(YAML_CPP_DIR "yaml-cpp")
 add_subdirectory("${LIB_DIR}/${YAML_CPP_DIR}")
 target_link_libraries("${PROJECT_NAME}" "${YAML_CPP_DIR}")
 
+# Add RapidJSON
+set(RAPID_JSON_DIR "rapidjson")
+include_directories("${LIB_DIR}/${RAPID_JSON_DIR}/include/rapidjson")
+
 # # Link Glad Library
 set(GLAD_DIR "glad")
 include_directories("${LIB_DIR}/${GLAD_DIR}/src")
