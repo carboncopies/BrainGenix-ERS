@@ -21,7 +21,7 @@ void ERS_OBJECT_MODEL::LoadModelFromFile(std::string const &Path) {
 
     // Log Errors
     if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
-        std::cout<< "ASSET IMPORT ERROR" << Importer.GetErrorString()<<std::endl; /// FIX ME - SHOULD USE ERSLOGGER
+        std::cout<< "ASSET IMPORT ERROR " << Importer.GetErrorString()<<std::endl; /// FIX ME - SHOULD USE ERSLOGGER
         return;
     }
 
@@ -142,7 +142,7 @@ ERS_OBJECT_MESH ERS_OBJECT_MODEL::ProcessMesh(aiMesh *Mesh, const aiScene *Scene
     std::vector<ERS_OBJECT_TEXTURE_2D> SpecularMaps = LoadMaterialTextures(Material, aiTextureType_SPECULAR, "texture_specular");
     Textures.insert(Textures.end(), SpecularMaps.begin(), SpecularMaps.end());
     // 3. normal maps
-    std::vector<ERS_OBJECT_TEXTURE_2D> NormalMaps = LoadMaterialTextures(Material, aiTextureType_HEIGHT, "texture_normal");
+    std::vector<ERS_OBJECT_TEXTURE_2D> NormalMaps = LoadMaterialTextures(Material, aiTextureType_NORMALS, "texture_normal");
     Textures.insert(Textures.end(), NormalMaps.begin(), NormalMaps.end());
     // 4. height maps
     std::vector<ERS_OBJECT_TEXTURE_2D> HeightMaps = LoadMaterialTextures(Material, aiTextureType_AMBIENT, "texture_height");

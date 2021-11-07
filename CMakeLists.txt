@@ -63,15 +63,25 @@ set(ASSIMP_DIR "${LIB_DIR}/assimp")
 add_subdirectory("${ASSIMP_DIR}")
 target_link_libraries("${PROJECT_NAME}" "assimp" "${ASSIMP_LIBRARIES}")
 
-# Add Bullet Library
-set(BULLET_DIR "${LIB_DIR}/bullet")
-add_subdirectory("${BULLET_DIR}")
-include_directories("${BULLET_DIR}/src")
+# # Add Bullet Library
+# set(BULLET_DIR "${LIB_DIR}/bullet")
+# add_subdirectory("${BULLET_DIR}")
+# include_directories("${BULLET_DIR}/src")
 
 # Add Meshoptimizer Library
 set(MESHOPTIMIZER_DIR "${LIB_DIR}/meshoptimizer")
 add_subdirectory("${MESHOPTIMIZER_DIR}")
 target_link_libraries("${PROJECT_NAME}" "meshoptimizer" "${MESHOPTIMIZER_DIR}")
+
+# # Add CEGUI Library
+# set(CEGUI_DIR "${LIB_DIR}/cegui")
+# add_subdirectory("${CEGUI_DIR}")
+# target_link_libraries("${PROJECT_NAME}" "cegui" "${CEGUI_DIR}")
+
+# # Add Libsndfile Library
+# set(LIBSNDFILE_DIR "${LIB_DIR}/libsndfile")
+# add_subdirectory("${LIBSNDFILE_DIR}")
+# target_link_libraries("${PROJECT_NAME}" "libsndfile" "${LIBSNDFILE_DIR}")
 
 
 # Add MYSQL Library
