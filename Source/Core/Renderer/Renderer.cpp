@@ -139,10 +139,16 @@ bool Renderer::UpdateLoop() {
 
 
 
+
     // Update Window Stuff
     glfwSwapBuffers(Window_);
     glfwPollEvents();
 
+
+
+    // Update Window Title With FPS Counter
+    std::string NewWindowTitle = WindowTitle_ + std::string(" - ") + std::to_string(1000.0/double(DeltaTime)) + std::string(" FPS");
+    glfwSetWindowTitle(Window_, NewWindowTitle.c_str());
 
     // Check If System Should Shutdown
     if (glfwWindowShouldClose(Window_)) {
