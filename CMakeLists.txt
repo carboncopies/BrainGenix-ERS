@@ -63,13 +63,15 @@ set(ASSIMP_DIR "${LIB_DIR}/assimp")
 add_subdirectory("${ASSIMP_DIR}")
 target_link_libraries("${PROJECT_NAME}" "assimp" "${ASSIMP_LIBRARIES}")
 
-
-
 # Add Bullet Library
 set(BULLET_DIR "${LIB_DIR}/bullet")
 add_subdirectory("${BULLET_DIR}")
 include_directories("${BULLET_DIR}/src")
 
+# Add Meshoptimizer Library
+set(MESHOPTIMIZER_DIR "${LIB_DIR}/meshoptimizer")
+add_subdirectory("${MESHOPTIMIZER_DIR}")
+target_link_libraries("${PROJECT_NAME}" "meshoptimizer" "${MESHOPTIMIZER_DIR}")
 
 
 # Add MYSQL Library
@@ -82,15 +84,7 @@ include_directories("${BULLET_DIR}/src")
 # target_compile_features("${PROJECT_NAME}" PRIVATE cxx_range_for)  
 
 
-
-# Add Nuklear Library
-# set(NULKEAR_DIR "${LIB_DIR}/Nuklear")
-# add_subdirectory("${NULKEAR_DIR}")
-# target_link_libraries("${PROJECT_NAME}" "${NULKEAR_LIBRARIES}")
-
-
-
-# Add CPPKafka Library
+# # Add CPPKafka Library
 # set(CPPKAFKA_LIBRARY "${LIB_DIR}/cppkafka")
 # set(CPPKAFKA_INCLUDES "${CPPKAFKA_LIBRARY}/include")
 # include(FindPackageHandleStandardArgs)
@@ -103,7 +97,7 @@ include_directories("${BULLET_DIR}/src")
 
 # select_library_configurations(CPPKAFKA)
 
-# #target_include_directories("${PROJECT_NAME}" "${CPPKAFKA_INCLUDES}")
-# #target_link_libraries("${PROJECT_NAME}" "${CPPKAFKA_LIBRARY}")
+# target_include_directories("${PROJECT_NAME}" "${CPPKAFKA_INCLUDES}")
+# target_link_libraries("${PROJECT_NAME}" "${CPPKAFKA_LIBRARY}")
 
 
