@@ -95,7 +95,7 @@ class Renderer {
         GLFWwindow* Window_;
         int WindowWidth_;
         int WindowHeight_;
-        std::string WindowTitle_;
+        const char* WindowTitle_;
 
         int RenderWidth_;
         int RenderHeight_;

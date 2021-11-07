@@ -46,6 +46,7 @@ void Renderer::InitializeGLFW() {
     Logger_->Log("Read Configuration File For 'WindowTitle' Parameter", 1);
     WindowTitle_ = (*SystemConfiguration_)["WindowTitle"].as<std::string>().c_str();
 
+    //glfwWindowHint(GLFW_DOUBLEBUFFER, GLFW_FALSE);
 
     // Create Window Object
     Window_ = glfwCreateWindow(WindowWidth_, WindowHeight_, WindowTitle_, NULL, NULL);
@@ -68,6 +69,7 @@ void Renderer::InitializeOpenGL() {
 
     // Register Callback
     glfwMakeContextCurrent(Window_);
+    //glfwSwapInterval(0);
     glfwSetFramebufferSizeCallback(Window_, FramebufferSizeCallback);
     glfwSetCursorPosCallback(Window_, MouseCallback);
     glfwSetScrollCallback(Window_, ScrollCallback);
@@ -147,7 +149,7 @@ bool Renderer::UpdateLoop() {
 
 
     // Update Window Title With FPS Counter
-    std::string NewWindowTitle = WindowTitle_ + std::string(" - ") + std::to_string(1000.0/double(DeltaTime)) + std::string(" FPS");
+    std::string NewWindowTitle = std::string(std::string("BrainGenix-ERS") + std::string(" - ") + std::to_string(1/DeltaTime) + std::string(" FPS"));
     glfwSetWindowTitle(Window_, NewWindowTitle.c_str());
 
     // Check If System Should Shutdown
