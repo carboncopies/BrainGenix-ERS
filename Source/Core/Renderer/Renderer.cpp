@@ -35,9 +35,6 @@ void Renderer::InitializeGLFW() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 
-    stbi_set_flip_vertically_on_load(false);
-
-
     // Read Out Width, Height
     Logger_->Log("Read Configuration File For 'WindowWidth' Parameter", 1);
     WindowWidth_ = (*SystemConfiguration_)["WindowWidth"].as<int>();
