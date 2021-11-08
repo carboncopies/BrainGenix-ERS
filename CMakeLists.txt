@@ -137,7 +137,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   )
 
 #set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
-install()
+install(DIRECTORY ${SRC_DIR}/Shaders DESTINATION ${BIN_DIR})
+install(DIRECTORY ${SRC_DIR}/Assets DESTINATION ${BIN_DIR})
+install(FILE )
+
 
 
 file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
