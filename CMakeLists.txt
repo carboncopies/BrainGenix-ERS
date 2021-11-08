@@ -31,6 +31,7 @@ disable_target_warnings(yaml-cpp)
 #include_directories("${LIB_DIR}/${RAPID_JSON_DIR}/include/rapidjson")
 
 # # Link Glad Library
+add_subdirectory(${LIB})
 set(GLAD_DIR "glad")
 include_directories("${LIB_DIR}/${GLAD_DIR}/src")
 include_directories("${LIB_DIR}/${GLAD_DIR}/include")

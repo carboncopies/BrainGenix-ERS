@@ -5,4 +5,4 @@ add_library(glad
   include/KHR/khrplatform.h
   src/glad.c
   )
-target_
+target_include_directories(glad PUBLIC include)
