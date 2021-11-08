@@ -61,13 +61,13 @@ add_subdirectory("${FREEIMAGE_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC FreeImage)
 
 # Add ASSIMP Library
-#set(ASSIMP_DIR "${LIB_DIR}/assimp")
+set(ASSIMP_DIR "${LIB_DIR}/assimp-5.0.1")
 #add_library(assimp PUBLIC IMPORTED)
-set(assimp_DIR "${LIB_DIR}/assimp")
-find_package(assimp REQUIRED)
-#add_subdirectory("${ASSIMP_DIR}")
+# set(assimp_DIR "${LIB_DIR}/assimp-5.0.1")
+# find_package(assimp REQUIRED)
+add_subdirectory("${ASSIMP_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC assimp)
-target_compile_options("${PROJECT_NAME}" PRIVATE -Wall -Wextra)
+#target_compile_options("${PROJECT_NAME}" PRIVATE -Wall -Wextra)
 
 # # Add Backward Library
 # set(BACKWARD_DIR "&{LIB_DIR}/backward")
