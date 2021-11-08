@@ -11,8 +11,6 @@ set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 set(BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Binaries")
 
-# Package Version Information
-set(YAML-CPP-VERSION "0.7.0")
 
 # Enable Debugging
 #set (CMAKE_BUILD_TYPE RelWithDebInfo)
@@ -31,8 +29,8 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 
 
 # Add YAML-CPP Library
-find_package("yaml-cpp-${YAML-CPP-VERSION}")
-target_link_libraries("${PROJECT_NAME}" PUBLIC "yaml-cpp-${YAML-CPP-VERSION}")
+find_package("yaml-cpp")
+target_link_libraries("${PROJECT_NAME}" PUBLIC "yaml-cpp")
 target_compile_options("${PROJECT_NAME}" PRIVATE -Wall -Wextra)
 
 # Add RapidJSON
