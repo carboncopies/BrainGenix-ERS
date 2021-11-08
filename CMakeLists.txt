@@ -54,17 +54,17 @@ include_directories("${LIB_DIR}/${GLM_DIR}/")
 # Add GLFW Library
 set(GLFW_DIR "${LIB_DIR}/glfw")
 add_subdirectory("${GLFW_DIR}")
-target_link_libraries("${PROJECT_NAME}" "glfw" "${GLFW_LIBRARIES}")
+target_link_libraries("${PROJECT_NAME}" PUBLIC "glfw" "${GLFW_LIBRARIES}")
 
 # Add FreeImage Library
 set(FREEIMAGE_DIR "${LIB_DIR}/FreeImage/FreeImage")
 add_subdirectory("${FREEIMAGE_DIR}")
-target_link_libraries("${PROJECT_NAME}" "FreeImage" "${FREEIMAGE_LIBRARIES}")
+target_link_libraries("${PROJECT_NAME}" PUBLIC "FreeImage" "${FREEIMAGE_LIBRARIES}")
 
 # Add ASSIMP Library
 set(ASSIMP_DIR "${LIB_DIR}/assimp")
 add_subdirectory("${ASSIMP_DIR}")
-target_link_libraries("${PROJECT_NAME}" "assimp" "${ASSIMP_LIBRARIES}")
+target_link_libraries("${PROJECT_NAME}" PUBLIC "assimp" "${ASSIMP_LIBRARIES}")
 
 # # Add Backward Library
 # set(BACKWARD_DIR "&{LIB_DIR}/backward")
