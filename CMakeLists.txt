@@ -26,36 +26,9 @@ endfunction()
 add_subdirectory("${LIB_DIR}/yaml-cpp")
 disable_target_warnings(yaml-cpp)
 
-
-
-
-# Add Main.cpp
-add_executable(${PROJECT_NAME} "${SRC_DIR}/Main.cpp")
-#target_include_directories(${PROJECT_NAME} PRIVATE Source)
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
-target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
-target_link_libraries(${PROJECT_NAME} PRIVATE
-  yaml-cpp
-  )
-
-
-set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
-file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
-file(COPY "${SRC_DIR}/Shaders/" DESTINATION "${BIN_DIR}/Shaders")
-file(COPY "${SRC_DIR}/Assets/" DESTINATION "${BIN_DIR}/Assets")
-
-target_include_directories(${PROJECT_NAME} PRIVATE "${SRC_DIR}")
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
-
-
-
-
-target_compile_options("${PROJECT_NAME}" PRIVATE -Wall -Wextra)
-target_link_libraries("${PROJECT_NAME}" PUBLIC "yaml-cpp")
-
 # Add RapidJSON
-set(RAPID_JSON_DIR "rapidjson")
-include_directories("${LIB_DIR}/${RAPID_JSON_DIR}/include/rapidjson")
+#set(RAPID_JSON_DIR "rapidjson")
+#include_directories("${LIB_DIR}/${RAPID_JSON_DIR}/include/rapidjson")
 
 # # Link Glad Library
 set(GLAD_DIR "glad")
@@ -146,5 +119,32 @@ target_link_libraries("${PROJECT_NAME}" PUBLIC "meshoptimizer" "${MESHOPTIMIZER_
 
 # target_include_directories("${PROJECT_NAME}" "${CPPKAFKA_INCLUDES}")
 # target_link_libraries("${PROJECT_NAME}" "${CPPKAFKA_LIBRARY}")
+
+
+
+
+# Add Main.cpp
+add_executable(${PROJECT_NAME} "${SRC_DIR}/Main.cpp")
+#target_include_directories(${PROJECT_NAME} PRIVATE Source)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
+target_link_libraries(${PROJECT_NAME} PRIVATE
+  yaml-cpp
+  )
+
+
+set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
+file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
+file(COPY "${SRC_DIR}/Shaders/" DESTINATION "${BIN_DIR}/Shaders")
+file(COPY "${SRC_DIR}/Assets/" DESTINATION "${BIN_DIR}/Assets")
+
+target_include_directories(${PROJECT_NAME} PRIVATE "${SRC_DIR}")
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
+
+
+
+
+target_compile_options("${PROJECT_NAME}" PRIVATE -Wall -Wextra)
+target_link_libraries("${PROJECT_NAME}" PUBLIC "yaml-cpp")
 
 
