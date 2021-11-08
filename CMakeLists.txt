@@ -76,6 +76,7 @@ disable_target_warnings(meshoptimizer)
 
 # Add CEGUI Library (Not Header Only)
 set(CEGUI_SAMPLES_ENABLED 0)
+set(GLFW_H_PATH ${LIB_DIR}/glfw/include/GLFW/glfw3.h)
 add_subdirectory(${LIB_DIR}/cegui)
 disable_target_warnings(CEGUIBase-0)
 
