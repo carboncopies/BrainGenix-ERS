@@ -29,16 +29,9 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 
 
 # Add YAML-CPP Library
-#find_package("yaml-cpp")
-add_library("yaml-cpp" PUBLIC IMPORTED)
+find_package("yaml-cpp")
 target_link_libraries("${PROJECT_NAME}" PUBLIC "yaml-cpp")
-target_compile_options(yaml-cpp PRIVATE
-     $<$<OR:$<CXX_COMPILER_ID:Clang>,
-            $<CXX_COMPILER_ID:AppleClang>,
-            $<CXX_COMPILER_ID:GNU>>:
-          -w>
-     $<$<CXX_COMPILER_ID:MSVC>:
-          /w>)
+target_compile_options("${PROJECT_NAME}" PRIVATE -Wall -Wextra)
 
 # Add RapidJSON
 set(RAPID_JSON_DIR "rapidjson")
