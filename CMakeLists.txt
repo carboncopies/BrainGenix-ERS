@@ -45,13 +45,13 @@ set(GLFW_DIR "${LIB_DIR}/glfw")
 add_subdirectory("${GLFW_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC "glfw" "${GLFW_LIBRARIES}")
 
-# Add FreeImage Library
+# Add FreeImage Library (Not header only)
 #find_package(FreeImage)
 set(FREEIMAGE_DIR "${LIB_DIR}/FreeImage/FreeImage")
 add_subdirectory("${FREEIMAGE_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC FreeImage)
 
-# Add ASSIMP Library
+# Add ASSIMP Library (Not header only)
 set(ASSIMP_DIR "${LIB_DIR}/assimp")
 #add_library(assimp PUBLIC IMPORTED)
 # set(assimp_DIR "${LIB_DIR}/assimp")
@@ -60,7 +60,7 @@ add_subdirectory("${ASSIMP_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC assimp)
 #target_compile_options("${PROJECT_NAME}" PRIVATE -Wall -Wextra)
 
-# # Add Backward Library
+# # Add Backward Library ()
 # set(BACKWARD_DIR "&{LIB_DIR}/backward")
 # add_subdirectory("${BACKWARD_DIR}")
 
