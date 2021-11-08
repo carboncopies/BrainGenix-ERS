@@ -62,6 +62,7 @@ target_link_libraries("${PROJECT_NAME}" PUBLIC FreeImage)
 
 # Add ASSIMP Library
 #set(ASSIMP_DIR "${LIB_DIR}/assimp")
+find_package(assimp CONFIG REQUIRED)
 add_library(assimp SHARED IMPORTED)
 #add_subdirectory("${ASSIMP_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC assimp)
