@@ -12,12 +12,21 @@ set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 set(BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Binaries")
 
 
-# Enable Debugging
-#set (CMAKE_BUILD_TYPE RelWithDebInfo)
+# Add YAML-CPP Library
+add_subdirectory("${LIB_DIR}/yaml-cpp")
+
+
+
 
 # Add Main.cpp
-set(SOURCES "${SRC_DIR}/Main.cpp")
-add_executable("${PROJECT_NAME}" "${SOURCES}")
+add_executable(${PROJECT_NAME} "${SRC_DIR}/Main.cpp")
+#target_include_directories(${PROJECT_NAME} PRIVATE Source)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
+target_link_libraries(${PROJECT_NAME} PRIVATE
+  yaml-cpp
+  )
+
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
 file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
@@ -28,10 +37,10 @@ target_include_directories(${PROJECT_NAME} PRIVATE "${SRC_DIR}")
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 
 
-# Add YAML-CPP Library
-find_package("yaml-cpp")
-target_link_libraries("${PROJECT_NAME}" PUBLIC "yaml-cpp")
+
+
 target_compile_options("${PROJECT_NAME}" PRIVATE -Wall -Wextra)
+target_link_libraries("${PROJECT_NAME}" PUBLIC "yaml-cpp")
 
 # Add RapidJSON
 set(RAPID_JSON_DIR "rapidjson")
