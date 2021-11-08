@@ -48,7 +48,6 @@ include_directories("${LIB_DIR}/stb")
 
 # Add GLM Library
 set(GLM_DIR "glm")
-add_subdirectory("${LIB_DIR}/${GLM_DIR}")
 include_directories("${LIB_DIR}/${GLM_DIR}/")
 
 # Add GLFW Library
