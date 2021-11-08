@@ -85,7 +85,7 @@ target_link_libraries("${PROJECT_NAME}" PUBLIC "assimp" "${ASSIMP_LIBRARIES}")
 # Add Meshoptimizer Library
 set(MESHOPTIMIZER_DIR "${LIB_DIR}/meshoptimizer")
 add_subdirectory("${MESHOPTIMIZER_DIR}")
-target_link_libraries("${PROJECT_NAME}" "meshoptimizer" "${MESHOPTIMIZER_DIR}")
+target_link_libraries("${PROJECT_NAME}" PUBLIC "meshoptimizer" "${MESHOPTIMIZER_DIR}")
 
 # # Add CEGUI Library
 #set(CEGUI_DIR "${LIB_DIR}/cegui")
