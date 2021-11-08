@@ -28,9 +28,10 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 
 
 # Add YAML-CPP Library
-set(YAML_CPP_DIR "yaml-cpp")
-add_subdirectory("${LIB_DIR}/${YAML_CPP_DIR}")
-target_link_libraries("${PROJECT_NAME}" "${YAML_CPP_DIR}")
+find_package(yaml-cpp)
+#set(YAML_CPP_DIR "yaml-cpp")
+#add_subdirectory("${LIB_DIR}/${YAML_CPP_DIR}")
+#target_link_libraries("${PROJECT_NAME}" "${YAML_CPP_DIR}")
 
 # Add RapidJSON
 set(RAPID_JSON_DIR "rapidjson")
