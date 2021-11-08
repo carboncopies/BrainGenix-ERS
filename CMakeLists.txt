@@ -144,9 +144,6 @@ file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
 file(COPY "${SRC_DIR}/Shaders/" DESTINATION "${BIN_DIR}/Shaders")
 file(COPY "${SRC_DIR}/Assets/" DESTINATION "${BIN_DIR}/Assets")
 
-target_include_directories(${PROJECT_NAME} PRIVATE "${SRC_DIR}")
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
-
 
 
 
