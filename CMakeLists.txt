@@ -75,10 +75,8 @@ add_subdirectory(${LIB_DIR}/meshoptimizer)
 disable_target_warnings(meshoptimizer)
 
 
-# # Add CEGUI Library (Not Header Only)
-#set(CEGUI_DIR "${LIB_DIR}/cegui")
-#add_subdirectory("${CEGUI_DIR}")
-#target_link_libraries("${PROJECT_NAME}" "cegui" "${CEGUI_DIR}")
+# Add CEGUI Library (Not Header Only)
+add_subdirectory(${LIB_DIR}/cegui)
 
 
 # # Add Libsndfile Library (Not Header Only)
@@ -131,6 +129,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   assimp
   meshoptimizer
   backward
+  CEGUIBase
   )
 
 
