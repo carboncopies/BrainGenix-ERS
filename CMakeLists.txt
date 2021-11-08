@@ -47,6 +47,7 @@ include_directories("${LIB_DIR}/stb")
 # Add GLM Library
 set(GLM_DIR "glm")
 add_subdirectory("${LIB_DIR}/${GLM_DIR}")
+include_directories("${LIB_DIR}/${GLM_DIR}/")
 
 # Add GLFW Library
 set(GLFW_DIR "${LIB_DIR}/glfw")
@@ -63,6 +64,17 @@ set(ASSIMP_DIR "${LIB_DIR}/assimp")
 add_subdirectory("${ASSIMP_DIR}")
 target_link_libraries("${PROJECT_NAME}" "assimp" "${ASSIMP_LIBRARIES}")
 
+# # Add Backward Library
+# set(BACKWARD_DIR "&{LIB_DIR}/backward")
+# add_subdirectory("${BACKWARD_DIR}")
+
+# # This will add backward.cpp to your target
+# add_executable("${PROJECT_NAME}" "${SOURCES}" ${BACKWARD_ENABLE})
+
+# This will add libraries, definitions and include directories needed by backward
+# by setting each property on the target.
+#add_backward(mytarget)
+
 # # Add Bullet Library
 # set(BULLET_DIR "${LIB_DIR}/bullet")
 # add_subdirectory("${BULLET_DIR}")
@@ -74,9 +86,9 @@ add_subdirectory("${MESHOPTIMIZER_DIR}")
 target_link_libraries("${PROJECT_NAME}" "meshoptimizer" "${MESHOPTIMIZER_DIR}")
 
 # # Add CEGUI Library
-# set(CEGUI_DIR "${LIB_DIR}/cegui")
-# add_subdirectory("${CEGUI_DIR}")
-# target_link_libraries("${PROJECT_NAME}" "cegui" "${CEGUI_DIR}")
+#set(CEGUI_DIR "${LIB_DIR}/cegui")
+#add_subdirectory("${CEGUI_DIR}")
+#target_link_libraries("${PROJECT_NAME}" "cegui" "${CEGUI_DIR}")
 
 # # Add Libsndfile Library
 # set(LIBSNDFILE_DIR "${LIB_DIR}/libsndfile")

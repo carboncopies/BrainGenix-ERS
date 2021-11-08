@@ -33,7 +33,7 @@ ERSImage ImageDecoder::LoadImageFromFile(const char* FilePath) {
     // Load Image
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileType(FilePath, 0);
     ImageStruct.ImageData = FreeImage_Load(Format, FilePath);
-    //FreeImage_FlipVertical(ImageStruct.ImageData);
+    FreeImage_FlipVertical(ImageStruct.ImageData);
     
     // Set Properties
     ImageStruct.Width = FreeImage_GetWidth(ImageStruct.ImageData);
