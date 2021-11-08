@@ -15,6 +15,15 @@ set(BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Binaries")
 # Add YAML-CPP Library
 add_subdirectory("${LIB_DIR}/yaml-cpp")
 
+target_compile_options(yaml-cpp PRIVATE
+  $<$<OR:$<CXX_COMPILER_ID:Clang>,
+         $<CXX_COMPILER_ID:AppleClang>,
+         $<CXX_COMPILER_ID:GNU>>:
+      -w>
+     $<$<CXX_COMPILER_ID:MSVC>:
+          /w>
+	)
+
 
 
 
