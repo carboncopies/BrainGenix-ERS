@@ -33,19 +33,18 @@ disable_target_warnings(yaml-cpp)
 # # Link Glad Library
 add_subdirectory(${LIB_DIR}/glad)
 
-# Add STB Image Library
+# Add STB Image Library (Delete Me)
 include_directories("${LIB_DIR}/stb")
 
-# Add GLM Library
+# Add GLM Library (Header Only)
 add_subdirectory(${LIB_DIR}/glm)
 
 # Add GLFW Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/glfw)
 
 # Add FreeImage Library (Not Header Only)
-#find_package(FreeImage)
-set(FREEIMAGE_DIR "${LIB_DIR}/FreeImage/FreeImage")
-add_subdirectory("${FREEIMAGE_DIR}")
+add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
+
 target_link_libraries("${PROJECT_NAME}" PUBLIC FreeImage)
 
 # Add ASSIMP Library (Not Header Only)
@@ -87,13 +86,13 @@ target_link_libraries("${PROJECT_NAME}" PUBLIC "meshoptimizer" "${MESHOPTIMIZER_
 #target_link_libraries("${PROJECT_NAME}" "cegui" "${CEGUI_DIR}")
 
 
-# # Add Libsndfile Library
+# # Add Libsndfile Library (Not Header Only)
 # set(LIBSNDFILE_DIR "${LIB_DIR}/libsndfile")
 # add_subdirectory("${LIBSNDFILE_DIR}")
 # target_link_libraries("${PROJECT_NAME}" "libsndfile" "${LIBSNDFILE_DIR}")
 
 
-# Add MYSQL Library
+# Add MYSQL Library (Not Header Only)
 # set(MYSQL_CONNECTOR_DIR "${LIB_DIR}/mysql-connector-cpp")
 # # include_directories("${MYSQL_CONNECTION_DIR}/include")
 # # include_directories("${MYSQL_CONNECTION_DIR}/include/cppconn")
@@ -103,7 +102,7 @@ target_link_libraries("${PROJECT_NAME}" PUBLIC "meshoptimizer" "${MESHOPTIMIZER_
 # target_compile_features("${PROJECT_NAME}" PRIVATE cxx_range_for)  
 
 
-# # Add CPPKafka Library
+# # Add CPPKafka Library (Not Header Only)
 # set(CPPKAFKA_LIBRARY "${LIB_DIR}/cppkafka")
 # set(CPPKAFKA_INCLUDES "${CPPKAFKA_LIBRARY}/include")
 # include(FindPackageHandleStandardArgs)
