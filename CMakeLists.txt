@@ -75,13 +75,13 @@ target_link_libraries("${PROJECT_NAME}" PUBLIC assimp)
 # include_directories("${BULLET_DIR}/src")
 
 
-# Add Meshoptimizer Library
+# Add Meshoptimizer Library (Not Header Only)
 set(MESHOPTIMIZER_DIR "${LIB_DIR}/meshoptimizer")
 add_subdirectory("${MESHOPTIMIZER_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC "meshoptimizer" "${MESHOPTIMIZER_DIR}")
 
 
-# # Add CEGUI Library
+# # Add CEGUI Library (Not Header Only)
 #set(CEGUI_DIR "${LIB_DIR}/cegui")
 #add_subdirectory("${CEGUI_DIR}")
 #target_link_libraries("${PROJECT_NAME}" "cegui" "${CEGUI_DIR}")
@@ -132,7 +132,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   glad
   glm
   glfw
-  ${GLFW_LIBRARIES}
+  #${GLFW_LIBRARIES}
   )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
