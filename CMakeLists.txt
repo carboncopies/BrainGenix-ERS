@@ -11,6 +11,9 @@ set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 set(BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Binaries")
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${SOURCE_ROOT_DIR}/artifacts/bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${SOURCE_ROOT_DIR}/artifacts/lib)
 
 function(disable_target_warnings target)
   target_compile_options(${target} PRIVATE
