@@ -74,9 +74,10 @@ add_subdirectory(${LIB_DIR}/backward)
 add_subdirectory(${LIB_DIR}/meshoptimizer)
 disable_target_warnings(meshoptimizer)
 
-set(CEGUI_SAMPLES_ENABLED 0)
 # Add CEGUI Library (Not Header Only)
+set(CEGUI_SAMPLES_ENABLED 0)
 add_subdirectory(${LIB_DIR}/cegui)
+disable_target_warnings(cegui)
 
 
 # # Add Libsndfile Library (Not Header Only)
