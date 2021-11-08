@@ -38,9 +38,6 @@ disable_target_warnings(yaml-cpp)
 add_subdirectory(${LIB_DIR}/glad)
 disable_target_warnings(glad)
 
-# Add STB Image Library (Delete Me)
-include_directories("${LIB_DIR}/stb")
-
 # Add GLM Library (Header Only)
 add_subdirectory(${LIB_DIR}/glm)
 
