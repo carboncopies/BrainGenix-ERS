@@ -39,10 +39,9 @@ include_directories("${LIB_DIR}/stb")
 # Add GLM Library
 add_subdirectory(${LIB_DIR}/glm)
 
-
-# Add GLFW Library (Not header only)
+# Add GLFW Library (Not Header Only)
 set(GLFW_DIR "${LIB_DIR}/glfw")
-add_subdirectory("${GLFW_DIR}")
+add_subdirectory("${LIB_DIR}/glfw")
 
 # Add FreeImage Library (Not Header Only)
 #find_package(FreeImage)
