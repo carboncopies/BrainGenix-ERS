@@ -77,7 +77,7 @@ disable_target_warnings(meshoptimizer)
 # Add CEGUI Library (Not Header Only)
 set(CEGUI_SAMPLES_ENABLED 0)
 add_subdirectory(${LIB_DIR}/cegui)
-disable_target_warnings(cegui)
+disable_target_warnings(CEGUIBase)
 
 
 # # Add Libsndfile Library (Not Header Only)
