@@ -19,7 +19,7 @@ set(CMAKE_INSTALL_PREFIX ${BIN_DIR})
 function(disable_target_warnings target)
   target_compile_options(${target} PRIVATE
     $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-	  w>
+	    -w>
     $<$<CXX_COMPILER_ID:MSVC>:
       /w>
     )
@@ -56,9 +56,8 @@ disable_target_warnings(FreeImage)
 add_subdirectory(${LIB_DIR}/assimp)
 disable_target_warnings(assimp)
 
-# # Add Backward Library (Header Only)
-# set(BACKWARD_DIR "&{LIB_DIR}/backward")
-# add_subdirectory("${BACKWARD_DIR}")
+# Add Backward Library (Header Only)
+add_subdirectory(${LIB_DIR}/backward)
 
 # # This will add backward.cpp to your target
 # add_executable("${PROJECT_NAME}" "${SOURCES}" ${BACKWARD_ENABLE})
@@ -122,7 +121,7 @@ disable_target_warnings(meshoptimizer)
 
 # Add Main.cpp
 add_executable(${PROJECT_NAME} "${SRC_DIR}/Main.cpp")
-#target_include_directories(${PROJECT_NAME} PRIVATE Source)
+target_include_directories(${PROJECT_NAME} PRIVATE Source)
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
 target_link_libraries(${PROJECT_NAME} PRIVATE
@@ -135,6 +134,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   assimp
   meshoptimizer
   )
+
+
 
 #set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
 #install(DIRECTORY ${SRC_DIR}/Shaders DESTINATION ${BIN_DIR})

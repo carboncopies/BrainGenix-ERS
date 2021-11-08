@@ -8,7 +8,7 @@
     Date Created: 2021-11-01
 */
 
-
+// comment out extra names of variable with /* */ for warnings
 
 void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger) {
 
