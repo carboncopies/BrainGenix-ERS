@@ -22,15 +22,15 @@ function(disable_target_warnings target)
 endfunction()
 
 
-# Add YAML-CPP Library
+# Add YAML-CPP Library (Not Header Only)
 add_subdirectory("${LIB_DIR}/yaml-cpp")
 disable_target_warnings(yaml-cpp)
 
-# Add RapidJSON
+# Add RapidJSON (Header Only)
 #set(RAPID_JSON_DIR "rapidjson")
 #include_directories("${LIB_DIR}/${RAPID_JSON_DIR}/include/rapidjson")
 
-# # Link Glad Library
+# # Link Glad Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/glad)
 
 # Add STB Image Library (Delete Me)
@@ -45,14 +45,8 @@ add_subdirectory(${LIB_DIR}/glfw)
 # Add FreeImage Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
 
-target_link_libraries("${PROJECT_NAME}" PUBLIC FreeImage)
-
 # Add ASSIMP Library (Not Header Only)
-set(ASSIMP_DIR "${LIB_DIR}/assimp")
-#add_library(assimp PUBLIC IMPORTED)
-# set(assimp_DIR "${LIB_DIR}/assimp")
-# find_package(assimp REQUIRED)
-add_subdirectory("${ASSIMP_DIR}")
+add_subdirectory(${LIB_DIR}/assimp)
 target_link_libraries("${PROJECT_NAME}" PUBLIC assimp)
 #target_compile_options("${PROJECT_NAME}" PRIVATE -Wall -Wextra)
 
@@ -132,6 +126,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   glm
   glfw
   #${GLFW_LIBRARIES}
+  FreeImage
   )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
