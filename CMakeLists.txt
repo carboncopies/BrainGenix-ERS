@@ -29,7 +29,8 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 
 
 # Add YAML-CPP Library
-find_package("yaml-cpp")
+#find_package("yaml-cpp")
+add_library("yaml-cpp" PUBLIC IMPORTED)
 target_link_libraries("${PROJECT_NAME}" PUBLIC "yaml-cpp")
 target_compile_options(yaml-cpp PRIVATE
      $<$<OR:$<CXX_COMPILER_ID:Clang>,
