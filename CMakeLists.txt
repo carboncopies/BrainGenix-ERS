@@ -59,9 +59,6 @@ disable_target_warnings(assimp)
 # Add Backward Library (Header Only)
 add_subdirectory(${LIB_DIR}/backward)
 
-# # This will add backward.cpp to your target
-# add_executable("${PROJECT_NAME}" "${SOURCES}" ${BACKWARD_ENABLE})
-
 # This will add libraries, definitions and include directories needed by backward
 # by setting each property on the target.
 #add_backward(mytarget)
@@ -133,6 +130,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   FreeImage
   assimp
   meshoptimizer
+  backward
   )
 
 
