@@ -55,9 +55,9 @@ add_subdirectory("${GLFW_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC "glfw" "${GLFW_LIBRARIES}")
 
 # Add FreeImage Library
-find_package(FreeImage)
-#set(FREEIMAGE_DIR "${LIB_DIR}/FreeImage/FreeImage")
-# add_subdirectory("${FREEIMAGE_DIR}")
+#find_package(FreeImage)
+set(FREEIMAGE_DIR "${LIB_DIR}/FreeImage/FreeImage")
+add_subdirectory("${FREEIMAGE_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC FreeImage)
 
 # Add ASSIMP Library
