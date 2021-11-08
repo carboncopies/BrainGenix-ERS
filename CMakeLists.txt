@@ -79,6 +79,8 @@ set(CEGUI_SAMPLES_ENABLED 0)
 set(GLFW_H_PATH ${LIB_DIR}/glfw/include/GLFW/glfw3.h)
 set(LIBXML2_LIBRARY ${LIB_DIR}/libxml2)
 set(LIBXML2_INCLUDE_DIR ${LIB_DIR}/libxml2/include)
+set(SDL2IMAGE_LIB ${LIB_DIR}/SDL2_image) 
+set(SDL2IMAGE_H_PATH ${LIB_DIR}/SDL2_image/SDL_image.h)
 add_subdirectory(${LIB_DIR}/cegui)
 disable_target_warnings(CEGUIBase-0)
 
