@@ -71,9 +71,8 @@ disable_target_warnings(assimp)
 
 
 # Add Meshoptimizer Library (Not Header Only)
-set(MESHOPTIMIZER_DIR "${LIB_DIR}/meshoptimizer")
-add_subdirectory("${MESHOPTIMIZER_DIR}")
-target_link_libraries("${PROJECT_NAME}" PUBLIC "meshoptimizer" "${MESHOPTIMIZER_DIR}")
+add_subdirectory(${LIB_DIR}/meshoptimizer)
+disable_target_warnings(meshoptimizer)
 
 
 # # Add CEGUI Library (Not Header Only)
@@ -130,6 +129,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   #${GLFW_LIBRARIES}
   FreeImage
   assimp
+  meshoptimizer
   )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
