@@ -40,7 +40,7 @@ include_directories("${LIB_DIR}/stb")
 set(GLM_DIR "glm")
 include_directories("${LIB_DIR}/${GLM_DIR}/")
 
-# Add GLFW Library
+# Add GLFW Library (Not header only)
 set(GLFW_DIR "${LIB_DIR}/glfw")
 add_subdirectory("${GLFW_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC "glfw" "${GLFW_LIBRARIES}")
