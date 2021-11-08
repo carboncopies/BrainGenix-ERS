@@ -40,8 +40,7 @@ include_directories("${LIB_DIR}/stb")
 add_subdirectory(${LIB_DIR}/glm)
 
 # Add GLFW Library (Not Header Only)
-set(GLFW_DIR "${LIB_DIR}/glfw")
-add_subdirectory("${LIB_DIR}/glfw")
+add_subdirectory(${LIB_DIR}/glfw)
 
 # Add FreeImage Library (Not Header Only)
 #find_package(FreeImage)
@@ -81,10 +80,12 @@ set(MESHOPTIMIZER_DIR "${LIB_DIR}/meshoptimizer")
 add_subdirectory("${MESHOPTIMIZER_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC "meshoptimizer" "${MESHOPTIMIZER_DIR}")
 
+
 # # Add CEGUI Library
 #set(CEGUI_DIR "${LIB_DIR}/cegui")
 #add_subdirectory("${CEGUI_DIR}")
 #target_link_libraries("${PROJECT_NAME}" "cegui" "${CEGUI_DIR}")
+
 
 # # Add Libsndfile Library
 # set(LIBSNDFILE_DIR "${LIB_DIR}/libsndfile")
