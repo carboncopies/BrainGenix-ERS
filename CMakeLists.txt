@@ -37,21 +37,20 @@ add_subdirectory(${LIB_DIR}/glad)
 include_directories("${LIB_DIR}/stb")
 
 # Add GLM Library
-set(GLM_DIR "glm")
-include_directories("${LIB_DIR}/${GLM_DIR}/")
+add_subdirectory(${LIB_DIR}/glm)
+
 
 # Add GLFW Library (Not header only)
 set(GLFW_DIR "${LIB_DIR}/glfw")
 add_subdirectory("${GLFW_DIR}")
-target_link_libraries("${PROJECT_NAME}" PUBLIC "glfw" "${GLFW_LIBRARIES}")
 
-# Add FreeImage Library (Not header only)
+# Add FreeImage Library (Not Header Only)
 #find_package(FreeImage)
 set(FREEIMAGE_DIR "${LIB_DIR}/FreeImage/FreeImage")
 add_subdirectory("${FREEIMAGE_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC FreeImage)
 
-# Add ASSIMP Library (Not header only)
+# Add ASSIMP Library (Not Header Only)
 set(ASSIMP_DIR "${LIB_DIR}/assimp")
 #add_library(assimp PUBLIC IMPORTED)
 # set(assimp_DIR "${LIB_DIR}/assimp")
@@ -60,7 +59,7 @@ add_subdirectory("${ASSIMP_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC assimp)
 #target_compile_options("${PROJECT_NAME}" PRIVATE -Wall -Wextra)
 
-# # Add Backward Library ()
+# # Add Backward Library (Header Only)
 # set(BACKWARD_DIR "&{LIB_DIR}/backward")
 # add_subdirectory("${BACKWARD_DIR}")
 
@@ -71,10 +70,12 @@ target_link_libraries("${PROJECT_NAME}" PUBLIC assimp)
 # by setting each property on the target.
 #add_backward(mytarget)
 
-# # Add Bullet Library
+
+# # Add Bullet Library (Not Header Only)
 # set(BULLET_DIR "${LIB_DIR}/bullet")
 # add_subdirectory("${BULLET_DIR}")
 # include_directories("${BULLET_DIR}/src")
+
 
 # Add Meshoptimizer Library
 set(MESHOPTIMIZER_DIR "${LIB_DIR}/meshoptimizer")
@@ -129,8 +130,10 @@ target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
 target_link_libraries(${PROJECT_NAME} PRIVATE
   yaml-cpp
   glad
+  glm
+  glfw
+  ${GLFW_LIBRARIES}
   )
-
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
 file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
