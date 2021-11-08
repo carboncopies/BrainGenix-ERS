@@ -11,6 +11,9 @@ set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 set(BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Binaries")
 
+# Package Version Information
+set(Yaml-Cpp-Version "")
+
 # Enable Debugging
 #set (CMAKE_BUILD_TYPE RelWithDebInfo)
 
@@ -28,8 +31,9 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 
 
 # Add YAML-CPP Library
+
 find_package("yaml-cpp")
-#set(YAML_CPP_DIR "yaml-cpp")
+
 #add_subdirectory("${LIB_DIR}/${YAML_CPP_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC "yaml-cpp")
 target_compile_options("${PROJECT_NAME}" PRIVATE -Wall -Wextra)
