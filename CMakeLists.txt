@@ -32,6 +32,7 @@ disable_target_warnings(yaml-cpp)
 
 # # Link Glad Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/glad)
+disable_target_warnings(glad)
 
 # Add STB Image Library (Delete Me)
 include_directories("${LIB_DIR}/stb")
@@ -41,14 +42,15 @@ add_subdirectory(${LIB_DIR}/glm)
 
 # Add GLFW Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/glfw)
+disable_target_warnings(glfw)
 
 # Add FreeImage Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
+disable_target_warnings(FreeImage)
 
 # Add ASSIMP Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/assimp)
-target_link_libraries("${PROJECT_NAME}" PUBLIC assimp)
-#target_compile_options("${PROJECT_NAME}" PRIVATE -Wall -Wextra)
+disable_target_warnings(assimp)
 
 # # Add Backward Library (Header Only)
 # set(BACKWARD_DIR "&{LIB_DIR}/backward")
@@ -127,6 +129,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   glfw
   #${GLFW_LIBRARIES}
   FreeImage
+  assimp
   )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
