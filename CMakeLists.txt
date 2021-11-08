@@ -32,7 +32,7 @@ find_package("yaml-cpp")
 #set(YAML_CPP_DIR "yaml-cpp")
 #add_subdirectory("${LIB_DIR}/${YAML_CPP_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC "yaml-cpp")
-target_compile_options("${PROJECT_NAME}" PRIVATE -Werror -Wall -Wextra)
+target_compile_options("${PROJECT_NAME}" PRIVATE -Wall -Wextra)
 
 # Add RapidJSON
 set(RAPID_JSON_DIR "rapidjson")
@@ -57,9 +57,10 @@ add_subdirectory("${GLFW_DIR}")
 target_link_libraries("${PROJECT_NAME}" PUBLIC "glfw" "${GLFW_LIBRARIES}")
 
 # Add FreeImage Library
-set(FREEIMAGE_DIR "${LIB_DIR}/FreeImage/FreeImage")
-add_subdirectory("${FREEIMAGE_DIR}")
-target_link_libraries("${PROJECT_NAME}" PUBLIC "FreeImage" "${FREEIMAGE_LIBRARIES}")
+find_package(FreeImage)
+#set(FREEIMAGE_DIR "${LIB_DIR}/FreeImage/FreeImage")
+# add_subdirectory("${FREEIMAGE_DIR}")
+target_link_libraries("${PROJECT_NAME}" PUBLIC FreeImage)
 
 # Add ASSIMP Library
 set(ASSIMP_DIR "${LIB_DIR}/assimp")
