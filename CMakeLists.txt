@@ -76,13 +76,16 @@ disable_target_warnings(meshoptimizer)
 
 # Add CEGUI Library (Not Header Only)
 set(CEGUI_SAMPLES_ENABLED 0)
-# set(GLFW_H_PATH ${LIB_DIR}/glfw/include/GLFW/glfw3.h)
-# set(LIBXML2_LIBRARY ${LIB_DIR}/libxml2)
-# set(LIBXML2_INCLUDE_DIR ${LIB_DIR}/libxml2/include)
-# set(SDL2IMAGE_LIB ${LIB_DIR}/SDL2_image) 
-# set(SDL2IMAGE_H_PATH ${LIB_DIR}/SDL2_image/SDL_image.h)
-# set(EPOXY_LIB ${LIB_DIR}/libepoxy)
-# set(EPOXY_H_PATH ${LIB_DIR}/libepoxy/include)
+set(CEGUI_SAMPLES_ENABLE_WIDGET_DEMO 0)
+
+set(GLFW_H_PATH ${LIB_DIR}/glfw/include/GLFW/glfw3.h)
+set(LIBXML2_LIBRARY ${LIB_DIR}/libxml2)
+set(LIBXML2_INCLUDE_DIR ${LIB_DIR}/libxml2/include)
+set(SDL2IMAGE_LIB ${LIB_DIR}/SDL2_image) 
+set(SDL2IMAGE_H_PATH ${LIB_DIR}/SDL2_image/SDL_image.h)
+set(EPOXY_LIB ${LIB_DIR}/libepoxy)
+set(EPOXY_H_PATH ${LIB_DIR}/libepoxy/include)
+
 add_subdirectory(${LIB_DIR}/cegui)
 disable_target_warnings(CEGUIBase-0)
 
