@@ -13,7 +13,6 @@
 #include "glm/gtc/type_ptr.hpp"
 
 #include <glad/glad.h>
-#include <glad.c>
 #include <GLFW/glfw3.h>
 
 
