@@ -179,7 +179,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             
             // Load Texture From File
             std::string FilePath = std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str()));
-            FILE* FileHandle File(FilePath.c_str(), "rb");
+            FILE* FileHandle fopen(FilePath.c_str(), "rb");
 
             size_t FileSize = (size_t) Handle.tellg();
             char* Buffer = nullptr;
