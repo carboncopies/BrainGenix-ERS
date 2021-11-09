@@ -178,7 +178,6 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
         if (!Skip) {
             
             // Load Texture From File
-            std::cout<<std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str())).c_str()<<std::endl;
             std::string FilePath = std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str()));
             std::ifstream File(FilePath.c_str(), std::ios::ate | std::ios::binary);
             // if (!File.is_open()) {
