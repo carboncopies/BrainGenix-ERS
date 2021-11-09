@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-09T10:13:29.413Z" agent="5.0 (X11)" etag="5rX0nOD8nvH0-_nXDaPv" version="15.7.0" type="github" pages="7">
+<mxfile host="app.diagrams.net" modified="2021-11-09T10:14:35.074Z" agent="5.0 (X11)" etag="yFqELpsXFocFPclWSBRZ" version="15.7.0" type="github" pages="7">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2272" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -594,13 +594,16 @@
         <mxCell id="5HB4Yx0WjJf3gcb4PfU3-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="SORNEBXzX296p3ofjego-1" source="5HB4Yx0WjJf3gcb4PfU3-17" target="5HB4Yx0WjJf3gcb4PfU3-18">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-17" value="Process Mesh Sections" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-17" value="Process Mesh Sections (Parallel)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
           <mxGeometry x="1190" y="1440" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-18" value="Load Textures" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="SORNEBXzX296p3ofjego-1" source="5HB4Yx0WjJf3gcb4PfU3-18" target="5HB4Yx0WjJf3gcb4PfU3-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-18" value="&lt;div&gt;Load Textures (Parallel)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
           <mxGeometry x="1340" y="1440" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-21" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-21" value="Combine All Sections" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
           <mxGeometry x="1490" y="1440" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
