@@ -35,14 +35,14 @@ ERS_OBJECT_CAMERA_NOCLIP Camera_(glm::vec3(0.0f, 0.0f, 3.0f));
 
 
 // INPUT CALLBACK FUNCTIONS
-void FramebufferSizeCallback(GLFWwindow* Window, int Width, int Height) {
+void FramebufferSizeCallback(GLFWwindow* /*Window*/, int Width, int Height) {
 
     // Update Viewport
     glViewport(0,0, Width, Height);
 
 }
 
-void MouseCallback(GLFWwindow* Window, double XPos, double YPos) {
+void MouseCallback(GLFWwindow* /*Window*/, double XPos, double YPos) {
 
     // Update Positions
     if (FirstMouse) {
@@ -69,7 +69,7 @@ void MouseCallback(GLFWwindow* Window, double XPos, double YPos) {
 
 }
 
-void ScrollCallback(GLFWwindow* Window, double XOffset, double YOffset) {
+void ScrollCallback(GLFWwindow* /*Window*/, double /*XOffset*/, double YOffset) {
 
     Camera_.ProcessMouseScroll(YOffset);
 
