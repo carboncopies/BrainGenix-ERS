@@ -27,6 +27,7 @@
 #include "Core/Renderer/VisualRenderer/Structures/Textures/2DTexture.h"
 #include "Core/Renderer/VisualRenderer/Structures/Vertex/Vertex.h"
 #include "Core/Renderer/VisualRenderer/TextureManager.h"
+#include "Core/Loader/FileIO.h"
 
 
 class ERS_OBJECT_MODEL {
