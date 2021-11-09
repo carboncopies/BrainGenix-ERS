@@ -15,6 +15,11 @@ cd Build
 #cmake ..
 #cmake --build . --target BrainGenix-ERS -- -j 24
 
+# Build
+echo "Building BrainGenix-ERS"
+make -j 24
+
+
 # Run Program
 echo "Running Program"
 cd ../Binaries
