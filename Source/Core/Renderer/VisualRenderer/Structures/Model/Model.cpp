@@ -184,7 +184,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             //     Logger_->Log("Error Opening File", 10);
             // }
             size_t FileSize = (size_t) File.tellg();
-            char* Buffer = nullptr;
+            BYTE* Buffer = nullptr;
 
             // Jump To File Beginning
             File.seekg(0);
