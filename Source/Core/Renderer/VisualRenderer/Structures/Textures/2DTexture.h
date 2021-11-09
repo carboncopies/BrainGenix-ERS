@@ -23,7 +23,25 @@ struct ERS_OBJECT_TEXTURE_2D {
     std::string Path;
 
     // Texutre Init Function
-    void InitializeTexture(FIBITMAP* Image) {
+    void InitializeTexture(std::vector<char>* EncodedImageData, bool FlipImage = true) {
+
+        // Move this to a class
+        FreeImage_Initialise();
+
+        // Decode Image
+        FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(EncodedImageData);
+        FIBITMAP* ImageData = FreeImage_Load(Format, EncodedImageData);
+
+        // Optionally Flip Image
+        if (FlipImage) {
+            FreeImage_FlipVertical(ImageData);
+        }
+    
+        // Set Properties
+        float Width = FreeImage_GetWidth(ImageData);
+        float Height = FreeImage_GetHeight(ImageData);
+        float Channels = FreeImage_GetLine(ImageData) / FreeImage_GetWidth(ImageData);
+
 
         // Generate Texture
         glGenTextures(1, &ID);
@@ -38,15 +56,18 @@ struct ERS_OBJECT_TEXTURE_2D {
         // Generate Texture Map
         unsigned char *ImageData = FreeImage_GetBits(Image);
 
-        if (Image->Channels == 4) {
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Image->Width, Image->Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, ImageData);
+        if (Channels == 4) {
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, ImageData);
         } else {
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Image->Width, Image->Height, 0, GL_BGR, GL_UNSIGNED_BYTE, ImageData);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, ImageData);
         }
         glGenerateMipmap(GL_TEXTURE_2D);
 
         // Deallocate Image Data
-        Image->CleanUp();
+        FreeImage_Unload(ImageData);
+
+        // Move This Later
+        FreeImage_DeInitialise();
 
     }
 
