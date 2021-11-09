@@ -55,12 +55,12 @@ struct ERS_OBJECT_TEXTURE_2D {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
         // Generate Texture Map
-        unsigned char *ImageData = FreeImage_GetBits(ImageData);
+        unsigned char *OpenGLImageData = FreeImage_GetBits(ImageData);
 
         if (Channels == 4) {
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, ImageData);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, OpenGLImageData);
         } else {
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, ImageData);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, OpenGLImageData);
         }
         glGenerateMipmap(GL_TEXTURE_2D);
 
