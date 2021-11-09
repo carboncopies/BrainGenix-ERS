@@ -15,6 +15,6 @@
 
 
 
-std::string ReadFile(const std::string& FileName, LoggerClass *Logger_);
+std::string ReadFile(const std::string& FileName, LoggerClass *Logger_ = nullptr);
 
-#include "Core/Loader/Shaders/ShaderLoader.cpp"
+#include "Core/Loader/FileIO.cpp"

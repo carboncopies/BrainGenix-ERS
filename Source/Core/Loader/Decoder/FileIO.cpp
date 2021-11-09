@@ -14,7 +14,9 @@
 std::string ReadFile(const std::string& FileName, LoggerClass *Logger_) {
 
     // Open File
-    Logger_->Log(std::string(std::string("Opening File '") + std::string(FileName) + std::string("'")).c_str(), 4);
+    if (Logger_ != nullptr) {
+        Logger_->Log(std::string(std::string("Opening File '") + std::string(FileName) + std::string("'")).c_str(), 4);
+    }
 
     std::ifstream File(FileName, std::ios::ate | std::ios::binary);
 
