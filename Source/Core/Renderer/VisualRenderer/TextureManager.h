@@ -20,9 +20,6 @@ struct ERSTexture{
 
     // OpenGL References
     unsigned int Texture;
-    
-    // Status Bools
-    bool _TextureInitialized = false;
 
 
     void InitializeTexture(ERSImage *Image) {
@@ -50,17 +47,11 @@ struct ERSTexture{
         // Deallocate Image Data
         Image->CleanUp();
 
-        _TextureInitialized = true;
 
 
     }
 
     void BindTexture() {
-
-        // Check If Initialized
-        if (!_TextureInitialized) {
-            std::cout << "Texture Not Yet Initialized\n";
-        }
 
         // Bind Texture
         glBindTexture(GL_TEXTURE_2D, Texture);
