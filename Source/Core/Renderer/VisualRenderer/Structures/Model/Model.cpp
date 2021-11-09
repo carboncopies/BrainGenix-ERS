@@ -180,7 +180,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             // Load Texture From File
             std::string FilePath = std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str()));
 
-            FILE *FileHandle = fopen(FilePath, "rb");
+            FILE *FileHandle = fopen(FilePath.c_str(), "rb");
             // Convert Texture To FIBITMAP*
             ERS_OBJECT_TEXTURE_2D Texture;
             Texture.InitializeTexture(FileHandle);
