@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-09T10:02:25.225Z" agent="5.0 (X11)" etag="DkXKQc_26vAl0lnTIE6u" version="15.7.0" type="github" pages="7">
+<mxfile host="app.diagrams.net" modified="2021-11-09T10:08:37.622Z" agent="5.0 (X11)" etag="HmYgnP4wW31w4PkcFVeL" version="15.7.0" type="github" pages="7">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2272" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -408,7 +408,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="Me3VujgAASuyeFERV7iZ" name="Engine Streaming System">
-    <mxGraphModel dx="981" dy="-471" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="813" dy="-579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="SORNEBXzX296p3ofjego-0" />
         <mxCell id="SORNEBXzX296p3ofjego-1" parent="SORNEBXzX296p3ofjego-0" />
@@ -553,10 +553,37 @@
           <mxGeometry x="1040" y="1515" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="5HB4Yx0WjJf3gcb4PfU3-5" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
-          <mxGeometry x="870" y="1215" width="810" height="250" as="geometry" />
+          <mxGeometry x="870" y="1215" width="810" height="145" as="geometry" />
         </mxCell>
         <mxCell id="5HB4Yx0WjJf3gcb4PfU3-6" value="Initialize Model Decoding System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
           <mxGeometry x="870" y="1215" width="810" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="SORNEBXzX296p3ofjego-1" source="5HB4Yx0WjJf3gcb4PfU3-7" target="5HB4Yx0WjJf3gcb4PfU3-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-7" value="Detect Number CPU Cores" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="915" y="1260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="SORNEBXzX296p3ofjego-1" source="5HB4Yx0WjJf3gcb4PfU3-8" target="5HB4Yx0WjJf3gcb4PfU3-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-8" value="Create Texture Decoding Threads" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="1065" y="1260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="SORNEBXzX296p3ofjego-1" source="5HB4Yx0WjJf3gcb4PfU3-9" target="5HB4Yx0WjJf3gcb4PfU3-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-9" value="Create Mesh Decoding Threads" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="1215" y="1260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="SORNEBXzX296p3ofjego-1" source="5HB4Yx0WjJf3gcb4PfU3-12" target="5HB4Yx0WjJf3gcb4PfU3-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-12" value="Create Vector Of Loaded OpenGL Texture IDs" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="1365" y="1260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5HB4Yx0WjJf3gcb4PfU3-13" value="Create Vector Of Loaded OpenGL Mesh IDs" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="1515" y="1260" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
