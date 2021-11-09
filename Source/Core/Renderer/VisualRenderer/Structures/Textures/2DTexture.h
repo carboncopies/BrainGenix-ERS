@@ -11,6 +11,7 @@
 #pragma once
 
 #include <string>
+#include "FreeImage.h"
 
 // Structure To Hold 2D ERS Texture
 struct ERS_OBJECT_TEXTURE_2D {
