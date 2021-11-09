@@ -184,11 +184,11 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             //     Logger_->Log("Error Opening File", 10);
             // }
             size_t FileSize = (size_t) File.tellg();
-            std::vector<unsigned char> Buffer(FileSize);
+            unsigned char* Buffer;
 
             // Jump To File Beginning
             File.seekg(0);
-            File.read(Buffer.data(), FileSize);
+            File.read(Buffer, FileSize);
             File.close();
 
             // Convert Texture To FIBITMAP*
