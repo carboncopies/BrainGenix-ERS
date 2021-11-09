@@ -30,7 +30,6 @@ struct ERS_OBJECT_TEXTURE_2D {
         FreeImage_Initialise();
 
 
-
         // Decode Image
         FIMEMORY* EncodedImageData = FreeImage_OpenMemory(ImageDataBuffer, ImageLength);
         FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(EncodedImageData);
