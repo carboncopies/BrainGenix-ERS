@@ -66,7 +66,7 @@ void Renderer::InitializeOpenGL() {
 
     // Register Callback
     glfwMakeContextCurrent(Window_);
-    //glfwSwapInterval(0);
+    glfwSwapInterval(0);
     glfwSetFramebufferSizeCallback(Window_, FramebufferSizeCallback);
     glfwSetCursorPosCallback(Window_, MouseCallback);
     glfwSetScrollCallback(Window_, ScrollCallback);
@@ -88,7 +88,7 @@ void Renderer::InitializeOpenGL() {
 
     // Load Model
     float T1 = glfwGetTime();
-    Model_.LoadModelFromFile("Assets/Brown_Rock_003/Brown_Rock_003.fbx");
+    Model_.LoadModelFromFile("Assets/Rock_Large_002/Rock_Large_002.fbx");
     std::cout << "Model Loading Took: " << glfwGetTime()-T1 << " Seconds\n";
 
 
