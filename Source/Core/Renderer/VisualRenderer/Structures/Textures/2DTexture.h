@@ -32,7 +32,7 @@ struct ERS_OBJECT_TEXTURE_2D {
 
 
         // Decode Image
-        FIMEMORY* EncodedImageData = FreeImage_OpenMemory(reinterpret_cast<unsigned char*> (ImageDataBuffer), ImageLength);
+        FIMEMORY* EncodedImageData = FreeImage_OpenMemory(ImageDataBuffer, ImageLength);
         FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(EncodedImageData);
         FIBITMAP* ImageData = FreeImage_LoadFromMemory(Format, EncodedImageData);
 
