@@ -177,10 +177,16 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
         // If Texture Not Already Loaded
         if (!Skip) {
             
+            // Load Texture From File
+
+            // Convert Texture To FIBITMAP*
+
+            // Pass Into Create Texture Function In ERS_OBJECT_TEXTURE_2D
+
             ERS_OBJECT_TEXTURE_2D Texture;
-            TextureManager TexManager;
-            ERSTexture TexObj = TexManager.CreateTextureFromFile(std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str())).c_str());
-            Texture.ID = TexObj.Texture;//TextureFromFile(Str.C_Str(), this->Directory);
+            Texture.InitializeTexture(TextureImage)
+            //ERSTexture TexObj = //CreateTextureFromFile(std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str())).c_str());
+            //Texture.ID = TexObj.Texture;//TextureFromFile(Str.C_Str(), this->Directory);
             Texture.Type = TypeName;
             Texture.Path = Str.C_Str();
             Textures.push_back(Texture);
