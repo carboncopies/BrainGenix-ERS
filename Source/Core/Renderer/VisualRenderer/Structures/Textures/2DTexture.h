@@ -22,17 +22,6 @@ struct ERS_OBJECT_TEXTURE_2D {
     std::string Type;
     std::string Path;
 
-    // Set Helper Vars
-    bool _HasInitialized = false;
 
-    
-    // Setup Helper Functions
-    void Initialize() {
-        _HasInitialized = true;
-    }
-
-    bool IsInitialized() {
-        return _HasInitialized;
-    }
 
 };
