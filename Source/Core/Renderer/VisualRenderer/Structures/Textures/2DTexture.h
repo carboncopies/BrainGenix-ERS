@@ -24,7 +24,7 @@ struct ERS_OBJECT_TEXTURE_2D {
     std::string Path;
 
     // Texutre Init Function
-    void InitializeTexture(std::vector<unsigned char>* ImageDataBuffer, size_t ImageLength, bool FlipImage = true) {
+    void InitializeTexture(char* ImageDataBuffer, size_t ImageLength, bool FlipImage = true) {
 
         // Move this to a class
         FreeImage_Initialise();
