@@ -24,13 +24,12 @@ struct ERS_OBJECT_TEXTURE_2D {
     std::string Path;
 
     // Texutre Init Function
-    void InitializeTexture(std::vector<char>* ImageDataBuffer, size_t ImageLength, bool FlipImage = true) {
+    void InitializeTexture(FILE *EncodedImageData, bool FlipImage = true) {
 
         // Move this to a class
         FreeImage_Initialise();
 
         // Decode Image
-
         FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(EncodedImageData);
         FIBITMAP* ImageData = FreeImage_LoadFromMemory(Format, EncodedImageData);
 
