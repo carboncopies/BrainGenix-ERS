@@ -17,6 +17,10 @@
 #include <map>
 #include <vector>
 #include <stdio.h>
+#include <math.h>
+#include <assert.h>
+#include <sys/stat.h>
+#include <stdlib.h>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
