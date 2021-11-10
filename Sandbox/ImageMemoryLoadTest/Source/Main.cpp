@@ -55,6 +55,7 @@ int main() {
     // Identifying Image Format
     std::cout<<"Getting Image Format From FIMEMORY Object\n";
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(InMemoryData);
+    std::cout<<"Identified Format To Be: "<<Format<<std::endl;
 
 
     // De-Init FreeImage
