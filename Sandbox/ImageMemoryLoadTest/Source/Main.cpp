@@ -45,8 +45,8 @@ int main() {
 
     FileObject FileObj;
     FileObj.LoadFile("Assets/Test.png");
-    char* ImageData = FileObj.Buffer();
-    size_t ImageLength = FileObj.FileSize();
+    char* ImageData = FileObj.Buffer;
+    size_t ImageLength = FileObj.FileSize;
 
 
     FIMEMORY* InMemoryData = FreeImage_OpenMemory(reinterpret_cast<BYTE*>(ImageData), ImageLength);
