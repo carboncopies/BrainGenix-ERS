@@ -43,16 +43,17 @@ struct ImageFileObject {
 
     // Declare Member Variables
     BYTE *MemoryBuffer;
-    struct stat Buffer;
+    
     int Result;
 
 
     // Load File Into Mem
     bool LoadImage(const char* FilePath) { // Loads Image Into Memory Buffer, Returns True On Success, False On Failure
 
+        struct stat Buffer;
         // Get File Stats
         Result = stat(FilePath, &Buffer);
-
+        std::cout<<"Result"<<Result<<std::endl;
 
         if (Result) {
 
