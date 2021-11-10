@@ -6,7 +6,7 @@
 #include "FreeImage.h"
 
 
-char* LoadFile(const char* FilePath) {
+std::map<char*, long> LoadFile(const char* FilePath) {
 
     // Open File
     std::ifstream File(FilePath, std::ios::ate | std::ios::binary);
@@ -21,7 +21,7 @@ char* LoadFile(const char* FilePath) {
     File.close();
 
     // Return Buffer
-    return Buffer;
+    return std::map<char*, long> {Buffer, FileSize};
 }
 
 
@@ -35,8 +35,9 @@ int main() {
 
     // Load Test.png
     std::cout<<"Loading Image: 'Assets/Test.png' From Disk\n";
-    char* FileData = LoadFile("Assets/Test.png");
-    long ImageLength = std::size(FileData);
+    std::map<char*, long> FileObject = LoadFile("Assets/Test.png");
+    char* ImageData = FileObject[0];
+    long ImageLength = FileObject[1];
 
     FIMEMORY* InMemoryData = FreeImage_OpenMemory(reinterpret_cast<BYTE*>(FileData), ImageLength);
 
