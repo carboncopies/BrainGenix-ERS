@@ -7,7 +7,7 @@
 #include "FreeImage.h"
 
 
-std::map<char*, size_t> LoadFile(const char* FilePath) {
+std::map<char*, long> LoadFile(const char* FilePath) {
 
     // Open File
     std::ifstream File(FilePath, std::ios::ate | std::ios::binary);
@@ -22,7 +22,10 @@ std::map<char*, size_t> LoadFile(const char* FilePath) {
     File.close();
 
     // Return Buffer
-    return std::map<char*, long> {Buffer, FileSize};
+    std::map<char*, long> Out;
+    Out["one"] = *Buffer;
+    Out["two"] = FileSize;
+    return Out;
 }
 
 
@@ -40,7 +43,7 @@ int main() {
     char* ImageData = FileObject[0];
     long ImageLength = FileObject[1];
 
-    FIMEMORY* InMemoryData = FreeImage_OpenMemory(reinterpret_cast<BYTE*>(FileData), ImageLength);
+    FIMEMORY* InMemoryData = FreeImage_OpenMemory(reinterpret_cast<BYTE*>(ImageData), ImageLength);
 
     // De-Init FreeImage
     FreeImage_DeInitialise();
