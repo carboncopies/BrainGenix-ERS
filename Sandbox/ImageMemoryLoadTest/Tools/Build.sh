@@ -23,5 +23,5 @@ cmake --build . --target BGImageTest -- -j 24
 # Run Program
 echo "Running Program"
 cd ../Binaries
-./BrainGenix-ERS
+./BGImageTest
 cd ..
