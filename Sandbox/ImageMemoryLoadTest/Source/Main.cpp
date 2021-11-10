@@ -79,27 +79,11 @@ struct ImageFileObject {
 };
 
 
-int main() {
+void TestLoad(const char* Path) {
 
-    // Init FreeImage
-    FreeImage_Initialise();
-
-    // Load Test.png
-    std::cout<<"Loading Image: 'Assets/Test.png' From Disk\n";
-
-    const char* Path = "Assets/Test.png";
-
-
+    // Load Image Path
     ImageFileObject Obj;
     std::cout<<Obj.LoadImage(Path)<<std::endl;
-
-
-
-
-
-
-
-
 
     // Load Image Into Memory
     std::cout<<"Loading Image Into FreeImage Memory Object (FIMEMORY*)\n";
@@ -122,7 +106,19 @@ int main() {
     // Delete Image From Memory
     FreeImage_CloseMemory(InMemoryData);
     free(Obj.MemoryBuffer);
+
+}
+
+int main() {
+
+    // Init FreeImage
+    FreeImage_Initialise();
+
+    // Load Test.png
+    std::cout<<"Loading Image: 'Assets/Test.png' From Disk\n";
+    TestLoad("Assets/Test.png");
     
+
 
 
 
