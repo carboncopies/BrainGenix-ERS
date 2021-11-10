@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <fstream>
-#include <size>
 
 #include "FreeImage.h"
 
