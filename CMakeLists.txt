@@ -95,7 +95,8 @@ disable_target_warnings(CEGUIBase-0)
 # # include_directories("${MYSQL_CONNECTION_DIR}/include")
 # # include_directories("${MYSQL_CONNECTION_DIR}/include/cppconn")
 # # link_directories("${MYSQL_CONNECTION_DIR}/lib")
-# add_subdirectory("${MYSQL_CONNECTOR_DIR}")
+add_subdirectory(${LIB_DIR}/mysql-connector-cpp)
+disable_target_warnings(mysqlcppconn8)
 # target_link_libraries("${PROJECT_NAME}" curl mysqlcppconn)
 # target_compile_features("${PROJECT_NAME}" PRIVATE cxx_range_for)  
 
@@ -135,6 +136,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   meshoptimizer
   backward
   CEGUIBase-0
+  mysql-connector-cpp
   )
 
 
