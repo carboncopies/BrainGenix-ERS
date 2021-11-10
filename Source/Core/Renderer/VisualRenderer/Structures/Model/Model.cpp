@@ -183,7 +183,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             
             // Load Texture From File
             std::string FilePath = std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str()));
-            Logger_->Log(std::string(std::string("Loading Texture At File Path: ") + std::string(FilePath)).c_str(), 3);
+            Logger_->Log(std::string(std::string("Loading Texture At File Path: ") + FilePath).c_str(), 3);
             
 
             ImageFileObject Image;
