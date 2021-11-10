@@ -20,7 +20,7 @@ void ERS_OBJECT_MODEL::LoadModelFromFile(std::string const &Path, LoggerClass *L
 
     // Read File
     Assimp::Importer Importer;
-    Logger_->Log(std::string(std::string("Loading Model At File Path: ") + std::string(Path)), 3);
+    Logger_->Log(std::string(std::string("Loading Model At File Path: ") + std::string(Path)).c_str(), 3);
     const aiScene* Scene = Importer.ReadFile(Path, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
 
     // Log Errors
