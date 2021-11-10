@@ -13,7 +13,7 @@
 
 
 // Load Model From File
-void ERS_OBJECT_MODEL::LoadModelFromFile(std::string const &Path, LoggerClass Logger_*) {
+void ERS_OBJECT_MODEL::LoadModelFromFile(std::string const &Path, LoggerClass *Logger_) {
 
     // Set Pointer
     Logger_ = Logger_;
