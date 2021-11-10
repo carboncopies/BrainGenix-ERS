@@ -179,21 +179,13 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             
             // Load Texture From File
             std::string FilePath = std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str()));
-            std::ifstream File(FilePath.c_str(), std::ios::ate | std::ios::binary);
-            // if (!File.is_open()) {
-            //     Logger_->Log("Error Opening File", 10);
-            // }
-            size_t FileSize = (size_t) File.tellg();
-            char* Buffer = nullptr;
-
-            // Jump To File Beginning
-            File.seekg(0);
-            File.read(Buffer, FileSize);
-            File.close();
+            
+            ImageFileObject Texture;
+            Texture.LoadImage(FilePath.c_str());
 
             // Convert Texture To FIBITMAP*
             ERS_OBJECT_TEXTURE_2D Texture;
-            Texture.InitializeTexture(Buffer, FileSize);
+            Texture.InitializeTexture(Texture.MemoryBuffer, Texture.Buffer.st_size);
             //ERSTexture TexObj = //CreateTextureFromFile(std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str())).c_str());
             //Texture.ID = TexObj.Texture;//TextureFromFile(Str.C_Str(), this->Directory);
             Texture.Type = TypeName;

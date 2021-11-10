@@ -30,6 +30,45 @@
 #include "Core/Loader/FileIO.h"
 
 
+struct ImageFileObject {
+
+    // Declare Member Variables
+    BYTE *MemoryBuffer;
+    struct stat Buffer;
+    int Result;
+
+
+    // Load File Into Mem
+    bool LoadImage(const char* FilePath) { // Loads Image Into Memory Buffer, Returns True On Success, False On Failure
+
+        // Get File Stats
+        Result = stat(FilePath, &Buffer);
+        if (Result == 0) {
+
+            MemoryBuffer = (BYTE*)malloc(Buffer.st_size * sizeof(BYTE));
+            if (MemoryBuffer) {
+
+                FILE *Stream = fopen(FilePath, "rb");
+                if (Stream) {
+
+                    // Read File Data
+                    fread(MemoryBuffer, sizeof(BYTE), Buffer.st_size, Stream);
+                    fclose(Stream);
+
+                    return true;
+
+                }
+            }
+        }
+
+        // Return Fail
+        return false;
+
+    }
+
+
+};
+
 class ERS_OBJECT_MODEL {
 
 
