@@ -93,7 +93,9 @@ int main() {
     std::cout<<"Loading Image: 'Assets/Test.png' From Disk\n";
     TestLoad("Assets/Test.png");
     
-
+    // Load Test.png
+    std::cout<<"Loading Image: 'Assets/Test.jpg' From Disk\n";
+    TestLoad("Assets/Test.jpg");
 
 
 
