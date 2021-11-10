@@ -27,11 +27,12 @@ struct ERS_OBJECT_TEXTURE_2D {
     void InitializeTexture(char* ImageDataBuffer, size_t ImageLength, bool FlipImage = true) {
 
         // Move this to a class
-        FreeImage_Initialise(); // move these to an image loading manager (thread?)
+        FreeImage_Initialise();
+
 
 
         // Decode Image
-        FIMEMORY* EncodedImageData = FreeImage_OpenMemory(ImageDataBuffer, ImageLength);
+        FIMEMORY* EncodedImageData = FreeImage_OpenMemory(reinterpret_cast<unsigned char*> (ImageDataBuffer), ImageLength);
         FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(EncodedImageData);
         FIBITMAP* ImageData = FreeImage_LoadFromMemory(Format, EncodedImageData);
 
