@@ -183,13 +183,14 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             FILE *FileHandle;
             FileHandle = fopen(FilePath.c_str(), "rb");
 
-            size_t FileSize = (size_t) Handle.tellg();
+            size_t FileSize = (size_t) FileHandle->tellg();
+            std::cout<< FileSize<<std::endl;
             char* Buffer = nullptr;
 
-            // Jump To File Beginning
-            FileHandle.seekg(0);
-            FileHandle.read(Buffer, FileSize);
-            FileHandle.close();
+            // // Jump To File Beginning
+            // FileHandle.seekg(0);
+            // FileHandle.read(Buffer, FileSize);
+            // FileHandle.close();
 
             // Convert Texture To FIBITMAP*
             ERS_OBJECT_TEXTURE_2D Texture;
