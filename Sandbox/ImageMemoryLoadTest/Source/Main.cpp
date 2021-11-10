@@ -2,11 +2,12 @@
 
 #include <iostream>
 #include <fstream>
+#include <map>
 
 #include "FreeImage.h"
 
 
-std::map<char*, long> LoadFile(const char* FilePath) {
+std::map<char*, size_t> LoadFile(const char* FilePath) {
 
     // Open File
     std::ifstream File(FilePath, std::ios::ate | std::ios::binary);
