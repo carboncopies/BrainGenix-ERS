@@ -183,7 +183,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             FILE *FileHandle;
             FileHandle = fopen(FilePath.c_str(), "rb");
 
-            size_t FileSize = (size_t) FileHandle->tellg();
+            size_t FileSize = (size_t) size(FileHandle);
             std::cout<< FileSize<<std::endl;
             char* Buffer = nullptr;
 
