@@ -95,7 +95,7 @@ int main() {
 
 
     ImageFileObject Obj;
-    Obj.LoadImage(Path);
+    std::cout<<Obj.LoadImage(Path)<<std::endl;
 
 
 
