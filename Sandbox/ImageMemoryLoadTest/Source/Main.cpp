@@ -25,7 +25,7 @@ char* LoadFile(const char* FilePath) {
 }
 
 
-void main() {
+int main() {
 
     // Init FreeImage
     FreeImage_Initialise();
