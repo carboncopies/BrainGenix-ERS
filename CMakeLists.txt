@@ -96,9 +96,9 @@ include_directories("${MYSQL_CONNECTION_DIR}/include")
 include_directories("${MYSQL_CONNECTION_DIR}/include/cppconn")
 link_directories("${MYSQL_CONNECTION_DIR}/lib")
 add_subdirectory(${LIB_DIR}/mysql-connector-cpp)
-disable_target_warnings(mysqlcppconn)
-# target_link_libraries("${PROJECT_NAME}" curl mysqlcppconn)
-# target_compile_features("${PROJECT_NAME}" PRIVATE cxx_range_for)  
+#disable_target_warnings(mysqlcppconn)
+target_link_libraries("${PROJECT_NAME}" curl mysqlcppconn)
+target_compile_features("${PROJECT_NAME}" PRIVATE cxx_range_for)  
 
 
 # # Add CPPKafka Library (Not Header Only)
