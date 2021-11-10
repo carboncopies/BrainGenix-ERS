@@ -40,7 +40,7 @@ int main() {
     // Load Test.png
     std::cout<<"Loading Image: 'Assets/Test.png' From Disk\n";
     std::map<char*, long> FileObject = LoadFile("Assets/Test.png");
-    char* ImageData = FileObject[0];
+    char* ImageData = &FileObject[0];
     long ImageLength = FileObject[1];
 
     FIMEMORY* InMemoryData = FreeImage_OpenMemory(reinterpret_cast<BYTE*>(ImageData), ImageLength);
