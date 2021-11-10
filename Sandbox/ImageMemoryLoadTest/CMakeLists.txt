@@ -38,3 +38,5 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   FreeImage
   )
 
+# Copy Images
+file(COPY "${SRC_DIR}/Assets/" DESTINATION "${BIN_DIR}/Assets")
