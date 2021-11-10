@@ -52,7 +52,6 @@ struct ImageFileObject {
 
         // Get File Stats
         Result = stat(FilePath, &Buffer);
-        std::cout<<"Result"<<Result<<std::endl;
 
         if (Result == 0) {
 
