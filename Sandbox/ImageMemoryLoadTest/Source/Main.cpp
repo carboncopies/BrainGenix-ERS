@@ -23,7 +23,7 @@ std::map<char*, long> LoadFile(const char* FilePath) {
 
     // Return Buffer
     std::map<char*, long> Out;
-    Out["one"] = &Buffer;
+    Out["one"] = Buffer;
     Out["two"] = FileSize;
     return Out;
 }
