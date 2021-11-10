@@ -110,6 +110,21 @@ int main() {
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(InMemoryData);
     std::cout<<"Identified Format To Be: "<<Format<<std::endl;
 
+    // Decode Image
+    std::cout<<"Decoding Image\n";
+    FIBITMAP* Image = FreeImage_LoadFromMemory(Format, InMemoryData);
+
+    // List Image Information
+    std::cout<<"Image Is "<<FreeImage_GetWidth(Image)<<"px Wide\n";
+    std::cout<<"Image Is "<<FreeImage_GetHeight(Image)<<"px Tall\n";
+    std::cout<<"Image Has "<<FreeImage_GetLine(Image) / FreeImage_GetWidth(Image)<<" Color Channels\n";
+    
+    // Delete Image From Memory
+    FreeImage_CloseMemory(InMemoryData);
+    free(Obj.MemoryBuffer);
+    
+
+
 
     // De-Init FreeImage
     FreeImage_DeInitialise();
