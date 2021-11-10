@@ -33,7 +33,7 @@ struct ERS_OBJECT_TEXTURE_2D {
 
         // Decode Image
         FIMEMORY* EncodedImageData = FreeImage_OpenMemory(reinterpret_cast<BYTE*> (ImageDataBuffer), ImageLength);
-        FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(EncodedImageData);
+        FREE_IMAGE_FORMAT Format = FIF_JPEG;//FreeImage_GetFileTypeFromMemory(EncodedImageData);
         FIBITMAP* ImageData = FreeImage_LoadFromMemory(Format, EncodedImageData);
 
         // Optionally Flip Image
