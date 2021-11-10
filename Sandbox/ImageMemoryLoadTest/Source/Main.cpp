@@ -13,31 +13,6 @@
 #include "FreeImage.h"
 
 
-struct FileObject {
-
-    // File Data
-    size_t FileSize;
-    char* Buffer;
-
-    // Load File
-    void LoadFile(const char* FilePath) {
-
-        // Open File
-        std::ifstream File(FilePath, std::ios::ate | std::ios::binary);
-
-        // Get File Size, Init Buffer
-        FileSize = (size_t) File.tellg();
-        Buffer = NULL;
-
-        // Jump To File Beginning, Read
-        File.seekg(0);
-        File.read(Buffer, FileSize);
-        File.close();
-
-    }
-
-};
-
 
 struct ImageFileObject {
 
