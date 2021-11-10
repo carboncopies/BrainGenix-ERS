@@ -16,7 +16,7 @@ cd Build
 
 # Build
 echo "Building BrainGenix-ERS"
-cmake --build . --target BrainGenix-ERS -- -j 24
+cmake --build . --target BGImageTest -- -j 24
 
 
 
