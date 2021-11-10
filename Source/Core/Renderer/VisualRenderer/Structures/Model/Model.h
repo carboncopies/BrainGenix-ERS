@@ -90,7 +90,7 @@ class ERS_OBJECT_MODEL {
         bool GammaCorrection;
 
         // Logger
-        LoggerClass Logger_*;
+        LoggerClass *Logger_;
 
         // Load Model From File
         void LoadModelFromFile(std::string const &Path, LoggerClass Logger_*);
