@@ -7,27 +7,30 @@
 #include "FreeImage.h"
 
 
-std::map<char*, long> LoadFile(const char* FilePath) {
+struct FileObject {
 
-    // Open File
-    std::ifstream File(FilePath, std::ios::ate | std::ios::binary);
+    // File Data
+    size_t FileSize;
+    char* Buffer;
 
-    // Get File Size, Init Buffer
-    size_t FileSize = (size_t) File.tellg();
-    char* Buffer = NULL;
+    // Load File
+    void LoadFile(const char* FilePath) {
 
-    // Jump To File Beginning, Read
-    File.seekg(0);
-    File.read(Buffer, FileSize);
-    File.close();
+        // Open File
+        std::ifstream File(FilePath, std::ios::ate | std::ios::binary);
 
-    // Return Buffer
-    std::map<char*, long> Out;
-    Out["one"] = Buffer;
-    Out["two"] = FileSize;
-    return Out;
-}
+        // Get File Size, Init Buffer
+        FileSize = (size_t) File.tellg();
+        Buffer = NULL;
 
+        // Jump To File Beginning, Read
+        File.seekg(0);
+        File.read(Buffer, FileSize);
+        File.close();
+
+    }
+
+};
 
 
 
@@ -39,9 +42,12 @@ int main() {
 
     // Load Test.png
     std::cout<<"Loading Image: 'Assets/Test.png' From Disk\n";
-    std::map<char*, long> FileObject = LoadFile("Assets/Test.png");
-    char* ImageData = FileObject[0];
-    long ImageLength = FileObject[1];
+
+    FileObject FileObj;
+    FileObj.LoadFile("Assets/Test.png");
+    char* ImageData = FileObj.Buffer();
+    size_t ImageLength = FileObj.FileSize();
+
 
     FIMEMORY* InMemoryData = FreeImage_OpenMemory(reinterpret_cast<BYTE*>(ImageData), ImageLength);
 
