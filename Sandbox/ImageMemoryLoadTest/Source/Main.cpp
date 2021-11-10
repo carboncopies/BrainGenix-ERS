@@ -38,7 +38,7 @@ int main() {
     char* FileData = LoadFile("Assets/Test.png");
     long ImageLength = std::size(*FileData);
 
-    FIMEMORY* InMemoryData = FreeImage_OpenMemory(reinterpret_cast<BYTE*>(FileData), ImageLength)
+    FIMEMORY* InMemoryData = FreeImage_OpenMemory(reinterpret_cast<BYTE*>(FileData), ImageLength);
 
     // De-Init FreeImage
     FreeImage_DeInitialise();
