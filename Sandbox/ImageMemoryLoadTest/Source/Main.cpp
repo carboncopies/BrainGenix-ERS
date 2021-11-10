@@ -4,6 +4,12 @@
 #include <fstream>
 #include <map>
 
+#include <stdio.h>
+#include <math.h>
+#include <assert.h>
+#include <sys/stat.h>
+#include <stdlib.h>
+
 #include "FreeImage.h"
 
 
