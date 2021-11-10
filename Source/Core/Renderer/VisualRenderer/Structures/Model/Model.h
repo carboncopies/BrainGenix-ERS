@@ -89,8 +89,11 @@ class ERS_OBJECT_MODEL {
         std::string Directory;
         bool GammaCorrection;
 
+        // Logger
+        LoggerClass Logger_*;
+
         // Load Model From File
-        void LoadModelFromFile(std::string const &Path);
+        void LoadModelFromFile(std::string const &Path, LoggerClass Logger_*);
 
         // Draw Model
         void Draw(ERS_OBJECT_SHADER &Shader);

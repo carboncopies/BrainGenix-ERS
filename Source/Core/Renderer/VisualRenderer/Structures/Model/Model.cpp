@@ -13,10 +13,14 @@
 
 
 // Load Model From File
-void ERS_OBJECT_MODEL::LoadModelFromFile(std::string const &Path) {
+void ERS_OBJECT_MODEL::LoadModelFromFile(std::string const &Path, LoggerClass Logger_*) {
+
+    // Set Pointer
+    Logger_ = Logger_;
 
     // Read File
     Assimp::Importer Importer;
+    Logger_->Log(std::string(std::string("Loading Model At File Path: ") + std::string(Path)), 3);
     const aiScene* Scene = Importer.ReadFile(Path, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
 
     // Log Errors
@@ -180,6 +184,8 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             // Load Texture From File
             std::string FilePath = std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str()));
             
+            
+
             ImageFileObject Image;
             Image.LoadImage(FilePath.c_str());
 
