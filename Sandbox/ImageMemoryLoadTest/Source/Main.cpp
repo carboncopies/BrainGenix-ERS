@@ -52,15 +52,12 @@ struct ImageFileObject {
 
         // Get File Stats
         Result = stat(FilePath, &Buffer);
-
         if (Result == 0) {
 
             MemoryBuffer = (BYTE*)malloc(Buffer.st_size * sizeof(BYTE));
-
             if (MemoryBuffer) {
 
                 FILE *Stream = fopen(FilePath, "rb");
-
                 if (Stream) {
 
                     // Read File Data
