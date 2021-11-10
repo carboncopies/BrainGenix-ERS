@@ -59,6 +59,15 @@ int main() {
     struct stat buf;
     int result = stat(Path, &buf);
 
+    BYTE *Buffer = (BYTE*)malloc(buf.st_size * sizeof(BYTE));
+
+    FILE *stream = fopen(Path, "rb");
+
+    fread(Buffer, sizeof(BYTE), buf.st_size, stream);
+    fclose(stream);
+
+
+
 
 
 
@@ -68,7 +77,7 @@ int main() {
 
     // Load Image Into Memory
     std::cout<<"Loading Image Into FreeImage Memory Object (FIMEMORY*)\n";
-    FIMEMORY* InMemoryData = FreeImage_OpenMemory(reinterpret_cast<BYTE*>(ImageData), ImageLength);
+    FIMEMORY* InMemoryData = FreeImage_OpenMemory(Buffer, buf.st_size);
     
     // Identifying Image Format
     std::cout<<"Getting Image Format From FIMEMORY Object\n";
