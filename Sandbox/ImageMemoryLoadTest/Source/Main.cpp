@@ -43,9 +43,41 @@ struct ImageFileObject {
 
     // Declare Member Variables
     BYTE *MemoryBuffer;
+    struct stat Buffer;
+    int Result;
+
 
     // Load File Into Mem
+    bool LoadImage(const char* FilePath) { // Loads Image Into Memory Buffer, Returns True On Success, False On Failure
 
+        // Get File Stats
+        Result = stat(FilePath, &Buffer);
+
+
+        if (Result) {
+
+            MemoryBuffer = (BYTE*)malloc(Buffer.st_size * sizeof(BYTE));
+
+            if (MemoryBuffer) {
+
+                FILE *Stream = fopen(FilePath, "rb");
+
+                if (Stream) {
+
+                    // Read File Data
+                    fread(MemoryBuffer, sizeof(BYTE), Buffer.st_size, Stream);
+                    fclose(Stream);
+
+                    return true;
+
+                }
+            }
+        }
+
+        // Return Fail
+        return false;
+
+    }
 
 
 };
@@ -61,17 +93,9 @@ int main() {
 
     const char* Path = "Assets/Test.png";
 
-    
-    struct stat buf;
-    int result = stat(Path, &buf);
 
-    BYTE *Buffer = (BYTE*)malloc(buf.st_size * sizeof(BYTE));
-
-    FILE *stream = fopen(Path, "rb");
-
-    fread(Buffer, sizeof(BYTE), buf.st_size, stream);
-    fclose(stream);
-
+    ImageFileObject Obj;
+    Obj.LoadImage(Path);
 
 
 
@@ -83,7 +107,7 @@ int main() {
 
     // Load Image Into Memory
     std::cout<<"Loading Image Into FreeImage Memory Object (FIMEMORY*)\n";
-    FIMEMORY* InMemoryData = FreeImage_OpenMemory(Buffer, buf.st_size);
+    FIMEMORY* InMemoryData = FreeImage_OpenMemory(Obj.MemoryBuffer, Obj.Buffer.st_size);
     
     // Identifying Image Format
     std::cout<<"Getting Image Format From FIMEMORY Object\n";
