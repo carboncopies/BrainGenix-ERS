@@ -58,7 +58,7 @@ void TestLoad(const char* Path) {
 
     // Load Image Path
     ImageFileObject Obj;
-    std::cout<<Obj.LoadImage(Path)<<std::endl;
+    Obj.LoadImage(Path);
 
     // Load Image Into Memory
     std::cout<<"Loading Image Into FreeImage Memory Object (FIMEMORY*)\n";
