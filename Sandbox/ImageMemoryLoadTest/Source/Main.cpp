@@ -48,8 +48,11 @@ int main() {
     char* ImageData = FileObj.Buffer;
     size_t ImageLength = FileObj.FileSize;
 
-
+    // Load Image Into Memory
+    std::cout<<"Loading Image Into FreeImage Memory Object (FIMEMORY*)\n";
     FIMEMORY* InMemoryData = FreeImage_OpenMemory(reinterpret_cast<BYTE*>(ImageData), ImageLength);
+    
+
 
     // De-Init FreeImage
     FreeImage_DeInitialise();
