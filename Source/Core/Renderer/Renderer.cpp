@@ -66,7 +66,7 @@ void Renderer::InitializeOpenGL() {
 
     // Register Callback
     glfwMakeContextCurrent(Window_);
-    glfwSwapInterval(0);
+    //glfwSwapInterval(0);
     glfwSetFramebufferSizeCallback(Window_, FramebufferSizeCallback);
     glfwSetCursorPosCallback(Window_, MouseCallback);
     glfwSetScrollCallback(Window_, ScrollCallback);
