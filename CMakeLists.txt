@@ -136,7 +136,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
   meshoptimizer
   backward
   CEGUIBase-0
-  mysqlcppconn
+  #mysqlcppconn
   )
 
 
