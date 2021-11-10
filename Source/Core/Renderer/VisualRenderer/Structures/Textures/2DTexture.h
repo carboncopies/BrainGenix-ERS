@@ -27,7 +27,7 @@ struct ERS_OBJECT_TEXTURE_2D {
     void InitializeTexture(char* ImageDataBuffer, size_t ImageLength, bool FlipImage = true) {
 
         // Move this to a class
-        FreeImage_Initialise();
+        FreeImage_Initialise(); // move these to an image loading manager (thread?)
 
 
         // Decode Image
