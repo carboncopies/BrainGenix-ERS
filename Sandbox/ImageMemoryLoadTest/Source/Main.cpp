@@ -39,6 +39,16 @@ struct FileObject {
 };
 
 
+struct ImageFileObject {
+
+    // Declare Member Variables
+    BYTE *MemoryBuffer;
+
+    // Load File Into Mem
+
+
+
+};
 
 
 int main() {
@@ -51,10 +61,6 @@ int main() {
 
     const char* Path = "Assets/Test.png";
 
-    // FileObject FileObj;
-    // FileObj.LoadFile("Assets/Test.png");
-    // char* ImageData = FileObj.Buffer;
-    // size_t ImageLength = FileObj.FileSize;
     
     struct stat buf;
     int result = stat(Path, &buf);
