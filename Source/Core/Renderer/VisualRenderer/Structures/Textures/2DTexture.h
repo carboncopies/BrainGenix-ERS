@@ -24,7 +24,7 @@ struct ERS_OBJECT_TEXTURE_2D {
     std::string Path;
 
     // Texutre Init Function
-    void InitializeTexture(char* ImageDataBuffer, size_t ImageLength, bool FlipImage = true) {
+    void InitializeTexture(BYTE* ImageDataBuffer, size_t ImageLength, bool FlipImage = true) {
 
         // Move this to a class
         FreeImage_Initialise();
@@ -68,7 +68,7 @@ struct ERS_OBJECT_TEXTURE_2D {
         glGenerateMipmap(GL_TEXTURE_2D);
 
         // Deallocate Image Data
-        FreeImage_Unload(ImageData);
+        FreeImage_CloseMemory(EncodedImageData);
 
         // Move This Later
         FreeImage_DeInitialise();

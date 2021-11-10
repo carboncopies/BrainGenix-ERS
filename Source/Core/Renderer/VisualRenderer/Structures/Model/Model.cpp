@@ -191,6 +191,9 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             Textures.push_back(Texture);
             Textures_Loaded.push_back(Texture);
 
+            // Free Memory
+            Image.FreeMemory();
+
         }
 
         

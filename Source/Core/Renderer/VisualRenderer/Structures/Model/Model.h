@@ -69,6 +69,11 @@ struct ImageFileObject {
         return false;
 
     }
+    
+    // Free Memory
+    void FreeMemory() {
+        free(MemoryBuffer);
+    }
 
 
 };
