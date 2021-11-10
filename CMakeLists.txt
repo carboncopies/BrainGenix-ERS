@@ -56,9 +56,6 @@ disable_target_warnings(assimp)
 # Add Backward Library (Header Only)
 add_subdirectory(${LIB_DIR}/backward)
 
-# This will add libraries, definitions and include directories needed by backward
-# by setting each property on the target.
-#add_backward(mytarget)
 
 
 # # Add Bullet Library (Not Header Only)
