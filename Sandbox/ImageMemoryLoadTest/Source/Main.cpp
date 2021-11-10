@@ -43,10 +43,22 @@ int main() {
     // Load Test.png
     std::cout<<"Loading Image: 'Assets/Test.png' From Disk\n";
 
-    FileObject FileObj;
-    FileObj.LoadFile("Assets/Test.png");
-    char* ImageData = FileObj.Buffer;
-    size_t ImageLength = FileObj.FileSize;
+    const char* Path = "Assets/Test.png";
+
+    // FileObject FileObj;
+    // FileObj.LoadFile("Assets/Test.png");
+    // char* ImageData = FileObj.Buffer;
+    // size_t ImageLength = FileObj.FileSize;
+    
+    struct stat buf;
+    int result = stat(Path, &buf);
+
+
+
+
+
+
+
 
     // Load Image Into Memory
     std::cout<<"Loading Image Into FreeImage Memory Object (FIMEMORY*)\n";
