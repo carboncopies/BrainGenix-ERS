@@ -29,7 +29,7 @@ struct ERS_OBJECT_TEXTURE_2D {
         // Move this to a class
         FreeImage_Initialise();
 
-
+    
 
         // Decode Image
         FIMEMORY* EncodedImageData = FreeImage_OpenMemory(reinterpret_cast<BYTE*> (ImageDataBuffer), ImageLength);
@@ -44,7 +44,7 @@ struct ERS_OBJECT_TEXTURE_2D {
         // Set Properties
         float Width = FreeImage_GetWidth(ImageData);
         float Height = FreeImage_GetHeight(ImageData);
-        float Channels = FreeImage_GetLine(ImageData) / FreeImage_GetWidth(ImageData);
+        float Channels = 3;//FreeImage_GetLine(ImageData) / FreeImage_GetWidth(ImageData);
 
 
         // Generate Texture
