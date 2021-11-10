@@ -106,14 +106,14 @@ int main() {
 
 
 
-    // Load Image Into Memory
-    std::cout<<"Loading Image Into FreeImage Memory Object (FIMEMORY*)\n";
-    FIMEMORY* InMemoryData = FreeImage_OpenMemory(Obj.MemoryBuffer, Obj.Buffer.st_size);
+    // // Load Image Into Memory
+    // std::cout<<"Loading Image Into FreeImage Memory Object (FIMEMORY*)\n";
+    // FIMEMORY* InMemoryData = FreeImage_OpenMemory(Obj.MemoryBuffer, Obj.Buffer.st_size);
     
-    // Identifying Image Format
-    std::cout<<"Getting Image Format From FIMEMORY Object\n";
-    FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(InMemoryData);
-    std::cout<<"Identified Format To Be: "<<Format<<std::endl;
+    // // Identifying Image Format
+    // std::cout<<"Getting Image Format From FIMEMORY Object\n";
+    // FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(InMemoryData);
+    // std::cout<<"Identified Format To Be: "<<Format<<std::endl;
 
 
     // De-Init FreeImage
