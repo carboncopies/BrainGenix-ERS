@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-09T10:16:19.557Z" agent="5.0 (X11)" etag="XTxrHTVZVA9zGBGCpYyq" version="15.7.0" type="github" pages="7">
+<mxfile host="app.diagrams.net" modified="2021-11-10T02:37:52.982Z" agent="5.0 (X11)" etag="GaIfv9t7T2BeT3-jZGH-" version="15.7.0" type="github" pages="8">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2272" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -408,7 +408,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="Me3VujgAASuyeFERV7iZ" name="Engine Streaming System">
-    <mxGraphModel dx="813" dy="-579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1422" dy="-188" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="SORNEBXzX296p3ofjego-0" />
         <mxCell id="SORNEBXzX296p3ofjego-1" parent="SORNEBXzX296p3ofjego-0" />
@@ -630,6 +630,14 @@
         <mxCell id="5HB4Yx0WjJf3gcb4PfU3-27" value="Return OpenGL Handles" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
           <mxGeometry x="890" y="1570" width="120" height="60" as="geometry" />
         </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="_zBzLxVX7K9-pixq03Fl" name="Asset Storage Schema">
+    <mxGraphModel dx="1422" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="Si5mBgFa-oXNAPuHeHP1-0" />
+        <mxCell id="Si5mBgFa-oXNAPuHeHP1-1" parent="Si5mBgFa-oXNAPuHeHP1-0" />
       </root>
     </mxGraphModel>
   </diagram>
