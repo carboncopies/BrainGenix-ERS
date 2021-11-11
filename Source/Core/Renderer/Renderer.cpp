@@ -8,7 +8,7 @@
     Date Created: 2021-11-01
 */
 
-void ErrorCallback(int, const char*, ErrorString) {
+void ErrorCallback(int, const char* ErrorString) {
     std::cout<<"GLFW ERROR: " << ErrorString << std::endl;
 }
 
