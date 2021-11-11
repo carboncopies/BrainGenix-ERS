@@ -92,7 +92,7 @@ void Renderer::InitializeOpenGL() {
 
     // Load Model
     float T1 = glfwGetTime();
-    Model_.LoadModelFromFile("Assets/Test/backpack.obj", Logger_);
+    Model_.LoadModelFromFile("Assets/Brown_Rock_003/Brown_Rock_003.fbx", Logger_);
     std::cout << "Model Loading Took: " << glfwGetTime()-T1 << " Seconds\n";
 
 
