@@ -7,7 +7,6 @@ project(
 	)
 
 # Set Dirs
-set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 set(BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Binaries")
 
