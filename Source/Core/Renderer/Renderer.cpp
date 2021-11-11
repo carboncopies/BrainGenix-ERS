@@ -76,7 +76,7 @@ void Renderer::InitializeOpenGL() {
     glfwSetScrollCallback(Window_, ScrollCallback);
 
     // Grab Mouse
-    //glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     // Setup GLAD
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -134,8 +134,8 @@ bool Renderer::UpdateLoop() {
     // render the loaded model
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-    model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));	// it's a bit too big for our scene, so scale it down
-    model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));	// it's a bit too big for our scene, so scale it down
+    model = glm::rotate(model, glm::radians(-0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     Shader_.SetMat4("model", model);
     Model_.Draw(Shader_);
 
