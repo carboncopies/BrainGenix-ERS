@@ -27,7 +27,7 @@ int main() {
     for (int i = 0; i < NumberThreads; i++) {
         
         // Log Thread Create
-        std::cout<<"[ MAIN] Creating Thread: " << i << std:endl;
+        std::cout<<"[ MAIN] Creating Thread: " << i << std::endl;
 
         // Create Thread
         ResultCode = pthread_create(&Threads[i], NULL, TestFunction, (void*)i);
