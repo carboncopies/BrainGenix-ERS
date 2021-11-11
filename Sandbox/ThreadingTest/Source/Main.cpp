@@ -1,6 +1,6 @@
-#include <pthread.h>
 #include <cstdlib>
 #include <iostream>
+#include <pthread.h>
 
 int NumberThreads = 10;
 
