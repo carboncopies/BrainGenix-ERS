@@ -8,7 +8,10 @@
     Date Created: 2021-11-01
 */
 
-// comment out extra names of variable with /* */ for warnings
+void ErrorCallback(int, const char*, ErrorString) {
+    std::cout<<"GLFW ERROR: " << ErrorString << std::endl;
+}
+
 
 void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger) {
 
@@ -46,6 +49,7 @@ void Renderer::InitializeGLFW() {
     //glfwWindowHint(GLFW_DOUBLEBUFFER, GLFW_FALSE);
 
     // Create Window Object
+    glfwSetErrorCallback(ErrorCallback);
     Window_ = glfwCreateWindow(WindowWidth_, WindowHeight_, WindowTitle_, NULL, NULL);
     if (Window_ == NULL) {
         glfwTerminate();
