@@ -13,10 +13,10 @@ cd Build
 # Make Only BrainGenix-ERS
 echo "Running Cmake"
 cmake ..
-cmake --build . --target BGImageTest -- -j 24
+cmake --build . --target BGThreadingTest -- -j 24
 
 # Run Program
 echo "Running Program"
 cd ../Binaries
-./BGImageTest
+./BGThreadingTest
 cd ..
