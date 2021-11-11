@@ -76,7 +76,7 @@ void Renderer::InitializeOpenGL() {
     glfwSetScrollCallback(Window_, ScrollCallback);
 
     // Grab Mouse
-    glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    //glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     // Setup GLAD
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
