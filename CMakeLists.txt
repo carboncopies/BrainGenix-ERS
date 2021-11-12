@@ -135,6 +135,7 @@ add_executable(${PROJECT_NAME}
   ${SRC_DIR}/Core/Structures/Model/Model.cpp
   ${SRC_DIR}/Core/Structures/Model/Model.h
   ${SRC_DIR}/Core/Loader/Configuration/ConfigurationLoader.cpp
+  ${SRC_DIR}/Core/Loader/Image/FileIO.
   ${SRC_DIR}/Core/Loader/Image/FileIO.cpp
   ${SRC_DIR}/Core/Management/LoggingSystem.cpp
   ${SRC_DIR}/Core/Management/LoggingSystem.h
