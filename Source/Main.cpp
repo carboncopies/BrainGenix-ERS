@@ -9,7 +9,7 @@
 */
 
 #include "Core/Loader/Configuration/ConfigurationLoader.cpp"
-#include "Core/Management/LoggingSystem.cpp"
+#include "Core/Management/LoggingSystem.h"
 #include "Core/Renderer/Renderer.h"
 
 #include "Core/Structures/DataBuffer/DataBuffer.h"
