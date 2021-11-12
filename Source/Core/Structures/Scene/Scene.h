@@ -21,7 +21,9 @@ struct ERS_STRUCTURE_SCENE {
     
     // Metadata
     std::string SceneName;
+    std::string SceneVersion;
 
-
+    // Scene Data
+    std::vector<YAML::Node> Subnodes;
 
 };

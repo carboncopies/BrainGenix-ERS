@@ -30,7 +30,7 @@ ERS_STRUCTURE_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoadi
         std::string FilePath;
         FilePath = "Assets/Scene/";
         FilePath += std::to_string(SceneID);
-        FilePath += ".bgscene";
+        FilePath += ".bg";
 
         // Log If Enabled
         if (LogLoading) {
@@ -45,6 +45,8 @@ ERS_STRUCTURE_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoadi
 
     // Parse Scene Metadata
     Scene.SceneName = Scene.SceneData["Name"].as<std::string>();
+    Scene.SceneVersion = Scene.FormatVersion["FormatVersion"].as<std::string>();
+
 
     // Return Scene
     return Scene;

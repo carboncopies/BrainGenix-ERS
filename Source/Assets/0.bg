@@ -1,0 +1,11 @@
+########################
+# BrainGenix ERS Scene #
+########################
+
+Name: "RootScene"
+FormatVersion: "0.0.1"
+Subnodes:
+    0:
+        Name: "Test"
+        Type: "Model"
+        ID: 1
