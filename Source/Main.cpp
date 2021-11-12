@@ -13,9 +13,6 @@
 #include "Core/Renderer/Renderer.h"
 
 
-
-
-
 int main() {
 
     // Load System Configuration File
