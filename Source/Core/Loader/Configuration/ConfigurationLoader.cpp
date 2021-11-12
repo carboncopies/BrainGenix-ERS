@@ -13,7 +13,7 @@
 #include <yaml-cpp/yaml.h>
 
 
-YAML::Node LoadConfig(const char* ConfigurationPath) {
+static YAML::Node LoadConfig(const char* ConfigurationPath) {
 
     // Read Configuration //
     YAML::Node ConfigurationDictionary = YAML::LoadFile(ConfigurationPath);
