@@ -13,17 +13,13 @@
 #include <vector>
 #include <variant>
 
-union ERS_DATA_BUFFER_ENTRY {
 
-    float F;
-    int I;
-
-};
 
 struct ERS_STRUCTURE_DATA_BUFFER {
 
     // Create Data Buffer Vector
-    std::vector<ERS_DATA_BUFFER_ENTRY> DataBuffer;
+    std::vector<std::vector<std::variant<char, int, double>>> Test;
+
 
 };
 

@@ -17,8 +17,8 @@
 int main() {
 
     ERS_STRUCTURE_DATA_BUFFER Test;
-    Test.DataBuffer.push_back(1);
-    Test.DataBuffer.push_back(5.2);
+    Test.Test.push_back(1);
+    // Test.DataBuffer.push_back(5.2);
     
 
     // Load System Configuration File
