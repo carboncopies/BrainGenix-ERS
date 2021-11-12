@@ -12,7 +12,7 @@ YAML::Node LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading) {
 
     // ADD CHECK LATER TO SEE IF DATABASE CONNECTED
     bool DatabaseLoad;
-    DatabaseLoad = false
+    DatabaseLoad = false;
 
     // IF DB CONNECTED, LOAD FROM DB
     if (DatabaseLoad) {
