@@ -29,7 +29,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
         Test.push_back(5);
 
-        IndexMap.insert(0, std::pair<int, int> (ID, Test.size()));
+        IndexMap.insert({ID, Test.size()});
 
     }
 
