@@ -74,4 +74,3 @@ class LoggerClass {
 };
 
 
-#include "Core/Management/LoggingSystem.cpp"
