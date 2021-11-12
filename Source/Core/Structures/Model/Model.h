@@ -29,8 +29,8 @@
 #include <assimp/postprocess.h>
 
 #include "Core/Structures/Meshes/Mesh.h"
-#include "Core/Renderer/VisualRenderer/Structures/Textures/2DTexture.h"
-#include "Core/Renderer/VisualRenderer/Structures/Vertex/Vertex.h"
+#include "Core/Structures/Textures/2DTexture.h"
+#include "Core/Structures/Vertex/Vertex.h"
 #include "Core/Loader/FileIO.h"
 
 
