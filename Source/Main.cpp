@@ -16,6 +16,10 @@
 
 int main() {
 
+
+
+    
+
     // Load System Configuration File
     YAML::Node SystemConfiguration = LoadConfig("Config.yaml");
 
@@ -25,6 +29,9 @@ int main() {
 
     sERSLogger.Log("Initialized 'Management::Logger::LoggerClass'", 5);
 
+
+    ERS_STRUCTURE_DATA_BUFFER Test;
+    Test.AddToBuffer(1, 0, &sERSLogger, true);
 
     // Initialize Renderer
     Renderer sERSRenderer;
