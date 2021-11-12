@@ -13,7 +13,6 @@
 #include "Core/Renderer/Renderer.h"
 
 
-#include "Core/Loader/Scene/SceneDecoder.h"
 
 int main() {
 

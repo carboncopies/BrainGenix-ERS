@@ -23,7 +23,7 @@
 #include "Core/Structures/Model/Model.h"
 #include "Core/Structures/Cameras/NoClip/NoClip.h"
 #include "Core/Structures/Scene/Scene.h"
-
+#include "Core/Loader/Scene/SceneDecoder.h"
 
 // Initialize
 bool FirstMouse = true;

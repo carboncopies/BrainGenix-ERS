@@ -113,7 +113,7 @@ void Renderer::InitializeOpenGL() {
 void Renderer::LoadAssets() {
 
     // Load Root Scene Graph
-    Scene_ = LoadScene(0, &sERSLogger, true);
+    Scene_ = LoadScene(0, Logger_, true);
 
     // Load Subassets
     
