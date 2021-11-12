@@ -8,3 +8,18 @@
     Date Created: 2021-11-11
 */    
 
+#pragma once
+
+#include "Core/Loader/Scene/SceneDecoder.h"
+
+
+struct ERS_STRUCTURE_SCENE {
+
+
+
+
+
+}
+
+
+#include "Core/Structures/Scene/Scene.cpp"
