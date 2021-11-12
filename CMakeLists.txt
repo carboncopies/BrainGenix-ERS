@@ -127,6 +127,10 @@ add_executable(${PROJECT_NAME}
   ${SRC_DIR}/Core/Structures/Cameras/NoClip/NoClip.cpp
   ${SRC_DIR}/Core/Structures/Cameras/NoClip/NoClip.h
   ${SRC_DIR}/Core/Structures/Meshes/Mesh.cpp
+  ${SRC_DIR}/Core/Structures/Meshes/Mesh.h
+  ${SRC_DIR}/Core/Structures/Model/Model.cpp
+  ${SRC_DIR}/Core/Structures/Model/Model.h
+  ${SRC_DIR}/Core/Management
   ${BACKWARD_ENABLE}
   )
 target_include_directories(${PROJECT_NAME} PRIVATE Source)
