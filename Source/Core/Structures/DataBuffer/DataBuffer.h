@@ -12,13 +12,19 @@
 
 #include <vector>
 #include <variant>
+#include <typeinfo>
 
 
 
 struct ERS_STRUCTURE_DATA_BUFFER {
 
-    // Create Data Buffer Vector
-    std::vector<std::vector<std::variant<char, int, double>>> Test;
+    // Create Data Buffers
+    std::vector<std::vector<int>, std::vector<float>> Test;
+
+    // Add Type
+    void AddStructToBuffer(auto Input);
+
+        std::cout<<typeid(Input).name()<<std::endl;
 
 
 };
