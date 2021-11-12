@@ -24,7 +24,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     std::vector<std::variant<ERS_STRUCTURE_SCENE>> Test;
 
     // Add To Data Buffer
-    void AddToBuffer(auto Input, long ID, LoggerClass *Logger_, bool LoggerEnabled = false;) {
+    void AddToBuffer(auto Input, long ID, LoggerClass *Logger_, bool LoggerEnabled = false) {
 
         // If Logger Enabled, Log Entry To Buffer
         if (LoggerEnabled) {
