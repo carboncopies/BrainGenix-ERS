@@ -8,6 +8,8 @@
     Date Created: 2021-05-31
 */ 
 
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <yaml-cpp/yaml.h>
