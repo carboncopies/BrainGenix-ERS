@@ -21,7 +21,7 @@ struct ERS_STRUCTURE_SCENE {
     
     // Metadata
     std::string SceneName;
-    std::string SceneVersion;
+    std::string FormatVersion;
 
     // Scene Data
     long NumberSubnodes;
