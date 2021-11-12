@@ -8,6 +8,8 @@
     Date Created: 2021-05-31
 */
 
+#pragma once
+
 #include <iomanip>
 #include <iostream>
 #include <string>
