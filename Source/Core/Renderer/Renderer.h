@@ -22,6 +22,7 @@
 #include "Core/Renderer/VisualRenderer/ShaderManager.h"
 #include "Core/Structures/Model/Model.h"
 #include "Core/Structures/Cameras/NoClip/NoClip.h"
+#include "Core/Structures/Scene/Scene.h"
 
 
 // Initialize
