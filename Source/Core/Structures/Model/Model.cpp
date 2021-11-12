@@ -11,6 +11,8 @@
 
 
 
+#include "Core/Structures/Model/Model.h"
+
 
 // Load Model From File
 void ERS_OBJECT_MODEL::LoadModelFromFile(std::string const &Path, LoggerClass *Logger) {

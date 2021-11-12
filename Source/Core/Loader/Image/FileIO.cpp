@@ -9,7 +9,7 @@
 */
  
 
-
+#include "Core/Loader/Image/FileIO.h"
 
 std::string ReadFile(const std::string& FileName, LoggerClass *Logger_) {
 

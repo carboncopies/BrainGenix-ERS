@@ -112,6 +112,3 @@ class ERS_OBJECT_MODEL {
 };
 
 
-
-
-#include "Core/Structures/Model/Model.cpp"
