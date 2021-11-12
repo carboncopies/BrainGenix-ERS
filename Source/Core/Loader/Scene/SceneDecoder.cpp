@@ -48,11 +48,9 @@ ERS_STRUCTURE_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoadi
     Scene.FormatVersion = Scene.SceneData["FormatVersion"].as<std::string>();
 
     // Parse Scene Subnodes
-    std::map<long, YAML::Node> SubnodeMap;
-    
-    YAML::Node Subnodes = Scene.SceneData["Subnodes"];
-    for (YAML::const_iterator it=Subnodes.begin(); it!=Subnodes.end(); ++it) {
-        SubnodeMap[it->first.as<long>()] = {
+    YAML::Node SubnodesMap = Scene.SceneData["Subnodes"];
+    for (YAML::const_iterator it=SubnodeMap.begin(); it!=SubnodeMap.end(); ++it) {
+        Scene.Subnodes[it->first.as<long>()] = {
             it->second[0].as<std::string>(),
             it->second[1].as<std::string>(),
         };
