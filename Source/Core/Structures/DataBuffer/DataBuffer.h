@@ -28,6 +28,18 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     std::map<long, long> IndexMap; // Stores as follows: {AssetID: Index In Vector}
     std::vector<std::variant<ERS_STRUCTURE_SCENE, int>> Test;
 
+
+    // Initialize Buffer
+    void Init( LoggerClass *Logger) {
+
+        // Copy Pointer To The Logger
+        Logger_ = Logger;
+
+        // Log System Initialization
+        Logger_->Log("Initialized ERS Data Buffer", 6);
+
+    }
+
     // Add To Data Buffer
     void AddToBuffer(auto Input, long ID) {
 
