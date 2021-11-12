@@ -29,4 +29,3 @@
 ERS_STRUCTURE_SCENE LoadScene(long SceneID, LoggerClass *Logger_ = nullptr, bool LogLoading = false);
 
 
-#include "Core/Loader/Scene/SceneDecoder.cpp"

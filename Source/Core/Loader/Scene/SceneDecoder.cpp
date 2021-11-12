@@ -8,6 +8,8 @@
     Date Created: 2021-10-13
 */ 
 
+#include "Core/Loader/Scene/SceneDecoder.h"
+
 ERS_STRUCTURE_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading) {
 
     // Initialize Vars
