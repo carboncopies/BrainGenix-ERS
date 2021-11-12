@@ -11,7 +11,9 @@
 #include <string>
 #include <yaml-cpp/yaml.h>
 
-YAML::Node LoadScene(long SceneID, LoggerClass *Logger_ = nullptr, bool LogLoading = false);
+#include "Core/Structures/Scene/Scene.h"
+
+ERS_STRUCTURE_SCENE LoadScene(long SceneID, LoggerClass *Logger_ = nullptr, bool LogLoading = false);
 
 
 #include "Core/Loader/Scene/SceneDecoder.cpp"

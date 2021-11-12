@@ -8,10 +8,13 @@
     Date Created: 2021-10-13
 */ 
 
-YAML::Node LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading) {
+ERS_STRUCTURE_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading) {
+
+    // Initialize Vars
+    ERS_STRUCTURE_SCENE Scene;
 
     // ADD CHECK LATER TO SEE IF DATABASE CONNECTED
-    YAML::Node Scene;
+
     bool DatabaseLoad;
     DatabaseLoad = false;
 
@@ -37,9 +40,12 @@ YAML::Node LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading) {
         }
 
         // Load Scene
-        Scene = YAML::LoadFile(FilePath);
+        Scene.SceneData = YAML::LoadFile(FilePath);
 
     }
+
+    // Parse Scene Metadata
+    Scene.SceneName = Scene.SceneData["Name"].as<
 
     // Return Scene
     return Scene;

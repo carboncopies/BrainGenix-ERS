@@ -24,6 +24,3 @@ struct ERS_STRUCTURE_SCENE {
 
 
 };
-
-
-#include "Core/Structures/Scene/Scene.cpp"
