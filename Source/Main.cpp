@@ -17,7 +17,7 @@
 int main() {
 
     ERS_STRUCTURE_DATA_BUFFER Test;
-    Test.AddStructToBuffer(1);
+    Test.AddIntToBuffer(1);
     // Test.DataBuffer.push_back(5.2);
     
 
