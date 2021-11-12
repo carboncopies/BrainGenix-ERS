@@ -10,6 +10,8 @@
 
 #pragma once
 
+#include <yaml-cpp>
+
 #include "Core/Loader/Scene/SceneDecoder.h"
 
 
