@@ -95,9 +95,7 @@ void Renderer::InitializeOpenGL() {
     Shader_ = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
 
     // Load Model
-    float T1 = glfwGetTime();
     Model_.LoadModelFromFile("Assets/1.bg", Logger_);
-    std::cout << "Model Loading Took: " << glfwGetTime()-T1 << " Seconds\n";
 
 
 
