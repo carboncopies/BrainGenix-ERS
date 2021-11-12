@@ -22,15 +22,14 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
     // Create Buffers
     std::vector<std::vector<int>, std::vector<float>> Test;
-    std::map<long, std::map<long, long>> IndexMap; // Stores as follows: {AssetID: {Index Of Vector Stored In, Position In That Vector}}
+    std::map<long, std::vector<long, long>> IndexMap; // Stores as follows: {AssetID: {Index Of Vector Stored In, Position In That Vector}}
 
     // Add Type
     void AddIntToBuffer(int Input, long ID) {
 
         Test[0].push_back(Input);
 
-        std::map<long, long> InsertMap = {0, Test[0].size()};
-        IndexMap[ID] = InsertMap;
+        IndexMap[ID] = {0, Test[0].size()};
     
     }
 
