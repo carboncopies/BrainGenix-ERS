@@ -16,11 +16,6 @@
 
 int main() {
 
-    ERS_STRUCTURE_DATA_BUFFER Test;
-    Test.AddIntToBuffer(1, 0);
-    // Test.DataBuffer.push_back(5.2);
-    
-
     // Load System Configuration File
     YAML::Node SystemConfiguration = LoadConfig("Config.yaml");
 

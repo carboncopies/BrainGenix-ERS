@@ -12,10 +12,8 @@
 
 #include <vector>
 #include <variant>
-#include <string>
-#include <typeinfo>
 
-#include <iostream>
+#include "Core/Structures/Scene/Scene.h"
 
 
 
@@ -23,13 +21,12 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
     // Create Buffers
     std::map<int, int> IndexMap; // Stores as follows: {AssetID: Index In Vector}
-    std::vector<std::variant<int, double, std::string>> Test;
+    std::vector<std::variant<ERS_STRUCTURE_SCENE>> Test;
 
-    // Add Type
-    void AddIntToBuffer(int Input, int ID) {
+    // Add To Data Buffer
+    void AddIntToBuffer(auto Input, int ID) {
 
         Test.push_back(Input);
-
         IndexMap.insert({ID, Test.size()});
 
     }
