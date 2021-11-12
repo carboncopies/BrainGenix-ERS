@@ -58,7 +58,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
         // Get Data From Buffer
         long VectorIndex = IndexMap[ID];
-        return std::get<int>(StructureBuffer[VectorIndex]);
+        return std::get<long>(StructureBuffer[VectorIndex]);
 
     }
 
