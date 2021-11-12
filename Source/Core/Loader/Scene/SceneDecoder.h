@@ -8,10 +8,10 @@
     Date Created: 2021-10-13
 */  
 
+#include <string>
 #include <yaml-cpp/yaml.h>
 
-
-
+YAML::Node LoadScene(long SceneID);
 
 
 #include "Core/Loader/Scene/SceneDecoder.cpp"
