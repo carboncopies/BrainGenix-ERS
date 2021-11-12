@@ -12,6 +12,7 @@
 
 #include <vector>
 #include <variant>
+#include <string>
 #include <typeinfo>
 
 #include <iostream>
@@ -22,7 +23,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
     // Create Buffers
     std::map<int, int> IndexMap; // Stores as follows: {AssetID: Index In Vector}
-    std::vector<std::variant<int, double>> Test;
+    std::vector<std::variant<int, double, std::string>> Test;
 
     // Add Type
     void AddIntToBuffer(int Input, int ID) {
