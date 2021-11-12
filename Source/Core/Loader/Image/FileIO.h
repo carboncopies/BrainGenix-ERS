@@ -17,4 +17,4 @@
 
 std::string ReadFile(const std::string& FileName, LoggerClass *Logger_ = nullptr);
 
-#include "Core/Loader/FileIO.cpp"
+#include "Core/Loader/Image/FileIO.cpp"
