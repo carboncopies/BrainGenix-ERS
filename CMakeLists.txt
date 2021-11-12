@@ -139,7 +139,7 @@ add_executable(${PROJECT_NAME}
   ${BACKWARD_ENABLE}
   )
 target_include_directories(${PROJECT_NAME} PRIVATE Source)
-target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
 target_link_libraries(${PROJECT_NAME} PRIVATE
   yaml-cpp
