@@ -29,8 +29,9 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
         Test[0].push_back(Input);
 
-        IndexMap[ID][0] = 0;
-        IndexMap[ID][1] = Test[0].size();
+
+        std::vector<long, long> AppendVec = [0, Test[0].size()];
+        IndexMap[ID] = AppendVec;
     
     }
 
