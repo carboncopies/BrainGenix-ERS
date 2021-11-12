@@ -24,9 +24,9 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     std::vector<std::vector<int>, std::vector<float>> Test;
 
     // Add Type
-    void AddStructToBuffer(auto Input);
+    void AddStructToBuffer(auto Inputt);
 
-        std::cout<<typeid(Input).name()<<std::endl;
+        //std::cout<<typeid(Inputt).name()<<std::endl;
 
 
 };
