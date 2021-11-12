@@ -18,13 +18,12 @@ ERS_STRUCTURE_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoadi
     bool DatabaseLoad;
     DatabaseLoad = false;
 
-    // IF DB CONNECTED, LOAD FROM DB
+    // Load Scene From Database (Preferred)
     if (DatabaseLoad) {
         // db load code here...
     }
 
-
-    // File Load Fallback
+    // Load Scene From LocalFile (Fallback)
     if (!DatabaseLoad) {
         
         // Calculate File Path

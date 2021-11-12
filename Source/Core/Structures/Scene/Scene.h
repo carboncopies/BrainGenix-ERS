@@ -19,6 +19,7 @@ struct ERS_STRUCTURE_SCENE {
     // Declare Scene Structs
     YAML::Node SceneData;
     
+    // Metadata
     std::string SceneName;
 
 
