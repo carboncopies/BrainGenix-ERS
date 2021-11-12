@@ -11,6 +11,7 @@
 YAML::Node LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading) {
 
     // ADD CHECK LATER TO SEE IF DATABASE CONNECTED
+    YAML::Node Scene;
     bool DatabaseLoad;
     DatabaseLoad = false;
 
@@ -36,7 +37,7 @@ YAML::Node LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading) {
         }
 
         // Load Scene
-        YAML::Node Scene = YAML::LoadFile(FilePath);
+        Scene = YAML::LoadFile(FilePath);
 
     }
 
