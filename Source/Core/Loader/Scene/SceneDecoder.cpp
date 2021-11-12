@@ -38,11 +38,10 @@ YAML::Node LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading) {
         // Load Scene
         YAML::Node Scene = YAML::LoadFile(FilePath);
 
-        // Return Scene
-        return Scene;
-
-
     }
+
+    // Return Scene
+    return Scene;
 
 
 }
