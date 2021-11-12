@@ -28,7 +28,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
         // If Logger Enabled, Log Entry To Buffer
         if (LoggerEnabled) {
-            Logger_->Log(std::string(std::string("Adding Asset To Data Buffer With Index: ") + std::to_string(ID)).to_str(), 7);
+            Logger_->Log(std::string(std::string("Adding Asset To Data Buffer With Index: ") + std::to_string(ID)).c_str(), 7);
         }
 
         Test.push_back(Input);
