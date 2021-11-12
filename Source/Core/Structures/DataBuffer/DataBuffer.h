@@ -29,8 +29,8 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     // Add Type
     void AddIntToBuffer(int Input, int ID) {
 
-        Test[ID] = Input;
-    
+        Test.push_back(std::in_place_index_t<0>{}, 5); 
+
     }
 
 
