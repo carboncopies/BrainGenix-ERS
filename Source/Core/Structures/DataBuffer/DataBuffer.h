@@ -32,7 +32,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
         }
 
         Test.push_back(Input);
-        IndexMap.insert({ID, Test.size()});
+        IndexMap.insert({ID, (long)Test.size()});
 
     }
 
