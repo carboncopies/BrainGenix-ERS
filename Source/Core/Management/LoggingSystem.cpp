@@ -8,16 +8,7 @@
     Date Created: 2021-05-31
 */
 
-#include <iomanip>
-#include <iostream>
-#include <string>
-#include <ctime>
-#include <cstring>
-#include <map>
-#include <list>
-#include <array>
 
-#include "Core/Management/LoggingSystem.h"
 
 
 
