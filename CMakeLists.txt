@@ -124,6 +124,7 @@ add_executable(${PROJECT_NAME}
   ${SRC_DIR}/Main.cpp
   ${SRC_DIR}/Core/Renderer/Renderer.cpp
   ${SRC_DIR}/Core/Renderer/Renderer.h
+  ${SRC_DIR}/Core/Renderer/VisualRenderer/ShaderManager
   ${SRC_DIR}/Core/Structures/Cameras/NoClip/NoClip.cpp
   ${SRC_DIR}/Core/Structures/Cameras/NoClip/NoClip.h
   ${SRC_DIR}/Core/Structures/Meshes/Mesh.cpp
