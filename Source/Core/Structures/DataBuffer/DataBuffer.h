@@ -13,18 +13,23 @@
 #include <vector>
 #include <variant>
 
+#include "Core/Management/LoggingSystem.h"
+
 #include "Core/Structures/Scene/Scene.h"
 
 
 
 struct ERS_STRUCTURE_DATA_BUFFER {
 
+    // Internal Vars
+    LoggerClass *Logger_;
+
     // Create Buffers
     std::map<long, long> IndexMap; // Stores as follows: {AssetID: Index In Vector}
     std::vector<std::variant<ERS_STRUCTURE_SCENE, int>> Test;
 
     // Add To Data Buffer
-    void AddToBuffer(auto Input, long ID, LoggerClass *Logger_, bool LoggerEnabled = false) {
+    void AddToBuffer(auto Input, long ID) {
 
         // If Logger Enabled, Log Entry To Buffer
         if (LoggerEnabled) {
@@ -33,6 +38,13 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
         Test.push_back(Input);
         IndexMap.insert({ID, (long)Test.size()});
+
+    }
+
+    // Get Data From Buffer
+    auto PullFromBuffer(long ID) {
+
+        // Get 
 
     }
 
