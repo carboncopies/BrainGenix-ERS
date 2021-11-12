@@ -11,6 +11,7 @@
 #pragma once
 
 #include "FreeImage.h"
+#include "Core/Management/LoggingSystem.h
 
 // Image Struct
 struct ERSImage {
