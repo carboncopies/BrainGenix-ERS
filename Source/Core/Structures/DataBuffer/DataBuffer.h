@@ -49,7 +49,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
         }
 
         StructureBuffer.push_back(Input);
-        IndexMap.insert({ID, (long)StructureBuffer.size()});
+        IndexMap.insert({ID, (long)StructureBuffer.size()-1});
 
     }
 
