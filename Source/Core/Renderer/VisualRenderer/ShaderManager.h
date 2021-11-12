@@ -195,5 +195,3 @@ ERS_OBJECT_SHADER CreateShaderObject(const char* VertexText, const char* Fragmen
 
 ERS_OBJECT_SHADER LoadShaderFromFile(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_);
 
-
-#include "Core/Renderer/VisualRenderer/ShaderManager.cpp"

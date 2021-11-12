@@ -10,6 +10,7 @@
 
 
 
+#include "Core/Renderer/VisualRenderer/ShaderManager.h"
 
 
 
