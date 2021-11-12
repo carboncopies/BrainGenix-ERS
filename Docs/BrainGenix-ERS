@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-12T07:20:52.760Z" agent="5.0 (X11)" etag="CCWrSjYlcMNR52cmmx0-" version="15.7.0" type="github" pages="8">
+<mxfile host="app.diagrams.net" modified="2021-11-12T07:22:16.420Z" agent="5.0 (X11)" etag="B8tpIW0XUubdDz6tm9m0" version="15.7.0" type="github" pages="8">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2272" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -659,6 +659,14 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="2125" y="1320" />
+              <mxPoint x="2200" y="1320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="SORNEBXzX296p3ofjego-1" source="ymFeAhp0DhXiGv6h24F2-3" target="ymFeAhp0DhXiGv6h24F2-10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2125" y="1320" />
               <mxPoint x="2070" y="1320" />
             </Array>
           </mxGeometry>
@@ -669,11 +677,23 @@
         <mxCell id="ymFeAhp0DhXiGv6h24F2-4" value="SceneData (YAML::Node)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
           <mxGeometry x="1750" y="1340" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="ymFeAhp0DhXiGv6h24F2-5" value="SceneName (std::string)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-5" value="Name (std::string)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
           <mxGeometry x="1880" y="1340" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="ymFeAhp0DhXiGv6h24F2-8" value="&lt;div&gt;SceneNodes (YAML::Node)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="2140" y="1340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-10" value="&lt;div&gt;FormatVersion&lt;/div&gt;&lt;div&gt;(std::string)&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
           <mxGeometry x="2010" y="1340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-12" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="2270" y="1440" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-13" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="2160" y="1450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-14" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="2040" y="1450" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
