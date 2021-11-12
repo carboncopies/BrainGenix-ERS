@@ -54,12 +54,11 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     }
 
     // Get Data From Buffer
-    auto PullFromBuffer(long ID) {
+    auto* PullFromBuffer(long ID) {
 
         // Get Data From Buffer
         long VectorIndex = IndexMap[ID];
-        std::cout<<VectorIndex<<std::endl;
-        return std::get<long>(StructureBuffer[VectorIndex]);
+        return &std::get<long>(StructureBuffer[VectorIndex]);
 
     }
 
