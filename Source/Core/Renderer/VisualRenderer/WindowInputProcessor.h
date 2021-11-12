@@ -10,8 +10,7 @@
 
 #pragma once
 
+#include "Core/Management/LoggingSystem.h"
 #include "Core/Structures/Cameras/NoClip/NoClip.h"
 
 void ProcessInput(GLFWwindow* Window, LoggerClass *Logger_, ERS_OBJECT_CAMERA_NOCLIP *Camera, float DeltaTime);
-
-#include "Core/Renderer/VisualRenderer/WindowInputProcessor.cpp"

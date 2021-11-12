@@ -8,7 +8,7 @@
     Date Created: 2021-11-02
 */
 
-
+#include "Core/Renderer/VisualRenderer/WindowInputProcessor.h"
 
 void ProcessInput(GLFWwindow* Window, LoggerClass *Logger_, ERS_OBJECT_CAMERA_NOCLIP *Camera, float DeltaTime) {
 

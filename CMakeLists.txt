@@ -119,11 +119,15 @@ disable_target_warnings(CEGUIBase-0)
 
 
 
-
 # Add Main.cpp
-add_executable(${PROJECT_NAME} "${SRC_DIR}/Main.cpp" ${BACKWARD_ENABLE})
+add_executable(${PROJECT_NAME}
+  ${SRC_DIR}/Main.cpp
+  ${SRC_DIR}/Core/Renderer/Renderer.cpp
+  ${SRC_DIR}/Core/Renderer/Renderer.h
+  ${BACKWARD_ENABLE}
+  )
 target_include_directories(${PROJECT_NAME} PRIVATE Source)
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
 target_link_libraries(${PROJECT_NAME} PRIVATE
   yaml-cpp

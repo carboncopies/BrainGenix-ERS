@@ -8,6 +8,8 @@
     Date Created: 2021-11-01
 */
 
+#include "Core/Renderer/Renderer.h"
+
 void ErrorCallback(int, const char* ErrorString) {
     std::cout<<"GLFW ERROR: " << ErrorString << std::endl;
 }

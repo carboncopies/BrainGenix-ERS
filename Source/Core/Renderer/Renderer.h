@@ -8,6 +8,8 @@
     Date Created: 2021-11-01
 */
 
+#pragma once
+
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
@@ -20,10 +22,10 @@
 
 #include "Core/Renderer/VisualRenderer/WindowInputProcessor.h"
 #include "Core/Renderer/VisualRenderer/ShaderManager.h"
-#include "Core/Structures/Model/Model.h"
-#include "Core/Structures/Cameras/NoClip/NoClip.h"
-#include "Core/Structures/Scene/Scene.h"
-#include "Core/Loader/Scene/SceneDecoder.h"
+#include "../Structures/Model/Model.h"
+#include "../Structures/Cameras/NoClip/NoClip.h"
+#include "../Structures/Scene/Scene.h"
+#include "../Loader/Scene/SceneDecoder.h"
 
 // Initialize
 bool FirstMouse = true;
@@ -123,4 +125,4 @@ class Renderer {
 };
 
 
-#include "Core/Renderer/Renderer.cpp"
+
