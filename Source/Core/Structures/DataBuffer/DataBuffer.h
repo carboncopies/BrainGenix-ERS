@@ -28,7 +28,9 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     void AddIntToBuffer(int Input, long ID) {
 
         Test[0].push_back(Input);
-        IndexMap[ID] = {0, Test[0].size()};
+
+        std::map<long, long> InsertMap = {0, Test[0].size()};
+        IndexMap[ID] = InsertMap;
     
     }
 
