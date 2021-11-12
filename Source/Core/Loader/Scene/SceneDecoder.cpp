@@ -45,14 +45,14 @@ ERS_STRUCTURE_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoadi
 
     // Parse Scene Metadata
     Scene.SceneName = Scene.SceneData["Name"].as<std::string>();
-    Scene.SceneVersion = Scene.FormatVersion["FormatVersion"].as<std::string>();
+    Scene.FormatVersion = Scene.SceneData["FormatVersion"].as<std::string>();
 
     // Parse Scene Subnodes
     std::map<long, YAML::Node> SubnodeMap;
     
-    YAML::Node Subnodes = SystemConfiguration["LogLevelColors"];
+    YAML::Node Subnodes = Scene.SceneData["Subnodes"];
     for (YAML::const_iterator it=Subnodes.begin(); it!=Subnodes.end(); ++it) {
-        SubnodeMap[it->second[2].as<long>()] = {
+        SubnodeMap[it->first.as<long>()] = {
             it->second[0].as<std::string>(),
             it->second[1].as<std::string>(),
         };
