@@ -45,7 +45,7 @@ ERS_STRUCTURE_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoadi
     }
 
     // Parse Scene Metadata
-    Scene.SceneName = Scene.SceneData["Name"].as<
+    Scene.SceneName = Scene.SceneData["Name"].as<std::string>();
 
     // Return Scene
     return Scene;
