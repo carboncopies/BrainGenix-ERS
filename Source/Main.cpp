@@ -13,6 +13,8 @@
 #include "Core/Renderer/Renderer.h"
 
 
+#include "Core/Loader/Scene/SceneDecoder.h"
+
 int main() {
 
     // Load System Configuration File
@@ -23,6 +25,8 @@ int main() {
     sERSLogger.InitializeLogger(SystemConfiguration);
 
     sERSLogger.Log("Initialized 'Management::Logger::LoggerClass'", 5);
+
+    YAML::Node Test = LoadScene(0);
 
     // Initialize Renderer
     Renderer sERSRenderer;

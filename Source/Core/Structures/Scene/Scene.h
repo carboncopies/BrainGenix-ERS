@@ -12,7 +12,6 @@
 
 #include <yaml-cpp/yaml.h>
 
-#include "Core/Loader/Scene/SceneDecoder.h"
 
 
 struct ERS_STRUCTURE_SCENE {
