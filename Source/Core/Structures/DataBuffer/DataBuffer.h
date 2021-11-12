@@ -26,7 +26,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
     // Create Buffers
     std::map<long, long> IndexMap; // Stores as follows: {AssetID: Index In Vector}
-    std::vector<std::variant<ERS_STRUCTURE_SCENE, int>> StructureBuffer;
+    std::vector<std::variant<ERS_STRUCTURE_SCENE, long>> StructureBuffer;
 
 
     // Initialize Buffer
