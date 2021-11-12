@@ -114,4 +114,4 @@ class ERS_OBJECT_MODEL {
 
 
 
-#include "Core/Renderer/VisualRenderer/Structures/Model/Model.cpp"
+#include "Core/Structures/Model/Model.cpp"
