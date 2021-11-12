@@ -6,6 +6,19 @@ Name: "RootScene"
 FormatVersion: "0.0.1"
 Subnodes:
     0:
+        ID: 1
         Name: "Test"
         Type: "Model"
-        ID: 1
+        Position:
+            X: 0.0
+            Y: 0.0
+            Z: 0.0
+        Rotation:
+            X: 0.0
+            Y: 0.0
+            Z: 0.0
+        Scale:
+            X: 1.0
+            Y: 1.0
+            Z: 1.0
+        

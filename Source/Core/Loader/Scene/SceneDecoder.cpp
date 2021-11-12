@@ -55,7 +55,6 @@ ERS_STRUCTURE_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoadi
         };
     }
 
-    std::cout<<Scene.Subnodes[0]["Name"].as<std::string>().c_str()<<std::endl;
 
 
     // Return Scene
