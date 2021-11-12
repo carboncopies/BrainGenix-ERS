@@ -31,7 +31,7 @@ int main() {
 
 
     ERS_STRUCTURE_DATA_BUFFER Test;
-    Test.Init(&sERSLogger);
+    //Test.Init(&sERSLogger);
     Test.AddToBuffer(1, 0);
 
     // Initialize Renderer

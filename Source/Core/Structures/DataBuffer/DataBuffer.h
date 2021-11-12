@@ -22,7 +22,7 @@
 struct ERS_STRUCTURE_DATA_BUFFER {
 
     // Internal Vars
-    LoggerClass *Logger_;
+    LoggerClass *Logger_ = nullptr;
 
     // Create Buffers
     std::map<long, long> IndexMap; // Stores as follows: {AssetID: Index In Vector}
@@ -44,7 +44,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     void AddToBuffer(auto Input, long ID) {
 
         // If Logger Enabled, Log Entry To Buffer
-        if (LoggerEnabled) {
+        if (Logger_ != nullptr) {
             Logger_->Log(std::string(std::string("Adding Asset To Data Buffer With Index: ") + std::to_string(ID)).c_str(), 7);
         }
 
