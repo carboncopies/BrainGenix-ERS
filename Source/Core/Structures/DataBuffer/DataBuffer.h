@@ -27,14 +27,14 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     // Add Type
     void AddIntToBuffer(int Input, int ID) {
 
-        Test[0].push_back(Input);
+        ///Test[0].push_back(Input);
 
 
         std::vector<int> AppendVec;
-        AppendVec[0] = 0;
-        AppendVec[1] = ID;
+        // AppendVec[0] = 0;
+        // AppendVec[1] = ID;
     
-        IndexMap[ID] = AppendVec;
+        // IndexMap[ID] = AppendVec;
     
     }
 
