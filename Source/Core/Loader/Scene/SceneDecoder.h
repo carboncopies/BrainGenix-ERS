@@ -25,6 +25,7 @@
 #include <yaml-cpp/yaml.h>
 
 #include "Core/Structures/Scene/Scene.h"
+#include "Core/Management/LoggingSystem.h"
 
 ERS_STRUCTURE_SCENE LoadScene(long SceneID, LoggerClass *Logger_ = nullptr, bool LogLoading = false);
 

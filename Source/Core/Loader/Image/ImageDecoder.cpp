@@ -8,7 +8,7 @@
     Date Created: 2021-10-28
 */  
 
-#include "ImageDecoder.h"
+#include "Core/Loader/Image/ImageDecoder.h"
 
 // Initialize The Class
 void ImageDecoder::Initialize(LoggerClass *Logger) {
