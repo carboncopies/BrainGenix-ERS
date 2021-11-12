@@ -10,6 +10,16 @@
 
 #include <string>
 #include <map>
+
+#include <iomanip>
+#include <iostream>
+#include <string>
+#include <ctime>
+#include <cstring>
+#include <map>
+#include <list>
+#include <array>
+
 #include <yaml-cpp/yaml.h>
 
 #include "Core/Structures/Scene/Scene.h"

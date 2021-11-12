@@ -28,7 +28,7 @@ ERS_STRUCTURE_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoadi
         
         // Calculate File Path
         std::string FilePath;
-        FilePath = "Assets/Scene/";
+        FilePath = "Assets/";
         FilePath += std::to_string(SceneID);
         FilePath += ".bg";
 
@@ -50,9 +50,9 @@ ERS_STRUCTURE_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoadi
     // Parse Scene Subnodes
     YAML::Node SubnodesMap = Scene.SceneData["Subnodes"];
     for (YAML::const_iterator it=SubnodesMap.begin(); it!=SubnodesMap.end(); ++it) {
-        Scene.Subnodes[it->first.as<int>()] = {
-            it->second[0].as<std::string>(),
-            it->second[1].as<std::string>(),
+        Scene.Subnodes[it->first.as<long>()] = {
+            it->second
+
         };
     }
 
