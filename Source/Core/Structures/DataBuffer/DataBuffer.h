@@ -20,11 +20,16 @@
 struct ERS_STRUCTURE_DATA_BUFFER {
 
     // Create Buffers
-    std::map<int, int> IndexMap; // Stores as follows: {AssetID: Index In Vector}
+    std::map<long, long> IndexMap; // Stores as follows: {AssetID: Index In Vector}
     std::vector<std::variant<ERS_STRUCTURE_SCENE>> Test;
 
     // Add To Data Buffer
-    void AddIntToBuffer(auto Input, int ID) {
+    void AddToBuffer(auto Input, long ID, LoggerClass *Logger_, bool LoggerEnabled = false;) {
+
+        // If Logger Enabled, Log Entry To Buffer
+        if (LoggerEnabled) {
+            Logger_->Log(std::string(std::string("Adding Asset To Data Buffer With Index: ") + std::to_string(ID)).to_str(), 7);
+        }
 
         Test.push_back(Input);
         IndexMap.insert({ID, Test.size()});
