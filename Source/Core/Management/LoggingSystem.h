@@ -19,6 +19,8 @@
 #include <list>
 #include <array>
 
+#include "yaml-cpp/yaml.h"
+
 
 
 class LoggerClass {
