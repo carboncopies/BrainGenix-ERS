@@ -69,4 +69,4 @@ class ERS_OBJECT_MESH {
 };
 
 
-#include "Core/Renderer/VisualRenderer/Structures/Meshes/Mesh.cpp"
+#include "Core/Structures/Meshes/Mesh.cpp"
