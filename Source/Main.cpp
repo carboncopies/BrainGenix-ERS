@@ -12,9 +12,14 @@
 #include "Core/Management/LoggingSystem.cpp"
 #include "Core/Renderer/Renderer.h"
 
-
+#include "Core/Structures/DataBuffer/DataBuffer.h"
 
 int main() {
+
+    ERS_STRUCTURE_DATA_BUFFER Test;
+    Test.DataBuffer.push_back(1);
+    Test.DataBuffer.push_back(5.2);
+    
 
     // Load System Configuration File
     YAML::Node SystemConfiguration = LoadConfig("Config.yaml");
