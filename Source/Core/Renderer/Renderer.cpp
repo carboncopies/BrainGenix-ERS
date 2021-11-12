@@ -27,6 +27,10 @@ void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *
     Logger_->Log("Initializing OpenGL", 5);
     InitializeOpenGL();
 
+    // Load Assets
+    Logger_->Log("Loading Root Scene (ID: 0)", 5);
+    LoadAssets();
+
 }
 
 void Renderer::InitializeGLFW() {
@@ -92,7 +96,7 @@ void Renderer::InitializeOpenGL() {
 
     // Load Model
     float T1 = glfwGetTime();
-    Model_.LoadModelFromFile("Assets/scene.gltf", Logger_);
+    Model_.LoadModelFromFile("Assets/1.bg", Logger_);
     std::cout << "Model Loading Took: " << glfwGetTime()-T1 << " Seconds\n";
 
 
@@ -105,6 +109,17 @@ void Renderer::InitializeOpenGL() {
 
 
 }
+
+void Renderer::LoadAssets() {
+
+    // Load Root Scene Graph
+    Scene_ = LoadScene(0, &sERSLogger, true);
+
+    // Load Subassets
+    
+
+}
+
 
 bool Renderer::UpdateLoop() { 
 

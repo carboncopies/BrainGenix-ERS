@@ -84,9 +84,7 @@ class Renderer {
         LoggerClass *Logger_;
         ERS_OBJECT_SHADER Shader_;
         ERS_OBJECT_MODEL Model_;
-
-
-        
+        ERS_STRUCTURE_SCENE Scene_;
 
 
 
@@ -109,6 +107,7 @@ class Renderer {
         // Member Functions
         void InitializeGLFW();
         void InitializeOpenGL();
+        void LoadAssets();
 
 
 

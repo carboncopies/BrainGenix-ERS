@@ -27,9 +27,6 @@ int main() {
     sERSLogger.Log("Initialized 'Management::Logger::LoggerClass'", 5);
 
 
-
-    ERS_STRUCTURE_SCENE Scene = LoadScene(0, &sERSLogger, true);
-
     // Initialize Renderer
     Renderer sERSRenderer;
     sERSLogger.Log("Initializing Renderer", 5);
