@@ -130,7 +130,7 @@ add_executable(${PROJECT_NAME}
   ${SRC_DIR}/Core/Structures/Meshes/Mesh.h
   ${SRC_DIR}/Core/Structures/Model/Model.cpp
   ${SRC_DIR}/Core/Structures/Model/Model.h
-  ${SRC_DIR}/Core/Management
+  ${SRC_DIR}/Core/Management/LoggingSystem.cpp
   ${BACKWARD_ENABLE}
   )
 target_include_directories(${PROJECT_NAME} PRIVATE Source)
