@@ -13,4 +13,7 @@
 #include "Core/Management/LoggingSystem.h"
 #include "Core/Structures/Cameras/NoClip/NoClip.h"
 
+
+#include <GLFW/glfw3.h>
+
 void ProcessInput(GLFWwindow* Window, LoggerClass *Logger_, ERS_OBJECT_CAMERA_NOCLIP *Camera, float DeltaTime);
