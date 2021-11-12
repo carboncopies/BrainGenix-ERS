@@ -26,6 +26,7 @@
 #include "../Structures/Cameras/NoClip/NoClip.h"
 #include "../Structures/Scene/Scene.h"
 #include "../Loader/Scene/SceneDecoder.h"
+#include "../Management/LoggingSystem.h"
 
 // Initialize
 bool FirstMouse = true;
