@@ -67,6 +67,3 @@ class ERS_OBJECT_MESH {
         void Draw(ERS_OBJECT_SHADER &Shader);
 
 };
-
-
-#include "Core/Structures/Meshes/Mesh.cpp"

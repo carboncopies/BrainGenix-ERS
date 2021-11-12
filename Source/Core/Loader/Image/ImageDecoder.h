@@ -54,5 +54,3 @@ class ImageDecoder {
 
 };
 
-
-#include "Core/Loader/Decoder/Image/ImageDecoder.cpp"

@@ -9,6 +9,9 @@
 */ 
 
 
+#include "Core/Structures/Meshes/Mesh.h"
+
+
 // Setup Mesh
 void ERS_OBJECT_MESH::SetupMesh() {
 
