@@ -137,7 +137,7 @@ add_executable(${PROJECT_NAME}
   ${SRC_DIR}/Core/Loader/Configuration/ConfigurationLoader.cpp
   ${SRC_DIR}/Core/Loader/Image/FileIO.cpp
   ${SRC_DIR}/Core/Loader/Image/FileIO.h
-  ${SRC_DIR}/Core/Loader/Image/
+  ${SRC_DIR}/Core/Loader/Image/ImageDecoder
   ${SRC_DIR}/Core/Management/LoggingSystem.cpp
   ${SRC_DIR}/Core/Management/LoggingSystem.h
   ${BACKWARD_ENABLE}
