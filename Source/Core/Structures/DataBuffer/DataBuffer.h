@@ -28,7 +28,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     void AddIntToBuffer(int Input, int ID) {
 
         Test.push_back(5);
-        IndexMap.push_back(IndexMap.size(), {{ID, Test.size()}})
+        IndexMap.insert(0, [ID, Test.size()])
 
     }
 
