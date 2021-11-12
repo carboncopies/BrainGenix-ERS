@@ -24,6 +24,8 @@ struct ERS_STRUCTURE_SCENE {
     std::string SceneVersion;
 
     // Scene Data
-    std::vector<YAML::Node> Subnodes;
+    long NumberSubnodes;
+    std::map<long, YAML::Node> Subnodes;
+
 
 };

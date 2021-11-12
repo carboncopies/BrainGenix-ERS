@@ -9,6 +9,7 @@
 */  
 
 #include <string>
+#include <map>
 #include <yaml-cpp/yaml.h>
 
 #include "Core/Structures/Scene/Scene.h"
