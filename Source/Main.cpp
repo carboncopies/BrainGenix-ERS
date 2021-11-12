@@ -8,7 +8,7 @@
     Date Created: 2021-11-01
 */
 
-#include "Core/Loader/Configuration/ConfigurationLoader.cpp"
+#include "Core/Loader/Configuration/ConfigurationLoader.h"
 #include "Core/Management/LoggingSystem.h"
 #include "Core/Renderer/Renderer.h"
 
