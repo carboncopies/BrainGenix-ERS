@@ -26,7 +26,9 @@ int main() {
 
     sERSLogger.Log("Initialized 'Management::Logger::LoggerClass'", 5);
 
-    YAML::Node Test = LoadScene(0, &sERSLogger, true);
+
+    ERS_STRUCTURE_SCENE Scene;
+    Scene.SceneData = LoadScene(0, &sERSLogger, true);
 
     // Initialize Renderer
     Renderer sERSRenderer;
