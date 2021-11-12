@@ -26,7 +26,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
     // Create Buffers
     std::map<long, long> IndexMap; // Stores as follows: {AssetID: Index In Vector}
-    std::vector<std::variant<ERS_STRUCTURE_SCENE, int>> Test;
+    std::vector<std::variant<ERS_STRUCTURE_SCENE, int>> StructureBuffer;
 
 
     // Initialize Buffer
@@ -48,15 +48,17 @@ struct ERS_STRUCTURE_DATA_BUFFER {
             Logger_->Log(std::string(std::string("Adding Asset To Data Buffer With Index: ") + std::to_string(ID)).c_str(), 7);
         }
 
-        Test.push_back(Input);
-        IndexMap.insert({ID, (long)Test.size()});
+        StructureBuffer.push_back(Input);
+        IndexMap.insert({ID, (long)StructureBuffer.size()});
 
     }
 
     // Get Data From Buffer
-    auto PullFromBuffer(long ID) {
+    auto* PullFromBuffer(long ID) {
 
-        // Get 
+        // Get Data From Buffer
+        long VectorIndex = IndexMap[ID];
+        return &StructureBuffer[VectorIndex];
 
     }
 
