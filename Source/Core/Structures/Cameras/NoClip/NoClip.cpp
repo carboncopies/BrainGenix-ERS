@@ -9,6 +9,8 @@
 */
 
 
+#include "Core/Structures/Cameras/NoClip/NoClip.h"
+
 glm::mat4 ERS_OBJECT_CAMERA_NOCLIP::GetViewMatrix() {
     return glm::lookAt(Position, Position + Front, Up);
 }

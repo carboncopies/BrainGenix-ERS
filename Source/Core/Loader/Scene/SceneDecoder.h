@@ -8,6 +8,8 @@
     Date Created: 2021-10-13
 */  
 
+#pragma once
+
 #include <string>
 #include <map>
 
