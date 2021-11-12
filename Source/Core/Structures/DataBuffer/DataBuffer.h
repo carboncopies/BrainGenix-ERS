@@ -24,12 +24,12 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     //std::vector<std::vector<int>, std::vector<float>> Test;
     //std::map<long, std::vector<int, int>> IndexMap; // Stores as follows: {AssetID: {Index Of Vector Stored In, Position In That Vector}}
 
-    std::vector<std::variant<int, float>> Test;
+    std::variant<int, float> Test;
 
     // Add Type
     void AddIntToBuffer(int Input, int ID) {
 
-        Test.push_back(std::in_place_index_t<0>{}, 5); 
+        Test = (float)<5.0>;
 
     }
 
