@@ -124,7 +124,7 @@ add_executable(${PROJECT_NAME}
   ${SRC_DIR}/Main.cpp
   ${SRC_DIR}/Core/Renderer/Renderer.cpp
   ${SRC_DIR}/Core/Renderer/Renderer.h
-  ${SRC_DIR}/Core/Structures/
+  ${SRC_DIR}/Core/Structures/Cameras/No
   ${BACKWARD_ENABLE}
   )
 target_include_directories(${PROJECT_NAME} PRIVATE Source)
