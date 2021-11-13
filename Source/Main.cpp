@@ -53,8 +53,8 @@ int main() {
     Logger_->Log("    +-----------------------------------------------------------------+", 4)
     Logger_->Log("    |     BrainGenix-NES Biological Neuron Simulation System          |", 4)
     Logger_->Log("    |     Version: {Version}                                              |", 4)
-    Logger_->Log("    |     Branch: {Branch}                                                 |', 4)
-    Logger_->Log('    |     Clustersize: {NodeCount}                                              |', 4)
+    Logger_->Log("    |     Branch: {Branch}                                                 |", 4)
+    Logger_->Log("    |     Clustersize: {NodeCount}                                              |', 4)
     Logger_->Log('    +-----------------------------------------------------------------+', 4)
     Logger_->Log('', 4)
 
