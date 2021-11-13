@@ -24,6 +24,9 @@ AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
 
     // Get Config Values
     DatabaseLoadingEnabled_ = (*SystemConfiguration_)["DatabaseLoadingEnabled"].as<bool>();
+    // TODO: ADD OTHER DB PARAMS HERE (SEE CONFIG FOR MORE INFO)
+    // TODO: ADD CONFIG STRING FOR LOCAL FILE ASSET PATH (ALSO ADD TO CONFIG FILE)
+
 
     // Log Initialization
     Logger_->Log("Initialized Asset Loader Class", 5);
