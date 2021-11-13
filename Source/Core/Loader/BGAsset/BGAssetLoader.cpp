@@ -81,6 +81,9 @@ void AssetLoader::LoadImage(long AssetID, YAML::Node Params) {
         // Load Image
         ERSImage Image = LoadImageFromFile(FilePath.c_str());
 
+        // Place Into Data Buffer
+        DataBuffer_.Add_ERS_OBJECT_IMAGE(Image, AssetID);
+
     }
 
 }
