@@ -44,8 +44,10 @@ int main() {
     ERS_OBJECT_SCENE TestScene = LoadScene(0, &sERSLogger, true);
     sERSAssetLoader.LoadSceneAssets(TestScene);
 
-
-
+    /*
+        SOMETHING IS HAPPENING HERE THAT CAUSES THE POINTERS IN THE ASSET LOADER TO VANISH - CAUSES NULL PTR... FIXME!
+    */
+    
     // Log Logo Text
     sERSLogger.Log("Starting BrainGenix-ERS Instance", 2);
     sERSLogger.Log("", 5);
