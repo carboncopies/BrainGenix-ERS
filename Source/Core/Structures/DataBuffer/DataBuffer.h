@@ -19,7 +19,7 @@
 #include "Core/Structures/Scene/Scene.h"
 #include "Core/Structures/Model/Model.h"
 
-
+#include <iostream>
 
 
 struct ERS_STRUCTURE_DATA_BUFFER {
