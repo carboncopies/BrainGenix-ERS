@@ -49,10 +49,10 @@ void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 
         // Get Attributes
         // long AssetID = (long)
-        Subnode["ID"].as<std::string>();
+        //Subnode["ID"].as<int>();
         std::string AssetType = Subnode["Type"].as<std::string>();
 
-        std::cout<<AssetID<<AssetType<<std::endl;
+        std::cout<<AssetType<<std::endl;
 
     }
 
