@@ -37,8 +37,8 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
     // Create Buffers
     std::map<long, VectorData> MetadataMap_;
-    std::vector<ERS_OBJECT_MODEL> ERS_OBJECT_MODEL_Vector_;
-    std::vector<ERS_OBJECT_SCENE> ERS_OBJECT_SCENE_Vector_;
+    std::vector<ERS_OBJECT_MODEL> ERS_OBJECT_MODEL_Vector_ = {};
+    std::vector<ERS_OBJECT_SCENE> ERS_OBJECT_SCENE_Vector_ = {};
 
 
 
