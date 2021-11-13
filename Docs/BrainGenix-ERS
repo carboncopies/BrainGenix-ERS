@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-12T07:23:41.756Z" agent="5.0 (X11)" etag="xKR_wEU3bfIClKeSg2Iz" version="15.7.0" type="github" pages="8">
+<mxfile host="app.diagrams.net" modified="2021-11-13T00:20:35.748Z" agent="5.0 (X11)" etag="SYS_e7u0zzOvF_m2dSps" version="15.7.0" type="github" pages="8">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2272" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -408,7 +408,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="Me3VujgAASuyeFERV7iZ" name="Engine Streaming System">
-    <mxGraphModel dx="981" dy="-471" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="813" dy="-579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="SORNEBXzX296p3ofjego-0" />
         <mxCell id="SORNEBXzX296p3ofjego-1" parent="SORNEBXzX296p3ofjego-0" />
@@ -713,6 +713,45 @@
         </mxCell>
         <mxCell id="ymFeAhp0DhXiGv6h24F2-14" value="&lt;div&gt;Name (std::string)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
           <mxGeometry x="2010" y="1430" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-18" value="&lt;h1&gt;Heading&lt;/h1&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="2560" y="1110" width="190" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-19" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="2570" y="1230" width="810" height="445" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-20" value="ERS Data Buffer" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="2570" y="1230" width="810" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-21" value="std::Vector (Model List)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="2620" y="1320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-22" value="std::Vector (Scene List)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="2760" y="1320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-25" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="3050" y="1280" width="310" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-26" value="std::map&amp;lt;long, VectorData&amp;gt; MetadataMap" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="3050" y="1280" width="310" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-27" value="long (GLOBAL ASSET ID)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="3080" y="1320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-28" value="struct VectorData (See Vector Data Struct)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="3210" y="1320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-29" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="3010" y="1422.5" width="350" height="137.5" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-30" value="std::string VectorLocation (string indicating which vector asset is in, eg: &quot;scene&quot; or &quot;model&quot;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="3030" y="1471.25" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-31" value="long VectorIndex (indicates position in vector)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="3220" y="1471.25" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-32" value="struct VectorData" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+          <mxGeometry x="3010" y="1422.5" width="350" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
