@@ -21,6 +21,6 @@ sERSSubSystem::sERSSubSystem(LoggerClass *Logger) {
     Logger_ = Logger;
 
     // Finish Initialization
-    Logger_.Log("Initialized Main Subsystem", 5);
+    Logger_->Log("Initialized Main Subsystem", 5);
 
 }
