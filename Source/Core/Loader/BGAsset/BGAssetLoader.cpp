@@ -21,6 +21,7 @@ AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
     // Copy Pointer
     Logger_ = Logger;
     SystemConfiguration_ = SystemConfiguration;
+    DataBuffer_ = DataBuffer;
 
     // Get Config Values
     DatabaseLoadingEnabled_ = (*SystemConfiguration_)["DatabaseLoadingEnabled"].as<bool>();
