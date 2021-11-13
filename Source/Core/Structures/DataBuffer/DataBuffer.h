@@ -18,7 +18,7 @@
 
 #include "Core/Structures/Scene/Scene.h"
 #include "Core/Structures/Model/Model.h"
-
+#include "Core/Loader/Image/ImageDecoder.h"
 
 
 struct ERS_STRUCTURE_DATA_BUFFER {
