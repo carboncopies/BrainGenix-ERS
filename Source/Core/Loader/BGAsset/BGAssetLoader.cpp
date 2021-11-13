@@ -9,3 +9,14 @@
 */ 
 
 #include "BGAssetLoader.h"
+
+
+
+// Asset Loader Constructor
+AssetLoader::AssetLoader(LoggerClass *Logger) {
+
+    // Copy Pointer
+    Logger_ = Logger;
+    
+
+}
