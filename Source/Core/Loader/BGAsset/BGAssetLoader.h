@@ -29,6 +29,9 @@ class AssetLoader {
         // Configuration Vars
         bool DatabaseLoadingEnabled_;
 
+        // Loading Methods
+        void LoadImage(long AssetID, YAML::Node Params);
+
     public:
 
         // Constructor

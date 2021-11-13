@@ -49,11 +49,24 @@ void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
         YAML::Node Subnode = InputScene.Subnodes[i];
 
         // Get Attributes
-        //long AssetID = Subnode["ID"].as<long>();
-        //std::string AssetType = Subnode["Type"].as<std::string>();
+        long AssetID = Subnode["ID"].as<long>();
+        std::string AssetType = Subnode["Type"].as<std::string>();
+
+        // Load Asset
+        if (AssetType == "Image") {
+
+            
+
+        }
 
     }
 
+}
+
+// Load Image
+void AssetLoader::LoadImage(long AssetID, YAML::Node Params) {
+
+    
 }
 
 // Returns All Models Loaded In The Asset Buffer And Marked To Be Drawn
