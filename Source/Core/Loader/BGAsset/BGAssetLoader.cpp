@@ -145,11 +145,14 @@ void AssetLoader::LoadImage(long AssetID, YAML::Node Params) { // MAKE SURE TO C
         FilePath += std::to_string(AssetID);
         FilePath += std::string(".bg");
 
+        // Get Asset Path
+        std::string Path = Params["Path"].as<std::string>();
+
         // Load Image
         ERSImage Image = ImageDecoder_.LoadImageFromFile(FilePath.c_str());
 
         // Place Into Data Buffer
-        DataBuffer_.Add_ERS_OBJECT_IMAGE(Image, AssetID);
+        DataBuffer_.Add_ERS_OBJECT_IMAGE(Image, AssetID, Path);
 
     }
 
