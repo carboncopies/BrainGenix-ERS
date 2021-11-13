@@ -73,7 +73,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
         // Log Model Loading
         if (Logger_ != nullptr) {
-            Logger_->Log(std::string(std::string("Adding ERS_OBJECT_MODEL Asset To Data Buffer With Global Asset ID: ") + std::to_string(AssetID)).c_str(), 7);
+            Logger_->Log(std::string(std::string("Adding ERS_OBJECT_MODEL Asset To Data Buffer With Global Asset ID: ") + std::to_string(AssetID)).c_str(), 4);
         }
 
     }
@@ -91,7 +91,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
         // Log Scene Loading
         if (Logger_ != nullptr) {
-            Logger_->Log(std::string(std::string("Adding ERS_OBJECT_SCENE Asset To Data Buffer With Global Asset ID: ") + std::to_string(AssetID)).c_str(), 7);
+            Logger_->Log(std::string(std::string("Adding ERS_OBJECT_SCENE Asset To Data Buffer With Global Asset ID: ") + std::to_string(AssetID)).c_str(), 4);
         }
 
     }
@@ -109,7 +109,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
         // Log Scene Loading
         if (Logger_ != nullptr) {
-            Logger_->Log(std::string(std::string("Adding ERS_OBJECT_IMAGE Asset To Data Buffer With Global Asset ID: ") + std::to_string(AssetID)).c_str(), 7);
+            Logger_->Log(std::string(std::string("Adding ERS_OBJECT_IMAGE Asset To Data Buffer With Global Asset ID: ") + std::to_string(AssetID)).c_str(), 4);
         }
 
     }
