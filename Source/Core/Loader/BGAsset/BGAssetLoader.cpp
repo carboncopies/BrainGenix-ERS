@@ -72,5 +72,3 @@ std::vector<ERS_OBJECT_MODEL*> AssetLoader::GetModelsToDraw() {
 
 
 };
-
-// Read Scene -> Load Images/etc [load model last] -> Push into data buffer
