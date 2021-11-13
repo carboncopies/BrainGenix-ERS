@@ -63,7 +63,7 @@ std::vector<ERS_OBJECT_MODEL*> AssetLoader::GetModelsToDraw() {
     std::vector<ERS_OBJECT_MODEL*> ModelPointers;
 
     // Get Struct Data
-    for (long i = 0; i < size(DataBuffer_.ERS_OBJECT_MODEL_Vector_); i++) {
+    for (long i = 0; i < (long)size(DataBuffer_.ERS_OBJECT_MODEL_Vector_); i++) {
         ModelPointers.push_back(&DataBuffer_.ERS_OBJECT_MODEL_Vector_[i]);
     }
 
