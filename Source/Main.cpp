@@ -32,7 +32,7 @@ int main() {
     sERSLogger.Log("Initialized 'Management::Logger::LoggerClass'", 5);
 
     // Initialize System
-    sERSMainSubsystem sERSSubSystem(*sERSLogger);
+    sERSSubsystem sERSMainSubSystem(*sERSLogger);
 
 
     // Initialize Renderer

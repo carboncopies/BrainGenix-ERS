@@ -18,7 +18,7 @@ sERSSubSystem::sERSSubSystem(LoggerClass *Logger) {
     Logger->Log("Initializing Main Subsystem", 6);
 
     // Copy Pointer
-    *Logger_ = Logger;
+    Logger_ = Logger;
 
     // Finish Initialization
     Logger_.Log("Initialized Main Subsystem", 5);
