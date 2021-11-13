@@ -38,6 +38,13 @@ sERSSubSystem::~sERSSubSystem() {
 
 }
 
+// Main Update Loop
+void sERSSubSystem::UpdateRenderers() {
+
+    // Update Visual Renderer
+    VisualRenderer_.UpdateLoop();
+
+}
 
 // Initialize Renderers
 void sERSSubSystem::InitializeRenderers() {

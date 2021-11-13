@@ -63,10 +63,11 @@ int main() {
     bool SystemShouldRun = true;
     while (SystemShouldRun) {
 
-        SystemShouldRun = 
+        sERSMainSubSystem.UpdateRenderers()
 
     }
 
-
+    // Program Exit (Destructors Automatically Called)
+    return 0;
 
 }

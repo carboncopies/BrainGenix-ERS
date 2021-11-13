@@ -39,8 +39,6 @@ class sERSSubSystem {
         void InitializeRenderers();
 
         // Update Renderers
-        void UpdateRenderers() {
-
-        }
+        void UpdateRenderers();
 
 };
