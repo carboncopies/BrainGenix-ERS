@@ -27,6 +27,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     struct VectorData {
 
         std::string AssetType; // Stores Type Of Object, EG: "ERS_OBJECT_MODEL" or "ERS_OBJECT_SCENE"
+        std::string AssetPath; // Optional string that contains info about the "path"
         long VectorIndex; // Stores Position In Given Vector
 
     };
@@ -96,7 +97,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
     }
 
-    void Add_ERS_OBJECT_IMAGE(ERSImage Input, long AssetID) {
+    void Add_ERS_OBJECT_IMAGE(ERSImage Input, long AssetID, std::string AssetPath) {
 
         // Add Image To Buffer
         ERS_OBJECT_IMAGE_Vector_.push_back(Input);
@@ -104,6 +105,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
         VectorData AssetData;
         AssetData.AssetType = "ERS_OBJECT_IMAGE";
         AssetData.VectorIndex = (long)ERS_OBJECT_IMAGE_Vector_.size()-1;
+        AssetData.AssetPath = AssetPath;
 
         MetadataMap_.insert({AssetID, AssetData});
 
