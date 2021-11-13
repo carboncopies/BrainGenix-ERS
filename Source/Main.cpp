@@ -38,7 +38,7 @@ int main() {
     sERSMainSubSystem.InitializeRenderers();
 
     // Initialize Asset Loader System
-    BGAssetLoader sERSAssetLoader(&sERSLogger, &SystemConfiguration);
+    AssetLoader sERSAssetLoader(&sERSLogger, &SystemConfiguration);
 
 
     // Log Logo Text
