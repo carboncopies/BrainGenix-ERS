@@ -34,9 +34,8 @@ class AssetLoader {
         // Constructor
         AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration);
 
-        // Destructor
-        ~AssetLoader() {
-            Logger_->Log("Asset Loader Destructor Called", 7);
+        void Test() {
+            Logger_->("Test", 10);
         }
 
         // Load Assets From Scene
