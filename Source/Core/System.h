@@ -21,6 +21,7 @@ class sERSSubSystem {
         LoggerClass *Logger_;
         YAML::Node *SystemConfiguration_;
         bool *SystemShouldRun_;
+        AssetLoader *AssetLoader_;
 
 
         // Renderer Related Vars
@@ -30,7 +31,7 @@ class sERSSubSystem {
     public:
 
         // Constructor
-        sERSSubSystem(LoggerClass *Logger, YAML::Node *SystemConfiguration, bool *SystemShouldRun);
+        sERSSubSystem(LoggerClass *Logger, YAML::Node *SystemConfiguration, bool *SystemShouldRun, AssetLoader *AssetLoader);
 
         // Destructor
         ~sERSSubSystem();

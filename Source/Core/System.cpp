@@ -12,7 +12,7 @@
 
 
 // Constructor
-sERSSubSystem::sERSSubSystem(LoggerClass *Logger, YAML::Node *SystemConfiguration, bool *SystemShouldRun) {
+sERSSubSystem::sERSSubSystem(LoggerClass *Logger, YAML::Node *SystemConfiguration, bool *SystemShouldRun, AssetLoader *AssetLoader) {
 
     // Start Initialization
     Logger->Log("Initializing Main Subsystem", 6);
@@ -21,6 +21,7 @@ sERSSubSystem::sERSSubSystem(LoggerClass *Logger, YAML::Node *SystemConfiguratio
     Logger_ = Logger;
     SystemConfiguration_ = SystemConfiguration;
     SystemShouldRun_ = SystemShouldRun;
+    AssetLoader_ = AssetLoader;
 
     // Finish Initialization
     Logger_->Log("Initialized Main Subsystem", 5);
