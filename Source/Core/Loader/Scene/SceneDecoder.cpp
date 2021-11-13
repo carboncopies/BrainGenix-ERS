@@ -57,7 +57,7 @@ ERS_OBJECT_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading)
 
     int i = 1;
     for (YAML::const_iterator it=SubnodesMap.begin(); it!=SubnodesMap.end(); ++it) {
-        long V1 = it->second["ID"].as<int>();
+        int V1 = it->second["ID"].as<int>();
         YAML::Node V2 = it->second;
         Subnodes[V1] = {V2};
 
