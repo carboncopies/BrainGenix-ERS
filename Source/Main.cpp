@@ -33,24 +33,22 @@ int main() {
 
     // Initialize Data Buffer
     ERS_STRUCTURE_DATA_BUFFER sERSDataBuffer;
-    std::cout<<sERSDataBuffer.GetNumberObjectModels()<<std::endl;
     sERSDataBuffer.Init(&sERSLogger);
-    std::cout<<sERSDataBuffer.GetNumberObjectModels()<<std::endl;
 
     // Initialize Asset Loader System
     AssetLoader sERSAssetLoader(&sERSLogger, &SystemConfiguration, &sERSDataBuffer);
-std::cout<<sERSDataBuffer.GetNumberObjectModels()<<std::endl;
+
     // Initialize System
     sERSSubSystem sERSMainSubSystem(&sERSLogger, &SystemConfiguration, &SystemShouldRun, &sERSAssetLoader);
-std::cout<<sERSDataBuffer.GetNumberObjectModels()<<std::endl;
+
     // Initialize Renderers
     sERSMainSubSystem.InitializeRenderers();
-std::cout<<sERSDataBuffer.GetNumberObjectModels()<<std::endl;
+
     // Load In Model (TESTING - REMOVE THIS LATER AND MAKE A PROPER SOLUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!)
     ERS_OBJECT_SCENE TestScene = LoadScene(0, &sERSLogger, true);
     sERSAssetLoader.LoadSceneAssets(TestScene);
 
-std::cout<<sERSDataBuffer.GetNumberObjectModels()<<std::endl;
+
 
     // Log Logo Text
     sERSLogger.Log("Starting BrainGenix-ERS Instance", 2);

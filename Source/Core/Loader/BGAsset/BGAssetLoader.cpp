@@ -25,7 +25,7 @@ AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration, E
     SystemConfiguration_ = SystemConfiguration;
     DataBuffer_ = DataBuffer;
 
-    std::cout<<"test: "<<DataBuffer_->GetNumberObjectModels()<<std::endl;
+    
 
     // Get Config Values
     DatabaseLoadingEnabled_ = (*SystemConfiguration_)["DatabaseLoadingEnabled"].as<bool>();
