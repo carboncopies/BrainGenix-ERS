@@ -65,7 +65,7 @@ AssetLoader::~AssetLoader() {
 // Read Scene Subnodes And Load Models/Textures Requested By That Scene
 void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 
-    // Iterate Through Scene Data
+    // Iterate Through Scene Data, Load Non-Essential Assets (EG No Dependencies such as Images)
     for (long i = 0; i < (long)size(InputScene.Subnodes); i++) {
 
         // Get Subnode
