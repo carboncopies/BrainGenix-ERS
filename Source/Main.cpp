@@ -12,11 +12,7 @@
 #include "Core/Management/LoggingSystem.h"
 #include "Core/Renderer/Renderer.h"
 
-#define PROJECT_NAME "@PROJECT_NAME@"
-#define PROJECT_VERSION  "@PROJECT_VERSION@"
-#define PROJECT_VERSION_MAJOR "@PROJECT_VERSION_MAJOR@"
-#define PROJECT_VERSION_MINOR "@PROJECT_VERSION_MINOR@"
-#define PTOJECT_VERSION_PATCH "@PROJECT_VERSION_PATCH@"
+
 
 int main() {
 
