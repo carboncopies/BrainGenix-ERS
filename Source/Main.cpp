@@ -11,6 +11,7 @@
 #include "Core/Loader/Configuration/ConfigurationLoader.h"
 #include "Core/Management/LoggingSystem.h"
 #include "Core/Renderer/Renderer.h"
+#include "Core/System.cpp"
 
 #include "Core/Version.h"
 
@@ -30,6 +31,8 @@ int main() {
 
     sERSLogger.Log("Initialized 'Management::Logger::LoggerClass'", 5);
 
+    // Initialize System
+    sERSMainSubsystem sERSSubSystem(*sERSLogger);
 
 
     // Initialize Renderer

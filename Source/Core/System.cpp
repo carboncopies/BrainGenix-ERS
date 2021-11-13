@@ -8,4 +8,19 @@
     Date Created: 2021-11-12
 */
 
+#include "Core/System.h"
 
+
+// Constructor
+sERSSubSystem::sERSSubSystem(LoggerClass *Logger) {
+
+    // Start Initialization
+    Logger->Log("Initializing Main Subsystem", 6);
+
+    // Copy Pointer
+    *Logger_ = Logger;
+
+    // Finish Initialization
+    Logger_.Log("Initialized Main Subsystem", 5);
+
+}
