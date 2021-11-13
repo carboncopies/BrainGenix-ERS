@@ -24,13 +24,13 @@ class AssetLoader {
         // Init Vars
         LoggerClass *Logger_;
         YAML::Node *SystemConfiguration_;
-        
+        ERS_STRUCTURE_DATA_BUFFER *DataBuffer_;
 
         // Configuration Vars
         bool DatabaseLoadingEnabled_;
 
     public:
-        ERS_STRUCTURE_DATA_BUFFER *DataBuffer_;
+
         // Constructor
         AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration, ERS_STRUCTURE_DATA_BUFFER *DataBuffer);
 
