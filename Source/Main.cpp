@@ -37,6 +37,10 @@ int main() {
     sERSRenderer.InitializeRenderer(&SystemConfiguration, &sERSLogger);
     sERSLogger.Log("Initialized Renderer", 5);
 
+
+
+
+
     // Enter Main Loop
     bool SystemShouldRun = true;
     while (SystemShouldRun) {
