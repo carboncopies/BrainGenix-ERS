@@ -56,6 +56,9 @@ void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 // Returns All Models Loaded In The Asset Buffer And Marked To Be Drawn
 std::vector<ERS_OBJECT_MODEL*> AssetLoader::GetModelsToDraw() {
 
+    std::vector<int> Test;
+    std::cout<<Test.size();<<std::endl;
+
     // Create Pointer Vector
     std::vector<ERS_OBJECT_MODEL*> ModelPointers;
     std::cout<<DataBuffer_->ERS_OBJECT_MODEL_Vector_.size()<<std::endl;
