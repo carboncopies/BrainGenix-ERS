@@ -34,10 +34,6 @@ class AssetLoader {
         // Constructor
         AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration);
 
-        void Test() {
-            Logger_->Log("Test", 10);
-        }
-
         // Load Assets From Scene
         void LoadSceneAssets(ERS_OBJECT_SCENE InputScene);
 
