@@ -53,6 +53,7 @@ ERS_OBJECT_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading)
     // Parse Scene Subnodes
     YAML::Node SubnodesMap = Scene.SceneData["Subnodes"];
     for (YAML::const_iterator it=SubnodesMap.begin(); it!=SubnodesMap.end(); ++it) {
+        std::cout<<it->second["ID"].as<long>()<<std::endl;
         Scene.Subnodes[it->second["ID"].as<long>()] = {
             it->second
         };
