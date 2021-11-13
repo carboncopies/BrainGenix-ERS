@@ -33,7 +33,6 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
     // Internal Vars
     LoggerClass *Logger_ = nullptr;
-    bool LoggerInitialized_ = false;
 
     // Create Buffers
     std::map<long, VectorData> MetadataMap_;
@@ -47,7 +46,6 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
         // Copy Pointer To The Logger
         Logger_ = Logger;
-        LoggerInitialized_ = true;
 
         // Log System Initialization
         Logger_->Log("Initialized ERS Data Buffer", 6);
@@ -59,8 +57,17 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
         // Add Model To Buffer
         ERS_OBJECT_MODEL_Vector_.push_back(Input);
-        MetadataMap_.insert()
 
+        VectorData AssetData;
+        AssetData.AssetType = "ERS_OBJECT_MODEL";
+        AssetData.VectorIndex = (long)ERS_OBJECT_MODEL_Vector_.size()-1;
+
+        MetadataMap_.insert({AssetID, AssetData});
+
+        // Log Model Loading
+        if (Logger_ != nullptr) {
+            Logger_->Log("");
+        }
 
     }
 
