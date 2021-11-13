@@ -27,7 +27,7 @@ int main() {
     LoggerClass sERSLogger;
     sERSLogger.InitializeLogger(SystemConfiguration);
 
-    sERSLogger.Log("Initialized "Management::Logger::LoggerClass'", 5);
+    sERSLogger.Log("Initialized "Management::Logger::LoggerClass"", 5);
 
 
 
@@ -48,7 +48,7 @@ int main() {
     Logger_->Log("\x1b[38;2;0;128;55m██╔══██╗██╔══██╗██╔══██║██║██║╚██╗██║\x1b[38;2;130;68;208m██║   ██║██╔══╝  ██║╚██╗██║██║ ██╔██╗ ", 5)
     Logger_->Log("\x1b[38;2;0;128;55m██████╔╝██║  ██║██║  ██║██║██║ ╚████║\x1b[38;2;130;68;208m╚██████╔╝███████╗██║ ╚████║██║██╔╝ ██╗", 5)
     Logger_->Log("\x1b[38;2;0;128;55m╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝\x1b[38;2;130;68;208m ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝", 5)
-    Logger_->Log('---------------------------------------------------------------------------', 5)
+    Logger_->Log("---------------------------------------------------------------------------', 5)
     Logger_->Log('', 5)
     Logger_->Log('    +-----------------------------------------------------------------+', 4)
     Logger_->Log('    |     BrainGenix-NES Biological Neuron Simulation System          |', 4)
