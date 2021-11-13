@@ -15,7 +15,7 @@
 ////////////////////////
 
 // Asset Loader Constructor
-AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
+AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration, ERS_STRUCTURE_DATA_BUFFER *DataBuffer) {
 
     // Initialization Start
     Logger->Log("Initializing Asset Loader Class", 6);
