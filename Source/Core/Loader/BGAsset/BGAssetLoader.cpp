@@ -39,16 +39,16 @@ AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration, E
 // Read Scene Subnodes And Load Models/Textures Requested By That Scene
 void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 
-    std::cout<<"test";
-
     // Iterate Through Scene Data
     for (long i = 0; i < (long)InputScene.NumberSubnodes; i++) {
+
+        std::cout<<"test\n";
 
         // Get Subnode
         YAML::Node Subnode = InputScene.Subnodes[i];
 
         // Get Attributes
-        long AssetID = Subnode["ID"].as<long>();
+        long AssetID = (long)Subnode["ID"].as<int>();
         std::string AssetType = Subnode["Type"].as<std::string>();
 
         std::cout<<AssetID<<AssetType<<std::endl;
