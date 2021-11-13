@@ -63,7 +63,7 @@ int main() {
     bool SystemShouldRun = true;
     while (SystemShouldRun) {
 
-        sERSMainSubSystem.UpdateRenderers()
+        sERSMainSubSystem.UpdateRenderers();
 
     }
 
