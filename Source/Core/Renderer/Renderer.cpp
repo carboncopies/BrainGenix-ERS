@@ -161,7 +161,7 @@ void Renderer::UpdateLoop() {
     // Check If System Should Shutdown
     if (glfwWindowShouldClose(Window_)) {
         Logger_->Log("System Shutdown Invoked By LocalWindow", 2);
-        *SystemShouldRun = false;
+        *SystemShouldRun_ = false;
     }
 
 
