@@ -67,7 +67,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
         // Log Model Loading
         if (Logger_ != nullptr) {
-            Logger_->Log(std::string(std::string("Adding ERS_OBJECT_MODEL Asset To Data Buffer With Global Asset ID: ") + std::to_str(AssetID)).c_str(), 7);
+            Logger_->Log(std::string(std::string("Adding ERS_OBJECT_MODEL Asset To Data Buffer With Global Asset ID: ") + std::to_string(AssetID)).c_str(), 7);
         }
 
     }
