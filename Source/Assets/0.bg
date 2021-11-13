@@ -9,6 +9,7 @@ Subnodes:
         ID: 1
         Name: "Test"
         Type: "Model"
+        Path: ""
         Position:
             X: 0.0
             Y: 0.0
@@ -23,6 +24,7 @@ Subnodes:
             Z: 1.0
     1: 
         ID: 2
-        Name: "1/texture_1001.png"
+        Name: "Test Texture"
+        Path: "1/texture_1001.png"
         Type: "Image"
         Format: -1 # Add this later... (during encoding)
