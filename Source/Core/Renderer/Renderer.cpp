@@ -22,6 +22,7 @@ void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *
     SystemConfiguration_ = SystemConfiguration;
     Logger_ = Logger;
     SystemShouldRun_ = SystemShouldRun;
+    AssetLoader_ = AssetLoader;
 
     // Initialize Systems
     Logger_->Log("Initializing GLFW", 5);
