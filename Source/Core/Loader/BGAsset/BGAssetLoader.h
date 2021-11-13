@@ -40,4 +40,8 @@ class AssetLoader {
         // Return Models To Be Drawn
         std::vector<ERS_OBJECT_MODEL*> GetModelsToDraw();
 
+        int Test() {
+            return 5;
+        }
+
 };
