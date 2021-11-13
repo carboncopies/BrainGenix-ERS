@@ -28,3 +28,28 @@ Subnodes:
         Path: "1/texture_1001.png"
         Type: "Image"
         Format: -1 # Add this later... (during encoding)
+
+    2: 
+        ID: 3
+        Name: "Test Texture"
+        Path: "1/texture_1002.png"
+        Type: "Image"
+        Format: -1 # Add this later... (during encoding)
+    3: 
+        ID: 4
+        Name: "Test Texture"
+        Path: "1/texture_1003.png"
+        Type: "Image"
+        Format: -1 # Add this later... (during encoding)
+    4: 
+        ID: 5
+        Name: "Test Texture"
+        Path: "1/texture_1004.png"
+        Type: "Image"
+        Format: -1 # Add this later... (during encoding)
+    5: 
+        ID: 6
+        Name: "Test Texture"
+        Path: "1/texture_1005.png"
+        Type: "Image"
+        Format: -1 # Add this later... (during encoding)
