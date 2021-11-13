@@ -10,7 +10,7 @@
 
 #include "Core/Loader/Scene/SceneDecoder.h"
 
-ERS_STRUCTURE_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading) {
+ERS_OBJECT_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading) {
 
     // Initialize Vars
     ERS_STRUCTURE_SCENE Scene;
