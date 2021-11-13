@@ -26,6 +26,9 @@ AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
 
     // Initialize Data Buffer
     DataBuffer_.Init(Logger_);
+
+    // Iniitalize Image Loader (THIS SHOULD BE THREADS LATER ON...)
+    ImageDecoder_.Initialize(Logger_);
     
 
     // Get Config Values
@@ -38,6 +41,21 @@ AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
     Logger_->Log("Initialized Asset Loader Class", 5);
 
 }
+
+// Destructor
+AssetLoader::~AssetLoader() {
+
+    // Log Call
+    Logger_->Log("Destructor Called For AssetLoader, Cleaning Up", 6);
+
+    // Uninit ImageDecoder
+    ImageDecoder_.Cleanup();
+
+    // Uninit ERS Data Buffer
+        // ADD ME LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+}
+
 
 // Read Scene Subnodes And Load Models/Textures Requested By That Scene
 void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {

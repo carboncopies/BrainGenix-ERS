@@ -26,6 +26,7 @@ class AssetLoader {
         LoggerClass *Logger_;
         YAML::Node *SystemConfiguration_;
         ERS_STRUCTURE_DATA_BUFFER DataBuffer_;
+        ImageDecoder ImageDecoder_;
 
         // Configuration Vars
         bool DatabaseLoadingEnabled_;
@@ -37,6 +38,9 @@ class AssetLoader {
 
         // Constructor
         AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration);
+
+        // Destructor
+        ~AssetLoader();
 
         // Load Assets From Scene
         void LoadSceneAssets(ERS_OBJECT_SCENE InputScene);
