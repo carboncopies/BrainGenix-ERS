@@ -19,7 +19,6 @@
 #include "Core/Structures/Scene/Scene.h"
 #include "Core/Structures/Model/Model.h"
 
-#include <iostream>
 
 
 struct ERS_STRUCTURE_DATA_BUFFER {
@@ -39,7 +38,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     std::map<long, VectorData> MetadataMap_;
     std::vector<ERS_OBJECT_MODEL> ERS_OBJECT_MODEL_Vector_ = {}; // THIS IS ERRONEOUSLY LARGE (WHEN USING SIZE FUNCTION, FIGRE OUT WHAT's GOING ON HERE!)
     std::vector<ERS_OBJECT_SCENE> ERS_OBJECT_SCENE_Vector_ = {};
-    std::cout<<ERS_OBJECT_MODEL_Vector_.size()<<std::endl;
+
 
 
 
