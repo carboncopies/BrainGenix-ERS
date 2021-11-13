@@ -17,7 +17,7 @@ sERSSubSystem::sERSSubSystem(LoggerClass *Logger, YAML::Node *SystemConfiguratio
     // Start Initialization
     Logger->Log("Initializing Main Subsystem", 6);
 
-    // Copy Pointer
+    // Copy Pointers
     Logger_ = Logger;
     SystemConfiguration_ = SystemConfiguration;
     SystemShouldRun_ = SystemShouldRun;
@@ -52,7 +52,7 @@ void sERSSubSystem::InitializeRenderers() {
 
     // Initialize Renderer
     Logger_->Log("Initializing Renderer", 5);
-    VisualRenderer_.InitializeRenderer(SystemConfiguration_, Logger_, SystemShouldRun_);
+    VisualRenderer_.InitializeRenderer(SystemConfiguration_, Logger_, SystemShouldRun_, AssetLoader_);
     Logger_->Log("Initialized Renderer", 5);
 
 }
