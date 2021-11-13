@@ -45,6 +45,10 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
     }
 
+    int Test() {
+        return 5;
+    }
+
 
     // Initialize Buffer
     void Init( LoggerClass *Logger) {
