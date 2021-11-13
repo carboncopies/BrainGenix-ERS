@@ -12,7 +12,11 @@
 #include "Core/Management/LoggingSystem.h"
 #include "Core/Renderer/Renderer.h"
 
-
+#define PROJECT_NAME "@PROJECT_NAME@"
+#define PROJECT_VERSION  "@PROJECT_VERSION@"
+#define PROJECT_VERSION_MAJOR "@PROJECT_VERSION_MAJOR@"
+#define PROJECT_VERSION_MINOR "@PROJECT_VERSION_MINOR@"
+#define PTOJECT_VERSION_PATCH "@PROJECT_VERSION_PATCH@"
 
 int main() {
 
@@ -52,7 +56,7 @@ int main() {
     sERSLogger.Log("", 5);
     sERSLogger.Log("    +-----------------------------------------------------------------+", 4);
     sERSLogger.Log("    |     BrainGenix-ERS Real-Time Environment Rendering System       |", 4);
-    sERSLogger.Log("    |     Version: {Version}                                              |", 4);
+    sERSLogger.Log(std::string(std::string("    |     Version:") + std::to_string(PROJECT_VERSION) + std::string("                                              |")).c_str(), 4);
     sERSLogger.Log("    |     Branch: {Branch}                                                 |", 4);
     sERSLogger.Log("    |     Clustersize: {NodeCount}                                              |", 4);
     sERSLogger.Log("    +-----------------------------------------------------------------+", 4);
