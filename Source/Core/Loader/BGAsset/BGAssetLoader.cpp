@@ -32,10 +32,10 @@ AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
     
 
     // Get Config Values
-    Logger_->Log("Reading Configuration File For 'DatabaseLoadingEnabled' Parameter", 1)
+    Logger_->Log("Reading Configuration File For 'DatabaseLoadingEnabled' Parameter", 1);
     DatabaseLoadingEnabled_ = (*SystemConfiguration_)["DatabaseLoadingEnabled"].as<bool>();
 
-    Logger_->Log("Reading Configuration File For 'AssetPath' Parameter", 1)
+    Logger_->Log("Reading Configuration File For 'AssetPath' Parameter", 1);
     AssetPath_ = (*SystemConfiguration_)["AssetPath"].as<std::string>();
 
     // TODO: ADD OTHER DB PARAMS HERE (SEE CONFIG FOR MORE INFO)
