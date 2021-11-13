@@ -92,7 +92,7 @@ class Renderer {
 
         ERS_OBJECT_SHADER Shader_;
         ERS_OBJECT_MODEL Model_;
-        ERS_OBJECT_SCENE Scene_;
+
 
 
 
