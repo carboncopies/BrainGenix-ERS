@@ -13,6 +13,15 @@ MaxFramesInFlight: 2
 EnableDebugLogging: True # To Be added Later <-- https://vulkan-tutorial.com/en/Drawing_a_triangle/Setup/Validation_layers
 
 
+# Database Loading Settings #
+DatabaseLoadingEnabled: False
+DatabaseHost: "127.0.0.1" # FIX ME
+DatabasePort: 1 # FIX ME
+DatabaseUser: "" # FIX ME
+DatabaseName: "" # FIX ME
+DatabasePassword: "" # FIX ME
+
+
 # Set Logger Configuration Parameters #
 EnablePrintOutput: True
 EnableDatabaseOutput: False
