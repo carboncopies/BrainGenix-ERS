@@ -30,10 +30,6 @@ int main() {
     sERSLogger.Log("Initialized 'Management::Logger::LoggerClass'", 5);
 
 
-    // ERS_STRUCTURE_DATA_BUFFER Test;
-    // Test.Init(&sERSLogger);
-    // Test.AddToBuffer((long)1, 0);
-    // std::cout<<*Test.PullFromBuffer(0)<<std::endl;
 
     // Initialize Renderer
     Renderer sERSRenderer;
