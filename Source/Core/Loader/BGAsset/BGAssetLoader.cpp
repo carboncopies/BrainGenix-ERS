@@ -40,7 +40,7 @@ AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration, E
 void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 
     // Iterate Through Scene Data
-    for (long i = 0; i < (long)InputScene.NumberSubnodes; i++) {
+    for (long i = 0; i < (long)size(InputScene.Subnodes); i++) {
 
 
 
