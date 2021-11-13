@@ -79,7 +79,7 @@ void AssetLoader::LoadImage(long AssetID, YAML::Node Params) {
         FilePath += std::string(".bg");
 
         // Load Image
-        
+        ERSImage Image = LoadImageFromFile(FilePath.c_str());
 
     }
 

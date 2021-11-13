@@ -36,8 +36,9 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
     // Create Buffers
     std::map<long, VectorData> MetadataMap_;
-    std::vector<ERS_OBJECT_MODEL> ERS_OBJECT_MODEL_Vector_; // THIS IS ERRONEOUSLY LARGE (WHEN USING SIZE FUNCTION, FIGRE OUT WHAT's GOING ON HERE!)
+    std::vector<ERS_OBJECT_MODEL> ERS_OBJECT_MODEL_Vector_;
     std::vector<ERS_OBJECT_SCENE> ERS_OBJECT_SCENE_Vector_;
+    std::vector<ERSImage> ERS_OBJECT_IMAGE_Vector_;
     int TestVar = 5;
 
     // Return Number Of Elements In Model Vector
@@ -95,6 +96,23 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
     }
 
+    void Add_ERS_OBJECT_IMAGE(ERSImage Input, long AssetID) {
+
+        // Add Image To Buffer
+        ERS_OBJECT_IMAGE_Vector_.push_back(Input);
+
+        VectorData AssetData;
+        AssetData.AssetType = "ERS_OBJECT_IMAGE";
+        AssetData.VectorIndex = (long)ERS_OBJECT_IMAGE_Vector_.size()-1;
+
+        MetadataMap_.insert({AssetID, AssetData});
+
+        // Log Scene Loading
+        if (Logger_ != nullptr) {
+            Logger_->Log(std::string(std::string("Adding ERS_OBJECT_IMAGE Asset To Data Buffer With Global Asset ID: ") + std::to_string(AssetID)).c_str(), 7);
+        }
+
+    }
 
 
 };
