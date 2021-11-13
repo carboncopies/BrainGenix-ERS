@@ -19,7 +19,7 @@ class sERSSubSystem {
 
         // Internal Vars
         LoggerClass *Logger_;
-        YAML::Node *SystemConfiguration_
+        YAML::Node *SystemConfiguration_;
 
 
         // Renderer Related Vars
