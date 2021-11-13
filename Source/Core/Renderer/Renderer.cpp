@@ -147,7 +147,7 @@ void Renderer::UpdateLoop() {
         model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
         model = glm::rotate(model, glm::radians(-0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
         Shader_.SetMat4("model", model);
-        *LoadedModelPointers[i]-0Draw(Shader_);
+        LoadedModelPointers[i]->Draw(Shader_);
 
     };
 
