@@ -35,7 +35,7 @@ class AssetLoader {
         AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration);
 
         void Test() {
-            Logger_->("Test", 10);
+            Logger_->Log("Test", 10);
         }
 
         // Load Assets From Scene
