@@ -113,6 +113,8 @@ void Renderer::InitializeOpenGL() {
 
 void Renderer::UpdateLoop() { 
 
+    std::cout<<"Test\n";
+
     // Update DeltaTime
     float CurrentTime = glfwGetTime();
     DeltaTime = CurrentTime - LastFrame;
