@@ -20,7 +20,7 @@ class AssetLoader {
     private:
 
         // Init Vars
-        LoggerClass *Logger_
+        LoggerClass *Logger_;
         YAML::Node *SystemConfiguration_;
 
         // Configuration Vars
