@@ -12,6 +12,7 @@
 #include "Core/Management/LoggingSystem.h"
 #include "Core/Renderer/Renderer.h"
 #include "Core/System.cpp"
+#include "Core/Loader/BGAsset/BGAssetLoader.cpp"
 
 #include "Core/Version.h"
 
@@ -35,6 +36,9 @@ int main() {
 
     // Initialize Renderers
     sERSMainSubSystem.InitializeRenderers();
+
+    // Initialize Asset Loader System
+    BGAssetLoader sERSAssetLoader(&sERSLogger, &SystemConfiguration);
 
 
     // Log Logo Text

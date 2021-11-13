@@ -10,6 +10,7 @@
 
 #pragma once
 
+#include "yaml-cpp/yaml.h"
 
 #include "Core/Management/LoggingSystem.h"
 
@@ -20,11 +21,12 @@ class AssetLoader {
 
         // Init Vars
         LoggerClass *Logger_
+        YAML::Node *SystemConfiguration_;
 
     public:
 
         // Constructor
-        AssetLoader(LoggerClass *Logger);
+        AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration);
 
 
 };
