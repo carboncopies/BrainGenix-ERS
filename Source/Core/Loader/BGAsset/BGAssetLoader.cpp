@@ -102,7 +102,6 @@ void AssetLoader::LoadImage(long AssetID, YAML::Node Params) {
         FilePath += std::to_string(AssetID);
         FilePath += std::string(".bg");
 
-        std::cout<<FilePath<<std::endl;
 
         // Load Image
         ERSImage Image = ImageDecoder_.LoadImageFromFile(FilePath.c_str());
