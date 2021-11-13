@@ -12,6 +12,7 @@
 
 #include "Core/Renderer/Renderer.h"
 #include "Core/Management/LoggingSystem.h"
+#include "Core/Loader/BGAsset/BGAssetLoader.h"
 
 class sERSSubSystem {
 
