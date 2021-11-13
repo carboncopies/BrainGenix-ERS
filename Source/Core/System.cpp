@@ -26,6 +26,18 @@ sERSSubSystem::sERSSubSystem(LoggerClass *Logger, YAML::Node *SystemConfiguratio
 
 }
 
+// Destructor
+sERSSubSystem::~sERSSubSystem() {
+
+    // Log Destructor Call
+    Logger_->Log("Main Subsystem Destructor Called, Cleaning Up", 5);
+
+    // Clean Up
+    VisualRenderer_.CleanUp();
+
+}
+
+
 // Initialize Renderers
 void sERSSubSystem::InitializeRenderers() {
 

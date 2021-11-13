@@ -63,11 +63,10 @@ int main() {
     bool SystemShouldRun = true;
     while (SystemShouldRun) {
 
-        SystemShouldRun = sERSRenderer.UpdateLoop();
+        SystemShouldRun = 
 
     }
 
-    // Cleanup
-    sERSRenderer.CleanUp();
+
 
 }

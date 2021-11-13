@@ -31,6 +31,9 @@ class sERSSubSystem {
         // Constructor
         sERSSubSystem(LoggerClass *Logger, YAML::Node *SystemConfiguration);
 
+        // Destructor
+        ~sERSSubSystem();
+
         // Initialize Renderers
         void InitializeRenderers();
 
