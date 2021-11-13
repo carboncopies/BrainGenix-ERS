@@ -37,8 +37,8 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
     // Create Buffers
     std::map<long, VectorData> MetadataMap;
-    std::vector<ERS_OBJECT_MODEL> ModelVector_;
-    std::vector<ERS_OBJECT_SCENE> SceneVector_;
+    std::vector<ERS_OBJECT_MODEL> ERS_OBJECT_MODEL_Vector_;
+    std::vector<ERS_OBJECT_SCENE> ERS_OBJECT_MODEL_Vector_;
 
 
 
@@ -58,7 +58,8 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     bool Add_ERS_OBJECT_MODEL(ERS_OBJECT_MODEL Input, long AssetID) {
 
         // Add Model To Buffer
-        std::string AssetType = "ERS_OBJECT_MODEL";
+        
+
 
     }
 
