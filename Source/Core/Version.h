@@ -10,8 +10,7 @@
 
 #pragma once
 
-static const char* PROJECT_NAME = "BrainGenix-ERS";
 static const char* PROJECT_VERSION = "0.0.7";
-static const char* PROJECT_VERSION_MAJOR = "0";
+static const char* PROJECT_BRANCH = "DEV";
 static const char* PROJECT_VERSION_MINOR = "0";
 static const char* PTOJECT_VERSION_PATCH = "7";
