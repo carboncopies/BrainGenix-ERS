@@ -87,7 +87,7 @@ class Renderer {
         LoggerClass *Logger_;
         ERS_OBJECT_SHADER Shader_;
         ERS_OBJECT_MODEL Model_;
-        ERS_STRUCTURE_SCENE Scene_;
+        ERS_OBJECT_SCENE Scene_;
 
 
 
