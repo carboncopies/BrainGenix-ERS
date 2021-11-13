@@ -62,8 +62,10 @@ ERS_OBJECT_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading)
 
         Scene.Subnodes.insert({V1, V2});
 
-        std::cout<<"\n Value Is Now: "<<Scene.Subnodes[i++]<<std::endl<<std::endl;
+        std::cout<<"\n Value Is Now: "<<Scene.Subnodes[i]<<std::endl<<std::endl;
+        i++;
     }
+
 
 
     std::cout<<Scene.Subnodes[0]<<std::endl;
