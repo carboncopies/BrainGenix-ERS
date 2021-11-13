@@ -27,7 +27,7 @@ int main() {
     LoggerClass sERSLogger;
     sERSLogger.InitializeLogger(SystemConfiguration);
 
-    sERSLogger.Log("Initialized "Management::Logger::LoggerClass"", 5);
+    sERSLogger.Log("Initialized 'Management::Logger::LoggerClass'", 5);
 
 
 
