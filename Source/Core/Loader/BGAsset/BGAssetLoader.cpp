@@ -32,7 +32,12 @@ AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
     
 
     // Get Config Values
+    Logger_->Log("Reading Configuration File For 'DatabaseLoadingEnabled' Parameter", 1)
     DatabaseLoadingEnabled_ = (*SystemConfiguration_)["DatabaseLoadingEnabled"].as<bool>();
+
+    Logger_->Log("Reading Configuration File For 'AssetPath' Parameter", 1)
+    AssetPath_ = (*SystemConfiguration_)["AssetPath"].as<std::string>();
+
     // TODO: ADD OTHER DB PARAMS HERE (SEE CONFIG FOR MORE INFO)
     // TODO: ADD CONFIG STRING FOR LOCAL FILE ASSET PATH (ALSO ADD TO CONFIG FILE)
 
@@ -70,7 +75,7 @@ void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
         long AssetID = Subnode["ID"].as<long>();
         std::string AssetType = Subnode["Type"].as<std::string>();
 
-        std::cout<<"Test\n";
+
         // Load Image
         if (AssetType == "Image") {
 
@@ -93,7 +98,7 @@ void AssetLoader::LoadImage(long AssetID, YAML::Node Params) {
     } else {
 
         // Calculate File Path
-        std::string FilePath = (*SystemConfiguration_)["AssetPath"].as<std::string>();
+        std::string FilePath = AssetPath_;
         FilePath += std::to_string(AssetID);
         FilePath += std::string(".bg");
 
