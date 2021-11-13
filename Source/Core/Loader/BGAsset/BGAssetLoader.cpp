@@ -55,7 +55,7 @@ void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
         // Load Asset
         if (AssetType == "Image") {
 
-            
+            LoadImage(AssetID, Subnode);
 
         }
 
@@ -66,7 +66,23 @@ void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 // Load Image
 void AssetLoader::LoadImage(long AssetID, YAML::Node Params) {
 
-    
+    // Load From DB
+    if (DatabaseLoadingEnabled_) {
+
+        // TODO: ADD DATABASE LOADING FUNCTIONALITY LATER!
+
+    } else {
+
+        // Calculate File Path
+        std::string FilePath = (*SystemConfiguration_)["AssetPath"].as<std::string>();
+        FilePath += std::to_string(AssetID);
+        FilePath += std::string(".bg");
+
+        // Load Image
+        
+
+    }
+
 }
 
 // Returns All Models Loaded In The Asset Buffer And Marked To Be Drawn

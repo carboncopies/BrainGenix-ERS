@@ -21,6 +21,9 @@ DatabaseUser: "" # FIX ME
 DatabaseName: "" # FIX ME
 DatabasePassword: "" # FIX ME
 
+# File Loading Params
+AssetPath: "Assets/" # NOTE: PATH MUST END WITH A "/"
+
 
 # Set Logger Configuration Parameters #
 EnablePrintOutput: True
