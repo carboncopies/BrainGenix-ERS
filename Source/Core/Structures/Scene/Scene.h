@@ -14,7 +14,7 @@
 
 
 
-struct ERS_STRUCTURE_SCENE {
+struct ERS_OBJECT_SCENE {
 
     // Declare Scene Structs
     YAML::Node SceneData;

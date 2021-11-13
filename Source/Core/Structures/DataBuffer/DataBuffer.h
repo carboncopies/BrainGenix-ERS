@@ -19,6 +19,8 @@
 #include "Core/Structures/Model/Model.h"
 
 
+
+
 struct ERS_STRUCTURE_DATA_BUFFER {
 
     // Internal Vars
@@ -26,7 +28,9 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     bool LoggerInitialized_ = false;
 
     // Create Buffers
-    std::vector<ERS_OBJECT_MODEL> ModelsVector;
+    std::vector<ERS_OBJECT_MODEL> ModelVector_;
+    std::vector<ERS_OBJECT_SCENE> SceneVector_;
+
 
 
     // Initialize Buffer
