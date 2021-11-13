@@ -94,7 +94,8 @@ void Renderer::InitializeOpenGL() {
     // Setup Shaders
     Shader_ = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
 
-
+    // Load Model
+    Model_.LoadModelFromFile("Assets/1.bg", Logger_);
 
 
 
@@ -135,13 +136,13 @@ void Renderer::UpdateLoop() {
     Shader_.SetMat4("projection", projection);
     Shader_.SetMat4("view", view);
 
-    // // render the loaded model
-    // glm::mat4 model = glm::mat4(1.0f);
-    // model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-    // model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));	// it's a bit too big for our scene, so scale it down
-    // model = glm::rotate(model, glm::radians(-0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-    // Shader_.SetMat4("model", model);
-    // Model_.Draw(Shader_);
+    // render the loaded model
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+    model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));	// it's a bit too big for our scene, so scale it down
+    model = glm::rotate(model, glm::radians(-0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    Shader_.SetMat4("model", model);
+    Model_.Draw(Shader_);
 
 
 
