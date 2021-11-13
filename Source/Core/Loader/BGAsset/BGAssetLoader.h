@@ -43,7 +43,7 @@ class AssetLoader {
         void LoadSceneAssets(ERS_OBJECT_SCENE InputScene);
 
         // Return Models To Be Drawn
-        std::vector<ERS_OBJECT_MODEL*> GetModelsToDraw();
+        void GetModelsToDraw();
 
 
 
