@@ -131,7 +131,7 @@ void AssetLoader::LoadModel(long AssetID, YAML::Node Params) {
 }
 
 // Load Image
-void AssetLoader::LoadImage(long AssetID, YAML::Node Params) {
+void AssetLoader::LoadImage(long AssetID, YAML::Node Params) { // MAKE SURE TO COPY IN THE PATH FROM THE PARAMS VAR
 
     // Load From DB
     if (DatabaseLoadingEnabled_) {
