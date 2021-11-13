@@ -18,7 +18,7 @@
 #include <GLFW/glfw3.h>
 
 
-#include "Core/Structures/BGAsset/BGAssetLoader.h"
+
 #include "Core/Structures/DataBuffer/DataBuffer.h"
 #include "Core/Renderer/VisualRenderer/WindowInputProcessor.h"
 #include "Core/Renderer/VisualRenderer/ShaderManager.h"
