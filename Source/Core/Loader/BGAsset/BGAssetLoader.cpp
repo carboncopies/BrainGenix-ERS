@@ -70,7 +70,7 @@ void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
         long AssetID = Subnode["ID"].as<long>();
         std::string AssetType = Subnode["Type"].as<std::string>();
 
-
+        std::cout<<"Test\n";
         // Load Image
         if (AssetType == "Image") {
 
