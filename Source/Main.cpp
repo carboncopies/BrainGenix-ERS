@@ -38,7 +38,7 @@ int main() {
     sERSLogger.Log("Initialized Renderer", 5);
 
 
-    # MOTD #
+    // Log Logo Text
     Logger_->Log("Starting BrainGenix-ERS Instance", 2);
     Logger_->Log("", 5)
     Logger_->Log("---------------------------------------------------------------------------", 5)
@@ -51,7 +51,7 @@ int main() {
     Logger_->Log("---------------------------------------------------------------------------", 5)
     Logger_->Log("", 5)
     Logger_->Log("    +-----------------------------------------------------------------+", 4)
-    Logger_->Log("    |     BrainGenix-NES Biological Neuron Simulation System          |", 4)
+    Logger_->Log("    |     BrainGenix-ERS Real-Time Environment Rendering System       |", 4)
     Logger_->Log("    |     Version: {Version}                                              |", 4)
     Logger_->Log("    |     Branch: {Branch}                                                 |", 4)
     Logger_->Log("    |     Clustersize: {NodeCount}                                              |", 4)
