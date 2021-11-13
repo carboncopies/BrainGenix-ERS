@@ -23,6 +23,9 @@ class AssetLoader {
         LoggerClass *Logger_
         YAML::Node *SystemConfiguration_;
 
+        // Configuration Vars
+        bool DatabaseLoadingEnabled_;
+
     public:
 
         // Constructor

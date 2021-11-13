@@ -13,13 +13,17 @@
 
 
 // Asset Loader Constructor
-AssetLoader::AssetLoader(LoggerClass *Logger) {
+AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
 
     // Initialization Start
     Logger->Log("Initializing Asset Loader Class", 6);
 
     // Copy Pointer
     Logger_ = Logger;
+    SystemConfiguration_ = SystemConfiguration;
+
+    // Get Config Values
+    DatabaseLoadingEnabled_ = (*SystemConfiguration_)["DatabaseLoadingEnabled"].as<bool>();
 
     // Log Initialization
     Logger_->Log("Initialized Asset Loader Class", 5);
