@@ -15,7 +15,7 @@
 ////////////////////////
 
 // Asset Loader Constructor
-AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration, ERS_STRUCTURE_DATA_BUFFER *DataBuffer) {
+void AssetLoader::Initialize(LoggerClass *Logger, YAML::Node *SystemConfiguration, ERS_STRUCTURE_DATA_BUFFER *DataBuffer) {
 
     // Initialization Start
     Logger->Log("Initializing Asset Loader Class", 6);
@@ -62,7 +62,6 @@ std::vector<ERS_OBJECT_MODEL*> AssetLoader::GetModelsToDraw() {
     // Create Pointer Vector
     std::vector<ERS_OBJECT_MODEL*> ModelPointers;
     std::cout<<DataBuffer_->TestVar<<std::endl;
-    Logger_->Log("test");
     std::cout<<DataBuffer_->GetNumberObjectModels()<<std::endl;
     // Get Struct Data
     for (long i = 0; i < size(DataBuffer_->ERS_OBJECT_MODEL_Vector_); i++) {

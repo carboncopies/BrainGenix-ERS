@@ -36,7 +36,8 @@ int main() {
     sERSDataBuffer.Init(&sERSLogger);
 
     // Initialize Asset Loader System
-    AssetLoader sERSAssetLoader(&sERSLogger, &SystemConfiguration, &sERSDataBuffer);
+    AssetLoader sERSAssetLoader;
+    sERSAssetLoader.Initialize(&sERSLogger, &SystemConfiguration, &sERSDataBuffer);
 
     // Initialize System
     sERSSubSystem sERSMainSubSystem(&sERSLogger, &SystemConfiguration, &SystemShouldRun, &sERSAssetLoader);
