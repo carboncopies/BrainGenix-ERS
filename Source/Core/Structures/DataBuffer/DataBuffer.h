@@ -23,11 +23,20 @@
 
 struct ERS_STRUCTURE_DATA_BUFFER {
 
+    // Create Internal Structures
+    struct VectorData {
+
+        std::string AssetType; // Stores Type Of Object, EG: "Model" or "Scene"
+        long VectorIndex; // Stores Position In Given Vector
+
+    };
+
     // Internal Vars
     LoggerClass *Logger_ = nullptr;
     bool LoggerInitialized_ = false;
 
     // Create Buffers
+    std::map<long, VectorData> MetadataMap;
     std::vector<ERS_OBJECT_MODEL> ModelVector_;
     std::vector<ERS_OBJECT_SCENE> SceneVector_;
 
@@ -42,6 +51,14 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
         // Log System Initialization
         Logger_->Log("Initialized ERS Data Buffer", 6);
+
+    }
+
+    // Add Types To Buffer
+    bool Add_ERS_OBJECT_MODEL(ERS_OBJECT_MODEL Input, long AssetID) {
+
+        // Add Model To Buffer
+        std::string N
 
     }
 
