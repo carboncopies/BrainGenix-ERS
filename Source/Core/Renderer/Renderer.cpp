@@ -140,11 +140,12 @@ void Renderer::UpdateLoop() {
 
 
     // render the loaded models
+    std::cout<<"asd\n";
     std::vector<ERS_OBJECT_MODEL*> LoadedModelPointers = AssetLoader_->GetModelsToDraw();
 
     for (long i; i < size(LoadedModelPointers); i++) { 
 
-        std::cout<<"asd\n";
+        
 
         glm::mat4 model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
