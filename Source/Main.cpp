@@ -12,6 +12,7 @@
 #include "Core/Management/LoggingSystem.h"
 #include "Core/Renderer/Renderer.h"
 
+#include "Core/Version.h"
 
 
 int main() {
