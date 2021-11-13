@@ -139,7 +139,8 @@ void Renderer::UpdateLoop() {
 
 
     // render the loaded models
-    AssetLoader->Test();
+    std::cout<<"Running Test\n";
+    AssetLoader_->Test();
     std::vector<ERS_OBJECT_MODEL*> LoadedModelPointers = AssetLoader_->GetModelsToDraw();
 
     for (long i; i < size(LoadedModelPointers); i++) { 
