@@ -25,6 +25,8 @@ function(disable_target_warnings target)
     )
 endfunction()
 
+# Configure Files
+configure_file(${SRC_DIR}/Core/Version.h.in)
 
 # Add YAML-CPP Library (Not Header Only)
 add_subdirectory("${LIB_DIR}/yaml-cpp")
