@@ -15,7 +15,7 @@
 ////////////////////////
 
 // Asset Loader Constructor
-void AssetLoader::Initialize(LoggerClass *Logger, YAML::Node *SystemConfiguration, ERS_STRUCTURE_DATA_BUFFER *DataBuffer) {
+AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration, ERS_STRUCTURE_DATA_BUFFER *DataBuffer) {
 
     // Initialization Start
     Logger->Log("Initializing Asset Loader Class", 6);
@@ -40,7 +40,7 @@ void AssetLoader::Initialize(LoggerClass *Logger, YAML::Node *SystemConfiguratio
 
 // Read Scene Subnodes And Load Models/Textures Requested By That Scene
 void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
-
+    Logger_->Log("TESTING", 5);
     // Iterate Through Scene Data
     for (long i = 0; i < (long)size(InputScene.Subnodes); i++) {
 
@@ -57,7 +57,7 @@ void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 
 // Returns All Models Loaded In The Asset Buffer And Marked To Be Drawn
 std::vector<ERS_OBJECT_MODEL*> AssetLoader::GetModelsToDraw() {
-
+    Logger_->Log("TESTING", 5);
 
     // Create Pointer Vector
     std::vector<ERS_OBJECT_MODEL*> ModelPointers;

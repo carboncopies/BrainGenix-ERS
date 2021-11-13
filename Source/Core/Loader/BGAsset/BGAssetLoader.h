@@ -32,7 +32,7 @@ class AssetLoader {
     public:
 
         // Constructor
-        void Initialize(LoggerClass *Logger, YAML::Node *SystemConfiguration, ERS_STRUCTURE_DATA_BUFFER *DataBuffer);
+        AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration, ERS_STRUCTURE_DATA_BUFFER *DataBuffer);
 
         // Load Assets From Scene
         void LoadSceneAssets(ERS_OBJECT_SCENE InputScene);
