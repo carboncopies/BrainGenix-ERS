@@ -51,7 +51,7 @@ void sERSSubSystem::InitializeRenderers() {
 
     // Initialize Renderer
     Logger_->Log("Initializing Renderer", 5);
-    VisualRenderer_.InitializeRenderer(SystemConfiguration_, Logger_);
+    VisualRenderer_.InitializeRenderer(SystemConfiguration_, Logger_, SystemShouldRun_);
     Logger_->Log("Initialized Renderer", 5);
 
 }
