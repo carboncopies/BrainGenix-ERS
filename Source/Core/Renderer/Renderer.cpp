@@ -30,9 +30,6 @@ void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *
     Logger_->Log("Initializing OpenGL", 5);
     InitializeOpenGL();
 
-    // Load Assets
-    Logger_->Log("Loading Root Scene (ID: 0)", 5);
-    LoadAssets();
 
 }
 
@@ -114,7 +111,7 @@ void Renderer::InitializeOpenGL() {
 
 
 
-bool Renderer::UpdateLoop() { 
+void Renderer::UpdateLoop() { 
 
     // Update DeltaTime
     float CurrentTime = glfwGetTime();
@@ -164,11 +161,9 @@ bool Renderer::UpdateLoop() {
     // Check If System Should Shutdown
     if (glfwWindowShouldClose(Window_)) {
         Logger_->Log("System Shutdown Invoked By LocalWindow", 2);
-        return false;
+        *SystemShouldRun = false;
     }
 
-    // System Should Not Shutdown
-    return true;
 
 }
 

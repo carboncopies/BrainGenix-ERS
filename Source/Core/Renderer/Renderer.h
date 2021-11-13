@@ -121,9 +121,7 @@ class Renderer {
     public:
 
         void InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun);
-
-        bool UpdateLoop();
-
+        void UpdateLoop();
         void CleanUp();
 
 
