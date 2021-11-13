@@ -31,6 +31,10 @@ int main() {
 
     sERSLogger.Log("Initialized 'Management::Logger::LoggerClass'", 5);
 
+    // Initialize Data Buffer
+    ERS_STRUCTURE_DATA_BUFFER sERSDataBuffer;
+    sERSDataBuffer.Init(&sERSLogger);
+
     // Initialize System
     sERSSubSystem sERSMainSubSystem(&sERSLogger, &SystemConfiguration, &SystemShouldRun);
 

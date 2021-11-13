@@ -14,6 +14,7 @@
 
 #include "Core/Management/LoggingSystem.h"
 #include "Core/Structures/Scene/Scene.h"
+#include "Core/Structures/DataBuffer/DataBuffer.h"
 
 
 class AssetLoader {
@@ -23,6 +24,7 @@ class AssetLoader {
         // Init Vars
         LoggerClass *Logger_;
         YAML::Node *SystemConfiguration_;
+        ERS_STRUCTURE_DATA_BUFFER *DataBuffer_;
 
         // Configuration Vars
         bool DatabaseLoadingEnabled_;
@@ -30,7 +32,7 @@ class AssetLoader {
     public:
 
         // Constructor
-        AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration);
+        AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration, ERS_STRUCTURE_DATA_BUFFER *DataBuffer);
 
         // Load Assets From Scene
         LoadSceneAssets(ERS_OBJECT_SCENE InputScene);
