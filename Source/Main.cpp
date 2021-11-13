@@ -33,7 +33,9 @@ int main() {
 
     // Initialize Data Buffer
     ERS_STRUCTURE_DATA_BUFFER sERSDataBuffer;
+    std::cout<<sERSDataBuffer.GetNumberObjectModels()<<std::endl;
     sERSDataBuffer.Init(&sERSLogger);
+    std::cout<<sERSDataBuffer.GetNumberObjectModels()<<std::endl;
 
     // Initialize Asset Loader System
     AssetLoader sERSAssetLoader(&sERSLogger, &SystemConfiguration, &sERSDataBuffer);
