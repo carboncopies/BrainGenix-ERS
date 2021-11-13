@@ -54,7 +54,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     }
 
     // Add Types To Buffer
-    bool Add_ERS_OBJECT_MODEL(ERS_OBJECT_MODEL Input, long AssetID) {
+    void Add_ERS_OBJECT_MODEL(ERS_OBJECT_MODEL Input, long AssetID) {
 
         // Add Model To Buffer
         ERS_OBJECT_MODEL_Vector_.push_back(Input);
