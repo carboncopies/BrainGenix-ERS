@@ -24,7 +24,7 @@ int main() {
 
     // Load System Configuration File
     YAML::Node SystemConfiguration = LoadConfig("Config.yaml");
-    std::cout<<SystemConfiguration<<std::endl;
+
     // Instantiate Logging Subsystem //
     LoggerClass sERSLogger;
     sERSLogger.InitializeLogger(SystemConfiguration);
