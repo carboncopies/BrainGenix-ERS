@@ -120,7 +120,7 @@ void Renderer::LoadAssets() {
 
 
     ERS_STRUCTURE_DATA_BUFFER Test;
-    Test.Init(&sERSLogger);
+    Test.Init(&Logger_);
     Test.Add_ERS_OBJECT_MODEL(Model_, 1);
     //Test.AddToBuffer((long)1, 0);
     //std::cout<<*Test.PullFromBuffer(0)<<std::endl;
