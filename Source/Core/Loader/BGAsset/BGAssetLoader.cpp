@@ -85,6 +85,49 @@ void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 
     }
 
+    // Load Models
+    for (long i = 0; i < (long)size(InputScene.Subnodes); i++) {
+
+        // Get Subnode
+        YAML::Node Subnode = InputScene.Subnodes[i];
+
+        // Get Attributes
+        long AssetID = Subnode["ID"].as<long>();
+        std::string AssetType = Subnode["Type"].as<std::string>();
+
+
+        // Load Model
+        if (AssetType == "Model") {
+            LoadModel(AssetID, Subnode);
+        }
+
+    }
+
+}
+
+// Load Model
+void AssetLoader::LoadModel(long AssetID, YAML::Node Params) {
+
+    // Load From DB
+    if (DatabaseLoadingEnabled_) {
+
+        // TODO: ADD DATABASE LOADING FUNCTIONALITY LATER!
+
+    } else {
+
+        // Calculate File Path
+        std::string FilePath = AssetPath_;
+        FilePath += std::to_string(AssetID);
+        FilePath += std::string(".bg");
+
+        // Load Model
+        //ERSImage Image = ImageDecoder_.LoadImageFromFile(FilePath.c_str());
+
+        // Place Into Data Buffer
+        //DataBuffer_.Add_ERS_OBJECT_IMAGE(Image, AssetID);
+
+    }
+
 }
 
 // Load Image

@@ -34,6 +34,7 @@ class AssetLoader {
 
         // Loading Methods
         void LoadImage(long AssetID, YAML::Node Params);
+        void LoadModel(long AssetID, YAML::Node Params);
 
     public:
 
