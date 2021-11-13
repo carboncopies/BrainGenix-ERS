@@ -67,7 +67,7 @@ std::vector<ERS_OBJECT_MODEL*> AssetLoader::GetModelsToDraw() {
     }
 
     // Return Output
-    return ModelPointers
+    return ModelPointers;
 
 
 };
