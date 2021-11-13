@@ -42,7 +42,7 @@ ERS_OBJECT_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading)
 
         // Load Scene
         Scene.SceneData = YAML::LoadFile(FilePath);
-        std::cout<<Scene.SceneData<<std::endl;
+        
 
     }
 
@@ -58,6 +58,7 @@ ERS_OBJECT_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading)
         };
     }
 
+    std::cout<<Scene.Subnodes[0]<<std::endl;
 
 
     // Return Scene
