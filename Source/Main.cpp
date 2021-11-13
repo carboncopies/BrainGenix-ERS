@@ -18,9 +18,8 @@
 
 int main() {
 
-
-
-    
+    // Initialize System State Bool
+    bool SystemShouldRun = true;
 
     // Load System Configuration File
     YAML::Node SystemConfiguration = LoadConfig("Config.yaml");
@@ -32,7 +31,7 @@ int main() {
     sERSLogger.Log("Initialized 'Management::Logger::LoggerClass'", 5);
 
     // Initialize System
-    sERSSubSystem sERSMainSubSystem(&sERSLogger);
+    sERSSubSystem sERSMainSubSystem(&sERSLogger, &SystemConfiguration, &SystemShouldRun);
 
 
 
@@ -60,7 +59,6 @@ int main() {
 
 
     // Enter Main Loop
-    bool SystemShouldRun = true;
     while (SystemShouldRun) {
 
         sERSMainSubSystem.UpdateRenderers();
