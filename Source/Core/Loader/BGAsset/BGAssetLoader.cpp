@@ -59,7 +59,7 @@ void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 std::vector<ERS_OBJECT_MODEL*> AssetLoader::GetModelsToDraw() {
 
     // Create Pointer Vector
-    std::vector<*ERS_OBJECT_MODEL> ModelPointers;
+    std::vector<ERS_OBJECT_MODEL*> ModelPointers;
 
     // Get Struct Data
     for (long i = 0; i < size(DataBuffer_->ERS_OBJECT_MODEL_Vector_); i++) {
