@@ -26,7 +26,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     // Create Internal Structures
     struct VectorData {
 
-        std::string AssetType; // Stores Type Of Object, EG: "Model" or "Scene"
+        std::string AssetType; // Stores Type Of Object, EG: "ERS_OBJECT_MODEL" or "ERS_OBJECT_SCENE"
         long VectorIndex; // Stores Position In Given Vector
 
     };
@@ -58,7 +58,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     bool Add_ERS_OBJECT_MODEL(ERS_OBJECT_MODEL Input, long AssetID) {
 
         // Add Model To Buffer
-        std::string N
+        std::string AssetType = "ERS_OBJECT_MODEL";
 
     }
 
