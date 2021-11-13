@@ -72,6 +72,24 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
     }
 
+    void Add_ERS_OBJECT_SCENE(ERS_OBJECT_SCENE Input, long AssetID) {
+
+        // Add Scene To Buffer
+        ERS_OBJECT_SCENE_Vector_.push_back(Input);
+
+        VectorData AssetData;
+        AssetData.AssetType = "ERS_OBJECT_SCENE";
+        AssetData.VectorIndex = (long)ERS_OBJECT_SCENE_Vector_.size()-1;
+
+        MetadataMap_.insert({AssetID, AssetData});
+
+        // Log Scene Loading
+        if (Logger_ != nullptr) {
+            Logger_->Log(std::string(std::string("Adding ERS_OBJECT_SCENE Asset To Data Buffer With Global Asset ID: ") + std::to_string(AssetID)).c_str(), 7);
+        }
+
+    }
+
 
 
 };
