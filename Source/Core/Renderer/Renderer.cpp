@@ -113,7 +113,6 @@ void Renderer::InitializeOpenGL() {
 
 void Renderer::UpdateLoop() { 
 
-    std::cout<<"Test\n";
 
     // Update DeltaTime
     float CurrentTime = glfwGetTime();
@@ -140,7 +139,6 @@ void Renderer::UpdateLoop() {
 
 
     // render the loaded models
-    std::cout<<"asd\n";
     std::vector<ERS_OBJECT_MODEL*> LoadedModelPointers = AssetLoader_->GetModelsToDraw();
 
     for (long i; i < size(LoadedModelPointers); i++) { 
