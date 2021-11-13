@@ -15,12 +15,13 @@ void ErrorCallback(int, const char* ErrorString) {
 }
 
 
-void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger) {
+void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun) {
 
     // Create Pointers
     Logger->Log("Populating Renderer Member Pointers", 5);
     SystemConfiguration_ = SystemConfiguration;
     Logger_ = Logger;
+    SystemShouldRun_ = SystemShouldRun;
 
     // Initialize Systems
     Logger_->Log("Initializing GLFW", 5);
@@ -110,25 +111,7 @@ void Renderer::InitializeOpenGL() {
 
 }
 
-void Renderer::LoadAssets() {
 
-    // Instantiate Asset Loader
-    
-
-    // Load Root Scene Graph
-    //Scene_ = LoadScene(0, Logger_, true);
-
-    // Load Subassets
-        // Add Asset Manager
-
-
-    // ERS_STRUCTURE_DATA_BUFFER Test;
-    // Test.Init(Logger_);
-    //Test.Add_ERS_OBJECT_MODEL(Model_, 1);
-    //Test.AddToBuffer((long)1, 0);
-    //std::cout<<*Test.PullFromBuffer(0)<<std::endl;
-
-}
 
 
 bool Renderer::UpdateLoop() { 

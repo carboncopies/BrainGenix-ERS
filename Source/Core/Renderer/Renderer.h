@@ -85,6 +85,11 @@ class Renderer {
         // Member Variables
         YAML::Node *SystemConfiguration_;
         LoggerClass *Logger_;
+
+        // Control Values
+        bool *SystemShouldRun_;
+
+
         ERS_OBJECT_SHADER Shader_;
         ERS_OBJECT_MODEL Model_;
         ERS_OBJECT_SCENE Scene_;
@@ -110,13 +115,12 @@ class Renderer {
         // Member Functions
         void InitializeGLFW();
         void InitializeOpenGL();
-        void LoadAssets();
 
 
 
     public:
 
-        void InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger);
+        void InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun);
 
         bool UpdateLoop();
 
