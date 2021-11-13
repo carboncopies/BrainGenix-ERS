@@ -32,3 +32,12 @@ AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
     Logger_->Log("Initialized Asset Loader Class", 5);
 
 }
+
+// Read Scene Subnodes And Load Models/Textures Requested By That Scene
+AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
+
+    // Iterate Through Scene Data
+    for 
+
+}
+// Read Scene -> Load Images/etc [load model last] -> Push into data buffer

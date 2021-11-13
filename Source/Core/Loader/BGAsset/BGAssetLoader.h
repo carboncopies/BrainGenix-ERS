@@ -13,6 +13,7 @@
 #include "yaml-cpp/yaml.h"
 
 #include "Core/Management/LoggingSystem.h"
+#include "Core/Structures/Scene/Scene.h"
 
 
 class AssetLoader {
@@ -31,5 +32,7 @@ class AssetLoader {
         // Constructor
         AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration);
 
+        // Load Assets From Scene
+        LoadSceneAssets(ERS_OBJECT_SCENE InputScene);
 
 };
