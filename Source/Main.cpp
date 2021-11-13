@@ -33,8 +33,8 @@ int main() {
     // Initialize System
     sERSSubSystem sERSMainSubSystem(&sERSLogger, &SystemConfiguration, &SystemShouldRun);
 
-
-
+    // Initialize Renderers
+    sERSMainSubSystem.InitializeRenderers();
 
 
     // Log Logo Text
