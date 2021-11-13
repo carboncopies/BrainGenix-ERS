@@ -57,6 +57,7 @@ void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 std::vector<ERS_OBJECT_MODEL*> AssetLoader::GetModelsToDraw() {
 
     std::vector<int> Test;
+    Test.push_back(5);
     std::cout<<Test.size()<<std::endl;
 
     // Create Pointer Vector
