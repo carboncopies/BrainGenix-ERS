@@ -42,6 +42,8 @@ sERSSubSystem::~sERSSubSystem() {
 // Main Update Loop
 void sERSSubSystem::UpdateRenderers() {
 
+    std::cout<<"test: "<<DataBuffer_->GetNumberObjectModels()<<std::endl;
+
     // Update Visual Renderer
     VisualRenderer_.UpdateLoop();
 
