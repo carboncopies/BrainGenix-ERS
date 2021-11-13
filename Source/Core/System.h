@@ -8,6 +8,9 @@
     Date Created: 2021-11-12
 */
 
+#include "yaml-cpp/yaml.h"
+
+#include "Core/Renderer/Renderer.h"
 #include "Core/Management/LoggingSystem.h"
 
 class sERSSubSystem {
@@ -16,11 +19,19 @@ class sERSSubSystem {
 
         // Internal Vars
         LoggerClass *Logger_;
+        YAML::Node *SystemConfiguration_
+
+
+        // Renderer Related Vars
+        VisualRenderer VisualRenderer_;
+
 
     public:
 
         // Constructor
-        sERSSubSystem(LoggerClass *Logger);
+        sERSSubSystem(LoggerClass *Logger, YAML::Node *SystemConfiguration);
 
+        // Initialize Renderers
+        void InitializeRenderers();
 
 };

@@ -35,11 +35,7 @@ int main() {
     sERSSubSystem sERSMainSubSystem(&sERSLogger);
 
 
-    // Initialize Renderer
-    Renderer sERSRenderer;
-    sERSLogger.Log("Initializing Renderer", 5);
-    sERSRenderer.InitializeRenderer(&SystemConfiguration, &sERSLogger);
-    sERSLogger.Log("Initialized Renderer", 5);
+
 
 
     // Log Logo Text
