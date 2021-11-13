@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-13T00:28:37.140Z" agent="5.0 (X11)" etag="QnZoiMxrIyzOJQYiNoI4" version="15.7.0" type="github" pages="8">
+<mxfile host="app.diagrams.net" modified="2021-11-13T00:31:24.171Z" agent="5.0 (X11)" etag="9y5whKCp6PXiEJNdjC3T" version="15.7.0" type="github" pages="8">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2272" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -732,7 +732,7 @@
         <mxCell id="ymFeAhp0DhXiGv6h24F2-25" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
           <mxGeometry x="3050" y="1280" width="310" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="ymFeAhp0DhXiGv6h24F2-26" value="std::map&amp;lt;long, VectorData&amp;gt; MetadataMap" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-26" value="std::map&amp;lt;long, VectorData&amp;gt; MetadataMap_" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
           <mxGeometry x="3050" y="1280" width="310" height="30" as="geometry" />
         </mxCell>
         <mxCell id="ymFeAhp0DhXiGv6h24F2-27" value="long (GLOBAL ASSET ID)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="SORNEBXzX296p3ofjego-1">
