@@ -38,7 +38,18 @@ AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
 AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 
     // Iterate Through Scene Data
-    for 
+    for (long i = 0; i < InputScene.NumberSubnodes; i++) {
+
+        // Get Subnode
+        YAML::Node Subnode = InputScene.Subnodes[i];
+
+        // Get Attributes
+        long AssetID = Subnode["ID"].as<long>();
+        std::string AssetType = Subnode["Type"].as<std::string>();
+
+        std::cout<<AssetID<<AssetType<<std::endl;
+
+    }
 
 }
 // Read Scene -> Load Images/etc [load model last] -> Push into data buffer

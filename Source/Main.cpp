@@ -35,14 +35,16 @@ int main() {
     ERS_STRUCTURE_DATA_BUFFER sERSDataBuffer;
     sERSDataBuffer.Init(&sERSLogger);
 
+    // Initialize Asset Loader System
+    AssetLoader sERSAssetLoader(&sERSLogger, &SystemConfiguration, &sERSDataBuffer);
+
     // Initialize System
-    sERSSubSystem sERSMainSubSystem(&sERSLogger, &SystemConfiguration, &SystemShouldRun);
+    sERSSubSystem sERSMainSubSystem(&sERSLogger, &SystemConfiguration, &SystemShouldRun, &sERSAssetLoader);
 
     // Initialize Renderers
     sERSMainSubSystem.InitializeRenderers();
 
-    // Initialize Asset Loader System
-    AssetLoader sERSAssetLoader(&sERSLogger, &SystemConfiguration);
+
 
 
     // Log Logo Text
