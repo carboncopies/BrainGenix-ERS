@@ -70,7 +70,7 @@ void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 
         // Get Subnode
         YAML::Node Subnode = InputScene.Subnodes[i];
-        std::cout<<Subnode<<std::endl;
+
         // Get Attributes
         long AssetID = Subnode["ID"].as<long>();
         std::string AssetType = Subnode["Type"].as<std::string>();
@@ -101,7 +101,6 @@ void AssetLoader::LoadImage(long AssetID, YAML::Node Params) {
         std::string FilePath = AssetPath_;
         FilePath += std::to_string(AssetID);
         FilePath += std::string(".bg");
-
 
         // Load Image
         ERSImage Image = ImageDecoder_.LoadImageFromFile(FilePath.c_str());
