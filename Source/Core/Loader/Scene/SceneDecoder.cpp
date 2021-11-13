@@ -65,7 +65,9 @@ ERS_OBJECT_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading)
         i++;
     }
 
-    Scene.Subnodes = Subnodes;
+    std::cout<<i<<std::endl;
+
+    //Scene.Subnodes = Subnodes;
 
     std::cout<<"*************************************\n";
     std::cout<<Scene.Subnodes[0]<<std::endl;
