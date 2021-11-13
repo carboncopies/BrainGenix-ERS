@@ -136,14 +136,20 @@ void Renderer::UpdateLoop() {
     Shader_.SetMat4("projection", projection);
     Shader_.SetMat4("view", view);
 
-    // render the loaded model
-    // glm::mat4 model = glm::mat4(1.0f);
-    // model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-    // model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
-    // model = glm::rotate(model, glm::radians(-0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-    // Shader_.SetMat4("model", model);
-    // Model_.Draw(Shader_);
 
+    // render the loaded models
+    std::vector<*ERS_OBJECT_MODEL> LoadedModelPointers = AssetLoader_->GetModelsToDraw();
+
+    for (long i; i < size(LoadedModelPointers); i++) { 
+
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+        model = glm::rotate(model, glm::radians(-0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+        *LoadedModelPointers[i].SetMat4("model", model);
+        *LoadedModelPointers[i].Draw(Shader_);
+
+    };
 
 
 
