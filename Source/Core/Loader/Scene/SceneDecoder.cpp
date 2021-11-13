@@ -34,8 +34,6 @@ ERS_OBJECT_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading)
         FilePath += std::to_string(SceneID);
         FilePath += ".bg";
 
-        std::cout<<FilePath<<std::endl;
-
         // Log If Enabled
         if (LogLoading) {
             std::string LogString = std::string("Loading Scene File With ID '") + std::to_string(SceneID) + std::string("' Using Local Filesystem");
@@ -46,6 +44,7 @@ ERS_OBJECT_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading)
         Scene.SceneData = YAML::LoadFile(FilePath);
 
     }
+    std::cout<<"test\n";
 
     // Parse Scene Metadata
     Scene.SceneName = Scene.SceneData["Name"].as<std::string>();
