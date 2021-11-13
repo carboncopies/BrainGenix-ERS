@@ -15,8 +15,13 @@
 // Asset Loader Constructor
 AssetLoader::AssetLoader(LoggerClass *Logger) {
 
+    // Initialization Start
+    Logger->Log("Initializing Asset Loader Class", 6);
+
     // Copy Pointer
     Logger_ = Logger;
-    
+
+    // Log Initialization
+    Logger_->Log("Initialized Asset Loader Class", 5);
 
 }
