@@ -26,7 +26,7 @@ function(disable_target_warnings target)
 endfunction()
 
 # Configure Files
-configure_file(${SRC_DIR}/Core/Version.h.in 'Version.h.in')
+configure_file(${SRC_DIR}/Core/Version.h.in "Version.h")
 include_directories(${BIN_DIR})
 
 # Add YAML-CPP Library (Not Header Only)
