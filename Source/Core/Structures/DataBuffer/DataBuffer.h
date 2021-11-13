@@ -39,15 +39,12 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     std::vector<ERS_OBJECT_MODEL> ERS_OBJECT_MODEL_Vector_; // THIS IS ERRONEOUSLY LARGE (WHEN USING SIZE FUNCTION, FIGRE OUT WHAT's GOING ON HERE!)
     std::vector<ERS_OBJECT_SCENE> ERS_OBJECT_SCENE_Vector_;
 
+
+    // Return Number Of Elements In Model Vector
     long GetNumberObjectModels() {
-
         return ERS_OBJECT_MODEL_Vector_.size();
-
     }
 
-    int Test() {
-        return 5;
-    }
 
 
     // Initialize Buffer
