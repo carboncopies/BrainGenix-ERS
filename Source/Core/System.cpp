@@ -12,7 +12,7 @@
 
 
 // Constructor
-sERSSubSystem::sERSSubSystem(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
+sERSSubSystem::sERSSubSystem(LoggerClass *Logger, YAML::Node *SystemConfiguration, bool *SystemShouldRun) {
 
     // Start Initialization
     Logger->Log("Initializing Main Subsystem", 6);
@@ -20,6 +20,7 @@ sERSSubSystem::sERSSubSystem(LoggerClass *Logger, YAML::Node *SystemConfiguratio
     // Copy Pointer
     Logger_ = Logger;
     SystemConfiguration_ = SystemConfiguration;
+    SystemShouldRun_ = SystemShouldRun;
 
     // Finish Initialization
     Logger_->Log("Initialized Main Subsystem", 5);

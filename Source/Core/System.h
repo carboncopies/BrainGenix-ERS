@@ -20,6 +20,7 @@ class sERSSubSystem {
         // Internal Vars
         LoggerClass *Logger_;
         YAML::Node *SystemConfiguration_;
+        bool *SystemShouldRun_;
 
 
         // Renderer Related Vars
@@ -29,12 +30,17 @@ class sERSSubSystem {
     public:
 
         // Constructor
-        sERSSubSystem(LoggerClass *Logger, YAML::Node *SystemConfiguration);
+        sERSSubSystem(LoggerClass *Logger, YAML::Node *SystemConfiguration, bool *SystemShouldRun);
 
         // Destructor
         ~sERSSubSystem();
 
         // Initialize Renderers
         void InitializeRenderers();
+
+        // Update Renderers
+        void UpdateRenderers() {
+
+        }
 
 };
