@@ -8,7 +8,7 @@
     Date Created: 2021-11-12
 */
 
-#include "Core/Management/LoggingSystem.h
+#include "Core/Management/LoggingSystem.h"
 
 class sERSSubSystem {
 
