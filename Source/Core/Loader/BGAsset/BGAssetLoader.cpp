@@ -15,7 +15,7 @@
 ////////////////////////
 
 // Asset Loader Constructor
-AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration, ERS_STRUCTURE_DATA_BUFFER *DataBuffer) {
+AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
 
     // Initialization Start
     Logger->Log("Initializing Asset Loader Class", 6);
@@ -23,8 +23,9 @@ AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration, E
     // Copy Pointer
     Logger_ = Logger;
     SystemConfiguration_ = SystemConfiguration;
-    DataBuffer_ = DataBuffer;
 
+    // Initialize Data Buffer
+    DataBuffer_.Init(Logger_);
     
 
     // Get Config Values
