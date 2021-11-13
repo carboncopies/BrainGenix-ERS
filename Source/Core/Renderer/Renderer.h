@@ -19,6 +19,7 @@
 
 
 
+#include "Core/Loader/BGAsset/BGAssetLoader.h"
 #include "Core/Structures/DataBuffer/DataBuffer.h"
 #include "Core/Renderer/VisualRenderer/WindowInputProcessor.h"
 #include "Core/Renderer/VisualRenderer/ShaderManager.h"
@@ -85,6 +86,7 @@ class Renderer {
         // Member Variables
         YAML::Node *SystemConfiguration_;
         LoggerClass *Logger_;
+        AssetLoader *AssetLoader_;
 
         // Control Values
         bool *SystemShouldRun_;
@@ -120,7 +122,7 @@ class Renderer {
 
     public:
 
-        void InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun);
+        void InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun, AssetLoader *AssetLoader);
         void UpdateLoop();
         void CleanUp();
 

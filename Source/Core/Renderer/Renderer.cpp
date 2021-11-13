@@ -15,7 +15,7 @@ void ErrorCallback(int, const char* ErrorString) {
 }
 
 
-void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun) {
+void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun, AssetLoader *AssetLoader) {
 
     // Create Pointers
     Logger->Log("Populating Renderer Member Pointers", 5);

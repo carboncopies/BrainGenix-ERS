@@ -10,7 +10,9 @@
 
 #include "BGAssetLoader.h"
 
-
+////////////////////////
+// TODO: RENAME ASSETLOADER TO ASSETMANAGER AND GIVE OWN ROOT DIR IN SOURCE TREE
+////////////////////////
 
 // Asset Loader Constructor
 AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
@@ -52,4 +54,5 @@ AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
     }
 
 }
+
 // Read Scene -> Load Images/etc [load model last] -> Push into data buffer
