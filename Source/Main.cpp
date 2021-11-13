@@ -44,6 +44,9 @@ int main() {
     // Initialize Renderers
     sERSMainSubSystem.InitializeRenderers();
 
+    // Load In Model (TESTING - REMOVE THIS LATER AND MAKE A PROPER SOLUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!)
+    ERS_OBJECT_SCENE TestScene = LoadScene(0, &sERSLogger, true);
+    sERSAssetLoader.LoadSceneAssets(TestScene);
 
 
 
