@@ -44,7 +44,6 @@ ERS_OBJECT_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading)
         Scene.SceneData = YAML::LoadFile(FilePath);
 
     }
-    std::cout<<"test\n";
 
     // Parse Scene Metadata
     Scene.SceneName = Scene.SceneData["Name"].as<std::string>();
