@@ -42,17 +42,12 @@ void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
     // Iterate Through Scene Data
     for (long i = 0; i < (long)size(InputScene.Subnodes); i++) {
 
-
-
         // Get Subnode
         YAML::Node Subnode = InputScene.Subnodes[i];
-        std::cout<<Subnode<<std::endl;
 
         // Get Attributes
         long AssetID = Subnode["ID"].as<long>();
         std::string AssetType = Subnode["Type"].as<std::string>();
-
-        std::cout<<AssetID<<AssetType<<std::endl;
 
     }
 
