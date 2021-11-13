@@ -16,33 +16,30 @@
 #include "Core/Management/LoggingSystem.h"
 
 #include "Core/Structures/Scene/Scene.h"
-
+#include "Core/Structures/Model/Model.h"
 
 
 struct ERS_STRUCTURE_DATA_BUFFER {
 
     // Internal Vars
-    // LoggerClass *Logger_ = nullptr;
+    LoggerClass *Logger_ = nullptr;
+    bool LoggerInitialized_ = false;
 
-    // // Create Buffers
-    // std::map<long, long> IndexMap; // Stores as follows: {AssetID: Index In Vector}
-    // std::vector<std::variant<ERS_STRUCTURE_SCENE, long>> StructureBuffer;
-
-    // /*
-    // TODO: ADD VECTOR HERE THAT HAS ALL THE TYPES AVAILABLE.
-    // */
+    // Create Buffers
+    std::vector<ERS_OBJECT_MODEL> ModelsVector;
 
 
-    // // Initialize Buffer
-    // void Init( LoggerClass *Logger) {
+    // Initialize Buffer
+    void Init( LoggerClass *Logger) {
 
-    //     // Copy Pointer To The Logger
-    //     Logger_ = Logger;
+        // Copy Pointer To The Logger
+        Logger_ = Logger;
+        LoggerInitialized_ = true;
 
-    //     // Log System Initialization
-    //     Logger_->Log("Initialized ERS Data Buffer", 6);
+        // Log System Initialization
+        Logger_->Log("Initialized ERS Data Buffer", 6);
 
-    // }
+    }
 
     // // Add To Data Buffer
     // void AddToBuffer(auto Input, long ID) {
