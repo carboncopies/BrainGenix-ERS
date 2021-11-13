@@ -30,8 +30,8 @@ sERSSubSystem::sERSSubSystem(LoggerClass *Logger, YAML::Node *SystemConfiguratio
 void sERSSubSystem::InitializeRenderers() {
 
     // Initialize Renderer
-    sERSLogger.Log("Initializing Renderer", 5);
-    sERSRenderer.InitializeRenderer(SystemConfiguration_, Logger_);
-    sERSLogger.Log("Initialized Renderer", 5);
+    Logger_->Log("Initializing Renderer", 5);
+    VisualRenderer_.InitializeRenderer(SystemConfiguration_, Logger_);
+    Logger_->Log("Initialized Renderer", 5);
 
 }

@@ -23,7 +23,7 @@ class sERSSubSystem {
 
 
         // Renderer Related Vars
-        VisualRenderer VisualRenderer_;
+        Renderer VisualRenderer_; // FIXME: UPDATE RENDERER.h TO BE VISUALRENDERER AND MOVE THIS FILE INTO IT'S PLACE, RENAME
 
 
     public:
