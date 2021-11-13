@@ -35,6 +35,9 @@ class AssetLoader {
         AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration, ERS_STRUCTURE_DATA_BUFFER *DataBuffer);
 
         // Load Assets From Scene
-        LoadSceneAssets(ERS_OBJECT_SCENE InputScene);
+        void LoadSceneAssets(ERS_OBJECT_SCENE InputScene);
+
+        // Return Models To Be Drawn
+        std::vector<ERS_OBJECT_MODEL> GetModelsToDraw();
 
 };

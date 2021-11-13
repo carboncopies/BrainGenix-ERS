@@ -37,7 +37,7 @@ AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
 }
 
 // Read Scene Subnodes And Load Models/Textures Requested By That Scene
-AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
+void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 
     // Iterate Through Scene Data
     for (long i = 0; i < InputScene.NumberSubnodes; i++) {
@@ -54,5 +54,22 @@ AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
     }
 
 }
+
+// Returns All Models Loaded In The Asset Buffer And Marked To Be Drawn
+std::vector<*ERS_OBJECT_MODEL> AssetLoader::GetModelsToDraw() {
+
+    // Create Pointer Vector
+    std::vector<*ERS_OBJECT_MODEL> ModelPointers;
+
+    // Get Struct Data
+    for (long i = 0; i < size(DataBuffer_->ERS_OBJECT_MODEL_Vector_); i++) {
+        ModelPointers.push_back(&DataBuffer_->ERS_OBJECT_MODEL_Vector_[i]);
+    }
+
+    // Return Output
+    return ModelPointers
+
+
+};
 
 // Read Scene -> Load Images/etc [load model last] -> Push into data buffer
