@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-14T05:54:02.762Z" agent="5.0 (X11)" etag="RxLOodVHrbmsejt83Y_n" version="15.7.0" type="github" pages="8">
+<mxfile host="app.diagrams.net" modified="2021-11-14T05:54:12.135Z" agent="5.0 (X11)" etag="ixs-S7DncaeSkqceMUQv" version="15.7.0" type="github" pages="8">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="1831" dy="384" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -112,6 +112,12 @@
         </mxCell>
         <mxCell id="tl9g64c9rErbcovuG0vm-2" value="&lt;h1&gt;Naming Convention&lt;br&gt;&lt;/h1&gt;&lt;p&gt;For classes: The name should start with ERS_Class_ and describe the function (Ex: ERS_Class_Asset_Loader).&lt;/p&gt;&lt;p&gt;For functions: Should describe the purpose of the function, must be in UpperCamelCase (Ex: LoadAsset).&lt;/p&gt;&lt;p&gt;For structs: Should be in all capitals with underscores between words. Must start with ERS_STRUCTURE. (Ex: ERS_STRUCTURE_MODEL).&lt;/p&gt;&lt;p&gt;For variables: Should also be in UpperCamelCase and should describe the purpose for it&#39;s existence. (Ex: HasLoggerBeenInitialized).&lt;/p&gt;&lt;p&gt;For member variables: Should be UpperCamelCase with a trailing underscore. (Ex: TestVariable_).&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="40" y="150" width="770" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="tl9g64c9rErbcovuG0vm-4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="30" y="360" width="790" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="tl9g64c9rErbcovuG0vm-5" value="&lt;h1&gt;Naming Convention&lt;br&gt;&lt;/h1&gt;&lt;p&gt;For classes: The name should start with ERS_Class_ and describe the function (Ex: ERS_Class_Asset_Loader).&lt;/p&gt;&lt;p&gt;For functions: Should describe the purpose of the function, must be in UpperCamelCase (Ex: LoadAsset).&lt;/p&gt;&lt;p&gt;For structs: Should be in all capitals with underscores between words. Must start with ERS_STRUCTURE. (Ex: ERS_STRUCTURE_MODEL).&lt;/p&gt;&lt;p&gt;For variables: Should also be in UpperCamelCase and should describe the purpose for it&#39;s existence. (Ex: HasLoggerBeenInitialized).&lt;/p&gt;&lt;p&gt;For member variables: Should be UpperCamelCase with a trailing underscore. (Ex: TestVariable_).&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="370" width="770" height="180" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
