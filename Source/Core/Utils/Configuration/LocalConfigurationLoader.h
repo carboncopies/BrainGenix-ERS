@@ -19,8 +19,9 @@
  * 
  * details This functions read and parsea a yaml file.
  * 
- * param const char* ConfigurationPath
+ * param const char* ConfigurationPath Path to configuration file.
  * 
+ * return YAML::Node
  */
 static YAML::Node LoadConfig(const char* ConfigurationPath) {
 
