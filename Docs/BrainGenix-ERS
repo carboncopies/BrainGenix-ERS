@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-11-14T06:47:17.841Z" agent="5.0 (X11)" etag="chqSdrQA8hbHW2S_dQoQ" version="15.7.0" type="github" pages="8">
+<mxfile host="app.diagrams.net" modified="2021-11-14T10:36:22.561Z" agent="5.0 (X11)" etag="S5nUGMERDYe4LjYfP11U" version="15.7.0" type="github" pages="8">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
-    <mxGraphModel dx="2251" dy="549" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2272" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -144,7 +144,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="FCoB04X1h-tUOUQO4fBp" name="Sensory Data Translation Layer">
-    <mxGraphModel dx="1242" dy="1152" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="-278" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="Q1BeWzpviFWOEyhjAuBD-0" />
         <mxCell id="Q1BeWzpviFWOEyhjAuBD-1" parent="Q1BeWzpviFWOEyhjAuBD-0" />
