@@ -33,9 +33,9 @@
 #include "Core/Structures/Vertex/Vertex.h"
 #include "Core/Loader/Image/FileIO.h"
 
-struct ERS_OBJECT_MODEL;
+struct ERS_OBJECT_DATA_BUFFER{};
 
-#include "Core/Structures/DataBuffer/DataBuffer.h"
+//#include "Core/Structures/DataBuffer/DataBuffer.h"
 
 struct ImageFileObject {
 
