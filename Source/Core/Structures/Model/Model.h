@@ -32,7 +32,7 @@
 #include "Core/Structures/Textures/2DTexture.h"
 #include "Core/Structures/Vertex/Vertex.h"
 #include "Core/Loader/Image/FileIO.h"
-#include "Core/Structures/DataBuffer/DataBuffer.h"
+
 
 struct ImageFileObject {
 
