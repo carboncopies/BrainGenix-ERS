@@ -64,7 +64,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
             // Check Type
             if (MapElement.AssetType == std::string("ERS_OBJECT_IMAGE")) {
-                if (MapElement.AssetPath == std::to_string(Path)) {
+                if (MapElement.AssetPath == std::string(Path)) {
                     
                     // Get Vector Index
                     long VectorIndex = MapElement.VectorIndex;
