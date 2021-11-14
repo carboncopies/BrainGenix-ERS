@@ -94,8 +94,6 @@ class ERS_OBJECT_MODEL {
         // Logger
         LoggerClass *Logger_;
 
-        // Pointer
-        ERS_STRUCTURE_DATA_BUFFER *DataBuffer_;
 
         // Load Model From File
         void LoadModelFromFile(std::string const &Path, LoggerClass *Logger, ERS_STRUCTURE_DATA_BUFFER *DataBuffer);
