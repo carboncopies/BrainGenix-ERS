@@ -2,11 +2,10 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-/*
-    Description: This is the main file of the system.
-    Additonal Notes: None
-    Date Created: 2021-11-01
-*/
+/**
+ * This is the main file of the system.
+ * Date Created: 2021-11-01
+ */
 
 #include "Core/Loader/Configuration/ConfigurationLoader.h"
 #include "Core/Management/LoggingSystem.h"
