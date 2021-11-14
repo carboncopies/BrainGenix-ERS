@@ -121,7 +121,8 @@ void AssetLoader::LoadModel(long AssetID, YAML::Node Params) {
         FilePath += std::string(".bg");
 
         // Load Model
-        //ERSImage Image = ImageDecoder_.LoadImageFromFile(FilePath.c_str());
+        ERS_OBJECT_MODEL Model;
+        Model.LoadModelFromFile(FilePath.c_str());
 
         // Place Into Data Buffer
         //DataBuffer_.Add_ERS_OBJECT_IMAGE(Image, AssetID);
