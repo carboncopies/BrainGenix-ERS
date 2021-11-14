@@ -15,11 +15,10 @@
 
 
 // Load Model From File
-void ERS_OBJECT_MODEL::LoadModelFromFile(long AssetID, LoggerClass *Logger, ERS_STRUCTURE_DATA_BUFFER *DataBuffer) {
+void ERS_OBJECT_MODEL::LoadModelFromFile(long AssetID, LoggerClass *Logger) {
 
     // Set Pointer
     Logger_ = Logger;
-    DataBuffer_ = DataBuffer;
 
     // Copy AssetID
     AssetID_ = AssetID;
