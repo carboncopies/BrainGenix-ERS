@@ -16,6 +16,7 @@
 #include "Core/Structures/Scene/Scene.h"
 #include "Core/Structures/DataBuffer/DataBuffer.h"
 #include "Core/Loader/Image/ImageDecoder.h"
+#include "Core/Structures/Model/Model.h"
 
 
 class AssetLoader {
