@@ -96,7 +96,7 @@ class ERS_OBJECT_MODEL {
 
 
         // Load Model From File
-        void LoadModelFromFile(std::string const &Path, LoggerClass *Logger, ERS_STRUCTURE_DATA_BUFFER *DataBuffer);
+        void LoadModelFromFile(std::string const &Path, LoggerClass *Logger);
 
         // Draw Model
         void Draw(ERS_OBJECT_SHADER &Shader);
