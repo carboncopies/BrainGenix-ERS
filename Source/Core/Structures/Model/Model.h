@@ -32,7 +32,7 @@
 #include "Core/Structures/Textures/2DTexture.h"
 #include "Core/Structures/Vertex/Vertex.h"
 #include "Core/Loader/Image/FileIO.h"
-
+#include "Core/Structures/DataBuffer/DataBuffer.h"
 
 struct ImageFileObject {
 
@@ -87,13 +87,18 @@ class ERS_OBJECT_MODEL {
         std::vector<ERS_OBJECT_MESH> Meshes;
         std::vector<ERS_OBJECT_TEXTURE_2D> Textures_Loaded;
         std::string Directory;
+
         bool GammaCorrection;
+        long AssetID_;
 
         // Logger
         LoggerClass *Logger_;
 
+        // Pointer
+        ERS_STRUCTURE_DATA_BUFFER *DataBuffer_;
+
         // Load Model From File
-        void LoadModelFromFile(std::string const &Path, LoggerClass *Logger);
+        void LoadModelFromFile(std::string const &Path, LoggerClass *Logger, ERS_STRUCTURE_DATA_BUFFER *DataBuffer);
 
         // Draw Model
         void Draw(ERS_OBJECT_SHADER &Shader);

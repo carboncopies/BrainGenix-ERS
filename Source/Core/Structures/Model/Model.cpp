@@ -15,14 +15,21 @@
 
 
 // Load Model From File
-void ERS_OBJECT_MODEL::LoadModelFromFile(std::string const &Path, LoggerClass *Logger) {
+void ERS_OBJECT_MODEL::LoadModelFromFile(long AssetID, LoggerClass *Logger, ERS_STRUCTURE_DATA_BUFFER *DataBuffer) {
 
     // Set Pointer
     Logger_ = Logger;
+    DataBuffer_ = DataBuffer;
+
+    // Copy AssetID
+    AssetID_ = AssetID;
+
+    // Generate File Path
+    std::string FilePath = "Assets/" + std::to_string(AssetID) + std::string(".bg");
 
     // Read File
     Assimp::Importer Importer;
-    Logger_->Log(std::string(std::string("Loading Model At File Path: ") + std::string(Path)).c_str(), 3);
+    Logger_->Log(std::string(std::string("Loading Model At File Path: ") + FilePath.c_str(), 3);
     const aiScene* Scene = Importer.ReadFile(Path, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
 
     // Log Errors
@@ -183,13 +190,21 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
         // If Texture Not Already Loaded
         if (!Skip) {
             
-            // Load Texture From File
-            std::string FilePath = std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str()));
-            Logger_->Log(std::string(std::string("Loading Texture At File Path: ") + FilePath).c_str(), 3);
+            // Generate Search String
+            std::string SearchString = 
+            SearchString += "/";
+            SearchString += Str.C_Str();
+
+            // Load Texture From Data Buffer
+            ERSImage RawImage = DataBuffer_->GetImage()
+
+
+            // std::string FilePath = std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str()));
+            // Logger_->Log(std::string(std::string("Loading Texture At File Path: ") + FilePath).c_str(), 3);
             
 
-            ImageFileObject Image;
-            Image.LoadImage(FilePath.c_str());
+            // ImageFileObject Image;
+            // Image.LoadImage(FilePath.c_str());
 
             // Convert Texture To FIBITMAP*
             ERS_OBJECT_TEXTURE_2D Texture;
