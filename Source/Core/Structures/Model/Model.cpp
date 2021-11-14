@@ -190,7 +190,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
         if (!Skip) {
             
             // Generate Search String
-            std::string SearchString = std::to_string(AssetID_);
+            std::string SearchString = "Assets"//std::to_string(AssetID_);
             SearchString += "/";
             SearchString += Str.C_Str();
 
