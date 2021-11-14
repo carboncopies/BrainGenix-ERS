@@ -31,14 +31,7 @@ int main() {
 
     sERSLogger.Log("Initialized 'Management::Logger::LoggerClass'", 5);
 
-    // Initialize Asset Loader System
-    AssetLoader sERSAssetLoader(&sERSLogger, &SystemConfiguration);
 
-    // Initialize System
-    sERSSubSystem sERSMainSubSystem(&sERSLogger, &SystemConfiguration, &SystemShouldRun, &sERSAssetLoader);
-
-    // Initialize Renderers
-    sERSMainSubSystem.InitializeRenderers();
 
 
     
