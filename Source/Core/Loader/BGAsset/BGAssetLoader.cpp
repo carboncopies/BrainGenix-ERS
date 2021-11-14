@@ -125,7 +125,7 @@ void AssetLoader::LoadModel(long AssetID, YAML::Node Params) {
         Model.LoadModelFromFile(1, Logger_);
 
         // Place Into Data Buffer
-        DataBuffer_.Add_ERS_OBJECT_MODEL(Image, AssetID);
+        //DataBuffer_.Add_ERS_OBJECT_MODEL(Image, AssetID);
 
     }
 
