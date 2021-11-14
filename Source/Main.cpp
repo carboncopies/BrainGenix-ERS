@@ -9,8 +9,8 @@
     Date Created: 2021-11-01
 */
 
-#include "Core/Loader/Configuration/ConfigurationLoader.h"
-#include "Core/Management/LoggingSystem.h"
+#include "Core/Utils/Configuration/LocalConfigurationLoader.h"
+#include "Core/Utils/Logger/LoggingSystem.h"
 
 
 /**

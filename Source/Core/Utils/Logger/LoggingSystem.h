@@ -22,7 +22,9 @@
 #include "yaml-cpp/yaml.h"
 
 
-
+/**
+ * @brief Main Logging System, Saves Logs To Database If Configured To.
+ */
 class LoggerClass {
 
     // Define "Local" Variables And Functions //
