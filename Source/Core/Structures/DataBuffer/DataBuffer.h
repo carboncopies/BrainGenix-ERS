@@ -17,7 +17,6 @@
 
 #include "Core/Management/LoggingSystem.h"
 
-struct ERS_STRUCTURE_DATA_BUFFER;
 
 #include "Core/Structures/Scene/Scene.h"
 #include "Core/Structures/Model/Model.h"
