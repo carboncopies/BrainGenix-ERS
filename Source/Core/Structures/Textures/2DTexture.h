@@ -13,6 +13,8 @@
 #include <string>
 #include "FreeImage.h"
 
+#include "Core/Loader/Image/ImageDecoder.h"
+
 // Structure To Hold 2D ERS Texture
 struct ERS_OBJECT_TEXTURE_2D {
 
