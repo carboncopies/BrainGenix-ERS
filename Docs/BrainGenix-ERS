@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-14T06:28:21.962Z" agent="5.0 (X11)" etag="eOh0ib5nVsdtmCfEkP8r" version="15.7.0" type="github" pages="8">
+<mxfile host="app.diagrams.net" modified="2021-11-14T06:28:29.626Z" agent="5.0 (X11)" etag="rEN6wOxQMJ_LD3XbV6i-" version="15.7.0" type="github" pages="8">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2251" dy="549" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -120,10 +120,10 @@
           <mxGeometry x="40" y="330" width="770" height="400" as="geometry" />
         </mxCell>
         <mxCell id="shQ3L-Lrsegv_2YYrfHF-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="30" y="750" width="790" height="330" as="geometry" />
+          <mxGeometry x="30" y="750" width="790" height="340" as="geometry" />
         </mxCell>
         <mxCell id="shQ3L-Lrsegv_2YYrfHF-3" value="&lt;h1&gt;Additional Notes&lt;br&gt;&lt;/h1&gt;&lt;div&gt;When working on code, please remember to do the following:&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;- If working on something with a Trello card, please remember to update the card when done or if encountering a problem. Even following up with an email is helpful, preferably both. Remember that we can&#39;t help you or give you credit for working on the code if we don&#39;t know you did it. Worse yet, if we don&#39;t know you&#39;re doing it, another person may be assigned to work on the same thing you already did. TL;DR please please please update your cards so we can all avoid confusion and frustration.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;- If you&#39;re *NOT* working on something with a Trello card, *PLEASE MAKE ONE*! This allows us to understand the changes that have been made to better help you.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;- When working on a new feature, or something that could potentially break something else, please make a new branch describing what you&#39;re doing (in UpperCamelCase). Also, remember to commit frequently.&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;- When creating a new function or changing the purpose of an existing one, please make sure to update the block diagram here. Use the appropriate page and make sure that it&#39;s function, purpose, and structure are clear to anyone coming on board - even those not familiar with the code. This allows us to bring on new people more easily, which lets us work on the system more quickly.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;- Please document any potential failure cases in your functions with comments so that other developers don&#39;t accidentally create unexpected results.&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="40" y="760" width="770" height="310" as="geometry" />
+          <mxGeometry x="40" y="760" width="770" height="320" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
