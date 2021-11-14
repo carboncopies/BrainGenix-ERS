@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-14T06:25:00.911Z" agent="5.0 (X11)" etag="-CgsBEvmdv1vdkXvrXFa" version="15.7.0" type="github" pages="8">
+<mxfile host="app.diagrams.net" modified="2021-11-14T06:25:10.359Z" agent="5.0 (X11)" etag="nF-dKTb2-x8lpqO_c2dy" version="15.7.0" type="github" pages="8">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2531" dy="658" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -108,10 +108,10 @@
           <mxGeometry x="10" y="10" width="830" height="80" as="geometry" />
         </mxCell>
         <mxCell id="tl9g64c9rErbcovuG0vm-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="30" y="140" width="790" height="220" as="geometry" />
+          <mxGeometry x="30" y="100" width="790" height="220" as="geometry" />
         </mxCell>
         <mxCell id="tl9g64c9rErbcovuG0vm-2" value="&lt;h1&gt;Naming Convention&lt;br&gt;&lt;/h1&gt;&lt;p&gt;For classes: The name should start with ERS_Class_ and describe the function (Ex: ERS_Class_Asset_Loader).&lt;/p&gt;&lt;p&gt;For functions: Should describe the purpose of the function, must be in UpperCamelCase (Ex: LoadAsset).&lt;/p&gt;&lt;p&gt;For structs: Should be in all capitals with underscores between words. Must start with ERS_STRUCTURE. (Ex: ERS_STRUCTURE_MODEL).&lt;/p&gt;&lt;p&gt;For variables: Should also be in UpperCamelCase and should describe the purpose for it&#39;s existence. (Ex: HasLoggerBeenInitialized).&lt;/p&gt;&lt;p&gt;For member variables: Should be UpperCamelCase with a trailing underscore. (Ex: TestVariable_).&lt;/p&gt;&lt;p&gt;For comments: Every block of code (around ten lines or so) should have a comment explaining the purpose of that section. &lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="40" y="150" width="770" height="200" as="geometry" />
+          <mxGeometry x="40" y="110" width="770" height="200" as="geometry" />
         </mxCell>
         <mxCell id="tl9g64c9rErbcovuG0vm-4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="30" y="380" width="790" height="420" as="geometry" />
