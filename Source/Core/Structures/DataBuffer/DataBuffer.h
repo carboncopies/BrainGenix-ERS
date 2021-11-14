@@ -13,6 +13,7 @@
 
 #include <vector>
 #include <variant>
+#include <string>
 
 #include "Core/Management/LoggingSystem.h"
 
