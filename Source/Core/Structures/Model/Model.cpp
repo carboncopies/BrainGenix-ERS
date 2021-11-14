@@ -30,7 +30,7 @@ void ERS_OBJECT_MODEL::LoadModelFromFile(long AssetID, LoggerClass *Logger, ERS_
     // Read File
     Assimp::Importer Importer;
     Logger_->Log(std::string(std::string("Loading Model At File Path: ") + FilePath.c_str(), 3);
-    const aiScene* Scene = Importer.ReadFile(Path, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
+    const aiScene* Scene = Importer.ReadFile(FilePath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
 
     // Log Errors
     if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
@@ -39,7 +39,7 @@ void ERS_OBJECT_MODEL::LoadModelFromFile(long AssetID, LoggerClass *Logger, ERS_
     }
 
     // Retrieve Directory
-    Directory = Path.substr(0, Path.find_last_of("/"));
+    //Directory = FilePath.substr(0, Path.find_last_of("/"));
 
     // Process Root Node Recursively
     ProcessNode(Scene->mRootNode, Scene);
@@ -191,12 +191,12 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
         if (!Skip) {
             
             // Generate Search String
-            std::string SearchString = 
+            std::string SearchString = std::to_string(AssetID_);
             SearchString += "/";
             SearchString += Str.C_Str();
 
             // Load Texture From Data Buffer
-            ERSImage RawImage = DataBuffer_->GetImage()
+            ERSImage RawImage = DataBuffer_->GetImage(SearchString.c_str());
 
 
             // std::string FilePath = std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str()));

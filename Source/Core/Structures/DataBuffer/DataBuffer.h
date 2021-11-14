@@ -47,6 +47,39 @@ struct ERS_STRUCTURE_DATA_BUFFER {
         return ERS_OBJECT_MODEL_Vector_.size();
     }
 
+    // Return An Image Stored In The Image Vector With A Matching Path
+    ERSImage* GetImage(const char* Path) {
+
+        // Get Map Length
+        long MapLength = (long)MetadataMap_.size();
+
+        // Iterate Through Map
+        for (long i = 0; i < MapLength; i++) {
+
+            // Get Map Element
+            VectorData MapElement = MetadataMap_[i];
+
+            // Check Type
+            if (MapElement.AssetType == std::string("ERS_OBJECT_IMAGE")) {
+                if (MapElement.AssetPath == std::to_string(Path)) {
+                    
+                    // Get Vector Index
+                    long VectorIndex = MapElement.VectorIndex;
+
+                    // Return Element
+                    return &ERS_OBJECT_IMAGE_Vector_[VectorIndex];
+
+                }
+            }
+
+
+        }
+
+        // No Image Found
+        return nullptr;
+
+    }
+
 
 
     // Initialize Buffer
