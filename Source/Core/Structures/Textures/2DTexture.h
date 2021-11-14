@@ -24,24 +24,29 @@ struct ERS_OBJECT_TEXTURE_2D {
     std::string Path;
 
     // Texutre Init Function
-    void InitializeTexture(BYTE* ImageDataBuffer, size_t ImageLength, bool FlipImage = true) {
+    void InitializeTexture(ERSImage *Image) {
 
         // Move this to a class
-        FreeImage_Initialise();
+        //FreeImage_Initialise();
 
     
+        // UPDATE IMAGE DECODER TO USE IN-MEMORY IMAGE DECODING
+        // // Decode Image
+        // FIMEMORY* EncodedImageData = FreeImage_OpenMemory(reinterpret_cast<BYTE*> (ImageDataBuffer), ImageLength);
+        // FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(EncodedImageData);
+        // FIBITMAP* ImageData = FreeImage_LoadFromMemory(Format, EncodedImageData);
 
-        // Decode Image
-        FIMEMORY* EncodedImageData = FreeImage_OpenMemory(reinterpret_cast<BYTE*> (ImageDataBuffer), ImageLength);
-        FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(EncodedImageData);
-        FIBITMAP* ImageData = FreeImage_LoadFromMemory(Format, EncodedImageData);
-
-        // Optionally Flip Image
-        if (FlipImage) {
-            FreeImage_FlipVertical(ImageData);
-        }
+        // // Optionally Flip Image
+        // if (FlipImage) {
+        //     FreeImage_FlipVertical(ImageData);
+        // }
     
-        // Set Properties
+        // // Set Properties
+        // float Width = FreeImage_GetWidth(ImageData);
+        // float Height = FreeImage_GetHeight(ImageData);
+        // float Channels = 3;//FreeImage_GetLine(ImageData) / FreeImage_GetWidth(ImageData);
+
+        FIBITMAP* ImageData = Image->ImageData;
         float Width = FreeImage_GetWidth(ImageData);
         float Height = FreeImage_GetHeight(ImageData);
         float Channels = 3;//FreeImage_GetLine(ImageData) / FreeImage_GetWidth(ImageData);
@@ -67,11 +72,12 @@ struct ERS_OBJECT_TEXTURE_2D {
         }
         glGenerateMipmap(GL_TEXTURE_2D);
 
+
         // Deallocate Image Data
-        FreeImage_CloseMemory(EncodedImageData);
+        //FreeImage_CloseMemory(EncodedImageData);
 
         // Move This Later
-        FreeImage_DeInitialise();
+        //FreeImage_DeInitialise();
 
     }
 

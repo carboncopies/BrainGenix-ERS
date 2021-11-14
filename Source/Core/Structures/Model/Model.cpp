@@ -196,15 +196,8 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             SearchString += Str.C_Str();
 
             // Load Texture From Data Buffer
-            ERSImage RawImage = DataBuffer_->GetImage(SearchString.c_str());
+            ERSImage *RawImage = DataBuffer_->GetImage(SearchString.c_str());
 
-
-            // std::string FilePath = std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str()));
-            // Logger_->Log(std::string(std::string("Loading Texture At File Path: ") + FilePath).c_str(), 3);
-            
-
-            // ImageFileObject Image;
-            // Image.LoadImage(FilePath.c_str());
 
             // Convert Texture To FIBITMAP*
             ERS_OBJECT_TEXTURE_2D Texture;
