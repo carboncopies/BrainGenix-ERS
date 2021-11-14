@@ -14,9 +14,14 @@
 #include <string>
 #include <yaml-cpp/yaml.h>
 
-/** breif LoadConfig - Loads and parses YAML file.
+
+/** brief LoadConfig - Loads and parses YAML file.
+ * 
  * details This functions read and parsea a yaml file.
- * You'll need a 
+ * 
+ * param const char* ConfigurationPath
+ * 
+ */
 static YAML::Node LoadConfig(const char* ConfigurationPath) {
 
     // Read Configuration //
