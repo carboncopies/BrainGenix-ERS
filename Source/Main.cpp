@@ -2,15 +2,22 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-/**
- * This is the main file of the system.
- * Date Created: 2021-11-01
- */
+/*
+    Description: This is the main file of the system.
+    Documentation Status: No Docs
+    Additonal Notes: None
+    Date Created: 2021-11-01
+*/
 
 #include "Core/Loader/Configuration/ConfigurationLoader.h"
 #include "Core/Management/LoggingSystem.h"
 
 
+/**
+ * @brief Entry point.
+ * 
+ * @return int 
+ */
 int main() {
 
     // Initialize System State Bool
