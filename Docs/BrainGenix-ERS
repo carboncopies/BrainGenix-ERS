@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-14T09:53:44.170Z" agent="5.0 (X11)" etag="OJJ1n-tonRU2yiPQi8g1" version="15.7.0" type="github" pages="9">
+<mxfile host="app.diagrams.net" modified="2021-11-14T09:55:12.026Z" agent="5.0 (X11)" etag="lB2y9OtcJUjj4isRcGs9" version="15.7.0" type="github" pages="9">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2272" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -149,13 +149,16 @@
         <mxCell id="jqv7gzWIo2c77FC6_o6i-0" />
         <mxCell id="jqv7gzWIo2c77FC6_o6i-1" parent="jqv7gzWIo2c77FC6_o6i-0" />
         <mxCell id="jqv7gzWIo2c77FC6_o6i-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="jqv7gzWIo2c77FC6_o6i-1">
-          <mxGeometry x="280" y="120" width="320" height="120" as="geometry" />
+          <mxGeometry x="165" y="120" width="520" height="280" as="geometry" />
         </mxCell>
         <mxCell id="jqv7gzWIo2c77FC6_o6i-3" value="&lt;h1&gt;Implemented Structure&lt;br&gt;&lt;/h1&gt;&lt;p&gt;The implemented structure diagram explains what&#39;s been actually done and reflects the current state of the project. It should be updated by project developers while creating code.&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="jqv7gzWIo2c77FC6_o6i-1">
           <mxGeometry x="10" y="10" width="830" height="90" as="geometry" />
         </mxCell>
         <mxCell id="jqv7gzWIo2c77FC6_o6i-4" value="Main.Cpp" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="jqv7gzWIo2c77FC6_o6i-1">
-          <mxGeometry x="280" y="120" width="320" height="20" as="geometry" />
+          <mxGeometry x="165" y="120" width="520" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="jqv7gzWIo2c77FC6_o6i-5" value="&lt;div&gt;INCLUDES:&lt;/div&gt;&lt;div&gt;Core/Utils/ConfigurationLoader.h&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="jqv7gzWIo2c77FC6_o6i-1">
+          <mxGeometry x="180" y="150" width="490" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
