@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-14T09:58:24.540Z" agent="5.0 (X11)" etag="YoG7Xa7iPJ_CbG93NHgn" version="15.7.0" type="github" pages="9">
+<mxfile host="app.diagrams.net" modified="2021-11-14T10:36:16.194Z" agent="5.0 (X11)" etag="ri5uP4mlWMB6toRaPnTI" version="15.7.0" type="github" pages="9">
   <diagram id="QJmcPfvI0fefY2HCmFKt" name="System Overview">
     <mxGraphModel dx="2272" dy="912" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -144,7 +144,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="wIRHN5hCebyrBqOvbdah" name="Implemented Structure">
-    <mxGraphModel dx="677" dy="434" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2031" dy="1303" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="jqv7gzWIo2c77FC6_o6i-0" />
         <mxCell id="jqv7gzWIo2c77FC6_o6i-1" parent="jqv7gzWIo2c77FC6_o6i-0" />
@@ -168,6 +168,9 @@
         </mxCell>
         <mxCell id="jqv7gzWIo2c77FC6_o6i-9" value="&lt;div&gt;INCLUDES:&lt;/div&gt;&lt;div&gt;&amp;lt;string&amp;gt;&lt;/div&gt;&lt;div&gt;&amp;lt;yaml-cpp/yaml.h&amp;gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="jqv7gzWIo2c77FC6_o6i-1">
           <mxGeometry x="675" y="480" width="490" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="jqv7gzWIo2c77FC6_o6i-10" value="&lt;div&gt;FUNCTION: LoadConfig&lt;/div&gt;&lt;div&gt;RETURNS: YAML::Node&lt;/div&gt;&lt;div&gt;PARAMS: const char* Configuration File Path&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="jqv7gzWIo2c77FC6_o6i-1">
+          <mxGeometry x="675" y="540" width="295" height="160" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
