@@ -21,7 +21,7 @@
 int main() {
 
     // Initialize System State Bool
-    bool SystemShouldRun = true;
+    bool SystemShouldRun = true; /**<Indicates If System Should Run, False Will Cause System To Exit On Next RunLoop Iteration>*/
 
     // Load System Configuration File
     YAML::Node SystemConfiguration = LoadConfig("Config.yaml");
