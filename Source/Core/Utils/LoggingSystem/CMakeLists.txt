@@ -25,5 +25,7 @@ set(LoggingSystem_Headers
 # Create Library (Name Should Be Parent Dir Name)
 add_library(LoggingSystem ${LoggingSystem_Sources} ${LoggingSystem_Headers})
 
-target_sources(${PROJECT_NAME} PRIVATE ${LoggingSystem_Sources})
-target_sources(${PROJECT_NAME} PRIVATE ${LoggingSystem_Headers})
+target_link_libraries(${PROJECT_NAME} LoggingSystem)
+
+#target_sources(${PROJECT_NAME} PRIVATE ${LoggingSystem_Sources})
+#target_sources(${PROJECT_NAME} PRIVATE ${LoggingSystem_Headers})
