@@ -15,13 +15,13 @@
 
 
 
-// Define LoggerClass::InitializeLogger //
-void LoggerClass::InitializeLogger(YAML::Node SystemConfiguration) { // ** NOTE: THIS SHOULD TAKE A CONFIG DICT FROM YAML IN THE FUTRE ** //
+// LoggerClass Constructor
+LoggerClass::LoggerClass(YAML::Node SystemConfiguration) {
 
     // Make Local Copy Of System Config
     LocalSystemConfiguration = SystemConfiguration;
 
-    // Update Local Config Parameters //
+    // Update Local Config Parameters
     PrintLogOutput = SystemConfiguration["EnablePrintOutput"].as<bool>();
     MinimumLogLevel = SystemConfiguration["SetMinimumLogLevel"].as<int>();
     ColorizeLog = SystemConfiguration["ColorizeLogOutput"].as<bool>();
@@ -47,8 +47,7 @@ void LoggerClass::InitializeLogger(YAML::Node SystemConfiguration) { // ** NOTE:
         };
     }
 
-
-    // Print Log Key //
+    // Print Log Key
     if (PrintLogOutput) {
         std::cout << "[ Level] [               Time] [Message]\n";
     };
@@ -56,7 +55,20 @@ void LoggerClass::InitializeLogger(YAML::Node SystemConfiguration) { // ** NOTE:
 
 };
 
-// Define LoggerClass::Log //
+// LoggerClass Destructor
+LoggerClass::~LoggerClass() {
+
+    // Log Shutdown
+    Log("System Logger Destructor Called, Logger Shutting Down", 6);
+
+
+    // IN FUTURE, ADD STUFF TO CLEANUP REST OF SYSTEM
+    
+
+}
+
+
+// Define LoggerClass::Log
 void LoggerClass::Log(const char* LogItem, int LogLevel) {
 
     // Get Current Time In YYYY-MM-DD-HH-MM-SS Format

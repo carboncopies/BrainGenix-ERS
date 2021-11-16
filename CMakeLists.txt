@@ -34,54 +34,54 @@ disable_target_warnings(yaml-cpp)
 #set(RAPID_JSON_DIR "rapidjson")
 #include_directories("${LIB_DIR}/${RAPID_JSON_DIR}/include/rapidjson")
 
-# # Link Glad Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/glad)
-disable_target_warnings(glad)
+# # # Link Glad Library (Not Header Only)
+# add_subdirectory(${LIB_DIR}/glad)
+# disable_target_warnings(glad)
 
-# Add GLM Library (Header Only)
-add_subdirectory(${LIB_DIR}/glm)
+# # Add GLM Library (Header Only)
+# add_subdirectory(${LIB_DIR}/glm)
 
-# Add GLFW Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/glfw)
-disable_target_warnings(glfw)
+# # Add GLFW Library (Not Header Only)
+# add_subdirectory(${LIB_DIR}/glfw)
+# disable_target_warnings(glfw)
 
-# Add FreeImage Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
-disable_target_warnings(FreeImage)
+# # Add FreeImage Library (Not Header Only)
+# add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
+# disable_target_warnings(FreeImage)
 
-# Add ASSIMP Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/assimp)
-disable_target_warnings(assimp)
+# # Add ASSIMP Library (Not Header Only)
+# add_subdirectory(${LIB_DIR}/assimp)
+# disable_target_warnings(assimp)
 
-# Add Backward Library (Header Only)
-add_subdirectory(${LIB_DIR}/backward)
-
-
-
-# # Add Bullet Library (Not Header Only)
-# set(BULLET_DIR "${LIB_DIR}/bullet")
-# add_subdirectory("${BULLET_DIR}")
-# include_directories("${BULLET_DIR}/src")
+# # Add Backward Library (Header Only)
+# add_subdirectory(${LIB_DIR}/backward)
 
 
-# Add Meshoptimizer Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/meshoptimizer)
-disable_target_warnings(meshoptimizer)
 
-# Add CEGUI Library (Not Header Only)
-set(CEGUI_SAMPLES_ENABLED 0)
-set(CEGUI_SAMPLES_ENABLE_WIDGET_DEMO 0)
+# # # Add Bullet Library (Not Header Only)
+# # set(BULLET_DIR "${LIB_DIR}/bullet")
+# # add_subdirectory("${BULLET_DIR}")
+# # include_directories("${BULLET_DIR}/src")
 
-set(GLFW_H_PATH ${LIB_DIR}/glfw/include/GLFW/glfw3.h)
-set(LIBXML2_LIBRARY ${LIB_DIR}/libxml2)
-set(LIBXML2_INCLUDE_DIR ${LIB_DIR}/libxml2/include)
-set(SDL2IMAGE_LIB ${LIB_DIR}/SDL2_image) 
-set(SDL2IMAGE_H_PATH ${LIB_DIR}/SDL2_image/SDL_image.h)
-set(EPOXY_LIB ${LIB_DIR}/libepoxy)
-set(EPOXY_H_PATH ${LIB_DIR}/libepoxy/include)
 
-add_subdirectory(${LIB_DIR}/cegui)
-disable_target_warnings(CEGUIBase-0)
+# # Add Meshoptimizer Library (Not Header Only)
+# add_subdirectory(${LIB_DIR}/meshoptimizer)
+# disable_target_warnings(meshoptimizer)
+
+# # Add CEGUI Library (Not Header Only)
+# set(CEGUI_SAMPLES_ENABLED 0)
+# set(CEGUI_SAMPLES_ENABLE_WIDGET_DEMO 0)
+
+# set(GLFW_H_PATH ${LIB_DIR}/glfw/include/GLFW/glfw3.h)
+# set(LIBXML2_LIBRARY ${LIB_DIR}/libxml2)
+# set(LIBXML2_INCLUDE_DIR ${LIB_DIR}/libxml2/include)
+# set(SDL2IMAGE_LIB ${LIB_DIR}/SDL2_image) 
+# set(SDL2IMAGE_H_PATH ${LIB_DIR}/SDL2_image/SDL_image.h)
+# set(EPOXY_LIB ${LIB_DIR}/libepoxy)
+# set(EPOXY_H_PATH ${LIB_DIR}/libepoxy/include)
+
+# add_subdirectory(${LIB_DIR}/cegui)
+# disable_target_warnings(CEGUIBase-0)
 
 
 # # Add Libsndfile Library (Not Header Only)
@@ -122,45 +122,45 @@ disable_target_warnings(CEGUIBase-0)
 # Add Main.cpp
 add_executable(${PROJECT_NAME}
   ${SRC_DIR}/Main.cpp
-  ${SRC_DIR}/Core/Renderer/Renderer.cpp
-  ${SRC_DIR}/Core/Renderer/Renderer.h
-  ${SRC_DIR}/Core/Renderer/VisualRenderer/ShaderManager.cpp
-  ${SRC_DIR}/Core/Renderer/VisualRenderer/ShaderManager.h
-  ${SRC_DIR}/Core/Renderer/VisualRenderer/WindowInputProcessor.cpp
-  ${SRC_DIR}/Core/Renderer/VisualRenderer/WindowInputProcessor.h
-  ${SRC_DIR}/Core/Structures/Cameras/NoClip/NoClip.cpp
-  ${SRC_DIR}/Core/Structures/Cameras/NoClip/NoClip.h
-  ${SRC_DIR}/Core/Structures/Meshes/Mesh.cpp
-  ${SRC_DIR}/Core/Structures/Meshes/Mesh.h
-  ${SRC_DIR}/Core/Structures/Model/Model.cpp
-  ${SRC_DIR}/Core/Structures/Model/Model.h
-  ${SRC_DIR}/Core/Loader/Configuration/ConfigurationLoader.h
-  ${SRC_DIR}/Core/Loader/Image/FileIO.cpp
-  ${SRC_DIR}/Core/Loader/Image/FileIO.h
-  ${SRC_DIR}/Core/Loader/Image/ImageDecoder.cpp
-  ${SRC_DIR}/Core/Loader/Image/ImageDecoder.h
-  ${SRC_DIR}/Core/Loader/Scene/SceneDecoder.cpp
-  ${SRC_DIR}/Core/Loader/Scene/SceneDecoder.h
-  ${SRC_DIR}/Core/Management/LoggingSystem.cpp
-  ${SRC_DIR}/Core/Management/LoggingSystem.h
-  ${BACKWARD_ENABLE}
+  # ${SRC_DIR}/Core/Renderer/Renderer.cpp
+  # ${SRC_DIR}/Core/Renderer/Renderer.h
+  # ${SRC_DIR}/Core/Renderer/VisualRenderer/ShaderManager.cpp
+  # ${SRC_DIR}/Core/Renderer/VisualRenderer/ShaderManager.h
+  # ${SRC_DIR}/Core/Renderer/VisualRenderer/WindowInputProcessor.cpp
+  # ${SRC_DIR}/Core/Renderer/VisualRenderer/WindowInputProcessor.h
+  # ${SRC_DIR}/Core/Structures/Cameras/NoClip/NoClip.cpp
+  # ${SRC_DIR}/Core/Structures/Cameras/NoClip/NoClip.h
+  # ${SRC_DIR}/Core/Structures/Meshes/Mesh.cpp
+  # ${SRC_DIR}/Core/Structures/Meshes/Mesh.h
+  # ${SRC_DIR}/Core/Structures/Model/Model.cpp
+  # ${SRC_DIR}/Core/Structures/Model/Model.h
+  # ${SRC_DIR}/Core/Loader/Configuration/ConfigurationLoader.h
+  # ${SRC_DIR}/Core/Loader/Image/FileIO.cpp
+  # ${SRC_DIR}/Core/Loader/Image/FileIO.h
+  # ${SRC_DIR}/Core/Loader/Image/ImageDecoder.cpp
+  # ${SRC_DIR}/Core/Loader/Image/ImageDecoder.h
+  # ${SRC_DIR}/Core/Loader/Scene/SceneDecoder.cpp
+  # ${SRC_DIR}/Core/Loader/Scene/SceneDecoder.h
+  # ${SRC_DIR}/Core/Management/LoggingSystem.cpp
+  # ${SRC_DIR}/Core/Management/LoggingSystem.h
+  # ${BACKWARD_ENABLE}
   )
-target_include_directories(${PROJECT_NAME} PRIVATE Source)
-target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
-target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
-target_link_libraries(${PROJECT_NAME} PRIVATE
-  yaml-cpp
-  glad
-  glm
-  glfw
-  #${GLFW_LIBRARIES}
-  FreeImage
-  assimp
-  meshoptimizer
-  backward
-  CEGUIBase-0
-  #mysqlcppconn
-  )
+# target_include_directories(${PROJECT_NAME} PRIVATE Source)
+# target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
+# target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
+# target_link_libraries(${PROJECT_NAME} PRIVATE
+#   yaml-cpp
+#   glad
+#   glm
+#   glfw
+#   #${GLFW_LIBRARIES}
+#   FreeImage
+#   assimp
+#   meshoptimizer
+#   backward
+#   CEGUIBase-0
+#   #mysqlcppconn
+#   )
 
 
 

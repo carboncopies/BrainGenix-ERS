@@ -23,7 +23,7 @@
 
 
 /**
- * @brief Main Logging System, Saves Logs To Database If Configured To.
+ * @brief Main Logging System, Saves Logs To Database/Text File If Configured To.
  */
 class LoggerClass {
 
@@ -44,34 +44,53 @@ class LoggerClass {
         int LogTimeTargetWidth = 19;
         const char* InsertString = "                                                         ";
 
-
+        /**
+         * @brief Stores the Red, Green, Blue values of the text color.
+         */
         struct RGBColor {
             int Red;
             int Green;
             int Blue;
         };
 
-        std::map<int, RGBColor> ColorLookup_;
-        std::map<int, std::string> LogNameLookup_;
+        std::map<int, RGBColor> ColorLookup_; /*!< Lookup for converting log level to RGB values (stored in RGBColor struct). Populated based on values stored in Config.yaml */
+        std::map<int, std::string> LogNameLookup_; /*!< Lookup for converting log level to name of log level (See Config.yaml for values). */
 
 
-        //-----------------------------------------------------------------------------------//
-        // NOTE: LOG LEVELS ARE AS FOLLOWS:                                                  //
-        // The smaller the number, the less important the information.                       //
-        // Log lvl 0 is the least important, and is just debugging information essentially.  //
-        //-----------------------------------------------------------------------------------//
+        /**
+         * @brief Print out text to std::cout.
+         * 
+         * @param Message Message to be printed.
+         * @param LogLevel Level of log (looked up in map to convert to RGB values).
+         */
+        void ColorizeText(std::string Message, int LogLevel);
+
 
     public: 
 
 
-        // Define Initialization Function //
-        void InitializeLogger(YAML::Node SystemConfiguration);
+        /**
+         * @brief Setup the logger class (connect to db if needed, open file for writing if enabled, etc.)
+         * 
+         * @param SystemConfiguration System configuration file in YAML::Node format from Config.yaml.
+         */
+        LoggerClass(YAML::Node SystemConfiguration);
 
-        // Log An Item //
+        /**
+         * @brief Cleanup the logger class, close db connection, close file io, etc.
+         * 
+         */
+        ~LoggerClass();
+
+        /**
+         * @brief Add item to system log. 
+         * 
+         * @param LogItem Text to log.
+         * @param LogLevel Importance of log entry (consult Config.yaml for more info).
+         */
         void Log(const char* LogItem, int LogLevel=5);
 
-        // Add ANSI Text Color Codes Based On Log Level
-        void ColorizeText(std::string Message, int LogLevel);
+
 
 };
 
