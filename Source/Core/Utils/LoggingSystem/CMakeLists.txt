@@ -8,7 +8,7 @@
 
 
 # Specify Include Path (Should Match Location In Source Tree)
-include_directories(${PROJECT_SOURCE_DIR}/Core/Utils/LoggingSystem/)
+#include_directories(${PROJECT_SOURCE_DIR}/Core/Utils/LoggingSystem/)
 
 
 # Specify CPP Files In Source (Name Should Start With Parent Dir Name)
@@ -25,7 +25,8 @@ set(LoggingSystem_Headers
 # Create Library (Name Should Be Parent Dir Name)
 add_library(LoggingSystem ${LoggingSystem_Sources} ${LoggingSystem_Headers})
 
-target_link_libraries(${PROJECT_NAME} LoggingSystem)
+target_include_directories(LoggingSystem PUBLIC ./)
+#target_link_libraries(${PROJECT_NAME} LoggingSystem)
 
 #target_sources(${PROJECT_NAME} PRIVATE ${LoggingSystem_Sources})
 #target_sources(${PROJECT_NAME} PRIVATE ${LoggingSystem_Headers})
