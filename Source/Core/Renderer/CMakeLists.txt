@@ -19,6 +19,9 @@ set(Renderer_Headers
 add_library(Renderer ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
 target_link_libraries(Renderer 
     yaml-cpp
+    glm
+    glad
+    glfw
     )
 target_include_directories(Renderer PUBLIC ./)
 target_link_libraries(${PROJECT_NAME} Renderer)
