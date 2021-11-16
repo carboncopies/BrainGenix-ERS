@@ -7,15 +7,16 @@
 # BG-ERS-{NAME OF HEADER FILE WITHOUT ".h"}
 
 
-project (
-    "BG-ERS-LoggingSystem"
-    LANGUAGES CXX
-    )
+# Specify Include Path (Should Match Location In Source Tree)
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/Core/Utils/Logger)
 
 
-add_library(BG-ERS-LoggingSystem ${PROJECT_SOURCE_DIR}/LoggingSystem.cpp)
+# Specify CPP Files In Source
+set(Logger_Sources
+    "LoggingSystem.cpp"
+)
 
-
-add_executable(LoggingSystem ${PROJECT_SOURCE_DIR}/LoggingSystem.cpp)
-target_link_libraries(LoggingSystem BG-ERS-LoggingSystem)
-
+# Specify Header Files In Source
+set(Logger_Headers
+    "LoggingSystem.h"
+)
