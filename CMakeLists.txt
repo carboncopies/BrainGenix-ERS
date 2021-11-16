@@ -165,7 +165,7 @@ target_link_libraries(${PROJECT_NAME}
 
 # Add Internal Libs
 add_subdirectory(${SRC_DIR}/Core/Utils/Logger)
-target_link_libraries(${PROJECT_NAME} BG-ERS-LIBRARY-LoggingSystem)
+target_link_libraries(${PROJECT_NAME} BG-ERS-LoggingSystem)
 
 #set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
 #install(DIRECTORY ${SRC_DIR}/Shaders DESTINATION ${BIN_DIR})

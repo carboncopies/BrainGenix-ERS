@@ -14,9 +14,9 @@ project (
     )
 
 
-add_library(BG-ERS-LIBRARY-LoggingSystem ${PROJECT_SOURCE_DIR}/LoggingSystem.cpp)
+add_library(BG-ERS-LoggingSystem ${PROJECT_SOURCE_DIR}/LoggingSystem.cpp)
 
 
 add_executable(LoggingSystem ${PROJECT_SOURCE_DIR}/LoggingSystem.cpp)
-target_link_libraries(LoggingSystem BG-ERS-LIBRARY-LoggingSystem)
+target_link_libraries(LoggingSystem BG-ERS-LoggingSystem)
 
