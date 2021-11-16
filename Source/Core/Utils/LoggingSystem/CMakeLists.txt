@@ -3,9 +3,6 @@
 ########################################################################
 
 
-# NOTE: CMAKE PROJECT NAMES SHOULD BE NAMED WITH THE FOLLOWING CONVENTION
-# BG-ERS-{NAME OF HEADER FILE WITHOUT ".h"}
-
 
 # Specify CPP Files In Source (Name Should Start With Parent Dir Name)
 set(LoggingSystem_Sources
