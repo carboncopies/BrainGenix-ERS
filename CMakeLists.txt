@@ -53,8 +53,8 @@ disable_target_warnings(yaml-cpp)
 # add_subdirectory(${LIB_DIR}/assimp)
 # disable_target_warnings(assimp)
 
-# # Add Backward Library (Header Only)
-# add_subdirectory(${LIB_DIR}/backward)
+# Add Backward Library (Header Only)
+add_subdirectory(${LIB_DIR}/backward)
 
 
 
@@ -142,7 +142,7 @@ add_executable(${PROJECT_NAME}
   # ${SRC_DIR}/Core/Loader/Scene/SceneDecoder.h
   # ${SRC_DIR}/Core/Management/LoggingSystem.cpp
   # ${SRC_DIR}/Core/Management/LoggingSystem.h
-  # ${BACKWARD_ENABLE}
+  ${BACKWARD_ENABLE}
   )
 # target_include_directories(${PROJECT_NAME} PRIVATE Source)
 # target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
