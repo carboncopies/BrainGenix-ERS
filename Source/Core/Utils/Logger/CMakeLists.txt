@@ -8,15 +8,19 @@
 
 
 # Specify Include Path (Should Match Location In Source Tree)
-INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/Core/Utils/Logger)
+#include_directories(${PROJECT_SOURCE_DIR}/Core/Utils/Logger)
 
 
-# Specify CPP Files In Source
-set(Logger_Sources
+# Specify CPP Files In Source (Name Should Start With Parent Dir Name)
+set(LoggingSystem_Sources
     "LoggingSystem.cpp"
 )
 
-# Specify Header Files In Source
-set(Logger_Headers
+# Specify Header Files In Source (Name Should Start With Parent Dir Name)
+set(LoggingSystem_Headers
     "LoggingSystem.h"
 )
+
+
+# Create Library (Name Should Be Parent Dir Name)
+add_library(LoggingSystem ${LoggingSystem_Sources} ${LoggingSystem_Headers})
