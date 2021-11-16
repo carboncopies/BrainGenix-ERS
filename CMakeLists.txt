@@ -149,8 +149,8 @@ add_executable(${PROJECT_NAME}
 # target_include_directories(${PROJECT_NAME} PRIVATE Source)
 # target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 # target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
-# target_link_libraries(${PROJECT_NAME} PRIVATE
-#   yaml-cpp
+target_link_libraries(${PROJECT_NAME}
+  yaml-cpp
 #   glad
 #   glm
 #   glfw
@@ -161,7 +161,7 @@ add_executable(${PROJECT_NAME}
 #   backward
 #   CEGUIBase-0
 #   #mysqlcppconn
-#   )
+  )
 
 # Add Internal Libs
 add_subdirectory(${SRC_DIR}/Core/Utils/Logger)
