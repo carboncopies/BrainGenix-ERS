@@ -30,20 +30,16 @@ endfunction()
 add_subdirectory("${LIB_DIR}/yaml-cpp")
 disable_target_warnings(yaml-cpp)
 
-# Add RapidJSON (Header Only)
-#set(RAPID_JSON_DIR "rapidjson")
-#include_directories("${LIB_DIR}/${RAPID_JSON_DIR}/include/rapidjson")
+# Link Glad Library (Not Header Only)
+add_subdirectory(${LIB_DIR}/glad)
+disable_target_warnings(glad)
 
-# # # Link Glad Library (Not Header Only)
-# add_subdirectory(${LIB_DIR}/glad)
-# disable_target_warnings(glad)
+# Add GLM Library (Header Only)
+add_subdirectory(${LIB_DIR}/glm)
 
-# # Add GLM Library (Header Only)
-# add_subdirectory(${LIB_DIR}/glm)
-
-# # Add GLFW Library (Not Header Only)
-# add_subdirectory(${LIB_DIR}/glfw)
-# disable_target_warnings(glfw)
+# Add GLFW Library (Not Header Only)
+add_subdirectory(${LIB_DIR}/glfw)
+disable_target_warnings(glfw)
 
 # # Add FreeImage Library (Not Header Only)
 # add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
