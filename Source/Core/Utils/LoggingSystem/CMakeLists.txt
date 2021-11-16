@@ -8,7 +8,7 @@
 
 
 # Specify Include Path (Should Match Location In Source Tree)
-include_directories(${PROJECT_SOURCE_DIR}/Core/Utils/LoggingSystem)
+include_directories(${PROJECT_SOURCE_DIR}/Core/Utils/LoggingSystem/)
 
 
 # Specify CPP Files In Source (Name Should Start With Parent Dir Name)
