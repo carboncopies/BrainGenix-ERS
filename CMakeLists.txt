@@ -121,27 +121,6 @@ add_subdirectory(${LIB_DIR}/backward)
 # Add Main.cpp
 add_executable(${PROJECT_NAME}
   ${SRC_DIR}/Main.cpp
-  # ${SRC_DIR}/Core/Renderer/Renderer.cpp
-  # ${SRC_DIR}/Core/Renderer/Renderer.h
-  # ${SRC_DIR}/Core/Renderer/VisualRenderer/ShaderManager.cpp
-  # ${SRC_DIR}/Core/Renderer/VisualRenderer/ShaderManager.h
-  # ${SRC_DIR}/Core/Renderer/VisualRenderer/WindowInputProcessor.cpp
-  # ${SRC_DIR}/Core/Renderer/VisualRenderer/WindowInputProcessor.h
-  # ${SRC_DIR}/Core/Structures/Cameras/NoClip/NoClip.cpp
-  # ${SRC_DIR}/Core/Structures/Cameras/NoClip/NoClip.h
-  # ${SRC_DIR}/Core/Structures/Meshes/Mesh.cpp
-  # ${SRC_DIR}/Core/Structures/Meshes/Mesh.h
-  # ${SRC_DIR}/Core/Structures/Model/Model.cpp
-  # ${SRC_DIR}/Core/Structures/Model/Model.h
-  # ${SRC_DIR}/Core/Loader/Configuration/ConfigurationLoader.h
-  # ${SRC_DIR}/Core/Loader/Image/FileIO.cpp
-  # ${SRC_DIR}/Core/Loader/Image/FileIO.h
-  # ${SRC_DIR}/Core/Loader/Image/ImageDecoder.cpp
-  # ${SRC_DIR}/Core/Loader/Image/ImageDecoder.h
-  # ${SRC_DIR}/Core/Loader/Scene/SceneDecoder.cpp
-  # ${SRC_DIR}/Core/Loader/Scene/SceneDecoder.h
-  # ${SRC_DIR}/Core/Management/LoggingSystem.cpp
-  # ${SRC_DIR}/Core/Management/LoggingSystem.h
   ${BACKWARD_ENABLE}
   )
 # target_include_directories(${PROJECT_NAME} PRIVATE Source)
