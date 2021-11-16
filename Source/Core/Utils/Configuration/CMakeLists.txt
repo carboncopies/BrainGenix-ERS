@@ -10,15 +10,15 @@ set(ConfigurationLoader_Sources
 
 # Specify Header Files In Source (Name Should Start With Parent Dir Name)
 set(ConfigurationLoader_Headers
-    "LoggingSystem.h"
+    "LocalConfigurationLoader.h"
 )
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(LoggingSystem ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(LoggingSystem 
+add_library(ConfigurationLoader ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
+target_link_libraries(ConfigurationLoader 
     yaml-cpp
     )
-target_include_directories(LoggingSystem PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} LoggingSystem)
+target_include_directories(ConfigurationLoader PUBLIC ./)
+target_link_libraries(${PROJECT_NAME} ConfigurationLoader)
 
