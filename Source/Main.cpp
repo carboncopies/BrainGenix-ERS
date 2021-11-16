@@ -10,7 +10,7 @@
 
 #include <yaml-cpp/yaml.h>
 
-#include "Core/Utils/Configuration/LocalConfigurationLoader.h"
+#include "LocalConfigurationLoader.h"
 #include "LoggingSystem.h"
 
 
