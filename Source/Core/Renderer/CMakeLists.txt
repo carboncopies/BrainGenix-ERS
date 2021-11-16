@@ -6,12 +6,12 @@
 
 # Specify CPP Files In Source (Name Should Start With Parent Dir Name)
 set(Renderer_Sources
-    "LoggingSystem.cpp"
+    "Renderer.cpp"
 )
 
 # Specify Header Files In Source (Name Should Start With Parent Dir Name)
 set(Renderer_Headers
-    "LoggingSystem.h"
+    "Renderer.h"
 )
 
 
