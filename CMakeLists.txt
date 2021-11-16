@@ -118,8 +118,7 @@ disable_target_warnings(yaml-cpp)
 # target_link_libraries("${PROJECT_NAME}" "${CPPKAFKA_LIBRARY}")
 
 
-# Add Internal Libs
-add_subdirectory(${SRC_DIR}/Core/Utils/Logger)
+
 
 # Add Main.cpp
 add_executable(${PROJECT_NAME}
@@ -164,7 +163,9 @@ add_executable(${PROJECT_NAME}
 #   #mysqlcppconn
 #   )
 
-
+# Add Internal Libs
+add_subdirectory(${SRC_DIR}/Core/Utils/Logger)
+target_link_libraries(${PROJECT_NAME} BG-ERS-LIBRARY-LoggingSystem)
 
 #set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
 #install(DIRECTORY ${SRC_DIR}/Shaders DESTINATION ${BIN_DIR})
