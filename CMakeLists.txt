@@ -163,6 +163,7 @@ target_link_libraries(${PROJECT_NAME}
 
 
 add_subdirectory(${SRC_DIR}/Core/Utils/LoggingSystem)
+target_link_libraries(${PROJECT_NAME} LoggingSystem)
 
 
 
