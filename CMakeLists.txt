@@ -118,7 +118,7 @@ disable_target_warnings(yaml-cpp)
 # target_link_libraries("${PROJECT_NAME}" "${CPPKAFKA_LIBRARY}")
 
 
-subdirs(${SRC_DIR}/Core/Utils/LoggingSystem)
+add_subdirectory(${SRC_DIR}/Core/Utils/LoggingSystem)
 
 # Add Main.cpp
 add_executable(${PROJECT_NAME}

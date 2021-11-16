@@ -11,7 +11,7 @@
 #include <yaml-cpp/yaml.h>
 
 #include "Core/Utils/Configuration/LocalConfigurationLoader.h"
-#include "Core/Utils/Logger/LoggingSystem.h"
+#include "LoggingSystem.h"
 
 
 /**
