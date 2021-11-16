@@ -26,7 +26,7 @@ set(LoggingSystem_Headers
 add_library(LoggingSystem ${LoggingSystem_Sources} ${LoggingSystem_Headers})
 
 target_include_directories(LoggingSystem PUBLIC ./)
-#target_link_libraries(${PROJECT_NAME} LoggingSystem)
+target_link_libraries(${PROJECT_NAME} LoggingSystem)
 
 #target_sources(${PROJECT_NAME} PRIVATE ${LoggingSystem_Sources})
 #target_sources(${PROJECT_NAME} PRIVATE ${LoggingSystem_Headers})
