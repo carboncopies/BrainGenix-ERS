@@ -20,8 +20,9 @@ set(LoggingSystem_Headers
 
 # Create Library (Name Should Be Parent Dir Name)
 add_library(LoggingSystem ${LoggingSystem_Sources} ${LoggingSystem_Headers})
-target_link_libraries(LoggingSystem yaml-cpp)
+target_link_libraries(LoggingSystem 
+    yaml-cpp
+    )
 target_include_directories(LoggingSystem PUBLIC ./)
-
 target_link_libraries(${PROJECT_NAME} LoggingSystem)
 
