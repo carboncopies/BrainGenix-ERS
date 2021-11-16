@@ -8,6 +8,8 @@
     Date Created: 2021-11-01
 */
 
+#include <yaml-cpp/yaml.h>
+
 #include "Core/Utils/Configuration/LocalConfigurationLoader.h"
 #include "Core/Utils/Logger/LoggingSystem.h"
 
