@@ -7,10 +7,6 @@
 # BG-ERS-{NAME OF HEADER FILE WITHOUT ".h"}
 
 
-# Specify Include Path (Should Match Location In Source Tree)
-target_include_directories(LoggingSystem PUBLIC ./)
-
-
 # Specify CPP Files In Source (Name Should Start With Parent Dir Name)
 set(LoggingSystem_Sources
     "LoggingSystem.cpp"
@@ -24,5 +20,5 @@ set(LoggingSystem_Headers
 
 # Create Library (Name Should Be Parent Dir Name)
 add_library(LoggingSystem ${LoggingSystem_Sources} ${LoggingSystem_Headers})
-
+target_include_directories(LoggingSystem PUBLIC ./)
 target_link_libraries(${PROJECT_NAME} LoggingSystem)
