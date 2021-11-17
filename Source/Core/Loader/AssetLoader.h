@@ -3,12 +3,14 @@
 //======================================================================//
 
 /*
-    Description: This is the asset manager class.
+    Description: This is the asset loader class.
     Additional Notes: None
     Date Created: 2021-11-17
 */
 
 #pragma once
+
+#include <yaml-cpp/yaml.h>
 
 #include "LoggingSystem.h"
 
@@ -29,7 +31,7 @@ class AssetLoader {
          * @brief Construct a new Asset Loader object
          * 
          */
-        AssetLoader();
+        AssetLoader(LoggerClass* Logger, YAML::Node* InitialSystemConfig);
 
         /**
          * @brief Destroy the Asset Loader object
