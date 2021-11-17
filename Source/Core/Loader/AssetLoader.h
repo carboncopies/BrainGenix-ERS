@@ -23,6 +23,7 @@ class AssetLoader {
     private:
 
         LoggerClass* Logger_;
+        YAML::Node* InitialSystemConfiguration_;
 
 
     public:
@@ -31,7 +32,7 @@ class AssetLoader {
          * @brief Construct a new Asset Loader object
          * 
          */
-        AssetLoader(LoggerClass* Logger, YAML::Node* InitialSystemConfig);
+        AssetLoader(LoggerClass* Logger, YAML::Node* InitialSystemConfiguration);
 
         /**
          * @brief Destroy the Asset Loader object
