@@ -40,7 +40,10 @@ static ERS_OBJECT_CAMERA_NOCLIP Camera_(glm::vec3(0.0f, 0.0f, 3.0f));
 
 
 
-
+/**
+ * @brief This class manages all the rendering systems including the visual, auditory and other sensory rendering systems. 
+ * 
+ */
 class Renderer {
 
     private:
