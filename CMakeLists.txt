@@ -121,9 +121,9 @@ add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp ${BACKWARD_ENABLE})
 # target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
 target_link_libraries(${PROJECT_NAME}
   yaml-cpp
-#   glad
-#   glm
-#   glfw
+  glad
+  glm
+  glfw
 #   #${GLFW_LIBRARIES}
 #   FreeImage
 #   assimp
