@@ -87,6 +87,14 @@ class Renderer {
 
     public:
 
+        /**
+         * @brief 
+         * 
+         * @param SystemConfiguration 
+         * @param Logger 
+         * @param SystemShouldRun 
+         * @param AssetLoader 
+         */
         void InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun, AssetLoader *AssetLoader);
         void UpdateLoop();
         void CleanUp();
