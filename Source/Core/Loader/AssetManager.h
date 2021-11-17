@@ -16,4 +16,20 @@
  */
 class AssetManager {
 
+    private:
+
+    public:
+
+        /**
+         * @brief Construct a new Asset Manager object
+         * 
+         */
+        AssetManager();
+
+        /**
+         * @brief Destroy the Asset Manager object
+         * 
+         */
+        ~AssetManager();
+
 };
