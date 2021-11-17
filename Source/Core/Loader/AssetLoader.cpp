@@ -12,4 +12,16 @@
 
 
 // Asset Loader Constructor
-AssetLoader(LoggerClass* Logger, YAML::Node* InitialSystemConfig)
+AssetLoader(LoggerClass* Logger, YAML::Node* InitialSystemConfiguration) {
+
+    // Log Initialization Start
+    Logger->Log("Loading Subsystem Initialization Started", 5);
+
+    // Copy Pointers
+    Logger_ = Logger;
+    InitialSystemConfiguration_ = InitialSystemConfiguration;
+
+    // Log Initialization Finish
+    Logger_->Log("Loading Subsystem Initialization Finished", 4);
+
+}
