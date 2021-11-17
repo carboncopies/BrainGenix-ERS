@@ -10,6 +10,8 @@
 
 #pragma once
 
+#include "LoggingSystem.h"
+
 /**
  * @brief The asset manager provides a unified multithreaded system for loading, storing, and managing assets.
  * 
@@ -17,6 +19,9 @@
 class AssetManager {
 
     private:
+
+        LoggerClass* Logger_;
+
 
     public:
 
