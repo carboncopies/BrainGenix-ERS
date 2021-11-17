@@ -88,7 +88,7 @@ class Renderer {
     public:
 
         /**
-         * @brief 
+         * @brief Initializes all renderers that have been enabled in the configuration file.
          * 
          * @param SystemConfiguration 
          * @param Logger 
