@@ -7,3 +7,5 @@
     Additional Notes: None
     Date Created: 2021-11-17
 */
+
+#include "AssetLoaderQueue.h"
