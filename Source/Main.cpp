@@ -26,13 +26,15 @@ int main() {
     // Initialize System State Bool
     bool SystemShouldRun = true; /**<Indicates If System Should Run, False Will Cause System To Exit On Next RunLoop Iteration>*/
 
-    // Load System Configuration File
-    YAML::Node SystemConfiguration = LoadConfig("Config.yaml");
+    // Load Local System Configuration File
+    YAML::Node sERSLocalSystemConfiguration = LoadConfig("Config.yaml");
 
     // Instantiate Logging Subsystem //
-    LoggerClass sERSLogger(SystemConfiguration);
-    sERSLogger.Log("Initialized 'Management::Logger::LoggerClass'", 5);
+    LoggerClass sERSLogger(sERSLocalSystemConfiguration);
+    sERSLogger.Log("Initialized Logging System", 5);
 
+    // Instantiate RendererManager
+    RendererManager sERSRendererManager(&sERSLocalSystemConfiguration, &sERSLogger, &SystemShouldRun, &sERSAssetManager);
 
 
 

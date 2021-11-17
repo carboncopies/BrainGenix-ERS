@@ -80,7 +80,13 @@ add_subdirectory(${LIB_DIR}/backward)
 # disable_target_warnings(CEGUIBase-0)
 
 
-# # Add Libsndfile Library (Not Header Only)
+# # Add Libsndfile Library (Not H#include "../Loader/BGAsset/BGAssetLoader.h"
+#include "../Structures/DataBuffer/DataBuffer.h"
+
+#include "../Structures/Model/Model.h"
+#include "../Structures/Cameras/NoClip/NoClip.h"
+#include "../Structures/Scene/Scene.h"
+#include "../Loader/Scene/SceneDecoder.h"eader Only)
 # set(LIBSNDFILE_DIR "${LIB_DIR}/libsndfile")
 # add_subdirectory("${LIBSNDFILE_DIR}")
 # target_link_libraries("${PROJECT_NAME}" "libsndfile" "${LIBSNDFILE_DIR}")
