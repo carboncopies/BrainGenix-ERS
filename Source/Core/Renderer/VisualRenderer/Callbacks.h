@@ -11,7 +11,6 @@
 
 #pragma once
 
-
 /**
  * @brief This callback function is used to update the size of the window when a resize event is called.
  * 
@@ -25,7 +24,7 @@ static void FramebufferSizeCallback(GLFWwindow* /*Window*/, int Width, int Heigh
 
 
 /**
- * @brief 
+ * @brief This function is called when a mouse input needs to be processed.
  * 
  */
 static void MouseCallback(GLFWwindow* /*Window*/, double XPos, double YPos) {
@@ -51,10 +50,12 @@ static void MouseCallback(GLFWwindow* /*Window*/, double XPos, double YPos) {
     // Process Camera Movement
     Camera_.ProcessMouseMovement(XOffset, YOffset);
 
-
-
 }
 
+/**
+ * @brief This callback processes scroll wheel input.
+ * 
+ */
 static void ScrollCallback(GLFWwindow* /*Window*/, double /*XOffset*/, double YOffset) {
 
     Camera_.ProcessMouseScroll(YOffset);
