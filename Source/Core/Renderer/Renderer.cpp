@@ -14,8 +14,8 @@ void ErrorCallback(int, const char* ErrorString) {
     std::cout<<"GLFW ERROR: " << ErrorString << std::endl;
 }
 
-
-void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun, AssetLoader *AssetLoader) {
+// Renderer Constructor
+Renderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun, AssetLoader *AssetLoader) {
 
     // Create Pointers
     Logger->Log("Populating Renderer Member Pointers", 5);
@@ -33,6 +33,16 @@ void Renderer::InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *
 
 
 }
+
+// Renderer Destructor
+~Renderer() {
+
+    // Cleanup
+    Logger_->Log("Cleaning Up OpenGL/GLFW", 0);
+    glfwTerminate();
+
+}
+
 
 void Renderer::InitializeGLFW() {
 
@@ -175,12 +185,5 @@ void Renderer::UpdateLoop() {
 }
 
 
-void Renderer::CleanUp() {
-
-    // Cleanup
-    Logger_->Log("Cleaning Up OpenGL/GLFW", 0);
-    glfwTerminate();
-
-}
 
 
