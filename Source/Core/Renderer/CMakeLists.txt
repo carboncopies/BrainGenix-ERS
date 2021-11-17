@@ -6,12 +6,12 @@
 
 # Specify CPP Files In Source (Name Should Start With Parent Dir Name)
 set(Renderer_Sources
-    "Renderer.cpp"
+    "RendererManager.cpp"
 )
 
 # Specify Header Files In Source (Name Should Start With Parent Dir Name)
 set(Renderer_Headers
-    "Renderer.h"
+    "RendererManager.h"
 )
 
 
