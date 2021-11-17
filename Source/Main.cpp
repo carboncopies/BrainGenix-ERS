@@ -13,7 +13,7 @@
 #include "LocalConfigurationLoader.h"
 #include "LoggingSystem.h"
 
-#include "Renderer.h"
+#include "RendererManager.h"
 
 
 /**
