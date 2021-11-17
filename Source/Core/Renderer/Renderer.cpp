@@ -3,7 +3,7 @@
 //======================================================================//
 
 /*
-    Description: This is the openGL Renderer.
+    Description: This is the renderer manager.
     Additonal Notes: None
     Date Created: 2021-11-01
 */
@@ -14,8 +14,8 @@ void ErrorCallback(int, const char* ErrorString) {
     std::cout<<"GLFW ERROR: " << ErrorString << std::endl;
 }
 
-// Renderer Constructor
-Renderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun, AssetLoader *AssetLoader) {
+// RendererManager Constructor
+RendererManager(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun, AssetLoader *AssetLoader) {
 
     // Create Pointers
     Logger->Log("Populating Renderer Member Pointers", 5);
@@ -34,8 +34,8 @@ Renderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShoul
 
 }
 
-// Renderer Destructor
-~Renderer() {
+// RendererManager Destructor
+~RendererManager() {
 
     // Cleanup
     Logger_->Log("Cleaning Up OpenGL/GLFW", 0);
@@ -44,7 +44,7 @@ Renderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShoul
 }
 
 
-void Renderer::InitializeGLFW() {
+void RendererManager::InitializeGLFW() {
 
     // Initialize GLFW
     glfwInit();
@@ -74,7 +74,7 @@ void Renderer::InitializeGLFW() {
 
 }
 
-void Renderer::InitializeOpenGL() {
+void RendererManager::InitializeOpenGL() {
 
 
     // Setup Viewport
@@ -122,7 +122,7 @@ void Renderer::InitializeOpenGL() {
 
 
 
-void Renderer::UpdateLoop() { 
+void RendererManager::UpdateLoop() { 
 
 
     // Update DeltaTime

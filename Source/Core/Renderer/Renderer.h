@@ -3,7 +3,7 @@
 //======================================================================//
 
 /*
-    Description: This is the openGL Renderer.
+    Description: This is the renderer manager.
     Additonal Notes: None
     Date Created: 2021-11-01
 */
@@ -44,7 +44,7 @@ static ERS_OBJECT_CAMERA_NOCLIP Camera_(glm::vec3(0.0f, 0.0f, 3.0f));
  * @brief This class manages all the rendering systems including the visual, auditory and other sensory rendering systems. 
  * 
  */
-class Renderer {
+class RendererManager {
 
     private:
 
@@ -95,13 +95,13 @@ class Renderer {
          * @param SystemShouldRun 
          * @param AssetLoader 
          */
-        Renderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun, AssetLoader *AssetLoader);
+        RendererManager(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun, AssetLoader *AssetLoader);
 
         /**
          * @brief Shuts down the renderers and cleans up variables.
          * 
          */
-        ~Renderer();
+        ~RendererManager();
 
         /**
          * @brief Called by the main loop, updates all rendered outputs.
