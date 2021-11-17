@@ -20,10 +20,10 @@
 
 
 
-#include "Core/Loader/BGAsset/BGAssetLoader.h"
-#include "Core/Structures/DataBuffer/DataBuffer.h"
-#include "Core/Renderer/VisualRenderer/WindowInputProcessor.h"
-#include "Core/Renderer/VisualRenderer/ShaderManager.h"
+#include "../Loader/BGAsset/BGAssetLoader.h"
+#include "../Structures/DataBuffer/DataBuffer.h"
+#include "VisualRenderer/WindowInputProcessor.h"
+#include "VisualRenderer/ShaderManager.h"
 #include "../Structures/Model/Model.h"
 #include "../Structures/Cameras/NoClip/NoClip.h"
 #include "../Structures/Scene/Scene.h"
