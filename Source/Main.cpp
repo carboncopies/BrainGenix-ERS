@@ -34,6 +34,7 @@ int main() {
     sERSLogger.Log("Initialized Logging System", 5);
 
     // Instantiate Asset Manager
+    
 
     // Instantiate RendererManager
     RendererManager sERSRendererManager(&sERSLocalSystemConfiguration, &sERSLogger, &SystemShouldRun, &sERSAssetManager);
