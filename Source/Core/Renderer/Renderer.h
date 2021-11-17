@@ -49,9 +49,9 @@ class Renderer {
     private:
 
         // Member Variables
-        YAML::Node *SystemConfiguration_;
-        LoggerClass *Logger_;
-        AssetLoader *AssetLoader_;
+        YAML::Node *SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
+        LoggerClass *Logger_; /**<Pointer to the logging system instance*/
+        AssetLoader *AssetLoader_; /**<Pointer to the AssetLoader instance*/
 
         // Control Values
         bool *SystemShouldRun_;
