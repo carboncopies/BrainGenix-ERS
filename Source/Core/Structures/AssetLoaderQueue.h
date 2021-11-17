@@ -10,6 +10,12 @@
 
 #pragma once
 
+#include <map>
+
+/**
+ * @brief Declare ERS Structure For Asset Loader Queue. Used as a queue of assets to be loaded. (FIXME: MAKE THREAD SAFE!)
+ * 
+ */
 struct ERS_STRUCT_ASSET_LOADER_QUEUE {
 
 
