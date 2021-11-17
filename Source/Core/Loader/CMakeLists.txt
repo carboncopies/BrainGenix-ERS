@@ -19,9 +19,6 @@ set(AssetLoader_Headers
 add_library(Loader ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
 target_link_libraries(Loader 
     yaml-cpp
-    glm
-    glad
-    glfw
     )
 target_include_directories(Loader PUBLIC ./)
 target_link_libraries(${PROJECT_NAME} Loader)
