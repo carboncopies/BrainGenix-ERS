@@ -4,10 +4,12 @@
 
 /*
     Description: This file contains the visual renderer callback functions.
+    Documentation Status: Done
     Additonal Notes: None
     Date Created: 2021-11-16
 */
 
+#include "Callbacks.h"
 
 
 static void FramebufferSizeCallback(GLFWwindow* /*Window*/, int Width, int Height) {
@@ -39,5 +41,13 @@ static void MouseCallback(GLFWwindow* /*Window*/, double XPos, double YPos) {
 
     // Process Camera Movement
     Camera_.ProcessMouseMovement(XOffset, YOffset);
+
+}
+
+
+
+static void ScrollCallback(GLFWwindow* /*Window*/, double /*XOffset*/, double YOffset) {
+
+    Camera_.ProcessMouseScroll(YOffset);
 
 }

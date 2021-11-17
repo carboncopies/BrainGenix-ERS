@@ -28,8 +28,4 @@ static void MouseCallback(GLFWwindow* /*Window*/, double XPos, double YPos);
  * @brief This callback processes scroll wheel input.
  * 
  */
-static void ScrollCallback(GLFWwindow* /*Window*/, double /*XOffset*/, double YOffset) {
-
-    Camera_.ProcessMouseScroll(YOffset);
-
-}
+static void ScrollCallback(GLFWwindow* /*Window*/, double /*XOffset*/, double YOffset);
