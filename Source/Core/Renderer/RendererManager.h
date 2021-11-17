@@ -30,13 +30,6 @@
 #include "../Loader/Scene/SceneDecoder.h"
 #include "../Management/LoggingSystem.h"
 
-// Initialize
-static bool FirstMouse = true;
-
-static float LastX = 800/2.0f;
-static float LastY = 600/2.0f;
-
-static ERS_OBJECT_CAMERA_NOCLIP Camera_(glm::vec3(0.0f, 0.0f, 3.0f));
 
 
 

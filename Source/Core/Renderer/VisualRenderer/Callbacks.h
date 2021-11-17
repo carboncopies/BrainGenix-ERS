@@ -11,6 +11,17 @@
 
 #pragma once
 
+
+// Initialize {FIXME LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
+static bool FirstMouse = true;
+
+static float LastX = 800/2.0f;
+static float LastY = 600/2.0f;
+
+static ERS_OBJECT_CAMERA_NOCLIP Camera_(glm::vec3(0.0f, 0.0f, 3.0f));
+
+
+
 /**
  * @brief This callback function is used to update the size of the window when a resize event is called.
  * 
