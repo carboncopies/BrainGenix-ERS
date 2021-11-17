@@ -6,12 +6,16 @@
 
 # Specify CPP Files In Source (Name Should Start With Parent Dir Name)
 set(VisualRenderer_Sources
-    "RendererManager.cpp"
+    "Callbacks.cpp"
+    "ShaderManager.cpp"
+    "WindowInputProcessor.cpp"
 )
 
 # Specify Header Files In Source (Name Should Start With Parent Dir Name)
 set(VisualRenderer_Headers
-    "RendererManager.h"
+    "Callbacks.h"
+    "ShaderManager.h"
+    "WindowInputProcessor.h"
 )
 
 
