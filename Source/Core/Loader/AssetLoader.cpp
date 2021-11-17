@@ -25,3 +25,13 @@ AssetLoader(LoggerClass* Logger, YAML::Node* InitialSystemConfiguration) {
     Logger_->Log("Loading Subsystem Initialization Finished", 4);
 
 }
+
+// Asset Loader Destructor
+~AssetLoader() {
+
+    // Log Destructor Call
+    Logger_->Log("Asset Loader Destructor Called", 5);
+
+
+}
+
