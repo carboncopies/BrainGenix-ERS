@@ -95,7 +95,13 @@ class Renderer {
          * @param SystemShouldRun 
          * @param AssetLoader 
          */
-        void InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun, AssetLoader *AssetLoader);
+        Renderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun, AssetLoader *AssetLoader);
+
+        /**
+         * @brief Shuts down the renderers and cleans up variables.
+         * 
+         */
+        ~Renderer();
 
         /**
          * @brief Called by the main loop, updates all rendered outputs.
@@ -103,11 +109,7 @@ class Renderer {
          */
         void UpdateLoop();
 
-        /**
-         * @brief Shuts down the renderers and cleans up variables.
-         * 
-         */
-        void CleanUp();
+
 
 
 };
