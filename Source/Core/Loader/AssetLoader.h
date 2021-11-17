@@ -13,10 +13,10 @@
 #include "LoggingSystem.h"
 
 /**
- * @brief The asset manager provides a unified multithreaded system for loading, storing, and managing assets.
+ * @brief The Asset Loader provides a unified multithreaded system for loading assets from both local disk and network (Database) storage.
  * 
  */
-class AssetManager {
+class AssetLoader {
 
     private:
 
@@ -26,15 +26,15 @@ class AssetManager {
     public:
 
         /**
-         * @brief Construct a new Asset Manager object
+         * @brief Construct a new Asset Loader object
          * 
          */
-        AssetManager();
+        AssetLoader();
 
         /**
-         * @brief Destroy the Asset Manager object
+         * @brief Destroy the Asset Loader object
          * 
          */
-        ~AssetManager();
+        ~AssetLoader();
 
 };
