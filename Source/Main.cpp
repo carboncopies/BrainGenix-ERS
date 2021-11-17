@@ -29,9 +29,11 @@ int main() {
     // Load Local System Configuration File
     YAML::Node sERSLocalSystemConfiguration = LoadConfig("Config.yaml");
 
-    // Instantiate Logging Subsystem //
+    // Instantiate Logging Subsystem
     LoggerClass sERSLogger(sERSLocalSystemConfiguration);
     sERSLogger.Log("Initialized Logging System", 5);
+
+    // Instantiate Asset Manager
 
     // Instantiate RendererManager
     RendererManager sERSRendererManager(&sERSLocalSystemConfiguration, &sERSLogger, &SystemShouldRun, &sERSAssetManager);
