@@ -19,16 +19,22 @@
 #include <GLFW/glfw3.h>
 
 
+#include "LoggingSystem.h"
 
+#include "ShaderManager.h"
+#include "WindowInputProcessor.h"
+
+
+// ------------------------------------------------------------ FIXME
 #include "../Loader/BGAsset/BGAssetLoader.h"
 #include "../Structures/DataBuffer/DataBuffer.h"
-#include "VisualRenderer/WindowInputProcessor.h"
-#include "VisualRenderer/ShaderManager.h"
+
 #include "../Structures/Model/Model.h"
 #include "../Structures/Cameras/NoClip/NoClip.h"
 #include "../Structures/Scene/Scene.h"
 #include "../Loader/Scene/SceneDecoder.h"
-#include "../Management/LoggingSystem.h"
+// --------------------------------------------------------------------
+
 
 
 
