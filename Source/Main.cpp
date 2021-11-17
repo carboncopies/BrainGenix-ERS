@@ -4,7 +4,7 @@
 
 /*
     Description: This is the main file of the system.
-    Additonal Notes: None
+    Additional Notes: None
     Date Created: 2021-11-01
 */
 
@@ -34,7 +34,7 @@ int main() {
     sERSLogger.Log("Initialized Logging System", 5);
 
     // Instantiate Asset Manager
-    
+
 
     // Instantiate RendererManager
     RendererManager sERSRendererManager(&sERSLocalSystemConfiguration, &sERSLogger, &SystemShouldRun, &sERSAssetManager);
