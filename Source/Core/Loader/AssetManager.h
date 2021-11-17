@@ -7,3 +7,10 @@
     Additional Notes: None
     Date Created: 2021-11-17
 */
+
+#pragma once
+
+
+class AssetManager {
+
+};
