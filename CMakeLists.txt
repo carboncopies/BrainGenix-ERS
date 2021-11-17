@@ -148,13 +148,6 @@ add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer)
 add_subdirectory(${SRC_DIR}/Core/Loader/)
 
 
-
-
-#set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
-#install(DIRECTORY ${SRC_DIR}/Shaders DESTINATION ${BIN_DIR})
-#install(DIRECTORY ${SRC_DIR}/Assets DESTINATION ${BIN_DIR})
-#install(FILE ${SRC_DIR}/Config.yaml DESTINATION ${BIN_DIR})
 file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
 file(COPY "${SRC_DIR}/Shaders/" DESTINATION "${BIN_DIR}/Shaders")
 file(COPY "${SRC_DIR}/Assets/" DESTINATION "${BIN_DIR}/Assets")
-
