@@ -96,7 +96,17 @@ class Renderer {
          * @param AssetLoader 
          */
         void InitializeRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun, AssetLoader *AssetLoader);
+
+        /**
+         * @brief Called by the main loop, updates all rendered outputs.
+         * 
+         */
         void UpdateLoop();
+
+        /**
+         * @brief Shuts down the renderers and cleans up variables.
+         * 
+         */
         void CleanUp();
 
 
