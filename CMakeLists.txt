@@ -143,9 +143,12 @@ target_link_libraries(${PROJECT_NAME}
 # ADD INTERNAL SUBDIRECTORIES
 add_subdirectory(${SRC_DIR}/Core/Utils/LoggingSystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ConfigurationLoader)
+
 add_subdirectory(${SRC_DIR}/Core/Renderer)
 add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer)
+
 add_subdirectory(${SRC_DIR}/Core/Loader)
+
 add_subdirectory(${SRC_DIR}/Core/Structures/AssetLoaderQueue)
 add_subdirectory(${SRC_DIR}/Core/Structures/Cameras/NoClip)
 add_subdirectory(${SRC_DIR}/Core/Structures/DataBuffer)
@@ -161,11 +164,7 @@ add_subdirectory(${SRC_DIR}/Core/Loader/ModelLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/SceneLoader)
 
 
-
-
-
-
-
+# COPY FILES TO BINARY DIR
 file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
 file(COPY "${SRC_DIR}/Shaders/" DESTINATION "${BIN_DIR}/Shaders")
 file(COPY "${SRC_DIR}/Assets/" DESTINATION "${BIN_DIR}/Assets")
