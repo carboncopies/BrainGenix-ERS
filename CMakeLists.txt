@@ -146,6 +146,7 @@ add_subdirectory(${SRC_DIR}/Core/Utils/ConfigurationLoader)
 add_subdirectory(${SRC_DIR}/Core/Renderer/)
 add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer)
 add_subdirectory(${SRC_DIR}/Core/Loader/)
+add_subdirectory(${SRC_DIR}/Core/Structures/AssetLoaderQueue)
 
 
 file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
