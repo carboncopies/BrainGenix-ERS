@@ -13,6 +13,7 @@
 #include <yaml-cpp/yaml.h>
 
 #include "LoggingSystem.h"
+#include "AssetLoaderQueue.h"
 
 /**
  * @brief The Asset Loader provides a unified multithreaded system for loading assets from both local disk and network (Database) storage.
