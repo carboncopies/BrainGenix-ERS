@@ -26,12 +26,12 @@
 
 
 // ------------------------------------------------------------ FIXME
-#include "../Loader/BGAsset/BGAssetLoader.h"
-#include "../Structures/DataBuffer/DataBuffer.h"
+#include "BGAssetLoader.h"
+#include "DataBuffer.h"
 
-#include "../Structures/Model/Model.h"
-#include "../Structures/Cameras/NoClip/NoClip.h"
-#include "../Structures/Scene/Scene.h"
+#include "Model.h"
+#include "NoClip.h"
+#include "Scene.h"
 #include "../Loader/Scene/SceneDecoder.h"
 // --------------------------------------------------------------------
 
