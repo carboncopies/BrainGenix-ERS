@@ -151,7 +151,8 @@ add_subdirectory(${SRC_DIR}/Core/Structures/Cameras/NoClip)
 add_subdirectory(${SRC_DIR}/Core/Structures/DataBuffer)
 add_subdirectory(${SRC_DIR}/Core/Structures/Meshes)
 add_subdirectory(${SRC_DIR}/Core/Structures/Model)
-add_subdirectory($)
+add_subdirectory(${SRC_DIR}/Core /)
+add_subdirectory(${SRC_DIR}/Core/Structures/Vertex)
 
 
 
