@@ -5,20 +5,20 @@
 
 
 # Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(Model_Sources
-    "Mesh.cpp"
+set(Scene_Sources
+    "SceneDecoder.cpp"
 )
 
 # Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(Model_Headers
-    "Mesh.h"
+set(Scene_Headers
+    "SceneDecoder.h"
 )
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Model ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(Model 
+add_library(Scene ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
+target_link_libraries(Scene 
     glm
     )
-target_include_directories(Model PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Model)
+target_include_directories(Scene PUBLIC ./)
+target_link_libraries(${PROJECT_NAME} Scene)

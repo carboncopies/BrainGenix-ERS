@@ -6,12 +6,12 @@
 
 # Specify CPP Files In Source (Name Should Start With Parent Dir Name)
 set(ModelLoader_Sources
-    ".cpp"
+    "ModelDecoder.cpp"
 )
 
 # Specify Header Files In Source (Name Should Start With Parent Dir Name)
 set(ModelLoader_Headers
-    "Mesh.h"
+    "ModelDecoder.h"
 )
 
 
