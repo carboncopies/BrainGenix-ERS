@@ -151,8 +151,18 @@ add_subdirectory(${SRC_DIR}/Core/Structures/Cameras/NoClip)
 add_subdirectory(${SRC_DIR}/Core/Structures/DataBuffer)
 add_subdirectory(${SRC_DIR}/Core/Structures/Meshes)
 add_subdirectory(${SRC_DIR}/Core/Structures/Model)
-add_subdirectory(${SRC_DIR}/Core /)
+add_subdirectory(${SRC_DIR}/Core/Structures/Scene)
 add_subdirectory(${SRC_DIR}/Core/Structures/Vertex)
+
+add_subdirectory(${SRC_DIR}/Core/Loader/BGAsset)
+add_subdirectory(${SRC_DIR}/Core/Loader/Configuration)
+add_subdirectory(${SRC_DIR}/Core/Loader/Image)
+add_subdirectory(${SRC_DIR}/Core/Loader/Model)
+add_subdirectory(${SRC_DIR}/Core/Loader/Scene)
+
+
+
+
 
 
 
