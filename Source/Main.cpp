@@ -38,7 +38,7 @@ int main() {
     AssetLoader sERSAssetLoader(&sERSLogger, &sERSLocalSystemConfiguration);
 
     // Instantiate RendererManager
-    RendererManager sERSRendererManager(&sERSLocalSystemConfiguration, &sERSLogger, &SystemShouldRun, &sERSAssetManager);
+    RendererManager sERSRendererManager(&sERSLocalSystemConfiguration, &sERSLogger, &SystemShouldRun);
 
 
 
