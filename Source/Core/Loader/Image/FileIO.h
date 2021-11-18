@@ -15,7 +15,7 @@
 
 
 
-#include "Core/Management/LoggingSystem.h"
+#include "LoggingSystem.h"
 
 std::string ReadFile(const std::string& FileName, LoggerClass *Logger_ = nullptr);
 
