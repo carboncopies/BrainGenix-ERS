@@ -32,7 +32,7 @@
 #include "Model.h"
 #include "NoClip.h"
 #include "Scene.h"
-#include "../Loader/Scene/SceneDecoder.h"
+#include "SceneDecoder.h"
 // --------------------------------------------------------------------
 
 
