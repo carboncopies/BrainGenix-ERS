@@ -26,7 +26,7 @@
 
 
 // ------------------------------------------------------------ FIXME
-#include "BGAssetLoader.h"
+#include "BGAssetManager.h"
 #include "DataBuffer.h"
 
 #include "Model.h"
