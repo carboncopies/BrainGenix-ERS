@@ -15,12 +15,12 @@
 #include <variant>
 #include <string>
 
-#include "Core/Management/LoggingSystem.h"
+#include "LoggingSystem.h"
 
 
-#include "Core/Structures/Scene/Scene.h"
-#include "Core/Structures/Model/Model.h"
-#include "Core/Loader/Image/ImageDecoder.h"
+#include "Scene.h"
+#include "Model.h"
+#include "ImageDecoder.h"
 
 
 struct ERS_STRUCTURE_DATA_BUFFER {
