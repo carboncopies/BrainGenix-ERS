@@ -148,6 +148,7 @@ add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer)
 add_subdirectory(${SRC_DIR}/Core/Loader)
 add_subdirectory(${SRC_DIR}/Core/Structures/AssetLoaderQueue)
 add_subdirectory(${SRC_DIR}/Core/Structures/Cameras/NoClip)
+add_subdirectory(${SRC})
 
 
 file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
