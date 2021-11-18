@@ -9,7 +9,7 @@
 */ 
 
 
-#include "Core/Structures/Meshes/Mesh.h"
+#include "Mesh.h"
 
 
 // Setup Mesh
