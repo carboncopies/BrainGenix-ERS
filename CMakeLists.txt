@@ -41,13 +41,13 @@ add_subdirectory(${LIB_DIR}/glm)
 add_subdirectory(${LIB_DIR}/glfw)
 disable_target_warnings(glfw)
 
-# # Add FreeImage Library (Not Header Only)
-# add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
-# disable_target_warnings(FreeImage)
+# Add FreeImage Library (Not Header Only)
+add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
+disable_target_warnings(FreeImage)
 
-# # Add ASSIMP Library (Not Header Only)
-# add_subdirectory(${LIB_DIR}/assimp)
-# disable_target_warnings(assimp)
+# Add ASSIMP Library (Not Header Only)
+add_subdirectory(${LIB_DIR}/assimp)
+disable_target_warnings(assimp)
 
 # Add Backward Library (Header Only)
 add_subdirectory(${LIB_DIR}/backward)
@@ -131,8 +131,8 @@ target_link_libraries(${PROJECT_NAME}
   glm
   glfw
 #   #${GLFW_LIBRARIES}
-#   FreeImage
-#   assimp
+  FreeImage
+  assimp
 #   meshoptimizer
 #   backward
 #   CEGUIBase-0
