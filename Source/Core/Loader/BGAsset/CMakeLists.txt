@@ -5,20 +5,20 @@
 
 
 # Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(Model_Sources
-    "Mesh.cpp"
+set(BGAsset_Sources
+    "BGAssetLoader.cpp"
 )
 
 # Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(Model_Headers
-    "Mesh.h"
+set(BGAsset_Headers
+    "BGAssetLoader.h"
 )
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Model ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(Model 
+add_library(BGAsset ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
+target_link_libraries(BGAsset 
     glm
     )
-target_include_directories(Model PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Model)
+target_include_directories(BGAsset PUBLIC ./)
+target_link_libraries(${PROJECT_NAME} BGAsset)
