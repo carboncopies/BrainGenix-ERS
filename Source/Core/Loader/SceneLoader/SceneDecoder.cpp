@@ -8,7 +8,7 @@
     Date Created: 2021-10-13
 */ 
 
-#include "Core/Loader/Scene/SceneDecoder.h"
+#include "SceneDecoder.h"
 
 ERS_OBJECT_SCENE  LoadScene(long SceneID, LoggerClass *Logger_, bool LogLoading) {
 
