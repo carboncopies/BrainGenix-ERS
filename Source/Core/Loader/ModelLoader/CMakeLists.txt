@@ -5,20 +5,20 @@
 
 
 # Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(Model_Sources
-    "Mesh.cpp"
+set(ModelLoader_Sources
+    ".cpp"
 )
 
 # Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(Model_Headers
+set(ModelLoader_Headers
     "Mesh.h"
 )
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Model ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(Model 
+add_library(ModelLoader ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
+target_link_libraries(ModelLoader
     glm
     )
-target_include_directories(Model PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Model)
+target_include_directories(ModelLoader PUBLIC ./)
+target_link_libraries(${PROJECT_NAME} ModelLoader)
