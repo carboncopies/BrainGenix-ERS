@@ -157,8 +157,8 @@ add_subdirectory(${SRC_DIR}/Core/Structures/Vertex)
 add_subdirectory(${SRC_DIR}/Core/Loader/BGAsset)
 add_subdirectory(${SRC_DIR}/Core/Loader/Configuration)
 add_subdirectory(${SRC_DIR}/Core/Loader/Image)
-add_subdirectory(${SRC_DIR}/Core/Loader/Model)
-add_subdirectory(${SRC_DIR}/Core/Loader/Scene)
+add_subdirectory(${SRC_DIR}/Core/Loader/ModelLoader)
+add_subdirectory(${SRC_DIR}/Core/Loader/SceneLoader)
 
 
 
