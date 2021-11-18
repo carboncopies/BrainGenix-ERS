@@ -92,7 +92,7 @@ class RendererManager {
          * @param Logger 
          * @param SystemShouldRun 
          */
-        RendererManager2(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun);
+        void RendererManager2(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun);
 
         /**
          * @brief Shuts down the renderers and cleans up variables.
