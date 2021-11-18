@@ -8,7 +8,7 @@
     Date Created: 2021-11-01
 */
 
-//#include "RendererManager.h"
+#include "RendererManager.h"
 
 
 void ErrorCallback(int, const char* ErrorString) {
@@ -16,7 +16,7 @@ void ErrorCallback(int, const char* ErrorString) {
 }
 
 // RendererManager Constructor
-RendererManager(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun) {
+RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun) {
 
     // Create Pointers
     Logger->Log("Populating Renderer Member Pointers", 5);
@@ -35,7 +35,7 @@ RendererManager(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *Syst
 }
 
 // RendererManager Destructor
-~RendererManager() {
+RendererManager::~RendererManager() {
 
     // Cleanup
     Logger_->Log("Cleaning Up OpenGL/GLFW", 0);
