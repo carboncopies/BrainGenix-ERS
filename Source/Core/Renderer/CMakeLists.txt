@@ -16,13 +16,13 @@ set(Renderer_Headers
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Renderer2 ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(Renderer2
+add_library(Renderer ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
+target_link_libraries(Renderer 
     yaml-cpp
     glm
     glad
     glfw
     )
-target_include_directories(Renderer2 PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Renderer2)
+target_include_directories(Renderer PUBLIC ./)
+target_link_libraries(${PROJECT_NAME} Renderer)
 
