@@ -143,9 +143,9 @@ target_link_libraries(${PROJECT_NAME}
 # ADD INTERNAL SUBDIRECTORIES
 add_subdirectory(${SRC_DIR}/Core/Utils/LoggingSystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ConfigurationLoader)
-add_subdirectory(${SRC_DIR}/Core/Renderer/)
+add_subdirectory(${SRC_DIR}/Core/Renderer)
 add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer)
-add_subdirectory(${SRC_DIR}/Core/Loader/)
+add_subdirectory(${SRC_DIR}/Core/Loader)
 add_subdirectory(${SRC_DIR}/Core/Structures/AssetLoaderQueue)
 add_subdirectory(${SRC_DIR}/Core/Structures/Cameras/NoClip)
 
