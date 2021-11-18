@@ -112,3 +112,4 @@ class RendererManager {
 };
 
 
+#include "RendererManager.cpp"
