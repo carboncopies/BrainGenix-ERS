@@ -12,11 +12,11 @@
 
 #include "yaml-cpp/yaml.h"
 
-#include "Core/Management/LoggingSystem.h"
-#include "Core/Structures/Scene/Scene.h"
-#include "Core/Structures/DataBuffer/DataBuffer.h"
-#include "Core/Loader/Image/ImageDecoder.h"
-#include "Core/Structures/Model/Model.h"
+#include "LoggingSystem.h"
+#include "Scene.h"
+#include "DataBuffer.h"
+#include "ImageDecoder.h"
+#include "Model.h"
 
 
 class AssetLoader {
