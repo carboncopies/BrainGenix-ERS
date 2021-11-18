@@ -5,20 +5,23 @@
 
 
 # Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(Meshes_Sources
-    "Mesh.cpp"
+set(DataBuffer_Sources
+    "DataBuffer.cpp"
 )
 
 # Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(Meshes_Headers
-    "Mesh.h"
+set(DataBuffer_Headers
+    "DataBuffer.h"
 )
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Meshes ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(Meshes 
+add_library(DataBuffer ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
+target_link_libraries(DataBuffer 
+    yaml-cpp
     glm
+    glad
+    glfw
     )
-target_include_directories(Meshes PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Meshes)
+target_include_directories(DataBuffer PUBLIC ./)
+target_link_libraries(${PROJECT_NAME} DataBuffer)
