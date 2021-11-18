@@ -6,12 +6,12 @@
 
 # Specify CPP Files In Source (Name Should Start With Parent Dir Name)
 set(BGAsset_Sources
-    "BGAssetLoader.cpp"
+    "BGAssetManager.cpp"
 )
 
 # Specify Header Files In Source (Name Should Start With Parent Dir Name)
 set(BGAsset_Headers
-    "BGAssetLoader.h"
+    "BGAssetManag.h"
 )
 
 
