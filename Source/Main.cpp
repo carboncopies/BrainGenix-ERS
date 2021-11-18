@@ -38,7 +38,7 @@ int main() {
 
     // Instantiate RendererManager
     RendererManager sERSRendererManager;
-    sERSRendererManager.RenderManager2(&sERSLocalSystemConfiguration, &sERSLogger, &SystemShouldRun);
+    sERSRendererManager.RendererManager2(&sERSLocalSystemConfiguration, &sERSLogger, &SystemShouldRun);
 
 
 
