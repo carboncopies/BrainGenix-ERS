@@ -5,20 +5,20 @@
 
 
 # Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(Scene_Sources
+set(SceneLoader_Sources
     "SceneDecoder.cpp"
 )
 
 # Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(Scene_Headers
+set(SceneLoader_Headers
     "SceneDecoder.h"
 )
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Scene ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(Scene 
+add_library(SceneLoader ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
+target_link_libraries(SceneLoader
     glm
     )
-target_include_directories(Scene PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Scene)
+target_include_directories(SceneLoader PUBLIC ./)
+target_link_libraries(${PROJECT_NAME} SceneLoader)
