@@ -19,7 +19,7 @@
 #include "Model.h"
 
 
-class AssetLoader {
+class AssetManager {
 
     private:
 
@@ -40,10 +40,10 @@ class AssetLoader {
     public:
 
         // Constructor
-        AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration);
+        AssetManager(LoggerClass *Logger, YAML::Node *SystemConfiguration);
 
         // Destructor
-        ~AssetLoader();
+        ~AssetManager();
 
         // Load Assets From Scene
         void LoadSceneAssets(ERS_OBJECT_SCENE InputScene);

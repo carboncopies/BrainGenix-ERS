@@ -8,14 +8,14 @@
     Date Created: 2021-10-13
 */ 
 
-#include "BGAssetLoader.h"
+#include "BGAssetManager.h"
 
 ////////////////////////
-// TODO: RENAME ASSETLOADER TO ASSETMANAGER AND GIVE OWN ROOT DIR IN SOURCE TREE
+// TODO: RENAME AssetManager TO ASSETMANAGER AND GIVE OWN ROOT DIR IN SOURCE TREE
 ////////////////////////
 
 // Asset Loader Constructor
-AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
+AssetManager::AssetManager(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
 
     // Initialization Start
     Logger->Log("Initializing Asset Loader Class", 6);
@@ -48,10 +48,10 @@ AssetLoader::AssetLoader(LoggerClass *Logger, YAML::Node *SystemConfiguration) {
 }
 
 // Destructor
-AssetLoader::~AssetLoader() {
+AssetManager::~AssetManager() {
 
     // Log Call
-    Logger_->Log("Destructor Called For AssetLoader, Cleaning Up", 6);
+    Logger_->Log("Destructor Called For AssetManager, Cleaning Up", 6);
 
     // Uninit ImageDecoder
     ImageDecoder_.Cleanup();
@@ -63,7 +63,7 @@ AssetLoader::~AssetLoader() {
 
 
 // Read Scene Subnodes And Load Models/Textures Requested By That Scene
-void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
+void AssetManager::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 
     // Iterate Through Scene Data, Load Non-Essential Assets (EG No Dependencies such as Images)
     for (long i = 0; i < (long)size(InputScene.Subnodes); i++) {
@@ -106,7 +106,7 @@ void AssetLoader::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 }
 
 // Load Model
-void AssetLoader::LoadModel(long AssetID, YAML::Node Params) {
+void AssetManager::LoadModel(long AssetID, YAML::Node Params) {
 
     // Load From DB
     if (DatabaseLoadingEnabled_) {
@@ -132,7 +132,7 @@ void AssetLoader::LoadModel(long AssetID, YAML::Node Params) {
 }
 
 // Load Image
-void AssetLoader::LoadImage(long AssetID, YAML::Node Params) { // MAKE SURE TO COPY IN THE PATH FROM THE PARAMS VAR
+void AssetManager::LoadImage(long AssetID, YAML::Node Params) { // MAKE SURE TO COPY IN THE PATH FROM THE PARAMS VAR
 
     // Load From DB
     if (DatabaseLoadingEnabled_) {
@@ -160,7 +160,7 @@ void AssetLoader::LoadImage(long AssetID, YAML::Node Params) { // MAKE SURE TO C
 }
 
 // Returns All Models Loaded In The Asset Buffer And Marked To Be Drawn
-std::vector<ERS_OBJECT_MODEL*> AssetLoader::GetModelsToDraw() {
+std::vector<ERS_OBJECT_MODEL*> AssetManager::GetModelsToDraw() {
 
     // Create Pointer Vector
     std::vector<ERS_OBJECT_MODEL*> ModelPointers;
