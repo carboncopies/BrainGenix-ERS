@@ -11,7 +11,7 @@
 
 
 
-#include "Core/Structures/Model/Model.h"
+#include "Model.h"
 
 
 // Load Model From File
