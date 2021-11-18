@@ -13,7 +13,6 @@
 #include "LocalConfigurationLoader.h"
 #include "LoggingSystem.h"
 
-#include "AssetLoader.h"
 #include "RendererManager.h"
 
 
@@ -35,7 +34,7 @@ int main() {
     sERSLogger.Log("Initialized Logging System", 5);
 
     // Instantiate Asset Manager
-    AssetLoader sERSAssetLoader(&sERSLogger, &sERSLocalSystemConfiguration);
+    //AssetLoader sERSAssetLoader(&sERSLogger, &sERSLocalSystemConfiguration);
 
     // Instantiate RendererManager
     RendererManager sERSRendererManager(&sERSLocalSystemConfiguration, &sERSLogger, &SystemShouldRun);

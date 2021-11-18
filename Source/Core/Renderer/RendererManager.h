@@ -91,7 +91,6 @@ class RendererManager {
          * @param SystemConfiguration 
          * @param Logger 
          * @param SystemShouldRun 
-         * @param AssetLoader 
          */
         RendererManager(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun);
 
