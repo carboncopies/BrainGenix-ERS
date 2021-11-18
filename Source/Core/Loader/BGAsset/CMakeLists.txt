@@ -11,7 +11,7 @@ set(BGAsset_Sources
 
 # Specify Header Files In Source (Name Should Start With Parent Dir Name)
 set(BGAsset_Headers
-    "BGAssetManag.h"
+    "BGAssetManager.h"
 )
 
 
