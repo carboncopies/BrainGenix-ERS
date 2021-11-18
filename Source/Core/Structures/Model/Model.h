@@ -28,10 +28,10 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
-#include "Core/Structures/Meshes/Mesh.h"
-#include "Core/Structures/Textures/2DTexture.h"
-#include "Core/Structures/Vertex/Vertex.h"
-#include "Core/Loader/Image/FileIO.h"
+#include "Mesh.h"
+#include "2DTexture.h"
+#include "Vertex.h"
+#include "FileIO.h"
 
 
 struct ImageFileObject {
