@@ -3,20 +3,17 @@
 ########################################################################
 
 
-
-# Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(Renderer_Sources
-    "RendererManager.cpp"
-)
-
-# Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(Renderer_Headers
-    "RendererManager.h"
-)
-
-
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Renderer "RendererManager.cpp" "RendererManager.h")#${LoggingSystem_Sources} ${LoggingSystem_Headers})
+add_library(Renderer 
+
+            # Add Source Files (.cpp)
+            ${LoggingSystem_Sources}
+
+            # Add Header Files (.h)
+            "RendererManager.h"
+            
+            ${BACKWARD_ENABLE}
+            )
 target_link_libraries(Renderer
     yaml-cpp
     glm
