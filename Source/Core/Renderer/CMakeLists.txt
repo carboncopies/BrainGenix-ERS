@@ -16,7 +16,7 @@ set(Renderer_Headers
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Renderer SHARED "RendererManager.cpp" "RendererManager.h")#${LoggingSystem_Sources} ${LoggingSystem_Headers})
+add_library(Renderer OBJECT "RendererManager.cpp" "RendererManager.h")#${LoggingSystem_Sources} ${LoggingSystem_Headers})
 target_link_libraries(Renderer
     yaml-cpp
     glm
