@@ -7,7 +7,7 @@
 add_library(Renderer 
 
             # Add Source Files (.cpp)
-            ${LoggingSystem_Sources}
+            "RendererManager.cpp"
 
             # Add Header Files (.h)
             "RendererManager.h"
