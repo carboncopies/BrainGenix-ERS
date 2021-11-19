@@ -16,6 +16,7 @@ set(Renderer_Headers
 
 
 # Create Library (Name Should Be Parent Dir Name)
+add_compile_options(-fPIC)
 add_library(Renderer SHARED ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
 target_link_libraries(Renderer
     yaml-cpp
