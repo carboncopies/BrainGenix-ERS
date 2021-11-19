@@ -18,7 +18,7 @@ set(CMAKE_INSTALL_PREFIX ${BIN_DIR})
 
 
 
-add_compile_options(-fPIC)
+# add_compile_options(-fPIC)
 
 
 
