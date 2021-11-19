@@ -19,6 +19,7 @@ target_link_libraries(Renderer
     glm
     glad
     glfw
+    LoggingSystem
     )
 target_include_directories(Renderer PUBLIC ./)
 target_link_libraries(${PROJECT_NAME} Renderer)
