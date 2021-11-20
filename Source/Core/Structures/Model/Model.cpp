@@ -190,17 +190,16 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
         if (!Skip) {
             
             // Generate Search String
-            std::string SearchString = "Assets";//std::to_string(AssetID_);
-            SearchString += "/";
-            SearchString += Str.C_Str();
+            // std::string SearchString = "Assets";//std::to_string(AssetID_);
+            // SearchString += "/";
+            // SearchString += Str.C_Str();
 
 
 
 
-            // std::string FilePath = std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str()));
-            Logger_->Log(std::string(std::string("Loading Texture At File Path: ") + SearchString).c_str(), 3);
+            std::string FilePath = std::string(std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str()));
+            Logger_->Log(std::string(std::string("Loading Texture At File Path: ") + FilePath).c_str(), 3);
             
-            std::cout<<SearchString<<std::endl;
 
             ImageFileObject Image;
             Image.LoadImage(SearchString.c_str());
