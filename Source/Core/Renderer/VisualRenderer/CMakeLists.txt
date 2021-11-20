@@ -31,7 +31,7 @@ target_link_libraries(VisualRenderer
 target_link_libraries(VisualRenderer
     NoClip
     LoggingSystem
-    FileIO
+    Image
     )
 
 target_include_directories(VisualRenderer PUBLIC ./)

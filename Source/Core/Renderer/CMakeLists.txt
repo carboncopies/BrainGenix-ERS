@@ -26,9 +26,7 @@ target_link_libraries(Renderer
 # Link Internal Libs
 target_link_libraries(Renderer
     LoggingSystem
-    ShaderManager
-    WindowInputProcessor
-    Callbacks
+    VisualRenderer
     BGAssetManager
     DataBuffer
     Model
