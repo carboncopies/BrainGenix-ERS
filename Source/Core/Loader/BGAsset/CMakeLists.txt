@@ -28,6 +28,7 @@ target_link_libraries(BGAsset
 target_link_libraries(BGAsset
     LoggingSystem
     Scene
+    DataBuffer
 
     )
 
