@@ -27,6 +27,9 @@ target_link_libraries(Meshes
 # Link Internal Libs
 target_link_libraries(Meshes
     VisualRenderer
+    Textures
+    Vertex
+    Image
     )
 
 target_include_directories(Meshes PUBLIC ./)
