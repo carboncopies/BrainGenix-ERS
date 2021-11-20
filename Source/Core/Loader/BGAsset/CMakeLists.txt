@@ -31,7 +31,6 @@ target_link_libraries(BGAsset
     DataBuffer
     Model
     Image
-
     )
 
 target_include_directories(BGAsset PUBLIC ./)
