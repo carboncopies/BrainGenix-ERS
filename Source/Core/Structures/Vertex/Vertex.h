@@ -10,6 +10,7 @@
 
 #pragma once
 
+// Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
 
 #define MAX_BONE_INFLUENCE 4
