@@ -10,13 +10,15 @@
 
 #pragma once
 
-#include "yaml-cpp/yaml.h"
+// Third-Party Librariess (BG convention: use <> instead of "")
+#include <yaml-cpp/yaml.h>
 
-#include "LoggingSystem.h"
-#include "Scene.h"
-#include "DataBuffer.h"
-#include "ImageDecoder.h"
-#include "Model.h"
+// Internal Libraries (BG convention: use <> instead of "")
+#include <LoggingSystem.h>
+#include <Scene.h>
+#include <DataBuffer.h>
+#include <ImageDeoder.h>
+#include <Model.h>
 
 
 class AssetManager {

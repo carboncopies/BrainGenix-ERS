@@ -10,8 +10,11 @@
 
 #pragma once
 
-#include "FreeImage.h"
-#include "LoggingSystem.h"
+// Third-Party Libraries (BG convention: use <> instead of "")
+#include <FreeImage.h>
+
+// Internal Libraries (BG convention: use <> instead of "")
+#include <LoggingSystem.h>
 
 // Image Struct
 struct ERSImage {
