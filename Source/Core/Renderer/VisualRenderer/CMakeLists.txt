@@ -32,6 +32,7 @@ target_link_libraries(VisualRenderer
 # Link Internal Libs
 target_link_libraries(VisualRenderer
     NoClip
+    LoggingSystem
     )
 
 target_include_directories(VisualRenderer PUBLIC ./)
