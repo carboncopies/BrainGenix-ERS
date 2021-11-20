@@ -10,12 +10,12 @@
 
 #pragma once
 
-
+// Standard Libraries (BG convention: use <> instead of "")
 #include <iostream>
 
 
 
-
+// Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -23,7 +23,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-
+// Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 
 #include <ShaderManager.h>
@@ -31,14 +31,13 @@
 #include <Callbacks.h>
 
 
-
 #include <BGAssetManager.h>
-#include <DataBuffer.h"
+#include <DataBuffer.h>
 
-#include "Model.h"
-#include "NoClip.h"
-#include "Scene.h"
-#include "SceneDecoder.h"
+#include <Model.h>
+#include <NoClip.h>
+#include <Scene.h>
+#include <SceneDecoder.h>
 
 
 
