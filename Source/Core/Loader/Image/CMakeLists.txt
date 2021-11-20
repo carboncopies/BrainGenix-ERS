@@ -3,24 +3,34 @@
 ########################################################################
 
 
-
-# Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(Image_Sources
-    "FileIO.cpp"
-    "ImageDecoder.cpp"
-)
-
-# Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(Image_Headers
-    "FileIO.h"
-    "ImageDecoder.h"
-)
-
-
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Image ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(Image 
+add_library(Image
+
+            # Add Source Files (.cpp)
+            "FileIO.cpp"
+            "ImageDecoder.cpp"
+
+            # Add Header Files (.h)
+            "FileIO.h"
+            "ImageDecoder.h"
+            
+            ${BACKWARD_ENABLE}
+            )
+
+# Link 3rd Party Libs
+target_link_libraries(Image
+    yaml-cpp
     glm
+    glad
+    glfw
     )
+
+# Link Internal Libs
+target_link_libraries(Image
+    NoClip
+    LoggingSystem
+    FileIO
+    )
+
 target_include_directories(Image PUBLIC ./)
 target_link_libraries(${PROJECT_NAME} Image)
