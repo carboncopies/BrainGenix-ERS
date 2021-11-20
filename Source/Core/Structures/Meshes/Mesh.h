@@ -10,13 +10,14 @@
 
 #pragma once
 
-
+// Third-Party Libraries (BG convention: use <> instead of "")
 #include <vector>
 #include <string>
 
-#include "ShaderManager.h"
-#include "2DTexture.h"
-#include "Vertex.h"
+// Internal Libraries (BG convention: use <> instead of "")
+#include <ShaderManager.h>
+#include <2DTexture.h>
+#include <Vertex.h>
 
 
 

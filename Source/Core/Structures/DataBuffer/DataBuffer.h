@@ -10,17 +10,16 @@
 
 #pragma once
 
-
+// Third-Party Libraries (BG convention: use <> instead of "")
 #include <vector>
 #include <variant>
 #include <string>
 
+// Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
-
-
 #include <Scene.h>
-#include "Model.h"
-#include "ImageDecoder.h"
+#include <Model.h>
+#include <ImageDecoder.h>
 
 
 struct ERS_STRUCTURE_DATA_BUFFER {
