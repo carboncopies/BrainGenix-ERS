@@ -13,8 +13,6 @@
 // Standard Libraries (BG convention: use <> instead of "")
 #include <iostream>
 
-
-
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -25,15 +23,10 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
-
 #include <ShaderManager.h>
 #include <WindowInputProcessor.h>
 #include <Callbacks.h>
-
-
-
 #include <DataBuffer.h>
-
 #include <Model.h>
 #include <NoClip.h>
 #include <Scene.h>
