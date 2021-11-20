@@ -10,8 +10,8 @@
 
 #pragma once
 
-#include "LoggingSystem.h"
-#include "NoClip.h"
+#include <LoggingSystem.h>
+#include <NoClip.h>
 
 
 #include <GLFW/glfw3.h>
