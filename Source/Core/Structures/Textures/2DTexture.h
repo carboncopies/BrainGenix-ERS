@@ -14,7 +14,7 @@
 #include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
-#include <FreeImage.h>
+#include "FreeImage.h"
 
 // Structure To Hold 2D ERS Texture
 struct ERS_OBJECT_TEXTURE_2D {
