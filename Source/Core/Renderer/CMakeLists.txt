@@ -27,7 +27,6 @@ target_link_libraries(Renderer
 target_link_libraries(Renderer
     LoggingSystem
     VisualRenderer
-    BGAsset
     DataBuffer
     Model
     NoClip
