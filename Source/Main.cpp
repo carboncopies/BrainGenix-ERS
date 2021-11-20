@@ -20,7 +20,16 @@
 //
 //-----------------------------------------------------------------------------------------------------
 //
-// FIXME: FIX LINKER ERRORS MOST LIKELY CAUSED BY IMPROPER CMAKE (IN RECURSIVE CMAKE FILES)!
+// FIXME: FIX Callbacks.cpp/h not linking or something - un copypaste from renderermanager.cpp
+// FIXME: Fix documentation status
+// FIXME: Cleanup cmake and make more efficent - get in touch with arseniy
+// FIXME: restructure code to make use of loaders for loading and structs for storing
+// FIXME: Add proper lighting system (phong and more advanced (and shadow maps))
+// FIXME: implement animations (character deformations)
+// FIXME: add user interface
+// FIXME: implement offscreen rendering
+// FIXME: add other features to this list later, (audio rendering, ray tracing, etc.)
+// FIXME: Update this card with more info as needed!
 //
 //-----------------------------------------------------------------------------------------------------
 //
