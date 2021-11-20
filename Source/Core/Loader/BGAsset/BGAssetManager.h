@@ -17,7 +17,7 @@
 #include <LoggingSystem.h>
 #include <Scene.h>
 #include <DataBuffer.h>
-#include <ImageDeoder.h>
+#include <ImageDecoder.h>
 #include <Model.h>
 
 
