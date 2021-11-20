@@ -10,9 +10,9 @@
 
 #pragma once
 
+// Standard Libraries (BG convention: use <> instead of "")
 #include <string>
 #include <map>
-
 #include <iomanip>
 #include <iostream>
 #include <string>
@@ -22,10 +22,12 @@
 #include <list>
 #include <array>
 
+// Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
 
-#include "Scene.h"
-#include "LoggingSystem.h"
+// Internal Libraries (BG convention: use <> instead of "")
+#include <Scene.h>
+#include <LoggingSystem.h>
 
 ERS_OBJECT_SCENE LoadScene(long SceneID, LoggerClass *Logger_ = nullptr, bool LogLoading = false);
 

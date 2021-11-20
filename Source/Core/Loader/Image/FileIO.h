@@ -10,11 +10,11 @@
 
 #pragma once
 
+// Standard Libraries (BG convention: use <> instead of "")
 #include <fstream>
 #include <string>
 
-
-
+// Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 
 std::string ReadFile(const std::string& FileName, LoggerClass *Logger_ = nullptr);
