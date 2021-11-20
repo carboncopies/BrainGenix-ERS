@@ -3,22 +3,30 @@
 ########################################################################
 
 
-
-# Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(Meshes_Sources
-    "Mesh.cpp"
-)
-
-# Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(Meshes_Headers
-    "Mesh.h"
-)
-
-
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Meshes ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(Meshes 
+add_library(Meshes
+
+            # Add Source Files (.cpp)
+            "Mesh.cpp"
+
+            # Add Header Files (.h)
+            "Mesh.h"
+            
+            ${BACKWARD_ENABLE}
+            )
+
+# Link 3rd Party Libs
+target_link_libraries(Meshes
+    yaml-cpp
     glm
+    glad
+    glfw
+    assimp
     )
+
+# Link Internal Libs
+target_link_libraries(Meshes
+    )
+
 target_include_directories(Meshes PUBLIC ./)
 target_link_libraries(${PROJECT_NAME} Meshes)
