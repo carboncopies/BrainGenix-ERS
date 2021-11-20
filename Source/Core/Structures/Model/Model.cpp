@@ -24,7 +24,7 @@ void ERS_OBJECT_MODEL::LoadModelFromFile(const char* AssetPath, LoggerClass *Log
     AssetPath_ = AssetPath;
 
     // Generate File Path
-    std::string FilePath = "Assets/" + std::string(AssetPath_) + std::string(".bg");
+    std::string FilePath = std::string(AssetPath_);
 
     // Read File
     Assimp::Importer Importer;
