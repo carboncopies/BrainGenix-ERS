@@ -11,7 +11,10 @@
 
 #pragma once
 
-#include "NoClip.h"
+#include <NoClip.h>
+
+#include <GLFW/glfw3.h>
+
 
 
 // Initialize {FIXME LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
