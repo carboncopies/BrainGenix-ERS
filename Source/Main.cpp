@@ -80,6 +80,8 @@ int main() {
     // Enter Main Loop
     while (SystemShouldRun) {
 
+        
+        sERSRendererManager.UpdateLoop();
 
     }
 
