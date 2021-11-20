@@ -91,15 +91,16 @@ class ERS_OBJECT_MODEL {
         std::vector<ERS_OBJECT_TEXTURE_2D> Textures_Loaded;
         std::string Directory;
 
+        const char* AssetPath_;
+
         bool GammaCorrection;
-        long AssetID_;
 
         // Logger
         LoggerClass *Logger_;
 
 
         // Load Model From File
-        void LoadModelFromFile(long AssetID, LoggerClass *Logger);
+        void LoadModelFromFile(const char* AssetPath, LoggerClass *Logger);
 
         // Draw Model
         void Draw(ERS_OBJECT_SHADER &Shader);

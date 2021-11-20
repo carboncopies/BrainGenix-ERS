@@ -15,16 +15,16 @@
 
 
 // Load Model From File
-void ERS_OBJECT_MODEL::LoadModelFromFile(long AssetID, LoggerClass *Logger) {
+void ERS_OBJECT_MODEL::LoadModelFromFile(const char* AssetPath, LoggerClass *Logger) {
 
     // Set Pointer
     Logger_ = Logger;
 
-    // Copy AssetID
-    AssetID_ = AssetID;
+    // Copy AssetPath
+    AssetPath_ = AssetPath;
 
     // Generate File Path
-    std::string FilePath = "Assets/" + std::to_string(AssetID) + std::string(".bg");
+    std::string FilePath = "Assets/" + std::string(AssetPath_) + std::string(".bg");
 
     // Read File
     Assimp::Importer Importer;
