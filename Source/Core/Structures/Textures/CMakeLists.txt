@@ -21,6 +21,7 @@ target_link_libraries(Textures
     glad
     glfw
     assimp
+    FreeImage
     )
 
 # Link Internal Libs
