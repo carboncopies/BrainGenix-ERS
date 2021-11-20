@@ -16,12 +16,6 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR})
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR})
 set(CMAKE_INSTALL_PREFIX ${BIN_DIR})
 
-
-
-# add_compile_options(-fPIC)
-
-
-
 function(disable_target_warnings target)
   target_compile_options(${target} PRIVATE
     $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
