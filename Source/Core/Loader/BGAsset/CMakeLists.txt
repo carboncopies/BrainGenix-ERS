@@ -3,22 +3,31 @@
 ########################################################################
 
 
-
-# Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(BGAsset_Sources
-    "BGAssetManager.cpp"
-)
-
-# Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(BGAsset_Headers
-    "BGAssetManager.h"
-)
-
-
 # Create Library (Name Should Be Parent Dir Name)
-add_library(BGAsset ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(BGAsset 
+add_library(BGAsset
+
+            # Add Source Files (.cpp)
+            "BGAssetManager.cpp"
+
+            # Add Header Files (.h)
+            "BGAssetManager.h"
+            
+            ${BACKWARD_ENABLE}
+            )
+
+# Link 3rd Party Libs
+target_link_libraries(BGAsset
+    yaml-cpp
     glm
+    glad
+    glfw
+    assimp
     )
+
+# Link Internal Libs
+target_link_libraries(BGAsset
+
+    )
+
 target_include_directories(BGAsset PUBLIC ./)
 target_link_libraries(${PROJECT_NAME} BGAsset)
