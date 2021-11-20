@@ -10,7 +10,10 @@
 
 #pragma once
 
+// Standard Libraries (BG convention: use <> instead of "")
 #include <string>
+
+// Third-Party Libraries (BG convention: use <> instead of "")
 #include "FreeImage.h"
 
 // Structure To Hold 2D ERS Texture
