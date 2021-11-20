@@ -150,7 +150,7 @@ void RendererManager::InitializeOpenGL() {
     Shader_ = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
 
     // Load Model
-    Model_.LoadModelFromFile("Assets/scene.gltf", Logger_);
+    Model_.LoadModelFromFile("scene.gltf", Logger_);
 
 
 
