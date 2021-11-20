@@ -31,7 +31,7 @@ target_link_libraries(Renderer
     Model
     NoClip
     Scene
-    SceneDecoder
+    SceneLoader
     )
 
 target_include_directories(Renderer PUBLIC ./)
