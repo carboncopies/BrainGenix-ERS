@@ -3,21 +3,30 @@
 ########################################################################
 
 
-
-# Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(Texture_Sources
-)
-
-# Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(Texture_Headers
-    "Mesh.h"
-)
-
-
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Texture ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(Texture
+add_library(Textures
+
+            # Add Source Files (.cpp)
+
+            # Add Header Files (.h)
+            "2DTexture.h"
+            
+            ${BACKWARD_ENABLE}
+            )
+
+# Link 3rd Party Libs
+target_link_libraries(Textures
+    yaml-cpp
     glm
+    glad
+    glfw
+    assimp
     )
-target_include_directories(Texture PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Texture)
+
+# Link Internal Libs
+target_link_libraries(Textures
+
+    )
+
+target_include_directories(Textures PUBLIC ./)
+target_link_libraries(${PROJECT_NAME} Textures)
