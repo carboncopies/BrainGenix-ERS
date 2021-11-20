@@ -3,8 +3,6 @@
 ########################################################################
 
 
-
-
 # Create Library (Name Should Be Parent Dir Name)
 add_library(VisualRenderer
 
