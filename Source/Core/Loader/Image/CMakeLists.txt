@@ -29,7 +29,7 @@ target_link_libraries(Image
 target_link_libraries(Image
     NoClip
     LoggingSystem
-    FileIO
+    Image
     )
 
 target_include_directories(Image PUBLIC ./)
