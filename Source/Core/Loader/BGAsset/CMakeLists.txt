@@ -26,8 +26,8 @@ target_link_libraries(BGAsset
 
 # Link Internal Libs
 target_link_libraries(BGAsset
-
     LoggingSystem
+    Scene
 
     )
 
