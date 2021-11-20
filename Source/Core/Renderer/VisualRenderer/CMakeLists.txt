@@ -4,29 +4,45 @@
 
 
 
-# Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(VisualRenderer_Sources
-    "Callbacks.cpp"
-    "ShaderManager.cpp"
-    "WindowInputProcessor.cpp"
-)
-
-# Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(VisualRenderer_Headers
-    "Callbacks.h"
-    "ShaderManager.h"
-    "WindowInputProcessor.h"
-)
-
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(VisualRenderer ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(VisualRenderer 
+add_library(VisualRenderer
+
+            # Add Source Files (.cpp)
+            "Callbacks.cpp"
+            "ShaderManager.cpp"
+            "WindowInputProcessor.cpp"
+
+            # Add Header Files (.h)
+            "Callbacks.h"
+            "ShaderManager.h"
+            "WindowInputProcessor.h"
+            
+            ${BACKWARD_ENABLE}
+            )
+
+# Link 3rd Party Libs
+target_link_libraries(VisualRenderer
     yaml-cpp
     glm
     glad
     glfw
     )
+
+# Link Internal Libs
+target_link_libraries(VisualRenderer
+    LoggingSystem
+    ShaderManager
+    WindowInputProcessor
+    Callbacks
+    BGAssetManager
+    DataBuffer
+    Model
+    NoClip
+    Scene
+    SceneDecoder
+    )
+
 target_include_directories(VisualRenderer PUBLIC ./)
 target_link_libraries(${PROJECT_NAME} VisualRenderer)
 
