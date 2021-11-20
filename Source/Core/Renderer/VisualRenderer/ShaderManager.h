@@ -10,16 +10,20 @@
 
 #pragma once
 
+// Standard Library (BG convention: use <> instead of "")
 #include <vector>
 
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
-#include "glm/gtc/type_ptr.hpp"
+// Third-Party Libraries (BG convention: use <> instead of "")
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include <glad/glad.h>
+
 #include <GLFW/glfw3.h>
 
-#include "FileIO.h"
+// Internal Libraries (BG convention: use <> instead of "")
+#include <FileIO.h>
 
 
 
