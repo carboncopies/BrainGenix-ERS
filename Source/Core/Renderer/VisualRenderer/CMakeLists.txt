@@ -31,16 +31,7 @@ target_link_libraries(VisualRenderer
 
 # Link Internal Libs
 target_link_libraries(VisualRenderer
-    LoggingSystem
-    ShaderManager
-    WindowInputProcessor
-    Callbacks
-    BGAssetManager
-    DataBuffer
-    Model
     NoClip
-    Scene
-    SceneDecoder
     )
 
 target_include_directories(VisualRenderer PUBLIC ./)

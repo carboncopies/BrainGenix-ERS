@@ -11,6 +11,8 @@
 
 #pragma once
 
+#include "NoClip.h"
+
 
 // Initialize {FIXME LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
 static bool FirstMouse = true;
