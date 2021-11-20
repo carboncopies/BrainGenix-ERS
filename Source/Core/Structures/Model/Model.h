@@ -10,6 +10,7 @@
 
 #pragma once
 
+// Standard Libraries (BG convention: use <> instead of "")
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -22,16 +23,18 @@
 #include <sys/stat.h>
 #include <stdlib.h>
 
+// Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
-#include "Mesh.h"
-#include "2DTexture.h"
-#include "Vertex.h"
-#include "FileIO.h"
+// Internal Libraries (BG convention: use <> instead of "")
+#include <Mesh.h>
+#include <2DTexture.h>
+#include <Vertex.h>
+#include <FileIO.h>
 
 
 struct ImageFileObject {
