@@ -31,7 +31,7 @@
 #include <Callbacks.h>
 
 
-#include <BGAssetManager.h>
+
 #include <DataBuffer.h>
 
 #include <Model.h>

@@ -66,7 +66,7 @@ AssetManager::~AssetManager() {
 void AssetManager::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
 
     // Iterate Through Scene Data, Load Non-Essential Assets (EG No Dependencies such as Images)
-    for (long i = 0; i < (long)dysize(InputScene.Subnodes); i++) {
+    for (long i = 0; i < (long)size(InputScene.Subnodes); i++) {
 
         // Get Subnode
         YAML::Node Subnode = InputScene.Subnodes[i];
@@ -86,7 +86,7 @@ void AssetManager::LoadSceneAssets(ERS_OBJECT_SCENE InputScene) {
     }
 
     // Load Models
-    for (long i = 0; i < (long)dysize(InputScene.Subnodes); i++) {
+    for (long i = 0; i < (long)size(InputScene.Subnodes); i++) {
 
         // Get Subnode
         YAML::Node Subnode = InputScene.Subnodes[i];
@@ -166,7 +166,7 @@ std::vector<ERS_OBJECT_MODEL*> AssetManager::GetModelsToDraw() {
     std::vector<ERS_OBJECT_MODEL*> ModelPointers;
 
     // Get Struct Data
-    for (long i = 0; i < (long)dysize(DataBuffer_.ERS_OBJECT_MODEL_Vector_); i++) {
+    for (long i = 0; i < (long)size(DataBuffer_.ERS_OBJECT_MODEL_Vector_); i++) {
         ModelPointers.push_back(&DataBuffer_.ERS_OBJECT_MODEL_Vector_[i]);
     }
 
