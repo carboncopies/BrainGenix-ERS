@@ -202,7 +202,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             
 
             ImageFileObject Image;
-            Image.LoadImage(SearchString.c_str());
+            Image.LoadImage(FilePath.c_str());
 
             // Convert Texture To FIBITMAP*
             ERS_OBJECT_TEXTURE_2D Texture;
