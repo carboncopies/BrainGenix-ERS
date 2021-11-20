@@ -3,22 +3,30 @@
 ########################################################################
 
 
-
-# Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(Model_Sources
-    "Mesh.cpp"
-)
-
-# Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(Model_Headers
-    "Mesh.h"
-)
-
-
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Model ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(Model 
+add_library(Model 
+
+            # Add Source Files (.cpp)
+            "Model.cpp"
+
+            # Add Header Files (.h)
+            "Model.h"
+            
+            ${BACKWARD_ENABLE}
+            )
+
+# Link 3rd Party Libs
+target_link_libraries(Model
+    yaml-cpp
     glm
+    glad
+    glfw
     )
+
+# Link Internal Libs
+target_link_libraries(Model
+
+    )
+
 target_include_directories(Model PUBLIC ./)
 target_link_libraries(${PROJECT_NAME} Model)
