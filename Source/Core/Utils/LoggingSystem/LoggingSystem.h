@@ -10,6 +10,7 @@
 
 #pragma once
 
+// Standard Libraries (BG convention: use <> instead of "")
 #include <iomanip>
 #include <iostream>
 #include <string>
@@ -19,6 +20,7 @@
 #include <list>
 #include <array>
 
+// Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
 
 
