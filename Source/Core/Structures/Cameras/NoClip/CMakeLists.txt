@@ -3,22 +3,27 @@
 ########################################################################
 
 
-
-# Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(NoClip_Sources
-    "NoClip.cpp"
-)
-
-# Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(NoClip_Headers
-    "NoClip.h"
-)
-
-
 # Create Library (Name Should Be Parent Dir Name)
-add_library(NoClip ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(NoClip 
+add_library(NoClip 
+
+            # Add Source Files (.cpp)
+            "NoClip.cpp"
+
+            # Add Header Files (.h)
+            "NoClip.h"
+            
+            ${BACKWARD_ENABLE}
+            )
+
+# Link 3rd Party Libs
+target_link_libraries(NoClip
     glm
+    glad
     )
+
+# Link Internal Libs
+target_link_libraries(NoClip
+    )
+
 target_include_directories(NoClip PUBLIC ./)
 target_link_libraries(${PROJECT_NAME} NoClip)
