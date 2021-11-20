@@ -14,12 +14,28 @@ add_library(Renderer
             
             ${BACKWARD_ENABLE}
             )
+
+# Link 3rd Party Libs
 target_link_libraries(Renderer
     yaml-cpp
     glm
     glad
     glfw
-    LoggingSystem
     )
+
+# Link Internal Libs
+target_link_libraries(Renderer
+    LoggingSystem
+    ShaderManager
+    WindowInputProcessor
+    Callbacks
+    BGAssetManager
+    DataBuffer
+    Model
+    NoClip
+    Scene
+    SceneDecoder
+    )
+
 target_include_directories(Renderer PUBLIC ./)
 target_link_libraries(${PROJECT_NAME} Renderer)

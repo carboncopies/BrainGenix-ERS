@@ -31,7 +31,7 @@
 #include "Callbacks.h"
 
 
-// ------------------------------------------------------------ FIXME
+
 #include "BGAssetManager.h"
 #include "DataBuffer.h"
 
@@ -39,7 +39,7 @@
 #include "NoClip.h"
 #include "Scene.h"
 #include "SceneDecoder.h"
-// --------------------------------------------------------------------
+
 
 
 
