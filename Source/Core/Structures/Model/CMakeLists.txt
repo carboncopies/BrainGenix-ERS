@@ -21,6 +21,7 @@ target_link_libraries(Model
     glm
     glad
     glfw
+    assimp
     )
 
 # Link Internal Libs
