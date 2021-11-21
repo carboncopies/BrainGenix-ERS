@@ -26,7 +26,7 @@ target_link_libraries(TextureLoader
 # Link Internal Libs
 target_link_libraries(TextureLoader
     LoggingSystem
-    Image
+    ImageLoader
     Textures
     )
 
