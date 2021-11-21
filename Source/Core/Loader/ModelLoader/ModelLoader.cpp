@@ -64,6 +64,9 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath) {
     ProcessNode(Scene->mRootNode, Scene);
 
 
+    // Return Model Instance
+    return *Model_;
+
 }
 
 
