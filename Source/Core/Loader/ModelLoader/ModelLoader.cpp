@@ -38,13 +38,13 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath) {
 
 
     // Clear Model Instance
-    ERS_OBJECT_MODEL Model;
+    Model_ = new ERS_OBJECT_MODEL;
 
     // Copy AssetPath
-    Model.AssetPath_ = AssetPath;
+    Model_->AssetPath_ = AssetPath;
 
     // Generate File Path
-    std::string FilePath = std::string(Model.AssetPath_);
+    std::string FilePath = std::string(Model_->AssetPath_);
 
     // Read File
     Assimp::Importer Importer;

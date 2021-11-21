@@ -50,7 +50,7 @@ class ModelLoader {
     private:
 
         // Internal Model Instance For Processing
-        ERS_OBJECT_MODEL Model_;
+        ERS_OBJECT_MODEL *Model_;
 
         // Logger
         LoggerClass *Logger_;
