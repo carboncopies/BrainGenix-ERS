@@ -130,7 +130,6 @@ target_link_libraries(${PROJECT_NAME}
   glad
   glm
   glfw
-#   #${GLFW_LIBRARIES}
   FreeImage
   assimp
 #   meshoptimizer
