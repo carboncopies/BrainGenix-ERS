@@ -14,8 +14,22 @@
 #include "Model.h"
 
 
+// Initialize
+void ERS_OBJECT_MODEL::ModelLoader(LoggerClass *Logger, TextureLoader *TexLoader) {
+
+    // Create Local Pointer
+    Logger_ = Logger;
+    TextureLoader_ = TexLoader;
+
+    // Log Initialization
+    Logger_->Log("Initializing Model Loader", 5);
+
+}
+
+
+
 // Load Model From File
-void ERS_OBJECT_MODEL::LoadModelFromFile(const char* AssetPath, LoggerClass *Logger) {
+void ERS_OBJECT_MODEL::LoadModelFromFile(const char* AssetPath) {
 
     // Set Pointer
     Logger_ = Logger;
