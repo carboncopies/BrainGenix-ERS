@@ -27,11 +27,6 @@ target_link_libraries(Renderer
 target_link_libraries(Renderer
     LoggingSystem
     VisualRenderer
-    DataBuffer
-    Model
-    NoClip
-    Scene
-    SceneLoader
     )
 
 target_include_directories(Renderer PUBLIC ./)
