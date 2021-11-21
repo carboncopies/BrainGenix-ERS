@@ -7,10 +7,10 @@
 add_library(TextureLoader 
 
             # Add Source Files (.cpp)
-            "RendererManager.cpp"
+            "TextureLoader.cpp"
 
             # Add Header Files (.h)
-            "RendererManager.h"
+            "TextureLoader.h"
             
             ${BACKWARD_ENABLE}
             )
