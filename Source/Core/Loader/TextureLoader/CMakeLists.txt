@@ -26,7 +26,7 @@ target_link_libraries(TextureLoader
 # Link Internal Libs
 target_link_libraries(TextureLoader
     LoggingSystem
-    VisualRenderer
+    Image
     )
 
 target_include_directories(TextureLoader PUBLIC ./)
