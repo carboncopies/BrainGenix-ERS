@@ -24,7 +24,7 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
 
     // Instantiate Renderers
     Logger_->Log("Instantiating Renderers", 5);
-    //VisualRenderer_(SystemConfiguration, Logger, SystemShouldRun);
+    VisualRenderer_ = new VisualRenderer(SystemConfiguration, Logger, SystemShouldRun);
 
 
 }
@@ -42,7 +42,7 @@ RendererManager::~RendererManager() {
 void RendererManager::UpdateLoop() { 
 
     // Call Updates
-    VisualRenderer_.UpdateLoop();
+    VisualRenderer_->UpdateLoop();
 
 
 }

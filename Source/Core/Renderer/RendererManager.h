@@ -38,7 +38,7 @@ class RendererManager {
         bool *SystemShouldRun_;
 
         // Renderer Instances
-        VisualRenderer VisualRenderer_;
+        VisualRenderer *VisualRenderer_;
 
     public:
 
