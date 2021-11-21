@@ -37,8 +37,6 @@ target_link_libraries(VisualRenderer
 
     Model
     NoClip
-    SceneLoader
-
     )
 
 target_include_directories(VisualRenderer PUBLIC ./)
