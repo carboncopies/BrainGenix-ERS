@@ -37,7 +37,7 @@ ModelLoader::~ModelLoader() {
 ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath) {
 
 
-    // Create Model Instance
+    // Clear Model Instance
     ERS_OBJECT_MODEL Model;
 
     // Copy AssetPath
