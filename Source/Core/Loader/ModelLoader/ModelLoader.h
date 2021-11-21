@@ -3,7 +3,7 @@
 //======================================================================//
 
 /*
-    Description: This is the model decoder.
+    Description: This is the model loader.
     Additonal Notes: None
     Date Created: 2021-11-13
 */
