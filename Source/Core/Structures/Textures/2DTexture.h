@@ -14,9 +14,6 @@
 #include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-
 #include <FreeImage.h>
 
 // Structure To Hold 2D ERS Texture
@@ -30,55 +27,55 @@ struct ERS_OBJECT_TEXTURE_2D {
     std::string Path;
 
     // Texutre Init Function
-    void InitializeTexture(BYTE* ImageDataBuffer, size_t ImageLength, bool FlipImage = false) {
+    // void InitializeTexture(BYTE* ImageDataBuffer, size_t ImageLength, bool FlipImage = false) {
 
-        // Move this to a class
-        FreeImage_Initialise();
+    //     // Move this to a class
+    //     FreeImage_Initialise();
 
     
 
-        // Decode Image
-        FIMEMORY* EncodedImageData = FreeImage_OpenMemory(reinterpret_cast<BYTE*> (ImageDataBuffer), ImageLength);
-        FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(EncodedImageData);
-        FIBITMAP* ImageData = FreeImage_LoadFromMemory(Format, EncodedImageData);
+    //     // Decode Image
+    //     FIMEMORY* EncodedImageData = FreeImage_OpenMemory(reinterpret_cast<BYTE*> (ImageDataBuffer), ImageLength);
+    //     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(EncodedImageData);
+    //     FIBITMAP* ImageData = FreeImage_LoadFromMemory(Format, EncodedImageData);
 
-        // Optionally Flip Image
-        if (FlipImage) {
-            FreeImage_FlipVertical(ImageData);
-        }
+    //     // Optionally Flip Image
+    //     if (FlipImage) {
+    //         FreeImage_FlipVertical(ImageData);
+    //     }
     
-        // Set Properties
-        float Width = FreeImage_GetWidth(ImageData);
-        float Height = FreeImage_GetHeight(ImageData);
-        float Channels = FreeImage_GetLine(ImageData) / FreeImage_GetWidth(ImageData);
+    //     // Set Properties
+    //     float Width = FreeImage_GetWidth(ImageData);
+    //     float Height = FreeImage_GetHeight(ImageData);
+    //     float Channels = FreeImage_GetLine(ImageData) / FreeImage_GetWidth(ImageData);
 
 
-        // Generate Texture
-        glGenTextures(1, &ID);
-        glBindTexture(GL_TEXTURE_2D, ID);
+    //     // Generate Texture
+    //     glGenTextures(1, &ID);
+    //     glBindTexture(GL_TEXTURE_2D, ID);
 
-        // Set Texture Properties
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    //     // Set Texture Properties
+    //     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+    //     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    //     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    //     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-        // Generate Texture Map
-        unsigned char *OpenGLImageData = FreeImage_GetBits(ImageData);
+    //     // Generate Texture Map
+    //     unsigned char *OpenGLImageData = FreeImage_GetBits(ImageData);
 
-        if (Channels == 4) {
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, OpenGLImageData);
-        } else {
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, OpenGLImageData);
-        }
-        glGenerateMipmap(GL_TEXTURE_2D);
+    //     if (Channels == 4) {
+    //         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, OpenGLImageData);
+    //     } else {
+    //         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, OpenGLImageData);
+    //     }
+    //     glGenerateMipmap(GL_TEXTURE_2D);
 
-        // Deallocate Image Data
-        FreeImage_CloseMemory(EncodedImageData);
+    //     // Deallocate Image Data
+    //     FreeImage_CloseMemory(EncodedImageData);
 
-        // Move This Later
-        FreeImage_DeInitialise();
+    //     // Move This Later
+    //     FreeImage_DeInitialise();
 
-    }
+    // }
 
 };
