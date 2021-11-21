@@ -29,7 +29,6 @@
 #include <Callbacks.h>
 #include <Model.h>
 #include <NoClip.h>
-#include <Scene.h>
 #include <TextureLoader.h>
 
 

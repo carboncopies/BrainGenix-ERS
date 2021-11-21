@@ -37,7 +37,6 @@ target_link_libraries(VisualRenderer
 
     Model
     NoClip
-    Scene
     SceneLoader
 
     )
