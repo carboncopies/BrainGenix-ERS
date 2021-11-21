@@ -39,14 +39,10 @@ RendererManager::~RendererManager() {
 
 
 
-
-
-
-
 void RendererManager::UpdateLoop() { 
 
-
-    
+    // Call Updates
+    VisualRenderer_.UpdateLoop();
 
 
 }
