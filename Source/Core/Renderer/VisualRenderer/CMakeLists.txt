@@ -35,7 +35,6 @@ target_link_libraries(VisualRenderer
     LoggingSystem
     Image
 
-    DataBuffer
     Model
     NoClip
     Scene
