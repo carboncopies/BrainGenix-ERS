@@ -36,6 +36,8 @@ class TextureLoader {
          */
         ~TextureLoader();
 
+
+
         /**
          * @brief Load a texture at the given file path. (For on file loading)
          * 
@@ -51,5 +53,9 @@ class TextureLoader {
          * @return ERS_OBJECT_TEXTURE_2D 
          */
         ERS_OBJECT_TEXTURE_2D LoadTexture(long AssetID);
+
+
+        // ADD FUNCTION TO BATCH LOAD TEXTURES
+
 
 };
