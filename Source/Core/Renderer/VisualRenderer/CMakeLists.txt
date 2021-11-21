@@ -35,6 +35,7 @@ target_link_libraries(VisualRenderer
     LoggingSystem
     ImageLoader
     TextureLoader
+    ModelLoader
 
     Model
     NoClip

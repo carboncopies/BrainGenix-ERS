@@ -30,6 +30,7 @@
 #include <Model.h>
 #include <NoClip.h>
 #include <TextureLoader.h>
+#include <ModelLoader.h>
 
 
 class VisualRenderer {
