@@ -16,6 +16,7 @@ static void FramebufferSizeCallback(GLFWwindow* /*Window*/, int Width, int Heigh
 
     // Update Viewport
     glViewport(0,0, Width, Height);
+    glScissor(0, 0, Width, Height);
 
 }
 
