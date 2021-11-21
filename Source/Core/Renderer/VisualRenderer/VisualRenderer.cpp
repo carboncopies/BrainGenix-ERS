@@ -150,6 +150,9 @@ void VisualRenderer::InitializeOpenGL() {
     // Draw Faces In Front First
     glEnable(GL_DEPTH_TEST);
 
+    // Fix Perspective When Resizing Windows/Changing Aspect Ratio
+    gluOrtho2D(0.0, WindowWidth_, 0.0, WindowHeight_);
+
     // Setup Shaders
     Shader_ = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
 
