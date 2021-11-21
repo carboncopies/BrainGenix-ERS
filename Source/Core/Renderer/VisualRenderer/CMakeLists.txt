@@ -16,7 +16,7 @@ add_library(VisualRenderer
             "ShaderManager.h"
             "WindowInputProcessor.h"
             "Callbacks.h"
-            "VisualRendererManager.h"
+            "VisualRenderer.h"
 
             ${BACKWARD_ENABLE}
             )
