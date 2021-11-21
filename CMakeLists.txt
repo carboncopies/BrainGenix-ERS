@@ -151,7 +151,6 @@ add_subdirectory(${SRC_DIR}/Core/Structures/Cameras/NoClip)
 add_subdirectory(${SRC_DIR}/Core/Structures/Meshes)
 add_subdirectory(${SRC_DIR}/Core/Structures/Model)
 add_subdirectory(${SRC_DIR}/Core/Structures/Textures)
-add_subdirectory(${SRC_DIR}/Core/Structures/Scene)
 add_subdirectory(${SRC_DIR}/Core/Structures/Vertex)
 
 add_subdirectory(${SRC_DIR}/Core/Loader/TextureLoader)
