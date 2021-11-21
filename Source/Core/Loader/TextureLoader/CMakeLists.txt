@@ -4,7 +4,7 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Renderer 
+add_library(TextureLoader 
 
             # Add Source Files (.cpp)
             "RendererManager.cpp"
@@ -16,7 +16,7 @@ add_library(Renderer
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Renderer
+target_link_libraries(TextureLoader
     yaml-cpp
     glm
     glad
@@ -24,10 +24,10 @@ target_link_libraries(Renderer
     )
 
 # Link Internal Libs
-target_link_libraries(Renderer
+target_link_libraries(TextureLoader
     LoggingSystem
     VisualRenderer
     )
 
-target_include_directories(Renderer PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Renderer)
+target_include_directories(TextureLoader PUBLIC ./)
+target_link_libraries(${PROJECT_NAME} TextureLoader)
