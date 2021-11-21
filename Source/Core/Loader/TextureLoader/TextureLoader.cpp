@@ -50,7 +50,7 @@ ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path) { // File Ver
         ERS_OBJECT_TEXTURE_2D Texture;
 
         // Load Image
-        ER
+        FIBITMAP* ImageData = LoadImageFromFile(Path);
 
         // Set Properties
         float Width = FreeImage_GetWidth(ImageData);
