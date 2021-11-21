@@ -12,7 +12,38 @@
 #include "Callbacks.h"
 
 
+void FramebufferSizeCallback(GLFWwindow* /*Window*/, int Width, int Height) {
 
+    // Update Viewport
+    glViewport(0,0, Width, Height);
+
+}
+
+
+void MouseCallback(GLFWwindow* /*Window*/, double XPos, double YPos) {
+
+    // Update Positions
+    if (FirstMouse) {
+
+        LastX = XPos;
+        LastY = YPos;
+
+        FirstMouse = false;
+
+    }
+
+    // Calculate Offsets
+    float XOffset = XPos - LastX;
+    float YOffset = YPos - LastY;
+
+    // Update Last Positions
+    LastX = XPos;
+    LastY = YPos;
+
+    // Process Camera Movement
+    Camera_.ProcessMouseMovement(XOffset, YOffset);
+
+}
 
 
 
