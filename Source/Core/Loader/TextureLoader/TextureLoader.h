@@ -13,12 +13,43 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 
-class ERS_Texture_Loader {
+class TextureLoader {
 
     private:
 
         // Member Vars
         LoggerClass *Logger_;
 
+
+    public:
+
+        /**
+         * @brief Construct a new Texture Loader object
+         * 
+         * @param Logger 
+         */
+        TextureLoader(LoggerClass* Logger);
+
+        /**
+         * @brief Destroy the Texture Loader object
+         * 
+         */
+        ~TextureLoader();
+
+        /**
+         * @brief Load a texture at the given file path. (For on file loading)
+         * 
+         * @param Path 
+         * @return ERS_OBJECT_TEXTURE_2D 
+         */
+        ERS_OBJECT_TEXTURE_2D LoadTexture(const char* Path);
+
+        /**
+         * @brief Load a texture at the given asset id. (For database loading)
+         * 
+         * @param AssetID 
+         * @return ERS_OBJECT_TEXTURE_2D 
+         */
+        ERS_OBJECT_TEXTURE_2D LoadTexture(long AssetID);
 
 };
