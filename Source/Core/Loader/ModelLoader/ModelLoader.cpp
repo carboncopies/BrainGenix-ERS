@@ -37,11 +37,14 @@ ModelLoader::~ModelLoader() {
 ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath) {
 
 
+    // Create Model Instance
+    ERS_OBJECT_MODEL Model;
+
     // Copy AssetPath
-    AssetPath_ = AssetPath;
+    Model.AssetPath_ = AssetPath;
 
     // Generate File Path
-    std::string FilePath = std::string(AssetPath_);
+    std::string FilePath = std::string(Model.AssetPath_);
 
     // Read File
     Assimp::Importer Importer;
