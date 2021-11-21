@@ -40,7 +40,6 @@ struct ERS_STRUCTURE_DATA_BUFFER {
     std::map<long, VectorData> MetadataMap_;
     std::vector<ERS_OBJECT_MODEL> ERS_OBJECT_MODEL_Vector_;
     std::vector<ERS_OBJECT_SCENE> ERS_OBJECT_SCENE_Vector_;
-    std::vector<ERSImage> ERS_OBJECT_IMAGE_Vector_;
     int TestVar = 5;
 
     // Return Number Of Elements In Model Vector
@@ -48,38 +47,7 @@ struct ERS_STRUCTURE_DATA_BUFFER {
         return ERS_OBJECT_MODEL_Vector_.size();
     }
 
-    // Return An Image Stored In The Image Vector With A Matching Path
-    ERSImage* GetImage(const char* Path) {
 
-        // Get Map Length
-        long MapLength = (long)MetadataMap_.size();
-
-        // Iterate Through Map
-        for (long i = 0; i < MapLength; i++) {
-
-            // Get Map Element
-            VectorData MapElement = MetadataMap_[i];
-
-            // Check Type
-            if (MapElement.AssetType == std::string("ERS_OBJECT_IMAGE")) {
-                if (MapElement.AssetPath == std::string(Path)) {
-                    
-                    // Get Vector Index
-                    long VectorIndex = MapElement.VectorIndex;
-
-                    // Return Element
-                    return &ERS_OBJECT_IMAGE_Vector_[VectorIndex];
-
-                }
-            }
-
-
-        }
-
-        // No Image Found
-        return nullptr;
-
-    }
 
 
 
@@ -131,24 +99,6 @@ struct ERS_STRUCTURE_DATA_BUFFER {
 
     }
 
-    void Add_ERS_OBJECT_IMAGE(ERSImage Input, long AssetID, std::string AssetPath) {
-
-        // Add Image To Buffer
-        ERS_OBJECT_IMAGE_Vector_.push_back(Input);
-
-        VectorData AssetData;
-        AssetData.AssetType = "ERS_OBJECT_IMAGE";
-        AssetData.VectorIndex = (long)ERS_OBJECT_IMAGE_Vector_.size()-1;
-        AssetData.AssetPath = AssetPath;
-
-        MetadataMap_.insert({AssetID, AssetData});
-
-        // Log Scene Loading
-        if (Logger_ != nullptr) {
-            Logger_->Log(std::string(std::string("Adding ERS_OBJECT_IMAGE Asset To Data Buffer With Global Asset ID: ") + std::to_string(AssetID)).c_str(), 4);
-        }
-
-    }
 
 
 };
