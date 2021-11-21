@@ -3,7 +3,7 @@
 //======================================================================//
 
 /*
-    Description: This file contains the visual renderer manager.
+    Description: This file contains the visual renderer.
     Additonal Notes: None
     Date Created: 2021-11-20
 */
