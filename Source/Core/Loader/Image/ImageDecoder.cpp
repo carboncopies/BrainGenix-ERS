@@ -25,24 +25,15 @@ void ImageDecoder::Initialize(LoggerClass *Logger) {
 }
 
 // Loads And Decodes Images From Disk Into Memory
-ERSImage ImageDecoder::LoadImageFromFile(const char* FilePath) {
-
-    // Create Struct
-    ERSImage ImageStruct{};
+FIBITMAP* ImageDecoder::LoadImageFromFile(const char* FilePath) {
 
     // Load Image
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileType(FilePath, 0);
-    ImageStruct.ImageData = FreeImage_Load(Format, FilePath);
-    FreeImage_FlipVertical(ImageStruct.ImageData);
-    
-    // Set Properties
-    ImageStruct.Width = FreeImage_GetWidth(ImageStruct.ImageData);
-    ImageStruct.Height = FreeImage_GetHeight(ImageStruct.ImageData);
-    ImageStruct.Channels = FreeImage_GetLine(ImageStruct.ImageData) / FreeImage_GetWidth(ImageStruct.ImageData);
+    FIBITMAP* ImageData = FreeImage_Load(Format, FilePath);
 
 
     // Return Data
-    return ImageStruct;
+    return ImageData;
 
 }
 
