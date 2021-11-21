@@ -9,8 +9,6 @@
 */ 
 
 
-// FIXME: ADD DESTRUCTOR, RENAME TO MODEL LOADER, MOVE ModelLoader TO A STRUCT (WITH DRAW FUNCTION)
-
 #include "Model.h"
 
 
