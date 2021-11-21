@@ -14,7 +14,7 @@
 #include "Model.h"
 
 
-// Initialize
+// Constructor
 ModelLoader::ModelLoader(LoggerClass *Logger, TextureLoader *TexLoader) {
 
     // Create Local Pointer
