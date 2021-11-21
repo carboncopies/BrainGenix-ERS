@@ -31,6 +31,7 @@
 #include <Model.h>
 #include <NoClip.h>
 #include <Scene.h>
+#include <TextureLoader.h>
 
 
 class VisualRenderer {
@@ -40,6 +41,9 @@ class VisualRenderer {
         // Member Variables
         YAML::Node *SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
         LoggerClass *Logger_; /**<Pointer to the logging system instance*/
+
+        // MOVE TO ASSET LOADER CLASS LATER:
+        TextureLoader *TextureLoader_; /**<Pointer to Texture Loader Instance*/
 
         // Control Values
         bool *SystemShouldRun_;
