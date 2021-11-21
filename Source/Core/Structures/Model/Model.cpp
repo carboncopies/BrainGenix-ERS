@@ -195,19 +195,22 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             Logger_->Log(std::string(std::string("Loading Texture At File Path: ") + FilePath).c_str(), 3);
             
 
-            ImageFileObject Image;
-            Image.LoadImage(FilePath.c_str());
+            // ImageFileObject Image;
+            // Image.LoadImage(FilePath.c_str());
 
-            // Convert Texture To FIBITMAP*
-            ERS_OBJECT_TEXTURE_2D Texture;
-            Texture.InitializeTexture(Image.MemoryBuffer, Image.Buffer.st_size);
-            Texture.Type = TypeName;
-            Texture.Path = Str.C_Str();
+            // // Convert Texture To FIBITMAP*
+            // ERS_OBJECT_TEXTURE_2D Texture;
+            // Texture.InitializeTexture(Image.MemoryBuffer, Image.Buffer.st_size);
+            // Texture.Type = TypeName;
+            // Texture.Path = Str.C_Str();
+
+            ERS_OBJECT_TEXTURE_2D Texture = TextureLoader_.LoadTexture(FilePath.c_str());
+
             Textures.push_back(Texture);
             Textures_Loaded.push_back(Texture);
 
             // Free Memory
-            Image.FreeMemory();
+            //Image.FreeMemory();
 
         }
 
