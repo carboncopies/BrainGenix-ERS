@@ -9,13 +9,13 @@
 */ 
 
 
-// FIXME: ADD DESTRUCTOR, RENAME TO MODEL LOADER, MOVE ERS_OBJECT_MODEL TO A STRUCT (WITH DRAW FUNCTION)
+// FIXME: ADD DESTRUCTOR, RENAME TO MODEL LOADER, MOVE ModelLoader TO A STRUCT (WITH DRAW FUNCTION)
 
 #include "Model.h"
 
 
 // Initialize
-ERS_OBJECT_MODEL::ModelLoader(LoggerClass *Logger, TextureLoader *TexLoader) {
+ModelLoader::ModelLoader(LoggerClass *Logger, TextureLoader *TexLoader) {
 
     // Create Local Pointer
     Logger_ = Logger;
@@ -37,7 +37,7 @@ ModelLoader::~ModelLoader() {
 
 
 // Load Model From File
-void ERS_OBJECT_MODEL::LoadModelFromFile(const char* AssetPath) {
+void ModelLoader::LoadModelFromFile(const char* AssetPath) {
 
 
     // Copy AssetPath
@@ -67,7 +67,7 @@ void ERS_OBJECT_MODEL::LoadModelFromFile(const char* AssetPath) {
 }
 
 // Draw Model
-void ERS_OBJECT_MODEL::Draw(ERS_OBJECT_SHADER &Shader) {
+void ModelLoader::Draw(ERS_OBJECT_SHADER &Shader) {
 
     // Draw All Meshes
     for (unsigned int i=0; i<Meshes.size(); i++) {
@@ -77,7 +77,7 @@ void ERS_OBJECT_MODEL::Draw(ERS_OBJECT_SHADER &Shader) {
 }
 
 // Process Nodes
-void ERS_OBJECT_MODEL::ProcessNode(aiNode *Node, const aiScene *Scene) {
+void ModelLoader::ProcessNode(aiNode *Node, const aiScene *Scene) {
 
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
@@ -94,7 +94,7 @@ void ERS_OBJECT_MODEL::ProcessNode(aiNode *Node, const aiScene *Scene) {
 }
 
 // Process Mesh
-ERS_OBJECT_MESH ERS_OBJECT_MODEL::ProcessMesh(aiMesh *Mesh, const aiScene *Scene) {
+ERS_OBJECT_MESH ModelLoader::ProcessMesh(aiMesh *Mesh, const aiScene *Scene) {
 
     // Create Data Holders
     std::vector<ERS_OBJECT_VERTEX> Vertices;
@@ -186,7 +186,7 @@ ERS_OBJECT_MESH ERS_OBJECT_MODEL::ProcessMesh(aiMesh *Mesh, const aiScene *Scene
 }
 
 // Check Material Textures
-std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, std::string TypeName) {
+std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, std::string TypeName) {
 
     std::vector<ERS_OBJECT_TEXTURE_2D> Textures;
     for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {
