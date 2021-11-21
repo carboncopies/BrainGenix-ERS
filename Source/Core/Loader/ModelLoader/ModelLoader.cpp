@@ -74,7 +74,7 @@ void ModelLoader::ProcessNode(aiNode *Node, const aiScene *Scene) {
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
-        Meshes.push_back(ProcessMesh(Mesh, Scene));
+        Model_->Meshes.push_back(ProcessMesh(Mesh, Scene));
     }
 
     // Process Children Nodes
@@ -190,10 +190,10 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(aiMaterial 
         
 
         // Calculate Texture Path
-        std::string FilePath = std::string(std::string("Assets") + std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str()));
+        std::string FilePath = std::string(std::string("Assets") + std::string(this->Model_->Directory)  + std::string("/") + std::string(Str.C_Str()));
 
         // Check If Texture Already Loaded
-        for (unsigned int j = 0; j < Textures_Loaded.size(); j++) {
+        for (unsigned int j = 0; j < Model_->Textures_Loaded.size(); j++) {
 
             if (std::strcmp(Textures_Loaded[j].Path.data(), FilePath.c_str()) == 0) {
                 Textures.push_back(Textures_Loaded[j]);
@@ -208,7 +208,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(aiMaterial 
             ERS_OBJECT_TEXTURE_2D Texture = TextureLoader_->LoadTexture(FilePath.c_str());
 
             Textures.push_back(Texture);
-            Textures_Loaded.push_back(Texture);
+            Model_->Textures_Loaded.push_back(Texture);
 
 
         }
