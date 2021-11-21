@@ -49,7 +49,7 @@ ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path, bool FlipImag
         ERS_OBJECT_TEXTURE_2D Texture;
 
         // Load Image
-        FIBITMAP* ImageData = LoadImageFromFile(Path);
+        FIBITMAP* ImageData = ImageDecoder_.LoadImageFromFile(Path);
         if (FlipImage) {
             FreeImage_FlipVertical(ImageData);
         }
