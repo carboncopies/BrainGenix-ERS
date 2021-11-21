@@ -28,7 +28,6 @@ target_link_libraries(Model
 target_link_libraries(Model
     Meshes
     Textures
-    TextureLoader
     )
 
 target_include_directories(Model PUBLIC ./)
