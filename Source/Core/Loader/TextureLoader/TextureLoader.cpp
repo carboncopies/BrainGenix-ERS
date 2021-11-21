@@ -92,7 +92,7 @@ ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path, bool FlipImag
 
 }
 
-ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(long AssetID) { // Database Version
+ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(long AssetID, bool FlipImage) { // Database Version
 
 
 
