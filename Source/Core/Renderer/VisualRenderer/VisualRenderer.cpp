@@ -70,6 +70,9 @@ VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, LoggerClass *Lo
     Logger_ = Logger;
     SystemShouldRun_ = SystemShouldRun;
 
+    // Initialize Texture Loader
+    TextureLoader_ = new TextureLoader(Logger_);
+
     // Initialize Systems
     Logger_->Log("Initializing GLFW", 5);
     InitializeGLFW();
@@ -151,7 +154,8 @@ void VisualRenderer::InitializeOpenGL() {
     Shader_ = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
 
     // Load Model
-    Model_.LoadModelFromFile("Assets/scene.gltf", Logger_);
+    Model_.ModelLoader(Logger_, TextureLoader_);
+    Model_.LoadModelFromFile("Assets/scene.gltf");
 
 
 
