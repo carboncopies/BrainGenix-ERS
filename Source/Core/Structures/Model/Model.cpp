@@ -27,6 +27,12 @@ ERS_OBJECT_MODEL::ModelLoader(LoggerClass *Logger, TextureLoader *TexLoader) {
 }
 
 // Destructor
+ModelLoader::~ModelLoader() {
+
+    // Log Destructor Call
+    Logger_->Log("ModelLoader Destructor Called", 6);
+
+}
 
 
 
