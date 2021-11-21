@@ -35,6 +35,7 @@
 #include <2DTexture.h>
 #include <Vertex.h>
 #include <FileIO.h>
+#include <TextureLoader.h>
 
 
 struct ImageFileObject {
@@ -97,10 +98,13 @@ class ERS_OBJECT_MODEL {
 
         // Logger
         LoggerClass *Logger_;
+        TextureLoader *TextureLoader_;
 
+        // Initialize
+        void ModelLoader(LoggerClass* Logger, TextureLoader *TextureLoader);
 
         // Load Model From File
-        void LoadModelFromFile(const char* AssetPath, LoggerClass *Logger);
+        void LoadModelFromFile(const char* AssetPath);
 
         // Draw Model
         void Draw(ERS_OBJECT_SHADER &Shader);
