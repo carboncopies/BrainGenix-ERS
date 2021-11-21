@@ -48,19 +48,19 @@ class ModelLoader {
 
     private:
 
+        // Logger
+        LoggerClass *Logger_;
+        TextureLoader *TextureLoader_;
+
+        // Internal Functions
         void ProcessNode(aiNode *Node, const aiScene *Scene);
-
         ERS_OBJECT_MESH ProcessMesh(aiMesh *Mesh, const aiScene *Scene);
-
         std::vector<ERS_OBJECT_TEXTURE_2D> LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, std::string TypeName);
 
 
     public:
 
 
-        // Logger
-        LoggerClass *Logger_;
-        TextureLoader *TextureLoader_;
 
         /**
          * @brief Construct a new Model Loader object

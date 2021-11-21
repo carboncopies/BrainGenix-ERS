@@ -34,7 +34,7 @@ ModelLoader::~ModelLoader() {
 
 
 // Load Model From File
-void ModelLoader::LoadModelFromFile(const char* AssetPath) {
+ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath) {
 
 
     // Copy AssetPath
