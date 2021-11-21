@@ -43,7 +43,7 @@ TextureLoader::~TextureLoader() {
 ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path, bool FlipImage) { // File Version
 
         // Log Texture Load
-        Logger_->Log(std::string(std::string("Loading Texture At Filepath: ") + std::string(Path)).c_str(), 4);
+        Logger_->Log(std::string(std::string("Loading Texture At Filepath: ") + std::string(Path)).c_str(), 3);
 
         // Create Texture Object
         ERS_OBJECT_TEXTURE_2D Texture;
