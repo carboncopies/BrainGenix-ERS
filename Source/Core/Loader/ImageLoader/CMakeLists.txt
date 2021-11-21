@@ -4,7 +4,7 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Image
+add_library(ImageLoader
 
             # Add Source Files (.cpp)
             "FileIO.cpp"
@@ -18,7 +18,7 @@ add_library(Image
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Image
+target_link_libraries(ImageLoader
     yaml-cpp
     glm
     glad
@@ -26,10 +26,10 @@ target_link_libraries(Image
     )
 
 # Link Internal Libs
-target_link_libraries(Image
+target_link_libraries(ImageLoader
     NoClip
     LoggingSystem
     )
 
-target_include_directories(Image PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Image)
+target_include_directories(ImageLoader PUBLIC ./)
+target_link_libraries(${PROJECT_NAME} ImageLoader)
