@@ -29,7 +29,7 @@ target_link_libraries(Meshes
     VisualRenderer
     Textures
     Vertex
-    Image
+    ImageLoader
     )
 
 target_include_directories(Meshes PUBLIC ./)
