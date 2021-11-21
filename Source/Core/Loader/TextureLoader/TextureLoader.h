@@ -19,12 +19,15 @@ class TextureLoader {
 
     private:
 
-        // Member Vars
+        /**
+         * @brief Logging System Instance.
+         * 
+         */
         LoggerClass *Logger_;
 
 
         /**
-         * @brief Image Loading/Decoding Class Instance
+         * @brief Image Loading/Decoding Class Instance.
          * 
          */
         ImageDecoder ImageDecoder_;
@@ -33,14 +36,14 @@ class TextureLoader {
     public:
 
         /**
-         * @brief Construct a new Texture Loader object
+         * @brief Construct a new Texture Loader object.
          * 
          * @param Logger 
          */
         TextureLoader(LoggerClass* Logger);
 
         /**
-         * @brief Destroy the Texture Loader object
+         * @brief Destroy the Texture Loader object.
          * 
          */
         ~TextureLoader();
@@ -48,7 +51,7 @@ class TextureLoader {
 
 
         /**
-         * @brief Load a texture at the given file path. (For on file loading)
+         * @brief Load a texture at the given file path. (For on file loading).
          * 
          * @param Path 
          * @return ERS_OBJECT_TEXTURE_2D 
@@ -56,7 +59,7 @@ class TextureLoader {
         ERS_OBJECT_TEXTURE_2D LoadTexture(const char* Path);
 
         /**
-         * @brief Load a texture at the given asset id. (For database loading)
+         * @brief Load a texture at the given asset id. (For database loading).
          * 
          * @param AssetID 
          * @return ERS_OBJECT_TEXTURE_2D 
