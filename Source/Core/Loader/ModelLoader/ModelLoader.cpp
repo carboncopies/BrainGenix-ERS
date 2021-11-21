@@ -54,7 +54,7 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath) {
     // Log Errors
     if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
         std::cout<< "ASSET IMPORT ERROR " << Importer.GetErrorString()<<std::endl; /// FIX ME - SHOULD USE ERSLOGGER
-        return;
+        return *Model_;
     }
 
     // Retrieve Directory
