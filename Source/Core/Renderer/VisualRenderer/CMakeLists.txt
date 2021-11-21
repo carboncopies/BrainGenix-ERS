@@ -33,7 +33,7 @@ target_link_libraries(VisualRenderer
 target_link_libraries(VisualRenderer
     NoClip
     LoggingSystem
-    Image
+    ImageLoader
 
     Model
     NoClip
