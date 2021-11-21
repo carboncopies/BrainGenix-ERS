@@ -3,23 +3,31 @@
 ########################################################################
 
 
-
-# Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(AssetLoader_Sources
-    "AssetLoader.cpp"
-)
-
-# Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(AssetLoader_Headers
-    "AssetLoader.h"
-)
-
-
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Loader ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(Loader 
-    yaml-cpp
-    )
-target_include_directories(Loader PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Loader)
+add_library(Renderer 
 
+            # Add Source Files (.cpp)
+            "RendererManager.cpp"
+
+            # Add Header Files (.h)
+            "RendererManager.h"
+            
+            ${BACKWARD_ENABLE}
+            )
+
+# Link 3rd Party Libs
+target_link_libraries(Renderer
+    yaml-cpp
+    glm
+    glad
+    glfw
+    )
+
+# Link Internal Libs
+target_link_libraries(Renderer
+    LoggingSystem
+    VisualRenderer
+    )
+
+target_include_directories(Renderer PUBLIC ./)
+target_link_libraries(${PROJECT_NAME} Renderer)
