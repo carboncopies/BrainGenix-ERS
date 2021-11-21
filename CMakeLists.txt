@@ -122,9 +122,6 @@ add_subdirectory(${LIB_DIR}/backward)
 
 # Add Main.cpp
 add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp ${BACKWARD_ENABLE})
-# target_include_directories(${PROJECT_NAME} PRIVATE Source)
-# target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
-# target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
 target_link_libraries(${PROJECT_NAME}
   yaml-cpp
   glad
