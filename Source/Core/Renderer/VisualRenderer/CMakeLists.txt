@@ -32,6 +32,13 @@ target_link_libraries(VisualRenderer
     NoClip
     LoggingSystem
     Image
+
+    DataBuffer
+    Model
+    NoClip
+    Scene
+    SceneLoader
+
     )
 
 target_include_directories(VisualRenderer PUBLIC ./)
