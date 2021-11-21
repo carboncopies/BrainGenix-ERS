@@ -47,7 +47,7 @@ struct ERS_OBJECT_TEXTURE_2D {
         // Set Properties
         float Width = FreeImage_GetWidth(ImageData);
         float Height = FreeImage_GetHeight(ImageData);
-        float Channels = 3;//FreeImage_GetLine(ImageData) / FreeImage_GetWidth(ImageData);
+        float Channels = FreeImage_GetLine(ImageData) / FreeImage_GetWidth(ImageData);
 
 
         // Generate Texture
