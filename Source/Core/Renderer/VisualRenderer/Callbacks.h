@@ -51,3 +51,5 @@ static void MouseCallback(GLFWwindow* /*Window*/, double XPos, double YPos);
  * 
  */
 static void ScrollCallback(GLFWwindow* /*Window*/, double /*XOffset*/, double YOffset);
+
+#include "Callbacks.cpp"
