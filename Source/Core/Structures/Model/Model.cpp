@@ -31,8 +31,6 @@ void ERS_OBJECT_MODEL::ModelLoader(LoggerClass *Logger, TextureLoader *TexLoader
 // Load Model From File
 void ERS_OBJECT_MODEL::LoadModelFromFile(const char* AssetPath) {
 
-    // Set Pointer
-    Logger_ = Logger;
 
     // Copy AssetPath
     AssetPath_ = AssetPath;
@@ -218,7 +216,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             // Texture.Type = TypeName;
             // Texture.Path = Str.C_Str();
 
-            ERS_OBJECT_TEXTURE_2D Texture = TextureLoader_.LoadTexture(FilePath.c_str());
+            ERS_OBJECT_TEXTURE_2D Texture = TextureLoader_->LoadTexture(FilePath.c_str());
 
             Textures.push_back(Texture);
             Textures_Loaded.push_back(Texture);
