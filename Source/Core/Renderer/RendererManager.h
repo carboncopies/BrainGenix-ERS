@@ -27,7 +27,14 @@ class RendererManager {
 
     private:
 
+        // Member Variables
+        YAML::Node *SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
+        LoggerClass *Logger_; /**<Pointer to the logging system instance*/
 
+        // Control Values
+        bool *SystemShouldRun_;
+
+        // Renderer Instances
         VisualRenderer VisualRenderer_;
 
     public:
