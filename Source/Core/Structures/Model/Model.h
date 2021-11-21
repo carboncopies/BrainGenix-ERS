@@ -40,28 +40,46 @@
 
 
 
+struct ERS_OBJECT_MODEL {
 
-class ERS_OBJECT_MODEL {
+    // Model Data
+    std::vector<ERS_OBJECT_MESH> Meshes;
+    std::vector<ERS_OBJECT_TEXTURE_2D> Textures_Loaded;
+    std::string Directory;
+
+    const char* AssetPath_;
+
+    bool GammaCorrection = false;
+    bool HasTexturesLoaded = false;
+
+
+};
+
+
+class ModelLoader {
 
 
     public:
 
-        // Model Data
-        std::vector<ERS_OBJECT_MESH> Meshes;
-        std::vector<ERS_OBJECT_TEXTURE_2D> Textures_Loaded;
-        std::string Directory;
 
-        const char* AssetPath_;
-
-        bool GammaCorrection = false;
-        bool HasTexturesLoaded = false;
 
         // Logger
         LoggerClass *Logger_;
         TextureLoader *TextureLoader_;
 
-        // Initialize
-        void ModelLoader(LoggerClass* Logger, TextureLoader *TextureLoader);
+        /**
+         * @brief Construct a new Model Loader object
+         * 
+         * @param Logger 
+         * @param TextureLoader 
+         */
+        ModelLoader(LoggerClass* Logger, TextureLoader *TextureLoader);
+
+        /**
+         * @brief Destroy the Model Loader object
+         * 
+         */
+        ~ModelLoader();
 
         // Load Model From File
         void LoadModelFromFile(const char* AssetPath);

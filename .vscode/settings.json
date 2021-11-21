@@ -72,5 +72,6 @@
         "hash_map": "cpp",
         "hash_set": "cpp",
         "regex": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": true
 }

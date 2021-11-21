@@ -15,7 +15,7 @@
 
 
 // Initialize
-void ERS_OBJECT_MODEL::ModelLoader(LoggerClass *Logger, TextureLoader *TexLoader) {
+ERS_OBJECT_MODEL::ModelLoader(LoggerClass *Logger, TextureLoader *TexLoader) {
 
     // Create Local Pointer
     Logger_ = Logger;
@@ -25,6 +25,8 @@ void ERS_OBJECT_MODEL::ModelLoader(LoggerClass *Logger, TextureLoader *TexLoader
     Logger_->Log("Initializing Model Loader", 5);
 
 }
+
+// Destructor
 
 
 
