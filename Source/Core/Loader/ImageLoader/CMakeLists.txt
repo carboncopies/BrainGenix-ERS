@@ -23,6 +23,7 @@ target_link_libraries(ImageLoader
     glm
     glad
     glfw
+    FreeImage
     )
 
 # Link Internal Libs
