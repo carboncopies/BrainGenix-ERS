@@ -14,6 +14,9 @@
 #include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 #include <FreeImage.h>
 
 // Structure To Hold 2D ERS Texture

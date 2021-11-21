@@ -26,6 +26,7 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
