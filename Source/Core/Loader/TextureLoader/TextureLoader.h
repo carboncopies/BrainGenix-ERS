@@ -12,6 +12,8 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+#include <ImageDecoder.h>
+
 
 class TextureLoader {
 
@@ -19,6 +21,13 @@ class TextureLoader {
 
         // Member Vars
         LoggerClass *Logger_;
+
+
+        /**
+         * @brief Image Loading/Decoding Class Instance
+         * 
+         */
+        ImageDecoder ImageDecoder_;
 
 
     public:

@@ -35,7 +35,7 @@ TextureLoader::~TextureLoader() {
 // Load Texture Overloaded Functions
 ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path) { // File Version
 
-
+    
 
 }
 
