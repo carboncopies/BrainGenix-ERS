@@ -22,7 +22,6 @@ TextureLoader::TextureLoader(LoggerClass* Logger) {
     Logger_->Log("Initializing Texture Loader Class", 5);
 
     // Create Instance Of ImageDecoder
-    ImageDecoder_ = ImageDecoder;
     ImageDecoder_.Initialize(Logger_);
     
 
