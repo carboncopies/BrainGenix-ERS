@@ -12,3 +12,29 @@
 
 
 
+// Texture Loader Constructor
+TextureLoader::TextureLoader(LoggerClass* Logger) {
+
+    // Create Local Pointers
+    Logger_ = Logger;
+
+    // Log Initialization
+    Logger_->Log("Initializing Texture Loader Class", 5);
+
+}
+
+// Texture Loader Destructor
+TextureLoader::~TextureLoader() {
+
+    // Log Destructor Call
+    Logger_->Log("TextureLoader Destructor Called", 6);
+
+}
+
+
+// Load Texture Overloaded Functions
+ERS_OBJECT_TEXTURE_2D LoadTexture(const char* Path) { // File Version
+
+
+
+}
