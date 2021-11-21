@@ -17,8 +17,6 @@ add_library(TextureLoader
 
 # Link 3rd Party Libs
 target_link_libraries(TextureLoader
-    yaml-cpp
-    glm
     glad
     glfw
     )
