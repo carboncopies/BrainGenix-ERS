@@ -25,8 +25,7 @@ target_link_libraries(ModelLoader
 
 # Link Internal Libs
 target_link_libraries(ModelLoader
-    LoggingSystem
-    VisualRenderer
+
     )
 
 target_include_directories(ModelLoader PUBLIC ./)
