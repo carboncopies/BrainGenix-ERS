@@ -66,7 +66,7 @@ class VisualRenderer {
 
         // Internal Functions
         void InitializeGLFW();
-        void InitialzeOpenGL();
+        void InitializeOpenGL();
 
     public:
 
