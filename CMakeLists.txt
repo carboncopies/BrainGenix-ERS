@@ -146,6 +146,7 @@ add_subdirectory(${SRC_DIR}/Core/Utils/ConfigurationLoader)
 
 add_subdirectory(${SRC_DIR}/Core/Renderer)
 add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer)
+add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer/VisualRenderer-Callbacks)
 
 add_subdirectory(${SRC_DIR}/Core/Loader)
 
