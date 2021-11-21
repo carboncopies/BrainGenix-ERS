@@ -7,10 +7,10 @@
 add_library(ModelLoader
 
             # Add Source Files (.cpp)
-            "RendererManager.cpp"
+            "ModelLoader.cpp"
 
             # Add Header Files (.h)
-            "RendererManager.h"
+            "ModelLoader.h"
             
             ${BACKWARD_ENABLE}
             )
