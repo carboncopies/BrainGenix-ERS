@@ -41,7 +41,7 @@ TextureLoader::~TextureLoader() {
 
 
 // Load Texture Overloaded Functions
-ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path) { // File Version
+ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path, bool FlipImage) { // File Version
 
         // Log Texture Load
         Logger_->Log(std::string(std::string("Loading Texture At Filepath: ") + std::string(Path)).c_str(), 4);
@@ -51,6 +51,9 @@ ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path) { // File Ver
 
         // Load Image
         FIBITMAP* ImageData = LoadImageFromFile(Path);
+        if (FlipImage) {
+            FreeImage_FlipVertical(ImageData);
+        }
 
         // Set Properties
         float Width = FreeImage_GetWidth(ImageData);
