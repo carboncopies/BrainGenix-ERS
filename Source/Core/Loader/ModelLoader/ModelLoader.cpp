@@ -196,7 +196,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(aiMaterial 
         for (unsigned int j = 0; j < Model_->Textures_Loaded.size(); j++) {
 
             if (std::strcmp(Model_->Textures_Loaded[j].Path.data(), FilePath.c_str()) == 0) {
-                Textures.push_back(Textures_Loaded[j]);
+                Textures.push_back(Model_->Textures_Loaded[j]);
                 Skip = true;
                 break;
             }
