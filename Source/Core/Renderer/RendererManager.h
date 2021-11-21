@@ -16,7 +16,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 #include <Callbacks.h>
-#include <VisualRendererManager.h>
+#include <VisualRenderer.h>
 
 
 
