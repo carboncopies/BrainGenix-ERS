@@ -16,17 +16,21 @@ add_library(ModelLoader
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ModelLoader
+target_link_libraries(Model
     yaml-cpp
     glm
     glad
     glfw
+    assimp
     )
 
 # Link Internal Libs
-target_link_libraries(ModelLoader
-
+target_link_libraries(Model
+    Meshes
+    Textures
+    TextureLoader
     )
+
 
 target_include_directories(ModelLoader PUBLIC ./)
 target_link_libraries(${PROJECT_NAME} ModelLoader)
