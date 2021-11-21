@@ -13,6 +13,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 #include <ImageDecoder.h>
+#include <2DTexture.h>
 
 
 class TextureLoader {
