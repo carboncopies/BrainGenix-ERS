@@ -53,7 +53,8 @@ class ERS_OBJECT_MODEL {
 
         const char* AssetPath_;
 
-        bool GammaCorrection;
+        bool GammaCorrection = false;
+        bool HasTexturesLoaded = false;
 
         // Logger
         LoggerClass *Logger_;
