@@ -188,10 +188,14 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
 
         bool Skip = false;
         
+
+        // Calculate Texture Path
+        std::string FilePath = std::string(std::string("Assets") + std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str()));
+
         // Check If Texture Already Loaded
         for (unsigned int j = 0; j < Textures_Loaded.size(); j++) {
 
-            if (std::strcmp(Textures_Loaded[j].Path.data(), Str.C_Str()) == 0) {
+            if (std::strcmp(Textures_Loaded[j].Path.data(), FilePath.c_str()) == 0) {
                 Textures.push_back(Textures_Loaded[j]);
                 Skip = true;
                 break;
@@ -203,7 +207,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_OBJECT_MODEL::LoadMaterialTextures(aiMate
             
 
 
-            std::string FilePath = std::string(std::string("Assets") + std::string(this->Directory)  + std::string("/") + std::string(Str.C_Str()));
+            
             //Logger_->Log(std::string(std::string("Loading Texture At File Path: ") + FilePath).c_str(), 3);
             
 
