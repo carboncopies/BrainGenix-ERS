@@ -154,8 +154,8 @@ void VisualRenderer::InitializeOpenGL() {
     Shader_ = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
 
     // Load Model
-    Model_.ModelLoader(Logger_, TextureLoader_);
-    Model_.LoadModelFromFile("Assets/scene.gltf");
+    ModelLoader MLoader(Logger_, TextureLoader_);
+    Model_ = MLoader.LoadModelFromFile("Assets/scene.gltf");
 
 
 
