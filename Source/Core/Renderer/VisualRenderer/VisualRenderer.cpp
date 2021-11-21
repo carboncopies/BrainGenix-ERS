@@ -8,7 +8,7 @@
     Date Created: 2021-11-20
 */
 
-#include <VisualRendererManager.h>
+#include <VisualRenderer.h>
 
 
 void ErrorCallback(int, const char* ErrorString) {
