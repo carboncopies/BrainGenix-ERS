@@ -82,7 +82,7 @@ ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path, bool FlipImag
 
 
         // Unload Texture RAM
-        FreeImage_CloseMemory(ImageData);
+        FreeImage_Unload(ImageData);
 
 
         // Return Texture
