@@ -63,15 +63,7 @@ void ModelLoader::LoadModelFromFile(const char* AssetPath) {
 
 }
 
-// Draw Model
-void ModelLoader::Draw(ERS_OBJECT_SHADER &Shader) {
 
-    // Draw All Meshes
-    for (unsigned int i=0; i<Meshes.size(); i++) {
-        Meshes[i].Draw(Shader);
-    }
-
-}
 
 // Process Nodes
 void ModelLoader::ProcessNode(aiNode *Node, const aiScene *Scene) {

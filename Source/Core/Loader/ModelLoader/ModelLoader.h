@@ -46,8 +46,16 @@
 class ModelLoader {
 
 
-    public:
+    private:
 
+        void ProcessNode(aiNode *Node, const aiScene *Scene);
+
+        ERS_OBJECT_MESH ProcessMesh(aiMesh *Mesh, const aiScene *Scene);
+
+        std::vector<ERS_OBJECT_TEXTURE_2D> LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, std::string TypeName);
+
+
+    public:
 
 
         // Logger
@@ -68,20 +76,13 @@ class ModelLoader {
          */
         ~ModelLoader();
 
+
         // Load Model From File
-        void LoadModelFromFile(const char* AssetPath);
-
-        // Draw Model
-        void Draw(ERS_OBJECT_SHADER &Shader);
+        ERS_OBJECT_MODEL LoadModelFromFile(const char* AssetPath);
 
 
-    private:
 
-        void ProcessNode(aiNode *Node, const aiScene *Scene);
 
-        ERS_OBJECT_MESH ProcessMesh(aiMesh *Mesh, const aiScene *Scene);
-
-        std::vector<ERS_OBJECT_TEXTURE_2D> LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, std::string TypeName);
 
 
 
