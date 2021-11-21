@@ -37,6 +37,7 @@
 #include <Vertex.h>
 #include <FileIO.h>
 #include <TextureLoader.h>
+#include <Model.h>
 
 
 /**

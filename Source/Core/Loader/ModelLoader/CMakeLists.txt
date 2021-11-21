@@ -27,6 +27,7 @@ target_link_libraries(ModelLoader
 # Link Internal Libs
 target_link_libraries(ModelLoader
     Meshes
+    Model
     Textures
     TextureLoader
     )
