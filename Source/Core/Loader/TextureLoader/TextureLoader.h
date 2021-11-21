@@ -9,3 +9,16 @@
 */
 
 #pragma once
+
+// Internal Libraries (BG convention: use <> instead of "")
+#include <LoggingSystem.h>
+
+class ERS_Texture_Loader {
+
+    private:
+
+        // Member Vars
+        LoggerClass *Logger_;
+
+
+};
