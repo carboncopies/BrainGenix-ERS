@@ -48,6 +48,9 @@ ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path, bool FlipImag
         // Create Texture Object
         ERS_OBJECT_TEXTURE_2D Texture;
 
+        // Set Texture Metadata
+        Texture.Path = Path;
+
         // Load Image
         FIBITMAP* ImageData = ImageDecoder_.LoadImageFromFile(Path);
         if (FlipImage) {
