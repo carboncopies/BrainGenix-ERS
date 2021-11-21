@@ -82,6 +82,10 @@ ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path, bool FlipImag
         glGenerateMipmap(GL_TEXTURE_2D);
 
 
+        // Unload Texture RAM
+        FreeImage_CloseMemory(ImageData);
+
+
         // Return Texture
         return Texture;
 
