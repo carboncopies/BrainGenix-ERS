@@ -4,7 +4,7 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(VisualRenderer
+add_library(VisualRenderer-Callbacks
 
             # AddbSource Files (.cpp)
             "Callbacks.cpp"
@@ -16,15 +16,15 @@ add_library(VisualRenderer
             )
 
 # Link 3rd Party Libs
-target_link_libraries(VisualRenderer
+target_link_libraries(VisualRenderer-Callbacks
     glad
     glfw
     )
 
 # Link Internal Libs
-target_link_libraries(VisualRenderer
+target_link_libraries(VisualRenderer-Callbacks
     NoClip
     )
 
-target_include_directories(VisualRenderer PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} VisualRenderer)
+target_include_directories(VisualRenderer-Callbacks PUBLIC ./)
+target_link_libraries(${PROJECT_NAME} VisualRenderer-Callbacks)
