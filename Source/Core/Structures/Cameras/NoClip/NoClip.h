@@ -31,7 +31,7 @@ enum CameraMovement {
 // Set Default Attributes
 const float DefaultYaw = -90.0f;
 const float DefaultPitch = 0.0f;
-const float DefaultSpeed = 2.5f;
+const float DefaultSpeed = 6.0f;
 const float DefaultSensitivity = 0.1f;
 const float DefaultZoom = 45.0f;
 
