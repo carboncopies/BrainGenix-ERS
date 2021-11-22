@@ -196,7 +196,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(aiMaterial 
         
 
         // Calculate Texture Path
-        std::string FilePath = std::string(std::string("Assets") + std::string(this->Model_->Directory)  + std::string("/") + std::string(Str.C_Str()));
+        std::string FilePath = std::string(ModelDirectory_ + std::string(this->Model_->Directory)  + std::string("/") + std::string(Str.C_Str()));
 
         // Check If Texture Already Loaded
         for (unsigned int j = 0; j < Model_->Textures_Loaded.size(); j++) {
