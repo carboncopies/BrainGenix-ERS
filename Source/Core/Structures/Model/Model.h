@@ -31,6 +31,10 @@ struct ERS_OBJECT_MODEL {
     bool HasTexturesLoaded = false;
 
 
+    // Model Position Information
+    
+
+
     // Draw Model
     void Draw(ERS_OBJECT_SHADER &Shader);
 
