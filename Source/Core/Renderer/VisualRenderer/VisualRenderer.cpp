@@ -239,7 +239,7 @@ void VisualRenderer::UpdateLoop() {
 
 
     model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(0.0f, 2.5f, 0.0f)); // translate it down so it's at the center of the scene
+    model = glm::translate(model, glm::vec3(0.0f, 3.5f, 0.0f)); // translate it down so it's at the center of the scene
     model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));	// it's a bit too big for our scene, so scale it down
     model = glm::rotate(model, glm::radians(-0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     Shader_.SetMat4("model", model);
