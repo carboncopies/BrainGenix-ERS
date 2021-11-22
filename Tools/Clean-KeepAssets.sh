@@ -4,7 +4,7 @@ echo "Cleaning Build (Keeping Assets)"
 cd ..
 rm -rf Build/
 rm -rf build/
-cd Binaries
-rm -rf !(Assets/)
+rm Binaries/*  #Note: The lack of -rf means it will only delete files and not any folders
+
 
 echo "Build Cleaned"
