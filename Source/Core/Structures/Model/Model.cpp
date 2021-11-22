@@ -58,3 +58,48 @@ void ERS_OBJECT_MODEL::SetRotation(glm::vec3 Rotation) {
     ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, Rotation);
 
 }
+
+
+// Set Scale Functions
+void ERS_OBJECT_MODEL::SetScale(double X, double Y, double Z) {
+
+    // Convert Doubles GLM Vec3
+    glm::vec3 Scale = glm::vec3(X, Y, Z);
+
+    // Set Scale to Pos
+    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, Scale);
+
+}
+
+void ERS_OBJECT_MODEL::SetScale(glm::vec3 Scale) {
+
+    // Set Scale to Pos
+    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, Scale);
+
+}
+
+
+// Set LocRotScale Functions
+void ERS_OBJECT_MODEL::SetLocRotScale(double LocX, double LocY, double LocZ, double RotX, double RotY, double RotZ, double ScaleX, double ScaleY, double ScaleZ) {
+
+    // Calculate Loc, Rot, Scale Vecs
+    glm::vec3 Position = glm::vec3(LocX, LocY, LocZ);
+    glm::vec3 Rotation = glm::vec3(RotX, RotY, RotZ);
+    glm::vec3 Scale = glm::vec3(ScaleX, ScaleY, ScaleZ);
+
+    // Set Vecs
+    ModelLocRotScale_ = glm::translate(ModelLocRotScale_, Position);
+    ModelLocRotScale_ = glm::translate(ModelLocRotScale_, Rotation);
+    ModelLocRotScale_ = glm::translate(ModelLocRotScale_, Scale);
+
+}
+
+
+void ERS_OBJECT_MODEL::SetLocRotScale(glm::vec3 Position, glm::vec3 Rotation, glm::vec3 Scale) {
+
+    // Set Vecs
+    ModelLocRotScale_ = glm::translate(ModelLocRotScale_, Position);
+    ModelLocRotScale_ = glm::translate(ModelLocRotScale_, Rotation);
+    ModelLocRotScale_ = glm::translate(ModelLocRotScale_, Scale);
+
+}
