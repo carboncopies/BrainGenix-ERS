@@ -160,7 +160,7 @@ void VisualRenderer::InitializeOpenGL() {
 
     // Load Model
     ModelLoader MLoader(Logger_, TextureLoader_);
-    Model_ = MLoader.LoadModelFromFile("Assets/scene.gltf");
+    Model_ = MLoader.LoadModelFromFile("Assets/S1/scene.gltf");
 
 
 

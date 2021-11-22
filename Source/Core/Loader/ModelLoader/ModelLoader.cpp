@@ -40,6 +40,9 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath) {
     // Clear Model Instance
     Model_ = new ERS_OBJECT_MODEL;
 
+    // Get Model Path
+    ModelDirectory_ = std::string(AssetPath);
+
     // Copy AssetPath
     Model_->AssetPath_ = AssetPath;
 

@@ -51,6 +51,7 @@ class ModelLoader {
 
         // Internal Model Instance For Processing
         ERS_OBJECT_MODEL *Model_;
+        std::string ModelDirectory_;
 
         // Logger
         LoggerClass *Logger_;
