@@ -52,6 +52,7 @@ class ModelLoader {
         // Internal Model Instance For Processing
         ERS_OBJECT_MODEL *Model_;
         std::string ModelDirectory_;
+        bool FlipTextures_;
 
         // Logger
         LoggerClass *Logger_;
@@ -83,7 +84,7 @@ class ModelLoader {
 
 
         // Load Model From File
-        ERS_OBJECT_MODEL LoadModelFromFile(const char* AssetPath);
+        ERS_OBJECT_MODEL LoadModelFromFile(const char* AssetPath, bool FlipTextures = false);
 
 
 

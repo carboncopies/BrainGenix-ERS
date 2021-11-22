@@ -34,11 +34,14 @@ ModelLoader::~ModelLoader() {
 
 
 // Load Model From File
-ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath) {
+ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath, bool FlipTextures) {
 
 
     // Clear Model Instance
     Model_ = new ERS_OBJECT_MODEL;
+
+    // Set Texture Flip
+    FlipTextures_ = FlipTextures;
 
     // Copy AssetPath
     Model_->AssetPath_ = AssetPath;
@@ -211,7 +214,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(aiMaterial 
         // If Texture Not Already Loaded
         if (!Skip) {
 
-            ERS_OBJECT_TEXTURE_2D Texture = TextureLoader_->LoadTexture(FilePath.c_str());
+            ERS_OBJECT_TEXTURE_2D Texture = TextureLoader_->LoadTexture(FilePath.c_str(), FlipTextures_);
 
             Textures.push_back(Texture);
             Model_->Textures_Loaded.push_back(Texture);
