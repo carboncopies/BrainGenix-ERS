@@ -11,3 +11,17 @@
 
 #pragma once
 
+// Standard Libraries (BG convention: use <> instead of "")
+
+// Third-Party Libraries (BG convention: use <> instead of "")
+#include <yaml-cpp/yaml.h>
+
+// Internal Libraries (BG convention: use <> instead of "")
+
+
+struct Scene{
+
+    
+
+
+};
