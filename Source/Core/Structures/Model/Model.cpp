@@ -103,3 +103,12 @@ void ERS_OBJECT_MODEL::SetLocRotScale(glm::vec3 Position, glm::vec3 Rotation, gl
     ModelLocRotScale_ = glm::scale(ModelLocRotScale_, Scale);
 
 }
+
+
+// Get Mat4
+glm::mat4 ERS_OBJECT_MODEL::GetMat4() {
+
+    // Return Mat4 Projection Matrix
+    return ModelLocRotScale_;
+
+}

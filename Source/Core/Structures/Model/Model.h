@@ -120,6 +120,9 @@ struct ERS_OBJECT_MODEL {
     void SetLocRotScale(glm::vec3 Position, glm::vec3 Rotation, glm::vec3 Scale);
 
 
+    // Get Mat4
+    glm::mat4 GetMat4();
+
     // Draw Model
     void Draw(ERS_OBJECT_SHADER &Shader);
 
