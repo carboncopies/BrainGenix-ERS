@@ -95,6 +95,30 @@ struct ERS_OBJECT_MODEL {
     void SetScale(glm::vec3 Scale);
 
 
+    // Set LocRotScale
+    /**
+     * @brief Set the Loc Rot Scale object (Overloaded) Sets the location, rotation, and scale by taking three doubles for each category. (XYZ).
+     * 
+     * @param LocX 
+     * @param LocY 
+     * @param LocZ 
+     * @param RotX 
+     * @param RotY 
+     * @param RotZ 
+     * @param ScaleX 
+     * @param ScaleY 
+     * @param ScaleZ 
+     */
+    void SetLocRotScale(double LocX, double LocY, double LocZ, double RotX, double RotY, double RotZ, double ScaleX, double ScaleY, double ScaleZ);
+    /**
+     * @brief Set the Loc Rot Scale object (Overloaded). Sets the location, rotation, and scale by taking three glm::vec3 variables for positiom, rotation, scale.
+     * 
+     * @param Position 
+     * @param Rotation 
+     * @param Scale 
+     */
+    void SetLocRotScale(glm::vec3 Position, glm::vec3 Rotation, glm::vec3 Scale);
+
 
     // Draw Model
     void Draw(ERS_OBJECT_SHADER &Shader);
