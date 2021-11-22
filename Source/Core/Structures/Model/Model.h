@@ -23,6 +23,10 @@
 #include <2DTexture.h>
 
 
+/**
+ * @brief This structure creates a model object. The model object stores the mesh, textures, and positions. Please see the full list of attrbutes for more information.
+ * 
+ */
 struct ERS_OBJECT_MODEL {
 
     // Model Data
@@ -37,7 +41,7 @@ struct ERS_OBJECT_MODEL {
 
 
     // Model Position Information
-
+    glm::mat4 ModelLocRotScale_ = glm::vec4(1.0f);
 
 
     // Draw Model
