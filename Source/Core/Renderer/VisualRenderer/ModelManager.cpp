@@ -31,3 +31,12 @@ ModelManager::~ModelManager() {
     Logger_->Log("Destructor Called For ModelManager Class", 6);
 
 }
+
+
+// Add Model Functions (Overloaded)
+void ModelManager::AddModel(ERS_OBJECT_MODEL Model) {
+
+    // Append Model Into Vector Of Models
+    Models_.push_back(Model);
+
+}
