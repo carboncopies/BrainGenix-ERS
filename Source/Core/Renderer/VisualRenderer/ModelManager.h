@@ -56,4 +56,10 @@ class ModelManager{
          */
         void AddModel(ERS_OBJECT_MODEL);
 
+        /**
+         * @brief Renders all models within the queue to the system.
+         * 
+         */
+        void RenderModels();
+
 };

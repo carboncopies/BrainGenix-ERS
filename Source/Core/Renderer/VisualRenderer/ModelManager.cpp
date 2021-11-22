@@ -40,3 +40,15 @@ void ModelManager::AddModel(ERS_OBJECT_MODEL Model) {
     Models_.push_back(Model);
 
 }
+
+// Render All Models In Buffer
+void ModelManager::RenderModels() {
+    
+    // Iterate Through Models
+    for (long i = 0; i < Models_.size(); i++) {
+
+        // Render Model
+
+    }
+
+}
