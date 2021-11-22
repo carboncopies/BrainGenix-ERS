@@ -163,17 +163,17 @@ void VisualRenderer::InitializeOpenGL() {
     ModelManager_ = new ModelManager(Logger_);
 
     ERS_OBJECT_MODEL Model = MLoader.LoadModelFromFile("Assets/S1/scene.gltf");
-    Model.SetLocRotScale(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.25f, 0.25f, 0.25f));
+    Model.SetLocRotScale(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
     ModelManager_->AddModel(Model);
 
     Model2_ = MLoader.LoadModelFromFile("Assets/S2/scene.gltf");
-    Model2_.SetLocRotScale(glm::vec3(-4.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.25f, 0.25f, 0.25f));
+    Model2_.SetLocRotScale(glm::vec3(-4.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
 
     Model3_ = MLoader.LoadModelFromFile("Assets/S3/scene.gltf");
-    Model3_.SetLocRotScale(glm::vec3(-8.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.25f, 0.25f, 0.25f));
+    Model3_.SetLocRotScale(glm::vec3(-8.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
 
     Model4_ = MLoader.LoadModelFromFile("Assets/S4/scene.gltf");
-    Model4_.SetLocRotScale(glm::vec3(-12.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.25f, 0.25f, 0.25f));
+    Model4_.SetLocRotScale(glm::vec3(-12.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
 
     Model5_ = MLoader.LoadModelFromFile("Assets/S5/scene.gltf", true);
     Model5_.SetLocRotScale(glm::vec3(0.0f, 3.5f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(4.0f, 4.0f, 4.0f));
