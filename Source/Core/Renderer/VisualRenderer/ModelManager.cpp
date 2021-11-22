@@ -42,12 +42,20 @@ void ModelManager::AddModel(ERS_OBJECT_MODEL Model) {
 }
 
 // Render All Models In Buffer
-void ModelManager::RenderModels() {
+void ModelManager::RenderModels(ERS_OBJECT_SHADER Shader) {
     
     // Iterate Through Models
     for (long i = 0; i < Models_.size(); i++) {
 
-        // Render Model
+        // Get Model Pointer
+        ERS_OBJECT_MODEL *Model = &Models_[i];
+
+        // Set Shader Pointer
+        Shader.SetMat4("model", Model->GetMat4());
+
+        // Call Draw
+        Model->Draw(Shader);
+        
 
     }
 

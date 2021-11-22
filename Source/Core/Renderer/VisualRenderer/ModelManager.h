@@ -18,6 +18,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+#include <ShaderManager.h>
 #include <Model.h>
 
 
@@ -60,6 +61,6 @@ class ModelManager{
          * @brief Renders all models within the queue to the system.
          * 
          */
-        void RenderModels();
+        void RenderModels(ERS_OBJECT_SHADER Shader);
 
 };

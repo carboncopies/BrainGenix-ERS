@@ -160,9 +160,11 @@ void VisualRenderer::InitializeOpenGL() {
 
     // Load Model
     ModelLoader MLoader(Logger_, TextureLoader_);
+    ModelManager_ = new ModelManager(Logger_);
 
-    Model_ = MLoader.LoadModelFromFile("Assets/S1/scene.gltf");
-    Model_.SetLocRotScale(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.25f, 0.25f, 0.25f));
+    ERS_OBJECT_MODEL Model = MLoader.LoadModelFromFile("Assets/S1/scene.gltf");
+    Model.SetLocRotScale(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.25f, 0.25f, 0.25f));
+    ModelManager_->AddModel(Model);
 
     Model2_ = MLoader.LoadModelFromFile("Assets/S2/scene.gltf");
     Model2_.SetLocRotScale(glm::vec3(-4.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.25f, 0.25f, 0.25f));
@@ -214,8 +216,10 @@ void VisualRenderer::UpdateLoop() {
     Shader_.SetMat4("view", view);
 
 
-    Shader_.SetMat4("model", Model_.GetMat4());
-    Model_.Draw(Shader_);
+    ModelManager_->RenderModels(Shader_);
+
+    // Shader_.SetMat4("model", Model_.GetMat4());
+    // Model_.Draw(Shader_);
 
     Shader_.SetMat4("model", Model2_.GetMat4());
     Model2_.Draw(Shader_);

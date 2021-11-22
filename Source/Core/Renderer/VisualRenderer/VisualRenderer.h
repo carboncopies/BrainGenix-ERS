@@ -31,6 +31,7 @@
 #include <NoClip.h>
 #include <TextureLoader.h>
 #include <ModelLoader.h>
+#include <ModelManager.h>
 
 
 class VisualRenderer {
@@ -43,6 +44,9 @@ class VisualRenderer {
 
         // MOVE TO ASSET LOADER CLASS LATER:
         TextureLoader *TextureLoader_; /**<Pointer to Texture Loader Instance*/
+
+        // ModelManager Class
+        ModelManager *ModelManager_; /**<Pointer to Model Manager Class Instance*/
 
         // Control Values
         bool *SystemShouldRun_;
