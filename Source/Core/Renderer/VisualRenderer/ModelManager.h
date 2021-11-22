@@ -35,8 +35,17 @@ class ModelManager{
 
     public:
 
+        /**
+         * @brief Construct a new Model Manager object
+         * 
+         * @param Logger 
+         */
         ModelManager(LoggerClass *Logger);
         
+        /**
+         * @brief Destroy the Model Manager object
+         * 
+         */
         ~ModelManager();
 
 };
