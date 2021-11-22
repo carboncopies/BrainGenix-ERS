@@ -44,6 +44,58 @@ struct ERS_OBJECT_MODEL {
     glm::mat4 ModelLocRotScale_ = glm::vec4(1.0f);
 
 
+    // Set The Position
+    /**
+     * @brief Set the Position object (Overloaded). Accepts X,Y,Z Floats.
+     * 
+     * @param X 
+     * @param Y 
+     * @param Z 
+     */
+    void SetPosition(double X, double Y, double Z);
+    /**
+     * @brief Set the Position object (Overloaded). Accepts glm::vec3(x,y,z).
+     * 
+     * @param Position 
+     */
+    void SetPosition(glm::vec3 Position);
+
+
+    // Set Rotation
+    /**
+     * @brief Set the Rotation object (OVerloaded). Accepts X,Y,Z Floats.
+     * 
+     * @param X 
+     * @param Y 
+     * @param Z 
+     */
+    void SetRotation(double X, double Y, double Z);
+    /**
+     * @brief Set the Rotation object (Overloaded). Accepts glm::vec3(x,y,z).
+     * 
+     * @param Rotation 
+     */
+    void SetRotation(glm::vec3 Rotation);
+
+
+    // Set Scale
+    /**
+     * @brief Set the Scale object (OVerloaded). Accepts X,Y,Z Floats.
+     * 
+     * @param X 
+     * @param Y 
+     * @param Z 
+     */
+    void SetScale(double X, double Y, double Z);
+    /**
+     * @brief Set the Scale object (Overloaded). Accepts glm::vec3(x,y,z).
+     * 
+     * @param Scale 
+     */
+    void SetScale(glm::vec3 Scale);
+
+
+
     // Draw Model
     void Draw(ERS_OBJECT_SHADER &Shader);
 

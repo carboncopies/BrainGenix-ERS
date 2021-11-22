@@ -21,3 +21,40 @@ void ERS_OBJECT_MODEL::Draw(ERS_OBJECT_SHADER &Shader) {
     }
 
 }
+
+
+// Set Position Functions
+void ERS_OBJECT_MODEL::SetPosition(double X, double Y, double Z) {
+
+    // Convert Doubles GLM Vec3
+    glm::vec3 Position = glm::vec3(X, Y, Z);
+
+    // Set Position to Pos
+    ModelLocRotScale_ = glm::translate(ModelLocRotScale_, Position);
+
+}
+
+void ERS_OBJECT_MODEL::SetPosition(glm::vec3 Position) {
+
+    // Set Position to Pos
+    ModelLocRotScale_ = glm::translate(ModelLocRotScale_, Position);
+
+}
+
+// Set Rotation Functions
+void ERS_OBJECT_MODEL::SetRotation(double X, double Y, double Z) {
+
+    // Convert Doubles GLM Vec3
+    glm::vec3 Rotation = glm::vec3(X, Y, Z);
+
+    // Set Rotation to Pos
+    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, Rotation);
+
+}
+
+void ERS_OBJECT_MODEL::SetRotation(glm::vec3 Rotation) {
+
+    // Set Rotation to Pos
+    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, Rotation);
+
+}
