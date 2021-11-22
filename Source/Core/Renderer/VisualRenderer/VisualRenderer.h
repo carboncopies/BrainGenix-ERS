@@ -50,6 +50,7 @@ class VisualRenderer {
 
         ERS_OBJECT_SHADER Shader_;
         ERS_OBJECT_MODEL Model_;
+        ERS_OBJECT_MODEL Model2_;
 
 
 
