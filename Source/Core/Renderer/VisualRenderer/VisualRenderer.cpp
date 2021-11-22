@@ -222,20 +222,6 @@ void VisualRenderer::UpdateLoop() {
 
     ModelManager_->RenderModels(Shader_);
 
-    // // Shader_.SetMat4("model", Model_.GetMat4());
-    // // Model_.Draw(Shader_);
-
-    // Shader_.SetMat4("model", Model2_.GetMat4());
-    // Model2_.Draw(Shader_);
-
-    // Shader_.SetMat4("model", Model3_.GetMat4());
-    // Model3_.Draw(Shader_);
-
-    // Shader_.SetMat4("model", Model4_.GetMat4());
-    // Model4_.Draw(Shader_);
-
-    // Shader_.SetMat4("model", Model5_.GetMat4());
-    // Model5_.Draw(Shader_);
 
 
     // Update Window Stuff
