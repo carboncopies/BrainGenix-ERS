@@ -17,6 +17,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+#include <
 
 
 /**
@@ -47,5 +48,11 @@ class ModelManager{
          * 
          */
         ~ModelManager();
+
+        /**
+         * @brief Add a model to the manager's list of managed models.
+         * 
+         */
+        void AddModel(ERS_OBJECT_MODEL);
 
 };
