@@ -166,17 +166,21 @@ void VisualRenderer::InitializeOpenGL() {
     Model.SetLocRotScale(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
     ModelManager_->AddModel(Model);
 
-    Model2_ = MLoader.LoadModelFromFile("Assets/S2/scene.gltf");
-    Model2_.SetLocRotScale(glm::vec3(-4.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
+    Model = MLoader.LoadModelFromFile("Assets/S2/scene.gltf");
+    Model.SetLocRotScale(glm::vec3(-4.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
+    ModelManager_->AddModel(Model);
 
-    Model3_ = MLoader.LoadModelFromFile("Assets/S3/scene.gltf");
-    Model3_.SetLocRotScale(glm::vec3(-8.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
+    Model = MLoader.LoadModelFromFile("Assets/S3/scene.gltf");
+    Model.SetLocRotScale(glm::vec3(-8.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
+    ModelManager_->AddModel(Model);
 
-    Model4_ = MLoader.LoadModelFromFile("Assets/S4/scene.gltf");
-    Model4_.SetLocRotScale(glm::vec3(-12.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
+    Model = MLoader.LoadModelFromFile("Assets/S4/scene.gltf");
+    Model.SetLocRotScale(glm::vec3(-12.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
+    ModelManager_->AddModel(Model);
 
-    Model5_ = MLoader.LoadModelFromFile("Assets/S5/scene.gltf", true);
-    Model5_.SetLocRotScale(glm::vec3(0.0f, 3.5f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(4.0f, 4.0f, 4.0f));
+    Model = MLoader.LoadModelFromFile("Assets/S5/scene.gltf", true);
+    Model.SetLocRotScale(glm::vec3(0.0f, 3.5f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(4.0f, 4.0f, 4.0f));
+    ModelManager_->AddModel(Model);
 
 
 
@@ -218,20 +222,20 @@ void VisualRenderer::UpdateLoop() {
 
     ModelManager_->RenderModels(Shader_);
 
-    // Shader_.SetMat4("model", Model_.GetMat4());
-    // Model_.Draw(Shader_);
+    // // Shader_.SetMat4("model", Model_.GetMat4());
+    // // Model_.Draw(Shader_);
 
-    Shader_.SetMat4("model", Model2_.GetMat4());
-    Model2_.Draw(Shader_);
+    // Shader_.SetMat4("model", Model2_.GetMat4());
+    // Model2_.Draw(Shader_);
 
-    Shader_.SetMat4("model", Model3_.GetMat4());
-    Model3_.Draw(Shader_);
+    // Shader_.SetMat4("model", Model3_.GetMat4());
+    // Model3_.Draw(Shader_);
 
-    Shader_.SetMat4("model", Model4_.GetMat4());
-    Model4_.Draw(Shader_);
+    // Shader_.SetMat4("model", Model4_.GetMat4());
+    // Model4_.Draw(Shader_);
 
-    Shader_.SetMat4("model", Model5_.GetMat4());
-    Model5_.Draw(Shader_);
+    // Shader_.SetMat4("model", Model5_.GetMat4());
+    // Model5_.Draw(Shader_);
 
 
     // Update Window Stuff
