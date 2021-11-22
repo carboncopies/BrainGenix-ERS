@@ -12,12 +12,13 @@
 #pragma once
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
-#include <
+#include <Model.h>
 
 
 /**
@@ -31,7 +32,7 @@ class ModelManager{
         // Internal Member Pointers
         LoggerClass *Logger_; /**<Pointer To Logger Instance*/
 
-
+        std::vector<ERS_OBJECT_MODEL> Models_; /**<Vector Containing Models To be Iterated Through When Drawn*/
 
 
     public:
