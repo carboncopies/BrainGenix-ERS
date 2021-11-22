@@ -21,6 +21,7 @@ target_link_libraries(SceneLoader
 
 # Link Internal Libs
 target_link_libraries(SceneLoader
+    LoggingSystem
     )
 
 target_include_directories(SceneLoader PUBLIC ./)

@@ -27,10 +27,24 @@ class SceneLoader{
 
     private:
 
-        LoggerClass *Logger_; 
+        LoggerClass *Logger_; /**<Contains A SceneLoader Class Instance*/
+
 
     public:
     
+        /**
+         * @brief Construct a new Scene Loader object
+         * 
+         * @param Logger 
+         */
+        SceneLoader(LoggerClass *Logger);
+
+        /**
+         * @brief Destroy the Scene Loader object
+         * 
+         */
+        ~SceneLoader();
+
 
 
 };
