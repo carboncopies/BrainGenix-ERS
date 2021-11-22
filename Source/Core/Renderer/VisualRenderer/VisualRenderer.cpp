@@ -164,7 +164,7 @@ void VisualRenderer::InitializeOpenGL() {
     Model2_ = MLoader.LoadModelFromFile("Assets/S2/scene.gltf");
     Model3_ = MLoader.LoadModelFromFile("Assets/S3/scene.gltf");
     Model4_ = MLoader.LoadModelFromFile("Assets/S4/scene.gltf");
-    Model5_ = MLoader.LoadModelFromFile("Assets/S5/scene.gltf");
+    Model5_ = MLoader.LoadModelFromFile("Assets/S5/scene.gltf", true);
     
 
 
@@ -240,7 +240,7 @@ void VisualRenderer::UpdateLoop() {
 
     model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-    model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));	// it's a bit too big for our scene, so scale it down
+    model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));	// it's a bit too big for our scene, so scale it down
     model = glm::rotate(model, glm::radians(-0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     Shader_.SetMat4("model", model);
     Model5_.Draw(Shader_);
