@@ -12,8 +12,12 @@
 #include <Scene.h>
 
 
+
 // Define ProcessScene
 void ERS_OBJECT_SCENE::ProcessScene(YAML::Node RawSceneData) {
+
+    // Grab Metadata
+
 
     // Create Vector Of YAML::Nodes
     std::vector<YAML::Node> SceneItems;
@@ -21,12 +25,10 @@ void ERS_OBJECT_SCENE::ProcessScene(YAML::Node RawSceneData) {
     // Populate Vector With Elements From SceneData
     YAML::Node SceneDataNode = RawSceneData["SceneData"];
     for (YAML::const_iterator it=SceneDataNode.begin(); it!=SceneDataNode.end(); ++it) {
-        ColorLookup_[it->first.as<int>()] = {
-            it->second[0].as<int>(),
-            it->second[1].as<int>(),
-            it->second[2].as<int>()
-        };
+        SceneItems[it->first.as<int>()] = it->second;
     }
+
+    // Iterate Through Vector To Add Each Asset To Loading Queue Of Requested Type
 
 
 }
