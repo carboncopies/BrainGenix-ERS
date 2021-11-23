@@ -24,7 +24,6 @@ target_link_libraries(SceneLoader
     LoggingSystem
     Model
     ModelLoader
-    Shader
     Scene
     )
 
