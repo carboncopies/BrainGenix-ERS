@@ -68,7 +68,7 @@ class SceneManager{
          * @return true 
          * @return false 
          */
-        bool SetActiveScene(std::string SceneName);
+        bool SetActiveScene(std::string TargetSceneName);
 
 
         /**

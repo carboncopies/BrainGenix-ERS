@@ -88,6 +88,7 @@ bool SceneManager::SetActiveScene(std::string TargetSceneName) {
 
         // Get Scene Name
         std::string SceneName = Scenes_[TargetSceneIndex].SceneName;
+        std::cout<<SceneName<<std::endl;
 
         // Check Scene Name
         if (SceneName == TargetSceneName) {
