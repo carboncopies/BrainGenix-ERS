@@ -15,7 +15,18 @@
 // Define ProcessScene
 void ERS_OBJECT_SCENE::ProcessScene(YAML::Node RawSceneData) {
 
-    // Read Yaml
-    
+    // Create Vector Of YAML::Nodes
+    std::vector<YAML::Node> SceneItems;
+
+    // Populate Vector With Elements From SceneData
+    YAML::Node SceneDataNode = RawSceneData["SceneData"];
+    for (YAML::const_iterator it=SceneDataNode.begin(); it!=SceneDataNode.end(); ++it) {
+        ColorLookup_[it->first.as<int>()] = {
+            it->second[0].as<int>(),
+            it->second[1].as<int>(),
+            it->second[2].as<int>()
+        };
+    }
+
 
 }

@@ -1,0 +1,54 @@
+##################################
+# This is a testing BGScene File #
+##################################
+
+SceneName: "Testing"
+SceneFormatVersion: 0
+SceneData:
+
+  0: # First Asset (Make As Many Of These As Needed)
+
+    # Set Asset Metadata  
+    AssetName: "Zhongli"
+    AssetType: "Model"
+    AssetPath: "Assets/Model1/scene.gltf"
+
+
+    # Set Asset Position
+    AssetPositionX: 0.0
+    AssetPositionY: 0.0
+    AssetPositionZ: 0.0
+
+    # Set Asset Rotation
+    AssetRotationX: 1.0
+    AssetRotationY: 0.0
+    AssetRotationZ: 0.0
+
+    # Set Asset Scale
+    AssetScaleX: 0.25
+    AssetScaleY: 0.25
+    AssetScaleZ: 0.25
+
+
+  1: # Second Asset
+
+    # Set Asset Metadata  
+    AssetName: "Tartaglia"
+    AssetType: "Model"
+    AssetPath: "Assets/Model2/scene.gltf"
+
+
+    # Set Asset Position
+    AssetPositionX: -4.0
+    AssetPositionY: 0.0
+    AssetPositionZ: 0.0
+
+    # Set Asset Rotation
+    AssetRotationX: 1.0
+    AssetRotationY: 0.0
+    AssetRotationZ: 0.0
+
+    # Set Asset Scale
+    AssetScaleX: 0.25
+    AssetScaleY: 0.25
+    AssetScaleZ: 0.25
