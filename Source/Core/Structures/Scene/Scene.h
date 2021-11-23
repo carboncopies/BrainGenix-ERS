@@ -42,12 +42,7 @@ struct ERS_OBJECT_SCENE{
     bool IsSceneLoaded = false;
 
 
-    /**
-     * @brief Populate The Scene Structure, Fill In Vectors, etc. Should Be Called Before Sending Scene Struct To ModelLoader.
-     * 
-     * @param RawSceneData 
-     */
-    void ProcessScene(YAML::Node RawSceneData);
+
 
 
 };

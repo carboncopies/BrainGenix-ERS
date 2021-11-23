@@ -12,11 +12,18 @@
 #pragma once
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
+#include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+#include <Model.h>
+#include <ModelLoader.h>
+
+
+#include <Shader.h>
 
 
 /**
@@ -28,6 +35,7 @@ class SceneLoader{
     private:
 
         LoggerClass *Logger_; /**<Contains A SceneLoader Class Instance*/
+        ModelLoader *ModelLoader_; /**<Contians A ModelLoader Class Pointer*/
 
 
     public:
@@ -37,7 +45,7 @@ class SceneLoader{
          * 
          * @param Logger 
          */
-        SceneLoader(LoggerClass *Logger);
+        SceneLoader(LoggerClass *Logger, ModelLoader *ModelLoader);
 
         /**
          * @brief Destroy the Scene Loader object
@@ -45,6 +53,13 @@ class SceneLoader{
          */
         ~SceneLoader();
 
+
+        /**
+         * @brief Populate The Scene Structure, Fill In Vectors, etc. Should Be Called Before Sending Scene Struct To ModelLoader.
+         * 
+         * @param RawSceneData 
+         */
+        void ProcessScene(YAML::Node RawSceneData);
 
 
 };
