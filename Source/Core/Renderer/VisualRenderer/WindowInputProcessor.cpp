@@ -25,6 +25,10 @@ void ProcessInput(GLFWwindow* Window, LoggerClass *Logger_, ERS_OBJECT_CAMERA_NO
         Camera->ProcessKeyboard(LEFT, DeltaTime);
     if (glfwGetKey(Window, GLFW_KEY_D) == GLFW_PRESS)
         Camera->ProcessKeyboard(RIGHT, DeltaTime);
+    if (glfwGetKey(Window, GLFW_KEY_SPACE) == GLFW_PRESS)
+        Camera->ProcessKeyboard(UP, DeltaTime);
+    if (glfwGetKey(Window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+        Camera->ProcessKeyboard(DOWN, DeltaTime);
 
 }
 
