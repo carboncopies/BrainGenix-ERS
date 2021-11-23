@@ -28,11 +28,11 @@
 #include <WindowInputProcessor.h>
 #include <Callbacks.h>
 #include <Model.h>
-#include <Scene.h>
 #include <NoClip.h>
 #include <TextureLoader.h>
 #include <ModelLoader.h>
 #include <ModelManager.h>
+#include <SceneLoader.h>
 
 
 class VisualRenderer {
@@ -54,6 +54,7 @@ class VisualRenderer {
 
 
         ERS_OBJECT_SHADER Shader_;
+        ERS_OBJECT_SCENE Scene_;
 
 
 

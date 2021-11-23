@@ -41,6 +41,7 @@ target_link_libraries(VisualRenderer
 
     Model
     Scene
+    SceneLoader
     )
 
 target_include_directories(VisualRenderer PUBLIC ./)

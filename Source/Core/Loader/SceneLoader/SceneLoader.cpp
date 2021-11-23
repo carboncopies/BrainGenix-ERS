@@ -86,5 +86,8 @@ void SceneLoader::ProcessScene(YAML::Node RawSceneData) {
 
     }
 
+    // Return Scene
+    return Scene;
+
 }
 

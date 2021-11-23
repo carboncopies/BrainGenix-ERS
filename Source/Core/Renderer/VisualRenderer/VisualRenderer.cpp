@@ -158,35 +158,40 @@ void VisualRenderer::InitializeOpenGL() {
     // Setup Shaders
     Shader_ = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
 
-    // Test Scene
-    YAML::Node TestScene = YAML::LoadFile("Assets/Test.yaml");
-    ERS_OBJECT_SCENE Test;
-    //ProcessScene(TestScene);
+
 
 
     // Load Model
     ModelLoader MLoader(Logger_, TextureLoader_);
-    ModelManager_ = new ModelManager(Logger_);
 
-    ERS_OBJECT_MODEL Model = MLoader.LoadModelFromFile("Assets/S1/scene.gltf");
-    Model.SetLocRotScale(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
-    ModelManager_->AddModel(Model);
+    SceneLoader SLoader(Logger_, &MLoader);
 
-    Model = MLoader.LoadModelFromFile("Assets/S2/scene.gltf");
-    Model.SetLocRotScale(glm::vec3(-4.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
-    ModelManager_->AddModel(Model);
+    // Test Scene
+    YAML::Node TestScene = YAML::LoadFile("Assets/Test.yaml");
+    Scene_ = SLOader.ProcessScene(TestScene);
 
-    Model = MLoader.LoadModelFromFile("Assets/S3/scene.gltf");
-    Model.SetLocRotScale(glm::vec3(-8.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
-    ModelManager_->AddModel(Model);
 
-    Model = MLoader.LoadModelFromFile("Assets/S4/scene.gltf");
-    Model.SetLocRotScale(glm::vec3(-12.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
-    ModelManager_->AddModel(Model);
 
-    Model = MLoader.LoadModelFromFile("Assets/S5/scene.gltf", true);
-    Model.SetLocRotScale(glm::vec3(0.0f, 3.5f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(4.0f, 4.0f, 4.0f));
-    ModelManager_->AddModel(Model);
+
+    // ERS_OBJECT_MODEL Model = MLoader.LoadModelFromFile("Assets/S1/scene.gltf");
+    // Model.SetLocRotScale(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
+    // ModelManager_->AddModel(Model);
+
+    // Model = MLoader.LoadModelFromFile("Assets/S2/scene.gltf");
+    // Model.SetLocRotScale(glm::vec3(-4.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
+    // ModelManager_->AddModel(Model);
+
+    // Model = MLoader.LoadModelFromFile("Assets/S3/scene.gltf");
+    // Model.SetLocRotScale(glm::vec3(-8.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
+    // ModelManager_->AddModel(Model);
+
+    // Model = MLoader.LoadModelFromFile("Assets/S4/scene.gltf");
+    // Model.SetLocRotScale(glm::vec3(-12.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
+    // ModelManager_->AddModel(Model);
+
+    // Model = MLoader.LoadModelFromFile("Assets/S5/scene.gltf", true);
+    // Model.SetLocRotScale(glm::vec3(0.0f, 3.5f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(4.0f, 4.0f, 4.0f));
+    // ModelManager_->AddModel(Model);
 
 
 
@@ -226,7 +231,7 @@ void VisualRenderer::UpdateLoop() {
     Shader_.SetMat4("view", view);
 
 
-    ModelManager_->RenderModels(Shader_);
+    // ModelManager_->RenderModels(Shader_);
 
 
 

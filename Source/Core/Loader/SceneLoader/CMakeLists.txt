@@ -22,6 +22,9 @@ target_link_libraries(SceneLoader
 # Link Internal Libs
 target_link_libraries(SceneLoader
     LoggingSystem
+    Model
+    ModelLoader
+    Shader
     )
 
 target_include_directories(SceneLoader PUBLIC ./)
