@@ -28,9 +28,13 @@ struct ERS_OBJECT_SCENE{
     // Raw Info Yaml
     YAML::Node SceneData; /**<YAML::Node Containing Copy Of Raw Scene Information*/
 
-    
     // List Of Required Materials (For Now, Can Only Be Models)
     std::vector<ERS_OBJECT_MODEL> Models;
+
+    // Scene Metadata
+    long SceneFormatVersion;
+    std:string SceneName;
+    
 
     // Status Variables
     bool IsSceneReadyToLoad = false;

@@ -17,7 +17,8 @@
 void ERS_OBJECT_SCENE::ProcessScene(YAML::Node RawSceneData) {
 
     // Grab Metadata
-
+    SceneFormatVersion = RawSceneData["SceneFormatVersion"].as<long>();
+    SceneName = RawSceneData["SceneName"].as<std::string>();
 
     // Create Vector Of YAML::Nodes
     std::vector<YAML::Node> SceneItems;
@@ -29,6 +30,11 @@ void ERS_OBJECT_SCENE::ProcessScene(YAML::Node RawSceneData) {
     }
 
     // Iterate Through Vector To Add Each Asset To Loading Queue Of Requested Type
+    for (long i = 0; i < SceneDataNode.size(); i++) {
 
+        // Get Asset Information
+        std::string AssetName = SceneDataNode[i]["AssetName"].as<std::string>();
+
+    }
 
 }
