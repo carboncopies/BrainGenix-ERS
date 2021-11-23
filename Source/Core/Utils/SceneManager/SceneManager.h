@@ -64,7 +64,7 @@ class SceneManager{
         /**
          * @brief Set the active scene. (Overloaded) [This Version Takes The Scene Name]. Returns True/False For Success/Fail
          * 
-         * @param SceneName 
+         * @param TargetSceneName 
          * @return true 
          * @return false 
          */
