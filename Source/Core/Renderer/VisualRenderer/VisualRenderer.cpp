@@ -174,14 +174,6 @@ void VisualRenderer::InitializeOpenGL() {
 
 
 
-    // ERS_OBJECT_MODEL Model = MLoader.LoadModelFromFile("Assets/S1/scene.gltf");
-    // Model.SetLocRotScale(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
-    // ModelManager_->AddModel(Model);
-
-    // Model = MLoader.LoadModelFromFile("Assets/S2/scene.gltf");
-    // Model.SetLocRotScale(glm::vec3(-4.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
-    // ModelManager_->AddModel(Model);
-
     // Model = MLoader.LoadModelFromFile("Assets/S3/scene.gltf");
     // Model.SetLocRotScale(glm::vec3(-8.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
     // ModelManager_->AddModel(Model);

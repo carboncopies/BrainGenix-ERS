@@ -52,3 +52,74 @@ SceneData:
     AssetScaleX: 0.25
     AssetScaleY: 0.25
     AssetScaleZ: 0.25
+
+
+  2: # Third Asset
+
+    # Set Asset Metadata  
+    AssetName: "Aether"
+    AssetType: "Model"
+    AssetPath: "Assets/S3/scene.gltf"
+
+
+    # Set Asset Position
+    AssetPositionX: -8.0
+    AssetPositionY: 0.0
+    AssetPositionZ: 0.0
+
+    # Set Asset Rotation
+    AssetRotationX: 1.0
+    AssetRotationY: 0.0
+    AssetRotationZ: 0.0
+
+    # Set Asset Scale
+    AssetScaleX: 0.25
+    AssetScaleY: 0.25
+    AssetScaleZ: 0.25
+
+
+  3: # Fourth Asset
+
+    # Set Asset Metadata  
+    AssetName: "Xiao"
+    AssetType: "Model"
+    AssetPath: "Assets/S4/scene.gltf"
+
+
+    # Set Asset Position
+    AssetPositionX: -12.0
+    AssetPositionY: 0.0
+    AssetPositionZ: 0.0
+
+    # Set Asset Rotation
+    AssetRotationX: 1.0
+    AssetRotationY: 0.0
+    AssetRotationZ: 0.0
+
+    # Set Asset Scale
+    AssetScaleX: 0.25
+    AssetScaleY: 0.25
+    AssetScaleZ: 0.25
+
+  4: # Fifth Asset
+
+    # Set Asset Metadata  
+    AssetName: "Museum Photogrammetry Scan From Sketchfab"
+    AssetType: "Model"
+    AssetPath: "Assets/S5/scene.gltf"
+
+
+    # Set Asset Position
+    AssetPositionX: 0.0
+    AssetPositionY: 3.5
+    AssetPositionZ: 0.0
+
+    # Set Asset Rotation
+    AssetRotationX: 1.0
+    AssetRotationY: 0.0
+    AssetRotationZ: 0.0
+
+    # Set Asset Scale
+    AssetScaleX: 4.0
+    AssetScaleY: 4.0
+    AssetScaleZ: 4.0
