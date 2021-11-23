@@ -160,6 +160,8 @@ void VisualRenderer::InitializeOpenGL() {
 
     // Test Scene
     YAML::Node TestScene = YAML::LoadFile("Assets/Test.yaml");
+    ERS_OBJECT_SCENE Test;
+    Test.ProcessScene(TestScene);
 
 
     // Load Model
