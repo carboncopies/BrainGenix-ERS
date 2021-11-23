@@ -165,7 +165,7 @@ void VisualRenderer::InitializeOpenGL() {
     ModelLoader MLoader(Logger_, TextureLoader_);
 
     SceneLoader SLoader(Logger_, &MLoader);
-    SceneManager_ = new SManager(Logger_);
+    SceneManager_ = new SceneManager(Logger_);
 
     // Test Scene
     YAML::Node TestScene = YAML::LoadFile("Assets/Test.yaml");
