@@ -78,10 +78,10 @@ bool SceneManager::SetActiveScene(int SceneIndex) {
 bool SceneManager::SetActiveScene(std::string TargetSceneName) {
 
     // Iterate Through Scenes, Check Name Against Target
-    int TargetSceneIndex = 0;
+    int TargetSceneIndex;
     bool TargetSceneFound = false;
 
-    for (TargetSceneIndex < Scenes_.size()-1; TargetSceneIndex++) {
+    for (TargetSceneIndex = 0; TargetSceneIndex < Scenes_.size()-1; TargetSceneIndex++) {
 
         // Get Scene Name
         std::string SceneName = Scenes_[TargetSceneIndex].SceneName;
