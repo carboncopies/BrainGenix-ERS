@@ -59,8 +59,9 @@ class SceneLoader{
          * @brief Populate The Scene Structure, Fill In Vectors, etc. Should Be Called Before Sending Scene Struct To ModelLoader.
          * 
          * @param RawSceneData 
+         * @return ERS_OBJECT_SCENE 
          */
-        void ProcessScene(YAML::Node RawSceneData);
+        ERS_OBJECT_SCENE ProcessScene(YAML::Node RawSceneData);
 
 
 };

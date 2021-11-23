@@ -33,7 +33,7 @@ SceneLoader::~SceneLoader() {
 
 
 // SceneLoader Process Scene Function
-void SceneLoader::ProcessScene(YAML::Node RawSceneData) {
+ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
 
     // Create Scene Instance
     ERS_OBJECT_SCENE Scene;
