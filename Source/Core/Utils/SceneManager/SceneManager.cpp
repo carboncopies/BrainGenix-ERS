@@ -34,18 +34,20 @@ SceneManager::~SceneManager() {
 
 
 // Add Model Functions (Overloaded)
-void SceneManager::AddModel(ERS_OBJECT_MODEL Model) {
+void SceneManager::AddScene(ERS_OBJECT_SCENE Scene) {
 
     // Append Model Into Vector Of Models
-    Models_.push_back(Model);
+    //Models_.push_back(Scene);
+
+    Scene_ = Scene;
 
 }
 
 // Render All Models In Buffer
-void SceneManager::RenderModels(ERS_OBJECT_SHADER Shader) {
+void SceneManager::Render(ERS_OBJECT_SHADER Shader) {
     
     // Iterate Through Models
-    for (long i = 0; i < Models_.size(); i++) {
+    for (long i = 0; i < Scene_.Models_.size(); i++) {
 
         // Get Model Pointer
         ERS_OBJECT_MODEL *Model = &Models_[i];

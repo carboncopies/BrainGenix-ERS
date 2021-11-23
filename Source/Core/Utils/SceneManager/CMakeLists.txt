@@ -22,7 +22,7 @@ target_link_libraries(SceneManager
 
 # Link Internal Libs
 target_link_libraries(SceneManager
-    Model
+    Scene
     LoggingSystem
     
     )
