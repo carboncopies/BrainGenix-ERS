@@ -89,6 +89,9 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
 
     }
 
+    // Indicate Scene Is Loaded
+    Scene.IsSceneLoaded = true;
+
     // Return Scene
     return Scene;
 
