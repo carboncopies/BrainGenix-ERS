@@ -42,6 +42,9 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
     Scene.SceneFormatVersion = RawSceneData["SceneFormatVersion"].as<long>();
     Scene.SceneName = RawSceneData["SceneName"].as<std::string>();
 
+    // Log Scene Processing
+    Logger_->Log(std::string(std::string("Processing Scene: ") + std::string(Scene.SceneName)).c_str(), 4);
+
     // Create Vector Of YAML::Nodes
     std::vector<YAML::Node> SceneItems;
 
