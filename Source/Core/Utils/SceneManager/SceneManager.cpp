@@ -3,38 +3,38 @@
 //======================================================================//
 
 /*
-    Description: This file contains the model manager classes.
+    Description: This file contains the scene manager classes.
     Documentation Status: Done
     Additonal Notes: None
     Date Created: 2021-11-21
 */
 
-#include <ModelManager.h>
+#include <SceneManager.h>
 
 
-// Constructor For ModelManager Class
-ModelManager::ModelManager(LoggerClass *Logger) {
+// Constructor For SceneManager Class
+SceneManager::SceneManager(LoggerClass *Logger) {
 
     // Copy To Local Pointer
     Logger_ = Logger;
 
     // Log Initialization
-    Logger_->Log("Initializing ModelManager Instance", 5);
+    Logger_->Log("Initializing SceneManager Instance", 5);
 
 }
 
 
-// Destructor For ModelManager Class
-ModelManager::~ModelManager() {
+// Destructor For SceneManager Class
+SceneManager::~SceneManager() {
 
     // Log Destructor Call
-    Logger_->Log("Destructor Called For ModelManager Class", 6);
+    Logger_->Log("Destructor Called For SceneManager Class", 6);
 
 }
 
 
 // Add Model Functions (Overloaded)
-void ModelManager::AddModel(ERS_OBJECT_MODEL Model) {
+void SceneManager::AddModel(ERS_OBJECT_MODEL Model) {
 
     // Append Model Into Vector Of Models
     Models_.push_back(Model);
@@ -42,7 +42,7 @@ void ModelManager::AddModel(ERS_OBJECT_MODEL Model) {
 }
 
 // Render All Models In Buffer
-void ModelManager::RenderModels(ERS_OBJECT_SHADER Shader) {
+void SceneManager::RenderModels(ERS_OBJECT_SHADER Shader) {
     
     // Iterate Through Models
     for (long i = 0; i < Models_.size(); i++) {

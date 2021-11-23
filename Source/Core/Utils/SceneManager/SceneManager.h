@@ -3,7 +3,7 @@
 //======================================================================//
 
 /*
-    Description: This file contains the model manager classes.
+    Description: This file contains the scene manager classes.
     Documentation Status: Done
     Additonal Notes: None
     Date Created: 2021-11-21
@@ -26,7 +26,7 @@
  * @brief The Model Manager class Handles Rendering and Calling Loading Of Models.
  * 
  */
-class ModelManager{
+class SceneManager{
 
     private:
 
@@ -43,13 +43,13 @@ class ModelManager{
          * 
          * @param Logger 
          */
-        ModelManager(LoggerClass *Logger);
+        SceneManager(LoggerClass *Logger);
         
         /**
          * @brief Destroy the Model Manager object
          * 
          */
-        ~ModelManager();
+        ~SceneManager();
 
         /**
          * @brief Add a model to the manager's list of managed models.
