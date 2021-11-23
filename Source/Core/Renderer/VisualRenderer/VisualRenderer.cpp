@@ -165,10 +165,11 @@ void VisualRenderer::InitializeOpenGL() {
     ModelLoader MLoader(Logger_, TextureLoader_);
 
     SceneLoader SLoader(Logger_, &MLoader);
+    SManager_ = new SManager(Logger_);
 
     // Test Scene
     YAML::Node TestScene = YAML::LoadFile("Assets/Test.yaml");
-    Scene_ = SLoader.ProcessScene(TestScene);
+    SManager_->AddScene(SLoader.ProcessScene(TestScene));
 
 
 
@@ -231,7 +232,7 @@ void VisualRenderer::UpdateLoop() {
     Shader_.SetMat4("view", view);
 
 
-    // ModelManager_->RenderModels(Shader_);
+    SManager_->Render(Shader_);
 
 
 

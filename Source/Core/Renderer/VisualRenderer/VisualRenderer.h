@@ -31,7 +31,7 @@
 #include <NoClip.h>
 #include <TextureLoader.h>
 #include <ModelLoader.h>
-#include <ModelManager.h>
+#include <SceneManager.h>
 #include <SceneLoader.h>
 
 
@@ -54,7 +54,9 @@ class VisualRenderer {
 
 
         ERS_OBJECT_SHADER Shader_;
-        ERS_OBJECT_SCENE Scene_;
+
+
+        SceneManager *SManager_;
 
 
 

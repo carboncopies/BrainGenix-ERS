@@ -47,10 +47,10 @@ void SceneManager::AddScene(ERS_OBJECT_SCENE Scene) {
 void SceneManager::Render(ERS_OBJECT_SHADER Shader) {
     
     // Iterate Through Models
-    for (long i = 0; i < Scene_.Models_.size(); i++) {
+    for (long i = 0; i < Scene_.Models.size(); i++) {
 
         // Get Model Pointer
-        ERS_OBJECT_MODEL *Model = &Models_[i];
+        ERS_OBJECT_MODEL *Model = &Scene_.Models[i];
 
         // Set Shader Pointer
         Shader.SetMat4("model", Model->GetMat4());
