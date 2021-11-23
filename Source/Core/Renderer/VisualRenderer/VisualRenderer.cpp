@@ -172,22 +172,6 @@ void VisualRenderer::InitializeOpenGL() {
     SceneManager_->AddScene(SLoader.ProcessScene(TestScene));
 
 
-
-
-    // Model = MLoader.LoadModelFromFile("Assets/S3/scene.gltf");
-    // Model.SetLocRotScale(glm::vec3(-8.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
-    // ModelManager_->AddModel(Model);
-
-    // Model = MLoader.LoadModelFromFile("Assets/S4/scene.gltf");
-    // Model.SetLocRotScale(glm::vec3(-12.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.20f, 0.20f, 0.20f));
-    // ModelManager_->AddModel(Model);
-
-    // Model = MLoader.LoadModelFromFile("Assets/S5/scene.gltf", true);
-    // Model.SetLocRotScale(glm::vec3(0.0f, 3.5f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(4.0f, 4.0f, 4.0f));
-    // ModelManager_->AddModel(Model);
-
-
-
     // uncomment this call to draw in wireframe polygons.
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 

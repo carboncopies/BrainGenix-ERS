@@ -13,6 +13,8 @@ SceneData:
     AssetType: "Model"
     AssetPath: "Assets/S1/scene.gltf"
 
+    # Model Specific Parameters
+    FlipTextures: false
 
     # Set Asset Position
     AssetPositionX: 0.0
@@ -37,6 +39,8 @@ SceneData:
     AssetType: "Model"
     AssetPath: "Assets/S2/scene.gltf"
 
+    # Model Specific Parameters
+    FlipTextures: false
 
     # Set Asset Position
     AssetPositionX: -4.0
@@ -61,6 +65,8 @@ SceneData:
     AssetType: "Model"
     AssetPath: "Assets/S3/scene.gltf"
 
+    # Model Specific Parameters
+    FlipTextures: false
 
     # Set Asset Position
     AssetPositionX: -8.0
@@ -85,6 +91,8 @@ SceneData:
     AssetType: "Model"
     AssetPath: "Assets/S4/scene.gltf"
 
+    # Model Specific Parameters
+    FlipTextures: false
 
     # Set Asset Position
     AssetPositionX: -12.0
@@ -108,6 +116,8 @@ SceneData:
     AssetType: "Model"
     AssetPath: "Assets/S5/scene.gltf"
 
+    # Model Specific Parameters
+    FlipTextures: true
 
     # Set Asset Position
     AssetPositionX: 0.0
