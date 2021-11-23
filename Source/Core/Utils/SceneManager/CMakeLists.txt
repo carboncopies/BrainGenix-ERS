@@ -4,7 +4,7 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Scene
+add_library(SceneManager
 
             # Add Source Files (.cpp)
             "SceneManager.cpp"
@@ -16,15 +16,16 @@ add_library(Scene
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Scene
+target_link_libraries(SceneManager
     yaml-cpp
     )
 
 # Link Internal Libs
-target_link_libraries(Scene
+target_link_libraries(SceneManager
     Model
+    LoggingSystem
     
     )
 
-target_include_directories(Scene PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Scene)
+target_include_directories(SceneManager PUBLIC ./)
+target_link_libraries(${PROJECT_NAME} SceneManager)
