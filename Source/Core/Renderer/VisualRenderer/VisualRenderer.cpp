@@ -174,7 +174,7 @@ void VisualRenderer::InitializeOpenGL() {
     YAML::Node TestScene2 = YAML::LoadFile("Assets/Scene2.yaml");
     SceneManager_->AddScene(SLoader.ProcessScene(TestScene2));
 
-    std::cout<<SceneManager_->SetActiveScene("Testing2")<<std::endl;
+    std::cout<<SceneManager_->SetActiveScene(std::string("Testing2"))<<std::endl;
 
     // uncomment this call to draw in wireframe polygons.
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
