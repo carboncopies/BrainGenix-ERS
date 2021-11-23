@@ -11,3 +11,11 @@
 
 #include <Scene.h>
 
+
+// Define ProcessScene
+void ERS_OBJECT_SCENE::ProcessScene(YAML::Node RawSceneData) {
+
+    // Read Yaml
+    
+
+}

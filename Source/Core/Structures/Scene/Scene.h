@@ -23,7 +23,7 @@
  * @brief The scene structure contains the data for an entire "level". It references other models, scripts, audio, and more to construct the environment.
  * 
  */
-struct Scene{
+struct ERS_OBJECT_SCENE{
 
     // Raw Info Yaml
     YAML::Node SceneData; /**<YAML::Node Containing Copy Of Raw Scene Information*/
