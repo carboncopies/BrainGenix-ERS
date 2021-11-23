@@ -25,6 +25,7 @@ target_link_libraries(SceneLoader
     Model
     ModelLoader
     Shader
+    Scene
     )
 
 target_include_directories(SceneLoader PUBLIC ./)

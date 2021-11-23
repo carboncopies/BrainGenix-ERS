@@ -21,6 +21,7 @@
 #include <LoggingSystem.h>
 #include <Model.h>
 #include <ModelLoader.h>
+#include <Scene.h>
 
 
 #include <ShaderManager.h>
