@@ -63,6 +63,9 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
         // If type Is Model
         if (AssetType == std::string("Model")) {
 
+            // Get Model Texture Info
+            bool FlipTextures = SceneDataNode[i]["FlipTextures"].as<bool>();
+
             // Get Asset LocRotScale
             float PosX = SceneDataNode[i]["AssetPositionX"].as<double>();
             float PosY = SceneDataNode[i]["AssetPositionY"].as<double>();
@@ -77,7 +80,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
             float ScaleZ = SceneDataNode[i]["AssetScaleZ"].as<double>();
 
             // Load Model
-            ERS_OBJECT_MODEL Model = ModelLoader_->LoadModelFromFile(AssetPath.c_str());
+            ERS_OBJECT_MODEL Model = ModelLoader_->LoadModelFromFile(AssetPath.c_str(), FlipTextures);
             Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
             Scene.Models.push_back(Model);
 
