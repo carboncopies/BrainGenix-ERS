@@ -18,8 +18,13 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 
-
+/**
+ * @brief The scene structure contains the data for an entire "level". It references other models, scripts, audio, and more to construct the environment.
+ * 
+ */
 struct Scene{
+
+    YAML::Node SceneData; /**<YAML::Node Containing Copy Of Raw Scene Information*/
 
     
 
