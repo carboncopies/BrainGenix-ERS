@@ -36,10 +36,8 @@ SceneManager::~SceneManager() {
 // Add Model Functions (Overloaded)
 void SceneManager::AddScene(ERS_OBJECT_SCENE Scene) {
 
-    // Append Model Into Vector Of Models
-    //Models_.push_back(Scene);
-
-    Scene_ = Scene;
+    // Append Scene To Scenes Model
+    Scenes_.push_back(Scene);
 
 }
 

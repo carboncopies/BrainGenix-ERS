@@ -22,7 +22,10 @@
 #include <Scene.h>
 
 
-
+/**
+ * @brief The SceneManager Class Handles the Presentation and Rendering of BrainGenix ERS Scene Structures.
+ * 
+ */
 class SceneManager{
 
     private:
@@ -30,21 +33,38 @@ class SceneManager{
         // Internal Member Pointers
         LoggerClass *Logger_; /**<Pointer To Logger Instance*/
 
-        //std::vector<ERS_OBJECT_> Models_; /**<Vector Containing Models To be Iterated Through When Drawn*/
-        ERS_OBJECT_SCENE Scene_; // TEMPORARY, EVENTUALLY SWITCH TO SCENE VECTOR WITH ONE SCENE ACTIVE AT A TIME OR SOMETHING.
+        std::vector<ERS_OBJECT_SCENE> Scenes_; /**<Vector Containing Scenes To Be Drawn*/
+        int ActiveScene_ = 0; /**<Set The Active Scene */
 
     public:
 
-
+        /**
+         * @brief Construct a new Scene Manager object
+         * 
+         * @param Logger 
+         */
         SceneManager(LoggerClass *Logger);
         
-
+        /**
+         * @brief Destroy the Scene Manager object
+         * 
+         */
         ~SceneManager();
 
 
+
+        /**
+         * @brief Add a populated scene structure to the scenes vector.
+         * 
+         * @param Scene 
+         */
         void AddScene(ERS_OBJECT_SCENE Scene);
 
-
+        /**
+         * @brief Render scene set to active.
+         * 
+         * @param Shader 
+         */
         void Render(ERS_OBJECT_SHADER Shader);
 
 };
