@@ -12,6 +12,7 @@
 #pragma once
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -33,8 +34,8 @@ struct ERS_OBJECT_SCENE{
 
     // Scene Metadata
     long SceneFormatVersion;
-    std:string SceneName;
-    
+    std::string SceneName;
+
 
     // Status Variables
     bool IsSceneReadyToLoad = false;

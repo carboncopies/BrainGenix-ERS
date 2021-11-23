@@ -40,7 +40,7 @@ target_link_libraries(VisualRenderer
     ModelLoader
 
     Model
-    NoClip
+    Scene
     )
 
 target_include_directories(VisualRenderer PUBLIC ./)

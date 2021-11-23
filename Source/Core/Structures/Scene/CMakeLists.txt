@@ -22,6 +22,8 @@ target_link_libraries(Scene
 
 # Link Internal Libs
 target_link_libraries(Scene
+    Model
+    
     )
 
 target_include_directories(Scene PUBLIC ./)

@@ -158,6 +158,10 @@ void VisualRenderer::InitializeOpenGL() {
     // Setup Shaders
     Shader_ = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
 
+    // Test Scene
+    YAML::Node TestScene = YAML::LoadFile("Assets/Test.yaml");
+
+
     // Load Model
     ModelLoader MLoader(Logger_, TextureLoader_);
     ModelManager_ = new ModelManager(Logger_);

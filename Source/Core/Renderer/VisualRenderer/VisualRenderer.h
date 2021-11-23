@@ -28,6 +28,7 @@
 #include <WindowInputProcessor.h>
 #include <Callbacks.h>
 #include <Model.h>
+#include <Scene.h>
 #include <NoClip.h>
 #include <TextureLoader.h>
 #include <ModelLoader.h>
