@@ -26,7 +26,7 @@ void ERS_OBJECT_SCENE::ProcessScene(YAML::Node RawSceneData) {
     // Populate Vector With Elements From SceneData
     YAML::Node SceneDataNode = RawSceneData["SceneData"];
     for (YAML::const_iterator it=SceneDataNode.begin(); it!=SceneDataNode.end(); ++it) {
-        SceneItems[it->first.as<int>()] = it->second;
+        SceneItems.push_back(it->second;);
     }
 
     // Iterate Through Vector To Add Each Asset To Loading Queue Of Requested Type
