@@ -31,9 +31,9 @@ void ERS_OBJECT_CAMERA_NOCLIP::ProcessKeyboard(CameraMovement Direction, float D
     if (Direction == RIGHT)
         Position += Right * Velocity;
     if (Direction == UP)
-        Position -= Up * Velocity;
+        Position += glm::vec3(0.0f, 1.0f, 0.0f) * Velocity;
     if (Direction == DOWN)
-        Position += Up * Velocity;
+        Position -= glm::vec3(0.0f, 1.0f, 0.0f) * Velocity;
 
 }
 
