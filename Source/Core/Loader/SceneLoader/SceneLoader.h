@@ -23,7 +23,7 @@
 #include <ModelLoader.h>
 
 
-#include <Shader.h>
+#include <ShaderManager.h>
 
 
 /**
