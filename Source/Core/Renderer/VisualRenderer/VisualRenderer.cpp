@@ -214,6 +214,11 @@ void VisualRenderer::UpdateLoop() {
 
     SceneManager_->Render(Shader_);
 
+    if ((int)glfwGetTime()%2 == 0) {
+        SceneManager_->SetActiveScene(std::string("Testing2"));
+    } else {
+        SceneManager_->SetActiveScene(std::string("Testing"));
+    }
 
 
     // Update Window Stuff
