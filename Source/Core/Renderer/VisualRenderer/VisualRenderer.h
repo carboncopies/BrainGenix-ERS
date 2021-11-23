@@ -46,8 +46,8 @@ class VisualRenderer {
         // MOVE TO ASSET LOADER CLASS LATER:
         TextureLoader *TextureLoader_; /**<Pointer to Texture Loader Instance*/
 
-        // ModelManager Class
-        ModelManager *ModelManager_; /**<Pointer to Model Manager Class Instance*/
+        // SceneManager Class
+        SceneManager *SceneManager_; /**<Pointer to Scene Manager Class Instance*/
 
         // Control Values
         bool *SystemShouldRun_;
@@ -56,7 +56,7 @@ class VisualRenderer {
         ERS_OBJECT_SHADER Shader_;
 
 
-        SceneManager *SManager_;
+        
 
 
 
