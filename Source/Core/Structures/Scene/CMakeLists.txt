@@ -7,7 +7,7 @@
 add_library(Scene
 
             # Add Source Files (.cpp)
-            #"Scene.cpp"
+            "Scene.cpp"
 
             # Add Header Files (.h)
             "Scene.h"
