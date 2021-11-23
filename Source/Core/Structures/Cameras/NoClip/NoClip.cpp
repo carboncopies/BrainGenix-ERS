@@ -30,6 +30,10 @@ void ERS_OBJECT_CAMERA_NOCLIP::ProcessKeyboard(CameraMovement Direction, float D
         Position -= Right * Velocity;
     if (Direction == RIGHT)
         Position += Right * Velocity;
+    if (Direction == UP)
+        Position -= Up * Velocity;
+    if (Direction == DOWN)
+        Position += Up * Velocity;
 
 }
 
