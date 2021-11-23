@@ -11,7 +11,7 @@ SceneData:
     # Set Asset Metadata  
     AssetName: "Zhongli"
     AssetType: "Model"
-    AssetPath: "Assets/Model1/scene.gltf"
+    AssetPath: "Assets/S1/scene.gltf"
 
 
     # Set Asset Position
@@ -35,7 +35,7 @@ SceneData:
     # Set Asset Metadata  
     AssetName: "Tartaglia"
     AssetType: "Model"
-    AssetPath: "Assets/Model2/scene.gltf"
+    AssetPath: "Assets/S2/scene.gltf"
 
 
     # Set Asset Position
