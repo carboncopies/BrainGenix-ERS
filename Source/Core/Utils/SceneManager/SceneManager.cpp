@@ -33,11 +33,24 @@ SceneManager::~SceneManager() {
 }
 
 
-// Add Model Functions (Overloaded)
-void SceneManager::AddScene(ERS_OBJECT_SCENE Scene) {
+// Add Scene Function
+bool SceneManager::AddScene(ERS_OBJECT_SCENE Scene) {
+
+    // Check If Scene Isn't Ready
+    if (!Scene.IsSceneLoaded) {
+
+        // Log Issue
+        Logger_->Log("Failed To Add Scene To Buffer, Scene Isn't Yet Loaded!", 6);
+
+        // Return Failure
+        return false;
+    }
 
     // Append Scene To Scenes Model
     Scenes_.push_back(Scene);
+
+    // Return Success
+    return true;
 
 }
 
@@ -70,6 +83,7 @@ bool SceneManager::SetActiveScene(int SceneIndex) {
         // Log Scene Switch Error
         Logger_->Log(std::string(std::string("Failed To Set Active Scene To Index: ") + std::to_string(SceneIndex) + std::string(" Because Scenes_ Only Has") + std::to_string(Scenes_.size()-1) + std::string(" Elements")).c_str(), 7); 
 
+        // Return Failure
         return false;
     }
 
@@ -107,6 +121,7 @@ bool SceneManager::SetActiveScene(std::string TargetSceneName) {
         // Log Error
         Logger_->Log(std::string(std::string("Failed To Set Active Scene To: ") + TargetSceneName + std::string(" Because It Isn't In The Scenes_ Vector")).c_str(), 7); 
 
+        // Return Failure
         return false;
     } 
 

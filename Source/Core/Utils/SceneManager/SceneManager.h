@@ -75,8 +75,10 @@ class SceneManager{
          * @brief Add a populated scene structure to the scenes vector.
          * 
          * @param Scene 
+         * @return true 
+         * @return false
          */
-        void AddScene(ERS_OBJECT_SCENE Scene);
+        bool AddScene(ERS_OBJECT_SCENE Scene);
 
         /**
          * @brief Render scene set to active.
