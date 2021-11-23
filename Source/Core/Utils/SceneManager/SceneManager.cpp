@@ -72,6 +72,9 @@ bool SceneManager::SetActiveScene(int SceneIndex) {
     // Update SceneIndex
     ActiveScene_ = SceneIndex;
 
+    // Return Success
+    return true;
+
 }
 
 // SetActiveScene (Overloaded, std::string Version)
