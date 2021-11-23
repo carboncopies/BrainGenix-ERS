@@ -168,7 +168,7 @@ void VisualRenderer::InitializeOpenGL() {
 
     // Test Scene
     YAML::Node TestScene = YAML::LoadFile("Assets/Test.yaml");
-    Scene_ = SLOader.ProcessScene(TestScene);
+    Scene_ = SLoader.ProcessScene(TestScene);
 
 
 
