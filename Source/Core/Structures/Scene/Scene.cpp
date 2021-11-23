@@ -34,6 +34,12 @@ void ERS_OBJECT_SCENE::ProcessScene(YAML::Node RawSceneData) {
 
         // Get Asset Information
         std::string AssetName = SceneDataNode[i]["AssetName"].as<std::string>();
+        std::string AssetType = SceneDataNode[i]["AssetType"].as<std::string>();
+        std::string AssetPath = SceneDataNode[i]["AssetPath"].as<std::string>();
+
+        // Get Asset LocRotScale
+        
+
 
     }
 
