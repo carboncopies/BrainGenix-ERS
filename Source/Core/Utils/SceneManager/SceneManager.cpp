@@ -60,3 +60,31 @@ void SceneManager::Render(ERS_OBJECT_SHADER Shader) {
     }
 
 }
+
+// SetActiveScene (Overloaded, int Version)
+bool SceneManager::SetActiveScene(int SceneIndex) {
+
+    // Check SceneIndex Validity
+    if (SceneIndex < 0 || SceneIndex > Scenes_.size()-1) {
+        return false;
+    }
+
+    // Update SceneIndex
+    ActiveScene_ = SceneIndex;
+
+}
+
+// SetActiveScene (Overloaded, std::string Version)
+bool SceneManager::SetActiveScene(std::string SceneName) {
+
+    // Iterate Through Scenes, Check Name Against Target
+    int TargetSceneIndex = 0;
+
+    for (TargetSceneIndex < Scenes_.size()-1, TargetSceneIndex++) {
+
+        // Get Scene Name
+        std::string SceneName = Scenes_[TargetSceneIndex.]
+
+    }
+
+}
