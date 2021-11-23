@@ -52,6 +52,23 @@ class SceneManager{
         ~SceneManager();
 
 
+        /**
+         * @brief Set the active scene. (Overloaded) [This Version Takes The Scene Index]. Returns True/False For Success/Fail
+         * 
+         * @param SceneIndex
+         * @return true 
+         * @return false 
+         */
+        bool SetActiveScene(int SceneIndex);
+        /**
+         * @brief Set the active scene. (Overloaded) [This Version Takes The Scene Name]. Returns True/False For Success/Fail
+         * 
+         * @param SceneName 
+         * @return true 
+         * @return false 
+         */
+        bool SetActiveScene(std::string SceneName);
+
 
         /**
          * @brief Add a populated scene structure to the scenes vector.
