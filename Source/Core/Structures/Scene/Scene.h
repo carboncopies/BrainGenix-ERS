@@ -17,6 +17,7 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
+#include <Model.h>
 
 /**
  * @brief The scene structure contains the data for an entire "level". It references other models, scripts, audio, and more to construct the environment.
@@ -24,9 +25,24 @@
  */
 struct Scene{
 
+    // Raw Info Yaml
     YAML::Node SceneData; /**<YAML::Node Containing Copy Of Raw Scene Information*/
 
     
+    // List Of Required Materials (For Now, Can Only Be Models)
+    std::vector<ERS_OBJECT_MODEL> Models;
+
+    // Status Variables
+    bool IsSceneReadyToLoad = false;
+    bool IsSceneLoaded = false;
+
+
+    /**
+     * @brief Populate The Scene Structure, Fill In Vectors, etc. Should Be Called Before Sending Scene Struct To ModelLoader.
+     * 
+     * @param RawSceneData 
+     */
+    void ProcessScene(YAML::Node RawSceneData);
 
 
 };
