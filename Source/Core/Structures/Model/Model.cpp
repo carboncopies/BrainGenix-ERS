@@ -48,14 +48,14 @@ void ERS_OBJECT_MODEL::SetRotation(double X, double Y, double Z) {
     glm::vec3 Rotation = glm::vec3(X, Y, Z);
 
     // Set Rotation to Pos
-    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(0.0f), Rotation);
+    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(1.0f), Rotation);
 
 }
 
 void ERS_OBJECT_MODEL::SetRotation(glm::vec3 Rotation) {
 
     // Set Rotation to Pos
-    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(0.0f), Rotation);
+    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(1.0f), Rotation);
 
 }
 
