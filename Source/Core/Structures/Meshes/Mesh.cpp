@@ -90,12 +90,12 @@ void ERS_OBJECT_MESH::Draw(ERS_OBJECT_SHADER* Shader) {
         // Detect Type
         if (Name == "texture_diffuse")
             Number = std::to_string(DiffuseHandel++);
-        // else if(Name == "texture_specular")
-        //     Number = std::to_string(SpecularHandel++);
-        // else if(Name == "texture_normal")
-        //     Number = std::to_string(NormalHandel++);
-        // else if(Name == "texture_height")
-        //     Number = std::to_string(HeightHandel++);
+        else if(Name == "texture_specular")
+            Number = std::to_string(SpecularHandel++);
+        else if(Name == "texture_normal")
+            Number = std::to_string(NormalHandel++);
+        else if(Name == "texture_height")
+            Number = std::to_string(HeightHandel++);
 
 
         // Set Sampler
