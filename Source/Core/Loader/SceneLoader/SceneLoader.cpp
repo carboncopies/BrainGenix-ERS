@@ -84,6 +84,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
 
             // Check If Model Already Loaded
             int ModelIndex;
+
             
             for (ModelIndex = 0; ModelIndex < Scene.Models.size(); ModelIndex++) {
                 if (Scene.Models[ModelIndex].AssetPath_ == AssetPath) {
@@ -93,6 +94,9 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
 
                     // Log Duplicate
                     Logger_->Log(std::string(std::string("Skipping Model Loading, Already Loaded For: ") + AssetPath).c_str(), 4);
+
+                    // Break Loop
+                    break;
 
                 }
 
