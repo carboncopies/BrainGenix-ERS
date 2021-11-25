@@ -9,8 +9,6 @@
     Date Created: 2021-11-22
 */
 
-
-// FIXME: Make template models only store real data, and make the instanced models just reference it (don't copy textures, meshes, etc)
 // FIXME: Make template textures added to their own map so they can be reused.
 // FIXME: Make dynamic/static models that can each be rotated/translated (dynamically or statically). Then make updateposition functions, etc.
 
