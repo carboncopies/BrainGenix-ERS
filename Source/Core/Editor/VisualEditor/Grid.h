@@ -10,6 +10,14 @@
 
 #pragma once
 
+// Standard Libraries (BG convention: use <> instead of "")
+
+// Third-Party Libraries (BG convention: use <> instead of "")
+#include <glad/glad.h>
+
+// Internal Libraries (BG convention: use <> instead of "")
+
+
 /**
  * @brief This function draws a grid on the screen with the given size and scale.
  * 
