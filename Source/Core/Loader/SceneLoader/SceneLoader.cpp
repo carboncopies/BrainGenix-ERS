@@ -105,26 +105,17 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
                 Model.GammaCorrection = TemplateModels_[AssetPath].GammaCorrection;
                 Model.HasTexturesLoaded = TemplateModels_[AssetPath].HasTexturesLoaded;
 
-
-                // Copy In Texture References
-                for (int i = 0; i < TemplateModels_[AssetPath].Textures_Loaded.size(); i++) {
-
-                    ERS_OBJECT_TEXTURE_2D Texture;
-                    Texture.ID = TemplateModels_[AssetPath].Textures_Loaded[i].ID;
-                    Texture.Type = TemplateModels_[AssetPath].Textures_Loaded[i].Type;
-                    Texture.Path = TemplateModels_[AssetPath].Textures_Loaded[i].Path;
-
-                    Model.Textures_Loaded.push_back(Texture);
-
-                }
+                // Copy Texture References
+                Model.Textures_Loaded = TemplateModels_[AssetPath].Textures_Loaded;
 
                 // Copy In Mesh References
                 for (int i = 0; i < TemplateModels_[AssetPath].Meshes.size(); i++) {
 
-                    std::vector<ERS_OBJECT_VERTEX> Vertices;
-                    std::vector<unsigned int> Indices;
+                    std::vector<ERS_OBJECT_VERTEX> Vertices = TemplateModels_[AssetPath].Meshes[i].Vertices;
+                    std::vector<unsigned int> Indices = TemplateModels_[AssetPath].Meshes[i].Indices;
+                    std::vector<ERS_OBJECT_TEXTURE_2D> Textures = TemplateModels_[AssetPath].Textures_Loaded;
 
-                    ERS_OBJECT_MESH Mesh(Vertices, Indices, Model.Textures_Loaded);
+                    ERS_OBJECT_MESH Mesh(Vertices, Indices, Textures);
                     Mesh.VAO = TemplateModels_[AssetPath].Meshes[i].VAO;
 
 
