@@ -38,6 +38,9 @@ class SceneLoader{
         LoggerClass *Logger_; /**<Contains A SceneLoader Class Instance*/
         ModelLoader *ModelLoader_; /**<Contians A ModelLoader Class Pointer*/
 
+        // Templates
+        std::map<std::string, ERS_OBJECT_MODEL> TemplateModels_; /**<Template Map Used to Store Models In Original LocRotScale*/
+
 
     public:
     

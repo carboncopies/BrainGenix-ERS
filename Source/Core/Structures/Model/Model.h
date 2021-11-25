@@ -40,9 +40,9 @@ struct ERS_OBJECT_MODEL {
     bool HasTexturesLoaded = false;
 
     // Model Metadata
-    glm::vec3 ModelPosition;
-    glm::vec3 ModelRotation;
-    glm::vec3 ModelScale;
+    glm::vec3 ModelPosition = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3 ModelRotation = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3 ModelScale = glm::vec3(1.0f, 1.0f, 1.0f);
 
     bool IsTemplateModel = false; /**<This indicates if transformations are allowd. Template models are copied and transformed for instances, and thus cannot be transformed.*/
 

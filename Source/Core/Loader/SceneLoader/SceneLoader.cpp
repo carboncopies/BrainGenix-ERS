@@ -54,6 +54,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
         SceneItems.push_back(it->second);
     }
 
+    
     // Iterate Through Vector To Add Each Asset To Loading Queue Of Requested Type
     for (long i = 0; i < SceneDataNode.size(); i++) {
 
@@ -84,34 +85,35 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
 
             // Check If Model Already Loaded
             int ModelIndex;
-            bool ModelNeedsLoading = true;
+
 
             
-            for (ModelIndex = 0; ModelIndex < Scene.Models.size(); ModelIndex++) {
-                if (Scene.Models[ModelIndex].AssetPath_ == AssetPath) {
+
+            if (TemplateModels_.count(AssetPath) != 0)       
 
                     // Copy In Already Loaded Model
-                    ERS_OBJECT_MODEL Model = Scene.Models[ModelIndex];
+                    ERS_OBJECT_MODEL Model = TemplateModels_[AssetPath];
                     Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
+                    Model.ApplyTransformations();
                     Scene.Models.push_back(Model);
 
                     // Log Duplicate
                     Logger_->Log(std::string(std::string("Skipping Model Loading, Already Loaded For: ") + AssetPath).c_str(), 3);
 
-                    // Skip Re-Loading Model
-                    ModelNeedsLoading = false;
 
-                    // Break Loop
-                    break;
+            } else { // Load Model And Add To Template
 
-                }
-
-            }
-
-            // Load Model
-            if (ModelNeedsLoading) {
+                // Load Model 
                 ERS_OBJECT_MODEL Model = ModelLoader_->LoadModelFromFile(AssetPath.c_str(), FlipTextures);
+
+                // Copy To Template Map
+                Model.IsTemplateModel = true;
+                TemplateModels_.insert({AssetPath, Model});
+
+                // Add Instance To Models Vector
+                Model.IsTemplateModel = false;
                 Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
+                Model.ApplyTransformations();
                 Scene.Models.push_back(Model);
             }
 
