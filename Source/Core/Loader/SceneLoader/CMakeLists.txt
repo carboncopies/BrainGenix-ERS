@@ -25,7 +25,7 @@ target_link_libraries(SceneLoader
     Model
     ModelLoader
     Scene
-    Mesh
+    Meshes
     Textures
     )
 
