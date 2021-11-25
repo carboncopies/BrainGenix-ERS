@@ -82,6 +82,14 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
             float ScaleY = SceneDataNode[i]["AssetScaleY"].as<double>();
             float ScaleZ = SceneDataNode[i]["AssetScaleZ"].as<double>();
 
+            // Check If Model Already Loaded
+            int ModelIndex;
+            
+            for (ModelIndex = 0; ModelIndex < Scene.Models.size(); ModelIndex++) {
+                std::cout<<Scene.Models[ModelIndex].Directory<<std::endl;
+
+            }
+
             // Load Model
             ERS_OBJECT_MODEL Model = ModelLoader_->LoadModelFromFile(AssetPath.c_str(), FlipTextures);
             Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));

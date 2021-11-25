@@ -1,0 +1,32 @@
+#########################
+# BrainGenix::ERS Scene #
+#########################
+
+SceneName: "Living Room"
+SceneFormatVersion: 0
+SceneData:
+
+  0: # First Asset (Make As Many Of These As Needed)
+
+    # Set Asset Metadata  
+    AssetName: "LR Scene"
+    AssetType: "Model"
+    AssetPath: "Assets/Model1/scene.gltf"
+
+    # Model Specific Parameters
+    FlipTextures: True
+
+    # Set Asset Position
+    AssetPositionX: 0.0
+    AssetPositionY: 0.0
+    AssetPositionZ: 0.0
+
+    # Set Asset Rotation
+    AssetRotationX: 0.0
+    AssetRotationY: 0.0
+    AssetRotationZ: 270.0
+
+    # Set Asset Scale
+    AssetScaleX: 0.25
+    AssetScaleY: 0.25
+    AssetScaleZ: 0.25
