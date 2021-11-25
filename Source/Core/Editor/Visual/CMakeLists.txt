@@ -17,11 +17,6 @@ add_library(VisualEditor
 
 # Link 3rd Party Libs
 target_link_libraries(VisualEditor
-    yaml-cpp
-    glm
-    glad
-    glfw
-    FreeImage
     )
 
 # Link Internal Libs
