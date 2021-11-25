@@ -178,6 +178,10 @@ ERS_OBJECT_MESH ModelLoader::ProcessMesh(aiMesh *Mesh, const aiScene *Scene) {
     std::vector<ERS_OBJECT_TEXTURE_2D> HeightMaps = LoadMaterialTextures(Material, aiTextureType_AMBIENT, "texture_height");
     Textures.insert(Textures.end(), HeightMaps.begin(), HeightMaps.end());
 
+    for (int i = 0; i < Textures.size(); i++) {
+        std::cout<<Textures[i].Type<<std::endl;
+    }
+
     // Mesh Object
     return ERS_OBJECT_MESH(Vertices, Indices, Textures);
 
