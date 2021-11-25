@@ -86,7 +86,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
             int ModelIndex;
             
             for (ModelIndex = 0; ModelIndex < Scene.Models.size(); ModelIndex++) {
-                std::cout<<Scene.Models[ModelIndex].Directory<<std::endl;
+                std::cout<<Scene.Models[ModelIndex].AssetPath_<<std::endl;
 
             }
 
