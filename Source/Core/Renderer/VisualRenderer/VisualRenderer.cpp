@@ -210,7 +210,7 @@ void VisualRenderer::UpdateLoop() {
     Shader_.SetMat4("view", view);
 
     // Draw Grid
-    DrawGrid();
+    //DrawGrid();
 
     // Draw Models
     SceneManager_->Render(&Shader_);
