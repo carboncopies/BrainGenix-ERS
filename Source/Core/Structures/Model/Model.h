@@ -39,6 +39,11 @@ struct ERS_OBJECT_MODEL {
     bool GammaCorrection = false;
     bool HasTexturesLoaded = false;
 
+    // Model Metadata
+    glm::vec3 ModelPosition;
+    glm::vec3 ModelRotation;
+    glm::vec3 ModelScale;
+
 
     // Model Position Information
     glm::mat4 ModelLocRotScale_ = glm::mat4(1.0f);
@@ -46,7 +51,7 @@ struct ERS_OBJECT_MODEL {
 
     // Set The Position
     /**
-     * @brief Set the Position object (Overloaded). Accepts X,Y,Z Floats.
+     * @brief Set the Position object (Overloaded). Accepts X,Y,Z Floats. Remember to Call ApplyTrsnformations When Ready.
      * 
      * @param X 
      * @param Y 
@@ -54,7 +59,7 @@ struct ERS_OBJECT_MODEL {
      */
     void SetPosition(double X, double Y, double Z);
     /**
-     * @brief Set the Position object (Overloaded). Accepts glm::vec3(x,y,z).
+     * @brief Set the Position object (Overloaded). Accepts glm::vec3(x,y,z). Remember to Call ApplyTrsnformations When Ready.
      * 
      * @param Position 
      */
@@ -63,7 +68,7 @@ struct ERS_OBJECT_MODEL {
 
     // Set Rotation
     /**
-     * @brief Set the Rotation object (OVerloaded). Accepts X,Y,Z Floats.
+     * @brief Set the Rotation object (OVerloaded). Accepts X,Y,Z Floats. Remember to Call ApplyTrsnformations When Ready.
      * 
      * @param X 
      * @param Y 
@@ -71,7 +76,7 @@ struct ERS_OBJECT_MODEL {
      */
     void SetRotation(double X, double Y, double Z);
     /**
-     * @brief Set the Rotation object (Overloaded). Accepts glm::vec3(x,y,z).
+     * @brief Set the Rotation object (Overloaded). Accepts glm::vec3(x,y,z). Remember to Call ApplyTrsnformations When Ready.
      * 
      * @param Rotation 
      */
@@ -80,7 +85,7 @@ struct ERS_OBJECT_MODEL {
 
     // Set Scale
     /**
-     * @brief Set the Scale object (OVerloaded). Accepts X,Y,Z Floats.
+     * @brief Set the Scale object (OVerloaded). Accepts X,Y,Z Floats. Remember to Call ApplyTrsnformations When Ready.
      * 
      * @param X 
      * @param Y 
@@ -88,7 +93,7 @@ struct ERS_OBJECT_MODEL {
      */
     void SetScale(double X, double Y, double Z);
     /**
-     * @brief Set the Scale object (Overloaded). Accepts glm::vec3(x,y,z).
+     * @brief Set the Scale object (Overloaded). Accepts glm::vec3(x,y,z). Remember to Call ApplyTrsnformations When Ready.
      * 
      * @param Scale 
      */
@@ -97,7 +102,7 @@ struct ERS_OBJECT_MODEL {
 
     // Set LocRotScale
     /**
-     * @brief Set the Loc Rot Scale object (Overloaded) Sets the location, rotation, and scale by taking three doubles for each category. (XYZ).
+     * @brief Set the Loc Rot Scale object (Overloaded) Sets the location, rotation, and scale by taking three doubles for each category. (XYZ). Remember to Call ApplyTrsnformations When Ready.
      * 
      * @param LocX 
      * @param LocY 
@@ -111,7 +116,7 @@ struct ERS_OBJECT_MODEL {
      */
     void SetLocRotScale(double LocX, double LocY, double LocZ, double RotX, double RotY, double RotZ, double ScaleX, double ScaleY, double ScaleZ);
     /**
-     * @brief Set the Loc Rot Scale object (Overloaded). Sets the location, rotation, and scale by taking three glm::vec3 variables for positiom, rotation, scale.
+     * @brief Set the Loc Rot Scale object (Overloaded). Sets the location, rotation, and scale by taking three glm::vec3 variables for positiom, rotation, scale. Remember to Call ApplyTrsnformations When Ready.
      * 
      * @param Position 
      * @param Rotation 
@@ -119,11 +124,25 @@ struct ERS_OBJECT_MODEL {
      */
     void SetLocRotScale(glm::vec3 Position, glm::vec3 Rotation, glm::vec3 Scale);
 
+    /**
+     * @brief Applies Transformatins Set By Using the Set (Loc/Rot/Scale) Methods.
+     * 
+     */
+    void ApplyTransformations();
 
-    // Get Mat4
+
+    /**
+     * @brief Get the Mat 4 object
+     * 
+     * @return glm::mat4 
+     */
     glm::mat4 GetMat4();
 
-    // Draw Model
+    /**
+     * @brief Draw Model Using Shader
+     * 
+     * @param Shader 
+     */
     void Draw(ERS_OBJECT_SHADER &Shader);
 
 

@@ -30,14 +30,14 @@ void ERS_OBJECT_MODEL::SetPosition(double X, double Y, double Z) {
     glm::vec3 Position = glm::vec3(X, Y, Z);
 
     // Set Position to Pos
-    ModelLocRotScale_ = glm::translate(ModelLocRotScale_, Position);
+    ModelPosition = Position;
 
 }
 
 void ERS_OBJECT_MODEL::SetPosition(glm::vec3 Position) {
 
     // Set Position to Pos
-    ModelLocRotScale_ = glm::translate(ModelLocRotScale_, Position);
+    ModelPosition = Position;
 
 }
 
@@ -45,18 +45,14 @@ void ERS_OBJECT_MODEL::SetPosition(glm::vec3 Position) {
 void ERS_OBJECT_MODEL::SetRotation(double X, double Y, double Z) {
 
     // Set Rotation to Pos
-    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians((float)X), glm::vec3(1, 0, 0));
-    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians((float)Y), glm::vec3(0, 1, 0));
-    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians((float)Z), glm::vec3(0, 0, 1));
+    ModelRotation = glm::vec3((float)X, (float)Y, (float)Z);
 
 }
 
 void ERS_OBJECT_MODEL::SetRotation(glm::vec3 Rotation) {
 
     // Set Rotation to Pos
-    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(Rotation[0]), glm::vec3(1, 0, 0));
-    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(Rotation[1]), glm::vec3(0, 1, 0));
-    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(Rotation[2]), glm::vec3(0, 0, 1));
+    ModelRotation = Rotation;
 
 }
 
@@ -68,14 +64,14 @@ void ERS_OBJECT_MODEL::SetScale(double X, double Y, double Z) {
     glm::vec3 Scale = glm::vec3(X, Y, Z);
 
     // Set Scale to Pos
-    ModelLocRotScale_ = glm::scale(ModelLocRotScale_, Scale);
+    ModelScale = Scale;
 
 }
 
 void ERS_OBJECT_MODEL::SetScale(glm::vec3 Scale) {
 
     // Set Scale to Pos
-    ModelLocRotScale_ = glm::scale(ModelLocRotScale_, Scale);
+    ModelScale = Scale;
 
 }
 
@@ -89,11 +85,9 @@ void ERS_OBJECT_MODEL::SetLocRotScale(double LocX, double LocY, double LocZ, dou
     glm::vec3 Scale = glm::vec3(ScaleX, ScaleY, ScaleZ);
 
     // Set Vecs
-    ModelLocRotScale_ = glm::translate(ModelLocRotScale_, Position);
-    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(Rotation[0]), glm::vec3(1, 0, 0));
-    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(Rotation[1]), glm::vec3(0, 1, 0));
-    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(Rotation[2]), glm::vec3(0, 0, 1));
-    ModelLocRotScale_ = glm::scale(ModelLocRotScale_, Scale);
+    ModelPosition = Position;
+    ModelRotation = Rotation;
+    ModelScale = Scale;
 
 }
 
@@ -101,14 +95,24 @@ void ERS_OBJECT_MODEL::SetLocRotScale(double LocX, double LocY, double LocZ, dou
 void ERS_OBJECT_MODEL::SetLocRotScale(glm::vec3 Position, glm::vec3 Rotation, glm::vec3 Scale) {
 
     // Set Vecs
-    ModelLocRotScale_ = glm::translate(ModelLocRotScale_, Position);
-    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(Rotation[0]), glm::vec3(1, 0, 0));
-    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(Rotation[1]), glm::vec3(0, 1, 0));
-    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(Rotation[2]), glm::vec3(0, 0, 1));
-    ModelLocRotScale_ = glm::scale(ModelLocRotScale_, Scale);
+    ModelPosition = Position;
+    ModelRotation = Rotation;
+    ModelScale = Scale;
 
 }
 
+
+// Apply Transformations
+void ERS_OBJECT_MODEL::ApplyTransformations() {
+
+    // Apply Transforms
+    ModelLocRotScale_ = glm::translate(ModelLocRotScale_, ModelPosition);
+    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(ModelRotation[0]), glm::vec3(1, 0, 0));
+    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(ModelRotation[1]), glm::vec3(0, 1, 0));
+    ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(ModelRotation[2]), glm::vec3(0, 0, 1));
+    ModelLocRotScale_ = glm::scale(ModelLocRotScale_, ModelScale);
+
+}
 
 // Get Mat4
 glm::mat4 ERS_OBJECT_MODEL::GetMat4() {
