@@ -97,7 +97,6 @@ void ERS_OBJECT_MESH::Draw(ERS_OBJECT_SHADER* Shader) {
         else if(Name == "texture_height")
             Number = std::to_string(HeightHandel++);
 
-        std::cout<<Number<<"|"<<Name<<std::endl;
 
         // Set Sampler
         glUniform1i(glGetUniformLocation(Shader->ShaderProgram, (Name + Number).c_str()), i);
