@@ -12,7 +12,7 @@
 #include "Callbacks.h"
 
 
-static void FramebufferSizeCallback(GLFWwindow* /*Window*/, int Width, int Height) {
+void FramebufferSizeCallback(GLFWwindow* /*Window*/, int Width, int Height) {
 
     // Update Viewport
     glViewport(0, 0, Width, Height);
@@ -21,7 +21,7 @@ static void FramebufferSizeCallback(GLFWwindow* /*Window*/, int Width, int Heigh
 }
 
 
-static void MouseCallback(GLFWwindow* /*Window*/, double XPos, double YPos) {
+void MouseCallback(GLFWwindow* /*Window*/, double XPos, double YPos) {
 
     // Update Positions
     if (FirstMouse) {
@@ -48,7 +48,7 @@ static void MouseCallback(GLFWwindow* /*Window*/, double XPos, double YPos) {
 
 
 
-static void ScrollCallback(GLFWwindow* /*Window*/, double /*XOffset*/, double YOffset) {
+void ScrollCallback(GLFWwindow* /*Window*/, double /*XOffset*/, double YOffset) {
 
     Camera_.ProcessMouseScroll(YOffset);
 
