@@ -63,9 +63,6 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath, bool Flip
         return *Model_;
     }
 
-    // Set Model Directory (File Path/Reference String (DB Load))
-    Model_->Directory = std::string(AssetPath);
-
     // Process Root Node Recursively
     ProcessNode(Scene->mRootNode, Scene);
 
