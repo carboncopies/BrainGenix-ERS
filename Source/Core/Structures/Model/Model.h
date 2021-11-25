@@ -44,6 +44,8 @@ struct ERS_OBJECT_MODEL {
     glm::vec3 ModelRotation;
     glm::vec3 ModelScale;
 
+    bool IsTemplateModel = false; /**<This indicates if transformations are allowd. Template models are copied and transformed for instances, and thus cannot be transformed.*/
+
 
     // Model Position Information
     glm::mat4 ModelLocRotScale_ = glm::mat4(1.0f);
@@ -125,10 +127,12 @@ struct ERS_OBJECT_MODEL {
     void SetLocRotScale(glm::vec3 Position, glm::vec3 Rotation, glm::vec3 Scale);
 
     /**
-     * @brief Applies Transformatins Set By Using the Set (Loc/Rot/Scale) Methods.
-     * 
+     * @brief Applies Transformatins Set By Using the Set (Loc/Rot/Scale) Methods. Returns True on success and False on failure (caused if model is a template model).
+     *
+     * @return true 
+     * @return false 
      */
-    void ApplyTransformations();
+    bool ApplyTransformations();
 
 
     /**
