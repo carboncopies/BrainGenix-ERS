@@ -171,12 +171,12 @@ ERS_OBJECT_MESH ModelLoader::ProcessMesh(aiMesh *Mesh, const aiScene *Scene) {
     // // 2. specular maps
     // std::vector<ERS_OBJECT_TEXTURE_2D> SpecularMaps = LoadMaterialTextures(Material, aiTextureType_SPECULAR, "texture_specular");
     // Textures.insert(Textures.end(), SpecularMaps.begin(), SpecularMaps.end());
-    // // 3. normal maps
-    // std::vector<ERS_OBJECT_TEXTURE_2D> NormalMaps = LoadMaterialTextures(Material, aiTextureType_NORMALS, "texture_normal");
-    // Textures.insert(Textures.end(), NormalMaps.begin(), NormalMaps.end());
-    // // 4. height maps
-    // std::vector<ERS_OBJECT_TEXTURE_2D> HeightMaps = LoadMaterialTextures(Material, aiTextureType_AMBIENT, "texture_height");
-    // Textures.insert(Textures.end(), HeightMaps.begin(), HeightMaps.end());
+
+    std::vector<ERS_OBJECT_TEXTURE_2D> NormalMaps = LoadMaterialTextures(Material, aiTextureType_NORMALS, "texture_normal");
+    Textures.insert(Textures.end(), NormalMaps.begin(), NormalMaps.end());
+
+    std::vector<ERS_OBJECT_TEXTURE_2D> HeightMaps = LoadMaterialTextures(Material, aiTextureType_AMBIENT, "texture_height");
+    Textures.insert(Textures.end(), HeightMaps.begin(), HeightMaps.end());
 
     // Mesh Object
     return ERS_OBJECT_MESH(Vertices, Indices, Textures);
