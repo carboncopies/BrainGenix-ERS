@@ -116,6 +116,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
                     std::vector<ERS_OBJECT_TEXTURE_2D> Textures = TemplateModels_[AssetPath].Meshes[i].Textures;
 
                     ERS_OBJECT_MESH Mesh(Vertices, Indices, Textures);
+                    Mesh.NumberIndices = TemplateModels_[AssetPath].Meshes[i].NumberIndices;
                     Mesh.VAO = TemplateModels_[AssetPath].Meshes[i].VAO;
 
 
