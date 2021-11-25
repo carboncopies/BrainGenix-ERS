@@ -99,7 +99,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
                 Scene.Models.push_back(Model);
 
                 // Log Duplicate
-                Logger_->Log(std::string(std::string("Skipping Model Loading, Already Loaded For: ") + AssetPath).c_str(), 3);
+                Logger_->Log(std::string(std::string("Model Already In Template Buffer, Using Template For: ") + AssetPath).c_str(), 3);
 
 
             } else { // Load Model And Add To Template
