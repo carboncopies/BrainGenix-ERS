@@ -86,7 +86,12 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
             int ModelIndex;
             
             for (ModelIndex = 0; ModelIndex < Scene.Models.size(); ModelIndex++) {
-                std::cout<<Scene.Models[ModelIndex].AssetPath_<<std::endl;
+                if (Scene.Models[ModelIndex].AssetPath_ == AssetPath) {
+
+                    // Copy In Already Loaded Model
+                    Scene.Models.push_back(Scene.Models[ModelIndex]);
+
+                }
 
             }
 
