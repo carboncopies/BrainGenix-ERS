@@ -33,6 +33,7 @@
 #include <ModelLoader.h>
 #include <SceneManager.h>
 #include <SceneLoader.h>
+#include <Grid.h>
 
 
 class VisualRenderer {
