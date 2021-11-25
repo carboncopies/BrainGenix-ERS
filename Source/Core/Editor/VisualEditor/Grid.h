@@ -8,3 +8,15 @@
     Date Created: 2021-1-25
 */
 
+#pragma once
+
+/**
+ * @brief This function draws a grid on the screen with the given size and scale.
+ * 
+ * @param UnitSize Size of each "Cell" in the grid.
+ * @param GridSize Number of cells across the grid (edge to edge).
+ * @param GridPosX X position of grid.
+ * @param GridPosY Y position of grid.
+ * @param GridPosZ Z position of grid.
+ */
+void DrawGrid(float UnitSize = 1, int GridSize = 10, float GridPosX = 0.0f, float GridPosY = 0.0f, float GridPosZ = 0.0f);
