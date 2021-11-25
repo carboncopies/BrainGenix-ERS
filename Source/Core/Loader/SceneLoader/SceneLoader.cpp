@@ -111,8 +111,8 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
                 // Copy In Mesh References
                 for (int i = 0; i < TemplateModels_[AssetPath].Meshes.size(); i++) {
 
-                    std::vector<ERS_OBJECT_VERTEX> Vertices = TemplateModels_[AssetPath].Meshes[i].Vertices;
-                    std::vector<unsigned int> Indices = TemplateModels_[AssetPath].Meshes[i].Indices;
+                    std::vector<ERS_OBJECT_VERTEX> Vertices;
+                    std::vector<unsigned int> Indices;
                     std::vector<ERS_OBJECT_TEXTURE_2D> Textures = TemplateModels_[AssetPath].Meshes[i].Textures;
 
                     ERS_OBJECT_MESH Mesh(Vertices, Indices, Textures);
