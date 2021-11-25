@@ -89,16 +89,16 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
 
             
 
-            if (TemplateModels_.count(AssetPath) != 0)       
+            if (TemplateModels_.count(AssetPath) != 0) {
 
-                    // Copy In Already Loaded Model
-                    ERS_OBJECT_MODEL Model = TemplateModels_[AssetPath];
-                    Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
-                    Model.ApplyTransformations();
-                    Scene.Models.push_back(Model);
+                // Copy In Already Loaded Model
+                ERS_OBJECT_MODEL Model = TemplateModels_[AssetPath];
+                Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
+                Model.ApplyTransformations();
+                Scene.Models.push_back(Model);
 
-                    // Log Duplicate
-                    Logger_->Log(std::string(std::string("Skipping Model Loading, Already Loaded For: ") + AssetPath).c_str(), 3);
+                // Log Duplicate
+                Logger_->Log(std::string(std::string("Skipping Model Loading, Already Loaded For: ") + AssetPath).c_str(), 3);
 
 
             } else { // Load Model And Add To Template
