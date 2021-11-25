@@ -55,7 +55,7 @@ bool SceneManager::AddScene(ERS_OBJECT_SCENE Scene) {
 }
 
 // Render All Models In Buffer
-void SceneManager::Render(ERS_OBJECT_SHADER Shader) {
+void SceneManager::Render(ERS_OBJECT_SHADER* Shader) {
     
     // Iterate Through Models
     for (long i = 0; i < Scenes_[ActiveScene_].Models.size(); i++) {
@@ -64,7 +64,7 @@ void SceneManager::Render(ERS_OBJECT_SHADER Shader) {
         ERS_OBJECT_MODEL *Model = &Scenes_[ActiveScene_].Models[i];
 
         // Set Shader Pointer
-        Shader.SetMat4("model", Model->GetMat4());
+        Shader->SetMat4("model", Model->GetMat4());
 
         // Call Draw
         Model->Draw(Shader);

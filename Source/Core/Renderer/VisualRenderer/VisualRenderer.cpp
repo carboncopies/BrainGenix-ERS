@@ -210,7 +210,7 @@ void VisualRenderer::UpdateLoop() {
     Shader_.SetMat4("view", view);
 
 
-    SceneManager_->Render(Shader_);
+    SceneManager_->Render(&Shader_);
 
 
     // Update Window Stuff

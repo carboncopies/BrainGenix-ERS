@@ -213,6 +213,9 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(aiMaterial 
 
             ERS_OBJECT_TEXTURE_2D Texture = TextureLoader_->LoadTexture(FilePath.c_str(), FlipTextures_);
 
+            // Set Texture Type
+            Texture.Type = TypeName;
+
             Textures.push_back(Texture);
             Model_->Textures_Loaded.push_back(Texture);
 

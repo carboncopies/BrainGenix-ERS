@@ -72,7 +72,7 @@ void ERS_OBJECT_MESH::SetupMesh() {
 }
 
 // Draw The Mesh
-void ERS_OBJECT_MESH::Draw(ERS_OBJECT_SHADER &Shader) {
+void ERS_OBJECT_MESH::Draw(ERS_OBJECT_SHADER* Shader) {
 
     // Bind To OpenGL Handels
     unsigned int DiffuseHandel = 1;
@@ -97,10 +97,10 @@ void ERS_OBJECT_MESH::Draw(ERS_OBJECT_SHADER &Shader) {
         else if(Name == "texture_height")
             Number = std::to_string(HeightHandel++);
 
-        std::cout<<Number<<std::endl;
+        std::cout<<Number<<"|"<<Name<<std::endl;
 
         // Set Sampler
-        glUniform1i(glGetUniformLocation(Shader.ShaderProgram, (Name + Number).c_str()), i);
+        glUniform1i(glGetUniformLocation(Shader->ShaderProgram, (Name + Number).c_str()), i);
         
         // Bind Texture
         glBindTexture(GL_TEXTURE_2D, Textures[i].ID);

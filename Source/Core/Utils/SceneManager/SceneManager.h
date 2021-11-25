@@ -85,6 +85,6 @@ class SceneManager{
          * 
          * @param Shader 
          */
-        void Render(ERS_OBJECT_SHADER Shader);
+        void Render(ERS_OBJECT_SHADER* Shader);
 
 };
