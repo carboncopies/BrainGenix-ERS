@@ -26,8 +26,6 @@ target_link_libraries(VisualEditor
 
 # Link Internal Libs
 target_link_libraries(VisualEditor
-    NoClip
-    LoggingSystem
     )
 
 target_include_directories(VisualEditor PUBLIC ./)
