@@ -66,6 +66,8 @@ void ERS_OBJECT_MESH::SetupMesh() {
     glBindVertexArray(0);
 
 
+    // Set NumberIndices
+    NumberIndices = Indices.size();
 
 }
 
@@ -106,7 +108,7 @@ void ERS_OBJECT_MESH::Draw(ERS_OBJECT_SHADER &Shader) {
 
     // Draw Mesh
     glBindVertexArray(VAO);
-    glDrawElements(GL_TRIANGLES, Indices.size(), GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, NumberIndices, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 
     // Set Back To Default

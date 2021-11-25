@@ -41,7 +41,8 @@ class ERS_OBJECT_MESH {
         std::vector<ERS_OBJECT_VERTEX> Vertices;
         std::vector<unsigned int> Indices;
         std::vector<ERS_OBJECT_TEXTURE_2D> Textures;
-
+        long NumberIndices;
+        
         // Setup OpenGL Handel
         unsigned int VAO;
 
