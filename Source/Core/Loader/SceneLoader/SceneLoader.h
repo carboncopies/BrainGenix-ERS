@@ -22,6 +22,8 @@
 #include <Model.h>
 #include <ModelLoader.h>
 #include <Scene.h>
+#include <Mesh.h>
+#include <2DTexture.h>
 
 
 #include <ShaderManager.h>

@@ -25,6 +25,8 @@ target_link_libraries(SceneLoader
     Model
     ModelLoader
     Scene
+    Mesh
+    Textures
     )
 
 target_include_directories(SceneLoader PUBLIC ./)

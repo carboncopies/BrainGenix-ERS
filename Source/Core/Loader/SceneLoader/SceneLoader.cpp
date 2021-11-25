@@ -96,11 +96,47 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
 
             if (TemplateModels_.count(AssetPath) != 0) {
 
-                // Copy In Already Loaded Model
-                ERS_OBJECT_MODEL Model = TemplateModels_[AssetPath];
-                Model.IsTemplateModel = false;
+                // Create New Model Struct
+                ERS_OBJECT_MODEL Model;
+                
+                // Copy In Parameters
+                Model.Directory = TemplateModels_[AssetPath].Directory;
+                Model.AssetPath_ = TemplateModels_[AssetPath].AssetPath_;
+                Model.GammaCorrection = TemplateModels_[AssetPath].GammaCorrection;
+                Model.HasTexturesLoaded = TemplateModels_[AssetPath].HasTexturesLoaded;
+
+
+                // Copy In Texture References
+                for (int i = 0; i < TemplateModels_[AssetPath].Textures_Loaded.size(); i++) {
+
+                    ERS_OBJECT_TEXTURE_2D Texture;
+                    Texture.ID = TemplateModels_[AssetPath].Textures_Loaded[i].ID;
+
+                    Model.Textures_Loaded.push_back(Texture);
+
+                }
+
+                // Copy In Mesh References
+                for (int i = 0; i < TemplateModels_[AssetPath].Meshes.size(); i++) {
+
+                    std::vector<ERS_OBJECT_VERTEX> Vertices;
+                    std::vector<unsigned int> Indices;
+
+                    ERS_OBJECT_MESH Mesh(Vertices, Indices, Model.Textures_Loaded);
+                    Mesh.VAO = TemplateModels_[AssetPath].Meshes[i].VAO;
+
+
+                    Model.Meshes.push_back(Mesh);
+
+                }
+
+
+
+                // Apply Transformations
                 Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
                 Model.ApplyTransformations();
+
+                // Append To Models Vector
                 Scene.Models.push_back(Model);
 
                 // Log Duplicate
