@@ -83,6 +83,9 @@ void ERS_OBJECT_MESH::Draw(ERS_OBJECT_SHADER* Shader) {
     // Iterate Through Textures
     for (unsigned int i = 0; i < Textures.size(); i++) {
 
+        // Set To Proper Texture
+        glActiveTexture(GL_TEXTURE0 + i);
+
         // Get Texture Number
         std::string Number;
         std::string Name = Textures[i].Type;
