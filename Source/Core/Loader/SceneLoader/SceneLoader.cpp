@@ -94,7 +94,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
                     Scene.Models.push_back(Scene.Models[ModelIndex]);
 
                     // Log Duplicate
-                    Logger_->Log(std::string(std::string("Skipping Model Loading, Already Loaded For: ") + AssetPath).c_str(), 4);
+                    Logger_->Log(std::string(std::string("Skipping Model Loading, Already Loaded For: ") + AssetPath).c_str(), 3);
 
                     // Skip Re-Loading Model
                     ModelNeedsLoading = false;
