@@ -27,4 +27,4 @@
  * @param GridPosY Y position of grid.
  * @param GridPosZ Z position of grid.
  */
-void DrawGrid(float UnitSize = 1, int GridSize = 10, float GridPosX = 0.0f, float GridPosY = 0.0f, float GridPosZ = 0.0f);
+void DrawGrid(float UnitSize = 1.0f, int GridSize = 10, float GridPosX = 0.0f, float GridPosY = 0.0f, float GridPosZ = 0.0f);
