@@ -111,6 +111,8 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
 
                     ERS_OBJECT_TEXTURE_2D Texture;
                     Texture.ID = TemplateModels_[AssetPath].Textures_Loaded[i].ID;
+                    Texture.Type = TemplateModels_[AssetPath].Textures_Loaded[i].Type;
+                    Texture.Path = TemplateModels_[AssetPath].Textures_Loaded[i].Path;
 
                     Model.Textures_Loaded.push_back(Texture);
 
