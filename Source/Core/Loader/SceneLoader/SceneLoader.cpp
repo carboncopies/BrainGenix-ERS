@@ -84,6 +84,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
 
             // Check If Model Already Loaded
             int ModelIndex;
+            bool ModelNeedsLoading = true;
 
             
             for (ModelIndex = 0; ModelIndex < Scene.Models.size(); ModelIndex++) {
@@ -95,6 +96,9 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
                     // Log Duplicate
                     Logger_->Log(std::string(std::string("Skipping Model Loading, Already Loaded For: ") + AssetPath).c_str(), 4);
 
+                    // Skip Re-Loading Model
+                    ModelNeedsLoading = false;
+
                     // Break Loop
                     break;
 
@@ -103,9 +107,11 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
             }
 
             // Load Model
-            ERS_OBJECT_MODEL Model = ModelLoader_->LoadModelFromFile(AssetPath.c_str(), FlipTextures);
-            Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
-            Scene.Models.push_back(Model);
+            if (ModelNeedsLoading) {
+                ERS_OBJECT_MODEL Model = ModelLoader_->LoadModelFromFile(AssetPath.c_str(), FlipTextures);
+                Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
+                Scene.Models.push_back(Model);
+            }
 
         }
 
