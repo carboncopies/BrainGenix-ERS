@@ -34,7 +34,7 @@ struct ERS_OBJECT_MODEL {
     std::vector<ERS_OBJECT_TEXTURE_2D> Textures_Loaded;
     std::string Directory;
 
-    const char* AssetPath_;
+    std::string AssetPath_;
 
     bool GammaCorrection = false;
     bool HasTexturesLoaded = false;

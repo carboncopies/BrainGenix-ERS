@@ -44,7 +44,7 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath, bool Flip
     FlipTextures_ = FlipTextures;
 
     // Copy AssetPath
-    Model_->AssetPath_ = AssetPath;
+    Model_->AssetPath_ = std::string(AssetPath);
 
     // Generate File Path
     std::string FilePath = std::string(Model_->AssetPath_);
