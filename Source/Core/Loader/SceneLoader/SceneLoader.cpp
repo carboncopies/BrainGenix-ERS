@@ -92,6 +92,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
 
                     // Copy In Already Loaded Model
                     ERS_OBJECT_MODEL Model = Scene.Models[ModelIndex];
+                    Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
                     Scene.Models.push_back(Model);
 
                     // Log Duplicate
