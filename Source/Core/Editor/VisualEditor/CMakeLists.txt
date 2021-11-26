@@ -19,7 +19,9 @@ add_library(VisualEditor
 
 # Link 3rd Party Libs
 target_link_libraries(VisualEditor
-
+    glad
+    glfw
+    ImGui
     )
 
 # Link Internal Libs

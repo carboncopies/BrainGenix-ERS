@@ -38,6 +38,10 @@ disable_target_warnings(glad)
 add_subdirectory(${LIB_DIR}/glm)
 include_directories(${LIB_DIR}/glm)
 
+# Add DearImGUI Library (Not Header Only)
+add_subdirectory(${LIB_DIR}/imgui)
+
+
 # Add GLFW Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/glfw)
 disable_target_warnings(glfw)
@@ -131,6 +135,7 @@ target_link_libraries(${PROJECT_NAME}
   glfw
   FreeImage
   assimp
+  ImGui
 #   meshoptimizer
 #   backward
 #   CEGUIBase-0

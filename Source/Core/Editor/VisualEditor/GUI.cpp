@@ -12,15 +12,14 @@
 
 GUISystem::GUISystem(LoggerClass* Logger) {
 
-    // Bootstrap CEGUI::System with an OpenGL3Renderer object that uses the
-    // current GL viewport, the DefaultResourceProvider, and the default
-    // ImageCodec.
-    //
-    // NB: Your OpenGL context must already be initialised when you call this; CEGUI
-    // will not create the OpenGL context itself. Nothing special has to be done to
-    // choose between desktop OpenGL and OpenGL ES: the type is automatically
-    // determined by the type of the current OpenGL context.
-    CEGUI::OpenGL3Renderer& myRenderer = CEGUI::OpenGL3Renderer::bootstrapSystem();
+    // Create Local Pointer
+    Logger_ = Logger;
+
+    // Initialize ImGui
+    Logger_->Log("Initializing DearImGui GUI Library", 5);
+
+    IMGUI_CHECKVERSION();
+    //ImGui::CreateContext();  
 
 
 }

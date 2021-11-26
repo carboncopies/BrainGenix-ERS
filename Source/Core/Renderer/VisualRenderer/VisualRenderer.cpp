@@ -126,6 +126,8 @@ void VisualRenderer::InitializeGLFW() {
 
 void VisualRenderer::InitializeOpenGL() {
 
+    // Setup GUI
+    GuiSystem_ = new GUISystem(Logger_);
 
     // Setup Viewport
     Logger_->Log("Read Configuration File For 'RenderWidth' Parameter", 1);
@@ -180,8 +182,7 @@ void VisualRenderer::InitializeOpenGL() {
     Shader_.MakeActive();
 
 
-    // Setup GUI
-    GuiSystem_ = new GUISystem(Logger_);
+
 
 
 }
