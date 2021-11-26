@@ -54,9 +54,14 @@ class GUISystem {
 
 
         /**
-         * @brief Draw Frame, Update GUI
+         * @brief Generate Frame REMEMBER TO CALL UPDATE FRAME AFTER THE CLEAR CALL.
+         * 
+         */
+        void UpdateGUI();
+
+        /**
+         * @brief Update Frame, make sure you've called updategui.
          * 
          */
         void UpdateFrame();
-
 };

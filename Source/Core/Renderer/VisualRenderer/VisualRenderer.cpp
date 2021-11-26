@@ -196,8 +196,11 @@ void VisualRenderer::UpdateLoop() {
     LastFrame = CurrentTime;
 
     // Process Window Input
+    glfwPollEvents();
     ProcessInput(Window_, Logger_, &Camera_, DeltaTime);
 
+    // Update GUI
+    GuiSystem_->UpdateFrame();
 
     // Rendering Commands Here
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -221,13 +224,15 @@ void VisualRenderer::UpdateLoop() {
     SceneManager_->Render(&Shader_);
 
 
+    // Update GUI Frame
+    GUISystem_->UpdateFrame();
+
+
     // Update Window Stuff
     glfwSwapBuffers(Window_);
-    glfwPollEvents();
 
 
-    // Update GUI
-    GuiSystem_->UpdateFrame();
+
 
 
     // Update Window Title With FPS Counter

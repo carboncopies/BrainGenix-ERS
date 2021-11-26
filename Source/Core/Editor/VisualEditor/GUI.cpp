@@ -49,8 +49,8 @@ GUISystem::~GUISystem() {
 
 }
 
-// Update Frame
-void GUISystem::UpdateFrame() {
+// Update GUI
+void GUISystem::UpdateGUI() {
 
 
     bool show_demo_window = true;
@@ -109,7 +109,13 @@ void GUISystem::UpdateFrame() {
 
     // Rendering
     ImGui::Render();
+
+
+}
+
+// Update Frame
+void GUISystem::UpdateFrame() {
+
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-
+    
 }
