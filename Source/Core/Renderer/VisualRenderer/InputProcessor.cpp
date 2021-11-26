@@ -29,7 +29,7 @@ InputProcessor::~InputProcessor() {
 
 
 // UpdateFramebuffer Function
-void InputProcesor::UpdateFramebuffer(GLFWwindow* Window) {
+void InputProcessor::UpdateFramebuffer(GLFWwindow* Window) {
 
     // Get Window Size
     int WindowX;
