@@ -50,12 +50,12 @@ void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
     glfwGetCursorPos(Window_, &MouseX, &MouseY);
 
     // Calculate Offset
-    double WindowX;
-    double WindowY;
-    glfwGetWindowFrameSize(Window_, WindowX, WindowY);
+    int WindowX;
+    int WindowY;
+    glfwGetWindowFrameSize(Window_, &WindowX, &WindowY);
 
-    double WindowCenterX = WindowX/2.0f;
-    double WindowCenterY = WindowY/2.0f;
+    double WindowCenterX = WindowX/2;
+    double WindowCenterY = WindowY/2;
 
     // Apply Offset
     MouseX -= WindowCenterX;
