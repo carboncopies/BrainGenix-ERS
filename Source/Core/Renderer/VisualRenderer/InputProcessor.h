@@ -76,6 +76,13 @@ class InputProcessor {
          */
         void UpdateMouse(bool WindowMouseCaptureEnabled);
         
+        /**
+         * @brief Process keyboard input
+         * 
+         * @param Logger_ 
+         * @param DeltaTime 
+         */
+        void ProcessKeyboardInput(LoggerClass *Logger_, float DeltaTime, bool WindowCaptureEnabled);
 
 
 

@@ -163,7 +163,7 @@ void VisualRenderer::UpdateLoop() {
     }
 
 
-    ProcessInput(Window_, Logger_, &Camera_, DeltaTime);
+    InputProcessor_->ProcessKeyboardInput(Logger_, DeltaTime, CaptureMouseCursor_);
     InputProcessor_->UpdateFramebuffer();
     InputProcessor_->UpdateMouse(CaptureMouseCursor_);
 

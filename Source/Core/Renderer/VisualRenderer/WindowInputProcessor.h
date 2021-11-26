@@ -20,4 +20,3 @@
 #include <NoClip.h>
 
 
-void ProcessInput(GLFWwindow* Window, LoggerClass *Logger_, ERS_OBJECT_CAMERA_NOCLIP *Camera, float DeltaTime);

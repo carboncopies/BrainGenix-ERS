@@ -61,6 +61,38 @@ void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
 }
 
 
+// Update Keyboard Input
+void InputProcessor::ProcessKeyboardInput(LoggerClass *Logger_, float DeltaTime, bool WindowCaptureEnabled) {
+
+
+    if (glfwGetKey(Window_, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+        Logger_->Log("Window Shutdown Invoked By Keyboard [ESC]", 2);
+        glfwSetWindowShouldClose(Window, true);
+    }
+
+
+    // Get Keyboard Input
+    if (WindowCaptureEnabled) {
+
+        if (glfwGetKey(Window_, GLFW_KEY_W) == GLFW_PRESS)
+            Camera_->ProcessKeyboard(FORWARD, DeltaTime);
+        if (glfwGetKey(Window_, GLFW_KEY_S) == GLFW_PRESS)
+            Camera_->ProcessKeyboard(BACKWARD, DeltaTime);
+        if (glfwGetKey(Window_, GLFW_KEY_A) == GLFW_PRESS)
+            Camera_->ProcessKeyboard(LEFT, DeltaTime);
+        if (glfwGetKey(Window_, GLFW_KEY_D) == GLFW_PRESS)
+            Camera_->ProcessKeyboard(RIGHT, DeltaTime);
+        if (glfwGetKey(Window_, GLFW_KEY_SPACE) == GLFW_PRESS)
+            Camera_->ProcessKeyboard(UP, DeltaTime);
+        if (glfwGetKey(Window_, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+            Camera_->ProcessKeyboard(DOWN, DeltaTime);
+
+    }
+
+}
+
+
+
 // Internal Callback Framebuffer
 void InputProcessor::FramebufferSizeCallback(int Width, int Height) {
 

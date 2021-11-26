@@ -10,27 +10,6 @@
 
 #include "WindowInputProcessor.h"
 
-void ProcessInput(GLFWwindow* Window, LoggerClass *Logger_, ERS_OBJECT_CAMERA_NOCLIP *Camera, float DeltaTime) {
-
-    if (glfwGetKey(Window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-        Logger_->Log("Window Shutdown Invoked By Keyboard [ESC]", 2);
-        glfwSetWindowShouldClose(Window, true);
-    }
-
-    if (glfwGetKey(Window, GLFW_KEY_W) == GLFW_PRESS)
-        Camera->ProcessKeyboard(FORWARD, DeltaTime);
-    if (glfwGetKey(Window, GLFW_KEY_S) == GLFW_PRESS)
-        Camera->ProcessKeyboard(BACKWARD, DeltaTime);
-    if (glfwGetKey(Window, GLFW_KEY_A) == GLFW_PRESS)
-        Camera->ProcessKeyboard(LEFT, DeltaTime);
-    if (glfwGetKey(Window, GLFW_KEY_D) == GLFW_PRESS)
-        Camera->ProcessKeyboard(RIGHT, DeltaTime);
-    if (glfwGetKey(Window, GLFW_KEY_SPACE) == GLFW_PRESS)
-        Camera->ProcessKeyboard(UP, DeltaTime);
-    if (glfwGetKey(Window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
-        Camera->ProcessKeyboard(DOWN, DeltaTime);
-
-}
 
 
 
