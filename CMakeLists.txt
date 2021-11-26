@@ -36,7 +36,6 @@ disable_target_warnings(glad)
 
 # Add GLM Library (Header Only)
 include_directories(${LIB_DIR}/glm)
-# add_subdirectory(${LIB_DIR}/glm)
 
 # Add GLFW Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/glfw)
@@ -53,6 +52,9 @@ disable_target_warnings(assimp)
 # Add Backward Library (Header Only)
 add_subdirectory(${LIB_DIR}/backward)
 
+# Add ZLIB Library
+add_subdirectory(${LIB_DIR}/zlib)
+disable_target_warnings(zlib)
 
 
 # # # Add Bullet Library (Not Header Only)
