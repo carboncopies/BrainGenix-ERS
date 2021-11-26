@@ -35,6 +35,7 @@ add_subdirectory(${LIB_DIR}/glad)
 disable_target_warnings(glad)
 
 # Add GLM Library (Header Only)
+add_subdirectory(${LIB_DIR}/glm)
 include_directories(${LIB_DIR}/glm)
 
 # Add GLFW Library (Not Header Only)
