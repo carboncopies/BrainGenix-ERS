@@ -122,6 +122,7 @@ add_subdirectory(${LIB_DIR}/backward)
 
 
 # Get CEGUI Package
+set(CEGUI_INCLUDE_DIR ${LIB_DIR}/cegui/cegui/include/CEGUI)
 set(CMAKE_MODULE_PATH ${LIB_DIR}/FindCEGUI/src)
 find_package(CEGUI REQUIRED)
 if (CEGUI_FOUND)
