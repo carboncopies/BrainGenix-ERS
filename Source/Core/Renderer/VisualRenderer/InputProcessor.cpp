@@ -49,6 +49,18 @@ void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
     double MouseY;
     glfwGetCursorPos(Window_, &MouseX, &MouseY);
 
+    // Calculate Offset
+    double WindowX;
+    double WindowY;
+    glfwGetWindowFrameSize(Window_, WindowX, WindowY);
+
+    double WindowCenterX = WindowX/2.0f;
+    double WindowCenterY = WindowY/2.0f;
+
+    // Apply Offset
+    MouseX -= WindowCenterX;
+    MouseY -= WindowCenterY;
+
     // Call Update
     if (WindowMouseCaptureEnabled) {
         MouseCallback(MouseX, MouseY);
