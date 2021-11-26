@@ -16,7 +16,7 @@
 #include <CEGUI/RendererModules/OpenGL/GL3Renderer.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-
+#include <LoggingSystem.h>
 
 /**
  * @brief Implements the ERS gui system.
