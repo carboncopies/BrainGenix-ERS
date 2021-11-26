@@ -44,7 +44,7 @@ class GUISystem {
          * 
          * @param Logger 
          */
-        GUISystem(LoggerClass* Logger, GLFWWindow* Window);
+        GUISystem(LoggerClass* Logger, GLFWwindow* Window);
 
         /**
          * @brief Destroy the Gui System object

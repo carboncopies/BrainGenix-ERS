@@ -10,7 +10,7 @@
 
 #include <GUI.h>
 
-GUISystem::GUISystem(LoggerClass* Logger, GLFWWindow* Window) {
+GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window) {
 
     // Create Local Pointer
     Logger_ = Logger;
