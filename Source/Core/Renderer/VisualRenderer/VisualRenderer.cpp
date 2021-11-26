@@ -127,7 +127,7 @@ void VisualRenderer::InitializeGLFW() {
 void VisualRenderer::InitializeOpenGL() {
 
     // Setup GUI
-    GuiSystem_ = new GUISystem(Logger_);
+    GuiSystem_ = new GUISystem(Logger_, Window_);
 
     // Setup Viewport
     Logger_->Log("Read Configuration File For 'RenderWidth' Parameter", 1);
