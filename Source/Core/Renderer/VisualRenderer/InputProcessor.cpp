@@ -67,7 +67,7 @@ void InputProcessor::ProcessKeyboardInput(LoggerClass *Logger_, float DeltaTime,
 
     if (glfwGetKey(Window_, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
         Logger_->Log("Window Shutdown Invoked By Keyboard [ESC]", 2);
-        glfwSetWindowShouldClose(Window, true);
+        glfwSetWindowShouldClose(Window_, true);
     }
 
 

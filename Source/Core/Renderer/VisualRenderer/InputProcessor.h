@@ -18,6 +18,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <NoClip.h>
+#include <LoggingSystem.h>
 
 
 /**
