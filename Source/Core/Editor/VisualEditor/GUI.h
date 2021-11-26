@@ -52,4 +52,11 @@ class GUISystem {
          */
         ~GUISystem();
 
+
+        /**
+         * @brief Draw Frame, Update GUI
+         * 
+         */
+        void UpdateFrame();
+
 };
