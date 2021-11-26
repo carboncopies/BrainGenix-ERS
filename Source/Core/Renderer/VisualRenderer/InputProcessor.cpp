@@ -61,10 +61,6 @@ void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
 }
 
 
-
-
-
-
 // Internal Callback Framebuffer
 void InputProcessor::FramebufferSizeCallback(int Width, int Height) {
 
