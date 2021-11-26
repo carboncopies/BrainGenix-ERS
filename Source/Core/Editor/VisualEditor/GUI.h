@@ -13,8 +13,7 @@
 // Standard Libraries (BG convention: use <> instead of "")
 
 // Third-Party Libraries (BG convention: use <> instead of "")
-#include <CEGUI.h>
-//#include <CEGUI/RendererModules/OpenGL/GL3Renderer.h>
+#include <CEGUI/RendererModules/OpenGL/GL3Renderer.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 
