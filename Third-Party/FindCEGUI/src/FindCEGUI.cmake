@@ -35,6 +35,8 @@ else (CEGUI_LIBRARIES AND CEGUI_INCLUDE_DIRS)
             /usr/local/include/cegui-0
             /usr/local/include/cegui-0.7.6
             /usr/local/include/cegui-0.8.4
+            /usr/local/include/cegui-0.8.7
+            /usr/include/x86_64-linux-gnu/cegui-0.8.7/
             /opt/local/include
             /sw/include
     )
