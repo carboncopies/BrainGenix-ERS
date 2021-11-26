@@ -52,9 +52,7 @@ disable_target_warnings(assimp)
 # Add Backward Library (Header Only)
 add_subdirectory(${LIB_DIR}/backward)
 
-# Add ZLIB Library
-add_subdirectory(${LIB_DIR}/zlib)
-disable_target_warnings(zlib)
+
 
 
 # # # Add Bullet Library (Not Header Only)
