@@ -35,6 +35,7 @@
 #include <SceneLoader.h>
 #include <Grid.h>
 #include <GUI.h>
+#include <InputProcessor.h>
 
 
 class VisualRenderer {
@@ -54,14 +55,17 @@ class VisualRenderer {
         // Gui system instance
         GUISystem *GuiSystem_;
 
+        // Input Processor
+        InputProcessor *InputProcessor_; /**<Pointer to input processor instance*/
+
         // Control Values
         bool *SystemShouldRun_;
+        bool CaptureMouseCursor_;
 
 
         ERS_OBJECT_SHADER Shader_;
 
 
-        
 
 
 
@@ -82,6 +86,8 @@ class VisualRenderer {
         // Internal Functions
         void InitializeGLFW();
         void InitializeOpenGL();
+
+
 
     public:
 

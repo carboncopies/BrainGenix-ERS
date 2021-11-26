@@ -11,12 +11,14 @@ add_library(VisualRenderer
             "WindowInputProcessor.cpp"
             "Callbacks.cpp"
             "VisualRenderer.cpp"
+            "InputProcessor.cpp"
 
             # Add Header Files (.h)
             "ShaderManager.h"
             "WindowInputProcessor.h"
             "Callbacks.h"
             "VisualRenderer.h"
+            "InputProcessor.h"
 
             ${BACKWARD_ENABLE}
             )

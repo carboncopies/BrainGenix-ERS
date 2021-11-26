@@ -11,50 +11,7 @@
 #include <VisualRenderer.h>
 
 
-// FIX THIS LATER!!
-void FramebufferSizeCallback(GLFWwindow* /*Window*/, int Width, int Height) {
 
-    // Update Viewport
-    glViewport(0,0, Width, Height);
-    glScissor(0, 0, Width, Height);
-
-
-}
-
-
-void MouseCallback(GLFWwindow* /*Window*/, double XPos, double YPos) {
-
-    // Update Positions
-    if (FirstMouse) {
-
-        LastX = XPos;
-        LastY = YPos;
-
-        FirstMouse = false;
-
-    }
-
-    // Calculate Offsets
-    float XOffset = XPos - LastX;
-    float YOffset = YPos - LastY;
-
-    // Update Last Positions
-    LastX = XPos;
-    LastY = YPos;
-
-    // Process Camera Movement
-    Camera_.ProcessMouseMovement(XOffset, YOffset);
-
-}
-
-
-
-void ScrollCallback(GLFWwindow* /*Window*/, double /*XOffset*/, double YOffset) {
-
-    Camera_.ProcessMouseScroll(YOffset);
-
-}
-// END FIX !
 
 
 void ErrorCallback(int, const char* ErrorString) {
@@ -78,6 +35,9 @@ VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, LoggerClass *Lo
     // Initialize Systems
     Logger_->Log("Initializing GLFW", 5);
     InitializeGLFW();
+
+    Logger_->Log("Setting Up Window Input Processor", 5);
+    InputProcessor_ = new InputProcessor(Camera_, Window_);
 
     Logger_->Log("Initializing OpenGL", 5);
     InitializeOpenGL();
@@ -138,9 +98,9 @@ void VisualRenderer::InitializeOpenGL() {
     // Register Callback
     glfwMakeContextCurrent(Window_);
     //glfwSwapInterval(0);
-    glfwSetFramebufferSizeCallback(Window_, FramebufferSizeCallback);
-    glfwSetCursorPosCallback(Window_, MouseCallback);
-    glfwSetScrollCallback(Window_, ScrollCallback);
+
+    // Disable Mouse Capture By Default
+    CaptureMouseCursor_ = false;
 
     // Setup GLAD
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -194,7 +154,26 @@ void VisualRenderer::UpdateLoop() {
 
     // Process Window Input
     glfwPollEvents();
+
+    // Enable/Disable Mouse Capture
+    if (glfwGetMouseButton(Window_, 1) == GLFW_PRESS) {
+        CaptureMouseCursor_ = true;
+    } else {
+        CaptureMouseCursor_ = false;
+    }
+
+
     ProcessInput(Window_, Logger_, &Camera_, DeltaTime);
+    InputProcessor_->UpdateFramebuffer();
+    InputProcessor_->UpdateMouse(CaptureMouseCursor_);
+
+
+    // Update Mouse Capture State
+    if (CaptureMouseCursor_) {
+        glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    } else {
+        glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    }
 
     // Update GUI
     GuiSystem_->UpdateGUI();
