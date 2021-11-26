@@ -29,7 +29,7 @@ InputProcessor::~InputProcessor() {
 
 
 // UpdateFramebuffer Function
-void InputProcessor::UpdateFramebuffer(GLFWwindow* Window) {
+void InputProcessor::UpdateFramebuffer() {
 
     // Get Window Size
     int WindowX;
@@ -42,7 +42,7 @@ void InputProcessor::UpdateFramebuffer(GLFWwindow* Window) {
 }
 
 // Update Mouse Function
-void InputProcessor::UpdateMouse(GLFWwindow* Window, bool WindowMouseCaptureEnabled) {
+void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
 
     // Get Mouse Position
     int MouseX;
