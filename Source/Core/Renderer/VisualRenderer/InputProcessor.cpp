@@ -34,7 +34,7 @@ void InputProcessor::UpdateFramebuffer() {
     // Get Window Size
     int WindowX;
     int WindowY;
-    glfwGetFramebufferSize(Window_, WindowX, WindowY);
+    glfwGetFramebufferSize(Window_, &WindowX, &WindowY);
 
     // Call UpdateFramebuffer
     FramebufferSizeCallback(WindowX, WindowY);
@@ -45,9 +45,9 @@ void InputProcessor::UpdateFramebuffer() {
 void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
 
     // Get Mouse Position
-    int MouseX;
-    int MouseY;
-    glfwGetCursorPos(Window_, MouseX, MouseY);
+    double MouseX;
+    double MouseY;
+    glfwGetCursorPos(Window_, &MouseX, &MouseY);
 
     // Call Update
     MouseCallback(MouseX, MouseY);
