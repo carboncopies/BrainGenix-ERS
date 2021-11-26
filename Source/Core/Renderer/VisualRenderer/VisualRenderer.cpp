@@ -180,6 +180,9 @@ void VisualRenderer::InitializeOpenGL() {
     Shader_.MakeActive();
 
 
+    // Setup GUI
+    GuiSystem_ = new GUISystem(Logger_);
+
 
 }
 

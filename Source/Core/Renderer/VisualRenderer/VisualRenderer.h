@@ -34,6 +34,7 @@
 #include <SceneManager.h>
 #include <SceneLoader.h>
 #include <Grid.h>
+#include <GUI.h>
 
 
 class VisualRenderer {
@@ -49,6 +50,9 @@ class VisualRenderer {
 
         // SceneManager Class
         SceneManager *SceneManager_; /**<Pointer to Scene Manager Class Instance*/
+
+        // Gui system instance
+        GUISystem *GuiSystem_;
 
         // Control Values
         bool *SystemShouldRun_;

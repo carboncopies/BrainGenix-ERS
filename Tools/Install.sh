@@ -5,3 +5,4 @@ sudo apt install libxinerama-dev -y
 sudo apt install libxcursor-dev -y
 sudo apt install libxi-dev -y
 sudo apt install binutils-dev -y
+sudo apt install libcegui-* -y
