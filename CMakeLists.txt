@@ -122,16 +122,6 @@ add_subdirectory(${LIB_DIR}/backward)
 # target_link_libraries("${PROJECT_NAME}" "${CPPKAFKA_LIBRARY}")
 
 
-# Get CEGUI Package
-#set(CEGUI_INCLUDE_DIR ${LIB_DIR}/cegui/cegui/include)
-set(CMAKE_MODULE_PATH ${LIB_DIR}/FindCEGUI/src)
-find_package(CEGUI REQUIRED)
-if (CEGUI_FOUND)
-  include_directories(${CEGUI_INCLUDE_DIR})
-endif()
-
-
-
 # Add Main.cpp
 add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp ${BACKWARD_ENABLE})
 target_link_libraries(${PROJECT_NAME}
