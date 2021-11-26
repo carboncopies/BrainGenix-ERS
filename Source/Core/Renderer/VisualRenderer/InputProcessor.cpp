@@ -52,7 +52,7 @@ void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
     // Calculate Offset
     int WindowX;
     int WindowY;
-    glfwGetWindowFrameSize(Window_, &WindowX, &WindowY);
+    glfwGetWindowContentScale(Window_, &WindowX, &WindowY);
 
     double WindowCenterX = WindowX/2;
     double WindowCenterY = WindowY/2;
