@@ -37,7 +37,7 @@ VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, LoggerClass *Lo
     InitializeGLFW();
 
     Logger_->Log("Setting Up Window Input Processor", 5);
-    InputProcessor_ = new InputProcessor(Camera_, Window_);
+    InputProcessor_ = new InputProcessor(&Camera_, Window_);
 
     Logger_->Log("Initializing OpenGL", 5);
     InitializeOpenGL();
