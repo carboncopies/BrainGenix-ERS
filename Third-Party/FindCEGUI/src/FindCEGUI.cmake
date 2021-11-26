@@ -45,6 +45,8 @@ else (CEGUI_LIBRARIES AND CEGUI_INCLUDE_DIRS)
             CEGUIBase-0
             CEGUIBase-0.7.6
             CEGUIBase-0.8.4
+            CEGUIBase-0.8.7
+
         PATHS
             /usr/lib
             /usr/local/lib
