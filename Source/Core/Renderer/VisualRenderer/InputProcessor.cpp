@@ -50,7 +50,7 @@ void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
     glfwGetCursorPos(Window_, &MouseX, &MouseY);
 
     // Call Update
-    if (!WindowMouseCaptureEnabled) {
+    if (WindowMouseCaptureEnabled) {
         MouseCallback(MouseX, MouseY);
     }
 
