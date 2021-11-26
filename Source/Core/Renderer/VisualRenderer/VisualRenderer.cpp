@@ -200,7 +200,7 @@ void VisualRenderer::UpdateLoop() {
     ProcessInput(Window_, Logger_, &Camera_, DeltaTime);
 
     // Update GUI
-    GuiSystem_->UpdateFrame();
+    GuiSystem_->UpdateGUI();
 
     // Rendering Commands Here
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -225,7 +225,7 @@ void VisualRenderer::UpdateLoop() {
 
 
     // Update GUI Frame
-    GUISystem_->UpdateFrame();
+    GuiSystem_->UpdateFrame();
 
 
     // Update Window Stuff
