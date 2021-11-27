@@ -216,12 +216,6 @@ void VisualRenderer::UpdateLoop() {
 
 
 
-
-
-    // Update Window Title With FPS Counter
-    std::string NewWindowTitle = std::string((*SystemConfiguration_)["WindowTitle"].as<std::string>() + std::string(" - ") + std::to_string(1/DeltaTime) + std::string(" FPS"));
-    glfwSetWindowTitle(Window_, NewWindowTitle.c_str());
-
     // Check If System Should Shutdown
     if (glfwWindowShouldClose(Window_)) {
         Logger_->Log("System Shutdown Invoked By LocalWindow", 2);
