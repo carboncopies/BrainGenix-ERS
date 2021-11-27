@@ -78,12 +78,12 @@ void GUISystem::UpdateGUI() {
     ImGui::NewFrame();
 
 
-    ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+    //ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // 2. Show a simple window that we create ourselves. We use a Begin/End pair to created a named window.
     {
-        static float f = 0.0f;
-        static int counter = 0;
+        // static float f = 0.0f;
+        // static int counter = 0;
 
         ImGui::Begin("System Controls");
 
