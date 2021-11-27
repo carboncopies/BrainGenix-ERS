@@ -21,7 +21,6 @@
 //-----------------------------------------------------------------------------------------------------
 //
 // FIXME: Fix documentation status
-// FIXME: restructure code to make use of loaders for loading and structs for storing
 // FIXME: Add proper lighting system (phong and more advanced (and shadow maps))
 // FIXME: implement animations (character deformations)
 // FIXME: implement offscreen rendering
