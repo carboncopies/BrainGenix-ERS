@@ -160,7 +160,7 @@ void VisualRenderer::UpdateLoop() {
     // && (!Io->WantCaptureMouse) && (Io->WantCaptureKeyboard)
 
     // Enable/Disable Mouse Capture
-    if ((glfwGetMouseButton(Window_, 1) == GLFW_PRESS) ){
+    if ((glfwGetMouseButton(Window_, 0) == GLFW_PRESS) ){
         CaptureMouseCursor_ = true;
     } else {
         CaptureMouseCursor_ = false;
