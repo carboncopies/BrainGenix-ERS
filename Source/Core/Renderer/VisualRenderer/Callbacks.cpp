@@ -1,55 +1,55 @@
-//======================================================================//
-// This file is part of the BrainGenix-ERS Environment Rendering System //
-//======================================================================//
+// //======================================================================//
+// // This file is part of the BrainGenix-ERS Environment Rendering System //
+// //======================================================================//
 
-/*
-    Description: This file contains the visual renderer callback functions.
-    Documentation Status: Done
-    Additonal Notes: None
-    Date Created: 2021-11-16
-*/
+// /*
+//     Description: This file contains the visual renderer callback functions.
+//     Documentation Status: Done
+//     Additonal Notes: None
+//     Date Created: 2021-11-16
+// */
 
-#include "Callbacks.h"
-
-
-void FramebufferSizeCallback(GLFWwindow* /*Window*/, int Width, int Height) {
-
-    // Update Viewport
-    glViewport(0, 0, Width, Height);
-    glScissor(0, 0, Width, Height);
-
-}
+// #include "Callbacks.h"
 
 
-void MouseCallback(GLFWwindow* /*Window*/, double XPos, double YPos) {
+// void FramebufferSizeCallback(GLFWwindow* /*Window*/, int Width, int Height) {
 
-    // Update Positions
-    if (FirstMouse) {
+//     // Update Viewport
+//     glViewport(0, 0, Width, Height);
+//     glScissor(0, 0, Width, Height);
 
-        LastX = XPos;
-        LastY = YPos;
-
-        FirstMouse = false;
-
-    }
-
-    // Calculate Offsets
-    float XOffset = XPos - LastX;
-    float YOffset = YPos - LastY;
-
-    // Update Last Positions
-    LastX = XPos;
-    LastY = YPos;
-
-    // Process Camera Movement
-    Camera_.ProcessMouseMovement(XOffset, YOffset);
-
-}
+// }
 
 
+// void MouseCallback(GLFWwindow* /*Window*/, double XPos, double YPos) {
 
-void ScrollCallback(GLFWwindow* /*Window*/, double /*XOffset*/, double YOffset) {
+//     // Update Positions
+//     if (FirstMouse) {
 
-    Camera_.ProcessMouseScroll(YOffset);
+//         LastX = XPos;
+//         LastY = YPos;
 
-}
+//         FirstMouse = false;
+
+//     }
+
+//     // Calculate Offsets
+//     float XOffset = XPos - LastX;
+//     float YOffset = YPos - LastY;
+
+//     // Update Last Positions
+//     LastX = XPos;
+//     LastY = YPos;
+
+//     // Process Camera Movement
+//     Camera_.ProcessMouseMovement(XOffset, YOffset);
+
+// }
+
+
+
+// void ScrollCallback(GLFWwindow* /*Window*/, double /*XOffset*/, double YOffset) {
+
+//     Camera_.ProcessMouseScroll(YOffset);
+
+// }
