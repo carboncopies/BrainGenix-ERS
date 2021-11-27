@@ -29,6 +29,7 @@ target_link_libraries(VisualRenderer
     glm
     glad
     glfw
+    IMGUI
     )
 
 # Link Internal Libs

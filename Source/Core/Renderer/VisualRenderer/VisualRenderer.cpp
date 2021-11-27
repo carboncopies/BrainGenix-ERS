@@ -155,8 +155,11 @@ void VisualRenderer::UpdateLoop() {
     // Process Window Input
     glfwPollEvents();
 
+    // Get IMGUI IO State
+    auto Io = &ImGui::GetIO();
+
     // Enable/Disable Mouse Capture
-    if (glfwGetMouseButton(Window_, 1) == GLFW_PRESS) {
+    if ((glfwGetMouseButton(Window_, 1) == GLFW_PRESS)  && (!Io->WantCaptureMouse) && (Io->WantCaptureKeyboard)){
         CaptureMouseCursor_ = true;
     } else {
         CaptureMouseCursor_ = false;
@@ -174,6 +177,10 @@ void VisualRenderer::UpdateLoop() {
     } else {
         glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
     }
+
+
+
+
 
     // Update GUI
     GuiSystem_->UpdateGUI();

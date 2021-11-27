@@ -80,9 +80,6 @@ void GUISystem::UpdateGUI() {
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
 
-    // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
-    if (show_demo_window)
-        ImGui::ShowDemoWindow(&show_demo_window);
 
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
