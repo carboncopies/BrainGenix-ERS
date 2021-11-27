@@ -99,18 +99,6 @@ void GUISystem::UpdateGUI() {
         ImGui::End();
     }
 
-    // 3. Show another simple window.
-    if (show_another_window)
-    {
-        ImGui::Begin("Another Window", &show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-        ImGui::Text("Hello from another window!");
-        if (ImGui::Button("Close Me"))
-            show_another_window = false;
-        ImGui::End();
-    }
-
-
-
 
 
     // // create an ImGui window that covers the entire viewport, so that we can have a menu bar at the top of the applications
