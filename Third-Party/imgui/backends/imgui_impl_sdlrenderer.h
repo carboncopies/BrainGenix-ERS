@@ -9,6 +9,7 @@
 //  [X] Renderer: User texture binding. Use 'SDL_Texture*' as ImTextureID. Read the FAQ about ImTextureID!
 // Missing features:
 //  [ ] Renderer: Support for large meshes (64k+ vertices) with 16-bit indices.
+//  [ ] Renderer: Multi-viewport support (multiple windows).
 
 #pragma once
 #include "imgui.h"      // IMGUI_IMPL_API

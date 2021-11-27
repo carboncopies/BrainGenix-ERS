@@ -21,7 +21,7 @@ add_library(VisualEditor
 target_link_libraries(VisualEditor
     glad
     glfw
-    ImGui
+    IMGUI
     )
 
 # Link Internal Libs

@@ -1,35 +1,50 @@
 # ImGui
 add_compile_definitions(IMGUI_IMPL_OPENGL_LOADER_GLAD=1)
 
-# Set where the ImGui files are stored
-set(IMGUI_PATH  ".")
-    
-# Compile as static library 
-file(GLOB IMGUI_ROOT_SOURCES ${IMGUI_PATH}/*.cpp)
-file(GLOB IMGUI_ROOT_Headers ${IMGUI_PATH}/*.h)
+set(IMGUI_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+add_library(IMGUI STATIC)
 
-set(IMGUI_BACKEND_SOURCES
+target_sources( IMGUI
+                PRIVATE
+                    ${IMGUI_DIR}/imgui_demo.cpp
+                    ${IMGUI_DIR}/imgui_draw.cpp
+                    ${IMGUI_DIR}/imgui_tables.cpp
+                    ${IMGUI_DIR}/imgui_widgets.cpp
+                    ${IMGUI_DIR}/imgui.cpp
 
-    "backends/imgui_impl_glfw.cpp"
-    "backends/imgui_impl_opengl3.cpp"
+                PRIVATE
+                    ${IMGUI_DIR}/backends/imgui_impl_opengl3.cpp
+                    ${IMGUI_DIR}/backends/imgui_impl_glfw.cpp
+                )
 
-)
+target_include_directories( IMGUI
+                            PUBLIC ${IMGUI_DIR}
+                            PUBLIC ${IMGUI_DIR}/backends
+                            PUBLIC ${SDL2_DIR}/include
+                            )
 
-set(IMGUI_BACKEND_HEADERS
 
-    "backends/imgui_impl_glfw.h"
-    "backends/imgui_impl_opengl3.h"
+if(RASPBIAN)
+    target_compile_definitions(IMGUI PUBLIC -D__RASPBIAN__)
 
-)
+    # Do not search for OpenGL on raspbian. Use GLES instead.
+    set(USE_GLES ON) 
+endif()
 
-# Link Files Into Lib
-add_library("ImGui" STATIC 
 
-    ${IMGUI_ROOT_SOURCES}
-    ${IMGUI_ROOT_HEADERS}
+if(USE_GLES)
+    target_compile_definitions(IMGUI PUBLIC -DIMGUI_IMPL_OPENGL_ES2)
 
-    ${IMGUI_BACKEND_SOURCES}
-    ${IMGUI_BACKEND_HEADERS}
+    if(RASPBIAN AND USE_BROADCOM_DRIVER)
+        target_link_directories(IMGUI PUBLIC /opt/vc/lib)
+        target_link_libraries(IMGUI PUBLIC brcmGLESv2 brcmEGL)
+    else()
+        target_link_libraries(IMGUI PUBLIC GLESv2)
+    endif()
+else()
+    find_package(OpenGL REQUIRED)
+    target_link_libraries(IMGUI PUBLIC ${OPENGL_LIBRARIES})
+endif()
 
-)
-target_include_directories("ImGui" PUBLIC ${IMGUI_PATH})
+
+#target_link_libraries(IMGUI PUBLIC SDL2main SDL2 ${CMAKE_DL_LIBS})

@@ -135,7 +135,6 @@ target_link_libraries(${PROJECT_NAME}
   glfw
   FreeImage
   assimp
-  ImGui
 #   meshoptimizer
 #   backward
 #   CEGUIBase-0

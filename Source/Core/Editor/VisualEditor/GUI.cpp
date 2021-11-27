@@ -16,6 +16,7 @@ GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window) {
 
     // Create Local Pointer
     Logger_ = Logger;
+    Window_ = Window;
 
     // Initialize ImGui
     Logger_->Log("Initializing DearImGui GUI Library", 5);
@@ -34,6 +35,12 @@ GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window) {
     ImGui_ImplGlfw_InitForOpenGL(Window, true);
     ImGui_ImplOpenGL3_Init("#version 330 core");
 
+
+
+
+
+
+
 }
 
 // GUISystem Destructor
@@ -51,6 +58,11 @@ GUISystem::~GUISystem() {
 
 // Update GUI
 void GUISystem::UpdateGUI() {
+
+    // Get Window Width, Height
+    float Width;
+    float Height;
+    glfwGetWindowContentScale(Window_, &Width, &Height);
 
 
     bool show_demo_window = true;
@@ -106,6 +118,33 @@ void GUISystem::UpdateGUI() {
             show_another_window = false;
         ImGui::End();
     }
+
+
+
+
+
+    // // create an ImGui window that covers the entire viewport, so that we can have a menu bar at the top of the applications
+    // ImGui::SetNextWindowPos(ImVec2(0, 0));                                                  // always at the window origin
+    // ImGui::SetNextWindowSize(ImVec2(Width, Height));    // always at the window size
+
+    // ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoBringToFrontOnFocus |                 // we just want to use this window as a host for the menubar and docking
+    //     ImGuiWindowFlags_NoNavFocus |                                                      // so turn off everything that would make it act like a window
+    //     //ImGuiWindowFlags_NoDocking |
+    //     ImGuiWindowFlags_NoTitleBar |
+    //     ImGuiWindowFlags_NoResize |
+    //     ImGuiWindowFlags_NoMove |
+    //     ImGuiWindowFlags_NoCollapse |
+    //     ImGuiWindowFlags_MenuBar |
+    //     ImGuiWindowFlags_NoBackground;                                                      // we want our game content to show through this window, so turn off the background.
+
+    // ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));   
+
+
+
+
+
+
+
 
     // Rendering
     ImGui::Render();
