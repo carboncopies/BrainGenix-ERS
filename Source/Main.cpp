@@ -20,7 +20,6 @@
 //
 //-----------------------------------------------------------------------------------------------------
 //
-// FIXME: FIX Callbacks.cpp/h not linking or something - un copypaste from renderermanager.cpp
 // FIXME: Fix documentation status
 // FIXME: Cleanup cmake and make more efficent - get in touch with arseniy
 // FIXME: restructure code to make use of loaders for loading and structs for storing
