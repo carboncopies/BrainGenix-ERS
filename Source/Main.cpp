@@ -21,7 +21,6 @@
 //-----------------------------------------------------------------------------------------------------
 //
 // FIXME: Fix documentation status
-// FIXME: Cleanup cmake and make more efficent - get in touch with arseniy
 // FIXME: restructure code to make use of loaders for loading and structs for storing
 // FIXME: Add proper lighting system (phong and more advanced (and shadow maps))
 // FIXME: implement animations (character deformations)
