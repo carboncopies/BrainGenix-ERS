@@ -4,6 +4,7 @@
 
 /*
     Description: This is responsible for providing a function to draw a grid when the editor is enabled.
+    Documentation Status: Complete
     Additonal Notes: None
     Date Created: 2021-01-25
 */
