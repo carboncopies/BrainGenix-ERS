@@ -35,10 +35,10 @@ class RendererManager {
         LoggerClass *Logger_; /**<Pointer to the logging system instance*/
 
         // Control Values
-        bool *SystemShouldRun_;
+        bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */
 
         // Renderer Instances
-        VisualRenderer *VisualRenderer_;
+        VisualRenderer *VisualRenderer_; /**<Pointer To VisualRenderer Instance */
 
     public:
 
