@@ -28,4 +28,3 @@ target_link_libraries(SceneManager
     )
 
 target_include_directories(SceneManager PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} SceneManager)
