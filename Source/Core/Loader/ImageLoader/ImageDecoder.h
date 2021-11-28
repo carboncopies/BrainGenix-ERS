@@ -4,6 +4,7 @@
 
 /*
     Description: This file is responsible for implementing image decoding functionality.
+    Documentation Status: Complete
     Additonal Notes: None
     Date Created: 2021-10-28
 */  
@@ -17,25 +18,43 @@
 #include <LoggingSystem.h>
 
 
-// Image Decoder Class
+/**
+ * @brief Class for decoding images.
+ * 
+ */
 class ImageDecoder {
 
     private:
 
-        LoggerClass *Logger_;
+        LoggerClass *Logger_; /**<Pointer To Logging System*/
 
     public:
         
-        // Initialize Image Loader
+        /**
+         * @brief Initialize Image Decoder.
+         * 
+         * @param Logger 
+         */
         void Initialize(LoggerClass *Logger);
 
-        // Load Images From Local Disk
+        /**
+         * @brief Loads an image from a given file path, returns FIBITMAP*.
+         * 
+         * @param FilePath 
+         * @return FIBITMAP* 
+         */
         FIBITMAP* LoadImageFromFile(const char* FilePath);
 
-        // Decode Images In Memory
+        /**
+         * @brief Decodes an image in-memory. *WIP*
+         * 
+         */
         void DecodeImage();
 
-        // Cleanup
+        /**
+         * @brief Destructor... *WIP*
+         * 
+         */
         void Cleanup();
 
 };

@@ -4,6 +4,7 @@
 
 /*
     Description: This file is responsible for implementing image decoding functionality.
+    Documentation Status: Complete
     Additonal Notes: None
     Date Created: 2021-10-28
 */  
