@@ -101,7 +101,7 @@ void GUISystem::UpdateGUI() {
         static bool OpenGLDrawLines = false;
 
         // Add Button
-        ImGui::Checkbox("ShowPolygons", &OpenGLDrawLines);
+        ImGui::Checkbox("Show Wireframe", &OpenGLDrawLines);
 
         // Check Draw Mode
         if (OpenGLDrawLines) {
