@@ -62,7 +62,7 @@ void ERS_OBJECT_SHADER::CompileFragmentShader(const char* FragmentText) {
 
 
 // Compile Shader Program
-void ERS_OBJECT_SHADER::CreateShaderProgram(bool DeleteShadersUponLink = true) {
+void ERS_OBJECT_SHADER::CreateShaderProgram(bool DeleteShadersUponLink) {
 
     // Check That Vertex And Fragment Shaders Are Initialized
     if (!_VertexShaderInitialized || !_FragmentShaderInitialized) {
