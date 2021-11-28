@@ -84,7 +84,6 @@ void GUISystem::UpdateGUI() {
         // static float f = 0.0f;
         // static int counter = 0;
 
-    ImGui::Begin("System Controls");
 
         // ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
         // ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
@@ -93,6 +92,9 @@ void GUISystem::UpdateGUI() {
         //     counter++;
         // ImGui::SameLine();
         // ImGui::Text("counter = %d", counter);
+
+
+    ImGui::Begin("System Controls");
 
 
     // Wireframe Rendering Mode
@@ -113,9 +115,19 @@ void GUISystem::UpdateGUI() {
     glClearColor(ClearColor.x, ClearColor.y, ClearColor.z, ClearColor.w);
 
 
+    // End System Controls Window
+    ImGui::End();
 
 
+
+
+    // System Info Window
+    ImGui::Begin("System Info");
+
+    // FPS Counter
     ImGui::Text("System Framerate %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+    // End System Info Window
     ImGui::End();
 
 
