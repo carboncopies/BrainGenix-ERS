@@ -46,5 +46,4 @@ target_link_libraries(VisualRenderer
     )
 
 target_include_directories(VisualRenderer PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} VisualRenderer)
 
