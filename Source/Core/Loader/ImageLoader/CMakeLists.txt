@@ -28,6 +28,7 @@ target_link_libraries(ImageLoader
 target_link_libraries(ImageLoader
     NoClip
     LoggingSystem
+    FileIO
     )
 
 target_include_directories(ImageLoader PUBLIC ./)
