@@ -18,8 +18,6 @@
 #include <LoggingSystem.h>
 
 
-//FIXME!!!! MODIFY CLASS TO USE CONSTRUCTORS AND DESTRUCTORS!
-
 
 /**
  * @brief Class for decoding images.
