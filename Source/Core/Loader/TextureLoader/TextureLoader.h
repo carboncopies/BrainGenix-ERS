@@ -4,6 +4,7 @@
 
 /*
     Description: This is the 2d texture struct.
+    Documentation Status: Complete
     Additonal Notes: None
     Date Created: 2021-11-21
 */
@@ -21,6 +22,10 @@
 #include <2DTexture.h>
 
 
+/**
+ * @brief Loads ERS_OBJECT Textures Into Memory.
+ * 
+ */
 class TextureLoader {
 
     private:
