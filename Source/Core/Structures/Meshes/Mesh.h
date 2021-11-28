@@ -15,7 +15,7 @@
 #include <string>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ShaderManager.h>
+#include <Shader.h>
 #include <2DTexture.h>
 #include <Vertex.h>
 
