@@ -33,4 +33,3 @@ target_link_libraries(ImageLoader
     )
 
 target_include_directories(ImageLoader PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} ImageLoader)
