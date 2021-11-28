@@ -137,7 +137,7 @@ target_link_libraries(${PROJECT_NAME}
   ConfigurationLoader
   LoggingSystem
   Renderer
-  
+
   )
 
 
@@ -146,6 +146,7 @@ add_subdirectory(${SRC_DIR}/Core/Utils/LoggingSystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ConfigurationLoader)
 add_subdirectory(${SRC_DIR}/Core/Utils/SceneManager)
 add_subdirectory(${SRC_DIR}/Core/Utils/FileIO)
+add_subdirectory(${SRC_DIR}/Core/Utils/DatabaseInterface)
 
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor)
 
