@@ -30,4 +30,3 @@ target_link_libraries(Renderer
     )
 
 target_include_directories(Renderer PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Renderer)
