@@ -23,6 +23,8 @@ target_link_libraries(FileIO
 # Link Internal Libs
 target_link_libraries(FileIO
 
+    LoggingSystem
+
     )
 
 target_include_directories(FileIO PUBLIC ./)
