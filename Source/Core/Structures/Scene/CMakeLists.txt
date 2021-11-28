@@ -27,4 +27,3 @@ target_link_libraries(Scene
     )
 
 target_include_directories(Scene PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Scene)
