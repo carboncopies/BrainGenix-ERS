@@ -34,4 +34,3 @@ target_link_libraries(ModelLoader
 
 
 target_include_directories(ModelLoader PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} ModelLoader)
