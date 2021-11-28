@@ -23,7 +23,7 @@ TextureLoader::TextureLoader(LoggerClass* Logger) {
     Logger_->Log("Initializing Texture Loader Class", 5);
 
     // Create Instance Of ImageDecoder
-    ImageDecoder_.Initialize(Logger_);
+    ImageDecoder_ = new ImageDecoder(Logger_);
     
 
 }
@@ -34,8 +34,6 @@ TextureLoader::~TextureLoader() {
     // Log Destructor Call
     Logger_->Log("TextureLoader Destructor Called", 6);
 
-    // Deinit ImageDecoder
-    ImageDecoder_.Cleanup();
 
 }
 
@@ -53,7 +51,7 @@ ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path, bool FlipImag
         Texture.Path = Path;
 
         // Load Image
-        FIBITMAP* ImageData = ImageDecoder_.LoadImageFromFile(Path);
+        FIBITMAP* ImageData = ImageDecoder_->LoadImageFromFile(Path);
         if (FlipImage) {
             FreeImage_FlipVertical(ImageData);
         }

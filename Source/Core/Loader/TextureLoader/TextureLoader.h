@@ -41,7 +41,7 @@ class TextureLoader {
          * @brief Image Loading/Decoding Class Instance.
          * 
          */
-        ImageDecoder ImageDecoder_;
+        ImageDecoder *ImageDecoder_;
 
 
     public:
