@@ -20,4 +20,3 @@ target_link_libraries(Vertex
     glm
     )
 target_include_directories(Vertex PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Vertex)
