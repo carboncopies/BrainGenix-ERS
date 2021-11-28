@@ -33,6 +33,7 @@
 #include <ModelLoader.h>
 #include <SceneManager.h>
 #include <SceneLoader.h>
+#include <ShaderLoader.h>
 #include <Grid.h>
 #include <GUI.h>
 #include <InputProcessor.h>
@@ -60,6 +61,9 @@ class VisualRenderer {
 
         // Input Processor
         InputProcessor *InputProcessor_; /**<Pointer to input processor instance*/
+
+        // Shader Loader
+        ShaderLoader *ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
 
         // Control Values
         bool *SystemShouldRun_;

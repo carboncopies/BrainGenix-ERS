@@ -115,7 +115,8 @@ void VisualRenderer::InitializeOpenGL() {
     glEnable(GL_SCISSOR_TEST);
 
     // Setup Shaders
-    Shader_ = LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag", Logger_);
+    ShaderLoader_ = new ShaderLoader(Logger_);
+    Shader_ = ShaderLoader_->LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag");
 
 
 
