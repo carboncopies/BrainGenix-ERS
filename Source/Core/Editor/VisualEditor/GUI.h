@@ -4,6 +4,7 @@
 
 /*
     Description: This is responsible for providing the gui.
+    Documentation Status: Complete
     Additonal Notes: None
     Date Created: 2021-01-25
 */

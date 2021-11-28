@@ -4,6 +4,7 @@
 
 /*
     Description: This is responsible for providing the gui.
+    Documentation Status: Complete
     Additonal Notes: None
     Date Created: 2021-01-25
 */
@@ -133,6 +134,7 @@ void GUISystem::UpdateGUI() {
 // Update Frame
 void GUISystem::UpdateFrame() {
 
+    // Draw The GUI
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     
 }
