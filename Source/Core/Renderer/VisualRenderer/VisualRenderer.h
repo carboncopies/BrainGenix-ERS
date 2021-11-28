@@ -27,7 +27,6 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 #include <ShaderManager.h>
-#include <WindowInputProcessor.h>
 #include <Model.h>
 #include <NoClip.h>
 #include <TextureLoader.h>
