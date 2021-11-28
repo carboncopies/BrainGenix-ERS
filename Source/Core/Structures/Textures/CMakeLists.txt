@@ -29,4 +29,3 @@ target_link_libraries(Textures
     )
 
 target_include_directories(Textures PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Textures)
