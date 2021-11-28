@@ -304,22 +304,22 @@ struct ERS_OBJECT_SHADER {
 
 
     /**
-     * @brief Create a Shader Object
+     * @brief Construct a new ers object shader object
      * 
      * @param VertexText 
      * @param FragmentText 
      * @param Logger_ 
      */
-    CreateShaderObject(const char* VertexText, const char* FragmentText, LoggerClass *Logger_);
+    ERS_OBJECT_SHADER(const char* VertexText, const char* FragmentText, LoggerClass *Logger_);
 
     /**
-     * @brief Construct a new Shader From File object
+     * @brief Construct a new ers object shader object.
      * 
      * @param VertexPath 
      * @param FragmentPath 
      * @param Logger_ 
      */
-    LoadShaderFromFile(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_);
+    ERS_OBJECT_SHADER(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_);
 
 
 
