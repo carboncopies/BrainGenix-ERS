@@ -4,30 +4,25 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ImageLoader
+add_library(FileIO
 
             # Add Source Files (.cpp)
-            "ImageDecoder.cpp"
+            "FileIO.cpp"
 
             # Add Header Files (.h)
-            "ImageDecoder.h"
+            "FileIO.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ImageLoader
-    yaml-cpp
-    glm
-    glad
-    glfw
-    FreeImage
+target_link_libraries(FileIO
+
     )
 
 # Link Internal Libs
-target_link_libraries(ImageLoader
-    NoClip
-    LoggingSystem
+target_link_libraries(FileIO
+
     )
 
-target_include_directories(ImageLoader PUBLIC ./)
+target_include_directories(FileIO PUBLIC ./)
