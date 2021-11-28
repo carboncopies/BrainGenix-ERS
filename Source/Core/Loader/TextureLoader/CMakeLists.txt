@@ -29,4 +29,3 @@ target_link_libraries(TextureLoader
     )
 
 target_include_directories(TextureLoader PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} TextureLoader)
