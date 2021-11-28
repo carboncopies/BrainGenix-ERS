@@ -33,4 +33,3 @@ target_link_libraries(Meshes
     )
 
 target_include_directories(Meshes PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Meshes)
