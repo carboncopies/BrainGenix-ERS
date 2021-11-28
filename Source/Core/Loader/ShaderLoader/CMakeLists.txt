@@ -25,5 +25,3 @@ target_link_libraries(ShaderLoader
     )
 
 target_include_directories(ShaderLoader PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} ShaderLoader)
-
