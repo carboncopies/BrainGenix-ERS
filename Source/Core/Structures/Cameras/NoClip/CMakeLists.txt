@@ -26,4 +26,3 @@ target_link_libraries(NoClip
     )
 
 target_include_directories(NoClip PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} NoClip)
