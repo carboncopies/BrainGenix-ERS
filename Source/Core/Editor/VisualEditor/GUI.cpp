@@ -101,9 +101,7 @@ void GUISystem::UpdateGUI() {
         static bool OpenGLDrawLines = false;
 
         // Add Button
-        ImGui::Checkbox("Show Wireframe", &OpenGLDrawLines);
-        ImGui::SameLine();
-        ImGui::Text("Enables/Disables Wireframe Rendering Mode");
+        ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines);
 
         // Check Draw Mode
         if (OpenGLDrawLines) {
