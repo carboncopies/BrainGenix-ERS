@@ -4,6 +4,7 @@
 
 /*
     Description: This is the model loader.
+    Documentation Status: Complete
     Additonal Notes: None
     Date Created: 2021-11-13
 */
@@ -50,17 +51,39 @@ class ModelLoader {
     private:
 
         // Internal Model Instance For Processing
-        ERS_OBJECT_MODEL *Model_;
-        std::string ModelDirectory_;
-        bool FlipTextures_;
+        ERS_OBJECT_MODEL *Model_; /**<Model Instance for processing.*/
+        std::string ModelDirectory_; /**<Current model directory being processed.*/
+        bool FlipTextures_; /**<Flip Textures For current Model Being Loaded.*/
 
         // Logger
-        LoggerClass *Logger_;
-        TextureLoader *TextureLoader_;
+        LoggerClass *Logger_; /**<Pointer to Logging System.*/
+        TextureLoader *TextureLoader_; /**<Pointer To Texture Loader Instance.*/
 
-        // Internal Functions
+        /**
+         * @brief Function Used To Process Subnodes Of SceneFiles.
+         * 
+         * @param Node 
+         * @param Scene 
+         */
         void ProcessNode(aiNode *Node, const aiScene *Scene);
+
+        /**
+         * @brief Process Meshes From Model.
+         * 
+         * @param Mesh 
+         * @param Scene 
+         * @return ERS_OBJECT_MESH 
+         */
         ERS_OBJECT_MESH ProcessMesh(aiMesh *Mesh, const aiScene *Scene);
+
+        /**
+         * @brief Load Textures From Model.
+         * 
+         * @param Mat 
+         * @param Type 
+         * @param TypeName 
+         * @return std::vector<ERS_OBJECT_TEXTURE_2D> 
+         */
         std::vector<ERS_OBJECT_TEXTURE_2D> LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, std::string TypeName);
 
 
@@ -83,7 +106,13 @@ class ModelLoader {
         ~ModelLoader();
 
 
-        // Load Model From File
+        /**
+         * @brief Load Model From Given File.
+         * 
+         * @param AssetPath 
+         * @param FlipTextures 
+         * @return ERS_OBJECT_MODEL 
+         */
         ERS_OBJECT_MODEL LoadModelFromFile(const char* AssetPath, bool FlipTextures = false);
 
 
