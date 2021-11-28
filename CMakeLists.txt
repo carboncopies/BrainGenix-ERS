@@ -129,16 +129,15 @@ add_subdirectory(${LIB_DIR}/backward)
 # Add Main.cpp
 add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp ${BACKWARD_ENABLE})
 target_link_libraries(${PROJECT_NAME}
+
+  # Third Party Libs
   yaml-cpp
-  glad
-  glm
-  glfw
-  FreeImage
-  assimp
-#   meshoptimizer
-#   backward
-#   CEGUIBase-0
-#   #mysqlcppconn
+
+  # Internal Libs
+  ConfigurationLoader
+  LoggingSystem
+  Renderer
+  
   )
 
 
