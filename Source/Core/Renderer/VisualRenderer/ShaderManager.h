@@ -29,8 +29,6 @@
 
 
 
-//FIXME: MOVE DEFINITONS TO CPP FILE, MAKE DECLARATIONS ONLY!!!!
-
 /**
  * @brief Structure To Store Shader Object
  * 
@@ -301,28 +299,10 @@ struct ERS_OBJECT_SHADER {
         glUniformMatrix4fv(glGetUniformLocation(ShaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
     }
 
-
-
-    /**
-     * @brief Construct a new ers object shader object
-     * 
-     * @param VertexText 
-     * @param FragmentText 
-     * @param Logger_ 
-     */
-    ERS_OBJECT_SHADER(const char* VertexText, const char* FragmentText, LoggerClass *Logger_);
-
-    /**
-     * @brief Construct a new ers object shader object.
-     * 
-     * @param VertexPath 
-     * @param FragmentPath 
-     * @param Logger_ 
-     */
-    ERS_OBJECT_SHADER(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_);
-
-
-
 };
 
+
+ERS_OBJECT_SHADER CreateShaderObject(const char* VertexText, const char* FragmentText, LoggerClass *Logger_);
+
+ERS_OBJECT_SHADER LoadShaderFromFile(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_);
 

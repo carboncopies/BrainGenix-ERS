@@ -15,24 +15,28 @@
 
 
 
-ERS_OBJECT_SHADER::ERS_OBJECT_SHADER(const char* VertexText, const char* FragmentText, LoggerClass *Logger_) {
+ERS_OBJECT_SHADER CreateShaderObject(const char* VertexText, const char* FragmentText, LoggerClass *Logger_) {
 
     // Log Shader Creation
     Logger_->Log("Creating Shader Object", 5);
 
     // Create Shader
-    CompileVertexShader(VertexText);
-    CompileFragmentShader(FragmentText);
+    ERS_OBJECT_SHADER ShaderStruct;
+
+    ShaderStruct.CompileVertexShader(VertexText);
+    ShaderStruct.CompileFragmentShader(FragmentText);
 
     // Attach Shaders
     Logger_->Log("Linking Shader Program", 5);
-    CreateShaderProgram();
+    ShaderStruct.CreateShaderProgram();
     Logger_->Log("Linked Shader Program", 4);
 
+    // Return Struct
+    return ShaderStruct;
 
 }
 
-ERS_OBJECT_SHADER::ERS_OBJECT_SHADER(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_) {
+ERS_OBJECT_SHADER LoadShaderFromFile(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_) {
 
     // Load Shaders From Disk Into RAM
     Logger_->Log("Loading Shaders From Disk", 5);
@@ -40,17 +44,8 @@ ERS_OBJECT_SHADER::ERS_OBJECT_SHADER(const char* VertexPath, const char* Fragmen
     std::string FragmentText = ReadFile(FragmentPath, Logger_);
 
     
-    // Log Shader Creation
-    Logger_->Log("Creating Shader Object", 5);
-
-    // Create Shader
-    CompileVertexShader(VertexText.c_str());
-    CompileFragmentShader(FragmentText.c_str());
-
-    // Attach Shaders
-    Logger_->Log("Linking Shader Program", 5);
-    CreateShaderProgram();
-    Logger_->Log("Linked Shader Program", 4);
+    // Return Compiled Shader
+    return CreateShaderObject(VertexText.c_str(), FragmentText.c_str(), Logger_);
 
 
 }
