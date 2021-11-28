@@ -20,5 +20,4 @@ target_link_libraries(ConfigurationLoader
     yaml-cpp
     )
 target_include_directories(ConfigurationLoader PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} ConfigurationLoader)
 
