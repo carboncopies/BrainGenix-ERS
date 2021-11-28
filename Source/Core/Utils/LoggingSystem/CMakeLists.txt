@@ -21,5 +21,4 @@ target_link_libraries(LoggingSystem
     yaml-cpp
     )
 target_include_directories(LoggingSystem PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} LoggingSystem)
 
