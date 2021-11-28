@@ -31,4 +31,3 @@ target_link_libraries(Model
     )
 
 target_include_directories(Model PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Model)
