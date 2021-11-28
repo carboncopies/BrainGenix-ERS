@@ -17,10 +17,14 @@ add_library(Shader
 
 # Link 3rd Party Libs
 target_link_libraries(Shader
+    glm
+    glad
+    glfw
     )
 
 # Link Internal Libs
 target_link_libraries(Shader
+    ImageLoader
     )
 
 target_include_directories(Shader PUBLIC ./)

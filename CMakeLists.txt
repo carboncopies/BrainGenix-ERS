@@ -158,6 +158,7 @@ add_subdirectory(${SRC_DIR}/Core/Structures/Model)
 add_subdirectory(${SRC_DIR}/Core/Structures/Textures)
 add_subdirectory(${SRC_DIR}/Core/Structures/Vertex)
 add_subdirectory(${SRC_DIR}/Core/Structures/Scene)
+add_subdirectory(${SRC_DIR}/Core/Structures/Shader)
 
 add_subdirectory(${SRC_DIR}/Core/Loader/TextureLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ImageLoader)

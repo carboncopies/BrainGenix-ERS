@@ -7,12 +7,10 @@
 add_library(VisualRenderer
 
             # Add Source Files (.cpp)
-            "ShaderManager.cpp"
             "VisualRenderer.cpp"
             "InputProcessor.cpp"
 
             # Add Header Files (.h)
-            "ShaderManager.h"
             "VisualRenderer.h"
             "InputProcessor.h"
 
