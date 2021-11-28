@@ -34,11 +34,18 @@ class ImageDecoder {
     public:
         
         /**
-         * @brief Initialize Image Decoder.
+         * @brief Construct a new Image Decoder object
          * 
          * @param Logger 
          */
-        void Initialize(LoggerClass *Logger);
+        ImageDecoder(LoggerClass *Logger);
+
+        /**
+         * @brief Destroy the Image Decoder object
+         * 
+         */
+        ~ImageDecoder();
+
 
         /**
          * @brief Loads an image from a given file path, returns FIBITMAP*.
@@ -54,11 +61,7 @@ class ImageDecoder {
          */
         void DecodeImage();
 
-        /**
-         * @brief Destructor... *WIP*
-         * 
-         */
-        void Cleanup();
+
 
 };
 

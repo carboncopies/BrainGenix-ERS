@@ -12,7 +12,7 @@
 #include "ImageDecoder.h"
 
 // Initialize The Class
-void ImageDecoder::Initialize(LoggerClass *Logger) {
+ImageDecoder::ImageDecoder(LoggerClass *Logger) {
 
     // Make Reference To Logger
     Logger_ = Logger;
@@ -22,6 +22,14 @@ void ImageDecoder::Initialize(LoggerClass *Logger) {
 
     Logger_->Log("Initializing FreeImage", 4);
     FreeImage_Initialise();
+
+}
+
+// Clean Up
+ImageDecoder::~ImageDecoder() {
+
+    // Deinit FreeImage
+    FreeImage_DeInitialise();
 
 }
 
@@ -38,10 +46,3 @@ FIBITMAP* ImageDecoder::LoadImageFromFile(const char* FilePath) {
 
 }
 
-// Clean Up
-void ImageDecoder::Cleanup() {
-
-    // Deinit FreeImage
-    FreeImage_DeInitialise();
-
-}
