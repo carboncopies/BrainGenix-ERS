@@ -40,6 +40,9 @@ target_link_libraries(VisualRenderer
     SceneManager
 
     VisualEditor
+
+    Shader
+    ShaderLoader
     )
 
 target_include_directories(VisualRenderer PUBLIC ./)
