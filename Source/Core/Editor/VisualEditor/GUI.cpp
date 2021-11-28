@@ -79,14 +79,12 @@ void GUISystem::UpdateGUI() {
     ImGui::NewFrame();
 
 
-    //ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-    // 2. Show a simple window that we create ourselves. We use a Begin/End pair to created a named window.
-    {
+    
         // static float f = 0.0f;
         // static int counter = 0;
 
-        ImGui::Begin("System Controls");
+    ImGui::Begin("System Controls");
 
         // ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
         // ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
@@ -97,25 +95,27 @@ void GUISystem::UpdateGUI() {
         // ImGui::Text("counter = %d", counter);
 
 
-        // Set Initial Value
-        static bool OpenGLDrawLines = false;
-
-        // Add Button
-        ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines);
-
-        // Check Draw Mode
-        if (OpenGLDrawLines) {
-            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        } else {
-            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        }
-
-
-
-
-        ImGui::Text("System Framerate %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-        ImGui::End();
+    // Wireframe Rendering Mode
+    static bool OpenGLDrawLines = false;
+    ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines);
+    if (OpenGLDrawLines) {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    } else {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     }
+
+
+    // Rendering Background Clear Color
+    static ImVec4 ClearColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+    ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor);    
+    glClearColor(ClearColor.x, ClearColor.y, ClearColor.z, ClearColor.w);
+
+
+
+
+    ImGui::Text("System Framerate %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+    ImGui::End();
+
 
 
 
