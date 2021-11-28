@@ -21,6 +21,7 @@ target_link_libraries(ShaderLoader
 
 # Link Internal Libs
 target_link_libraries(ShaderLoader
+    Shader
     )
 
 target_include_directories(ShaderLoader PUBLIC ./)

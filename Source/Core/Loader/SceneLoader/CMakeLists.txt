@@ -27,6 +27,7 @@ target_link_libraries(SceneLoader
     Scene
     Meshes
     Textures
+    Shader
     )
 
 target_include_directories(SceneLoader PUBLIC ./)

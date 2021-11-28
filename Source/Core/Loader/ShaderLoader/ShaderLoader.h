@@ -18,6 +18,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <Shader.h>
+#include <LoggingSystem.h>
 
 
 /**
@@ -28,15 +29,43 @@ class ShaderLoader {
 
     private:
 
+        LoggerClass *Logger_; /**<Pointer To Instance Of Logging System*/
 
 
     public:
 
+        /**
+         * @brief Construct a new Shader Loader object
+         * 
+         * @param Logger 
+         */
+        ShaderLoader(LoggerClass *Logger);
 
+        /**
+         * @brief Destroy the Shader Loader object
+         * 
+         */
+        ~ShaderLoader();
         
-    ERS_OBJECT_SHADER CreateShaderObject(const char* VertexText, const char* FragmentText, LoggerClass *Logger_);
 
-    ERS_OBJECT_SHADER LoadShaderFromFile(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_);
+        /**
+         * @brief Create a Shader Object object
+         * 
+         * @param VertexText 
+         * @param FragmentText 
+         * @return ERS_OBJECT_SHADER 
+         */
+        ERS_OBJECT_SHADER CreateShaderObject(const char* VertexText, const char* FragmentText);
+
+
+        /**
+         * @brief 
+         * 
+         * @param VertexPath 
+         * @param FragmentPath 
+         * @return ERS_OBJECT_SHADER 
+         */
+        ERS_OBJECT_SHADER LoadShaderFromFile(const char* VertexPath, const char* FragmentPath);
 
 
 

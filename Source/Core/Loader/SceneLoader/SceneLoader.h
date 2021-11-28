@@ -26,7 +26,7 @@
 #include <2DTexture.h>
 
 
-#include <ShaderManager.h>
+#include <Shader.h>
 
 
 /**
