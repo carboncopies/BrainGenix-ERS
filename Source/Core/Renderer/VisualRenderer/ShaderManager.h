@@ -303,7 +303,3 @@ struct ERS_OBJECT_SHADER {
 
 // FIXME: MOVE THISE TO OTHER (seperate) Shader Loader Class
 
-ERS_OBJECT_SHADER CreateShaderObject(const char* VertexText, const char* FragmentText, LoggerClass *Logger_);
-
-ERS_OBJECT_SHADER LoadShaderFromFile(const char* VertexPath, const char* FragmentPath, LoggerClass *Logger_);
-
