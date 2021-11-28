@@ -31,5 +31,4 @@ target_link_libraries(SceneLoader
     )
 
 target_include_directories(SceneLoader PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} SceneLoader)
 
