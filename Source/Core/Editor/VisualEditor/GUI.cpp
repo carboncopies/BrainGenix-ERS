@@ -98,6 +98,7 @@ void GUISystem::UpdateGUI() {
     // Wireframe Rendering Mode
     static bool OpenGLDrawLines = false;
     ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines);
+    ImGui::NewLine();
     if (OpenGLDrawLines) {
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     } else {
@@ -107,7 +108,8 @@ void GUISystem::UpdateGUI() {
 
     // Rendering Background Clear Color
     static ImVec4 ClearColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
-    ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor);    
+    ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor);
+    ImGui::NewLine();
     glClearColor(ClearColor.x, ClearColor.y, ClearColor.z, ClearColor.w);
 
 
