@@ -3,21 +3,25 @@
 ########################################################################
 
 
-
-# Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(ConfigurationLoader_Sources
-)
-
-# Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(ConfigurationLoader_Headers
-    "LocalConfigurationLoader.h"
-)
-
-
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ConfigurationLoader ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(ConfigurationLoader 
-    yaml-cpp
-    )
-target_include_directories(ConfigurationLoader PUBLIC ./)
+add_library(ConfigurationLoader
 
+            # Add Source Files (.cpp)
+
+            # Add Header Files (.h)
+            "LocalConfigurationLoader.h"
+            
+            ${BACKWARD_ENABLE}
+            )
+
+# Link 3rd Party Libs
+target_link_libraries(ConfigurationLoader
+
+    )
+
+# Link Internal Libs
+target_link_libraries(ConfigurationLoader
+
+    )
+
+target_include_directories(ConfigurationLoader PUBLIC ./)
