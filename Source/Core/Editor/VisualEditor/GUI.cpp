@@ -127,7 +127,6 @@ void GUISystem::UpdateGUI() {
     // FPS Counter
     ImGui::Text("System Framerate %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
-
     // End System Info Window
     ImGui::End();
 
