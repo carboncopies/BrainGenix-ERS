@@ -30,4 +30,3 @@ target_link_libraries(VisualEditor
     )
 
 target_include_directories(VisualEditor PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} VisualEditor)
