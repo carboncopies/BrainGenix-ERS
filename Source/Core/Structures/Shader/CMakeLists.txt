@@ -28,4 +28,3 @@ target_link_libraries(Shader
     )
 
 target_include_directories(Shader PUBLIC ./)
-target_link_libraries(${PROJECT_NAME} Shader)
