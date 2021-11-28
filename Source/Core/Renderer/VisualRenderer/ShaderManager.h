@@ -29,6 +29,8 @@
 
 
 
+//FIXME: MOVE DEFINITONS TO CPP FILE, MAKE DECLARATIONS ONLY!!!!
+
 /**
  * @brief Structure To Store Shader Object
  * 
