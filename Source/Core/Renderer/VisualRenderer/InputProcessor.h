@@ -4,7 +4,7 @@
 
 /*
     Description: This file contains the visual renderer callback functions.
-    Documentation Status: Done
+    Documentation Status: Complete
     Additonal Notes: None
     Date Created: 2021-11-16
 */
@@ -30,19 +30,36 @@ class InputProcessor {
     private:
 
         // Internal Vars
-        bool FirstMouse = true;
-        float LastX = 400;
-        float LastY = 400;
-        ERS_OBJECT_CAMERA_NOCLIP *Camera_;
+        bool FirstMouse = true; /**<Checks if the mouse is just being enabled.*/
+        float LastX = 400; /**<Location Of Last Mouse Position. (X coord) */
+        float LastY = 400; /**<Location Of Last Mouse Position. (Y Coord) */ 
+        ERS_OBJECT_CAMERA_NOCLIP *Camera_; /**<Pointer To Camera Instance */
 
-        GLFWwindow *Window_;
+        GLFWwindow *Window_; /**<Pointer To Window Surface */
 
 
-        // Internal Functions
+        /**
+         * @brief Callback for the framebuffer size (window resize events)
+         * 
+         * @param Width 
+         * @param Height 
+         */
         void FramebufferSizeCallback(int Width, int Height);
+
+        /**
+         * @brief Callback for mouse position (X,Y)
+         * 
+         * @param XPos 
+         * @param YPos 
+         */
         void MouseCallback(double XPos, double YPos);
 
         // FIXME: NO FUNCTION EXISTS TO GET SCROLL INPUT WITHOUT CALLBACK
+        /**
+         * @brief Callback for Mouse Scroll (!!!DOESN'T WORK RIGHT NOW, NEED TO BE FIXED!!!)
+         * 
+         * @param YOffset 
+         */
         void ScrollCallback(double YOffset);
 
     public:
