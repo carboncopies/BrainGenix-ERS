@@ -96,6 +96,23 @@ void GUISystem::UpdateGUI() {
         // ImGui::SameLine();
         // ImGui::Text("counter = %d", counter);
 
+
+        // Set Initial Value
+        static bool OpenGLDrawLines = false;
+
+        // Add Button
+        ImGui::Checkbox("ShowPolygons", &OpenGLDrawLines);
+
+        // Check Draw Mode
+        if (OpenGLDrawLines) {
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        } else {
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        }
+
+
+
+
         ImGui::Text("System Framerate %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
         ImGui::End();
     }

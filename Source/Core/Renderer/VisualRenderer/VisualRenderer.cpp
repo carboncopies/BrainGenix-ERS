@@ -134,8 +134,7 @@ void VisualRenderer::InitializeOpenGL() {
 
     
 
-    // uncomment this call to draw in wireframe polygons.
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
 
     Shader_.MakeActive();
 
@@ -146,6 +145,7 @@ void VisualRenderer::InitializeOpenGL() {
 }
 
 void VisualRenderer::UpdateLoop() {
+
 
 
     // Update DeltaTime
@@ -190,6 +190,9 @@ void VisualRenderer::UpdateLoop() {
     // Rendering Commands Here
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+
+
 
 
     // Use Shader
