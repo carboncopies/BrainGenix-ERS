@@ -130,7 +130,7 @@ FramebufferManager::~FramebufferManager() {
 
 
 // FramebufferManager Start FB Render Pass
-FramebufferManager::StartFramebufferRenderPass() {
+void FramebufferManager::StartFramebufferRenderPass() {
 
     // Bind To Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, FramebufferObject_);
@@ -140,7 +140,7 @@ FramebufferManager::StartFramebufferRenderPass() {
 
 
 // FramebufferManager Start Screen Render Pass
-FramebufferManager::StartScreenRenderPass() {
+void FramebufferManager::StartScreenRenderPass() {
 
     // Use Default Framebuffer, And Render To It
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
