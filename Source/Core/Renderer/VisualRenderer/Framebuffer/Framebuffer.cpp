@@ -48,6 +48,7 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger, float Width, float H
 
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Width, Height); // RESIZE THIS WITH THE WINDOW!
 
+
     // Attach Texture To Framebuffer
     Logger_->Log("Attaching Texture To Framebuffer", 4);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, RenderTexture_, 0);
@@ -56,6 +57,7 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger, float Width, float H
     Logger_->Log("Attaching Render Buffer Object To Depth Stencil", 5);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, RenderBufferObject_);
 
+
     // Check Framebuffer Status
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
 
@@ -63,7 +65,12 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger, float Width, float H
         Logger_->Log("Failed To Initialize Framebuffer", 9);
     }
 
+
+    // Bind To Framebuffer
+    Logger_->Log("Binding To Framebuffer", 5);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+
 
 
 }
