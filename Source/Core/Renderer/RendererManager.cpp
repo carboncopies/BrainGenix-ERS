@@ -34,7 +34,7 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
 
     // Instantiate Renderers
     Logger_->Log("Instantiating Renderers", 5);
-    VisualRenderer_ = new VisualRenderer(SystemConfiguration, Logger, SystemShouldRun);
+    VisualRenderer_ = new VisualRenderer(SystemConfiguration, Logger);
 
     // Setup Shaders
     ShaderLoader_ = new ShaderLoader(Logger_);
