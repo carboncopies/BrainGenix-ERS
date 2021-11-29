@@ -112,7 +112,9 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
     // Start Framebuffer Render Pass
     FramebufferManager_->StartFramebufferRenderPass();
-
+    
+    // Update GUI
+    GuiSystem_->UpdateGUI();
 
     // Call Updates
     VisualRenderer_->UpdateLoop(DeltaTime, &Camera_, &Shader_, 400, 200);
@@ -121,8 +123,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
 
 
-    // Update GUI
-    GuiSystem_->UpdateGUI();
+
 
 
     // Start Screen Render Pass
