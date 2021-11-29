@@ -149,7 +149,9 @@ void FramebufferManager::StartScreenRenderPass() {
     // Use Default Framebuffer, And Render To It
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glDisable(GL_DEPTH_TEST);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
+    glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     
     // Use ScreenShader
