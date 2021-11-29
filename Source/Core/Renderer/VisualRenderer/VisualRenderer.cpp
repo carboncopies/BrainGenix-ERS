@@ -198,8 +198,13 @@ void VisualRenderer::UpdateLoop() {
     Shader_.MakeActive();
 
 
-    // Initialize Camera
-    glm::mat4 projection = glm::perspective(glm::radians(Camera_.Zoom), (float)RenderWidth_ / (float)RenderHeight_, 0.1f, 100.0f);
+    // Update Camera
+    RenderWidth_ = WindowWidth_;
+    RenderHeight_ = WindowHeight_;
+
+    float AspectRatio = 2.0f;//(float)RenderWidth_ / (float)RenderHeight_;
+
+    glm::mat4 projection = glm::perspective(glm::radians(Camera_.Zoom), AspectRatio, 0.1f, 100.0f);
     glm::mat4 view = Camera_.GetViewMatrix();
     Shader_.SetMat4("projection", projection);
     Shader_.SetMat4("view", view);

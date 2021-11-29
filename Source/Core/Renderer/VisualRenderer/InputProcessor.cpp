@@ -96,6 +96,7 @@ void InputProcessor::ProcessKeyboardInput(LoggerClass *Logger_, float DeltaTime,
 // Internal Callback Framebuffer
 void InputProcessor::FramebufferSizeCallback(int Width, int Height) {
 
+
     // Update Viewport
     glViewport(0, 0, Width, Height);
     glScissor(0, 0, Width, Height);
