@@ -107,6 +107,9 @@ void RendererManager::InitializeGLFW() {
 void RendererManager::UpdateLoop(float DeltaTime) { 
 
 
+    // Update IO
+    IOManager_->UpdateFrame(DeltaTime);
+
     // Start Framebuffer Render Pass
     FramebufferManager_->StartFramebufferRenderPass();
 
