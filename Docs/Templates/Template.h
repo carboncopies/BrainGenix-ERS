@@ -12,7 +12,7 @@
 #pragma once
 
 
-// Internal Libraries (BG convention: use <> instead of "")
+// Standard Libraries (BG convention: use <> instead of "")
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 
