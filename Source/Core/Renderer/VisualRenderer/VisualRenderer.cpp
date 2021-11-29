@@ -73,7 +73,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime) {
     // Iterate Through Viewports
     for (int i = 0; i<Shaders_.size(); i++) {
 
-        UpdateViewport(DeltaTime, 400, 200);
+        UpdateViewport(i, DeltaTime, 400, 200);
 
     }
 
@@ -81,7 +81,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime) {
 }
 
 
-void VisualRenderer::UpdateViewport(float DeltaTime, float RenderWidth, float RenderHeight) {
+void VisualRenderer::UpdateViewport(int Index, float DeltaTime, float RenderWidth, float RenderHeight) {
 
 
 
@@ -90,19 +90,19 @@ void VisualRenderer::UpdateViewport(float DeltaTime, float RenderWidth, float Re
 
 
     // Use Shader
-    Shader->MakeActive();
+    Shaders_[Index]->MakeActive();
 
 
     // Update Camera
     float AspectRatio = (float)RenderWidth / (float)RenderHeight;
-    glm::mat4 projection = glm::perspective(glm::radians(Camera->Zoom), AspectRatio, 0.1f, 100.0f);
-    glm::mat4 view = Camera->GetViewMatrix();
-    Shader->SetMat4("projection", projection);
-    Shader->SetMat4("view", view);
+    glm::mat4 projection = glm::perspective(glm::radians(Cameras_[Index]->Zoom), AspectRatio, 0.1f, 100.0f);
+    glm::mat4 view = Cameras_[Index]->GetViewMatrix();
+    Shaders_[Index]->SetMat4("projection", projection);
+    Shaders_[Index]->SetMat4("view", view);
 
 
     // Draw Models
-    SceneManager_->Render(Shader);
+    SceneManager_->Render(Shaders_[Index]);
 
 }
 
