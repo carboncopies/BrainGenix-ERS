@@ -57,6 +57,10 @@ class VisualRenderer {
         std::vector<unsigned int> FramebufferColorObjects_; /**<Render Texture For Displaying Color*/
         std::vector<unsigned int> RenderbufferObjects_; /**<Render buffer Objects For Depth*/
 
+        std::vector<int> ViewportWidths_; /**<Vector Containing Viewport Widths In Pixels*/
+        std::vector<int> ViewportHeights_; /**<Vector Containing Viewport Heights In Pixels*/
+ 
+
  
         // Internal Functions
         void InitializeOpenGL();

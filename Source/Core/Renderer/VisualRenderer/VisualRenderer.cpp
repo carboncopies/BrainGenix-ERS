@@ -62,7 +62,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, SceneManager *SceneManager
     // Iterate Through Viewports
     for (int i = 0; i<Shaders_.size(); i++) {
 
-        UpdateViewport(i, SceneManager, DeltaTime, 400, 200);
+        UpdateViewport(i, SceneManager, DeltaTime);
 
     }
 
@@ -73,7 +73,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, SceneManager *SceneManager
 
 }
 
-void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float DeltaTime, float RenderWidth, float RenderHeight) {
+void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float DeltaTime) {
 
 
     // RENDER TO IMGUI
