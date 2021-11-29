@@ -16,10 +16,13 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 #include <VisualRenderer.h>
+#include <IOManager.h>
+#include <NoClip.h>
 
 
 
 
+static ERS_OBJECT_CAMERA_NOCLIP Camera_(glm::vec3(0.0f, 0.0f, 3.0f));
 
 
 /**
@@ -33,7 +36,8 @@ class RendererManager {
         // Member Variables
         YAML::Node *SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
         LoggerClass *Logger_; /**<Pointer to the logging system instance*/
-        VisualRenderer *VisualRenderer_; /**<Pointer To VisualRenderer Instance */
+        VisualRenderer *VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
+        IOManager *IOManager_; /**<Pointer To IOManager Instance*/
         GLFWwindow* Window_; /**<GLFW Window Instance*/
 
 

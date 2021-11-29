@@ -36,6 +36,10 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     Logger_->Log("Instantiating Renderers", 5);
     VisualRenderer_ = new VisualRenderer(SystemConfiguration, Logger, SystemShouldRun);
 
+    // Setup IOManager
+    Logger_->Log("Initializing Input/Output Manager", 5);
+    IOManager_ = new IOManager(Logger_);
+
 
 }
 

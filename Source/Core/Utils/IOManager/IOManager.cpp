@@ -14,17 +14,19 @@
 
 
 // IOManager Constructor
-IOManager::IOManager(LoggerClass *Logger) {
+IOManager::IOManager(LoggerClass *Logger, ERS_OBJECT_CAMERA_NOCLIP *Camera, FramebufferManager *FramebufferManager) {
 
     // Copy Pointer
     Logger_ = Logger;
+    Camera_ = Camera;
+    FramebufferManager_ = FramebufferManager;
 
     // Log Initialization
     Logger_->Log("Initializing IOManager", 5);
 
     // Create InputProcssor
     Logger_->Log("Setting Up Window Input Processor", 5);
-    InputProcessor_ = new InputProcessor(&Camera_, Window_, FramebufferManager_);
+    InputProcessor_ = new InputProcessor(Camera_, Window_, FramebufferManager_);
 
 
 

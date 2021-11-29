@@ -27,6 +27,7 @@ target_link_libraries(Renderer
 target_link_libraries(Renderer
     LoggingSystem
     VisualRenderer
+    IOManager
     )
 
 target_include_directories(Renderer PUBLIC ./)
