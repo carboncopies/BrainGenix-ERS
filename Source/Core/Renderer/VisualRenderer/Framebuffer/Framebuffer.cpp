@@ -14,7 +14,7 @@
 
 
 // Framebuffer manager Constructor
-FramebufferManager::FramebufferManager(LoggerClass *Logger) {
+FramebufferManager::FramebufferManager(LoggerClass *Logger, float Width, float Height) {
 
     // Create Local Pointer
     Logger_ = Logger;
@@ -30,7 +30,20 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger) {
     // Bind To Framebuffer
     Logger_->Log("Binding To Framebuffer Object", 4);
     glBindBuffer(GL_FRAMEBUFFER, FramebufferObject_);
-    
+
+
+    // Create RenderTexture
+    Logger_->Log("Creating Render Texture", 4);
+    glGenTextures(1, &RenderTexture_);
+    glBindTexture(GL_TEXTURE_2D, RenderTexture_);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, (int)Width, (int)Height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL); // NOTE: THIS MUST HAPPEN ON RESIZE!
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    // Attach Texture To Framebuffer
+    Logger_->Log("Attaching Texture To Framebuffer", 4);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, RenderTexture_, 0);
 
     // Check Framebuffer Status
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
