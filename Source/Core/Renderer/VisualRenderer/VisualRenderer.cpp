@@ -109,7 +109,6 @@ void VisualRenderer::UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camer
     glm::mat4 view = Camera->GetViewMatrix();
     Shader->SetMat4("projection", projection);
     Shader->SetMat4("view", view);
-    std::cout<< "1\n";
 
 
     // Draw Models
