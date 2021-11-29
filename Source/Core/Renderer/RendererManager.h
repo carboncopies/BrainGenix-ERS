@@ -40,6 +40,13 @@ class RendererManager {
         // Renderer Instances
         VisualRenderer *VisualRenderer_; /**<Pointer To VisualRenderer Instance */
 
+        /**
+         * @brief Initialize And Create A GLFW Window
+         * 
+         */
+        void InitializeGLFW();
+
+
     public:
 
         /**
