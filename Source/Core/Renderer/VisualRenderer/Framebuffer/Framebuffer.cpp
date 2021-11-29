@@ -146,42 +146,23 @@ void FramebufferManager::StartFramebufferRenderPass() {
 
 
 // FramebufferManager Start Screen Render Pass
-void FramebufferManager::StartScreenRenderPass(bool RenderToImGui) {
+void FramebufferManager::StartScreenRenderPass() {
 
-    // // If Not Rendering To ImGUI
-    // if (!RenderToImGui) {
+    // Use Default Framebuffer, And Render To It
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glDisable(GL_DEPTH_TEST);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-        // Use Default Framebuffer, And Render To It
-        glBindFramebuffer(GL_FRAMEBUFFER, 0);
-        glDisable(GL_DEPTH_TEST);
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    // Use ScreenShader
+    ScreenShader_.MakeActive();
 
-        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-        
-        // Use ScreenShader
-        ScreenShader_.MakeActive();
-
-        // Render Quad
-        glBindVertexArray(ScreenQuadVAO_);
-        glBindTexture(GL_TEXTURE_2D, RenderTexture_);
-        glDrawArrays(GL_TRIANGLES, 0, 6);
-
-    // } else {
-    //     // Render FBO Into Viewport
-    //     ImGui::Begin("Viewport");
-
-    //         ImGui::BeginChild("Test");
-
-    //             ImVec2 WindowSize = ImGui::GetWindowSize();
-    //             ImGui::Image((ImTextureID)&RenderTexture_, WindowSize, ImVec2(0,1), ImVec2(1,0));
-
-    //         ImGui::EndChild();
-
-
-    //     ImGui::End();
-
-    // }
+    // Render Quad
+    glBindVertexArray(ScreenQuadVAO_);
+    glBindTexture(GL_TEXTURE_2D, RenderTexture_);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
 
 }
 

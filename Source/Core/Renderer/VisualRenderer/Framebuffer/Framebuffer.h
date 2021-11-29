@@ -82,7 +82,7 @@ class FramebufferManager {
          * @brief Start Renderpass To Screen (GUI Rendering Goes AFter This).
          * 
          */
-        void StartScreenRenderPass(bool RenderToImGui = false);
+        void StartScreenRenderPass();
 
         /**
          * @brief Resizes the framebuffer to allow for proper scaling.
