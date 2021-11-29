@@ -104,7 +104,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     ImGui::Begin(ViewportNames_[Index].c_str());
     
     ImGui::GetWindowDrawList()->AddImage(
-        (ImTextureID)&FramebufferObjects_[Index],
+        (void*)(intptr_t)FramebufferObjects_[Index],
         ImVec2(ImGui::GetCursorScreenPos()),
         ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x,
             ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
