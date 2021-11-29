@@ -157,6 +157,7 @@ void FramebufferManager::StartScreenRenderPass() {
     ScreenShader_.MakeActive();
 
     // Render Quad
+    std::cout<<ScreenQuadVAO_<<std::endl;
     glBindVertexArray(ScreenQuadVAO_);
     glBindTexture(GL_TEXTURE_2D, RenderTexture_);
     glDrawArrays(GL_TRIANGLES, 0, 6);
