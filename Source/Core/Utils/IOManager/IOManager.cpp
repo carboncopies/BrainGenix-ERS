@@ -24,3 +24,46 @@ IOManager::IOManager(LoggerClass *Logger) {
 
 
 }
+
+
+// IOManager Destructor
+IOManager::~IOManager() {
+
+    // Log Destructor Call
+    Logger_->Log("IOManager Destructor Called", 6);
+
+}
+
+
+// Update Frame
+void IOManager::UpdateFrame(float DeltaTime) {
+
+
+    // Process Window Input
+    glfwGetWindowSize(Window_, &WindowWidth_, &WindowHeight_);
+    glfwPollEvents();
+
+    // Get IMGUI IO State
+    auto Io = &ImGui::GetIO();
+
+    // Enable/Disable Mouse Capture
+    if ((glfwGetMouseButton(Window_, 0) == GLFW_PRESS) && (!Io->WantCaptureMouse) ){
+        CaptureMouseCursor_ = true;
+    } else {
+        CaptureMouseCursor_ = false;
+    }
+
+
+    InputProcessor_->ProcessKeyboardInput(Logger_, DeltaTime, CaptureMouseCursor_);
+    InputProcessor_->UpdateFramebuffer();
+    InputProcessor_->UpdateMouse(CaptureMouseCursor_);
+
+
+    // Update Mouse Capture State
+    if (CaptureMouseCursor_) {
+        glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    } else {
+        glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    }
+
+}

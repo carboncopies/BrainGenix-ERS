@@ -22,7 +22,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>

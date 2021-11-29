@@ -20,6 +20,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include <imgui.h>
+
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
@@ -36,7 +38,11 @@ class IOManager {
     private:
 
 
-        LoggerClass *Logger_ /**<Logging System Instance Pointer*/
+        LoggerClass *Logger_; /**<Logging System Instance Pointer*/
+        GLFWwindow *Window_; /**<Pointer To GLFW Window */
+
+        int WindowWidth_; /**<Window Width*/
+        int WindowHeight_; /**<Window Height*/
 
 
     public:
