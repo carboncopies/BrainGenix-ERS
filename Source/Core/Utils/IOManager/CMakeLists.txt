@@ -19,6 +19,7 @@ add_library(IOManager
 target_link_libraries(IOManager
     glad
     glfw
+    IMGUI
     )
 
 # Link Internal Libs
