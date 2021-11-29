@@ -136,7 +136,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     GuiSystem_->UpdateGUI();
 
     // Call Updates
-    VisualRenderer_->UpdateViewports(DeltaTime);
+    VisualRenderer_->UpdateViewports(DeltaTime, SceneManager_);
 
 
 
