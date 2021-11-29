@@ -188,13 +188,8 @@ void VisualRenderer::UpdateLoop() {
         // Rendering Commands Here
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
-
-
-
         // Use Shader
         Shader_.MakeActive();
-
 
         // Update Camera
         RenderWidth_ = WindowWidth_;
@@ -219,7 +214,7 @@ void VisualRenderer::UpdateLoop() {
     // Start Screen Render Pass
     FramebufferManager_->StartScreenRenderPass();
     {
-        
+
         // Update GUI
         GuiSystem_->UpdateGUI();
 
