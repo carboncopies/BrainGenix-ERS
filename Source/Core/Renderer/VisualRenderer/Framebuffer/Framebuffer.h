@@ -14,15 +14,20 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 
+
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glad/glad.h>
 
 #include <GLFW/glfw3.h>
 
+#include <imgui.h>
+
+
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 #include <Shader.h>
 #include <ShaderLoader.h>
+
 
 
 /**
@@ -35,6 +40,7 @@ class FramebufferManager {
     private:
 
         LoggerClass *Logger_; /**<Pointer to instance of Logger Class*/
+        unsigned int FramebufferObject_; /**<Framebuffer OpenGL Handle (Used to Render Inside IMGUI Window Or On Screen Directly)*/
         unsigned int RenderTexture_; /**<OpenGL Renderes To This Texture, Then It's Displayed. (OpenGL Handle)*/
         unsigned int RenderBufferObject_; /**<RenderBuffer Object Handle.*/
 
@@ -47,8 +53,6 @@ class FramebufferManager {
 
 
     public:
-
-        unsigned int FramebufferObject_; /**<Framebuffer OpenGL Handle (Used to Render Inside IMGUI Window Or On Screen Directly)*/
 
 
         /**
@@ -78,7 +82,7 @@ class FramebufferManager {
          * @brief Start Renderpass To Screen (GUI Rendering Goes AFter This).
          * 
          */
-        void StartScreenRenderPass();
+        void StartScreenRenderPass(bool RenderToImGui = false);
 
         /**
          * @brief Resizes the framebuffer to allow for proper scaling.

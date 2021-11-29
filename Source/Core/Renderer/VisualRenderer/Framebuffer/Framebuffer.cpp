@@ -146,23 +146,44 @@ void FramebufferManager::StartFramebufferRenderPass() {
 
 
 // FramebufferManager Start Screen Render Pass
-void FramebufferManager::StartScreenRenderPass() {
+void FramebufferManager::StartScreenRenderPass(bool RenderToImGui) {
 
-    // Use Default Framebuffer, And Render To It
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    glDisable(GL_DEPTH_TEST);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    // If Not Rendering To ImGUI
+    if (!RenderToImGui) {
 
-    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-    
-    // Use ScreenShader
-    ScreenShader_.MakeActive();
+        // Use Default Framebuffer, And Render To It
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glDisable(GL_DEPTH_TEST);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-    // Render Quad
-    glBindVertexArray(ScreenQuadVAO_);
-    glBindTexture(GL_TEXTURE_2D, RenderTexture_);
-    glDrawArrays(GL_TRIANGLES, 0, 6);
+        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+        
+        // Use ScreenShader
+        ScreenShader_.MakeActive();
+
+        // Render Quad
+        glBindVertexArray(ScreenQuadVAO_);
+        glBindTexture(GL_TEXTURE_2D, RenderTexture_);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+
+    } else {
+        // Render FBO Into Viewport
+        ImGui::Begin("Viewport");
+
+        ImGui::GetWindowDrawList()->AddImage(
+            (void *)RenderTexture_, 
+            ImVec2(ImGui::GetCursorScreenPos()), 
+            ImVec2(ImGui::GetCursorScreenPos().x + 0, 
+            ImGui::GetCursorScreenPos().y + 0), 
+            ImVec2(0, 1), 
+            ImVec2(1, 0)
+        );
+
+
+        ImGui::End();
+
+    }
 
 }
 

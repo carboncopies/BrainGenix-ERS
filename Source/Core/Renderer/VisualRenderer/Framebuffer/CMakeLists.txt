@@ -20,6 +20,7 @@ target_link_libraries(Framebuffer
     glm
     glad
     glfw
+    IMGUI
     )
 
 # Link Internal Libs

@@ -216,7 +216,7 @@ void VisualRenderer::UpdateLoop() {
 
 
     // Start Screen Render Pass
-    FramebufferManager_->StartScreenRenderPass();
+    FramebufferManager_->StartScreenRenderPass(true);
     
 
 
