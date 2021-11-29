@@ -130,7 +130,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     IOManager_->UpdateFrame(DeltaTime);
 
     // Start Framebuffer Render Pass
-    FramebufferManager_->StartFramebufferRenderPass();
+    //FramebufferManager_->StartFramebufferRenderPass();
 
     // Update GUI
     GuiSystem_->UpdateGUI();
@@ -146,7 +146,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
 
     // Start Screen Render Pass
-    FramebufferManager_->StartScreenRenderPass();
+    //FramebufferManager_->StartScreenRenderPass();
     
 
 
