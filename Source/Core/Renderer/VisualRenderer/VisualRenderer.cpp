@@ -110,7 +110,7 @@ void VisualRenderer::InitializeOpenGL() {
 
 
     // Enable Scissor Test
-    glEnable(GL_SCISSOR_TEST);
+    //glEnable(GL_SCISSOR_TEST);
 
     // Setup Shaders
     ShaderLoader_ = new ShaderLoader(Logger_);

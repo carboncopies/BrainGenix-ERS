@@ -81,17 +81,16 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger, ShaderLoader *Shader
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
+    // Attach Texture To Framebuffer
+    Logger_->Log("Attaching Texture To Framebuffer", 4);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, RenderTexture_, 0);
+
     // Create Render Buffer
     Logger_->Log("Creating Render Buffer Object", 5);
     glGenRenderbuffers(1, &RenderBufferObject_);
     glBindRenderbuffer(GL_RENDERBUFFER, RenderBufferObject_);
 
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Width, Height); // RESIZE THIS WITH THE WINDOW!
-
-
-    // Attach Texture To Framebuffer
-    Logger_->Log("Attaching Texture To Framebuffer", 4);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, RenderTexture_, 0);
 
     // Attach Renderbuffer to Depth And Stencil Attachment
     Logger_->Log("Attaching Render Buffer Object To Depth Stencil", 5);
