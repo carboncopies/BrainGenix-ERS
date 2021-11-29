@@ -13,12 +13,12 @@
 
 
 // InputProcessor Constructor
-InputProcessor::InputProcessor(ERS_OBJECT_CAMERA_NOCLIP *Camera, GLFWwindow *Window, FramebufferManager *FramebufferManager) {
+InputProcessor::InputProcessor(ERS_OBJECT_CAMERA_NOCLIP *Camera, GLFWwindow *Window) {
 
     // Copy To Member Pointer
     Camera_ = Camera;
     Window_ = Window;
-    FramebufferManager_ = FramebufferManager;
+    //FramebufferManager_ = FramebufferManager;
 
 }
 
@@ -103,7 +103,7 @@ void InputProcessor::FramebufferSizeCallback(int Width, int Height) {
     glScissor(0, 0, Width, Height);
 
     // Update Framebuffer Size
-    FramebufferManager_->ResizeFramebuffer(Width, Height);
+    //FramebufferManager_->ResizeFramebuffer(Width, Height);
 
 }
 

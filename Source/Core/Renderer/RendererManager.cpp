@@ -54,7 +54,7 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     // CHECK TRELLO!
 
     // Setup Framebuffer
-    FramebufferManager_ = new FramebufferManager(Logger_, ShaderLoader_, WindowWidth_, WindowHeight_);
+    //FramebufferManager_ = new FramebufferManager(Logger_, ShaderLoader_, WindowWidth_, WindowHeight_);
 
     // Setup IOManager
     Logger_->Log("Initializing Input/Output Manager", 5);
