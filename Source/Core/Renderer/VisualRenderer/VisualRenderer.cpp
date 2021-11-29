@@ -101,7 +101,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     SceneManager->Render(Shaders_[Index]);
 
     // Render Framebuffer To Window
-    ImGui::Begin("test");
+    ImGui::Begin(ViewportNames_[Index].c_str());
     
     ImGui::GetWindowDrawList()->AddImage(
         (void*)FramebufferObjects_[Index],
@@ -118,11 +118,12 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
 // ADD DESTROY VIEWPORT FUNCTION!
 
-void VisualRenderer::CreateViewport(ERS_OBJECT_SHADER *Shader, ERS_OBJECT_CAMERA_NOCLIP *Camera) {
+void VisualRenderer::CreateViewport(ERS_OBJECT_SHADER *Shader, std::string ViewportName, ERS_OBJECT_CAMERA_NOCLIP *Camera) {
 
     // Append To Vectors
     Shaders_.push_back(Shader);
     Cameras_.push_back(Camera);
+    ViewportNames_.push_back(ViewportName);
 
 
 
