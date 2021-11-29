@@ -10,3 +10,17 @@
 */
 
 #include <IOManager.h>
+
+
+
+// IOManager Constructor
+IOManager::IOManager(LoggerClass *Logger) {
+
+    // Copy Pointer
+    Logger_ = Logger;
+
+    // Log Initialization
+    Logger_->Log("Initializing IOManager", 5);
+
+
+}
