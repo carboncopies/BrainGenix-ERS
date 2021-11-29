@@ -133,9 +133,17 @@ FramebufferManager::StartFramebufferRenderPass() {
 }
 
 // FramebufferManeger End FB Render Pass
+FramebufferManager::EndFramebufferRenderPass() {
 
+    // Nothing To Do Here, Just Here For Symmetry.
+
+}
 
 // FramebufferManager Start Screen Render Pass
+FramebufferManager::StartScreenRenderPass() {
 
+    // 
+
+}
 
 // FrambufferManager End Screen Render Pass
