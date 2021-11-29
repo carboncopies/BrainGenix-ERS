@@ -25,8 +25,18 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger) {
 
     // Create Framebuffer
     Logger_->Log("Creating Framebuffer Object", 4);
-    glGenFramebuffers(1, &FramebufferObject);
+    glGenFramebuffers(1, &FramebufferObject_);
 
 }
 
 // Framebuffer manager Destructor
+FramebufferManager::~FramebufferManager() {
+
+    // Log Destructor Called
+    Logger_->Log("Framebuffer Manager Destructor Called", 6);
+
+    // Destroy Framebuffer
+    Logger_->Log("Destroying Framebuffer Object", 5);
+    glDeleteFramebuffers(1, &FramebufferObject_);  
+
+}

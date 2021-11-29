@@ -33,7 +33,7 @@ class FramebufferManager {
     private:
 
         LoggerClass *Logger_; /**<Pointer to instance of Logger Class*/
-        unsigned int FramebufferObject /**<Framebuffer OpenGL Handle*/
+        unsigned int FramebufferObject_ /**<Framebuffer OpenGL Handle*/
 
 
     public:
