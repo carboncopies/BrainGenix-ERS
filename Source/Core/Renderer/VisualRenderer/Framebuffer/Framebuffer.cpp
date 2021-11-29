@@ -41,6 +41,15 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger, float Width, float H
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
+    // Create Render Buffer
+    Logger_->Log("Creating Render Buffer Object", 5);
+    glGenRenderbuffers(1, &RenderBufferObject_);
+    glBindRenderbuffer(GL_RENDERBUFFER, RenderBufferObject_);
+
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Width, Height); // RESIZE THIS WITH THE WINDOW!
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, RenderBufferObject_);
+    
+
     // Attach Texture To Framebuffer
     Logger_->Log("Attaching Texture To Framebuffer", 4);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, RenderTexture_, 0);
