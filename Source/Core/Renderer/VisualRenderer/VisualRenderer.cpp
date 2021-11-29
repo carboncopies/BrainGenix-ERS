@@ -197,6 +197,8 @@ void VisualRenderer::UpdateLoop() {
 
     // Update Camera
     glfwGetFramebufferSize(Window_, &RenderWidth_, &RenderHeight_);
+    RenderWidth_ = 400;
+    RenderHeight_ = 300;
     float AspectRatio = (float)RenderWidth_ / (float)RenderHeight_;
 
 

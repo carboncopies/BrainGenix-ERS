@@ -174,7 +174,7 @@ void FramebufferManager::StartScreenRenderPass(bool RenderToImGui) {
             ImGui::BeginChild("Test");
 
                 ImVec2 WindowSize = ImGui::GetWindowSize();
-                ImGui::Image((ImTextureID)RenderTexture_, WindowSize, ImVec2(0,1), ImVec2(1,0));
+                ImGui::Image((ImTextureID)&RenderTexture_, WindowSize, ImVec2(0,1), ImVec2(1,0));
 
             ImGui::EndChild();
 
