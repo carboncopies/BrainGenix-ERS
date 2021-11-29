@@ -126,7 +126,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
 
     // Start Screen Render Pass
-    FramebufferManager_->StartScreenRenderPass(true);
+    FramebufferManager_->StartScreenRenderPass();
     
 
 
