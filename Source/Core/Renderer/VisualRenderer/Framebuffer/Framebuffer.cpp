@@ -27,6 +27,18 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger) {
     Logger_->Log("Creating Framebuffer Object", 4);
     glGenFramebuffers(1, &FramebufferObject_);
 
+    // Bind To Framebuffer
+    Logger_->Log("Binding To Framebuffer Object", 4);
+    glBindBuffer(GL_FRAMEBUFFER, FramebufferObject_);
+    
+
+    // Check Framebuffer Status
+    if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+
+        // Log Error
+        Logger_->Log("Failed To Initialize Framebuffer", 9);
+    }
+
 }
 
 // Framebuffer manager Destructor
