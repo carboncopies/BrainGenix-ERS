@@ -100,6 +100,11 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     // Draw Models
     SceneManager->Render(Shaders_[Index]);
 
+    // Render Framebuffer To Window
+    ImGui::Begin("test");
+    ImGui::Text("testfdsafdsafdsa");
+    ImGui::End();
+
 }
 
 // ADD DESTROY VIEWPORT FUNCTION!
