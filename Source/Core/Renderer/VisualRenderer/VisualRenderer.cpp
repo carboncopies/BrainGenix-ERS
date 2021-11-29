@@ -158,7 +158,6 @@ void VisualRenderer::UpdateLoop() {
 
     // Get IMGUI IO State
     auto Io = &ImGui::GetIO();
-    //&& (Io->WantCaptureKeyboard)
 
     // Enable/Disable Mouse Capture
     if ((glfwGetMouseButton(Window_, 0) == GLFW_PRESS) && (!Io->WantCaptureMouse) ){
