@@ -8,12 +8,23 @@
     Date Created: 2021-11-01
 */
 
+
+// Standard Libraries (BG convention: use <> instead of "")
+
+
+// Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
 
+#include <GLFW/glfw3.h>
+
+// Internal Libraries (BG convention: use <> instead of "")
 #include "LocalConfigurationLoader.h"
 #include "LoggingSystem.h"
 
 #include "RendererManager.h"
+
+
+
 
 //
 //
@@ -84,6 +95,10 @@ int main() {
 
     // Enter Main Loop
     while (SystemShouldRun) {
+
+
+        // Calculate Frametime
+        
 
         
         sERSRendererManager.UpdateLoop();
