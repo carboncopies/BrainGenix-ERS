@@ -37,6 +37,7 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     VisualRenderer_ = new VisualRenderer(SystemConfiguration, Logger, SystemShouldRun);
 
 
+
     // TODO: FINISH REFACTORING VISUALRENDERER
     // REFACTOR FRAMEBUFFERMANAGER TO ALLOW EACH VIEWPORT TO HAVE IT's OWN RESOLUTION
     // REFACTOR VISUALRENDERER INTO VIEWPORTMANAGER TO ALLOW FOR MULTIPLE VIEWPORTS, JUST CREATE ONE FOR NOW
