@@ -62,7 +62,7 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
 
 
     // Make Viewport
-    VisualRenderer_->CreateViewport(&Shader_, &Camera_);
+    VisualRenderer_->CreateViewport(&Shader_, "TestWindow", &Camera_);
 
 
 
