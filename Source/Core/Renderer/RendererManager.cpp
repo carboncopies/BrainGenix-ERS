@@ -149,6 +149,8 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     //FramebufferManager_->StartScreenRenderPass();
 
     // Update GUI Frame
+    glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
     GuiSystem_->UpdateFrame();
     
 
