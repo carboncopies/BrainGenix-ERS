@@ -13,23 +13,19 @@
 
 
 // Visual Rendere constructor
-VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun) {
+VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, LoggerClass *Logger) {
 
     // Create Pointers
     Logger->Log("Populating Renderer Member Pointers", 5);
     SystemConfiguration_ = SystemConfiguration;
     Logger_ = Logger;
-    SystemShouldRun_ = SystemShouldRun;
 
     // Initialize Texture Loader
     TextureLoader_ = new TextureLoader(Logger_);
 
-
-
+    // Initialize OpenGL
     Logger_->Log("Initializing OpenGL", 5);
     InitializeOpenGL();
-
-    
 
 }
 

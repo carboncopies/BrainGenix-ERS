@@ -58,11 +58,10 @@ class VisualRenderer {
 
         std::vector<ERS_OBJECT_CAMERA_NOCLIP*> Cameras_; /**<List Of Pointers To Camera Instances*/
         std::vector<ERS_OBJECT_SHADER*> Shaders_; /**<List Of Pointers To Shader Instances*/
-
+        std::vector<std::string> ViewportNames_; /**<List Of Names For Viewports*/
 
         
-        // Control Values
-        bool *SystemShouldRun_;
+
 
 
 
@@ -79,7 +78,7 @@ class VisualRenderer {
     public:
 
         // Constructor
-        VisualRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun);
+        VisualRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger);
 
 
         // Destructor
