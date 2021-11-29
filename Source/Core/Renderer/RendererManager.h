@@ -33,12 +33,13 @@ class RendererManager {
         // Member Variables
         YAML::Node *SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
         LoggerClass *Logger_; /**<Pointer to the logging system instance*/
+        VisualRenderer *VisualRenderer_; /**<Pointer To VisualRenderer Instance */
 
         // Control Values
         bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */
-
-        // Renderer Instances
-        VisualRenderer *VisualRenderer_; /**<Pointer To VisualRenderer Instance */
+        int WindowWidth_; /**<GLFW Window Width Varaible*/
+        int WindowHeight_; /**<GLFW Window Height Varaible*/
+        std::string WindowTitle_; /**GLFW Window Title Variable*/
 
         /**
          * @brief Initialize And Create A GLFW Window

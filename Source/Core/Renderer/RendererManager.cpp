@@ -49,7 +49,7 @@ RendererManager::~RendererManager() {
 
 
 // Initialize Window
-void RenderManager::InitializeGLFW() {
+void RendererManager::InitializeGLFW() {
 
     // Initialize GLFW
     glfwInit();
