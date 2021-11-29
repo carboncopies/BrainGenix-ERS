@@ -14,7 +14,7 @@
 
 
 // Framebuffer manager Constructor
-FramebufferManager::FramebufferManager(LoggerClass *Logger, float Width, float Height) {
+FramebufferManager::FramebufferManager(LoggerClass *Logger, ShaderLoader *ShaderLoader, float Width, float Height) {
 
     // Create Local Pointer
     Logger_ = Logger;
@@ -25,7 +25,7 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger, float Width, float H
 
     // Load Screen Shaders
     Logger_->Log("Loading Screen Shaders", 5);
-    
+
 
 
     // Create Framebuffer

@@ -21,6 +21,8 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+#include <Shader.h>
+#include <ShaderLoader.h>
 
 
 /**
@@ -37,7 +39,9 @@ class FramebufferManager {
         unsigned int RenderTexture_; /**<OpenGL Renderes To This Texture, Then It's Displayed. (OpenGL Handle)*/
         unsigned int RenderBufferObject_; /**<RenderBuffer Object Handle.*/
 
-        
+        ShaderLoader *ShaderLoader_; /**<Pointer To Shader Loader Instance*/
+        Shader ScreenShader; /**<Screen Shader Instance, Used To Display Framebuffer To Screen*/
+
 
     public:
 
@@ -48,7 +52,7 @@ class FramebufferManager {
          * @param Width Width In Pixels
          * @param Height Height In Pixels
          */
-        FramebufferManager(LoggerClass *Logger, float Width = 800.0f, float Height = 600.0f);
+        FramebufferManager(LoggerClass *Logger, ShaderLoader *ShaderLoader, float Width = 800.0f, float Height = 600.0f);
 
         /**
          * @brief Destroy the Framebuffer Manager object.

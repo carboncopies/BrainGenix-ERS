@@ -25,6 +25,8 @@ target_link_libraries(Framebuffer
 # Link Internal Libs
 target_link_libraries(Framebuffer
     LoggingSystem
+    Shader
+    ShaderLoader
     )
 
 target_include_directories(Framebuffer PUBLIC ./)
