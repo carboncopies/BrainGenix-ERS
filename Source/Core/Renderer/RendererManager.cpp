@@ -63,6 +63,9 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
 
     // Make Viewport
     VisualRenderer_->CreateViewport(&Shader_, "TestWindow", &Camera_);
+    Camera_.Position = Camera_.Position + 0.2f;
+    VisualRenderer_->CreateViewport(&Shader_, "TestWindow2", &Camera_);
+    Camera_.Position = Camera_.Position - 0.2f;
 
 
 
