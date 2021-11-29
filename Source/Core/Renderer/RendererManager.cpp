@@ -58,7 +58,7 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
 
     // Setup IOManager
     Logger_->Log("Initializing Input/Output Manager", 5);
-    IOManager_ = new IOManager(Logger_, Window_, &Camera_, FramebufferManager_);
+    IOManager_ = new IOManager(Logger_, Window_, &Camera_);
 
 
     // Make Viewport

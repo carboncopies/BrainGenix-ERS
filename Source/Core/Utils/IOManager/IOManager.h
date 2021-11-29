@@ -42,7 +42,7 @@ class IOManager {
         LoggerClass *Logger_; /**<Logging System Instance Pointer*/
         InputProcessor *InputProcessor_; /**<Pointer to input processor instance*/
         ERS_OBJECT_CAMERA_NOCLIP *Camera_; /**<Pointer To Camera Instance*/
-        FramebufferManager *FramebufferManager_; /**<Pointer To Framebuffer Manager Instance*/
+        //FramebufferManager *FramebufferManager_; /**<Pointer To Framebuffer Manager Instance*/
 
         // Objects
         GLFWwindow *Window_; /**<Pointer To GLFW Window */
@@ -65,7 +65,7 @@ class IOManager {
          * @param Camera 
          * @param FramebufferManager 
          */
-        IOManager(LoggerClass *Logger, GLFWwindow *Window, ERS_OBJECT_CAMERA_NOCLIP *Camera, FramebufferManager *FramebufferManager);
+        IOManager(LoggerClass *Logger, GLFWwindow *Window, ERS_OBJECT_CAMERA_NOCLIP *Camera);
 
         /**
          * @brief Destroy the IOManager object
