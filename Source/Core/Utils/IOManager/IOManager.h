@@ -65,7 +65,7 @@ class IOManager {
          * @param Camera 
          * @param FramebufferManager 
          */
-        IOManager(LoggerClass *Logger,  ERS_OBJECT_CAMERA_NOCLIP *Camera, FramebufferManager *FramebufferManager);
+        IOManager(LoggerClass *Logger, GLFWwindow *Window, ERS_OBJECT_CAMERA_NOCLIP *Camera, FramebufferManager *FramebufferManager);
 
         /**
          * @brief Destroy the IOManager object

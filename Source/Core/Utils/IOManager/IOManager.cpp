@@ -14,11 +14,12 @@
 
 
 // IOManager Constructor
-IOManager::IOManager(LoggerClass *Logger, ERS_OBJECT_CAMERA_NOCLIP *Camera, FramebufferManager *FramebufferManager) {
+IOManager::IOManager(LoggerClass *Logger, GLFWwindow* Window, ERS_OBJECT_CAMERA_NOCLIP *Camera, FramebufferManager *FramebufferManager) {
 
     // Copy Pointer
     Logger_ = Logger;
     Camera_ = Camera;
+    Window_ = Window;
     FramebufferManager_ = FramebufferManager;
 
     // Log Initialization
