@@ -66,6 +66,21 @@ void VisualRenderer::InitializeOpenGL() {
 
 }
 
+
+void VisualRenderer::UpdateViewports(float DeltaTime) {
+
+
+    // Iterate Through Viewports
+    for (int i = 0; i<Shaders_.size(); i++) {
+
+        UpdateViewport(DeltaTime, 400, 200);
+
+    }
+
+
+}
+
+
 void VisualRenderer::UpdateViewport(float DeltaTime, float RenderWidth, float RenderHeight) {
 
 

@@ -61,6 +61,10 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     IOManager_ = new IOManager(Logger_, Window_, &Camera_, FramebufferManager_);
 
 
+    // Make Viewport
+    VisualRenderer_->CreateViewport(&Shader_, &Camera_);
+
+
 }
 
 // RendererManager Destructor
@@ -117,7 +121,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     GuiSystem_->UpdateGUI();
 
     // Call Updates
-    VisualRenderer_->UpdateViewport(DeltaTime, &Camera_, &Shader_, 400, 200);
+    VisualRenderer_->UpdateViewports(DeltaTime);
 
 
 

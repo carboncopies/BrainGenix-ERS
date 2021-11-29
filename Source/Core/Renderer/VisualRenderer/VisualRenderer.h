@@ -87,7 +87,7 @@ class VisualRenderer {
 
 
         void CreateViewport(ERS_OBJECT_SHADER *Shader, ERS_OBJECT_CAMERA_NOCLIP *Camera);
-
+        void UpdateViewports(float DeltaTime);
         // Update Loop Func
         void UpdateViewport(float DeltaTime, float RenderWidth, float RenderHeight);
 
