@@ -123,7 +123,19 @@ FramebufferManager::~FramebufferManager() {
 }
 
 
-// FramebufferManager Start Render Pass
+// FramebufferManager Start FB Render Pass
+FramebufferManager::StartFramebufferRenderPass() {
+
+    // Bind To Framebuffer
+    glBindFramebuffer(GL_FRAMEBUFFER, FramebufferObject_);
+    glEnable(GL_DEPTH_TEST);
+
+}
+
+// FramebufferManeger End FB Render Pass
 
 
-// FramebufferManeger End Render Pass
+// FramebufferManager Start Screen Render Pass
+
+
+// FrambufferManager End Screen Render Pass
