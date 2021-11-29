@@ -60,104 +60,114 @@ GUISystem::~GUISystem() {
 // Update GUI
 void GUISystem::UpdateGUI() {
 
-    // Get Window Width, Height
-    float Width;
-    float Height;
-    glfwGetWindowContentScale(Window_, &Width, &Height);
+    if (!EditorDisabled_) {
+
+        // Get Window Width, Height
+        float Width;
+        float Height;
+        glfwGetWindowContentScale(Window_, &Width, &Height);
 
 
-    // Poll and handle events (inputs, window resize, etc.)
-    // You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to tell if dear imgui wants to use your inputs.
-    // - When io.WantCaptureMouse is true, do not dispatch mouse input data to your main application.
-    // - When io.WantCaptureKeyboard is true, do not dispatch keyboard input data to your main application.
-    // Generally you may always pass all inputs to dear imgui, and hide them from your application based on those two flags.
+        // Poll and handle events (inputs, window resize, etc.)
+        // You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to tell if dear imgui wants to use your inputs.
+        // - When io.WantCaptureMouse is true, do not dispatch mouse input data to your main application.
+        // - When io.WantCaptureKeyboard is true, do not dispatch keyboard input data to your main application.
+        // Generally you may always pass all inputs to dear imgui, and hide them from your application based on those two flags.
 
 
-    // Start the Dear ImGui frame
-    ImGui_ImplOpenGL3_NewFrame();
-    ImGui_ImplGlfw_NewFrame();
-    ImGui::NewFrame();
+        // Start the Dear ImGui frame
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
 
 
 
-    
-        // static float f = 0.0f;
-        // static int counter = 0;
+        
+            // static float f = 0.0f;
+            // static int counter = 0;
 
 
-        // ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-        // ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+            // ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+            // ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
 
-        // if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-        //     counter++;
-        // ImGui::SameLine();
-        // ImGui::Text("counter = %d", counter);
-
-
-    ImGui::Begin("System Controls");
+            // if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+            //     counter++;
+            // ImGui::SameLine();
+            // ImGui::Text("counter = %d", counter);
 
 
-    // Wireframe Rendering Mode
-    static bool OpenGLDrawLines = false;
-    ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines);
-    ImGui::NewLine();
-    if (OpenGLDrawLines) {
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    } else {
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        ImGui::Begin("System Controls");
+
+
+        // Wireframe Rendering Mode
+        static bool OpenGLDrawLines = false;
+        ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines);
+        ImGui::NewLine();
+        if (OpenGLDrawLines) {
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        } else {
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        }
+
+
+        // Rendering Background Clear Color
+        static ImVec4 ClearColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+        ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor);
+        ImGui::NewLine();
+        glClearColor(ClearColor.x, ClearColor.y, ClearColor.z, ClearColor.w);
+
+
+        // Disable Editor Button
+        if (ImGui::Button("Hide Editor")) {
+            EditorDisabled_ = true;
+        }
+        ImGui::Text("Use [CTRL]+[SHIFT]+[~] To Show Again");
+
+        // End System Controls Window
+        ImGui::End();
+
+
+
+
+        // System Info Window
+        ImGui::Begin("System Info");
+
+        // FPS Counter
+        ImGui::Text("System Framerate %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+        // End System Info Window
+        ImGui::End();
+
+
+
+
+        // // create an ImGui window that covers the entire viewport, so that we can have a menu bar at the top of the applications
+        // ImGui::SetNextWindowPos(ImVec2(0, 0));                                                  // always at the window origin
+        // ImGui::SetNextWindowSize(ImVec2(Width, Height));    // always at the window size
+
+        // ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoBringToFrontOnFocus |                 // we just want to use this window as a host for the menubar and docking
+        //     ImGuiWindowFlags_NoNavFocus |                                                      // so turn off everything that would make it act like a window
+        //     //ImGuiWindowFlags_NoDocking |
+        //     ImGuiWindowFlags_NoTitleBar |
+        //     ImGuiWindowFlags_NoResize |
+        //     ImGuiWindowFlags_NoMove |
+        //     ImGuiWindowFlags_NoCollapse |
+        //     ImGuiWindowFlags_MenuBar |
+        //     ImGuiWindowFlags_NoBackground;                                                      // we want our game content to show through this window, so turn off the background.
+
+        // ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));   
+
+
+
+
+
+
+
+
+        // Rendering
+        ImGui::Render();
+
     }
-
-
-    // Rendering Background Clear Color
-    static ImVec4 ClearColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
-    ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor);
-    ImGui::NewLine();
-    glClearColor(ClearColor.x, ClearColor.y, ClearColor.z, ClearColor.w);
-
-
-    // End System Controls Window
-    ImGui::End();
-
-
-
-
-    // System Info Window
-    ImGui::Begin("System Info");
-
-    // FPS Counter
-    ImGui::Text("System Framerate %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-
-    // End System Info Window
-    ImGui::End();
-
-
-
-
-    // // create an ImGui window that covers the entire viewport, so that we can have a menu bar at the top of the applications
-    // ImGui::SetNextWindowPos(ImVec2(0, 0));                                                  // always at the window origin
-    // ImGui::SetNextWindowSize(ImVec2(Width, Height));    // always at the window size
-
-    // ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoBringToFrontOnFocus |                 // we just want to use this window as a host for the menubar and docking
-    //     ImGuiWindowFlags_NoNavFocus |                                                      // so turn off everything that would make it act like a window
-    //     //ImGuiWindowFlags_NoDocking |
-    //     ImGuiWindowFlags_NoTitleBar |
-    //     ImGuiWindowFlags_NoResize |
-    //     ImGuiWindowFlags_NoMove |
-    //     ImGuiWindowFlags_NoCollapse |
-    //     ImGuiWindowFlags_MenuBar |
-    //     ImGuiWindowFlags_NoBackground;                                                      // we want our game content to show through this window, so turn off the background.
-
-    // ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));   
-
-
-
-
-
-
-
-
-    // Rendering
-    ImGui::Render();
 
 
 }

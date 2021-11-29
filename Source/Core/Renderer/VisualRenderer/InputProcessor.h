@@ -19,6 +19,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <NoClip.h>
 #include <LoggingSystem.h>
+#include <Framebuffer.h>
 
 
 /**
@@ -34,6 +35,7 @@ class InputProcessor {
         float LastX = 400; /**<Location Of Last Mouse Position. (X coord) */
         float LastY = 400; /**<Location Of Last Mouse Position. (Y Coord) */ 
         ERS_OBJECT_CAMERA_NOCLIP *Camera_; /**<Pointer To Camera Instance */
+        FramebufferManager *FramebufferManager_; /**<Pointer To Framebuffer Manager Instance For Resizing The Framebuffer*/
 
         GLFWwindow *Window_; /**<Pointer To Window Surface */
 
@@ -69,7 +71,7 @@ class InputProcessor {
          * 
          * @param Camera 
          */
-        InputProcessor(ERS_OBJECT_CAMERA_NOCLIP *Camera, GLFWwindow* Window);
+        InputProcessor(ERS_OBJECT_CAMERA_NOCLIP *Camera, GLFWwindow* Window, FramebufferManager *FramebufferManager);
 
         /**
          * @brief Destroy the Input Processor object

@@ -78,4 +78,12 @@ class FramebufferManager {
          */
         void StartScreenRenderPass();
 
+        /**
+         * @brief Resizes the framebuffer to allow for proper scaling.
+         * 
+         * @param Width 
+         * @param Height 
+         */
+        void ResizeFramebuffer(int Width, int Height);
+
 };

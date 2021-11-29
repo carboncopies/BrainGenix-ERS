@@ -166,3 +166,14 @@ void FramebufferManager::StartScreenRenderPass() {
 
 }
 
+void FramebufferManager::ResizeFramebuffer(int Width, int Height) {
+
+    // Update Render Color Buffer Size
+    glBindTexture(GL_TEXTURE_2D, RenderTexture_);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+
+    // Update RBO Size
+    glBindRenderbuffer(GL_RENDERBUFFER, RenderBufferObject_);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Width, Height);
+
+}
