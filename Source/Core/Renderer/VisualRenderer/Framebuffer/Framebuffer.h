@@ -37,6 +37,8 @@ class FramebufferManager {
         unsigned int RenderTexture_; /**<OpenGL Renderes To This Texture, Then It's Displayed. (OpenGL Handle)*/
         unsigned int RenderBufferObject_; /**<RenderBuffer Object Handle.*/
 
+        
+
     public:
 
         /**

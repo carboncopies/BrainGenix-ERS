@@ -23,6 +23,11 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger, float Width, float H
     Logger_->Log("Initializing Framebuffer Manager", 5);
 
 
+    // Load Screen Shaders
+    Logger_->Log("Loading Screen Shaders", 5);
+    
+
+
     // Create Framebuffer
     Logger_->Log("Creating Framebuffer Object", 4);
     glGenFramebuffers(1, &FramebufferObject_);
