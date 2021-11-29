@@ -75,14 +75,9 @@ class VisualRenderer {
         ERS_OBJECT_SHADER Shader_;
 
 
-
-
-
-
         GLFWwindow* Window_;
         int WindowWidth_;
         int WindowHeight_;
-        const char* WindowTitle_;
 
         int RenderWidth_;
         int RenderHeight_;

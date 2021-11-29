@@ -12,12 +12,7 @@
 
 
 
-
-
-
-
-
-
+// Visual Rendere constructor
 VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun) {
 
     // Create Pointers
@@ -63,9 +58,6 @@ void VisualRenderer::InitializeOpenGL() {
     Logger_->Log("Read Configuration File For 'RenderHeight' Parameter", 1);
     RenderHeight_ = (*SystemConfiguration_)["RenderHeight"].as<int>();
 
-    // Register Callback
-    glfwMakeContextCurrent(Window_);
-    //glfwSwapInterval(0);
 
     // Disable Mouse Capture By Default
     CaptureMouseCursor_ = false;
