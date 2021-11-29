@@ -43,6 +43,7 @@ target_link_libraries(VisualRenderer
 
     Shader
     ShaderLoader
+    Framebuffer
     )
 
 target_include_directories(VisualRenderer PUBLIC ./)
