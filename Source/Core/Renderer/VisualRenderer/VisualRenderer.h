@@ -65,7 +65,6 @@ class VisualRenderer {
         // Constructor
         VisualRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger);
 
-
         // Destructor
         ~VisualRenderer();
 
