@@ -76,8 +76,20 @@ void VisualRenderer::UpdateViewports(float DeltaTime, SceneManager *SceneManager
 void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float DeltaTime) {
 
 
-    // RENDER TO IMGUI
-    // RESIZE IF NEEDED!
+    // Render To ImGui
+    ImGui::Begin(ViewportNames_[Index].c_str());
+    int RenderWidth = ImGui::GetWindowSize().x;
+    int RenderHeight = ImGui::GetWindowSize().y;
+
+
+    // Compare Window Size To Last Frame
+    if ((RenderWidth != ViewportWidths_[Index]) || (RenderHeight != ViewportHeights_[Index])) {
+
+        // Resize Viewport
+        ResizeViewport(Index, RenderWidth, RenderHeight);
+
+    }
+
 
     // Bind To Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, FramebufferObjects_[Index]);
@@ -101,7 +113,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     SceneManager->Render(Shaders_[Index]);
 
     // Render Framebuffer To Window
-    ImGui::Begin(ViewportNames_[Index].c_str());
+
     
     ImGui::GetWindowDrawList()->AddImage(
         (void*)(intptr_t)FramebufferObjects_[Index],
@@ -116,6 +128,12 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
 }
 
+void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
+
+    // Recreate Textures
+
+}
+
 // ADD DESTROY VIEWPORT FUNCTION!
 
 void VisualRenderer::CreateViewport(ERS_OBJECT_SHADER *Shader, std::string ViewportName, ERS_OBJECT_CAMERA_NOCLIP *Camera) {
@@ -124,7 +142,8 @@ void VisualRenderer::CreateViewport(ERS_OBJECT_SHADER *Shader, std::string Viewp
     Shaders_.push_back(Shader);
     Cameras_.push_back(Camera);
     ViewportNames_.push_back(ViewportName);
-
+    ViewportWidths_.push_back(1);
+    ViewportHeights_.push_back(1);
 
 
     // Create Framebuffer
