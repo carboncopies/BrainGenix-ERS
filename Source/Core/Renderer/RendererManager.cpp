@@ -65,6 +65,21 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     VisualRenderer_->CreateViewport(&Shader_, &Camera_);
 
 
+
+    // Initialize Texture Loader
+    TextureLoader_ = new TextureLoader(Logger_);
+
+    // Load Scene
+    ModelLoader MLoader(Logger_, TextureLoader_);
+
+    SceneLoader SLoader(Logger_, &MLoader);
+    SceneManager_ = new SceneManager(Logger_);
+
+    // Test Scene
+    YAML::Node TestScene = YAML::LoadFile("Assets/Scene.yaml");
+    SceneManager_->AddScene(SLoader.ProcessScene(TestScene));
+
+
 }
 
 // RendererManager Destructor

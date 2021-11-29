@@ -46,6 +46,9 @@ class RendererManager {
         FramebufferManager *FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
         ERS_OBJECT_SHADER Shader_; /**<ERS Shader Object (Main System Shader)*/
         GUISystem *GuiSystem_; /**<Instance of GUI System*/
+        TextureLoader *TextureLoader_; /**<Pointer to Texture Loader Instance*/
+        SceneManager *SceneManager_; /**<Pointer to Scene Manager Class Instance*/
+
 
         // Control Values
         bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */

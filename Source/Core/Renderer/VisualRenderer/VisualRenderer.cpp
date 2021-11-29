@@ -20,9 +20,6 @@ VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, LoggerClass *Lo
     SystemConfiguration_ = SystemConfiguration;
     Logger_ = Logger;
 
-    // Initialize Texture Loader
-    TextureLoader_ = new TextureLoader(Logger_);
-
     // Initialize OpenGL
     Logger_->Log("Initializing OpenGL", 5);
     InitializeOpenGL();
@@ -37,10 +34,6 @@ VisualRenderer::~VisualRenderer() {
 
 }
 
-
-
-
-
 void VisualRenderer::InitializeOpenGL() {
 
 
@@ -49,27 +42,15 @@ void VisualRenderer::InitializeOpenGL() {
         Logger_->Log("Failed To Initialize GLAD", 10);
     }
 
-
-    // Load Model
-    ModelLoader MLoader(Logger_, TextureLoader_);
-
-    SceneLoader SLoader(Logger_, &MLoader);
-    SceneManager_ = new SceneManager(Logger_);
-
-    // Test Scene
-    YAML::Node TestScene = YAML::LoadFile("Assets/Scene.yaml");
-    SceneManager_->AddScene(SLoader.ProcessScene(TestScene));
-
 }
 
-
-void VisualRenderer::UpdateViewports(float DeltaTime) {
+void VisualRenderer::UpdateViewports(float DeltaTime, SceneManager *SceneManager) {
 
 
     // Iterate Through Viewports
     for (int i = 0; i<Shaders_.size(); i++) {
 
-        UpdateViewport(i, DeltaTime, 400, 200);
+        UpdateViewport(i, SceneManager, DeltaTime, 400, 200);
 
     }
 
@@ -77,7 +58,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime) {
 }
 
 
-void VisualRenderer::UpdateViewport(int Index, float DeltaTime, float RenderWidth, float RenderHeight) {
+void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float DeltaTime, float RenderWidth, float RenderHeight) {
 
 
 
@@ -98,7 +79,7 @@ void VisualRenderer::UpdateViewport(int Index, float DeltaTime, float RenderWidt
 
 
     // Draw Models
-    SceneManager_->Render(Shaders_[Index]);
+    SceneManager->Render(Shaders_[Index]);
 
 }
 

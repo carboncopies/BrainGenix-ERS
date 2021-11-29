@@ -13,6 +13,7 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <iostream>
+#include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
@@ -33,7 +34,6 @@
 #include <SceneManager.h>
 #include <SceneLoader.h>
 #include <ShaderLoader.h>
-#include <Grid.h>
 #include <GUI.h>
 #include <Framebuffer.h>
 
@@ -48,28 +48,13 @@ class VisualRenderer {
         YAML::Node *SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
         LoggerClass *Logger_; /**<Pointer to the logging system instance*/
 
-        // MOVE TO ASSET LOADER CLASS LATER:
-        TextureLoader *TextureLoader_; /**<Pointer to Texture Loader Instance*/
-
-        // SceneManager Class
-        SceneManager *SceneManager_; /**<Pointer to Scene Manager Class Instance*/
-
-
 
         std::vector<ERS_OBJECT_CAMERA_NOCLIP*> Cameras_; /**<List Of Pointers To Camera Instances*/
         std::vector<ERS_OBJECT_SHADER*> Shaders_; /**<List Of Pointers To Shader Instances*/
         std::vector<std::string> ViewportNames_; /**<List Of Names For Viewports*/
 
-        
 
-
-
-
-
-
-        
-
-
+ 
         // Internal Functions
         void InitializeOpenGL();
 
@@ -86,9 +71,8 @@ class VisualRenderer {
 
 
         void CreateViewport(ERS_OBJECT_SHADER *Shader, ERS_OBJECT_CAMERA_NOCLIP *Camera);
-        void UpdateViewports(float DeltaTime);
-        // Update Loop Func
-        void UpdateViewport(int Index, float DeltaTime, float RenderWidth, float RenderHeight);
+        void UpdateViewports(float DeltaTime, SceneManager *SceneManager);
+        void UpdateViewport(int Index, SceneManager *SceneManager, float DeltaTime, float RenderWidth, float RenderHeight);
 
         
 
