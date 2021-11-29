@@ -36,7 +36,15 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     Logger_->Log("Instantiating Renderers", 5);
     VisualRenderer_ = new VisualRenderer(SystemConfiguration, Logger, SystemShouldRun);
 
+    // Setup Shaders
+    ShaderLoader_ = new ShaderLoader(Logger_);
+    Shader_ = ShaderLoader_->LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag");
 
+    Shader_.MakeActive();
+    Shader_.SetInt("texture_diffuse1", 0);
+
+    // Setup GUI
+    GuiSystem_ = new GUISystem(Logger_, Window_);
 
     // TODO: FINISH REFACTORING VISUALRENDERER
     // REFACTOR FRAMEBUFFERMANAGER TO ALLOW EACH VIEWPORT TO HAVE IT's OWN RESOLUTION
@@ -97,8 +105,40 @@ void RendererManager::InitializeGLFW() {
 
 void RendererManager::UpdateLoop(float DeltaTime) { 
 
+
+    // Start Framebuffer Render Pass
+    FramebufferManager_->StartFramebufferRenderPass();
+
+
     // Call Updates
-    VisualRenderer_->UpdateLoop(DeltaTime);
+    VisualRenderer_->UpdateLoop(DeltaTime, &Camera_, &Shader_);
+
+
+
+
+
+    // Update GUI
+    GuiSystem_->UpdateGUI();
+
+    // Start Screen Render Pass
+    FramebufferManager_->StartScreenRenderPass(true);
+    
+
+
+    // Update GUI Frame
+    GuiSystem_->UpdateFrame();
+    
+
+    // Update Window Stuff
+    glfwSwapBuffers(Window_);
+
+
+
+    // Check If System Should Shutdown
+    if (glfwWindowShouldClose(Window_)) {
+        Logger_->Log("System Shutdown Invoked By LocalWindow", 2);
+        *SystemShouldRun_ = false;
+    }
 
 
 }

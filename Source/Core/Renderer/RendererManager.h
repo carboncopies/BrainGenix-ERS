@@ -21,6 +21,7 @@
 
 #include <ShaderLoader.h>
 #include <Framebuffer.h>
+#include <GUI.h>
 
 
 
@@ -43,7 +44,8 @@ class RendererManager {
         GLFWwindow* Window_; /**<GLFW Window Instance*/
         ShaderLoader *ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
         FramebufferManager *FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
-
+        ERS_OBJECT_SHADER Shader_; /**<ERS Shader Object (Main System Shader)*/
+        GUISystem *GuiSystem_; /**<Instance of GUI System*/
 
         // Control Values
         bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */

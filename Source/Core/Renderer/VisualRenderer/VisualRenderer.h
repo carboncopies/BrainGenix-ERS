@@ -54,8 +54,7 @@ class VisualRenderer {
         // SceneManager Class
         SceneManager *SceneManager_; /**<Pointer to Scene Manager Class Instance*/
 
-        // Gui system instance
-        GUISystem *GuiSystem_;
+
 
 
 
@@ -63,7 +62,6 @@ class VisualRenderer {
         // Control Values
         bool *SystemShouldRun_;
 
-        ERS_OBJECT_SHADER Shader_;
 
 
         GLFWwindow* Window_;
@@ -91,7 +89,7 @@ class VisualRenderer {
         ~VisualRenderer();
 
         // Update Loop Func
-        void UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camera);
+        void UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camera, ERS_OBJECT_SHADER *Shader);
 
         
 

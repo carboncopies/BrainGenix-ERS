@@ -47,8 +47,7 @@ VisualRenderer::~VisualRenderer() {
 
 void VisualRenderer::InitializeOpenGL() {
 
-    // Setup GUI
-    GuiSystem_ = new GUISystem(Logger_, Window_);
+
 
     // Setup Viewport
     Logger_->Log("Read Configuration File For 'RenderWidth' Parameter", 1);
@@ -65,9 +64,7 @@ void VisualRenderer::InitializeOpenGL() {
     }
 
 
-    // Setup Shaders
-    ShaderLoader_ = new ShaderLoader(Logger_);
-    Shader_ = ShaderLoader_->LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag");
+
 
 
 
@@ -87,8 +84,6 @@ void VisualRenderer::InitializeOpenGL() {
 
 
 
-    Shader_.MakeActive();
-    Shader_.SetInt("texture_diffuse1", 0);
 
 
 
@@ -96,21 +91,19 @@ void VisualRenderer::InitializeOpenGL() {
 
 }
 
-void VisualRenderer::UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camera) {
+void VisualRenderer::UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camera, ERS_OBJECT_SHADER *Shader) {
 
 
 
-    // Start Framebuffer Render Pass
-    FramebufferManager_->StartFramebufferRenderPass();
 
-    // Update GUI
-    GuiSystem_->UpdateGUI();
+
+
 
     // Rendering Commands Here
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // Use Shader
-    Shader_.MakeActive();
+    Shader->MakeActive();
 
     // Update Camera
     glfwGetFramebufferSize(Window_, &RenderWidth_, &RenderHeight_);
@@ -119,36 +112,18 @@ void VisualRenderer::UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camer
 
     glm::mat4 projection = glm::perspective(glm::radians(Camera->Zoom), AspectRatio, 0.1f, 100.0f);
     glm::mat4 view = Camera->GetViewMatrix();
-    Shader_.SetMat4("projection", projection);
-    Shader_.SetMat4("view", view);
+    Shader->SetMat4("projection", projection);
+    Shader->SetMat4("view", view);
 
 
 
     // Draw Models
-    SceneManager_->Render(&Shader_);
+    SceneManager_->Render(Shader);
 
 
     
 
 
-    // Start Screen Render Pass
-    FramebufferManager_->StartScreenRenderPass(true);
-    
 
-
-    // Update GUI Frame
-    GuiSystem_->UpdateFrame();
-    
-
-    // Update Window Stuff
-    glfwSwapBuffers(Window_);
-
-
-
-    // Check If System Should Shutdown
-    if (glfwWindowShouldClose(Window_)) {
-        Logger_->Log("System Shutdown Invoked By LocalWindow", 2);
-        *SystemShouldRun_ = false;
-    }
 
 }
