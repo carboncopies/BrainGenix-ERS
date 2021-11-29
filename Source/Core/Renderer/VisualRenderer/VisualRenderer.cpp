@@ -158,9 +158,6 @@ void VisualRenderer::UpdateLoop() {
     glfwGetWindowSize(Window_, &WindowWidth_, &WindowHeight_);
     glfwPollEvents();
 
-    RenderWidth_ = 40;
-    RenderHeight_ = 30;
-
     // Get IMGUI IO State
     auto Io = &ImGui::GetIO();
 
@@ -186,13 +183,11 @@ void VisualRenderer::UpdateLoop() {
 
 
 
-    // Update GUI
-    GuiSystem_->UpdateGUI();
-
     // Start Framebuffer Render Pass
     FramebufferManager_->StartFramebufferRenderPass();
 
-
+    // Update GUI
+    GuiSystem_->UpdateGUI();
 
     // Rendering Commands Here
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -201,6 +196,7 @@ void VisualRenderer::UpdateLoop() {
     Shader_.MakeActive();
 
     // Update Camera
+    glfwGetFramebufferSize(Window_, &RenderWidth_, &RenderHeight_);
     float AspectRatio = (float)RenderWidth_ / (float)RenderHeight_;
 
 

@@ -148,8 +148,8 @@ void FramebufferManager::StartFramebufferRenderPass() {
 // FramebufferManager Start Screen Render Pass
 void FramebufferManager::StartScreenRenderPass(bool RenderToImGui) {
 
-    // If Not Rendering To ImGUI
-    if (!RenderToImGui) {
+    // // If Not Rendering To ImGUI
+    // if (!RenderToImGui) {
 
         // Use Default Framebuffer, And Render To It
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -167,21 +167,21 @@ void FramebufferManager::StartScreenRenderPass(bool RenderToImGui) {
         glBindTexture(GL_TEXTURE_2D, RenderTexture_);
         glDrawArrays(GL_TRIANGLES, 0, 6);
 
-    } else {
-        // Render FBO Into Viewport
-        //ImGui::Begin("Viewport");
+    // } else {
+    //     // Render FBO Into Viewport
+    //     ImGui::Begin("Viewport");
 
-            // ImGui::BeginChild("Test");
+    //         ImGui::BeginChild("Test");
 
-            //     ImVec2 WindowSize = ImGui::GetWindowSize();
-            //     ImGui::Image((ImTextureID)&RenderTexture_, WindowSize, ImVec2(0,1), ImVec2(1,0));
+    //             ImVec2 WindowSize = ImGui::GetWindowSize();
+    //             ImGui::Image((ImTextureID)&RenderTexture_, WindowSize, ImVec2(0,1), ImVec2(1,0));
 
-            // ImGui::EndChild();
+    //         ImGui::EndChild();
 
 
-        //ImGui::End();
+    //     ImGui::End();
 
-    }
+    // }
 
 }
 
