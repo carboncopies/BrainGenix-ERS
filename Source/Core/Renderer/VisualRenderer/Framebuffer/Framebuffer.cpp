@@ -55,6 +55,9 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger, ShaderLoader *Shader
     // Load Screen Shaders
     Logger_->Log("Loading Screen Shaders", 5);
     ScreenShader_ = ShaderLoader_->LoadShaderFromFile("Shaders/ScreenShader.vert", "Shaders/ScreenShader.frag");
+    
+    // Make Screen Shaders Active
+    Logger_->Log("Making Screen Shaders Active", 3);
     ScreenShader_.MakeActive();
     ScreenShader_.SetInt("ScreenTexture", 0);
 
