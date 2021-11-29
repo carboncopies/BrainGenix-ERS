@@ -185,6 +185,9 @@ void VisualRenderer::UpdateLoop() {
     FramebufferManager_->StartFramebufferRenderPass();
     {
 
+        // Update GUI
+        GuiSystem_->UpdateGUI();
+
         // Rendering Commands Here
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -215,8 +218,6 @@ void VisualRenderer::UpdateLoop() {
     FramebufferManager_->StartScreenRenderPass();
     {
 
-        // Update GUI
-        GuiSystem_->UpdateGUI();
 
         // Update GUI Frame
         GuiSystem_->UpdateFrame();
