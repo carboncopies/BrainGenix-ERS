@@ -24,6 +24,19 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger, ShaderLoader *Shader
     Logger_->Log("Initializing Framebuffer Manager", 5);
 
 
+
+    // Load Screen Shaders
+    Logger_->Log("Loading Screen Shaders", 5);
+    ScreenShader_ = ShaderLoader_->LoadShaderFromFile("Shaders/ScreenShader.vert", "Shaders/ScreenShader.frag");
+    
+    // Make Screen Shaders Active
+    Logger_->Log("Making Screen Shaders Active", 3);
+    ScreenShader_.MakeActive();
+    ScreenShader_.SetInt("screenTexture", 0);
+
+
+
+
     // Create Screen Quad
     Logger_->Log("Generating Screen Quad VAO", 4);
     glGenVertexArrays(1, &ScreenQuadVAO_);
@@ -53,15 +66,6 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger, ShaderLoader *Shader
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4*sizeof(float), (void*)(2*sizeof(float)));
 
-    // Load Screen Shaders
-    Logger_->Log("Loading Screen Shaders", 5);
-    ScreenShader_ = ShaderLoader_->LoadShaderFromFile("Shaders/ScreenShader.vert", "Shaders/ScreenShader.frag");
-    
-    // Make Screen Shaders Active
-    Logger_->Log("Making Screen Shaders Active", 3);
-    ScreenShader_.MakeActive();
-    ScreenShader_.SetInt("ScreenTexture", 0);
-
 
     // Create Framebuffer
     Logger_->Log("Creating Framebuffer Object", 4);
@@ -69,15 +73,14 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger, ShaderLoader *Shader
 
     // Bind To Framebuffer
     Logger_->Log("Binding To Framebuffer Object", 4);
-    glBindBuffer(GL_FRAMEBUFFER, FramebufferObject_);
-
+    glBindFramebuffer(GL_FRAMEBUFFER, FramebufferObject_);
 
     // Create RenderTexture
     Logger_->Log("Creating Render Texture", 4);
     glGenTextures(1, &RenderTexture_);
     glBindTexture(GL_TEXTURE_2D, RenderTexture_);
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, (int)Width, (int)Height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL); // NOTE: THIS MUST HAPPEN ON RESIZE!
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL); // NOTE: THIS MUST HAPPEN ON RESIZE!
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
@@ -111,7 +114,6 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger, ShaderLoader *Shader
 
 
 
-
 }
 
 // Framebuffer manager Destructor
@@ -139,6 +141,7 @@ void FramebufferManager::StartFramebufferRenderPass() {
     glBindFramebuffer(GL_FRAMEBUFFER, FramebufferObject_);
     glEnable(GL_DEPTH_TEST);
 
+
 }
 
 
@@ -150,14 +153,13 @@ void FramebufferManager::StartScreenRenderPass() {
     glDisable(GL_DEPTH_TEST);
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-    glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     
     // Use ScreenShader
     ScreenShader_.MakeActive();
 
     // Render Quad
-    std::cout<<ScreenQuadVAO_<<std::endl;
     glBindVertexArray(ScreenQuadVAO_);
     glBindTexture(GL_TEXTURE_2D, RenderTexture_);
     glDrawArrays(GL_TRIANGLES, 0, 6);

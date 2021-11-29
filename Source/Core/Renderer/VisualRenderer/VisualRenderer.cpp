@@ -20,7 +20,6 @@ void ErrorCallback(int, const char* ErrorString) {
 
 
 
-
 VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun) {
 
     // Create Pointers
@@ -108,9 +107,10 @@ void VisualRenderer::InitializeOpenGL() {
     }
 
 
-
     // Enable Scissor Test
     //glEnable(GL_SCISSOR_TEST);
+    glEnable(GL_DEBUG_OUTPUT);
+
 
     // Setup Shaders
     ShaderLoader_ = new ShaderLoader(Logger_);
@@ -186,7 +186,7 @@ void VisualRenderer::UpdateLoop() {
     FramebufferManager_->StartFramebufferRenderPass();
 
     // Update GUI
-    //GuiSystem_->UpdateGUI();
+    GuiSystem_->UpdateGUI();
 
     // Rendering Commands Here
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -212,6 +212,7 @@ void VisualRenderer::UpdateLoop() {
     // Draw Models
     SceneManager_->Render(&Shader_);
 
+
     
 
 
@@ -221,7 +222,7 @@ void VisualRenderer::UpdateLoop() {
 
 
     // Update GUI Frame
-    //GuiSystem_->UpdateFrame();
+    GuiSystem_->UpdateFrame();
     
 
     // Update Window Stuff
