@@ -149,10 +149,7 @@ void VisualRenderer::UpdateLoop() {
 
 
 
-    // Update DeltaTime
-    float CurrentTime = glfwGetTime();
-    DeltaTime = CurrentTime - LastFrame;
-    LastFrame = CurrentTime;
+
 
     // Process Window Input
     glfwGetWindowSize(Window_, &WindowWidth_, &WindowHeight_);

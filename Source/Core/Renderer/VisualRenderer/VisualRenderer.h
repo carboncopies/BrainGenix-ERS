@@ -89,9 +89,7 @@ class VisualRenderer {
         int RenderHeight_;
 
         
-        // Timing
-        float DeltaTime = 0.0f;
-        float LastFrame = 0.0f;
+
 
         // Internal Functions
         void InitializeGLFW();

@@ -93,15 +93,20 @@ int main() {
     sERSLogger.Log("", 4);
 
 
+    // Initialize Times
+    float DeltaTime = 0.0f;
+    float LastFrame = 0.0f;
+
     // Enter Main Loop
     while (SystemShouldRun) {
 
-
         // Calculate Frametime
-        
+        float CurrentTime = glfwGetTime();
+        DeltaTime = CurrentTime - LastFrame;
+        LastFrame = CurrentTime;
 
-        
-        sERSRendererManager.UpdateLoop();
+        // Update Renderers
+        sERSRendererManager.UpdateLoop(DeltaTime);
 
     }
 
