@@ -29,9 +29,7 @@ VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, LoggerClass *Lo
     // Initialize Texture Loader
     TextureLoader_ = new TextureLoader(Logger_);
 
-    // Initialize Systems
-    Logger_->Log("Initializing GLFW", 5);
-    InitializeGLFW();
+
 
     Logger_->Log("Initializing OpenGL", 5);
     InitializeOpenGL();

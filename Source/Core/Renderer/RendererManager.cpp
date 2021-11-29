@@ -27,6 +27,11 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     Logger_ = Logger;
     SystemShouldRun_ = SystemShouldRun;
 
+
+    // Initialize Systems
+    Logger_->Log("Initializing GLFW", 5);
+    InitializeGLFW();
+
     // Instantiate Renderers
     Logger_->Log("Instantiating Renderers", 5);
     VisualRenderer_ = new VisualRenderer(SystemConfiguration, Logger, SystemShouldRun);
