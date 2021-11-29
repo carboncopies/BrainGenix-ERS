@@ -61,7 +61,7 @@ class VisualRenderer {
         std::vector<int> ViewportHeights_; /**<Vector Containing Viewport Heights In Pixels*/
  
 
- 
+
         // Internal Functions
         void InitializeOpenGL();
 
@@ -78,7 +78,7 @@ class VisualRenderer {
 
         void CreateViewport(ERS_OBJECT_SHADER *Shader, std::string ViewportName, ERS_OBJECT_CAMERA_NOCLIP *Camera);
         void UpdateViewports(float DeltaTime, SceneManager *SceneManager);
-        void UpdateViewport(int Index, SceneManager *SceneManager, float DeltaTime, float RenderWidth, float RenderHeight);
+        void UpdateViewport(int Index, SceneManager *SceneManager, float DeltaTime);
 
         
 
