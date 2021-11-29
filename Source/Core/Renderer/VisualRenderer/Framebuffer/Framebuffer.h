@@ -18,3 +18,35 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+
+
+/**
+ * @brief Class to create/renderto/destruy framebuffer object.
+ * 
+ */
+class FramebufferManager {
+
+
+    private:
+
+
+        LoggerClass *Logger_; /**<Pointer to instance of Logger Class*/
+
+
+    public:
+
+        /**
+         * @brief Construct a new Framebuffer Manager object.
+         * 
+         * @param Logger 
+         */
+        FramebufferManager(LoggerClass *Logger);
+
+        /**
+         * @brief Destroy the Framebuffer Manager object.
+         * 
+         */
+        ~FramebufferManager();
+
+
+};
