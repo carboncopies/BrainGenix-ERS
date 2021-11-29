@@ -91,7 +91,7 @@ void VisualRenderer::InitializeOpenGL() {
 
 }
 
-void VisualRenderer::UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camera, ERS_OBJECT_SHADER *Shader) {
+void VisualRenderer::UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camera, ERS_OBJECT_SHADER *Shader, float RenderWidth, float RenderHeight) {
 
 
 
@@ -104,7 +104,7 @@ void VisualRenderer::UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camer
 
 
     // Update Camera
-    float AspectRatio = (float)RenderWidth_ / (float)RenderHeight_;
+    float AspectRatio = (float)RenderWidth / (float)RenderHeight;
     glm::mat4 projection = glm::perspective(glm::radians(Camera->Zoom), AspectRatio, 0.1f, 100.0f);
     glm::mat4 view = Camera->GetViewMatrix();
     Shader->SetMat4("projection", projection);

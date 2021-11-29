@@ -89,7 +89,7 @@ class VisualRenderer {
         ~VisualRenderer();
 
         // Update Loop Func
-        void UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camera, ERS_OBJECT_SHADER *Shader);
+        void UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camera, ERS_OBJECT_SHADER *Shader, float RenderWidth, float RenderHeight);
 
         
 

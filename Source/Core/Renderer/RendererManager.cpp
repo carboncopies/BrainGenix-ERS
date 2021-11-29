@@ -111,7 +111,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
 
     // Call Updates
-    VisualRenderer_->UpdateLoop(DeltaTime, &Camera_, &Shader_);
+    VisualRenderer_->UpdateLoop(DeltaTime, &Camera_, &Shader_, 400, 200);
 
 
 
