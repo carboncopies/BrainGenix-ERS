@@ -108,8 +108,6 @@ void VisualRenderer::InitializeOpenGL() {
     }
 
 
-    // Draw Faces In Front First
-    glEnable(GL_DEPTH_TEST);
 
     // Enable Scissor Test
     glEnable(GL_SCISSOR_TEST);
@@ -118,7 +116,8 @@ void VisualRenderer::InitializeOpenGL() {
     ShaderLoader_ = new ShaderLoader(Logger_);
     Shader_ = ShaderLoader_->LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag");
 
-
+    // Setup Framebuffer
+    FramebufferManager_ = new FramebufferManager(Logger_, ShaderLoader_, WindowWidth_, WindowHeight_);
 
 
     // Load Model
@@ -153,11 +152,8 @@ void VisualRenderer::UpdateLoop() {
     DeltaTime = CurrentTime - LastFrame;
     LastFrame = CurrentTime;
 
-    // Update Window Height Info
-    glfwGetWindowSize(Window_, &WindowWidth_, &WindowHeight_);
-
-
     // Process Window Input
+    glfwGetWindowSize(Window_, &WindowWidth_, &WindowHeight_);
     glfwPollEvents();
 
     // Get IMGUI IO State
