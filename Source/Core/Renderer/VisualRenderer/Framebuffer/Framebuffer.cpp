@@ -14,9 +14,6 @@
 
 
 // Framebuffer manager Constructor
-
-
-// Framebuffer manager Destructor
 FramebufferManager::FramebufferManager(LoggerClass *Logger) {
 
     // Create Local Pointer
@@ -31,3 +28,5 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger) {
     glGenFramebuffers(1, &FramebufferObject);
 
 }
+
+// Framebuffer manager Destructor
