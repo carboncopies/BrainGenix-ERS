@@ -159,8 +159,7 @@ void GUISystem::UpdateGUI() {
 
 
 
-    // Rendering
-    ImGui::Render();
+
 
     
 
@@ -169,6 +168,9 @@ void GUISystem::UpdateGUI() {
 
 // Update Frame
 void GUISystem::UpdateFrame() {
+
+    // Rendering
+    ImGui::Render();
 
     // Draw The GUI
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
