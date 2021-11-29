@@ -17,6 +17,8 @@ add_library(IOManager
 
 # Link 3rd Party Libs
 target_link_libraries(IOManager
+    glad
+    glfw
     )
 
 # Link Internal Libs
