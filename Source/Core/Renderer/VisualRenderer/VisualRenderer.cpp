@@ -206,7 +206,8 @@ void VisualRenderer::UpdateLoop() {
     RenderWidth_ = WindowWidth_;
     RenderHeight_ = WindowHeight_;
 
-    float AspectRatio = 2.0f;//(float)RenderWidth_ / (float)RenderHeight_;
+    float AspectRatio = (float)RenderWidth_ / (float)RenderHeight_;
+
 
     glm::mat4 projection = glm::perspective(glm::radians(Camera_.Zoom), AspectRatio, 0.1f, 100.0f);
     glm::mat4 view = Camera_.GetViewMatrix();
