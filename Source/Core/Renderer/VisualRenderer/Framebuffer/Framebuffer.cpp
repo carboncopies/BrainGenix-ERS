@@ -12,6 +12,18 @@
 #include <Framebuffer.h>
 
 
+// Framebuffer manager Quads
+float FramebufferManager::QuadVertices_[] = {
+
+    // Positions   // Texture Coordinates
+    -1.0f,  1.0f,  0.0f, 1.0f,
+    -1.0f, -1.0f,  0.0f, 0.0f,
+     1.0f, -1.0f,  1.0f, 0.0f,
+
+    -1.0f,  1.0f,  0.0f, 1.0f,
+     1.0f, -1.0f,  1.0f, 0.0f,
+     1.0f,  1.0f,  1.0f, 1.0f
+};
 
 // Framebuffer manager Constructor
 FramebufferManager::FramebufferManager(LoggerClass *Logger, ShaderLoader *ShaderLoader, float Width, float Height) {
@@ -23,9 +35,27 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger, ShaderLoader *Shader
     Logger_->Log("Initializing Framebuffer Manager", 5);
 
 
+    // Create Screen Quad
+    Logger_->Log("Generating Screen Quad VAO", 4);
+    glGenVertexArrays(1, &ScreenQuadVAO_);
+
+    Logger_->Log("Generating Screen Quad VBO", 4);
+    glGenBuffers(1, &ScreenQuadVBO_);
+
+    glBindVertexArray(ScreenQuadVAO_);
+    glBindBuffer(GL_ARRAY_BUFFER, ScreenQuadVBO_);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(QuadVertices_), &QuadVertices, GL_STATIC_DRAW);
+
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4*sizeof(float), (void*)0);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4*sizeof(float), (void*)(2*sizeof(float)));
+
     // Load Screen Shaders
     Logger_->Log("Loading Screen Shaders", 5);
-
+    ScreenShader_ = ShaderLoader_->LoadShaderFromFile("Shaders/ScreenShader.vert", "Shaders/ScreenShader.frag");
+    ScreenShader_.MakeActive();
+    ScreenShader_.SetInt("ScreenTexture", 0);
 
 
     // Create Framebuffer

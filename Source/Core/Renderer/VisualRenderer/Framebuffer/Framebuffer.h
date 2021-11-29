@@ -40,7 +40,12 @@ class FramebufferManager {
         unsigned int RenderBufferObject_; /**<RenderBuffer Object Handle.*/
 
         ShaderLoader *ShaderLoader_; /**<Pointer To Shader Loader Instance*/
-        Shader ScreenShader; /**<Screen Shader Instance, Used To Display Framebuffer To Screen*/
+        ERS_OBJECT_SHADER ScreenShader_; /**<Screen Shader Instance, Used To Display Framebuffer To Screen*/
+
+
+        float QuadVertices_[]; /**<List Containing Positions And Texture coords For Drawing Screen FrameBuffer Quad*/
+        unsigned int ScreenQuadVAO_; /**<Screen Quad VAO Reference*/
+        unsigned int ScreenQuadVBO_; /**<Screen Quad VBO Reference*/
 
 
     public:
