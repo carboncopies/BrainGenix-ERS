@@ -4,19 +4,19 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(VisualRenderer
+add_library(InputProcessor
 
             # Add Source Files (.cpp)
-            "VisualRenderer.cpp"
+            "InputProcessor.cpp"
 
             # Add Header Files (.h)
-            "VisualRenderer.h"
+            "InputProcessor.h"
 
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(VisualRenderer
+target_link_libraries(InputProcessor
     yaml-cpp
     glm
     glad
@@ -25,7 +25,7 @@ target_link_libraries(VisualRenderer
     )
 
 # Link Internal Libs
-target_link_libraries(VisualRenderer
+target_link_libraries(InputProcessor
     NoClip
     LoggingSystem
     ImageLoader
@@ -44,5 +44,5 @@ target_link_libraries(VisualRenderer
     Framebuffer
     )
 
-target_include_directories(VisualRenderer PUBLIC ./)
+target_include_directories(InputProcessor PUBLIC ./)
 
