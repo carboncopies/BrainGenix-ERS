@@ -59,18 +59,12 @@ void VisualRenderer::InitializeOpenGL() {
     RenderHeight_ = (*SystemConfiguration_)["RenderHeight"].as<int>();
 
 
-    // Disable Mouse Capture By Default
-    CaptureMouseCursor_ = false;
+
 
     // Setup GLAD
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         Logger_->Log("Failed To Initialize GLAD", 10);
     }
-
-
-    // Enable Scissor Test
-    //glEnable(GL_SCISSOR_TEST);
-    glEnable(GL_DEBUG_OUTPUT);
 
 
     // Setup Shaders

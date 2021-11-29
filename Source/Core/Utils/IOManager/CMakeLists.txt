@@ -25,6 +25,7 @@ target_link_libraries(IOManager
 # Link Internal Libs
 target_link_libraries(IOManager
     LoggingSystem
+    InputProcessor
     )
 
 target_include_directories(IOManager PUBLIC ./)

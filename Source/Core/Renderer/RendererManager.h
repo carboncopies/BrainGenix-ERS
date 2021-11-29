@@ -44,7 +44,6 @@ class RendererManager {
         const char* WindowTitle_; /**GLFW Window Title Variable*/
 
 
-
         /**
          * @brief Initialize And Create A GLFW Window
          * 

@@ -25,6 +25,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+#include <InputProcessor.h>
 
 
 
@@ -37,12 +38,20 @@ class IOManager {
 
     private:
 
-
+        // Class Instances
         LoggerClass *Logger_; /**<Logging System Instance Pointer*/
+        InputProcessor *InputProcessor_; /**<Pointer to input processor instance*/
+
+        // Objects
         GLFWwindow *Window_; /**<Pointer To GLFW Window */
 
+        // Parameters
         int WindowWidth_; /**<Window Width*/
         int WindowHeight_; /**<Window Height*/
+
+        bool CaptureMouseCursor_ = false; /**<Capture Or Release Mouse Cursor*/
+
+
 
 
     public:

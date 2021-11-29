@@ -35,7 +35,6 @@
 #include <ShaderLoader.h>
 #include <Grid.h>
 #include <GUI.h>
-#include <InputProcessor.h>
 #include <Framebuffer.h>
 
 
@@ -59,8 +58,7 @@ class VisualRenderer {
         // Gui system instance
         GUISystem *GuiSystem_;
 
-        // Input Processor
-        InputProcessor *InputProcessor_; /**<Pointer to input processor instance*/
+
 
         // Shader Loader
         ShaderLoader *ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
@@ -68,9 +66,6 @@ class VisualRenderer {
 
         // Control Values
         bool *SystemShouldRun_;
-        bool CaptureMouseCursor_;
-        bool EditorEnabled_ = true;
-
 
         ERS_OBJECT_SHADER Shader_;
 
