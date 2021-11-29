@@ -18,7 +18,7 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger, ShaderLoader *Shader
 
     // Create Local Pointers
     Logger_ = Logger;
-    ShaderLoader_ = ShaderLoader_;
+    ShaderLoader_ = ShaderLoader;
 
     // Log Initialization
     Logger_->Log("Initializing Framebuffer Manager", 5);
