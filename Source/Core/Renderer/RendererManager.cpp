@@ -39,10 +39,10 @@ RendererManager::~RendererManager() {
 
 
 
-void RendererManager::UpdateLoop() { 
+void RendererManager::UpdateLoop(float DeltaTime) { 
 
     // Call Updates
-    VisualRenderer_->UpdateLoop();
+    VisualRenderer_->UpdateLoop(DeltaTime);
 
 
 }

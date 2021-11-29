@@ -61,7 +61,7 @@ class RendererManager {
          * @brief Called by the main loop, updates all rendered outputs.
          * 
          */
-        void UpdateLoop();
+        void UpdateLoop(float DeltaTime);
 
 
 
