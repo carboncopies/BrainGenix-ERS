@@ -28,6 +28,6 @@ FramebufferManager::FramebufferManager(LoggerClass *Logger) {
 
     // Create Framebuffer
     Logger_->Log("Creating Framebuffer Object", 4);
-    
+    glGenFramebuffers(1, &FramebufferObject);
 
 }
