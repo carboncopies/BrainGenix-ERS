@@ -78,8 +78,8 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
     // Render To ImGui
     ImGui::Begin(ViewportNames_[Index].c_str());
-    int RenderWidth = ImGui::GetWindowSize().x;
-    int RenderHeight = ImGui::GetWindowSize().y;
+    int RenderWidth = ImGui::GetWindowSize().y;
+    int RenderHeight = ImGui::GetWindowSize().x;
 
 
     // Resize Viewport If Needed
