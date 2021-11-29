@@ -72,8 +72,8 @@ class VisualRenderer {
         ~VisualRenderer();
 
 
-        void CreateViewport(ERS_OBJECT_SHADER *Shader, ERS_OBJECT_CAMERA_NOCLIP *Camera);
-        void UpdateViewports(float DeltaTime, std::string ViewportName, SceneManager *SceneManager);
+        void CreateViewport(ERS_OBJECT_SHADER *Shader, std::string ViewportName, ERS_OBJECT_CAMERA_NOCLIP *Camera);
+        void UpdateViewports(float DeltaTime, SceneManager *SceneManager);
         void UpdateViewport(int Index, SceneManager *SceneManager, float DeltaTime, float RenderWidth, float RenderHeight);
 
         
