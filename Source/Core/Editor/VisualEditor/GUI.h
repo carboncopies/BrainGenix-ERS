@@ -40,9 +40,6 @@ class GUISystem {
         GLFWwindow* Window_; /**<Pointer to window instance*/
 
     public:
-
-        bool EditorDisabled_; /**<True/False Indicating If Editor Is Hidden Or Shown.*/
-
         /**
          * @brief Construct a new Gui System object
          * 
