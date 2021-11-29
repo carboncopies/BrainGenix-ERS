@@ -154,7 +154,7 @@ void FramebufferManager::StartScreenRenderPass() {
     // Render Quad
     glBindVertexArray(ScreenQuadVAO_);
     glBindTexture(GL_TEXTURE_2D, RenderTexture_);
-    glDrawArrays(GL_TRIANGLE, 0, 6);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
 
 }
 
