@@ -102,7 +102,16 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
     // Render Framebuffer To Window
     ImGui::Begin("test");
-    ImGui::Text("testfdsafdsafdsa");
+    
+    ImGui::GetWindowDrawList()->AddImage(
+        (void*)FramebufferObjects_[Index],
+        ImVec2(ImGui::GetCursorScreenPos()),
+        ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x - 15,
+            ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y - 35),
+        ImVec2(0, 1),
+        ImVec2(1, 0)        
+    );
+
     ImGui::End();
 
 }

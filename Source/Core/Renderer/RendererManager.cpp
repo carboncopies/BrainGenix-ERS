@@ -147,8 +147,6 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
     // Start Screen Render Pass
     //FramebufferManager_->StartScreenRenderPass();
-    
-
 
     // Update GUI Frame
     GuiSystem_->UpdateFrame();
