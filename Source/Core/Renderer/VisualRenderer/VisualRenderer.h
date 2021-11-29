@@ -37,6 +37,7 @@
 #include <Grid.h>
 #include <GUI.h>
 #include <InputProcessor.h>
+#include <Framebuffer.h>
 
 
 static ERS_OBJECT_CAMERA_NOCLIP Camera_(glm::vec3(0.0f, 0.0f, 3.0f));
@@ -64,6 +65,7 @@ class VisualRenderer {
 
         // Shader Loader
         ShaderLoader *ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
+        FramebufferManager *FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
 
         // Control Values
         bool *SystemShouldRun_;
