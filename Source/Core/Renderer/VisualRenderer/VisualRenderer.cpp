@@ -82,12 +82,9 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     int RenderHeight = ImGui::GetWindowSize().y;
 
 
-    // Compare Window Size To Last Frame
+    // Resize Viewport If Needed
     if ((RenderWidth != ViewportWidths_[Index]) || (RenderHeight != ViewportHeights_[Index])) {
-
-        // Resize Viewport
         ResizeViewport(Index, RenderWidth, RenderHeight);
-
     }
 
 
