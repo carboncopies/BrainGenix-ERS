@@ -43,6 +43,7 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     Shader_.MakeActive();
     Shader_.SetInt("texture_diffuse1", 0);
 
+
     // Setup GUI
     GuiSystem_ = new GUISystem(Logger_, Window_);
 
