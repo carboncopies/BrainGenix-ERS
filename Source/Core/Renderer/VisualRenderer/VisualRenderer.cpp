@@ -181,44 +181,52 @@ void VisualRenderer::UpdateLoop() {
 
 
 
+    // Start Framebuffer Render Pass
+    FramebufferManager_->StartFramebufferRenderPass();
+    {
 
-
-    // Update GUI
-    GuiSystem_->UpdateGUI();
-
-    // Rendering Commands Here
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-
+        // Rendering Commands Here
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
 
-    // Use Shader
-    Shader_.MakeActive();
 
 
-    // Update Camera
-    RenderWidth_ = WindowWidth_;
-    RenderHeight_ = WindowHeight_;
-
-    float AspectRatio = (float)RenderWidth_ / (float)RenderHeight_;
+        // Use Shader
+        Shader_.MakeActive();
 
 
-    glm::mat4 projection = glm::perspective(glm::radians(Camera_.Zoom), AspectRatio, 0.1f, 100.0f);
-    glm::mat4 view = Camera_.GetViewMatrix();
-    Shader_.SetMat4("projection", projection);
-    Shader_.SetMat4("view", view);
+        // Update Camera
+        RenderWidth_ = WindowWidth_;
+        RenderHeight_ = WindowHeight_;
 
-    // Draw Grid
-    DrawGrid();
-
-    // Draw Models
-    SceneManager_->Render(&Shader_);
+        float AspectRatio = (float)RenderWidth_ / (float)RenderHeight_;
 
 
-    // Update GUI Frame
-    GuiSystem_->UpdateFrame();
+        glm::mat4 projection = glm::perspective(glm::radians(Camera_.Zoom), AspectRatio, 0.1f, 100.0f);
+        glm::mat4 view = Camera_.GetViewMatrix();
+        Shader_.SetMat4("projection", projection);
+        Shader_.SetMat4("view", view);
 
+        // Draw Grid
+        DrawGrid();
+
+        // Draw Models
+        SceneManager_->Render(&Shader_);
+
+    }
+
+    // Start Screen Render Pass
+    FramebufferManager_->StartScreenRenderPass();
+    {
+        
+        // Update GUI
+        GuiSystem_->UpdateGUI();
+
+        // Update GUI Frame
+        GuiSystem_->UpdateFrame();
+
+    }
 
     // Update Window Stuff
     glfwSwapBuffers(Window_);
