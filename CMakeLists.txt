@@ -150,6 +150,7 @@ add_subdirectory(${SRC_DIR}/Core/Utils/SceneManager)
 add_subdirectory(${SRC_DIR}/Core/Utils/FileIO)
 add_subdirectory(${SRC_DIR}/Core/Utils/DatabaseInterface)
 add_subdirectory(${SRC_DIR}/Core/Utils/IOManager)
+add_subdirectory(${SRC_DIR}/Core/Utils/InputProcessor)
 
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor)
 

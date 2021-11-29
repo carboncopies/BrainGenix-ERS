@@ -22,6 +22,11 @@ IOManager::IOManager(LoggerClass *Logger) {
     // Log Initialization
     Logger_->Log("Initializing IOManager", 5);
 
+    // Create InputProcssor
+    Logger_->Log("Setting Up Window Input Processor", 5);
+    InputProcessor_ = new InputProcessor(&Camera_, Window_, FramebufferManager_);
+
+
 
 }
 
