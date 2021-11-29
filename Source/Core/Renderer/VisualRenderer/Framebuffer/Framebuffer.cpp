@@ -121,3 +121,9 @@ FramebufferManager::~FramebufferManager() {
     glDeleteFramebuffers(1, &FramebufferObject_);  
 
 }
+
+
+// FramebufferManager Start Render Pass
+
+
+// FramebufferManeger End Render Pass
