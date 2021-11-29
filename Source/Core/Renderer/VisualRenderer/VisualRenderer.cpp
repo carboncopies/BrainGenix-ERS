@@ -153,6 +153,10 @@ void VisualRenderer::UpdateLoop() {
     DeltaTime = CurrentTime - LastFrame;
     LastFrame = CurrentTime;
 
+    // Update Window Height Info
+    glfwGetWindowSize(Window_, &WindowWidth_, &WindowHeight_);
+
+
     // Process Window Input
     glfwPollEvents();
 
