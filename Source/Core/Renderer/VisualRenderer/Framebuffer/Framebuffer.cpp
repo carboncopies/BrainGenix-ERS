@@ -120,6 +120,11 @@ FramebufferManager::~FramebufferManager() {
     Logger_->Log("Destroying Framebuffer Object", 5);
     glDeleteFramebuffers(1, &FramebufferObject_);  
 
+    // Deallocate Screen Quad
+    Logger_->Log("Destroying Screen Quad VAO/VBO", 4);
+    glDeleteVertexArrays(1, &ScreenQuadVAO_);
+    glDeleteBuffers(1, &ScreenQuadVBO_);
+
 }
 
 
