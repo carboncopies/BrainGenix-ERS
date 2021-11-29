@@ -73,6 +73,7 @@ void RendererManager::InitializeGLFW() {
         glfwTerminate();
     }
 
+    // Bring Window To Front
     glfwMakeContextCurrent(Window_);
 
 }
