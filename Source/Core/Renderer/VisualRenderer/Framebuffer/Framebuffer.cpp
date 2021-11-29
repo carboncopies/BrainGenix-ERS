@@ -149,7 +149,7 @@ void FramebufferManager::StartScreenRenderPass() {
     glClear(GL_COLOR_BUFFER_BIT);
     
     // Use ScreenShader
-    ScreenShader_.use();
+    ScreenShader_.MakeActive();
 
     // Render Quad
     glBindVertexArray(ScreenQuadVAO_);
