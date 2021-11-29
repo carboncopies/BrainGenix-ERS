@@ -13,7 +13,7 @@
 
 
 // Framebuffer manager Quads
-float FramebufferManager::QuadVertices_[] = {
+float FramebufferManager::QuadVertices_[24] = {
 
     // Positions   // Texture Coordinates
     -1.0f,  1.0f,  0.0f, 1.0f,
