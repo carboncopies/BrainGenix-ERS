@@ -105,14 +105,17 @@ void RendererManager::InitializeGLFW() {
 
 void RendererManager::UpdateLoop(float DeltaTime) { 
 
+    std::cout<< "1\n";
 
     // Start Framebuffer Render Pass
     FramebufferManager_->StartFramebufferRenderPass();
 
+    std::cout<< "2\n";
 
     // Call Updates
     VisualRenderer_->UpdateLoop(DeltaTime, &Camera_, &Shader_);
 
+    std::cout<< "3\n";
 
 
 
@@ -120,18 +123,23 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     // Update GUI
     GuiSystem_->UpdateGUI();
 
+    std::cout<< "4\n";
+
     // Start Screen Render Pass
     FramebufferManager_->StartScreenRenderPass(true);
     
+    std::cout<< "5\n";
 
 
     // Update GUI Frame
     GuiSystem_->UpdateFrame();
     
+    std::cout<< "6\n";
 
     // Update Window Stuff
     glfwSwapBuffers(Window_);
 
+    std::cout<< "7\n";
 
 
     // Check If System Should Shutdown
