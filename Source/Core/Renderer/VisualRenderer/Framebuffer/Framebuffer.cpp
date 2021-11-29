@@ -171,14 +171,12 @@ void FramebufferManager::StartScreenRenderPass(bool RenderToImGui) {
         // Render FBO Into Viewport
         ImGui::Begin("Viewport");
 
-        ImGui::GetWindowDrawList()->AddImage(
-            (void *)RenderTexture_, 
-            ImVec2(ImGui::GetCursorScreenPos()), 
-            ImVec2(ImGui::GetCursorScreenPos().x + 0, 
-            ImGui::GetCursorScreenPos().y + 0), 
-            ImVec2(0, 1), 
-            ImVec2(1, 0)
-        );
+            ImGui::BeginChild("Test");
+
+                ImVec2 WindowSize = ImGui::GetWindowSize();
+                ImGui::Image((ImTextureID)RenderTexture_, WindowSize, ImVec2(0,1), ImVec2(1,0));
+
+            ImGui::EndChild();
 
 
         ImGui::End();
