@@ -56,6 +56,8 @@ class VisualRenderer {
 
 
 
+        std::vector<ERS_OBJECT_CAMERA_NOCLIP*> Cameras_; /**<List Of Pointers To Camera Instances*/
+        std::vector<ERS_OBJECT_SHADER*> Shaders_; /**<List Of Pointers To Shader Instances*/
 
 
         
@@ -64,12 +66,7 @@ class VisualRenderer {
 
 
 
-        GLFWwindow* Window_;
-        int WindowWidth_;
-        int WindowHeight_;
 
-        int RenderWidth_;
-        int RenderHeight_;
 
         
 

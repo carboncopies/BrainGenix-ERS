@@ -48,25 +48,10 @@ VisualRenderer::~VisualRenderer() {
 void VisualRenderer::InitializeOpenGL() {
 
 
-
-    // Setup Viewport
-    Logger_->Log("Read Configuration File For 'RenderWidth' Parameter", 1);
-    RenderWidth_ = (*SystemConfiguration_)["RenderWidth"].as<int>();
-    Logger_->Log("Read Configuration File For 'RenderHeight' Parameter", 1);
-    RenderHeight_ = (*SystemConfiguration_)["RenderHeight"].as<int>();
-
-
-
-
     // Setup GLAD
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         Logger_->Log("Failed To Initialize GLAD", 10);
     }
-
-
-
-
-
 
 
     // Load Model
@@ -78,16 +63,6 @@ void VisualRenderer::InitializeOpenGL() {
     // Test Scene
     YAML::Node TestScene = YAML::LoadFile("Assets/Scene.yaml");
     SceneManager_->AddScene(SLoader.ProcessScene(TestScene));
-
-
-    
-
-
-
-
-
-
-
 
 }
 
