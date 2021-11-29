@@ -70,6 +70,7 @@ class VisualRenderer {
         // Control Values
         bool *SystemShouldRun_;
         bool CaptureMouseCursor_;
+        bool EditorEnabled_ = true;
 
 
         ERS_OBJECT_SHADER Shader_;
