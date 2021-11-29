@@ -15,6 +15,8 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
 
+#include <glad/glad.h>
+
 #include <GLFW/glfw3.h>
 
 // Internal Libraries (BG convention: use <> instead of "")

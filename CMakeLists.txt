@@ -132,6 +132,7 @@ target_link_libraries(${PROJECT_NAME}
 
   # Third Party Libs
   yaml-cpp
+  glad
   glfw
 
   # Internal Libs
