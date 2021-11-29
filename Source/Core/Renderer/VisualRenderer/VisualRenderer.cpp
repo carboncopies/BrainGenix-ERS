@@ -158,6 +158,9 @@ void VisualRenderer::UpdateLoop() {
     glfwGetWindowSize(Window_, &WindowWidth_, &WindowHeight_);
     glfwPollEvents();
 
+    RenderWidth_ = 40;
+    RenderHeight_ = 30;
+
     // Get IMGUI IO State
     auto Io = &ImGui::GetIO();
 
@@ -196,9 +199,6 @@ void VisualRenderer::UpdateLoop() {
     Shader_.MakeActive();
 
     // Update Camera
-    glfwGetFramebufferSize(Window_, &RenderWidth_, &RenderHeight_);
-    RenderWidth_ = 400;
-    RenderHeight_ = 300;
     float AspectRatio = (float)RenderWidth_ / (float)RenderHeight_;
 
 
