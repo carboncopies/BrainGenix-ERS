@@ -96,24 +96,29 @@ void VisualRenderer::UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camer
 
 
 
+    std::cout<< "1\n";
 
 
 
     // Rendering Commands Here
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    std::cout<< "1\n";
 
     // Use Shader
     Shader->MakeActive();
+    std::cout<< "1\n";
 
     // Update Camera
     glfwGetFramebufferSize(Window_, &RenderWidth_, &RenderHeight_);
     float AspectRatio = (float)RenderWidth_ / (float)RenderHeight_;
+    std::cout<< "1\n";
 
 
     glm::mat4 projection = glm::perspective(glm::radians(Camera->Zoom), AspectRatio, 0.1f, 100.0f);
     glm::mat4 view = Camera->GetViewMatrix();
     Shader->SetMat4("projection", projection);
     Shader->SetMat4("view", view);
+    std::cout<< "1\n";
 
 
 
@@ -122,6 +127,7 @@ void VisualRenderer::UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camer
 
 
     
+    std::cout<< "1\n";
 
 
 
