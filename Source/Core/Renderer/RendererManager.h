@@ -19,6 +19,8 @@
 #include <IOManager.h>
 #include <NoClip.h>
 
+#include <ShaderLoader.h>
+#include <Framebuffer.h>
 
 
 
@@ -39,6 +41,8 @@ class RendererManager {
         VisualRenderer *VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
         IOManager *IOManager_; /**<Pointer To IOManager Instance*/
         GLFWwindow* Window_; /**<GLFW Window Instance*/
+        ShaderLoader *ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
+        FramebufferManager *FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
 
 
         // Control Values

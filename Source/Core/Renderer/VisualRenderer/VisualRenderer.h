@@ -59,10 +59,7 @@ class VisualRenderer {
 
 
 
-        // Shader Loader
-        ShaderLoader *ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
-        FramebufferManager *FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
-
+        
         // Control Values
         bool *SystemShouldRun_;
 
@@ -94,7 +91,7 @@ class VisualRenderer {
         ~VisualRenderer();
 
         // Update Loop Func
-        void UpdateLoop(float DeltaTime);
+        void UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camera);
 
         
 

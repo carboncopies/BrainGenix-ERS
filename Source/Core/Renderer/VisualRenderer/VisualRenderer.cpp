@@ -69,8 +69,7 @@ void VisualRenderer::InitializeOpenGL() {
     ShaderLoader_ = new ShaderLoader(Logger_);
     Shader_ = ShaderLoader_->LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag");
 
-    // Setup Framebuffer
-    FramebufferManager_ = new FramebufferManager(Logger_, ShaderLoader_, WindowWidth_, WindowHeight_);
+
 
 
     // Load Model
@@ -97,7 +96,7 @@ void VisualRenderer::InitializeOpenGL() {
 
 }
 
-void VisualRenderer::UpdateLoop(float DeltaTime) {
+void VisualRenderer::UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camera) {
 
 
 
@@ -118,13 +117,12 @@ void VisualRenderer::UpdateLoop(float DeltaTime) {
     float AspectRatio = (float)RenderWidth_ / (float)RenderHeight_;
 
 
-    glm::mat4 projection = glm::perspective(glm::radians(Camera_.Zoom), AspectRatio, 0.1f, 100.0f);
-    glm::mat4 view = Camera_.GetViewMatrix();
+    glm::mat4 projection = glm::perspective(glm::radians(Camera->Zoom), AspectRatio, 0.1f, 100.0f);
+    glm::mat4 view = Camera->GetViewMatrix();
     Shader_.SetMat4("projection", projection);
     Shader_.SetMat4("view", view);
 
-    // Draw Grid
-    //DrawGrid();
+
 
     // Draw Models
     SceneManager_->Render(&Shader_);

@@ -36,9 +36,19 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     Logger_->Log("Instantiating Renderers", 5);
     VisualRenderer_ = new VisualRenderer(SystemConfiguration, Logger, SystemShouldRun);
 
+
+    // TODO: FINISH REFACTORING VISUALRENDERER
+    // REFACTOR FRAMEBUFFERMANAGER TO ALLOW EACH VIEWPORT TO HAVE IT's OWN RESOLUTION
+    // REFACTOR VISUALRENDERER INTO VIEWPORTMANAGER TO ALLOW FOR MULTIPLE VIEWPORTS, JUST CREATE ONE FOR NOW
+    // ADD VIEWPORT TO IMGUI
+    // CHECK TRELLO!
+
+    // Setup Framebuffer
+    FramebufferManager_ = new FramebufferManager(Logger_, ShaderLoader_, WindowWidth_, WindowHeight_);
+
     // Setup IOManager
     Logger_->Log("Initializing Input/Output Manager", 5);
-    IOManager_ = new IOManager(Logger_);
+    IOManager_ = new IOManager(Logger_, &Camera_, FramebufferManager_);
 
 
 }
