@@ -64,6 +64,7 @@ class VisualRenderer {
 
         // Internal Functions
         void InitializeOpenGL();
+        void ResizeViewport(int Index, int Width, int Height);
 
 
 

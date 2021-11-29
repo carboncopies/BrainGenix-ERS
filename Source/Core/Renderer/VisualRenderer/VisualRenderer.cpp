@@ -130,7 +130,13 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
 void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
 
-    // Recreate Textures
+    // Update Render Color Buffer Size
+    glBindTexture(GL_TEXTURE_2D, FramebufferColorObjects_[Index]);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+
+    // Update RBO Size
+    glBindRenderbuffer(GL_RENDERBUFFER, RenderbufferObjects_[Index]);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Width, Height);
 
 }
 
