@@ -74,23 +74,9 @@ class FramebufferManager {
         void StartFramebufferRenderPass();
 
         /**
-         * @brief End The Renderpass On The Framebuffer Object.
-         * 
-         */
-        void EndFramebufferRenderPass();
-
-
-        /**
          * @brief Start Renderpass To Screen (GUI Rendering Goes AFter This).
          * 
          */
         void StartScreenRenderPass();
-
-        /**
-         * @brief End RenderPass To Scree (GUI Rendering Goes Before This).
-         * 
-         */
-        void EndScreenRenderPass();
-
 
 };
