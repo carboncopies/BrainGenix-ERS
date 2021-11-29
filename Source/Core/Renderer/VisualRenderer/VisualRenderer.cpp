@@ -91,7 +91,7 @@ void VisualRenderer::InitializeOpenGL() {
 
 }
 
-void VisualRenderer::UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camera, ERS_OBJECT_SHADER *Shader, float RenderWidth, float RenderHeight) {
+void VisualRenderer::UpdateViewport(float DeltaTime, float RenderWidth, float RenderHeight) {
 
 
 
@@ -113,5 +113,15 @@ void VisualRenderer::UpdateLoop(float DeltaTime, ERS_OBJECT_CAMERA_NOCLIP *Camer
 
     // Draw Models
     SceneManager_->Render(Shader);
+
+}
+
+// Create Viewport
+void VisualRenderer::CreateViewport(ERS_OBJECT_SHADER *Shader, ERS_OBJECT_CAMERA_NOCLIP *Camera) {
+
+    // Append To Pointers List
+    Shaders_.push_back(Shader);
+    Cameras_.push_back(Camera);
+
 
 }
