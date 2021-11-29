@@ -81,6 +81,9 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     int RenderWidth = ImGui::GetWindowSize().x;
     int RenderHeight = ImGui::GetWindowSize().y;
 
+    glViewport(0, 0, RenderWidth, RenderHeight);
+    glScissor(0, 0, RenderWidth, RenderHeight);
+
 
     // Resize Viewport If Needed
     if ((RenderWidth != ViewportWidths_[Index]) || (RenderHeight != ViewportHeights_[Index])) {
