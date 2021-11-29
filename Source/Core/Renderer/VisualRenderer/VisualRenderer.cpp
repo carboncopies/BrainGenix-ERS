@@ -145,7 +145,7 @@ void VisualRenderer::InitializeOpenGL() {
 
 }
 
-void VisualRenderer::UpdateLoop() {
+void VisualRenderer::UpdateLoop(float DeltaTime) {
 
 
 

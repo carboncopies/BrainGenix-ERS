@@ -107,7 +107,7 @@ class VisualRenderer {
         ~VisualRenderer();
 
         // Update Loop Func
-        void UpdateLoop();
+        void UpdateLoop(float DeltaTime);
 
         
 
