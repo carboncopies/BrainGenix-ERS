@@ -35,6 +35,25 @@ class IOManager {
 
     public:
 
+        /**
+         * @brief Construct a new IOManager object
+         * 
+         * @param Logger 
+         */
+        IOManager(LoggerClass *Logger);
 
+        /**
+         * @brief Destroy the IOManager object
+         * 
+         */
+        ~IOManager();
+
+
+        /**
+         * @brief Update the input for this frame.
+         * 
+         * @param DeltaTime 
+         */
+        void UpdateFrame(float DeltaTime);
 
 };
