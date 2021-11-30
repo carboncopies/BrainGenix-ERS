@@ -16,8 +16,8 @@ WindowBackgroundColor: [40, 40, 40, 255]
 ChildBackgroundColor: [40, 40, 40, 255]
 PopupBackgroundColor: [40, 40, 40, 255]
 
-BorderColor: [50, 0, 200, 200]
-BorderShadowColor: [70, 0, 255, 150]
+BorderColor: [100, 0, 255, 255]
+BorderShadowColor: [100, 0, 255, 255]
 
 FrameBackgroundColor: [30, 30, 30, 255]
 FrameBackgroundHoveredColor: [30, 90, 30, 255]
