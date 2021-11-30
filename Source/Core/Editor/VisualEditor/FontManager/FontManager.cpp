@@ -29,4 +29,8 @@ FontManager::FontManager(LoggerClass *Logger, const char* FontsDirPath) {
 // FontManager Destructor
 FontManager::~FontManager() {
     
+    // Log Destructor Call
+    Logger_->Log("Font Manager Destructor Called", 6);
+
 }
+
