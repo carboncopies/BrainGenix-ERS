@@ -130,11 +130,6 @@ void GUISystem::UpdateGUI() {
         ImGui::Begin("Pick Color Theme", &ShowColorThemePicker_);
 
 
-            ImGui::TextWrapped("Select a theme from the list below. If you wish to install a new theme, copy the yaml file into 'EditorAssets/Configuration/Themes', then refresh the list using the button below.");
-            
-
-
-
             // Put Radio Buttons Here
             ImGui::BeginChild("Theme Selector");
 
