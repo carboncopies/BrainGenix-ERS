@@ -63,12 +63,26 @@ class ThemeManager {
          */
         ~ThemeManager();
 
+        
+
         /**
          * @brief Load themes from disk
          * 
          */
         void LoadThemes();
+
+        /**
+         * @brief Create the theme menu
+         * 
+         */
+        //FIXME: MOVE MENU UPDATE FUNCTION OUT OF GUP INTO THIS FUNCTION!!!!
         void CreateThemeMenu();
+
+        /**
+         * @brief Apply the selected theme
+         * 
+         * @param ThemeID 
+         */
         void ApplyThemes(int ThemeID);
 
 
