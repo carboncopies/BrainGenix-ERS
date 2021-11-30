@@ -15,5 +15,18 @@
 // FontManager Constructor
 FontManager::FontManager(LoggerClass *Logger, const char* FontsDirPath) {
 
+    // Create Pointers
+    Logger_ = Logger;
 
+    // Log Initialization
+    Logger_->Log("Initializing Font Manager", 5);
+
+    // Copy Vars
+    FontsDirectoryPath_ = FontsDirPath;
+
+}
+
+// FontManager Destructor
+FontManager::~FontManager() {
+    
 }
