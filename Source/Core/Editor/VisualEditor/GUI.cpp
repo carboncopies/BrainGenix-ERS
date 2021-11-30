@@ -129,6 +129,8 @@ void GUISystem::UpdateGUI() {
     if (ShowColorThemePicker_) {
         ImGui::Begin("Pick Color Theme", &ShowColorThemePicker_);
 
+            ImGui::SetWindowSize(ImVec2(275, 300));
+
 
             // Put Radio Buttons Here
             ImGui::BeginChild("Theme Selector", ImVec2(250, 250), true);
@@ -151,14 +153,18 @@ void GUISystem::UpdateGUI() {
             if (ImGui::Button("Reload Themes")) {
                 ThemeManager_->LoadThemes();
             }
-            
             ImGui::SameLine();
 
             // Apply Button
             if (ImGui::Button("Apply")) {
                 ThemeManager_->ApplyThemes(ThemeSelector);
             }
+            ImGui::SameLine();
 
+            // Close Button
+            if (ImGui::Button("Close")) {
+                ShowColorThemePicker_ = false;
+            }
             
 
         ImGui::End();
