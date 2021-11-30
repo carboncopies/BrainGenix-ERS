@@ -153,6 +153,10 @@ void GUISystem::UpdateGUI() {
                     ShowColorThemePicker_ = true;
                 }
 
+                if (ImGui::MenuItem("System Font")) {
+                    ShowFontPicker_ = true;
+                }
+
 
             ImGui::EndMenu();
         }
