@@ -44,6 +44,10 @@ class GUISystem {
         bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */
 
 
+        // Static Window Show/Hide Vars
+         /**<Control Variable indicating weither to show/hide the color theme picker*/
+
+
     public:
 
         ThemeManager* ThemeManager_; /**<Pointer To ThemeManager Instance*/
