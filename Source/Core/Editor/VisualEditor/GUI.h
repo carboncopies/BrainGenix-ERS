@@ -26,6 +26,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+#include <Theme.h>
 
 /**
  * @brief Implements the ERS gui system.

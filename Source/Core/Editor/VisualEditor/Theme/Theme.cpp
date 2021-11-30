@@ -40,7 +40,7 @@ void ThemeManager::LoadThemes() {
     // Create List Of Files
     std::vector<std::string> FilePaths;
 
-    for (const auto &Entry : std::filesystem::directory_iterator(std::string(ThemePath_))) {
+    for (const auto &Entry : std::experimental::filesystem::directory_iterator(std::string(ThemePath_))) {
         FilePaths.push_back(Entry.path());
     }
 
