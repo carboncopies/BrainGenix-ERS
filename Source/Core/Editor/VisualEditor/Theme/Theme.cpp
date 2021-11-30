@@ -159,6 +159,7 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
 
 
+
     // Set Colors
     Style.Colors[ImGuiCol_Text]                  = ReadColor("TextColor", ThemeNode);
     Style.Colors[ImGuiCol_TextDisabled]          = ReadColor("DisabledTextColor", ThemeNode);
