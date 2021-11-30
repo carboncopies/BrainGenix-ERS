@@ -130,6 +130,10 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     // Hardcoded Transparency
     Style.Alpha = 1.0f;
 
+    Logger_->Log("Reading Theme For Value: 'WindowTitlePosition'", 1);
+    Style.WindowTitleAlign = ImVec2(ThemeNode["WindowTitlePosition"].as<float>(), 0.50f);
+    
+
     Logger_->Log("Reading Theme For Value: 'FrameRounding'", 1);
     Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
 
