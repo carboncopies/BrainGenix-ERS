@@ -155,8 +155,8 @@ void ThemeManager::ApplyThemes(int ThemeID) {
 
 
     // Set Corner Rounding Parameters
-    Logger_->Log("Reading Theme For Value: 'FrameRounding'", 1);
-    Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
+    Logger_->Log("Reading Theme For Value: 'WindowRounding'", 1);
+    Style.WindowRounding = ThemeNode["WindowRounding"].as<float>();
 
     Logger_->Log("Reading Theme For Value: 'FrameRounding'", 1);
     Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
