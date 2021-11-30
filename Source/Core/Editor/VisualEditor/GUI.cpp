@@ -126,11 +126,13 @@ void GUISystem::UpdateGUI() {
 
     // Draw Color Picker Menu
     static bool ShowColorThemePicker_ = false;
-    ImGui::Begin("Pick Color Theme", &ShowColorThemePicker_);
+    if (ShowColorThemePicker_) {
+        ImGui::Begin("Pick Color Theme", &ShowColorThemePicker_);
 
-        
+            
 
-    ImGui::End();
+        ImGui::End();
+    }
 
 
 
