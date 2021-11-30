@@ -124,9 +124,13 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     // Setup Style
     ImGuiStyle& Style = ImGui::GetStyle();
 
-    
-    Style.Alpha = 0.2f;
-    Style.FrameRounding = 3.0f;
+    // Hardcoded Transparency
+    Style.Alpha = 1.0f;
+
+    // Get FrameRounding Effect
+    Logger_->Log("Reading Theme For Value: 'FrameRounding'", 1);
+    Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
+
     Style.Colors[ImGuiCol_Text]                  = ImVec4(0.00f, 0.00f, 0.00f, 1.00f);
     Style.Colors[ImGuiCol_TextDisabled]          = ImVec4(0.60f, 0.60f, 0.60f, 1.00f);
     Style.Colors[ImGuiCol_WindowBg]              = ImVec4(0.94f, 0.94f, 0.94f, 0.94f);
