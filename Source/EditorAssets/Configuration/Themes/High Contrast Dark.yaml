@@ -19,13 +19,13 @@ PopupBackgroundColor: [40, 40, 40, 255]
 BorderColor: [120, 0, 255, 255]
 BorderShadowColor: [120, 0, 255, 255]
 
-FrameBackgroundColor: [30, 30, 30, 255]
-FrameBackgroundHoveredColor: [30, 90, 30, 255]
-FrameBackgroundActiveColor: [30, 60, 30, 255]
+FrameBackgroundColor: [50, 0, 100, 255]
+FrameBackgroundHoveredColor: [75, 0, 150, 255]
+FrameBackgroundActiveColor: [100, 0, 200, 255]
 
-TitleBackgroundColor: [20, 20, 20, 255]
-TitleBackgroundCollapsedColor: [30, 30, 30, 255]
-TitleBackgroundActiveColor: [50, 0, 200, 255]
+TitleBackgroundColor: [50, 0, 10, 255]
+TitleBackgroundCollapsedColor: [75, 0, 150, 255]
+TitleBackgroundActiveColor: [100, 0, 200, 255]
 
 TitleBarColor: [0, 0, 0, 255]
 
