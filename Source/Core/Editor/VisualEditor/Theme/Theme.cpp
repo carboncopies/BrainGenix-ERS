@@ -141,7 +141,12 @@ void ThemeManager::ApplyThemes(int ThemeID) {
 
     // Get Window Background Color
     Logger_->Log("Reading Theme For Value: 'WindowBackgroundColor'", 1);
-    Style.Colors[ImGuiCol_WindowBg] = ReadColor("DisabledTextColor", ThemeNode);
+    Style.Colors[ImGuiCol_WindowBg] = ReadColor("WindowBackgroundColor", ThemeNode);
+
+    // Get Window Background Color
+    Logger_->Log("Reading Theme For Value: 'ChildBackgroundColor'", 1);
+    Style.Colors[ImGuiCol_ChildBg] = ReadColor("ChildBackgroundColor", ThemeNode);
+
 
     // Get Popup Background Color
     Logger_->Log("Reading Theme For Value: 'PopupBackgroundColor'", 1);
@@ -167,13 +172,18 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'FrameBackgroundActiveColor'", 1);
     Style.Colors[ImGuiCol_FrameBgActive] = ReadColor("FrameBackgroundActiveColor", ThemeNode);
 
-        // Get Title Background Color
+    // Get Title Background Color
     Logger_->Log("Reading Theme For Value: 'TitleBackgroundColor'", 1);
     Style.Colors[ImGuiCol_TitleBg] = ReadColor("TitleBackgroundColor", ThemeNode);
 
+    // Get Title Background Collapsed Color
+    Logger_->Log("Reading Theme For Value: 'TitleBackgroundCollapsedColor'", 1);
+    Style.Colors[ImGuiCol_TitleBgCollapsed] = ReadColor("TitleBackgroundCollapsedColor", ThemeNode);
 
-    Style.Colors[ImGuiCol_TitleBgCollapsed]      = ImVec4(1.00f, 1.00f, 1.00f, 0.51f);
-    Style.Colors[ImGuiCol_TitleBgActive]         = ImVec4(0.82f, 0.82f, 0.82f, 1.00f);
+    // Get Title Background Active Color
+    Logger_->Log("Reading Theme For Value: 'TitleBackgroundActiveColor'", 1);
+    Style.Colors[ImGuiCol_TitleBgActive] = ReadColor("TitleBackgroundActiveColor", ThemeNode);
+
     Style.Colors[ImGuiCol_MenuBarBg]             = ImVec4(0.86f, 0.86f, 0.86f, 1.00f);
     Style.Colors[ImGuiCol_ScrollbarBg]           = ImVec4(0.98f, 0.98f, 0.98f, 0.53f);
     Style.Colors[ImGuiCol_ScrollbarGrab]         = ImVec4(0.69f, 0.69f, 0.69f, 1.00f);
