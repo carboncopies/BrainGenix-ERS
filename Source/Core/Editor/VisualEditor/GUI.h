@@ -48,6 +48,9 @@ class GUISystem {
         bool ShowColorThemePicker_ = false; /**<Control Variable indicating weither to show/hide the color theme picker*/
 
 
+        // Update Window Functions
+        void UpdateWindow_ColorThemePicker(); /**<Updates Color Theme Picker Window*/
+
     public:
 
         ThemeManager* ThemeManager_; /**<Pointer To ThemeManager Instance*/

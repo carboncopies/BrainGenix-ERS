@@ -125,6 +125,49 @@ void GUISystem::UpdateGUI() {
 
 
 
+
+
+
+
+    // Add Main Menu
+    if (ImGui::BeginMainMenuBar()) {
+
+        // Add File Menu
+        if (ImGui::BeginMenu("File")) {
+
+                if (ImGui::MenuItem("Exit")) {
+                    MenuExitFunction();
+                }
+
+            
+            ImGui::EndMenu();
+        }
+
+        if (ImGui::BeginMenu("View")) {
+
+
+                if (ImGui::MenuItem("Color Theme")) {
+                    ShowColorThemePicker_ = true;
+                }
+
+
+            ImGui::EndMenu();
+        }
+
+
+        ImGui::EndMainMenuBar();
+    }
+
+
+
+
+
+
+
+}
+
+void GUISystem::UpdateWindow_ColorThemePicker() {
+
     // Draw Color Picker Menu
     if (ShowColorThemePicker_) {
         ImGui::Begin("Pick Color Theme", &ShowColorThemePicker_);
@@ -169,43 +212,6 @@ void GUISystem::UpdateGUI() {
 
         ImGui::End();
     }
-
-
-
-    // Add Main Menu
-    if (ImGui::BeginMainMenuBar()) {
-
-        // Add File Menu
-        if (ImGui::BeginMenu("File")) {
-
-                if (ImGui::MenuItem("Exit")) {
-                    MenuExitFunction();
-                }
-
-            
-            ImGui::EndMenu();
-        }
-
-        if (ImGui::BeginMenu("View")) {
-
-
-                if (ImGui::MenuItem("Color Theme")) {
-                    ShowColorThemePicker_ = true;
-                }
-
-
-            ImGui::EndMenu();
-        }
-
-
-        ImGui::EndMainMenuBar();
-    }
-
-
-
-
-
-
 
 }
 
