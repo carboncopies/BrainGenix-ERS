@@ -13,12 +13,13 @@
 
 
 // Visual Rendere constructor
-VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, LoggerClass *Logger) {
+VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, GLFWwindow* Window, LoggerClass *Logger) {
 
     // Create Pointers
     Logger->Log("Populating Renderer Member Pointers", 5);
     SystemConfiguration_ = SystemConfiguration;
     Logger_ = Logger;
+    Window_ = Window;
 
     // Initialize OpenGL
     Logger_->Log("Initializing OpenGL", 5);
@@ -84,15 +85,42 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
 
     // Update Input
-    std::cout<<ImGui::IsWindowFocused()<<std::endl;
     if (ImGui::IsWindowFocused()) {
-        InputProcessor *InputProcessor = InputProcessors_[Index];
-        InputProcessor->UpdateMouse(true);
-    }
+
+
+            InputProcessor *InputProcessor = InputProcessors_[Index];
+
+            // Enable/Disable Mouse Capture
+            if ((glfwGetMouseButton(Window_, 0) == GLFW_PRESS)){
+                CaptureMouseCursor = true;
+            } else {
+                CaptureMouseCursor = false;
+            }
+
+
+            InputProcessor_->ProcessKeyboardInput(Logger_, DeltaTime, CaptureMouseCursor);
+            InputProcessor_->UpdateFramebuffer();
+            InputProcessor_->UpdateMouse(CaptureMouseCursor);
+
+
+            // Update Mouse Capture State
+            if (CaptureMouseCursor) {
+                glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+                InputProcessor->UpdateMouse(true);
+
+            } else {
+                glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+            }
 
 
 
-    glViewport(0, 0, RenderWidth,RenderHeight);
+
+
+        }
+
+
+
+    glViewport(0, 0, RenderWidth, RenderHeight);
     glScissor(0, 0, RenderWidth, RenderHeight);
 
 

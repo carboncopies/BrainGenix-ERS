@@ -51,7 +51,6 @@ class IOManager {
         int WindowWidth_; /**<Window Width*/
         int WindowHeight_; /**<Window Height*/
 
-        bool CaptureMouseCursor_ = false; /**<Capture Or Release Mouse Cursor*/
 
 
 

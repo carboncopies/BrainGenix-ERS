@@ -48,6 +48,7 @@ class VisualRenderer {
         // Member Variables
         YAML::Node *SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
         LoggerClass *Logger_; /**<Pointer to the logging system instance*/
+        GLFWwindow *Window_; /**<GLFW Window Instance For Window Input To Viewports*/
 
 
         std::vector<ERS_OBJECT_CAMERA_NOCLIP*> Cameras_; /**<List Of Pointers To Camera Instances*/
@@ -73,7 +74,7 @@ class VisualRenderer {
     public:
 
         // Constructor
-        VisualRenderer(YAML::Node *SystemConfiguration, LoggerClass *Logger);
+        VisualRenderer(YAML::Node *SystemConfiguration, GLFWwindow* Window, LoggerClass *Logger);
 
         // Destructor
         ~VisualRenderer();
