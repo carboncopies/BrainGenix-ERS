@@ -17,9 +17,9 @@ ChildBackgroundColor:  [10, 10, 10, 255]
 PopupBackgroundColor:  [10, 10, 10, 255]
 
 BorderColor:       [120, 0, 255, 255]
-BorderShadowColor: [120, 0, 255, 255]
+BorderShadowColor: [120, 9, 169, 255]
 
-FrameBackgroundColor:        [50, 0, 100, 255]
+FrameBackgroundColor:        [0, 0, 0, 255]
 FrameBackgroundHoveredColor: [75, 0, 150, 255]
 FrameBackgroundActiveColor:  [100, 0, 200, 255]
 
