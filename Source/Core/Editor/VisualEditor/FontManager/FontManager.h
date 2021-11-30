@@ -41,6 +41,8 @@ class FontManager {
         std::vector<const char*> FontPathList_; /**<List of fonts located at the given paths*/
         std::vector<const char*> FontNameList_; /**<List of font names for gui rendering*/
         
+        int FontSize_ = 14; /**<Set Default Font Size In Pixels*/
+
 
         bool EndsWith(const std::string& Input, const std::string& Ending);
 
@@ -50,5 +52,6 @@ class FontManager {
         ~FontManager();
 
         void IndexFonts();
+        void UseFont(int FontIndex);
 
 };

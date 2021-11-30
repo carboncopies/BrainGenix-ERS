@@ -78,3 +78,18 @@ void FontManager::IndexFonts() {
     }
 
 }
+
+// Use Font Function
+void FontManager::UseFont(int FontIndex) {
+
+    // Get Font Path From Dir
+    const char* FontPath = FontPathList_[FontIndex];
+
+    // Load, Apply Font
+    ImGuiIO& Io = ImGui::GetIO();
+    Io.Fonts->AddFontFromFileTTF(FontPath, FontSize_);
+
+
+}
+
+
