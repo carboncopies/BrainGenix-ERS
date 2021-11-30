@@ -69,6 +69,7 @@ void GUISystem::UpdateGUI() {
     float Height;
     glfwGetWindowContentScale(Window_, &Width, &Height);
 
+    ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
     // Start the Dear ImGui frame
     ImGui_ImplOpenGL3_NewFrame();
@@ -76,7 +77,6 @@ void GUISystem::UpdateGUI() {
     ImGui::NewFrame();
 
 
-    ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_DockingEnable;
     ImGui::DockSpaceOverViewport();
 
     // Setup Dockspace
