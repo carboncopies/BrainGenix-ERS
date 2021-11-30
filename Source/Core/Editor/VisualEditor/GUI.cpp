@@ -126,7 +126,8 @@ void GUISystem::UpdateGUI() {
 
 
 
-
+    // Update Windows
+    UpdateWindow_ColorThemePicker();
 
 
     // Add Main Menu
