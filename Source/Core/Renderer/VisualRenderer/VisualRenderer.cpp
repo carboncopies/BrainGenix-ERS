@@ -84,9 +84,10 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
 
     // Update Input
-    if (ImGui::IsItemFocused()) {
-        IOManager *IoManager = IOManagers_[Index];
-        IoManager->UpdateFrame(DeltaTime);
+    std::cout<<ImGui::IsWindowFocused()<<std::endl;
+    if (ImGui::IsWindowFocused()) {
+        InputProcessor *InputProcessor = InputProcessors_[Index];
+        InputProcessor->UpdateMouse(true);
     }
 
 
@@ -160,9 +161,9 @@ void VisualRenderer::CreateViewport(ERS_OBJECT_SHADER *Shader, std::string Viewp
     ViewportHeights_.push_back(1);
 
     // Create IOManager
-    Logger_->Log("Creating New Input/Output Manager", 4);
-    IOManager *IoMan = new IOManager(Logger_, Window, Camera);
-    IOManagers_.push_back(IoMan);
+    Logger_->Log("Creating New Input Processor", 4);
+    InputProcessor *InProc = new InputProcessor(Camera, Window);
+    InputProcessors_.push_back(InProc);
 
     // Create Framebuffer
     unsigned int FramebufferObject;

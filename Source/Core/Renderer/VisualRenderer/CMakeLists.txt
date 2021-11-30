@@ -27,7 +27,7 @@ target_link_libraries(VisualRenderer
 # Link Internal Libs
 target_link_libraries(VisualRenderer
     NoClip
-    IOManager
+    InputProcessor
     LoggingSystem
     ImageLoader
     TextureLoader

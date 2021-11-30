@@ -34,7 +34,7 @@
 #include <SceneManager.h>
 #include <SceneLoader.h>
 #include <ShaderLoader.h>
-#include <IOManager.h>
+#include <InputProcessor.h>
 #include <GUI.h>
 #include <Framebuffer.h>
 
@@ -53,7 +53,7 @@ class VisualRenderer {
         std::vector<ERS_OBJECT_CAMERA_NOCLIP*> Cameras_; /**<List Of Pointers To Camera Instances*/
         std::vector<ERS_OBJECT_SHADER*> Shaders_; /**<List Of Pointers To Shader Instances*/
         std::vector<std::string> ViewportNames_; /**<List Of Names For Viewports*/
-        std::vector<IOManager*> IOManagers_; /**<Vector Of IOManagers*/
+        std::vector<InputProcessor*> InputProcessors_; /**<Vector Of InputProcessors*/
 
         std::vector<unsigned int> FramebufferObjects_; /**<Framebuffer Objects For Each Viewport*/
         std::vector<unsigned int> FramebufferColorObjects_; /**<Render Texture For Displaying Color*/
