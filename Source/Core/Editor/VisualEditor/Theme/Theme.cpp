@@ -55,7 +55,7 @@ void ThemeManager::LoadThemes() {
     for (const auto &Entry : std::filesystem::directory_iterator(std::string(ThemePath_))) {
 
         // Get File Path        
-        std::string FilePath = Entry.path();
+        std::string FilePath{Entry.path().u8string()};
 
         // Load YAML::Node
         YAML::Node Theme = YAML::LoadFile(FilePath.c_str());

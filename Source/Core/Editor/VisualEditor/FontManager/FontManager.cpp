@@ -38,6 +38,7 @@ FontManager::~FontManager() {
 // Index Fonts Function
 void FontManager::IndexFonts() {
 
-    
+    // Get List Of Files At Path
+    //std::vector
 
 }
