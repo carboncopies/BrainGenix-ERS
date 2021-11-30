@@ -130,14 +130,20 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     // Hardcoded Transparency
     Style.Alpha = 1.0f;
 
+    // Set Window Title Position
     Logger_->Log("Reading Theme For Value: 'WindowTitlePosition'", 1);
     Style.WindowTitleAlign = ImVec2(ThemeNode["WindowTitlePosition"].as<float>(), 0.50f);
     
 
+
+
+
+    // Set Corner Rounding Parameters
     Logger_->Log("Reading Theme For Value: 'FrameRounding'", 1);
     Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
 
 
+    // Set Colors
     Style.Colors[ImGuiCol_Text]                  = ReadColor("TextColor", ThemeNode);
     Style.Colors[ImGuiCol_TextDisabled]          = ReadColor("DisabledTextColor", ThemeNode);
     Style.Colors[ImGuiCol_WindowBg]              = ReadColor("WindowBackgroundColor", ThemeNode);
