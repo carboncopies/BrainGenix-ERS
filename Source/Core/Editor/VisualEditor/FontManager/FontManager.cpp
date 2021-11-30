@@ -126,7 +126,10 @@ void FontManager::FontSelectorWindow(bool *WindowEnabled) {
                 ImGui::SameLine();
 
                 if (ImGui::Button("Apply")) {
+                    ImGui::EndFrame();
+                    ImGui::Render();
                     UseFont(FontSelector_);
+                    ImGui::NewFrame();
                 }
                 ImGui::SameLine();
 
