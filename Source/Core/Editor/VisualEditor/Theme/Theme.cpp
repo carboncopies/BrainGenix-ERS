@@ -145,8 +145,8 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'PopupBorderSize'", 1);
     Style.PopupBorderSize = ThemeNode["PopupBorderSize"].as<float>();
 
-    Logger_->Log("Reading Theme For Value: 'WindowBorderSize'", 1);
-    Style.WindowBorderSize = ThemeNode["WindowBorderSize"].as<float>();
+    Logger_->Log("Reading Theme For Value: 'FrameBorderSize'", 1);
+    Style.FrameBorderSize = ThemeNode["FrameBorderSize"].as<float>();
 
     Logger_->Log("Reading Theme For Value: 'WindowBorderSize'", 1);
     Style.WindowBorderSize = ThemeNode["WindowBorderSize"].as<float>();
