@@ -4,6 +4,8 @@
 
 WindowBackgroundColor: [30, 30, 30]
 
-FrameRounding: 50
+FrameRounding: 3
 
+# Note: You MUST Populate The Alpha Value!
+# FORMAT:  R,   G    B    A    
 TextColor: [125, 125, 125, 255]
