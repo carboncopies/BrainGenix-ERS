@@ -37,3 +37,7 @@ CheckmarkColor: [0, 128, 55, 255]
 
 SliderGrabColor: [200, 200, 200, 255]
 SliderGrabActiveColor: [200, 250, 200, 255]
+
+ButtonColor: [5, 0, 200, 255]
+ButtonHoveredColor: [50, 0, 200, 255]
+ButtonActiveColor: [100, 0, 200, 255]

@@ -155,9 +155,9 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Style.Colors[ImGuiCol_CheckMark] = ReadColor("CheckmarkColor", ThemeNode);
     Style.Colors[ImGuiCol_SliderGrab] = ReadColor("SliderGrabColor", ThemeNode);
     Style.Colors[ImGuiCol_SliderGrabActive]      = ReadColor("SliderGrabActiveColor", ThemeNode);
-    Style.Colors[ImGuiCol_Button]                = ImVec4(0.26f, 0.59f, 0.98f, 0.40f);
-    Style.Colors[ImGuiCol_ButtonHovered]         = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
-    Style.Colors[ImGuiCol_ButtonActive]          = ImVec4(0.06f, 0.53f, 0.98f, 1.00f);
+    Style.Colors[ImGuiCol_Button]                = ReadColor("ButtonColor", ThemeNode);
+    Style.Colors[ImGuiCol_ButtonHovered]         = ReadColor("ButtonHoveredColor", ThemeNode);
+    Style.Colors[ImGuiCol_ButtonActive]          = ReadColor("ButtonActiveColor", ThemeNode);
     Style.Colors[ImGuiCol_Header]                = ImVec4(0.26f, 0.59f, 0.98f, 0.31f);
     Style.Colors[ImGuiCol_HeaderHovered]         = ImVec4(0.26f, 0.59f, 0.98f, 0.80f);
     Style.Colors[ImGuiCol_HeaderActive]          = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
