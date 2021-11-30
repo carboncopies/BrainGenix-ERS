@@ -5,6 +5,10 @@
 # System Base Color
 EditorBackgroundColor: [0, 0, 0]
 
+# Curve Precision
+CurveTessellationTolerance: 1.0
+CircleTessellationMaxError: 0.2
+
 # Where To Put Window Title Text
 WindowTitlePosition: 0.50
 

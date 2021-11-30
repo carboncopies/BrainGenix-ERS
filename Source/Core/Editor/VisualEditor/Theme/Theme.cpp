@@ -130,6 +130,16 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     // Hardcoded Transparency
     Style.Alpha = 1.0f;
 
+
+    // Set Curve Tolerances
+    Logger_->Log("Reading Theme For Value: 'WindowTitlePosition'", 1);
+    Style.WindowTitleAlign = ImVec2(ThemeNode["WindowTitlePosition"].as<float>(), 0.50f);
+
+    Logger_->Log("Reading Theme For Value: 'WindowTitlePosition'", 1);
+    Style.WindowTitleAlign = ImVec2(ThemeNode["WindowTitlePosition"].as<float>(), 0.50f);
+
+
+
     // Set Window Title Position
     Logger_->Log("Reading Theme For Value: 'WindowTitlePosition'", 1);
     Style.WindowTitleAlign = ImVec2(ThemeNode["WindowTitlePosition"].as<float>(), 0.50f);
