@@ -135,6 +135,7 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Style.WindowTitleAlign = ImVec2(ThemeNode["WindowTitlePosition"].as<float>(), 0.50f);
     
 
+
     // Set Border Sizes
     Logger_->Log("Reading Theme For Value: 'WindowBorderSize'", 1);
     Style.WindowBorderSize = ThemeNode["WindowBorderSize"].as<float>();
