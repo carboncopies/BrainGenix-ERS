@@ -13,6 +13,7 @@
 
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -23,13 +24,27 @@
 #include <LoggingSystem.h>
 
 
+/**
+ * @brief This class provides functionality to load and apply themes from yaml files.
+ * 
+ */
 class ThemeManager {
 
 
     private:
 
+        LoggerClass *Logger_; /**<LoggerClass Instance*/
+
+
 
     public:
+
+        ThemeManager(LoggerClass *Logger_);
+        ~ThemeManager();
+
+        void LoadThemes();
+        void CreateThemeMenu();
+        void ApplyThemes(int ThemeID);
 
 
 };
