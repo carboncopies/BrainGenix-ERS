@@ -12,9 +12,9 @@ TextColor: [195, 195, 195, 255]
 DisabledTextColor: [150, 150, 150, 180]
 TextSelectedBackgroundColor: [150, 150, 150, 180]
 
-WindowBackgroundColor: [30, 30, 30, 255]
-ChildBackgroundColor: [30, 30, 30, 255]
-PopupBackgroundColor: [30, 30, 30, 255]
+WindowBackgroundColor: [40, 40, 40, 255]
+ChildBackgroundColor: [40, 40, 40, 255]
+PopupBackgroundColor: [40, 40, 40, 255]
 
 BorderColor: [50, 0, 200, 200]
 BorderShadowColor: [70, 0, 255, 150]
