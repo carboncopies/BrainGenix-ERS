@@ -60,6 +60,9 @@ GUISystem::~GUISystem() {
 // Update GUI
 void GUISystem::UpdateGUI() {
 
+    
+    // CheckUpdate Font
+    FontManager_->CheckUpdateFont();
 
 
     // Get Window Width, Height
@@ -75,12 +78,6 @@ void GUISystem::UpdateGUI() {
     // Start the Dear ImGui frame
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
-
-    // CheckUpdate Font
-    FontManager_->CheckUpdateFont();
-
-
-    // Start New Frame
     ImGui::NewFrame();
 
     // Setup Dockspace
