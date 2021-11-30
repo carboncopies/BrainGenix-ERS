@@ -158,8 +158,8 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'WindowRounding'", 1);
     Style.WindowRounding = ThemeNode["WindowRounding"].as<float>();
 
-    Logger_->Log("Reading Theme For Value: 'FrameRounding'", 1);
-    Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
+    Logger_->Log("Reading Theme For Value: 'ChildRounding'", 1);
+    Style.ChildRounding = ThemeNode["ChildRounding"].as<float>();
 
     Logger_->Log("Reading Theme For Value: 'FrameRounding'", 1);
     Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
