@@ -94,15 +94,17 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     // Get Input Processor
     InputProcessor *InputProcessor = InputProcessors_[Index];
 
+
     // Update Mouse Capture State
     if (CaptureMouseCursor) {
         glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-        InputProcessor->ProcessKeyboardInput(Logger_, DeltaTime, CaptureMouseCursor);
-        InputProcessor->UpdateFramebuffer();
-        InputProcessor->UpdateMouse(CaptureMouseCursor);
     } else {
         glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
     }
+
+    InputProcessor->ProcessKeyboardInput(Logger_, DeltaTime, CaptureMouseCursor);
+    InputProcessor->UpdateFramebuffer();
+    InputProcessor->UpdateMouse(CaptureMouseCursor);
 
 
 
