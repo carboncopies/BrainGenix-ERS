@@ -36,20 +36,20 @@ ScrollbarActiveColor:     [180, 90, 0, 255]
 
 CheckmarkColor: [0, 180, 180, 255]
 
-SliderGrabColor: [200, 200, 200, 255]
+SliderGrabColor:       [200, 200, 200, 255]
 SliderGrabActiveColor: [175, 175, 175, 255]
 
-ButtonColor: [5, 0, 200, 255]
-ButtonHoveredColor: [50, 0, 200, 255]
-ButtonActiveColor: [100, 0, 200, 255]
+ButtonColor:        [0, 0, 0, 255]
+ButtonHoveredColor: [0, 128, 175, 255]
+ButtonActiveColor:  [0, 150, 50, 255]
 
-HeaderColor: [5, 0, 200, 255]
-HeaderHoveredColor: [50, 0, 200, 255]
-HeaderActiveColor: [100, 0, 200, 255]
+HeaderColor:        [50, 0, 140, 255]
+HeaderHoveredColor: [0, 128, 175, 255]
+HeaderActiveColor:  [0, 150, 50, 255]
 
-ResizeColor: [50, 0, 150, 255]
-ResizeHoveredColor: [75, 0, 200, 255]
-ResizeActiveColor: [100, 0, 255, 255]
+ResizeColor:        [100, 0, 200, 255]
+ResizeHoveredColor: [0, 255, 255, 255]
+ResizeActiveColor:  [255, 175, 0, 255]
 
 PlotLinesColor: [200, 0, 200, 255]
 PlotLinesHoveredColor: [200, 200, 0, 255]
