@@ -43,6 +43,10 @@ bool FontManager::EndsWith(const std::string& Input, const std::string& Ending) 
 // Index Fonts Function
 void FontManager::IndexFonts() {
 
+    // Log Indexing
+    Logger_->Log(std::string(std::string("Indexing Fonts In Dir: ") + std::string(FontsDirectoryPath_)).c_str(), 4);
+
+
     // Get List Of Files At Path
     for (const auto &Entry : std::filesystem::recursive_directory_iterator(std::string(FontsDirectoryPath_))) {
 
@@ -56,7 +60,15 @@ void FontManager::IndexFonts() {
             FontPathList_.push_back(FilePath.c_str());
 
             // Strip File Extension
-            
+            std::string FontName = FilePath.substr(0, strlen(FilePath.c_str())-4);
+
+            // Append Font Name To FontNameList
+            FontNameList_.push_back(FontName.c_str()); 
+
+
+            // Log Font Found
+            std::string LogText = std::string("Indexed Font: ") + FilePath;
+            Logger_->Log(LogText.c_str(), 3);
 
         }
 
