@@ -84,29 +84,25 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     int RenderHeight = ImGui::GetWindowSize().y;
 
 
-    // Update Input
-    if (ImGui::IsWindowFocused()) {
+    // Check If Input Enabled
+    bool CaptureMouseCursor = false;
+    if (ImGui::IsWindowFocused() && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
+        CaptureMouseCursor = true;
+    } 
+        
 
-            // Get Input Processor
-            InputProcessor *InputProcessor = InputProcessors_[Index];
+    // Get Input Processor
+    InputProcessor *InputProcessor = InputProcessors_[Index];
 
-            // Enable/Disable Mouse Capture
-            bool CaptureMouseCursor = false;
-            if ((glfwGetMouseButton(Window_, 0) == GLFW_PRESS)){
-                CaptureMouseCursor = true;
-            }
-
-            // Update Mouse Capture State
-            if (CaptureMouseCursor) {
-                glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-                InputProcessor->ProcessKeyboardInput(Logger_, DeltaTime, CaptureMouseCursor);
-                InputProcessor->UpdateFramebuffer();
-                InputProcessor->UpdateMouse(CaptureMouseCursor);
-            } 
-
-        } else {
-            glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-        }
+    // Update Mouse Capture State
+    if (CaptureMouseCursor) {
+        glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        InputProcessor->ProcessKeyboardInput(Logger_, DeltaTime, CaptureMouseCursor);
+        InputProcessor->UpdateFramebuffer();
+        InputProcessor->UpdateMouse(CaptureMouseCursor);
+    } else {
+        glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    }
 
 
 
