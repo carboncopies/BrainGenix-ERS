@@ -5,6 +5,9 @@
 # System Base Color
 EditorBackgroundColor: [0, 0, 0]
 
+# Where To Put Window Title Text
+WindowTitlePosition: 0.50
+
 # Borders
 WindowBorderSize: 1
 ChildBorderSize: 1
