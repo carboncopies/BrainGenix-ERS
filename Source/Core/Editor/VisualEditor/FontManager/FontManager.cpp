@@ -26,6 +26,7 @@ FontManager::FontManager(LoggerClass *Logger, const char* FontsDirPath) {
 
     // Index Fonts
     IndexFonts();
+    UseFont(5);
 
 }
 
@@ -60,13 +61,13 @@ void FontManager::IndexFonts() {
         if ((EndsWith(FilePath, ".ttf")) || (EndsWith(FilePath, ".otf"))) {
 
             // Append Path To PathList
-            FontPathList_.push_back(FilePath.c_str());
+            FontPathList_.push_back(FilePath);
 
             // Strip File Extension
             std::string FontName = FilePath.substr(0, strlen(FilePath.c_str())-4);
 
             // Append Font Name To FontNameList
-            FontNameList_.push_back(FontName.c_str()); 
+            FontNameList_.push_back(FontName); 
 
 
             // Log Font Found
@@ -83,8 +84,9 @@ void FontManager::IndexFonts() {
 void FontManager::UseFont(int FontIndex) {
 
     // Get Font Path From Dir
-    const char* FontPath = FontPathList_[FontIndex];
+    const char* FontPath = FontPathList_[FontIndex].c_str();
 
+    std::cout<<FontPath<<std::endl;
     // Load, Apply Font
     ImGuiIO& Io = ImGui::GetIO();
     Io.Fonts->AddFontFromFileTTF(FontPath, FontSize_);

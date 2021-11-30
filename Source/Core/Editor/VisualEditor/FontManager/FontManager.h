@@ -38,8 +38,8 @@ class FontManager {
         LoggerClass *Logger_; /**<LoggerClass Instance Pointer*/
         const char* FontsDirectoryPath_; /**<Path where fonts are to be searched for */
 
-        std::vector<const char*> FontPathList_; /**<List of fonts located at the given paths*/
-        std::vector<const char*> FontNameList_; /**<List of font names for gui rendering*/
+        std::vector<std::string> FontPathList_; /**<List of fonts located at the given paths*/
+        std::vector<std::string> FontNameList_; /**<List of font names for gui rendering*/
         
         int FontSize_ = 14; /**<Set Default Font Size In Pixels*/
 
