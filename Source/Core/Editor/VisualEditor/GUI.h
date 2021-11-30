@@ -42,6 +42,9 @@ class GUISystem {
         LoggerClass* Logger_; /**<Pointer To LoggerClass Instance*/
         GLFWwindow* Window_; /**<Pointer to window instance*/
 
+        FontManager* FontManager_; /**<Pointer To FontManager Instance*/
+
+
 
         bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */
 
@@ -56,7 +59,6 @@ class GUISystem {
     public:
 
         ThemeManager* ThemeManager_; /**<Pointer To ThemeManager Instance*/
-        FontManager* FontManager_; /**<Pointer To FontManager Instance*/
 
         /**
          * @brief Construct a new Gui System object
