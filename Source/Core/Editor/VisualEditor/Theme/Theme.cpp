@@ -111,8 +111,8 @@ void ThemeManager::ApplyThemes(int ThemeID) {
 
 
     // Background Color
-    Logger_->Log("Reading Theme For Value: 'WindowBackgroundColor'", 1);
-    YAML::Node ColorsNode = ThemeNode["WindowBackgroundColor"];
+    Logger_->Log("Reading Theme For Value: 'EditorBackgroundColor'", 1);
+    YAML::Node ColorsNode = ThemeNode["EditorBackgroundColor"];
 
     ClearColor_.x = ColorsNode[0].as<float>()/255.0f;
     ClearColor_.y = ColorsNode[1].as<float>()/255.0f;
@@ -143,7 +143,19 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'WindowBackgroundColor'", 1);
     Style.Colors[ImGuiCol_WindowBg] = ReadColor("DisabledTextColor", ThemeNode);
 
-    Style.Colors[ImGuiCol_PopupBg]               = ImVec4(1.00f, 1.00f, 1.00f, 0.94f);
+    // Get Popup Background Color
+    Logger_->Log("Reading Theme For Value: 'PopupBackgroundColor'", 1);
+    Style.Colors[ImGuiCol_PopupBg] = ReadColor("PopupBackgroundColor", ThemeNode);
+
+    // Get Border Color
+    Logger_->Log("Reading Theme For Value: 'BorderColor'", 1);
+    Style.Colors[ImGuiCol_Border] = ReadColor("BorderColor", ThemeNode);
+
+    // Get Border Shadow Color
+    Logger_->Log("Reading Theme For Value: 'BorderShadowColor'", 1);
+    Style.Colors[ImGuiCol_BorderShadow] = ReadColor("BorderShadowColor", ThemeNode);
+
+
     Style.Colors[ImGuiCol_Border]                = ImVec4(0.00f, 0.00f, 0.00f, 0.39f);
     Style.Colors[ImGuiCol_BorderShadow]          = ImVec4(1.00f, 1.00f, 1.00f, 0.10f);
     Style.Colors[ImGuiCol_FrameBg]               = ImVec4(1.00f, 1.00f, 1.00f, 0.94f);
