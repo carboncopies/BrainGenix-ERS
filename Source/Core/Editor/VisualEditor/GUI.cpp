@@ -122,7 +122,7 @@ void GUISystem::UpdateGUI() {
     }
 
 
-    ImGui::End();
+    //ImGui::End();
     
         // static float f = 0.0f;
         // static int counter = 0;
