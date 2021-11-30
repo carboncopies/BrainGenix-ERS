@@ -12,15 +12,15 @@ TextColor:                   [255, 255, 255, 255]
 DisabledTextColor:           [200, 200, 200, 180]
 TextSelectedBackgroundColor: [200, 200, 200, 1255]
 
-WindowBackgroundColor: [10, 10, 10, 255]
-ChildBackgroundColor:  [10, 10, 10, 255]
-PopupBackgroundColor:  [10, 10, 10, 255]
+WindowBackgroundColor: [0, 0, 0, 255]
+ChildBackgroundColor:  [15, 15, 15, 255]
+PopupBackgroundColor:  [30, 30, 30, 255]
 
 BorderColor:       [120, 0, 255, 255]
 BorderShadowColor: [120, 9, 169, 255]
 
 FrameBackgroundColor:        [0, 0, 0, 255]
-FrameBackgroundHoveredColor: [75, 0, 150, 255]
+FrameBackgroundHoveredColor: [0, 128, 175, 255]
 FrameBackgroundActiveColor:  [100, 0, 200, 255]
 
 TitleBackgroundColor:          [50, 0, 100, 255]
