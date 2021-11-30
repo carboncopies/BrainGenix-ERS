@@ -135,16 +135,12 @@ void ThemeManager::ApplyThemes(int ThemeID) {
 
     Style.Colors[ImGuiCol_Text] = ReadColor("TextColor", ThemeNode);
 
-    Logger_->Log("Reading Theme For Value: 'DisabledTextColor'", 1);
     Style.Colors[ImGuiCol_TextDisabled] = ReadColor("DisabledTextColor", ThemeNode);
 
-    Logger_->Log("Reading Theme For Value: 'WindowBackgroundColor'", 1);
     Style.Colors[ImGuiCol_WindowBg] = ReadColor("WindowBackgroundColor", ThemeNode);
 
-    Logger_->Log("Reading Theme For Value: 'ChildBackgroundColor'", 1);
     Style.Colors[ImGuiCol_ChildBg] = ReadColor("ChildBackgroundColor", ThemeNode);
 
-    Logger_->Log("Reading Theme For Value: 'PopupBackgroundColor'", 1);
     Style.Colors[ImGuiCol_PopupBg] = ReadColor("PopupBackgroundColor", ThemeNode);
 
     Logger_->Log("Reading Theme For Value: 'BorderColor'", 1);
