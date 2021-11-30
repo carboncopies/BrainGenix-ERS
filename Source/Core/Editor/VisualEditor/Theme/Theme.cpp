@@ -183,8 +183,8 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'GrabRounding'", 1);
     Style.GrabRounding = ThemeNode["GrabRounding"].as<float>();
 
-    Logger_->Log("Reading Theme For Value: 'LogSliderRounding'", 1);
-    Style.LogSliderDeadzone = ThemeNode["LogSliderRounding"].as<float>();
+    Logger_->Log("Reading Theme For Value: 'LogSliderDeadzone'", 1);
+    Style.LogSliderDeadzone = ThemeNode["LogSliderDeadzone"].as<float>();
 
     Logger_->Log("Reading Theme For Value: 'TabRounding'", 1);
     Style.TabRounding = ThemeNode["TabRounding"].as<float>();
