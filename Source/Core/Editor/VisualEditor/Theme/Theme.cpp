@@ -229,6 +229,6 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Style.Colors[ImGuiCol_TextSelectedBg]        = ReadColor("TextSelectedBackgroundColor", ThemeNode);
     Style.Colors[ImGuiCol_DockingPreview]        = ReadColor("DockingPreview", ThemeNode);
     Style.Colors[ImGuiCol_DockingEmptyBg]        = ReadColor("DockingEmptyBackground", ThemeNode);
-
+    Style.Colors[ImGuiCol_Separator]        = ReadColor("SeperatorColor", ThemeNode);
 }
 
