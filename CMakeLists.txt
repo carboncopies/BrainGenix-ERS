@@ -153,6 +153,7 @@ add_subdirectory(${SRC_DIR}/Core/Utils/IOManager)
 add_subdirectory(${SRC_DIR}/Core/Utils/InputProcessor)
 
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor)
+add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/Theme)
 
 add_subdirectory(${SRC_DIR}/Core/Renderer)
 add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer)
@@ -175,5 +176,6 @@ add_subdirectory(${SRC_DIR}/Core/Loader/ShaderLoader)
 
 # COPY FILES TO BINARY DIR
 file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
-file(COPY "${SRC_DIR}/Shaders/" DESTINATION "${BIN_DIR}/Shaders")
 file(COPY "${SRC_DIR}/Assets/" DESTINATION "${BIN_DIR}/Assets")
+file(COPY "${SRC_DIR}/EditorAssets/" DESTINATION "${BIN_DIR}/EditorAssets")
+file(COPY "${SRC_DIR}/Shaders/" DESTINATION "${BIN_DIR}/Shaders")
