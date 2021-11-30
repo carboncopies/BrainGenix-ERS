@@ -22,6 +22,8 @@
 #include <yaml-cpp/yaml.h>
 
 #include <imgui.h>
+#include <backends/imgui_impl_glfw.h>
+#include <backends/imgui_impl_opengl3.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
