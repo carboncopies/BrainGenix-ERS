@@ -38,22 +38,31 @@ ThemeManager::~ThemeManager() {
 // Load Themes
 void ThemeManager::LoadThemes() {
 
-    // Create List Of Files
-    std::vector<std::string> FilePaths;
+    // Clear Vectors
+    ThemeNames_ = *new std::vector<std::string>;
+    ThemeFiles_ = *new std::vector<YAML::Node>;
 
+    // Create List Of Files
     for (const auto &Entry : std::filesystem::directory_iterator(std::string(ThemePath_))) {
-        
-        // Copy Output Into New String
+
+        // Get File Path        
         std::string FilePath = Entry.path();
+
+        // Load YAML::Node
+        YAML::Node Theme = YAML::LoadFile(FilePath.c_str());
+        ThemeFiles_.push_back(Theme);
+
+        // Parse Out Name From File Path
         FilePath = FilePath.substr(strlen(ThemePath_)+1);
         FilePath = FilePath.substr(0, strlen(FilePath.c_str())-5);
 
-        FilePaths.push_back(FilePath);
+        // Add To Names Vector
+        ThemeNames_.push_back(FilePath);
     }
 
-    for (int i = 0; i < FilePaths.size(); i++) {
+    for (int i = 0; i < ThemeNames_.size(); i++) {
 
-        std::cout<<FilePaths[i]<<std::endl;
+        std::cout<<ThemeNames_[i]<<std::endl;
     }
 
 }

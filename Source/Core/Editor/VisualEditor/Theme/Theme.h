@@ -39,6 +39,9 @@ class ThemeManager {
         LoggerClass *Logger_; /**<LoggerClass Instance*/
         const char* ThemePath_; /**<Filepath Where Themes Are Located*/
 
+        std::vector<std::string> ThemeNames_; /**<List of theme names (based on filename)*/
+        std::vector<YAML::Node> ThemeFiles_; /**<List Of YAML::Node files*/
+
 
 
     public:
