@@ -29,10 +29,10 @@ TitleBackgroundActiveColor:    [0, 150, 0, 255]
 
 TitleBarColor: [0, 0, 0, 255]
 
-ScrollbarBackgroundColor: [20, 20, 20, 255]
-ScrollbarGrabColor:       [5, 128, 0, 255]
-ScrollbarHoveredColor:    [0, 70, 0, 255]
-ScrollbarActiveColor:     [5, 128, 0, 255]
+ScrollbarBackgroundColor: [25, 25, 25, 255]
+ScrollbarGrabColor:       [0, 75, 0, 255]
+ScrollbarHoveredColor:    [0, 150, 0, 255]
+ScrollbarActiveColor:     [180, 90, 0, 255]
 
 CheckmarkColor: [0, 128, 55, 255]
 
