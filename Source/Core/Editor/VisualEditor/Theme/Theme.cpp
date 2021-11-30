@@ -169,10 +169,9 @@ void ThemeManager::ApplyThemes(int ThemeID) {
 
         // Get Title Background Color
     Logger_->Log("Reading Theme For Value: 'TitleBackgroundColor'", 1);
-    Style.Colors[ImGuiCol_FrameBgActive] = ReadColor("TitleBackgroundColor", ThemeNode);
+    Style.Colors[ImGuiCol_TitleBg] = ReadColor("TitleBackgroundColor", ThemeNode);
 
 
-    Style.Colors[ImGuiCol_TitleBg]               = ImVec4(0.96f, 0.96f, 0.96f, 1.00f);
     Style.Colors[ImGuiCol_TitleBgCollapsed]      = ImVec4(1.00f, 1.00f, 1.00f, 0.51f);
     Style.Colors[ImGuiCol_TitleBgActive]         = ImVec4(0.82f, 0.82f, 0.82f, 1.00f);
     Style.Colors[ImGuiCol_MenuBarBg]             = ImVec4(0.86f, 0.86f, 0.86f, 1.00f);
