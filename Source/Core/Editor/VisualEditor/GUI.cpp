@@ -171,7 +171,8 @@ void GUISystem::UpdateWindow_ColorThemePicker() {
 
     // Draw Color Picker Menu
     if (ShowColorThemePicker_) {
-        ImGui::Begin("Pick Color Theme", &ShowColorThemePicker_);
+        ImGuiWindowFlags Flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking;
+        ImGui::Begin("Pick Color Theme", &ShowColorThemePicker_, Flags);
 
             ImGui::SetWindowSize(ImVec2(0, 0));
 
