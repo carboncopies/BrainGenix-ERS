@@ -7,9 +7,9 @@ EditorBackgroundColor: [0, 0, 0]
 FrameRounding: 3
 
 # Note: You MUST Populate The Alpha Value!
-# FORMAT:   R,   G    B    A    
-TextColor: [255, 255, 255, 255]
-DisabledTextColor: [200, 200, 200, 180]
+# FORMAT:                     R,   G    B    A    
+TextColor:                   [255, 255, 255, 255]
+DisabledTextColor:           [200, 200, 200, 180]
 TextSelectedBackgroundColor: [200, 200, 200, 1255]
 
 WindowBackgroundColor: [10, 10, 10, 255]
