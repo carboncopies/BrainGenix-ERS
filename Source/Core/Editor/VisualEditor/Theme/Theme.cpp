@@ -141,7 +141,7 @@ void ThemeManager::ApplyThemes(int ThemeID) {
 
     // Get Window Background Color
     Logger_->Log("Reading Theme For Value: 'WindowBackgroundColor'", 1);
-    Style.Colors[ImGuiCol_WindowBg] = ReadColor("WindowBackgroundColor", ThemeNode);
+    Style.Colors[ImGuiCol_WindowBg] = ReadColor("DisabledTextColor", ThemeNode);
 
     Style.Colors[ImGuiCol_PopupBg]               = ImVec4(1.00f, 1.00f, 1.00f, 0.94f);
     Style.Colors[ImGuiCol_Border]                = ImVec4(0.00f, 0.00f, 0.00f, 0.39f);

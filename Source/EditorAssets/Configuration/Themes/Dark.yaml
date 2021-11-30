@@ -2,7 +2,7 @@
 # Color Configuration File For BrainGenix-ERS Editor #
 ######################################################
 
-WindowBackgroundColor: [30, 30, 30]
+WindowBackgroundColor: [15, 15, 15]
 
 FrameRounding: 3
 
