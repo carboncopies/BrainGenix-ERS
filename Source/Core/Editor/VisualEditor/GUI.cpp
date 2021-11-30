@@ -129,7 +129,7 @@ void GUISystem::UpdateGUI() {
     if (ShowColorThemePicker_) {
         ImGui::Begin("Pick Color Theme", &ShowColorThemePicker_);
 
-            ImGui::SetWindowSize(ImVec2(290, 350));
+            ImGui::SetWindowSize(ImVec2(0, 0));
 
 
             // Put Radio Buttons Here
