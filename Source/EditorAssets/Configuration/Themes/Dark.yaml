@@ -8,6 +8,6 @@ FrameRounding: 3
 
 # Note: You MUST Populate The Alpha Value!
 # FORMAT:   R,   G    B    A    
-TextColor: [125, 125, 125, 255]
-DisabledTextColor: [90, 90, 90, 180]
+TextColor: [195, 195, 195, 255]
+DisabledTextColor: [150, 150, 150, 180]
 WindowBackgroundColor: [50, 50, 50, 200]
