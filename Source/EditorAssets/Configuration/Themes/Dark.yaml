@@ -29,3 +29,4 @@ TitleBackgroundActiveColor: [50, 0, 200, 255]
 TitleBarColor: [5, 5, 5, 255]
 
 ScrollbarBackgroundColor: [5, 5, 5, 255]
+ScrollbarGrabColor: [50, 50, 50, 255]

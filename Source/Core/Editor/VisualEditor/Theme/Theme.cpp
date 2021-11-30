@@ -178,7 +178,9 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'ScrollbarBackgroundColor'", 1);
     Style.Colors[ImGuiCol_ScrollbarBg] = ReadColor("ScrollbarBackgroundColor", ThemeNode);
 
-    Style.Colors[ImGuiCol_ScrollbarGrab]         = ImVec4(0.69f, 0.69f, 0.69f, 1.00f);
+    Logger_->Log("Reading Theme For Value: 'ScrollbarGrabColor'", 1);
+    Style.Colors[ImGuiCol_ScrollbarGrab] = ReadColor("ScrollbarGrabColor", ThemeNode);
+
     Style.Colors[ImGuiCol_ScrollbarGrabHovered]  = ImVec4(0.59f, 0.59f, 0.59f, 1.00f);
     Style.Colors[ImGuiCol_ScrollbarGrabActive]   = ImVec4(0.49f, 0.49f, 0.49f, 1.00f);
     Style.Colors[ImGuiCol_CheckMark]             = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
