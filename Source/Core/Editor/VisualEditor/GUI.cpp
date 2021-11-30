@@ -129,6 +129,7 @@ void GUISystem::UpdateGUI() {
 
     // Update Windows
     UpdateWindow_ColorThemePicker();
+    FontManager_->FontSelectorWindow(&ShowFontPicker_);
 
 
     // Add Main Menu
