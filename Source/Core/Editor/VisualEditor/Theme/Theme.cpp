@@ -24,6 +24,7 @@ ThemeManager::ThemeManager(LoggerClass *Logger, const char* ThemePath) {
 
     // Find Themes
     LoadThemes();
+    ApplyThemes(2);
 
 }
 
@@ -81,8 +82,16 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log(std::string(std::string("Applying Theme: ") + ThemeName).c_str(), 4);
 
 
-    // Read Parameters, Apply Them
-    
+    // Background Color
+    //if (ThemeNode.FindValue("WindowBackgroundColor")) {
+        YAML::Node ColorsNode = ThemeNode["WindowBackgroundColor"];
+
+        ClearColor_.x = ColorsNode[0].as<float>()/255.0f;
+        ClearColor_.y = ColorsNode[1].as<float>()/255.0f;
+        ClearColor_.z = ColorsNode[2].as<float>()/255.0f;
+        ClearColor_.w = 1.0f;
+
+    //}
 
 }
 
