@@ -44,4 +44,9 @@ void ThemeManager::LoadThemes() {
         FilePaths.push_back(Entry.path());
     }
 
+    for (int i = 0; i < FilePaths.size(), i++) {
+
+        std::cout<<FilePaths[i]<<std::endl;
+    }
+
 }
