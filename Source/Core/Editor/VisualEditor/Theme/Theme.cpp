@@ -58,11 +58,18 @@ void ThemeManager::LoadThemes() {
 
         // Add To Names Vector
         ThemeNames_.push_back(FilePath);
+
+        // Log Theme Loaded
+        Logger_->Log(std::string(std::string("Loaded Theme: ") + FilePath).c_str(), 1);
+
     }
+
+
+    // Log Number Of Themes Found
+    Logger_->Log(std::string(std::string("Found ") + std::to_string(ThemeNames_.size()) + std::string(" Themes")).c_str(), 1);
 
     for (int i = 0; i < ThemeNames_.size(); i++) {
 
-        std::cout<<ThemeNames_[i]<<std::endl;
     }
 
 }
