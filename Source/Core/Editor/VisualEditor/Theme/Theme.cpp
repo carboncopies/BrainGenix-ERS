@@ -185,9 +185,8 @@ void ThemeManager::ApplyThemes(int ThemeID) {
 
     // Get Titlebar Color
     Logger_->Log("Reading Theme For Value: 'TitleBarColor'", 1);
-    Style.Colors[ImGuiCol_TitleBgActive] = ReadColor("TitleBarColor", ThemeNode);
+    Style.Colors[ImGuiCol_MenuBarBg] = ReadColor("TitleBarColor", ThemeNode);
 
-    Style.Colors[ImGuiCol_MenuBarBg]             = ImVec4(0.86f, 0.86f, 0.86f, 1.00f);
     Style.Colors[ImGuiCol_ScrollbarBg]           = ImVec4(0.98f, 0.98f, 0.98f, 0.53f);
     Style.Colors[ImGuiCol_ScrollbarGrab]         = ImVec4(0.69f, 0.69f, 0.69f, 1.00f);
     Style.Colors[ImGuiCol_ScrollbarGrabHovered]  = ImVec4(0.59f, 0.59f, 0.59f, 1.00f);
