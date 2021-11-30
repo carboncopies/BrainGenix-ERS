@@ -25,3 +25,23 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+
+
+/**
+ * @brief Load, parse, and apply fonts to ImGui.
+ * 
+ */
+class FontManager {
+
+    private:
+
+        LoggerClass *Logger_; /**<LoggerClass Instance Pointer*/
+
+
+    public:
+
+        FontManager();
+        ~FontManager();
+
+
+};

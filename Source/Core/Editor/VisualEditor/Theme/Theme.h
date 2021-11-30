@@ -49,7 +49,7 @@ class ThemeManager {
         ImVec4 ClearColor_; /**Set Clear Color For Background*/
         std::vector<std::string> ThemeNames_; /**<List of theme names (based on filename)*/
 
-
+        
         ThemeManager(LoggerClass *Logger_, const char* ThemePath = "EditorAssets/Configuration/Themes");
         ~ThemeManager();
 
