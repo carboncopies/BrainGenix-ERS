@@ -137,6 +137,7 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'FrameRounding'", 1);
     Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
 
+
     Style.Colors[ImGuiCol_Text]                  = ReadColor("TextColor", ThemeNode);
     Style.Colors[ImGuiCol_TextDisabled]          = ReadColor("DisabledTextColor", ThemeNode);
     Style.Colors[ImGuiCol_WindowBg]              = ReadColor("WindowBackgroundColor", ThemeNode);
