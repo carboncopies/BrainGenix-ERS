@@ -131,9 +131,24 @@ void GUISystem::UpdateGUI() {
 
 
             ImGui::TextWrapped("Select a theme from the list below. If you wish to install a new theme, copy the yaml file into 'EditorAssets/Configuration/Themes', then refresh the list using the button below.");
+            
+            ImGui::Separator();
+
+            // Reload Button
             if (ImGui::Button("Reload Themes")) {
                 ThemeManager_->LoadThemes();
             }
+
+            // Put Radio Buttons Here
+            ImGui::BeginChild("Theme Selector");
+
+                static int ThemeSelector;
+                ImGui::RadioButton("test1", &ThemeSelector, 0);
+                ImGui::RadioButton("test2", &ThemeSelector, 1);
+                ImGui::RadioButton("test3", &ThemeSelector, 2);
+                
+
+            ImGui::EndChild();
             
 
         ImGui::End();
