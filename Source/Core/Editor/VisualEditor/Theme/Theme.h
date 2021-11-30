@@ -43,6 +43,7 @@ class ThemeManager {
 
         ImVec4 ReadColor(const char* NodeName, YAML::Node Target); /**<Reads A Color From The Config*/
 
+
     public:
 
         ImVec4 ClearColor_; /**Set Clear Color For Background*/

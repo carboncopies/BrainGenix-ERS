@@ -20,6 +20,10 @@ GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShould
     Window_ = Window;
     SystemShouldRun_ = SystemShouldRun;
 
+    // Initialize Windows
+    Logger_->Log("Initializing Windows", 4);
+    InitializeWindowFunctions();
+
     // Initialize ImGui
     Logger_->Log("Initializing DearImGui GUI Library", 5);
 
@@ -125,7 +129,6 @@ void GUISystem::UpdateGUI() {
 
 
     // Draw Color Picker Menu
-    static bool ShowColorThemePicker_ = false;
     if (ShowColorThemePicker_) {
         ImGui::Begin("Pick Color Theme", &ShowColorThemePicker_);
 
@@ -206,6 +209,14 @@ void GUISystem::UpdateGUI() {
 
 
 
+
+}
+
+// Initialize Function
+void GUISystem::InitializeWindowFunctions() {
+
+    // Initialize Vars
+    static bool ShowColorThemePicker_ = false;
 
 }
 
