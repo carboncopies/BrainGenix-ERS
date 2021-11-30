@@ -98,6 +98,9 @@ void FontManager::UseFont(int FontIndex) {
     Io.Fonts->Build();
     ImGui_ImplOpenGL3_CreateFontsTexture();
 
+
+    ImGui::PushFont(ImGui::GetFont());
+
 }
 
 // CheckUpdate
