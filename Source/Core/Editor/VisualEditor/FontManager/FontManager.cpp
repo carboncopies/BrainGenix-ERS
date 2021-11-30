@@ -40,8 +40,6 @@ bool FontManager::EndsWith(const std::string& Input, const std::string& Ending) 
     return std::equal(Input.begin() + Input.size() - Ending.size(), Input.end(), Ending.begin());
 }
 
-
-
 // Index Fonts Function
 void FontManager::IndexFonts() {
 
@@ -52,6 +50,11 @@ void FontManager::IndexFonts() {
         std::string FilePath{Entry.path().u8string()};
 
         // Check Extension
-        if 
+        if ((EndsWith(FilePath, ".ttf")) || (EndsWith(FilePath, ".otf"))) {
+
+            // Strip File Extension
+            
+
+        }
 
 }

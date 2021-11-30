@@ -39,7 +39,8 @@ class FontManager {
         const char* FontsDirectoryPath_; /**<Path where fonts are to be searched for */
 
         std::vector<const char*> FontPathList_; /**<List of fonts located at the given paths*/
-
+        std::vector<const char*> FontNameList_; /**<List of font names for gui rendering*/
+        
 
         bool EndsWith(const std::string& Input, const std::string& Ending);
 
