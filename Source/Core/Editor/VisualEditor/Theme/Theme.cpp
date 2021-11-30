@@ -147,7 +147,6 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'ChildBackgroundColor'", 1);
     Style.Colors[ImGuiCol_ChildBg] = ReadColor("ChildBackgroundColor", ThemeNode);
 
-
     // Get Popup Background Color
     Logger_->Log("Reading Theme For Value: 'PopupBackgroundColor'", 1);
     Style.Colors[ImGuiCol_PopupBg] = ReadColor("PopupBackgroundColor", ThemeNode);
