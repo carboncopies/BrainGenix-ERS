@@ -42,7 +42,7 @@ class ThemeManager {
         std::vector<std::string> ThemeNames_; /**<List of theme names (based on filename)*/
         std::vector<YAML::Node> ThemeFiles_; /**<List Of YAML::Node files*/
 
-
+        ImVec4 ReadColor(const char* NodeName, YAML::Node Target); /**<Reads A Color From The Config*/
 
     public:
 

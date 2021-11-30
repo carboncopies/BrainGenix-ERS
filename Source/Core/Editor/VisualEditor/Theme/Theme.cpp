@@ -79,6 +79,26 @@ void ThemeManager::LoadThemes() {
 
 }
 
+// Read Color
+ImVec4 ThemeManager::ReadColor(const char* NodeName, YAML::Node Target) {
+
+    // Get Subnode
+    YAML::Node Subnode = Target[NodeName];
+
+    // Create New Color
+    ImVec4 Color;
+
+    // Get Values And Push Into Color
+    Color.x = Subnode[0].as<float>();
+    Color.y = Subnode[1].as<float>();
+    Color.z = Subnode[2].as<float>();
+    Color.w = Subnode[3].as<float>();
+
+    // Return Value
+    return Color;
+
+}
+
 // Apply Theme
 void ThemeManager::ApplyThemes(int ThemeID) {
 
@@ -91,15 +111,57 @@ void ThemeManager::ApplyThemes(int ThemeID) {
 
 
     // Background Color
-    //if (ThemeNode.FindValue("WindowBackgroundColor")) {
-        YAML::Node ColorsNode = ThemeNode["WindowBackgroundColor"];
+    Logger_->Log("Reading Theme For Value: 'WindowBackgroundColor'", 1);
+    YAML::Node ColorsNode = ThemeNode["WindowBackgroundColor"];
 
-        ClearColor_.x = ColorsNode[0].as<float>()/255.0f;
-        ClearColor_.y = ColorsNode[1].as<float>()/255.0f;
-        ClearColor_.z = ColorsNode[2].as<float>()/255.0f;
-        ClearColor_.w = 1.0f;
+    ClearColor_.x = ColorsNode[0].as<float>()/255.0f;
+    ClearColor_.y = ColorsNode[1].as<float>()/255.0f;
+    ClearColor_.z = ColorsNode[2].as<float>()/255.0f;
+    ClearColor_.w = 1.0f;
 
-    //}
+
+
+    // Setup Style
+    ImGuiStyle& Style = ImGui::GetStyle();
+
+    
+    Style.Alpha = 0.2f;
+    Style.FrameRounding = 3.0f;
+    Style.Colors[ImGuiCol_Text]                  = ImVec4(0.00f, 0.00f, 0.00f, 1.00f);
+    Style.Colors[ImGuiCol_TextDisabled]          = ImVec4(0.60f, 0.60f, 0.60f, 1.00f);
+    Style.Colors[ImGuiCol_WindowBg]              = ImVec4(0.94f, 0.94f, 0.94f, 0.94f);
+    Style.Colors[ImGuiCol_PopupBg]               = ImVec4(1.00f, 1.00f, 1.00f, 0.94f);
+    Style.Colors[ImGuiCol_Border]                = ImVec4(0.00f, 0.00f, 0.00f, 0.39f);
+    Style.Colors[ImGuiCol_BorderShadow]          = ImVec4(1.00f, 1.00f, 1.00f, 0.10f);
+    Style.Colors[ImGuiCol_FrameBg]               = ImVec4(1.00f, 1.00f, 1.00f, 0.94f);
+    Style.Colors[ImGuiCol_FrameBgHovered]        = ImVec4(0.26f, 0.59f, 0.98f, 0.40f);
+    Style.Colors[ImGuiCol_FrameBgActive]         = ImVec4(0.26f, 0.59f, 0.98f, 0.67f);
+    Style.Colors[ImGuiCol_TitleBg]               = ImVec4(0.96f, 0.96f, 0.96f, 1.00f);
+    Style.Colors[ImGuiCol_TitleBgCollapsed]      = ImVec4(1.00f, 1.00f, 1.00f, 0.51f);
+    Style.Colors[ImGuiCol_TitleBgActive]         = ImVec4(0.82f, 0.82f, 0.82f, 1.00f);
+    Style.Colors[ImGuiCol_MenuBarBg]             = ImVec4(0.86f, 0.86f, 0.86f, 1.00f);
+    Style.Colors[ImGuiCol_ScrollbarBg]           = ImVec4(0.98f, 0.98f, 0.98f, 0.53f);
+    Style.Colors[ImGuiCol_ScrollbarGrab]         = ImVec4(0.69f, 0.69f, 0.69f, 1.00f);
+    Style.Colors[ImGuiCol_ScrollbarGrabHovered]  = ImVec4(0.59f, 0.59f, 0.59f, 1.00f);
+    Style.Colors[ImGuiCol_ScrollbarGrabActive]   = ImVec4(0.49f, 0.49f, 0.49f, 1.00f);
+    Style.Colors[ImGuiCol_CheckMark]             = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
+    Style.Colors[ImGuiCol_SliderGrab]            = ImVec4(0.24f, 0.52f, 0.88f, 1.00f);
+    Style.Colors[ImGuiCol_SliderGrabActive]      = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
+    Style.Colors[ImGuiCol_Button]                = ImVec4(0.26f, 0.59f, 0.98f, 0.40f);
+    Style.Colors[ImGuiCol_ButtonHovered]         = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
+    Style.Colors[ImGuiCol_ButtonActive]          = ImVec4(0.06f, 0.53f, 0.98f, 1.00f);
+    Style.Colors[ImGuiCol_Header]                = ImVec4(0.26f, 0.59f, 0.98f, 0.31f);
+    Style.Colors[ImGuiCol_HeaderHovered]         = ImVec4(0.26f, 0.59f, 0.98f, 0.80f);
+    Style.Colors[ImGuiCol_HeaderActive]          = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
+    Style.Colors[ImGuiCol_ResizeGrip]            = ImVec4(1.00f, 1.00f, 1.00f, 0.50f);
+    Style.Colors[ImGuiCol_ResizeGripHovered]     = ImVec4(0.26f, 0.59f, 0.98f, 0.67f);
+    Style.Colors[ImGuiCol_ResizeGripActive]      = ImVec4(0.26f, 0.59f, 0.98f, 0.95f);
+    Style.Colors[ImGuiCol_PlotLines]             = ImVec4(0.39f, 0.39f, 0.39f, 1.00f);
+    Style.Colors[ImGuiCol_PlotLinesHovered]      = ImVec4(1.00f, 0.43f, 0.35f, 1.00f);
+    Style.Colors[ImGuiCol_PlotHistogram]         = ImVec4(0.90f, 0.70f, 0.00f, 1.00f);
+    Style.Colors[ImGuiCol_PlotHistogramHovered]  = ImVec4(1.00f, 0.60f, 0.00f, 1.00f);
+    Style.Colors[ImGuiCol_TextSelectedBg]        = ImVec4(0.26f, 0.59f, 0.98f, 0.35f);
+
 
 }
 
