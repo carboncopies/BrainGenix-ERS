@@ -96,7 +96,6 @@ void FontManager::UseFont(int FontIndex) {
     ImGui_ImplOpenGL3_DestroyFontsTexture();
     ImGui_ImplOpenGL3_CreateFontsTexture();
 
-
 }
 
 // CheckUpdate
@@ -105,6 +104,7 @@ void FontManager::CheckUpdateFont() {
     // If Font Is To Be Updated
     if (UpdateFont_) {
         UseFont(FontSelector_);
+        UpdateFont_ = false;
     }
 
 }
