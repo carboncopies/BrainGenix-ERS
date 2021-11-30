@@ -52,6 +52,9 @@ void FontManager::IndexFonts() {
         // Check Extension
         if ((EndsWith(FilePath, ".ttf")) || (EndsWith(FilePath, ".otf"))) {
 
+            // Append Path To PathList
+            FontPathList_.push_back(FilePath.c_str());
+
             // Strip File Extension
             
 
