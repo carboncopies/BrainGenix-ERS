@@ -43,6 +43,7 @@ class FontManager {
         
         int FontSize_ = 14; /**<Set Default Font Size In Pixels*/
         int FontSelector_ = 0; /**<Set Font Selector Int*/
+        bool UpdateFont_ = false; /**<Indicate If Font Needs To Be Updated*/
 
         bool EndsWith(const std::string& Input, const std::string& Ending);
 
@@ -54,5 +55,6 @@ class FontManager {
         void IndexFonts();
         void UseFont(int FontIndex);
         void FontSelectorWindow(bool *WindowEnabled);
+        void CheckUpdateFont();
 
 };

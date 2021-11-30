@@ -60,6 +60,9 @@ GUISystem::~GUISystem() {
 // Update GUI
 void GUISystem::UpdateGUI() {
 
+    // CheckUpdate Font
+    FontManager_->CheckUpdateFont();
+
     // Get Window Width, Height
     float Width;
     float Height;

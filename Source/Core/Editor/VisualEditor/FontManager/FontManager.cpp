@@ -96,6 +96,16 @@ void FontManager::UseFont(int FontIndex) {
 
 }
 
+// CheckUpdate
+void FontManager::CheckUpdateFont() {
+
+    // If Font Is To Be Updated
+    if (UpdateFont_) {
+        UseFont(FontSelector_);
+    }
+
+}
+
 // Font Selector Window
 void FontManager::FontSelectorWindow(bool *WindowEnabled) {
 
@@ -126,22 +136,7 @@ void FontManager::FontSelectorWindow(bool *WindowEnabled) {
                 ImGui::SameLine();
 
                 if (ImGui::Button("Apply")) {
-
-                    // End This Window
-                    ImGui::End();
-
-                    // End The Frame And Render
-                    ImGui::EndFrame();
-                    ImGui::Render();
-                    
-                    // Update Font
-                    UseFont(FontSelector_);
-
-                    // Start New Frame
-                    ImGui::NewFrame();
-
-                    // Add Blank Window
-                    ImGui::Window("");
+                    UpdateFont_ = true;
                 }
                 ImGui::SameLine();
 
