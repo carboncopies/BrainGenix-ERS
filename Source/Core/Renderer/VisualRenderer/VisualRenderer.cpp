@@ -87,7 +87,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     // Update Input
     if (ImGui::IsWindowFocused()) {
 
-
+            // Get Input Processor
             InputProcessor *InputProcessor = InputProcessors_[Index];
 
             // Enable/Disable Mouse Capture
@@ -102,15 +102,10 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
                 InputProcessor->ProcessKeyboardInput(Logger_, DeltaTime, CaptureMouseCursor);
                 InputProcessor->UpdateFramebuffer();
                 InputProcessor->UpdateMouse(CaptureMouseCursor);
+            } 
 
-            } else {
-                glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-            }
-
-
-
-
-
+        } else {
+            glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
         }
 
 
