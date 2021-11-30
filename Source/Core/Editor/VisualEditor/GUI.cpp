@@ -129,6 +129,9 @@ void GUISystem::UpdateGUI() {
     if (ShowColorThemePicker_) {
         ImGui::Begin("Pick Color Theme", &ShowColorThemePicker_);
 
+            if (ImGui::Button("Reload Themes")) {
+                ThemeManager_->LoadThemes();
+            }
             
 
         ImGui::End();
