@@ -135,9 +135,14 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'TextColor'", 1);
     Style.Colors[ImGuiCol_Text] = ReadColor("TextColor", ThemeNode);
 
+    // Get Disabled Text Color
+    Logger_->Log("Reading Theme For Value: 'DisabledTextColor'", 1);
+    Style.Colors[ImGuiCol_TextDisabled] = ReadColor("DisabledTextColor", ThemeNode);
 
-    Style.Colors[ImGuiCol_TextDisabled]          = ImVec4(0.60f, 0.60f, 0.60f, 1.00f);
-    Style.Colors[ImGuiCol_WindowBg]              = ImVec4(0.94f, 0.94f, 0.94f, 0.94f);
+    // Get Window Background Color
+    Logger_->Log("Reading Theme For Value: 'WindowBackgroundColor'", 1);
+    Style.Colors[ImGuiCol_WindowBg] = ReadColor("WindowBackgroundColor", ThemeNode);
+
     Style.Colors[ImGuiCol_PopupBg]               = ImVec4(1.00f, 1.00f, 1.00f, 0.94f);
     Style.Colors[ImGuiCol_Border]                = ImVec4(0.00f, 0.00f, 0.00f, 0.39f);
     Style.Colors[ImGuiCol_BorderShadow]          = ImVec4(1.00f, 1.00f, 1.00f, 0.10f);
