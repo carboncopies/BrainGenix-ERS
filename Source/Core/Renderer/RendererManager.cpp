@@ -43,39 +43,25 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     Shader_.MakeActive();
     Shader_.SetInt("texture_diffuse1", 0);
 
-
     // Setup GUI
     GuiSystem_ = new GUISystem(Logger_, Window_, SystemShouldRun_);
-
-    // TODO: FINISH REFACTORING VISUALRENDERER
-    // REFACTOR FRAMEBUFFERMANAGER TO ALLOW EACH VIEWPORT TO HAVE IT's OWN RESOLUTION
-    // REFACTOR VISUALRENDERER INTO VIEWPORTMANAGER TO ALLOW FOR MULTIPLE VIEWPORTS, JUST CREATE ONE FOR NOW
-    // ADD VIEWPORT TO IMGUI
-    // CHECK TRELLO!
-
-    // Setup Framebuffer
-    //FramebufferManager_ = new FramebufferManager(Logger_, ShaderLoader_, WindowWidth_, WindowHeight_);
 
     // Setup IOManager
     Logger_->Log("Initializing Input/Output Manager", 5);
     IOManager_ = new IOManager(Logger_, Window_, &Camera_);
 
-
     // Make Viewport
     VisualRenderer_->CreateViewport(&Shader_, "TestWindow", &Camera_);
-    //VisualRenderer_->CreateViewport(&Shader_, "TestWindow2", &Camera_);
-
-
-
 
     // Initialize Texture Loader
     TextureLoader_ = new TextureLoader(Logger_);
 
+
     // Load Scene
     ModelLoader MLoader(Logger_, TextureLoader_);
-
     SceneLoader SLoader(Logger_, &MLoader);
     SceneManager_ = new SceneManager(Logger_);
+
 
     // Test Scene
     YAML::Node TestScene = YAML::LoadFile("Assets/Scene.yaml");
@@ -131,9 +117,6 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     // Update IO
     IOManager_->UpdateFrame(DeltaTime);
 
-    // Start Framebuffer Render Pass
-    //FramebufferManager_->StartFramebufferRenderPass();
-
     // Update GUI
     GuiSystem_->UpdateGUI();
 
@@ -143,13 +126,6 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
 
 
-
-
-
-
-    // Start Screen Render Pass
-    //FramebufferManager_->StartScreenRenderPass();
-
     // Update GUI Frame
     glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -158,9 +134,6 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
     // Update Window Stuff
     glfwSwapBuffers(Window_);
-
-
-
 
     // Check If System Should Shutdown
     if (glfwWindowShouldClose(Window_)) {
