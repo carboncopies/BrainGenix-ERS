@@ -113,8 +113,6 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     SceneManager->Render(Shaders_[Index]);
 
     // Render Framebuffer To Window
-
-    
     ImGui::GetWindowDrawList()->AddImage(
         (void*)(intptr_t)FramebufferObjects_[Index],
         ImVec2(ImGui::GetCursorScreenPos()),

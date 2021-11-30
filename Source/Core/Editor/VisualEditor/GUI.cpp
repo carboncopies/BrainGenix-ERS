@@ -64,26 +64,60 @@ GUISystem::~GUISystem() {
 // Update GUI
 void GUISystem::UpdateGUI() {
 
-
-
     // Get Window Width, Height
     float Width;
     float Height;
     glfwGetWindowContentScale(Window_, &Width, &Height);
 
 
-    // Poll and handle events (inputs, window resize, etc.)
-    // You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to tell if dear imgui wants to use your inputs.
-    // - When io.WantCaptureMouse is true, do not dispatch mouse input data to your main application.
-    // - When io.WantCaptureKeyboard is true, do not dispatch keyboard input data to your main application.
-    // Generally you may always pass all inputs to dear imgui, and hide them from your application based on those two flags.
-
     // Start the Dear ImGui frame
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
 
-    ImGui::ShowDemoWindow();
+
+    // Setup Dockspace
+    ImGuiWindowFlags Flags = ImGuiWindowFlags_MenuBar;
+    Flags |= ImGuiWindowFlags_NoDocking;
+    ImGuiViewport* Viewport = ImGui::GetMainViewport();
+
+    ImGui::SetNextWindowPos(Viewport->Pos);
+    ImGui::SetNextWindowSize(Viewport->Size);
+    ImGui::SetNextWindowViewport(Viewport->ID);
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
+
+    Flags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
+    Flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
+
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+    ImGui::Begin("Dockspace", 0, Flags);
+    ImGui::PopStyleVar();
+
+    
+    // Add Main Menu
+    if (ImGui::BeginMainMenuBar()) {
+
+
+        if (ImGui::BeginMenu("File")) {
+
+                if (ImGui::MenuItem("Color Theme")) {
+                    
+                }
+
+                ImGui::Separator();
+
+                if (ImGui::MenuItem("Exit")) {
+                    MenuExitFunction();
+                }
+
+            
+            ImGui::EndMenu();
+        }
+
+
+        ImGui::EndMainMenuBar();
+    }
+
 
 
     
@@ -138,29 +172,7 @@ void GUISystem::UpdateGUI() {
     ImGui::End();
 
 
-    // Add Main Menu
-    if (ImGui::BeginMainMenuBar()) {
 
-
-        if (ImGui::BeginMenu("File")) {
-
-                if (ImGui::MenuItem("Color Theme")) {
-                    
-                }
-
-                ImGui::Separator();
-
-                if (ImGui::MenuItem("Exit")) {
-                    MenuExitFunction();
-                }
-
-            
-            ImGui::EndMenu();
-        }
-
-
-        ImGui::EndMainMenuBar();
-    }
 
     // // create an ImGui window that covers the entire viewport, so that we can have a menu bar at the top of the applications
     // ImGui::SetNextWindowPos(ImVec2(0, 0));                                                  // always at the window origin
