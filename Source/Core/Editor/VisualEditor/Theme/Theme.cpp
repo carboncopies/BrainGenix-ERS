@@ -158,16 +158,16 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Style.Colors[ImGuiCol_Button]                = ReadColor("ButtonColor", ThemeNode);
     Style.Colors[ImGuiCol_ButtonHovered]         = ReadColor("ButtonHoveredColor", ThemeNode);
     Style.Colors[ImGuiCol_ButtonActive]          = ReadColor("ButtonActiveColor", ThemeNode);
-    Style.Colors[ImGuiCol_Header]                = ImVec4(0.26f, 0.59f, 0.98f, 0.31f);
-    Style.Colors[ImGuiCol_HeaderHovered]         = ImVec4(0.26f, 0.59f, 0.98f, 0.80f);
-    Style.Colors[ImGuiCol_HeaderActive]          = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
-    Style.Colors[ImGuiCol_ResizeGrip]            = ImVec4(1.00f, 1.00f, 1.00f, 0.50f);
-    Style.Colors[ImGuiCol_ResizeGripHovered]     = ImVec4(0.26f, 0.59f, 0.98f, 0.67f);
-    Style.Colors[ImGuiCol_ResizeGripActive]      = ImVec4(0.26f, 0.59f, 0.98f, 0.95f);
-    Style.Colors[ImGuiCol_PlotLines]             = ImVec4(0.39f, 0.39f, 0.39f, 1.00f);
-    Style.Colors[ImGuiCol_PlotLinesHovered]      = ImVec4(1.00f, 0.43f, 0.35f, 1.00f);
-    Style.Colors[ImGuiCol_PlotHistogram]         = ImVec4(0.90f, 0.70f, 0.00f, 1.00f);
-    Style.Colors[ImGuiCol_PlotHistogramHovered]  = ImVec4(1.00f, 0.60f, 0.00f, 1.00f);
+    Style.Colors[ImGuiCol_Header]                = ReadColor("HeaderColor", ThemeNode);
+    Style.Colors[ImGuiCol_HeaderHovered]         = ReadColor("HeaderHoveredColor", ThemeNode);
+    Style.Colors[ImGuiCol_HeaderActive]          = ReadColor("HeaderActiveColor", ThemeNode);
+    Style.Colors[ImGuiCol_ResizeGrip]            = ReadColor("ResizeColor", ThemeNode);
+    Style.Colors[ImGuiCol_ResizeGripHovered]     = ReadColor("ResizeHoveredColor", ThemeNode);
+    Style.Colors[ImGuiCol_ResizeGripActive]      = ReadColor("ResizeActiveColor", ThemeNode);
+    Style.Colors[ImGuiCol_PlotLines]             = ReadColor("PlotLinesColor", ThemeNode);
+    Style.Colors[ImGuiCol_PlotLinesHovered]      = ReadColor("PlotLinesHoveredColor", ThemeNode);
+    Style.Colors[ImGuiCol_PlotHistogram]         = ReadColor("PlotHistogramColor", ThemeNode);
+    Style.Colors[ImGuiCol_PlotHistogramHovered]  = ReadColor("PlotHistogramHoveredColor", ThemeNode);
     Style.Colors[ImGuiCol_TextSelectedBg]        = ImVec4(0.26f, 0.59f, 0.98f, 0.35f);
 
 

@@ -41,3 +41,17 @@ SliderGrabActiveColor: [200, 250, 200, 255]
 ButtonColor: [5, 0, 200, 255]
 ButtonHoveredColor: [50, 0, 200, 255]
 ButtonActiveColor: [100, 0, 200, 255]
+
+HeaderColor: [5, 0, 200, 255]
+HeaderHoveredColor: [50, 0, 200, 255]
+HeaderActiveColor: [100, 0, 200, 255]
+
+ResizeColor: [5, 0, 200, 255]
+ResizeHoveredColor: [50, 0, 200, 255]
+ResizeActiveColor: [100, 0, 200, 255]
+
+PlotLinesColor: [5, 0, 200, 255]
+PlotLinesHoveredColor: [50, 0, 200, 255]
+
+PlotHistogramColor: [5, 0, 200, 255]
+PlotHistogramHoveredColor: [50, 0, 200, 255]
