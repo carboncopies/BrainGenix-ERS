@@ -107,6 +107,7 @@ void FontManager::FontSelectorWindow(bool *WindowEnabled) {
         if (ImGui::Begin("Font Selector", WindowEnabled, Flags)) {
             ImGui::SetWindowSize(ImVec2(0,0));
 
+                // Font Selector Radio Button List
                 ImGui::BeginChild("Font Radio Buttons", ImVec2(250, 300), true);
 
                     for (int i = 0; i < FontNameList_.size(); i++) {
@@ -114,6 +115,9 @@ void FontManager::FontSelectorWindow(bool *WindowEnabled) {
                     }
 
                 ImGui::EndChild();
+
+                // Reload, Apply, Close Buttons
+    
 
 
             ImGui::End();
