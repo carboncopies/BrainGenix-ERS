@@ -13,7 +13,7 @@ CircleTessellationMaxError: 0.2
 WindowTitlePosition: 0.50
 
 # Borders
-WindowBorderSize: 2
+WindowBorderSize: 1
 ChildBorderSize: 1
 PopupBorderSize: 1
 FrameBorderSize: 1
@@ -32,18 +32,18 @@ TabRounding: 4
 
 # Note: You MUST Populate The Alpha Value!
 # FORMAT:                     R,   G    B    A    
-TextColor:                   [255, 255, 255, 255]
-DisabledTextColor:           [200, 200, 200, 180]
+TextColor:                   [200, 200, 200, 255]
+DisabledTextColor:           [170, 170, 170, 180]
 TextSelectedBackgroundColor: [200, 200, 200, 1255]
 
-WindowBackgroundColor: [0, 0, 0, 255]
-ChildBackgroundColor:  [15, 15, 15, 255]
+WindowBackgroundColor: [20, 20, 20, 255]
+ChildBackgroundColor:  [30, 30, 30, 255]
 PopupBackgroundColor:  [30, 30, 30, 255]
 
 BorderColor:       [120, 0, 255, 255]
 BorderShadowColor: [120, 9, 169, 255]
 
-FrameBackgroundColor:        [0, 0, 0, 255]
+FrameBackgroundColor:        [10, 10, 10, 255]
 FrameBackgroundHoveredColor: [0, 128, 175, 255]
 FrameBackgroundActiveColor:  [0, 150, 50, 255]
 
