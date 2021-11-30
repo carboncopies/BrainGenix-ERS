@@ -14,9 +14,11 @@ DisabledTextColor: [150, 150, 150, 180]
 WindowBackgroundColor: [30, 30, 30, 255]
 PopupBackgroundColor: [30, 30, 30, 255]
 
-BorderColor: [21, 0, 104, 200]
-BorderShadowColor: [50, 0, 200, 150]
+BorderColor: [50, 0, 200, 200]
+BorderShadowColor: [70, 0, 255, 150]
 
 FrameBackgroundColor: [30, 30, 30, 255]
 FrameBackgroundHoveredColor: [30, 90, 30, 255]
 FrameBackgroundActiveColor: [30, 60, 30, 255]
+
+TitleBackgroundColor: [100, 100, 100, 255]
