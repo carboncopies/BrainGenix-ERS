@@ -82,6 +82,9 @@ void ThemeManager::LoadThemes() {
 // Read Color
 ImVec4 ThemeManager::ReadColor(const char* NodeName, YAML::Node Target) {
 
+    // Log Read
+     Logger_->Log(std::string(std::string("Reading Theme For Value: '") + std::string(NodeName) + std::string("'")).c_str(), 1);
+
     // Get Subnode
     YAML::Node Subnode = Target[NodeName];
 
@@ -130,7 +133,6 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'FrameRounding'", 1);
     Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
 
-    Logger_->Log("Reading Theme For Value: 'TextColor'", 1);
     Style.Colors[ImGuiCol_Text] = ReadColor("TextColor", ThemeNode);
 
     Logger_->Log("Reading Theme For Value: 'DisabledTextColor'", 1);
