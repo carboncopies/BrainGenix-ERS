@@ -159,11 +159,9 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'BorderShadowColor'", 1);
     Style.Colors[ImGuiCol_BorderShadow] = ReadColor("BorderShadowColor", ThemeNode);
 
-    // Get Frame Background Color
     Logger_->Log("Reading Theme For Value: 'FrameBackgroundColor'", 1);
     Style.Colors[ImGuiCol_FrameBg] = ReadColor("FrameBackgroundColor", ThemeNode);
 
-    // Get Frame Background Hovered Color
     Logger_->Log("Reading Theme For Value: 'FrameBackgroundHoveredColor'", 1);
     Style.Colors[ImGuiCol_FrameBgHovered] = ReadColor("FrameBackgroundHoveredColor", ThemeNode);
 
