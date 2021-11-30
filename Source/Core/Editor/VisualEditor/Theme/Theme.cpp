@@ -136,6 +136,20 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     
 
     // Set Border Sizes
+    Logger_->Log("Reading Theme For Value: 'WindowBorderSize'", 1);
+    Style.WindowBorderSize = ThemeNode["WindowBorderSize"].as<float>();
+
+    Logger_->Log("Reading Theme For Value: 'ChildBorderSize'", 1);
+    Style.ChildBorderSize = ThemeNode["ChildBorderSize"].as<float>();
+
+    Logger_->Log("Reading Theme For Value: 'WindowBorderSize'", 1);
+    Style.WindowBorderSize = ThemeNode["WindowBorderSize"].as<float>();
+
+    Logger_->Log("Reading Theme For Value: 'WindowBorderSize'", 1);
+    Style.WindowBorderSize = ThemeNode["WindowBorderSize"].as<float>();
+
+    Logger_->Log("Reading Theme For Value: 'WindowBorderSize'", 1);
+    Style.WindowBorderSize = ThemeNode["WindowBorderSize"].as<float>();
 
 
 
