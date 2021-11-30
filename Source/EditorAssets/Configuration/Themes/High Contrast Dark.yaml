@@ -75,6 +75,9 @@ ResizeColor:        [100, 0, 200, 255]
 ResizeHoveredColor: [0, 255, 255, 255]
 ResizeActiveColor:  [255, 175, 0, 255]
 
+DockingPreview: [100, 0, 255, 180]
+DockingEmptyBackground: [0, 0, 0, 255]
+
 PlotLinesColor: [200, 0, 200, 255]
 PlotLinesHoveredColor: [200, 200, 0, 255]
 
