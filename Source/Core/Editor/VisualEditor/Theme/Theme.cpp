@@ -164,8 +164,8 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'FrameRounding'", 1);
     Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
 
-    Logger_->Log("Reading Theme For Value: 'FrameRounding'", 1);
-    Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
+    Logger_->Log("Reading Theme For Value: 'PopupRounding'", 1);
+    Style.PopupRounding = ThemeNode["PopupRounding"].as<float>();
 
         Logger_->Log("Reading Theme For Value: 'FrameRounding'", 1);
     Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
