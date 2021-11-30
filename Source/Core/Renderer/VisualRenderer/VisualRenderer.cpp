@@ -75,11 +75,16 @@ void VisualRenderer::UpdateViewports(float DeltaTime, SceneManager *SceneManager
 
 void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float DeltaTime) {
 
-
     // Render To ImGui
     ImGui::Begin(ViewportNames_[Index].c_str());
+
+    // Get Window Input
     int RenderWidth = ImGui::GetWindowSize().x;
     int RenderHeight = ImGui::GetWindowSize().y;
+
+    ImGui::IsItemFocused();
+
+
 
     glViewport(0, 0, RenderWidth,RenderHeight);
     glScissor(0, 0, RenderWidth, RenderHeight);
