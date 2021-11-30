@@ -34,6 +34,7 @@ class ThemeManager {
     private:
 
         LoggerClass *Logger_; /**<LoggerClass Instance*/
+        const char* ThemePath_; /**<Filepath Where Themes Are Located*/
 
 
 

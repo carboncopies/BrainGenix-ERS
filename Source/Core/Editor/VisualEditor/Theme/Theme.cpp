@@ -25,3 +25,18 @@ ThemeManager::ThemeManager(LoggerClass *Logger, const char* ThemePath) {
     LoadThemes();
 
 }
+
+// ThemeManager Destructor
+ThemeManager::~ThemeManager() {
+
+    // Log Destructor Call
+    Logger_->Log("ThemeManager Destructor Called", 6);
+
+}
+
+// Load Themes
+void ThemeManager::LoadThemes() {
+
+
+    
+}
