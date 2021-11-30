@@ -2,37 +2,37 @@
 # Color Configuration File For BrainGenix-ERS Editor #
 ######################################################
 
-EditorBackgroundColor: [15, 15, 15]
+EditorBackgroundColor: [0, 0, 0]
 
 FrameRounding: 3
 
 # Note: You MUST Populate The Alpha Value!
 # FORMAT:   R,   G    B    A    
-TextColor: [195, 195, 195, 255]
-DisabledTextColor: [150, 150, 150, 180]
-TextSelectedBackgroundColor: [150, 150, 150, 180]
+TextColor: [255, 255, 255, 255]
+DisabledTextColor: [200, 200, 200, 180]
+TextSelectedBackgroundColor: [200, 200, 200, 1255]
 
 WindowBackgroundColor: [40, 40, 40, 255]
 ChildBackgroundColor: [40, 40, 40, 255]
 PopupBackgroundColor: [40, 40, 40, 255]
 
-BorderColor: [100, 0, 255, 255]
-BorderShadowColor: [100, 0, 255, 255]
+BorderColor: [120, 0, 255, 255]
+BorderShadowColor: [120, 0, 255, 255]
 
 FrameBackgroundColor: [30, 30, 30, 255]
 FrameBackgroundHoveredColor: [30, 90, 30, 255]
 FrameBackgroundActiveColor: [30, 60, 30, 255]
 
-TitleBackgroundColor: [70, 70, 70, 255]
-TitleBackgroundCollapsedColor: [60, 60, 60, 255]
+TitleBackgroundColor: [20, 20, 20, 255]
+TitleBackgroundCollapsedColor: [30, 30, 30, 255]
 TitleBackgroundActiveColor: [50, 0, 200, 255]
 
-TitleBarColor: [5, 5, 5, 255]
+TitleBarColor: [0, 0, 0, 255]
 
-ScrollbarBackgroundColor: [5, 5, 5, 255]
-ScrollbarGrabColor: [50, 50, 50, 255]
-ScrollbarHoveredColor: [50, 90, 50, 255]
-ScrollbarActiveColor: [50, 100, 50, 255]
+ScrollbarBackgroundColor: [20, 20, 20, 255]
+ScrollbarGrabColor: [5, 128, 0, 255]
+ScrollbarHoveredColor: [0, 70, 0, 255]
+ScrollbarActiveColor: [5, 128, 0, 255]
 
 CheckmarkColor: [0, 128, 55, 255]
 
@@ -47,12 +47,12 @@ HeaderColor: [5, 0, 200, 255]
 HeaderHoveredColor: [50, 0, 200, 255]
 HeaderActiveColor: [100, 0, 200, 255]
 
-ResizeColor: [5, 0, 200, 255]
-ResizeHoveredColor: [50, 0, 200, 255]
-ResizeActiveColor: [100, 0, 200, 255]
+ResizeColor: [50, 0, 150, 255]
+ResizeHoveredColor: [75, 0, 200, 255]
+ResizeActiveColor: [100, 0, 255, 255]
 
-PlotLinesColor: [5, 0, 200, 255]
-PlotLinesHoveredColor: [50, 0, 200, 255]
+PlotLinesColor: [200, 0, 200, 255]
+PlotLinesHoveredColor: [200, 200, 0, 255]
 
-PlotHistogramColor: [5, 0, 200, 255]
-PlotHistogramHoveredColor: [50, 0, 200, 255]
+PlotHistogramColor: [200, 0, 200, 255]
+PlotHistogramHoveredColor: [200, 200, 0, 255]
