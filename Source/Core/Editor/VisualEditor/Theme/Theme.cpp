@@ -89,10 +89,10 @@ ImVec4 ThemeManager::ReadColor(const char* NodeName, YAML::Node Target) {
     ImVec4 Color;
 
     // Get Values And Push Into Color
-    Color.x = Subnode[0].as<float>();
-    Color.y = Subnode[1].as<float>();
-    Color.z = Subnode[2].as<float>();
-    Color.w = Subnode[3].as<float>();
+    Color.x = Subnode[0].as<float>()/255.0f;
+    Color.y = Subnode[1].as<float>()/255.0f;
+    Color.z = Subnode[2].as<float>()/255.0f;
+    Color.w = Subnode[3].as<float>()/255.0f;
 
     // Return Value
     return Color;
