@@ -51,8 +51,8 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     IOManager_ = new IOManager(Logger_, Window_, &Camera_);
 
     // Make Viewport
-    VisualRenderer_->CreateViewport(&Shader_, "TestWindow", Window_, &Camera_);
-    VisualRenderer_->CreateViewport(&Shader_, "TestWindow2", Window_, &Camera_);
+    VisualRenderer_->CreateViewport(&Shader_, "Viewport", Window_, &Camera_);
+    VisualRenderer_->CreateViewport(&Shader_, "Viewport 2", Window_, &Camera_);
 
     // Initialize Texture Loader
     TextureLoader_ = new TextureLoader(Logger_);
