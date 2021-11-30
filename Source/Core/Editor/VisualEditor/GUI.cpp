@@ -133,13 +133,17 @@ void GUISystem::UpdateGUI() {
     // End System Info Window
     ImGui::End();
 
-    ImGui::BeginMainMenuBar();
+    if (ImGui::BeginMainMenuBar()) {
 
-        ImGui::BeginMenu("Test");
-        ImGui::EndMenu();
+        if (ImGui::BeginMenu("Test")) {
 
-    ImGui::EndMainMenuBar();
+            
+            ImGui::EndMenu();
+        }
 
+
+        ImGui::EndMainMenuBar();
+    }
 
     // // create an ImGui window that covers the entire viewport, so that we can have a menu bar at the top of the applications
     // ImGui::SetNextWindowPos(ImVec2(0, 0));                                                  // always at the window origin
