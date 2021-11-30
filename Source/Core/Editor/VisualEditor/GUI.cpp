@@ -79,6 +79,8 @@ void GUISystem::UpdateGUI() {
 
     ImGui::DockSpaceOverViewport();
 
+    ImGui::ShowDemoWindow();
+
     // Setup Dockspace
     // ImGuiWindowFlags Flags = ImGuiWindowFlags_MenuBar;
     // Flags |= ImGuiWindowFlags_NoDocking;
