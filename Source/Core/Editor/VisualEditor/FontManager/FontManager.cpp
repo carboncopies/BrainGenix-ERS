@@ -26,7 +26,6 @@ FontManager::FontManager(LoggerClass *Logger, const char* FontsDirPath) {
 
     // Index Fonts
     IndexFonts();
-    UseFont(5);
 
 }
 
@@ -65,6 +64,10 @@ void FontManager::IndexFonts() {
 
             // Strip File Extension
             std::string FontName = FilePath.substr(0, strlen(FilePath.c_str())-4);
+
+            // Strip Path
+            int LastSlashIndex = FontName.find_last_of("/");
+            FontName = FontName.substr(LastSlashIndex, strlen(FontName.c_str())-LastSlashIndex);
 
             // Append Font Name To FontNameList
             FontNameList_.push_back(FontName); 
