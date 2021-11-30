@@ -129,6 +129,8 @@ void GUISystem::UpdateGUI() {
     if (ShowColorThemePicker_) {
         ImGui::Begin("Pick Color Theme", &ShowColorThemePicker_);
 
+
+            ImGui::Text("Select a theme from the list below. If you wish to install a new theme, copy the yaml file into 'EditorAssets/Configuration/Themes', then refresh the list using the button below.");
             if (ImGui::Button("Reload Themes")) {
                 ThemeManager_->LoadThemes();
             }
