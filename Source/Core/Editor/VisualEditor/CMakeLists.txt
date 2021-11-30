@@ -27,7 +27,10 @@ target_link_libraries(VisualEditor
 # Link Internal Libs
 target_link_libraries(VisualEditor
     LoggingSystem
+    
     Theme
+    FontManager
+    
     )
 
 target_include_directories(VisualEditor PUBLIC ./)

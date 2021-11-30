@@ -26,7 +26,9 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+#include <FontManager.h>
 #include <Theme.h>
+
 
 /**
  * @brief Implements the ERS gui system.
@@ -54,7 +56,7 @@ class GUISystem {
     public:
 
         ThemeManager* ThemeManager_; /**<Pointer To ThemeManager Instance*/
-
+        FontManager* FontManager_; /**<Pointer To FontManager Instance*/
 
         /**
          * @brief Construct a new Gui System object
