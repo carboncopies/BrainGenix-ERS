@@ -39,7 +39,7 @@ class ThemeManager {
 
     public:
 
-        ThemeManager(LoggerClass *Logger_);
+        ThemeManager(LoggerClass *Logger_, const char* ThemePath = "EditorAssets/Configuration/Themes");
         ~ThemeManager();
 
         void LoadThemes();
