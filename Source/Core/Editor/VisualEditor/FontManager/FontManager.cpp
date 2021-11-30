@@ -135,6 +135,12 @@ void FontManager::FontSelectorWindow(bool *WindowEnabled) {
                 // Dividing Line
                 ImGui::Separator();
 
+                // Font Size Slider
+                ImGui::SliderFloat("Font Size", &FontSize_, 5.0f, 30.0f);
+
+                // Divider
+                ImGui::Separator();
+
                 // Reload, Apply, Close Buttons
                 if (ImGui::Button("Reload")) {
                     IndexFonts();

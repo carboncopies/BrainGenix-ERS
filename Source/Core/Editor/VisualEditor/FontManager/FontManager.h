@@ -43,7 +43,7 @@ class FontManager {
         std::vector<std::string> FontPathList_; /**<List of fonts located at the given paths*/
         std::vector<std::string> FontNameList_; /**<List of font names for gui rendering*/
         
-        int FontSize_ = 14; /**<Set Default Font Size In Pixels*/
+        float FontSize_ = 14f; /**<Set Default Font Size In Pixels*/
         int FontSelector_ = 0; /**<Set Font Selector Int*/
         bool UpdateFont_ = false; /**<Indicate If Font Needs To Be Updated*/
 
