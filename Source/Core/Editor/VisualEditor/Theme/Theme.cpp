@@ -12,3 +12,16 @@
 #include <Theme.h>
 
 
+// ThemeManager Constructor
+ThemeManager::ThemeManager(LoggerClass *Logger, const char* ThemePath) {
+
+    // Create Local Pointers
+    Logger_ = Logger;
+
+    // Log Initialization
+    Logger_->Log("Initializing Theme Manager", 5);
+
+    // Find Themes
+    LoadThemes()
+
+}
