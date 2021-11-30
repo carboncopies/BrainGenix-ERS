@@ -34,3 +34,10 @@ FontManager::~FontManager() {
 
 }
 
+
+// Index Fonts Function
+void FontManager::IndexFonts() {
+
+    
+
+}
