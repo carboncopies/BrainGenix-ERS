@@ -11,8 +11,8 @@ FrameRounding: 3
 TextColor: [195, 195, 195, 255]
 DisabledTextColor: [150, 150, 150, 180]
 
-WindowBackgroundColor: [50, 50, 50, 200]
-PopupBackgroundColor: [50, 50, 50, 200]
+WindowBackgroundColor: [30, 30, 30, 255]
+PopupBackgroundColor: [30, 30, 30, 255]
 
 BorderColor: [21, 0, 104, 200]
 BorderShadowColor: [50, 0, 200, 150]
