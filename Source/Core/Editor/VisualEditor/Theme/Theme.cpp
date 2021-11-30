@@ -132,11 +132,11 @@ void ThemeManager::ApplyThemes(int ThemeID) {
 
 
     // Set Curve Tolerances
-    Logger_->Log("Reading Theme For Value: 'WindowTitlePosition'", 1);
-    Style.WindowTitleAlign = ImVec2(ThemeNode["WindowTitlePosition"].as<float>(), 0.50f);
+    Logger_->Log("Reading Theme For Value: 'CurveTessellationTolerance'", 1);
+    Style.CurveTessellationTol = ThemeNode["CurveTessellationTolerance"].as<float>();
 
-    Logger_->Log("Reading Theme For Value: 'WindowTitlePosition'", 1);
-    Style.WindowTitleAlign = ImVec2(ThemeNode["WindowTitlePosition"].as<float>(), 0.50f);
+    Logger_->Log("Reading Theme For Value: 'CircleTessellationMaxError'", 1);
+    Style.CircleTessellationMaxError = ThemeNode["CircleTessellationMaxError"].as<float>();
 
 
 
