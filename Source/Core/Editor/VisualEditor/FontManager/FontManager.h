@@ -41,6 +41,8 @@ class FontManager {
         std::vector<const char*> FontPathList_; /**<List of fonts located at the given paths*/
 
 
+        bool EndsWith(const std::string& Input, const std::string& Ending);
+
     public:
 
         FontManager(LoggerClass *Logger, const char* FontsDirPath = "EditorAssets/Fonts");

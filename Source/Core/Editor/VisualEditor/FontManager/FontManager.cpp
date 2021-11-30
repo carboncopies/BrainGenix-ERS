@@ -34,11 +34,24 @@ FontManager::~FontManager() {
 
 }
 
+// Check String Endings (From: https://stackoverflow.com/questions/874134/find-out-if-string-ends-with-another-string-in-c)
+bool FontManager::EndsWith(const std::string& Input, const std::string& Ending) {
+    if (Ending.size() > Input.size()) return false;
+    return std::equal(Input.begin() + Input.size() - Ending.size(), Input.end(), Ending.begin());
+}
+
+
 
 // Index Fonts Function
 void FontManager::IndexFonts() {
 
     // Get List Of Files At Path
-    //std::vector
+    for (const auto &Entry : std::filesystem::recursive_directory_iterator(std::string(FontsDirectoryPath_))) {
+
+        // Get File Path        
+        std::string FilePath{Entry.path().u8string()};
+
+        // Check Extension
+        if 
 
 }
