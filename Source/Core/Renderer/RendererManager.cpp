@@ -46,12 +46,8 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     // Setup GUI
     GuiSystem_ = new GUISystem(Logger_, Window_, SystemShouldRun_);
 
-    // Setup IOManager
-    Logger_->Log("Initializing Input/Output Manager", 5);
-    IOManager_ = new IOManager(Logger_, Window_, &Camera_);
-
     // Make Viewport
-    VisualRenderer_->CreateViewport(&Shader_, "TestWindow", &Camera_);
+    VisualRenderer_->CreateViewport(&Shader_, "TestWindow", Window_, &Camera_);
 
     // Initialize Texture Loader
     TextureLoader_ = new TextureLoader(Logger_);
@@ -112,10 +108,6 @@ void RendererManager::InitializeGLFW() {
 
 
 void RendererManager::UpdateLoop(float DeltaTime) { 
-
-
-    // Update IO
-    IOManager_->UpdateFrame(DeltaTime);
 
     // Update GUI
     GuiSystem_->UpdateGUI();

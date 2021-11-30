@@ -40,7 +40,6 @@ class RendererManager {
         YAML::Node *SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
         LoggerClass *Logger_; /**<Pointer to the logging system instance*/
         VisualRenderer *VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
-        IOManager *IOManager_; /**<Pointer To IOManager Instance*/
         GLFWwindow* Window_; /**<GLFW Window Instance*/
         ShaderLoader *ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
         FramebufferManager *FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/

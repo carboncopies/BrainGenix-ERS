@@ -145,7 +145,7 @@ void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
 
 // ADD DESTROY VIEWPORT FUNCTION!
 
-void VisualRenderer::CreateViewport(ERS_OBJECT_SHADER *Shader, std::string ViewportName, ERS_OBJECT_CAMERA_NOCLIP *Camera) {
+void VisualRenderer::CreateViewport(ERS_OBJECT_SHADER *Shader, std::string ViewportName, GLFWwindow* Window, ERS_OBJECT_CAMERA_NOCLIP *Camera) {
 
     // Append To Vectors
     Shaders_.push_back(Shader);
@@ -154,6 +154,10 @@ void VisualRenderer::CreateViewport(ERS_OBJECT_SHADER *Shader, std::string Viewp
     ViewportWidths_.push_back(1);
     ViewportHeights_.push_back(1);
 
+    // Create IOManager
+    Logger_->Log("Creating New Input/Output Manager", 4);
+    IOManager *IoMan = new IOManager(Logger_, Window, Camera);
+    IOManagers_.push_back(IoMan);
 
     // Create Framebuffer
     unsigned int FramebufferObject;
