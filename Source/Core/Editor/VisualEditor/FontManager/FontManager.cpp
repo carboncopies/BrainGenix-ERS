@@ -94,12 +94,10 @@ void FontManager::UseFont(int FontIndex) {
 
     // Load, Apply Font
     ImGuiIO& Io = ImGui::GetIO();
+    Io.Fonts->Clear();
     Io.Fonts->AddFontFromFileTTF(FontPath, FontSize_);
     Io.Fonts->Build();
     ImGui_ImplOpenGL3_CreateFontsTexture();
-
-
-    ImGui::PushFont(ImGui::GetFont());
 
 }
 
