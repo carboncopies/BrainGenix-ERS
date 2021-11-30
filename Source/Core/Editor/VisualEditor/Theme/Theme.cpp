@@ -147,15 +147,12 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'ChildBackgroundColor'", 1);
     Style.Colors[ImGuiCol_ChildBg] = ReadColor("ChildBackgroundColor", ThemeNode);
 
-    // Get Popup Background Color
     Logger_->Log("Reading Theme For Value: 'PopupBackgroundColor'", 1);
     Style.Colors[ImGuiCol_PopupBg] = ReadColor("PopupBackgroundColor", ThemeNode);
 
-    // Get Border Color
     Logger_->Log("Reading Theme For Value: 'BorderColor'", 1);
     Style.Colors[ImGuiCol_Border] = ReadColor("BorderColor", ThemeNode);
 
-    // Get Border Shadow Color
     Logger_->Log("Reading Theme For Value: 'BorderShadowColor'", 1);
     Style.Colors[ImGuiCol_BorderShadow] = ReadColor("BorderShadowColor", ThemeNode);
 
