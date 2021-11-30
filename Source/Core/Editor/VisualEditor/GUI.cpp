@@ -69,36 +69,23 @@ void GUISystem::UpdateGUI() {
     float Height;
     glfwGetWindowContentScale(Window_, &Width, &Height);
 
+
+    // Enable Docking
     ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+
 
     // Start the Dear ImGui frame
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
 
-
+    // Setup Dockspace
     ImGui::DockSpaceOverViewport();
+
 
     ImGui::ShowDemoWindow();
 
-    // Setup Dockspace
-    // ImGuiWindowFlags Flags = ImGuiWindowFlags_MenuBar;
-    // Flags |= ImGuiWindowFlags_NoDocking;
-    // ImGuiViewport* Viewport = ImGui::GetMainViewport();
 
-    // ImGui::SetNextWindowPos(Viewport->Pos);
-    // ImGui::SetNextWindowSize(Viewport->Size);
-    // ImGui::SetNextWindowViewport(Viewport->ID);
-    // ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
-
-    // Flags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
-    // Flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
-
-    // ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
-    // ImGui::Begin("Dockspace", 0, Flags);
-    // ImGui::PopStyleVar();
-
-    
     // Add Main Menu
     if (ImGui::BeginMainMenuBar()) {
 
@@ -122,21 +109,6 @@ void GUISystem::UpdateGUI() {
 
         ImGui::EndMainMenuBar();
     }
-
-
-    //ImGui::End();
-    
-        // static float f = 0.0f;
-        // static int counter = 0;
-
-
-        // ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-        // ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
-
-        // if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-        //     counter++;
-        // ImGui::SameLine();
-        // ImGui::Text("counter = %d", counter);
 
 
     ImGui::Begin("System Controls");
@@ -175,36 +147,6 @@ void GUISystem::UpdateGUI() {
 
     // End System Info Window
     ImGui::End();
-
-
-
-
-    // // create an ImGui window that covers the entire viewport, so that we can have a menu bar at the top of the applications
-    // ImGui::SetNextWindowPos(ImVec2(0, 0));                                                  // always at the window origin
-    // ImGui::SetNextWindowSize(ImVec2(Width, Height));    // always at the window size
-
-    // ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoBringToFrontOnFocus |                 // we just want to use this window as a host for the menubar and docking
-    //     ImGuiWindowFlags_NoNavFocus |                                                      // so turn off everything that would make it act like a window
-    //     //ImGuiWindowFlags_NoDocking |
-    //     ImGuiWindowFlags_NoTitleBar |
-    //     ImGuiWindowFlags_NoResize |
-    //     ImGuiWindowFlags_NoMove |
-    //     ImGuiWindowFlags_NoCollapse |
-    //     ImGuiWindowFlags_MenuBar |
-    //     ImGuiWindowFlags_NoBackground;                                                      // we want our game content to show through this window, so turn off the background.
-
-    // ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));   
-
-
-
-
-
-
-
-
-
-
-    
 
 
 }
