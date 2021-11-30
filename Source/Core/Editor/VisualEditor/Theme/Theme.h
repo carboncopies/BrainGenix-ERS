@@ -63,6 +63,10 @@ class ThemeManager {
          */
         ~ThemeManager();
 
+        /**
+         * @brief Load themes from disk
+         * 
+         */
         void LoadThemes();
         void CreateThemeMenu();
         void ApplyThemes(int ThemeID);
