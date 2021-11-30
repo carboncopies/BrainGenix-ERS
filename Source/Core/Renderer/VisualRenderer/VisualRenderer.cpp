@@ -85,8 +85,8 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
     // Update Input
     if (ImGui::IsItemFocused()) {
-        IoManager *IoManager = IOManagers_[Index];
-        IOManager->UpdateFrame(DeltaTime);
+        IOManager *IoManager = IOManagers_[Index];
+        IoManager->UpdateFrame(DeltaTime);
     }
 
 
