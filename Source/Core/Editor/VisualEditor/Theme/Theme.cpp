@@ -138,35 +138,20 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Style.Colors[ImGuiCol_WindowBg] = ReadColor("WindowBackgroundColor", ThemeNode);
     Style.Colors[ImGuiCol_ChildBg] = ReadColor("ChildBackgroundColor", ThemeNode);
     Style.Colors[ImGuiCol_PopupBg] = ReadColor("PopupBackgroundColor", ThemeNode);
-
     Style.Colors[ImGuiCol_Border] = ReadColor("BorderColor", ThemeNode);
-
     Style.Colors[ImGuiCol_BorderShadow] = ReadColor("BorderShadowColor", ThemeNode);
-
     Style.Colors[ImGuiCol_FrameBg] = ReadColor("FrameBackgroundColor", ThemeNode);
-
     Style.Colors[ImGuiCol_FrameBgHovered] = ReadColor("FrameBackgroundHoveredColor", ThemeNode);
-
     Style.Colors[ImGuiCol_FrameBgActive] = ReadColor("FrameBackgroundActiveColor", ThemeNode);
-
     Style.Colors[ImGuiCol_TitleBg] = ReadColor("TitleBackgroundColor", ThemeNode);
-
     Style.Colors[ImGuiCol_TitleBgCollapsed] = ReadColor("TitleBackgroundCollapsedColor", ThemeNode);
-
     Style.Colors[ImGuiCol_TitleBgActive] = ReadColor("TitleBackgroundActiveColor", ThemeNode);
-
     Style.Colors[ImGuiCol_MenuBarBg] = ReadColor("TitleBarColor", ThemeNode);
-
     Style.Colors[ImGuiCol_ScrollbarBg] = ReadColor("ScrollbarBackgroundColor", ThemeNode);
-
     Style.Colors[ImGuiCol_ScrollbarBg] = ReadColor("ScrollbarBackgroundColor", ThemeNode);
-
     Style.Colors[ImGuiCol_ScrollbarGrab] = ReadColor("ScrollbarGrabColor", ThemeNode);
-
     Style.Colors[ImGuiCol_ScrollbarGrabHovered] = ReadColor("ScrollbarHoveredColor", ThemeNode);
-
     Style.Colors[ImGuiCol_ScrollbarGrabActive] = ReadColor("ScrollbarActiveColor", ThemeNode);
-
     Style.Colors[ImGuiCol_CheckMark] = ReadColor("CheckmarkColor", ThemeNode);
 
 
