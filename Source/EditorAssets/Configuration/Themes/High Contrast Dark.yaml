@@ -12,27 +12,27 @@ TextColor: [255, 255, 255, 255]
 DisabledTextColor: [200, 200, 200, 180]
 TextSelectedBackgroundColor: [200, 200, 200, 1255]
 
-WindowBackgroundColor: [40, 40, 40, 255]
-ChildBackgroundColor: [40, 40, 40, 255]
-PopupBackgroundColor: [40, 40, 40, 255]
+WindowBackgroundColor: [10, 10, 10, 255]
+ChildBackgroundColor:  [10, 10, 10, 255]
+PopupBackgroundColor:  [10, 10, 10, 255]
 
-BorderColor: [120, 0, 255, 255]
+BorderColor:       [120, 0, 255, 255]
 BorderShadowColor: [120, 0, 255, 255]
 
-FrameBackgroundColor: [50, 0, 100, 255]
+FrameBackgroundColor:        [50, 0, 100, 255]
 FrameBackgroundHoveredColor: [75, 0, 150, 255]
-FrameBackgroundActiveColor: [100, 0, 200, 255]
+FrameBackgroundActiveColor:  [100, 0, 200, 255]
 
-TitleBackgroundColor: [50, 0, 100, 255]
+TitleBackgroundColor:          [50, 0, 100, 255]
 TitleBackgroundCollapsedColor: [75, 0, 150, 255]
-TitleBackgroundActiveColor: [100, 0, 200, 255]
+TitleBackgroundActiveColor:    [100, 0, 200, 255]
 
 TitleBarColor: [0, 0, 0, 255]
 
 ScrollbarBackgroundColor: [20, 20, 20, 255]
-ScrollbarGrabColor: [5, 128, 0, 255]
-ScrollbarHoveredColor: [0, 70, 0, 255]
-ScrollbarActiveColor: [5, 128, 0, 255]
+ScrollbarGrabColor:       [5, 128, 0, 255]
+ScrollbarHoveredColor:    [0, 70, 0, 255]
+ScrollbarActiveColor:     [5, 128, 0, 255]
 
 CheckmarkColor: [0, 128, 55, 255]
 
