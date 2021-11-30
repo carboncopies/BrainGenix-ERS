@@ -155,9 +155,19 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'BorderShadowColor'", 1);
     Style.Colors[ImGuiCol_BorderShadow] = ReadColor("BorderShadowColor", ThemeNode);
 
+    // Get Frame Background Color
+    Logger_->Log("Reading Theme For Value: 'FrameBackgroundColor'", 1);
+    Style.Colors[ImGuiCol_FrameBg] = ReadColor("FrameBackgroundColor", ThemeNode);
 
-    Style.Colors[ImGuiCol_Border]                = ImVec4(0.00f, 0.00f, 0.00f, 0.39f);
-    Style.Colors[ImGuiCol_BorderShadow]          = ImVec4(1.00f, 1.00f, 1.00f, 0.10f);
+    // Get Frame Background Hovered Color
+    Logger_->Log("Reading Theme For Value: 'FrameBackgroundHoveredColor'", 1);
+    Style.Colors[ImGuiCol_FrameBgHovered] = ReadColor("FrameBackgroundHoveredColor", ThemeNode);
+
+    // Get Frame Background Active Color
+    Logger_->Log("Reading Theme For Value: 'FrameBackgroundActiveColor'", 1);
+    Style.Colors[ImGuiCol_FrameBgActive] = ReadColor("FrameBackgroundActiveColor", ThemeNode);
+
+
     Style.Colors[ImGuiCol_FrameBg]               = ImVec4(1.00f, 1.00f, 1.00f, 0.94f);
     Style.Colors[ImGuiCol_FrameBgHovered]        = ImVec4(0.26f, 0.59f, 0.98f, 0.40f);
     Style.Colors[ImGuiCol_FrameBgActive]         = ImVec4(0.26f, 0.59f, 0.98f, 0.67f);
