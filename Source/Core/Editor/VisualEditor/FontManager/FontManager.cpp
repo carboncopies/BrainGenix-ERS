@@ -24,6 +24,9 @@ FontManager::FontManager(LoggerClass *Logger, const char* FontsDirPath) {
     // Copy Vars
     FontsDirectoryPath_ = FontsDirPath;
 
+    // Index Fonts
+    IndexFonts();
+
 }
 
 // FontManager Destructor
