@@ -44,10 +44,8 @@ class GUISystem {
         bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */
 
 
-        void InitializeWindowFunctions(); /**Initialize Window Function Vars*/
-
-        // Static Window Show/Hide Vars
-        static bool ShowColorThemePicker_; /**<Control Variable indicating weither to show/hide the color theme picker*/
+        // Window Show/Hide Vars
+        bool ShowColorThemePicker_ = false; /**<Control Variable indicating weither to show/hide the color theme picker*/
 
 
     public:

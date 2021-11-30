@@ -20,9 +20,6 @@ GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShould
     Window_ = Window;
     SystemShouldRun_ = SystemShouldRun;
 
-    // Initialize Windows
-    Logger_->Log("Initializing Windows", 4);
-    InitializeWindowFunctions();
 
     // Initialize ImGui
     Logger_->Log("Initializing DearImGui GUI Library", 5);
@@ -212,15 +209,6 @@ void GUISystem::UpdateGUI() {
 
 }
 
-// Initialize Function
-void GUISystem::InitializeWindowFunctions() {
-
-    // Initialize Vars
-    static bool ShowColorThemePicker_ = false;
-
-}
-
-// Update Frame
 void GUISystem::UpdateFrame() {
 
     // Rendering
