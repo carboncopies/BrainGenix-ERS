@@ -52,7 +52,7 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
 
     // Make Viewport
     VisualRenderer_->CreateViewport(&Shader_, "Viewport", Window_, &Camera_);
-    VisualRenderer_->CreateViewport(&Shader_, "Viewport 2", Window_, &Camera_);
+    //VisualRenderer_->CreateViewport(&Shader_, "Viewport 2", Window_, &Camera_);
 
     // Initialize Texture Loader
     TextureLoader_ = new TextureLoader(Logger_);
