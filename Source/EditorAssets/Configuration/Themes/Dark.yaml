@@ -10,6 +10,7 @@ FrameRounding: 3
 # FORMAT:   R,   G    B    A    
 TextColor: [195, 195, 195, 255]
 DisabledTextColor: [150, 150, 150, 180]
+TextSelectedBackgroundColor: [150, 150, 150, 180]
 
 WindowBackgroundColor: [30, 30, 30, 255]
 ChildBackgroundColor: [30, 30, 30, 255]
