@@ -10,3 +10,10 @@
 */
 
 #include <FontManager.h>
+
+
+// FontManager Constructor
+FontManager::FontManager(LoggerClass *Logger, const char* FontsDirPath) {
+
+
+}

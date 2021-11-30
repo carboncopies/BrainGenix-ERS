@@ -36,11 +36,11 @@ class FontManager {
     private:
 
         LoggerClass *Logger_; /**<LoggerClass Instance Pointer*/
-
+        const char* FontsDirectoryPath_; /**<Path where fonts are to be searched for */
 
     public:
 
-        FontManager();
+        FontManager(LoggerClass *Logger, const char* FontsDirPath = "EditorAssets/Fonts");
         ~FontManager();
 
 
