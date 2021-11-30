@@ -92,6 +92,7 @@ void FontManager::UseFont(int FontIndex) {
     // Load, Apply Font
     ImGuiIO& Io = ImGui::GetIO();
     Io.Fonts->AddFontFromFileTTF(FontPath, FontSize_);
+    Io.Fonts->Build();
 
 
 }
