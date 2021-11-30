@@ -127,23 +127,18 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     // Hardcoded Transparency
     Style.Alpha = 1.0f;
 
-    // Get FrameRounding Effect
     Logger_->Log("Reading Theme For Value: 'FrameRounding'", 1);
     Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
 
-    // Get Text Color
     Logger_->Log("Reading Theme For Value: 'TextColor'", 1);
     Style.Colors[ImGuiCol_Text] = ReadColor("TextColor", ThemeNode);
 
-    // Get Disabled Text Color
     Logger_->Log("Reading Theme For Value: 'DisabledTextColor'", 1);
     Style.Colors[ImGuiCol_TextDisabled] = ReadColor("DisabledTextColor", ThemeNode);
 
-    // Get Window Background Color
     Logger_->Log("Reading Theme For Value: 'WindowBackgroundColor'", 1);
     Style.Colors[ImGuiCol_WindowBg] = ReadColor("WindowBackgroundColor", ThemeNode);
 
-    // Get Window Background Color
     Logger_->Log("Reading Theme For Value: 'ChildBackgroundColor'", 1);
     Style.Colors[ImGuiCol_ChildBg] = ReadColor("ChildBackgroundColor", ThemeNode);
 
