@@ -67,7 +67,7 @@ void FontManager::IndexFonts() {
 
             // Strip Path
             int LastSlashIndex = FontName.find_last_of("/");
-            FontName = FontName.substr(LastSlashIndex, strlen(FontName.c_str())-LastSlashIndex);
+            FontName = FontName.substr(LastSlashIndex+1, strlen(FontName.c_str())-LastSlashIndex);
 
             // Append Font Name To FontNameList
             FontNameList_.push_back(FontName); 
@@ -89,7 +89,6 @@ void FontManager::UseFont(int FontIndex) {
     // Get Font Path From Dir
     const char* FontPath = FontPathList_[FontIndex].c_str();
 
-    std::cout<<FontPath<<std::endl;
     // Load, Apply Font
     ImGuiIO& Io = ImGui::GetIO();
     Io.Fonts->AddFontFromFileTTF(FontPath, FontSize_);
@@ -97,4 +96,16 @@ void FontManager::UseFont(int FontIndex) {
 
 }
 
+// Font Selector Window
+void FontManager::FontSelectorWindow(bool *WindowEnabled) {
 
+    // Draw Window
+    ImGuiWindowFlags Flags = ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoBackground;
+    if (ImGui::Begin("Font Selector", WindowEnabled, Flags)) {
+        ImGui::SetWindowSize(ImVec2(0,0));
+
+
+        ImGui::End();
+    }
+
+}

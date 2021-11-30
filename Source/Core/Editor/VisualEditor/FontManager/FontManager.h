@@ -53,5 +53,6 @@ class FontManager {
 
         void IndexFonts();
         void UseFont(int FontIndex);
+        void FontSelectorWindow(bool *WindowEnabled);
 
 };
