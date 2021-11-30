@@ -2,9 +2,26 @@
 # Color Configuration File For BrainGenix-ERS Editor #
 ######################################################
 
+# System Base Color
 EditorBackgroundColor: [0, 0, 0]
 
-FrameRounding: 3
+# Borders
+WindowBorderSize: 1
+ChildBorderSize: 1
+PopupBorderSize: 1
+FrameBorderSize: 1
+TabBorderSize: 1
+
+# Rounding Sections
+WindowRounding: 4
+ChildRounding: 4
+FrameRounding: 4
+PopupRounding: 4
+ScrollbarRounding: 4
+GrabRounding: 4
+LogSliderDeadzone: 4
+TabRounding: 4
+
 
 # Note: You MUST Populate The Alpha Value!
 # FORMAT:                     R,   G    B    A    
