@@ -103,7 +103,7 @@ void FontManager::FontSelectorWindow(bool *WindowEnabled) {
     if (*WindowEnabled) {
 
         // Draw Window
-        ImGuiWindowFlags Flags = ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_Popup;
+        ImGuiWindowFlags Flags = ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse;
         if (ImGui::Begin("Font Selector", WindowEnabled, Flags)) {
             ImGui::SetWindowSize(ImVec2(0,0));
 
@@ -116,14 +116,19 @@ void FontManager::FontSelectorWindow(bool *WindowEnabled) {
 
                 ImGui::EndChild();
 
+                // Dividing Line
+                ImGui::Separator();
+
                 // Reload, Apply, Close Buttons
                 if (ImGui::Button("Reload")) {
                     IndexFonts();
                 }
+                ImGui::SameLine();
 
                 if (ImGui::Button("Apply")) {
                     UseFont(FontSelector_);
                 }
+                ImGui::SameLine();
 
                 if (ImGui::Button("Close")) {
                     *WindowEnabled = false;
