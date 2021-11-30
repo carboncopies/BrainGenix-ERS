@@ -82,7 +82,12 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     int RenderWidth = ImGui::GetWindowSize().x;
     int RenderHeight = ImGui::GetWindowSize().y;
 
-    ImGui::IsItemFocused();
+
+    // Update Input
+    if (ImGui::IsItemFocused()) {
+        IoManager *IoManager = IOManagers_[Index];
+        IOManager->UpdateFrame(DeltaTime);
+    }
 
 
 
