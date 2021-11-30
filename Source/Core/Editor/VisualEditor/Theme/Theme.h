@@ -39,7 +39,6 @@ class ThemeManager {
         LoggerClass *Logger_; /**<LoggerClass Instance*/
         const char* ThemePath_; /**<Filepath Where Themes Are Located*/
 
-        std::vector<std::string> ThemeNames_; /**<List of theme names (based on filename)*/
         std::vector<YAML::Node> ThemeFiles_; /**<List Of YAML::Node files*/
 
         ImVec4 ReadColor(const char* NodeName, YAML::Node Target); /**<Reads A Color From The Config*/
@@ -47,6 +46,7 @@ class ThemeManager {
     public:
 
         ImVec4 ClearColor_; /**Set Clear Color For Background*/
+        std::vector<std::string> ThemeNames_; /**<List of theme names (based on filename)*/
 
 
         ThemeManager(LoggerClass *Logger_, const char* ThemePath = "EditorAssets/Configuration/Themes");
