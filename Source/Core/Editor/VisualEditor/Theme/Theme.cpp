@@ -17,6 +17,7 @@ ThemeManager::ThemeManager(LoggerClass *Logger, const char* ThemePath) {
 
     // Create Local Pointers
     Logger_ = Logger;
+    ThemePath_ = ThemePath;
 
     // Log Initialization
     Logger_->Log("Initializing Theme Manager", 5);
@@ -40,9 +41,14 @@ void ThemeManager::LoadThemes() {
     // Create List Of Files
     std::vector<std::string> FilePaths;
 
-    namespace FS = std::filesystem;
-    for (const auto &Entry : FS::directory_iterator(std::string(ThemePath_))) {
-        FilePaths.push_back(Entry.path());
+    for (const auto &Entry : std::filesystem::directory_iterator(std::string(ThemePath_))) {
+        
+        // Copy Output Into New String
+        std::string FilePath = Entry.path();
+        FilePath = FilePath.substr(strlen(ThemePath_)+1);
+        FilePath = FilePath.substr(0, strlen(FilePath.c_str())-5);
+
+        FilePaths.push_back(FilePath);
     }
 
     for (int i = 0; i < FilePaths.size(); i++) {

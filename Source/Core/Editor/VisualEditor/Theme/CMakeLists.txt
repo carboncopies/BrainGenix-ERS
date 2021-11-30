@@ -14,7 +14,8 @@ add_library(Theme
             
             ${BACKWARD_ENABLE}
             )
-
+set_property(TARGET Theme PROPERTY CXX_STANDARD 17)
+            
 # Link 3rd Party Libs
 target_link_libraries(Theme
     yaml-cpp
