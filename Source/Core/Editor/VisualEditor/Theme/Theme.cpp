@@ -60,7 +60,7 @@ void ThemeManager::LoadThemes() {
         ThemeNames_.push_back(FilePath);
 
         // Log Theme Loaded
-        Logger_->Log(std::string(std::string("Loaded Theme: ") + FilePath).c_str(), 1);
+        Logger_->Log(std::string(std::string("Loaded Editor Theme: ") + FilePath).c_str(), 1);
 
     }
 
@@ -68,8 +68,19 @@ void ThemeManager::LoadThemes() {
     // Log Number Of Themes Found
     Logger_->Log(std::string(std::string("Found ") + std::to_string(ThemeNames_.size()) + std::string(" Themes")).c_str(), 1);
 
-    for (int i = 0; i < ThemeNames_.size(); i++) {
+}
 
-    }
+// Apply Theme
+void ThemeManager::ApplyThemes(int ThemeID) {
+
+    // Get Theme Name
+    std::string ThemeName = ThemeNames_[ThemeID];
+    YAML::Node ThemeNode = ThemeFiles_[ThemeID];
+
+    // Log Theme Loading
+    Logger_->Log(std::string(std::string("Applying Theme: ") + ThemeName).c_str(), 4);
+
+
 
 }
+
