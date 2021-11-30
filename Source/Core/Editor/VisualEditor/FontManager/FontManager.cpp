@@ -74,5 +74,7 @@ void FontManager::IndexFonts() {
             Logger_->Log(LogText.c_str(), 3);
 
         }
+    
+    }
 
 }
