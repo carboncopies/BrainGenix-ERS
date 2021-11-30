@@ -13,11 +13,12 @@
 
 
 // GUISystem Constructor
-GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window) {
+GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShouldRun) {
 
     // Create Local Pointer
     Logger_ = Logger;
     Window_ = Window;
+    SystemShouldRun_ = SystemShouldRun;
 
     // Initialize ImGui
     Logger_->Log("Initializing DearImGui GUI Library", 5);
@@ -133,9 +134,16 @@ void GUISystem::UpdateGUI() {
     // End System Info Window
     ImGui::End();
 
+
+    // Add Main Menu
     if (ImGui::BeginMainMenuBar()) {
 
-        if (ImGui::BeginMenu("Test")) {
+
+        if (ImGui::BeginMenu("File")) {
+
+                if (ImGui::MenuItem("Exit")) {
+                    MenuExitFunction();
+                }
 
             
             ImGui::EndMenu();
@@ -183,5 +191,12 @@ void GUISystem::UpdateFrame() {
 
     // Draw The GUI
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+    
+}
+
+void GUISystem::MenuExitFunction() {
+
+    // Shutdown System
+    *SystemShouldRun_ = false;
     
 }

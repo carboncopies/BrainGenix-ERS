@@ -39,13 +39,17 @@ class GUISystem {
         LoggerClass* Logger_; /**<Pointer To LoggerClass Instance*/
         GLFWwindow* Window_; /**<Pointer to window instance*/
 
+
+        bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */
+
+
     public:
         /**
          * @brief Construct a new Gui System object
          * 
          * @param Logger 
          */
-        GUISystem(LoggerClass* Logger, GLFWwindow* Window);
+        GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShouldRun);
 
         /**
          * @brief Destroy the Gui System object
@@ -65,4 +69,7 @@ class GUISystem {
          * 
          */
         void UpdateFrame();
+
+
+        void MenuExitFunction();
 };
