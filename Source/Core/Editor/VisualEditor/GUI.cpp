@@ -131,7 +131,7 @@ void GUISystem::UpdateGUI() {
 
 
             // Put Radio Buttons Here
-            ImGui::BeginChild("Theme Selector");
+            ImGui::BeginChild("Theme Selector", ImVec2(250, 500));
 
                 static int ThemeSelector = 0;
                 for (int i = 0; i < ThemeManager_->ThemeNames_.size(); i++) {
@@ -150,8 +150,9 @@ void GUISystem::UpdateGUI() {
             // Reload Button
             if (ImGui::Button("Reload Themes")) {
                 ThemeManager_->LoadThemes();
-                ImGui::SameLine();
             }
+            
+            ImGui::SameLine();
 
             // Apply Button
             if (ImGui::Button("Apply")) {
