@@ -25,3 +25,5 @@ FrameBackgroundActiveColor: [30, 60, 30, 255]
 TitleBackgroundColor: [100, 100, 100, 255]
 TitleBackgroundCollapsedColor: [100, 100, 100, 255]
 TitleBackgroundActiveColor: [50, 0, 200, 255]
+
+TitleBarColor: [5, 5, 5, 255]
