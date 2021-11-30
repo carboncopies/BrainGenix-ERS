@@ -27,3 +27,5 @@ TitleBackgroundCollapsedColor: [60, 60, 60, 255]
 TitleBackgroundActiveColor: [50, 0, 200, 255]
 
 TitleBarColor: [5, 5, 5, 255]
+
+ScrollbarBackgroundColor: [5, 5, 5, 255]

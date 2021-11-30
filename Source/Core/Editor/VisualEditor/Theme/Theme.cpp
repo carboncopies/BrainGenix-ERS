@@ -167,27 +167,27 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'FrameBackgroundHoveredColor'", 1);
     Style.Colors[ImGuiCol_FrameBgHovered] = ReadColor("FrameBackgroundHoveredColor", ThemeNode);
 
-    // Get Frame Background Active Color
     Logger_->Log("Reading Theme For Value: 'FrameBackgroundActiveColor'", 1);
     Style.Colors[ImGuiCol_FrameBgActive] = ReadColor("FrameBackgroundActiveColor", ThemeNode);
 
-    // Get Title Background Color
     Logger_->Log("Reading Theme For Value: 'TitleBackgroundColor'", 1);
     Style.Colors[ImGuiCol_TitleBg] = ReadColor("TitleBackgroundColor", ThemeNode);
 
-    // Get Title Background Collapsed Color
     Logger_->Log("Reading Theme For Value: 'TitleBackgroundCollapsedColor'", 1);
     Style.Colors[ImGuiCol_TitleBgCollapsed] = ReadColor("TitleBackgroundCollapsedColor", ThemeNode);
 
-    // Get Title Background Active Color
     Logger_->Log("Reading Theme For Value: 'TitleBackgroundActiveColor'", 1);
     Style.Colors[ImGuiCol_TitleBgActive] = ReadColor("TitleBackgroundActiveColor", ThemeNode);
 
-    // Get Titlebar Color
     Logger_->Log("Reading Theme For Value: 'TitleBarColor'", 1);
     Style.Colors[ImGuiCol_MenuBarBg] = ReadColor("TitleBarColor", ThemeNode);
 
-    Style.Colors[ImGuiCol_ScrollbarBg]           = ImVec4(0.98f, 0.98f, 0.98f, 0.53f);
+    Logger_->Log("Reading Theme For Value: 'ScrollbarBackgroundColor'", 1);
+    Style.Colors[ImGuiCol_ScrollbarBg] = ReadColor("ScrollbarBackgroundColor", ThemeNode);
+
+    Logger_->Log("Reading Theme For Value: 'ScrollbarBackgroundColor'", 1);
+    Style.Colors[ImGuiCol_ScrollbarBg] = ReadColor("ScrollbarBackgroundColor", ThemeNode);
+
     Style.Colors[ImGuiCol_ScrollbarGrab]         = ImVec4(0.69f, 0.69f, 0.69f, 1.00f);
     Style.Colors[ImGuiCol_ScrollbarGrabHovered]  = ImVec4(0.59f, 0.59f, 0.59f, 1.00f);
     Style.Colors[ImGuiCol_ScrollbarGrabActive]   = ImVec4(0.49f, 0.49f, 0.49f, 1.00f);
