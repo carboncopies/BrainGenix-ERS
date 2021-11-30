@@ -34,8 +34,9 @@ GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShould
     ImGui::StyleColorsDark();
     //ImGui::StyleColorsClassic();
 
-    // Initializing Theme Loader
+    // Initialize Managers
     ThemeManager_ = new ThemeManager(Logger_);
+    FontManager_ = new FontManager(Logger_);
 
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(Window, true);
