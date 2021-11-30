@@ -141,6 +141,12 @@ void GUISystem::UpdateGUI() {
 
         if (ImGui::BeginMenu("File")) {
 
+                if (ImGui::MenuItem("Color Theme")) {
+                    
+                }
+
+                ImGui::Separator();
+
                 if (ImGui::MenuItem("Exit")) {
                     MenuExitFunction();
                 }
