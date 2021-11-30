@@ -81,6 +81,8 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log(std::string(std::string("Applying Theme: ") + ThemeName).c_str(), 4);
 
 
+    // Read Parameters, Apply Them
+    
 
 }
 

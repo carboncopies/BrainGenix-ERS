@@ -127,7 +127,8 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
 
     // Update GUI Frame
-    glClearColor(0.1f, 0.1f, 0.1f, 0.0f);
+    ImVec4 Color = GuiSystem_->ThemeManager_->ClearColor_;
+    glClearColor(Color.x, Color.y, Color.z, Color.w);
     glClear(GL_COLOR_BUFFER_BIT);
     GuiSystem_->UpdateFrame();
     

@@ -46,6 +46,9 @@ class ThemeManager {
 
     public:
 
+        ImVec4 ClearColor_; /**Set Clear Color For Background*/
+
+
         ThemeManager(LoggerClass *Logger_, const char* ThemePath = "EditorAssets/Configuration/Themes");
         ~ThemeManager();
 
