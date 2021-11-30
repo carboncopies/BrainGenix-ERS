@@ -39,6 +39,7 @@ class GUISystem {
 
         LoggerClass* Logger_; /**<Pointer To LoggerClass Instance*/
         GLFWwindow* Window_; /**<Pointer to window instance*/
+        ThemeManager* ThemeManager_; /**<Pointer To ThemeManager Instance*/
 
 
         bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */
