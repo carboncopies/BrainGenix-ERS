@@ -24,7 +24,15 @@ ThemeManager::ThemeManager(LoggerClass *Logger, const char* ThemePath) {
 
     // Find Themes
     LoadThemes();
-    ApplyThemes(2);
+
+    // Default To Dark Mode
+    int Index;
+    for (Index = 0; Index < ThemeNames_.size(); Index++) {
+        if (ThemeNames_[Index] == "Dark") {
+            break;
+        }
+    }
+    ApplyThemes(Index);
 
 }
 
