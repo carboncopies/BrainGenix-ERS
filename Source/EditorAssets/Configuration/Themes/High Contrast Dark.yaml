@@ -13,7 +13,7 @@ CircleTessellationMaxError: 0.2
 WindowTitlePosition: 0.50
 
 # Borders
-WindowBorderSize: 1
+WindowBorderSize: 2
 ChildBorderSize: 1
 PopupBorderSize: 1
 FrameBorderSize: 1
