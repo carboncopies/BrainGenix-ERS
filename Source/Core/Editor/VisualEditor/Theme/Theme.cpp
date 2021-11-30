@@ -134,13 +134,9 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
 
     Style.Colors[ImGuiCol_Text] = ReadColor("TextColor", ThemeNode);
-
     Style.Colors[ImGuiCol_TextDisabled] = ReadColor("DisabledTextColor", ThemeNode);
-
     Style.Colors[ImGuiCol_WindowBg] = ReadColor("WindowBackgroundColor", ThemeNode);
-
     Style.Colors[ImGuiCol_ChildBg] = ReadColor("ChildBackgroundColor", ThemeNode);
-
     Style.Colors[ImGuiCol_PopupBg] = ReadColor("PopupBackgroundColor", ThemeNode);
 
     Style.Colors[ImGuiCol_Border] = ReadColor("BorderColor", ThemeNode);
