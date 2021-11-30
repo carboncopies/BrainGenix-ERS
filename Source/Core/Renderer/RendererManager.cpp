@@ -45,7 +45,7 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
 
 
     // Setup GUI
-    GuiSystem_ = new GUISystem(Logger_, Window_);
+    GuiSystem_ = new GUISystem(Logger_, Window_, SystemShouldRun_);
 
     // TODO: FINISH REFACTORING VISUALRENDERER
     // REFACTOR FRAMEBUFFERMANAGER TO ALLOW EACH VIEWPORT TO HAVE IT's OWN RESOLUTION
