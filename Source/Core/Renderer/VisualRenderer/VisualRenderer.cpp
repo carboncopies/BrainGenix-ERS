@@ -102,6 +102,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
         glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
     }
 
+    // Update Viewport Camera/Position/Etc.
     InputProcessor->ProcessKeyboardInput(Logger_, DeltaTime, CaptureMouseCursor);
     InputProcessor->UpdateFramebuffer();
     InputProcessor->UpdateMouse(CaptureMouseCursor);
