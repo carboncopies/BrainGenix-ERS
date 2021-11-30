@@ -89,12 +89,17 @@ void FontManager::UseFont(int FontIndex) {
     // Get Font Path From Dir
     const char* FontPath = FontPathList_[FontIndex].c_str();
 
+    // Log Font Adjustment
+    Logger_->Log(std::string(std::string("Changing Font To: ") + std::string(FontPath)).c_str(), 4);
+
     // Load, Apply Font
     ImGuiIO& Io = ImGui::GetIO();
     Io.Fonts->AddFontFromFileTTF(FontPath, FontSize_);
     Io.Fonts->Build();
     ImGui_ImplOpenGL3_DestroyFontsTexture();
+    ImGui_ImplOpenGL3_DestroyDeviceObjects();
     ImGui_ImplOpenGL3_CreateFontsTexture();
+    ImGui_ImplOpenGL3_CreateDeviceObjects();
 
 }
 
