@@ -22,6 +22,6 @@ ThemeManager::ThemeManager(LoggerClass *Logger, const char* ThemePath) {
     Logger_->Log("Initializing Theme Manager", 5);
 
     // Find Themes
-    LoadThemes()
+    LoadThemes();
 
 }
