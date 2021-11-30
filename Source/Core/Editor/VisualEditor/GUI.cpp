@@ -133,7 +133,12 @@ void GUISystem::UpdateGUI() {
     // End System Info Window
     ImGui::End();
 
+    ImGui::BeginMainMenuBar();
 
+        ImGui::BeginMenu("Test");
+        ImGui::EndMenu();
+
+    ImGui::EndMainMenuBar();
 
 
     // // create an ImGui window that covers the entire viewport, so that we can have a menu bar at the top of the applications
