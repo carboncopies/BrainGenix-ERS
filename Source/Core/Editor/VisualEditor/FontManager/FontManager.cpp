@@ -99,13 +99,18 @@ void FontManager::UseFont(int FontIndex) {
 // Font Selector Window
 void FontManager::FontSelectorWindow(bool *WindowEnabled) {
 
-    // Draw Window
-    ImGuiWindowFlags Flags = ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoBackground;
-    if (ImGui::Begin("Font Selector", WindowEnabled, Flags)) {
-        ImGui::SetWindowSize(ImVec2(0,0));
+    // If Window Enabled
+    if (*WindowEnabled) {
+
+        // Draw Window
+        ImGuiWindowFlags Flags = ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoBackground;
+        if (ImGui::Begin("Font Selector", WindowEnabled, Flags)) {
+            ImGui::SetWindowSize(ImVec2(0,0));
 
 
-        ImGui::End();
+            ImGui::End();
+        }
+
     }
 
 }
