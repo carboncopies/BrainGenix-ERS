@@ -143,34 +143,24 @@ void ThemeManager::ApplyThemes(int ThemeID) {
 
     Style.Colors[ImGuiCol_PopupBg] = ReadColor("PopupBackgroundColor", ThemeNode);
 
-    Logger_->Log("Reading Theme For Value: 'BorderColor'", 1);
     Style.Colors[ImGuiCol_Border] = ReadColor("BorderColor", ThemeNode);
 
-    Logger_->Log("Reading Theme For Value: 'BorderShadowColor'", 1);
     Style.Colors[ImGuiCol_BorderShadow] = ReadColor("BorderShadowColor", ThemeNode);
 
-    Logger_->Log("Reading Theme For Value: 'FrameBackgroundColor'", 1);
     Style.Colors[ImGuiCol_FrameBg] = ReadColor("FrameBackgroundColor", ThemeNode);
 
-    Logger_->Log("Reading Theme For Value: 'FrameBackgroundHoveredColor'", 1);
     Style.Colors[ImGuiCol_FrameBgHovered] = ReadColor("FrameBackgroundHoveredColor", ThemeNode);
 
-    Logger_->Log("Reading Theme For Value: 'FrameBackgroundActiveColor'", 1);
     Style.Colors[ImGuiCol_FrameBgActive] = ReadColor("FrameBackgroundActiveColor", ThemeNode);
 
-    Logger_->Log("Reading Theme For Value: 'TitleBackgroundColor'", 1);
     Style.Colors[ImGuiCol_TitleBg] = ReadColor("TitleBackgroundColor", ThemeNode);
 
-    Logger_->Log("Reading Theme For Value: 'TitleBackgroundCollapsedColor'", 1);
     Style.Colors[ImGuiCol_TitleBgCollapsed] = ReadColor("TitleBackgroundCollapsedColor", ThemeNode);
 
-    Logger_->Log("Reading Theme For Value: 'TitleBackgroundActiveColor'", 1);
     Style.Colors[ImGuiCol_TitleBgActive] = ReadColor("TitleBackgroundActiveColor", ThemeNode);
 
-    Logger_->Log("Reading Theme For Value: 'TitleBarColor'", 1);
     Style.Colors[ImGuiCol_MenuBarBg] = ReadColor("TitleBarColor", ThemeNode);
 
-    Logger_->Log("Reading Theme For Value: 'ScrollbarBackgroundColor'", 1);
     Style.Colors[ImGuiCol_ScrollbarBg] = ReadColor("ScrollbarBackgroundColor", ThemeNode);
 
     Logger_->Log("Reading Theme For Value: 'ScrollbarBackgroundColor'", 1);
