@@ -170,8 +170,8 @@ void ThemeManager::ApplyThemes(int ThemeID) {
     Logger_->Log("Reading Theme For Value: 'ScrollbarRounding'", 1);
     Style.ScrollbarRounding = ThemeNode["ScrollbarRounding"].as<float>();
 
-    Logger_->Log("Reading Theme For Value: 'FrameRounding'", 1);
-    Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
+    Logger_->Log("Reading Theme For Value: 'GrabRounding'", 1);
+    Style.GrabRounding = ThemeNode["GrabRounding"].as<float>();
 
     Logger_->Log("Reading Theme For Value: 'FrameRounding'", 1);
     Style.FrameRounding = ThemeNode["FrameRounding"].as<float>();
