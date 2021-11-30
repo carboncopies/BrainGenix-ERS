@@ -76,7 +76,7 @@ void GUISystem::UpdateGUI() {
     ImGui::NewFrame();
 
 
-
+    ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_DockingEnable;
     ImGui::DockSpaceOverViewport();
 
     // Setup Dockspace
