@@ -21,11 +21,11 @@ BorderShadowColor: [120, 9, 169, 255]
 
 FrameBackgroundColor:        [0, 0, 0, 255]
 FrameBackgroundHoveredColor: [0, 128, 175, 255]
-FrameBackgroundActiveColor:  [100, 0, 200, 255]
+FrameBackgroundActiveColor:  [0, 150, 50, 255]
 
-TitleBackgroundColor:          [50, 0, 100, 255]
-TitleBackgroundCollapsedColor: [75, 0, 150, 255]
-TitleBackgroundActiveColor:    [100, 0, 200, 255]
+TitleBackgroundColor:          [0, 100, 0, 255]
+TitleBackgroundCollapsedColor: [0, 75, 0, 255]
+TitleBackgroundActiveColor:    [0, 150, 0, 255]
 
 TitleBarColor: [0, 0, 0, 255]
 
