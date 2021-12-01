@@ -29,6 +29,14 @@ InputProcessor::~InputProcessor() {
 }
 
 
+// Process Mouse Scroll Input
+void InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
+
+    // Get Mouse Scroll Info
+    
+
+}
+
 // UpdateFramebuffer Function
 void InputProcessor::UpdateFramebuffer() {
 
@@ -61,7 +69,6 @@ void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
 
 }
 
-
 // Update Keyboard Input
 void InputProcessor::ProcessKeyboardInput(LoggerClass *Logger_, float DeltaTime, bool WindowCaptureEnabled) {
 
@@ -91,8 +98,6 @@ void InputProcessor::ProcessKeyboardInput(LoggerClass *Logger_, float DeltaTime,
     }
 
 }
-
-
 
 // Internal Callback Framebuffer
 void InputProcessor::FramebufferSizeCallback(int Width, int Height) {
@@ -132,7 +137,6 @@ void InputProcessor::MouseCallback(double XPos, double YPos) {
     Camera_->ProcessMouseMovement(XOffset, YOffset);
 
 }
-
 
 // Internal Callback ScrollCallback
 void InputProcessor::ScrollCallback(double YOffset) {

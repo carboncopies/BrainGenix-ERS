@@ -95,7 +95,15 @@ class InputProcessor {
          * @param WindowMouseCaptureEnabled 
          */
         void UpdateMouse(bool WindowMouseCaptureEnabled);
-        
+
+        /**
+         * @brief Processes mouse scroll wheel input.
+         * 
+         * @param CaptureEnabled 
+         */
+        void ProcessMouseScroll(bool CaptureEnabled);
+
+
         /**
          * @brief Process keyboard input
          * 
@@ -103,6 +111,7 @@ class InputProcessor {
          * @param DeltaTime 
          */
         void ProcessKeyboardInput(LoggerClass *Logger_, float DeltaTime, bool WindowCaptureEnabled);
+
 
 
 
