@@ -17,7 +17,8 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR})
 
 if (MSVC_IDE)
     # hack to get around the "Debug" and "Release" directories cmake tries to add on Windows
-    set_target_properties (${PROJECT_NAME} PROPERTIES PREFIX "../")
+    message("Disabling Seperate Debug/Release Directories In Visual Studio")
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_SOURCE_DIR}/bin>)
 endif()
 
 
