@@ -61,7 +61,7 @@ ScrollbarActiveColor:     [100, 50, 0, 255]
 CheckmarkColor: [200, 100, 0, 255]
 
 SliderGrabColor:       [200, 100, 0, 255]
-SliderGrabActiveColor: [100, 50, 0, 255]
+SliderGrabActiveColor: [150, 75, 0, 255]
 
 ButtonColor:        [0, 0, 0, 255]
 ButtonHoveredColor: [0, 128, 175, 255]
