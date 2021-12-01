@@ -31,4 +31,22 @@ ProjectLoader::~ProjectLoader() {
 
 }
 
+// Project Loader Struct
+ERS_PROJECT ProjectLoader::LoadProject(const char* FilePath) {
 
+    // Log Project Loading
+    Logger_->Log(std::string(std::string("Loading Project At Path: ") + std::string(FilePath)).c_str(), 4);
+
+    
+    // Load File
+    YAML::Node ProjectNode = YAML::LoadFile(FilePath);
+
+    // Create New Struct
+    ERS_PROJECT Project;
+
+
+    // Populate Struct
+    Project.
+    
+
+}

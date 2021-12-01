@@ -53,6 +53,13 @@ class ProjectLoader {
          */
         ~ProjectLoader();
 
+        /**
+         * @brief Load a project from a file path.
+         * 
+         * @param FilePath 
+         */
+        ERS_PROJECT LoadProject(const char* FilePath = "Assets/Project.yaml");
+
 
 
 
