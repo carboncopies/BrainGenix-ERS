@@ -7,6 +7,7 @@ bin/
 Build-Tools/
 Source/Shaders/SPIR-V/
 .vs/
+.vscode/
 
 # Prerequisites
 *.d
