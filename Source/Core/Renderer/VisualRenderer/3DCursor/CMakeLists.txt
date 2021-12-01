@@ -21,6 +21,7 @@ target_link_libraries(3DCursor
     glad
     glfw
     IMGUI
+    ImGuizmo
     )
 
 # Link Internal Libs

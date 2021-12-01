@@ -18,6 +18,9 @@
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 
+#include <ImGui.h>
+
+#include <ImGuizmo.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
