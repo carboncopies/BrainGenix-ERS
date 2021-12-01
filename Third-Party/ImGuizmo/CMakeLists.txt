@@ -2,10 +2,19 @@
 add_library(ImGuizmo
 
             # Add Source Files (.cpp)
-            CPPFiles
+            "GraphEditor.cpp"
+            "ImCurveEdit.cpp"
+            "ImGradient.cpp"
+            "ImGuizmo.cpp"
+            "ImSequencer.cpp"
 
             # Add Header Files (.h)
-            HeaderFiles
+            "GraphEditor.h"
+            "ImCurveEdit.h"
+            "ImGradient.h"
+            "ImGuizmo.h"
+            "ImSequencer.h"
+            "ImZoomSlider.h"
                 
             ${BACKWARD_ENABLE}
             )
