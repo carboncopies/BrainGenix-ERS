@@ -65,7 +65,7 @@ SliderGrabActiveColor: [150, 75, 0, 255]
 
 ButtonColor:        [60, 30, 0, 255]
 ButtonHoveredColor: [0, 128, 175, 255]
-ButtonActiveColor:  [0, 150, 50, 255]
+ButtonActiveColor:  [150, 75, 0, 255]
 
 HeaderColor:        [50, 0, 140, 255]
 HeaderHoveredColor: [0, 128, 175, 255]
