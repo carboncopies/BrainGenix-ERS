@@ -33,8 +33,9 @@ InputProcessor::~InputProcessor() {
 void InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
 
     // Get Mouse Scroll Info
-    float MouseScrollX = ImGui::GetScrollX();
-    float MouseScrollY = ImGui::GetScrollY();
+    float MouseScrollX = ImGui::GetIO().MouseWheel;
+    float MouseScrollY = ImGui::GetIO().MouseWheelH;
+
 
     std::cout<<MouseScrollX<<"|"<<MouseScrollY<<std::endl;
 
