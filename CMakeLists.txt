@@ -173,6 +173,7 @@ add_subdirectory(${SRC_DIR}/Core/Loader/ImageLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ModelLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/SceneLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ShaderLoader)
+add_subdirectory(${SRC_DIR}/Core/Loader/ProjectLoader)
 
 
 # COPY FILES TO BINARY DIR
