@@ -106,7 +106,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     InputProcessor->ProcessKeyboardInput(Logger_, DeltaTime, CaptureMouseCursor);
     InputProcessor->UpdateFramebuffer();
     InputProcessor->UpdateMouse(CaptureMouseCursor);
-    InputProcessor->
+    InputProcessor->ProcessMouseScroll(CaptureMouseCursor);
 
 
 

@@ -33,7 +33,16 @@ InputProcessor::~InputProcessor() {
 void InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
 
     // Get Mouse Scroll Info
-    
+    float MouseScrollX = ImGui::GetScrollX();
+    float MouseScrollY = ImGui::GetScrollY();
+
+    // If Input Processing Enabled
+    if (CaptureEnabled) {
+
+        // Pass To Callback
+        ScrollCallback(MouseScrollY);
+
+    }
 
 }
 
