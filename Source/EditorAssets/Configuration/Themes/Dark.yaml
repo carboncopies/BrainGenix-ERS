@@ -71,7 +71,7 @@ HeaderColor:        [40, 40, 40, 255]
 HeaderHoveredColor: [0, 95, 130, 255]
 HeaderActiveColor:  [0, 150, 50, 255]
 
-SeperatorColor: [75, 0, 75, 255]
+SeperatorColor: [75, 75, 75, 255]
 
 ResizeColor:        [100, 100, 100, 255]
 ResizeHoveredColor: [0, 255, 255, 255]
