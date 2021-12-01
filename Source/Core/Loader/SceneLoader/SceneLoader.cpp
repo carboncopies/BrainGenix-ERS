@@ -34,6 +34,14 @@ SceneLoader::~SceneLoader() {
 
 }
 
+// Load And Process Scene
+ERS_OBJECT_SCENE SceneLoader::ProcessScene(const char* ScenePath) {
+
+    // Load Then Process Scene
+    YAML::Node TestScene = YAML::LoadFile(ScenePath);
+    return ProcessScene(TestScene);
+
+}
 
 // SceneLoader Process Scene Function
 ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
