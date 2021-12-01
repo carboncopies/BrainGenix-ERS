@@ -159,6 +159,7 @@ add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/FontManager)
 add_subdirectory(${SRC_DIR}/Core/Renderer)
 add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer)
 add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer/Framebuffer)
+add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer/3DCursor)
 
 add_subdirectory(${SRC_DIR}/Core/Structures/Cameras/NoClip)
 add_subdirectory(${SRC_DIR}/Core/Structures/Meshes)
