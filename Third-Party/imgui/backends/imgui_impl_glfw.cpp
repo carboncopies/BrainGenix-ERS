@@ -50,11 +50,19 @@
 #include "imgui_impl_glfw.h"
 
 // GLFW
+#ifdef _WIN32
+#include <../glfw/include/GLFW/glfw3.h>
+#else
 #include <GLFW/glfw3.h>
+#endif
 #ifdef _WIN32
 #undef APIENTRY
 #define GLFW_EXPOSE_NATIVE_WIN32
-#include <GLFW/glfw3native.h>   // for glfwGetWin32Window
+    #ifdef _WIN32
+    #include <../glfw/include/GLFW/glfw3native.h> // for glfwGetWin32Window
+    #else
+    #include <GLFW/glfw3native.h>
+    #endif
 #endif
 #define GLFW_HAS_WINDOW_TOPMOST       (GLFW_VERSION_MAJOR * 1000 + GLFW_VERSION_MINOR * 100 >= 3200) // 3.2+ GLFW_FLOATING
 #define GLFW_HAS_WINDOW_HOVERED       (GLFW_VERSION_MAJOR * 1000 + GLFW_VERSION_MINOR * 100 >= 3300) // 3.3+ GLFW_HOVERED
