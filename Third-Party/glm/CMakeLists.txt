@@ -4,7 +4,11 @@ if (NOT CMAKE_VERSION VERSION_LESS "3.1")
 	cmake_policy(SET CMP0054 NEW)
 endif()
 
-project(glm)
+cmake_policy(SET CMP0048 NEW)
+project(
+	glm
+	VERSION "0.9.8"
+	)
 set(GLM_VERSION "0.9.8")
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
