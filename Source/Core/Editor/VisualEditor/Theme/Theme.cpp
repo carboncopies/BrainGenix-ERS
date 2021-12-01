@@ -28,7 +28,7 @@ ThemeManager::ThemeManager(LoggerClass *Logger, const char* ThemePath) {
     // Default To Dark Mode
     int Index;
     for (Index = 0; Index < ThemeNames_.size(); Index++) {
-        if (ThemeNames_[Index] == "High Contrast Dark") {
+        if (ThemeNames_[Index] == "Dark") {
             break;
         }
     }
