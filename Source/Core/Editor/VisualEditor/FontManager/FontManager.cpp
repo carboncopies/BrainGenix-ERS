@@ -46,6 +46,10 @@ bool FontManager::EndsWith(const std::string& Input, const std::string& Ending) 
 // Index Fonts Function
 void FontManager::IndexFonts() {
 
+    // Clear Vectors
+    FontPathList_.clear();
+    FontNameList_.clear();
+
     // Log Indexing
     Logger_->Log(std::string(std::string("Indexing Fonts In Dir: ") + std::string(FontsDirectoryPath_)).c_str(), 4);
 
