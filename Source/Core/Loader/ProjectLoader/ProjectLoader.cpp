@@ -13,11 +13,10 @@
 
 
 // Constructor
-ProjectLoader::ProjectLoader(LoggerClass *Logger, TextureLoader *TexLoader) {
+ProjectLoader::ProjectLoader(LoggerClass *Logger) {
 
     // Create Local Pointer
     Logger_ = Logger;
-    TextureLoader_ = TexLoader;
 
     // Log Initialization
     Logger_->Log("Initializing Project Loader", 5);
