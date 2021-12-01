@@ -67,11 +67,11 @@ ButtonColor:        [60, 30, 0, 255]
 ButtonHoveredColor: [0, 128, 175, 255]
 ButtonActiveColor:  [150, 75, 0, 255]
 
-HeaderColor:        [50, 0, 140, 255]
-HeaderHoveredColor: [0, 128, 175, 255]
+HeaderColor:        [40, 40, 40, 255]
+HeaderHoveredColor: [0, 95, 130, 255]
 HeaderActiveColor:  [0, 150, 50, 255]
 
-SeperatorColor: [100, 0, 255, 255]
+SeperatorColor: [75, 0, 75, 255]
 
 ResizeColor:        [100, 0, 200, 255]
 ResizeHoveredColor: [0, 255, 255, 255]
