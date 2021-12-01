@@ -46,7 +46,13 @@ ERS_PROJECT ProjectLoader::LoadProject(const char* FilePath) {
 
 
     // Populate Struct
-    Project.
+    Project.ProjectName = ProjectNode["ProjectName"].as<std::string>();
+    Project.VersionMajor = ProjectNode["VersionMajor"].as<int>();
+    Project.VersionMinor = ProjectNode["VersionMinor"].as<int>();
+    Project.VersionPatch = ProjectNode["VersionPatch"].as<int>();
     
+
+    // Return Struct When Populated
+    return Project;
 
 }
