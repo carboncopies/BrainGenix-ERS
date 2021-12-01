@@ -16,10 +16,10 @@ add_library(ImGuizmo
             )
 
 # Link 3rd Party Libs
-target_link_libraries(3DCursor
+target_link_libraries(ImGuizmo
 
     IMGUI
     )
 
 
-target_include_directories(3DCursor PUBLIC ./)
+target_include_directories(ImGuizmo PUBLIC ./)

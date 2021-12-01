@@ -41,6 +41,8 @@ include_directories(${LIB_DIR}/glm)
 # Add DearImGUI Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/imgui)
 
+# Add ImGuizmo Library (Not Header Only)
+add_subdirectory(${LIB_DIR}/ImGuizmo)
 
 # Add GLFW Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/glfw)
