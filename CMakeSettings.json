@@ -14,7 +14,7 @@
     {
       "name": "x64-Release",
       "generator": "Visual Studio 16 2019 Win64",
-      "configurationType": "RelWithDebInfo",
+      "configurationType": "MinSizeRel",
       "buildRoot": "${projectDir}\\out\\build\\${name}",
       "installRoot": "${projectDir}/Binaries/",
       "cmakeCommandArgs": "",
