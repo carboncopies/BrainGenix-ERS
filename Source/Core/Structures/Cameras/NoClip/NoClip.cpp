@@ -68,7 +68,7 @@ void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseMovement(float XOffset, float YOffset
 void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseScroll(float YOffset) {
 
     // Update Movement Speed
-    MovementSpeed += ((float)YOffset/5.0f);
+    MovementSpeed += (MovementSpeed*(float)YOffset/10.0f);
 
     // Adjust Movement Speed
     if (MovementSpeed < MinMovementSpeed)
