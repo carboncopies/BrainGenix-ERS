@@ -1,8 +1,3 @@
-# Get Source Files
-file(GLOB CPPFiles *.cpp)
-file(GLOB HeaderFiles *.h)
-
-
 # Create Library (Name Should Be Parent Dir Name)
 add_library(ImGuizmo
 
