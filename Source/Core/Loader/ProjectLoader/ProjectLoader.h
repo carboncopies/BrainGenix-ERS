@@ -50,7 +50,7 @@ class ProjectLoader {
          * @brief 
          * 
          */
-        ~ProjectLoader}();
+        ~ProjectLoader();
 
 
 
