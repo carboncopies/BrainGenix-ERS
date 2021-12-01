@@ -67,17 +67,17 @@ void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseMovement(float XOffset, float YOffset
 
 void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseScroll(float YOffset) {
 
-    // Update Zoom
-    Zoom -= (float)YOffset;
+    // Update Movement Speed
+    MovementSpeed -= (float)YOffset;
 
-    // Bound Zoom
-    if (Zoom < MinZoom)
-        Zoom = MinZoom;
-    if (Zoom > MaxZoom)
-        Zoom = MaxZoom;
+    // Adjust Movement Speed
+    if (MovementSpeed < MinMovementSpeed)
+        MovementSpeed = MinMovementSpeed;
+    if (MovementSpeed > MaxMovementSpeed)
+        MovementSpeed = MaxMovementSpeed;
 
     // Update Vectors
-    UpdateCameraVectors();
+    //UpdateCameraVectors();
 
 
 }

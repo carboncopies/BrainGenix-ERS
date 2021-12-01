@@ -63,6 +63,10 @@ class ERS_OBJECT_CAMERA_NOCLIP {
         float MouseSensitivity;
         float Zoom;
 
+        // Config Params
+        float MinMovementSpeed = 0.0f;
+        float MaxMovementSpeed = 20.0f;
+
         // Constructor With Vectors
         ERS_OBJECT_CAMERA_NOCLIP(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f), float Yaw = DefaultYaw, float Pitch = DefaultPitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(DefaultSpeed), MouseSensitivity(DefaultSensitivity), Zoom(DefaultZoom) {
             

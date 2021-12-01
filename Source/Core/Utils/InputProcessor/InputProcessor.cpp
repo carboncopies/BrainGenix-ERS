@@ -36,14 +36,13 @@ void InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
     float MouseScrollX = ImGui::GetIO().MouseWheel;
     float MouseScrollY = ImGui::GetIO().MouseWheelH;
 
-
     std::cout<<MouseScrollX<<"|"<<MouseScrollY<<std::endl;
 
     // If Input Processing Enabled
     if (CaptureEnabled) {
 
         // Pass To Callback
-        ScrollCallback(MouseScrollY);
+        ScrollCallback(MouseScrollX);
 
     }
 
