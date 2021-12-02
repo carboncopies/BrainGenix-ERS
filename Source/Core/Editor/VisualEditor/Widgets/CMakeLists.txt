@@ -25,6 +25,7 @@ target_link_libraries(Widgets
     glad
     glfw
     IMGUI
+    ImPlot
     )
 
 # Link Internal Libs

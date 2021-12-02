@@ -18,6 +18,7 @@
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <imgui.h>
+#include <implot.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 
