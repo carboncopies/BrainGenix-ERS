@@ -148,7 +148,7 @@ void GUISystem::UpdateGUI() {
             }
 
             
-            ImGui::EndMenu();
+        ImGui::EndMenu();
         }
 
         // View Menu
@@ -187,7 +187,7 @@ void GUISystem::UpdateGUI() {
             ImGui::EndMenu();
         }
 
-        ImGui::EndMainMenuBar();
+    ImGui::EndMainMenuBar();
     }
 
 
