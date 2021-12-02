@@ -164,7 +164,7 @@ void GUISystem::UpdateGUI() {
             }
 
 
-            ImGui::EndMenu();
+        ImGui::EndMenu();
         }
 
         // Window Menu
@@ -174,11 +174,11 @@ void GUISystem::UpdateGUI() {
             if (ImGui::BeginMenu("Widgets")) {
 
                 // Enable/Disable Widgets
-                static bool foo;
-                ImGui::Checkbox("Framerate Counter", &foo);
-                ImGui::Checkbox("Global Viewport Settings", &foo);
+                ImGui::Checkbox("Framerate Counter", &ShowWidgetFramerateCounter_);
+                ImGui::Checkbox("Global Viewport Settings", &ShowWidgetViewportSettings_);
 
-                ImGui::EndMenu();
+
+            ImGui::EndMenu();
             }
 
 
