@@ -53,6 +53,10 @@ add_subdirectory(${LIB_DIR}/imgui)
 # Add ImGuizmo Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/ImGuizmo)
 
+# Add ImPlot Library (Not Header Only)
+add_subdirectory(${LIB_DIR}/implot)
+
+
 # Add GLFW Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/glfw)
 disable_target_warnings(glfw)
