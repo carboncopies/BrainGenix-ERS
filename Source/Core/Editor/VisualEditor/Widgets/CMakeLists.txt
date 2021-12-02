@@ -6,8 +6,12 @@
 # Create Library (Name Should Be Parent Dir Name)
 add_library(Widgets
 
-            # Add Source Files (.hpp)
-            "GUI_Widget_FramerateCounter.hpp"
+            # Add Source Files (.cpp)
+            "GUI_Widget_FramerateCounter.cpp"
+
+            # Add Header Files (.h)
+            "GUI_Widget_FramerateCounter.h"
+
 
             ${BACKWARD_ENABLE}
             )
