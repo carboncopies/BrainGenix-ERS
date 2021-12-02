@@ -8,10 +8,12 @@ add_library(Widgets
 
             # Add Source Files (.cpp)
             "GUI_Widget_FramerateCounter.cpp"
+            "GUI_Widget_FramerateHistogram.cpp"
             "GUI_Widget_RenderingSettings.cpp"
 
             # Add Header Files (.h)
             "GUI_Widget_FramerateCounter.h"
+            "GUI_Widget_FramerateHistogram.h"
             "GUI_Widget_RenderingSettings.h"
 
 
