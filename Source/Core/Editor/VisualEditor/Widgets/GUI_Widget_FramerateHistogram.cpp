@@ -19,7 +19,7 @@ void Widget_FramerateHistogram::Draw() {
     FramerateHistory_.push_back(ImGui::GetIO().Framerate);
     
     std::cout<<HistoryLength_ - FramerateHistory_.size()<<std::endl;
-    std::cout<<FramerateHistory_.size()<<std:endl;
+    std::cout<<FramerateHistory_.size()<<std::endl;
 
     // Cap Array Length At Target Set
     if (FramerateHistory_.size() > HistoryLength_+1) {
