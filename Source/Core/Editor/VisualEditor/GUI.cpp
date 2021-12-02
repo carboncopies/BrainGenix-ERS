@@ -26,6 +26,7 @@ GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShould
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
+    ImPlot::CreateContext();
     //ImGuiIO& io = ImGui::GetIO(); (void)io;
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
@@ -54,6 +55,7 @@ GUISystem::~GUISystem() {
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
+    ImPlot::DestroyContext();
 
 }
 

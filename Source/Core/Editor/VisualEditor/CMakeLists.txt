@@ -22,6 +22,7 @@ target_link_libraries(VisualEditor
     glad
     glfw
     IMGUI
+    ImPlot
     )
 
 # Link Internal Libs
