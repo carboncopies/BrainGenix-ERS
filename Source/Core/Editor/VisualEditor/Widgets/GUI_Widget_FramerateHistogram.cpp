@@ -13,11 +13,11 @@
 
 
 // Define Draw Function
-void Widget_FramerateCounter::Draw() {
+void Widget_FramerateHistogram::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {
-        ImGui::Begin("Framerate Counter", &Enabled_);
+        ImGui::Begin("Framerate Histogram", &Enabled_);
 
             // FPS Counter
             ImGui::Text("System Framerate %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);

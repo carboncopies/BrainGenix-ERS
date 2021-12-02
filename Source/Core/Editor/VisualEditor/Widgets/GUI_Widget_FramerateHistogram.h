@@ -26,6 +26,8 @@
  */
 class Widget_FramerateHistogram {
 
+
+
     public:
 
         // Show/Hide Var
