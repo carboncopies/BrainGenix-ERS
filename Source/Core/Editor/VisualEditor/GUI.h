@@ -31,6 +31,8 @@
 
 #include <GUI_Widget_FramerateCounter.h>
 #include <GUI_Widget_RenderingSettings.h>
+#include <GUI_Widget_FramerateHistogram.h>
+
 
 /**
  * @brief Implements the ERS gui system.
@@ -65,6 +67,7 @@ class GUISystem {
 
         // Instantiate Widgets here
         Widget_FramerateCounter Widget_FramerateCounter_; /**<Widget Instance*/
+        Widget_FramerateHistogram Widget_FramerateHistogram_; /**<Widget Instance*/
         Widget_RenderingSettings Widget_RenderingSettings_; /**<Widget Instance*/
 
 
