@@ -18,18 +18,20 @@ void Widget_FramerateHistogram::Draw() {
     // Push Back Current Framerate To Vector
     FramerateHistory_.push_back(ImGui::GetIO().Framerate);
     
-    std::cout<<HistoryLength_ - FramerateHistory_.size()<<std::endl;
-    std::cout<<FramerateHistory_.size()<<std::endl;
+    std::cout<<"Delta"<<HistoryLength_ - FramerateHistory_.size()<<std::endl;
+    std::cout<<"CurrentSize"<<FramerateHistory_.size()<<std::endl;
 
     // Cap Array Length At Target Set
-    if (FramerateHistory_.size() > HistoryLength_+1) {
+    if (FramerateHistory_.size() > HistoryLength_) {
         FramerateHistory_.erase(FramerateHistory_.begin());
     } else {
 
         // Fill With Zeros
-        for (int i = 0; i < HistoryLength_ - FramerateHistory_.size(); i++) {
+        for (signed int i = 0; i < HistoryLength_ - FramerateHistory_.size(); i++) {
             FramerateHistory_.push_back(0.0f);
         }
+
+        std::cout<<"UpdateSize"<<FramerateHistory_.size()<<std::endl;
 
     }
 
