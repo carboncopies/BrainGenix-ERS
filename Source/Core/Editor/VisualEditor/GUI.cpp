@@ -137,7 +137,7 @@ void GUISystem::UpdateGUI() {
             if (ImGui::BeginMenu("Widgets")) {
 
                 // Enable/Disable Widgets
-                ImGui::Checkbox("Framerate Counter", &ShowWidgetFramerateCounter_);
+                ImGui::Checkbox("Framerate Counter", &Widget_FramerateCounter_.);
                 ImGui::Checkbox("Global Viewport Settings", &ShowWidgetViewportSettings_);
 
 

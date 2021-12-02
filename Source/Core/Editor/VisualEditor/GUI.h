@@ -68,6 +68,10 @@ class GUISystem {
 
         ThemeManager* ThemeManager_; /**<Pointer To ThemeManager Instance*/
 
+        // Instantiate Widgets here
+        Widget_FramerateCounter Widget_FramerateCounter_; /**<Instantiate Framerate Widget*/
+
+
         /**
          * @brief Construct a new Gui System object
          * 

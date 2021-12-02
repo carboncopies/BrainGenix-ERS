@@ -26,11 +26,11 @@
  */
 class Widget_FramerateCounter {
 
-    private:
+    public:
 
+        // Show/Hide Var
         bool Enabled_ = false; /**<Show/Hide Widget*/
 
-    public:
 
         /**
          * @brief Function that draws the window, should internally check if enable variable is set to true.
