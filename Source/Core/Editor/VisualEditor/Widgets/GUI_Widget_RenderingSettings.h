@@ -33,7 +33,7 @@ class Widget_RenderingSettings {
     public:
 
         // Show/Hide Var
-        bool Enabled_ = false; /**<Show/Hide Widget*/
+        bool Enabled_ = true; /**<Show/Hide Widget*/
 
 
         /**
