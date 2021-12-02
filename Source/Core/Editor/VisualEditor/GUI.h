@@ -30,7 +30,7 @@
 #include <Theme.h>
 
 #include <GUI_Widget_FramerateCounter.h>
-
+#include <GUI_Widget_RenderingSettings.h>
 
 /**
  * @brief Implements the ERS gui system.
