@@ -26,7 +26,7 @@ void Widget_FramerateHistogram::Draw() {
         ImGui::Begin("Framerate Histogram", &Enabled_);
 
             // Histogram
-            ImGui::PlotHistogram("Framerate", (const float*)FramerateHistory_.data(), FramerateHistory_.size());
+            ImGui::PlotHistogram("Framerate", (const float*)FramerateHistory_.data(), FramerateHistory_.size(), HistoryLength_, 0, NULL, -1.0f, -1.0f, ImVec2(400.0f, 250.0f));
 
         // End System Info Window
         ImGui::End();
