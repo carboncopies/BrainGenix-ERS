@@ -17,14 +17,30 @@ void Widget_FramerateCounter::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {
-        ImGui::Begin("System Info", &Enabled_);
+        ImGui::Begin("System Controls", &Enabled_);
 
-            // FPS Counter
-            ImGui::Text("System Framerate %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
-        // End System Info Window
+            // Wireframe Rendering Mode
+            static bool OpenGLDrawLines = false;
+            ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines);
+            ImGui::NewLine();
+            if (OpenGLDrawLines) {
+                glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+            } else {
+                glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+            }
+
+
+            // Rendering Background Clear Color
+            static ImVec4 ClearColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+            ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor);
+            ImGui::NewLine();
+            glClearColor(ClearColor.x, ClearColor.y, ClearColor.z, ClearColor.w);
+
+
+
+        // End System Controls Window
         ImGui::End();
-        
 
     }
 

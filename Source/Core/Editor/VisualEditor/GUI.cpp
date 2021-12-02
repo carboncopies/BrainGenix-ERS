@@ -163,39 +163,6 @@ void GUISystem::UpdateGUI() {
 
 }
 
-void GUISystem::UpdateWindow_ShowViewportSettings() {
-
-    // Begin Window
-    if (ShowWidgetViewportSettings_) {
-        ImGui::Begin("System Controls", &ShowWidgetViewportSettings_);
-
-
-            // Wireframe Rendering Mode
-            static bool OpenGLDrawLines = false;
-            ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines);
-            ImGui::NewLine();
-            if (OpenGLDrawLines) {
-                glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-            } else {
-                glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-            }
-
-
-            // Rendering Background Clear Color
-            static ImVec4 ClearColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
-            ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor);
-            ImGui::NewLine();
-            glClearColor(ClearColor.x, ClearColor.y, ClearColor.z, ClearColor.w);
-
-
-
-        // End System Controls Window
-        ImGui::End();
-
-    }
-
-
-}
 
 
 //FIXME: MOVE MENU UPDATE FUNCTION OUT OF GUP INTO THIS FUNCTION!!!!
