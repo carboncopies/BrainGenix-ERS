@@ -100,6 +100,8 @@ void GUISystem::UpdateGUI() {
     Widget_FramerateCounter_.Draw();
     Widget_RenderingSettings_.Draw();
     Widget_FramerateHistogram_.Draw();
+    Widget_FramerateGraph_.Draw();
+    Widget_FrameratePlot_.Draw();
 
     FontManager_->FontSelectorWindow(&ShowFontPicker_);
 
@@ -144,6 +146,8 @@ void GUISystem::UpdateGUI() {
                 // Enable/Disable Widgets
                 ImGui::Checkbox("Framerate Counter", &Widget_FramerateCounter_.Enabled_);
                 ImGui::Checkbox("Framerate Histogram", &Widget_FramerateHistogram_.Enabled_);
+                ImGui::Checkbox("Framerate Graph", &Widget_FramerateGraph_.Enabled_);
+                ImGui::Checkbox("Framerate Plot", &Widget_FrameratePlot_.Enabled_);
                 ImGui::Checkbox("Global Viewport Settings", &Widget_RenderingSettings_.Enabled_);
 
 
