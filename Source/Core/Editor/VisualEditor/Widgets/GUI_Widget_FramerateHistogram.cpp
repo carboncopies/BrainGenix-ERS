@@ -25,11 +25,11 @@ void Widget_FramerateHistogram::Draw() {
         FramerateHistory_.erase(FramerateHistory_.begin());
 
         // If Still Longer (User Reduced Length)
-        if (FramerateHistory_.size() != HistoryLength_) {
-            for (int i = 0; i < FramerateHistory_.size()-HistoryLength_; i++) {
-                FramerateHistory_.erase(FramerateHistory_.begin());
-            }
-        }
+        // if (FramerateHistory_.size() != HistoryLength_) {
+        //     for (int i = 0; i < FramerateHistory_.size()-HistoryLength_; i++) {
+        //         FramerateHistory_.erase(FramerateHistory_.begin());
+        //     }
+        // }
     }
 
     // If Window Drawing Enabled
@@ -44,7 +44,7 @@ void Widget_FramerateHistogram::Draw() {
             ImGui::PlotHistogram("Framerate", (const float*)FramerateHistory_.data(), FramerateHistory_.size(), -1, NULL, -1.0f, 100.0f, GraphSize);
 
             // Sample Counter
-            ImGui::DragInt("Number Of Samples", &HistoryLength_, 1.0f, 100, 100000);
+            //ImGui::DragInt("Number Of Samples", &HistoryLength_, 1.0f, 100, 100000);
 
         // End System Info Window
         ImGui::End();
