@@ -37,6 +37,9 @@ void Widget_FrameratePlot::Draw() {
     if (Enabled_) {
         ImGui::Begin("Framerate Plot", &Enabled_);
 
+            // Set Initial Window Size
+            ImGui::SetWindowSize(ImVec2(0,0), ImGuiCond_FirstUseEver);
+
             // Get Window Size (To Size Graph)
             ImVec2 WindowSize = ImGui::GetContentRegionAvail();
             ImVec2 GraphSize = ImVec2(WindowSize.x, WindowSize.y);
