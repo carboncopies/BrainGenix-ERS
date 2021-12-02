@@ -23,10 +23,10 @@
 
 
 /**
- * @brief Create GUI Widget "Framerate Histogram"
+ * @brief Create GUI Widget "Framerate Plot"
  * 
  */
-class Widget_FramerateHistogram {
+class Widget_FrameratePlot {
 
     private:
 
