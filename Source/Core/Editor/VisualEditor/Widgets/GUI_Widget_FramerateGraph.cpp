@@ -37,12 +37,16 @@ void Widget_FramerateGraph::Draw() {
     if (Enabled_) {
         ImGui::Begin("Framerate Graph", &Enabled_);
 
+            // Set Initial Window Size
+            ImGui::SetWindowSize(ImVec2(0,0), ImGuiCond_FirstUseEver);
+
             // Get Window Size (To Size Graph)
             ImVec2 WindowSize = ImGui::GetContentRegionAvail();
             ImVec2 GraphSize = ImVec2(WindowSize.x, WindowSize.y);
 
             // Graph
-            ImPlot::BeginPlot("Framerate Graph");
+            ImPlot::BeginPlot("Framerate Graph", GraphSize);
+            ImPlot::SetNextAxesToFit();
             ImPlot::PlotLine("Framerate", (const float*)FramerateHistory_.data(), FramerateHistory_.size());
             ImPlot::EndPlot();
 
