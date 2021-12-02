@@ -59,6 +59,9 @@ class GUISystem {
 
         // Update Window Functions
         void UpdateWindow_ColorThemePicker(); /**<Updates Color Theme Picker Window*/
+        void UpdateWindow_ShowFramerateCounter(); /**<Updates The Framerate Counter*/
+        void UpdateWindow_ShowViewportSettings(); /**<Updates the Viewport Settings*/
+
 
     public:
 
