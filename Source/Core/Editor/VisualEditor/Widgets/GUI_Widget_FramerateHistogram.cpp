@@ -36,8 +36,12 @@ void Widget_FramerateHistogram::Draw() {
     if (Enabled_) {
         ImGui::Begin("Framerate Histogram", &Enabled_);
 
+            // Get Window Size (To Size Graph)
+            ImVec2 WindowSize = ImGui::GetContentRegionAvail();
+            ImVec2 GraphSize = (WindowSize.x, WindowSize.y);
+
             // Histogram
-            ImGui::PlotHistogram("Framerate", (const float*)FramerateHistory_.data(), FramerateHistory_.size(), -1, NULL, -1.0f, 100.0f, ImGui::GetWindowSize());
+            ImGui::PlotHistogram("Framerate", (const float*)FramerateHistory_.data(), FramerateHistory_.size(), -1, NULL, -1.0f, 100.0f, );
 
             // Sample Counter
             ImGui::DragInt("Number Of Samples", &HistoryLength_, 1.0f, 100, 100000);
