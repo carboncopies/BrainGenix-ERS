@@ -15,16 +15,20 @@
 // Standard Libraries (BG convention: use <> instead of "")
 
 // Third-Party Libraries (BG convention: use <> instead of "")
+#include <glad/glad.h>
+
+#include <GLFW/glfw3.h>
+
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 
 
 /**
- * @brief Create GUI Widget "Framerate Counter"
+ * @brief Create GUI Widget "Rendering Settings"
  * 
  */
-class Widget_FramerateCounter {
+class Widget_RenderingSettings {
 
     public:
 

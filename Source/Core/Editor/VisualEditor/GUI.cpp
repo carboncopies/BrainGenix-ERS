@@ -93,7 +93,6 @@ void GUISystem::UpdateGUI() {
 
     // Update Windows
     UpdateWindow_ColorThemePicker();
-    UpdateWindow_ShowViewportSettings();
 
     // Update Widgets
     Widget_FramerateCounter_.Draw();
