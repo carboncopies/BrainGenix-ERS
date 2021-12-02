@@ -21,10 +21,10 @@
 
 
 /**
- * @brief Create GUI Widget "Framerate Counter"
+ * @brief Create GUI Widget "Framerate Histogram"
  * 
  */
-class Widget_FramerateCounter {
+class Widget_FramerateHistogram {
 
     public:
 
