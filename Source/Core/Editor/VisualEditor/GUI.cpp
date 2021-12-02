@@ -193,14 +193,17 @@ void GUISystem::UpdateGUI() {
 
 void GUISystem::UpdateWindow_ShowFramerateCounter() {
 
-    // Begin Window
-    if (ImGui::Begin("System Info", &ShowWidgetFramerateCounter_)) {
+    // If Window Drawing Enabled
+    if (ShowWidgetFramerateCounter_) {
+        ImGui::Begin("System Info", &ShowWidgetFramerateCounter_);
 
-        // FPS Counter
-        ImGui::Text("System Framerate %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+            // FPS Counter
+            ImGui::Text("System Framerate %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
-    // End System Info Window
-    ImGui::End();
+        // End System Info Window
+        ImGui::End();
+        
+
     }
 
 }
