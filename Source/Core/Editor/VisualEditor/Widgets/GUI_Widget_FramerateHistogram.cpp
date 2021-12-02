@@ -17,6 +17,7 @@ void Widget_FramerateHistogram::Draw() {
 
     // Push Back Current Framerate To Vector
     FramerateHistory_.push_back(ImGui::GetIO().Framerate);
+    std::cout<<FramerateHistory_.size()<<std::endl;
     if (FramerateHistory_.size() > HistoryLength_ - 1) {
         FramerateHistory_.erase(FramerateHistory_.begin());
     }
