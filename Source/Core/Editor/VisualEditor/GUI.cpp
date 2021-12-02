@@ -171,7 +171,17 @@ void GUISystem::UpdateGUI() {
         if (ImGui::BeginMenu("Menu")) {
 
             // Add Widgets Menu
-            //if ImGui::
+            if (ImGui::BeginMenu("Widgets")) {
+
+                // Enable/Disable Widgets
+                static bool foo;
+                ImGui::Checkbox("Framerate Counter", &foo);
+
+                ImGui::EndMenu();
+            }
+
+
+
 
             ImGui::EndMenu();
         }
