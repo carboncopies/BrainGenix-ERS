@@ -21,10 +21,10 @@
 
 
 /**
- * @brief Create GUI Widget (ENTER NAME HERE!)
+ * @brief Create GUI Widget "Framerate Counter"
  * 
  */
-class Widget {
+class Widget_FramerateCounter {
 
     private:
 

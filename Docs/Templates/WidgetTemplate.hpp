@@ -24,7 +24,7 @@
  * @brief Create GUI Widget (ENTER NAME HERE!)
  * 
  */
-class Widget {
+class Widget_NAMEHERE {
 
     private:
 
