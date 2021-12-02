@@ -9,11 +9,11 @@
     Date Created: 2021-12-02
 */
 
-#include <GUI_Widget_FramerateCounter.h>
+#include <GUI_Widget_RenderingSettings.h>
 
 
 // Define Draw Function
-void Widget_FramerateCounter::Draw() {
+void Widget_RenderingSettings::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {
