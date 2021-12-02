@@ -29,8 +29,8 @@ class Widget_FramerateHistogram {
 
     private:
 
-        std::vector<float> FramerateHistory_; /**<Vector To Store Framerate histories*/
-        int HistoryLength_; /**<Set Framerate History Length*/
+        std::vector<float> FramerateHistory_; /**<Vector To Store Framerate histories*/ 
+        int HistoryLength_ = 1000; /**<Set Framerate History Length*/
 
     public:
 

@@ -15,12 +15,18 @@
 // Define Draw Function
 void Widget_FramerateHistogram::Draw() {
 
+    // Push Back Current Framerate To Vector
+    FramerateHistory_.push_back(ImGui::GetIO().Framerate);
+    if (FramerateHistory_.size() > HistoryLength_ - 1) {
+        FramerateHistory_.erase(FramerateHistory_.begin());
+    }
+
     // If Window Drawing Enabled
     if (Enabled_) {
         ImGui::Begin("Framerate Histogram", &Enabled_);
 
-            // FPS Counter
-            ImGui::Text("System Framerate %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+            // Histogram
+            ImGui::PlotHistogram("Framerate", FramerateHistory_.data(), IM_ARRAYSIZE(FramerateHistory_.data()), 0, NULL, 0.0f, ImVec2(0, 80.0f));
 
         // End System Info Window
         ImGui::End();
