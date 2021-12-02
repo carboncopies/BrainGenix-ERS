@@ -42,7 +42,7 @@ void Widget_FrameratePlot::Draw() {
             ImVec2 GraphSize = ImVec2(WindowSize.x, WindowSize.y);
 
             // Plot
-            ImGui::PlotLine("Framerate", (const float*)FramerateHistory_.data(), FramerateHistory_.size(), -1, NULL, -1.0f, 100.0f, GraphSize);
+            ImGui::PlotLines("Framerate", (const float*)FramerateHistory_.data(), FramerateHistory_.size(), -1, NULL, -1.0f, 100.0f, GraphSize);
 
         // End System Info Window
         ImGui::End();
