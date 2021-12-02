@@ -140,32 +140,41 @@ void GUISystem::UpdateGUI() {
     // Add Main Menu
     if (ImGui::BeginMainMenuBar()) {
 
-        // Add File Menu
+        // File Menu
         if (ImGui::BeginMenu("File")) {
 
-                if (ImGui::MenuItem("Exit")) {
-                    MenuExitFunction();
-                }
+            if (ImGui::MenuItem("Exit")) {
+                MenuExitFunction();
+            }
 
             
             ImGui::EndMenu();
         }
 
+        // View Menu
         if (ImGui::BeginMenu("View")) {
 
 
-                if (ImGui::MenuItem("Color Theme")) {
-                    ShowColorThemePicker_ = true;
-                }
+            if (ImGui::MenuItem("Color Theme")) {
+                ShowColorThemePicker_ = true;
+            }
 
-                if (ImGui::MenuItem("System Font")) {
-                    ShowFontPicker_ = true;
-                }
+            if (ImGui::MenuItem("System Font")) {
+                ShowFontPicker_ = true;
+            }
 
 
             ImGui::EndMenu();
         }
 
+        // Window Menu
+        if (ImGui::BeginMenu("Menu")) {
+
+            // Add Widgets Menu
+            //if ImGui::
+
+            ImGui::EndMenu();
+        }
 
         ImGui::EndMainMenuBar();
     }
