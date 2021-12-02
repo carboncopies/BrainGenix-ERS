@@ -55,12 +55,10 @@ class GUISystem {
         bool ShowFontPicker_ = false; /**<Control Varaible to show/hide font picker window*/
 
         // Widget Show/Hide Vars
-        bool ShowWidgetFramerateCounter_ = false; /**<Widget Show/Hide Control Varaible*/
         bool ShowWidgetViewportSettings_ = false; /**<Widget Show/Hide Control Varaible*/
 
         // Update Window Functions
         void UpdateWindow_ColorThemePicker(); /**<Updates Color Theme Picker Window*/
-        void UpdateWindow_ShowFramerateCounter(); /**<Updates The Framerate Counter*/
         void UpdateWindow_ShowViewportSettings(); /**<Updates the Viewport Settings*/
 
 

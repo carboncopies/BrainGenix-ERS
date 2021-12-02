@@ -197,22 +197,6 @@ void GUISystem::UpdateWindow_ShowViewportSettings() {
 
 }
 
-void GUISystem::UpdateWindow_ShowFramerateCounter() {
-
-    // If Window Drawing Enabled
-    if (ShowWidgetFramerateCounter_) {
-        ImGui::Begin("System Info", &ShowWidgetFramerateCounter_);
-
-            // FPS Counter
-            ImGui::Text("System Framerate %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-
-        // End System Info Window
-        ImGui::End();
-        
-
-    }
-
-}
 
 //FIXME: MOVE MENU UPDATE FUNCTION OUT OF GUP INTO THIS FUNCTION!!!!
 void GUISystem::UpdateWindow_ColorThemePicker() {
