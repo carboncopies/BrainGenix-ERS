@@ -127,6 +127,7 @@ void GUISystem::UpdateGUI() {
 
     // Update Windows
     UpdateWindow_ColorThemePicker();
+    UpdateWindow_ShowFramerateCounter();
     FontManager_->FontSelectorWindow(&ShowFontPicker_);
 
 
