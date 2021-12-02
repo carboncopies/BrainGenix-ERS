@@ -54,12 +54,9 @@ class GUISystem {
         bool ShowColorThemePicker_ = false; /**<Control Variable indicating weither to show/hide the color theme picker*/
         bool ShowFontPicker_ = false; /**<Control Varaible to show/hide font picker window*/
 
-        // Widget Show/Hide Vars
-        bool ShowWidgetViewportSettings_ = false; /**<Widget Show/Hide Control Varaible*/
 
         // Update Window Functions
         void UpdateWindow_ColorThemePicker(); /**<Updates Color Theme Picker Window*/
-        void UpdateWindow_ShowViewportSettings(); /**<Updates the Viewport Settings*/
 
 
     public:
