@@ -29,6 +29,8 @@
 #include <FontManager.h>
 #include <Theme.h>
 
+#include <GUI_Widget_FramerateCounter.h>
+
 
 /**
  * @brief Implements the ERS gui system.

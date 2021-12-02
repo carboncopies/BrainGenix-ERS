@@ -30,7 +30,7 @@ target_link_libraries(VisualEditor
     
     Theme
     FontManager
-    
+    Widgets
     )
 
 target_include_directories(VisualEditor PUBLIC ./)
