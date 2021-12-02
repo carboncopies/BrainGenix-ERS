@@ -21,21 +21,13 @@ void Widget_RenderingSettings::Draw() {
 
 
             // Wireframe Rendering Mode
-            static bool OpenGLDrawLines = false;
-            ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines);
+            ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines_);
             ImGui::NewLine();
-            if (OpenGLDrawLines) {
-                glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-            } else {
-                glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-            }
 
 
             // Rendering Background Clear Color
-            static ImVec4 ClearColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
-            ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor);
+            ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor_);
             ImGui::NewLine();
-            glClearColor(ClearColor.x, ClearColor.y, ClearColor.z, ClearColor.w);
 
 
 
@@ -43,6 +35,15 @@ void Widget_RenderingSettings::Draw() {
         ImGui::End();
 
     }
+
+    // Update OpenGL Settings
+    if (OpenGLDrawLines_) {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    } else {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    }
+
+    glClearColor(ClearColor_.x, ClearColor_.y, ClearColor_.z, ClearColor_.w);
 
 
 }
