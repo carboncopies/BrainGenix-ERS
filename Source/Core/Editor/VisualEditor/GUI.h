@@ -45,7 +45,6 @@ class GUISystem {
         FontManager* FontManager_; /**<Pointer To FontManager Instance*/
 
 
-
         bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */
 
 
