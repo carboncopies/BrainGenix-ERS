@@ -60,6 +60,10 @@ add_subdirectory(${LIB_DIR}/implot)
 add_subdirectory(${LIB_DIR}/glfw)
 disable_target_warnings(glfw)
 
+# Add Infoware Library (Not Header Only)
+add_subdirectory(${LIB_DIR}/infoware)
+disable_target_warnings(infoware)
+
 # Add FreeImage Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
 disable_target_warnings(FreeImage)
