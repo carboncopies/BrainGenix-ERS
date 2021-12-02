@@ -17,8 +17,19 @@ void Widget_FramerateHistogram::Draw() {
 
     // Push Back Current Framerate To Vector
     FramerateHistory_.push_back(ImGui::GetIO().Framerate);
+
+    // Cap Array Length At Target Set
     if (FramerateHistory_.size() > HistoryLength_ - 1) {
+
+        // Drop Item
         FramerateHistory_.erase(FramerateHistory_.begin());
+
+        // If Still Longer (User Reduced Length)
+        if (FramerateHistory_.size() != HistoryLength_) {
+            for (int i = 0; i < FramerateHistory_.size()-HistoryLength_; i++) {
+                FramerateHistory_.erase(FramerateHistory_.begin());
+            }
+        }
     }
 
     // If Window Drawing Enabled
@@ -26,7 +37,7 @@ void Widget_FramerateHistogram::Draw() {
         ImGui::Begin("Framerate Histogram", &Enabled_);
 
             // Histogram
-            ImGui::PlotLines("Framerate", (const float*)FramerateHistory_.data(), FramerateHistory_.size(), -1, NULL, -1.0f, 100.0f, ImGui::GetWindowSize());
+            ImGui::PlotHistogram("Framerate", (const float*)FramerateHistory_.data(), FramerateHistory_.size(), -1, NULL, -1.0f, 100.0f, ImGui::GetWindowSize());
 
             // Sample Counter
             ImGui::DragInt("Number Of Samples", &HistoryLength_, 1.0f, 100, 100000);
