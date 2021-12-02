@@ -19,6 +19,8 @@ void Widget_RenderingSettings::Draw() {
     if (Enabled_) {
         ImGui::Begin("Rendering Settings", &Enabled_);
 
+            // Set Initial Window Size
+            ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
 
             // Wireframe Rendering Mode
             ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines_);
