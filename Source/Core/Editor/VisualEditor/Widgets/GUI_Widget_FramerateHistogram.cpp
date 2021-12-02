@@ -23,6 +23,7 @@ void Widget_FramerateHistogram::Draw() {
 
     // Cap Array Length At Target Set
     if (FramerateHistory_.size() > HistoryLength_) {
+        std::cout<<"Dropping Item"<<std::endl;
         FramerateHistory_.erase(FramerateHistory_.begin());
     } else {
 
