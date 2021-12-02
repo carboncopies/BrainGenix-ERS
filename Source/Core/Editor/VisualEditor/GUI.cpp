@@ -176,7 +176,7 @@ void GUISystem::UpdateGUI() {
                 // Enable/Disable Widgets
                 static bool foo;
                 ImGui::Checkbox("Framerate Counter", &foo);
-                ImGui::Checkbox("Global Viewport Settings" &foo);
+                ImGui::Checkbox("Global Viewport Settings", &foo);
 
                 ImGui::EndMenu();
             }
