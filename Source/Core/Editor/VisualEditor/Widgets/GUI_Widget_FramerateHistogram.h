@@ -13,6 +13,7 @@
 
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <imgui.h>
@@ -26,7 +27,10 @@
  */
 class Widget_FramerateHistogram {
 
+    private:
 
+        std::vector<float> FramerateHistory_; /**<Vector To Store Framerate histories*/
+        int HistoryLength_; /**<Set Framerate History Length*/
 
     public:
 
