@@ -19,17 +19,15 @@ void Widget_FramerateHistogram::Draw() {
     FramerateHistory_.push_back(ImGui::GetIO().Framerate);
 
     // Cap Array Length At Target Set
-    if (FramerateHistory_.size() > HistoryLength_ - 1) {
-
-        // Drop Item
+    if (FramerateHistory_.size() > HistoryLength_+1) {
         FramerateHistory_.erase(FramerateHistory_.begin());
+    } else {
 
-        // If Still Longer (User Reduced Length)
-        // if (FramerateHistory_.size() != HistoryLength_) {
-        //     for (int i = 0; i < FramerateHistory_.size()-HistoryLength_; i++) {
-        //         FramerateHistory_.erase(FramerateHistory_.begin());
-        //     }
-        // }
+        // Fill With Zeros
+        for (int i = 0; i < HistoryLength_ - FramerateHistory_.size(); i++) {
+            FramerateHistory_.push_back(0.0f);
+        }
+
     }
 
     // If Window Drawing Enabled
