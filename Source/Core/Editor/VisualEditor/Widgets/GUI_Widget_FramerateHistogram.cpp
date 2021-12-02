@@ -17,7 +17,6 @@ void Widget_FramerateHistogram::Draw() {
 
     // Push Back Current Framerate To Vector
     FramerateHistory_.push_back(ImGui::GetIO().Framerate);
-    std::cout<<FramerateHistory_.size()<<std::endl;
     if (FramerateHistory_.size() > HistoryLength_ - 1) {
         FramerateHistory_.erase(FramerateHistory_.begin());
     }
@@ -27,7 +26,7 @@ void Widget_FramerateHistogram::Draw() {
         ImGui::Begin("Framerate Histogram", &Enabled_);
 
             // Histogram
-            ImGui::PlotHistogram("Framerate", (const float*)FramerateHistory_.data(), IM_ARRAYSIZE(FramerateHistory_.data()));
+            ImGui::PlotHistogram("Framerate", (const float*)FramerateHistory_.data(), FramerateHistory_.size());
 
         // End System Info Window
         ImGui::End();
