@@ -17,7 +17,7 @@ void Widget_RenderingSettings::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {
-        ImGui::Begin("System Controls", &Enabled_);
+        ImGui::Begin("Rendering Settings", &Enabled_);
 
 
             // Wireframe Rendering Mode
