@@ -96,6 +96,7 @@ void GUISystem::UpdateGUI() {
 
     // Update Widgets
     Widget_FramerateCounter_.Draw();
+    Widget_RenderingSettings_.Draw();
 
     FontManager_->FontSelectorWindow(&ShowFontPicker_);
 
@@ -139,7 +140,7 @@ void GUISystem::UpdateGUI() {
 
                 // Enable/Disable Widgets
                 ImGui::Checkbox("Framerate Counter", &Widget_FramerateCounter_.Enabled_);
-                ImGui::Checkbox("Global Viewport Settings", &ShowWidgetViewportSettings_);
+                ImGui::Checkbox("Global Viewport Settings", &Widget_RenderingSettings_.Enabled_);
 
 
             ImGui::EndMenu();
