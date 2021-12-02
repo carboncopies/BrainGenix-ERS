@@ -168,7 +168,7 @@ void GUISystem::UpdateGUI() {
         }
 
         // Window Menu
-        if (ImGui::BeginMenu("Menu")) {
+        if (ImGui::BeginMenu("Window")) {
 
             // Add Widgets Menu
             if (ImGui::BeginMenu("Widgets")) {
