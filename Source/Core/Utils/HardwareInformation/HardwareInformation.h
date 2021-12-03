@@ -19,3 +19,32 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+
+/**
+ * @brief Create Hardware Information Class
+ * 
+ */
+class HardwareInformation {
+
+    private:
+
+        LoggerClass *LoggingSystem_; /**<Instance Of Logging System*/
+
+    public:
+
+        /**
+         * @brief Construct a new Hardware Information object
+         * 
+         * @param Logger 
+         */
+        HardwareInformation(LoggerClass *Logger);
+
+        /**
+         * @brief Destroy the Hardware Information object
+         * 
+         */
+        ~HardwareInformation();
+
+
+
+};
