@@ -20,10 +20,10 @@
 #include <GLFW/glfw3.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include "LocalConfigurationLoader.h"
-#include "LoggingSystem.h"
+#include <LocalConfigurationLoader.h>
+#include <LoggingSystem.h>
 
-#include "RendererManager.h"
+#include <RendererManager.h>
 #include <HardwareInformation.h>
 
 
