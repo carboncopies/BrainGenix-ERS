@@ -17,7 +17,7 @@ add_library(HardwareInformation
 
 # Link 3rd Party Libs
 target_link_libraries(HardwareInformation
-
+    infoware
     )
 
 # Link Internal Libs
@@ -25,7 +25,7 @@ target_link_libraries(HardwareInformation
 
     LoggingSystem
 
-    infoware
+    ERS_STRUCT_HardwareInfo
 
     )
 

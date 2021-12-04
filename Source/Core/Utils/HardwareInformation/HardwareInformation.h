@@ -19,6 +19,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+#include <ERS_STRUCT_HardwareInfo.h>
 
 
 /**
@@ -30,6 +31,7 @@ class HardwareInformation {
     private:
 
         LoggerClass *Logger_; /**<Instance Of Logging System*/
+        ERS_STRUCT_HardwareInfo HardwareInfo_; /**<Internal Hardware Information Struct*/
 
     public:
 
