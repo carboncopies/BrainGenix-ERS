@@ -17,6 +17,18 @@
  */
 struct StaticHardwareInfo {
 
+    // Hostname Info
+
+    // CPU Info
+    
+
+    // Memory Info
+
+    // Networking Info
+
+    // Disk Info
+
+    // GPU Info
 
 };
 
