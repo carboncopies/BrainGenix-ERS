@@ -6,7 +6,7 @@
     Description: This is responsible for implementing hardware information collection.
     Documentation Status: Complete
     Additonal Notes: None
-    Date Created: 2021-01-25
+    Date Created: 2021-12-03
 */
 
 #include <HardwareInformation.h>
