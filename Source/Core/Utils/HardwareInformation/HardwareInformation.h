@@ -33,6 +33,7 @@ class HardwareInformation {
 
     private:
 
+        // Class Instances
         LoggerClass *Logger_; /**<Instance Of Logging System*/
         ERS_STRUCT_HardwareInfo HardwareInfo_; /**<Internal Hardware Information Struct*/
 
@@ -43,7 +44,12 @@ class HardwareInformation {
         const char* architecture_name(iware::cpu::architecture_t architecture) noexcept;
         const char* cache_type_name(iware::cpu::cache_type_t cache_type) noexcept;
 
+        // Internal Functions
         void GetDynamicInformation(); /**<Updates Dynamic Information*/
+        void DynamicInformationThread(); /**Function To Update Info In Background*/
+
+        // Control Vars
+        bool ShouldDynamicInfoThreadRun_ = true; /**<Control Variable For Dynamic Info Thread*/
 
     public:
 

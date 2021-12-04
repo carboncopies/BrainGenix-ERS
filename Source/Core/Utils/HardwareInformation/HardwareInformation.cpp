@@ -114,6 +114,14 @@ HardwareInformation::~HardwareInformation() {
 }
 
 
+// Dynamic Info Update Function
+void HardwareInformation::DynamicInformationThread() {
+
+    // Enter Loop
+    
+
+}
+
 // Dynamic Info
 void HardwareInformation::GetDynamicInformation() {
 
