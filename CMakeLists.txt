@@ -158,6 +158,7 @@ target_link_libraries(${PROJECT_NAME}
   ConfigurationLoader
   LoggingSystem
   Renderer
+  HardwareInformation
 
   )
 
