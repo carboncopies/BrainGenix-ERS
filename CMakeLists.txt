@@ -182,6 +182,7 @@ add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor)
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/Theme)
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/FontManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/Widgets)
+add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/UserProfile)
 
 add_subdirectory(${SRC_DIR}/Core/Renderer)
 add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer)
