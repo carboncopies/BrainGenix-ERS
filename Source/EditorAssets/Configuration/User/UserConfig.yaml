@@ -1,0 +1,7 @@
+# This Configuration File Is Used To Set Default User Preferences
+
+# Set GUI Prefs
+DefaultFont: "Arimo-Medium"
+DefaultFontSize: 16
+
+DefaultColortheme: "Dark"
