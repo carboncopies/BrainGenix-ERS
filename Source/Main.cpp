@@ -34,7 +34,6 @@
 //
 //-----------------------------------------------------------------------------------------------------
 //
-// FIXME: Fix documentation status
 // FIXME: Add proper lighting system (phong and more advanced (and shadow maps))
 // FIXME: implement animations (character deformations)
 // FIXME: implement offscreen rendering
