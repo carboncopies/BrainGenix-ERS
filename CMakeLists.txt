@@ -66,7 +66,7 @@ add_subdirectory(${LIB_DIR}/glfw)
 disable_target_warnings(glfw)
 
 # Add Infoware Library (Not Header Only)
-set(INFOWARE_PCI_IDS_PATH ${LIB_DIR}/pciids)
+set(INFOWARE_PCI_IDS_PATH ${LIB_DIR}/pciids/pci.ids)
 include_directories(${LIB_DIR}/infoware/include)
 add_subdirectory(${LIB_DIR}/infoware)
 disable_target_warnings(infoware)
