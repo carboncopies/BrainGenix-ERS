@@ -61,3 +61,7 @@ LogLevelNames:
     8: Warning
     9: Severe
     10: Fatal
+
+
+# System Information Refresh Rate
+SystemDynamicInformationRefreshRate: 1.0 # Set times per second to refresh dynamic info

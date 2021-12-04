@@ -66,7 +66,7 @@ int main() {
     sERSLogger.Log("Initialized Logging System", 5);
 
     // Instantiate HardwareInformation System
-    HardwareInformation sERSHardwareInformation(&sERSLogger);
+    HardwareInformation sERSHardwareInformation(&sERSLogger, sERSLocalSystemConfiguration);
 
     // Instantiate RendererManager
     RendererManager sERSRendererManager(&sERSLocalSystemConfiguration, &sERSLogger, &SystemShouldRun);
