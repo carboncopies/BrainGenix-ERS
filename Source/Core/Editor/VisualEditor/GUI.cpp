@@ -37,7 +37,7 @@ GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShould
     UserProfileManager_ = new UserProfileManager(Logger_);
 
     // Load User Profile
-    ThemeManager_->ApplyTheme(UserProfileManager_->GetUserColorProfile());
+    ThemeManager_->ApplyThemes(UserProfileManager_->GetUserColorProfile());
 
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(Window, true);
