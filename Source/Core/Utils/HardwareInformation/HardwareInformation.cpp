@@ -90,7 +90,7 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
 
     // Get CPU Cache Info
     for (int i = 0; i < 3; i++) {
-        const auto CPUCacheInfo = iware::cpu::cache(i);
+        const auto CPUCacheInfo = iware::cpu::cache(i+1);
         HardwareInfo_.Static_.CPUPhysicalCoreCacheSize.push_back(CPUCacheInfo.size);
         HardwareInfo_.Static_.CPUPhysicalCoreCacheLineSize.push_back(CPUCacheInfo.line_size);
         HardwareInfo_.Static_.CPUPhysicalCoreAssociativity.push_back(CPUCacheInfo.associativity);
