@@ -33,3 +33,11 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
 
 
 }
+
+// Destructor
+HardwareInformation::~HardwareInformation {
+
+    // Log Destructor Call
+    Logger_->Log("Hardware Information Destructor Called", 4);
+
+}
