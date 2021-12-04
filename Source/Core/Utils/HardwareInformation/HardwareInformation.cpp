@@ -118,10 +118,10 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger, YAML::Node SystemC
 
     // Launch Thread
     Logger_->Log("Starting Dynamic Information Update Thread", 5);
-    DynamicUpdateThread_(&HardwareInformation::DynamicInformationThread, this);
-
+    SpawnThread();
 
 }
+
 
 // Destructor
 HardwareInformation::~HardwareInformation() {
@@ -136,6 +136,12 @@ HardwareInformation::~HardwareInformation() {
 
 }
 
+
+std::thread HardwareInformation::SpawnThread() {
+
+    DynamicUpdateThread_(&HardwareInformation::DynamicInformationThread, this);
+
+}
 
 // Dynamic Info Update Function
 void HardwareInformation::DynamicInformationThread() {
