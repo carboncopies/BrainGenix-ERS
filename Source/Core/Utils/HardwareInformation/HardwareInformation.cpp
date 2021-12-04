@@ -104,6 +104,8 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger, YAML::Node SystemC
     }
 
 
+
+
     // Setup Dynamic Info Thread
     Logger_->Log("Setting Up Dynamic Information Refresh Thread", 5);
 
@@ -113,6 +115,9 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger, YAML::Node SystemC
 
     // Calculate Dynamic Info Refresh Rate Var
     DynamicInfoRefreshRate_ = (1 / UpdatesPerSecond) * 1000.0f;
+
+    // Launch Thread
+
 
 
 }
