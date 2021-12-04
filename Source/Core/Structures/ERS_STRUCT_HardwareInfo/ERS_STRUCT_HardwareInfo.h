@@ -30,10 +30,7 @@ struct StaticHardwareInfo {
 
     // System Info
     std::string KernelName; /**<Name of OS Kernel*/
-    std::string KernelVersion; /**<Version Of Kernel*/
     std::string OSName; /*<<Name Of OS*/
-    std::string OSFullName; /**<Full OS Name*/
-    std::string OSVersion; /**<OS Version*/
 
     // CPU Info
     int CPUPhysicalCores; /**<Number of physical cores in the system (combined across multiple cpus)*/
