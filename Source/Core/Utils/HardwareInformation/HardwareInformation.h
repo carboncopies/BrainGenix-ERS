@@ -54,7 +54,7 @@ class HardwareInformation {
         // Internal Functions
         void GetDynamicInformation(); /**<Updates Dynamic Information*/
         void DynamicInformationThread(); /**Function To Update Info In Background*/
-        void SpawnThread();
+        std::thread SpawnThread();
 
         // Control Vars
         float DynamicInfoRefreshRate_; /*<Set Number Of ms To wait until next dynamic info refresh*/
