@@ -16,6 +16,9 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <infoware/cpu.hpp>
 #include <infoware/version.hpp>
+#include <infoware/system.hpp>
+#include <infoware/pci.hpp>
+#include <infoware/gpu.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
