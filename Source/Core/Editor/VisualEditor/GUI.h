@@ -29,6 +29,7 @@
 #include <LoggingSystem.h>
 #include <FontManager.h>
 #include <Theme.h>
+#include <UserProfile.h>
 
 #include <GUI_Widget_FramerateCounter.h>
 #include <GUI_Widget_RenderingSettings.h>
@@ -50,6 +51,7 @@ class GUISystem {
         GLFWwindow* Window_; /**<Pointer to window instance*/
 
         FontManager* FontManager_; /**<Pointer To FontManager Instance*/
+        UserProfileManager* UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
 
 
         bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */

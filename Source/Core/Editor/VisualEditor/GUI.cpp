@@ -27,17 +27,14 @@ GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShould
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImPlot::CreateContext();
-    //ImGuiIO& io = ImGui::GetIO(); (void)io;
-    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
-    //ImGui::StyleColorsClassic();
 
     // Initialize Managers
     ThemeManager_ = new ThemeManager(Logger_);
     FontManager_ = new FontManager(Logger_);
+    UserProfileManager_ = new UserProfileManager(Logger_);
 
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(Window, true);

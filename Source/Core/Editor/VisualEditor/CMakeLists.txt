@@ -32,6 +32,7 @@ target_link_libraries(VisualEditor
     Theme
     FontManager
     Widgets
+    UserProfile
     )
 
 target_include_directories(VisualEditor PUBLIC ./)
