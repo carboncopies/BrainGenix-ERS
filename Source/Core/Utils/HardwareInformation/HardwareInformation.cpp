@@ -167,8 +167,8 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
             HardwareInfo_.Static_.GPUMaxFreq.push_back(GPU.max_frequency);
 
             Logger_->Log(std::string(std::string("GPU: ") + std::to_string(i)).c_str(), 4);
-            Logger_->Log(std::string(std::string("    GPU Vendor: ") + std::to_string(gpu_vendor_name(GPU.vendor))).c_str(), 4);
-            Logger_->Log(std::string(std::string("    GPU Name: ") + std::to_string(GPU.name).c_str(), 4);
+            Logger_->Log(std::string(std::string("    GPU Vendor: ") + std::string(gpu_vendor_name(GPU.vendor))).c_str(), 4);
+            Logger_->Log(std::string(std::string("    GPU Name: ") + std::string(GPU.name)).c_str(), 4);
             Logger_->Log(std::string(std::string("    GPU VRAM Size: ") + std::to_string(GPU.memory_size)).c_str(), 4);
             Logger_->Log(std::string(std::string("    GPU Cache Size: ") + std::to_string(GPU.cache_size)).c_str(), 4);
             Logger_->Log(std::string(std::string("    GPU Max Freq: ") + std::to_string(GPU.max_frequency)).c_str(), 4);
