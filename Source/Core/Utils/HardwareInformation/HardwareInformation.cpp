@@ -176,6 +176,10 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
 
         }
 
+    } else {
+
+        Logger_->Log("No GPU Detection Methods Enabled", 4);
+
     }
 
 
