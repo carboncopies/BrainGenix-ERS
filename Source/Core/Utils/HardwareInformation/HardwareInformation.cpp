@@ -58,7 +58,18 @@ static const char* endianness_name(iware::cpu::endianness_t endianness) noexcept
 	}
 }
 
-
+static const char* kernel_variant_name(iware::system::kernel_t variant) noexcept {
+	switch(variant) {
+		case iware::system::kernel_t::windows_nt:
+			return "Windows NT";
+		case iware::system::kernel_t::linux:
+			return "Linux";
+		case iware::system::kernel_t::darwin:
+			return "Darwin";
+		default:
+			return "Unknown";
+	}
+}
 
 
 
@@ -74,6 +85,13 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
 
     // Collect Static Hardware Information
     Logger_->Log("Collecting Static Hardware Information", 5);
+
+    // Get System Info
+    Logger_->Log("Getting System Information", 4);
+    const auto KernelInfo = iware::system::kernel_info();
+    const auto OSInfo = iware::system::OS_info();
+    HardwareInfo_.Static_.KernelName = std::string(kernel_variant_name(KernelInfo.variant));
+    HardwareInfo_.Static_.KernelVersion = std::string(KernelInfo.major << '.' << KernelInfo.minor << '.' << KernelInfo.patch << " build " << KernelInfo.build_number);
 
     // Get CPU Info
     Logger_->Log("Getting CPU Information", 4);
