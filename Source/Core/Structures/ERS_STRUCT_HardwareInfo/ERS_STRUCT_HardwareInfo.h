@@ -13,6 +13,8 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <vector>
+#include <string>
+
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
@@ -32,6 +34,8 @@ struct StaticHardwareInfo {
     int CPUPhysicalCores; /**<Number of physical cores in the system (combined across multiple cpus)*/
     int CPULogicalCores; /**<Number of logical cores "threads" in the system (conbined across multiple cpus)*/
     int CPUPackages; /**<Number of physical cpu chips (ex quad-cpu would read 4 here)*/
+
+    
 
     std::vector<long> CPUPhysicalCoreCacheSize; /**<Vector containing cache size for all cores*/
     std::vector<long> CPUPhysicalCoreCacheLineSize; /**<Vector containing cache line size for all cores*/
