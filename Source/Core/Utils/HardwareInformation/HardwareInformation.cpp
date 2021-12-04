@@ -118,7 +118,7 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger, YAML::Node SystemC
 
     // Launch Thread
     Logger_->Log("Starting Dynamic Information Update Thread", 5);
-    SpawnThread();
+    DynamicUpdateThread_ = SpawnThread();
 
 }
 
@@ -139,7 +139,7 @@ HardwareInformation::~HardwareInformation() {
 
 std::thread HardwareInformation::SpawnThread() {
 
-    DynamicUpdateThread_(&HardwareInformation::DynamicInformationThread, this);
+    return std::thread(&HardwareInformation::DynamicInformationThread, this);
 
 }
 
