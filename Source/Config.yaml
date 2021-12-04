@@ -64,4 +64,4 @@ LogLevelNames:
 
 
 # System Information Refresh Rate
-SystemDynamicInformationRefreshRate: 1.0 # Set times per second to refresh dynamic info
+SystemDynamicInformationRefreshRate: 5.0 # Set times per second to refresh dynamic info
