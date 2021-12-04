@@ -105,6 +105,14 @@ void FontManager::UseFont(int FontIndex) {
 
 }
 
+// Set Font Size
+void FontManager::SetFontSize(float FontSize) {
+
+    // Set Font Size
+    FontSize_ = FontSize;
+
+}
+
 // Use Font Function
 void FontManager::UseFont(std::string Font) {
 
