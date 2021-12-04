@@ -17,7 +17,7 @@
 
 
 
-static const char* cache_type_name(iware::cpu::cache_type_t cache_type) noexcept {
+const char* HardwareInformation::cache_type_name(iware::cpu::cache_type_t cache_type) noexcept {
 	switch(cache_type) {
 		case iware::cpu::cache_type_t::unified:
 			return "Unified";
@@ -32,7 +32,7 @@ static const char* cache_type_name(iware::cpu::cache_type_t cache_type) noexcept
 	}
 }
 
-static const char* architecture_name(iware::cpu::architecture_t architecture) noexcept {
+const char* HardwareInformation::architecture_name(iware::cpu::architecture_t architecture) noexcept {
 	switch(architecture) {
 		case iware::cpu::architecture_t::x64:
 			return "x64";
@@ -47,7 +47,7 @@ static const char* architecture_name(iware::cpu::architecture_t architecture) no
 	}
 }
 
-static const char* endianness_name(iware::cpu::endianness_t endianness) noexcept {
+const char* HardwareInformation::endianness_name(iware::cpu::endianness_t endianness) noexcept {
 	switch(endianness) {
 		case iware::cpu::endianness_t::little:
 			return "Little-Endian";
@@ -58,7 +58,7 @@ static const char* endianness_name(iware::cpu::endianness_t endianness) noexcept
 	}
 }
 
-static const char* kernel_variant_name(iware::system::kernel_t variant) noexcept {
+const char* HardwareInformation::kernel_variant_name(iware::system::kernel_t variant) noexcept {
 	switch(variant) {
 		case iware::system::kernel_t::windows_nt:
 			return "Windows NT";
@@ -71,7 +71,7 @@ static const char* kernel_variant_name(iware::system::kernel_t variant) noexcept
 	}
 }
 
-static const char* gpu_vendor_name(iware::gpu::vendor_t vendor) noexcept {
+const char* HardwareInformation::gpu_vendor_name(iware::gpu::vendor_t vendor) noexcept {
 	switch(vendor) {
 		case iware::gpu::vendor_t::intel:
 			return "Intel";
@@ -203,11 +203,5 @@ void HardwareInformation::GetDynamicInformation() {
     HardwareInfo_.Dynamic_.PhysicalMemoryFree = MemoryInfo.physical_available;
     HardwareInfo_.Dynamic_.SwapCapacity = MemoryInfo.virtual_total;
     HardwareInfo_.Dynamic_.SwapFree = MemoryInfo.virtual_available;
-
-
-    
-    
-    
-
 
 }
