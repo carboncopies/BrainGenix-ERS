@@ -78,5 +78,10 @@ class HardwareInformation {
         ~HardwareInformation();
 
 
+        void print() {
+
+            std::cout<<HardwareInfo_.Dynamic_.PhysicalMemoryFree<<std::endl;
+        }
+
 
 };

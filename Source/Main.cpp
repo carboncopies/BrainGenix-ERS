@@ -109,6 +109,7 @@ int main() {
 
         // Update Renderers
         sERSRendererManager.UpdateLoop(DeltaTime);
+        sERSHardwareInformation.print();
 
     }
 
