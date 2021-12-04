@@ -54,7 +54,7 @@ class HardwareInformation {
         // Internal Functions
         void GetDynamicInformation(); /**<Updates Dynamic Information*/
         void DynamicInformationThread(); /**Function To Update Info In Background*/
-        std::thread SpawnThread();
+        std::thread SpawnThread(); /**<Create New Thread*/
 
         // Control Vars
         float DynamicInfoRefreshRate_; /*<Set Number Of ms To wait until next dynamic info refresh*/
@@ -68,6 +68,7 @@ class HardwareInformation {
          * @brief Construct a new Hardware Information object
          * 
          * @param Logger 
+         * @param SystemConfig 
          */
         HardwareInformation(LoggerClass *Logger, YAML::Node SystemConfig);
 
@@ -78,10 +79,12 @@ class HardwareInformation {
         ~HardwareInformation();
 
 
-        void print() {
-
-            std::cout<<HardwareInfo_.Dynamic_.PhysicalMemoryFree<<std::endl;
-        }
+        /**
+         * @brief Get the HardwareInfo Object
+         * 
+         * @return ERS_STRUCT_HardwareInfo 
+         */
+        ERS_STRUCT_HardwareInfo GetHWInfo();
 
 
 };

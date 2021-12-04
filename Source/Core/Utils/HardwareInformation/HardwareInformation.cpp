@@ -137,10 +137,16 @@ HardwareInformation::~HardwareInformation() {
 }
 
 
+// Create Thread
 std::thread HardwareInformation::SpawnThread() {
 
     return std::thread(&HardwareInformation::DynamicInformationThread, this);
 
+}
+
+// Return Info
+ERS_STRUCT_HardwareInfo HardwareInformation::GetHWInfo() {
+    return HardwareInfo_;
 }
 
 // Dynamic Info Update Function
