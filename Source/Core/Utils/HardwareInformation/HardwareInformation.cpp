@@ -91,7 +91,7 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
     const auto KernelInfo = iware::system::kernel_info();
     const auto OSInfo = iware::system::OS_info();
     HardwareInfo_.Static_.KernelName = std::string(kernel_variant_name(KernelInfo.variant));
-    HardwareInfo_.Static_.KernelVersion = std::string(KernelInfo.major << '.' << KernelInfo.minor << '.' << KernelInfo.patch << " build " << KernelInfo.build_number);
+    HardwareInfo_.Static_.KernelVersion = std::string(std::string(KernelInfo.major) + std::string('.') + std::string(KernelInfo.minor) + std::string('.') + std::string(KernelInfo.patch) + std::string(" Build ") + std::string(KernelInfo.build_number));
 
     // Get CPU Info
     Logger_->Log("Getting CPU Information", 4);
