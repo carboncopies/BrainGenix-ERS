@@ -14,10 +14,11 @@
 
 
 // HWinfo Constructor
-HardwareInformation::HardwareInformation(LoggerClass *Logger) {
+HardwareInformation::HardwareInformation(LoggerClass *Logger, YAML::Node SystemConfig) {
 
     // Copy Pointers
     Logger_ = Logger;
+    SystemConfiguration_ = SystemConfig;
 
     // Log Initialization
     Logger_->Log("Initializing Hardware Info Subsystem", 5);
@@ -118,7 +119,14 @@ HardwareInformation::~HardwareInformation() {
 void HardwareInformation::DynamicInformationThread() {
 
     // Enter Loop
-    
+    while (ShouldDynamicInfoThreadRun_) {
+
+        // Get Dynamic Info
+        GetDynamicInformation();
+
+        // Wait For The WaitTime
+
+    }
 
 }
 

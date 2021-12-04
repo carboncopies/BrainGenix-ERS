@@ -14,6 +14,8 @@
 // Standard Libraries (BG convention: use <> instead of "")
 
 // Third-Party Libraries (BG convention: use <> instead of "")
+#include <yaml-cpp/yaml.h>
+
 #include <infoware/cpu.hpp>
 #include <infoware/version.hpp>
 #include <infoware/system.hpp>
@@ -37,6 +39,9 @@ class HardwareInformation {
         LoggerClass *Logger_; /**<Instance Of Logging System*/
         ERS_STRUCT_HardwareInfo HardwareInfo_; /**<Internal Hardware Information Struct*/
 
+        // Config
+        YAML::Node SystemConfiguration_; /**MSystem Configuration*/
+
         // Functions from https://github.com/ThePhD/infoware/blob/main/examples
         const char* gpu_vendor_name(iware::gpu::vendor_t vendor) noexcept;
         const char* kernel_variant_name(iware::system::kernel_t variant) noexcept;
@@ -58,7 +63,7 @@ class HardwareInformation {
          * 
          * @param Logger 
          */
-        HardwareInformation(LoggerClass *Logger);
+        HardwareInformation(LoggerClass *Logger, YAML::Node SystemConfig);
 
         /**
          * @brief Destroy the Hardware Information object
