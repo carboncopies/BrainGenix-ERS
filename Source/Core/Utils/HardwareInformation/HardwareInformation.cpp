@@ -94,7 +94,6 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
     Logger_->Log(std::string(std::string("CPU Model Name: ") + HardwareInfo_.Static_.CPUModelName).c_str(), 4);
     Logger_->Log(std::string(std::string("CPU Vendor ID: ") + HardwareInfo_.Static_.CPUVendorID).c_str(), 4);
 
-
     // Get CPU Cache Info
     for (int i = 0; i < 3; i++) {
         const auto CPUCacheInfo = iware::cpu::cache(i+1);
@@ -111,6 +110,11 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
 
     }
 
+    // Get Memory Info
+    Logger_->Log("Getting Memory Information", 4);
+    const auto MemoryInfo = iware::memory::memory();
+    HardwareInfo.Static_.PhysicalMemoryCapacity = MemoryInfo.physical_available;
+    HardwareInfo.Static_.
 
 }
 
