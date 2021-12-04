@@ -66,8 +66,8 @@ int main() {
     LoggerClass sERSLogger(sERSLocalSystemConfiguration);
     sERSLogger.Log("Initialized Logging System", 5);
 
-    // Instantiate Asset Manager
-    //AssetLoader sERSAssetLoader(&sERSLogger, &sERSLocalSystemConfiguration);
+    // Instantiate HardwareInformation System
+    HardwareInformation sERSHardwareInformation(&sERSLogger);
 
     // Instantiate RendererManager
     RendererManager sERSRendererManager(&sERSLocalSystemConfiguration, &sERSLogger, &SystemShouldRun);
