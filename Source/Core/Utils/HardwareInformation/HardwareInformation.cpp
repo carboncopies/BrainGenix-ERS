@@ -34,6 +34,20 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
     Logger_->Log(std::string(std::string("Logical CPU Cores: ") + std::to_string(HardwareInfo_.Static_.CPULogicalCores)).c_str(), 4);
     Logger_->Log(std::string(std::string("Physical CPU Packages: ") + std::to_string(HardwareInfo_.Static_.CPUPackages)).c_str(), 4);
 
+    // Get CPU Cache Info
+    for (int i = 0; i < HardwareInfo_.Static_.CPUPhysicalCores; i++) {
+        const auto CPUCacheInfo = iware::cpu::cache(i);
+        HardwareInfo_.Static_.CPUPhysicalCoreCacheSize = CPUCacheInfo.size;
+        HardwareInfo_.Static_.CPUPhysicalCoreCacheLineSize = CPUCacheInfo.line_size;
+        HardwareInfo_.Static_.CPUPhysicalCoreAssociativity = CPUCacheInfo.associativity;
+        HardwareInfo_.Static_.CPUPhysicalCoreType = cache_type_name(CPUCacheInfo.type);
+        
+        
+        
+
+
+    }
+
 
 }
 
