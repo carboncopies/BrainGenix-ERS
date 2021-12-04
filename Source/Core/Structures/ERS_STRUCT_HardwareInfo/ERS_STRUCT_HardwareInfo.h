@@ -11,6 +11,15 @@
 
 
 
+// Standard Libraries (BG convention: use <> instead of "")
+#include <vector>
+// Third-Party Libraries (BG convention: use <> instead of "")
+
+// Internal Libraries (BG convention: use <> instead of "")
+
+
+
+
 /**
  * @brief This structure is used to store static hardware information.
  * 
