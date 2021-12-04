@@ -24,8 +24,12 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
     // Collect Static Hardware Information
     Logger_->Log("Collecting Static Hardware Information", 4);
 
-    
-
+    // Get CPU Info
+    Logger_->Log("Getting CPU Information", 3);
+    const auto CPUQuantities = iware::cpu::quantities();
+    HardwareInfo_.Static_.CPUPhysicalCores = CPUQuantities.physical;
+    HardwareInfo_.Static_.CPULogicalCores = CPUQuantities.logical;
+    HardwareInfo_.Static_.CPUPackages = CPUQuantities.packages;
 
 
 }
