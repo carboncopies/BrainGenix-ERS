@@ -30,9 +30,9 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
     HardwareInfo_.Static_.CPUPhysicalCores = CPUQuantities.physical;
     HardwareInfo_.Static_.CPULogicalCores = CPUQuantities.logical;
     HardwareInfo_.Static_.CPUPackages = CPUQuantities.packages;
-    Logger_->Log(std::string(std::string("Physical CPU Cores: ") + std::string(HardwareInfo_.Static_.CPUPhysicalCores)).c_str(), 4);
-    Logger_->Log(std::string(std::string("Logical CPU Cores: ") + std::string(HardwareInfo_.Static_.CPULogicalCores)).c_str(), 4);
-    Logger_->Log(std::string(std::string("Physical CPU Packages: ") + std::string(HardwareInfo_.Static_.CPUPackages)).c_str(), 4);
+    Logger_->Log(std::string(std::string("Physical CPU Cores: ") + std::to_string(HardwareInfo_.Static_.CPUPhysicalCores)).c_str(), 4);
+    Logger_->Log(std::string(std::string("Logical CPU Cores: ") + std::to_string(HardwareInfo_.Static_.CPULogicalCores)).c_str(), 4);
+    Logger_->Log(std::string(std::string("Physical CPU Packages: ") + std::to_string(HardwareInfo_.Static_.CPUPackages)).c_str(), 4);
 
 
 }
