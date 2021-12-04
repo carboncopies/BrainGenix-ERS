@@ -20,6 +20,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 
+
 /**
  * @brief Create Hardware Information Class
  * 
@@ -28,7 +29,7 @@ class HardwareInformation {
 
     private:
 
-        LoggerClass *LoggingSystem_; /**<Instance Of Logging System*/
+        LoggerClass *Logger_; /**<Instance Of Logging System*/
 
     public:
 
