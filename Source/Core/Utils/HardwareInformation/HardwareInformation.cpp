@@ -96,7 +96,7 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
         HardwareInfo_.Static_.CPUPhysicalCoreAssociativity.push_back(CPUCacheInfo.associativity);
         HardwareInfo_.Static_.CPUPhysicalCoreType.push_back(cache_type_name(CPUCacheInfo.type));
         
-        Logger_->Log(std::string(std::string("Cache Level: ") + std::to_string(i)).c_str(), 4);
+        Logger_->Log(std::string(std::string("Cache Level: ") + std::to_string(i+1)).c_str(), 4);
         Logger_->Log(std::string(std::string("    Cache Size: ") + std::to_string(HardwareInfo_.Static_.CPUPhysicalCoreCacheSize[i])).c_str(), 4);
         Logger_->Log(std::string(std::string("    Cache Line Size: ") + std::to_string(HardwareInfo_.Static_.CPUPhysicalCoreCacheLineSize[i])).c_str(), 4);
         Logger_->Log(std::string(std::string("    Cache Associativity: ") + std::to_string(HardwareInfo_.Static_.CPUPhysicalCoreAssociativity[i])).c_str(), 4);
