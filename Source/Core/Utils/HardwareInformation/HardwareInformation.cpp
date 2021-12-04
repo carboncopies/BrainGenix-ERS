@@ -93,6 +93,9 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
     HardwareInfo_.Static_.KernelName = std::string(kernel_variant_name(KernelInfo.variant));
     HardwareInfo_.Static_.OSName = std::string(OSInfo.full_name);
 
+    Logger_->Log(std::string(std::string("Kernel Name: ") + HardwareInfo_.Static_.KernelName).c_str(), 4);
+    Logger_->Log(std::string(std::string("Operating System Name: ") + HardwareInfo_.Static_.OSName).c_str(), 4);
+
     // Get CPU Info
     Logger_->Log("Getting CPU Information", 4);
     const auto CPUQuantities = iware::cpu::quantities();
