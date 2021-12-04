@@ -22,14 +22,17 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
     Logger_->Log("Initializing Hardware Info Subsystem", 5);
 
     // Collect Static Hardware Information
-    Logger_->Log("Collecting Static Hardware Information", 4);
+    Logger_->Log("Collecting Static Hardware Information", 5);
 
     // Get CPU Info
-    Logger_->Log("Getting CPU Information", 3);
+    Logger_->Log("Getting CPU Information", 4);
     const auto CPUQuantities = iware::cpu::quantities();
     HardwareInfo_.Static_.CPUPhysicalCores = CPUQuantities.physical;
     HardwareInfo_.Static_.CPULogicalCores = CPUQuantities.logical;
     HardwareInfo_.Static_.CPUPackages = CPUQuantities.packages;
+    Logger_->Log(std::string(std::string("Physical CPU Cores: ") + std::string(HardwareInfo_.Static_.CPUPhysicalCores)).c_str(), 4);
+    Logger_->Log(std::string(std::string("Logical CPU Cores: ") + std::string(HardwareInfo_.Static_.CPULogicalCores)).c_str(), 4);
+    Logger_->Log(std::string(std::string("Physical CPU Packages: ") + std::string(HardwareInfo_.Static_.CPUPackages)).c_str(), 4);
 
 
 }
