@@ -71,7 +71,8 @@
         "*.ipp": "cpp",
         "hash_map": "cpp",
         "hash_set": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "codecvt": "cpp"
     },
     "cmake.configureOnOpen": true
 }

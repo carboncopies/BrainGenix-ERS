@@ -85,11 +85,17 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
     HardwareInfo_.Static_.CPULogicalCores = CPUQuantities.logical;
     HardwareInfo_.Static_.CPUPackages = CPUQuantities.packages;
     HardwareInfo_.Static_.CPUArchitecture = std::string(architecture_name(iware::cpu::architecture()));
+    HardwareInfo_.Static_.CPUEndianness = std::string(endianness_name(iware::cpu::endianness()));
+    HardwareInfo_.Static_.CPUModelName = std::string(iware::cpu::model_name());
+    HardwareInfo_.Static_.CPUModelName = std::string(iware::cpu::vendor_id());
 
     Logger_->Log(std::string(std::string("Physical CPU Cores: ") + std::to_string(HardwareInfo_.Static_.CPUPhysicalCores)).c_str(), 4);
     Logger_->Log(std::string(std::string("Logical CPU Cores: ") + std::to_string(HardwareInfo_.Static_.CPULogicalCores)).c_str(), 4);
     Logger_->Log(std::string(std::string("Physical CPU Packages: ") + std::to_string(HardwareInfo_.Static_.CPUPackages)).c_str(), 4);
     Logger_->Log(std::string(std::string("CPU Architecture: ") + HardwareInfo_.Static_.CPUArchitecture).c_str(), 4);
+    Logger_->Log(std::string(std::string("CPU Endianness: ") + HardwareInfo_.Static_.CPUEndianness).c_str(), 4);
+    Logger_->Log(std::string(std::string("CPU Model Name: ") + HardwareInfo_.Static_.CPUModelName).c_str(), 4);
+    Logger_->Log(std::string(std::string("CPU Vendor ID: ") + HardwareInfo_.Static_.CPUVendorID).c_str(), 4);
 
 
     // Get CPU Cache Info

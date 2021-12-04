@@ -37,7 +37,10 @@ struct StaticHardwareInfo {
 
 
     std::string CPUArchitecture; /**<CPU architecture as a string*/
-    
+    std::string CPUEndianness; /**<Little-Endian or Big-Endian*/
+    std::string CPUModelName; /**<Name of model of cpu*/
+    std::string CPUVendorID; /**<CPU Vendor ID*/
+
 
     std::vector<long> CPUPhysicalCoreCacheSize; /**<Vector containing cache size for all cores*/
     std::vector<long> CPUPhysicalCoreCacheLineSize; /**<Vector containing cache line size for all cores*/
