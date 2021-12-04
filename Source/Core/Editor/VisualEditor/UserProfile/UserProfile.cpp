@@ -13,7 +13,7 @@
 
 
 // Constructor
-UserProfileManager::UserProfileManager(LoggerClass *Logger, const char* UserProfilePath = "EditorAssets/Configuration/User/UserConfig.yaml") {
+UserProfileManager::UserProfileManager(LoggerClass *Logger, const char* UserProfilePath) {
 
     // Copy Pointer
     Logger_ = Logger;
