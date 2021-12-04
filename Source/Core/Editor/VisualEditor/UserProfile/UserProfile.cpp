@@ -39,4 +39,12 @@ void UserProfileManager::LoadUserProfile() {
     // Log Loading
     Logger_->Log(std::string(std::string("Loading User Profile At Path: ") + UserProfilePath_).c_str(), 4);
 
+    // Load File
+    UserProfile_ = YAML::LoadFile(UserProfilePath_.c_str());
+
+    // Decode Profile
+    UserFont_ = UserProfile_["DefaultFont"].as<std::string>();
+    UserFontSize_ = UserProfile_["DefaultFontSize"].as<float>();
+    UserColorProfileName_ = UserProfile_["DefaultColorTheme"].as<std::string>();
+
 }

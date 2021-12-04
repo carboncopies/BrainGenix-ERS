@@ -33,9 +33,13 @@ class UserProfileManager {
 
         LoggerClass *Logger_; /**<LoggerClass Instance Pointer*/
         std::string UserProfilePath_; /**<Path To User Profile*/
-        YAML::Node UserProfile_; /**YAML::Node Containing User Profile*/
+        YAML::Node UserProfile_; /**<YAML::Node Containing User Profile*/
 
-        void LoadUserProfile(); /**Load User Profile*/
+        void LoadUserProfile(); /**<Load User Profile*/
+
+        std::string UserFont_; /**<Name Of user fornt*/
+        int UserFontSize_; /**<Size of user font*/
+        std::string UserColorProfileName_; /**<User Color Profile Name*/
 
     public:
 
@@ -52,5 +56,9 @@ class UserProfileManager {
          */
         ~UserProfileManager();
 
+
+        std::string GetUserFont();
+        int GetUserFontSize();
+        std::string GetUserProfile();
 
 };
