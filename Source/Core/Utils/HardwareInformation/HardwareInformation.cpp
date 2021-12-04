@@ -147,7 +147,7 @@ void HardwareInformation::DynamicInformationThread() {
         GetDynamicInformation();
 
         // Wait For The WaitTime
-        std::this_thread::sleep_for(std::chrono::milliseconds(DynamicInfoRefreshRate_));
+        //std::this_thread::sleep_for(std::chrono::milliseconds(DynamicInfoRefreshRate_));
 
     }
 
