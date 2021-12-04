@@ -105,6 +105,28 @@ void FontManager::UseFont(int FontIndex) {
 
 }
 
+// Use Font Function
+void FontManager::UseFont(std::string Font) {
+
+    // Index to Find Font
+    int Index;
+    bool FoundFont = false;
+    for (Index = 0; Index < FontNameList_.size(); Index++) {
+        if (FontNameList_[Index] == Font) {
+            FoundFont = true;
+            break;
+        }
+    }
+
+    // Apply Font
+    if (FoundFont) {
+        UseFont(Index);
+    } else {
+        Logger_->Log("Failed To Find Target Font, Skipping", 5);
+    }
+
+}
+
 // CheckUpdate
 void FontManager::CheckUpdateFont() {
 

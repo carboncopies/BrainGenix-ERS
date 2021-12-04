@@ -21,6 +21,7 @@ UserProfileManager::UserProfileManager(LoggerClass *Logger, const char* UserProf
 
     // Log Init
     Logger_->Log("Initializing User Profile Manager", 5);
+    LoadUserProfile();
 
 }
 

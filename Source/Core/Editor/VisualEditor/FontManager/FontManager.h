@@ -56,6 +56,7 @@ class FontManager {
 
         void IndexFonts();
         void UseFont(int FontIndex);
+        void UseFont(std::string FontName);
         void FontSelectorWindow(bool *WindowEnabled);
         void CheckUpdateFont();
 

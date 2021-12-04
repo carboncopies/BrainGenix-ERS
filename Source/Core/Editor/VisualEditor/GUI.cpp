@@ -38,7 +38,7 @@ GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShould
 
     // Load User Profile
     ThemeManager_->ApplyThemes(UserProfileManager_->GetUserColorProfile().c_str());
-    //FontManager_->UseFont
+    ThemeManager_->ApplyThemes(UserProfileManager_->GetUserFont());
 
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(Window, true);
