@@ -189,7 +189,7 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
 HardwareInformation::~HardwareInformation() {
 
     // Log Destructor Call
-    Logger_->Log("Hardware Information Destructor Called", 4);
+    Logger_->Log("Hardware Information Destructor Called", 6);
 
 }
 

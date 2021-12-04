@@ -58,11 +58,6 @@ struct StaticHardwareInfo {
     std::vector<float> GPUMaxFreq; /**<:ist of GPU Max Frequency*/
 
 
-
-    // Networking Info
-
-
-
 };
 
 
