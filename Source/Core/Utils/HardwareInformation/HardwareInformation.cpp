@@ -110,11 +110,7 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
 
     }
 
-    // Get Memory Info
-    Logger_->Log("Getting Memory Information", 4);
-    const auto MemoryInfo = iware::memory::memory();
-    HardwareInfo.Static_.PhysicalMemoryCapacity = MemoryInfo.physical_available;
-    HardwareInfo.Static_.
+
 
 }
 

@@ -28,7 +28,12 @@
  */
 struct StaticHardwareInfo {
 
-    // Hostname Info
+    // System Info
+    std::string KernelName; /**<Name of OS Kernel*/
+    std::string KernelVersion; /**<Version Of Kernel*/
+    std::string OSName; /*<<Name Of OS*/
+    std::string OSFullName; /**<Full OS Name*/
+    std::string OSVersion; /**<OS Version*/
 
     // CPU Info
     int CPUPhysicalCores; /**<Number of physical cores in the system (combined across multiple cpus)*/
@@ -46,9 +51,6 @@ struct StaticHardwareInfo {
     std::vector<long> CPUPhysicalCoreCacheLineSize; /**<Vector containing cache line size for all cores*/
     std::vector<long> CPUPhysicalCoreAssociativity; /**<Vector containing cache associativity for all cores*/
     std::vector<const char*> CPUPhysicalCoreType; /**<Vector containing cache type for all cores*/
-    
-
-    // Memory Info
 
     // Networking Info
 
@@ -64,6 +66,13 @@ struct StaticHardwareInfo {
  * 
  */
 struct DynamicHardwareInfo {
+
+    // Memory Info
+    int PhysicalMemoryCapacity; /**<Get Amount Of Memory In System*/
+    int SwapCapacity; /**<Get Amount Of Swap In System*/
+    int PhysicalMemoryFree; /**<Get Physical Memory Free*/
+    int SwapFree; /**<Get Swap Space Free*/
+
 
 };
 
