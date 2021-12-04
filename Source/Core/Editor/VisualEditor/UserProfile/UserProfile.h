@@ -18,4 +18,34 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
+#include <LoggingSystem.h>
 
+
+/**
+ * @brief 
+ * 
+ */
+class UserProfileManager {
+
+
+    private:
+
+        LoggerClass *Logger_; /**<LoggerClass Instance Pointer*/
+
+    public:
+
+        /**
+         * @brief Construct a new User Profile Manager object
+         * 
+         * @param Logger 
+         */
+        UserProfileManager(LoggerClass *Logger);
+
+        /**
+         * @brief Destroy the User Profile Manager object
+         * 
+         */
+        ~UserProfileManager();
+
+
+};
