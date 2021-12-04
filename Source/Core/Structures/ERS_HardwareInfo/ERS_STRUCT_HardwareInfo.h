@@ -20,7 +20,10 @@ struct StaticHardwareInfo {
     // Hostname Info
 
     // CPU Info
-    
+    int CPUPhysicalCores; /**<Number of physical cores in the system (combined across multiple cpus)*/
+    int CPULogicalCores; /**<Number of logical cores "threads" in the system (conbined across multiple cpus)*/
+    int CPUPackages; /**<Number of physical cpu chips (ex quad-cpu would read 4 here)*/
+
 
     // Memory Info
 
