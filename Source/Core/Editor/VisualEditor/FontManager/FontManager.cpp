@@ -105,14 +105,6 @@ void FontManager::UseFont(int FontIndex) {
 
 }
 
-// Set Font Size
-void FontManager::SetFontSize(float FontSize) {
-
-    // Set Font Size
-    FontSize_ = FontSize;
-
-}
-
 // Use Font Function
 void FontManager::UseFont(std::string Font) {
 
@@ -128,10 +120,30 @@ void FontManager::UseFont(std::string Font) {
 
     // Apply Font
     if (FoundFont) {
-        UseFont(Index);
+
+        // Get Font Path From Dir
+        const char* FontPath = FontPathList_[Index].c_str();
+
+        // Log Font Adjustment
+        Logger_->Log(std::string(std::string("Changing Font To: ") + std::string(FontPath)).c_str(), 4);
+
+        // Load, Apply Font
+        ImGuiIO& Io = ImGui::GetIO();
+        Io.Fonts->Clear();
+        Io.Fonts->AddFontFromFileTTF(FontPath, FontSize_);
+        Io.Fonts->Build();
+        
     } else {
         Logger_->Log("Failed To Find Target Font, Skipping", 5);
     }
+
+}
+
+// Set Font Size
+void FontManager::SetFontSize(float FontSize) {
+
+    // Set Font Size
+    FontSize_ = FontSize;
 
 }
 
