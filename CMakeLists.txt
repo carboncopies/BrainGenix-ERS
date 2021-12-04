@@ -35,6 +35,11 @@ function(disable_target_warnings target)
 endfunction()
 
 
+# Add Threading Library
+find_package(Threads REQUIRED)
+
+
+
 # Add YAML-CPP Library (Not Header Only)
 add_subdirectory("${LIB_DIR}/yaml-cpp")
 disable_target_warnings(yaml-cpp)

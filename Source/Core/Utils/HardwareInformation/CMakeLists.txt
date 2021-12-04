@@ -18,6 +18,7 @@ add_library(HardwareInformation
 # Link 3rd Party Libs
 target_link_libraries(HardwareInformation
     infoware
+    ${CMAKE_THREAD_LIBS_INIT}
     )
 
 # Link Internal Libs

@@ -58,6 +58,8 @@ class HardwareInformation {
         float DynamicInfoRefreshRate_; /*<Set Number Of ms To wait until next dynamic info refresh*/
         bool ShouldDynamicInfoThreadRun_ = true; /**<Control Variable For Dynamic Info Thread*/
 
+        std::thread DynamicUpdateThread_; /**<Dynamic Update Thread*/
+
     public:
 
         /**

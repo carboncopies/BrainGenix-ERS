@@ -117,7 +117,8 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger, YAML::Node SystemC
     DynamicInfoRefreshRate_ = (1 / UpdatesPerSecond) * 1000.0f;
 
     // Launch Thread
-
+    Logger_->Log("Starting Dynamic Information Update Thread", 5);
+    DynamicUpdateThread_(DynamicInformationThread);
 
 
 }
@@ -127,6 +128,11 @@ HardwareInformation::~HardwareInformation() {
 
     // Log Destructor Call
     Logger_->Log("Hardware Information Destructor Called", 6);
+
+    // Shut Down Dynamic Update Thread
+    Logger_->Log("Stopping Dynamic Update Thread", 5);
+    ShouldDynamicInfoThreadRun_ = false;
+    DynamicUpdateThread_.join();
 
 }
 
