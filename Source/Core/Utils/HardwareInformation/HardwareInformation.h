@@ -36,6 +36,9 @@ class HardwareInformation {
         LoggerClass *Logger_; /**<Instance Of Logging System*/
         ERS_STRUCT_HardwareInfo HardwareInfo_; /**<Internal Hardware Information Struct*/
 
+
+        void GetDynamicInformation(); /**<Updates Dynamic Information*/
+
     public:
 
         /**

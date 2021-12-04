@@ -49,11 +49,19 @@ struct StaticHardwareInfo {
     std::vector<long> CPUPhysicalCoreAssociativity; /**<Vector containing cache associativity for all cores*/
     std::vector<const char*> CPUPhysicalCoreType; /**<Vector containing cache type for all cores*/
 
+    // GPU Info
+    std::vector<int> GPUDeviceIDs; /**<List of GPU Device IDs*/
+    std::vector<std::string> GPUVendors; /**<List of GPU Vendors*/
+    std::vector<std::string> GPUNames; /**<List of GPU Names*/
+    std::vector<float> GPUVRAMSizes; /**<List of GPU VRAM Sizes*/
+    std::vector<float> GPUCacheSize; /**<List OF GPU Cache Sizes*/
+    std::vector<float> GPUMaxFreq; /**<:ist of GPU Max Frequency*/
+
+
+
     // Networking Info
 
-    // Disk Info
 
-    // GPU Info
 
 };
 
@@ -69,6 +77,7 @@ struct DynamicHardwareInfo {
     int SwapCapacity; /**<Get Amount Of Swap In System*/
     int PhysicalMemoryFree; /**<Get Physical Memory Free*/
     int SwapFree; /**<Get Swap Space Free*/
+
 
 
 };

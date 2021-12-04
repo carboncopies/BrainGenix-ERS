@@ -71,6 +71,25 @@ static const char* kernel_variant_name(iware::system::kernel_t variant) noexcept
 	}
 }
 
+static const char* gpu_vendor_name(iware::gpu::vendor_t vendor) noexcept {
+	switch(vendor) {
+		case iware::gpu::vendor_t::intel:
+			return "Intel";
+		case iware::gpu::vendor_t::amd:
+			return "AMD";
+		case iware::gpu::vendor_t::nvidia:
+			return "NVidia";
+		case iware::gpu::vendor_t::microsoft:
+			return "Microsoft";
+		case iware::gpu::vendor_t::qualcomm:
+			return "Qualcomm";
+		case iware::gpu::vendor_t::apple:
+			return "Apple";
+		default:
+			return "Unknown";
+	}
+}
+
 
 
 
@@ -131,6 +150,33 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
 
     }
 
+    // Get GPU Info
+    Logger_->Log("Getting GPU Info", 4);
+    const auto GPUProperties = iware::gpu::device_properties();
+
+    if (!GPUProperties.empty()) {
+
+        for (auto i = 0u; i < GPUProperties.size(); i++) {
+
+            const auto& GPU = GPUProperties[i];
+            HardwareInfo_.Static_.GPUDeviceIDs.push_back(i);
+            HardwareInfo_.Static_.GPUVendors.push_back(gpu_vendor_name(GPU.vendor));
+            HardwareInfo_.Static_.GPUNames.push_back(GPU.name);
+            HardwareInfo_.Static_.GPUVRAMSizes.push_back(GPU.memory_size);
+            HardwareInfo_.Static_.GPUCacheSize.push_back(GPU.cache_size);
+            HardwareInfo_.Static_.GPUMaxFreq.push_back(GPU.max_frequency);
+
+            Logger_->Log(std::string(std::string("GPU: ") + std::to_string(i)).c_str(), 4);
+            Logger_->Log(std::string(std::string("    GPU Vendor: ") + std::to_string(gpu_vendor_name(GPU.vendor))).c_str(), 4);
+            Logger_->Log(std::string(std::string("    GPU Name: ") + std::to_string(GPU.name).c_str(), 4);
+            Logger_->Log(std::string(std::string("    GPU VRAM Size: ") + std::to_string(GPU.memory_size)).c_str(), 4);
+            Logger_->Log(std::string(std::string("    GPU Cache Size: ") + std::to_string(GPU.cache_size)).c_str(), 4);
+            Logger_->Log(std::string(std::string("    GPU Max Freq: ") + std::to_string(GPU.max_frequency)).c_str(), 4);
+
+
+        }
+
+    }
 
 
 }
@@ -140,5 +186,24 @@ HardwareInformation::~HardwareInformation() {
 
     // Log Destructor Call
     Logger_->Log("Hardware Information Destructor Called", 4);
+
+}
+
+
+// Dynamic Info
+void HardwareInformation::GetDynamicInformation() {
+
+    // Get Memory Info
+    const auto MemoryInfo = iware::system::memory();
+    HardwareInfo_.Dynamic_.PhysicalMemoryCapacity = MemoryInfo.physical_total;
+    HardwareInfo_.Dynamic_.PhysicalMemoryFree = MemoryInfo.physical_available;
+    HardwareInfo_.Dynamic_.SwapCapacity = MemoryInfo.virtual_total;
+    HardwareInfo_.Dynamic_.SwapFree = MemoryInfo.virtual_available;
+
+
+    
+    
+    
+
 
 }
