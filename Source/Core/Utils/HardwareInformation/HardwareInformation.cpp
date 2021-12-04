@@ -63,9 +63,6 @@ static const char* endianness_name(iware::cpu::endianness_t endianness) noexcept
 
 
 
-
-
-
 // HWinfo Constructor
 HardwareInformation::HardwareInformation(LoggerClass *Logger) {
 
