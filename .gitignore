@@ -8,6 +8,7 @@ Build-Tools/
 Source/Shaders/SPIR-V/
 .vs/
 .vscode/
+Binaries.tar.gz
 
 # Prerequisites
 *.d
