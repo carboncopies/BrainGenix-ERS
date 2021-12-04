@@ -37,11 +37,11 @@ class HardwareInformation {
         ERS_STRUCT_HardwareInfo HardwareInfo_; /**<Internal Hardware Information Struct*/
 
         // Functions from https://github.com/ThePhD/infoware/blob/main/examples
-        const char* gpu_vendor_name(iware::gpu::vendor_t vendor);
-        const char* kernel_variant_name(iware::system::kernel_t variant);
-        const char* endianness_name(iware::cpu::endianness_t endianness);
-        const char* architecture_name(iware::cpu::architecture_t architecture);
-        const char* cache_type_name(iware::cpu::cache_type_t cache_type);
+        const char* gpu_vendor_name(iware::gpu::vendor_t vendor) noexcept;
+        const char* kernel_variant_name(iware::system::kernel_t variant) noexcept;
+        const char* endianness_name(iware::cpu::endianness_t endianness) noexcept;
+        const char* architecture_name(iware::cpu::architecture_t architecture) noexcept;
+        const char* cache_type_name(iware::cpu::cache_type_t cache_type) noexcept;
 
         void GetDynamicInformation(); /**<Updates Dynamic Information*/
 
