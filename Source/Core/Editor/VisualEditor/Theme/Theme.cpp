@@ -48,7 +48,7 @@ void ThemeManager::ApplyThemes(const char* ThemeName) {
 
     // Apply Target Theme
     int Index;
-    bool HasFoundtheme = false
+    bool HasFoundtheme = false;
     for (Index = 0; Index < ThemeNames_.size(); Index++) {
         if (ThemeNames_[Index] == ThemeName) {
             HasFoundtheme = true;
