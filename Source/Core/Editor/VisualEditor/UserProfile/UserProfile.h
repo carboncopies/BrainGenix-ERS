@@ -32,7 +32,7 @@ class UserProfileManager {
     private:
 
         LoggerClass *Logger_; /**<LoggerClass Instance Pointer*/
-        std::string UserProfilePath; /**<Path To User Profile*/
+        std::string UserProfilePath_; /**<Path To User Profile*/
 
         void LoadUserProfile(); /**Load User Profile*/
 
