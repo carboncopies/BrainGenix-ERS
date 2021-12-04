@@ -24,6 +24,7 @@
 #include "LoggingSystem.h"
 
 #include "RendererManager.h"
+#include <HardwareInformation.h>
 
 
 
