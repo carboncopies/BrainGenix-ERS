@@ -13,6 +13,7 @@
 
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -31,6 +32,9 @@ class UserProfileManager {
     private:
 
         LoggerClass *Logger_; /**<LoggerClass Instance Pointer*/
+        std::string UserProfilePath; /**<Path To User Profile*/
+
+        void LoadUserProfile(); /**Load User Profile*/
 
     public:
 
@@ -39,7 +43,7 @@ class UserProfileManager {
          * 
          * @param Logger 
          */
-        UserProfileManager(LoggerClass *Logger);
+        UserProfileManager(LoggerClass *Logger, const char* UserProfilePath = "EditorAssets/Configuration/User/UserConfig.yaml");
 
         /**
          * @brief Destroy the User Profile Manager object
