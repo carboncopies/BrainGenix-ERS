@@ -35,6 +35,8 @@ struct StaticHardwareInfo {
     int CPULogicalCores; /**<Number of logical cores "threads" in the system (conbined across multiple cpus)*/
     int CPUPackages; /**<Number of physical cpu chips (ex quad-cpu would read 4 here)*/
 
+
+    std::string CPUArchitecture; /**<CPU architecture as a string*/
     
 
     std::vector<long> CPUPhysicalCoreCacheSize; /**<Vector containing cache size for all cores*/
