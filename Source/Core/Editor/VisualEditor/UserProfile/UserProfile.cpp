@@ -17,7 +17,7 @@ UserProfileManager::UserProfileManager(LoggerClass *Logger, const char* UserProf
 
     // Copy Pointer
     Logger_ = Logger;
-    UserProfilePath_ = UserProfilePath;
+    UserProfilePath_ = std::string(UserProfilePath);
 
     // Log Init
     Logger_->Log("Initializing User Profile Manager", 5);
@@ -30,5 +30,13 @@ UserProfileManager::~UserProfileManager() {
 
     // Log Destructor Call
     Logger_->Log("User Profile Destructo Called", 6);
+
+}
+
+// Load User Profile
+void UserProfileManager::LoadUserProfile() {
+
+    // Log Loading
+    Logger_->Log(std::string(std::string("Loading User Profile At Path: ") + UserProfilePath_).c_str(), 4);
 
 }

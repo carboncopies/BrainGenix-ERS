@@ -33,6 +33,7 @@ class UserProfileManager {
 
         LoggerClass *Logger_; /**<LoggerClass Instance Pointer*/
         std::string UserProfilePath_; /**<Path To User Profile*/
+        YAML::Node UserProfile_; /**YAML::Node Containing User Profile*/
 
         void LoadUserProfile(); /**Load User Profile*/
 
