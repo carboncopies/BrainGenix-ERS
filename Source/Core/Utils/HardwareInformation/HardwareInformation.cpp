@@ -104,6 +104,17 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger, YAML::Node SystemC
     }
 
 
+    // Setup Dynamic Info Thread
+    Logger_->Log("Setting Up Dynamic Information Refresh Thread", 5);
+
+    // Get Refresh Rate
+    float UpdatesPerSecond = SystemConfiguration_["SystemDynamicInformationRefreshRate"].as<float>();
+    Logger_->Log("Read Configuration File For 'SystemDynamicInformationRefreshRate' Parameter", 2);
+
+    // Calculate Dynamic Info Refresh Rate Var
+    DynamicInfoRefreshRate_ = (1 / UpdatesPerSecond) * 1000.0f;
+
+
 }
 
 // Destructor

@@ -54,7 +54,7 @@ class HardwareInformation {
         void DynamicInformationThread(); /**Function To Update Info In Background*/
 
         // Control Vars
-        float DynamicInfoRefreshRate_; /*<Set the num of times per second to update dynamic info*/
+        float DynamicInfoRefreshRate_; /*<Set Number Of ms To wait until next dynamic info refresh*/
         bool ShouldDynamicInfoThreadRun_ = true; /**<Control Variable For Dynamic Info Thread*/
 
     public:
