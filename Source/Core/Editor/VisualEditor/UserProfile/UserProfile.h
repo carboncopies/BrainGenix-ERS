@@ -22,7 +22,7 @@
 
 
 /**
- * @brief 
+ * @brief Creates the user profile manager class.
  * 
  */
 class UserProfileManager {
