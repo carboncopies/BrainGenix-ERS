@@ -59,5 +59,5 @@ int UserProfileManager::GetUserFontSize() {
 }
 
 std::string UserProfileManager::GetUserColorProfile() {
-    return UserColorProfileName_
+    return UserColorProfileName_;
 }
