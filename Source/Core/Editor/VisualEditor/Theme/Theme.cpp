@@ -50,7 +50,7 @@ void ThemeManager::ApplyThemes(const char* ThemeName) {
     int Index;
     bool HasFoundtheme = false;
     for (Index = 0; Index < ThemeNames_.size(); Index++) {
-        if (ThemeNames_[Index] == ThemeName) {
+        if (ThemeNames_[Index].c_str() == ThemeName) {
             HasFoundtheme = true;
             break;
         }
