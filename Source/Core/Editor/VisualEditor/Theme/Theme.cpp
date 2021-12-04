@@ -44,6 +44,27 @@ ThemeManager::~ThemeManager() {
 
 }
 
+void ThemeManager::ApplyThemes(const char* ThemeName) {
+
+    // Apply Target Theme
+    int Index;
+    bool HasFoundtheme = false
+    for (Index = 0; Index < ThemeNames_.size(); Index++) {
+        if (ThemeNames_[Index] == ThemeName) {
+            HasFoundtheme = true;
+            break;
+        }
+    }
+
+    if (HasFoundtheme) {
+        ApplyThemes(Index);
+    } else {
+        Logger_->Log("Failed To Find Theme, Skipping", 5);
+    }
+
+
+}
+
 // Load Themes
 void ThemeManager::LoadThemes() {
 

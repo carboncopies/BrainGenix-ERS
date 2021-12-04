@@ -36,6 +36,9 @@ GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShould
     FontManager_ = new FontManager(Logger_);
     UserProfileManager_ = new UserProfileManager(Logger_);
 
+    // Load User Profile
+    ThemeManager_->ApplyTheme(UserProfikeManager_->)
+
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(Window, true);
     ImGui_ImplOpenGL3_Init("#version 330 core");

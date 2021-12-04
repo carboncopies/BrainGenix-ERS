@@ -48,3 +48,16 @@ void UserProfileManager::LoadUserProfile() {
     UserColorProfileName_ = UserProfile_["DefaultColorTheme"].as<std::string>();
 
 }
+
+// Return Object Functions
+std::string UserProfileManager::GetUserFont() {
+    return UserFont_;
+}
+
+int UserProfileManager::GetUserFontSize() {
+    return UserFontSize_;
+}
+
+std::string UserProfileManager::GetUserColorProfile() {
+    return UserColorProfileName_
+}

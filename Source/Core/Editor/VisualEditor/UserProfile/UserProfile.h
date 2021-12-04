@@ -59,6 +59,6 @@ class UserProfileManager {
 
         std::string GetUserFont();
         int GetUserFontSize();
-        std::string GetUserProfile();
+        std::string GetUserColorProfile();
 
 };

@@ -85,5 +85,11 @@ class ThemeManager {
          */
         void ApplyThemes(int ThemeID);
 
+        /**
+         * @brief Apply the selected theme
+         * 
+         * @param ThemeName 
+         */
+        void ApplyThemes(const char* ThemeName);
 
 };
