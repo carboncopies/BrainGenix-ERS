@@ -89,18 +89,18 @@ HardwareInformation::HardwareInformation(LoggerClass *Logger) {
     Logger_->Log(std::string(std::string("Physical CPU Packages: ") + std::to_string(HardwareInfo_.Static_.CPUPackages)).c_str(), 4);
 
     // Get CPU Cache Info
-    for (int i = 0; i < HardwareInfo_.Static_.CPUPhysicalCores; i++) {
+    for (int i = 0; i < 3; i++) {
         const auto CPUCacheInfo = iware::cpu::cache(i);
         HardwareInfo_.Static_.CPUPhysicalCoreCacheSize.push_back(CPUCacheInfo.size);
         HardwareInfo_.Static_.CPUPhysicalCoreCacheLineSize.push_back(CPUCacheInfo.line_size);
         HardwareInfo_.Static_.CPUPhysicalCoreAssociativity.push_back(CPUCacheInfo.associativity);
         HardwareInfo_.Static_.CPUPhysicalCoreType.push_back(cache_type_name(CPUCacheInfo.type));
         
-        Logger_->Log(std::string(std::string("Cache Information On Core: ") + std::to_string(i)).c_str(), 4);
+        Logger_->Log(std::string(std::string("Cache Level: ") + std::to_string(i)).c_str(), 4);
         Logger_->Log(std::string(std::string("    Cache Size: ") + std::to_string(HardwareInfo_.Static_.CPUPhysicalCoreCacheSize[i])).c_str(), 4);
         Logger_->Log(std::string(std::string("    Cache Line Size: ") + std::to_string(HardwareInfo_.Static_.CPUPhysicalCoreCacheLineSize[i])).c_str(), 4);
         Logger_->Log(std::string(std::string("    Cache Associativity: ") + std::to_string(HardwareInfo_.Static_.CPUPhysicalCoreAssociativity[i])).c_str(), 4);
-        Logger_->Log(std::string(std::string("    Cache Type: ") + std::to_string(HardwareInfo_.Static_.CPUPhysicalCoreType[i])).c_str(), 4);
+        Logger_->Log(std::string(std::string("    Cache Type: ") + std::string(HardwareInfo_.Static_.CPUPhysicalCoreType[i])).c_str(), 4);
 
     }
 
