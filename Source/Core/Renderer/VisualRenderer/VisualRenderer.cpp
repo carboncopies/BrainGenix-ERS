@@ -25,6 +25,9 @@ VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, GLFWwindow* Win
     Logger_->Log("Initializing OpenGL", 5);
     InitializeOpenGL();
 
+    // Setup 3D Cursor
+    
+
 }
 
 VisualRenderer::~VisualRenderer() {
@@ -82,6 +85,8 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     // Get Window Input
     int RenderWidth = ImGui::GetWindowSize().x;
     int RenderHeight = ImGui::GetWindowSize().y;
+
+    // Update 3D Cursor
 
 
     // Check If Input Enabled
