@@ -187,19 +187,13 @@ float objectMatrix[4][16] = {
 
     std::cout<<glm::to_string(view)<<std::endl;
 
-    double dArray[16] = {0.0};
-    const float *pSource = (const float*)glm::value_ptr(view);
-    for (int i = 0; i < 16; ++i)
-        dArray[i] = pSource[i];
 
-    double dArray2[16] = {0.0};
-    const float *pSource2 = (const float*)glm::value_ptr(projection);
-    for (int i = 0; i < 16; ++i)
-        dArray2[i] = pSource2[i];
+    float *pSource = (float*)glm::value_ptr(view);
+    float *pSource2 = (float*)glm::value_ptr(projection);
 
-    std::cout<<&dArray<<std::endl;
+    std::cout<<*pSource<<std::endl;
 
-    Cursors3D_->EditTransform((float*)dArray, (float*)dArray2, objectMatrix[16], false);
+    Cursors3D_->EditTransform(pSource, pSource2, objectMatrix[16], false);
 
 
 
