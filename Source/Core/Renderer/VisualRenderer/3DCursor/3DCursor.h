@@ -45,12 +45,27 @@ class Cursors3D {
 
     private:
 
+        bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
+
 
     public:
 
         Cursors3D();
         ~Cursors3D();
 
+        /**
+         * @brief Called Every Frame To Update Cursor
+         * 
+         */
+        void UpdateFrame();
+
+        /**
+         * @brief Returns if camera input should be disabled (if user interacting with cursor)
+         * 
+         * @return true 
+         * @return false 
+         */
+        bool DisableCameraMovement();
 
 };
 

@@ -11,3 +11,29 @@
 
 #include <3DCursor.h>
 
+
+// 3D Cursor Constructor
+Cursors3D::Cursors3D() {
+
+}
+
+// 3D Cursor Destructor
+Cursors3D::~Cursors3D() {
+
+}
+
+// Cursor Update Frame Function
+void Cursors3D::UpdateFrame() {
+
+    // Set If Cursor Should Be Disabled
+    IsCursorActive_ = gizmo_is_active();
+
+
+
+}
+
+
+// Dsable Camera Movement Function
+bool DisableCameraMovement() {
+    return IsCursorActive_;
+}
