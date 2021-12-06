@@ -23,16 +23,18 @@ Cursors3D::~Cursors3D() {
 }
 
 // Cursor Update Frame Function
-void Cursors3D::UpdateFrame() {
+void Cursors3D::UpdateFrame(float* CameraView, float* CameraProjection) {
 
 
 
     // Set If Cursor Should Be Disabled
     IsCursorActive_ = ImGuizmo::IsUsing();
 
-    //ImGuizmo::DrawGrid();
-    // End Guizmo
-    ImGuizmo::SetDrawlist();
+
+
+    ImGuizmo::DrawGrid(CameraView, CameraProjection, identityMatrix, 100.f);
+
+
 
 }
 
@@ -113,17 +115,12 @@ void Cursors3D::EditTransform(float* cameraView, float* cameraProjection, float*
 
    
 
-   ImGuizmo::DrawGrid(cameraView, cameraProjection, identityMatrix, 100.f);
+
    //ImGuizmo::DrawCubes(cameraView, cameraProjection, &objectMatrix[0][0], gizmoCount);
    ImGuizmo::Manipulate(cameraView, cameraProjection, mCurrentGizmoOperation, mCurrentGizmoMode, matrix, NULL, useSnap ? &snap[0] : NULL, boundSizing ? bounds : NULL, boundSizingSnap ? boundsSnap : NULL);
 
    ImGuizmo::ViewManipulate(cameraView, camDistance, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x10101010);
 
-   if (useWindow)
-   {
-      ImGui::End();
-      ImGui::PopStyleColor(1);
-   }
 
 }
 

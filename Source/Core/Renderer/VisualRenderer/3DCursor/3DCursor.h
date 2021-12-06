@@ -99,7 +99,7 @@ class Cursors3D {
          * @brief Called Every Frame To Update Cursor
          * 
          */
-        void UpdateFrame();
+        void UpdateFrame(float* CameraView, float* CameraProjection);
 
         /**
          * @brief Returns if camera input should be disabled (if user interacting with cursor)
