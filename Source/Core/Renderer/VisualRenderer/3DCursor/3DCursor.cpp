@@ -31,10 +31,6 @@ void Cursors3D::UpdateFrame(float* CameraView, float* CameraProjection) {
     // Set If Cursor Should Be Disabled
     IsCursorActive_ = ImGuizmo::IsUsing();
 
-    // Draw Grid
-    ImGuizmo::DrawGrid(CameraView, CameraProjection, identityMatrix, 100.f);
-
-
 
 }
 
