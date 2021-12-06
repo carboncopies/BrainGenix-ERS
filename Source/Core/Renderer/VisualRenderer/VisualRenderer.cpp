@@ -88,6 +88,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
     // Update 3D Cursor
     Cursors3D_->UpdateFrame();
+    Cursors3D_->EditTransform(Cameras_[Index].)
 
     // Check If Input Enabled
     bool CaptureMouseCursor = false;
