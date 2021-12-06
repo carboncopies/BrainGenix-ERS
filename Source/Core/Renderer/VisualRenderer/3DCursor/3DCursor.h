@@ -17,8 +17,7 @@
 
 
 // Third-Party Libraries (BG convention: use <> instead of "")
-
-#include <ImGui.h>
+#include <imgui.h>
 
 #include <ImGuizmo.h>
 

@@ -19,11 +19,14 @@
 #include <GLFW/glfw3.h>
 
 #include <imgui.h>
+
 #include <implot.h>
-//#include <imgui_dock.h>
+
+
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_opengl3.h>
 
+#include <ImGuizmo.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>

@@ -25,10 +25,14 @@ Cursors3D::~Cursors3D() {
 // Cursor Update Frame Function
 void Cursors3D::UpdateFrame() {
 
+
+
     // Set If Cursor Should Be Disabled
-    IsCursorActive_ = gizmo_is_active();
+    IsCursorActive_ = ImGuizmo::IsUsing();
 
 
+    // End Guizmo
+    ImGuizmo::SetDrawlist();
 
 }
 
