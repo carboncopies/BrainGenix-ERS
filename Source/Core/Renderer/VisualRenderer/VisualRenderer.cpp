@@ -115,9 +115,20 @@ float objectMatrix[4][16] = {
     float Position[] = {Cameras_[Index]->Position.x, Cameras_[Index]->Position.y, Cameras_[Index]->Position.z};
     float ViewMatrix[] = {1.0f,1.0f,1.0f,1.0f};
 
-    float a = 1.0f;
-    float b = 1.0f;
-    Cursors3D_->EditTransform(&a, &b, objectMatrix[16], true);
+
+
+    double dArray[16] = {0.0};
+    const float *pSource = (const float*)glm::value_ptr(Cameras_[Index]->GetViewMatrix());
+    for (int i = 0; i < 16; ++i)
+        dArray[i] = pSource[i];
+
+    double dArray2[16] = {0.0};
+    const float *pSource2 = (const float*)glm::value_ptr(Cameras_[Index]->GetProjectionMatrix());
+    for (int i = 0; i < 16; ++i)
+        dArray2[i] = pSource2[i];
+
+
+    Cursors3D_->EditTransform((float*)dArray, &(float*)dArray2, objectMatrix[16], true);
 
     // Check If Input Enabled
     bool CaptureMouseCursor = false;

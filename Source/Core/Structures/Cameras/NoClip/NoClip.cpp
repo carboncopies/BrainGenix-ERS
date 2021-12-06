@@ -15,6 +15,10 @@ glm::mat4 ERS_OBJECT_CAMERA_NOCLIP::GetViewMatrix() {
     return glm::lookAt(Position, Position + Front, Up);
 }
 
+glm::mat4 ERS_OBJECT_CAMERA_NOCLIP::GetProjectionMatrix() {
+    return glm::perspective(Zoom, 1920.0f/1080.0f, 0.1f, 100.0f);
+
+}
 
 void ERS_OBJECT_CAMERA_NOCLIP::ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
 

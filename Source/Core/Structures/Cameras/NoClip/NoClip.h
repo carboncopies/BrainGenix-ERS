@@ -90,7 +90,8 @@ class ERS_OBJECT_CAMERA_NOCLIP {
 
         // Return View Matrix
         glm::mat4 GetViewMatrix();
-
+        glm::mat4 GetProjectionMatrix();
+        
         // Proces Keyboard Input
         void ProcessKeyboard(CameraMovement Direction, float DeltaTime);
 
