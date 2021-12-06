@@ -39,5 +39,5 @@ void Cursors3D::UpdateFrame() {
 
 // Dsable Camera Movement Function
 bool Cursors3D::DisableCameraMovement() {
-    return IsCursorActive_;
+    return !IsCursorActive_;
 }

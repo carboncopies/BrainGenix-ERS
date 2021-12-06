@@ -50,7 +50,7 @@ class VisualRenderer {
         YAML::Node *SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
         LoggerClass *Logger_; /**<Pointer to the logging system instance*/
         GLFWwindow *Window_; /**<GLFW Window Instance For Window Input To Viewports*/
-        Cursors3D *Cursors3D; /**<Setup 3D Cursor Class*/
+        Cursors3D *Cursors3D_; /**<Setup 3D Cursor Class*/
 
         std::vector<ERS_OBJECT_CAMERA_NOCLIP*> Cameras_; /**<List Of Pointers To Camera Instances*/
         std::vector<ERS_OBJECT_SHADER*> Shaders_; /**<List Of Pointers To Shader Instances*/
