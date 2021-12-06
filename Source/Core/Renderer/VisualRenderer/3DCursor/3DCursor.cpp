@@ -114,7 +114,7 @@ void Cursors3D::EditTransform(float* cameraView, float* cameraProjection, float*
     ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, WindowWidth, WindowHeight);
 
    
-
+ImGuizmo::SetDrawlist();
     ImGuizmo::DrawGrid(cameraView, cameraProjection, identityMatrix, 100.f);
     //ImGuizmo::DrawCubes(cameraView, cameraProjection, &objectMatrix[0][0], gizmoCount);
     ImGuizmo::Manipulate(cameraView, cameraProjection, mCurrentGizmoOperation, mCurrentGizmoMode, matrix, NULL, useSnap ? &snap[0] : NULL, boundSizing ? bounds : NULL, boundSizingSnap ? boundsSnap : NULL);
