@@ -26,7 +26,7 @@ Cursors3D::~Cursors3D() {
 void Cursors3D::UpdateFrame(float* CameraView, float* CameraProjection) {
 
     // Start ImGizmo Drawlist
-    ImGuizmo::SetDrawlist();
+    ImGuizmo::SetDrawlist(ImGui::GetWindowDrawList());
 
     // Set If Cursor Should Be Disabled
     IsCursorActive_ = ImGuizmo::IsUsing();
