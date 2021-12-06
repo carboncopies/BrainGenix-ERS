@@ -123,12 +123,12 @@ float objectMatrix[4][16] = {
         dArray[i] = pSource[i];
 
     double dArray2[16] = {0.0};
-    const float *pSource2 = (const float*)glm::value_ptr(Cameras_[Index]->GetViewMatrix());
+    const float *pSource2 = (const float*)glm::value_ptr(Cameras_[Index]->GetProjectionMatrix());
     for (int i = 0; i < 16; ++i)
         dArray2[i] = pSource2[i];
 
 
-    Cursors3D_->EditTransform((float*)dArray, (float*)dArray2, objectMatrix[16], true);
+    Cursors3D_->EditTransform((float*)dArray2, (float*)dArray, objectMatrix[16], true);
 
     // Check If Input Enabled
     bool CaptureMouseCursor = false;
