@@ -123,7 +123,11 @@ void Cursors3D::EditTransform(float* cameraView, float* cameraProjection, float*
    }
    else
    {
-      ImGuizmo::SetRect(0, 0, io.DisplaySize.x, io.DisplaySize.y);
+    //   ImGuizmo::SetRect(0, 0, io.DisplaySize.x, io.DisplaySize.y);
+        float windowWidth = (float)ImGui::GetWindowWidth();
+        float windowHeight = (float)ImGui::GetWindowHeight();
+        ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
+   
    }
 
    ImGuizmo::DrawGrid(cameraView, cameraProjection, identityMatrix, 100.f);

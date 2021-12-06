@@ -128,7 +128,7 @@ float objectMatrix[4][16] = {
         dArray2[i] = pSource2[i];
 
 
-    Cursors3D_->EditTransform((float*)dArray2, (float*)dArray2, objectMatrix[16], true);
+    Cursors3D_->EditTransform((float*)dArray, (float*)dArray2, objectMatrix[16], true);
 
     // Check If Input Enabled
     bool CaptureMouseCursor = false;
