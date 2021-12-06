@@ -36,7 +36,7 @@ class Widget_FrameratePlot {
     public:
 
         // Show/Hide Var
-        bool Enabled_ = true; /**<Show/Hide Widget*/
+        bool Enabled_ = false; /**<Show/Hide Widget*/
 
 
         /**
