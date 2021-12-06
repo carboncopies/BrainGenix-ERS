@@ -62,8 +62,6 @@ void Cursors3D::EditTransform(float* cameraView, float* cameraProjection, float*
       ImGui::SameLine();
       if (ImGui::RadioButton("Scale", mCurrentGizmoOperation == ImGuizmo::SCALE))
          mCurrentGizmoOperation = ImGuizmo::SCALE;
-      if (ImGui::RadioButton("Universal", mCurrentGizmoOperation == ImGuizmo::UNIVERSAL))
-         mCurrentGizmoOperation = ImGuizmo::UNIVERSAL;
       float matrixTranslation[3], matrixRotation[3], matrixScale[3];
       ImGuizmo::DecomposeMatrixToComponents(matrix, matrixTranslation, matrixRotation, matrixScale);
       ImGui::InputFloat3("Tr", matrixTranslation);
