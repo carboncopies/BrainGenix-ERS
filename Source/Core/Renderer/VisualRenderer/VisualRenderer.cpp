@@ -123,7 +123,7 @@ float objectMatrix[4][16] = {
         dArray[i] = pSource[i];
 
     double dArray2[16] = {0.0};
-    const float *pSource2 = (const float*)glm::value_ptr(Cameras_[Index]->GetProjectionMatrix());
+    const float *pSource2 = (const float*)glm::value_ptr(Cameras_[Index]->GetViewMatrix());
     for (int i = 0; i < 16; ++i)
         dArray2[i] = pSource2[i];
 
