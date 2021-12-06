@@ -178,7 +178,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     { 1.f, 0.f, 0.f, 0.f,
     0.f, 1.f, 0.f, 0.f,
     0.f, 0.f, 1.f, 0.f,
-    0.f, 0.f, 2.f, 1.f }
+    0.f, 0.f, 8.f, 1.f }
     };
 
 
