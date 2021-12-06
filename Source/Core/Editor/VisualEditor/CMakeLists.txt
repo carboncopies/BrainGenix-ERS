@@ -23,6 +23,7 @@ target_link_libraries(VisualEditor
     glfw
     IMGUI
     ImPlot
+    ImGuizmo
     )
 
 # Link Internal Libs

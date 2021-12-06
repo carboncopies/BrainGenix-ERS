@@ -88,6 +88,9 @@ void GUISystem::UpdateGUI() {
     ImGui::DockSpaceOverViewport();
 
 
+    // Begin Guizmo
+    ImGuizmo::BeginFrame();
+
     //ImGui::ShowDemoWindow();
 
 
