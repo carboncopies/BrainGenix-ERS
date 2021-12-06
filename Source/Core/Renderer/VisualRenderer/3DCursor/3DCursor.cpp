@@ -105,36 +105,19 @@ void Cursors3D::EditTransform(float* cameraView, float* cameraProjection, float*
       }
    }
 
-   ImGuiIO& io = ImGui::GetIO();
-   float viewManipulateRight = io.DisplaySize.x;
-   float viewManipulateTop = 0;
-   if (useWindow)
-   {
-      ImGui::SetNextWindowSize(ImVec2(800, 400));
-      ImGui::SetNextWindowPos(ImVec2(400,20));
-      ImGui::PushStyleColor(ImGuiCol_WindowBg, (ImVec4)ImColor(0.35f, 0.3f, 0.3f));
-      ImGui::Begin("Gizmo", 0, ImGuiWindowFlags_NoMove);
-      ImGuizmo::SetDrawlist();
-      float windowWidth = (float)ImGui::GetWindowWidth();
-      float windowHeight = (float)ImGui::GetWindowHeight();
-      ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
-      viewManipulateRight = ImGui::GetWindowPos().x + windowWidth;
-      viewManipulateTop = ImGui::GetWindowPos().y;
-   }
-   else
-   {
-    //   ImGuizmo::SetRect(0, 0, io.DisplaySize.x, io.DisplaySize.y);
-        float windowWidth = (float)ImGui::GetWindowWidth();
-        float windowHeight = (float)ImGui::GetWindowHeight();
-        ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
+
+
+    float WindowWidth = (float)ImGui::GetWindowWidth();
+    float WindowHeight = (float)ImGui::GetWindowHeight();
+    ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, WindowWidth, WindowHeight);
+
    
-   }
 
    ImGuizmo::DrawGrid(cameraView, cameraProjection, identityMatrix, 100.f);
-   ImGuizmo::DrawCubes(cameraView, cameraProjection, &objectMatrix[0][0], gizmoCount);
+   //ImGuizmo::DrawCubes(cameraView, cameraProjection, &objectMatrix[0][0], gizmoCount);
    ImGuizmo::Manipulate(cameraView, cameraProjection, mCurrentGizmoOperation, mCurrentGizmoMode, matrix, NULL, useSnap ? &snap[0] : NULL, boundSizing ? bounds : NULL, boundSizingSnap ? boundsSnap : NULL);
 
-   ImGuizmo::ViewManipulate(cameraView, camDistance, ImVec2(viewManipulateRight - 128, viewManipulateTop), ImVec2(128, 128), 0x10101010);
+   ImGuizmo::ViewManipulate(cameraView, camDistance, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x10101010);
 
    if (useWindow)
    {
