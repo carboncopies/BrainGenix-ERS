@@ -26,7 +26,7 @@ VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, GLFWwindow* Win
     InitializeOpenGL();
 
     // Setup 3D Cursor
-    
+    Cursors3D_ = new Cursors3D();
 
 }
 
