@@ -159,41 +159,32 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
 
 
-float objectMatrix[4][16] = {
-  { 1.f, 0.f, 0.f, 0.f,
+    float objectMatrix[4][16] = {
+    { 1.f, 0.f, 0.f, 0.f,
+        0.f, 1.f, 0.f, 0.f,
+        0.f, 0.f, 1.f, 0.f,
+        0.f, 0.f, 0.f, 1.f },
+
+    { 1.f, 0.f, 0.f, 0.f,
     0.f, 1.f, 0.f, 0.f,
     0.f, 0.f, 1.f, 0.f,
-    0.f, 0.f, 0.f, 1.f },
+    2.f, 0.f, 0.f, 1.f },
 
-  { 1.f, 0.f, 0.f, 0.f,
-  0.f, 1.f, 0.f, 0.f,
-  0.f, 0.f, 1.f, 0.f,
-  2.f, 0.f, 0.f, 1.f },
+    { 1.f, 0.f, 0.f, 0.f,
+    0.f, 1.f, 0.f, 0.f,
+    0.f, 0.f, 1.f, 0.f,
+    2.f, 0.f, 2.f, 1.f },
 
-  { 1.f, 0.f, 0.f, 0.f,
-  0.f, 1.f, 0.f, 0.f,
-  0.f, 0.f, 1.f, 0.f,
-  2.f, 0.f, 2.f, 1.f },
-
-  { 1.f, 0.f, 0.f, 0.f,
-  0.f, 1.f, 0.f, 0.f,
-  0.f, 0.f, 1.f, 0.f,
-  0.f, 0.f, 2.f, 1.f }
-};
+    { 1.f, 0.f, 0.f, 0.f,
+    0.f, 1.f, 0.f, 0.f,
+    0.f, 0.f, 1.f, 0.f,
+    0.f, 0.f, 2.f, 1.f }
+    };
 
 
     // Update 3D Cursor
     Cursors3D_->UpdateFrame();
-
-    std::cout<<glm::to_string(view)<<std::endl;
-
-
-    float *pSource = (float*)glm::value_ptr(view);
-    float *pSource2 = (float*)glm::value_ptr(projection);
-
-    std::cout<<*pSource<<std::endl;
-
-    Cursors3D_->EditTransform(pSource, pSource2, objectMatrix[16], false);
+    Cursors3D_->EditTransform((float*)glm::value_ptr(view),(float*)glm::value_ptr(projection), objectMatrix[16], true);
 
 
 
