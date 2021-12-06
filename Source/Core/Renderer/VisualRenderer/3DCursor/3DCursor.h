@@ -52,7 +52,7 @@ class Cursors3D {
         bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
 
 
-        bool useWindow = true;
+        bool useWindow = false;
         int gizmoCount = 1;
         float camDistance = 8.f;
 
