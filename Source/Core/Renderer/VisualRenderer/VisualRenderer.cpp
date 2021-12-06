@@ -87,52 +87,11 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     int RenderHeight = ImGui::GetWindowSize().y;
 
 
-float objectMatrix[4][16] = {
-  { 1.f, 0.f, 0.f, 0.f,
-    0.f, 1.f, 0.f, 0.f,
-    0.f, 0.f, 1.f, 0.f,
-    0.f, 0.f, 0.f, 1.f },
 
-  { 1.f, 0.f, 0.f, 0.f,
-  0.f, 1.f, 0.f, 0.f,
-  0.f, 0.f, 1.f, 0.f,
-  2.f, 0.f, 0.f, 1.f },
-
-  { 1.f, 0.f, 0.f, 0.f,
-  0.f, 1.f, 0.f, 0.f,
-  0.f, 0.f, 1.f, 0.f,
-  2.f, 0.f, 2.f, 1.f },
-
-  { 1.f, 0.f, 0.f, 0.f,
-  0.f, 1.f, 0.f, 0.f,
-  0.f, 0.f, 1.f, 0.f,
-  0.f, 0.f, 2.f, 1.f }
-};
-
-
-    // Update 3D Cursor
-    Cursors3D_->UpdateFrame();
-    float Position[] = {Cameras_[Index]->Position.x, Cameras_[Index]->Position.y, Cameras_[Index]->Position.z};
-    float ViewMatrix[] = {1.0f,1.0f,1.0f,1.0f};
-
-
-
-    double dArray[16] = {0.0};
-    const float *pSource = (const float*)glm::value_ptr(Cameras_[Index]->GetViewMatrix());
-    for (int i = 0; i < 16; ++i)
-        dArray[i] = pSource[i];
-
-    double dArray2[16] = {0.0};
-    const float *pSource2 = (const float*)glm::value_ptr(Cameras_[Index]->GetProjectionMatrix());
-    for (int i = 0; i < 16; ++i)
-        dArray2[i] = pSource2[i];
-
-
-    Cursors3D_->EditTransform((float*)dArray, (float*)dArray2, objectMatrix[16], true);
 
     // Check If Input Enabled
     bool CaptureMouseCursor = false;
-    if (Cursors3D_->DisableCameraMovement() && ImGui::IsWindowFocused() && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
+    if (ImGui::IsWindowFocused() && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
         CaptureMouseCursor = true;
     } 
         
@@ -186,6 +145,53 @@ float objectMatrix[4][16] = {
 
     // Draw Models
     SceneManager->Render(Shaders_[Index]);
+
+
+float objectMatrix[4][16] = {
+  { 1.f, 0.f, 0.f, 0.f,
+    0.f, 1.f, 0.f, 0.f,
+    0.f, 0.f, 1.f, 0.f,
+    0.f, 0.f, 0.f, 1.f },
+
+  { 1.f, 0.f, 0.f, 0.f,
+  0.f, 1.f, 0.f, 0.f,
+  0.f, 0.f, 1.f, 0.f,
+  2.f, 0.f, 0.f, 1.f },
+
+  { 1.f, 0.f, 0.f, 0.f,
+  0.f, 1.f, 0.f, 0.f,
+  0.f, 0.f, 1.f, 0.f,
+  2.f, 0.f, 2.f, 1.f },
+
+  { 1.f, 0.f, 0.f, 0.f,
+  0.f, 1.f, 0.f, 0.f,
+  0.f, 0.f, 1.f, 0.f,
+  0.f, 0.f, 2.f, 1.f }
+};
+
+
+    // Update 3D Cursor
+    Cursors3D_->UpdateFrame();
+    float Position[] = {Cameras_[Index]->Position.x, Cameras_[Index]->Position.y, Cameras_[Index]->Position.z};
+    float ViewMatrix[] = {1.0f,1.0f,1.0f,1.0f};
+
+
+
+    double dArray[16] = {0.0};
+    const float *pSource = (const float*)glm::value_ptr(Cameras_[Index]->GetViewMatrix());
+    for (int i = 0; i < 16; ++i)
+        dArray[i] = pSource[i];
+
+    double dArray2[16] = {0.0};
+    const float *pSource2 = (const float*)glm::value_ptr(Cameras_[Index]->GetProjectionMatrix());
+    for (int i = 0; i < 16; ++i)
+        dArray2[i] = pSource2[i];
+
+
+    Cursors3D_->EditTransform((float*)dArray, (float*)dArray2, objectMatrix[16], true);
+
+
+
 
     // Render Framebuffer To Window
     ImGui::GetWindowDrawList()->AddImage(
