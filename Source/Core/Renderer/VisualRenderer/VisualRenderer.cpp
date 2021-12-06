@@ -184,7 +184,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
     // Update 3D Cursor
     Cursors3D_->UpdateFrame();
-    Cursors3D_->EditTransform((float*)glm::value_ptr(view),(float*)glm::value_ptr(projection), objectMatrix[16], true);
+    Cursors3D_->EditTransform((float*)glm::value_ptr(view),(float*)glm::value_ptr(projection), objectMatrix[16], false);
 
 
 
