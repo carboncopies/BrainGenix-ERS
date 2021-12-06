@@ -36,6 +36,49 @@ enum class GizmoMode
 
 
 
+
+bool useWindow = true;
+int gizmoCount = 1;
+float camDistance = 8.f;
+static ImGuizmo::OPERATION mCurrentGizmoOperation(ImGuizmo::TRANSLATE);
+
+float objectMatrix[4][16] = {
+  { 1.f, 0.f, 0.f, 0.f,
+    0.f, 1.f, 0.f, 0.f,
+    0.f, 0.f, 1.f, 0.f,
+    0.f, 0.f, 0.f, 1.f },
+
+  { 1.f, 0.f, 0.f, 0.f,
+  0.f, 1.f, 0.f, 0.f,
+  0.f, 0.f, 1.f, 0.f,
+  2.f, 0.f, 0.f, 1.f },
+
+  { 1.f, 0.f, 0.f, 0.f,
+  0.f, 1.f, 0.f, 0.f,
+  0.f, 0.f, 1.f, 0.f,
+  2.f, 0.f, 2.f, 1.f },
+
+  { 1.f, 0.f, 0.f, 0.f,
+  0.f, 1.f, 0.f, 0.f,
+  0.f, 0.f, 1.f, 0.f,
+  0.f, 0.f, 2.f, 1.f }
+};
+
+static const float identityMatrix[16] =
+{ 1.f, 0.f, 0.f, 0.f,
+    0.f, 1.f, 0.f, 0.f,
+    0.f, 0.f, 1.f, 0.f,
+    0.f, 0.f, 0.f, 1.f };
+
+
+
+
+
+
+
+
+
+
 /**
  * @brief Setup 3D Cursors for the user to edit with
  * 
@@ -45,7 +88,6 @@ class Cursors3D {
     private:
 
         bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
-
 
     public:
 
@@ -65,6 +107,9 @@ class Cursors3D {
          * @return false 
          */
         bool DisableCameraMovement();
+
+
+        void EditTransform(float* cameraView, float* cameraProjection, float* matrix, bool editTransformDecomposition);
 
 };
 
