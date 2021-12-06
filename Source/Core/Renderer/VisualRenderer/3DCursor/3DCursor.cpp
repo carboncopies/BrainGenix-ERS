@@ -25,13 +25,13 @@ Cursors3D::~Cursors3D() {
 // Cursor Update Frame Function
 void Cursors3D::UpdateFrame(float* CameraView, float* CameraProjection) {
 
-
+    // Start ImGizmo Drawlist
+    ImGuizmo::SetDrawlist();
 
     // Set If Cursor Should Be Disabled
     IsCursorActive_ = ImGuizmo::IsUsing();
 
-
-
+    // Draw Grid
     ImGuizmo::DrawGrid(CameraView, CameraProjection, identityMatrix, 100.f);
 
 
@@ -114,8 +114,7 @@ void Cursors3D::EditTransform(float* cameraView, float* cameraProjection, float*
     ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, WindowWidth, WindowHeight);
 
    
-ImGuizmo::SetDrawlist();
-    ImGuizmo::DrawGrid(cameraView, cameraProjection, identityMatrix, 100.f);
+
     //ImGuizmo::DrawCubes(cameraView, cameraProjection, &objectMatrix[0][0], gizmoCount);
     ImGuizmo::Manipulate(cameraView, cameraProjection, mCurrentGizmoOperation, mCurrentGizmoMode, matrix, NULL, useSnap ? &snap[0] : NULL, boundSizing ? bounds : NULL, boundSizingSnap ? boundsSnap : NULL);
 
