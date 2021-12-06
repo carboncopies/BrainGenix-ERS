@@ -143,7 +143,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     Shaders_[Index]->SetMat4("view", view);
 
     // Start To Draw 3D Cursor
-    Cursors3D_->UpdateFrame((float*)glm::value_ptr(view),(float*)glm::value_ptr(projection));
+    Cursors3D_->BeginRenderpass((float*)glm::value_ptr(view),(float*)glm::value_ptr(projection));
 
 
     // Draw Models
@@ -186,7 +186,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
 
     // Finish 3D Cursor
-    Cursors3D_->EditTransform((float*)glm::value_ptr(view),(float*)glm::value_ptr(projection), objectMatrix[16], false);
+    Cursors3D_->EndRenderpass((float*)glm::value_ptr(view),(float*)glm::value_ptr(projection), objectMatrix[16], false);
 
 
 

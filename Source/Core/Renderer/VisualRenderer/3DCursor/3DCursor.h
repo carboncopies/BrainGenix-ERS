@@ -99,7 +99,7 @@ class Cursors3D {
          * @brief Called Every Frame To Update Cursor
          * 
          */
-        void UpdateFrame(float* CameraView, float* CameraProjection);
+        void BeginRenderpass(float* CameraView, float* CameraProjection);
 
         /**
          * @brief Returns if camera input should be disabled (if user interacting with cursor)
@@ -110,7 +110,7 @@ class Cursors3D {
         bool DisableCameraMovement();
 
 
-        void EditTransform(float* cameraView, float* cameraProjection, float* matrix, bool editTransformDecomposition);
+        void EndRenderpass(float* cameraView, float* cameraProjection, float* matrix, bool editTransformDecomposition);
 
 };
 
