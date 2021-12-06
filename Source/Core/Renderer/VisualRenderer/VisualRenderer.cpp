@@ -86,9 +86,38 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     int RenderWidth = ImGui::GetWindowSize().x;
     int RenderHeight = ImGui::GetWindowSize().y;
 
+
+float objectMatrix[4][16] = {
+  { 1.f, 0.f, 0.f, 0.f,
+    0.f, 1.f, 0.f, 0.f,
+    0.f, 0.f, 1.f, 0.f,
+    0.f, 0.f, 0.f, 1.f },
+
+  { 1.f, 0.f, 0.f, 0.f,
+  0.f, 1.f, 0.f, 0.f,
+  0.f, 0.f, 1.f, 0.f,
+  2.f, 0.f, 0.f, 1.f },
+
+  { 1.f, 0.f, 0.f, 0.f,
+  0.f, 1.f, 0.f, 0.f,
+  0.f, 0.f, 1.f, 0.f,
+  2.f, 0.f, 2.f, 1.f },
+
+  { 1.f, 0.f, 0.f, 0.f,
+  0.f, 1.f, 0.f, 0.f,
+  0.f, 0.f, 1.f, 0.f,
+  0.f, 0.f, 2.f, 1.f }
+};
+
+
     // Update 3D Cursor
     Cursors3D_->UpdateFrame();
-    Cursors3D_->EditTransform(Cameras_[Index].)
+    float Position[] = {Cameras_[Index]->Position.x, Cameras_[Index]->Position.y, Cameras_[Index]->Position.z};
+    float ViewMatrix[] = {1.0f,1.0f,1.0f,1.0f};
+
+    float a = 1.0f;
+    float b = 1.0f;
+    Cursors3D_->EditTransform(&a, &b, objectMatrix[16], true);
 
     // Check If Input Enabled
     bool CaptureMouseCursor = false;
