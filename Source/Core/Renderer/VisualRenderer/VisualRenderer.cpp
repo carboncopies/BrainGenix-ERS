@@ -157,7 +157,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
         ImVec2(1, 0)        
     );
 
-    
+
 
 float objectMatrix[4][16] = {
   { 1.f, 0.f, 0.f, 0.f,
@@ -184,21 +184,20 @@ float objectMatrix[4][16] = {
 
     // Update 3D Cursor
     Cursors3D_->UpdateFrame();
-    float Position[] = {Cameras_[Index]->Position.x, Cameras_[Index]->Position.y, Cameras_[Index]->Position.z};
-    float ViewMatrix[] = {1.0f,1.0f,1.0f,1.0f};
 
-
+    std::cout<<glm::to_string(view)<<std::endl;
 
     double dArray[16] = {0.0};
-    const float *pSource = (const float*)glm::value_ptr(Cameras_[Index]->GetViewMatrix());
+    const float *pSource = (const float*)glm::value_ptr(view);
     for (int i = 0; i < 16; ++i)
         dArray[i] = pSource[i];
 
     double dArray2[16] = {0.0};
-    const float *pSource2 = (const float*)glm::value_ptr(Cameras_[Index]->GetProjectionMatrix());
+    const float *pSource2 = (const float*)glm::value_ptr(projection);
     for (int i = 0; i < 16; ++i)
         dArray2[i] = pSource2[i];
 
+    std::cout<<&dArray<<std::endl;
 
     Cursors3D_->EditTransform((float*)dArray, (float*)dArray2, objectMatrix[16], false);
 
