@@ -147,6 +147,18 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     SceneManager->Render(Shaders_[Index]);
 
 
+    // Render Framebuffer To Window
+    ImGui::GetWindowDrawList()->AddImage(
+        (void*)(intptr_t)FramebufferObjects_[Index],
+        ImVec2(ImGui::GetCursorScreenPos()),
+        ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x,
+            ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
+        ImVec2(0, 1),
+        ImVec2(1, 0)        
+    );
+
+    
+
 float objectMatrix[4][16] = {
   { 1.f, 0.f, 0.f, 0.f,
     0.f, 1.f, 0.f, 0.f,
@@ -188,20 +200,12 @@ float objectMatrix[4][16] = {
         dArray2[i] = pSource2[i];
 
 
-    Cursors3D_->EditTransform((float*)dArray, (float*)dArray2, objectMatrix[16], true);
+    Cursors3D_->EditTransform((float*)dArray, (float*)dArray2, objectMatrix[16], false);
 
 
 
 
-    // Render Framebuffer To Window
-    ImGui::GetWindowDrawList()->AddImage(
-        (void*)(intptr_t)FramebufferObjects_[Index],
-        ImVec2(ImGui::GetCursorScreenPos()),
-        ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x,
-            ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
-        ImVec2(0, 1),
-        ImVec2(1, 0)        
-    );
+
 
     ImGui::End();
 
