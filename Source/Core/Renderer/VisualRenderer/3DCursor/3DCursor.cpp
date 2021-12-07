@@ -23,13 +23,13 @@ Cursors3D::~Cursors3D() {
 }
 
 // Cursor Update Frame Function
-void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraView, float* CameraProjection, float* Matrix, float CameraDistance) {
+void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraProjection, float* Matrix, float CameraDistance) {
 
     // Copy In Values
     Camera_ = Camera;
     CameraDistance_ = CameraDistance;
     CameraProjection_ = CameraProjection;
-    CameraView_ = CameraView;
+    CameraView_ = (float*)glm::value_ptr(Camera_->GetViewMatrix());;
     Matrix_ = Matrix;
 
 
@@ -54,12 +54,10 @@ void Cursors3D::EndRenderpass() {
     ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, WindowWidth, WindowHeight);
 
     // Setup Gizmo Matricies
-    float* CameraView = (float*)glm::value_ptr(Camera_->GetViewMatrix());
-    float* CameraProjection_ = (float*)
 
     //ImGuizmo::DrawCubes(cameraView, cameraProjection, &objectMatrix[0][0], gizmoCount);
-    ImGuizmo::Manipulate(CameraView, CameraProjection_, mCurrentGizmoOperation, ImGuizmo::WORLD, Matrix_, NULL, NULL);
-    ImGuizmo::ViewManipulate(CameraView, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 256, ImGui::GetWindowPos().y), ImVec2(256, 256), 0x00000000);
+    ImGuizmo::Manipulate(CameraView_, CameraProjection_, mCurrentGizmoOperation, ImGuizmo::WORLD, Matrix_, NULL, NULL);
+    ImGuizmo::ViewManipulate(CameraView_, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 256, ImGui::GetWindowPos().y), ImVec2(256, 256), 0x00000000);
 
 
 }
