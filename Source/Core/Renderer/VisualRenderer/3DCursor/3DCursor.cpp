@@ -67,9 +67,9 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
     bool RotEqual = ((LastPos_.RotX == CurrentPos_.RotX) && (LastPos_.RotY == CurrentPos_.RotY) && (LastPos_.RotZ == CurrentPos_.RotZ));
     bool ScaleEqual = ((LastPos_.ScaleX == CurrentPos_.ScaleX) && (LastPos_.ScaleY == CurrentPos_.ScaleY) && (LastPos_.ScaleZ == CurrentPos_.ScaleZ));
     if (PosEqual && RotEqual && ScaleEqual) {
-        HasObjectChanged = false;
+        HasObjectChanged_ = false;
     } else {
-        HasObjectChanged = true;
+        HasObjectChanged_ = true;
     }
     LastPos_ = CurrentPos_;
 
@@ -82,7 +82,13 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
 
 }
 
-// Test func
+
+// Check If LocRotScale Has Changed
+bool Cursors3D::HasLocRotScaleChanged() {
+    return HasObjectChanged_;
+}
+
+// End Render Pass
 void Cursors3D::EndRenderpass() {
 
 
@@ -91,7 +97,7 @@ void Cursors3D::EndRenderpass() {
     ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, WindowWidth, WindowHeight);
 
    
-    ImGuizmo::Manipulate(CameraView_, CameraProjection_, mCurrentGizmoOperation, ImGuizmo::WORLD, Matrix_[16], NULL, NULL);
+    ImGuizmo::Manipulate(CameraView_, CameraProjection_, CurrentGizmoOperation_, ImGuizmo::WORLD, Matrix_[16], NULL, NULL);
     ImGuizmo::ViewManipulate(CameraView_, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 256, ImGui::GetWindowPos().y), ImVec2(256, 256), 0x00000000);
 
 

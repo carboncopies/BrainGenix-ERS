@@ -105,7 +105,7 @@ class Cursors3D {
 
         ObjectLocRotScale CurrentPos_;
         ObjectLocRotScale LastPos_;
-        bool HasObjectChanged = false;
+        bool HasObjectChanged_ = false;
         
 
 
@@ -130,6 +130,8 @@ class Cursors3D {
 
 
         void EndRenderpass();
+        bool HasLocRotScaleChanged();
+
 
 };
 
