@@ -23,7 +23,10 @@ Cursors3D::~Cursors3D() {
 }
 
 // Cursor Update Frame Function
-void Cursors3D::BeginRenderpass(float* CameraView, float* CameraProjection) {
+void Cursors3D::BeginRenderpass(float* CameraView, float* CameraProjection, float CameraDistance) {
+
+    // Copy In Values
+    CameraDistance_ = CameraDistance;
 
     // Start ImGizmo Drawlist
     ImGuizmo::SetDrawlist(ImGui::GetWindowDrawList());
@@ -47,7 +50,7 @@ void Cursors3D::EndRenderpass(float* cameraView, float* cameraProjection, float*
     //ImGuizmo::DrawCubes(cameraView, cameraProjection, &objectMatrix[0][0], gizmoCount);
     ImGuizmo::Manipulate(cameraView, cameraProjection, mCurrentGizmoOperation, ImGuizmo::WORLD, matrix, NULL, NULL);
 
-    ImGuizmo::ViewManipulate(cameraView, camDistance, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x10101010);
+    ImGuizmo::ViewManipulate(cameraView, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x10101010);
 
 
 }
