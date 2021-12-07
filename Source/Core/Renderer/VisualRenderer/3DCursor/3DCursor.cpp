@@ -58,6 +58,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
     CurrentPos_.ScaleX = ObjectScale_[0];
     CurrentPos_.ScaleY = ObjectScale_[1];
     CurrentPos_.ScaleZ = ObjectScale_[2];
+    std::cout<<CurrentPos_.ScaleX<<CurrentPos_.ScaleY<<CurrentPos_.ScaleZ<<std::endl;
     
 
     ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
@@ -66,7 +67,6 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
     bool PosEqual = ((LastPos_.PosX == CurrentPos_.PosX) && (LastPos_.PosY == CurrentPos_.PosY) && (LastPos_.PosZ == CurrentPos_.PosZ));
     bool RotEqual = ((LastPos_.RotX == CurrentPos_.RotX) && (LastPos_.RotY == CurrentPos_.RotY) && (LastPos_.RotZ == CurrentPos_.RotZ));
     bool ScaleEqual = ((LastPos_.ScaleX == CurrentPos_.ScaleX) && (LastPos_.ScaleY == CurrentPos_.ScaleY) && (LastPos_.ScaleZ == CurrentPos_.ScaleZ));
-    std::cout<<PosEqual<<RotEqual<<ScaleEqual<<std::endl;
     if (PosEqual && RotEqual && ScaleEqual) {
         HasObjectChanged_ = false;
     } else {
