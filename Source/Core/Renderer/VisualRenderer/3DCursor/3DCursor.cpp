@@ -23,7 +23,7 @@ Cursors3D::~Cursors3D() {
 }
 
 // Cursor Update Frame Function
-void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraView, float* CameraProjection) {
+void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraView, float* CameraProjection, bool IsCameraMoving) {
 
     // Copy In Values
     Camera_ = Camera;
@@ -32,7 +32,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
     CameraView_ = CameraView;
 
     // Set Gizmo Mode
-    if (ImGui::IsWindowHovered()) {
+    if (ImGui::IsWindowHovered() && !IsCameraMoving) {
         if (ImGui::IsKeyPressed(71)) {
             mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
         } else if (ImGui::IsKeyPressed(82)) {

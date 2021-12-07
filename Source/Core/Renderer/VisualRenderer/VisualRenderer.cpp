@@ -87,8 +87,6 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     int RenderHeight = ImGui::GetWindowSize().y;
 
 
-
-
     // Check If Input Enabled
     bool CaptureMouseCursor = false;
     if (!Cursors3D_->DisableCameraMovement() && ImGui::IsWindowFocused() && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
@@ -145,7 +143,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
 
     // Start To Draw 3D Cursor
-    Cursors3D_->BeginRenderpass(Cameras_[Index], (float*)glm::value_ptr(view),(float*)glm::value_ptr(projection));
+    Cursors3D_->BeginRenderpass(Cameras_[Index], (float*)glm::value_ptr(view), (float*)glm::value_ptr(projection), CaptureMouseCursor);
 
 
     // Draw Models
