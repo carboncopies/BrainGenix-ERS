@@ -106,7 +106,7 @@ void ERS_OBJECT_MODEL::SetLocRotScale(glm::vec3 Position, glm::vec3 Rotation, gl
 bool ERS_OBJECT_MODEL::ApplyTransformations() {
 
     // Check If Template Model
-    if (!IsTemplateModel) {
+    //if (!IsTemplateModel) {
 
         // Reset ModelLocRotScale
         ModelLocRotScale_ = SourceModelLocRotScale_;
@@ -117,17 +117,16 @@ bool ERS_OBJECT_MODEL::ApplyTransformations() {
         ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(ModelRotation[1]), glm::vec3(0, 1, 0));
         ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(ModelRotation[2]), glm::vec3(0, 0, 1));
         ModelLocRotScale_ = glm::scale(ModelLocRotScale_, ModelScale);
-        std::cout<<glm::to_string(ModelLocRotScale_)<<std::endl;
 
         // Return Success
         return true;
 
-    } else {
+    //} else {
 
         // Return Failure
-        return false;
+        //return false;
 
-    }
+    //}
 
 }
 
