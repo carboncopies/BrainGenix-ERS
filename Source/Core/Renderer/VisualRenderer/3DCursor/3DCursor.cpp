@@ -30,8 +30,15 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float AspectRa
     Camera_ = Camera;
 
 
-    float* CameraView = (float*)glm::value_ptr(Camera_->GetViewMatrix());
-    float* CameraProjection = (float*)glm::value_ptr(glm::perspective(glm::radians(Camera_->Zoom), AspectRatio, 0.1f, 100.0f));
+    glm::mat4 View = Camera_->GetViewMatrix();
+    glm::mat4 Projection = glm::perspective(glm::radians(Camera_->Zoom), AspectRatio, 0.1f, 100.0f);
+
+
+    std::cout<<glm::to_string(View)<<std::endl;
+
+
+    float* CameraView = (float*)glm::value_ptr(View);
+    float* CameraProjection = (float*)glm::value_ptr(Projection);
     float CameraDistance = glm::distance(glm::vec3(0.0f, 0.0f, 0.0f), Camera_->Position);
 
 
@@ -42,7 +49,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float AspectRa
 
 
     //ImGuizmo::SetOrthographic(true);
-    float at[] = {0.0f, 0.0f, 0.0f};
+    //float at[] = {0.0f, 0.0f, 0.0f};
     //LookAt(CameraPosition, at, {0.0f, 1.0f, 0.0f}, CameraView_);
 
     // Start ImGizmo Drawlist
@@ -64,8 +71,8 @@ void Cursors3D::EndRenderpass() {
 
    
 
-    //ImGuizmo::DrawCubes(cameraView, cameraProjection, &objectMatrix[0][0], gizmoCount);
-    ImGuizmo::Manipulate(CameraView_, CameraProjection_, mCurrentGizmoOperation, ImGuizmo::WORLD, objectMatrix[16], NULL, NULL);
+    //ImGuizmo::DrawCubes(CameraView_, CameraProjection_, &objectMatrix[0][0], 1);
+    ImGuizmo::Manipulate(CameraView_, CameraProjection_, ImGuizmo::TRANSLATE, ImGuizmo::WORLD, &objectMatrix[0][0], NULL, NULL);
     ImGuizmo::ViewManipulate(CameraView_, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x10101010);
 
 
