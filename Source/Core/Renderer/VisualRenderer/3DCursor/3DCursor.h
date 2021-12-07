@@ -27,6 +27,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+#include <NoClip.h>
 
 
 
@@ -40,11 +41,6 @@ enum class GizmoMode
 
 
 
-
-
-
-
-
 /**
  * @brief Setup 3D Cursors for the user to edit with
  * 
@@ -55,18 +51,13 @@ class Cursors3D {
 
         bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
 
-
-
-
-
         float CameraDistance_;
-        int gizmoCount = 1;
 
         float* CameraView_;
         float* CameraProjection_;
         float* Matrix_;
 
-
+      
 
         ImGuizmo::OPERATION mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
 
