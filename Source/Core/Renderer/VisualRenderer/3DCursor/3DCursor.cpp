@@ -31,6 +31,8 @@ void Cursors3D::BeginRenderpass(float* CameraView, float* CameraProjection, floa
     CameraView_ = CameraView;
     Matrix_ = Matrix;
 
+    //ImGuizmo::SetOrthographic(true);
+
     // Start ImGizmo Drawlist
     ImGuizmo::SetDrawlist(ImGui::GetWindowDrawList());
 
