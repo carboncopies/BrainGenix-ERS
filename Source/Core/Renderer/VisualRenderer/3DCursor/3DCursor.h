@@ -52,10 +52,12 @@ class Cursors3D {
         bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
 
         float CameraDistance_;
-
-        bool useWindow = false;
         int gizmoCount = 1;
-        float camDistance = 8.f;
+
+        float* CameraView_;
+        float* CameraProjection_;
+        float* Matrix_;
+
 
         float objectMatrix[4][16] = {
         { 1.f, 0.f, 0.f, 0.f,
@@ -100,7 +102,7 @@ class Cursors3D {
          * @brief Called Every Frame To Update Cursor
          * 
          */
-        void BeginRenderpass(float* CameraView, float* CameraProjection, float CameraDistance);
+        void BeginRenderpass(float* CameraView, float* CameraProjection, float* Matrix, float CameraDistance);
 
         /**
          * @brief Returns if camera input should be disabled (if user interacting with cursor)
@@ -111,7 +113,7 @@ class Cursors3D {
         bool DisableCameraMovement();
 
 
-        void EndRenderpass(float* cameraView, float* cameraProjection, float* matrix, bool editTransformDecomposition);
+        void EndRenderpass();
 
 };
 

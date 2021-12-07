@@ -23,10 +23,13 @@ Cursors3D::~Cursors3D() {
 }
 
 // Cursor Update Frame Function
-void Cursors3D::BeginRenderpass(float* CameraView, float* CameraProjection, float CameraDistance) {
+void Cursors3D::BeginRenderpass(float* CameraView, float* CameraProjection, float* Matrix, float CameraDistance) {
 
     // Copy In Values
     CameraDistance_ = CameraDistance;
+    CameraProjection_ = CameraProjection;
+    CameraView_ = CameraView;
+    Matrix_ = Matrix;
 
     // Start ImGizmo Drawlist
     ImGuizmo::SetDrawlist(ImGui::GetWindowDrawList());
@@ -38,7 +41,7 @@ void Cursors3D::BeginRenderpass(float* CameraView, float* CameraProjection, floa
 }
 
 // Test func
-void Cursors3D::EndRenderpass(float* cameraView, float* cameraProjection, float* matrix, bool editTransformDecomposition) {
+void Cursors3D::EndRenderpass() {
 
 
     float WindowWidth = (float)ImGui::GetWindowWidth();
@@ -48,9 +51,9 @@ void Cursors3D::EndRenderpass(float* cameraView, float* cameraProjection, float*
    
 
     //ImGuizmo::DrawCubes(cameraView, cameraProjection, &objectMatrix[0][0], gizmoCount);
-    ImGuizmo::Manipulate(cameraView, cameraProjection, mCurrentGizmoOperation, ImGuizmo::WORLD, matrix, NULL, NULL);
+    ImGuizmo::Manipulate(CameraView_, CameraProjection_, mCurrentGizmoOperation, ImGuizmo::WORLD, Matrix_, NULL, NULL);
 
-    ImGuizmo::ViewManipulate(cameraView, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x10101010);
+    ImGuizmo::ViewManipulate(CameraView_, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x10101010);
 
 
 }

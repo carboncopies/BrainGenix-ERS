@@ -144,23 +144,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
     float CameraDistance = glm::distance(glm::vec3(0.0f, 0.0f, 0.0f), Cameras_[Index]->Position);
 
-    // Start To Draw 3D Cursor
-    Cursors3D_->BeginRenderpass((float*)glm::value_ptr(view),(float*)glm::value_ptr(projection), CameraDistance);
-
-
-    // Draw Models
-    SceneManager->Render(Shaders_[Index]);
-
-
-    // Render Framebuffer To Window
-    ImGui::GetWindowDrawList()->AddImage(
-        (void*)(intptr_t)FramebufferObjects_[Index],
-        ImVec2(ImGui::GetCursorScreenPos()),
-        ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x,
-            ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
-        ImVec2(0, 1),
-        ImVec2(1, 0)        
-    );
+    glm::mat4 LookMatrix = glm::lookAt(Cameras_[Index]->Position, glm::vec3(0.0f, 0.0f, 0.0f), Cameras_[Index]->Up);
 
 
 
@@ -186,9 +170,31 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     0.f, 0.f, 2.f, 1.f }
     };
 
+    // Start To Draw 3D Cursor
+    Cursors3D_->BeginRenderpass((float*)glm::value_ptr(LookMatrix),(float*)glm::value_ptr(projection), objectMatrix[16], CameraDistance);
+
+
+    // Draw Models
+    SceneManager->Render(Shaders_[Index]);
+
+
+    // Render Framebuffer To Window
+    ImGui::GetWindowDrawList()->AddImage(
+        (void*)(intptr_t)FramebufferObjects_[Index],
+        ImVec2(ImGui::GetCursorScreenPos()),
+        ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x,
+            ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
+        ImVec2(0, 1),
+        ImVec2(1, 0)        
+    );
+
+
+
+
+
 
     // Finish 3D Cursor
-    Cursors3D_->EndRenderpass((float*)glm::value_ptr(view),(float*)glm::value_ptr(projection), objectMatrix[16], false);
+    Cursors3D_->EndRenderpass();
 
 
 
