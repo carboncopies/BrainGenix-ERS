@@ -41,6 +41,24 @@ enum class GizmoMode
 };
 
 
+struct ObjectLocRotScale {
+
+    // Position
+    float PosX;
+    float PosY;
+    float PosZ;
+
+    // Rotation
+    float RotX;
+    float RotY;
+    float RotZ;
+
+    // Scale
+    float ScaleX;
+    float ScaleY;
+    float Scalez;
+
+};
 
 /**
  * @brief Setup 3D Cursors for the user to edit with
@@ -51,44 +69,44 @@ class Cursors3D {
     private:
 
 
-    float Matrix_[4][16] = {
-        { 1.f, 0.f, 0.f, 0.f,
-        0.f, 1.f, 0.f, 0.f,
-        0.f, 0.f, 1.f, 0.f,
-        0.f, 0.f, 0.f, 1.f },
+        float Matrix_[4][16] = { // Cube For Viewport Angle Identifier
+            { 1.f, 0.f, 0.f, 0.f,
+            0.f, 1.f, 0.f, 0.f,
+            0.f, 0.f, 1.f, 0.f,
+            0.f, 0.f, 0.f, 1.f },
 
-        { 1.f, 0.f, 0.f, 0.f,
-        0.f, 1.f, 0.f, 0.f,
-        0.f, 0.f, 1.f, 0.f,
-        2.f, 0.f, 0.f, 1.f },
+            { 1.f, 0.f, 0.f, 0.f,
+            0.f, 1.f, 0.f, 0.f,
+            0.f, 0.f, 1.f, 0.f,
+            2.f, 0.f, 0.f, 1.f },
 
-        { 1.f, 0.f, 0.f, 0.f,
-        0.f, 1.f, 0.f, 0.f,
-        0.f, 0.f, 1.f, 0.f,
-        2.f, 0.f, 2.f, 1.f },
+            { 1.f, 0.f, 0.f, 0.f,
+            0.f, 1.f, 0.f, 0.f,
+            0.f, 0.f, 1.f, 0.f,
+            2.f, 0.f, 2.f, 1.f },
 
-        { 1.f, 0.f, 0.f, 0.f,
-        0.f, 1.f, 0.f, 0.f,
-        0.f, 0.f, 1.f, 0.f,
-        0.f, 0.f, 2.f, 1.f }
-    };
-
-
-
-      bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
-
-      float CameraDistance_;
-
-      float* CameraView_;
-      float* CameraProjection_;
-
-
-      ERS_OBJECT_CAMERA_NOCLIP *Camera_;
-
-      ImGuizmo::OPERATION mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
+            { 1.f, 0.f, 0.f, 0.f,
+            0.f, 1.f, 0.f, 0.f,
+            0.f, 0.f, 1.f, 0.f,
+            0.f, 0.f, 2.f, 1.f }
+        };
 
 
 
+        bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
+        float CameraDistance_;
+        float* CameraView_;
+        float* CameraProjection_;
+
+
+        ERS_OBJECT_CAMERA_NOCLIP *Camera_;
+        ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE;
+
+
+        ObjectLocRotScale CurrentPos_;
+        ObjectLocRotScale LastPos_;
+        bool HasObjectChanged = false;
+        
 
 
     public:

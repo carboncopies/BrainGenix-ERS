@@ -34,19 +34,28 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
     // Set Gizmo Mode
     if (ImGui::IsWindowHovered() && !IsCameraMoving) {
         if (ImGui::IsKeyPressed(71)) {
-            mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
+            CurrentGizmoOperation_ = ImGuizmo::TRANSLATE;
         } else if (ImGui::IsKeyPressed(82)) {
-            mCurrentGizmoOperation = ImGuizmo::ROTATE;
+            CurrentGizmoOperation_ = ImGuizmo::ROTATE;
         } else if (ImGui::IsKeyPressed(83)) {
-            mCurrentGizmoOperation = ImGuizmo::SCALE;
+            CurrentGizmoOperation_ = ImGuizmo::SCALE;
         }
     }
 
-    float matrixTranslation[3], matrixRotation[3], matrixScale[3];
-    ImGuizmo::DecomposeMatrixToComponents(Matrix_[16], matrixTranslation, matrixRotation, matrixScale);
-    ImGuizmo::RecomposeMatrixFromComponents(matrixTranslation, matrixRotation, matrixScale, Matrix_[16]);
-    std::cout<<matrixTranslation[0]<<std::endl;
+    // Get Object Translation
+    float ObjectTranslation_[3], ObjectRotation_[3], ObjectScale_[3];
+    ImGuizmo::DecomposeMatrixToComponents(Matrix_[16], ObjectTranslation_, ObjectRotation_, ObjectScale_);
+    ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
 
+    // Check If Update Needed
+    if ((ObjectRotation_ == LastObjectRotation_) && (ObjectScale_ == LastObjectScale_) && (ObjectTranslation_ == LastObjectTranslation_)) {
+        HasObjectChanged = false;
+    } else {
+        HasObjectChanged = true;
+    }
+    LastObjectRotation_ = ObjectRotation_;
+    LastObjectScale_ = ObjectScale_;
+    LastObjectTranslation_ = ObjectTranslation_;
 
     // Start ImGizmo Drawlist
     ImGuizmo::SetDrawlist(ImGui::GetWindowDrawList());
