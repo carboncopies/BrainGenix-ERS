@@ -52,11 +52,11 @@ void Cursors3D::EndRenderpass() {
     float WindowHeight = (float)ImGui::GetWindowHeight();
     ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, WindowWidth, WindowHeight);
 
-   
+    float* CameraView = (float*)glm::value_ptr(Camera_->GetViewMatrix());
 
     //ImGuizmo::DrawCubes(cameraView, cameraProjection, &objectMatrix[0][0], gizmoCount);
-    ImGuizmo::Manipulate(glm::value_ptr(Camera_->GetViewMatrix()), CameraProjection_, mCurrentGizmoOperation, ImGuizmo::WORLD, Matrix_, NULL, NULL);
-    ImGuizmo::ViewManipulate(CameraView_, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 256, ImGui::GetWindowPos().y), ImVec2(256, 256), 0x00000000);
+    ImGuizmo::Manipulate(CameraView, CameraProjection_, mCurrentGizmoOperation, ImGuizmo::WORLD, Matrix_, NULL, NULL);
+    ImGuizmo::ViewManipulate(CameraView, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 256, ImGui::GetWindowPos().y), ImVec2(256, 256), 0x00000000);
 
 
 }
