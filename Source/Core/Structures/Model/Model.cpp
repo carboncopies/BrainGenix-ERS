@@ -114,6 +114,7 @@ bool ERS_OBJECT_MODEL::ApplyTransformations() {
         ModelLocRotScale_ = glm::rotate(SourceModelLocRotScale_, glm::radians(ModelRotation[1]), glm::vec3(0, 1, 0));
         ModelLocRotScale_ = glm::rotate(SourceModelLocRotScale_, glm::radians(ModelRotation[2]), glm::vec3(0, 0, 1));
         ModelLocRotScale_ = glm::scale(SourceModelLocRotScale_, ModelScale);
+        std::cout<<glm::to_string(ModelLocRotScale_)<<std::endl;
 
         // Return Success
         return true;
@@ -131,7 +132,6 @@ bool ERS_OBJECT_MODEL::ApplyTransformations() {
 glm::mat4 ERS_OBJECT_MODEL::GetMat4() {
 
     // Return Mat4 Projection Matrix
-    std::cout<<glm::to_string(ModelLocRotScale_)<<std::endl;
     return ModelLocRotScale_;
 
 }
