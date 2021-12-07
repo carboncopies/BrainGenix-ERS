@@ -87,10 +87,10 @@ class Cursors3D {
         ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE;
 
 
-        ObjectLocRotScale CurrentPos_;
-        ObjectLocRotScale LastPos_;
+        ERS_STRUCT_LocRotScale CurrentPos_;
+        ERS_STRUCT_LocRotScale LastPos_;
         bool HasObjectChanged_ = false;
-        
+        ERS_STRUCT_LocRotScale GetLocRotScale();
 
 
     public:

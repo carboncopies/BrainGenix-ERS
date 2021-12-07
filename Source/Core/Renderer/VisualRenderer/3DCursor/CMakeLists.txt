@@ -28,6 +28,7 @@ target_link_libraries(3DCursor
 target_link_libraries(3DCursor
     LoggingSystem
     NoClip
+    ERS_STRUCT_LocRotScale
     )
 
 target_include_directories(3DCursor PUBLIC ./)

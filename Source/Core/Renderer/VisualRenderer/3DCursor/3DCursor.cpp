@@ -88,6 +88,11 @@ bool Cursors3D::HasLocRotScaleChanged() {
     return HasObjectChanged_;
 }
 
+// Get LocRotScale
+ERS_STRUCT_LocRotScale Cursors3D::GetLocRotScale() {
+    return CurrentPos_;
+}
+
 // End Render Pass
 void Cursors3D::EndRenderpass() {
 

@@ -39,7 +39,7 @@
 #include <GUI.h>
 #include <Framebuffer.h>
 #include <3DCursor.h>
-
+#include <ERS_STRUCT_LocRotScale.h>
 
 
 

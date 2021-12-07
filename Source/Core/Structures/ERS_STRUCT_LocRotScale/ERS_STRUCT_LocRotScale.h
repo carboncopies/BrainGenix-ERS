@@ -23,7 +23,7 @@
  * @brief Stores Location, Rotation, Scale data in struct.
  * 
  */
-struct ObjectLocRotScale {
+struct ERS_STRUCT_LocRotScale {
 
     // Position
     float PosX;

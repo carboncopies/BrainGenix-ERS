@@ -44,6 +44,7 @@ target_link_libraries(VisualRenderer
     ShaderLoader
     Framebuffer
     3DCursor
+    ERS_STRUCT_LocRotScale
     )
 
 target_include_directories(VisualRenderer PUBLIC ./)
