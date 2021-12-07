@@ -31,13 +31,23 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
     CameraProjection_ = CameraProjection;
     CameraView_ = CameraView;
 
-
-    if (ImGui::IsKeyPressed(90))
+    // Set Gizmo Mode
+    if (ImGui::IsKeyPressed('g')) {
          mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
-    if (ImGui::IsKeyPressed(69))
+    } else if (ImGui::IsKeyPressed('r')) {
          mCurrentGizmoOperation = ImGuizmo::ROTATE;
-    if (ImGui::IsKeyPressed(82)) // r Key
+    } else if (ImGui::IsKeyPressed('s')) {
          mCurrentGizmoOperation = ImGuizmo::SCALE;
+    }
+
+    float matrixTranslation[3], matrixRotation[3], matrixScale[3];
+    ImGuizmo::DecomposeMatrixToComponents(Matrix_[16], matrixTranslation, matrixRotation, matrixScale);
+    ImGui::InputFloat3("Tr", matrixTranslation);
+    ImGui::InputFloat3("Rt", matrixRotation);
+    ImGui::InputFloat3("Sc", matrixScale);
+    ImGuizmo::RecomposeMatrixFromComponents(matrixTranslation, matrixRotation, matrixScale, Matrix_[16]);
+
+    std::cout<<matrixTranslation<<matrixRotation<<matrixScale<<std::endl;
 
 
     // Start ImGizmo Drawlist
