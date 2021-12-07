@@ -64,10 +64,6 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
             FirstFrame_ = false;
         }
 
-        ImGui::InputFloat3("Tr", ObjectTranslation_);
-        ImGui::InputFloat3("Rt", ObjectRotation_);
-        ImGui::InputFloat3("Sc", ObjectScale_);
-
         // Update Current LocRotScale
         CurrentPos_.PosX = ObjectTranslation_[0];
         CurrentPos_.PosY = ObjectTranslation_[1];
