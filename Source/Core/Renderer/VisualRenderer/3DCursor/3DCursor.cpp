@@ -51,7 +51,9 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
 
         // Force Scale To 1,1,1
         if (FirstFrame_) {
-            float ObjectScale_[3] = {1.0f, 1.0f, 1.0f};
+            ObjectScale_[0] = 1.0f;
+            ObjectScale_[1] = 1.0f;
+            ObjectScale_[2] = 1.0f;
             FirstFrame_ = false;
         }
 
