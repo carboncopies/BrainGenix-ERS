@@ -131,6 +131,7 @@ bool ERS_OBJECT_MODEL::ApplyTransformations() {
 glm::mat4 ERS_OBJECT_MODEL::GetMat4() {
 
     // Return Mat4 Projection Matrix
+    std::cout<<glm::to_string(ModelLocRotScale_)<<std::endl;
     return ModelLocRotScale_;
 
 }
