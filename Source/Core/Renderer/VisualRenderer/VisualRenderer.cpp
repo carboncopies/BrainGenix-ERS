@@ -149,7 +149,6 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     // Update Selected Model(s) If Needed
     if (Cursors3D_->HasLocRotScaleChanged()) {
         SceneManager->UpdateLocRotScale(Cursors3D_->GetLocRotScale());
-        SceneManager->UpdateLocRotScale(Cursors3D_->ApplyTransformation());
     }
 
     // Draw Models
