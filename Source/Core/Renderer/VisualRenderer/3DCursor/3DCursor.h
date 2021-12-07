@@ -49,13 +49,38 @@ class Cursors3D {
 
     private:
 
+
+    float Matrix_[4][16] = {
+        { 1.f, 0.f, 0.f, 0.f,
+        0.f, 1.f, 0.f, 0.f,
+        0.f, 0.f, 1.f, 0.f,
+        0.f, 0.f, 0.f, 1.f },
+
+        { 1.f, 0.f, 0.f, 0.f,
+        0.f, 1.f, 0.f, 0.f,
+        0.f, 0.f, 1.f, 0.f,
+        2.f, 0.f, 0.f, 1.f },
+
+        { 1.f, 0.f, 0.f, 0.f,
+        0.f, 1.f, 0.f, 0.f,
+        0.f, 0.f, 1.f, 0.f,
+        2.f, 0.f, 2.f, 1.f },
+
+        { 1.f, 0.f, 0.f, 0.f,
+        0.f, 1.f, 0.f, 0.f,
+        0.f, 0.f, 1.f, 0.f,
+        0.f, 0.f, 2.f, 1.f }
+    };
+
+
+
       bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
 
       float CameraDistance_;
 
       float* CameraView_;
       float* CameraProjection_;
-      float* Matrix_;
+
 
       ERS_OBJECT_CAMERA_NOCLIP *Camera_;
 
