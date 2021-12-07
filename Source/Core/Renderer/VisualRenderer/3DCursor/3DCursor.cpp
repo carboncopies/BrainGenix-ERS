@@ -32,6 +32,8 @@ void Cursors3D::BeginRenderpass(float* CameraView, float* CameraProjection, floa
     Matrix_ = Matrix;
 
     //ImGuizmo::SetOrthographic(true);
+    float at[] = {0.0f, 0.0f, 0.0f};
+    LookAt(CameraPosition, at, {0.0f, 1.0f, 0.0f}, CameraView_);
 
     // Start ImGizmo Drawlist
     ImGuizmo::SetDrawlist(ImGui::GetWindowDrawList());
