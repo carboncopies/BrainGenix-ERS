@@ -75,5 +75,5 @@ void Cursors3D::EndRenderpass() {
 
 // Dsable Camera Movement Function
 bool Cursors3D::DisableCameraMovement() {
-    return !IsCursorActive_;
+    return IsCursorActive_;
 }
