@@ -62,6 +62,7 @@ class ERS_OBJECT_CAMERA_NOCLIP {
         double MovementSpeed;
         float MouseSensitivity;
         float Zoom;
+        float AspectRatio_;
 
         // Config Params
         float MinMovementSpeed = 0.0f;
@@ -90,6 +91,7 @@ class ERS_OBJECT_CAMERA_NOCLIP {
 
         // Return View Matrix
         glm::mat4 GetViewMatrix();
+        glm::mat4 GetProjectionMatrix();
 
 
         // Proces Keyboard Input
@@ -99,6 +101,7 @@ class ERS_OBJECT_CAMERA_NOCLIP {
         void ProcessMouseMovement(float XOffset, float Yoffset, GLboolean ConstrainPitch = true);
         void ProcessMouseScroll(float YOffset);
 
+        void SetAspectRatio(float AspectRatio);
 
     private:
 

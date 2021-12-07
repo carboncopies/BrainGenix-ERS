@@ -15,6 +15,14 @@ glm::mat4 ERS_OBJECT_CAMERA_NOCLIP::GetViewMatrix() {
     return glm::lookAt(Position, Position + Front, Up);
 }
 
+glm::mat4 ERS_OBJECT_CAMERA_NOCLIP::GetProjectionMatrix() {
+    return glm::perspective(glm::radians(Zoom), AspectRatio_, 0.1f, 100.0f);
+}
+
+
+void ERS_OBJECT_CAMERA_NOCLIP::SetAspectRatio(float AspectRatio) {
+    AspectRatio_ = AspectRatio;
+}
 
 void ERS_OBJECT_CAMERA_NOCLIP::ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
 
