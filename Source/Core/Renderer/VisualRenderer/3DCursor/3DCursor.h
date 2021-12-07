@@ -29,6 +29,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 #include <NoClip.h>
+#include <ERS_STRUCT_LocRotScale.h>
 
 
 
