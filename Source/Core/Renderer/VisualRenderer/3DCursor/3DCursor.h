@@ -78,6 +78,7 @@ class Cursors3D {
 
 
         bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
+        bool FirstFrame_ = true;
         float CameraDistance_;
         float* CameraView_;
         float* CameraProjection_;
