@@ -56,7 +56,7 @@ struct ObjectLocRotScale {
     // Scale
     float ScaleX;
     float ScaleY;
-    float Scalez;
+    float ScaleZ;
 
 };
 
