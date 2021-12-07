@@ -48,7 +48,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
     ImGui::InputFloat3("Rt", matrixRotation);
     ImGui::InputFloat3("Sc", matrixScale);
     ImGuizmo::RecomposeMatrixFromComponents(matrixTranslation, matrixRotation, matrixScale, Matrix_[16]);
-
+    std::cout<<matrixTranslation[0]<<std::endl;
 
 
     // Start ImGizmo Drawlist
