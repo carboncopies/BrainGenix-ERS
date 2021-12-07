@@ -68,10 +68,30 @@ void Cursors3D::EndRenderpass() {
     float WindowHeight = (float)ImGui::GetWindowHeight();
     ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, WindowWidth, WindowHeight);
 
-   
+    float objectMatrix[4][16] = {
+    { 1.f, 0.f, 0.f, 0.f,
+        0.f, 1.f, 0.f, 0.f,
+        0.f, 0.f, 1.f, 0.f,
+        0.f, 0.f, 0.f, 1.f },
+
+    { 1.f, 0.f, 0.f, 0.f,
+    0.f, 1.f, 0.f, 0.f,
+    0.f, 0.f, 1.f, 0.f,
+    2.f, 0.f, 0.f, 1.f },
+
+    { 1.f, 0.f, 0.f, 0.f,
+    0.f, 1.f, 0.f, 0.f,
+    0.f, 0.f, 1.f, 0.f,
+    2.f, 0.f, 2.f, 1.f },
+
+    { 1.f, 0.f, 0.f, 0.f,
+    0.f, 1.f, 0.f, 0.f,
+    0.f, 0.f, 1.f, 0.f,
+    0.f, 0.f, 2.f, 1.f }
+    };
 
     //ImGuizmo::DrawCubes(CameraView_, CameraProjection_, &objectMatrix[0][0], 1);
-    ImGuizmo::Manipulate(CameraView_, CameraProjection_, ImGuizmo::TRANSLATE, ImGuizmo::WORLD, &objectMatrix[0][0], NULL, NULL);
+    ImGuizmo::Manipulate(CameraView_, CameraProjection_, mCurrentGizmoOperation, ImGuizmo::WORLD, objectMatrix[0], NULL, NULL);
     ImGuizmo::ViewManipulate(CameraView_, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x10101010);
 
 

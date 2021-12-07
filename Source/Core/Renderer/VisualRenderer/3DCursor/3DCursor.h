@@ -209,7 +209,7 @@ inline void rotationY(const float angle, float* m16)
 
         float* CameraView_;
         float* CameraProjection_;
-        float* Matrix_;
+
 
 
         float objectMatrix[4][16] = {
@@ -233,6 +233,8 @@ inline void rotationY(const float angle, float* m16)
         0.f, 0.f, 1.f, 0.f,
         0.f, 0.f, 2.f, 1.f }
         };
+
+        float* Matrix_ = (float*)objectMatrix;
 
         const float identityMatrix[16] =
         { 1.f, 0.f, 0.f, 0.f,
