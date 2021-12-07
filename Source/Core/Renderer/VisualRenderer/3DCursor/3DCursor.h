@@ -41,24 +41,7 @@ enum class GizmoMode
 };
 
 
-struct ObjectLocRotScale {
 
-    // Position
-    float PosX;
-    float PosY;
-    float PosZ;
-
-    // Rotation
-    float RotX;
-    float RotY;
-    float RotZ;
-
-    // Scale
-    float ScaleX;
-    float ScaleY;
-    float ScaleZ;
-
-};
 
 /**
  * @brief Setup 3D Cursors for the user to edit with

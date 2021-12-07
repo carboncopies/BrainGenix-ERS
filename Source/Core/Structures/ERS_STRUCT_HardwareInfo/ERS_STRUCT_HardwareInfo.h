@@ -9,7 +9,7 @@
     Date Created: 2021-12-03
 */
 
-
+#pragma once
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <vector>
