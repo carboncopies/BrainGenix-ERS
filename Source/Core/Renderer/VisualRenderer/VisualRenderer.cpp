@@ -142,10 +142,15 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     Shaders_[Index]->SetMat4("projection", projection);
     Shaders_[Index]->SetMat4("view", view);
 
+
+
     float CameraDistance = glm::distance(glm::vec3(0.0f, 0.0f, 0.0f), Cameras_[Index]->Position);
-    glm::mat4 LookMatrix = glm::lookAt(Cameras_[Index]->Position, glm::vec3(0.0f, 0.0f, 0.0f), Cameras_[Index]->Up);
+    //glm::mat4 LookMatrix = glm::lookAt(Cameras_[Index]->Position, glm::vec3(0.0f, 0.0f, 0.0f), glm::normalize(Cameras_[Index]->Up));
+    
+    glm::mat4 LookMatrix = view;
+    
     //LookMatrix = view;
-    std::cout<<glm::to_string(LookMatrix)<<std::endl;
+    //std::cout<<glm::to_string(LookMatrix)<<std::endl;
 
 
 
@@ -172,7 +177,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     };
 
     // Start To Draw 3D Cursor
-    Cursors3D_->BeginRenderpass((float*)glm::value_ptr(view),(float*)glm::value_ptr(projection), objectMatrix[16], CameraDistance);
+    Cursors3D_->BeginRenderpass((float*)glm::value_ptr(LookMatrix),(float*)glm::value_ptr(projection), objectMatrix[16], CameraDistance);
 
 
     // Draw Models
