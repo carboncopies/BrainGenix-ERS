@@ -143,10 +143,10 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     Shaders_[Index]->SetMat4("projection", projection);
     Shaders_[Index]->SetMat4("view", view);
 
-    float CameraDistance = glm::distance(glm::vec3(0.0f, 0.0f, 0.0f), Cameras_[Index]->Position);
+
 
     // Start To Draw 3D Cursor
-    Cursors3D_->BeginRenderpass(Cameras_[Index], (float*)glm::value_ptr(view),(float*)glm::value_ptr(projection), CameraDistance);
+    Cursors3D_->BeginRenderpass(Cameras_[Index], (float*)glm::value_ptr(view),(float*)glm::value_ptr(projection));
 
 
     // Draw Models

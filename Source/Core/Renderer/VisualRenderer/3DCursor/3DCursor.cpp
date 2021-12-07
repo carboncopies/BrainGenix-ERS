@@ -23,11 +23,11 @@ Cursors3D::~Cursors3D() {
 }
 
 // Cursor Update Frame Function
-void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraView, float* CameraProjection, float CameraDistance) {
+void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraView, float* CameraProjection) {
 
     // Copy In Values
     Camera_ = Camera;
-    CameraDistance_ = CameraDistance;
+    CameraDistance_ = glm::distance(glm::vec3(0.0f, 0.0f, 0.0f), Camera_->Position);;
     CameraProjection_ = CameraProjection;
     CameraView_ = CameraView;
 
