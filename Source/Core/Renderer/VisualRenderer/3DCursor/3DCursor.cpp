@@ -76,7 +76,6 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
         CurrentPos_.ScaleX = ObjectScale_[0];
         CurrentPos_.ScaleY = ObjectScale_[1];
         CurrentPos_.ScaleZ = ObjectScale_[2];
-        std::cout<<CurrentPos_.ScaleX<<CurrentPos_.ScaleY<<CurrentPos_.ScaleZ<<std::endl;
     
 
     ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
@@ -121,7 +120,7 @@ void Cursors3D::EndRenderpass() {
     ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, WindowWidth, WindowHeight);
 
    
-    ImGuizmo::Manipulate(CameraView_, CameraProjection_, CurrentGizmoOperation_, ImGuizmo::WORLD, Matrix_[16], NULL, NULL);
+    ImGuizmo::Manipulate(CameraView_, CameraProjection_, CurrentGizmoOperation_, ImGuizmo::LOCAL, Matrix_[16], NULL, NULL);
     ImGuizmo::ViewManipulate(CameraView_, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 256, ImGui::GetWindowPos().y), ImVec2(256, 256), 0x00000000);
 
 
