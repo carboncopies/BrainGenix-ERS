@@ -34,7 +34,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float AspectRa
     glm::mat4 Projection = glm::perspective(glm::radians(Camera_->Zoom), AspectRatio, 0.1f, 100.0f);
 
 
-    std::cout<<glm::to_string(View)<<std::endl;
+    std::cout<<glm::to_string(Projection)<<std::endl;
 
 
     float* CameraView = (float*)glm::value_ptr(View);
