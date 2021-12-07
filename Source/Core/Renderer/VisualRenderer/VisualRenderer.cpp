@@ -148,7 +148,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
     // Update Selected Model(s) If Needed
     if (Cursors3D_->HasLocRotScaleChanged()) {
-        std::cout<<"fdsafdsa\n";
+        //std::cout<<"fdsafdsa\n";
         SceneManager->UpdateLocRotScale(Cursors3D_->GetLocRotScale());
     }
 

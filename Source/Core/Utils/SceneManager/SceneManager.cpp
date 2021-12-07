@@ -40,6 +40,7 @@ void SceneManager::UpdateLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
     glm::vec3 Scale = glm::vec3(LocRotScale.ScaleX, LocRotScale.ScaleY, LocRotScale.ScaleZ);
 
     Scenes_[ActiveScene_].Models[Scenes_[ActiveScene_].SelectedModel].SetLocRotScale(Pos, Rot, Scale);
+    Scenes_[ActiveScene_].Models[Scenes_[ActiveScene_].SelectedModel].ApplyTransformations();
 }
 
 // Add Scene Function
