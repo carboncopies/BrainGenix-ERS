@@ -48,6 +48,7 @@ struct ERS_OBJECT_MODEL {
 
 
     // Model Position Information
+    glm::mat4 SourceModelLocRotScale_ = glm::mat4(1.0f);
     glm::mat4 ModelLocRotScale_ = glm::mat4(1.0f);
 
 
