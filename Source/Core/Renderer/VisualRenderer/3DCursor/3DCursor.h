@@ -90,7 +90,7 @@ class Cursors3D {
         ERS_STRUCT_LocRotScale CurrentPos_;
         ERS_STRUCT_LocRotScale LastPos_;
         bool HasObjectChanged_ = false;
-        ERS_STRUCT_LocRotScale GetLocRotScale();
+
 
 
     public:
@@ -115,6 +115,7 @@ class Cursors3D {
 
         void EndRenderpass();
         bool HasLocRotScaleChanged();
+        ERS_STRUCT_LocRotScale GetLocRotScale();
 
 
 };

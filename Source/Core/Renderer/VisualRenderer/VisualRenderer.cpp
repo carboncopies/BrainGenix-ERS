@@ -146,6 +146,11 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     Cursors3D_->BeginRenderpass(Cameras_[Index], (float*)glm::value_ptr(view), (float*)glm::value_ptr(projection), CaptureMouseCursor);
 
 
+    // Update Selected Model(s) If Needed
+    if (Cursors3D_->HasLocRotScaleChanged()) {
+        SceneManager->UpdateLocRotScale(Cursors3D_->)
+    }
+
     // Draw Models
     SceneManager->Render(Shaders_[Index]);
 
