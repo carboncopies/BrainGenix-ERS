@@ -17,19 +17,12 @@
 
 
 // Third-Party Libraries (BG convention: use <> instead of "")
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/gtx/string_cast.hpp>
-
-
 #include <imgui.h>
 
 #include <ImGuizmo.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
-#include <NoClip.h>
 
 
 
@@ -209,7 +202,7 @@ inline void rotationY(const float angle, float* m16)
 
         float* CameraView_;
         float* CameraProjection_;
-
+        float* Matrix_;
 
 
         float objectMatrix[4][16] = {
@@ -234,23 +227,16 @@ inline void rotationY(const float angle, float* m16)
         0.f, 0.f, 2.f, 1.f }
         };
 
-        float* Matrix_ = (float*)objectMatrix;
-
         const float identityMatrix[16] =
         { 1.f, 0.f, 0.f, 0.f,
             0.f, 1.f, 0.f, 0.f,
             0.f, 0.f, 1.f, 0.f,
             0.f, 0.f, 0.f, 1.f };
 
-
-
-
-
-
         ImGuizmo::OPERATION mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
 
 
-      ERS_OBJECT_CAMERA_NOCLIP *Camera_;
+
 
 
     public:
@@ -262,7 +248,7 @@ inline void rotationY(const float angle, float* m16)
          * @brief Called Every Frame To Update Cursor
          * 
          */
-        void BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float AspectRatio);
+        void BeginRenderpass(float* CameraView, float* CameraProjection, float* Matrix, float CameraDistance);
 
         /**
          * @brief Returns if camera input should be disabled (if user interacting with cursor)
