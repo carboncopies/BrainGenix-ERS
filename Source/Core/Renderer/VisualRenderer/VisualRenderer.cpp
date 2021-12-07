@@ -172,7 +172,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     };
 
     // Start To Draw 3D Cursor
-    Cursors3D_->BeginRenderpass((float*)glm::value_ptr(view),(float*)glm::value_ptr(LookMatrix), objectMatrix[16], CameraDistance);
+    Cursors3D_->BeginRenderpass((float*)glm::value_ptr(view),(float*)glm::value_ptr(projection), objectMatrix[16], CameraDistance);
 
 
     // Draw Models
