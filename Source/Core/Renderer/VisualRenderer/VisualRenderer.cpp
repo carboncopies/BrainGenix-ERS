@@ -143,8 +143,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     Shaders_[Index]->SetMat4("view", view);
 
     float CameraDistance = glm::distance(glm::vec3(0.0f, 0.0f, 0.0f), Cameras_[Index]->Position);
-
-    glm::mat4 LookMatrix = glm::lookAt(Cameras_[Index]->Position, glm::vec3(0.0f, 0.0f, 0.0f), Cameras_[Index]->Up);
+    glm::mat4 LookMatrix = glm::lookAt(Cameras_[Index]->Position, glm::vec3(0.0f, 0.0f, 0.0f), Cameras_[Index]->Up) * view;
 
 
 
