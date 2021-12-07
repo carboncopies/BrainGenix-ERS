@@ -86,7 +86,7 @@ void ERS_OBJECT_MODEL::SetLocRotScale(double LocX, double LocY, double LocZ, dou
 
     // Set Vecs
     ModelPosition = Position;
-    ModelRotation = Rotation;
+    ModelRotation = glm::normalize(Rotation);
     ModelScale = Scale;
 
 }
@@ -96,7 +96,7 @@ void ERS_OBJECT_MODEL::SetLocRotScale(glm::vec3 Position, glm::vec3 Rotation, gl
 
     // Set Vecs
     ModelPosition = Position;
-    ModelRotation = Rotation;
+    ModelRotation = glm::normalize(Rotation);
     ModelScale = Scale;
 
 }
