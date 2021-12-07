@@ -144,7 +144,6 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     Shaders_[Index]->SetMat4("view", view);
 
 
-
     // Start To Draw 3D Cursor
     Cursors3D_->BeginRenderpass(Cameras_[Index], (float*)glm::value_ptr(view),(float*)glm::value_ptr(projection));
 
