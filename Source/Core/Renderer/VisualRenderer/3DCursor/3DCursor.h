@@ -37,6 +37,26 @@ enum class GizmoMode
 
 
 
+
+
+
+
+/**
+ * @brief Setup 3D Cursors for the user to edit with
+ * 
+ */
+class Cursors3D {
+
+    private:
+
+        bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
+
+
+
+
+
+
+
 void Frustum(float left, float right, float bottom, float top, float znear, float zfar, float* m16)
 {
    float temp, temp2, temp3, temp4;
@@ -170,15 +190,12 @@ inline void rotationY(const float angle, float* m16)
 
 
 
-/**
- * @brief Setup 3D Cursors for the user to edit with
- * 
- */
-class Cursors3D {
 
-    private:
 
-        bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
+
+
+
+
 
         float CameraDistance_;
         int gizmoCount = 1;
