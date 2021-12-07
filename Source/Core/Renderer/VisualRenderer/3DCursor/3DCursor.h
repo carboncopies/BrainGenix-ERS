@@ -49,17 +49,17 @@ class Cursors3D {
 
     private:
 
-        bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
+      bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
 
-        float CameraDistance_;
+      float CameraDistance_;
 
-        float* CameraView_;
-        float* CameraProjection_;
-        float* Matrix_;
+      float* CameraView_;
+      float* CameraProjection_;
+      float* Matrix_;
 
-      
+      ERS_OBJECT_CAMERA_NOCLIP *Camera_;
 
-        ImGuizmo::OPERATION mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
+      ImGuizmo::OPERATION mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
 
 
 
@@ -74,7 +74,7 @@ class Cursors3D {
          * @brief Called Every Frame To Update Cursor
          * 
          */
-        void BeginRenderpass(float* CameraView, float* CameraProjection, float* Matrix, float CameraDistance);
+        void BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraView, float* CameraProjection, float* Matrix, float CameraDistance);
 
         /**
          * @brief Returns if camera input should be disabled (if user interacting with cursor)
