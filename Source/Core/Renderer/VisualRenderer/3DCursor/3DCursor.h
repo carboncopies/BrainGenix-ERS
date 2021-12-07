@@ -51,6 +51,7 @@ class Cursors3D {
 
         bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
 
+        float CameraDistance_;
 
         bool useWindow = false;
         int gizmoCount = 1;
@@ -99,7 +100,7 @@ class Cursors3D {
          * @brief Called Every Frame To Update Cursor
          * 
          */
-        void BeginRenderpass(float* CameraView, float* CameraProjection);
+        void BeginRenderpass(float* CameraView, float* CameraProjection, float CameraDistance);
 
         /**
          * @brief Returns if camera input should be disabled (if user interacting with cursor)
