@@ -55,7 +55,7 @@ void Cursors3D::EndRenderpass() {
    
 
     //ImGuizmo::DrawCubes(cameraView, cameraProjection, &objectMatrix[0][0], gizmoCount);
-    ImGuizmo::Manipulate(CameraView_, CameraProjection_, mCurrentGizmoOperation, ImGuizmo::WORLD, Matrix_, NULL, NULL);
+    ImGuizmo::Manipulate(glm::value_ptr(Camera_->GetViewMatrix()), CameraProjection_, mCurrentGizmoOperation, ImGuizmo::WORLD, Matrix_, NULL, NULL);
     ImGuizmo::ViewManipulate(CameraView_, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 256, ImGui::GetWindowPos().y), ImVec2(256, 256), 0x00000000);
 
 
