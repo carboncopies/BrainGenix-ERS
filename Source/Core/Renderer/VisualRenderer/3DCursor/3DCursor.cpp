@@ -42,11 +42,16 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
         }
     }
 
+
     // Get Object Translation
     float ObjectTranslation_[3];
     float ObjectRotation_[3];
     float ObjectScale_[3] = {1.0f, 1.0f, 1.0f};
     ImGuizmo::DecomposeMatrixToComponents(Matrix_[16], ObjectTranslation_, ObjectRotation_, ObjectScale_);
+
+      ImGui::InputFloat3("Tr", ObjectTranslation_);
+      ImGui::InputFloat3("Rt", ObjectRotation_);
+      ImGui::InputFloat3("Sc", ObjectScale_);
 
     // Update Current LocRotScale
     CurrentPos_.PosX = ObjectTranslation_[0];
