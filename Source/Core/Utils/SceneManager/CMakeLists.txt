@@ -24,6 +24,7 @@ target_link_libraries(SceneManager
 target_link_libraries(SceneManager
     Scene
     LoggingSystem
+    ERS_STRUCT_LocRotScale
     
     )
 

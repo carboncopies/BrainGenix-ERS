@@ -20,6 +20,7 @@
 #include <LoggingSystem.h>
 #include <Shader.h>
 #include <Scene.h>
+#include <ERS_STRUCT_LocRotScale.h>
 
 
 /**
@@ -86,5 +87,12 @@ class SceneManager{
          * @param Shader 
          */
         void Render(ERS_OBJECT_SHADER* Shader);
+
+        /**
+         * @brief Send LocRotScale Update To Object(s) In Active Scene
+         * 
+         * @param LocRotScale 
+         */
+        void UpdateLocRotScale(ERS_STRUCT_LocRotScale LocRotScale);
 
 };

@@ -34,6 +34,9 @@ struct ERS_OBJECT_SCENE{
     // List Of Required Materials (For Now, Can Only Be Models)
     std::vector<ERS_OBJECT_MODEL> Models; /**<Vector Containing Models That Are Parts Of The Scene*/
 
+    // Model That's Currently Selected
+    int SelectedModel = 0; /**<The Model That Is Currently Selected*/
+
     // Scene Metadata
     long SceneFormatVersion; /**<Sets The Current Scene Version (from File/DB Entry), determines If System Can Load It*/
     std::string SceneName; /**<Metadata Setting Scene Name From It's Scene File/DB Entry*/
