@@ -47,12 +47,15 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
 // Test func
 void Cursors3D::EndRenderpass() {
 
-
+    // Get Window Properties
     float WindowWidth = (float)ImGui::GetWindowWidth();
     float WindowHeight = (float)ImGui::GetWindowHeight();
+
     ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, WindowWidth, WindowHeight);
 
+    // Setup Gizmo Matricies
     float* CameraView = (float*)glm::value_ptr(Camera_->GetViewMatrix());
+    float* CameraProjection_ = (float*)
 
     //ImGuizmo::DrawCubes(cameraView, cameraProjection, &objectMatrix[0][0], gizmoCount);
     ImGuizmo::Manipulate(CameraView, CameraProjection_, mCurrentGizmoOperation, ImGuizmo::WORLD, Matrix_, NULL, NULL);

@@ -137,7 +137,8 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
     // Update Camera
     float AspectRatio = (float)RenderWidth / (float)RenderHeight;
-    glm::mat4 projection = glm::perspective(glm::radians(Cameras_[Index]->Zoom), AspectRatio, 0.1f, 100.0f);
+    Cameras_[Index]->SetAspectRatio(AspectRatio);
+    glm::mat4 projection = Cameras_[Index]->GetProjectionMatrix();
     glm::mat4 view = Cameras_[Index]->GetViewMatrix();
     Shaders_[Index]->SetMat4("projection", projection);
     Shaders_[Index]->SetMat4("view", view);
