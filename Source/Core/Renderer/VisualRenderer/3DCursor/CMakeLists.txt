@@ -27,6 +27,7 @@ target_link_libraries(3DCursor
 # Link Internal Libs
 target_link_libraries(3DCursor
     LoggingSystem
+    NoClip
     )
 
 target_include_directories(3DCursor PUBLIC ./)
