@@ -32,7 +32,12 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
     CameraView_ = CameraView;
 
 
-
+    if (ImGui::IsKeyPressed(90))
+         mCurrentGizmoOperation = ImGuizmo::TRANSLATE;
+    if (ImGui::IsKeyPressed(69))
+         mCurrentGizmoOperation = ImGuizmo::ROTATE;
+    if (ImGui::IsKeyPressed(82)) // r Key
+         mCurrentGizmoOperation = ImGuizmo::SCALE;
 
 
     // Start ImGizmo Drawlist
