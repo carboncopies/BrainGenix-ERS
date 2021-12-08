@@ -148,7 +148,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
             HasObjectChanged_ = true;
 
             
-        } else if (IsLocRotScaleEqual(CurrentPos_, LastPos_)) {
+        } else if (!IsLocRotScaleEqual(CurrentPos_, LastPos_)) {
 
             // Assign Value To Floats
             ObjectScale_[0] = CurrentPos_.ScaleX;
