@@ -160,17 +160,13 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
             ObjectTranslation_[1] = CurrentPos_.PosY;
             ObjectTranslation_[2] = CurrentPos_.PosZ;
 
-            HasObjectChanged_ = false;
-
-
-        } else {
-
             HasObjectChanged_ = true;
+
 
         }
 
 
-    
+
     ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
 
     // Update Last Pos
