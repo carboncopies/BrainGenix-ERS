@@ -72,9 +72,9 @@ bool Cursors3D::IsLocRotScaleEqual(ERS_STRUCT_LocRotScale LRS1, ERS_STRUCT_LocRo
     bool RotEqual2 = ((LastPos_.RotX == CurrentPos_.RotX) && (LastPos_.RotY == CurrentPos_.RotY) && (LastPos_.RotZ == CurrentPos_.RotZ));
     bool ScaleEqual2 = ((LastPos_.ScaleX == CurrentPos_.ScaleX) && (LastPos_.ScaleY == CurrentPos_.ScaleY) && (LastPos_.ScaleZ == CurrentPos_.ScaleZ));
     if (PosEqual2 && RotEqual2 && ScaleEqual2) {
-        HasObjectChanged_ = false;
+        return false;
     } else {
-        HasObjectChanged_ = true;
+        return true;
     }
 
 
