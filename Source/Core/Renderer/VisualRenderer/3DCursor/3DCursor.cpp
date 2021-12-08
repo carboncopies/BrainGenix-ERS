@@ -130,7 +130,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
         bool ScaleEqual = ((ObjectScale_[0] == LastPos_.ScaleX) && (ObjectScale_[1] == LastPos_.ScaleY) && (ObjectScale_[2] == LastPos_.ScaleZ));
         bool IsEqual = (PosEqual && RotEqual && ScaleEqual);
         if (!IsEqual) {
-            std::cout<<"Using Gizmo Pos\n";
+
             // Update Current LocRotScale
             CurrentPos_.PosX = ObjectTranslation_[0];
             CurrentPos_.PosY = ObjectTranslation_[1];
@@ -144,10 +144,8 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
             CurrentPos_.ScaleY = ObjectScale_[1];
             CurrentPos_.ScaleZ = ObjectScale_[2];
 
-            std::cout<<CurrentPos_.PosX<<" "<<CurrentPos_.PosY<<" "<<CurrentPos_.PosZ<<"\n";
             
         } else if (IsLocRotScaleEqual(CurrentPos_, LastPos_)) {
-
 
             // Assign Value To Floats
             ObjectScale_[0] = CurrentPos_.ScaleX;
