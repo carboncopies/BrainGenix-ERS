@@ -78,13 +78,12 @@ class Cursors3D {
 
 
         bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
-        bool FirstFrame_ = true;
-        float CameraDistance_;
-        float* CameraView_;
-        float* CameraProjection_;
+        bool FirstFrame_ = true; 
+        float CameraDistance_; /**<Float Indicating the Camera Distance From The Gizmo*/
+        float* CameraView_; /**<Camera View Matrix, Converted From GLM::Mat4*/
+        float* CameraProjection_; /**<Camera Projection Matrix, Converted From GLM::Mat4*/
 
-
-        ERS_OBJECT_CAMERA_NOCLIP *Camera_;
+        ERS_OBJECT_CAMERA_NOCLIP *Camera_; 
         ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE;
 
 
