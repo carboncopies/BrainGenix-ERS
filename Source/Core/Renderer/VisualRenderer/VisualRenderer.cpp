@@ -50,7 +50,6 @@ VisualRenderer::~VisualRenderer() {
 
 void VisualRenderer::InitializeOpenGL() {
 
-
     // Setup GLAD
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         Logger_->Log("Failed To Initialize GLAD", 10);
