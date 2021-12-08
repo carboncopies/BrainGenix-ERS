@@ -76,7 +76,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
     float ObjectRotation_[3];
     float ObjectScale_[3];
     ImGuizmo::DecomposeMatrixToComponents(Matrix_[16], ObjectTranslation_, ObjectRotation_, ObjectScale_);
-
+        std::cout<<ObjectTranslation_[0]<<std::endl;
         // Force Scale To 1,1,1
         if (FirstFrame_) {
             ObjectScale_[0] = 1.0f;
