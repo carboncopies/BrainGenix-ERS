@@ -129,7 +129,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
         bool RotEqual = ((ObjectRotation_[0] == LastPos_.RotX) && (ObjectRotation_[1] == LastPos_.RotY) && (ObjectRotation_[2] == LastPos_.RotZ));
         bool ScaleEqual = ((ObjectScale_[0] == LastPos_.ScaleX) && (ObjectScale_[1] == LastPos_.ScaleY) && (ObjectScale_[2] == LastPos_.ScaleZ));
         bool IsEqual = (PosEqual && RotEqual && ScaleEqual);
-        if (IsEqual) {
+        if (!IsEqual) {
 
             // Update Current LocRotScale
             CurrentPos_.PosX = ObjectTranslation_[0];
@@ -164,20 +164,6 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
 
 
     ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
-
-
-    // Update Current LocRotScale
-    CurrentPos_.PosX = ObjectTranslation_[0];
-    CurrentPos_.PosY = ObjectTranslation_[1];
-    CurrentPos_.PosZ = ObjectTranslation_[2];
-
-    CurrentPos_.RotX = ObjectRotation_[0];
-    CurrentPos_.RotY = ObjectRotation_[1];
-    CurrentPos_.RotZ = ObjectRotation_[2];
-
-    CurrentPos_.ScaleX = ObjectScale_[0];
-    CurrentPos_.ScaleY = ObjectScale_[1];
-    CurrentPos_.ScaleZ = ObjectScale_[2];
 
 
     // Check If Update Needed
