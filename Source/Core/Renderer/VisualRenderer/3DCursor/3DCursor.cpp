@@ -109,7 +109,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
         bool PosEqual = ((ObjectTranslation_[0]== CurrentPos_.PosX) && (ObjectTranslation_[1] == CurrentPos_.PosY) && (ObjectTranslation_[2] == CurrentPos_.PosZ));
         bool RotEqual = ((ObjectRotation_[0] == CurrentPos_.RotX) && (ObjectRotation_[1] == CurrentPos_.RotY) && (ObjectRotation_[2] == CurrentPos_.RotZ));
         bool ScaleEqual = ((ObjectScale_[0] == CurrentPos_.ScaleX) && (ObjectScale_[1] == CurrentPos_.ScaleY) && (ObjectScale_[2] == CurrentPos_.ScaleZ));
-        if (!PosEqual && !RotEqual && !ScaleEqual) {
+        if (PosEqual && RotEqual && ScaleEqual) {
 
             // Assign Value To Floats
             ObjectScale_[0] = CurrentPos_.ScaleX;
@@ -122,7 +122,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
             ObjectTranslation_[1] = CurrentPos_.PosY;
             ObjectTranslation_[2] = CurrentPos_.PosZ;
 
-        } //else {
+        } else {
 
 
             // Update Current LocRotScale
@@ -137,7 +137,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
             CurrentPos_.ScaleX = ObjectScale_[0];
             CurrentPos_.ScaleY = ObjectScale_[1];
             CurrentPos_.ScaleZ = ObjectScale_[2];
-        //}
+        }
 
 
 
