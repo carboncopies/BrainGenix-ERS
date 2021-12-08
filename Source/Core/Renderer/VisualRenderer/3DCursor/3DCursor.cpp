@@ -68,10 +68,10 @@ void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
 bool Cursors3D::IsLocRotScaleEqual(ERS_STRUCT_LocRotScale LRS1, ERS_STRUCT_LocRotScale LRS2) {
 
     // Check If Equal
-    bool PosEqual2 = ((LRS1.PosX == LRS2.PosX) && (LRS1.PosY == LRS2.PosY) && (LRS1.PosZ == LRS2.PosZ));
-    bool RotEqual2 = ((LRS1.RotX == LRS2.RotX) && (LRS1.RotY == LRS2.RotY) && (LRS1.RotZ == LRS2.RotZ));
-    bool ScaleEqual2 = ((LRS1.ScaleX == LRS2.ScaleX) && (LRS1.ScaleY == LRS2.ScaleY) && (LRS1.ScaleZ == LRS2.ScaleZ));
-    if (PosEqual2 && RotEqual2 && ScaleEqual2) {
+    bool PosEqual = ((LRS1.PosX == LRS2.PosX) && (LRS1.PosY == LRS2.PosY) && (LRS1.PosZ == LRS2.PosZ));
+    bool RotEqual = ((LRS1.RotX == LRS2.RotX) && (LRS1.RotY == LRS2.RotY) && (LRS1.RotZ == LRS2.RotZ));
+    bool ScaleEqual = ((LRS1.ScaleX == LRS2.ScaleX) && (LRS1.ScaleY == LRS2.ScaleY) && (LRS1.ScaleZ == LRS2.ScaleZ));
+    if (PosEqual && RotEqual && ScaleEqual) {
         return false;
     } else {
         return true;
