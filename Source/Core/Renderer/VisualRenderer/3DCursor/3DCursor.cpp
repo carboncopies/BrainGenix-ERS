@@ -24,7 +24,7 @@ Cursors3D::~Cursors3D() {
 
 
 // Set LocRotScale
-void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
+void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale, bool Force) {
 
 
     // Create Floats
@@ -42,11 +42,23 @@ void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
     ObjectTranslation_[0] = LocRotScale.PosX;
     ObjectTranslation_[1] = LocRotScale.PosY;
     ObjectTranslation_[2] = LocRotScale.PosZ;
-    std::cout<<"3: "<<ObjectTranslation_[0]<<std::endl;
+
+    // Update Current LocRotScale
+    CurrentPos_.PosX = ObjectTranslation_[0];
+    CurrentPos_.PosY = ObjectTranslation_[1];
+    CurrentPos_.PosZ = ObjectTranslation_[2];
+
+    CurrentPos_.RotX = ObjectRotation_[0];
+    CurrentPos_.RotY = ObjectRotation_[1];
+    CurrentPos_.RotZ = ObjectRotation_[2];
+
+    CurrentPos_.ScaleX = ObjectScale_[0];
+    CurrentPos_.ScaleY = ObjectScale_[1];
+    CurrentPos_.ScaleZ = ObjectScale_[2];
+
 
     // Push To Gizmo
-    ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
- std::cout<<"4: "<<CurrentPos_.PosX<<std::endl;  
+    //ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
 
 }
 
@@ -77,7 +89,6 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
     float ObjectScale_[3];
 
     ImGuizmo::DecomposeMatrixToComponents(Matrix_[16], ObjectTranslation_, ObjectRotation_, ObjectScale_);
-        std::cout<<"1: "<<ObjectTranslation_[0]<<std::endl;
         // Force Scale To 1,1,1
         if (FirstFrame_) {
             ObjectScale_[0] = 1.0f;
@@ -93,20 +104,40 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
             FirstFrame_ = false;
         }
 
-        // Update Current LocRotScale
-        CurrentPos_.PosX = ObjectTranslation_[0];
-        CurrentPos_.PosY = ObjectTranslation_[1];
-        CurrentPos_.PosZ = ObjectTranslation_[2];
+        // Check If Someone Else Is Setting Pos
+        bool PosEqual = ((ObjectTranslation_[0]== CurrentPos_.PosX) && (ObjectTranslation_[1] == CurrentPos_.PosY) && (ObjectTranslation_[2] == CurrentPos_.PosZ));
+        bool RotEqual = ((ObjectRotation_[0] == CurrentPos_.RotX) && (ObjectRotation_[1] == CurrentPos_.RotY) && (ObjectRotation_[2] == CurrentPos_.RotZ));
+        bool ScaleEqual = ((ObjectScale_[0] == CurrentPos_.ScaleX) && (ObjectScale_[1] == CurrentPos_.ScaleY) && (ObjectScale_[2] == CurrentPos_.ScaleZ));
+        if (PosEqual && RotEqual && ScaleEqual) {
 
-        CurrentPos_.RotX = ObjectRotation_[0];
-        CurrentPos_.RotY = ObjectRotation_[1];
-        CurrentPos_.RotZ = ObjectRotation_[2];
+            // Update Current LocRotScale
+            CurrentPos_.PosX = ObjectTranslation_[0];
+            CurrentPos_.PosY = ObjectTranslation_[1];
+            CurrentPos_.PosZ = ObjectTranslation_[2];
 
-        CurrentPos_.ScaleX = ObjectScale_[0];
-        CurrentPos_.ScaleY = ObjectScale_[1];
-        CurrentPos_.ScaleZ = ObjectScale_[2];
+            CurrentPos_.RotX = ObjectRotation_[0];
+            CurrentPos_.RotY = ObjectRotation_[1];
+            CurrentPos_.RotZ = ObjectRotation_[2];
 
-    std::cout<<"2: "<<CurrentPos_.PosX<<std::endl;    
+            CurrentPos_.ScaleX = ObjectScale_[0];
+            CurrentPos_.ScaleY = ObjectScale_[1];
+            CurrentPos_.ScaleZ = ObjectScale_[2];
+        } else {
+
+            // Assign Value To Floats
+            ObjectScale_[0] = CurrentPos_.ScaleX;
+            ObjectScale_[1] = CurrentPos_.ScaleY;
+            ObjectScale_[2] = CurrentPos_.ScaleZ;
+            ObjectRotation_[0] = CurrentPos_.RotX;
+            ObjectRotation_[1] = CurrentPos_.RotY;
+            ObjectRotation_[2] = CurrentPos_.RotZ;
+            ObjectTranslation_[0] = CurrentPos_.PosX;
+            ObjectTranslation_[1] = CurrentPos_.PosY;
+            ObjectTranslation_[2] = CurrentPos_.PosZ;
+
+        }
+
+
 
     ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
 
