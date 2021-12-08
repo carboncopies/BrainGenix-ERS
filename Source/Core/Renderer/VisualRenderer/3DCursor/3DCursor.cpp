@@ -32,7 +32,6 @@ void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
     float ObjectRotation_[3];
     float ObjectScale_[3];
 
-
     // Assign Value To Floats
     ObjectScale_[0] = LocRotScale.ScaleX;
     ObjectScale_[1] = LocRotScale.ScaleY;
@@ -43,10 +42,11 @@ void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
     ObjectTranslation_[0] = LocRotScale.PosX;
     ObjectTranslation_[1] = LocRotScale.PosY;
     ObjectTranslation_[2] = LocRotScale.PosZ;
+    std::cout<<"3: "<<ObjectTranslation_[0]<<std::endl;
 
     // Push To Gizmo
     ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
-
+ std::cout<<"4: "<<CurrentPos_.PosX<<std::endl;  
 
 }
 
