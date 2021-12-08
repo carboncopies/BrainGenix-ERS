@@ -25,7 +25,7 @@ Cursors3D::~Cursors3D() {
 
 // Set LocRotScale
 void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
-    
+    std::cout<<"test\n";
     // Create Floats
     float ObjectTranslation_[3];
     float ObjectRotation_[3];
