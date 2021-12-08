@@ -110,19 +110,19 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
 
     ImGuizmo::DecomposeMatrixToComponents(Matrix_[16], ObjectTranslation_, ObjectRotation_, ObjectScale_);
         // Force Scale To 1,1,1
-        if (FirstFrame_) {
-            ObjectScale_[0] = 1.0f;
-            ObjectScale_[1] = 1.0f;
-            ObjectScale_[2] = 1.0f;
-            ObjectRotation_[0] = 0.0f;
-            ObjectRotation_[1] = 0.0f;
-            ObjectRotation_[2] = 0.0f;
-            ObjectTranslation_[0] = 0.0f;
-            ObjectTranslation_[1] = 0.0f;
-            ObjectTranslation_[2] = 0.0f;
+        // if (FirstFrame_) {
+        //     ObjectScale_[0] = 1.0f;
+        //     ObjectScale_[1] = 1.0f;
+        //     ObjectScale_[2] = 1.0f;
+        //     ObjectRotation_[0] = 0.0f;
+        //     ObjectRotation_[1] = 0.0f;
+        //     ObjectRotation_[2] = 0.0f;
+        //     ObjectTranslation_[0] = 0.0f;
+        //     ObjectTranslation_[1] = 0.0f;
+        //     ObjectTranslation_[2] = 0.0f;
             
-            FirstFrame_ = false;
-        }
+        //     FirstFrame_ = false;
+        // }
 
         // Check If Someone Else Is Setting Pos
         bool PosEqual = ((ObjectTranslation_[0]== LastPos_.PosX) && (ObjectTranslation_[1] == LastPos_.PosY) && (ObjectTranslation_[2] == LastPos_.PosZ));
