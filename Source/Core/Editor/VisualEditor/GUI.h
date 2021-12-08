@@ -57,6 +57,7 @@ class GUISystem {
 
         FontManager* FontManager_; /**<Pointer To FontManager Instance*/
         UserProfileManager* UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
+        Cursors3D* Cursors3D_; /**<Pointer to Cursors3D Instance*/
 
 
         bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */
@@ -88,7 +89,7 @@ class GUISystem {
          * 
          * @param Logger 
          */
-        GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShouldRun);
+        GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShouldRun, Cursors3D* Cursors3D);
 
         /**
          * @brief Destroy the Gui System object

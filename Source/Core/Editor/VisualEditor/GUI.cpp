@@ -13,12 +13,13 @@
 
 
 // GUISystem Constructor
-GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShouldRun) {
+GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShouldRun, Cursors3D* Cursors3D) {
 
     // Create Local Pointer
     Logger_ = Logger;
     Window_ = Window;
     SystemShouldRun_ = SystemShouldRun;
+    Cursors3D_ = Cursors3D;
 
 
     // Initialize ImGui
