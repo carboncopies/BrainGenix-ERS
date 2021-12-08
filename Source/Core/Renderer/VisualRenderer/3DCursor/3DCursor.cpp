@@ -160,6 +160,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
             ObjectTranslation_[1] = CurrentPos_.PosY;
             ObjectTranslation_[2] = CurrentPos_.PosZ;
 
+            HasObjectChanged_ = false;
 
 
         } else {
@@ -169,16 +170,10 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
         }
 
 
-
+    
     ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
 
-
-    // Check If Update Needed
-    // if (IsLocRotScaleEqual(LastPos_, CurrentPos_)) {
-    //     HasObjectChanged_ = false;
-    // } else {
-    //     HasObjectChanged_ = true;
-    // }
+    // Update Last Pos
     LastPos_ = CurrentPos_;
 
     // Start ImGizmo Drawlist
