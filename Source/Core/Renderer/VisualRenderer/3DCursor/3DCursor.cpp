@@ -45,6 +45,9 @@ void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
     // Push To Gizmo
     ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
 
+    // Set Object Changed To True
+    HasObjectChanged_ = true;
+
 }
 
 // Cursor Update Frame Function
