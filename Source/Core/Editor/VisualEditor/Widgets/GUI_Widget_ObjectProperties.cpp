@@ -17,19 +17,13 @@ void Widget_ObjectProperties::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {
-        ImGui::Begin("Rendering Settings", &Enabled_);
+        ImGui::Begin("Object Properties", &Enabled_);
 
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
 
-            // Wireframe Rendering Mode
-            ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines_);
-            ImGui::NewLine();
-
-
-            // Rendering Background Clear Color
-            ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor_);
-            ImGui::NewLine();
+            // LocRotScale Properties
+            //ImGui::DragFloat3("Position");
 
 
 
