@@ -116,7 +116,10 @@ class Cursors3D {
 
         void EndRenderpass();
         bool HasLocRotScaleChanged();
+
+
         ERS_STRUCT_LocRotScale GetLocRotScale();
+        ERS_STRUCT_LocRotScale* GetLocRotScalePtr();
 
 
 };

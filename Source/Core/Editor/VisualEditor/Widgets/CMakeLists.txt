@@ -40,6 +40,8 @@ target_link_libraries(Widgets
     
     Theme
     FontManager
+
+    3DCursor
     )
 
 target_include_directories(Widgets PUBLIC ./)

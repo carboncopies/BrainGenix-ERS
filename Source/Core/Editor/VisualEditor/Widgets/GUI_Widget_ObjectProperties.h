@@ -24,6 +24,10 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <3DCursor.h>
 
+#include <ERS_STRUCT_LocRotScale.h>
+
+
+
 /**
  * @brief Create GUI Widget "Rendering Settings"
  * 
@@ -32,7 +36,7 @@ class Widget_ObjectProperties {
 
     private:
 
-        
+        Cursors3D *Cursors3D_; /**<Instance pointer to cursors3d class*/
 
     public:
 
@@ -43,7 +47,13 @@ class Widget_ObjectProperties {
          * @brief Construct a new Widget_ObjectProperties object
          * 
          */
-        Widget_ObjectProperties();
+        Widget_ObjectProperties(Cursors3D *Cursors3D);
+
+        /**
+         * @brief Destroy the Widget_ObjectProperties object
+         * 
+         */
+        ~Widget_ObjectProperties();
 
         /**
          * @brief Function that draws the window, should internally check if enable variable is set to true.

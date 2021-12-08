@@ -34,6 +34,8 @@ target_link_libraries(VisualEditor
     FontManager
     Widgets
     UserProfile
+
+    3DCursor
     )
 
 target_include_directories(VisualEditor PUBLIC ./)

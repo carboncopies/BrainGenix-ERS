@@ -11,6 +11,18 @@
 
 #include <GUI_Widget_ObjectProperties.h>
 
+// Constructor
+Widget_ObjectProperties::Widget_ObjectProperties(Cursors3D *Cursors3D) {
+
+    // Update Ptr
+    Cursors3D_ = Cursors3D;
+
+}
+
+// Destructor
+Widget_ObjectProperties::~Widget_ObjectProperties() {
+    
+}
 
 // Define Draw Function
 void Widget_ObjectProperties::Draw() {
@@ -22,24 +34,37 @@ void Widget_ObjectProperties::Draw() {
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
 
+            // Get Struct Ptr, Setup Slides
+            ERS_STRUCT_LocRotScale *LocRotScale = Cursors3D_->GetLocRotScalePtr();
+
+            float Location_[3] = {LocRotScale->PosX, LocRotScale->PosY, LocRotScale->PosZ};
+            float Rotation_[3] = {LocRotScale->RotX, LocRotScale->RotY, LocRotScale->RotZ};
+            float Scale_[3] = {LocRotScale->ScaleX, LocRotScale->ScaleY, LocRotScale->ScaleZ};
+            
             // LocRotScale Properties
-            //ImGui::DragFloat3("Position");
+            ImGui::DragFloat3("Location", Location_);
+            ImGui::DragFloat3("Rotation", Rotation_);
+            ImGui::DragFloat3("Scale", Scale_);
 
-
+            // Update Struct
+            LocRotScale->PosX = Location_[0];
+            LocRotScale->PosY = Location_[1];
+            LocRotScale->PosZ = Location_[2];
+            
+            LocRotScale->RotX = Rotation_[0];
+            LocRotScale->RotY = Rotation_[1];
+            LocRotScale->RotZ = Rotation_[2];
+            
+            LocRotScale->ScaleX = Scale_[0];
+            LocRotScale->ScaleY = Scale_[1];
+            LocRotScale->ScaleZ = Scale_[2];
+            
 
         // End System Controls Window
         ImGui::End();
 
     }
 
-    // Update OpenGL Settings
-    if (OpenGLDrawLines_) {
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    } else {
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    }
-
-    glClearColor(ClearColor_.x, ClearColor_.y, ClearColor_.z, ClearColor_.w);
 
 
 }

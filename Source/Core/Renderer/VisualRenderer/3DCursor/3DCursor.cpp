@@ -111,6 +111,11 @@ ERS_STRUCT_LocRotScale Cursors3D::GetLocRotScale() {
     return CurrentPos_;
 }
 
+// Get LocRotScalePtr
+ERS_STRUCT_LocRotScale* Cursors3D::GetLocRotScalePtr() {
+    return &CurrentPos_;
+}
+
 // End Render Pass
 void Cursors3D::EndRenderpass() {
 
