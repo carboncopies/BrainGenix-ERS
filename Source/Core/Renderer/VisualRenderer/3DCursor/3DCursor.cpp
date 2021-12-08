@@ -144,6 +144,8 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
             CurrentPos_.ScaleY = ObjectScale_[1];
             CurrentPos_.ScaleZ = ObjectScale_[2];
 
+            HasObjectChanged_ = true;
+
             
         } else if (IsLocRotScaleEqual(CurrentPos_, LastPos_)) {
 
@@ -159,6 +161,11 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
             ObjectTranslation_[2] = CurrentPos_.PosZ;
 
 
+
+        } else {
+
+            HasObjectChanged_ = true;
+
         }
 
 
@@ -167,11 +174,11 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
 
 
     // Check If Update Needed
-    if (IsLocRotScaleEqual(LastPos_, CurrentPos_)) {
-        HasObjectChanged_ = false;
-    } else {
-        HasObjectChanged_ = true;
-    }
+    // if (IsLocRotScaleEqual(LastPos_, CurrentPos_)) {
+    //     HasObjectChanged_ = false;
+    // } else {
+    //     HasObjectChanged_ = true;
+    // }
     LastPos_ = CurrentPos_;
 
     // Start ImGizmo Drawlist
