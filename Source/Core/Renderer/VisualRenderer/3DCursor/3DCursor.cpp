@@ -121,7 +121,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
             ObjectTranslation_[0] = CurrentPos_.PosX;
             ObjectTranslation_[1] = CurrentPos_.PosY;
             ObjectTranslation_[2] = CurrentPos_.PosZ;
-
+            
         } else {
 
 
