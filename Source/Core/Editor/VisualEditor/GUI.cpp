@@ -114,7 +114,6 @@ void GUISystem::UpdateGUI() {
     Widget_FramerateGraph_.Draw();
     Widget_FrameratePlot_.Draw();
 
-    Widget_ObjectProperties_->Draw();
 
     FontManager_->FontSelectorWindow(&ShowFontPicker_);
 
@@ -199,7 +198,13 @@ void GUISystem::UpdateGUI() {
 
 }
 
+// Deferred Update
+void GUISystem::DeferredFrameUpdate() {
 
+    // Update Widgets
+    Widget_ObjectProperties_->Draw();
+
+}
 
 //FIXME: MOVE MENU UPDATE FUNCTION OUT OF GUP INTO THIS FUNCTION!!!!
 void GUISystem::UpdateWindow_ColorThemePicker() {

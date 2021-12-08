@@ -111,6 +111,13 @@ class GUISystem {
          * 
          */
         void UpdateFrame();
+        
+        /**
+         * @brief Use this for functions/widgets/windows that need to be updated after the main rendering takes place.
+         * 
+         */
+        void DeferredFrameUpdate();
+
 
 
         void MenuExitFunction();

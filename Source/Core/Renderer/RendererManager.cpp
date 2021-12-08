@@ -127,7 +127,8 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     // Call Updates
     VisualRenderer_->UpdateViewports(DeltaTime, SceneManager_);
 
-
+    // Deferred GUI
+    GuiSystem_->DeferredFrameUpdate();
 
 
     // Update GUI Frame
