@@ -30,7 +30,7 @@ void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
     float ObjectTranslation_[3];
     float ObjectRotation_[3];
     float ObjectScale_[3];
-
+ImGuizmo::DecomposeMatrixToComponents(Matrix_[16], ObjectTranslation_, ObjectRotation_, ObjectScale_);
     // Assign Value To Floats
     ObjectScale_[0] = LocRotScale.ScaleX;
     ObjectScale_[1] = LocRotScale.ScaleY;
