@@ -27,6 +27,9 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     Logger_ = Logger;
     SystemShouldRun_ = SystemShouldRun;
 
+    // Setup 3D Cursor
+    Cursors3D_ = new Cursors3D();
+
 
     // Initialize Systems
     Logger_->Log("Initializing GLFW", 5);

@@ -13,20 +13,20 @@
 
 
 // Visual Rendere constructor
-VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, GLFWwindow* Window, LoggerClass *Logger) {
+VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, GLFWwindow* Window, LoggerClass *Logger, Cursors3D* Cursors3D) {
 
     // Create Pointers
     Logger->Log("Populating Renderer Member Pointers", 5);
     SystemConfiguration_ = SystemConfiguration;
     Logger_ = Logger;
     Window_ = Window;
+    Cursors3D_ = Cursors3D;
 
     // Initialize OpenGL
     Logger_->Log("Initializing OpenGL", 5);
     InitializeOpenGL();
 
-    // Setup 3D Cursor
-    Cursors3D_ = new Cursors3D();
+
 
 }
 

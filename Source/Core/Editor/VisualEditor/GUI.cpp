@@ -21,7 +21,6 @@ GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShould
     SystemShouldRun_ = SystemShouldRun;
     Cursors3D_ = Cursors3D;
 
-
     // Initialize ImGui
     Logger_->Log("Initializing DearImGui GUI Library", 5);
 
@@ -45,6 +44,12 @@ GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShould
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(Window, true);
     ImGui_ImplOpenGL3_Init("#version 330 core");
+
+
+    // Initialize Widgets
+    Logger_->Log("Initializing GUI Widgets", 5);
+    Widget_ObjectProperties_ = new Widget_ObjectProperties(Cursors3D_);
+
 
 }
 

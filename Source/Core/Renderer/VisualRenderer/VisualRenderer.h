@@ -76,7 +76,7 @@ class VisualRenderer {
     public:
 
         // Constructor
-        VisualRenderer(YAML::Node *SystemConfiguration, GLFWwindow* Window, LoggerClass *Logger);
+        VisualRenderer(YAML::Node *SystemConfiguration, GLFWwindow* Window, LoggerClass *Logger, Cursors3D* Cursors3D);
 
         // Destructor
         ~VisualRenderer();

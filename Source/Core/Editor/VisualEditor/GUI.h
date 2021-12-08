@@ -41,6 +41,7 @@
 #include <GUI_Widget_FramerateHistogram.h>
 #include <GUI_Widget_FramerateGraph.h>
 #include <GUI_Widget_FrameratePlot.h>
+#include <GUI_Widget_ObjectProperties.h>
 
 
 /**
@@ -82,6 +83,7 @@ class GUISystem {
         Widget_FramerateGraph Widget_FramerateGraph_; /**<Widget Instance*/
         Widget_FrameratePlot Widget_FrameratePlot_; /**<Widget Instance*/
         Widget_RenderingSettings Widget_RenderingSettings_; /**<Widget Instance*/
+        Widget_ObjectProperties *Widget_ObjectProperties_; /**<Widget Instance*/
 
 
         /**
