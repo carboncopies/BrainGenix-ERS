@@ -42,8 +42,8 @@ void Widget_ObjectProperties::Draw() {
             float Scale_[3] = {LocRotScale->ScaleX, LocRotScale->ScaleY, LocRotScale->ScaleZ};
             
             // LocRotScale Properties
-            ImGui::DragFloat3("Location", Location_);
-            ImGui::DragFloat3("Rotation", Rotation_);// FIXME: MAKE ROLL OVER TO 180 Degrees?
+            ImGui::DragFloat3("Location", Location_, 0.05f, 0.0f, 65535.0f);
+            ImGui::DragFloat3("Rotation", Rotation_, 0.05f, -65535.0f, 65535.0f);// FIXME: MAKE ROLL OVER TO 180 Degrees?
             ImGui::DragFloat3("Scale", Scale_, 0.05f, 0.0f, 65535.0f);
 
             // Update Struct
