@@ -22,6 +22,31 @@ Cursors3D::~Cursors3D() {
 
 }
 
+
+// Set LocRotScale
+void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
+    
+    // Create Floats
+    float ObjectTranslation_[3];
+    float ObjectRotation_[3];
+    float ObjectScale_[3];
+
+    // Assign Value To Floats
+    ObjectScale_[0] = LocRotScale.ScaleX;
+    ObjectScale_[1] = LocRotScale.ScaleY;
+    ObjectScale_[2] = LocRotScale.ScaleZ;
+    ObjectRotation_[0] = LocRotScale.RotX;
+    ObjectRotation_[1] = LocRotScale.RotY;
+    ObjectRotation_[2] = LocRotScale.RotZ;
+    ObjectTranslation_[0] = LocRotScale.PosX;
+    ObjectTranslation_[1] = LocRotScale.PosY;
+    ObjectTranslation_[2] = LocRotScale.PosZ;
+
+    // Push To Gizmo
+    ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
+
+}
+
 // Cursor Update Frame Function
 void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraView, float* CameraProjection, bool IsCameraMoving) {
 

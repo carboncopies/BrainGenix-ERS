@@ -59,6 +59,9 @@ void Widget_ObjectProperties::Draw() {
             LocRotScale->ScaleY = Scale_[1];
             LocRotScale->ScaleZ = Scale_[2];
             
+            // Update Position
+            Cursors3D_->SetLocRotScale(*LocRotScale);
+            
 
         // End System Controls Window
         ImGui::End();

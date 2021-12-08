@@ -120,6 +120,7 @@ class Cursors3D {
 
         ERS_STRUCT_LocRotScale GetLocRotScale();
         ERS_STRUCT_LocRotScale* GetLocRotScalePtr();
+        void SetLocRotScale(ERS_STRUCT_LocRotScale);
 
 
 };
