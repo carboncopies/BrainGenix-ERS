@@ -126,12 +126,13 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
 
         // Check If Someone Else Is Setting Pos
         std::cout<<ObjectTranslation_[0]<<"|"<<CurrentPos_.PosX<<std::endl;
-        bool PosEqual = ((ObjectTranslation_[0]== CurrentPos_.PosX) && (ObjectTranslation_[1] == CurrentPos_.PosY) && (ObjectTranslation_[2] == CurrentPos_.PosZ));
-        bool RotEqual = ((ObjectRotation_[0] == CurrentPos_.RotX) && (ObjectRotation_[1] == CurrentPos_.RotY) && (ObjectRotation_[2] == CurrentPos_.RotZ));
-        bool ScaleEqual = ((ObjectScale_[0] == CurrentPos_.ScaleX) && (ObjectScale_[1] == CurrentPos_.ScaleY) && (ObjectScale_[2] == CurrentPos_.ScaleZ));
+        // bool PosEqual = ((ObjectTranslation_[0]== CurrentPos_.PosX) && (ObjectTranslation_[1] == CurrentPos_.PosY) && (ObjectTranslation_[2] == CurrentPos_.PosZ));
+        // bool RotEqual = ((ObjectRotation_[0] == CurrentPos_.RotX) && (ObjectRotation_[1] == CurrentPos_.RotY) && (ObjectRotation_[2] == CurrentPos_.RotZ));
+        // bool ScaleEqual = ((ObjectScale_[0] == CurrentPos_.ScaleX) && (ObjectScale_[1] == CurrentPos_.ScaleY) && (ObjectScale_[2] == CurrentPos_.ScaleZ));
+        // bool IsEqual = (PosEqual && RotEqual && ScaleEqual);
 
-        std::cout<<PosEqual<<RotEqual<<ScaleEqual<<std::endl;
-        if (PosEqual && RotEqual && ScaleEqual) {
+        //std::cout<<PosEqual<<RotEqual<<ScaleEqual<<std::endl;
+        if (ObjectTranslation_[0] != LastPos_.PosX) {
             std::cout<<"equal\n";
             // Update Current LocRotScale
             CurrentPos_.PosX = ObjectTranslation_[0];
@@ -146,7 +147,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
             CurrentPos_.ScaleY = ObjectScale_[1];
             CurrentPos_.ScaleZ = ObjectScale_[2];
             
-        } else {
+        } else if (CurrentPos_.PosX != LastPos_.PosX) {
             std::cout<<"not equal\n";
 
 
