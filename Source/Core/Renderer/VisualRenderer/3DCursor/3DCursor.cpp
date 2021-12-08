@@ -43,7 +43,7 @@ void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
     ObjectTranslation_[2] = LocRotScale.PosZ;
 
     // Push To Gizmo
-    ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
+    //ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
 
 
 }
