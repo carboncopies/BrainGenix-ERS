@@ -114,6 +114,8 @@ void GUISystem::UpdateGUI() {
     Widget_FramerateGraph_.Draw();
     Widget_FrameratePlot_.Draw();
 
+    Widget_ObjectProperties_->Draw();
+
     FontManager_->FontSelectorWindow(&ShowFontPicker_);
 
 
@@ -154,12 +156,27 @@ void GUISystem::UpdateGUI() {
             // Add Widgets Menu
             if (ImGui::BeginMenu("Widgets")) {
 
-                // Enable/Disable Widgets
-                ImGui::Checkbox("Framerate Counter", &Widget_FramerateCounter_.Enabled_);
-                ImGui::Checkbox("Framerate Histogram", &Widget_FramerateHistogram_.Enabled_);
-                ImGui::Checkbox("Framerate Graph", &Widget_FramerateGraph_.Enabled_);
-                ImGui::Checkbox("Framerate Plot", &Widget_FrameratePlot_.Enabled_);
-                ImGui::Checkbox("Global Viewport Settings", &Widget_RenderingSettings_.Enabled_);
+                // Framerate Widgets
+                if (ImGui::BeginMenu("Framerate")) {
+
+                    // Framerate Related Tools
+                    ImGui::Checkbox("Framerate Counter", &Widget_FramerateCounter_.Enabled_);
+                    ImGui::Checkbox("Framerate Histogram", &Widget_FramerateHistogram_.Enabled_);
+                    ImGui::Checkbox("Framerate Graph", &Widget_FramerateGraph_.Enabled_);
+                    ImGui::Checkbox("Framerate Plot", &Widget_FrameratePlot_.Enabled_);
+
+                ImGui::EndMenu();
+                }
+
+                // Viewport Widgets
+                if (ImGui::BeginMenu("Viewport")) {
+
+                    // Viewport Settings
+                    ImGui::Checkbox("Object Properties", &Widget_ObjectProperties_->Enabled_);
+                    ImGui::Checkbox("Global Viewport Settings", &Widget_RenderingSettings_.Enabled_);
+
+                ImGui::EndMenu();
+                }
 
 
             ImGui::EndMenu();
