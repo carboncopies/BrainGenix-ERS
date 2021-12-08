@@ -23,6 +23,7 @@
 #include <Framebuffer.h>
 #include <GUI.h>
 
+#include <3DCursor.h>
 
 
 static ERS_OBJECT_CAMERA_NOCLIP Camera_(glm::vec3(0.0f, 0.0f, 3.0f));
@@ -48,6 +49,7 @@ class RendererManager {
         GUISystem *GuiSystem_; /**<Instance of GUI System*/
         TextureLoader *TextureLoader_; /**<Pointer to Texture Loader Instance*/
         SceneManager *SceneManager_; /**<Pointer to Scene Manager Class Instance*/
+        Cursors3D *Cursors3D_; /**<Setup 3D Cursor Class*/
 
 
         // Control Values

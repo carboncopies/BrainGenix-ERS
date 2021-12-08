@@ -37,7 +37,7 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
 
     // Instantiate Renderers
     Logger_->Log("Instantiating Renderers", 5);
-    VisualRenderer_ = new VisualRenderer(SystemConfiguration, Window_, Logger);
+    VisualRenderer_ = new VisualRenderer(SystemConfiguration, Window_, Logger, Cursors3D_);
 
     // Setup Shaders
     ShaderLoader_ = new ShaderLoader(Logger_);
@@ -47,7 +47,7 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     Shader_.SetInt("texture_diffuse1", 0);
 
     // Setup GUI
-    GuiSystem_ = new GUISystem(Logger_, Window_, SystemShouldRun_);
+    GuiSystem_ = new GUISystem(Logger_, Window_, SystemShouldRun_, Cursors3D_);
 
     // Setup IOManager
     Logger_->Log("Initializing Input/Output Manager", 5);

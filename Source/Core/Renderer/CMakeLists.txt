@@ -29,6 +29,7 @@ target_link_libraries(Renderer
     VisualRenderer
     IOManager
     VisualEditor
+    3DCursor
     )
 
 target_include_directories(Renderer PUBLIC ./)
