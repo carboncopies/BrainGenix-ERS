@@ -9,11 +9,11 @@
     Date Created: 2021-12-02
 */
 
-#include <GUI_Widget_RenderingSettings.h>
+#include <GUI_Widget_ObjectProperties.h>
 
 
 // Define Draw Function
-void Widget_RenderingSettings::Draw() {
+void Widget_ObjectProperties::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {

@@ -28,7 +28,7 @@
  * @brief Create GUI Widget "Rendering Settings"
  * 
  */
-class Widget_RenderingSettings {
+class Widget_ObjectProperties {
 
     private:
 
