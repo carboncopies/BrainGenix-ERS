@@ -42,19 +42,6 @@ void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
     ObjectTranslation_[1] = LocRotScale.PosY;
     ObjectTranslation_[2] = LocRotScale.PosZ;
 
-    // Update Current LocRotScale
-    CurrentPos_.PosX = ObjectTranslation_[0];
-    CurrentPos_.PosY = ObjectTranslation_[1];
-    CurrentPos_.PosZ = ObjectTranslation_[2];
-
-    CurrentPos_.RotX = ObjectRotation_[0];
-    CurrentPos_.RotY = ObjectRotation_[1];
-    CurrentPos_.RotZ = ObjectRotation_[2];
-
-    CurrentPos_.ScaleX = ObjectScale_[0];
-    CurrentPos_.ScaleY = ObjectScale_[1];
-    CurrentPos_.ScaleZ = ObjectScale_[2];
-
     // Push To Gizmo
     ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
 
