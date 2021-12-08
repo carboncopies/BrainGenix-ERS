@@ -147,8 +147,14 @@ class Cursors3D {
          */
         void SetLocRotScale(ERS_STRUCT_LocRotScale);
 
+        /**
+         * @brief Check if two ERS_STRUCT_LocRotScale Objects are Equal.
+         * 
+         * @param LRS1 
+         * @param LRS2 
+         * @return true 
+         * @return false 
+         */
         bool IsLocRotScaleEqual(ERS_STRUCT_LocRotScale LRS1, ERS_STRUCT_LocRotScale LRS2);
 
 };
-
-
