@@ -169,10 +169,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
     ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
 
     // Check If Update Needed
-    bool PosEqual2 = ((LastPos_.PosX == CurrentPos_.PosX) && (LastPos_.PosY == CurrentPos_.PosY) && (LastPos_.PosZ == CurrentPos_.PosZ));
-    bool RotEqual2 = ((LastPos_.RotX == CurrentPos_.RotX) && (LastPos_.RotY == CurrentPos_.RotY) && (LastPos_.RotZ == CurrentPos_.RotZ));
-    bool ScaleEqual2 = ((LastPos_.ScaleX == CurrentPos_.ScaleX) && (LastPos_.ScaleY == CurrentPos_.ScaleY) && (LastPos_.ScaleZ == CurrentPos_.ScaleZ));
-    if (PosEqual2 && RotEqual2 && ScaleEqual2) {
+    if (IsLocRotScaleEqual(LastPos_, CurrentPos_)) {
         HasObjectChanged_ = false;
     } else {
         HasObjectChanged_ = true;
