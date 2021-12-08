@@ -53,7 +53,7 @@ class Cursors3D {
     private:
 
 
-        float Matrix_[4][16] = { // Cube For Viewport Angle Identifier
+        float Matrix_[4][16] = { /**<Cube For Viewport Angle Identifier*/
             { 1.f, 0.f, 0.f, 0.f,
             0.f, 1.f, 0.f, 0.f,
             0.f, 0.f, 1.f, 0.f,
@@ -83,19 +83,28 @@ class Cursors3D {
         float* CameraView_; /**<Camera View Matrix, Converted From GLM::Mat4*/
         float* CameraProjection_; /**<Camera Projection Matrix, Converted From GLM::Mat4*/
 
-        ERS_OBJECT_CAMERA_NOCLIP *Camera_; 
-        ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE;
+        ERS_OBJECT_CAMERA_NOCLIP *Camera_; /**<Camera Object Pointer*/
+        ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE; /**<Set Current Cursor Operation*/
 
 
-        ERS_STRUCT_LocRotScale CurrentPos_;
-        ERS_STRUCT_LocRotScale LastPos_;
-        bool HasObjectChanged_ = false;
+        ERS_STRUCT_LocRotScale CurrentPos_; /*<Reference LocRotScale*/
+        ERS_STRUCT_LocRotScale LastPos_; /*<Current LocRotScale*/
+        bool HasObjectChanged_ = false; /*<Indicate If Update Needed*/
 
 
 
     public:
 
+        /**
+         * @brief Construct a new Cursors 3 D object
+         * 
+         */
         Cursors3D();
+
+        /**
+         * @brief Destroy the Cursors 3 D object
+         * 
+         */
         ~Cursors3D();
 
         /**
