@@ -149,7 +149,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
 
             
         } else if (!IsLocRotScaleEqual(CurrentPos_, LastPos_)) {
-            std::cout<<"fdsafs\n";
+            std::cout<<CurrentPos_.PosX<<" "<<LastPos_.PosX<<std::endl;
             // Assign Value To Floats
             ObjectScale_[0] = CurrentPos_.ScaleX;
             ObjectScale_[1] = CurrentPos_.ScaleY;
