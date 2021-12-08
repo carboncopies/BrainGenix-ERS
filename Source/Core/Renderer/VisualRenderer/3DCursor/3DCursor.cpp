@@ -62,6 +62,26 @@ void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
 
 }
 
+
+
+// Check if Structs Are Equal
+bool Cursors3D::IsLocRotScaleEqual(ERS_STRUCT_LocRotScale LRS1, ERS_STRUCT_LocRotScale LRS2) {
+
+    // Check If Equal
+    bool PosEqual2 = ((LastPos_.PosX == CurrentPos_.PosX) && (LastPos_.PosY == CurrentPos_.PosY) && (LastPos_.PosZ == CurrentPos_.PosZ));
+    bool RotEqual2 = ((LastPos_.RotX == CurrentPos_.RotX) && (LastPos_.RotY == CurrentPos_.RotY) && (LastPos_.RotZ == CurrentPos_.RotZ));
+    bool ScaleEqual2 = ((LastPos_.ScaleX == CurrentPos_.ScaleX) && (LastPos_.ScaleY == CurrentPos_.ScaleY) && (LastPos_.ScaleZ == CurrentPos_.ScaleZ));
+    if (PosEqual2 && RotEqual2 && ScaleEqual2) {
+        HasObjectChanged_ = false;
+    } else {
+        HasObjectChanged_ = true;
+    }
+
+
+}
+
+
+
 // Cursor Update Frame Function
 void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraView, float* CameraProjection, bool IsCameraMoving) {
 
