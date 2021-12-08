@@ -104,7 +104,8 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
         CurrentPos_.ScaleX = ObjectScale_[0];
         CurrentPos_.ScaleY = ObjectScale_[1];
         CurrentPos_.ScaleZ = ObjectScale_[2];
-    
+
+    std::cout<<CurrentPos_.PosX<<std::endl;    
 
     ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
 
