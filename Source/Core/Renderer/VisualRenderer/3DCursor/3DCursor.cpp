@@ -148,15 +148,17 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
             HasObjectChanged_ = true;
 
             
-        } else if (!IsLocRotScaleEqual(CurrentPos_, LastPos_)) {
-            std::cout<<CurrentPos_.PosX<<" "<<LastPos_.PosX<<std::endl;
+        } else if (IsLocRotScaleEqual(CurrentPos_, LastPos_)) {
+
             // Assign Value To Floats
             ObjectScale_[0] = CurrentPos_.ScaleX;
             ObjectScale_[1] = CurrentPos_.ScaleY;
             ObjectScale_[2] = CurrentPos_.ScaleZ;
+    
             ObjectRotation_[0] = CurrentPos_.RotX;
             ObjectRotation_[1] = CurrentPos_.RotY;
             ObjectRotation_[2] = CurrentPos_.RotZ;
+    
             ObjectTranslation_[0] = CurrentPos_.PosX;
             ObjectTranslation_[1] = CurrentPos_.PosY;
             ObjectTranslation_[2] = CurrentPos_.PosZ;
