@@ -113,13 +113,38 @@ class Cursors3D {
          */
         bool DisableCameraMovement();
 
-
+        /**
+         * @brief Finish render pass
+         * 
+         */
         void EndRenderpass();
+
+        /**
+         * @brief returns if LocRotScale Has changed.
+         * 
+         * @return true 
+         * @return false 
+         */
         bool HasLocRotScaleChanged();
 
-
+        /**
+         * @brief Get the Loc Rot Scale object
+         * 
+         * @return ERS_STRUCT_LocRotScale 
+         */
         ERS_STRUCT_LocRotScale GetLocRotScale();
+
+        /**
+         * @brief Get a pointer to the Loc Rot Scale object
+         * 
+         * @return ERS_STRUCT_LocRotScale* 
+         */
         ERS_STRUCT_LocRotScale* GetLocRotScalePtr();
+
+        /**
+         * @brief Set the Loc Rot Scale object
+         * 
+         */
         void SetLocRotScale(ERS_STRUCT_LocRotScale);
 
         bool IsLocRotScaleEqual(ERS_STRUCT_LocRotScale LRS1, ERS_STRUCT_LocRotScale LRS2);
