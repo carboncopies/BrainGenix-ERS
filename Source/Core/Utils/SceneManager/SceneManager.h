@@ -94,5 +94,6 @@ class SceneManager{
          * @param LocRotScale 
          */
         void UpdateLocRotScale(ERS_STRUCT_LocRotScale LocRotScale);
+        
 
 };
