@@ -24,7 +24,7 @@ Cursors3D::~Cursors3D() {
 
 
 // Set LocRotScale
-void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale, bool Force) {
+void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
 
 
     // Create Floats
@@ -105,10 +105,25 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
         }
 
         // Check If Someone Else Is Setting Pos
+        std::cout<<ObjectTranslation_[0]<<"|"<<CurrentPos_.PosX<<std::endl;
         bool PosEqual = ((ObjectTranslation_[0]== CurrentPos_.PosX) && (ObjectTranslation_[1] == CurrentPos_.PosY) && (ObjectTranslation_[2] == CurrentPos_.PosZ));
         bool RotEqual = ((ObjectRotation_[0] == CurrentPos_.RotX) && (ObjectRotation_[1] == CurrentPos_.RotY) && (ObjectRotation_[2] == CurrentPos_.RotZ));
         bool ScaleEqual = ((ObjectScale_[0] == CurrentPos_.ScaleX) && (ObjectScale_[1] == CurrentPos_.ScaleY) && (ObjectScale_[2] == CurrentPos_.ScaleZ));
-        if (PosEqual && RotEqual && ScaleEqual) {
+        if (!PosEqual && !RotEqual && !ScaleEqual) {
+
+            // Assign Value To Floats
+            ObjectScale_[0] = CurrentPos_.ScaleX;
+            ObjectScale_[1] = CurrentPos_.ScaleY;
+            ObjectScale_[2] = CurrentPos_.ScaleZ;
+            ObjectRotation_[0] = CurrentPos_.RotX;
+            ObjectRotation_[1] = CurrentPos_.RotY;
+            ObjectRotation_[2] = CurrentPos_.RotZ;
+            ObjectTranslation_[0] = CurrentPos_.PosX;
+            ObjectTranslation_[1] = CurrentPos_.PosY;
+            ObjectTranslation_[2] = CurrentPos_.PosZ;
+
+        } //else {
+
 
             // Update Current LocRotScale
             CurrentPos_.PosX = ObjectTranslation_[0];
@@ -122,30 +137,17 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
             CurrentPos_.ScaleX = ObjectScale_[0];
             CurrentPos_.ScaleY = ObjectScale_[1];
             CurrentPos_.ScaleZ = ObjectScale_[2];
-        } else {
-
-            // Assign Value To Floats
-            ObjectScale_[0] = CurrentPos_.ScaleX;
-            ObjectScale_[1] = CurrentPos_.ScaleY;
-            ObjectScale_[2] = CurrentPos_.ScaleZ;
-            ObjectRotation_[0] = CurrentPos_.RotX;
-            ObjectRotation_[1] = CurrentPos_.RotY;
-            ObjectRotation_[2] = CurrentPos_.RotZ;
-            ObjectTranslation_[0] = CurrentPos_.PosX;
-            ObjectTranslation_[1] = CurrentPos_.PosY;
-            ObjectTranslation_[2] = CurrentPos_.PosZ;
-
-        }
+        //}
 
 
 
     ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
 
     // Check If Update Needed
-    bool PosEqual = ((LastPos_.PosX == CurrentPos_.PosX) && (LastPos_.PosY == CurrentPos_.PosY) && (LastPos_.PosZ == CurrentPos_.PosZ));
-    bool RotEqual = ((LastPos_.RotX == CurrentPos_.RotX) && (LastPos_.RotY == CurrentPos_.RotY) && (LastPos_.RotZ == CurrentPos_.RotZ));
-    bool ScaleEqual = ((LastPos_.ScaleX == CurrentPos_.ScaleX) && (LastPos_.ScaleY == CurrentPos_.ScaleY) && (LastPos_.ScaleZ == CurrentPos_.ScaleZ));
-    if (PosEqual && RotEqual && ScaleEqual) {
+    bool PosEqual2 = ((LastPos_.PosX == CurrentPos_.PosX) && (LastPos_.PosY == CurrentPos_.PosY) && (LastPos_.PosZ == CurrentPos_.PosZ));
+    bool RotEqual2 = ((LastPos_.RotX == CurrentPos_.RotX) && (LastPos_.RotY == CurrentPos_.RotY) && (LastPos_.RotZ == CurrentPos_.RotZ));
+    bool ScaleEqual2 = ((LastPos_.ScaleX == CurrentPos_.ScaleX) && (LastPos_.ScaleY == CurrentPos_.ScaleY) && (LastPos_.ScaleZ == CurrentPos_.ScaleZ));
+    if (PosEqual2 && RotEqual2 && ScaleEqual2) {
         HasObjectChanged_ = false;
     } else {
         HasObjectChanged_ = true;
