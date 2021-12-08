@@ -73,11 +73,9 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
     float ObjectTranslation_[3];
     float ObjectRotation_[3];
     float ObjectScale_[3];
-        ImGuizmo::DecomposeMatrixToComponents(Matrix_[16], ObjectTranslation_, ObjectRotation_, ObjectScale_);
-    ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
-
+        std::cout<<CurrentPos_.PosX<<std::endl;
     ImGuizmo::DecomposeMatrixToComponents(Matrix_[16], ObjectTranslation_, ObjectRotation_, ObjectScale_);
-
+    std::cout<<CurrentPos_.PosX<<std::endl;
         // Force Scale To 1,1,1
         if (FirstFrame_) {
             ObjectScale_[0] = 1.0f;
@@ -92,7 +90,7 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
             
             FirstFrame_ = false;
         }
-
+    std::cout<<CurrentPos_.PosX<<std::endl;
         // Update Current LocRotScale
         CurrentPos_.PosX = ObjectTranslation_[0];
         CurrentPos_.PosY = ObjectTranslation_[1];
