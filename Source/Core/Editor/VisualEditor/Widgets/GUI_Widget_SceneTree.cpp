@@ -70,6 +70,7 @@ void Widget_SceneTree::Draw() {
                 }
 
                 // If User Selected This Scene, Set Active Scene To This One
+                std::cout<<ImGui::GetMousePos().x<<" "<<ImGui::GetItemRectMin().x<<std::endl;
                 if (ImGui::IsItemClicked() && (ImGui::GetMousePos().x > ImGui::GetItemRectMin().x)) {
                     SceneManager_->ActiveScene_ = SceneIndex;
                     SceneManager_->Scenes_[SceneIndex].HasSelectionChanged = true;
