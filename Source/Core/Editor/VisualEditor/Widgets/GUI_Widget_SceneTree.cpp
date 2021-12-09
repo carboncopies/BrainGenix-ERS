@@ -39,12 +39,38 @@ void Widget_SceneTree::Draw() {
 
             // Initialize Vars
             int ActiveScene = SceneManager_->ActiveScene_;
-            std::vector<const char*> SceneNames;
+            
+            // Convert Vector to Array
+            if (ImGui::BeginCombo("Active Scene", SceneManager_->Scenes_[ActiveScene].SceneName.c_str())) {
+
+                for (int i = 0; i < SceneManager_->Scenes_.size(); i++) {
+
+                    // Setup Selector
+                    bool Selector = false;
+                    if (i == SceneManager_->ActiveScene_) {
+                        Selector = true;
+                    }
+
+                    // Create Selectable Item
+                    ImGui::Selectable(SceneManager_->Scenes_[i].SceneName.c_str(), &Selector);
+
+                    // If Item Selected, Update Scene To Current Index
+                    if (Selector) {
+                        SceneManager_->ActiveScene_ = i;
+                        SceneManager_->Scenes_[i].HasSelectionChanged = true;
+                    }
+                }
+
+            ImGui::EndCombo();
+            }
+
+            // Active Scene Dropdown
+            ImGui::Separator();
+
 
 
             // Draw Selector In Child Frame
-            std::cout<<ImGui::GetTextLineHeightWithSpacing()<<std::endl;
-            if (ImGui::BeginChild("Tree Selector", ImVec2(ImGui::GetWindowSize().x, ImGui::GetWindowSize().y-ImGui::GetTextLineHeightWithSpacing()))) {
+            if (ImGui::BeginChild("Tree Selector")) {
 
                 // Create Scene Trees
                 for (int SceneIndex = 0; SceneIndex<SceneManager_->Scenes_.size(); SceneIndex++) {
@@ -57,7 +83,6 @@ void Widget_SceneTree::Draw() {
 
                     // Get Tree Metadata
                     const char* SceneName = SceneManager_->Scenes_[SceneIndex].SceneName.c_str();
-                    SceneNames.push_back(SceneName);
 
                     // Begin Tree
                     if (ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName)) {
@@ -73,31 +98,7 @@ void Widget_SceneTree::Draw() {
             }
 
 
-            // Active Scene Dropdown
-            ImGui::Separator();
             
-            // Convert Vector to Array
-            if (ImGui::BeginCombo("Active Scene", SceneNames[ActiveScene])) {
-
-                for (int i = 0; i < SceneNames.size(); i++) {
-
-                    // Setup Selector
-                    bool Selector = false;
-                    if (i == SceneManager_->ActiveScene_) {
-                        Selector = true;
-                    }
-
-                    // Create Selectable Item
-                    ImGui::Selectable(SceneNames[i], &Selector);
-
-                    // If Item Selected, Update Scene To Current Index
-                    if (Selector) {
-                        SceneManager_->ActiveScene_ = i;
-                    }
-                }
-
-            ImGui::EndCombo();
-            }
 
         // End System Controls Window
         ImGui::End();
