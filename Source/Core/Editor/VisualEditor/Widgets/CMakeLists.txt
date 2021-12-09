@@ -44,6 +44,10 @@ target_link_libraries(Widgets
     FontManager
 
     3DCursor
+
+    Scene
+    SceneManager
+
     )
 
 target_include_directories(Widgets PUBLIC ./)
