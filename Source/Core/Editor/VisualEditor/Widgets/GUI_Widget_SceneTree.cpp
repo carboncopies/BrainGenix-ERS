@@ -71,8 +71,8 @@ void Widget_SceneTree::Draw() {
 
                 // If User Selected This Scene, Set Active Scene To This One
                 bool IsMouseOverArrow = (ImGui::GetMousePos().x < ImGui::GetTreeNodeToLabelSpacing() + ImGui::GetWindowPos().x);
-                std::cout<<!IsMouseOverArrow<<ImGui::IsItemFocused()<<std::endl;
-                if (ImGui::IsMouseClicked(0) && ImGui::IsItemFocused() && !IsMouseOverArrow) {
+                std::cout<<!IsMouseOverArrow<<ImGui::IsItemHovered()<<std::endl;
+                if (ImGui::IsMouseClicked(0) && ImGui::IsItemHovered() && !IsMouseOverArrow) {
                     SceneManager_->ActiveScene_ = SceneIndex;
                     SceneManager_->Scenes_[SceneIndex].HasSelectionChanged = true;
                 }
