@@ -80,7 +80,7 @@ void Widget_SceneTree::Draw() {
             ImGui::Separator();
             
             // Convert Vector to Array
-            ImGui::BeginCombo("Active Scene", SceneNames[ActiveScene]);
+            if (ImGui::BeginCombo("Active Scene", SceneNames[ActiveScene])) {
 
                 for (int i = 0; i < SceneNames.size(); i++) {
 
@@ -100,7 +100,7 @@ void Widget_SceneTree::Draw() {
                 }
 
             ImGui::EndCombo();
-            
+            }
 
         // End System Controls Window
         ImGui::End();
