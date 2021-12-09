@@ -43,7 +43,7 @@ void Widget_SceneTree::Draw() {
             for (int SceneIndex = 0; SceneIndex<SceneManager_->Scenes_.size(); SceneIndex++) {
 
                 // Setup Tree Flags
-                ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnDoubleClick;
+                ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnArrow;
 
                 // If First Frame, Default Active Scene To Open
                 if (SceneIndex == ActiveScene && FirstFrame_) {
@@ -59,11 +59,6 @@ void Widget_SceneTree::Draw() {
                 const char* SceneName = SceneManager_->Scenes_[SceneIndex].SceneName.c_str();
                 if (ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName)) {
 
-                    // If User Selected This Scene, Set Active Scene To This One
-                    if (ImGui::IsItemClicked() && !ImGui::IsItemToggledOpen() && !ImGui::IsItemDeactivated()) {
-                        SceneManager_->ActiveScene_ = SceneIndex;
-                        SceneManager_->Scenes_[SceneIndex].HasSelectionChanged = true;
-                    }
 
                     // Draw Scene
                     DrawScene(&SceneManager_->Scenes_[SceneIndex]);
@@ -74,6 +69,11 @@ void Widget_SceneTree::Draw() {
                     ImGui::TreePop();
                 }
 
+                // If User Selected This Scene, Set Active Scene To This One
+                if (ImGui::IsItemClicked()) {
+                    SceneManager_->ActiveScene_ = SceneIndex;
+                    SceneManager_->Scenes_[SceneIndex].HasSelectionChanged = true;
+                }
 
  
 
