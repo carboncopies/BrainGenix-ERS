@@ -1217,17 +1217,17 @@ namespace ImGuizmo
             circlePos[i] = worldToPos(pos, gContext.mMVP);
          }
 
-         float radiusAxis = sqrtf((ImLengthSqr(worldToPos(gContext.mModel.v.position, gContext.mViewProjection) - circlePos[0])));
+         float radiusAxis = 20.0f + sqrtf((ImLengthSqr(worldToPos(gContext.mModel.v.position, gContext.mViewProjection) - circlePos[0]))); // MODIFIED TO OFFSET SIZE OF GIZMO, THIS NUMBER ADDS TO THE RADIUS OF THE LARGE ROTATION CIRCLE
          if (radiusAxis > gContext.mRadiusSquareCenter)
          {
             gContext.mRadiusSquareCenter = radiusAxis;
          }
 
-         drawList->AddPolyline(circlePos, circleMul * halfCircleSegmentCount + 1, colors[3 - axis], false, 3);
+         drawList->AddPolyline(circlePos, circleMul * halfCircleSegmentCount + 1, colors[3 - axis], false, 3); // MODIFIED TO MAKE RGB INNER CIRCLES THICKER
       }
       if(hasRSC)
       {
-         drawList->AddCircle(worldToPos(gContext.mModel.v.position, gContext.mViewProjection), gContext.mRadiusSquareCenter + 10.0f, colors[0], 64, 3.f);
+         drawList->AddCircle(worldToPos(gContext.mModel.v.position, gContext.mViewProjection), gContext.mRadiusSquareCenter, colors[0], 64, 2.f); // MODIFIED TO MAKE THICKNESS OF LARGE OUTER CIRCLE THINNER
       }
 
       if (gContext.mbUsing && (gContext.mActualID == -1 || gContext.mActualID == gContext.mEditingID) && IsRotateType(type))
