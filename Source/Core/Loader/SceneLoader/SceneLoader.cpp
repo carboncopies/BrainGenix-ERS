@@ -110,6 +110,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
                 Model.AssetPath_ = TemplateModels_[AssetPath].AssetPath_;
                 Model.GammaCorrection = TemplateModels_[AssetPath].GammaCorrection;
                 Model.HasTexturesLoaded = TemplateModels_[AssetPath].HasTexturesLoaded;
+                Model.Name = AssetName;
 
                 // Copy Texture References
                 Model.Textures_Loaded = TemplateModels_[AssetPath].Textures_Loaded;
@@ -147,6 +148,9 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
 
                 // Load Model 
                 ERS_OBJECT_MODEL Model = ModelLoader_->LoadModelFromFile(AssetPath.c_str(), FlipTextures);
+
+                // Set Name
+                Model.Name = AssetName;
 
                 // Copy To Template Map
                 Model.IsTemplateModel = true;

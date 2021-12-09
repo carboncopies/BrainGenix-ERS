@@ -62,3 +62,21 @@ void Widget_SceneTree::Draw() {
 
 
 }
+
+
+// Draw Contents Of Scene To Scene Tree Widget Tree Node
+void Widget_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene) {
+
+    // Get Selected Item
+    int SelectedSceneObjectIndex = Scene->SelectedModel;
+
+    // Iterate Through Scene Objects
+    for (int ObjectIndex = 0; ObjectIndex < Scene->Models.size(); ObjectIndex++) {
+
+        // Get Name Of Object
+        const char* ObjectName = Scene->Models[ModelIndex].ModelName.c_str();
+
+    }
+
+
+}

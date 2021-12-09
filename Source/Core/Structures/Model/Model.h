@@ -34,6 +34,7 @@ struct ERS_OBJECT_MODEL {
     std::vector<ERS_OBJECT_MESH> Meshes;
     std::vector<ERS_OBJECT_TEXTURE_2D> Textures_Loaded;
     std::string Directory;
+    std::string Name = "Name Not Assigned";
 
     std::string AssetPath_;
 
