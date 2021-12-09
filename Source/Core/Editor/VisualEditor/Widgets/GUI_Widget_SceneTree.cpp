@@ -57,7 +57,8 @@ void Widget_SceneTree::Draw() {
 
                 // Begin Tree
                 const char* SceneName = SceneManager_->Scenes_[SceneIndex].SceneName.c_str();
-                if (ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName)) {
+                bool TreeNodeStatus = ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName);
+                if (TreeNodeStatus) {
 
 
                     // Draw Scene
@@ -70,8 +71,13 @@ void Widget_SceneTree::Draw() {
                 }
 
                 // If User Selected This Scene, Set Active Scene To This One
-                bool IsMouseOverArrow = ((ImGui::GetMousePos().x > ImGui::GetItemRectMin().x) || (ImGui::GetMousePos().x > ImGui::GetTreeNodeToLabelSpacing()));
-                std::cout<<(ImGui::GetMousePos().x > ImGui::GetItemRectMin().x)<<(ImGui::GetMousePos().x < ImGui::GetItemRectMax())<<ImGui::GetItemRectSize()<<std::endl;
+                bool IsMouseOverArrow;
+                if (TreeNodeStatus) {
+                    IsMouseOverArrow = !(ImGui::GetMousePos().x > ImGui::GetItemRectMin().x);
+                } else {
+                    IsMouseOverArrow = (ImGui::GetMousePos().x < ImGui::GetTreeNodeToLabelSpacing());
+                }
+                std::cout<<(ImGui::GetMousePos().x < ImGui::GetTreeNodeToLabelSpacing())<<std::endl;
                 if (ImGui::IsItemClicked() && !IsMouseOverArrow) {
                     SceneManager_->ActiveScene_ = SceneIndex;
                     SceneManager_->Scenes_[SceneIndex].HasSelectionChanged = true;
