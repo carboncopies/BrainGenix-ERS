@@ -43,7 +43,7 @@ void Widget_SceneTree::Draw() {
             for (int SceneIndex = 0; SceneIndex<SceneManager_->Scenes_.size(); SceneIndex++) {
 
                 // Setup Tree Flags
-                ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnArrow;
+                ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth;
 
                 // If First Frame, Default Active Scene To Open
                 if (SceneIndex == ActiveScene && FirstFrame_) {
@@ -71,8 +71,8 @@ void Widget_SceneTree::Draw() {
 
                 // If User Selected This Scene, Set Active Scene To This One
                 bool IsMouseOverArrow = (ImGui::GetMousePos().x < ImGui::GetTreeNodeToLabelSpacing() + ImGui::GetWindowPos().x);
-                std::cout<<!IsMouseOverArrow<<ImGui::IsItemHovered()<<std::endl;
-                if (ImGui::IsMouseClicked(0) && ImGui::IsItemHovered() && !IsMouseOverArrow) {
+                std::cout<<!IsMouseOverArrow<<std::endl;
+                if (ImGui::IsMouseClicked(0) && !IsMouseOverArrow) {
                     SceneManager_->ActiveScene_ = SceneIndex;
                     SceneManager_->Scenes_[SceneIndex].HasSelectionChanged = true;
                 }
