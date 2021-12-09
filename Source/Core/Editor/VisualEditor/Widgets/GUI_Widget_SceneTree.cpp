@@ -39,8 +39,15 @@ void Widget_SceneTree::Draw() {
             // Create Scene Trees
             for (int SceneIndex = 0; SceneIndex<SceneManager_->Scenes_.size(); SceneIndex++) {
 
+                // Indictate Which Scene Is Active
+                int ActiveScene = SceneManager_->ActiveScene_;
+                ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_NoTreePushOnOpen;
+                if (SceneIndex == ActiveScene) {
+                    NodeFlags |= ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_Selected;
+                }
+
                 // Begin Tree
-                if (ImGui::TreeNode(SceneManager_->Scenes_[SceneIndex].SceneName.c_str())) {
+                if (ImGui::TreeNode(SceneManager_->Scenes_[SceneIndex].SceneName.c_str()), NodeFlags) {
 
                     // Draw Scene
                     DrawScene(&SceneManager_->Scenes_[SceneIndex]);
