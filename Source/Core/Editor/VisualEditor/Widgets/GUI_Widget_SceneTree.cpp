@@ -41,13 +41,14 @@ void Widget_SceneTree::Draw() {
 
                 // Indictate Which Scene Is Active
                 int ActiveScene = SceneManager_->ActiveScene_;
-                ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_NoTreePushOnOpen;
+                ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_None;
                 if (SceneIndex == ActiveScene) {
                     NodeFlags |= ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_Selected;
                 }
 
                 // Begin Tree
-                if (ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneManager_->Scenes_[SceneIndex].SceneName.c_str())) {
+                const char* SceneName = SceneManager_->Scenes_[SceneIndex].SceneName.c_str();
+                if (ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName)) {
 
                     // Draw Scene
                     DrawScene(&SceneManager_->Scenes_[SceneIndex]);
