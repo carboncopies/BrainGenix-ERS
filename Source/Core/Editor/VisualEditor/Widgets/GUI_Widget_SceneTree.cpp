@@ -41,7 +41,7 @@ void Widget_SceneTree::Draw() {
 
                 // Indictate Which Scene Is Active
                 int ActiveScene = SceneManager_->ActiveScene_;
-                ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnDoubleClick;
+                ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_None;
                 if (SceneIndex == ActiveScene) {
                     NodeFlags |= ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_Selected;
                 }
@@ -49,6 +49,13 @@ void Widget_SceneTree::Draw() {
                 // Begin Tree
                 const char* SceneName = SceneManager_->Scenes_[SceneIndex].SceneName.c_str();
                 if (ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName)) {
+
+                    // If User Selected This Scene, Set Active Scene To This One
+                    ImGui::SameLine();
+                    if (ImGui::Button("Make Active")) {
+                        SceneManager_->ActiveScene_ = SceneIndex;
+                        SceneManager_->Scenes_[SceneIndex].HasSelectionChanged = true;
+                    }
 
                     // Draw Scene
                     DrawScene(&SceneManager_->Scenes_[SceneIndex]);
@@ -60,10 +67,7 @@ void Widget_SceneTree::Draw() {
                 }
 
 
-                // If User Selected This Scene, Set Active Scene To This One
-                if (ImGui::IsItemClicked()) {
-                    SceneManager_->ActiveScene_ = SceneIndex;
-                }
+ 
 
             }
 
