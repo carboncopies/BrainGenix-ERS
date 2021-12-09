@@ -35,7 +35,16 @@ void Widget_SceneTree::Draw() {
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
 
-            
+            // Create Scene Trees
+            for (int SceneIndex = 0; SceneIndex<SceneManager_->Scenes_; SceneIndex++) {
+
+                // Begin Tree
+                ImGui::TreeNode(SceneManager_->Scenes_[SceneIndex].SceneName.c_str())
+
+                // End Node
+                ImGui::TreePop();
+
+            }
 
 
 

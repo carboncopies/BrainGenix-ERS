@@ -34,6 +34,9 @@ class SceneManager{
         // Internal Member Pointers
         LoggerClass *Logger_; /**<Pointer To Logger Instance*/
 
+
+    public:
+
         std::vector<ERS_OBJECT_SCENE> Scenes_; /**<Vector Containing Scenes To Be Drawn*/
         int ActiveScene_ = 0; /**<Set The Active Scene */
 
