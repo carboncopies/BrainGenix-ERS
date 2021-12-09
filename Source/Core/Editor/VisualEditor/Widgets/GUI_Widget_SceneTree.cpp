@@ -47,7 +47,7 @@ void Widget_SceneTree::Draw() {
                 }
 
                 // Begin Tree
-                if (ImGui::TreeNode(SceneManager_->Scenes_[SceneIndex].SceneName.c_str()), NodeFlags) {
+                if (ImGui::TreeNode((void*)(intptr_t)SceneIndex, SceneManager_->Scenes_[SceneIndex].SceneName.c_str(), NodeFlags)) {
 
                     // Draw Scene
                     DrawScene(&SceneManager_->Scenes_[SceneIndex]);
