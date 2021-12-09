@@ -41,8 +41,8 @@ void Widget_SceneTree::Draw() {
                 // Begin Tree
                 if (ImGui::TreeNode(SceneManager_->Scenes_[SceneIndex].SceneName.c_str())) {
 
-
-
+                    // Draw Scene
+                    DrawScene(&Scenes_[SceneIndex]);
 
                     // End Node
                     ImGui::TreePop();
