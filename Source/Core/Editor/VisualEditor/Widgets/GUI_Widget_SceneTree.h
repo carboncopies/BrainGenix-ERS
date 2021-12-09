@@ -22,10 +22,8 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <3DCursor.h>
-
-#include <ERS_STRUCT_LocRotScale.h>
-
+#include <SceneManager.h>
+#include <Scene.h>
 
 
 /**
@@ -36,7 +34,7 @@ class Widget_SceneTree {
 
     private:
 
-        Cursors3D *Cursors3D_; /**<Instance pointer to cursors3d class*/
+        SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
 
     public:
 
@@ -47,7 +45,7 @@ class Widget_SceneTree {
          * @brief Construct a new Widget_SceneTree object
          * 
          */
-        Widget_SceneTree(Cursors3D *Cursors3D);
+        Widget_SceneTree(Sce);
 
         /**
          * @brief Destroy the Widget_SceneTree object
