@@ -12,10 +12,11 @@
 #include <GUI_Widget_SceneTree.h>
 
 // Constructor
-Widget_SceneTree::Widget_SceneTree(Cursors3D *Cursors3D) {
+Widget_SceneTree::Widget_SceneTree(SceneManager* SceneManager) {
 
     // Update Ptr
-    Cursors3D_ = Cursors3D;
+    SceneManager_ = SceneManager;
+
 
 }
 
