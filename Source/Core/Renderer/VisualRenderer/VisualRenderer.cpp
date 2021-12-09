@@ -159,6 +159,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
         SceneManager->Scenes_[SceneManager->ActiveScene_].HasSelectionChanged = false;
     }
 
+
     // Start To Draw 3D Cursor
     Cursors3D_->BeginRenderpass(Cameras_[Index], (float*)glm::value_ptr(view), (float*)glm::value_ptr(projection), CaptureMouseCursor);
 
