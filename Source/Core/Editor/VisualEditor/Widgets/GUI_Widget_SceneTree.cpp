@@ -43,7 +43,7 @@ void Widget_SceneTree::Draw() {
             for (int SceneIndex = 0; SceneIndex<SceneManager_->Scenes_.size(); SceneIndex++) {
 
                 // Setup Tree Flags
-                ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth;
+                ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnArrow;
 
                 // If First Frame, Default Active Scene To Open
                 if (SceneIndex == ActiveScene && FirstFrame_) {
@@ -57,7 +57,7 @@ void Widget_SceneTree::Draw() {
 
                 // Begin Tree
                 const char* SceneName = SceneManager_->Scenes_[SceneIndex].SceneName.c_str();
-                if (ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName)) {
+                if (ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", "")) {
 
 
                     // Draw Scene
@@ -69,19 +69,13 @@ void Widget_SceneTree::Draw() {
                     ImGui::TreePop();
                 }
 
-                // If User Selected This Scene, Set Active Scene To This One
-                bool IsMouseOverArrow = (ImGui::GetMousePos().x < ImGui::GetTreeNodeToLabelSpacing() + ImGui::GetWindowPos().x);
-                std::cout<<(ImGui::IsItemHovered()&&ImGui::IsMouseDown(0))<<!IsMouseOverArrow<<std::endl;
-                if (ImGui::IsItemClicked() && !IsMouseOverArrow) {
-                    SceneManager_->ActiveScene_ = SceneIndex;
-                    SceneManager_->Scenes_[SceneIndex].HasSelectionChanged = true;
-                }
-
- 
-
             }
 
 
+            // Active Scene Dropdown
+            ImGui::Separator();
+            
+            ImGui::ShowDemoWindow();
 
             
 
