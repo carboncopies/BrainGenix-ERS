@@ -86,7 +86,7 @@ void Widget_SceneTree::Draw() {
 
                     // Setup Selector
                     bool Selector = false;
-                    if (i == ActiveScene) {
+                    if (i == SceneManager_->ActiveScene_) {
                         Selector = true;
                     }
 
