@@ -36,43 +36,40 @@ void Widget_SceneTree::Draw() {
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
 
-            // Initialize
+
+            // Initialize Vars
             int ActiveScene = SceneManager_->ActiveScene_;
             std::vector<const char*> SceneNames;
 
-            // Create Scene Trees
-            for (int SceneIndex = 0; SceneIndex<SceneManager_->Scenes_.size(); SceneIndex++) {
 
-                // Setup Tree Flags
-                ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnArrow;
+            // Draw Selector In Child Frame
 
-                // If First Frame, Default Active Scene To Open
-                if (SceneIndex == ActiveScene && FirstFrame_) {
-                    NodeFlags |= ImGuiTreeNodeFlags_DefaultOpen;
+            if (ImGui::BeginChild("Tree Selector", ImVec2(ImGui::GetWindowSize().x, ImGui::GetWindowSize().y-ImGui::GetTextLineHeightWithSpacing()))) {
+
+                // Create Scene Trees
+                for (int SceneIndex = 0; SceneIndex<SceneManager_->Scenes_.size(); SceneIndex++) {
+
+                    // Setup Tree Flags
+                    ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnArrow;
+                    if (SceneIndex == ActiveScene) {
+                        NodeFlags |= ImGuiTreeNodeFlags_Selected;
+                    }
+
+                    // Get Tree Metadata
+                    const char* SceneName = SceneManager_->Scenes_[SceneIndex].SceneName.c_str();
+                    SceneNames.push_back(SceneName);
+
+                    // Begin Tree
+                    if (ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName)) {
+
+                        DrawScene(&SceneManager_->Scenes_[SceneIndex]);
+
+                        ImGui::TreePop();
+                    }
+
                 }
 
-                // Indictate Which Scene Is Active
-                if (SceneIndex == ActiveScene) {
-                    NodeFlags |= ImGuiTreeNodeFlags_Selected;
-                }
-
-                // Get Tree Metadata
-                const char* SceneName = SceneManager_->Scenes_[SceneIndex].SceneName.c_str();
-                SceneNames.push_back(SceneName);
-
-                // Begin Tree
-                if (ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName)) {
-
-
-                    // Draw Scene
-                    DrawScene(&SceneManager_->Scenes_[SceneIndex]);
-
-
-
-                    // End Node
-                    ImGui::TreePop();
-                }
-
+            ImGui::EndChild();
             }
 
 
