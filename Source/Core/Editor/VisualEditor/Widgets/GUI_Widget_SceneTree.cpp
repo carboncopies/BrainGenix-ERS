@@ -43,7 +43,7 @@ void Widget_SceneTree::Draw() {
 
 
             // Draw Selector In Child Frame
-            std:cout<<ImGui::GetTextLineHeightWithSpacing()<<std::endl;
+            std::cout<<ImGui::GetTextLineHeightWithSpacing()<<std::endl;
             if (ImGui::BeginChild("Tree Selector", ImVec2(ImGui::GetWindowSize().x, ImGui::GetWindowSize().y-ImGui::GetTextLineHeightWithSpacing()))) {
 
                 // Create Scene Trees
