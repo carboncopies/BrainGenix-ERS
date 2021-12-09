@@ -36,10 +36,10 @@ void Widget_SceneTree::Draw() {
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
 
             // Create Scene Trees
-            for (int SceneIndex = 0; SceneIndex<SceneManager_->Scenes_; SceneIndex++) {
+            for (int SceneIndex = 0; SceneIndex<SceneManager_->Scenes_.size(); SceneIndex++) {
 
                 // Begin Tree
-                ImGui::TreeNode(SceneManager_->Scenes_[SceneIndex].SceneName.c_str())
+                ImGui::TreeNode(SceneManager_->Scenes_[SceneIndex].SceneName.c_str());
 
                 // End Node
                 ImGui::TreePop();
