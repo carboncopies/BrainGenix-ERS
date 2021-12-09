@@ -173,19 +173,19 @@ void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraV
         
 
         // Force Scale To 1,1,1
-        if (FirstFrame_) {
-            ObjectScale_[0] = 1.0f;
-            ObjectScale_[1] = 1.0f;
-            ObjectScale_[2] = 1.0f;
-            ObjectRotation_[0] = 0.0f;
-            ObjectRotation_[1] = 0.0f;
-            ObjectRotation_[2] = 0.0f;
-            ObjectTranslation_[0] = 0.0f;
-            ObjectTranslation_[1] = 0.0f;
-            ObjectTranslation_[2] = 0.0f;
+        // if (FirstFrame_) {
+        //     ObjectScale_[0] = 1.0f;
+        //     ObjectScale_[1] = 1.0f;
+        //     ObjectScale_[2] = 1.0f;
+        //     ObjectRotation_[0] = 0.0f;
+        //     ObjectRotation_[1] = 0.0f;
+        //     ObjectRotation_[2] = 0.0f;
+        //     ObjectTranslation_[0] = 0.0f;
+        //     ObjectTranslation_[1] = 0.0f;
+        //     ObjectTranslation_[2] = 0.0f;
             
-            FirstFrame_ = false;
-        }
+        //     FirstFrame_ = false;
+        // }
 
 
 
