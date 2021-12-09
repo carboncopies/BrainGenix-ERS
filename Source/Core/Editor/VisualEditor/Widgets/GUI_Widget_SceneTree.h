@@ -35,6 +35,7 @@ class Widget_SceneTree {
     private:
 
         SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
+        bool FirstFrame_ = true; /**<Bool Indicating if It's the first frame*/
 
     private:
 
