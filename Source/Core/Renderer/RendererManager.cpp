@@ -31,6 +31,16 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     Cursors3D_ = new Cursors3D();
 
 
+    // Initialize Texture Loader
+    TextureLoader_ = new TextureLoader(Logger_);
+
+
+    // Load Scene
+    ModelLoader MLoader(Logger_, TextureLoader_);
+    SceneLoader SLoader(Logger_, &MLoader);
+    SceneManager_ = new SceneManager(Logger_);
+
+
     // Initialize Systems
     Logger_->Log("Initializing GLFW", 5);
     InitializeGLFW();
@@ -56,15 +66,6 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     // Make Viewport
     VisualRenderer_->CreateViewport(&Shader_, "Viewport", Window_, &Camera_);
     //VisualRenderer_->CreateViewport(&Shader_, "Viewport 2", Window_, &Camera_);
-
-    // Initialize Texture Loader
-    TextureLoader_ = new TextureLoader(Logger_);
-
-
-    // Load Scene
-    ModelLoader MLoader(Logger_, TextureLoader_);
-    SceneLoader SLoader(Logger_, &MLoader);
-    SceneManager_ = new SceneManager(Logger_);
 
 
     // Test Scene
