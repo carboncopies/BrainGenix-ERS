@@ -33,6 +33,7 @@
 #include <FontManager.h>
 #include <Theme.h>
 #include <UserProfile.h>
+#include <SceneManager.h>
 
 #include <3DCursor.h>
 
@@ -42,6 +43,7 @@
 #include <GUI_Widget_FramerateGraph.h>
 #include <GUI_Widget_FrameratePlot.h>
 #include <GUI_Widget_ObjectProperties.h>
+#include <GUI_Widget_SceneTree.h>
 
 
 /**
@@ -59,6 +61,7 @@ class GUISystem {
         FontManager* FontManager_; /**<Pointer To FontManager Instance*/
         UserProfileManager* UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
         Cursors3D* Cursors3D_; /**<Pointer to Cursors3D Instance*/
+        SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
 
 
         bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */
@@ -84,14 +87,14 @@ class GUISystem {
         Widget_FrameratePlot Widget_FrameratePlot_; /**<Widget Instance*/
         Widget_RenderingSettings Widget_RenderingSettings_; /**<Widget Instance*/
         Widget_ObjectProperties *Widget_ObjectProperties_; /**<Widget Instance*/
-
+        Widget_SceneTree *Widget_SceneTree_; /**<Widget Instance*/
 
         /**
          * @brief Construct a new Gui System object
          * 
          * @param Logger 
          */
-        GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShouldRun, Cursors3D* Cursors3D);
+        GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShouldRun, Cursors3D* Cursors3D, SceneManager* SceneManager);
 
         /**
          * @brief Destroy the Gui System object

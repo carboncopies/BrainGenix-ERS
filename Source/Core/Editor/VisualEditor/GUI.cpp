@@ -13,13 +13,14 @@
 
 
 // GUISystem Constructor
-GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShouldRun, Cursors3D* Cursors3D) {
+GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShouldRun, Cursors3D* Cursors3D, SceneManager* SceneManager) {
 
     // Create Local Pointer
     Logger_ = Logger;
     Window_ = Window;
     SystemShouldRun_ = SystemShouldRun;
     Cursors3D_ = Cursors3D;
+    SceneManager_ = SceneManager;
 
     // Initialize ImGui
     Logger_->Log("Initializing DearImGui GUI Library", 5);
@@ -49,6 +50,7 @@ GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShould
     // Initialize Widgets
     Logger_->Log("Initializing GUI Widgets", 5);
     Widget_ObjectProperties_ = new Widget_ObjectProperties(Cursors3D_);
+    Widget_SceneTree_ = new Widget_SceneTree(SceneManager_);
 
 
 }
@@ -114,6 +116,7 @@ void GUISystem::UpdateGUI() {
     Widget_FramerateGraph_.Draw();
     Widget_FrameratePlot_.Draw();
 
+    Widget_SceneTree_->Draw();
 
     FontManager_->FontSelectorWindow(&ShowFontPicker_);
 
@@ -173,6 +176,8 @@ void GUISystem::UpdateGUI() {
                     // Viewport Settings
                     ImGui::Checkbox("Object Properties", &Widget_ObjectProperties_->Enabled_);
                     ImGui::Checkbox("Global Viewport Settings", &Widget_RenderingSettings_.Enabled_);
+                    ImGui::Checkbox("Scene Tree", &Widget_SceneTree_->Enabled_);
+                    
 
                 ImGui::EndMenu();
                 }
