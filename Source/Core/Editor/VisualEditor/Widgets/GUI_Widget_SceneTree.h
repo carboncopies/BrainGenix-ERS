@@ -45,7 +45,7 @@ class Widget_SceneTree {
          * @brief Construct a new Widget_SceneTree object
          * 
          */
-        Widget_SceneTree(Sce);
+        Widget_SceneTree(SceneManager* SceneManager);
 
         /**
          * @brief Destroy the Widget_SceneTree object
