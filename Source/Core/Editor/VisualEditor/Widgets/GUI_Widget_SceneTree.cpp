@@ -77,7 +77,7 @@ void Widget_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene) {
         const char* ObjectName = Scene->Models[ObjectIndex].Name.c_str();
 
         // Create Tree Node
-        TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+        ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
         ImGui::TreeNodeEx((void*)(intptr_t)ObjectIndex, TreeFlags, "%d", ObjectIndex);
 
 
