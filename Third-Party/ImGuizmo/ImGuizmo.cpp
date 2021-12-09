@@ -736,7 +736,7 @@ namespace ImGuizmo
    static Context gContext;
 
    static const vec_t directionUnary[3] = { makeVect(1.f, 0.f, 0.f), makeVect(0.f, 1.f, 0.f), makeVect(0.f, 0.f, 1.f) };
-   static const ImU32 directionColor[3] = { IM_COL32(0xDD, 0, 0, 0xFF), IM_COL32(0, 0xDD, 0, 0xFF), IM_COL32(0, 0, 0xFF, 0XFF) };
+   static const ImU32 directionColor[3] = { IM_COL32(0xDD, 0, 0, 0xFF), IM_COL32(0, 0xDD, 0, 0xFF), IM_COL32(0, 0x66, 0xFF, 0XFF) };
 
    // Alpha: 100%: FF, 87%: DE, 70%: B3, 54%: 8A, 50%: 80, 38%: 61, 12%: 1F
    static const ImU32 planeColor[3] = { IM_COL32(0xAA, 0, 0, 0x61), IM_COL32(0, 0xAA, 0, 0x61), IM_COL32(0, 0, 0xAA, 0x61) };
