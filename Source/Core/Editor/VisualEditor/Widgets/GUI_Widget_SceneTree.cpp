@@ -36,15 +36,21 @@ void Widget_SceneTree::Draw() {
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
 
+            // Get Active Scene
+            int ActiveScene = SceneManager_->ActiveScene_;
+
             // Create Scene Trees
             for (int SceneIndex = 0; SceneIndex<SceneManager_->Scenes_.size(); SceneIndex++) {
 
-                // Indictate Which Scene Is Active
-                int ActiveScene = SceneManager_->ActiveScene_;
+                // Setup Tree Flags
                 ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnDoubleClick;
-                if (FirstFrame_) {
+
+                // If First Frame, Default Active Scene To Open
+                if (SceneIndex == ActiveScene && FirstFrame_) {
                     NodeFlags |= ImGuiTreeNodeFlags_DefaultOpen;
                 }
+
+                // Indictate Which Scene Is Active
                 if (SceneIndex == ActiveScene) {
                     NodeFlags |= ImGuiTreeNodeFlags_Selected;
                 }
@@ -54,7 +60,7 @@ void Widget_SceneTree::Draw() {
                 if (ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName)) {
 
                     // If User Selected This Scene, Set Active Scene To This One
-                    if (ImGui::IsItemClicked() && !ImGui::IsItemActivated()) {
+                    if (ImGui::IsItemClicked() && !ImGui::IsItemToggledOpen && !ImGui::IsItemDeactivated()) {
                         SceneManager_->ActiveScene_ = SceneIndex;
                         SceneManager_->Scenes_[SceneIndex].HasSelectionChanged = true;
                     }
