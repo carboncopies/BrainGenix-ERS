@@ -32,7 +32,7 @@
  * @brief Create GUI Widget "Rendering Settings"
  * 
  */
-class Widget_ObjectProperties {
+class Widget_SceneTree {
 
     private:
 
@@ -44,16 +44,16 @@ class Widget_ObjectProperties {
         bool Enabled_ = true; /**<Show/Hide Widget*/
 
         /**
-         * @brief Construct a new Widget_ObjectProperties object
+         * @brief Construct a new Widget_SceneTree object
          * 
          */
-        Widget_ObjectProperties(Cursors3D *Cursors3D);
+        Widget_SceneTree(Cursors3D *Cursors3D);
 
         /**
-         * @brief Destroy the Widget_ObjectProperties object
+         * @brief Destroy the Widget_SceneTree object
          * 
          */
-        ~Widget_ObjectProperties();
+        ~Widget_SceneTree();
 
         /**
          * @brief Function that draws the window, should internally check if enable variable is set to true.

@@ -9,10 +9,10 @@
     Date Created: 2021-12-07
 */
 
-#include <GUI_Widget_ObjectProperties.h>
+#include <GUI_Widget_SceneTree.h>
 
 // Constructor
-Widget_ObjectProperties::Widget_ObjectProperties(Cursors3D *Cursors3D) {
+Widget_SceneTree3::Widget_SceneTree3(Cursors3D *Cursors3D) {
 
     // Update Ptr
     Cursors3D_ = Cursors3D;
@@ -20,12 +20,12 @@ Widget_ObjectProperties::Widget_ObjectProperties(Cursors3D *Cursors3D) {
 }
 
 // Destructor
-Widget_ObjectProperties::~Widget_ObjectProperties() {
+Widget_SceneTree3::~Widget_SceneTree3() {
     
 }
 
 // Define Draw Function
-void Widget_ObjectProperties::Draw() {
+void Widget_SceneTree3::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {
