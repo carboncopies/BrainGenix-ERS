@@ -36,7 +36,7 @@ struct ERS_OBJECT_SCENE{
 
     // Model That's Currently Selected
     int SelectedModel = 0; /**<The Model That Is Currently Selected*/
-    bool HasSeletionChanged = true; /**<Indicates if the selected item(s) have changed*/
+    bool HasSelectionChanged = true; /**<Indicates if the selected item(s) have changed*/
 
     // Scene Metadata
     long SceneFormatVersion; /**<Sets The Current Scene Version (from File/DB Entry), determines If System Can Load It*/

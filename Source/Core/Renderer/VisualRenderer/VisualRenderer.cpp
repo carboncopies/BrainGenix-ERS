@@ -142,7 +142,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
 
 
     // Update Cursor If Selection Changed
-    if (SceneManager->Scenes_[SceneManager->ActiveScene_].HasSeletionChanged) {
+    if (SceneManager->Scenes_[SceneManager->ActiveScene_].HasSelectionChanged) {
 
         int SelectedModel = SceneManager->Scenes_[SceneManager->ActiveScene_].SelectedModel;
         glm::vec3 Position = SceneManager->Scenes_[SceneManager->ActiveScene_].Models[SelectedModel].ModelPosition;        
