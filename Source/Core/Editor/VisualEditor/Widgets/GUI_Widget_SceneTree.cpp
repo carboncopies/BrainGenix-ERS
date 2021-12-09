@@ -57,7 +57,7 @@ void Widget_SceneTree::Draw() {
 
                 // Begin Tree
                 const char* SceneName = SceneManager_->Scenes_[SceneIndex].SceneName.c_str();
-                if (ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", "")) {
+                if (ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName)) {
 
 
                     // Draw Scene
