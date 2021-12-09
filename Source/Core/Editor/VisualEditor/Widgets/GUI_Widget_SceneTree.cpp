@@ -74,7 +74,7 @@ void Widget_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene) {
     for (int ObjectIndex = 0; ObjectIndex < Scene->Models.size(); ObjectIndex++) {
 
         // Get Name Of Object
-        const char* ObjectName = Scene->Models[ModelIndex].ModelName.c_str();
+        const char* ObjectName = Scene->Models[ModelIndex].Name.c_str();
 
     }
 
