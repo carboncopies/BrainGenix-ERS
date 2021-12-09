@@ -41,7 +41,7 @@ void Widget_SceneTree::Draw() {
 
                 // Indictate Which Scene Is Active
                 int ActiveScene = SceneManager_->ActiveScene_;
-                ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_None;
+                ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnDoubleClick;
                 if (SceneIndex == ActiveScene) {
                     NodeFlags |= ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_Selected;
                 }
