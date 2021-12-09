@@ -22,7 +22,9 @@ target_include_directories( IMGUI
                             PUBLIC ${IMGUI_DIR}/backends
                             PUBLIC ${SDL2_DIR}/include
                             )
-
+target_link_libraries(IMGUI
+    glfw    
+)
 
 if(RASPBIAN)
     target_compile_definitions(IMGUI PUBLIC -D__RASPBIAN__)
