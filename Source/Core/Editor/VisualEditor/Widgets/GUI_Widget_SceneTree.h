@@ -36,10 +36,23 @@ class Widget_SceneTree {
 
         SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
 
+    private:
+
+        /**
+         * @brief Draw A Scene Under A Tree Node
+         * 
+         * @param Scene 
+         */
+        void DrawScene(ERS_OBJECT_SCENE* Scene);
+
+
+
     public:
 
         // Show/Hide Var
         bool Enabled_ = true; /**<Show/Hide Widget*/
+
+    public:
 
         /**
          * @brief Construct a new Widget_SceneTree object
