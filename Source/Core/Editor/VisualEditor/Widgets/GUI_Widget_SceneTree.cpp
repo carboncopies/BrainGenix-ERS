@@ -27,7 +27,8 @@ Widget_SceneTree::~Widget_SceneTree() {
 
 // Define Draw Function
 void Widget_SceneTree::Draw() {
-    ImGui::ShowDemoWindow();
+
+
     // If Window Drawing Enabled
     if (Enabled_) {
         ImGui::Begin("Scene Tree", &Enabled_);
