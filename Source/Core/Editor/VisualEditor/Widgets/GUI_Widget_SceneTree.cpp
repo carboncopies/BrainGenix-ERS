@@ -85,6 +85,11 @@ void Widget_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene) {
         // Create Tree Node
         ImGui::TreeNodeEx((void*)(intptr_t)ObjectIndex, TreeFlags, "%s", ObjectName);
 
+        // If User Clicks Node, Update Object Index
+        if (ImGui::IsItemClicked()) {
+            Scene->SelectedModel = ObjectIndex;
+        }
+
 
     }
 
