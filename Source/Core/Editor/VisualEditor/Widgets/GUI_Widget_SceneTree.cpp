@@ -70,7 +70,7 @@ void Widget_SceneTree::Draw() {
                 }
 
                 // If User Selected This Scene, Set Active Scene To This One
-                if (ImGui::IsItemClicked() && !ImGui::IsItemActivated()) {
+                if (ImGui::IsItemClicked() && !((ImGui::GetMousePos().x - ImGui::GetItemRectMin().x) < ImGui::GetTreeNodeToLabelSpacing())) {
                     SceneManager_->ActiveScene_ = SceneIndex;
                     SceneManager_->Scenes_[SceneIndex].HasSelectionChanged = true;
                 }
