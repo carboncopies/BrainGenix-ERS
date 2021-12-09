@@ -150,10 +150,19 @@ class Cursors3D {
         ERS_STRUCT_LocRotScale* GetLocRotScalePtr();
 
         /**
-         * @brief Set the Loc Rot Scale object
+         * @brief Set the Loc Rot Scale object, Accepts ERS_STRUCT_LocRotScale
          * 
          */
         void SetLocRotScale(ERS_STRUCT_LocRotScale);
+
+        /**
+         * @brief Set the Loc Rot Scale object, accepts three glm::vec3 arrays indicating position, rotation and scale (in that order).
+         * 
+         * @param Pos 
+         * @param Rot 
+         * @param Scale 
+         */
+        void SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale);
 
         /**
          * @brief Check if two ERS_STRUCT_LocRotScale Objects are Equal.

@@ -62,7 +62,22 @@ void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
 
 }
 
+void Cursors3D::SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
 
+    // Update CurrentPos Struct
+    CurrentPos_.PosX = Pos[0];
+    CurrentPos_.PosY = Pos[1];
+    CurrentPos_.PosZ = Pos[2];
+
+    CurrentPos_.RotX = Rot[0];
+    CurrentPos_.RotY = Rot[1];
+    CurrentPos_.RotZ = Rot[2];
+
+    CurrentPos_.ScaleX = Scale[0];
+    CurrentPos_.ScaleY = Scale[1];
+    CurrentPos_.ScaleZ = Scale[2];
+
+}
 
 // Check if Structs Are Equal
 bool Cursors3D::IsLocRotScaleEqual(ERS_STRUCT_LocRotScale LRS1, ERS_STRUCT_LocRotScale LRS2) {

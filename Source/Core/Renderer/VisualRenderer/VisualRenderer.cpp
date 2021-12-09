@@ -141,6 +141,16 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
     Shaders_[Index]->SetMat4("view", view);
 
 
+    // Update Cursor If Selection Changed
+    if (SceneManager->Scenes_[SceneManager->ActiveScene_].HasSeletionChanged) {
+
+        int SelectedModel = SceneManager->Scenes_[SceneManager->ActiveScene_].SelectedModel;
+        glm::vec3 Position = SceneManager->Scenes_[SceneManager->ActiveScene_].Models[SelectedModel].ModelPosition;        
+        glm::vec3 Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_].Models[SelectedModel].ModelRotation;        
+        glm::vec3 Scale = SceneManager->Scenes_[SceneManager->ActiveScene_].Models[SelectedModel].ModelScale;        
+        Cursors3D_->SetLocRotScale(Position, Rotation, Scale);
+    }
+
     // Start To Draw 3D Cursor
     Cursors3D_->BeginRenderpass(Cameras_[Index], (float*)glm::value_ptr(view), (float*)glm::value_ptr(projection), CaptureMouseCursor);
 
