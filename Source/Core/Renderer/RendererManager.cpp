@@ -47,7 +47,7 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     Shader_.SetInt("texture_diffuse1", 0);
 
     // Setup GUI
-    GuiSystem_ = new GUISystem(Logger_, Window_, SystemShouldRun_, Cursors3D_);
+    GuiSystem_ = new GUISystem(Logger_, Window_, SystemShouldRun_, Cursors3D_, SceneManager_);
 
     // Setup IOManager
     Logger_->Log("Initializing Input/Output Manager", 5);
