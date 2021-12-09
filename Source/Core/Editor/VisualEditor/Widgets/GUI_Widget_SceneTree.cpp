@@ -88,6 +88,7 @@ void Widget_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene) {
         // If User Clicks Node, Update Object Index
         if (ImGui::IsItemClicked()) {
             Scene->SelectedModel = ObjectIndex;
+            Scene->HasSelectionChanged = true;
         }
 
 
