@@ -53,13 +53,16 @@ void Widget_SceneTree::Draw() {
                     // Draw Scene
                     DrawScene(&SceneManager_->Scenes_[SceneIndex]);
 
-                    // If User Selected This Scene, Set Active Scene To This One
-                    if (ImGui::IsItemClicked()) {
-                        SceneManager_->ActiveScene_ = SceneIndex;
-                    }
+
 
                     // End Node
                     ImGui::TreePop();
+                }
+
+
+                // If User Selected This Scene, Set Active Scene To This One
+                if (ImGui::IsItemClicked()) {
+                    SceneManager_->ActiveScene_ = SceneIndex;
                 }
 
             }
