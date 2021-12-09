@@ -12,7 +12,7 @@
 #include <GUI_Widget_SceneTree.h>
 
 // Constructor
-Widget_SceneTree3::Widget_SceneTree3(Cursors3D *Cursors3D) {
+Widget_SceneTree::Widget_SceneTree(Cursors3D *Cursors3D) {
 
     // Update Ptr
     Cursors3D_ = Cursors3D;
@@ -20,12 +20,12 @@ Widget_SceneTree3::Widget_SceneTree3(Cursors3D *Cursors3D) {
 }
 
 // Destructor
-Widget_SceneTree3::~Widget_SceneTree3() {
+Widget_SceneTree::~Widget_SceneTree() {
     
 }
 
 // Define Draw Function
-void Widget_SceneTree3::Draw() {
+void Widget_SceneTree::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {
