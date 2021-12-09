@@ -22,9 +22,6 @@ target_include_directories( IMGUI
                             PUBLIC ${IMGUI_DIR}/backends
                             PUBLIC ${SDL2_DIR}/include
                             )
-target_link_libraries(IMGUI
-    glfw    
-)
 
 if(RASPBIAN)
     target_compile_definitions(IMGUI PUBLIC -D__RASPBIAN__)
@@ -45,7 +42,7 @@ if(USE_GLES)
     endif()
 else()
     find_package(OpenGL REQUIRED)
-    target_link_libraries(IMGUI PUBLIC ${OPENGL_LIBRARIES})
+    target_link_libraries(IMGUI PUBLIC ${OPENGL_LIBRARIES} glfw)
 endif()
 
 
