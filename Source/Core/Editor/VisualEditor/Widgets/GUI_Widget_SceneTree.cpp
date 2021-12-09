@@ -35,15 +35,15 @@ void Widget_SceneTree::Draw() {
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
 
-            // Create Child Node Of Size Equal To Window
-            if (ImGui::BeginChild("Scene Tree", ImGui::GetWindowSize(), false)) {
+            // // Create Child Node Of Size Equal To Window
+            // if (ImGui::BeginChild("Scene Tree", ImGui::GetWindowSize(), false)) {
 
-                // Create Scene Tree
+            //     // Create Scene Tree
 
 
 
-            ImGui::EndChild();    
-            }
+            // ImGui::EndChild();    
+            // }
 
 
 
