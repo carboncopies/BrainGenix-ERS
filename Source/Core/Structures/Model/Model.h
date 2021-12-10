@@ -40,6 +40,7 @@ struct ERS_OBJECT_MODEL {
 
     bool GammaCorrection = false;
     bool HasTexturesLoaded = false;
+    bool FlipTextures = false;
 
     // Model Metadata
     glm::vec3 ModelPosition = glm::vec3(0.0f, 0.0f, 0.0f);

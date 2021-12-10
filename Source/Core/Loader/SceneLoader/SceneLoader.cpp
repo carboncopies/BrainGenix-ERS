@@ -111,6 +111,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
                 Model.GammaCorrection = TemplateModels_[AssetPath].GammaCorrection;
                 Model.HasTexturesLoaded = TemplateModels_[AssetPath].HasTexturesLoaded;
                 Model.Name = AssetName;
+                Model.FlipTextures = FlipTextures;
 
                 // Copy Texture References
                 Model.Textures_Loaded = TemplateModels_[AssetPath].Textures_Loaded;
