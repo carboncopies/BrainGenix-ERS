@@ -42,6 +42,7 @@ void SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene, const char* ScenePat
     // Write To File
     std::ofstream FileOutput(ScenePath);
     FileOutput<<ScenefileData;
+    FileOutput.close();
 
 }
 
