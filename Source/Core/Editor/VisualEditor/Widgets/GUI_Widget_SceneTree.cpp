@@ -83,16 +83,20 @@ void Widget_SceneTree::Draw() {
 
                     // Get Tree Metadata
                     const char* SceneName = SceneManager_->Scenes_[SceneIndex].SceneName.c_str();
+                    const char* PopupName = std::string(std::string("SceneTreePopupMenu_") + std::to_string(SceneIndex)).c_str();
+
 
                     // Begin Tree
                     bool TreeNode = ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName);
 
                     // Context Menu
-                    const char* PopupName = std::string(std::string("SceneTreePopupMenu_") + std::to_string(SceneIndex)).c_str();
                     if (ImGui::BeginPopupContextItem()) {
 
-                        bool x= false;
-                        ImGui::MenuItem("foo", "", &x);
+                        // Rename Scene
+                        if (ImGui::MenuItem("Rename")) {
+                            ImGui::InputTextWithHint("Rename Scene", "Enter New Scene Name", SceneInputName_, IM_ARRAYSIZE(SceneInputName_));
+                        }
+
 
                     ImGui::EndPopup();
                     }
@@ -111,7 +115,7 @@ void Widget_SceneTree::Draw() {
             ImGui::EndChild();
             }
 
-
+        ImGui::ShowDemoWindow();
 
             
 
