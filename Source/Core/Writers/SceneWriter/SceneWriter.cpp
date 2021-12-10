@@ -59,7 +59,7 @@ const char* SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
 
 
     // Write Metadata
-    Output << InputScene.SceneData;
+    Output << "Test!";//InputScene.SceneData;
 
     std::cout<<Output.c_str()<<std::endl;
     // Return Scene
