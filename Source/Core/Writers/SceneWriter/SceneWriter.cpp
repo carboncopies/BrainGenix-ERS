@@ -36,14 +36,15 @@ SceneWriter::~SceneWriter() {
 // Process Scenes
 void SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene, const char* ScenePath) {
 
-    // Load Then Process Scene
-    YAML::Emitter OutputScene = ProcessScene(InputScene); 
-    //return YAML::EmitSeq(ScenePath);
+    // Convert Scene To YAML
+    const char* ScenefileData = ProcessScene(InputScene); 
+
+    
 
 }
 
 // SceneWriter Process Scene Function
-YAML::Emitter SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
+const char* SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
 
     // Create Emitter
     YAML::Emitter Output;
@@ -53,7 +54,7 @@ YAML::Emitter SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
 
 
     // Return Scene
-    return Output;
+    return Output.c_str();
 
 }
 
