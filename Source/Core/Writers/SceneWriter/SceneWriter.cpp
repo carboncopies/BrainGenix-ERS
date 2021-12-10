@@ -12,30 +12,30 @@
 // FIXME: Make template textures added to their own map so they can be reused.
 // FIXME: Make dynamic/static models that can each be rotated/translated (dynamically or statically). Then make updateposition functions, etc.
 
-#include <SceneLoader.h>
+#include <SceneWriter.h>
 
-// SceneLoader Constructor
-SceneLoader::SceneLoader(LoggerClass *Logger, ModelLoader *ModelLoader) {
+// SceneWriter Constructor
+SceneWriter::SceneWriter(LoggerClass *Logger, ModelLoader *ModelLoader) {
 
     // Create Local Pointer
     Logger_ = Logger;
     ModelLoader_ = ModelLoader;
 
     // Log Initializaton Start
-    Logger_->Log("Initializing SceneLoader Subsystem", 5);
+    Logger_->Log("Initializing SceneWriter Subsystem", 5);
 
 }
 
-// SceneLoader Destructor
-SceneLoader::~SceneLoader() {
+// SceneWriter Destructor
+SceneWriter::~SceneWriter() {
 
     // Log Destructor Call
-    Logger_->Log("SceneLoader Destructor Called", 6);
+    Logger_->Log("SceneWriter Destructor Called", 6);
 
 }
 
 // Load And Process Scene
-ERS_OBJECT_SCENE SceneLoader::ProcessScene(const char* ScenePath) {
+ERS_OBJECT_SCENE SceneWriter::ProcessScene(const char* ScenePath) {
 
     // Load Then Process Scene
     YAML::Node TestScene = YAML::LoadFile(ScenePath);
@@ -43,8 +43,8 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(const char* ScenePath) {
 
 }
 
-// SceneLoader Process Scene Function
-ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
+// SceneWriter Process Scene Function
+ERS_OBJECT_SCENE SceneWriter::ProcessScene(YAML::Node RawSceneData) {
 
     // Create Scene Instance
     ERS_OBJECT_SCENE Scene;
