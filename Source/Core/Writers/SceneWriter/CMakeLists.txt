@@ -4,23 +4,23 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(SceneLoader
+add_library(SceneWriter
 
             # Add Source Files (.cpp)
-            "SceneLoader.cpp"
+            "SceneWriter.cpp"
 
             # Add Header Files (.h)
-            "SceneLoader.h"
+            "SceneWriter.h"
 
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(SceneLoader
+target_link_libraries(SceneWriter
     )
 
 # Link Internal Libs
-target_link_libraries(SceneLoader
+target_link_libraries(SceneWriter
     LoggingSystem
     Model
     ModelLoader
@@ -30,5 +30,5 @@ target_link_libraries(SceneLoader
     Shader
     )
 
-target_include_directories(SceneLoader PUBLIC ./)
+target_include_directories(SceneWriter PUBLIC ./)
 
