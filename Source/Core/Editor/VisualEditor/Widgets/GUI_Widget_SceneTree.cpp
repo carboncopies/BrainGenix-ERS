@@ -96,21 +96,24 @@ void Widget_SceneTree::Draw() {
                     if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(1)) {
 
                         ImGui::OpenPopup("Tree Item Popup Context");
+                        std::cout<<"Popup Activated\n";
 
+
+                    }
+
+
+                    // Context Menu
+                    if (ImGui::BeginPopup("Tree Item Popup Context")) {
+
+                        bool x= false;
+                        ImGui::MenuItem("foo", "", &x);
+
+                    ImGui::EndPopup();
                     }
 
                 }
 
             ImGui::EndChild();
-            }
-
-            // Context Menu
-            if (ImGui::BeginPopup("Tree Item Popup Context")) {
-
-                bool x= false;
-                ImGui::MenuItem("foo", "", &x);
-
-            ImGui::EndPopup();
             }
 
 
