@@ -37,13 +37,13 @@ SceneWriter::~SceneWriter() {
 void SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene, const char* ScenePath) {
 
     // Convert Scene To YAML
-    const char* ScenefileData = ProcessScene(InputScene).c_str(); 
+    std::string ScenefileData = ProcessScene(InputScene); 
 
     std::cout<<ScenefileData<<std::endl;
 
     // Write To File
     std::ofstream FileOutput(ScenePath);
-    FileOutput<<ScenefileData;
+    FileOutput<<ScenefileData.c_str();
     FileOutput.close();
 
 }
