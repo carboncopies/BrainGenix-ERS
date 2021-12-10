@@ -79,7 +79,21 @@ std::string SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
         Output << YAML::Key << "AssetType" << YAML::Value << "Model";
         Output << YAML::Key << "AssetPath" << YAML::Value << InputScene.Models[AssetIndex].AssetPath_;
 
+        // Write Asset Position Data
+        Output << YAML::Key << "AssetPositionX" << YAML::Value << InputScene.Models[AssetIndex].ModelPosition[0];
+        Output << YAML::Key << "AssetPositionY" << YAML::Value << InputScene.Models[AssetIndex].ModelPosition[1];
+        Output << YAML::Key << "AssetPositionZ" << YAML::Value << InputScene.Models[AssetIndex].ModelPosition[2];
 
+        Output << YAML::Key << "AssetRotationX" << YAML::Value << InputScene.Models[AssetIndex].ModelRotation[0];
+        Output << YAML::Key << "AssetRotationY" << YAML::Value << InputScene.Models[AssetIndex].ModelRotation[1];
+        Output << YAML::Key << "AssetRotationZ" << YAML::Value << InputScene.Models[AssetIndex].ModelRotation[2];
+
+        Output << YAML::Key << "AssetScaleX" << YAML::Value << InputScene.Models[AssetIndex].ModelScale[0];
+        Output << YAML::Key << "AssetScaleY" << YAML::Value << InputScene.Models[AssetIndex].ModelScale[1];
+        Output << YAML::Key << "AssetScaleZ" << YAML::Value << InputScene.Models[AssetIndex].ModelScale[2];
+
+        // Write Asset Texture Data
+        Output << YAML::Key << "FlipTextures" << YAML::Value << InputScene.Models[AssetIndex].FlipTextures;
 
         
         // End Map
