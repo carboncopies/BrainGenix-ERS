@@ -57,9 +57,8 @@ std::string SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
     // Create Emitter
     YAML::Emitter Output;
 
-
     // Write Metadata
-    Output << "Test!";//InputScene.SceneData;
+    Output << "SceneFormatVersion: " << InputScene.SceneFormatVersion;
 
     // Return Scene
     return std::string(Output.c_str());
