@@ -94,7 +94,7 @@ void Widget_SceneTree::Draw() {
 
                     // Context Menu
                     const char* PopupName = std::string(std::string("SceneTreePopupMenu_") + std::to_string(SceneIndex)).c_str();
-                    if (ImGui::BeginPopupContextItem(PopupName)) {
+                    if (ImGui::BeginPopupContextItem()) {
 
                         bool x= false;
                         ImGui::MenuItem("foo", "", &x);
