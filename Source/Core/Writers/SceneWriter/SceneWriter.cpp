@@ -74,9 +74,13 @@ std::string SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
         Output << YAML::Key << AssetIndex;
         Output << YAML::BeginMap;
 
-        // Write Model Data
+        // Write Asset Metadata
         Output << YAML::Key << "AssetName" << YAML::Value << InputScene.Models[AssetIndex].Name;
-        //Output << YAML::Key << "AssetName" << YAML::Value << InputScene.Models[AssetIndex].Name;
+        Output << YAML::Key << "AssetType" << YAML::Value << "Model";
+        Output << YAML::Key << "AssetPath" << YAML::Value << InputScene.Models[AssetIndex].AssetPath_;
+
+
+
         
         // End Map
         Output << YAML::EndMap;
