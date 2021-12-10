@@ -208,6 +208,8 @@ add_subdirectory(${SRC_DIR}/Core/Loader/SceneLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ShaderLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ProjectLoader)
 
+add_subdirectory(${SRC_DIR}/Core/Writers/SceneWriter)
+
 
 # COPY FILES TO BINARY DIR
 file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
