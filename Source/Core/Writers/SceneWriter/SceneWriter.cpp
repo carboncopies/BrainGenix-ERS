@@ -61,10 +61,10 @@ std::string SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
     Output << YAML::BeginMap;
 
     Output << YAML::Key << "SceneFormatVersion";
-    Output << YAML::Value << InputScene.SceneFormatVersion;
+    Output << YAML::Value << "InputScene.SceneFormatVersion";
 
     Output << YAML::EndMap;
-
+    std::cout<<Output.c_str()<<std::endl;
     // Return Scene
     return std::string(Output.c_str());
 
