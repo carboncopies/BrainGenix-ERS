@@ -54,9 +54,15 @@ const char* SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
     // Create Emitter
     YAML::Emitter Output;
 
+    // Begin Writing
+    Output << YAML::BeginSeq;
+
     // Write Metadata
     Output << YAML::Key << "SceneFormatVersion" << YAML::Value << InputScene.SceneFormatVersion;
     Output << "Test";
+
+    // End Sequence
+    Output << YAML::EndSeq;
 
     // Return Scene
     return Output.c_str();
