@@ -85,12 +85,7 @@ void Widget_SceneTree::Draw() {
                     const char* SceneName = SceneManager_->Scenes_[SceneIndex].SceneName.c_str();
 
                     // Begin Tree
-                    if (ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName)) {
-
-                        DrawScene(&SceneManager_->Scenes_[SceneIndex]);
-
-                        ImGui::TreePop();
-                    }
+                    bool TreeNode = ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName);
 
                     // Context Menu
                     const char* PopupName = std::string(std::string("SceneTreePopupMenu_") + std::to_string(SceneIndex)).c_str();
@@ -101,6 +96,15 @@ void Widget_SceneTree::Draw() {
 
                     ImGui::EndPopup();
                     }
+
+                    if (TreeNode) {
+
+                        DrawScene(&SceneManager_->Scenes_[SceneIndex]);
+
+                        ImGui::TreePop();
+                    }
+
+
 
                 }
 
