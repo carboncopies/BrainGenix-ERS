@@ -94,9 +94,19 @@ void Widget_SceneTree::Draw() {
 
                     // Context Menu
                     const char* PopupName = std::string(std::string("SceneTreePopupMenu_") + std::to_string(SceneIndex)).c_str();
-                    if (ImGui::BeginPopupContextItem(PopupName)) {
+                    if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(1)) {
 
-                        bool x = false;
+                        ImGui::OpenPopup(PopupName);
+                        std::cout<<"Popup Activated\n";
+
+
+                    }
+
+
+                    // Context Menu
+                    if (ImGui::BeginPopup(PopupName)) {
+
+                        bool x= false;
                         ImGui::MenuItem("foo", "", &x);
 
                     ImGui::EndPopup();
@@ -106,6 +116,10 @@ void Widget_SceneTree::Draw() {
 
             ImGui::EndChild();
             }
+
+
+
+            ImGui::ShowDemoWindow();
             
 
         // End System Controls Window
