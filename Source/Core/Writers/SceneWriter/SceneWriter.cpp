@@ -15,11 +15,10 @@
 #include <SceneWriter.h>
 
 // SceneWriter Constructor
-SceneWriter::SceneWriter(LoggerClass *Logger, ModelLoader *ModelLoader) {
+SceneWriter::SceneWriter(LoggerClass *Logger) {
 
     // Create Local Pointer
     Logger_ = Logger;
-    ModelLoader_ = ModelLoader;
 
     // Log Initializaton Start
     Logger_->Log("Initializing SceneWriter Subsystem", 5);
@@ -35,16 +34,16 @@ SceneWriter::~SceneWriter() {
 }
 
 // Load And Process Scene
-ERS_OBJECT_SCENE SceneWriter::ProcessScene(const char* ScenePath) {
+void SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene, const char* ScenePath) {
 
     // Load Then Process Scene
-    YAML::Node TestScene = YAML::LoadFile(ScenePath);
-    return ProcessScene(TestScene);
+    //YAML::Emitter OutputScene = ProcessScene(OutputScene); 
+    //return YAML::EmitSeq(ScenePath);
 
 }
 
 // SceneWriter Process Scene Function
-ERS_OBJECT_SCENE SceneWriter::ProcessScene(YAML::Node RawSceneData) {
+YAML::Node SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
 
     // Create Scene Instance
     ERS_OBJECT_SCENE Scene;
