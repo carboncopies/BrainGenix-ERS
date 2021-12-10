@@ -39,12 +39,12 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(const char* ScenePath) {
 
     // Load Then Process Scene
     YAML::Node TestScene = YAML::LoadFile(ScenePath);
-    return ProcessScene(TestScene);
+    return ProcessScene(TestScene, ScenePath);
 
 }
 
 // SceneLoader Process Scene Function
-ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
+ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* ScenePath) {
 
     // Create Scene Instance
     ERS_OBJECT_SCENE Scene;
@@ -52,6 +52,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData) {
     // Grab Metadata
     Scene.SceneFormatVersion = RawSceneData["SceneFormatVersion"].as<long>();
     Scene.SceneName = RawSceneData["SceneName"].as<std::string>();
+    Scene.ScenePath = std::string(ScenePath);
 
     // Log Scene Processing
     Logger_->Log(std::string(std::string("Processing Scene: ") + std::string(Scene.SceneName)).c_str(), 4);

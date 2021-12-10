@@ -132,7 +132,7 @@ void GUISystem::UpdateGUI() {
         if (ImGui::BeginMenu("File")) {
 
             if (ImGui::MenuItem("Save")) {
-                SceneWriter_->ProcessScene(SceneManager_->Scenes_[SceneManager_->ActiveScene_], "Assets/SCENETEST.yaml");
+                SceneWriter_->ProcessScene(SceneManager_->Scenes_[SceneManager_->ActiveScene_], SceneManager_->Scenes_[SceneManager_->ActiveScene_].ScenePath.c_str());
             }
 
             if (ImGui::MenuItem("Save All")) {

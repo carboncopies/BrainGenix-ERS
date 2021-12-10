@@ -73,7 +73,7 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *L
     YAML::Node TestScene2 = YAML::LoadFile("Assets/Scene2.yaml");
     YAML::Node TestScene3 = YAML::LoadFile("Assets/Scene3.yaml");
     
-    SceneManager_->AddScene(SLoader.ProcessScene(TestScene));
+    SceneManager_->AddScene(SLoader.ProcessScene(TestScene, "Assets/Scene.yaml"));
     //SceneManager_->AddScene(SLoader.ProcessScene(TestScene2));
     //SceneManager_->AddScene(SLoader.ProcessScene(TestScene3));
 
