@@ -97,16 +97,23 @@ void Widget_SceneTree::Draw() {
 
                         ImGui::OpenPopup("Tree Item Popup Context");
 
-                        bool x= false;
-                        ImGui::MenuItem("foo", "", &x);
-
-                        ImGui::EndPopup();
                     }
 
                 }
 
             ImGui::EndChild();
             }
+
+            // Context Menu
+            if (ImGui::BeginPopup("Tree Item Popup Context")) {
+
+                bool x= false;
+                ImGui::MenuItem("foo", "", &x);
+
+            ImGui::EndPopup();
+            }
+
+
 
             ImGui::ShowDemoWindow();
             
