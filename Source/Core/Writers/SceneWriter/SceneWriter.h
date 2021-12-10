@@ -61,7 +61,7 @@ class SceneWriter{
          * 
          * @return YAML::Node 
          */
-        YAML::Node ProcessScene(ERS_OBJECT_SCENE);
+        YAML::Emitter ProcessScene(ERS_OBJECT_SCENE);
 
         /**
          * @brief Save the scene passed in as a yaml::node.
