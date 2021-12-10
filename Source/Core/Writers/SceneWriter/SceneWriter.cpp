@@ -69,7 +69,7 @@ std::string SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
     while (AssetIndex < InputScene.Models.size()) {
 
         // Begin Asset Tag
-        Output << YAML::Key << AssetIndex << YAML::Value;
+        Output << YAML::Key << AssetIndex;
 
         // Write Model Data
         Output << YAML::Key << "AssetName" << YAML::Value << InputScene.Models[AssetIndex].Name;
