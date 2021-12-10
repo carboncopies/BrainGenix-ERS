@@ -37,7 +37,7 @@ SceneWriter::~SceneWriter() {
 void SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene, const char* ScenePath) {
 
     // Convert Scene To YAML
-    const char* ScenefileData = ProcessScene(InputScene); 
+    const char* ScenefileData = ProcessScene(InputScene).c_str(); 
 
     std::cout<<ScenefileData<<std::endl;
 
@@ -49,7 +49,7 @@ void SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene, const char* ScenePat
 }
 
 // SceneWriter Process Scene Function
-const char* SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
+std::string SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
 
     // Log Scene Write
     Logger_->Log(std::string(std::string("Serializing Scene '") + InputScene.SceneName + std::string("'")).c_str(), 4);
@@ -61,9 +61,8 @@ const char* SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
     // Write Metadata
     Output << "Test!";//InputScene.SceneData;
 
-    std::cout<<Output.c_str()<<std::endl;
     // Return Scene
-    return Output.c_str();
+    return std::string(Output.c_str());
 
 }
 

@@ -59,9 +59,9 @@ class SceneWriter{
         /**
          * @brief Save the scene passed in as a yaml::node.
          * 
-         * @return YAML::Node 
+         * @return std::string 
          */
-        const char* ProcessScene(ERS_OBJECT_SCENE);
+        std::string ProcessScene(ERS_OBJECT_SCENE);
 
         /**
          * @brief Save the scene passed in as a yaml::node.
