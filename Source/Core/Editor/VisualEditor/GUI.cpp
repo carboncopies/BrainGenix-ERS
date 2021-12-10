@@ -128,6 +128,16 @@ void GUISystem::UpdateGUI() {
         // File Menu
         if (ImGui::BeginMenu("File")) {
 
+            if (ImGui::MenuItem("Save")) {
+
+            }
+
+            if (ImGui::MenuItem("Save All")) {
+
+            }
+
+            ImGui::Separator();
+
             if (ImGui::MenuItem("Exit")) {
                 MenuExitFunction();
             }

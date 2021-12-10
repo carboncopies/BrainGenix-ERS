@@ -36,6 +36,7 @@ target_link_libraries(VisualEditor
     UserProfile
 
     3DCursor
+    SceneWriter
     )
 
 target_include_directories(VisualEditor PUBLIC ./)
