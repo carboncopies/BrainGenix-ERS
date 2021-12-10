@@ -42,6 +42,9 @@ GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShould
     FontManager_->UseFont(UserProfileManager_->GetUserFont());
     FontManager_->SetFontSize(UserProfileManager_->GetUserFontSize());
 
+    // Setup Scene Writer
+    SceneWriter_ = new SceneWriter(Logger_);
+
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(Window, true);
     ImGui_ImplOpenGL3_Init("#version 330 core");
@@ -129,7 +132,7 @@ void GUISystem::UpdateGUI() {
         if (ImGui::BeginMenu("File")) {
 
             if (ImGui::MenuItem("Save")) {
-
+                SceneWriter_->ProcessScene(SceneManager_->Scenes_[SceneManager_->ActiveScene_], "Assets/SCENETEST.yaml");
             }
 
             if (ImGui::MenuItem("Save All")) {

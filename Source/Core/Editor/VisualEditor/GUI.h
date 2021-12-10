@@ -33,7 +33,9 @@
 #include <FontManager.h>
 #include <Theme.h>
 #include <UserProfile.h>
+
 #include <SceneManager.h>
+#include <SceneWriter.h>
 
 #include <3DCursor.h>
 
@@ -62,6 +64,7 @@ class GUISystem {
         UserProfileManager* UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
         Cursors3D* Cursors3D_; /**<Pointer to Cursors3D Instance*/
         SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
+        SceneWriter* SceneWriter_; /**<Scene Writer Instance Pointer*/
 
 
         bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */
