@@ -93,7 +93,10 @@ void Widget_SceneTree::Draw() {
                     }
 
                     // Context Menu
-                    if (ImGui::BeginPopup("Tree Item Popup Context")) {
+                    if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(1)) {
+
+                        ImGui::OpenPopup("Tree Item Popup Context");
+
                         bool x= false;
                         ImGui::MenuItem("foo", "", &x);
 
