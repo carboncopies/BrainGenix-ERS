@@ -48,12 +48,15 @@ void SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene, const char* ScenePat
 // SceneWriter Process Scene Function
 const char* SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
 
+    // Log Scene Write
+    Logger_->Log(std::string(std::string("Serializing Scene '") + InputScene.SceneName + std::string("'")).c_str(), 4);
+
     // Create Emitter
     YAML::Emitter Output;
 
     // Write Metadata
     Output << YAML::Key << "SceneFormatVersion" << YAML::Value << InputScene.SceneFormatVersion;
-
+    Output << "Test";
 
     // Return Scene
     return Output.c_str();
