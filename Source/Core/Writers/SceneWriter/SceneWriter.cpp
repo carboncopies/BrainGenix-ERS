@@ -45,11 +45,11 @@ void SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene, const char* ScenePat
 // SceneWriter Process Scene Function
 YAML::Node SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
 
-    // Create Scene Instance
-    ERS_OBJECT_SCENE Scene;
+    // Create Emitter
+    YAML::Emitter Output;
 
-    // Grab Metadata
-    Scene.SceneFormatVersion = RawSceneData["SceneFormatVersion"].as<long>();
+    // Write Metadata
+    Output << YAML::Key << "<< InputScene.SceneFormatVersion;
     Scene.SceneName = RawSceneData["SceneName"].as<std::string>();
 
     // Log Scene Processing
