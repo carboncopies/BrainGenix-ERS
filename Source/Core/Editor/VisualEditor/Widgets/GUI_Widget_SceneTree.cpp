@@ -94,7 +94,8 @@ void Widget_SceneTree::Draw() {
 
                         // Rename Scene
                         if (ImGui::MenuItem("Rename")) {
-                            ImGui::InputTextWithHint("Rename Scene", "Enter New Scene Name", SceneInputName_, IM_ARRAYSIZE(SceneInputName_));
+                            // TODO: MOVE THIS TO THE WINDOWS FOLDER, THEN MOVE SUBFUNCTIONS INTO THEIR OWN SUBFOLDERS TO THAT DIRECTORY.
+                            //ImGui::InputTextWithHint("Rename Scene", "Enter New Scene Name", SceneInputName_, IM_ARRAYSIZE(SceneInputName_));
                         }
 
 
