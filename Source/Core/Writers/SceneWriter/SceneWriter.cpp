@@ -79,11 +79,15 @@ std::string SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
         AssetIndex++;
     }
 
-
     // End Writing
     Output << YAML::EndMap;
 
 
+    // Check For Errors
+    if (!Output.good()) {
+        std::string LogError = "Scene Serialization Error: " + std::string(Output.GetLastError()) + std::string("\n");
+        Logger_->Log(LogError.c_str(), 8);
+    }
 
     // Return Scene
     return std::string(Output.c_str());
