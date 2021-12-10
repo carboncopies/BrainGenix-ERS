@@ -131,11 +131,15 @@ void GUISystem::UpdateGUI() {
         // File Menu
         if (ImGui::BeginMenu("File")) {
 
-            if (ImGui::MenuItem("Save")) {
+            if (ImGui::MenuItem("Save Active Scene")) {
                 SceneWriter_->ProcessScene(SceneManager_->Scenes_[SceneManager_->ActiveScene_], SceneManager_->Scenes_[SceneManager_->ActiveScene_].ScenePath.c_str());
             }
 
             if (ImGui::MenuItem("Save All")) {
+
+                for (int i = 0; i < SceneManager_->Scenes_.size(); i++) {
+                    SceneWriter_->ProcessScene(SceneManager_->Scenes_[i], SceneManager_->Scenes_[i].ScenePath.c_str());
+                }
 
             }
 
