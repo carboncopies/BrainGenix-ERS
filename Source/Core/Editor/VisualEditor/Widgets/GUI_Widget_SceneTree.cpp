@@ -95,6 +95,8 @@ void Widget_SceneTree::Draw() {
                     // Context Menu
                     if (ImGui::BeginPopupContextItem("Context Menu")) {
                         ImGui::Text("test");
+
+                        ImGui::EndPopup();
                     }
 
                 }
