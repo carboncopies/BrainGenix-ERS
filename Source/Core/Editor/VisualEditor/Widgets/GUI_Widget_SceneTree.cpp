@@ -113,7 +113,6 @@ void Widget_SceneTree::Draw() {
 
 
 
-            ImGui::ShowDemoWindow();
             
 
         // End System Controls Window
