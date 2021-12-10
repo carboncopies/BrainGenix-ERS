@@ -63,23 +63,29 @@ std::string SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
     Output << YAML::Key << "SceneFormatVersion" << YAML::Value << InputScene.SceneFormatVersion;
 
     // Write SceneData
-    Output << YAML::Key << "SceneData";    
+    Output << YAML::Key << "SceneData";
+    Output << YAML::Key << YAML::BeginMap;
+
     long AssetIndex = 0;
 
     while (AssetIndex < InputScene.Models.size()) {
 
         // Begin Asset Tag
         Output << YAML::Key << AssetIndex;
+        Output << YAML::BeginMap;
 
         // Write Model Data
         Output << YAML::Key << "AssetName" << YAML::Value << InputScene.Models[AssetIndex].Name;
         //Output << YAML::Key << "AssetName" << YAML::Value << InputScene.Models[AssetIndex].Name;
         
+        // End Map
+        Output << YAML::EndMap;
 
         AssetIndex++;
     }
 
     // End Writing
+    Output << YAML::EndMap;
     Output << YAML::EndMap;
 
 
