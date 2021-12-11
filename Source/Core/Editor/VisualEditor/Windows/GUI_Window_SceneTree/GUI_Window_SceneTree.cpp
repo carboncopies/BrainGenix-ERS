@@ -177,6 +177,9 @@ void Window_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene, int SceneIndex) {
             if (ImGui::MenuItem("Rename")) {
                 Subwindow_ModelRenameModal_->Activate(SceneIndex, ObjectIndex);
 
+            } if (ImGui::MenuItem("Duplicate")) {
+                GUI_Windowutil_DuplicateModel(SceneManager_, SceneIndex, ObjectIndex);
+
             }
 
         ImGui::EndPopup();
