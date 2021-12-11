@@ -30,7 +30,7 @@
  * @brief Create GUI Window "Rendering Settings"
  * 
  */
-class Window_SceneTree {
+class Subwindow_RenameModal {
 
     private:
 
@@ -58,16 +58,16 @@ class Window_SceneTree {
     public:
 
         /**
-         * @brief Construct a new Window_SceneTree object
+         * @brief Construct a new Subwindow_RenameModal object
          * 
          */
-        Window_SceneTree(SceneManager* SceneManager);
+        Subwindow_RenameModal(SceneManager* SceneManager);
 
         /**
-         * @brief Destroy the Window_SceneTree object
+         * @brief Destroy the Subwindow_RenameModal object
          * 
          */
-        ~Window_SceneTree();
+        ~Subwindow_RenameModal();
 
         /**
          * @brief Function that draws the window, should internally check if enable variable is set to true.

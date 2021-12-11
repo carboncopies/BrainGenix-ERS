@@ -9,10 +9,10 @@
     Date Created: 2021-12-07
 */
 
-#include <GUI_Window_SceneTree.h>
+#include <GUI_Subwindow_RenameModal.h>
 
 // Constructor
-Window_SceneTree::Window_SceneTree(SceneManager* SceneManager) {
+Subwindow_RenameModal::Subwindow_RenameModal(SceneManager* SceneManager) {
 
     // Update Ptr
     SceneManager_ = SceneManager;
@@ -21,12 +21,12 @@ Window_SceneTree::Window_SceneTree(SceneManager* SceneManager) {
 }
 
 // Destructor
-Window_SceneTree::~Window_SceneTree() {
+Subwindow_RenameModal::~Subwindow_RenameModal() {
     
 }
 
 // Define Draw Function
-void Window_SceneTree::Draw() {
+void Subwindow_RenameModal::Draw() {
 
 
     // If Window Drawing Enabled
@@ -154,7 +154,7 @@ void Window_SceneTree::Draw() {
 
 
 // Draw Contents Of Scene To Scene Tree Window Tree Node
-void Window_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene) {
+void Subwindow_RenameModal::DrawScene(ERS_OBJECT_SCENE* Scene) {
 
     // Get Selected Item
     int SelectedSceneObjectIndex = Scene->SelectedModel;
