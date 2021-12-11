@@ -4,6 +4,7 @@
 
 # Add Dependencies
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Popups)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Utils)
 
 
 # Create Library (Name Should Be Parent Dir Name)
