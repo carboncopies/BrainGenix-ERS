@@ -39,7 +39,7 @@ void Subwindow_SceneRenameModal::Draw() {
 
     // Draw Rename Scene Window
     if (Enabled_) {
-    ImGui::Begin("Rename Scene", &Enabled_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoBackground);
+    ImGui::Begin("Rename Scene", &Enabled_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
 
         // Grab Window Focus
         ImGui::SetWindowFocus();
