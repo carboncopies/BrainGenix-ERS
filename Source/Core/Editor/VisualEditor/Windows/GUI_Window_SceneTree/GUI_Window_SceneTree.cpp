@@ -19,6 +19,7 @@ Window_SceneTree::Window_SceneTree(SceneManager* SceneManager) {
 
     // Setup Subwindows
     Subwindow_SceneRenameModal_ = new Subwindow_SceneRenameModal(SceneManager_);
+    Subwindow_ModelRenameModal_ = new Subwindow_ModelRenameModal(SceneManager_);
 
 }
 
@@ -32,6 +33,7 @@ void Window_SceneTree::Draw() {
 
     // Draw Popup Modals
     Subwindow_SceneRenameModal_->Draw();
+    Subwindow_ModelRenameModal_->Draw();
 
 
 
@@ -111,7 +113,7 @@ void Window_SceneTree::Draw() {
 
                     if (TreeNode) {
 
-                        DrawScene(&SceneManager_->Scenes_[SceneIndex]);
+                        DrawScene(&SceneManager_->Scenes_[SceneIndex], SceneIndex);
 
                         ImGui::TreePop();
                     }
@@ -137,7 +139,7 @@ void Window_SceneTree::Draw() {
 
 
 // Draw Contents Of Scene To Scene Tree Window Tree Node
-void Window_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene) {
+void Window_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene, int SceneIndex) {
 
     // Get Selected Item
     int SelectedSceneObjectIndex = Scene->SelectedModel;

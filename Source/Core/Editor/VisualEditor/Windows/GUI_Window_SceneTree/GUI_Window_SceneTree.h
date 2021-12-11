@@ -26,6 +26,7 @@
 #include <Scene.h>
 
 #include <GUI_Subwindow_SceneRenameModal.h>
+#include <GUI_Subwindow_ModelRenameModal.h>
 
 /**
  * @brief Create GUI Window "Rendering Settings"
@@ -39,6 +40,7 @@ class Window_SceneTree {
         bool FirstFrame_ = true; /**<Bool Indicating if It's the first frame*/
 
         Subwindow_SceneRenameModal* Subwindow_SceneRenameModal_; /**<Scene Rename Modal Instance*/
+        Subwindow_ModelRenameModal* Subwindow_ModelRenameModal_; /**<Scene Rename Modal Instance*/
 
     private:
 
@@ -46,8 +48,9 @@ class Window_SceneTree {
          * @brief Draw A Scene Under A Tree Node
          * 
          * @param Scene 
+         * @param SceneIndex
          */
-        void DrawScene(ERS_OBJECT_SCENE* Scene);
+        void DrawScene(ERS_OBJECT_SCENE* Scene, int SceneIndex);
 
 
 

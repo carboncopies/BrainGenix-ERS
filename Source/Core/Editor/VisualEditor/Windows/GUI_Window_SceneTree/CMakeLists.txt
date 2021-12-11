@@ -35,6 +35,7 @@ target_link_libraries(Window_SceneTree
     SceneManager
 
     GUI_Subwindow_SceneRenameModal
+    GUI_Subwindow_ModelRenameModal
 
     )
 
