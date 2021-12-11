@@ -104,7 +104,7 @@ void Window_SceneTree::Draw() {
                         if (ImGui::MenuItem("Rename")) {
                             Subwindow_SceneRenameModal_->Activate(SceneIndex);
                         } if (ImGui::MenuItem("Duplicate")) {
-                            GUI_Windowutil_DuplicateScene(SceneManager_, SceneIndex);
+                            GUI_Windowutil_DuplicateScene(SceneManager_, SceneIndex); // FIXME: Will need to update how scenes are saved, as right now these will overwrite other scenes when saved. (Solution could be a scenes folder?)
                         }
 
 
