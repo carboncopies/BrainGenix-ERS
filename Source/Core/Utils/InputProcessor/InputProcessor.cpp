@@ -83,7 +83,7 @@ void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
 void InputProcessor::ProcessKeyboardInput(LoggerClass *Logger_, float DeltaTime, bool WindowCaptureEnabled) {
 
 
-    if ( (glfwGetKey(Window_, GLFW_KEY_KP_ENTER) == GLFW_PRESS) {
+    if (glfwGetKey(Window_, GLFW_KEY_KP_ENTER) == GLFW_PRESS) {
         Logger_->Log("Window Shutdown Invoked By Keyboard [ESC]", 2);
         glfwSetWindowShouldClose(Window_, true);
     }
