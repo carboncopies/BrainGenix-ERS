@@ -37,6 +37,8 @@ target_link_libraries(Window_SceneTree
     GUI_Subwindow_SceneRenameModal
     GUI_Subwindow_ModelRenameModal
 
+    GUI_Windowutil_DuplicateScene
+
     )
 
 target_include_directories(Window_SceneTree PUBLIC ./)
