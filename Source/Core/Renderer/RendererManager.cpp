@@ -106,16 +106,30 @@ void RendererManager::InitializeGLFW() {
     Logger_->Log("Read Configuration File For 'WindowTitle' Parameter", 1);
     WindowTitle_ = (*SystemConfiguration_)["WindowTitle"].as<std::string>().c_str();
 
-    // Load Icon
-    GLFWimage Icon[1];
-    Icon[0].pixels = 
-
     // Create Window Object
     glfwSetErrorCallback(ErrorCallback);
     Window_ = glfwCreateWindow(WindowWidth_, WindowHeight_, WindowTitle_, NULL, NULL);
     if (Window_ == NULL) {
         glfwTerminate();
     }
+
+
+    // Load Icon
+    Logger_->Log("Loading System Icon From EditorAssets", 3);
+    FreeImage_Initialise();
+
+    // Load Image
+    FREE_IMAGE_FORMAT Format = FreeImage_GetFileType("EditorAssets/Icons/ProgramIcon/Icon.svg", 0);
+    FIBITMAP* ImageData = FreeImage_Load(Format, "EditorAssets/Icons/ProgramIcon/Icon.svg");
+
+    // Apply Icon
+    Logger_->Log("Applying System Icon", 4);
+    GLFWimage Icon[1];
+    Icon[0].pixels = FreeImage_GetBits(ImageData);
+    glfwSetWindowIcon(Window_, 1, Icon);
+
+    FreeImage_DeInitialise();
+
 
     // Bring Window To Front
     glfwMakeContextCurrent(Window_);

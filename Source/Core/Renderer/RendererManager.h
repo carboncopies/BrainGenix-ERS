@@ -13,6 +13,8 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
 
+#include <FreeImage.h>
+
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 #include <VisualRenderer.h>
@@ -25,7 +27,6 @@
 
 #include <3DCursor.h>
 
-#include <ImageDecoder.h>
 
 
 static ERS_OBJECT_CAMERA_NOCLIP Camera_(glm::vec3(0.0f, 0.0f, 3.0f));

@@ -21,6 +21,7 @@ target_link_libraries(Renderer
     glm
     glad
     glfw
+    FreeImage
     )
 
 # Link Internal Libs
@@ -30,7 +31,6 @@ target_link_libraries(Renderer
     IOManager
     VisualEditor
     3DCursor
-    ImageLoader
     )
 
 target_include_directories(Renderer PUBLIC ./)
