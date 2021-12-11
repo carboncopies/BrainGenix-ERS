@@ -8,10 +8,10 @@ add_library(Window_SceneTree
 
             # Add Source Files (.cpp)
 
-            "GUI_Widget_SceneTree.cpp"
+            "GUI_Window_SceneTree.cpp"
 
             # Add Header Files (.h)
-            "GUI_Widget_SceneTree.h"
+            "GUI_Window_SceneTree.h"
 
 
             ${BACKWARD_ENABLE}
@@ -22,18 +22,12 @@ target_link_libraries(Window_SceneTree
     glad
     glfw
     IMGUI
-    ImPlot
     )
 
 # Link Internal Libs
 target_link_libraries(Window_SceneTree
     LoggingSystem
     
-    Theme
-    FontManager
-
-    3DCursor
-
     Scene
     SceneManager
 
