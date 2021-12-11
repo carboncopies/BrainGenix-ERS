@@ -95,6 +95,7 @@ void Widget_SceneTree::Draw() {
                         // Rename Scene
                         if (ImGui::MenuItem("Rename")) {
                             ImGui::OpenPopup("Rename Scene");
+                            std::cout<<"Enabling Popup\n";
                         }
 
                     ImGui::EndPopup();
@@ -103,7 +104,7 @@ void Widget_SceneTree::Draw() {
 
 
                     if (ImGui::BeginPopupModal("Rename Scene", NULL, ImGuiWindowFlags_AlwaysAutoResize)) {
-
+                        std::cout<<"Opening Popup\n";
                         ImGui::SetItemDefaultFocus();
                         ImGui::InputTextWithHint("Rename Scene", "Enter New Scene Name", SceneInputName_, IM_ARRAYSIZE(SceneInputName_));
 
