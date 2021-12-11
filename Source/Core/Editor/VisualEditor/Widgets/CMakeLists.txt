@@ -13,7 +13,6 @@ add_library(Widgets
             "GUI_Widget_FrameratePlot.cpp"
             "GUI_Widget_RenderingSettings.cpp"
             "GUI_Widget_ObjectProperties.cpp"
-            "GUI_Widget_SceneTree.cpp"
 
             # Add Header Files (.h)
             "GUI_Widget_FramerateCounter.h"
@@ -22,7 +21,6 @@ add_library(Widgets
             "GUI_Widget_FrameratePlot.h"
             "GUI_Widget_RenderingSettings.h"
             "GUI_Widget_ObjectProperties.h"
-            "GUI_Widget_SceneTree.h"
 
 
             ${BACKWARD_ENABLE}

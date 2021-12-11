@@ -3,7 +3,7 @@
 //======================================================================//
 
 /*
-    Description: This widget file is responsible for creating a system widget.
+    Description: This Window file is responsible for creating a system Window.
     Documentation Status: Complete
     Additonal Notes: None
     Date Created: 2021-12-07
@@ -27,10 +27,10 @@
 
 
 /**
- * @brief Create GUI Widget "Rendering Settings"
+ * @brief Create GUI Window "Rendering Settings"
  * 
  */
-class Widget_SceneTree {
+class Window_SceneTree {
 
     private:
 
@@ -53,21 +53,21 @@ class Widget_SceneTree {
     public:
 
         // Show/Hide Var
-        bool Enabled_ = true; /**<Show/Hide Widget*/
+        bool Enabled_ = true; /**<Show/Hide Window*/
 
     public:
 
         /**
-         * @brief Construct a new Widget_SceneTree object
+         * @brief Construct a new Window_SceneTree object
          * 
          */
-        Widget_SceneTree(SceneManager* SceneManager);
+        Window_SceneTree(SceneManager* SceneManager);
 
         /**
-         * @brief Destroy the Widget_SceneTree object
+         * @brief Destroy the Window_SceneTree object
          * 
          */
-        ~Widget_SceneTree();
+        ~Window_SceneTree();
 
         /**
          * @brief Function that draws the window, should internally check if enable variable is set to true.

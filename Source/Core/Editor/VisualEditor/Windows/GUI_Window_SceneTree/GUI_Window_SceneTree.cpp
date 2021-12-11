@@ -3,16 +3,16 @@
 //======================================================================//
 
 /*
-    Description: This widget file is responsible for creating a system widget.
+    Description: This Window file is responsible for creating a system Window.
     Documentation Status: Complete
     Additonal Notes: None
     Date Created: 2021-12-07
 */
 
-#include <GUI_Widget_SceneTree.h>
+#include <GUI_Window_SceneTree.h>
 
 // Constructor
-Widget_SceneTree::Widget_SceneTree(SceneManager* SceneManager) {
+Window_SceneTree::Window_SceneTree(SceneManager* SceneManager) {
 
     // Update Ptr
     SceneManager_ = SceneManager;
@@ -21,12 +21,12 @@ Widget_SceneTree::Widget_SceneTree(SceneManager* SceneManager) {
 }
 
 // Destructor
-Widget_SceneTree::~Widget_SceneTree() {
+Window_SceneTree::~Window_SceneTree() {
     
 }
 
 // Define Draw Function
-void Widget_SceneTree::Draw() {
+void Window_SceneTree::Draw() {
 
 
     // If Window Drawing Enabled
@@ -153,8 +153,8 @@ void Widget_SceneTree::Draw() {
 }
 
 
-// Draw Contents Of Scene To Scene Tree Widget Tree Node
-void Widget_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene) {
+// Draw Contents Of Scene To Scene Tree Window Tree Node
+void Window_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene) {
 
     // Get Selected Item
     int SelectedSceneObjectIndex = Scene->SelectedModel;
