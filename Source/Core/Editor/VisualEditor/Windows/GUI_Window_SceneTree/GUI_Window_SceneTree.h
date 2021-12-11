@@ -28,6 +28,8 @@
 #include <GUI_Subwindow_SceneRenameModal.h>
 #include <GUI_Subwindow_ModelRenameModal.h>
 
+#include <GUI_Windowutil_DuplicateScene.h>
+
 /**
  * @brief Create GUI Window "Rendering Settings"
  * 

@@ -100,11 +100,13 @@ void Window_SceneTree::Draw() {
                     // Context Menu
                     if (ImGui::BeginPopupContextItem()) {
 
-                        // Rename Scene
+                        // Menu Items
                         if (ImGui::MenuItem("Rename")) {
                             Subwindow_SceneRenameModal_->Activate(SceneIndex);
-
+                        } if (ImGui::MenuItem("Duplicate")) {
+                            GUI_Windowutil_DuplicateScene(SceneManager_, SceneIndex);
                         }
+
 
                     ImGui::EndPopup();
                     }
