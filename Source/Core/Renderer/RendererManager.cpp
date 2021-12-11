@@ -106,6 +106,10 @@ void RendererManager::InitializeGLFW() {
     Logger_->Log("Read Configuration File For 'WindowTitle' Parameter", 1);
     WindowTitle_ = (*SystemConfiguration_)["WindowTitle"].as<std::string>().c_str();
 
+    // Load Icon
+    GLFWimage Icon[1];
+    Icon[0].pixels = 
+
     // Create Window Object
     glfwSetErrorCallback(ErrorCallback);
     Window_ = glfwCreateWindow(WindowWidth_, WindowHeight_, WindowTitle_, NULL, NULL);

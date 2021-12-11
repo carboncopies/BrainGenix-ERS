@@ -25,6 +25,8 @@
 
 #include <3DCursor.h>
 
+#include <ImageDecoder.h>
+
 
 static ERS_OBJECT_CAMERA_NOCLIP Camera_(glm::vec3(0.0f, 0.0f, 3.0f));
 
