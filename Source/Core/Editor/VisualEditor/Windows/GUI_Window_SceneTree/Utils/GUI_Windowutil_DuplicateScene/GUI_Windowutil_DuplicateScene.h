@@ -14,11 +14,13 @@
 
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <SceneManager.h>
+#include <Scene.h>
 
 
 void GUI_Windowutil_DuplicateScene(SceneManager* SceneManager, int SceneIndex);

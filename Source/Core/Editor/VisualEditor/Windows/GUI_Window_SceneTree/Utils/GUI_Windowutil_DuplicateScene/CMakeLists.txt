@@ -22,6 +22,7 @@ target_link_libraries(GUI_Windowutil_DuplicateScene
 # Link Internal Libs
 target_link_libraries(GUI_Windowutil_DuplicateScene
     SceneManager
+    Scene
     )
 
 target_include_directories(GUI_Windowutil_DuplicateScene PUBLIC ./)
