@@ -123,7 +123,6 @@ void Window_SceneTree::Draw() {
             ImGui::EndChild();
             }
 
-        ImGui::ShowDemoWindow();
 
             
 
