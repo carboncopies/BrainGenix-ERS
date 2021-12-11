@@ -40,6 +40,9 @@ void Subwindow_SceneRenameModal::Draw() {
 
     if (ImGui::Begin("Rename Scene", &Enabled_, ImGuiWindowFlags_Popup)) {
 
+        // Set Initial Window Size
+        ImGui::SetWindowSize(ImVec2(400,150), ImGuiCond_FirstUseEver);
+        
         
         std::cout<<"Opening Popup\n";
         ImGui::SetItemDefaultFocus();
