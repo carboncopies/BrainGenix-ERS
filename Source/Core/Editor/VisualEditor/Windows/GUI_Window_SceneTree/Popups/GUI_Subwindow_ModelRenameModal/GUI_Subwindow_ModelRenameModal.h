@@ -23,19 +23,18 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <SceneManager.h>
-#include <Scene.h>
 
 
 /**
  * @brief Create GUI Window "Rendering Settings"
  * 
  */
-class Subwindow_SceneRenameModal {
+class Subwindow_ModelRenameModal {
 
     private:
 
-        SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
-        char SceneInputName_[128] = ""; /**<Character Array To Store Scene Name When Renaming*/
+        SceneManager* SceneManager_; /**<Model Manager Instance Pointer*/
+        char ModelInputName_[128] = ""; /**<Character Array To Store Model Name When Renaming*/
 
 
     public:
@@ -43,29 +42,31 @@ class Subwindow_SceneRenameModal {
         // Show/Hide Var
         bool Enabled_ = false; /**<Show/Hide Window*/
         bool FirstFrame_ = false; /**<Used To Run Certain Things On Window Open*/
+        int SelectedModel_ = 0; /**<Indicate What Index The Selected Model Is*/
         int SelectedScene_ = 0; /**<Indicate What Index The Selected Scene Is*/
 
     public:
 
         /**
-         * @brief Construct a new Subwindow_SceneRenameModal object
+         * @brief Construct a new Subwindow_ModelRenameModal object
          * 
          */
-        Subwindow_SceneRenameModal(SceneManager* SceneManager);
+        Subwindow_ModelRenameModal(SceneManager* SceneManager);
 
         /**
-         * @brief Destroy the Subwindow_SceneRenameModal object
+         * @brief Destroy the Subwindow_ModelRenameModal object
          * 
          */
-        ~Subwindow_SceneRenameModal();
+        ~Subwindow_ModelRenameModal();
 
 
         /**
-         * @brief Show The Scene Rename Modal
+         * @brief Show The Model Rename Modal
          * 
-         * @param SelectedScene 
+         * @param SelectedScene
+         * @param SelectedModel
          */
-        void Activate(int SelectedScene);
+        void Activate(int SelectedScene, int SelectedModel);
 
 
         /**

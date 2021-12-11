@@ -9,10 +9,10 @@
     Date Created: 2021-12-07
 */
 
-#include <GUI_Subwindow_SceneRenameModal.h>
+#include <GUI_Subwindow_ModelRenameModal.h>
 
 // Constructor
-Subwindow_SceneRenameModal::Subwindow_SceneRenameModal(SceneManager* SceneManager) {
+Subwindow_ModelRenameModal::Subwindow_ModelRenameModal(SceneManager* SceneManager) {
 
     // Update Ptr
     SceneManager_ = SceneManager;
@@ -21,26 +21,27 @@ Subwindow_SceneRenameModal::Subwindow_SceneRenameModal(SceneManager* SceneManage
 }
 
 // Destructor
-Subwindow_SceneRenameModal::~Subwindow_SceneRenameModal() {
+Subwindow_ModelRenameModal::~Subwindow_ModelRenameModal() {
     
 }
 
 // Define Activation Function
-void Subwindow_SceneRenameModal::Activate(int SceneIndex) {
+void Subwindow_ModelRenameModal::Activate(int SceneIndex, int ModelIndex) {
 
     // Activate
     SelectedScene_ = SceneIndex;
+    SelectedModel_ = ModelIndex;
     Enabled_ = true;
     FirstFrame_ = true;        
 
 }
 
 // Define Draw Function
-void Subwindow_SceneRenameModal::Draw() {
+void Subwindow_ModelRenameModal::Draw() {
 
-    // Draw Rename Scene Window
+    // Draw Rename Model Window
     if (Enabled_) {
-    ImGui::Begin("Rename Scene", &Enabled_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
+    ImGui::Begin("Rename Model", &Enabled_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
 
         // Grab Window Focus
         ImGui::SetWindowFocus();
@@ -53,13 +54,13 @@ void Subwindow_SceneRenameModal::Draw() {
 
         // Set Default Item To Type On, Add Input Box
         ImGui::SetItemDefaultFocus();
-        ImGui::InputTextWithHint("Rename Scene", "Enter New Scene Name", SceneInputName_, IM_ARRAYSIZE(SceneInputName_));
+        ImGui::InputTextWithHint("Rename Model", "Enter New Model Name", ModelInputName_, IM_ARRAYSIZE(ModelInputName_));
 
         ImGui::Separator();
 
         // Rename And Cancel Buttons
         if (ImGui::Button("Rename", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Enter Key Pressed
-            SceneManager_->Scenes_[SelectedScene_].SceneName = std::string(SceneInputName_);
+            SceneManager_->Scenes_[SelectedScene_].Models[SelectedModel_].Name = std::string(ModelInputName_);
             Enabled_ = false;
         }
         ImGui::SameLine();
