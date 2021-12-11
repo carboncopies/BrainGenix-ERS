@@ -45,7 +45,8 @@
 #include <GUI_Widget_FramerateGraph.h>
 #include <GUI_Widget_FrameratePlot.h>
 #include <GUI_Widget_ObjectProperties.h>
-#include <GUI_Widget_SceneTree.h>
+
+#include <GUI_Window_SceneTree.h>
 
 
 /**
@@ -90,7 +91,9 @@ class GUISystem {
         Widget_FrameratePlot Widget_FrameratePlot_; /**<Widget Instance*/
         Widget_RenderingSettings Widget_RenderingSettings_; /**<Widget Instance*/
         Widget_ObjectProperties *Widget_ObjectProperties_; /**<Widget Instance*/
-        Widget_SceneTree *Widget_SceneTree_; /**<Widget Instance*/
+
+        // Instantiate Windows Here
+        Window_SceneTree *Window_SceneTree_; /**<Window Instance*/
 
         /**
          * @brief Construct a new Gui System object

@@ -37,6 +37,8 @@ target_link_libraries(VisualEditor
 
     3DCursor
     SceneWriter
+
+    Window_SceneTree
     )
 
 target_include_directories(VisualEditor PUBLIC ./)
