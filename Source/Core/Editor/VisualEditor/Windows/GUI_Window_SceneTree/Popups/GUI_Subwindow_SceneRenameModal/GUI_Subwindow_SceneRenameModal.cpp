@@ -38,9 +38,9 @@ void Subwindow_SceneRenameModal::Activate(int SceneIndex) {
 void Subwindow_SceneRenameModal::Draw() {
 
 
-    if (Enabled_) {
+    if (ImGui::Begin("Rename Scene", &Enabled_, ImGuiWindowFlags_Popup | ImGuiWindowFlags_AlwaysAutoResize)) {
 
-        ImGui::BeginPopup("Rename Scene", ImGuiWindowFlags_Popup | ImGuiWindowFlags_AlwaysAutoResize);
+        
         std::cout<<"Opening Popup\n";
         ImGui::SetItemDefaultFocus();
         ImGui::InputTextWithHint("Rename Scene", "Enter New Scene Name", SceneInputName_, IM_ARRAYSIZE(SceneInputName_));
