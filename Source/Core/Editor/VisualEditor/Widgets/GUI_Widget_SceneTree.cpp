@@ -94,9 +94,28 @@ void Widget_SceneTree::Draw() {
 
                         // Rename Scene
                         if (ImGui::MenuItem("Rename")) {
-                            // TODO: MOVE THIS TO THE WINDOWS FOLDER, THEN MOVE SUBFUNCTIONS INTO THEIR OWN SUBFOLDERS TO THAT DIRECTORY.
-                            //ImGui::InputTextWithHint("Rename Scene", "Enter New Scene Name", SceneInputName_, IM_ARRAYSIZE(SceneInputName_));
+                            ImGui::OpenPopup("Rename Scene");
                         }
+
+                        if (ImGui::BeginPopupModal("Rename Scene", NULL, ImGuiWindowFlags_AlwaysAutoResize)) {
+
+                            ImGui::SetItemDefaultFocus();
+                            ImGui::InputTextWithHint("Rename Scene", "Enter New Scene Name", SceneInputName_, IM_ARRAYSIZE(SceneInputName_));
+
+                            ImGui::Separator();
+
+                            if (ImGui::Button("Rename", ImVec2(120, 0))) {
+                                SceneManager_->Scenes_[SceneIndex].SceneName = std::string(SceneInputName_);
+                                ImGui::CloseCurrentPopup();
+                            }
+                            ImGui::SameLine();
+                            if (ImGui::Button("Cancel", ImVec2(120, 0))) {
+                                ImGui::CloseCurrentPopup();
+                            }
+
+                            ImGui::EndPopup();
+                        }
+
 
 
                     ImGui::EndPopup();
