@@ -35,25 +35,14 @@ class Subwindow_SceneRenameModal {
     private:
 
         SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
-        bool FirstFrame_ = true; /**<Bool Indicating if It's the first frame*/
-
         char SceneInputName_[128] = ""; /**<Character Array To Store Scene Name When Renaming*/
-
-    private:
-
-        /**
-         * @brief Draw A Scene Under A Tree Node
-         * 
-         * @param Scene 
-         */
-        void DrawScene(ERS_OBJECT_SCENE* Scene);
-
 
 
     public:
 
         // Show/Hide Var
         bool Enabled_ = true; /**<Show/Hide Window*/
+        int SelectedScene_ = 0; /**<Indicate What Index The Selected Scene Is*/
 
     public:
 
@@ -68,6 +57,15 @@ class Subwindow_SceneRenameModal {
          * 
          */
         ~Subwindow_SceneRenameModal();
+
+
+        /**
+         * @brief Show The Scene Rename Modal
+         * 
+         * @param SelectedScene 
+         */
+        void Activate(int SelectedScene);
+
 
         /**
          * @brief Function that draws the window, should internally check if enable variable is set to true.
