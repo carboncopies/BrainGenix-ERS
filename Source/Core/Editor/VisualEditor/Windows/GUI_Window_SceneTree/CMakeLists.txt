@@ -2,6 +2,9 @@
 # This file is part of the BrainGenix-ERS Environment Rendering System #
 ########################################################################
 
+# Add Dependencies
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Popups)
+
 
 # Create Library (Name Should Be Parent Dir Name)
 add_library(Window_SceneTree
