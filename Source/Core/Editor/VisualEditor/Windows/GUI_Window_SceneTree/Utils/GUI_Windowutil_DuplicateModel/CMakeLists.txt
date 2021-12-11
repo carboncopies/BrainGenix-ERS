@@ -22,7 +22,7 @@ target_link_libraries(GUI_Windowutil_DuplicateModel
 # Link Internal Libs
 target_link_libraries(GUI_Windowutil_DuplicateModel
     SceneManager
-    Scene
+    Model
     )
 
 target_include_directories(GUI_Windowutil_DuplicateModel PUBLIC ./)

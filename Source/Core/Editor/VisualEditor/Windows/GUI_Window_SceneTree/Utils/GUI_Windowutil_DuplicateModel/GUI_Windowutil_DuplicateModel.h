@@ -20,7 +20,6 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <SceneManager.h>
-#include <Scene.h>
-
+#include <Model.h>
 
 void GUI_Windowutil_DuplicateModel(SceneManager* SceneManager, int SceneIndex, int ModelIndex);
