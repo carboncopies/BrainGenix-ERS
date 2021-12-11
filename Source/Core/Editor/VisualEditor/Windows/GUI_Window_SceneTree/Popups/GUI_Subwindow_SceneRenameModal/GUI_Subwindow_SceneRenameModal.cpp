@@ -30,7 +30,8 @@ void Subwindow_SceneRenameModal::Activate(int SceneIndex) {
 
     // Activate
     SelectedScene_ = SceneIndex;
-    Enabled_ = true;        
+    Enabled_ = true;
+    FirstFrame_ = true;        
 
 }
 
@@ -44,9 +45,14 @@ void Subwindow_SceneRenameModal::Draw() {
         // Grab Window Focus
         ImGui::SetWindowFocus();
         
+        // Set Default Keyboard Input
+        if (FirstFrame_) {
+            ImGui::SetKeyboardFocusHere(0);
+            FirstFrame_ = false;
+        }
+
         // Set Default Item To Type On, Add Input Box
         ImGui::SetItemDefaultFocus();
-        ImGui::SetKeyboardFocusHere(0);
         ImGui::InputTextWithHint("Rename Scene", "Enter New Scene Name", SceneInputName_, IM_ARRAYSIZE(SceneInputName_));
 
         ImGui::Separator();
