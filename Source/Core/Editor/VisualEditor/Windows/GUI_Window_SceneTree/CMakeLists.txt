@@ -34,6 +34,8 @@ target_link_libraries(Window_SceneTree
     Scene
     SceneManager
 
+    GUI_Subwindow_SceneRenameModal
+
     )
 
 target_include_directories(Window_SceneTree PUBLIC ./)

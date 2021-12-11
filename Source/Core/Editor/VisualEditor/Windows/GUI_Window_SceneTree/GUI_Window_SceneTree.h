@@ -25,6 +25,7 @@
 #include <SceneManager.h>
 #include <Scene.h>
 
+#include <GUI_Subwindow_SceneTree.h>
 
 /**
  * @brief Create GUI Window "Rendering Settings"
