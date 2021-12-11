@@ -211,7 +211,7 @@ void GUISystem::UpdateGUI() {
                 // Add Scene Tree Editor Window
                 ImGui::Checkbox("Scene Tree", &Window_SceneTree_->Enabled_);
                 
-
+            ImGui::EndMenu();
             }
 
 
