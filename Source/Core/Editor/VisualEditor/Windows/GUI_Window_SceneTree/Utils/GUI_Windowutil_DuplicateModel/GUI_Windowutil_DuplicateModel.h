@@ -23,4 +23,4 @@
 #include <Scene.h>
 
 
-void GUI_Windowutil_DuplicateScene(SceneManager* SceneManager, int SceneIndex);
+void GUI_Windowutil_DuplicateModel(SceneManager* SceneManager, int SceneIndex, int ModelIndex);
