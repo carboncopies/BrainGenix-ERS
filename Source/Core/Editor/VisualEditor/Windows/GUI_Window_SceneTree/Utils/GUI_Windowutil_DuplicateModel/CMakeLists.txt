@@ -4,25 +4,25 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(GUI_Windowutil_DuplicateScene
+add_library(GUI_Windowutil_DuplicateModel
 
             # Add Source Files (.cpp)
-            "GUI_Windowutil_DuplicateScene.cpp"
+            "GUI_Windowutil_DuplicateModel.cpp"
 
             # Add Header Files (.h)
-            "GUI_Windowutil_DuplicateScene.h"
+            "GUI_Windowutil_DuplicateModel.h"
 
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Windowutil_DuplicateScene
+target_link_libraries(GUI_Windowutil_DuplicateModel
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Windowutil_DuplicateScene
+target_link_libraries(GUI_Windowutil_DuplicateModel
     SceneManager
     Scene
     )
 
-target_include_directories(GUI_Windowutil_DuplicateScene PUBLIC ./)
+target_include_directories(GUI_Windowutil_DuplicateModel PUBLIC ./)
