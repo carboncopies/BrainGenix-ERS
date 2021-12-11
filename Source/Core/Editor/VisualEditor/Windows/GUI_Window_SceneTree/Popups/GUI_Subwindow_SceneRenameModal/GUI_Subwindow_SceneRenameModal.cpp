@@ -39,17 +39,18 @@ void Subwindow_SceneRenameModal::Draw() {
 
     // Draw Rename Scene Window
     if (Enabled_) {
-        ImGui::Begin("Rename Scene", &Enabled_, ImGuiWindowFlags_AlwaysAutoResize);
+    ImGui::Begin("Rename Scene", &Enabled_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoBackground);
 
-        // // Set Initial Window Size
-        // ImGui::SetWindowSize(ImVec2(400,150), ImGuiCond_FirstUseEver);
+        // Grab Window Focus
+        ImGui::SetWindowFocus();
         
-
+        // Set Default Item To Type On, Add Input Box
         ImGui::SetItemDefaultFocus();
         ImGui::InputTextWithHint("Rename Scene", "Enter New Scene Name", SceneInputName_, IM_ARRAYSIZE(SceneInputName_));
 
         ImGui::Separator();
 
+        // Rename And Cancel Buttons
         if (ImGui::Button("Rename", ImVec2(120, 0)) || ImGui::IsKeyPressed(257)) { // If Button Pressed, Or Enter Key Pressed
             SceneManager_->Scenes_[SelectedScene_].SceneName = std::string(SceneInputName_);
             Enabled_ = false;
@@ -59,7 +60,7 @@ void Subwindow_SceneRenameModal::Draw() {
             Enabled_ = false;
         }
 
-        ImGui::End();
+    ImGui::End();
     }
 
 
