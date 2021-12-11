@@ -56,7 +56,7 @@ void Subwindow_SceneRenameModal::Draw() {
             Enabled_ = false;
         }
 
-        ImGui::EndPopup();
+        ImGui::End();
     }
 
 
