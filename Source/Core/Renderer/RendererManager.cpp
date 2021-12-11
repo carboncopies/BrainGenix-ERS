@@ -125,14 +125,13 @@ void RendererManager::InitializeGLFW() {
     // Apply Icon
     Logger_->Log("Applying System Icon", 4);
     GLFWimage Icon[1];
+    FreeImage_FlipVertical(ImageData);
     Icon[0].pixels = FreeImage_GetBits(ImageData);
-    Icon[0].height = 512;
-    Icon[0].width = 512;
+    Icon[0].width = (int)FreeImage_GetWidth(ImageData);
+    Icon[0].height = (int)FreeImage_GetHeight(ImageData);
     glfwSetWindowIcon(Window_, 1, Icon);
-    std::cout<<"fdsafds3\n";
 
     FreeImage_DeInitialise();
-    std::cout<<"fdsafds4\n";
 
 
     // Bring Window To Front
