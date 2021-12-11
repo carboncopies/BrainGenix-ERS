@@ -196,7 +196,6 @@ void GUISystem::UpdateGUI() {
                     // Viewport Settings
                     ImGui::Checkbox("Object Properties", &Widget_ObjectProperties_->Enabled_);
                     ImGui::Checkbox("Global Viewport Settings", &Widget_RenderingSettings_.Enabled_);
-                    ImGui::Checkbox("Scene Tree", &Window_SceneTree_->Enabled_);
                     
 
                 ImGui::EndMenu();
@@ -206,6 +205,14 @@ void GUISystem::UpdateGUI() {
             ImGui::EndMenu();
             }
 
+            // Add Windows Menu
+            if (ImGui::BeginMenu("Windows")) {
+
+                // Add Scene Tree Editor Window
+                ImGui::Checkbox("Scene Tree", &Window_SceneTree_->Enabled_);
+                
+
+            }
 
 
 
