@@ -101,7 +101,7 @@ void Widget_SceneTree::Draw() {
                     ImGui::EndPopup();
                     }
 
-
+ImGui::OpenPopup("Rename Scene");
 
                     if (ImGui::BeginPopupModal("Rename Scene", NULL, ImGuiWindowFlags_AlwaysAutoResize)) {
                         std::cout<<"Opening Popup\n";
