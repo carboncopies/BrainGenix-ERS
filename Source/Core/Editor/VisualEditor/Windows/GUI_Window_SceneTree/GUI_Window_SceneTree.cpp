@@ -166,6 +166,21 @@ void Window_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene, int SceneIndex) {
         }
 
 
+
+
+        // Context Menu
+        if (ImGui::BeginPopupContextItem()) {
+
+            // Rename Model
+            if (ImGui::MenuItem("Rename")) {
+                Subwindow_ModelRenameModal_->Activate(SceneIndex, ObjectIndex);
+
+            }
+
+        ImGui::EndPopup();
+        }
+
+
     }
 
 
