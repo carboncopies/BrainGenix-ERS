@@ -25,7 +25,7 @@
 #include <SceneManager.h>
 #include <Scene.h>
 
-#include <GUI_Subwindow_SceneTree.h>
+#include <GUI_Subwindow_SceneRenameModal.h>
 
 /**
  * @brief Create GUI Window "Rendering Settings"
@@ -38,7 +38,7 @@ class Window_SceneTree {
         SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
         bool FirstFrame_ = true; /**<Bool Indicating if It's the first frame*/
 
-        char SceneInputName_[128] = ""; /**<Character Array To Store Scene Name When Renaming*/
+        Subwindow_SceneRenameModal* Subwindow_SceneRenameModal_; /**<Scene Rename Modal Instance*/
 
     private:
 

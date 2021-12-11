@@ -17,6 +17,8 @@ Window_SceneTree::Window_SceneTree(SceneManager* SceneManager) {
     // Update Ptr
     SceneManager_ = SceneManager;
 
+    // Setup Subwindows
+    Subwindow_SceneRenameModal_ = new Subwindow_SceneRenameModal(SceneManager_);
 
 }
 
@@ -27,6 +29,10 @@ Window_SceneTree::~Window_SceneTree() {
 
 // Define Draw Function
 void Window_SceneTree::Draw() {
+
+    // Draw Popup Modals
+    Subwindow_SceneRenameModal_->Draw();
+
 
 
     // If Window Drawing Enabled
@@ -94,34 +100,12 @@ void Window_SceneTree::Draw() {
 
                         // Rename Scene
                         if (ImGui::MenuItem("Rename")) {
-                            ImGui::OpenPopup("Rename Scene");
-                            std::cout<<"Enabling Popup\n";
+                            Subwindow_SceneRenameModal_->Activate(SceneIndex);
+
                         }
 
                     ImGui::EndPopup();
                     }
-
-
-                    if (ImGui::BeginPopupModal("Rename Scene", NULL, ImGuiWindowFlags_AlwaysAutoResize)) {
-                        std::cout<<"Opening Popup\n";
-                        ImGui::SetItemDefaultFocus();
-                        ImGui::InputTextWithHint("Rename Scene", "Enter New Scene Name", SceneInputName_, IM_ARRAYSIZE(SceneInputName_));
-
-                        ImGui::Separator();
-
-                        if (ImGui::Button("Rename", ImVec2(120, 0))) {
-                            SceneManager_->Scenes_[SceneIndex].SceneName = std::string(SceneInputName_);
-                            ImGui::CloseCurrentPopup();
-                        }
-                        ImGui::SameLine();
-                        if (ImGui::Button("Cancel", ImVec2(120, 0))) {
-                            ImGui::CloseCurrentPopup();
-                        }
-
-                        ImGui::EndPopup();
-                    }
-
-
 
 
 
