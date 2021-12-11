@@ -41,7 +41,7 @@ class Subwindow_SceneRenameModal {
     public:
 
         // Show/Hide Var
-        bool Enabled_ = true; /**<Show/Hide Window*/
+        bool Enabled_ = false; /**<Show/Hide Window*/
         int SelectedScene_ = 0; /**<Indicate What Index The Selected Scene Is*/
 
     public:
