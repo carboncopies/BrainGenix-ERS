@@ -119,21 +119,21 @@ void RendererManager::InitializeGLFW() {
     FreeImage_Initialise();
 
     // Load Image
-    FREE_IMAGE_FORMAT Format = FreeImage_GetFileType("EditorAssets/Icons/ProgramIcon/Icon.svg", 0);
-    FIBITMAP* ImageData = FreeImage_Load(Format, "EditorAssets/Icons/ProgramIcon/Icon.svg");
+    FREE_IMAGE_FORMAT Format = FreeImage_GetFileType("EditorAssets/Icons/ProgramIcon/Icon.png", 0);
+    FIBITMAP* ImageData = FreeImage_Load(Format, "EditorAssets/Icons/ProgramIcon/Icon.png");
 
     // Apply Icon
     Logger_->Log("Applying System Icon", 4);
     GLFWimage Icon[1];
-    std::cout<<"fdsafds";
+    std::cout<<"fdsafds\n";
     Icon[0].pixels = FreeImage_GetBits(ImageData);
 
-    std::cout<<"fdsafds2";
+    std::cout<<"fdsafds2\n";
     glfwSetWindowIcon(Window_, 1, Icon);
-    std::cout<<"fdsafds3";
+    std::cout<<"fdsafds3\n";
 
     FreeImage_DeInitialise();
-    std::cout<<"fdsafds4";
+    std::cout<<"fdsafds4\n";
 
 
     // Bring Window To Front
