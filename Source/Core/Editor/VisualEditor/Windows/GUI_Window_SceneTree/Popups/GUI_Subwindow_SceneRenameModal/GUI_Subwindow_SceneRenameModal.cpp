@@ -46,6 +46,7 @@ void Subwindow_SceneRenameModal::Draw() {
         
         // Set Default Item To Type On, Add Input Box
         ImGui::SetItemDefaultFocus();
+        ImGui::SetKeyboardFocusHere();
         ImGui::InputTextWithHint("Rename Scene", "Enter New Scene Name", SceneInputName_, IM_ARRAYSIZE(SceneInputName_));
 
         ImGui::Separator();
