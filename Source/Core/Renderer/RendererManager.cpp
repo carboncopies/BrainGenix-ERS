@@ -125,10 +125,9 @@ void RendererManager::InitializeGLFW() {
     // Apply Icon
     Logger_->Log("Applying System Icon", 4);
     GLFWimage Icon[1];
-    std::cout<<"fdsafds\n";
     Icon[0].pixels = FreeImage_GetBits(ImageData);
-
-    std::cout<<"fdsafds2\n";
+    Icon[0].height = 512;
+    Icon[0].width = 512;
     glfwSetWindowIcon(Window_, 1, Icon);
     std::cout<<"fdsafds3\n";
 
