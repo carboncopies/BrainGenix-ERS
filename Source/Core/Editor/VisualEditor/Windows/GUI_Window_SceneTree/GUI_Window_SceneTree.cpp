@@ -21,12 +21,19 @@ Window_SceneTree::Window_SceneTree(SceneManager* SceneManager) {
     Subwindow_SceneRenameModal_ = new Subwindow_SceneRenameModal(SceneManager_);
     Subwindow_ModelRenameModal_ = new Subwindow_ModelRenameModal(SceneManager_);
     Subwindow_DeleteScene_ = new Subwindow_DeleteScene(SceneManager_);
+    Subwindow_DeleteModel_ = new Subwindow_DeleteModel(SceneManager_);
 
 }
 
 // Destructor
 Window_SceneTree::~Window_SceneTree() {
-    
+
+    // Cleanup Instances
+    Subwindow_SceneRenameModal_->~Subwindow_SceneRenameModal();
+    Subwindow_ModelRenameModal_->~Subwindow_ModelRenameModal();
+    Subwindow_DeleteScene_->~Subwindow_DeleteScene();
+    Subwindow_DeleteModel_->~Subwindow_DeleteModel();
+
 }
 
 // Define Draw Function
@@ -36,6 +43,7 @@ void Window_SceneTree::Draw() {
     Subwindow_SceneRenameModal_->Draw();
     Subwindow_ModelRenameModal_->Draw();
     Subwindow_DeleteScene_->Draw();
+    Subwindow_DeleteModel_->Draw();
 
 
     // If Window Drawing Enabled
@@ -188,6 +196,13 @@ void Window_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene, int SceneIndex) {
             } if (ImGui::MenuItem("Duplicate")) {
                 GUI_Windowutil_DuplicateModel(SceneManager_, SceneIndex, ObjectIndex);
 
+            }
+
+
+            ImGui::Separator();
+
+            if (ImGui::MenuItem("Delete")) {
+                Subwindow_DeleteModel_->DeleteModel(SceneIndex, ObjectIndex);
             }
 
 

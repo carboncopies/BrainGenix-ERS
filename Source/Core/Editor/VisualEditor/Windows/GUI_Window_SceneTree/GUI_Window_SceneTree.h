@@ -28,6 +28,7 @@
 #include <GUI_Subwindow_SceneRenameModal.h>
 #include <GUI_Subwindow_ModelRenameModal.h>
 #include <GUI_Subwindow_DeleteScene.h>
+#include <GUI_Subwindow_DeleteModel.h>
 
 #include <GUI_Windowutil_DuplicateScene.h>
 #include <GUI_Windowutil_DuplicateModel.h>
@@ -46,6 +47,7 @@ class Window_SceneTree {
         Subwindow_SceneRenameModal* Subwindow_SceneRenameModal_; /**<Scene Rename Modal Instance*/
         Subwindow_ModelRenameModal* Subwindow_ModelRenameModal_; /**<Model Rename Modal Instance*/
         Subwindow_DeleteScene* Subwindow_DeleteScene_; /**<Scene Deletion Modal Instance*/
+        Subwindow_DeleteModel* Subwindow_DeleteModel_; /**<Model Deletion Modal Instance*/
 
     private:
 
