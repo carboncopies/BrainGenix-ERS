@@ -68,7 +68,7 @@ int main() {
     HardwareInformation sERSHardwareInformation(sERSLogger, sERSLocalSystemConfiguration);
 
     // Instantiate RendererManager
-    RendererManager sERSRendererManager(&sERSLocalSystemConfiguration, &sERSLogger, &SystemShouldRun);
+    //RendererManager sERSRendererManager(&sERSLocalSystemConfiguration, sERSLogger, &SystemShouldRun);
 
 
 
@@ -104,7 +104,7 @@ int main() {
         LastFrame = CurrentTime;
 
         // Update Renderers
-        sERSRendererManager.UpdateLoop(DeltaTime);
+        //sERSRendererManager.UpdateLoop(DeltaTime);
 
     }
 
