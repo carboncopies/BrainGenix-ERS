@@ -13,7 +13,7 @@
 
 
 // Constructor
-UserProfileManager::UserProfileManager(LoggerClass *Logger, const char* UserProfilePath) {
+UserProfileManager::UserProfileManager(std::shared_ptr<LoggerClass> Logger, const char* UserProfilePath) {
 
     // Copy Pointer
     Logger_ = Logger;

@@ -31,7 +31,7 @@ class UserProfileManager {
 
     private:
 
-        LoggerClass *Logger_; /**<LoggerClass Instance Pointer*/
+        std::shared_ptr<LoggerClass> Logger_; /**<LoggerClass Instance Pointer*/
         std::string UserProfilePath_; /**<Path To User Profile*/
         YAML::Node UserProfile_; /**<YAML::Node Containing User Profile*/
 
@@ -48,7 +48,7 @@ class UserProfileManager {
          * 
          * @param Logger 
          */
-        UserProfileManager(LoggerClass *Logger, const char* UserProfilePath = "EditorAssets/Configuration/User/UserConfig.yaml");
+        UserProfileManager(std::shared_ptr<LoggerClass> Logger, const char* UserProfilePath = "EditorAssets/Configuration/User/UserConfig.yaml");
 
         /**
          * @brief Destroy the User Profile Manager object
