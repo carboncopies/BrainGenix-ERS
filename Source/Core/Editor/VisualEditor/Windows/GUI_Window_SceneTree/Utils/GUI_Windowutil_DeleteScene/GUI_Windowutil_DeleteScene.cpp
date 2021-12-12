@@ -15,6 +15,8 @@
 void GUI_Windowutil_DeleteScene(SceneManager* SceneManager, int SceneIndex) {
 
     // Delete From SceneManager
-    SceneManager->Scenes_.erase(SceneManager->Scenes_.begin() + SceneIndex);
-
+    if (SceneManager->Scenes_.size() != 1) {
+        SceneManager->Scenes_.erase(SceneManager->Scenes_.begin() + SceneIndex);
+    }
+    
 }
