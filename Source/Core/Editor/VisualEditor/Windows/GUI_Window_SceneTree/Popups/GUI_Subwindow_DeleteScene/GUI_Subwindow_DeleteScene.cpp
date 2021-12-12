@@ -12,7 +12,7 @@
 #include <GUI_Subwindow_DeleteScene.h>
 
 
-Subwindow_DeleteScene::Subwindow_DeleteScene(SceneManager* SceneManager) {
+Subwindow_DeleteScene::Subwindow_DeleteScene(std::shared_ptr<SceneManager> SceneManager) {
 
     // Copy Pointer
     SceneManager_ = SceneManager;
