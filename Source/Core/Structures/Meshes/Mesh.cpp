@@ -72,7 +72,7 @@ void ERS_OBJECT_MESH::SetupMesh() {
 }
 
 // Draw The Mesh
-void ERS_OBJECT_MESH::Draw(ERS_OBJECT_SHADER* Shader) {
+void ERS_OBJECT_MESH::Draw(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
 
     // Bind To OpenGL Handels
     unsigned int DiffuseHandel = 1;

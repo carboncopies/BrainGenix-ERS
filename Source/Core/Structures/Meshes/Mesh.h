@@ -66,6 +66,6 @@ class ERS_OBJECT_MESH {
 
         }
 
-        void Draw(ERS_OBJECT_SHADER* Shader);
+        void Draw(std::shared_ptr<ERS_OBJECT_SHADER> Shader);
 
 };
