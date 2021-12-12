@@ -1,3 +1,4 @@
+ 
 //======================================================================//
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
@@ -9,14 +10,17 @@
     Date Created: 2021-12-07
 */
 
-#include <GUI_Windowutil_DeleteScene.h>
+#pragma once
 
 
-void GUI_Windowutil_DeleteScene(SceneManager* SceneManager, int SceneIndex) {
+// Standard Libraries (BG convention: use <> instead of "")
+#include <string>
 
-    // Delete From SceneManager
-    if (SceneManager->Scenes_.size() != 1) {
-        SceneManager->Scenes_.erase(SceneManager->Scenes_.begin() + SceneIndex);
-    }
-    
-}
+// Third-Party Libraries (BG convention: use <> instead of "")
+
+// Internal Libraries (BG convention: use <> instead of "")
+#include <SceneManager.h>
+#include <Scene.h>
+
+
+void GUI_Subwindow_DeleteScene(SceneManager* SceneManager, int SceneIndex);
