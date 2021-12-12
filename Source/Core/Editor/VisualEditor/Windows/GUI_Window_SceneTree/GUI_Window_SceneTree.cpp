@@ -108,6 +108,13 @@ void Window_SceneTree::Draw() {
                         }
 
 
+                        ImGui::Separator();
+
+                        if (ImGui::MenuItem("Delete")) {
+                            GUI_Windowutil_DeleteScene(SceneManager_, SceneIndex);
+                        }
+
+
                     ImGui::EndPopup();
                     }
 
@@ -181,6 +188,8 @@ void Window_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene, int SceneIndex) {
                 GUI_Windowutil_DuplicateModel(SceneManager_, SceneIndex, ObjectIndex);
 
             }
+
+
 
         ImGui::EndPopup();
         }
