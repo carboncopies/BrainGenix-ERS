@@ -41,18 +41,18 @@ class RendererManager {
     private:
 
         // Member Variables
-        YAML::Node *SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
+        std::shared_ptr<YAML::Node> SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
         std::shared_ptr<LoggerClass>  Logger_; /**<Pointer to the logging system instance*/
-        VisualRenderer *VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
-        IOManager *IOManager_; /**<Pointer To IOManager Instance*/
+        std::shared_ptr<VisualRenderer> VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
+        std::shared_ptr<IOManager> IOManager_; /**<Pointer To IOManager Instance*/
         GLFWwindow* Window_; /**<GLFW Window Instance*/
-        ShaderLoader *ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
-        FramebufferManager *FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
+        std::shared_ptr<ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
+        std::shared_ptr<FramebufferManager> FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
         ERS_OBJECT_SHADER Shader_; /**<ERS Shader Object (Main System Shader)*/
-        GUISystem *GuiSystem_; /**<Instance of GUI System*/
-        TextureLoader *TextureLoader_; /**<Pointer to Texture Loader Instance*/
-        SceneManager *SceneManager_; /**<Pointer to Scene Manager Class Instance*/
-        Cursors3D *Cursors3D_; /**<Setup 3D Cursor Class*/
+        std::shared_ptr<GUISystem> GuiSystem_; /**<Instance of GUI System*/
+        std::shared_ptr<TextureLoader> TextureLoader_; /**<Pointer to Texture Loader Instance*/
+        std::shared_ptr<SceneManager> SceneManager_; /**<Pointer to Scene Manager Class Instance*/
+        std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
 
 
         // Control Values
