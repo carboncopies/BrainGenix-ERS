@@ -83,12 +83,6 @@ void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
 void InputProcessor::ProcessKeyboardInput(std::shared_ptr<LoggerClass> Logger_, float DeltaTime, bool WindowCaptureEnabled) {
 
 
-    if (glfwGetKey(Window_, GLFW_KEY_KP_ENTER) == GLFW_PRESS) {
-        Logger_->Log("Window Shutdown Invoked By Keyboard [Keypad Enter]", 2);
-        glfwSetWindowShouldClose(Window_, true);
-    }
-
-
     // Get Keyboard Input
     if (WindowCaptureEnabled) {
 
