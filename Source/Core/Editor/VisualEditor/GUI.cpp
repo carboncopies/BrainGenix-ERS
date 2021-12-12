@@ -52,11 +52,11 @@ GUISystem::GUISystem(std::shared_ptr<LoggerClass> Logger, GLFWwindow* Window, st
 
     // Initialize Widgets
     Logger_->Log("Initializing GUI Widgets", 5);
-    Widget_ObjectProperties_ = new Widget_ObjectProperties(Cursors3D_);
+    Widget_ObjectProperties_ = std::make_shared<Widget_ObjectProperties>(Cursors3D_);
 
     // Initialize Windows
     Logger_->Log("Initializing GUI Windows", 5);
-    Window_SceneTree_ = new Window_SceneTree(SceneManager_);
+    Window_SceneTree_ = std::make_shared<Window_SceneTree>(SceneManager_);
 
 
 }
