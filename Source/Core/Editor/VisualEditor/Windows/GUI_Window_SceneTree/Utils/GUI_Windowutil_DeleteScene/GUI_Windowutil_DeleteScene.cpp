@@ -14,15 +14,7 @@
 
 void GUI_Windowutil_DeleteScene(SceneManager* SceneManager, int SceneIndex) {
 
-    // Get Current Scene
-    ERS_OBJECT_SCENE NewScene = SceneManager->Scenes_[SceneIndex];
-
-    // Update Name
-    std::string CurrentName = NewScene.SceneName;
-    std::string NewName = CurrentName + std::string(" - Copy");
-    NewScene.SceneName = NewName;
-
-    // Add To SceneManager
-    SceneManager->Scenes_.push_back(NewScene);
+    // Delete From SceneManager
+    SceneManager->Scenes_.erase(SceneManager->Scenes_.begin() + SceneIndex);
 
 }
