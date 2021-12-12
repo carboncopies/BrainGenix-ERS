@@ -33,7 +33,7 @@ class Subwindow_ModelRenameModal {
 
     private:
 
-        SceneManager* SceneManager_; /**<Model Manager Instance Pointer*/
+        std::shared_ptr<SceneManager> SceneManager_; /**<Model Manager Instance Pointer*/
         char ModelInputName_[128] = ""; /**<Character Array To Store Model Name When Renaming*/
 
 
@@ -51,7 +51,7 @@ class Subwindow_ModelRenameModal {
          * @brief Construct a new Subwindow_ModelRenameModal object
          * 
          */
-        Subwindow_ModelRenameModal(SceneManager* SceneManager);
+        Subwindow_ModelRenameModal(std::shared_ptr<SceneManager> SceneManager);
 
         /**
          * @brief Destroy the Subwindow_ModelRenameModal object
