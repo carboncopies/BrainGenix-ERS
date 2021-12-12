@@ -14,7 +14,7 @@
 
 
 // Reads Image File Into Memory
-std::string ReadFile(const std::string& FileName, LoggerClass *Logger_) {
+std::string ReadFile(const std::string& FileName, std::shared_ptr<LoggerClass> Logger_) {
 
     // Open File
     if (Logger_ != nullptr) {

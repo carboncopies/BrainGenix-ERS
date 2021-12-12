@@ -14,7 +14,7 @@
 
 
 // Database Interface Constructor
-DatabaseInterface::DatabaseInterface(LoggerClass *Logger) {
+DatabaseInterface::DatabaseInterface(std::shared_ptr<LoggerClass> Logger) {
 
     // Create Member Pointers
     Logger_ = Logger;

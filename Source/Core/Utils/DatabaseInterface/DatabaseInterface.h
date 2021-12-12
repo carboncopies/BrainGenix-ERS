@@ -30,7 +30,7 @@ class DatabaseInterface {
     private:
 
 
-        LoggerClass *Logger_; /**<Pointer to Instance Of LoggerClass */
+        std::shared_ptr<LoggerClass> Logger_; /**<Pointer to Instance Of LoggerClass */
 
 
     public:
@@ -40,7 +40,7 @@ class DatabaseInterface {
          * 
          * @param Logger 
          */
-        DatabaseInterface(LoggerClass *Logger);
+        DatabaseInterface(std::shared_ptr<LoggerClass> Logger);
 
         /**
          * @brief Destroy the Database Interface object
