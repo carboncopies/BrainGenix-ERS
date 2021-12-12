@@ -80,7 +80,7 @@ void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
 }
 
 // Update Keyboard Input
-void InputProcessor::ProcessKeyboardInput(LoggerClass *Logger_, float DeltaTime, bool WindowCaptureEnabled) {
+void InputProcessor::ProcessKeyboardInput(std::shared_ptr<LoggerClass> Logger_, float DeltaTime, bool WindowCaptureEnabled) {
 
 
     if (glfwGetKey(Window_, GLFW_KEY_KP_ENTER) == GLFW_PRESS) {
