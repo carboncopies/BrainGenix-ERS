@@ -23,7 +23,7 @@ TextureLoader::TextureLoader(std::shared_ptr<LoggerClass> Logger) {
     Logger_->Log("Initializing Texture Loader Class", 5);
 
     // Create Instance Of ImageDecoder
-    ImageDecoder_ = new ImageDecoder(Logger_);
+    ImageDecoder_ = std::make_shared<ImageDecoder>(Logger_);
     
 
 }
