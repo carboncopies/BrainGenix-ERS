@@ -12,7 +12,7 @@
 #include <GUI_Windowutil_DuplicateModel.h>
 
 
-void GUI_Windowutil_DuplicateModel(SceneManager* SceneManager, int SceneIndex, int ModelIndex) {
+void GUI_Windowutil_DuplicateModel(std::shared_ptr<SceneManager> SceneManager, int SceneIndex, int ModelIndex) {
 
     // Get Current Model
     ERS_OBJECT_MODEL NewModel = SceneManager->Scenes_[SceneIndex].Models[ModelIndex];

@@ -22,4 +22,4 @@
 #include <SceneManager.h>
 #include <Model.h>
 
-void GUI_Windowutil_DuplicateModel(SceneManager* SceneManager, int SceneIndex, int ModelIndex);
+void GUI_Windowutil_DuplicateModel(std::shared_ptr<SceneManager> SceneManager, int SceneIndex, int ModelIndex);
