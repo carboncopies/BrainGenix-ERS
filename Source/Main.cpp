@@ -68,7 +68,7 @@ int main() {
     HardwareInformation sERSHardwareInformation(sERSLogger, sERSLocalSystemConfiguration);
 
     // Instantiate RendererManager
-    RendererManager sERSRendererManager(&sERSLocalSystemConfiguration, sERSLogger, &SystemShouldRun);
+    RendererManager sERSRendererManager(std::make_shared<YAML::Node>(sERSLocalSystemConfiguration), sERSLogger, std::make_shared<bool>(SystemShouldRun));
 
 
 
