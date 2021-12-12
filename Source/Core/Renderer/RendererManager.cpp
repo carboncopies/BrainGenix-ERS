@@ -156,7 +156,6 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     // Deferred GUI
     GuiSystem_->DeferredFrameUpdate();
 
-    std::cout<<SceneManager_->Scenes_[2].Models[4].FlipTextures<<std::endl;
 
     // Update GUI Frame
     ImVec4 Color = GuiSystem_->ThemeManager_->ClearColor_;
