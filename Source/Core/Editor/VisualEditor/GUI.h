@@ -68,7 +68,7 @@ class GUISystem {
         std::shared_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
 
 
-        bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */
+        std::shared_ptr<bool> SystemShouldRun_; /**<Control Variable Indicating System Run State */
 
 
         // Window Show/Hide Vars
