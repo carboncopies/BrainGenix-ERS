@@ -13,7 +13,7 @@
 
 
 // GUISystem Constructor
-GUISystem::GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShouldRun, Cursors3D* Cursors3D, SceneManager* SceneManager) {
+GUISystem::GUISystem(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<GLFWwindow> Window, std::shared_ptr<bool> SystemShouldRun, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager) {
 
     // Create Local Pointer
     Logger_ = Logger;

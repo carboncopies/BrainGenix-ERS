@@ -58,14 +58,14 @@ class GUISystem {
 
     private:
 
-        LoggerClass* Logger_; /**<Pointer To LoggerClass Instance*/
-        GLFWwindow* Window_; /**<Pointer to window instance*/
+        std::shared_ptr<LoggerClass> Logger_; /**<Pointer To LoggerClass Instance*/
+        std::shared_ptr<GLFWwindow> Window_; /**<Pointer to window instance*/
 
-        FontManager* FontManager_; /**<Pointer To FontManager Instance*/
-        UserProfileManager* UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
-        Cursors3D* Cursors3D_; /**<Pointer to Cursors3D Instance*/
-        SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
-        SceneWriter* SceneWriter_; /**<Scene Writer Instance Pointer*/
+        std::shared_ptr<FontManager> FontManager_; /**<Pointer To FontManager Instance*/
+        std::shared_ptr<UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
+        std::shared_ptr<Cursors3D> Cursors3D_; /**<Pointer to Cursors3D Instance*/
+        std::shared_ptr<SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
+        std::shared_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
 
 
         bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */
@@ -90,17 +90,17 @@ class GUISystem {
         Widget_FramerateGraph Widget_FramerateGraph_; /**<Widget Instance*/
         Widget_FrameratePlot Widget_FrameratePlot_; /**<Widget Instance*/
         Widget_RenderingSettings Widget_RenderingSettings_; /**<Widget Instance*/
-        Widget_ObjectProperties *Widget_ObjectProperties_; /**<Widget Instance*/
+        std::shared_ptr<Widget_ObjectProperties> Widget_ObjectProperties_; /**<Widget Instance*/
 
         // Instantiate Windows Here
-        Window_SceneTree *Window_SceneTree_; /**<Window Instance*/
+        std::shared_ptr<Window_SceneTree> Window_SceneTree_; /**<Window Instance*/
 
         /**
          * @brief Construct a new Gui System object
          * 
          * @param Logger 
          */
-        GUISystem(LoggerClass* Logger, GLFWwindow* Window, bool *SystemShouldRun, Cursors3D* Cursors3D, SceneManager* SceneManager);
+        GUISystem(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<GLFWwindow> Window, std::shared_ptr<bool> SystemShouldRun, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager);
 
         /**
          * @brief Destroy the Gui System object
