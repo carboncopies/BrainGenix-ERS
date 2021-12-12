@@ -20,14 +20,15 @@ Subwindow_DeleteScene::Subwindow_DeleteScene(SceneManager* SceneManager) {
 
 }
 
+
 Subwindow_DeleteScene::~Subwindow_DeleteScene() {
 
     // Hide All Popups
     bool ShowDeleteConfirm_ = false;
     bool ShowOneSceneDeleteError_ = false;
 
-
 }
+
 
 void Subwindow_DeleteScene::DeleteScene(int SceneIndex) {
 
