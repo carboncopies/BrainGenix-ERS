@@ -20,7 +20,6 @@ Subwindow_DeleteScene::Subwindow_DeleteScene(SceneManager* SceneManager) {
 
 }
 
-
 Subwindow_DeleteScene::~Subwindow_DeleteScene() {
 
     // Hide All Popups
@@ -29,7 +28,6 @@ Subwindow_DeleteScene::~Subwindow_DeleteScene() {
 
 }
 
-
 void Subwindow_DeleteScene::DeleteScene(int SceneIndex) {
 
     // Delete From SceneManager
@@ -37,4 +35,23 @@ void Subwindow_DeleteScene::DeleteScene(int SceneIndex) {
         SceneManager_->Scenes_.erase(SceneManager_->Scenes_.begin() + SceneIndex);
     }
     
+}
+
+void Subwindow_DeleteScene::Update() {
+
+    // Update Windows
+    UpdateConfirmDeletePopup();
+    UpdateOneSceneDeleteErrorPopup();
+
+}
+
+void Subwindow_DeleteScene::UpdateConfirmDeletePopup() {
+
+    // Begin Window
+    if (UpdateConfirmDeletePopup) {
+        
+
+
+    }
+
 }

@@ -41,8 +41,8 @@ class Subwindow_DeleteScene {
     // Private Functions
     private:
 
-        void ConfirmDeletePopup(); /**<Function To Update Popup Deletion Window*/
-        void OneSceneDeleteErrorPopup(); /**<Last scene deletion error popup*/
+        void UpdateConfirmDeletePopup(); /**<Function To Update Popup Deletion Window*/
+        void UpdateOneSceneDeleteErrorPopup(); /**<Last scene deletion error popup*/
 
     public:
 
