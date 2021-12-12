@@ -17,6 +17,7 @@
 #include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
+#include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <SceneManager.h>
