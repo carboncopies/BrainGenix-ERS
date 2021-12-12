@@ -14,7 +14,7 @@
 
 
 // IOManager Constructor
-IOManager::IOManager(LoggerClass *Logger, GLFWwindow* Window, ERS_OBJECT_CAMERA_NOCLIP *Camera) {
+IOManager::IOManager(std::shared_ptr<LoggerClass> Logger, GLFWwindow* Window, std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera) {
 
     // Copy Pointer
     Logger_ = Logger;
@@ -27,7 +27,7 @@ IOManager::IOManager(LoggerClass *Logger, GLFWwindow* Window, ERS_OBJECT_CAMERA_
 
     // Create InputProcssor
     Logger_->Log("Setting Up Window Input Processor", 5);
-    InputProcessor_ = new InputProcessor(Camera_, Window_);
+    InputProcessor_ = std::make_shared<InputProcessor>(Camera_, Window_);
 
 
 

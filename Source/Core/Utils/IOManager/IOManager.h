@@ -39,9 +39,9 @@ class IOManager {
     private:
 
         // Class Instances
-        LoggerClass *Logger_; /**<Logging System Instance Pointer*/
-        InputProcessor *InputProcessor_; /**<Pointer to input processor instance*/
-        ERS_OBJECT_CAMERA_NOCLIP *Camera_; /**<Pointer To Camera Instance*/
+        std::shared_ptr<LoggerClass> Logger_; /**<Logging System Instance Pointer*/
+        std::shared_ptr<InputProcessor> InputProcessor_; /**<Pointer to input processor instance*/
+        std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera_; /**<Pointer To Camera Instance*/
         //FramebufferManager *FramebufferManager_; /**<Pointer To Framebuffer Manager Instance*/
 
         // Objects
@@ -64,7 +64,7 @@ class IOManager {
          * @param Camera 
          * @param FramebufferManager 
          */
-        IOManager(LoggerClass *Logger, GLFWwindow *Window, ERS_OBJECT_CAMERA_NOCLIP *Camera);
+        IOManager(std::shared_ptr<LoggerClass> Logger, GLFWwindow *Window, std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera);
 
         /**
          * @brief Destroy the IOManager object
