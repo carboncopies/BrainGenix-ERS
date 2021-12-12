@@ -22,6 +22,9 @@ void GUI_Windowutil_DuplicateModel(SceneManager* SceneManager, int SceneIndex, i
     std::string NewName = CurrentName + std::string(" - Copy");
     NewModel.Name = NewName;
 
+    // Update Texture Flip
+    NewModel.FlipTextures = SceneManager->Scenes_[SceneIndex].Models[ModelIndex].FlipTextures;
+
     // Add To SceneManager
     SceneManager->Scenes_[SceneIndex].Models.push_back(NewModel);
 
