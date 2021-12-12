@@ -19,7 +19,7 @@ void ErrorCallback(int, const char* ErrorString) {
 
 
 // RendererManager Constructor
-RendererManager::RendererManager(YAML::Node *SystemConfiguration, std::shared_ptr<LoggerClass> Logger, bool *SystemShouldRun) {
+RendererManager::RendererManager(std::shared_ptr<YAML::Node> SystemConfiguration, std::shared_ptr<LoggerClass> Logger, std::shared_ptr<bool> SystemShouldRun) {
 
     // Create Pointers
     Logger->Log("Populating RendererManager Member Pointers", 5);
@@ -28,17 +28,17 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, std::shared_pt
     SystemShouldRun_ = SystemShouldRun;
 
     // Setup 3D Cursor
-    Cursors3D_ = new Cursors3D();
+    Cursors3D_ = std::make_shared<Cursors3D>();
 
 
     // Initialize Texture Loader
-    TextureLoader_ = new TextureLoader(Logger_);
+    TextureLoader_ = std::make_shared<TextureLoader>(Logger_);
 
 
     // Load Scene
     ModelLoader MLoader(Logger_, TextureLoader_);
     SceneLoader SLoader(Logger_, &MLoader);
-    SceneManager_ = new SceneManager(Logger_);
+    SceneManager_ = std::make_shared<SceneManager>(Logger_);
 
 
     // Initialize Systems
@@ -47,21 +47,21 @@ RendererManager::RendererManager(YAML::Node *SystemConfiguration, std::shared_pt
 
     // Instantiate Renderers
     Logger_->Log("Instantiating Renderers", 5);
-    VisualRenderer_ = new VisualRenderer(SystemConfiguration, Window_, Logger, Cursors3D_);
+    VisualRenderer_ = std::make_shared<VisualRenderer>(SystemConfiguration, Window_, Logger, Cursors3D_);
 
     // Setup Shaders
-    ShaderLoader_ = new ShaderLoader(Logger_);
+    ShaderLoader_ = std::make_shared<ShaderLoader>(Logger_);
     Shader_ = ShaderLoader_->LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag");
 
     Shader_.MakeActive();
     Shader_.SetInt("texture_diffuse1", 0);
 
     // Setup GUI
-    GuiSystem_ = new GUISystem(Logger_, Window_, SystemShouldRun_, Cursors3D_, SceneManager_);
+    GuiSystem_ = std::make_shared<GUISystem>(Logger_, Window_, SystemShouldRun_, Cursors3D_, SceneManager_);
 
     // Setup IOManager
     Logger_->Log("Initializing Input/Output Manager", 5);
-    IOManager_ = new IOManager(Logger_, Window_, &Camera_);
+    IOManager_ = std::make_shared<IOManager>(Logger_, Window_, &Camera_);
 
     // Make Viewport
     VisualRenderer_->CreateViewport(&Shader_, "Viewport", Window_, &Camera_);

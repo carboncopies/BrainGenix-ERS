@@ -48,15 +48,15 @@ class VisualRenderer {
     private:
 
         // Member Variables
-        YAML::Node *SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
-        LoggerClass *Logger_; /**<Pointer to the logging system instance*/
+        std::shared_ptr<YAML::Node> SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
+        std::shared_ptr<LoggerClass> Logger_; /**<Pointer to the logging system instance*/
         GLFWwindow *Window_; /**<GLFW Window Instance For Window Input To Viewports*/
-        Cursors3D *Cursors3D_; /**<Setup 3D Cursor Class*/
+        std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
 
-        std::vector<ERS_OBJECT_CAMERA_NOCLIP*> Cameras_; /**<List Of Pointers To Camera Instances*/
-        std::vector<ERS_OBJECT_SHADER*> Shaders_; /**<List Of Pointers To Shader Instances*/
+        std::vector<std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP>> Cameras_; /**<List Of Pointers To Camera Instances*/
+        std::vector<std::shared_ptr<ERS_OBJECT_SHADER>> Shaders_; /**<List Of Pointers To Shader Instances*/
         std::vector<std::string> ViewportNames_; /**<List Of Names For Viewports*/
-        std::vector<InputProcessor*> InputProcessors_; /**<Vector Of InputProcessors*/
+        std::vector<std::shared_ptr<InputProcessor>> InputProcessors_; /**<Vector Of InputProcessors*/
 
         std::vector<unsigned int> FramebufferObjects_; /**<Framebuffer Objects For Each Viewport*/
         std::vector<unsigned int> FramebufferColorObjects_; /**<Render Texture For Displaying Color*/
@@ -76,15 +76,15 @@ class VisualRenderer {
     public:
 
         // Constructor
-        VisualRenderer(YAML::Node *SystemConfiguration, GLFWwindow* Window, LoggerClass *Logger, Cursors3D* Cursors3D);
+        VisualRenderer(std::shared_ptr<YAML::Node> SystemConfiguration, GLFWwindow* Window, std::shared_ptr<LoggerClass> Logger, std::shared_ptr<Cursors3D> Cursors3D);
 
         // Destructor
         ~VisualRenderer();
 
 
-        void CreateViewport(ERS_OBJECT_SHADER *Shader, std::string ViewportName, GLFWwindow* Window, ERS_OBJECT_CAMERA_NOCLIP *Camera);
-        void UpdateViewports(float DeltaTime, SceneManager *SceneManager);
-        void UpdateViewport(int Index, SceneManager *SceneManager, float DeltaTime);
+        void CreateViewport(std::shared_ptr<ERS_OBJECT_SHADER> Shader, std::string ViewportName, GLFWwindow* Window, std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera);
+        void UpdateViewports(float DeltaTime, std::shared_ptr<SceneManager> SceneManager);
+        void UpdateViewport(int Index, std::shared_ptr<SceneManager> SceneManager, float DeltaTime);
 
         
 

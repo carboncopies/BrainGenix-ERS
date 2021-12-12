@@ -20,6 +20,7 @@ Cursors3D::Cursors3D() {
 // 3D Cursor Destructor
 Cursors3D::~Cursors3D() {
 
+
 }
 
 
@@ -98,7 +99,7 @@ bool Cursors3D::IsLocRotScaleEqual(ERS_STRUCT_LocRotScale LRS1, ERS_STRUCT_LocRo
 
 
 // Cursor Update Frame Function
-void Cursors3D::BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraView, float* CameraProjection, bool IsCameraMoving) {
+void Cursors3D::BeginRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, float*  CameraView, float* CameraProjection, bool IsCameraMoving) {
 
     // Copy In Values
     Camera_ = Camera;

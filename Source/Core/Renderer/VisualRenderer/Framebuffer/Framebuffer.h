@@ -39,12 +39,12 @@ class FramebufferManager {
 
     private:
 
-        LoggerClass *Logger_; /**<Pointer to instance of Logger Class*/
+        std::shared_ptr<LoggerClass> Logger_; /**<Pointer to instance of Logger Class*/
         unsigned int FramebufferObject_; /**<Framebuffer OpenGL Handle (Used to Render Inside IMGUI Window Or On Screen Directly)*/
         unsigned int RenderTexture_; /**<OpenGL Renderes To This Texture, Then It's Displayed. (OpenGL Handle)*/
         unsigned int RenderBufferObject_; /**<RenderBuffer Object Handle.*/
 
-        ShaderLoader *ShaderLoader_; /**<Pointer To Shader Loader Instance*/
+        std::shared_ptr<ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instance*/
         ERS_OBJECT_SHADER ScreenShader_; /**<Screen Shader Instance, Used To Display Framebuffer To Screen*/
 
 
@@ -62,7 +62,7 @@ class FramebufferManager {
          * @param Width Width In Pixels
          * @param Height Height In Pixels
          */
-        FramebufferManager(LoggerClass *Logger, ShaderLoader *ShaderLoader, float Width = 800.0f, float Height = 600.0f);
+        FramebufferManager(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<ShaderLoader> ShaderLoader, float Width = 800.0f, float Height = 600.0f);
 
         /**
          * @brief Destroy the Framebuffer Manager object.

@@ -82,7 +82,7 @@ class Cursors3D {
         float* CameraView_; /**<Camera View Matrix, Converted From GLM::Mat4*/
         float* CameraProjection_; /**<Camera Projection Matrix, Converted From GLM::Mat4*/
 
-        ERS_OBJECT_CAMERA_NOCLIP *Camera_; /**<Camera Object Pointer*/
+        std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera_; /**<Camera Object Pointer*/
         ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE; /**<Set Current Cursor Operation*/
 
 
@@ -110,7 +110,7 @@ class Cursors3D {
          * @brief Called Every Frame To Update Cursor
          * 
          */
-        void BeginRenderpass(ERS_OBJECT_CAMERA_NOCLIP *Camera, float* CameraView, float* CameraProjection, bool IsCameraMoving);
+        void BeginRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, float* CameraView, float* CameraProjection, bool IsCameraMoving);
 
         /**
          * @brief Returns if camera input should be disabled (if user interacting with cursor)

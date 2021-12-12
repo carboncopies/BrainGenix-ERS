@@ -56,7 +56,7 @@ class RendererManager {
 
 
         // Control Values
-        bool *SystemShouldRun_; /**<Control Variable Indicating System Run State */
+        std::shared_ptr<bool> SystemShouldRun_; /**<Control Variable Indicating System Run State */
         int WindowWidth_; /**<GLFW Window Width Varaible*/
         int WindowHeight_; /**<GLFW Window Height Varaible*/
         const char* WindowTitle_; /**GLFW Window Title Variable*/
@@ -78,7 +78,7 @@ class RendererManager {
          * @param Logger 
          * @param SystemShouldRun 
          */
-        RendererManager(YAML::Node *SystemConfiguration, std::shared_ptr<LoggerClass> Logger, bool *SystemShouldRun);
+        RendererManager(std::shared_ptr<YAML::Node> SystemConfiguration, std::shared_ptr<LoggerClass> Logger, std::shared_ptr<bool> SystemShouldRun);
 
         /**
          * @brief Shuts down the renderers and cleans up variables.
