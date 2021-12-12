@@ -33,9 +33,9 @@ GUISystem::GUISystem(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<GLFWwi
     ImGui::StyleColorsDark();
 
     // Initialize Managers
-    ThemeManager_ = new ThemeManager(Logger_);
-    FontManager_ = new FontManager(Logger_);
-    UserProfileManager_ = new UserProfileManager(Logger_);
+    ThemeManager_ = std::make_shared<ThemeManager>(Logger_);
+    FontManager_ = std::make_shared<FontManager>(Logger_);
+    UserProfileManager_ = std::make_shared<UserProfileManager>(Logger_);
 
     // Load User Profile
     ThemeManager_->ApplyThemes(UserProfileManager_->GetUserColorProfile().c_str());
