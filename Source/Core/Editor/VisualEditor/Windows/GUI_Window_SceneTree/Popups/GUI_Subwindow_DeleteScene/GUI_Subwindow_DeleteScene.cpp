@@ -67,12 +67,12 @@ void Subwindow_DeleteScene::UpdateConfirmDeletePopup() {
             FirstFrame_ = false;
         }
 
-        // Set Default Item To Type On, Add Input Box
+        // Add Confirm Message
         ImGui::SetItemDefaultFocus();
         ImGui::Text("This action will delete the selected scene.");
         ImGui::Separator();
 
-        // Rename And Cancel Buttons
+        // Confirm And Abort Buttons
         if (ImGui::Button("Confirm", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Enter Key Pressed
             if (SceneManager_->Scenes_.size() != 1) {
                 SceneManager_->Scenes_.erase(SceneManager_->Scenes_.begin() + SceneIndex_);
@@ -96,19 +96,25 @@ void Subwindow_DeleteScene::UpdateOneSceneDeleteErrorPopup() {
 
     // Begin Popup
     if (ShowOneSceneDeleteError_) {
-    ImGui::Begin("Error", &ShowDeleteConfirm_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
+    ImGui::Begin("Error", &ShowOneSceneDeleteError_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
 
         // Grab Window Focus
         ImGui::SetWindowFocus();
         
-        // Set Default Item To Type On, Add Input Box
+        // Set Default Keyboard Input
+        if (FirstFrame_) {
+            ImGui::SetKeyboardFocusHere(0);
+            FirstFrame_ = false;
+        }
+
+        // Add Message
         ImGui::SetItemDefaultFocus();
-        ImGui::Text("This action will delete the selected scene.");
+        ImGui::Text("You must have at least one scene.");
         ImGui::Separator();
 
         // Close Button
-        if (ImGui::Button("Close", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ESCAPE) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Escape Key Pressed
-            ShowDeleteConfirm_ = false;
+        if (ImGui::Button("Close", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ESCAPE) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Enter/Escape Key Pressed
+            ShowOneSceneDeleteError_ = false;
         }
 
     ImGui::End();
