@@ -40,6 +40,7 @@ target_link_libraries(Window_SceneTree
 
     GUI_Windowutil_DuplicateScene
     GUI_Windowutil_DuplicateModel
+    GUI_Windowutil_DeleteScene
 
     )
 

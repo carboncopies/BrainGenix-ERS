@@ -30,6 +30,7 @@
 
 #include <GUI_Windowutil_DuplicateScene.h>
 #include <GUI_Windowutil_DuplicateModel.h>
+#include <GUI_Windowutil_DeleteScene.h>
 
 /**
  * @brief Create GUI Window "Rendering Settings"
