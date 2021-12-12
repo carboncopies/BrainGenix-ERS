@@ -87,9 +87,6 @@ int main() {
     sERSLogger->Log("", 5);
     sERSLogger->Log("    +-----------------------------------------------------------------+", 4);
     sERSLogger->Log("    |     BrainGenix-ERS Real-Time Environment Rendering System       |", 4);
-    //sERSLogger.Log(std::string(std::string("    |     Version: ") + std::string(PROJECT_VERSION) + std::string("                                              |")).c_str(), 4);
-    //sERSLogger.Log(std::string(std::string("    |     Branch: ") + std::string(PROJECT_BRANCH) + std::string("                                                 |")).c_str(), 4);
-    //ERSLogger.Log("    |     Clustersize: {NodeCount}                                              |", 4);
     sERSLogger->Log("    +-----------------------------------------------------------------+", 4);
     sERSLogger->Log("", 4);
 
