@@ -44,7 +44,7 @@ void Subwindow_DeleteScene::DeleteScene(int SceneIndex) {
     
 }
 
-void Subwindow_DeleteScene::Update() {
+void Subwindow_DeleteScene::Draw() {
 
     // Update Windows
     UpdateConfirmDeletePopup();

@@ -20,6 +20,7 @@ Window_SceneTree::Window_SceneTree(SceneManager* SceneManager) {
     // Setup Subwindows
     Subwindow_SceneRenameModal_ = new Subwindow_SceneRenameModal(SceneManager_);
     Subwindow_ModelRenameModal_ = new Subwindow_ModelRenameModal(SceneManager_);
+    Subwindow_DeleteScene_ = new Subwindow_DeleteScene(SceneManager_);
 
 }
 
@@ -34,7 +35,7 @@ void Window_SceneTree::Draw() {
     // Draw Popup Modals
     Subwindow_SceneRenameModal_->Draw();
     Subwindow_ModelRenameModal_->Draw();
-
+    Subwindow_DeleteScene_->Draw();
 
 
     // If Window Drawing Enabled
@@ -111,7 +112,7 @@ void Window_SceneTree::Draw() {
                         ImGui::Separator();
 
                         if (ImGui::MenuItem("Delete")) {
-                            GUI_Windowutil_DeleteScene(SceneManager_, SceneIndex);
+                            Subwindow_DeleteScene_->DeleteScene(SceneManager_, SceneIndex);
                         }
 
 

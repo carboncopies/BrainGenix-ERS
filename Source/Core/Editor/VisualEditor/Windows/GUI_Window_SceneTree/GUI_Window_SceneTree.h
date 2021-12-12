@@ -27,10 +27,10 @@
 
 #include <GUI_Subwindow_SceneRenameModal.h>
 #include <GUI_Subwindow_ModelRenameModal.h>
+#include <GUI_Subwindow_DeleteScene.h>
 
 #include <GUI_Windowutil_DuplicateScene.h>
 #include <GUI_Windowutil_DuplicateModel.h>
-#include <GUI_Windowutil_DeleteScene.h>
 
 /**
  * @brief Create GUI Window "Rendering Settings"
@@ -44,7 +44,8 @@ class Window_SceneTree {
         bool FirstFrame_ = true; /**<Bool Indicating if It's the first frame*/
 
         Subwindow_SceneRenameModal* Subwindow_SceneRenameModal_; /**<Scene Rename Modal Instance*/
-        Subwindow_ModelRenameModal* Subwindow_ModelRenameModal_; /**<Scene Rename Modal Instance*/
+        Subwindow_ModelRenameModal* Subwindow_ModelRenameModal_; /**<Model Rename Modal Instance*/
+        Subwindow_DeleteScene* Subwindow_DeleteScene_; /**<Scene Deletion Modal Instance*/
 
     private:
 

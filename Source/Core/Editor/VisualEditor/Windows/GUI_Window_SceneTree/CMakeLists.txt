@@ -37,10 +37,11 @@ target_link_libraries(Window_SceneTree
 
     GUI_Subwindow_SceneRenameModal
     GUI_Subwindow_ModelRenameModal
+    GUI_Subwindow_DeleteScene
 
     GUI_Windowutil_DuplicateScene
     GUI_Windowutil_DuplicateModel
-    GUI_Windowutil_DeleteScene
+   
 
     )
 
