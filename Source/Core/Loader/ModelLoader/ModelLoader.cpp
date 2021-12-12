@@ -9,7 +9,7 @@
     Date Created: 2021-11-13
 */
 
-#include "ModelLoader.h"
+#include <ModelLoader.h>
 
 
 // Constructor
@@ -43,6 +43,7 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath, bool Flip
 
     // Set Texture Flip
     FlipTextures_ = FlipTextures;
+    Model_->FlipTextures = FlipTextures;
 
     // Copy AssetPath
     Model_->AssetPath_ = std::string(AssetPath);
