@@ -61,7 +61,7 @@ RendererManager::RendererManager(std::shared_ptr<YAML::Node> SystemConfiguration
 
     // Setup IOManager
     Logger_->Log("Initializing Input/Output Manager", 5);
-    IOManager_ = std::make_shared<IOManager>(Logger_, Window_, &Camera_);
+    IOManager_ = std::make_shared<IOManager>(Logger_, Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
 
     // Make Viewport
     VisualRenderer_->CreateViewport(std::make_shared<ERS_OBJECT_SHADER>(Shader_), "Viewport", Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
