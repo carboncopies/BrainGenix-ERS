@@ -37,7 +37,7 @@ RendererManager::RendererManager(std::shared_ptr<YAML::Node> SystemConfiguration
 
     // Load Scene
     ModelLoader MLoader(Logger_, TextureLoader_);
-    SceneLoader SLoader(Logger_, &MLoader);
+    SceneLoader SLoader(Logger_, std::make_shared<ModelLoader>(MLoader));
     SceneManager_ = std::make_shared<SceneManager>(Logger_);
 
 
@@ -64,7 +64,7 @@ RendererManager::RendererManager(std::shared_ptr<YAML::Node> SystemConfiguration
     IOManager_ = std::make_shared<IOManager>(Logger_, Window_, &Camera_);
 
     // Make Viewport
-    VisualRenderer_->CreateViewport(&Shader_, "Viewport", Window_, &Camera_);
+    VisualRenderer_->CreateViewport(std::make_shared<ERS_OBJECT_SHADER>(Shader_), "Viewport", Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
     //VisualRenderer_->CreateViewport(&Shader_, "Viewport 2", Window_, &Camera_);
 
 
