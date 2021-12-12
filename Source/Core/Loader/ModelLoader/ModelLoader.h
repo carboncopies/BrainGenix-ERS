@@ -51,13 +51,13 @@ class ModelLoader {
     private:
 
         // Internal Model Instance For Processing
-        ERS_OBJECT_MODEL *Model_; /**<Model Instance for processing.*/
+        ERS_OBJECT_MODEL* Model_; /**<Model Instance for processing.*/
         std::string ModelDirectory_; /**<Current model directory being processed.*/
         bool FlipTextures_; /**<Flip Textures For current Model Being Loaded.*/
 
         // Logger
-        LoggerClass *Logger_; /**<Pointer to Logging System.*/
-        TextureLoader *TextureLoader_; /**<Pointer To Texture Loader Instance.*/
+        std::shared_ptr<LoggerClass> Logger_; /**<Pointer to Logging System.*/
+        std::shared_ptr<TextureLoader> TextureLoader_; /**<Pointer To Texture Loader Instance.*/
 
         /**
          * @brief Function Used To Process Subnodes Of SceneFiles.
@@ -97,7 +97,7 @@ class ModelLoader {
          * @param Logger 
          * @param TextureLoader 
          */
-        ModelLoader(LoggerClass* Logger, TextureLoader *TextureLoader);
+        ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<TextureLoader> TextureLoader);
 
         /**
          * @brief Destroy the Model Loader object
