@@ -112,7 +112,7 @@ void Window_SceneTree::Draw() {
                         ImGui::Separator();
 
                         if (ImGui::MenuItem("Delete")) {
-                            Subwindow_DeleteScene_->DeleteScene(SceneManager_, SceneIndex);
+                            Subwindow_DeleteScene_->DeleteScene(SceneIndex);
                         }
 
 
