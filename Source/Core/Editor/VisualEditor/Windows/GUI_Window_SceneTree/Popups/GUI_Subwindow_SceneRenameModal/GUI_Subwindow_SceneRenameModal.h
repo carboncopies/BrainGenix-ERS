@@ -34,7 +34,7 @@ class Subwindow_SceneRenameModal {
 
     private:
 
-        SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
+        std::shared_ptr<SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
         char SceneInputName_[128] = ""; /**<Character Array To Store Scene Name When Renaming*/
 
 
@@ -51,7 +51,7 @@ class Subwindow_SceneRenameModal {
          * @brief Construct a new Subwindow_SceneRenameModal object
          * 
          */
-        Subwindow_SceneRenameModal(SceneManager* SceneManager);
+        Subwindow_SceneRenameModal(std::shared_ptr<SceneManager> SceneManager);
 
         /**
          * @brief Destroy the Subwindow_SceneRenameModal object
