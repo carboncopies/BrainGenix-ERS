@@ -36,7 +36,7 @@ class ThemeManager {
 
     private:
 
-        LoggerClass *Logger_; /**<LoggerClass Instance*/
+        std::shared_ptr<LoggerClass> Logger_; /**<LoggerClass Instance*/
         const char* ThemePath_; /**<Filepath Where Themes Are Located*/
 
         std::vector<YAML::Node> ThemeFiles_; /**<List Of YAML::Node files*/
@@ -55,7 +55,7 @@ class ThemeManager {
          * @param Logger_ 
          * @param ThemePath 
          */
-        ThemeManager(LoggerClass *Logger_, const char* ThemePath = "EditorAssets/Configuration/Themes");
+        ThemeManager(std::shared_ptr<LoggerClass> Logger, const char* ThemePath = "EditorAssets/Configuration/Themes");
 
         /**
          * @brief Destroy the Theme Manager object

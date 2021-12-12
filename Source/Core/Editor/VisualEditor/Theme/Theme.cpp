@@ -13,7 +13,7 @@
 
 
 // ThemeManager Constructor
-ThemeManager::ThemeManager(LoggerClass *Logger, const char* ThemePath) {
+ThemeManager::ThemeManager(std::shared_ptr<LoggerClass> Logger, const char* ThemePath) {
 
     // Create Local Pointers
     Logger_ = Logger;
