@@ -13,7 +13,7 @@
 
 
 // Constructor
-ProjectLoader::ProjectLoader(LoggerClass *Logger) {
+ProjectLoader::ProjectLoader(std::shared_ptr<LoggerClass> Logger) {
 
     // Create Local Pointer
     Logger_ = Logger;

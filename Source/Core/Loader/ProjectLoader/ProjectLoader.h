@@ -34,7 +34,7 @@ class ProjectLoader {
     private:
 
         // Logger
-        LoggerClass *Logger_; /**<Pointer to Logging System.*/
+        std::shared_ptr<LoggerClass> Logger_; /**<Pointer to Logging System.*/
 
 
 
@@ -45,7 +45,7 @@ class ProjectLoader {
          * 
          * @param Logger 
          */
-        ProjectLoader(LoggerClass* Logger);
+        ProjectLoader(std::shared_ptr<LoggerClass> Logger);
 
         /**
          * @brief 
