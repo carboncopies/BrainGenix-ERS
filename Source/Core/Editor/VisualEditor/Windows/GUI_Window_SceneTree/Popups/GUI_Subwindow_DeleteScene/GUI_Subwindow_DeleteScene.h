@@ -61,9 +61,14 @@ class Subwindow_DeleteScene {
         /**
          * @brief Called by the GUI to delete a scene.
          * 
-         * @param SceneManager 
          * @param SceneIndex 
          */
         void DeleteScene(int SceneIndex);
+
+        /**
+         * @brief Update all windows created by this class. Call every frame.
+         * 
+         */
+        void Update();
 
 };
