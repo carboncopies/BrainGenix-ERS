@@ -55,7 +55,7 @@
 int main() {
 
     // Initialize System State Bool
-    bool SystemShouldRun = true; /**<Indicates If System Should Run, False Will Cause System To Exit On Next RunLoop Iteration>*/
+    std::shared_ptr<bool> SystemShouldRun = std::make_shared<bool>(true); /**<Indicates If System Should Run, False Will Cause System To Exit On Next RunLoop Iteration>*/
 
     // Load Local System Configuration File
     YAML::Node sERSLocalSystemConfiguration = LoadConfig("Config.yaml");
@@ -68,7 +68,7 @@ int main() {
     HardwareInformation sERSHardwareInformation(sERSLogger, sERSLocalSystemConfiguration);
 
     // Instantiate RendererManager
-    RendererManager sERSRendererManager(std::make_shared<YAML::Node>(sERSLocalSystemConfiguration), sERSLogger, std::make_shared<bool>(SystemShouldRun));
+    RendererManager sERSRendererManager(std::make_shared<YAML::Node>(sERSLocalSystemConfiguration), sERSLogger, SystemShouldRun);
 
 
 
@@ -96,7 +96,7 @@ int main() {
     float LastFrame = 0.0f;
 
     // Enter Main Loop
-    while (SystemShouldRun) {
+    while (*SystemShouldRun) {
 
         // Calculate Frametime
         float CurrentTime = glfwGetTime();
