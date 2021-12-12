@@ -13,7 +13,7 @@
 
 
 // ShaderLoader Constructor
-ShaderLoader::ShaderLoader(LoggerClass *Logger) {
+ShaderLoader::ShaderLoader(std::shared_ptr<LoggerClass> Logger) {
 
     // Copy Member Pointers
     Logger_ = Logger;

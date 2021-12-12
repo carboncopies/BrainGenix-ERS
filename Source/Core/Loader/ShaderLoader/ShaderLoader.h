@@ -30,7 +30,7 @@ class ShaderLoader {
 
     private:
 
-        LoggerClass *Logger_; /**<Pointer To Instance Of Logging System*/
+        std::shared_ptr<LoggerClass> Logger_; /**<Pointer To Instance Of Logging System*/
 
 
     public:
@@ -40,7 +40,7 @@ class ShaderLoader {
          * 
          * @param Logger 
          */
-        ShaderLoader(LoggerClass *Logger);
+        ShaderLoader(std::shared_ptr<LoggerClass> Logger);
 
         /**
          * @brief Destroy the Shader Loader object
