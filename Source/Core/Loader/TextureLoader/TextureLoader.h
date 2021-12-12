@@ -34,7 +34,7 @@ class TextureLoader {
          * @brief Logging System Instance.
          * 
          */
-        LoggerClass *Logger_;
+        std::shared_ptr<LoggerClass> Logger_;
 
 
         /**
@@ -51,7 +51,7 @@ class TextureLoader {
          * 
          * @param Logger 
          */
-        TextureLoader(LoggerClass* Logger);
+        TextureLoader(std::shared_ptr<LoggerClass> Logger);
 
         /**
          * @brief Destroy the Texture Loader object.

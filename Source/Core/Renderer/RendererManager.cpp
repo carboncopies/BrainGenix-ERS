@@ -19,7 +19,7 @@ void ErrorCallback(int, const char* ErrorString) {
 
 
 // RendererManager Constructor
-RendererManager::RendererManager(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun) {
+RendererManager::RendererManager(YAML::Node *SystemConfiguration, std::shared_ptr<LoggerClass> Logger, bool *SystemShouldRun) {
 
     // Create Pointers
     Logger->Log("Populating RendererManager Member Pointers", 5);

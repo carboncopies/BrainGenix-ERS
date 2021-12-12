@@ -42,7 +42,7 @@ class RendererManager {
 
         // Member Variables
         YAML::Node *SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
-        LoggerClass *Logger_; /**<Pointer to the logging system instance*/
+        std::shared_ptr<LoggerClass>  Logger_; /**<Pointer to the logging system instance*/
         VisualRenderer *VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
         IOManager *IOManager_; /**<Pointer To IOManager Instance*/
         GLFWwindow* Window_; /**<GLFW Window Instance*/
@@ -78,7 +78,7 @@ class RendererManager {
          * @param Logger 
          * @param SystemShouldRun 
          */
-        RendererManager(YAML::Node *SystemConfiguration, LoggerClass *Logger, bool *SystemShouldRun);
+        RendererManager(YAML::Node *SystemConfiguration, std::shared_ptr<LoggerClass> Logger, bool *SystemShouldRun);
 
         /**
          * @brief Shuts down the renderers and cleans up variables.
