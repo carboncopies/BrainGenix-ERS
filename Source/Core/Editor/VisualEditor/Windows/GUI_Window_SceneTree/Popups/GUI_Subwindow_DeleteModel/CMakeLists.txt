@@ -4,26 +4,27 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(GUI_Subwindow_DeleteScene
+add_library(GUI_Subwindow_DeleteModel
 
             # Add Source Files (.cpp)
-            "GUI_Subwindow_DeleteScene.cpp"
+            "GUI_Subwindow_DeleteModel.cpp"
 
             # Add Header Files (.h)
-            "GUI_Subwindow_DeleteScene.h"
+            "GUI_Subwindow_DeleteModel.h"
 
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Subwindow_DeleteScene
+target_link_libraries(GUI_Subwindow_DeleteModel
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Subwindow_DeleteScene
+target_link_libraries(GUI_Subwindow_DeleteModel
     SceneManager
     Scene
     )
 
-target_include_directories(GUI_Subwindow_DeleteScene PUBLIC ./)
+target_include_directories(GUI_Subwindow_DeleteModel PUBLIC ./)
+

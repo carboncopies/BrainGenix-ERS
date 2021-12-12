@@ -9,10 +9,10 @@
     Date Created: 2021-12-07
 */
 
-#include <GUI_Subwindow_DeleteScene.h>
+#include <GUI_Subwindow_DeleteModel.h>
 
 
-Subwindow_DeleteScene::Subwindow_DeleteScene(SceneManager* SceneManager) {
+Subwindow_DeleteModel::Subwindow_DeleteModel(SceneManager* SceneManager) {
 
     // Copy Pointer
     SceneManager_ = SceneManager;
@@ -20,7 +20,7 @@ Subwindow_DeleteScene::Subwindow_DeleteScene(SceneManager* SceneManager) {
 
 }
 
-Subwindow_DeleteScene::~Subwindow_DeleteScene() {
+Subwindow_DeleteModel::~Subwindow_DeleteModel() {
 
     // Hide All Popups
     bool ShowDeleteConfirm_ = false;
@@ -28,7 +28,7 @@ Subwindow_DeleteScene::~Subwindow_DeleteScene() {
 
 }
 
-void Subwindow_DeleteScene::DeleteScene(int SceneIndex) {
+void Subwindow_DeleteModel::DeleteModel(int SceneIndex, int ModelIndex) {
 
     // Enable Firstframe
     FirstFrame_ = true;
@@ -36,6 +36,7 @@ void Subwindow_DeleteScene::DeleteScene(int SceneIndex) {
     // Show Popup Windows
     if (SceneManager_->Scenes_.size() != 1) {
         SceneIndex_ = SceneIndex;
+        ModelIndex_ = ModelIndex;
         ShowDeleteConfirm_ = true;
     } else {
         ShowOneSceneDeleteError_ = true;
@@ -44,7 +45,7 @@ void Subwindow_DeleteScene::DeleteScene(int SceneIndex) {
     
 }
 
-void Subwindow_DeleteScene::Draw() {
+void Subwindow_DeleteModel::Draw() {
 
     // Update Windows
     UpdateConfirmDeletePopup();
@@ -52,7 +53,7 @@ void Subwindow_DeleteScene::Draw() {
 
 }
 
-void Subwindow_DeleteScene::UpdateConfirmDeletePopup() {
+void Subwindow_DeleteModel::UpdateConfirmDeletePopup() {
 
     // Begin Window
     if (ShowDeleteConfirm_) {
@@ -92,7 +93,7 @@ void Subwindow_DeleteScene::UpdateConfirmDeletePopup() {
 }
 
 
-void Subwindow_DeleteScene::UpdateOneSceneDeleteErrorPopup() {
+void Subwindow_DeleteModel::UpdateOneSceneDeleteErrorPopup() {
 
     // Begin Popup
     if (ShowOneSceneDeleteError_) {

@@ -28,45 +28,45 @@
  * @brief Implement Scene Deltion, Open Popup For Confirm, Error.
  * 
  */
-class Subwindow_DeleteScene {
+class Subwindow_DeleteModel {
 
     // Private Vars
     private:
 
         SceneManager* SceneManager_; /**<SceneManager Instance*/
-        int SceneIndex_ = 0; /**<SceneIndex Used To Remember What Scene To Delete*/
+        int SceneIndex_ = 0; /**<Scene Index Used To Remember What Scene To Delete From*/
+        int ModelIndex_ = 0; /**<Use to identify what model to delete*/
 
         bool FirstFrame_ = false; /**<Used to grab keyboard input on first frame window is open*/
 
         bool ShowDeleteConfirm_ = false; /**<Confirm Deletion Of Scene*/
-        bool ShowOneSceneDeleteError_ = false; /**<Error popup that shows when one scene is remaining, (Can't have no scenes)*/
 
     // Private Functions
     private:
 
         void UpdateConfirmDeletePopup(); /**<Function To Update Popup Deletion Window*/
-        void UpdateOneSceneDeleteErrorPopup(); /**<Last scene deletion error popup*/
 
     public:
 
         /**
-         * @brief Construct a new Subwindow_DeleteScene object
+         * @brief Construct a new Subwindow_DeleteModel object
          * 
          */
-        Subwindow_DeleteScene(SceneManager* SceneManager);
+        Subwindow_DeleteModel(SceneManager* SceneManager);
 
         /**
-         * @brief Destroy the Subwindow_DeleteScene object
+         * @brief Destroy the Subwindow_DeleteModel object
          * 
          */
-        ~Subwindow_DeleteScene();
+        ~Subwindow_DeleteModel();
 
         /**
          * @brief Called by the GUI to delete a scene.
          * 
          * @param SceneIndex 
+         * @param ModelIndex 
          */
-        void DeleteScene(int SceneIndex);
+        void DeleteModel(int SceneIndex, int ModelIndex);
 
         /**
          * @brief Update all windows created by this class. Call every frame.
