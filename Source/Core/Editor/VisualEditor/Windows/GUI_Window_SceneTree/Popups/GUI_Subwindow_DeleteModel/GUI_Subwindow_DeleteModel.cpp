@@ -1,3 +1,4 @@
+
 //======================================================================//
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
@@ -9,10 +10,10 @@
     Date Created: 2021-12-07
 */
 
-#include <GUI_Subwindow_DeleteScene.h>
+#include <GUI_Subwindow_DeleteModel.h>
 
 
-Subwindow_DeleteScene::Subwindow_DeleteScene(SceneManager* SceneManager) {
+Subwindow_DeleteModel::Subwindow_DeleteModel(SceneManager* SceneManager) {
 
     // Copy Pointer
     SceneManager_ = SceneManager;
@@ -20,7 +21,7 @@ Subwindow_DeleteScene::Subwindow_DeleteScene(SceneManager* SceneManager) {
 
 }
 
-Subwindow_DeleteScene::~Subwindow_DeleteScene() {
+Subwindow_DeleteModel::~Subwindow_DeleteModel() {
 
     // Hide All Popups
     bool ShowDeleteConfirm_ = false;
@@ -28,35 +29,30 @@ Subwindow_DeleteScene::~Subwindow_DeleteScene() {
 
 }
 
-void Subwindow_DeleteScene::DeleteScene(int SceneIndex) {
+void Subwindow_DeleteModel::DeleteModel(int SceneIndex, int ModelIndex) {
 
     // Enable Firstframe
     FirstFrame_ = true;
 
     // Show Popup Windows
-    if (SceneManager_->Scenes_.size() != 1) {
-        SceneIndex_ = SceneIndex;
-        ShowDeleteConfirm_ = true;
-    } else {
-        ShowOneSceneDeleteError_ = true;
-    }
-
+    SceneIndex_ = SceneIndex;
+    ModelIndex_ = ModelIndex;
+    ShowDeleteConfirm_ = true;
     
 }
 
-void Subwindow_DeleteScene::Draw() {
+void Subwindow_DeleteModel::Draw() {
 
-    // Update Windows
+    // Update Window
     UpdateConfirmDeletePopup();
-    UpdateOneSceneDeleteErrorPopup();
 
 }
 
-void Subwindow_DeleteScene::UpdateConfirmDeletePopup() {
+void Subwindow_DeleteModel::UpdateConfirmDeletePopup() {
 
     // Begin Window
     if (ShowDeleteConfirm_) {
-    ImGui::Begin("Delete Scene?", &ShowDeleteConfirm_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
+    ImGui::Begin("Delete Model?", &ShowDeleteConfirm_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
 
         // Grab Window Focus
         ImGui::SetWindowFocus();
@@ -69,13 +65,13 @@ void Subwindow_DeleteScene::UpdateConfirmDeletePopup() {
 
         // Add Confirm Message
         ImGui::SetItemDefaultFocus();
-        ImGui::Text("This action will delete the selected scene.");
+        ImGui::Text("This action will delete the selected model.");
         ImGui::Separator();
 
         // Confirm And Abort Buttons
         if (ImGui::Button("Confirm", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Enter Key Pressed
-            if (SceneManager_->Scenes_.size() != 1) {
-                SceneManager_->Scenes_.erase(SceneManager_->Scenes_.begin() + SceneIndex_);
+            if (SceneManager_->Scenes_[SceneIndex_].Models.size() != 1) {
+                SceneManager_->Scenes_[SceneIndex_].Models.erase(SceneManager_->Scenes_[SceneIndex_].Models.begin() + ModelIndex_);
             }
             ShowDeleteConfirm_ = false;
         }
@@ -87,37 +83,6 @@ void Subwindow_DeleteScene::UpdateConfirmDeletePopup() {
     ImGui::End();
 
 
-    }
-
-}
-
-
-void Subwindow_DeleteScene::UpdateOneSceneDeleteErrorPopup() {
-
-    // Begin Popup
-    if (ShowOneSceneDeleteError_) {
-    ImGui::Begin("Error", &ShowOneSceneDeleteError_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
-
-        // Grab Window Focus
-        ImGui::SetWindowFocus();
-        
-        // Set Default Keyboard Input
-        if (FirstFrame_) {
-            ImGui::SetKeyboardFocusHere(0);
-            FirstFrame_ = false;
-        }
-
-        // Add Message
-        ImGui::SetItemDefaultFocus();
-        ImGui::Text("You must have at least one scene.");
-        ImGui::Separator();
-
-        // Close Button
-        if (ImGui::Button("Close", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ESCAPE) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Enter/Escape Key Pressed
-            ShowOneSceneDeleteError_ = false;
-        }
-
-    ImGui::End();
     }
 
 }
