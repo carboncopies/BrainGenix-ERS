@@ -13,7 +13,7 @@
 
 
 // Constructor
-ModelLoader::ModelLoader(LoggerClass *Logger, TextureLoader *TexLoader) {
+ModelLoader::ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<TextureLoader> TexLoader) {
 
     // Create Local Pointer
     Logger_ = Logger;
