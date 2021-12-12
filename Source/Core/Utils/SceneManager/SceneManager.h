@@ -32,7 +32,7 @@ class SceneManager{
     private:
 
         // Internal Member Pointers
-        LoggerClass *Logger_; /**<Pointer To Logger Instance*/
+        std::shared_ptr<LoggerClass> Logger_; /**<Pointer To Logger Instance*/
 
 
     public:
@@ -47,7 +47,7 @@ class SceneManager{
          * 
          * @param Logger 
          */
-        SceneManager(LoggerClass *Logger);
+        SceneManager(std::shared_ptr<LoggerClass> Logger);
         
         /**
          * @brief Destroy the Scene Manager object
@@ -89,7 +89,7 @@ class SceneManager{
          * 
          * @param Shader 
          */
-        void Render(ERS_OBJECT_SHADER* Shader);
+        void Render(std::shared_ptr<ERS_OBJECT_SHADER> Shader);
 
         /**
          * @brief Send LocRotScale Update To Object(s) In Active Scene

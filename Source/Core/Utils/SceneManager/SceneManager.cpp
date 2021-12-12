@@ -13,7 +13,7 @@
 
 
 // Constructor For SceneManager Class
-SceneManager::SceneManager(LoggerClass *Logger) {
+SceneManager::SceneManager(std::shared_ptr<LoggerClass> Logger) {
 
     // Copy To Local Pointer
     Logger_ = Logger;
@@ -65,7 +65,7 @@ bool SceneManager::AddScene(ERS_OBJECT_SCENE Scene) {
 }
 
 // Render All Models In Buffer
-void SceneManager::Render(ERS_OBJECT_SHADER* Shader) {
+void SceneManager::Render(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
     
     // Iterate Through Models
     for (long i = 0; i < Scenes_[ActiveScene_].Models.size(); i++) {
