@@ -27,7 +27,7 @@ option(INFOWARE_USE_X11 "Add public, transitive define to infoware to use X11 fo
 option(INFOWARE_EXAMPLES "Add infoware examples to the build." OFF)
 option(INFOWARE_TESTS    "Input tests for infoware."           OFF)
 
-set(INFOWARE_PCI_IDS_PATH       ""                                   CACHE FILEPATH "pci.ids file to use. Overrides cloning from INFOWARE_PCI_IDS_REPOSITORY.")
+#set(INFOWARE_PCI_IDS_PATH       ""                                   CACHE FILEPATH "pci.ids file to use. Overrides cloning from INFOWARE_PCI_IDS_REPOSITORY.")
 set(INFOWARE_PCI_IDS_REPOSITORY "https://github.com/pciutils/pciids" CACHE STRING
 		"Path/URL to clone a pciids git repository from if override path not supplied. Defaults to https://github.com/pciutils/pciids.")
 
