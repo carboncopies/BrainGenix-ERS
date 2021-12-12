@@ -17,6 +17,7 @@ add_library(GUI_Subwindow_DeleteScene
 
 # Link 3rd Party Libs
 target_link_libraries(GUI_Subwindow_DeleteScene
+    IMGUI
     )
 
 # Link Internal Libs
