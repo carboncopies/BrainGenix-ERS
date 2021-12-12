@@ -13,7 +13,7 @@
 
 
 // GUISystem Constructor
-GUISystem::GUISystem(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<GLFWwindow> Window, std::shared_ptr<bool> SystemShouldRun, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager) {
+GUISystem::GUISystem(std::shared_ptr<LoggerClass> Logger, GLFWwindow* Window, std::shared_ptr<bool> SystemShouldRun, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager) {
 
     // Create Local Pointer
     Logger_ = Logger;
@@ -43,7 +43,7 @@ GUISystem::GUISystem(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<GLFWwi
     FontManager_->SetFontSize(UserProfileManager_->GetUserFontSize());
 
     // Setup Scene Writer
-    SceneWriter_ = new SceneWriter(Logger_);
+    SceneWriter_ = std::make_shared<SceneWriter>(Logger_);
 
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(Window, true);

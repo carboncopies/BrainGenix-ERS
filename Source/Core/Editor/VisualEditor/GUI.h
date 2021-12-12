@@ -59,7 +59,7 @@ class GUISystem {
     private:
 
         std::shared_ptr<LoggerClass> Logger_; /**<Pointer To LoggerClass Instance*/
-        std::shared_ptr<GLFWwindow> Window_; /**<Pointer to window instance*/
+        GLFWwindow* Window_; /**<Pointer to window instance*/
 
         std::shared_ptr<FontManager> FontManager_; /**<Pointer To FontManager Instance*/
         std::shared_ptr<UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
@@ -82,7 +82,7 @@ class GUISystem {
 
     public:
 
-        ThemeManager* ThemeManager_; /**<Pointer To ThemeManager Instance*/
+        std::shared_ptr<ThemeManager> ThemeManager_; /**<Pointer To ThemeManager Instance*/
 
         // Instantiate Widgets here
         Widget_FramerateCounter Widget_FramerateCounter_; /**<Widget Instance*/
@@ -100,7 +100,7 @@ class GUISystem {
          * 
          * @param Logger 
          */
-        GUISystem(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<GLFWwindow> Window, std::shared_ptr<bool> SystemShouldRun, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager);
+        GUISystem(std::shared_ptr<LoggerClass> Logger, GLFWwindow* Window, std::shared_ptr<bool> SystemShouldRun, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager);
 
         /**
          * @brief Destroy the Gui System object
