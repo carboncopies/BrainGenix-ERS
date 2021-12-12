@@ -12,7 +12,7 @@
 #include <GUI_Window_SceneTree.h>
 
 // Constructor
-Window_SceneTree::Window_SceneTree(SceneManager* SceneManager) {
+Window_SceneTree::Window_SceneTree(std::shared_ptr<SceneManager> SceneManager) {
 
     // Update Ptr
     SceneManager_ = SceneManager;
