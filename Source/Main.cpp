@@ -82,16 +82,16 @@ int main() {
     sERSLogger->Log("\x1b[38;2;0;128;55m██████╔╝██████╔╝███████║██║██╔██╗ ██║\x1b[38;2;130;68;208m██║  ███╗█████╗  ██╔██╗ ██║██║ ╚███╔╝ ", 5);
     sERSLogger->Log("\x1b[38;2;0;128;55m██╔══██╗██╔══██╗██╔══██║██║██║╚██╗██║\x1b[38;2;130;68;208m██║   ██║██╔══╝  ██║╚██╗██║██║ ██╔██╗ ", 5);
     sERSLogger->Log("\x1b[38;2;0;128;55m██████╔╝██║  ██║██║  ██║██║██║ ╚████║\x1b[38;2;130;68;208m╚██████╔╝███████╗██║ ╚████║██║██╔╝ ██╗", 5);
-    sERSLogger.Log("\x1b[38;2;0;128;55m╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝\x1b[38;2;130;68;208m ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝", 5);
-    sERSLogger.Log("---------------------------------------------------------------------------", 5);
-    sERSLogger.Log("", 5);
-    sERSLogger.Log("    +-----------------------------------------------------------------+", 4);
-    sERSLogger.Log("    |     BrainGenix-ERS Real-Time Environment Rendering System       |", 4);
+    sERSLogger->Log("\x1b[38;2;0;128;55m╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝\x1b[38;2;130;68;208m ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝", 5);
+    sERSLogger->Log("---------------------------------------------------------------------------", 5);
+    sERSLogger->Log("", 5);
+    sERSLogger->Log("    +-----------------------------------------------------------------+", 4);
+    sERSLogger->Log("    |     BrainGenix-ERS Real-Time Environment Rendering System       |", 4);
     //sERSLogger.Log(std::string(std::string("    |     Version: ") + std::string(PROJECT_VERSION) + std::string("                                              |")).c_str(), 4);
     //sERSLogger.Log(std::string(std::string("    |     Branch: ") + std::string(PROJECT_BRANCH) + std::string("                                                 |")).c_str(), 4);
     //ERSLogger.Log("    |     Clustersize: {NodeCount}                                              |", 4);
-    sERSLogger.Log("    +-----------------------------------------------------------------+", 4);
-    sERSLogger.Log("", 4);
+    sERSLogger->Log("    +-----------------------------------------------------------------+", 4);
+    sERSLogger->Log("", 4);
 
 
     // Initialize Times
