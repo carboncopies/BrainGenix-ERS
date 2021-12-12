@@ -36,7 +36,7 @@ class Widget_ObjectProperties {
 
     private:
 
-        Cursors3D *Cursors3D_; /**<Instance pointer to cursors3d class*/
+        std::shared_ptr<Cursors3D> Cursors3D_; /**<Instance pointer to cursors3d class*/
 
     public:
 
@@ -47,7 +47,7 @@ class Widget_ObjectProperties {
          * @brief Construct a new Widget_ObjectProperties object
          * 
          */
-        Widget_ObjectProperties(Cursors3D *Cursors3D);
+        Widget_ObjectProperties(std::shared_ptr<Cursors3D> Cursors3D);
 
         /**
          * @brief Destroy the Widget_ObjectProperties object

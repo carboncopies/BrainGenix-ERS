@@ -12,7 +12,7 @@
 #include <GUI_Widget_ObjectProperties.h>
 
 // Constructor
-Widget_ObjectProperties::Widget_ObjectProperties(Cursors3D *Cursors3D) {
+Widget_ObjectProperties::Widget_ObjectProperties(std::shared_ptr<Cursors3D> Cursors3D) {
 
     // Update Ptr
     Cursors3D_ = Cursors3D;
