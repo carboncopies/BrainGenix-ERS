@@ -11,7 +11,6 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 
-
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
 
@@ -62,11 +61,11 @@ int main() {
     YAML::Node sERSLocalSystemConfiguration = LoadConfig("Config.yaml");
 
     // Instantiate Logging Subsystem
-    LoggerClass sERSLogger(sERSLocalSystemConfiguration);
-    sERSLogger.Log("Initialized Logging System", 5);
+    std::shared_ptr<LoggerClass> sERSLogger = std::make_shared<LoggerClass>(sERSLocalSystemConfiguration);
+    sERSLogger->Log("Initialized Logging System", 5);
 
     // Instantiate HardwareInformation System
-    HardwareInformation sERSHardwareInformation(&sERSLogger, sERSLocalSystemConfiguration);
+    HardwareInformation sERSHardwareInformation(sERSLogger, sERSLocalSystemConfiguration);
 
     // Instantiate RendererManager
     RendererManager sERSRendererManager(&sERSLocalSystemConfiguration, &sERSLogger, &SystemShouldRun);
@@ -75,14 +74,14 @@ int main() {
 
     
     // Log Logo Text
-    sERSLogger.Log("Starting BrainGenix-ERS Instance", 2);
-    sERSLogger.Log("", 5);
-    sERSLogger.Log("---------------------------------------------------------------------------", 5);
-    sERSLogger.Log("\x1b[38;2;0;128;55m██████╗ ██████╗  █████╗ ██╗███╗   ██╗\x1b[38;2;130;68;208m ██████╗ ███████╗███╗   ██╗██╗██╗  ██╗", 5);
-    sERSLogger.Log("\x1b[38;2;0;128;55m██╔══██╗██╔══██╗██╔══██╗██║████╗  ██║\x1b[38;2;130;68;208m██╔════╝ ██╔════╝████╗  ██║██║╚██╗██╔╝", 5);
-    sERSLogger.Log("\x1b[38;2;0;128;55m██████╔╝██████╔╝███████║██║██╔██╗ ██║\x1b[38;2;130;68;208m██║  ███╗█████╗  ██╔██╗ ██║██║ ╚███╔╝ ", 5);
-    sERSLogger.Log("\x1b[38;2;0;128;55m██╔══██╗██╔══██╗██╔══██║██║██║╚██╗██║\x1b[38;2;130;68;208m██║   ██║██╔══╝  ██║╚██╗██║██║ ██╔██╗ ", 5);
-    sERSLogger.Log("\x1b[38;2;0;128;55m██████╔╝██║  ██║██║  ██║██║██║ ╚████║\x1b[38;2;130;68;208m╚██████╔╝███████╗██║ ╚████║██║██╔╝ ██╗", 5);
+    sERSLogger->Log("Starting BrainGenix-ERS Instance", 2);
+    sERSLogger->Log("", 5);
+    sERSLogger->Log("---------------------------------------------------------------------------", 5);
+    sERSLogger->Log("\x1b[38;2;0;128;55m██████╗ ██████╗  █████╗ ██╗███╗   ██╗\x1b[38;2;130;68;208m ██████╗ ███████╗███╗   ██╗██╗██╗  ██╗", 5);
+    sERSLogger->Log("\x1b[38;2;0;128;55m██╔══██╗██╔══██╗██╔══██╗██║████╗  ██║\x1b[38;2;130;68;208m██╔════╝ ██╔════╝████╗  ██║██║╚██╗██╔╝", 5);
+    sERSLogger->Log("\x1b[38;2;0;128;55m██████╔╝██████╔╝███████║██║██╔██╗ ██║\x1b[38;2;130;68;208m██║  ███╗█████╗  ██╔██╗ ██║██║ ╚███╔╝ ", 5);
+    sERSLogger->Log("\x1b[38;2;0;128;55m██╔══██╗██╔══██╗██╔══██║██║██║╚██╗██║\x1b[38;2;130;68;208m██║   ██║██╔══╝  ██║╚██╗██║██║ ██╔██╗ ", 5);
+    sERSLogger->Log("\x1b[38;2;0;128;55m██████╔╝██║  ██║██║  ██║██║██║ ╚████║\x1b[38;2;130;68;208m╚██████╔╝███████╗██║ ╚████║██║██╔╝ ██╗", 5);
     sERSLogger.Log("\x1b[38;2;0;128;55m╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝\x1b[38;2;130;68;208m ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝", 5);
     sERSLogger.Log("---------------------------------------------------------------------------", 5);
     sERSLogger.Log("", 5);
