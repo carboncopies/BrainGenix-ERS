@@ -13,7 +13,7 @@
 
 
 // FontManager Constructor
-FontManager::FontManager(LoggerClass *Logger, const char* FontsDirPath) {
+FontManager::FontManager(std::shared_ptr<LoggerClass> Logger, const char* FontsDirPath) {
 
     // Create Pointers
     Logger_ = Logger;

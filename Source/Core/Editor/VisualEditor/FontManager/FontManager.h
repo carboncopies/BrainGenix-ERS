@@ -37,7 +37,7 @@ class FontManager {
 
     private:
 
-        LoggerClass *Logger_; /**<LoggerClass Instance Pointer*/
+        std::shared_ptr<LoggerClass> Logger_; /**<LoggerClass Instance Pointer*/
         const char* FontsDirectoryPath_; /**<Path where fonts are to be searched for */
 
         std::vector<std::string> FontPathList_; /**<List of fonts located at the given paths*/
@@ -51,7 +51,7 @@ class FontManager {
 
     public:
 
-        FontManager(LoggerClass *Logger, const char* FontsDirPath = "EditorAssets/Fonts");
+        FontManager(std::shared_ptr<LoggerClass> Logger, const char* FontsDirPath = "EditorAssets/Fonts");
         ~FontManager();
 
         void IndexFonts();
