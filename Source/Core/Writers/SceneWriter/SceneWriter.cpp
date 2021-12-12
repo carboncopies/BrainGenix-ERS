@@ -15,7 +15,7 @@
 #include <SceneWriter.h>
 
 // SceneWriter Constructor
-SceneWriter::SceneWriter(LoggerClass *Logger) {
+SceneWriter::SceneWriter(std::shared_ptr<LoggerClass> Logger) {
 
     // Create Local Pointer
     Logger_ = Logger;

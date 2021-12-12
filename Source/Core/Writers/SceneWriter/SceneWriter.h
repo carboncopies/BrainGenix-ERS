@@ -37,7 +37,7 @@ class SceneWriter{
 
     private:
 
-        LoggerClass *Logger_; /**<Contains A SceneWriter Class Instance*/
+        std::shared_ptr<LoggerClass> Logger_; /**<Contains A SceneWriter Class Instance*/
 
 
     public:
@@ -47,7 +47,7 @@ class SceneWriter{
          * 
          * @param Logger 
          */
-        SceneWriter(LoggerClass *Logger);
+        SceneWriter(std::shared_ptr<LoggerClass> Logger);
 
         /**
          * @brief Destroy the Scene Writer object
