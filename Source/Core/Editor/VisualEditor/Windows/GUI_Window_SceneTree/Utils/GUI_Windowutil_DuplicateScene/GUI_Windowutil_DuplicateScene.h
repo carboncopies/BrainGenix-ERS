@@ -23,4 +23,4 @@
 #include <Scene.h>
 
 
-void GUI_Windowutil_DuplicateScene(SceneManager* SceneManager, int SceneIndex);
+void GUI_Windowutil_DuplicateScene(std::shared_ptr<SceneManager> SceneManager, int SceneIndex);
