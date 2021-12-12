@@ -34,7 +34,9 @@ class Subwindow_DeleteScene {
     private:
 
         SceneManager* SceneManager_; /**<SceneManager Instance*/
-        int SceneIndex_; /**<SceneIndex Used To Remember What Scene To Delete*/
+        int SceneIndex_ = 0; /**<SceneIndex Used To Remember What Scene To Delete*/
+
+        bool FirstFrame_ = false; /**<Used to grab keyboard input on first frame window is open*/
 
         bool ShowDeleteConfirm_ = false; /**<Confirm Deletion Of Scene*/
         bool ShowOneSceneDeleteError_ = false; /**<Error popup that shows when one scene is remaining, (Can't have no scenes)*/
