@@ -23,4 +23,47 @@
 #include <Scene.h>
 
 
-void GUI_Subwindow_DeleteScene(SceneManager* SceneManager, int SceneIndex);
+/**
+ * @brief Implement Scene Deltion, Open Popup For Confirm, Error.
+ * 
+ */
+class Subwindow_DeleteScene {
+
+    // Private Vars
+    private:
+
+        SceneManager* SceneManager_; /**<SceneManager Instance*/
+        int SceneIndex_; /**<SceneIndex Used To Remember What Scene To Delete*/
+
+        bool ShowDeleteConfirm_ = false; /**<Confirm Deletion Of Scene*/
+        bool ShowOneSceneDeleteError_ = false; /**<Error popup that shows when one scene is remaining, (Can't have no scenes)*/
+
+    // Private Functions
+    private:
+
+        void ConfirmDeletePopup(); /**<Function To Update Popup Deletion Window*/
+        void OneSceneDeleteErrorPopup(); /**<Last scene deletion error popup*/
+
+    public:
+
+        /**
+         * @brief Construct a new Subwindow_DeleteScene object
+         * 
+         */
+        Subwindow_DeleteScene(SceneManager* SceneManager);
+
+        /**
+         * @brief Destroy the Subwindow_DeleteScene object
+         * 
+         */
+        ~Subwindow_DeleteScene();
+
+        /**
+         * @brief Called by the GUI to delete a scene.
+         * 
+         * @param SceneManager 
+         * @param SceneIndex 
+         */
+        void DeleteScene(int SceneIndex);
+
+};

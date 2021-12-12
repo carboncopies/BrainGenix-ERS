@@ -12,11 +12,26 @@
 #include <GUI_Subwindow_DeleteScene.h>
 
 
-void GUI_Subwindow_DeleteScene(SceneManager* SceneManager, int SceneIndex) {
+Subwindow_DeleteScene::Subwindow_DeleteScene(SceneManager* SceneManager) {
+
+    // Copy Pointer
+    SceneManager_ = SceneManager;
+
+
+}
+
+Subwindow_DeleteScene::~Subwindow_DeleteScene() {
+
+    // Hide All Popups
+    
+
+}
+
+void Subwindow_DeleteScene::DeleteScene(int SceneIndex) {
 
     // Delete From SceneManager
-    if (SceneManager->Scenes_.size() != 1) {
-        SceneManager->Scenes_.erase(SceneManager->Scenes_.begin() + SceneIndex);
+    if (SceneManager_->Scenes_.size() != 1) {
+        SceneManager_->Scenes_.erase(SceneManager_->Scenes_.begin() + SceneIndex);
     }
     
 }
