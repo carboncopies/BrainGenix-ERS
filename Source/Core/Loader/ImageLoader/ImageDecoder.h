@@ -27,7 +27,7 @@ class ImageDecoder {
 
     private:
 
-        LoggerClass *Logger_; /**<Pointer To Logging System*/
+        std::shared_ptr<LoggerClass> Logger_; /**<Pointer To Logging System*/
 
     public:
         
@@ -36,7 +36,7 @@ class ImageDecoder {
          * 
          * @param Logger 
          */
-        ImageDecoder(LoggerClass *Logger);
+        ImageDecoder(std::shared_ptr<LoggerClass> Logger);
 
         /**
          * @brief Destroy the Image Decoder object
