@@ -13,7 +13,7 @@
 
 
 // Visual Rendere constructor
-VisualRenderer::VisualRenderer (YAML::Node *SystemConfiguration, GLFWwindow* Window, LoggerClass *Logger, Cursors3D* Cursors3D) {
+VisualRenderer::VisualRenderer (std::shared_ptr<YAML::Node> SystemConfiguration, GLFWwindow* Window, std::shared_ptr<LoggerClass> Logger, std::shared_ptr<Cursors3D> Cursors3D) {
 
     // Create Pointers
     Logger->Log("Populating Renderer Member Pointers", 5);
@@ -57,7 +57,7 @@ void VisualRenderer::InitializeOpenGL() {
 
 }
 
-void VisualRenderer::UpdateViewports(float DeltaTime, SceneManager *SceneManager) {
+void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<SceneManager> SceneManager) {
 
     // Enable Depth Test
     glEnable(GL_DEPTH_TEST);
@@ -76,7 +76,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, SceneManager *SceneManager
 
 }
 
-void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float DeltaTime) {
+void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<SceneManager>SceneManager, float DeltaTime) {
 
     // Render To ImGui
     ImGui::Begin(ViewportNames_[Index].c_str());
@@ -94,7 +94,7 @@ void VisualRenderer::UpdateViewport(int Index, SceneManager *SceneManager, float
         
 
     // Get Input Processor
-    InputProcessor *InputProcessor = InputProcessors_[Index];
+    std::shared_ptr<InputProcessor> InputProcessor = InputProcessors_[Index];
 
 
     // Update Mouse Capture State
@@ -214,7 +214,7 @@ void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
 
 // ADD DESTROY VIEWPORT FUNCTION!
 
-void VisualRenderer::CreateViewport(ERS_OBJECT_SHADER *Shader, std::string ViewportName, GLFWwindow* Window, ERS_OBJECT_CAMERA_NOCLIP *Camera) {
+void VisualRenderer::CreateViewport(std::shared_ptr<ERS_OBJECT_SHADER> Shader, std::string ViewportName, GLFWwindow* Window, std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera) {
 
     // Append To Vectors
     Shaders_.push_back(Shader);
@@ -225,7 +225,7 @@ void VisualRenderer::CreateViewport(ERS_OBJECT_SHADER *Shader, std::string Viewp
 
     // Create IOManager
     Logger_->Log("Creating New Input Processor", 4);
-    InputProcessor *InProc = new InputProcessor(Camera, Window);
+    std::shared_ptr<InputProcessor> InProc = std::make_shared<InputProcessor>(Camera, Window);
     InputProcessors_.push_back(InProc);
 
     // Create Framebuffer
