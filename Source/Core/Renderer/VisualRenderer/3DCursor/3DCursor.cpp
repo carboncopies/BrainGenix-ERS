@@ -159,9 +159,13 @@ void Cursors3D::BeginRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera
             CurrentPos_.PosY = ObjectTranslation_[1];
             CurrentPos_.PosZ = ObjectTranslation_[2];
 
-            CurrentPos_.RotX = ObjectRotation_[0];
-            CurrentPos_.RotY = ObjectRotation_[1];
-            CurrentPos_.RotZ = ObjectRotation_[2];
+            if (CurrentGizmoOperation_ == ImGuizmo::ROTATE) {
+
+                CurrentPos_.RotX = ObjectRotation_[0];
+                CurrentPos_.RotY = ObjectRotation_[1];
+                CurrentPos_.RotZ = ObjectRotation_[2];
+
+            }
 
             CurrentPos_.ScaleX = ObjectScale_[0];
             CurrentPos_.ScaleY = ObjectScale_[1];
@@ -211,7 +215,7 @@ void Cursors3D::EndRenderpass() {
     ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, WindowWidth, WindowHeight);
 
    
-    ImGuizmo::Manipulate(CameraView_, CameraProjection_, CurrentGizmoOperation_, ImGuizmo::WORLD, Matrix_[16], NULL, NULL);
+    ImGuizmo::Manipulate(CameraView_, CameraProjection_, CurrentGizmoOperation_, ImGuizmo::MODE::WORLD, Matrix_[16], NULL, NULL);
     ImGuizmo::ViewManipulate(CameraView_, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x00000000);
 
 
