@@ -120,7 +120,7 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
 
 
         // Push Back To Output Vector
-        ProcessedModels.push_back(CurrentModel)
+        ProcessedModels.push_back(CurrentModel);
 
     }
 
