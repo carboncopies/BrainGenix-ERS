@@ -178,6 +178,7 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(std::string AssetPath, bool Flip
 
     // Check If Metadata Exists
     try {
+        std::cout<<std::string(AssetPath.substr(0, AssetPath.find_last_of("/")) + std::string("/Metadata.yaml"))<<std::endl;
         YAML::Node ModelMetadata = YAML::LoadFile(std::string(AssetPath.substr(0, AssetPath.find_last_of("/")) + std::string("Metadata.yaml")).c_str());
     } catch (YAML::BadFile) {
         Logger_->Log(std::string(std::string("Metadata Is Missing For Model '") + std::string(AssetPath) + std::string("', Try Regenerating It")).c_str(), 7);
