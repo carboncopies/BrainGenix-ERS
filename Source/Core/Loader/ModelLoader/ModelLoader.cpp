@@ -176,22 +176,25 @@ std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath,
 // Load Model From File
 ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(std::string AssetPath, bool FlipTextures, bool IsThread) {
 
+    // Clear Model Instance
+    ERS_OBJECT_MODEL Model;
+    FlipTextures_ = FlipTextures;
+    Model.FlipTextures = FlipTextures;
+    Model.AssetPath_ = AssetPath;
+
+    std::map<std::string, ERS_OBJECT_TEXTURE_2D> PreloadedTextures_; // Stores Relative Path Of Texture As Key And Texture 
+    
+
     // Check If Metadata Exists
     try {
         YAML::Node ModelMetadata = YAML::LoadFile(std::string(AssetPath.substr(0, AssetPath.find_last_of("/")) + std::string("/Metadata.yaml")).c_str());
+
+
+
     } catch (YAML::BadFile) {
         Logger_->Log(std::string(std::string("Metadata Is Missing For Model '") + std::string(AssetPath) + std::string("', Try Regenerating It")).c_str(), 7);
     }
 
-    // Clear Model Instance
-    ERS_OBJECT_MODEL Model;
-
-    // Set Texture Flip
-    FlipTextures_ = FlipTextures;
-    Model.FlipTextures = FlipTextures;
-
-    // Copy AssetPath
-    Model.AssetPath_ = AssetPath;
 
     // Get Model Path
     std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
