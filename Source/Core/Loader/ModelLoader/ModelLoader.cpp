@@ -104,14 +104,14 @@ std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath,
     LockActiveThreadCount_->unlock();
 
     // Create And Return Future Object
-    std::future<ERS_OBJECT_MODEL> FutureModel = std::async(&ModelLoader::LoadModelFromFile, this, AssetPath, FlipTextures, true);
+    std::future<ERS_OBJECT_MODEL> FutureModel = std::async(&ModelLoader::LoadModelFromFile, this, std::string(AssetPath), FlipTextures, true);
     return FutureModel;
 }
 
 
 
 // Load Model From File
-ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath, bool FlipTextures, bool DeIncrimentThreadCount) {
+ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(std::string AssetPath, bool FlipTextures, bool DeIncrimentThreadCount) {
     std::cout<<AssetPath<<std::endl;
 
     // Clear Model Instance
@@ -122,18 +122,15 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath, bool Flip
     Model.FlipTextures = FlipTextures;
 
     // Copy AssetPath
-    Model.AssetPath_ = std::string(AssetPath);
-
-    // Generate File Path
-    std::string FilePath = std::string(Model.AssetPath_);
+    Model.AssetPath_ = AssetPath;
 
     // Get Model Path
-    ModelDirectory_ = FilePath.substr(0, std::string(AssetPath).find_last_of("/"));
+    ModelDirectory_ = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
 
     // Read File
     Assimp::Importer Importer;
     Logger_->Log(std::string(std::string("Loading Model At File Path: ") + std::string(AssetPath)).c_str(), 3);
-    const aiScene* Scene = Importer.ReadFile(FilePath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
+    const aiScene* Scene = Importer.ReadFile(AssetPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
 
     // Log Errors
     if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
