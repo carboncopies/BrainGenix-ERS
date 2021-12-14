@@ -67,7 +67,7 @@ class TextureLoader {
          * @param Path 
          * @return ERS_OBJECT_TEXTURE_2D 
          */
-        ERS_OBJECT_TEXTURE_2D LoadTexture(const char* Path, bool FlipImage = false);
+        ERS_OBJECT_TEXTURE_2D LoadTexture(const char* Path, bool FlipImage = false, bool ProcessOpenGL = true);
 
         /**
          * @brief Load a texture at the given asset id. (For database loading).
@@ -75,7 +75,7 @@ class TextureLoader {
          * @param AssetID 
          * @return ERS_OBJECT_TEXTURE_2D 
          */
-        ERS_OBJECT_TEXTURE_2D LoadTexture(long AssetID, bool FlipImage = false);
+        ERS_OBJECT_TEXTURE_2D LoadTexture(long AssetID, bool FlipImage = false, bool ProcessOpenGL = true);
 
 
         // ADD FUNCTION TO BATCH LOAD TEXTURES

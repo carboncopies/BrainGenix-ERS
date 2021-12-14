@@ -22,6 +22,9 @@ struct ERS_OBJECT_TEXTURE_2D {
     // Set OpenGL Handles
     unsigned int ID;
     
+    // Set ImageData For Deferred OpenGL Loading
+    unsigned char* ImageData;
+
     // Set Metadata
     std::string Type;
     std::string Path;
