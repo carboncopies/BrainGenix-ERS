@@ -357,7 +357,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(ERS_OBJECT_
         //         Skip = true;
         //         break;
         //     }
-        std::cout<<"Mesh Wants Texture At Path: "<<FilePath<<std::endl;
+        std::cout<<"Mesh Wants Texture: "<<Str.C_Str()<<std::endl;
 
         // }
         // If Texture Not Already Loaded
