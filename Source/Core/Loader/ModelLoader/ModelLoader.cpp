@@ -291,7 +291,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(ERS_OBJECT_
         // If Texture Not Already Loaded
         if (!Skip) {
 
-            ERS_OBJECT_TEXTURE_2D Texture = TextureLoader_->LoadTexture(FilePath.c_str(), FlipTextures_);
+            ERS_OBJECT_TEXTURE_2D Texture = TextureLoader_->LoadTexture(FilePath.c_str(), FlipTextures_, IsThread);
 
             // Set Texture Type
             Texture.Type = TypeName;
