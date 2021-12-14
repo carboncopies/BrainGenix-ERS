@@ -60,7 +60,6 @@ class ModelLoader {
     private:
 
         // Internal Model Instance For Processing
-        std::string ModelDirectory_; /**<Current model directory being processed.*/
         bool FlipTextures_; /**<Flip Textures For current Model Being Loaded.*/
 
         // Logger
@@ -82,7 +81,7 @@ class ModelLoader {
          * @param Node 
          * @param Scene 
          */
-        void ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, bool IsThread);
+        void ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory, bool IsThread);
 
         /**
          * @brief Process Meshes From Model.
@@ -91,7 +90,7 @@ class ModelLoader {
          * @param Scene 
          * @return ERS_OBJECT_MESH 
          */
-        ERS_OBJECT_MESH ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, bool IsThread);
+        ERS_OBJECT_MESH ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory, bool IsThread);
 
         /**
          * @brief Load Textures From Model.
@@ -101,7 +100,7 @@ class ModelLoader {
          * @param TypeName 
          * @return std::vector<ERS_OBJECT_TEXTURE_2D> 
          */
-        std::vector<ERS_OBJECT_TEXTURE_2D> LoadMaterialTextures(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, bool IsThread);
+        std::vector<ERS_OBJECT_TEXTURE_2D> LoadMaterialTextures(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory, bool IsThread);
 
 
     public:

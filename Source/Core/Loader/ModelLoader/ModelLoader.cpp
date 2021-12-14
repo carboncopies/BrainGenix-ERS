@@ -187,7 +187,7 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(std::string AssetPath, bool Flip
     Model.AssetPath_ = AssetPath;
 
     // Get Model Path
-    ModelDirectory_ = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
+    std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
 
     // Read File
     Assimp::Importer Importer;
@@ -201,7 +201,7 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(std::string AssetPath, bool Flip
     }
 
     // Process Root Node Recursively
-    ProcessNode(&Model, Scene->mRootNode, Scene, IsThread);
+    ProcessNode(&Model, Scene->mRootNode, Scene, ModelDirectory, IsThread);
 
     // If In Other Thread
     if (IsThread) {
@@ -218,24 +218,24 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(std::string AssetPath, bool Flip
 
 
 // Process Nodes
-void ModelLoader::ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, bool IsThread) {
+void ModelLoader::ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory, bool IsThread) {
 
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
-        Model->Meshes.push_back(ProcessMesh(Model, Mesh, Scene, IsThread));
+        Model->Meshes.push_back(ProcessMesh(Model, Mesh, Scene, ModelDirectory, IsThread));
     }
 
     // Process Children Nodes
     for (unsigned int i = 0; i < Node->mNumChildren; i++) {
-        ProcessNode(Model, Node->mChildren[i], Scene, IsThread);
+        ProcessNode(Model, Node->mChildren[i], Scene, ModelDirectory, IsThread);
     }
 
 
 }
 
 // Process Mesh
-ERS_OBJECT_MESH ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, bool IsThread) {
+ERS_OBJECT_MESH ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory, bool IsThread) {
 
     // Create Data Holders
     std::vector<ERS_OBJECT_VERTEX> Vertices;
@@ -309,16 +309,16 @@ ERS_OBJECT_MESH ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, 
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
 
 
-    std::vector<ERS_OBJECT_TEXTURE_2D> DiffuseMaps = LoadMaterialTextures(Model, Material, aiTextureType_DIFFUSE, "texture_diffuse", IsThread);
+    std::vector<ERS_OBJECT_TEXTURE_2D> DiffuseMaps = LoadMaterialTextures(Model, Material, aiTextureType_DIFFUSE, "texture_diffuse", ModelDirectory IsThread);
     Textures.insert(Textures.end(), DiffuseMaps.begin(), DiffuseMaps.end());
 
-    std::vector<ERS_OBJECT_TEXTURE_2D> SpecularMaps = LoadMaterialTextures(Model, Material, aiTextureType_SPECULAR, "texture_specular", IsThread);
+    std::vector<ERS_OBJECT_TEXTURE_2D> SpecularMaps = LoadMaterialTextures(Model, Material, aiTextureType_SPECULAR, "texture_specular", ModelDirectory, IsThread);
     Textures.insert(Textures.end(), SpecularMaps.begin(), SpecularMaps.end());
 
-    std::vector<ERS_OBJECT_TEXTURE_2D> NormalMaps = LoadMaterialTextures(Model, Material, aiTextureType_NORMALS, "texture_normal", IsThread);
+    std::vector<ERS_OBJECT_TEXTURE_2D> NormalMaps = LoadMaterialTextures(Model, Material, aiTextureType_NORMALS, "texture_normal", ModelDirectory, IsThread);
     Textures.insert(Textures.end(), NormalMaps.begin(), NormalMaps.end());
 
-    std::vector<ERS_OBJECT_TEXTURE_2D> HeightMaps = LoadMaterialTextures(Model, Material, aiTextureType_AMBIENT, "texture_height", IsThread);
+    std::vector<ERS_OBJECT_TEXTURE_2D> HeightMaps = LoadMaterialTextures(Model, Material, aiTextureType_AMBIENT, "texture_height", ModelDirectory, IsThread);
     Textures.insert(Textures.end(), HeightMaps.begin(), HeightMaps.end());
 
     // Setup Mesh And Return
@@ -335,7 +335,7 @@ ERS_OBJECT_MESH ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, 
 }
 
 // Check Material Textures
-std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, bool IsThread) {
+std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory, bool IsThread) {
 
     std::vector<ERS_OBJECT_TEXTURE_2D> Textures;
     for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {
@@ -347,7 +347,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(ERS_OBJECT_
         
 
         // Calculate Texture Path
-        std::string FilePath = std::string(ModelDirectory_ + std::string(Model->Directory)  + std::string("/") + std::string(Str.C_Str()));
+        std::string FilePath = std::string(ModelDirectory + std::string(Model->Directory)  + std::string("/") + std::string(Str.C_Str()));
 
         // Check If Texture Already Loaded
         // for (unsigned int j = 0; j < Model->Textures_Loaded.size(); j++) {
