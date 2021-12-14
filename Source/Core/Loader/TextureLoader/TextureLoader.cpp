@@ -61,10 +61,8 @@ ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path, bool FlipImag
         float Height = FreeImage_GetHeight(ImageData);
         float Channels = FreeImage_GetLine(ImageData) / FreeImage_GetWidth(ImageData);
 
-        // Populate Image Data
-        Texture.ImageData = FreeImage_GetBits(ImageData);
-        FreeImage_Unload(ImageData);
 
+        
 
         // If In Main Thread (OpenGL Is Not Thread Safe!)
         if (ProcessOpenGL) {
@@ -80,15 +78,21 @@ ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path, bool FlipImag
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
             // Generate Texture Map
+            unsigned char* RawImageData = FreeImage_GetBits(ImageData);
 
             if (Channels == 4) {
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, Texture.ImageData);
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
             } else {
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, Texture.ImageData);
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
             }
             glGenerateMipmap(GL_TEXTURE_2D);
 
         } else {
+
+            // Populate Image Data
+            Texture.ImageData = ImageData;
+
+            // Populate Image Metadata
             Texture.Channels = Channels;
             Texture.Height = Height;
             Texture.Width = Width;
