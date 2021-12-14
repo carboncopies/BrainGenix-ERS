@@ -101,69 +101,69 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
 
             
 
-            if (TemplateModels_.count(AssetPath) != 0) {
+            // if (TemplateModels_.count(AssetPath) != 0) {
 
-                // Create New Model Struct
-                ERS_OBJECT_MODEL Model;
+            //     // Create New Model Struct
+            //     ERS_OBJECT_MODEL Model;
                 
-                // Copy In Parameters
-                Model.Directory = TemplateModels_[AssetPath].Directory;
-                Model.AssetPath_ = TemplateModels_[AssetPath].AssetPath_;
-                Model.GammaCorrection = TemplateModels_[AssetPath].GammaCorrection;
-                Model.HasTexturesLoaded = TemplateModels_[AssetPath].HasTexturesLoaded;
-                Model.Name = AssetName;
-                Model.FlipTextures = FlipTextures;
+            //     // Copy In Parameters
+            //     Model.Directory = TemplateModels_[AssetPath].Directory;
+            //     Model.AssetPath_ = TemplateModels_[AssetPath].AssetPath_;
+            //     Model.GammaCorrection = TemplateModels_[AssetPath].GammaCorrection;
+            //     Model.HasTexturesLoaded = TemplateModels_[AssetPath].HasTexturesLoaded;
+            //     Model.Name = AssetName;
+            //     Model.FlipTextures = FlipTextures;
 
-                // Copy Texture References
-                Model.Textures_Loaded = TemplateModels_[AssetPath].Textures_Loaded;
+            //     // Copy Texture References
+            //     Model.Textures_Loaded = TemplateModels_[AssetPath].Textures_Loaded;
 
-                // Copy In Mesh References
-                for (int i = 0; i < TemplateModels_[AssetPath].Meshes.size(); i++) {
+            //     // Copy In Mesh References
+            //     for (int i = 0; i < TemplateModels_[AssetPath].Meshes.size(); i++) {
 
-                    std::vector<ERS_OBJECT_VERTEX> Vertices;
-                    std::vector<unsigned int> Indices;
-                    std::vector<ERS_OBJECT_TEXTURE_2D> Textures = TemplateModels_[AssetPath].Meshes[i].Textures;
+            //         std::vector<ERS_OBJECT_VERTEX> Vertices;
+            //         std::vector<unsigned int> Indices;
+            //         std::vector<ERS_OBJECT_TEXTURE_2D> Textures = TemplateModels_[AssetPath].Meshes[i].Textures;
 
-                    ERS_OBJECT_MESH Mesh(Vertices, Indices, Textures);
-                    Mesh.NumberIndices = TemplateModels_[AssetPath].Meshes[i].NumberIndices;
-                    Mesh.VAO = TemplateModels_[AssetPath].Meshes[i].VAO;
-
-
-                    Model.Meshes.push_back(Mesh);
-
-                }
+            //         ERS_OBJECT_MESH Mesh(Vertices, Indices, Textures);
+            //         Mesh.NumberIndices = TemplateModels_[AssetPath].Meshes[i].NumberIndices;
+            //         Mesh.VAO = TemplateModels_[AssetPath].Meshes[i].VAO;
 
 
+            //         Model.Meshes.push_back(Mesh);
 
-                // Apply Transformations
-                Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
-                Model.ApplyTransformations();
-
-                // Append To Models Vector
-                Scene.Models.push_back(Model);
-
-                // Log Duplicate
-                Logger_->Log(std::string(std::string("Model Already In Template Buffer, Using Template For: ") + AssetPath).c_str(), 3);
+            //     }
 
 
-            } else { // Load Model And Add To Template
 
-                // Load Model 
-                ERS_OBJECT_MODEL Model = ModelLoader_->LoadModelFromFile(AssetPath.c_str(), FlipTextures);
+            //     // Apply Transformations
+            //     Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
+            //     Model.ApplyTransformations();
 
-                // Set Name
-                Model.Name = AssetName;
+            //     // Append To Models Vector
+            //     Scene.Models.push_back(Model);
 
-                // Copy To Template Map
-                Model.IsTemplateModel = true;
-                TemplateModels_.insert({AssetPath, Model});
+            //     // Log Duplicate
+            //     Logger_->Log(std::string(std::string("Model Already In Template Buffer, Using Template For: ") + AssetPath).c_str(), 3);
 
-                // Add Instance To Models Vector
-                Model.IsTemplateModel = false;
-                Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
-                Model.ApplyTransformations();
-                Scene.Models.push_back(Model);
-            }
+
+            // } else { // Load Model And Add To Template
+
+            // Load Model 
+            ERS_OBJECT_MODEL Model = ModelLoader_->LoadModelFromFile(AssetPath.c_str(), FlipTextures);
+
+            // Set Name
+            Model.Name = AssetName;
+
+            // Copy To Template Map
+            //Model.IsTemplateModel = true;
+            //TemplateModels_.insert({AssetPath, Model});
+
+            // Add Instance To Models Vector
+            Model.IsTemplateModel = false;
+            Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
+            Model.ApplyTransformations();
+            Scene.Models.push_back(Model);
+            //}
 
         }
 
