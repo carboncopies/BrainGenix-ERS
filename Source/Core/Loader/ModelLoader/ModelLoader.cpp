@@ -39,7 +39,7 @@ ModelLoader::~ModelLoader() {
 }
 
 // Batch Load Models
-std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector<std::string> FilePaths, std::vector<bool> FlipTextures){
+std::vector<ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector<std::string> FilePaths, std::vector<bool> FlipTextures){
 
     // Init
     int TotalModelCount = FilePaths.size();
@@ -131,13 +131,13 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
     
 
     // Create Dictionary Of Loaded Models
-    std::map<std::string, ERS_OBJECT_MODEL> OutputMap;
+    std::vector<ERS_OBJECT_MODEL> OutputMap;
 
     for (int i = 0; i < TotalModelCount; i++) {
 
         // Log Retrieval, Then Add To Output Dict
         Logger_->Log(std::string(std::string("Getting Model From Loading Queue With Path ") + std::string(FilePaths[i])).c_str(), 3);
-        OutputMap.emplace(FilePaths[i], ProcessedModels[i]);
+        OutputMap.push_back(ProcessedModels[i]);
 
     }
 

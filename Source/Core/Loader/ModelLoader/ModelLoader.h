@@ -104,7 +104,7 @@ class ModelLoader {
 
 
         std::future<ERS_OBJECT_MODEL> AsyncLoadModel(const char* AssetPath, bool FlipTextures = true);
-        std::map<std::string, ERS_OBJECT_MODEL> BatchLoadModels(std::vector<std::string> FilePaths, std::vector<bool> FlipTextures);
+        std::vector<ERS_OBJECT_MODEL> BatchLoadModels(std::vector<std::string> FilePaths, std::vector<bool> FlipTextures);
 
         /**
          * @brief Construct a new Model Loader object
