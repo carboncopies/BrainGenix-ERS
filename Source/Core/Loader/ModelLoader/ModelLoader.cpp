@@ -115,17 +115,17 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath, bool Flip
 
 
     // Clear Model Instance
-    Model_ = new ERS_OBJECT_MODEL;
+    ERS_OBJECT_MODEL Model;
 
     // Set Texture Flip
     FlipTextures_ = FlipTextures;
-    Model_->FlipTextures = FlipTextures;
+    Model.FlipTextures = FlipTextures;
 
     // Copy AssetPath
-    Model_->AssetPath_ = std::string(AssetPath);
+    Model.AssetPath_ = std::string(AssetPath);
 
     // Generate File Path
-    std::string FilePath = std::string(Model_->AssetPath_);
+    std::string FilePath = std::string(Model.AssetPath_);
 
     // Get Model Path
     ModelDirectory_ = FilePath.substr(0, std::string(AssetPath).find_last_of("/"));
@@ -138,11 +138,11 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath, bool Flip
     // Log Errors
     if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
         Logger_->Log(std::string(std::string("ASSET IMPORT ERROR ") + std::string(Importer.GetErrorString())).c_str(), 10);
-        return *Model_;
+        return Model;
     }
 
     // Process Root Node Recursively
-    ProcessNode(Scene->mRootNode, Scene);
+    ProcessNode(&Model, Scene->mRootNode, Scene);
 
     // If In Other Thread
     if (DeIncrimentThreadCount) {
@@ -152,19 +152,19 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath, bool Flip
     }
 
     // Return Model Instance
-    return *Model_;
+    return Model;
 
 }
 
 
 
 // Process Nodes
-void ModelLoader::ProcessNode(aiNode *Node, const aiScene *Scene) {
+void ModelLoader::ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene) {
 
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
-        Model_->Meshes.push_back(ProcessMesh(Mesh, Scene));
+        Model.Meshes.push_back(ProcessMesh(Model, Mesh, Scene));
     }
 
     // Process Children Nodes
@@ -176,7 +176,7 @@ void ModelLoader::ProcessNode(aiNode *Node, const aiScene *Scene) {
 }
 
 // Process Mesh
-ERS_OBJECT_MESH ModelLoader::ProcessMesh(aiMesh *Mesh, const aiScene *Scene) {
+ERS_OBJECT_MESH ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene) {
 
     // Create Data Holders
     std::vector<ERS_OBJECT_VERTEX> Vertices;
@@ -250,16 +250,16 @@ ERS_OBJECT_MESH ModelLoader::ProcessMesh(aiMesh *Mesh, const aiScene *Scene) {
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
 
 
-    std::vector<ERS_OBJECT_TEXTURE_2D> DiffuseMaps = LoadMaterialTextures(Material, aiTextureType_DIFFUSE, "texture_diffuse");
+    std::vector<ERS_OBJECT_TEXTURE_2D> DiffuseMaps = LoadMaterialTextures(Model, Material, aiTextureType_DIFFUSE, "texture_diffuse");
     Textures.insert(Textures.end(), DiffuseMaps.begin(), DiffuseMaps.end());
 
-    std::vector<ERS_OBJECT_TEXTURE_2D> SpecularMaps = LoadMaterialTextures(Material, aiTextureType_SPECULAR, "texture_specular");
+    std::vector<ERS_OBJECT_TEXTURE_2D> SpecularMaps = LoadMaterialTextures(Model, Material, aiTextureType_SPECULAR, "texture_specular");
     Textures.insert(Textures.end(), SpecularMaps.begin(), SpecularMaps.end());
 
-    std::vector<ERS_OBJECT_TEXTURE_2D> NormalMaps = LoadMaterialTextures(Material, aiTextureType_NORMALS, "texture_normal");
+    std::vector<ERS_OBJECT_TEXTURE_2D> NormalMaps = LoadMaterialTextures(Model, Material, aiTextureType_NORMALS, "texture_normal");
     Textures.insert(Textures.end(), NormalMaps.begin(), NormalMaps.end());
 
-    std::vector<ERS_OBJECT_TEXTURE_2D> HeightMaps = LoadMaterialTextures(Material, aiTextureType_AMBIENT, "texture_height");
+    std::vector<ERS_OBJECT_TEXTURE_2D> HeightMaps = LoadMaterialTextures(Model, Material, aiTextureType_AMBIENT, "texture_height");
     Textures.insert(Textures.end(), HeightMaps.begin(), HeightMaps.end());
 
     // Mesh Object
@@ -268,7 +268,7 @@ ERS_OBJECT_MESH ModelLoader::ProcessMesh(aiMesh *Mesh, const aiScene *Scene) {
 }
 
 // Check Material Textures
-std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, std::string TypeName) {
+std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName) {
 
     std::vector<ERS_OBJECT_TEXTURE_2D> Textures;
     for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {
@@ -280,13 +280,13 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(aiMaterial 
         
 
         // Calculate Texture Path
-        std::string FilePath = std::string(ModelDirectory_ + std::string(this->Model_->Directory)  + std::string("/") + std::string(Str.C_Str()));
+        std::string FilePath = std::string(ModelDirectory_ + std::string(Model.Directory)  + std::string("/") + std::string(Str.C_Str()));
 
         // Check If Texture Already Loaded
-        for (unsigned int j = 0; j < Model_->Textures_Loaded.size(); j++) {
+        for (unsigned int j = 0; j < Model.Textures_Loaded.size(); j++) {
 
-            if (std::strcmp(Model_->Textures_Loaded[j].Path.data(), FilePath.c_str()) == 0) {
-                Textures.push_back(Model_->Textures_Loaded[j]);
+            if (std::strcmp(Model.Textures_Loaded[j].Path.data(), FilePath.c_str()) == 0) {
+                Textures.push_back(Model.Textures_Loaded[j]);
                 Skip = true;
                 break;
             }
@@ -301,7 +301,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(aiMaterial 
             Texture.Type = TypeName;
 
             Textures.push_back(Texture);
-            Model_->Textures_Loaded.push_back(Texture);
+            Model.Textures_Loaded.push_back(Texture);
 
 
         }
