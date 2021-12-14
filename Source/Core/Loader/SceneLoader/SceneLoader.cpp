@@ -188,6 +188,15 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
 
     }
 
+
+    // Batch Load
+    std::map<std::string, ERS_OBJECT_MODEL> LoadedModels = ModelLoader_->BatchLoadModels(ModelPaths, ModelFlipTextures);
+
+
+
+
+
+
     // Indicate Scene Is Loaded
     Scene.IsSceneLoaded = true;
 
