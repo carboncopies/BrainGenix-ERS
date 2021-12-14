@@ -67,6 +67,15 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
     }
 
     
+    // Vector For Processing
+    std::vector<std::string> ModelPaths;
+    std::vector<bool> ModelFlipTextures;
+    std::vector<std::string> ModelNames;
+    std::vector<glm::vec3> ModelPositions;
+    std::vector<glm::vec3> ModelRotations;
+    std::vector<glm::vec3> ModelScales;
+
+
     // Iterate Through Vector To Add Each Asset To Loading Queue Of Requested Type
     for (long i = 0; i < SceneDataNode.size(); i++) {
 
@@ -148,21 +157,30 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
 
             // } else { // Load Model And Add To Template
 
+
+            ModelPaths.push_back(AssetPath.c_str());
+            ModelFlipTextures.push_back(FlipTextures);
+            ModelNames.push_back(AssetName);
+            ModelPositions.push_back(glm::vec3(PosX, PosY, PosZ));
+            ModelRotations.push_back(glm::vec3(RotX, RotY, RotZ));
+            ModelScales.push_back(glm::vec3(ScaleX, ScaleY, ScaleZ));
+
+
             // Load Model 
-            ERS_OBJECT_MODEL Model = ModelLoader_->LoadModelFromFile(AssetPath.c_str(), FlipTextures);
+            // ERS_OBJECT_MODEL Model = ModelLoader_->LoadModelFromFile(AssetPath.c_str(), FlipTextures);
 
-            // Set Name
-            Model.Name = AssetName;
+            // // Set Name
+            // Model.Name = AssetName;
 
-            // Copy To Template Map
-            //Model.IsTemplateModel = true;
-            //TemplateModels_.insert({AssetPath, Model});
+            // // Copy To Template Map
+            // //Model.IsTemplateModel = true;
+            // //TemplateModels_.insert({AssetPath, Model});
 
-            // Add Instance To Models Vector
-            Model.IsTemplateModel = false;
-            Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
-            Model.ApplyTransformations();
-            Scene.Models.push_back(Model);
+            // // Add Instance To Models Vector
+            // //Model.IsTemplateModel = false;
+            // Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
+            // Model.ApplyTransformations();
+            // Scene.Models.push_back(Model);
             //}
 
         }
