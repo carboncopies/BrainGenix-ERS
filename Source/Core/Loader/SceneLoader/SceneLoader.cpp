@@ -190,10 +190,25 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
 
 
     // Batch Load
-    Scene.Models = ModelLoader_->BatchLoadModels(ModelPaths, ModelFlipTextures);
+    std::map<std::string, ERS_OBJECT_MODEL> LoadedModels = ModelLoader_->BatchLoadModels(ModelPaths, ModelFlipTextures);
 
 
-    
+    // Populate Models
+    for (int i = 0; i < ModelPaths.size(); i++) {
+
+        ERS_OBJECT_MODEL Model = LoadedModels[ModelPaths[i]];
+
+        // Populate Info
+        Model.FlipTextures = ModelFlipTextures[i];
+        Model.Name = ModelNames[i];
+        Model.ModelPosition = ModelPositions[i];
+        Model.ModelRotation = ModelRotations[i];
+        Model.ModelScale = ModelScales[i];
+
+        // Add To Model Vector
+        Scene.Models.push_back(Model);
+    }
+
 
 
     // Indicate Scene Is Loaded
