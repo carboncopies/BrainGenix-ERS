@@ -71,7 +71,6 @@ std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath,
     return FutureModel;
 }
 
-// Batch Load Models
 
 
 // Load Model From File
