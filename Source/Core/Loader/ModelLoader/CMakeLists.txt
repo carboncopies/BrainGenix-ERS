@@ -22,6 +22,7 @@ target_link_libraries(ModelLoader
     glad
     glfw
     assimp
+    FreeImage
     )
 
 # Link Internal Libs

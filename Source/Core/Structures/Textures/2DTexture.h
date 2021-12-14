@@ -26,7 +26,7 @@ struct ERS_OBJECT_TEXTURE_2D {
     float Channels;
     float Width;
     float Height;
-    unsigned char* ImageData;
+    FIBITMAP* ImageData;
 
     // Set Metadata
     std::string Type;
