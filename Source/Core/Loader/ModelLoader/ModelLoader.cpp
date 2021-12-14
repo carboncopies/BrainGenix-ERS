@@ -74,6 +74,7 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
     }
 
     // Process Models
+    std::map<std::string, ERS_OBJECT_TEXTURE_2D> ProcessedTextures;
     std::vector<ERS_OBJECT_MODEL> ProcessedModels;
 
     for (int i = 0; i < TotalModelCount; i++) {
@@ -110,11 +111,10 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
                 glGenerateMipmap(GL_TEXTURE_2D);
 
                 // Free Image Data
-                CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].HasImageData = false;
-                FreeImage_Unload(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData);
-                
-                // Deload Image Data
-                CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData = NULL;
+                //CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].HasImageData = false;
+                //FreeImage_Unload(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData);
+
+                // Add To New Texture Map
 
             }
 
