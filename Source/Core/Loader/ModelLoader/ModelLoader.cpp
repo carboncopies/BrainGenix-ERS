@@ -41,7 +41,16 @@ ModelLoader::~ModelLoader() {
 // Batch Load Models
 std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector<std::string> FilePaths, std::vector<bool> FlipTextures){
 
-    //
+    // Log Batch Load Call
+    Logger_->Log(std::string(std::string("Multithreaded Model Loader BatchLoad Called With ") + std::to_string(FilePaths.size()) + std::string(" Models")).c_str(), 4);
+
+    // Vector Of Future Objects
+    std::vector<std::future<ERS_OBJECT_MODEL>> Models;
+
+    
+    // 
+
+    
 
 }
 
@@ -66,7 +75,7 @@ std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath,
 
 
 // Load Model From File
-ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath, bool FlipTextures) {
+ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath, bool FlipTextures, bool DeIncrimentThreadCount) {
 
 
     // Clear Model Instance
@@ -99,6 +108,12 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath, bool Flip
     // Process Root Node Recursively
     ProcessNode(Scene->mRootNode, Scene);
 
+    // If In Other Thread
+    if (DeIncrimentThreadCount) {
+        LockActiveThreadCount_.lock();
+        ActiveThreadCount_--;
+        LockActiveThreadCount_.unlock();
+    }
 
     // Return Model Instance
     return *Model_;
