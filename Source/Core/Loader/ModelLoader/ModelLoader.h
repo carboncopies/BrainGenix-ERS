@@ -127,7 +127,7 @@ class ModelLoader {
          * @param FlipTextures 
          * @return ERS_OBJECT_MODEL 
          */
-        ERS_OBJECT_MODEL LoadModelFromFile(const char* AssetPath, bool FlipTextures = false);
+        ERS_OBJECT_MODEL LoadModelFromFile(const char* AssetPath, bool FlipTextures = false, bool DeIncrimentThreadcount = false);
 
 
 
