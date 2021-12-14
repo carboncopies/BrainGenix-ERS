@@ -42,13 +42,17 @@ ModelLoader::~ModelLoader() {
 // Async Load Model
 std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath, bool FlipTextures) {
 
-    // Log 
+    // Log Loading
+    Logger_->Log(std::string(std::string("Creating Thread To Load Model At Path") + std::string(AssetPath)).c_str(), 3);
 
     // Lock Count
+    LockActiveThreadCount_.lock();
+    ActiveThreadCount_++;
+    LockActiveThreadCount_.unlock();
 
-    // Create Future Object
-    
-
+    // Create And Return Future Object
+    std::future<ERS_OBJECT_MODEL> FutureModel = std::async(&ModelLoader::LoadModelFromFile, this, AssetPath, FlipTextures);
+    return FutureModel;
 }
 
 // Load Model From File
