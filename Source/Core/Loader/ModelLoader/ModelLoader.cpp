@@ -109,14 +109,18 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
                 }
                 glGenerateMipmap(GL_TEXTURE_2D);
 
+                // Deload Image Data
+                CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData = NULL;
+
             }
 
             // Process Mesh
             CurrentModel.Meshes[MeshIndex].SetupMesh();
-
-
-
         }
+
+
+        // Push Back To Output Vector
+        ProcessedModels.push_back(CurrentModel)
 
     }
 
