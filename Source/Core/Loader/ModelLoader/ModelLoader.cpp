@@ -309,7 +309,7 @@ ERS_OBJECT_MESH ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, 
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
 
 
-    std::vector<ERS_OBJECT_TEXTURE_2D> DiffuseMaps = LoadMaterialTextures(Model, Material, aiTextureType_DIFFUSE, "texture_diffuse", ModelDirectory IsThread);
+    std::vector<ERS_OBJECT_TEXTURE_2D> DiffuseMaps = LoadMaterialTextures(Model, Material, aiTextureType_DIFFUSE, "texture_diffuse", ModelDirectory, IsThread);
     Textures.insert(Textures.end(), DiffuseMaps.begin(), DiffuseMaps.end());
 
     std::vector<ERS_OBJECT_TEXTURE_2D> SpecularMaps = LoadMaterialTextures(Model, Material, aiTextureType_SPECULAR, "texture_specular", ModelDirectory, IsThread);
@@ -357,7 +357,6 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(ERS_OBJECT_
         //         Skip = true;
         //         break;
         //     }
-        std::cout<<"Mesh Wants Texture: "<<Str.C_Str()<<std::endl;
 
         // }
         // If Texture Not Already Loaded
