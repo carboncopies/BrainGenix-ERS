@@ -133,7 +133,7 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
 
         // Log Retrieval, Then Add To Output Dict
         Logger_->Log(std::string(std::string("Getting Model From Loading Queue With Path ") + std::string(FilePaths[i])).c_str(), 3);
-        OutputMap.emplace(FilePaths[i], Models[i].get());
+        OutputMap.emplace(FilePaths[i], ProcessedModels[i]);
 
     }
 
