@@ -67,7 +67,7 @@ std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath,
     LockActiveThreadCount_.unlock();
 
     // Create And Return Future Object
-    std::future<ERS_OBJECT_MODEL> FutureModel = std::async(&ModelLoader::LoadModelFromFile, this, AssetPath, FlipTextures);
+    std::future<ERS_OBJECT_MODEL> FutureModel = std::async(&ModelLoader::LoadModelFromFile, this, AssetPath, FlipTextures, true);
     return FutureModel;
 }
 
