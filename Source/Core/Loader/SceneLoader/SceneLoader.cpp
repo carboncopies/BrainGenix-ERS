@@ -204,6 +204,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
         Model.ModelPosition = ModelPositions[i];
         Model.ModelRotation = ModelRotations[i];
         Model.ModelScale = ModelScales[i];
+        Model.ApplyTransformations();
 
         // Add To Model Vector
         Scene.Models.push_back(Model);
