@@ -66,7 +66,7 @@ class SceneLoader{
          * @param RawSceneData 
          * @return ERS_OBJECT_SCENE 
          */
-        ERS_OBJECT_SCENE ProcessScene(YAML::Node RawSceneData, const char* ScenePath);
+        ERS_OBJECT_SCENE ProcessScene(YAML::Node RawSceneData, const char* ScenePath, bool UseMultithreading = true);
 
         /**
          * @brief Populate The Scene Structure, Fill In Vectors, etc. Should Be Called Before Sending Scene Struct To SceneManager.

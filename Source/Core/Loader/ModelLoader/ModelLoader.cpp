@@ -182,7 +182,7 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(std::string AssetPath, bool Flip
     Model.FlipTextures = FlipTextures;
     Model.AssetPath_ = AssetPath;
 
-    std::map<std::string, ERS_OBJECT_TEXTURE_2D> PreloadedTextures_; // Stores Relative Path Of Texture As Key And Texture 
+    std::map<std::string, ERS_OBJECT_TEXTURE_2D> PreloadedTextures_; // Stores Relative Path Of Texture As Key And Textures?
     
 
     // Check If Metadata Exists
