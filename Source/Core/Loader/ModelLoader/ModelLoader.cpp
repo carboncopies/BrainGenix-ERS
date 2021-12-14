@@ -160,7 +160,7 @@ void ModelLoader::ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiSce
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
-        Model->Meshes.push_back(ProcessMesh(Model, Mesh, Scene));
+        Model->Meshes.push_back(ProcessMesh(Model, Mesh, Scene, IsThread));
     }
 
     // Process Children Nodes

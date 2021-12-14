@@ -125,7 +125,7 @@ class ModelLoader {
          * @param FlipTextures 
          * @return ERS_OBJECT_MODEL 
          */
-        ERS_OBJECT_MODEL LoadModelFromFile(std::string AssetPath, bool FlipTextures = false, bool IsThread);
+        ERS_OBJECT_MODEL LoadModelFromFile(std::string AssetPath, bool FlipTextures = false, bool IsThread = false);
 
 
 
