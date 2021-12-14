@@ -111,8 +111,8 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
                 glGenerateMipmap(GL_TEXTURE_2D);
 
                 // Free Image Data
-                //CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].HasImageData = false;
-                //FreeImage_Unload(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData);
+                CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].HasImageData = false;
+                FreeImage_Unload(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData);
 
                 // Add To New Texture Map
 
@@ -343,15 +343,15 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(ERS_OBJECT_
         std::string FilePath = std::string(ModelDirectory_ + std::string(Model->Directory)  + std::string("/") + std::string(Str.C_Str()));
 
         // Check If Texture Already Loaded
-        for (unsigned int j = 0; j < Model->Textures_Loaded.size(); j++) {
+        // for (unsigned int j = 0; j < Model->Textures_Loaded.size(); j++) {
 
-            if (std::strcmp(Model->Textures_Loaded[j].Path.data(), FilePath.c_str()) == 0) {
-                Textures.push_back(Model->Textures_Loaded[j]);
-                Skip = true;
-                break;
-            }
+        //     if (std::strcmp(Model->Textures_Loaded[j].Path.data(), FilePath.c_str()) == 0) {
+        //         Textures.push_back(Model->Textures_Loaded[j]);
+        //         Skip = true;
+        //         break;
+        //     }
 
-        }
+        // }
         // If Texture Not Already Loaded
         if (!Skip) {
 
