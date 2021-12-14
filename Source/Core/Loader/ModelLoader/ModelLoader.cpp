@@ -112,7 +112,6 @@ std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath,
 
 // Load Model From File
 ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(std::string AssetPath, bool FlipTextures, bool DeIncrimentThreadCount) {
-    std::cout<<AssetPath<<std::endl;
 
     // Clear Model Instance
     ERS_OBJECT_MODEL Model;
