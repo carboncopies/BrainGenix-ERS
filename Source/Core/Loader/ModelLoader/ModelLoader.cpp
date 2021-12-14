@@ -96,7 +96,7 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
 std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath, bool FlipTextures) {
 
     // Log Loading
-    Logger_->Log(std::string(std::string("Creating Thread To Load Model At Path") + std::string(AssetPath)).c_str(), 3);
+    Logger_->Log(std::string(std::string("Creating Thread To Load Model At Path: ") + std::string(AssetPath)).c_str(), 3);
 
     // Lock Count
     LockActiveThreadCount_->lock();
