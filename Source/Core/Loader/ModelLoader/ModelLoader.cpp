@@ -107,9 +107,12 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
                 } else {
                     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, FreeImage_GetBits(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData));
                 }
-                FreeImage_Unload(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData);
                 glGenerateMipmap(GL_TEXTURE_2D);
 
+                // Free Image Data
+                CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].HasImageData = false;
+                FreeImage_Unload(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData);
+                
                 // Deload Image Data
                 CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData = NULL;
 
