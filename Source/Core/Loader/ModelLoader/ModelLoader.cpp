@@ -41,14 +41,38 @@ ModelLoader::~ModelLoader() {
 // Batch Load Models
 std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector<std::string> FilePaths, std::vector<bool> FlipTextures){
 
+    // Init
+    int TotalModelCount = FilePaths.size();
+
     // Log Batch Load Call
-    Logger_->Log(std::string(std::string("Multithreaded Model Loader BatchLoad Called With ") + std::to_string(FilePaths.size()) + std::string(" Models")).c_str(), 4);
+    Logger_->Log(std::string(std::string("Multithreaded Model Loader BatchLoad Called With ") + std::to_string(TotalModelCount) + std::string(" Models")).c_str(), 4);
 
     // Vector Of Future Objects
     std::vector<std::future<ERS_OBJECT_MODEL>> Models;
 
     
-    // 
+    // Load While Respecting Active Thread Count
+    int CurrentModelIndex = 0;
+    while (CurrentModelIndex != TotalModelCount) {
+        
+        // Lock And Check Active Thread Count
+        LockActiveThreadCount_.lock();
+        if (ActiveThreadCount_ < MaxThreadCount_) {
+            LockActiveThreadCount_.unlock();
+
+            // Async Load Model
+            std::string ModelAssetPath = FilePaths[CurrentModelIndex];
+            bool FlipModelTextures = FlipTextures[CurrentModelIndex];
+            Models.push_back(AsyncLoadModel(ModelAssetPath.c_str(), FlipModelTextures)); // Automatically Updates Active Thread Count
+
+            CurrentModelIndex++;
+
+        } else {
+            LockActiveThreadCount_.unlock();
+        }
+        
+
+    }
 
     
 
