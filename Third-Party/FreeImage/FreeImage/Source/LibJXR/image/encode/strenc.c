@@ -1,14 +1,14 @@
 //*@@@+++@@@@******************************************************************
 //
-// Copyright © Microsoft Corp.
+// Copyright ï¿½ Microsoft Corp.
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
 // 
-// • Redistributions of source code must retain the above copyright notice,
+// ï¿½ Redistributions of source code must retain the above copyright notice,
 //   this list of conditions and the following disclaimer.
-// • Redistributions in binary form must reproduce the above copyright notice,
+// ï¿½ Redistributions in binary form must reproduce the above copyright notice,
 //   this list of conditions and the following disclaimer in the documentation
 //   and/or other materials provided with the distribution.
 // 
@@ -30,6 +30,8 @@
 #include "strTransform.h"
 #include <math.h>
 #include "perfTimer.h"
+
+#include <stdlib.h> // MODIFIED TO FIX TMPNAM WARNING! (2021-12-14)
 
 #ifdef MEM_TRACE
 #define TRACE_MALLOC    1
@@ -482,7 +484,7 @@ Int StrIOEncInit(CWMImageStrCodec* pSC)
                 pSC->ppTempFile[i] = (char *)malloc(FILENAME_MAX * sizeof(char));
                 if(pSC->ppTempFile[i] == NULL) return ICERR_ERROR;
 
-                if ((pFilename = tmpnam(NULL)) == NULL)
+                if ((pFilename = mkstemp(NULL)) == NULL) // Replaced tmpnam with mkstemp to fix warning from compiler (2021-12-14)
                     return ICERR_ERROR;                
                 strcpy(pSC->ppTempFile[i], pFilename);
 #endif
