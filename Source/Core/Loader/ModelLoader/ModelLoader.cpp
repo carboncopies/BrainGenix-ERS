@@ -164,12 +164,12 @@ void ModelLoader::ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiSce
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
-        Model.Meshes.push_back(ProcessMesh(Model, Mesh, Scene));
+        Model->Meshes.push_back(ProcessMesh(Model, Mesh, Scene));
     }
 
     // Process Children Nodes
     for (unsigned int i = 0; i < Node->mNumChildren; i++) {
-        ProcessNode(Node->mChildren[i], Scene);
+        ProcessNode(Model, Node->mChildren[i], Scene);
     }
 
 
@@ -280,13 +280,13 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(ERS_OBJECT_
         
 
         // Calculate Texture Path
-        std::string FilePath = std::string(ModelDirectory_ + std::string(Model.Directory)  + std::string("/") + std::string(Str.C_Str()));
+        std::string FilePath = std::string(ModelDirectory_ + std::string(Model->Directory)  + std::string("/") + std::string(Str.C_Str()));
 
         // Check If Texture Already Loaded
-        for (unsigned int j = 0; j < Model.Textures_Loaded.size(); j++) {
+        for (unsigned int j = 0; j < Model->Textures_Loaded.size(); j++) {
 
-            if (std::strcmp(Model.Textures_Loaded[j].Path.data(), FilePath.c_str()) == 0) {
-                Textures.push_back(Model.Textures_Loaded[j]);
+            if (std::strcmp(Model->Textures_Loaded[j].Path.data(), FilePath.c_str()) == 0) {
+                Textures.push_back(Model->Textures_Loaded[j]);
                 Skip = true;
                 break;
             }
@@ -301,7 +301,7 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(ERS_OBJECT_
             Texture.Type = TypeName;
 
             Textures.push_back(Texture);
-            Model.Textures_Loaded.push_back(Texture);
+            Model->Textures_Loaded.push_back(Texture);
 
 
         }

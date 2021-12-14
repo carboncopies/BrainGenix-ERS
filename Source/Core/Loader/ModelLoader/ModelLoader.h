@@ -53,7 +53,6 @@ class ModelLoader {
     private:
 
         // Internal Model Instance For Processing
-        ERS_OBJECT_MODEL* Model_; /**<Model Instance for processing.*/
         std::string ModelDirectory_; /**<Current model directory being processed.*/
         bool FlipTextures_; /**<Flip Textures For current Model Being Loaded.*/
 
@@ -76,7 +75,7 @@ class ModelLoader {
          * @param Node 
          * @param Scene 
          */
-        void ProcessNode(aiNode *Node, const aiScene *Scene);
+        void ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene);
 
         /**
          * @brief Process Meshes From Model.
@@ -85,7 +84,7 @@ class ModelLoader {
          * @param Scene 
          * @return ERS_OBJECT_MESH 
          */
-        ERS_OBJECT_MESH ProcessMesh(aiMesh *Mesh, const aiScene *Scene);
+        ERS_OBJECT_MESH ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene);
 
         /**
          * @brief Load Textures From Model.
@@ -95,7 +94,7 @@ class ModelLoader {
          * @param TypeName 
          * @return std::vector<ERS_OBJECT_TEXTURE_2D> 
          */
-        std::vector<ERS_OBJECT_TEXTURE_2D> LoadMaterialTextures(aiMaterial *Mat, aiTextureType Type, std::string TypeName);
+        std::vector<ERS_OBJECT_TEXTURE_2D> LoadMaterialTextures(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName);
 
 
     public:
