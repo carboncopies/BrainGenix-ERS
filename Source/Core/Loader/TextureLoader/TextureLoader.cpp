@@ -88,6 +88,10 @@ ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path, bool FlipImag
             }
             glGenerateMipmap(GL_TEXTURE_2D);
 
+        } else {
+            Texture.Channels = Channels;
+            Texture.Height = Height;
+            Texture.Width = Width;
         }
 
 

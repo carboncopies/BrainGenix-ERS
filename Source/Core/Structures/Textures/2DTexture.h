@@ -23,6 +23,9 @@ struct ERS_OBJECT_TEXTURE_2D {
     unsigned int ID;
     
     // Set ImageData For Deferred OpenGL Loading
+    float Channels;
+    float Width;
+    float Height;
     unsigned char* ImageData;
 
     // Set Metadata

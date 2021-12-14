@@ -103,9 +103,9 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
 
                 // Generate Texture Map
                 if (Channels == 4) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, Texture.ImageData);
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData);
                 } else {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, Texture.ImageData);
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData);
                 }
                 glGenerateMipmap(GL_TEXTURE_2D);
 
@@ -119,23 +119,7 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
         }
 
     }
-    // int ModelsProcessed = -1;
-    // while (ModelsProcessed != TotalModelCount) {
 
-    //     ModelsProcessed = 0;
-
-    //     for (int i = 0; i < TotalModelCount; i++) {
-
-    //         // Check If Model Loaded
-    //         std::future_status ModelStatus = Models[i].wait_for(std::chrono::microseconds(50));
-
-    //         if ()
-
-
-    //     }
-        
-
-    // }
     
 
     // Create Dictionary Of Loaded Models
