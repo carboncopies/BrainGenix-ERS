@@ -38,6 +38,13 @@ ModelLoader::~ModelLoader() {
 
 }
 
+// Batch Load Models
+std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector<std::string> FilePaths, std::vector<bool> FlipTextures){
+
+    //
+
+}
+
 
 // Async Load Model
 std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath, bool FlipTextures) {
