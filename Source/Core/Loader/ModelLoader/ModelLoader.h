@@ -109,7 +109,7 @@ class ModelLoader {
          * @param Logger 
          * @param TextureLoader 
          */
-        ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<TextureLoader> TextureLoader, int MaxThreadCount = 24);
+        ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<TextureLoader> TextureLoader, int MaxThreadCount = 1);
 
         /**
          * @brief Destroy the Model Loader object
