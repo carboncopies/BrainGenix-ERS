@@ -87,34 +87,41 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
             // Process Mesh Textures
             for (int TextureIndex = 0; TextureIndex < CurrentModel.Meshes[MeshIndex].Textures.size(); TextureIndex++) {
 
-                // Get Metadata
-                float Channels = CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].Channels;
-                float Width = CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].Width;
-                float Height = CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].Height;
+                // Verify Images Are Loaded
+                if (CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].HasImageData) {
 
-                // Generate Texture
-                glGenTextures(1, &CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ID);
-                glBindTexture(GL_TEXTURE_2D, CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ID);
+                    // Get Metadata
+                    float Channels = CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].Channels;
+                    float Width = CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].Width;
+                    float Height = CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].Height;
 
-                // Set Texture Properties
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                    // Generate Texture
+                    glGenTextures(1, &CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ID);
+                    glBindTexture(GL_TEXTURE_2D, CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ID);
 
-                // Generate Texture Map
-                if (Channels == 4) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, FreeImage_GetBits(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData));
+                    // Set Texture Properties
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+                    // Generate Texture Map
+                    if (Channels == 4) {
+                        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, FreeImage_GetBits(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData));
+                    } else {
+                        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, FreeImage_GetBits(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData));
+                    }
+                    glGenerateMipmap(GL_TEXTURE_2D);
+
+                    // Free Image Data
+                    CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].HasImageData = false;
+                    FreeImage_Unload(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData);
+
                 } else {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, FreeImage_GetBits(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData));
+
+                    // Log That An Error Happened During Image Loading, Skip
+                    Logger_->Log(std::string(std::string("Images Failed To Load, Cannot Process Texture '") + std::string(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].Path) + std::string("'")).c_str(), 9);
                 }
-                glGenerateMipmap(GL_TEXTURE_2D);
-
-                // Free Image Data
-                CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].HasImageData = false;
-                FreeImage_Unload(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData);
-
-                // Add To New Texture Map
 
             }
 
