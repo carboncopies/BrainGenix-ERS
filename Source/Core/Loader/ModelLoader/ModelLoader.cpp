@@ -176,6 +176,9 @@ std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath,
 // Load Model From File
 ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(std::string AssetPath, bool FlipTextures, bool IsThread) {
 
+    // Check If Metadata Exists
+    YAML::Node ModelMetadata = YAML::LoadFile(std::string(AssetPath.substr(0, AssetPath.find_last_of("/")) + std::string("Metadata.yaml")).c_str());
+
     // Clear Model Instance
     ERS_OBJECT_MODEL Model;
 
