@@ -13,7 +13,7 @@
 
 
 // Constructor
-ModelLoader::ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<TextureLoader> TexLoader) {
+ModelLoader::ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<TextureLoader> TexLoader, int MaxModelLoadingThreads) {
 
     // Create Local Pointer
     Logger_ = Logger;
@@ -21,6 +21,12 @@ ModelLoader::ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<Te
 
     // Log Initialization
     Logger_->Log("Initializing Model Loader", 5);
+    ActiveThreadCount_ = 0;
+
+
+    // Set Max Threads
+    Logger_->Log(std::string(std::string("Setting Maximum Concurrent Model Loading Threads To: ") + std::to_string(MaxModelLoadingThreads)).c_str(), 4);
+    MaxThreadCount_ = MaxModelLoadingThreads;
 
 }
 
@@ -33,6 +39,17 @@ ModelLoader::~ModelLoader() {
 }
 
 
+// Async Load Model
+std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath, bool FlipTextures) {
+
+    // Log 
+
+    // Lock Count
+
+    // Create Future Object
+    
+
+}
 
 // Load Model From File
 ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath, bool FlipTextures) {

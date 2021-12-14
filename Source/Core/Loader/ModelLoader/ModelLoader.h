@@ -23,6 +23,7 @@
 #include <assert.h>
 #include <sys/stat.h>
 #include <stdlib.h>
+#include <future>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
@@ -59,6 +60,17 @@ class ModelLoader {
         std::shared_ptr<LoggerClass> Logger_; /**<Pointer to Logging System.*/
         std::shared_ptr<TextureLoader> TextureLoader_; /**<Pointer To Texture Loader Instance.*/
 
+
+        // Multithreading Vars
+        int MaxThreadCount_;
+        std::mutex LockActiveThreadCount_;
+        int ActiveThreadCount_;
+        std::mutex LockOutputVector_;
+        std::vector<ERS_OBJECT_MODEL> OutputModels;
+
+
+
+
         /**
          * @brief Function Used To Process Subnodes Of SceneFiles.
          * 
@@ -90,6 +102,8 @@ class ModelLoader {
     public:
 
 
+        std::future<ERS_OBJECT_MODEL> AsyncLoadModel(const char* AssetPath, bool FlipTextures = true);
+
 
         /**
          * @brief Construct a new Model Loader object
@@ -97,7 +111,7 @@ class ModelLoader {
          * @param Logger 
          * @param TextureLoader 
          */
-        ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<TextureLoader> TextureLoader);
+        ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<TextureLoader> TextureLoader, int MaxThreadCount = 24);
 
         /**
          * @brief Destroy the Model Loader object
