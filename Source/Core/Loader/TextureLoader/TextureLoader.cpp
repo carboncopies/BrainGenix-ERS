@@ -96,6 +96,7 @@ ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path, bool FlipImag
             Texture.Channels = Channels;
             Texture.Height = Height;
             Texture.Width = Width;
+            Texture.HasImageData = true;
         }
 
 

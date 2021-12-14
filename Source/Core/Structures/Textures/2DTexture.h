@@ -27,6 +27,7 @@ struct ERS_OBJECT_TEXTURE_2D {
     float Width;
     float Height;
     FIBITMAP* ImageData;
+    bool HasImageData = false;
 
     // Set Metadata
     std::string Type;
