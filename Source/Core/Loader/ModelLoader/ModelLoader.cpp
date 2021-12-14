@@ -74,6 +74,20 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
     }
 
     
+    // Create Dictionary Of Loaded Models
+    std::map<std::string, ERS_OBJECT_MODEL> OutputMap;
+
+    for (int i = 0; i < TotalModelCount; i++) {
+
+        // Log Retrieval, Then Add To Output Dict
+        Logger_->Log(std::string(std::string("Getting Model From Loading Queue With Path ") + std::string(FilePaths[i])).c_str(), 3);
+        OutputMap.emplace(FilePaths[i], Models[i].get());
+
+    }
+
+
+    // Return
+    return OutputMap;
 
 }
 
