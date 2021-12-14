@@ -98,10 +98,6 @@ std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath,
     // Log Loading
     Logger_->Log(std::string(std::string("Creating Thread To Load Model At Path: ") + std::string(AssetPath)).c_str(), 3);
 
-    // Lock Count
-    LockActiveThreadCount_->lock();
-    ActiveThreadCount_++;
-    LockActiveThreadCount_->unlock();
 
     // Create And Return Future Object
     std::future<ERS_OBJECT_MODEL> FutureModel = std::async(&ModelLoader::LoadModelFromFile, this, std::string(AssetPath), FlipTextures, true);
@@ -111,7 +107,14 @@ std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath,
 
 
 // Load Model From File
-ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(std::string AssetPath, bool FlipTextures, bool DeIncrimentThreadCount) {
+ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(std::string AssetPath, bool FlipTextures, bool IsThread) {
+
+    // Update Count If Thread
+    if (IsThread) {
+        LockActiveThreadCount_->lock();
+        ActiveThreadCount_++;
+        LockActiveThreadCount_->unlock();
+    }
 
     // Clear Model Instance
     ERS_OBJECT_MODEL Model;
@@ -141,7 +144,7 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(std::string AssetPath, bool Flip
     ProcessNode(&Model, Scene->mRootNode, Scene);
 
     // If In Other Thread
-    if (DeIncrimentThreadCount) {
+    if (IsThread) {
         LockActiveThreadCount_->lock();
         ActiveThreadCount_--;
         LockActiveThreadCount_->unlock();
