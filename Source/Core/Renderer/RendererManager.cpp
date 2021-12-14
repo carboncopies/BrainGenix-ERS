@@ -73,9 +73,9 @@ RendererManager::RendererManager(std::shared_ptr<YAML::Node> SystemConfiguration
     YAML::Node TestScene2 = YAML::LoadFile("Assets/Scene2.yaml");
     YAML::Node TestScene3 = YAML::LoadFile("Assets/Scene3.yaml");
     
-    SceneManager_->AddScene(SLoader.ProcessScene(TestScene, "Assets/Scene.yaml"));
-    SceneManager_->AddScene(SLoader.ProcessScene(TestScene2, "Assets/Scene2.yaml"));
-    SceneManager_->AddScene(SLoader.ProcessScene(TestScene3, "Assets/Scene3.yaml"));
+    SceneManager_->AddScene(SLoader.ProcessScene(TestScene, "Assets/Scene.yaml", false));
+    SceneManager_->AddScene(SLoader.ProcessScene(TestScene2, "Assets/Scene2.yaml", false));
+    SceneManager_->AddScene(SLoader.ProcessScene(TestScene3, "Assets/Scene3.yaml", false));
 
 }
 
