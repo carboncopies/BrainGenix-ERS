@@ -32,10 +32,12 @@ class ERS_OBJECT_MESH {
         unsigned int VBO;
         unsigned int EBO;
 
-        // Delcare Methods
-        void SetupMesh();
+
 
     public:
+
+        // Delcare Methods
+        void SetupMesh();
 
         // Setup Mesh Data
         std::vector<ERS_OBJECT_VERTEX> Vertices;
@@ -50,21 +52,7 @@ class ERS_OBJECT_MESH {
         bool _HasInitialized = false;
 
 
-        // Setup Mesh Constructor
-        ERS_OBJECT_MESH(std::vector<ERS_OBJECT_VERTEX> Vertices, std::vector<unsigned int> Indices, std::vector<ERS_OBJECT_TEXTURE_2D> Textures) {
 
-            // Populate Data
-            this->Vertices = Vertices;
-            this->Indices = Indices;
-            this->Textures = Textures;
-
-            // Initialize The Mesh
-            SetupMesh();
-
-            // Update Helper Bool
-            _HasInitialized = true;
-
-        }
 
         void Draw(std::shared_ptr<ERS_OBJECT_SHADER> Shader);
 

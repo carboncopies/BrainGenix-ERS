@@ -73,7 +73,71 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
 
     }
 
+    // Process Models
+    std::vector<ERS_OBJECT_MODEL> ProcessedModels;
+
+    for (int i = 0; i < TotalModelCount; i++) {
+
+        ERS_OBJECT_MODEL CurrentModel = Models[i].get();
+        
+        // Process Meshes
+        for (int MeshIndex = 0; MeshIndex < CurrentModel.Meshes.size(); MeshIndex++) {
+
+            // Process Mesh Textures
+            for (int TextureIndex = 0; TextureIndex < CurrentModel.Meshes[MeshIndex].Textures.size(); TextureIndex++) {
+
+                // Get Metadata
+                float Channels = CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].Channels;
+                float Width = CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].Width;
+                float Height = CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].Height;
+
+                // Generate Texture
+                glGenTextures(1, &CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ID);
+                glBindTexture(GL_TEXTURE_2D, CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ID);
+
+                // Set Texture Properties
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+                // Generate Texture Map
+                if (Channels == 4) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, Texture.ImageData);
+                } else {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, Texture.ImageData);
+                }
+                glGenerateMipmap(GL_TEXTURE_2D);
+
+            }
+
+            // Process Mesh
+            CurrentModel.Meshes[MeshIndex].SetupMesh();
+
+
+
+        }
+
+    }
+    // int ModelsProcessed = -1;
+    // while (ModelsProcessed != TotalModelCount) {
+
+    //     ModelsProcessed = 0;
+
+    //     for (int i = 0; i < TotalModelCount; i++) {
+
+    //         // Check If Model Loaded
+    //         std::future_status ModelStatus = Models[i].wait_for(std::chrono::microseconds(50));
+
+    //         if ()
+
+
+    //     }
+        
+
+    // }
     
+
     // Create Dictionary Of Loaded Models
     std::map<std::string, ERS_OBJECT_MODEL> OutputMap;
 
@@ -258,8 +322,16 @@ ERS_OBJECT_MESH ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, 
     std::vector<ERS_OBJECT_TEXTURE_2D> HeightMaps = LoadMaterialTextures(Model, Material, aiTextureType_AMBIENT, "texture_height", IsThread);
     Textures.insert(Textures.end(), HeightMaps.begin(), HeightMaps.end());
 
-    // Mesh Object
-    return ERS_OBJECT_MESH(Vertices, Indices, Textures);
+    // Setup Mesh And Return
+    ERS_OBJECT_MESH OutputMesh;
+    OutputMesh.Vertices = Vertices;
+    OutputMesh.Textures = Textures;
+    OutputMesh.Indices = Indices;
+
+    if (!IsThread) { // This Calls OpenGL Parameters, Is Not Thread Safe. Must be deferred for multithreaded loading
+        OutputMesh.SetupMesh();
+    }
+    return OutputMesh;
 
 }
 

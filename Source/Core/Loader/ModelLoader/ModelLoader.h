@@ -25,6 +25,7 @@
 #include <stdlib.h>
 #include <future>
 #include <thread>
+#include <chrono>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
