@@ -70,7 +70,6 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
         } else {
             LockActiveThreadCount_.unlock();
         }
-        
 
     }
 
