@@ -24,6 +24,7 @@
 #include <sys/stat.h>
 #include <stdlib.h>
 #include <future>
+#include <thread>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
@@ -63,10 +64,8 @@ class ModelLoader {
 
         // Multithreading Vars
         int MaxThreadCount_;
-        std::mutex LockActiveThreadCount_;
+        std::shared_ptr<std::mutex> LockActiveThreadCount_ = std::make_shared<std::mutex>();
         int ActiveThreadCount_;
-        std::mutex LockOutputVector_;
-        std::vector<ERS_OBJECT_MODEL> OutputModels;
 
 
 

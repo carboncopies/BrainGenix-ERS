@@ -56,9 +56,9 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
     while (CurrentModelIndex != TotalModelCount) {
         
         // Lock And Check Active Thread Count
-        LockActiveThreadCount_.lock();
+        LockActiveThreadCount_->lock();
         if (ActiveThreadCount_ < MaxThreadCount_) {
-            LockActiveThreadCount_.unlock();
+            LockActiveThreadCount_->unlock();
 
             // Async Load Model
             std::string ModelAssetPath = FilePaths[CurrentModelIndex];
@@ -68,7 +68,7 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
             CurrentModelIndex++;
 
         } else {
-            LockActiveThreadCount_.unlock();
+            LockActiveThreadCount_->unlock();
         }
 
     }
@@ -99,9 +99,9 @@ std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath,
     Logger_->Log(std::string(std::string("Creating Thread To Load Model At Path") + std::string(AssetPath)).c_str(), 3);
 
     // Lock Count
-    LockActiveThreadCount_.lock();
+    LockActiveThreadCount_->lock();
     ActiveThreadCount_++;
-    LockActiveThreadCount_.unlock();
+    LockActiveThreadCount_->unlock();
 
     // Create And Return Future Object
     std::future<ERS_OBJECT_MODEL> FutureModel = std::async(&ModelLoader::LoadModelFromFile, this, AssetPath, FlipTextures, true);
@@ -146,9 +146,9 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(const char* AssetPath, bool Flip
 
     // If In Other Thread
     if (DeIncrimentThreadCount) {
-        LockActiveThreadCount_.lock();
+        LockActiveThreadCount_->lock();
         ActiveThreadCount_--;
-        LockActiveThreadCount_.unlock();
+        LockActiveThreadCount_->unlock();
     }
 
     // Return Model Instance
