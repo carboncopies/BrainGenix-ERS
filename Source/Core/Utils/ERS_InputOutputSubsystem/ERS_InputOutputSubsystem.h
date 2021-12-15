@@ -30,7 +30,7 @@ class ERS_CLASS_InputOutputSubsystem {
     private:
 
         std::shared_ptr<LoggerClass> Logger_; /**<Logging Class Pointer*/
-        bool UseDatabase; /**<Indicates If The Database Should Be Used For IO. Set By LocalSystemConfiguration Values In Constructor*/
+        bool UseDatabase_; /**<Indicates If The Database Should Be Used For IO. Set By LocalSystemConfiguration Values In Constructor*/
 
     public:
 
