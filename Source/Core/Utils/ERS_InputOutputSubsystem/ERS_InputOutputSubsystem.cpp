@@ -15,6 +15,9 @@
 // Constructor
 ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(std::shared_ptr<LoggerClass> Logger, YAML::Node SystemConfiguration) {
 
+    // Copy Pointer
+    Logger_ = Logger;
+
     // Log Initialization
     Logger_->Log("Initializing Input/Output Subsystem", 5);
 
