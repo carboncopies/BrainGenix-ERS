@@ -129,7 +129,7 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
 
     // Measure End Time, Calculate Metadata
     auto FinishTime = std::chrono::high_resolution_clock::now();
-    float Duration = std::chrono::duration<float>(std::chrono::duration_cast<std::chrono::seconds>(FinishTime - StartTime)).count();
+    float Duration = std::chrono::duration<float>(std::chrono::duration_cast<std::chrono::nanoseconds>(FinishTime - StartTime)).count();
 
 
     OutputStruct.LoadTime_s = Duration;
