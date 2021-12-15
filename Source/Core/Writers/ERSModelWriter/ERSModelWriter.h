@@ -35,6 +35,8 @@ class ERS_CLASS_ModelWriter {
     // Member Vars
     private:
 
+        std::shared_ptr<LoggerClass> Logger_; /**<Pointer To Logger Instance*/
+
     // Member Functions
     private:
 
@@ -44,6 +46,17 @@ class ERS_CLASS_ModelWriter {
     // Public Member Functions
     public:
 
-
+        /**
+         * @brief Construct a new ers class modelwriter object
+         * 
+         * @param Logger 
+         */
+        ERS_CLASS_ModelWriter(std::shared_ptr<LoggerClass> Logger);
+        
+        /**
+         * @brief Destroy the ers class modelwriter object
+         * 
+         */
+        ~ERS_CLASS_ModelWriter();
 
 };
