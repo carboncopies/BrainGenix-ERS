@@ -27,3 +27,23 @@
 
 
 #include <Shader.h>
+
+
+// This Class Encodes Models In The ERS Format (Modified GLTF)
+class ERS_CLASS_ModelWriter {
+
+    // Member Vars
+    private:
+
+    // Member Functions
+    private:
+
+    // Public Member Vars
+    public:
+
+    // Public Member Functions
+    public:
+
+
+
+};
