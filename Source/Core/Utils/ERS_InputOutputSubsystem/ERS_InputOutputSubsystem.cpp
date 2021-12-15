@@ -93,7 +93,8 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
         struct stat Buffer;
         int FileStatus = stat(FilePath.c_str(), &Buffer);
         FileSize = Buffer.st_size;
-        std::cout<<FileStatus<<std::endl;
+
+
         if (FileStatus == 0) {
 
             // Allocate Memory
@@ -109,6 +110,8 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
             }
 
         
+        } else {
+            Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', File Not Found")).c_str(), 9);
         }
 
 
