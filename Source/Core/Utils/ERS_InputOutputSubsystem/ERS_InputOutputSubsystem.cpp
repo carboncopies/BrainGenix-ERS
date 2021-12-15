@@ -145,3 +145,53 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
     return OutputStruct;
 
 }
+
+// Write Data
+bool ERS_CLASS_InputOutputSubsystem::WriteAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> InputData) {
+
+// Start Clock To Measure File Metadata
+    auto StartTime = std::chrono::high_resolution_clock::now();
+    bool Success = false;
+
+    // If Database Loading
+    if (UseDatabase_) {
+
+        // Load From DB
+        
+
+    } else {
+
+        // Generate File Path
+        std::string FilePath = AssetPath_ + std::to_string(AssetID) + std::string(".ERS");
+
+        FILE *Stream = fopen(FilePath.c_str(), "wb");
+
+        if (Stream) {
+
+            fwrite(InputData->Data, 1, sizeof(unsigned char)*InputData->Size_B, Stream);
+            fclose(Stream);
+            Success = true;
+
+        } else {
+            Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', Failed To Open Filestream")).c_str(), 9);
+            Success = false;
+        }
+
+    }
+
+
+    // Measure End Time, Calculate Metadata
+    auto FinishTime = std::chrono::high_resolution_clock::now();
+    float Duration = std::chrono::duration<float>(std::chrono::duration_cast<std::chrono::nanoseconds>(FinishTime - StartTime)).count();
+
+    InputData->WriteTime_s = Duration;
+
+    InputData->WriteSpeed_KBs = (InputData->Size_B / 1000) / Duration;
+    InputData->WriteSpeed_MBs = (InputData->Size_B / 1000000) / Duration; 
+    InputData->WriteSpeed_GBs = (InputData->Size_B / 1000000000) / Duration; 
+
+    // Return Data
+    return Success;
+
+
+}
