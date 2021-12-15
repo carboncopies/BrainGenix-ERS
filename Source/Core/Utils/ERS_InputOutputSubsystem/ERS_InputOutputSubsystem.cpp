@@ -69,16 +69,17 @@ ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
 
 
 // Read Assets From File/DB, Return Bytes
-char* ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
+ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
 
     // Var To STore Data In
-    char* Data;
+    ERS_STRUCT_IOData OutputStruct;
 
 
     // If Database Loading
     if (UseDatabase_) {
 
         // Load From DB
+        
 
     } else {
 
@@ -88,13 +89,13 @@ char* ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
         // Open File, Read Contents Into Data Buffer, Close Stream
         std::ifstream FileStream;
         FileStream.open(FilePath, std::ios::binary | std::ios::ate);
-        FileStream.read(Data, FileStream.tellg());
+        FileStream.read(OutputStruct.Data, FileStream.tellg());
         FileStream.close();
 
     }
 
 
     // Return Data
-    return Data;
+    return OutputStruct;
 
 }

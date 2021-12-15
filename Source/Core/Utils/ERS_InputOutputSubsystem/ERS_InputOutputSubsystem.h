@@ -22,6 +22,8 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 
+#include <ERS_STRUCT_IOData.h>
+
 
 /**
  * @brief This class provides a single input/ouput file operation system. It is thread safe.
@@ -57,7 +59,7 @@ class ERS_CLASS_InputOutputSubsystem {
          * @param AssetID 
          * @param AssetData 
          */
-        void WriteAsset(long AssetID, char* AssetData);
+        void WriteAsset(long AssetID, ERS_STRUCT_IOData AssetData);
 
         /**
          * @brief Read Asset From ID
@@ -65,6 +67,6 @@ class ERS_CLASS_InputOutputSubsystem {
          * @param AssetID 
          * @return char* 
          */
-        char* ReadAsset(long AssetID);
+        ERS_STRUCT_IOData ReadAsset(long AssetID);
 
 };

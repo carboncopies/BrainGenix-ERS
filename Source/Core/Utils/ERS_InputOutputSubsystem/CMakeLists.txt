@@ -22,6 +22,9 @@ target_link_libraries(ERS_InputOutputSubsystem
 
 # Link Internal Libs
 target_link_libraries(ERS_InputOutputSubsystem
+
+    ERS_STRUCT_IOData
+
     LoggingSystem
     )
 
