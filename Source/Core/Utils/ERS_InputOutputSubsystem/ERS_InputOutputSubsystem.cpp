@@ -107,11 +107,19 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
 
     // Measure End Time, Calculate Metadata
     auto FinishTime = std::chrono::high_resolution_clock::now();
-    float Duration = std::chrono::duration<float>(std::chrono::duration_cast<std::chrono::nanoseconds>(FinishTime - StartTime)).count();
-
-    std::cout<<"Duration: "<<Duration<<" Size: "<<FileSize<<std::endl;
+    float Duration = std::chrono::duration<float>(std::chrono::duration_cast<std::chrono::seconds>(FinishTime - StartTime)).count();
 
     OutputStruct.LoadTime_s = Duration;
+    OutputStruct.Size_B = FileSize;
+    OutputStruct.Size_KB = FileSize / 1000;
+    OutputStruct.Size_MB = FileSize / 1000000;
+    OutputStruct.Size_GB = FileSize / 1000000000;
+
+    OutputStruct.LoadSpeed_KBs = (FileSize / 1000) / Duration;
+    OutputStruct.LoadSpeed_MBs = (FileSize / 1000000) / Duration; 
+    OutputStruct.LoadSpeed_GBs = (FileSize / 1000000000) / Duration; 
+
+    std::cout<<"Duration: "<<Duration<<" Size: "<<FileSize<<" Speed: "<<OutputStruct.LoadSpeed_MBs<<std::endl;
 
 
 
