@@ -99,19 +99,29 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
 
             // Allocate Memory
             OutputStruct.Data = (unsigned char*)malloc(Buffer.st_size * sizeof(unsigned char));
-
             if (OutputStruct.Data) {
-                FILE *Stream = fopen(FilePath.c_str(), "rb");
 
+                FILE *Stream = fopen(FilePath.c_str(), "rb");
                 if (Stream) {
+
                     fread(OutputStruct.Data, sizeof(unsigned char), Buffer.st_size, Stream);
                     fclose(Stream);
+                    OutputStruct.HasLoaded = true;
+
+                } else {
+                    Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', Failed To Open Filestream")).c_str(), 9);
+                    OutputStruct.HasLoaded = false;
                 }
+
+            } else {
+                Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', Memory Allocation Failed")).c_str(), 9);            
+                OutputStruct.HasLoaded = false;
             }
 
         
         } else {
             Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', File Not Found")).c_str(), 9);
+            OutputStruct.HasLoaded = false;
         }
 
 
@@ -133,6 +143,7 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
     // Measure End Time, Calculate Metadata
     auto FinishTime = std::chrono::high_resolution_clock::now();
     float Duration = std::chrono::duration<float>(std::chrono::duration_cast<std::chrono::seconds>(FinishTime - StartTime)).count();
+
 
     OutputStruct.LoadTime_s = Duration;
     OutputStruct.Size_B = FileSize;
