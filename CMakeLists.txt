@@ -165,6 +165,7 @@ target_link_libraries(${PROJECT_NAME}
   LoggingSystem
   Renderer
   HardwareInformation
+  ERS_InputOutputSubsystem
 
   )
 

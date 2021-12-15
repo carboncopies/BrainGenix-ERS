@@ -21,6 +21,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LocalConfigurationLoader.h>
 #include <LoggingSystem.h>
+#include <ERS_InputOutputSubsystem.h>
 
 #include <RendererManager.h>
 #include <HardwareInformation.h>
@@ -63,6 +64,9 @@ int main() {
     // Instantiate Logging Subsystem
     std::shared_ptr<LoggerClass> sERSLogger = std::make_shared<LoggerClass>(sERSLocalSystemConfiguration);
     sERSLogger->Log("Initialized Logging System", 5);
+
+    // Startup IO Subsystem
+    std::shared_ptr<ERS_CLASS_InputOutputSubsystem> = std::make_shared<ERS_CLASS_InputOutputSubsystem>(sERSLogger, sERSLocalSystemConfiguration);
 
     // Instantiate HardwareInformation System
     HardwareInformation sERSHardwareInformation(sERSLogger, sERSLocalSystemConfiguration);
