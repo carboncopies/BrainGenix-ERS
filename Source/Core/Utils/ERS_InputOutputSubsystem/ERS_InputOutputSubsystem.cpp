@@ -98,6 +98,7 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
         }
 
         FileSize = FileStream.tellg();
+        FileStream.seekg(0, std::ios::beg);
         FileStream.read(OutputStruct.Data, FileSize);
         FileStream.close();
 
