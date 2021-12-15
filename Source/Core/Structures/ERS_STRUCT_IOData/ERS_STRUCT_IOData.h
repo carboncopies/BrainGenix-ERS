@@ -22,16 +22,16 @@
  * @brief Structure to shuttle around data to and from loading/writing.
  * 
  */
-struct ERS_IOData {
+struct ERS_STRUCT_IOData {
 
     char* Data; /**<Char Array Containing Raw Data*/
 
-    float LoadTime_s /**<Float Indicating Number Of Seconds Loading Took, If Not Set, Value Is -1*/
+    float LoadTime_s; /**<Float Indicating Number Of Seconds Loading Took, If Not Set, Value Is -1*/
 
     float Size_B; /**<Number Indicating Size Of Data*/
     float Size_KB; /**<Size In Kilobytes*/
     float Size_MB; /**<Size In Megabytes*/
-    float Size_BG; /**<Size In Gigabytes*/
+    float Size_GB; /**<Size In Gigabytes*/
 
     float LoadSpeed_GBs; /**<Loading Speed In Gigabytes/Second*/
     float LoadSpeed_MBs; /**<Loading Speed In Megabytes/Second*/
