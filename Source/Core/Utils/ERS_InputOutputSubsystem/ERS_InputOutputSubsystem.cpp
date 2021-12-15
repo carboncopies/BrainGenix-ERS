@@ -109,7 +109,7 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
     auto FinishTime = std::chrono::high_resolution_clock::now();
     float Duration = std::chrono::duration<float>(std::chrono::duration_cast<std::chrono::nanoseconds>(FinishTime - StartTime)).count();
 
-    std::cout<<"Duration: "<<Duration<<std::endl;
+    std::cout<<"Duration: "<<Duration<<" Size: "<<FileSize<<std::endl;
 
     OutputStruct.LoadTime_s = Duration;
 
