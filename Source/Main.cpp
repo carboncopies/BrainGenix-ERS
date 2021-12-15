@@ -67,6 +67,11 @@ int main() {
 
     // Startup IO Subsystem
     std::shared_ptr<ERS_CLASS_InputOutputSubsystem> sERSIOSubSystem = std::make_shared<ERS_CLASS_InputOutputSubsystem>(sERSLogger, sERSLocalSystemConfiguration);
+    #include <ERS_STRUCT_IOData.h>
+
+    ERS_STRUCT_IOData Test = sERSIOSubSystem->ReadAsset(0);
+    std::cout<<Test.Data<<std::endl;
+
 
     // Instantiate HardwareInformation System
     HardwareInformation sERSHardwareInformation(sERSLogger, sERSLocalSystemConfiguration);
