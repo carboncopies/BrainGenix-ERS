@@ -85,6 +85,16 @@ char* ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
         std::ifstream FileStream;
         FileStream.open(FilePath, 'rb');
 
+        // Get Data
+        char* Data = FileStream.get();
+
+        // Close Stream
+        FileStream.close();
+
     }
+
+
+    // Return Data
+    return Data
 
 }
