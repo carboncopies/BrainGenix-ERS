@@ -24,7 +24,7 @@
  */
 struct ERS_STRUCT_IOData {
 
-    char* Data; /**<Char Array Containing Raw Data*/
+    unsigned char* Data; /**<Char Array Containing Raw Data*/
 
     float LoadTime_s; /**<Float Indicating Number Of Seconds Loading Took, If Not Set, Value Is -1*/
 

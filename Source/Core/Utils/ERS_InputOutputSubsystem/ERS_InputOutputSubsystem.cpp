@@ -90,17 +90,38 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
         // Generate File Path
         std::string FilePath = AssetPath_ + std::to_string(AssetID) + std::string(".ERS");
 
-        // Open File, Read Contents Into Data Buffer, Close Stream
-        std::ifstream FileStream(FilePath, std::ios::binary | std::ios::ate);
+        struct stat Buffer;
+        int FileStatus = stat(FilePath.c_str(), &Buffer);
 
-        if (FileStream.fail()) {
-            Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', Cannot Find Specified Asset")).c_str(), 9);
+        if (FileStatus == 0) {
+
+            // Allocate Memory
+            OutputStruct.Data = (unsigned char*)malloc(Buffer.st_size * sizeof(unsigned char));
+
+            if (OutputStruct.Data) {
+                FILE *Stream = fopen(FilePath.c_str(), "rb");
+
+                if (Stream) {
+                    fread(OutputStruct.Data, sizeof(unsigned char), Buffer.st_size, Stream);
+                    fclose(Stream);
+                }
+            }
+
+        
         }
 
-        FileSize = FileStream.tellg();
-        FileStream.seekg(0, std::ios::beg);
-        FileStream.read(OutputStruct.Data, FileSize);
-        FileStream.close();
+
+        // // Open File, Read Contents Into Data Buffer, Close Stream
+        // std::ifstream FileStream(FilePath, std::ios::binary | std::ios::ate);
+
+        // if (FileStream.fail()) {
+        //     Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', Cannot Find Specified Asset")).c_str(), 9);
+        // }
+
+        // FileSize = FileStream.tellg();
+        // FileStream.seekg(0, std::ios::beg);
+        // FileStream.read(OutputStruct.Data, FileSize);
+        // FileStream.close();
 
     }
 
