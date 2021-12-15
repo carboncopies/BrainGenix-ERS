@@ -69,9 +69,10 @@ int main() {
     std::shared_ptr<ERS_CLASS_InputOutputSubsystem> sERSIOSubSystem = std::make_shared<ERS_CLASS_InputOutputSubsystem>(sERSLogger, sERSLocalSystemConfiguration);
     #include <ERS_STRUCT_IOData.h>
 
-    ERS_STRUCT_IOData Test = sERSIOSubSystem->ReadAsset(0);
-    sERSIOSubSystem->WriteAsset(1, std::make_shared<ERS_STRUCT_IOData>(Test));
-    std::cout<<Test.WriteSpeed_MBs<<std::endl;
+    std::shared_ptr<ERS_STRUCT_IOData> Test = std::make_shared<ERS_STRUCT_IOData>();
+    sERSIOSubSystem->ReadAsset(0, Test);
+    sERSIOSubSystem->WriteAsset(1, Test);
+    std::cout<<Test->WriteSpeed_MBs<<std::endl;
 
 
     // Instantiate HardwareInformation System

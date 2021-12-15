@@ -69,15 +69,14 @@ ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
 
 
 // Read Assets From File/DB, Return Bytes
-ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
-
-    // Var To STore Data In
-    ERS_STRUCT_IOData OutputStruct;
+bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> OutputData) {
 
 
     // Start Clock To Measure File Metadata
     auto StartTime = std::chrono::high_resolution_clock::now();
+    bool ReadSuccess = false;
     float FileSize = 0;
+
 
     // If Database Loading
     if (UseDatabase_) {
@@ -98,30 +97,34 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
         if (FileStatus == 0) {
 
             // Allocate Memory
-            OutputStruct.Data = (unsigned char*)malloc(Buffer.st_size * sizeof(unsigned char));
-            if (OutputStruct.Data) {
+            OutputData->Data = (unsigned char*)malloc(Buffer.st_size * sizeof(unsigned char));
+            if (OutputData->Data) {
 
                 FILE *Stream = fopen(FilePath.c_str(), "rb");
                 if (Stream) {
 
-                    fread(OutputStruct.Data, sizeof(unsigned char), Buffer.st_size, Stream);
+                    fread(OutputData->Data, sizeof(unsigned char), Buffer.st_size, Stream);
                     fclose(Stream);
-                    OutputStruct.HasLoaded = true;
+                    OutputData->HasLoaded = true;
+                    ReadSuccess = true;
 
                 } else {
                     Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', Failed To Open Filestream")).c_str(), 9);
-                    OutputStruct.HasLoaded = false;
+                    OutputData->HasLoaded = false;
+                    ReadSuccess = false;
                 }
 
             } else {
                 Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', Memory Allocation Failed")).c_str(), 9);            
-                OutputStruct.HasLoaded = false;
+                OutputData->HasLoaded = false;
+                ReadSuccess = false;
             }
 
         
         } else {
             Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', File Not Found")).c_str(), 9);
-            OutputStruct.HasLoaded = false;
+            OutputData->HasLoaded = false;
+            ReadSuccess = false;
         }
 
     }
@@ -131,18 +134,18 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
     auto FinishTime = std::chrono::high_resolution_clock::now();
     float Duration = std::chrono::duration<float>(std::chrono::duration_cast<std::chrono::nanoseconds>(FinishTime - StartTime)).count();
 
-    OutputStruct.LoadTime_s = Duration;
-    OutputStruct.Size_B = FileSize;
-    OutputStruct.Size_KB = FileSize / 1000;
-    OutputStruct.Size_MB = FileSize / 1000000;
-    OutputStruct.Size_GB = FileSize / 1000000000;
+    OutputData->LoadTime_s = Duration;
+    OutputData->Size_B = FileSize;
+    OutputData->Size_KB = FileSize / 1000;
+    OutputData->Size_MB = FileSize / 1000000;
+    OutputData->Size_GB = FileSize / 1000000000;
 
-    OutputStruct.LoadSpeed_KBs = (FileSize / 1000) / Duration;
-    OutputStruct.LoadSpeed_MBs = (FileSize / 1000000) / Duration; 
-    OutputStruct.LoadSpeed_GBs = (FileSize / 1000000000) / Duration; 
+    OutputData->LoadSpeed_KBs = (FileSize / 1000) / Duration;
+    OutputData->LoadSpeed_MBs = (FileSize / 1000000) / Duration; 
+    OutputData->LoadSpeed_GBs = (FileSize / 1000000000) / Duration; 
 
     // Return Data
-    return OutputStruct;
+    return ReadSuccess;
 
 }
 
