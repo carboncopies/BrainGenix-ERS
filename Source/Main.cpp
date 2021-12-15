@@ -70,7 +70,8 @@ int main() {
     #include <ERS_STRUCT_IOData.h>
 
     ERS_STRUCT_IOData Test = sERSIOSubSystem->ReadAsset(0);
-    std::cout<<Test.Data<<std::endl;
+    sERSIOSubSystem->WriteAsset(1, Test);
+    std::cout<<Test.WriteSpeed_MBs<<std::endl;
 
 
     // Instantiate HardwareInformation System
