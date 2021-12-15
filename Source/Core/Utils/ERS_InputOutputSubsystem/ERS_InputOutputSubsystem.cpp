@@ -75,6 +75,10 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
     ERS_STRUCT_IOData OutputStruct;
 
 
+    // Start Clock To Measure File Metadata
+    auto StartTime = std::chrono::high_resolution_clock::now();
+
+
     // If Database Loading
     if (UseDatabase_) {
 
@@ -93,6 +97,12 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
         FileStream.close();
 
     }
+
+
+    // Measure End Time, Calculate Metadata
+    auto FinishTime = std::chrono::high_resolution_clock::now();
+    float Duration = std::chrono::duration<float>(std::chrono::duration_cast<std::chrono::nanoseconds>(FinishTime - StartTime)).count();
+
 
 
     // Return Data
