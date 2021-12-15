@@ -23,8 +23,13 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(std::shared_ptr<L
 
     // Get Database Loading / File Loading Config
     Logger_->Log("Reading Configuration For 'BOOL' 'UseDatabaseLoading'", 1);
-    UseDatabase_ = SystemConfiguration["UseDatabaseLoading"].as<bool>();
-
+    try {
+        UseDatabase_ = SystemConfiguration["UseDatabaseLoading"].as<bool>();
+    } 
+    catch(YAML::TypedBadConversion<bool>) { // Config Param Doesn't Exist
+        Logger_->Log("Configuration Error, Parameter 'UseDatabaseLoading' Is Not In Config, System Will Default To False", 8);
+        UseDatabase_ = false;
+    }
 }
 
 // Destructor
