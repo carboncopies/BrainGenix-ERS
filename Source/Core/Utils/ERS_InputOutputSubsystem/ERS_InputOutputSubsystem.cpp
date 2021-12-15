@@ -164,16 +164,24 @@ bool ERS_CLASS_InputOutputSubsystem::WriteAsset(long AssetID, std::shared_ptr<ER
         // Generate File Path
         std::string FilePath = AssetPath_ + std::to_string(AssetID) + std::string(".ERS");
 
-        FILE *Stream = fopen(FilePath.c_str(), "wb");
+        // Check Filesize
+        if (InputData->Size_B > 0) {
 
-        if (Stream) {
+            FILE *Stream = fopen(FilePath.c_str(), "wb");
 
-            fwrite(InputData->Data, 1, sizeof(unsigned char)*InputData->Size_B, Stream);
-            fclose(Stream);
-            Success = true;
+            if (Stream) {
+
+                fwrite(InputData->Data, 1, sizeof(unsigned char)*InputData->Size_B, Stream);
+                fclose(Stream);
+                Success = true;
+
+            } else {
+                Logger_->Log(std::string(std::string("Error Writing Asset '") + std::to_string(AssetID) + std::string("', Failed To Open Filestream")).c_str(), 9);
+                Success = false;
+            }
 
         } else {
-            Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', Failed To Open Filestream")).c_str(), 9);
+            Logger_->Log(std::string(std::string("Error Writing Asset '") + std::to_string(AssetID) + std::string("', Indicated 'Size_B' Is Invalid")).c_str(), 9);
             Success = false;
         }
 
