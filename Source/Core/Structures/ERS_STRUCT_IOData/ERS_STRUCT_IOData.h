@@ -37,4 +37,4 @@ struct ERS_STRUCT_IOData {
     float LoadSpeed_MBs; /**<Loading Speed In Megabytes/Second*/
     float LoadSpeed_KBs; /**<Loading Speed In Kilobytes/Second*/
 
-}
+};
