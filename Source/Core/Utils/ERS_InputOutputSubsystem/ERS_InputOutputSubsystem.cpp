@@ -56,6 +56,8 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(std::shared_ptr<L
 
 }
 
+
+
 // Destructor
 ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
 
@@ -63,6 +65,8 @@ ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
     Logger_->Log("Input/Output Subsystem Destructor Called", 6);
 
 }
+
+
 
 // Read Assets From File/DB, Return Bytes
 char* ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
@@ -74,8 +78,12 @@ char* ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
 
     } else {
 
+        // Generate File Path
+        std::string FilePath = AssetPath_ + std::to_string(AssetID);
+
         // Open File
-        //std::ifstream FileStream;
+        std::ifstream FileStream;
+        FileStream.open(FilePath, 'rb');
 
     }
 
