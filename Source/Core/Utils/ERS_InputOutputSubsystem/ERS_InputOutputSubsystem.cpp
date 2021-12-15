@@ -142,7 +142,7 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
     OutputStruct.LoadSpeed_MBs = (FileSize / 1000000) / Duration; 
     OutputStruct.LoadSpeed_GBs = (FileSize / 1000000000) / Duration; 
 
-    std::cout<<"Duration: "<<Duration<<" Size: "<<FileSize<<" Speed: "<<OutputStruct.LoadSpeed_MBs<<std::endl;
+    std::cout<<"Duration: "<<Duration<<"S Size: "<<OutputStruct.Size_MB<<"<MB Speed: "<<OutputStruct.LoadSpeed_MBs<<"MB/s"<<std::endl;
 
 
 
