@@ -30,6 +30,7 @@ class ERS_CLASS_InputOutputSubsystem {
     private:
 
         std::shared_ptr<LoggerClass> Logger_; /**<Logging Class Pointer*/
+        std::string AssetPath_; /**<Relative Path To Prepend To All IO Operations, Used By File Loading*/
         bool UseDatabase_; /**<Indicates If The Database Should Be Used For IO. Set By LocalSystemConfiguration Values In Constructor*/
 
     public:
@@ -48,6 +49,20 @@ class ERS_CLASS_InputOutputSubsystem {
          */
         ~ERS_CLASS_InputOutputSubsystem();
 
-        
+        /**
+         * @brief Write Asset To ID
+         * 
+         * @param AssetID 
+         * @param AssetData 
+         */
+        void WriteAsset(long AssetID, char* AssetData);
+
+        /**
+         * @brief Read Asset From ID
+         * 
+         * @param AssetID 
+         * @return char* 
+         */
+        char* ReadAsset(long AssetID);
 
 };

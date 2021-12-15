@@ -30,6 +30,30 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(std::shared_ptr<L
         Logger_->Log("Configuration Error, Parameter 'UseDatabaseLoading' Is Not In Config, System Will Default To False", 8);
         UseDatabase_ = false;
     }
+
+    // If Using DB Loading, Get DB Params
+    if (UseDatabase_) {
+        Logger_->Log("Database Loading Enabled, Reading Config For Database Parameters", 5);
+
+        /*
+
+            DATABASE LOADING STUFF HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        */
+
+    } else {
+        Logger_->Log("Database Lading Disabled, Reading Config For Asset Path", 5);
+
+        try {
+            Logger_->Log("Reading Configuration For 'STRING' 'AssetPath'", 1);
+            AssetPath_ = SystemConfiguration["AssetPath"].as<std::string>();
+        } catch (YAML::TypedBadConversion<std::string>) {
+            Logger_->Log("Configuration Error, Parameter 'AssetPath' Is Not In Config, System Will Exit", 10);
+            exit(1);
+        }
+
+    }
+
 }
 
 // Destructor
@@ -37,5 +61,22 @@ ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
 
     // Log Destructor Call
     Logger_->Log("Input/Output Subsystem Destructor Called", 6);
+
+}
+
+// Read Assets From File/DB, Return Bytes
+char* ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
+
+    // If Database Loading
+    if (UseDatabase_) {
+
+        // Load From DB
+
+    } else {
+
+        // Open File
+        //std::ifstream FileStream;
+
+    }
 
 }

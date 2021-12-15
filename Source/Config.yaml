@@ -14,7 +14,7 @@ EnableDebugLogging: True # To Be added Later <-- https://vulkan-tutorial.com/en/
 
 
 # Database Loading Settings #
-DatabaseLoadingEnabled: False
+UseDatabaseLoading: False
 DatabaseHost: "127.0.0.1" # FIX ME
 DatabasePort: 1 # FIX ME
 DatabaseUser: "" # FIX ME
