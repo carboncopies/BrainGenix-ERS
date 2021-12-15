@@ -58,20 +58,25 @@ class ERS_CLASS_InputOutputSubsystem {
          */
         ~ERS_CLASS_InputOutputSubsystem();
 
+
         /**
-         * @brief Write Asset To ID
+         * @brief Write Asset Data To ID
          * 
          * @param AssetID 
          * @param AssetData 
+         * @return true 
+         * @return false 
          */
         bool WriteAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> AssetData);
 
         /**
-         * @brief Read Asset From ID
+         * @brief Read Asset Data From ID
          * 
          * @param AssetID 
-         * @return char* 
+         * @param AssetData 
+         * @return true 
+         * @return false 
          */
-        ERS_STRUCT_IOData ReadAsset(long AssetID);
+        bool ReadAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> AssetData);
 
 };
