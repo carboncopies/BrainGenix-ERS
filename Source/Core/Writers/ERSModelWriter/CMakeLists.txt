@@ -4,23 +4,23 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ModelWriter
+add_library(ERSModelWriter
 
             # Add Source Files (.cpp)
-            "ModelWriter.cpp"
+            "ERSModelWriter.cpp"
 
             # Add Header Files (.h)
-            "ModelWriter.h"
+            "ERSModelWriter.h"
 
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ModelWriter
+target_link_libraries(ERSModelWriter
     )
 
 # Link Internal Libs
-target_link_libraries(ModelWriter
+target_link_libraries(ERSModelWriter
     LoggingSystem
     Model
     ModelLoader
@@ -30,5 +30,5 @@ target_link_libraries(ModelWriter
     Shader
     )
 
-target_include_directories(ModelWriter PUBLIC ./)
+target_include_directories(ERSModelWriter PUBLIC ./)
 

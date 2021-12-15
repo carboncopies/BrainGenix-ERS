@@ -210,6 +210,7 @@ add_subdirectory(${SRC_DIR}/Core/Loader/ShaderLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ProjectLoader)
 
 add_subdirectory(${SRC_DIR}/Core/Writers/SceneWriter)
+add_subdirectory(${SRC_DIR}/Core/Writers/ERSModelWriter)
 
 
 # COPY FILES TO BINARY DIR
