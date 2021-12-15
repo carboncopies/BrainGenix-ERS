@@ -92,7 +92,8 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
 
         struct stat Buffer;
         int FileStatus = stat(FilePath.c_str(), &Buffer);
-
+        FileSize = Buffer.st_size;
+        std::cout<<FileStatus<<std::endl;
         if (FileStatus == 0) {
 
             // Allocate Memory
