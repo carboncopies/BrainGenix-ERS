@@ -40,6 +40,16 @@ class ERS_CLASS_ModelWriter {
     // Member Functions
     private:
 
+        /**
+         * @brief Generate YAML metadata from the model object.
+         * 
+         * @param Model 
+         * @return YAML::Node 
+         */
+        YAML::Node GenerateModelMetadata(ERS_OBJECT_MODEL Model);
+
+
+
     // Public Member Vars
     public:
 
@@ -58,5 +68,21 @@ class ERS_CLASS_ModelWriter {
          * 
          */
         ~ERS_CLASS_ModelWriter();
+
+
+        /**
+         * 
+         * @brief Write a batch of models to storage in the ERS format
+         * 
+         * @param Models 
+         */
+        void BatchWriteModels(std::vector<ERS_OBJECT_MODEL> Models);
+
+        /**
+         * @brief Write a single model to storage. Single Threaded.
+         * 
+         * @param Model 
+         */
+        void WriteModel(ERS_OBJECT_MODEL Model);
 
 };
