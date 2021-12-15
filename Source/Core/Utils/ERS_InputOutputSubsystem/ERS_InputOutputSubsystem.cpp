@@ -95,6 +95,6 @@ char* ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
 
 
     // Return Data
-    return Data
+    return Data;
 
 }
