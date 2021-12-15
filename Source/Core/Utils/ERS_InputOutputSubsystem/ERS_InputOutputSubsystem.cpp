@@ -23,3 +23,11 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(std::shared_ptr<L
     UseDatabase_ = SystemConfiguration["UseDatabaseLoading"].as<bool>();
 
 }
+
+// Destructor
+ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
+
+    // Log Destructor Call
+    Logger_->Log("Input/Output Subsystem Destructor Called", 6);
+
+}
