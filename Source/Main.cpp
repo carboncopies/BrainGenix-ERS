@@ -66,7 +66,7 @@ int main() {
     sERSLogger->Log("Initialized Logging System", 5);
 
     // Startup IO Subsystem
-    std::shared_ptr<ERS_CLASS_InputOutputSubsystem> = std::make_shared<ERS_CLASS_InputOutputSubsystem>(sERSLogger, sERSLocalSystemConfiguration);
+    std::shared_ptr<ERS_CLASS_InputOutputSubsystem> sERSIOSubSystem = std::make_shared<ERS_CLASS_InputOutputSubsystem>(sERSLogger, sERSLocalSystemConfiguration);
 
     // Instantiate HardwareInformation System
     HardwareInformation sERSHardwareInformation(sERSLogger, sERSLocalSystemConfiguration);
