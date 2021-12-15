@@ -89,10 +89,8 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
 
         // Generate File Path
         std::string FilePath = AssetPath_ + std::to_string(AssetID) + std::string(".ERS");
-
         // Open File, Read Contents Into Data Buffer, Close Stream
-        std::ifstream FileStream;
-        FileStream.open(FilePath, std::ios::binary | std::ios::ate);
+        std::ifstream FileStream(FilePath, std::ios::binary | std::ios::ate);
         FileSize = FileStream.tellg();
         FileStream.read(OutputStruct.Data, FileSize);
         FileStream.close();
