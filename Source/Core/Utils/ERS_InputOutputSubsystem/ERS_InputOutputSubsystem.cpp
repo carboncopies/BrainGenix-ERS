@@ -131,7 +131,6 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
     auto FinishTime = std::chrono::high_resolution_clock::now();
     float Duration = std::chrono::duration<float>(std::chrono::duration_cast<std::chrono::nanoseconds>(FinishTime - StartTime)).count();
 
-
     OutputStruct.LoadTime_s = Duration;
     OutputStruct.Size_B = FileSize;
     OutputStruct.Size_KB = FileSize / 1000;
@@ -141,10 +140,6 @@ ERS_STRUCT_IOData ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID) {
     OutputStruct.LoadSpeed_KBs = (FileSize / 1000) / Duration;
     OutputStruct.LoadSpeed_MBs = (FileSize / 1000000) / Duration; 
     OutputStruct.LoadSpeed_GBs = (FileSize / 1000000000) / Duration; 
-
-    std::cout<<"Duration: "<<Duration<<"S Size: "<<OutputStruct.Size_MB<<"<MB Speed: "<<OutputStruct.LoadSpeed_MBs<<"MB/s"<<std::endl;
-
-
 
     // Return Data
     return OutputStruct;
