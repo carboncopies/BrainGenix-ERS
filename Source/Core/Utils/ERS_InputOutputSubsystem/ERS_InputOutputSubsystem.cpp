@@ -201,10 +201,8 @@ bool ERS_CLASS_InputOutputSubsystem::WriteAsset(long AssetID, std::shared_ptr<ER
     InputData->WriteSpeed_MBs = (InputData->Size_B / 1000000) / Duration; 
     InputData->WriteSpeed_GBs = (InputData->Size_B / 1000000000) / Duration; 
 
-    std::cout<<Duration<<" "<<(InputData->Size_B / 1000000) / Duration<<std::endl;
 
     // Return Data
     return Success;
-
 
 }
