@@ -168,6 +168,7 @@ target_link_libraries(${PROJECT_NAME}
   
   ERS_InputOutputSubsystem
   ERS_ModelWriter
+  ERS_STRUCT_SystemUtils
 
   )
 

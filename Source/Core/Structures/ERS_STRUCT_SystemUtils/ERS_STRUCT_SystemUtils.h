@@ -22,6 +22,8 @@
 #include <ERS_InputOutputSubsystem.h>
 #include <ERS_ModelWriter.h>
 
+
+
 /**
  * @brief The System utils struct contains most system utils prepopulated as shared pointers within.
  * 
@@ -30,6 +32,7 @@ struct ERS_STRUCT_SystemUtils {
 
     std::shared_ptr<LoggerClass> Logger_; /**<Pointer To BG-ERS Logging System*/
     std::shared_ptr<YAML::Node> LocalSystemConfiguration_; /**<Pointer To Config.yaml Data From Local Hard Drive*/
-    std::shared_ptr<
+    std::shared_ptr<ERS_CLASS_InputOutputSubsystem> IOSubsystem_; /**<Pointer To ERS Input Output Subsystem*/
+    std::shared_ptr<ERS_CLASS_ModelWriter> ModelWriter_; /**<Pointer To ERS Model Writer Instance*/
 
 };

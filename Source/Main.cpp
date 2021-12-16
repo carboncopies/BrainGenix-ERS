@@ -24,6 +24,8 @@
 #include <ERS_InputOutputSubsystem.h>
 #include <ERS_ModelWriter.h>
 
+#include <ERS_STRUCT_SystemUtils.h>
+
 #include <RendererManager.h>
 #include <HardwareInformation.h>
 
@@ -50,7 +52,7 @@
 int main() {
 
     // Initialize System State Bool
-    std::shared_ptr<bool> SystemShouldRun = std::make_shared<bool>(true); /**<Indicates If System Should Run, False Will Cause System To Exit On Next RunLoop Iteration>*/
+    std::shared_ptr<bool> SystemShouldRun = std::make_shared<bool>(true);
 
     // Load Local System Configuration File
     YAML::Node sERSLocalSystemConfiguration = LoadConfig("Config.yaml");
