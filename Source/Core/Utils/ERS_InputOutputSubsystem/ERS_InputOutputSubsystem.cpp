@@ -61,8 +61,6 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(std::shared_ptr<L
 
 }
 
-
-
 // Destructor
 ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
 
@@ -71,6 +69,21 @@ ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
 
 }
 
+// Allocate Asset Id
+long ERS_CLASS_InputOutputSubsystem::AllocateAssetID() {
+
+    // Lock Mutex, Allocate New ID
+    LockAssetIDAllocation_.lock();
+    long AssetID = UsedAssetIDs_.size();
+
+    // Add To Used ID List, Unlock
+    UsedAssetIDs_.push_back(AssetID);
+    LockAssetIDAllocation_.unlock();
+
+    // Return ID
+    return AssetID;
+
+}
 
 // Index Asset IDs
 void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {

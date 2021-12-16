@@ -21,6 +21,8 @@
 #include <stdlib.h>
 #include <chrono>
 #include <filesystem>
+#include <thread>
+#include <mutex>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -42,6 +44,7 @@ class ERS_CLASS_InputOutputSubsystem {
         std::shared_ptr<LoggerClass> Logger_; /**<Logging Class Pointer*/
         std::string AssetPath_; /**<Relative Path To Prepend To All IO Operations, Used By File Loading*/
         std::vector<long> UsedAssetIDs_; /**<List Of Asset IDs That Are Already In Use*/
+        std::mutex LockAssetIDAllocation_; /**<Used When Allocating AssetIDs*/
         bool UseDatabase_; /**<Indicates If The Database Should Be Used For IO. Set By LocalSystemConfiguration Values In Constructor*/
 
     public:
