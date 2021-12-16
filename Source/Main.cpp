@@ -71,7 +71,9 @@ int main() {
     std::shared_ptr<ERS_CLASS_ModelWriter> sERSModelWriter = std::make_shared<ERS_CLASS_ModelWriter>(sERSLogger, sERSIOSubSystem);
 
 
-
+    std::shared_ptr<ERS_STRUCT_IOData> Test = std::make_shared<ERS_STRUCT_IOData>();
+    sERSIOSubSystem->ReadAsset(0, Test);
+    sERSIOSubSystem->WriteAsset(1, Test);
 
 
     // Instantiate HardwareInformation System

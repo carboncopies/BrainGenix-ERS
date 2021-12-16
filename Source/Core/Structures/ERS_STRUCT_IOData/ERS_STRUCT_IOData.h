@@ -12,6 +12,7 @@
 #pragma once
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <memory>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 
@@ -24,7 +25,7 @@
  */
 struct ERS_STRUCT_IOData {
 
-    unsigned char* Data; /**<Char Array Containing Raw Data*/
+    std::unique_ptr<unsigned char[]> Data; /**<Char Array Containing Raw Data*/
     
     bool HasLoaded = false; /**<Status Variable*/
 
@@ -43,5 +44,6 @@ struct ERS_STRUCT_IOData {
     float WriteSpeed_GBs; /**<Write Speed In Gigabytes/Second*/
     float WriteSpeed_MBs; /**<Write Speed In Megabytes/Second*/
     float WriteSpeed_KBs; /**<Write Speed In Kilobytes/Second*/
+
 
 };

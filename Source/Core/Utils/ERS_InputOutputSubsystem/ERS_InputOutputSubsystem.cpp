@@ -179,13 +179,13 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
         if (FileStatus == 0) {
 
             // Allocate Memory
-            OutputData->Data = (unsigned char*)malloc(Buffer.st_size * sizeof(unsigned char));
+            OutputData->Data.reset(new unsigned char[Buffer.st_size]);
             if (OutputData->Data) {
 
                 FILE *Stream = fopen(FilePath.c_str(), "rb");
                 if (Stream) {
 
-                    fread(OutputData->Data, sizeof(unsigned char), Buffer.st_size, Stream);
+                    fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size, Stream);
                     fclose(Stream);
                     OutputData->HasLoaded = true;
                     ReadSuccess = true;
@@ -275,7 +275,7 @@ bool ERS_CLASS_InputOutputSubsystem::WriteAsset(long AssetID, std::shared_ptr<ER
 
             if (Stream) {
 
-                fwrite(InputData->Data, 1, sizeof(unsigned char)*InputData->Size_B, Stream);
+                fwrite(InputData->Data.get(), 1, sizeof(unsigned char)*InputData->Size_B, Stream);
                 fclose(Stream);
                 Success = true;
 

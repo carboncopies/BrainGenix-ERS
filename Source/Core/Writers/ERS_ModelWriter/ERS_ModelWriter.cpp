@@ -51,7 +51,10 @@ std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(std::shared_ptr<ERS_OBJ
 }
 
 // Write Model
-void ERS_CLASS_ModelWriter::WriteModel(std::shared_ptr<ERS_STRUCT_IOData> ModelData, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> TextureData, std::shared_ptr<ERS_OBJECT_MODEL> Model) {
+void ERS_CLASS_ModelWriter::WriteModel(
+    std::shared_ptr<ERS_STRUCT_IOData> ModelData,
+    std::vector<std::shared_ptr<ERS_STRUCT_IOData>> TextureData, 
+    std::shared_ptr<ERS_OBJECT_MODEL> Model) {
 
     // Copy Model Data
     long ModelID = IOSubsystem_->AllocateAssetID();
@@ -69,8 +72,10 @@ void ERS_CLASS_ModelWriter::WriteModel(std::shared_ptr<ERS_STRUCT_IOData> ModelD
     std::string Metadata = GenerateModelMetadata(Model);
 
     std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
-    Data->Data = (unsigned char*)Metadata.c_str();
-    Data->Size_B = strlen((char*)Data->Data);
+    Data->Data.reset(new unsigned char[Metadata.size()]);
+    ::memcpy(Data->Data.get(), Metadata.c_str(), Metadata.size());
+    
+    Data->Size_B = Metadata.size();
 
     long ID = IOSubsystem_->AllocateAssetID();
     IOSubsystem_->WriteAsset(0, Data);
