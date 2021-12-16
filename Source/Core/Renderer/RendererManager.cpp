@@ -26,7 +26,7 @@ RendererManager::RendererManager(std::shared_ptr<YAML::Node> SystemConfiguration
     SystemConfiguration_ = SystemConfiguration;
     Logger_ = Logger;
     SystemShouldRun_ = SystemShouldRun;
-    ModelWriter_ = ModelWriter;
+    ERS_ModelWriter_ = ERS_ModelWriter;
 
     // Setup 3D Cursor
     Cursors3D_ = std::make_shared<Cursors3D>();
