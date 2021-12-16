@@ -19,14 +19,14 @@ void ErrorCallback(int, const char* ErrorString) {
 
 
 // RendererManager Constructor
-RendererManager::RendererManager(std::shared_ptr<YAML::Node> SystemConfiguration, std::shared_ptr<LoggerClass> Logger, std::shared_ptr<bool> SystemShouldRun, std::shared_ptr<ERS_CLASS_ModelWriter> ERS_ModelWriter) {
+RendererManager::RendererManager(ERS_STRUCT_SystemUtils SystemUtils) {
 
     // Create Pointers
-    Logger->Log("Populating RendererManager Member Pointers", 5);
-    SystemConfiguration_ = SystemConfiguration;
-    Logger_ = Logger;
-    SystemShouldRun_ = SystemShouldRun;
-    ERS_ModelWriter_ = ERS_ModelWriter;
+    SystemUtils.Logger_->Log("Populating RendererManager Member Pointers", 5);
+    SystemUtils_ = SystemUtils;
+    SystemConfiguration_ = SystemUtils_.LocalSystemConfiguration_;
+    Logger_ = SystemUtils_.Logger_;
+    SystemShouldRun_ = SystemUtils_.SystemShouldRun_;
 
     // Setup 3D Cursor
     Cursors3D_ = std::make_shared<Cursors3D>();
@@ -48,7 +48,7 @@ RendererManager::RendererManager(std::shared_ptr<YAML::Node> SystemConfiguration
 
     // Instantiate Renderers
     Logger_->Log("Instantiating Renderers", 5);
-    VisualRenderer_ = std::make_shared<VisualRenderer>(SystemConfiguration, Window_, Logger, Cursors3D_);
+    VisualRenderer_ = std::make_shared<VisualRenderer>(SystemConfiguration_, Window_, Logger_, Cursors3D_);
 
     // Setup Shaders
     ShaderLoader_ = std::make_shared<ShaderLoader>(Logger_);

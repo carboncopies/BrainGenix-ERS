@@ -54,6 +54,7 @@ int main() {
     // Initialize System Vars
     std::shared_ptr<bool> SystemShouldRun = std::make_shared<bool>(true);
     ERS_STRUCT_SystemUtils SystemUtils;
+    SystemUtils.SystemShouldRun_ = SystemShouldRun;
 
     // Load Local System Configuration File
     YAML::Node sERSLocalSystemConfiguration = LoadConfig("Config.yaml");
@@ -66,9 +67,9 @@ int main() {
 
     // Startup IO Subsystem And Other Related Systems
     std::shared_ptr<ERS_CLASS_InputOutputSubsystem> sERSIOSubSystem = std::make_shared<ERS_CLASS_InputOutputSubsystem>(sERSLogger, sERSLocalSystemConfiguration);
-    SystemUtils.IOSubsystem_ = sERSIOSubSystem;
+    SystemUtils.ERS_IOSubsystem_ = sERSIOSubSystem;
     std::shared_ptr<ERS_CLASS_ModelWriter> sERSModelWriter = std::make_shared<ERS_CLASS_ModelWriter>(sERSLogger, sERSIOSubSystem);
-    SystemUtils.ModelWriter_ = sERSModelWriter;
+    SystemUtils.ERS_ModelWriter_ = sERSModelWriter;
 
 
 
@@ -78,7 +79,7 @@ int main() {
     HardwareInformation sERSHardwareInformation(sERSLogger, sERSLocalSystemConfiguration);
 
     // Instantiate RendererManager
-    RendererManager sERSRendererManager(std::make_shared<YAML::Node>(sERSLocalSystemConfiguration), sERSLogger, SystemShouldRun);
+    RendererManager sERSRendererManager(SystemUtils);
 
 
     

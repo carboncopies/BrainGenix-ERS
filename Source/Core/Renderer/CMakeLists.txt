@@ -34,6 +34,7 @@ target_link_libraries(Renderer
 
     ERS_ModelWriter
     ERS_STRUCT_IOData
+    ERS_STRUCT_SystemUtils
     )
 
 target_include_directories(Renderer PUBLIC ./)

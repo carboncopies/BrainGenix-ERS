@@ -27,6 +27,7 @@
 
 #include <ERS_STRUCT_IOData.h>
 #include <ERS_ModelWriter.h>
+#include <ERS_STRUCT_SystemUtils.h>
 
 #include <3DCursor.h>
 
@@ -56,7 +57,8 @@ class RendererManager {
         std::shared_ptr<TextureLoader> TextureLoader_; /**<Pointer to Texture Loader Instance*/
         std::shared_ptr<SceneManager> SceneManager_; /**<Pointer to Scene Manager Class Instance*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
-        std::shared_ptr<ERS_CLASS_ModelWriter> ERS_ModelWriter_; /**<Internal Model Writer Class*/
+        
+        ERS_STRUCT_SystemUtils SystemUtils_; /**<Copy Of Pointer Helper Struct*/
 
         // Control Values
         std::shared_ptr<bool> SystemShouldRun_; /**<Control Variable Indicating System Run State */
@@ -81,7 +83,7 @@ class RendererManager {
          * @param Logger 
          * @param SystemShouldRun 
          */
-        RendererManager(std::shared_ptr<YAML::Node> SystemConfiguration, std::shared_ptr<LoggerClass> Logger, std::shared_ptr<bool> SystemShouldRun, std::shared_ptr<ERS_CLASS_ModelWriter> ERS_ModelWriter);
+        RendererManager(ERS_STRUCT_SystemUtils SystemUtils);
 
         /**
          * @brief Shuts down the renderers and cleans up variables.
