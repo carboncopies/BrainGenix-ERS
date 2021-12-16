@@ -54,6 +54,11 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(std::shared_ptr<L
 
     }
 
+
+    // Index Already Used AssetIDs
+    IndexUsedAssetIDs();
+
+
 }
 
 
@@ -67,6 +72,43 @@ ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
 }
 
 
+// Index Asset IDs
+void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
+
+    // Log Start
+    Logger_->Log("Indexing Used Asset IDs");
+    UsedAssetIDs_ = std::vector<long>();
+
+    // If Using Database Loading
+    if (UseDatabase_) {
+
+        // Do Database Indexing here...
+
+    } else { // Default To Regular File Loading
+
+        // Get List Of Files At Path
+        for (const auto &Entry : std::filesystem::recursive_directory_iterator(std::string(AssetPath_))) {
+
+            // Get File Path        
+            std::string FilePath{Entry.path().u8string()};
+
+            // Convert To Long, Throw Log Message If Not Number
+            long ID = (long)FilePath.c_str();
+
+            // Append To Used IDs
+            UsedAssetIDs_.push_back(ID);
+
+            // Log Checked Out ID
+            Logger_->Log(std::string(std::string("AssetID '") + std::to_string(ID) + std::string("' In Use")).c_str(), 3);
+
+        }
+
+    }
+
+    // Summarize Checked Out IDs
+    Logger_->Log(std::string(std::string("Identified ") + std::to_string(UsedAssetIDs_.size()) + std::string(" Asset IDs Are In Use")).c_str(), 4);
+
+}
 
 // Read Assets From File/DB, Return Bytes
 bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> OutputData) {
