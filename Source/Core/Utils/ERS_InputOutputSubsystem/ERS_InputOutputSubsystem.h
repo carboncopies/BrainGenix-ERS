@@ -92,6 +92,15 @@ class ERS_CLASS_InputOutputSubsystem {
         bool WriteAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> AssetData);
 
         /**
+         * @brief Batch Write Data to IDs, Both Lists Should Be The Same Length. Returns List Of Status Variables (true=succes, false=fail)
+         * 
+         * @param AssetIDs 
+         * @param AssetDatas 
+         * @return std::vector<bool> 
+         */
+        std::vector<bool> BatchWriteAssets(std::vector<long> AssetIDs, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> AssetDatas);
+
+        /**
          * @brief Read Asset Data From ID
          * 
          * @param AssetID 
@@ -100,6 +109,15 @@ class ERS_CLASS_InputOutputSubsystem {
          * @return false 
          */
         bool ReadAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> AssetData);
+
+        /**
+         * @brief Read A List Of Assets From The Given IDs, Both Vectors Should Be Equal In Length.
+         * 
+         * @param AssetIDs 
+         * @param AssetDatas 
+         * @return std::vector<bool> 
+         */
+        std::vector<bool> BatchReadAssets(std::vector<long> AssetIDs, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> AssetDatas);
 
 
         /**

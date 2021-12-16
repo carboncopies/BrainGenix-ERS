@@ -231,6 +231,25 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
 
 }
 
+// Batch Read Assets
+std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchReadAssets(std::vector<long> AssetIDs, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> AssetDatas) {
+
+    // Check Lengths Of Inputs
+    if (AssetIDs.size() != AssetDatas.size()) {
+        Logger_->Log("(BatchReadAssets) Input Vectors Are Not The Same Length, Undefined Behavior May Occur", 10);
+    }
+
+    // Iterate And Read
+    std::vector<bool> StatusVector;
+    for (int i = 0; i < AssetIDs.size(); i++) {
+        StatusVector.push_back(ReadAsset(AssetIDs[i], AssetDatas[i]));
+    }
+
+    // Return Status
+    return StatusVector;
+
+}
+
 // Write Data
 bool ERS_CLASS_InputOutputSubsystem::WriteAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> InputData) {
 
@@ -286,5 +305,24 @@ bool ERS_CLASS_InputOutputSubsystem::WriteAsset(long AssetID, std::shared_ptr<ER
 
     // Return Data
     return Success;
+
+}
+
+// Batch Write Data
+std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchWriteAssets(std::vector<long> AssetIDs, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> AssetDatas) {
+
+    // Check Lengths Of Inputs
+    if (AssetIDs.size() != AssetDatas.size()) {
+        Logger_->Log("(BatchWriteAssets) Input Vectors Are Not The Same Length, Undefined Behavior May Occur", 10);
+    }
+
+    // Iterate And Write
+    std::vector<bool> StatusVector;
+    for (int i = 0; i < AssetIDs.size(); i++) {
+        StatusVector.push_back(WriteAsset(AssetIDs[i], AssetDatas[i]));
+    }
+
+    // Return Status
+    return StatusVector;
 
 }
