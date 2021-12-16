@@ -4,23 +4,23 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERSModelWriter
+add_library(ERS_ModelWriter
 
             # Add Source Files (.cpp)
-            "ERSModelWriter.cpp"
+            "ERS_ModelWriter.cpp"
 
             # Add Header Files (.h)
-            "ERSModelWriter.h"
+            "ERS_ModelWriter.h"
 
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERSModelWriter
+target_link_libraries(ERS_ModelWriter
     )
 
 # Link Internal Libs
-target_link_libraries(ERSModelWriter
+target_link_libraries(ERS_ModelWriter
     LoggingSystem
     Model
     ModelLoader
@@ -32,5 +32,5 @@ target_link_libraries(ERSModelWriter
     ERS_InputOutputSubsystem
     )
 
-target_include_directories(ERSModelWriter PUBLIC ./)
+target_include_directories(ERS_ModelWriter PUBLIC ./)
 

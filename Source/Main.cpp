@@ -68,7 +68,11 @@ int main() {
 
     // Startup IO Subsystem And Other Related Systems
     std::shared_ptr<ERS_CLASS_InputOutputSubsystem> sERSIOSubSystem = std::make_shared<ERS_CLASS_InputOutputSubsystem>(sERSLogger, sERSLocalSystemConfiguration);
-    std::shared_ptr<ERS_C
+    std::shared_ptr<ERS_CLASS_ModelWriter> sERSModelWriter = std::make_shared<ERS_CLASS_ModelWriter>(sERSLogger, sERSIOSubSystem);
+
+
+    ERS_OBJECT_MODEL Model;
+    sERSModelWriter->WriteModel(std::make_shared<ERS_OBJECT_MODEL>(Model));
 
 
     // Instantiate HardwareInformation System
@@ -76,7 +80,6 @@ int main() {
 
     // Instantiate RendererManager
     RendererManager sERSRendererManager(std::make_shared<YAML::Node>(sERSLocalSystemConfiguration), sERSLogger, SystemShouldRun);
-
 
 
     

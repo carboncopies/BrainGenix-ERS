@@ -165,7 +165,9 @@ target_link_libraries(${PROJECT_NAME}
   LoggingSystem
   Renderer
   HardwareInformation
+  
   ERS_InputOutputSubsystem
+  ERS_ModelWriter
 
   )
 
@@ -213,7 +215,7 @@ add_subdirectory(${SRC_DIR}/Core/Loader/ShaderLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ProjectLoader)
 
 add_subdirectory(${SRC_DIR}/Core/Writers/SceneWriter)
-add_subdirectory(${SRC_DIR}/Core/Writers/ERSModelWriter)
+add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ModelWriter)
 
 
 # COPY FILES TO BINARY DIR
