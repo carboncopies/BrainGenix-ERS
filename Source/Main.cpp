@@ -22,6 +22,7 @@
 #include <LocalConfigurationLoader.h>
 #include <LoggingSystem.h>
 #include <ERS_InputOutputSubsystem.h>
+#include <ERS_ModelWriter.h>
 
 #include <RendererManager.h>
 #include <HardwareInformation.h>
@@ -65,14 +66,9 @@ int main() {
     std::shared_ptr<LoggerClass> sERSLogger = std::make_shared<LoggerClass>(sERSLocalSystemConfiguration);
     sERSLogger->Log("Initialized Logging System", 5);
 
-    // Startup IO Subsystem
+    // Startup IO Subsystem And Other Related Systems
     std::shared_ptr<ERS_CLASS_InputOutputSubsystem> sERSIOSubSystem = std::make_shared<ERS_CLASS_InputOutputSubsystem>(sERSLogger, sERSLocalSystemConfiguration);
-    #include <ERS_STRUCT_IOData.h>
-
-    std::shared_ptr<ERS_STRUCT_IOData> Test = std::make_shared<ERS_STRUCT_IOData>();
-    sERSIOSubSystem->ReadAsset(0, Test);
-    sERSIOSubSystem->WriteAsset(1, Test);
-    std::cout<<Test->WriteSpeed_MBs<<std::endl;
+    std::shared_ptr<ERS_C
 
 
     // Instantiate HardwareInformation System
