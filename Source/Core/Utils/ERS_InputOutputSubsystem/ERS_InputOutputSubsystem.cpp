@@ -85,6 +85,25 @@ long ERS_CLASS_InputOutputSubsystem::AllocateAssetID() {
 
 }
 
+// Group Allocate
+std::vector<long> ERS_CLASS_InputOutputSubsystem::BatchAllocateIDs(int NumberIDs) {
+
+    // Create Vector To Store IDs
+    std::vector<long> IDs;
+
+    // Loop For Desired Number Times, Add New ID
+    for (int i = 0; i < NumberIDs; i++) {
+
+        // Allocate ID
+        IDs.push_back(AllocateAssetID());
+
+    }
+
+    // Return IDs
+    return IDs;
+
+}
+
 // Index Asset IDs
 void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
 

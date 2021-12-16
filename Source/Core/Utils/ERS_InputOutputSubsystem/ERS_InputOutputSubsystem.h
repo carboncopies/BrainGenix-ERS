@@ -73,6 +73,15 @@ class ERS_CLASS_InputOutputSubsystem {
 
 
         /**
+         * @brief Allocate A Batch Of IDs For Usage, Returns Vector Of Allocated IDs
+         * 
+         * @param NumberIDs 
+         * @return std::vector<long> 
+         */
+        std::vector<long> BatchAllocateIDs(int NumberIDs);
+
+
+        /**
          * @brief Write Asset Data To ID
          * 
          * @param AssetID 
@@ -92,10 +101,14 @@ class ERS_CLASS_InputOutputSubsystem {
          */
         bool ReadAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> AssetData);
 
+
         /**
          * @brief Updates the list of used asset IDs to prevent accidental data loss. Called during initialization.
          * 
          */
         void IndexUsedAssetIDs();
+
+
+
 
 };
