@@ -25,8 +25,9 @@
 #include <Mesh.h>
 #include <2DTexture.h>
 
-
 #include <Shader.h>
+
+#include <ERS_InputOutputSubsystem.h>
 
 
 // This Class Encodes Models In The ERS Format (Modified GLTF)
@@ -36,6 +37,7 @@ class ERS_CLASS_ModelWriter {
     private:
 
         std::shared_ptr<LoggerClass> Logger_; /**<Pointer To Logger Instance*/
+        std::shared_ptr<ERS_CLASS_InputOutputSubsystem> IOSubsystem_; /**<Pointer To IOSubsystem*/
 
     // Member Functions
     private:
@@ -46,7 +48,7 @@ class ERS_CLASS_ModelWriter {
          * @param Model 
          * @return YAML::Node 
          */
-        YAML::Node GenerateModelMetadata(ERS_OBJECT_MODEL Model);
+        std::string GenerateModelMetadata(std::shared_ptr<ERS_OBJECT_MODEL> Model);
 
 
 
@@ -61,7 +63,7 @@ class ERS_CLASS_ModelWriter {
          * 
          * @param Logger 
          */
-        ERS_CLASS_ModelWriter(std::shared_ptr<LoggerClass> Logger);
+        ERS_CLASS_ModelWriter(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<ERS_CLASS_InputOutputSubsystem> IOSubsystem);
         
         /**
          * @brief Destroy the ers class modelwriter object
@@ -76,13 +78,13 @@ class ERS_CLASS_ModelWriter {
          * 
          * @param Models 
          */
-        void BatchWriteModels(std::vector<ERS_OBJECT_MODEL> Models);
+        void BatchWriteModels(std::vector<std::shared_ptr<ERS_OBJECT_MODEL>> Models);
 
         /**
          * @brief Write a single model to storage. Single Threaded.
          * 
          * @param Model 
          */
-        void WriteModel(ERS_OBJECT_MODEL Model);
+        void WriteModel(std::shared_ptr<ERS_OBJECT_MODEL> Model);
 
 };

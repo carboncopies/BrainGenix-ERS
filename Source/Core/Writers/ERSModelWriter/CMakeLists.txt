@@ -28,6 +28,8 @@ target_link_libraries(ERSModelWriter
     Meshes
     Textures
     Shader
+
+    ERS_InputOutputSubsystem
     )
 
 target_include_directories(ERSModelWriter PUBLIC ./)
