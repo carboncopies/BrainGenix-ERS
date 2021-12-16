@@ -79,9 +79,10 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils SystemUtils) {
     SceneManager_->AddScene(SLoader.ProcessScene(TestScene3, "Assets/Scene3.yaml", false));
 
 
-    // std::shared_ptr<ERS_STRUCT_IOData> Test = std::make_shared<ERS_STRUCT_IOData>();
-    // sERSIOSubSystem->ReadAsset(0, Test);
-    // sERSIOSubSystem->WriteAsset(1, Test);
+    std::shared_ptr<ERS_STRUCT_IOData> Test = std::make_shared<ERS_STRUCT_IOData>();
+    SystemUtils_.ERS_IOSubsystem_->ReadAsset(0, Test);
+    SystemUtils_.ERS_IOSubsystem_->WriteAsset(1, Test);
+    std::cout<<"It worked\n";
 
 
 }
