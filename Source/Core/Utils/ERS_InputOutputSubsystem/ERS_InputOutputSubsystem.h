@@ -62,6 +62,14 @@ class ERS_CLASS_InputOutputSubsystem {
 
 
         /**
+         * @brief Returns an unused assetid that is guarenteed to not already exist.
+         * 
+         * @return long 
+         */
+        long AllocateAssetID();
+
+
+        /**
          * @brief Write Asset Data To ID
          * 
          * @param AssetID 
