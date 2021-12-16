@@ -93,7 +93,7 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
             std::string FilePath{Entry.path().u8string()};
             std::cout<<FilePath<<std::endl;
             // Convert To Long, Throw Log Message If Not Number
-            long ID = (long)FilePath.substr(0, FilePath.find_last_of(".")).c_str();
+            long ID = (long)FilePath.substr(0, FilePath.find_last_of(".")).substr(FilePath.find_last_of("/"), FilePath.length()).c_str();
 
             // Append To Used IDs
             UsedAssetIDs_.push_back(ID);
