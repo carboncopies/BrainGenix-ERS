@@ -119,7 +119,7 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
     } else { // Default To Regular File Loading
 
         // Get List Of Files At Path
-        for (const auto &Entry : std::filesystem::recursive_directory_iterator(std::string(AssetPath_))) {
+        for (const auto &Entry : std::filesystem::directory_iterator(std::string(AssetPath_))) {
 
             // Get File Path        
             std::string FilePath{Entry.path().u8string()};
