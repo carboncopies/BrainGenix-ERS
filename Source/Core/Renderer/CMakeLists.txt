@@ -31,6 +31,9 @@ target_link_libraries(Renderer
     IOManager
     VisualEditor
     3DCursor
+
+    ERS_ModelWriter
+    ERS_STRUCT_IOData
     )
 
 target_include_directories(Renderer PUBLIC ./)

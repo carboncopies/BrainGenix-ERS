@@ -19,13 +19,14 @@ void ErrorCallback(int, const char* ErrorString) {
 
 
 // RendererManager Constructor
-RendererManager::RendererManager(std::shared_ptr<YAML::Node> SystemConfiguration, std::shared_ptr<LoggerClass> Logger, std::shared_ptr<bool> SystemShouldRun) {
+RendererManager::RendererManager(std::shared_ptr<YAML::Node> SystemConfiguration, std::shared_ptr<LoggerClass> Logger, std::shared_ptr<bool> SystemShouldRun, std::shared_ptr<ERS_CLASS_ModelWriter> ERS_ModelWriter) {
 
     // Create Pointers
     Logger->Log("Populating RendererManager Member Pointers", 5);
     SystemConfiguration_ = SystemConfiguration;
     Logger_ = Logger;
     SystemShouldRun_ = SystemShouldRun;
+    ModelWriter_ = ModelWriter;
 
     // Setup 3D Cursor
     Cursors3D_ = std::make_shared<Cursors3D>();
