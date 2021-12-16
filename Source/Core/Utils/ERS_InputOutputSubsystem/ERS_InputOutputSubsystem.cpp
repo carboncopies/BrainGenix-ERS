@@ -95,7 +95,7 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
 
             std::cout<<FilePath<<std::endl;
             // Convert To Long, Throw Log Message If Not Number
-            long ID = (long)FilePath.c_str();
+            long ID = stoi(FilePath.c_str());
 
             // Append To Used IDs
             UsedAssetIDs_.push_back(ID);
