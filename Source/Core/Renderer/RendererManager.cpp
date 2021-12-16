@@ -24,7 +24,6 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils SystemUtils) {
     // Create Pointers
     SystemUtils.Logger_->Log("Populating RendererManager Member Pointers", 5);
     SystemUtils_ = SystemUtils;
-    SystemShouldRun_ = SystemUtils_.SystemShouldRun_;
 
     // Setup 3D Cursor
     Cursors3D_ = std::make_shared<Cursors3D>();
@@ -56,7 +55,7 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils SystemUtils) {
     Shader_.SetInt("texture_diffuse1", 0);
 
     // Setup GUI
-    GuiSystem_ = std::make_shared<GUISystem>(SystemUtils_.Logger_, Window_, SystemShouldRun_, Cursors3D_, SceneManager_);
+    GuiSystem_ = std::make_shared<GUISystem>(SystemUtils_.Logger_, Window_, SystemUtils_.SystemShouldRun_, Cursors3D_, SceneManager_);
 
     // Setup IOManager
     SystemUtils_.Logger_->Log("Initializing Input/Output Manager", 5);
@@ -175,7 +174,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     // Check If System Should Shutdown
     if (glfwWindowShouldClose(Window_)) {
         SystemUtils_.Logger_->Log("System Shutdown Invoked By LocalWindow", 2);
-        *SystemShouldRun_ = false;
+        *SystemUtils_.SystemShouldRun_ = false;
     }
 
 
