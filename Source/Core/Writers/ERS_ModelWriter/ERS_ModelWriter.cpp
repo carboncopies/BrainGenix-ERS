@@ -57,6 +57,7 @@ void ERS_CLASS_ModelWriter::WriteModel(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
 
     std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
     Data->Data = (unsigned char*)Metadata.c_str();
+    std::cout<<Data->Data<<std::endl;
     IOSubsystem_->WriteAsset(0, Data);
 
 }
