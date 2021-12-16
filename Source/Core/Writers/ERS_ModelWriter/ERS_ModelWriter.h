@@ -87,6 +87,6 @@ class ERS_CLASS_ModelWriter {
          * @param Model 
          * @param OverwriteExisting 
          */
-        void WriteModel(std::shared_ptr<ERS_STRUCT_IOData> InputData, std::shared_ptr<ERS_OBJECT_MODEL> Model);
+        void WriteModel(std::shared_ptr<ERS_STRUCT_IOData> InputData, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> TextureData, std::shared_ptr<ERS_OBJECT_MODEL> Model);
 
 };

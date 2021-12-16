@@ -61,7 +61,7 @@ void ERS_CLASS_ModelWriter::WriteModel(std::shared_ptr<ERS_STRUCT_IOData> ModelD
 
     // Copy Textures
     std::vector<long> TextureIDs = IOSubsystem_->BatchAllocateIDs(TextureData.size());
-    IOSubsystem_->BatchWrite(TextureIDs, TextureData);
+    IOSubsystem_->BatchWriteAssets(TextureIDs, TextureData);
     Model->TextureIDs = TextureIDs;
 
 
@@ -74,12 +74,5 @@ void ERS_CLASS_ModelWriter::WriteModel(std::shared_ptr<ERS_STRUCT_IOData> ModelD
 
     long ID = IOSubsystem_->AllocateAssetID();
     IOSubsystem_->WriteAsset(0, Data);
-
-
-
-
-
-
-
 
 }
