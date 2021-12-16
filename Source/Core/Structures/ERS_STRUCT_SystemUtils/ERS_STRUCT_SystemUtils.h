@@ -6,7 +6,7 @@
     Description: This is responsible for implementing a struct to simplify includes within classes..
     Documentation Status: Complete
     Additonal Notes: None
-    Date Created: 2021-12-07
+    Date Created: 2021-12-16
 */
 
 #pragma once
@@ -17,7 +17,7 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggerClass.h>
+#include <LoggingSystem.h>
 
 /**
  * @brief The System utils struct contains most system utils prepopulated as shared pointers within.
