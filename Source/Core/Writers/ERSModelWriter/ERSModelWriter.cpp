@@ -41,9 +41,10 @@ std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(std::shared_ptr<ERS_OBJ
     Metadata << YAML::BeginMap;
 
     // Set Constant Info
-    Metadata << "Test";
+    Metadata << YAML::Key << "Type" << YAML::Value << "Model";
 
-    // Return Metadata
+    // Stop Writing, Return Metadata
+    Metadata << YAML::EndMap;
     return std::string(Metadata.c_str());
 
 }
