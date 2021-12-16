@@ -206,6 +206,7 @@ add_subdirectory(${SRC_DIR}/Core/Structures/Project)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_HardwareInfo)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_LocRotScale)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_IOData)
+add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_SystemUtils)
 
 add_subdirectory(${SRC_DIR}/Core/Loader/TextureLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ImageLoader)

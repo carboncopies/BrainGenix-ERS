@@ -56,7 +56,7 @@ class RendererManager {
         std::shared_ptr<TextureLoader> TextureLoader_; /**<Pointer to Texture Loader Instance*/
         std::shared_ptr<SceneManager> SceneManager_; /**<Pointer to Scene Manager Class Instance*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
-        std::shared_ptr<ERS_ModelWriter> ERS_ModelWriter_; /**<Internal Model Writer Class*/
+        std::shared_ptr<ERS_CLASS_ModelWriter> ERS_ModelWriter_; /**<Internal Model Writer Class*/
 
         // Control Values
         std::shared_ptr<bool> SystemShouldRun_; /**<Control Variable Indicating System Run State */
