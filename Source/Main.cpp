@@ -51,19 +51,24 @@
  */
 int main() {
 
-    // Initialize System State Bool
+    // Initialize System Vars
     std::shared_ptr<bool> SystemShouldRun = std::make_shared<bool>(true);
+    ERS_STRUCT_SystemUtils SystemUtils;
 
     // Load Local System Configuration File
     YAML::Node sERSLocalSystemConfiguration = LoadConfig("Config.yaml");
+    SystemUtils.LocalSystemConfiguration_ = std::make_shared<YAML::Node>(sERSLocalSystemConfiguration);
 
     // Instantiate Logging Subsystem
     std::shared_ptr<LoggerClass> sERSLogger = std::make_shared<LoggerClass>(sERSLocalSystemConfiguration);
+    SystemUtils.Logger_ = sERSLogger;
     sERSLogger->Log("Initialized Logging System", 5);
 
     // Startup IO Subsystem And Other Related Systems
     std::shared_ptr<ERS_CLASS_InputOutputSubsystem> sERSIOSubSystem = std::make_shared<ERS_CLASS_InputOutputSubsystem>(sERSLogger, sERSLocalSystemConfiguration);
+    SystemUtils.IOSubsystem_ = sERSIOSubSystem;
     std::shared_ptr<ERS_CLASS_ModelWriter> sERSModelWriter = std::make_shared<ERS_CLASS_ModelWriter>(sERSLogger, sERSIOSubSystem);
+    SystemUtils.ModelWriter_ = sERSModelWriter;
 
 
 
