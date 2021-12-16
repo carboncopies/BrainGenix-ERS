@@ -45,8 +45,6 @@ class RendererManager {
     private:
 
         // Member Variables
-        std::shared_ptr<YAML::Node> SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
-        std::shared_ptr<LoggerClass>  Logger_; /**<Pointer to the logging system instance*/
         std::shared_ptr<VisualRenderer> VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
         std::shared_ptr<IOManager> IOManager_; /**<Pointer To IOManager Instance*/
         GLFWwindow* Window_; /**<GLFW Window Instance*/
@@ -61,7 +59,6 @@ class RendererManager {
         ERS_STRUCT_SystemUtils SystemUtils_; /**<Copy Of Pointer Helper Struct*/
 
         // Control Values
-        std::shared_ptr<bool> SystemShouldRun_; /**<Control Variable Indicating System Run State */
         int WindowWidth_; /**<GLFW Window Width Varaible*/
         int WindowHeight_; /**<GLFW Window Height Varaible*/
         const char* WindowTitle_; /**GLFW Window Title Variable*/
