@@ -78,6 +78,12 @@ RendererManager::RendererManager(std::shared_ptr<YAML::Node> SystemConfiguration
     SceneManager_->AddScene(SLoader.ProcessScene(TestScene2, "Assets/Scene2.yaml", false));
     SceneManager_->AddScene(SLoader.ProcessScene(TestScene3, "Assets/Scene3.yaml", false));
 
+
+    // std::shared_ptr<ERS_STRUCT_IOData> Test = std::make_shared<ERS_STRUCT_IOData>();
+    // sERSIOSubSystem->ReadAsset(0, Test);
+    // sERSIOSubSystem->WriteAsset(1, Test);
+
+
 }
 
 // RendererManager Destructor
