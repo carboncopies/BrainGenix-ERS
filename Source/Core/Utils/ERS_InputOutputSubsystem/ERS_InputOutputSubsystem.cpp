@@ -93,15 +93,21 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
             std::string FilePath{Entry.path().u8string()};
             FilePath = FilePath.substr(0, FilePath.find_last_of(".")).substr(FilePath.find_last_of("/") + 1, FilePath.length());
 
-            std::cout<<FilePath<<std::endl;
             // Convert To Long, Throw Log Message If Not Number
-            long ID = std::stoi(FilePath.c_str());
+            try {
+                long ID = std::stoi(FilePath.c_str());
+                UsedAssetIDs_.push_back(ID);
 
-            // Append To Used IDs
-            UsedAssetIDs_.push_back(ID);
+                // Log Checked Out ID
+                Logger_->Log(std::string(std::string("AssetID '") + std::to_string(ID) + std::string("' In Use")).c_str(), 3);
 
-            // Log Checked Out ID
-            Logger_->Log(std::string(std::string("AssetID '") + std::to_string(ID) + std::string("' In Use")).c_str(), 3);
+
+            } catch(std::invalid_argument) {
+
+                // Log Error
+                Logger_->Log(std::string(std::string("AssetID Identification Failed On Asset '") + FilePath + std::string("', Make Sure These Are Numbers")).c_str(), 9);
+
+            }
 
         }
 
