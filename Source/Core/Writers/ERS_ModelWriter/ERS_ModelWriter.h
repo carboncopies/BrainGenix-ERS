@@ -81,10 +81,12 @@ class ERS_CLASS_ModelWriter {
         void BatchWriteModels(std::vector<std::shared_ptr<ERS_OBJECT_MODEL>> Models);
 
         /**
-         * @brief Write a single model to storage. Single Threaded.
+         * @brief Copy A Model To Insternal Storage, Does Not Re-encode model in proper format. Single Threaded.
          * 
+         * @param InputData 
          * @param Model 
+         * @param OverwriteExisting 
          */
-        void WriteModel(std::shared_ptr<ERS_OBJECT_MODEL> Model, bool OverwriteExisting = false);
+        void WriteModel(std::shared_ptr<ERS_STRUCT_IOData> InputData, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool OverwriteExisting = false);
 
 };

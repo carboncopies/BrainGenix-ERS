@@ -51,7 +51,7 @@ std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(std::shared_ptr<ERS_OBJ
 }
 
 // Write Model
-void ERS_CLASS_ModelWriter::WriteModel(std::shared_ptr<ERS_OBJECT_MODEL> Model, bool OverwriteExisting) {
+void ERS_CLASS_ModelWriter::WriteModel(std::shared_ptr<ERS_STRUCT_IOData> InputData, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool OverwriteExisting) {
 
     // Write Model Metadata
     std::string Metadata = GenerateModelMetadata(Model);
@@ -62,10 +62,16 @@ void ERS_CLASS_ModelWriter::WriteModel(std::shared_ptr<ERS_OBJECT_MODEL> Model, 
 
     long ID;
     if (OverwriteExisting) {
-        ID = Model.MetadataID;
+        ID = Model->MetadataID;
     } else {
         ID = IOSubsystem_->AllocateAssetID();
     }
     IOSubsystem_->WriteAsset(0, Data);
+
+
+    // Copy Model Data
+    std::shared_ptr<ERS_STRUCT_IOData> ModelData = std::make_shared<ERS_STRUCT_IOData>();
+    Model->ModelDataID;
+
 
 }
