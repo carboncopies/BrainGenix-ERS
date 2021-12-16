@@ -48,7 +48,7 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils SystemUtils) {
 
     // Instantiate Renderers
     Logger_->Log("Instantiating Renderers", 5);
-    VisualRenderer_ = std::make_shared<VisualRenderer>(SystemConfiguration_, Window_, Logger_, Cursors3D_);
+    VisualRenderer_ = std::make_shared<VisualRenderer>(SystemUtils_.LocalSystemConfiguration_, Window_, Logger_, Cursors3D_);
 
     // Setup Shaders
     ShaderLoader_ = std::make_shared<ShaderLoader>(Logger_);
@@ -107,11 +107,11 @@ void RendererManager::InitializeGLFW() {
 
     // Read Out Width, Height
     Logger_->Log("Read Configuration File For 'WindowWidth' Parameter", 1);
-    WindowWidth_ = (*SystemConfiguration_)["WindowWidth"].as<int>();
+    WindowWidth_ = (*SystemUtils_.LocalSystemConfiguration_)["WindowWidth"].as<int>();
     Logger_->Log("Read Configuration File For 'WindowHeight' Parameter", 1);
-    WindowHeight_ = (*SystemConfiguration_)["WindowHeight"].as<int>();
+    WindowHeight_ = (*SystemUtils_.LocalSystemConfiguration_)["WindowHeight"].as<int>();
     Logger_->Log("Read Configuration File For 'WindowTitle' Parameter", 1);
-    WindowTitle_ = (*SystemConfiguration_)["WindowTitle"].as<std::string>().c_str();
+    WindowTitle_ = (*SystemUtils_.LocalSystemConfiguration_)["WindowTitle"].as<std::string>().c_str();
 
     // Create Window Object
     glfwSetErrorCallback(ErrorCallback);
