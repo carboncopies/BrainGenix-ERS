@@ -43,6 +43,10 @@ struct ERS_OBJECT_MODEL {
     bool FlipTextures = false;
 
     // Model Metadata
+    long MetadataID;
+    long ModelDataID;
+    std::vector<long> TextureIDs;
+    
     glm::vec3 ModelPosition = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::vec3 ModelRotation = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::vec3 ModelScale = glm::vec3(1.0f, 1.0f, 1.0f);

@@ -85,6 +85,6 @@ class ERS_CLASS_ModelWriter {
          * 
          * @param Model 
          */
-        void WriteModel(std::shared_ptr<ERS_OBJECT_MODEL> Model);
+        void WriteModel(std::shared_ptr<ERS_OBJECT_MODEL> Model, bool OverwriteExisting = false);
 
 };
