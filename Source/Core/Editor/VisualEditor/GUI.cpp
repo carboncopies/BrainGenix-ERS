@@ -128,6 +128,7 @@ void GUISystem::UpdateGUI() {
     if (ImGui::BeginMainMenuBar()) {
 
         Menu_File_->Draw();
+        Menu_View_->Draw();
 
 
 
