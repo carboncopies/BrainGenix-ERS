@@ -34,7 +34,7 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils SystemUtils, GLFWwindow* Window, std
 
     // Initialize Managers
     ThemeManager_ = std::make_shared<ThemeManager>(SystemUtils_.Logger_);
-    FontManager_ = std::make_shared<FontManager>(SystemUtils_.Logger_);
+    FontManager_ = std::make_shared<ERS_CLASS_FontManager>(SystemUtils_.Logger_);
     UserProfileManager_ = std::make_shared<UserProfileManager>(SystemUtils_.Logger_);
 
     // Load User Profile

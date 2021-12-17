@@ -32,8 +32,9 @@
 #include <LoggingSystem.h>
 #include <ERS_STRUCT_SystemUtils.h>
 
-#include <FontManager.h>
-#include <Theme.h>
+#include <ERS_Editor_FontManager.h>
+#include <ERS_Editor_ThemeManager.h>
+
 #include <UserProfile.h>
 
 #include <SceneManager.h>
