@@ -13,10 +13,11 @@
 
 
 // Constructor
-GUI_Menu_File::GUI_Menu_File(ERS_STRUCT_SystemUtils SystemUtils) {
+GUI_Menu_File::GUI_Menu_File(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr<SceneManager> SceneManager) {
 
     // Copy In Pointer Struct
     SystemUtils_ = SystemUtils;
+    SceneManager_ = SceneManager;
 
     // Log Initialization
     SystemUtils_.Logger_->Log("Editor Setting Up File Menu", 4);

@@ -84,6 +84,9 @@ class GUISystem {
 
         std::shared_ptr<ThemeManager> ThemeManager_; /**<Pointer To ThemeManager Instance*/
 
+        // Menu Items
+        std::unique_ptr<GUI_Menu_File> Menu_File_; /**<Editor Menu Entry*/
+
         // Instantiate Widgets here
         Widget_FramerateCounter Widget_FramerateCounter_; /**<Widget Instance*/
         Widget_FramerateHistogram Widget_FramerateHistogram_; /**<Widget Instance*/

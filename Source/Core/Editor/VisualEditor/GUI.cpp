@@ -28,6 +28,7 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils SystemUtils, GLFWwindow* Window, std
     ImGui::CreateContext();
     ImPlot::CreateContext();
 
+
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
 
@@ -46,12 +47,16 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils SystemUtils, GLFWwindow* Window, std
     ImGui_ImplOpenGL3_Init("#version 330 core");
 
 
+    // Initialize Windows
+    SystemUtils_.Logger_->Log("Initializing Editor Menu", 5);
+    Menu_File_ = std::make_unique<GUI_Menu_File>(SystemUtils_, SceneManager_);
+
     // Initialize Widgets
-    SystemUtils_.Logger_->Log("Initializing GUI Widgets", 5);
+    SystemUtils_.Logger_->Log("Initializing Editor Widgets", 5);
     Widget_ObjectProperties_ = std::make_shared<Widget_ObjectProperties>(Cursors3D_);
 
     // Initialize Windows
-    SystemUtils_.Logger_->Log("Initializing GUI Windows", 5);
+    SystemUtils_.Logger_->Log("Initializing Editor Windows", 5);
     Window_SceneTree_ = std::make_shared<Window_SceneTree>(SceneManager_);
 
 
@@ -127,7 +132,7 @@ void GUISystem::UpdateGUI() {
     // Add Main Menu
     if (ImGui::BeginMainMenuBar()) {
 
-        
+        Menu_File_->Draw();
 
         // View Menu
         if (ImGui::BeginMenu("View")) {

@@ -57,7 +57,7 @@ class GUI_Menu_File {
          * 
          * @param SystemUtils 
          */
-        GUI_Menu_File(ERS_STRUCT_SystemUtils SystemUtils);
+        GUI_Menu_File(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr<SceneManager> SceneManager);
 
 
         /**
