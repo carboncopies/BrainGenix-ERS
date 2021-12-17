@@ -263,7 +263,6 @@ You can have tables display like that.
 
 - uncomment "#define USE_IMGUI_TABLES" in you custom config file (CustomImGuiFileDialogConfig.h in this example)
 
-
 -----------------------------------------------------------------------------------------------------------------
 ## Exploring by keys
 -----------------------------------------------------------------------------------------------------------------
