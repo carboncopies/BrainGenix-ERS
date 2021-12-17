@@ -33,7 +33,6 @@ target_link_libraries(VisualEditor
     FontManager
     UserProfile
     3DCursor
-    SceneWriter
 
     Widgets
 
