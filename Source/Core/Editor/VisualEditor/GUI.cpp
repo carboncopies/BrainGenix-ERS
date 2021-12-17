@@ -205,51 +205,7 @@ void GUISystem::DeferredFrameUpdate() {
 //FIXME: MOVE MENU UPDATE FUNCTION OUT OF GUP INTO THIS FUNCTION!!!!
 void GUISystem::UpdateWindow_ColorThemePicker() {
 
-    // Draw Color Picker Menu
-    if (ShowColorThemePicker_) {
-        ImGuiWindowFlags Flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse;
-        ImGui::Begin("Pick Color Theme", &ShowColorThemePicker_, Flags);
-
-            ImGui::SetWindowSize(ImVec2(0, 0));
-
-
-            // Put Radio Buttons Here
-            ImGui::BeginChild("Theme Selector", ImVec2(250, 250), true);
-
-                static int ThemeSelector = 0;
-                for (int i = 0; i < ThemeManager_->ThemeNames_.size(); i++) {
-
-                    ImGui::RadioButton(ThemeManager_->ThemeNames_[i].c_str(), &ThemeSelector, i);
-
-                }
-                
-
-            ImGui::EndChild();
-
-
-            ImGui::Separator();
-
-
-            // Reload Button
-            if (ImGui::Button("Reload Themes")) {
-                ThemeManager_->LoadThemes();
-            }
-            ImGui::SameLine();
-
-            // Apply Button
-            if (ImGui::Button("Apply")) {
-                ThemeManager_->ApplyThemes(ThemeSelector);
-            }
-            ImGui::SameLine();
-
-            // Close Button
-            if (ImGui::Button("Close")) {
-                ShowColorThemePicker_ = false;
-            }
-            
-
-        ImGui::End();
-    }
+  
 
 }
 
