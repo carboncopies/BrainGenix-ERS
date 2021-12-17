@@ -37,7 +37,7 @@ class Window_ThemeSelector {
     // Public Member Vars
     public:
 
-        bool Enabled_; /**<Show/Hide Window*/
+        bool Enabled_ = false; /**<Show/Hide Window*/
 
 
     // Public Member Functions
