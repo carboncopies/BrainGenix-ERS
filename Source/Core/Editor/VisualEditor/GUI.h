@@ -37,7 +37,6 @@
 #include <UserProfile.h>
 
 #include <SceneManager.h>
-#include <SceneWriter.h>
 
 #include <3DCursor.h>
 
@@ -68,7 +67,6 @@ class GUISystem {
         std::shared_ptr<UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Pointer to Cursors3D Instance*/
         std::shared_ptr<SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
-        std::shared_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
 
 
         // Window Show/Hide Vars

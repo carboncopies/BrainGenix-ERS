@@ -41,9 +41,6 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils SystemUtils, GLFWwindow* Window, std
     FontManager_->UseFont(UserProfileManager_->GetUserFont());
     FontManager_->SetFontSize(UserProfileManager_->GetUserFontSize());
 
-    // Setup Scene Writer
-    SceneWriter_ = std::make_shared<SceneWriter>(SystemUtils_.Logger_);
-
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(Window, true);
     ImGui_ImplOpenGL3_Init("#version 330 core");
@@ -130,30 +127,7 @@ void GUISystem::UpdateGUI() {
     // Add Main Menu
     if (ImGui::BeginMainMenuBar()) {
 
-        // File Menu
-        if (ImGui::BeginMenu("File")) {
-
-            if (ImGui::MenuItem("Save Active Scene")) {
-                SceneWriter_->ProcessScene(SceneManager_->Scenes_[SceneManager_->ActiveScene_], SceneManager_->Scenes_[SceneManager_->ActiveScene_].ScenePath.c_str());
-            }
-
-            if (ImGui::MenuItem("Save All")) {
-
-                for (int i = 0; i < SceneManager_->Scenes_.size(); i++) {
-                    SceneWriter_->ProcessScene(SceneManager_->Scenes_[i], SceneManager_->Scenes_[i].ScenePath.c_str());
-                }
-
-            }
-
-            ImGui::Separator();
-
-            if (ImGui::MenuItem("Exit")) {
-                MenuExitFunction();
-            }
-
-            
-        ImGui::EndMenu();
-        }
+        
 
         // View Menu
         if (ImGui::BeginMenu("View")) {
@@ -298,9 +272,3 @@ void GUISystem::UpdateFrame() {
     
 }
 
-void GUISystem::MenuExitFunction() {
-
-    // Shutdown System
-    *SystemUtils_.SystemShouldRun_ = false;
-    
-}
