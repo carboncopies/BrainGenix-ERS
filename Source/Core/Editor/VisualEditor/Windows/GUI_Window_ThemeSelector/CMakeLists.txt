@@ -20,18 +20,12 @@ add_library(Window_ThemeSelector
 
 # Link 3rd Party Libs
 target_link_libraries(Window_ThemeSelector
-    glad
-    glfw
     IMGUI
     )
 
 # Link Internal Libs
 target_link_libraries(Window_ThemeSelector
-    LoggingSystem
-    
-    Scene
-    SceneManager
-
+    ERS_Editor_ThemeManager
     )
 
 target_include_directories(Window_ThemeSelector PUBLIC ./)

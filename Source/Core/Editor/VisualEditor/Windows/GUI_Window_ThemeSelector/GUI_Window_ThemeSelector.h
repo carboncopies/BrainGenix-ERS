@@ -18,8 +18,7 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <SceneManager.h>
-#include <Scene.h>
+#include <ERS_Editor_ThemeManager.h>
 
 
 /**
