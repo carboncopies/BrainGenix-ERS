@@ -12,6 +12,7 @@
 #include <GUI_Window_ThemeSelector.h>
 
 
+// Window Constructor
 Window_ThemeSelector::Window_ThemeSelector(std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager) {
 
     // Copy Pointers
@@ -19,6 +20,13 @@ Window_ThemeSelector::Window_ThemeSelector(std::shared_ptr<ERS_CLASS_ThemeManage
 
 }
 
+// Window Destructor
+Window_ThemeSelector::~Window_ThemeSelector() {
+
+}
+
+
+// Update Window
 void Window_ThemeSelector::Draw() {
 
     // Draw Color Picker Menu
