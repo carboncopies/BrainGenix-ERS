@@ -32,11 +32,11 @@ class Window_ImportProgressBar {
 
     private:
 
-        int SubItemsImported_ = 0; /**<Set Number Of Items That Have Been Imported*/
-        int SubItemsToImport_ = 0; /**<Set Total Number Of Items Imported*/
-        std::string CurrentAssetName_ = ""; /**<Set Current Asset Name*/
-        int CurrentAssetNumber_ = 0; /**<Set Current Number Of Asset Being Imported*/
-        int TotalAssetsToImport_ = 0; /**<Set Total Number Of Assets To Import*/
+        int SubItemsImported_; /**<Set Number Of Items That Have Been Imported*/
+        int SubItemsToImport_; /**<Set Total Number Of Items Imported*/
+        std::string CurrentAssetName_ ; /**<Set Current Asset Name*/
+        int CurrentAssetNumber_; /**<Set Current Number Of Asset Being Imported*/
+        int TotalAssetsToImport_; /**<Set Total Number Of Assets To Import*/
         std::mutex LockViewStats_; /**<Mutex To Prevent Values Being Changed During View/Write*/
 
         bool Enabled_ = true; /**<Is Popup Enabled*/
