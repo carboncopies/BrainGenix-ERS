@@ -133,8 +133,6 @@ void GUISystem::UpdateGUI() {
 // Deferred Update
 void GUISystem::DeferredFrameUpdate() {
 
-    // Update Widgets
-    Widget_ObjectProperties_->Draw();
 
 }
 

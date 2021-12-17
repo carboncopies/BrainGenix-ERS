@@ -100,6 +100,8 @@ void GUI_Menu_Window::Draw() {
     Widget_FramerateHistogram_.Draw();
     Widget_FramerateGraph_.Draw();
     Widget_FrameratePlot_.Draw();
+    Widget_ObjectProperties_->Draw();
+
 
     // Update Windows
     Window_SceneTree_->Draw();
