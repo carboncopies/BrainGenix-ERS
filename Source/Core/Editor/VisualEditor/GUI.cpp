@@ -50,7 +50,7 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils SystemUtils, GLFWwindow* Window, std
     // Initialize Windows
     SystemUtils_.Logger_->Log("Initializing Editor Menu", 5);
     Menu_File_ = std::make_unique<GUI_Menu_File>(SystemUtils_, SceneManager_);
-    Menu_View_ = std::make_unique<GUI_Menu_View>(SystemUtils_, ThemeManager_);
+    Menu_View_ = std::make_unique<GUI_Menu_View>(SystemUtils_, ThemeManager_, FontManager_);
 
     // Initialize Widgets
     SystemUtils_.Logger_->Log("Initializing Editor Widgets", 5);

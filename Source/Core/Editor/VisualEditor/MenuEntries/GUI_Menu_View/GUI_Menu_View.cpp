@@ -13,11 +13,12 @@
 
 
 // Constructor
-GUI_Menu_View::GUI_Menu_View(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager) {
+GUI_Menu_View::GUI_Menu_View(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager, std::shared_ptr<ERS_CLASS_FontManager> FontManager) {
 
     // Copy In Pointer Struct
     SystemUtils_ = SystemUtils;
     ThemeManager_ = ThemeManager;
+    FontManager_ = FontManager;
 
     // Log Initialization
     SystemUtils_.Logger_->Log("Editor Setting Up View Menu", 4);
