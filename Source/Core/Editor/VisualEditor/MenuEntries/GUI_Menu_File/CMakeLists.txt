@@ -29,7 +29,7 @@ target_link_libraries(Menu_File
     LoggingSystem
     ERS_STRUCT_SystemUtils
 
-    GUI_Window_ImportProgressBar
+    Window_ImportProgressBar
 
     ERS_SceneWriter
     SceneManager
