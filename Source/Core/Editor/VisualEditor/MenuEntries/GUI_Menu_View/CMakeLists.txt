@@ -29,6 +29,7 @@ target_link_libraries(Menu_View
     ERS_STRUCT_SystemUtils
 
     ERS_Editor_ThemeManager
+    ERS_Editor_FontManager
 
     Window_ThemeSelector
     )

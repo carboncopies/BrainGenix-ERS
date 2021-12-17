@@ -32,7 +32,6 @@
 #include <LoggingSystem.h>
 #include <ERS_STRUCT_SystemUtils.h>
 
-#include <ERS_Editor_FontManager.h>
 #include <ERS_Editor_ThemeManager.h>
 #include <ERS_Editor_UserProfileManager.h>
 
@@ -66,14 +65,12 @@ class GUISystem {
         ERS_STRUCT_SystemUtils SystemUtils_; /**<Structure Containing Pointers To System Utilities*/
 
 
-        std::shared_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
         std::shared_ptr<ERS_CLASS_UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Pointer to Cursors3D Instance*/
         std::shared_ptr<SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
 
 
-        // Window Show/Hide Vars
-        bool ShowFontPicker_ = false; /**<Control Varaible to show/hide font picker window*/
+
 
 
 

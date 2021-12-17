@@ -24,7 +24,10 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
+
 #include <ERS_Editor_ThemeManager.h>
+#include <ERS_Editor_FontManager.h>
+
 #include <GUI_Window_ThemeSelector.h>
 
 
@@ -36,12 +39,18 @@
  */
 class GUI_Menu_View {
 
+
     // Member Vars
     private:
 
         ERS_STRUCT_SystemUtils SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
         std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Theme Manager Instance Ptr*/
         std::unique_ptr<Window_ThemeSelector> Window_ThemeSelector_; /**<Theme Selector Window*/
+        std::shared_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
+
+        // Window Show/Hide Vars
+        bool ShowFontPicker_ = false; /**<Control Varaible to show/hide font picker window*/
+
 
     // Member Functions
     public:

@@ -119,8 +119,7 @@ void GUISystem::UpdateGUI() {
     // Update Windows
     Window_SceneTree_->Draw();
 
-    // Update Utils
-    FontManager_->FontSelectorWindow(&ShowFontPicker_);
+
 
 
 
