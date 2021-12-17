@@ -30,9 +30,9 @@ target_link_libraries(Menu_File
     ERS_STRUCT_SystemUtils
 
     SceneWriter
-    
-    Scene
     SceneManager
+
+    Scene
     )
 
 target_include_directories(Menu_File PUBLIC ./)

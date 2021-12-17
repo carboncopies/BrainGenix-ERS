@@ -40,6 +40,8 @@
 
 #include <3DCursor.h>
 
+#include <GUI_Menu_File.h>
+
 #include <GUI_Widget_FramerateCounter.h>
 #include <GUI_Widget_RenderingSettings.h>
 #include <GUI_Widget_FramerateHistogram.h>

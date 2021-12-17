@@ -29,6 +29,7 @@
 #include <ERS_STRUCT_SystemUtils.h>
 
 #include <SceneWriter.h>
+#include <SceneManager.h>
 
 
 
@@ -44,6 +45,7 @@ class GUI_Menu_File {
 
         ERS_STRUCT_SystemUtils SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
         std::unique_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
+        std::shared_ptr<SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
 
 
     // Member Functions
