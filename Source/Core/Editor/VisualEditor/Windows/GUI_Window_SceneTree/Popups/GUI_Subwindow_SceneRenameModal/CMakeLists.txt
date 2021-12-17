@@ -34,7 +34,6 @@ target_link_libraries(GUI_Subwindow_SceneRenameModal
     UserProfile
 
     3DCursor
-    SceneWriter
 
     Window_SceneTree
     )
