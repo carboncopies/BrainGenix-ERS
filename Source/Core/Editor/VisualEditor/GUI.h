@@ -64,8 +64,8 @@ class GUISystem {
         ERS_STRUCT_SystemUtils SystemUtils_; /**<Structure Containing Pointers To System Utilities*/
 
 
-        std::shared_ptr<FontManager> FontManager_; /**<Pointer To FontManager Instance*/
-        std::shared_ptr<UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
+        std::shared_ptr<ERS_Editor_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
+        std::shared_ptr<ERS_Editor_UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Pointer to Cursors3D Instance*/
         std::shared_ptr<SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
 
