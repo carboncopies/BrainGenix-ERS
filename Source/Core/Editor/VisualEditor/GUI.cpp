@@ -113,7 +113,7 @@ void GUISystem::UpdateGUI() {
 
         Menu_File_->Draw();
         Menu_View_->Draw();
-        Menu_Window->Draw();
+        Menu_Window_->Draw();
 
 
 
