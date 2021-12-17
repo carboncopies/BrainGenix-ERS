@@ -46,7 +46,7 @@ void GUI_Menu_File::Draw() {
         // Import Option
         if (ImGui::MenuItem("Import Model")) {
             ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".cpp,.h,.hpp",
-            ".", "", std::bind(&InfosPane, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), 350, 1, UserDatas("InfosPane"));
+            ".", "");
         }
 
 
