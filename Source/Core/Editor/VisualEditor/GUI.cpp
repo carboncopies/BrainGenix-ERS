@@ -106,15 +106,7 @@ void GUISystem::UpdateGUI() {
     // Begin Guizmo
     ImGuizmo::BeginFrame();
 
-    //ImGui::ShowDemoWindow();
 
-
-
-
-
-
-    // Update Windows
-    UpdateWindow_ColorThemePicker();
 
     // Update Widgets
     Widget_FramerateCounter_.Draw();
@@ -123,8 +115,10 @@ void GUISystem::UpdateGUI() {
     Widget_FramerateGraph_.Draw();
     Widget_FrameratePlot_.Draw();
 
+    // Update Windows
     Window_SceneTree_->Draw();
 
+    // Update Utils
     FontManager_->FontSelectorWindow(&ShowFontPicker_);
 
 
@@ -202,12 +196,6 @@ void GUISystem::DeferredFrameUpdate() {
 
 }
 
-//FIXME: MOVE MENU UPDATE FUNCTION OUT OF GUP INTO THIS FUNCTION!!!!
-void GUISystem::UpdateWindow_ColorThemePicker() {
-
-  
-
-}
 
 void GUISystem::UpdateFrame() {
 

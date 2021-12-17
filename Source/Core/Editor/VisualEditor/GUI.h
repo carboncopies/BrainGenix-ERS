@@ -50,6 +50,7 @@
 
 #include <GUI_Window_SceneTree.h>
 
+#include <GUI_Window_ThemeSelector.h>
 
 /**
  * @brief Implements the ERS gui system.
@@ -71,12 +72,8 @@ class GUISystem {
 
 
         // Window Show/Hide Vars
-        bool ShowColorThemePicker_ = false; /**<Control Variable indicating weither to show/hide the color theme picker*/
         bool ShowFontPicker_ = false; /**<Control Varaible to show/hide font picker window*/
 
-
-        // Update Window Functions
-        void UpdateWindow_ColorThemePicker(); /**<Updates Color Theme Picker Window*/
 
 
     public:

@@ -60,7 +60,7 @@ void Window_ThemeSelector::Draw() {
 
             // Close Button
             if (ImGui::Button("Close")) {
-                ShowColorThemePicker_ = false;
+                Enabled_ = false;
             }
             
 
