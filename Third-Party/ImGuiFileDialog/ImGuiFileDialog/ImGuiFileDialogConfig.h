@@ -1,5 +1,7 @@
 #pragma once
 
+
+
 // uncomment and modify defines under for customize ImGuiFileDialog
 
 //this options need c++17
@@ -26,17 +28,21 @@
 //#define DisplayMode_ThumbailsGrid_ButtonHelp "Thumbnails Grid"
 
 
-//#define USE_EXPLORATION_BY_KEYS
-// this mapping by default is for GLFW but you can use another
-//#include <GLFW/glfw3.h> 
-// Up key for explore to the top
-//#define IGFD_KEY_UP GLFW_KEY_UP
-// Down key for explore to the bottom
-//#define IGFD_KEY_DOWN GLFW_KEY_DOWN
-// Enter key for open directory
-//#define IGFD_KEY_ENTER GLFW_KEY_ENTER
-// BackSpace for comming back to the last directory
-//#define IGFD_KEY_BACKSPACE GLFW_KEY_BACKSPACE
+// Use Tables
+#define USE_IMGUI_TABLES
+
+
+#define USE_EXPLORATION_BY_KEYS
+//this mapping by default is for GLFW but you can use another
+#include <GLFW/glfw3.h> 
+//Up key for explore to the top
+#define IGFD_KEY_UP GLFW_KEY_UP
+//Down key for explore to the bottom
+#define IGFD_KEY_DOWN GLFW_KEY_DOWN
+//Enter key for open directory
+#define IGFD_KEY_ENTER GLFW_KEY_ENTER
+//BackSpace for comming back to the last directory
+#define IGFD_KEY_BACKSPACE GLFW_KEY_BACKSPACE
 
 // by ex you can quit the dialog by pressing the key excape
 //#define USE_DIALOG_EXIT_WITH_KEY
@@ -77,7 +83,7 @@
 // see strftime functionin <ctime> for customize
 // "%Y/%m/%d %H:%M" give 2021:01:22 11:47
 // "%Y/%m/%d %i:%M%p" give 2021:01:22 11:45PM
-//#define DateTimeFormat "%Y/%m/%d %i:%M%p"
+#define DateTimeFormat "%Y/%m/%d %i:%M"
 
 // theses icons will appear in table headers
 //#define USE_CUSTOM_SORTING_ICON
@@ -88,10 +94,10 @@
 //#define tableHeaderFileSizeString " Size"
 //#define tableHeaderFileDateTimeString " Date"
 
-//#define USE_BOOKMARK
-//#define bookmarkPaneWith 150.0f
-//#define IMGUI_TOGGLE_BUTTON ToggleButton
-//#define bookmarksButtonString "Bookmark"
-//#define bookmarksButtonHelpString "Bookmark"
-//#define addBookmarkButtonString "+"
-//#define removeBookmarkButtonString "-"
+#define USE_BOOKMARK
+#define bookmarkPaneWith 150.0f
+#define IMGUI_TOGGLE_BUTTON ToggleButton
+#define bookmarksButtonString "Bookmark"
+#define bookmarksButtonHelpString "Bookmark"
+#define addBookmarkButtonString "+"
+#define removeBookmarkButtonString "-"
