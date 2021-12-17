@@ -7,11 +7,9 @@
 add_library(VisualEditor
 
             # Add Source Files (.cpp)
-            "Grid.cpp"
             "GUI.cpp"
 
             # Add Header Files (.h)
-            "Grid.h"
             "GUI.h"
 
             ${BACKWARD_ENABLE}
