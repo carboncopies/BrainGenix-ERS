@@ -31,13 +31,16 @@ target_link_libraries(VisualEditor
     
     Theme
     FontManager
-    Widgets
     UserProfile
-
     3DCursor
     SceneWriter
 
+    Widgets
+
     Window_SceneTree
+
+    Menu_File
+
     )
 
 target_include_directories(VisualEditor PUBLIC ./)
