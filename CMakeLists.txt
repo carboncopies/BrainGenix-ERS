@@ -62,8 +62,8 @@ add_subdirectory(${LIB_DIR}/ImGuizmo)
 add_subdirectory(${LIB_DIR}/implot)
 
 # Add ImGuiFileDialog (Not Header Only)
-add_subdirectory(${LIB_DIR}/ImGuiFileDialog)
-include_directories(${LIB_DIR}/ImGuiFileDialog)
+add_subdirectory(${LIB_DIR}/ImGuiFileDialog/ImGuiFileDialog)
+disable_target_warnings(ImGuiFileDialog)
 
 # Add GLFW Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/glfw)
