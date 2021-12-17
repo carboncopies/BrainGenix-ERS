@@ -29,9 +29,10 @@ target_link_libraries(VisualEditor
     LoggingSystem
     ERS_STRUCT_SystemUtils
     
-    Theme
-    FontManager
-    UserProfile
+    ERS_Editor_ThemeManager
+    ERS_Editor_FontManager
+    ERS_Editor_UserProfile
+    
     3DCursor
 
     Widgets
