@@ -13,16 +13,17 @@
 
 
 // Constructor
-GUI_Menu_View::GUI_Menu_View(ERS_STRUCT_SystemUtils SystemUtils) {
+GUI_Menu_View::GUI_Menu_View(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager) {
 
     // Copy In Pointer Struct
     SystemUtils_ = SystemUtils;
+    ThemeManager_ = ThemeManager;
 
     // Log Initialization
     SystemUtils_.Logger_->Log("Editor Setting Up View Menu", 4);
 
     // Create Class Instances
-
+    Window_ThemeSelector_ = std::make_unique<Window_ThemeSelector>(ThemeManager_); 
 
 
 }
@@ -43,7 +44,7 @@ void GUI_Menu_View::Draw() {
 
 
         if (ImGui::MenuItem("Color Theme")) {
-            ShowColorThemePicker_ = true;
+            Window_ThemeSelector_->Enabled_ = true;
         }
 
         if (ImGui::MenuItem("System Font")) {
@@ -53,5 +54,9 @@ void GUI_Menu_View::Draw() {
 
     ImGui::EndMenu();
     }
+
+
+    // Draw Windows
+    Window_ThemeSelector_->Draw();
 
 }

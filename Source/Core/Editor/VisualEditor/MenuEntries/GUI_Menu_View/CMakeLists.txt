@@ -26,13 +26,11 @@ target_link_libraries(Menu_View
 
 # Link Internal Libs
 target_link_libraries(Menu_View
-    LoggingSystem
     ERS_STRUCT_SystemUtils
 
-    ERS_SceneWriter
-    SceneManager
+    ERS_Editor_ThemeManager
 
-    Scene
+    Window_ThemeSelector
     )
 
 target_include_directories(Menu_View PUBLIC ./)

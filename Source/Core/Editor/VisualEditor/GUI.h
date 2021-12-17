@@ -50,7 +50,7 @@
 
 #include <GUI_Window_SceneTree.h>
 
-#include <GUI_Window_ThemeSelector.h>
+
 
 /**
  * @brief Implements the ERS gui system.
@@ -82,6 +82,7 @@ class GUISystem {
 
         // Menu Items
         std::unique_ptr<GUI_Menu_File> Menu_File_; /**<Editor Menu Entry*/
+        std::unique_ptr<GUI_Menu_View> Menu_View_; /**<Editor Menu Entry*/
 
         // Instantiate Widgets here
         Widget_FramerateCounter Widget_FramerateCounter_; /**<Widget Instance*/

@@ -38,9 +38,9 @@ target_link_libraries(VisualEditor
     Widgets
 
     Window_SceneTree
-    Window_ThemeSelector
 
     Menu_File
+    Menu_View
 
     )
 

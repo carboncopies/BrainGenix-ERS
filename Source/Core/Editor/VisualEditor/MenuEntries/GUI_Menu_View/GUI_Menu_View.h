@@ -20,16 +20,12 @@
 #include <memory>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
-#include <yaml-cpp/yaml.h>
-
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
 #include <ERS_STRUCT_SystemUtils.h>
-
-#include <ERS_SceneWriter.h>
-#include <SceneManager.h>
+#include <ERS_Editor_ThemeManager.h>
+#include <GUI_Window_ThemeSelector.h>
 
 
 
@@ -44,7 +40,8 @@ class GUI_Menu_View {
     private:
 
         ERS_STRUCT_SystemUtils SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
-
+        std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Theme Manager Instance Ptr*/
+        std::unique_ptr<Window_ThemeSelector> Window_ThemeSelector_; /**<Theme Selector Window*/
 
     // Member Functions
     public:
@@ -55,7 +52,7 @@ class GUI_Menu_View {
          * 
          * @param SystemUtils 
          */
-        GUI_Menu_View(ERS_STRUCT_SystemUtils SystemUtils);
+        GUI_Menu_View(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager);
 
 
         /**

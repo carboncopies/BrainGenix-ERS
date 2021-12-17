@@ -27,15 +27,33 @@
  */
 class Window_ThemeSelector {
 
+
+    // Private Member Vars
     private:
 
         std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Theme Manager Instance*/
-        bool Enabled_; /**<Show/Hide Window*/
 
+
+    // Public Member Vars
     public:
 
+        bool Enabled_; /**<Show/Hide Window*/
 
+
+    // Public Member Functions
+    public:
+
+        /**
+         * @brief Construct a new Window_ThemeSelector object
+         * 
+         * @param ThemeManager 
+         */
         Window_ThemeSelector(std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager);
+
+        /**
+         * @brief Destroy the Window_ThemeSelector object
+         * 
+         */
         ~Window_ThemeSelector();
 
         /**
