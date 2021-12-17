@@ -12,3 +12,28 @@
 #include <GUI_Window_ImportProgressBar.h>
 
 
+// Constructor
+Window_ImportProgressBar::Window_ImportProgressBar() {
+
+}
+
+// Destructor
+Window_ImportProgressBar::~Window_ImportProgressBar() {
+
+}
+
+
+// Update Item Stats
+void Window_ImportProgressBar::UpdateSubitems(long Imported, long Total, std::string CurrentName) {
+
+}
+
+// Update Total Model Stats
+void Window_ImportProgressBar::UpdateTotalItems(long Current, long Total) {
+
+}
+
+// Draw Window
+void Window_ImportProgressBar::Draw() {
+
+}
