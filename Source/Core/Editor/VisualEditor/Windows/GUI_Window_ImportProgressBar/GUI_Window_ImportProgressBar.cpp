@@ -37,7 +37,17 @@ void Window_ImportProgressBar::UpdateTotalItems(long Current, long Total) {
 void Window_ImportProgressBar::Draw() {
 
     if (Enabled_) {
-    ImGui::Begin("Import Status", &Enabled_);
+    ImGuiWindowFlags WindowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoScrollbar;
+    ImGui::Begin("Import Status", &Enabled_, WindowFlags);
+
+
+        // Calculate Stats
+        LockViewStats_.lock();
+        float TotalProgresBarFraction = CurrentAssetNumber_ / TotalAssetsToImport_;
+        float ItemProgressBarFraction = SubItemsImported_ / SubItemsToImport_;
+
+        // Draw Total Progres Bar
+        ImGui::ProgressBar(TotalProgresBarFraction);
 
 
     ImGui::End();
