@@ -13,7 +13,7 @@
 
 
 // Constructor
-GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr<Cursors3D> Cursors3D) {
+GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager) {
 
     // Copy In Pointer Struct
     SystemUtils_ = SystemUtils;
