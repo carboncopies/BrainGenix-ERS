@@ -81,7 +81,7 @@ class GUISystem {
 
     public:
 
-        std::shared_ptr<ThemeManager> ThemeManager_; /**<Pointer To ThemeManager Instance*/
+        std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Pointer To ThemeManager Instance*/
 
         // Menu Items
         std::unique_ptr<GUI_Menu_File> Menu_File_; /**<Editor Menu Entry*/
