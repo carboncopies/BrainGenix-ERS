@@ -26,7 +26,7 @@
  * @brief Creates the user profile manager class.
  * 
  */
-class UserProfileManager {
+class ERS_CLASS_UserProfileManager {
 
 
     private:
@@ -48,13 +48,13 @@ class UserProfileManager {
          * 
          * @param Logger 
          */
-        UserProfileManager(std::shared_ptr<LoggerClass> Logger, const char* UserProfilePath = "EditorAssets/Configuration/User/UserConfig.yaml");
+        ERS_CLASS_UserProfileManager(std::shared_ptr<LoggerClass> Logger, const char* UserProfilePath = "EditorAssets/Configuration/User/UserConfig.yaml");
 
         /**
          * @brief Destroy the User Profile Manager object
          * 
          */
-        ~UserProfileManager();
+        ~ERS_CLASS_UserProfileManager();
 
 
         std::string GetUserFont();

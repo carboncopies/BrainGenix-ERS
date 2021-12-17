@@ -9,11 +9,11 @@
     Date Created: 2021-12-04
 */
 
-#include <UserProfile.h>
+#include <ERS_Editor_UserProfileManager.h>
 
 
 // Constructor
-UserProfileManager::UserProfileManager(std::shared_ptr<LoggerClass> Logger, const char* UserProfilePath) {
+ERS_CLASS_UserProfileManager::ERS_CLASS_UserProfileManager(std::shared_ptr<LoggerClass> Logger, const char* UserProfilePath) {
 
     // Copy Pointer
     Logger_ = Logger;
@@ -27,7 +27,7 @@ UserProfileManager::UserProfileManager(std::shared_ptr<LoggerClass> Logger, cons
 
 
 // Destructor
-UserProfileManager::~UserProfileManager() {
+ERS_CLASS_UserProfileManager::~ERS_CLASS_UserProfileManager() {
 
     // Log Destructor Call
     Logger_->Log("User Profile Destructo Called", 6);
@@ -35,7 +35,7 @@ UserProfileManager::~UserProfileManager() {
 }
 
 // Load User Profile
-void UserProfileManager::LoadUserProfile() {
+void ERS_CLASS_UserProfileManager::LoadUserProfile() {
 
     // Log Loading
     Logger_->Log(std::string(std::string("Loading User Profile At Path: ") + UserProfilePath_).c_str(), 4);
@@ -51,14 +51,14 @@ void UserProfileManager::LoadUserProfile() {
 }
 
 // Return Object Functions
-std::string UserProfileManager::GetUserFont() {
+std::string ERS_CLASS_UserProfileManager::GetUserFont() {
     return UserFont_;
 }
 
-int UserProfileManager::GetUserFontSize() {
+int ERS_CLASS_UserProfileManager::GetUserFontSize() {
     return UserFontSize_;
 }
 
-std::string UserProfileManager::GetUserColorProfile() {
+std::string ERS_CLASS_UserProfileManager::GetUserColorProfile() {
     return UserColorProfileName_;
 }

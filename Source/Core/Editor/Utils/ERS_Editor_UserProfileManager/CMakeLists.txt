@@ -4,27 +4,27 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(UserProfile
+add_library(ERS_Editor_UserProfileManager
 
             # Add Source Files (.cpp)
-            "UserProfile.cpp"
+            "ERS_Editor_UserProfileManager.cpp"
 
             # Add Header Files (.h)
-            "UserProfile.h"
+            "ERS_Editor_UserProfileManager.h"
             
             ${BACKWARD_ENABLE}
             )
-set_property(TARGET UserProfile PROPERTY CXX_STANDARD 17)
+set_property(TARGET ERS_Editor_UserProfileManager PROPERTY CXX_STANDARD 17)
             
 # Link 3rd Party Libs
-target_link_libraries(UserProfile
+target_link_libraries(ERS_Editor_UserProfileManager
     yaml-cpp
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(UserProfile
+target_link_libraries(ERS_Editor_UserProfileManager
     LoggingSystem
     )
 
-target_include_directories(UserProfile PUBLIC ./)
+target_include_directories(ERS_Editor_UserProfileManager PUBLIC ./)

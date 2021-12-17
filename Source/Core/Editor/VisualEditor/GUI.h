@@ -34,11 +34,9 @@
 
 #include <ERS_Editor_FontManager.h>
 #include <ERS_Editor_ThemeManager.h>
-
-#include <UserProfile.h>
+#include <ERS_Editor_UserProfileManager.h>
 
 #include <SceneManager.h>
-
 #include <3DCursor.h>
 
 #include <GUI_Menu_File.h>

@@ -187,10 +187,11 @@ add_subdirectory(${SRC_DIR}/Core/Utils/ERS_InputOutputSubsystem)
 
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_ThemeManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_FontManager)
+add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_UserProfileManager)
+
 
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor)
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/Widgets)
-add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/UserProfile)
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/Windows)
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/MenuEntries)
 
