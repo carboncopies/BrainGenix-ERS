@@ -45,7 +45,7 @@ void GUI_Menu_File::Draw() {
 
         // Import Option
         if (ImGui::MenuItem("Import Model")) {
-            ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".cpp,.h,.hpp", ".", "");
+            ImGuiFileDialog::Instance()->OpenDialog("ImportModel", "Import", ".cpp,.h,.hpp", ".", "", -1);
         }
 
         ImGui::Separator();
@@ -73,7 +73,7 @@ void GUI_Menu_File::Draw() {
 
 
     // Draw File Dialog
-    if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey")) 
+    if (ImGuiFileDialog::Instance()->Display("ImportModel")) 
     {
         if (ImGuiFileDialog::Instance()->IsOk())
         {
