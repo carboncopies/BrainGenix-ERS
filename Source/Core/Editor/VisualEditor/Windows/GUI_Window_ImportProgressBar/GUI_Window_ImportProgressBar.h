@@ -43,12 +43,41 @@ class Window_ImportProgressBar {
 
     public:
 
+        /**
+         * @brief Construct a new Window_ImportProgressBar object
+         * 
+         */
         Window_ImportProgressBar();
+        
+        /**
+         * @brief Destroy the Window_ImportProgressBar object
+         * 
+         */
         ~Window_ImportProgressBar();
 
+
+        /**
+         * @brief Update Current item being processed (progress bar)
+         * 
+         * @param Imported 
+         * @param Total 
+         * @param CurrentName 
+         */
         void UpdateSubitems(long Imported, long Total, std::string CurrentName);
+
+        /**
+         * @brief Update Total items being processed (progress bar)
+         * 
+         * @param Current 
+         * @param Total 
+         */
         void UpdateTotalItems(long Current, long Total);
 
-        void DrawImportDialog();
+
+        /**
+         * @brief Draw import bar if needed (call every frame)
+         * 
+         */
+        void Draw();
 
 };
