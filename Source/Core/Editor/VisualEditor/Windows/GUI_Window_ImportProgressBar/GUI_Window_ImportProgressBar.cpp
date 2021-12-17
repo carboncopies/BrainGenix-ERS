@@ -36,4 +36,12 @@ void Window_ImportProgressBar::UpdateTotalItems(long Current, long Total) {
 // Draw Window
 void Window_ImportProgressBar::Draw() {
 
+    if (Enabled_) {
+    ImGui::Begin("Import Status", &Enabled_);
+
+
+    ImGui::End();
+    }
+
+
 }
