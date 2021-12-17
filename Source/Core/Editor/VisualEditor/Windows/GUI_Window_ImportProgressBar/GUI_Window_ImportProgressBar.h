@@ -24,6 +24,10 @@
 // Internal Libraries (BG convention: use <> instead of "")
 
 
+/**
+ * @brief Window for the Import progress bar.
+ * 
+ */
 class Window_ImportProgressBar {
 
     private:
