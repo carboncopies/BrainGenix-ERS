@@ -34,7 +34,7 @@
 #include <SceneManager.h>
 
 
-
+// Move This!
 #include <GUI_Window_ImportProgressBar.h>
 
 
@@ -51,6 +51,10 @@ class GUI_Menu_File {
         ERS_STRUCT_SystemUtils SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
         std::unique_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
         std::shared_ptr<SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
+
+        // Move This!
+        std::unique_ptr<Window_ImportProgressBar> Window_ImportProgressBar_; /**<Pointer To Window Import Progres Bar*/
+
 
 
     // Member Functions

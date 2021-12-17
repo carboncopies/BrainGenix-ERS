@@ -25,7 +25,10 @@ GUI_Menu_File::GUI_Menu_File(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr
     // Create Class Instances
     SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_.Logger_);
 
+    
 
+    // Move This!
+    Window_ImportProgressBar_ = std::make_unique<Window_ImportProgressBar>();
 
 }
 
