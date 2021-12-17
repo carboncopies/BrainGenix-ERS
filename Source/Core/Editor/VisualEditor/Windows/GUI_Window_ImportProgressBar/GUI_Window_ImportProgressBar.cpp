@@ -37,7 +37,7 @@ void Window_ImportProgressBar::UpdateTotalItems(long Current, long Total) {
 void Window_ImportProgressBar::Draw() {
 
     if (Enabled_) {
-    ImGuiWindowFlags WindowFlags = ImGuiWindowFlags_NoCollapse;//| ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoScrollbar;
+    ImGuiWindowFlags WindowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoScrollbar;
     ImGui::Begin("Import Status", &Enabled_, WindowFlags);
 
 
