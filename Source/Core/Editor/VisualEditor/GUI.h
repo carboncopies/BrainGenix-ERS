@@ -30,6 +30,8 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+#include <ERS_STRUCT_SystemUtils.h>
+
 #include <FontManager.h>
 #include <Theme.h>
 #include <UserProfile.h>
@@ -58,17 +60,15 @@ class GUISystem {
 
     private:
 
-        std::shared_ptr<LoggerClass> Logger_; /**<Pointer To LoggerClass Instance*/
         GLFWwindow* Window_; /**<Pointer to window instance*/
+        ERS_STRUCT_SystemUtils SystemUtils_; /**<Structure Containing Pointers To System Utilities*/
+
 
         std::shared_ptr<FontManager> FontManager_; /**<Pointer To FontManager Instance*/
         std::shared_ptr<UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Pointer to Cursors3D Instance*/
         std::shared_ptr<SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
         std::shared_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
-
-
-        std::shared_ptr<bool> SystemShouldRun_; /**<Control Variable Indicating System Run State */
 
 
         // Window Show/Hide Vars
@@ -100,7 +100,7 @@ class GUISystem {
          * 
          * @param Logger 
          */
-        GUISystem(std::shared_ptr<LoggerClass> Logger, GLFWwindow* Window, std::shared_ptr<bool> SystemShouldRun, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager);
+        GUISystem(ERS_STRUCT_SystemUtils SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager);
 
         /**
          * @brief Destroy the Gui System object

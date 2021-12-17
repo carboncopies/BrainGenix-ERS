@@ -27,6 +27,7 @@ target_link_libraries(VisualEditor
 # Link Internal Libs
 target_link_libraries(VisualEditor
     LoggingSystem
+    ERS_STRUCT_SystemUtils
     
     Theme
     FontManager

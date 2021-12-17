@@ -13,17 +13,16 @@
 
 
 // GUISystem Constructor
-GUISystem::GUISystem(std::shared_ptr<LoggerClass> Logger, GLFWwindow* Window, std::shared_ptr<bool> SystemShouldRun, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager) {
+GUISystem::GUISystem(ERS_STRUCT_SystemUtils SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager) {
 
     // Create Local Pointer
-    Logger_ = Logger;
+    SystemUtils_ = SystemUtils;
     Window_ = Window;
-    SystemShouldRun_ = SystemShouldRun;
     Cursors3D_ = Cursors3D;
     SceneManager_ = SceneManager;
 
     // Initialize ImGui
-    Logger_->Log("Initializing DearImGui GUI Library", 5);
+    SystemUtils_.Logger_->Log("Initializing DearImGui GUI Library", 5);
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -33,9 +32,9 @@ GUISystem::GUISystem(std::shared_ptr<LoggerClass> Logger, GLFWwindow* Window, st
     ImGui::StyleColorsDark();
 
     // Initialize Managers
-    ThemeManager_ = std::make_shared<ThemeManager>(Logger_);
-    FontManager_ = std::make_shared<FontManager>(Logger_);
-    UserProfileManager_ = std::make_shared<UserProfileManager>(Logger_);
+    ThemeManager_ = std::make_shared<ThemeManager>(SystemUtils_.Logger_);
+    FontManager_ = std::make_shared<FontManager>(SystemUtils_.Logger_);
+    UserProfileManager_ = std::make_shared<UserProfileManager>(SystemUtils_.Logger_);
 
     // Load User Profile
     ThemeManager_->ApplyThemes(UserProfileManager_->GetUserColorProfile().c_str());
@@ -43,7 +42,7 @@ GUISystem::GUISystem(std::shared_ptr<LoggerClass> Logger, GLFWwindow* Window, st
     FontManager_->SetFontSize(UserProfileManager_->GetUserFontSize());
 
     // Setup Scene Writer
-    SceneWriter_ = std::make_shared<SceneWriter>(Logger_);
+    SceneWriter_ = std::make_shared<SceneWriter>(SystemUtils_.Logger_);
 
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(Window, true);
@@ -51,11 +50,11 @@ GUISystem::GUISystem(std::shared_ptr<LoggerClass> Logger, GLFWwindow* Window, st
 
 
     // Initialize Widgets
-    Logger_->Log("Initializing GUI Widgets", 5);
+    SystemUtils_.Logger_->Log("Initializing GUI Widgets", 5);
     Widget_ObjectProperties_ = std::make_shared<Widget_ObjectProperties>(Cursors3D_);
 
     // Initialize Windows
-    Logger_->Log("Initializing GUI Windows", 5);
+    SystemUtils_.Logger_->Log("Initializing GUI Windows", 5);
     Window_SceneTree_ = std::make_shared<Window_SceneTree>(SceneManager_);
 
 
@@ -65,7 +64,7 @@ GUISystem::GUISystem(std::shared_ptr<LoggerClass> Logger, GLFWwindow* Window, st
 GUISystem::~GUISystem() {
 
     // Log Destructor Call
-    Logger_->Log("GUISystem Destructor Called", 6);
+    SystemUtils_.Logger_->Log("GUISystem Destructor Called", 6);
 
     // Deinit ImGui
     ImGui_ImplOpenGL3_Shutdown();
@@ -302,6 +301,6 @@ void GUISystem::UpdateFrame() {
 void GUISystem::MenuExitFunction() {
 
     // Shutdown System
-    *SystemShouldRun_ = false;
+    *SystemUtils_.SystemShouldRun_ = false;
     
 }
