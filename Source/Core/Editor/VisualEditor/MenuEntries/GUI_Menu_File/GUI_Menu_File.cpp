@@ -45,31 +45,8 @@ void GUI_Menu_File::Draw() {
 
         // Import Option
         if (ImGui::MenuItem("Import Model")) {
-            ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".cpp,.h,.hpp",
-            ".", "");
+            ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".cpp,.h,.hpp", ".", "");
         }
-
-
-        // display and action if ok
-        if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey")) 
-        {
-            if (ImGuiFileDialog::Instance()->IsOk())
-            {
-                std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
-                std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
-                std::string filter = ImGuiFileDialog::Instance()->GetCurrentFilter();
-                // here convert from string because a string was passed as a userDatas, but it can be what you want
-                std::string userDatas;
-                if (ImGuiFileDialog::Instance()->GetUserDatas())
-                    userDatas = std::string((const char*)ImGuiFileDialog::Instance()->GetUserDatas()); 
-                auto selection = ImGuiFileDialog::Instance()->GetSelection(); // multiselection
-
-                // action
-            }
-        // close
-        ImGuiFileDialog::Instance()->Close();
-        }
-
 
         ImGui::Separator();
 
@@ -93,5 +70,29 @@ void GUI_Menu_File::Draw() {
         
     ImGui::EndMenu();
     }
+
+
+    // Draw File Dialog
+    if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey")) 
+    {
+        if (ImGuiFileDialog::Instance()->IsOk())
+        {
+            std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
+            std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
+            std::string filter = ImGuiFileDialog::Instance()->GetCurrentFilter();
+            // here convert from string because a string was passed as a userDatas, but it can be what you want
+            std::string userDatas;
+            if (ImGuiFileDialog::Instance()->GetUserDatas())
+                userDatas = std::string((const char*)ImGuiFileDialog::Instance()->GetUserDatas()); 
+            auto selection = ImGuiFileDialog::Instance()->GetSelection(); // multiselection
+
+            // action
+        }
+    // close
+    ImGuiFileDialog::Instance()->Close();
+    }
+
+
+
 
 }
