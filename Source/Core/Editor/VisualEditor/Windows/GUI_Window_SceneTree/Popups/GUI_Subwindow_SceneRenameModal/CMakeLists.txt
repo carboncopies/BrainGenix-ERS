@@ -28,11 +28,11 @@ target_link_libraries(GUI_Subwindow_SceneRenameModal
 target_link_libraries(GUI_Subwindow_SceneRenameModal
     LoggingSystem
     
-    Theme
-    FontManager
-    Widgets
-    UserProfile
+    ERS_Editor_ThemeManager
+    ERS_Editor_FontManager
+    ERS_Editor_UserProfileManager
 
+    Widgets
     3DCursor
 
     Window_SceneTree

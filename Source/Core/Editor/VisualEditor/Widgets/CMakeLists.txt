@@ -38,8 +38,8 @@ target_link_libraries(Widgets
 target_link_libraries(Widgets
     LoggingSystem
     
-    Theme
-    FontManager
+    ERS_Editor_ThemeManager
+    ERS_Editor_FontManager
 
     3DCursor
 
