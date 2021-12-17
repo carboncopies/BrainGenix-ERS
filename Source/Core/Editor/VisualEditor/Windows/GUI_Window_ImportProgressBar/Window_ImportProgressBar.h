@@ -22,14 +22,25 @@
 // Internal Libraries (BG convention: use <> instead of "")
 
 
-class ImportProgressBar {
+class Window_ImportProgressBar {
 
     private:
 
-        float PercentageFilled_=0.0f; /**<Percent Done 
+        long SubItemsImported_; /**<Set Number Of Items That Have Been Imported*/
+        long SubItemsToImport_; /**<Set Total Number Of Items Imported*/
+        std::string CurrentAssetName_; /**<Set Current Asset Name*/
+        long CurrentAssetNumber_; /**<Set Current Number Of Asset Being Imported*/
+        long TotalAssetsToImport_; /**<Set Total Number Of Assets To Import*/
+        std::mutex LockViewStats_; /**<Mutex To Prevent Values Being Changed During View/Write*/
 
     public:
 
+        Window_ImportProgressBar();
+        ~Window_ImportProgressBar();
 
+        void UpdateSubitems(long Imported, long Total, std::string CurrentName);
+        void UpdateTotalItems(long Current, long Total)
+
+        void DrawImportDialog();
 
 };
