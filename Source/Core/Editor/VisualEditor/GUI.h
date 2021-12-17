@@ -124,8 +124,4 @@ class GUISystem {
          * 
          */
         void DeferredFrameUpdate();
-
-
-
-        void MenuExitFunction();
 };
