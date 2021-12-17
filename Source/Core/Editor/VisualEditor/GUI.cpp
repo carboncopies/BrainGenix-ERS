@@ -134,21 +134,7 @@ void GUISystem::UpdateGUI() {
 
         Menu_File_->Draw();
 
-        // View Menu
-        if (ImGui::BeginMenu("View")) {
 
-
-            if (ImGui::MenuItem("Color Theme")) {
-                ShowColorThemePicker_ = true;
-            }
-
-            if (ImGui::MenuItem("System Font")) {
-                ShowFontPicker_ = true;
-            }
-
-
-        ImGui::EndMenu();
-        }
 
         // Window Menu
         if (ImGui::BeginMenu("Window")) {

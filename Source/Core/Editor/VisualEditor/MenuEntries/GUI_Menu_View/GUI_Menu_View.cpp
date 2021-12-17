@@ -13,17 +13,15 @@
 
 
 // Constructor
-GUI_Menu_View::GUI_Menu_View(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr<SceneManager> SceneManager) {
+GUI_Menu_View::GUI_Menu_View(ERS_STRUCT_SystemUtils SystemUtils) {
 
     // Copy In Pointer Struct
     SystemUtils_ = SystemUtils;
-    SceneManager_ = SceneManager;
 
     // Log Initialization
-    SystemUtils_.Logger_->Log("Editor Setting Up File Menu", 4);
+    SystemUtils_.Logger_->Log("Editor Setting Up View Menu", 4);
 
     // Create Class Instances
-    SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_.Logger_);
 
 
 
@@ -33,41 +31,26 @@ GUI_Menu_View::GUI_Menu_View(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr
 GUI_Menu_View::~GUI_Menu_View() {
 
     // Log Destructor
-    SystemUtils_.Logger_->Log("Editor Destroying File Menu", 4);
+    SystemUtils_.Logger_->Log("Editor Destroying View Menu", 4);
 
 }
 
 // Draw Function
 void GUI_Menu_View::Draw() {
 
-    // File Menu
-    if (ImGui::BeginMenu("File")) {
+    // View Menu
+    if (ImGui::BeginMenu("View")) {
 
-        // Import Option
-        if (ImGui::MenuItem("Import Model")) {
-            
+
+        if (ImGui::MenuItem("Color Theme")) {
+            ShowColorThemePicker_ = true;
         }
 
-        ImGui::Separator();
-
-        // Save Options
-        if (ImGui::MenuItem("Save Active Scene")) {
-            SceneWriter_->ProcessScene(SceneManager_->Scenes_[SceneManager_->ActiveScene_], SceneManager_->Scenes_[SceneManager_->ActiveScene_].ScenePath.c_str());
-        }
-        if (ImGui::MenuItem("Save All")) {
-            for (int i = 0; i < SceneManager_->Scenes_.size(); i++) {
-                SceneWriter_->ProcessScene(SceneManager_->Scenes_[i], SceneManager_->Scenes_[i].ScenePath.c_str());
-            }
+        if (ImGui::MenuItem("System Font")) {
+            ShowFontPicker_ = true;
         }
 
-        ImGui::Separator();
 
-        // Exit Options
-        if (ImGui::MenuItem("Exit")) {
-            *SystemUtils_.SystemShouldRun_ = false;
-        }
-
-        
     ImGui::EndMenu();
     }
 
