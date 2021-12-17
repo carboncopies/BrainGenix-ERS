@@ -6,7 +6,7 @@
     Description: This Window file is responsible for creating a system Window.
     Documentation Status: Complete
     Additonal Notes: None
-    Date Created: 2021-12-07
+    Date Created: 2021-12-17
 */
 
 #pragma once
@@ -15,6 +15,8 @@
 // Standard Libraries (BG convention: use <> instead of "")
 #include <memory>
 #include <thread>
+#include <string>
+#include <mutex>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <imgui.h>
@@ -33,13 +35,15 @@ class Window_ImportProgressBar {
         long TotalAssetsToImport_; /**<Set Total Number Of Assets To Import*/
         std::mutex LockViewStats_; /**<Mutex To Prevent Values Being Changed During View/Write*/
 
+        bool Enabled_; /**<Is Popup Enabled*/
+
     public:
 
         Window_ImportProgressBar();
         ~Window_ImportProgressBar();
 
         void UpdateSubitems(long Imported, long Total, std::string CurrentName);
-        void UpdateTotalItems(long Current, long Total)
+        void UpdateTotalItems(long Current, long Total);
 
         void DrawImportDialog();
 
