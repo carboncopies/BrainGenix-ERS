@@ -34,6 +34,7 @@
 
 #define USE_EXPLORATION_BY_KEYS
 //this mapping by default is for GLFW but you can use another
+#include <glad/glad.h>
 #include <GLFW/glfw3.h> 
 //Up key for explore to the top
 #define IGFD_KEY_UP GLFW_KEY_UP
