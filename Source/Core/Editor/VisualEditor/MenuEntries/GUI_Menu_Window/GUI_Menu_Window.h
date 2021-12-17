@@ -25,11 +25,14 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
 
-#include <ERS_Editor_ThemeManager.h>
-#include <ERS_Editor_FontManager.h>
+#include <GUI_Widget_FramerateCounter.h>
+#include <GUI_Widget_RenderingSettings.h>
+#include <GUI_Widget_FramerateHistogram.h>
+#include <GUI_Widget_FramerateGraph.h>
+#include <GUI_Widget_FrameratePlot.h>
+#include <GUI_Widget_ObjectProperties.h>
 
-#include <GUI_Window_ThemeSelector.h>
-
+#include <GUI_Window_SceneTree.h>
 
 
 
@@ -37,19 +40,13 @@
  * @brief This class provides the "File" Menu In The Editor.
  * 
  */
-class GUI_Menu_View {
+class GUI_Menu_Window {
 
 
     // Member Vars
     private:
 
         ERS_STRUCT_SystemUtils SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
-        std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Theme Manager Instance Ptr*/
-        std::unique_ptr<Window_ThemeSelector> Window_ThemeSelector_; /**<Theme Selector Window*/
-        std::shared_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
-
-        // Window Show/Hide Vars
-        bool ShowFontPicker_ = false; /**<Control Varaible to show/hide font picker window*/
 
 
     // Member Functions
@@ -61,14 +58,14 @@ class GUI_Menu_View {
          * 
          * @param SystemUtils 
          */
-        GUI_Menu_View(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager, std::shared_ptr<ERS_CLASS_FontManager> FontManager);
+        GUI_Menu_Window(ERS_STRUCT_SystemUtils SystemUtils);
 
 
         /**
          * @brief Destroy the gui menu object
          * 
          */
-        ~GUI_Menu_View();
+        ~GUI_Menu_Window();
 
 
         /**

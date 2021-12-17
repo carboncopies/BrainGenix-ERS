@@ -35,12 +35,9 @@ target_link_libraries(VisualEditor
 
     3DCursor
 
-    Widgets
-
-    Window_SceneTree
-
     Menu_File
     Menu_View
+    Menu_Window
 
     )
 

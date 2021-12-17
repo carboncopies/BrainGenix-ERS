@@ -41,15 +41,9 @@
 
 #include <GUI_Menu_File.h>
 #include <GUI_Menu_View.h>
+#include <GUI_Menu_Window.h>
 
-#include <GUI_Widget_FramerateCounter.h>
-#include <GUI_Widget_RenderingSettings.h>
-#include <GUI_Widget_FramerateHistogram.h>
-#include <GUI_Widget_FramerateGraph.h>
-#include <GUI_Widget_FrameratePlot.h>
-#include <GUI_Widget_ObjectProperties.h>
 
-#include <GUI_Window_SceneTree.h>
 
 
 
@@ -79,6 +73,7 @@ class GUISystem {
         // Menu Items
         std::unique_ptr<GUI_Menu_File> Menu_File_; /**<Editor Menu Entry*/
         std::unique_ptr<GUI_Menu_View> Menu_View_; /**<Editor Menu Entry*/
+        std::unique_ptr<GUI_Menu_Window> Menu_Window_; /**<Editor Menu Entry*/
 
         // Instantiate Widgets here
         Widget_FramerateCounter Widget_FramerateCounter_; /**<Widget Instance*/

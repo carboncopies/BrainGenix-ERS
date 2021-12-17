@@ -4,34 +4,33 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Menu_View
+add_library(Menu_Window
 
             # Add Source Files (.cpp)
 
-            "GUI_Menu_View.cpp"
+            "GUI_Menu_Window.cpp"
 
             # Add Header Files (.h)
-            "GUI_Menu_View.h"
+            "GUI_Menu_Window.h"
 
 
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Menu_View
+target_link_libraries(Menu_Window
     glad
     glfw
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(Menu_View
+target_link_libraries(Menu_Window
     ERS_STRUCT_SystemUtils
 
-    ERS_Editor_ThemeManager
-    ERS_Editor_FontManager
-
-    Window_ThemeSelector
+    Widgets
+    Window_SceneTree
+    
     )
 
-target_include_directories(Menu_View PUBLIC ./)
+target_include_directories(Menu_Window PUBLIC ./)
