@@ -4,27 +4,27 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Theme
+add_library(ERS_Editor_ThemeManager
 
             # Add Source Files (.cpp)
-            "Theme.cpp"
+            "ERS_Editor_ThemeManager.cpp"
 
             # Add Header Files (.h)
-            "Theme.h"
+            "ERS_Editor_ThemeManager.h"
             
             ${BACKWARD_ENABLE}
             )
-set_property(TARGET Theme PROPERTY CXX_STANDARD 17)
+set_property(TARGET ERS_Editor_ThemeManager PROPERTY CXX_STANDARD 17)
             
 # Link 3rd Party Libs
-target_link_libraries(Theme
+target_link_libraries(ERS_Editor_ThemeManager
     yaml-cpp
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(Theme
+target_link_libraries(ERS_Editor_ThemeManager
     LoggingSystem
     )
 
-target_include_directories(Theme PUBLIC ./)
+target_include_directories(ERS_Editor_ThemeManager PUBLIC ./)

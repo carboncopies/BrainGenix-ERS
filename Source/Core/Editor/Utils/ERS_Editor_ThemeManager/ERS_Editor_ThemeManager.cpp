@@ -9,7 +9,7 @@
     Date Created: 2021-11-29
 */
 
-#include <Theme.h>
+#include <ERS_Editor_ThemeManager.h>
 
 
 // ThemeManager Constructor
