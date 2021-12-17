@@ -31,8 +31,8 @@ target_link_libraries(VisualEditor
     
     ERS_Editor_ThemeManager
     ERS_Editor_FontManager
-    ERS_Editor_UserProfile
-    
+    ERS_Editor_UserProfileManager
+
     3DCursor
 
     Widgets
