@@ -45,7 +45,7 @@ void GUI_Menu_File::Draw() {
 
         // Import Option
         if (ImGui::MenuItem("Import Model")) {
-            ImGuiFileDialog::Instance()->OpenDialog("ImportModel", "Import", ".gltf,.obj,.fbx,.ply,.blend", ".", "", -1);
+            ImGuiFileDialog::Instance()->OpenDialog("ImportModel", "Import", ".gltf,.obj,.fbx,.ply,.blend,.*", ".", "", -1);
         }
 
         ImGui::Separator();
