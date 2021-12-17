@@ -31,7 +31,7 @@
  * @brief This class provides functionality to load and apply themes from yaml files.
  * 
  */
-class ThemeManager {
+class ERS_Editor_ThemeManager {
 
 
     private:
@@ -55,13 +55,13 @@ class ThemeManager {
          * @param Logger_ 
          * @param ThemePath 
          */
-        ThemeManager(std::shared_ptr<LoggerClass> Logger, const char* ThemePath = "EditorAssets/Configuration/Themes");
+        ERS_Editor_ThemeManager(std::shared_ptr<LoggerClass> Logger, const char* ThemePath = "EditorAssets/Configuration/Themes");
 
         /**
          * @brief Destroy the Theme Manager object
          * 
          */
-        ~ThemeManager();
+        ~ERS_Editor_ThemeManager();
 
         
 

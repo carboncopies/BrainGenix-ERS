@@ -9,11 +9,11 @@
     Date Created: 2021-11-30
 */
 
-#include <FontManager.h>
+#include <ERS_Editor_FontManager.h>
 
 
-// FontManager Constructor
-FontManager::FontManager(std::shared_ptr<LoggerClass> Logger, const char* FontsDirPath) {
+// ERS_Editor_FontManager Constructor
+ERS_Editor_FontManager::ERS_Editor_FontManager(std::shared_ptr<LoggerClass> Logger, const char* FontsDirPath) {
 
     // Create Pointers
     Logger_ = Logger;
@@ -29,8 +29,8 @@ FontManager::FontManager(std::shared_ptr<LoggerClass> Logger, const char* FontsD
 
 }
 
-// FontManager Destructor
-FontManager::~FontManager() {
+// ERS_Editor_FontManager Destructor
+ERS_Editor_FontManager::~ERS_Editor_FontManager() {
     
     // Log Destructor Call
     Logger_->Log("Font Manager Destructor Called", 6);
@@ -38,13 +38,13 @@ FontManager::~FontManager() {
 }
 
 // Check String Endings (From: https://stackoverflow.com/questions/874134/find-out-if-string-ends-with-another-string-in-c)
-bool FontManager::EndsWith(const std::string& Input, const std::string& Ending) {
+bool ERS_Editor_FontManager::EndsWith(const std::string& Input, const std::string& Ending) {
     if (Ending.size() > Input.size()) return false;
     return std::equal(Input.begin() + Input.size() - Ending.size(), Input.end(), Ending.begin());
 }
 
 // Index Fonts Function
-void FontManager::IndexFonts() {
+void ERS_Editor_FontManager::IndexFonts() {
 
     // Clear Vectors
     FontPathList_.clear();
@@ -88,7 +88,7 @@ void FontManager::IndexFonts() {
 }
 
 // Use Font Function
-void FontManager::UseFont(int FontIndex) {
+void ERS_Editor_FontManager::UseFont(int FontIndex) {
 
     // Get Font Path From Dir
     const char* FontPath = FontPathList_[FontIndex].c_str();
@@ -106,7 +106,7 @@ void FontManager::UseFont(int FontIndex) {
 }
 
 // Use Font Function
-void FontManager::UseFont(std::string Font) {
+void ERS_Editor_FontManager::UseFont(std::string Font) {
 
     // Index to Find Font
     int Index;
@@ -140,7 +140,7 @@ void FontManager::UseFont(std::string Font) {
 }
 
 // Set Font Size
-void FontManager::SetFontSize(float FontSize) {
+void ERS_Editor_FontManager::SetFontSize(float FontSize) {
 
     // Set Font Size
     FontSize_ = FontSize;
@@ -148,7 +148,7 @@ void FontManager::SetFontSize(float FontSize) {
 }
 
 // CheckUpdate
-void FontManager::CheckUpdateFont() {
+void ERS_Editor_FontManager::CheckUpdateFont() {
 
     // If Font Is To Be Updated
     if (UpdateFont_) {
@@ -159,7 +159,7 @@ void FontManager::CheckUpdateFont() {
 }
 
 // Font Selector Window
-void FontManager::FontSelectorWindow(bool *WindowEnabled) {
+void ERS_Editor_FontManager::FontSelectorWindow(bool *WindowEnabled) {
 
     // If Window Enabled
     if (*WindowEnabled) {

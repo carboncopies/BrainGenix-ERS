@@ -12,8 +12,8 @@
 #include <ERS_Editor_ThemeManager.h>
 
 
-// ThemeManager Constructor
-ThemeManager::ThemeManager(std::shared_ptr<LoggerClass> Logger, const char* ThemePath) {
+// ERS_Editor_ThemeManager Constructor
+ERS_Editor_ThemeManager::ERS_Editor_ThemeManager(std::shared_ptr<LoggerClass> Logger, const char* ThemePath) {
 
     // Create Local Pointers
     Logger_ = Logger;
@@ -36,15 +36,15 @@ ThemeManager::ThemeManager(std::shared_ptr<LoggerClass> Logger, const char* Them
 
 }
 
-// ThemeManager Destructor
-ThemeManager::~ThemeManager() {
+// ERS_Editor_ThemeManager Destructor
+ERS_Editor_ThemeManager::~ERS_Editor_ThemeManager() {
 
     // Log Destructor Call
-    Logger_->Log("ThemeManager Destructor Called", 6);
+    Logger_->Log("ERS_Editor_ThemeManager Destructor Called", 6);
 
 }
 
-void ThemeManager::ApplyThemes(const char* ThemeName) {
+void ERS_Editor_ThemeManager::ApplyThemes(const char* ThemeName) {
 
     // Apply Target Theme
     int Index;
@@ -66,7 +66,7 @@ void ThemeManager::ApplyThemes(const char* ThemeName) {
 }
 
 // Load Themes
-void ThemeManager::LoadThemes() {
+void ERS_Editor_ThemeManager::LoadThemes() {
 
     // Clear Vectors
     ThemeNames_ = *new std::vector<std::string>;
@@ -101,7 +101,7 @@ void ThemeManager::LoadThemes() {
 }
 
 // Read Color
-ImVec4 ThemeManager::ReadColor(const char* NodeName, YAML::Node Target) {
+ImVec4 ERS_Editor_ThemeManager::ReadColor(const char* NodeName, YAML::Node Target) {
 
     // Log Read
      Logger_->Log(std::string(std::string("Reading Theme For Value: '") + std::string(NodeName) + std::string("'")).c_str(), 1);
@@ -124,7 +124,7 @@ ImVec4 ThemeManager::ReadColor(const char* NodeName, YAML::Node Target) {
 }
 
 // Apply Theme
-void ThemeManager::ApplyThemes(int ThemeID) {
+void ERS_Editor_ThemeManager::ApplyThemes(int ThemeID) {
 
     // Get Theme Name
     std::string ThemeName = ThemeNames_[ThemeID];

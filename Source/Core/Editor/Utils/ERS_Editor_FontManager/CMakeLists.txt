@@ -4,27 +4,27 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(FontManager
+add_library(ERS_Editor_FontManager
 
             # Add Source Files (.cpp)
-            "FontManager.cpp"
+            "ERS_Editor_FontManager.cpp"
 
             # Add Header Files (.h)
-            "FontManager.h"
+            "ERS_Editor_FontManager.h"
             
             ${BACKWARD_ENABLE}
             )
-set_property(TARGET FontManager PROPERTY CXX_STANDARD 17)
+set_property(TARGET ERS_Editor_FontManager PROPERTY CXX_STANDARD 17)
             
 # Link 3rd Party Libs
-target_link_libraries(FontManager
+target_link_libraries(ERS_Editor_FontManager
     yaml-cpp
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(FontManager
+target_link_libraries(ERS_Editor_FontManager
     LoggingSystem
     )
 
-target_include_directories(FontManager PUBLIC ./)
+target_include_directories(ERS_Editor_FontManager PUBLIC ./)

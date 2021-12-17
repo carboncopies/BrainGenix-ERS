@@ -33,7 +33,7 @@
  * @brief Load, parse, and apply fonts to ImGui.
  * 
  */
-class FontManager {
+class ERS_Editor_FontManager {
 
     private:
 
@@ -51,8 +51,8 @@ class FontManager {
 
     public:
 
-        FontManager(std::shared_ptr<LoggerClass> Logger, const char* FontsDirPath = "EditorAssets/Fonts");
-        ~FontManager();
+        ERS_Editor_FontManager(std::shared_ptr<LoggerClass> Logger, const char* FontsDirPath = "EditorAssets/Fonts");
+        ~ERS_Editor_FontManager();
 
         void IndexFonts();
         void UseFont(int FontIndex);
