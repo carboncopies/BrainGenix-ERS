@@ -29,7 +29,7 @@ target_link_libraries(Menu_File
     LoggingSystem
     ERS_STRUCT_SystemUtils
 
-    SceneWriter
+    ERS_SceneWriter
     SceneManager
 
     Scene

@@ -4,23 +4,23 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(SceneWriter
+add_library(ERS_SceneWriter
 
             # Add Source Files (.cpp)
-            "SceneWriter.cpp"
+            "ERS_SceneWriter.cpp"
 
             # Add Header Files (.h)
-            "SceneWriter.h"
+            "ERS_SceneWriter.h"
 
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(SceneWriter
+target_link_libraries(ERS_SceneWriter
     )
 
 # Link Internal Libs
-target_link_libraries(SceneWriter
+target_link_libraries(ERS_SceneWriter
     LoggingSystem
     Model
     ModelLoader
@@ -30,5 +30,5 @@ target_link_libraries(SceneWriter
     Shader
     )
 
-target_include_directories(SceneWriter PUBLIC ./)
+target_include_directories(ERS_SceneWriter PUBLIC ./)
 

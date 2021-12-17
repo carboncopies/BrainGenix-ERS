@@ -28,7 +28,7 @@
 #include <LoggingSystem.h>
 #include <ERS_STRUCT_SystemUtils.h>
 
-#include <SceneWriter.h>
+#include <ERS_SceneWriter.h>
 #include <SceneManager.h>
 
 
