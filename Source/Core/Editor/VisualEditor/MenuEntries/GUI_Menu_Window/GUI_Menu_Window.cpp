@@ -13,7 +13,7 @@
 
 
 // Constructor
-GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils SystemUtils) {
+GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr<Cursors3D> Cursors3D) {
 
     // Copy In Pointer Struct
     SystemUtils_ = SystemUtils;
@@ -24,7 +24,7 @@ GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils SystemUtils) {
 
     // Initialize Widgets
     SystemUtils_.Logger_->Log("Initializing Editor Widgets", 5);
-    Widget_ObjectProperties_ = std::make_shared<Widget_ObjectProperties>(Cursors3D_);
+    Widget_ObjectProperties_ = std::make_shared<Widget_ObjectProperties>(Cursors3D);
 
     // Initialize Windows
     SystemUtils_.Logger_->Log("Initializing Editor Windows", 5);

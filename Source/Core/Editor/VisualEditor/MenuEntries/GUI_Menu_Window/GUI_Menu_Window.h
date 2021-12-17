@@ -34,6 +34,7 @@
 
 #include <GUI_Window_SceneTree.h>
 
+#include <3DCursor.h>
 
 
 /**
@@ -58,7 +59,7 @@ class GUI_Menu_Window {
          * 
          * @param SystemUtils 
          */
-        GUI_Menu_Window(ERS_STRUCT_SystemUtils SystemUtils);
+        GUI_Menu_Window(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr<Cursors3D> Cursors3D);
 
 
         /**
