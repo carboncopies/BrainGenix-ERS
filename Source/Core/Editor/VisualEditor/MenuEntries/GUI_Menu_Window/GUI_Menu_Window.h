@@ -51,6 +51,18 @@ class GUI_Menu_Window {
         ERS_STRUCT_SystemUtils SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
 
 
+        // Instantiate Widgets here
+        Widget_FramerateCounter Widget_FramerateCounter_; /**<Widget Instance*/
+        Widget_FramerateHistogram Widget_FramerateHistogram_; /**<Widget Instance*/
+        Widget_FramerateGraph Widget_FramerateGraph_; /**<Widget Instance*/
+        Widget_FrameratePlot Widget_FrameratePlot_; /**<Widget Instance*/
+        Widget_RenderingSettings Widget_RenderingSettings_; /**<Widget Instance*/
+        std::shared_ptr<Widget_ObjectProperties> Widget_ObjectProperties_; /**<Widget Instance*/
+
+        // Instantiate Windows Here
+        std::shared_ptr<Window_SceneTree> Window_SceneTree_; /**<Window Instance*/
+
+
     // Member Functions
     public:
 

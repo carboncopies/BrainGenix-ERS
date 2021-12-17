@@ -75,16 +75,7 @@ class GUISystem {
         std::unique_ptr<GUI_Menu_View> Menu_View_; /**<Editor Menu Entry*/
         std::unique_ptr<GUI_Menu_Window> Menu_Window_; /**<Editor Menu Entry*/
 
-        // Instantiate Widgets here
-        Widget_FramerateCounter Widget_FramerateCounter_; /**<Widget Instance*/
-        Widget_FramerateHistogram Widget_FramerateHistogram_; /**<Widget Instance*/
-        Widget_FramerateGraph Widget_FramerateGraph_; /**<Widget Instance*/
-        Widget_FrameratePlot Widget_FrameratePlot_; /**<Widget Instance*/
-        Widget_RenderingSettings Widget_RenderingSettings_; /**<Widget Instance*/
-        std::shared_ptr<Widget_ObjectProperties> Widget_ObjectProperties_; /**<Widget Instance*/
 
-        // Instantiate Windows Here
-        std::shared_ptr<Window_SceneTree> Window_SceneTree_; /**<Window Instance*/
 
         /**
          * @brief Construct a new Gui System object

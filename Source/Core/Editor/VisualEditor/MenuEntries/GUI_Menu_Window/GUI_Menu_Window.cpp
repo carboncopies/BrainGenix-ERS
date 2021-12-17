@@ -28,7 +28,7 @@ GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils SystemUtils, std::shared
 
     // Initialize Windows
     SystemUtils_.Logger_->Log("Initializing Editor Windows", 5);
-    Window_SceneTree_ = std::make_shared<Window_SceneTree>(SceneManager_);
+    Window_SceneTree_ = std::make_shared<Window_SceneTree>(SceneManager);
 
 }
 
