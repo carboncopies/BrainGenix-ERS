@@ -13,7 +13,7 @@
 
 
 // GUISystem Constructor
-GUISystem::GUISystem(ERS_STRUCT_SystemUtils SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager) {
+GUISystem::GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager) {
 
     // Create Local Pointer
     SystemUtils_ = SystemUtils;
@@ -22,7 +22,7 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils SystemUtils, GLFWwindow* Window, std
     SceneManager_ = SceneManager;
 
     // Initialize ImGui
-    SystemUtils_.Logger_->Log("Initializing DearImGui GUI Library", 5);
+    SystemUtils_->Logger_->Log("Initializing DearImGui GUI Library", 5);
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -33,9 +33,9 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils SystemUtils, GLFWwindow* Window, std
     ImGui::StyleColorsDark();
 
     // Initialize Managers
-    ThemeManager_ = std::make_shared<ERS_CLASS_ThemeManager>(SystemUtils_.Logger_);
-    FontManager_ = std::make_shared<ERS_CLASS_FontManager>(SystemUtils_.Logger_);
-    UserProfileManager_ = std::make_shared<ERS_CLASS_UserProfileManager>(SystemUtils_.Logger_);
+    ThemeManager_ = std::make_shared<ERS_CLASS_ThemeManager>(SystemUtils_->Logger_);
+    FontManager_ = std::make_shared<ERS_CLASS_FontManager>(SystemUtils_->Logger_);
+    UserProfileManager_ = std::make_shared<ERS_CLASS_UserProfileManager>(SystemUtils_->Logger_);
 
     // Load User Profile
     ThemeManager_->ApplyThemes(UserProfileManager_->GetUserColorProfile().c_str());
@@ -48,7 +48,7 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils SystemUtils, GLFWwindow* Window, std
 
 
     // Initialize Windows
-    SystemUtils_.Logger_->Log("Initializing Editor Menu", 5);
+    SystemUtils_->Logger_->Log("Initializing Editor Menu", 5);
     Menu_File_ = std::make_unique<GUI_Menu_File>(SystemUtils_, SceneManager_);
     Menu_View_ = std::make_unique<GUI_Menu_View>(SystemUtils_, ThemeManager_, FontManager_);
     Menu_Window_ = std::make_unique<GUI_Menu_Window>(SystemUtils_, Cursors3D_, SceneManager_);
@@ -62,7 +62,7 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils SystemUtils, GLFWwindow* Window, std
 GUISystem::~GUISystem() {
 
     // Log Destructor Call
-    SystemUtils_.Logger_->Log("GUISystem Destructor Called", 6);
+    SystemUtils_->Logger_->Log("GUISystem Destructor Called", 6);
 
     // Deinit ImGui
     ImGui_ImplOpenGL3_Shutdown();
