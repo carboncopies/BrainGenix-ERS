@@ -13,16 +13,16 @@
 
 
 // Visual Rendere constructor
-VisualRenderer::VisualRenderer (ERS_STRUCT_SystemUtils SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D) {
+VisualRenderer::VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D) {
 
     // Create Pointers
-    SystemUtils.Logger_->Log("Populating Renderer Member Pointers", 5);
+    SystemUtils->Logger_->Log("Populating Renderer Member Pointers", 5);
     SystemUtils_ = SystemUtils;
     Window_ = Window;
     Cursors3D_ = Cursors3D;
 
     // Initialize OpenGL
-    SystemUtils_.Logger_->Log("Initializing OpenGL", 5);
+    SystemUtils_->Logger_->Log("Initializing OpenGL", 5);
     InitializeOpenGL();
 
 
@@ -42,7 +42,7 @@ VisualRenderer::~VisualRenderer() {
 
 
     // Cleanup
-    SystemUtils_.Logger_->Log("Cleaning Up OpenGL/GLFW", 0);
+    SystemUtils_->Logger_->Log("Cleaning Up OpenGL/GLFW", 0);
     glfwTerminate();
 
 }
@@ -51,7 +51,7 @@ void VisualRenderer::InitializeOpenGL() {
 
     // Setup GLAD
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        SystemUtils_.Logger_->Log("Failed To Initialize GLAD", 10);
+        SystemUtils_->Logger_->Log("Failed To Initialize GLAD", 10);
     }
 
 }
@@ -104,7 +104,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<SceneManager>Scen
     }
 
     // Update Viewport Camera/Position/Etc.
-    InputProcessor->ProcessKeyboardInput(SystemUtils_.Logger_, DeltaTime, CaptureMouseCursor);
+    InputProcessor->ProcessKeyboardInput(SystemUtils_->Logger_, DeltaTime, CaptureMouseCursor);
     InputProcessor->UpdateFramebuffer();
     InputProcessor->UpdateMouse(CaptureMouseCursor);
     InputProcessor->ProcessMouseScroll(CaptureMouseCursor);
@@ -223,24 +223,24 @@ void VisualRenderer::CreateViewport(std::shared_ptr<ERS_OBJECT_SHADER> Shader, s
     ViewportHeights_.push_back(1);
 
     // Create IOManager
-    SystemUtils_.Logger_->Log("Creating New Input Processor", 4);
+    SystemUtils_->Logger_->Log("Creating New Input Processor", 4);
     std::shared_ptr<InputProcessor> InProc = std::make_shared<InputProcessor>(Camera, Window);
     InputProcessors_.push_back(InProc);
 
     // Create Framebuffer
     unsigned int FramebufferObject;
-    SystemUtils_.Logger_->Log("Creating Framebuffer Object", 4);
+    SystemUtils_->Logger_->Log("Creating Framebuffer Object", 4);
     glGenFramebuffers(1, &FramebufferObject);
 
     // Bind To Framebuffer
-    SystemUtils_.Logger_->Log("Binding To Framebuffer Object", 4);
+    SystemUtils_->Logger_->Log("Binding To Framebuffer Object", 4);
     glBindFramebuffer(GL_FRAMEBUFFER, FramebufferObject);
     FramebufferObjects_.push_back(FramebufferObject);
 
 
     // Create RenderTexture
     unsigned int FramebufferColorObject;
-    SystemUtils_.Logger_->Log("Creating Render Texture", 4);
+    SystemUtils_->Logger_->Log("Creating Render Texture", 4);
     glGenTextures(1, &FramebufferColorObject);
     glBindTexture(GL_TEXTURE_2D, FramebufferColorObject);
 
@@ -250,19 +250,19 @@ void VisualRenderer::CreateViewport(std::shared_ptr<ERS_OBJECT_SHADER> Shader, s
     FramebufferColorObjects_.push_back(FramebufferColorObject);
 
     // Attach Texture To Framebuffer
-    SystemUtils_.Logger_->Log("Attaching Texture To Framebuffer", 4);
+    SystemUtils_->Logger_->Log("Attaching Texture To Framebuffer", 4);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, FramebufferColorObject, 0);
 
     // Create Render Buffer
     unsigned int RenderbufferObject;
-    SystemUtils_.Logger_->Log("Creating Render Buffer Object", 5);
+    SystemUtils_->Logger_->Log("Creating Render Buffer Object", 5);
     glGenRenderbuffers(1, &RenderbufferObject);
     glBindRenderbuffer(GL_RENDERBUFFER, RenderbufferObject);
 
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 400, 200); // RESIZE THIS WITH THE WINDOW!
 
     // Attach Renderbuffer to Depth And Stencil Attachment
-    SystemUtils_.Logger_->Log("Attaching Render Buffer Object To Depth Stencil", 5);
+    SystemUtils_->Logger_->Log("Attaching Render Buffer Object To Depth Stencil", 5);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, RenderbufferObject);
     RenderbufferObjects_.push_back(RenderbufferObject);
 
@@ -270,7 +270,7 @@ void VisualRenderer::CreateViewport(std::shared_ptr<ERS_OBJECT_SHADER> Shader, s
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
 
         // Log Error
-        SystemUtils_.Logger_->Log("Failed To Initialize Framebuffer", 9);
+        SystemUtils_->Logger_->Log("Failed To Initialize Framebuffer", 9);
     }
 
 

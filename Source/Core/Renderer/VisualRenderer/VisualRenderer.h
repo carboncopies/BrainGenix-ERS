@@ -64,7 +64,7 @@ class VisualRenderer {
         std::vector<int> ViewportWidths_; /**<Vector Containing Viewport Widths In Pixels*/
         std::vector<int> ViewportHeights_; /**<Vector Containing Viewport Heights In Pixels*/
 
-        ERS_STRUCT_SystemUtils SystemUtils_; /**<System Utils Struct Containing Pointers To Important Info*/
+        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Struct Containing Pointers To Important Info*/
 
 
         // Internal Functions
@@ -76,7 +76,7 @@ class VisualRenderer {
     public:
 
         // Constructor
-        VisualRenderer(ERS_STRUCT_SystemUtils SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D);
+        VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D);
 
         // Destructor
         ~VisualRenderer();
