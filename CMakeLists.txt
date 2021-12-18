@@ -38,8 +38,6 @@ endfunction()
 # Add Threading Library
 find_package(Threads REQUIRED)
 
-
-
 # Add YAML-CPP Library (Not Header Only)
 add_subdirectory("${LIB_DIR}/yaml-cpp")
 disable_target_warnings(yaml-cpp)
@@ -85,6 +83,7 @@ disable_target_warnings(FreeImage)
 # Add ASSIMP Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/assimp)
 disable_target_warnings(assimp)
+
 
 # Add Backward Library (Header Only)
 add_subdirectory(${LIB_DIR}/backward)
