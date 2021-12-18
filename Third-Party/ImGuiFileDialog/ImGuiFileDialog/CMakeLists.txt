@@ -10,7 +10,8 @@ add_library(ImGuiFileDialog
 target_link_libraries(ImGuiFileDialog
 
     IMGUI
-    
+    glad
+    glfw
 )
 
 target_include_directories(ImGuiFileDialog PUBLIC ./)
