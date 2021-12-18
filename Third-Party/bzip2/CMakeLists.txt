@@ -1,5 +1,6 @@
 # Copied from minizip cmakelists!
 
+set(BZIP2_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}) # set current dir as the bzip src dir
 
 
 # BZip2 repository does not support cmake so we have to create
