@@ -1,15 +1,12 @@
 cmake_minimum_required (VERSION 2.8.11)
-project (dirent 
-    LANGUAGES C CXX
-    PROJECT_VERSION 1.23
-    )
+project (dirent LANGUAGES C CXX)
 
 # Initialize C and C++ compilers
 enable_language (C CXX)
 
 # Compile in debug mode by default
 if (NOT CMAKE_BUILD_TYPE)
-    set (CMAKE_BUILD_TYPE RelWithDebInfo
+    set (CMAKE_BUILD_TYPE Debug
         CACHE STRING
         "Type of build: None Debug Release RelWithDebInfo MinSizeRel."
         FORCE
