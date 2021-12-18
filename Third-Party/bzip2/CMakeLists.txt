@@ -1,26 +1,32 @@
-# Copied from minizip cmakelists!
 
-set(BZIP2_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}) # set current dir as the bzip src dir
+# Copyright (C) 2007-2012 LuaDist.
+# Submitted by David Manura
+# Redistribution and use of this file is allowed according to the terms of the MIT license.
+# For details see the COPYRIGHT file distributed with LuaDist.
+# Please note that the package source code is licensed under its own license.
 
+project ( bzip2 C )
+cmake_minimum_required ( VERSION 2.6 )
+include ( cmake/dist.cmake )
 
-# BZip2 repository does not support cmake so we have to create
-# the bzip2 library ourselves
-set(BZIP2_SRC
-    ${BZIP2_SOURCE_DIR}/blocksort.c
-    ${BZIP2_SOURCE_DIR}/bzlib.c
-    ${BZIP2_SOURCE_DIR}/compress.c
-    ${BZIP2_SOURCE_DIR}/crctable.c
-    ${BZIP2_SOURCE_DIR}/decompress.c
-    ${BZIP2_SOURCE_DIR}/huffman.c
-    ${BZIP2_SOURCE_DIR}/randtable.c)
+add_definitions ( -D_FILE_OFFSET_BITS=64 )
 
-set(BZIP2_HDR
-    ${BZIP2_SOURCE_DIR}/bzlib.h
-    ${BZIP2_SOURCE_DIR}/bzlib_private.h)
+# Library
+set ( BZIP2_SRCS blocksort.c huffman.c crctable.c randtable.c compress.c decompress.c 
+  bzlib.c )
 
-add_library(bzip2 STATIC ${BZIP2_SRC} ${BZIP2_HDR})
+add_library ( bz2 ${BZIP2_SRCS} libbz2.def )
 
-target_compile_definitions(bzip2 PRIVATE -DBZ_NO_STDIO)
+add_executable ( bzip2 bzip2.c )
+target_link_libraries ( bzip2 bz2 )
 
-list(APPEND MINIZIP_DEP bzip2)
-list(APPEND MINIZIP_INC ${BZIP2_SOURCE_DIR})
+add_executable ( bzip2recover bzip2recover.c )
+
+file ( WRITE bzegrep.1 ".so man1/bzgrep.1" )
+file ( WRITE bzfgrep.1 ".so man1/bzgrep.1" )
+file ( WRITE bzless.1 ".so man1/bzmore.1" )
+file ( WRITE bzcmp.1 ".so man1/bzdiff.1" )
+
+include ( CTest )
+add_test ( test ${CMAKE_COMMAND} -P test.cmake )
+
