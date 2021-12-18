@@ -28,7 +28,7 @@ GUI_Menu_File::GUI_Menu_File(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr
     
 
     // Move This!
-    Window_ImportProgressBar_ = std::make_unique<Window_ImportProgressBar>();
+    Window_ImportProgressBar_ = std::make_unique<Window_ImportProgressBar>(SystemUtils_);
 
 }
 
