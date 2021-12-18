@@ -43,7 +43,7 @@ class GUI_Menu_View {
     // Member Vars
     private:
 
-        ERS_STRUCT_SystemUtils SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
+        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
         std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Theme Manager Instance Ptr*/
         std::unique_ptr<Window_ThemeSelector> Window_ThemeSelector_; /**<Theme Selector Window*/
         std::shared_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
@@ -61,7 +61,7 @@ class GUI_Menu_View {
          * 
          * @param SystemUtils 
          */
-        GUI_Menu_View(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager, std::shared_ptr<ERS_CLASS_FontManager> FontManager);
+        GUI_Menu_View(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager, std::shared_ptr<ERS_CLASS_FontManager> FontManager);
 
 
         /**
