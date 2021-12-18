@@ -45,10 +45,12 @@ void Window_ImportProgressBar::Draw() {
     ImGuiWindowFlags WindowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
     ImGui::Begin("Import Status", &Enabled_, WindowFlags);
 
-        // Set Window Size, Pos
+        // Set Window Size
         ImGui::SetWindowSize(ImVec2(300,0));
-        std::cout<<SystemUtils_->RenderHeight_<<"|"<<SystemUtils_->RenderWidth_<<std::endl;
-        ImVec2 WindowPos = ImVec2(SystemUtils_->RenderWidth_, SystemUtils_->RenderHeight_);
+
+        // Set Window Position
+        ImVec2 WindowSize = ImGui::GetWindowSize();
+        ImVec2 WindowPos = ImVec2(SystemUtils_->RenderWidth_ - WindowSize.x, SystemUtils_->RenderHeight_ - WindowSize.y);
         ImGui::SetWindowPos(WindowPos);
 
         // Calculate Stats
