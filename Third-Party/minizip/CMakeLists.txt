@@ -28,9 +28,9 @@ option(MZ_SIGNING "Enables zip signing support" ON)
 # Character conversion options
 option(MZ_ICONV "Enables iconv for string encoding conversion" ON)
 # Code generation options
-option(MZ_COMPRESS_ONLY "Only support compression" OFF)
-option(MZ_DECOMPRESS_ONLY "Only support decompression" OFF)
-option(MZ_FILE32_API "Builds using posix 32-bit file api" OFF)
+option(MZ_COMPRESS_ONLY "Only support compression" ON)
+option(MZ_DECOMPRESS_ONLY "Only support decompression" ON)
+option(MZ_FILE32_API "Builds using posix 32-bit file api" ON)
 # Build and continuous integration options
 option(MZ_BUILD_TESTS "Builds minizip test executable" OFF)
 option(MZ_BUILD_UNIT_TESTS "Builds minizip unit test project" OFF)
