@@ -150,15 +150,16 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
     // Update IO
     IOManager_->UpdateFrame(DeltaTime);
+    int Width, Height;
+    glfwGetWindowSize(Window_, &Width, &Height);
+    SystemUtils_.RenderWidth_ = Width;
+    SystemUtils_.RenderHeight_ = Height;
 
     // Update GUI
     GuiSystem_->UpdateGUI();
 
     // Call Updates
     VisualRenderer_->UpdateViewports(DeltaTime, SceneManager_);
-
-    // Deferred GUI
-    GuiSystem_->DeferredFrameUpdate();
 
 
     // Update GUI Frame
