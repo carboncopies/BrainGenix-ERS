@@ -48,6 +48,10 @@ disable_target_warnings(yaml-cpp)
 add_subdirectory(${LIB_DIR}/glad)
 disable_target_warnings(glad)
 
+# Link Minizip Library (Not Header Only)
+add_subdirectory(${LIB_DIR}/minizip)
+disable_target_warnings(minizip)
+
 # Link Dirent Library (Header Only)
 add_subdirectory(${LIB_DIR}/dirent)
 
