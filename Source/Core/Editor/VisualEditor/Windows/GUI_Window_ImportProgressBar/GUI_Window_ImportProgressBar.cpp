@@ -42,7 +42,7 @@ void Window_ImportProgressBar::Draw() {
     // FIXME: Lock Window Pos, Put Window In bottom Right Corner - Need To Get Window Size To Set Window Pos, Add GLFWWindow* to System Utils And Pass Into This Class?
 
     if (Enabled_) {
-    ImGuiWindowFlags WindowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize;
+    ImGuiWindowFlags WindowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
     ImGui::Begin("Import Status", &Enabled_, WindowFlags);
 
         // Set Window Size, Pos
