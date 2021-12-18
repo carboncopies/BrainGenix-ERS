@@ -19,10 +19,10 @@ void ErrorCallback(int, const char* ErrorString) {
 
 
 // RendererManager Constructor
-RendererManager::RendererManager(ERS_STRUCT_SystemUtils SystemUtils) {
+RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
     // Create Pointers
-    SystemUtils.Logger_->Log("Populating RendererManager Member Pointers", 5);
+    SystemUtils->Logger_->Log("Populating RendererManager Member Pointers", 5);
     SystemUtils_ = SystemUtils;
 
     // Setup 3D Cursor
@@ -30,25 +30,25 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils SystemUtils) {
 
 
     // Initialize Texture Loader
-    TextureLoader_ = std::make_shared<TextureLoader>(SystemUtils_.Logger_);
+    TextureLoader_ = std::make_shared<TextureLoader>(SystemUtils_->Logger_);
 
 
     // Load Scene
-    ModelLoader MLoader(SystemUtils_.Logger_, TextureLoader_);
-    SceneLoader SLoader(SystemUtils_.Logger_, std::make_shared<ModelLoader>(MLoader));
-    SceneManager_ = std::make_shared<SceneManager>(SystemUtils_.Logger_);
+    ModelLoader MLoader(SystemUtils_->Logger_, TextureLoader_);
+    SceneLoader SLoader(SystemUtils_->Logger_, std::make_shared<ModelLoader>(MLoader));
+    SceneManager_ = std::make_shared<SceneManager>(SystemUtils_->Logger_);
 
 
     // Initialize Systems
-    SystemUtils_.Logger_->Log("Initializing GLFW", 5);
+    SystemUtils_->Logger_->Log("Initializing GLFW", 5);
     InitializeGLFW();
 
     // Instantiate Renderers
-    SystemUtils_.Logger_->Log("Instantiating Renderers", 5);
+    SystemUtils_->Logger_->Log("Instantiating Renderers", 5);
     VisualRenderer_ = std::make_shared<VisualRenderer>(SystemUtils_, Window_, Cursors3D_);
 
     // Setup Shaders
-    ShaderLoader_ = std::make_shared<ShaderLoader>(SystemUtils_.Logger_);
+    ShaderLoader_ = std::make_shared<ShaderLoader>(SystemUtils_->Logger_);
     Shader_ = ShaderLoader_->LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag");
 
     Shader_.MakeActive();
@@ -58,8 +58,8 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils SystemUtils) {
     GuiSystem_ = std::make_shared<GUISystem>(SystemUtils_, Window_, Cursors3D_, SceneManager_);
 
     // Setup IOManager
-    SystemUtils_.Logger_->Log("Initializing Input/Output Manager", 5);
-    IOManager_ = std::make_shared<IOManager>(SystemUtils_.Logger_, Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
+    SystemUtils_->Logger_->Log("Initializing Input/Output Manager", 5);
+    IOManager_ = std::make_shared<IOManager>(SystemUtils_->Logger_, Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
 
     // Make Viewport
     VisualRenderer_->CreateViewport(std::make_shared<ERS_OBJECT_SHADER>(Shader_), "Viewport", Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
@@ -77,8 +77,8 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils SystemUtils) {
 
 
     std::shared_ptr<ERS_STRUCT_IOData> Test = std::make_shared<ERS_STRUCT_IOData>();
-    SystemUtils_.ERS_IOSubsystem_->ReadAsset(0, Test);
-    SystemUtils_.ERS_IOSubsystem_->WriteAsset(1, Test);
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(0, Test);
+    SystemUtils_->ERS_IOSubsystem_->WriteAsset(1, Test);
 
 
 }
@@ -87,7 +87,7 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils SystemUtils) {
 RendererManager::~RendererManager() {
 
     // Log Destructor Call
-    SystemUtils_.Logger_->Log("RendererManager Destructor Called", 6);
+    SystemUtils_->Logger_->Log("RendererManager Destructor Called", 6);
 
 }
 
@@ -103,12 +103,12 @@ void RendererManager::InitializeGLFW() {
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
     // Read Out Width, Height
-    SystemUtils_.Logger_->Log("Read Configuration File For 'WindowWidth' Parameter", 1);
-    WindowWidth_ = (*SystemUtils_.LocalSystemConfiguration_)["WindowWidth"].as<int>();
-    SystemUtils_.Logger_->Log("Read Configuration File For 'WindowHeight' Parameter", 1);
-    WindowHeight_ = (*SystemUtils_.LocalSystemConfiguration_)["WindowHeight"].as<int>();
-    SystemUtils_.Logger_->Log("Read Configuration File For 'WindowTitle' Parameter", 1);
-    WindowTitle_ = (*SystemUtils_.LocalSystemConfiguration_)["WindowTitle"].as<std::string>().c_str();
+    SystemUtils_->Logger_->Log("Read Configuration File For 'WindowWidth' Parameter", 1);
+    WindowWidth_ = (*SystemUtils_->LocalSystemConfiguration_)["WindowWidth"].as<int>();
+    SystemUtils_->Logger_->Log("Read Configuration File For 'WindowHeight' Parameter", 1);
+    WindowHeight_ = (*SystemUtils_->LocalSystemConfiguration_)["WindowHeight"].as<int>();
+    SystemUtils_->Logger_->Log("Read Configuration File For 'WindowTitle' Parameter", 1);
+    WindowTitle_ = (*SystemUtils_->LocalSystemConfiguration_)["WindowTitle"].as<std::string>().c_str();
 
     // Create Window Object
     glfwSetErrorCallback(ErrorCallback);
@@ -119,7 +119,7 @@ void RendererManager::InitializeGLFW() {
 
 
     // Load Icon
-    SystemUtils_.Logger_->Log("Loading System Icon From EditorAssets", 3);
+    SystemUtils_->Logger_->Log("Loading System Icon From EditorAssets", 3);
     FreeImage_Initialise();
 
     // Load Image
@@ -127,7 +127,7 @@ void RendererManager::InitializeGLFW() {
     FIBITMAP* ImageData = FreeImage_Load(Format, "EditorAssets/Icons/ProgramIcon/Icon.png");
 
     // Apply Icon
-    SystemUtils_.Logger_->Log("Applying System Icon", 4);
+    SystemUtils_->Logger_->Log("Applying System Icon", 4);
     GLFWimage Icon[1];
     FreeImage_FlipVertical(ImageData);
     Icon[0].pixels = FreeImage_GetBits(ImageData);
@@ -152,8 +152,8 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     IOManager_->UpdateFrame(DeltaTime);
     int Width, Height;
     glfwGetWindowSize(Window_, &Width, &Height);
-    SystemUtils_.RenderWidth_ = Width;
-    SystemUtils_.RenderHeight_ = Height;
+    SystemUtils_->RenderWidth_ = Width;
+    SystemUtils_->RenderHeight_ = Height;
 
     // Update GUI
     GuiSystem_->UpdateGUI();
@@ -174,8 +174,8 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
     // Check If System Should Shutdown
     if (glfwWindowShouldClose(Window_)) {
-        SystemUtils_.Logger_->Log("System Shutdown Invoked By LocalWindow", 2);
-        *SystemUtils_.SystemShouldRun_ = false;
+        SystemUtils_->Logger_->Log("System Shutdown Invoked By LocalWindow", 2);
+        *SystemUtils_->SystemShouldRun_ = false;
     }
 
 

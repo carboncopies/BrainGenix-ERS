@@ -56,7 +56,7 @@ class RendererManager {
         std::shared_ptr<SceneManager> SceneManager_; /**<Pointer to Scene Manager Class Instance*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
         
-        ERS_STRUCT_SystemUtils SystemUtils_; /**<Copy Of Pointer Helper Struct*/
+        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Copy Of Pointer Helper Struct*/
 
         // Control Values
         int WindowWidth_; /**<GLFW Window Width Varaible*/
@@ -80,7 +80,7 @@ class RendererManager {
          * @param Logger 
          * @param SystemShouldRun 
          */
-        RendererManager(ERS_STRUCT_SystemUtils SystemUtils);
+        RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
 
         /**
          * @brief Shuts down the renderers and cleans up variables.
