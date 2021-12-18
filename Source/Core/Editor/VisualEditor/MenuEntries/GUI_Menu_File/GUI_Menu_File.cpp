@@ -13,7 +13,7 @@
 
 
 // Constructor
-GUI_Menu_File::GUI_Menu_File(std::unique_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<SceneManager> SceneManager) {
+GUI_Menu_File::GUI_Menu_File(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<SceneManager> SceneManager) {
 
     // Copy In Pointer Struct
     SystemUtils_ = SystemUtils;

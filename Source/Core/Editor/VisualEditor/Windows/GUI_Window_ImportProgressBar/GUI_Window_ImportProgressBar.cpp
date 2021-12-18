@@ -13,7 +13,7 @@
 
 
 // Constructor
-Window_ImportProgressBar::Window_ImportProgressBar(std::unique_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+Window_ImportProgressBar::Window_ImportProgressBar(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
     // Copy System Utils Pointer Struct
     SystemUtils_ = SystemUtils;
