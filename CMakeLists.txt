@@ -66,6 +66,8 @@ add_subdirectory(${LIB_DIR}/implot)
 add_subdirectory(${LIB_DIR}/ImGuiFileDialog/ImGuiFileDialog)
 disable_target_warnings(ImGuiFileDialog)
 
+# Add Zep (Not Header Only)
+add_subdirectory(${LIB_DIR}/zep)
 
 # Add GLFW Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/glfw)
