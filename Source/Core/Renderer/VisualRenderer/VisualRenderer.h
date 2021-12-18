@@ -39,8 +39,9 @@
 #include <GUI.h>
 #include <Framebuffer.h>
 #include <3DCursor.h>
-#include <ERS_STRUCT_LocRotScale.h>
 
+#include <ERS_STRUCT_LocRotScale.h>
+#include <ERS_STRUCT_SystemUtils.h>
 
 
 class VisualRenderer {
@@ -48,8 +49,6 @@ class VisualRenderer {
     private:
 
         // Member Variables
-        std::shared_ptr<YAML::Node> SystemConfiguration_; /**<Pointer to the system configuration YAML::Node*/
-        std::shared_ptr<LoggerClass> Logger_; /**<Pointer to the logging system instance*/
         GLFWwindow *Window_; /**<GLFW Window Instance For Window Input To Viewports*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
 
@@ -64,7 +63,8 @@ class VisualRenderer {
 
         std::vector<int> ViewportWidths_; /**<Vector Containing Viewport Widths In Pixels*/
         std::vector<int> ViewportHeights_; /**<Vector Containing Viewport Heights In Pixels*/
- 
+
+        ERS_STRUCT_SystemUtils SystemUtils_; /**<System Utils Struct Containing Pointers To Important Info*/
 
 
         // Internal Functions
@@ -76,7 +76,7 @@ class VisualRenderer {
     public:
 
         // Constructor
-        VisualRenderer(std::shared_ptr<YAML::Node> SystemConfiguration, GLFWwindow* Window, std::shared_ptr<LoggerClass> Logger, std::shared_ptr<Cursors3D> Cursors3D);
+        VisualRenderer(ERS_STRUCT_SystemUtils SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D);
 
         // Destructor
         ~VisualRenderer();
