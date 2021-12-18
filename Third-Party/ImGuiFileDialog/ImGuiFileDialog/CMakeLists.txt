@@ -7,6 +7,8 @@ add_library(ImGuiFileDialog
     "ImGuiFileDialog.cpp"
 )
 
+set_property(TARGET ImGuiFileDialog PROPERTY CXX_STANDARD 17)
+
 target_link_libraries(ImGuiFileDialog
 
     IMGUI

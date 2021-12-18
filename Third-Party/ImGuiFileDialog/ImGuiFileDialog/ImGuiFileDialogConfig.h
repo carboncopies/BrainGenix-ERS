@@ -102,3 +102,6 @@
 #define bookmarksButtonHelpString "Bookmark"
 #define addBookmarkButtonString "+"
 #define removeBookmarkButtonString "-"
+
+// Use Filesys Rather Than Dirent
+#define USE_STD_FILESYSTEM
