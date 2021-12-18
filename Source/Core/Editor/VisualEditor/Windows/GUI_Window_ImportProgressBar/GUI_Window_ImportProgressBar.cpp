@@ -42,7 +42,7 @@ void Window_ImportProgressBar::Draw() {
     ImGuiWindowFlags WindowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize;
     ImGui::Begin("Import Status", &Enabled_, WindowFlags);
 
-        ImGui::SetWindowSize(ImVec2(250,100));
+        ImGui::SetWindowSize(ImVec2(300,0));
 
         // Calculate Stats
         LockViewStats_.lock();
