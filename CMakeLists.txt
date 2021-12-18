@@ -48,6 +48,9 @@ disable_target_warnings(yaml-cpp)
 add_subdirectory(${LIB_DIR}/glad)
 disable_target_warnings(glad)
 
+# Link Dirent Library (Header Only)
+add_subdirectory(${LIB_DIR}/dirent)
+
 # Add GLM Library (Header Only)
 add_subdirectory(${LIB_DIR}/glm)
 include_directories(${LIB_DIR}/glm)
