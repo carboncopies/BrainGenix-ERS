@@ -35,5 +35,7 @@ struct ERS_STRUCT_SystemUtils {
     std::shared_ptr<ERS_CLASS_InputOutputSubsystem> ERS_IOSubsystem_; /**<Pointer To ERS Input Output Subsystem*/
     std::shared_ptr<ERS_CLASS_ModelWriter> ERS_ModelWriter_; /**<Pointer To ERS Model Writer Instance*/
     std::shared_ptr<bool> SystemShouldRun_; /**<Pointer To Variable Setting If System Should Run Or Not*/
+    float RenderWidth_ = 0; /**<Width of the display being rendered to (if using a window, this is the size of the window)*/
+    float RenderHeight_ = 0; /**<Height of the display being rendered to (if using a window, this is the size of the window)*/
 
 };
