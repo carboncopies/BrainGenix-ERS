@@ -48,10 +48,6 @@ disable_target_warnings(yaml-cpp)
 add_subdirectory(${LIB_DIR}/glad)
 disable_target_warnings(glad)
 
-# Link BZIP2 Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/bzip2)
-disable_target_warnings(bzip2)
-
 # Link Minizip Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/minizip)
 disable_target_warnings(minizip)

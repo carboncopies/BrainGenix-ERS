@@ -243,55 +243,61 @@ if(MZ_ZLIB)
 endif()
 
 if(MZ_BZIP2)
-    # Check if bzip2 is present
-    if(NOT MZ_FORCE_FETCH_LIBS)
-        find_package(BZip2 QUIET)
-    endif()
+    # # Check if bzip2 is present
+    # if(NOT MZ_FORCE_FETCH_LIBS)
+    #     find_package(BZip2 QUIET)
+    # endif()
 
-    if(BZIP2_FOUND AND NOT MZ_FORCE_FETCH_LIBS)
-        message(STATUS "Using BZIP2 ${BZIP2_VERSION_STRING}")
+    # if(BZIP2_FOUND AND NOT MZ_FORCE_FETCH_LIBS)
+    #     message(STATUS "Using BZIP2 ${BZIP2_VERSION_STRING}")
 
-        list(APPEND MINIZIP_INC ${BZIP2_INCLUDE_DIRS})
-        list(APPEND MINIZIP_LIB ${BZIP2_LIBRARIES})
-        list(APPEND MINIZIP_LBD ${BZIP2_LIBRARY_DIRS})
+    #     list(APPEND MINIZIP_INC ${BZIP2_INCLUDE_DIRS})
+    #     list(APPEND MINIZIP_LIB ${BZIP2_LIBRARIES})
+    #     list(APPEND MINIZIP_LBD ${BZIP2_LIBRARY_DIRS})
 
-        set(PC_PRIVATE_LIBS "${PC_PRIVATE_LIBS} -lbzip2")
-    elseif(MZ_FETCH_LIBS)
-        clone_repo(bzip2 https://sourceware.org/git/bzip2.git)
+    #     set(PC_PRIVATE_LIBS "${PC_PRIVATE_LIBS} -lbzip2")
+    # elseif(MZ_FETCH_LIBS)
+    #     clone_repo(bzip2 https://sourceware.org/git/bzip2.git)
 
-        # BZip2 repository does not support cmake so we have to create
-        # the bzip2 library ourselves
-        set(BZIP2_SRC
-            ${BZIP2_SOURCE_DIR}/blocksort.c
-            ${BZIP2_SOURCE_DIR}/bzlib.c
-            ${BZIP2_SOURCE_DIR}/compress.c
-            ${BZIP2_SOURCE_DIR}/crctable.c
-            ${BZIP2_SOURCE_DIR}/decompress.c
-            ${BZIP2_SOURCE_DIR}/huffman.c
-            ${BZIP2_SOURCE_DIR}/randtable.c)
 
-        set(BZIP2_HDR
-            ${BZIP2_SOURCE_DIR}/bzlib.h
-            ${BZIP2_SOURCE_DIR}/bzlib_private.h)
+    set(BZIP2_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Third-Party/bzip2)
 
-        add_library(bzip2 STATIC ${BZIP2_SRC} ${BZIP2_HDR})
+    # BZip2 repository does not support cmake so we have to create
+    # the bzip2 library ourselves
+    set(BZIP2_SRC
+        ${BZIP2_SOURCE_DIR}/blocksort.c
+        ${BZIP2_SOURCE_DIR}/bzlib.c
+        ${BZIP2_SOURCE_DIR}/compress.c
+        ${BZIP2_SOURCE_DIR}/crctable.c
+        ${BZIP2_SOURCE_DIR}/decompress.c
+        ${BZIP2_SOURCE_DIR}/huffman.c
+        ${BZIP2_SOURCE_DIR}/randtable.c)
 
-        target_compile_definitions(bzip2 PRIVATE -DBZ_NO_STDIO)
+    set(BZIP2_HDR
+        ${BZIP2_SOURCE_DIR}/bzlib.h
+        ${BZIP2_SOURCE_DIR}/bzlib_private.h)
 
-        list(APPEND MINIZIP_DEP bzip2)
-        list(APPEND MINIZIP_INC ${BZIP2_SOURCE_DIR})
-    else()
-        message(STATUS "BZip2 library not found")
+    add_library(bzip2 STATIC ${BZIP2_SRC} ${BZIP2_HDR})
 
-        set(MZ_BZIP2 OFF)
-    endif()
+    target_compile_definitions(bzip2 PRIVATE -DBZ_NO_STDIO)
 
-    if(MZ_BZIP2)
-        list(APPEND MINIZIP_DEP_PKG BZip2)
-        list(APPEND MINIZIP_DEF -DHAVE_BZIP2)
-        list(APPEND MINIZIP_SRC mz_strm_bzip.c)
-        list(APPEND MINIZIP_HDR mz_strm_bzip.h)
-    endif()
+    list(APPEND MINIZIP_DEP bzip2)
+    list(APPEND MINIZIP_INC ${BZIP2_SOURCE_DIR})
+
+
+
+    # else()
+    #     message(STATUS "BZip2 library not found")
+
+    #     set(MZ_BZIP2 OFF)
+    # endif()
+
+    # if(MZ_BZIP2)
+    #     list(APPEND MINIZIP_DEP_PKG BZip2)
+    #     list(APPEND MINIZIP_DEF -DHAVE_BZIP2)
+    #     list(APPEND MINIZIP_SRC mz_strm_bzip.c)
+    #     list(APPEND MINIZIP_HDR mz_strm_bzip.h)
+    # endif()
 endif()
 
 if(MZ_LZMA)
