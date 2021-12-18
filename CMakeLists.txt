@@ -95,7 +95,7 @@ add_subdirectory(${LIB_DIR}/backward)
 
 # Add Tracy Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/tracy)
-disable_target_warnings(tracy)
+disable_target_warnings(TracyClient)
 
 
 # Add Main.cpp
