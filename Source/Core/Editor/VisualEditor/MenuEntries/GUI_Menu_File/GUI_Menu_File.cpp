@@ -13,17 +13,17 @@
 
 
 // Constructor
-GUI_Menu_File::GUI_Menu_File(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr<SceneManager> SceneManager) {
+GUI_Menu_File::GUI_Menu_File(std::unique_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<SceneManager> SceneManager) {
 
     // Copy In Pointer Struct
     SystemUtils_ = SystemUtils;
     SceneManager_ = SceneManager;
 
     // Log Initialization
-    SystemUtils_.Logger_->Log("Editor Setting Up File Menu", 4);
+    SystemUtils_->Logger_->Log("Editor Setting Up File Menu", 4);
 
     // Create Class Instances
-    SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_.Logger_);
+    SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_->Logger_);
 
     
 
@@ -36,7 +36,7 @@ GUI_Menu_File::GUI_Menu_File(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr
 GUI_Menu_File::~GUI_Menu_File() {
 
     // Log Destructor
-    SystemUtils_.Logger_->Log("Editor Destroying File Menu", 4);
+    SystemUtils_->Logger_->Log("Editor Destroying File Menu", 4);
 
 }
 
@@ -67,7 +67,7 @@ void GUI_Menu_File::Draw() {
 
         // Exit Options
         if (ImGui::MenuItem("Exit")) {
-            *SystemUtils_.SystemShouldRun_ = false;
+            *SystemUtils_->SystemShouldRun_ = false;
         }
 
         

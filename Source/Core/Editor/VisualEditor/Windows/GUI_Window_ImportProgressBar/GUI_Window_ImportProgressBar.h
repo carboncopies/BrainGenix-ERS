@@ -41,7 +41,7 @@ class Window_ImportProgressBar {
 
         bool Enabled_ = true; /**<Is Popup Enabled*/
 
-        ERS_STRUCT_SystemUtils SystemUtils_; /**<Pointers To System Resources*/
+        std::unique_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
 
     public:
 
@@ -49,7 +49,7 @@ class Window_ImportProgressBar {
          * @brief Construct a new Window_ImportProgressBar object
          * 
          */
-        Window_ImportProgressBar(ERS_STRUCT_SystemUtils SystemUtils);
+        Window_ImportProgressBar(std::unique_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
         
         /**
          * @brief Destroy the Window_ImportProgressBar object

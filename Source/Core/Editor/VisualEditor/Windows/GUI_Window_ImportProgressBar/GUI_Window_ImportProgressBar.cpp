@@ -13,7 +13,7 @@
 
 
 // Constructor
-Window_ImportProgressBar::Window_ImportProgressBar(ERS_STRUCT_SystemUtils SystemUtils) {
+Window_ImportProgressBar::Window_ImportProgressBar(std::unique_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
     // Copy System Utils Pointer Struct
     SystemUtils_ = SystemUtils;
@@ -47,8 +47,8 @@ void Window_ImportProgressBar::Draw() {
 
         // Set Window Size, Pos
         ImGui::SetWindowSize(ImVec2(300,0));
-        std::cout<<SystemUtils_.RenderHeight_<<"|"<<SystemUtils_.RenderWidth_<<std::endl;
-        ImVec2 WindowPos = ImVec2(SystemUtils_.RenderWidth_, SystemUtils_.RenderHeight_);
+        std::cout<<SystemUtils_->RenderHeight_<<"|"<<SystemUtils_->RenderWidth_<<std::endl;
+        ImVec2 WindowPos = ImVec2(SystemUtils_->RenderWidth_, SystemUtils_->RenderHeight_);
         ImGui::SetWindowPos(WindowPos);
 
         // Calculate Stats
