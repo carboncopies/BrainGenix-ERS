@@ -22,7 +22,7 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-
+#include <ERS_STRUCT_SystemUtils.h>
 
 /**
  * @brief Window for the Import progress bar.
@@ -41,13 +41,15 @@ class Window_ImportProgressBar {
 
         bool Enabled_ = true; /**<Is Popup Enabled*/
 
+        ERS_STRUCT_SystemUtils SystemUtils_; /**<Pointers To System Resources*/
+
     public:
 
         /**
          * @brief Construct a new Window_ImportProgressBar object
          * 
          */
-        Window_ImportProgressBar();
+        Window_ImportProgressBar(ERS_STRUCT_SystemUtils SystemUtils);
         
         /**
          * @brief Destroy the Window_ImportProgressBar object

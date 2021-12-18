@@ -24,6 +24,7 @@ target_link_libraries(Window_ImportProgressBar
 
 # Link Internal Libs
 target_link_libraries(Window_ImportProgressBar
+    ERS_STRUCT_SystemUtils
     )
 
 target_include_directories(Window_ImportProgressBar PUBLIC ./)

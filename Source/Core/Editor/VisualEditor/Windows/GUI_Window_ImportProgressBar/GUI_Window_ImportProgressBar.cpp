@@ -13,7 +13,10 @@
 
 
 // Constructor
-Window_ImportProgressBar::Window_ImportProgressBar() {
+Window_ImportProgressBar::Window_ImportProgressBar(ERS_STRUCT_SystemUtils SystemUtils) {
+
+    // Copy System Utils Pointer Struct
+    SystemUtils_ = SystemUtils;
 
 }
 
@@ -42,7 +45,10 @@ void Window_ImportProgressBar::Draw() {
     ImGuiWindowFlags WindowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize;
     ImGui::Begin("Import Status", &Enabled_, WindowFlags);
 
+        // Set Window Size, Pos
         ImGui::SetWindowSize(ImVec2(300,0));
+        ImVec2 WindowPos = ImVec2(SystemUtils_.RenderWidth_, SystemUtils_.RenderHeight_);
+        ImGui::SetWindowPos(WindowPos);
 
         // Calculate Stats
         LockViewStats_.lock();
