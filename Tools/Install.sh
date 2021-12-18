@@ -4,7 +4,4 @@ sudo apt install libxrandr-dev -y
 sudo apt install libxinerama-dev -y
 sudo apt install libxcursor-dev -y
 sudo apt install libxi-dev -y
-sudo apt install libdw-dev -y
-sudo apt install libbfd-dev -y
-sudo apt install libdwarf-dev -y
 sudo apt install binutils-dev -y

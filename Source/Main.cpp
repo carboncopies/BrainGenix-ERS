@@ -72,7 +72,8 @@ int main() {
     SystemUtils.ERS_ModelWriter_ = sERSModelWriter;
 
 
-
+    int* foo;
+    std::cout<<*foo<<std::endl;
 
 
     // Instantiate HardwareInformation System
