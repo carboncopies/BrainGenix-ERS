@@ -48,7 +48,7 @@ class GUI_Menu_Window {
     // Member Vars
     private:
 
-        ERS_STRUCT_SystemUtils SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
+        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
 
 
         // Instantiate Widgets here
@@ -72,7 +72,7 @@ class GUI_Menu_Window {
          * 
          * @param SystemUtils 
          */
-        GUI_Menu_Window(ERS_STRUCT_SystemUtils SystemUtils, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager);
+        GUI_Menu_Window(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager);
 
 
         /**
