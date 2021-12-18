@@ -68,6 +68,7 @@ disable_target_warnings(ImGuiFileDialog)
 
 # Add Zep (Not Header Only)
 add_subdirectory(${LIB_DIR}/zep)
+disable_target_warnings(Zep)
 
 # Add GLFW Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/glfw)

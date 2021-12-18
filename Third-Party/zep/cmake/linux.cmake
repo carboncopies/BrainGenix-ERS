@@ -1,5 +1,6 @@
 MESSAGE(STATUS "Linux.cmake")
 
+set(OpenGL_GL_PREFERENCE GLVND)
 find_package(OpenGL)
 
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)

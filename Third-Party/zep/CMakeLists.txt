@@ -8,8 +8,8 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake)
 # Global Options
 option(BUILD_QT "Make Qt Library" OFF)
 option(BUILD_IMGUI "Make Imgui Library" ON)
-option(BUILD_DEMOS "Make the demo app" ON)
-option(BUILD_TESTS "Make the tests" ON)
+option(BUILD_DEMOS "Make the demo app" OFF)
+option(BUILD_TESTS "Make the tests" OFF)
 option(BUILD_EXTENSIONS "Make the extension library (required for demo)" OFF)
 option(ZEP_FEATURE_CPP_FILE_SYSTEM "Default File system enabled" ON)
 
