@@ -13,7 +13,10 @@
 
 
 // Asset Importer Constructor
-ERS_CLASS_ImportAsset::ERS_CLASS_ImportAsset() {
+ERS_CLASS_ImportAsset::ERS_CLASS_ImportAsset(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+
+    // Copy Shared Pointer
+    SystemUtils_ = SystemUtils;
 
 }
 

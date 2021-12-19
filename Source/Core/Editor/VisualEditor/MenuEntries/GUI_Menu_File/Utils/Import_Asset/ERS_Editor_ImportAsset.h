@@ -36,7 +36,7 @@ class ERS_CLASS_ImportAsset {
 
     public:
 
-        ERS_CLASS_ImportAsset();
+        ERS_CLASS_ImportAsset(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
         ~ERS_CLASS_ImportAsset();
 
 
