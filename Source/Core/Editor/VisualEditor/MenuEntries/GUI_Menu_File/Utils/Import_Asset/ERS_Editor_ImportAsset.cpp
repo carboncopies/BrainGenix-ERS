@@ -18,5 +18,16 @@ ERS_CLASS_ImportAsset::ERS_CLASS_ImportAsset(std::shared_ptr<ERS_STRUCT_SystemUt
     // Copy Shared Pointer
     SystemUtils_ = SystemUtils;
 
+    // Log Init
+    SystemUtils_->Logger_->Log("Initializing Asset Importer", 5);
+
 }
 
+
+// Asset Importer Destructor
+ERS_CLASS_ImportAsset::~ERS_CLASS_ImportAsset() {
+
+    // Log Destructor
+    SystemUtils_->Logger_->Log("Asset Importer Destructor Called", 6);
+
+}
