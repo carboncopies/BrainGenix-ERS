@@ -23,15 +23,12 @@ target_link_libraries(Menu_File
     glad
     glfw
     IMGUI
-    ImGuiFileDialog
     )
 
 # Link Internal Libs
 target_link_libraries(Menu_File
     LoggingSystem
     ERS_STRUCT_SystemUtils
-
-    Window_ImportProgressBar
 
     ERS_SceneWriter
     SceneManager

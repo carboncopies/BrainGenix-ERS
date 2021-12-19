@@ -22,6 +22,7 @@ set_property(TARGET ERS_Editor_ImportAsset PROPERTY CXX_STANDARD 17)
 target_link_libraries(ERS_Editor_ImportAsset
     yaml-cpp
     IMGUI
+    ImGuiFileDialog
     )
 
 # Link Internal Libs

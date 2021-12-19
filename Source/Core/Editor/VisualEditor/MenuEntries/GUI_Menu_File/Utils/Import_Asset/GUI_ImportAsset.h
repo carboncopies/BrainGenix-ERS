@@ -20,8 +20,11 @@
 
 #include <imgui.h>
 
+#include <ImGuiFileDialog.h>
+
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
+#include <GUI_Window_ImportProgressBar.h>
 
 
 /**
@@ -33,6 +36,7 @@ class GUI_ImportAsset {
     private:
 
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<used to get access to system utilites like IOmanager, logger, etc.*/
+        std::unique_ptr<Window_ImportProgressBar> Window_ImportProgressBar_; /**<Pointer To Window Import Progres Bar*/
 
     public:
 
@@ -55,5 +59,11 @@ class GUI_ImportAsset {
          */
         void Draw();
 
+
+        /**
+         * @brief Open File Dialog
+         * 
+         */
+        void OpenFileDialog();
 
 };

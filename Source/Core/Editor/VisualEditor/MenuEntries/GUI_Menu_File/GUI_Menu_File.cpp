@@ -25,11 +25,6 @@ GUI_Menu_File::GUI_Menu_File(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils
     // Create Class Instances
     SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_->Logger_);
 
-    
-
-    // Move This!
-    Window_ImportProgressBar_ = std::make_unique<Window_ImportProgressBar>(SystemUtils_);
-
 }
 
 // Destructor
@@ -48,7 +43,7 @@ void GUI_Menu_File::Draw() {
 
         // Import Option
         if (ImGui::MenuItem("Import Model")) {
-            ImGuiFileDialog::Instance()->OpenDialog("ImportModel", "Import", ".gltf,.obj,.fbx,.ply,.blend,.*", ".", "", 0);
+            // call open file dialog
         }
 
         ImGui::Separator();
@@ -75,29 +70,6 @@ void GUI_Menu_File::Draw() {
     }
 
 
-    // Draw File Dialog
-    if (ImGuiFileDialog::Instance()->Display("ImportModel")) 
-    {
-        if (ImGuiFileDialog::Instance()->IsOk())
-        {
-            std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
-            std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
-            std::string filter = ImGuiFileDialog::Instance()->GetCurrentFilter();
-
-            // here convert from string because a string was passed as a userDatas, but it can be what you want
-            std::string userDatas;
-            if (ImGuiFileDialog::Instance()->GetUserDatas())
-                userDatas = std::string((const char*)ImGuiFileDialog::Instance()->GetUserDatas()); 
-            auto selection = ImGuiFileDialog::Instance()->GetSelection(); // multiselection
-
-        }
-    // close
-    ImGuiFileDialog::Instance()->Close();
-    }
-
-
-    // Move This!
-    Window_ImportProgressBar_->Draw();
 
 
 

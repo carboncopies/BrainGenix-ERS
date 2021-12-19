@@ -21,6 +21,9 @@ GUI_ImportAsset::GUI_ImportAsset(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     // Log Init
     SystemUtils_->Logger_->Log("Initializing Asset Importer GUI", 5);
 
+    // Instantiate
+    Window_ImportProgressBar_ = std::make_unique<Window_ImportProgressBar>(SystemUtils_);
+
 }
 
 
@@ -29,5 +32,44 @@ GUI_ImportAsset::~GUI_ImportAsset() {
 
     // Log Destructor
     SystemUtils_->Logger_->Log("Asset Importer GUI Destructor Called", 6);
+
+}
+
+
+// Draw
+void GUI_ImportAsset::Draw() {
+
+    // Draw File Dialog
+    if (ImGuiFileDialog::Instance()->Display("ImportModel")) 
+    {
+        if (ImGuiFileDialog::Instance()->IsOk())
+        {
+            std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
+            std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
+            std::string filter = ImGuiFileDialog::Instance()->GetCurrentFilter();
+
+            // here convert from string because a string was passed as a userDatas, but it can be what you want
+            std::string userDatas;
+            if (ImGuiFileDialog::Instance()->GetUserDatas())
+                userDatas = std::string((const char*)ImGuiFileDialog::Instance()->GetUserDatas()); 
+            auto selection = ImGuiFileDialog::Instance()->GetSelection(); // multiselection
+
+        }
+    // close
+    ImGuiFileDialog::Instance()->Close();
+    }
+
+
+    Window_ImportProgressBar_->Draw();
+
+
+}
+
+// Open File Dialog
+void GUI_ImportAsset::OpenFileDialog() {
+
+    // Open Dialog
+    ImGuiFileDialog::Instance()->OpenDialog("ImportModel", "Import", ".gltf,.obj,.fbx,.ply,.blend,.*", ".", "", 0);
+
 
 }
