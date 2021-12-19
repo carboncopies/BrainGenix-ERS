@@ -8,3 +8,12 @@
     Additonal Notes: None
     Date Created: 2021-12-18
 */
+
+#include <ERS_Editor_ImportAsset.h>
+
+
+// Asset Importer Constructor
+ERS_CLASS_ImportAsset::ERS_CLASS_ImportAsset() {
+
+}
+

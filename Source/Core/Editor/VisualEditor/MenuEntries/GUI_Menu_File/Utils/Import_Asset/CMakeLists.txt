@@ -25,6 +25,8 @@ target_link_libraries(ERS_Editor_ImportAsset
 # Link Internal Libs
 target_link_libraries(ERS_Editor_ImportAsset
     LoggingSystem
+
+    ERS_STRUCT_SystemUtils
     )
 
 target_include_directories(ERS_Editor_ImportAsset PUBLIC ./)
