@@ -29,6 +29,7 @@ target_link_libraries(ERS_Editor_ImportAsset
     LoggingSystem
 
     ERS_STRUCT_SystemUtils
+    Window_ImportProgressBar
     )
 
 target_include_directories(ERS_Editor_ImportAsset PUBLIC ./)
