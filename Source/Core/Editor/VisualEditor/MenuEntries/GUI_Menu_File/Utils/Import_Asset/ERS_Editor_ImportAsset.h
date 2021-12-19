@@ -36,9 +36,19 @@ class ERS_CLASS_ImportAsset {
 
     public:
 
-        ERS_CLASS_ImportAsset(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
-        ~ERS_CLASS_ImportAsset();
 
+        /**
+         * @brief Construct a new ers class importasset object
+         * 
+         * @param SystemUtils 
+         */
+        ERS_CLASS_ImportAsset(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+
+        /**
+         * @brief Destroy the ers class importasset object
+         * 
+         */
+        ~ERS_CLASS_ImportAsset();
 
 
 

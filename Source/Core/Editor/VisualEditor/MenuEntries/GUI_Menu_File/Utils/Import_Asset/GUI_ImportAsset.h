@@ -25,7 +25,7 @@
 
 
 /**
- * @brief This class provides the backend to the import asset option within the file menu.
+ * @brief This class provides the GUI to the import asset option within the file menu.
  *
  */
 class GUI_ImportAsset {
@@ -36,10 +36,24 @@ class GUI_ImportAsset {
 
     public:
 
+        /**
+         * @brief Construct a new gui importasset object.
+         * 
+         * @param SystemUtils 
+         */
         GUI_ImportAsset(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+
+        /**
+         * @brief Destroy the gui importasset object.
+         * 
+         */
         ~GUI_ImportAsset();
 
-
+        /**
+         * @brief Update Any Windows
+         * 
+         */
+        void Draw();
 
 
 };
