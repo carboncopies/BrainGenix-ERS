@@ -12,7 +12,7 @@ add_library(ImPlot
             ${BACKWARD_ENABLE}
             )
 
-set_property(TARGET ERS_Editor_FontManager PROPERTY CXX_STANDARD 11)
+set_property(TARGET ImPlot PROPERTY CXX_STANDARD 11)
 
 # Link 3rd Party Libs
 target_link_libraries(ImPlot
