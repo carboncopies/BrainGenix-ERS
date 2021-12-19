@@ -2,6 +2,8 @@
 # This file is part of the BrainGenix-ERS Environment Rendering System #
 ########################################################################
 
+# Add Subdirs
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Utils)
 
 # Create Library (Name Should Be Parent Dir Name)
 add_library(Menu_File
