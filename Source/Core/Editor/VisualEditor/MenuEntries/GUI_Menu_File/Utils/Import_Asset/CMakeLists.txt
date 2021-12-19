@@ -8,9 +8,11 @@ add_library(ERS_Editor_ImportAsset
 
             # Add Source Files (.cpp)
             "ERS_Editor_ImportAsset.cpp"
+            "GUI_ImportAsset.cpp"
 
             # Add Header Files (.h)
             "ERS_Editor_ImportAsset.h"
+            "GUI_ImportAsset.h"
             
             ${BACKWARD_ENABLE}
             )
