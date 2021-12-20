@@ -50,8 +50,9 @@ void Window_ImportProgressBar::UpdateJobState(bool JobFinished) {
 
     // Hide Window After Threshold Reached
     if (ConsecFinished_ >= ConsecFinishedThreshold_) {
+        std::cout<<"Setting False\n";
         Enabled_ = false;
-        //ConsecFinished_ = 0;
+        ConsecFinished_ = 0;
     }
 
 }
