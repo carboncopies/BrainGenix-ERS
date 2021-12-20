@@ -43,7 +43,15 @@ void Window_SystemLog::Draw() {
         // Set Default Window Size
         ImGui::SetWindowSize(ImVec2(300,0), ImGuiCond_FirstUseEver);
 
-        ImGui::Text("Test");
+        ImGui::BeginChild("Log Text");
+
+        for (int i = 0; i < SystemUtils_->Logger_->LogMessages_.size(); i++) {
+
+            ImGui::Text(SystemUtils_->Logger_->LogMessages_[i]);
+
+        }
+
+        ImGui::EndChild();
 
 
     ImGui::End();
