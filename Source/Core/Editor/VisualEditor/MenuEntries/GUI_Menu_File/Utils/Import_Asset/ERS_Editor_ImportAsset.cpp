@@ -35,6 +35,23 @@ ERS_CLASS_ImportAsset::~ERS_CLASS_ImportAsset() {
 // Call To Add Items To Import List
 void ERS_CLASS_ImportAsset::AddToImportQueue(std::vector<std::string> AssetPaths) {
 
-    
+    // Log Asset Append
+    SystemUtils_->Logger_->Log("Appending Assets To Asset Import Queue", 5);
+    LockAssetImportQueue_.lock();
+
+    // Iterate Through List
+    for (int i = 0; i < AssetPaths.size(); i++) {
+
+        // Log Append
+        std::string LogStr = std::string("Appending Asset: '") + AssetPaths[i] + std::string("' To Import Queue");
+        SystemUtils_->Logger_->Log(LogStr.c_str(), 4);
+
+        // Append Item
+        AssetImportQueue_.push_back(AssetPaths[i]);
+
+    }
+
+    // Unlock Mutex
+    LockAssetImportQueue_.unlock();
 
 }
