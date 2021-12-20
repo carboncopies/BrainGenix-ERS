@@ -6,3 +6,4 @@
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_SceneTree)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_ThemeSelector)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_ImportProgressBar)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_SystemLog)
