@@ -55,22 +55,7 @@ class Window_SystemLog {
 
 
         /**
-         * @brief Update Total items being processed (progress bar)
-         * 
-         * @param Current 
-         * @param Total 
-         */
-        void UpdateTotalItems(long Current, long Total);
-
-        /**
-         * @brief close the window a few frames after the job finishes
-         * 
-         * @param JobState 
-         */
-        void UpdateJobState(bool JobFinished);
-
-        /**
-         * @brief Draw import bar if needed (call every frame)
+         * @brief Draw system log needed (call every frame)
          * 
          */
         void Draw();

@@ -18,74 +18,32 @@ Window_SystemLog::Window_SystemLog(std::shared_ptr<ERS_STRUCT_SystemUtils> Syste
     // Copy System Utils Pointer Struct
     SystemUtils_ = SystemUtils;
 
+    // Log Init
+    SystemUtils_->Logger_->Log("Initializing GUI_Window_SystemLog", 5);
+
 }
 
 // Destructor
 Window_SystemLog::~Window_SystemLog() {
 
-}
+    // Log Destructor Call
+    SystemUtils_->Logger_->Log("GUI_Window_SystemLog Destructor Called", 6);
 
-
-
-// Update Total Model Stats
-void Window_SystemLog::UpdateTotalItems(long Current, long Total) {
-
-    // Update Totals
-    CurrentAssetNumber_ = Current;
-    TotalAssetsToImport_ = Total;
 
 }
 
-// Update Job State
-void Window_SystemLog::UpdateJobState(bool JobFinished) {
-
-    // Set Job State
-    if (JobFinished) {
-        ConsecFinished_ ++;
-        IsJobFinishing_ = true;
-    } else {
-        ConsecFinished_ = 0;
-        IsJobFinishing_ = false;
-    }
-
-    // Hide Window After Threshold Reached
-    if (ConsecFinished_ >= ConsecFinishedThreshold_) {
-        Enabled_ = false;
-        ConsecFinished_ = 0;
-    }
-
-}
 
 // Draw Window
 void Window_SystemLog::Draw() {
 
 
     if (Enabled_) {
-    ImGuiWindowFlags WindowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
-    ImGui::Begin("Import Status", &Enabled_, WindowFlags);
+    ImGui::Begin("System Log", &Enabled_);
 
-        // Set Window Size
-        ImGui::SetWindowSize(ImVec2(300,0));
+        // Set Default Window Size
+        ImGui::SetWindowSize(ImVec2(300,0), ImGuiCond_FirstUseEver);
 
-        // Set Window Position
-        ImVec2 WindowSize = ImGui::GetWindowSize();
-        ImVec2 WindowPos = ImVec2(SystemUtils_->RenderWidth_ - WindowSize.x, SystemUtils_->RenderHeight_ - WindowSize.y);
-        ImGui::SetWindowPos(WindowPos);
-
-        // Calculate Stats
-        if (!IsJobFinishing_) {
-            if (TotalAssetsToImport_ == 0) {
-                PercentDone_ = 0.0f;
-            } else {
-                PercentDone_ = (float)CurrentAssetNumber_ / (float)TotalAssetsToImport_;
-            }
-        } else {
-            PercentDone_ = 1.0f;
-        }
-
-        // Draw Total Progres Bar
-        ImGui::Text("Progress");
-        ImGui::ProgressBar(PercentDone_);
+        ImGui::Text("Test");
 
 
     ImGui::End();
