@@ -68,6 +68,16 @@ class LoggerClass {
         void ColorizeText(std::string Message, int LogLevel);
 
 
+    // Member Vars
+    public:
+
+        std::vector<std::string> LogMessages_; /**<List Of Messages*/
+        std::vector<int> LogLevels_; /**<List of Log Levels*/
+        std::vector<std::string> LogTimes_; /**<List Of Times*/
+        std::vector<RGBColor> LogColors_; /**<List of Colors For Messages*/
+
+
+    // Public Functions
     public: 
 
 
