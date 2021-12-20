@@ -44,6 +44,23 @@ void Window_ImportProgressBar::UpdateTotalItems(long Current, long Total) {
 
 }
 
+// Update Job State
+void Window_ImportProgressBar::UpdateJobState(bool JobFinished) {
+
+    // Set Job State
+    if (JobFinished) {
+        ConsecFinished_ ++;
+    } else {
+        ConsecFinished_ = 0;
+    }
+
+    // Hide Window After Threshold Reached
+    if (ConsecFinished_ >= ConsecFinishedThreshold_) {
+        Enabled_ = false;
+    }
+
+}
+
 // Draw Window
 void Window_ImportProgressBar::Draw() {
 

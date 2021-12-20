@@ -38,6 +38,9 @@ class Window_ImportProgressBar {
         int TotalAssetsToImport_ = 1; /**<Set Total Number Of Assets To Import*/
         std::mutex LockViewStats_; /**<Mutex To Prevent Values Being Changed During View/Write*/
 
+        int ConsecFinished_ = 0; /**<Set number of consec frames that job is finished*/
+        int ConsecFinishedThreshold_ = 100; /**<Hide After 100 frames of finished job*/
+
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
 
     public:
@@ -77,6 +80,12 @@ class Window_ImportProgressBar {
          */
         void UpdateTotalItems(long Current, long Total);
 
+        /**
+         * @brief close the window a few seconds after the job finishes
+         * 
+         * @param JobState 
+         */
+        void UpdateJobState(bool JobFinished);
 
         /**
          * @brief Draw import bar if needed (call every frame)
