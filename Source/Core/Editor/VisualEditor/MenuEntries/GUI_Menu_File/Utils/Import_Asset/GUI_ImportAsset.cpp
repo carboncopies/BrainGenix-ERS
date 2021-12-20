@@ -48,6 +48,8 @@ void GUI_ImportAsset::Draw() {
             std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
             std::string filter = ImGuiFileDialog::Instance()->GetCurrentFilter();
 
+            std::cout<<filePathName<<std::endl;
+
             // here convert from string because a string was passed as a userDatas, but it can be what you want
             std::string userDatas;
             if (ImGuiFileDialog::Instance()->GetUserDatas())
