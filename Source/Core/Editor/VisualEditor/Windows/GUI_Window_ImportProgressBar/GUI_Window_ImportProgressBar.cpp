@@ -62,13 +62,20 @@ void Window_ImportProgressBar::Draw() {
 
         // Calculate Stats
         LockViewStats_.lock();
-        float TotalProgresBarFraction = CurrentAssetNumber_ / TotalAssetsToImport_;
-        float ItemProgressBarFraction = SubItemsImported_ / SubItemsToImport_;
+        float TotalProgressBarFraction;
+        float ItemProgressBarFraction;
+        if ((TotalAssetsToImport_ == 0) || (SubItemsToImport_ == 0)) {
+            TotalProgressBarFraction = 0.0f;
+            ItemProgressBarFraction = 0.0f;
+        } else {
+            TotalProgressBarFraction = CurrentAssetNumber_ / TotalAssetsToImport_;
+            ItemProgressBarFraction = SubItemsImported_ / SubItemsToImport_;
+        }
         LockViewStats_.unlock();
 
         // Draw Total Progres Bar
         ImGui::Text("Overall Progress");
-        ImGui::ProgressBar(TotalProgresBarFraction);
+        ImGui::ProgressBar(TotalProgressBarFraction);
 
         ImGui::Text("Item Progress");
         ImGui::ProgressBar(ItemProgressBarFraction);

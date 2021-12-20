@@ -39,7 +39,7 @@ class ERS_CLASS_ImportAsset {
         std::vector<std::string> AssetImportQueue_; /**<List of assets to be imported, accessed by other threads so use mutex to control access*/
 
         // Stats
-        long CurrentSubitemTotal_ = 1; /**<Stats for the loading bar*/
+        long CurrentSubitemTotal_ = 0; /**<Stats for the loading bar*/
         long CurrentSubitemIndex_ = 0; /**<Stats for the loading bar*/
         long TotalItemsToImport_ = 0; /**<Stats for the loading bar*/
         long TotalItemsProcessed_ = 0; /**<Stats for the loading bar*/
