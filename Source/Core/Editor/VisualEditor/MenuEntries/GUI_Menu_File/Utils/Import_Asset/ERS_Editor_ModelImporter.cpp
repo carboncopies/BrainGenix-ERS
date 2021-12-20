@@ -75,6 +75,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     YAML::Emitter MetadataEmitter;
     MetadataEmitter<<YAML::BeginMap;
 
+    MetadataEmitter<<YAML::Key<<"Name"<<YAML::Value<<AssetPath; // Default name is file path, user can rename
     MetadataEmitter<<YAML::Key<<"ModelID"<<YAML::Value<<ModelID;
 
     MetadataEmitter<<YAML::Key<<"TextureIDs"<<YAML::BeginSeq;
@@ -93,6 +94,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     memcpy(Data->Data.get(), Metadata.c_str(), Metadata.size());
 
     long MetadataID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+    SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(MetadataID) + std::string("' To Model Metadata")).c_str(), 4);
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(MetadataID, Data);
 
 
