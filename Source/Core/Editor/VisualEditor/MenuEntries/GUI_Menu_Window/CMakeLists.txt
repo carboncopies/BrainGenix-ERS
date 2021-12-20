@@ -30,6 +30,7 @@ target_link_libraries(Menu_Window
 
     Widgets
     Window_SceneTree
+    Window_SystemLog
     
     )
 

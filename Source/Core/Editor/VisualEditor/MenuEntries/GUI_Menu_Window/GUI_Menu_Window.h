@@ -33,6 +33,7 @@
 #include <GUI_Widget_ObjectProperties.h>
 
 #include <GUI_Window_SceneTree.h>
+#include <GUI_Window_SystemLog.h>
 
 #include <3DCursor.h>
 #include <SceneManager.h>
@@ -61,7 +62,7 @@ class GUI_Menu_Window {
 
         // Instantiate Windows Here
         std::shared_ptr<Window_SceneTree> Window_SceneTree_; /**<Window Instance*/
-
+        std::unique_ptr<Window_SystemLog> Window_SystemLog_; /**<Window Instance*/
 
     // Member Functions
     public:
