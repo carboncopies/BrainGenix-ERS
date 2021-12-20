@@ -55,3 +55,12 @@ void ERS_CLASS_ImportAsset::AddToImportQueue(std::vector<std::string> AssetPaths
     LockAssetImportQueue_.unlock();
 
 }
+
+// Get Subitems processed
+long ERS_CLASS_ImportAsset::GetTotalSubitems() {
+    return CurrentSubitemTotal_;
+}
+
+long ERS_CLASS_ImportAsset::GetTotalSubitemsImported() {
+    return CurrentSubitemIndex_;
+}

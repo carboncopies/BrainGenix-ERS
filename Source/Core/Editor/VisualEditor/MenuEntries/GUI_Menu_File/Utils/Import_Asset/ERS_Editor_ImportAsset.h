@@ -36,6 +36,13 @@ class ERS_CLASS_ImportAsset {
         std::mutex LockAssetImportQueue_; /**<Mutex used to control access to list of assets to be imported*/
         std::vector<std::string> AssetImportQueue_; /**<List of assets to be imported, accessed by other threads so use mutex to control access*/
 
+        // Stats
+        long CurrentSubitemTotal_; /**<Stats for the loading bar*/
+        long CurrentSubitemIndex_; /**<Stats for the loading bar*/
+        long TotalItemsToImport_; /**<Stats for the loading bar*/
+        long TotalItemsProcessed_; /**<Stats for the loading bar*/
+
+
     public:
 
 
@@ -60,5 +67,18 @@ class ERS_CLASS_ImportAsset {
          */
         void AddToImportQueue(std::vector<std::string> AssetPaths);
 
+        /**
+         * @brief Get the Total Subitems Imported number
+         * 
+         * @return long 
+         */
+        long GetTotalSubitemsImported();
+
+        /**
+         * @brief Get the Total Subitems number
+         * 
+         * @return long 
+         */
+        long GetTotalSubitems();
 
 };

@@ -62,6 +62,16 @@ void GUI_ImportAsset::Draw() {
     }
 
 
+
+    // Update Window Stats
+    if (Window_ImportProgressBar_->Enabled_) {
+
+        Window_ImportProgressBar_->UpdateSubitems()
+
+    }
+
+
+
     Window_ImportProgressBar_->Draw();
 
 
