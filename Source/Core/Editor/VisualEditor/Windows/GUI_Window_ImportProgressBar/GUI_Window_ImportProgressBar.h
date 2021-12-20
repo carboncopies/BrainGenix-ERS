@@ -38,6 +38,9 @@ class Window_ImportProgressBar {
 
         int ConsecFinished_ = 0; /**<Set number of consec frames that job is finished*/
         int ConsecFinishedThreshold_ = 60; /**<Hide After 100 frames of finished job*/
+        
+        float PercentDone_; /**<Float Used By Progress Bar*/
+        bool IsJobFinishing_; /**<Bool Set By Thread*/
 
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
 

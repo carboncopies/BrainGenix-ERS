@@ -42,8 +42,10 @@ void Window_ImportProgressBar::UpdateJobState(bool JobFinished) {
     // Set Job State
     if (JobFinished) {
         ConsecFinished_ ++;
+        IsJobFinishing_ = true;
     } else {
         ConsecFinished_ = 0;
+        IsJobFinishing_ = false;
     }
 
     // Hide Window After Threshold Reached
@@ -72,19 +74,18 @@ void Window_ImportProgressBar::Draw() {
 
         // Calculate Stats
         LockViewStats_.lock();
-        float TotalProgressBarFraction;
-        float ItemProgressBarFraction;
-        if (TotalAssetsToImport_ == 0) {
-            TotalProgressBarFraction = 0.0f;
-        } else {
-            TotalProgressBarFraction = (float)CurrentAssetNumber_ / (float)TotalAssetsToImport_;
+        if (!IsJobFinishing_) {
+            if (TotalAssetsToImport_ == 0) {
+                PercentDone_ = 0.0f;
+            } else {
+                PercentDone_ = (float)CurrentAssetNumber_ / (float)TotalAssetsToImport_;
+            }
         }
-
         LockViewStats_.unlock();
 
         // Draw Total Progres Bar
         ImGui::Text("Progress");
-        ImGui::ProgressBar(TotalProgressBarFraction);
+        ImGui::ProgressBar(PercentDone_);
 
 
     ImGui::End();
