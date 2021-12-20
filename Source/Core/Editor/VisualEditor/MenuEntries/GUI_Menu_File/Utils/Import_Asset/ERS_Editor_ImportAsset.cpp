@@ -81,11 +81,11 @@ void ERS_CLASS_ImportAsset::ImportThread() {
         } else {
             
             // Reset Stats
-            HasJobFinished_ = true;
-            TotalItemsToImport_ = 0;
-            TotalItemsProcessed_ = 0;
-            CurrentSubitemTotal_ = 0;
-            CurrentSubitemIndex_ = 0;
+            // HasJobFinished_ = true;
+            // TotalItemsToImport_ = 0;
+            // TotalItemsProcessed_ = 0;
+            // CurrentSubitemTotal_ = 0;
+            // CurrentSubitemIndex_ = 0;
             LockAssetImportQueue_.unlock();
 
             // Wait
