@@ -46,6 +46,7 @@
 #include <Model.h>
 
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_IOData.h>
 
 
 
@@ -59,7 +60,8 @@ class ERS_CLASS_ModelImporter {
     private:
 
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_;
+        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointers*/
+        std::vector<std::string> TextureList_; /**<Texture List Vector*/
 
 
         /**
@@ -77,7 +79,7 @@ class ERS_CLASS_ModelImporter {
          * @param Scene 
          * @return ERS_OBJECT_MESH 
          */
-        ERS_OBJECT_MESH ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory);
+        void ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory);
 
         /**
          * @brief Load Textures From Model.
@@ -85,9 +87,18 @@ class ERS_CLASS_ModelImporter {
          * @param Mat 
          * @param Type 
          * @param TypeName 
-         * @return std::vector<ERS_OBJECT_TEXTURE_2D> 
          */
-        std::vector<ERS_OBJECT_TEXTURE_2D> LoadMaterialTextures(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory;
+        void AddTexture(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory);
+
+
+        /**
+         * @brief Load a file into an IOData Struct
+         * 
+         * @param Path 
+         * @param IOData 
+         */
+        void ReadFile(std::string Path, std::shared_ptr<ERS_STRUCT_IOData> IOData);
+
 
 
     public:
@@ -111,13 +122,13 @@ class ERS_CLASS_ModelImporter {
 
 
         /**
-         * @brief Load Model From Given File.
+         * @brief Import model from given path, return assetID of model metadata.
          * 
          * @param AssetPath 
          * @param FlipTextures 
-         * @return ERS_OBJECT_MODEL 
+         * @return std::vector<long> 
          */
-        ERS_OBJECT_MODEL LoadModelFromFile(std::string AssetPath, bool FlipTextures = false);
+        long ImportModel(std::string AssetPath);
 
 
 
