@@ -86,8 +86,6 @@ void ERS_CLASS_ImportAsset::ImportThread() {
             HasJobFinished_ = true;
             TotalItemsToImport_ = 0;
             TotalItemsProcessed_ = 0;
-            CurrentSubitemTotal_ = 0;
-            CurrentSubitemIndex_ = 0;
             LockAssetImportQueue_.unlock();
 
             // Wait
@@ -123,15 +121,7 @@ void ERS_CLASS_ImportAsset::AddToImportQueue(std::vector<std::string> AssetPaths
 
 }
 
-// Get Stats
-long ERS_CLASS_ImportAsset::GetTotalSubitems() {
-    return CurrentSubitemTotal_;
-}
 
-// Get Stats
-long ERS_CLASS_ImportAsset::GetTotalSubitemsImported() {
-    return CurrentSubitemIndex_;
-}
 
 // Get Stats
 long ERS_CLASS_ImportAsset::GetTotalItemsToImport() {
