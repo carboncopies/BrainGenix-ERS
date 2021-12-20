@@ -39,8 +39,25 @@ void ERS_CLASS_ImportAsset::ImportThread() {
     while (true) {
 
         // Check Control Variables
-        
+        BlockThread_.lock();
+        if (StopThread_) {
+            break;
+        }
+        BlockThread_.unlock();
 
+        // Check Queue, Import As Needed
+        LockAssetImportQueue_.lock();
+        if (AssetImportQueue_.size() > 0) {
+            std::string AssetPath = AssetImportQueue_[0];
+            AssetImportQueue_.erase(AssetImportQueue_.begin());
+            LockAssetImportQueue_.unlock();
+
+
+
+        } else {
+            LockAssetImportQueue_.unlock();
+            std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        }
 
     }
 
