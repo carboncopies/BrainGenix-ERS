@@ -49,7 +49,7 @@ void Window_SystemLog::Draw() {
 
             std::string LogText = SystemUtils_->Logger_->FullLogMessages_[i];
 
-            ImGui::Text(LogText.c_str());
+            ImGui::Text("%s", LogText.c_str());
 
         }
 
