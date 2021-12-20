@@ -36,7 +36,7 @@ class Window_SystemLog {
 
     public:
 
-        bool Enabled_ = false; /**<Is Popup Enabled*/
+        bool Enabled_ = true; /**<Is Popup Enabled*/
 
 
     public:

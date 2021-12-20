@@ -107,6 +107,7 @@ void GUI_Menu_Window::Draw() {
 
     // Update Windows
     Window_SceneTree_->Draw();
+    Window_SystemLog_->Draw();
 
 
 }
