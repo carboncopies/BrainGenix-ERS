@@ -72,10 +72,19 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     // Generate Metadata
     YAML::Emitter MetadataEmitter;
-    MetadataEmitter<<YAML::BeginSeq;
+    MetadataEmitter<<YAML::BeginMap;
 
+    MetadataEmitter<<YAML::Key<<"ModelID"<<YAML::Value<<ModelID;
+
+    MetadataEmitter<<YAML::Key<<"TextureIDs"<<YAML::BeginSeq;
+    for (int i = 0; i < TextureIDs.size(); i++) {
+        MetadataEmitter<<YAML::Value<<TextureIDs[i];
+    }
     MetadataEmitter<<YAML::EndSeq;
+    
+    MetadataEmitter<<YAML::EndMap;
 
+    
 
 
     // Return Model Instance
