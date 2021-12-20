@@ -32,8 +32,6 @@ class Window_ImportProgressBar {
 
     private:
 
-        int SubItemsImported_ = 0; /**<Set Number Of Items That Have Been Imported*/
-        int SubItemsToImport_ = 1; /**<Set Total Number Of Items Imported*/
         int CurrentAssetNumber_ = 0; /**<Set Current Number Of Asset Being Imported*/
         int TotalAssetsToImport_ = 1; /**<Set Total Number Of Assets To Import*/
         std::mutex LockViewStats_; /**<Mutex To Prevent Values Being Changed During View/Write*/
