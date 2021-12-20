@@ -32,6 +32,20 @@ ERS_CLASS_ImportAsset::~ERS_CLASS_ImportAsset() {
 
 }
 
+// Item Import Thread
+void ERS_CLASS_ImportAsset::ImportThread() {
+
+    // Enter Loop
+    while (true) {
+
+        // Check Control Variables
+        
+
+
+    }
+
+}
+
 // Call To Add Items To Import List
 void ERS_CLASS_ImportAsset::AddToImportQueue(std::vector<std::string> AssetPaths) {
 

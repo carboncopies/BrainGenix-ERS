@@ -36,6 +36,8 @@ class ERS_CLASS_ImportAsset {
 
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<used to get access to system utilites like IOmanager, logger, etc.*/
         std::mutex LockAssetImportQueue_; /**<Mutex used to control access to list of assets to be imported*/
+        std::mutex BlockThread_; /**<Use This To Block The Thread*/
+        bool StopThread_ = false; /**<Set this to true to make the importer thread exit*/
         std::vector<std::string> AssetImportQueue_; /**<List of assets to be imported, accessed by other threads so use mutex to control access*/
 
         // Stats
@@ -44,6 +46,8 @@ class ERS_CLASS_ImportAsset {
         long TotalItemsToImport_ = 0; /**<Stats for the loading bar*/
         long TotalItemsProcessed_ = 0; /**<Stats for the loading bar*/
 
+
+        void ImportThread(); /**<Import Item Thread*/
 
     public:
 
