@@ -56,11 +56,22 @@ void ERS_CLASS_ImportAsset::AddToImportQueue(std::vector<std::string> AssetPaths
 
 }
 
-// Get Subitems processed
+// Get Stats
 long ERS_CLASS_ImportAsset::GetTotalSubitems() {
     return CurrentSubitemTotal_;
 }
 
+// Get Stats
 long ERS_CLASS_ImportAsset::GetTotalSubitemsImported() {
     return CurrentSubitemIndex_;
+}
+
+// Get Stats
+long ERS_CLASS_ImportAsset::GetTotalItemsToImport() {
+    return TotalItemsToImport_;
+}
+
+// Get Stats
+long ERS_CLASS_ImportAsset::GetTotalItemsImported() {
+    return TotalItemsProcessed_;
 }
