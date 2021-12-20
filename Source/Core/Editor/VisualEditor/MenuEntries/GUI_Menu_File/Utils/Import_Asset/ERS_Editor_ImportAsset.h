@@ -39,6 +39,7 @@ class ERS_CLASS_ImportAsset {
         std::mutex BlockThread_; /**<Use This To Block The Thread*/
         bool StopThread_ = false; /**<Set this to true to make the importer thread exit*/
         bool HasJobFinished_ = false; /**<Indicate If A Job Has Finished*/
+        std::thread ImportThread_; /**<Import Processor Thread*/
         std::vector<std::string> AssetImportQueue_; /**<List of assets to be imported, accessed by other threads so use mutex to control access*/
 
         // Stats

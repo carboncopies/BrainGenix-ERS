@@ -21,6 +21,11 @@ ERS_CLASS_ImportAsset::ERS_CLASS_ImportAsset(std::shared_ptr<ERS_STRUCT_SystemUt
     // Log Init
     SystemUtils_->Logger_->Log("Initializing Asset Importer Backend", 5);
 
+    // Start Asset Importer Worker Thread
+    SystemUtils_->Logger_->Log("Starting Asset Import Thread", 4);
+    ImportThread_ = std::thread(&ImportThread, this);
+    SystemUtils_->Logger_->Log("Started Asset Import Thread", 3);
+
 }
 
 
@@ -29,6 +34,15 @@ ERS_CLASS_ImportAsset::~ERS_CLASS_ImportAsset() {
 
     // Log Destructor
     SystemUtils_->Logger_->Log("Asset Importer Backend Destructor Called", 6);
+
+    // Shut Down Thread
+    SystemUtils_->Logger_->Log("Sending Halt Signal To Asset Import Thread", 4);
+    BlockThread_.lock();
+    StopThread_ = true;
+    BlockThread_.unlock();
+
+    SystemUtils_->Logger_->Log("Joining Asset Import Thread", 5);
+    ImportThread_.join();
 
 }
 
