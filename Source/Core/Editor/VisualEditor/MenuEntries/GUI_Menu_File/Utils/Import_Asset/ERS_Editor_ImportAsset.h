@@ -14,6 +14,8 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <memory>
+#include <string>
+#include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -48,6 +50,8 @@ class ERS_CLASS_ImportAsset {
          */
         ~ERS_CLASS_ImportAsset();
 
+
+        void AddToImportQueue(std::vector<std::string>)
 
 
 };

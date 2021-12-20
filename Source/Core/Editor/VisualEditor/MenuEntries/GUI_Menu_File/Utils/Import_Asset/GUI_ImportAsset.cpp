@@ -44,11 +44,11 @@ void GUI_ImportAsset::Draw() {
     {
         if (ImGuiFileDialog::Instance()->IsOk())
         {
-
+            // Get List Of Files From Selection, Convert To Vector
+            std::vector<std::string> FilePaths;
             std::map<std::string, std::string> selection = ImGuiFileDialog::Instance()->GetSelection(); // multiselection
-
             for (const auto& elem:selection) {
-                std::cout<<elem.first << " " << elem.second<<std::endl;
+                FilePaths.push_back(elem.second);
             }
 
         }
