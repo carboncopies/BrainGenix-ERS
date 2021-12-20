@@ -34,7 +34,6 @@ class Window_ImportProgressBar {
 
         int CurrentAssetNumber_ = 0; /**<Set Current Number Of Asset Being Imported*/
         int TotalAssetsToImport_ = 1; /**<Set Total Number Of Assets To Import*/
-        std::mutex LockViewStats_; /**<Mutex To Prevent Values Being Changed During View/Write*/
 
         int ConsecFinished_ = 0; /**<Set number of consec frames that job is finished*/
         int ConsecFinishedThreshold_ = 60; /**<Hide After 100 frames of finished job*/

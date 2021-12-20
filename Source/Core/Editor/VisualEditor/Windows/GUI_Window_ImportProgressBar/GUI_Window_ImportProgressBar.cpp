@@ -73,7 +73,6 @@ void Window_ImportProgressBar::Draw() {
         ImGui::SetWindowPos(WindowPos);
 
         // Calculate Stats
-        LockViewStats_.lock();
         if (!IsJobFinishing_) {
             if (TotalAssetsToImport_ == 0) {
                 PercentDone_ = 0.0f;
@@ -81,7 +80,6 @@ void Window_ImportProgressBar::Draw() {
                 PercentDone_ = (float)CurrentAssetNumber_ / (float)TotalAssetsToImport_;
             }
         }
-        LockViewStats_.unlock();
 
         // Draw Total Progres Bar
         ImGui::Text("Progress");
