@@ -129,7 +129,7 @@ long ERS_CLASS_ImportAsset::GetTotalItemsImported() {
 
 // Get Stats
 bool ERS_CLASS_ImportAsset::HasJobFinished() {
-    //LockAssetImportQueue_.lock();
+    LockAssetImportQueue_.lock();
     return HasJobFinished_;
-    //LockAssetImportQueue_.unlock();
+    LockAssetImportQueue_.unlock();
 }
