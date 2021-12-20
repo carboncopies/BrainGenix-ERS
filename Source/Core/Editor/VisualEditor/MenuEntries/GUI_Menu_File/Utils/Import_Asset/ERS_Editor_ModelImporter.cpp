@@ -55,11 +55,31 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
 
     // Copy Model File
-    //SystemUtils_->ERS_IOSubsystem_->    
+    std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
+    ReadFile(AssetPath, Data);
+    long ModelID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+    SystemUtils_->Logger_->Log(std::string(std::string("Assigning Model '") + AssetPath + std::string("' ID '") + std::to_string(ModelID) + std::string("'")).c_str(), 4);
+    SystemUtils_->ERS_IOSubsystem_->WriteAsset(ModelID, Data);    
+
+    // Copy Textures
+    std::vector<long> TextureIDs = SystemUtils_->ERS_IOSubsystem_->BatchAllocateIDs(TextureList_.size());
+    for (int i = 0; i < TextureList_.size(); i++) {
+        SystemUtils_->Logger_->Log(std::string(std::string("Assigning Texture '") + TextureList_[i] + std::string("' ID '") + std::to_string(TextureIDs[i]) + std::string("'")).c_str(), 4);
+        ReadFile(TextureList_[i], Data);
+        SystemUtils_->ERS_IOSubsystem_->WriteAsset(TextureIDs[i], Data);
+
+    }
+
+    // Generate Metadata
+    YAML::Emitter MetadataEmitter;
+    MetadataEmitter<<YAML::BeginSeq;
+
+    MetadataEmitter<<YAML::EndSeq;
+
 
 
     // Return Model Instance
-    return AssetID;
+    return MetadataID;
 
 }
 
@@ -202,6 +222,7 @@ void ERS_CLASS_ModelImporter::ReadFile(std::string FilePath, std::shared_ptr<ERS
                 if (Stream) {
 
                     fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size, Stream);
+                    OutputData->Size_B = Buffer.st_size;
                     fclose(Stream);
                     OutputData->HasLoaded = true;
 
@@ -214,7 +235,6 @@ void ERS_CLASS_ModelImporter::ReadFile(std::string FilePath, std::shared_ptr<ERS
                 SystemUtils_->Logger_->Log(std::string(std::string("Error Loading Asset '") + FilePath + std::string("', Memory Allocation Failed")).c_str(), 9);            
                 OutputData->HasLoaded = false;
             }
-
         
         } else {
             SystemUtils_->Logger_->Log(std::string(std::string("Error Loading Asset '") + FilePath + std::string("', File Not Found")).c_str(), 9);
