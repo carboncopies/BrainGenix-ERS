@@ -46,6 +46,8 @@ void Window_SystemLog::Draw() {
 
         for (int i = 0; i < SystemUtils_->Logger_->LogMessages_.size(); i++) {
 
+            float 
+
             std::string LogText = SystemUtils_->Logger_->FullLogMessages_[i];
             ImVec4 TextColor = ImVec4()
             ImGui::TextColored(TextColor, "%s", LogText.c_str());
