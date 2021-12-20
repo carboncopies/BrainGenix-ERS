@@ -49,6 +49,9 @@ ERS_CLASS_ImportAsset::~ERS_CLASS_ImportAsset() {
 // Item Import Thread
 void ERS_CLASS_ImportAsset::ImportThread() {
 
+    // Create Importer Instance
+    std::unique_ptr<ERS_CLASS_ModelImporter> AssetImporter = std::make_unique<ERS_CLASS_ModelImporter>(SystemUtils_);
+
     // Enter Loop
     while (true) {
 
@@ -72,8 +75,7 @@ void ERS_CLASS_ImportAsset::ImportThread() {
 
 
             // Process Item
-            std::this_thread::sleep_for(std::chrono::milliseconds(500));
-
+            AssetImporter->ImportModel(AssetPath);
 
             // Update Stats
             LockAssetImportQueue_.lock();
