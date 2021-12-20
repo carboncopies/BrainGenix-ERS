@@ -66,7 +66,6 @@ void GUI_ImportAsset::Draw() {
     if (Window_ImportProgressBar_->Enabled_) {
         Window_ImportProgressBar_->UpdateSubitems(AssetImportBackend_->GetTotalSubitemsImported(), AssetImportBackend_->GetTotalSubitems());
         Window_ImportProgressBar_->UpdateTotalItems(AssetImportBackend_->GetTotalItemsImported(), AssetImportBackend_->GetTotalItemsToImport());
-        std::cout<<AssetImportBackend_->GetTotalItemsImported()<<std::endl;
         Window_ImportProgressBar_->Enabled_ = !AssetImportBackend_->HasJobFinished();
     }
 
