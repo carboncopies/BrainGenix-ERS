@@ -67,6 +67,7 @@ void ERS_CLASS_ImportAsset::ImportThread() {
             HasJobFinished_ = false;
             std::string AssetPath = AssetImportQueue_[0];
             AssetImportQueue_.erase(AssetImportQueue_.begin());
+            std::cout<<AssetPath<<std::endl;
             LockAssetImportQueue_.unlock();
 
 
