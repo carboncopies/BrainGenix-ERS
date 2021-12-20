@@ -43,7 +43,7 @@ void GUI_Menu_File::Draw() {
 
         // Import Option
         if (ImGui::MenuItem("Import Model")) {
-            // call open file dialog
+            ImportAsset_->OpenFileDialog();
         }
 
         ImGui::Separator();
@@ -70,7 +70,8 @@ void GUI_Menu_File::Draw() {
     }
 
 
-
+    // Draw Subwindows
+    ImportAsset_->Draw();
 
 
 }
