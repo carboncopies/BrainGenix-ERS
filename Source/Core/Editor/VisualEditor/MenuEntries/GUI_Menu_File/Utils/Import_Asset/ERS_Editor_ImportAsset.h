@@ -51,7 +51,12 @@ class ERS_CLASS_ImportAsset {
         ~ERS_CLASS_ImportAsset();
 
 
-        void AddToImportQueue(std::vector<std::string>)
+        /**
+         * @brief Add items to be imported.
+         * 
+         * @param AssetPaths 
+         */
+        void AddToImportQueue(std::vector<std::string> AssetPaths);
 
 
 };

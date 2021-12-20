@@ -31,3 +31,10 @@ ERS_CLASS_ImportAsset::~ERS_CLASS_ImportAsset() {
     SystemUtils_->Logger_->Log("Asset Importer Backend Destructor Called", 6);
 
 }
+
+// Call To Add Items To Import List
+void ERS_CLASS_ImportAsset::AddToImportQueue(std::vector<std::string> AssetPaths) {
+
+    
+
+}
