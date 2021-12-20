@@ -46,9 +46,9 @@ void Window_SystemLog::Draw() {
 
         for (int i = 0; i < SystemUtils_->Logger_->LogMessages_.size(); i++) {
 
-            float ColorRed = SystemUtils_->Logger_->LogColors_[i].Red/255.0f;
-            float ColorGreen = SystemUtils_->Logger_->LogColors_[i].Green/255.0f;
-            float ColorBlue = SystemUtils_->Logger_->LogColors_[i].Blue/255.0f;
+            float ColorRed = SystemUtils_->Logger_->LogColors_[i].Red / 255.0f;
+            float ColorGreen = SystemUtils_->Logger_->LogColors_[i].Green / 255.0f;
+            float ColorBlue = SystemUtils_->Logger_->LogColors_[i].Blue / 255.0f;
 
 
             std::string LogText = SystemUtils_->Logger_->FullLogMessages_[i];
