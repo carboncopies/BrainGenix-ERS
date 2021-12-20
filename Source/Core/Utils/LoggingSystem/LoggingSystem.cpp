@@ -111,6 +111,13 @@ void LoggerClass::Log(const char* LogItem, int LogLevel) {
     Output += "[" + CurrentTimePadded + "] ";
     Output += std::string(LogItem) + "\n";
 
+
+    // Add To Log Output Vars
+    LogMessages_.push_back(std::string(LogItem));
+    LogLevels_.push_back(LogLevel);
+    LogTimes_.push_back(CurrentTime);
+    LogColors_.push_back(ColorLookup_[LogLevel]);
+
     // Check Log Level Before Printing It //
     if (LogLevel >= MinimumLogLevel) {
 
