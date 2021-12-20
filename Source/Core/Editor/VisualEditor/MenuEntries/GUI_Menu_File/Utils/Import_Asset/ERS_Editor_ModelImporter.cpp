@@ -58,13 +58,13 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
     ReadFile(AssetPath, Data);
     long ModelID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
-    SystemUtils_->Logger_->Log(std::string(std::string("Assigning Model '") + AssetPath + std::string("' ID '") + std::to_string(ModelID) + std::string("'")).c_str(), 4);
+    SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(ModelID) + std::string("' To Model '") + AssetPath + std::string("'")).c_str(), 4);
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(ModelID, Data);    
 
     // Copy Textures
     std::vector<long> TextureIDs = SystemUtils_->ERS_IOSubsystem_->BatchAllocateIDs(TextureList_.size());
     for (int i = 0; i < TextureList_.size(); i++) {
-        SystemUtils_->Logger_->Log(std::string(std::string("Assigning Texture '") + TextureList_[i] + std::string("' ID '") + std::to_string(TextureIDs[i]) + std::string("'")).c_str(), 4);
+        SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(TextureIDs[i]) + std::string("' To Texture '") + TextureList_[i] + std::string("'")).c_str(), 4);
         ReadFile(TextureList_[i], Data);
         SystemUtils_->ERS_IOSubsystem_->WriteAsset(TextureIDs[i], Data);
 
