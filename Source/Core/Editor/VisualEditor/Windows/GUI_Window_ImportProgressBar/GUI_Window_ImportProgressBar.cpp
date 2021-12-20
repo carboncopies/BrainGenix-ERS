@@ -26,14 +26,6 @@ Window_ImportProgressBar::~Window_ImportProgressBar() {
 }
 
 
-// Update Item Stats
-void Window_ImportProgressBar::UpdateSubitems(long Imported, long Total) {
-
-    // Update Totals
-    SubItemsImported_ = Imported;
-    SubItemsToImport_ = Total;
-
-}
 
 // Update Total Model Stats
 void Window_ImportProgressBar::UpdateTotalItems(long Current, long Total) {
@@ -86,19 +78,12 @@ void Window_ImportProgressBar::Draw() {
         } else {
             TotalProgressBarFraction = (float)CurrentAssetNumber_ / (float)TotalAssetsToImport_;
         }
-        if (SubItemsToImport_ == 0) {
-            ItemProgressBarFraction = 0.0f;
-        } else {
-            ItemProgressBarFraction = (float)SubItemsImported_ / (float)SubItemsToImport_;
-        }
+
         LockViewStats_.unlock();
 
         // Draw Total Progres Bar
         ImGui::Text("Overall Progress");
         ImGui::ProgressBar(TotalProgressBarFraction);
-
-        ImGui::Text("Item Progress");
-        ImGui::ProgressBar(ItemProgressBarFraction);
 
 
     ImGui::End();

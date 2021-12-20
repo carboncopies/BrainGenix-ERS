@@ -62,15 +62,6 @@ class Window_ImportProgressBar {
 
 
         /**
-         * @brief Update Current item being processed (progress bar)
-         * 
-         * @param Imported 
-         * @param Total 
-         * @param CurrentName 
-         */
-        void UpdateSubitems(long Imported, long Total);
-
-        /**
          * @brief Update Total items being processed (progress bar)
          * 
          * @param Current 
