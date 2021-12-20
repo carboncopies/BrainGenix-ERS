@@ -44,15 +44,7 @@ void GUI_ImportAsset::Draw() {
     {
         if (ImGuiFileDialog::Instance()->IsOk())
         {
-            std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
-            std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
-            std::string filter = ImGuiFileDialog::Instance()->GetCurrentFilter();
 
-
-            // here convert from string because a string was passed as a userDatas, but it can be what you want
-            std::string userDatas;
-            if (ImGuiFileDialog::Instance()->GetUserDatas())
-                userDatas = std::string((const char*)ImGuiFileDialog::Instance()->GetUserDatas()); 
             std::map<std::string, std::string> selection = ImGuiFileDialog::Instance()->GetSelection(); // multiselection
 
             for (const auto& elem:selection) {
