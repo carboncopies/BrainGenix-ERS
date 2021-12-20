@@ -82,7 +82,7 @@ void Window_ImportProgressBar::Draw() {
         LockViewStats_.unlock();
 
         // Draw Total Progres Bar
-        ImGui::Text("Overall Progress");
+        ImGui::Text("Progress");
         ImGui::ProgressBar(TotalProgressBarFraction);
 
 
