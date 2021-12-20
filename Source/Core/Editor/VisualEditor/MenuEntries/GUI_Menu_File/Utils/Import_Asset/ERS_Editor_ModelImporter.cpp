@@ -87,10 +87,10 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
 
     // Write Metadata
-    const char* Metadata = MetadataEmitter.c_str();
-    Data->Data.reset(new unsigned char[sizeof(Metadata)]);
-    Data->Size_B = sizeof(Metadata);
-    memcpy(Data->Data.get(), Metadata, sizeof(Metadata));
+    std::string Metadata = std::string(MetadataEmitter.c_str());
+    Data->Data.reset(new unsigned char[Metadata.size()]);
+    Data->Size_B = Metadata.size();
+    memcpy(Data->Data.get(), Metadata.c_str(), Metadata.size());
 
     long MetadataID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(MetadataID, Data);
