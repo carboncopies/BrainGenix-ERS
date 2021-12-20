@@ -41,7 +41,7 @@ ERS_CLASS_ImportAsset::~ERS_CLASS_ImportAsset() {
     StopThread_ = true;
     BlockThread_.unlock();
 
-    SystemUtils_->Logger_->Log("Joining Asset Import Thread", 5);
+    SystemUtils_->Logger_->Log("Joining Asset Import Thread", 3);
     ImportThread_.join();
 
 }
