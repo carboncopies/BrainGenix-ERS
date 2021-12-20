@@ -79,6 +79,8 @@ void Window_ImportProgressBar::Draw() {
             } else {
                 PercentDone_ = (float)CurrentAssetNumber_ / (float)TotalAssetsToImport_;
             }
+        } else {
+            PercentDone_ = 1.0f;
         }
 
         // Draw Total Progres Bar
