@@ -33,6 +33,8 @@ class ERS_CLASS_ImportAsset {
     private:
 
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<used to get access to system utilites like IOmanager, logger, etc.*/
+        std::mutex LockAssetImportQueue_; /**<Mutex used to control access to list of assets to be imported*/
+        std::vector<std::string> AssetImportQueue_; /**<List of assets to be imported, accessed by other threads so use mutex to control access*/
 
     public:
 
