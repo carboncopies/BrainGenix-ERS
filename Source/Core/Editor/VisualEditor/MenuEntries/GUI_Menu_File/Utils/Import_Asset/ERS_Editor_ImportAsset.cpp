@@ -48,16 +48,33 @@ void ERS_CLASS_ImportAsset::ImportThread() {
         // Check Queue, Import As Needed
         LockAssetImportQueue_.lock();
         if (AssetImportQueue_.size() > 0) {
+
+            // Get Stats
             HasJobFinished_ = false;
             std::string AssetPath = AssetImportQueue_[0];
             AssetImportQueue_.erase(AssetImportQueue_.begin());
             LockAssetImportQueue_.unlock();
 
 
+            // Process Item
 
-        } else {
-            HasJobFinished_ = true;
+
+
+            // Update Stats
+            LockAssetImportQueue_.lock();
+            TotalItemsProcessed_++;
             LockAssetImportQueue_.unlock();
+        } else {
+            
+            // Reset Stats
+            HasJobFinished_ = true;
+            TotalItemsToImport_ = 0;
+            TotalItemsProcessed_ = 0;
+            CurrentSubitemTotal_ = 0;
+            CurrentSubitemIndex_ = 0;
+            LockAssetImportQueue_.unlock();
+
+            // Wait
             std::this_thread::sleep_for(std::chrono::milliseconds(50));
         }
 
