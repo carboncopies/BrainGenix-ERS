@@ -24,6 +24,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_Editor_ImportAsset.h>
 #include <GUI_Window_ImportProgressBar.h>
 
 
@@ -37,6 +38,7 @@ class GUI_ImportAsset {
 
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<used to get access to system utilites like IOmanager, logger, etc.*/
         std::unique_ptr<Window_ImportProgressBar> Window_ImportProgressBar_; /**<Pointer To Window Import Progres Bar*/
+        std::unique_ptr<ERS_CLASS_ImportAsset> AssetImportBackend_; /**<Backend used to handle actual importing, threads, etc.*/
 
     public:
 

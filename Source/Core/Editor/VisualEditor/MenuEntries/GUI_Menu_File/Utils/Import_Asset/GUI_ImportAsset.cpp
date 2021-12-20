@@ -23,6 +23,7 @@ GUI_ImportAsset::GUI_ImportAsset(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
     // Instantiate
     Window_ImportProgressBar_ = std::make_unique<Window_ImportProgressBar>(SystemUtils_);
+    AssetImportBackend_ = std::make_unique<ERS_CLASS_ImportAsset>(SystemUtils_);
 
 }
 
@@ -50,6 +51,10 @@ void GUI_ImportAsset::Draw() {
             for (const auto& elem:selection) {
                 FilePaths.push_back(elem.second);
             }
+
+            // Add To Queue, Launch Import
+            AssetImportBackend_->AddToImportQueue(FilePaths);
+            Window_ImportProgressBar_->
 
         }
     // close
