@@ -23,7 +23,7 @@ ERS_CLASS_ImportAsset::ERS_CLASS_ImportAsset(std::shared_ptr<ERS_STRUCT_SystemUt
 
     // Start Asset Importer Worker Thread
     SystemUtils_->Logger_->Log("Starting Asset Import Thread", 4);
-    ImportThread_ = std::thread(&ImportThread, this);
+    ImportThread_ = std::thread(&ERS_CLASS_ImportAsset::ImportThread, this);
     SystemUtils_->Logger_->Log("Started Asset Import Thread", 3);
 
 }
