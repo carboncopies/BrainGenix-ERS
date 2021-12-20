@@ -70,6 +70,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     }
 
+   
     // Generate Metadata
     YAML::Emitter MetadataEmitter;
     MetadataEmitter<<YAML::BeginMap;
@@ -84,7 +85,13 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     
     MetadataEmitter<<YAML::EndMap;
 
-    
+
+    // Write Metadata
+    unsigned char MetadataBytes = (unsigned char)MetadataEmitter.c_str();
+    Data->Data = std::make_unique<unsigned char[]>(MetadataBytes);
+    Data->Size_B = sizeof(MetadataBytes);
+    long MetadataID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+    SystemUtils_->ERS_IOSubsystem_->WriteAsset(MetadataID, Data);
 
 
     // Return Model Instance
