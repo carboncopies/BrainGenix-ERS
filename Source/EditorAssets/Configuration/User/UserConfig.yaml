@@ -1,7 +1,7 @@
 # This Configuration File Is Used To Set Default User Preferences
 
 # Set GUI Prefs
-DefaultFont: "Arimo-Medium"
+DefaultFont: "SourceCodePro-Bold"
 DefaultFontSize: 16
 
 DefaultColorTheme: "High Contrast Dark"
