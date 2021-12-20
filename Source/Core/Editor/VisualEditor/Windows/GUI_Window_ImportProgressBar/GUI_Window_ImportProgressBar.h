@@ -81,7 +81,7 @@ class Window_ImportProgressBar {
         void UpdateTotalItems(long Current, long Total);
 
         /**
-         * @brief close the window a few seconds after the job finishes
+         * @brief close the window a few frames after the job finishes
          * 
          * @param JobState 
          */
