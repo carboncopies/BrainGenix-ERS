@@ -29,10 +29,18 @@ Window_ImportProgressBar::~Window_ImportProgressBar() {
 // Update Item Stats
 void Window_ImportProgressBar::UpdateSubitems(long Imported, long Total) {
 
+    // Update Totals
+    SubItemsImported_ = Imported;
+    SubItemsToImport_ = Total;
+
 }
 
 // Update Total Model Stats
 void Window_ImportProgressBar::UpdateTotalItems(long Current, long Total) {
+
+    // Update Totals
+    CurrentAssetNumber_ = Current;
+    TotalAssetsToImport_ = Total;
 
 }
 
