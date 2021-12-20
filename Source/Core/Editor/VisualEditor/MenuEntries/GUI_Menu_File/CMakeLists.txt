@@ -30,6 +30,8 @@ target_link_libraries(Menu_File
     LoggingSystem
     ERS_STRUCT_SystemUtils
 
+    ERS_Editor_ImportAsset
+
     ERS_SceneWriter
     SceneManager
 
