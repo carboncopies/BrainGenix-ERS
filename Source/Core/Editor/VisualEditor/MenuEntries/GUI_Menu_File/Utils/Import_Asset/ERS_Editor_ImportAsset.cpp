@@ -48,6 +48,7 @@ void ERS_CLASS_ImportAsset::AddToImportQueue(std::vector<std::string> AssetPaths
 
         // Append Item
         AssetImportQueue_.push_back(AssetPaths[i]);
+        TotalItemsToImport_ += 1;
 
     }
 

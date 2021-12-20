@@ -16,6 +16,8 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <mutex>
+#include <thread>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -37,10 +39,10 @@ class ERS_CLASS_ImportAsset {
         std::vector<std::string> AssetImportQueue_; /**<List of assets to be imported, accessed by other threads so use mutex to control access*/
 
         // Stats
-        long CurrentSubitemTotal_; /**<Stats for the loading bar*/
-        long CurrentSubitemIndex_; /**<Stats for the loading bar*/
-        long TotalItemsToImport_; /**<Stats for the loading bar*/
-        long TotalItemsProcessed_; /**<Stats for the loading bar*/
+        long CurrentSubitemTotal_ = 1; /**<Stats for the loading bar*/
+        long CurrentSubitemIndex_ = 0; /**<Stats for the loading bar*/
+        long TotalItemsToImport_ = 0; /**<Stats for the loading bar*/
+        long TotalItemsProcessed_ = 0; /**<Stats for the loading bar*/
 
 
     public:
