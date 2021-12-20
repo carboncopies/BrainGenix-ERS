@@ -27,7 +27,7 @@ Window_ImportProgressBar::~Window_ImportProgressBar() {
 
 
 // Update Item Stats
-void Window_ImportProgressBar::UpdateSubitems(long Imported, long Total, std::string CurrentName) {
+void Window_ImportProgressBar::UpdateSubitems(long Imported, long Total) {
 
 }
 

@@ -68,7 +68,7 @@ class Window_ImportProgressBar {
          * @param Total 
          * @param CurrentName 
          */
-        void UpdateSubitems(long Imported, long Total, std::string CurrentName);
+        void UpdateSubitems(long Imported, long Total);
 
         /**
          * @brief Update Total items being processed (progress bar)
