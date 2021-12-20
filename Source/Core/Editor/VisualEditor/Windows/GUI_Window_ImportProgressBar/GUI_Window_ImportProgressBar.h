@@ -39,7 +39,7 @@ class Window_ImportProgressBar {
         std::mutex LockViewStats_; /**<Mutex To Prevent Values Being Changed During View/Write*/
 
         int ConsecFinished_ = 0; /**<Set number of consec frames that job is finished*/
-        int ConsecFinishedThreshold_ = 100; /**<Hide After 100 frames of finished job*/
+        int ConsecFinishedThreshold_ = 2; /**<Hide After 100 frames of finished job*/
 
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
 
