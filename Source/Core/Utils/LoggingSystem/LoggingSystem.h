@@ -72,6 +72,7 @@ class LoggerClass {
     public:
 
         std::vector<std::string> LogMessages_; /**<List Of Messages*/
+        std::vector<std::string> FullLogMessages_; /**<Full Messages*/
         std::vector<int> LogLevels_; /**<List of Log Levels*/
         std::vector<std::string> LogTimes_; /**<List Of Times*/
         std::vector<RGBColor> LogColors_; /**<List of Colors For Messages*/

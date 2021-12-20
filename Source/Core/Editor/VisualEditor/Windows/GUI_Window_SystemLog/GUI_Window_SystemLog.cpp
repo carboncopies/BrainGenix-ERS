@@ -47,9 +47,9 @@ void Window_SystemLog::Draw() {
 
         for (int i = 0; i < SystemUtils_->Logger_->LogMessages_.size(); i++) {
 
-            const char* LogText = SystemUtils_->Logger_->LogMessages_[i].c_str();
+            std::string LogText = SystemUtils_->Logger_->FullLogMessages_[i];
 
-            ImGui::Text(LogText);
+            ImGui::Text(LogText.c_str());
 
         }
 

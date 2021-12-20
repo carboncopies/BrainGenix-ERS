@@ -117,6 +117,7 @@ void LoggerClass::Log(const char* LogItem, int LogLevel) {
     LogLevels_.push_back(LogLevel);
     LogTimes_.push_back(CurrentTime);
     LogColors_.push_back(ColorLookup_[LogLevel]);
+    FullLogMessages_.push_back(Output);
 
     // Check Log Level Before Printing It //
     if (LogLevel >= MinimumLogLevel) {
