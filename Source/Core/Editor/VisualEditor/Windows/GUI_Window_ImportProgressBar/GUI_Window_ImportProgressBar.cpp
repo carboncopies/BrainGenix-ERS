@@ -76,7 +76,7 @@ void Window_ImportProgressBar::Draw() {
         }
         LockViewStats_.unlock();
 
-        std::cout<<CurrentAssetNumber_<<"|"<<TotalAssetsToImport_<<std::endl;
+        std::cout<<TotalProgressBarFraction<<std::endl;
 
         // Draw Total Progres Bar
         ImGui::Text("Overall Progress");
