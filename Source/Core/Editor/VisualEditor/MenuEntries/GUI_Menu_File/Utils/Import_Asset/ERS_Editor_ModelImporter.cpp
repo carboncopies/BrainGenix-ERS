@@ -9,11 +9,11 @@
     Date Created: 2021-11-13
 */
 
-#include <ModelLoader.h>
+#include <ERS_Editor_ModelImporter.h>
 
 
 // Constructor
-ModelLoader::ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<TextureLoader> TexLoader, int MaxModelLoadingThreads) {
+ERS_CLASS_ModelImporter::ERS_CLASS_ModelImporter(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<TextureLoader> TexLoader, int MaxModelLoadingThreads) {
 
     // Create Local Pointer
     Logger_ = Logger;
@@ -31,15 +31,15 @@ ModelLoader::ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<Te
 }
 
 // Destructor
-ModelLoader::~ModelLoader() {
+ERS_CLASS_ModelImporter::~ERS_CLASS_ModelImporter() {
 
     // Log Destructor Call
-    Logger_->Log("ModelLoader Destructor Called", 6);
+    Logger_->Log("ERS_CLASS_ModelImporter Destructor Called", 6);
 
 }
 
 // Batch Load Models
-std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector<std::string> FilePaths, std::vector<bool> FlipTextures){
+std::map<std::string, ERS_OBJECT_MODEL> ERS_CLASS_ModelImporter::BatchLoadModels(std::vector<std::string> FilePaths, std::vector<bool> FlipTextures){
 
     // Init
     int TotalModelCount = FilePaths.size();
@@ -156,7 +156,7 @@ std::map<std::string, ERS_OBJECT_MODEL> ModelLoader::BatchLoadModels(std::vector
 
 
 // Async Load Model
-std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath, bool FlipTextures) {
+std::future<ERS_OBJECT_MODEL> ERS_CLASS_ModelImporter::AsyncLoadModel(const char* AssetPath, bool FlipTextures) {
 
     // Log Loading
     Logger_->Log(std::string(std::string("Creating Thread To Load Model At Path: ") + std::string(AssetPath)).c_str(), 3);
@@ -167,14 +167,14 @@ std::future<ERS_OBJECT_MODEL> ModelLoader::AsyncLoadModel(const char* AssetPath,
     LockActiveThreadCount_->unlock();
 
     // Create And Return Future Object
-    std::future<ERS_OBJECT_MODEL> FutureModel = std::async(&ModelLoader::LoadModelFromFile, this, std::string(AssetPath), FlipTextures, true);
+    std::future<ERS_OBJECT_MODEL> FutureModel = std::async(&ERS_CLASS_ModelImporter::LoadModelFromFile, this, std::string(AssetPath), FlipTextures, true);
     return FutureModel;
 }
 
 
 
 // Load Model From File
-ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(std::string AssetPath, bool FlipTextures, bool IsThread) {
+ERS_OBJECT_MODEL ERS_CLASS_ModelImporter::LoadModelFromFile(std::string AssetPath, bool FlipTextures, bool IsThread) {
 
     // Clear Model Instance
     ERS_OBJECT_MODEL Model;
@@ -228,7 +228,7 @@ ERS_OBJECT_MODEL ModelLoader::LoadModelFromFile(std::string AssetPath, bool Flip
 
 
 // Process Nodes
-void ModelLoader::ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory, bool IsThread) {
+void ERS_CLASS_ModelImporter::ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory, bool IsThread) {
 
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
@@ -245,7 +245,7 @@ void ModelLoader::ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiSce
 }
 
 // Process Mesh
-ERS_OBJECT_MESH ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory, bool IsThread) {
+ERS_OBJECT_MESH ERS_CLASS_ModelImporter::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory, bool IsThread) {
 
     // Create Data Holders
     std::vector<ERS_OBJECT_VERTEX> Vertices;
@@ -345,7 +345,7 @@ ERS_OBJECT_MESH ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, 
 }
 
 // Check Material Textures
-std::vector<ERS_OBJECT_TEXTURE_2D> ModelLoader::LoadMaterialTextures(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory, bool IsThread) {
+std::vector<ERS_OBJECT_TEXTURE_2D> ERS_CLASS_ModelImporter::LoadMaterialTextures(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory, bool IsThread) {
 
     std::vector<ERS_OBJECT_TEXTURE_2D> Textures;
     for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {

@@ -45,34 +45,21 @@
 #include <TextureLoader.h>
 #include <Model.h>
 
+#include <ERS_STRUCT_SystemUtils.h>
 
-// FIXME: Fix reloading of same textures
-// FIXME: Fix limitation of one thread
-// FIXME: Implement multithreaded image preloading?
+
 
 /**
- * @brief Class for loading models (fbx, gltx, etc.) based on the ASSIMP library
+ * @brief Class for importing models (fbx, gltx, etc.) based on the ASSIMP library
  * 
  */
-class ModelLoader {
+class ERS_CLASS_ModelImporter {
 
 
     private:
 
-        // Internal Model Instance For Processing
-        bool FlipTextures_; /**<Flip Textures For current Model Being Loaded.*/
 
-        // Logger
-        std::shared_ptr<LoggerClass> Logger_; /**<Pointer to Logging System.*/
-        std::shared_ptr<TextureLoader> TextureLoader_; /**<Pointer To Texture Loader Instance.*/
-
-
-        // Multithreading Vars
-        int MaxThreadCount_;
-        std::shared_ptr<std::mutex> LockActiveThreadCount_ = std::make_shared<std::mutex>();
-        int ActiveThreadCount_;
-
-
+        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_;
 
 
         /**
@@ -81,7 +68,7 @@ class ModelLoader {
          * @param Node 
          * @param Scene 
          */
-        void ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory, bool IsThread);
+        void ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory);
 
         /**
          * @brief Process Meshes From Model.
@@ -90,7 +77,7 @@ class ModelLoader {
          * @param Scene 
          * @return ERS_OBJECT_MESH 
          */
-        ERS_OBJECT_MESH ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory, bool IsThread);
+        ERS_OBJECT_MESH ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory);
 
         /**
          * @brief Load Textures From Model.
@@ -100,14 +87,13 @@ class ModelLoader {
          * @param TypeName 
          * @return std::vector<ERS_OBJECT_TEXTURE_2D> 
          */
-        std::vector<ERS_OBJECT_TEXTURE_2D> LoadMaterialTextures(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory, bool IsThread);
+        std::vector<ERS_OBJECT_TEXTURE_2D> LoadMaterialTextures(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory;
 
 
     public:
 
 
-        std::future<ERS_OBJECT_MODEL> AsyncLoadModel(const char* AssetPath, bool FlipTextures = true);
-        std::map<std::string, ERS_OBJECT_MODEL> BatchLoadModels(std::vector<std::string> FilePaths, std::vector<bool> FlipTextures);
+
 
         /**
          * @brief Construct a new Model Loader object
@@ -115,13 +101,13 @@ class ModelLoader {
          * @param Logger 
          * @param TextureLoader 
          */
-        ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<TextureLoader> TextureLoader, int MaxThreadCount = 999);
+        ERS_CLASS_ModelImporter(std::shared_ptr<ERS_STRUCT_SystemUtils>);
 
         /**
          * @brief Destroy the Model Loader object
          * 
          */
-        ~ModelLoader();
+        ~ERS_CLASS_ModelImporter();
 
 
         /**
@@ -131,7 +117,7 @@ class ModelLoader {
          * @param FlipTextures 
          * @return ERS_OBJECT_MODEL 
          */
-        ERS_OBJECT_MODEL LoadModelFromFile(std::string AssetPath, bool FlipTextures = false, bool IsThread = false);
+        ERS_OBJECT_MODEL LoadModelFromFile(std::string AssetPath, bool FlipTextures = false);
 
 
 
