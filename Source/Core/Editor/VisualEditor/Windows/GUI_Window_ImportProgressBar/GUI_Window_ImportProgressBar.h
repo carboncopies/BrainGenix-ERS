@@ -39,9 +39,12 @@ class Window_ImportProgressBar {
         int TotalAssetsToImport_ = 1; /**<Set Total Number Of Assets To Import*/
         std::mutex LockViewStats_; /**<Mutex To Prevent Values Being Changed During View/Write*/
 
+        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
+
+    public:
+
         bool Enabled_ = true; /**<Is Popup Enabled*/
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
 
     public:
 

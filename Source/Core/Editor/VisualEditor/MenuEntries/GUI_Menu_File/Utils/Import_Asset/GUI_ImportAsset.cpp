@@ -54,7 +54,7 @@ void GUI_ImportAsset::Draw() {
 
             // Add To Queue, Launch Import
             AssetImportBackend_->AddToImportQueue(FilePaths);
-            Window_ImportProgressBar_->
+            Window_ImportProgressBar_->Enabled_ = true;
 
         }
     // close
