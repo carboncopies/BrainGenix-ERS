@@ -52,7 +52,7 @@ void Window_SystemLog::Draw() {
 
 
             std::string LogText = SystemUtils_->Logger_->FullLogMessages_[i];
-            ImVec4 TextColor = ImVec4(ColorBlue, ColorGreen, ColorRed, 1.0f);
+            ImVec4 TextColor = ImVec4(ColorRed, ColorGreen, ColorBlue, 1.0f);
             ImGui::TextColored(TextColor, "%s", LogText.c_str());
 
         }
