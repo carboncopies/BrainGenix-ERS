@@ -36,7 +36,7 @@ Window_SystemLog::~Window_SystemLog() {
 // Draw Window
 void Window_SystemLog::Draw() {
 
-
+    ImGui::ShowDemoWindow();
     if (Enabled_) {
     ImGui::Begin("System Log", &Enabled_);
 
@@ -48,8 +48,8 @@ void Window_SystemLog::Draw() {
         for (int i = 0; i < SystemUtils_->Logger_->LogMessages_.size(); i++) {
 
             std::string LogText = SystemUtils_->Logger_->FullLogMessages_[i];
-
-            ImGui::Text("%s", LogText.c_str());
+            ImVec4 TextColor = ImVec4()
+            ImGui::TextColored(TextColor, "%s", LogText.c_str());
 
         }
 
