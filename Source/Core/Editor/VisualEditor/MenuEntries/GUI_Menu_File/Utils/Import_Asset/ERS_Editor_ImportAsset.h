@@ -81,7 +81,18 @@ class ERS_CLASS_ImportAsset {
          */
         long GetTotalSubitems();
 
+        /**
+         * @brief Get the Total Items To Import object
+         * 
+         * @return long 
+         */
         long GetTotalItemsToImport();
+
+        /**
+         * @brief Get the Total Items Imported object
+         * 
+         * @return long 
+         */
         long GetTotalItemsImported();
 
 
