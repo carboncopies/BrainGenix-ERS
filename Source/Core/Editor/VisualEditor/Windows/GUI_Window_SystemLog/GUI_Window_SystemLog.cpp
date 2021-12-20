@@ -47,7 +47,9 @@ void Window_SystemLog::Draw() {
 
         for (int i = 0; i < SystemUtils_->Logger_->LogMessages_.size(); i++) {
 
-            ImGui::Text(SystemUtils_->Logger_->LogMessages_[i].c_str());
+            const char* LogText = SystemUtils_->Logger_->LogMessages_[i].c_str();
+
+            ImGui::Text(LogText);
 
         }
 
