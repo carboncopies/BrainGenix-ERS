@@ -50,7 +50,8 @@ void Window_SystemLog::Draw() {
         // Autoscroll
         ImGui::Checkbox("Auto Scroll", &AutoScroll_);
         if (AutoScroll_) {
-            ImGui::SetScrollHereY(1.0f);
+            std::cout<<"Test\n";
+            ImGui::SetScrollY(1.0f);
         }
 
         // Clear Button
