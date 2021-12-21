@@ -28,6 +28,7 @@
 #include <ERS_STRUCT_IOData.h>
 #include <ERS_ModelWriter.h>
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_ModelLoader.h>
 
 #include <3DCursor.h>
 
@@ -55,6 +56,7 @@ class RendererManager {
         std::shared_ptr<TextureLoader> TextureLoader_; /**<Pointer to Texture Loader Instance*/
         std::shared_ptr<SceneManager> SceneManager_; /**<Pointer to Scene Manager Class Instance*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
+        std::unique_ptr<ERS_CLASS_ModelLoader> ModelLoader_; /**ModelLoader Class*/
         
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Copy Of Pointer Helper Struct*/
 
