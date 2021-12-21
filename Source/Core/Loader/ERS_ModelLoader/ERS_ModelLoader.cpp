@@ -43,7 +43,7 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> A
     std::unique_ptr<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>> ModelsCurrentlyLoading = std::make_unique<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>>(ActiveScene->ModelsLoading);
     for (int i = 0; i < ModelsCurrentlyLoading->size(); i++) {
         if ((*ModelsCurrentlyLoading)[i]->IsReadyForGPU) {
-            ProcessGPU((*ModelsCurrentlyLoading)[i])
+            ProcessGPU((*ModelsCurrentlyLoading)[i]);
         }
     }
 
@@ -73,11 +73,13 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
 
     // Read File
     Assimp::Importer Importer;
+    SystemUtils_->Logger_->Log(std::string(std::string("Loading Model With ID: ") + std::to_string(AssetID)).c_str(), 3);
 
+    std::shared_ptr<ERS_STRUCT_IOData> ModelData = std::make_shared<ERS_STRUCT_IOData>();
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, ModelData);
+    Importer.ReadFileFromMemory(ModelData->Data, ModelData->Size_B, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace, "gltf")
 
-    //Importer.ReadFileFromMemory()
-
-    const aiScene* Scene = Importer.ReadFile(AssetPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
+    //const aiScene* Scene = Importer.ReadFile(AssetPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
 
     // // Log Errors
     // if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
