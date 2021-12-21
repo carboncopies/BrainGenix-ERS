@@ -65,6 +65,9 @@ class ERS_CLASS_ModelLoader {
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Struct*/
 
 
+
+        void ProcessGPU(std::unique_ptr<ERS_OBJECT_MODEL> Model); /**<Process the GPU stuff for each model*/
+
         /**
          * @brief Function Used To Process Subnodes Of SceneFiles.
          * 

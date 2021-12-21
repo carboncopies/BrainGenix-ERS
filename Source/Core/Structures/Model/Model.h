@@ -40,6 +40,8 @@ struct ERS_OBJECT_MODEL {
 
     bool GammaCorrection = false;
     bool HasTexturesLoaded = false;
+    bool HasMeshLoaded = false;
+    bool IsReadyForGPU = false;
     bool FlipTextures = false;
 
     // Model Metadata
