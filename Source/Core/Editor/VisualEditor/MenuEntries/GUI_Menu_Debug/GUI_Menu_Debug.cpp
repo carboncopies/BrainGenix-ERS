@@ -48,7 +48,7 @@ void GUI_Menu_Debug::Draw() {
 
             // Debugging Tools Menu
             if (ImGui::MenuItem("Show ImGui Demo Window")) {
-                ShowImGuiDemoWindow_ = true;
+                ShowImGuiDemoWindow_ = !ShowImGuiDemoWindow_;
             }
 
 
@@ -58,7 +58,7 @@ void GUI_Menu_Debug::Draw() {
 
         // Show Demo Window If Enabled
         if (ShowImGuiDemoWindow_) {
-            ImGui::ShowDemoWindow();
+            ImGui::ShowDemoWindow(&ShowImGuiDemoWindow_);
         }
 
     }
