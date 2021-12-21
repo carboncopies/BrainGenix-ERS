@@ -80,16 +80,13 @@ void GUISystem::UpdateGUI() {
     // CheckUpdate Font
     FontManager_->CheckUpdateFont();
 
-
     // Get Window Width, Height
     float Width;
     float Height;
     glfwGetWindowContentScale(Window_, &Width, &Height);
 
-
     // Enable Docking
     ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-
 
     // Start the Dear ImGui frame
     ImGui_ImplOpenGL3_NewFrame();
@@ -104,11 +101,6 @@ void GUISystem::UpdateGUI() {
     ImGuizmo::BeginFrame();
 
 
-
-
-
-
-
     // Add Main Menu
     if (ImGui::BeginMainMenuBar()) {
 
@@ -119,11 +111,6 @@ void GUISystem::UpdateGUI() {
 
     ImGui::EndMainMenuBar();
     }
-
-
-
-
-
 
 
 }
