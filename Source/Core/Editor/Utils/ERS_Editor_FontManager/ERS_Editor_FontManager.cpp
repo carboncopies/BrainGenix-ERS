@@ -98,6 +98,7 @@ void ERS_CLASS_FontManager::UseFont(int FontIndex) {
 
     // Load, Apply Font
     ImGuiIO& Io = ImGui::GetIO();
+
     Io.Fonts->Clear();
     Io.Fonts->AddFontFromFileTTF(FontPath, FontSize_);
     Io.Fonts->Build();
