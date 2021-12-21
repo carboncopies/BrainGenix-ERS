@@ -110,6 +110,7 @@ target_link_libraries(${PROJECT_NAME}
   glad
   glfw
   TracyClient
+  MySQL_CONCPP
 
   # Internal Libs
   ConfigurationLoader
