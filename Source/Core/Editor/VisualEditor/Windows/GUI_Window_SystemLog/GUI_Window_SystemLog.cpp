@@ -42,21 +42,21 @@ void Window_SystemLog::Draw() {
         // Set Default Window Size
         ImGui::SetWindowSize(ImVec2(300,0), ImGuiCond_FirstUseEver);
 
+        
         // Add Control Buttons
+        
+
+        ImGui::SameLine();
         if (ImGui::Button("Clear")) {
             SystemUtils_->Logger_->LogColors_.erase(SystemUtils_->Logger_->LogColors_.begin(), SystemUtils_->Logger_->LogColors_.end());
             SystemUtils_->Logger_->LogMessages_ = std::vector<std::string>();
             SystemUtils_->Logger_->FullLogMessages_ = std::vector<std::string>();
 
-        }
-        ImGui::SameLine();
-        ImGui::Button("a button");
-        
-
+        }        
         ImGui::Separator();
 
-        ImGui::BeginChild("Log Text");
 
+        ImGui::BeginChild("Log Text");
         for (int i = 0; i < SystemUtils_->Logger_->LogMessages_.size(); i++) {
 
             float ColorRed = SystemUtils_->Logger_->LogColors_[i].Red / 255.0f;
@@ -69,7 +69,6 @@ void Window_SystemLog::Draw() {
             ImGui::TextColored(TextColor, "%s", LogText.c_str());
 
         }
-
         ImGui::EndChild();
 
 
