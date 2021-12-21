@@ -52,6 +52,7 @@ GUISystem::GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwi
     Menu_File_ = std::make_unique<GUI_Menu_File>(SystemUtils_, SceneManager_);
     Menu_View_ = std::make_unique<GUI_Menu_View>(SystemUtils_, ThemeManager_, FontManager_);
     Menu_Window_ = std::make_unique<GUI_Menu_Window>(SystemUtils_, Cursors3D_, SceneManager_);
+    Menu_Debug_ = std::make_unique<GUI_Menu_Debug>(SystemUtils_);
 
 
 
@@ -114,10 +115,7 @@ void GUISystem::UpdateGUI() {
         Menu_File_->Draw();
         Menu_View_->Draw();
         Menu_Window_->Draw();
-
-
-
-
+        Menu_Debug_->Draw();
 
     ImGui::EndMainMenuBar();
     }
