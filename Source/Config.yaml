@@ -10,7 +10,9 @@ RenderWidth: 800
 RenderHeight: 600
 EnableValidationLayers: True
 MaxFramesInFlight: 2
-EnableDebugLogging: True # To Be added Later <-- https://vulkan-tutorial.com/en/Drawing_a_triangle/Setup/Validation_layers
+
+# Debug Settings
+EnableEditorDebugMenu: True
 
 
 # Database Loading Settings #
