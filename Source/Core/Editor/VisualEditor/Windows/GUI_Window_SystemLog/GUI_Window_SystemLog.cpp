@@ -42,6 +42,13 @@ void Window_SystemLog::Draw() {
         // Set Default Window Size
         ImGui::SetWindowSize(ImVec2(300,0), ImGuiCond_FirstUseEver);
 
+        if (ImGui::Button("Clear")) {
+            SystemUtils_->Logger_->LogColors_.erase(SystemUtils_->Logger_->LogColors_.begin(), SystemUtils_->Logger_->LogColors_.end());
+            SystemUtils_->Logger_->LogMessages_ = std::vector<std::string>();
+            SystemUtils_->Logger_->FullLogMessages_ = std::vector<std::string>();
+            
+        }
+
         ImGui::BeginChild("Log Text");
 
         for (int i = 0; i < SystemUtils_->Logger_->LogMessages_.size(); i++) {
