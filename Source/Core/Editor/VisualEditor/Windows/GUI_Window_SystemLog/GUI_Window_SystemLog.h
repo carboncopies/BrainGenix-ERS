@@ -34,6 +34,7 @@ class Window_SystemLog {
 
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
         int MinLogLevel_ = 0; /**<Default Min Log Level*/
+        bool AutoScroll_ = true; /**<Autoscroll Log*/
 
     public:
 

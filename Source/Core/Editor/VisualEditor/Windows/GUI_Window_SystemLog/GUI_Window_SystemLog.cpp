@@ -43,8 +43,17 @@ void Window_SystemLog::Draw() {
         ImGui::SetWindowSize(ImVec2(300,0), ImGuiCond_FirstUseEver);
 
         
-        // Add Control Buttons
+        // Min Log Level Slider
         ImGui::SliderInt("Minimum Log Level", &MinLogLevel_, 0, 10);
+        ImGui::SameLine();
+
+        // Autoscroll
+        ImGui::Checkbox("Auto Scroll", &AutoScroll_);
+        if (AutoScroll_) {
+            ImGui::SetScrollHereY(1.0f);
+        }
+
+        // Clear Button
         ImGui::SameLine();
         if (ImGui::Button("Clear")) {
             SystemUtils_->Logger_->LogColors_.erase(SystemUtils_->Logger_->LogColors_.begin(), SystemUtils_->Logger_->LogColors_.end());
