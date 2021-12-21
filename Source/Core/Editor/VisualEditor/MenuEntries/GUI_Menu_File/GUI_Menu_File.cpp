@@ -46,6 +46,7 @@ void GUI_Menu_File::Draw() {
         if (ImGui::MenuItem("Import Model")) {
             ImportAsset_->OpenFileDialog();
         ImGui::Separator();
+        }
 
         // Save Options
         if (ImGui::MenuItem("Save Active Scene")) {
