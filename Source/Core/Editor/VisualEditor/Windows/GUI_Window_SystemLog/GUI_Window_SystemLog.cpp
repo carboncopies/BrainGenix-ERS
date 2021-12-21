@@ -49,23 +49,25 @@ void Window_SystemLog::Draw() {
 
         // Autoscroll
         ImGui::Checkbox("Lock To Bottom", &AutoScroll_);
+        ImGui::SameLine();
 
 
         // Clear Button
-        ImGui::SameLine();
         if (ImGui::Button("Clear")) {
-            SystemUtils_->Logger_->LogColors_.erase(SystemUtils_->Logger_->LogColors_.begin(), SystemUtils_->Logger_->LogColors_.end());
-            SystemUtils_->Logger_->LogMessages_ = std::vector<std::string>();
-            SystemUtils_->Logger_->FullLogMessages_ = std::vector<std::string>();
-            SystemUtils_->Logger_->LogLevels_ = std::vector<int>();
-            SystemUtils_->Logger_->LogTimes_ = std::vector<std::string>();
-
+            StartingLogIndex_ = SystemUtils_->Logger_->LogLevels_.size();
         }        
+        ImGui::SameLine();
+        
+        // Restore Button
+        if (ImGui::Button("Restore")) {
+            StartingLogIndex_ = 0;
+        }
         ImGui::Separator();
+
 
         // Draw Log Textbox
         ImGui::BeginChild("Log Text", ImVec2(0,0), true, ImGuiWindowFlags_HorizontalScrollbar);
-        for (int i = 0; i < SystemUtils_->Logger_->LogMessages_.size(); i++) {
+        for (int i = StartingLogIndex_; i < SystemUtils_->Logger_->LogMessages_.size(); i++) {
 
             // Check Log Level
             if (SystemUtils_->Logger_->LogLevels_[i] > MinLogLevel_) {
