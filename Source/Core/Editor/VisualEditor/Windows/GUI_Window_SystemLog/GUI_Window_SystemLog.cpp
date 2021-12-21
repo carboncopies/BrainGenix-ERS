@@ -57,7 +57,7 @@ void Window_SystemLog::Draw() {
         ImGui::Separator();
 
         // Draw Log Textbox
-        ImGui::BeginChild("Log Text");
+        ImGui::BeginChild("Log Text", ImVec2(0,0), true, ImGuiWindowFlags_HorizontalScrollbar);
         for (int i = 0; i < SystemUtils_->Logger_->LogMessages_.size(); i++) {
 
             // Check Log Level
