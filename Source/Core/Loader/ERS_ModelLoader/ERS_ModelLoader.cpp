@@ -42,8 +42,8 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> A
     // Check List Of Models Currently Loading
     std::unique_ptr<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>> ModelsCurrentlyLoading = std::make_unique<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>>(ActiveScene->ModelsLoading);
     for (int i = 0; i < ModelsCurrentlyLoading->size(); i++) {
-        if (ModelsCurrentlyLoading[i].IsReadyForGPU) {
-            ProcessGPU(ModelsCurrentlyLoading[i])
+        if ((*ModelsCurrentlyLoading)[i]->IsReadyForGPU) {
+            ProcessGPU((*ModelsCurrentlyLoading)[i])
         }
     }
 
@@ -67,21 +67,26 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     
 
     // Get Model 
-    std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
+    //std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
+
+
 
     // Read File
     Assimp::Importer Importer;
-    SystemUtils_->Logger_->Log(std::string(std::string("Loading Model At File Path: ") + std::string(AssetPath)).c_str(), 3);
+
+
+    //Importer.ReadFileFromMemory()
+
     const aiScene* Scene = Importer.ReadFile(AssetPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
 
-    // Log Errors
-    if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
-        SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
-        return Model;
-    }
+    // // Log Errors
+    // if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
+    //     SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
+    //     return;
+    // }
 
-    // Process Root Node Recursively
-    ProcessNode(&Model, Scene->mRootNode, Scene, ModelDirectory, IsThread);
+    // // Process Root Node Recursively
+    // ProcessNode(&(*Model), Scene->mRootNode, Scene, ModelDirectory, false);
 
 
 
