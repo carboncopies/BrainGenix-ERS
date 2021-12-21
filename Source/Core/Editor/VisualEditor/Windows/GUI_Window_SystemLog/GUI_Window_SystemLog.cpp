@@ -48,11 +48,8 @@ void Window_SystemLog::Draw() {
         ImGui::SameLine();
 
         // Autoscroll
-        ImGui::Checkbox("Auto Scroll", &AutoScroll_);
-        if (AutoScroll_) {
-            std::cout<<"Test\n";
-            ImGui::SetScrollY(1.0f);
-        }
+        ImGui::Checkbox("Lock To Bottom", &AutoScroll_);
+
 
         // Clear Button
         ImGui::SameLine();
@@ -84,6 +81,10 @@ void Window_SystemLog::Draw() {
 
             }
 
+        }
+        // Scroll To Bottom If Enabled
+        if (AutoScroll_) {
+            ImGui::SetScrollHereY(1.0f);
         }
         ImGui::EndChild();
 
