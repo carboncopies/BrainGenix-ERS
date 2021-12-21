@@ -31,6 +31,7 @@ target_link_libraries(ERS_ModelLoader
     Model
     Textures
     TextureLoader
+    ERS_STRUCT_SystemUtils
     )
 
 

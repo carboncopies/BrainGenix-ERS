@@ -45,6 +45,8 @@
 #include <TextureLoader.h>
 #include <Model.h>
 
+#include <ERS_STRUCT_SystemUtils.h>
+
 
 // FIXME: Fix reloading of same textures
 // FIXME: Fix limitation of one thread
@@ -59,20 +61,8 @@ class ERS_CLASS_ModelLoader {
 
     private:
 
-        // Internal Model Instance For Processing
-        bool FlipTextures_; /**<Flip Textures For current Model Being Loaded.*/
 
-        // Logger
-        std::shared_ptr<LoggerClass> Logger_; /**<Pointer to Logging System.*/
-        std::shared_ptr<TextureLoader> TextureLoader_; /**<Pointer To Texture Loader Instance.*/
-
-
-        // Multithreading Vars
-        int MaxThreadCount_;
-        std::shared_ptr<std::mutex> LockActiveThreadCount_ = std::make_shared<std::mutex>();
-        int ActiveThreadCount_;
-
-
+        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Struct*/
 
 
         /**
@@ -106,8 +96,6 @@ class ERS_CLASS_ModelLoader {
     public:
 
 
-        std::future<ERS_OBJECT_MODEL> AsyncLoadModel(const char* AssetPath, bool FlipTextures = true);
-        std::map<std::string, ERS_OBJECT_MODEL> BatchLoadModels(std::vector<std::string> FilePaths, std::vector<bool> FlipTextures);
 
         /**
          * @brief Construct a new Model Loader object
