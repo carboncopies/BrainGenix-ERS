@@ -9,7 +9,7 @@
     Date Created: 2021-11-13
 */
 
-#include <ERS_CLASS_ModelLoader.h>
+#include <ERS_ModelLoader.h>
 
 
 // Constructor
