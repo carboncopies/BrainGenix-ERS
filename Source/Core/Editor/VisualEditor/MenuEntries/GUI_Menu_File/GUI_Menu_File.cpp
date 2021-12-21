@@ -45,8 +45,6 @@ void GUI_Menu_File::Draw() {
         // Import Option
         if (ImGui::MenuItem("Import Model")) {
             ImportAsset_->OpenFileDialog();
-        }
-
         ImGui::Separator();
 
         // Save Options
