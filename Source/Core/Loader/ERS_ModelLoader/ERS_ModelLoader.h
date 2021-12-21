@@ -74,7 +74,7 @@ class ERS_CLASS_ModelLoader {
          * @param Node 
          * @param Scene 
          */
-        void ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory);
+        void ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory, bool IsThread);
 
         /**
          * @brief Process Meshes From Model.
@@ -83,7 +83,7 @@ class ERS_CLASS_ModelLoader {
          * @param Scene 
          * @return ERS_OBJECT_MESH 
          */
-        ERS_OBJECT_MESH ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory);
+        ERS_OBJECT_MESH ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory, bool IsThread);
 
         /**
          * @brief Load Textures From Model.
@@ -93,7 +93,7 @@ class ERS_CLASS_ModelLoader {
          * @param TypeName 
          * @return std::vector<ERS_OBJECT_TEXTURE_2D> 
          */
-        std::vector<ERS_OBJECT_TEXTURE_2D> LoadMaterialTextures(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory);
+        std::vector<ERS_OBJECT_TEXTURE_2D> LoadMaterialTextures(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory, bool IsThread);
 
 
     public:
@@ -122,7 +122,7 @@ class ERS_CLASS_ModelLoader {
          * @param FlipTextures 
          * @return ERS_OBJECT_MODEL 
          */
-        void LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool FlipTextures = false, bool IsThread = false);
+        void LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool FlipTextures = false);
 
 
         /**
