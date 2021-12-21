@@ -54,35 +54,38 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
 }
 
 
-// // Load Model From File
-// void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool FlipTextures, bool IsThread) {
 
-//     // Clear Model Instance
-//     Model->FlipTextures = FlipTextures;
 
-//     std::map<std::string, ERS_OBJECT_TEXTURE_2D> PreloadedTextures_; // Stores Relative Path Of Texture As Key And Textures?
+
+// Load Model From File
+void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool FlipTextures) {
+
+    // Clear Model Instance
+    Model->FlipTextures = FlipTextures;
+
+    std::map<std::string, ERS_OBJECT_TEXTURE_2D> PreloadedTextures_; // Stores Relative Path Of Texture As Key And Textures?
     
 
-//     // // Get Model 
-//     // std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
+    // // Get Model 
+    // std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
 
-//     // // Read File
-//     // Assimp::Importer Importer;
-//     // SystemUtils_->Logger_->Log(std::string(std::string("Loading Model At File Path: ") + std::string(AssetPath)).c_str(), 3);
-//     // const aiScene* Scene = Importer.ReadFile(AssetPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
+    // // Read File
+    // Assimp::Importer Importer;
+    // SystemUtils_->Logger_->Log(std::string(std::string("Loading Model At File Path: ") + std::string(AssetPath)).c_str(), 3);
+    // const aiScene* Scene = Importer.ReadFile(AssetPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
 
-//     // // Log Errors
-//     // if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
-//     //     SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
-//     //     return Model;
-//     // }
+    // // Log Errors
+    // if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
+    //     SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
+    //     return Model;
+    // }
 
-//     // // Process Root Node Recursively
-//     // ProcessNode(&Model, Scene->mRootNode, Scene, ModelDirectory, IsThread);
+    // // Process Root Node Recursively
+    // ProcessNode(&Model, Scene->mRootNode, Scene, ModelDirectory, IsThread);
 
 
 
-// }
+}
 
 
 
