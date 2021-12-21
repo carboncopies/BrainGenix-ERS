@@ -45,7 +45,7 @@ ERS_CLASS_ImportAsset::~ERS_CLASS_ImportAsset() {
     ImportThread_.join();
 
     // Unlock Mutex
-    SystemUtils_->Logger_->Log("Unlocking Mutexes", 5);
+    SystemUtils_->Logger_->Log("Unlocking Asset Import Mutexes", 5);
     BlockThread_.unlock();
     LockAssetImportQueue_.unlock();
 
