@@ -107,6 +107,7 @@ target_link_libraries(${PROJECT_NAME}
   yaml-cpp
   glad
   glfw
+  TracyClient
 
   # Internal Libs
   ConfigurationLoader

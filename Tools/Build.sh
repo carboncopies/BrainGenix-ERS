@@ -19,7 +19,6 @@ echo "Building BrainGenix-ERS"
 cmake --build . --target BrainGenix-ERS
 
 
-
 # Run Program
 echo "Running Program"
 cd ../Binaries
