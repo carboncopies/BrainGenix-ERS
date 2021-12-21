@@ -43,10 +43,6 @@ void Window_SystemLog::Draw() {
         ImGui::SetWindowSize(ImVec2(300,0), ImGuiCond_FirstUseEver);
 
         
-        // Min Log Level Slider
-        ImGui::SliderInt("Minimum Log Level", &MinLogLevel_, 0, 10);
-        ImGui::SameLine();
-
         // Autoscroll
         ImGui::Checkbox("Lock To Bottom", &AutoScroll_);
         ImGui::SameLine();
@@ -57,11 +53,16 @@ void Window_SystemLog::Draw() {
             StartingLogIndex_ = SystemUtils_->Logger_->LogLevels_.size();
         }        
         ImGui::SameLine();
-        
+
         // Restore Button
         if (ImGui::Button("Restore")) {
             StartingLogIndex_ = 0;
         }
+
+        // Min Log Level Slider
+        ImGui::SliderInt("Minimum Log Level", &MinLogLevel_, 0, 10);
+        ImGui::SameLine();
+
         ImGui::Separator();
 
 
