@@ -88,15 +88,17 @@ disable_target_warnings(FreeImage)
 add_subdirectory(${LIB_DIR}/assimp)
 disable_target_warnings(assimp)
 
-
 # Add Backward Library (Header Only)
 add_subdirectory(${LIB_DIR}/backward)
-
 
 # Add Tracy Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/tracy)
 include_directories(${LIB_DIR}/tracy)
 disable_target_warnings(TracyClient)
+
+# Add MySQL Connector Library (Not Header Only)
+add_subdirectory(${LIB_DIR}/mysql-connector)
+
 
 
 # Add Main.cpp
