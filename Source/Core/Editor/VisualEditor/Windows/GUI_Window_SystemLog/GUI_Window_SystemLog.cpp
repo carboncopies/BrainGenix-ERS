@@ -58,10 +58,10 @@ void Window_SystemLog::Draw() {
         if (ImGui::Button("Restore")) {
             StartingLogIndex_ = 0;
         }
+        ImGui::SameLine();
 
         // Min Log Level Slider
         ImGui::SliderInt("Minimum Log Level", &MinLogLevel_, 0, 10);
-        ImGui::SameLine();
 
         ImGui::Separator();
 
