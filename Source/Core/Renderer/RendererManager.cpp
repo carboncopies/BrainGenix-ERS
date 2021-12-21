@@ -64,6 +64,9 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     // Setup Loading Subsystem
     ModelLoader_ = std::make_unique<ERS_CLASS_ModelLoader>(SystemUtils_);
 
+    std::shared_ptr<ERS_OBJECT_MODEL> Test2 = std::make_shared<ERS_OBJECT_MODEL>();
+    ModelLoader_->LoadModel(1, Test2);
+
     // Make Viewport
     VisualRenderer_->CreateViewport(std::make_shared<ERS_OBJECT_SHADER>(Shader_), "Viewport", Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
     //VisualRenderer_->CreateViewport(&Shader_, "Viewport 2", Window_, &Camera_);
@@ -79,9 +82,6 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     SceneManager_->AddScene(SLoader.ProcessScene(TestScene3, "Assets/Scene3.yaml", false));
 
 
-    std::shared_ptr<ERS_STRUCT_IOData> Test = std::make_shared<ERS_STRUCT_IOData>();
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(0, Test);
-    SystemUtils_->ERS_IOSubsystem_->WriteAsset(1, Test);
 
 
 }
