@@ -33,6 +33,7 @@ target_link_libraries(Renderer
     3DCursor
 
     ERS_ModelWriter
+    ERS_ModelLoader
     ERS_STRUCT_IOData
     ERS_STRUCT_SystemUtils
     )

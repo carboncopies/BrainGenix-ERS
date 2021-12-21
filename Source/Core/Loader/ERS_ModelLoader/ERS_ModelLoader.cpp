@@ -40,8 +40,8 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> ActiveScene) {
 
     // Check List Of Models Currently Loading
-    std::unique_ptr<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>> ModelsCurrentlyLoading = ActiveScene->ModelsLoading;
-    for (int i = 0; i < ModelsCurrentlyLoading.size(); i++) {
+    std::unique_ptr<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>> ModelsCurrentlyLoading = std::make_unique<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>>(ActiveScene->ModelsLoading);
+    for (int i = 0; i < ModelsCurrentlyLoading->size(); i++) {
 
     }
 
@@ -57,7 +57,7 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> A
 //     std::map<std::string, ERS_OBJECT_TEXTURE_2D> PreloadedTextures_; // Stores Relative Path Of Texture As Key And Textures?
     
 
-//     // // Get Model Path
+//     // // Get Model 
 //     // std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
 
 //     // // Read File
@@ -227,13 +227,13 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_CLASS_ModelLoader::LoadMaterialTextures(E
         // If Texture Not Already Loaded
         if (!Skip) {
 
-            ERS_OBJECT_TEXTURE_2D Texture = TextureLoader_->LoadTexture(FilePath.c_str(), FlipTextures_, !IsThread);
+            // ERS_OBJECT_TEXTURE_2D Texture = TextureLoader_->LoadTexture(FilePath.c_str(), FlipTextures_, !IsThread);
 
-            // Set Texture Type
-            Texture.Type = TypeName;
+            // // Set Texture Type
+            // Texture.Type = TypeName;
 
-            Textures.push_back(Texture);
-            Model->Textures_Loaded.push_back(Texture);
+            // Textures.push_back(Texture);
+            // Model->Textures_Loaded.push_back(Texture);
 
 
         }
