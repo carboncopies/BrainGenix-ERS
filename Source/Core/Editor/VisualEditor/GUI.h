@@ -75,6 +75,7 @@ class GUISystem {
         std::unique_ptr<GUI_Menu_File> Menu_File_; /**<Editor Menu Entry*/
         std::unique_ptr<GUI_Menu_View> Menu_View_; /**<Editor Menu Entry*/
         std::unique_ptr<GUI_Menu_Window> Menu_Window_; /**<Editor Menu Entry*/
+        std::unique_ptr<GUI_Menu_Debug> Menu_Debug_; /**<Editor Menu Entry*/
 
 
 
