@@ -40,6 +40,7 @@ class GUI_Menu_Debug {
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
 
         bool ShowImGuiDemoWindow_ = false; /**<Show/hide ImGui DemoWindow*/
+        bool DebugMenuEnabled_ = false; /**Enable/Disable Debug Menu*/
 
 
     // Member Functions

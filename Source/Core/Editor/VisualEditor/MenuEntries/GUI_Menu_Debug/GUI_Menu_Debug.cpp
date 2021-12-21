@@ -13,7 +13,7 @@
 
 
 // Constructor
-GUI_Menu_Debug::GUI_Menu_Debug(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager) {
+GUI_Menu_Debug::GUI_Menu_Debug(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
     // Copy In Pointer Struct
     SystemUtils_ = SystemUtils;
@@ -21,6 +21,9 @@ GUI_Menu_Debug::GUI_Menu_Debug(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUti
     // Log Initialization
     SystemUtils_->Logger_->Log("Editor Setting Up Debug Menu", 4);
 
+    // Read System Config For Debug State
+    SystemUtils_->Logger_->Log("Reading Configuration File For 'ShowEditorDebugMenu' Parameter", 1);
+    DebugMenuEnabled_ = (*SystemUtils_->LocalSystemConfiguration_)["ShowEditorDebugMenu"].as<bool>();
 
 }
 
@@ -37,16 +40,28 @@ GUI_Menu_Debug::~GUI_Menu_Debug() {
 // Draw Function
 void GUI_Menu_Debug::Draw() {
 
-    // Debug Menu
-    if (ImGui::BeginMenu("Debug")) {
+    // If Enabled
+    if (DebugMenuEnabled_) {
 
-        // Debugging Tools Menu
-        ImGui::CheckBox("Show ImGui Demo Window", &ShowImGuiDemoWindow_);
+        // Debug Menu
+        if (ImGui::BeginMenu("Debug")) {
+
+            // Debugging Tools Menu
+            if (ImGui::MenuItem("Show ImGui Demo Window")) {
+                ShowImGuiDemoWindow_ = true;
+            }
 
 
-    ImGui::EndMenu();
+        ImGui::EndMenu();
+        }
+
+
+        // Show Demo Window If Enabled
+        if (ShowImGuiDemoWindow_) {
+            ImGui::ShowDemoWindow();
+        }
+
     }
-
 
 
 }
