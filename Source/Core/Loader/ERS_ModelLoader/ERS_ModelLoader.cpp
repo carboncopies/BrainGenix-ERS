@@ -74,14 +74,11 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, ModelData);
     const aiScene* Scene = Importer.ReadFileFromMemory(static_cast<const void*>(ModelData->Data.get()), ModelData->Size_B, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace, "gltf");
 
-
-    //const aiScene* Scene = Importer.ReadFile(AssetPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
-
-    // // Log Errors
-    // if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
-    //     SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
-    //     return;
-    // }
+    // Log Errors
+    if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
+        SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
+        return;
+    }
 
     // // Process Root Node Recursively
     // ProcessNode(&(*Model), Scene->mRootNode, Scene, ModelDirectory, false);
