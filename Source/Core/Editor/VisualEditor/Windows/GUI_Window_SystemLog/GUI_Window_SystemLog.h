@@ -33,6 +33,7 @@ class Window_SystemLog {
     private:
 
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
+        int MinLogLevel_ = 0; /**<Default Min Log Level*/
 
     public:
 

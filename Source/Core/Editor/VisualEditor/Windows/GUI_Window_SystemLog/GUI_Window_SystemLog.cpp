@@ -46,7 +46,7 @@ void Window_SystemLog::Draw() {
 
         
         // Add Control Buttons
-
+        ImGui::SliderInt("Minimum Log Level", &MinLogLevel_, 0, 10);
         ImGui::SameLine();
         if (ImGui::Button("Clear")) {
             SystemUtils_->Logger_->LogColors_.erase(SystemUtils_->Logger_->LogColors_.begin(), SystemUtils_->Logger_->LogColors_.end());
@@ -59,6 +59,8 @@ void Window_SystemLog::Draw() {
 
         ImGui::BeginChild("Log Text");
         for (int i = 0; i < SystemUtils_->Logger_->LogMessages_.size(); i++) {
+
+            if (MinimumLo)
 
             float ColorRed = SystemUtils_->Logger_->LogColors_[i].Red / 255.0f;
             float ColorGreen = SystemUtils_->Logger_->LogColors_[i].Green / 255.0f;
