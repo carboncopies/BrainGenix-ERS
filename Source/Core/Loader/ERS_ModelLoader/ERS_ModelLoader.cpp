@@ -40,7 +40,7 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> ActiveScene) {
 
     // Check List Of Models Currently Loading
-    std::unique_ptr<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>> ModelsCurrentlyLoading = std::make_unique<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>>(ActiveScene->ModelsLoading);
+    std::shared_ptr<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>> ModelsCurrentlyLoading = std::make_shared<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>>(ActiveScene->ModelsLoading);
     for (int i = 0; i < ModelsCurrentlyLoading->size(); i++) {
 
     }
