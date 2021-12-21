@@ -43,13 +43,13 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> A
     std::unique_ptr<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>> ModelsCurrentlyLoading = std::make_unique<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>>(ActiveScene->ModelsLoading);
     for (int i = 0; i < ModelsCurrentlyLoading->size(); i++) {
         if (ModelsCurrentlyLoading[i].IsReadyForGPU) {
-
+            ProcessGPU(ModelsCurrentlyLoading[i])
         }
     }
 
 }
 
-void ERS_CLASS_ModelLoader::ProcessGPU(std::unique_ptr<ERS_OBJECT_MODEL> Model) {
+void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) {
 
 }
 
