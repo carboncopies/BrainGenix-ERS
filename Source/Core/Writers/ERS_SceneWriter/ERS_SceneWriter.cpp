@@ -57,18 +57,21 @@ std::string SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
 
     // Begin Writing
     Output << YAML::BeginMap;
-
+    std::cout<<"1\n";
     // Write Metadata
     Output << YAML::Key << "SceneName" << YAML::Value << InputScene.SceneName;
     Output << YAML::Key << "SceneFormatVersion" << YAML::Value << InputScene.SceneFormatVersion;
+    std::cout<<"2\n";
 
     // Write SceneData
     Output << YAML::Key << "SceneData";
     Output << YAML::Key << YAML::BeginMap;
+    std::cout<<"3\n";
 
     long AssetIndex = 0;
 
     while (AssetIndex < InputScene.Models.size()) {
+    std::cout<<"4\n";
 
         // Begin Asset Tag
         Output << YAML::Key << AssetIndex;
@@ -94,6 +97,7 @@ std::string SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
 
         // Write Asset Texture Data
         Output << YAML::Key << "FlipTextures" << YAML::Value << InputScene.Models[AssetIndex].FlipTextures;
+    std::cout<<"5\n";
 
         
         // End Map
