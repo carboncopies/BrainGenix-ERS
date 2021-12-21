@@ -44,11 +44,6 @@ ERS_CLASS_ImportAsset::~ERS_CLASS_ImportAsset() {
     SystemUtils_->Logger_->Log("Joining Asset Import Thread", 3);
     ImportThread_.join();
 
-    // Unlock Mutex
-    SystemUtils_->Logger_->Log("Unlocking Asset Import Mutexes", 5);
-    BlockThread_.unlock();
-    LockAssetImportQueue_.unlock();
-
 }
 
 // Item Import Thread
