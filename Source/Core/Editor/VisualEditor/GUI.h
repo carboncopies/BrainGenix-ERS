@@ -42,6 +42,7 @@
 #include <GUI_Menu_File.h>
 #include <GUI_Menu_View.h>
 #include <GUI_Menu_Window.h>
+#include <GUI_Menu_Debug.h>
 
 
 
