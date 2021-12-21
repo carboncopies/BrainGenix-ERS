@@ -47,57 +47,53 @@ void SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene, const char* ScenePat
 }
 
 // SceneWriter Process Scene Function
-std::string SceneWriter::ProcessScene(ERS_OBJECT_SCENE InputScene) {
+std::string SceneWriter::ProcessScene(std::unique_ptr<ERS_OBJECT_SCENE> InputScene) {
 
     // Log Scene Write
-    Logger_->Log(std::string(std::string("Serializing Scene '") + InputScene.SceneName + std::string("'")).c_str(), 4);
+    Logger_->Log(std::string(std::string("Serializing Scene '") + InputScene->SceneName + std::string("'")).c_str(), 4);
 
     // Create Emitter
     YAML::Emitter Output;
 
     // Begin Writing
     Output << YAML::BeginMap;
-    std::cout<<"1\n";
+
     // Write Metadata
-    Output << YAML::Key << "SceneName" << YAML::Value << InputScene.SceneName;
-    Output << YAML::Key << "SceneFormatVersion" << YAML::Value << InputScene.SceneFormatVersion;
-    std::cout<<"2\n";
+    Output << YAML::Key << "SceneName" << YAML::Value << InputScene->SceneName;
+    Output << YAML::Key << "SceneFormatVersion" << YAML::Value << InputScene->SceneFormatVersion;
 
     // Write SceneData
     Output << YAML::Key << "SceneData";
     Output << YAML::Key << YAML::BeginMap;
-    std::cout<<"3\n";
 
     long AssetIndex = 0;
 
-    while (AssetIndex < InputScene.Models.size()) {
-    std::cout<<"4\n";
+    while (AssetIndex < InputScene->Models.size()) {
 
         // Begin Asset Tag
         Output << YAML::Key << AssetIndex;
         Output << YAML::BeginMap;
 
         // Write Asset Metadata
-        Output << YAML::Key << "AssetName" << YAML::Value << InputScene.Models[AssetIndex].Name;
+        Output << YAML::Key << "AssetName" << YAML::Value << InputScene->Models[AssetIndex].Name;
         Output << YAML::Key << "AssetType" << YAML::Value << "Model";
-        Output << YAML::Key << "AssetPath" << YAML::Value << InputScene.Models[AssetIndex].AssetPath_;
+        Output << YAML::Key << "AssetPath" << YAML::Value << InputScene->Models[AssetIndex].AssetPath_;
 
         // Write Asset Position Data
-        Output << YAML::Key << "AssetPositionX" << YAML::Value << InputScene.Models[AssetIndex].ModelPosition[0];
-        Output << YAML::Key << "AssetPositionY" << YAML::Value << InputScene.Models[AssetIndex].ModelPosition[1];
-        Output << YAML::Key << "AssetPositionZ" << YAML::Value << InputScene.Models[AssetIndex].ModelPosition[2];
+        Output << YAML::Key << "AssetPositionX" << YAML::Value << InputScene->Models[AssetIndex].ModelPosition[0];
+        Output << YAML::Key << "AssetPositionY" << YAML::Value << InputScene->Models[AssetIndex].ModelPosition[1];
+        Output << YAML::Key << "AssetPositionZ" << YAML::Value << InputScene->Models[AssetIndex].ModelPosition[2];
 
-        Output << YAML::Key << "AssetRotationX" << YAML::Value << InputScene.Models[AssetIndex].ModelRotation[0];
-        Output << YAML::Key << "AssetRotationY" << YAML::Value << InputScene.Models[AssetIndex].ModelRotation[1];
-        Output << YAML::Key << "AssetRotationZ" << YAML::Value << InputScene.Models[AssetIndex].ModelRotation[2];
+        Output << YAML::Key << "AssetRotationX" << YAML::Value << InputScene->Models[AssetIndex].ModelRotation[0];
+        Output << YAML::Key << "AssetRotationY" << YAML::Value << InputScene->Models[AssetIndex].ModelRotation[1];
+        Output << YAML::Key << "AssetRotationZ" << YAML::Value << InputScene->Models[AssetIndex].ModelRotation[2];
 
-        Output << YAML::Key << "AssetScaleX" << YAML::Value << InputScene.Models[AssetIndex].ModelScale[0];
-        Output << YAML::Key << "AssetScaleY" << YAML::Value << InputScene.Models[AssetIndex].ModelScale[1];
-        Output << YAML::Key << "AssetScaleZ" << YAML::Value << InputScene.Models[AssetIndex].ModelScale[2];
+        Output << YAML::Key << "AssetScaleX" << YAML::Value << InputScene->Models[AssetIndex].ModelScale[0];
+        Output << YAML::Key << "AssetScaleY" << YAML::Value << InputScene->Models[AssetIndex].ModelScale[1];
+        Output << YAML::Key << "AssetScaleZ" << YAML::Value << InputScene->Models[AssetIndex].ModelScale[2];
 
         // Write Asset Texture Data
-        Output << YAML::Key << "FlipTextures" << YAML::Value << InputScene.Models[AssetIndex].FlipTextures;
-    std::cout<<"5\n";
+        Output << YAML::Key << "FlipTextures" << YAML::Value << InputScene->Models[AssetIndex].FlipTextures;
 
         
         // End Map
