@@ -52,24 +52,29 @@ void Window_SystemLog::Draw() {
             SystemUtils_->Logger_->LogColors_.erase(SystemUtils_->Logger_->LogColors_.begin(), SystemUtils_->Logger_->LogColors_.end());
             SystemUtils_->Logger_->LogMessages_ = std::vector<std::string>();
             SystemUtils_->Logger_->FullLogMessages_ = std::vector<std::string>();
+            SystemUtils_->Logger_->LogLevels_ = std::vector<int>();
+            SystemUtils_->Logger_->LogTimes_ = std::vector<std::string>();
 
         }        
         ImGui::Separator();
 
-
+        // Draw Log Textbox
         ImGui::BeginChild("Log Text");
         for (int i = 0; i < SystemUtils_->Logger_->LogMessages_.size(); i++) {
 
-            if (MinimumLo)
+            // Check Log Level
+            if (SystemUtils_->Logger_->LogLevels_[i] > MinLogLevel_) {
 
-            float ColorRed = SystemUtils_->Logger_->LogColors_[i].Red / 255.0f;
-            float ColorGreen = SystemUtils_->Logger_->LogColors_[i].Green / 255.0f;
-            float ColorBlue = SystemUtils_->Logger_->LogColors_[i].Blue / 255.0f;
+                float ColorRed = SystemUtils_->Logger_->LogColors_[i].Red / 255.0f;
+                float ColorGreen = SystemUtils_->Logger_->LogColors_[i].Green / 255.0f;
+                float ColorBlue = SystemUtils_->Logger_->LogColors_[i].Blue / 255.0f;
 
 
-            std::string LogText = SystemUtils_->Logger_->FullLogMessages_[i];
-            ImVec4 TextColor = ImVec4(ColorRed, ColorGreen, ColorBlue, 1.0f);
-            ImGui::TextColored(TextColor, "%s", LogText.c_str());
+                std::string LogText = SystemUtils_->Logger_->FullLogMessages_[i];
+                ImVec4 TextColor = ImVec4(ColorRed, ColorGreen, ColorBlue, 1.0f);
+                ImGui::TextColored(TextColor, "%s", LogText.c_str());
+
+            }
 
         }
         ImGui::EndChild();
