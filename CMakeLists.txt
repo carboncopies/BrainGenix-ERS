@@ -99,7 +99,7 @@ disable_target_warnings(TracyClient)
 
 
 # Add Main.cpp
-add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp ${BACKWARD_ENABLE})
+add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp ${LIB_DIR}/tracy/TracyClient.cpp ${LIB_DIR}/tracy/Tracy.hpp ${BACKWARD_ENABLE})
 target_link_libraries(${PROJECT_NAME}
 
   # Third Party Libs
