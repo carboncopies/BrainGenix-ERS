@@ -36,6 +36,8 @@ Window_SystemLog::~Window_SystemLog() {
 // Draw Window
 void Window_SystemLog::Draw() {
 
+    ImGui::ShowDemoWindow();
+
     if (Enabled_) {
     ImGui::Begin("System Log", &Enabled_);
 
@@ -44,7 +46,6 @@ void Window_SystemLog::Draw() {
 
         
         // Add Control Buttons
-        
 
         ImGui::SameLine();
         if (ImGui::Button("Clear")) {
