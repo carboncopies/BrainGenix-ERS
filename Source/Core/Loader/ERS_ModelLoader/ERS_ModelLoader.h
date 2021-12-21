@@ -103,7 +103,7 @@ class ERS_CLASS_ModelLoader {
          * @param Logger 
          * @param TextureLoader 
          */
-        ERS_CLASS_ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<TextureLoader> TextureLoader, int MaxThreadCount = 999);
+        ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, int MaxThreadCount = 999);
 
         /**
          * @brief Destroy the Model Loader object
@@ -119,9 +119,15 @@ class ERS_CLASS_ModelLoader {
          * @param FlipTextures 
          * @return ERS_OBJECT_MODEL 
          */
-        ERS_OBJECT_MODEL LoadModelFromFile(std::string AssetPath, bool FlipTextures = false, bool IsThread = false);
+        void LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool FlipTextures = false, bool IsThread = false);
 
 
+        /**
+         * @brief Process models in scene, perform opengl loading operations on models as needed - opengl cannot be done in another thread.
+         * 
+         * @param ActiveScene 
+         */
+        void ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> ActiveScene);
 
 
 

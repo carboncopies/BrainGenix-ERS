@@ -13,20 +13,17 @@
 
 
 // Constructor
-ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<TextureLoader> TexLoader, int MaxModelLoadingThreads) {
+ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, int MaxModelLoadingThreads) {
 
     // Create Local Pointer
-    Logger_ = Logger;
-    TextureLoader_ = TexLoader;
+    SystemUtils_ = SystemUtils;
 
     // Log Initialization
-    Logger_->Log("Initializing Model Loader", 5);
-    ActiveThreadCount_ = 0;
+    SystemUtils_->Logger_->Log("Initializing Model Loader", 5);
 
 
     // Set Max Threads
-    Logger_->Log(std::string(std::string("Setting Maximum Concurrent Model Loading Threads To: ") + std::to_string(MaxModelLoadingThreads)).c_str(), 4);
-    MaxThreadCount_ = MaxModelLoadingThreads;
+    SystemUtils_->Logger_->Log(std::string(std::string("Setting Maximum Concurrent Model Loading Threads To: ") + std::to_string(MaxModelLoadingThreads)).c_str(), 4);
 
 }
 
@@ -34,196 +31,52 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(std::shared_ptr<LoggerClass> Logger
 ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 
     // Log Destructor Call
-    Logger_->Log("ERS_CLASS_ModelLoader Destructor Called", 6);
+    SystemUtils_->Logger_->Log("ERS_CLASS_ModelLoader Destructor Called", 6);
 
 }
 
-// Batch Load Models
-std::map<std::string, ERS_OBJECT_MODEL> ERS_CLASS_ModelLoader::BatchLoadModels(std::vector<std::string> FilePaths, std::vector<bool> FlipTextures){
 
-    // Init
-    int TotalModelCount = FilePaths.size();
+// Updates The Current Scene, Loads In Models
+void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> ActiveScene) {
 
-    // Log Batch Load Call
-    Logger_->Log(std::string(std::string("Multithreaded Model Loader BatchLoad Called With ") + std::to_string(TotalModelCount) + std::string(" Models")).c_str(), 4);
-
-    // Vector Of Future Objects
-    std::vector<std::future<ERS_OBJECT_MODEL>> Models;
-
-    
-    // Load While Respecting Active Thread Count
-    int CurrentModelIndex = 0;
-    while (CurrentModelIndex != TotalModelCount) {
-        
-        // Lock And Check Active Thread Count
-        LockActiveThreadCount_->lock();
-        if (ActiveThreadCount_ < MaxThreadCount_) {
-            LockActiveThreadCount_->unlock();
-
-            // Async Load Model
-            std::string ModelAssetPath = FilePaths[CurrentModelIndex];
-            bool FlipModelTextures = FlipTextures[CurrentModelIndex];
-            Models.push_back(AsyncLoadModel(ModelAssetPath.c_str(), FlipModelTextures)); // Automatically Updates Active Thread Count
-
-            CurrentModelIndex++;
-
-        } else {
-            LockActiveThreadCount_->unlock();
-        }
+    // Check List Of Models Currently Loading
+    std::unique_ptr<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>> ModelsCurrentlyLoading = ActiveScene->ModelsLoading;
+    for (int i = 0; i < ModelsCurrentlyLoading.size(); i++) {
 
     }
 
-    // Process Models
-    std::map<std::string, ERS_OBJECT_TEXTURE_2D> ProcessedTextures;
-    std::vector<ERS_OBJECT_MODEL> ProcessedModels;
-
-    for (int i = 0; i < TotalModelCount; i++) {
-
-        ERS_OBJECT_MODEL CurrentModel = Models[i].get();
-        
-        // Process Meshes
-        for (int MeshIndex = 0; MeshIndex < CurrentModel.Meshes.size(); MeshIndex++) {
-
-            // Process Mesh Textures
-            for (int TextureIndex = 0; TextureIndex < CurrentModel.Meshes[MeshIndex].Textures.size(); TextureIndex++) {
-
-                // Verify Images Are Loaded
-                if (CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].HasImageData) {
-
-                    // Get Metadata
-                    float Channels = CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].Channels;
-                    float Width = CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].Width;
-                    float Height = CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].Height;
-
-                    // Generate Texture
-                    glGenTextures(1, &CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ID);
-                    glBindTexture(GL_TEXTURE_2D, CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ID);
-
-                    // Set Texture Properties
-                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
-                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-                    // Generate Texture Map
-                    if (Channels == 4) {
-                        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, FreeImage_GetBits(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData));
-                    } else {
-                        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, FreeImage_GetBits(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData));
-                    }
-                    glGenerateMipmap(GL_TEXTURE_2D);
-
-                    // Free Image Data
-                    CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].HasImageData = false;
-                    FreeImage_Unload(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].ImageData);
-
-                } else {
-
-                    // Log That An Error Happened During Image Loading, Skip
-                    Logger_->Log(std::string(std::string("Images Failed To Load, Cannot Process Texture '") + std::string(CurrentModel.Meshes[MeshIndex].Textures[TextureIndex].Path) + std::string("'")).c_str(), 9);
-                }
-
-            }
-
-            // Process Mesh
-            CurrentModel.Meshes[MeshIndex].SetupMesh();
-        }
+}
 
 
-        // Push Back To Output Vector
-        ProcessedModels.push_back(CurrentModel);
+// // Load Model From File
+// void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool FlipTextures, bool IsThread) {
 
-    }
+//     // Clear Model Instance
+//     Model->FlipTextures = FlipTextures;
 
+//     std::map<std::string, ERS_OBJECT_TEXTURE_2D> PreloadedTextures_; // Stores Relative Path Of Texture As Key And Textures?
     
 
-    // Create Dictionary Of Loaded Models
-    std::map<std::string, ERS_OBJECT_MODEL> OutputMap;
+//     // // Get Model Path
+//     // std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
 
-    for (int i = 0; i < TotalModelCount; i++) {
+//     // // Read File
+//     // Assimp::Importer Importer;
+//     // SystemUtils_->Logger_->Log(std::string(std::string("Loading Model At File Path: ") + std::string(AssetPath)).c_str(), 3);
+//     // const aiScene* Scene = Importer.ReadFile(AssetPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
 
-        // Log Retrieval, Then Add To Output Dict
-        Logger_->Log(std::string(std::string("Getting Model From Loading Queue With Path ") + std::string(FilePaths[i])).c_str(), 3);
-        OutputMap.emplace(FilePaths[i], ProcessedModels[i]);
+//     // // Log Errors
+//     // if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
+//     //     SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
+//     //     return Model;
+//     // }
 
-    }
-
-
-    // Return
-    return OutputMap;
-
-}
-
-
-// Async Load Model
-std::future<ERS_OBJECT_MODEL> ERS_CLASS_ModelLoader::AsyncLoadModel(const char* AssetPath, bool FlipTextures) {
-
-    // Log Loading
-    Logger_->Log(std::string(std::string("Creating Thread To Load Model At Path: ") + std::string(AssetPath)).c_str(), 3);
-
-    // Lock Count
-    LockActiveThreadCount_->lock();
-    ActiveThreadCount_++;
-    LockActiveThreadCount_->unlock();
-
-    // Create And Return Future Object
-    std::future<ERS_OBJECT_MODEL> FutureModel = std::async(&ERS_CLASS_ModelLoader::LoadModelFromFile, this, std::string(AssetPath), FlipTextures, true);
-    return FutureModel;
-}
+//     // // Process Root Node Recursively
+//     // ProcessNode(&Model, Scene->mRootNode, Scene, ModelDirectory, IsThread);
 
 
 
-// Load Model From File
-ERS_OBJECT_MODEL ERS_CLASS_ModelLoader::LoadModelFromFile(std::string AssetPath, bool FlipTextures, bool IsThread) {
-
-    // Clear Model Instance
-    ERS_OBJECT_MODEL Model;
-    FlipTextures_ = FlipTextures;
-    Model.FlipTextures = FlipTextures;
-    Model.AssetPath_ = AssetPath;
-
-    std::map<std::string, ERS_OBJECT_TEXTURE_2D> PreloadedTextures_; // Stores Relative Path Of Texture As Key And Textures?
-    
-
-    // Check If Metadata Exists
-    try {
-        YAML::Node ModelMetadata = YAML::LoadFile(std::string(AssetPath.substr(0, AssetPath.find_last_of("/")) + std::string("/Metadata.yaml")).c_str());
-
-
-
-    } catch (YAML::BadFile) {
-        Logger_->Log(std::string(std::string("Metadata Is Missing For Model '") + std::string(AssetPath) + std::string("', Try Regenerating It")).c_str(), 7);
-    }
-
-
-    // Get Model Path
-    std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
-
-    // Read File
-    Assimp::Importer Importer;
-    Logger_->Log(std::string(std::string("Loading Model At File Path: ") + std::string(AssetPath)).c_str(), 3);
-    const aiScene* Scene = Importer.ReadFile(AssetPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
-
-    // Log Errors
-    if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
-        Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
-        return Model;
-    }
-
-    // Process Root Node Recursively
-    ProcessNode(&Model, Scene->mRootNode, Scene, ModelDirectory, IsThread);
-
-    // If In Other Thread
-    if (IsThread) {
-        LockActiveThreadCount_->lock();
-        ActiveThreadCount_--;
-        LockActiveThreadCount_->unlock();
-    }
-
-    // Return Model Instance
-    return Model;
-
-}
+// }
 
 
 
@@ -391,5 +244,4 @@ std::vector<ERS_OBJECT_TEXTURE_2D> ERS_CLASS_ModelLoader::LoadMaterialTextures(E
     return Textures;
 
 }
-
 
