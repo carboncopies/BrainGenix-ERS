@@ -4,19 +4,19 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ModelLoader
+add_library(ERS_ModelLoader
 
             # Add Source Files (.cpp)
-            "ModelLoader.cpp"
+            "ERS_ModelLoader.cpp"
 
             # Add Header Files (.h)
-            "ModelLoader.h"
+            "ERS_ModelLoader.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ModelLoader
+target_link_libraries(ERS_ModelLoader
     yaml-cpp
     glm
     glad
@@ -26,7 +26,7 @@ target_link_libraries(ModelLoader
     )
 
 # Link Internal Libs
-target_link_libraries(ModelLoader
+target_link_libraries(ERS_ModelLoader
     Meshes
     Model
     Textures
@@ -34,4 +34,4 @@ target_link_libraries(ModelLoader
     )
 
 
-target_include_directories(ModelLoader PUBLIC ./)
+target_include_directories(ERS_ModelLoader PUBLIC ./)

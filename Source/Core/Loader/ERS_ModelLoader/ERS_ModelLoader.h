@@ -54,7 +54,7 @@
  * @brief Class for loading models (fbx, gltx, etc.) based on the ASSIMP library
  * 
  */
-class ModelLoader {
+class ERS_CLASS_ModelLoader {
 
 
     private:
@@ -115,13 +115,13 @@ class ModelLoader {
          * @param Logger 
          * @param TextureLoader 
          */
-        ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<TextureLoader> TextureLoader, int MaxThreadCount = 999);
+        ERS_CLASS_ModelLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<TextureLoader> TextureLoader, int MaxThreadCount = 999);
 
         /**
          * @brief Destroy the Model Loader object
          * 
          */
-        ~ModelLoader();
+        ~ERS_CLASS_ModelLoader();
 
 
         /**
