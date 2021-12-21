@@ -12,7 +12,7 @@ EnableValidationLayers: True
 MaxFramesInFlight: 2
 
 # Debug Settings
-EnableEditorDebugMenu: True
+ShowEditorDebugMenu: True
 
 
 # Database Loading Settings #
