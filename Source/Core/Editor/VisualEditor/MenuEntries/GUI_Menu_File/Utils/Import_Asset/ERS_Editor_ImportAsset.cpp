@@ -63,6 +63,7 @@ void ERS_CLASS_ImportAsset::ImportThread() {
         // Check Control Variables
         BlockThread_.lock();
         if (StopThread_) {
+            BlockThread_.unlock();
             break;
         }
         BlockThread_.unlock();
