@@ -114,7 +114,7 @@ class ERS_CLASS_ModelLoader {
          * @param Logger 
          * @param TextureLoader 
          */
-        ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, int MaxThreadCount = 1);
+        ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, int MaxThreadCount = 24);
 
         /**
          * @brief Destroy the Model Loader object
