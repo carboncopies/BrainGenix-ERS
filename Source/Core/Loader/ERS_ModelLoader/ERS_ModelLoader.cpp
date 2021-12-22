@@ -57,6 +57,12 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
 // Loads A Texture With The Given ID
 FIBITMAP* ERS_CLASS_ModelLoader::LoadTexture(long ID) {
 
+    // Load Image Bytes Into Memory
+    std::shared_ptr<ERS_STRUCT_IOData> ImageData = std::make_shared<ERS_STRUCT_IOData>();
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ID, ImageData);
+
+    // Identify Image Format, Decode
+    
 
 }
 
