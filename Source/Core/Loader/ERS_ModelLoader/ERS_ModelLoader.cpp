@@ -84,6 +84,11 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
     // Erase List To Save Memory
     Model->TexturesToPushToGPU_.erase(Model->TexturesToPushToGPU_.begin(), Model->TexturesToPushToGPU_.end());
 
+    // Setup Meshes
+    for (int i = 0; i < Model->Meshes.size(); i++) {
+        Model->Meshes[i].SetupMesh();
+    }
+
 
 
 
