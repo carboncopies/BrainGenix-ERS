@@ -69,7 +69,7 @@ class ERS_CLASS_ModelLoader {
         std::vector<bool> FlipTextures_; /**<vector Containing FlipTexture For Work Items*/
         std::vector<std::thread> WorkerThreads_; /**<List of worker threads*/
         std::mutex BlockThread_; /**<Block Threads From Doing Things*/
-        bool ExitThreads_; /**<Set To True To Make Threads Quit*/
+        bool ExitThreads_ = false; /**<Set To True To Make Threads Quit*/
 
         void WorkerThread(); /**<Worker Thread Function*/
 

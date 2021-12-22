@@ -57,15 +57,18 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 // Worker Thread
 void ERS_CLASS_ModelLoader::WorkerThread() {
 
-std::cout<<"Trhead Started!"<<std::endl;
 
     // Enter Loop
     bool ThreadShouldRun = true;
     while (ThreadShouldRun) {
 
         // Acquire Check Lock
+                std::cout<<"checking lock\n";
+
         BlockThread_.lock();
         if (ExitThreads_) {
+                std::cout<<"exiting\n";
+
             ThreadShouldRun = false;
             BlockThread_.unlock();
         } else {
@@ -93,7 +96,10 @@ std::cout<<"Trhead Started!"<<std::endl;
             } else {
                 
                 // No Work Items, Unlock Mutex, Sleep Thread
+                std::cout<<"sleeping\n";
                 BlockThread_.unlock();
+
+                std::cout<<"sleeping2\n";
                 std::this_thread::sleep_for(std::chrono::milliseconds(20));
 
             }
