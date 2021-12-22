@@ -45,6 +45,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(const char* ScenePath) {
 
 // SceneLoader Process Scene Function
 ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* ScenePath, bool UseMultithreading) {
+        std::cout<<"fdsafdsa\n";
 
     // Create Scene Instance
     ERS_OBJECT_SCENE Scene;
@@ -71,7 +72,6 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
     for (long i = 0; i < SceneDataNode.size(); i++) {
 
         // Get Asset Information
-        std::cout<<"fdsafdsa\n";
         std::cout<<SceneDataNode[i]<<std::endl;
 
         std::string AssetName = SceneDataNode[i]["AssetName"].as<std::string>();
