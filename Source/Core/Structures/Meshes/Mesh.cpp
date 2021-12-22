@@ -81,7 +81,7 @@ void ERS_OBJECT_MESH::Draw(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
     unsigned int HeightHandel = 1;
 
     // Iterate Through Textures
-    for (unsigned int i = 0; i < TextureReferences_.size(); i++) {
+    for (unsigned int i = 0; i < TextureIDs.size(); i++) {
 
         // Set To Proper Texture
         glActiveTexture(GL_TEXTURE0 + i);
@@ -105,7 +105,7 @@ void ERS_OBJECT_MESH::Draw(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
         glUniform1i(glGetUniformLocation(Shader->ShaderProgram, (Name + Number).c_str()), i);
         
         // Bind Texture
-        glBindTexture(GL_TEXTURE_2D, TextureReferences_[i]);
+        glBindTexture(GL_TEXTURE_2D, TextureIDs[i]);
 
     }
 
