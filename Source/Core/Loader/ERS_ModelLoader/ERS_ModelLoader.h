@@ -133,6 +133,7 @@ class ERS_CLASS_ModelLoader {
         void ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> ActiveScene);
 
 
+        void AddModelToLoadingQueue(long AssetID, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool FlipTextures = false);
 
 
 

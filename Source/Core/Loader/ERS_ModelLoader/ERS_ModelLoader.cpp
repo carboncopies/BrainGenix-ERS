@@ -43,20 +43,32 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> A
 
     // Check List Of Models Currently Loading
     std::unique_ptr<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>> ModelsCurrentlyLoading = std::make_unique<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>>(ActiveScene->ModelsLoading);
+
     for (int i = 0; i < ModelsCurrentlyLoading->size(); i++) {
+
         if ((*ModelsCurrentlyLoading)[i]->IsReadyForGPU) {
+
             std::cout<<"Processing!"<<std::endl;
             ProcessGPU((*ModelsCurrentlyLoading)[i]);
+            
         }
+
     }
 
 }
 
-// TODO: Make scene loader use this system,
-// make loader set isreadyforgpu var when done
+
+
+
 // make laoder in worker threads
 // make function to dispatch loading 
 // optionally optimize processgpu function to provide least amount of lag as possible
+
+void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool FlipTextures = false) {
+
+    // Add To Queue
+
+}
 
 // Process GPU Data (Must Be Done In Thread With OPENGL Context (should be main thread))
 void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) {
@@ -119,7 +131,6 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
 
 }
 
-
 // Loads A Texture With The Given ID
 ERS_OBJECT_TEXTURE_2D ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures) {
 
@@ -157,7 +168,6 @@ ERS_OBJECT_TEXTURE_2D ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextu
     return Texture;
 
 }
-
 
 // Load Model From File
 void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool FlipTextures) {

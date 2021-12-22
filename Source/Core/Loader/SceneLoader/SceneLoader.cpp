@@ -96,16 +96,13 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
             float ScaleZ = SceneDataNode[i]["AssetScaleZ"].as<double>();
 
             //Load Model 
-            ERS_OBJECT_MODEL Model;
-            ModelLoader_->LoadModel(AssetID, std::make_shared<ERS_OBJECT_MODEL>(Model), FlipTextures);
-            Model.Name = AssetName;
+            Scene.ModelsLoading.push_back(std::make_shared<ERS_OBJECT_MODEL>());
+            ModelLoader_->AddModelToLoadingQueue(AssetID, Scene.ModelsLoading[Scene.ModelsLoading.end()-1], FlipTextures);
 
             // Add Instance To Models Vector
-            Model.IsTemplateModel = false;
-            Model.SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
-            Model.ApplyTransformations();
-            Scene.Models.push_back(Model);
-
+            Scene.ModelsLoading[Scene.ModelsLoading.end()-1].IsTemplateModel = false;
+            Scene.ModelsLoading[Scene.ModelsLoading.end()-1].SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
+            Scene.ModelsLoading[Scene.ModelsLoading.end()-1].ApplyTransformations();
 
         }
 
