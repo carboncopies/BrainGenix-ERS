@@ -90,7 +90,6 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     }
 
 
-
     // Clear Model Instance
     Model->FlipTextures = FlipTextures;
 
@@ -98,21 +97,21 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     
 
     // Read File
-    // Assimp::Importer Importer;
-    // SystemUtils_->Logger_->Log(std::string(std::string("Loading Model With ID: ") + std::to_string(AssetID)).c_str(), 3);
+    Assimp::Importer Importer;
+    SystemUtils_->Logger_->Log(std::string(std::string("Loading Model With ID: ") + std::to_string(AssetID)).c_str(), 3);
 
-    // std::shared_ptr<ERS_STRUCT_IOData> ModelData = std::make_shared<ERS_STRUCT_IOData>();
-    // SystemUtils_->ERS_IOSubsystem_->ReadAsset(ModelID, ModelData);
-    // const aiScene* Scene = Importer.ReadFileFromMemory(ModelData->Data.get(), (int)ModelData->Size_B, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace, "");
+    std::shared_ptr<ERS_STRUCT_IOData> ModelData = std::make_shared<ERS_STRUCT_IOData>();
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ModelID, ModelData);
+    const aiScene* Scene = Importer.ReadFileFromMemory(ModelData->Data.get(), (int)ModelData->Size_B, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace, "");
 
-    // // Log Errors
-    // if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
-    //     SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
-    //     return;
-    // }
+    // Log Errors
+    if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
+        SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
+        return;
+    }
 
-    // // Process Root Node Recursively
-    // ProcessNode(&(*Model), Scene->mRootNode, Scene, ModelDirectory, false);
+    // Process Root Node Recursively
+    ProcessNode(&(*Model), Scene->mRootNode, Scene, false);
 
 
 
@@ -121,17 +120,17 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
 
 
 // Process Nodes
-void ERS_CLASS_ModelLoader::ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory, bool IsThread) {
+void ERS_CLASS_ModelLoader::ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, bool IsThread) {
 
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
-        Model->Meshes.push_back(ProcessMesh(Model, Mesh, Scene, ModelDirectory, IsThread));
+        Model->Meshes.push_back(ProcessMesh(Model, Mesh, Scene, IsThread));
     }
 
     // Process Children Nodes
     for (unsigned int i = 0; i < Node->mNumChildren; i++) {
-        ProcessNode(Model, Node->mChildren[i], Scene, ModelDirectory, IsThread);
+        ProcessNode(Model, Node->mChildren[i], Scene, IsThread);
     }
 
 
