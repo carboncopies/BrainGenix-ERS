@@ -51,7 +51,7 @@ class SceneLoader{
          * 
          * @param Logger 
          */
-        SceneLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<ModelLoader> ModelLoader);
+        SceneLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader);
 
         /**
          * @brief Destroy the Scene Loader object
