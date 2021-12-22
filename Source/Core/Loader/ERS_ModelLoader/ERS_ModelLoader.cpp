@@ -212,8 +212,6 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     Model->IsReadyForGPU = true;
 }
 
-
-
 // Process Nodes
 void ERS_CLASS_ModelLoader::ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, std::vector<std::string> TexturePaths) {
 
@@ -334,7 +332,6 @@ std::vector<int> ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<std::st
         // Search Texture List For Index Of Same Match, Add -1 If Not Found
         int Index = -1;
         for (int i = 0; i < TextureList.size(); i++) {
-            std::cout<<TextureList[i]<<"|"<<TextureIdentifier<<std::endl;
             if (TextureList[i] == TextureIdentifier) {
                 Index = i;
                 break;
