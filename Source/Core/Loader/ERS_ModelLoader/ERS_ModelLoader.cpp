@@ -11,6 +11,8 @@
 
 #include <ERS_ModelLoader.h>
 
+// FIXME:
+// optionally optimize processgpu function to provide least amount of lag as possible
 
 // Constructor
 ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, int MaxModelLoadingThreads) {
@@ -122,13 +124,7 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> A
 
 }
 
-
-
-
-// make laoder in worker threads
-// make function to dispatch loading 
-// optionally optimize processgpu function to provide least amount of lag as possible
-
+// Add Model To Load Queue
 void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool FlipTextures) {
 
     // Log Addition
