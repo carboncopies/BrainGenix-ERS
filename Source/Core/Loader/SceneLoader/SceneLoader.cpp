@@ -82,7 +82,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
         // Get Asset Information
         std::string AssetName = SceneDataNode[i]["AssetName"].as<std::string>();
         std::string AssetType = SceneDataNode[i]["AssetType"].as<std::string>();
-        std::string AssetPath = SceneDataNode[i]["AssetPath"].as<std::string>();
+        long AssetID = SceneDataNode[i]["AssetID"].as<long>();
 
 
         // If type Is Model
@@ -163,7 +163,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
 
 
                 //Load Model 
-                ERS_OBJECT_MODEL Model = ModelLoader_->LoadModelFromFile(AssetPath.c_str(), FlipTextures);
+                ERS_OBJECT_MODEL Model = ModelLoader_->LoadModel(AssetID, FlipTextures);
 
                 // Set Name
                 Model.Name = AssetName;
