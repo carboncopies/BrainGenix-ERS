@@ -120,24 +120,24 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
 
 
 // Process Nodes
-void ERS_CLASS_ModelLoader::ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene) {
+void ERS_CLASS_ModelLoader::ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, std::vector<std::string> TexturePaths) {
 
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
-        Model->Meshes.push_back(ProcessMesh(Model, Mesh, Scene));
+        Model->Meshes.push_back(ProcessMesh(Model, Mesh, Scene, TexturePaths));
     }
 
     // Process Children Nodes
     for (unsigned int i = 0; i < Node->mNumChildren; i++) {
-        ProcessNode(Model, Node->mChildren[i], Scene);
+        ProcessNode(Model, Node->mChildren[i], Scene, TexturePaths);
     }
 
 
 }
 
 // Process Mesh
-ERS_OBJECT_MESH ERS_CLASS_ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene) {
+ERS_OBJECT_MESH ERS_CLASS_ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, std::vector<std::string> TexturePaths) {
 
     // Create Data Holders
     std::vector<ERS_OBJECT_VERTEX> Vertices;
@@ -211,16 +211,16 @@ ERS_OBJECT_MESH ERS_CLASS_ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMe
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
 
 
-    std::vector<ERS_OBJECT_TEXTURE_2D> DiffuseMaps = LoadMaterialTextures(Model, Material, aiTextureType_DIFFUSE, "texture_diffuse", ModelDirectory, IsThread);
+    std::vector<int> DiffuseMaps = LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_DIFFUSE, "texture_diffuse");
     Textures.insert(Textures.end(), DiffuseMaps.begin(), DiffuseMaps.end());
 
-    std::vector<ERS_OBJECT_TEXTURE_2D> SpecularMaps = LoadMaterialTextures(Model, Material, aiTextureType_SPECULAR, "texture_specular", ModelDirectory, IsThread);
+    std::vector<int> SpecularMaps = LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_SPECULAR, "texture_specular");
     Textures.insert(Textures.end(), SpecularMaps.begin(), SpecularMaps.end());
 
-    std::vector<ERS_OBJECT_TEXTURE_2D> NormalMaps = LoadMaterialTextures(Model, Material, aiTextureType_NORMALS, "texture_normal", ModelDirectory, IsThread);
+    std::vector<int> NormalMaps = LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_NORMALS, "texture_normal");
     Textures.insert(Textures.end(), NormalMaps.begin(), NormalMaps.end());
 
-    std::vector<ERS_OBJECT_TEXTURE_2D> HeightMaps = LoadMaterialTextures(Model, Material, aiTextureType_AMBIENT, "texture_height", ModelDirectory, IsThread);
+    std::vector<int> HeightMaps = LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_AMBIENT, "texture_height");
     Textures.insert(Textures.end(), HeightMaps.begin(), HeightMaps.end());
 
     // Setup Mesh And Return
