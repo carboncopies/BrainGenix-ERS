@@ -77,7 +77,7 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE> InputSce
         // Write Asset Metadata
         Output << YAML::Key << "AssetName" << YAML::Value << InputScene->Models[AssetIndex]->Name;
         Output << YAML::Key << "AssetType" << YAML::Value << "Model";
-        Output << YAML::Key << "AssetPath" << YAML::Value << InputScene->Models[AssetIndex]->AssetID;
+        Output << YAML::Key << "AssetID" << YAML::Value << InputScene->Models[AssetIndex]->AssetID;
 
         // Write Asset Position Data
         Output << YAML::Key << "AssetPositionX" << YAML::Value << InputScene->Models[AssetIndex]->ModelPosition[0];
