@@ -66,6 +66,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
     std::shared_ptr<ERS_OBJECT_MODEL> Test2 = std::make_shared<ERS_OBJECT_MODEL>();
     ModelLoader_->LoadModel(6, Test2);
+    ModelLoader_->ProcessGPU(Test2);
 
     // Make Viewport
     VisualRenderer_->CreateViewport(std::make_shared<ERS_OBJECT_SHADER>(Shader_), "Viewport", Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));

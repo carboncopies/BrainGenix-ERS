@@ -66,7 +66,6 @@ class ERS_CLASS_ModelLoader {
 
 
         ERS_OBJECT_TEXTURE_2D LoadTexture(long ID, bool FlipTextures = false);
-        void ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model); /**<Process the GPU stuff for each model*/
 
         /**
          * @brief Function Used To Process Subnodes Of SceneFiles.
@@ -98,6 +97,7 @@ class ERS_CLASS_ModelLoader {
 
     public:
 
+        void ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model); /**<Process the GPU stuff for each model*/
 
 
         /**
