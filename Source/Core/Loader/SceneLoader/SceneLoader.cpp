@@ -104,8 +104,6 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
             float ScaleY = SceneDataNode[i]["AssetScaleY"].as<double>();
             float ScaleZ = SceneDataNode[i]["AssetScaleZ"].as<double>();
 
-            
-
             //Load Model 
             ERS_OBJECT_MODEL Model;
             ModelLoader_->LoadModel(AssetID, std::make_shared<ERS_OBJECT_MODEL>(Model), FlipTextures);
