@@ -30,7 +30,6 @@ target_link_libraries(InputProcessor
     LoggingSystem
     ImageLoader
     TextureLoader
-    ModelLoader
 
     Model
     Scene
