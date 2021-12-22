@@ -39,8 +39,8 @@ void SceneManager::UpdateLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
     glm::vec3 Rot = glm::vec3(LocRotScale.RotX, LocRotScale.RotY, LocRotScale.RotZ);
     glm::vec3 Scale = glm::vec3(LocRotScale.ScaleX, LocRotScale.ScaleY, LocRotScale.ScaleZ);
 
-    Scenes_[ActiveScene_].Models[Scenes_[ActiveScene_].SelectedModel].SetLocRotScale(Pos, Rot, Scale);
-    Scenes_[ActiveScene_].Models[Scenes_[ActiveScene_].SelectedModel].ApplyTransformations();
+    Scenes_[ActiveScene_].Models[Scenes_[ActiveScene_].SelectedModel]->SetLocRotScale(Pos, Rot, Scale);
+    Scenes_[ActiveScene_].Models[Scenes_[ActiveScene_].SelectedModel]->ApplyTransformations();
 }
 
 // Add Scene Function
@@ -71,7 +71,7 @@ void SceneManager::Render(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
     for (long i = 0; i < Scenes_[ActiveScene_].Models.size(); i++) {
 
         // Get Model Pointer
-        ERS_OBJECT_MODEL *Model = &Scenes_[ActiveScene_].Models[i];
+        ERS_OBJECT_MODEL *Model = Scenes_[ActiveScene_].Models[i].get();
 
         // Set Shader Pointer
         Shader->SetMat4("model", Model->GetMat4());
