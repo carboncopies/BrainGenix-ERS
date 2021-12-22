@@ -63,6 +63,9 @@ class ERS_CLASS_ModelLoader {
 
 
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Struct*/
+        std::vector<std::thread> WorkerThreads_; /**<List of worker threads*/
+        std::mutex BlockThread_; /**<Block Threads From Doing Things*/
+        bool ExitThreads_; /**<Set To True To Make Threads Quit*/
 
 
         ERS_OBJECT_TEXTURE_2D LoadTexture(long ID, bool FlipTextures = false);

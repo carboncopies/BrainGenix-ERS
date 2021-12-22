@@ -22,9 +22,9 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUt
     SystemUtils_->Logger_->Log("Initializing Model Loader", 5);
     FreeImage_Initialise();
 
-
     // Set Max Threads
-    SystemUtils_->Logger_->Log(std::string(std::string("Setting Maximum Concurrent Model Loading Threads To: ") + std::to_string(MaxModelLoadingThreads)).c_str(), 4);
+    SystemUtils_->Logger_->Log(std::string(std::string("Creating ") + std::to_string(MaxModelLoadingThreads) + std::string("Model Loading Threads")).c_str(), 4);
+
 
 }
 
@@ -50,7 +50,7 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> A
 
             std::cout<<"Processing!"<<std::endl;
             ProcessGPU((*ModelsCurrentlyLoading)[i]);
-            
+
         }
 
     }
