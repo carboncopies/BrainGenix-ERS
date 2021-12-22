@@ -15,6 +15,8 @@
 // Draw Model
 void ERS_OBJECT_MODEL::Draw(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
 
+    std::cout<<"Drawing Meshes: "<<Meshes.size()<<std::endl;
+
     // Draw All Meshes
     for (unsigned int i=0; i<Meshes.size(); i++) {
         Meshes[i].Draw(Shader);
