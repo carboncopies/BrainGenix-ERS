@@ -57,7 +57,38 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 // Worker Thread
 void ERS_CLASS_ModelLoader::WorkerThread() {
 
+    // Enter Loop
+    bool ThreadShouldRun = true;
+    while (ThreadShouldRun) {
 
+        // Acquire Check Lock
+        BlockThread_.lock();
+        if (ExitThreads_) {
+            ThreadShouldRun = false;
+            BlockThread_.unlock();
+        } else {
+
+            // Check If Items In Work Queue
+            int Size = WorkItems_.size();
+            if (Size > 0) {
+
+                // Process Item
+                std::shared_ptr<ERS_OBJECT_MODEL> WorkItem = WorkItems_[0];
+                WorkItems_.erase(WorkItems_.begin());
+
+                
+
+            } else {
+                
+                // No Work Items, Unlock Mutex, Sleep Thread
+                BlockThread_.unlock();
+                std::this_thread::sleep_for(std::chrono::milliseconds(20));
+
+            }
+        }
+
+
+    }
 
 }
 
