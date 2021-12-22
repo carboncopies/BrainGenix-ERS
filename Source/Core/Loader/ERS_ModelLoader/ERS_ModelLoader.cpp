@@ -237,50 +237,35 @@ ERS_OBJECT_MESH ERS_CLASS_ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMe
 }
 
 // Check Material Textures
-std::vector<ERS_OBJECT_TEXTURE_2D> ERS_CLASS_ModelLoader::LoadMaterialTextures(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory, bool IsThread) {
+std::vector<int> ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<std::string> TextureList, ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName) {
 
-    std::vector<ERS_OBJECT_TEXTURE_2D> Textures;
+    // Output Vector
+    std::vector<int> OutputVector;
+
+    // Iterate Through Textures
     for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {
 
-        aiString Str;
-        Mat->GetTexture(Type, i, &Str);
-
-        bool Skip = false;
-        
 
         // Calculate Texture Path
-        std::string FilePath = std::string(ModelDirectory + std::string(Model->Directory)  + std::string("/") + std::string(Str.C_Str()));
+        aiString TextureString;
+        Mat->GetTexture(Type, i, &TextureString);
+        std::string TextureIdentifier = std::string(std::string(Model->Directory)  + std::string("/") + std::string(TextureString.C_Str()));
 
-        // Check If Texture Already Loaded
-        if (!IsThread) {
-            for (unsigned int j = 0; j < Model->Textures_Loaded.size(); j++) {
-
-                if (std::strcmp(Model->Textures_Loaded[j].Path.data(), FilePath.c_str()) == 0) {
-                    Textures.push_back(Model->Textures_Loaded[j]);
-                    Skip = true;
-                    break;
-                }
+        // Search Texture List For Index Of Same Match, Add -1 If Not Found
+        int Index = -1;
+        for (int i = 0; i < TextureList.size(); i++) {
+            if (TextureList[i] == TextureIdentifier) {
+                Index = i;
+                break;
             }
         }
 
-        // If Texture Not Already Loaded
-        if (!Skip) {
-
-            // ERS_OBJECT_TEXTURE_2D Texture = TextureLoader_->LoadTexture(FilePath.c_str(), FlipTextures_, !IsThread);
-
-            // // Set Texture Type
-            // Texture.Type = TypeName;
-
-            // Textures.push_back(Texture);
-            // Model->Textures_Loaded.push_back(Texture);
-
-
-        }
-
-        
-
+        // Add To Output Vert
+        OutputVector.push_back(Index);
     }
-    return Textures;
+
+    // Return Output
+    return OutputVector;
 
 }
 

@@ -85,6 +85,16 @@ class ERS_CLASS_ModelLoader {
          */
         ERS_OBJECT_MESH ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene);
 
+        /**
+         * @brief Load Textures From Model.
+         * 
+         * @param Mat 
+         * @param Type 
+         * @param TypeName 
+         * @return std::vector<ERS_OBJECT_TEXTURE_2D> 
+         */
+        std::vector<int> LoadMaterialTextures(std::vector<std::string> TextureList, ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName);
+
 
     public:
 
