@@ -334,6 +334,7 @@ std::vector<int> ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<std::st
         // Search Texture List For Index Of Same Match, Add -1 If Not Found
         int Index = -1;
         for (int i = 0; i < TextureList.size(); i++) {
+            std::cout<<TextureList[i]<<"|"<<TextureIdentifier<<std::endl;
             if (TextureList[i] == TextureIdentifier) {
                 Index = i;
                 break;
