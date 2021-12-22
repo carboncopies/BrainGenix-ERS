@@ -89,7 +89,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
 
     // Process Texture References, Setup Meshes
     for (int i = 0; i < Model->Meshes.size(); i++) {
-        for (int Index = 0; Index < Model->Meshes[i].TextureReferences_.size(); i++) { // IF TEXTURES DONT WORK, CHECK HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        for (int Index = 0; Index < Model->Meshes[i].TextureReferences_.size(); Index++) { // IF TEXTURES DONT WORK, CHECK HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             std::cout<<"--:"<<Model->Meshes[i].TextureReferences_.size()<<std::endl;
 
