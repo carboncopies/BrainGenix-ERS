@@ -228,6 +228,7 @@ ERS_OBJECT_TEXTURE_2D ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextu
     }
 
     // Get Metadata
+    std::cout<<ID<<std::endl;
     float Width = FreeImage_GetWidth(Image);
     float Height = FreeImage_GetHeight(Image);
     float Channels = FreeImage_GetLine(Image) / FreeImage_GetWidth(Image);
