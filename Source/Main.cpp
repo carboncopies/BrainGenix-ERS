@@ -12,7 +12,7 @@
 // Standard Libraries (BG convention: use <> instead of "")
 
 // Third-Party Libraries (BG convention: use <> instead of "")
-#include <Tracy.hpp>
+//#include <Tracy.hpp>
 
 #include <yaml-cpp/yaml.h>
 
