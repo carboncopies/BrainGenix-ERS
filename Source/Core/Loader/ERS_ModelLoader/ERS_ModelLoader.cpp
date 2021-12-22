@@ -169,7 +169,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     std::shared_ptr<ERS_STRUCT_IOData> ModelMetadata = std::make_shared<ERS_STRUCT_IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, ModelMetadata);
     YAML::Node Metadata = YAML::Load((const char*)ModelMetadata->Data.get());
-
+    std::cout<<Metadata<<std::endl;
     // Process Metadata
     std::string Name;
     long ModelID;
