@@ -42,14 +42,14 @@ struct ERS_OBJECT_MODEL {
     std::vector<ERS_OBJECT_TEXTURE_2D> Textures_Loaded;
     std::string Directory;
     std::string Name = "Name Not Assigned";
+    long AssetID;
 
-    std::string AssetPath_;
 
     // Loading Config
-    bool CanDeferTextureLoading = false;
     bool HasTexturesLoaded = false;
     bool HasMeshLoaded = false;
     bool IsReadyForGPU = false;
+    bool FullyReady = false;
 
     // Model Config
     bool GammaCorrection = false;

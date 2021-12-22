@@ -109,10 +109,12 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> A
 
     for (int i = 0; i < Models->size(); i++) {
 
-        if ((*Models)[i]->IsReadyForGPU) {
+        if ( ((*Models)[i]->IsReadyForGPU) && !((*Models)[i]->FullyReady) ) {
 
-            std::cout<<"Processing!"<<std::endl;
+            SystemUtils_->Logger_->Log(std::string(std::string("Pushing Material Information To GPU For Asset: ") + std::to_string((*Models)[i]->AssetID)).c_str(), 4);
+
             ProcessGPU((*Models)[i]);
+            (*Models)[i]->FullyReady = true;
 
         }
 
