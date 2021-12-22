@@ -77,6 +77,9 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
         }
         glGenerateMipmap(GL_TEXTURE_2D);
 
+        // Unload Image Data
+        FreeImage_Unload(Model->TexturesToPushToGPU_[i].ImageData);
+
         // Append To Texture Index
         Model->OpenGLTextureIDs_.push_back(TextureID);
     }
@@ -87,7 +90,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
     // Process Texture References, Setup Meshes
     for (int i = 0; i < Model->Meshes.size(); i++) {
         for (int TextureIndex = 0; TextureIndex < Model->Meshes[i].TextureReferences_.size(); i++) { // IF TEXTURES DONT WORK, CHECK HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            Model->Meshes[i].TextureIDs.push_back(Model->OpenGLTextureIDs_[TextureIndex]);
+            Model->Meshes[i].TextureIDs.push_back(Model->OpenGLTextureIDs_[Model->Meshes[i].TextureReferences_[TextureIndex]]);
         }
         Model->Meshes[i].UseNewSystem = true;
         Model->Meshes[i].SetupMesh();
