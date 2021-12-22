@@ -95,7 +95,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
                 SystemUtils_->Logger_->Log("Failed To Find Corresponding Texture", 8);
                 Model->Meshes[i].TextureIDs.push_back(0);
             } else {
-                std::cout<<Model->OpenGLTextureIDs_[TextureIndex]<<std::endl;
+                std::cout<<TextureIndex<<std::endl;
                 Model->Meshes[i].TextureIDs.push_back(Model->OpenGLTextureIDs_[TextureIndex]);
             }
     
