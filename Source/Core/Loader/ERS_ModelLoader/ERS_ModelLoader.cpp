@@ -171,7 +171,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     YAML::Node Metadata = YAML::Load((const char*)ModelMetadata->Data.get());
 
     // Process Metadata
-    std::string Name = "";
+    std::string Name;
     long ModelID;
     std::vector<std::string> TexturePaths;
     std::vector<long> TextureIDs;
