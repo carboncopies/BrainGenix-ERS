@@ -15,9 +15,6 @@
 // Draw Model
 void ERS_OBJECT_MODEL::Draw(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
 
-    std::cout<<glGetError()<<std::endl;
-
-
     // Only Draw When Fully Ready
     if (FullyReady) {
 
