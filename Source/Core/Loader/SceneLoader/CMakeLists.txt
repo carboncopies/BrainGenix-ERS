@@ -23,7 +23,7 @@ target_link_libraries(SceneLoader
 target_link_libraries(SceneLoader
     LoggingSystem
     Model
-    ModelLoader
+    ERS_ModelLoader
     Scene
     Meshes
     Textures

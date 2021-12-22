@@ -15,7 +15,7 @@
 #include <SceneLoader.h>
 
 // SceneLoader Constructor
-SceneLoader::SceneLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<ModelLoader> ModelLoader) {
+SceneLoader::SceneLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader) {
 
     // Create Local Pointer
     Logger_ = Logger;

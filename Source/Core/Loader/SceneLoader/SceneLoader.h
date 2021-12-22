@@ -20,7 +20,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 #include <Model.h>
-#include <ModelLoader.h>
+#include <ERS_ModelLoader.h>
 #include <Scene.h>
 #include <Mesh.h>
 #include <2DTexture.h>
@@ -38,7 +38,7 @@ class SceneLoader{
     private:
 
         std::shared_ptr<LoggerClass> Logger_; /**<Contains A SceneLoader Class Instance*/
-        std::shared_ptr<ModelLoader> ModelLoader_; /**<Contians A ModelLoader Class Pointer*/
+        std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader_; /**<Contians A ModelLoader Class Pointer*/
 
         // Templates
         std::map<std::string, ERS_OBJECT_MODEL> TemplateModels_; /**<Template Map Used to Store Models In Original LocRotScale*/
