@@ -81,7 +81,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     MetadataEmitter<<YAML::Key<<"TextureIDs";
     MetadataEmitter<<YAML::Key<<YAML::BeginMap;
     for (int i = 0; i < TextureIDs.size(); i++) {
-        MetadataEmitter<<YAML::Key<<TextureList_[i].substr(TextureList_[i].find_last_of("/"), TextureList_[i].size()-TextureList_[i].find_last_of("/"))<<YAML::Value<<TextureIDs[i];
+        MetadataEmitter<<YAML::Key<<TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1))<<YAML::Value<<TextureIDs[i];
     }
     MetadataEmitter<<YAML::EndMap;
     
