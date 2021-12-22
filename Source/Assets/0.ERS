@@ -5,97 +5,97 @@ SceneData:
     AssetName: Rock
     AssetType: Model
     AssetID: 7
-    AssetPositionX: -8.84043026
-    AssetPositionY: -3.42952289e-09
-    AssetPositionZ: 0
+    AssetPositionX: -10.6113224
+    AssetPositionY: 4.68069696
+    AssetPositionZ: -2.39142036
     AssetRotationX: 71.1356277
     AssetRotationY: -25.7632465
     AssetRotationZ: -175.4198
-    AssetScaleX: 6.49033833
-    AssetScaleY: 6.49038363
-    AssetScaleZ: 6.49031734
+    AssetScaleX: 7.39898539
+    AssetScaleY: 7.39903736
+    AssetScaleZ: 7.39896154
     FlipTextures: true
   1:
     AssetName: Frog
     AssetType: Model
     AssetID: 10
-    AssetPositionX: -8.84043026
-    AssetPositionY: -3.42952289e-09
-    AssetPositionZ: 0
-    AssetRotationX: 71.1356277
-    AssetRotationY: -25.7632465
-    AssetRotationZ: -175.4198
-    AssetScaleX: 6.49033833
-    AssetScaleY: 6.49038363
-    AssetScaleZ: 6.49031734
+    AssetPositionX: -8.07202244
+    AssetPositionY: 11.9267645
+    AssetPositionZ: -3.88724899
+    AssetRotationX: 37.334095
+    AssetRotationY: -19.3698063
+    AssetRotationZ: -162.097763
+    AssetScaleX: 3.45057607
+    AssetScaleY: 3.45059705
+    AssetScaleZ: 3.450562
     FlipTextures: true
   2:
-    AssetName: Somethin
+    AssetName: Dirt Blob
     AssetType: Model
     AssetID: 15
-    AssetPositionX: -8.84043026
-    AssetPositionY: -3.42952289e-09
-    AssetPositionZ: 0
-    AssetRotationX: 71.1356277
-    AssetRotationY: -25.7632465
-    AssetRotationZ: -175.4198
-    AssetScaleX: 6.49033833
-    AssetScaleY: 6.49038363
-    AssetScaleZ: 6.49031734
+    AssetPositionX: -10.0141411
+    AssetPositionY: 0.190826431
+    AssetPositionZ: -0.240512833
+    AssetRotationX: 41.6428909
+    AssetRotationY: -37.9142532
+    AssetRotationZ: -160.441742
+    AssetScaleX: 6.49033117
+    AssetScaleY: 6.49037743
+    AssetScaleZ: 6.4903307
     FlipTextures: true
   3:
-    AssetName: Somethin
+    AssetName: Concrete Post 1
     AssetType: Model
     AssetID: 20
-    AssetPositionX: -8.84043026
-    AssetPositionY: -3.42952289e-09
-    AssetPositionZ: 0
-    AssetRotationX: 71.1356277
-    AssetRotationY: -25.7632465
-    AssetRotationZ: -175.4198
-    AssetScaleX: 6.49033833
-    AssetScaleY: 6.49038363
-    AssetScaleZ: 6.49031734
+    AssetPositionX: -10.2945385
+    AssetPositionY: 4.80044937
+    AssetPositionZ: 2.14438629
+    AssetRotationX: 29.7384548
+    AssetRotationY: -16.8680878
+    AssetRotationZ: -179.241714
+    AssetScaleX: 6.49033928
+    AssetScaleY: 6.49038172
+    AssetScaleZ: 6.49031305
     FlipTextures: true
   4:
-    AssetName: Somethin
+    AssetName: Concrete Post 2
     AssetType: Model
     AssetID: 25
-    AssetPositionX: -8.84043026
-    AssetPositionY: -3.42952289e-09
-    AssetPositionZ: 0
-    AssetRotationX: 71.1356277
-    AssetRotationY: -25.7632465
-    AssetRotationZ: -175.4198
-    AssetScaleX: 6.49033833
-    AssetScaleY: 6.49038363
-    AssetScaleZ: 6.49031734
+    AssetPositionX: -20.4918404
+    AssetPositionY: 4.50343895
+    AssetPositionZ: 1.11500931
+    AssetRotationX: 52.384613
+    AssetRotationY: -1.69975984
+    AssetRotationZ: -174.95282
+    AssetScaleX: 6.49032545
+    AssetScaleY: 6.49038029
+    AssetScaleZ: 6.49031591
     FlipTextures: true
   5:
-    AssetName: Somethin
+    AssetName: Concrete Post 3
     AssetType: Model
     AssetID: 31
-    AssetPositionX: -8.84043026
-    AssetPositionY: -3.42952289e-09
-    AssetPositionZ: 0
-    AssetRotationX: 71.1356277
-    AssetRotationY: -25.7632465
-    AssetRotationZ: -175.4198
-    AssetScaleX: 6.49033833
-    AssetScaleY: 6.49038363
-    AssetScaleZ: 6.49031734
+    AssetPositionX: -17.3787346
+    AssetPositionY: 1.42240036
+    AssetPositionZ: -6.06892633
+    AssetRotationX: 25.5039539
+    AssetRotationY: -15.3178625
+    AssetRotationZ: -158.557007
+    AssetScaleX: 6.4903388
+    AssetScaleY: 6.49037933
+    AssetScaleZ: 6.49032116
     FlipTextures: true
   6:
-    AssetName: Somethin
+    AssetName: Rock Base
     AssetType: Model
     AssetID: 35
-    AssetPositionX: -8.84043026
-    AssetPositionY: -3.42952289e-09
-    AssetPositionZ: 0
-    AssetRotationX: 71.1356277
-    AssetRotationY: -25.7632465
-    AssetRotationZ: -175.4198
-    AssetScaleX: 6.49033833
-    AssetScaleY: 6.49038363
-    AssetScaleZ: 6.49031734
+    AssetPositionX: -14.2871113
+    AssetPositionY: -0.423938334
+    AssetPositionZ: -2.9122169
+    AssetRotationX: 93.6880646
+    AssetRotationY: -25.6334038
+    AssetRotationZ: 174.696976
+    AssetScaleX: 12.9806671
+    AssetScaleY: 12.9807663
+    AssetScaleZ: 12.9806309
     FlipTextures: true
