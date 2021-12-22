@@ -20,6 +20,7 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUt
 
     // Log Initialization
     SystemUtils_->Logger_->Log("Initializing Model Loader", 5);
+    FreeImage_Initialise();
 
 
     // Set Max Threads
@@ -32,6 +33,7 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 
     // Log Destructor Call
     SystemUtils_->Logger_->Log("ERS_CLASS_ModelLoader Destructor Called", 6);
+    FreeImage_DeInitialise();
 
 }
 
