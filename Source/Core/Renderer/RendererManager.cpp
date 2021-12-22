@@ -34,8 +34,8 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
 
     // Load Scene
-    ModelLoader MLoader(SystemUtils_->Logger_, TextureLoader_);
-    SceneLoader SLoader(SystemUtils_->Logger_, std::make_shared<ModelLoader>(MLoader));
+    ModelLoader_ = std::make_unique<ERS_CLASS_ModelLoader>(SystemUtils_);
+    SceneLoader SLoader(SystemUtils_->Logger_, std::make_shared<ERS_CLASS_ModelLoader>(ModelLoader_));
     SceneManager_ = std::make_shared<SceneManager>(SystemUtils_->Logger_);
 
 
@@ -60,9 +60,6 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     // Setup IOManager
     SystemUtils_->Logger_->Log("Initializing Input/Output Manager", 5);
     IOManager_ = std::make_shared<IOManager>(SystemUtils_->Logger_, Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
-
-    // Setup Loading Subsystem
-    ModelLoader_ = std::make_unique<ERS_CLASS_ModelLoader>(SystemUtils_);
 
     // Make Viewport
     VisualRenderer_->CreateViewport(std::make_shared<ERS_OBJECT_SHADER>(Shader_), "Viewport", Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
