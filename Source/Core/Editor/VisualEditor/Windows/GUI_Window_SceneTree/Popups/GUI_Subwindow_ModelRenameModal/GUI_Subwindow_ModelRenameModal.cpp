@@ -60,7 +60,7 @@ void Subwindow_ModelRenameModal::Draw() {
 
         // Rename And Cancel Buttons
         if (ImGui::Button("Rename", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Enter Key Pressed
-            SceneManager_->Scenes_[SelectedScene_].Models[SelectedModel_].Name = std::string(ModelInputName_);
+            SceneManager_->Scenes_[SelectedScene_].Models[SelectedModel_]->Name = std::string(ModelInputName_);
             Enabled_ = false;
         }
         ImGui::SameLine();
