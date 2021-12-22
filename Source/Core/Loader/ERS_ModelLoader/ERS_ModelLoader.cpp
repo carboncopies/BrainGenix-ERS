@@ -27,8 +27,14 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUt
     FreeImage_Initialise();
 
     // Create Worker Threads
-    SystemUtils_->Logger_->Log(std::string(std::string("Creating ") + std::to_string(MaxModelLoadingThreads) + std::string("Model Loading Threads")).c_str(), 4);
+    if (MaxModelLoadingThreads == -1) {
+        SystemUtils_->Logger_->Log("Identifying Number Of CPU Cores", 4);
+        MaxModelLoadingThreads = std::thread::hardware_concurrency();
+    SystemUtils_->Logger_->Log(std::string(std::string("Identified ") + std::to_string(MaxModelLoadingThreads) + std::string(" Cores")).c_str(), 4);
 
+        
+    }
+    SystemUtils_->Logger_->Log(std::string(std::string("Creating ") + std::to_string(MaxModelLoadingThreads) + std::string("Model Loading Threads")).c_str(), 4);
     for (int i = 0; i < MaxModelLoadingThreads; i++) {
         SystemUtils_->Logger_->Log(std::string(std::string("Creating Worker Thread ") + std::to_string(i)).c_str(), 3);
         WorkerThreads_.push_back(std::thread(&ERS_CLASS_ModelLoader::WorkerThread, this));
