@@ -80,6 +80,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
     for (long i = 0; i < SceneDataNode.size(); i++) {
 
         // Get Asset Information
+        std::cout<<SceneDataNode[i]<<std::endl;
         std::string AssetName = SceneDataNode[i]["AssetName"].as<std::string>();
         std::string AssetType = SceneDataNode[i]["AssetType"].as<std::string>();
         long AssetID = SceneDataNode[i]["AssetID"].as<long>();
