@@ -65,22 +65,17 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     // Make Viewport
     VisualRenderer_->CreateViewport(std::make_shared<ERS_OBJECT_SHADER>(Shader_), "Viewport", Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
     //VisualRenderer_->CreateViewport(&Shader_, "Viewport 2", Window_, &Camera_);
-        std::cout<<"fdsafdsa\n";
-
 
     std::shared_ptr<ERS_OBJECT_MODEL> Test2 = std::make_shared<ERS_OBJECT_MODEL>();
     ModelLoader_->LoadModel(7, Test2);
     ModelLoader_->ProcessGPU(Test2);
 
 
-        std::cout<<"fdsafdsa\n";
-
 
     // Test Scene
     YAML::Node TestScene = YAML::LoadFile("Assets/0.ERS");
     //YAML::Node TestScene2 = YAML::LoadFile("Assets/Scene2.yaml");
     //YAML::Node TestScene3 = YAML::LoadFile("Assets/Scene3.yaml");
-        std::cout<<"fdsafdsa\n";
     
     SceneManager_->AddScene(SLoader.ProcessScene(TestScene, "Assets/0.ERS", false));
     //SceneManager_->AddScene(SLoader.ProcessScene(TestScene2, "Assets/Scene2.yaml", false));
