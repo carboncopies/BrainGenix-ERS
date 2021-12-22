@@ -68,8 +68,24 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
         // Convert FIBITMAP* To Raw Image Bytes
+        unsigned char* RawImageData = FreeImage_GetBits(Model->TexturesToPushToGPU_[i].ImageData);
 
+        if (Model->TexturesToPushToGPU_[i].Channels == 4) {
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
+        } else {
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
+        }
+        glGenerateMipmap(GL_TEXTURE_2D);
+
+        // Append To Texture Index
+        Model->OpenGLTextureIDs_.push_back(TextureID);
     }
+
+    // Erase List To Save Memory
+    Model->TexturesToPushToGPU_.erase(Model->TexturesToPushToGPU_.begin(), Model->TexturesToPushToGPU_.end());
+
+
+
 
 }
 
@@ -172,6 +188,9 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
         Model->TexturesToPushToGPU_.push_back(DecodedTextures_[i].get());
     }
 
+
+    // Set Ready For GPU
+    Model->IsReadyForGPU = true;
 }
 
 
