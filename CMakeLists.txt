@@ -97,7 +97,7 @@ include_directories(${LIB_DIR}/tracy)
 disable_target_warnings(TracyClient)
 
 # Add MySQL Connector Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/mysql-connector)
+#add_subdirectory(${LIB_DIR}/mysql-connector)
 
 
 
