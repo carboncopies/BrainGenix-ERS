@@ -70,7 +70,9 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     std::string Name = Metadata["Name"].as<std::string>();
     long ModelID = Metadata["ModelID"].as<long>();
     
-
+    std::vector<std::string> TexturePaths;
+    std::vector<long> TextureIDs;
+    for ()
 
 
 
