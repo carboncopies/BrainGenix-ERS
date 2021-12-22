@@ -8,10 +8,94 @@ SceneData:
     AssetPositionX: -8.84043026
     AssetPositionY: -3.42952289e-09
     AssetPositionZ: 0
-    AssetRotationX: -5.08156263e-05
-    AssetRotationY: 70.4616241
-    AssetRotationZ: -4.78674883e-05
-    AssetScaleX: 0.249998569
-    AssetScaleY: 0.25
-    AssetScaleZ: 0.249998569
+    AssetRotationX: 71.1356277
+    AssetRotationY: -25.7632465
+    AssetRotationZ: -175.4198
+    AssetScaleX: 6.49033833
+    AssetScaleY: 6.49038363
+    AssetScaleZ: 6.49031734
+    FlipTextures: true
+  1:
+    AssetName: Frog
+    AssetType: Model
+    AssetID: 10
+    AssetPositionX: -8.84043026
+    AssetPositionY: -3.42952289e-09
+    AssetPositionZ: 0
+    AssetRotationX: 71.1356277
+    AssetRotationY: -25.7632465
+    AssetRotationZ: -175.4198
+    AssetScaleX: 6.49033833
+    AssetScaleY: 6.49038363
+    AssetScaleZ: 6.49031734
+    FlipTextures: true
+  2:
+    AssetName: Somethin
+    AssetType: Model
+    AssetID: 15
+    AssetPositionX: -8.84043026
+    AssetPositionY: -3.42952289e-09
+    AssetPositionZ: 0
+    AssetRotationX: 71.1356277
+    AssetRotationY: -25.7632465
+    AssetRotationZ: -175.4198
+    AssetScaleX: 6.49033833
+    AssetScaleY: 6.49038363
+    AssetScaleZ: 6.49031734
+    FlipTextures: true
+  3:
+    AssetName: Somethin
+    AssetType: Model
+    AssetID: 20
+    AssetPositionX: -8.84043026
+    AssetPositionY: -3.42952289e-09
+    AssetPositionZ: 0
+    AssetRotationX: 71.1356277
+    AssetRotationY: -25.7632465
+    AssetRotationZ: -175.4198
+    AssetScaleX: 6.49033833
+    AssetScaleY: 6.49038363
+    AssetScaleZ: 6.49031734
+    FlipTextures: true
+  4:
+    AssetName: Somethin
+    AssetType: Model
+    AssetID: 25
+    AssetPositionX: -8.84043026
+    AssetPositionY: -3.42952289e-09
+    AssetPositionZ: 0
+    AssetRotationX: 71.1356277
+    AssetRotationY: -25.7632465
+    AssetRotationZ: -175.4198
+    AssetScaleX: 6.49033833
+    AssetScaleY: 6.49038363
+    AssetScaleZ: 6.49031734
+    FlipTextures: true
+  5:
+    AssetName: Somethin
+    AssetType: Model
+    AssetID: 31
+    AssetPositionX: -8.84043026
+    AssetPositionY: -3.42952289e-09
+    AssetPositionZ: 0
+    AssetRotationX: 71.1356277
+    AssetRotationY: -25.7632465
+    AssetRotationZ: -175.4198
+    AssetScaleX: 6.49033833
+    AssetScaleY: 6.49038363
+    AssetScaleZ: 6.49031734
+    FlipTextures: true
+  6:
+    AssetName: Somethin
+    AssetType: Model
+    AssetID: 35
+    AssetPositionX: -8.84043026
+    AssetPositionY: -3.42952289e-09
+    AssetPositionZ: 0
+    AssetRotationX: 71.1356277
+    AssetRotationY: -25.7632465
+    AssetRotationZ: -175.4198
+    AssetScaleX: 6.49033833
+    AssetScaleY: 6.49038363
+    AssetScaleZ: 6.49031734
     FlipTextures: true
