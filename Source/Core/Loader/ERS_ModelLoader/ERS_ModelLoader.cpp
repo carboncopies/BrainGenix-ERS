@@ -61,10 +61,10 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
 void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool FlipTextures) {
 
 
-    // Read Metadata
+    // Read Metadata From Asset
     std::shared_ptr<ERS_STRUCT_IOData> ModelMetadata = std::make_shared<ERS_STRUCT_IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, ModelMetadata);
-    YAML::Load((const char*)ModelMetadata->Data.get());
+    YAML::Node Metadata = YAML::Load((const char*)ModelMetadata->Data.get());
 
 
 
