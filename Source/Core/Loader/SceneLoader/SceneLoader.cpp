@@ -45,7 +45,6 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(const char* ScenePath) {
 
 // SceneLoader Process Scene Function
 ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* ScenePath, bool UseMultithreading) {
-        std::cout<<"fdsafdsa\n";
 
     // Create Scene Instance
     ERS_OBJECT_SCENE Scene;
