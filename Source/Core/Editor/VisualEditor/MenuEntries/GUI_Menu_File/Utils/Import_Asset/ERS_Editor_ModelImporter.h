@@ -42,7 +42,6 @@
 #include <2DTexture.h>
 #include <Vertex.h>
 #include <FileIO.h>
-#include <TextureLoader.h>
 #include <Model.h>
 
 #include <ERS_STRUCT_SystemUtils.h>
