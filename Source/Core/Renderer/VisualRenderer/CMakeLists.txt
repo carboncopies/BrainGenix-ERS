@@ -30,8 +30,6 @@ target_link_libraries(VisualRenderer
     InputProcessor
     LoggingSystem
     ImageLoader
-    TextureLoader
-    ModelLoader
 
     Model
     Scene

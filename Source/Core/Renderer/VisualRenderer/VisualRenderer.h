@@ -30,8 +30,6 @@
 #include <Shader.h>
 #include <Model.h>
 #include <NoClip.h>
-#include <TextureLoader.h>
-#include <ModelLoader.h>
 #include <SceneManager.h>
 #include <SceneLoader.h>
 #include <ShaderLoader.h>
