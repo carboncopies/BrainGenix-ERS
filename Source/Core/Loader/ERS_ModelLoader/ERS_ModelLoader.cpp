@@ -302,9 +302,9 @@ ERS_OBJECT_MESH ERS_CLASS_ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMe
     // Process Materials
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, Model, Material, aiTextureType_DIFFUSE, "texture_diffuse");
-    std::vector<int> SpecularMaps = LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_SPECULAR, "texture_specular");
-    std::vector<int> NormalMaps = LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_NORMALS, "texture_normal");
-    std::vector<int> HeightMaps = LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_AMBIENT, "texture_height");
+    LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_SPECULAR, "texture_specular");
+    LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_NORMALS, "texture_normal");
+    LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_AMBIENT, "texture_height");
 
     // Return Populated Mesh
     return OutputMesh;
