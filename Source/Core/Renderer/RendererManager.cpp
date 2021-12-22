@@ -64,8 +64,8 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     // Setup Loading Subsystem
     ModelLoader_ = std::make_unique<ERS_CLASS_ModelLoader>(SystemUtils_);
 
-    // std::shared_ptr<ERS_OBJECT_MODEL> Test2 = std::make_shared<ERS_OBJECT_MODEL>();
-    // ModelLoader_->LoadModel(0, Test2);
+    std::shared_ptr<ERS_OBJECT_MODEL> Test2 = std::make_shared<ERS_OBJECT_MODEL>();
+    ModelLoader_->LoadModel(0, Test2);
 
     // Make Viewport
     VisualRenderer_->CreateViewport(std::make_shared<ERS_OBJECT_SHADER>(Shader_), "Viewport", Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
