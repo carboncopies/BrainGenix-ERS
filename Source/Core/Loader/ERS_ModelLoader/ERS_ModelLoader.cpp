@@ -57,6 +57,8 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 // Worker Thread
 void ERS_CLASS_ModelLoader::WorkerThread() {
 
+std::cout<<"Trhead Started!"<<std::endl;
+
     // Enter Loop
     bool ThreadShouldRun = true;
     while (ThreadShouldRun) {
