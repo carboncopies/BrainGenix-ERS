@@ -103,15 +103,15 @@ void ERS_CLASS_ModelLoader::WorkerThread() {
 // Updates The Current Scene, Loads In Models
 void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> ActiveScene) {
 
-    // Check List Of Models Currently Loading
-    std::unique_ptr<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>> ModelsCurrentlyLoading = std::make_unique<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>>(ActiveScene->ModelsLoading);
+    // Check List Of Models
+    std::unique_ptr<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>> Models = std::make_unique<std::vector<std::shared_ptr<ERS_OBJECT_MODEL>>>(ActiveScene->Models);
 
-    for (int i = 0; i < ModelsCurrentlyLoading->size(); i++) {
+    for (int i = 0; i < Models->size(); i++) {
 
-        if ((*ModelsCurrentlyLoading)[i]->IsReadyForGPU) {
+        if ((*Models)[i]->IsReadyForGPU) {
 
             std::cout<<"Processing!"<<std::endl;
-            ProcessGPU((*ModelsCurrentlyLoading)[i]);
+            ProcessGPU((*Models)[i]);
 
         }
 
