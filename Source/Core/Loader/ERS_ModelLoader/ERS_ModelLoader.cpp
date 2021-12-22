@@ -89,8 +89,15 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
 
     // Process Texture References, Setup Meshes
     for (int i = 0; i < Model->Meshes.size(); i++) {
-        for (int TextureIndex = 0; TextureIndex < Model->Meshes[i].TextureReferences_.size(); i++) { // IF TEXTURES DONT WORK, CHECK HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            Model->Meshes[i].TextureIDs.push_back(Model->OpenGLTextureIDs_[Model->Meshes[i].TextureReferences_[TextureIndex]]);
+        for (int Index = 0; Index < Model->Meshes[i].TextureReferences_.size(); i++) { // IF TEXTURES DONT WORK, CHECK HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            int TextureIndex = Model->Meshes[i].TextureReferences_[Index];
+            if (TextureIndex == -1) {
+                SystemUtils_->Logger_->Log("Failed To Find Corresponding Texture", 8);
+                Model->Meshes[i].TextureIDs.push_back(0);
+            } else {
+                Model->Meshes[i].TextureIDs.push_back(Model->OpenGLTextureIDs_[TextureIndex]);
+            }
+    
         }
         Model->Meshes[i].UseNewSystem = true;
         Model->Meshes[i].SetupMesh();
