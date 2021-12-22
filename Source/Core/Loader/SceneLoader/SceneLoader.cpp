@@ -163,14 +163,15 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
 
 
                 //Load Model 
-                ERS_OBJECT_MODEL Model = ModelLoader_->LoadModel(AssetID, FlipTextures);
+                ERS_OBJECT_MODEL Model;
+                ModelLoader_->LoadModel(AssetID, std::make_shared<ERS_OBJECT_MODEL>(Model), FlipTextures);
 
                 // Set Name
                 Model.Name = AssetName;
 
                 // Copy To Template Map
-                Model.IsTemplateModel = true;
-                TemplateModels_.insert({AssetPath, Model});
+                //Model.IsTemplateModel = true;
+                //TemplateModels_.insert({AssetPath, Model});
 
                 // Add Instance To Models Vector
                 Model.IsTemplateModel = false;
