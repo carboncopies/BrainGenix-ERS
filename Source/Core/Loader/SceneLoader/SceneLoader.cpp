@@ -106,6 +106,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
             Scene.Models[CurrentSize-1]->ApplyTransformations();
             Scene.Models[CurrentSize-1]->AssetID = AssetID;
             Scene.Models[CurrentSize-1]->Name = AssetName;
+            Scene.Models[CurrentSize-1]->FlipTextures = FlipTextures;
 
         }
 
