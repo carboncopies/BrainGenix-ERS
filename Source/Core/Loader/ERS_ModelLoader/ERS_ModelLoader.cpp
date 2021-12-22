@@ -62,7 +62,15 @@ FIBITMAP* ERS_CLASS_ModelLoader::LoadTexture(long ID) {
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(ID, ImageData);
 
     // Identify Image Format, Decode
-    
+    FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData->Data.get(), ImageData->Size_B);
+    FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
+    FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
+
+    // Deallocate FIImageData (ImageData IOData Struct Should Be Automatically Destroyed When Out Of Scope)
+    FreeImage_CloseMemory(FIImageData);
+
+    // Return Value
+    return Image;
 
 }
 
