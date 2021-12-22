@@ -122,6 +122,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
         return;
     }
 
+
     // Spawn Threads To Load Textures
     std::vector<std::future<ERS_OBJECT_TEXTURE_2D>> DecodedTextures_;
     for (int i = 0; i < TexturePaths.size(); i++) {
@@ -130,13 +131,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     }
 
 
-    // Clear Model Instance
-    Model->FlipTextures = FlipTextures;
-
-    std::map<std::string, ERS_OBJECT_TEXTURE_2D> PreloadedTextures_; // Stores Relative Path Of Texture As Key And Textures?
-    
-
-    // Read File
+    // Read Mesh
     Assimp::Importer Importer;
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Model With ID: ") + std::to_string(AssetID)).c_str(), 3);
 
@@ -150,11 +145,15 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
         return;
     }
 
-    // Process Root Node Recursively
+    // Decode Mesh, Create Texture Pointers
     ProcessNode(&(*Model), Scene->mRootNode, Scene, TexturePaths);
 
+    // Get Texture Images From Loader, Push Into Vector
+    for (int i = 0; i < DecodedTextures_.size(); i++) {
+        SystemUtils_->Logger_->Log(std::string(std::string("Getting Texture With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
+        Model->TexturesToPushToGPU_.push_back(DecodedTextures_[i].get());
 
-    // Setup Textures
+    }
 
 }
 
