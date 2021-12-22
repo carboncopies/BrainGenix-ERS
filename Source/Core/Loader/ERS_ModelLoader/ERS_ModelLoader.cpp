@@ -63,12 +63,8 @@ void ERS_CLASS_ModelLoader::WorkerThread() {
     while (ThreadShouldRun) {
 
         // Acquire Check Lock
-                std::cout<<"checking lock\n";
-
         BlockThread_.lock();
         if (ExitThreads_) {
-                std::cout<<"exiting\n";
-
             ThreadShouldRun = false;
             BlockThread_.unlock();
         } else {
@@ -76,8 +72,6 @@ void ERS_CLASS_ModelLoader::WorkerThread() {
             // Check If Items In Work Queue
             int Size = WorkItems_.size();
             if (Size > 0) {
-
-                std::cout<<"Working!"<<std::endl;
 
                 // Get Item, Remove From Queue, Unlock
                 std::shared_ptr<ERS_OBJECT_MODEL> WorkItem = WorkItems_[0];
@@ -96,10 +90,7 @@ void ERS_CLASS_ModelLoader::WorkerThread() {
             } else {
                 
                 // No Work Items, Unlock Mutex, Sleep Thread
-                std::cout<<"sleeping\n";
                 BlockThread_.unlock();
-
-                std::cout<<"sleeping2\n";
                 std::this_thread::sleep_for(std::chrono::milliseconds(20));
 
             }
