@@ -17,9 +17,14 @@ void ERS_OBJECT_MODEL::Draw(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
 
     std::cout<<glGetError()<<std::endl;
 
-    // Draw All Meshes
-    for (unsigned int i=0; i<Meshes.size(); i++) {
-        Meshes[i].Draw(Shader);
+
+    // Only Draw When Fully Ready
+    if (FullyReady) {
+
+        // Draw All Meshes
+        for (unsigned int i=0; i<Meshes.size(); i++) {
+            Meshes[i].Draw(Shader);
+        }
     }
 
 }
