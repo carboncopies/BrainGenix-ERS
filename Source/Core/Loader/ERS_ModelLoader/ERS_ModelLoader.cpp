@@ -274,6 +274,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
         for (YAML::const_iterator it=TexturePathNode.begin(); it!=TexturePathNode.end(); ++it) {
             TexturePaths.push_back(it->first.as<std::string>());
             TextureIDs.push_back(it->second.as<long>());
+            std::cout<<"ModelID: "<<ModelID<<" Texid: "<<it->second.as<long>()<<std::endl;
         }
     } catch(YAML::BadSubscript) {
         SystemUtils_->Logger_->Log(std::string(std::string("Error Loading Model '") + std::to_string(AssetID) + std::string("', Asset Metadata Corrupt")).c_str(), 9);
