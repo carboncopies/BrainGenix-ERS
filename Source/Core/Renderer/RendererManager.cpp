@@ -43,6 +43,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     SystemUtils_->Logger_->Log("Initializing GLFW", 5);
     InitializeGLFW();
 
+
     // Instantiate Renderers
     SystemUtils_->Logger_->Log("Instantiating Renderers", 5);
     VisualRenderer_ = std::make_shared<VisualRenderer>(SystemUtils_, Window_, Cursors3D_);
@@ -72,11 +73,11 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
 
     // Test Scene
-    YAML::Node TestScene = YAML::LoadFile("Assets/Scene.yaml");
+    YAML::Node TestScene = YAML::LoadFile("Assets/0.ERS");
     //YAML::Node TestScene2 = YAML::LoadFile("Assets/Scene2.yaml");
     //YAML::Node TestScene3 = YAML::LoadFile("Assets/Scene3.yaml");
     
-    SceneManager_->AddScene(SLoader.ProcessScene(TestScene, "Assets/Scene.yaml", false));
+    SceneManager_->AddScene(SLoader.ProcessScene(TestScene, "Assets/0.ERS", false));
     //SceneManager_->AddScene(SLoader.ProcessScene(TestScene2, "Assets/Scene2.yaml", false));
     //SceneManager_->AddScene(SLoader.ProcessScene(TestScene3, "Assets/Scene3.yaml", false));
 
