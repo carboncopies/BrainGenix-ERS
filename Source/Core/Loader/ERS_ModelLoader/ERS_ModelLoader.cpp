@@ -329,7 +329,7 @@ std::vector<int> ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<std::st
         // Calculate Texture Path
         aiString TextureString;
         Mat->GetTexture(Type, i, &TextureString);
-        std::string TextureIdentifier = std::string(std::string(Model->Directory)  + std::string("/") + std::string(TextureString.C_Str()));
+        std::string TextureIdentifier = std::string(std::string(TextureString.C_Str()));
 
         // Search Texture List For Index Of Same Match, Add -1 If Not Found
         int Index = -1;
