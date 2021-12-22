@@ -72,8 +72,18 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     
     std::vector<std::string> TexturePaths;
     std::vector<long> TextureIDs;
-    for ()
+    YAML::Node TexturePathNode = Metadata["TextureIDs"];
+    for (YAML::const_iterator it=TexturePathNode.begin(); it!=TexturePathNode.end(); ++it) {
+        TexturePaths.push_back(it->first.as<std::string>());
+        TextureIDs.push_back(it->second.as<long>());
+    }
 
+
+    // Spawn Threads To Load Textures
+    std::vector<std::future<FIBITMAP*>> DecodedTextures_;
+    for (int i = 0; i < TexturePaths.size(); i++) {
+        SystemUtils_->Logger_->Log(std::string(std::string("Starting Thread To Load Texture With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
+    }
 
 
 
@@ -84,18 +94,18 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     
 
     // Read File
-    Assimp::Importer Importer;
-    SystemUtils_->Logger_->Log(std::string(std::string("Loading Model With ID: ") + std::to_string(AssetID)).c_str(), 3);
+    // Assimp::Importer Importer;
+    // SystemUtils_->Logger_->Log(std::string(std::string("Loading Model With ID: ") + std::to_string(AssetID)).c_str(), 3);
 
-    std::shared_ptr<ERS_STRUCT_IOData> ModelData = std::make_shared<ERS_STRUCT_IOData>();
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ModelID, ModelData);
-    const aiScene* Scene = Importer.ReadFileFromMemory(ModelData->Data.get(), (int)ModelData->Size_B, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace, "");
+    // std::shared_ptr<ERS_STRUCT_IOData> ModelData = std::make_shared<ERS_STRUCT_IOData>();
+    // SystemUtils_->ERS_IOSubsystem_->ReadAsset(ModelID, ModelData);
+    // const aiScene* Scene = Importer.ReadFileFromMemory(ModelData->Data.get(), (int)ModelData->Size_B, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace, "");
 
-    // Log Errors
-    if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
-        SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
-        return;
-    }
+    // // Log Errors
+    // if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
+    //     SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
+    //     return;
+    // }
 
     // // Process Root Node Recursively
     // ProcessNode(&(*Model), Scene->mRootNode, Scene, ModelDirectory, false);
