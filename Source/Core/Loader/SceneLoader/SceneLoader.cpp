@@ -184,8 +184,6 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
     }
 
 
-    }
-
 
 
 
