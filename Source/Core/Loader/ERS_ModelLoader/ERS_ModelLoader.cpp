@@ -167,7 +167,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     YAML::Node Metadata = YAML::Load((const char*)ModelMetadata->Data.get());
 
     // Process Metadata
-    std::string Name;
+    std::string Name = "";
     long ModelID;
     std::vector<std::string> TexturePaths;
     std::vector<long> TextureIDs;
@@ -182,7 +182,13 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     } catch(YAML::BadSubscript) {
         SystemUtils_->Logger_->Log(std::string(std::string("Error Loading Model '") + std::to_string(AssetID) + std::string("', Asset Metadata Corrupt")).c_str(), 9);
         return;
-    }
+    } catch(YAML::TypedBadConversion<long>) {
+        SystemUtils_->Logger_->Log(std::string(std::string("Error Loading Model '") + std::to_string(AssetID) + std::string("', ModelID/TextureIDs Corrupt")).c_str(), 9);
+        return;        
+    } catch(YAML::TypedBadConversion<std::string>) {
+        SystemUtils_->Logger_->Log(std::string(std::string("Error Loading Model '") + std::to_string(AssetID) + std::string("', Model Name Corrupt")).c_str(), 9);
+        return;        
+    } 
 
 
     // Spawn Threads To Load Textures
