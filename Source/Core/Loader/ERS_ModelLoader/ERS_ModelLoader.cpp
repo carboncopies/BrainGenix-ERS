@@ -66,7 +66,10 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, ModelMetadata);
     YAML::Node Metadata = YAML::Load((const char*)ModelMetadata->Data.get());
 
-
+    // Process Metadata
+    std::string Name = Metadata["Name"].as<std::string>();
+    long ModelID = Metadata["ModelID"].as<long>();
+    
 
 
 
@@ -83,7 +86,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Model With ID: ") + std::to_string(AssetID)).c_str(), 3);
 
     std::shared_ptr<ERS_STRUCT_IOData> ModelData = std::make_shared<ERS_STRUCT_IOData>();
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, ModelData);
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ModelID, ModelData);
     const aiScene* Scene = Importer.ReadFileFromMemory(ModelData->Data.get(), (int)ModelData->Size_B, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace, "");
 
     // Log Errors
