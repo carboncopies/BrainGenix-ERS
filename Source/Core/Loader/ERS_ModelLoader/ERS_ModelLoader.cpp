@@ -152,7 +152,6 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     for (int i = 0; i < DecodedTextures_.size(); i++) {
         SystemUtils_->Logger_->Log(std::string(std::string("Getting Texture With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
         Model->TexturesToPushToGPU_.push_back(DecodedTextures_[i].get());
-
     }
 
 }
