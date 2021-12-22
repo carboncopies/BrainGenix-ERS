@@ -123,7 +123,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     }
 
     // Spawn Threads To Load Textures
-    std::vector<std::future<FIBITMAP*>> DecodedTextures_;
+    std::vector<std::future<ERS_OBJECT_TEXTURE_2D>> DecodedTextures_;
     for (int i = 0; i < TexturePaths.size(); i++) {
         SystemUtils_->Logger_->Log(std::string(std::string("Starting Thread To Load Texture With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
         DecodedTextures_.push_back(std::async(&ERS_CLASS_ModelLoader::LoadTexture, this, TextureIDs[i], FlipTextures));
