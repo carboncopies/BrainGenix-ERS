@@ -34,7 +34,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
 
     // Load Scene
-    ModelLoader_ = std::make_unique<ERS_CLASS_ModelLoader>(SystemUtils_);
+    ModelLoader_ = std::make_shared<ERS_CLASS_ModelLoader>(SystemUtils_);
     SceneLoader SLoader(SystemUtils_->Logger_, std::make_shared<ERS_CLASS_ModelLoader>(ModelLoader_));
     SceneManager_ = std::make_shared<SceneManager>(SystemUtils_->Logger_);
 
