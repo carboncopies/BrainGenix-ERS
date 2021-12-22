@@ -54,7 +54,11 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
 }
 
 
+// Loads A Texture With The Given ID
+FIBITMAP* ERS_CLASS_ModelLoader::LoadTexture(long ID) {
 
+
+}
 
 
 // Load Model From File
@@ -69,7 +73,6 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     // Process Metadata
     std::string Name = Metadata["Name"].as<std::string>();
     long ModelID = Metadata["ModelID"].as<long>();
-    
     std::vector<std::string> TexturePaths;
     std::vector<long> TextureIDs;
     YAML::Node TexturePathNode = Metadata["TextureIDs"];
@@ -83,6 +86,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     std::vector<std::future<FIBITMAP*>> DecodedTextures_;
     for (int i = 0; i < TexturePaths.size(); i++) {
         SystemUtils_->Logger_->Log(std::string(std::string("Starting Thread To Load Texture With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
+        DecodedTextures_.push_back(std::async(&ERS_CLASS_ModelLoader::LoadTexture, this, TextureIDs[i]));
     }
 
 

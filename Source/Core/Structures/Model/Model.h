@@ -38,25 +38,28 @@ struct ERS_OBJECT_MODEL {
 
     std::string AssetPath_;
 
-    bool GammaCorrection = false;
+    // Loading Config
+    bool CanDeferTextureLoading = false;
     bool HasTexturesLoaded = false;
     bool HasMeshLoaded = false;
     bool IsReadyForGPU = false;
-    bool FlipTextures = false;
 
-    // Model Metadata
+    // Model Config
+    bool GammaCorrection = false;
+    bool FlipTextures = false;
+    bool IsTemplateModel = false; /**<This indicates if transformations are allowd. Template models are copied and transformed for instances, and thus cannot be transformed.*/
+
     long MetadataID;
     long ModelDataID;
+    
     std::vector<long> TextureIDs;
     
+
+    // Model Information
     glm::vec3 ModelPosition = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::vec3 ModelRotation = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::vec3 ModelScale = glm::vec3(1.0f, 1.0f, 1.0f);
 
-    bool IsTemplateModel = false; /**<This indicates if transformations are allowd. Template models are copied and transformed for instances, and thus cannot be transformed.*/
-
-
-    // Model Position Information
     glm::mat4 SourceModelLocRotScale_ = glm::mat4(1.0f);
     glm::mat4 ModelLocRotScale_ = glm::mat4(1.0f);
 
