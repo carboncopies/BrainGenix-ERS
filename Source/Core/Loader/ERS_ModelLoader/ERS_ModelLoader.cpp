@@ -72,11 +72,19 @@ void ERS_CLASS_ModelLoader::WorkerThread() {
             int Size = WorkItems_.size();
             if (Size > 0) {
 
-                // Process Item
+                // Get Item, Remove From Queue, Unlock
                 std::shared_ptr<ERS_OBJECT_MODEL> WorkItem = WorkItems_[0];
-                WorkItems_.erase(WorkItems_.begin());
+                long WorkID = WorkIDs_[0];
+                bool FlipTexture = FlipTextures_[0];
 
-                
+                WorkItems_.erase(WorkItems_.begin());
+                WorkIDs_.erase(WorkIDs_.begin());
+                FlipTextures_.erase(FlipTextures_.begin());
+
+                BlockThread_.unlock();
+
+                // Process Item
+                LoadModel(WorkID, WorkItem, FlipTexture);
 
             } else {
                 
