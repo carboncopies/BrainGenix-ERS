@@ -84,12 +84,19 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
     // Erase List To Save Memory
     Model->TexturesToPushToGPU_.erase(Model->TexturesToPushToGPU_.begin(), Model->TexturesToPushToGPU_.end());
 
-
+    std::cout<<"1\n";
     // Process Texture References, Setup Meshes
     for (int i = 0; i < Model->Meshes.size(); i++) {
+
+    std::cout<<"1\n";
         for (int TextureIndex = 0; TextureIndex < Model->Meshes[i].TextureReferences_.size(); i++) { // IF TEXTURES DONT WORK, CHECK HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    std::cout<<"2\n";
+
             Model->Meshes[i].TextureIDs.push_back(Model->OpenGLTextureIDs_[TextureIndex]);
+
         }
+    std::cout<<"1\n";
+
         Model->Meshes[i].UseNewSystem = true;
         Model->Meshes[i].SetupMesh();
     }
