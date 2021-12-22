@@ -14,6 +14,7 @@
 // FIXME:
 // Cleanup Doxygen, fix headers, etc.
 // optionally optimize processgpu function to provide least amount of lag as possible
+// Add Placeholder meshes during loading
 
 // Constructor
 ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, int MaxModelLoadingThreads) {
