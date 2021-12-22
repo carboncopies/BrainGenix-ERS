@@ -20,7 +20,6 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 #include <Model.h>
-#include <ModelLoader.h>
 #include <Scene.h>
 #include <Mesh.h>
 #include <2DTexture.h>
