@@ -57,6 +57,7 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> A
 // make function to dispatch loading 
 // optionally optimize processgpu function to provide least amount of lag as possible
 
+// Process GPU Data (Must Be Done In Thread With OPENGL Context (should be main thread))
 void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) {
 
     // Push Textures To GPU RAM
