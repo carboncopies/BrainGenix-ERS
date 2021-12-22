@@ -301,10 +301,10 @@ ERS_OBJECT_MESH ERS_CLASS_ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMe
 
     // Process Materials
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, Model, Material, aiTextureType_DIFFUSE, "texture_diffuse");
-    LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_SPECULAR, "texture_specular");
-    LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_NORMALS, "texture_normal");
-    LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_AMBIENT, "texture_height");
+    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_DIFFUSE, "texture_diffuse");
+    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_SPECULAR, "texture_specular");
+    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_NORMALS, "texture_normal");
+    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_AMBIENT, "texture_height");
 
     // Return Populated Mesh
     return OutputMesh;
@@ -334,7 +334,7 @@ void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<int>* IDs, std::vec
 
         // Add To Output Vert
         IDs->push_back(Index);
-        Types->push_back(TypeName)
+        Types->push_back(TypeName);
     }
 
 
