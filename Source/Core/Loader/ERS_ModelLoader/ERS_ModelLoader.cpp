@@ -128,7 +128,17 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> A
 
 void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool FlipTextures = false) {
 
+    // Log Addition
+    SystemUtils_->Logger_->Log(std::string(std::string("Adding Model '") + std::to_string(AssetID) + std::string("' To Load Queue")).c_str(), 4);
+
     // Add To Queue
+    BlockThread_.lock();
+
+    WorkIDs_.push_back(AssetID);
+    WorkItems_.push_back(Model);
+    FlipTextures_.push_back(FlipTextures);
+
+    BlockThread_.unlock();
 
 }
 
