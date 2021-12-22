@@ -105,6 +105,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
             Scene.Models[CurrentSize-1]->SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
             Scene.Models[CurrentSize-1]->ApplyTransformations();
             Scene.Models[CurrentSize-1]->AssetID = AssetID;
+            Scene.Models[CurrentSize-1]->Name = AssetName;
 
         }
 
