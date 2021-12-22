@@ -81,14 +81,14 @@ void ERS_OBJECT_MESH::Draw(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
     unsigned int HeightHandel = 1;
 
     // Iterate Through Textures
-    for (unsigned int i = 0; i < Textures.size(); i++) {
+    for (unsigned int i = 0; i < TextureReferences_.size(); i++) {
 
         // Set To Proper Texture
         glActiveTexture(GL_TEXTURE0 + i);
 
         // Get Texture Number
         std::string Number;
-        std::string Name = Textures[i].Type;
+        std::string Name = TextureNames[i];
 
         // Detect Type
         if (Name == "texture_diffuse")
@@ -105,7 +105,7 @@ void ERS_OBJECT_MESH::Draw(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
         glUniform1i(glGetUniformLocation(Shader->ShaderProgram, (Name + Number).c_str()), i);
         
         // Bind Texture
-        glBindTexture(GL_TEXTURE_2D, Textures[i].ID);
+        glBindTexture(GL_TEXTURE_2D, TextureReferences_[i]);
 
     }
 
