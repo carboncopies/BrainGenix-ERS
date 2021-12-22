@@ -66,15 +66,6 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
         SceneItems.push_back(it->second);
     }
 
-    
-    // Vector For Processing
-    std::vector<std::string> ModelPaths;
-    std::vector<bool> ModelFlipTextures;
-    std::vector<std::string> ModelNames;
-    std::vector<glm::vec3> ModelPositions;
-    std::vector<glm::vec3> ModelRotations;
-    std::vector<glm::vec3> ModelScales;
-
 
     // Iterate Through Vector To Add Each Asset To Loading Queue Of Requested Type
     for (long i = 0; i < SceneDataNode.size(); i++) {
