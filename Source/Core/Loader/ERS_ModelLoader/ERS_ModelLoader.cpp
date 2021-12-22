@@ -228,7 +228,6 @@ ERS_OBJECT_TEXTURE_2D ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextu
     }
 
     // Get Metadata
-    std::cout<<ID<<std::endl;
     float Width = FreeImage_GetWidth(Image);
     float Height = FreeImage_GetHeight(Image);
     float Channels = FreeImage_GetLine(Image) / FreeImage_GetWidth(Image);
@@ -289,10 +288,11 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
 
 
     // Spawn Threads To Load Textures
-    std::vector<std::future<ERS_OBJECT_TEXTURE_2D>> DecodedTextures_;
+    std::vector<std::future<ERS_OBJECT_TEXTURE_2D>> DecodedTextures;
     for (int i = 0; i < TexturePaths.size(); i++) {
+        std::cout<<ModelID<<std::endl;
         SystemUtils_->Logger_->Log(std::string(std::string("Starting Thread To Load Texture With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
-        DecodedTextures_.push_back(std::async(&ERS_CLASS_ModelLoader::LoadTexture, this, TextureIDs[i], FlipTextures));
+        DecodedTextures.push_back(std::async(&ERS_CLASS_ModelLoader::LoadTexture, this, TextureIDs[i], FlipTextures));
     }
 
 
@@ -315,9 +315,9 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     ProcessNode(&(*Model), Scene->mRootNode, Scene, TexturePaths);
 
     // Get Texture Images From Loader, Push Into Vector
-    for (int i = 0; i < DecodedTextures_.size(); i++) {
+    for (int i = 0; i < DecodedTextures.size(); i++) {
         SystemUtils_->Logger_->Log(std::string(std::string("Getting Texture With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
-        Model->TexturesToPushToGPU_.push_back(DecodedTextures_[i].get());
+        Model->TexturesToPushToGPU_.push_back(DecodedTextures[i].get());
     }
 
 
