@@ -92,12 +92,12 @@ disable_target_warnings(assimp)
 add_subdirectory(${LIB_DIR}/backward)
 
 # Add Tracy Library (Not Header Only)
-# add_subdirectory(${LIB_DIR}/tracy)
-# include_directories(${LIB_DIR}/tracy)
-# disable_target_warnings(TracyClient)
+add_subdirectory(${LIB_DIR}/tracy)
+include_directories(${LIB_DIR}/tracy)
+disable_target_warnings(TracyClient)
 
 # Add MySQL Connector Library (Not Header Only)
-#add_subdirectory(${LIB_DIR}/mysql-connector)
+add_subdirectory(${LIB_DIR}/mysql-connector)
 
 
 
@@ -109,7 +109,7 @@ target_link_libraries(${PROJECT_NAME}
   yaml-cpp
   glad
   glfw
-  #TracyClient
+  TracyClient
 
   # Internal Libs
   ConfigurationLoader
