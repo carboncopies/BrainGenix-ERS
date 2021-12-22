@@ -76,12 +76,12 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
     // Test Scene
     YAML::Node TestScene = YAML::LoadFile("Assets/Scene.yaml");
-    YAML::Node TestScene2 = YAML::LoadFile("Assets/Scene2.yaml");
-    YAML::Node TestScene3 = YAML::LoadFile("Assets/Scene3.yaml");
+    //YAML::Node TestScene2 = YAML::LoadFile("Assets/Scene2.yaml");
+    //YAML::Node TestScene3 = YAML::LoadFile("Assets/Scene3.yaml");
     
     SceneManager_->AddScene(SLoader.ProcessScene(TestScene, "Assets/Scene.yaml", false));
-    SceneManager_->AddScene(SLoader.ProcessScene(TestScene2, "Assets/Scene2.yaml", false));
-    SceneManager_->AddScene(SLoader.ProcessScene(TestScene3, "Assets/Scene3.yaml", false));
+    //SceneManager_->AddScene(SLoader.ProcessScene(TestScene2, "Assets/Scene2.yaml", false));
+    //SceneManager_->AddScene(SLoader.ProcessScene(TestScene3, "Assets/Scene3.yaml", false));
 
 
 
