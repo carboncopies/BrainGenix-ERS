@@ -22,9 +22,13 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUt
     SystemUtils_->Logger_->Log("Initializing Model Loader", 5);
     FreeImage_Initialise();
 
-    // Set Max Threads
+    // Create Worker Threads
     SystemUtils_->Logger_->Log(std::string(std::string("Creating ") + std::to_string(MaxModelLoadingThreads) + std::string("Model Loading Threads")).c_str(), 4);
 
+    for (int i = 0; i < MaxModelLoadingThreads; i++) {
+        SystemUtils_->Logger_->Log(std::string(std::string("Creating Worker Thread ") + std::to_string(i)).c_str(), 3);
+        WorkerThreads_.push_back(std::thread(&ERS_CLASS_ModelLoader::WorkerThread, this));
+    }
 
 }
 
@@ -35,8 +39,27 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
     SystemUtils_->Logger_->Log("ERS_CLASS_ModelLoader Destructor Called", 6);
     FreeImage_DeInitialise();
 
+    // Shutdown Threads
+    SystemUtils_->Logger_->Log("Sending Join Command To Worker Threads", 5);
+    BlockThread_.lock();
+    ExitThreads_ = true;
+    BlockThread_.unlock();
+
+    SystemUtils_->Logger_->Log("Joining Worker Threads", 6);
+    for (int i = 0; i < WorkerThreads_.size(); i++) {
+        SystemUtils_->Logger_->Log(std::string(std::string("Joining Worker Thread ") + std::to_string(i)).c_str(), 3);
+        WorkerThreads_[i].join();
+    }
+    SystemUtils_->Logger_->Log("Finished Joining Worker Threads", 6);
+
 }
 
+// Worker Thread
+void ERS_CLASS_ModelLoader::WorkerThread() {
+
+
+
+}
 
 // Updates The Current Scene, Loads In Models
 void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> ActiveScene) {
