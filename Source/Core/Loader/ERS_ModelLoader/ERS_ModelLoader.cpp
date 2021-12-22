@@ -51,6 +51,12 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> A
 
 }
 
+// TODO: Make scene loader use this system,
+// make loader set isreadyforgpu var when done
+// make laoder in worker threads
+// make function to dispatch loading 
+// optionally optimize processgpu function to provide least amount of lag as possible
+
 void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) {
 
     // Push Textures To GPU RAM
