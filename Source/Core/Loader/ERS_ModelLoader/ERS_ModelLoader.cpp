@@ -57,7 +57,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
 
 
 // Loads A Texture With The Given ID
-FIBITMAP* ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures) {
+ERS_OBJECT_TEXTURE_2D ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures) {
 
     // Load Image Bytes Into Memory
     std::shared_ptr<ERS_STRUCT_IOData> ImageData = std::make_shared<ERS_STRUCT_IOData>();
@@ -68,11 +68,29 @@ FIBITMAP* ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures) {
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
     FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
 
+    // Flip If Needed
+    if (FlipTextures) {
+        FreeImage_FlipVertical(Image);
+    }
+
+    // Get Metadata
+    float Width = FreeImage_GetWidth(Image);
+    float Height = FreeImage_GetHeight(Image);
+    float Channels = FreeImage_GetLine(Image) / FreeImage_GetWidth(Image);
+
+    // Create Texture, Populate
+    ERS_OBJECT_TEXTURE_2D Texture;
+    Texture.Channels = Channels;
+    Texture.Height = Height;
+    Texture.Width = Width;
+    Texture.ImageData = Image;
+    Texture.HasImageData = true;
+
     // Deallocate FIImageData (ImageData IOData Struct Should Be Automatically Destroyed When Out Of Scope)
     FreeImage_CloseMemory(FIImageData);
 
     // Return Value
-    return Image;
+    return Texture;
 
 }
 

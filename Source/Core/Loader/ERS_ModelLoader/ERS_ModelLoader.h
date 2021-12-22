@@ -65,7 +65,7 @@ class ERS_CLASS_ModelLoader {
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Struct*/
 
 
-        FIBITMAP* LoadTexture(long ID, bool FlipTextures = false);
+        ERS_OBJECT_TEXTURE_2D LoadTexture(long ID, bool FlipTextures = false);
         void ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model); /**<Process the GPU stuff for each model*/
 
         /**
