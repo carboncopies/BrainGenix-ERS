@@ -23,7 +23,6 @@ target_link_libraries(ERS_SceneWriter
 target_link_libraries(ERS_SceneWriter
     LoggingSystem
     Model
-    ModelLoader
     Scene
     Meshes
     Textures
