@@ -12,6 +12,7 @@
 #include <ERS_ModelLoader.h>
 
 // FIXME:
+// Cleanup Doxygen, fix headers, etc.
 // optionally optimize processgpu function to provide least amount of lag as possible
 
 // Constructor
