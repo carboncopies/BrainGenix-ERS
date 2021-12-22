@@ -74,7 +74,7 @@ class ERS_CLASS_ModelLoader {
          * @param Node 
          * @param Scene 
          */
-        void ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene);
+        void ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, std::vector<std::string> TexturePaths);
 
         /**
          * @brief Process Meshes From Model.
@@ -83,7 +83,7 @@ class ERS_CLASS_ModelLoader {
          * @param Scene 
          * @return ERS_OBJECT_MESH 
          */
-        ERS_OBJECT_MESH ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene);
+        ERS_OBJECT_MESH ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, std::vector<std::string> TexturePaths);
 
         /**
          * @brief Load Textures From Model.

@@ -111,9 +111,10 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_M
     }
 
     // Process Root Node Recursively
-    ProcessNode(&(*Model), Scene->mRootNode, Scene, false);
+    ProcessNode(&(*Model), Scene->mRootNode, Scene, TexturePaths);
 
 
+    // Setup Textures
 
 }
 
@@ -140,9 +141,7 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, c
 ERS_OBJECT_MESH ERS_CLASS_ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, std::vector<std::string> TexturePaths) {
 
     // Create Data Holders
-    std::vector<ERS_OBJECT_VERTEX> Vertices;
-    std::vector<unsigned int> Indices;
-    std::vector<ERS_OBJECT_TEXTURE_2D> Textures;
+    ERS_OBJECT_MESH OutputMesh;
 
     // Iterate Through Meshes' Vertices
     for (unsigned int i = 0; i < Mesh->mNumVertices; i++) {
@@ -190,7 +189,7 @@ ERS_OBJECT_MESH ERS_CLASS_ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMe
             Vertex.TexCoords = glm::vec2(0.0f, 0.0f);
         }
 
-        Vertices.push_back(Vertex);
+        OutputMesh.Vertices.push_back(Vertex);
 
 
 
@@ -203,35 +202,22 @@ ERS_OBJECT_MESH ERS_CLASS_ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMe
 
         // Get Face Indices
         for (unsigned int j = 0; j < Face.mNumIndices; j++) {
-            Indices.push_back(Face.mIndices[j]);
+            OutputMesh.Indices.push_back(Face.mIndices[j]);
         }
     }
 
     // Process Materials
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
-
-
     std::vector<int> DiffuseMaps = LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_DIFFUSE, "texture_diffuse");
-    Textures.insert(Textures.end(), DiffuseMaps.begin(), DiffuseMaps.end());
-
+    OutputMesh.TextureReferences_.insert(OutputMesh.TextureReferences_.end(), DiffuseMaps.begin(), DiffuseMaps.end());
     std::vector<int> SpecularMaps = LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_SPECULAR, "texture_specular");
-    Textures.insert(Textures.end(), SpecularMaps.begin(), SpecularMaps.end());
-
+    OutputMesh.TextureReferences_.insert(OutputMesh.TextureReferences_.end(), SpecularMaps.begin(), SpecularMaps.end());
     std::vector<int> NormalMaps = LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_NORMALS, "texture_normal");
-    Textures.insert(Textures.end(), NormalMaps.begin(), NormalMaps.end());
-
+    OutputMesh.TextureReferences_.insert(OutputMesh.TextureReferences_.end(), NormalMaps.begin(), NormalMaps.end());
     std::vector<int> HeightMaps = LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_AMBIENT, "texture_height");
-    Textures.insert(Textures.end(), HeightMaps.begin(), HeightMaps.end());
+    OutputMesh.TextureReferences_.insert(OutputMesh.TextureReferences_.end(), HeightMaps.begin(), HeightMaps.end());
 
-    // Setup Mesh And Return
-    ERS_OBJECT_MESH OutputMesh;
-    OutputMesh.Vertices = Vertices;
-    OutputMesh.Textures = Textures;
-    OutputMesh.Indices = Indices;
-
-    if (!IsThread) { // This Calls OpenGL Parameters, Is Not Thread Safe. Must be deferred for multithreaded loading
-        OutputMesh.SetupMesh();
-    }
+    // Return Populated Mesh
     return OutputMesh;
 
 }
