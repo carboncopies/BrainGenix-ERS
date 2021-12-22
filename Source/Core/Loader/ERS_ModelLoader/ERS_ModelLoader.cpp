@@ -72,6 +72,8 @@ void ERS_CLASS_ModelLoader::WorkerThread() {
             int Size = WorkItems_.size();
             if (Size > 0) {
 
+                std::cout<<"Working!"<<std::endl;
+
                 // Get Item, Remove From Queue, Unlock
                 std::shared_ptr<ERS_OBJECT_MODEL> WorkItem = WorkItems_[0];
                 long WorkID = WorkIDs_[0];
