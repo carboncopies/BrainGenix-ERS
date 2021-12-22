@@ -33,6 +33,7 @@ struct ERS_OBJECT_MODEL {
 
     // NEW STUFF HERE
     std::vector<ERS_OBJECT_TEXTURE_2D> TexturesToPushToGPU_;
+    std::vector<unsigned int> OpenGLTextureIDs_;
 
 
 
