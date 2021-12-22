@@ -68,7 +68,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
 
     std::shared_ptr<ERS_OBJECT_MODEL> Test2 = std::make_shared<ERS_OBJECT_MODEL>();
-    ModelLoader_->LoadModel(6, Test2);
+    ModelLoader_->LoadModel(7, Test2);
     ModelLoader_->ProcessGPU(Test2);
 
 
