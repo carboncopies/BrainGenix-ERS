@@ -32,12 +32,7 @@ struct ERS_OBJECT_SCENE{
     YAML::Node SceneData; /**<YAML::Node Containing Copy Of Raw Scene Information*/
 
     // List Of Required Materials (For Now, Can Only Be Models)
-    std::vector<ERS_OBJECT_MODEL> Models; /**<Vector Containing Models That Are Parts Of The Scene*/
-
-
-    std::vector<std::shared_ptr<ERS_OBJECT_MODEL>> ModelsLoading; /**<List of models currently loading. Will attempt to render anyway unless manually suppressed*/
-    std::vector<std::shared_ptr<ERS_OBJECT_MODEL>> ModelsLoaded; /**<List of pointers to already loaded models*/
-
+    std::vector<std::shared_ptr<ERS_OBJECT_MODEL>> Models; /**<List of models currently loading. Will attempt to render anyway unless manually suppressed*/
 
     // Model That's Currently Selected
     int SelectedModel = 0; /**<The Model That Is Currently Selected*/
