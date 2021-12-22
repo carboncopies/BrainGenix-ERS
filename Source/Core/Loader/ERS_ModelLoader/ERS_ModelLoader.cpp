@@ -301,14 +301,10 @@ ERS_OBJECT_MESH ERS_CLASS_ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMe
 
     // Process Materials
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
-    std::vector<int> DiffuseMaps = LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_DIFFUSE, "texture_diffuse");
-    OutputMesh.TextureReferences_.insert(OutputMesh.TextureReferences_.end(), DiffuseMaps.begin(), DiffuseMaps.end());
+    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, Model, Material, aiTextureType_DIFFUSE, "texture_diffuse");
     std::vector<int> SpecularMaps = LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_SPECULAR, "texture_specular");
-    OutputMesh.TextureReferences_.insert(OutputMesh.TextureReferences_.end(), SpecularMaps.begin(), SpecularMaps.end());
     std::vector<int> NormalMaps = LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_NORMALS, "texture_normal");
-    OutputMesh.TextureReferences_.insert(OutputMesh.TextureReferences_.end(), NormalMaps.begin(), NormalMaps.end());
     std::vector<int> HeightMaps = LoadMaterialTextures(TexturePaths, Model, Material, aiTextureType_AMBIENT, "texture_height");
-    OutputMesh.TextureReferences_.insert(OutputMesh.TextureReferences_.end(), HeightMaps.begin(), HeightMaps.end());
 
     // Return Populated Mesh
     return OutputMesh;
@@ -316,10 +312,7 @@ ERS_OBJECT_MESH ERS_CLASS_ModelLoader::ProcessMesh(ERS_OBJECT_MODEL* Model, aiMe
 }
 
 // Check Material Textures
-std::vector<int> ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<std::string> TextureList, ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName) {
-
-    // Output Vector
-    std::vector<int> OutputVector;
+void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<int>* IDs, std::vector<std::string>* Types, std::vector<std::string> TextureList, ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName) {
 
     // Iterate Through Textures
     for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {
@@ -340,11 +333,10 @@ std::vector<int> ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<std::st
         }
 
         // Add To Output Vert
-        OutputVector.push_back(Index);
+        IDs->push_back(Index);
+        Types->push_back(TypeName)
     }
 
-    // Return Output
-    return OutputVector;
 
 }
 

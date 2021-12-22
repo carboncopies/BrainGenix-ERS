@@ -92,7 +92,7 @@ class ERS_CLASS_ModelLoader {
          * @param TypeName 
          * @return std::vector<ERS_OBJECT_TEXTURE_2D> 
          */
-        std::vector<int> LoadMaterialTextures(std::vector<std::string> TextureList, ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName);
+        void LoadMaterialTextures(std::vector<int>* IDs, std::vector<std::string>* Types, std::vector<std::string> TextureList, ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName);
 
 
     public:
