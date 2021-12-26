@@ -97,8 +97,11 @@ include_directories(${LIB_DIR}/tracy)
 disable_target_warnings(TracyClient)
 
 # Add MySQL Connector Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/mysql-connector)
-
+if (WIN32)
+  add_subdirectory(${LIB_DIR}/mysql-connector-windows)
+else()
+  add_subdirectory(${LIB_DIR}/mysql-connector-linux)
+endif()
 
 
 # Add Main.cpp
