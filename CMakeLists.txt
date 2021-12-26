@@ -176,8 +176,13 @@ add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ModelWriter)
 
 
 # COPY FILES TO BINARY DIR
-file(COPY "${SRC_DIR}/Config.yaml" DESTINATION "${BIN_DIR}")
 file(COPY "${SRC_DIR}/Assets/" DESTINATION "${BIN_DIR}/Assets")
 file(COPY "${SRC_DIR}/EditorAssets/" DESTINATION "${BIN_DIR}/EditorAssets")
 file(COPY "${SRC_DIR}/EditorAssets/DefaultLayout/imgui.ini" DESTINATION "${BIN_DIR}")
 file(COPY "${SRC_DIR}/Shaders/" DESTINATION "${BIN_DIR}/Shaders")
+
+# Set Configuration Based On Platform
+if (WIN32)
+  file(COPY "${SRC_DIR}/Config-Windows.yaml" DESTINATION "${BIN_DIR}/Config.yaml")
+else()
+  file(COPY "${SRC_DIR}/Config-Linux.yaml" DESTINATION "${BIN_DIR}/Config.yaml")
