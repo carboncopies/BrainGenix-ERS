@@ -42,10 +42,12 @@ void GUI_Menu_File::Draw() {
     // File Menu
     if (ImGui::BeginMenu("File")) {
 
-        // Import Option
-        if (ImGui::MenuItem("Import Model")) {
-            ImportAsset_->OpenFileDialog();
-        ImGui::Separator();
+        // Import Option, Disabled On Windows Due To Filesystem Issues
+        if (SystemUtils_->IsLinux_) {
+            if (ImGui::MenuItem("Import Model")) {
+                ImportAsset_->OpenFileDialog();
+            ImGui::Separator();
+            }
         }
 
         // Save Options
