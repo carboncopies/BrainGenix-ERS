@@ -37,5 +37,6 @@ struct ERS_STRUCT_SystemUtils {
     std::shared_ptr<bool> SystemShouldRun_; /**<Pointer To Variable Setting If System Should Run Or Not*/
     int RenderWidth_ = 0; /**<Width of the display being rendered to (if using a window, this is the size of the window)*/
     int RenderHeight_ = 0; /**<Height of the display being rendered to (if using a window, this is the size of the window)*/
+    bool IsLinux_ = true; /**<Boolean Value Set To True When Binary Is Compiled For Linux, False Otherwise*/
 
 };
