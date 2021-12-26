@@ -46,8 +46,8 @@ void GUI_Menu_File::Draw() {
         if (SystemUtils_->IsLinux_) {
             if (ImGui::MenuItem("Import Model")) {
                 ImportAsset_->OpenFileDialog();
-            ImGui::Separator();
             }
+            ImGui::Separator();
         }
 
         // Save Options
