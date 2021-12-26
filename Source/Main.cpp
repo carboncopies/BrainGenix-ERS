@@ -67,6 +67,14 @@ int main() {
     SystemUtils->Logger_ = sERSLogger;
     sERSLogger->Log("Initialized Logging System", 5);
 
+    // Copy Config Params
+    try {
+        sERSLogger->Log("Reading Configuration File For 'IsLinux'", 2);
+        SystemUtils->IsLinux_ = sERSLocalSystemConfiguration["IsLinux"].as<bool>();
+    } catch(YAML::BadSubscript) {
+        sERSLogger->Log("Error Reading Configuration File For 'IsLinux' Boolean Value, Defaulting To False", 9);
+    }
+
     // Startup IO Subsystem And Other Related Systems
     std::shared_ptr<ERS_CLASS_InputOutputSubsystem> sERSIOSubSystem = std::make_shared<ERS_CLASS_InputOutputSubsystem>(sERSLogger, sERSLocalSystemConfiguration);
     SystemUtils->ERS_IOSubsystem_ = sERSIOSubSystem;

@@ -13,7 +13,7 @@ MaxFramesInFlight: 2
 
 # System Settings
 ShowEditorDebugMenu: True
-OperatingSystem: "Windows"
+IsLinux: False
 
 # Database Loading Settings #
 UseDatabaseLoading: False
