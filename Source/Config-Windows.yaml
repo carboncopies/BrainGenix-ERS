@@ -11,9 +11,9 @@ RenderHeight: 600
 EnableValidationLayers: True
 MaxFramesInFlight: 2
 
-# Debug Settings
+# System Settings
 ShowEditorDebugMenu: True
-
+OperatingSystem: "Windows"
 
 # Database Loading Settings #
 UseDatabaseLoading: False
