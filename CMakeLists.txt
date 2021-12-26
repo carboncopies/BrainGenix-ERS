@@ -183,7 +183,7 @@ file(COPY "${SRC_DIR}/Shaders/" DESTINATION "${BIN_DIR}/Shaders")
 
 # Set Configuration Based On Platform
 if (WIN32)
-  file(COPY "${SRC_DIR}/Config-Windows.yaml" DESTINATION "${BIN_DIR}/Config.yaml")
+  configure_file("${SRC_DIR}/Config-Windows.yaml" "${BIN_DIR}/Config.yaml" COPYONLY)
 else()
-  file(COPY "${SRC_DIR}/Config-Linux.yaml" DESTINATION "${BIN_DIR}/Config.yaml")
+  configure_file("${SRC_DIR}/Config-Linux.yaml" "${BIN_DIR}/Config.yaml" COPYONLY)
 endif()
