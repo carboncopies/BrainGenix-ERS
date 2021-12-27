@@ -38,8 +38,34 @@ void Window_About::Draw() {
         ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
 
         // Write Text
-        ImGui::Text("");
-        
+        ImGui::Text("You're running BrainGenix-ERS. ERS (Environment Rendering System) is a part of the software suite designed to facilitate Whole Brain Emulation.");
+
+        // Operating System Status
+        ImGui::BeginChild("OS Status");
+        if (!SystemUtils_->IsLinux_) {
+            ImGui::TextColored(ImVec4(0.8f, 0.2f, 0.2f, 1.0f), "Some features are not available in Windows. To use all features, please use Linux/BSD.");
+        } else {
+            ImGui::Text("All features are enabled. Congrats on using Open Source Software!");
+        }
+        ImGui::EndChild();
+
+        // License Info
+        ImGui::BeginChild("License");
+        ImGui::Text("This program is free software: you can redistribute it and/or modify"
+                    "it under the terms of the GNU Affero General Public License as"
+                    "published by the Free Software Foundation, either version 3 of the"
+                    "License, or (at your option) any later version."
+
+                    "This program is distributed in the hope that it will be useful,"
+                    "but WITHOUT ANY WARRANTY; without even the implied warranty of"
+                    "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the"
+                    "GNU Affero General Public License for more details."
+
+                    "You should have received a copy of the GNU Affero General Public License"
+                    "along with this program.  If not, see <https://www.gnu.org/licenses/>.");
+        ImGui::EndChild();
+
+
 
     ImGui::End();
     }
