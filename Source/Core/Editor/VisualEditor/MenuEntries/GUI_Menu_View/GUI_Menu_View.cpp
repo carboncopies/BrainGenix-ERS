@@ -25,6 +25,7 @@ GUI_Menu_View::GUI_Menu_View(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils
 
     // Create Class Instances
     Window_ThemeSelector_ = std::make_unique<Window_ThemeSelector>(ThemeManager_); 
+    Window_About_ = std::make_unique<Window_About>(SystemUtils_);
 
 
 }
@@ -52,6 +53,12 @@ void GUI_Menu_View::Draw() {
             ShowFontPicker_ = true;
         }
 
+        ImGui::Separator();
+
+        if (ImGui::MenuItem("About")) {
+            Window_About_->Enabled_ = true;
+        }
+
 
     ImGui::EndMenu();
     }
@@ -59,6 +66,7 @@ void GUI_Menu_View::Draw() {
 
     // Draw Windows
     Window_ThemeSelector_->Draw();
+    Window_About_->Draw();
     FontManager_->FontSelectorWindow(&ShowFontPicker_);
 
 }

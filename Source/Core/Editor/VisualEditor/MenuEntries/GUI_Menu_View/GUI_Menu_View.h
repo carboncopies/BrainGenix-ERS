@@ -30,6 +30,7 @@
 
 #include <GUI_Window_ThemeSelector.h>
 
+#include <GUI_Window_About.h>
 
 
 
@@ -47,6 +48,7 @@ class GUI_Menu_View {
         std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Theme Manager Instance Ptr*/
         std::unique_ptr<Window_ThemeSelector> Window_ThemeSelector_; /**<Theme Selector Window*/
         std::shared_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
+        std::unique_ptr<Window_About> Window_About_; /**<Pointer to about window*/
 
         // Window Show/Hide Vars
         bool ShowFontPicker_ = false; /**<Control Varaible to show/hide font picker window*/
