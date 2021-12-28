@@ -41,6 +41,7 @@ void Window_About::Draw() {
         ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Feature Status:");
 
         // Operating System Status
+        ImGui::Separator();
         if (!SystemUtils_->IsLinux_) {
             ImGui::TextColored(ImVec4(0.8f, 0.2f, 0.2f, 1.0f), "Some features are not available in Windows. To use all features, please use Linux/BSD.");
         } else {
@@ -48,6 +49,7 @@ void Window_About::Draw() {
         }
 
         // License Info
+        ImGui::Separator();
         ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "License:");
         ImGui::TextWrapped("This program is free software: you can redistribute it and/or modify "
                     "it under the terms of the GNU Affero General Public License as "
