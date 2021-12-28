@@ -38,7 +38,7 @@ void Window_About::Draw() {
         ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
 
         // Write Text
-        ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "About");
+        ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Version");
 
         // Operating System Status
         ImGui::Separator();
