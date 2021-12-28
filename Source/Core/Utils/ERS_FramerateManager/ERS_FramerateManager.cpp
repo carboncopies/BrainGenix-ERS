@@ -50,9 +50,9 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     FrameEndTime_ = std::chrono::duration<double>(Clock_.now().time_since_epoch()).count();
 
     // Calculate Delta Time
-    double FrameTime = (FrameEndTime_ - FrameStartTime_) / 1000000000.0f;
+    double FrameTime = (FrameEndTime_ - FrameStartTime_);
     double FrameDelta = 1.0f/TargetFrameRate_;
-    double TargetTime = (FrameEndTime_ / 1000000000.0f) + FrameDelta;
+    double TargetTime = (FrameEndTime_) + FrameDelta;
     std::cout<<1/FrameTime<<std::endl;
 
 
