@@ -31,6 +31,7 @@ void Widget_RenderingSettings::Draw() {
             ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor_);
             ImGui::NewLine();
 
+            // Framerate Cap
 
 
         // End System Controls Window
