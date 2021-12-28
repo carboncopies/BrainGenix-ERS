@@ -44,7 +44,7 @@ void Window_About::Draw() {
         if (!SystemUtils_->IsLinux_) {
             ImGui::TextColored(ImVec4(0.8f, 0.2f, 0.2f, 1.0f), "Some features are not available in Windows. To use all features, please use Linux/BSD.");
         } else {
-            ImGui::Text("All features are enabled. Congrats on using Open Source Software!");
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "All features are enabled. Congrats on using Open Source Software!");
         }
 
         // License Info
