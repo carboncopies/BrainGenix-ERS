@@ -34,7 +34,6 @@ class Widget_RenderingSettings {
 
         ImVec4 ClearColor_ = ImVec4(0.2f, 0.2f, 0.2f, 1.0f); /**<Background Clearing Color */
         bool OpenGLDrawLines_ = false; /**<Default Rendering Mode */
-        bool HasFramerateChanged_ = true; /**<Update framerate when true, ignore when false*/
         int TargetFrameRate_ = 60; /**<The target framerate for the system*/
 
     public:

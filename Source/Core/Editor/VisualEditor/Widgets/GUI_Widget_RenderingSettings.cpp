@@ -32,6 +32,11 @@ void Widget_RenderingSettings::Draw() {
             ImGui::NewLine();
 
             // Framerate Cap
+            int OldFrameRate = TargetFrameRate_;
+            ImGui::SliderInt("Target Framerate", &TargetFrameRate_, 10, 100);
+            if (OldFrameRate != TargetFrameRate_) {
+                
+            }
 
 
         // End System Controls Window
