@@ -19,6 +19,8 @@ set_property(TARGET ERS_FramerateManager PROPERTY CXX_STANDARD 17)
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_FramerateManager
+    glad
+    glfw
     )
 
 # Link Internal Libs

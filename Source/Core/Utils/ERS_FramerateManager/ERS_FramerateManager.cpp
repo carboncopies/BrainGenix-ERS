@@ -53,7 +53,7 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     double FrameTime = (FrameEndTime_ - FrameStartTime_) / 1000000000.0f;
     double FrameDelta = 1.0f/TargetFrameRate_;
     double TargetTime = (FrameEndTime_ / 1000000000.0f) + FrameDelta;
-    std::cout<<FrameDelta<<std::endl;
+    std::cout<<1/FrameTime<<std::endl;
 
 
     FrameSamples_.push_back(FrameTime);
