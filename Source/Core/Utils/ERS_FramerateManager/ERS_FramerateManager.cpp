@@ -50,8 +50,16 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     FrameEndTime_ = Clock_.now();
 
     // Calculate Delta Time
-    double FrameTime = std::chrono::duration_cast<std::chrono::nanoseconds>(FrameEndTime_ - FrameStartTime_).count() / 1000000.0f;
-    std::cout<<FrameTime<<std::endl;
+    double FrameTime = std::chrono::duration_cast<std::chrono::nanoseconds>(FrameEndTime_ - FrameStartTime_).count() / 1000000000.0f;
+
+    ActualFrameTimes_.push_back(FrameTime);
+    if (ActualFrameTimes_.size() > 1000) {
+        ActualFrameTimes_.erase(ActualFrameTimes_.begin());
+    }
+
+    // Calc Average
+    double SumFrameTimes = 0.0f;
+    for (int i = 0; )
 
 }
 
