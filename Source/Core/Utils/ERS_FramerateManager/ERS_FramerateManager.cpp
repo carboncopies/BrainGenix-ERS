@@ -78,7 +78,7 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     }
 
     // Sleep For Duration
-    std::this_thread::sleep_until(TargetTime);
+    std::this_thread::sleep_until(std::chrono::system_clock::from_time_t(TargetTime));
 
 }
 
