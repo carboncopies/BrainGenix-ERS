@@ -85,4 +85,11 @@ public:
      */
     void SetTargetFramerate(int TargetFramerate);
 
+    /**
+     * @brief Get the Last Frame Time, and return as float
+     * 
+     * @return float 
+     */
+    float GetLastFrameTime();
+
 };

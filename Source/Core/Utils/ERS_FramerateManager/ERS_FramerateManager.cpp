@@ -54,3 +54,11 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     std::cout<<FrameTime<<std::endl;
 
 }
+
+// Get Last Frame Time
+float ERS_CLASS_FramerateManager::GetLastFrameTime() {
+
+    // Return Averate Frame Time
+    return AverageFrameTime_;
+
+}
