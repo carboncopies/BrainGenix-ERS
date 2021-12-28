@@ -30,7 +30,7 @@ void ERS_CLASS_FramerateManager::SetTargetFramerate(int Framerate) {
     TargetFrameRate_ = Framerate;
 
     // Calculate Target Frame Time
-    TargetFrameTime_ = 1/Framerate;
+    //TargetFrameTime_ = 1/Framerate;
 
 }
 
@@ -53,6 +53,7 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     double FrameTime = (FrameEndTime_ - FrameStartTime_) / 1000000000.0f;
     double FrameDelta = 1.0f/TargetFrameRate_;
     double TargetTime = (FrameEndTime_ / 1000000000.0f) + FrameDelta;
+    std::cout<<FrameDelta<<std::endl;
 
 
     FrameSamples_.push_back(FrameTime);
