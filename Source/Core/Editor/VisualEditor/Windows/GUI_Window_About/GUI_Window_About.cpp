@@ -38,7 +38,7 @@ void Window_About::Draw() {
         ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
 
         // Write Text
-        ImGui::Text("You're running BrainGenix-ERS. ERS (Environment Rendering System) is a part of the software suite designed to facilitate Whole Brain Emulation.");
+        ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Feature Status:");
 
         // Operating System Status
         if (!SystemUtils_->IsLinux_) {
@@ -48,17 +48,18 @@ void Window_About::Draw() {
         }
 
         // License Info
-        ImGui::Text("This program is free software: you can redistribute it and/or modify"
-                    "it under the terms of the GNU Affero General Public License as"
-                    "published by the Free Software Foundation, either version 3 of the"
-                    "License, or (at your option) any later version."
+        ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "License:");
+        ImGui::Text("This program is free software: you can redistribute it and/or modify "
+                    "it under the terms of the GNU Affero General Public License as "
+                    "published by the Free Software Foundation, either version 3 of the "
+                    "License, or (at your option) any later version. "
 
-                    "This program is distributed in the hope that it will be useful,"
-                    "but WITHOUT ANY WARRANTY; without even the implied warranty of"
-                    "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the"
-                    "GNU Affero General Public License for more details."
+                    "This program is distributed in the hope that it will be useful, "
+                    "but WITHOUT ANY WARRANTY; without even the implied warranty of "
+                    "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the "
+                    "GNU Affero General Public License for more details. "
 
-                    "You should have received a copy of the GNU Affero General Public License"
+                    "You should have received a copy of the GNU Affero General Public License "
                     "along with this program.  If not, see <https://www.gnu.org/licenses/>.");
 
 
