@@ -52,6 +52,10 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     // Calculate Delta Time
     double FrameTime = std::chrono::duration_cast<std::chrono::nanoseconds>(FrameEndTime_ - FrameStartTime_).count() / 1000000000.0f;
 
+    FrameSamples_.push_back(FrameTime);
+    if (FrameSamples_.size() > NumberSamples_) {
+        FrameSamples_.erase(FrameSamples_.begin());
+    }
     ActualFrameTimes_.push_back(FrameTime);
     if (ActualFrameTimes_.size() > 1000) {
         ActualFrameTimes_.erase(ActualFrameTimes_.begin());
@@ -59,7 +63,16 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
 
     // Calc Average
     double SumFrameTimes = 0.0f;
-    for (int i = 0; )
+    for (int i = 0; i < FrameSamples_.size(); i++) {
+        SumFrameTimes += FrameSamples_[i];
+    }
+    AverageFrameTime_ = SumFrameTimes / FrameSamples_.size();
+
+    // Add To Avg Array
+    AverageFrameTimes_.push_back(AverageFrameTime_);
+    if (AverageFrameTimes_.size() > 1000) {
+        AverageFrameTimes_.erase(AverageFrameTimes_.begin());
+    }
 
 }
 
