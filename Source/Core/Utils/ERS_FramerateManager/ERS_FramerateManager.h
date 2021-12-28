@@ -36,13 +36,15 @@ private:
     int TargetFrameRate_; /**<Target Frame Rate In FPS*/
     float TargetFrameTime_; /**<Target Frame Time In MS*/
 
-    double FrameStartTime_; /**<Starting Time Of Frame*/
-    double FrameEndTime_; /**<Ending Time Of Frame*/
+    auto FrameStartTime_; /**<Starting Time Of Frame*/
+    auto FrameEndTime_; /**<Ending Time Of Frame*/
+    float AverageFrameTime_; /**<Float representing the average time in ms*/
+    int NumberSamples_ = 20; /**<Set number of samples used in average*/
 
 // Public Info
 public:
 
-    std::vector<double> ActualFrameTimes_; /**<List of actual measured frame times in seconds*/
+    std::vector<double> ActualFrameTimes_; /**<List of last thousand actual measured frame times in seconds*/
     
 // Public Methods
 public:
