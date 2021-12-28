@@ -39,7 +39,7 @@ void ERS_CLASS_FramerateManager::SetTargetFramerate(int Framerate) {
 void ERS_CLASS_FramerateManager::StartNewFrame() {
 
     // Get Current Time, Set To Start Time
-    FrameStartTime_ = Clock_.now();
+    FrameStartTime_ = std::chrono::duration<double>(Clock_.now().time_since_epoch()).count();
 
 }
 
@@ -47,12 +47,12 @@ void ERS_CLASS_FramerateManager::StartNewFrame() {
 void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
 
     // Get Current Time
-    FrameEndTime_ = Clock_.now();
+    FrameEndTime_ = std::chrono::duration<double>(Clock_.now().time_since_epoch()).count();
 
     // Calculate Delta Time
-    double FrameTime = std::chrono::duration_cast<std::chrono::nanoseconds>(FrameEndTime_ - FrameStartTime_).count() / 1000000000.0f;
+    double FrameTime = (FrameEndTime_ - FrameStartTime_) / 1000000000.0f;
     double FrameDelta = 1.0f/TargetFrameRate_;
-    double TargetTime = (std::chrono::duration_cast<std::chrono::nanoseconds>(FrameEndTime_).count() / 1000000000.0f) + FrameDelta;
+    double TargetTime = (FrameEndTime_ / 1000000000.0f) + FrameDelta;
 
 
     FrameSamples_.push_back(FrameTime);
@@ -78,7 +78,7 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     }
 
     // Sleep For Duration
-    std::this_thread::sleep_until(std::chrono::nanoseconds(TargetTime));
+    std::this_thread::sleep_until(TargetTime);
 
 }
 

@@ -36,8 +36,8 @@ private:
     std::chrono::high_resolution_clock Clock_; /**<High Res Clock Used For Frame Time Calcs*/
     int TargetFrameRate_ = 60; /**<Target Frame Rate In FPS*/
 
-    std::chrono::_V2::system_clock::time_point FrameStartTime_; /**<Starting Time Of Frame*/
-    std::chrono::_V2::system_clock::time_point FrameEndTime_; /**<Ending Time Of Frame*/
+    double FrameStartTime_; /**<Starting Time Of Frame*/
+    double FrameEndTime_; /**<Ending Time Of Frame*/
     float AverageFrameTime_; /**<Float representing the average time in ms*/
     int NumberSamples_ = 20; /**<Set number of samples used in average*/
     std::vector<double> FrameSamples_; /**<Sample Frame Times*/
