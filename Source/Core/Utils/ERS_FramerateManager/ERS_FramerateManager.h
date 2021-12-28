@@ -60,8 +60,15 @@ public:
     ~ERS_CLASS_FramerateManager();
     
 
+
     /**
-     * @brief Call every frame, delays to next frame if needed.
+     * @brief Call at the start of every frame, starts the timer.
+     * 
+     */
+    void StartNewFrame(); 
+
+    /**
+     * @brief Call at the end of every frame, delays to next frame if needed.
      * 
      */
     void DelayUntilNextFrame();

@@ -34,6 +34,14 @@ void ERS_CLASS_FramerateManager::SetTargetFramerate(int Framerate) {
 }
 
 
+// Start Timer
+void ERS_CLASS_FramerateManager::StartNewFrame() {
+
+    // Get Current Time, Set To Start Time
+    FrameStartTime_ = Clock_.now();
+
+}
+
 // Delay Until Next Frame
 void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
 
