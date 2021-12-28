@@ -21,7 +21,7 @@
 #include <LoggingSystem.h>
 #include <ERS_InputOutputSubsystem.h>
 #include <ERS_ModelWriter.h>
-
+#include <ERS_CLASS_FramerateManager.h>
 
 
 /**
