@@ -36,8 +36,9 @@ class Widget_RenderingSettings {
         bool OpenGLDrawLines_ = false; /**<Default Rendering Mode */
 
     public:
-    
+
         int TargetFrameRate_ = 60; /**<The target framerate for the system*/
+        float FrameTime_; /**<Set The Frame Time Needed To Achive The Target Framerate*/
 
 
     public:
