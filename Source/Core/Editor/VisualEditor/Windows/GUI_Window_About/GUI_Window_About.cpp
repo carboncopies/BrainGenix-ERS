@@ -49,7 +49,7 @@ void Window_About::Draw() {
         ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Branch:");
         ImGui::Text("Unstable-Development");
 
-        // Version In Future?
+        // Version Info?
 
         // Operating System Status
         ImGui::Separator();
