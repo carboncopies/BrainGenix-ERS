@@ -135,8 +135,9 @@ void RendererManager::InitializeGLFW() {
     FreeImage_DeInitialise();
 
 
-    // Bring Window To Front
+    // Bring Window To Front, Unlock Framerate So Our Framerate System Is Used
     glfwMakeContextCurrent(Window_);
+    glfwSwapInterval(0);
 
 }
 
