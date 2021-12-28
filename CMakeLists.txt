@@ -98,7 +98,7 @@ disable_target_warnings(TracyClient)
 
 # Add MySQL Connector Library (Not Header Only)
 if (WIN32)
-  add_subdirectory(${LIB_DIR}/mysql-connector-windows)
+    message("Database Support Disabled On Windows Due To SSL Errors, Please Use Linux/BSD Instead")
 else()
   add_subdirectory(${LIB_DIR}/mysql-connector-linux)
 endif()
