@@ -39,7 +39,7 @@ void ERS_CLASS_FramerateManager::SetTargetFramerate(int Framerate) {
 void ERS_CLASS_FramerateManager::StartNewFrame() {
 
     // Get Current Time, Set To Start Time
-    FrameStartTime_ = std::chrono::duration<double>(Clock_.now().time_since_epoch()).count();
+    FrameStartTime_ = glfwGetTime();
 
 }
 
@@ -47,11 +47,11 @@ void ERS_CLASS_FramerateManager::StartNewFrame() {
 void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
 
     // Get Current Time
-    FrameEndTime_ = std::chrono::duration<double>(Clock_.now().time_since_epoch()).count();
+    FrameEndTime_ = glfwGetTime();
 
     // Calculate Delta Time
     double FrameTime = (FrameEndTime_ - FrameStartTime_);
-    double FrameDelta = TargetFrameTime_ * 1000000000.0f;
+    double FrameDelta = TargetFrameTime_;
     double TargetTime = FrameEndTime_ + FrameDelta;
     std::cout<<FrameEndTime_ << "|"<< TargetTime<<std::endl;
 
@@ -79,8 +79,8 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     }
 
     // Sleep For Duration
-    std::cout<<std::chrono::duration<double>(std::chrono::system_clock::from_time_t(TargetTime / 1000000000.0f).time_since_epoch()).count()<<std::endl;
-    std::this_thread::sleep_until(std::chrono::system_clock::from_time_t(TargetTime / 1000000000.0f));
+    std::cout<<std::chrono::duration<double>(std::chrono::system_clock::from_time_t(TargetTime).time_since_epoch()).count()<<std::endl;
+    std::this_thread::sleep_until(std::chrono::system_clock::from_time_t(TargetTime));
 
 }
 
