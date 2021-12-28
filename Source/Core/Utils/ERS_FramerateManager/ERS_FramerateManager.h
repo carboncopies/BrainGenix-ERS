@@ -18,12 +18,10 @@
 #include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
-#include <glad/glad.h>
-
-#include <GLFW/glfw3.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
+
 
 
 /**
@@ -33,11 +31,43 @@
 class ERS_CLASS_FramerateManager {
 
 private:
+    
+    std::chrono::high_resolution_clock Clock_; /**<High Res Clock Used For Frame Time Calcs*/
+    int TargetFrameRate_; /**<Target Frame Rate In FPS*/
+    float TargetFrameTime_; /**<Target Frame Time In MS*/
 
+// Public Info
 public:
 
+    std::vector<double> ActualFrameTimes_; /**<List of actual measured frame times in seconds*/
+    
+// Public Methods
+public:
+
+    /**
+     * @brief Construct a new ers class frameratemanager object
+     * 
+     */
     ERS_CLASS_FramerateManager();
+
+    /**
+     * @brief Destroy the ers class frameratemanager object
+     * 
+     */
     ~ERS_CLASS_FramerateManager();
     
+
+    /**
+     * @brief Call every frame, delays to next frame if needed.
+     * 
+     */
+    void DelayUntilNextFrame();
+
+    /**
+     * @brief Set the Target Framerate value.
+     * 
+     * @param TargetFramerate 
+     */
+    void SetTargetFramerate(int TargetFramerate);
 
 };
