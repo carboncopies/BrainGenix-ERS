@@ -24,6 +24,7 @@ target_link_libraries(ERS_STRUCT_SystemUtils
     LoggingSystem
     ERS_InputOutputSubsystem
     ERS_ModelWriter
+    ERS_FramerateManager
     )
 
 
