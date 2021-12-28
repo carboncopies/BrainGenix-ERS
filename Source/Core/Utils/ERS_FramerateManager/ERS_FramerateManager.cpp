@@ -52,8 +52,8 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     // Calculate Delta Time
     double FrameTime = (FrameEndTime_ - FrameStartTime_);
     double FrameDelta = 1.0f/TargetFrameRate_;
-    double TargetTime = (FrameEndTime_) + FrameDelta;
-    std::cout<<FrameTime<<std::endl;
+    double TargetTime = FrameEndTime_ + FrameDelta;
+    std::cout<<FrameEndTime_ << "|"<< TargetTime<<std::endl;
 
 
     FrameSamples_.push_back(FrameTime);
@@ -79,7 +79,7 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     }
 
     // Sleep For Duration
-    std::this_thread::sleep_for(std::chrono::milliseconds((double)(FrameDelta - AverageFrameTime_)));
+    std::this_thread::sleep_until(std::chrono::system_clock::from_time_t(TargetTime));
 
 }
 
