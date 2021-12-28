@@ -22,6 +22,8 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
+#include <ERS_STRUCT_SystemUtils.h>
+
 
 
 /**
@@ -32,19 +34,30 @@ class Widget_RenderingSettings {
 
     private:
 
+        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointer*/
+
         ImVec4 ClearColor_ = ImVec4(0.2f, 0.2f, 0.2f, 1.0f); /**<Background Clearing Color */
         bool OpenGLDrawLines_ = false; /**<Default Rendering Mode */
-
-    public:
-
-        int TargetFrameRate_ = 60; /**<The target framerate for the system*/
-        float FrameTime_; /**<Set The Frame Time Needed To Achive The Target Framerate*/
 
 
     public:
 
         // Show/Hide Var
         bool Enabled_ = true; /**<Show/Hide Widget*/
+
+
+        /**
+         * @brief Construct a new Widget_RenderingSettings object
+         * 
+         * @param SystemUtils 
+         */
+        Widget_RenderingSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+
+        /**
+         * @brief Destroy the Widget_RenderingSettings object
+         * 
+         */
+        ~Widget_RenderingSettings();
 
 
         /**

@@ -57,7 +57,7 @@ class GUI_Menu_Window {
         Widget_FramerateHistogram Widget_FramerateHistogram_; /**<Widget Instance*/
         Widget_FramerateGraph Widget_FramerateGraph_; /**<Widget Instance*/
         Widget_FrameratePlot Widget_FrameratePlot_; /**<Widget Instance*/
-        Widget_RenderingSettings Widget_RenderingSettings_; /**<Widget Instance*/
+        std::unique_ptr<Widget_RenderingSettings> Widget_RenderingSettings_; /**<Widget Instance*/
         std::shared_ptr<Widget_ObjectProperties> Widget_ObjectProperties_; /**<Widget Instance*/
 
         // Instantiate Windows Here

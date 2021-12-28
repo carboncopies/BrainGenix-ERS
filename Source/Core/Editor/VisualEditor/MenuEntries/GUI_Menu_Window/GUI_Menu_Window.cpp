@@ -25,6 +25,7 @@ GUI_Menu_Window::GUI_Menu_Window(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     // Initialize Widgets
     SystemUtils_->Logger_->Log("Initializing Editor Widgets", 5);
     Widget_ObjectProperties_ = std::make_shared<Widget_ObjectProperties>(Cursors3D);
+    Widget_RenderingSettings_ = std::make_unique<Widget_RenderingSettings>(SystemUtils_);
 
     // Initialize Windows
     SystemUtils_->Logger_->Log("Initializing Editor Windows", 5);
@@ -69,7 +70,7 @@ void GUI_Menu_Window::Draw() {
 
                 // Viewport Settings
                 ImGui::Checkbox("Object Properties", &Widget_ObjectProperties_->Enabled_);
-                ImGui::Checkbox("Global Viewport Settings", &Widget_RenderingSettings_.Enabled_);
+                ImGui::Checkbox("Global Viewport Settings", &Widget_RenderingSettings_->Enabled_);
                 
 
             ImGui::EndMenu();
@@ -98,12 +99,13 @@ void GUI_Menu_Window::Draw() {
 
     // Update Widgets
     Widget_FramerateCounter_.Draw();
-    Widget_RenderingSettings_.Draw();
     Widget_FramerateHistogram_.Draw();
     Widget_FramerateGraph_.Draw();
     Widget_FrameratePlot_.Draw();
     Widget_ObjectProperties_->Draw();
 
+    // Update Widgets
+    Widget_RenderingSettings_->Draw();
 
     // Update Windows
     Window_SceneTree_->Draw();

@@ -11,6 +11,21 @@
 
 #include <GUI_Widget_RenderingSettings.h>
 
+// Constructor
+Widget_RenderingSettings::Widget_RenderingSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+
+    // Copy System Utils
+    SystemUtils_ = SystemUtils;
+
+    // Log Init
+    SystemUtils_->Logger_->Log("Initializing Rendering Settings Widget", 5);
+
+}
+
+// Destructor
+Widget_RenderingSettings::~Widget_RenderingSettings() {
+
+}
 
 // Define Draw Function
 void Widget_RenderingSettings::Draw() {
@@ -32,10 +47,10 @@ void Widget_RenderingSettings::Draw() {
             ImGui::NewLine();
 
             // Framerate Cap
-            int OldFrameRate = TargetFrameRate_;
-            ImGui::SliderInt("Target Framerate", &TargetFrameRate_, 10, 100);
-            if (OldFrameRate != TargetFrameRate_) {
-                FrameTime_ = 1.0f/TargetFrameRate_;
+            int OldFrameRate = SystemUtils_->FramerateManager_->TargetFrameRate_;
+            ImGui::SliderInt("Target Framerate", &SystemUtils_->FramerateManager_->TargetFrameRate_, 10, 100);
+            if (OldFrameRate != SystemUtils_->FramerateManager_->TargetFrameRate_) {
+                SystemUtils_->FramerateManager_->SetTargetFramerate(SystemUtils_->FramerateManager_->TargetFrameRate_);
             }
 
 

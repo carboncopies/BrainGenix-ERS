@@ -37,7 +37,6 @@ class ERS_CLASS_FramerateManager {
 private:
 
     std::chrono::high_resolution_clock Clock_; /**<High Res Clock Used For Frame Time Calcs*/
-    int TargetFrameRate_ = 60; /**<Target Frame Rate In FPS*/
     float TargetFrameTime_ = 0.166; /**<Target Frame Time In MS*/
 
     double FrameStartTime_; /**<Starting Time Of Frame*/
@@ -49,6 +48,9 @@ private:
 
 // Public Info
 public:
+
+    int TargetFrameRate_ = 60; /**<Target Frame Rate In FPS*/
+
 
     std::vector<double> ActualFrameTimes_; /**<List of last thousand actual measured frame times in seconds*/
     std::vector<double> AverageFrameTimes_; /**<List of average frame times*/
