@@ -145,6 +145,8 @@ void RendererManager::InitializeGLFW() {
 
 void RendererManager::UpdateLoop(float DeltaTime) { 
 
+    
+
     // Update Scene
     ModelLoader_->ProcessNewModels(std::make_shared<ERS_OBJECT_SCENE>(SceneManager_->Scenes_[SceneManager_->ActiveScene_]));
 
