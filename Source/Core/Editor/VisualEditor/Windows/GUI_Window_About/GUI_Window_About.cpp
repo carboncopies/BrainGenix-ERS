@@ -37,8 +37,19 @@ void Window_About::Draw() {
         // Set Window Size
         ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
 
+        
+        // ERS Description
+        ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "About:");
+        ImGui::TextWrapped("BrainGenix Environment Rendering System (ERS) is a distributed multigpu "
+            "rendering system with realtime physics, cloth and more. [Note: This project"
+            " is currently in development].");
+
         // Write Text
-        ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Version");
+        ImGui::Separator();
+        ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Branch:");
+        ImGui::Text("Unstable-Development");
+
+        // Version In Future?
 
         // Operating System Status
         ImGui::Separator();
