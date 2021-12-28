@@ -44,11 +44,13 @@ private:
     float AverageFrameTime_; /**<Float representing the average time in ms*/
     int NumberSamples_ = 20; /**<Set number of samples used in average*/
 
+
 // Public Info
 public:
 
     std::vector<double> ActualFrameTimes_; /**<List of last thousand actual measured frame times in seconds*/
     
+
 // Public Methods
 public:
 
