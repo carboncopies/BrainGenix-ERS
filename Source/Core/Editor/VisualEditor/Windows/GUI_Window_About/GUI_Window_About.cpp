@@ -38,14 +38,15 @@ void Window_About::Draw() {
         ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
 
         // Write Text
-        ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Feature Status:");
+        ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "About");
 
         // Operating System Status
         ImGui::Separator();
+        ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Feature Status:");
         if (!SystemUtils_->IsLinux_) {
             ImGui::TextColored(ImVec4(0.8f, 0.2f, 0.2f, 1.0f), "Some features are not available in Windows. To use all features, please use Linux/BSD.");
         } else {
-            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "All features are enabled. Congrats on using Open Source Software!");
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "All features are enabled. Congrats on using Linux/BSD, you're better off without Windows/OSX.");
         }
 
         // License Info
