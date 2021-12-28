@@ -79,7 +79,7 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     }
 
     // Sleep For Duration
-    std::this_thread::sleep_for(FrameDelta - AverageFrameTime_);
+    std::this_thread::sleep_for(std::chrono::milliseconds((double)(FrameDelta - AverageFrameTime_)));
 
 }
 
