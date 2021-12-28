@@ -20,7 +20,6 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCT_SystemUtils.h>
 
 
 
@@ -32,8 +31,6 @@ class ERS_CLASS_FramerateManager {
 
 // Private Member Vars
 private:
-
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointer*/
 
     std::chrono::high_resolution_clock Clock_; /**<High Res Clock Used For Frame Time Calcs*/
     int TargetFrameRate_ = 60; /**<Target Frame Rate In FPS*/
@@ -58,7 +55,7 @@ public:
      * @brief Construct a new ers class frameratemanager object
      * 
      */
-    ERS_CLASS_FramerateManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    ERS_CLASS_FramerateManager();
 
     /**
      * @brief Destroy the ers class frameratemanager object

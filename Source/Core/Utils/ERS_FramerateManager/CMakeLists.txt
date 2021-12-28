@@ -23,7 +23,6 @@ target_link_libraries(ERS_FramerateManager
 
 # Link Internal Libs
 target_link_libraries(ERS_FramerateManager
-    ERS_STRUCT_SystemUtils
     )
 
 target_include_directories(ERS_FramerateManager PUBLIC ./)
