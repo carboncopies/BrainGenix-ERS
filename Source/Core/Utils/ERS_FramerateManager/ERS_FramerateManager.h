@@ -35,7 +35,7 @@ private:
 
     std::chrono::high_resolution_clock Clock_; /**<High Res Clock Used For Frame Time Calcs*/
     int TargetFrameRate_ = 60; /**<Target Frame Rate In FPS*/
-    float TargetFrameTime_; /**<Target Frame Time In MS*/
+    float TargetFrameTime_ = 0.166; /**<Target Frame Time In MS*/
 
     double FrameStartTime_; /**<Starting Time Of Frame*/
     double FrameEndTime_; /**<Ending Time Of Frame*/
