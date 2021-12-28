@@ -51,7 +51,7 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
 
     // Calculate Delta Time
     double FrameTime = (FrameEndTime_ - FrameStartTime_);
-    double FrameDelta = 1.0f/TargetFrameRate_;
+    double FrameDelta = (1.0f/TargetFrameRate_) * 1000000000.0f;
     double TargetTime = FrameEndTime_ + FrameDelta;
     std::cout<<FrameEndTime_ << "|"<< TargetTime<<std::endl;
 
