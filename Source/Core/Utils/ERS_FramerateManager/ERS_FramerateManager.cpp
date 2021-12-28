@@ -52,7 +52,6 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     // Calculate Delta Time
     double FrameTime = (FrameEndTime_ - FrameStartTime_);
 
-
     FrameSamples_.push_back(FrameTime);
     if (FrameSamples_.size() > NumberSamples_) {
         FrameSamples_.erase(FrameSamples_.begin());
