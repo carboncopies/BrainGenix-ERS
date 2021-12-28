@@ -25,6 +25,7 @@
 #include <LoggingSystem.h>
 #include <ERS_InputOutputSubsystem.h>
 #include <ERS_ModelWriter.h>
+#include <ERS_FramerateManager.h>
 
 #include <ERS_STRUCT_SystemUtils.h>
 
@@ -66,6 +67,11 @@ int main() {
     std::shared_ptr<LoggerClass> sERSLogger = std::make_shared<LoggerClass>(sERSLocalSystemConfiguration);
     SystemUtils->Logger_ = sERSLogger;
     sERSLogger->Log("Initialized Logging System", 5);
+
+    // Setup Framerate Manager
+    sERSLogger->Log("Initializing Framerate Manager Subsystem", 5);
+    std::shared_ptr<ERS_CLASS_FramerateManager> sERSFrameRateManager = std::make_shared<ERS_CLASS_FramerateManager>(SystemUtils);
+    sERSLogger->Log("Initialized Framerate Manager", 4);
 
     // Copy Config Params
     try {
