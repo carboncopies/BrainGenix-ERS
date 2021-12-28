@@ -33,7 +33,7 @@ class ERS_CLASS_FramerateManager {
 private:
     
     std::chrono::high_resolution_clock Clock_; /**<High Res Clock Used For Frame Time Calcs*/
-    int TargetFrameRate_; /**<Target Frame Rate In FPS*/
+    int TargetFrameRate_ = 60; /**<Target Frame Rate In FPS*/
     float TargetFrameTime_; /**<Target Frame Time In MS*/
 
     auto FrameStartTime_; /**<Starting Time Of Frame*/

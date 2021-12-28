@@ -46,5 +46,10 @@ void ERS_CLASS_FramerateManager::StartNewFrame() {
 void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
 
     // Get Current Time
+    FrameEndTime_ = Clock_.now();
+
+    // Calculate Delta Time
+    double FrameTime = std::chrono::duration_cast<std::chrono::nanoseconds>(FrameEndTime_ - FrameStartTime_).count();
+    std::cout<<FrameTime<<std::endl;
 
 }
