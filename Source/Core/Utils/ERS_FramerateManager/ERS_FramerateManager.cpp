@@ -13,7 +13,7 @@
 
 
 // Constructor
-ERS_CLASS_FramerateManager::ERS_CLASS_FramerateManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+ERS_CLASS_FramerateManager::ERS_CLASS_FramerateManager() {
 
 }
 
