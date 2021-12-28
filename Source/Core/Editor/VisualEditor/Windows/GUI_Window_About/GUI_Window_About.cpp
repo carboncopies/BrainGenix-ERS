@@ -41,16 +41,13 @@ void Window_About::Draw() {
         ImGui::Text("You're running BrainGenix-ERS. ERS (Environment Rendering System) is a part of the software suite designed to facilitate Whole Brain Emulation.");
 
         // Operating System Status
-        ImGui::BeginChild("OS Status");
         if (!SystemUtils_->IsLinux_) {
             ImGui::TextColored(ImVec4(0.8f, 0.2f, 0.2f, 1.0f), "Some features are not available in Windows. To use all features, please use Linux/BSD.");
         } else {
             ImGui::Text("All features are enabled. Congrats on using Open Source Software!");
         }
-        ImGui::EndChild();
 
         // License Info
-        ImGui::BeginChild("License");
         ImGui::Text("This program is free software: you can redistribute it and/or modify"
                     "it under the terms of the GNU Affero General Public License as"
                     "published by the Free Software Foundation, either version 3 of the"
@@ -63,7 +60,6 @@ void Window_About::Draw() {
 
                     "You should have received a copy of the GNU Affero General Public License"
                     "along with this program.  If not, see <https://www.gnu.org/licenses/>.");
-        ImGui::EndChild();
 
 
 
