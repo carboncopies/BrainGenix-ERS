@@ -30,8 +30,11 @@
  */
 class ERS_CLASS_FramerateManager {
 
+// Private Member Vars
 private:
-    
+
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointer*/
+
     std::chrono::high_resolution_clock Clock_; /**<High Res Clock Used For Frame Time Calcs*/
     int TargetFrameRate_ = 60; /**<Target Frame Rate In FPS*/
     float TargetFrameTime_; /**<Target Frame Time In MS*/
@@ -53,7 +56,7 @@ public:
      * @brief Construct a new ers class frameratemanager object
      * 
      */
-    ERS_CLASS_FramerateManager();
+    ERS_CLASS_FramerateManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
 
     /**
      * @brief Destroy the ers class frameratemanager object
