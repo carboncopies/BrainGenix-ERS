@@ -79,8 +79,7 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     }
 
     // Sleep For Duration
-    std::cout<<std::chrono::duration<double>(std::chrono::system_clock::from_time_t(TargetTime).time_since_epoch()).count()<<std::endl;
-    std::this_thread::sleep_until(std::chrono::system_clock::from_time_t(TargetTime));
+    std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::microseconds(100000));
 
 }
 
