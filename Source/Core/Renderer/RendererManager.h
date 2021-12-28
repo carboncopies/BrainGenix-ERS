@@ -67,7 +67,6 @@ class RendererManager {
         
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Copy Of Pointer Helper Struct*/
 
-        std::chrono::high_resolution_clock Clock_; /**<High Res Clock Used For Frame Time Calcs*/
 
         // Control Values
         int WindowWidth_; /**<GLFW Window Width Varaible*/
