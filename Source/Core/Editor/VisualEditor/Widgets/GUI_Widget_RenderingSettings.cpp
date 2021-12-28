@@ -35,7 +35,7 @@ void Widget_RenderingSettings::Draw() {
             int OldFrameRate = TargetFrameRate_;
             ImGui::SliderInt("Target Framerate", &TargetFrameRate_, 10, 100);
             if (OldFrameRate != TargetFrameRate_) {
-                glfwSwapInterval(TargetFrameRate_);
+                glfwWindowHint(GLFW_REFRESH_RATE, TargetFrameRate_);
             }
 
 
