@@ -36,6 +36,9 @@ private:
     int TargetFrameRate_; /**<Target Frame Rate In FPS*/
     float TargetFrameTime_; /**<Target Frame Time In MS*/
 
+    double FrameStartTime_; /**<Starting Time Of Frame*/
+    double FrameEndTime_; /**<Ending Time Of Frame*/
+
 // Public Info
 public:
 

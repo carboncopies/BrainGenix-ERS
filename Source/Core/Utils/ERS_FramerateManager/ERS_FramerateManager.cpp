@@ -8,3 +8,35 @@
     Additonal Notes: None
     Date Created: 2021-12-28
 */
+
+#include <ERS_FramerateManager.h>
+
+// Constructor
+ERS_CLASS_FramerateManager::ERS_CLASS_FramerateManager() {
+
+}
+
+// Destructor
+ERS_CLASS_FramerateManager::~ERS_CLASS_FramerateManager() {
+
+}
+
+
+// Set Target Framerate
+void ERS_CLASS_FramerateManager::SetTargetFramerate(int Framerate) {
+
+    // Copy FR
+    TargetFrameRate_ = Framerate;
+
+    // Calculate Target Frame Time
+    TargetFrameTime_ = 1/Framerate;
+
+}
+
+
+// Delay Until Next Frame
+void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
+
+    // Get Current Time
+
+}
