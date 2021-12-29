@@ -42,6 +42,7 @@ void SceneWriter::ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE> InputScene, lon
     // Write To Storage
     std::shared_ptr<ERS_STRUCT_IOData> SceneData = std::make_shared<ERS_STRUCT_IOData>();
     
+    SystemUtils_->ERS_IOSubsystem_->WriteAsset(AssetID, SceneData);
 
 }
 
