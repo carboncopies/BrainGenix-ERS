@@ -19,9 +19,9 @@ SceneWriter::SceneWriter(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
     // Create Local Pointer
     SystemUtils_ = SystemUtils;
-    
+
     // Log Initializaton Start
-    Logger_->Log("Initializing SceneWriter Subsystem", 5);
+    SystemUtils_->Logger_->Log("Initializing SceneWriter Subsystem", 5);
 
 }
 
@@ -29,7 +29,7 @@ SceneWriter::SceneWriter(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 SceneWriter::~SceneWriter() {
 
     // Log Destructor Call
-    Logger_->Log("SceneWriter Destructor Called", 6);
+    SystemUtils_->Logger_->Log("SceneWriter Destructor Called", 6);
 
 }
 
@@ -50,7 +50,7 @@ void SceneWriter::ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE> InputScene, con
 std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE> InputScene) {
 
     // Log Scene Write
-    Logger_->Log(std::string(std::string("Serializing Scene '") + InputScene->SceneName + std::string("'")).c_str(), 4);
+    SystemUtils_->Logger_->Log(std::string(std::string("Serializing Scene '") + InputScene->SceneName + std::string("'")).c_str(), 4);
 
     // Create Emitter
     YAML::Emitter Output;
@@ -110,7 +110,7 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE> InputSce
     // Check For Errors
     if (!Output.good()) {
         std::string LogError = "Scene Serialization Error: " + std::string(Output.GetLastError()) + std::string("\n");
-        Logger_->Log(LogError.c_str(), 8);
+        SystemUtils_->Logger_->Log(LogError.c_str(), 8);
     }
 
     // Return Scene
