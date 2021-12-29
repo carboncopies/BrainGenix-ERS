@@ -35,7 +35,7 @@ void Widget_FramerateGraph::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {
-        ImGui::Begin("Framerate Graph", &Enabled_);
+        if (ImGui::Begin("Framerate Graph", &Enabled_)) {
 
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(300,250), ImGuiCond_FirstUseEver);
@@ -45,16 +45,14 @@ void Widget_FramerateGraph::Draw() {
             ImVec2 GraphSize = ImVec2(WindowSize.x, WindowSize.y);
 
             // Graph
-            if (ImGui::IsWindowAppearing()) {
-                ImPlot::SetNextAxesToFit();
-                ImPlot::BeginPlot("Framerate Graph", GraphSize);
-                ImPlot::PlotLine("Framerate", (const float*)FramerateHistory_.data(), FramerateHistory_.size());
-                ImPlot::EndPlot();
-            }
+            ImPlot::SetNextAxesToFit();
+            ImPlot::BeginPlot("Framerate Graph", GraphSize);
+            ImPlot::PlotLine("Framerate", (const float*)FramerateHistory_.data(), FramerateHistory_.size());
+            ImPlot::EndPlot();
 
         // End System Info Window
         ImGui::End();
-        
+        }
 
     }
 
