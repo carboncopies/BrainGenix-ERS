@@ -42,8 +42,8 @@ void Widget_FrameLatencyGraph::Draw() {
             // Graph
             if (WindowVisible) {
                 ImPlot::SetNextAxesToFit();
-                ImPlot::BeginPlot("Framerate fdsaGraph", GraphSize);
-                ImPlot::PlotLine("Framerate", (const float*)SystemUtils_->FramerateManager_->ActualFrameTimes_.data(), SystemUtils_->FramerateManager_->ActualFrameTimes_.size());
+                ImPlot::BeginPlot("Frame Latency Graph", GraphSize);
+                ImPlot::PlotLine("Frame Latency", (const float*)SystemUtils_->FramerateManager_->ActualFrameTimes_.data(), SystemUtils_->FramerateManager_->ActualFrameTimes_.size());
                 ImPlot::EndPlot();
             }
 
