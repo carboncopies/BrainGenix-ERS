@@ -51,7 +51,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(long AssetID) {
 }
 
 // SceneLoader Process Scene Function
-ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, long AssetID, bool UseMultithreading) {
+ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, long AssetID) {
 
     // Create Scene Instance
     ERS_OBJECT_SCENE Scene;
