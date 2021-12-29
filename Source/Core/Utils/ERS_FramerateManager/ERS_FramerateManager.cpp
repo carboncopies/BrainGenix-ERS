@@ -79,6 +79,8 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     // Sleep For Duration
     std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::nanoseconds((int)(TargetFrameTime_*1000000000)));
 
+    std::cout<<1.0f/AverageFrameTime_<<std::endl;
+
 }
 
 // Get Last Frame Time
