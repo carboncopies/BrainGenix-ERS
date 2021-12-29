@@ -52,7 +52,7 @@ private:
      * @param RawSceneData 
      * @return ERS_OBJECT_SCENE 
      */
-    ERS_OBJECT_SCENE ProcessScene(YAML::Node RawSceneData, const char* ScenePath, bool UseMultithreading = true);
+    ERS_OBJECT_SCENE ProcessScene(YAML::Node RawSceneData, long AssetID, bool UseMultithreading = true);
 
 
 public:
