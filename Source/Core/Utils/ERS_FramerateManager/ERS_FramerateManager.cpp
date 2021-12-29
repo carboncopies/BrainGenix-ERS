@@ -75,6 +75,10 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     if (ActualFrameTimes_.size() > 1000) {
         ActualFrameTimes_.erase(ActualFrameTimes_.begin());
     }
+    ActualFrameTimesMS_.push_back(FrameTime * 1000);
+    if (ActualFrameTimesMS_.size() > 1000) {
+        ActualFrameTimesMS_.erase(ActualFrameTimesMS_.begin());
+    }
 
     // Calc Average
     double SumFrameTimes = 0.0f;
