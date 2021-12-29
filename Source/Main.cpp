@@ -116,17 +116,27 @@ int main() {
     sERSLogger->Log("", 4);
 
 
+    // Initialize Times
+    float DeltaTime = 0.0f;
+    float LastFrame = 0.0f;
+
     // Enter Main Loop
     while (*SystemShouldRun) {
+
+        // Calculate Frametime
+        float CurrentTime = glfwGetTime();
+        DeltaTime = CurrentTime - LastFrame;
+        LastFrame = CurrentTime;
+
 
         // Calculate Last FrameTime
         sERSFrameRateManager->StartNewFrame();
 
         // Update Renderers
-        sERSRendererManager.UpdateLoop(sERSFrameRateManager->GetLastFrameTime());
+        sERSRendererManager.UpdateLoop(DeltaTime);
 
         // End Frame
-        sERSFrameRateManager->DelayUntilNextFrame();
+        sERSFrameRateManager->DelayUntilNextFrame();z
 
     }
 
