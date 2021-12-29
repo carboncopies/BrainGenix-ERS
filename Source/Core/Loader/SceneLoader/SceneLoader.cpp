@@ -42,7 +42,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(long AssetID) {
     std::shared_ptr<ERS_STRUCT_IOData> SceneData = std::make_shared<ERS_STRUCT_IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, SceneData);
 
-    std::cout<<std::string(SceneData->Data.get()).c_str()<<std::endl;
+    std::cout<<std::string((const char*)SceneData->Data.get()).c_str()<<std::endl;
 
     // Load Then Process Scene
     std::string SceneDataString = std::string((const char*)SceneData->Data.get());
