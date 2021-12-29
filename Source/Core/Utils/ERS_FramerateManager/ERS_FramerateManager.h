@@ -44,6 +44,7 @@ private:
     float AverageFrameTime_; /**<Float representing the average time in ms*/
     int NumberSamples_ = 20; /**<Set number of samples used in average*/
     std::vector<double> FrameSamples_; /**<Sample Frame Times*/
+    bool UnlockFramerate_ = false; /**<Run As Fast As Possible*/
 
 
 // Public Info
