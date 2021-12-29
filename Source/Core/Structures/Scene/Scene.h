@@ -41,7 +41,7 @@ struct ERS_OBJECT_SCENE{
     // Scene Metadata
     long SceneFormatVersion; /**<Sets The Current Scene Version (from File/DB Entry), determines If System Can Load It*/
     std::string SceneName; /**<Metadata Setting Scene Name From It's Scene File/DB Entry*/
-    std::string ScenePath; /**<String containing asset path*/
+    long ScenePath; /**<String containing asset path*/
 
     // Status Variables
     bool IsSceneLoaded = false; /**<Status Variable Indiciating If The Scene Can Be Rendered Yet, Or If It's Yet To Be Loaded/Still Loading*/

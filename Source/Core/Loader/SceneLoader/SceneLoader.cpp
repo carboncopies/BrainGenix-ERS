@@ -41,16 +41,17 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(long AssetID) {
     std::shared_ptr<ERS_STRUCT_IOData> SceneData = std::make_shared<ERS_STRUCT_IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, SceneData);
 
-
-
     // Load Then Process Scene
-    //YAML::Node TestScene = YAML::LoadFile(ScenePath);
-    //return ProcessScene(TestScene, ScenePath);
+    std::string SceneDataString = std::string((const char*)SceneData->Data.get());
+    YAML::Node SceneNode = YAML::Load(SceneDataString);
+
+    // Return Scene
+    return ProcessScene(SceneNode, AssetID);
 
 }
 
 // SceneLoader Process Scene Function
-ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* ScenePath, bool UseMultithreading) {
+ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, long AssetID, bool UseMultithreading) {
 
     // Create Scene Instance
     ERS_OBJECT_SCENE Scene;
@@ -58,7 +59,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
     // Grab Metadata
     Scene.SceneFormatVersion = RawSceneData["SceneFormatVersion"].as<long>();
     Scene.SceneName = RawSceneData["SceneName"].as<std::string>();
-    Scene.ScenePath = std::string(ScenePath);
+    Scene.ScenePath = AssetID;
 
     // Log Scene Processing
     SystemUtils_->Logger_->Log(std::string(std::string("Processing Scene: ") + std::string(Scene.SceneName)).c_str(), 4);
