@@ -41,7 +41,6 @@ void Widget_RenderingSettings::Draw() {
             ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines_);
             ImGui::NewLine();
 
-
             // Rendering Background Clear Color
             ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor_);
             ImGui::NewLine();

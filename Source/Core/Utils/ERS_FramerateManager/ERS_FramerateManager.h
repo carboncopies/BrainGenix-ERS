@@ -37,7 +37,7 @@ class ERS_CLASS_FramerateManager {
 private:
 
     std::chrono::high_resolution_clock Clock_; /**<High Res Clock Used For Frame Time Calcs*/
-    float TargetFrameTime_ = 0.166; /**<Target Frame Time In MS*/
+    double TargetFrameTime_ = 0.166; /**<Target Frame Time In MS*/
 
     double FrameStartTime_; /**<Starting Time Of Frame*/
     double FrameEndTime_; /**<Ending Time Of Frame*/
