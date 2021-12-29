@@ -136,7 +136,7 @@ int main() {
         sERSRendererManager.UpdateLoop(DeltaTime);
 
         // End Frame
-        sERSFrameRateManager->DelayUntilNextFrame();z
+        sERSFrameRateManager->DelayUntilNextFrame();
 
     }
 
