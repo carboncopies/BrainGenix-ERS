@@ -15,6 +15,8 @@
 // Constructor
 ERS_CLASS_FramerateManager::ERS_CLASS_FramerateManager() {
 
+    SetTargetFramerate(60);
+
 }
 
 // Destructor
