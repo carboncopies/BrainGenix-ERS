@@ -38,6 +38,7 @@ SceneLoader::~SceneLoader() {
 ERS_OBJECT_SCENE SceneLoader::ProcessScene(long AssetID) {
 
     // Read Asset Info
+    SystemUtils_->Logger_->Log(std::string(std::string("Loading Scene At ID: ") + std::to_string(AssetID)).c_str(), 4);
     std::shared_ptr<ERS_STRUCT_IOData> SceneData = std::make_shared<ERS_STRUCT_IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, SceneData);
 
@@ -62,7 +63,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, long AssetID
     Scene.ScenePath = AssetID;
 
     // Log Scene Processing
-    SystemUtils_->Logger_->Log(std::string(std::string("Processing Scene: ") + std::string(Scene.SceneName)).c_str(), 4);
+    SystemUtils_->Logger_->Log(std::string(std::string("Processing Scene: ") + std::string(Scene.SceneName)).c_str(), 3);
 
     // Create Vector Of YAML::Nodes
     std::vector<YAML::Node> SceneItems;
