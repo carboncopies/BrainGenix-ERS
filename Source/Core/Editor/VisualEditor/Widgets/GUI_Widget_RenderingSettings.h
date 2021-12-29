@@ -38,6 +38,7 @@ class Widget_RenderingSettings {
 
         ImVec4 ClearColor_ = ImVec4(0.2f, 0.2f, 0.2f, 1.0f); /**<Background Clearing Color */
         bool OpenGLDrawLines_ = false; /**<Default Rendering Mode */
+        bool UnlockFramerate_ = false; /**<Disable FPS Limiter, Run As Fast As Possible*/
 
 
     public:

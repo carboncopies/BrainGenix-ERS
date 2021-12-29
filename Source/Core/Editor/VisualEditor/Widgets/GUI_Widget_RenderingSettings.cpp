@@ -45,12 +45,20 @@ void Widget_RenderingSettings::Draw() {
             ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor_);
             ImGui::NewLine();
 
+
+            // Framerate Settings
+            ImGui::Separator();
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "Framerate Settings:");
+
             // Framerate Cap
             int OldFrameRate = SystemUtils_->FramerateManager_->TargetFrameRate_;
             ImGui::SliderInt("Target Framerate", &SystemUtils_->FramerateManager_->TargetFrameRate_, 10, 100);
             if (OldFrameRate != SystemUtils_->FramerateManager_->TargetFrameRate_) {
                 SystemUtils_->FramerateManager_->SetTargetFramerate(SystemUtils_->FramerateManager_->TargetFrameRate_);
             }
+
+            // Unlock FPS
+            ImGui::Checkbox("Unlock Framerate", &UnlockFramerate_);
 
 
         // End System Controls Window
