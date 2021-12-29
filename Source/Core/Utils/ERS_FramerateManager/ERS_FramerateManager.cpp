@@ -44,6 +44,18 @@ void ERS_CLASS_FramerateManager::StartNewFrame() {
     // Get Current Time, Set To Start Time
     FrameStartTime_ = glfwGetTime();
 
+    // Check Sync To Monitor
+    if (SyncToMonitor_ != LastFrameSyncToMonitor_) {
+
+        // If Sync To Monitor Set To True
+        if (SyncToMonitor_) {
+            glfwSwapInterval(1);
+        } else {
+            glfwSwapInterval(0);
+        }
+        LastFrameSyncToMonitor_ = SyncToMonitor_;
+    }
+
 }
 
 // Delay Until Next Frame
