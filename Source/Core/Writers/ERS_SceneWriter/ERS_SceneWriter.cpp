@@ -37,11 +37,16 @@ SceneWriter::~SceneWriter() {
 void SceneWriter::ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE> InputScene, long AssetID) {
 
     // Convert Scene To YAML Encoded String
-    std::string ScenefileData = ProcessScene(InputScene); 
+    std::string SceneByteString = ProcessScene(InputScene); 
+
+    // Copy Into System IOData Struct
+    std::shared_ptr<ERS_STRUCT_IOData> SceneData = std::make_shared<ERS_STRUCT_IOData>();
+
+    SceneData->Data.reset(new unsigned char[SceneByteString.size()]);
+    SceneData->Size_B = SceneByteString.size();
+    memcpy(SceneData->Data.get(), SceneByteString.c_str(), SceneByteString.size());
 
     // Write To Storage
-    std::shared_ptr<ERS_STRUCT_IOData> SceneData = std::make_shared<ERS_STRUCT_IOData>();
-    SceneData->Data.get() = ScenefileData.c_str();
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(AssetID, SceneData);
 
 }
