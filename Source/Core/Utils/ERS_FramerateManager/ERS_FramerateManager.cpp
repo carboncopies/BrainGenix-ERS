@@ -15,6 +15,8 @@
 // Constructor
 ERS_CLASS_FramerateManager::ERS_CLASS_FramerateManager() {
 
+    // Initialize
+    FrameEndTime_ = 0.0f;
     SetTargetFramerate(60);
 
 }
@@ -49,7 +51,6 @@ void ERS_CLASS_FramerateManager::StartNewFrame() {
 void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
 
     // Get Current Time
-    FrameEndTime_ = glfwGetTime();
     auto SystemFrameEndTime = std::chrono::system_clock::now();
 
     // Calculate Delta Time
@@ -79,6 +80,7 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
 
     // Sleep For Duration
     std::this_thread::sleep_until(SystemFrameEndTime + std::chrono::nanoseconds((int)(TargetFrameTime_*1000000000)));
+    FrameEndTime_ = glfwGetTime();
 
     std::cout<<1.0f/AverageFrameTime_<<std::endl;
 
