@@ -15,11 +15,11 @@
 #include <ERS_SceneWriter.h>
 
 // SceneWriter Constructor
-SceneWriter::SceneWriter(std::shared_ptr<LoggerClass> Logger) {
+SceneWriter::SceneWriter(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
     // Create Local Pointer
-    Logger_ = Logger;
-
+    SystemUtils_ = SystemUtils;
+    
     // Log Initializaton Start
     Logger_->Log("Initializing SceneWriter Subsystem", 5);
 

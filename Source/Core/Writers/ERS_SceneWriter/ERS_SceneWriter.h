@@ -28,46 +28,48 @@
 #include <Shader.h>
 
 
+
 /**
  * @brief The SceneWriter Class Is responsible for writing scene files.
  * 
  */
 class SceneWriter{
 
-    private:
 
-        std::shared_ptr<LoggerClass> Logger_; /**<Contains A SceneWriter Class Instance*/
+private:
 
-
-    public:
-    
-        /**
-         * @brief Construct a new Scene Writer object
-         * 
-         * @param Logger 
-         */
-        SceneWriter(std::shared_ptr<LoggerClass> Logger);
-
-        /**
-         * @brief Destroy the Scene Writer object
-         * 
-         */
-        ~SceneWriter();
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Contains System Utils Instance*/
 
 
-        /**
-         * @brief Save the scene passed in as a yaml::node.
-         * 
-         * @return std::string 
-         */
-        std::string ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE> Scene);
+public:
 
-        /**
-         * @brief Save the scene passed in as a yaml::node.
-         * 
-         * @param FilePath 
-         */
-        void ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE>, const char* FilePath);
+    /**
+     * @brief Construct a new Scene Writer object
+     * 
+     * @param SystemUtils
+     */
+    SceneWriter(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+
+    /**
+     * @brief Destroy the Scene Writer object
+     * 
+     */
+    ~SceneWriter();
+
+
+    /**
+     * @brief Save the scene passed in as a yaml::node.
+     * 
+     * @return std::string 
+     */
+    std::string ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE> Scene);
+
+    /**
+     * @brief Save the scene passed in as a yaml::node.
+     * 
+     * @param FilePath 
+     */
+    void ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE>, long SceneID);
 
 
 };
