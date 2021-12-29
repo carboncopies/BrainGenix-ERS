@@ -35,7 +35,7 @@ void Widget_FramerateGraph::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {
-        bool WindowVisible = ImGui::Begin("Framerate Graph", &Enabled_) {
+        bool WindowVisible = ImGui::Begin("Framerate Graph", &Enabled_);
 
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(300,250), ImGuiCond_FirstUseEver);
