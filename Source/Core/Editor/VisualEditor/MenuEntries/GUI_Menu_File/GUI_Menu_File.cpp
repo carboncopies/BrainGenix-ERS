@@ -23,7 +23,7 @@ GUI_Menu_File::GUI_Menu_File(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils
     SystemUtils_->Logger_->Log("Editor Setting Up File Menu", 4);
 
     // Create Class Instances
-    SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_->Logger_);
+    SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_);
     ImportAsset_ = std::make_unique<GUI_ImportAsset>(SystemUtils_);
 
 }
