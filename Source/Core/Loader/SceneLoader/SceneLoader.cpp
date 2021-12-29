@@ -119,10 +119,6 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, long AssetID
 
     }
 
-
-
-
-
     // Indicate Scene Is Loaded
     Scene.IsSceneLoaded = true;
 
