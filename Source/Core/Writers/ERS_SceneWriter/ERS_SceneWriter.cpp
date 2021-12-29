@@ -34,7 +34,7 @@ SceneWriter::~SceneWriter() {
 }
 
 // Process Scenes
-void SceneWriter::ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE> InputScene, const char* ScenePath) {
+void SceneWriter::ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE> InputScene, long AssetID) {
 
     // Convert Scene To YAML
     std::string ScenefileData = ProcessScene(InputScene); 
