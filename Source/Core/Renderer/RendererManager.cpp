@@ -66,12 +66,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     VisualRenderer_->CreateViewport(std::make_shared<ERS_OBJECT_SHADER>(Shader_), "Viewport", Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
     //VisualRenderer_->CreateViewport(&Shader_, "Viewport 2", Window_, &Camera_);
 
-    // Test Scene
-    YAML::Node TestScene = YAML::LoadFile("Assets/0.ERS");
-    //YAML::Node TestScene2 = YAML::LoadFile("Assets/Scene2.yaml");
-    //YAML::Node TestScene3 = YAML::LoadFile("Assets/Scene3.yaml");
-    
-    SceneManager_->AddScene(SLoader.ProcessScene(TestScene, "Assets/0.ERS", false));
+    SceneManager_->AddScene(SLoader.ProcessScene(0));
     //SceneManager_->AddScene(SLoader.ProcessScene(TestScene2, "Assets/Scene2.yaml", false));
     //SceneManager_->AddScene(SLoader.ProcessScene(TestScene3, "Assets/Scene3.yaml", false));
 
