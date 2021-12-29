@@ -77,7 +77,7 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     }
     std::cout<<TargetFrameTime_<<std::endl;
     // Sleep For Duration
-    std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::nanoseconds((int)(TargetFrameTime_*100000000)));
+    std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::nanoseconds((int)(TargetFrameTime_*1000000000)));
 
 }
 
