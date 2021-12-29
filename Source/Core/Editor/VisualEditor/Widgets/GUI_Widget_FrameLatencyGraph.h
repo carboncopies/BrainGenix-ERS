@@ -21,29 +21,44 @@
 #include <implot.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-
+#include <ERS_STRUCT_SystemUtils.h>
 
 /**
  * @brief Create GUI Widget "Framerate Graph"
  * 
  */
-class Widget_FramerateGraph {
+class Widget_FrameLatencyGraph {
 
-    private:
+private:
 
-        std::vector<float> FramerateHistory_; /**<Vector To Store Framerate histories*/ 
-        int HistoryLength_ = 1000; /**<Set Framerate History Length*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointer*/
 
-    public:
+public:
 
-        // Show/Hide Var
-        bool Enabled_ = true; /**<Show/Hide Widget*/
+    // Show/Hide Var
+    bool Enabled_ = true; /**<Show/Hide Widget*/
+
+public:
+
+    /**
+     * @brief Construct a new Widget_FrameLatencyGraph object
+     * 
+     * @param SystemUtils 
+     */
+    Widget_FrameLatencyGraph(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    
+    /**
+     * @brief Destroy the Widget_FrameLatencyGraph object
+     * 
+     */
+    ~Widget_FrameLatencyGraph();
 
 
-        /**
-         * @brief Function that draws the window, should internally check if enable variable is set to true.
-         * 
-         */
-        void Draw();
+    /**
+     * @brief Function that draws the window, should internally check if enable variable is set to true.
+     * 
+     */
+    void Draw();
+
 
 };
