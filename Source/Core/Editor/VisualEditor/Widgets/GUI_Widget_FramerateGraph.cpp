@@ -49,10 +49,11 @@ void Widget_FramerateGraph::Draw() {
             ImPlot::BeginPlot("Framerate Graph", GraphSize);
             ImPlot::PlotLine("Framerate", (const float*)FramerateHistory_.data(), FramerateHistory_.size());
             ImPlot::EndPlot();
+        }
 
         // End System Info Window
         ImGui::End();
-        }
+        
 
     }
 
