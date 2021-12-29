@@ -75,6 +75,7 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     if (AverageFrameTimes_.size() > 1000) {
         AverageFrameTimes_.erase(AverageFrameTimes_.begin());
     }
+
     // Sleep For Duration
     std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::nanoseconds((int)(TargetFrameTime_*1000000000)));
 
