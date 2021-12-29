@@ -84,17 +84,10 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<SceneManager>Scen
     int RenderWidth = ImGui::GetWindowSize().x;
     int RenderHeight = ImGui::GetWindowSize().y;
 
-    // Calculate Window Offsets
-    int WPosX = ImGui::GetWindowPos().x;
-    int WPosY = ImGui::GetWindowPos().y;
-    ImVec2 WindowContentRegionMin = ImGui::GetWindowContentRegionMin();
-    ImVec2 WindowContentRegionMax = ImGui::GetWindowContentRegionMax();
-    ImVec2 WindowContentMin = ImVec2(WindowContentRegionMin.x + WPosX, WindowContentRegionMin.y + WPosY);
-    ImVec2 WindowContentMax = ImVec2(WindowContentRegionMax.x + WPosX, WindowContentRegionMax.y + WPosY);
 
     // Check If Input Enabled
     bool CaptureMouseCursor = false;
-    if (!Cursors3D_->DisableCameraMovement() && ImGui::IsMouseHoveringRect(WindowContentMin, WindowContentMax) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS) ) {
+    if (!Cursors3D_->DisableCameraMovement() && ImGui::IsWindowFocused() && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
         CaptureMouseCursor = true;
     } 
         
@@ -186,6 +179,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<SceneManager>Scen
 
     // Finish 3D Cursor
     Cursors3D_->EndRenderpass();
+
 
     ImGui::End();
 
