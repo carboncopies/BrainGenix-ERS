@@ -58,7 +58,7 @@ void Widget_RenderingSettings::Draw() {
             }
 
             // Unlock FPS
-            ImGui::Checkbox("Unlock Framerate", &UnlockFramerate_);
+            ImGui::Checkbox("Unlock Framerate", &SystemUtils_->FramerateManager_->UnlockFramerate_);
 
 
         // End System Controls Window
