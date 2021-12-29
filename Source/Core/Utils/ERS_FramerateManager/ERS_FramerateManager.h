@@ -41,6 +41,7 @@ private:
 
     double FrameStartTime_; /**<Starting Time Of Frame*/
     double FrameEndTime_; /**<Ending Time Of Frame*/
+    double LastFrameTime_; /**<Non-Averaged Last Frame Time*/
     float AverageFrameTime_; /**<Float representing the average time in ms*/
     int NumberSamples_ = 20; /**<Set number of samples used in average*/
     std::vector<double> FrameSamples_; /**<Sample Frame Times*/

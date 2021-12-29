@@ -55,6 +55,7 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
 
     // Calculate Delta Time
     double FrameTime = (FrameEndTime_ - FrameStartTime_);
+    LastFrameTime_ = FrameTime;
 
     FrameSamples_.push_back(FrameTime);
     if (FrameSamples_.size() > NumberSamples_) {
@@ -88,7 +89,7 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
 // Get Last Frame Time
 float ERS_CLASS_FramerateManager::GetLastFrameTime() {
 
-    // Return Averate Frame Time
-    return AverageFrameTime_;
+    // Return Exact Last Frame Time
+    return LastFrameTime_;
 
 }
