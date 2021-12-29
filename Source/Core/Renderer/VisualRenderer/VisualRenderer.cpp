@@ -173,14 +173,16 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<SceneManager>Scen
 
 
     // Render Framebuffer To Window
-    ImGui::GetWindowDrawList()->AddImage(
-        (void*)(intptr_t)FramebufferObjects_[Index],
-        ImVec2(ImGui::GetCursorScreenPos()),
-        ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x,
-            ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
-        ImVec2(0, 1),
-        ImVec2(1, 0)        
-    );
+    ImTextureID Texture = (void*)(intptr_t)FramebufferObjects_[Index];
+    ImGui::ImageButton(Texture, ImGui::GetContentRegionAvail(), ImVec2(0.0f, 1.0f), ImVec2(1.0f, 0.0f), 0);
+    // ImGui::GetWindowDrawList()->AddImage(
+    //     (void*)(intptr_t)FramebufferObjects_[Index],
+    //     ImVec2(ImGui::GetCursorScreenPos()),
+    //     ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x,
+    //         ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
+    //     ImVec2(0, 1),
+    //     ImVec2(1, 0)        
+    // );
 
 
 

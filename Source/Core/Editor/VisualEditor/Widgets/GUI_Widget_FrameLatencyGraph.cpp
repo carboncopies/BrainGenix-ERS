@@ -40,9 +40,9 @@ void Widget_FrameLatencyGraph::Draw() {
             ImVec2 GraphSize = ImVec2(WindowSize.x, WindowSize.y);
 
             // Graph
-            if (ImGui::IsWindowDocked()) {
+            if (ImGui::IsWindowAppearing()) {
                 ImPlot::SetNextAxesToFit();
-                ImPlot::BeginPlot("Framerate Graph", GraphSize);
+                ImPlot::BeginPlot("Framerate fdsaGraph", GraphSize);
                 ImPlot::PlotLine("Framerate", (const float*)SystemUtils_->FramerateManager_->ActualFrameTimes_.data(), SystemUtils_->FramerateManager_->ActualFrameTimes_.size());
                 ImPlot::EndPlot();
             }
