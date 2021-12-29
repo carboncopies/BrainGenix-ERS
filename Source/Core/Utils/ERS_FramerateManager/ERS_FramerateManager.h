@@ -59,7 +59,7 @@ public:
 
     std::vector<double> ActualFrameTimes_; /**<List of last thousand actual measured frame times in seconds*/
     std::vector<double> AverageFrameTimes_; /**<List of average frame times*/
-    std::vector<double> ActualFrameTimesMS_; /**<Frame Times In MS*/
+    std::vector<float> ActualFrameTimesMS_; /**<Frame Times In MS*/
     
 
 // Public Methods
