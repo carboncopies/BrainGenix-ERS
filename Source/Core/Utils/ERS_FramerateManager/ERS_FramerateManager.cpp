@@ -79,7 +79,9 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     }
 
     // Sleep For Duration
-    std::this_thread::sleep_until(SystemFrameEndTime + std::chrono::nanoseconds((int)((TargetFrameTime_ - AverageFrameTime_)*1000000000)));
+    if ((!UnlockFramerate_)) {
+        std::this_thread::sleep_until(SystemFrameEndTime + std::chrono::nanoseconds((int)((TargetFrameTime_ - AverageFrameTime_)*1000000000)));
+    }
 
 }
 
