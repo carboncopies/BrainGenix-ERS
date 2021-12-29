@@ -35,46 +35,51 @@
  */
 class SceneLoader{
 
-    private:
+private:
 
-        std::shared_ptr<LoggerClass> Logger_; /**<Contains A SceneLoader Class Instance*/
-        std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader_; /**<Contians A ModelLoader Class Pointer*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Structure*/
+    std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader_; /**<Contians A ModelLoader Class Pointer*/
 
-        // Templates
-        std::map<std::string, ERS_OBJECT_MODEL> TemplateModels_; /**<Template Map Used to Store Models In Original LocRotScale*/
-
-
-    public:
-    
-        /**
-         * @brief Construct a new Scene Loader object
-         * 
-         * @param Logger 
-         */
-        SceneLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader);
-
-        /**
-         * @brief Destroy the Scene Loader object
-         * 
-         */
-        ~SceneLoader();
+    // Templates
+    std::map<std::string, ERS_OBJECT_MODEL> TemplateModels_; /**<Template Map Used to Store Models In Original LocRotScale*/
 
 
-        /**
-         * @brief Populate The Scene Structure, Fill In Vectors, etc. Should Be Called Before Sending Scene Struct To SceneManager.
-         * 
-         * @param RawSceneData 
-         * @return ERS_OBJECT_SCENE 
-         */
-        ERS_OBJECT_SCENE ProcessScene(YAML::Node RawSceneData, const char* ScenePath, bool UseMultithreading = true);
+private:
 
-        /**
-         * @brief Populate The Scene Structure, Fill In Vectors, etc. Should Be Called Before Sending Scene Struct To SceneManager.
-         * 
-         * @param FileData
-         * @return ERS_OBJECT_SCENE 
-         */
-        ERS_OBJECT_SCENE ProcessScene(const char* FilePath);
+    /**
+     * @brief Populate The Scene Structure, Fill In Vectors, etc. Should Be Called Before Sending Scene Struct To SceneManager.
+     * 
+     * @param RawSceneData 
+     * @return ERS_OBJECT_SCENE 
+     */
+    ERS_OBJECT_SCENE ProcessScene(YAML::Node RawSceneData, const char* ScenePath, bool UseMultithreading = true);
+
+
+public:
+
+    /**
+     * @brief Construct a new Scene Loader object
+     * 
+     * @param Logger 
+     */
+    SceneLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader);
+
+    /**
+     * @brief Destroy the Scene Loader object
+     * 
+     */
+    ~SceneLoader();
+
+
+
+
+    /**
+     * @brief Populate The Scene Structure, Fill In Vectors, etc. Should Be Called Before Sending Scene Struct To SceneManager.
+     * 
+     * @param FileData
+     * @return ERS_OBJECT_SCENE 
+     */
+    ERS_OBJECT_SCENE ProcessScene(long AssetID);
 
 
 };

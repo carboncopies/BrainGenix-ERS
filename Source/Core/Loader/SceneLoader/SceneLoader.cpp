@@ -15,10 +15,10 @@
 #include <SceneLoader.h>
 
 // SceneLoader Constructor
-SceneLoader::SceneLoader(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader) {
+SceneLoader::SceneLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader) {
 
     // Create Local Pointer
-    Logger_ = Logger;
+    SystemUtils_ = SystemUtils;
     ModelLoader_ = ModelLoader;
 
     // Log Initializaton Start
@@ -35,11 +35,15 @@ SceneLoader::~SceneLoader() {
 }
 
 // Load And Process Scene
-ERS_OBJECT_SCENE SceneLoader::ProcessScene(const char* ScenePath) {
+ERS_OBJECT_SCENE SceneLoader::ProcessScene(long AssetID) {
+
+    // Read Asset Info
+    std::shared_ptr<ERS_STRUCT_IOData> SceneData = std::make_shared<ERS_STRUCT_IOData>();
+    
 
     // Load Then Process Scene
-    YAML::Node TestScene = YAML::LoadFile(ScenePath);
-    return ProcessScene(TestScene, ScenePath);
+    //YAML::Node TestScene = YAML::LoadFile(ScenePath);
+    //return ProcessScene(TestScene, ScenePath);
 
 }
 
