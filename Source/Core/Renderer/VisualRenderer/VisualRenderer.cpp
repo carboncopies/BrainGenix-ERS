@@ -87,7 +87,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<SceneManager>Scen
 
     // Check If Input Enabled
     bool CaptureMouseCursor = false;
-    if ((!Cursors3D_->DisableCameraMovement() && ImGui::IsWindowFocused() && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS))) {
+    if (!Cursors3D_->DisableCameraMovement() && ImGui::IsWindowFocused() && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
         CaptureMouseCursor = true;
     } 
         
