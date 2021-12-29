@@ -60,6 +60,9 @@ void Widget_RenderingSettings::Draw() {
             // Unlock FPS
             ImGui::Checkbox("Unlock Framerate", &SystemUtils_->FramerateManager_->UnlockFramerate_);
 
+            // Sync To Monitor
+            ImGui::Checkbox("Sync To Monitor", &SystemUtils_->FramerateManager_->SyncToMonitor_);
+
 
         // End System Controls Window
         ImGui::End();
