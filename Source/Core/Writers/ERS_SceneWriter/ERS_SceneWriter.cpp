@@ -36,13 +36,12 @@ SceneWriter::~SceneWriter() {
 // Process Scenes
 void SceneWriter::ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE> InputScene, long AssetID) {
 
-    // Convert Scene To YAML
+    // Convert Scene To YAML Encoded String
     std::string ScenefileData = ProcessScene(InputScene); 
 
-    // Write To File
-    std::ofstream FileOutput(ScenePath);
-    FileOutput<<ScenefileData.c_str();
-    FileOutput.close();
+    // Write To Storage
+    std::shared_ptr<ERS_STRUCT_IOData> SceneData = std::make_shared<ERS_STRUCT_IOData>();
+    
 
 }
 
