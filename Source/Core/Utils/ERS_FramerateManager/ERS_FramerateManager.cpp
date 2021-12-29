@@ -32,7 +32,7 @@ void ERS_CLASS_FramerateManager::SetTargetFramerate(int Framerate) {
     TargetFrameRate_ = Framerate;
 
     // Calculate Target Frame Time
-    TargetFrameTime_ = 1/Framerate;
+    TargetFrameTime_ = 1.0f/Framerate;
 
 }
 
