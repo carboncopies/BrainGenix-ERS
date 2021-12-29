@@ -30,6 +30,7 @@
 #include <GUI_Widget_FramerateHistogram.h>
 #include <GUI_Widget_FramerateGraph.h>
 #include <GUI_Widget_FrameratePlot.h>
+#include <GUI_Widget_FrameLatencyGraph.h>
 #include <GUI_Widget_ObjectProperties.h>
 
 #include <GUI_Window_SceneTree.h>
@@ -59,6 +60,7 @@ class GUI_Menu_Window {
         Widget_FrameratePlot Widget_FrameratePlot_; /**<Widget Instance*/
         std::unique_ptr<Widget_RenderingSettings> Widget_RenderingSettings_; /**<Widget Instance*/
         std::shared_ptr<Widget_ObjectProperties> Widget_ObjectProperties_; /**<Widget Instance*/
+        std::Shared_ptr<Widget_FrameLatencyGraph> Widget_FrameLatencyGraph_; /**<Widget Instance*/
 
         // Instantiate Windows Here
         std::shared_ptr<Window_SceneTree> Window_SceneTree_; /**<Window Instance*/
