@@ -20,6 +20,11 @@ Widget_FrameLatencyGraph::Widget_FrameLatencyGraph(std::shared_ptr<ERS_STRUCT_Sy
 
 }
 
+// Destructor
+Widget_FrameLatencyGraph::~Widget_FrameLatencyGraph() {
+    
+}
+
 // Define Draw Function
 void Widget_FrameLatencyGraph::Draw() {
 
