@@ -22,7 +22,7 @@ SceneLoader::SceneLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, st
     ModelLoader_ = ModelLoader;
 
     // Log Initializaton Start
-    Logger_->Log("Initializing SceneLoader Subsystem", 5);
+    SystemUtils_->Logger_->Log("Initializing SceneLoader Subsystem", 5);
 
 }
 
@@ -30,7 +30,7 @@ SceneLoader::SceneLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, st
 SceneLoader::~SceneLoader() {
 
     // Log Destructor Call
-    Logger_->Log("SceneLoader Destructor Called", 6);
+    SystemUtils_->Logger_->Log("SceneLoader Destructor Called", 6);
 
 }
 
@@ -59,7 +59,7 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, const char* 
     Scene.ScenePath = std::string(ScenePath);
 
     // Log Scene Processing
-    Logger_->Log(std::string(std::string("Processing Scene: ") + std::string(Scene.SceneName)).c_str(), 4);
+    SystemUtils_->Logger_->Log(std::string(std::string("Processing Scene: ") + std::string(Scene.SceneName)).c_str(), 4);
 
     // Create Vector Of YAML::Nodes
     std::vector<YAML::Node> SceneItems;
