@@ -25,7 +25,6 @@ ERS_CLASS_FramerateManager::~ERS_CLASS_FramerateManager() {
 
 }
 
-
 // Set Target Framerate
 void ERS_CLASS_FramerateManager::SetTargetFramerate(int Framerate) {
 
@@ -36,7 +35,6 @@ void ERS_CLASS_FramerateManager::SetTargetFramerate(int Framerate) {
     TargetFrameTime_ = 1.0f/Framerate;
 
 }
-
 
 // Start Timer
 void ERS_CLASS_FramerateManager::StartNewFrame() {
@@ -92,7 +90,7 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
     }
 
     // Sleep For Duration
-    if ((!UnlockFramerate_) && (LastFrameTime_ > TargetFrameRate_) && (!SyncToMonitor_)) {
+    if ((!UnlockFramerate_) && (LastFrameTime_ > TargetFrameTime_) && (!SyncToMonitor_)) {
         std::this_thread::sleep_until(SystemFrameEndTime + std::chrono::nanoseconds((int)((TargetFrameTime_ - AverageFrameTime_)*1000000000)));
     }
 
