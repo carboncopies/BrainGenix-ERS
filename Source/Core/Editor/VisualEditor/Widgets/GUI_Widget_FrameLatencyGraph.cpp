@@ -30,7 +30,7 @@ void Widget_FrameLatencyGraph::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {
-        ImGui::Begin("Frame Latency Graph", &Enabled_);
+        bool WindowVisible = ImGui::Begin("Frame Latency Graph", &Enabled_);
 
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(300,250), ImGuiCond_FirstUseEver);
@@ -40,7 +40,7 @@ void Widget_FrameLatencyGraph::Draw() {
             ImVec2 GraphSize = ImVec2(WindowSize.x, WindowSize.y);
 
             // Graph
-            if (ImGui::IsWindowAppearing()) {
+            if (WindowVisible) {
                 ImPlot::SetNextAxesToFit();
                 ImPlot::BeginPlot("Framerate fdsaGraph", GraphSize);
                 ImPlot::PlotLine("Framerate", (const float*)SystemUtils_->FramerateManager_->ActualFrameTimes_.data(), SystemUtils_->FramerateManager_->ActualFrameTimes_.size());
