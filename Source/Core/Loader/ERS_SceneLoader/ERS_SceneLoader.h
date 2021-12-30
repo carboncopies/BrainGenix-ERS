@@ -30,10 +30,10 @@
 
 
 /**
- * @brief The Sceneloader Class Is responsible for loading scene files and associated models/textures.
+ * @brief The ERS_CLASS_SceneLoader Class Is responsible for loading scene files and associated models/textures.
  * 
  */
-class SceneLoader{
+class ERS_CLASS_SceneLoader{
 
 private:
 
@@ -62,13 +62,13 @@ public:
      * 
      * @param Logger 
      */
-    SceneLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader);
+    ERS_CLASS_SceneLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader);
 
     /**
      * @brief Destroy the Scene Loader object
      * 
      */
-    ~SceneLoader();
+    ~ERS_CLASS_SceneLoader();
 
 
 

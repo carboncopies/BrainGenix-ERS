@@ -12,7 +12,7 @@
 // FIXME: Make template textures added to their own map so they can be reused.
 // FIXME: Make dynamic/static models that can each be rotated/translated (dynamically or statically). Then make updateposition functions, etc.
 
-#include <SceneLoader.h>
+#include <ERS_SceneLoader.h>
 
 // SceneLoader Constructor
 SceneLoader::SceneLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader) {
