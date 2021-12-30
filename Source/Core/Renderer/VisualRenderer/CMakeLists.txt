@@ -33,7 +33,6 @@ target_link_libraries(VisualRenderer
 
     Model
     Scene
-    SceneLoader
     SceneManager
 
     VisualEditor
@@ -42,6 +41,9 @@ target_link_libraries(VisualRenderer
     ShaderLoader
     Framebuffer
     3DCursor
+
+    ERS_SceneLoader
+
     ERS_STRUCT_LocRotScale
     ERS_STRUCT_SystemUtils
     )

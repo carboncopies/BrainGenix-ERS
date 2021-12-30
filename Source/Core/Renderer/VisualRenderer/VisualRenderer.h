@@ -31,7 +31,7 @@
 #include <Model.h>
 #include <NoClip.h>
 #include <SceneManager.h>
-#include <SceneLoader.h>
+#include <ERS_SceneLoader.h>
 #include <ShaderLoader.h>
 #include <InputProcessor.h>
 #include <GUI.h>
