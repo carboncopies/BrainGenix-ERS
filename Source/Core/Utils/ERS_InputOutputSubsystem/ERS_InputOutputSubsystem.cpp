@@ -129,7 +129,7 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
             try {
                 long ID = std::stoi(FilePath.c_str());
 
-                if (ID > 0) {
+                if (ID >= 0) {
                     UsedAssetIDs_.push_back(ID);
 
                     // Log Checked Out ID
@@ -165,6 +165,7 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
 
     // Asset ID Sanity Check
     if (AssetID < 0) {
+        Logger_->Log("Cannot Read Asset, ID Is Negative", 9);
         return false;
     }
 
