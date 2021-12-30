@@ -14,28 +14,28 @@
 
 #include <ERS_SceneLoader.h>
 
-// SceneLoader Constructor
-SceneLoader::SceneLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader) {
+// ERS_CLASS_SceneLoader Constructor
+ERS_CLASS_SceneLoader::ERS_CLASS_SceneLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader) {
 
     // Create Local Pointer
     SystemUtils_ = SystemUtils;
     ModelLoader_ = ModelLoader;
 
     // Log Initializaton Start
-    SystemUtils_->Logger_->Log("Initializing SceneLoader Subsystem", 5);
+    SystemUtils_->Logger_->Log("Initializing ERS_CLASS_SceneLoader Subsystem", 5);
 
 }
 
-// SceneLoader Destructor
-SceneLoader::~SceneLoader() {
+// ERS_CLASS_SceneLoader Destructor
+ERS_CLASS_SceneLoader::~ERS_CLASS_SceneLoader() {
 
     // Log Destructor Call
-    SystemUtils_->Logger_->Log("SceneLoader Destructor Called", 6);
+    SystemUtils_->Logger_->Log("ERS_CLASS_SceneLoader Destructor Called", 6);
 
 }
 
 // Load And Process Scene
-ERS_OBJECT_SCENE SceneLoader::ProcessScene(long AssetID) {
+ERS_OBJECT_SCENE ERS_CLASS_SceneLoader::ProcessScene(long AssetID) {
 
     // Read Asset Info
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Scene At ID: ") + std::to_string(AssetID)).c_str(), 4);
@@ -53,8 +53,8 @@ ERS_OBJECT_SCENE SceneLoader::ProcessScene(long AssetID) {
 
 }
 
-// SceneLoader Process Scene Function
-ERS_OBJECT_SCENE SceneLoader::ProcessScene(YAML::Node RawSceneData, long AssetID) {
+// ERS_CLASS_SceneLoader Process Scene Function
+ERS_OBJECT_SCENE ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, long AssetID) {
 
     // Create Scene Instance
     ERS_OBJECT_SCENE Scene;
