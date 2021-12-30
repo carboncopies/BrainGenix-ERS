@@ -228,12 +228,17 @@ ERS_OBJECT_TEXTURE_2D ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextu
     }
 
     // Get Metadata
-    float Width = FreeImage_GetWidth(Image);
-    float Height = FreeImage_GetHeight(Image);
-    float Channels = FreeImage_GetLine(Image) / FreeImage_GetWidth(Image);
-
-    // Create Texture, Populate
     ERS_OBJECT_TEXTURE_2D Texture;
+    float Width, Height, Channels;
+    if (FreeImage_GetWidth(Image) != 0) {
+        float Width = FreeImage_GetWidth(Image);
+        float Height = FreeImage_GetHeight(Image);
+        float Channels = FreeImage_GetLine(Image) / FreeImage_GetWidth(Image);
+    } else {
+        SystemUtils_->Logger_->Log("Error Loading Texture, Width/Height Are Zero (Does Data Exist?)", 9);
+        return Texture;
+    }
+    // Create Texture, Populate
     Texture.Channels = Channels;
     Texture.Height = Height;
     Texture.Width = Width;
