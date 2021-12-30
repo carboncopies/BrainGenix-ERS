@@ -35,10 +35,10 @@ const float DefaultYaw = -90.0f;
 const float DefaultPitch = 0.0f;
 const float DefaultSpeed = 6.0f;
 const float DefaultSensitivity = 0.1f;
-const float DefaultZoom = 45.0f;
+const float DefaultZoom = 61.0f;
 
 // Set Bounding Attributes
-const float MaxZoom = 61.0f;
+const float MaxZoom = 450.0f;
 const float MinZoom = 1.0f;
 
 
