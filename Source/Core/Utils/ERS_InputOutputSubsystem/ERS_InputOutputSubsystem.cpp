@@ -165,7 +165,7 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
 
     // Asset ID Sanity Check
     if (AssetID < 0) {
-        return;
+        return false;
     }
 
 
@@ -271,7 +271,7 @@ bool ERS_CLASS_InputOutputSubsystem::WriteAsset(long AssetID, std::shared_ptr<ER
 
     // Asset ID Sanity Check
     if (AssetID < 0) {
-        return;
+        return false;
     }
 
     // Start Clock To Measure File Metadata
