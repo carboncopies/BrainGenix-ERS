@@ -128,11 +128,17 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
             // Convert To Long, Throw Log Message If Not Number
             try {
                 long ID = std::stoi(FilePath.c_str());
-                UsedAssetIDs_.push_back(ID);
 
-                // Log Checked Out ID
-                Logger_->Log(std::string(std::string("AssetID '") + std::to_string(ID) + std::string("' In Use")).c_str(), 3);
+                if (ID > 0) {
+                    UsedAssetIDs_.push_back(ID);
 
+                    // Log Checked Out ID
+                    Logger_->Log(std::string(std::string("AssetID '") + std::to_string(ID) + std::string("' In Use")).c_str(), 3);
+
+                } else {
+
+                    Logger_->Log(std::string(std::string("AssetID '") + std::to_string(ID) + std::string("' Cannot Be Negative")).c_str(), 8);
+                }
 
             } catch(std::invalid_argument) {
 
@@ -140,7 +146,9 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
                 Logger_->Log(std::string(std::string("AssetID Identification Failed On Asset '") + FilePath + std::string("', Make Sure These Are Numbers")).c_str(), 9);
 
             } catch (std::out_of_range) {
+
                 Logger_->Log(std::string(std::string("AssetID Identification Failed On Asset '") + FilePath + std::string("', Invalid Asset ID")).c_str(), 9);
+
             }
 
         }
@@ -154,6 +162,11 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
 
 // Read Assets From File/DB, Return Bytes
 bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> OutputData) {
+
+    // Asset ID Sanity Check
+    if (AssetID < 0) {
+        return;
+    }
 
 
     // Start Clock To Measure File Metadata
@@ -256,7 +269,12 @@ std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchReadAssets(std::vector<lo
 // Write Data
 bool ERS_CLASS_InputOutputSubsystem::WriteAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> InputData) {
 
-// Start Clock To Measure File Metadata
+    // Asset ID Sanity Check
+    if (AssetID < 0) {
+        return;
+    }
+
+    // Start Clock To Measure File Metadata
     auto StartTime = std::chrono::high_resolution_clock::now();
     bool Success = false;
 
