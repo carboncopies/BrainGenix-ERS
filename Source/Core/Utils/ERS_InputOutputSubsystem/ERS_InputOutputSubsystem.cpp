@@ -139,6 +139,8 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
                 // Log Error
                 Logger_->Log(std::string(std::string("AssetID Identification Failed On Asset '") + FilePath + std::string("', Make Sure These Are Numbers")).c_str(), 9);
 
+            } catch (std::out_of_range) {
+                Logger_->Log(std::string(std::string("AssetID Identification Failed On Asset '") + FilePath + std::string("', Invalid Asset ID")).c_str(), 9);
             }
 
         }
