@@ -173,20 +173,20 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
 
         struct stat Buffer;
         int FileStatus = stat(FilePath.c_str(), &Buffer);
-        FileSize = Buffer.st_size + 1;
+        FileSize = Buffer.st_size;
 
 
         if (FileStatus == 0) {
 
             // Allocate Memory
-            OutputData->Data.reset(new unsigned char[Buffer.st_size+1]);
+            OutputData->Data.reset(new unsigned char[Buffer.st_size]);
             if (OutputData->Data) {
 
                 FILE *Stream = fopen(FilePath.c_str(), "rb");
                 if (Stream) {
 
                     fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size, Stream);
-                    OutputData->Data.get()[Buffer.st_size+1] = '\0';
+                    //OutputData->Data.get()[Buffer.st_size+1] = '\0';
                     fclose(Stream);
                     OutputData->HasLoaded = true;
                     ReadSuccess = true;
