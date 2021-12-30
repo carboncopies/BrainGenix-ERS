@@ -179,13 +179,13 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
         if (FileStatus == 0) {
 
             // Allocate Memory
-            OutputData->Data.reset(new unsigned char[Buffer.st_size]);
+            OutputData->Data.reset(new unsigned char[Buffer.st_size+1]);
             if (OutputData->Data) {
 
                 FILE *Stream = fopen(FilePath.c_str(), "rb");
                 if (Stream) {
 
-                    fread(OutputData->Data.get(), sizeof(unsigned char), FileSize+1, Stream);
+                    fread(OutputData->Data.get(), sizeof(unsigned char), FileSize, Stream);
                     OutputData->Data.get()[Buffer.st_size+1] = (unsigned char)'\0';
                     std::cout<<OutputData->Data.get()<<std::endl;
                     fclose(Stream);
