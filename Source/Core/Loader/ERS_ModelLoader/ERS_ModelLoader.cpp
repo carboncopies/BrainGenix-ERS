@@ -229,6 +229,7 @@ ERS_OBJECT_TEXTURE_2D ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextu
 
     // Get Metadata
     ERS_OBJECT_TEXTURE_2D Texture;
+    Texture.HasImageData = false;
     float Width, Height, Channels;
     if (FreeImage_GetWidth(Image) != 0) {
         float Width = FreeImage_GetWidth(Image);
