@@ -38,7 +38,7 @@ const float DefaultSensitivity = 0.1f;
 const float DefaultZoom = 45.0f;
 
 // Set Bounding Attributes
-const float MaxZoom = 45.0f;
+const float MaxZoom = 61.0f;
 const float MinZoom = 1.0f;
 
 
