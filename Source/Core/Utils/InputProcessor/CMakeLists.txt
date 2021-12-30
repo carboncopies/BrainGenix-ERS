@@ -33,7 +33,6 @@ target_link_libraries(InputProcessor
 
     Model
     Scene
-    SceneLoader
     SceneManager
 
     VisualEditor
@@ -41,6 +40,8 @@ target_link_libraries(InputProcessor
     Shader
     ShaderLoader
     Framebuffer
+
+    ERS_SceneLoader
     )
 
 target_include_directories(InputProcessor PUBLIC ./)
