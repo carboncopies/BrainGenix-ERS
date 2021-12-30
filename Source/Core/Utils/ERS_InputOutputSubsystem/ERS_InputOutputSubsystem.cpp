@@ -165,7 +165,7 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
 
     // Asset ID Sanity Check
     if (AssetID < 0) {
-        Logger_->Log("Cannot Read Asset, ID Is Negative", 9);
+        Logger_->Log(std::string(std::string("Error Reading Asset '") + std::to_string(AssetID) + std::string("', ID Is Negative")).c_str(), 9);
         return false;
     }
 
@@ -272,7 +272,7 @@ bool ERS_CLASS_InputOutputSubsystem::WriteAsset(long AssetID, std::shared_ptr<ER
 
     // Asset ID Sanity Check
     if (AssetID < 0) {
-        Logger_->Log("Cannot Read Asset, ID Is Negative", 9);
+        Logger_->Log(std::string(std::string("Error Writing Asset '") + std::to_string(AssetID) + std::string("', ID Is Negative")).c_str(), 9);
         return false;
     }
 
