@@ -214,9 +214,7 @@ void Cursors3D::EndRenderpass() {
     float WindowHeight = (float)ImGui::GetWindowHeight();
     ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, WindowWidth, WindowHeight);
 
-    float Test[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-    ImGuizmo::Manipulate(CameraView_, CameraProjection_, CurrentGizmoOperation_, ImGuizmo::MODE::WORLD, Matrix_[16], Test, NULL);
-    std::cout<<*Test<<std::endl;
+    ImGuizmo::Manipulate(CameraView_, CameraProjection_, CurrentGizmoOperation_, ImGuizmo::MODE::LOCAL, Matrix_[16], NULL, NULL);
     ImGuizmo::ViewManipulate(CameraView_, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x00000000);
 
 
