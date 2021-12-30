@@ -5,15 +5,15 @@ SceneData:
     AssetName: Rock
     AssetType: Model
     AssetID: 7
-    AssetPositionX: -10.6113224
-    AssetPositionY: 4.68069696
-    AssetPositionZ: -2.39142036
-    AssetRotationX: 71.1356277
-    AssetRotationY: -25.7632465
-    AssetRotationZ: -175.4198
-    AssetScaleX: 7.39898539
-    AssetScaleY: 7.39903736
-    AssetScaleZ: 7.39896154
+    AssetPositionX: -14.4506626
+    AssetPositionY: 2.52190971
+    AssetPositionZ: 3.84979033
+    AssetRotationX: 79.4834976
+    AssetRotationY: 23.4872551
+    AssetRotationZ: -16.1020374
+    AssetScaleX: 7.39897823
+    AssetScaleY: 7.39901924
+    AssetScaleZ: 7.3989563
     FlipTextures: true
   1:
     AssetName: Frog
@@ -75,18 +75,88 @@ SceneData:
     AssetName: Concrete Post 3
     AssetType: Model
     AssetID: 31
-    AssetPositionX: -17.3787346
-    AssetPositionY: 1.42240036
+    AssetPositionX: -16.8548203
+    AssetPositionY: 5.67726564
+    AssetPositionZ: -7.18269634
+    AssetRotationX: 25.5039539
+    AssetRotationY: -15.3178625
+    AssetRotationZ: -158.557007
+    AssetScaleX: 8.7957077
+    AssetScaleY: 8.79576111
+    AssetScaleZ: 8.79568195
+    FlipTextures: true
+  6:
+    AssetName: Rock Base
+    AssetType: Model
+    AssetID: 35
+    AssetPositionX: -15.1245422
+    AssetPositionY: -0.423938543
+    AssetPositionZ: 5.56947374
+    AssetRotationX: 93.9053802
+    AssetRotationY: -27.7052174
+    AssetRotationZ: -137.333954
+    AssetScaleX: 12.980629
+    AssetScaleY: 12.9807425
+    AssetScaleZ: 12.9805984
+    FlipTextures: true
+  7:
+    AssetName: Rock - Copy
+    AssetType: Model
+    AssetID: 7
+    AssetPositionX: -12.8524895
+    AssetPositionY: 1.73453569
+    AssetPositionZ: -1.05711758
+    AssetRotationX: 82.4573822
+    AssetRotationY: -25.342247
+    AssetRotationZ: 8.05068493
+    AssetScaleX: 9.61864758
+    AssetScaleY: 9.61871338
+    AssetScaleZ: 9.61862087
+    FlipTextures: true
+  8:
+    AssetName: Rock - Copy - Copy
+    AssetType: Model
+    AssetID: 7
+    AssetPositionX: -10.6113224
+    AssetPositionY: 4.68069696
+    AssetPositionZ: -2.39142036
+    AssetRotationX: 71.1356277
+    AssetRotationY: -25.7632465
+    AssetRotationZ: -175.4198
+    AssetScaleX: 7.39898539
+    AssetScaleY: 7.39903736
+    AssetScaleZ: 7.3989625
+    FlipTextures: true
+  9:
+    AssetName: Concrete Post 3 - Copy
+    AssetType: Model
+    AssetID: 31
+    AssetPositionX: -16.5128384
+    AssetPositionY: 2.12292194
     AssetPositionZ: -6.06892633
     AssetRotationX: 25.5039539
     AssetRotationY: -15.3178625
     AssetRotationZ: -158.557007
-    AssetScaleX: 6.4903388
-    AssetScaleY: 6.49037933
-    AssetScaleZ: 6.49032116
+    AssetScaleX: 8.7957077
+    AssetScaleY: 8.79576111
+    AssetScaleZ: 8.79568195
     FlipTextures: true
-  6:
-    AssetName: Rock Base
+  10:
+    AssetName: Rock Base - Copy
+    AssetType: Model
+    AssetID: 35
+    AssetPositionX: -15.1147223
+    AssetPositionY: -0.423934758
+    AssetPositionZ: -8.66320801
+    AssetRotationX: 114.228455
+    AssetRotationY: -33.8310127
+    AssetRotationZ: -170.861084
+    AssetScaleX: 12.9806042
+    AssetScaleY: 12.980669
+    AssetScaleZ: 12.9806061
+    FlipTextures: true
+  11:
+    AssetName: Rock Base - Copy - Copy
     AssetType: Model
     AssetID: 35
     AssetPositionX: -14.2871113
