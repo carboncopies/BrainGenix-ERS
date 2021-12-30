@@ -173,7 +173,7 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
 
         struct stat Buffer;
         int FileStatus = stat(FilePath.c_str(), &Buffer);
-        FileSize = Buffer.st_size + 1;
+        FileSize = Buffer.st_size;
 
 
         if (FileStatus == 0) {
@@ -185,8 +185,8 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
                 FILE *Stream = fopen(FilePath.c_str(), "rb");
                 if (Stream) {
 
-                    fread(OutputData->Data.get(), sizeof(unsigned char), FileSize, Stream);
-                    OutputData->Data.get()[(int)FileSize] = (unsigned char)'\0';
+                    fread(OutputData->Data.get(), sizeof(unsigned char), FileSize+1, Stream);
+                    OutputData->Data.get()[Buffer.st_size+1] = (unsigned char)'\0';
                     std::cout<<OutputData->Data.get()<<std::endl;
                     fclose(Stream);
                     OutputData->HasLoaded = true;
