@@ -187,7 +187,6 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
 
                     fread(OutputData->Data.get(), sizeof(unsigned char), FileSize, Stream);
                     OutputData->Data.get()[Buffer.st_size+1] = (unsigned char)'\0';
-                    std::cout<<OutputData->Data.get()<<std::endl;
                     fclose(Stream);
                     OutputData->HasLoaded = true;
                     ReadSuccess = true;
