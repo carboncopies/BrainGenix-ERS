@@ -6,7 +6,6 @@
 add_library(Window_ProjectSettings
 
             # Add Source Files (.cpp)
-
             "GUI_Window_ProjectSettings.cpp"
 
             # Add Header Files (.h)
