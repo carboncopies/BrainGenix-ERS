@@ -22,6 +22,8 @@
 #include <ERS_STRUCT_IOData.h>
 #include <ERS_STRUCT_SystemUtils.h>
 
+#include <ERS_STRUCT_Project.h>
+
 #include <ERS_InputOutputSubsystem.h>
 
 
@@ -60,7 +62,7 @@ public:
      * 
      * @param FilePath 
      */
-    ERS_PROJECT LoadProject(long AssetID);
+    ERS_STRUCT_PROJECT LoadProject(long AssetID);
 
 
 };
