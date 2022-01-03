@@ -30,10 +30,11 @@ target_link_libraries(Renderer
     VisualRenderer
     IOManager
     VisualEditor
-    3DCursor
 
+    ERS_3DCursor
     ERS_ModelWriter
     ERS_ModelLoader
+    
     ERS_STRUCT_IOData
     ERS_STRUCT_SystemUtils
     )
