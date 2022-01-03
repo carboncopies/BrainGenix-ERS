@@ -50,13 +50,14 @@ void Window_ProjectSettings::Draw() {
 
         // Add Project Metadata
         ImGui::InputTextWithHint("Project Name", "Enter Project Title", ProjectNameBuffer, 512);
+        ImGui::InputTextMultiline("Project Description", ProjectDescriptionBuffer, 16384);
         ImGui::InputTextWithHint("Project Creation Date", "", ProjectCreationDateBuffer, 64, ImGuiInputTextFlags_ReadOnly);
         ImGui::InputTextWithHint("Project Modification Date", "", ProjectModificationDateBuffer, 64, ImGuiInputTextFlags_ReadOnly);
 
 
 
         ProjectUtils_->ProjectManager_->Project_.ProjectName = std::string(ProjectNameBuffer);
-
+        ProjectUtils_->ProjectManager_->Project_.ProjectDescription = std::string(ProjectDescriptionBuffer);
 
         ImGui::End();
 
