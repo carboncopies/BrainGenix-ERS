@@ -19,6 +19,7 @@ IsLicenseProprietary: False
 # Project Scene Asset IDs
 SceneIDs:
     0: 2
+DefaultScene: 0
 
 
 # ERS Layout Configuration IDs
