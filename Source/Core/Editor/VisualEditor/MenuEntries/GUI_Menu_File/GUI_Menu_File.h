@@ -35,7 +35,7 @@
 #include <ERS_SceneWriter.h>
 #include <ERS_SceneManager.h>
 
-//#include <GUI_Window_ProjectSettings.h>
+#include <GUI_Window_ProjectSettings.h>
 
 
 
@@ -52,6 +52,7 @@ class GUI_Menu_File {
         std::unique_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
         std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
         std::unique_ptr<GUI_ImportAsset> ImportAsset_; /**<Pointer To Asset Importer System*/
+        std::unique_ptr<Window_ProjectSettings> Window_ProjectSettings_; /**<Project Settings Window*/
 
 
     // Member Functions

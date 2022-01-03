@@ -25,6 +25,7 @@ GUI_Menu_File::GUI_Menu_File(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils
     // Create Class Instances
     SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_);
     ImportAsset_ = std::make_unique<GUI_ImportAsset>(SystemUtils_);
+    Window_ProjectSettings = std::make_unique<Window_ProjectSettings>(SystemUtils, ProjectUtils);
 
 }
 
