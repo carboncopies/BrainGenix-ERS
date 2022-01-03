@@ -122,14 +122,14 @@ int main() {
     // Read Config File For Default Loading Dir
     try {
         sERSLogger->Log("Reading Configuration File For 'DefaultProjectDirectory'", 2);
-        
+
     } catch(YAML::BadSubscript) {
 
     }
 
     // Load Default Scene
     sERSLogger->Log("FIXME!!! LOADING DEFAULT SCENE, SHOULD BE PROJECT FILE INSTEAD!", 9);
-    sERSSceneManager->AddScene(sERSSceneLoader->ProcessScene(0));
+    sERSSceneManager->AddScene(sERSSceneLoader->ProcessScene(1));
 
 
     //
