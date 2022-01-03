@@ -44,7 +44,7 @@ target_link_libraries(Widgets
     ERS_Editor_FontManager
     ERS_STRUCT_SystemUtils
 
-    3DCursor
+    ERS_3DCursor
 
     Scene
     SceneManager
