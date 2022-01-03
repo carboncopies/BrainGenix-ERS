@@ -137,7 +137,6 @@ target_link_libraries(${PROJECT_NAME}
 # ADD INTERNAL SUBDIRECTORIES
 add_subdirectory(${SRC_DIR}/Core/Utils/LoggingSystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ConfigurationLoader)
-add_subdirectory(${SRC_DIR}/Core/Utils/SceneManager)
 add_subdirectory(${SRC_DIR}/Core/Utils/FileIO)
 add_subdirectory(${SRC_DIR}/Core/Utils/DatabaseInterface)
 add_subdirectory(${SRC_DIR}/Core/Utils/IOManager)
@@ -147,6 +146,7 @@ add_subdirectory(${SRC_DIR}/Core/Utils/ERS_InputOutputSubsystem)
 
 
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_FramerateManager)
+add_subdirectory(${SRC_DIR}/Core/Manager/ERS_SceneManager)
 #add_subdirectory(${SRC_DIR}/Core/Manager/ERS_FramerateManager)
 
 
