@@ -25,8 +25,10 @@ target_link_libraries(ERS_STRUCT_SystemUtils
     SceneManager
 
     ERS_InputOutputSubsystem
-    ERS_ModelWriter
     ERS_FramerateManager
+    ERS_ModelWriter
+    ERS_ModelLoader
+    ERS_SceneLoader
     )
 
 
