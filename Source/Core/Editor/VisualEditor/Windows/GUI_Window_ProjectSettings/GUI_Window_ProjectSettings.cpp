@@ -58,7 +58,8 @@ void Window_ProjectSettings::Draw() {
         ImGui::InputTextWithHint("Project License", "Enter License Name Here", ProjectLicenseNameBuffer, 128);
         ImGui::Checkbox("Is License Free", &IsProjectFree);
         ImGui::SameLine();
-        ImGui::SetTooltip("Checking this box indicates that your project and components are free and open source software.");
+
+        ImGui::BulletText("Checking this box indicates that your project and components are free and open source software.");
 
         // Check If Not Free, Present Warning
         if (!IsProjectFree) {
