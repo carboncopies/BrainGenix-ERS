@@ -131,13 +131,6 @@ int main() {
     ProjectUtils->ProjectManager_ = sERSProjectManager;
 
 
-    // Load Default Scene
-    sERSLogger->Log("FIXME!!! LOADING DEFAULT SCENE, SHOULD BE PROJECT FILE INSTEAD!", 9);
-    sERSSceneManager->AddScene(sERSSceneLoader->ProcessScene(2));
-
-
-    //
-
 
     // Instantiate RendererManager
     RendererManager sERSRendererManager(SystemUtils, ProjectUtils);
