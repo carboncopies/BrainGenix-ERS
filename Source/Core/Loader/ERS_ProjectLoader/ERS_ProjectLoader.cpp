@@ -49,7 +49,16 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
 
     // Populate Struct
     Project.ProjectName = ProjectNode["ProjectName"].as<std::string>();
+    Project.ProjectDescription = ProjectNode["ProjectDescription"].as<std::string>();
+    Project.ProjectVersion = ProjectNode["ProjectVersion"].as<std::string>();
     
+    Project.ProjectCreationDate = ProjectNode["ProjectCreationDate"].as<std::string>();
+    Project.ProjectModificationDate = ProjectNode["ProjectModificationDate"].as<std::string>();
+    Project.ProjectCreator = ProjectNode["ProjectCreator"].as<std::string>();
+    Project.ProjectLicense = ProjectNode["ProjectLicense"].as<std::string>();
+    Project.IsLicenseProprietary = ProjectNode["IsLicenseProprietary"].as<bool>();
+    
+
     // Return Struct When Populated
     return Project;
 
