@@ -26,7 +26,7 @@
 #include <LoggingSystem.h>
 #include <HardwareInformation.h>
 
-#include <SceneManager.h>
+#include <ERS_SceneManager.h>
 
 
 #include <ERS_InputOutputSubsystem.h>
@@ -105,7 +105,7 @@ int main() {
 
     // Setup Loaders
     sERSLogger->Log("Instantiating Scene Manager Shared Pointer", 4);
-    std::shared_ptr<SceneManager> sERSSceneManager = std::make_shared<SceneManager>(SystemUtils->Logger_);
+    std::shared_ptr<ERS_CLASS_SceneManager> sERSSceneManager = std::make_shared<ERS_CLASS_SceneManager>(SystemUtils->Logger_);
     sERSLogger->Log("Copying Shared Pointer To Project Utils Struct", 3);
     ProjectUtils->SceneManager_ = sERSSceneManager;
 
