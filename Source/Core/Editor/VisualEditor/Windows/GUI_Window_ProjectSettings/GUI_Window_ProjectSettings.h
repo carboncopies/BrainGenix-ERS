@@ -13,6 +13,9 @@
 
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <memory>
+#include <string>
+#include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <imgui.h>
