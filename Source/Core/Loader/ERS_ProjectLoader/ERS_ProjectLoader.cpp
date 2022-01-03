@@ -61,6 +61,7 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     Project.IsLicenseProprietary = ProjectNode["IsLicenseProprietary"].as<bool>();
     
     Project.DefaultLayout = ProjectNode["DefaultLayout"].as<int>();
+    Project.DefaultScene = ProjectNode["DefaultScene"].as<int>();
 
 
     // Populate Scene IDs
