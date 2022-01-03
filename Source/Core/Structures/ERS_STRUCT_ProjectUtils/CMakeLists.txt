@@ -1,26 +1,26 @@
 ########################################################################
-# This file is part of the BrainGenix-ERS Environment Rendering System #
+# This file is part of the BrainGenix-ERS Environment Rendering Project #
 ########################################################################
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_STRUCT_SystemUtils
+add_library(ERS_STRUCT_ProjectUtils
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_SystemUtils.cpp"
+            "ERS_STRUCT_ProjectUtils.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_SystemUtils.h"
+            "ERS_STRUCT_ProjectUtils.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_SystemUtils
+target_link_libraries(ERS_STRUCT_ProjectUtils
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_SystemUtils
+target_link_libraries(ERS_STRUCT_ProjectUtils
     LoggingSystem
     SceneManager
 
@@ -32,4 +32,4 @@ target_link_libraries(ERS_STRUCT_SystemUtils
     )
 
 
-target_include_directories(ERS_STRUCT_SystemUtils PUBLIC ./)
+target_include_directories(ERS_STRUCT_ProjectUtils PUBLIC ./)
