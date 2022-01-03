@@ -86,7 +86,7 @@ class GUISystem {
          * 
          * @param Logger 
          */
-        GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
+        GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
 
         /**
          * @brief Destroy the Gui System object
