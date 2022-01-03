@@ -50,7 +50,7 @@ void Window_ProjectSettings::Draw() {
 
         // Add Project Metadata
         ImGui::InputTextWithHint("Project Name", "Enter Project Title", ProjectNameBuffer, 512);
-        ImGui::InputTextWithHint("Project Creation Date", "", ProjectCreationDateBuffer, 64)
+        ImGui::InputTextWithHint("Project Creation Date", "", ProjectCreationDateBuffer, 64, ImGuiInputTextFlags_ReadOnly);
 
 
 
