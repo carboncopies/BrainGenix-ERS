@@ -47,7 +47,7 @@ void Window_ProjectSettings::Draw() {
         strcpy(ProjectCreationDateBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectCreationDate.c_str());
         strcpy(ProjectModificationDateBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectModificationDate.c_str());
         strcpy(ProjectDescriptionBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectDescription.c_str());
-        IsProjectProprietary = !ProjectUtils_->ProjectManager_->Project.IsProjectProprietary;
+        IsProjectProprietary = !ProjectUtils_->ProjectManager_->Project_.IsProjectProprietary;
 
         // Add Project Metadata
         ImGui::InputTextWithHint("Project Name", "Enter Project Title", ProjectNameBuffer, 512);
@@ -65,7 +65,7 @@ void Window_ProjectSettings::Draw() {
 
         ProjectUtils_->ProjectManager_->Project_.ProjectName = std::string(ProjectNameBuffer);
         ProjectUtils_->ProjectManager_->Project_.ProjectDescription = std::string(ProjectDescriptionBuffer);
-        ProjectUtils_->ProjectManager_->Project.IsProjectProprietary = ~IsProjectProprietary;
+        ProjectUtils_->ProjectManager_->Project_.IsProjectProprietary = ~IsProjectProprietary;
 
 
         ImGui::End();
