@@ -13,7 +13,7 @@
 
 
 // Constructor
-ERS_ProjectLoader::ERS_ProjectLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+ERS_CLASS_ProjectLoader::ERS_CLASS_ProjectLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
     // Create Local Pointer
     SystemUtils_ = SystemUtils;
@@ -24,15 +24,15 @@ ERS_ProjectLoader::ERS_ProjectLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> Sys
 }
 
 // Destructor
-ERS_ProjectLoader::~ERS_ProjectLoader() {
+ERS_CLASS_ProjectLoader::~ERS_CLASS_ProjectLoader() {
 
     // Log Destructor Call
-    SystemUtils_->Logger_->Log("ERS_ProjectLoader Destructor Called", 6);
+    SystemUtils_->Logger_->Log("ERS_CLASS_ProjectLoader Destructor Called", 6);
 
 }
 
 // Project Loader Struct
-ERS_STRUCT_Project ERS_ProjectLoader::LoadProject(long AssetID) {
+ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
 
     // Log Project Loading
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Project With Asset ID ") + std::to_string(AssetID)).c_str(), 4);

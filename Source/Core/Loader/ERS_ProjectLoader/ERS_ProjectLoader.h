@@ -33,7 +33,7 @@
  * @brief Class for loading project files
  * 
  */
-class ERS_ProjectLoader {
+class ERS_CLASS_ProjectLoader {
 
 
 private:
@@ -49,13 +49,13 @@ public:
      * 
      * @param Logger 
      */
-    ERS_ProjectLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    ERS_CLASS_ProjectLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
 
     /**
      * @brief 
      * 
      */
-    ~ERS_ProjectLoader();
+    ~ERS_CLASS_ProjectLoader();
 
     /**
      * @brief Load a project from a file path.
