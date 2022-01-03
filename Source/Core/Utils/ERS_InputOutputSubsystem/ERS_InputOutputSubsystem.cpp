@@ -69,6 +69,17 @@ ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
 
 }
 
+
+// Update Asset Paths
+void ERS_CLASS_InputOutputSubsystem::UpdateAssetPath(std::string AssetPath) {
+
+    // Update Asset Path
+    Logger_->Log(std::string(std::string("Changing Asset Repository Directory To '") + std::string(AssetPath) + std::string("'")).c_str(), 5);
+    AssetPath_ = AssetPath;
+
+}
+
+
 // Allocate Asset Id
 long ERS_CLASS_InputOutputSubsystem::AllocateAssetID() {
 

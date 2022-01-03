@@ -126,6 +126,12 @@ class ERS_CLASS_InputOutputSubsystem {
          */
         void IndexUsedAssetIDs();
 
+        /**
+         * @brief Update asset path to string passed in. This allows you to change projects (IE: load another project, etc.) REMEMBER TO CALL ASSET ID INDEXING AFTER THIS, ELSE DATA LOSS CAN OCCUR.
+         * 
+         * @param AssetPath 
+         */
+        void UpdateAssetPath(std::string AssetPath);
 
 
 
