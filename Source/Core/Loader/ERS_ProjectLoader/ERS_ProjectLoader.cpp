@@ -36,8 +36,11 @@ ERS_STRUCT_Project ProjectLoader::LoadProject(long AssetID) {
 
     // Log Project Loading
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Project With Asset ID ") + std::to_string(AssetID)).c_str(), 4);
+    std::shared_ptr<ERS_STRUCT_IOData> ProjectData = std::make_shared<ERS_STRUCT_IOData>();
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, ProjectData);
 
-    
+    std::cout<<ProjectData->Data.get()<<std::endl;
+
     // // Load File
     // YAML::Node ProjectNode = YAML::LoadFile();
 
