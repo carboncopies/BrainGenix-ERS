@@ -44,4 +44,7 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
     // Load Into Project Struct
     Project_ = ProjectLoader_->LoadProject(AssetID);
 
+    // Load Default Scene
+    
+
 }
