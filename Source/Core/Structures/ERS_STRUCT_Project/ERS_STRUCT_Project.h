@@ -41,6 +41,6 @@ struct ERS_STRUCT_Project {
 
     std::vector<long> SceneIDs; /**<Vector Of Scene IDs Used In The Project*/
     std::vector<long> ConfigurationIDs; /**<Vector Of Configuration IDs Used In The Project*/
-    long DefaultLayoutID = 0; /**<Default Layout Used*/
+    long DefaultLayout = 0; /**<Default Layout Used*/
 
 };
