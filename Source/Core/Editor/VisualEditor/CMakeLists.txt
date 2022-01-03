@@ -33,7 +33,7 @@ target_link_libraries(VisualEditor
     ERS_Editor_FontManager
     ERS_Editor_UserProfileManager
 
-    3DCursor
+    ERS_3DCursor
 
     Menu_File
     Menu_View
