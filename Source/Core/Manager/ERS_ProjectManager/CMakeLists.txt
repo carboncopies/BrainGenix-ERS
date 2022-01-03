@@ -25,6 +25,10 @@ target_link_libraries(ERS_ProjectManager
 
 # Link Internal Libs
 target_link_libraries(ERS_ProjectManager
+
+    ERS_ProjectLoader
+    ERS_STRUCT_SystemUtils
+
     )
 
 target_include_directories(ERS_ProjectManager PUBLIC ./)

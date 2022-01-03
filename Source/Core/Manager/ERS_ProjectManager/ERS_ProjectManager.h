@@ -20,6 +20,8 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
+#include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_CLASS_ProjectLoader.h>
 
 
 /**
@@ -31,6 +33,8 @@ class ERS_CLASS_ProjectManager {
 
 private:
 
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointer To System Utils Struct*/
+    std::shared_ptr<ERS_CLASS_ProjectLoader> ProjectLoader_; /**<Project Loader Util*/
 
 public:
 
