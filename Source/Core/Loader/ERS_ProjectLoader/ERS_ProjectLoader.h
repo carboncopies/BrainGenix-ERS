@@ -37,7 +37,7 @@ class ProjectLoader {
 private:
 
     // Logger
-    std::shared_ptr<ERS_STRUCTURE_SystemUtils> Logger_; /**<Pointer to Logging System.*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> Logger_; /**<Pointer to Logging System.*/
 
 
 
