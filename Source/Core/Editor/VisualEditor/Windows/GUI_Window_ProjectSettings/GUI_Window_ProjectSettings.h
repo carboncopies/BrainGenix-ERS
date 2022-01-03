@@ -53,4 +53,11 @@ public:
      */
     ~Window_ProjectSettings();
 
+
+    /**
+     * @brief Draw the window, call this every frame.
+     * 
+     */
+    void Draw();
+
 };
