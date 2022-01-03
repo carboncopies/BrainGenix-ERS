@@ -44,6 +44,7 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     YAML::Node ProjectNode = YAML::Load(DataString);
 
 
+
     // Create New Struct
     ERS_STRUCT_Project Project;
 
@@ -59,7 +60,18 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     Project.ProjectLicense = ProjectNode["ProjectLicense"].as<std::string>();
     Project.IsLicenseProprietary = ProjectNode["IsLicenseProprietary"].as<bool>();
     
+    Project.DefaultLayout = ProjectNode["DefaultLayout"].as<int>();
+
+
     // Populate Scene IDs
+    YAML::Node ProjectSceneIDs = ProjectNode["SceneIDs"];
+    for (YAML::const_iterator it=ProjectSceneIDs.begin(); it!=ProjetSceneIDs.end(); ++it) {
+        Project.SceneIDs.push_back(it->second);
+    }
+
+    // Populate Layouts
+
+
     
 
     // Return Struct When Populated
