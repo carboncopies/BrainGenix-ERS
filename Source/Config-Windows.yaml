@@ -14,7 +14,7 @@ MaxFramesInFlight: 2
 # System Settings
 ShowEditorDebugMenu: True
 IsLinux: False
-DefaultConfigurationDirectory: "EditorAssets/Projects/DefaultProject/"
+DefaultProjectDirectory: "EditorAssets/Projects/DefaultProject/"
 
 # Database Loading Settings #
 UseDatabaseLoading: False

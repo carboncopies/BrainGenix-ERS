@@ -45,10 +45,10 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(std::shared_ptr<L
         Logger_->Log("Database Lading Disabled, Reading Config For Asset Path", 5);
 
         try {
-            Logger_->Log("Reading Configuration For 'STRING' 'AssetPath'", 1);
-            AssetPath_ = SystemConfiguration["AssetPath"].as<std::string>();
+            Logger_->Log("Reading Configuration For 'STRING' 'DefaultProjectDirectory'", 1);
+            AssetPath_ = SystemConfiguration["DefaultProjectDirectory"].as<std::string>();
         } catch (YAML::TypedBadConversion<std::string>) {
-            Logger_->Log("Configuration Error, Parameter 'AssetPath' Is Not In Config, System Will Exit", 10);
+            Logger_->Log("Configuration Error, Parameter 'DefaultProjectDirectory' Is Not In Config, System Will Exit", 10);
             exit(1);
         }
 
