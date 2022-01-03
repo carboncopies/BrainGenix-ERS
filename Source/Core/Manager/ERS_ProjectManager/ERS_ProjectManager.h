@@ -23,6 +23,8 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_Project.h>
 
+#include <ERS_SceneLoader.h>
+#include <ERS_SceneManager.h>
 #include <ERS_ProjectLoader.h>
 
 
