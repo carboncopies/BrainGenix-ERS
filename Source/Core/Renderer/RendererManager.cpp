@@ -33,9 +33,6 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     TextureLoader_ = std::make_shared<TextureLoader>(SystemUtils_->Logger_);
 
 
-    // Load Scene
-
-
     // Initialize Systems
     SystemUtils_->Logger_->Log("Initializing GLFW", 5);
     InitializeGLFW();
