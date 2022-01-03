@@ -88,6 +88,7 @@ void GUI_Menu_File::Draw() {
 
     // Draw Subwindows
     ImportAsset_->Draw();
+    Window_ProjectSettings_->Draw();
 
 
 }
