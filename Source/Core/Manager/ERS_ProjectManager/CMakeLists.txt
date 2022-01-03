@@ -28,6 +28,7 @@ target_link_libraries(ERS_ProjectManager
 
     ERS_ProjectLoader
     ERS_STRUCT_SystemUtils
+    ERS_STRUCT_Project
 
     )
 

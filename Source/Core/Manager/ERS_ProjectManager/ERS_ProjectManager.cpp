@@ -42,6 +42,6 @@ ERS_CLASS_ProjectManager::~ERS_CLASS_ProjectManager() {
 void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
 
     // Load Into Project Struct
-
+    Project_ = ProjectLoader_->LoadProject(AssetID);
 
 }
