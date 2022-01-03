@@ -44,6 +44,12 @@ void GUI_Menu_File::Draw() {
     // File Menu
     if (ImGui::BeginMenu("File")) {
 
+        // Project Settings
+        if (ImGui::MenuItem("Project Settings")) {
+            Window_ProjectSettings->Enabled_ = true;
+
+        }
+
         // Import Option, Disabled On Windows Due To Filesystem Issues
         if (SystemUtils_->IsLinux_) {
             if (ImGui::MenuItem("Import Model")) {
