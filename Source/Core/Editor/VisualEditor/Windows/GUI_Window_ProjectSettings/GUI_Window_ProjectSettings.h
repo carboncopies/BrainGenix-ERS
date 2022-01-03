@@ -35,7 +35,7 @@ private:
 
 public:
 
-    bool Enabled = true; /**<Is Window Shown Or Hidden*/
+    bool Enabled_ = true; /**<Is Window Shown Or Hidden*/
 
 public:
 
