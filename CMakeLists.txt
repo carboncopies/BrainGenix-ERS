@@ -128,7 +128,8 @@ target_link_libraries(${PROJECT_NAME}
   ERS_ProjectLoader
   ERS_InputOutputSubsystem
   ERS_FramerateManager
-  
+  ERS_ProjectManager
+
   ERS_STRUCT_SystemUtils
   ERS_STRUCT_ProjectUtils
 
