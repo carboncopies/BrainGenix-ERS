@@ -13,13 +13,13 @@
 
 
 // Constructor
-ProjectLoader::ProjectLoader(std::shared_ptr<LoggerClass> Logger) {
+ProjectLoader::ProjectLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
     // Create Local Pointer
-    Logger_ = Logger;
+    SystemUtils_ = SystemUtils;
 
     // Log Initialization
-    Logger_->Log("Initializing Project Loader", 5);
+    SystemUtils_->Logger_->Log("Initializing Project Loader", 5);
 
 }
 
@@ -27,32 +27,32 @@ ProjectLoader::ProjectLoader(std::shared_ptr<LoggerClass> Logger) {
 ProjectLoader::~ProjectLoader() {
 
     // Log Destructor Call
-    Logger_->Log("ProjectLoader Destructor Called", 6);
+    SystemUtils_->Logger_->Log("ProjectLoader Destructor Called", 6);
 
 }
 
 // Project Loader Struct
-ERS_PROJECT ProjectLoader::LoadProject(const char* FilePath) {
+ERS_PROJECT ProjectLoader::LoadProject(long AssetID) {
 
     // Log Project Loading
-    Logger_->Log(std::string(std::string("Loading Project At Path: ") + std::string(FilePath)).c_str(), 4);
+    SystemUtils_->Logger_->Log(std::string(std::string("Loading Project At Path: ") + std::string(FilePath)).c_str(), 4);
 
     
-    // Load File
-    YAML::Node ProjectNode = YAML::LoadFile(FilePath);
+    // // Load File
+    // YAML::Node ProjectNode = YAML::LoadFile();
 
-    // Create New Struct
-    ERS_PROJECT Project;
+    // // Create New Struct
+    // ERS_PROJECT Project;
 
 
-    // Populate Struct
-    Project.ProjectName = ProjectNode["ProjectName"].as<std::string>();
-    Project.VersionMajor = ProjectNode["ProjectVersionMajor"].as<int>();
-    Project.VersionMinor = ProjectNode["ProjectVersionMinor"].as<int>();
-    Project.VersionPatch = ProjectNode["ProjectVersionPatch"].as<int>();
+    // // Populate Struct
+    // Project.ProjectName = ProjectNode["ProjectName"].as<std::string>();
+    // Project.VersionMajor = ProjectNode["ProjectVersionMajor"].as<int>();
+    // Project.VersionMinor = ProjectNode["ProjectVersionMinor"].as<int>();
+    // Project.VersionPatch = ProjectNode["ProjectVersionPatch"].as<int>();
     
 
-    // Return Struct When Populated
-    return Project;
+    // // Return Struct When Populated
+    // return Project;
 
 }
