@@ -27,8 +27,9 @@
  */
 struct ERS_STRUCT_Project {
 
-
-    std::string ProjectName = "Default"
+    // Project Metadata
+    std::string ProjectName = ""; /**<Stores The Project's Name*/
+    
 
 
 };
