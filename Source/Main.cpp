@@ -129,7 +129,7 @@ int main() {
 
     // Load Default Scene
     sERSLogger->Log("FIXME!!! LOADING DEFAULT SCENE, SHOULD BE PROJECT FILE INSTEAD!", 9);
-    sERSSceneManager->AddScene(sERSSceneLoader->ProcessScene(1));
+    sERSSceneManager->AddScene(sERSSceneLoader->ProcessScene(2));
 
 
     //
