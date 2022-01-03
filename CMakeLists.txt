@@ -144,17 +144,18 @@ add_subdirectory(${SRC_DIR}/Core/Utils/ERS_FramerateManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_ThemeManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_FontManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_UserProfileManager)
-
+add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_3DCursor)
 
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor)
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/Widgets)
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/Windows)
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/MenuEntries)
 
+
 add_subdirectory(${SRC_DIR}/Core/Renderer)
 add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer)
 add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer/Framebuffer)
-add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer/ERS_3DCursor)
+
 
 add_subdirectory(${SRC_DIR}/Core/Structures/Cameras/NoClip)
 add_subdirectory(${SRC_DIR}/Core/Structures/Meshes)

@@ -9,7 +9,7 @@
     Date Created: 2021-12-01
 */
 
-#include <3DCursor.h>
+#include <ERS_Editor_3DCursor.h>
 
 
 // 3D Cursor Constructor

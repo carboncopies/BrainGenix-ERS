@@ -4,19 +4,19 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_3DCursor
+add_library(ERS_Editor_3DCursor
 
             # Add Source Files (.cpp)
-            "ERS_3DCursor.cpp"
+            "ERS_Editor_3DCursor.cpp"
 
             # Add Header Files (.h)
-            "ERS_3DCursor.h"
+            "ERS_Editor_3DCursor.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_3DCursor
+target_link_libraries(ERS_Editor_3DCursor
     glm
     glad
     glfw
@@ -25,10 +25,10 @@ target_link_libraries(ERS_3DCursor
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_3DCursor
+target_link_libraries(ERS_Editor_3DCursor
     LoggingSystem
     NoClip
     ERS_STRUCT_LocRotScale
     )
 
-target_include_directories(ERS_3DCursor PUBLIC ./)
+target_include_directories(ERS_Editor_3DCursor PUBLIC ./)
