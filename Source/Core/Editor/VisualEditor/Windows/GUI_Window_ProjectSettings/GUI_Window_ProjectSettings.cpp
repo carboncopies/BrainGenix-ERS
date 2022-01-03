@@ -39,7 +39,7 @@ void Window_ProjectSettings::Draw() {
     // Begin Window
     if (Enabled_) {
         ImGui::Begin("Project Settings", &Enabled_);
-        ImGui::SetWindowSize(ImVec2(400, 300), ImGuiCond_FirstUseEver);
+        ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
 
 
         // Copy Project Info Into Vars ImGui Can Understand
@@ -50,7 +50,7 @@ void Window_ProjectSettings::Draw() {
 
         // Add Project Metadata
         ImGui::InputTextWithHint("Project Name", "Enter Project Title", ProjectNameBuffer, 512);
-        ImGui::InputTextMultiline("Project Description", ProjectDescriptionBuffer, 16384);
+        ImGui::InputTextMultiline("Project Description", ProjectDescriptionBuffer, 16384, ImGuiInputTextFlags_WrapLines);
         ImGui::InputTextWithHint("Project Creation Date", "", ProjectCreationDateBuffer, 64, ImGuiInputTextFlags_ReadOnly);
         ImGui::InputTextWithHint("Project Modification Date", "", ProjectModificationDateBuffer, 64, ImGuiInputTextFlags_ReadOnly);
 
