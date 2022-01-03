@@ -56,7 +56,16 @@ void Window_ProjectSettings::Draw() {
 
         ImGui::Separator();
         ImGui::InputTextWithHint("Project License", "Enter License Name Here", ProjectLicenseNameBuffer, 128);
-        ImGui::Checkbox("Is License NonFree", &IsProjectFree);
+        ImGui::Checkbox("Is License Free", &IsProjectFree);
+
+        // Check If Not Free, Present Warning
+        if (!IsProjectFree) {
+            ImGui::Separator();
+            ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "WARNING: This project is not free and open source software!");
+            ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "You may be subject to additional licensing restrictions and other nasty things.");
+            ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "Try contacting the developers to see if they will change the license.");            
+        }
+
         ImGui::Separator();
 
         ImGui::InputTextWithHint("Project Creation Date", "", ProjectCreationDateBuffer, 64, ImGuiInputTextFlags_ReadOnly);
