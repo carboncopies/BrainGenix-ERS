@@ -33,8 +33,9 @@ target_link_libraries(Menu_File
     ERS_Editor_ImportAsset
 
     ERS_SceneWriter
-    SceneManager
+    ERS_ProjectLoader
 
+    SceneManager
     Scene
     )
 
