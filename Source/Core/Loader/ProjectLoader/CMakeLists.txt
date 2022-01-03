@@ -4,27 +4,27 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ProjectLoader
+add_library(ERS_CLASS_ProjectLoader
 
             # Add Source Files (.cpp)
-            "ProjectLoader.cpp"
+            "ERS_ProjectLoader.cpp"
 
             # Add Header Files (.h)
-            "ProjectLoader.h"
+            "ERS_ProjectLoader.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ProjectLoader
+target_link_libraries(ERS_CLASS_ProjectLoader
     yaml-cpp
     )
 
 # Link Internal Libs
-target_link_libraries(ProjectLoader
+target_link_libraries(ERS_CLASS_ProjectLoader
     ERS_STRUCTURE_IOData
     ERS_STRUCTURE_InputOutputSystem
     )
 
 
-target_include_directories(ProjectLoader PUBLIC ./)
+target_include_directories(ERS_CLASS_ProjectLoader PUBLIC ./)
