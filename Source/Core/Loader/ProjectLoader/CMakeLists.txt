@@ -22,8 +22,8 @@ target_link_libraries(ProjectLoader
 
 # Link Internal Libs
 target_link_libraries(ProjectLoader
-    LoggingSystem
-    Project
+    ERS_STRUCTURE_IOData
+    ERS_STRUCTURE_InputOutputSystem
     )
 
 

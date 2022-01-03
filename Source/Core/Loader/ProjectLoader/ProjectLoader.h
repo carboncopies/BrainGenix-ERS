@@ -19,8 +19,8 @@
 
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
-#include <Project.h>
+#include <ERS_STRUCTURE_IOData.h>
+#include <ERS_STRUCTURE_InputOutputSystem.h>
 
 
 
