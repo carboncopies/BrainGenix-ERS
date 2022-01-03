@@ -45,7 +45,7 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
 
 
     // Create New Struct
-    ERS_STRUCT_PROJECT Project;
+    ERS_STRUCT_Project Project;
 
     // Populate Struct
     Project.ProjectName = ProjectNode["ProjectName"].as<std::string>();
