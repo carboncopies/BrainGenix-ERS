@@ -119,6 +119,9 @@ int main() {
     sERSLogger->Log("Copying Shared Pointer To Project Utils Struct", 3);
     ProjectUtils->SceneLoader_ = sERSSceneLoader;
 
+    sERSLogger->Log("Instantiating ERS Project Loader Pointer", 4);
+    std::shared_ptr<ERS_CLASS_ProjectLoader> sERSProjectLoader = std::make_shared<ERS_CLASS_ProjectLoader>()
+    sERSLogger->Log("Instantiating Scene Loader Shared Pointer", 4);
 
     // Load Default Project
     sERSLogger->Log("Loading Default Project Defined In Configuration File", 5);
