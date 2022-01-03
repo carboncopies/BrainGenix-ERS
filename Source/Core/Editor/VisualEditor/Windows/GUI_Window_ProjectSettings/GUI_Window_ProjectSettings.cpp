@@ -47,6 +47,7 @@ void Window_ProjectSettings::Draw() {
         strcpy(ProjectCreationDateBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectCreationDate.c_str());
         strcpy(ProjectModificationDateBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectModificationDate.c_str());
         strcpy(ProjectDescriptionBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectDescription.c_str());
+        IsProjectProprietary = !ProjectUtils->ProjectManager->Project.IsProjectProprietary;
 
         // Add Project Metadata
         ImGui::InputTextWithHint("Project Name", "Enter Project Title", ProjectNameBuffer, 512);
@@ -54,7 +55,7 @@ void Window_ProjectSettings::Draw() {
 
         ImGui::Separator();
         ImGui::InputBoxWithHint("Project License", "Enter License Name Here", ProjectLicenseNameBuffer, 128);
-        ImGui::Checkbox("Is License NonFree", &!IsProjectProprietary);
+        ImGui::Checkbox("Is License NonFree", &IsProjectProprietary);
         ImGui::Separator();
 
         ImGui::InputTextWithHint("Project Creation Date", "", ProjectCreationDateBuffer, 64, ImGuiInputTextFlags_ReadOnly);
@@ -64,6 +65,8 @@ void Window_ProjectSettings::Draw() {
 
         ProjectUtils_->ProjectManager_->Project_.ProjectName = std::string(ProjectNameBuffer);
         ProjectUtils_->ProjectManager_->Project_.ProjectDescription = std::string(ProjectDescriptionBuffer);
+        ProjectUtils->ProjectManager->Project.IsProjectProprietary = ~IsProjectProprietary;
+
 
         ImGui::End();
 
