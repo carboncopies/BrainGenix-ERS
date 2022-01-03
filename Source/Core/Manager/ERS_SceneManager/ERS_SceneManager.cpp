@@ -9,31 +9,31 @@
     Date Created: 2021-11-21
 */
 
-#include <SceneManager.h>
+#include <ERS_SceneManager.h>
 
 
-// Constructor For SceneManager Class
-SceneManager::SceneManager(std::shared_ptr<LoggerClass> Logger) {
+// Constructor For ERS_CLASS_SceneManager Class
+ERS_CLASS_SceneManager::ERS_CLASS_SceneManager(std::shared_ptr<LoggerClass> Logger) {
 
     // Copy To Local Pointer
     Logger_ = Logger;
 
     // Log Initialization
-    Logger_->Log("Initializing SceneManager Instance", 5);
+    Logger_->Log("Initializing ERS_CLASS_SceneManager Instance", 5);
 
 }
 
 
-// Destructor For SceneManager Class
-SceneManager::~SceneManager() {
+// Destructor For ERS_CLASS_SceneManager Class
+ERS_CLASS_SceneManager::~ERS_CLASS_SceneManager() {
 
     // Log Destructor Call
-    Logger_->Log("Destructor Called For SceneManager Class", 6);
+    Logger_->Log("Destructor Called For ERS_CLASS_SceneManager Class", 6);
 
 }
 
 // Update Scene Object(s) LocRotScale
-void SceneManager::UpdateLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
+void ERS_CLASS_SceneManager::UpdateLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
 
     glm::vec3 Pos = glm::vec3(LocRotScale.PosX, LocRotScale.PosY, LocRotScale.PosZ);
     glm::vec3 Rot = glm::vec3(LocRotScale.RotX, LocRotScale.RotY, LocRotScale.RotZ);
@@ -44,7 +44,7 @@ void SceneManager::UpdateLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
 }
 
 // Add Scene Function
-bool SceneManager::AddScene(ERS_OBJECT_SCENE Scene) {
+bool ERS_CLASS_SceneManager::AddScene(ERS_OBJECT_SCENE Scene) {
 
     // Check If Scene Isn't Ready
     if (!Scene.IsSceneLoaded) {
@@ -65,7 +65,7 @@ bool SceneManager::AddScene(ERS_OBJECT_SCENE Scene) {
 }
 
 // Render All Models In Buffer
-void SceneManager::Render(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
+void ERS_CLASS_SceneManager::Render(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
     
     // Iterate Through Models
     for (long i = 0; i < Scenes_[ActiveScene_].Models.size(); i++) {
@@ -85,7 +85,7 @@ void SceneManager::Render(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
 }
 
 // SetActiveScene (Overloaded, int Version)
-bool SceneManager::SetActiveScene(int SceneIndex) {
+bool ERS_CLASS_SceneManager::SetActiveScene(int SceneIndex) {
 
     // Check SceneIndex Validity
     if (SceneIndex < 0 || SceneIndex > Scenes_.size()-1) {
@@ -106,7 +106,7 @@ bool SceneManager::SetActiveScene(int SceneIndex) {
 }
 
 // SetActiveScene (Overloaded, std::string Version)
-bool SceneManager::SetActiveScene(std::string TargetSceneName) {
+bool ERS_CLASS_SceneManager::SetActiveScene(std::string TargetSceneName) {
 
     // Iterate Through Scenes, Check Name Against Target
     int TargetSceneIndex;

@@ -24,10 +24,10 @@
 
 
 /**
- * @brief The SceneManager Class Handles the Presentation and Rendering of BrainGenix ERS Scene Structures.
+ * @brief The ERS_CLASS_SceneManager Class Handles the Presentation and Rendering of BrainGenix ERS Scene Structures.
  * 
  */
-class SceneManager{
+class ERS_CLASS_SceneManager{
 
     private:
 
@@ -47,13 +47,13 @@ class SceneManager{
          * 
          * @param Logger 
          */
-        SceneManager(std::shared_ptr<LoggerClass> Logger);
+        ERS_CLASS_SceneManager(std::shared_ptr<LoggerClass> Logger);
         
         /**
          * @brief Destroy the Scene Manager object
          * 
          */
-        ~SceneManager();
+        ~ERS_CLASS_SceneManager();
 
 
         /**
