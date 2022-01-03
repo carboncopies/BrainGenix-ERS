@@ -144,7 +144,10 @@ add_subdirectory(${SRC_DIR}/Core/Utils/IOManager)
 add_subdirectory(${SRC_DIR}/Core/Utils/InputProcessor)
 add_subdirectory(${SRC_DIR}/Core/Utils/HardwareInformation)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_InputOutputSubsystem)
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_FramerateManager)
+
+
+add_subdirectory(${SRC_DIR}/Core/Manager/ERS_FramerateManager)
+#add_subdirectory(${SRC_DIR}/Core/Manager/ERS_FramerateManager)
 
 
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_ThemeManager)
