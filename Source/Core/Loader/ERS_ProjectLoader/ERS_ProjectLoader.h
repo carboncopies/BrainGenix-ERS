@@ -62,15 +62,5 @@ public:
      */
     ERS_PROJECT LoadProject(long AssetID);
 
-    /**
-     * @brief Load Default Project
-     * 
-     */
-
-    ERS_PROJECT LoadDefaultProject();
-
-
-
 
 };
-
