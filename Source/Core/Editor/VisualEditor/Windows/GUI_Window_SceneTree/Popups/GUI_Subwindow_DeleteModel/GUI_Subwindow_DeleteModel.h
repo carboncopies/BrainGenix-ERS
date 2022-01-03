@@ -32,7 +32,7 @@ class Subwindow_DeleteModel {
     // Private Vars
     private:
 
-        std::shared_ptr<SceneManager> SceneManager_; /**<SceneManager Instance*/
+        std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<SceneManager Instance*/
         int SceneIndex_ = 0; /**<Scene Index Used To Remember What Scene To Delete From*/
         int ModelIndex_ = 0; /**<Use to identify what model to delete*/
 
@@ -51,7 +51,7 @@ class Subwindow_DeleteModel {
          * @brief Construct a new Subwindow_DeleteModel object
          * 
          */
-        Subwindow_DeleteModel(std::shared_ptr<SceneManager> SceneManager);
+        Subwindow_DeleteModel(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
 
         /**
          * @brief Destroy the Subwindow_DeleteModel object

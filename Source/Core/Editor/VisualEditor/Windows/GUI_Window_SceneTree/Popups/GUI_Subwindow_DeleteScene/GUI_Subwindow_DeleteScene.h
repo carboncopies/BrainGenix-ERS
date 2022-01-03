@@ -32,7 +32,7 @@ class Subwindow_DeleteScene {
     // Private Vars
     private:
 
-        std::shared_ptr<SceneManager> SceneManager_; /**<SceneManager Instance*/
+        std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<SceneManager Instance*/
         int SceneIndex_ = 0; /**<SceneIndex Used To Remember What Scene To Delete*/
 
         bool FirstFrame_ = false; /**<Used to grab keyboard input on first frame window is open*/
@@ -52,7 +52,7 @@ class Subwindow_DeleteScene {
          * @brief Construct a new Subwindow_DeleteScene object
          * 
          */
-        Subwindow_DeleteScene(std::shared_ptr<SceneManager> SceneManager);
+        Subwindow_DeleteScene(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
 
         /**
          * @brief Destroy the Subwindow_DeleteScene object

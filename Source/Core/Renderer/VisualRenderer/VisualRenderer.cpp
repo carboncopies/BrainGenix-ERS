@@ -56,7 +56,7 @@ void VisualRenderer::InitializeOpenGL() {
 
 }
 
-void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<SceneManager> SceneManager) {
+void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
 
     // Enable Depth Test
     glEnable(GL_DEPTH_TEST);
@@ -75,7 +75,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<SceneManag
 
 }
 
-void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<SceneManager>SceneManager, float DeltaTime) {
+void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager, float DeltaTime) {
 
     // Render To ImGui
     ImGui::Begin(ViewportNames_[Index].c_str());

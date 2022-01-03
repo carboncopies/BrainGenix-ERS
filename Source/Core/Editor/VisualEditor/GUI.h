@@ -64,7 +64,7 @@ class GUISystem {
         std::shared_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
         std::shared_ptr<ERS_CLASS_UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Pointer to Cursors3D Instance*/
-        std::shared_ptr<SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
+        std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
 
 
     public:
@@ -84,7 +84,7 @@ class GUISystem {
          * 
          * @param Logger 
          */
-        GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<SceneManager> SceneManager);
+        GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
 
         /**
          * @brief Destroy the Gui System object

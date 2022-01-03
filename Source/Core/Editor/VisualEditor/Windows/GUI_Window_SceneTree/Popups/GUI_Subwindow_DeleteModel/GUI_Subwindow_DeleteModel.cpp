@@ -13,7 +13,7 @@
 #include <GUI_Subwindow_DeleteModel.h>
 
 
-Subwindow_DeleteModel::Subwindow_DeleteModel(std::shared_ptr<SceneManager> SceneManager) {
+Subwindow_DeleteModel::Subwindow_DeleteModel(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
 
     // Copy Pointer
     SceneManager_ = SceneManager;

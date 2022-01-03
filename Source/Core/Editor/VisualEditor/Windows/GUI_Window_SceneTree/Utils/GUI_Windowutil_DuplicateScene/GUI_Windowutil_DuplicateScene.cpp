@@ -12,7 +12,7 @@
 #include <GUI_Windowutil_DuplicateScene.h>
 
 
-void GUI_Windowutil_DuplicateScene(std::shared_ptr<SceneManager> SceneManager, int SceneIndex) {
+void GUI_Windowutil_DuplicateScene(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, int SceneIndex) {
 
     // Get Current Scene
     ERS_OBJECT_SCENE NewScene = SceneManager->Scenes_[SceneIndex];

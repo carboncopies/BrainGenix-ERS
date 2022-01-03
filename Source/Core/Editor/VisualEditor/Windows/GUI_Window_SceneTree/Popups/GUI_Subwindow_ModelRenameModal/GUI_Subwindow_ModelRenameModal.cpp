@@ -12,7 +12,7 @@
 #include <GUI_Subwindow_ModelRenameModal.h>
 
 // Constructor
-Subwindow_ModelRenameModal::Subwindow_ModelRenameModal(std::shared_ptr<SceneManager> SceneManager) {
+Subwindow_ModelRenameModal::Subwindow_ModelRenameModal(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
 
     // Update Ptr
     SceneManager_ = SceneManager;

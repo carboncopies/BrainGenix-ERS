@@ -81,8 +81,8 @@ class VisualRenderer {
 
 
         void CreateViewport(std::shared_ptr<ERS_OBJECT_SHADER> Shader, std::string ViewportName, GLFWwindow* Window, std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera);
-        void UpdateViewports(float DeltaTime, std::shared_ptr<SceneManager> SceneManager);
-        void UpdateViewport(int Index, std::shared_ptr<SceneManager> SceneManager, float DeltaTime);
+        void UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
+        void UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, float DeltaTime);
 
         
 
