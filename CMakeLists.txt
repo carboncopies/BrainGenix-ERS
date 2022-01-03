@@ -162,6 +162,8 @@ add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/Widgets)
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/Windows)
 add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/MenuEntries)
 
+add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/Windows/GUI_Window_ProjectSettings)
+
 
 add_subdirectory(${SRC_DIR}/Core/Renderer)
 add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer)
