@@ -46,7 +46,7 @@ void GUI_Menu_File::Draw() {
 
         // Project Settings
         if (ImGui::MenuItem("Project Settings")) {
-            *Window_ProjectSettings->Enabled_ = !*Window_ProjectSettings->Enabled;
+            *Window_ProjectSettings->Enabled_ = !Window_ProjectSettings->Enabled_;
 
         }
 
