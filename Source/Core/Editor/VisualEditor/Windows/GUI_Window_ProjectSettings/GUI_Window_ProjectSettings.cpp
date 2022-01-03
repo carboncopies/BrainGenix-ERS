@@ -46,7 +46,7 @@ void Window_ProjectSettings::Draw() {
         strcpy(ProjectNameBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectName.c_str());
         strcpy(ProjectCreationDateBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectCreationDate.c_str());
         strcpy(ProjectModificationDateBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectModificationDate.c_str());
-
+        strcpy(ProjectDescriptionBuffer, ProjectUtils_->ProjectManager_->Project.ProjectDescription.c_str());
 
         // Add Project Metadata
         ImGui::InputTextWithHint("Project Name", "Enter Project Title", ProjectNameBuffer, 512);
