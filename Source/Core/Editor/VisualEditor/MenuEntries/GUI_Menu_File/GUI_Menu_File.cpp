@@ -47,8 +47,8 @@ void GUI_Menu_File::Draw() {
         // Project Settings
         if (ImGui::MenuItem("Project Settings")) {
             Window_ProjectSettings_->Enabled_ = !Window_ProjectSettings_->Enabled_;
-
         }
+        ImGui::Separator();
 
         // Import Option, Disabled On Windows Due To Filesystem Issues
         if (SystemUtils_->IsLinux_) {
