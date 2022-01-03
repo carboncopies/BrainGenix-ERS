@@ -23,8 +23,8 @@ target_link_libraries(ERS_ProjectLoader
 # Link Internal Libs
 target_link_libraries(ERS_ProjectLoader
 
-    ERS_STRUCTURE_IOData
-    ERS_STRUCTURE_SystemUtils
+    ERS_STRUCT_IOData
+    ERS_STRUCT_SystemUtils
 
     ERS_InputOutputSystem
 
