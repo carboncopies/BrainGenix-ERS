@@ -28,7 +28,7 @@
  * @brief The System utils struct contains most project mgmt utils/classes/structs.
  * 
  */
-struct ERS_STRUCT_SystemUtils {
+struct ERS_STRUCT_ProjectUtils {
 
 
     std::shared_ptr<SceneManager> SceneManager_; /**<Shared Ptr To Scene Manager*/
