@@ -39,23 +39,18 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     std::shared_ptr<ERS_STRUCT_IOData> ProjectData = std::make_shared<ERS_STRUCT_IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, ProjectData);
 
-    std::cout<<ProjectData->Data.get()<<std::endl;
-
-    // // Load File
-    // YAML::Node ProjectNode = YAML::LoadFile();
-
-    // // Create New Struct
-    // ERS_PROJECT Project;
+    // Decode YAML
+    std::string DataString = std::string((const char*)SceneData->Data.get());
+    YAML::Node ProjectNode = YAML::Load(DataString);
 
 
-    // // Populate Struct
-    // Project.ProjectName = ProjectNode["ProjectName"].as<std::string>();
-    // Project.VersionMajor = ProjectNode["ProjectVersionMajor"].as<int>();
-    // Project.VersionMinor = ProjectNode["ProjectVersionMinor"].as<int>();
-    // Project.VersionPatch = ProjectNode["ProjectVersionPatch"].as<int>();
+    // Create New Struct
+    ERS_STRUCT_PROJECT Project;
+
+    // Populate Struct
+    Project.ProjectName = ProjectNode["ProjectName"].as<std::string>();
     
-
-    // // Return Struct When Populated
-    // return Project;
+    // Return Struct When Populated
+    return Project;
 
 }
