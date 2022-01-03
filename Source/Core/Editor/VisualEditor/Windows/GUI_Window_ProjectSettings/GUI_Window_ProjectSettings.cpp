@@ -34,7 +34,7 @@ Window_ProjectSettings::~Window_ProjectSettings() {
 
 
 // Draw The Window, To Be Called Every Frame
-void Draw() {
+void Window_ProjectSettings::Draw() {
 
     // Begin Window
     if (Enabled_) {
