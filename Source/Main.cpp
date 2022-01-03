@@ -125,7 +125,7 @@ int main() {
 
 
     // Instantiate RendererManager
-    RendererManager sERSRendererManager(SystemUtils);
+    RendererManager sERSRendererManager(SystemUtils, ProjectUtils);
 
 
     
