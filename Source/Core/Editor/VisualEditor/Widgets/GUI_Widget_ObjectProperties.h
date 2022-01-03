@@ -22,7 +22,7 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <3DCursor.h>
+#include <ERS_Editor_3DCursor.h>
 
 #include <ERS_STRUCT_LocRotScale.h>
 

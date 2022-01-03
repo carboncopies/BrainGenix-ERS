@@ -31,7 +31,8 @@ target_link_libraries(Renderer
     IOManager
     VisualEditor
 
-    ERS_3DCursor
+    ERS_Editor_3DCursor
+    
     ERS_ModelWriter
     ERS_ModelLoader
     

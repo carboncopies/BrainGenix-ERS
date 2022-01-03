@@ -36,7 +36,7 @@
 #include <GUI_Window_SceneTree.h>
 #include <GUI_Window_SystemLog.h>
 
-#include <3DCursor.h>
+#include <ERS_Editor_3DCursor.h>
 #include <SceneManager.h>
 
 

@@ -31,8 +31,7 @@ target_link_libraries(GUI_Subwindow_SceneRenameModal
     ERS_Editor_ThemeManager
     ERS_Editor_FontManager
     ERS_Editor_UserProfileManager
-
-    ERS_3DCursor
+    ERS_Editor_3DCursor
 
     Widgets
 

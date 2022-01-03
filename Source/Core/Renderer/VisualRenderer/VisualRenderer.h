@@ -36,7 +36,7 @@
 #include <InputProcessor.h>
 #include <GUI.h>
 #include <Framebuffer.h>
-#include <3DCursor.h>
+#include <ERS_Editor_3DCursor.h>
 
 #include <ERS_STRUCT_LocRotScale.h>
 #include <ERS_STRUCT_SystemUtils.h>

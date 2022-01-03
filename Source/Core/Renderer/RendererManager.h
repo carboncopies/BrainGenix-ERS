@@ -37,7 +37,7 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_ModelLoader.h>
 
-#include <3DCursor.h>
+#include <ERS_Editor_3DCursor.h>
 
 
 
