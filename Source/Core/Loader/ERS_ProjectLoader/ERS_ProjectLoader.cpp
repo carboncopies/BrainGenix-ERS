@@ -65,7 +65,7 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
 
     // Populate Scene IDs
     YAML::Node ProjectSceneIDs = ProjectNode["SceneIDs"];
-    for (YAML::const_iterator it=ProjectSceneIDs.begin(); it!=ProjetSceneIDs.end(); ++it) {
+    for (YAML::const_iterator it=ProjectSceneIDs.begin(); it!=ProjectSceneIDs.end(); ++it) {
         Project.SceneIDs.push_back(it->second);
     }
 
