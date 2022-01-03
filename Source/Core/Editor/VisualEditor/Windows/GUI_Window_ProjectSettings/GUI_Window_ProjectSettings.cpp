@@ -54,7 +54,7 @@ void Window_ProjectSettings::Draw() {
         ImGui::InputTextMultiline("Project Description", ProjectDescriptionBuffer, 16384);
 
         ImGui::Separator();
-        ImGui::InputBoxWithHint("Project License", "Enter License Name Here", ProjectLicenseNameBuffer, 128);
+        ImGui::InputTextBoxWithHint("Project License", "Enter License Name Here", ProjectLicenseNameBuffer, 128);
         ImGui::Checkbox("Is License NonFree", &IsProjectProprietary);
         ImGui::Separator();
 
