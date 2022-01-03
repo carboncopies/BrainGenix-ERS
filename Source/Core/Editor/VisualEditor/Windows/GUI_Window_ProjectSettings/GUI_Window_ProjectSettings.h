@@ -33,7 +33,10 @@ private:
     char ProjectNameBuffer[512]; /** Project Name Buffer*/
     char ProjectCreationDateBuffer[64]; /** Project Creation Date*/
     char ProjectModificationDateBuffer[64]; /** Project Modification Date*/
-    char ProjectLicenseNameBuffer[128]; /**<Project License
+    char ProjectLicenseNameBuffer[128]; /**<Project License Name String*/
+    char ProjectDescriptionBuffer[16384]; /**<Project Description*/
+    bool IsProjetPropreitary; /**<Presents A Warning If Propreitary*/
+    
 
     std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Pointer To Project Utils Instance*/
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Struct Pointer*/
