@@ -22,7 +22,7 @@ target_link_libraries(GUI_Subwindow_DeleteModel
 
 # Link Internal Libs
 target_link_libraries(GUI_Subwindow_DeleteModel
-    SceneManager
+ERS_SceneManager
     Scene
     )
 

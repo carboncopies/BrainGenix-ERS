@@ -33,7 +33,7 @@ target_link_libraries(VisualRenderer
 
     Model
     Scene
-    SceneManager
+    ERS_SceneManager
 
     VisualEditor
 

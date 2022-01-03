@@ -33,7 +33,7 @@ target_link_libraries(InputProcessor
 
     Model
     Scene
-    SceneManager
+    ERS_SceneManager
 
     VisualEditor
 

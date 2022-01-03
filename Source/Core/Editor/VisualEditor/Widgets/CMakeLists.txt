@@ -47,7 +47,7 @@ target_link_libraries(Widgets
     ERS_Editor_3DCursor
 
     Scene
-    SceneManager
+    ERS_SceneManager
 
     )
 

@@ -35,7 +35,7 @@ target_link_libraries(Menu_File
     ERS_SceneWriter
     ERS_ProjectLoader
 
-    SceneManager
+    ERS_SceneManager
     Scene
     )
 

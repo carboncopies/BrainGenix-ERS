@@ -21,7 +21,7 @@ target_link_libraries(GUI_Windowutil_DuplicateModel
 
 # Link Internal Libs
 target_link_libraries(GUI_Windowutil_DuplicateModel
-    SceneManager
+    ERS_SceneManager
     Model
     )
 

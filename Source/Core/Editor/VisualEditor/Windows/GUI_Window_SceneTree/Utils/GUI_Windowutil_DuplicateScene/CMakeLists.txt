@@ -21,7 +21,7 @@ target_link_libraries(GUI_Windowutil_DuplicateScene
 
 # Link Internal Libs
 target_link_libraries(GUI_Windowutil_DuplicateScene
-    SceneManager
+    ERS_SceneManager
     Scene
     )
 

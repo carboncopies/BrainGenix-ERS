@@ -33,7 +33,7 @@ target_link_libraries(Window_SceneTree
     LoggingSystem
     
     Scene
-    SceneManager
+    ERS_SceneManager
 
     GUI_Subwindow_SceneRenameModal
     GUI_Subwindow_ModelRenameModal

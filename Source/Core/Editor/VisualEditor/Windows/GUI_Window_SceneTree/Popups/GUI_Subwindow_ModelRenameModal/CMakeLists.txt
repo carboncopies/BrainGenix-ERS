@@ -24,7 +24,7 @@ target_link_libraries(GUI_Subwindow_ModelRenameModal
 
 # Link Internal Libs
 target_link_libraries(GUI_Subwindow_ModelRenameModal
-    SceneManager
+    ERS_SceneManager
     )
 
 target_include_directories(GUI_Subwindow_ModelRenameModal PUBLIC ./)
