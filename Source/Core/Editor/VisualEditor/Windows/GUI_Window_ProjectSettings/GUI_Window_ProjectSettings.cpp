@@ -39,7 +39,17 @@ void Window_ProjectSettings::Draw() {
     // Begin Window
     if (Enabled_) {
         ImGui::Begin("Project Settings", &Enabled_);
+        ImGui::SetWindowSize(ImVec2(400, 300), ImGuiCond_FirstUseEver);
 
+
+        char ProjectNameBuffer[512];
+
+        strcpy(ProjectNameBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectName.c_str());
+
+        // Add Project Metadata
+        ImGui::InputTextWithHint("Project Name", "Enter Project Title", ProjectNameBuffer, 512);
+
+        ProjectUtils_->ProjectManager_->Project_.ProjectName = std::string(ProjectNameBuffer);
 
 
         ImGui::End();
