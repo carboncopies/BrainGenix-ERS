@@ -19,7 +19,7 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <SceneManager.h>
+#include <ERS_SceneManager.h>
 #include <Model.h>
 
 void GUI_Windowutil_DuplicateModel(std::shared_ptr<SceneManager> SceneManager, int SceneIndex, int ModelIndex);

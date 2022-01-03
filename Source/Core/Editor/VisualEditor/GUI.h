@@ -36,7 +36,7 @@
 #include <ERS_Editor_ThemeManager.h>
 #include <ERS_Editor_UserProfileManager.h>
 
-#include <SceneManager.h>
+#include <ERS_SceneManager.h>
 #include <ERS_Editor_3DCursor.h>
 
 #include <GUI_Menu_File.h>

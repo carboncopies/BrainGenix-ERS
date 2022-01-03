@@ -18,7 +18,7 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <SceneManager.h>
+#include <ERS_SceneManager.h>
 
 #include <ERS_ModelLoader.h>
 #include <ERS_SceneLoader.h>

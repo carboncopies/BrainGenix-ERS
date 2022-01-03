@@ -37,7 +37,7 @@
 #include <GUI_Window_SystemLog.h>
 
 #include <ERS_Editor_3DCursor.h>
-#include <SceneManager.h>
+#include <ERS_SceneManager.h>
 
 
 /**
