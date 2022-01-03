@@ -134,6 +134,8 @@ void RendererManager::InitializeGLFW() {
 
 void RendererManager::UpdateLoop(float DeltaTime) { 
 
+    // Update Window Title
+    //std::string SceneTitle = ProjectUtils_->ProjectManager + std::string(" - BrainGenix-ERS")
 
     // Update Scene
     ProjectUtils_->ModelLoader_->ProcessNewModels(std::make_shared<ERS_OBJECT_SCENE>(ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]));
