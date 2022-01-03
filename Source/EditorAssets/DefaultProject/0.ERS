@@ -1,0 +1,26 @@
+#############################################################################################
+# This is the default ERS project file. Please see the docs for more info about using this! #
+#############################################################################################
+
+
+# Project Metadata
+ProjectName: "Untitled"
+ProjectDescription: "The default project."
+ProjectVersion: "1.0.0"
+
+ProjectCreationDate: "0000-00-00 00-00-00"
+ProjectModificationDate: "0000-00-00 00-00-00"
+ProjectCreator: "BrainGenix-ERS Development Team"
+ProjectLicense: "AGPL-V3.0 Or Higher"
+
+
+
+# Project Scene Asset IDs
+SceneIDs:
+    0: 2
+
+
+# ERS Layout Configuration IDs
+EditorLayouts:
+    0: 1
+DefaultLayout: 0
