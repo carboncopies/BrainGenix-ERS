@@ -118,6 +118,8 @@ int main() {
     sERSLogger->Log("Copying Shared Pointer To Project Utils Struct", 3);
     ProjectUtils->SceneLoader_ = sERSSceneLoader;
 
+    // Load Default Scene
+    sERSLogger->Log("FIXME!!! LOADING DEFAULT SCENE, SHOULD BE PROJECT FILE INSTEAD!", 9);
     sERSSceneManager->AddScene(sERSSceneLoader->ProcessScene(0));
 
 
