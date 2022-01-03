@@ -38,7 +38,7 @@ void Window_ProjectSettings::Draw() {
 
     // Begin Window
     if (Enabled_) {
-        ImGui::Begin("Project Settings", Enabled_);
+        ImGui::Begin("Project Settings", &Enabled_);
 
 
 
