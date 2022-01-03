@@ -98,6 +98,7 @@ int main() {
 
 
     // Setup Loaders
+    std::shared_ptr<ERS_CLASS_SceneManager> sERSSceneManager = std::make_shared<SceneManager>(SystemUtils->Logger_);
     std::shared_ptr<ERS_CLASS_ModelLoader> sERSModelLoader = std::make_shared<ERS_CLASS_ModelLoader>(SystemUtils);
     std::shared_ptr<ERS_CLASS_SceneLoader> sERSSceneLoader = std::make_shared<ERS_CLASS_SceneLoader>(SystemUtils, sERSModelLoader);
     sERSSceneManager->AddScene(sERSSceneLoader->ProcessScene(0));

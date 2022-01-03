@@ -34,7 +34,6 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
 
     // Load Scene
-    SceneManager_ = std::make_shared<SceneManager>(SystemUtils_->Logger_);
 
 
     // Initialize Systems
