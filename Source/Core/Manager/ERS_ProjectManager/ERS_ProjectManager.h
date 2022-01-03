@@ -53,4 +53,13 @@ public:
     ~ERS_CLASS_ProjectManager();
 
 
+
+    /**
+     * @brief Load Project From AssetID
+     * 
+     * @param AssetID 
+     */
+    void LoadProject(long AssetID);
+
+
 };
