@@ -21,7 +21,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_CLASS_ProjectLoader.h>
+#include <ERS_ProjectLoader.h>
 
 
 /**
@@ -38,8 +38,18 @@ private:
 
 public:
 
+    /**
+     * @brief Construct a new ers class projectmanager object
+     * 
+     * @param SystemUtils 
+     * @param ProjectLoader 
+     */
+    ERS_CLASS_ProjectManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ProjectLoader> ProjectLoader);
 
-    ERS_CLASS_ProjectManager();
+    /**
+     * @brief Destroy the ers class projectmanager object
+     * 
+     */
     ~ERS_CLASS_ProjectManager();
 
 

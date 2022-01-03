@@ -148,6 +148,7 @@ add_subdirectory(${SRC_DIR}/Core/Utils/ERS_InputOutputSubsystem)
 
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_FramerateManager)
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_SceneManager)
+add_subdirectory(${SRC_DIR}/Core/Manager/ERS_ProjectManager)
 
 
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_ThemeManager)
