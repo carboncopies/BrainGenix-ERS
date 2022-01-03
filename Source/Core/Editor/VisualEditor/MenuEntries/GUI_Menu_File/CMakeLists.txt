@@ -29,6 +29,7 @@ target_link_libraries(Menu_File
 target_link_libraries(Menu_File
     LoggingSystem
     ERS_STRUCT_SystemUtils
+    ERS_STRUCT_ProjectUtils
 
     ERS_Editor_ImportAsset
 

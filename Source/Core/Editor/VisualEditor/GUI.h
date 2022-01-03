@@ -30,7 +30,9 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_ProjectUtils.h>
 
 #include <ERS_Editor_FontManager.h>
 #include <ERS_Editor_ThemeManager.h>
@@ -59,7 +61,7 @@ class GUISystem {
 
         GLFWwindow* Window_; /**<Pointer to window instance*/
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Structure Containing Pointers To System Utilities*/
-
+        std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**ProjectUtils Struct Pointer*/
 
         std::shared_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
         std::shared_ptr<ERS_CLASS_UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/

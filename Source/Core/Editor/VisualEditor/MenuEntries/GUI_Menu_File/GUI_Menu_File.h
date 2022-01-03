@@ -28,6 +28,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_ProjectUtils.h>
 #include <ERS_ProjectLoader.h>
 
 #include <GUI_ImportAsset.h>
@@ -53,6 +54,7 @@ class GUI_Menu_File {
         std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
         std::unique_ptr<GUI_ImportAsset> ImportAsset_; /**<Pointer To Asset Importer System*/
         std::unique_ptr<Window_ProjectSettings> Window_ProjectSettings_; /**<Project Settings Window*/
+        std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Pointer To Project Utils Instance*/
 
 
     // Member Functions
@@ -64,7 +66,7 @@ class GUI_Menu_File {
          * 
          * @param SystemUtils 
          */
-        GUI_Menu_File(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
+        GUI_Menu_File(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
 
 
         /**
