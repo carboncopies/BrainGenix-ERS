@@ -40,6 +40,7 @@ struct ERS_STRUCT_Project {
     bool IsLicenseProprietary = false; /**<Presents a user warning when loading to make them aware that the project is not free software*/
 
     std::vector<long> SceneIDs; /**<Vector Of Scene IDs Used In The Project*/
-    
+    std::vector<long> ConfigurationIDs; /**<Vector Of Configuration IDs Used In The Project*/
+    long DefaultLayoutID = 0; /**<Default Layout Used*/
 
 };
