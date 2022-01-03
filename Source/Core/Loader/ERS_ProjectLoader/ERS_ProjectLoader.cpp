@@ -40,7 +40,7 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, ProjectData);
 
     // Decode YAML
-    std::string DataString = std::string((const char*)SceneData->Data.get());
+    std::string DataString = std::string((const char*)ProjectData->Data.get());
     YAML::Node ProjectNode = YAML::Load(DataString);
 
 
