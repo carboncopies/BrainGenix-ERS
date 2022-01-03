@@ -22,15 +22,19 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LocalConfigurationLoader.h>
+#include <RendererManager.h>
 #include <LoggingSystem.h>
+#include <HardwareInformation.h>
+
+#include <SceneManager.h>
+
+
 #include <ERS_InputOutputSubsystem.h>
 #include <ERS_ModelWriter.h>
 #include <ERS_FramerateManager.h>
 
 #include <ERS_STRUCT_SystemUtils.h>
 
-#include <RendererManager.h>
-#include <HardwareInformation.h>
 
 
 
