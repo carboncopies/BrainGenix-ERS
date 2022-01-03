@@ -37,6 +37,8 @@ target_link_libraries(Menu_File
 
     ERS_SceneManager
     Scene
+
+    Window_ProjectSettings
     )
 
 target_include_directories(Menu_File PUBLIC ./)
