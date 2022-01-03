@@ -22,6 +22,11 @@ ERS_CLASS_ProjectManager::ERS_CLASS_ProjectManager(std::shared_ptr<ERS_STRUCT_Sy
     // Log Initialization
     SystemUtils_->Logger_->Log("Initializing ERS Project Manager", 5);
 
+
+
+    // Load Default Project
+    LoadProject(0);
+
 }
 
 // Destructor
@@ -34,3 +39,9 @@ ERS_CLASS_ProjectManager::~ERS_CLASS_ProjectManager() {
 
 
 // Load Project
+void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
+
+    // Load Into Project Struct
+
+
+}
