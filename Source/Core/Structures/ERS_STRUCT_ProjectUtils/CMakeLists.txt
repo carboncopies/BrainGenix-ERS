@@ -29,6 +29,8 @@ target_link_libraries(ERS_STRUCT_ProjectUtils
     ERS_ModelWriter
     ERS_ModelLoader
     ERS_SceneLoader
+    ERS_ProjectLoader
+
     )
 
 

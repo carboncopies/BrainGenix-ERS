@@ -32,6 +32,7 @@
 #include <ERS_InputOutputSubsystem.h>
 #include <ERS_ModelWriter.h>
 #include <ERS_FramerateManager.h>
+#include <ERS_ProjectLoader.h>
 
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
