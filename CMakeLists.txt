@@ -173,7 +173,7 @@ add_subdirectory(${SRC_DIR}/Core/Loader/TextureLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ImageLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_SceneLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ShaderLoader)
-add_subdirectory(${SRC_DIR}/Core/Loader/ProjectLoader)
+add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ProjectLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ModelLoader)
 
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_SceneWriter)
