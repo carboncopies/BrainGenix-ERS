@@ -19,6 +19,8 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+#include <SceneManager.h>
+
 #include <ERS_InputOutputSubsystem.h>
 #include <ERS_ModelWriter.h>
 #include <ERS_FramerateManager.h>
