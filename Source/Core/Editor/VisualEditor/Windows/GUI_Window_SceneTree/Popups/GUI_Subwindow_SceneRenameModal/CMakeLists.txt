@@ -32,8 +32,9 @@ target_link_libraries(GUI_Subwindow_SceneRenameModal
     ERS_Editor_FontManager
     ERS_Editor_UserProfileManager
 
+    ERS_3DCursor
+
     Widgets
-    3DCursor
 
     Window_SceneTree
     )
