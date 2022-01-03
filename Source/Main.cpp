@@ -123,6 +123,8 @@ int main() {
     sERSSceneManager->AddScene(sERSSceneLoader->ProcessScene(0));
 
 
+    //
+
 
     // Instantiate RendererManager
     RendererManager sERSRendererManager(SystemUtils, ProjectUtils);
