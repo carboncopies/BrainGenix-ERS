@@ -14,7 +14,6 @@ MaxFramesInFlight: 2
 # System Settings
 ShowEditorDebugMenu: True
 IsLinux: True
-DefaultProjectDirectory: "EditorAssets/Projects/DefaultProject/"
 
 # Database Loading Settings #
 UseDatabaseLoading: False
@@ -25,7 +24,7 @@ DatabaseName: "" # FIX ME
 DatabasePassword: "" # FIX ME
 
 # File Loading Params
-AssetPath: "Assets/" # NOTE: PATH MUST END WITH A "/"
+DefaultProjectDirectory: "EditorAssets/Projects/DefaultProject/" # NOTE: PATH MUST END WITH A "/"
 
 
 # Set Logger Configuration Parameters #
