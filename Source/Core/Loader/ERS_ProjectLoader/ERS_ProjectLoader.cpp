@@ -66,12 +66,14 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     // Populate Scene IDs
     YAML::Node ProjectSceneIDs = ProjectNode["SceneIDs"];
     for (YAML::const_iterator it=ProjectSceneIDs.begin(); it!=ProjectSceneIDs.end(); ++it) {
+        SystemUtils_->Logger_->Log(std::string(std::string("Identified Scene In Project With ID: ") + std::to_string(it->second.as<long>())).c_str(), 3);
         Project.SceneIDs.push_back(it->second.as<long>());
     }
 
     // Populate Layouts
     YAML::Node EditorLayouts = ProjectNode["EditorLayouts"];
     for (YAML::const_iterator it=EditorLayouts.begin(); it!=EditorLayouts.end(); ++it) {
+        SystemUtils_->Logger_->Log(std::string(std::string("Identified Layout Project With ID: ") + std::to_string(it->second.as<long>())).c_str(), 3);
         Project.EditorLayoutIDs.push_back(it->second.as<long>());
     }
 
