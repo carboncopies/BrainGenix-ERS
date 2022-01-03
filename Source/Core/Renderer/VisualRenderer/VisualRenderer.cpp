@@ -141,7 +141,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<SceneManager>Scen
 
 
     // Check If Scene Has Any Models To Draw
-    if (SceneManager->Scenes_[SceneManager->ActiveScene_].size() > 0) {
+    if (SceneManager->Scenes_[SceneManager->ActiveScene_]->size() > 0) {
 
 
         // Update Cursor If Selection Changed
