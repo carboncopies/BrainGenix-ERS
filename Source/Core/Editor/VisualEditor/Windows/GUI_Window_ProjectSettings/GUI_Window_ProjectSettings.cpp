@@ -42,12 +42,17 @@ void Window_ProjectSettings::Draw() {
         ImGui::SetWindowSize(ImVec2(400, 300), ImGuiCond_FirstUseEver);
 
 
-        char ProjectNameBuffer[512];
-
+        // Copy Project Info Into Vars ImGui Can Understand
         strcpy(ProjectNameBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectName.c_str());
+        strcpy(ProjectCreationDateBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectCreationDate.c_str());
+        strcpy(ProjectModificationDateBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectModificationDate.c_str());
+
 
         // Add Project Metadata
         ImGui::InputTextWithHint("Project Name", "Enter Project Title", ProjectNameBuffer, 512);
+        ImGui::InputTextWithHint("Project Creation Date", "", ProjectCreationDateBuffer, 64)
+
+
 
         ProjectUtils_->ProjectManager_->Project_.ProjectName = std::string(ProjectNameBuffer);
 

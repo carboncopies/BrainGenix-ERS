@@ -30,6 +30,11 @@ class Window_ProjectSettings {
 
 private:
 
+    char ProjectNameBuffer[512]; /** Project Name Buffer*/
+    char ProjectCreationDateBuffer[64] /** Project Creation Date*/
+    char ProjectModificationDateBuffer[64] /** Project Modification Date*/
+    
+
     std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Pointer To Project Utils Instance*/
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Struct Pointer*/
 
