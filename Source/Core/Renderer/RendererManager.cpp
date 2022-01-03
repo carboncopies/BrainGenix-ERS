@@ -51,7 +51,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     Shader_.SetInt("texture_diffuse1", 0);
 
     // Setup GUI
-    GuiSystem_ = std::make_shared<GUISystem>(SystemUtils_, Window_, Cursors3D_, SceneManager_);
+    GuiSystem_ = std::make_shared<GUISystem>(SystemUtils_, Window_, Cursors3D_, ProjectUtils_->SceneManager_);
 
     // Setup IOManager
     SystemUtils_->Logger_->Log("Initializing Input/Output Manager", 5);
