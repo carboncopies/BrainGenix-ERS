@@ -29,7 +29,14 @@ struct ERS_STRUCT_Project {
 
     // Project Metadata
     std::string ProjectName = ""; /**<Stores The Project's Name*/
-    
+    std::string ProjectDescription = ""; /**<Stores Project's description*/
+    std::string ProjectVersion = ""; /**<Project Version Information*/
 
+    std::string ProjectCreationDate = ""; /**<Project's creation date*/
+    std::string ProjectModificationDate = ""; /**<Date when project was last modified*/
+    std::string ProjectCreator = ""; /**<Name Of Organization/Team/Person That Created The Project*/
+    
+    std::string ProjectLicenseName = ""; /**<Name Of License Used By Project*/
+    bool IsLicensePropreitary = false; /**<Presents a user warning when loading to make them aware that the project is not free software*/
 
 };
