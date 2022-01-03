@@ -140,32 +140,39 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<SceneManager>Scen
     Shaders_[Index]->SetMat4("view", view);
 
 
-    // Update Cursor If Selection Changed
-    if (SceneManager->Scenes_[SceneManager->ActiveScene_].HasSelectionChanged) {
-
-        // Get Selected Model
-        int SelectedModel = SceneManager->Scenes_[SceneManager->ActiveScene_].SelectedModel;
-
-        // Get LocRotScale
-        glm::vec3 Position = SceneManager->Scenes_[SceneManager->ActiveScene_].Models[SelectedModel]->ModelPosition;        
-        glm::vec3 Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_].Models[SelectedModel]->ModelRotation;        
-        glm::vec3 Scale = SceneManager->Scenes_[SceneManager->ActiveScene_].Models[SelectedModel]->ModelScale;
-
-        // Set Cursor Position        
-        Cursors3D_->SetLocRotScale(Position, Rotation, Scale);
-
-        // Indicate Selection Hasn't Changed
-        SceneManager->Scenes_[SceneManager->ActiveScene_].HasSelectionChanged = false;
-    }
+    // Check If Scene Has Any Models To Draw
+    if (SceneManager->Scenes_[SceneManager->ActiveScene_].size() > 0) {
 
 
-    // Start To Draw 3D Cursor
-    Cursors3D_->BeginRenderpass(Cameras_[Index], (float*)glm::value_ptr(view), (float*)glm::value_ptr(projection), CaptureMouseCursor);
+        // Update Cursor If Selection Changed
+        if (SceneManager->Scenes_[SceneManager->ActiveScene_].HasSelectionChanged) {
+
+            // Get Selected Model
+            int SelectedModel = SceneManager->Scenes_[SceneManager->ActiveScene_].SelectedModel;
+
+            // Get LocRotScale
+            glm::vec3 Position = SceneManager->Scenes_[SceneManager->ActiveScene_].Models[SelectedModel]->ModelPosition;        
+            glm::vec3 Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_].Models[SelectedModel]->ModelRotation;        
+            glm::vec3 Scale = SceneManager->Scenes_[SceneManager->ActiveScene_].Models[SelectedModel]->ModelScale;
+
+            // Set Cursor Position        
+            Cursors3D_->SetLocRotScale(Position, Rotation, Scale);
+
+            // Indicate Selection Hasn't Changed
+            SceneManager->Scenes_[SceneManager->ActiveScene_].HasSelectionChanged = false;
+        }
 
 
-    // Update Selected Model(s) If Needed
-    if (Cursors3D_->HasLocRotScaleChanged()) {
-        SceneManager->UpdateLocRotScale(Cursors3D_->GetLocRotScale());
+        // Start To Draw 3D Cursor
+        Cursors3D_->BeginRenderpass(Cameras_[Index], (float*)glm::value_ptr(view), (float*)glm::value_ptr(projection), CaptureMouseCursor);
+
+
+        // Update Selected Model(s) If Needed
+        if (Cursors3D_->HasLocRotScaleChanged()) {
+            SceneManager->UpdateLocRotScale(Cursors3D_->GetLocRotScale());
+        }
+
+
     }
 
     // Draw Models
