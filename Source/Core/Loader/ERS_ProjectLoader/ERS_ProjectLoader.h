@@ -19,8 +19,8 @@
 
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCTURE_IOData.h>
-#include <ERS_STRUCTURE_SystemUtils.h>
+#include <ERS_STRUCT_IOData.h>
+#include <ERS_STRUCT_SystemUtils.h>
 
 #include <ERS_InputOutputSystem.h>
 
