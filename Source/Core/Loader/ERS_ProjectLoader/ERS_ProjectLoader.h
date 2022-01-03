@@ -32,34 +32,34 @@
 class ProjectLoader {
 
 
-    private:
+private:
 
-        // Logger
-        std::shared_ptr<LoggerClass> Logger_; /**<Pointer to Logging System.*/
+    // Logger
+    std::shared_ptr<LoggerClass> Logger_; /**<Pointer to Logging System.*/
 
 
 
-    public:
+public:
 
-        /**
-         * @brief Construct a new Project Loader object
-         * 
-         * @param Logger 
-         */
-        ProjectLoader(std::shared_ptr<LoggerClass> Logger);
+    /**
+     * @brief Construct a new Project Loader object
+     * 
+     * @param Logger 
+     */
+    ProjectLoader(std::shared_ptr<LoggerClass> Logger);
 
-        /**
-         * @brief 
-         * 
-         */
-        ~ProjectLoader();
+    /**
+     * @brief 
+     * 
+     */
+    ~ProjectLoader();
 
-        /**
-         * @brief Load a project from a file path.
-         * 
-         * @param FilePath 
-         */
-        ERS_PROJECT LoadProject(const char* FilePath = "Assets/Project.yaml");
+    /**
+     * @brief Load a project from a file path.
+     * 
+     * @param FilePath 
+     */
+    ERS_PROJECT LoadProject(const char* FilePath = "Assets/Project.yaml");
 
 
 
