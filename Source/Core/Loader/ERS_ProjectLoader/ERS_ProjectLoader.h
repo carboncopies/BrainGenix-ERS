@@ -20,7 +20,9 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCTURE_IOData.h>
-#include <ERS_STRUCTURE_InputOutputSystem.h>
+#include <ERS_STRUCTURE_SystemUtils.h>
+
+#include <ERS_InputOutputSystem.h>
 
 
 
@@ -35,7 +37,7 @@ class ProjectLoader {
 private:
 
     // Logger
-    std::shared_ptr<LoggerClass> Logger_; /**<Pointer to Logging System.*/
+    std::shared_ptr<ERS_STRUCTURE_SystemUtils> Logger_; /**<Pointer to Logging System.*/
 
 
 
