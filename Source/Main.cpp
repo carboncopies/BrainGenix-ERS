@@ -130,10 +130,6 @@ int main() {
     sERSLogger->Log("Copying Shared Pointer To Project Utils Struct", 3);
     ProjectUtils->ProjectManager_ = sERSProjectManager;
 
-    // Load Default Project
-    sERSLogger->Log("Loading Default Project Defined In Configuration File", 5);
-    ProjectUtils->ProjectLoader_->LoadProject(0);
-    
 
     // Load Default Scene
     sERSLogger->Log("FIXME!!! LOADING DEFAULT SCENE, SHOULD BE PROJECT FILE INSTEAD!", 9);
