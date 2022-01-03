@@ -89,9 +89,17 @@ int main() {
     SystemUtils->ERS_ModelWriter_ = sERSModelWriter;
 
 
-
     // Instantiate HardwareInformation System
     HardwareInformation sERSHardwareInformation(sERSLogger, sERSLocalSystemConfiguration);
+
+
+    // Setup Loaders
+    ModelLoader_ = std::make_shared<ERS_CLASS_ModelLoader>(SystemUtils_);
+
+    ERS_CLASS_SceneLoader SLoader(SystemUtils_, ModelLoader_);
+    SceneManager_->AddScene(SLoader.ProcessScene(0));
+
+
 
     // Instantiate RendererManager
     RendererManager sERSRendererManager(SystemUtils);

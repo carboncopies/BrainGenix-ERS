@@ -34,8 +34,6 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
 
     // Load Scene
-    ModelLoader_ = std::make_shared<ERS_CLASS_ModelLoader>(SystemUtils_);
-    ERS_CLASS_SceneLoader SLoader(SystemUtils_, ModelLoader_);
     SceneManager_ = std::make_shared<SceneManager>(SystemUtils_->Logger_);
 
 
@@ -66,7 +64,6 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     VisualRenderer_->CreateViewport(std::make_shared<ERS_OBJECT_SHADER>(Shader_), "Viewport", Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
     //VisualRenderer_->CreateViewport(&Shader_, "Viewport 2", Window_, &Camera_);
 
-    SceneManager_->AddScene(SLoader.ProcessScene(0));
     //SceneManager_->AddScene(SLoader.ProcessScene(TestScene2, "Assets/Scene2.yaml", false));
     //SceneManager_->AddScene(SLoader.ProcessScene(TestScene3, "Assets/Scene3.yaml", false));
 
