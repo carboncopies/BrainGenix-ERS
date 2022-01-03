@@ -1,3 +1,17 @@
 SceneName: Demo Scene
 SceneFormatVersion: 0
 SceneData:
+  0:
+    AssetName: Rock
+    AssetType: Model
+    AssetID: 9
+    AssetPositionX: -14.4506626
+    AssetPositionY: 2.52190971
+    AssetPositionZ: 3.84979033
+    AssetRotationX: 79.4834976
+    AssetRotationY: 23.4872551
+    AssetRotationZ: -16.1020374
+    AssetScaleX: 7.39897823
+    AssetScaleY: 7.39901924
+    AssetScaleZ: 7.3989563
+    FlipTextures: true
