@@ -22,6 +22,8 @@ target_link_libraries(ERS_STRUCT_SystemUtils
 # Link Internal Libs
 target_link_libraries(ERS_STRUCT_SystemUtils
     LoggingSystem
+    SceneManager
+
     ERS_InputOutputSubsystem
     ERS_ModelWriter
     ERS_FramerateManager
