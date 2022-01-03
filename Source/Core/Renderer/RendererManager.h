@@ -35,6 +35,7 @@
 #include <ERS_STRUCT_IOData.h>
 #include <ERS_ModelWriter.h>
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_ProjectUtils.h>
 #include <ERS_ModelLoader.h>
 
 #include <ERS_Editor_3DCursor.h>
@@ -61,11 +62,10 @@ class RendererManager {
         ERS_OBJECT_SHADER Shader_; /**<ERS Shader Object (Main System Shader)*/
         std::shared_ptr<GUISystem> GuiSystem_; /**<Instance of GUI System*/
         std::shared_ptr<TextureLoader> TextureLoader_; /**<Pointer to Texture Loader Instance*/
-        std::shared_ptr<SceneManager> SceneManager_; /**<Pointer to Scene Manager Class Instance*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
-        std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader_; /**ModelLoader Class*/
         
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Copy Of Pointer Helper Struct*/
+        std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Copy Of Project Utils Struct*/
 
 
         // Control Values
@@ -90,7 +90,7 @@ class RendererManager {
          * @param Logger 
          * @param SystemShouldRun 
          */
-        RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+        RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
 
         /**
          * @brief Shuts down the renderers and cleans up variables.

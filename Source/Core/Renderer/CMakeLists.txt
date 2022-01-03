@@ -38,6 +38,7 @@ target_link_libraries(Renderer
     
     ERS_STRUCT_IOData
     ERS_STRUCT_SystemUtils
+    ERS_STRUCT_ProjectUtils
     )
 
 target_include_directories(Renderer PUBLIC ./)
