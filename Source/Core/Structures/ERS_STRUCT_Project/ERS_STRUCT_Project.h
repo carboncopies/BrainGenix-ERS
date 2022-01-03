@@ -39,8 +39,8 @@ struct ERS_STRUCT_Project {
     std::string ProjectLicense = ""; /**<Name Of License Used By Project*/
     bool IsLicenseProprietary = false; /**<Presents a user warning when loading to make them aware that the project is not free software*/
 
-    std::vector<long> SceneIDs; /**<Vector Of Scene IDs Used In The Project*/
-    std::vector<long> ConfigurationIDs; /**<Vector Of Configuration IDs Used In The Project*/
+    std::vector<long> ProjectSceneIDs; /**<Vector Of Scene IDs Used In The Project*/
+    std::vector<long> ProjectConfigurationIDs; /**<Vector Of Configuration IDs Used In The Project*/
     long DefaultLayout = 0; /**<Default Layout Used*/
 
 };
