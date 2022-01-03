@@ -28,7 +28,7 @@ target_link_libraries(ERS_ProjectLoader
 
     ERS_STRUCT_Project
 
-    ERS_InputOutputSystem
+    ERS_InputOutputSubsystem
 
     )
 
