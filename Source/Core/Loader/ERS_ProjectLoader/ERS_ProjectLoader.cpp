@@ -35,7 +35,7 @@ ProjectLoader::~ProjectLoader() {
 ERS_STRUCT_Project ProjectLoader::LoadProject(long AssetID) {
 
     // Log Project Loading
-    SystemUtils_->Logger_->Log(std::string(std::string("Loading Project At Path: ") + std::string(FilePath)).c_str(), 4);
+    SystemUtils_->Logger_->Log(std::string(std::string("Loading Project With Asset ID ") + std::to_string(AssetID)).c_str(), 4);
 
     
     // // Load File
