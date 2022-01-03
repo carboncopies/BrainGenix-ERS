@@ -31,3 +31,19 @@ Window_ProjectSettings::~Window_ProjectSettings() {
     SystemUtils_->Logger_->Log("ERS Window Project Settings Destructor Called", 6);
 
 }
+
+
+// Draw The Window, To Be Called Every Frame
+void Draw() {
+
+    // Begin Window
+    if (Enabled_) {
+        ImGui::Begin("Project Settings", Enabled_);
+
+
+
+        ImGui::End();
+
+    }
+
+}
