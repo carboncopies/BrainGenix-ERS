@@ -23,6 +23,7 @@
 #include <ERS_ModelLoader.h>
 #include <ERS_SceneLoader.h>
 #include <ERS_ProjectLoader.h>
+#include <ERS_ProjectManager.h>
 
 
 /**
@@ -36,5 +37,6 @@ struct ERS_STRUCT_ProjectUtils {
     std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader_; /**<Shared Ptr To Model Loader*/
     std::shared_ptr<ERS_CLASS_SceneLoader> SceneLoader_; /**<Shared Ptr To Scene Loader*/
     std::shared_ptr<ERS_CLASS_ProjectLoader> ProjectLoader_; /**<Shared Pointer To Project Loader*/
+    std::shared_ptr<ERS_CLASS_ProjectManager> ProjectManager_; /**<Shared Pointer To Projet Manager Instance*/
 
 };

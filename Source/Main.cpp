@@ -129,7 +129,7 @@ int main() {
     std::shared_ptr<ERS_CLASS_ProjectManager> sERSProjectManager = std::make_shared<ERS_CLASS_ProjectManager>(SystemUtils, sERSProjectLoader);
     sERSLogger->Log("Copying Shared Pointer To Project Utils Struct", 3);
     ProjectUtils->ProjectManager_ = sERSProjectManager;
-;
+
     // Load Default Project
     sERSLogger->Log("Loading Default Project Defined In Configuration File", 5);
     ProjectUtils->ProjectLoader_->LoadProject(0);
