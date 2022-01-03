@@ -32,7 +32,7 @@ ProjectLoader::~ProjectLoader() {
 }
 
 // Project Loader Struct
-ERS_STRUCT_ ProjectLoader::LoadProject(long AssetID) {
+ERS_STRUCT_Project ProjectLoader::LoadProject(long AssetID) {
 
     // Log Project Loading
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Project At Path: ") + std::string(FilePath)).c_str(), 4);

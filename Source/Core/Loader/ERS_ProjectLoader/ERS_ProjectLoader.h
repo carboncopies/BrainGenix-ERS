@@ -62,7 +62,7 @@ public:
      * 
      * @param FilePath 
      */
-    ERS_STRUCT_PROJECT LoadProject(long AssetID);
+    ERS_STRUCT_Project LoadProject(long AssetID);
 
 
 };
