@@ -36,8 +36,7 @@ class ProjectLoader {
 
 private:
 
-    // Logger
-    std::shared_ptr<ERS_STRUCT_SystemUtils> Logger_; /**<Pointer to Logging System.*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointer to system utils*/
 
 
 
@@ -48,7 +47,7 @@ public:
      * 
      * @param Logger 
      */
-    ProjectLoader(std::shared_ptr<LoggerClass> Logger);
+    ProjectLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
 
     /**
      * @brief 
@@ -61,8 +60,14 @@ public:
      * 
      * @param FilePath 
      */
-    ERS_PROJECT LoadProject(const char* FilePath = "Assets/Project.yaml");
+    ERS_PROJECT LoadProject(long AssetID);
 
+    /**
+     * @brief Load Default Project
+     * 
+     */
+
+    ERS_PROJECT LoadDefaultProject();
 
 
 
