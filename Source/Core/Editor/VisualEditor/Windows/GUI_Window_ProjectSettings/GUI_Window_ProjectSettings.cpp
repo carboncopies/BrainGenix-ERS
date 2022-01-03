@@ -51,6 +51,12 @@ void Window_ProjectSettings::Draw() {
         // Add Project Metadata
         ImGui::InputTextWithHint("Project Name", "Enter Project Title", ProjectNameBuffer, 512);
         ImGui::InputTextMultiline("Project Description", ProjectDescriptionBuffer, 16384);
+
+        ImGui::Separator();
+        ImGui::TextBoxWithHint("Project License", "Enter License Name Here", ProjectLicenseNameBuffer, 128);
+        ImGui::CheckBox("Is Proprietary?", &IsProjectProprietary);
+        ImGui::Separator();
+
         ImGui::InputTextWithHint("Project Creation Date", "", ProjectCreationDateBuffer, 64, ImGuiInputTextFlags_ReadOnly);
         ImGui::InputTextWithHint("Project Modification Date", "", ProjectModificationDateBuffer, 64, ImGuiInputTextFlags_ReadOnly);
 
