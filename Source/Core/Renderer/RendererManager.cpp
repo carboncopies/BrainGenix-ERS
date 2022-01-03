@@ -136,7 +136,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
 
     // Update Scene
-    ModelLoader_->ProcessNewModels(std::make_shared<ERS_OBJECT_SCENE>(ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]));
+    ProjectUtils_->ModelLoader_->ProcessNewModels(std::make_shared<ERS_OBJECT_SCENE>(ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]));
 
     // Update IO
     IOManager_->UpdateFrame(DeltaTime);
@@ -149,7 +149,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     GuiSystem_->UpdateGUI();
 
     // Call Updates
-    VisualRenderer_->UpdateViewports(DeltaTime, SceneManager_);
+    VisualRenderer_->UpdateViewports(DeltaTime, ProjectUtils_->SceneManager_);
 
 
     // Update GUI Frame
