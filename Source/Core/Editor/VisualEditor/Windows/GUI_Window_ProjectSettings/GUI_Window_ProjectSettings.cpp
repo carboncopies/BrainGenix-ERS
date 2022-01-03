@@ -59,7 +59,7 @@ void Window_ProjectSettings::Draw() {
         ImGui::Checkbox("Is License Free", &IsProjectFree);
         ImGui::SameLine();
 
-        ImGui::BulletText("Checking this box indicates that your project and components are free and open source software.");
+        ImGui::HelpMarker("Checking this box indicates that your project and components are free and open source software.");
 
         // Check If Not Free, Present Warning
         if (!IsProjectFree) {
