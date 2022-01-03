@@ -40,8 +40,8 @@ target_link_libraries(VisualRenderer
     Shader
     ShaderLoader
     Framebuffer
-    3DCursor
 
+    ERS_3DCursor
     ERS_SceneLoader
 
     ERS_STRUCT_LocRotScale
