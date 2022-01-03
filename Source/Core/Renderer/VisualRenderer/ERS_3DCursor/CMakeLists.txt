@@ -7,10 +7,10 @@
 add_library(ERS_3DCursor
 
             # Add Source Files (.cpp)
-            "3DCursor.cpp"
+            "ERS_3DCursor.cpp"
 
             # Add Header Files (.h)
-            "3DCursor.h"
+            "ERS_3DCursor.h"
             
             ${BACKWARD_ENABLE}
             )
