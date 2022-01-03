@@ -34,6 +34,7 @@
 #include <ERS_FramerateManager.h>
 
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_ProjectUtils.h>
 
 
 
@@ -97,10 +98,26 @@ int main() {
     HardwareInformation sERSHardwareInformation(sERSLogger, sERSLocalSystemConfiguration);
 
 
+    // Create ProjectUtils Struct
+    sERSLogger->Log("Setting Up Project Utilities Structure", 3);
+    std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils = std::make_shared<ERS_STRUCT_ProjectUtils>();
+
     // Setup Loaders
+    sERSLogger->Log("Instantiating Scene Manager Shared Pointer", 4);
     std::shared_ptr<SceneManager> sERSSceneManager = std::make_shared<SceneManager>(SystemUtils->Logger_);
+    sERSLogger->Log("Copying Shared Pointer To Project Utils Struct", 3);
+    ProjectUtils->SceneManager_ = sERSSceneManager;
+
+    sERSLogger->Log("Instantiating Model Loader Shared Pointer", 4);
     std::shared_ptr<ERS_CLASS_ModelLoader> sERSModelLoader = std::make_shared<ERS_CLASS_ModelLoader>(SystemUtils);
+    sERSLogger->Log("Copying Shared Pointer To Project Utils Struct", 3);
+    ProjectUtils->ModelLoader_ = sERSModelLoader;
+
+    sERSLogger->Log("Instantiating Scene Loader Shared Pointer", 4);
     std::shared_ptr<ERS_CLASS_SceneLoader> sERSSceneLoader = std::make_shared<ERS_CLASS_SceneLoader>(SystemUtils, sERSModelLoader);
+    sERSLogger->Log("Copying Shared Pointer To Project Utils Struct", 3);
+    ProjectUtils->SceneLoader_ = sERSSceneLoader;
+
     sERSSceneManager->AddScene(sERSSceneLoader->ProcessScene(0));
 
 
