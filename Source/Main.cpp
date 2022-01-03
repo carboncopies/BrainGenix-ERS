@@ -120,6 +120,7 @@ int main() {
 
 
     // Load Default Project
+    sERSLogger->Log("Loading Default Project Defined In Configuration File", 5);
     
 
     // Load Default Scene

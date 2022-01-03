@@ -118,17 +118,18 @@ target_link_libraries(${PROJECT_NAME}
   ConfigurationLoader
   LoggingSystem
   Renderer
+  SceneManager
   HardwareInformation
 
   ERS_ModelLoader
-  ERS_SceneLoader
-  SceneManager
-  
-  ERS_InputOutputSubsystem
+  ERS_SceneLoader  
   ERS_ModelWriter
+  ERS_ProjectLoader
+  ERS_InputOutputSubsystem
+  ERS_FramerateManager
+  
   ERS_STRUCT_SystemUtils
   ERS_STRUCT_ProjectUtils
-  ERS_FramerateManager
 
   )
 
