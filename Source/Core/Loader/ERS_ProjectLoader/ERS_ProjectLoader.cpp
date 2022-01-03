@@ -72,7 +72,7 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     // Populate Layouts
     YAML::Node EditorLayouts = ProjectNode["EditorLayouts"];
     for (YAML::const_iterator it=EditorLayouts.begin(); it!=EditorLayouts.end(); ++it) {
-        Project.EditorLayouts.push_back(it->second.as<long>());
+        Project.EditorLayoutIDs.push_back(it->second.as<long>());
     }
 
     
