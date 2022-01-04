@@ -76,15 +76,24 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
         glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
     }
 
-    // Get Input Processor
-    std::shared_ptr<InputProcessor> InputProcessor = InputProcessors_[CaptureIndex_];
 
-    // Update Viewport Camera/Position/Etc.
-    InputProcessor->ProcessKeyboardInput(SystemUtils_->Logger_, DeltaTime, CaptureCursor_);
-    InputProcessor->UpdateFramebuffer();
-    InputProcessor->UpdateMouse(CaptureCursor_);
-    InputProcessor->ProcessMouseScroll(CaptureCursor_);
+    for (int i = 0; i < InputProcessors_.size(); i++) {
 
+        // Get Input Processor
+        std::shared_ptr<InputProcessor> InputProcessor = InputProcessors_[i];
+
+        bool CaptureEnabled = false;
+        if (CaptureIndex_ == i) {
+            CaptureEnabled = true;
+        }
+
+        // Update Viewport Camera/Position/Etc.
+        InputProcessor->ProcessKeyboardInput(SystemUtils_->Logger_, DeltaTime, CaptureEnabled);
+        InputProcessor->UpdateFramebuffer();
+        InputProcessor->UpdateMouse(CaptureEnabled);
+        InputProcessor->ProcessMouseScroll(CaptureEnabled);
+
+    }
 
     // BIND To Default Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, 0);

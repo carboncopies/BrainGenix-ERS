@@ -71,7 +71,7 @@ void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
     // Call Update
     if (WindowMouseCaptureEnabled) {
         MouseCallback(MouseX, MouseY);
-    } else if (ImGui::IsWindowHovered()) {
+    } else {
         LastX = MouseX;
         LastY = MouseY;
 
@@ -137,7 +137,6 @@ void InputProcessor::MouseCallback(double XPos, double YPos) {
     LastX = XPos;
     LastY = YPos;
 
-    std::cout<<LastX<<"|"<<LastY<<"||"<<XOffset<<"|"<<YOffset<<std::endl;
 
     // Process Camera Movement
     Camera_->ProcessMouseMovement(XOffset, YOffset);
