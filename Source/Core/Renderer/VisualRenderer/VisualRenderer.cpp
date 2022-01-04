@@ -127,7 +127,6 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     bool MouseYInRange = (MousePositionY >= WindowTopLeftCornerY) && (MousePositionY < WindowBottomRightCornerY);
     bool MouseInRange = MouseXInRange && MouseYInRange;
     
-    std::cout<<MousePositionX<<"|"<<MousePositionY<<std::endl;
 
     // Check If Input Enabled
     if (!Cursors3D_->DisableCameraMovement() && ImGui::IsWindowFocused() && (MouseInRange | WasSelected_[Index]) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
