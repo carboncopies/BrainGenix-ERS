@@ -76,6 +76,16 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
         glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
     }
 
+    // Get Input Processor
+    std::shared_ptr<InputProcessor> InputProcessor = InputProcessors_[CaptureIndex_];
+
+    // Update Viewport Camera/Position/Etc.
+    InputProcessor->ProcessKeyboardInput(SystemUtils_->Logger_, DeltaTime, CaptureCursor_);
+    InputProcessor->UpdateFramebuffer();
+    InputProcessor->UpdateMouse(CaptureCursor_);
+    InputProcessor->ProcessMouseScroll(CaptureCursor_);
+
+
     // BIND To Default Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
@@ -95,19 +105,10 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     // Check If Input Enabled
     if (!Cursors3D_->DisableCameraMovement() && ImGui::IsWindowFocused() && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
         CaptureCursor_ = true;
+        CaptureIndex_ = Index;
     } 
         
-    // Get Input Processor
-    std::shared_ptr<InputProcessor> InputProcessor = InputProcessors_[Index];
 
-
-
-
-    // Update Viewport Camera/Position/Etc.
-    InputProcessor->ProcessKeyboardInput(SystemUtils_->Logger_, DeltaTime, CaptureMouseCursor);
-    InputProcessor->UpdateFramebuffer();
-    InputProcessor->UpdateMouse(CaptureMouseCursor);
-    InputProcessor->ProcessMouseScroll(CaptureMouseCursor);
 
 
 

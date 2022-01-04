@@ -66,6 +66,7 @@ class VisualRenderer {
 
 
         bool CaptureCursor_ = false; /**<Indicate if cursor should be captured*/
+        int CaptureIndex_ = 0; /**<Index where cursor was captured*/
 
         // Internal Functions
         void InitializeOpenGL();
