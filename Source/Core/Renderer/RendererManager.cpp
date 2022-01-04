@@ -55,7 +55,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
     // Setup IOManager
     SystemUtils_->Logger_->Log("Initializing Input/Output Manager", 5);
-    IOManager_ = std::make_shared<IOManager>(SystemUtils_->Logger_, Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
+    //IOManager_ = std::make_shared<IOManager>(SystemUtils_->Logger_, Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
 
     // Make Viewport
     VisualRenderer_->CreateViewport(std::make_shared<ERS_OBJECT_SHADER>(Shader_), "Viewport", Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
@@ -142,7 +142,11 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     ProjectUtils_->ModelLoader_->ProcessNewModels(std::make_shared<ERS_OBJECT_SCENE>(ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]));
 
     // Update IO
-    IOManager_->UpdateFrame(DeltaTime);
+    // Process Window Input
+    glfwGetWindowSize(Window_, &WindowWidth_, &WindowHeight_);
+    glfwPollEvents();
+    //IOManager_->UpdateFrame(DeltaTime);
+    
     int Width, Height;
     glfwGetWindowSize(Window_, &Width, &Height);
     SystemUtils_->RenderWidth_ = Width;
