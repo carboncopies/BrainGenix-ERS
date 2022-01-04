@@ -54,7 +54,7 @@ public:
 
     int TargetFrameRate_ = 60; /**<Target Frame Rate In FPS*/
     bool UnlockFramerate_ = false; /**<Run As Fast As Possible*/
-    bool SyncToMonitor_ = false; /**<Sync To Monitor FPS*/
+    bool SyncToMonitor_ = true; /**<Sync To Monitor FPS*/
 
 
     std::vector<double> ActualFrameTimes_; /**<List of last thousand actual measured frame times in seconds*/
