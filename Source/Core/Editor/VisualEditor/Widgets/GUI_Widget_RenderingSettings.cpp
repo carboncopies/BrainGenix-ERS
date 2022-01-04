@@ -61,35 +61,19 @@ void Widget_RenderingSettings::Draw() {
                     if (OldFrameRate != SystemUtils_->FramerateManager_->TargetFrameRate_) {
                         SystemUtils_->FramerateManager_->SetTargetFramerate(SystemUtils_->FramerateManager_->TargetFrameRate_);
                     }
+                }
 
-                    // Unlock FPS
-                    ImGui::Checkbox("Unlock Framerate", &SystemUtils_->FramerateManager_->UnlockFramerate_);
+                // Unlock FPS
+                ImGui::Checkbox("Unlock Framerate", &SystemUtils_->FramerateManager_->UnlockFramerate_);
 
-                    // Sync To Monitor
-                    ImGui::SameLine();
-                    ImGui::Checkbox("Sync To Monitor", &SystemUtils_->FramerateManager_->SyncToMonitor_);
+                // Sync To Monitor
+                ImGui::SameLine();
+                ImGui::Checkbox("Sync To Monitor", &SystemUtils_->FramerateManager_->SyncToMonitor_);
+   
 
-                } else {
-
-                    bool UnlockFR = SystemUtils_->FramerateManager_->UnlockFramerate_;
-                    bool SyncFR = SystemUtils_->FramerateManager_->SyncToMonitor_;
-
-                    UnlockFR = ImGui::RadioButton("Unlock Framerate", UnlockFR);
-                    ImGui::SameLine();
-                    SyncFR = ImGui::RadioButton("Sync To Monitor", SyncFR);
-
-
-                    if (UnlockFR) {
-                        SyncFR = false;
-                    } else if (SyncFR) {
-                        UnlockFR = false;
-                    }
-                    
-                    std::cout<<UnlockFR<<SyncFR<<std::endl;
-
-                    SystemUtils_->FramerateManager_->UnlockFramerate_ = UnlockFR;
-                    SystemUtils_->FramerateManager_->SyncToMonitor_ = SyncFR;
-
+                // Disallow Both To Be Checked At The Same Time
+                if (*SystemUtils_->FramerateManager_->UnlockFramerate_) {
+                    SystemUtils_->FramerateManager_->SyncToMonitor_ = false;
                 }
 
             }
