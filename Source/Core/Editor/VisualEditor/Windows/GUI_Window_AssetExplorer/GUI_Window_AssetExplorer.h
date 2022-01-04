@@ -28,39 +28,36 @@
  * @brief Window for the Import progress bar.
  * 
  */
-class Window_SystemLog {
+class Window_AssetExplorer {
 
-    private:
+private:
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
-        int MinLogLevel_ = 0; /**<Default Min Log Level*/
-        int StartingLogIndex_ = 0; /**<Starting Log Index, Set To Current Length To Clear*/
-        bool AutoScroll_ = true; /**<Autoscroll Log*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
 
-    public:
+public:
 
-        bool Enabled_ = true; /**<Is Popup Enabled*/
+    bool Enabled_ = true; /**<Is Popup Enabled*/
 
 
-    public:
+public:
 
-        /**
-         * @brief Construct a new Window_SystemLog object
-         * 
-         */
-        Window_SystemLog(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
-        
-        /**
-         * @brief Destroy the Window_SystemLog object
-         * 
-         */
-        ~Window_SystemLog();
+    /**
+     * @brief Construct a new Window_AssetExplorer object
+     * 
+     */
+    Window_AssetExplorer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    
+    /**
+     * @brief Destroy the Window_AssetExplorer object
+     * 
+     */
+    ~Window_AssetExplorer();
 
 
-        /**
-         * @brief Draw system log needed (call every frame)
-         * 
-         */
-        void Draw();
+    /**
+     * @brief Draw system log needed (call every frame)
+     * 
+     */
+    void Draw();
 
 };
