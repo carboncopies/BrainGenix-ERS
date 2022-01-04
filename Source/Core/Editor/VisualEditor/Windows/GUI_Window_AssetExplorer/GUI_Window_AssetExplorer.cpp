@@ -43,6 +43,11 @@ void Window_AssetExplorer::Draw() {
         ImGui::SetWindowSize(ImVec2(300,0), ImGuiCond_FirstUseEver);
 
 
+        // TODO: Add "selectables" in advanced mode which list all assetids and what they do. perhaps oculd be like this: ID (One-letter-abbreviation for what it does) or an icon if we're feeling fancy
+        // add the option to import assets from the explorer into the active scene
+        // add the normal mode which only shows ers assets and has names rather than ids
+        // add a system to have files/folder abstractions which enables the user to organize their assets under folders, implement drag/drop with this.
+
         if (Visible) {
 
             
@@ -50,7 +55,9 @@ void Window_AssetExplorer::Draw() {
             ImGui::BeginChild("Asset Data Child");
 
                 // Iterate Through All Indexed Assets, List In Child Window
-                for (int i = 0; i < SystemUtils_->)
+                for (int i = 0; i < SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size(); i++) {
+
+                }
 
 
             ImGui::EndChild();

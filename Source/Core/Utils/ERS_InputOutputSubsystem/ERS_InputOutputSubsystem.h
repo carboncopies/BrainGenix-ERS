@@ -42,6 +42,9 @@ class ERS_CLASS_InputOutputSubsystem {
     private:
 
         std::shared_ptr<LoggerClass> Logger_; /**<Logging Class Pointer*/
+
+    public:
+
         std::string AssetPath_; /**<Relative Path To Prepend To All IO Operations, Used By File Loading*/
         std::vector<long> UsedAssetIDs_; /**<List Of Asset IDs That Are Already In Use*/
         std::mutex LockAssetIDAllocation_; /**<Used When Allocating AssetIDs*/
