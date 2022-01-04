@@ -92,6 +92,7 @@ void GUI_Menu_Window::Draw() {
             ImGui::Checkbox("System Log", &Window_SystemLog_->Enabled_);
             ImGui::Checkbox("Asset Explorer", &Window_AssetExplorer_->Enabled_);
             
+
         ImGui::EndMenu();
         }
 
