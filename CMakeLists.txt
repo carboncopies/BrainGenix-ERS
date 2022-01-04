@@ -193,6 +193,7 @@ add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ModelLoader)
 
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_SceneWriter)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ModelWriter)
+add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ProjectWriter)
 
 
 # COPY FILES TO BINARY DIR
