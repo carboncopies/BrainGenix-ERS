@@ -107,9 +107,6 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
         CaptureCursor_ = true;
         CaptureIndex_ = Index;
     } 
-        
-
-
 
 
     glViewport(0, 0, RenderWidth, RenderHeight);
