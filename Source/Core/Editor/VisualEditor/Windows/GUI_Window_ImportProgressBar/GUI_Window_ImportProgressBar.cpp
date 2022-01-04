@@ -62,7 +62,7 @@ void Window_ImportProgressBar::Draw() {
 
     if (Enabled_) {
     ImGuiWindowFlags WindowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
-    ImGui::Begin("Import Status", &Enabled_, WindowFlags);
+    bool Visible = ImGui::Begin("Import Status", &Enabled_, WindowFlags);
 
         // Set Window Size
         ImGui::SetWindowSize(ImVec2(300,0));
@@ -72,21 +72,24 @@ void Window_ImportProgressBar::Draw() {
         ImVec2 WindowPos = ImVec2(SystemUtils_->RenderWidth_ - WindowSize.x, SystemUtils_->RenderHeight_ - WindowSize.y);
         ImGui::SetWindowPos(WindowPos);
 
-        // Calculate Stats
-        if (!IsJobFinishing_) {
-            if (TotalAssetsToImport_ == 0) {
-                PercentDone_ = 0.0f;
+        if (Visible) {
+
+            // Calculate Stats
+            if (!IsJobFinishing_) {
+                if (TotalAssetsToImport_ == 0) {
+                    PercentDone_ = 0.0f;
+                } else {
+                    PercentDone_ = (float)CurrentAssetNumber_ / (float)TotalAssetsToImport_;
+                }
             } else {
-                PercentDone_ = (float)CurrentAssetNumber_ / (float)TotalAssetsToImport_;
+                PercentDone_ = 1.0f;
             }
-        } else {
-            PercentDone_ = 1.0f;
+
+            // Draw Total Progres Bar
+            ImGui::Text("Progress");
+            ImGui::ProgressBar(PercentDone_);
+
         }
-
-        // Draw Total Progres Bar
-        ImGui::Text("Progress");
-        ImGui::ProgressBar(PercentDone_);
-
 
     ImGui::End();
     }
