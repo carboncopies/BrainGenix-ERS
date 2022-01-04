@@ -65,9 +65,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
 
     // Iterate Through Viewports
     for (int i = 0; i<Shaders_.size(); i++) {
-
         UpdateViewport(i, SceneManager, DeltaTime);
-
     }
 
     // Update Mouse Capture State
@@ -78,6 +76,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
     }
 
 
+    // Handle Window Input
     for (int i = 0; i < InputProcessors_.size(); i++) {
 
         // Get Input Processor
@@ -190,10 +189,6 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
         ImVec2(0, 1),
         ImVec2(1, 0)        
     );
-
-
-
-
 
 
     // Finish 3D Cursor
