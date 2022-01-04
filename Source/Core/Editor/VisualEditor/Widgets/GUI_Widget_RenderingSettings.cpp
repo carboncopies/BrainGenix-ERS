@@ -64,19 +64,29 @@ void Widget_RenderingSettings::Draw() {
                 }
 
                 // Unlock FPS
-                std::cout<<ImGui::Checkbox("Unlock Framerate", &SystemUtils_->FramerateManager_->UnlockFramerate_)<<std::endl;
+                bool UnlockChanged = ImGui::Checkbox("Unlock Framerate", &SystemUtils_->FramerateManager_->UnlockFramerate_);
 
                 // Sync To Monitor
                 ImGui::SameLine();
-                ImGui::Checkbox("Sync To Monitor", &SystemUtils_->FramerateManager_->SyncToMonitor_);
+                bool SyncChanged = ImGui::Checkbox("Sync To Monitor", &SystemUtils_->FramerateManager_->SyncToMonitor_);
    
 
                 // Disallow Both To Be Checked At The Same Time
-                if (SystemUtils_->FramerateManager_->UnlockFramerate_) {
-                    SystemUtils_->FramerateManager_->SyncToMonitor_ = false;
-                } else {
-                    SystemUtils_->FramerateManager_->SyncToMonitor_ = true;
+                if (UnlockChanged) {
+                    if (SystemUtils_->FramerateManager_->UnlockFramerate_) {
+                        SystemUtils_->FramerateManager_->SyncToMonitor_ = false;
+                    } else {
+                        SystemUtils_->FramerateManager_->SyncToMonitor_ = true;
+                    }
+                } else if (SyncChanged) {
+                    if (SystemUtils_->FramerateManager_->SyncToMonitor_) {
+                        SystemUtils_->FramerateManager_->UnlockFramerate_ = false;
+                    } else {
+                        SystemUtils_->FramerateManager_->UnlockFramerate_ = true;
+                    }
                 }
+
+
 
             }
 
