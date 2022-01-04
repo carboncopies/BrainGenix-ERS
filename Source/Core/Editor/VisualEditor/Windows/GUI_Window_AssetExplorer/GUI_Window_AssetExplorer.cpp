@@ -47,8 +47,13 @@ void Window_AssetExplorer::Draw() {
 
             
             if (AdvancedMode_) {
+            ImGui::BeginChild("Asset Data Child");
 
-                
+                // Iterate Through All Indexed Assets, List In Child Window
+                for (int i = 0; i < SystemUtils_->)
+
+
+            ImGui::EndChild();
             }
 
 
