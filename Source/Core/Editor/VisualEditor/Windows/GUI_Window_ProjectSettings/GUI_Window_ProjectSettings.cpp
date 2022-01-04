@@ -72,8 +72,14 @@ void Window_ProjectSettings::Draw() {
 
         ImGui::Separator();
 
+        // Date Info
         ImGui::InputTextWithHint("Project Creation Date", "", ProjectCreationDateBuffer, 64, ImGuiInputTextFlags_ReadOnly);
+        ImGui::SameLine();
+        ImGui::HelpMarker("The date when this project was created.");
+
         ImGui::InputTextWithHint("Project Modification Date", "", ProjectModificationDateBuffer, 64, ImGuiInputTextFlags_ReadOnly);
+        ImGui::SameLine();
+        ImGui::HelpMarker("The date when this project was last modified.");
 
 
         // Populate Dropdown Menu
@@ -82,7 +88,8 @@ void Window_ProjectSettings::Draw() {
             ProjectScenes[i] = ProjectUtils_->SceneManager_->Scenes_[i].SceneName.c_str();
         }
         ImGui::Combo("Default Scene", &ProjectUtils_->ProjectManager_->Project_.DefaultScene, ProjectScenes, ProjectUtils_->SceneManager_->Scenes_.size());
-
+        ImGui::SameLine();
+        ImGui::HelpMarker("Set what scene is opened when the project is opened both for editing and as the distributed version.");
 
 
         // Copy In New Values
