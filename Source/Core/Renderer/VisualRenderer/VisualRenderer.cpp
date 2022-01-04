@@ -198,7 +198,6 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
 
-
     ImGui::End();
 
 }
