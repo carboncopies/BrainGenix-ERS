@@ -74,9 +74,9 @@ void Widget_RenderingSettings::Draw() {
                     bool UnlockFR = SystemUtils_->FramerateManager_->UnlockFramerate_;
                     bool SyncFR = SystemUtils_->FramerateManager_->SyncToMonitor_;
 
-                    ImGui::RadioButton("Unlock Framerate", &UnlockFR);
+                    UnlockFR = ImGui::RadioButton("Unlock Framerate", UnlockFR);
                     ImGui::SameLine();
-                    ImGui::RadioButton("Sync To Monitor", &SyncFR);
+                    SyncFR = ImGui::RadioButton("Sync To Monitor", SyncFR);
 
 
                     if (UnlockFR) {
