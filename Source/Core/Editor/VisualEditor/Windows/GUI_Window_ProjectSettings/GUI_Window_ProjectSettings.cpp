@@ -50,6 +50,7 @@ void Window_ProjectSettings::Draw() {
         strcpy(ProjectLicenseNameBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectLicense.c_str());
         IsProjectFree = !ProjectUtils_->ProjectManager_->Project_.IsLicenseProprietary;
 
+
         // Add Project Metadata
         ImGui::InputTextWithHint("Project Name", "Enter Project Title", ProjectNameBuffer, 512);
         ImGui::InputTextMultiline("Project Description", ProjectDescriptionBuffer, 16384);
@@ -75,10 +76,16 @@ void Window_ProjectSettings::Draw() {
         ImGui::InputTextWithHint("Project Modification Date", "", ProjectModificationDateBuffer, 64, ImGuiInputTextFlags_ReadOnly);
 
 
+        // Populate Dropdown Menu
+        ImGui::Separator();
+        for (int i = 0; i < ProjectUtils_->SceneManager_->Scenes_.size(); i++) {
+            ProjectScenes[i] = ProjectUtils_->SceneManager_->Scenes_[i].SceneName;
+        }
         ImGui::Combo("Default Scene", &ProjectUtils_->ProjectManager_->Project_.DefaultScene, ProjectScenes, IM_ARRAYSIZE(ProjectScenes));
 
 
 
+        // Copy In New Values
         ProjectUtils_->ProjectManager_->Project_.ProjectName = std::string(ProjectNameBuffer);
         ProjectUtils_->ProjectManager_->Project_.ProjectDescription = std::string(ProjectDescriptionBuffer);
         ProjectUtils_->ProjectManager_->Project_.ProjectLicense = std::string(ProjectLicenseNameBuffer);
