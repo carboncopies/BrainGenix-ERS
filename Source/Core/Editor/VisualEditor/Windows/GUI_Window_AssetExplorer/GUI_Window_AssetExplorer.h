@@ -37,7 +37,7 @@ private:
 public:
 
     bool Enabled_ = true; /**<Is Popup Enabled*/
-
+    bool AdvancedMode_ = true; /**<Toggles on/off Advanced Mode*/
 
 public:
 

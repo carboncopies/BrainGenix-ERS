@@ -46,6 +46,10 @@ void Window_AssetExplorer::Draw() {
         if (Visible) {
 
             
+            if (AdvancedMode_) {
+
+                
+            }
 
 
         }
