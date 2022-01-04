@@ -74,6 +74,8 @@ void Widget_RenderingSettings::Draw() {
                 // Disallow Both To Be Checked At The Same Time
                 if (SystemUtils_->FramerateManager_->UnlockFramerate_) {
                     SystemUtils_->FramerateManager_->SyncToMonitor_ = false;
+                } else {
+                    SystemUtils_->FramerateManager_->SyncToMonitor_ = true;
                 }
 
             }
