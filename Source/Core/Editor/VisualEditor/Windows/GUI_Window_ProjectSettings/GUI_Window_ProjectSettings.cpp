@@ -52,7 +52,7 @@ void Window_ProjectSettings::Draw() {
         IsProjectFree = !ProjectUtils_->ProjectManager_->Project_.IsLicenseProprietary;
 
 
-        // Add Project Metadata
+        // Add Project Name, Description, Version
         ImGui::InputTextWithHint("Project Name", "Enter Project Title", ProjectNameBuffer, 512);
         ImGui::SameLine();
         ImGui::HelpMarker("Use this to set the title of your project. This is used to set the window title. (Up to 512 characters).");
@@ -66,6 +66,7 @@ void Window_ProjectSettings::Draw() {
         ImGui::HelpMarker("Set the version information about your project here. (Up to 128 characters).");
 
 
+        // Set License Name/IsFree
         ImGui::Separator();
         ImGui::InputTextWithHint("Project License", "Enter License Name Here", ProjectLicenseNameBuffer, 128);
         ImGui::SameLine();
