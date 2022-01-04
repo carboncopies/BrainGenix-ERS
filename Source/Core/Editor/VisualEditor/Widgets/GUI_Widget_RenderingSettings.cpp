@@ -99,6 +99,8 @@ void Widget_RenderingSettings::Draw() {
                 }
 
 
+                // FOV Slider
+                ImGui::Separator();
 
             }
 
