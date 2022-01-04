@@ -75,6 +75,9 @@ void Window_ProjectSettings::Draw() {
         ImGui::InputTextWithHint("Project Modification Date", "", ProjectModificationDateBuffer, 64, ImGuiInputTextFlags_ReadOnly);
 
 
+        ImGui::Combo("Default Scene", &ProjectUtils_->ProjectManager_->Project_.DefaultScene, ProjectScenes, IM_ARRAYSIZE(ProjectScenes), IM_ARRAYSIZE(ProjectScenes));
+
+
 
         ProjectUtils_->ProjectManager_->Project_.ProjectName = std::string(ProjectNameBuffer);
         ProjectUtils_->ProjectManager_->Project_.ProjectDescription = std::string(ProjectDescriptionBuffer);
