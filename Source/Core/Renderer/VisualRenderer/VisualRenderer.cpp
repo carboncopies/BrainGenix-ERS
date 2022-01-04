@@ -83,7 +83,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
         std::shared_ptr<InputProcessor> InputProcessor = InputProcessors_[i];
 
         bool CaptureEnabled = false;
-        if (CaptureIndex_ == i) {
+        if ((CaptureIndex_ == i) && (CaptureCursor_)) {
             CaptureEnabled = true;
         }
 
