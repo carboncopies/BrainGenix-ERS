@@ -54,7 +54,7 @@ void Widget_RenderingSettings::Draw() {
                 ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "Framerate Settings:");
 
                 // Framerate Cap (Linux Only, Windows Doesn't work for whatever reason)
-                if (SystemUtils_->IsLinux_) {
+                if (false) {
 
                     int OldFrameRate = SystemUtils_->FramerateManager_->TargetFrameRate_;
                     ImGui::SliderInt("Target Framerate", &SystemUtils_->FramerateManager_->TargetFrameRate_, 10, 100);
