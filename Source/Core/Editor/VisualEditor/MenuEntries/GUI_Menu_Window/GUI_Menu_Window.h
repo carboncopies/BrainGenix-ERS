@@ -35,6 +35,7 @@
 
 #include <GUI_Window_SceneTree.h>
 #include <GUI_Window_SystemLog.h>
+#include <GUI_Window_AssetExplorer.h>
 
 #include <ERS_Editor_3DCursor.h>
 #include <ERS_SceneManager.h>
@@ -65,6 +66,8 @@ class GUI_Menu_Window {
         // Instantiate Windows Here
         std::shared_ptr<Window_SceneTree> Window_SceneTree_; /**<Window Instance*/
         std::unique_ptr<Window_SystemLog> Window_SystemLog_; /**<Window Instance*/
+        std::unique_ptr<Window_AssetExplorer> Window_AssetExplorer_; /**<Window Instance*/
+
 
     // Member Functions
     public:
