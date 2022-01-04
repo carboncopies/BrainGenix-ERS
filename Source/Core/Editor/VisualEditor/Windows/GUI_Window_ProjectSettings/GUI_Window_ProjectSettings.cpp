@@ -53,13 +53,20 @@ void Window_ProjectSettings::Draw() {
 
         // Add Project Metadata
         ImGui::InputTextWithHint("Project Name", "Enter Project Title", ProjectNameBuffer, 512);
+        ImGui::SameLine();
+        ImGui::HelpMarker("Use this to set the title of your project. This is used to set the window title.");
+
         ImGui::InputTextMultiline("Project Description", ProjectDescriptionBuffer, 16384);
+        ImGui::SameLine();
+        ImGui::HelpMarker("Use this box to describe your project for other developers and users who enable the editor.");
 
         ImGui::Separator();
         ImGui::InputTextWithHint("Project License", "Enter License Name Here", ProjectLicenseNameBuffer, 128);
+        ImGui::SameLine();
+        ImGui::HelpMarker("Enter the name of the license that your project uses. Copyleft licenses are always better!");
+
         ImGui::Checkbox("Is License Free", &IsProjectFree);
         ImGui::SameLine();
-
         ImGui::HelpMarker("Checking this box indicates that your project and components are free and open source software.");
 
         // Check If Not Free, Present Warning
