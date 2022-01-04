@@ -32,37 +32,43 @@ void Widget_RenderingSettings::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {
-        ImGui::Begin("Rendering Settings", &Enabled_);
+        bool Visible = ImGui::Begin("Rendering Settings", &Enabled_);
 
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
 
-            // Wireframe Rendering Mode
-            ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines_);
-            ImGui::NewLine();
 
-            // Rendering Background Clear Color
-            ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor_);
-            ImGui::NewLine();
+            if (Visible) {
+
+                // Wireframe Rendering Mode
+                ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines_);
+                ImGui::NewLine();
+
+                // Rendering Background Clear Color
+                ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor_);
+                ImGui::NewLine();
 
 
-            // Framerate Settings
-            ImGui::Separator();
-            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "Framerate Settings:");
+                // Framerate Settings
+                ImGui::Separator();
+                ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "Framerate Settings:");
 
-            // Framerate Cap
-            int OldFrameRate = SystemUtils_->FramerateManager_->TargetFrameRate_;
-            ImGui::SliderInt("Target Framerate", &SystemUtils_->FramerateManager_->TargetFrameRate_, 10, 100);
-            if (OldFrameRate != SystemUtils_->FramerateManager_->TargetFrameRate_) {
-                SystemUtils_->FramerateManager_->SetTargetFramerate(SystemUtils_->FramerateManager_->TargetFrameRate_);
+                // Framerate Cap
+                int OldFrameRate = SystemUtils_->FramerateManager_->TargetFrameRate_;
+                ImGui::SliderInt("Target Framerate", &SystemUtils_->FramerateManager_->TargetFrameRate_, 10, 100);
+                if (OldFrameRate != SystemUtils_->FramerateManager_->TargetFrameRate_) {
+                    SystemUtils_->FramerateManager_->SetTargetFramerate(SystemUtils_->FramerateManager_->TargetFrameRate_);
+                }
+
+                // Unlock FPS
+                ImGui::Checkbox("Unlock Framerate", &SystemUtils_->FramerateManager_->UnlockFramerate_);
+
+                // Sync To Monitor
+                ImGui::SameLine();
+                ImGui::Checkbox("Sync To Monitor", &SystemUtils_->FramerateManager_->SyncToMonitor_);
+
             }
 
-            // Unlock FPS
-            ImGui::Checkbox("Unlock Framerate", &SystemUtils_->FramerateManager_->UnlockFramerate_);
-
-            // Sync To Monitor
-            ImGui::SameLine();
-            ImGui::Checkbox("Sync To Monitor", &SystemUtils_->FramerateManager_->SyncToMonitor_);
 
 
         // End System Controls Window
