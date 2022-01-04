@@ -72,17 +72,29 @@ void Widget_RenderingSettings::Draw() {
    
 
                 // Disallow Both To Be Checked At The Same Time
-                if (UnlockChanged) {
-                    if (SystemUtils_->FramerateManager_->UnlockFramerate_) {
-                        SystemUtils_->FramerateManager_->SyncToMonitor_ = false;
-                    } else {
-                        SystemUtils_->FramerateManager_->SyncToMonitor_ = true;
+                if (!SystemUtils_->IsLinux_) {
+                    if (UnlockChanged) {
+                        if (SystemUtils_->FramerateManager_->UnlockFramerate_) {
+                            SystemUtils_->FramerateManager_->SyncToMonitor_ = false;
+                        } else {
+                            SystemUtils_->FramerateManager_->SyncToMonitor_ = true;
+                        }
+                    } else if (SyncChanged) {
+                        if (SystemUtils_->FramerateManager_->SyncToMonitor_) {
+                            SystemUtils_->FramerateManager_->UnlockFramerate_ = false;
+                        } else {
+                            SystemUtils_->FramerateManager_->UnlockFramerate_ = true;
+                        }
                     }
-                } else if (SyncChanged) {
-                    if (SystemUtils_->FramerateManager_->SyncToMonitor_) {
-                        SystemUtils_->FramerateManager_->UnlockFramerate_ = false;
-                    } else {
-                        SystemUtils_->FramerateManager_->UnlockFramerate_ = true;
+                } else {
+                    if (UnlockChanged) {
+                        if (SystemUtils_->FramerateManager_->UnlockFramerate_) {
+                            SystemUtils_->FramerateManager_->SyncToMonitor_ = false;
+                        }
+                    } else if (SyncChanged) {
+                        if (SystemUtils_->FramerateManager_->SyncToMonitor_) {
+                            SystemUtils_->FramerateManager_->UnlockFramerate_ = false;
+                        }
                     }
                 }
 
