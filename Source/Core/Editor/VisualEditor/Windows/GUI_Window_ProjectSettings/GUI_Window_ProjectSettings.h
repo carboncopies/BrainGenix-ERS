@@ -36,7 +36,7 @@ private:
     char ProjectLicenseNameBuffer[128]; /**<Project License Name String*/
     char ProjectDescriptionBuffer[16384]; /**<Project Description*/
     const char* ProjectScenes[1024]; /**<List of project scene names*/
-    int DefaultSceneIndex; /**<Default Scene Index/
+    int DefaultSceneIndex; /**<Default Scene Index*/
     bool IsProjectFree; /**<Presents A Warning If Propreitary(Non FOSS)*/
     
 
