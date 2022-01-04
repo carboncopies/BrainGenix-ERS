@@ -61,6 +61,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
     // Setup Vars
     glEnable(GL_DEPTH_TEST);
     CaptureCursor_ = false;
+    CaptureIndex_ = -1;
 
     // Iterate Through Viewports
     for (int i = 0; i<Shaders_.size(); i++) {
