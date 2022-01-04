@@ -130,10 +130,13 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     std::cout<<MousePositionX<<"|"<<MousePositionY<<std::endl;
 
     // Check If Input Enabled
-    if (!Cursors3D_->DisableCameraMovement() && ImGui::IsWindowFocused() && (MouseInRange) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
+    if (!Cursors3D_->DisableCameraMovement() && ImGui::IsWindowFocused() && (MouseInRange | WasSelected_[Index]) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
         CaptureCursor_ = true;
         CaptureIndex_ = Index;
-    } 
+        WasSelected_[Index] = true;
+    } else {
+        WasSelected_[Index] = false;
+    }
 
 
     glViewport(0, 0, RenderWidth, RenderHeight);
@@ -244,6 +247,7 @@ void VisualRenderer::CreateViewport(std::shared_ptr<ERS_OBJECT_SHADER> Shader, s
     ViewportNames_.push_back(ViewportName);
     ViewportWidths_.push_back(1);
     ViewportHeights_.push_back(1);
+    WasSelected_.push_back(false);
 
     // Create IOManager
     SystemUtils_->Logger_->Log("Creating New Input Processor", 4);
