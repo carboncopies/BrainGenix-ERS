@@ -53,19 +53,42 @@ void Widget_RenderingSettings::Draw() {
                 ImGui::Separator();
                 ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "Framerate Settings:");
 
-                // Framerate Cap
-                int OldFrameRate = SystemUtils_->FramerateManager_->TargetFrameRate_;
-                ImGui::SliderInt("Target Framerate", &SystemUtils_->FramerateManager_->TargetFrameRate_, 10, 100);
-                if (OldFrameRate != SystemUtils_->FramerateManager_->TargetFrameRate_) {
-                    SystemUtils_->FramerateManager_->SetTargetFramerate(SystemUtils_->FramerateManager_->TargetFrameRate_);
+                // Framerate Cap (Linux Only, Windows Doesn't work for whatever reason)
+                if (SystemUtils_->IsLinux_) {
+
+                    int OldFrameRate = SystemUtils_->FramerateManager_->TargetFrameRate_;
+                    ImGui::SliderInt("Target Framerate", &SystemUtils_->FramerateManager_->TargetFrameRate_, 10, 100);
+                    if (OldFrameRate != SystemUtils_->FramerateManager_->TargetFrameRate_) {
+                        SystemUtils_->FramerateManager_->SetTargetFramerate(SystemUtils_->FramerateManager_->TargetFrameRate_);
+                    }
+
+                    // Unlock FPS
+                    ImGui::Checkbox("Unlock Framerate", &SystemUtils_->FramerateManager_->UnlockFramerate_);
+
+                    // Sync To Monitor
+                    ImGui::SameLine();
+                    ImGui::Checkbox("Sync To Monitor", &SystemUtils_->FramerateManager_->SyncToMonitor_);
+
+                } else {
+
+                    bool UnlockFR = SystemUtils_->FramerateManager_->UnlockFramerate_;
+                    bool SyncFR = SystemUtils_->FramerateManager_->SyncToMonitor_;
+
+                    ImGui::RadioButton("Unlock Framerate", &UnlockFR);
+                    ImGui::SameLine();
+                    ImGui::RadioButton("Sync To Monitor", &SyncFR);
+
+
+                    if (UnlockFR) {
+                        SyncFR = false;
+                    } else if (SyncFR) {
+                        UnlockFR = false;
+                    }
+
+                    SystemUtils_->FramerateManager_->UnlockFramerate_ = UnlockFR;
+                    SystemUtils_->FramerateManager_->SyncToMonitor_ = SyncFR;
+
                 }
-
-                // Unlock FPS
-                ImGui::Checkbox("Unlock Framerate", &SystemUtils_->FramerateManager_->UnlockFramerate_);
-
-                // Sync To Monitor
-                ImGui::SameLine();
-                ImGui::Checkbox("Sync To Monitor", &SystemUtils_->FramerateManager_->SyncToMonitor_);
 
             }
 
