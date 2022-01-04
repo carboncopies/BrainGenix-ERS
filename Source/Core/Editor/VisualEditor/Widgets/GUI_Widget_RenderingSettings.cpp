@@ -84,6 +84,8 @@ void Widget_RenderingSettings::Draw() {
                     } else if (SyncFR) {
                         UnlockFR = false;
                     }
+                    
+                    std::cout<<UnlockFR<<SyncFR<<std::endl;
 
                     SystemUtils_->FramerateManager_->UnlockFramerate_ = UnlockFR;
                     SystemUtils_->FramerateManager_->SyncToMonitor_ = SyncFR;
