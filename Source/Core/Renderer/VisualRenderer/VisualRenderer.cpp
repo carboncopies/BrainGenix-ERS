@@ -113,7 +113,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Check If Input Enabled
-    if (!Cursors3D_->DisableCameraMovement() && ImGui::IsWindowFocused() && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
+    if (!Cursors3D_->DisableCameraMovement() && ImGui::IsWindowFocused() && ImGui::IsWindowHovered() &&  (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
         CaptureCursor_ = true;
         CaptureIndex_ = Index;
     } 
