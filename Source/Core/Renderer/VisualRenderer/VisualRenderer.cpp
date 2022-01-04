@@ -91,7 +91,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
         CaptureMouseCursor = true;
     } 
         
-
+    std::cout<<CaptureMouseCursor<<std::endl;
     // Get Input Processor
     std::shared_ptr<InputProcessor> InputProcessor = InputProcessors_[Index];
 
