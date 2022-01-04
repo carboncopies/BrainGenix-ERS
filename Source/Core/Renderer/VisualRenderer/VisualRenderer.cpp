@@ -75,6 +75,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
         glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
     }
 
+    std::cout<<CaptureIndex_<<std::endl;
 
     // Handle Window Input
     for (int i = 0; i < InputProcessors_.size(); i++) {
