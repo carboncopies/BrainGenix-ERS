@@ -58,8 +58,9 @@ void VisualRenderer::InitializeOpenGL() {
 
 void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
 
-    // Enable Depth Test
+    // Setup Vars
     glEnable(GL_DEPTH_TEST);
+    CaptureCursor_ = false;
 
     // Iterate Through Viewports
     for (int i = 0; i<Shaders_.size(); i++) {
@@ -68,6 +69,12 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
 
     }
 
+    // Update Mouse Capture State
+    if (CaptureCursor_) {
+        glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    } else {
+        glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    }
 
     // BIND To Default Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -86,22 +93,15 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Check If Input Enabled
-    bool CaptureMouseCursor = false;
     if (!Cursors3D_->DisableCameraMovement() && ImGui::IsWindowFocused() && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
-        CaptureMouseCursor = true;
+        CaptureCursor_ = true;
     } 
         
-    std::cout<<CaptureMouseCursor<<std::endl;
     // Get Input Processor
     std::shared_ptr<InputProcessor> InputProcessor = InputProcessors_[Index];
 
 
-    // Update Mouse Capture State
-    if (CaptureMouseCursor) {
-        glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    } else {
-        glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-    }
+
 
     // Update Viewport Camera/Position/Etc.
     InputProcessor->ProcessKeyboardInput(SystemUtils_->Logger_, DeltaTime, CaptureMouseCursor);

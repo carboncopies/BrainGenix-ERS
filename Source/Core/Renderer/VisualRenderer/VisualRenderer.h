@@ -65,6 +65,8 @@ class VisualRenderer {
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Struct Containing Pointers To Important Info*/
 
 
+        bool CaptureCursor_ = false; /**<Indicate if cursor should be captured*/
+
         // Internal Functions
         void InitializeOpenGL();
         void ResizeViewport(int Index, int Width, int Height);
