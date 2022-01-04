@@ -34,6 +34,7 @@
 #include <ERS_FramerateManager.h>
 #include <ERS_ProjectLoader.h>
 #include <ERS_ProjectManager.h>
+#include <ERS_ProjectWriter.h>
 
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
@@ -122,14 +123,20 @@ int main() {
 
     sERSLogger->Log("Instantiating ERS Project Loader Pointer", 4);
     std::shared_ptr<ERS_CLASS_ProjectLoader> sERSProjectLoader = std::make_shared<ERS_CLASS_ProjectLoader>(SystemUtils);
-    sERSLogger->Log("Instantiating Scene Loader Shared Pointer", 4);
+    sERSLogger->Log("Instantiating Project Loader Shared Pointer", 4);
     ProjectUtils->ProjectLoader_ = sERSProjectLoader;
 
+    sERSLogger->Log("Instantiating ERS Project Writer Pointer", 4);
+    std::shared_ptr<ERS_CLASS_ProjectWriter> sERSProjectWriter = std::make_shared<ERS_CLASS_ProjectWriter>(SystemUtils);
+    sERSLogger->Log("Instantiating Project Writer Shared Pointer", 4);
+    ProjectUtils->ProjectWriter_ = sERSProjectWriter;
+
     sERSLogger->Log("Instantiating ERS Project Manager Pointer", 4);
-    std::shared_ptr<ERS_CLASS_ProjectManager> sERSProjectManager = std::make_shared<ERS_CLASS_ProjectManager>(SystemUtils, sERSProjectLoader, sERSSceneManager, sERSSceneLoader);
+    std::shared_ptr<ERS_CLASS_ProjectManager> sERSProjectManager = std::make_shared<ERS_CLASS_ProjectManager>(SystemUtils, sERSProjectLoader, sERSProjectWriter, sERSSceneManager, sERSSceneLoader);
     sERSLogger->Log("Copying Shared Pointer To Project Utils Struct", 3);
     ProjectUtils->ProjectManager_ = sERSProjectManager;
 
+    
 
 
     // Instantiate RendererManager

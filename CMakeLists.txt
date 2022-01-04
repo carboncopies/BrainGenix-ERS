@@ -126,6 +126,7 @@ target_link_libraries(${PROJECT_NAME}
   ERS_SceneLoader  
   ERS_ModelWriter
   ERS_ProjectLoader
+  ERS_ProjectWriter
   ERS_InputOutputSubsystem
   ERS_FramerateManager
   ERS_ProjectManager

@@ -26,6 +26,7 @@
 #include <ERS_SceneLoader.h>
 #include <ERS_SceneManager.h>
 #include <ERS_ProjectLoader.h>
+#include <ERS_ProjectWriter.h>
 
 
 /**
@@ -41,6 +42,7 @@ private:
     std::shared_ptr<ERS_CLASS_ProjectLoader> ProjectLoader_; /**<Project Loader Util*/
     std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Class*/
     std::shared_ptr<ERS_CLASS_SceneLoader> SceneLoader_; /**<Scene Loader Instance*/
+    std::shared_ptr<ERS_CLASS_ProjectWriter> ProjectWriter_; /**<Project Writer Util*/
 
 public:
 
@@ -54,7 +56,7 @@ public:
      * @param SystemUtils 
      * @param ProjectLoader 
      */
-    ERS_CLASS_ProjectManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ProjectLoader> ProjectLoader, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_CLASS_SceneLoader> SceneLoader);
+    ERS_CLASS_ProjectManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ProjectLoader> ProjectLoader, std::shared_ptr<ERS_CLASS_ProjectWriter> ProjectWriter, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_CLASS_SceneLoader> SceneLoader);
 
     /**
      * @brief Destroy the ers class projectmanager object
@@ -71,5 +73,12 @@ public:
      */
     void LoadProject(long AssetID);
 
+
+    /**
+     * @brief Write the active project to the specified assetid
+     * 
+     * @param AssetID 
+     */
+    void WriteProject(long AssetID);
 
 };

@@ -13,13 +13,14 @@
 
 
 // Constructor
-ERS_CLASS_ProjectManager::ERS_CLASS_ProjectManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ProjectLoader> ProjectLoader, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_CLASS_SceneLoader> SceneLoader) {
+ERS_CLASS_ProjectManager::ERS_CLASS_ProjectManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ProjectLoader> ProjectLoader, std::shared_ptr<ERS_CLASS_ProjectWriter> ProjectWriter, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_CLASS_SceneLoader> SceneLoader) {
 
     // Copy Pointers
     SystemUtils_ = SystemUtils;
     ProjectLoader_ = ProjectLoader;
     SceneManager_ = SceneManager;
     SceneLoader_ = SceneLoader;
+    ProjectWriter_ = ProjectWriter;
 
     // Log Initialization
     SystemUtils_->Logger_->Log("Initializing ERS Project Manager", 5);
@@ -51,5 +52,15 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Project Default Scene") + std::to_string(AssetID)).c_str(), 5);
     SceneManager_->AddScene(SceneLoader_->ProcessScene(Project_.SceneIDs[Project_.DefaultScene]));
     SceneManager_->SetActiveScene(0);
+
+}
+
+
+// Write Project
+void ERS_CLASS_ProjectManager::WriteProject(long AssetID) {
+
+    // Get Project Pointer. Write Project
+    std::shared_ptr<ERS_STRUCT_Project> ProjectPtr = std::make_shared<ERS_STRUCT_Project>(Project_);
+    ProjectWriter_->SaveProject(ProjectPtr, AssetID);
 
 }
