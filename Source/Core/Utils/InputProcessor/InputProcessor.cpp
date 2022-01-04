@@ -137,6 +137,8 @@ void InputProcessor::MouseCallback(double XPos, double YPos) {
     LastX = XPos;
     LastY = YPos;
 
+    std::cout<<LastX<<LastY<<std::endl;
+
     // Process Camera Movement
     Camera_->ProcessMouseMovement(XOffset, YOffset);
 
