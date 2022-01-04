@@ -59,6 +59,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
     // Make Viewport
     VisualRenderer_->CreateViewport(std::make_shared<ERS_OBJECT_SHADER>(Shader_), "Viewport", Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
+    VisualRenderer_->CreateViewport(std::make_shared<ERS_OBJECT_SHADER>(Shader_), "Viewport 2", Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
     //VisualRenderer_->CreateViewport(&Shader_, "Viewport 2", Window_, &Camera_);
 
     //SceneManager_->AddScene(SLoader.ProcessScene(TestScene2, "Assets/Scene2.yaml", false));
@@ -146,7 +147,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     glfwGetWindowSize(Window_, &WindowWidth_, &WindowHeight_);
     glfwPollEvents();
     //IOManager_->UpdateFrame(DeltaTime);
-    
+
     int Width, Height;
     glfwGetWindowSize(Window_, &Width, &Height);
     SystemUtils_->RenderWidth_ = Width;
