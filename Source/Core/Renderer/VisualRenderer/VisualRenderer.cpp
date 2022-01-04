@@ -112,8 +112,25 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     int RenderHeight = ImGui::GetWindowSize().y;
 
 
+    // Calculate Window Position
+    int WindowTopLeftCornerX = ImGui::GetWindowPos().x;
+    int WindowTopLeftCornerY = ImGui::GetWindowPos().y;
+    int WindowBottomRightCornerX = ImGui::GetWindowSize().x + WindowTopLeftCornerX;
+    int WindowBottomRightCornerY = ImGui::GetWindowSize().y + WindowTopLeftCornerY;
+
+    // Get Mouse Pos
+    int MousePositionX = ImGui::GetMousePos().x;
+    int MousePositionY = ImGui::GetMousePos().y;
+
+    // Check If In Bounding Box
+    bool MouseXInRange = (MousePositionX >= WindowTopLeftCornerX) && (MousePositionX < WindowBottomRightCornerX);
+    bool MouseYInRange = (MousePositionY >= WindowTopLeftCornerY) && (MousePositionY < WindowBottomRightCornerY);
+    bool MouseInRange = MouseXInRange && MouseYInRange;
+    
+    std::cout<<MouseInRange<<std::endl;
+
     // Check If Input Enabled
-    if (!Cursors3D_->DisableCameraMovement() && ImGui::IsWindowFocused() && (!CaptureCursor_) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
+    if (!Cursors3D_->DisableCameraMovement() && ImGui::IsWindowFocused() && (MouseInRange) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
         CaptureCursor_ = true;
         CaptureIndex_ = Index;
     } 
