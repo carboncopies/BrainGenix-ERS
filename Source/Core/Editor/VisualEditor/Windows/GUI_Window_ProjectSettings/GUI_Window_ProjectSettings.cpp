@@ -39,7 +39,7 @@ void Window_ProjectSettings::Draw() {
     // Begin Window
     if (Enabled_) {
         ImGui::Begin("Project Settings", &Enabled_);
-        ImGui::SetWindowSize(ImVec2(700, 350), ImGuiCond_FirstUseEver);
+        ImGui::SetWindowSize(ImVec2(700, 310), ImGuiCond_FirstUseEver);
 
 
         // Copy Project Info Into Vars ImGui Can Understand
