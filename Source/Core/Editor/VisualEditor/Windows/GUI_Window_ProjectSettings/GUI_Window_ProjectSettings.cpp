@@ -61,7 +61,7 @@ void Window_ProjectSettings::Draw() {
         ImGui::SameLine();
         ImGui::HelpMarker("Use this box to describe your project for other developers and users who enable the editor. (Up to 16384 characters).");
 
-        ImGui::InputTextMultiline("Project Version", ProjectVersionBuffer, 128);
+        ImGui::InputTextWithHint("Project Version", "Enter Project Version", ProjectVersionBuffer, 128);
         ImGui::SameLine();
         ImGui::HelpMarker("Set the version information about your project here. (Up to 128 characters).");
 
