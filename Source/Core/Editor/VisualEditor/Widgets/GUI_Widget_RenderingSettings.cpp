@@ -64,7 +64,7 @@ void Widget_RenderingSettings::Draw() {
                 }
 
                 // Unlock FPS
-                ImGui::Checkbox("Unlock Framerate", &SystemUtils_->FramerateManager_->UnlockFramerate_);
+                std::cout<<ImGui::Checkbox("Unlock Framerate", &SystemUtils_->FramerateManager_->UnlockFramerate_)<<std::endl;
 
                 // Sync To Monitor
                 ImGui::SameLine();
