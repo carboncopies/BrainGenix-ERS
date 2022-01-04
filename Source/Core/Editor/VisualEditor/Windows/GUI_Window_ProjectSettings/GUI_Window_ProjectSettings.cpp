@@ -39,7 +39,7 @@ void Window_ProjectSettings::Draw() {
     // Begin Window
     if (Enabled_) {
         ImGui::Begin("Project Settings", &Enabled_);
-        ImGui::SetWindowSize(ImVec2(650, 300), ImGuiCond_FirstUseEver);
+        ImGui::SetWindowSize(ImVec2(700, 350), ImGuiCond_FirstUseEver);
 
 
         // Copy Project Info Into Vars ImGui Can Understand
@@ -48,22 +48,28 @@ void Window_ProjectSettings::Draw() {
         strcpy(ProjectModificationDateBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectModificationDate.c_str());
         strcpy(ProjectDescriptionBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectDescription.c_str());
         strcpy(ProjectLicenseNameBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectLicense.c_str());
+        strcpy(ProjectVersionBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectVersion.c_str());
         IsProjectFree = !ProjectUtils_->ProjectManager_->Project_.IsLicenseProprietary;
 
 
         // Add Project Metadata
         ImGui::InputTextWithHint("Project Name", "Enter Project Title", ProjectNameBuffer, 512);
         ImGui::SameLine();
-        ImGui::HelpMarker("Use this to set the title of your project. This is used to set the window title.");
+        ImGui::HelpMarker("Use this to set the title of your project. This is used to set the window title. (Up to 512 characters).");
 
         ImGui::InputTextMultiline("Project Description", ProjectDescriptionBuffer, 16384);
         ImGui::SameLine();
-        ImGui::HelpMarker("Use this box to describe your project for other developers and users who enable the editor.");
+        ImGui::HelpMarker("Use this box to describe your project for other developers and users who enable the editor. (Up to 16384 characters).");
+
+        ImGui::InputTextMultiline("Project Version", ProjectVersionBuffer, 128);
+        ImGui::SameLine();
+        ImGui::HelpMarker("Set the version information about your project here. (Up to 128 characters).");
+
 
         ImGui::Separator();
         ImGui::InputTextWithHint("Project License", "Enter License Name Here", ProjectLicenseNameBuffer, 128);
         ImGui::SameLine();
-        ImGui::HelpMarker("Enter the name of the license that your project uses. Copyleft licenses are always better!");
+        ImGui::HelpMarker("Enter the name of the license that your project uses. Copyleft licenses are always better! (Up to 128 characters).");
 
         ImGui::Checkbox("Is License Free", &IsProjectFree);
         ImGui::SameLine();
@@ -76,7 +82,6 @@ void Window_ProjectSettings::Draw() {
             ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "You may be subject to additional licensing restrictions and other nasty things.");
             ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "Try contacting the developers to see if they will change the license.");            
         }
-
         ImGui::Separator();
 
         // Date Info
@@ -104,6 +109,7 @@ void Window_ProjectSettings::Draw() {
         ProjectUtils_->ProjectManager_->Project_.ProjectDescription = std::string(ProjectDescriptionBuffer);
         ProjectUtils_->ProjectManager_->Project_.ProjectLicense = std::string(ProjectLicenseNameBuffer);
         ProjectUtils_->ProjectManager_->Project_.IsLicenseProprietary = !IsProjectFree;
+        ProjectUtils_->ProjectManager_->Project_.ProjectVersion = std::string(ProjectVersionBuffer);
 
 
         ImGui::End();
