@@ -71,7 +71,7 @@ void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
     // Call Update
     if (WindowMouseCaptureEnabled) {
         MouseCallback(MouseX, MouseY);
-    } else {
+    } else if (ImGui::IsWindowHovered()) {
         LastX = MouseX;
         LastY = MouseY;
 
