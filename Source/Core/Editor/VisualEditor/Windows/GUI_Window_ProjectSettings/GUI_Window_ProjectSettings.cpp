@@ -39,7 +39,7 @@ void Window_ProjectSettings::Draw() {
     // Begin Window
     if (Enabled_) {
         ImGui::Begin("Project Settings", &Enabled_);
-        ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
+        ImGui::SetWindowSize(ImVec2(650, 300), ImGuiCond_FirstUseEver);
 
 
         // Copy Project Info Into Vars ImGui Can Understand
@@ -81,7 +81,7 @@ void Window_ProjectSettings::Draw() {
         for (int i = 0; i < ProjectUtils_->SceneManager_->Scenes_.size(); i++) {
             ProjectScenes[i] = ProjectUtils_->SceneManager_->Scenes_[i].SceneName.c_str();
         }
-        ImGui::Combo("Default Scene", &ProjectUtils_->ProjectManager_->Project_.DefaultScene, ProjectScenes, IM_ARRAYSIZE(ProjectScenes));
+        ImGui::Combo("Default Scene", &ProjectUtils_->ProjectManager_->Project_.DefaultScene, ProjectScenes, ProjectUtils_->SceneManager_->Scenes_.size());
 
 
 
