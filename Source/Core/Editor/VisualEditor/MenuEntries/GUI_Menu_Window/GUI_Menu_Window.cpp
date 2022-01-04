@@ -90,7 +90,7 @@ void GUI_Menu_Window::Draw() {
             // Add Scene Tree Editor Window
             ImGui::Checkbox("Scene Tree", &Window_SceneTree_->Enabled_);
             ImGui::Checkbox("System Log", &Window_SystemLog_->Enabled_);
-            ImGui::Checkbox("Asset Explorer", &Window_AssetExplorere_->Enabled_);
+            ImGui::Checkbox("Asset Explorer", &Window_AssetExplorer_->Enabled_);
             
         ImGui::EndMenu();
         }
