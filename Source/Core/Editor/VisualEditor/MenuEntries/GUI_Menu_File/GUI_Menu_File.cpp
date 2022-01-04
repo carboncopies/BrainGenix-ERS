@@ -44,7 +44,10 @@ void GUI_Menu_File::Draw() {
     // File Menu
     if (ImGui::BeginMenu("File")) {
 
-        // Project Settings
+        // Project Options
+        if (ImGui::MenuItem("Save Project")) {
+            
+        }
         if (ImGui::MenuItem("Project Settings")) {
             Window_ProjectSettings_->Enabled_ = !Window_ProjectSettings_->Enabled_;
         }
