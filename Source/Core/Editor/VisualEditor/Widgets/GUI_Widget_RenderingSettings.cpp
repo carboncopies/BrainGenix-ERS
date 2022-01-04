@@ -98,9 +98,10 @@ void Widget_RenderingSettings::Draw() {
                     }
                 }
 
-
+                // FIXME: Add Camera Struct To Grab FOV For All Cameras
                 // FOV Slider
-                ImGui::Separator();
+                //ImGui::Separator();
+                //ImGui::SliderInt("Viewport FOV", &Camera_, 1, 360)
 
             }
 
