@@ -31,48 +31,52 @@ void Window_ThemeSelector::Draw() {
 
     // Draw Color Picker Menu
     if (Enabled_) {
-        ImGuiWindowFlags Flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse;
-        ImGui::Begin("Pick Color Theme", &Enabled_, Flags);
+    ImGuiWindowFlags Flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse;
+    bool Visible = ImGui::Begin("Pick Color Theme", &Enabled_, Flags);
 
             ImGui::SetWindowSize(ImVec2(0, 0));
 
 
-            // Put Radio Buttons Here
-            ImGui::BeginChild("Theme Selector", ImVec2(250, 250), true);
+            if (Visible) {
 
-                static int ThemeSelector = 0;
-                for (int i = 0; i < ThemeManager_->ThemeNames_.size(); i++) {
+                // Put Radio Buttons Here
+                ImGui::BeginChild("Theme Selector", ImVec2(250, 250), true);
 
-                    ImGui::RadioButton(ThemeManager_->ThemeNames_[i].c_str(), &ThemeSelector, i);
+                    static int ThemeSelector = 0;
+                    for (int i = 0; i < ThemeManager_->ThemeNames_.size(); i++) {
 
+                        ImGui::RadioButton(ThemeManager_->ThemeNames_[i].c_str(), &ThemeSelector, i);
+
+                    }
+                    
+
+                ImGui::EndChild();
+
+
+                ImGui::Separator();
+
+
+                // Reload Button
+                if (ImGui::Button("Reload Themes")) {
+                    ThemeManager_->LoadThemes();
                 }
-                
+                ImGui::SameLine();
 
-            ImGui::EndChild();
+                // Apply Button
+                if (ImGui::Button("Apply")) {
+                    ThemeManager_->ApplyThemes(ThemeSelector);
+                }
+                ImGui::SameLine();
 
-
-            ImGui::Separator();
-
-
-            // Reload Button
-            if (ImGui::Button("Reload Themes")) {
-                ThemeManager_->LoadThemes();
-            }
-            ImGui::SameLine();
-
-            // Apply Button
-            if (ImGui::Button("Apply")) {
-                ThemeManager_->ApplyThemes(ThemeSelector);
-            }
-            ImGui::SameLine();
-
-            // Close Button
-            if (ImGui::Button("Close")) {
-                Enabled_ = false;
-            }
+                // Close Button
+                if (ImGui::Button("Close")) {
+                    Enabled_ = false;
+                }
             
 
-        ImGui::End();
+            }
+
+    ImGui::End();
     }
 
 }
