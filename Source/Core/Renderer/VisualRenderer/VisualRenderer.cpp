@@ -99,6 +99,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 
+
 }
 
 void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager, float DeltaTime) {
