@@ -213,7 +213,10 @@ void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
 
 // ADD DESTROY VIEWPORT FUNCTION!
 
-void VisualRenderer::CreateViewport(std::shared_ptr<ERS_OBJECT_SHADER> Shader, std::string ViewportName, GLFWwindow* Window, std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera) {
+void VisualRenderer::CreateViewport(std::shared_ptr<ERS_OBJECT_SHADER> Shader, std::string ViewportName, GLFWwindow* Window) {
+
+    // Create Camera
+    std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera = std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>();
 
     // Append To Vectors
     Shaders_.push_back(Shader);
