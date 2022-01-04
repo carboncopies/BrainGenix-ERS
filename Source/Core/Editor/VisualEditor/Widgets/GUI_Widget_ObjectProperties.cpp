@@ -29,39 +29,42 @@ void Widget_ObjectProperties::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {
-        ImGui::Begin("Object Properties", &Enabled_);
+        bool Visible = ImGui::Begin("Object Properties", &Enabled_);
 
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
 
-            // Get Struct Ptr, Setup Slides
-            ERS_STRUCT_LocRotScale *LocRotScale = Cursors3D_->GetLocRotScalePtr();
+            if (Visible) {
 
-            float Location_[3] = {LocRotScale->PosX, LocRotScale->PosY, LocRotScale->PosZ};
-            float Rotation_[3] = {LocRotScale->RotX, LocRotScale->RotY, LocRotScale->RotZ};
-            float Scale_[3] = {LocRotScale->ScaleX, LocRotScale->ScaleY, LocRotScale->ScaleZ};
-            
-            // LocRotScale Properties
-            ImGui::DragFloat3("Location", Location_, 0.05f);
-            ImGui::DragFloat3("Rotation", Rotation_, 0.05f);// FIXME: MAKE ROLL OVER TO 180 Degrees?
-            ImGui::DragFloat3("Scale", Scale_, 0.05f, 0.0f, 65535.0f);
+                // Get Struct Ptr, Setup Slides
+                ERS_STRUCT_LocRotScale *LocRotScale = Cursors3D_->GetLocRotScalePtr();
 
-            // Update Struct
-            LocRotScale->PosX = Location_[0];
-            LocRotScale->PosY = Location_[1];
-            LocRotScale->PosZ = Location_[2];
+                float Location_[3] = {LocRotScale->PosX, LocRotScale->PosY, LocRotScale->PosZ};
+                float Rotation_[3] = {LocRotScale->RotX, LocRotScale->RotY, LocRotScale->RotZ};
+                float Scale_[3] = {LocRotScale->ScaleX, LocRotScale->ScaleY, LocRotScale->ScaleZ};
+                
+                // LocRotScale Properties
+                ImGui::DragFloat3("Location", Location_, 0.05f);
+                ImGui::DragFloat3("Rotation", Rotation_, 0.05f);// FIXME: MAKE ROLL OVER TO 180 Degrees?
+                ImGui::DragFloat3("Scale", Scale_, 0.05f, 0.0f, 65535.0f);
+
+                // Update Struct
+                LocRotScale->PosX = Location_[0];
+                LocRotScale->PosY = Location_[1];
+                LocRotScale->PosZ = Location_[2];
+                
+                LocRotScale->RotX = Rotation_[0];
+                LocRotScale->RotY = Rotation_[1];
+                LocRotScale->RotZ = Rotation_[2];
+                
+                LocRotScale->ScaleX = Scale_[0];
+                LocRotScale->ScaleY = Scale_[1];
+                LocRotScale->ScaleZ = Scale_[2];
+                
+                // Update Position
+                Cursors3D_->SetLocRotScale(*LocRotScale);
             
-            LocRotScale->RotX = Rotation_[0];
-            LocRotScale->RotY = Rotation_[1];
-            LocRotScale->RotZ = Rotation_[2];
-            
-            LocRotScale->ScaleX = Scale_[0];
-            LocRotScale->ScaleY = Scale_[1];
-            LocRotScale->ScaleZ = Scale_[2];
-            
-            // Update Position
-            Cursors3D_->SetLocRotScale(*LocRotScale);
-            
+            }
 
         // End System Controls Window
         ImGui::End();
