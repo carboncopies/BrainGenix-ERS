@@ -30,17 +30,6 @@ enum CameraMovement {
     DOWN
 };
 
-// Set Default Attributes
-const float DefaultYaw = -90.0f;
-const float DefaultPitch = 0.0f;
-const float DefaultSpeed = 6.0f;
-const float DefaultSensitivity = 0.1f;
-const float DefaultZoom = 45.0f;
-
-// Set Bounding Attributes
-const float MaxZoom = 45.0f;
-const float MinZoom = 1.0f;
-
 
 // Setup Camera Options
 class ERS_OBJECT_CAMERA_NOCLIP {
@@ -69,7 +58,13 @@ class ERS_OBJECT_CAMERA_NOCLIP {
         float MaxMovementSpeed = 50.0f;
 
         // Constructor With Vectors
-        ERS_OBJECT_CAMERA_NOCLIP(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f), float Yaw = DefaultYaw, float Pitch = DefaultPitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(DefaultSpeed), MouseSensitivity(DefaultSensitivity), Zoom(DefaultZoom) {
+        ERS_OBJECT_CAMERA_NOCLIP(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f),
+                                 glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f),
+                                 float Yaw = -90.0f,
+                                 float Pitch = 0.0f) : Front(glm::vec3(0.0f, 0.0f, -1.0f)),
+                                 MovementSpeed(6.0f),
+                                 MouseSensitivity(0.1f),
+                                 Zoom(45.0f) {
             
             // Set Params
             Position = Position;
@@ -81,7 +76,17 @@ class ERS_OBJECT_CAMERA_NOCLIP {
         }
 
         // Constructor With Scalar Values
-        ERS_OBJECT_CAMERA_NOCLIP(float PosX, float PosY, float PosZ, float UpX, float UpY, float UpZ, float Yaw, float Pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(DefaultSpeed), MouseSensitivity(DefaultSensitivity), Zoom(DefaultZoom) {
+        ERS_OBJECT_CAMERA_NOCLIP(float PosX,
+                                 float PosY,
+                                 float PosZ,
+                                 float UpX,
+                                 float UpY,
+                                 float UpZ,
+                                 float Yaw,
+                                 float Pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)),
+                                 MovementSpeed(6.0f),
+                                 MouseSensitivity(0.1f),
+                                 Zoom(45.0f) {
             Position = glm::vec3(PosX, PosY, PosZ);
             WorldUp = glm::vec3(UpX, UpY, UpZ);
             Yaw = Yaw;
