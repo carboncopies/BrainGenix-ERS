@@ -39,16 +39,15 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     InitializeGLFW();
 
 
-    // Instantiate Renderers
-    SystemUtils_->Logger_->Log("Instantiating Renderers", 5);
-    VisualRenderer_ = std::make_shared<VisualRenderer>(SystemUtils_, Window_, Cursors3D_);
-
     // Setup Shaders
     ShaderLoader_ = std::make_shared<ShaderLoader>(SystemUtils_->Logger_);
     Shader_ = ShaderLoader_->LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag");
-
     Shader_.MakeActive();
     Shader_.SetInt("texture_diffuse1", 0);
+
+    // Instantiate Renderers
+    SystemUtils_->Logger_->Log("Instantiating Renderers", 5);
+    VisualRenderer_ = std::make_shared<VisualRenderer>(SystemUtils_, Window_, Cursors3D_, Shader_);
 
     // Setup GUI
     GuiSystem_ = std::make_shared<GUISystem>(SystemUtils_, Window_, Cursors3D_, ProjectUtils_->SceneManager_, ProjectUtils_, VisualRenderer_);
@@ -58,8 +57,8 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     //IOManager_ = std::make_shared<IOManager>(SystemUtils_->Logger_, Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
 
     // Make Viewport
-    VisualRenderer_->CreateViewport(std::make_shared<ERS_OBJECT_SHADER>(Shader_), "Viewport", Window_);
-    VisualRenderer_->CreateViewport(std::make_shared<ERS_OBJECT_SHADER>(Shader_), "Viewport 2", Window_);
+    VisualRenderer_->CreateViewport("Viewport");
+    VisualRenderer_->CreateViewport("Viewport 2");
     //VisualRenderer_->CreateViewport(&Shader_, "Viewport 2", Window_, &Camera_);
 
     //SceneManager_->AddScene(SLoader.ProcessScene(TestScene2, "Assets/Scene2.yaml", false));
