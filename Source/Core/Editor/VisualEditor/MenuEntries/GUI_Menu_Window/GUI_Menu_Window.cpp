@@ -101,15 +101,17 @@ void GUI_Menu_Window::Draw() {
         if (ImGui::BeginMenu("Viewport")) {
 
             // Viewport Options
+            if (ImGui::MenuItem("Add Viewport")) {
+                VisualRenderer_->CreateViewport();
+            }
+            
             if (ImGui::MenuItem("Remove Viewport")) {
                 if (VisualRenderer_->ViewportNames_.size() > 0) {
                     VisualRenderer_->DeleteViewport(0);
                 }
             }
             
-            if (ImGui::MenuItem("Add Viewport")) {
-                VisualRenderer_->CreateViewport();
-            }
+
 
         ImGui::EndMenu();
         }
