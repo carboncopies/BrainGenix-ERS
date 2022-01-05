@@ -41,7 +41,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
     // Instantiate Renderers
     SystemUtils_->Logger_->Log("Instantiating Renderers", 5);
-    VisualRenderer_ = std::make_shared<VisualRenderer>(SystemUtils_, Window_, Cursors3D_, std::make_shared<ERS_OBJECT_SHADER>(Shader_));
+    VisualRenderer_ = std::make_shared<VisualRenderer>(SystemUtils_, Window_, Cursors3D_, Shader_);
 
     // Setup Shaders
     ShaderLoader_ = std::make_shared<ShaderLoader>(SystemUtils_->Logger_);
