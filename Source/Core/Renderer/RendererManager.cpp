@@ -61,7 +61,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
     // Make Viewport
     VisualRenderer_->CreateViewport("Viewport");
-    VisualRenderer_->CreateViewport("Viewport 2");
+    VisualRenderer_->CreateViewport("Viewport");
     //VisualRenderer_->CreateViewport(&Shader_, "Viewport 2", Window_, &Camera_);
 
     //SceneManager_->AddScene(SLoader.ProcessScene(TestScene2, "Assets/Scene2.yaml", false));
