@@ -288,6 +288,11 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     // Log Creation
     SystemUtils_->Logger_->Log(std::string(std::string("Creating New Viewport '") + ViewportName + std::string("'")).c_str(), 5);
 
+    // Reset Shader
+    Shader_->MakeActive();
+    Shader_->SetInt("texture_diffuse1", 0);
+
+
     // Create Camera
     std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera = std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>();
 
