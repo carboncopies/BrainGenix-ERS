@@ -164,6 +164,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Bind To Framebuffer
+    std::cout<<FramebufferObjects_[Index]<<std::endl;
     glBindFramebuffer(GL_FRAMEBUFFER, FramebufferObjects_[Index]);
 
     // Rendering Commands Here
