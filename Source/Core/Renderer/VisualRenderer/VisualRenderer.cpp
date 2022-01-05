@@ -272,6 +272,17 @@ void VisualRenderer::DeleteViewport(int Index) {
 
 }
 
+
+void VisualRenderer::CreateViewport() {
+
+    // Generate Name
+    std::string Name = std::string("Viewport ") + std::to_string(ViewportNames_.size() + 1);
+
+    // Create Viewport
+    CreateViewport(Name);
+
+}
+
 void VisualRenderer::CreateViewport(std::string ViewportName) {
 
     // Log Creation
