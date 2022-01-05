@@ -32,20 +32,20 @@ ShaderLoader::~ShaderLoader() {
 }
 
 // Load Shader From Memory
-ERS_OBJECT_SHADER ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText) {
+std::shared_ptr<ERS_OBJECT_SHADER> ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText) {
 
     // Log Shader Creation
     Logger_->Log("Creating Shader Object", 5);
 
     // Create Shader
-    ERS_OBJECT_SHADER ShaderStruct;
+    std::shared_ptr<ERS_OBJECT_SHADER> ShaderStruct;
 
-    ShaderStruct.CompileVertexShader(VertexText);
-    ShaderStruct.CompileFragmentShader(FragmentText);
+    ShaderStruct->CompileVertexShader(VertexText);
+    ShaderStruct->CompileFragmentShader(FragmentText);
 
     // Attach Shaders
     Logger_->Log("Linking Shader Program", 5);
-    ShaderStruct.CreateShaderProgram();
+    ShaderStruct->CreateShaderProgram();
     Logger_->Log("Linked Shader Program", 4);
 
     // Return Struct
@@ -54,7 +54,7 @@ ERS_OBJECT_SHADER ShaderLoader::CreateShaderObject(const char* VertexText, const
 }
 
 // Load Shader From Disk
-ERS_OBJECT_SHADER ShaderLoader::LoadShaderFromFile(const char* VertexPath, const char* FragmentPath) {
+std::shared_ptr<ERS_OBJECT_SHADER> ShaderLoader::LoadShaderFromFile(const char* VertexPath, const char* FragmentPath) {
 
     // Load Shaders From Disk Into RAM
     Logger_->Log("Loading Shaders From Disk", 5);
