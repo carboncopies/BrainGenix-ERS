@@ -240,8 +240,8 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
 
     // Update Render Color Buffer Size
-    glBindTexture(GL_TEXTURE_2D, FramebufferColorObjects_[Index]);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    //glBindTexture(GL_TEXTURE_2D, FramebufferColorObjects_[Index]);
+    //glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
 
     // Update RBO Size
     glBindRenderbuffer(GL_RENDERBUFFER, RenderbufferObjects_[Index]);
