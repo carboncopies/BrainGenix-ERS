@@ -61,7 +61,6 @@ ERS_OBJECT_SHADER ShaderLoader::LoadShaderFromFile(const char* VertexPath, const
     std::string VertexText = ReadFile(VertexPath, Logger_);
     std::string FragmentText = ReadFile(FragmentPath, Logger_);
 
-    std::cout<<VertexText<<FragmentText<<std::endl;
     // Return Compiled Shader
     return CreateShaderObject(VertexText.c_str(), FragmentText.c_str());
 
