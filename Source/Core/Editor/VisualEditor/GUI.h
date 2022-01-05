@@ -30,6 +30,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
+#include <VisualRenderer.h>
 
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
@@ -67,6 +68,7 @@ class GUISystem {
         std::shared_ptr<ERS_CLASS_UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Pointer to Cursors3D Instance*/
         std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
+        std::shared_ptr<VisualRenderer> VisualRenderer_; /**<Pointer to visual renderer for viewport modification*/
 
 
     public:
@@ -86,7 +88,13 @@ class GUISystem {
          * 
          * @param Logger 
          */
-        GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
+        GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils,
+        GLFWwindow* Window,
+        std::shared_ptr<Cursors3D> Cursors3D,
+        std::shared_ptr<ERS_CLASS_SceneManager> SceneManager,
+        std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils,
+        std::shared_ptr<VisualRenderer> VisualRenderer
+        );
 
         /**
          * @brief Destroy the Gui System object
