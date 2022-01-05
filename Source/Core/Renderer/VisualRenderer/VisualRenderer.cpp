@@ -235,7 +235,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
 
     // Update Render Color Buffer Size
-    glBindTexture(GL_TEXTURE_2D, FramebufferColorObjects_[Index]);
+    glBindTexture(GL_TEXTURE_2D, FramebufferColorObjects_[Index]-1);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
 
     std::cout<<FramebufferColorObjects_[Index]<<std::endl;
