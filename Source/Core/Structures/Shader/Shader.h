@@ -35,6 +35,14 @@
  */
 struct ERS_OBJECT_SHADER {
 
+    // Constructor
+    ERS_OBJECT_SHADER() {
+    }
+
+    // Destructor
+    ~ERS_OBJECT_SHADER() {
+    }
+
     unsigned int ShaderProgram; /**<OpenGL refernece ID for Shader Program */
 
     unsigned int VertexShader; /**<OpenGL Reference ID for Vertex Shader */
