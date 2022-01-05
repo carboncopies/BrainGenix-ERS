@@ -324,7 +324,7 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     glGenTextures(1, &FramebufferColorObject);
     glBindTexture(GL_TEXTURE_2D, FramebufferColorObject);
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 400, 200, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL); // NOTE: THIS MUST HAPPEN ON RESIZE!
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 800, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL); // NOTE: THIS MUST HAPPEN ON RESIZE!
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     FramebufferColorObjects_.push_back(FramebufferColorObject);
@@ -339,7 +339,7 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     glGenRenderbuffers(1, &RenderbufferObject);
     glBindRenderbuffer(GL_RENDERBUFFER, RenderbufferObject);
 
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 400, 200); // RESIZE THIS WITH THE WINDOW!
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 800, 800); // RESIZE THIS WITH THE WINDOW!
 
     // Attach Renderbuffer to Depth And Stencil Attachment
     SystemUtils_->Logger_->Log("Attaching Render Buffer Object To Depth Stencil", 5);
