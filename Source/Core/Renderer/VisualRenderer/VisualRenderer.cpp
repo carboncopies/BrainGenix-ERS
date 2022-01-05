@@ -271,6 +271,9 @@ void VisualRenderer::DeleteViewport(int Index) {
 
 void VisualRenderer::CreateViewport(std::string ViewportName) {
 
+    // Log Creation
+    SystemUtils_->Logger_->Log("Creating New Viewport", 5);
+
     // Create Camera
     std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera = std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>();
 
