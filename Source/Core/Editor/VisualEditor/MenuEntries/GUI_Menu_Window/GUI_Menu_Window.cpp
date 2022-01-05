@@ -107,7 +107,7 @@ void GUI_Menu_Window::Draw() {
             ImGui::Checkbox("Remove Viewport", &RemoveViewport);
             
             if (AddViewport) {
-                VisualRenderer_->CreateViewport("Viewport");
+                VisualRenderer_->CreateViewport();
             }
 
         ImGui::EndMenu();
