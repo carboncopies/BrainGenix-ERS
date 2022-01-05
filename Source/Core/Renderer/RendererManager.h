@@ -59,7 +59,7 @@ class RendererManager {
         GLFWwindow* Window_; /**<GLFW Window Instance*/
         std::shared_ptr<ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
         std::shared_ptr<FramebufferManager> FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
-        ERS_OBJECT_SHADER Shader_; /**<ERS Shader Object (Main System Shader)*/
+        std::shared_ptr<ERS_OBJECT_SHADER> Shader_; /**<ERS Shader Object (Main System Shader)*/
         std::shared_ptr<GUISystem> GuiSystem_; /**<Instance of GUI System*/
         std::shared_ptr<TextureLoader> TextureLoader_; /**<Pointer to Texture Loader Instance*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
