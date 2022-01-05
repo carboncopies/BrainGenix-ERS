@@ -101,12 +101,13 @@ void GUI_Menu_Window::Draw() {
         if (ImGui::BeginMenu("Viewport")) {
 
             // Viewport Options
-            bool AddViewport = false;
-            bool RemoveViewport = false;
-            ImGui::Checkbox("Add Viewport", &AddViewport);
-            ImGui::Checkbox("Remove Viewport", &RemoveViewport);
+            if (ImGui::MenuItem("Remove Viewport")) {
+                if (VisualRenderer_->ViewportNames_.size() > 0) {
+                    VisualRenderer_->DeleteViewport(0);
+                }
+            }
             
-            if (AddViewport) {
+            if (ImGui::MenuItem("Add Viewport")) {
                 VisualRenderer_->CreateViewport();
             }
 

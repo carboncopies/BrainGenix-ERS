@@ -50,6 +50,8 @@ private:
     std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
     std::shared_ptr<ERS_OBJECT_SHADER> Shader_; /**<Shader Object Ptr*/
 
+public:
+
     std::vector<std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP>> Cameras_; /**<List Of Pointers To Camera Instances*/
     std::vector<std::shared_ptr<ERS_OBJECT_SHADER>> Shaders_; /**<List Of Pointers To Shader Instances*/
     std::vector<std::string> ViewportNames_; /**<List Of Names For Viewports*/
@@ -69,6 +71,8 @@ private:
 
     bool CaptureCursor_ = false; /**<Indicate if cursor should be captured*/
     int CaptureIndex_ = 0; /**<Index where cursor was captured*/
+
+private:
 
     // Internal Functions
     void InitializeOpenGL();
