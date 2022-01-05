@@ -249,7 +249,6 @@ void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
 
 }
 
-// ADD DESTROY VIEWPORT FUNCTION!
 void VisualRenderer::DeleteViewport(int Index) {
 
     // Log Deletion
@@ -269,7 +268,6 @@ void VisualRenderer::DeleteViewport(int Index) {
     ViewportEnabled_.erase(ViewportEnabled_.begin() + Index);
 
 }
-
 
 void VisualRenderer::CreateViewport() {
 
