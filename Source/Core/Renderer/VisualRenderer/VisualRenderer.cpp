@@ -216,7 +216,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
     // Render Framebuffer To Window
     ImGui::GetWindowDrawList()->AddImage(
-        (void*)(intptr_t)FramebufferObjects_[Index],
+        (void*)(intptr_t)FramebufferColorObjects_[Index],
         ImVec2(ImGui::GetCursorScreenPos()),
         ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x,
             ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
