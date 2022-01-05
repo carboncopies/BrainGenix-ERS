@@ -55,7 +55,7 @@ class VisualRenderer {
         std::vector<std::string> ViewportNames_; /**<List Of Names For Viewports*/
         std::vector<std::shared_ptr<InputProcessor>> InputProcessors_; /**<Vector Of InputProcessors*/
         std::vector<bool> WasSelected_; /**<List of true/false for was viewport selected last frame*/
-        std::vector<bool*> ViewportEnabled_; /**<List of bool value pointers indicating if viewport should stay open*/
+        std::vector<std::shared_ptr<bool>> ViewportEnabled_; /**<List of bool value pointers indicating if viewport should stay open*/
 
         std::vector<unsigned int> FramebufferObjects_; /**<Framebuffer Objects For Each Viewport*/
         std::vector<unsigned int> FramebufferColorObjects_; /**<Render Texture For Displaying Color*/

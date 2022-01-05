@@ -117,7 +117,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
 void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager, float DeltaTime) {
 
     // Render To ImGui
-    ImGui::Begin(ViewportNames_[Index].c_str(), ViewportEnabled_[Index]);
+    ImGui::Begin(ViewportNames_[Index].c_str(), ViewportEnabled_[Index].get());
 
     // Get Window Input
     int RenderWidth = ImGui::GetWindowSize().x;
@@ -274,7 +274,7 @@ void VisualRenderer::CreateViewport(std::shared_ptr<ERS_OBJECT_SHADER> Shader, s
     ViewportWidths_.push_back(1);
     ViewportHeights_.push_back(1);
     WasSelected_.push_back(false);
-    ViewportEnabled_.push_back((bool *)true);
+    ViewportEnabled_.push_back(std::make_shared<bool>(true));
 
     // Create IOManager
     SystemUtils_->Logger_->Log("Creating New Input Processor", 4);
