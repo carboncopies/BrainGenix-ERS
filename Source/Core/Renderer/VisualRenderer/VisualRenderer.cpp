@@ -255,7 +255,7 @@ void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
 void VisualRenderer::DeleteViewport(int Index) {
 
     // Log Deletion
-    SystemUtils_->Logger_->Log("Destroying Viewport", 5);
+    SystemUtils_->Logger_->Log(std::string(std::string("Destroying Viewport '") + ViewportNames_[Index] + std::string("'")).c_str(), 5);
 
     // Delete From Vectors
     Shaders_.erase(Shaders_.begin() + Index);
@@ -286,7 +286,7 @@ void VisualRenderer::CreateViewport() {
 void VisualRenderer::CreateViewport(std::string ViewportName) {
 
     // Log Creation
-    SystemUtils_->Logger_->Log("Creating New Viewport", 5);
+    SystemUtils_->Logger_->Log(std::string(std::string("Creating New Viewport '") + ViewportName + std::string("'")).c_str(), 5);
 
     // Create Camera
     std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera = std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>();
