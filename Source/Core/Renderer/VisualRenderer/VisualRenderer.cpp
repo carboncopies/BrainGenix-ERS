@@ -47,11 +47,9 @@ VisualRenderer::~VisualRenderer() {
 
 }
 
-
 void VisualRenderer::SetShader(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
     Shader_ = Shader;
 }
-
 
 void VisualRenderer::InitializeOpenGL() {
 
@@ -116,7 +114,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
     // BIND To Default Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-
+    std::cout<<glGetError()<<std::endl;
 
 }
 
