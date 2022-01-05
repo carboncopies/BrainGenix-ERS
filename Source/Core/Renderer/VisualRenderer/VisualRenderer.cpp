@@ -259,10 +259,16 @@ void VisualRenderer::DeleteViewport(int Index) {
     ViewportHeights_.erase(ViewportHeights_.begin() + Index);
     WasSelected_.erase(WasSelected_.begin() + Index);
     InputProcessors_.erase(InputProcessors_.begin() + Index);
-    FramebufferObjects_.erase(FramebufferObjects_.begin() + Index);
-    FramebufferColorObjects_.erase(FramebufferColorObjects_.begin() + Index);
-    RenderbufferObjects_.erase(RenderbufferObjects_.begin() + Index);
     ViewportEnabled_.erase(ViewportEnabled_.begin() + Index);
+
+    glDeleteFramebuffers(1, &FramebufferObjects_[Index]);
+    FramebufferObjects_.erase(FramebufferObjects_.begin() + Index);
+
+    glDeleteTextures(1, &FramebufferColorObjects_[Index]);
+    FramebufferColorObjects_.erase(FramebufferColorObjects_.begin() + Index);
+
+    glDeleteRenderbuffers(1, &RenderbufferObjects_[Index]);
+    RenderbufferObjects_.erase(RenderbufferObjects_.begin() + Index);
 
 }
 
