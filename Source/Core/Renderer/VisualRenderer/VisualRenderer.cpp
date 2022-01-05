@@ -58,6 +58,18 @@ void VisualRenderer::InitializeOpenGL() {
 
 void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
 
+    // Close Any Viewports Thar Aren't All Open
+    int ViewportsToClose = -1;
+    for (int i = 0; i < ViewportEnabled_.size(); i++) {
+        if (!*ViewportEnabled_[i]) {
+            ViewportsToClose = i;
+        }
+    }
+    if (ViewportsToClose != -1) {
+        DeleteViewport(ViewportsToClose);
+    }
+
+
     // Setup Vars
     glEnable(GL_DEPTH_TEST);
     CaptureCursor_ = false;
@@ -105,7 +117,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
 void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager, float DeltaTime) {
 
     // Render To ImGui
-    ImGui::Begin(ViewportNames_[Index].c_str());
+    ImGui::Begin(ViewportNames_[Index].c_str(), ViewportEnabled_[Index]);
 
     // Get Window Input
     int RenderWidth = ImGui::GetWindowSize().x;
@@ -234,6 +246,21 @@ void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
 }
 
 // ADD DESTROY VIEWPORT FUNCTION!
+void VisualRenderer::DeleteViewport(int Index) {
+
+    // Delete From Vectors
+    Shaders_.erase(Shaders_.begin() + Index);
+    Cameras_.erase(Cameras_.begin() + Index);
+    ViewportNames_.erase(ViewportNames_.begin() + Index);
+    ViewportWidths_.erase(ViewportWidths_.begin() + Index);
+    ViewportHeights_.erase(ViewportHeights_.begin() + Index);
+    WasSelected_.erase(WasSelected_.begin() + Index);
+    InputProcessors_.erase(InputProcessors_.begin() + Index);
+    FramebufferObjects_.erase(FramebufferObjects_.begin() + Index);
+    FramebufferColorObjects_.erase(FramebufferColorObjects_.begin() + Index);
+    RenderbufferObjects_.erase(RenderbufferObjects_.begin() + Index);
+
+}
 
 void VisualRenderer::CreateViewport(std::shared_ptr<ERS_OBJECT_SHADER> Shader, std::string ViewportName, GLFWwindow* Window) {
 
@@ -247,6 +274,7 @@ void VisualRenderer::CreateViewport(std::shared_ptr<ERS_OBJECT_SHADER> Shader, s
     ViewportWidths_.push_back(1);
     ViewportHeights_.push_back(1);
     WasSelected_.push_back(false);
+    ViewportEnabled_.push_back((bool *)true);
 
     // Create IOManager
     SystemUtils_->Logger_->Log("Creating New Input Processor", 4);
