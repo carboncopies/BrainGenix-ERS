@@ -230,11 +230,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     Cursors3D_->EndRenderpass();
 
 
-
-
-
     ImGui::End();
-
 }
 
 void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
