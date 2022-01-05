@@ -97,6 +97,21 @@ void GUI_Menu_Window::Draw() {
         ImGui::EndMenu();
         }
 
+        // Viewport Menu
+        if (ImGui::BeginMenu("Viewport")) {
+
+            // Viewport Options
+            bool AddViewport = false;
+            bool RemoveViewport = false;
+            ImGui::Checkbox("Add Viewport", &AddViewport);
+            ImGui::Checkbox("Remove Viewport", &RemoveViewport);
+            
+            if (AddViewport) {
+                VisualRenderer_->CreateViewport("Viewport");
+            }
+
+        ImGui::EndMenu();
+        }
 
 
     ImGui::EndMenu();
