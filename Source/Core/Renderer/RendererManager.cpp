@@ -170,11 +170,5 @@ void RendererManager::UpdateLoop(float DeltaTime) {
         *SystemUtils_->SystemShouldRun_ = false;
     }
 
-    // Limit Framerate
-
 
 }
-
-
-
-
