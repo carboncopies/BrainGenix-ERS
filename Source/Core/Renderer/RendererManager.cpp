@@ -60,7 +60,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     //IOManager_ = std::make_shared<IOManager>(SystemUtils_->Logger_, Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
 
     // Make Viewport
-    VisualRenderer_->CreateViewport("Viewport");
+    VisualRenderer_->CreateViewport();
 
 }
 
