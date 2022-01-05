@@ -86,9 +86,13 @@ public:
 
 
     void CreateViewport(std::string ViewportName);
+    void CreateViewport();
+
     void UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
     void UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, float DeltaTime);
+
     void DeleteViewport(int Index);
+    
     void SetShader(std::shared_ptr<ERS_OBJECT_SHADER> Shader);
         
 
