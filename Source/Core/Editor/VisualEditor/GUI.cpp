@@ -13,7 +13,7 @@
 
 
 // GUISystem Constructor
-GUISystem::GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<VisualRenderer> VisualRenderer) {
+GUISystem::GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<VisualRenderer> VisualRendererInstance) {
 
     // Create Local Pointer
     SystemUtils_ = SystemUtils;
@@ -21,7 +21,7 @@ GUISystem::GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwi
     Cursors3D_ = Cursors3D;
     SceneManager_ = SceneManager;
     ProjectUtils_ = ProjectUtils;
-    VisualRenderer_ = VisualRenderer;
+    VisualRenderer_ = VisualRendererInstance;
 
     // Initialize ImGui
     SystemUtils_->Logger_->Log("Initializing DearImGui GUI Library", 5);
@@ -53,7 +53,7 @@ GUISystem::GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwi
     SystemUtils_->Logger_->Log("Initializing Editor Menu", 5);
     Menu_File_ = std::make_unique<GUI_Menu_File>(SystemUtils_, SceneManager_, ProjectUtils_);
     Menu_View_ = std::make_unique<GUI_Menu_View>(SystemUtils_, ThemeManager_, FontManager_);
-    Menu_Window_ = std::make_unique<GUI_Menu_Window>(SystemUtils_, Cursors3D_, SceneManager_);
+    Menu_Window_ = std::make_unique<GUI_Menu_Window>(SystemUtils_, Cursors3D_, SceneManager_, VisualRenderer_);
     Menu_Debug_ = std::make_unique<GUI_Menu_Debug>(SystemUtils_);
 
 
