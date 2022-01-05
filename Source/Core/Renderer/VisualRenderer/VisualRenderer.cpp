@@ -13,14 +13,13 @@
 
 
 // Visual Rendere constructor
-VisualRenderer::VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
+VisualRenderer::VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D) {
 
     // Create Pointers
     SystemUtils->Logger_->Log("Populating Renderer Member Pointers", 5);
     SystemUtils_ = SystemUtils;
     Window_ = Window;
     Cursors3D_ = Cursors3D;
-    Shader_ = Shader;
 
     // Initialize OpenGL
     SystemUtils_->Logger_->Log("Initializing OpenGL", 5);
@@ -47,6 +46,12 @@ VisualRenderer::~VisualRenderer() {
     glfwTerminate();
 
 }
+
+
+void VisualRenderer::SetShader(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
+    Shader_ = Shader;
+}
+
 
 void VisualRenderer::InitializeOpenGL() {
 

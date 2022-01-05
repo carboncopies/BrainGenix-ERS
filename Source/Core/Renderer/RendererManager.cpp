@@ -41,13 +41,16 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
     // Instantiate Renderers
     SystemUtils_->Logger_->Log("Instantiating Renderers", 5);
-    VisualRenderer_ = std::make_shared<VisualRenderer>(SystemUtils_, Window_, Cursors3D_, Shader_);
+    VisualRenderer_ = std::make_shared<VisualRenderer>(SystemUtils_, Window_, Cursors3D_);
 
     // Setup Shaders
     ShaderLoader_ = std::make_shared<ShaderLoader>(SystemUtils_->Logger_);
     Shader_ = ShaderLoader_->LoadShaderFromFile("Shaders/Main.vert", "Shaders/Main.frag");
     Shader_->MakeActive();
     Shader_->SetInt("texture_diffuse1", 0);
+
+    // Set Shader
+    VisualRenderer_->SetShader(Shader_);
 
     // Setup GUI
     GuiSystem_ = std::make_shared<GUISystem>(SystemUtils_, Window_, Cursors3D_, ProjectUtils_->SceneManager_, ProjectUtils_, VisualRenderer_);

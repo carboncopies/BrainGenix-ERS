@@ -79,7 +79,7 @@ private:
 public:
 
     // Constructor
-    VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_OBJECT_SHADER> Shader);
+    VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D);
 
     // Destructor
     ~VisualRenderer();
@@ -89,6 +89,7 @@ public:
     void UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
     void UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, float DeltaTime);
     void DeleteViewport(int Index);
+    void SetShader(std::shared_ptr<ERS_OBJECT_SHADER> Shader);
         
 
 };
