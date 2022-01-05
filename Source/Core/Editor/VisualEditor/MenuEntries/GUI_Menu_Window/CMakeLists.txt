@@ -27,6 +27,7 @@ target_link_libraries(Menu_Window
 # Link Internal Libs
 target_link_libraries(Menu_Window
     ERS_STRUCT_SystemUtils
+    VisualRenderer
 
     Widgets
     Window_SceneTree
