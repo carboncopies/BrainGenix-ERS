@@ -35,7 +35,6 @@ target_link_libraries(VisualRenderer
     Scene
     ERS_SceneManager
 
-    VisualEditor
 
     Shader
     ShaderLoader

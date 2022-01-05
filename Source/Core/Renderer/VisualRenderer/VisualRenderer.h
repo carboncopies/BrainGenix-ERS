@@ -34,7 +34,6 @@
 #include <ERS_SceneLoader.h>
 #include <ShaderLoader.h>
 #include <InputProcessor.h>
-#include <GUI.h>
 #include <Framebuffer.h>
 #include <ERS_Editor_3DCursor.h>
 
