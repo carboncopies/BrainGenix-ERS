@@ -254,6 +254,9 @@ void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
 // ADD DESTROY VIEWPORT FUNCTION!
 void VisualRenderer::DeleteViewport(int Index) {
 
+    // Log Deletion
+    SystemUtils_->Logger_->Log("Destroying Viewport", 5);
+
     // Delete From Vectors
     Shaders_.erase(Shaders_.begin() + Index);
     Cameras_.erase(Cameras_.begin() + Index);
