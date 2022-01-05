@@ -27,7 +27,7 @@ FramebufferManager::FramebufferManager(std::shared_ptr<LoggerClass> Logger, std:
 
     // Load Screen Shaders
     Logger_->Log("Loading Screen Shaders", 5);
-    ScreenShader_ = ShaderLoader_->LoadShaderFromFile("Shaders/ScreenShader.vert", "Shaders/ScreenShader.frag");
+    ScreenShader_ = *ShaderLoader_->LoadShaderFromFile("Shaders/ScreenShader.vert", "Shaders/ScreenShader.frag");
     
     // Make Screen Shaders Active
     Logger_->Log("Making Screen Shaders Active", 3);
