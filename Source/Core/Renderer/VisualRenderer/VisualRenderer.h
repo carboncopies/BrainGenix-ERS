@@ -49,6 +49,7 @@ class VisualRenderer {
         // Member Variables
         GLFWwindow *Window_; /**<GLFW Window Instance For Window Input To Viewports*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
+        std::shared_ptr<ERS_OBJECT_SHADER> Shader_; /**<Shader Object Ptr*/
 
         std::vector<std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP>> Cameras_; /**<List Of Pointers To Camera Instances*/
         std::vector<std::shared_ptr<ERS_OBJECT_SHADER>> Shaders_; /**<List Of Pointers To Shader Instances*/
@@ -79,13 +80,13 @@ class VisualRenderer {
     public:
 
         // Constructor
-        VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D);
+        VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_OBJECT_SHADER> Shader);
 
         // Destructor
         ~VisualRenderer();
 
 
-        void CreateViewport(std::shared_ptr<ERS_OBJECT_SHADER> Shader, std::string ViewportName, GLFWwindow* Window);
+        void CreateViewport(std::string ViewportName);
         void UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
         void UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, float DeltaTime);
         void DeleteViewport(int Index);

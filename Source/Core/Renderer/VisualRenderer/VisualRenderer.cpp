@@ -13,13 +13,14 @@
 
 
 // Visual Rendere constructor
-VisualRenderer::VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D) {
+VisualRenderer::VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
 
     // Create Pointers
     SystemUtils->Logger_->Log("Populating Renderer Member Pointers", 5);
     SystemUtils_ = SystemUtils;
     Window_ = Window;
     Cursors3D_ = Cursors3D;
+    Shader_ = Shader;
 
     // Initialize OpenGL
     SystemUtils_->Logger_->Log("Initializing OpenGL", 5);
@@ -263,13 +264,13 @@ void VisualRenderer::DeleteViewport(int Index) {
 
 }
 
-void VisualRenderer::CreateViewport(std::shared_ptr<ERS_OBJECT_SHADER> Shader, std::string ViewportName, GLFWwindow* Window) {
+void VisualRenderer::CreateViewport(std::string ViewportName) {
 
     // Create Camera
     std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera = std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>();
 
     // Append To Vectors
-    Shaders_.push_back(Shader);
+    Shaders_.push_back(Shader_);
     Cameras_.push_back(Camera);
     ViewportNames_.push_back(ViewportName);
     ViewportWidths_.push_back(1);
@@ -279,7 +280,7 @@ void VisualRenderer::CreateViewport(std::shared_ptr<ERS_OBJECT_SHADER> Shader, s
 
     // Create IOManager
     SystemUtils_->Logger_->Log("Creating New Input Processor", 4);
-    std::shared_ptr<InputProcessor> InProc = std::make_shared<InputProcessor>(Camera, Window);
+    std::shared_ptr<InputProcessor> InProc = std::make_shared<InputProcessor>(Camera, Window_);
     InputProcessors_.push_back(InProc);
 
     // Create Framebuffer
