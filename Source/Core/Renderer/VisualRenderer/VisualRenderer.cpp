@@ -311,6 +311,7 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     SystemUtils_->Logger_->Log("Creating Framebuffer Object", 4);
     glGenFramebuffers(1, &FramebufferObject);
 
+    std::cout<<FramebufferObject<<std::endl;
     // Bind To Framebuffer
     SystemUtils_->Logger_->Log("Binding To Framebuffer Object", 4);
     glBindFramebuffer(GL_FRAMEBUFFER, FramebufferObject);
