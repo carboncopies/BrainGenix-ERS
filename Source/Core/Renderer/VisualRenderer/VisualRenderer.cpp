@@ -259,6 +259,7 @@ void VisualRenderer::DeleteViewport(int Index) {
     FramebufferObjects_.erase(FramebufferObjects_.begin() + Index);
     FramebufferColorObjects_.erase(FramebufferColorObjects_.begin() + Index);
     RenderbufferObjects_.erase(RenderbufferObjects_.begin() + Index);
+    ViewportEnabled_.erase(ViewportEnabled_.begin() + Index);
 
 }
 
