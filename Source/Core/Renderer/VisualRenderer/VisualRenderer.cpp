@@ -322,6 +322,7 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     unsigned int FramebufferColorObject;
     SystemUtils_->Logger_->Log("Creating Render Texture", 4);
     glGenTextures(1, &FramebufferColorObject);
+    std::cout<<FramebufferColorObject;
     glBindTexture(GL_TEXTURE_2D, FramebufferColorObject);
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 800, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL); // NOTE: THIS MUST HAPPEN ON RESIZE!
