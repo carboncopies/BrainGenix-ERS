@@ -2,6 +2,8 @@
 echo "Entering Root Repo Directory"
 cd ..
 
+
+# Delete Binary If Exists 
 echo "Checking If Binary Exists"
 if [ -f "Binaries/BrainGenix-ERS" ]
 then
@@ -12,6 +14,7 @@ else
 fi
 
 
+# Check If Configuration Needs To Be Run
 echo "Checking If Build Directory Already Exists"
 if [ -d "Build/CMakeFiles" ]
 then 
@@ -31,13 +34,20 @@ else
     cmake ..
 fi
 
+
 # Build Files
 echo "Building, Please Wait. This may take some time"
 cmake --build . --target BrainGenix-ERS -j
 
 
 # Run Program
-echo "Running Program"
 cd ../Binaries
-./BrainGenix-ERS
+echo "Checking If Binary Exists"
+if [ -f "BrainGenix-ERS" ]
+then
+    echo "Running Program"
+    ./BrainGenix-ERS
+else
+    echo "Build Failed! Exiting"
+fi
 cd ..
