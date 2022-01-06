@@ -3,7 +3,7 @@ echo "Entering Root Repo Directory"
 cd ..
 
 echo "Checking If Binary Exists"
-if [ -f "Binaries/BrainGenix-ERS"]
+if [ -f "Binaries/BrainGenix-ERS" ]
 then
     echo "Removing Last Executable"
     rm Binaries/BrainGenix-ERS
