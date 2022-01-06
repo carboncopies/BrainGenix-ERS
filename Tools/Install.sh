@@ -2,7 +2,7 @@
 sudo apt install git wget cmake ninja-build g++ -y
 
 # Backward Deps
-sudo apt install binutils-dev binutils-source -y
+sudo apt install binutils-dev -y
 
 # Install GLFW Deps
 sudo apt install libx11-dev libxrandr-dev ibxinerama-dev libxcursor-dev libxi-dev -y
