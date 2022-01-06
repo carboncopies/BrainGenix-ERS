@@ -10,4 +10,5 @@ function(disable_target_warnings target)
         $<$<CXX_COMPILER_ID:MSVC>:
         /w>
         )
+    ERSBuildLogger(${Green} "Disabled Warnings For Target ${target}")
 endfunction()
