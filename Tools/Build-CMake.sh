@@ -3,7 +3,7 @@ echo "Entering Root Repo Directory"
 cd ..
 
 echo "Checking If Build Directory Already Exists"
-if [ -d "Build"]
+if [ -d "Build" ]
 then 
 
     # Create Build Dir
