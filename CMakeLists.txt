@@ -19,6 +19,9 @@ include(${CMAKE_UTIL_DIR}/SetBinaryDir.cmake)
 include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 
 
+# Include Package Addition Scripts
+include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/YAML-CPP.cmake)
 
 
 # Link Glad Library (Not Header Only)
