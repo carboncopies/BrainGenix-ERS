@@ -1,53 +1,53 @@
 # Get Into Root Repo Dir
-echo "Entering Root Repo Directory"
+echo "[ERS BUILD HELPER] - Entering Root Repo Directory"
 cd ..
 
 
 # Delete Binary If Exists 
-echo "Checking If Binary Exists"
+echo "[ERS BUILD HELPER] - Checking If Binary Exists"
 if [ -f "Binaries/BrainGenix-ERS" ]
 then
-    echo "Removing Last Executable"
+    echo "[ERS BUILD HELPER] - Removing Last Executable"
     rm Binaries/BrainGenix-ERS
 else
-    echo "No Binaries To Clean"
+    echo "[ERS BUILD HELPER] - No Binaries To Clean"
 fi
 
 
 # Check If Configuration Needs To Be Run
-echo "Checking If Build Directory Already Exists"
+echo "[ERS BUILD HELPER] - Checking If Build Directory Already Exists"
 if [ -d "Build/CMakeFiles" ]
 then 
-    echo "Build Directory Already Exists, Skipping Generation"
+    echo "[ERS BUILD HELPER] - Build Directory Already Exists, Skipping Generation"
     cd Build
 else 
     # Create Build Dir
-    echo "Creating Build Directory"
+    echo "[ERS BUILD HELPER] - Creating Build Directory"
     mkdir -p Build
 
     # Enter Build Dir
-    echo "Entering Build Directory"
+    echo "[ERS BUILD HELPER] - Entering Build Directory"
     cd Build
 
     # Make Only BrainGenix-ERS
-    echo "Configuring Build Files"
+    echo "[ERS BUILD HELPER] - Configuring Build Files"
     cmake ..
 fi
 
 
 # Build Files
-echo "Building, Please Wait. This may take some time"
+echo "[ERS BUILD HELPER] - Building, Please Wait. This may take some time"
 cmake --build . --target BrainGenix-ERS -j
 
 
 # Run Program
 cd ../Binaries
-echo "Checking If Binary Exists"
+echo "[ERS BUILD HELPER] - Checking If Binary Exists"
 if [ -f "BrainGenix-ERS" ]
 then
-    echo "Running Program"
+    echo "[ERS BUILD HELPER] - Running Program"
     ./BrainGenix-ERS
 else
-    echo "Build Failed! Exiting"
+    echo "[ERS BUILD HELPER] - Build Failed! Exiting"
 fi
 cd ..
