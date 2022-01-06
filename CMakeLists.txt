@@ -78,7 +78,7 @@ disable_target_warnings(TracyClient)
 include (${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
 
 # Add Monado OpenXR Runtime
-include(${CMAKE_BUILD_UTILS_DIR}/Monado.cmake)
+#include(${CMAKE_BUILD_UTILS_DIR}/Monado.cmake)
 
 
 
