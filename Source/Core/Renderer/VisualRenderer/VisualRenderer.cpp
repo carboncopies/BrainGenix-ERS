@@ -238,7 +238,6 @@ void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
     glBindTexture(GL_TEXTURE_2D, FramebufferColorObjects_[Index]);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
 
-    std::cout<<FramebufferColorObjects_[Index]<<std::endl;
 
     // Update RBO Size
     glBindRenderbuffer(GL_RENDERBUFFER, RenderbufferObjects_[Index]);
