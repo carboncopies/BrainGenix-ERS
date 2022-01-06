@@ -4,6 +4,4 @@
 
 ## GLSLang tools needs to be here! (glslang-validator?)
 
-# Add Eigen Library
-add_subdirectory(${LIB_DIR}/eigen)
-disable_target_warnings(eigen)
+## Ideally, Eigen would be built in the project too

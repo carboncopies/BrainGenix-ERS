@@ -29,9 +29,7 @@ endif()
 # Redundant mention of version is required because module defaults to looking for 2.91-compatible,
 # which the config file for a 3.x says it's not compatible with.
 
-## MODIFIED, THESE LIBS ARE BUILT IN THIS PROJECT
-#find_package(Eigen3 3 REQUIRED)
-target_link_libraries(eigen XRT)
+find_package(Eigen3 3 REQUIRED)
 find_package(Vulkan)
 find_package(EGL)
 find_package(HIDAPI)
