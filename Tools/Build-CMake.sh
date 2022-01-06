@@ -23,8 +23,11 @@ fi
 
 # Build Files
 echo "Building, Please Wait. This may take some time"
-$NumCPUCores = nproc --all
+echo "Detecting Number Of CPU Cores..."
+NumCPUCores= nproc --all
+echo "Detected $NumCPUCores Cores, Building"
 cmake --build . --target BrainGenix-ERS -j $NumCPUCores
+
 
 # Run Program
 echo "Running Program"
