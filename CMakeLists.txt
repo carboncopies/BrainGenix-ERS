@@ -109,6 +109,8 @@ endif()
 if (WIN32)
   message("VR Support Disabled On Windows, Use Linux. The Monado Runtime Doesn't Support Windows")
 else()
+  include(CMake/Build-Monado.cmake)
+
   message("Building Monado OpenXR Runtime")
   add_subdirectory(${LIB_DIR}/monado)
 endif()
