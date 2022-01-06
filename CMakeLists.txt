@@ -19,8 +19,6 @@ include(${CMAKE_UTIL_DIR}/SetBinaryDir.cmake)
 include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 
 
-
-
 # Add Threading Library
 find_package(Threads REQUIRED)
 
