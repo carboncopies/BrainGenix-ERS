@@ -106,7 +106,7 @@ endif()
 
 
 # Add Monado OpenXR Runtime
-include(CMake/Build-Monado.cmake)
+include(CMake/BuildMonado.cmake)
 
 
 
