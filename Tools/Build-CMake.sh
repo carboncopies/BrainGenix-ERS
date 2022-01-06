@@ -1,19 +1,28 @@
-# Exit Tools Dir
-echo "Exiting Tools Dir"
+# Get Into Root Repo Dir
+echo "Entering Root Repo Directory"
 cd ..
 
-# Create Build Dir
-echo "Creating Build Directory"
-mkdir -p Build
+echo "Checking If Build Directory Already Exists"
+if [ -d "Build"]
+then 
 
-# Enter Build Dir
-echo "Entering Build Directory"
-cd Build
+    # Create Build Dir
+    echo "Creating Build Directory"
+    mkdir -p Build
 
-# Make Only BrainGenix-ERS
-echo "Running Cmake"
-#cmake -GNinja ..
-cmake ..
+    # Enter Build Dir
+    echo "Entering Build Directory"
+    cd Build
+
+    # Make Only BrainGenix-ERS
+    echo "Configuring Build Files"
+    cmake ..
+else 
+    echo "Build Directory Already Exists, Skipping Generation"
+fi
+
+# Build Files
+echo "Building, Please Wait. This may take some time"
 $NumCPUCores = nproc --all
 cmake --build . --target BrainGenix-ERS -j $NumCPUCores
 
