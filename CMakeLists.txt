@@ -10,6 +10,9 @@ project(
 set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 set(BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Binaries")
+set(CMAKE_UTIL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Utils")
+set(CMAKE_BUILD_UTIL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/BuildUtils")
+
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR})
@@ -24,6 +27,10 @@ endforeach( OUTPUTCONFIG CMAKE_CONFIGURATION_TYPES )
 
 
 set(CMAKE_INSTALL_PREFIX ${BIN_DIR})
+
+# Include Util CMake Scripts
+include(${CMAKE_UTIL_DIR}/ColorizeMessage.cmake)
+
 
 function(disable_target_warnings target)
   target_compile_options(${target} PRIVATE
