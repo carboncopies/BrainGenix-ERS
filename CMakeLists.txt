@@ -19,12 +19,7 @@ include(${CMAKE_UTIL_DIR}/SetBinaryDir.cmake)
 include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 
 
-# Add Threading Library
-find_package(Threads REQUIRED)
 
-# Add YAML-CPP Library (Not Header Only)
-add_subdirectory("${LIB_DIR}/yaml-cpp")
-disable_target_warnings(yaml-cpp)
 
 # Link Glad Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/glad)
