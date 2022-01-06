@@ -1,7 +1,5 @@
-# Install Packages
-sudo apt install libx11-dev -y
-sudo apt install libxrandr-dev -y
-sudo apt install libxinerama-dev -y
-sudo apt install libxcursor-dev -y
-sudo apt install libxi-dev -y
-sudo apt install binutils-dev -y
+# Install Compiler Tools
+sudo apt install binutils-dev git wget cmake ninja-build g++ -y
+
+# Install GLFW Deps
+libx11-dev libxrandr-dev ibxinerama-dev libxcursor-dev libxi-dev -y
