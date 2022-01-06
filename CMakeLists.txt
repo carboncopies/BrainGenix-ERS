@@ -107,7 +107,7 @@ disable_target_warnings(TracyClient)
 if (WIN32)
   ERSBuildLogger(${Yellow} "Database Support Disabled On Windows Due To SSL Errors, Please Use Linux/BSD Instead")
 else()
-  message(${Green} "Building MySQL Connector Library")
+  ERSBuildLogger(${Green} "Building MySQL Connector Library")
   add_subdirectory(${LIB_DIR}/mysql-connector-linux)
 endif()
 
