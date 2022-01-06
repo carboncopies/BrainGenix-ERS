@@ -37,7 +37,7 @@ fi
 
 # Build Files
 echo "[ERS BUILD HELPER] - Building, Please Wait. This may take some time"
-cmake --build . --target Eigen3 BrainGenix-ERS-j
+cmake --build . --target BrainGenix-ERS -j
 
 
 # Run Program
