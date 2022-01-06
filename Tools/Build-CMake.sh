@@ -14,7 +14,8 @@ cd Build
 echo "Running Cmake"
 #cmake -GNinja ..
 cmake ..
-cmake --build . --target BrainGenix-ERS
+$NumCPUCores = nproc --all
+cmake --build . --target BrainGenix-ERS -j $NumCPUCores
 
 # Run Program
 echo "Running Program"
