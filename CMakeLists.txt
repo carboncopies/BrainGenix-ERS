@@ -22,11 +22,8 @@ include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 # Include Package Addition Scripts
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/YAML-CPP.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
 
-
-# Link Glad Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/glad)
-disable_target_warnings(glad)
 
 # Link Dirent Library (Header Only)
 add_subdirectory(${LIB_DIR}/dirent)

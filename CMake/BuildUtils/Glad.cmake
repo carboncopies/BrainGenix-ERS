@@ -2,7 +2,7 @@
 # Builds Library For ERS #
 ##########################
 
-ERSBuildLogger(${Green} "Configuring YAML-CPP Library")
-add_subdirectory("${LIB_DIR}/yaml-cpp")
-disable_target_warnings(yaml-cpp)
-ERSBuildLogger(${BoldGreen} "Finished Configuring YAML-CPP Library")
+ERSBuildLogger(${Green} "Configuring Glad Library")
+add_subdirectory(${LIB_DIR}/glad)
+disable_target_warnings(glad)
+ERSBuildLogger(${BoldGreen} "Finished Configuring Glad Library")
