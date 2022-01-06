@@ -9,8 +9,9 @@
 
 
 if (WIN32)
-  message("VR Support Disabled On Windows, Use Linux. The Monado Runtime Doesn't Support Windows")
+    ERSBuildLogger(${Yellow} "VR Support Disabled On Windows, Use Linux. The Monado Runtime Doesn't Support Windows")
 else()
-  message("[ERS BUILD SYSTEM] Building Monado OpenXR Runtime")
-  add_subdirectory(${LIB_DIR}/monado)
+    ERSBuildLogger(${Green} "Configuring Monado OpenXR Runtime")
+    add_subdirectory(${LIB_DIR}/monado)
+    ERSBuildLogger(${Green} "Finished Configuring Monado OpenXR Runtime")
 endif()
