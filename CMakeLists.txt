@@ -104,7 +104,7 @@ include_directories(${LIB_DIR}/tracy)
 disable_target_warnings(TracyClient)
 
 # Add MySQL Connector Library (Not Header Only)
-include ${CMAKE_BUILD_UTILS_DIR/MySQLConnector.cmake)
+include (${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
 
 # Add Monado OpenXR Runtime
 include(${CMAKE_BUILD_UTILS_DIR}/Monado.cmake)
