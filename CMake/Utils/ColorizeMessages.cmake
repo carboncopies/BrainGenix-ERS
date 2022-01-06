@@ -42,7 +42,7 @@ else ()
 endif()
 
 function(ERSBuildLogger Color Message)
-    message("${Color}${Message}${ColourReset}")
+    message("${Color}[ERS Build System] ${Message}${ColourReset}")
 endfunction()
 
 function(message)
