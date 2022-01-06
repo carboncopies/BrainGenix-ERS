@@ -2,6 +2,15 @@
 echo "Entering Root Repo Directory"
 cd ..
 
+echo "Checking If Binary Exists"
+if [ -f "Binaries/BrainGenix-ERS"]
+then
+    echo "Removing Last Executable"
+    rm Binaries/BrainGenix-ERS
+else
+    echo "No Binaries To Clean"
+fi
+
 
 echo "Checking If Build Directory Already Exists"
 if [ -d "Build/CMakeFiles" ]
