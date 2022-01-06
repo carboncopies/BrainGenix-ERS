@@ -12,7 +12,8 @@ cd Build
 
 # Make Only BrainGenix-ERS
 echo "Running Cmake"
-cmake -GNinja ..
+#cmake -GNinja ..
+cmake ..
 cmake --build . --target BrainGenix-ERS
 
 # Run Program
