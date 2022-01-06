@@ -9,3 +9,6 @@ sudo apt install libx11-dev libxrandr-dev ibxinerama-dev libxcursor-dev libxi-de
 
 # Install MySQL Connector Deps
 sudo apt install libssl-dev -y
+
+# Install Monado Deps
+sudo apt install glslang-dev -y
