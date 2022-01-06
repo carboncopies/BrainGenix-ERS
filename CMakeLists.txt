@@ -25,8 +25,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/YAML-CPP.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
 
 
-# Link Dirent Library (Header Only)
-add_subdirectory(${LIB_DIR}/dirent)
+
 
 # Add GLM Library (Header Only)
 add_subdirectory(${LIB_DIR}/glm)
