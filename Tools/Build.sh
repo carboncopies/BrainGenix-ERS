@@ -4,7 +4,7 @@ cd ..
 
 
 echo "Checking If Build Directory Already Exists"
-if [ -d "Build" ]
+if [ -d "Build/CMakeFiles" ]
 then 
     echo "Build Directory Already Exists, Skipping Generation"
     cd Build
