@@ -5,7 +5,8 @@ cd ..
 echo "Checking If Build Directory Already Exists"
 if [ -d "Build" ]
 then 
-
+    echo "Build Directory Already Exists, Skipping Generation"
+else 
     # Create Build Dir
     echo "Creating Build Directory"
     mkdir -p Build
@@ -17,8 +18,6 @@ then
     # Make Only BrainGenix-ERS
     echo "Configuring Build Files"
     cmake ..
-else 
-    echo "Build Directory Already Exists, Skipping Generation"
 fi
 
 # Build Files
