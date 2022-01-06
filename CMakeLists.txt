@@ -16,13 +16,7 @@ set(CMAKE_BUILD_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/BuildUtils")
 # Include Util CMake Scripts
 include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
 include(${CMAKE_UTIL_DIR}/SetBinaryDir.cmake)
-
-
-
-
-
-
-
+include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 
 
 # Add Threading Library
