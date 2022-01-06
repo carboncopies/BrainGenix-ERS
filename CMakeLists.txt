@@ -11,7 +11,7 @@ set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 set(BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Binaries")
 set(CMAKE_UTIL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Utils")
-set(CMAKE_BUILD_UTIL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/BuildUtils")
+set(CMAKE_BUILD_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/BuildUtils")
 
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
@@ -113,7 +113,7 @@ endif()
 
 
 # Add Monado OpenXR Runtime
-include(CMake/BuildMonado.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/BuildMonado.cmake)
 
 
 

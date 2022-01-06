@@ -41,6 +41,9 @@ else ()
     set(BoldWhite   "")
 endif()
 
+function(ERSBuildLogger Color Message)
+    message("${Color}${Message}${ColourReset}")
+endfunction()
 
 function(message)
     list(GET ARGV 0 MessageType)
