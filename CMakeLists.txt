@@ -29,7 +29,7 @@ endforeach( OUTPUTCONFIG CMAKE_CONFIGURATION_TYPES )
 set(CMAKE_INSTALL_PREFIX ${BIN_DIR})
 
 # Include Util CMake Scripts
-include(${CMAKE_UTIL_DIR}/ColorizeMessage.cmake)
+include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
 
 
 function(disable_target_warnings target)
