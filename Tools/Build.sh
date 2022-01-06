@@ -2,10 +2,12 @@
 echo "Entering Root Repo Directory"
 cd ..
 
+
 echo "Checking If Build Directory Already Exists"
 if [ -d "Build" ]
 then 
     echo "Build Directory Already Exists, Skipping Generation"
+    cd Build
 else 
     # Create Build Dir
     echo "Creating Build Directory"
