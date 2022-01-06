@@ -104,16 +104,11 @@ include_directories(${LIB_DIR}/tracy)
 disable_target_warnings(TracyClient)
 
 # Add MySQL Connector Library (Not Header Only)
-if (WIN32)
-  ERSBuildLogger(${Yellow} "Database Support Disabled On Windows Due To SSL Errors, Please Use Linux/BSD Instead")
-else()
-  ERSBuildLogger(${Green} "Building MySQL Connector Library")
-  add_subdirectory(${LIB_DIR}/mysql-connector-linux)
-endif()
+
 
 
 # Add Monado OpenXR Runtime
-include(${CMAKE_BUILD_UTILS_DIR}/BuildMonado.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/Monado.cmake)
 
 
 
