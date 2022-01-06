@@ -1,0 +1,48 @@
+// Copyright 2020, Collabora, Ltd.
+// SPDX-License-Identifier: BSL-1.0
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdkVersion project.sharedTargetSdk
+    buildToolsVersion '30.0.2'
+
+    defaultConfig {
+        minSdkVersion 24
+        targetSdkVersion project.sharedTargetSdk
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            // Gradle plugin produces proguard-android-optimize.txt from @Keep annotations
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        fatal 'StopShip'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        exclude("META-INF/*.kotlin_module")
+    }
+}
+
+dependencies {
+    implementation "androidx.annotation:annotation:$androidxAnnotationVersion"
+    implementation "androidx.core:core-ktx:$androidxCoreVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+    // for Hilt dependency injection
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    // Only a Java file has annotations right now, so we don't yet need kapt
+    annotationProcessor "com.google.dagger:hilt-compiler:$hiltVersion"
+}

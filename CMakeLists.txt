@@ -98,10 +98,22 @@ disable_target_warnings(TracyClient)
 
 # Add MySQL Connector Library (Not Header Only)
 if (WIN32)
-    message("Database Support Disabled On Windows Due To SSL Errors, Please Use Linux/BSD Instead")
+  message("Database Support Disabled On Windows Due To SSL Errors, Please Use Linux/BSD Instead")
 else()
+  message("Building MySQL Connector Library")
   add_subdirectory(${LIB_DIR}/mysql-connector-linux)
 endif()
+
+
+# Add Monado OpenXR Runtime
+if (WIN32)
+  message("VR Support Disabled On Windows, Use Linux. The Monado Runtime Doesn't Support Windows")
+else()
+  message("Building Monado OpenXR Runtime")
+  add_subdirectory(${LIB_DIR}/monado)
+endif()
+
+
 
 
 # Add Main.cpp

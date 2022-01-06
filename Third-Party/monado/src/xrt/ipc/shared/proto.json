@@ -1,0 +1,219 @@
+{
+	"$schema": "./proto.schema.json",
+
+	"instance_get_shm_fd": {
+		"out_handles": {"type": "xrt_shmem_handle_t"}
+	},
+
+	"system_get_client_info": {
+		"in": [
+			{"name": "id", "type": "uint32_t"}
+		],
+		"out": [
+			{"name": "desc", "type": "struct ipc_app_state"}
+		]
+	},
+
+	"system_set_client_info": {
+		"in": [
+			{"name": "desc", "type": "struct ipc_app_state"}
+		]
+	},
+
+	"system_get_clients": {
+		"out": [
+			{"name": "clients", "type": "struct ipc_client_list"}
+		]
+	},
+
+	"system_set_primary_client": {
+		"in": [
+			{"name": "id", "type": "uint32_t"}
+		]
+	},
+
+	"system_set_focused_client": {
+		"in": [
+			{"name": "id", "type": "uint32_t"}
+		]
+	},
+
+	"system_toggle_io_client": {
+		"in": [
+			{"name": "id", "type": "uint32_t"}
+		]
+	},
+
+	"system_toggle_io_device": {
+		"in": [
+			{"name": "id", "type": "uint32_t"}
+		]
+	},
+
+	"system_compositor_get_info": {
+		"out": [
+			{"name": "info", "type": "struct xrt_system_compositor_info"}
+		]
+	},
+
+	"session_create": {
+		"in": [
+			{"name": "overlay_info", "type": "const struct xrt_session_info"}
+		]
+	},
+
+	"session_begin": {},
+
+	"session_end": {},
+
+	"compositor_get_info": {
+		"out": [
+			{"name": "info", "type": "struct xrt_compositor_info"}
+		]
+	},
+
+	"compositor_wait_frame": {
+		"out": [
+			{"name": "frame_id", "type": "int64_t"},
+			{"name": "predicted_display_time", "type": "uint64_t"},
+			{"name": "wake_up_time", "type": "uint64_t"},
+			{"name": "predicted_display_period", "type": "uint64_t"},
+			{"name": "min_display_period", "type": "uint64_t"}
+		]
+	},
+
+	"compositor_wait_woke": {
+		"in": [
+			{"name": "frame_id", "type": "int64_t"}
+		]
+	},
+
+	"compositor_begin_frame": {
+		"in": [
+			{"name": "frame_id", "type": "int64_t"}
+		]
+	},
+
+	"compositor_discard_frame": {
+		"in": [
+			{"name": "frame_id", "type": "int64_t"}
+		]
+	},
+
+	"compositor_layer_sync": {
+		"in": [
+			{"name": "frame_id", "type": "int64_t"},
+			{"name": "slot_id", "type": "uint32_t"}
+		],
+		"in_handles": {"type": "xrt_graphics_sync_handle_t"},
+		"out": [
+			{"name": "free_slot_id", "type": "uint32_t"}
+		]
+	},
+
+	"compositor_poll_events": {
+		"out": [
+			{"name": "event", "type": "union xrt_compositor_event"}
+		]
+	},
+
+	"swapchain_create": {
+		"in": [
+			{"name": "info", "type": "const struct xrt_swapchain_create_info"}
+		],
+		"out": [
+			{"name": "id", "type": "uint32_t"},
+			{"name": "num_images", "type": "uint32_t"},
+			{"name": "size", "type": "uint64_t"}
+		],
+		"out_handles": {"type": "xrt_graphics_buffer_handle_t"}
+	},
+
+	"swapchain_import": {
+		"in": [
+			{"name": "info", "type": "const struct xrt_swapchain_create_info"},
+			{"name": "args", "type": "struct ipc_arg_swapchain_from_native"}
+		],
+		"out": [
+			{"name": "id", "type": "uint32_t"}
+		],
+		"in_handles": {"type": "xrt_graphics_buffer_handle_t"}
+	},
+
+	"swapchain_wait_image": {
+		"in": [
+			{"name": "id", "type": "uint32_t"},
+			{"name": "timeout", "type": "uint64_t"},
+			{"name": "index", "type": "uint32_t"}
+		]
+	},
+
+	"swapchain_acquire_image": {
+		"in": [
+			{"name": "id", "type": "uint32_t"}
+		],
+		"out": [
+			{"name": "index", "type": "uint32_t"}
+		]
+	},
+
+	"swapchain_release_image": {
+		"in": [
+			{"name": "id", "type": "uint32_t"},
+			{"name": "index", "type": "uint32_t"}
+		]
+	},
+
+	"swapchain_destroy": {
+		"in": [
+			{"name": "id", "type": "uint32_t"}
+		]
+	},
+
+	"device_update_input": {
+		"in": [
+			{"name": "id", "type": "uint32_t"}
+		]
+	},
+
+	"device_get_tracked_pose": {
+		"in": [
+			{"name": "id", "type": "uint32_t"},
+			{"name": "name", "type": "enum xrt_input_name"},
+			{"name": "at_timestamp", "type": "uint64_t"}
+		],
+		"out": [
+			{"name": "relation", "type": "struct xrt_space_relation"}
+		]
+	},
+
+	"device_get_hand_tracking": {
+		"in": [
+			{"name": "id", "type": "uint32_t"},
+			{"name": "name", "type": "enum xrt_input_name"},
+			{"name": "at_timestamp", "type": "uint64_t"}
+		],
+		"out": [
+			{"name": "value", "type": "struct xrt_hand_joint_set"}
+		]
+	},
+
+	"device_get_view_pose": {
+		"in": [
+			{"name": "id", "type": "uint32_t"},
+			{"name": "eye_relation", "type": "struct xrt_vec3"},
+			{"name": "view_index", "type": "uint32_t"}
+		],
+		"out": [
+			{"name": "pose", "type": "struct xrt_pose"}
+		]
+	},
+
+	"device_set_output": {
+		"in": [
+			{"name": "id", "type": "uint32_t"},
+			{"name": "name", "type": "enum xrt_output_name"},
+			{"name": "value", "type": "union xrt_output_value"}
+		]
+	}
+}

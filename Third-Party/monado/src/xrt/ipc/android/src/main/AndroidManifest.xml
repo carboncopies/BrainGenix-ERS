@@ -1,0 +1,20 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.freedesktop.monado.ipc">
+    <!--
+        Copyright 2020, Collabora, Ltd.
+        SPDX-License-Identifier: BSL-1.0
+    -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <application>
+        <service
+            android:name=".MonadoService"
+            android:enabled="true"
+            android:exported="true"
+            android:foregroundServiceType="connectedDevice|mediaPlayback">
+            <intent-filter>
+                <action android:name="${serviceActionName}" />
+                <action android:name="${shutdownActionName}" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

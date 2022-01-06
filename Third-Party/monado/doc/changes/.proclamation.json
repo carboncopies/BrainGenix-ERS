@@ -1,0 +1,41 @@
+{
+    "$schema": "https://ryanpavlik.gitlab.io/proclamation/proclamation.schema.json",
+    "#": "This is a config file for Proclamation, the changelog combiner: https://gitlab.com/ryanpavlik/proclamation",
+    "SPDX-License-Identifier: CC0-1.0": "",
+    "SPDX-FileCopyrightText: 2020 Collabora, Ltd. and the Proclamation contributors": "",
+    "project_name": "Monado",
+    "base_url": "https://gitlab.freedesktop.org/monado/monado",
+    "news_filename": "../CHANGELOG.md",
+    "sections": {
+        "Major changes": {
+            "directory": "big"
+        },
+        "XRT Interface": {
+            "directory": "xrt"
+        },
+        "State Trackers": {
+            "directory": "state_trackers",
+            "sort_by_prefix": true
+        },
+        "Drivers": {
+            "directory": "drivers",
+            "sort_by_prefix": true
+        },
+        "IPC": {
+            "directory": "ipc"
+        },
+        "Compositor": {
+            "directory": "compositor"
+        },
+        "Helper Libraries": {
+            "directory": "auxiliary",
+            "sort_by_prefix": true
+        },
+        "Misc. Features": {
+            "directory": "misc_features"
+        },
+        "Misc. Fixes": {
+            "directory": "misc_fixes"
+        }
+    }
+}
