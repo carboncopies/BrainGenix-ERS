@@ -31,6 +31,7 @@ endif()
 
 ## MODIFIED, THESE LIBS ARE BUILT IN THIS PROJECT
 #find_package(Eigen3 3 REQUIRED)
+target_link_libraries(Eigen3 XRT)
 find_package(Vulkan)
 find_package(EGL)
 find_package(HIDAPI)
