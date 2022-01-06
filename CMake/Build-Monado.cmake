@@ -6,4 +6,4 @@
 
 # Add Eigen Library
 add_subdirectory(${LIB_DIR}/eigen)
-disable_target_warnings(Eigen3)
+disable_target_warnings(eigen)
