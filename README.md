@@ -1,3 +1,5 @@
+![Build](https://github.com/carboncopies/BrainGenix-ERS/actions/workflows/cmake/badge.svg)
+
 # Build Instructions
 
 ## Linux:
