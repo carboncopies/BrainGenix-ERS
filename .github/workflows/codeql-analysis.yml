@@ -32,7 +32,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'cpp', 'python' ]
+        language: [ 'cpp' ]
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
         # Learn more about CodeQL language support at https://git.io/codeql-language-support
 
@@ -63,6 +63,7 @@ jobs:
     #    uses a compiled language
 
     - run: |
+       bash Install.sh
        cd Tools && bash Build-CMake.sh
 
     - name: Perform CodeQL Analysis
