@@ -7,4 +7,4 @@ sudo apt update
 sudo bash Install.sh
 
 # Build System
-bash Build.sh
+bash Build.sh 2
