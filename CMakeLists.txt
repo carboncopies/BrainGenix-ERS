@@ -29,16 +29,11 @@ include(${CMAKE_BUILD_UTILS_DIR}/ImGuizmo.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImPlot.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiFileDialog.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Zep.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
 
-# Add GLFW Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/glfw)
-disable_target_warnings(glfw)
 
-# Add Infoware Library (Not Header Only)
-set(INFOWARE_PCI_IDS_PATH ${LIB_DIR}/pciids/pci.ids)
-include_directories(${LIB_DIR}/infoware/include)
-add_subdirectory(${LIB_DIR}/infoware)
-disable_target_warnings(infoware)
+
 
 # Add FreeImage Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
