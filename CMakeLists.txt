@@ -27,11 +27,8 @@ include(${CMAKE_BUILD_UTILS_DIR}/GLM.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGui.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuizmo.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImPlot.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/ImGuiFileDialog.cmake)
 
-
-# Add ImGuiFileDialog (Not Header Only)
-add_subdirectory(${LIB_DIR}/ImGuiFileDialog/ImGuiFileDialog)
-disable_target_warnings(ImGuiFileDialog)
 
 # Add Zep (Not Header Only)
 add_subdirectory(${LIB_DIR}/zep)
