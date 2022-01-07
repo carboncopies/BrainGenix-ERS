@@ -41,9 +41,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
 
 
 
-# Add ASSIMP Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/assimp)
-disable_target_warnings(assimp)
+
 
 # Add Backward Library (Header Only)
 add_subdirectory(${LIB_DIR}/backward)
