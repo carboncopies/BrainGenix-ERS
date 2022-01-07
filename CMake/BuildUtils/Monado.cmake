@@ -58,6 +58,9 @@ else()
 
     # Include Into Project
     ERSBuildLogger(${Green} "Setting Monado Include Directories")   
+    set(OPENXR_SDK_DIR ${LIB_DIR}/OpenXR-SDK)
+
+    
     include(${CMAKE_FIND_UTILS_DIR}/FindOpenXR.cmake)
     PKG_SEARCH_MODULE(OpenXR REQUIRED openxr)
     ERSBuildLogger(${BoldGreen} "Finished Setting Monado Include Directories")
