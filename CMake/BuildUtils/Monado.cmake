@@ -32,6 +32,12 @@ else()
     set(OPENHMD_LIBRARY ${LIB_DIR}/OpenHMD)
     ERSBuildLogger(${BoldGreen} "Finished Configuring OpenHMD Library")
 
+    # OpenCV
+    #ERSBuildLogger(${Green} "Configuring OpenCV Library")
+    #add_subdirectory(${LIB_DIR}/opencv)
+    #set(OpenCV_DIR ${LIB_DIR}/opencv)
+    #ERSBuildLogger(${BoldGreen} "Finished Configuring OpenCV Library")
+
 
     ERSBuildLogger(${BoldGreen} "Finished Configuring Monado Dependencies")
 
