@@ -31,6 +31,10 @@ include(${CMAKE_BUILD_UTILS_DIR}/ImGuiFileDialog.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Zep.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/FreeImage.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/Assimp.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
 
 
 
