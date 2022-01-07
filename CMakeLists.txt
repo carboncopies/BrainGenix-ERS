@@ -28,11 +28,8 @@ include(${CMAKE_BUILD_UTILS_DIR}/ImGui.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuizmo.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImPlot.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiFileDialog.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/Zep.cmake)
 
-
-# Add Zep (Not Header Only)
-add_subdirectory(${LIB_DIR}/zep)
-disable_target_warnings(Zep)
 
 # Add GLFW Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/glfw)
