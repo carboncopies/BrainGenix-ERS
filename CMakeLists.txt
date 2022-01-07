@@ -35,23 +35,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/FreeImage.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Assimp.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
-
-
-
-
-
-
-
-
-
-
-# Add Tracy Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/tracy)
-include_directories(${LIB_DIR}/tracy)
-disable_target_warnings(TracyClient)
-
-# Add MySQL Connector Library (Not Header Only)
-include (${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
 
 # Add Monado OpenXR Runtime
 #include(${CMAKE_BUILD_UTILS_DIR}/Monado.cmake)
