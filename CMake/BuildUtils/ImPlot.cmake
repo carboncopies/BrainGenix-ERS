@@ -2,6 +2,6 @@
 # Builds Library For ERS #
 ##########################
 
-ERSBuildLogger(${Green} "Configuring ImGui Library")
-add_subdirectory(${LIB_DIR}/imgui)
-ERSBuildLogger(${BoldGreen} "Finished Configuring ImGui Library")
+ERSBuildLogger(${Green} "Configuring ImPlot Library")
+add_subdirectory(${LIB_DIR}/implot)
+ERSBuildLogger(${BoldGreen} "Finished Configuring ImPlot Library")

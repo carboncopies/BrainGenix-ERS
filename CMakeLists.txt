@@ -29,10 +29,6 @@ include(${CMAKE_BUILD_UTILS_DIR}/ImGuizmo.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImPlot.cmake)
 
 
-
-# Add ImPlot Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/implot)
-
 # Add ImGuiFileDialog (Not Header Only)
 add_subdirectory(${LIB_DIR}/ImGuiFileDialog/ImGuiFileDialog)
 disable_target_warnings(ImGuiFileDialog)
