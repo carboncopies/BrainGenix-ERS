@@ -3,6 +3,7 @@
 #########################################################
 
 # Install Deps
+sudo apt update
 sudo bash Install.sh
 
 # Build System
