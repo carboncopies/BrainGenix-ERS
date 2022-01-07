@@ -63,7 +63,8 @@ jobs:
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
 
-    - run: |
+    - name: Build
+      run: |
        cd Tools && sudo bash CI.sh
 
     - name: Perform CodeQL Analysis
