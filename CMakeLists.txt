@@ -43,8 +43,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
 
 
 
-# Add Backward Library (Header Only)
-add_subdirectory(${LIB_DIR}/backward)
+
 
 # Add Tracy Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/tracy)
