@@ -32,23 +32,31 @@ else()
     set(OPENHMD_LIBRARY ${LIB_DIR}/OpenHMD)
     ERSBuildLogger(${BoldGreen} "Finished Configuring OpenHMD Library")
 
-    # OpenCV
-    #ERSBuildLogger(${Green} "Configuring OpenCV Library")
-    #add_subdirectory(${LIB_DIR}/opencv)
-    #set(OpenCV_DIR ${LIB_DIR}/opencv)
-    #ERSBuildLogger(${BoldGreen} "Finished Configuring OpenCV Library")
+    # # librealsense
+    # ERSBuildLogger(${Green} "Configuring librealsense")
+    # set(realsense2_DIR ${LIB_DIR}/librealsense)
+    # ERSBuildLogger(${BoldGreen} "Finished Configuring librealsense2")
+
+    # # OpenCV
+    # ERSBuildLogger(${Green} "Configuring OpenCV Library")
+    # add_subdirectory(${LIB_DIR}/opencv)
+    # set(OpenCV_DIR ${LIB_DIR}/opencv)
+    # ERSBuildLogger(${BoldGreen} "Finished Configuring OpenCV Library")
 
     # OpenXR SDK
     ERSBuildLogger(${Green} "Configuring OpenXR SDK")
     add_subdirectory(${LIB_DIR}/OpenXR-SDK)
     ERSBuildLogger(${BoldGreen} "Finished Configuring OpenXR SDK")
 
-
     ERSBuildLogger(${BoldGreen} "Finished Configuring Monado Dependencies")
+
 
     # Build Monado
     ERSBuildLogger(${Green} "Configuring Monado OpenXR Runtime")
     add_subdirectory(${LIB_DIR}/monado)
     ERSBuildLogger(${BoldGreen} "Finished Configuring Monado OpenXR Runtime")
+
+    include(${CMAKE_FIND_UTILS_DIR}/FindOpenXR.cmake)
+    PKG_SEARCH_MODULE(OpenXR REQUIRED openxr)
 
 endif()
