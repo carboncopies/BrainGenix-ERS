@@ -26,8 +26,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLM.cmake)
 
 
-# Add DearImGUI Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/imgui)
+
 
 # Add ImGuizmo Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/ImGuizmo)
