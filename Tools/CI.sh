@@ -7,4 +7,4 @@ sudo apt update
 sudo bash Install.sh
 
 # Build System
-bash Build-CMake.sh
+bash Build.sh
