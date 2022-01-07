@@ -51,12 +51,18 @@ else()
     ERSBuildLogger(${BoldGreen} "Finished Configuring Monado Dependencies")
 
 
-    # Build Monado
+    # Configure Monado
     ERSBuildLogger(${Green} "Configuring Monado OpenXR Runtime")
     add_subdirectory(${LIB_DIR}/monado)
     ERSBuildLogger(${BoldGreen} "Finished Configuring Monado OpenXR Runtime")
 
+    # Include Into Project
+    ERSBuildLogger(${Green} "Setting Monado Include Directories")   
+    set(OPENXR_SDK_SRC_DIR ${LIB_DIR}/OpenXR-SDK)
+    
     include(${CMAKE_FIND_UTILS_DIR}/FindOpenXR.cmake)
     PKG_SEARCH_MODULE(OpenXR REQUIRED openxr)
+    ERSBuildLogger(${BoldGreen} "Finished Setting Monado Include Directories")
+    
 
 endif()
