@@ -23,13 +23,8 @@ include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/YAML-CPP.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/GLM.cmake)
 
-
-
-
-# Add GLM Library (Header Only)
-add_subdirectory(${LIB_DIR}/glm)
-include_directories(${LIB_DIR}/glm)
 
 # Add DearImGUI Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/imgui)
