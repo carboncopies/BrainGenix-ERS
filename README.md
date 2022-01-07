@@ -1,4 +1,4 @@
-![Build](https://github.com/carboncopies/BrainGenix-ERS/actions/workflows/CMake/badge.svg)
+![Build](https://github.com/carboncopies/BrainGenix-ERS/actions/workflows/cmake.yml/badge.svgdge.svg)
 
 # Build Instructions
 
