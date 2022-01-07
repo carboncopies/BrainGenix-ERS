@@ -118,7 +118,7 @@ find_package(Threads QUIET)
 ###
 # Compute the "I don't care which backend" library
 ###
-set(HIDAPI_LIBRARY)
+#set(HIDAPI_LIBRARY)
 
 # First, try to use a preferred backend if supplied
 if("${HIDAPI_FIND_COMPONENTS}" MATCHES "libusb"

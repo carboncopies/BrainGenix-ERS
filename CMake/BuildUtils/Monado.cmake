@@ -15,9 +15,17 @@ else()
     # Handle Deps
     ERSBuildLogger(${Green} "Configuring Monado Dependencies")
 
+    # Eigen
     ERSBuildLogger(${Green} "Configuring Eigen Library")
     set(EIGEN3_INCLUDE_DIR ${LIB_DIR}/eigen)
     ERSBuildLogger(${BoldGreen} "Finished Configuring Eigen Library")
+
+    # HIDAPI
+    ERSBuildLogger(${Green} "Configuring HIDAPI Library")
+    set(HIDAPI_INCLUDE_DIR ${LIB_DIR}/hidapi/hidapi)
+    set(HIDAPI_LIBRARY ${LIB_DIR}/hidapi/linux)
+    ERSBuildLogger(${BoldGreen} "Finished Configuring HID Library")
+
 
     ERSBuildLogger(${BoldGreen} "Finished Configuring Monado Dependencies")
 
@@ -25,5 +33,5 @@ else()
     ERSBuildLogger(${Green} "Configuring Monado OpenXR Runtime")
     add_subdirectory(${LIB_DIR}/monado)
     ERSBuildLogger(${BoldGreen} "Finished Configuring Monado OpenXR Runtime")
-    
+
 endif()
