@@ -38,6 +38,11 @@ else()
     #set(OpenCV_DIR ${LIB_DIR}/opencv)
     #ERSBuildLogger(${BoldGreen} "Finished Configuring OpenCV Library")
 
+    # OpenXR SDK
+    ERSBuildLogger(${Green} "Configuring OpenXR SDK")
+    add_subdirectory(${LIB_DIR}/OpenXR-SDK)
+    ERSBuildLogger(${BoldGreen} "Finished Configuring OpenXR SDK")
+
 
     ERSBuildLogger(${BoldGreen} "Finished Configuring Monado Dependencies")
 

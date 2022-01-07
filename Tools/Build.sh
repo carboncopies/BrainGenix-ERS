@@ -16,7 +16,7 @@ fi
 
 # Check If Configuration Needs To Be Run
 echo "[ERS BUILD HELPER] - Checking If Build Directory Already Exists"
-if [ -d "Build/CMakeFiles" ]
+if [ -d "Build" ]
 then 
     echo "[ERS BUILD HELPER] - Build Directory Already Exists, Skipping Generation"
     cd Build
