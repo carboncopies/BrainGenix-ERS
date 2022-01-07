@@ -28,8 +28,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/GLM.cmake)
 
 
 
-# Add ImGuizmo Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/ImGuizmo)
+
 
 # Add ImPlot Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/implot)
