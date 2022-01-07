@@ -30,7 +30,6 @@ include(${CMAKE_BUILD_UTILS_DIR}/ImPlot.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiFileDialog.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Zep.cmake)
 
-
 # Add GLFW Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/glfw)
 disable_target_warnings(glfw)
