@@ -11,5 +11,5 @@ sudo apt install libx11-dev libxrandr-dev ibxinerama-dev libxcursor-dev libxi-de
 sudo apt install libssl-dev -y
 
 # Install Monado Deps
-sudo apt install glslang-dev glslang-tools libeigen3-dev libudev-dev libgl1-mesa-dev -y
+sudo apt install libusb-1.0-0-dev glslang-dev glslang-tools libeigen3-dev libudev-dev libgl1-mesa-dev libusb-1.0 -y
 #sudo apt install glslang-dev glslang-tools -y
