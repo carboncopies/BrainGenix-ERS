@@ -39,9 +39,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
 
 
 
-# Add FreeImage Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
-disable_target_warnings(FreeImage)
+
 
 # Add ASSIMP Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/assimp)
