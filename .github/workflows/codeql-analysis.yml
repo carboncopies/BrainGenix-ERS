@@ -63,9 +63,9 @@ jobs:
     #    uses a compiled language
 
     - run: |
-      cd Tools
-      sudo bash Install.sh
-      bash Build-CMake.sh
+       cd Tools
+       sudo bash Install.sh
+       bash Build-CMake.sh
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
