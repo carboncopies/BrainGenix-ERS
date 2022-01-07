@@ -36,9 +36,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/Assimp.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
-
-# Add Monado OpenXR Runtime
-#include(${CMAKE_BUILD_UTILS_DIR}/Monado.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/Monado.cmake)
 
 
 
