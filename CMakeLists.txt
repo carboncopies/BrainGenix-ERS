@@ -24,9 +24,9 @@ include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/YAML-CPP.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLM.cmake)
-
-
-
+include(${CMAKE_BUILD_UTILS_DIR}/ImGui.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/ImGuizmo.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/ImPlot.cmake)
 
 
 
