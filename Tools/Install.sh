@@ -5,7 +5,7 @@ sudo apt install git wget cmake ninja-build g++ python3 python3-pip -y
 sudo apt install binutils-dev libunwind-dev libdwarf-dev libdw-dev -y
 
 # Install GLFW Deps
-sudo apt install libx11-dev libxrandr-dev ibxinerama-dev libxcursor-dev libxi-dev -y
+sudo apt install libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev -y
 
 # Install MySQL Connector Deps
 sudo apt install libssl-dev -y
