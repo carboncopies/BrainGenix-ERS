@@ -28,8 +28,8 @@ else()
 
     # OpenHMD
     ERSBuildLogger(${Green} "Configuring OpenHMD Library")
-    set(OpenHMD_INCLUDE_DIR ${LIB_DIR}/OpenHMD/include)
-    set(OpenHMD_LIBRARY ${LIB_DIR}/OpenHMD)
+    set(OPENHMD_ROOT_DIR ${LIB_DIR}/OpenHMD)
+    set(OPENHMD_LIBRARY ${LIB_DIR}/OpenHMD)
     ERSBuildLogger(${BoldGreen} "Finished Configuring OpenHMD Library")
 
 
