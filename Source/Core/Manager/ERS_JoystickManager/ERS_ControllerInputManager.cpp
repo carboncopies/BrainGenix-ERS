@@ -72,12 +72,18 @@ void ERS_CLASS_ControllerInputManager::UpdateJoystickValues() {
     // Iterate Through All Joysticks
     for (int JoystickIndex = 0; JoystickIndex < NumberJoysticks_; JoystickIndex++) {
 
+        // Add Empty Int Vec
+        JoystickValues_.push_back(std::vector<int>());
 
         // Iterate Through Each Axis Of Joystick
         for (int JoystickAxis = 0; JoystickAxis < JoystickAxes_[JoystickIndex]; JoystickAxis++) {
 
+            
+
 
         }
+
+
 
 
     }
