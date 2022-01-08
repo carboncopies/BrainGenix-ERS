@@ -38,7 +38,7 @@ void Window_ControllerSettings::ButtonText(std::string ButtonName, bool ButtonSt
     std::string Label = ButtonName + std::string(": ") + ButtonStateLabel;
 
     // Draw Text
-    ImGui::Text(ButtonName.c_str());
+    ImGui::Text(Label.c_str());
 }
 
 // Draw Window
