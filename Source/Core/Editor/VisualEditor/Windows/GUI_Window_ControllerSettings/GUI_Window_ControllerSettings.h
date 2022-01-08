@@ -23,6 +23,8 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_HumanInputDeviceUtils.h>
+
 
 /**
  * @brief Window for the Import progress bar.
@@ -33,6 +35,8 @@ class Window_ControllerSettings {
     private:
 
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
+        std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<Pointer To Human Input Device Info*/
+
 
     public:
 
@@ -45,7 +49,7 @@ class Window_ControllerSettings {
          * @brief Construct a new Window_ControllerSettings object
          * 
          */
-        Window_ControllerSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+        Window_ControllerSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils);
         
         /**
          * @brief Destroy the Window_ControllerSettings object
