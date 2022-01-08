@@ -26,6 +26,9 @@ target_link_libraries(Menu_Settings
 target_link_libraries(Menu_Settings
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_HumanInputDeviceUtils
+
+    Window_ControllerSettings
+
     )
 
 target_include_directories(Menu_Settings PUBLIC ./)

@@ -33,7 +33,7 @@ void Window_ControllerSettings::Draw() {
 
 
     if (Enabled_) {
-    bool Visible = ImGui::Begin("ControllerSettings", &Enabled_);
+    bool Visible = ImGui::Begin("Game Controller Settings", &Enabled_);
 
         // Set Window Size
         ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);

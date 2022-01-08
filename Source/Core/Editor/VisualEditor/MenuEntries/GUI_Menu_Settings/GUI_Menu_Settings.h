@@ -26,6 +26,7 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_HumanInputDeviceUtils.h>
 
+#include <GUI_Window_ControllerSettings.h>
 
 /**
  * @brief This class provides the "File" Menu In The Editor.
@@ -38,6 +39,10 @@ class GUI_Menu_Settings {
 
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
         std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<HID Utils Pointer*/
+
+
+        std::unique_ptr<Window_ControllerSettings> Window_ControllerSettings_; /**<ERS GUI Window*/
+
 
     // Member Functions
     public:
