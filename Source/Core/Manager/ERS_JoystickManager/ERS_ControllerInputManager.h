@@ -46,6 +46,8 @@ public:
 
     int NumberJoysticks_ = 0; /**<Current Number Of Detected Joysticks*/
     std::vector<int> JoystickAxes_; /**<Number of axes per joystick*/
+    std::vector<std::vector<int>> JoystickValues_; /**<Values for each axis of each joystick*/
+    
 
 public:
 
