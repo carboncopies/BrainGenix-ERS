@@ -198,7 +198,7 @@ int main() {
 
 
         // Update Joysticks
-        sERSControllerManager->UpdateJoysticks();
+        sERSControllerManager->UpdateControllers();
 
 
         // Update Renderers

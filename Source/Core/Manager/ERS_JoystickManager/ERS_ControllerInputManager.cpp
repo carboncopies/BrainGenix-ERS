@@ -49,3 +49,12 @@ void ERS_CLASS_ControllerInputManager::UpdateNumberJoysticks() {
     std::cout<<NumberJoysticks_<<std::endl;
 
 }
+
+
+// Update Controllers
+void ERS_CLASS_ControllerInputManager::UpdateControllers() {
+
+    // Update Num Joysticks
+    UpdateNumberJoysticks();
+
+}

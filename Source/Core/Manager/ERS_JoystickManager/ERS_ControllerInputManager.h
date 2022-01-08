@@ -63,4 +63,10 @@ public:
     ~ERS_CLASS_ControllerInputManager();
 
 
+    /**
+     * @brief Call this every frame, updates public member vars such as JS position, buttons, etc.
+     * 
+     */
+    void UpdateControllers();
+
 };
