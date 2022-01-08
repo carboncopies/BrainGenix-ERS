@@ -37,6 +37,16 @@ private:
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointer to SystemUtils Struct*/
 
+private:
+
+    void UpdateNumberJoysticks(); /**<Updates the number of Joysticks present.*/
+
+
+public:
+
+    int NumberJoysticks_ = 0; /**<Current Number Of Detected Joysticks*/
+
+
 public:
 
     /**
