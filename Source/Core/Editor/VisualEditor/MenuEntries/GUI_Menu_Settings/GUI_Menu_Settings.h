@@ -15,69 +15,51 @@
 // Standard Libraries (BG convention: use <> instead of "")
 #include <vector>
 #include <iostream>
-#include <filesystem>
 #include <string>
 #include <memory>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
-#include <yaml-cpp/yaml.h>
-
 #include <imgui.h>
 
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
 #include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_ProjectUtils.h>
-#include <ERS_ProjectLoader.h>
-
-#include <GUI_ImportAsset.h>
-
-#include <ERS_SceneWriter.h>
-#include <ERS_SceneManager.h>
-
-#include <GUI_Window_ProjectSettings.h>
-
+#include <ERS_STRUCT_HumanInputDeviceUtils.h>
 
 
 /**
  * @brief This class provides the "File" Menu In The Editor.
  * 
  */
-class GUI_Menu_File {
+class GUI_Menu_Settings {
 
     // Member Vars
     private:
 
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
-        std::unique_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
-        std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
-        std::unique_ptr<GUI_ImportAsset> ImportAsset_; /**<Pointer To Asset Importer System*/
-        std::unique_ptr<Window_ProjectSettings> Window_ProjectSettings_; /**<Project Settings Window*/
-        std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Pointer To Project Utils Instance*/
-
+        std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<HID Utils Pointer*/
 
     // Member Functions
     public:
 
 
         /**
-         * @brief Construct a new gui menu file object
+         * @brief Construct a new gui menu settings object
          * 
          * @param SystemUtils 
          */
-        GUI_Menu_File(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
+        GUI_Menu_Settings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils,  std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils);
 
 
         /**
-         * @brief Destroy the gui menu file object
+         * @brief Destroy the gui menu settings object
          * 
          */
-        ~GUI_Menu_File();
+        ~GUI_Menu_Settings();
 
 
         /**
-         * @brief This function Draws The File Menu Contents.
+         * @brief This function Draws The Settings Menu Contents.
          * 
          */
         void Draw();

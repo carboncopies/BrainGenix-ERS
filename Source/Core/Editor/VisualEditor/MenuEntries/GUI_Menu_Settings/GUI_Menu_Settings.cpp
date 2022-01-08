@@ -9,79 +9,39 @@
     Date Created: 2021-12-17
 */
 
-#include <GUI_Menu_File.h>
+#include <GUI_Menu_Settings.h>
 
 
 // Constructor
-GUI_Menu_File::GUI_Menu_File(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils) {
+GUI_Menu_Settings::GUI_Menu_Settings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils) {
 
     // Copy In Pointer Struct
     SystemUtils_ = SystemUtils;
-    SceneManager_ = SceneManager;
-    ProjectUtils_ = ProjectUtils;
+    HIDUtils_ = HIDUtils;
 
     // Log Initialization
-    SystemUtils_->Logger_->Log("Editor Setting Up File Menu", 4);
+    SystemUtils_->Logger_->Log("Editor Setting Up Settings Menu", 4);
 
-    // Create Class Instances
-    SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_);
-    ImportAsset_ = std::make_unique<GUI_ImportAsset>(SystemUtils_);
-    Window_ProjectSettings_ = std::make_unique<Window_ProjectSettings>(ProjectUtils, SystemUtils);
 
 }
 
 // Destructor
-GUI_Menu_File::~GUI_Menu_File() {
+GUI_Menu_Settings::~GUI_Menu_Settings() {
 
     // Log Destructor
-    SystemUtils_->Logger_->Log("Editor Destroying File Menu", 4);
+    SystemUtils_->Logger_->Log("Editor Destroying Settings Menu", 4);
 
 }
 
 // Draw Function
-void GUI_Menu_File::Draw() {
+void GUI_Menu_Settings::Draw() {
 
     // File Menu
-    if (ImGui::BeginMenu("File")) {
+    if (ImGui::BeginMenu("Settings")) {
 
-        // Project Options
-        if (ImGui::MenuItem("Save Project")) {
-            ProjectUtils_->ProjectManager_->WriteProject(0);
-        }
-        if (ImGui::MenuItem("Project Settings")) {
-            Window_ProjectSettings_->Enabled_ = !Window_ProjectSettings_->Enabled_;
-        }
-        ImGui::Separator();
+        if (ImGui::MenuItem("Game Controller Settings")) {
 
-        // Import Option, Disabled On Windows Due To Filesystem Issues
-        if (SystemUtils_->IsLinux_) {
-            if (ImGui::MenuItem("Import Model")) {
-                ImportAsset_->OpenFileDialog();
-            }
-            ImGui::Separator();
-        }
 
-        // Save Options
-        if (ImGui::MenuItem("Save Active Scene")) {
-            SceneWriter_->ProcessScene(
-                std::make_shared<ERS_OBJECT_SCENE>(SceneManager_->Scenes_[SceneManager_->ActiveScene_]),
-                SceneManager_->Scenes_[SceneManager_->ActiveScene_].ScenePath
-                );
-        }
-        if (ImGui::MenuItem("Save All Scenes")) {
-            for (int i = 0; i < SceneManager_->Scenes_.size(); i++) {
-                SceneWriter_->ProcessScene(
-                    std::make_shared<ERS_OBJECT_SCENE>(SceneManager_->Scenes_[i]),
-                    SceneManager_->Scenes_[i].ScenePath
-                    );
-            }
-        }
-
-        ImGui::Separator();
-
-        // Exit Options
-        if (ImGui::MenuItem("Exit")) {
-            *SystemUtils_->SystemShouldRun_ = false;
         }
 
         
@@ -90,8 +50,6 @@ void GUI_Menu_File::Draw() {
 
 
     // Draw Subwindows
-    ImportAsset_->Draw();
-    Window_ProjectSettings_->Draw();
 
 
 }
