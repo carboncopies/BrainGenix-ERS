@@ -25,6 +25,9 @@ target_link_libraries(ERS_JoystickManager
 
 # Link Internal Libs
 target_link_libraries(ERS_JoystickManager
+
+    ERS_STRUCT_SystemUtils
+
     )
 
 target_include_directories(ERS_JoystickManager PUBLIC ./)
