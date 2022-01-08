@@ -35,10 +35,9 @@ void Window_ControllerSettings::ButtonText(std::string ButtonName, bool ButtonSt
     if (ButtonState) {
         ButtonStateLabel = "Pressed";
     }
-    std::string Label = ButtonName + std::string(": ") + ButtonStateLabel;
 
     // Draw Text
-    ImGui::Text(Label.c_str());
+    ImGui::Text((ButtonName + std::string(": ") + ButtonStateLabel).c_str());
 }
 
 // Draw Window
