@@ -22,6 +22,8 @@ ERS_CLASS_ControllerInputManager::ERS_CLASS_ControllerInputManager(std::shared_p
     // Log Initialization
     SystemUtils_->Logger_->Log("Initializing ERS Controller Input Manager", 5);
 
+    // Detect Controllers
+    DetectControllers();
 
 
 }
@@ -97,8 +99,16 @@ void ERS_CLASS_ControllerInputManager::UpdateControllerStates() {
 void ERS_CLASS_ControllerInputManager::UpdateControllers() {
 
     // Update Data
+    UpdateControllerStates();
+
+}
+
+
+// Index Controllers();
+void ERS_CLASS_ControllerInputManager::DetectControllers() {
+
+    // Update Data
     UpdateNumberInputDevices();
     CheckIfSupportedControllers();
-    UpdateControllerStates();
 
 }
