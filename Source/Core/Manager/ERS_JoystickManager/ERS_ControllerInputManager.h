@@ -41,7 +41,7 @@ private:
 
     void UpdateNumberControllers(); /**<Updates the number of Controllers present.*/
     void CheckIfSupportedControllers(); /**<Updates ControllerSupported List*/
-    void UpdateJoystickValues(); /**<Updates the values for every joystick axis*/
+    void UpdateControllerStates(); /**<Updates the values for every joystick axis*/
 
 public:
 

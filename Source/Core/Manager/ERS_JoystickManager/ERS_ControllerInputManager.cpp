@@ -56,9 +56,7 @@ void ERS_CLASS_ControllerInputManager::CheckIfSupportedControllers() {
 
     // Iterate Through Current Number Controllers
     for (int i = 0; i < NumberControllers_; i++) {
-        int NumAxes;
-        glfwGetJoystickAxes(i, &NumAxes);
-        JoystickAxes_.push_back(NumAxes);
+        IsControllerSupported_.push_back(glfwJoystickIsGamepad(i));
     }
 
 }
@@ -66,33 +64,6 @@ void ERS_CLASS_ControllerInputManager::CheckIfSupportedControllers() {
 // Get Data For Each Axis
 void ERS_CLASS_ControllerInputManager::UpdateJoystickValues() {
 
-    int NumJoysticks;
-    const float* JoystickData = glfwGetJoystickAxes(0, &NumJoysticks);
-
-    std::cout<<JoystickData[0]<<std::endl;
-
-    // // Clear Value
-    // JoystickValues_.erase(JoystickValues_.begin(), JoystickValues_.end());
-
-    // // Iterate Through All Joysticks
-    // for (int JoystickIndex = 0; JoystickIndex < NumberJoysticks_; JoystickIndex++) {
-
-    //     // Add Empty Int Vec
-    //     JoystickValues_.push_back(std::vector<int>());
-
-    //     // Iterate Through Each Axis Of Joystick
-    //     for (int JoystickAxis = 0; JoystickAxis < JoystickAxes_[JoystickIndex]; JoystickAxis++) {
-
-    //         float JoystickValue;
-    //         glfwGetJoystickAxes()
-
-
-    //     }
-
-
-
-
-    // }
 
 }
 
@@ -102,7 +73,7 @@ void ERS_CLASS_ControllerInputManager::UpdateControllers() {
 
     // Update Data
     UpdateNumberJoysticks();
-    UpdateNumberAxesPerJoystick();
-    UpdateJoystickValues();
+    CheckIfSupportedControllers();
+    UpdateControllerStates();
 
 }
