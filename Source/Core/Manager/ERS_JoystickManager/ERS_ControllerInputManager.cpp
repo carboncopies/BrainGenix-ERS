@@ -35,8 +35,8 @@ ERS_CLASS_ControllerInputManager::~ERS_CLASS_ControllerInputManager() {
 }
 
 
-// Detect Controllers
-void ERS_CLASS_ControllerInputManager::UpdateNumberControllers() {
+// Detect InputDevices
+void ERS_CLASS_ControllerInputManager::UpdateNumberInputDevices() {
 
     // Iterate Through All 16 Supported Controllers
     NumberControllers_ = 0;
@@ -62,7 +62,26 @@ void ERS_CLASS_ControllerInputManager::CheckIfSupportedControllers() {
 }
 
 // Get Data For Each Axis
-void ERS_CLASS_ControllerInputManager::UpdateJoystickValues() {
+void ERS_CLASS_ControllerInputManager::UpdateControllerStates() {
+
+    // Clear States
+    ControllerStates_.erase(ControllerStates_.begin(), ControllerStates_.end());
+
+    // Iterate Through Joysticks, Check If Controller
+    for (int i = 0; i < NumberInputDevices_; i++) {
+
+        if (IsControllerSupported_[i]) {
+
+            // Incriment Number Of Controller Info
+            NumberControllers_++;
+
+            // Get Controller Info
+            GLFWgamepadstate State;
+            glfwGetGamepadState(i, &State);
+            ControllerStates_.push_back(State);
+        }
+
+    }
 
 
 }

@@ -46,6 +46,7 @@ private:
 public:
 
     int NumberControllers_ = 0; /**<Current Number Of Detected Controllers*/
+    int NumberInputDevices_ = 0; /**<Current Number Of "Joysticks" Connected*/
     std::vector<bool> IsControllerSupported_; /**<Indicate If Controller Is Supported Or Not*/
     std::vector<GLFWgamepadstate> ControllerStates_; /**<Vector Of Controller States*/
 
