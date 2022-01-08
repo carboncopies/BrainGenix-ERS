@@ -75,5 +75,10 @@ public:
     void UpdateControllers();
 
 
+    /**
+     * @brief Run this whenever needed to automatically index new controllers.
+     * 
+     */
+    void DetectControllers();
 
 };
