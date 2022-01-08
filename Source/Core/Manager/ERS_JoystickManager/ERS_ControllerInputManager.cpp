@@ -102,6 +102,7 @@ void ERS_CLASS_ControllerInputManager::UpdateControllers() {
 
     // Update Data
     UpdateNumberJoysticks();
-    UpdateNumberAxesPerJoystick();    
+    UpdateNumberAxesPerJoystick();
+    UpdateJoystickValues();
 
 }
