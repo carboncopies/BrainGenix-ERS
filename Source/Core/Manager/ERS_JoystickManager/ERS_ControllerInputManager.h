@@ -40,14 +40,13 @@ private:
 private:
 
     void UpdateNumberControllers(); /**<Updates the number of Controllers present.*/
-    void UpdateNumberAxesPerJoystick(); /**<Updates Number Of Axes Per Joystick*/
+    void CheckIfSupportedControllers(); /**<Updates ControllerSupported List*/
     void UpdateJoystickValues(); /**<Updates the values for every joystick axis*/
 
 public:
 
     int NumberControllers_ = 0; /**<Current Number Of Detected Controllers*/
-    std::vector<int> JoystickAxes_; /**<Number of axes per joystick*/
-    std::vector<std::vector<int>> JoystickValues_; /**<Values for each axis of each joystick*/
+    std::vector<bool> IsControllerSupported_; /**<Indicate If Controller Is Supported Or Not*/
 
 
 public:

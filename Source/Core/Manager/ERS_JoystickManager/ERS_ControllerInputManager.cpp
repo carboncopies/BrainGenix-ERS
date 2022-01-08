@@ -49,13 +49,13 @@ void ERS_CLASS_ControllerInputManager::UpdateNumberControllers() {
 }
 
 // Update Number Axes Per Joystick
-void ERS_CLASS_ControllerInputManager::UpdateNumberAxesPerJoystick() {
+void ERS_CLASS_ControllerInputManager::CheckIfSupportedControllers() {
 
-    // Clear JS Axes List
-    JoystickAxes_.erase(JoystickAxes_.begin(), JoystickAxes_.end());
+    // Clear Controller Supported List
+    IsControllerSupported_.erase(IsControllerSupported_.begin(), IsControllerSupported_.end());
 
-    // Iterate Through Current Number Joysticks
-    for (int i = 0; i < NumberJoysticks_; i++) {
+    // Iterate Through Current Number Controllers
+    for (int i = 0; i < NumberControllers_; i++) {
         int NumAxes;
         glfwGetJoystickAxes(i, &NumAxes);
         JoystickAxes_.push_back(NumAxes);
