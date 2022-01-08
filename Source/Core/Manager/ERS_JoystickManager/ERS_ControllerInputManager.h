@@ -31,7 +31,7 @@
  * @brief Get and update all joystick input devices, as well as associated controller buttons
  * 
  */
-class ERS_CLASS_JoystickManager {
+class ERS_CLASS_ControllerInputManager {
 
 private:
 
@@ -40,17 +40,17 @@ private:
 public:
 
     /**
-     * @brief Construct a new ers class joystickmanager object
+     * @brief Construct a new ers class ControllerInputManager object
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_JoystickManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    ERS_CLASS_ControllerInputManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
 
     /**
-     * @brief Destroy the ers class joystickmanager object
+     * @brief Destroy the ers class ControllerInputManager object
      * 
      */
-    ~ERS_CLASS_JoystickManager();
+    ~ERS_CLASS_ControllerInputManager();
 
 
 };
