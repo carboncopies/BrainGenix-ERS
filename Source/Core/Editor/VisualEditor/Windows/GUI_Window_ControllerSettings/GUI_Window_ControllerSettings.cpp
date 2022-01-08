@@ -124,7 +124,6 @@ void Window_ControllerSettings::Draw() {
                 
                 ButtonText("Back", State.buttons[GLFW_GAMEPAD_BUTTON_BACK]);
                 ButtonText("Menu", State.buttons[GLFW_GAMEPAD_BUTTON_GUIDE]);
-                ButtonText("Options", State.buttons[GLFW_GAMEPAD_BUTTON_LAST]);
 
             }
             ImGui::EndChild();
