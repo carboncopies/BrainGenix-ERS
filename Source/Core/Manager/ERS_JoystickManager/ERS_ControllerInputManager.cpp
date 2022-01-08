@@ -55,7 +55,7 @@ void ERS_CLASS_ControllerInputManager::CheckIfSupportedControllers() {
     IsControllerSupported_.erase(IsControllerSupported_.begin(), IsControllerSupported_.end());
 
     // Iterate Through Current Number Controllers
-    for (int i = 0; i < NumberControllers_; i++) {
+    for (int i = 0; i < NumberInputDevices_; i++) {
         IsControllerSupported_.push_back(glfwJoystickIsGamepad(i));
     }
 
