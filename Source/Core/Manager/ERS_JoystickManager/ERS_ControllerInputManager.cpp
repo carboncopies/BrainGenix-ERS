@@ -79,6 +79,8 @@ void ERS_CLASS_ControllerInputManager::UpdateControllerStates() {
             GLFWgamepadstate State;
             glfwGetGamepadState(i, &State);
             ControllerStates_.push_back(State);
+
+            
         }
 
     }
