@@ -41,12 +41,13 @@ private:
 
     void UpdateNumberControllers(); /**<Updates the number of Controllers present.*/
     void CheckIfSupportedControllers(); /**<Updates ControllerSupported List*/
-    void UpdateControllerStates(); /**<Updates the values for every joystick axis*/
+    void UpdateControllerStates(); /**<Updates the values for every controller param*/
 
 public:
 
     int NumberControllers_ = 0; /**<Current Number Of Detected Controllers*/
     std::vector<bool> IsControllerSupported_; /**<Indicate If Controller Is Supported Or Not*/
+    std::vector<GLFWgamepadstate> ControllerStates_; /**<Vector Of Controller States*/
 
 
 public:
