@@ -34,6 +34,7 @@
 
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
+#include <ERS_STRUCT_HumanInputDeviceUtils.h>
 
 #include <ERS_Editor_FontManager.h>
 #include <ERS_Editor_ThemeManager.h>
@@ -69,7 +70,7 @@ class GUISystem {
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Pointer to Cursors3D Instance*/
         std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
         std::shared_ptr<VisualRenderer> VisualRenderer_; /**<Pointer to visual renderer for viewport modification*/
-
+        std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<Pointer To Human Device Utils Struct*/
 
     public:
 
@@ -93,7 +94,8 @@ class GUISystem {
         std::shared_ptr<Cursors3D> Cursors3D,
         std::shared_ptr<ERS_CLASS_SceneManager> SceneManager,
         std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils,
-        std::shared_ptr<VisualRenderer> VisualRendererInstance
+        std::shared_ptr<VisualRenderer> VisualRendererInstance,
+        std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils
         );
 
         /**

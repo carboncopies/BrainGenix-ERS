@@ -31,6 +31,7 @@ target_link_libraries(VisualEditor
     
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
+    ERS_STRUCT_HumanInputDeviceUtils
 
     ERS_Editor_ThemeManager
     ERS_Editor_FontManager
