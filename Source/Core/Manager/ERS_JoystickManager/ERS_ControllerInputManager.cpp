@@ -67,7 +67,7 @@ void ERS_CLASS_ControllerInputManager::UpdateControllerStates() {
     // Clear States
     ControllerStates_.erase(ControllerStates_.begin(), ControllerStates_.end());
     ControllerNames_.erase(ControllerNames_.begin(), ControllerNames_.end());
-
+    NumberControllers_ = 0;
 
     // Iterate Through Joysticks, Check If Controller
     for (int i = 0; i < NumberInputDevices_; i++) {
