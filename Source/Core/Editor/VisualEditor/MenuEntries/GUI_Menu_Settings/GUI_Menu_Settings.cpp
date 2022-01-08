@@ -39,12 +39,23 @@ void GUI_Menu_Settings::Draw() {
     // File Menu
     if (ImGui::BeginMenu("Settings")) {
 
-        if (ImGui::MenuItem("Game Controller Settings")) {
+        // Controller Settings
+        if (ImGui::BeginMenu("Game Controllers")) {
 
+            // Refresh
+            if (ImGui::MenuItem("Detect New Controllers")) {
+                HIDUtils_->ControllerInputManager->DetectControllers();
+            }
 
+            // Open Settings MEnu
+            if (ImGui::MenuItem("Game Controller Settings")) {
+
+            }
+
+        ImGui::EndMenu();
         }
 
-        
+
     ImGui::EndMenu();
     }
 
