@@ -9,11 +9,11 @@
     Date Created: 2021-12-17
 */
 
-#include <GUI_Window_About.h>
+#include <GUI_Window_ControllerSettings.h>
 
 
 // Constructor
-Window_About::Window_About(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+Window_ControllerSettings::Window_ControllerSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
     // Copy System Utils Pointer Struct
     SystemUtils_ = SystemUtils;
@@ -21,18 +21,18 @@ Window_About::Window_About(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) 
 }
 
 // Destructor
-Window_About::~Window_About() {
+Window_ControllerSettings::~Window_ControllerSettings() {
 
 }
 
 
 
 // Draw Window
-void Window_About::Draw() {
+void Window_ControllerSettings::Draw() {
 
 
     if (Enabled_) {
-    bool Visible = ImGui::Begin("About", &Enabled_);
+    bool Visible = ImGui::Begin("ControllerSettings", &Enabled_);
 
         // Set Window Size
         ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
@@ -41,7 +41,7 @@ void Window_About::Draw() {
         if (Visible) {
             
             // ERS Description
-            ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "About:");
+            ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "ControllerSettings:");
             ImGui::TextWrapped("BrainGenix Environment Rendering System (ERS) is a distributed multigpu "
                 "rendering system with realtime physics, cloth and more. [Note: This project"
                 " is currently in development].");

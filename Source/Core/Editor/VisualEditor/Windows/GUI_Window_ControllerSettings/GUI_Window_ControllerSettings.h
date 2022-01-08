@@ -28,7 +28,7 @@
  * @brief Window for the Import progress bar.
  * 
  */
-class Window_About {
+class Window_ControllerSettings {
 
     private:
 
@@ -42,16 +42,16 @@ class Window_About {
     public:
 
         /**
-         * @brief Construct a new Window_About object
+         * @brief Construct a new Window_ControllerSettings object
          * 
          */
-        Window_About(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+        Window_ControllerSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
         
         /**
-         * @brief Destroy the Window_About object
+         * @brief Destroy the Window_ControllerSettings object
          * 
          */
-        ~Window_About();
+        ~Window_ControllerSettings();
 
 
         /**
