@@ -27,6 +27,19 @@ Window_ControllerSettings::~Window_ControllerSettings() {
 }
 
 
+// Button Text
+void Window_ControllerSettings::ButtonText(std::string ButtonName, bool ButtonState) {
+
+    // Generate Text
+    std::string ButtonStateLabel = "Released";
+    if (ButtonState) {
+        ButtonStateLabel = "Pressed"
+    }
+    std::string Label = ButtonName + std::string(": ") + ButtonStateLabel;
+
+    // Draw Text
+    ImGui::Text(ButtonName.c_str());
+}
 
 // Draw Window
 void Window_ControllerSettings::Draw() {
@@ -74,18 +87,8 @@ void Window_ControllerSettings::Draw() {
                 ImGui::Text("Right Joystick Horizontal Axis: %f", State.axes[GLFW_GAMEPAD_AXIS_RIGHT_X]);
 
                 // Joysticks Pressed
-                if (State.buttons[GLFW_GAMEPAD_BUTTON_LEFT_THUMB]) {
-                    ImGui::Text("Left Joystick: Pressed");
-                } else {
-                    ImGui::Text("Left Joystick: Released");
-                }
-
-                if (State.buttons[GLFW_GAMEPAD_BUTTON_RIGHT_THUMB]) {
-                    ImGui::Text("Right Joystick: Pressed");
-                } else {
-                    ImGui::Text("Right Joystick: Released");
-                }
-
+                ButtonText(std::string("Left Joystick"), State.buttons[GLFW_GAMEPAD_BUTTON_LEFT_THUMB]);
+                ButtonText(std::string("Right Joystick"), State.buttons[GLFW_GAMEPAD_BUTTON_RIGHT_THUMB]);
 
                 // Trigger Info
                 ImGui::Separator();

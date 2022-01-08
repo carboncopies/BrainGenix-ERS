@@ -50,7 +50,7 @@ class Window_ControllerSettings {
          * @param ButtonName 
          * @param ButtonState 
          */
-        void ButtonText(const char* ButtonName, bool ButtonState);
+        void ButtonText(std::string ButtonName, bool ButtonState);
 
     public:
 
