@@ -40,14 +40,14 @@ private:
 private:
 
     void UpdateNumberJoysticks(); /**<Updates the number of Joysticks present.*/
-
+    void UpdateNumberAxesPerJoystick(); /**<Updates Number Of Axes Per Joystick*/
 
 public:
 
     int NumberJoysticks_ = 0; /**<Current Number Of Detected Joysticks*/
     std::vector<int> JoystickAxes_; /**<Number of axes per joystick*/
     std::vector<std::vector<int>> JoystickValues_; /**<Values for each axis of each joystick*/
-    
+
 
 public:
 
