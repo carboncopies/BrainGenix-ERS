@@ -61,7 +61,6 @@ void Window_ControllerSettings::Draw() {
                 ImGui::Text("Left Joystick Vertical Axis: %f", State.axes[GLFW_GAMEPAD_AXIS_LEFT_Y]);
                 ImGui::Text("Left Joystick Horizontal Axis: %f", State.axes[GLFW_GAMEPAD_AXIS_LEFT_X]);
                 
-                ImGui::Text("");
 
                 ImGui::Text("Right Joystick Vertical Axis: %f", State.axes[GLFW_GAMEPAD_AXIS_RIGHT_Y]);
                 ImGui::Text("Right Joystick Horizontal Axis: %f", State.axes[GLFW_GAMEPAD_AXIS_RIGHT_X]);
