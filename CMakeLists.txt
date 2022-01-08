@@ -69,7 +69,8 @@ target_link_libraries(${PROJECT_NAME}
   ERS_FramerateManager
   ERS_ProjectManager
   ERS_ControllerInputManager
-
+  
+  ERS_STRUCT_HumanInputDeviceUtils
   ERS_STRUCT_SystemUtils
   ERS_STRUCT_ProjectUtils
 
@@ -122,6 +123,7 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_IOData)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_SystemUtils)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ProjectUtils)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Project)
+add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_HumanInputDeviceUtils)
 
 
 add_subdirectory(${SRC_DIR}/Core/Loader/TextureLoader)

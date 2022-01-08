@@ -35,7 +35,9 @@
 #include <ERS_ProjectLoader.h>
 #include <ERS_ProjectManager.h>
 #include <ERS_ProjectWriter.h>
+#include <ERS_ControllerInputManager.h>
 
+#include <ERS_STRUCT_HumanInputDeviceUtils.h>
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
 
