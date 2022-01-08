@@ -97,6 +97,7 @@ void Window_ControllerSettings::Draw() {
                 ImGui::Text("Left Trigger: %f", State.axes[GLFW_GAMEPAD_AXIS_LEFT_TRIGGER]);
                 ImGui::Text("Right Trigger: %f", State.axes[GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER]);
 
+                
 
                 // DPAD Info
                 ImGui::Separator();
@@ -108,13 +109,14 @@ void Window_ControllerSettings::Draw() {
                 ButtonText("DPAD Left", State.buttons[GLFW_GAMEPAD_BUTTON_DPAD_LEFT]);
                 ButtonText("DPAD Right", State.buttons[GLFW_GAMEPAD_BUTTON_DPAD_RIGHT]);
 
+
                 // TRIANGLE/CIRCLE/SQUARE/X Buttons
                 ImGui::Separator();
                 ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Input Buttons");
                 ImGui::Separator();
 
-                ButtonText("Triangle", State.buttons[GLFW_GAMEPAD_BUTTON_A]);
-                ButtonText("Square", State.buttons[GLFW_GAMEPAD_BUTTON_B]);
+                ButtonText("Triangle", State.buttons[GLFW_GAMEPAD_BUTTON_TRIANGLE]);
+                ButtonText("Square", State.buttons[GLFW_GAMEPAD_BUTTON_SQUARE]);
                 ButtonText("Circle", State.buttons[GLFW_GAMEPAD_BUTTON_CIRCLE]);
                 ButtonText("Cross", State.buttons[GLFW_GAMEPAD_BUTTON_CROSS]);
                 
