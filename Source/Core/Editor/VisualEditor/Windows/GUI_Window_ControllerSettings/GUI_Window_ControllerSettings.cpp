@@ -49,6 +49,10 @@ void Window_ControllerSettings::Draw() {
             ImGui::Combo("Selected Controller", &SelectedController_, ControllerNames_, NumberControllers, NumberControllers);
             ImGui::Separator();
 
+
+            // Info Child Window
+            ImGui::BeginChild("Controller Info");
+
             // Check if there aren't any controllers, display no controllers message
             if (NumberControllers == 0) {
                 ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "No controllers detected. Try running 'Detect New Controllers'");
@@ -57,16 +61,28 @@ void Window_ControllerSettings::Draw() {
                 // Get Game Controller State
                 GLFWgamepadstate State = HIDUtils_->ControllerInputManager->ControllerStates_[SelectedController_];
 
-                // Display Joystick Info
+                // Joystick Info
+                ImGui::Separator();
+                ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Joysticks");
+                ImGui::Separator();
+
                 ImGui::Text("Left Joystick Vertical Axis: %f", State.axes[GLFW_GAMEPAD_AXIS_LEFT_Y]);
                 ImGui::Text("Left Joystick Horizontal Axis: %f", State.axes[GLFW_GAMEPAD_AXIS_LEFT_X]);
                 
-
                 ImGui::Text("Right Joystick Vertical Axis: %f", State.axes[GLFW_GAMEPAD_AXIS_RIGHT_Y]);
                 ImGui::Text("Right Joystick Horizontal Axis: %f", State.axes[GLFW_GAMEPAD_AXIS_RIGHT_X]);
 
+                // Trigger Info
+                ImGui::Separator();
+                ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Triggers");
+                ImGui::Separator();
+
+                ImGui::Text("Left Trigger: %f", State.axes[GLFW_GAMEPAD_AXIS_LEFT_TRIGGER]);
+                ImGui::Text("Right Trigger: %f", State.axes[GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER]);
+
 
             }
+            ImGui::EndChild();
 
         }
 
