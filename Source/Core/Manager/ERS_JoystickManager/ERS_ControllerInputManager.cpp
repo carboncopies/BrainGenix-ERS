@@ -48,7 +48,7 @@ void ERS_CLASS_ControllerInputManager::UpdateNumberJoysticks() {
 
     std::cout<<NumberJoysticks_<<std::endl;
     for (int i = 0; i < NumberJoysticks_; i++) {
-        std::cout<<glfwGetJoystickName(i)<<std::endl;
+        std::cout<<glfwGetJoystickAxes(i)<<std::endl;
     }
 
 
