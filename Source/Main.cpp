@@ -143,8 +143,13 @@ int main() {
     sERSLogger->Log("Setting Up Human Input Device Managers", 5);
 
     // Create Struct
+    std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils = std::make_shared<ERS_STRUCT_HumanInputDeviceUtils>();
 
     // Setup Controller Manager
+    sERSLogger->Log("Instantiating ERS Controller Input Manager", 5);
+    std::shared_ptr<ERS_CLASS_ControllerInputManager> sERSControllerManager = std::make_shared<ERS_CLASS_ControllerInputManager>(SystemUtils);
+    sERSLogger->Log("Copying Shared Pointer To HumanInputDeviceUtils Struct", 4);
+    HIDUtils->ControllerInputManager = sERSControllerManager;
 
     // VR Driver here?
 
