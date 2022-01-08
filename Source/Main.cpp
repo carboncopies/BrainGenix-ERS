@@ -193,12 +193,18 @@ int main() {
         DeltaTime = CurrentTime - LastFrame;
         LastFrame = CurrentTime;
 
-
         // Calculate Last FrameTime
         sERSFrameRateManager->StartNewFrame();
 
+
+        // Update Joysticks
+        sERSControllerManager->UpdateJoysticks();
+
+
         // Update Renderers
         sERSRendererManager.UpdateLoop(DeltaTime);
+
+
 
         // End Frame
         sERSFrameRateManager->DelayUntilNextFrame();
