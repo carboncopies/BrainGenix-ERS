@@ -122,7 +122,7 @@ void Window_ControllerSettings::Draw() {
                 ButtonText("Circle", State.buttons[GLFW_GAMEPAD_BUTTON_CIRCLE]);
                 ButtonText("Cross", State.buttons[GLFW_GAMEPAD_BUTTON_CROSS]);
                 
-                ButtonText("Options", State.buttons[GLFW_GAMEPAD_BUTTON_GUIDE])
+                ButtonText("Options", State.buttons[GLFW_GAMEPAD_BUTTON_GUIDE]);
 
             }
             ImGui::EndChild();
