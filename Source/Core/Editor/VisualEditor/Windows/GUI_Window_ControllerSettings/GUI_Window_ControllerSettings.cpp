@@ -99,7 +99,14 @@ void Window_ControllerSettings::Draw() {
 
 
                 // DPAD Info
+                ImGui::Separator();
+                ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "DPAD");
+                ImGui::Separator();
 
+                ButtonText("DPAD Up", State.buttons[GLFW_GAMEPAD_BUTTON_DPAD_UP]);
+                ButtonText("DPAD Down", State.buttons[GLFW_GAMEPAD_BUTTON_DPAD_DOWN]);
+                ButtonText("DPAD Left", State.buttons[GLFW_GAMEPAD_BUTTON_DPAD_LEFT]);
+                ButtonText("DPAD Right", State.buttons[GLFW_GAMEPAD_BUTTON_DPAD_RIGHT]);
 
 
             }
