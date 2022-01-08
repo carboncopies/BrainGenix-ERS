@@ -22,6 +22,8 @@ GUI_Menu_Settings::GUI_Menu_Settings(std::shared_ptr<ERS_STRUCT_SystemUtils> Sys
     // Log Initialization
     SystemUtils_->Logger_->Log("Editor Setting Up Settings Menu", 4);
 
+    // Instantiate Window Classes
+    Window_ControllerSettings_ = std::make_unique<Window_ControllerSettings>(SystemUtils_, HIDUtils_);
 
 }
 
@@ -49,7 +51,7 @@ void GUI_Menu_Settings::Draw() {
 
             // Open Settings MEnu
             if (ImGui::MenuItem("Game Controller Settings")) {
-
+                Window_ControllerSettings_->Enabled_ = !Window_ControllerSettings_->Enabled_;
             }
 
         ImGui::EndMenu();
@@ -61,6 +63,6 @@ void GUI_Menu_Settings::Draw() {
 
 
     // Draw Subwindows
-
+    Window_ControllerSettings_->Draw();
 
 }
