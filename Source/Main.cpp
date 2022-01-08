@@ -159,7 +159,7 @@ int main() {
 
 
     // Instantiate RendererManager
-    RendererManager sERSRendererManager(SystemUtils, ProjectUtils);
+    RendererManager sERSRendererManager(SystemUtils, ProjectUtils, HIDUtils);
 
 
     
