@@ -97,7 +97,9 @@ void Window_ControllerSettings::Draw() {
                 ImGui::Text("Left Trigger: %f", State.axes[GLFW_GAMEPAD_AXIS_LEFT_TRIGGER]);
                 ImGui::Text("Right Trigger: %f", State.axes[GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER]);
 
-                
+                ButtonText("Left Bumper", State.buttons[GLFW_GAMEPAD_BUTTON_LEFT_BUMPER]);
+                ButtonText("Right Bumper", State.buttons[GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER]);
+
 
                 // DPAD Info
                 ImGui::Separator();
@@ -120,7 +122,7 @@ void Window_ControllerSettings::Draw() {
                 ButtonText("Circle", State.buttons[GLFW_GAMEPAD_BUTTON_CIRCLE]);
                 ButtonText("Cross", State.buttons[GLFW_GAMEPAD_BUTTON_CROSS]);
                 
-
+                ButtonText("Options", State.buttons[GLFW_GAMEPAD_BUTTON_GUIDE])
 
             }
             ImGui::EndChild();
