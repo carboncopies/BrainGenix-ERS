@@ -136,7 +136,19 @@ int main() {
     sERSLogger->Log("Copying Shared Pointer To Project Utils Struct", 3);
     ProjectUtils->ProjectManager_ = sERSProjectManager;
 
-    
+
+    // Setup Human Input Devices
+    sERSLogger->Log("Setting Up Human Input Device Managers", 5);
+
+    // Create Struct
+
+    // Setup Controller Manager
+
+    // VR Driver here?
+
+    // More????
+
+    sERSLogger->Log("Finished Setting Up Human Input Device Managers", 5);    
 
 
     // Instantiate RendererManager
