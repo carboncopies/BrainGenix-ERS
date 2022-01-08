@@ -66,11 +66,25 @@ void Window_ControllerSettings::Draw() {
                 ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Joysticks");
                 ImGui::Separator();
 
+                // Joystick Positions
                 ImGui::Text("Left Joystick Vertical Axis: %f", State.axes[GLFW_GAMEPAD_AXIS_LEFT_Y]);
                 ImGui::Text("Left Joystick Horizontal Axis: %f", State.axes[GLFW_GAMEPAD_AXIS_LEFT_X]);
                 
                 ImGui::Text("Right Joystick Vertical Axis: %f", State.axes[GLFW_GAMEPAD_AXIS_RIGHT_Y]);
                 ImGui::Text("Right Joystick Horizontal Axis: %f", State.axes[GLFW_GAMEPAD_AXIS_RIGHT_X]);
+
+                // Joysticks Pressed
+                if (State.buttons[GLFW_GAMEPAD_BUTTON_LEFT_THUMB]) {
+                    ImGui::Text("Left Joystick: Pressed");
+                } else {
+                    ImGui::Text("Left Joystick: Released");
+                }
+
+                if (State.buttons[GLFW_GAMEPAD_BUTTON_RIGHT_THUMB]) {
+                    ImGui::Text("Right Joystick: Pressed");
+                } else {
+                    ImGui::Text("Right Joystick: Released");
+                }
 
                 // Trigger Info
                 ImGui::Separator();
@@ -79,6 +93,7 @@ void Window_ControllerSettings::Draw() {
 
                 ImGui::Text("Left Trigger: %f", State.axes[GLFW_GAMEPAD_AXIS_LEFT_TRIGGER]);
                 ImGui::Text("Right Trigger: %f", State.axes[GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER]);
+
 
 
             }
