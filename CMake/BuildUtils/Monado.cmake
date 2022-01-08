@@ -56,6 +56,7 @@ else()
     add_subdirectory(${LIB_DIR}/monado)
     ERSBuildLogger(${BoldGreen} "Finished Configuring Monado OpenXR Runtime")
 
+    
     # Include Into Project
     ERSBuildLogger(${Green} "Setting Monado Include Directories")   
     set(OPENXR_SDK_DIR ${LIB_DIR}/OpenXR-SDK)
