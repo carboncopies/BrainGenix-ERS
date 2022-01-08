@@ -38,6 +38,10 @@ class Window_ControllerSettings {
         std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<Pointer To Human Input Device Info*/
 
 
+        const char* ControllerNames_[16]; /**<List Of Controller Names*/
+        int SelectedController_ = 0; /**<Active Selected Controller*/
+
+
     public:
 
         bool Enabled_ = false; /**<Is Popup Enabled*/

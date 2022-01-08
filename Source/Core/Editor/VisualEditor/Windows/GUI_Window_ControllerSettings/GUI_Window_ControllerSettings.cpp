@@ -41,7 +41,11 @@ void Window_ControllerSettings::Draw() {
 
         if (Visible) {
             
-
+            // Active Selected Controller Dropdown
+            for (int i = 0; i < HIDUtils_->ControllerInputManager->NumberControllers_; i++) {
+                ControllerNames_[i] = HIDUtils_->ControllerInputManager->ControllerNames_[i].c_str();
+            }
+            ImGui::Combo("Selected Controller", &SelectedController_, HIDUtils_->ControllerInputManager->NumberControllers_, HIDUtils_->ControllerInputManager->NumberControllers_);
 
         }
 
