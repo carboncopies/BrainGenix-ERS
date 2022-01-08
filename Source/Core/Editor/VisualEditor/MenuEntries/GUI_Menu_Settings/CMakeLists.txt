@@ -1,45 +1,30 @@
 ########################################################################
-# This file is part of the BrainGenix-ERS Environment Rendering System #
+# This File is part of the BrainGenix-ERS Environment Rendering System #
 ########################################################################
 
-# Add Subdirs
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Utils)
-
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Menu_File
+add_library(Menu_Settings
 
-            # Add Source Files (.cpp)
-            "GUI_Menu_File.cpp"
+            # Add Source Settingss (.cpp)
+            "GUI_Menu_Settings.cpp"
 
-            # Add Header Files (.h)
-            "GUI_Menu_File.h"
+            # Add Header Settingss (.h)
+            "GUI_Menu_Settings.h"
 
 
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Menu_File
+target_link_libraries(Menu_Settings
     glad
     glfw
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(Menu_File
-    LoggingSystem
+target_link_libraries(Menu_Settings
     ERS_STRUCT_SystemUtils
-    ERS_STRUCT_ProjectUtils
-
-    ERS_Editor_ImportAsset
-
-    ERS_SceneWriter
-    ERS_ProjectLoader
-
-    ERS_SceneManager
-    Scene
-
-    Window_ProjectSettings
     )
 
-target_include_directories(Menu_File PUBLIC ./)
+target_include_directories(Menu_Settings PUBLIC ./)
