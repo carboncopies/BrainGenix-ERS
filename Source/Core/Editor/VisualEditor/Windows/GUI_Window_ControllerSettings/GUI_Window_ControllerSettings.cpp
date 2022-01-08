@@ -33,7 +33,7 @@ void Window_ControllerSettings::ButtonText(std::string ButtonName, bool ButtonSt
     // Generate Text
     std::string ButtonStateLabel = "Released";
     if (ButtonState) {
-        ButtonStateLabel = "Pressed"
+        ButtonStateLabel = "Pressed";
     }
     std::string Label = ButtonName + std::string(": ") + ButtonStateLabel;
 
