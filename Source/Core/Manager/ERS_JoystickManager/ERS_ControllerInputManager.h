@@ -45,7 +45,7 @@ private:
 public:
 
     int NumberJoysticks_ = 0; /**<Current Number Of Detected Joysticks*/
-
+    std::vector<int> JoystickAxes_; /**<Number of axes per joystick*/
 
 public:
 
@@ -68,5 +68,7 @@ public:
      * 
      */
     void UpdateControllers();
+
+
 
 };
