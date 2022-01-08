@@ -48,7 +48,10 @@ void Window_ControllerSettings::Draw() {
             }
             ImGui::Combo("Selected Controller", &SelectedController_, ControllerNames_, NumberControllers, NumberControllers);
 
-            // ADD NO CONTROLLER DETECTED MESSAGE 
+            // Check if there aren't any controllers, display no controllers message
+            if (NumberControllers == 0) {
+                ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "No controllers detected. Try running 'Detect New Controllers'");
+            }
 
         }
 
