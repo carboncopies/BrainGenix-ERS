@@ -19,12 +19,13 @@ void ErrorCallback(int, const char* ErrorString) {
 
 
 // RendererManager Constructor
-RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils) {
+RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils) {
 
     // Create Pointers
     SystemUtils->Logger_->Log("Populating RendererManager Member Pointers", 5);
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
+    HIDUtils_ = HIDUtils;
 
     // Setup 3D Cursor
     Cursors3D_ = std::make_shared<Cursors3D>();

@@ -32,13 +32,15 @@
 #include <Framebuffer.h>
 #include <GUI.h>
 
-#include <ERS_STRUCT_IOData.h>
 #include <ERS_ModelWriter.h>
-#include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_ProjectUtils.h>
 #include <ERS_ModelLoader.h>
 
 #include <ERS_Editor_3DCursor.h>
+
+#include <ERS_STRUCT_IOData.h>
+#include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_ProjectUtils.h>
+#include <ERS_STRUCT_HumanInputDeviceUtils.h>
 
 
 
@@ -66,6 +68,7 @@ class RendererManager {
         
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Copy Of Pointer Helper Struct*/
         std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Copy Of Project Utils Struct*/
+        std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<Copy Of Pointer To HIDM Struct*/
 
 
         // Control Values
@@ -90,7 +93,7 @@ class RendererManager {
          * @param Logger 
          * @param SystemShouldRun 
          */
-        RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
+        RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils);
 
         /**
          * @brief Shuts down the renderers and cleans up variables.
