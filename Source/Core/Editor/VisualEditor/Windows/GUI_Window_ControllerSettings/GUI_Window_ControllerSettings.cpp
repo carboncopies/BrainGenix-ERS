@@ -48,6 +48,8 @@ void Window_ControllerSettings::Draw() {
             }
             ImGui::Combo("Selected Controller", &SelectedController_, ControllerNames_, NumberControllers, NumberControllers);
 
+            // ADD NO CONTROLLER DETECTED MESSAGE 
+
         }
 
     ImGui::End();

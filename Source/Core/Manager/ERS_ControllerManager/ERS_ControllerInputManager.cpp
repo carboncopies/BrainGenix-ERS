@@ -98,6 +98,12 @@ void ERS_CLASS_ControllerInputManager::UpdateControllerStates() {
 // Update Controllers
 void ERS_CLASS_ControllerInputManager::UpdateControllers() {
 
+    // On First Frame, Detect Controllers
+    if (FirstFrame_) {
+        DetectControllers();
+        FirstFrame_ = false;
+    }
+
     // Update Data
     UpdateControllerStates();
 

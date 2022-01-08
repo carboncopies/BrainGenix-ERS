@@ -39,6 +39,8 @@ private:
 
     int NumberInputDevices_ = 0; /**<Current Number Of "Joysticks" Connected*/
     std::vector<bool> IsControllerSupported_; /**<Indicate If Controller Is Supported Or Not*/
+    bool FirstFrame_ = true; /**<Only True On First Frame*/
+
 
 private:
 
