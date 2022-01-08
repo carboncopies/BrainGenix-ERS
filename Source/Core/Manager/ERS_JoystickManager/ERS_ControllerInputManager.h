@@ -37,6 +37,9 @@ private:
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointer to SystemUtils Struct*/
 
+    int NumberInputDevices_ = 0; /**<Current Number Of "Joysticks" Connected*/
+    std::vector<bool> IsControllerSupported_; /**<Indicate If Controller Is Supported Or Not*/
+
 private:
 
     void UpdateNumberInputDevices(); /**<Updates the number of Input Devices present.*/
@@ -46,11 +49,8 @@ private:
 public:
 
     int NumberControllers_ = 0; /**<Current Number Of Detected Controllers*/
-    int NumberInputDevices_ = 0; /**<Current Number Of "Joysticks" Connected*/
-    std::vector<bool> IsControllerSupported_; /**<Indicate If Controller Is Supported Or Not*/
     std::vector<GLFWgamepadstate> ControllerStates_; /**<Vector Of Controller States*/
     std::vector<std::string> ControllerNames_; /**<Human Readable Names Of Controllers*/
-
 
 public:
 
