@@ -104,10 +104,6 @@ void RendererManager::InitializeGLFW() {
         glfwTerminate();
     }
 
-    // Setup OpenGL Context
-    glfwMakeContextCurrent(Window_);
-    gladLoadGL();
-
     // Load Icon
     SystemUtils_->Logger_->Log("Loading System Icon From EditorAssets", 3);
     FreeImage_Initialise();
