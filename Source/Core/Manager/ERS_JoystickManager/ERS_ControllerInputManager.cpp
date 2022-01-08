@@ -66,6 +66,8 @@ void ERS_CLASS_ControllerInputManager::UpdateControllerStates() {
 
     // Clear States
     ControllerStates_.erase(ControllerStates_.begin(), ControllerStates_.end());
+    ControllerNames_.erase(ControllerNames_.begin(), ControllerNames_.end());
+
 
     // Iterate Through Joysticks, Check If Controller
     for (int i = 0; i < NumberInputDevices_; i++) {
@@ -80,7 +82,11 @@ void ERS_CLASS_ControllerInputManager::UpdateControllerStates() {
             glfwGetGamepadState(i, &State);
             ControllerStates_.push_back(State);
 
-            
+            // Append To Name
+            ControllerNames_.push_back(std::string(glfwGetGamepadName(i)));
+
+            std::cout<<std::string(glfwGetGamepadName(i))<<std::endl;
+
         }
 
     }
