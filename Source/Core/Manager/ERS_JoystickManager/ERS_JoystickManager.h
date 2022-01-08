@@ -24,6 +24,8 @@
 #include <GLFW/glfw3.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
+#include <ERS_STRUCT_SystemUtils.h>
+
 
 /**
  * @brief Get and update all joystick input devices, as well as associated controller buttons
@@ -33,9 +35,22 @@ class ERS_CLASS_JoystickManager {
 
 private:
 
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointer to SystemUtils Struct*/
 
 public:
 
+    /**
+     * @brief Construct a new ers class joystickmanager object
+     * 
+     * @param SystemUtils 
+     */
+    ERS_CLASS_JoystickManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+
+    /**
+     * @brief Destroy the ers class joystickmanager object
+     * 
+     */
+    ~ERS_CLASS_JoystickManager();
 
 
 };
