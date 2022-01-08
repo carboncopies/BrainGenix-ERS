@@ -86,6 +86,7 @@ void Window_ControllerSettings::Draw() {
                     ImGui::Text("Right Joystick: Released");
                 }
 
+
                 // Trigger Info
                 ImGui::Separator();
                 ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Triggers");
@@ -93,6 +94,9 @@ void Window_ControllerSettings::Draw() {
 
                 ImGui::Text("Left Trigger: %f", State.axes[GLFW_GAMEPAD_AXIS_LEFT_TRIGGER]);
                 ImGui::Text("Right Trigger: %f", State.axes[GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER]);
+
+
+                // DPAD Info
 
 
 

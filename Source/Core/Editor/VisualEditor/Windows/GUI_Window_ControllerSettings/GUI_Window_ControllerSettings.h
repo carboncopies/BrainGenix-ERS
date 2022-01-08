@@ -42,6 +42,16 @@ class Window_ControllerSettings {
         int SelectedController_ = 0; /**<Active Selected Controller*/
 
 
+    private:
+        
+        /**
+         * @brief Draws ImGui Text For Pressed/Released
+         * 
+         * @param ButtonName 
+         * @param ButtonState 
+         */
+        void ButtonText(const char* ButtonName, bool ButtonState);
+
     public:
 
         bool Enabled_ = false; /**<Is Popup Enabled*/
