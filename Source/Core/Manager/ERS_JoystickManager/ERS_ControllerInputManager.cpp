@@ -85,8 +85,6 @@ void ERS_CLASS_ControllerInputManager::UpdateControllerStates() {
             // Append To Name
             ControllerNames_.push_back(std::string(glfwGetGamepadName(i)));
 
-            std::cout<<std::string(glfwGetGamepadName(i))<<std::endl;
-
         }
 
     }
