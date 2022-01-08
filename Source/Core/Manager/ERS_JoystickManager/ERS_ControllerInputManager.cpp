@@ -46,22 +46,32 @@ void ERS_CLASS_ControllerInputManager::UpdateNumberJoysticks() {
         }
     }
 
-    std::cout<<NumberJoysticks_<<std::endl;
+}
+
+// Update Number Axes Per Joystick
+void ERS_CLASS_ControllerInputManager::UpdateNumberAxesPerJoystick() {
+
+    // Clear JS Axes List
+    JoystickAxes_.erase(JoystickAxes_.begin(), JoystickAxes_.end());
+
+    // Iterate Through Current Number Joysticks
     for (int i = 0; i < NumberJoysticks_; i++) {
         int NumAxes;
         glfwGetJoystickAxes(i, &NumAxes);
-        std::cout<<NumAxes<<std::endl;
+        JoystickAxes_.push_back(NumAxes);
     }
 
-
-
 }
+
+// Get Data For Each Axis
+void ERS_CLASS_ControllerInputManager::
 
 
 // Update Controllers
 void ERS_CLASS_ControllerInputManager::UpdateControllers() {
 
-    // Update Num Joysticks
+    // Update Data
     UpdateNumberJoysticks();
+    UpdateNumberAxesPerJoystick();    
 
 }

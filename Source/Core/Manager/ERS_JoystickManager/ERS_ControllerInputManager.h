@@ -41,6 +41,7 @@ private:
 
     void UpdateNumberJoysticks(); /**<Updates the number of Joysticks present.*/
     void UpdateNumberAxesPerJoystick(); /**<Updates Number Of Axes Per Joystick*/
+    void UpdateJoystickValues(); /**<Updates the values for every joystick axis*/
 
 public:
 
