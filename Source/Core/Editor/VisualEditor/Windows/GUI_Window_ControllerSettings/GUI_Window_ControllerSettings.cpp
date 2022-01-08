@@ -47,10 +47,26 @@ void Window_ControllerSettings::Draw() {
                 ControllerNames_[i] = HIDUtils_->ControllerInputManager->ControllerNames_[i].c_str();
             }
             ImGui::Combo("Selected Controller", &SelectedController_, ControllerNames_, NumberControllers, NumberControllers);
+            ImGui::Separator();
 
             // Check if there aren't any controllers, display no controllers message
             if (NumberControllers == 0) {
                 ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "No controllers detected. Try running 'Detect New Controllers'");
+            } else {
+
+                // Get Game Controller State
+                GLFWgamepadstate State = HIDUtils_->ControllerInputManager->ControllerStates_[SelectedController_];
+
+                // Display Joystick Info
+                ImGui::Text("Left Joystick Vertical Axis: %d", State.axes[GLFW_GAMEPAD_AXIS_LEFT_Y]);
+                ImGui::Text("Left Joystick Horizontal Axis: %d", State.axes[GLFW_GAMEPAD_AXIS_LEFT_X]);
+                
+                ImGui::Text("");
+
+                ImGui::Text("Right Joystick Vertical Axis: %d", State.axes[GLFW_GAMEPAD_AXIS_RIGHT_Y]);
+                ImGui::Text("Right Joystick Horizontal Axis: %d", State.axes[GLFW_GAMEPAD_AXIS_RIGHT_X]);
+
+
             }
 
         }
