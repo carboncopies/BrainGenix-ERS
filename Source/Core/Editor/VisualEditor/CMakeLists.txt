@@ -42,6 +42,7 @@ target_link_libraries(VisualEditor
     Menu_View
     Menu_Window
     Menu_Debug
+    Menu_Settings
 
     )
 
