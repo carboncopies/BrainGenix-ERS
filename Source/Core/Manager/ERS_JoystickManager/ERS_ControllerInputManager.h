@@ -39,7 +39,7 @@ private:
 
 private:
 
-    void UpdateNumberControllers(); /**<Updates the number of Controllers present.*/
+    void UpdateNumberInputDevices(); /**<Updates the number of Input Devices present.*/
     void CheckIfSupportedControllers(); /**<Updates ControllerSupported List*/
     void UpdateControllerStates(); /**<Updates the values for every controller param*/
 

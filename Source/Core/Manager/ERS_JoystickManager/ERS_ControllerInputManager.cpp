@@ -39,10 +39,10 @@ ERS_CLASS_ControllerInputManager::~ERS_CLASS_ControllerInputManager() {
 void ERS_CLASS_ControllerInputManager::UpdateNumberInputDevices() {
 
     // Iterate Through All 16 Supported Controllers
-    NumberControllers_ = 0;
+    NumberInputDevices_ = 0;
     for (int i = 0; i < 16; i++) {
         if(glfwJoystickPresent(i)) {
-            NumberControllers_ ++;
+            NumberInputDevices_ ++;
         }
     }
 
@@ -91,7 +91,7 @@ void ERS_CLASS_ControllerInputManager::UpdateControllerStates() {
 void ERS_CLASS_ControllerInputManager::UpdateControllers() {
 
     // Update Data
-    UpdateNumberJoysticks();
+    UpdateNumberInputDevices();
     CheckIfSupportedControllers();
     UpdateControllerStates();
 
