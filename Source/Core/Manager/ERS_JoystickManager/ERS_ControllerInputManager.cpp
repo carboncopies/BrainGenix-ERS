@@ -64,7 +64,25 @@ void ERS_CLASS_ControllerInputManager::UpdateNumberAxesPerJoystick() {
 }
 
 // Get Data For Each Axis
-void ERS_CLASS_ControllerInputManager::
+void ERS_CLASS_ControllerInputManager::UpdateJoystickValues() {
+
+    // Clear Value
+    JoystickValues_.erase(JoystickValues_.begin(), JoystickValues_.end());
+
+    // Iterate Through All Joysticks
+    for (int JoystickIndex = 0; JoystickIndex < NumberJoysticks_; JoystickIndex++) {
+
+
+        // Iterate Through Each Axis Of Joystick
+        for (int JoystickAxis = 0; JoystickAxis < JoystickAxes_[JoystickIndex]; JoystickAxis++) {
+
+
+        }
+
+
+    }
+
+}
 
 
 // Update Controllers
