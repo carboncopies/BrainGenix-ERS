@@ -66,27 +66,33 @@ void ERS_CLASS_ControllerInputManager::UpdateNumberAxesPerJoystick() {
 // Get Data For Each Axis
 void ERS_CLASS_ControllerInputManager::UpdateJoystickValues() {
 
-    // Clear Value
-    JoystickValues_.erase(JoystickValues_.begin(), JoystickValues_.end());
+    int NumJoysticks;
+    const float* JoystickData = glfwGetJoystickAxes(0, &NumJoysticks);
 
-    // Iterate Through All Joysticks
-    for (int JoystickIndex = 0; JoystickIndex < NumberJoysticks_; JoystickIndex++) {
+    std::cout<<JoystickData[0]<<std::endl;
 
-        // Add Empty Int Vec
-        JoystickValues_.push_back(std::vector<int>());
+    // // Clear Value
+    // JoystickValues_.erase(JoystickValues_.begin(), JoystickValues_.end());
 
-        // Iterate Through Each Axis Of Joystick
-        for (int JoystickAxis = 0; JoystickAxis < JoystickAxes_[JoystickIndex]; JoystickAxis++) {
+    // // Iterate Through All Joysticks
+    // for (int JoystickIndex = 0; JoystickIndex < NumberJoysticks_; JoystickIndex++) {
 
-            
+    //     // Add Empty Int Vec
+    //     JoystickValues_.push_back(std::vector<int>());
+
+    //     // Iterate Through Each Axis Of Joystick
+    //     for (int JoystickAxis = 0; JoystickAxis < JoystickAxes_[JoystickIndex]; JoystickAxis++) {
+
+    //         float JoystickValue;
+    //         glfwGetJoystickAxes()
 
 
-        }
+    //     }
 
 
 
 
-    }
+    // }
 
 }
 
