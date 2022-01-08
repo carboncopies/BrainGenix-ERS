@@ -46,7 +46,7 @@ void Window_ControllerSettings::Draw() {
             for (int i = 0; i < NumberControllers; i++) {
                 ControllerNames_[i] = HIDUtils_->ControllerInputManager->ControllerNames_[i].c_str();
             }
-            ImGui::Combo("Selected Controller", &SelectedController_, NumberControllers, NumberControllers);
+            ImGui::Combo("Selected Controller", &SelectedController_, ControllerNames_, NumberControllers, NumberControllers);
 
         }
 
