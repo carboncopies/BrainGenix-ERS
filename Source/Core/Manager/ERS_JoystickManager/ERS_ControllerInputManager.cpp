@@ -35,14 +35,14 @@ ERS_CLASS_ControllerInputManager::~ERS_CLASS_ControllerInputManager() {
 }
 
 
-// Detect Joysticks
-void ERS_CLASS_ControllerInputManager::UpdateNumberJoysticks() {
+// Detect Controllers
+void ERS_CLASS_ControllerInputManager::UpdateNumberControllers() {
 
-    // Iterate Through All 16 Supported Joysticks
-    NumberJoysticks_ = 0;
+    // Iterate Through All 16 Supported Controllers
+    NumberControllers_ = 0;
     for (int i = 0; i < 16; i++) {
         if(glfwJoystickPresent(i)) {
-            NumberJoysticks_ ++;
+            NumberControllers_ ++;
         }
     }
 
