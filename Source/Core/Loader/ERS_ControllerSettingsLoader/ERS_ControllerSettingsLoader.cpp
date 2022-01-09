@@ -78,12 +78,15 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(std::shared_ptr<
         ControllerSettings->CircleButtonIndex = SettingsData["CircleButtonIndex"].as<int>();
         ControllerSettings->CrossButtonIndex = SettingsData["CrossButtonIndex"].as<int>();
         ControllerSettings->RightBumperButtonIndex = SettingsData["RightBumperButtonIndex"].as<int>();
+        ControllerSettings->LeftBumperButtonIndex = SettingsData["LeftBumperButtonIndex"].as<int>();
         ControllerSettings->DPADUpButtonIndex = SettingsData["DPADUpButtonIndex"].as<int>();
         ControllerSettings->DPADDownButtonIndex = SettingsData["DPADDownButtonIndex"].as<int>();
         ControllerSettings->DPADLeftButtonIndex = SettingsData["DPADLeftButtonIndex"].as<int>();
         ControllerSettings->DPADRightButtonIndex = SettingsData["DPADRightButtonIndex"].as<int>();
 
     } catch(YAML::BadSubscript) {
+        
+        // Log Error
         SystemUtils_->Logger_->Log("Error Loading Controller Configuration, Invalid Parameter(s), Will Use Default Instead", 9);
         
         // Use Defaults
@@ -115,10 +118,11 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(std::shared_ptr<
         ControllerSettings->CircleButtonIndex = 1;
         ControllerSettings->CrossButtonIndex = 0;
         ControllerSettings->RightBumperButtonIndex = 5;
-        ControllerSettings->DPADUpButtonIndex = 4;
-        ControllerSettings->DPADDownButtonIndex = 11;
-        ControllerSettings->DPADLeftButtonIndex = SettingsData["DPADLeftButtonIndex"].as<int>();
-        ControllerSettings->DPADRightButtonIndex = SettingsData["DPADRightButtonIndex"].as<int>();
+        ControllerSettings->LeftBumperButtonIndex = 4;
+        ControllerSettings->DPADUpButtonIndex = 11;
+        ControllerSettings->DPADDownButtonIndex = 12;
+        ControllerSettings->DPADLeftButtonIndex = 13;
+        ControllerSettings->DPADRightButtonIndex = 14;
 
     }    
 
