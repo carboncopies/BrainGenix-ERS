@@ -35,5 +35,17 @@ ERS_CLASS_ControllerSettingsLoader::~ERS_CLASS_ControllerSettingsLoader() {
 
 // Load System Controller Settings
 bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(std::shared_ptr<ERS_STRUCT_ControllerSettings> ControllerSettings, long AssetID) {
+
+    // Log Loading
+    SystemUtils_->Logger_->Log(std::string(std::string("Loading ERS Controller Settings From AssetID: ") + std::to_string(AssetID)).c_str(), 4);
+
+    // Read Data
+    std::shared_ptr<ERS_STRUCT_IOData> SettingsRawData = std::make_shared<ERS_STRUCT_IOData>();
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, SettingsRawData);
+    std::string SettingsEncodedString = std::string((const char*)SettingsRawData->Data.get());
+    YAML::Node SettingsData = YAML::Load(SettingsEncodedString);
     
+    // Populate Settings Params
+
+
 }
