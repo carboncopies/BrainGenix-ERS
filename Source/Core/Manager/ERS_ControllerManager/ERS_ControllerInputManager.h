@@ -55,6 +55,7 @@ public:
     std::vector<GLFWgamepadstate> ControllerStates_; /**<Vector Of Controller States*/
     std::vector<std::string> ControllerNames_; /**<Human Readable Names Of Controllers*/
     std::vector<ERS_STRUCT_ControllerSettings> ControllerSettings_; /**<List of controller settings for each controller*/
+    std::vector<ERS_STRUCT_ControllerSettings> AvailableControllerProfiles_; /**<List of different loaded profiles. Will try to pick based on correct one automatically*/
 
 public:
 
