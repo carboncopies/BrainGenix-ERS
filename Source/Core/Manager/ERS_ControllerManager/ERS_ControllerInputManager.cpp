@@ -87,6 +87,9 @@ void ERS_CLASS_ControllerInputManager::UpdateControllerStates() {
             // Append To Name
             ControllerNames_.push_back(std::string(glfwGetGamepadName(i)));
 
+            // Add Default Settings
+            ControllerSettings_.push_back(ERS_STRUCT_ControllerSettings());
+
         }
 
     }
