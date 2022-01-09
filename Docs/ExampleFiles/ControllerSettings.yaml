@@ -21,15 +21,19 @@ MaxThresholdJoystickRightY: 0.98f;
 
 
 # Button Indexes (For Remapping)
-JoystickLeftButtonIndex:
-JoystickRightButtonIndex:
-BackButtonIndex:
-MenuButtonIndex:
-OptionsButtonIndex:
-TriangleButtonIndex:
-SquareButtonIndex:
-CircleButtonIndex:
-CrossButtonIndex:
-RightBumperButtonIndex:
-LeftBumperButtonIndex:
+JoystickLeftButtonIndex: 9
+JoystickRightButtonIndex: 10
+BackButtonIndex: 6
+MenuButtonIndex: 7
+OptionsButtonIndex: 8
+TriangleButtonIndex: 3
+SquareButtonIndex: 2
+CircleButtonIndex: 1
+CrossButtonIndex: 0
+RightBumperButtonIndex: 5
+LeftBumperButtonIndex: 4
+DPADUpButtonIndex: 11
+DPADDownButtonIndex: 12
+DPADLeftButtonIndex: 13
+DPADRightButtonIndex: 14
 
