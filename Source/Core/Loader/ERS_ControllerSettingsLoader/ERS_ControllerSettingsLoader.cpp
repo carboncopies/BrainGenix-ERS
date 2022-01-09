@@ -102,6 +102,10 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(std::shared_ptr<
         SystemUtils_->Logger_->Log("Error Loading Controller Configuration, Invalid Parameter(s), Will Use Default Instead", 9);
         
         // Use Defaults
+        ControllerSettings->ControllerName = std::string("*");
+        ControllerSettings->SettingsProfileName = std::string("Default Layout");
+
+
         ControllerSettings->JoystickLeftXGain = 1.0f;
         ControllerSettings->JoystickLeftYGain = 1.0f;
 
