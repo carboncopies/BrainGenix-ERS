@@ -60,4 +60,4 @@ public:
     bool LoadControllerSettings(std::shared_ptr<ERS_STRUCT_ControllerSettings> ControllerSettings, long AssetID);
 
 
-}
+};
