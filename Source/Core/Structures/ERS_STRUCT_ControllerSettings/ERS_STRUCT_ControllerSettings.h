@@ -64,5 +64,9 @@ struct ERS_STRUCT_ControllerSettings {
     int JoystickLeftButtonIndex; /**<Button Index*/
     int LeftBumperButtonIndex; /**<Button Index*/
     int RightBumperButtonIndex; /**<Button Index*/
+    int DPADUpButtonIndex; /**<Button Index*/
+    int DPADDownButtonIndex; /**<Button Index*/
+    int DPADLeftButtonIndex; /**<Button Index*/
+    int DPADRightButtonIndex; /**<Button Index*/
 
 };

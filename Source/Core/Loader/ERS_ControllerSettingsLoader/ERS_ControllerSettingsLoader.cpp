@@ -75,7 +75,11 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(std::shared_ptr<
     ControllerSettings->CircleButtonIndex = SettingsData["CircleButtonIndex"].as<int>();
     ControllerSettings->CrossButtonIndex = SettingsData["CrossButtonIndex"].as<int>();
     ControllerSettings->RightBumperButtonIndex = SettingsData["RightBumperButtonIndex"].as<int>();
-    ControllerSettings->LeftBumperButtonIndex = SettingsData["LeftBumperButtonIndex"].as<int>();
+    ControllerSettings->DPADUpButtonIndex = SettingsData["DPADUpButtonIndex"].as<int>();
+    ControllerSettings->DPADDownButtonIndex = SettingsData["DPADDownButtonIndex"].as<int>();
+    ControllerSettings->DPADLeftButtonIndex = SettingsData["DPADLeftButtonIndex"].as<int>();
+    ControllerSettings->DPADRightButtonIndex = SettingsData["DPADRightButtonIndex"].as<int>();
+
     
 
 
