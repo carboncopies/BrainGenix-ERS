@@ -2,6 +2,10 @@
 # Example for controller settings. Would normally be stored as a .ERS asset on disk or in DB like all other ERS assets. Is set for each project #
 #################################################################################################################################################
 
+# Name For Controller To Apply To
+ControllerName: "PS4 Controller"
+ProfileName: "Example Profile"
+
 # Joystick Gain Settings
 JoystickLeftXGain: 1.0f;
 JoystickLeftYGain: 1.0f;
