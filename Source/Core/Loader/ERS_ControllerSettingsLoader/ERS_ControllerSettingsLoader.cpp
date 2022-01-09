@@ -54,6 +54,17 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(std::shared_ptr<
     ControllerSettings->JoystickRightYGain = SettingsData["JoystickRightYGain"].as<float>();
 
 
+    ControllerSettings->MinThresholdJoystickLeftX = SettingsData["MinThresholdJoystickLeftX"].as<float>();
+    ControllerSettings->MinThresholdJoystickLeftY = SettingsData["MinThresholdJoystickLeftY"].as<float>();
+    ControllerSettings->MinThresholdJoystickRightX = SettingsData["MinThresholdJoystickLeftX"].as<float>();
+    ControllerSettings->MinThresholdJoystickRightY = SettingsData["MinThresholdJoystickRightY"].as<float>();
+
+    ControllerSettings->MaxThresholdJoystickLeftX = SettingsData["MaxThresholdJoystickLeftX"].as<float>();
+    ControllerSettings->MaxThresholdJoystickLeftY = SettingsData["MaxThresholdJoystickLeftY"].as<float>();
+    ControllerSettings->MaxThresholdJoystickRightX = SettingsData["MaxThresholdJoystickRightX"].as<float>();
+    ControllerSettings->MaxThresholdJoystickRightY = SettingsData["MaxThresholdJoystickRightY"].as<float>();
+
+
     ControllerSettings->JoystickLeftButtonIndex = SettingsData["JoystickLeftButtonIndex"].as<int>();
     ControllerSettings->JoystickRightButtonIndex = SettingsData["JoystickRightButtonIndex"].as<int>();
     ControllerSettings->BackButtonIndex = SettingsData["BackButtonIndex"].as<int>();

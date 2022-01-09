@@ -8,7 +8,16 @@ JoystickLeftYGain: 1.0f;
 JoystickRightXGain: 1.0f;
 JoystickRightYGain: 1.0f;
 
-# Joystick Thresholds
+# Joystick Thresholds (Range is scaled up from these thresholds to -1, +1. Useful if your controller doesn't sit at exactly 0 or go to +-1)
+MinThresholdJoystickLeftX: 0.02f;
+MinThresholdJoystickLeftY: 0.02f;
+MinThresholdJoystickRightX: 0.02f;
+MinThresholdJoystickRightY: 0.02f;
+
+MaxThresholdJoystickLeftX: 0.98f;
+MaxThresholdJoystickLeftY: 0.98f;
+MaxThresholdJoystickRightX: 0.98f;
+MaxThresholdJoystickRightY: 0.98f;
 
 
 # Button Indexes (For Remapping)
