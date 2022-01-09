@@ -58,6 +58,10 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(std::shared_ptr<
     try {
 
         // Populate Settings Params
+        ControllerSettings->ControllerName = SettingsData["ControllerName"].as<std::string>();
+        ControllerSettings->SettingsProfileName = SettingsData["SettingsProfileName"].as<std::string>();
+
+
         ControllerSettings->JoystickLeftXGain = SettingsData["JoystickLeftXGain"].as<float>();
         ControllerSettings->JoystickLeftYGain = SettingsData["JoystickLeftYGain"].as<float>();
 

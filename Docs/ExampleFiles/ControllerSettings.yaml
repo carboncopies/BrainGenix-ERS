@@ -4,7 +4,7 @@
 
 # Name For Controller To Apply To
 ControllerName: "PS4 Controller"
-ProfileName: "Example Profile"
+SettingsProfileName: "Example Profile"
 
 # Joystick Gain Settings
 JoystickLeftXGain: 1.0f;
