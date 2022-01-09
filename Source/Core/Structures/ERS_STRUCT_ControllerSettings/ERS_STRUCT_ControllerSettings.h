@@ -24,7 +24,7 @@
  * @brief Used to remap buttons, adjust gains, set thresholds, etc. User adjustable controller settings.
  * 
  */
-struct ControllerSettings {
+struct ERS_STRUCT_ControllerSettings {
 
     // Controller Settings Name
     std::string SettingsProfileName; /**<Name of this profile. Shows in dropdown menu*/

@@ -125,6 +125,7 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_SystemUtils)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ProjectUtils)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Project)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_HumanInputDeviceUtils)
+add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ControllerSettings)
 
 
 add_subdirectory(${SRC_DIR}/Core/Loader/TextureLoader)

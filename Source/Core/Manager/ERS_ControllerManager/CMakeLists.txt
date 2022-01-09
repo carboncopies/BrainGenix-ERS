@@ -29,6 +29,7 @@ target_link_libraries(ERS_ControllerInputManager
 target_link_libraries(ERS_ControllerInputManager
 
     ERS_STRUCT_SystemUtils
+    ERS_STRUCT_ControllerSettings
 
     )
 

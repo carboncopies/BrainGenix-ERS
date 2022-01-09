@@ -25,6 +25,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_ControllerSettings.h>
 
 
 /**
@@ -53,6 +54,7 @@ public:
     int NumberControllers_ = 0; /**<Current Number Of Detected Controllers*/
     std::vector<GLFWgamepadstate> ControllerStates_; /**<Vector Of Controller States*/
     std::vector<std::string> ControllerNames_; /**<Human Readable Names Of Controllers*/
+    std::vector<ERS_STRUCT_ControllerSettings> ControllerSettings_; /**<List of controller settings for each controller*/
 
 public:
 
