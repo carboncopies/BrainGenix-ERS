@@ -45,7 +45,27 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(std::shared_ptr<
     std::string SettingsEncodedString = std::string((const char*)SettingsRawData->Data.get());
     YAML::Node SettingsData = YAML::Load(SettingsEncodedString);
     
-    // Populate Settings Params
 
+    // Populate Settings Params
+    ControllerSettings->JoystickLeftXGain = SettingsData["JoystickLeftXGain"].as<float>();
+    ControllerSettings->JoystickLeftYGain = SettingsData["JoystickLeftYGain"].as<float>();
+
+    ControllerSettings->JoystickRightXGain = SettingsData["JoystickRightXGain"].as<float>();
+    ControllerSettings->JoystickRightYGain = SettingsData["JoystickRightYGain"].as<float>();
+
+
+    ControllerSettings->JoystickLeftButtonIndex = SettingsData["JoystickLeftButtonIndex"].as<int>();
+    ControllerSettings->JoystickRightButtonIndex = SettingsData["JoystickRightButtonIndex"].as<int>();
+    ControllerSettings->BackButtonIndex = SettingsData["BackButtonIndex"].as<int>();
+    ControllerSettings->MenuButtonIndex = SettingsData["MenuButtonIndex"].as<int>();
+    ControllerSettings->OptionsButtonIndex = SettingsData["OptionsButtonIndex"].as<int>();
+    ControllerSettings->TriangleButtonIndex = SettingsData["TriangleButtonIndex"].as<int>();
+    ControllerSettings->SquareButtonIndex = SettingsData["SquareButtonIndex"].as<int>();
+    ControllerSettings->CircleButtonIndex = SettingsData["CircleButtonIndex"].as<int>();
+    ControllerSettings->CrossButtonIndex = SettingsData["CrossButtonIndex"].as<int>();
+    ControllerSettings->RightBumperButtonIndex = SettingsData["RightBumperButtonIndex"].as<int>();
+    ControllerSettings->LeftBumperButtonIndex = SettingsData["LeftBumperButtonIndex"].as<int>();
+    
+    
 
 }

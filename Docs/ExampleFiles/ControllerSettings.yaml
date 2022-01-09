@@ -2,3 +2,25 @@
 # Example for controller settings. Would normally be stored as a .ERS asset on disk or in DB like all other ERS assets. Is set for each project #
 #################################################################################################################################################
 
+# Joystick Gain Settings
+JoystickLeftXGain: 1.0f;
+JoystickLeftYGain: 1.0f;
+JoystickRightXGain: 1.0f;
+JoystickRightYGain: 1.0f;
+
+# Joystick Thresholds
+
+
+# Button Indexes (For Remapping)
+JoystickLeftButtonIndex:
+JoystickRightButtonIndex:
+BackButtonIndex:
+MenuButtonIndex:
+OptionsButtonIndex:
+TriangleButtonIndex:
+SquareButtonIndex:
+CircleButtonIndex:
+CrossButtonIndex:
+RightBumperButtonIndex:
+LeftBumperButtonIndex:
+
