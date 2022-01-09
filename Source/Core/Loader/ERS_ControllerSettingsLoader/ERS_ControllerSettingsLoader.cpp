@@ -46,41 +46,81 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(std::shared_ptr<
     YAML::Node SettingsData = YAML::Load(SettingsEncodedString);
     
 
-    // Populate Settings Params
-    ControllerSettings->JoystickLeftXGain = SettingsData["JoystickLeftXGain"].as<float>();
-    ControllerSettings->JoystickLeftYGain = SettingsData["JoystickLeftYGain"].as<float>();
+    // Try Loading From YAML
+    try {
 
-    ControllerSettings->JoystickRightXGain = SettingsData["JoystickRightXGain"].as<float>();
-    ControllerSettings->JoystickRightYGain = SettingsData["JoystickRightYGain"].as<float>();
+        // Populate Settings Params
+        ControllerSettings->JoystickLeftXGain = SettingsData["JoystickLeftXGain"].as<float>();
+        ControllerSettings->JoystickLeftYGain = SettingsData["JoystickLeftYGain"].as<float>();
 
-
-    ControllerSettings->MinThresholdJoystickLeftX = SettingsData["MinThresholdJoystickLeftX"].as<float>();
-    ControllerSettings->MinThresholdJoystickLeftY = SettingsData["MinThresholdJoystickLeftY"].as<float>();
-    ControllerSettings->MinThresholdJoystickRightX = SettingsData["MinThresholdJoystickLeftX"].as<float>();
-    ControllerSettings->MinThresholdJoystickRightY = SettingsData["MinThresholdJoystickRightY"].as<float>();
-
-    ControllerSettings->MaxThresholdJoystickLeftX = SettingsData["MaxThresholdJoystickLeftX"].as<float>();
-    ControllerSettings->MaxThresholdJoystickLeftY = SettingsData["MaxThresholdJoystickLeftY"].as<float>();
-    ControllerSettings->MaxThresholdJoystickRightX = SettingsData["MaxThresholdJoystickRightX"].as<float>();
-    ControllerSettings->MaxThresholdJoystickRightY = SettingsData["MaxThresholdJoystickRightY"].as<float>();
+        ControllerSettings->JoystickRightXGain = SettingsData["JoystickRightXGain"].as<float>();
+        ControllerSettings->JoystickRightYGain = SettingsData["JoystickRightYGain"].as<float>();
 
 
-    ControllerSettings->JoystickLeftButtonIndex = SettingsData["JoystickLeftButtonIndex"].as<int>();
-    ControllerSettings->JoystickRightButtonIndex = SettingsData["JoystickRightButtonIndex"].as<int>();
-    ControllerSettings->BackButtonIndex = SettingsData["BackButtonIndex"].as<int>();
-    ControllerSettings->MenuButtonIndex = SettingsData["MenuButtonIndex"].as<int>();
-    ControllerSettings->OptionsButtonIndex = SettingsData["OptionsButtonIndex"].as<int>();
-    ControllerSettings->TriangleButtonIndex = SettingsData["TriangleButtonIndex"].as<int>();
-    ControllerSettings->SquareButtonIndex = SettingsData["SquareButtonIndex"].as<int>();
-    ControllerSettings->CircleButtonIndex = SettingsData["CircleButtonIndex"].as<int>();
-    ControllerSettings->CrossButtonIndex = SettingsData["CrossButtonIndex"].as<int>();
-    ControllerSettings->RightBumperButtonIndex = SettingsData["RightBumperButtonIndex"].as<int>();
-    ControllerSettings->DPADUpButtonIndex = SettingsData["DPADUpButtonIndex"].as<int>();
-    ControllerSettings->DPADDownButtonIndex = SettingsData["DPADDownButtonIndex"].as<int>();
-    ControllerSettings->DPADLeftButtonIndex = SettingsData["DPADLeftButtonIndex"].as<int>();
-    ControllerSettings->DPADRightButtonIndex = SettingsData["DPADRightButtonIndex"].as<int>();
+        ControllerSettings->MinThresholdJoystickLeftX = SettingsData["MinThresholdJoystickLeftX"].as<float>();
+        ControllerSettings->MinThresholdJoystickLeftY = SettingsData["MinThresholdJoystickLeftY"].as<float>();
+        ControllerSettings->MinThresholdJoystickRightX = SettingsData["MinThresholdJoystickLeftX"].as<float>();
+        ControllerSettings->MinThresholdJoystickRightY = SettingsData["MinThresholdJoystickRightY"].as<float>();
 
-    
+        ControllerSettings->MaxThresholdJoystickLeftX = SettingsData["MaxThresholdJoystickLeftX"].as<float>();
+        ControllerSettings->MaxThresholdJoystickLeftY = SettingsData["MaxThresholdJoystickLeftY"].as<float>();
+        ControllerSettings->MaxThresholdJoystickRightX = SettingsData["MaxThresholdJoystickRightX"].as<float>();
+        ControllerSettings->MaxThresholdJoystickRightY = SettingsData["MaxThresholdJoystickRightY"].as<float>();
+
+
+        ControllerSettings->JoystickLeftButtonIndex = SettingsData["JoystickLeftButtonIndex"].as<int>();
+        ControllerSettings->JoystickRightButtonIndex = SettingsData["JoystickRightButtonIndex"].as<int>();
+        ControllerSettings->BackButtonIndex = SettingsData["BackButtonIndex"].as<int>();
+        ControllerSettings->MenuButtonIndex = SettingsData["MenuButtonIndex"].as<int>();
+        ControllerSettings->OptionsButtonIndex = SettingsData["OptionsButtonIndex"].as<int>();
+        ControllerSettings->TriangleButtonIndex = SettingsData["TriangleButtonIndex"].as<int>();
+        ControllerSettings->SquareButtonIndex = SettingsData["SquareButtonIndex"].as<int>();
+        ControllerSettings->CircleButtonIndex = SettingsData["CircleButtonIndex"].as<int>();
+        ControllerSettings->CrossButtonIndex = SettingsData["CrossButtonIndex"].as<int>();
+        ControllerSettings->RightBumperButtonIndex = SettingsData["RightBumperButtonIndex"].as<int>();
+        ControllerSettings->DPADUpButtonIndex = SettingsData["DPADUpButtonIndex"].as<int>();
+        ControllerSettings->DPADDownButtonIndex = SettingsData["DPADDownButtonIndex"].as<int>();
+        ControllerSettings->DPADLeftButtonIndex = SettingsData["DPADLeftButtonIndex"].as<int>();
+        ControllerSettings->DPADRightButtonIndex = SettingsData["DPADRightButtonIndex"].as<int>();
+
+    } catch(YAML::BadSubscript) {
+        SystemUtils_->Logger_->Log("Error Loading Controller Configuration, Invalid Parameter(s), Will Use Default Instead", 9);
+        
+        // Use Defaults
+        ControllerSettings->JoystickLeftXGain = 1.0f;
+        ControllerSettings->JoystickLeftYGain = 1.0f;
+
+        ControllerSettings->JoystickRightXGain = 1.0f;
+        ControllerSettings->JoystickRightYGain = 1.0f;
+
+
+        ControllerSettings->MinThresholdJoystickLeftX = 0.0f;
+        ControllerSettings->MinThresholdJoystickLeftY = 0.0f;
+        ControllerSettings->MinThresholdJoystickRightX = 0.0f;
+        ControllerSettings->MinThresholdJoystickRightY = 0.0f;
+
+        ControllerSettings->MaxThresholdJoystickLeftX = 1.0f;
+        ControllerSettings->MaxThresholdJoystickLeftY = 1.0f;
+        ControllerSettings->MaxThresholdJoystickRightX = 1.0f;
+        ControllerSettings->MaxThresholdJoystickRightY = 1.0f;
+
+
+        ControllerSettings->JoystickLeftButtonIndex = 9;
+        ControllerSettings->JoystickRightButtonIndex = 10;
+        ControllerSettings->BackButtonIndex = 6;
+        ControllerSettings->MenuButtonIndex = 7;
+        ControllerSettings->OptionsButtonIndex = 8;
+        ControllerSettings->TriangleButtonIndex = 3;
+        ControllerSettings->SquareButtonIndex = 2;
+        ControllerSettings->CircleButtonIndex = 1;
+        ControllerSettings->CrossButtonIndex = 0;
+        ControllerSettings->RightBumperButtonIndex = 5;
+        ControllerSettings->DPADUpButtonIndex = 4;
+        ControllerSettings->DPADDownButtonIndex = 11;
+        ControllerSettings->DPADLeftButtonIndex = SettingsData["DPADLeftButtonIndex"].as<int>();
+        ControllerSettings->DPADRightButtonIndex = SettingsData["DPADRightButtonIndex"].as<int>();
+
+    }    
 
 
 }
