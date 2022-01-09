@@ -28,6 +28,7 @@ struct ERS_STRUCT_ControllerSettings {
 
     // Controller Settings Name
     std::string SettingsProfileName; /**<Name of this profile. Shows in dropdown menu*/
+    std::string ControllerName; /**<Name of the controller to apply this profile to*/
 
     // Joystick Settings
     float MinThresholdJoystickLeftX; /**<Minimum value from joystick to be considered a value*/
