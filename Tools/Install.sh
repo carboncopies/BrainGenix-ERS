@@ -13,3 +13,6 @@ sudo apt install libssl-dev -y
 # Install Monado Deps
 pip3 install numpy
 sudo apt install libusb-1.0-0-dev glslang-dev glslang-tools libeigen3-dev libudev-dev libgl1-mesa-dev -y
+
+# temporary monado drivers, will be compiled as part of the project later...
+apt install libopenxr-loader1 libopenxr-dev libopenxr1-monado -y
