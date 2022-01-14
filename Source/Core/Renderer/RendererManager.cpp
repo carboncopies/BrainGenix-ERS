@@ -57,7 +57,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     GuiSystem_ = std::make_shared<GUISystem>(SystemUtils_, Window_, Cursors3D_, ProjectUtils_->SceneManager_, ProjectUtils_, VisualRenderer_, HIDUtils_);
 
     // Setup IOManager
-    SystemUtils_->Logger_->Log("Initializing Input/Output Manager", 5);
+    //SystemUtils_->Logger_->Log("Initializing Input/Output Manager", 5);
     //IOManager_ = std::make_shared<IOManager>(SystemUtils_->Logger_, Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
 
     // Make Viewport
