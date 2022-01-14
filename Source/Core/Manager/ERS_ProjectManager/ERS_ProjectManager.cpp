@@ -51,7 +51,10 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
 
     // Load Controller Settings
     for (int i = 0; i < Project_.GameControllerSettingsIDs.size(); i++) {
-        
+        long ID = Project_.GameControllerSettingsIDs[i];
+        std::shared_ptr<ERS_STRUCT_ControllerSettings> Settings = std::make_shared<ERS_STRUCT_ControllerSettings>();
+        ControllerSettingsLoader_->LoadControllerSettings(Settings, ID);
+        Project_.ControllerSettings.push_back(Settings);
     }
 
     // Load Default Scene
