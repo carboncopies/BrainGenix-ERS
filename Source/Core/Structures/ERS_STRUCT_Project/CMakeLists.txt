@@ -18,6 +18,7 @@ target_link_libraries(ERS_STRUCT_Project
 
 # Link Internal Libs
 target_link_libraries(ERS_STRUCT_Project
+    ERS_STRUCT_ControllerSettings
     )
 
 
