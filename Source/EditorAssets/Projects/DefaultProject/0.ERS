@@ -26,3 +26,7 @@ DefaultScene: 0
 EditorLayouts:
     0: 1
 DefaultLayout: 0
+
+# Game Controller Settings
+ControllerSettings:
+    0: 11
