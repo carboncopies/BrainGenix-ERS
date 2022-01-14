@@ -48,6 +48,9 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Project With ID ") + std::to_string(AssetID)).c_str(), 5);
     Project_ = ProjectLoader_->LoadProject(AssetID);
 
+    // Load Controller Settings
+    
+
     // Load Default Scene
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Project Default Scene") + std::to_string(AssetID)).c_str(), 5);
     SceneManager_->AddScene(SceneLoader_->ProcessScene(Project_.SceneIDs[Project_.DefaultScene]));

@@ -29,6 +29,8 @@ target_link_libraries(ERS_ProjectManager
     ERS_ProjectLoader
     ERS_ProjectWriter
 
+    ERS_ControllerSettingsLoader
+
     ERS_SceneManager
     ERS_SceneLoader
 
