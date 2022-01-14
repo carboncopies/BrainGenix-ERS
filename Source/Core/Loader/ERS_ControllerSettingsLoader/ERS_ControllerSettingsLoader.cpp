@@ -51,6 +51,7 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(std::shared_ptr<
         SettingsData = YAML::Load(SettingsEncodedString);
     } catch(YAML::BadFile) {
         SystemUtils_->Logger_->Log("Error Loading, Invalid YAML Syntax", 9);
+        return false;
     }
 
 
@@ -139,8 +140,8 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(std::shared_ptr<
         ControllerSettings->DPADDownButtonIndex = 12;
         ControllerSettings->DPADLeftButtonIndex = 13;
         ControllerSettings->DPADRightButtonIndex = 14;
-
+        return false;
     }    
-
+    return true;
 
 }
