@@ -41,7 +41,7 @@ struct ERS_STRUCT_Project {
 
     std::vector<long> SceneIDs; /**<Vector Of Scene IDs Used In The Project*/
     std::vector<long> EditorLayoutIDs; /**<Vector Of Editor Layouts To Be Used In This Project*/
-    std::vector<long> GameControllerLayoutIDs; /**<Vector of layouts for game controller settings*/
+    std::vector<long> GameControllerSettingsIDs; /**<Vector of layouts for game controller settings*/
 
     int DefaultScene = 0; /**<Defualt Scene Index*/
     int DefaultLayout = 0; /**<Default Layout Used*/
