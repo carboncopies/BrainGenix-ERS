@@ -25,7 +25,8 @@ ERS_CLASS_ProjectManager::ERS_CLASS_ProjectManager(std::shared_ptr<ERS_STRUCT_Sy
     // Log Initialization
     SystemUtils_->Logger_->Log("Initializing ERS Project Manager", 5);
 
-
+    // Setup Controller Settings Loader
+    ControllerSettingsLoader_ = std::make_unique<ERS_CLASS_ControllerSettingsLoader>(SystemUtils_);
 
     // Load Default Project
     LoadProject(0);
@@ -49,7 +50,9 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
     Project_ = ProjectLoader_->LoadProject(AssetID);
 
     // Load Controller Settings
-    
+    for (int i = 0; i < Project_.GameControllerSettingsIDs.size(); i++) {
+        
+    }
 
     // Load Default Scene
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Project Default Scene") + std::to_string(AssetID)).c_str(), 5);
