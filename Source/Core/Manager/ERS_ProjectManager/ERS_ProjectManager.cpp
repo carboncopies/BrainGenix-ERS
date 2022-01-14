@@ -50,15 +50,23 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
     Project_ = ProjectLoader_->LoadProject(AssetID);
 
     // Load Controller Settings
+    SystemUtils_->Logger_->Log(std::string(std::string("Loading Project Game Controller Settings")).c_str(), 5);
     for (int i = 0; i < Project_.GameControllerSettingsIDs.size(); i++) {
+
+        // Log Loading
+        SystemUtils_->Logger_->Log(std::string(std::string("Loading Project Controller Settings With ID ") + std::to_string(Project_.GameControllerSettingsIDs[i])).c_str(), 5);
+
+        // Load Settings
         long ID = Project_.GameControllerSettingsIDs[i];
         std::shared_ptr<ERS_STRUCT_ControllerSettings> Settings = std::make_shared<ERS_STRUCT_ControllerSettings>();
         ControllerSettingsLoader_->LoadControllerSettings(Settings, ID);
+
+        // Add To Settings List
         Project_.ControllerSettings.push_back(Settings);
     }
 
     // Load Default Scene
-    SystemUtils_->Logger_->Log(std::string(std::string("Loading Project Default Scene With ID ") + std::to_string(AssetID)).c_str(), 5);
+    SystemUtils_->Logger_->Log(std::string(std::string("Loading Project Default Scene With ID ") + std::to_string(Project_.SceneIDs[Project_.DefaultScene])).c_str(), 5);
     SceneManager_->AddScene(SceneLoader_->ProcessScene(Project_.SceneIDs[Project_.DefaultScene]));
     SceneManager_->SetActiveScene(0);
 
