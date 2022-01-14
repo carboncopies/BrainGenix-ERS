@@ -82,7 +82,7 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     YAML::Node ControllerSettings = ProjectNode["ControllerSettings"];
     for (YAML::const_iterator it=ControllerSettings.begin(); it!=ControllerSettings.end(); ++it) {
         SystemUtils_->Logger_->Log(std::string(std::string("Identified Controller Settings Map With ID: ") + std::to_string(it->second.as<long>())).c_str(), 3);
-        Project.GameControllerSettingIDs.push_back(it->second.as<long>());
+        Project.GameControllerSettingsIDs.push_back(it->second.as<long>());
     }
 
     // Return Struct When Populated
