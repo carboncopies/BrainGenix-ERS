@@ -165,6 +165,7 @@ void Window_ControllerSettings::Draw() {
                         if (ImGui::Button("Delete Profile")) {
                             ProjectUtils_->ProjectManager_->Project_.ControllerSettings.erase(ProjectUtils_->ProjectManager_->Project_.ControllerSettings.begin() + SelectedControllerProfile_);
                             ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.erase(ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.begin() + SelectedControllerProfile_);
+                            SelectedControllerProfile_--;
                         }
                     }
                     if (ControllerSettings.size() < 128) {
