@@ -24,7 +24,7 @@ GUI_Menu_Settings::GUI_Menu_Settings(std::shared_ptr<ERS_STRUCT_SystemUtils> Sys
     SystemUtils_->Logger_->Log("Editor Setting Up Settings Menu", 4);
 
     // Instantiate Window Classes
-    Window_ControllerSettings_ = std::make_unique<Window_ControllerSettings>(SystemUtils_, HIDUtils_);
+    Window_ControllerSettings_ = std::make_unique<Window_ControllerSettings>(SystemUtils_, HIDUtils_, ProjectUtils_);
 
 }
 
