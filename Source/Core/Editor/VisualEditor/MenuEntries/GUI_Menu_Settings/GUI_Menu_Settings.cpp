@@ -13,11 +13,12 @@
 
 
 // Constructor
-GUI_Menu_Settings::GUI_Menu_Settings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils) {
+GUI_Menu_Settings::GUI_Menu_Settings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils) {
 
     // Copy In Pointer Struct
     SystemUtils_ = SystemUtils;
     HIDUtils_ = HIDUtils;
+    ProjectUtils_ = ProjectUtils;
 
     // Log Initialization
     SystemUtils_->Logger_->Log("Editor Setting Up Settings Menu", 4);

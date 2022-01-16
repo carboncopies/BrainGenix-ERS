@@ -25,6 +25,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_HumanInputDeviceUtils.h>
+#include <ERS_STRUCT_ProjectUtils.h>
 
 #include <GUI_Window_ControllerSettings.h>
 
@@ -39,6 +40,7 @@ class GUI_Menu_Settings {
 
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
         std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<HID Utils Pointer*/
+        std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Structure*/
 
 
         std::unique_ptr<Window_ControllerSettings> Window_ControllerSettings_; /**<ERS GUI Window*/
@@ -53,7 +55,7 @@ class GUI_Menu_Settings {
          * 
          * @param SystemUtils 
          */
-        GUI_Menu_Settings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils,  std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils);
+        GUI_Menu_Settings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils,  std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
 
 
         /**
