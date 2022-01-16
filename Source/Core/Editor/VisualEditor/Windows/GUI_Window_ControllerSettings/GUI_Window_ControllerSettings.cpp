@@ -151,13 +151,13 @@ void Window_ControllerSettings::Draw() {
                         ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "No controllers detected. Try running 'Detect New Controllers'");
                     } else {
 
-                        // Get Controller Settings Info
+                        // Get Controller Settings Info, Update Dropdown List
                         std::vector<std::shared_ptr<ERS_STRUCT_ControllerSettings>> ControllerSettings = ProjectUtils_->ProjectManager_->Project_.ControllerSettings;
 
-                        // Dropdown For Selected Settings
-                        for (int i= 0; i < ControllerSettings.size(); i++) {
-                            ImGui::Text(ControllerSettings[i]->SettingsProfileName.c_str());
+                        for (int i = 0; i < ControllerSettings.size(); i++) {
+                            ControllerProfileNames_.push_back()
                         }
+                    
 
                         // Thresholds
                         ImGui::Separator();
