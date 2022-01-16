@@ -146,25 +146,29 @@ void Window_ControllerSettings::Draw() {
                     ImGui::BeginChild("Controller Setttings"); 
 
 
+                    // Get Controller Settings Info
+                    std::vector<std::shared_ptr<ERS_STRUCT_ControllerSettings>> ControllerSettings = ProjectUtils_->ProjectManager_->Project_.ControllerSettings;
+
+                    // Update Controller Dropdown List And Index
+                    if (SelectedControllerProfile_ > ControllerSettings.size()) {
+                        SelectedControllerProfile_ = ControllerSettings.size() - 1;
+                    }
+
+                    for (int i = 0; i < ControllerSettings.size(); i++) {
+                        ControllerProfileNames_[i] = ControllerSettings[i]->SettingsProfileName.c_str();
+                    }
+
+                    // Selector Dropdown
+                    ImGui::Combo("Selected Controller Profile", &SelectedControllerProfile_, ControllerProfileNames_, ControllerSettings.size(),  ControllerSettings.size());
+                    
+
+
                     // Check if there aren't any controllers, display no controllers message
                     if (NumberControllers == 0) {
                         ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "No controllers detected. Try running 'Detect New Controllers'");
                     } else {
 
-                        // Get Controller Settings Info
-                        std::vector<std::shared_ptr<ERS_STRUCT_ControllerSettings>> ControllerSettings = ProjectUtils_->ProjectManager_->Project_.ControllerSettings;
 
-                        // Update Controller Dropdown List And Index
-                        if (SelectedControllerProfile_ > ControllerSettings.size()) {
-                            SelectedControllerProfile_ = ControllerSettings.size() - 1;
-                        }
-
-                        for (int i = 0; i < ControllerSettings.size(); i++) {
-                            ControllerProfileNames_[i] = ControllerSettings[i]->SettingsProfileName.c_str();
-                        }
-
-                        // Selector Dropdown
-                        ImGui::Combo("Selected Controller Profile", &SelectedControllerProfile_, ControllerProfileNames_, ControllerSettings.size(),  ControllerSettings.size());
                     
 
                         // Thresholds
