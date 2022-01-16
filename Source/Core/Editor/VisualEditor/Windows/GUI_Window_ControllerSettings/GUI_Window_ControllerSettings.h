@@ -45,6 +45,8 @@ class Window_ControllerSettings {
 
         const char* ControllerNames_[16]; /**<List Of Controller Names*/
         int SelectedController_ = 0; /**<Active Selected Controller*/
+        const char* ControllerProfileNames[128]; /**<List of Controller Profile Names*/
+        int SelectedControllerProfile_ = 0; /**<Index Of Selected Controller Profile*/
 
 
     private:
