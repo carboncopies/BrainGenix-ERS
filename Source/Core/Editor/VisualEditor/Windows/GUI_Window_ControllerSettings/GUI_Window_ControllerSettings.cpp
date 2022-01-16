@@ -54,13 +54,6 @@ void Window_ControllerSettings::Draw() {
 
         if (Visible) {
             
-            // Active Selected Controller Dropdown
-            int NumberControllers = HIDUtils_->ControllerInputManager->NumberControllers_;
-            for (int i = 0; i < NumberControllers; i++) {
-                ControllerNames_[i] = HIDUtils_->ControllerInputManager->ControllerNames_[i].c_str();
-            }
-            ImGui::Combo("Selected Controller", &SelectedController_, ControllerNames_, NumberControllers, NumberControllers);
-            ImGui::Separator();
 
 
             // Begin Tabs For Info, Config
@@ -69,6 +62,17 @@ void Window_ControllerSettings::Draw() {
 
                 // Info Tab
                 if (ImGui::BeginTabItem("Info")) {
+
+
+
+                    // Active Selected Controller Dropdown
+                    int NumberControllers = HIDUtils_->ControllerInputManager->NumberControllers_;
+                    for (int i = 0; i < NumberControllers; i++) {
+                        ControllerNames_[i] = HIDUtils_->ControllerInputManager->ControllerNames_[i].c_str();
+                    }
+                    ImGui::Combo("Selected Controller", &SelectedController_, ControllerNames_, NumberControllers, NumberControllers);
+                    ImGui::Separator();
+
 
                     // Info Child Window
                     ImGui::BeginChild("Controller Info");
@@ -142,9 +146,6 @@ void Window_ControllerSettings::Draw() {
                 // Settings Tab
                 if (ImGui::BeginTabItem("Settings")) {
 
-                    // Child Settings
-                    ImGui::BeginChild("Controller Setttings"); 
-
 
                     // Get Controller Settings Info
                     std::vector<std::shared_ptr<ERS_STRUCT_ControllerSettings>> ControllerSettings = ProjectUtils_->ProjectManager_->Project_.ControllerSettings;
@@ -160,9 +161,15 @@ void Window_ControllerSettings::Draw() {
 
                     // Selector Dropdown
                     ImGui::Combo("Selected Controller Profile", &SelectedControllerProfile_, ControllerProfileNames_, ControllerSettings.size(),  ControllerSettings.size());
+                    ImGui::Separator();
+
+
+
+                    // Child Settings
+                    ImGui::BeginChild("Controller Setttings"); 
+
+
                     
-
-
                     // Check if there aren't any controllers, display no controllers message
                     if (NumberControllers == 0) {
                         ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "No controllers detected. Try running 'Detect New Controllers'");
