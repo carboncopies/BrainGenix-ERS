@@ -170,20 +170,15 @@ void Window_ControllerSettings::Draw() {
 
 
                     
-                    // Check if there aren't any controllers, display no controllers message
-                    if (NumberControllers == 0) {
-                        ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "No controllers detected. Try running 'Detect New Controllers'");
+                    // Check if there aren't any controller profiles, display no controllers message
+                    if (ControllerSettings.size() == 0) {
+                        ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "No controller profiles found. Try adding a new one.");
                     } else {
-
-
-                    
 
                         // Thresholds
                         ImGui::Separator();
                         ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Joystick Thresholds");
                         ImGui::Separator();
-
-
 
                     }
 
