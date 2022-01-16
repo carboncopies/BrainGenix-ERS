@@ -150,6 +150,13 @@ void Window_ControllerSettings::Draw() {
                     // Get Controller Settings Info
                     std::vector<std::shared_ptr<ERS_STRUCT_ControllerSettings>> ControllerSettings = ProjectUtils_->ProjectManager_->Project_.ControllerSettings;
 
+                    // ADD DEFAULT CONTROLLER LAYOUTS (IN PROJECT)
+                    // ADD CONTROLLER SETTINGS BELOW (THIS FILE)
+                    // ADD CONTROLLER SETTINGS WRITER
+                    // IMPLEMENT CONTROLLER PROFILE SAVING WHEN PROJECT IS SAVED
+                    // ADD VIEWPORT SELECTION?
+                    
+
                     // Update Controller Dropdown List And Index
                     if (SelectedControllerProfile_ > ControllerSettings.size()) {
                         SelectedControllerProfile_ = ControllerSettings.size() - 1;
