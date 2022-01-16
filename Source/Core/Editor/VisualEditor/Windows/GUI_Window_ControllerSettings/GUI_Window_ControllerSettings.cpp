@@ -155,6 +155,9 @@ void Window_ControllerSettings::Draw() {
                         std::vector<std::shared_ptr<ERS_STRUCT_ControllerSettings>> ControllerSettings = ProjectUtils_->ProjectManager_->Project_.ControllerSettings;
 
                         // Dropdown For Selected Settings
+                        for (int i= 0; i < ControllerSettings.size(); i++) {
+                            ImGui::Text(ControllerSettings[i]->SettingsProfileName.c_str());
+                        }
 
                         // Thresholds
                         ImGui::Separator();
