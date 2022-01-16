@@ -25,6 +25,7 @@ target_link_libraries(Window_ControllerSettings
 # Link Internal Libs
 target_link_libraries(Window_ControllerSettings
     ERS_STRUCT_SystemUtils
+    ERS_STRUCT_ProjectUtils
     ERS_STRUCT_HumanInputDeviceUtils
     )
 

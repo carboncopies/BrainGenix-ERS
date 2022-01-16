@@ -13,11 +13,12 @@
 
 
 // Constructor
-Window_ControllerSettings::Window_ControllerSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils) {
+Window_ControllerSettings::Window_ControllerSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils) {
 
     // Copy System Utils Pointer Struct
     SystemUtils_ = SystemUtils;
     HIDUtils_ = HIDUtils;
+    ProjectUtils_ = ProjectUtils;
 
 }
 
