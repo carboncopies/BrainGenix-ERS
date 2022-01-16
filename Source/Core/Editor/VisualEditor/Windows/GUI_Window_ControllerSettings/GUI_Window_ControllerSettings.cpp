@@ -151,12 +151,16 @@ void Window_ControllerSettings::Draw() {
                         ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "No controllers detected. Try running 'Detect New Controllers'");
                     } else {
 
+                        // Get Controller Settings Info
+                        std::vector<std::shared_ptr<ERS_STRUCT_ControllerSettings>> ControllerSettings = ProjectUtils_->ProjectManager_->Project_.ControllerSettings;
+
+                        // Dropdown For Selected Settings
+
                         // Thresholds
                         ImGui::Separator();
                         ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Joystick Thresholds");
                         ImGui::Separator();
 
-                        std::vector<std::shared_ptr<ERS_STRUCT_ControllerSettings>> ControllerSettings = ProjectUtils_->ProjectManager_->Project_.ControllerSettings;
 
 
                     }
