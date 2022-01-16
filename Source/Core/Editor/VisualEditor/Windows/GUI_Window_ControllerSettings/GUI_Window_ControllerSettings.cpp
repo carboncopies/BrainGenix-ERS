@@ -161,6 +161,18 @@ void Window_ControllerSettings::Draw() {
 
                     // Selector Dropdown
                     ImGui::Combo("Selected Controller Profile", &SelectedControllerProfile_, ControllerProfileNames_, ControllerSettings.size(),  ControllerSettings.size());
+                    if (ControllerSettings.size() > 0) {
+                        if (ImGui::Button("Delete Profile")) {
+                            ProjectUtils_->ProjectManager_->Project_.ControllerSettings.erase(ProjectUtils_->ProjectManager_->Project_.ControllerSettings.begin() + SelectedControllerProfile_);
+                            ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.erase(ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.begin() + SelectedControllerProfile_);
+                        }
+                    }
+                    if (ControllerSettings.size() < 128) {
+                        if (ImGui::Button("Add Profile")) {
+                            ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.push_back(SystemUtils_->ERS_IOSubsystem_->AllocateAssetID());
+                            ProjectUtils_->ProjectManager_->Project_.ControllerSettings.push_back(std::make_shared<ERS_STRUCT_ControllerSettings>());
+                        }
+                    }
                     ImGui::Separator();
 
 
