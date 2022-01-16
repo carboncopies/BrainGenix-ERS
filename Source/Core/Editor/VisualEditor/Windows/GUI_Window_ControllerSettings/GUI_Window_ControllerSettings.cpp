@@ -163,6 +163,8 @@ void Window_ControllerSettings::Draw() {
                             ControllerProfileNames_[i] = ControllerSettings[i]->SettingsProfileName.c_str();
                         }
 
+                        // Selector Dropdown
+                        ImGui::Combo("Selected Controller Profile", &SelectedControllerProfile_, ControllerProfileNames_, ControllerSettings.size(),  ControllerSettings.size());
                     
 
                         // Thresholds
