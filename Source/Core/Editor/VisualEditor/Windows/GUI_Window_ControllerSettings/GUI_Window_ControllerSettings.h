@@ -25,6 +25,7 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_HumanInputDeviceUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
+#include <ERS_STRUCT_ControllerSettings.h>
 
 
 /**
