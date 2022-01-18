@@ -4,7 +4,7 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_IOTypeIdentiifer
+add_library(ERS_IOTypeIdentifier
 
             # Add Source Files (.cpp)
             "ERS_CLASS_IOTypeIdentifier.cpp"
