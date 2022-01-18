@@ -77,7 +77,7 @@ void GUI_ImportAsset::Draw() {
 void GUI_ImportAsset::OpenFileDialog() {
 
     // Open Dialog
-    ImGuiFileDialog::Instance()->OpenDialog("ImportModel", "Import", "", ".", "", 0);
+    ImGuiFileDialog::Instance()->OpenDialog("ImportModel", "Import", ".*", ".", "", 0);
 
 
 }
