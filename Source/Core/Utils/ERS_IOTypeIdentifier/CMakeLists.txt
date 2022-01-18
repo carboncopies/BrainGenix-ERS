@@ -25,6 +25,8 @@ target_link_libraries(ERS_IOTypeIdentifier
 
     LoggingSystem
 
+    ERS_STRUCT_IOData
+
     )
 
 target_include_directories(ERS_IOTypeIdentifier PUBLIC ./)
