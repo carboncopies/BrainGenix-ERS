@@ -16,15 +16,15 @@ add_library(ERS_IOTypeIdentiifer
             )
 
 # Link 3rd Party Libs
-target_link_libraries(IOTypeIdentifier
+target_link_libraries(ERS_IOTypeIdentifier
     yaml-cpp
     )
 
 # Link Internal Libs
-target_link_libraries(IOTypeIdentifier
+target_link_libraries(ERS_IOTypeIdentifier
 
     LoggingSystem
 
     )
 
-target_include_directories(IOTypeIdentifier PUBLIC ./)
+target_include_directories(ERS_IOTypeIdentifier PUBLIC ./)
