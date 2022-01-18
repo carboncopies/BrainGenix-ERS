@@ -56,7 +56,7 @@ void Window_AssetExplorer::Draw() {
             ImGui::BeginTabBar("Asset Selection Mode");
 
                 // "Advanced" Asset ID Viewer
-                if (ImGui::TabItemButton("Raw Asset IDs")) {
+                if (ImGui::BeginTabItem("Raw Asset IDs")) {
 
                     // Update Asset ID Selection List
                     int ListLengthDelta = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size() - AssetIDSelectionList_.size();
@@ -75,6 +75,7 @@ void Window_AssetExplorer::Draw() {
                         AssetIDSelectionList_[i] = ImGui::Selectable(std::to_string(SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[i]).c_str(), AssetIDSelectionList_[i]);
                     }
 
+                ImGui::EndTabItem();
                 }
 
             ImGui::EndTabBar();
