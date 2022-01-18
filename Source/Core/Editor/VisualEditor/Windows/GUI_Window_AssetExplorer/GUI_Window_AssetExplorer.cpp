@@ -57,26 +57,34 @@ void Window_AssetExplorer::Draw() {
                 // "Advanced" Asset ID Viewer
                 if (ImGui::BeginTabItem("Raw Asset IDs")) {
 
-                    // Update Asset ID Selection List
-                    int ListLengthDelta = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size() - AssetIDSelectionList_.size();
-                    if (ListLengthDelta > 0) {
-                        for (int i = 0; i < ListLengthDelta; i++) {
-                            AssetIDSelectionList_.push_back(false);
-                        }
-                    } else if (ListLengthDelta < 0) {
-                        for (int i = 0; i < abs(ListLengthDelta); i++) {
-                            AssetIDSelectionList_.pop_back();
-                        }
-                    }
+                    // Explorer Child Window
+                    ImVec2 IDExplorerSize = ImVec2(ImGui::GetWindowWidth()-200, ImGui::GetWindowHeight());
+                    ImGui::BeginChild("ID Explorer", IDExplorerSize);
 
-                    // Iterate Through All Indexed Assets, List In Child Window
-                    for (int i = 0; i < SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size(); i++) {
-                        bool ItemSelected = ImGui::Selectable(std::to_string(SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[i]).c_str(), AssetIDSelectionList_[i]);
-                        if (ItemSelected) {
-                            AssetIDSelectionList_[i] = !AssetIDSelectionList_[i];
-                            LastSelectedIndex_ = i;
+                        // Update Asset ID Selection List
+                        int ListLengthDelta = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size() - AssetIDSelectionList_.size();
+                        if (ListLengthDelta > 0) {
+                            for (int i = 0; i < ListLengthDelta; i++) {
+                                AssetIDSelectionList_.push_back(false);
+                            }
+                        } else if (ListLengthDelta < 0) {
+                            for (int i = 0; i < abs(ListLengthDelta); i++) {
+                                AssetIDSelectionList_.pop_back();
+                            }
                         }
-                    }
+
+                        // Iterate Through All Indexed Assets, List In Child Window
+                        for (int i = 0; i < SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size(); i++) {
+                            bool ItemSelected = ImGui::Selectable(std::to_string(SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[i]).c_str(), AssetIDSelectionList_[i]);
+                            if (ItemSelected) {
+                                AssetIDSelectionList_[i] = !AssetIDSelectionList_[i];
+                                LastSelectedIndex_ = i;
+                            }
+                        }
+
+                    ImGui::EndChild();
+
+
 
                 ImGui::EndTabItem();
                 }
