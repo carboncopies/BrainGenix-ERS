@@ -21,6 +21,9 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(std::shared_ptr<L
     // Log Initialization
     Logger_->Log("Initializing Input/Output Subsystem", 5);
 
+    // Setup IO Type Identifier
+    IOTypeIdentifier_ = std::make_unique<ERS_CLASS_IOTypeIdentifier>(Logger_);
+
     // Get Database Loading / File Loading Config
     Logger_->Log("Reading Configuration For 'BOOL' 'UseDatabaseLoading'", 1);
     try {
