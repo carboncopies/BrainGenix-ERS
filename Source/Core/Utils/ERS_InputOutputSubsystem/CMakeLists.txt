@@ -27,6 +27,8 @@ target_link_libraries(ERS_InputOutputSubsystem
 
     ERS_STRUCT_IOData
 
+    ERS_CLASS_IOTypeIdentifier
+
     LoggingSystem
     )
 

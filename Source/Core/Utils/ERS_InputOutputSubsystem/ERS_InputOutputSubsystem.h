@@ -30,6 +30,8 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
 
+#include <ERS_CLASS_IOTypeIdentifier.h>
+
 #include <ERS_STRUCT_IOData.h>
 
 
@@ -42,6 +44,7 @@ class ERS_CLASS_InputOutputSubsystem {
     private:
 
         std::shared_ptr<LoggerClass> Logger_; /**<Logging Class Pointer*/
+        std::unique_ptr<ERS_CLASS_IOTypeIdentifier> IOTypeIdentifier_; /**<Pointer To IO Type Identifier Class Instance*/
 
     public:
 
