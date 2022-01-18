@@ -17,7 +17,7 @@ add_library(ERS_IOTypeIdentiifer
 
 # Link 3rd Party Libs
 target_link_libraries(IOTypeIdentifier
-
+    yaml-cpp
     )
 
 # Link Internal Libs
