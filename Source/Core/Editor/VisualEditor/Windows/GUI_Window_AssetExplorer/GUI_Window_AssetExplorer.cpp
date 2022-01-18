@@ -52,7 +52,6 @@ void Window_AssetExplorer::Draw() {
 
             
             if (AdvancedMode_) {
-            ImGui::BeginChild("Asset Data Child");
             ImGui::BeginTabBar("Asset Selection Mode");
 
                 // "Advanced" Asset ID Viewer
@@ -82,7 +81,6 @@ void Window_AssetExplorer::Draw() {
                 }
 
             ImGui::EndTabBar();
-            ImGui::EndChild();
             }
 
 
