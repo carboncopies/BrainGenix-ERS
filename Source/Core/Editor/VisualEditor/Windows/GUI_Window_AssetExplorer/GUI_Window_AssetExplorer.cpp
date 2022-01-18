@@ -60,6 +60,7 @@ void Window_AssetExplorer::Draw() {
 
                     // Update Asset ID Selection List
                     int ListLengthDelta = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size() - AssetIDSelectionList_.size();
+                    std::cout<<"List LEn Delta: "<<ListLengthDelta<<std::endl;
                     if (ListLengthDelta > 0) {
                         for (int i = 0; i < ListLengthDelta; i++) {
                             AssetIDSelectionList_.push_back(false);
