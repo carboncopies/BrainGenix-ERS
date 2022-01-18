@@ -43,7 +43,25 @@ public:
 // Public Methods
 public:
 
+    /**
+     * @brief Construct a new ers class iotypeidentifier object
+     * 
+     * @param Logger 
+     */
     ERS_CLASS_IOTypeIdentifier(std::shared_ptr<LoggerClass> Logger);
+
+
+    /**
+     * @brief Destroy the ers class iotypeidentifier object
+     * 
+     */
     ~ERS_CLASS_IOTypeIdentifier();
+
+    /**
+     * @brief Identify the type of the given data struct.
+     * 
+     * @param Data 
+     */
+    void IdentifyType(std::shared_ptr<ERS_STRUCT_IOData> Data);
 
 };
