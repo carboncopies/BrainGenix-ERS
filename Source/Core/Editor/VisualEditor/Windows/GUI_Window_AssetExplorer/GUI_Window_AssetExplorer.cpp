@@ -58,7 +58,7 @@ void Window_AssetExplorer::Draw() {
                 if (ImGui::BeginTabItem("Raw Asset IDs")) {
 
                     // Explorer Child Window
-                    ImVec2 IDExplorerSize = ImVec2(ImGui::GetWindowWidth()-200, ImGui::GetWindowHeight());
+                    ImVec2 IDExplorerSize = ImVec2(ImGui::GetWindowWidth()-200, 0);
                     ImGui::BeginChild("ID Explorer Child Node", IDExplorerSize);
 
                         // Update Asset ID Selection List
