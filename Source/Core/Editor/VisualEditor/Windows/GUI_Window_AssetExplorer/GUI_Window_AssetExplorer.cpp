@@ -53,13 +53,31 @@ void Window_AssetExplorer::Draw() {
             
             if (AdvancedMode_) {
             ImGui::BeginChild("Asset Data Child");
+            ImGui::BeginTabBar("Asset Selection Mode");
 
-                // Iterate Through All Indexed Assets, List In Child Window
-                for (int i = 0; i < SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size(); i++) {
+                // "Advanced" Asset ID Viewer
+                if (ImGui::TabItemButton("Raw Asset IDs")) {
+
+                    // Update Asset ID Selection List
+                    int ListLengthDelta = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size() - AssetIDSelectionList_.size();
+                    if (ListLengthDelta > 0) {
+                        for (int i = 0; i < ListLengthDelta; i++) {
+                            AssetIDSelectionList_.push_back(false);
+                        }
+                    } else if (ListLengthDelta < 0) {
+                        for (int i = 0; i < abs(ListLengthDelta); i++) {
+                            AssetIDSelectionList_.pop_back();
+                        }
+                    }
+
+                    // Iterate Through All Indexed Assets, List In Child Window
+                    for (int i = 0; i < SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size(); i++) {
+                        ImGui::Selectable(std::to_string(SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[i]).c_str(), &AssetIDSelectionList_[i]);
+                    }
 
                 }
 
-
+            ImGui::EndTabBar();
             ImGui::EndChild();
             }
 

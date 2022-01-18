@@ -33,6 +33,7 @@ class Window_AssetExplorer {
 private:
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
+    std::vector<bool> AssetIDSelectionList_; /**<Select Multiple Asset IDs*/
 
 public:
 
