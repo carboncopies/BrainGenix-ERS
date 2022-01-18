@@ -61,6 +61,11 @@ void Window_AssetExplorer::Draw() {
                     ImVec2 IDExplorerSize = ImVec2(ImGui::GetWindowWidth()-200, 0);
                     ImGui::BeginChild("ID Explorer Child Node", IDExplorerSize);
 
+                        // Child Node Title
+                        ImGui::Separator();
+                        ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Asset ID");
+                        ImGui::Separator();
+
                         // Update Asset ID Selection List
                         int ListLengthDelta = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size() - AssetIDSelectionList_.size();
                         if (ListLengthDelta > 0) {
@@ -85,6 +90,11 @@ void Window_AssetExplorer::Draw() {
                     ImGui::EndChild();
                     ImGui::SameLine();
                     ImGui::BeginChild("Description Child Node");
+
+                        // Child Node Title
+                        ImGui::Separator();
+                        ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Description");
+                        ImGui::Separator();
                     ImGui::EndChild();
 
 
