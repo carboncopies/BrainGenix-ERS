@@ -95,6 +95,7 @@ void Window_AssetExplorer::Draw() {
                         ImGui::Separator();
                         ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Description");
                         ImGui::Separator();
+                        
                     ImGui::EndChild();
 
 
