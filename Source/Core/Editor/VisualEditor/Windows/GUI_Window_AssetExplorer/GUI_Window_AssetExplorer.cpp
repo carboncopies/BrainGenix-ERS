@@ -95,7 +95,11 @@ void Window_AssetExplorer::Draw() {
                         ImGui::Separator();
                         ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Description");
                         ImGui::Separator();
-                        
+
+                        // Add Type
+                        const char* TypeString;
+                        ImGui::Text("Type: %s", TypeString);
+
                     ImGui::EndChild();
 
 
