@@ -34,6 +34,7 @@ private:
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
     std::vector<bool> AssetIDSelectionList_; /**<Select Multiple Asset IDs*/
+    int LastSelectedIndex_; /**<Index of the last item to be clicked on*/
 
 public:
 

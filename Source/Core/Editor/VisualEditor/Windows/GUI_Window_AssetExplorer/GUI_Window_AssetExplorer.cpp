@@ -74,6 +74,7 @@ void Window_AssetExplorer::Draw() {
                         bool ItemSelected = ImGui::Selectable(std::to_string(SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[i]).c_str(), AssetIDSelectionList_[i]);
                         if (ItemSelected) {
                             AssetIDSelectionList_[i] = !AssetIDSelectionList_[i];
+                            LastSelectedIndex_ = i;
                         }
                     }
 
