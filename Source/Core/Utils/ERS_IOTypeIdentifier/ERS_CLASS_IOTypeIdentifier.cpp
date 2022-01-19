@@ -35,7 +35,6 @@ bool ERS_CLASS_IOTypeIdentifier::IdentifyType(std::shared_ptr<ERS_STRUCT_IOData>
 
     // Convert To YAML::Node
     YAML::Node Metadata = YAML::Load((const char*)MetadataBytes);
-    std::cout<<Metadata<<std::endl;
     MetadataOutput = std::make_shared<YAML::Node>(Metadata);
 
     // Return Success
