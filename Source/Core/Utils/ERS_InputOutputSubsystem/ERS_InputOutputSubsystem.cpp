@@ -243,7 +243,7 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
         if (FileStatus == 0) {
 
             // Allocate Memory
-            OutputData->Data.reset(new unsigned char[FileSize]);
+            OutputData->Data.reset(new unsigned char[Buffer.st_size+1]);
             if (OutputData->Data) {
 
                 FILE *Stream = fopen(FilePath.c_str(), "rb");
@@ -251,10 +251,10 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
 
 
                     // If Using Metadata System, Remove Metadata Header (Skip first bytes)
-                    if (MetadataEnabled_) {
-                        std::cout<<"offsetting file\n";
-                        fseek(Stream, 65535, 0);
-                    }
+                    // if (MetadataEnabled_) {
+                    //     std::cout<<"offsetting file\n";
+                    //     fseek(Stream, 65535, 0);
+                    // }
 
                     // Read Data,
                     fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size, Stream);
@@ -262,10 +262,10 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
                     fclose(Stream);
 
                     // If Using Metadata System, Remove Metadata Header
-                    // if (MetadataEnabled_) {
-                    //     std::cout<<"offsetting\n";
-                    //     std::copy_backward(OutputData->Data.get() + 65535, OutputData->Data.get() + Buffer.st_size, OutputData->Data.get() + Buffer.st_size - 65535);
-                    // }
+                    if (MetadataEnabled_) {
+                        std::cout<<"offsetting\n";
+                        std::copy_backward(OutputData->Data.get() + 65535, OutputData->Data.get() + Buffer.st_size, OutputData->Data.get() + Buffer.st_size - 65535);
+                    }
 
                     std::cout<<OutputData->Data.get()<<std::endl;
 
