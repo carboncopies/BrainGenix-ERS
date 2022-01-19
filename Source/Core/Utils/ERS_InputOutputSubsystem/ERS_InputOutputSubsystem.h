@@ -46,16 +46,6 @@ class ERS_CLASS_InputOutputSubsystem {
         std::shared_ptr<LoggerClass> Logger_; /**<Logging Class Pointer*/
         std::unique_ptr<ERS_CLASS_IOTypeIdentifier> IOTypeIdentifier_; /**<Pointer To IO Type Identifier Class Instance*/
 
-    private:
-        
-        /**
-         * @brief Loads the first 65 kb for metadata identification
-         * 
-         * @param AssetID 
-         * @param AssetData 
-         */
-        void LoadFirst65KB(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> AssetData);
-
     public:
 
         std::string AssetPath_; /**<Relative Path To Prepend To All IO Operations, Used By File Loading*/
