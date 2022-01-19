@@ -231,8 +231,12 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
 
         struct stat Buffer;
         int FileStatus = stat(FilePath.c_str(), &Buffer);
-        FileSize = (Buffer.st_size+1) - 65535;
-
+        bool MetadataEnabled_ = false;
+        if (FileSize > 65535) {
+            FileSize = (Buffer.st_size + 1) - 65535;
+        } else {
+            FileSize = Buffer.st_size + 1;
+        }
 
         if (FileStatus == 0) {
 
@@ -248,7 +252,6 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
                     OutputData->Data.get()[Buffer.st_size] = '\0';
                     fclose(Stream);
 
-                    //memmove(OutputData->Data.get(), OutputData->Data.get() + 65535, FileSize / sizeof(OutputData->Data.get()[0]));
                     std::copy_backward(OutputData->Data.get() + 65535, OutputData->Data.get() + Buffer.st_size, OutputData->Data.get() + Buffer.st_size - 65535);
 
                     OutputData->HasLoaded = true;
