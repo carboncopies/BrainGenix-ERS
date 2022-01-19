@@ -54,7 +54,7 @@ private:
      * @param AssetID 
      * @param AssetData 
      */
-    bool LoadFirst65KB(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> AssetData);
+    void LoadFirst65KB(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> AssetData);
 
 public:
 
