@@ -232,7 +232,7 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
         struct stat Buffer;
         int FileStatus = stat(FilePath.c_str(), &Buffer);
         bool MetadataEnabled_ = false;
-        if (FileSize > 65535) {
+        if (Buffer.st_size > 65535) {
             FileSize = (Buffer.st_size + 1) - 65535;
             MetadataEnabled_ = true;
         } else {
