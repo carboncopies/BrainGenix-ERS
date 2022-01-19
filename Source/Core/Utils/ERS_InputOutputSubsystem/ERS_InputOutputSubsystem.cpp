@@ -252,8 +252,11 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
                     OutputData->Data.get()[Buffer.st_size] = '\0';
                     fclose(Stream);
 
-                    std::copy_backward(OutputData->Data.get() + 65535, OutputData->Data.get() + Buffer.st_size, OutputData->Data.get() + Buffer.st_size - 65535);
-
+                    // If Using Metadata System, Remove Metadata Header
+                    if (MetadataEnabled_) {
+                        std::copy_backward(OutputData->Data.get() + 65535, OutputData->Data.get() + Buffer.st_size, OutputData->Data.get() + Buffer.st_size - 65535);
+                    }
+                    
                     OutputData->HasLoaded = true;
                     ReadSuccess = true;
 
