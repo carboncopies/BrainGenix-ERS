@@ -248,8 +248,7 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
                     OutputData->Data.get()[Buffer.st_size] = '\0';
                     fclose(Stream);
 
-                    //memmove(OutputData->Data.get(), OutputData->Data.get() + 65535, FileSize / sizeof(OutputData->Data.get()[0]));
-                    std::copy_backward(OutputData->Data.get() + 65535, OutputData->Data.get() + Buffer.st_size, OutputData->Data.get() + Buffer.st_size - 65535);
+                    memmove(OutputData->Data.get(), OutputData->Data.get() + 65535, FileSize / sizeof(OutputData->Data.get()[0]));
 
                     OutputData->HasLoaded = true;
                     ReadSuccess = true;

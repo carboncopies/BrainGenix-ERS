@@ -23,7 +23,6 @@
 #include <filesystem>
 #include <thread>
 #include <mutex>
-#include <algorithm>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
