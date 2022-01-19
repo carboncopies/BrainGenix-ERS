@@ -243,7 +243,7 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
         if (FileStatus == 0) {
 
             // Allocate Memory
-            OutputData->Data.reset(new unsigned char[(int)FileSize]);
+            OutputData->Data.reset(new unsigned char[FileSize]);
             if (OutputData->Data) {
 
                 FILE *Stream = fopen(FilePath.c_str(), "rb");
