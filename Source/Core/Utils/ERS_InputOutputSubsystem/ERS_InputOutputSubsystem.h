@@ -60,7 +60,6 @@ public:
 
     std::string AssetPath_; /**<Relative Path To Prepend To All IO Operations, Used By File Loading*/
     std::vector<long> UsedAssetIDs_; /**<List Of Asset IDs That Are Already In Use*/
-    std::vector<YAML::Node> AssetIDMetadata_; /**<Used Asset ID Metadata. Used To Determine Type And Other Useful Stuff*/
     std::mutex LockAssetIDAllocation_; /**<Used When Allocating AssetIDs*/
     bool UseDatabase_; /**<Indicates If The Database Should Be Used For IO. Set By LocalSystemConfiguration Values In Constructor*/
 
