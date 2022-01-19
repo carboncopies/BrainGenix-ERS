@@ -172,17 +172,6 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
     // Summarize Checked Out IDs
     Logger_->Log(std::string(std::string("Identified ") + std::to_string(UsedAssetIDs_.size()) + std::string(" Asset IDs Are In Use")).c_str(), 4);
 
-    // Idenfify Types On IDs
-    Logger_->Log("Identifying Asset ID Types", 5);
-
-    for (int i = 0; i < UsedAssetIDs_.size(); i++) {
-        Logger_->Log(std::string(std::string("Identifying Asset Type For ID '") + std::to_string(UsedAssetIDs_[i]) + std::string("'")).c_str(), 3);
-        
-
-    }
-
-
-
 }
 
 // Read Assets From File/DB, Return Bytes
