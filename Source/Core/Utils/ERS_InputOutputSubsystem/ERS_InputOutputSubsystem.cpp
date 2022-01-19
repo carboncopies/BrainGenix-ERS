@@ -180,21 +180,7 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
         // Log Identification
         Logger_->Log(std::string(std::string("Identifying Asset Metadata For ID '") + std::to_string(UsedAssetIDs_[i]) + std::string("'")).c_str(), 3);
         
-        // Load Into Memory
-        std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
-        LoadFirst65KB(UsedAssetIDs_[i], Data);
-
-        // Decode Metadata, Get Status
-        std::shared_ptr<YAML::Node> Metadata = std::make_shared<YAML::Node>();
-        bool Status = IOTypeIdentifier_->IdentifyType(Data, Metadata);
-
-        // Deposit Metadata, Log Status
-        AssetIDMetadata_.push_back(*Metadata);
-        if (Status) {
-            Logger_->Log(std::string(std::string("Identified Asset Metadata For ID '") + std::to_string(UsedAssetIDs_[i]) + std::string("'")).c_str(), 4);
-        } else {
-            Logger_->Log(std::string(std::string("Error Identifying Asset Metada For ID '") + std::to_string(UsedAssetIDs_[i]) + std::string("', Check Your Metadata For Validity")).c_str(), 8);
-        }
+        
 
     }
 
