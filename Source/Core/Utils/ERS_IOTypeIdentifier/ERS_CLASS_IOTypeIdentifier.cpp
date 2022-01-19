@@ -34,8 +34,6 @@ void ERS_CLASS_IOTypeIdentifier::IdentifyType(std::shared_ptr<ERS_STRUCT_IOData>
     memcpy(MetadataBytes, Data->Data.get(), 65535);
 
     // Convert To YAML::Node
-    YAML::Node Metadata = YAML::Load((const char*)MetadataBytes);
-
     
 
 }
