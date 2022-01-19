@@ -258,6 +258,8 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
                         std::copy_backward(OutputData->Data.get() + 65535, OutputData->Data.get() + Buffer.st_size, OutputData->Data.get() + Buffer.st_size - 65535);
                     }
 
+                    std::cout<<OutputData->Data.get()<<std::endl;
+
                     OutputData->HasLoaded = true;
                     ReadSuccess = true;
 
