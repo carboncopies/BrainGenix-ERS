@@ -252,7 +252,6 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
 
                     // If Using Metadata System, Remove Metadata Header (Skip first bytes)
                     if (MetadataEnabled_) {
-                        std::cout<<"offsetting file\n";
                         fseek(Stream, 65535, 0);
                     }
 
