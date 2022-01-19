@@ -420,8 +420,8 @@ bool ERS_CLASS_InputOutputSubsystem::LoadFirst65KB(long AssetID, std::shared_ptr
         std::string FilePath = AssetPath_ + std::to_string(AssetID) + std::string(".ERS");
 
         struct stat Buffer;
-        int FileStatus = stat(FilePath.c_str(), &Buffer);
-        FileSize = 65535+1;
+        int FileStatus = 65535;
+        FileSize = Buffer.st_size+1;
 
 
         if (FileStatus == 0) {
