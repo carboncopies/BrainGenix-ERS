@@ -248,15 +248,22 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
                 FILE *Stream = fopen(FilePath.c_str(), "rb");
                 if (Stream) {
 
-                    // Read Data, Remove First 65 KB
+
+                    // If Using Metadata System, Remove Metadata Header (Skip first bytes)
+                    if (MetadataEnabled_) {
+                        fseek(Stream, 65535, 0);
+                        //OutputData->Data = std::make_unique<unsigned char[]>(std::copy_backward(OutputData->Data.get() + 65535, OutputData->Data.get() + Buffer.st_size, OutputData->Data.get() + Buffer.st_size - 65535));
+                    }
+
+                    // Read Data,
                     fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size, Stream);
                     OutputData->Data.get()[Buffer.st_size] = '\0';
                     fclose(Stream);
 
-                    // If Using Metadata System, Remove Metadata Header
-                    if (MetadataEnabled_) {
-                        OutputData->Data = std::make_unique<unsigned char[]>(std::copy_backward(OutputData->Data.get() + 65535, OutputData->Data.get() + Buffer.st_size, OutputData->Data.get() + Buffer.st_size - 65535));
-                    }
+                    // // If Using Metadata System, Remove Metadata Header
+                    // if (MetadataEnabled_) {
+                    //     //OutputData->Data = std::make_unique<unsigned char[]>(std::copy_backward(OutputData->Data.get() + 65535, OutputData->Data.get() + Buffer.st_size, OutputData->Data.get() + Buffer.st_size - 65535));
+                    // }
 
                     std::cout<<OutputData->Data.get()<<std::endl;
 
