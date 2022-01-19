@@ -236,6 +236,7 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
             FileSize = (Buffer.st_size + 1) - 65535;
         } else {
             FileSize = Buffer.st_size + 1;
+            Logger_->Log(std::string(std::string("Warning, Asset Metadata Missing For Asset With ID: ") + std::to_string(AssetID)).c_str(), 7);
         }
 
         if (FileStatus == 0) {
@@ -256,7 +257,7 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
                     if (MetadataEnabled_) {
                         std::copy_backward(OutputData->Data.get() + 65535, OutputData->Data.get() + Buffer.st_size, OutputData->Data.get() + Buffer.st_size - 65535);
                     }
-                    
+
                     OutputData->HasLoaded = true;
                     ReadSuccess = true;
 
