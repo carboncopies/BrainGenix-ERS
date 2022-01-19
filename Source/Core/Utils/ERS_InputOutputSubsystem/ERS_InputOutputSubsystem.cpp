@@ -377,4 +377,3 @@ std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchWriteAssets(std::vector<l
     return StatusVector;
 
 }
-
