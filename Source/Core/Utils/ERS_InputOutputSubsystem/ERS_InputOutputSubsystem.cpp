@@ -83,7 +83,7 @@ void ERS_CLASS_InputOutputSubsystem::UpdateAssetPath(std::string AssetPath) {
 }
 
 
-// Allocate Asset ID
+// Allocate Asset Id
 long ERS_CLASS_InputOutputSubsystem::AllocateAssetID() {
 
     // Lock Mutex, Allocate New ID
