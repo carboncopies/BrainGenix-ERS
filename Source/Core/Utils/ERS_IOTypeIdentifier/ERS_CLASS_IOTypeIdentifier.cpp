@@ -27,15 +27,16 @@ ERS_CLASS_IOTypeIdentifier::~ERS_CLASS_IOTypeIdentifier() {
 
 
 // ID Type
-void ERS_CLASS_IOTypeIdentifier::IdentifyType(std::shared_ptr<ERS_STRUCT_IOData> Data) {
+bool ERS_CLASS_IOTypeIdentifier::IdentifyType(std::shared_ptr<ERS_STRUCT_IOData> Data, std::shared_ptr<YAML::Node> MetadataOutput) {
 
     // Read First 65535 Bytes For Metadata
     unsigned char* MetadataBytes = new unsigned char[65535];
     memcpy(MetadataBytes, Data->Data.get(), 65535);
 
     // Convert To YAML::Node
-    YAML::Node Metadata = YAML::Load((const char*)MetadataBytes);
+    MetadataOutput = std::make_shared<YAML::Node>(YAML::Load((const char*)MetadataBytes));
 
-    
+    // Return Success
+    return true;
 
 }
