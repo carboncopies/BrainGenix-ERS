@@ -255,7 +255,7 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
 
                     // If Using Metadata System, Remove Metadata Header
                     if (MetadataEnabled_) {
-                        std::copy_backward(OutputData->Data.get() + 65535, OutputData->Data.get() + Buffer.st_size, OutputData->Data.get() + Buffer.st_size - 65535);
+                        OutputData->Data = std::make_unique<unsigned char[]>(std::copy_backward(OutputData->Data.get() + 65535, OutputData->Data.get() + Buffer.st_size, OutputData->Data.get() + Buffer.st_size - 65535));
                     }
 
                     std::cout<<OutputData->Data.get()<<std::endl;
