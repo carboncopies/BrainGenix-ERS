@@ -33,7 +33,6 @@ bool ERS_CLASS_IOTypeIdentifier::IdentifyType(std::shared_ptr<ERS_STRUCT_IOData>
     unsigned char* MetadataBytes = new unsigned char[65535];
     memcpy(MetadataBytes, Data->Data.get(), 65535);
 
-    std::cout<<"fdsafdsafds\n";
     // Convert To YAML::Node
     MetadataOutput = std::make_shared<YAML::Node>(YAML::Load((const char*)MetadataBytes));
 
