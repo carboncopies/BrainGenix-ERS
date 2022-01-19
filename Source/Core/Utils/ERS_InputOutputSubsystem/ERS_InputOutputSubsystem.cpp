@@ -178,9 +178,6 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
     for (int i = 0; i < UsedAssetIDs_.size(); i++) {
         Logger_->Log(std::string(std::string("Identifying Asset Type For ID '") + std::to_string(UsedAssetIDs_[i]) + std::string("'")).c_str(), 3);
         
-        std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
-        LoadFirst65KB(UsedAssetIDs_[i], Data);
-        AssetIDMetadata_.push_back(IOTypeIdentifier_->IdentifyType(Data));
 
     }
 

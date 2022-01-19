@@ -58,13 +58,10 @@ public:
     ~ERS_CLASS_IOTypeIdentifier();
 
     /**
-     * @brief Identify the type of the asset at the given ID.
+     * @brief Identify the type of the given data struct.
      * 
      * @param Data 
-     * @param MetadataOutput 
-     * @return true 
-     * @return false 
      */
-    bool IdentifyType(std::shared_ptr<ERS_STRUCT_IOData> Data, std::shared_ptr<YAML::Node> MetadataOutput);
+    void IdentifyType(std::shared_ptr<ERS_STRUCT_IOData> Data);
 
 };
