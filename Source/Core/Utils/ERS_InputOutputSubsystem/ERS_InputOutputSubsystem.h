@@ -49,13 +49,7 @@ private:
 
 private:
     
-    /**
-     * @brief Loads the first 65 kb for metadata identification
-     * 
-     * @param AssetID 
-     * @param AssetData 
-     */
-    bool LoadFirst65KB(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> AssetData);
+
 
 public:
 
