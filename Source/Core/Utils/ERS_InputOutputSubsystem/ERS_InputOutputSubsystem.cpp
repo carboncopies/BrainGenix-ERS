@@ -231,7 +231,7 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
 
         struct stat Buffer;
         int FileStatus = stat(FilePath.c_str(), &Buffer);
-        FileSize = Buffer.st_size+1;
+        FileSize = (Buffer.st_size+1) - 65535;
 
 
         if (FileStatus == 0) {
@@ -243,9 +243,13 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
                 FILE *Stream = fopen(FilePath.c_str(), "rb");
                 if (Stream) {
 
+                    // Read Data, Remove First 65 KB
                     fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size, Stream);
                     OutputData->Data.get()[Buffer.st_size] = '\0';
                     fclose(Stream);
+
+                    memmove(OutputData->Data.get(), OutputData->Data.get() + 65535, FileSize / sizeof(OutputData->Data.get()[0]));
+
                     OutputData->HasLoaded = true;
                     ReadSuccess = true;
 
