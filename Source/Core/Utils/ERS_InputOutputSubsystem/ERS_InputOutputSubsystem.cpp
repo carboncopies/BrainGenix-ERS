@@ -311,6 +311,9 @@ bool ERS_CLASS_InputOutputSubsystem::WriteAsset(long AssetID, std::shared_ptr<ER
         return false;
     }
 
+    // Update Metadata
+    AssetIndexIOManager_->UpdateAssetIndex(AssetID, InputData);
+
     // Start Clock To Measure File Metadata
     auto StartTime = std::chrono::high_resolution_clock::now();
     bool Success = false;
