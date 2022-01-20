@@ -11,7 +11,7 @@
     AssetCreationDate: "1970-01-01-00-00-00"
     AssetModificationDate: "2022-01-01-00-00-00"
     
-1: # Second Asset, put 
+1: # Second Asset, put the following ones after this.
     AssetType: "Image"
     AssetCreationDate: "1970-01-01-00-00-00"
     AssetModificationDate: "2022-01-01-00-00-00"
