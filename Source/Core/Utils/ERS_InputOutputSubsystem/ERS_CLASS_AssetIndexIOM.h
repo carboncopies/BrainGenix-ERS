@@ -19,6 +19,7 @@
 
 class ERS_CLASS_AssetIndexIOM {
 
+// Private Member Vars
 private:
 
     std::shared_ptr<LoggerClass> Logger_; /**<Pointer To Logger Instance*/
