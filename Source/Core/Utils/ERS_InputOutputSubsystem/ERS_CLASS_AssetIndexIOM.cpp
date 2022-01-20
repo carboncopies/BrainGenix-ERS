@@ -107,6 +107,9 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(std::shared_ptr<ERS_STRUCT_IOData>
     }
     Metadata<<YAML::EndMap;
 
+    // Convert To String
+    std::string ByteString = std::string(Metadata.c_str());
+
     // Finish Serialization
     Logger_->Log("Finished Serializing Asset DB Metadata", 5);
 
@@ -114,10 +117,16 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(std::shared_ptr<ERS_STRUCT_IOData>
     // Add To Data Struct
     Logger_->Log("Adding Encoded Metadata String To IOData Struct", 3);
 
-
+        
+    Data->Data.reset(new unsigned char[ByteString.size()]);
+    Data->Size_B = ByteString.size();
+    memcpy(Data->Data.get(), ByteString.c_str(), ByteString.size());
 
     // Finish Adding To Struct
     Logger_->Log("Finished Adding Encoded Metadata String To IOData Struct", 4);
+
+    // Return Success
+    return true;
 
 }
 
