@@ -29,7 +29,7 @@ ERS_CLASS_ProjectManager::ERS_CLASS_ProjectManager(std::shared_ptr<ERS_STRUCT_Sy
     ControllerSettingsLoader_ = std::make_unique<ERS_CLASS_ControllerSettingsLoader>(SystemUtils_);
 
     // Load Default Project
-    LoadProject(0);
+    LoadProject(1);
 
 }
 
