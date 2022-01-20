@@ -50,10 +50,11 @@ class ERS_CLASS_InputOutputSubsystem {
 
         std::shared_ptr<LoggerClass> Logger_; /**<Logging Class Pointer*/
         std::unique_ptr<ERS_CLASS_IOTypeIdentifier> IOTypeIdentifier_; /**<Pointer To IO Type Identifier Class Instance*/
-        std::unique_ptr<ERS_CLASS_AssetIndexIOM> AssetIndexIOManager_; /**<Pointer to Asset Index Metadata System*/
 
     public:
 
+        std::unique_ptr<ERS_CLASS_AssetIndexIOM> AssetIndexIOManager_; /**<Pointer to Asset Index Metadata System*/
+        
         std::string AssetPath_; /**<Relative Path To Prepend To All IO Operations, Used By File Loading*/
         std::vector<long> UsedAssetIDs_; /**<List Of Asset IDs That Are Already In Use*/
         std::mutex LockAssetIDAllocation_; /**<Used When Allocating AssetIDs*/
