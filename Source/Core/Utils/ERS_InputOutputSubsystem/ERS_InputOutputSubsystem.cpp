@@ -212,6 +212,10 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
     }
 
 
+    // Populate Metadata
+    AssetIndexIOManager_->ReadAssetIndex(AssetID, OutputData);
+
+
     // Start Clock To Measure File Metadata
     auto StartTime = std::chrono::high_resolution_clock::now();
     bool ReadSuccess = false;
