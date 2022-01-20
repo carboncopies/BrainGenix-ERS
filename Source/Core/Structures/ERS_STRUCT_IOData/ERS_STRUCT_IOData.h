@@ -28,9 +28,9 @@ struct ERS_STRUCT_IOData {
     std::unique_ptr<unsigned char[]> Data; /**<Char Array Containing Raw Data*/
    
 
-    std::string AssetTypeName; /**<Name Of The Type Of Asset Data Stored Here*/
-    std::string AssetCreationDate; /**<Date when Asset Created (YYYY-MM-DD-HH-MM-SS)*/
-    std::string AssetModificationDate; /**<Date when Asset Was Last Modified (YYYY-MM-DD-HH-MM-SS)*/
+    std::string AssetTypeName = "Undefined"; /**<Name Of The Type Of Asset Data Stored Here*/
+    std::string AssetCreationDate = "1970-01-01-00-00-01"; /**<Date when Asset Created (YYYY-MM-DD-HH-MM-SS)*/
+    std::string AssetModificationDate = "1970-01-01-00-00-01"; /**<Date when Asset Was Last Modified (YYYY-MM-DD-HH-MM-SS)*/
 
 
     bool HasLoaded = false; /**<Status Variable*/
