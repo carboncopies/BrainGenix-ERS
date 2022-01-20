@@ -122,6 +122,13 @@ void Window_AssetExplorer::Draw() {
                     // Child Window
                     ImGui::BeginChild("Asset Explorer Tools");
 
+
+                    // Heading
+                    ImGui::Separator();
+                    ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Debugging Tools");
+                    ImGui::Separator();
+
+
                     // Refresh Button
                     if (ImGui::Button("Refresh Asset Index")) {
                         SystemUtils_->ERS_IOSubsystem_->IndexUsedAssetIDs();
