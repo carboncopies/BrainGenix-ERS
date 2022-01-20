@@ -319,7 +319,6 @@ bool ERS_CLASS_InputOutputSubsystem::WriteAsset(long AssetID, std::shared_ptr<ER
     }
 
     // Update Metadata
-
     std::time_t RawCurrentTime;
     std::tm* TimeInformation;
     char TimeBuffer [80];
