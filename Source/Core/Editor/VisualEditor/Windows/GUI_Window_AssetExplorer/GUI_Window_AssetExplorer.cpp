@@ -58,6 +58,12 @@ void Window_AssetExplorer::Draw() {
                 if (ImGui::BeginTabItem("Models")) {
 
                     // Drag + Drop Source WIth List Of Models
+                    ImGui::BeginChild("Asset Model Child");
+
+                    // System To 
+
+
+                    ImGui::EndChild();
 
                 ImGui::EndTabItem();
                 }
