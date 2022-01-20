@@ -65,7 +65,6 @@ void Window_AssetExplorer::Draw() {
                         
                         // Check Type
                         std::string Type = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i];
-                        std::cout<<i<<Type<<std::endl;
                         if (Type == std::string("Model")) {
                             
 
