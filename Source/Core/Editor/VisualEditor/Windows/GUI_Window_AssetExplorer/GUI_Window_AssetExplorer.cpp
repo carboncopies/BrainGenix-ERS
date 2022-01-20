@@ -111,8 +111,6 @@ void Window_AssetExplorer::Draw() {
 
                     ImGui::EndChild();
 
-
-
                 ImGui::EndTabItem();
                 }
 
