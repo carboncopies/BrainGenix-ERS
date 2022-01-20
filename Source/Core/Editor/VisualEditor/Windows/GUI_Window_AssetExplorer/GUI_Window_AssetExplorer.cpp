@@ -100,7 +100,14 @@ void Window_AssetExplorer::Draw() {
                         long SelectedID = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[LastSelectedIndex_];
                         const char* AssetType = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[SelectedID].c_str();
                         ImGui::Text("Type: %s", AssetType);
-                        std::cout<<AssetType<<std::endl;
+
+                        // Add Dates
+                        const char* AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetCreationDate_[SelectedID].c_str();
+                        ImGui::Text("Date Created: %s", AssetCreationDate);
+
+                        const char* AssetModificationDate = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetModificationDate_[SelectedID].c_str();
+                        ImGui::Text("Type: %s", AssetModificationDate);
+
 
                     ImGui::EndChild();
 
