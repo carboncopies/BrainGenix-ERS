@@ -33,6 +33,8 @@
 #include <ERS_CLASS_IOTypeIdentifier.h>
 #include <ERS_CLASS_AssetIndexIOM.h>
 
+#include <ERS_FUNCTION_CompareAssetIndexDelta.h>
+
 #include <ERS_STRUCT_IOData.h>
 
 
