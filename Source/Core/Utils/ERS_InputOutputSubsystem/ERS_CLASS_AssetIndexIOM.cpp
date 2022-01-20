@@ -47,6 +47,7 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(std::shared_ptr<ERS_STRUCT_IOData> 
 
     // Clear Internal Maps
     Logger_->Log("Clearing Internal Maps For Asset Metadata", 3);
+    AssetIDsFound_.erase(AssetIDsFound_.begin(), AssetIDsFound_.end());
     AssetTypeName_.erase(AssetTypeName_.begin(), AssetTypeName_.end());
     AssetCreationDate_.erase(AssetCreationDate_.begin(), AssetCreationDate_.end());
     AssetModificationDate_.erase(AssetModificationDate_.begin(), AssetModificationDate_.end());
@@ -130,4 +131,31 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(std::shared_ptr<ERS_STRUCT_IOData>
 
 }
 
+// Update Asset Metadata Info
+void ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> Data) {
+
+    // Extract Relevant Params
+    std::string AssetType = Data->AssetTypeName;
+    std::string Modified = Data->AssetModificationDate;
+    std::string Created = Data->AssetCreationDate;
+
+    // Add To Internal Maps
+    AssetTypeName_[AssetID] = {AssetType};
+    AssetCreationDate_[AssetID] = {Created};
+    AssetModificationDate_[AssetID] = {Modified};
+
+    // Check If Already In Loaded Assets, If Not, Add
+    bool AlreadyInIndex = false;
+    for (long i = 0; i < AssetIDsFound_.size(); i++) {
+        if (AssetIDsFound_[i] == AssetID) {
+            AlreadyInIndex = true;
+            break;
+        }
+    }
+    if (!AlreadyInIndex) {
+        AssetIDsFound_.push_back(AssetID);
+    }
+    
+
+}
 
