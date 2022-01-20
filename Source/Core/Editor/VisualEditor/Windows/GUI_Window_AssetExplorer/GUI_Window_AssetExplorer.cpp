@@ -54,6 +54,14 @@ void Window_AssetExplorer::Draw() {
             if (AdvancedMode_) {
             ImGui::BeginTabBar("Asset Selection Mode");
 
+                // Model Explorer
+                if (ImGui::BeginTabItem("Models")) {
+
+                    // 
+
+                ImGui::EndTabItem();
+                }
+
                 // "Advanced" Asset ID Viewer
                 if (ImGui::BeginTabItem("Raw Asset IDs")) {
 
