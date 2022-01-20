@@ -34,7 +34,7 @@ void ERS_CLASS_AssetIndexIOM::LoadAssetIndex(std::shared_ptr<ERS_STRUCT_IOData> 
 
     // Decode Asset Index Into YAML::Node
     Logger_->Log("Decoding Asset Index Data From Bytes", 3);
-
+    
     Logger_->Log("Finished Decoding Asset Index", 3);
 
 }
