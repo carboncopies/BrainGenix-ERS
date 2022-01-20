@@ -133,39 +133,44 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
 
     } else { // Default To Regular File Loading
 
+
         // Get List Of Files At Path
-        for (const auto &Entry : std::filesystem::directory_iterator(std::string(AssetPath_))) {
+        try {
+            for (const auto &Entry : std::filesystem::directory_iterator(std::string(AssetPath_))) {
 
-            // Get File Path        
-            std::string FilePath{Entry.path().u8string()};
-            FilePath = FilePath.substr(0, FilePath.find_last_of(".")).substr(FilePath.find_last_of("/") + 1, FilePath.length());
+                // Get File Path        
+                std::string FilePath{Entry.path().u8string()};
+                FilePath = FilePath.substr(0, FilePath.find_last_of(".")).substr(FilePath.find_last_of("/") + 1, FilePath.length());
 
-            // Convert To Long, Throw Log Message If Not Number
-            try {
-                long ID = std::stoi(FilePath.c_str());
+                // Convert To Long, Throw Log Message If Not Number
+                try {
+                    long ID = std::stoi(FilePath.c_str());
 
-                if (ID >= 0) {
-                    UsedAssetIDs_.push_back(ID);
+                    if (ID >= 0) {
+                        UsedAssetIDs_.push_back(ID);
 
-                    // Log Checked Out ID
-                    Logger_->Log(std::string(std::string("AssetID '") + std::to_string(ID) + std::string("' In Use")).c_str(), 3);
+                        // Log Checked Out ID
+                        Logger_->Log(std::string(std::string("AssetID '") + std::to_string(ID) + std::string("' In Use")).c_str(), 3);
 
-                } else {
+                    } else {
 
-                    Logger_->Log(std::string(std::string("AssetID '") + std::to_string(ID) + std::string("' Cannot Be Negative")).c_str(), 8);
+                        Logger_->Log(std::string(std::string("AssetID '") + std::to_string(ID) + std::string("' Cannot Be Negative")).c_str(), 8);
+                    }
+
+                } catch(std::invalid_argument) {
+
+                    // Log Error
+                    Logger_->Log(std::string(std::string("AssetID Identification Failed On Asset '") + FilePath + std::string("', Make Sure These Are Numbers")).c_str(), 9);
+
+                } catch (std::out_of_range) {
+
+                    Logger_->Log(std::string(std::string("AssetID Identification Failed On Asset '") + FilePath + std::string("', Invalid Asset ID")).c_str(), 9);
+
                 }
 
-            } catch(std::invalid_argument) {
-
-                // Log Error
-                Logger_->Log(std::string(std::string("AssetID Identification Failed On Asset '") + FilePath + std::string("', Make Sure These Are Numbers")).c_str(), 9);
-
-            } catch (std::out_of_range) {
-
-                Logger_->Log(std::string(std::string("AssetID Identification Failed On Asset '") + FilePath + std::string("', Invalid Asset ID")).c_str(), 9);
-
             }
-
+        } catch(std::filesystem::__cxx11::filesystem_error) {
+            Logger_->Log("Error Indexing Assets, Local File Loading Enabled But Asset Directory Does Not Exist", 9);
         }
 
     }
