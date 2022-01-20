@@ -40,7 +40,7 @@ void Window_AssetExplorer::Draw() {
     bool Visible = ImGui::Begin("Asset Explorer", &Enabled_);
 
         // Set Default Window Size
-        ImGui::SetWindowSize(ImVec2(300,0), ImGuiCond_FirstUseEver);
+        ImGui::SetWindowSize(ImVec2(300,600), ImGuiCond_FirstUseEver);
 
 
         // TODO: Add "selectables" in advanced mode which list all assetids and what they do. perhaps oculd be like this: ID (One-letter-abbreviation for what it does) or an icon if we're feeling fancy
