@@ -8,7 +8,7 @@
 
 
 // Delta Function
-void ERS_FUNCTION_CompareIndexDelta(std::shared_ptr<LoggerClass> Logger_, std::shared_ptr<std::vector<long>> UsedAssetIDIndex, std::shared_ptr<ERS_CLASS_AssetIndexIOM> AssetIndexIOM) {
+void ERS_FUNCTION_CompareIndexDelta(std::shared_ptr<LoggerClass> Logger_, std::shared_ptr<std::vector<long>> UsedAssetIDIndex, std::vector<long> AssetIndexIOM) {
 
     // Log Delta Function Call
     Logger_->Log("Comparing Indexed Assets With Asset Metadata Index", 4);
@@ -18,10 +18,10 @@ void ERS_FUNCTION_CompareIndexDelta(std::shared_ptr<LoggerClass> Logger_, std::s
     std::vector<long> UsedAssetIDs = *UsedAssetIDIndex;
 
     // Iterate Through All Asset Index Metadata
-    for (long i = 0; i < AssetIndexIOM->AssetIDsFound_.size(); i++) {
+    for (long i = 0; i < AssetIndexIOM.size(); i++) {
 
         // Get Index Checking
-        long IndexChecking = AssetIndexIOM->AssetIDsFound_[i];
+        long IndexChecking = AssetIndexIOM[i];
         Logger_->Log(std::string(std::string("Checking Asset Index '") + std::to_string(IndexChecking) + std::string("'")).c_str(), 3);
 
         // Check If Used asset ID Index Has Asset Found In Metadata
