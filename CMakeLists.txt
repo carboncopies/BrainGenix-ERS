@@ -142,7 +142,6 @@ add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ProjectWriter)
 
 
 # COPY FILES TO BINARY DIR
-file(COPY "${SRC_DIR}/Assets/" DESTINATION "${BIN_DIR}/Assets")
 file(COPY "${SRC_DIR}/EditorAssets/" DESTINATION "${BIN_DIR}/EditorAssets")
 file(COPY "${SRC_DIR}/EditorAssets/DefaultLayout/imgui.ini" DESTINATION "${BIN_DIR}")
 file(COPY "${SRC_DIR}/Shaders/" DESTINATION "${BIN_DIR}/Shaders")
