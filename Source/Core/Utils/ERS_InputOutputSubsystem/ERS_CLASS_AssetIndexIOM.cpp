@@ -169,6 +169,8 @@ bool ERS_CLASS_AssetIndexIOM::ReadAssetIndex(long AssetID, std::shared_ptr<ERS_S
         Data->AssetTypeName = AssetTypeName_[AssetID];
         Data->AssetCreationDate = AssetCreationDate_[AssetID];
         Data->AssetModificationDate = AssetModificationDate_[AssetID];
+    } else {
+        Data->AssetTypeName = std::string("Asset Index Metadata");
     }
 
     // Return Success
