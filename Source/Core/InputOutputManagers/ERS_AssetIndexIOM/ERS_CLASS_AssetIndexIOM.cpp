@@ -52,7 +52,9 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(std::shared_ptr<ERS_STRUCT_IOData> 
     AssetModificationDate_.erase(AssetModificationDate_.begin(), AssetModificationDate_.end());
     Logger_->Log("Finsihed Clearing Internal Maps", 4);
 
+
     // Populate Maps
+    for (YAML::constiterator)
 
 
 }
