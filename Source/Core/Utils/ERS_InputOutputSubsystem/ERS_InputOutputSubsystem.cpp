@@ -71,6 +71,13 @@ ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
     // Log Destructor Call
     Logger_->Log("Input/Output Subsystem Destructor Called", 6);
 
+    // Save Asset Index Metadata
+    Logger_->Log("Saving Asset Index Metadata", 4);
+    std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
+    AssetIndexIOManager_->WriteAssetIndex(Data);
+    WriteAsset(0, Data);
+    Logger_->Log("Finished Saving Asset Index Metadata", 5);
+
 }
 
 
