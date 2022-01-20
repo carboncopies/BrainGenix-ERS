@@ -79,3 +79,18 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(std::shared_ptr<ERS_STRUCT_IOData> 
     return true;
 
 }
+
+// Write Asset Index
+bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(std::shared_ptr<ERS_STRUCT_IOData> Data) {
+
+    // Log Writing
+    Logger_->Log("Writing Asset Database Metadata", 4);
+
+    
+
+    // Finish Writing
+    Logger_->Log("Finished Writing Asset DB Metadata", 5);
+
+}
+
+

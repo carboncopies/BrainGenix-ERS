@@ -64,5 +64,13 @@ public:
      */
     bool LoadAssetIndex(std::shared_ptr<ERS_STRUCT_IOData> Data);
 
+    /**
+     * @brief Writes Asset Index Data To IOData Struct Passed In. Returns True/False For Success/Failure.
+     * 
+     * @param Data 
+     * @return true 
+     * @return false 
+     */
+    bool WriteAssetIndex(std::shared_ptr<ERS_STRUCT_IOData> Data);
 
 };
