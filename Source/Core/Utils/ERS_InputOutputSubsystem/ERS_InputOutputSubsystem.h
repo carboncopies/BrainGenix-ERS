@@ -23,6 +23,8 @@
 #include <filesystem>
 #include <thread>
 #include <mutex>
+#include <string>
+#include <ctime>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
