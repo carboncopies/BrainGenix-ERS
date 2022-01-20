@@ -98,8 +98,9 @@ void Window_AssetExplorer::Draw() {
 
                         // Add Type
                         long SelectedID = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[LastSelectedIndex_];
-                        ImGui::Text("Type: %s", SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[SelectedID].c_str());
-                        std::cout<<SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[SelectedID]<<std::endl;
+                        const char* AssetType = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[SelectedID].c_str();
+                        ImGui::Text("Type: %s", AssetType);
+                        std::cout<<AssetType<<std::endl;
 
                     ImGui::EndChild();
 
