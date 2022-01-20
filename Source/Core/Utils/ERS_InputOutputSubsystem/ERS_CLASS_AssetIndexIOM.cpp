@@ -92,7 +92,16 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(std::shared_ptr<ERS_STRUCT_IOData>
     for (long i = 0; i < AssetIDsFound_.size(); i++) {
         
         // Log Asset ID Writing
-        Logger_->Log(std::string(std::string("Writing Metadata For Asset ") + std::to_string(AssetIDsFound_[i])).c_str(), 3);
+        Logger_->Log(std::string(std::string("Serializing Metadata For Asset ") + std::to_string(AssetIDsFound_[i])).c_str(), 3);
+
+        // Add To Metadata
+        long CurrentIndex = AssetIDsFound_[i];
+        Metadata<<YAML::Key<<CurrentIndex<<YAML::BeginMap;
+        
+        Metadata<<YAML::Key<<"AssetType"<<YAML::Value<<AssetTypeName_[CurrentIndex];
+        
+
+        Metadata<<YAML::EndMap;
 
     }
     Metadata<<YAML::EndMap;
