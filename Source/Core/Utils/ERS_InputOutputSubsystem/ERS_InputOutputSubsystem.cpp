@@ -178,6 +178,21 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
     // Summarize Checked Out IDs
     Logger_->Log(std::string(std::string("Identified ") + std::to_string(UsedAssetIDs_.size()) + std::string(" Asset IDs Are In Use")).c_str(), 4);
 
+
+    // Load Asset Metadata
+    Logger_->Log("Attempting To Load Asset Metadata Index", 3);
+    std::shared_ptr<ERS_STRUCT_IOData> Data;
+    ReadAsset(0, Data);
+    AssetIndexIOManager_->LoadAssetIndex(Data);
+    Logger_->Log("Finished Loading Asset Metadata Index", 4);
+
+
+    // Compare Indexes Of Assets
+    Logger_->Log("Comparing Asset Metadata With Indexed Assets", 3);
+    ERS_FUNCTION_CompareIndexDelta(Logger_, std::make_shared<std::vector<long>>(UsedAssetIDs_), std::make_shared<ERS_CLASS_AssetIndexIOM>(AssetIndexIOManager_));
+    Logger_->Log("Finished Performing Asset Metadata Sanity Check", 4);
+
+
 }
 
 // Read Assets From File/DB, Return Bytes
