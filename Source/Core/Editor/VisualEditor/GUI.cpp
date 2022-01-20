@@ -111,8 +111,9 @@ void GUISystem::UpdateGUI() {
         Menu_File_->Draw();
         Menu_View_->Draw();
         Menu_Window_->Draw();
-        Menu_Debug_->Draw();
         Menu_Settings_->Draw();
+        Menu_Debug_->Draw();
+
 
     ImGui::EndMainMenuBar();
     }
