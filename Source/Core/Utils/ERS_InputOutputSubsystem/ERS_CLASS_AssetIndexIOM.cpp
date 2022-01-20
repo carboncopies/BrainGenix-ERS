@@ -132,7 +132,7 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(std::shared_ptr<ERS_STRUCT_IOData>
 }
 
 // Update Asset Metadata Info
-void ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> Data) {
+bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> Data) {
 
     // Extract Relevant Params
     std::string AssetType = Data->AssetTypeName;
@@ -155,7 +155,17 @@ void ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, std::shared_ptr<ERS
     if (!AlreadyInIndex) {
         AssetIDsFound_.push_back(AssetID);
     }
-    
+
+    // Return Success
+    return true;
 
 }
+
+// Read Asset Metadata into Data Param
+bool ERS_CLASS_AssetIndexIOM::ReadAssetIndex(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> Data) {
+
+    // Load 
+
+}
+
 
