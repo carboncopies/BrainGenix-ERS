@@ -189,7 +189,7 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
 
     // Compare Indexes Of Assets
     Logger_->Log("Comparing Asset Metadata With Indexed Assets", 3);
-    ERS_FUNCTION_CompareIndexDelta(Logger_, std::make_shared<std::vector<long>>(UsedAssetIDs_), std::make_shared<ERS_CLASS_AssetIndexIOM>(*AssetIndexIOManager_));
+    ERS_FUNCTION_CompareIndexDelta(Logger_, std::make_shared<std::vector<long>>(UsedAssetIDs_), AssetIndexIOManager_->AssetIDsFound_);
     Logger_->Log("Finished Performing Asset Metadata Sanity Check", 4);
 
 
