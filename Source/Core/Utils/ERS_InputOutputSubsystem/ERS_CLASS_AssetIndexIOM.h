@@ -9,6 +9,7 @@
 #include <memory>
 #include <map>
 #include <thread>
+#include <mutex>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -24,7 +25,11 @@ class ERS_CLASS_AssetIndexIOM {
 private:
 
     std::shared_ptr<LoggerClass> Logger_; /**<Pointer To Logger Instance*/
-    
+    std::thread AssetMetadataWriterThread_; /**<Thread To Automatically Save Asset Metadata Periodically*/
+    float AssetMetadataSavePerodicity_ = 5; /**<Save Asset Metadata With This Delay Inbetween (Units Are Seconds)*/
+    std::mutex BlockThreads_; /**<Lock This To Block The Threads*/
+    bool ExitThreads_ = false; /**<Set This To True To Make The Threads Exit*/
+
 
 // Public Member Vars
 public:
