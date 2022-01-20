@@ -83,8 +83,8 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(std::shared_ptr<ERS_STRUCT_IOData> 
 // Write Asset Index
 bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(std::shared_ptr<ERS_STRUCT_IOData> Data) {
 
-    // Log Writing
-    Logger_->Log("Writing Asset Database Metadata", 4);
+    // Log Serialization
+    Logger_->Log("Serializing Asset Database Metadata", 4);
 
     // Create Yaml Emitter
     YAML::Emitter Metadata;
@@ -99,15 +99,25 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(std::shared_ptr<ERS_STRUCT_IOData>
         Metadata<<YAML::Key<<CurrentIndex<<YAML::BeginMap;
         
         Metadata<<YAML::Key<<"AssetType"<<YAML::Value<<AssetTypeName_[CurrentIndex];
-        
+        Metadata<<YAML::Key<<"AssetCreationDate"<<YAML::Value<<AssetCreationDate_[CurrentIndex];
+        Metadata<<YAML::Key<<"AssetModificationDate"<<YAML::Value<<AssetModificationDate_[CurrentIndex];
 
         Metadata<<YAML::EndMap;
 
     }
     Metadata<<YAML::EndMap;
 
-    // Finish Writing
-    Logger_->Log("Finished Writing Asset DB Metadata", 5);
+    // Finish Serialization
+    Logger_->Log("Finished Serializing Asset DB Metadata", 5);
+
+
+    // Add To Data Struct
+    Logger_->Log("Adding Encoded Metadata String To IOData Struct", 3);
+
+
+
+    // Finish Adding To Struct
+    Logger_->Log("Finished Adding Encoded Metadata String To IOData Struct", 4);
 
 }
 
