@@ -80,7 +80,7 @@ void Window_AssetExplorer::Draw() {
 
                         // Iterate Through All Indexed Assets, List In Child Window
                         for (int i = 0; i < SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size(); i++) {
-                            bool ItemSelected = ImGui::Selectable(std::to_string().c_str(), AssetIDSelectionList_[i]);
+                            bool ItemSelected = ImGui::Selectable(std::to_string(SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[i]).c_str(), AssetIDSelectionList_[i]);
                             if (ItemSelected) {
                                 AssetIDSelectionList_[i] = !AssetIDSelectionList_[i];
                                 LastSelectedIndex_ = i;
@@ -97,7 +97,7 @@ void Window_AssetExplorer::Draw() {
                         ImGui::Separator();
 
                         // Add Type
-                        long SelectedID = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[i];
+                        long SelectedID = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[LastSelectedIndex_];
                         const char* TypeString = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[SelectedID].c_str();
                         ImGui::Text("Type: %s", TypeString);
 
