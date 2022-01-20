@@ -30,6 +30,7 @@ public:
     std::map<long, std::string> AssetTypeName_; /**<Name of the type of asset, ex: Image or Model*/
     std::map<long, std::string> AssetCreationDate_; /**<Date when initially Allocated*/
     std::map<long, std::string> AssetModificationDate_; /**<Date When Last Modified*/
+    std::vector<long> AssetIDsFound_; /**<List of all asset ids in metadata system*/
 
 // Public Methods
 public:

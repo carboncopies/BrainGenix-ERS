@@ -65,6 +65,7 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(std::shared_ptr<ERS_STRUCT_IOData> 
         YAML::Node AssetMetadata = it->second;
 
         // Populate Metadata
+        AssetIDsFound_.push_back(Index);
         AssetTypeName_[Index] = {AssetMetadata["AssetType"].as<std::string>()};
         AssetCreationDate_[Index] = {AssetMetadata["AssetCreationDate"].as<std::string>()};
         AssetModificationDate_[Index] = {AssetMetadata["AssetModificationDate"].as<std::string>()};
