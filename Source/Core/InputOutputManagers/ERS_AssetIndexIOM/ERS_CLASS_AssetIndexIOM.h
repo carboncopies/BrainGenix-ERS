@@ -7,6 +7,7 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <memory>
+#include <map>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -23,6 +24,14 @@ private:
     std::shared_ptr<LoggerClass> Logger_; /**<Pointer To Logger Instance*/
     
 
+// Public Member Vars
+public:
+
+    std::map<long, std::string> AssetTypeName_; /**<Name of the type of asset, ex: Image or Model*/
+    std::map<long, std::string> AssetCreationDate_; /**<Date when initially Allocated*/
+    std::map<long, std::string> AssetModificationDate_; /**<Date When Last Modified*/
+
+// Public Methods
 public:
 
     /**
@@ -39,11 +48,13 @@ public:
     ~ERS_CLASS_AssetIndexIOM();
     
     /**
-     * @brief Load The Asset Index Into Memory
+     * @brief Loads the asset index data into memory which is used by the io subsystem.
      * 
      * @param Data 
+     * @return true 
+     * @return false 
      */
-    void LoadAssetIndex(std::shared_ptr<ERS_STRUCT_IOData> Data);
+    bool LoadAssetIndex(std::shared_ptr<ERS_STRUCT_IOData> Data);
 
 
 };
