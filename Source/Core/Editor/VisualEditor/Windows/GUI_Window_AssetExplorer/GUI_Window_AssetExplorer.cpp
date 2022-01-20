@@ -60,7 +60,19 @@ void Window_AssetExplorer::Draw() {
                     // Drag + Drop Source WIth List Of Models
                     ImGui::BeginChild("Asset Model Child");
 
-                    // System To 
+                    // Display Models
+                    for (int i = 0; i < SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_.size(); i++) {
+                        
+                        // Check Type
+                        if (SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i] == "Model") {
+
+                            bool Selected = ImGui::Selectable(std::to_string(i).c_str(), i == SelectedModelIndex_);
+                            if (Selected) {
+                                SelectedModelIndex_ = i;
+                            }
+
+                        }
+                    }
 
 
                     ImGui::EndChild();
