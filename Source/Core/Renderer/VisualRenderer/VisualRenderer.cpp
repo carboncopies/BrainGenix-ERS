@@ -42,7 +42,7 @@ VisualRenderer::~VisualRenderer() {
 
 
     // Cleanup
-    SystemUtils_->Logger_->Log("Cleaning Up OpenGL/GLFW", 0);
+    SystemUtils_->Logger_->Log("Cleaning Up OpenGL/GLFW", 6);
     glfwTerminate();
 
 }
