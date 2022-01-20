@@ -54,7 +54,27 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(std::shared_ptr<ERS_STRUCT_IOData> 
 
 
     // Populate Maps
-    for (YAML::constiterator)
+    Logger_->Log("Populating Asset Index Metadata", 3);
+    for (YAML::const_iterator it=AssetIndexMetadata.begin(); it!=AssetIndexMetadata.end(); ++it) {
 
+        // Log Reading Of Asset With ID
+        Logger_->Log(std::string(std::string("Loading Metadata For Asset With ID: ") + std::to_string(it->first.as<long>())).c_str(), 3);
+
+        // Get Asset Metadata Node
+        long Index = it->first.as<long>();
+        YAML::Node AssetMetadata = it->second;
+
+        // Populate Metadata
+        AssetTypeName_[Index] = {AssetMetadata["AssetType"].as<std::string>()};
+        AssetCreationDate_[Index] = {AssetMetadata["AssetCreationDate"].as<std::string>()};
+        AssetModificationDate_[Index] = {AssetMetadata["AssetModificationDate"].as<std::string>()};
+
+
+    }
+    Logger_->Log("Finished Populating Asset Index Metadata", 4);
+
+
+    // Return Success
+    return true;
 
 }
