@@ -128,6 +128,9 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_HumanInputDeviceUtils)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ControllerSettings)
 
 
+add_subdirectory(${SRC_DIR}/Core/InputOutputManagers/ERS_AssetIndexIOM)
+
+
 add_subdirectory(${SRC_DIR}/Core/Loader/TextureLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ImageLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_SceneLoader)
