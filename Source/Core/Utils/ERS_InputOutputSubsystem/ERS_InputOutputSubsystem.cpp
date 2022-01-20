@@ -80,7 +80,6 @@ ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
 
 }
 
-
 // Update Asset Paths
 void ERS_CLASS_InputOutputSubsystem::UpdateAssetPath(std::string AssetPath) {
 
@@ -89,7 +88,6 @@ void ERS_CLASS_InputOutputSubsystem::UpdateAssetPath(std::string AssetPath) {
     AssetPath_ = AssetPath;
 
 }
-
 
 // Allocate Asset Id
 long ERS_CLASS_InputOutputSubsystem::AllocateAssetID() {
