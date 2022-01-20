@@ -61,6 +61,11 @@ void Window_AssetExplorer::Draw() {
                     ImVec2 IDExplorerSize = ImVec2(ImGui::GetWindowWidth()-300, 0);
                     ImGui::BeginChild("ID Explorer Child Node", IDExplorerSize);
 
+                        // Refresh Button
+                        if (ImGui::Button("Refresh Asset Index")) {
+                            SystemUtils_->ERS_IOSubsystem_->IndexUsedAssetIDs();
+                        }
+
                         // Child Node Title
                         ImGui::Separator();
                         ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Asset ID");
