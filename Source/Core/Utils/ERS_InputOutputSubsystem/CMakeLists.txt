@@ -9,10 +9,12 @@ add_library(ERS_InputOutputSubsystem
             # Add Source Files (.cpp)
             "ERS_InputOutputSubsystem.cpp"
             "ERS_CLASS_AssetIndexIOM.cpp"
+            "ERS_FUNCTION_CompareAssetIndexDelta.cpp"
 
             # Add Header Files (.h)
             "ERS_InputOutputSubsystem.h"
             "ERS_CLASS_AssetIndexIOM.h"
+            "ERS_FUNCTION_CompareAssetIndexDelta.h"
 
             ${BACKWARD_ENABLE}
 )
