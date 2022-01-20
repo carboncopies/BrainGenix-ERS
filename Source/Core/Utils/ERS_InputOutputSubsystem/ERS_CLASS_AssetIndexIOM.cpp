@@ -86,7 +86,16 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(std::shared_ptr<ERS_STRUCT_IOData>
     // Log Writing
     Logger_->Log("Writing Asset Database Metadata", 4);
 
-    
+    // Create Yaml Emitter
+    YAML::Emitter Metadata;
+    Metadata<<YAML::BeginMap;
+    for (long i = 0; i < AssetIDsFound_.size(); i++) {
+        
+        // Log Asset ID Writing
+        Logger_->Log(std::string(std::string("Writing Metadata For Asset ") + std::to_string(AssetIDsFound_[i])).c_str(), 3);
+
+    }
+    Metadata<<YAML::EndMap;
 
     // Finish Writing
     Logger_->Log("Finished Writing Asset DB Metadata", 5);
