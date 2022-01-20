@@ -4,27 +4,27 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_AssetIndexLoader
+add_library(ERS_AssetIndexIOM
 
             # Add Source Files (.cpp)
-            "ERS_CLASS_AssetIndexLoader.cpp"
+            "ERS_CLASS_AssetIndexIOM.cpp"
 
             # Add Header Files (.h)
-            "ERS_CLASS_AssetIndexLoader.h"
+            "ERS_CLASS_AssetIndexIOM.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_AssetIndexLoader
+target_link_libraries(ERS_AssetIndexIOM
     yaml-cpp
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_AssetIndexLoader
+target_link_libraries(ERS_AssetIndexIOM
     LoggerClass
     ERS_STRUCT_IOData
     )
 
 
-target_include_directories(ERS_AssetIndexLoader PUBLIC ./)
+target_include_directories(ERS_AssetIndexIOM PUBLIC ./)
