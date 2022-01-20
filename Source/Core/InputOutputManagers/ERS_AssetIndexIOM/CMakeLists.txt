@@ -22,7 +22,7 @@ target_link_libraries(ERS_AssetIndexIOM
 
 # Link Internal Libs
 target_link_libraries(ERS_AssetIndexIOM
-    LoggerClass
+    LoggingSystem
     ERS_STRUCT_IOData
     )
 
