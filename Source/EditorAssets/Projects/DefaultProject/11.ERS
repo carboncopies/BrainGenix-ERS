@@ -7,21 +7,21 @@ ControllerName: "PS4 Controller"
 SettingsProfileName: "Example Profile"
 
 # Joystick Gain Settings
-JoystickLeftXGain: 1.0f;
-JoystickLeftYGain: 1.0f;
-JoystickRightXGain: 1.0f;
-JoystickRightYGain: 1.0f;
+JoystickLeftXGain: 1.0
+JoystickLeftYGain: 1.0
+JoystickRightXGain: 1.0
+JoystickRightYGain: 1.0
 
 # Joystick Thresholds (Range is scaled up from these thresholds to -1, +1. Useful if your controller doesn't sit at exactly 0 or go to +-1)
-MinThresholdJoystickLeftX: 0.02f;
-MinThresholdJoystickLeftY: 0.02f;
-MinThresholdJoystickRightX: 0.02f;
-MinThresholdJoystickRightY: 0.02f;
+MinThresholdJoystickLeftX: 0.02
+MinThresholdJoystickLeftY: 0.02
+MinThresholdJoystickRightX: 0.02
+MinThresholdJoystickRightY: 0.02
 
-MaxThresholdJoystickLeftX: 0.98f;
-MaxThresholdJoystickLeftY: 0.98f;
-MaxThresholdJoystickRightX: 0.98f;
-MaxThresholdJoystickRightY: 0.98f;
+MaxThresholdJoystickLeftX: 0.98
+MaxThresholdJoystickLeftY: 0.98
+MaxThresholdJoystickRightX: 0.98
+MaxThresholdJoystickRightY: 0.98
 
 
 # Button Indexes (For Remapping)
