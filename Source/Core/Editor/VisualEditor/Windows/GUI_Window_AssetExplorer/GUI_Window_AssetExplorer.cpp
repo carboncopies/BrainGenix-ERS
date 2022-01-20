@@ -64,7 +64,10 @@ void Window_AssetExplorer::Draw() {
                     for (int i = 0; i < SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_.size(); i++) {
                         
                         // Check Type
-                        if (SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i] == "Model") {
+                        std::string Type = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i];
+                        if (Type == std::string("Model")) {
+                            
+                            std::cout<<Type<<std::endl;
 
                             bool Selected = ImGui::Selectable(std::to_string(i).c_str(), i == SelectedModelIndex_);
                             if (Selected) {
