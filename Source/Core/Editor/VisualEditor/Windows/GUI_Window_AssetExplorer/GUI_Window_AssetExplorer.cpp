@@ -73,6 +73,14 @@ void Window_AssetExplorer::Draw() {
                                 SelectedModelIndex_ = i;
                             }
 
+                            // Drag+Drop Source
+                            if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
+
+                                
+
+                            ImGui::EndDragDropSource();
+                            }
+
                         }
                     }
 
