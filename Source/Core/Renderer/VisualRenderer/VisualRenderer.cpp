@@ -202,7 +202,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Start To Draw 3D Cursor
-    Cursors3D_->BeginRenderpass(Cameras_[Index], (float*)glm::value_ptr(view), (float*)glm::value_ptr(projection), CaptureCursor_);
+    //Cursors3D_->BeginRenderpass(Cameras_[Index], (float*)glm::value_ptr(view), (float*)glm::value_ptr(projection), CaptureCursor_);
 
 
     // Update Selected Model(s) If Needed
@@ -226,7 +226,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Finish 3D Cursor
-    Cursors3D_->EndRenderpass();
+    Cursors3D_->EndRenderpass(Cameras_[Index], (float*)glm::value_ptr(view), (float*)glm::value_ptr(projection), CaptureCursor_);
 
 
     ImGui::End();
