@@ -147,26 +147,73 @@ void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, 
     // Reset Has Object Changed
     HasObjectChanged_ = false;
 
+    // Get Object Translation
+    float ObjectTranslation_[3];
+    float ObjectRotation_[3];
+    float ObjectScale_[3];
+
+    ImGuizmo::DecomposeMatrixToComponents(Matrix_[16], ObjectTranslation_, ObjectRotation_, ObjectScale_);
 
 
+        // Check If Someone Else Is Setting Pos
+        bool PosEqual = ((ObjectTranslation_[0]== LastPos_.PosX) && (ObjectTranslation_[1] == LastPos_.PosY) && (ObjectTranslation_[2] == LastPos_.PosZ));
+        bool RotEqual = ((ObjectRotation_[0] == LastPos_.RotX) && (ObjectRotation_[1] == LastPos_.RotY) && (ObjectRotation_[2] == LastPos_.RotZ));
+        bool ScaleEqual = ((ObjectScale_[0] == LastPos_.ScaleX) && (ObjectScale_[1] == LastPos_.ScaleY) && (ObjectScale_[2] == LastPos_.ScaleZ));
+        bool IsEqual = (PosEqual && RotEqual && ScaleEqual);
 
 
+        if (IsLocRotScaleEqual(CurrentPos_, LastPos_)) {
+
+            // Assign Value To Floats
+            ObjectScale_[0] = CurrentPos_.ScaleX;
+            ObjectScale_[1] = CurrentPos_.ScaleY;
+            ObjectScale_[2] = CurrentPos_.ScaleZ;
+    
+            ObjectRotation_[0] = CurrentPos_.RotX;
+            ObjectRotation_[1] = CurrentPos_.RotY;
+            ObjectRotation_[2] = CurrentPos_.RotZ;
+    
+            ObjectTranslation_[0] = CurrentPos_.PosX;
+            ObjectTranslation_[1] = CurrentPos_.PosY;
+            ObjectTranslation_[2] = CurrentPos_.PosZ;
+
+            HasObjectChanged_ = true;
 
 
+        } else if (!IsEqual) {
 
+            // Update Current LocRotScale
+            CurrentPos_.PosX = ObjectTranslation_[0];
+            CurrentPos_.PosY = ObjectTranslation_[1];
+            CurrentPos_.PosZ = ObjectTranslation_[2];
 
+            if (CurrentGizmoOperation_ == ImGuizmo::ROTATE) {
 
+                CurrentPos_.RotX = ObjectRotation_[0];
+                CurrentPos_.RotY = ObjectRotation_[1];
+                CurrentPos_.RotZ = ObjectRotation_[2];
 
+            }
 
+            CurrentPos_.ScaleX = ObjectScale_[0];
+            CurrentPos_.ScaleY = ObjectScale_[1];
+            CurrentPos_.ScaleZ = ObjectScale_[2];
 
+            HasObjectChanged_ = true;
 
+            
+        }
 
+    ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
+
+    // Update Last Pos
+    LastPos_ = CurrentPos_;
 
     // Start ImGizmo Drawlist
     ImGuizmo::SetDrawlist(ImGui::GetWindowDrawList());
 
-
-
+    // Set If Cursor Should Be Disabled
+    IsCursorActive_ = ImGuizmo::IsUsing();
 
 
     float WindowWidth = (float)ImGui::GetWindowWidth();
@@ -175,83 +222,6 @@ void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, 
 
     ImGuizmo::Manipulate(CameraView_, CameraProjection_, CurrentGizmoOperation_, ImGuizmo::MODE::WORLD, Matrix_[16], NULL, NULL);
     ImGuizmo::ViewManipulate(CameraView_, 5.0f, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x00000000);
-
-
-    // Set If Cursor Should Be Disabled
-    IsCursorActive_ = ImGuizmo::IsUsing();
-
-    if (IsCursorActive_) {
-
-        
-    }
-
-
-
-    // // Get Object Translation
-    // float ObjectTranslation_[3];
-    // float ObjectRotation_[3];
-    // float ObjectScale_[3];
-
-    // ImGuizmo::DecomposeMatrixToComponents(Matrix_[16], ObjectTranslation_, ObjectRotation_, ObjectScale_);
-
-
-    //     // Check If Someone Else Is Setting Pos
-    //     bool PosEqual = ((ObjectTranslation_[0]== LastPos_.PosX) && (ObjectTranslation_[1] == LastPos_.PosY) && (ObjectTranslation_[2] == LastPos_.PosZ));
-    //     bool RotEqual = ((ObjectRotation_[0] == LastPos_.RotX) && (ObjectRotation_[1] == LastPos_.RotY) && (ObjectRotation_[2] == LastPos_.RotZ));
-    //     bool ScaleEqual = ((ObjectScale_[0] == LastPos_.ScaleX) && (ObjectScale_[1] == LastPos_.ScaleY) && (ObjectScale_[2] == LastPos_.ScaleZ));
-    //     bool IsEqual = (PosEqual && RotEqual && ScaleEqual);
-
-
-    //     if (IsLocRotScaleEqual(CurrentPos_, LastPos_)) {
-
-    //         // Assign Value To Floats
-    //         ObjectScale_[0] = CurrentPos_.ScaleX;
-    //         ObjectScale_[1] = CurrentPos_.ScaleY;
-    //         ObjectScale_[2] = CurrentPos_.ScaleZ;
-    
-    //         ObjectRotation_[0] = CurrentPos_.RotX;
-    //         ObjectRotation_[1] = CurrentPos_.RotY;
-    //         ObjectRotation_[2] = CurrentPos_.RotZ;
-    
-    //         ObjectTranslation_[0] = CurrentPos_.PosX;
-    //         ObjectTranslation_[1] = CurrentPos_.PosY;
-    //         ObjectTranslation_[2] = CurrentPos_.PosZ;
-
-    //         HasObjectChanged_ = true;
-
-
-    //     } else if (!IsEqual) {
-
-    //         // Update Current LocRotScale
-    //         CurrentPos_.PosX = ObjectTranslation_[0];
-    //         CurrentPos_.PosY = ObjectTranslation_[1];
-    //         CurrentPos_.PosZ = ObjectTranslation_[2];
-
-    //         if (CurrentGizmoOperation_ == ImGuizmo::ROTATE) {
-
-    //             CurrentPos_.RotX = ObjectRotation_[0];
-    //             CurrentPos_.RotY = ObjectRotation_[1];
-    //             CurrentPos_.RotZ = ObjectRotation_[2];
-
-    //         }
-
-    //         CurrentPos_.ScaleX = ObjectScale_[0];
-    //         CurrentPos_.ScaleY = ObjectScale_[1];
-    //         CurrentPos_.ScaleZ = ObjectScale_[2];
-
-    //         HasObjectChanged_ = true;
-
-            
-    //     }
-
-    // ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
-
-    // // Update Last Pos
-    // LastPos_ = CurrentPos_;
-
-
-
-
 
 
 
