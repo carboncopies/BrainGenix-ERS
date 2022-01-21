@@ -165,8 +165,7 @@ void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, 
     // Start ImGizmo Drawlist
     ImGuizmo::SetDrawlist(ImGui::GetWindowDrawList());
 
-    // Set If Cursor Should Be Disabled
-    IsCursorActive_ = ImGuizmo::IsUsing();
+
 
 
 
@@ -178,8 +177,13 @@ void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, 
     ImGuizmo::ViewManipulate(CameraView_, 5.0f, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x00000000);
 
 
+    // Set If Cursor Should Be Disabled
+    IsCursorActive_ = ImGuizmo::IsUsing();
 
+    if (IsCursorActive_) {
 
+        
+    }
 
 
 
