@@ -188,6 +188,14 @@ void Cursors3D::BeginRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera
     IsCursorActive_ = ImGuizmo::IsUsing();
 
 
+    float WindowWidth = (float)ImGui::GetWindowWidth();
+    float WindowHeight = (float)ImGui::GetWindowHeight();
+    ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, WindowWidth, WindowHeight);
+
+    ImGuizmo::Manipulate(CameraView_, CameraProjection_, CurrentGizmoOperation_, ImGuizmo::MODE::WORLD, Matrix_[16], NULL, NULL);
+    ImGuizmo::ViewManipulate(CameraView_, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x00000000);
+
+
 }
 
 
@@ -210,12 +218,7 @@ ERS_STRUCT_LocRotScale* Cursors3D::GetLocRotScalePtr() {
 void Cursors3D::EndRenderpass() {
 
 
-    float WindowWidth = (float)ImGui::GetWindowWidth();
-    float WindowHeight = (float)ImGui::GetWindowHeight();
-    ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, WindowWidth, WindowHeight);
 
-    ImGuizmo::Manipulate(CameraView_, CameraProjection_, CurrentGizmoOperation_, ImGuizmo::MODE::WORLD, Matrix_[16], NULL, NULL);
-    ImGuizmo::ViewManipulate(CameraView_, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x00000000);
 
 
 }
