@@ -119,7 +119,31 @@ void Cursors3D::BeginRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera
     }
 
 
-    // Get Object Translation
+    
+
+}
+
+
+// Check If LocRotScale Has Changed
+bool Cursors3D::HasLocRotScaleChanged() {
+    return HasObjectChanged_;
+}
+
+// Get LocRotScale
+ERS_STRUCT_LocRotScale Cursors3D::GetLocRotScale() {
+    return CurrentPos_;
+}
+
+// Get LocRotScalePtr
+ERS_STRUCT_LocRotScale* Cursors3D::GetLocRotScalePtr() {
+    return &CurrentPos_;
+}
+
+// End Render Pass
+void Cursors3D::EndRenderpass() {
+
+
+// Get Object Translation
     float ObjectTranslation_[3];
     float ObjectRotation_[3];
     float ObjectScale_[3];
@@ -194,30 +218,6 @@ void Cursors3D::BeginRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera
 
     ImGuizmo::Manipulate(CameraView_, CameraProjection_, CurrentGizmoOperation_, ImGuizmo::MODE::WORLD, Matrix_[16], NULL, NULL);
     ImGuizmo::ViewManipulate(CameraView_, CameraDistance_, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x00000000);
-
-
-}
-
-
-// Check If LocRotScale Has Changed
-bool Cursors3D::HasLocRotScaleChanged() {
-    return HasObjectChanged_;
-}
-
-// Get LocRotScale
-ERS_STRUCT_LocRotScale Cursors3D::GetLocRotScale() {
-    return CurrentPos_;
-}
-
-// Get LocRotScalePtr
-ERS_STRUCT_LocRotScale* Cursors3D::GetLocRotScalePtr() {
-    return &CurrentPos_;
-}
-
-// End Render Pass
-void Cursors3D::EndRenderpass() {
-
-
 
 
 
