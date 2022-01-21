@@ -101,22 +101,6 @@ bool Cursors3D::IsLocRotScaleEqual(ERS_STRUCT_LocRotScale LRS1, ERS_STRUCT_LocRo
 // Cursor Update Frame Function
 void Cursors3D::BeginRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, float*  CameraView, float* CameraProjection, bool IsCameraMoving) {
 
-    // Copy In Values
-    Camera_ = Camera;
-    CameraDistance_ = glm::distance(glm::vec3(0.0f, 0.0f, 0.0f), Camera_->Position);;
-    CameraProjection_ = CameraProjection;
-    CameraView_ = CameraView;
-
-    // Set Gizmo Mode
-    if (ImGui::IsWindowHovered() && !IsCameraMoving) {
-        if (ImGui::IsKeyPressed(71)) {
-            CurrentGizmoOperation_ = ImGuizmo::TRANSLATE;
-        } else if (ImGui::IsKeyPressed(82)) {
-            CurrentGizmoOperation_ = ImGuizmo::ROTATE;
-        } else if (ImGui::IsKeyPressed(83)) {
-            CurrentGizmoOperation_ = ImGuizmo::SCALE;
-        }
-    }
 
 
     
@@ -140,7 +124,27 @@ ERS_STRUCT_LocRotScale* Cursors3D::GetLocRotScalePtr() {
 }
 
 // End Render Pass
-void Cursors3D::EndRenderpass() {
+void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, float*  CameraView, float* CameraProjection, bool IsCameraMoving) {
+
+
+
+
+    // Copy In Values
+    Camera_ = Camera;
+    CameraDistance_ = glm::distance(glm::vec3(0.0f, 0.0f, 0.0f), Camera_->Position);;
+    CameraProjection_ = CameraProjection;
+    CameraView_ = CameraView;
+
+    // Set Gizmo Mode
+    if (ImGui::IsWindowHovered() && !IsCameraMoving) {
+        if (ImGui::IsKeyPressed(71)) {
+            CurrentGizmoOperation_ = ImGuizmo::TRANSLATE;
+        } else if (ImGui::IsKeyPressed(82)) {
+            CurrentGizmoOperation_ = ImGuizmo::ROTATE;
+        } else if (ImGui::IsKeyPressed(83)) {
+            CurrentGizmoOperation_ = ImGuizmo::SCALE;
+        }
+    }
 
 
 // Get Object Translation

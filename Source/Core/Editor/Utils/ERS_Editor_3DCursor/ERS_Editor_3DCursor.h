@@ -124,7 +124,7 @@ class Cursors3D {
          * @brief Finish render pass
          * 
          */
-        void EndRenderpass();
+        void EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, float*  CameraView, float* CameraProjection, bool IsCameraMoving);
 
         /**
          * @brief returns if LocRotScale Has changed.
