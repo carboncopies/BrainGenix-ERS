@@ -76,7 +76,8 @@ void Window_AssetExplorer::Draw() {
                             // Drag+Drop Source
                             if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
 
-                                
+                                // Set Drag+Drop Payload
+                                ImGui::SetDragDropPayload("ModelAssetID", &i, sizeof(long));
 
                             ImGui::EndDragDropSource();
                             }
