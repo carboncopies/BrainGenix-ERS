@@ -206,10 +206,10 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Update Selected Model(s) If Needed
-    if (Cursors3D_->HasLocRotScaleChanged()) {
-        std::cout<<"Updating LRS\n";
-        SceneManager->UpdateLocRotScale(Cursors3D_->GetLocRotScale());
-    }
+    // if (Cursors3D_->HasLocRotScaleChanged()) {
+    //     std::cout<<"Updating LRS\n";
+    //     SceneManager->UpdateLocRotScale(Cursors3D_->GetLocRotScale());
+    // }
 
     // Draw Models
     SceneManager->Render(Shaders_[Index]);
