@@ -133,6 +133,7 @@ void Cursors3D::BeginRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera
         bool ScaleEqual = ((ObjectScale_[0] == LastPos_.ScaleX) && (ObjectScale_[1] == LastPos_.ScaleY) && (ObjectScale_[2] == LastPos_.ScaleZ));
         bool IsEqual = (PosEqual && RotEqual && ScaleEqual);
 
+        std::cout<<"IsEqual"<<IsEqual<<std::endl;
         std::cout<<"3dcursor is scale equal: "<<IsLocRotScaleEqual(CurrentPos_, LastPos_)<<std::endl;
 
         if (IsLocRotScaleEqual(CurrentPos_, LastPos_)) {
