@@ -148,6 +148,10 @@ void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, 
 
     ImGuizmo::Manipulate(CameraView_, CameraProjection_, CurrentGizmoOperation_, ImGuizmo::MODE::WORLD, Matrix_[16], NULL, NULL);
 
+
+    // Reset Has Object Changed
+    HasObjectChanged_ = false;
+
     if (ImGuizmo::IsUsing()) {
         // Get Object Translation
         float ObjectTranslation_[3];
