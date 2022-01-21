@@ -130,7 +130,6 @@ void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, 
 
     // Copy In Values
     Camera_ = Camera;
-    //CameraDistance_ = glm::distance(glm::vec3(0.0f, 0.0f, 0.0f), Camera_->Position);;
     CameraProjection_ = CameraProjection;
     CameraView_ = CameraView;
 
@@ -146,7 +145,7 @@ void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, 
     }
 
 
-// Get Object Translation
+    // Get Object Translation
     float ObjectTranslation_[3];
     float ObjectRotation_[3];
     float ObjectScale_[3];
