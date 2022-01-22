@@ -68,7 +68,7 @@ void Window_SceneTree::Draw() {
                 int ActiveScene = SceneManager_->ActiveScene_;
                 
                 // Convert Vector to Array
-                if (ImGui::BeginCombo("Active Scene", SceneManager_->Scenes_[ActiveScene].SceneName.c_str())) {
+                if (ImGui::BeginCombo("Active Scene", SceneManager_->Scenes_[ActiveScene]->SceneName.c_str())) {
 
                     for (int i = 0; i < SceneManager_->Scenes_.size(); i++) {
 
@@ -79,12 +79,12 @@ void Window_SceneTree::Draw() {
                         }
 
                         // Create Selectable Item
-                        ImGui::Selectable(SceneManager_->Scenes_[i].SceneName.c_str(), &Selector);
+                        ImGui::Selectable(SceneManager_->Scenes_[i]->SceneName.c_str(), &Selector);
 
                         // If Item Selected, Update Scene To Current Index
                         if (Selector) {
                             SceneManager_->ActiveScene_ = i;
-                            SceneManager_->Scenes_[i].HasSelectionChanged = true;
+                            SceneManager_->Scenes_[i]->HasSelectionChanged = true;
                         }
                     }
 
