@@ -138,7 +138,15 @@ void ERS_CLASS_SceneLoader::AddModel(std::shared_ptr<ERS_OBJECT_SCENE> Scene, lo
     // Add Model To Loading Queue
     Scene->Models.push_back(std::make_shared<ERS_OBJECT_MODEL>());
     int CurrentSize = Scene->Models.size();
-    ModelLoader_->AddModelToLoadingQueue(AssetID, Scene->Models[CurrentSize-1], false);
+
+    Scene->Models[CurrentSize-1]->IsTemplateModel = false;
+    Scene->Models[CurrentSize-1]->SetLocRotScale(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+    Scene->Models[CurrentSize-1]->ApplyTransformations();
+    Scene->Models[CurrentSize-1]->AssetID = AssetID;
+    Scene->Models[CurrentSize-1]->Name = std::string("Untitled");
+    Scene->Models[CurrentSize-1]->FlipTextures = false;
+
+    ModelLoader_->AddModelToLoadingQueue(AssetID, Scene->Models[CurrentSize-1], Scene->Models[CurrentSize-1]->FlipTextures);
 
 
 
