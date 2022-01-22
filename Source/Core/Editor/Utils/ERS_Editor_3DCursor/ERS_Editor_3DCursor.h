@@ -21,6 +21,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/string_cast.hpp>
+#include <glm/gtx/matrix_decompose.hpp>
 
 #include <imgui.h>
 
@@ -84,11 +85,13 @@ class Cursors3D {
         std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera_; /**<Camera Object Pointer*/
         ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE; /**<Set Current Cursor Operation*/
 
-
-        ERS_STRUCT_LocRotScale CurrentPos_; /*<Reference LocRotScale*/
-        ERS_STRUCT_LocRotScale LastPos_; /*<Current LocRotScale*/
         bool HasObjectChanged_ = false; /*<Indicate If Update Needed*/
 
+    public:
+
+        glm::vec3 Pos_;
+        glm::vec3 Rot_;
+        glm::vec3 Scale_;
 
 
     public:
@@ -105,11 +108,6 @@ class Cursors3D {
          */
         ~Cursors3D();
 
-        /**
-         * @brief Called Every Frame To Update Cursor
-         * 
-         */
-        void BeginRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, float* CameraView, float* CameraProjection, bool IsCameraMoving);
 
         /**
          * @brief Returns if camera input should be disabled (if user interacting with cursor)
@@ -123,35 +121,17 @@ class Cursors3D {
          * @brief Finish render pass
          * 
          */
-        void EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, float*  CameraView, float* CameraProjection, bool IsCameraMoving);
+        void EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, bool IsCameraMoving);
 
-        /**
-         * @brief returns if LocRotScale Has changed.
-         * 
-         * @return true 
-         * @return false 
-         */
-        bool HasLocRotScaleChanged();
 
         /**
          * @brief Get the Loc Rot Scale object
          * 
          * @return ERS_STRUCT_LocRotScale 
          */
-        ERS_STRUCT_LocRotScale GetLocRotScale();
+        void GetLocRotScale(std::shared_ptr<glm::vec3> Pos, std::shared_ptr<glm::vec3> Rot, std::shared_ptr<glm::vec3> Scale);
 
-        /**
-         * @brief Get a pointer to the Loc Rot Scale object
-         * 
-         * @return ERS_STRUCT_LocRotScale* 
-         */
-        ERS_STRUCT_LocRotScale* GetLocRotScalePtr();
 
-        /**
-         * @brief Set the Loc Rot Scale object, Accepts ERS_STRUCT_LocRotScale
-         * 
-         */
-        void SetLocRotScale(ERS_STRUCT_LocRotScale);
 
         /**
          * @brief Set the Loc Rot Scale object, accepts three glm::vec3 arrays indicating position, rotation and scale (in that order).
@@ -162,14 +142,5 @@ class Cursors3D {
          */
         void SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale);
 
-        /**
-         * @brief Check if two ERS_STRUCT_LocRotScale Objects are Equal.
-         * 
-         * @param LRS1 
-         * @param LRS2 
-         * @return true 
-         * @return false 
-         */
-        bool IsLocRotScaleEqual(ERS_STRUCT_LocRotScale LRS1, ERS_STRUCT_LocRotScale LRS2);
 
 };

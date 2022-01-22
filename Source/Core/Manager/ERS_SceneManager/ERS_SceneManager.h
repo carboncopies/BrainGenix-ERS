@@ -15,6 +15,7 @@
 #include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
+#include <glm/glm.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
@@ -96,7 +97,7 @@ class ERS_CLASS_SceneManager{
          * 
          * @param LocRotScale 
          */
-        void UpdateLocRotScale(ERS_STRUCT_LocRotScale LocRotScale);
+        void UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale);
         
 
 };

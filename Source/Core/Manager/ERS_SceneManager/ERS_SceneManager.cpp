@@ -33,12 +33,7 @@ ERS_CLASS_SceneManager::~ERS_CLASS_SceneManager() {
 }
 
 // Update Scene Object(s) LocRotScale
-void ERS_CLASS_SceneManager::UpdateLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
-
-    glm::vec3 Pos = glm::vec3(LocRotScale.PosX, LocRotScale.PosY, LocRotScale.PosZ);
-    glm::vec3 Rot = glm::vec3(LocRotScale.RotX, LocRotScale.RotY, LocRotScale.RotZ);
-    glm::vec3 Scale = glm::vec3(LocRotScale.ScaleX, LocRotScale.ScaleY, LocRotScale.ScaleZ);
-
+void ERS_CLASS_SceneManager::UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
     Scenes_[ActiveScene_].Models[Scenes_[ActiveScene_].SelectedModel]->SetLocRotScale(Pos, Rot, Scale);
     Scenes_[ActiveScene_].Models[Scenes_[ActiveScene_].SelectedModel]->ApplyTransformations();
 }

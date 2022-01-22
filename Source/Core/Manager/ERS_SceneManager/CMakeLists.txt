@@ -18,6 +18,7 @@ add_library(ERS_SceneManager
 # Link 3rd Party Libs
 target_link_libraries(ERS_SceneManager
     yaml-cpp
+    glm
     )
 
 # Link Internal Libs

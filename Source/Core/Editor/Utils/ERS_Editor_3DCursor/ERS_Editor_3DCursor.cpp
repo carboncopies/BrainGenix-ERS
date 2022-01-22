@@ -25,113 +25,46 @@ Cursors3D::~Cursors3D() {
 
 
 // Set LocRotScale
-void Cursors3D::SetLocRotScale(ERS_STRUCT_LocRotScale LocRotScale) {
-
-
-    // Create Floats
-    float ObjectTranslation_[3];
-    float ObjectRotation_[3];
-    float ObjectScale_[3];
-
-    // Assign Value To Floats
-    ObjectScale_[0] = LocRotScale.ScaleX;
-    ObjectScale_[1] = LocRotScale.ScaleY;
-    ObjectScale_[2] = LocRotScale.ScaleZ;
-    ObjectRotation_[0] = LocRotScale.RotX;
-    ObjectRotation_[1] = LocRotScale.RotY;
-    ObjectRotation_[2] = LocRotScale.RotZ;
-    ObjectTranslation_[0] = LocRotScale.PosX;
-    ObjectTranslation_[1] = LocRotScale.PosY;
-    ObjectTranslation_[2] = LocRotScale.PosZ;
-
-    // Update Current LocRotScale
-    CurrentPos_.PosX = ObjectTranslation_[0];
-    CurrentPos_.PosY = ObjectTranslation_[1];
-    CurrentPos_.PosZ = ObjectTranslation_[2];
-
-    CurrentPos_.RotX = ObjectRotation_[0];
-    CurrentPos_.RotY = ObjectRotation_[1];
-    CurrentPos_.RotZ = ObjectRotation_[2];
-
-    CurrentPos_.ScaleX = ObjectScale_[0];
-    CurrentPos_.ScaleY = ObjectScale_[1];
-    CurrentPos_.ScaleZ = ObjectScale_[2];
-
-
-    // Push To Gizmo
-    //ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
-
-}
-
 void Cursors3D::SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
 
-    // Update CurrentPos Struct
-    CurrentPos_.PosX = Pos[0];
-    CurrentPos_.PosY = Pos[1];
-    CurrentPos_.PosZ = Pos[2];
-
-    CurrentPos_.RotX = Rot[0];
-    CurrentPos_.RotY = Rot[1];
-    CurrentPos_.RotZ = Rot[2];
-
-    CurrentPos_.ScaleX = Scale[0];
-    CurrentPos_.ScaleY = Scale[1];
-    CurrentPos_.ScaleZ = Scale[2];
+    // Copy 
+    Pos_ = Pos;
+    Rot_ = Rot;
+    Scale_ = Scale;
 
 }
 
-// Check if Structs Are Equal
-bool Cursors3D::IsLocRotScaleEqual(ERS_STRUCT_LocRotScale LRS1, ERS_STRUCT_LocRotScale LRS2) {
-
-    // Check If Equal
-    bool PosEqual = ((LRS1.PosX == LRS2.PosX) && (LRS1.PosY == LRS2.PosY) && (LRS1.PosZ == LRS2.PosZ));
-    bool RotEqual = ((LRS1.RotX == LRS2.RotX) && (LRS1.RotY == LRS2.RotY) && (LRS1.RotZ == LRS2.RotZ));
-    bool ScaleEqual = ((LRS1.ScaleX == LRS2.ScaleX) && (LRS1.ScaleY == LRS2.ScaleY) && (LRS1.ScaleZ == LRS2.ScaleZ));
-    if (PosEqual && RotEqual && ScaleEqual) {
-        return false;
-    } else {
-        return true;
-    }
-
-
-}
-
-
-
-// Cursor Update Frame Function
-void Cursors3D::BeginRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, float*  CameraView, float* CameraProjection, bool IsCameraMoving) {
-
-
-
-    
-
-}
-
-
-// Check If LocRotScale Has Changed
-bool Cursors3D::HasLocRotScaleChanged() {
-    return HasObjectChanged_;
-}
 
 // Get LocRotScale
-ERS_STRUCT_LocRotScale Cursors3D::GetLocRotScale() {
-    return CurrentPos_;
-}
+void Cursors3D::GetLocRotScale(std::shared_ptr<glm::vec3> Pos, std::shared_ptr<glm::vec3> Rot, std::shared_ptr<glm::vec3> Scale) {
 
-// Get LocRotScalePtr
-ERS_STRUCT_LocRotScale* Cursors3D::GetLocRotScalePtr() {
-    return &CurrentPos_;
-}
+    // Copy Values
+    Pos->x = Pos_.x;
+    Pos->y = Pos_.y;
+    Pos->z = Pos_.z;
+    
+    Rot->x = Rot_.x;
+    Rot->y = Rot_.y;
+    Rot->z = Rot_.z;
 
+    Scale->x = Scale_.x;
+    Scale->y = Scale_.y;
+    Scale->z = Scale_.z;
+
+}
 
 
 // End Render Pass
-void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, float*  CameraView, float* CameraProjection, bool IsCameraMoving) {
+void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, bool IsCameraMoving) {
+
+
+    std::cout<<glm::to_string(Pos_)<<std::endl;
+
 
     // Copy In Values
     Camera_ = Camera;
-    CameraProjection_ = CameraProjection;
-    CameraView_ = CameraView;
+    glm::mat4 Projection = Camera_->GetProjectionMatrix();
+    glm::mat4 View = Camera_->GetViewMatrix();
 
     // Set Gizmo Mode
     if (ImGui::IsWindowHovered() && !IsCameraMoving) {
@@ -144,84 +77,55 @@ void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, 
         }
     }
 
-    // Reset Has Object Changed
-    HasObjectChanged_ = false;
-
-    // Get Object Translation
-    float ObjectTranslation_[3];
-    float ObjectRotation_[3];
-    float ObjectScale_[3];
-
-    ImGuizmo::DecomposeMatrixToComponents(Matrix_[16], ObjectTranslation_, ObjectRotation_, ObjectScale_);
-
-
-        // Check If Someone Else Is Setting Pos
-        bool PosEqual = ((ObjectTranslation_[0]== LastPos_.PosX) && (ObjectTranslation_[1] == LastPos_.PosY) && (ObjectTranslation_[2] == LastPos_.PosZ));
-        bool RotEqual = ((ObjectRotation_[0] == LastPos_.RotX) && (ObjectRotation_[1] == LastPos_.RotY) && (ObjectRotation_[2] == LastPos_.RotZ));
-        bool ScaleEqual = ((ObjectScale_[0] == LastPos_.ScaleX) && (ObjectScale_[1] == LastPos_.ScaleY) && (ObjectScale_[2] == LastPos_.ScaleZ));
-        bool IsEqual = (PosEqual && RotEqual && ScaleEqual);
-
-
-        if (IsLocRotScaleEqual(CurrentPos_, LastPos_)) {
-
-            // Assign Value To Floats
-            ObjectScale_[0] = CurrentPos_.ScaleX;
-            ObjectScale_[1] = CurrentPos_.ScaleY;
-            ObjectScale_[2] = CurrentPos_.ScaleZ;
-    
-            ObjectRotation_[0] = CurrentPos_.RotX;
-            ObjectRotation_[1] = CurrentPos_.RotY;
-            ObjectRotation_[2] = CurrentPos_.RotZ;
-    
-            ObjectTranslation_[0] = CurrentPos_.PosX;
-            ObjectTranslation_[1] = CurrentPos_.PosY;
-            ObjectTranslation_[2] = CurrentPos_.PosZ;
-
-            HasObjectChanged_ = true;
-
-
-        } else if (!IsEqual) {
-
-            // Update Current LocRotScale
-            CurrentPos_.PosX = ObjectTranslation_[0];
-            CurrentPos_.PosY = ObjectTranslation_[1];
-            CurrentPos_.PosZ = ObjectTranslation_[2];
-
-            if (CurrentGizmoOperation_ == ImGuizmo::ROTATE) {
-
-                CurrentPos_.RotX = ObjectRotation_[0];
-                CurrentPos_.RotY = ObjectRotation_[1];
-                CurrentPos_.RotZ = ObjectRotation_[2];
-
-            }
-
-            CurrentPos_.ScaleX = ObjectScale_[0];
-            CurrentPos_.ScaleY = ObjectScale_[1];
-            CurrentPos_.ScaleZ = ObjectScale_[2];
-
-            HasObjectChanged_ = true;
-
-            
-        }
-
-    ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
-
-    // Update Last Pos
-    LastPos_ = CurrentPos_;
-
-    // Start ImGizmo Drawlist
-    ImGuizmo::SetDrawlist(ImGui::GetWindowDrawList());
-
-    // Set If Cursor Should Be Disabled
-    IsCursorActive_ = ImGuizmo::IsUsing();
 
 
     float WindowWidth = (float)ImGui::GetWindowWidth();
     float WindowHeight = (float)ImGui::GetWindowHeight();
     ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, WindowWidth, WindowHeight);
+    ImGuizmo::SetDrawlist(ImGui::GetWindowDrawList());
+    ImGuizmo::ViewManipulate((float*)glm::value_ptr(View), 5.0f, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x00000000);
 
-    ImGuizmo::Manipulate(CameraView_, CameraProjection_, CurrentGizmoOperation_, ImGuizmo::MODE::WORLD, Matrix_[16], NULL, NULL);
-    ImGuizmo::ViewManipulate(CameraView_, 5.0f, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x00000000);
+
+    float TmpMatrix[16];
+    ImGuizmo::RecomposeMatrixFromComponents((float*)glm::value_ptr(Pos_), (float*)glm::value_ptr(Rot_), (float*)glm::value_ptr(Scale_), TmpMatrix);
+    ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, ImGuizmo::MODE::LOCAL, TmpMatrix);
+
+
+
+    // Set If Cursor Should Be Disabled
+    IsCursorActive_ = ImGuizmo::IsUsing();
+    
+
+    if (IsCursorActive_) {
+        
+        float TmpTranslation[3];
+        float TmpRotation[3];
+        float TmpScale[3];
+        ImGuizmo::DecomposeMatrixToComponents(TmpMatrix, TmpTranslation, TmpRotation, TmpScale);
+
+        if (CurrentGizmoOperation_ == ImGuizmo::OPERATION::TRANSLATE) {
+            Pos_ = glm::vec3(TmpTranslation[0], TmpTranslation[1], TmpTranslation[2]);
+        } else if (CurrentGizmoOperation_ == ImGuizmo::OPERATION::ROTATE) {
+            Rot_ = glm::vec3(TmpRotation[0], TmpRotation[1], TmpRotation[2]);
+        } else if (CurrentGizmoOperation_ == ImGuizmo::OPERATION::SCALE) {
+            Scale_ = glm::vec3(TmpScale[0], TmpScale[1], TmpScale[2]);
+        }
+
+    }
+
+
+    //ImGuizmo::DecomposeMatrixToComponents(Matrix_[16], ObjectTranslation_, ObjectRotation_, ObjectScale_);
+    //ImGui::InputFloat3("Translate", ObjectTranslation_);
+    //ImGui::InputFloat3("Rotate", ObjectRotation_);
+    //ImGui::InputFloat3("Scale", ObjectScale_);
+    //ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
+
+
+
+
+
+
+
 
 
 
