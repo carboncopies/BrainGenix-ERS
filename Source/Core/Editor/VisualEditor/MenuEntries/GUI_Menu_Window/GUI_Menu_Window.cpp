@@ -13,11 +13,12 @@
 
 
 // Constructor
-GUI_Menu_Window::GUI_Menu_Window(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<VisualRenderer> VisualRendererInstance) {
+GUI_Menu_Window::GUI_Menu_Window(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<VisualRenderer> VisualRendererInstance) {
 
     // Copy In Pointer Struct
     SystemUtils_ = SystemUtils;
     VisualRenderer_ = VisualRendererInstance;
+    ProjectUtils_ = ProjectUtils;
 
     // Log Initialization
     SystemUtils_->Logger_->Log("Editor Setting Up Window Menu", 4);

@@ -54,7 +54,7 @@ GUISystem::GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwi
     SystemUtils_->Logger_->Log("Initializing Editor Menu", 5);
     Menu_File_ = std::make_unique<GUI_Menu_File>(SystemUtils_, SceneManager_, ProjectUtils_);
     Menu_View_ = std::make_unique<GUI_Menu_View>(SystemUtils_, ThemeManager_, FontManager_);
-    Menu_Window_ = std::make_unique<GUI_Menu_Window>(SystemUtils_, Cursors3D_, SceneManager_, VisualRenderer_);
+    Menu_Window_ = std::make_unique<GUI_Menu_Window>(SystemUtils_, ProjectUtils_, Cursors3D_, SceneManager_, VisualRenderer_);
     Menu_Debug_ = std::make_unique<GUI_Menu_Debug>(SystemUtils_);
     Menu_Settings_ = std::make_unique<GUI_Menu_Settings>(SystemUtils_, HIDUtils_, ProjectUtils_);
 
