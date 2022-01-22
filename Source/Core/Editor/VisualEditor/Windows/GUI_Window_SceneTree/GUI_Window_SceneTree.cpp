@@ -91,6 +91,23 @@ void Window_SceneTree::Draw() {
                 // Draw Selector In Child Frame
                 if (ImGui::BeginChild("Tree Selector")) {
 
+
+                    // Drag/Drop Target
+                    float PayloadID;
+                    if (ImGui::BeginDragDropTarget()) {
+
+                        std::cout<<"Acuqired Drag/drop Target\n";
+
+                        if (const ImGuiPayload* Paylod = ImGui::AcceptDragDropPayload("ModelAssetID")) {
+                            memcpy(&PayloadID, Paylod->Data, sizeof(float));
+                            std::cout<<"Got number: "<<PayloadID<<std::endl;
+                        }
+
+
+                    ImGui::EndDragDropTarget();
+                    }
+
+
                     // Create Scene Trees
                     for (int SceneIndex = 0; SceneIndex<SceneManager_->Scenes_.size(); SceneIndex++) {
 
@@ -164,20 +181,7 @@ void Window_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene, int SceneIndex) {
     // Get Selected Item
     int SelectedSceneObjectIndex = Scene->SelectedModel;
 
-    // Drag/Drop Target
-    float PayloadID;
-    if (ImGui::BeginDragDropTarget()) {
 
-        std::cout<<"Acuqired Drag/drop Target\n";
-
-        if (const ImGuiPayload* Paylod = ImGui::AcceptDragDropPayload("ModelAssetID")) {
-            memcpy(&PayloadID, Paylod->Data, sizeof(float));
-            std::cout<<"Got number: "<<PayloadID<<std::endl;
-        }
-
-
-    ImGui::EndDragDropTarget();
-    }
 
     // Iterate Through Scene Objects
     for (int ObjectIndex = 0; ObjectIndex < Scene->Models.size(); ObjectIndex++) {
