@@ -132,6 +132,7 @@ bool ERS_CLASS_SceneManager::SetActiveScene(std::string TargetSceneName) {
 
     // Update Target Scene
     ActiveScene_ = TargetSceneIndex;
+    ActiveScenePointer_ = std::make_shared<ERS_OBJECT_SCENE>(Scenes_[ActiveScene_]);
 
     // Return Success
     return true;
