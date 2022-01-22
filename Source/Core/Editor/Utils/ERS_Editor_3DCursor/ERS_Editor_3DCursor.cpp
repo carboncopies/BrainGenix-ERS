@@ -35,24 +35,6 @@ void Cursors3D::SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
 }
 
 
-// Get LocRotScale
-void Cursors3D::GetLocRotScale(std::shared_ptr<glm::vec3> Pos, std::shared_ptr<glm::vec3> Rot, std::shared_ptr<glm::vec3> Scale) {
-
-    // Copy Values
-    Pos->x = Pos_.x;
-    Pos->y = Pos_.y;
-    Pos->z = Pos_.z;
-    
-    Rot->x = Rot_.x;
-    Rot->y = Rot_.y;
-    Rot->z = Rot_.z;
-
-    Scale->x = Scale_.x;
-    Scale->y = Scale_.y;
-    Scale->z = Scale_.z;
-
-}
-
 
 // End Render Pass
 void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, bool IsCameraMoving) {

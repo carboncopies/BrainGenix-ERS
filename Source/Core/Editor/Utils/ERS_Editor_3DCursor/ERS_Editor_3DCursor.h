@@ -124,14 +124,6 @@ class Cursors3D {
         void EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, bool IsCameraMoving);
 
 
-        /**
-         * @brief Get the Loc Rot Scale object
-         * 
-         * @return ERS_STRUCT_LocRotScale 
-         */
-        void GetLocRotScale(std::shared_ptr<glm::vec3> Pos, std::shared_ptr<glm::vec3> Rot, std::shared_ptr<glm::vec3> Scale);
-
-
 
         /**
          * @brief Set the Loc Rot Scale object, accepts three glm::vec3 arrays indicating position, rotation and scale (in that order).
