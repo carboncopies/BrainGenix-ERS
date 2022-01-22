@@ -12,16 +12,24 @@
 #include <GUI_Window_SceneTree.h>
 
 // Constructor
-Window_SceneTree::Window_SceneTree(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
+Window_SceneTree::Window_SceneTree(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils) {
 
     // Update Ptr
     SceneManager_ = SceneManager;
+    SystemUtils_ = SystemUtils;
+    ProjectUtils_ = ProjectUtils_;
+
+    // Log Initialization
+    SystemUtils_->Logger_->Log("Initializing ERS GUI Window_SceneTree", 4);
 
     // Setup Subwindows
     Subwindow_SceneRenameModal_ = new Subwindow_SceneRenameModal(SceneManager_);
     Subwindow_ModelRenameModal_ = new Subwindow_ModelRenameModal(SceneManager_);
     Subwindow_DeleteScene_ = new Subwindow_DeleteScene(SceneManager_);
     Subwindow_DeleteModel_ = new Subwindow_DeleteModel(SceneManager_);
+
+    // Finish Init
+    SystemUtils_->Logger_->Log("Finished Initializing ERS GUI Window_SceneTree", 5);
 
 }
 
@@ -154,12 +162,10 @@ void Window_SceneTree::Draw() {
                 long PayloadID;
                 if (ImGui::BeginDragDropTarget()) {
 
-
                     if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_MODEL_ID")) {
                         memcpy(&PayloadID, Payload->Data, sizeof(long));
-                        std::cout<<"Got number: "<<PayloadID<<std::endl;
+                        SystemUtils_->Logger_->Log(std::string(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_MODEL_ID' With Value '") + std::to_string(PayloadID) + std::string("'")).c_str(), 4);
                     }
-
 
                 ImGui::EndDragDropTarget();
                 }
