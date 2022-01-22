@@ -95,7 +95,6 @@ bool ERS_CLASS_SceneManager::SetActiveScene(int SceneIndex) {
     // Update SceneIndex
     ActiveScene_ = SceneIndex;
     ActiveScenePointer_ = std::make_shared<ERS_OBJECT_SCENE>(Scenes_[ActiveScene_]);
-    pointerready = true;
 
     // Return Success
     return true;
@@ -135,7 +134,6 @@ bool ERS_CLASS_SceneManager::SetActiveScene(std::string TargetSceneName) {
     // Update Target Scene
     ActiveScene_ = TargetSceneIndex;
     ActiveScenePointer_ = std::make_shared<ERS_OBJECT_SCENE>(Scenes_[ActiveScene_]);
-    pointerready = true;
 
     // Return Success
     return true;
