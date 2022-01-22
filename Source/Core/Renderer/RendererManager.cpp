@@ -139,7 +139,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     glfwSetWindowTitle(Window_, SceneTitle.c_str());
 
     // Update Scene
-    ProjectUtils_->ModelLoader_->ProcessNewModels(std::make_shared<ERS_OBJECT_SCENE>(ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]));
+    ProjectUtils_->ModelLoader_->ProcessNewModels(ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]);
 
     // Update IO
     // Process Window Input
