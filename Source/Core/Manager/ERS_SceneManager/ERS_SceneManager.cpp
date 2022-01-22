@@ -34,8 +34,8 @@ ERS_CLASS_SceneManager::~ERS_CLASS_SceneManager() {
 
 // Update Scene Object(s) LocRotScale
 void ERS_CLASS_SceneManager::UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
-    Scenes_[ActiveScene_].Models[Scenes_[ActiveScene_].SelectedModel]->SetLocRotScale(Pos, Rot, Scale);
-    Scenes_[ActiveScene_].Models[Scenes_[ActiveScene_].SelectedModel]->ApplyTransformations();
+    Scenes_[ActiveScene_]->Models[Scenes_[ActiveScene_]->SelectedModel]->SetLocRotScale(Pos, Rot, Scale);
+    Scenes_[ActiveScene_]->Models[Scenes_[ActiveScene_]->SelectedModel]->ApplyTransformations();
 }
 
 // Add Scene Function
@@ -52,7 +52,7 @@ bool ERS_CLASS_SceneManager::AddScene(ERS_OBJECT_SCENE Scene) {
     }
 
     // Append Scene To Scenes Model
-    Scenes_.push_back(Scene);
+    Scenes_.push_back(std::make_shared<ERS_OBJECT_SCENE>(Scene));
 
     // Return Success
     return true;
@@ -63,10 +63,10 @@ bool ERS_CLASS_SceneManager::AddScene(ERS_OBJECT_SCENE Scene) {
 void ERS_CLASS_SceneManager::Render(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
     
     // Iterate Through Models
-    for (long i = 0; i < Scenes_[ActiveScene_].Models.size(); i++) {
+    for (long i = 0; i < Scenes_[ActiveScene_]->Models.size(); i++) {
 
         // Get Model Pointer
-        ERS_OBJECT_MODEL *Model = Scenes_[ActiveScene_].Models[i].get();
+        ERS_OBJECT_MODEL *Model = Scenes_[ActiveScene_]->Models[i].get();
 
         // Set Shader Pointer
         Shader->SetMat4("model", Model->GetMat4());
@@ -94,7 +94,7 @@ bool ERS_CLASS_SceneManager::SetActiveScene(int SceneIndex) {
 
     // Update SceneIndex
     ActiveScene_ = SceneIndex;
-    ActiveScenePointer_ = std::make_shared<ERS_OBJECT_SCENE>(Scenes_[ActiveScene_]);
+
 
     // Return Success
     return true;
@@ -111,7 +111,7 @@ bool ERS_CLASS_SceneManager::SetActiveScene(std::string TargetSceneName) {
     for (TargetSceneIndex = 0; TargetSceneIndex < Scenes_.size(); TargetSceneIndex++) {
 
         // Get Scene Name
-        std::string SceneName = Scenes_[TargetSceneIndex].SceneName;
+        std::string SceneName = Scenes_[TargetSceneIndex]->SceneName;
 
         // Check Scene Name
         if (SceneName == TargetSceneName) {
@@ -133,7 +133,6 @@ bool ERS_CLASS_SceneManager::SetActiveScene(std::string TargetSceneName) {
 
     // Update Target Scene
     ActiveScene_ = TargetSceneIndex;
-    ActiveScenePointer_ = std::make_shared<ERS_OBJECT_SCENE>(Scenes_[ActiveScene_]);
 
     // Return Success
     return true;
