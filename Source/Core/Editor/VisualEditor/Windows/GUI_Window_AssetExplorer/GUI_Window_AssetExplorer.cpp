@@ -61,7 +61,7 @@ void Window_AssetExplorer::Draw() {
                     ImGui::BeginChild("Asset Model Child");
 
                     // Display Models
-                    for (int i = 0; i < SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_.size(); i++) {
+                    for (long i = 0; i < SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_.size(); i++) {
                         
                         // Check Type
                         std::string Type = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i];
@@ -77,7 +77,7 @@ void Window_AssetExplorer::Draw() {
                             if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
 
                                 // Set Drag+Drop Payload
-                                ImGui::SetDragDropPayload("ModelAssetID", &i, sizeof(long));
+                                ImGui::SetDragDropPayload("ERS_DRAG_DROP_PAYLOAD_ASSET_MODEL_ID", &i, sizeof(long));
                                 ImGui::Text("ERS Model '%d'", i);
 
                             ImGui::EndDragDropSource();
