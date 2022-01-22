@@ -114,7 +114,7 @@ void Window_SceneTree::Draw() {
                         }
 
                         // Get Tree Metadata
-                        const char* SceneName = SceneManager_->Scenes_[SceneIndex].SceneName.c_str();
+                        const char* SceneName = SceneManager_->Scenes_[SceneIndex]->SceneName.c_str();
                         const char* PopupName = std::string(std::string("SceneTreePopupMenu_") + std::to_string(SceneIndex)).c_str();
 
 
@@ -146,7 +146,7 @@ void Window_SceneTree::Draw() {
 
                         if (TreeNode) {
 
-                            DrawScene(&SceneManager_->Scenes_[SceneIndex], SceneIndex);
+                            DrawScene(SceneManager_->Scenes_[SceneIndex], SceneIndex);
 
                             ImGui::TreePop();
                         }
@@ -189,7 +189,7 @@ void Window_SceneTree::Draw() {
 
 
 // Draw Contents Of Scene To Scene Tree Window Tree Node
-void Window_SceneTree::DrawScene(ERS_OBJECT_SCENE* Scene, int SceneIndex) {
+void Window_SceneTree::DrawScene(std::shared_ptr<ERS_OBJECT_SCENE> Scene, int SceneIndex) {
 
     // Get Selected Item
     int SelectedSceneObjectIndex = Scene->SelectedModel;
