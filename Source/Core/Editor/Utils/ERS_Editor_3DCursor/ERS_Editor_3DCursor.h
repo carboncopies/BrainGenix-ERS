@@ -90,7 +90,7 @@ class Cursors3D {
     public:
 
         glm::vec3 Pos_;
-        glm::vec3 Rot_;
+        glm::quat Rot_;
         glm::vec3 Scale_;
 
 
@@ -132,7 +132,7 @@ class Cursors3D {
          * @param Rot 
          * @param Scale 
          */
-        void SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale);
+        void SetLocRotScale(glm::vec3 Pos, glm::quat Rot, glm::vec3 Scale);
 
 
 };
