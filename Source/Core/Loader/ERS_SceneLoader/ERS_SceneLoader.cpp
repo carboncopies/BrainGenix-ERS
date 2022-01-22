@@ -129,3 +129,17 @@ ERS_OBJECT_SCENE ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
 
 }
 
+// Add Model To Scene
+void ERS_CLASS_SceneLoader::AddModel(std::shared_ptr<ERS_OBJECT_SCENE> Scene, long AssetID) {
+
+    // Log Model Addition
+    SystemUtils_->Logger_->Log(std::string(std::string("Adding Model With ID '") + std::to_string(AssetID) + std::string("' To Scene")).c_str(), 3);
+
+    // Add Model To Loading Queue
+    Scene->Models.push_back(std::make_shared<ERS_OBJECT_MODEL>());
+    int CurrentSize = Scene->Models.size();
+    ModelLoader_->AddModelToLoadingQueue(AssetID, Scene->Models[CurrentSize-1], false);
+
+
+
+}
