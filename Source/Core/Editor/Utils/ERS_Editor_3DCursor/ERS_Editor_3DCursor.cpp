@@ -40,7 +40,6 @@ void Cursors3D::SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
 void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, bool IsCameraMoving) {
 
 
-    std::cout<<glm::to_string(Pos_)<<std::endl;
 
 
     // Copy In Values
