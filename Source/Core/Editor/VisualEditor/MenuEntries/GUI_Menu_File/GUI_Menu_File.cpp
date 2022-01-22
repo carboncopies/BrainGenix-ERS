@@ -65,14 +65,14 @@ void GUI_Menu_File::Draw() {
         if (ImGui::MenuItem("Save Active Scene")) {
             SceneWriter_->ProcessScene(
                 std::make_shared<ERS_OBJECT_SCENE>(SceneManager_->Scenes_[SceneManager_->ActiveScene_]),
-                SceneManager_->Scenes_[SceneManager_->ActiveScene_].ScenePath
+                SceneManager_->Scenes_[SceneManager_->ActiveScene_]->ScenePath
                 );
         }
         if (ImGui::MenuItem("Save All Scenes")) {
             for (int i = 0; i < SceneManager_->Scenes_.size(); i++) {
                 SceneWriter_->ProcessScene(
                     std::make_shared<ERS_OBJECT_SCENE>(SceneManager_->Scenes_[i]),
-                    SceneManager_->Scenes_[i].ScenePath
+                    SceneManager_->Scenes_[i]->ScenePath
                     );
             }
         }

@@ -183,21 +183,21 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Update Cursor If Selection Changed
-    if (SceneManager->Scenes_[SceneManager->ActiveScene_].HasSelectionChanged) {
+    if (SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged) {
 
         // Get Selected Model
-        int SelectedModel = SceneManager->Scenes_[SceneManager->ActiveScene_].SelectedModel;
+        int SelectedModel = SceneManager->Scenes_[SceneManager->ActiveScene_]->SelectedModel;
 
         // Get LocRotScale
-        glm::vec3 Position = SceneManager->Scenes_[SceneManager->ActiveScene_].Models[SelectedModel]->ModelPosition;        
-        glm::vec3 Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_].Models[SelectedModel]->ModelRotation;        
-        glm::vec3 Scale = SceneManager->Scenes_[SceneManager->ActiveScene_].Models[SelectedModel]->ModelScale;
+        glm::vec3 Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[SelectedModel]->ModelPosition;        
+        glm::vec3 Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[SelectedModel]->ModelRotation;        
+        glm::vec3 Scale = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[SelectedModel]->ModelScale;
 
         // Set Cursor Position        
         Cursors3D_->SetLocRotScale(Position, Rotation, Scale);
 
         // Indicate Selection Hasn't Changed
-        SceneManager->Scenes_[SceneManager->ActiveScene_].HasSelectionChanged = false;
+        SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged = false;
     }
 
 
