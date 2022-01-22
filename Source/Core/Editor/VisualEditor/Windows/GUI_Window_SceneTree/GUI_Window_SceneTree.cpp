@@ -17,7 +17,7 @@ Window_SceneTree::Window_SceneTree(std::shared_ptr<ERS_CLASS_SceneManager> Scene
     // Update Ptr
     SceneManager_ = SceneManager;
     SystemUtils_ = SystemUtils;
-    ProjectUtils_ = ProjectUtils_;
+    ProjectUtils_ = ProjectUtils;
 
     // Log Initialization
     SystemUtils_->Logger_->Log("Initializing ERS GUI Window_SceneTree", 4);
