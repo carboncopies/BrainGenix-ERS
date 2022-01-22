@@ -30,6 +30,9 @@ target_link_libraries(Window_SceneTree
 
 # Link Internal Libs
 target_link_libraries(Window_SceneTree
+    ERS_STRUCT_SystemUtils
+    ERS_STRUCT_ProjectUtils
+
     LoggingSystem
     
     Scene

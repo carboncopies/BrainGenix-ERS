@@ -33,6 +33,9 @@
 #include <GUI_Windowutil_DuplicateScene.h>
 #include <GUI_Windowutil_DuplicateModel.h>
 
+#include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_ProjectUtils.h>
+
 /**
  * @brief Create GUI Window "Rendering Settings"
  * 
