@@ -165,6 +165,7 @@ void Window_SceneTree::Draw() {
                     if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_MODEL_ID")) {
                         memcpy(&PayloadID, Payload->Data, sizeof(long));
                         SystemUtils_->Logger_->Log(std::string(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_MODEL_ID' With Value '") + std::to_string(PayloadID) + std::string("'")).c_str(), 2);
+                        ProjectUtils_->SceneLoader_->AddModel(std::make_shared<ERS_OBJECT_SCENE>(ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]);
                     }
 
                 ImGui::EndDragDropTarget();
