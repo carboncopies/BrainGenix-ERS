@@ -122,6 +122,7 @@ bool ERS_OBJECT_MODEL::ApplyTransformations() {
         ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(ModelRotation[2]), glm::vec3(0, 0, 1));
         ModelLocRotScale_ = glm::scale(ModelLocRotScale_, ModelScale);
 
+        
         // Return Success
         return true;
 
