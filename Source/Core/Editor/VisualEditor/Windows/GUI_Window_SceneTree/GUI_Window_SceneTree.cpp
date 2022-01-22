@@ -166,6 +166,7 @@ void Window_SceneTree::Draw() {
                         memcpy(&PayloadID, Payload->Data, sizeof(long));
                         SystemUtils_->Logger_->Log(std::string(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_MODEL_ID' With Value '") + std::to_string(PayloadID) + std::string("'")).c_str(), 0);
                         std::cout<<"Test1\n";
+                        std::cout<<"Ispointreready: "<<ProjectUtils_->SceneManager_->pointerready<<std::endl;
                         std::cout<<ProjectUtils_->SceneManager_->ActiveScenePointer_.get()<<std::endl;
                         std::cout<<"12\n";
                         std::shared_ptr<ERS_OBJECT_SCENE> Scene = ProjectUtils_->SceneManager_->ActiveScenePointer_;

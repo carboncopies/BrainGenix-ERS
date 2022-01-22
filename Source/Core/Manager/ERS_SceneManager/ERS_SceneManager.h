@@ -40,6 +40,7 @@ class ERS_CLASS_SceneManager{
 
         std::vector<ERS_OBJECT_SCENE> Scenes_; /**<Vector Containing Scenes To Be Drawn*/
         std::shared_ptr<ERS_OBJECT_SCENE> ActiveScenePointer_; /**<Pointer To Active Scene*/
+        bool pointerready= false;
         int ActiveScene_ = 0; /**<Set The Active Scene */
 
     public:
