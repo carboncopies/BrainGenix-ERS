@@ -140,11 +140,11 @@ void ERS_CLASS_SceneLoader::AddModel(std::shared_ptr<ERS_OBJECT_SCENE> Scene, lo
     int CurrentSize = Scene->Models.size();
 
     Scene->Models[CurrentSize-1]->IsTemplateModel = false;
-    Scene->Models[CurrentSize-1]->SetLocRotScale(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+    Scene->Models[CurrentSize-1]->SetLocRotScale(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f));
     Scene->Models[CurrentSize-1]->ApplyTransformations();
     Scene->Models[CurrentSize-1]->AssetID = AssetID;
     Scene->Models[CurrentSize-1]->Name = std::string("Untitled");
-    Scene->Models[CurrentSize-1]->FlipTextures = false;
+    Scene->Models[CurrentSize-1]->FlipTextures = true;
 
     ModelLoader_->AddModelToLoadingQueue(AssetID, Scene->Models[CurrentSize-1], Scene->Models[CurrentSize-1]->FlipTextures);
 
