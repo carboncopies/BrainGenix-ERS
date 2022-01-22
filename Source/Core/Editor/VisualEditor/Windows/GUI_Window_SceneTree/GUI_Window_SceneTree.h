@@ -45,6 +45,8 @@ class Window_SceneTree {
     private:
 
         std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
+        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Pointer*/
+        std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<ProjectUtils Pointer*/
         bool FirstFrame_ = true; /**<Bool Indicating if It's the first frame*/
 
         Subwindow_SceneRenameModal* Subwindow_SceneRenameModal_; /**<Scene Rename Modal Instance*/
