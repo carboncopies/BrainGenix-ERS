@@ -77,7 +77,7 @@ void Window_AssetExplorer::Draw() {
                             if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
 
                                 // Set Drag+Drop Payload
-                                ImGui::SetDragDropPayload("ERS_DRAG_DROP_PAYLOAD_ASSET_MODEL_ID", &i, sizeof(long));
+                                ImGui::SetDragDropPayload("PAYLOAD_ASSET_MODEL_ID", &i, sizeof(long));
                                 ImGui::Text("ERS Model '%d'", i);
 
                             ImGui::EndDragDropSource();

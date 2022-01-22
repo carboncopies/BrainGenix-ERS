@@ -155,7 +155,7 @@ void Window_SceneTree::Draw() {
                 if (ImGui::BeginDragDropTarget()) {
 
 
-                    if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("ERS_DRAG_DROP_PAYLOAD_ASSET_MODEL_ID")) {
+                    if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_MODEL_ID"))) {
                         memcpy(&PayloadID, Payload->Data, sizeof(long));
                         std::cout<<"Got number: "<<PayloadID<<std::endl;
                     }
