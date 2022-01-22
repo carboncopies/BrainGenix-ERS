@@ -87,20 +87,7 @@ void Window_SceneTree::Draw() {
                 ImGui::Separator();
 
 
-                // Drag/Drop Target
-                float PayloadID;
-                if (ImGui::BeginDragDropTarget()) {
 
-                    std::cout<<"Acuqired Drag/drop Target\n";
-
-                    if (const ImGuiPayload* Paylod = ImGui::AcceptDragDropPayload("ModelAssetID")) {
-                        memcpy(&PayloadID, Paylod->Data, sizeof(float));
-                        std::cout<<"Got number: "<<PayloadID<<std::endl;
-                    }
-
-
-                ImGui::EndDragDropTarget();
-                }
 
                 // Draw Selector In Child Frame
                 if (ImGui::BeginChild("Tree Selector")) {
@@ -161,6 +148,24 @@ void Window_SceneTree::Draw() {
                     }
 
                 ImGui::EndChild();
+
+
+                // Drag/Drop Target
+                float PayloadID;
+                if (ImGui::BeginDragDropTarget()) {
+
+                    std::cout<<"Acuqired Drag/drop Target\n";
+
+                    if (const ImGuiPayload* Paylod = ImGui::AcceptDragDropPayload("ModelAssetID")) {
+                        memcpy(&PayloadID, Paylod->Data, sizeof(float));
+                        std::cout<<"Got number: "<<PayloadID<<std::endl;
+                    }
+
+
+                ImGui::EndDragDropTarget();
+                }
+
+
                 }
 
             }
