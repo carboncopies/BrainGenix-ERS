@@ -154,7 +154,6 @@ void Window_SceneTree::Draw() {
                 float PayloadID;
                 if (ImGui::BeginDragDropTarget()) {
 
-                    std::cout<<"Acuqired Drag/drop Target\n";
 
                     if (const ImGuiPayload* Paylod = ImGui::AcceptDragDropPayload("ModelAssetID")) {
                         memcpy(&PayloadID, Paylod->Data, sizeof(float));
