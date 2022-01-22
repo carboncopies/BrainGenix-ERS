@@ -70,7 +70,7 @@ void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, 
 
     float TmpMatrix[16];
     ImGuizmo::RecomposeMatrixFromComponents((float*)glm::value_ptr(Pos_), (float*)glm::value_ptr(Rot_), (float*)glm::value_ptr(Scale_), TmpMatrix);
-    ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, ImGuizmo::MODE::LOCAL, TmpMatrix);
+    ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, ImGuizmo::MODE::WORLD, TmpMatrix);
 
 
 
@@ -88,7 +88,7 @@ void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, 
         if (CurrentGizmoOperation_ == ImGuizmo::OPERATION::TRANSLATE) {
             Pos_ = glm::vec3(TmpTranslation[0], TmpTranslation[1], TmpTranslation[2]);
         } else if (CurrentGizmoOperation_ == ImGuizmo::OPERATION::ROTATE) {
-            Rot_ = glm::vec3(TmpRotation[0], TmpRotation[1], TmpRotation[2]);
+            Rot_ = glm::quat(glm::vec3(TmpRotation[0], TmpRotation[1], TmpRotation[2]));
         } else if (CurrentGizmoOperation_ == ImGuizmo::OPERATION::SCALE) {
             Scale_ = glm::vec3(TmpScale[0], TmpScale[1], TmpScale[2]);
         }
