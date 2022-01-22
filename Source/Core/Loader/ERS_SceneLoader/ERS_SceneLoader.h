@@ -82,4 +82,14 @@ public:
     ERS_OBJECT_SCENE ProcessScene(long AssetID);
 
 
+    /**
+     * @brief Adds a model with the given id to the scene pointer passed in.
+     * 
+     * @param Scene 
+     * @param AssetID 
+     */
+    void AddModel(std::shared_ptr<ERS_OBJECT_SCENE> Scene, long AssetID);
+
+
+
 };
