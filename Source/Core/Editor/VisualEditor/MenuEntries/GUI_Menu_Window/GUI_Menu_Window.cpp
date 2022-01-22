@@ -19,6 +19,7 @@ GUI_Menu_Window::GUI_Menu_Window(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     SystemUtils_ = SystemUtils;
     VisualRenderer_ = VisualRendererInstance;
     ProjectUtils_ = ProjectUtils;
+    std::cout<<"TestingProjectUtislStruct: "<<ProjectUtils_.get()<<std::endl;
 
     // Log Initialization
     SystemUtils_->Logger_->Log("Editor Setting Up Window Menu", 4);
