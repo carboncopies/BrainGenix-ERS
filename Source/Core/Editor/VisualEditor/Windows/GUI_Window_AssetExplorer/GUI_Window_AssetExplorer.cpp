@@ -78,7 +78,7 @@ void Window_AssetExplorer::Draw() {
 
                                 // Set Drag+Drop Payload
                                 ImGui::SetDragDropPayload("PAYLOAD_ASSET_MODEL_ID", &i, sizeof(long));
-                                ImGui::Text(std::string(std::string("ERS Model '") + std::to_string(i) + std::string("'")).c_str());
+                                ImGui::Text("%s", std::string(std::string("ERS Model '") + std::to_string(i) + std::string("'")).c_str());
 
                             ImGui::EndDragDropSource();
                             }
