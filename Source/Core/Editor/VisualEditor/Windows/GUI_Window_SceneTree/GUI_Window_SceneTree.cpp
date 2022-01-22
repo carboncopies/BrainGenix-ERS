@@ -151,12 +151,12 @@ void Window_SceneTree::Draw() {
 
 
                 // Drag/Drop Target
-                float PayloadID;
+                long PayloadID;
                 if (ImGui::BeginDragDropTarget()) {
 
 
-                    if (const ImGuiPayload* Paylod = ImGui::AcceptDragDropPayload("ModelAssetID")) {
-                        memcpy(&PayloadID, Paylod->Data, sizeof(float));
+                    if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("ModelAssetID")) {
+                        memcpy(&PayloadID, Payload->Data, sizeof(long));
                         std::cout<<"Got number: "<<PayloadID<<std::endl;
                     }
 
