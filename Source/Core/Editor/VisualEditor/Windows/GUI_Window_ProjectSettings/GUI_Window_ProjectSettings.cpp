@@ -99,7 +99,7 @@ void Window_ProjectSettings::Draw() {
             // Populate Dropdown Menu
             ImGui::Separator();
             for (int i = 0; i < ProjectUtils_->SceneManager_->Scenes_.size(); i++) {
-                ProjectScenes[i] = ProjectUtils_->SceneManager_->Scenes_[i].SceneName.c_str();
+                ProjectScenes[i] = ProjectUtils_->SceneManager_->Scenes_[i]->SceneName.c_str();
             }
             ImGui::Combo("Default Scene", &ProjectUtils_->ProjectManager_->Project_.DefaultScene, ProjectScenes, ProjectUtils_->SceneManager_->Scenes_.size());
             ImGui::SameLine();
