@@ -71,6 +71,10 @@ void ERS_CLASS_ModelWriter::WriteModel(std::shared_ptr<ERS_STRUCT_IOData> ModelD
     std::string Metadata = GenerateModelMetadata(Model);
 
     std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
+    
+    // Set Metadata
+    Data->AssetTypeName = "Model";
+
     Data->Data.reset(new unsigned char[Metadata.size()]);
     ::memcpy(Data->Data.get(), Metadata.c_str(), Metadata.size());
     
