@@ -93,9 +93,13 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     Data->Size_B = Metadata.size();
     memcpy(Data->Data.get(), Metadata.c_str(), Metadata.size());
 
+    // Set Metadata (FIXME: Save Modification Date + Creation Date Here!)
+    Data->AssetTypeName = "Model";
+
     long MetadataID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
     SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(MetadataID) + std::string("' To Model Metadata")).c_str(), 4);
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(MetadataID, Data);
+    
 
 
     // Return Model Instance
