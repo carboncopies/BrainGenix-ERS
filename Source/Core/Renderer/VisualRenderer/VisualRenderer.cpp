@@ -144,7 +144,11 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     
 
     // Check If Input Enabled
-    if (!Cursors3D_->DisableCameraMovement() && ImGui::IsWindowFocused() && (MouseInRange | WasSelected_[Index]) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
+    bool EnableCameraMovement = !Cursors3D_->DisableCameraMovement();
+    if (ImGui::IsKeyDown(341)) { // Bind to left control key
+        EnableCameraMovement = true;
+    }
+    if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | WasSelected_[Index]) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
         CaptureCursor_ = true;
         CaptureIndex_ = Index;
         WasSelected_[Index] = true;
