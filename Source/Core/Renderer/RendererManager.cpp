@@ -62,9 +62,9 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
     // Make Viewport
     VisualRenderer_->CreateViewport();
-    VisualRenderer_->CreateViewport();
-    VisualRenderer_->CreateViewport();
-    VisualRenderer_->CreateViewport();
+    // VisualRenderer_->CreateViewport();
+    // VisualRenderer_->CreateViewport();
+    // VisualRenderer_->CreateViewport();
 
     
 }
