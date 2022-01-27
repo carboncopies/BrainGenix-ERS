@@ -1,5 +1,3 @@
-# Modified For ERS, Miniscript Does Not Use CMake By Default
-
 # Set Script Vars
 message("-- Getting Miniscript Source Directory")
 set(MINISCRIPT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
