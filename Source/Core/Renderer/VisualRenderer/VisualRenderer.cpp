@@ -221,6 +221,9 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     SceneManager->Render(Shaders_[Index]);
 
 
+    // Begin Draw
+    Cursors3D_->BeginDraw(Cameras_[Index], CaptureCursor_);
+
     // Render Framebuffer To Window
     ImTextureID TextureID = ImTextureID((void*)(intptr_t)FramebufferColorObjects_[Index]);
     ImGui::ImageButton(TextureID,
@@ -232,7 +235,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Finish 3D Cursor
-    Cursors3D_->EndRenderpass(Cameras_[Index], CaptureCursor_);
+    Cursors3D_->EndDraw();
 
 
     ImGui::End();

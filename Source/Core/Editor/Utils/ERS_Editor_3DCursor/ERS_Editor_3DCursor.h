@@ -92,6 +92,8 @@ class Cursors3D {
         glm::vec3 Pos_;
         glm::vec3 Rot_;
         glm::vec3 Scale_;
+        glm::mat4 Projection_;
+        glm::mat4 View_;
 
 
     public:
@@ -125,11 +127,15 @@ class Cursors3D {
          */
         bool IsHovered();
 
+
+
+        void BeginDraw(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, bool IsCameraMoving);
+
         /**
          * @brief Finish render pass
          * 
          */
-        void EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, bool IsCameraMoving);
+        void EndDraw();
 
 
 
