@@ -225,7 +225,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     ImTextureID TextureID = ImTextureID((void*)(intptr_t)FramebufferColorObjects_[Index]);
     ImGui::ImageButton(TextureID,
         ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x,
-            ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),,
+            ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
         ImVec2(0, 1),
         ImVec2(1, 0),
         0
