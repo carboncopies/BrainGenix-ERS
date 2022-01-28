@@ -122,6 +122,9 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     // Render To ImGui
     ImGui::Begin(ViewportNames_[Index].c_str(), ViewportEnabled_[Index].get());
 
+    // Set Default Window Size
+    ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
+
     // Get Window Input
     int RenderWidth = ImGui::GetWindowSize().x;
     int RenderHeight = ImGui::GetWindowSize().y;
