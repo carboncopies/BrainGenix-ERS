@@ -220,22 +220,14 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     SceneManager->Render(Shaders_[Index]);
 
 
-    // // Render Framebuffer To Window
-    // ImGui::GetWindowDrawList()->AddImage(
-    //     (void*)(intptr_t)FramebufferColorObjects_[Index],
-    //     ImVec2(ImGui::GetCursorScreenPos()),
-    //     ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x,
-    //         ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
-    //     ImVec2(0, 1),
-    //     ImVec2(1, 0)        
-    // );
+    // Render Framebuffer To Window
     ImTextureID TextureID = ImTextureID(FramebufferColorObjects_[Index]);
-    ImGui::ImageButton(TextureID,
+        ImGui::ImageButton(TextureID,
         ImGui::GetContentRegionAvail(),
         ImVec2(0, 1),
         ImVec2(1, 0),
         0
-        );
+    );
 
     // Finish 3D Cursor
     Cursors3D_->EndRenderpass(Cameras_[Index], CaptureCursor_);
