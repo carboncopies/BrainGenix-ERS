@@ -35,13 +35,15 @@ void Cursors3D::SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
 }
 
 
-// Begin Draw Call
-void Cursors3D::BeginDraw(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, bool IsCameraMoving) {
+
+// End Render Pass
+void Cursors3D::Draw(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, bool IsCameraMoving) {
+
 
     // Copy In Values
     Camera_ = Camera;
-    Projection_ = Camera_->GetProjectionMatrix();
-    View_ = Camera_->GetViewMatrix();
+    glm::mat4 Projection = Camera_->GetProjectionMatrix();
+    glm::mat4 View = Camera_->GetViewMatrix();
 
     // Set Gizmo Mode
     if (ImGui::IsWindowHovered() && !IsCameraMoving) {
@@ -60,19 +62,12 @@ void Cursors3D::BeginDraw(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, bool
     float WindowHeight = (float)ImGui::GetWindowHeight();
     ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, WindowWidth, WindowHeight);
     ImGuizmo::SetDrawlist(ImGui::GetWindowDrawList());
-
-}
-
-// End Draw Call
-void Cursors3D::EndDraw() {
-
-
     //ImGuizmo::ViewManipulate((float*)glm::value_ptr(View), 5.0f, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x00000000);
 
 
     float TmpMatrix[16];
     ImGuizmo::RecomposeMatrixFromComponents((float*)glm::value_ptr(Pos_), (float*)glm::value_ptr(Rot_), (float*)glm::value_ptr(Scale_), TmpMatrix);
-    ImGuizmo::Manipulate((float*)glm::value_ptr(View_), (float*)glm::value_ptr(Projection_), CurrentGizmoOperation_, ImGuizmo::MODE::WORLD, TmpMatrix);
+    ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, ImGuizmo::MODE::WORLD, TmpMatrix);
 
 
 
