@@ -229,7 +229,13 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     //     ImVec2(0, 1),
     //     ImVec2(1, 0)        
     // );
-
+    ImTextureID TextureID = ImTextureID(FramebufferColorObjects_[Index]);
+    ImGui::ImageButton(TextureID,
+        ImGui::GetContentRegionAvail(),
+        ImVec2(0, 1),
+        ImVec2(1, 0),
+        0
+        );
 
     // Finish 3D Cursor
     Cursors3D_->EndRenderpass(Cameras_[Index], CaptureCursor_);
