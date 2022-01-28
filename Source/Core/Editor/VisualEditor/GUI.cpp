@@ -58,7 +58,9 @@ GUISystem::GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwi
     Menu_Debug_ = std::make_unique<GUI_Menu_Debug>(SystemUtils_);
     Menu_Settings_ = std::make_unique<GUI_Menu_Settings>(SystemUtils_, HIDUtils_, ProjectUtils_);
 
-
+    // Disable Dragging Except By Title Bar
+    ImGuiIO& IO = ImGui::GetIO();
+    IO.ConfigWindowsMoveFromTitleBarOnly = true;
 
 
 }

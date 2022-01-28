@@ -74,9 +74,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
     }
 
 
-    // Disable Dragging Except By Title Bar
-    ImGuiIO& IO = ImGui::GetIO();
-    IO.ConfigWindowsMoveFromTitleBarOnly = true;
+
     
 
 
@@ -119,9 +117,6 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
 
     // BIND To Default Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-    // Enable Content Dragging
-    IO.ConfigWindowsMoveFromTitleBarOnly = false;
 
 
 }
