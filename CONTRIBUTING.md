@@ -1,6 +1,6 @@
 # Contribution Guide
 First of all, thank you for taking the time to contribute, we really appreciate it.
-With that said, we would also appreciate it if you would also make sure that your code conforms to the standards below:
+With that said, we would also appreciate it if you would make sure that your code conforms to the standards below:
 
 - Please use UpperCamelCase for naming varaibles, and add a trailing Underscore_ for class member variables.
 - When creating functions/classes/structs, please add ERS_CLASS_, ERS_STRUCT_, or ERS_FUCTION_ to the start of your name.
