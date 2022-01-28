@@ -147,7 +147,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     
 
     // Check If Input Enabled
-    bool EnableCameraMovement = !Cursors3D_->IsUsing();
+    bool EnableCameraMovement = !Cursors3D_->IsHovered();
     std::cout<<Cursors3D_->IsHovered()<<std::endl;
     std::cout<<EnableCameraMovement<<std::endl;
     if (ImGui::IsKeyDown(341)) { // Bind to left control key
