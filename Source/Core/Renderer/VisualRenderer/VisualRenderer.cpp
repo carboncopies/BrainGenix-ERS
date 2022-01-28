@@ -156,6 +156,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
         CaptureIndex_ = Index;
         WasSelected_[Index] = true;
     } else {
+        CaptureCursor_ = false;
         WasSelected_[Index] = false;
     }
 
