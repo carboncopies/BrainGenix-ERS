@@ -62,7 +62,7 @@ void VisualRenderer::InitializeOpenGL() {
 
 void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
 
-    // Close Any Viewports Thar Aren't All Open
+    // Close Any Viewports That Aren't All Open
     int ViewportsToClose = -1;
     for (int i = 0; i < ViewportEnabled_.size(); i++) {
         if (!*ViewportEnabled_[i]) {
@@ -72,6 +72,12 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
     if (ViewportsToClose != -1) {
         DeleteViewport(ViewportsToClose);
     }
+
+
+    // Disable Dragging Except By Title Bar
+    ImGuiIO& IO = ImGui::GetIO();
+    IO.ConfigWindowsMoveFromTitleBarOnly = true;
+    
 
 
     // Setup Vars
@@ -113,6 +119,9 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
 
     // BIND To Default Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+    // Enable Content Dragging
+    IO.ConfigWindowsMoveFromTitleBarOnly = false;
 
 
 }

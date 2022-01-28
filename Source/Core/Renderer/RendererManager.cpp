@@ -39,7 +39,6 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     SystemUtils_->Logger_->Log("Initializing GLFW", 5);
     InitializeGLFW();
 
-
     // Instantiate Renderers
     SystemUtils_->Logger_->Log("Instantiating Renderers", 5);
     VisualRenderer_ = std::make_shared<VisualRenderer>(SystemUtils_, Window_, Cursors3D_);
