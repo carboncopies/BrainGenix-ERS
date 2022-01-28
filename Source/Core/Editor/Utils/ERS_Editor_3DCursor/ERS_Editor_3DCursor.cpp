@@ -110,7 +110,12 @@ void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, 
 }
 
 
-// Dsable Camera Movement Function
-bool Cursors3D::DisableCameraMovement() {
+// IsUsing
+bool Cursors3D::IsUsing() {
     return ImGuizmo::IsUsing();
+}
+
+// IsHovered
+bool Cursors3D::IsHovered() {
+    return ImGuizmo::IsOver();
 }

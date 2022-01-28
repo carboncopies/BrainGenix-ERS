@@ -110,12 +110,20 @@ class Cursors3D {
 
 
         /**
-         * @brief Returns if camera input should be disabled (if user interacting with cursor)
+         * @brief Returns if the gizmo is being used
          * 
          * @return true 
          * @return false 
          */
-        bool DisableCameraMovement();
+        bool IsUsing();
+
+        /**
+         * @brief Returns if the gizmo is being hovered by the mouse
+         * 
+         * @return true 
+         * @return false 
+         */
+        bool IsHovered();
 
         /**
          * @brief Finish render pass
