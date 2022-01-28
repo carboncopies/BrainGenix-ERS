@@ -129,12 +129,29 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     int RenderWidth = ImGui::GetWindowSize().x;
     int RenderHeight = ImGui::GetWindowSize().y;
 
+
+    // Calculate Window Position
+    int WindowTopLeftCornerX = ImGui::GetWindowPos().x;
+    int WindowTopLeftCornerY = ImGui::GetWindowPos().y;
+    int WindowBottomRightCornerX = ImGui::GetWindowSize().x + WindowTopLeftCornerX;
+    int WindowBottomRightCornerY = ImGui::GetWindowSize().y + WindowTopLeftCornerY;
+
+    // Get Mouse Pos
+    int MousePositionX = ImGui::GetMousePos().x;
+    int MousePositionY = ImGui::GetMousePos().y;
+
+    // Check If In Bounding Box
+    bool MouseXInRange = (MousePositionX >= WindowTopLeftCornerX) && (MousePositionX < WindowBottomRightCornerX);
+    bool MouseYInRange = (MousePositionY >= WindowTopLeftCornerY) && (MousePositionY < WindowBottomRightCornerY);
+    bool MouseInRange = MouseXInRange && MouseYInRange;
+    
+
     // Check If Input Enabled
     bool EnableCameraMovement = !Cursors3D_->DisableCameraMovement();
     if (ImGui::IsKeyDown(341)) { // Bind to left control key
         EnableCameraMovement = true;
     }
-    if (EnableCameraMovement && ImGui::IsWindowFocused() && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
+    if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | WasSelected_[Index]) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
         CaptureCursor_ = true;
         CaptureIndex_ = Index;
         WasSelected_[Index] = true;
