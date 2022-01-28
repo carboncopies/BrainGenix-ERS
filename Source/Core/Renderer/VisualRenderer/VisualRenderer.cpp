@@ -154,6 +154,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     bool MouseYInRange = (MousePositionY >= WindowTopLeftCornerY) && (MousePositionY < WindowBottomRightCornerY);
     bool MouseInRange = MouseXInRange && MouseYInRange;
     
+    std::cout<<MouseInRange<<std::endl;
 
     // Check If Input Enabled
     bool EnableCameraMovement = !Cursors3D_->IsUsing();
