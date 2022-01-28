@@ -152,9 +152,11 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
         EnableCameraMovement = true;
     }
     if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | WasSelected_[Index]) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
+        CaptureCursor_ = true;
         CaptureIndex_ = Index;
         WasSelected_[Index] = true;
     } else {
+        CaptureCursor_ = false;
         WasSelected_[Index] = false;
     }
 
@@ -229,7 +231,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     );
 
     // Finish 3D Cursor
-    Cursors3D_->EndRenderpass(Cameras_[Index], WasSelected_[Index]);
+    Cursors3D_->EndRenderpass(Cameras_[Index], CaptureCursor_);
 
 
     ImGui::End();
