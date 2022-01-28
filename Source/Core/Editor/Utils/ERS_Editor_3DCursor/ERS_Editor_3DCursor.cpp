@@ -73,11 +73,8 @@ void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, 
 
 
 
-    // Set If Cursor Should Be Disabled
-    IsCursorActive_ = ImGuizmo::IsUsing();
-    
-
-    if (IsCursorActive_) {
+    // If Using Gizmo
+    if (ImGuizmo::IsUsing()) {
         
         float TmpTranslation[3];
         float TmpRotation[3];
@@ -115,5 +112,5 @@ void Cursors3D::EndRenderpass(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, 
 
 // Dsable Camera Movement Function
 bool Cursors3D::DisableCameraMovement() {
-    return IsCursorActive_;
+    return ImGuizmo::IsUsing();
 }
