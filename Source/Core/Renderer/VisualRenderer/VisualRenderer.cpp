@@ -129,14 +129,6 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     int RenderWidth = ImGui::GetWindowSize().x;
     int RenderHeight = ImGui::GetWindowSize().y;
 
-
-    // Calculate Window Position
-    int WindowTopLeftCornerX = ImGui::GetWindowPos().x;
-    int WindowTopLeftCornerY = ImGui::GetWindowPos().y;
-    int WindowBottomRightCornerX = ImGui::GetWindowSize().x + WindowTopLeftCornerX;
-    int WindowBottomRightCornerY = ImGui::GetWindowSize().y + WindowTopLeftCornerY;
-    
-
     // Check If Input Enabled
     bool EnableCameraMovement = !Cursors3D_->DisableCameraMovement();
     if (ImGui::IsKeyDown(341)) { // Bind to left control key
