@@ -232,7 +232,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Draw 3D Cursor
-    Cursors3D_->Draw();
+    Cursors3D_->Draw(Cameras_[Index], CaptureCursor_);
 
 
     ImGui::End();
