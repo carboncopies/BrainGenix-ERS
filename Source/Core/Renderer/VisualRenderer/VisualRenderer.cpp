@@ -131,10 +131,19 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Calculate Window Position
-    int WindowTopLeftCornerX = ImGui::GetWindowPos().x;
-    int WindowTopLeftCornerY = ImGui::GetWindowPos().y;
-    int WindowBottomRightCornerX = ImGui::GetWindowSize().x + WindowTopLeftCornerX;
-    int WindowBottomRightCornerY = ImGui::GetWindowSize().y + WindowTopLeftCornerY;
+
+    ImVec2 vMin = ImGui::GetWindowContentRegionMin();
+    ImVec2 vMax = ImGui::GetWindowContentRegionMax();
+
+    vMin.x += ImGui::GetWindowPos().x;
+    vMin.y += ImGui::GetWindowPos().y;
+    vMax.x += ImGui::GetWindowPos().x;
+    vMax.y += ImGui::GetWindowPos().y;
+
+    int WindowTopLeftCornerX = vMin.x;
+    int WindowTopLeftCornerY = vMin.y;
+    int WindowBottomRightCornerX = vMax.x;
+    int WindowBottomRightCornerY = vMax.y;
 
     // Get Mouse Pos
     int MousePositionX = ImGui::GetMousePos().x;
