@@ -225,7 +225,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     ImGui::GetWindowDrawList()->AddImage(
         (void*)(intptr_t)FramebufferColorObjects_[Index],
         ImGui::GetCursorScreenPos(),
-        ImGui::GetContentRegionAvail(),
+        ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x, ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
         ImVec2(0, 1),
         ImVec2(1, 0)        
     );
