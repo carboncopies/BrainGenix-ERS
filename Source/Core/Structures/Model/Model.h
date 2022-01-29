@@ -168,7 +168,7 @@ struct ERS_OBJECT_MODEL {
      * 
      * @param Shader 
      */
-    void Draw(std::shared_ptr<ERS_OBJECT_Shader> Shader);
+    void Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader);
 
 
 };
