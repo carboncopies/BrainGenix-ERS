@@ -2,13 +2,6 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-/*
-    Description: This file contains the shader loader class.
-    Documentation Status: Completed
-    Additonal Notes: None
-    Date Created: 2021-11-27
-*/
-
 #pragma once
 
 
@@ -17,8 +10,8 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <Shader.h>
-#include <LoggingSystem.h>
+#include <ERS_STRUCT_Shader.h>
+#include <ERS_STRUCT_SystemUtils.h>
 
 
 
@@ -30,7 +23,7 @@ class ShaderLoader {
 
     private:
 
-        std::shared_ptr<LoggerClass> Logger_; /**<Pointer To Instance Of Logging System*/
+        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointer To Instance Of SystemUtils*/
 
 
     public:
