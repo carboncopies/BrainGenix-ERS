@@ -48,6 +48,12 @@ private:
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointer to system utils struct*/
 
+// Public Member Vars
+public:
+
+    bool Enabled_ = true; /**<Control var for the window, enables or disables it.*/
+
+
 // Public Methods
 public:
 
@@ -63,5 +69,12 @@ public:
      * 
      */
     ~Window_TestEditor();
+
+
+    /**
+     * @brief Call every frame to update the window.
+     * 
+     */
+    void Draw();
 
 }
