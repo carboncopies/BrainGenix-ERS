@@ -5,3 +5,5 @@
 #include <GUI_Window_TestEditor.h>
 
 
+// Constructor
+Window_TestEditor::Window_TestEditor()

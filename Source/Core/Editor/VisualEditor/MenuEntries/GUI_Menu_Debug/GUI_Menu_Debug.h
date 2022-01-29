@@ -25,6 +25,8 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
 
+#include <GUI_Window_TestEditor.h>
+
 
 
 /**
@@ -38,6 +40,7 @@ class GUI_Menu_Debug {
     private:
 
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
+        std::unique_ptr<Window_TestEditor> TestEditor_; /**<GUI Window Test Editor Instance*/
 
         bool ShowImGuiDemoWindow_ = false; /**<Show/hide ImGui DemoWindow*/
         bool DebugMenuEnabled_ = false; /**Enable/Disable Debug Menu*/
