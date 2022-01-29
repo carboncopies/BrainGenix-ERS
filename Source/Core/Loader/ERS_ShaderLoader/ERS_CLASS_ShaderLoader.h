@@ -31,9 +31,9 @@ class ShaderLoader {
         /**
          * @brief Construct a new Shader Loader object
          * 
-         * @param Logger 
+         * @param SystemUtils
          */
-        ShaderLoader(std::shared_ptr<LoggerClass> Logger);
+        ShaderLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
 
         /**
          * @brief Destroy the Shader Loader object
