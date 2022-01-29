@@ -47,11 +47,11 @@ void Widget_FrameLatencyGraph::Draw() {
                 ImPlot::EndPlot();
             }
 
-        // End System Info Window
-        ImGui::End();
+
         
 
     }
+    ImGui::End();
 
 
 }
