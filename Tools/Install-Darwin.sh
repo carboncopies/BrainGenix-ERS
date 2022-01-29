@@ -2,4 +2,4 @@
 
 # Get CMake, Compiler
 brew install cmake
-brew install g++
+brew install gcc
