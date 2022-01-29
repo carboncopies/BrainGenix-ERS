@@ -60,7 +60,7 @@ bool ERS_CLASS_SceneManager::AddScene(ERS_OBJECT_SCENE Scene) {
 }
 
 // Render All Models In Buffer
-void ERS_CLASS_SceneManager::Render(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
+void ERS_CLASS_SceneManager::Render(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
     
     // Iterate Through Models
     for (long i = 0; i < Scenes_[ActiveScene_]->Models.size(); i++) {

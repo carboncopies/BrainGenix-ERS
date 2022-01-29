@@ -47,9 +47,9 @@ class ShaderLoader {
          * 
          * @param VertexText 
          * @param FragmentText 
-         * @return ERS_OBJECT_SHADER 
+         * @return ERS_STRUCT_Shader 
          */
-        std::shared_ptr<ERS_OBJECT_SHADER> CreateShaderObject(const char* VertexText, const char* FragmentText);
+        std::shared_ptr<ERS_STRUCT_Shader> CreateShaderObject(const char* VertexText, const char* FragmentText);
 
 
         /**
@@ -57,9 +57,9 @@ class ShaderLoader {
          * 
          * @param VertexPath 
          * @param FragmentPath 
-         * @return ERS_OBJECT_SHADER 
+         * @return ERS_STRUCT_Shader 
          */
-        std::shared_ptr<ERS_OBJECT_SHADER> LoadShaderFromFile(const char* VertexPath, const char* FragmentPath);
+        std::shared_ptr<ERS_STRUCT_Shader> LoadShaderFromFile(const char* VertexPath, const char* FragmentPath);
 
 
 
