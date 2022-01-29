@@ -11,6 +11,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_Shader.h>
+#include <ERS_STRUCT_IOData.h>
 #include <ERS_STRUCT_SystemUtils.h>
 
 
