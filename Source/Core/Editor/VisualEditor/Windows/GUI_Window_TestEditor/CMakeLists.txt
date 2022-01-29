@@ -17,7 +17,7 @@ add_library(Window_TestEditor
 
 # Link 3rd Party Libs
 target_link_libraries(Window_TestEditor
-    zep
+    Zep
     IMGUI
     )
 
