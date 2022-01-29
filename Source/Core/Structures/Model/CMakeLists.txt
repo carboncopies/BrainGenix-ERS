@@ -26,6 +26,7 @@ target_link_libraries(Model
 
 # Link Internal Libs
 target_link_libraries(Model
+    ERS_STRUCT_Shader
     Meshes
     Textures
     )

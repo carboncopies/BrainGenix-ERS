@@ -20,6 +20,7 @@
 #include <glm/gtx/string_cast.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
+#include <ERS_STRUCT_Shader.h>
 #include <Mesh.h>
 #include <2DTexture.h>
 
@@ -167,7 +168,7 @@ struct ERS_OBJECT_MODEL {
      * 
      * @param Shader 
      */
-    void Draw(std::shared_ptr<ERS_OBJECT_SHADER> Shader);
+    void Draw(std::shared_ptr<ERS_OBJECT_Shader> Shader);
 
 
 };
