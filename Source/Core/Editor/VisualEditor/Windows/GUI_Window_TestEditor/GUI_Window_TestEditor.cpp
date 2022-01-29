@@ -29,7 +29,7 @@ Window_TestEditor::~Window_TestEditor() {
 void Window_TestEditor::Draw() {
 
     if (Enabled_) {
-    bool Visible = ImGui::Begin("System Log", &Enabled_);
+    bool Visible = ImGui::Begin("Test Editor Window", &Enabled_);
 
         // Set Default Window Size
         ImGui::SetWindowSize(ImVec2(300,0), ImGuiCond_FirstUseEver);
