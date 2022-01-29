@@ -22,45 +22,48 @@
  */
 class ShaderLoader {
 
-    private:
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointer To Instance Of SystemUtils*/
+private:
 
-
-    public:
-
-        /**
-         * @brief Construct a new Shader Loader object
-         * 
-         * @param SystemUtils
-         */
-        ShaderLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
-
-        /**
-         * @brief Destroy the Shader Loader object
-         * 
-         */
-        ~ShaderLoader();
-        
-
-        /**
-         * @brief Create a Shader Object object
-         * 
-         * @param VertexText 
-         * @param FragmentText 
-         * @return ERS_STRUCT_Shader 
-         */
-        std::shared_ptr<ERS_STRUCT_Shader> CreateShaderObject(const char* VertexText, const char* FragmentText);
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointer To Instance Of SystemUtils*/
 
 
-        /**
-         * @brief 
-         * 
-         * @param VertexPath 
-         * @param FragmentPath 
-         * @return ERS_STRUCT_Shader 
-         */
-        std::shared_ptr<ERS_STRUCT_Shader> LoadShaderFromFile(const char* VertexPath, const char* FragmentPath);
+public:
+
+
+    /**
+     * @brief Construct a new Shader Loader object
+     * 
+     * @param SystemUtils
+     */
+    ShaderLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+
+
+    /**
+     * @brief Destroy the Shader Loader object
+     * 
+     */
+    ~ShaderLoader();
+    
+
+    /**
+     * @brief Create a Shader Object object
+     * 
+     * @param VertexText 
+     * @param FragmentText 
+     * @return ERS_STRUCT_Shader 
+     */
+    std::shared_ptr<ERS_STRUCT_Shader> CreateShaderObject(const char* VertexText, const char* FragmentText);
+
+
+    /**
+     * @brief Load vertex/fragment shaders from the IOSubsystem.
+     * 
+     * @param VertexID 
+     * @param FragmentID 
+     * @return std::shared_ptr<ERS_STRUCT_Shader> 
+     */
+    std::shared_ptr<ERS_STRUCT_Shader> LoadShaderFromAsset(long VertexID, long FragmentID);
 
 
 
