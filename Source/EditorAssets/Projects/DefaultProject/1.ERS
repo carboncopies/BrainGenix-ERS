@@ -30,3 +30,11 @@ DefaultLayout: 0
 # Game Controller Settings
 ControllerSettings:
     0: 11
+
+    
+# Shader Objects
+ShadersPrograms:
+    0:
+        VertexID: 100
+        FragmentID: 101
+DefaultShaderProgram: 0
