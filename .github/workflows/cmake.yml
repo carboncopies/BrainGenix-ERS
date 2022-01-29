@@ -25,7 +25,7 @@ jobs:
 
     - name: Install Packages
       working-directory: ${{github.workspace}}/Tools
-      run: sudo bash Install.sh
+      run: sudo bash Install-Linux.sh
 
     - name: Build
       working-directory: ${{github.workspace}}/Tools
