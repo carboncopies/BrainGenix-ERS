@@ -47,7 +47,7 @@ VisualRenderer::~VisualRenderer() {
 
 }
 
-void VisualRenderer::SetShader(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
+void VisualRenderer::SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
     Shader_ = Shader;
 }
 
