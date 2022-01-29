@@ -44,7 +44,7 @@ class FramebufferManager {
         unsigned int RenderTexture_; /**<OpenGL Renderes To This Texture, Then It's Displayed. (OpenGL Handle)*/
         unsigned int RenderBufferObject_; /**<RenderBuffer Object Handle.*/
 
-        std::shared_ptr<ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instance*/
+        std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instance*/
         ERS_STRUCT_Shader ScreenShader_; /**<Screen Shader Instance, Used To Display Framebuffer To Screen*/
 
 
@@ -62,7 +62,7 @@ class FramebufferManager {
          * @param Width Width In Pixels
          * @param Height Height In Pixels
          */
-        FramebufferManager(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<ShaderLoader> ShaderLoader, float Width = 800.0f, float Height = 600.0f);
+        FramebufferManager(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader, float Width = 800.0f, float Height = 600.0f);
 
         /**
          * @brief Destroy the Framebuffer Manager object.
