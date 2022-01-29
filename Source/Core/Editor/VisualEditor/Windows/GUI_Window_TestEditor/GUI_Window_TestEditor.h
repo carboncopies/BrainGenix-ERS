@@ -27,6 +27,7 @@
  */
 class Window_TestEditor {
 
+
 // Private Member Vars
 private:
 
