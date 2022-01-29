@@ -7,6 +7,7 @@
 
 // Standard Library (BG convention: use <> instead of "")
 #include <vector>
+#include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
