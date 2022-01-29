@@ -24,8 +24,6 @@
 #include <Mesh.h>
 #include <2DTexture.h>
 
-#include <Shader.h>
-
 #include <ERS_InputOutputSubsystem.h>
 
 

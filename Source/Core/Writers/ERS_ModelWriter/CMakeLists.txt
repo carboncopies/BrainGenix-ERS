@@ -26,8 +26,6 @@ target_link_libraries(ERS_ModelWriter
     Scene
     Meshes
     Textures
-    Shader
-
     ERS_InputOutputSubsystem
     )
 
