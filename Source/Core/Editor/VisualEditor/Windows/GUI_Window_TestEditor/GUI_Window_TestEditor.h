@@ -32,6 +32,7 @@ class Window_TestEditor {
 private:
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointer to system utils struct*/
+    TextEditor Editor_; /** Editor Instance*/
 
 // Public Member Vars
 public:
