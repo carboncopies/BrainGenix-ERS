@@ -90,7 +90,7 @@ class ERS_CLASS_SceneManager{
          * 
          * @param Shader 
          */
-        void Render(std::shared_ptr<ERS_OBJECT_SHADER> Shader);
+        void Render(std::shared_ptr<ERS_STRUCT_Shader> Shader);
 
         /**
          * @brief Send LocRotScale Update To Object(s) In Active Scene
