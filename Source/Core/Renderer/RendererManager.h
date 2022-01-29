@@ -32,7 +32,6 @@
 #include <Framebuffer.h>
 #include <GUI.h>
 
-#include <ERS_ShaderLoader.h>
 #include <ERS_ModelWriter.h>
 #include <ERS_ModelLoader.h>
 
