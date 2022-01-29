@@ -30,6 +30,7 @@ target_link_libraries(VisualRenderer
     InputProcessor
     LoggingSystem
     ImageLoader
+    Framebuffer
 
     Model
     Scene
@@ -37,10 +38,10 @@ target_link_libraries(VisualRenderer
 
 
     ERS_STRUCT_Shader
-    ShaderLoader
-    Framebuffer
 
     ERS_Editor_3DCursor
+
+    ERS_ShaderLoader
     ERS_SceneLoader
 
     ERS_STRUCT_LocRotScale
