@@ -61,7 +61,10 @@ std::shared_ptr<ERS_STRUCT_Shader> ShaderLoader::LoadShaderFromAsset(long Vertex
 
 
     // Return Compiled Shader
-    return CreateShaderObject(VertexText.c_str(), FragmentText.c_str());
+    std::shared_ptr<ERS_STRUCT_Shader> ShaderStruct = CreateShaderObject(VertexText.c_str(), FragmentText.c_str());
+    ShaderStruct->VertexID = VertexID;
+    ShaderStruct->FragmentID = FragmentID;
+    return ShaderStruct;
 
 
 }
