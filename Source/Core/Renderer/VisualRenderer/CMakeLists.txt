@@ -36,7 +36,7 @@ target_link_libraries(VisualRenderer
     ERS_SceneManager
 
 
-    Shader
+    ERS_STRUCT_Shader
     ShaderLoader
     Framebuffer
 
