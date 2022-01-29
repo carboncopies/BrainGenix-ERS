@@ -35,23 +35,28 @@ void Widget_FrameLatencyGraph::Draw() {
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(300,250), ImGuiCond_FirstUseEver);
 
-            // Get Window Size (To Size Graph)
-            ImVec2 WindowSize = ImGui::GetContentRegionAvail();
-            ImVec2 GraphSize = ImVec2(WindowSize.x, WindowSize.y);
+            // Check If Window Visible
+            if (WindowVisible) {
 
-            // Graph
-            if (WindowVisible && (SystemUtils_->FramerateManager_->ActualFrameTimesMS_.size() > 0)) {
-                ImPlot::SetNextAxesToFit();
-                ImPlot::BeginPlot("Frame Latency Graph", GraphSize);
-                ImPlot::PlotLine("Frame Latency", (const float*)SystemUtils_->FramerateManager_->ActualFrameTimesMS_.data(), SystemUtils_->FramerateManager_->ActualFrameTimesMS_.size());
-                ImPlot::EndPlot();
+                // Get Window Size (To Size Graph)
+                ImVec2 WindowSize = ImGui::GetContentRegionAvail();
+                ImVec2 GraphSize = ImVec2(WindowSize.x, WindowSize.y);
+
+                // Graph
+                if (WindowVisible && (SystemUtils_->FramerateManager_->ActualFrameTimesMS_.size() > 0)) {
+                    ImPlot::SetNextAxesToFit();
+                    ImPlot::BeginPlot("Frame Latency Graph", GraphSize);
+                    ImPlot::PlotLine("Frame Latency", (const float*)SystemUtils_->FramerateManager_->ActualFrameTimesMS_.data(), SystemUtils_->FramerateManager_->ActualFrameTimesMS_.size());
+                    ImPlot::EndPlot();
+                }
+
             }
 
-
+        // End System Info Window
+        ImGui::End();
         
 
     }
-    ImGui::End();
 
 
 }
