@@ -45,7 +45,7 @@ class FramebufferManager {
         unsigned int RenderBufferObject_; /**<RenderBuffer Object Handle.*/
 
         std::shared_ptr<ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instance*/
-        ERS_OBJECT_SHADER ScreenShader_; /**<Screen Shader Instance, Used To Display Framebuffer To Screen*/
+        ERS_STRUCT_Shader ScreenShader_; /**<Screen Shader Instance, Used To Display Framebuffer To Screen*/
 
 
         unsigned int ScreenQuadVAO_; /**<Screen Quad VAO Reference*/
