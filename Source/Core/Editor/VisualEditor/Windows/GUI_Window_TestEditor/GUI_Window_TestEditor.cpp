@@ -12,7 +12,7 @@ Window_TestEditor::Window_TestEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> Sys
     SystemUtils_ = SystemUtils;
 
     // Log Initialization
-    Logger_->Log("Initializing Demo Zep Editor Window", 4);
+    SystemUtils_->Logger_->Log("Initializing Demo Zep Editor Window", 4);
 
 }
 
@@ -20,7 +20,7 @@ Window_TestEditor::Window_TestEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> Sys
 Window_TestEditor::~Window_TestEditor() {
 
     // Log Destructor Call
-    Logger_->Log("Zep Editor Window Destructor Called", 6);
+    SystemUtils_->Logger_->Log("Zep Editor Window Destructor Called", 6);
 
 }
 
