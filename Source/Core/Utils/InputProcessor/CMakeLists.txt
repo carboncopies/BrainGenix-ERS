@@ -37,8 +37,8 @@ target_link_libraries(InputProcessor
 
     VisualEditor
 
-    Shader
-    ShaderLoader
+    ERS_STRUCT_Shader
+    ERS_ShaderLoader
     Framebuffer
 
     ERS_SceneLoader
