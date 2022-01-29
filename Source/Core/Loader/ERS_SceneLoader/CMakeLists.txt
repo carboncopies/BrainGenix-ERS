@@ -27,7 +27,7 @@ target_link_libraries(ERS_SceneLoader
     Scene
     Meshes
     Textures
-    Shader
+    ERS_STRUCT_Shader
     )
 
 target_include_directories(ERS_SceneLoader PUBLIC ./)

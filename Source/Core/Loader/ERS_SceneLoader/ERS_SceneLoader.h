@@ -26,7 +26,7 @@
 #include <2DTexture.h>
 
 
-#include <Shader.h>
+#include <ERS_STRUCT_Shader.h>
 
 
 /**
