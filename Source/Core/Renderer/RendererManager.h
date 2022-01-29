@@ -32,6 +32,7 @@
 #include <Framebuffer.h>
 #include <GUI.h>
 
+#include <ERS_ShaderLoader.h>
 #include <ERS_ModelWriter.h>
 #include <ERS_ModelLoader.h>
 
@@ -59,7 +60,7 @@ class RendererManager {
         std::shared_ptr<VisualRenderer> VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
         std::shared_ptr<IOManager> IOManager_; /**<Pointer To IOManager Instance*/
         GLFWwindow* Window_; /**<GLFW Window Instance*/
-        std::shared_ptr<ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
+        std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
         std::shared_ptr<FramebufferManager> FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
         std::shared_ptr<ERS_STRUCT_Shader> Shader_; /**<ERS Shader Object (Main System Shader)*/
         std::shared_ptr<GUISystem> GuiSystem_; /**<Instance of GUI System*/
