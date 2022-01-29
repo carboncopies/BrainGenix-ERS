@@ -137,6 +137,7 @@ add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ProjectLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ModelLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ControllerSettingsLoader)
 
+
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_SceneWriter)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ModelWriter)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ProjectWriter)
@@ -148,7 +149,7 @@ file(COPY "${SRC_DIR}/EditorAssets/DefaultLayout/imgui.ini" DESTINATION "${BIN_D
 file(COPY "${SRC_DIR}/Shaders/" DESTINATION "${BIN_DIR}/Shaders")
 
 # Set Configuration Based On Platform
-if (WIN32)
+if (WIN32 OR APPLE)
   configure_file("${SRC_DIR}/Config-Windows.yaml" "${BIN_DIR}/Config.yaml" COPYONLY)
 else()
   configure_file("${SRC_DIR}/Config-Linux.yaml" "${BIN_DIR}/Config.yaml" COPYONLY)
