@@ -8,6 +8,7 @@ With that said, we would also appreciate it if you would make sure that your cod
 - For file names, please also add ERS_[CLASS/STRUCT/FUNCTION]_ to the start of the name to indicate what is contained within the file.
 - Every dir should have it's own CMakeLists.txt file which tells cmake how to build your code. These can be adapted from the example below.
 - Make sure to call add_subdirectory with that dir in the root CMakeLists.txt file, or else it won't build.
+- Please also document your code with doxygen formatting. We use doxygen to generate the online docs page, so all code should use that format.
 - Finally, please also add the following boilerplate code below to your the start of your code.
 
 ## Templates
