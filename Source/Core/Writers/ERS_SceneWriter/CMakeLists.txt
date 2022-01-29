@@ -26,7 +26,6 @@ target_link_libraries(ERS_SceneWriter
     Scene
     Meshes
     Textures
-    Shader
 
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_IOData

@@ -23,7 +23,6 @@
 #include <Scene.h>
 #include <Mesh.h>
 #include <2DTexture.h>
-#include <Shader.h>
 
 #include <ERS_STRUCT_IOData.h>
 #include <ERS_STRUCT_SystemUtils.h>
