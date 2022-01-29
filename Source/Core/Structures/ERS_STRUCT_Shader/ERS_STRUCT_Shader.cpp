@@ -7,7 +7,7 @@
 
 
 // Compile Vertex Shader
-void ERS_STRUCT_SHADER::CompileVertexShader(const char* VertexText) {
+void ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText) {
 
     // Compile The Vertex Shader Text Into A Binary
     VertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -30,7 +30,7 @@ void ERS_STRUCT_SHADER::CompileVertexShader(const char* VertexText) {
 }
 
 // Compile Fragment Shader
-void ERS_STRUCT_SHADER::CompileFragmentShader(const char* FragmentText) {
+void ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText) {
 
     // Compile The Fragment Shader Text Into A Binary
     FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -54,7 +54,7 @@ void ERS_STRUCT_SHADER::CompileFragmentShader(const char* FragmentText) {
 
 
 // Compile Shader Program
-void ERS_STRUCT_SHADER::CreateShaderProgram(bool DeleteShadersUponLink) {
+void ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink) {
 
     // Check That Vertex And Fragment Shaders Are Initialized
     if (!_VertexShaderInitialized || !_FragmentShaderInitialized) {
@@ -78,7 +78,7 @@ void ERS_STRUCT_SHADER::CreateShaderProgram(bool DeleteShadersUponLink) {
     if (!Success) {
         char InfoLog[512];
         glGetProgramInfoLog(ShaderProgram, 512, NULL, InfoLog);
-        std::cout << "SHADER LINK ERROR: " << InfoLog << std::endl;
+        std::cout << "Shader LINK ERROR: " << InfoLog << std::endl;
     } else {
         _ShaderProgramInitialized = true;
     }
@@ -99,7 +99,7 @@ void ERS_STRUCT_SHADER::CreateShaderProgram(bool DeleteShadersUponLink) {
 }
 
 // Make Shader Active
-void ERS_STRUCT_SHADER::MakeActive() {
+void ERS_STRUCT_Shader::MakeActive() {
 
     if (!_ShaderProgramInitialized) {
         std::cout << "Shader Program Not Yet Initialised\n";
@@ -112,58 +112,58 @@ void ERS_STRUCT_SHADER::MakeActive() {
 
 // Population Functions
 // ------------------------------------------------------------------------
-void ERS_STRUCT_SHADER::SetBool(const std::string &name, bool value) const
+void ERS_STRUCT_Shader::SetBool(const std::string &name, bool value) const
 {         
     glUniform1i(glGetUniformLocation(ShaderProgram, name.c_str()), (int)value); 
 }
 // ------------------------------------------------------------------------
-void ERS_STRUCT_SHADER::SetInt(const std::string &name, int value) const
+void ERS_STRUCT_Shader::SetInt(const std::string &name, int value) const
 { 
     glUniform1i(glGetUniformLocation(ShaderProgram, name.c_str()), value); 
 }
-void ERS_STRUCT_SHADER::SetFloat(const std::string &name, float value) const
+void ERS_STRUCT_Shader::SetFloat(const std::string &name, float value) const
 { 
     glUniform1f(glGetUniformLocation(ShaderProgram, name.c_str()), value); 
 }
 // ------------------------------------------------------------------------
-void ERS_STRUCT_SHADER::SetVec2(const std::string &name, const glm::vec2 &value) const
+void ERS_STRUCT_Shader::SetVec2(const std::string &name, const glm::vec2 &value) const
 { 
     glUniform2fv(glGetUniformLocation(ShaderProgram, name.c_str()), 1, &value[0]); 
 }
-void ERS_STRUCT_SHADER::SetVec2(const std::string &name, float x, float y) const
+void ERS_STRUCT_Shader::SetVec2(const std::string &name, float x, float y) const
 { 
     glUniform2f(glGetUniformLocation(ShaderProgram, name.c_str()), x, y); 
 }
 // ------------------------------------------------------------------------
-void ERS_STRUCT_SHADER::SetVec3(const std::string &name, const glm::vec3 &value) const
+void ERS_STRUCT_Shader::SetVec3(const std::string &name, const glm::vec3 &value) const
 { 
     glUniform3fv(glGetUniformLocation(ShaderProgram, name.c_str()), 1, &value[0]); 
 }
-void ERS_STRUCT_SHADER::SetVec3(const std::string &name, float x, float y, float z) const
+void ERS_STRUCT_Shader::SetVec3(const std::string &name, float x, float y, float z) const
 { 
     glUniform3f(glGetUniformLocation(ShaderProgram, name.c_str()), x, y, z); 
 }
 // ------------------------------------------------------------------------
-void ERS_STRUCT_SHADER::SetVec4(const std::string &name, const glm::vec4 &value) const
+void ERS_STRUCT_Shader::SetVec4(const std::string &name, const glm::vec4 &value) const
 { 
     glUniform4fv(glGetUniformLocation(ShaderProgram, name.c_str()), 1, &value[0]); 
 }
-void ERS_STRUCT_SHADER::SetVec4(const std::string &name, float x, float y, float z, float w) 
+void ERS_STRUCT_Shader::SetVec4(const std::string &name, float x, float y, float z, float w) 
 { 
     glUniform4f(glGetUniformLocation(ShaderProgram, name.c_str()), x, y, z, w); 
 }
 // ------------------------------------------------------------------------
-void ERS_STRUCT_SHADER::SetMat2(const std::string &name, const glm::mat2 &mat) const
+void ERS_STRUCT_Shader::SetMat2(const std::string &name, const glm::mat2 &mat) const
 {
     glUniformMatrix2fv(glGetUniformLocation(ShaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 // ------------------------------------------------------------------------
-void ERS_STRUCT_SHADER::SetMat3(const std::string &name, const glm::mat3 &mat) const
+void ERS_STRUCT_Shader::SetMat3(const std::string &name, const glm::mat3 &mat) const
 {
     glUniformMatrix3fv(glGetUniformLocation(ShaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 // ------------------------------------------------------------------------
-void ERS_STRUCT_SHADER::SetMat4(const std::string &name, const glm::mat4 &mat) const
+void ERS_STRUCT_Shader::SetMat4(const std::string &name, const glm::mat4 &mat) const
 {
     glUniformMatrix4fv(glGetUniformLocation(ShaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }

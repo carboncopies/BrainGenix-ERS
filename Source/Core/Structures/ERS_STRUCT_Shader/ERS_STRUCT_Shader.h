@@ -28,7 +28,7 @@
  * @brief Structure To Store Shader Object
  * 
  */
-struct ERS_STRUCT_SHADER {
+struct ERS_STRUCT_Shader {
 
 
     unsigned int ShaderProgram; /**<OpenGL refernece ID for Shader Program */
