@@ -25,6 +25,10 @@ GUI_Menu_Debug::GUI_Menu_Debug(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUti
     SystemUtils_->Logger_->Log("Reading Configuration File For 'ShowEditorDebugMenu' Parameter", 1);
     DebugMenuEnabled_ = (*SystemUtils_->LocalSystemConfiguration_)["ShowEditorDebugMenu"].as<bool>();
 
+    // Setup Window Instances
+    SystemUtils_>Logger_->Log("Initialiizng Debug Menu Window Instances", 5);
+    TestEditor_ = std::make_shared<Window_TestEditor>(SystemUtils_);
+
 }
 
 
@@ -51,6 +55,11 @@ void GUI_Menu_Debug::Draw() {
                 ShowImGuiDemoWindow_ = !ShowImGuiDemoWindow_;
             }
 
+            // Test Editor
+            if (ImGui::MenuItem("ImGui Demo Window")) {
+                TestEditor_->Enabled_ = !TestEditor_->Enabled_;
+            }
+
 
         ImGui::EndMenu();
         }
@@ -62,6 +71,10 @@ void GUI_Menu_Debug::Draw() {
         }
 
     }
+
+
+    // Draw Windows
+    TestEditor_->Draw();
 
 
 }
