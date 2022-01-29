@@ -27,7 +27,7 @@ target_link_libraries(Framebuffer
 target_link_libraries(Framebuffer
     LoggingSystem
     ERS_STRUCT_Shader
-    ShaderLoader
+    ERS_ShaderLoader
     )
 
 target_include_directories(Framebuffer PUBLIC ./)
