@@ -95,6 +95,7 @@ void Window_SystemLog::Draw() {
 
         }
 
+
     ImGui::End();
     }
 

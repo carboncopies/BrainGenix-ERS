@@ -47,143 +47,141 @@ Window_SceneTree::~Window_SceneTree() {
 // Define Draw Function
 void Window_SceneTree::Draw() {
 
+
+    // If Window Drawing Enabled
+    if (Enabled_) {
+    bool Visible = ImGui::Begin("Scene Tree", &Enabled_);
+
+        // Set Initial Window Size
+        ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
+
+
+        if (Visible) {
+
+            // Initialize Vars
+            int ActiveScene = SceneManager_->ActiveScene_;
+            
+            // Convert Vector to Array
+            if (ImGui::BeginCombo("Active Scene", SceneManager_->Scenes_[ActiveScene]->SceneName.c_str())) {
+
+                for (int i = 0; i < SceneManager_->Scenes_.size(); i++) {
+
+                    // Setup Selector
+                    bool Selector = false;
+                    if (i == SceneManager_->ActiveScene_) {
+                        Selector = true;
+                    }
+
+                    // Create Selectable Item
+                    ImGui::Selectable(SceneManager_->Scenes_[i]->SceneName.c_str(), &Selector);
+
+                    // If Item Selected, Update Scene To Current Index
+                    if (Selector) {
+                        SceneManager_->ActiveScene_ = i;
+                        SceneManager_->Scenes_[i]->HasSelectionChanged = true;
+                    }
+                }
+
+            ImGui::EndCombo();
+            }
+
+            // Active Scene Dropdown
+            ImGui::Separator();
+
+
+
+
+            // Draw Selector In Child Frame
+            if (ImGui::BeginChild("Tree Selector")) {
+
+
+
+
+
+                // Create Scene Trees
+                for (int SceneIndex = 0; SceneIndex<SceneManager_->Scenes_.size(); SceneIndex++) {
+
+                    // Setup Tree Flags
+                    ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnArrow;
+                    if (SceneIndex == ActiveScene) {
+                        NodeFlags |= ImGuiTreeNodeFlags_Selected;
+                    }
+
+                    // Get Tree Metadata
+                    const char* SceneName = SceneManager_->Scenes_[SceneIndex]->SceneName.c_str();
+                    const char* PopupName = std::string(std::string("SceneTreePopupMenu_") + std::to_string(SceneIndex)).c_str();
+
+
+                    // Begin Tree
+                    bool TreeNode = ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName);
+
+                    // Context Menu
+                    if (ImGui::BeginPopupContextItem()) {
+
+                        // Menu Items
+                        if (ImGui::MenuItem("Rename")) {
+                            Subwindow_SceneRenameModal_->Activate(SceneIndex);
+                        } if (ImGui::MenuItem("Duplicate")) {
+                            GUI_Windowutil_DuplicateScene(SceneManager_, SceneIndex); // FIXME: Will need to update how scenes are saved, as right now these will overwrite other scenes when saved. (Solution could be a scenes folder?)
+                        }
+
+
+                        ImGui::Separator();
+
+                        if (ImGui::MenuItem("Delete")) {
+                            Subwindow_DeleteScene_->DeleteScene(SceneIndex);
+                        }
+
+
+                    ImGui::EndPopup();
+                    }
+
+
+
+                    if (TreeNode) {
+
+                        DrawScene(SceneManager_->Scenes_[SceneIndex], SceneIndex);
+
+                        ImGui::TreePop();
+                    }
+
+
+
+                }
+
+            ImGui::EndChild();
+
+
+            // Drag/Drop Target
+            long PayloadID;
+            if (ImGui::BeginDragDropTarget()) {
+
+                if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_MODEL_ID")) {
+                    memcpy(&PayloadID, Payload->Data, sizeof(long));
+                    SystemUtils_->Logger_->Log(std::string(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_MODEL_ID' With Value '") + std::to_string(PayloadID) + std::string("'")).c_str(), 0);
+                    std::shared_ptr<ERS_OBJECT_SCENE> Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_];
+                    ProjectUtils_->SceneLoader_->AddModel(Scene, PayloadID);
+                }
+
+            ImGui::EndDragDropTarget();
+            }
+
+
+            }
+
+        }
+        
+
+    // End System Controls Window
+    ImGui::End();
+    }
+
+
     // Draw Popup Modals
     Subwindow_SceneRenameModal_->Draw();
     Subwindow_ModelRenameModal_->Draw();
     Subwindow_DeleteScene_->Draw();
     Subwindow_DeleteModel_->Draw();
-
-
-    // If Window Drawing Enabled
-    if (Enabled_) {
-        bool Visible = ImGui::Begin("Scene Tree", &Enabled_);
-
-            // Set Initial Window Size
-            ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
-
-
-            if (Visible) {
-
-                // Initialize Vars
-                int ActiveScene = SceneManager_->ActiveScene_;
-                
-                // Convert Vector to Array
-                if (ImGui::BeginCombo("Active Scene", SceneManager_->Scenes_[ActiveScene]->SceneName.c_str())) {
-
-                    for (int i = 0; i < SceneManager_->Scenes_.size(); i++) {
-
-                        // Setup Selector
-                        bool Selector = false;
-                        if (i == SceneManager_->ActiveScene_) {
-                            Selector = true;
-                        }
-
-                        // Create Selectable Item
-                        ImGui::Selectable(SceneManager_->Scenes_[i]->SceneName.c_str(), &Selector);
-
-                        // If Item Selected, Update Scene To Current Index
-                        if (Selector) {
-                            SceneManager_->ActiveScene_ = i;
-                            SceneManager_->Scenes_[i]->HasSelectionChanged = true;
-                        }
-                    }
-
-                ImGui::EndCombo();
-                }
-
-                // Active Scene Dropdown
-                ImGui::Separator();
-
-
-
-
-                // Draw Selector In Child Frame
-                if (ImGui::BeginChild("Tree Selector")) {
-
-
-
-
-
-                    // Create Scene Trees
-                    for (int SceneIndex = 0; SceneIndex<SceneManager_->Scenes_.size(); SceneIndex++) {
-
-                        // Setup Tree Flags
-                        ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnArrow;
-                        if (SceneIndex == ActiveScene) {
-                            NodeFlags |= ImGuiTreeNodeFlags_Selected;
-                        }
-
-                        // Get Tree Metadata
-                        const char* SceneName = SceneManager_->Scenes_[SceneIndex]->SceneName.c_str();
-                        const char* PopupName = std::string(std::string("SceneTreePopupMenu_") + std::to_string(SceneIndex)).c_str();
-
-
-                        // Begin Tree
-                        bool TreeNode = ImGui::TreeNodeEx((void*)(intptr_t)SceneIndex, NodeFlags, "%s", SceneName);
-
-                        // Context Menu
-                        if (ImGui::BeginPopupContextItem()) {
-
-                            // Menu Items
-                            if (ImGui::MenuItem("Rename")) {
-                                Subwindow_SceneRenameModal_->Activate(SceneIndex);
-                            } if (ImGui::MenuItem("Duplicate")) {
-                                GUI_Windowutil_DuplicateScene(SceneManager_, SceneIndex); // FIXME: Will need to update how scenes are saved, as right now these will overwrite other scenes when saved. (Solution could be a scenes folder?)
-                            }
-
-
-                            ImGui::Separator();
-
-                            if (ImGui::MenuItem("Delete")) {
-                                Subwindow_DeleteScene_->DeleteScene(SceneIndex);
-                            }
-
-
-                        ImGui::EndPopup();
-                        }
-
-
-
-                        if (TreeNode) {
-
-                            DrawScene(SceneManager_->Scenes_[SceneIndex], SceneIndex);
-
-                            ImGui::TreePop();
-                        }
-
-
-
-                    }
-
-                ImGui::EndChild();
-
-
-                // Drag/Drop Target
-                long PayloadID;
-                if (ImGui::BeginDragDropTarget()) {
-
-                    if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_MODEL_ID")) {
-                        memcpy(&PayloadID, Payload->Data, sizeof(long));
-                        SystemUtils_->Logger_->Log(std::string(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_MODEL_ID' With Value '") + std::to_string(PayloadID) + std::string("'")).c_str(), 0);
-                        std::shared_ptr<ERS_OBJECT_SCENE> Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_];
-                        ProjectUtils_->SceneLoader_->AddModel(Scene, PayloadID);
-                    }
-
-                ImGui::EndDragDropTarget();
-                }
-
-
-                }
-
-            }
-            
-
-        // End System Controls Window
-        ImGui::End();
-
-    }
-
-
 
 }
 
