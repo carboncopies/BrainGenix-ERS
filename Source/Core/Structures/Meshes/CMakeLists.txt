@@ -26,7 +26,7 @@ target_link_libraries(Meshes
 
 # Link Internal Libs
 target_link_libraries(Meshes
-    Shader
+    ERS_STRUCT_Shader
     Textures
     Vertex
     ImageLoader
