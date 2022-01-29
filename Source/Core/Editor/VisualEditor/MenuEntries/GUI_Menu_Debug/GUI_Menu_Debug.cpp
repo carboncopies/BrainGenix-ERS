@@ -56,7 +56,7 @@ void GUI_Menu_Debug::Draw() {
             }
 
             // Test Editor
-            if (ImGui::MenuItem("ImGui Demo Window")) {
+            if (ImGui::MenuItem("Test Editor Window")) {
                 TestEditor_->Enabled_ = !TestEditor_->Enabled_;
             }
 
