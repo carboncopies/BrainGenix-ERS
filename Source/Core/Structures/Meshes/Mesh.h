@@ -13,6 +13,7 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <vector>
 #include <string>
+#include <memory>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_Shader.h>
