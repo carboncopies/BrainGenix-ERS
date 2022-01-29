@@ -26,8 +26,8 @@ GUI_Menu_Debug::GUI_Menu_Debug(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUti
     DebugMenuEnabled_ = (*SystemUtils_->LocalSystemConfiguration_)["ShowEditorDebugMenu"].as<bool>();
 
     // Setup Window Instances
-    SystemUtils_>Logger_->Log("Initialiizng Debug Menu Window Instances", 5);
-    TestEditor_ = std::make_shared<Window_TestEditor>(SystemUtils_);
+    SystemUtils_->Logger_->Log("Initialiizng Debug Menu Window Instances", 5);
+    TestEditor_ = std::make_unique<Window_TestEditor>(SystemUtils_);
 
 }
 
