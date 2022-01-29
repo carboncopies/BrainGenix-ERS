@@ -59,5 +59,11 @@
     AssetType: "Controller Settings"
     AssetCreationDate: "1970-01-01-00-00-00"
     AssetModificationDate: "2022-01-01-00-00-00"    
-    
-    
+100: 
+    AssetType: "Vertex Shader"
+    AssetCreationDate: "1970-01-01-00-00-00"
+    AssetModificationDate: "2022-01-01-00-00-00"
+101: 
+    AssetType: "Fragment Shader"
+    AssetCreationDate: "1970-01-01-00-00-00"
+    AssetModificationDate: "2022-01-01-00-00-00"
