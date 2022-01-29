@@ -59,8 +59,6 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::LoadShaderFromAsset(l
     std::string VertexText = std::string((const char*)VertexData->Data.get());
     std::string FragmentText = std::string((const char*)FragmentData->Data.get());
 
-    std::cout<<VertexText<<std::endl;
-    std::cout<<FragmentText<<std::endl;
 
 
     // Return Compiled Shader
