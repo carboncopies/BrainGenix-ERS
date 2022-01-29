@@ -43,18 +43,16 @@ if (ImGui::BeginMenuBar())
 			{
 				if (ImGui::MenuItem("Save"))
 				{
-					auto textToSave = editor.GetText();
+					auto textToSave = Editor_.GetText();
 					/// save text....
 				}
-				if (ImGui::MenuItem("Quit", "Alt-F4"))
-					break;
 				ImGui::EndMenu();
 			}
 			if (ImGui::BeginMenu("Edit"))
 			{
-				bool ro = editor.IsReadOnly();
+				bool ro = Editor_.IsReadOnly();
 				if (ImGui::MenuItem("Read-only mode", nullptr, &ro))
-					editor.SetReadOnly(ro);
+					Editor_.SetReadOnly(ro);
 				ImGui::Separator();
 
 				if (ImGui::MenuItem("Undo", "ALT-Backspace", nullptr, !ro && editor.CanUndo()))
@@ -84,22 +82,17 @@ if (ImGui::BeginMenuBar())
 			if (ImGui::BeginMenu("View"))
 			{
 				if (ImGui::MenuItem("Dark palette"))
-					editor.SetPalette(TextEditor::GetDarkPalette());
+					Editor_.SetPalette(TextEditor::GetDarkPalette());
 				if (ImGui::MenuItem("Light palette"))
-					editor.SetPalette(TextEditor::GetLightPalette());
+					Editor_.SetPalette(TextEditor::GetLightPalette());
 				if (ImGui::MenuItem("Retro blue palette"))
-					editor.SetPalette(TextEditor::GetRetroBluePalette());
+					Editor_.SetPalette(TextEditor::GetRetroBluePalette());
 				ImGui::EndMenu();
 			}
 			ImGui::EndMenuBar();
 		}
 
-		ImGui::Text("%6d/%-6d %6d lines  | %s | %s | %s | %s", cpos.mLine + 1, cpos.mColumn + 1, editor.GetTotalLines(),
-			editor.IsOverwrite() ? "Ovr" : "Ins",
-			editor.CanUndo() ? "*" : " ",
-			editor.GetLanguageDefinition().mName.c_str(), fileToEdit);
-
-		editor.Render("TextEditor");
+		Editor_.Render("TextEditor");
 
         }
 
