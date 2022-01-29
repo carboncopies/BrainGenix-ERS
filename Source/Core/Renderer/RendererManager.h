@@ -28,7 +28,7 @@
 #include <IOManager.h>
 #include <NoClip.h>
 
-#include <ShaderLoader.h>
+#include <ERS_CLASS_ShaderLoader.h>
 #include <Framebuffer.h>
 #include <GUI.h>
 

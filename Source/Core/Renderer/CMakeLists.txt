@@ -35,6 +35,7 @@ target_link_libraries(Renderer
     
     ERS_ModelWriter
     ERS_ModelLoader
+    ERS_ShaderLoader
     
     ERS_STRUCT_IOData
     ERS_STRUCT_SystemUtils
