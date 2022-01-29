@@ -27,12 +27,15 @@ EditorLayouts:
     0: 2
 DefaultLayout: 0
 
+
+
 # Game Controller Settings
 ControllerSettings:
     0: 11
 
     
-# Shader Objects
+    
+# Shader Program Metadata
 ShadersPrograms:
     0:
         VertexID: 100
