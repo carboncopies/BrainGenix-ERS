@@ -55,26 +55,26 @@ if (ImGui::BeginMenuBar())
 					Editor_.SetReadOnly(ro);
 				ImGui::Separator();
 
-				if (ImGui::MenuItem("Undo", "ALT-Backspace", nullptr, !ro && editor.CanUndo()))
-					editor.Undo();
-				if (ImGui::MenuItem("Redo", "Ctrl-Y", nullptr, !ro && editor.CanRedo()))
-					editor.Redo();
+				if (ImGui::MenuItem("Undo", "ALT-Backspace", nullptr, !ro && Editor_.CanUndo()))
+					Editor_.Undo();
+				if (ImGui::MenuItem("Redo", "Ctrl-Y", nullptr, !ro && Editor_.CanRedo()))
+					Editor_.Redo();
 
 				ImGui::Separator();
 
-				if (ImGui::MenuItem("Copy", "Ctrl-C", nullptr, editor.HasSelection()))
-					editor.Copy();
-				if (ImGui::MenuItem("Cut", "Ctrl-X", nullptr, !ro && editor.HasSelection()))
-					editor.Cut();
-				if (ImGui::MenuItem("Delete", "Del", nullptr, !ro && editor.HasSelection()))
-					editor.Delete();
+				if (ImGui::MenuItem("Copy", "Ctrl-C", nullptr, Editor_.HasSelection()))
+					Editor_.Copy();
+				if (ImGui::MenuItem("Cut", "Ctrl-X", nullptr, !ro && Editor_.HasSelection()))
+					Editor_.Cut();
+				if (ImGui::MenuItem("Delete", "Del", nullptr, !ro && Editor_.HasSelection()))
+					Editor_.Delete();
 				if (ImGui::MenuItem("Paste", "Ctrl-V", nullptr, !ro && ImGui::GetClipboardText() != nullptr))
-					editor.Paste();
+					Editor_.Paste();
 
 				ImGui::Separator();
 
 				if (ImGui::MenuItem("Select all", nullptr, nullptr))
-					editor.SetSelection(TextEditor::Coordinates(), TextEditor::Coordinates(editor.GetTotalLines(), 0));
+					Editor_.SetSelection(TextEditor::Coordinates(), TextEditor::Coordinates(Editor_.GetTotalLines(), 0));
 
 				ImGui::EndMenu();
 			}
