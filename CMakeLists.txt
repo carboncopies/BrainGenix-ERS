@@ -10,7 +10,8 @@ project(
 if (APPLE)
   if (NOT CMAKE_COMPILER_IS_GNUCXX)
     message(FATAL_ERROR "Could Not Find g++, Please Use g++ Not Clang.")
-    
+  endif()
+endif()
 
 # Set Dirs
 set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
