@@ -4,27 +4,27 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Shader
+add_library(ERS_STRUCT_Shader
 
             # Add Source Files (.cpp)
-            "Shader.cpp"
+            "ERS_STRUCT_Shader.cpp"
 
             # Add Header Files (.h)
-            "Shader.h"
+            "ERS_STRUCT_Shader.h"
 
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Shader
+target_link_libraries(ERS_STRUCT_Shader
     glm
     glad
     glfw
     )
 
 # Link Internal Libs
-target_link_libraries(Shader
+target_link_libraries(ERS_STRUCT_Shader
     ImageLoader
     )
 
-target_include_directories(Shader PUBLIC ./)
+target_include_directories(ERS_STRUCT_Shader PUBLIC ./)
