@@ -13,7 +13,7 @@
 
 
 // Draw Model
-void ERS_OBJECT_MODEL::Draw(std::shared_ptr<ERS_OBJECT_SHADER> Shader) {
+void ERS_OBJECT_MODEL::Draw(std::shared_ptr<ERS_OBJECT_Shader> Shader) {
 
     // Only Draw When Fully Ready
     if (FullyReady) {
