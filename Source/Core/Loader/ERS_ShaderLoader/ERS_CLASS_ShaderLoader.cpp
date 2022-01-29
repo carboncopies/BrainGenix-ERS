@@ -6,7 +6,7 @@
 
 
 // ShaderLoader Constructor
-ShaderLoader::ShaderLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+ERS_CLASS_ShaderLoader::ERS_CLASS_ShaderLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
     // Copy Member Pointers
     SystemUtils_ = SystemUtils;
@@ -17,7 +17,7 @@ ShaderLoader::ShaderLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) 
 }
 
 // ShaderLoader Destructor
-ShaderLoader::~ShaderLoader() {
+ERS_CLASS_ShaderLoader::~ERS_CLASS_ShaderLoader() {
 
     // Log Destructor Call
     SystemUtils_->Logger_->Log("Shader Loader Destructor Called", 6);
@@ -25,7 +25,7 @@ ShaderLoader::~ShaderLoader() {
 }
 
 // Load Shader From Memory
-std::shared_ptr<ERS_STRUCT_Shader> ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText) {
+std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText) {
 
     // Log Shader Creation
     SystemUtils_->Logger_->Log("Creating Shader Object", 5);
@@ -47,7 +47,7 @@ std::shared_ptr<ERS_STRUCT_Shader> ShaderLoader::CreateShaderObject(const char* 
 }
 
 // Load Shader From Disk
-std::shared_ptr<ERS_STRUCT_Shader> ShaderLoader::LoadShaderFromAsset(long VertexID, long FragmentID) {
+std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::LoadShaderFromAsset(long VertexID, long FragmentID) {
 
     // Load Shaders From Disk Into RAM
     SystemUtils_->Logger_->Log("Loading Shaders From Asset ID", 5);

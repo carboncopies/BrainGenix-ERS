@@ -20,7 +20,7 @@
  * @brief The Shader Loader Is Responsible For Populating Shader Structs.
  * 
  */
-class ShaderLoader {
+class ERS_CLASS_ShaderLoader {
 
 
 private:
@@ -36,14 +36,14 @@ public:
      * 
      * @param SystemUtils
      */
-    ShaderLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    ERS_CLASS_ShaderLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
 
 
     /**
      * @brief Destroy the Shader Loader object
      * 
      */
-    ~ShaderLoader();
+    ~ERS_CLASS_ShaderLoader();
     
 
     /**
