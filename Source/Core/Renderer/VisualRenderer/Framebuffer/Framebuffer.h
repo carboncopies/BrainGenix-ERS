@@ -25,7 +25,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
-#include <Shader.h>
+#include <ERS_STRUCT_Shader.h>
 #include <ShaderLoader.h>
 
 
