@@ -6,13 +6,13 @@
 
 
 // ShaderLoader Constructor
-ShaderLoader::ShaderLoader(std::shared_ptr<LoggerClass> Logger) {
+ShaderLoader::ShaderLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
     // Copy Member Pointers
-    Logger_ = Logger;
+    SystemUtils_ = SystemUtils;
 
     // Log Initialization
-    Logger_->Log("Initializing Shader Loader", 5);
+    SystemUtils->Logger_->Log("Initializing Shader Loader", 5);
 
 }
 
@@ -20,7 +20,7 @@ ShaderLoader::ShaderLoader(std::shared_ptr<LoggerClass> Logger) {
 ShaderLoader::~ShaderLoader() {
 
     // Log Destructor Call
-    Logger_->Log("Shader Loader Destructor Called", 6);
+    SystemUtils_->Logger_->Log("Shader Loader Destructor Called", 6);
 
 }
 
@@ -28,7 +28,7 @@ ShaderLoader::~ShaderLoader() {
 std::shared_ptr<ERS_STRUCT_Shader> ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText) {
 
     // Log Shader Creation
-    Logger_->Log("Creating Shader Object", 5);
+    SystemUtils_->Logger_->Log("Creating Shader Object", 5);
 
     // Create Shader
     std::shared_ptr<ERS_STRUCT_Shader> ShaderStruct = std::make_shared<ERS_STRUCT_Shader>();
@@ -37,9 +37,9 @@ std::shared_ptr<ERS_STRUCT_Shader> ShaderLoader::CreateShaderObject(const char* 
     ShaderStruct->CompileFragmentShader(FragmentText);
 
     // Attach Shaders
-    Logger_->Log("Linking Shader Program", 5);
+    SystemUtils_->Logger_->Log("Linking Shader Program", 5);
     ShaderStruct->CreateShaderProgram();
-    Logger_->Log("Linked Shader Program", 4);
+    SystemUtils_->Logger_->Log("Linked Shader Program", 4);
 
     // Return Struct
     return ShaderStruct;
@@ -50,9 +50,9 @@ std::shared_ptr<ERS_STRUCT_Shader> ShaderLoader::CreateShaderObject(const char* 
 std::shared_ptr<ERS_STRUCT_Shader> ShaderLoader::LoadShaderFromFile(const char* VertexPath, const char* FragmentPath) {
 
     // Load Shaders From Disk Into RAM
-    Logger_->Log("Loading Shaders From Disk", 5);
-    std::string VertexText = ReadFile(VertexPath, Logger_);
-    std::string FragmentText = ReadFile(FragmentPath, Logger_);
+    SystemUtils_->Logger_->Log("Loading Shaders From Disk", 5);
+    std::string VertexText = ReadFile(VertexPath, SystemUtils_->Logger_);
+    std::string FragmentText = ReadFile(FragmentPath, SystemUtils_->Logger_);
 
     // Return Compiled Shader
     return CreateShaderObject(VertexText.c_str(), FragmentText.c_str());
