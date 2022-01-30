@@ -25,8 +25,8 @@ target_link_libraries(ERS_ProjectLoader
 
     ERS_STRUCT_IOData
     ERS_STRUCT_SystemUtils
-
     ERS_STRUCT_Project
+    ERS_STRUCT_ShaderProgramAssetIDs
 
     ERS_InputOutputSubsystem
 

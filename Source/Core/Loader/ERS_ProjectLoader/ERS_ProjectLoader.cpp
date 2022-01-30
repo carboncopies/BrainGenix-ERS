@@ -85,6 +85,8 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
         Project.GameControllerSettingsIDs.push_back(it->second.as<long>());
     }
 
+
+
     // Return Struct When Populated
     return Project;
 
