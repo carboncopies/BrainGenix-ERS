@@ -1,4 +1,4 @@
-// ToDO: Implement struct here to store shader program ids from proj file, then add to project struct, then update project loader/writer with this info. Then check trello board for other related tasks like live ediitng.
+// ToDO: then add to project struct, then update project loader/writer with this info. Then check trello board for other related tasks like live ediitng.
 
 
 //======================================================================//
