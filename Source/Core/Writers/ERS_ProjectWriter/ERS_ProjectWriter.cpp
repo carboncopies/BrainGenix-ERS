@@ -87,8 +87,10 @@ bool ERS_CLASS_ProjectWriter::SaveProject(std::shared_ptr<ERS_STRUCT_Project> Pr
     ProjectEmitter<<YAML::Key<<YAML::BeginMap;
     for (int i = 0; i < ProjectPointer->ShaderPrograms.size(); i++) {
         ProjectEmitter<<YAML::Key<<i;
+        ProjectEmitter<<YAML::Key<<YAML::BeginMap;
         ProjectEmitter<<YAML::Key<<"VertexID"<<YAML::Value<<ProjectPointer->ShaderPrograms[i].VertexID;
         ProjectEmitter<<YAML::Key<<"FragmentID"<<YAML::Value<<ProjectPointer->ShaderPrograms[i].FragmentID;
+        ProjectEmitter<<YAML::EndMap;
     }
 
     ProjectEmitter<<YAML::EndMap;
