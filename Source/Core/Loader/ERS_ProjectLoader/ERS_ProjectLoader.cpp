@@ -86,6 +86,7 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     }
 
     // Populate Shader Structs
+    std::cout<<"test1\n";
     YAML::Node ShadersPrograms = ProjectNode["ShadersPrograms"];
     for (YAML::const_iterator it=ShadersPrograms.begin(); it!=ShadersPrograms.end(); ++it) {
         SystemUtils_->Logger_->Log(std::string(std::string("Identified Controller Settings Map With ID: ") + std::to_string(it->second.as<long>())).c_str(), 3);
