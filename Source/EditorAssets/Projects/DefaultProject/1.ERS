@@ -36,7 +36,7 @@ ControllerSettings:
     
     
 # Shader Program Metadata
-ShadersPrograms:
+ShaderPrograms:
     0:
         VertexID: 100
         FragmentID: 101

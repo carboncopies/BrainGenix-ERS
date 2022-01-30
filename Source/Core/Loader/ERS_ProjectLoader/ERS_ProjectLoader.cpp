@@ -88,7 +88,7 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
 
     // Populate Shader Structs
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Shader Programs From Project Asset")).c_str(), 3);
-    YAML::Node ShadersPrograms = ProjectNode["ShadersPrograms"];
+    YAML::Node ShadersPrograms = ProjectNode["ShaderPrograms"];
     for (YAML::const_iterator it=ShadersPrograms.begin(); it!=ShadersPrograms.end(); ++it) {
         ERS_STRUCT_ShaderProgramAssetIDs Program;
         Program.VertexID = it->second["VertexID"].as<long>();
