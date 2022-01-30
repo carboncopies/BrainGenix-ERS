@@ -86,17 +86,16 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     }
 
     // Populate Shader Structs
+    SystemUtils_->Logger_->Log(std::string(std::string("Loading Shader Programs From Project Asset")).c_str(), 3);
     YAML::Node ShadersPrograms = ProjectNode["ShadersPrograms"];
-    std::cout<<"test2\n";
     for (YAML::const_iterator it=ShadersPrograms.begin(); it!=ShadersPrograms.end(); ++it) {
-        std::cout<<"test1\n";
-        SystemUtils_->Logger_->Log(std::string(std::string("Identified Controller Settings Map With ID: ") + std::to_string(it->second.as<long>())).c_str(), 3);
         ERS_STRUCT_ShaderProgramAssetIDs Program;
         std::cout<<it->second<<std::endl;
         Program.VertexID = it->second["VertexID"].as<long>();
         Program.FragmentID = it->second["FragmentID"].as<long>();
         Project.ShaderPrograms.push_back(Program);
     }
+    SystemUtils_->Logger_->Log(std::string(std::string("Finished Loading Shader Programs")).c_str(), 4);
 
 
 
