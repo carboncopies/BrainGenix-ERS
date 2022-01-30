@@ -44,6 +44,7 @@ struct ERS_STRUCT_Project {
     std::vector<long> EditorLayoutIDs; /**<Vector Of Editor Layouts To Be Used In This Project*/
     std::vector<long> GameControllerSettingsIDs; /**<Vector of layouts for game controller settings*/
     std::vector<ERS_STRUCT_ShaderProgramAssetIDs> ShaderPrograms; /**<List of Shader Program Instances*/
+    long DefaultShaderProgram; /**<Set default index of the shader program*/
     std::vector<std::shared_ptr<ERS_STRUCT_ControllerSettings>> ControllerSettings; /**<List of game controller settings instances*/
 
     int DefaultScene = 0; /**<Defualt Scene Index*/
