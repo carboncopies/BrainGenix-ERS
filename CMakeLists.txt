@@ -134,6 +134,7 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ProjectUtils)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Project)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_HumanInputDeviceUtils)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ControllerSettings)
+add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ShaderProgramAssetIDs)
 
 
 add_subdirectory(${SRC_DIR}/Core/Loader/TextureLoader)
@@ -153,7 +154,6 @@ add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ProjectWriter)
 # COPY FILES TO BINARY DIR
 file(COPY "${SRC_DIR}/EditorAssets/" DESTINATION "${BIN_DIR}/EditorAssets")
 file(COPY "${SRC_DIR}/EditorAssets/DefaultLayout/imgui.ini" DESTINATION "${BIN_DIR}")
-file(COPY "${SRC_DIR}/Shaders/" DESTINATION "${BIN_DIR}/Shaders")
 
 # Set Configuration Based On Platform
 if (WIN32 OR APPLE)
