@@ -84,8 +84,17 @@ if (Enabled_) {
                 {
                     if (ImGui::MenuItem("Save"))
                     {
+                        // Write The Asset
+                        long AssetID;
+                        if (Mode_ == 0) {
+                            AssetID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID;
+                        } else if (Mode_ == 1) {
+                            AssetID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID;
+                        }
+
                         std::string TextToSave = Editor_.GetText();
-                        SaveShader();
+
+                        SaveShader(TextToSave, AssetID);
                     }
                     ImGui::EndMenu();
                 }
