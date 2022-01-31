@@ -37,7 +37,8 @@ private:
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointer*/
     std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Pointer*/
     std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
-    TextEditor Editor_; /** Editor Instance*/
+    std::vector<TextEditor> Editors_; /**<List of editors, one for each type of shader*/
+    std::shared_ptr<TextEditor> Editor_; /** Editor Instance*/
     int Mode_ = 0; /**<Used To Determine what shader the user is editing*/
     long SelectedShaderProgramIndex_ = 0; /**<Index of the selected shader program in the project*/
     bool LivePreview_ = true; /**<Enable/Disable Live Preview Of Shaders When Changed*/
@@ -45,9 +46,6 @@ private:
     ERS_STRUCT_Shader LivePreviewShader_; /**<Current live preview shader*/
 
 
-    std::string FragmentText_; /**<Text for the frag shader*/
-    std::string VertexText_; /**Text for the vertex shader*/
-    
 
 private:
 

@@ -15,8 +15,16 @@ Window_ShaderEditor::Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils>
     // Log Init
     SystemUtils_->Logger_->Log("Initializing GUI ShaderEditor Window", 4);
 
+
+    // Setup Editors
+    Editors_.push_back(TextEditor());
+    Editors_.push_back(TextEditor());
+
     // Load Shader
     ReloadEditorText();
+
+
+
 
     // Setup Shader Loader
     ShaderLoader_ = std::make_shared<ERS_CLASS_ShaderLoader>(SystemUtils_);
@@ -40,17 +48,16 @@ void Window_ShaderEditor::ReloadEditorText() {
     // Load Fragment Shader
     std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID, Data);
-    FragmentText_ = std::string((const char*)Data->Data.get());
+    std::string FragmentText = std::string((const char*)Data->Data.get());
 
     // Load Vertex Shader
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID, Data);
-    VertexText_ = std::string((const char*)Data->Data.get());
+    std::string  VertexText = std::string((const char*)Data->Data.get());
 
-    if (Mode_ == 0) {
-        Editor_.SetText(VertexText_);
-    } else if (Mode_ == 1) {
-        Editor_.SetText(FragmentText_);
-    }
+    Editors_[0].SetText(VertexText);
+    Editors_[1].SetText(FragmentText);
+
+    Editor_ = std::make_shared<TextEditor>(Editors_[0]);
 
 }
 
@@ -83,45 +90,47 @@ if (Enabled_) {
 
         if (Visible) {
  
+
+
             if (ImGui::BeginMenuBar()) {
                 if (ImGui::BeginMenu("File"))
                 {
                     if (ImGui::MenuItem("Save"))
                     {
                         // Write The Asset
-                        SaveShader(VertexText_, ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID);
-                        SaveShader(FragmentText_, ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID);
+                        SaveShader(Editors_[0].GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID);
+                        SaveShader(Editors_[1].GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID);
 
                     }
                     ImGui::EndMenu();
                 }
                 if (ImGui::BeginMenu("Edit"))
                 {
-                    bool ro = Editor_.IsReadOnly();
+                    bool ro = Editor_->IsReadOnly();
                     if (ImGui::MenuItem("Read-only mode", nullptr, &ro))
-                        Editor_.SetReadOnly(ro);
+                        Editor_->SetReadOnly(ro);
                     ImGui::Separator();
 
-                    if (ImGui::MenuItem("Undo", "ALT-Backspace", nullptr, !ro && Editor_.CanUndo()))
-                        Editor_.Undo();
-                    if (ImGui::MenuItem("Redo", "Ctrl-Y", nullptr, !ro && Editor_.CanRedo()))
-                        Editor_.Redo();
+                    if (ImGui::MenuItem("Undo", "ALT-Backspace", nullptr, !ro && Editor_->CanUndo()))
+                        Editor_->Undo();
+                    if (ImGui::MenuItem("Redo", "Ctrl-Y", nullptr, !ro && Editor_->CanRedo()))
+                        Editor_->Redo();
 
                     ImGui::Separator();
 
-                    if (ImGui::MenuItem("Copy", "Ctrl-C", nullptr, Editor_.HasSelection()))
-                        Editor_.Copy();
-                    if (ImGui::MenuItem("Cut", "Ctrl-X", nullptr, !ro && Editor_.HasSelection()))
-                        Editor_.Cut();
-                    if (ImGui::MenuItem("Delete", "Del", nullptr, !ro && Editor_.HasSelection()))
-                        Editor_.Delete();
+                    if (ImGui::MenuItem("Copy", "Ctrl-C", nullptr, Editor_->HasSelection()))
+                        Editor_->Copy();
+                    if (ImGui::MenuItem("Cut", "Ctrl-X", nullptr, !ro && Editor_->HasSelection()))
+                        Editor_->Cut();
+                    if (ImGui::MenuItem("Delete", "Del", nullptr, !ro && Editor_->HasSelection()))
+                        Editor_->Delete();
                     if (ImGui::MenuItem("Paste", "Ctrl-V", nullptr, !ro && ImGui::GetClipboardText() != nullptr))
-                        Editor_.Paste();
+                        Editor_->Paste();
 
                     ImGui::Separator();
 
                     if (ImGui::MenuItem("Select all", nullptr, nullptr))
-                        Editor_.SetSelection(TextEditor::Coordinates(), TextEditor::Coordinates(Editor_.GetTotalLines(), 0));
+                        Editor_->SetSelection(TextEditor::Coordinates(), TextEditor::Coordinates(Editor_->GetTotalLines(), 0));
 
                     ImGui::EndMenu();
                 }
@@ -129,11 +138,11 @@ if (Enabled_) {
                 if (ImGui::BeginMenu("View"))
                 {
                     if (ImGui::MenuItem("Dark palette"))
-                        Editor_.SetPalette(TextEditor::GetDarkPalette());
+                        Editor_->SetPalette(TextEditor::GetDarkPalette());
                     if (ImGui::MenuItem("Light palette"))
-                        Editor_.SetPalette(TextEditor::GetLightPalette());
+                        Editor_->SetPalette(TextEditor::GetLightPalette());
                     if (ImGui::MenuItem("Retro blue palette"))
-                        Editor_.SetPalette(TextEditor::GetRetroBluePalette());
+                        Editor_->SetPalette(TextEditor::GetRetroBluePalette());
                     ImGui::EndMenu();
                 }
             
@@ -143,15 +152,12 @@ if (Enabled_) {
                     if (ImGui::BeginMenu("Mode")) {
 
                         if (ImGui::MenuItem("Vertex", nullptr, (Mode_==0))) {
-                            FragmentText_ = Editor_.GetText();
                             Mode_ = 0;
-                            Editor_.SetText(VertexText_);
-
+                            std::make_shared<TextEditor>(Editors_[Mode_]);
                         }
                         if (ImGui::MenuItem("Fragment", nullptr, (Mode_==1))) {
-                            FragmentText_ = Editor_.GetText();
                             Mode_ = 1;
-                            Editor_.SetText(FragmentText_);
+                            std::make_shared<TextEditor>(Editors_[Mode_]);
                         }
 
                     ImGui::EndMenu();
@@ -184,7 +190,7 @@ if (Enabled_) {
 
 
             // Render Editor
-            Editor_.Render("Shader Editor");
+            Editor_->Render("Shader Editor");
 
 
         }
