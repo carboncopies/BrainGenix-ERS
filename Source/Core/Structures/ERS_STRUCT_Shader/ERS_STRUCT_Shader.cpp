@@ -89,6 +89,7 @@ void ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink) {
         std::cout << "Shader LINK ERROR: " << InfoLog << std::endl;
     } else {
         _ShaderProgramInitialized = true;
+        std::cout<<"Setting tot rtue\n";
     }
 
     // Delete Old Shaders
