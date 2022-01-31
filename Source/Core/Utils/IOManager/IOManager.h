@@ -64,7 +64,7 @@ class IOManager {
          * @param Camera 
          * @param FramebufferManager 
          */
-        IOManager(std::shared_ptr<LoggerClass> Logger, GLFWwindow *Window, std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera);
+        IOManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, GLFWwindow *Window, std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera);
 
         /**
          * @brief Destroy the IOManager object
