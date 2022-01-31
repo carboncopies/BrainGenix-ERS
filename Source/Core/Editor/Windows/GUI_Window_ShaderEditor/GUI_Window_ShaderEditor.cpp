@@ -37,21 +37,20 @@ Window_ShaderEditor::~Window_ShaderEditor() {
 // Reload Assets
 void Window_ShaderEditor::ReloadEditorText() {
 
-    // Get Selected Asset Index
-    long AssetID;
-    if (Mode_ == 0) {
-        AssetID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID;
-    } else if (Mode_ == 1) {
-        AssetID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID;
-    }
-
-    // Load The Selected File
+    // Load Fragment Shader
     std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, Data);
-    std::string Text = std::string((const char*)Data->Data.get());
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID, Data);
+    FragmentText_ = std::string((const char*)Data->Data.get());
 
-    // Update Editor Text
-    Editor_.SetText(Text);
+    // Load Vertex Shader
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID, Data);
+    VertexText_ = std::string((const char*)Data->Data.get());
+
+    if (Mode_ == 0) {
+        Editor_.SetText(VertexText_);
+    } else if (Mode_ == 1) {
+        Editor_.SetText(FragmentText_);
+    }
 
 }
 
@@ -90,16 +89,9 @@ if (Enabled_) {
                     if (ImGui::MenuItem("Save"))
                     {
                         // Write The Asset
-                        long AssetID;
-                        if (Mode_ == 0) {
-                            AssetID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID;
-                        } else if (Mode_ == 1) {
-                            AssetID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID;
-                        }
+                        SaveShader(VertexText_, ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID);
+                        SaveShader(FragmentText_, ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID);
 
-                        std::string TextToSave = Editor_.GetText();
-
-                        SaveShader(TextToSave, AssetID);
                     }
                     ImGui::EndMenu();
                 }
@@ -198,5 +190,12 @@ if (Enabled_) {
 
     ImGui::End();
     }
+
+
+    
+    // Compile Shader Object
+    ShaderLoader_->CreateShaderObject()
+
+
 
 }

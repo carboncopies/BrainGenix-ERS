@@ -42,6 +42,12 @@ private:
     long SelectedShaderProgramIndex_ = 0; /**<Index of the selected shader program in the project*/
     bool LivePreview_ = true; /**<Enable/Disable Live Preview Of Shaders When Changed*/
     std::string LastFrameText_; /**Set The Last Text Shown In The Editor*/
+    ERS_STRUCT_Shader LivePreviewShader_; /**<Current live preview shader*/
+
+
+    std::string FragmentText_; /**<Text for the frag shader*/
+    std::string VertexText_; /**Text for the vertex shader*/
+    
 
 private:
 
