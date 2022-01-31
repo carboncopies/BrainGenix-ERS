@@ -38,7 +38,7 @@ ControllerSettings:
 # Shader Program Metadata
 ShaderPrograms:
     0:
-        Name3: "Default Shader Program"
+        Name: "Default Shader Program"
         VertexID: 100
         FragmentID: 101
 DefaultShaderProgram: 0
