@@ -4,7 +4,7 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_LoggingSystem
+add_library(ERS_CLASS_LoggingSystem
 
             # Add Source Files (.cpp)
             "ERS_CLASS_LoggingSystem.cpp"
@@ -16,14 +16,14 @@ add_library(ERS_LoggingSystem
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_LoggingSystem
+target_link_libraries(ERS_CLASS_LoggingSystem
     yaml-cpp
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_LoggingSystem
+target_link_libraries(ERS_CLASS_LoggingSystem
     ERS_STRUCT_RGBColor
     )
 
-target_include_directories(ERS_LoggingSystem PUBLIC ./)
+target_include_directories(ERS_CLASS_LoggingSystem PUBLIC ./)
 
