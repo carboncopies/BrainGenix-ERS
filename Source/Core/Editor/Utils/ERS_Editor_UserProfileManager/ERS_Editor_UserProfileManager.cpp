@@ -13,7 +13,7 @@
 
 
 // Constructor
-ERS_CLASS_UserProfileManager::ERS_CLASS_UserProfileManager(std::shared_ptr<LoggerClass> Logger, const char* UserProfilePath) {
+ERS_CLASS_UserProfileManager::ERS_CLASS_UserProfileManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, const char* UserProfilePath) {
 
     // Copy Pointer
     Logger_ = Logger;
