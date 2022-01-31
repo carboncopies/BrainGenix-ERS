@@ -91,6 +91,7 @@ if (Enabled_) {
                 ImGui::EndMenuBar();
             }
 
+
             Editor_.Render("Shader Editor");
 
         }
