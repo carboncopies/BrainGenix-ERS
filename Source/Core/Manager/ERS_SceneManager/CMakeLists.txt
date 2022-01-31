@@ -24,7 +24,7 @@ target_link_libraries(ERS_SceneManager
 # Link Internal Libs
 target_link_libraries(ERS_SceneManager
     Scene
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     ERS_STRUCT_LocRotScale
     ERS_STRUCT_Shader
     
