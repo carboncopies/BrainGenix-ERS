@@ -13,7 +13,7 @@
 
 
 // Constructor For ERS_CLASS_SceneManager Class
-ERS_CLASS_SceneManager::ERS_CLASS_SceneManager(std::shared_ptr<LoggerClass> Logger) {
+ERS_CLASS_SceneManager::ERS_CLASS_SceneManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Copy To Local Pointer
     Logger_ = Logger;
