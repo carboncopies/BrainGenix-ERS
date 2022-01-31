@@ -200,7 +200,7 @@ if (Enabled_) {
     
     // Compile Shader Object
     LivePreviewShader_ = ShaderLoader_->CreateShaderObject(Editors_[0]->GetText().c_str(), Editors_[1]->GetText().c_str());
-
+    
 
 
 }
