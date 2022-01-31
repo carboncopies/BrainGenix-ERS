@@ -50,6 +50,23 @@ void Window_ShaderEditor::ReloadEditorText() {
 
 }
 
+
+// Save Shader
+void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
+
+    // Write Data
+    std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
+    
+    Data->Data.reset(new unsigned char[ShaderText.size()]);
+    Data->Size_B = ShaderText.size();
+    memcpy(Data->Data.get(), ShaderText.c_str(), ShaderText.size());
+
+    // Write To Storage
+    SystemUtils_->ERS_IOSubsystem_->WriteAsset(AssetID, Data);
+
+
+}
+
 // Draw Window
 void Window_ShaderEditor::Draw() {
 
@@ -67,8 +84,8 @@ if (Enabled_) {
                 {
                     if (ImGui::MenuItem("Save"))
                     {
-                        std::string textToSave = Editor_.GetText();
-                        /// save text....
+                        std::string TextToSave = Editor_.GetText();
+                        SaveShader();
                     }
                     ImGui::EndMenu();
                 }

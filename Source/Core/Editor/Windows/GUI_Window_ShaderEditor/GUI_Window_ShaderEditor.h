@@ -35,6 +35,8 @@ private:
     TextEditor Editor_; /** Editor Instance*/
     int Mode_ = 0; /**<Used To Determine what shader the user is editing*/
     long SelectedShaderProgramIndex_ = 0; /**<Index of the selected shader program in the project*/
+    bool LivePreview_ = true; /**<Enable/Disable Live Preview Of Shaders When Changed*/
+    std::string LastFrameText_; /**Set The Last Text Shown In The Editor*/
 
 private:
 
@@ -43,6 +45,12 @@ private:
      * 
      */
     void ReloadEditorText();
+
+    /**
+     * @brief Save the shader to asset data.
+     * 
+     */
+    void SaveShader(std::string ShaderText, long AssetID);
 
 public:
 
