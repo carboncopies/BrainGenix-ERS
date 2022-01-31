@@ -24,7 +24,7 @@ target_link_libraries(IOManager
 
 # Link Internal Libs
 target_link_libraries(IOManager
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     InputProcessor
     )
 
