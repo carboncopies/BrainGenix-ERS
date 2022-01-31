@@ -14,7 +14,7 @@
 
 
 // IOManager Constructor
-IOManager::IOManager(std::shared_ptr<LoggerClass> Logger, GLFWwindow* Window, std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera) {
+IOManager::IOManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, GLFWwindow* Window, std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera) {
 
     // Copy Pointer
     Logger_ = Logger;
