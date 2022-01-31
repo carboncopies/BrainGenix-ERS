@@ -68,7 +68,7 @@ class ERS_CLASS_InputOutputSubsystem {
          * @param Logger 
          * @param LocalSystemConfiguration 
          */
-        ERS_CLASS_InputOutputSubsystem(std::shared_ptr<LoggerClass> Logger, YAML::Node LocalSystemConfiguration);
+        ERS_CLASS_InputOutputSubsystem(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, YAML::Node LocalSystemConfiguration);
         
         /**
          * @brief Destroy the ers class inputoutputsubsystem object
