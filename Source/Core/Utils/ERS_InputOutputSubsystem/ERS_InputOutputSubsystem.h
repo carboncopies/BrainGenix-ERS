@@ -30,7 +30,7 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
+#include < ERS_CLASS_LoggingSystem.h>
 
 #include <ERS_CLASS_IOTypeIdentifier.h>
 #include <ERS_CLASS_AssetIndexIOM.h>
