@@ -36,7 +36,7 @@ class ImageDecoder {
          * 
          * @param Logger 
          */
-        ImageDecoder(std::shared_ptr<LoggerClass> Logger);
+        ImageDecoder(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger);
 
         /**
          * @brief Destroy the Image Decoder object
