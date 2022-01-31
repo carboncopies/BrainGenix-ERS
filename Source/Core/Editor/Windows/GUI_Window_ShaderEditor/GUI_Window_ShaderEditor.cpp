@@ -108,7 +108,7 @@ if (Enabled_) {
                     // Shader Dropdown
                     if (ImGui::BeginMenu("Programs")) {
 
-                        for (long i = 0; i < ProjectUtils_->; i++) {
+                        for (long i = 0; i < ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.size(); i++) {
 
                             
 
