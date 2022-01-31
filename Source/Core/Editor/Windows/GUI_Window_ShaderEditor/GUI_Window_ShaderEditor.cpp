@@ -15,6 +15,9 @@ Window_ShaderEditor::Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils>
     // Log Init
     SystemUtils_->Logger_->Log("Initializing GUI ShaderEditor Window", 4);
 
+    // Load Shader
+    ReloadEditorText();
+
 }
 
 // Destructor
