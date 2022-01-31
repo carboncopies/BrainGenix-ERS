@@ -48,7 +48,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_IOTypeIdentifier(std::shared_ptr<LoggerClass> Logger);
+    ERS_CLASS_IOTypeIdentifier(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger);
 
 
     /**
