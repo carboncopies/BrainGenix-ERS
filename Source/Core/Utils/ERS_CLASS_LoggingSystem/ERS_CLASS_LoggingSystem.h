@@ -71,7 +71,7 @@ class ERS_CLASS_LoggingSystem {
         std::vector<std::string> FullLogMessages_; /**<Full Messages*/
         std::vector<int> LogLevels_; /**<List of Log Levels*/
         std::vector<std::string> LogTimes_; /**<List Of Times*/
-        std::vector<RGBColor> LogColors_; /**<List of Colors For Messages*/
+        std::vector<ERS_STRUCT_RGBColor> LogColors_; /**<List of Colors For Messages*/
 
 
     // Public Functions
