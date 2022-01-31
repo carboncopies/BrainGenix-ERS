@@ -18,6 +18,11 @@ Window_ShaderEditor::Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils>
     // Load Shader
     ReloadEditorText();
 
+    // Setup Shader Loader
+    ShaderLoader_ = std::make_shared<ERS_CLASS_ShaderLoader>(SystemUtils_);
+
+
+
 }
 
 // Destructor

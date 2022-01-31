@@ -22,6 +22,8 @@
 #include <ERS_STRUCT_Shader.h>
 #include <ERS_STRUCT_ShaderProgramAssetIDs.h>
 
+#include <ERS_CLASS_ShaderLoader.h>
+
 
 
 /**
@@ -34,6 +36,7 @@ private:
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointer*/
     std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Pointer*/
+    std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
     TextEditor Editor_; /** Editor Instance*/
     int Mode_ = 0; /**<Used To Determine what shader the user is editing*/
     long SelectedShaderProgramIndex_ = 0; /**<Index of the selected shader program in the project*/
