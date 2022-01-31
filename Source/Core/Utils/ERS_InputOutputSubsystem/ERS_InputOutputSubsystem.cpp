@@ -13,7 +13,7 @@
 
 
 // Constructor
-ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(std::shared_ptr<LoggerClass> Logger, YAML::Node SystemConfiguration) {
+ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, YAML::Node SystemConfiguration) {
 
     // Copy Pointer
     Logger_ = Logger;
