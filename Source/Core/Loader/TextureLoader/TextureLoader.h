@@ -34,7 +34,7 @@ class TextureLoader {
          * @brief Logging System Instance.
          * 
          */
-        std::shared_ptr<LoggerClass> Logger_;
+        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_;
 
 
         /**
