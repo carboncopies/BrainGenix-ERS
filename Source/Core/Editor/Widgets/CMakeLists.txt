@@ -38,7 +38,7 @@ target_link_libraries(Widgets
 
 # Link Internal Libs
 target_link_libraries(Widgets
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     
     ERS_Editor_ThemeManager
     ERS_Editor_FontManager
