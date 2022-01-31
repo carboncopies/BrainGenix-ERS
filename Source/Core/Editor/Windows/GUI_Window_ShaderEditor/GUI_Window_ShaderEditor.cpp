@@ -91,12 +91,28 @@ if (Enabled_) {
             
                 if (ImGui::BeginMenu("Shader")) {
 
-                    if (ImGui::MenuItem("Vertex")) {
-                        Mode_ = 0;
+                    // Mode Menu
+                    if (ImGui::BeginMenu("Mode")) {
+
+                        if (ImGui::MenuItem("Vertex")) {
+                            Mode_ = 0;
+                        }
+                        if (ImGui::MenuItem("Fragment")) {
+                            Mode_ = 1;
+                        }
+
+                    ImGui::EndMenu();
                     }
-                    if (ImGui::MenuItem("Fragment")) {
-                        Mode_ = 1;
+
+                    // Shader Dropdown
+                    if (ImGui::BeginMenu("Programs")) {
+
+                        
+
+
+                    ImGui::EndMenu();
                     }
+
                 ImGui::EndMenu();
                 }
             
