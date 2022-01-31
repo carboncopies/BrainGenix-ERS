@@ -36,6 +36,7 @@ ERS_CLASS_LoggingSystem::ERS_CLASS_LoggingSystem(YAML::Node SystemConfiguration)
         LogNameLookup_[it->first.as<int>()] = {
             it->second.as<std::string>()
         };
+
     }
 
     // Print Log Key

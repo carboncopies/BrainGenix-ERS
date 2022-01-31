@@ -51,7 +51,7 @@ class ERS_CLASS_LoggingSystem {
 
 
 
-        std::map<int, RGBColor> ColorLookup_; /*!< Lookup for converting log level to RGB values (stored in RGBColor struct). Populated based on values stored in Config.yaml */
+        std::map<int, ERS_STRUCT_RGBColor> ColorLookup_; /*!< Lookup for converting log level to RGB values (stored in RGBColor struct). Populated based on values stored in Config.yaml */
         std::map<int, std::string> LogNameLookup_; /*!< Lookup for converting log level to name of log level (See Config.yaml for values). */
 
 
