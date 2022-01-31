@@ -32,9 +32,9 @@ void Window_ShaderEditor::ReloadEditorText() {
     // Get Selected Asset Index
     long AssetID;
     if (Mode_ == 0) {
-        AssetID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].VertexID;
+        AssetID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID;
     } else if (Mode_ == 1) {
-        AssetID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].VertexID;
+        AssetID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID;
     }
 
     // Load The Selected File
@@ -134,8 +134,9 @@ if (Enabled_) {
                             std::string ShaderProgramName = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].Name;
                             if (ImGui::MenuItem(ShaderProgramName.c_str())) {
 
-                                // Update Index
+                                // Update Index, REload
                                 SelectedShaderProgramIndex_ = i;
+                                ReloadEditorText();
 
 
                             }
