@@ -74,7 +74,7 @@ int main() {
     SystemUtils->LocalSystemConfiguration_ = std::make_shared<YAML::Node>(sERSLocalSystemConfiguration);
 
     // Instantiate Logging Subsystem
-    std::shared_ptr<ERS_CLASS_LoggingSystem> sERSLogger = std::make_shared<LoggerClass>(sERSLocalSystemConfiguration);
+    std::shared_ptr<ERS_CLASS_LoggingSystem> sERSLogger = std::make_shared<ERS_CLASS_LoggingSystem>(sERSLocalSystemConfiguration);
     SystemUtils->Logger_ = sERSLogger;
     sERSLogger->Log("Initialized Logging System", 5);
 
