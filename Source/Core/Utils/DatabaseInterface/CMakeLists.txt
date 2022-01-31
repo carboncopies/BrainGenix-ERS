@@ -23,7 +23,7 @@ target_link_libraries(DatabaseInterface
 # Link Internal Libs
 target_link_libraries(DatabaseInterface
 
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
 
     )
 
