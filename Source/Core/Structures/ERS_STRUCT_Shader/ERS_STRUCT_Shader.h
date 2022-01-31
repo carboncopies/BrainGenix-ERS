@@ -20,7 +20,7 @@
 #include <GLFW/glfw3.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_CASS_LoggingSystem.h>
+#include <ERS_CLASS_LoggingSystem.h>
 
 
 
