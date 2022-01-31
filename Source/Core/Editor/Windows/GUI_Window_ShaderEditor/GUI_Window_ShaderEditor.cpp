@@ -91,7 +91,21 @@ if (Enabled_) {
                 ImGui::EndMenuBar();
             }
 
+            // Select Shader Program To Edit
+            if (ImGui::BeginTabBar("Shader Edit Mode")) {
 
+
+                if (ImGui::BeginTabItem("Vertex")) {
+                    Mode_ = 0;
+                }
+
+                if (ImGui::BeginTabItem("Fragment")) {
+                    Mode_ = 1;
+                }
+
+            }
+
+            // Render Editor
             Editor_.Render("Shader Editor");
 
         }
