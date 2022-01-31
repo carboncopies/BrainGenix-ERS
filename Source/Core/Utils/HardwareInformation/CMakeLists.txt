@@ -24,7 +24,7 @@ target_link_libraries(HardwareInformation
 # Link Internal Libs
 target_link_libraries(HardwareInformation
 
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
 
     ERS_STRUCT_HardwareInfo
 
