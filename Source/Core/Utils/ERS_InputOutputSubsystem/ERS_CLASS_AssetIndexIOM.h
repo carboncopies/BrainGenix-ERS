@@ -22,7 +22,7 @@ class ERS_CLASS_AssetIndexIOM {
 // Private Member Vars
 private:
 
-    std::shared_ptr<LoggerClass> Logger_; /**<Pointer To Logger Instance*/
+    std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer To Logger Instance*/
 
 
 // Public Member Vars
