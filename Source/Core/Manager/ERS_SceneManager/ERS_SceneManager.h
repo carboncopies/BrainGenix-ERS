@@ -33,7 +33,7 @@ class ERS_CLASS_SceneManager{
     private:
 
         // Internal Member Pointers
-        std::shared_ptr<LoggerClass> Logger_; /**<Pointer To Logger Instance*/
+        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer To Logger Instance*/
 
 
     public:
