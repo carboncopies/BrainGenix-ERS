@@ -26,7 +26,7 @@ target_link_libraries(GUI_Subwindow_SceneRenameModal
 
 # Link Internal Libs
 target_link_libraries(GUI_Subwindow_SceneRenameModal
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     
     ERS_Editor_ThemeManager
     ERS_Editor_FontManager
