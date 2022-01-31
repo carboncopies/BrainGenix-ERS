@@ -6,8 +6,8 @@
 
 
 
-// LoggerClass Constructor
-LoggerClass::LoggerClass(YAML::Node SystemConfiguration) {
+// ERS_CLASS_LoggingSystem Constructor
+ERS_CLASS_LoggingSystem::ERS_CLASS_LoggingSystem(YAML::Node SystemConfiguration) {
 
     // Make Local Copy Of System Config
     LocalSystemConfiguration = SystemConfiguration;
@@ -46,8 +46,8 @@ LoggerClass::LoggerClass(YAML::Node SystemConfiguration) {
 
 };
 
-// LoggerClass Destructor
-LoggerClass::~LoggerClass() {
+// ERS_CLASS_LoggingSystem Destructor
+ERS_CLASS_LoggingSystem::~ERS_CLASS_LoggingSystem() {
 
     // Log Shutdown
     Log("System Logger Destructor Called, Logger Shutting Down", 6);
@@ -60,7 +60,7 @@ LoggerClass::~LoggerClass() {
 
 
 // Overload Of Log With Std::string
-void LoggerClass::Log(std::string LogItem, int LogLevel) {
+void ERS_CLASS_LoggingSystem::Log(std::string LogItem, int LogLevel) {
 
     // Call Normal Logger, Convert To std::string
     Log(LogItem.c_str(), LogLevel);
@@ -68,8 +68,8 @@ void LoggerClass::Log(std::string LogItem, int LogLevel) {
 }
 
 
-// Define LoggerClass::Log
-void LoggerClass::Log(const char* LogItem, int LogLevel) {
+// Define ERS_CLASS_LoggingSystem::Log
+void ERS_CLASS_LoggingSystem::Log(const char* LogItem, int LogLevel) {
 
     // Get Current Time In YYYY-MM-DD-HH-MM-SS Format
     std::time_t RawCurrentTime;
@@ -137,8 +137,8 @@ void LoggerClass::Log(const char* LogItem, int LogLevel) {
 
 }
 
-// Define LoggerClass::ColorizeText
-void LoggerClass::ColorizeText(std::string Message, int LogLevel) {
+// Define ERS_CLASS_LoggingSystem::ColorizeText
+void ERS_CLASS_LoggingSystem::ColorizeText(std::string Message, int LogLevel) {
 
     // Get Color Value
     RGBColor ColorValue = ColorLookup_[LogLevel];

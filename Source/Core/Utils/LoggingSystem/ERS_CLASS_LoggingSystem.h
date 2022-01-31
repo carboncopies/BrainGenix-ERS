@@ -23,11 +23,14 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
 
+// Interna; Libraries (BG convention: use <> instead of "")
+#include <ERS_STRUCT_RGBColor.h>
+
 
 /**
  * @brief Main Logging System, Saves Logs To Database/Text File If Configured To.
  */
-class LoggerClass {
+class ERS_CLASS_LoggingSystem {
 
     // Define "Local" Variables And Functions //
     private: 
@@ -87,13 +90,13 @@ class LoggerClass {
          * 
          * @param SystemConfiguration System configuration file in YAML::Node format from Config.yaml.
          */
-        LoggerClass(YAML::Node SystemConfiguration);
+        ERS_CLASS_LoggingSystem(YAML::Node SystemConfiguration);
 
         /**
          * @brief Cleanup the logger class, close db connection, close file io, etc.
          * 
          */
-        ~LoggerClass();
+        ~ERS_CLASS_LoggingSystem();
 
         /**
          * @brief Add item to system log. 
