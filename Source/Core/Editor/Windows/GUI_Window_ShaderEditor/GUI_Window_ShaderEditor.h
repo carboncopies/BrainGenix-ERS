@@ -34,6 +34,7 @@ private:
     std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Pointer*/
     TextEditor Editor_; /** Editor Instance*/
     int Mode_ = 0; /**<Used To Determine what shader the user is editing*/
+    long SelectedShaderProgramIndex_ = 0; /**<Index of the selected shader program in the project*/
 
 public:
 
