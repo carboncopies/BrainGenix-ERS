@@ -30,7 +30,7 @@ class DatabaseInterface {
     private:
 
 
-        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer to Instance Of LoggerClass */
+        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer to Instance Of ERS_CLASS_LoggingSystem */
 
 
     public:
