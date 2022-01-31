@@ -6,7 +6,7 @@
 
 
 // Constructor
-ERS_CLASS_AssetIndexIOM::ERS_CLASS_AssetIndexIOM(std::shared_ptr<LoggerClass> Logger) {
+ERS_CLASS_AssetIndexIOM::ERS_CLASS_AssetIndexIOM(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Copy Logger Pointer
     Logger_ = Logger;
