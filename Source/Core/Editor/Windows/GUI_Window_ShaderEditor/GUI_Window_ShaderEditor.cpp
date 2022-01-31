@@ -37,7 +37,7 @@ void Window_ShaderEditor::ReloadEditorText() {
     if (Mode_ == 0) {
         AssetID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID;
     } else if (Mode_ == 1) {
-        AssetID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID;
+        AssetID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID;
     }
 
     // Load The Selected File
