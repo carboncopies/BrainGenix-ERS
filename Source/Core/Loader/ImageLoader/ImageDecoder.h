@@ -15,7 +15,7 @@
 #include <FreeImage.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
+#include < ERS_CLASS_LoggingSystem.h>
 
 
 
