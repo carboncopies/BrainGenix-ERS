@@ -70,7 +70,7 @@ class HardwareInformation {
          * @param Logger 
          * @param SystemConfig 
          */
-        HardwareInformation(std::shared_ptr<LoggerClass> Logger, YAML::Node SystemConfig);
+        HardwareInformation(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, YAML::Node SystemConfig);
 
         /**
          * @brief Destroy the Hardware Information object
