@@ -13,7 +13,7 @@
 
 
 // ERS_CLASS_ThemeManager Constructor
-ERS_CLASS_ThemeManager::ERS_CLASS_ThemeManager(std::shared_ptr<LoggerClass> Logger, const char* ThemePath) {
+ERS_CLASS_ThemeManager::ERS_CLASS_ThemeManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, const char* ThemePath) {
 
     // Create Local Pointers
     Logger_ = Logger;
