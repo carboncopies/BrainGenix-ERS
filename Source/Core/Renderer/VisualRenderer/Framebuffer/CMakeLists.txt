@@ -25,7 +25,7 @@ target_link_libraries(Framebuffer
 
 # Link Internal Libs
 target_link_libraries(Framebuffer
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     ERS_STRUCT_Shader
     ERS_ShaderLoader
     )
