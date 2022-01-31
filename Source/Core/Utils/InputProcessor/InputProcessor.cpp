@@ -80,7 +80,7 @@ void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
 }
 
 // Update Keyboard Input
-void InputProcessor::ProcessKeyboardInput(std::shared_ptr<LoggerClass> Logger_, float DeltaTime, bool WindowCaptureEnabled) {
+void InputProcessor::ProcessKeyboardInput(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_, float DeltaTime, bool WindowCaptureEnabled) {
 
 
     // Get Keyboard Input
