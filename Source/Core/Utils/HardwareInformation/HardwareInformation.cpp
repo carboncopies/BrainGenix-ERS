@@ -14,7 +14,7 @@
 
 
 // HWinfo Constructor
-HardwareInformation::HardwareInformation(std::shared_ptr<LoggerClass> Logger, YAML::Node SystemConfig) {
+HardwareInformation::HardwareInformation(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, YAML::Node SystemConfig) {
 
     // Copy Pointers
     Logger_ = Logger;
