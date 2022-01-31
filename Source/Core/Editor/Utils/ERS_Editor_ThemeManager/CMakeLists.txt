@@ -24,7 +24,7 @@ target_link_libraries(ERS_Editor_ThemeManager
 
 # Link Internal Libs
 target_link_libraries(ERS_Editor_ThemeManager
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     )
 
 target_include_directories(ERS_Editor_ThemeManager PUBLIC ./)
