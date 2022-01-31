@@ -199,8 +199,12 @@ if (Enabled_) {
 
     
     // Compile Shader Object
-    LivePreviewShader_ = ShaderLoader_->CreateShaderObject(Editors_[0]->GetText().c_str(), Editors_[1]->GetText().c_str());
-    
+    std::string VertexText = Editors_[0]->GetText();
+    std::string FragmentText = Editors_[1]->GetText();
+
+    std::cout<<VertexText<<std::endl<<FragmentText<<std::endl;
+    LivePreviewShader_ = ShaderLoader_->CreateShaderObject(VertexText.c_str(), FragmentText.c_str());
+
 
 
 }
