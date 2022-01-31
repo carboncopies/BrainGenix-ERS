@@ -25,6 +25,7 @@ Window_ShaderEditor::Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils>
 
     // Setup Shader Loader
     ShaderLoader_ = std::make_shared<ERS_CLASS_ShaderLoader>(SystemUtils_);
+    LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
 
 
 
