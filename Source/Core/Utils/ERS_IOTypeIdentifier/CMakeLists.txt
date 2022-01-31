@@ -23,7 +23,7 @@ target_link_libraries(ERS_IOTypeIdentifier
 # Link Internal Libs
 target_link_libraries(ERS_IOTypeIdentifier
 
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
 
     ERS_STRUCT_IOData
 
