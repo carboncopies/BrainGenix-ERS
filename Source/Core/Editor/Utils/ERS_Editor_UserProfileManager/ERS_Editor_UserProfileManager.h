@@ -31,7 +31,7 @@ class ERS_CLASS_UserProfileManager {
 
     private:
 
-        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<LoggerClass Instance Pointer*/
+        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<ERS_CLASS_LoggingSystem Instance Pointer*/
         std::string UserProfilePath_; /**<Path To User Profile*/
         YAML::Node UserProfile_; /**<YAML::Node Containing User Profile*/
 
