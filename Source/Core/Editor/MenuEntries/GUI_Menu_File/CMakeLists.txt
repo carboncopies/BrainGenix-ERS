@@ -27,7 +27,7 @@ target_link_libraries(Menu_File
 
 # Link Internal Libs
 target_link_libraries(Menu_File
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
 

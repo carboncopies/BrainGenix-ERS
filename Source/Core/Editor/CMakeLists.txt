@@ -26,7 +26,7 @@ target_link_libraries(VisualEditor
 
 # Link Internal Libs
 target_link_libraries(VisualEditor
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     VisualRenderer
     
     ERS_STRUCT_SystemUtils
