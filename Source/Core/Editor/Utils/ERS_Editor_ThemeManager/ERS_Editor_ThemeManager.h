@@ -24,7 +24,7 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include < ERS_CLASS_LoggingSystem.h>
+#include <ERS_CASS_LoggingSystem.h>
 
 
 /**

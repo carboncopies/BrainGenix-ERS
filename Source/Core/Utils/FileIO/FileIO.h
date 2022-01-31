@@ -16,7 +16,7 @@
 #include <string>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include < ERS_CLASS_LoggingSystem.h>
+#include <ERS_CASS_LoggingSystem.h>
 
 // Read Image File From Disk
 std::string ReadFile(const std::string& FileName, std::shared_ptr<LoggerClass> Logger_ = nullptr);
