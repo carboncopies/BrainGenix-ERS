@@ -48,7 +48,7 @@ class ERS_CLASS_InputOutputSubsystem {
 
     private:
 
-        std::shared_ptr<LoggerClass> Logger_; /**<Logging Class Pointer*/
+        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Logging Class Pointer*/
         std::unique_ptr<ERS_CLASS_IOTypeIdentifier> IOTypeIdentifier_; /**<Pointer To IO Type Identifier Class Instance*/
 
     public:
