@@ -58,7 +58,7 @@ class FramebufferManager {
         /**
          * @brief Construct a new Framebuffer Manager object.
          * 
-         * @param Logger LoggerClass Instance Pointer
+         * @param Logger ERS_CLASS_LoggingSystem Instance Pointer
          * @param Width Width In Pixels
          * @param Height Height In Pixels
          */
