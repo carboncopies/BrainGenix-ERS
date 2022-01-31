@@ -48,7 +48,7 @@ class ERS_CLASS_SceneManager{
          * 
          * @param Logger 
          */
-        ERS_CLASS_SceneManager(std::shared_ptr<LoggerClass> Logger);
+        ERS_CLASS_SceneManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger);
         
         /**
          * @brief Destroy the Scene Manager object
