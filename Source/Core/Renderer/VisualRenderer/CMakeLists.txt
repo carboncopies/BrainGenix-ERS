@@ -28,7 +28,7 @@ target_link_libraries(VisualRenderer
 target_link_libraries(VisualRenderer
     NoClip
     InputProcessor
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     ImageLoader
     Framebuffer
 
