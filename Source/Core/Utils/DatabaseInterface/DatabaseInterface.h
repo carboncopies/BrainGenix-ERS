@@ -40,7 +40,7 @@ class DatabaseInterface {
          * 
          * @param Logger 
          */
-        DatabaseInterface(std::shared_ptr<LoggerClass> Logger);
+        DatabaseInterface(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger);
 
         /**
          * @brief Destroy the Database Interface object
