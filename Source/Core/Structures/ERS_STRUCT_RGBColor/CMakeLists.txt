@@ -4,26 +4,21 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_LoggingSystem
-
-            # Add Source Files (.cpp)
-            "ERS_CLASS_LoggingSystem.cpp"
+add_library(ERS_STRUCT_RGBColor
 
             # Add Header Files (.h)
-            "ERS_CLASS_LoggingSystem.h"
+            "ERS_STRUCT_RGBColor.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_LoggingSystem
-    yaml-cpp
+target_link_libraries(ERS_STRUCT_RGBColor
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_LoggingSystem
-    ERS_STRUCT_RGBColor
+target_link_libraries(ERS_STRUCT_RGBColor
     )
 
-target_include_directories(ERS_LoggingSystem PUBLIC ./)
 
+target_include_directories(ERS_STRUCT_RGBColor PUBLIC ./)
