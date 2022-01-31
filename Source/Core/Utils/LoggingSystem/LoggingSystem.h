@@ -103,7 +103,11 @@ class LoggerClass {
          */
         void Log(const char* LogItem, int LogLevel=5);
 
-
+        /**
+         * @brief Log that takes std::string instead of const char ptr
+         * 
+         */
+        void Log(std::string LogMessage, int LogLevel=5);
 
 };
 

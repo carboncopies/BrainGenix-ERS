@@ -68,6 +68,15 @@ LoggerClass::~LoggerClass() {
 }
 
 
+// Overload Of Log With Std::string
+void LoggerClass::Log(std::string LogItem, int LogLevel) {
+
+    // Call Normal Logger, Convert To std::string
+    Log(LogItem.c_str(), LogLevel);
+
+}
+
+
 // Define LoggerClass::Log
 void LoggerClass::Log(const char* LogItem, int LogLevel) {
 
