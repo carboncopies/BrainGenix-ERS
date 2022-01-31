@@ -118,9 +118,11 @@ if (Enabled_) {
 
                         if (ImGui::MenuItem("Vertex", nullptr, (Mode_==0))) {
                             Mode_ = 0;
+                            ReloadEditorText();
                         }
                         if (ImGui::MenuItem("Fragment", nullptr, (Mode_==1))) {
                             Mode_ = 1;
+                            ReloadEditorText();
                         }
 
                     ImGui::EndMenu();
