@@ -91,6 +91,7 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     YAML::Node ShadersPrograms = ProjectNode["ShaderPrograms"];
     for (YAML::const_iterator it=ShadersPrograms.begin(); it!=ShadersPrograms.end(); ++it) {
         ERS_STRUCT_ShaderProgramAssetIDs Program;
+        Program.Name = it->second["Name"].as<std::string>();
         Program.VertexID = it->second["VertexID"].as<long>();
         Program.FragmentID = it->second["FragmentID"].as<long>();
         Project.ShaderPrograms.push_back(Program);
