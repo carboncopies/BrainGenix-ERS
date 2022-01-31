@@ -30,6 +30,10 @@ private:
 
 public:
 
+    bool Enabled_ = true; /**<Enable/Disable the editor window*/
+
+public:
+
     /**
      * @brief Construct a new Window_ShaderEditor object
      * 
@@ -42,5 +46,12 @@ public:
      * 
      */
     ~Window_ShaderEditor();
+
+    
+    /**
+     * @brief Draw the window.
+     * 
+     */
+    void Draw();
 
 }
