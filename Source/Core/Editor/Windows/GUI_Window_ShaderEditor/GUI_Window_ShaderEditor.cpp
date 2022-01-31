@@ -26,6 +26,27 @@ Window_ShaderEditor::~Window_ShaderEditor() {
 }
 
 
+// Reload Assets
+void Window_ShaderEditor::ReloadEditorText() {
+
+    // Get Selected Asset Index
+    long AssetID;
+    if (Mode_ == 0) {
+        AssetID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].VertexID;
+    } else if (Mode_ == 1) {
+        AssetID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].VertexID;
+    }
+
+    // Load The Selected File
+    std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, Data);
+    std::string Text = std::string((const char*)Data->Data.get());
+
+    // Update Editor Text
+    Editor_.SetText(Text);
+
+}
+
 // Draw Window
 void Window_ShaderEditor::Draw() {
 
@@ -112,8 +133,11 @@ if (Enabled_) {
 
                             std::string ShaderProgramName = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].Name;
                             if (ImGui::MenuItem(ShaderProgramName.c_str())) {
+
+                                // Update Index
                                 SelectedShaderProgramIndex_ = i;
-                                
+
+
                             }
 
                         }

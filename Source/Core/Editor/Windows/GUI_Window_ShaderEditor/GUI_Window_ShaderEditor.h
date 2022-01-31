@@ -36,6 +36,14 @@ private:
     int Mode_ = 0; /**<Used To Determine what shader the user is editing*/
     long SelectedShaderProgramIndex_ = 0; /**<Index of the selected shader program in the project*/
 
+private:
+
+    /**
+     * @brief Reloads the text from the selected asset id and shader program
+     * 
+     */
+    void ReloadEditorText();
+
 public:
 
     bool Enabled_ = true; /**<Enable/Disable the editor window*/
