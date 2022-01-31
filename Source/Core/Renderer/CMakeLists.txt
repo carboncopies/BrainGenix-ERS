@@ -26,7 +26,7 @@ target_link_libraries(Renderer
 
 # Link Internal Libs
 target_link_libraries(Renderer
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     VisualRenderer
     IOManager
     VisualEditor
