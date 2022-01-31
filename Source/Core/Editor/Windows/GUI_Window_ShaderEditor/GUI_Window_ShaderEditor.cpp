@@ -144,11 +144,9 @@ if (Enabled_) {
 
                         if (ImGui::MenuItem("Vertex", nullptr, (Mode_==0))) {
                             Mode_ = 0;
-                            ReloadEditorText();
                         }
                         if (ImGui::MenuItem("Fragment", nullptr, (Mode_==1))) {
                             Mode_ = 1;
-                            ReloadEditorText();
                         }
 
                     ImGui::EndMenu();
@@ -166,9 +164,7 @@ if (Enabled_) {
                                 SelectedShaderProgramIndex_ = i;
                                 ReloadEditorText();
 
-
                             }
-
                         }
 
 
@@ -182,9 +178,25 @@ if (Enabled_) {
             }
 
 
+            // Set Editor Text
+            if (Mode_ == 0) {
+                Editor_.SetText(VertexText_);
+            } else if (Mode_ == 1) {
+                Editor_.SetText(FragmentText_);
+            }
 
             // Render Editor
             Editor_.Render("Shader Editor");
+
+
+            // Update Text
+            std::string NewText = Editor_.GetText().substr(0, NewText.find_last_of("\n"));
+            if (Mode_ == 0) {
+                VertexText_ = NewText;
+            } else if (Mode_ == 1) {
+                FragmentText_ = NewText;
+            }
+
 
         }
 
@@ -194,7 +206,7 @@ if (Enabled_) {
 
     
     // Compile Shader Object
-    ShaderLoader_->CreateShaderObject()
+    //ShaderLoader_->CreateShaderObject()
 
 
 
