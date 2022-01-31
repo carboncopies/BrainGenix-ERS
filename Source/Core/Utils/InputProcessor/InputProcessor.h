@@ -112,7 +112,7 @@ class InputProcessor {
          * @param Logger_ 
          * @param DeltaTime 
          */
-        void ProcessKeyboardInput(std::shared_ptr<LoggerClass> Logger_, float DeltaTime, bool WindowCaptureEnabled);
+        void ProcessKeyboardInput(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_, float DeltaTime, bool WindowCaptureEnabled);
 
 
 
