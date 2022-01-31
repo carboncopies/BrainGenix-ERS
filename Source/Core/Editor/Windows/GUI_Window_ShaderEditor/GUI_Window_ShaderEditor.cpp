@@ -154,10 +154,12 @@ if (Enabled_) {
                         if (ImGui::MenuItem("Vertex", nullptr, (Mode_==0))) {
                             Mode_ = 0;
                             Editor_ = std::make_shared<TextEditor>(Editors_[Mode_]);
+                            Editor_->Render("Shader Editor");
                         }
                         if (ImGui::MenuItem("Fragment", nullptr, (Mode_==1))) {
                             Mode_ = 1;
                             Editor_ = std::make_shared<TextEditor>(Editors_[Mode_]);
+                            Editor_->Render("Shader Editor");
                         }
 
                     ImGui::EndMenu();
