@@ -31,7 +31,7 @@ class ERS_CLASS_IOTypeIdentifier {
 // Private Member Vars
 private:
 
-    std::shared_ptr<LoggerClass> Logger_; /**<Shared Pointer To Logger Instance*/
+    std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Shared Pointer To Logger Instance*/
 
 // Private Methods
 private:
