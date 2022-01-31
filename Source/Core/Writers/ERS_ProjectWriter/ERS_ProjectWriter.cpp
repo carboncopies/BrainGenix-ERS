@@ -92,7 +92,6 @@ bool ERS_CLASS_ProjectWriter::SaveProject(std::shared_ptr<ERS_STRUCT_Project> Pr
         ProjectEmitter<<YAML::Key<<"FragmentID"<<YAML::Value<<ProjectPointer->ShaderPrograms[i].FragmentID;
         ProjectEmitter<<YAML::EndMap;
     }
-
     ProjectEmitter<<YAML::EndMap;
 
 
