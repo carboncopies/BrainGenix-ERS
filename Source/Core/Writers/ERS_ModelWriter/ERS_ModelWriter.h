@@ -60,7 +60,7 @@ class ERS_CLASS_ModelWriter {
          * 
          * @param Logger 
          */
-        ERS_CLASS_ModelWriter(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<ERS_CLASS_InputOutputSubsystem> IOSubsystem);
+        ERS_CLASS_ModelWriter(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, std::shared_ptr<ERS_CLASS_InputOutputSubsystem> IOSubsystem);
         
         /**
          * @brief Destroy the ers class modelwriter object
