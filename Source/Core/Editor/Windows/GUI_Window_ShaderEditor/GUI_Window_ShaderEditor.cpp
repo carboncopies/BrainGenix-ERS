@@ -36,13 +36,13 @@ if (Enabled_) {
 
 
         if (Visible) {
-
+ 
             if (ImGui::BeginMenuBar()) {
                 if (ImGui::BeginMenu("File"))
                 {
                     if (ImGui::MenuItem("Save"))
                     {
-                        auto textToSave = Editor_.GetText();
+                        std::string textToSave = Editor_.GetText();
                         /// save text....
                     }
                     ImGui::EndMenu();
@@ -91,7 +91,7 @@ if (Enabled_) {
                 ImGui::EndMenuBar();
             }
 
-            Editor_.Render("TextEditor");
+            Editor_.Render("Shader Editor");
 
         }
 
