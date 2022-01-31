@@ -8,6 +8,7 @@
 #pragma once
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 
@@ -20,6 +21,9 @@
  * 
  */
 struct ERS_STRUCT_ShaderProgramAssetIDs {
+
+    // Name Of Shader Program
+    std::string Name; /**<Name of the shader program, used to identify different programs*/
 
     // Shader Asset IDs
     long VertexID; /**<Vertex Shader Asset ID*/
