@@ -12,7 +12,7 @@
 #include "ImageDecoder.h"
 
 // Initialize The Class
-ImageDecoder::ImageDecoder(std::shared_ptr<LoggerClass> Logger) {
+ImageDecoder::ImageDecoder(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Make Reference To Logger
     Logger_ = Logger;
