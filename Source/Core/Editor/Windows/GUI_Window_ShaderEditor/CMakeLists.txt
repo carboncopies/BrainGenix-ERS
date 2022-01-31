@@ -24,6 +24,7 @@ target_link_libraries(Window_ShaderEditor
 # Link Internal Libs
 target_link_libraries(Window_ShaderEditor
     ERS_STRUCT_SystemUtils
+    ERS_STRUCT_ProjectUtils
     )
 
 target_include_directories(Window_ShaderEditor PUBLIC ./)

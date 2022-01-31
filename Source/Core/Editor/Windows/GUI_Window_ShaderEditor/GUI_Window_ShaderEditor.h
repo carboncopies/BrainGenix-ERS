@@ -26,6 +26,7 @@ class Window_ShaderEditor {
 private:
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointer*/
+    std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Pointer*/
     TextEditor Editor_; /** Editor Instance*/
     int Mode_ = 0; /**<Used To Determine what shader the user is editing*/
 
@@ -40,7 +41,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
 
     /**
      * @brief Destroy the Window_ShaderEditor object

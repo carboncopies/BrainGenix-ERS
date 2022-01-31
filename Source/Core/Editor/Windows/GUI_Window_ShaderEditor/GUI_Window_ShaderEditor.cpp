@@ -6,10 +6,11 @@
 
 
 // Constructor
-Window_ShaderEditor::Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+Window_ShaderEditor::Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils) {
 
     // Copy Pointers
     SystemUtils_ = SystemUtils;
+    ProjectUtils_ = ProjectUtils;
 
     // Log Init
     SystemUtils_->Logger_->Log("Initializing GUI ShaderEditor Window", 4);
@@ -107,7 +108,11 @@ if (Enabled_) {
                     // Shader Dropdown
                     if (ImGui::BeginMenu("Programs")) {
 
-                        
+                        for (long i = 0; i < ProjectUtils_->; i++) {
+
+                            
+
+                        }
 
 
                     ImGui::EndMenu();
