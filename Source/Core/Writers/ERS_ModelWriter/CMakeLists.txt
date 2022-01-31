@@ -21,7 +21,7 @@ target_link_libraries(ERS_ModelWriter
 
 # Link Internal Libs
 target_link_libraries(ERS_ModelWriter
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     Model
     Scene
     Meshes
