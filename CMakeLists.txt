@@ -111,7 +111,7 @@ add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_3DCursor)
 add_subdirectory(${SRC_DIR}/Core/Editor/)
 add_subdirectory(${SRC_DIR}/Core/Editor/Widgets)
 add_subdirectory(${SRC_DIR}/Core/Editor/Windows)
-add_subdirectory(${SRC_DIR}/Core/Editor/VisualEditor/MenuEntries)
+add_subdirectory(${SRC_DIR}/Core/Editor/MenuEntries)
 
 
 add_subdirectory(${SRC_DIR}/Core/Renderer)
