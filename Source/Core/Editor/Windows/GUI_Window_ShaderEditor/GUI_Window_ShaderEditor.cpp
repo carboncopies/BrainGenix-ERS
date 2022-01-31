@@ -202,8 +202,7 @@ if (Enabled_) {
     std::string VertexText = Editors_[0]->GetText();
     std::string FragmentText = Editors_[1]->GetText();
 
-    std::cout<<VertexText<<std::endl<<FragmentText<<std::endl;
-    LivePreviewShader_ = ShaderLoader_->CreateShaderObject(VertexText.c_str(), FragmentText.c_str());
+    LivePreviewShader_ = ShaderLoader_->CreateShaderObject(VertexText.c_str(), FragmentText.c_str(), false);
 
 
 
