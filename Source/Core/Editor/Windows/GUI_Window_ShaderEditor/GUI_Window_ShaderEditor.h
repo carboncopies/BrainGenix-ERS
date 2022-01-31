@@ -26,6 +26,7 @@ class Window_ShaderEditor {
 private:
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointer*/
+    TextEditor Editor_; /** Editor Instance*/
 
 public:
 

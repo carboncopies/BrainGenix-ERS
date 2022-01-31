@@ -17,9 +17,8 @@ add_library(Window_ShaderEditor
 
 # Link 3rd Party Libs
 target_link_libraries(Window_ShaderEditor
-    glad
-    glfw
     IMGUI
+    ImGuiColorTextEdit
     )
 
 # Link Internal Libs
