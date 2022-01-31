@@ -190,7 +190,8 @@ if (Enabled_) {
 
 
             // Update Text
-            std::string NewText = Editor_.GetText().substr(0, NewText.find_last_of("\n"));
+            std::string NewText = Editor_.GetText();
+            NewText = NewText.substr(0, NewText.find_last_of("\n"));
             if (Mode_ == 0) {
                 VertexText_ = NewText;
             } else if (Mode_ == 1) {
