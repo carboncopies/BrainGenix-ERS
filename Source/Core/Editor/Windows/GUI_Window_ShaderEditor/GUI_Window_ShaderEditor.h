@@ -20,3 +20,17 @@
 
 
 
+class Window_ShaderEditor {
+
+private:
+
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointer*/
+
+public:
+
+    Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    ~Window_ShaderEditor();
+
+
+
+}
