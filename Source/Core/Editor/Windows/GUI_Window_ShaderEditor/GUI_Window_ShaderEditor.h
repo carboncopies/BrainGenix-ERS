@@ -18,9 +18,14 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_ProjectUtils.h>
 
 
 
+/**
+ * @brief This class provides the window for the shader editor.
+ * 
+ */
 class Window_ShaderEditor {
 
 private:
