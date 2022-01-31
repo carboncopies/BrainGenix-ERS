@@ -13,7 +13,7 @@
 
 
 // ERS_CLASS_FontManager Constructor
-ERS_CLASS_FontManager::ERS_CLASS_FontManager(std::shared_ptr<LoggerClass> Logger, const char* FontsDirPath) {
+ERS_CLASS_FontManager::ERS_CLASS_FontManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, const char* FontsDirPath) {
 
     // Create Pointers
     Logger_ = Logger;
