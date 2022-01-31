@@ -33,7 +33,7 @@ target_link_libraries(ERS_InputOutputSubsystem
 
     ERS_IOTypeIdentifier
 
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     )
 
 target_include_directories(ERS_InputOutputSubsystem PUBLIC ./)
