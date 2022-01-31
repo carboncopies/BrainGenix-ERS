@@ -43,6 +43,13 @@ struct ERS_STRUCT_Shader {
     bool _FragmentShaderInitialized = false; /**<Control Variable Indicating Fragment Shader Initialization Status */
     bool _ShaderProgramInitialized = false; /**<Control Variable Indicating Shader Program Initializatation Status */
 
+
+    /**
+     * @brief Destroy the ers struct shader object
+     * 
+     */
+    ~ERS_STRUCT_Shader();
+
     /**
      * @brief Function To Compile Vertex Shader With Given Code (const char*)
      * 

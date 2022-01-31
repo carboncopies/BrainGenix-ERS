@@ -6,6 +6,14 @@
 #include <ERS_STRUCT_Shader.h>
 
 
+// Shader Destructor
+ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
+
+    // Deallocate Shader Program
+    glDeleteProgram(ShaderProgram);
+
+}
+
 // Compile Vertex Shader
 void ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText) {
 
