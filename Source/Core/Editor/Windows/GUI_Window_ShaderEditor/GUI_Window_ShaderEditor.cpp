@@ -17,14 +17,11 @@ Window_ShaderEditor::Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils>
 
 
     // Setup Editors
-    Editors_.push_back(TextEditor());
-    Editors_.push_back(TextEditor());
+    Editors_.push_back(std::make_shared<TextEditor>());
+    Editors_.push_back(std::make_shared<TextEditor>());
 
     // Load Shader
     ReloadEditorText();
-
-
-
 
     // Setup Shader Loader
     ShaderLoader_ = std::make_shared<ERS_CLASS_ShaderLoader>(SystemUtils_);
@@ -54,10 +51,9 @@ void Window_ShaderEditor::ReloadEditorText() {
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID, Data);
     std::string  VertexText = std::string((const char*)Data->Data.get());
 
-    Editors_[0].SetText(VertexText);
-    Editors_[1].SetText(FragmentText);
-
-    Editor_ = std::make_shared<TextEditor>(Editors_[0]);
+    Editors_[0]->SetText(VertexText);
+    Editors_[1]->SetText(FragmentText);
+    Editor_ = Editors_[0];
 
 }
 
@@ -98,8 +94,8 @@ if (Enabled_) {
                     if (ImGui::MenuItem("Save"))
                     {
                         // Write The Asset
-                        SaveShader(Editors_[0].GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID);
-                        SaveShader(Editors_[1].GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID);
+                        SaveShader(Editors_[0]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID);
+                        SaveShader(Editors_[1]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID);
 
                     }
                     ImGui::EndMenu();
@@ -153,12 +149,12 @@ if (Enabled_) {
 
                         if (ImGui::MenuItem("Vertex", nullptr, (Mode_==0))) {
                             Mode_ = 0;
-                            Editor_ = std::make_shared<TextEditor>(Editors_[Mode_]);
+                            Editor_ = Editors_[Mode_];
                             Editor_->Render("Shader Editor");
                         }
                         if (ImGui::MenuItem("Fragment", nullptr, (Mode_==1))) {
                             Mode_ = 1;
-                            Editor_ = std::make_shared<TextEditor>(Editors_[Mode_]);
+                            Editor_ = Editors_[Mode_];
                             Editor_->Render("Shader Editor");
                         }
 
