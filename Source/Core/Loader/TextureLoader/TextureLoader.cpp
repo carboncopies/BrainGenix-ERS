@@ -14,7 +14,7 @@
 
 
 // Texture Loader Constructor
-TextureLoader::TextureLoader(std::shared_ptr<LoggerClass> Logger) {
+TextureLoader::TextureLoader(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Create Local Pointers
     Logger_ = Logger;
