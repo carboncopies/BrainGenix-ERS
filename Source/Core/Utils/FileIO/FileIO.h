@@ -19,5 +19,5 @@
 #include <ERS_CASS_LoggingSystem.h>
 
 // Read Image File From Disk
-std::string ReadFile(const std::string& FileName, std::shared_ptr<LoggerClass> Logger_ = nullptr);
+std::string ReadFile(const std::string& FileName, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_ = nullptr);
 
