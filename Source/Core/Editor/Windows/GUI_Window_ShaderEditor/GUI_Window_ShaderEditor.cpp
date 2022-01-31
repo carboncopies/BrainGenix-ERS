@@ -95,10 +95,10 @@ if (Enabled_) {
                     // Mode Menu
                     if (ImGui::BeginMenu("Mode")) {
 
-                        if (ImGui::MenuItem("Vertex")) {
+                        if (ImGui::MenuItem("Vertex", nullptr, (Mode_==0))) {
                             Mode_ = 0;
                         }
-                        if (ImGui::MenuItem("Fragment")) {
+                        if (ImGui::MenuItem("Fragment", nullptr, (Mode_==1))) {
                             Mode_ = 1;
                         }
 
@@ -112,6 +112,7 @@ if (Enabled_) {
 
                             std::string ShaderProgramName = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].Name;
                             if (ImGui::MenuItem(ShaderProgramName.c_str())) {
+                                SelectedShaderProgramIndex_ = i;
                                 
                             }
 
