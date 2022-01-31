@@ -33,7 +33,7 @@ if (Enabled_) {
     bool Visible = ImGui::Begin("Shader Editor", &Enabled_, ImGuiWindowFlags_MenuBar);
 
         // Set Default Window Size
-        ImGui::SetWindowSize(ImVec2(300,0), ImGuiCond_FirstUseEver);
+        ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
 
 
         if (Visible) {
