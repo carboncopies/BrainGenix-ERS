@@ -40,6 +40,7 @@ target_link_libraries(Menu_File
     Scene
 
     Window_ProjectSettings
+    Window_ShaderEditor
     )
 
 target_include_directories(Menu_File PUBLIC ./)
