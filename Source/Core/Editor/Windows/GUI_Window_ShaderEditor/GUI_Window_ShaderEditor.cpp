@@ -203,7 +203,8 @@ if (Enabled_) {
     std::string FragmentText = Editors_[1]->GetText();
 
     LivePreviewShader_ = ShaderLoader_->CreateShaderObject(VertexText.c_str(), FragmentText.c_str(), false);
-
+    LivePreviewShader_->MakeActive();
+    LivePreviewShader_->SetInt("texture_diffuse1", 0);
 
 
 }
