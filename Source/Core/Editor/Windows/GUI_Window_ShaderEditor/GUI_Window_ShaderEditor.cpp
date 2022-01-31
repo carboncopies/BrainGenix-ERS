@@ -143,10 +143,15 @@ if (Enabled_) {
                     if (ImGui::BeginMenu("Mode")) {
 
                         if (ImGui::MenuItem("Vertex", nullptr, (Mode_==0))) {
+                            FragmentText_ = Editor_.GetText();
                             Mode_ = 0;
+                            Editor_.SetText(VertexText_);
+
                         }
                         if (ImGui::MenuItem("Fragment", nullptr, (Mode_==1))) {
+                            FragmentText_ = Editor_.GetText();
                             Mode_ = 1;
+                            Editor_.SetText(FragmentText_);
                         }
 
                     ImGui::EndMenu();
@@ -178,25 +183,8 @@ if (Enabled_) {
             }
 
 
-            // Set Editor Text
-            if (Mode_ == 0) {
-                Editor_.SetText(VertexText_);
-            } else if (Mode_ == 1) {
-                Editor_.SetText(FragmentText_);
-            }
-
             // Render Editor
             Editor_.Render("Shader Editor");
-
-
-            // Update Text
-            std::string NewText = Editor_.GetText();
-            NewText = NewText.substr(0, NewText.find_last_of("\n"));
-            if (Mode_ == 0) {
-                VertexText_ = NewText;
-            } else if (Mode_ == 1) {
-                FragmentText_ = NewText;
-            }
 
 
         }
