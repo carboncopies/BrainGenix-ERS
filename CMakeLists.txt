@@ -63,7 +63,7 @@ target_link_libraries(${PROJECT_NAME}
 
   # Internal Libs
   ConfigurationLoader
-  LoggingSystem
+  ERS_CLASS_LoggingSystem
   Renderer
   HardwareInformation
 
@@ -87,7 +87,7 @@ target_link_libraries(${PROJECT_NAME}
 
 
 # ADD INTERNAL SUBDIRECTORIES
-add_subdirectory(${SRC_DIR}/Core/Utils/LoggingSystem)
+add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_LoggingSystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ConfigurationLoader)
 add_subdirectory(${SRC_DIR}/Core/Utils/FileIO)
 add_subdirectory(${SRC_DIR}/Core/Utils/DatabaseInterface)
