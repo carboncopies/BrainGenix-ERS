@@ -14,6 +14,7 @@
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <imgui.h>
+#include <TextEditor.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
@@ -28,9 +29,17 @@ private:
 
 public:
 
+    /**
+     * @brief Construct a new Window_ShaderEditor object
+     * 
+     * @param SystemUtils 
+     */
     Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+
+    /**
+     * @brief Destroy the Window_ShaderEditor object
+     * 
+     */
     ~Window_ShaderEditor();
-
-
 
 }
