@@ -26,6 +26,7 @@ GUI_Menu_File::GUI_Menu_File(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils
     // Create Class Instances
     SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_);
     ImportAsset_ = std::make_unique<GUI_ImportAsset>(SystemUtils_);
+    ShaderEditor_ = std::make_unique<Window_ShaderEditor>(SystemUtils_);
     Window_ProjectSettings_ = std::make_unique<Window_ProjectSettings>(ProjectUtils, SystemUtils);
 
 }
@@ -61,6 +62,13 @@ void GUI_Menu_File::Draw() {
             ImGui::Separator();
         }
 
+
+        // Shader Editor
+        if (ImGui::MenuItem("Shader Editor")) {
+            ShaderEditor_->Enabled_ = !ShaderEditor_->Enabled_;
+        }
+
+
         // Save Options
         if (ImGui::MenuItem("Save Active Scene")) {
             SceneWriter_->ProcessScene(
@@ -92,6 +100,7 @@ void GUI_Menu_File::Draw() {
     // Draw Subwindows
     ImportAsset_->Draw();
     Window_ProjectSettings_->Draw();
+    ShaderEditor_->Draw();
 
 
 }

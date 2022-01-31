@@ -37,7 +37,7 @@ private:
 // Public Member Vars
 public:
 
-    bool Enabled_ = true; /**<Control var for the window, enables or disables it.*/
+    bool Enabled_ = false; /**<Control var for the window, enables or disables it.*/
 
 
 // Public Methods
