@@ -27,7 +27,7 @@ class ImageDecoder {
 
     private:
 
-        std::shared_ptr<LoggerClass> Logger_; /**<Pointer To Logging System*/
+        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer To Logging System*/
 
     public:
         
