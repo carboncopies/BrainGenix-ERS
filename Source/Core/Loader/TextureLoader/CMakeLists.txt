@@ -23,7 +23,7 @@ target_link_libraries(TextureLoader
 
 # Link Internal Libs
 target_link_libraries(TextureLoader
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     ImageLoader
     Textures
     )
