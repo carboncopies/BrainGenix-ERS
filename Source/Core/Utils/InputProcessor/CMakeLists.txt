@@ -27,7 +27,7 @@ target_link_libraries(InputProcessor
 # Link Internal Libs
 target_link_libraries(InputProcessor
     NoClip
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     ImageLoader
     TextureLoader
 
