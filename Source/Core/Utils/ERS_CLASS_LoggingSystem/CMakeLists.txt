@@ -10,7 +10,7 @@ add_library(ERS_CLASS_LoggingSystem
             "ERS_CLASS_LoggingSystem.cpp"
 
             # Add Header Files (.h)
-            "ERS_CLASS_LoggingSystem.h"
+            "ERS_CLASS_ ERS_CLASS_LoggingSystem.h"
             
             ${BACKWARD_ENABLE}
             )
