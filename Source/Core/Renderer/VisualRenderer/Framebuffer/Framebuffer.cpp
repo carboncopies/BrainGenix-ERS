@@ -14,7 +14,7 @@
 
 
 // Framebuffer manager Constructor
-FramebufferManager::FramebufferManager(std::shared_ptr<LoggerClass> Logger, std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader, float Width, float Height) {
+FramebufferManager::FramebufferManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader, float Width, float Height) {
 
     // Create Local Pointers
     Logger_ = Logger;
