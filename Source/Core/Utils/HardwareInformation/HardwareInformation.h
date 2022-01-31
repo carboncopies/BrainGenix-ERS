@@ -38,7 +38,7 @@ class HardwareInformation {
     private:
 
         // Class Instances
-        std::shared_ptr<LoggerClass> Logger_; /**<Instance Of Logging System*/
+        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Instance Of Logging System*/
         ERS_STRUCT_HardwareInfo HardwareInfo_; /**<Internal Hardware Information Struct*/
 
         // Config
