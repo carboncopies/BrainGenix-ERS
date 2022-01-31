@@ -30,7 +30,7 @@ target_link_libraries(ERS_Editor_ImportAsset
 
 # Link Internal Libs
 target_link_libraries(ERS_Editor_ImportAsset
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
 
     ERS_STRUCT_SystemUtils
     Window_ImportProgressBar
