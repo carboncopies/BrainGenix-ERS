@@ -23,7 +23,7 @@ target_link_libraries(FileIO
 # Link Internal Libs
 target_link_libraries(FileIO
 
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
 
     )
 
