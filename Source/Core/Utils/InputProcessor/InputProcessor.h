@@ -20,7 +20,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <NoClip.h>
-#include <ERS_CASS_LoggingSystem.h>
+#include <ERS_CLASS_LoggingSystem.h>
 #include <Framebuffer.h>
 
 
