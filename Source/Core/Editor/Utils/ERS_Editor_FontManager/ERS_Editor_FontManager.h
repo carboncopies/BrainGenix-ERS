@@ -51,7 +51,7 @@ class ERS_CLASS_FontManager {
 
     public:
 
-        ERS_CLASS_FontManager(std::shared_ptr<LoggerClass> Logger, const char* FontsDirPath = "EditorAssets/Fonts");
+        ERS_CLASS_FontManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, const char* FontsDirPath = "EditorAssets/Fonts");
         ~ERS_CLASS_FontManager();
 
         void IndexFonts();
