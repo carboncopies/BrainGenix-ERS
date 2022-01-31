@@ -51,7 +51,7 @@ class TextureLoader {
          * 
          * @param Logger 
          */
-        TextureLoader(std::shared_ptr<LoggerClass> Logger);
+        TextureLoader(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger);
 
         /**
          * @brief Destroy the Texture Loader object.
