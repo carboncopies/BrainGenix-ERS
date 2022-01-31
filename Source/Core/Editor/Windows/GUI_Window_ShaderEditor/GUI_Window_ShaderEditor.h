@@ -27,6 +27,7 @@ private:
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointer*/
     TextEditor Editor_; /** Editor Instance*/
+    int Mode_ = 0; /**<Used To Determine what shader the user is editing*/
 
 public:
 
