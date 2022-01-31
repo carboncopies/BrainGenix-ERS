@@ -21,7 +21,7 @@ target_link_libraries(PARENT_DIR_NAME
 
 # Link Internal Libs
 target_link_libraries(PARENT_DIR_NAME
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     )
 
 target_include_directories(PARENT_DIR_NAME PUBLIC ./)
