@@ -49,14 +49,7 @@ class ERS_CLASS_LoggingSystem {
         int LogTimeTargetWidth = 19;
         const char* InsertString = "                                                         ";
 
-        /**
-         * @brief Stores the Red, Green, Blue values of the text color.
-         */
-        struct RGBColor {
-            int Red;
-            int Green;
-            int Blue;
-        };
+
 
         std::map<int, RGBColor> ColorLookup_; /*!< Lookup for converting log level to RGB values (stored in RGBColor struct). Populated based on values stored in Config.yaml */
         std::map<int, std::string> LogNameLookup_; /*!< Lookup for converting log level to name of log level (See Config.yaml for values). */
