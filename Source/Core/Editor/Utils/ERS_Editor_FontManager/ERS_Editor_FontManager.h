@@ -37,7 +37,7 @@ class ERS_CLASS_FontManager {
 
     private:
 
-        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<LoggerClass Instance Pointer*/
+        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<ERS_CLASS_LoggingSystem Instance Pointer*/
         const char* FontsDirectoryPath_; /**<Path where fonts are to be searched for */
 
         std::vector<std::string> FontPathList_; /**<List of fonts located at the given paths*/
