@@ -53,7 +53,7 @@ public:
      * @param FragmentText 
      * @return ERS_STRUCT_Shader 
      */
-    std::shared_ptr<ERS_STRUCT_Shader> CreateShaderObject(const char* VertexText, const char* FragmentText);
+    std::shared_ptr<ERS_STRUCT_Shader> CreateShaderObject(const char* VertexText, const char* FragmentText, bool LogBuild = true);
 
 
     /**

@@ -25,10 +25,12 @@ ERS_CLASS_ShaderLoader::~ERS_CLASS_ShaderLoader() {
 }
 
 // Load Shader From Memory
-std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText) {
+std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText, bool LogBuild) {
 
     // Log Shader Creation
-    SystemUtils_->Logger_->Log("Creating Shader Object", 5);
+    if (LogBuild) {
+        SystemUtils_->Logger_->Log("Creating Shader Object", 5);
+    }
 
     // Create Shader
     std::shared_ptr<ERS_STRUCT_Shader> ShaderStruct = std::make_shared<ERS_STRUCT_Shader>();
@@ -37,9 +39,13 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::CreateShaderObject(co
     ShaderStruct->CompileFragmentShader(FragmentText);
 
     // Attach Shaders
-    SystemUtils_->Logger_->Log("Linking Shader Program", 5);
+    if (LogBuild) {
+        SystemUtils_->Logger_->Log("Linking Shader Program", 5);
+    }
     ShaderStruct->CreateShaderProgram();
-    SystemUtils_->Logger_->Log("Linked Shader Program", 4);
+    if (LogBuild) {
+        SystemUtils_->Logger_->Log("Linked Shader Program", 4);
+    }
 
     // Return Struct
     return ShaderStruct;
