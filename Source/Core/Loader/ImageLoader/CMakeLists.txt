@@ -27,7 +27,7 @@ target_link_libraries(ImageLoader
 # Link Internal Libs
 target_link_libraries(ImageLoader
     NoClip
-    LoggingSystem
+    ERS_CLASS_LoggingSystem
     FileIO
     )
 
