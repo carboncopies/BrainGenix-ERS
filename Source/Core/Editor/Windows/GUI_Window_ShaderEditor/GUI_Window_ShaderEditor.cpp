@@ -29,7 +29,7 @@ Window_ShaderEditor::~Window_ShaderEditor() {
 void Window_ShaderEditor::Draw() {
 
 if (Enabled_) {
-    bool Visible = ImGui::Begin("Test Editor Window", &Enabled_, ImGuiWindowFlags_MenuBar);
+    bool Visible = ImGui::Begin("Shader Editor", &Enabled_, ImGuiWindowFlags_MenuBar);
 
         // Set Default Window Size
         ImGui::SetWindowSize(ImVec2(300,0), ImGuiCond_FirstUseEver);
