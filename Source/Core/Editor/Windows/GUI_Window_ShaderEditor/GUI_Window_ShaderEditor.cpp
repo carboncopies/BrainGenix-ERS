@@ -205,9 +205,9 @@ if (Enabled_) {
 
     LivePreviewShader_->~ERS_STRUCT_Shader();
     LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
-    LivePreviewShader_->CompileVertexShader(VertexText.c_str());
-    LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
-    LivePreviewShader_->CreateShaderProgram(false);
+    std::cout<<LivePreviewShader_->CompileVertexShader(VertexText.c_str())<<std::endl;
+    std::cout<<LivePreviewShader_->CompileFragmentShader(FragmentText.c_str())<<std::endl;
+    std::cout<<LivePreviewShader_->CreateShaderProgram(false)<<std::endl;
     LivePreviewShader_->MakeActive();
     LivePreviewShader_->SetInt("texture_diffuse1", 0);
 
