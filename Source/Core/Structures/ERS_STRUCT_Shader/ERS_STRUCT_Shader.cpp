@@ -15,7 +15,7 @@ ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
 }
 
 // Compile Vertex Shader
-void ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
+std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Compile The Vertex Shader Text Into A Binary
     VertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -40,7 +40,7 @@ void ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, std::shared_
 }
 
 // Compile Fragment Shader
-void ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
+std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Compile The Fragment Shader Text Into A Binary
     FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -66,7 +66,7 @@ void ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, std::sha
 
 
 // Compile Shader Program
-void ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
+std::string ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Check That Vertex And Fragment Shaders Are Initialized
     if (!_VertexShaderInitialized || !_FragmentShaderInitialized) {
