@@ -70,7 +70,9 @@ void ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink, std::sha
 
     // Check That Vertex And Fragment Shaders Are Initialized
     if (!_VertexShaderInitialized || !_FragmentShaderInitialized) {
-        std::cout<<"Vertex/Fragment Shader Not Yet Initialized\n";
+        if (Logger != nullptr) {
+            Logger->Log("Vertex/Fragment Shader Compile Error", 8);
+        }
     }
 
     // Create Shader Program
