@@ -15,7 +15,7 @@ ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
 }
 
 // Compile Vertex Shader
-void ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText) {
+void ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Compile The Vertex Shader Text Into A Binary
     VertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -29,7 +29,9 @@ void ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText) {
     glGetShaderiv(VertexShader, GL_COMPILE_STATUS, &VertexSuccess);
     if (!VertexSuccess) {
         glGetShaderInfoLog(VertexShader, 512, NULL, VertexInfoLog);
-        std::cout<<"Shader Compile Error: " << VertexInfoLog << std::endl;
+        if (Logger != nullptr) {
+            Logger->Log("Vertex Shader Compile Error: " +  std::string(VertexInfoLog), 8);
+        }
     }
 
     // Update Vars
@@ -38,7 +40,7 @@ void ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText) {
 }
 
 // Compile Fragment Shader
-void ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText) {
+void ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Compile The Fragment Shader Text Into A Binary
     FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -52,7 +54,9 @@ void ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText) {
     glGetShaderiv(FragmentShader, GL_COMPILE_STATUS, &FragmentSuccess);
     if (!FragmentSuccess) {
         glGetShaderInfoLog(FragmentShader, 512, NULL, FragmentInfoLog);
-        std::cout<<"Shader Compile Error: " << FragmentInfoLog << std::endl;
+        if (Logger != nullptr) {
+            Logger->Log("Fragment Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
+        }
     }
 
     // Update Vars
@@ -62,7 +66,7 @@ void ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText) {
 
 
 // Compile Shader Program
-void ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink) {
+void ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Check That Vertex And Fragment Shaders Are Initialized
     if (!_VertexShaderInitialized || !_FragmentShaderInitialized) {

@@ -55,21 +55,21 @@ struct ERS_STRUCT_Shader {
      * 
      * @param VertexText 
      */
-    void CompileVertexShader(const char* VertexText);
+    void CompileVertexShader(const char* VertexText, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger = nullptr);
 
     /**
      * @brief Function To Compile Fragment Shader With Given Code (const char*)
      * 
      * @param FragmentText 
      */
-    void CompileFragmentShader(const char* FragmentText);
+    void CompileFragmentShader(const char* FragmentText, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger = nullptr);
 
     /**
      * @brief Create a Shader Program object from Fragment and Vertex Shaders.
      * 
      * @param DeleteShadersUponLink 
      */
-    void CreateShaderProgram(bool DeleteShadersUponLink = true);
+    void CreateShaderProgram(bool DeleteShadersUponLink = true, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger = nullptr);
 
     /**
      * @brief Make The Shader Stored Within The Struct Active.
