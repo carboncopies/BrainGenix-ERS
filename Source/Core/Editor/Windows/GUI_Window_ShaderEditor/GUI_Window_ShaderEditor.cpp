@@ -215,7 +215,7 @@ if (Enabled_) {
 }
 
 
-// Error Processor
+// Error Processor (Based On: https://github.com/dfranx/SHADERed/blob/master/src/SHADERed/Engine/GLUtils.cpp, Thanks for the great code!)
 void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_ptr<TextEditor> Editor) {
 
     // Check If The Error Is Empty
@@ -227,18 +227,19 @@ void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_pt
     // Convert Error Message String Into To List Of Strings And Line Numbers
     std::vector<int> ErrorLines;
     std::vector<std::string> ErrorMessages;
-    std::cout<<"Error: "<<ErrorMessage;
-    std::cout<<ErrorMessage.find("\n")<<std::endl;
-    int Index = 0;
-    while (ErrorMessage.find("\n")) {
-        Index++;
+    std::istringstream ErrorInputString(ErrorMessage);
+    std::string Line;
 
-        std::string Line = ErrorMessage.substr(0, ErrorMessage.find_first_of("\n"));
-        ErrorMessage = ErrorMessage.substr(ErrorMessage.find_first_of("\n"), ErrorMessage.size());
+    while (std::getline(ErrorInputString, Line)) {
 
-        std::cout<<"Line "<<Line<<std::endl;
+        // Sort Out Three Status Columns
+        size_t FirstLineIndex = Line.find_first_of(':');
+        size_t SecondLineIndex = Line.find_first_of(':', FirstLineIndex + 1);
+        size_t ThirdLineIndex = Line.find_first_of(':', SecondLineIndex + 1);
+
+        if (FirstLineIndex == std::string::npos || SecondLineIndex == std::string::npos || ThirdLineIndex == std::string::npos) {
+			continue;
+        }
 
     }
-    std::cout<<std::endl;
 }
-
