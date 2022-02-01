@@ -26,6 +26,16 @@
 
 
 
+// Copied from (https://github.com/dfranx/SHADERed/blob/master/src/SHADERed/Engine/GLUtils.cpp)
+bool IsAllDigits(const std::string& str)
+{
+    for (int i = 0; i < str.size(); i++)
+        if (!isdigit(str[i]))
+            return false;
+    return true;
+}
+
+
 /**
  * @brief This class provides the window for the shader editor.
  * 

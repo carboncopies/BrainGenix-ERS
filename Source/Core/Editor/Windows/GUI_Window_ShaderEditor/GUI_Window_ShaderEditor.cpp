@@ -241,5 +241,34 @@ void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_pt
 			continue;
         }
 
+
+
+        int MessageLineNumber = -1;
+        std::string LineStr = Line.substr(SecondLineIndex + 1,ThirdLineIndex - (SecondLineIndex + 1));
+        if (IsAllDigits(LineStr)) {
+            MessageLineNumber = std::stoi(LineStr);
+            std::string Message = Line.substr(ThirdLineIndex + 2);
+            ErrorLines.push_back(MessageLineNumber);
+            ErrorMessages.push_back(Message);
+        } else if (Line.size() > 0 && Line[0] == '(' && Line.find("error") != std::string::npos) {
+            size_t FirstPosition = Line.find_first_of(')');
+
+            int LineNr = -1;
+            std::string LineStr = Line.substr(1, FirstPosition - 1);
+            if (IsAllDigits(LineStr))
+                LineNr = std::stoi(LineStr);
+
+            if (Line.size() > FirstPosition + 3) {
+                std::string Message = Line.substr(FirstPosition + 3);
+                ErrorLines.push_back(LineNr);
+                ErrorMessages.push_back(Message);
+            }
+        }
+
+
+
+
+
     }
 }
+
