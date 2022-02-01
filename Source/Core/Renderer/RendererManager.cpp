@@ -46,7 +46,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     // Setup Shaders
     ShaderLoader_ = std::make_shared<ERS_CLASS_ShaderLoader>(SystemUtils_);
     Shader_ = ShaderLoader_->LoadShaderFromAsset(100, 101);
-    Shader_->MakeActive();
+    Shader_->MakeActive(SystemUtils_->Logger_);
     Shader_->SetInt("texture_diffuse1", 0);
 
     // Set Shader
