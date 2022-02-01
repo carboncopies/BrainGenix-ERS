@@ -92,10 +92,11 @@ void ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink, std::sha
     if (!Success) {
         char InfoLog[512];
         glGetProgramInfoLog(ShaderProgram, 512, NULL, InfoLog);
-        std::cout << "Shader LINK ERROR: " << InfoLog << std::endl;
+        if (Logger != nullptr) {
+            Logger->Log("Shader Link Error: " +  std::string(InfoLog), 8);
+        }
     } else {
         _ShaderProgramInitialized = true;
-        std::cout<<"Setting tot rtue\n";
     }
 
     // Delete Old Shaders
@@ -114,10 +115,10 @@ void ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink, std::sha
 }
 
 // Make Shader Active
-void ERS_STRUCT_Shader::MakeActive() {
+void ERS_STRUCT_Shader::MakeActive(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
-    if (!_ShaderProgramInitialized) {
-        std::cout << "Shader Program Not Yet Initialised\n";
+    if ((Logger != nullptr)  && (!_ShaderProgramInitialized)) {
+        Logger->Log("Shader Not Yet Initialized", 8);
     }
 
     glUseProgram(ShaderProgram);
