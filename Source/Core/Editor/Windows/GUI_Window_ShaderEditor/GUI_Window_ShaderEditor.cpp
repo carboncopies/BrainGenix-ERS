@@ -228,7 +228,7 @@ void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_pt
     std::vector<int> ErrorLines;
     std::vector<std::string> ErrorMessages;
     std::cout<<"Error: "<<ErrorMessage;
-
+    std::cout<<ErrorMessage.find("\n")<<std::endl;
     int Index = 0;
     while (ErrorMessage.find("\n")) {
         Index++;
