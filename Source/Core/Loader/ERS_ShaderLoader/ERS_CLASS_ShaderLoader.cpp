@@ -34,7 +34,7 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::CreateShaderObject(co
 
     // Create Shader
     std::shared_ptr<ERS_STRUCT_Shader> ShaderStruct = std::make_shared<ERS_STRUCT_Shader>();
-
+    
     ShaderStruct->CompileVertexShader(VertexText, SystemUtils_->Logger_);
     ShaderStruct->CompileFragmentShader(FragmentText, SystemUtils_->Logger_);
 
