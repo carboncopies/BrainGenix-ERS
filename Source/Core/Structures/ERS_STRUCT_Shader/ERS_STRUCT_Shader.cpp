@@ -18,6 +18,7 @@ ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
 std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Compile The Vertex Shader Text Into A Binary
+    std::string ErrorMessage;
     VertexShader = glCreateShader(GL_VERTEX_SHADER);
 
     glShaderSource(VertexShader, 1, &VertexText, NULL);
@@ -29,6 +30,7 @@ std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, std::
     glGetShaderiv(VertexShader, GL_COMPILE_STATUS, &VertexSuccess);
     if (!VertexSuccess) {
         glGetShaderInfoLog(VertexShader, 512, NULL, VertexInfoLog);
+        ErrorMessage = std::string(VertexInfoLog);
         if (Logger != nullptr) {
             Logger->Log("Vertex Shader Compile Error: " +  std::string(VertexInfoLog), 8);
         }
@@ -36,6 +38,7 @@ std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, std::
 
     // Update Vars
     _VertexShaderInitialized = true;
+    return ErrorMessage;
 
 }
 
@@ -43,6 +46,7 @@ std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, std::
 std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Compile The Fragment Shader Text Into A Binary
+    std::string ErrorMessage;
     FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
     glShaderSource(FragmentShader, 1, &FragmentText, NULL);
@@ -54,6 +58,7 @@ std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, s
     glGetShaderiv(FragmentShader, GL_COMPILE_STATUS, &FragmentSuccess);
     if (!FragmentSuccess) {
         glGetShaderInfoLog(FragmentShader, 512, NULL, FragmentInfoLog);
+        ErrorMessage = std::string(FragmentInfoLog);
         if (Logger != nullptr) {
             Logger->Log("Fragment Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
         }
@@ -61,6 +66,7 @@ std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, s
 
     // Update Vars
     _FragmentShaderInitialized = true;
+    return ErrorMessage;
 
 }
 
@@ -69,6 +75,7 @@ std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, s
 std::string ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Check That Vertex And Fragment Shaders Are Initialized
+    std::string ErrorMessage;
     if (!_VertexShaderInitialized || !_FragmentShaderInitialized) {
         if (Logger != nullptr) {
             Logger->Log("Vertex/Fragment Shader Compile Error", 8);
@@ -92,6 +99,7 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink, s
     if (!Success) {
         char InfoLog[512];
         glGetProgramInfoLog(ShaderProgram, 512, NULL, InfoLog);
+        ErrorMessage = std::string(InfoLog);
         if (Logger != nullptr) {
             Logger->Log("Shader Link Error: " +  std::string(InfoLog), 8);
         }
@@ -111,6 +119,9 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink, s
         _FragmentShaderInitialized = false;
 
     }
+
+    // Return Status
+    return ErrorMessage;
 
 }
 
