@@ -241,6 +241,7 @@ void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_pt
 			continue;
         }
 
+        std::cout<<Line<<std::endl;
 
 
         int MessageLineNumber = -1;
