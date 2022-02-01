@@ -205,7 +205,7 @@ if (Enabled_) {
 
     LivePreviewShader_->~ERS_STRUCT_Shader();
     LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
-    ProcessErrors(LivePreviewShader_->CompileVertexShader(VertexText.c_str()));
+    ProcessErrors(LivePreviewShader_->CompileVertexShader(VertexText.c_str()), Editors_[0]);
     LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
     LivePreviewShader_->CreateShaderProgram(false);
     LivePreviewShader_->MakeActive();
