@@ -205,11 +205,37 @@ if (Enabled_) {
 
     LivePreviewShader_->~ERS_STRUCT_Shader();
     LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
-    std::cout<<LivePreviewShader_->CompileVertexShader(VertexText.c_str())<<std::endl;
-    std::cout<<LivePreviewShader_->CompileFragmentShader(FragmentText.c_str())<<std::endl;
-    std::cout<<LivePreviewShader_->CreateShaderProgram(false)<<std::endl;
+    ProcessErrors(LivePreviewShader_->CompileVertexShader(VertexText.c_str()));
+    LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
+    LivePreviewShader_->CreateShaderProgram(false);
     LivePreviewShader_->MakeActive();
     LivePreviewShader_->SetInt("texture_diffuse1", 0);
 
 
 }
+
+
+// Error Processor
+void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_ptr<TextEditor> Editor) {
+
+    // Check If The Error Is Empty
+    if (ErrorMessage == "") {
+        return;
+    }
+
+
+    // Convert Error Message String Into To List Of Strings And Line Numbers
+    std::vector<int> ErrorLines;
+    std::vector<std::string> ErrorMessages;
+
+    for(int i = 0; i < ErrorMessage.find("\n"); i++) {
+
+        std::string Line = ErrorMessage.substr(0, ErrorMessage.find_first_of("\n"));
+        ErrorMessage = ErrorMessage.substr(ErrorMessage.find_first_of("\n"), ErrorMessage.size());
+
+        std::cout<<ErrorMessage;
+
+    }
+
+}
+

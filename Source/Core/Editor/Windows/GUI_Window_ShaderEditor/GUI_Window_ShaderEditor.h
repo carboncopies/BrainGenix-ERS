@@ -61,6 +61,14 @@ private:
      */
     void SaveShader(std::string ShaderText, long AssetID);
 
+    /**
+     * @brief Processes the error message for an editor.
+     * 
+     * @param ErrorMessage 
+     * @param Editor 
+     */
+    void ProcessErrors(std::string ErrorMessage, std::shared_ptr<TextEditor> Editor);
+
 public:
 
     bool Enabled_ = true; /**<Enable/Disable the editor window*/
