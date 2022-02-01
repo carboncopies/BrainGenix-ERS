@@ -26,14 +26,7 @@
 
 
 
-// Copied from (https://github.com/dfranx/SHADERed/blob/master/src/SHADERed/Engine/GLUtils.cpp)
-bool IsAllDigits(const std::string& str)
-{
-    for (int i = 0; i < str.size(); i++)
-        if (!isdigit(str[i]))
-            return false;
-    return true;
-}
+
 
 
 /**
@@ -78,6 +71,13 @@ private:
      * @param Editor 
      */
     void ProcessErrors(std::string ErrorMessage, std::shared_ptr<TextEditor> Editor);
+
+    /**
+     * @brief checks if something is all digits, copied from: (https://github.com/dfranx/SHADERed/blob/master/src/SHADERed/Engine/GLUtils.cpp)
+     * 
+     * @param str 
+     */
+    void IsAllDigits(const std::string& str);
 
 public:
 
