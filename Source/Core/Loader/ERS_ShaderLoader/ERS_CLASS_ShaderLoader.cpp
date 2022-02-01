@@ -35,14 +35,14 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::CreateShaderObject(co
     // Create Shader
     std::shared_ptr<ERS_STRUCT_Shader> ShaderStruct = std::make_shared<ERS_STRUCT_Shader>();
 
-    ShaderStruct->CompileVertexShader(VertexText);
-    ShaderStruct->CompileFragmentShader(FragmentText);
+    ShaderStruct->CompileVertexShader(VertexText, SystemUtils_->Logger_);
+    ShaderStruct->CompileFragmentShader(FragmentText, SystemUtils_->Logger_);
 
     // Attach Shaders
     if (LogBuild) {
         SystemUtils_->Logger_->Log("Linking Shader Program", 5);
     }
-    ShaderStruct->CreateShaderProgram();
+    ShaderStruct->CreateShaderProgram(false, SystemUtils_->Logger_);
     if (LogBuild) {
         SystemUtils_->Logger_->Log("Linked Shader Program", 4);
     }
