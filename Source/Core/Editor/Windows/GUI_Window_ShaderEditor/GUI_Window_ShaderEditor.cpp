@@ -204,7 +204,10 @@ if (Enabled_) {
     std::string FragmentText = Editors_[1]->GetText();
 
     LivePreviewShader_->~ERS_STRUCT_Shader();
-    LivePreviewShader_ = ShaderLoader_->CreateShaderObject(VertexText.c_str(), FragmentText.c_str(), false);
+    LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
+    LivePreviewShader_->CompileVertexShader(VertexText.c_str());
+    LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
+    LivePreviewShader_->CreateShaderProgram(false);
     LivePreviewShader_->MakeActive();
     LivePreviewShader_->SetInt("texture_diffuse1", 0);
 
