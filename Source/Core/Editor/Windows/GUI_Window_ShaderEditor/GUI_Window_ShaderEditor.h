@@ -77,7 +77,7 @@ private:
      * 
      * @param str 
      */
-    void IsAllDigits(const std::string& str);
+    bool IsAllDigits(std::string& str);
 
 public:
 

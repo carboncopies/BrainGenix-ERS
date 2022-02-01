@@ -281,8 +281,7 @@ void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_pt
 
 // Checks If Is All Digits
 // Copied from (https://github.com/dfranx/SHADERed/blob/master/src/SHADERed/Engine/GLUtils.cpp)
-bool Window_ShaderEditor::IsAllDigits(const std::string& str)
-{
+bool Window_ShaderEditor::IsAllDigits(std::string& str) {
     for (int i = 0; i < str.size(); i++)
         if (!isdigit(str[i]))
             return false;
