@@ -195,7 +195,7 @@ void Window_ShaderEditor::Draw() {
 
         }
     ImGui::End();
-    bool CompileVisible = ImGui::Begin("Shader Compile Log", &Enabled_);
+    bool CompileVisible = ImGui::Begin("Shader Tools", &Enabled_);
 
 
         // Compile Shader Object
@@ -238,10 +238,14 @@ void Window_ShaderEditor::Draw() {
 
         if (CompileVisible) {
 
+
+            // Draw The Controls
+            ImGui::Checkbox("Live Preview", &LivePreview_);
+            ImGui::Separator();
+
+            // Draw Log
             ImGui::BeginChild("Shader Log");
-
             ImGui::TextWrapped("%s", ShaderLog.c_str());
-
             ImGui::EndChild();
 
         }
