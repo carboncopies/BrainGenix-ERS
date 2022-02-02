@@ -87,7 +87,6 @@ void Window_ShaderEditor::Draw() {
         ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
 
         if (Visible) {
- 
 
 
             if (ImGui::BeginMenuBar()) {
