@@ -231,6 +231,8 @@ void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_pt
     std::string Line;
     std::cout<<ErrorMessage<<std::endl;
 
+    std::cout<<std::getline(ErrorInputString, Line)<<std::endl;
+
     while (std::getline(ErrorInputString, Line)) {
 
         // Sort Out Three Status Columns
