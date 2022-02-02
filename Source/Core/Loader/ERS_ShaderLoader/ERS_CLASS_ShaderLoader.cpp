@@ -42,7 +42,7 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::CreateShaderObject(co
     if (LogBuild) {
         SystemUtils_->Logger_->Log("Linking Shader Program", 5);
     }
-    ShaderStruct->CreateShaderProgram(false, SystemUtils_->Logger_);
+    ShaderStruct->CreateShaderProgram(SystemUtils_->Logger_);
     if (LogBuild) {
         SystemUtils_->Logger_->Log("Linked Shader Program", 4);
     }
