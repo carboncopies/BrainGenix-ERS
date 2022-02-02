@@ -204,6 +204,9 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     Cameras_[Index]->SetAspectRatio(AspectRatio);
     glm::mat4 projection = Cameras_[Index]->GetProjectionMatrix();
     glm::mat4 view = Cameras_[Index]->GetViewMatrix();
+
+    // Update Shaders
+    
     Shaders_[ShaderIndex]->SetMat4("projection", projection);
     Shaders_[ShaderIndex]->SetMat4("view", view);
 
