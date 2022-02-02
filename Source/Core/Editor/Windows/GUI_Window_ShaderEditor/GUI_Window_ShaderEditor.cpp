@@ -197,12 +197,10 @@ void Window_ShaderEditor::Draw() {
     ImGui::End();
     bool CompileVisible = ImGui::Begin("Shader Compile Log", &Enabled_);
 
-    std::cout<<"test2\n";
 
         // Compile Shader Object
         std::string VertexText = Editors_[0]->GetText();
         std::string FragmentText = Editors_[1]->GetText();
-    std::cout<<"test3\n";
 
         LivePreviewShader_->~ERS_STRUCT_Shader();
         LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
@@ -211,7 +209,6 @@ void Window_ShaderEditor::Draw() {
         LivePreviewShader_->CreateShaderProgram(false);
         bool ShaderCompiled = LivePreviewShader_->MakeActive();
         LivePreviewShader_->SetInt("texture_diffuse1", 0);
-    std::cout<<"test4\n";
 
         // If Autopreview, Update Shader
         if (LivePreview_ && ShaderCompiled) {
@@ -219,12 +216,14 @@ void Window_ShaderEditor::Draw() {
         }
 
         // Extract Shader Log
+    std::cout<<"test3\n";
         std::string ShaderLog;
         if (Mode_ == 0) {
             ShaderLog = VertexLog;
         } else if (Mode_ == 1) {
             ShaderLog = FragmentLog;
         }
+    std::cout<<"test4\n";
 
         if (ShaderLog == "") {
             ShaderLog = "No errors detected.";
