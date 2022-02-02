@@ -11,6 +11,7 @@
 #include <thread>
 #include <string>
 #include <mutex>
+#include <sstream>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <imgui.h>
