@@ -193,9 +193,24 @@ void Window_ShaderEditor::Draw() {
 
 
         }
-
     ImGui::End();
     bool Visible = ImGui::Begin("Shader Compile Log", &Enabled_, ImGuiWindowFlags_MenuBar);
+
+
+        // Compile Shader Object, Extract Shader Log
+        std::string VertexText = Editors_[0]->GetText();
+        std::string FragmentText = Editors_[1]->GetText();
+
+        LivePreviewShader_->~ERS_STRUCT_Shader();
+        LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
+        std::string VertexLog = LivePreviewShader_->CompileVertexShader(VertexText.c_str());
+        std::string FragmentLog = LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
+        LivePreviewShader_->CreateShaderProgram(false);
+        LivePreviewShader_->MakeActive();
+        LivePreviewShader_->SetInt("texture_diffuse1", 0);
+
+
+
 
         // Set Default Window Size
         ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
@@ -203,27 +218,26 @@ void Window_ShaderEditor::Draw() {
 
         if (Visible) {
 
+            ImGui::BeginChild("Shader Log");
+
+            ImGui::TextWrapped(ShaderLog.c_str());
+
+            ImGui::EndChild();
 
         }
- 
 
+
+ 
+    ImGui::End();
     }
 
 
     // Shader Error Log
     
     
-    // Compile Shader Object
-    std::string VertexText = Editors_[0]->GetText();
-    std::string FragmentText = Editors_[1]->GetText();
 
-    LivePreviewShader_->~ERS_STRUCT_Shader();
-    LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
-    LivePreviewShader_->CompileVertexShader(VertexText.c_str());
-    LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
-    LivePreviewShader_->CreateShaderProgram(false);
-    LivePreviewShader_->MakeActive();
-    LivePreviewShader_->SetInt("texture_diffuse1", 0);
+
+    
 
 
 }
