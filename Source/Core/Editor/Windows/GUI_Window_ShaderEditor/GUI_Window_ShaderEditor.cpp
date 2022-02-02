@@ -44,14 +44,14 @@ Window_ShaderEditor::~Window_ShaderEditor() {
 // Reload Assets
 void Window_ShaderEditor::ReloadEditorText() {
 
-    // Load Fragment Shader
+    // Load Vertex Shader
     std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID, Data);
-    std::string FragmentText = std::string((const char*)Data->Data.get());
+    std::string VertexText = std::string((const char*)Data->Data.get());
 
-    // Load Vertex Shader
+    // Load Fragment Shader
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID, Data);
-    std::string  VertexText = std::string((const char*)Data->Data.get());
+    std::string  FragmentText = std::string((const char*)Data->Data.get());
 
     Editors_[0]->SetText(VertexText);
     Editors_[1]->SetText(FragmentText);
