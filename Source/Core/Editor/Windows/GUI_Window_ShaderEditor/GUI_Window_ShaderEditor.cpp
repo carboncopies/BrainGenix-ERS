@@ -215,8 +215,7 @@ void Window_ShaderEditor::Draw() {
         // If Autopreview, Update Shader
         if (LivePreview_ && ShaderCompiled) {
             std::cout<<"test3\n";
-
-            VisualRenderer_->Shaders_;
+            LivePreviewShader_->VertexID;
             std::cout<<"test3\n";
 
             VisualRenderer_->SetShader(LivePreviewShader_);
