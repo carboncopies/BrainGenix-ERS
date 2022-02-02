@@ -78,7 +78,7 @@ void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
 // Draw Window
 void Window_ShaderEditor::Draw() {
 
-if (Enabled_) {
+    if (Enabled_) {
     bool Visible = ImGui::Begin("Shader Editor", &Enabled_, ImGuiWindowFlags_MenuBar);
 
         // Set Default Window Size
@@ -195,9 +195,23 @@ if (Enabled_) {
         }
 
     ImGui::End();
+    bool Visible = ImGui::Begin("Shader Compile Log", &Enabled_, ImGuiWindowFlags_MenuBar);
+
+        // Set Default Window Size
+        ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
+
+
+        if (Visible) {
+
+
+        }
+ 
+
     }
 
 
+    // Shader Error Log
+    
     
     // Compile Shader Object
     std::string VertexText = Editors_[0]->GetText();
@@ -205,7 +219,7 @@ if (Enabled_) {
 
     LivePreviewShader_->~ERS_STRUCT_Shader();
     LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
-    ProcessErrors(LivePreviewShader_->CompileVertexShader(VertexText.c_str()), Editors_[0]);
+    LivePreviewShader_->CompileVertexShader(VertexText.c_str());
     LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
     LivePreviewShader_->CreateShaderProgram(false);
     LivePreviewShader_->MakeActive();
