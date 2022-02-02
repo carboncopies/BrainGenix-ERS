@@ -387,6 +387,8 @@ void VisualRenderer::UpdateShader(int ShaderIndex) {
     std::shared_ptr<ERS_STRUCT_Shader> ActiveShaders = Shaders_[ShaderIndex];
 
     // Set Current Time
+    
+
 
 }
 

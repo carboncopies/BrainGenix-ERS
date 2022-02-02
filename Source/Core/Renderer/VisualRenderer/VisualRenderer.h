@@ -14,6 +14,7 @@
 // Standard Libraries (BG convention: use <> instead of "")
 #include <iostream>
 #include <string>
+#include <chrono>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
