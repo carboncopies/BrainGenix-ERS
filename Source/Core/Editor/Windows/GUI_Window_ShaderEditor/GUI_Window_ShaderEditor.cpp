@@ -89,6 +89,7 @@ void Window_ShaderEditor::Draw() {
 
         if (Visible) {
  
+    std::cout<<"test1\n";
 
 
             if (ImGui::BeginMenuBar()) {
@@ -193,6 +194,7 @@ void Window_ShaderEditor::Draw() {
             // Render Editor
             Editor_->Render("Shader Editor");
 
+    std::cout<<"test1\n";
 
         }
     ImGui::End();
