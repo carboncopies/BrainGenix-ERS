@@ -45,7 +45,10 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
     // Setup Shaders
     ShaderLoader_ = std::make_shared<ERS_CLASS_ShaderLoader>(SystemUtils_);
-    Shader_ = ShaderLoader_->LoadShaderFromAsset(100, 101);
+    int DefaultProject = ProjectUtils_->ProjectManager_->Project_.DefaultShaderProgram;
+    long VertexShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[DefaultProject].VertexID;
+    long FragmentShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[DefaultProject].FragmentID;
+    Shader_ = ShaderLoader_->LoadShaderFromAsset(VertexShaderID, FragmentShaderID);
     Shader_->MakeActive(SystemUtils_->Logger_);
     Shader_->SetInt("texture_diffuse1", 0);
 
