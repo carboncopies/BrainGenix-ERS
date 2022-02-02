@@ -302,8 +302,8 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     SystemUtils_->Logger_->Log(std::string(std::string("Creating New Viewport '") + ViewportName + std::string("'")).c_str(), 5);
 
     // Reset Shader
-    Shader_->MakeActive();
-    Shader_->SetInt("texture_diffuse1", 0);
+    // Shader_->MakeActive();
+    // Shader_->SetInt("texture_diffuse1", 0);
 
 
     // Create Camera
