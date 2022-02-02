@@ -194,7 +194,7 @@ void Window_ShaderEditor::Draw() {
 
         }
     ImGui::End();
-    bool Visible = ImGui::Begin("Shader Compile Log", &Enabled_, ImGuiWindowFlags_MenuBar);
+    bool CompileVisible = ImGui::Begin("Shader Compile Log", &Enabled_, ImGuiWindowFlags_MenuBar);
 
 
         // Compile Shader Object
@@ -222,7 +222,7 @@ void Window_ShaderEditor::Draw() {
         ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
 
 
-        if (Visible) {
+        if (CompileVisible) {
 
             ImGui::BeginChild("Shader Log");
 
