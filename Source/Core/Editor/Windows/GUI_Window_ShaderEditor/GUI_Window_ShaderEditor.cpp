@@ -210,15 +210,16 @@ void Window_ShaderEditor::Draw() {
         bool ShaderCompiled = LivePreviewShader_->MakeActive();
         LivePreviewShader_->SetInt("texture_diffuse1", 0);
 
-        
-    std::cout<<"test3\n";
+
 
         // If Autopreview, Update Shader
         if (LivePreview_ && ShaderCompiled) {
+            std::cout<<"test3\n";
             VisualRenderer_->SetShader(LivePreviewShader_);
+            std::cout<<"test3\n";
+            
         }
 
-    std::cout<<"test3\n";
 
         // Extract Shader Log
         std::string ShaderLog;
