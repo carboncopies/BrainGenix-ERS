@@ -48,7 +48,6 @@ private:
     // Member Variables
     GLFWwindow *Window_; /**<GLFW Window Instance For Window Input To Viewports*/
     std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
-    std::shared_ptr<ERS_STRUCT_Shader> Shader_; /**<Shader Object Ptr*/
 
 public:
 
