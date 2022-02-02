@@ -231,9 +231,8 @@ void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_pt
     std::string Line;
     std::cout<<ErrorMessage<<std::endl;
 
-    std::cout<<std::getline(ErrorInputString, Line)<<std::endl;
 
-    while (std::getline(ErrorInputString, Line)) {
+    while (std::getline(ErrorInputString, Line, '\n')) {
 
         // Sort Out Three Status Columns
         size_t FirstLineIndex = Line.find_first_of(':');
