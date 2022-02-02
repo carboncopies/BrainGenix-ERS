@@ -19,7 +19,7 @@ GUI_Menu_File::GUI_Menu_File(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils
     SystemUtils_ = SystemUtils;
     SceneManager_ = SceneManager;
     ProjectUtils_ = ProjectUtils;
-    VisualRenderer_ = VisualRenderer_;
+    VisualRenderer_ = VisualRenderer;
 
     // Log Initialization
     SystemUtils_->Logger_->Log("Editor Setting Up File Menu", 4);

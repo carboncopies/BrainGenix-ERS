@@ -74,7 +74,7 @@ public:
 
     bool CaptureCursor_ = false; /**<Indicate if cursor should be captured*/
     int CaptureIndex_ = 0; /**<Index where cursor was captured*/
-    int test = 0;
+
 private:
 
     // Internal Functions
