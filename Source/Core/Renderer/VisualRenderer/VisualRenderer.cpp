@@ -206,7 +206,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     glm::mat4 view = Cameras_[Index]->GetViewMatrix();
 
     // Update Shaders
-    
+
     Shaders_[ShaderIndex]->SetMat4("projection", projection);
     Shaders_[ShaderIndex]->SetMat4("view", view);
 
@@ -306,6 +306,7 @@ void VisualRenderer::CreateViewport() {
 
 void VisualRenderer::CreateViewport(std::string ViewportName) {
 
+
     // Log Creation
     SystemUtils_->Logger_->Log(std::string(std::string("Creating New Viewport '") + ViewportName + std::string("'")).c_str(), 5);
 
@@ -378,3 +379,14 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
 
 
 }
+
+void VisualRenderer::UpdateShader(int ShaderIndex) {
+
+
+    // Get Pointer to Shader
+    std::shared_ptr<ERS_STRUCT_Shader> ActiveShaders = Shaders_[ShaderIndex];
+
+    // Set Current Time
+
+}
+
