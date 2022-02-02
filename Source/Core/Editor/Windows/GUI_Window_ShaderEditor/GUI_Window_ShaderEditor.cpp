@@ -244,6 +244,7 @@ void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_pt
 
         int MessageLineNumber = -1;
         std::string LineStr = Line.substr(SecondLineIndex + 1,ThirdLineIndex - (SecondLineIndex + 1));
+        std::cout<<"Ls: "<<LineStr<<std::endl;
         if (IsAllDigits(LineStr)) {
             MessageLineNumber = std::stoi(LineStr);
             std::string Message = Line.substr(ThirdLineIndex + 2);
@@ -268,7 +269,7 @@ void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_pt
 
 
 
-    std::cout<<"*********"<<std::endl<<ErrorMessage<<std::endl<<"**"<<std::endl;
+    std::cout<<"*********"<<std::endl<<"ErrorMSG: "<<ErrorMessage<<"**"<<std::endl;
 
     // Add Lines To Editor
     for (int i = 0; i < ErrorMessages.size(); i++) {
