@@ -98,7 +98,7 @@ public:
 
     void DeleteViewport(int Index);
     
-    void SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader);
+    void SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID);
         
 
 };
