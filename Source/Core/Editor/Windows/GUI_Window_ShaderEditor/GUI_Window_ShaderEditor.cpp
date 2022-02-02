@@ -224,12 +224,20 @@ void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_pt
     }
 
 
+    // Split Error Message Into List Of Lines
+    std::vector<std::string> Lines_;
+    while (ErrorMessage.find("\n")) {
+        std::string Line = ErrorMessage.substr(0, ErrorMessage.find_first_of("\n"));
+        ErrorMessage = ErrorMessage.substr(ErrorMessage.find_first_of("\n"), ErrorMessage.size());
+
+        std::cout<<Line<<std::endl;
+    }
+
     // Convert Error Message String Into To List Of Strings And Line Numbers
     std::vector<int> ErrorLines;
     std::vector<std::string> ErrorMessages;
     std::istringstream ErrorInputString(ErrorMessage);
     std::string Line;
-    std::cout<<ErrorMessage<<std::endl;
 
 
     while (std::getline(ErrorInputString, Line, '\n')) {
