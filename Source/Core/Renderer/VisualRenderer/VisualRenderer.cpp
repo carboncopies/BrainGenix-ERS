@@ -95,7 +95,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
     CaptureIndex_ = -1;
 
     // Iterate Through Viewports
-    for (int i = 0; i<Shaders_.size(); i++) {
+    for (int i = 0; i<ActiveShaders_.size(); i++) {
         UpdateViewport(i, SceneManager, DeltaTime);
     }
 
@@ -146,7 +146,6 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Calculate Window Position
-
     ImVec2 vMin = ImGui::GetWindowContentRegionMin();
     ImVec2 vMax = ImGui::GetWindowContentRegionMax();
 
@@ -202,7 +201,8 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // Use Shader
-    Shaders_[Index]->MakeActive();
+    int ShaderIndex = ActiveShaders_[Index];
+    Shaders_[ShaderIndex]->MakeActive();
 
 
     // Update Camera
@@ -210,8 +210,8 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     Cameras_[Index]->SetAspectRatio(AspectRatio);
     glm::mat4 projection = Cameras_[Index]->GetProjectionMatrix();
     glm::mat4 view = Cameras_[Index]->GetViewMatrix();
-    Shaders_[Index]->SetMat4("projection", projection);
-    Shaders_[Index]->SetMat4("view", view);
+    Shaders_[ShaderIndex]->SetMat4("projection", projection);
+    Shaders_[ShaderIndex]->SetMat4("view", view);
 
 
     // Update Cursor If Selection Changed
@@ -238,7 +238,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     
 
     // Draw Models
-    SceneManager->Render(Shaders_[Index]);
+    SceneManager->Render(Shaders_[ShaderIndex]);
 
 
     // Render Framebuffer To Window
@@ -277,7 +277,7 @@ void VisualRenderer::DeleteViewport(int Index) {
     SystemUtils_->Logger_->Log(std::string(std::string("Destroying Viewport '") + ViewportNames_[Index] + std::string("'")).c_str(), 5);
 
     // Delete From Vectors
-    Shaders_.erase(Shaders_.begin() + Index);
+    ActiveShaders_.erase(ActiveShaders_.begin() + Index);
     Cameras_.erase(Cameras_.begin() + Index);
     ViewportNames_.erase(ViewportNames_.begin() + Index);
     ViewportWidths_.erase(ViewportWidths_.begin() + Index);
@@ -321,7 +321,7 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera = std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>();
 
     // Append To Vectors
-    Shaders_.push_back(Shader_);
+    ActiveShaders_.push_back(0);
     Cameras_.push_back(Camera);
     ViewportNames_.push_back(ViewportName);
     ViewportWidths_.push_back(1);
