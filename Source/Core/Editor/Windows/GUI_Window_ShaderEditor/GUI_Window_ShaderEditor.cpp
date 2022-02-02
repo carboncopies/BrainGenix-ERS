@@ -206,8 +206,13 @@ void Window_ShaderEditor::Draw() {
         std::string VertexLog = LivePreviewShader_->CompileVertexShader(VertexText.c_str());
         std::string FragmentLog = LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
         LivePreviewShader_->CreateShaderProgram(false);
-        LivePreviewShader_->MakeActive();
+        bool ShaderCompiled = LivePreviewShader_->MakeActive();
         LivePreviewShader_->SetInt("texture_diffuse1", 0);
+
+        // If Autopreview, Update Shader
+        if (LivePreview_ && ShaderCompiled) {
+            // Set visual renderer shader to current shader
+        }
 
         // Extract Shader Log
         std::string ShaderLog;
@@ -215,6 +220,10 @@ void Window_ShaderEditor::Draw() {
             ShaderLog = VertexLog;
         } else if (Mode_ == 1) {
             ShaderLog = FragmentLog;
+        }
+
+        if (ShaderLog == "") {
+            ShaderLog = "No errors detected.";
         }
 
 
