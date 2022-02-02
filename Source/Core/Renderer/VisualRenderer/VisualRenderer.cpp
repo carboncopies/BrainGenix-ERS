@@ -49,9 +49,15 @@ VisualRenderer::~VisualRenderer() {
 }
 
 void VisualRenderer::SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
-    std::cout<<"testing shader\n";
+    std::cout<<"testing input shader\n";
     std::cout<<Shader->ShaderProgram<<std::endl;
     std::cout<<"Tested\n";
+
+    std::cout<<"testing existing shader\n";
+    std::cout<<Shader_->ShaderProgram<<std::endl;
+    std::cout<<"Tested\n";
+    
+
     Shader_ = Shader;
 
 }
