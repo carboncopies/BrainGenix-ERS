@@ -227,7 +227,7 @@ void Window_ShaderEditor::DrawToolsWindow() {
         LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
         std::string VertexLog = LivePreviewShader_->CompileVertexShader(VertexText.c_str());
         std::string FragmentLog = LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
-        LivePreviewShader_->CreateShaderProgram(false);
+        LivePreviewShader_->CreateShaderProgram();
         bool ShaderCompiled = LivePreviewShader_->MakeActive();
         LivePreviewShader_->SetInt("texture_diffuse1", 0);
 
