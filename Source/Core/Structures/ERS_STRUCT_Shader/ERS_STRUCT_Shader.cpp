@@ -72,7 +72,7 @@ std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, s
 
 
 // Compile Shader Program
-std::string ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
+std::string ERS_STRUCT_Shader::CreateShaderProgram(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Check That Vertex And Fragment Shaders Are Initialized
     std::string ErrorMessage;
@@ -107,18 +107,15 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink, s
         _ShaderProgramInitialized = true;
     }
 
-    // Delete Old Shaders
-    if (DeleteShadersUponLink) {
 
-        // Free RAM
-        glDeleteShader(VertexShader);
-        glDeleteShader(FragmentShader);
+    // Free RAM
+    glDeleteShader(VertexShader);
+    glDeleteShader(FragmentShader);
 
-        // Set State Of Vertex/Fragment Shaders To Uninit
-        _VertexShaderInitialized = false;
-        _FragmentShaderInitialized = false;
+    // Set State Of Vertex/Fragment Shaders To Uninit
+    _VertexShaderInitialized = false;
+    _FragmentShaderInitialized = false;
 
-    }
 
     // Return Status
     return ErrorMessage;
