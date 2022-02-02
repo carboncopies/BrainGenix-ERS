@@ -21,6 +21,10 @@ VisualRenderer::VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUti
     Window_ = Window;
     Cursors3D_ = Cursors3D;
 
+    
+    // Init Shader
+    Shader_ = 
+
 
     // Initialize OpenGL
     SystemUtils_->Logger_->Log("Initializing OpenGL", 5);
