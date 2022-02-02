@@ -228,7 +228,7 @@ void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_pt
     std::vector<std::string> Lines_;
     std::cout<<ErrorMessage;
     std::cout<<"*****"<<std::endl;
-    while (ErrorMessage.find("\n")) {
+    while (ErrorMessage.find("\n") != std::string::npos) {
         std::string Line = ErrorMessage.substr(0, ErrorMessage.find_first_of("\n"));
         ErrorMessage = ErrorMessage.substr(ErrorMessage.find_first_of("\n"), ErrorMessage.size());
 
