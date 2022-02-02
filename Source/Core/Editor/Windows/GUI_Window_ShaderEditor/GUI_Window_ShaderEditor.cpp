@@ -79,6 +79,7 @@ void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
 
 // Draw Window
 void Window_ShaderEditor::Draw() {
+    std::cout<<"test1\n";
 
     if (Enabled_) {
     bool Visible = ImGui::Begin("Shader Editor", &Enabled_, ImGuiWindowFlags_MenuBar);
