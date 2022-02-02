@@ -41,6 +41,7 @@ target_link_libraries(Menu_File
 
     Window_ProjectSettings
     Window_ShaderEditor
+    VisualRenderer
     )
 
 target_include_directories(Menu_File PUBLIC ./)
