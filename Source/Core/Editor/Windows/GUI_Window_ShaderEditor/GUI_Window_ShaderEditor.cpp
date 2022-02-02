@@ -45,13 +45,19 @@ Window_ShaderEditor::~Window_ShaderEditor() {
 void Window_ShaderEditor::ReloadEditorText() {
 
     // Load Vertex Shader
+    std::cout<<"test1\n";
     std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID, Data);
     std::string VertexText = std::string((const char*)Data->Data.get());
+    std::cout<<"test1\n";
 
     // Load Fragment Shader
+    std::cout<<"test1\n";
+
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID, Data);
     std::string  FragmentText = std::string((const char*)Data->Data.get());
+
+    std::cout<<"test1\n";
 
     Editors_[0]->SetText(VertexText);
     Editors_[1]->SetText(FragmentText);
