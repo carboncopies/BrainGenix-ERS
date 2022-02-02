@@ -212,7 +212,7 @@ void Window_ShaderEditor::Draw() {
 
         // If Autopreview, Update Shader
         if (LivePreview_ && ShaderCompiled) {
-            // Set visual renderer shader to current shader
+            VisualRenderer_->SetShader(LivePreviewShader_);
         }
 
         // Extract Shader Log
