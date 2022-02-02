@@ -236,7 +236,7 @@ void Window_ShaderEditor::Draw() {
 
             ImGui::BeginChild("Shader Log");
 
-            ImGui::TextWrapped(ShaderLog.c_str());
+            ImGui::TextWrapped("%s", ShaderLog.c_str());
 
             ImGui::EndChild();
 
