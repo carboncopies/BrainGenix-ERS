@@ -81,6 +81,21 @@ void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
 void Window_ShaderEditor::Draw() {
 
     if (Enabled_) {
+    
+        DrawEditorWindow();
+        DrawToolsWindow();
+
+    }
+
+
+}
+
+
+
+
+// Draw The Editor Window
+void Window_ShaderEditor::DrawEditorWindow() {
+
     bool Visible = ImGui::Begin("Shader Editor", &Enabled_, ImGuiWindowFlags_MenuBar);
 
         // Set Default Window Size
@@ -194,6 +209,13 @@ void Window_ShaderEditor::Draw() {
 
         }
     ImGui::End();
+
+}
+
+
+// Draw The Tools Window
+void Window_ShaderEditor::DrawToolsWindow() {
+
     bool CompileVisible = ImGui::Begin("Shader Tools", &Enabled_);
 
 
@@ -252,10 +274,9 @@ void Window_ShaderEditor::Draw() {
 
  
     ImGui::End();
-    }
-
 
 }
+
 
 
 // Error Processor (Based On: https://github.com/dfranx/SHADERed/blob/master/src/SHADERed/Engine/GLUtils.cpp, Thanks for the great code!)

@@ -83,6 +83,20 @@ private:
      */
     bool IsAllDigits(std::string& str);
 
+
+    /**
+     * @brief Draws the main editor window
+     * 
+     */
+    void DrawEditorWindow();
+
+    /**
+     * @brief Draws the shader tools window
+     * 
+     */
+    void DrawToolsWindow();
+
+
 public:
 
     bool Enabled_ = true; /**<Enable/Disable the editor window*/
