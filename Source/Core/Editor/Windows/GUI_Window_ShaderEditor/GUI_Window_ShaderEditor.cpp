@@ -229,6 +229,7 @@ void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_pt
     std::vector<std::string> ErrorMessages;
     std::istringstream ErrorInputString(ErrorMessage);
     std::string Line;
+    std::cout<<ErrorMessage<<std::endl;
 
     while (std::getline(ErrorInputString, Line)) {
 
