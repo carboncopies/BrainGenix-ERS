@@ -26,10 +26,10 @@ std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, std::
 
     // Report Compilation Status
     int VertexSuccess;
-    char VertexInfoLog[512];
+    char VertexInfoLog[65535];
     glGetShaderiv(VertexShader, GL_COMPILE_STATUS, &VertexSuccess);
     if (!VertexSuccess) {
-        glGetShaderInfoLog(VertexShader, 512, NULL, VertexInfoLog);
+        glGetShaderInfoLog(VertexShader, 65535, NULL, VertexInfoLog);
         ErrorMessage = std::string(VertexInfoLog);
         if (Logger != nullptr) {
             Logger->Log("Vertex Shader Compile Error: " +  std::string(VertexInfoLog), 8);
@@ -54,10 +54,10 @@ std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, s
 
     // Report Compilation Status
     int FragmentSuccess;
-    char FragmentInfoLog[512];
+    char FragmentInfoLog[65535];
     glGetShaderiv(FragmentShader, GL_COMPILE_STATUS, &FragmentSuccess);
     if (!FragmentSuccess) {
-        glGetShaderInfoLog(FragmentShader, 512, NULL, FragmentInfoLog);
+        glGetShaderInfoLog(FragmentShader, 65535, NULL, FragmentInfoLog);
         ErrorMessage = std::string(FragmentInfoLog);
         if (Logger != nullptr) {
             Logger->Log("Fragment Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
@@ -97,8 +97,8 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink, s
     int Success;
     glGetProgramiv(ShaderProgram, GL_LINK_STATUS, &Success);
     if (!Success) {
-        char InfoLog[512];
-        glGetProgramInfoLog(ShaderProgram, 512, NULL, InfoLog);
+        char InfoLog[65535];
+        glGetProgramInfoLog(ShaderProgram, 65535, NULL, InfoLog);
         ErrorMessage = std::string(InfoLog);
         if (Logger != nullptr) {
             Logger->Log("Shader Link Error: " +  std::string(InfoLog), 8);
@@ -126,13 +126,17 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(bool DeleteShadersUponLink, s
 }
 
 // Make Shader Active
-void ERS_STRUCT_Shader::MakeActive(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
+bool ERS_STRUCT_Shader::MakeActive(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
-    if ((Logger != nullptr)  && (!_ShaderProgramInitialized)) {
-        Logger->Log("Shader Not Yet Initialized", 8);
+    if ((!_ShaderProgramInitialized)) {
+        if (Logger != nullptr) {
+            Logger->Log("Shader Not Yet Initialized", 8);
+        }
+        return false;
     }
 
     glUseProgram(ShaderProgram);
+    return true;
 
 }
 
