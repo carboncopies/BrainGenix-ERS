@@ -242,9 +242,6 @@ void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_pt
 			continue;
         }
 
-        std::cout<<Line<<std::endl;
-
-
         int MessageLineNumber = -1;
         std::string LineStr = Line.substr(SecondLineIndex + 1,ThirdLineIndex - (SecondLineIndex + 1));
         if (IsAllDigits(LineStr)) {
