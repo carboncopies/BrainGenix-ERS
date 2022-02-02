@@ -29,6 +29,8 @@ target_link_libraries(Window_ShaderEditor
     ERS_STRUCT_ShaderProgramAssetIDs
 
     ERS_ShaderLoader
+
+    VisualRenderer
     )
 
 target_include_directories(Window_ShaderEditor PUBLIC ./)

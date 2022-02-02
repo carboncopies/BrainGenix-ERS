@@ -6,11 +6,12 @@
 
 
 // Constructor
-Window_ShaderEditor::Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils) {
+Window_ShaderEditor::Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<VisualRenderer> VisualRenderer) {
 
     // Copy Pointers
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
+    VisualRenderer_ = VisualRenderer;
 
     // Log Init
     SystemUtils_->Logger_->Log("Initializing GUI ShaderEditor Window", 4);
