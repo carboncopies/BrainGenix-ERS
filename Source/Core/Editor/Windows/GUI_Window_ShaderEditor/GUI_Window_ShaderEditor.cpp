@@ -210,26 +210,28 @@ void Window_ShaderEditor::Draw() {
         bool ShaderCompiled = LivePreviewShader_->MakeActive();
         LivePreviewShader_->SetInt("texture_diffuse1", 0);
 
+        
+    std::cout<<"test3\n";
+
         // If Autopreview, Update Shader
         if (LivePreview_ && ShaderCompiled) {
             VisualRenderer_->SetShader(LivePreviewShader_);
         }
 
-        // Extract Shader Log
     std::cout<<"test3\n";
+
+        // Extract Shader Log
         std::string ShaderLog;
         if (Mode_ == 0) {
             ShaderLog = VertexLog;
         } else if (Mode_ == 1) {
             ShaderLog = FragmentLog;
         }
-    std::cout<<"test4\n";
 
         if (ShaderLog == "") {
             ShaderLog = "No errors detected.";
         }
 
-    std::cout<<"test5\n";
 
         // Set Default Window Size
         ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
