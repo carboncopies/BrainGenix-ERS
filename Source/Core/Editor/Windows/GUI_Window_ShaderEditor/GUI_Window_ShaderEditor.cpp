@@ -79,7 +79,6 @@ void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
 
 // Draw Window
 void Window_ShaderEditor::Draw() {
-    std::cout<<"test1\n";
 
     if (Enabled_) {
     bool Visible = ImGui::Begin("Shader Editor", &Enabled_, ImGuiWindowFlags_MenuBar);
@@ -89,7 +88,6 @@ void Window_ShaderEditor::Draw() {
 
         if (Visible) {
  
-    std::cout<<"test1\n";
 
 
             if (ImGui::BeginMenuBar()) {
@@ -194,16 +192,17 @@ void Window_ShaderEditor::Draw() {
             // Render Editor
             Editor_->Render("Shader Editor");
 
-    std::cout<<"test1\n";
 
         }
     ImGui::End();
     bool CompileVisible = ImGui::Begin("Shader Compile Log", &Enabled_);
 
+    std::cout<<"test2\n";
 
         // Compile Shader Object
         std::string VertexText = Editors_[0]->GetText();
         std::string FragmentText = Editors_[1]->GetText();
+    std::cout<<"test3\n";
 
         LivePreviewShader_->~ERS_STRUCT_Shader();
         LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
@@ -212,6 +211,7 @@ void Window_ShaderEditor::Draw() {
         LivePreviewShader_->CreateShaderProgram(false);
         bool ShaderCompiled = LivePreviewShader_->MakeActive();
         LivePreviewShader_->SetInt("texture_diffuse1", 0);
+    std::cout<<"test4\n";
 
         // If Autopreview, Update Shader
         if (LivePreview_ && ShaderCompiled) {
@@ -230,6 +230,7 @@ void Window_ShaderEditor::Draw() {
             ShaderLog = "No errors detected.";
         }
 
+    std::cout<<"test5\n";
 
         // Set Default Window Size
         ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
