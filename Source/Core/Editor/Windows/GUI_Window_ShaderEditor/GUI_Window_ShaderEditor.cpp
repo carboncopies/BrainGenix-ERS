@@ -238,14 +238,6 @@ void Window_ShaderEditor::Draw() {
     }
 
 
-    // Shader Error Log
-    
-    
-
-
-    
-
-
 }
 
 
@@ -314,7 +306,6 @@ void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_pt
 
 
 }
-
 
 
 // Checks If Is All Digits
