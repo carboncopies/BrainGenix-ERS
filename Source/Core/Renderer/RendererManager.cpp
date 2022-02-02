@@ -53,6 +53,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     Shader_->SetInt("texture_diffuse1", 0);
 
     // Set Shader
+    VisualRenderer_->test = 500;
     VisualRenderer_->SetShader(Shader_, DefaultShader);
     VisualRenderer_->SetDefaultShader(DefaultShader);
 
