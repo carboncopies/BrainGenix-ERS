@@ -197,7 +197,7 @@ void Window_ShaderEditor::Draw() {
     bool Visible = ImGui::Begin("Shader Compile Log", &Enabled_, ImGuiWindowFlags_MenuBar);
 
 
-        // Compile Shader Object, Extract Shader Log
+        // Compile Shader Object
         std::string VertexText = Editors_[0]->GetText();
         std::string FragmentText = Editors_[1]->GetText();
 
@@ -209,7 +209,13 @@ void Window_ShaderEditor::Draw() {
         LivePreviewShader_->MakeActive();
         LivePreviewShader_->SetInt("texture_diffuse1", 0);
 
-
+        // Extract Shader Log
+        std::string ShaderLog;
+        if (Mode_ == 0) {
+            ShaderLog = VertexLog;
+        } else if (Mode_ == 1) {
+            ShaderLog = FragmentLog;
+        }
 
 
         // Set Default Window Size
