@@ -85,7 +85,7 @@ void Window_ShaderEditor::Draw() {
         // Set Default Window Size
         ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
 
-
+        std::cout<<ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID<<ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID<<std::endl;
         if (Visible) {
  
 
