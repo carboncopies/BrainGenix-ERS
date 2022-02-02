@@ -48,7 +48,10 @@ VisualRenderer::~VisualRenderer() {
 }
 
 void VisualRenderer::SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
+    std::cout<<"test3\n";
     Shader_ = Shader;
+    std::cout<<"test3\n";
+
 }
 
 void VisualRenderer::InitializeOpenGL() {
