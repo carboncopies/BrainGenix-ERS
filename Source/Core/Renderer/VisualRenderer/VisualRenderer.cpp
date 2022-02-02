@@ -51,12 +51,9 @@ VisualRenderer::~VisualRenderer() {
 
 void VisualRenderer::SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID) {
 
-    std::cout<<"Setting Shader\n";
     Shaders_[ID] = Shader;
-    std::cout<<"Finished\n";
 
 }
-
 
 void VisualRenderer::SetDefaultShader(int ShaderID) {
     
