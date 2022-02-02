@@ -266,6 +266,10 @@ void Window_ShaderEditor::ProcessErrors(std::string ErrorMessage, std::shared_pt
 
     }
 
+
+
+    std::cout<<"*********"<<std::endl<<ErrorMessage<<std::endl<<"**"<<std::endl;
+
     // Add Lines To Editor
     for (int i = 0; i < ErrorMessages.size(); i++) {
 
