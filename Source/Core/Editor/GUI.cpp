@@ -50,6 +50,9 @@ GUISystem::GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwi
     ImGui_ImplOpenGL3_Init("#version 330 core");
 
 
+    std::cout<<"Testing Visual Renderer TV: "<<std::endl;
+    std::cout<<VisualRenderer_->test<<std::endl;
+
     // Initialize Windows
     SystemUtils_->Logger_->Log("Initializing Editor Menu", 5);
     Menu_File_ = std::make_unique<GUI_Menu_File>(SystemUtils_, SceneManager_, ProjectUtils_, VisualRenderer_);
