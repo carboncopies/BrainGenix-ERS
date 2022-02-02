@@ -55,6 +55,11 @@ void VisualRenderer::SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID
 
 }
 
+
+void VisualRenderer::SetDefaultShader(int ShaderID) {
+    DefaultShader_ = ShaderID;
+}
+
 void VisualRenderer::InitializeOpenGL() {
 
     // Setup GLAD
@@ -310,7 +315,7 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera = std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>();
 
     // Append To Vectors
-    ActiveShaders_.push_back(0);
+    ActiveShaders_.push_back(DefaultShader_);
     Cameras_.push_back(Camera);
     ViewportNames_.push_back(ViewportName);
     ViewportWidths_.push_back(1);

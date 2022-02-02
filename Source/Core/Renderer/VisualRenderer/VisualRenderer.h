@@ -52,8 +52,11 @@ private:
 public:
 
     std::vector<std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP>> Cameras_; /**<List Of Pointers To Camera Instances*/
+    
     std::map<int, std::shared_ptr<ERS_STRUCT_Shader>> Shaders_; /**<Map of shader pointers and shader program ids*/
     std::vector<int> ActiveShaders_; /**<Index of shader program used by each viewport*/
+    int DefaultShader_ = 0; /**<Index of default shader program to be used*/
+
     std::vector<std::string> ViewportNames_; /**<List Of Names For Viewports*/
     std::vector<std::shared_ptr<InputProcessor>> InputProcessors_; /**<Vector Of InputProcessors*/
     std::vector<bool> WasSelected_; /**<List of true/false for was viewport selected last frame*/
@@ -98,6 +101,7 @@ public:
     void DeleteViewport(int Index);
     
     void SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID);
+    void SetDefaultShader(int ShaderID);
         
 
 };
