@@ -409,7 +409,7 @@ void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWi
     ActiveShader->SetInt("FrameNumber", FrameNumber_);
 
     // Set Viewport Resolution
-    ActiveShader->SetVec2("ViewportRes", RenderWidth, RenderHeight)
+    ActiveShader->SetVec2("ViewportRes", RenderWidth, RenderHeight);
 
 
 
