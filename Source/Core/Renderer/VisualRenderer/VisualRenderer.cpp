@@ -401,6 +401,8 @@ void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime) {
     float Time = glfwGetTime();
     ActiveShader->SetFloat("Time", Time);
 
+    // Set Delta Time
+
 
 
 

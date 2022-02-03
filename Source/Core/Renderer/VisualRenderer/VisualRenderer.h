@@ -81,7 +81,7 @@ private:
     // Internal Functions
     void InitializeOpenGL();
     void ResizeViewport(int Index, int Width, int Height);
-    void UpdateShader(int ShaderIndex);
+    void UpdateShader(int ShaderIndex, float DeltaTime);
 
 
 
