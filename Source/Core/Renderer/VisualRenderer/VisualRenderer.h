@@ -49,6 +49,7 @@ private:
     // Member Variables
     GLFWwindow *Window_; /**<GLFW Window Instance For Window Input To Viewports*/
     std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
+    long int FrameNumber_ = 0; /**<Frame counter, starts at 0*/
 
 public:
 

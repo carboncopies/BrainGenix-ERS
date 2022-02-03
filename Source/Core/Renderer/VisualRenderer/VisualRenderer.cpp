@@ -402,6 +402,9 @@ void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime) {
     ActiveShader->SetFloat("Time", Time);
 
     // Set Delta Time
+    ActiveShader->SetFloat("FrameTime", DeltaTime);
+
+    // Set Frame Number
 
 
 
