@@ -381,7 +381,7 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
 
 }
 
-void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime) {
+void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight) {
 
     /**
 
@@ -409,7 +409,7 @@ void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime) {
     ActiveShader->SetInt("FrameNumber", FrameNumber_);
 
     // Set Viewport Resolution
-    ActiveShader->SetVec2("ViewportRes", )
+    ActiveShader->SetVec2("ViewportRes", RenderWidth, RenderHeight)
 
 
 
