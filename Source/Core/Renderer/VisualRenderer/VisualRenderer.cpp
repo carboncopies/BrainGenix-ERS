@@ -380,7 +380,18 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
 
 }
 
-void VisualRenderer::UpdateShader(int ShaderIndex) {
+void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime) {
+
+    /**
+
+    -- Current list of supported shader params: 
+
+    uniform float Time; // Time since program started in seconds
+    uniform float FrameTime; // Render Time Of The Frame
+    uniform int FrameNumer; // Number of the frame, counts up from zero
+    uniform vec2 ViewportRes; // XY Resolution of the viewport
+
+     */
 
 
     // Get Pointer to Shader
@@ -388,8 +399,11 @@ void VisualRenderer::UpdateShader(int ShaderIndex) {
 
     // Set Current Time
     float Time = glfwGetTime();
-    std::cout<<Time<<std::endl;
     ActiveShader->SetFloat("Time", Time);
+
+
+
+
 
 }
 
