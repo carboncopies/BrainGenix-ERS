@@ -207,7 +207,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     glm::mat4 view = Cameras_[Index]->GetViewMatrix();
 
     // Update Shaders
-    UpdateShader(ShaderIndex);
+    UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight);
     Shaders_[ShaderIndex]->SetMat4("projection", projection);
     Shaders_[ShaderIndex]->SetMat4("view", view);
 
@@ -408,7 +408,8 @@ void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime) {
     // Set Frame Number
     ActiveShader->SetInt("FrameNumber", FrameNumber_);
 
-
+    // Set Viewport Resolution
+    ActiveShader->SetVec2("ViewportRes", )
 
 
 
