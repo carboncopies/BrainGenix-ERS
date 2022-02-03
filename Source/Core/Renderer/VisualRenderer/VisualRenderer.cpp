@@ -87,6 +87,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
     glEnable(GL_DEPTH_TEST);
     CaptureCursor_ = false;
     CaptureIndex_ = -1;
+    FrameNumber_++;
 
     // Iterate Through Viewports
     for (int i = 0; i<ActiveShaders_.size(); i++) {
@@ -405,6 +406,7 @@ void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime) {
     ActiveShader->SetFloat("FrameTime", DeltaTime);
 
     // Set Frame Number
+    ActiveShader->SetInt("FrameNumber", FrameNumber_);
 
 
 
