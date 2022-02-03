@@ -5,9 +5,17 @@ layout (location = 2) in vec2 aTexCoords;
 
 out vec2 TexCoords;
 
+
+// Set Model Info
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
+
+// Get Input Vars
+uniform float Time; // Time since program started in seconds
+uniform float FrameTime; // Render Time Of The Frame
+uniform int FrameNumer; // Number of the frame, counts up from zero
+uniform vec2 ViewportRes; // XY Resolution of the viewport
 
 void main()
 {
