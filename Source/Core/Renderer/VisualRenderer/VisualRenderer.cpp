@@ -388,6 +388,7 @@ void VisualRenderer::UpdateShader(int ShaderIndex) {
 
     // Set Current Time
     float Time = glfwGetTime();
+    std::cout<<Time<<std::endl;
     ActiveShader->SetFloat("Time", Time);
 
 }
