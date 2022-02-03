@@ -387,7 +387,8 @@ void VisualRenderer::UpdateShader(int ShaderIndex) {
     std::shared_ptr<ERS_STRUCT_Shader> ActiveShaders = Shaders_[ShaderIndex];
 
     // Set Current Time
-    double Time = time();
+    double Time = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+
 
     std::cout<<Time<<std::endl;
 
