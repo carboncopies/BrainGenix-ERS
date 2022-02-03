@@ -389,7 +389,7 @@ void VisualRenderer::UpdateShader(int ShaderIndex) {
     // Set Current Time
     auto Clock = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     
-    double Time = Clock.count();
+    time_t Time = std::ctime(&Clock);
 
     std::cout<<Time<<std::endl;
 
