@@ -389,7 +389,7 @@ void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWi
 
     uniform float Time; // Time since program started in seconds
     uniform float FrameTime; // Render Time Of The Frame
-    uniform int FrameNumer; // Number of the frame, counts up from zero
+    uniform int FrameNumber; // Number of the frame, counts up from zero
     uniform vec2 ViewportRes; // XY Resolution of the viewport
 
      */
