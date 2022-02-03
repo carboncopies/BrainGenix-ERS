@@ -384,12 +384,11 @@ void VisualRenderer::UpdateShader(int ShaderIndex) {
 
 
     // Get Pointer to Shader
-    std::shared_ptr<ERS_STRUCT_Shader> ActiveShaders = Shaders_[ShaderIndex];
+    std::shared_ptr<ERS_STRUCT_Shader> ActiveShader = Shaders_[ShaderIndex];
 
     // Set Current Time
-    long double Time = (long double)(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count() / 1000);
-    std::cout<<Time<<std::endl;
-
+    float Time = (float)(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count() / 1000);
+    ActiveShader->SetFloat("Time", Time);
 
 }
 
