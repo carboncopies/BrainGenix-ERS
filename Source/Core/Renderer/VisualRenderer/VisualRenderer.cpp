@@ -387,7 +387,7 @@ void VisualRenderer::UpdateShader(int ShaderIndex) {
     std::shared_ptr<ERS_STRUCT_Shader> ActiveShader = Shaders_[ShaderIndex];
 
     // Set Current Time
-    float Time = (float)(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count() / 1000);
+    float Time = glfwGetTime();
     ActiveShader->SetFloat("Time", Time);
 
 }
