@@ -42,6 +42,10 @@
 #include <ERS_STRUCT_SystemUtils.h>
 
 
+/**
+ * @brief Handles viewport creation/deletion/rendering/updating.
+ * 
+ */
 class VisualRenderer {
 
 private:
