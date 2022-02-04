@@ -44,3 +44,5 @@
     "[lmb] + [space]" - Move Camera Up
 
     "[lmb] + [scroll wheel]" - Adjust Camera Movement
+
+    "[`]" - Toggle Viewport Controls On/Off
