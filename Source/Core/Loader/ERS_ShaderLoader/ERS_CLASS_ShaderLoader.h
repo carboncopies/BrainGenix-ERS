@@ -63,7 +63,7 @@ public:
      * @param FragmentID 
      * @return std::shared_ptr<ERS_STRUCT_Shader> 
      */
-    std::shared_ptr<ERS_STRUCT_Shader> LoadShaderFromAsset(long VertexID, long FragmentID, std::string Name = "Untitled Shader");
+    std::shared_ptr<ERS_STRUCT_Shader> LoadShaderFromAsset(long VertexID, long FragmentID, std::string ShaderName = "Untitled Shader");
 
 
 
