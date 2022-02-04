@@ -84,27 +84,58 @@ private:
     void ResizeViewport(int Index, int Width, int Height);
     void UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight);
 
+    void SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID);
+    void SetDefaultShader(int ShaderID);
+    void UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, float DeltaTime);
 
 
 public:
 
-    // Constructor
+    /**
+     * @brief Construct a new Visual Renderer object
+     * 
+     * @param SystemUtils 
+     * @param Window 
+     * @param Cursors3D 
+     */
     VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D);
 
-    // Destructor
+    /**
+     * @brief Destroy the Visual Renderer object
+     * 
+     */
     ~VisualRenderer();
 
 
+    /**
+     * @brief Create a Viewport object
+     * 
+     * @param ViewportName 
+     */
     void CreateViewport(std::string ViewportName);
+
+    /**
+     * @brief Create a Viewport object (automatically set name of viewport)
+     * 
+     */
     void CreateViewport();
 
+    /**
+     * @brief Draw the contents of all active viewports
+     * 
+     * @param DeltaTime 
+     * @param SceneManager 
+     */
     void UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
-    void UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, float DeltaTime);
 
+    /**
+     * @brief Delete a veiwport of specified index
+     * 
+     * @param Index 
+     */
     void DeleteViewport(int Index);
     
-    void SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID);
-    void SetDefaultShader(int ShaderID);
+ 
         
 
 };
