@@ -22,3 +22,25 @@
   - Put your build config into debug/release based on what you're doing
   - Set target to BrainGenix-ERS.exe
   - Hit `Build`
+
+
+# Keybinds
+
+  ## Editor Viewport
+
+    "[lmb]" - (When Hovering Gizmo) - Move Gizmo
+    "[left shift]" - (When Gizmo Active) - Move Camera While Moving Gizmo
+    "[s]" - Set Gizmo To Scale
+    "[g]" - Set Gizmo To Translate
+    "[r]" - Set Gizmo To Rotate
+
+
+    "[lmb]" - Enter Camera Movement Mode (hold button)
+    "[lmb] + [w]" - Move Camera Forward
+    "[lmb] + [a]" - Move Camera Left
+    "[lmb] + [s]" - Move Camera Backward
+    "[lmb] + [d]" - Move Camera Right
+    "[lmb] + [left shift]" - Move Camera Down
+    "[lmb] + [space]" - Move Camera Up
+
+    "[lmb] + [scroll wheel]" - Adjust Camera Movement
