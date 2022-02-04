@@ -32,9 +32,11 @@ struct ERS_STRUCT_Shader {
 
 
     unsigned int ShaderProgram; /**<OpenGL refernece ID for Shader Program */
-
     unsigned int VertexShader; /**<OpenGL Reference ID for Vertex Shader */
     unsigned int FragmentShader; /**<OpenGL Reference ID For Fragment Shader */
+
+    std::string DisplayName; /**<Name of shader to be shown to the user*/
+    std::string InternalName; /**<Intenral name of the shader, these are usually the same (Just not in the shader editor as it creates the preview shader)*/
 
     long VertexID; /**<Asset ID of vertex shader (optional, used for saving) */
     long FragmentID; /**<Asset ID of fragment shader (optional, used for saving) */
