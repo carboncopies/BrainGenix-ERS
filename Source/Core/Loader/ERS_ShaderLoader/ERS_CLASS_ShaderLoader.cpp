@@ -53,7 +53,7 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::CreateShaderObject(co
 }
 
 // Load Shader From Disk
-std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::LoadShaderFromAsset(long VertexID, long FragmentID) {
+std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::LoadShaderFromAsset(long VertexID, long FragmentID, std::string ShaderName) {
 
     // Load Shaders From Disk Into RAM
     SystemUtils_->Logger_->Log("Loading Shaders From Asset ID", 5);
@@ -71,6 +71,8 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::LoadShaderFromAsset(l
     std::shared_ptr<ERS_STRUCT_Shader> ShaderStruct = CreateShaderObject(VertexText.c_str(), FragmentText.c_str());
     ShaderStruct->VertexID = VertexID;
     ShaderStruct->FragmentID = FragmentID;
+    ShaderStruct->DisplayName = ShaderName;
+    ShaderStruct->InternalName = ShaderName;
     return ShaderStruct;
 
 
