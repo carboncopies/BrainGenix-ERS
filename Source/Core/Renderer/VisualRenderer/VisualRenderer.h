@@ -79,13 +79,53 @@ public:
 
 private:
 
-    // Internal Functions
+    /**
+     * @brief Initialize an opengl context for the viewport
+     * 
+     */
     void InitializeOpenGL();
+
+    /**
+     * @brief Resize a viewport of specified index to the set width and height
+     * 
+     * @param Index 
+     * @param Width 
+     * @param Height 
+     */
     void ResizeViewport(int Index, int Width, int Height);
+
+    /**
+     * @brief Update the shader used
+     * 
+     * @param ShaderIndex 
+     * @param DeltaTime 
+     * @param RenderWidth 
+     * @param RenderHeight 
+     */
     void UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight);
 
+    /**
+     * @brief Set the Shader object
+     * 
+     * @param Shader 
+     * @param ID 
+     */
     void SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID);
+
+    /**
+     * @brief Set the Default Shader by index
+     * 
+     * @param ShaderID 
+     */
     void SetDefaultShader(int ShaderID);
+
+    /**
+     * @brief Updates a specific vieport of given index (should be used in update viepowrts function)
+     * 
+     * @param Index 
+     * @param SceneManager 
+     * @param DeltaTime 
+     */
     void UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, float DeltaTime);
 
 
