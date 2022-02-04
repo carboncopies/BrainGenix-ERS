@@ -35,7 +35,7 @@
     "[r]" - Set Gizmo To Rotate
 
 
-    "[lmb]" - Enter Camera Movement Mode (hold button)
+    "[lmb]" - (When Not Hovering Gizmo) - Enter Camera Movement Mode (hold button)
     "[lmb] + [w]" - Move Camera Forward
     "[lmb] + [a]" - Move Camera Left
     "[lmb] + [s]" - Move Camera Backward
