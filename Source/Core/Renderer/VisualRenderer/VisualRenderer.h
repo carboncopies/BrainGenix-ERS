@@ -133,6 +133,14 @@ private:
     void UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, float DeltaTime);
 
 
+    /**
+     * @brief Draws the viewport's menu (enable/disable handled internally in this function)
+     * 
+     * @param Index 
+     */
+    void DrawViewportMenu(int Index);
+
+
 public:
 
     /**

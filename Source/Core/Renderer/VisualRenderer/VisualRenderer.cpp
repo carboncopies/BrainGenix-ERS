@@ -415,3 +415,11 @@ void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWi
 
 }
 
+
+void VisualRenderer::DrawViewportMenu(int Index) {
+
+
+    
+
+
+}
