@@ -67,7 +67,7 @@ class TextureLoader {
          * @param Path 
          * @return ERS_STRUCT_Texture 
          */
-        ERS_OBJECT_TEXTURE_2D LoadTexture(const char* Path, bool FlipImage = false, bool ProcessOpenGL = true);
+        ERS_STRUCT_Texture LoadTexture(const char* Path, bool FlipImage = false, bool ProcessOpenGL = true);
 
         /**
          * @brief Load a texture at the given asset id. (For database loading).
