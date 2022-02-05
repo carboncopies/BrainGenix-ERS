@@ -75,7 +75,7 @@ class ERS_CLASS_ModelWriter {
          * 
          * @param Models 
          */
-        void BatchWriteModels(std::vector<std::shared_ptr<ERS_OBJECT_MODEL>> Models);
+        void BatchWriteModels(std::vector<std::shared_ptr<ERS_STRUCT_Model>> Models);
 
         /**
          * @brief Copy A Model To Insternal Storage, Does Not Re-encode model in proper format. Single Threaded.
