@@ -241,7 +241,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
     // Render Framebuffer To Window
     ImGui::GetWindowDrawList()->AddImage(
-        (void*)(intptr_t)FramebufferColorObjects_[Index],
+        (void*)(intptr_t)Viewports_[Index]->FramebufferColorObject,
         ImGui::GetCursorScreenPos(),
         ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x, ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
         ImVec2(0, 1),
@@ -250,7 +250,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Draw 3D Cursor
-    Cursors3D_->Draw(Cameras_[Index], CaptureCursor_);
+    Cursors3D_->Draw(Viewports_[Index]->Camera, CaptureCursor_);
 
 
     ImGui::End();
