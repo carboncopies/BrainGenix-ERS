@@ -232,15 +232,21 @@ void Window_ShaderEditor::DrawEditorWindow() {
                     ImGui::EndMenu();
                 }
             
+
+                // Enter Fragment Mode
+                if (ImGui::BeginMenu("Vertex")) {
+                            Mode_ = 0;
+                            Editor_ = Editors_[Mode_];
+                            Editor_->Render("Shader Editor");
+                }
+
                 if (ImGui::BeginMenu("Shader")) {
 
                     // Mode Menu
                     if (ImGui::BeginMenu("Mode")) {
 
                         if (ImGui::MenuItem("Vertex", nullptr, (Mode_==0))) {
-                            Mode_ = 0;
-                            Editor_ = Editors_[Mode_];
-                            Editor_->Render("Shader Editor");
+
                         }
                         if (ImGui::MenuItem("Fragment", nullptr, (Mode_==1))) {
                             Mode_ = 1;
