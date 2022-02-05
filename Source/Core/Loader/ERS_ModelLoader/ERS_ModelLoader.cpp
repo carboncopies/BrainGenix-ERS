@@ -112,7 +112,7 @@ void ERS_CLASS_ModelLoader::WorkerThread() {
 }
 
 // Updates The Current Scene, Loads In Models
-void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> ActiveScene) {
+void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_STRUCT_Scene> ActiveScene) {
 
     // Check List Of Models
     std::unique_ptr<std::vector<std::shared_ptr<ERS_STRUCT_Model>>> Models = std::make_unique<std::vector<std::shared_ptr<ERS_STRUCT_Model>>>(ActiveScene->Models);
