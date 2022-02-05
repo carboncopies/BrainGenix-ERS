@@ -245,6 +245,7 @@ void Window_ShaderEditor::DrawEditorWindow() {
                             Mode_ = 1;
                             Editor_ = Editors_[Mode_];
                             Editor_->Render("Shader Editor");
+                ImGui::EndMenu();
                 }
 
                 if (ImGui::BeginMenu("Shader")) {
