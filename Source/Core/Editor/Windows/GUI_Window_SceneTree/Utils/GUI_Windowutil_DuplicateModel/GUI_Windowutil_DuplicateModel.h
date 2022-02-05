@@ -20,6 +20,6 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_SceneManager.h>
-#include <Model.h>
+#include <ERS_STRUCT_Model.h>
 
 void GUI_Windowutil_DuplicateModel(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, int SceneIndex, int ModelIndex);
