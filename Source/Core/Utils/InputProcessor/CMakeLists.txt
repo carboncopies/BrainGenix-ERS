@@ -31,7 +31,7 @@ target_link_libraries(InputProcessor
     ImageLoader
     TextureLoader
 
-    Model
+    ERS_STRUCT_Model
     Scene
     ERS_SceneManager
 
