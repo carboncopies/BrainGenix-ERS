@@ -136,6 +136,7 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_HumanInputDeviceUtils)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ControllerSettings)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ShaderProgramAssetIDs)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_RGBColor)
+add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Viewport)
 
 
 add_subdirectory(${SRC_DIR}/Core/Loader/TextureLoader)
