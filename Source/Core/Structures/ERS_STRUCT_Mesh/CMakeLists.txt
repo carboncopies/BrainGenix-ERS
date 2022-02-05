@@ -28,7 +28,7 @@ target_link_libraries(ERS_STRUCT_Mesh
 target_link_libraries(ERS_STRUCT_Mesh
     ERS_STRUCT_Shader
     Textures
-    Vertex
+    ERS_STRUCT_Vertex
     ImageLoader
     )
 
