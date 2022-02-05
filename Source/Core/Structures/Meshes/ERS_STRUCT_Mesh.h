@@ -25,7 +25,7 @@
 
 
 // Holds The Mesh Object
-class ERS_OBJECT_MESH {
+class ERS_STRUCT_Mesh {
 
     private:
 
