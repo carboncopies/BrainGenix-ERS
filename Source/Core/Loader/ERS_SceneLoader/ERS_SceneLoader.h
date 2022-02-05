@@ -77,7 +77,7 @@ public:
      * @brief Populate The Scene Structure, Fill In Vectors, etc. Should Be Called Before Sending Scene Struct To SceneManager.
      * 
      * @param FileData
-     * @return ERS_OBJECT_SCENE 
+     * @return ERS_STRUCT_Scene 
      */
     ERS_OBJECT_SCENE ProcessScene(long AssetID);
 
