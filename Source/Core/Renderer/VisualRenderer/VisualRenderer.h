@@ -40,6 +40,7 @@
 
 #include <ERS_STRUCT_LocRotScale.h>
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_Viewport.h>
 
 
 /**
