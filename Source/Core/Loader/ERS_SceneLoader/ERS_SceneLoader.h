@@ -79,7 +79,7 @@ public:
      * @param FileData
      * @return ERS_STRUCT_Scene 
      */
-    ERS_OBJECT_SCENE ProcessScene(long AssetID);
+    ERS_STRUCT_Scene ProcessScene(long AssetID);
 
 
     /**
@@ -88,7 +88,7 @@ public:
      * @param Scene 
      * @param AssetID 
      */
-    void AddModel(std::shared_ptr<ERS_OBJECT_SCENE> Scene, long AssetID);
+    void AddModel(std::shared_ptr<ERS_STRUCT_Scene> Scene, long AssetID);
 
 
 
