@@ -201,6 +201,11 @@ void Window_ShaderEditor::DrawEditorWindow() {
                             Editor_->Render("Shader Editor");
                         }
 
+                    // New Shader Menu
+                    if (ImGui::MenuItem("New Shader Program")) {
+                        
+                    }
+
                     ImGui::EndMenu();
                     }
 
