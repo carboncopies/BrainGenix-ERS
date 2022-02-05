@@ -51,7 +51,8 @@ private:
     bool LivePreview_ = true; /**<Enable/Disable Live Preview Of Shaders When Changed*/
     std::string LastFrameText_; /**Set The Last Text Shown In The Editor*/
     std::shared_ptr<ERS_STRUCT_Shader> LivePreviewShader_; /**<Current live preview shader*/
-
+    bool LastEnabledState_ = false; /**<Last State From Last Frame*/
+    int LivePreviewShaderIndex_; /**<Index of Live Preview Shader*/
 
 
 private:

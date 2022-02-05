@@ -80,6 +80,19 @@ void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
 // Draw Window
 void Window_ShaderEditor::Draw() {
 
+    // Check Enable Change
+    if (LastEnabledState_ != Enabled_) {
+        
+
+        // If Just Enabled
+        if (Enabled_) {
+            LivePreviewShaderIndex_ = VisualRenderer_->Shaders_.size();
+        } else {
+            VisualRenderer_->Shaders_.erase(LivePreviewShaderIndex_);
+        }
+
+    }
+
     if (Enabled_) {
     
         DrawEditorWindow();
@@ -237,7 +250,7 @@ void Window_ShaderEditor::DrawToolsWindow() {
 
         // If Autopreview, Update Shader
         if (LivePreview_ && ShaderCompiled) {
-            VisualRenderer_->SetShader(LivePreviewShader_, LivePreviewShaderIndex);
+            VisualRenderer_->SetShader(LivePreviewShader_, LivePreviewShaderIndex_);
         }
 
 
