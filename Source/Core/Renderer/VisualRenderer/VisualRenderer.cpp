@@ -73,8 +73,8 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
 
     // Close Any Viewports That Aren't All Open
     int ViewportsToClose = -1;
-    for (int i = 0; i < ViewportEnabled_.size(); i++) {
-        if (!*ViewportEnabled_[i]) {
+    for (int i = 0; i < Viewports_.size(); i++) {
+        if (!*Viewports_[i]->Enabled) {
             ViewportsToClose = i;
         }
     }
