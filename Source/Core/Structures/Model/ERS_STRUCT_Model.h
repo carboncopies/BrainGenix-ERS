@@ -25,11 +25,12 @@
 #include <2DTexture.h>
 
 
+
 /**
  * @brief This structure creates a model object. The model object stores the mesh, textures, and positions. Please see the full list of attrbutes for more information.
  * 
  */
-struct ERS_OBJECT_MODEL {
+struct ERS_STRUCT_Model {
 
 
     // NEW STUFF HERE
