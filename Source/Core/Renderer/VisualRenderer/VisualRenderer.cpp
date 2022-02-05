@@ -169,13 +169,13 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     if (ImGui::IsKeyDown(341)) { // Bind to left control key
         EnableCameraMovement = true;
     }
-    if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | WasSelected_[Index]) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
+    if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | Viewports_[Index]->WasSelected) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
         CaptureCursor_ = true;
         CaptureIndex_ = Index;
-        WasSelected_[Index] = true;
+        Viewports_[Index]->WasSelected = true;
     } else {
         CaptureCursor_ = false;
-        WasSelected_[Index] = false;
+        Viewports_[Index]->WasSelected = false;
     }
 
 
