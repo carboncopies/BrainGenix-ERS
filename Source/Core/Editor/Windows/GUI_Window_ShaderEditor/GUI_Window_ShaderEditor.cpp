@@ -253,12 +253,6 @@ void Window_ShaderEditor::DrawEditorWindow() {
                     // Mode Menu
                     if (ImGui::BeginMenu("Mode")) {
 
-                        if (ImGui::MenuItem("Vertex", nullptr, (Mode_==0))) {
-
-                        }
-                        if (ImGui::MenuItem("Fragment", nullptr, (Mode_==1))) {
-
-                        }
 
 
 
