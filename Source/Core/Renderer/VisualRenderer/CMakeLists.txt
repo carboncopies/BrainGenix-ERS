@@ -26,7 +26,7 @@ target_link_libraries(VisualRenderer
 
 # Link Internal Libs
 target_link_libraries(VisualRenderer
-    NoClip
+    ERS_STRUCT_Camera
     InputProcessor
     ERS_CLASS_LoggingSystem
     ImageLoader
