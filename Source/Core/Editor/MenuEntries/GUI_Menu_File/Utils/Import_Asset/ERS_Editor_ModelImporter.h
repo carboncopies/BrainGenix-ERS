@@ -38,7 +38,7 @@
 #include <assimp/postprocess.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <Mesh.h>
+#include <ERS_STRUCT_Mesh.h>
 #include <2DTexture.h>
 #include <Vertex.h>
 #include <FileIO.h>
