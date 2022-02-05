@@ -15,7 +15,7 @@
 void GUI_Windowutil_DuplicateModel(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, int SceneIndex, int ModelIndex) {
 
     // Get Current Model
-    ERS_OBJECT_MODEL NewModel = *SceneManager->Scenes_[SceneIndex]->Models[ModelIndex];
+    ERS_STRUCT_Model NewModel = *SceneManager->Scenes_[SceneIndex]->Models[ModelIndex];
 
     // Update Name
     std::string CurrentName = NewModel.Name;
