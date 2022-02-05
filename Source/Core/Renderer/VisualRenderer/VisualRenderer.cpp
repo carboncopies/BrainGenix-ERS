@@ -316,6 +316,7 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     Viewport->WasSelected = false;
     Viewport->Enabled = std::make_shared<bool>(true);
 
+
     // Create IOManager
     SystemUtils_->Logger_->Log("Creating New Input Processor", 4);
     Viewport->Processor = std::make_shared<InputProcessor>(Viewport->Camera, Window_);
@@ -326,10 +327,12 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     SystemUtils_->Logger_->Log("Creating Framebuffer Object", 4);
     glGenFramebuffers(1, &FramebufferObject);
 
+
     // Bind To Framebuffer
     SystemUtils_->Logger_->Log("Binding To Framebuffer Object", 4);
     glBindFramebuffer(GL_FRAMEBUFFER, FramebufferObject);
     Viewport->FramebufferObject = FramebufferObject;
+
 
     // Create RenderTexture
     unsigned int FramebufferColorObject;
@@ -341,9 +344,11 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     Viewport->FramebufferColorObject = FramebufferColorObject;
 
+
     // Attach Texture To Framebuffer
     SystemUtils_->Logger_->Log("Attaching Texture To Framebuffer", 4);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, FramebufferColorObject, 0);
+
 
     // Create Render Buffer
     unsigned int RenderbufferObject;
@@ -353,10 +358,12 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
 
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 800, 800); // RESIZE THIS WITH THE WINDOW!
 
+
     // Attach Renderbuffer to Depth And Stencil Attachment
     SystemUtils_->Logger_->Log("Attaching Render Buffer Object To Depth Stencil", 5);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, RenderbufferObject);
     Viewport->RenderbufferObject = RenderbufferObject;
+
 
     // Check Framebuffer Status
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
@@ -365,6 +372,9 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
         SystemUtils_->Logger_->Log("Failed To Initialize Framebuffer", 9);
     }
 
+
+    // Add To Viewports Vector
+    Viewports_.push_back(Viewport);
 
 }
 
