@@ -4,19 +4,19 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Meshes
+add_library(ERS_STRUCT_Mesh
 
             # Add Source Files (.cpp)
-            "Mesh.cpp"
+            "ERS_STRUCT_Mesh.cpp"
 
             # Add Header Files (.h)
-            "Mesh.h"
+            "ERS_STRUCT_Mesh.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Meshes
+target_link_libraries(ERS_STRUCT_Mesh
     yaml-cpp
     glm
     glad
@@ -25,11 +25,11 @@ target_link_libraries(Meshes
     )
 
 # Link Internal Libs
-target_link_libraries(Meshes
+target_link_libraries(ERS_STRUCT_Mesh
     ERS_STRUCT_Shader
     Textures
     Vertex
     ImageLoader
     )
 
-target_include_directories(Meshes PUBLIC ./)
+target_include_directories(ERS_STRUCT_Mesh PUBLIC ./)
