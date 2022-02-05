@@ -89,6 +89,9 @@ void Window_ShaderEditor::Draw() {
         } else {
             VisualRenderer_->Shaders_.erase(LivePreviewShaderIndex_);
         }
+
+        // Update Last State
+        LastEnabledState_ = Enabled_;
     }
 
     // Draw Windows
