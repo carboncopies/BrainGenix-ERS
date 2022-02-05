@@ -27,7 +27,7 @@ target_link_libraries(ERS_Editor_3DCursor
 # Link Internal Libs
 target_link_libraries(ERS_Editor_3DCursor
     ERS_CLASS_LoggingSystem
-    NoClip
+    ERS_STRUCT_Camera
     ERS_STRUCT_LocRotScale
     )
 
