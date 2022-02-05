@@ -13,7 +13,7 @@
 
 
 // Setup Mesh
-void ERS_OBJECT_MESH::SetupMesh() {
+void ERS_STRUCT_Mesh::SetupMesh() {
 
     // Initialize Buffers/Arrays
     glGenVertexArrays(1, &VAO);
@@ -72,7 +72,7 @@ void ERS_OBJECT_MESH::SetupMesh() {
 }
 
 // Draw The Mesh
-void ERS_OBJECT_MESH::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
+void ERS_STRUCT_Mesh::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
 
     // Bind To OpenGL Handels
     unsigned int DiffuseHandel = 1;
