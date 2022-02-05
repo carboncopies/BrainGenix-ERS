@@ -36,7 +36,7 @@ class InputProcessor {
         bool FirstMouse = true; /**<Checks if the mouse is just being enabled.*/
         float LastX = 400; /**<Location Of Last Mouse Position. (X coord) */
         float LastY = 400; /**<Location Of Last Mouse Position. (Y Coord) */ 
-        std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera_; /**<Pointer To Camera Instance */
+        std::shared_ptr<ERS_STRUCT_Camera> Camera_; /**<Pointer To Camera Instance */
         //FramebufferManager *FramebufferManager_; /**<Pointer To Framebuffer Manager Instance For Resizing The Framebuffer*/
 
         GLFWwindow *Window_; /**<Pointer To Window Surface */
