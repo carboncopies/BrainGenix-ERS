@@ -17,7 +17,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_Shader.h>
-#include <2DTexture.h>
+#include <ERS_STRUCT_Texture.h>
 #include <ERS_STRUCT_Vertex.h>
 
 
