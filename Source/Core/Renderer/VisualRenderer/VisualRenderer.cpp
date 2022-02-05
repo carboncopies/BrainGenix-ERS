@@ -132,7 +132,11 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Render To ImGui
-    ImGui::Begin(Viewports_[Index]->Name.c_str(), Viewports_[Index]->Enabled.get());
+    ImGuiWindowFlags Flags;
+    if (Viewports_[Index]->MenuEnabled) {
+        Flags |= ImGuiWindowFlags_MenuBar;
+    }
+    ImGui::Begin(Viewports_[Index]->Name.c_str(), Viewports_[Index]->Enabled.get(), Flags);
 
     // Set Default Window Size
     ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
@@ -143,6 +147,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Latching MenuEnable Keybind
+    
 
     // Calculate Window Position
     ImVec2 vMin = ImGui::GetWindowContentRegionMin();
