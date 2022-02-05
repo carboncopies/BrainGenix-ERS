@@ -48,7 +48,6 @@ private:
     std::shared_ptr<TextEditor> Editor_; /** Editor Instance*/
     int Mode_ = 0; /**<Used To Determine what shader the user is editing*/
     long SelectedShaderProgramIndex_ = 0; /**<Index of the selected shader program in the project*/
-    bool LivePreview_ = true; /**<Enable/Disable Live Preview Of Shaders When Changed*/
     std::string LastFrameText_; /**Set The Last Text Shown In The Editor*/
     std::shared_ptr<ERS_STRUCT_Shader> LivePreviewShader_; /**<Current live preview shader*/
     bool LastEnabledState_ = false; /**<Last State From Last Frame*/
