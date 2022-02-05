@@ -25,7 +25,7 @@ target_link_libraries(TextureLoader
 target_link_libraries(TextureLoader
     ERS_CLASS_LoggingSystem
     ImageLoader
-    Textures
+    ERS_STRUCT_Texture
     )
 
 target_include_directories(TextureLoader PUBLIC ./)
