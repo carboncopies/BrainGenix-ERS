@@ -17,7 +17,7 @@
 #include <FreeImage.h>
 
 // Structure To Hold 2D ERS Texture
-struct ERS_OBJECT_TEXTURE_2D {
+struct ERS_STRUCT_Texture {
 
     // Set OpenGL Handles
     unsigned int ID;
