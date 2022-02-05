@@ -29,7 +29,7 @@ target_link_libraries(ERS_ModelLoader
 target_link_libraries(ERS_ModelLoader
     ERS_STRUCT_Mesh
     ERS_STRUCT_Model
-    Textures
+    ERS_STRUCT_Texture
     TextureLoader
     ERS_STRUCT_SystemUtils
     )
