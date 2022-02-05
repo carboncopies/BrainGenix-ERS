@@ -32,7 +32,6 @@ class ERS_STRUCT_Mesh {
 
     private:
 
-        // OpenGL Handles
         unsigned int VBO;
         unsigned int EBO;
 
