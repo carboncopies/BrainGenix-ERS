@@ -9,7 +9,7 @@
 */ 
 
 
-#include "Model.h"
+#include "ERS_STRUCT_Model.h"
 
 
 // Draw Model
