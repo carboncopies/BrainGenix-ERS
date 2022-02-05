@@ -272,7 +272,7 @@ void Window_ShaderEditor::DrawToolsWindow() {
 
 
         // If Autopreview, Update Shader
-        if (LivePreview_ && ShaderCompiled) {
+        if (ShaderCompiled) {
             VisualRenderer_->SetShader(LivePreviewShader_, LivePreviewShaderIndex_);
         }
 
