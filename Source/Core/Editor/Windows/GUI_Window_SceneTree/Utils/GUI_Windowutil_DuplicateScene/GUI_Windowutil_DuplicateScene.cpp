@@ -15,7 +15,7 @@
 void GUI_Windowutil_DuplicateScene(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, int SceneIndex) {
 
     // Get Current Scene
-    std::shared_ptr<ERS_OBJECT_SCENE> NewScene = SceneManager->Scenes_[SceneIndex];
+    std::shared_ptr<ERS_STRUCT_Scene> NewScene = SceneManager->Scenes_[SceneIndex];
 
     // Update Name
     std::string CurrentName = NewScene->SceneName;
