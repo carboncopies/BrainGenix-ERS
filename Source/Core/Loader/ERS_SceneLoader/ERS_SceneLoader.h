@@ -23,7 +23,7 @@
 #include <ERS_ModelLoader.h>
 #include <ERS_STRUCT_Scene.h>
 #include <ERS_STRUCT_Mesh.h>
-#include <2DTexture.h>
+#include <ERS_STRUCT_Texture.h>
 
 
 #include <ERS_STRUCT_Shader.h>
