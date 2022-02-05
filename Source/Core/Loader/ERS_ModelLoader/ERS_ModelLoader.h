@@ -64,7 +64,7 @@ class ERS_CLASS_ModelLoader {
 
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Struct*/
 
-        std::vector<std::shared_ptr<ERS_OBJECT_MODEL>> WorkItems_; /**<Items For The Worker To Process*/
+        std::vector<std::shared_ptr<ERS_STRUCT_Model>> WorkItems_; /**<Items For The Worker To Process*/
         std::vector<long> WorkIDs_; /**<Vector Containing IDs*/
         std::vector<bool> FlipTextures_; /**<vector Containing FlipTexture For Work Items*/
         std::vector<std::thread> WorkerThreads_; /**<List of worker threads*/
