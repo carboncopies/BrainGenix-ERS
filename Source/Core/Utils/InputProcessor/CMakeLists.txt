@@ -26,9 +26,8 @@ target_link_libraries(InputProcessor
 
 # Link Internal Libs
 target_link_libraries(InputProcessor
-    ERS_STRUCT_Camera
+    NoClip
     ERS_CLASS_LoggingSystem
-    ImageLoader
     TextureLoader
 
     ERS_STRUCT_Model
