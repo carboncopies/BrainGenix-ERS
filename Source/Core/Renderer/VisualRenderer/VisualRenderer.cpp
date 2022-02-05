@@ -305,17 +305,16 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     std::shared_ptr<ERS_STRUCT_Viewport> Viewport = std::make_shared<ERS_STRUCT_Viewport>();
 
 
-    // Create Camera
-    std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera = std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>();
+    // Populate Viewport Struct
+    Viewport->ShaderIndex = DefaultShader_;
+    Viewport->Camera = std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>();
+    Viewport->Name = ViewportName;
+    
+    Viewport->Width = 1;
+    Viewport->Height = 1;
 
-    // Append To Vectors
-    Viewport->ShaderIndex.push_back(DefaultShader_);
-    Cameras_.push_back(Camera);
-    ViewportNames_.push_back(ViewportName);
-    ViewportWidths_.push_back(1);
-    ViewportHeights_.push_back(1);
-    WasSelected_.push_back(false);
-    ViewportEnabled_.push_back(std::make_shared<bool>(true));
+    Viewport->WasSelected = false;
+    Viewport->Enabled = std::make_shared<bool>(true);
 
     // Create IOManager
     SystemUtils_->Logger_->Log("Creating New Input Processor", 4);
