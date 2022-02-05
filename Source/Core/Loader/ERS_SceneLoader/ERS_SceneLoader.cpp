@@ -105,7 +105,7 @@ ERS_OBJECT_SCENE ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             float ScaleZ = SceneDataNode[i]["AssetScaleZ"].as<double>();
 
             //Load Model 
-            Scene.Models.push_back(std::make_shared<ERS_OBJECT_MODEL>());
+            Scene.Models.push_back(std::make_shared<ERS_STRUCT_Model>());
             int CurrentSize = Scene.Models.size();
             ModelLoader_->AddModelToLoadingQueue(AssetID, Scene.Models[CurrentSize-1], FlipTextures);
 
