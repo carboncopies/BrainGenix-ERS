@@ -73,7 +73,7 @@ class TextureLoader {
          * @brief Load a texture at the given asset id. (For database loading).
          * 
          * @param AssetID 
-         * @return ERS_OBJECT_TEXTURE_2D 
+         * @return ERS_STRUCT_Texture 
          */
         ERS_OBJECT_TEXTURE_2D LoadTexture(long AssetID, bool FlipImage = false, bool ProcessOpenGL = true);
 
