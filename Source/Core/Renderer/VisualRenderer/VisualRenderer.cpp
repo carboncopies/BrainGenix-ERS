@@ -287,7 +287,7 @@ void VisualRenderer::DeleteViewport(int Index) {
 void VisualRenderer::CreateViewport() {
 
     // Generate Name
-    std::string Name = std::string("Viewport ") + std::to_string(ViewportNames_.size() + 1);
+    std::string Name = std::string("Viewport ") + std::to_string(Viewports_.size() + 1);
 
     // Create Viewport
     CreateViewport(Name);
@@ -299,10 +299,6 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
 
     // Log Creation
     SystemUtils_->Logger_->Log(std::string(std::string("Creating New Viewport '") + ViewportName + std::string("'")).c_str(), 5);
-
-    // Reset Shader
-    // Shader_->MakeActive();
-    // Shader_->SetInt("texture_diffuse1", 0);
 
 
     // Create Camera
