@@ -53,7 +53,7 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(long AssetID) {
 }
 
 // ERS_CLASS_SceneLoader Process Scene Function
-ERS_OBJECT_SCENE ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, long AssetID) {
+ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, long AssetID) {
 
     // Create Scene Instance
     ERS_OBJECT_SCENE Scene;
