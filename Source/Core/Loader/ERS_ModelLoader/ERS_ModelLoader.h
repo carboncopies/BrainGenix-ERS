@@ -88,7 +88,7 @@ class ERS_CLASS_ModelLoader {
          * 
          * @param Mesh 
          * @param Scene 
-         * @return ERS_OBJECT_MESH 
+         * @return ERS_STRUCT_Mesh 
          */
         ERS_OBJECT_MESH ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, std::vector<std::string> TexturePaths);
 
