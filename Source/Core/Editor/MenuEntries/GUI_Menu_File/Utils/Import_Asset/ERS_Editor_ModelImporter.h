@@ -87,7 +87,7 @@ class ERS_CLASS_ModelImporter {
          * @param Type 
          * @param TypeName 
          */
-        void AddTexture(ERS_OBJECT_MODEL* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory);
+        void AddTexture(ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory);
 
 
         /**
