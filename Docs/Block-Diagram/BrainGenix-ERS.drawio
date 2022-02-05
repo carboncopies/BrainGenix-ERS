@@ -792,7 +792,7 @@
         <mxCell id="ymFeAhp0DhXiGv6h24F2-29" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="SORNEBXzX296p3ofjego-1" vertex="1">
           <mxGeometry x="3010" y="1422.5" width="350" height="137.5" as="geometry" />
         </mxCell>
-        <mxCell id="ymFeAhp0DhXiGv6h24F2-30" value="&lt;div&gt;std::string AssetType (string indicating which vector asset is in, eg: &quot;ERS_OBJECT_MODEL&quot;)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="SORNEBXzX296p3ofjego-1" vertex="1">
+        <mxCell id="ymFeAhp0DhXiGv6h24F2-30" value="&lt;div&gt;std::string AssetType (string indicating which vector asset is in, eg: &quot;ERS_STRUCT_Model&quot;)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="SORNEBXzX296p3ofjego-1" vertex="1">
           <mxGeometry x="3030" y="1471.25" width="170" height="60" as="geometry" />
         </mxCell>
         <mxCell id="ymFeAhp0DhXiGv6h24F2-31" value="long VectorIndex (indicates position in vector)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="SORNEBXzX296p3ofjego-1" vertex="1">
