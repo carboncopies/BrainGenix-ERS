@@ -434,11 +434,8 @@ void VisualRenderer::DrawViewportMenu(int Index) {
 
         // Draw Selectable Menu Showing Active Viewport Shader
         for (int i = 0; i < Shaders_.size(); i++) { 
-
-            if (i = Viewports_[Index]->ShaderIndex) {
-                ImGui::Selectable("")
-            } else {
-
+            if (ImGui::Selectable(Shaders_[i]->DisplayName.c_str(), i == Viewports_[Index]->ShaderIndex)) {
+                Viewports_[Index]->ShaderIndex = i;
             }
         }
 
