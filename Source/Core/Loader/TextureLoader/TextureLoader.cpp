@@ -39,7 +39,7 @@ TextureLoader::~TextureLoader() {
 
 
 // Load Texture Overloaded Functions
-ERS_OBJECT_TEXTURE_2D TextureLoader::LoadTexture(const char* Path, bool FlipImage, bool ProcessOpenGL) { // File Version
+ERS_STRUCT_Texture TextureLoader::LoadTexture(const char* Path, bool FlipImage, bool ProcessOpenGL) { // File Version
 
         // Log Texture Load
         Logger_->Log(std::string(std::string("Loading Texture At Filepath: ") + std::string(Path)).c_str(), 3);
