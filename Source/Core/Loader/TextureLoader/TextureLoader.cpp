@@ -45,7 +45,7 @@ ERS_STRUCT_Texture TextureLoader::LoadTexture(const char* Path, bool FlipImage, 
         Logger_->Log(std::string(std::string("Loading Texture At Filepath: ") + std::string(Path)).c_str(), 3);
 
         // Create Texture Object
-        ERS_OBJECT_TEXTURE_2D Texture;
+        ERS_STRUCT_Texture Texture;
 
         // Set Texture Metadata
         Texture.Path = Path;
