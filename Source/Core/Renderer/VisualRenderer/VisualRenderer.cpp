@@ -259,12 +259,12 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
 
     // Update Render Color Buffer Size
-    glBindTexture(GL_TEXTURE_2D, FramebufferColorObjects_[Index]);
+    glBindTexture(GL_TEXTURE_2D, Viewports_[Index]->FramebufferColorObject);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
 
 
     // Update RBO Size
-    glBindRenderbuffer(GL_RENDERBUFFER, RenderbufferObjects_[Index]);
+    glBindRenderbuffer(GL_RENDERBUFFER, Viewports_[Index]->RenderbufferObject);
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Width, Height);
 
 }
@@ -272,26 +272,15 @@ void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
 void VisualRenderer::DeleteViewport(int Index) {
 
     // Log Deletion
-    SystemUtils_->Logger_->Log(std::string(std::string("Destroying Viewport '") + ViewportNames_[Index] + std::string("'")).c_str(), 5);
+    SystemUtils_->Logger_->Log(std::string(std::string("Destroying Viewport '") + Viewports_[Index]->Name + std::string("'")).c_str(), 5);
 
-    // Delete From Vectors
-    ActiveShaders_.erase(ActiveShaders_.begin() + Index);
-    Cameras_.erase(Cameras_.begin() + Index);
-    ViewportNames_.erase(ViewportNames_.begin() + Index);
-    ViewportWidths_.erase(ViewportWidths_.begin() + Index);
-    ViewportHeights_.erase(ViewportHeights_.begin() + Index);
-    WasSelected_.erase(WasSelected_.begin() + Index);
-    InputProcessors_.erase(InputProcessors_.begin() + Index);
-    ViewportEnabled_.erase(ViewportEnabled_.begin() + Index);
+    // Cleanup OpenGL Objects
+    glDeleteFramebuffers(1, &Viewports_[Index]->FramebufferObject);
+    glDeleteTextures(1, &Viewports_[Index]->FramebufferColorObject);
+    glDeleteRenderbuffers(1, &Viewports_[Index]->RenderbufferObject);
 
-    glDeleteFramebuffers(1, &FramebufferObjects_[Index]);
-    FramebufferObjects_.erase(FramebufferObjects_.begin() + Index);
-
-    glDeleteTextures(1, &FramebufferColorObjects_[Index]);
-    FramebufferColorObjects_.erase(FramebufferColorObjects_.begin() + Index);
-
-    glDeleteRenderbuffers(1, &RenderbufferObjects_[Index]);
-    RenderbufferObjects_.erase(RenderbufferObjects_.begin() + Index);
+    // Delete Viewport Struct
+    Viewports_.erase(Viewports_.begin() + Index);
 
 }
 
