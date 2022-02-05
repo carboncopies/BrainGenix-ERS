@@ -231,7 +231,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
     }
 
     // Get Metadata
-    ERS_OBJECT_TEXTURE_2D Texture;
+    ERS_STRUCT_Texture Texture;
     Texture.HasImageData = false;
     Texture.ImageData = NULL;
     float Width, Height, Channels;
