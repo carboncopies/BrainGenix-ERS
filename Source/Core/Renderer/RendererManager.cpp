@@ -62,7 +62,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
     // Setup IOManager
     //SystemUtils_->Logger_->Log("Initializing Input/Output Manager", 5);
-    //IOManager_ = std::make_shared<IOManager>(SystemUtils_->Logger_, Window_, std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>(Camera_));
+    //IOManager_ = std::make_shared<IOManager>(SystemUtils_->Logger_, Window_, std::make_shared<ERS_STRUCT_Camera>(Camera_));
 
     // Make Viewport
     VisualRenderer_->CreateViewport();
