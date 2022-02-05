@@ -436,7 +436,6 @@ void VisualRenderer::DrawViewportMenu(int Index) {
         if(ImGui::BeginMenu("Shader")) {
 
             // Draw Selectable Menu Showing Active Viewport Shader
-            std::cout<<Shaders_.size()<<std::endl;
             for (int i = 0; i < Shaders_.size(); i++) { 
                 if (ImGui::Selectable(Shaders_[i]->DisplayName.c_str(), i == Viewports_[Index]->ShaderIndex)) {
                     Viewports_[Index]->ShaderIndex = i;
