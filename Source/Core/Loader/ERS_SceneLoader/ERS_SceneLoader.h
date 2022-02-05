@@ -50,7 +50,7 @@ private:
      * @brief Populate The Scene Structure, Fill In Vectors, etc. Should Be Called Before Sending Scene Struct To SceneManager.
      * 
      * @param RawSceneData 
-     * @return ERS_OBJECT_SCENE 
+     * @return ERS_STRUCT_Scene 
      */
     ERS_OBJECT_SCENE ProcessScene(YAML::Node RawSceneData, long AssetID);
 
