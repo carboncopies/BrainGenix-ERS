@@ -3,20 +3,23 @@
 ########################################################################
 
 
-
-# Specify CPP Files In Source (Name Should Start With Parent Dir Name)
-set(Vertex_Sources
-)
-
-# Specify Header Files In Source (Name Should Start With Parent Dir Name)
-set(Vertex_Headers
-    "Vertex.h"
-)
-
-
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Vertex ${LoggingSystem_Sources} ${LoggingSystem_Headers} ${BACKWARD_ENABLE})
-target_link_libraries(Vertex
+add_library(ERS_STRUCT_Vertex
+
+            # Add Header Files (.h)
+            "ERS_STRUCT_Vertex.h"
+            
+            ${BACKWARD_ENABLE}
+            )
+
+# Link 3rd Party Libs
+target_link_libraries(ERS_STRUCT_Vertex
     glm
     )
-target_include_directories(Vertex PUBLIC ./)
+
+# Link Internal Libs
+target_link_libraries(ERS_STRUCT_Vertex
+    )
+
+
+target_include_directories(ERS_STRUCT_Vertex PUBLIC ./)
