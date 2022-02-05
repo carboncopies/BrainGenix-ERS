@@ -19,7 +19,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
-#include <Model.h>
+#include <ERS_STRUCT_Model.h>
 #include <ERS_ModelLoader.h>
 #include <Scene.h>
 #include <ERS_STRUCT_Mesh.h>
