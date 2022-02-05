@@ -87,7 +87,20 @@ void Window_ShaderEditor::Draw() {
         if (Enabled_) {
             LivePreviewShaderIndex_ = VisualRenderer_->Shaders_.size();
         } else {
+
+            // Set Any Viewports Shaders To 0 Who Are Using This Shader
+            for (int i = 0; i < VisualRenderer_->Viewports_.size(); i++) {
+                
+                if (i == LivePreviewShaderIndex_) {
+                    VisualRenderer_->Viewports_[i]->ShaderIndex = 0;
+                }
+
+            }
+
+            // Remove Shader From List
             VisualRenderer_->Shaders_.erase(LivePreviewShaderIndex_);
+
+
         }
 
         // Update Last State
