@@ -70,7 +70,7 @@ int main() {
     SystemUtils->SystemShouldRun_ = SystemShouldRun;
 
     // Load Local System Configuration File
-    YAML::Node sERSLocalSystemConfiguration = LoadConfig("Config.yaml");
+    YAML::Node sERSLocalSystemConfiguration = YAML::LoadFile("Config.yaml");
     SystemUtils->LocalSystemConfiguration_ = std::make_shared<YAML::Node>(sERSLocalSystemConfiguration);
 
     // Instantiate Logging Subsystem
