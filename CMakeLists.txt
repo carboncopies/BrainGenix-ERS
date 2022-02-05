@@ -119,7 +119,7 @@ add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer)
 add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer/Framebuffer)
 
 
-add_subdirectory(${SRC_DIR}/Core/Structures/Cameras/NoClip)
+add_subdirectory(${SRC_DIR}/Core/Structures/Cameras/ERS_STRUCT_Camera)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Mesh)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Model)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Texture)

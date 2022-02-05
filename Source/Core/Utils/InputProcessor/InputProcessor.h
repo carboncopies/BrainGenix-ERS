@@ -19,7 +19,7 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <NoClip.h>
+#include <ERS_STRUCT_Camera.h>
 #include <ERS_CLASS_LoggingSystem.h>
 #include <Framebuffer.h>
 
