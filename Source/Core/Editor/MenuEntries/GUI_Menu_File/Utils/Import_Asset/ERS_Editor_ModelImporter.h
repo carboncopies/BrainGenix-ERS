@@ -42,7 +42,7 @@
 #include <2DTexture.h>
 #include <Vertex.h>
 #include <FileIO.h>
-#include <Model.h>
+#include <ERS_STRUCT_Model.h>
 
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_IOData.h>
