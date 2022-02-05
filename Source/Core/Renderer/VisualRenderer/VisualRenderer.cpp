@@ -152,6 +152,8 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     }
     DrawViewportMenu(Index);
 
+
+
     // Calculate Window Position
     ImVec2 vMin = ImGui::GetWindowContentRegionMin();
     ImVec2 vMax = ImGui::GetWindowContentRegionMax();
@@ -426,6 +428,22 @@ void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWi
 
 
 void VisualRenderer::DrawViewportMenu(int Index) {
+
+    // Shader Control Menu
+    if(ImGui::BeginMenu("Shader")) {
+
+        // Draw Selectable Menu Showing Active Viewport Shader
+        for (int i = 0; i < Shaders_.size(); i++) { 
+
+            if (i = Viewports_[Index]->ShaderIndex) {
+                ImGui::Selectable("")
+            } else {
+
+            }
+        }
+
+    ImGui::EndMenu();
+    }
 
 
     
