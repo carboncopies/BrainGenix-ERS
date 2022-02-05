@@ -13,7 +13,7 @@
 
 
 // InputProcessor Constructor
-InputProcessor::InputProcessor(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, GLFWwindow *Window) {
+InputProcessor::InputProcessor(std::shared_ptr<ERS_STRUCT_Camera> Camera, GLFWwindow *Window) {
 
     // Copy To Member Pointer
     Camera_ = Camera;
