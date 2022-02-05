@@ -22,7 +22,7 @@ target_link_libraries(Scene
 
 # Link Internal Libs
 target_link_libraries(Scene
-    Model
+    ERS_STRUCT_Model
     
     )
 
