@@ -38,7 +38,7 @@ class ERS_CLASS_SceneManager{
 
     public:
 
-        std::vector<std::shared_ptr<ERS_OBJECT_SCENE>> Scenes_; /**<Vector Containing Scenes To Be Drawn*/
+        std::vector<std::shared_ptr<ERS_STRUCT_Scene>> Scenes_; /**<Vector Containing Scenes To Be Drawn*/
         int ActiveScene_ = 0; /**<Set The Active Scene */
 
     public:
