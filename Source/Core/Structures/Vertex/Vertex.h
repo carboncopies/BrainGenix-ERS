@@ -25,7 +25,7 @@
 #define MAX_BONE_INFLUENCE 4
 
 
-struct ERS_OBJECT_VERTEX {
+struct ERS_STRUCT_VERTEX {
 
     // Set Metadata
     glm::vec3 Position;
