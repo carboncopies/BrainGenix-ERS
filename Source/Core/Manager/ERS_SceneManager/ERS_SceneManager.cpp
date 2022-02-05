@@ -39,7 +39,7 @@ void ERS_CLASS_SceneManager::UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm
 }
 
 // Add Scene Function
-bool ERS_CLASS_SceneManager::AddScene(ERS_OBJECT_SCENE Scene) {
+bool ERS_CLASS_SceneManager::AddScene(ERS_STRUCT_Scene Scene) {
 
     // Check If Scene Isn't Ready
     if (!Scene.IsSceneLoaded) {
