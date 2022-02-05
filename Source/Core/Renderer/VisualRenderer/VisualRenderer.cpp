@@ -130,7 +130,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
 void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager, float DeltaTime) {
 
     // Render To ImGui
-    ImGui::Begin(ViewportNames_[Index].c_str(), ViewportEnabled_[Index].get());
+    ImGui::Begin(Viewports_[Index]->Name.c_str(), Viewports_[Index]->Enabled.get());
 
     // Set Default Window Size
     ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
