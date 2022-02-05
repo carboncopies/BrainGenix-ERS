@@ -205,7 +205,6 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) 
     
 
         }
-        Model->Meshes[i].UseNewSystem = true;
         Model->Meshes[i].SetupMesh();
     }
 
