@@ -318,8 +318,8 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
 
     // Create IOManager
     SystemUtils_->Logger_->Log("Creating New Input Processor", 4);
-    std::shared_ptr<InputProcessor> InProc = std::make_shared<InputProcessor>(Camera, Window_);
-    InputProcessors_.push_back(InProc);
+    Viewport->Processor = std::make_shared<InputProcessor>(Viewport->Camera, Window_);
+
 
     // Create Framebuffer
     unsigned int FramebufferObject;
@@ -329,8 +329,7 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     // Bind To Framebuffer
     SystemUtils_->Logger_->Log("Binding To Framebuffer Object", 4);
     glBindFramebuffer(GL_FRAMEBUFFER, FramebufferObject);
-    FramebufferObjects_.push_back(FramebufferObject);
-
+    Viewport->FramebufferObject = FramebufferObject;
 
     // Create RenderTexture
     unsigned int FramebufferColorObject;
@@ -340,7 +339,7 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 800, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL); // NOTE: THIS MUST HAPPEN ON RESIZE!
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    FramebufferColorObjects_.push_back(FramebufferColorObject);
+    Viewport->FramebufferColorObject = FramebufferColorObject;
 
     // Attach Texture To Framebuffer
     SystemUtils_->Logger_->Log("Attaching Texture To Framebuffer", 4);
@@ -357,7 +356,7 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     // Attach Renderbuffer to Depth And Stencil Attachment
     SystemUtils_->Logger_->Log("Attaching Render Buffer Object To Depth Stencil", 5);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, RenderbufferObject);
-    RenderbufferObjects_.push_back(RenderbufferObject);
+    Viewport->RenderbufferObject = RenderbufferObject;
 
     // Check Framebuffer Status
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
