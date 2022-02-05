@@ -19,7 +19,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ImageDecoder.h>
-#include <2DTexture.h>
+#include <ERS_STRUCT_Texture.h>
 
 
 /**
