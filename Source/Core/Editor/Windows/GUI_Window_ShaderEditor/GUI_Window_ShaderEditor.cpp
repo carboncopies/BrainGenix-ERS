@@ -296,11 +296,6 @@ void Window_ShaderEditor::DrawToolsWindow() {
 
         if (CompileVisible) {
 
-
-            // Draw The Controls
-            ImGui::Checkbox("Live Preview", &LivePreview_);
-            ImGui::Separator();
-
             // Draw Log
             ImGui::BeginChild("Shader Log");
             ImGui::TextWrapped("%s", ShaderLog.c_str());
