@@ -24,7 +24,7 @@ target_link_libraries(ERS_SceneWriter
     ERS_CLASS_LoggingSystem
     Model
     Scene
-    Meshes
+    ERS_STRUCT_Mesh
     Textures
 
     ERS_STRUCT_SystemUtils
