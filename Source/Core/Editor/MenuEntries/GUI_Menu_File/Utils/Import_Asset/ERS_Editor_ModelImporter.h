@@ -78,7 +78,7 @@ class ERS_CLASS_ModelImporter {
          * @param Scene 
          * @return ERS_STRUCT_Mesh 
          */
-        void ProcessMesh(ERS_OBJECT_MODEL* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory);
+        void ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory);
 
         /**
          * @brief Load Textures From Model.
