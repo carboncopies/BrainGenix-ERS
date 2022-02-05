@@ -165,15 +165,20 @@ void Window_ShaderEditor::DrawEditorWindow() {
                     ImGui::EndMenu();
                     }
 
-                    // Save Option
+                    // Save Options
+                    ImGui::Separator();
                     if (ImGui::MenuItem("Save")) {
+                        if (Mode_ == 0) {
+                            SaveShader(Editors_[0]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID);
+                        } else {
+                            SaveShader(Editors_[1]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID);
+                        }
+                    }
+
+                    if (ImGui::MenuItem("Save All")) {
                         SaveShader(Editors_[0]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID);
                         SaveShader(Editors_[1]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID);
                     }
-
-
-
-
 
 
                     // Exit Button
