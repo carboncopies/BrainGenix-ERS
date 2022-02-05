@@ -62,7 +62,7 @@ class Window_SceneTree {
          * @param Scene 
          * @param SceneIndex
          */
-        void DrawScene(std::shared_ptr<ERS_OBJECT_SCENE> Scene, int SceneIndex);
+        void DrawScene(std::shared_ptr<ERS_STRUCT_Scene> Scene, int SceneIndex);
 
 
 
