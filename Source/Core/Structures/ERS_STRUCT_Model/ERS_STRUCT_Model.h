@@ -22,7 +22,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_Shader.h>
 #include <ERS_STRUCT_Mesh.h>
-#include <2DTexture.h>
+#include <ERS_STRUCT_Texture.h>
 
 
 
