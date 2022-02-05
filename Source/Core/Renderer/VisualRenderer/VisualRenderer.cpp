@@ -429,21 +429,24 @@ void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWi
 
 void VisualRenderer::DrawViewportMenu(int Index) {
 
-    // Shader Control Menu
-    if(ImGui::BeginMenu("Shader")) {
+    // Menu Bar
+    if (ImGui::BeginMenuBar()) {
 
-        // Draw Selectable Menu Showing Active Viewport Shader
-        for (int i = 0; i < Shaders_.size(); i++) { 
-            if (ImGui::Selectable(Shaders_[i]->DisplayName.c_str(), i == Viewports_[Index]->ShaderIndex)) {
-                Viewports_[Index]->ShaderIndex = i;
+        // Shader Control Menu
+        if(ImGui::BeginMenu("Shader")) {
+
+            // Draw Selectable Menu Showing Active Viewport Shader
+            for (int i = 0; i < Shaders_.size(); i++) { 
+                if (ImGui::Selectable(Shaders_[i]->DisplayName.c_str(), i == Viewports_[Index]->ShaderIndex)) {
+                    Viewports_[Index]->ShaderIndex = i;
+                }
             }
+
+        ImGui::EndMenu();
         }
 
-    ImGui::EndMenu();
+
+    ImGui::EndMenuBar();
     }
-
-
-    
-
 
 }
