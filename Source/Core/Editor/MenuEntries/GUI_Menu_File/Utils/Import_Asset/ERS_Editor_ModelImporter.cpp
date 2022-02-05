@@ -110,7 +110,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
 
 // Process Nodes
-void ERS_CLASS_ModelImporter::ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory) {
+void ERS_CLASS_ModelImporter::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory) {
 
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
