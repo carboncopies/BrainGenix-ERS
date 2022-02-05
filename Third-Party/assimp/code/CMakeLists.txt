@@ -125,7 +125,7 @@ SET( PUBLIC_HEADERS
   ${HEADER_PATH}/StandardShapes.h
   ${HEADER_PATH}/RemoveComments.h
   ${HEADER_PATH}/Subdivision.h
-  ${HEADER_PATH}/Vertex.h
+  ${HEADER_PATH}/ERS_STRUCT_Vertex.h
   ${HEADER_PATH}/LineSplitter.h
   ${HEADER_PATH}/TinyFormatter.h
   ${HEADER_PATH}/Profiler.h
