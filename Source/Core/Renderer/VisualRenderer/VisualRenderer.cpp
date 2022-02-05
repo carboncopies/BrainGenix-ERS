@@ -103,10 +103,10 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
 
 
     // Handle Window Input
-    for (int i = 0; i < InputProcessors_.size(); i++) {
+    for (int i = 0; i < Viewports_.size(); i++) {
 
         // Get Input Processor
-        std::shared_ptr<InputProcessor> InputProcessor = InputProcessors_[i];
+        std::shared_ptr<InputProcessor> InputProcessor = Viewports_[i]->Processor;
 
         bool CaptureEnabled = false;
         if ((CaptureIndex_ == i) && (CaptureCursor_)) {
