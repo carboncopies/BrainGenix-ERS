@@ -139,7 +139,6 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_RGBColor)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Viewport)
 
 
-add_subdirectory(${SRC_DIR}/Core/Loader/ImageLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_SceneLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ShaderLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ProjectLoader)
