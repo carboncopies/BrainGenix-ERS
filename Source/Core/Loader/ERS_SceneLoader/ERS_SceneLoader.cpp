@@ -56,7 +56,7 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(long AssetID) {
 ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, long AssetID) {
 
     // Create Scene Instance
-    ERS_OBJECT_SCENE Scene;
+    ERS_STRUCT_Scene Scene;
 
     // Grab Metadata
     Scene.SceneFormatVersion = RawSceneData["SceneFormatVersion"].as<long>();
