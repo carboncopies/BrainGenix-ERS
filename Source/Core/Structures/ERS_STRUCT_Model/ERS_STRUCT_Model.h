@@ -41,7 +41,7 @@ struct ERS_STRUCT_Model {
 
     // Model Data
     std::vector<ERS_STRUCT_Mesh> Meshes;
-    std::vector<ERS_OBJECT_TEXTURE_2D> Textures_Loaded;
+    std::vector<ERS_STRUCT_Texture> Textures_Loaded;
     std::string Directory;
     std::string Name = "Name Not Assigned";
     long AssetID;
