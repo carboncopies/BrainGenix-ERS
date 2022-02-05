@@ -39,7 +39,7 @@ struct ERS_OBJECT_MODEL {
 
 
     // Model Data
-    std::vector<ERS_OBJECT_MESH> Meshes;
+    std::vector<ERS_STRUCT_Mesh> Meshes;
     std::vector<ERS_OBJECT_TEXTURE_2D> Textures_Loaded;
     std::string Directory;
     std::string Name = "Name Not Assigned";
