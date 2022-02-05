@@ -12,7 +12,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <InputProcessor.h>
-#include <NoClip.h>
+#include <ERS_STRUCT_Camera.h>
 
 
 
