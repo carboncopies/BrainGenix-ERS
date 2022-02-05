@@ -74,11 +74,11 @@ void ERS_STRUCT_Mesh::SetupMesh() {
 // Draw The Mesh
 void ERS_STRUCT_Mesh::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
 
-    // Bind To OpenGL Handels
-    unsigned int DiffuseHandel = 1;
-    unsigned int SpecularHandel = 1;
-    unsigned int NormalHandel = 1;
-    unsigned int HeightHandel = 1;
+    // Bind To OpenGL Handles
+    unsigned int DiffuseHandle = 1;
+    unsigned int SpecularHandle = 1;
+    unsigned int NormalHandle = 1;
+    unsigned int HeightHandle = 1;
 
     // Iterate Through Textures
     for (unsigned int i = 0; i < TextureIDs.size(); i++) {
@@ -92,13 +92,13 @@ void ERS_STRUCT_Mesh::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
 
         // Detect Type
         if (Name == "texture_diffuse")
-            Number = std::to_string(DiffuseHandel++);
+            Number = std::to_string(DiffuseHandle++);
         else if(Name == "texture_specular")
-            Number = std::to_string(SpecularHandel++);
+            Number = std::to_string(SpecularHandle++);
         else if(Name == "texture_normal")
-            Number = std::to_string(NormalHandel++);
+            Number = std::to_string(NormalHandle++);
         else if(Name == "texture_height")
-            Number = std::to_string(HeightHandel++);
+            Number = std::to_string(HeightHandle++);
 
 
         // Set Sampler
