@@ -29,7 +29,6 @@ target_link_libraries(ERS_STRUCT_Mesh
     ERS_STRUCT_Shader
     ERS_STRUCT_Texture
     ERS_STRUCT_Vertex
-    ImageLoader
     )
 
 target_include_directories(ERS_STRUCT_Mesh PUBLIC ./)
