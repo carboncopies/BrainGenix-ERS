@@ -62,7 +62,7 @@ public:
      * 
      * @return std::string 
      */
-    std::string ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE> Scene);
+    std::string ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> Scene);
 
     /**
      * @brief Save the scene passed in as a yaml::node.
