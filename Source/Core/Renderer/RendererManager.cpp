@@ -31,10 +31,6 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
     Cursors3D_ = std::make_shared<Cursors3D>();
 
 
-    // Initialize Texture Loader
-    TextureLoader_ = std::make_shared<TextureLoader>(SystemUtils_->Logger_);
-
-
     // Initialize Systems
     SystemUtils_->Logger_->Log("Initializing GLFW", 5);
     InitializeGLFW();
