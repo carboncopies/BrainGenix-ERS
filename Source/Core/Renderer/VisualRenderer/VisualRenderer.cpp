@@ -321,7 +321,7 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
 
     // Populate Viewport Struct
     Viewport->ShaderIndex = DefaultShader_;
-    Viewport->Camera = std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>();
+    Viewport->Camera = std::make_shared<ERS_STRUCT_Camera>();
     Viewport->Name = ViewportName;
     
     Viewport->Width = 1;
