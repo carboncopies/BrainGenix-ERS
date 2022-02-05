@@ -250,14 +250,7 @@ void Window_ShaderEditor::DrawEditorWindow() {
 
                 if (ImGui::BeginMenu("Shader")) {
 
-                    // Mode Menu
-                    if (ImGui::BeginMenu("Mode")) {
-
-
-
-
-                    ImGui::EndMenu();
-                    }
+  
 
 
 
