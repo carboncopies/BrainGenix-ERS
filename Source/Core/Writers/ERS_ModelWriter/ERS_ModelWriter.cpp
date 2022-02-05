@@ -34,7 +34,7 @@ ERS_CLASS_ModelWriter::~ERS_CLASS_ModelWriter() {
 
 
 // Generate Model Metadata
-std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(std::shared_ptr<ERS_OBJECT_MODEL> Model) {
+std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(std::shared_ptr<ERS_STRUCT_Model> Model) {
 
     // Create Model Metadata, Begin Writing
     YAML::Emitter Metadata;
