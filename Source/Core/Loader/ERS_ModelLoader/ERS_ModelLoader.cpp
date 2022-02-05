@@ -360,7 +360,7 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, aiMe
     for (unsigned int i = 0; i < Mesh->mNumVertices; i++) {
 
         // Hold Vertex Data
-        ERS_OBJECT_VERTEX Vertex;
+        ERS_STRUCT_Vertex Vertex;
         glm::vec3 Vector;
 
 
