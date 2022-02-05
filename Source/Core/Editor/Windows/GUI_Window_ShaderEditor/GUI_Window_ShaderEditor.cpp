@@ -252,7 +252,6 @@ void Window_ShaderEditor::DrawEditorWindow() {
                 ImGui::EndMenu();
                 }
 
-                if (ImGui::BeginMenu("Fragment")) {
 
                 ImGui::EndMenu();
                 }
