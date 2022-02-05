@@ -102,6 +102,8 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
     }
 
 
+    std::cout<<Viewports_.size()<<std::endl;
+
     // Handle Window Input
     for (int i = 0; i < Viewports_.size(); i++) {
 
