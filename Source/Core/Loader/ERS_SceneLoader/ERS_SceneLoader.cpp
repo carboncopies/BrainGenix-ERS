@@ -35,7 +35,7 @@ ERS_CLASS_SceneLoader::~ERS_CLASS_SceneLoader() {
 }
 
 // Load And Process Scene
-ERS_OBJECT_SCENE ERS_CLASS_SceneLoader::ProcessScene(long AssetID) {
+ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(long AssetID) {
 
     // Read Asset Info
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Scene At ID: ") + std::to_string(AssetID)).c_str(), 4);
