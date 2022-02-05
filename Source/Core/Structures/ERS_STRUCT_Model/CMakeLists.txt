@@ -28,7 +28,7 @@ target_link_libraries(ERS_STRUCT_Model
 target_link_libraries(ERS_STRUCT_Model
     ERS_STRUCT_Shader
     ERS_STRUCT_Mesh
-    Textures
+    ERS_STRUCT_Texture
     )
 
 target_include_directories(ERS_STRUCT_Model PUBLIC ./)
