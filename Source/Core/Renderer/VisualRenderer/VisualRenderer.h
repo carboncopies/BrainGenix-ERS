@@ -110,14 +110,6 @@ private:
     void UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight);
 
     /**
-     * @brief Set the Shader object
-     * 
-     * @param Shader 
-     * @param ID 
-     */
-    void SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID);
-
-    /**
      * @brief Set the Default Shader by index
      * 
      * @param ShaderID 
@@ -188,7 +180,13 @@ public:
      */
     void DeleteViewport(int Index);
     
- 
+     /**
+     * @brief Set the Shader object
+     * 
+     * @param Shader 
+     * @param ID 
+     */
+    void SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID);
         
 
 };
