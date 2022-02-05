@@ -24,6 +24,6 @@ void GUI_Windowutil_DuplicateModel(std::shared_ptr<ERS_CLASS_SceneManager> Scene
 
 
     // Add To SceneManager
-    SceneManager->Scenes_[SceneIndex]->Models.push_back(std::make_shared<ERS_OBJECT_MODEL>(NewModel));
+    SceneManager->Scenes_[SceneIndex]->Models.push_back(std::make_shared<ERS_STRUCT_Model>(NewModel));
 
 }
