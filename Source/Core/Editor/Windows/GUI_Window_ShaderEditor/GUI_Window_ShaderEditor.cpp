@@ -245,7 +245,6 @@ void Window_ShaderEditor::DrawToolsWindow() {
 
     bool CompileVisible = ImGui::Begin("Shader Tools", &Enabled_);
 
-
         // Compile Shader Object
         std::string VertexText = Editors_[0]->GetText();
         std::string FragmentText = Editors_[1]->GetText();
@@ -259,7 +258,6 @@ void Window_ShaderEditor::DrawToolsWindow() {
         LivePreviewShader_->SetInt("texture_diffuse1", 0);
         LivePreviewShader_->DisplayName = "Preview Shader";
         LivePreviewShader_->InternalName = "Preview Shader";
-
 
 
         // If Autopreview, Update Shader
