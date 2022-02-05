@@ -1071,7 +1071,7 @@ SET( assimp_src
   ${STEPParser_SRCS}
 #  ${Step_SRCS} check if we need a different approach
 
-  # Model Support
+  # ERS_STRUCT_Model Support
   ${ASSIMP_LOADER_SRCS}
   ${ASSIMP_EXPORTER_SRCS}
 
