@@ -23,7 +23,7 @@ target_link_libraries(GUI_Subwindow_DeleteScene
 # Link Internal Libs
 target_link_libraries(GUI_Subwindow_DeleteScene
     ERS_SceneManager
-    Scene
+    ERS_STRUCT_Scene
     )
 
 target_include_directories(GUI_Subwindow_DeleteScene PUBLIC ./)
