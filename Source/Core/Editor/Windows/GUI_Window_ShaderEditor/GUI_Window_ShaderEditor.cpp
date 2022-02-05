@@ -132,16 +132,35 @@ void Window_ShaderEditor::DrawEditorWindow() {
 
 
             if (ImGui::BeginMenuBar()) {
-                if (ImGui::BeginMenu("File"))
-                {
-                    if (ImGui::MenuItem("Save"))
-                    {
-                        // Write The Asset
+                if (ImGui::BeginMenu("File")) {
+
+                    // Save Option
+                    if (ImGui::MenuItem("Save")) {
                         SaveShader(Editors_[0]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID);
                         SaveShader(Editors_[1]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID);
-
                     }
+
+
+                    // Program Selector Dropdown
+                    if (ImGui::BeginMenu("Programs")) {
+
+                        for (long i = 0; i < ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.size(); i++) {
+
+                            std::string ShaderProgramName = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].Name;
+                            if (ImGui::MenuItem(ShaderProgramName.c_str())) {
+
+                                // Update Index, REload
+                                SelectedShaderProgramIndex_ = i;
+                                ReloadEditorText();
+
+                            }
+                        }
+
+
                     ImGui::EndMenu();
+                    }
+
+                ImGui::EndMenu();
                 }
                 if (ImGui::BeginMenu("Edit"))
                 {
@@ -201,7 +220,12 @@ void Window_ShaderEditor::DrawEditorWindow() {
                             Editor_->Render("Shader Editor");
                         }
 
-                    // New Shader Menu
+
+
+                    ImGui::EndMenu();
+                    }
+
+                    // New Shader Menu Item
                     if (ImGui::MenuItem("New Shader Program")) {
 
                         // ERS_STRUCT_ShaderProgramAssetIDs ShaderProgram;
@@ -210,28 +234,6 @@ void Window_ShaderEditor::DrawEditorWindow() {
                         // ShaderProgram.VertexID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
                         // ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.push_back(ShaderProgram);
 
-                    }
-
-                    ImGui::EndMenu();
-                    }
-
-                    // Shader Dropdown
-                    if (ImGui::BeginMenu("Programs")) {
-
-                        for (long i = 0; i < ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.size(); i++) {
-
-                            std::string ShaderProgramName = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].Name;
-                            if (ImGui::MenuItem(ShaderProgramName.c_str())) {
-
-                                // Update Index, REload
-                                SelectedShaderProgramIndex_ = i;
-                                ReloadEditorText();
-
-                            }
-                        }
-
-
-                    ImGui::EndMenu();
                     }
 
                 ImGui::EndMenu();
