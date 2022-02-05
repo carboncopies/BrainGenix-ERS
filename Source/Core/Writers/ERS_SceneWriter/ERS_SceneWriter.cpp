@@ -52,7 +52,7 @@ void SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputScene, lon
 }
 
 // SceneWriter Process Scene Function
-std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE> InputScene) {
+std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputScene) {
 
     // Log Scene Write
     SystemUtils_->Logger_->Log(std::string(std::string("Serializing Scene '") + InputScene->SceneName + std::string("'")).c_str(), 4);
