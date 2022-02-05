@@ -26,7 +26,7 @@
 #include <ERS_CLASS_LoggingSystem.h>
 #include <VisualRenderer.h>
 #include <IOManager.h>
-#include <NoClip.h>
+#include <ERS_STRUCT_Camera.h>
 
 #include <ERS_CLASS_ShaderLoader.h>
 #include <Framebuffer.h>
