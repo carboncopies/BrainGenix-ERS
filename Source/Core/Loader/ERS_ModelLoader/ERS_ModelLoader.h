@@ -73,7 +73,7 @@ class ERS_CLASS_ModelLoader {
 
         void WorkerThread(); /**<Worker Thread Function*/
 
-        ERS_OBJECT_TEXTURE_2D LoadTexture(long ID, bool FlipTextures = false);
+        ERS_STRUCT_Texture LoadTexture(long ID, bool FlipTextures = false);
 
         /**
          * @brief Function Used To Process Subnodes Of SceneFiles.
