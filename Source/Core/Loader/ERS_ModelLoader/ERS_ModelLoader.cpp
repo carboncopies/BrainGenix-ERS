@@ -214,7 +214,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
 }
 
 // Loads A Texture With The Given ID
-ERS_OBJECT_TEXTURE_2D ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures) {
+ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures) {
 
     // Load Image Bytes Into Memory
     std::shared_ptr<ERS_STRUCT_IOData> ImageData = std::make_shared<ERS_STRUCT_IOData>();
