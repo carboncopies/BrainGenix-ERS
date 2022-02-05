@@ -29,7 +29,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
-#include <NoClip.h>
+#include <ERS_STRUCT_Camera.h>
 #include <ERS_STRUCT_LocRotScale.h>
 
 
