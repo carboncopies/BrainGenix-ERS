@@ -90,7 +90,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
     FrameNumber_++;
 
     // Iterate Through Viewports
-    for (int i = 0; i<ActiveShaders_.size(); i++) {
+    for (int i = 0; i<Viewports_.size(); i++) {
         UpdateViewport(i, SceneManager, DeltaTime);
     }
 
