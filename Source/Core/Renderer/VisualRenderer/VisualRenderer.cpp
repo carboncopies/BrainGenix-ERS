@@ -142,6 +142,8 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     int RenderHeight = ImGui::GetWindowSize().y;
 
 
+    // Latching MenuEnable Keybind
+
     // Calculate Window Position
     ImVec2 vMin = ImGui::GetWindowContentRegionMin();
     ImVec2 vMax = ImGui::GetWindowContentRegionMax();
