@@ -88,14 +88,12 @@ void Window_ShaderEditor::Draw() {
             LivePreviewShaderIndex_ = VisualRenderer_->Shaders_.size();
         } else {
 
-            std::cout<<"Resetting Shader Indexes\n";
 
             // Set Any Viewports Shaders To 0 Who Are Using This Shader
             for (int i = 0; i < VisualRenderer_->Viewports_.size(); i++) {
                 
-                if (i == LivePreviewShaderIndex_) {
+                if (VisualRenderer_->Viewports_[i]->ShaderIndex == LivePreviewShaderIndex_) {
 
-                    std::cout<<"Resetting Viewport "<<i<<std::endl;
                     VisualRenderer_->Viewports_[i]->ShaderIndex = 0;
                 }
 
