@@ -21,7 +21,7 @@
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_STRUCT_Model.h>
 #include <ERS_ModelLoader.h>
-#include <Scene.h>
+#include <ERS_STRUCT_Scene.h>
 #include <ERS_STRUCT_Mesh.h>
 #include <2DTexture.h>
 
