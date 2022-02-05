@@ -150,7 +150,7 @@ void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr
 }
 
 // Process GPU Data (Must Be Done In Thread With OPENGL Context (should be main thread))
-void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model) {
+void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) {
 
     // Push Textures To GPU RAM
     for (int i = 0; i < Model->TexturesToPushToGPU_.size(); i++) {
