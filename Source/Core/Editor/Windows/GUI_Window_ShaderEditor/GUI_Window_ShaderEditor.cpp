@@ -248,14 +248,6 @@ void Window_ShaderEditor::DrawEditorWindow() {
                 ImGui::EndMenu();
                 }
 
-                if (ImGui::BeginMenu("Shader")) {
-
-  
-
-
-
-                ImGui::EndMenu();
-                }
             
             ImGui::EndMenuBar();
             }
