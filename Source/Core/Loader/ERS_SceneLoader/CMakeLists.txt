@@ -22,7 +22,7 @@ target_link_libraries(ERS_SceneLoader
 # Link Internal Libs
 target_link_libraries(ERS_SceneLoader
     ERS_CLASS_LoggingSystem
-    Model
+    ERS_STRUCT_Model
     ERS_ModelLoader
     Scene
     ERS_STRUCT_Mesh
