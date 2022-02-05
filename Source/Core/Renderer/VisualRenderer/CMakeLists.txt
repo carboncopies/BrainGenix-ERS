@@ -32,7 +32,7 @@ target_link_libraries(VisualRenderer
     ImageLoader
     Framebuffer
 
-    Model
+    ERS_STRUCT_Model
     Scene
     ERS_SceneManager
 
