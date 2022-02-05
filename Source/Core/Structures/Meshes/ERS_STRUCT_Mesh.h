@@ -30,39 +30,39 @@
  */
 class ERS_STRUCT_Mesh {
 
-    private:
+private:
 
-        unsigned int VBO;
-        unsigned int EBO;
-
-
-
-    public:
-
-        // Delcare Methods
-        void SetupMesh();
-
-        // Setup Mesh Data
-        std::vector<ERS_OBJECT_VERTEX> Vertices;
-        std::vector<unsigned int> Indices;
-        
-        std::vector<int> TextureReferences_;
-        std::vector<unsigned int> TextureIDs;
-        std::vector<std::string> TextureNames;
-        bool UseNewSystem = false;
-        
-        
-        long NumberIndices;
-        
-        // Setup OpenGL Handel
-        unsigned int VAO;
-
-        // Define Helper Vars
-        bool _HasInitialized = false;
+    unsigned int VBO;
+    unsigned int EBO;
 
 
 
+public:
 
-        void Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader);
+    // Delcare Methods
+    void SetupMesh();
+
+    // Setup Mesh Data
+    std::vector<ERS_OBJECT_VERTEX> Vertices;
+    std::vector<unsigned int> Indices;
+    
+    std::vector<int> TextureReferences_;
+    std::vector<unsigned int> TextureIDs;
+    std::vector<std::string> TextureNames;
+    bool UseNewSystem = false;
+    
+    
+    long NumberIndices;
+    
+    // Setup OpenGL Handel
+    unsigned int VAO;
+
+    // Define Helper Vars
+    bool _HasInitialized = false;
+
+
+
+
+    void Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader);
 
 };
