@@ -133,7 +133,7 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_OBJECT_SCENE> A
 }
 
 // Add Model To Load Queue
-void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool FlipTextures) {
+void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures) {
 
     // Log Addition
     SystemUtils_->Logger_->Log(std::string(std::string("Adding Model '") + std::to_string(AssetID) + std::string("' To Load Queue")).c_str(), 4);
