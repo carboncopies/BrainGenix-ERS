@@ -242,9 +242,9 @@ void Window_ShaderEditor::DrawEditorWindow() {
                 }
 
                 if (ImGui::BeginMenu("Fragment")) {
-                            Mode_ = 1;
-                            Editor_ = Editors_[Mode_];
-                            Editor_->Render("Shader Editor");
+                    Mode_ = 1;
+                    Editor_ = Editors_[Mode_];
+                    Editor_->Render("Shader Editor");
                 ImGui::EndMenu();
                 }
 
