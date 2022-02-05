@@ -82,7 +82,6 @@ void Window_ShaderEditor::Draw() {
 
     // Check Enable Change
     if (LastEnabledState_ != Enabled_) {
-        
 
         // If Just Enabled
         if (Enabled_) {
@@ -90,9 +89,9 @@ void Window_ShaderEditor::Draw() {
         } else {
             VisualRenderer_->Shaders_.erase(LivePreviewShaderIndex_);
         }
-
     }
 
+    // Draw Windows
     if (Enabled_) {
     
         DrawEditorWindow();
