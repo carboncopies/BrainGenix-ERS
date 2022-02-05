@@ -25,7 +25,7 @@ target_link_libraries(ERS_SceneLoader
     Model
     ERS_ModelLoader
     Scene
-    Meshes
+    ERS_STRUCT_Mesh
     Textures
     ERS_STRUCT_Shader
     )
