@@ -22,7 +22,7 @@ target_link_libraries(GUI_Windowutil_DuplicateModel
 # Link Internal Libs
 target_link_libraries(GUI_Windowutil_DuplicateModel
     ERS_SceneManager
-    Model
+    ERS_STRUCT_Model
     )
 
 target_include_directories(GUI_Windowutil_DuplicateModel PUBLIC ./)
