@@ -41,7 +41,7 @@ class IOManager {
         // Class Instances
         std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Logging System Instance Pointer*/
         std::shared_ptr<InputProcessor> InputProcessor_; /**<Pointer to input processor instance*/
-        std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera_; /**<Pointer To Camera Instance*/
+        std::shared_ptr<ERS_STRUCT_Camera> Camera_; /**<Pointer To Camera Instance*/
         //FramebufferManager *FramebufferManager_; /**<Pointer To Framebuffer Manager Instance*/
 
         // Objects
