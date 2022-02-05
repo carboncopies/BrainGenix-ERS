@@ -134,12 +134,17 @@ void Window_ShaderEditor::DrawEditorWindow() {
             if (ImGui::BeginMenuBar()) {
                 if (ImGui::BeginMenu("File")) {
 
-                    // Save Option
-                    if (ImGui::MenuItem("Save")) {
-                        SaveShader(Editors_[0]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID);
-                        SaveShader(Editors_[1]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID);
-                    }
 
+                    // New Shader Option
+                    if (ImGui::MenuItem("New")) {
+
+                        // ERS_STRUCT_ShaderProgramAssetIDs ShaderProgram;
+                        // ShaderProgram.Name = "Untitled";
+                        // ShaderProgram.FragmentID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+                        // ShaderProgram.VertexID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+                        // ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.push_back(ShaderProgram);
+
+                    }
 
                     // Program Selector Dropdown
                     if (ImGui::BeginMenu("Open")) {
@@ -160,20 +165,21 @@ void Window_ShaderEditor::DrawEditorWindow() {
                     ImGui::EndMenu();
                     }
 
+                    // Save Option
+                    if (ImGui::MenuItem("Save")) {
+                        SaveShader(Editors_[0]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID);
+                        SaveShader(Editors_[1]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID);
+                    }
 
-                    // Separator
+
+
+
+
+
+                    // Exit Button
                     ImGui::Separator();
-
-
-                    // New Shader Option
-                    if (ImGui::MenuItem("New")) {
-
-                        // ERS_STRUCT_ShaderProgramAssetIDs ShaderProgram;
-                        // ShaderProgram.Name = "Untitled";
-                        // ShaderProgram.FragmentID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
-                        // ShaderProgram.VertexID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
-                        // ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.push_back(ShaderProgram);
-
+                    if (ImGui::MenuItem("Exit")) {
+                        Enabled_ = false;
                     }
 
 
