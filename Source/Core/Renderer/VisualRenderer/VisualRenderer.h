@@ -109,12 +109,6 @@ private:
      */
     void UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight);
 
-    /**
-     * @brief Set the Default Shader by index
-     * 
-     * @param ShaderID 
-     */
-    void SetDefaultShader(int ShaderID);
 
     /**
      * @brief Updates a specific vieport of given index (should be used in update viepowrts function)
@@ -188,5 +182,12 @@ public:
      */
     void SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID);
         
+    /**
+     * @brief Set the Default Shader by index
+     * 
+     * @param ShaderID 
+     */
+    void SetDefaultShader(int ShaderID);
+
 
 };
