@@ -83,7 +83,7 @@ class ERS_CLASS_SceneManager{
          * @return true 
          * @return false
          */
-        bool AddScene(ERS_OBJECT_SCENE Scene);
+        bool AddScene(ERS_STRUCT_Scene Scene);
 
         /**
          * @brief Render scene set to active.
