@@ -28,7 +28,6 @@ target_link_libraries(InputProcessor
 target_link_libraries(InputProcessor
     ERS_STRUCT_Camera
     ERS_CLASS_LoggingSystem
-    TextureLoader
 
     ERS_STRUCT_Model
     ERS_STRUCT_Scene
