@@ -23,7 +23,7 @@ target_link_libraries(ERS_ModelWriter
 target_link_libraries(ERS_ModelWriter
     ERS_CLASS_LoggingSystem
     ERS_STRUCT_Model
-    Scene
+    ERS_STRUCT_Scene
     ERS_STRUCT_Mesh
     Textures
     ERS_InputOutputSubsystem
