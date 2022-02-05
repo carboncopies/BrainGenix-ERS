@@ -184,7 +184,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Resize Viewport If Needed
-    if ((RenderWidth != ViewportWidths_[Index]) || (RenderHeight != ViewportHeights_[Index])) {
+    if ((RenderWidth != Viewports_[Index]->Width) || (RenderHeight != ViewportHeights_[Index])) {
         ResizeViewport(Index, RenderWidth, RenderHeight);
     }
 
@@ -202,9 +202,9 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
     // Update Camera
     float AspectRatio = (float)RenderWidth / (float)RenderHeight;
-    Cameras_[Index]->SetAspectRatio(AspectRatio);
-    glm::mat4 projection = Cameras_[Index]->GetProjectionMatrix();
-    glm::mat4 view = Cameras_[Index]->GetViewMatrix();
+    Viewports_[Index]->Camera->SetAspectRatio(AspectRatio);
+    glm::mat4 projection = Viewports_[Index]->Camera->GetProjectionMatrix();
+    glm::mat4 view = Viewports_[Index]->Camera->GetViewMatrix();
 
     // Update Shaders
     UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight);
