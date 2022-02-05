@@ -34,11 +34,11 @@ VisualRenderer::VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUti
 VisualRenderer::~VisualRenderer() {
 
     // Destroy Framebuffers
-    for (int i = 0; i < FramebufferObjects_.size(); i++) {
+    for (int i = 0; i < Viewports_.size(); i++) {
 
-        glDeleteFramebuffers(1, &FramebufferObjects_[i]);
-        glDeleteTextures(1, &FramebufferColorObjects_[i]);
-        glDeleteRenderbuffers(1, &RenderbufferObjects_[i]);
+        glDeleteFramebuffers(1, &Viewports_[i]->FramebufferObject);
+        glDeleteTextures(1, &Viewports_[i]->FramebufferColorObject);
+        glDeleteRenderbuffers(1, &Viewports_[i]->RenderbufferObject);
 
     }
 

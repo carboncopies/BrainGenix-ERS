@@ -58,6 +58,8 @@ private:
 
 public:
     
+    std::vector<std::shared_ptr<ERS_STRUCT_Viewport>> Viewports_; /**Pointer to struct of viewports*;
+
     std::map<int, std::shared_ptr<ERS_STRUCT_Shader>> Shaders_; /**<Map of shader pointers and shader program ids*/
     std::vector<int> ActiveShaders_; /**<Index of shader program used by each viewport*/
     int DefaultShader_ = 0; /**<Index of default shader program to be used*/
