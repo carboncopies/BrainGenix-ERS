@@ -235,11 +235,18 @@ void Window_ShaderEditor::DrawEditorWindow() {
 
                 // Enter Vertex/Fragment Mode
                 if (ImGui::BeginMenu("Mode")) {
+                    
                     if (ImGui::MenuItem("Vertex")) {
                         Mode_ = 0;
                         Editor_ = Editors_[Mode_];
                         Editor_->Render("Shader Editor");
                     }
+
+                    if (ImGui::MenuItem("Fragment")) {
+                        
+                    }
+
+
                 ImGui::EndMenu();
                 }
 
