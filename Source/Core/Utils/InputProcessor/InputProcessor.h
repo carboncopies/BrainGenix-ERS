@@ -73,7 +73,7 @@ class InputProcessor {
          * 
          * @param Camera 
          */
-        InputProcessor(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, GLFWwindow* Window);
+        InputProcessor(std::shared_ptr<ERS_STRUCT_Camera> Camera, GLFWwindow* Window);
 
         /**
          * @brief Destroy the Input Processor object
