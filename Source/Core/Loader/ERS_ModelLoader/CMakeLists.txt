@@ -28,7 +28,7 @@ target_link_libraries(ERS_ModelLoader
 # Link Internal Libs
 target_link_libraries(ERS_ModelLoader
     ERS_STRUCT_Mesh
-    Model
+    ERS_STRUCT_Model
     Textures
     TextureLoader
     ERS_STRUCT_SystemUtils
