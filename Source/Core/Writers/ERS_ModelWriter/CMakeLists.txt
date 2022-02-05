@@ -22,7 +22,7 @@ target_link_libraries(ERS_ModelWriter
 # Link Internal Libs
 target_link_libraries(ERS_ModelWriter
     ERS_CLASS_LoggingSystem
-    Model
+    ERS_STRUCT_Model
     Scene
     ERS_STRUCT_Mesh
     Textures
