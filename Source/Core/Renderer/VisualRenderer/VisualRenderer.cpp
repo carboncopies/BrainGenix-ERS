@@ -141,9 +141,6 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     // Set Default Window Size
     ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
 
-    // Get Window Input
-    int RenderWidth = ImGui::GetWindowSize().x;
-    int RenderHeight = ImGui::GetWindowSize().y;
 
 
     // Handle Viewport Menu
@@ -167,6 +164,11 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     int WindowTopLeftCornerY = vMin.y;
     int WindowBottomRightCornerX = vMax.x;
     int WindowBottomRightCornerY = vMax.y;
+
+
+    // Get Window Input
+    int RenderWidth = WindowTopLeftCornerX - WindowBottomRightCornerX;
+    int RenderHeight = WindowTopLeftCornerY - WindowBottomRightCornerY;
 
     // Get Mouse Pos
     int MousePositionX = ImGui::GetMousePos().x;
@@ -425,7 +427,6 @@ void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWi
 
 
 }
-
 
 void VisualRenderer::DrawViewportMenu(int Index) {
 
