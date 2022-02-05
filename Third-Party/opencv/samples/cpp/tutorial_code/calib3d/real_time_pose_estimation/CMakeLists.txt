@@ -6,7 +6,7 @@ set(sample_pnplib
         ${sample_dir}CsvWriter.cpp
         ${sample_dir}ModelRegistration.cpp
         ${sample_dir}Mesh.cpp
-        ${sample_dir}Model.cpp
+        ${sample_dir}ERS_STRUCT_Model.cpp
         ${sample_dir}PnPProblem.cpp
         ${sample_dir}Utils.cpp
         ${sample_dir}RobustMatcher.cpp
