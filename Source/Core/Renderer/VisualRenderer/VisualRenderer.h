@@ -57,24 +57,10 @@ private:
     long int FrameNumber_ = 0; /**<Frame counter, starts at 0*/
 
 public:
-
-    std::vector<std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP>> Cameras_; /**<List Of Pointers To Camera Instances*/
     
     std::map<int, std::shared_ptr<ERS_STRUCT_Shader>> Shaders_; /**<Map of shader pointers and shader program ids*/
     std::vector<int> ActiveShaders_; /**<Index of shader program used by each viewport*/
     int DefaultShader_ = 0; /**<Index of default shader program to be used*/
-
-    std::vector<std::string> ViewportNames_; /**<List Of Names For Viewports*/
-    std::vector<std::shared_ptr<InputProcessor>> InputProcessors_; /**<Vector Of InputProcessors*/
-    std::vector<bool> WasSelected_; /**<List of true/false for was viewport selected last frame*/
-    std::vector<std::shared_ptr<bool>> ViewportEnabled_; /**<List of bool value pointers indicating if viewport should stay open*/
-
-    std::vector<unsigned int> FramebufferObjects_; /**<Framebuffer Objects For Each Viewport*/
-    std::vector<unsigned int> FramebufferColorObjects_; /**<Render Texture For Displaying Color*/
-    std::vector<unsigned int> RenderbufferObjects_; /**<Render buffer Objects For Depth*/
-
-    std::vector<int> ViewportWidths_; /**<Vector Containing Viewport Widths In Pixels*/
-    std::vector<int> ViewportHeights_; /**<Vector Containing Viewport Heights In Pixels*/
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Struct Containing Pointers To Important Info*/
 
