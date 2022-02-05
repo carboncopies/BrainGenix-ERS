@@ -170,6 +170,8 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     int RenderWidth = WindowTopLeftCornerX - WindowBottomRightCornerX;
     int RenderHeight = WindowTopLeftCornerY - WindowBottomRightCornerY;
 
+    std::cout<<RenderWidth<<" "<<RenderWidth<<std::endl;
+
     // Get Mouse Pos
     int MousePositionX = ImGui::GetMousePos().x;
     int MousePositionY = ImGui::GetMousePos().y;
