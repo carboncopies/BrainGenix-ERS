@@ -82,7 +82,7 @@ class Cursors3D {
         float* CameraView_; /**<Camera View Matrix, Converted From GLM::Mat4*/
         float* CameraProjection_; /**<Camera Projection Matrix, Converted From GLM::Mat4*/
 
-        std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera_; /**<Camera Object Pointer*/
+        std::shared_ptr<ERS_STRUCT_Camera> Camera_; /**<Camera Object Pointer*/
         ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE; /**<Set Current Cursor Operation*/
 
         bool HasObjectChanged_ = false; /*<Indicate If Update Needed*/
