@@ -25,7 +25,7 @@ target_link_libraries(ERS_SceneWriter
     ERS_STRUCT_Model
     ERS_STRUCT_Scene
     ERS_STRUCT_Mesh
-    Textures
+    ERS_STRUCT_Texture
 
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_IOData
