@@ -40,33 +40,32 @@ private:
 
 public:
 
+
+
+
+    std::vector<ERS_OBJECT_VERTEX> Vertices; /**<Array of Vertices*/
+    std::vector<unsigned int> Indices; /**<Array of Indices*/
+    long NumberIndices; /**<Size of Indices Array*/
+    unsigned int VAO; /**<Vertex Array Object OpenGL Handle*/
+
+
+    std::vector<int> TextureReferences_; /**<Texture Reference IDs*/
+    std::vector<unsigned int> TextureIDs; /**<Textur IDs*/
+    std::vector<std::string> TextureNames; /**<Human Readable Names Of Textures*/
+    
+    
+
     /**
      * @brief Setup the mesh (create opengl objects, etc.)
      * 
      */
     void SetupMesh();
 
-    // Setup Mesh Data
-    std::vector<ERS_OBJECT_VERTEX> Vertices;
-    std::vector<unsigned int> Indices;
-    
-    std::vector<int> TextureReferences_;
-    std::vector<unsigned int> TextureIDs;
-    std::vector<std::string> TextureNames;
-    bool UseNewSystem = false;
-    
-    
-    long NumberIndices;
-    
-    // Setup OpenGL Handel
-    unsigned int VAO;
-
-    // Define Helper Vars
-    bool _HasInitialized = false;
-
-
-
-
+    /**
+     * @brief Draw The Mesh (Called Once Per Frame For All Meshes To Be Rendered)
+     * 
+     * @param Shader 
+     */
     void Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader);
 
 };
