@@ -20,7 +20,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_SceneManager.h>
-#include <Scene.h>
+#include <ERS_STRUCT_Scene.h>
 
 
 void GUI_Windowutil_DuplicateScene(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, int SceneIndex);
