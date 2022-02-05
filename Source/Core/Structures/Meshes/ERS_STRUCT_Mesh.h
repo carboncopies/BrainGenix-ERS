@@ -37,11 +37,7 @@ private:
     unsigned int EBO; /**<OpenGL EBO Object ID*/
 
 
-
 public:
-
-
-
 
     std::vector<ERS_OBJECT_VERTEX> Vertices; /**<Array of Vertices*/
     std::vector<unsigned int> Indices; /**<Array of Indices*/
