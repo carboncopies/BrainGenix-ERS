@@ -66,7 +66,7 @@ void ERS_CLASS_SceneManager::Render(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
     for (long i = 0; i < Scenes_[ActiveScene_]->Models.size(); i++) {
 
         // Get Model Pointer
-        ERS_OBJECT_MODEL *Model = Scenes_[ActiveScene_]->Models[i].get();
+        ERS_STRUCT_Model *Model = Scenes_[ActiveScene_]->Models[i].get();
 
         // Set Shader Pointer
         Shader->SetMat4("model", Model->GetMat4());
