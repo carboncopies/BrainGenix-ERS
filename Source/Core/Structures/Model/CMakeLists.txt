@@ -4,19 +4,19 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Model 
+add_library(ERS_STRUCT_Model 
 
             # Add Source Files (.cpp)
-            "Model.cpp"
+            "ERS_STRUCT_Model.cpp"
 
             # Add Header Files (.h)
-            "Model.h"
+            "ERS_STRUCT_Model.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Model
+target_link_libraries(ERS_STRUCT_Model
     yaml-cpp
     glm
     glad
@@ -25,10 +25,10 @@ target_link_libraries(Model
     )
 
 # Link Internal Libs
-target_link_libraries(Model
+target_link_libraries(ERS_STRUCT_Model
     ERS_STRUCT_Shader
     ERS_STRUCT_Mesh
     Textures
     )
 
-target_include_directories(Model PUBLIC ./)
+target_include_directories(ERS_STRUCT_Model PUBLIC ./)
