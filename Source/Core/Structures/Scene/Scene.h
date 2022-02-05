@@ -18,7 +18,7 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <Model.h>
+#include <ERS_STRUCT_Model.h>
 
 
 
