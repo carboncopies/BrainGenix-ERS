@@ -81,7 +81,7 @@ class ERS_CLASS_ModelLoader {
          * @param Node 
          * @param Scene 
          */
-        void ProcessNode(ERS_OBJECT_MODEL* Model, aiNode *Node, const aiScene *Scene, std::vector<std::string> TexturePaths);
+        void ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::vector<std::string> TexturePaths);
 
         /**
          * @brief Process Meshes From Model.
