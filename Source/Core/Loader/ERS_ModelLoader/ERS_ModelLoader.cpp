@@ -84,7 +84,7 @@ void ERS_CLASS_ModelLoader::WorkerThread() {
             if (Size > 0) {
 
                 // Get Item, Remove From Queue, Unlock
-                std::shared_ptr<ERS_OBJECT_MODEL> WorkItem = WorkItems_[0];
+                std::shared_ptr<ERS_STRUCT_Model> WorkItem = WorkItems_[0];
                 long WorkID = WorkIDs_[0];
                 bool FlipTexture = FlipTextures_[0];
 
