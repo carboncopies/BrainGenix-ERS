@@ -4,26 +4,26 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Scene
+add_library(ERS_STRUCT_Scene
 
             # Add Source Files (.cpp)
-            "Scene.cpp"
+            "ERS_STRUCT_Scene.cpp"
 
             # Add Header Files (.h)
-            "Scene.h"
+            "ERS_STRUCT_Scene.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Scene
+target_link_libraries(ERS_STRUCT_Scene
     yaml-cpp
     )
 
 # Link Internal Libs
-target_link_libraries(Scene
+target_link_libraries(ERS_STRUCT_Scene
     ERS_STRUCT_Model
     
     )
 
-target_include_directories(Scene PUBLIC ./)
+target_include_directories(ERS_STRUCT_Scene PUBLIC ./)
