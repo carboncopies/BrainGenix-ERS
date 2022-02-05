@@ -65,7 +65,7 @@ class TextureLoader {
          * @brief Load a texture at the given file path. (For on file loading).
          * 
          * @param Path 
-         * @return ERS_OBJECT_TEXTURE_2D 
+         * @return ERS_STRUCT_Texture 
          */
         ERS_OBJECT_TEXTURE_2D LoadTexture(const char* Path, bool FlipImage = false, bool ProcessOpenGL = true);
 
