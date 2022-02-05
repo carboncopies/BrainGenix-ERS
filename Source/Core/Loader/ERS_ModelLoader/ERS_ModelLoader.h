@@ -130,7 +130,7 @@ class ERS_CLASS_ModelLoader {
          * @param FlipTextures 
          * @return ERS_STRUCT_Model 
          */
-        void LoadModel(long AssetID, std::shared_ptr<ERS_OBJECT_MODEL> Model, bool FlipTextures = false);
+        void LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures = false);
 
 
         /**
