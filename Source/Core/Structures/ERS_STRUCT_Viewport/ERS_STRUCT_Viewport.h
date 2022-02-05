@@ -14,11 +14,11 @@
 
 
 /**
- * @brief The System utils struct contains most system utils prepopulated as shared pointers within.
+ * @brief Struct containing a viewport that would allow the visualrender to be simplified.
  * 
  */
-struct ERS_STRUCT_SystemUtils {
+struct ERS_STRUCT_Viewport {
 
-
+    
 
 };
