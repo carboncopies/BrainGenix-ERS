@@ -29,7 +29,6 @@ target_link_libraries(VisualRenderer
     ERS_STRUCT_Camera
     InputProcessor
     ERS_CLASS_LoggingSystem
-    ImageLoader
     Framebuffer
 
     ERS_STRUCT_Model
