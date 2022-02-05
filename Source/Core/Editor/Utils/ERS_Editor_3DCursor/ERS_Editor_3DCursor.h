@@ -131,7 +131,7 @@ class Cursors3D {
          * @param Camera 
          * @param IsCameraMoving 
          */
-        void Draw(std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera, bool IsCameraMoving);
+        void Draw(std::shared_ptr<ERS_STRUCT_Camera> Camera, bool IsCameraMoving);
 
 
 
