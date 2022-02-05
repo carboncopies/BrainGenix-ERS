@@ -26,7 +26,7 @@ target_link_libraries(ImageLoader
 
 # Link Internal Libs
 target_link_libraries(ImageLoader
-    NoClip
+    ERS_STRUCT_Camera
     ERS_CLASS_LoggingSystem
     FileIO
     )
