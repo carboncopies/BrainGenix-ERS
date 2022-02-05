@@ -184,13 +184,13 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Resize Viewport If Needed
-    if ((RenderWidth != Viewports_[Index]->Width) || (RenderHeight != ViewportHeights_[Index])) {
+    if ((RenderWidth != Viewports_[Index]->Width) || (RenderHeight != Viewports_[Index]->Height)) {
         ResizeViewport(Index, RenderWidth, RenderHeight);
     }
 
 
     // Bind To Framebuffer
-    glBindFramebuffer(GL_FRAMEBUFFER, FramebufferObjects_[Index]);
+    glBindFramebuffer(GL_FRAMEBUFFER, Viewports_[Index]->FramebufferObject);
 
     // Rendering Commands Here
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
