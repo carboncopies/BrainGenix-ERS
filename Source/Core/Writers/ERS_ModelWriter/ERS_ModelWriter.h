@@ -45,7 +45,7 @@ class ERS_CLASS_ModelWriter {
          * @param Model 
          * @return YAML::Node 
          */
-        std::string GenerateModelMetadata(std::shared_ptr<ERS_OBJECT_MODEL> Model);
+        std::string GenerateModelMetadata(std::shared_ptr<ERS_STRUCT_Model> Model);
 
 
 
