@@ -30,7 +30,7 @@ struct ERS_STRUCT_Viewport {
 
     std::shared_ptr<bool> Enabled; /**<Indicates if the viewport is enabled*/
     std::shared_ptr<InputProcessor> Processor; /**<Pointer to Input Processor*/
-    std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera; /**<Pointer To Camera Instance*/
+    std::shared_ptr<ERS_STRUCT_Camera> Camera; /**<Pointer To Camera Instance*/
 
     unsigned int FramebufferObject; /**<FBO OpenGL ID*/
     unsigned int FramebufferColorObject; /**<FBCO OpenGL ID*/
