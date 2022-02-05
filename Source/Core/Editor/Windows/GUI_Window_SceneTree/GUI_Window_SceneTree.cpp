@@ -180,7 +180,7 @@ void Window_SceneTree::Draw() {
 
 
 // Draw Contents Of Scene To Scene Tree Window Tree Node
-void Window_SceneTree::DrawScene(std::shared_ptr<ERS_OBJECT_SCENE> Scene, int SceneIndex) {
+void Window_SceneTree::DrawScene(std::shared_ptr<ERS_STRUCT_Scene> Scene, int SceneIndex) {
 
     // Get Selected Item
     int SelectedSceneObjectIndex = Scene->SelectedModel;
