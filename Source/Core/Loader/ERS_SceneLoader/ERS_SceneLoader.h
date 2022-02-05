@@ -41,7 +41,7 @@ private:
     std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader_; /**<Contians A ModelLoader Class Pointer*/
 
     // Templates
-    std::map<std::string, ERS_OBJECT_MODEL> TemplateModels_; /**<Template Map Used to Store Models In Original LocRotScale*/
+    std::map<std::string, ERS_STRUCT_Model> TemplateModels_; /**<Template Map Used to Store Models In Original LocRotScale*/
 
 
 private:
