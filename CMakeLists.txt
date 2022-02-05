@@ -89,9 +89,9 @@ target_link_libraries(${PROJECT_NAME}
 # ADD INTERNAL SUBDIRECTORIES
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_LoggingSystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ConfigurationLoader)
-add_subdirectory(${SRC_DIR}/Core/Utils/FileIO)
 add_subdirectory(${SRC_DIR}/Core/Utils/DatabaseInterface)
 add_subdirectory(${SRC_DIR}/Core/Utils/IOManager)
+add_subdirectory(${SRC_DIR}/Core/Utils/InputProcessor)
 add_subdirectory(${SRC_DIR}/Core/Utils/HardwareInformation)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_InputOutputSubsystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_IOTypeIdentifier)
