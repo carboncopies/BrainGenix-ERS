@@ -37,7 +37,7 @@ target_link_libraries(Menu_File
     ERS_ProjectLoader
 
     ERS_SceneManager
-    Scene
+    ERS_STRUCT_Scene
 
     Window_ProjectSettings
     Window_ShaderEditor
