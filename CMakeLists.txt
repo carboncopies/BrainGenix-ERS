@@ -62,7 +62,6 @@ target_link_libraries(${PROJECT_NAME}
   TracyClient
 
   # Internal Libs
-  ConfigurationLoader
   ERS_CLASS_LoggingSystem
   Renderer
   HardwareInformation
