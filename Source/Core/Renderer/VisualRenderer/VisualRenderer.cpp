@@ -147,7 +147,10 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Latching MenuEnable Keybind
-    
+    if (ImGui::IsKeyPressed(GLFW_KEY_GRAVE_ACCENT)) {
+        Viewports_[Index]->MenuEnabled = !Viewports_[Index]->MenuEnabled;
+    }
+
 
     // Calculate Window Position
     ImVec2 vMin = ImGui::GetWindowContentRegionMin();
