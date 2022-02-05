@@ -37,7 +37,6 @@ target_link_libraries(VisualRenderer
     ERS_SceneManager
 
 
-    ERS_STRUCT_Shader
 
     ERS_Editor_3DCursor
 
@@ -46,6 +45,9 @@ target_link_libraries(VisualRenderer
 
     ERS_STRUCT_LocRotScale
     ERS_STRUCT_SystemUtils
+    ERS_STRUCT_Viewport
+    ERS_STRUCT_Shader
+
     )
 
 target_include_directories(VisualRenderer PUBLIC ./)
