@@ -24,7 +24,8 @@ struct ERS_STRUCT_Viewport {
 
 
     std::string Name; /**<Name of the viewport*/
-    bool WasSelected; /**>Indicates if the gizmo was selected last frame*/
+    bool WasSelected; /**<Indicates if the gizmo was selected last frame*/
+    int ShaderIndex; /**<Index of the shader to be used*/
 
     std::shared_ptr<bool> Enabled; /**<Indicates if the viewport is enabled*/
     std::shared_ptr<InputProcessor> Processor; /**<Pointer to Input Processor*/

@@ -301,11 +301,15 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
     SystemUtils_->Logger_->Log(std::string(std::string("Creating New Viewport '") + ViewportName + std::string("'")).c_str(), 5);
 
 
+    // Create Viewport Struct
+    std::shared_ptr<ERS_STRUCT_Viewport> Viewport = std::make_shared<ERS_STRUCT_Viewport>();
+
+
     // Create Camera
     std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera = std::make_shared<ERS_OBJECT_CAMERA_NOCLIP>();
 
     // Append To Vectors
-    ActiveShaders_.push_back(DefaultShader_);
+    Viewport->ShaderIndex.push_back(DefaultShader_);
     Cameras_.push_back(Camera);
     ViewportNames_.push_back(ViewportName);
     ViewportWidths_.push_back(1);
