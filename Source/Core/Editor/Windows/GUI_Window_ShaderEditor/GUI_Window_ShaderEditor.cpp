@@ -203,7 +203,15 @@ void Window_ShaderEditor::DrawEditorWindow() {
 
                     // New Shader Menu
                     if (ImGui::MenuItem("New Shader Program")) {
-                        
+
+                        ERS_STRUCT_ShaderProgramAssetIDs ShaderProgram;
+                        ShaderProgram.Name = "Untitled";
+                        ShaderProgram.FragmentID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+                        ShaderProgram.VertexID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+                        ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.push_back(ShaderProgram);
+
+
+
                     }
 
                     ImGui::EndMenu();
