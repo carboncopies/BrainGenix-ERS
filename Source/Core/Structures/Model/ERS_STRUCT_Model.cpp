@@ -13,7 +13,7 @@
 
 
 // Draw Model
-void ERS_OBJECT_MODEL::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
+void ERS_STRUCT_Model::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
 
     // Only Draw When Fully Ready
     if (FullyReady) {
@@ -28,7 +28,7 @@ void ERS_OBJECT_MODEL::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
 
 
 // Set Position Functions
-void ERS_OBJECT_MODEL::SetPosition(double X, double Y, double Z) {
+void ERS_STRUCT_Model::SetPosition(double X, double Y, double Z) {
 
     // Convert Doubles GLM Vec3
     glm::vec3 Position = glm::vec3(X, Y, Z);
@@ -38,7 +38,7 @@ void ERS_OBJECT_MODEL::SetPosition(double X, double Y, double Z) {
 
 }
 
-void ERS_OBJECT_MODEL::SetPosition(glm::vec3 Position) {
+void ERS_STRUCT_Model::SetPosition(glm::vec3 Position) {
 
     // Set Position to Pos
     ModelPosition = Position;
@@ -46,14 +46,14 @@ void ERS_OBJECT_MODEL::SetPosition(glm::vec3 Position) {
 }
 
 // Set Rotation Functions
-void ERS_OBJECT_MODEL::SetRotation(double X, double Y, double Z) {
+void ERS_STRUCT_Model::SetRotation(double X, double Y, double Z) {
 
     // Set Rotation to Pos
     ModelRotation = glm::vec3((float)X, (float)Y, (float)Z);
 
 }
 
-void ERS_OBJECT_MODEL::SetRotation(glm::vec3 Rotation) {
+void ERS_STRUCT_Model::SetRotation(glm::vec3 Rotation) {
 
     // Set Rotation to Pos
     ModelRotation = Rotation;
@@ -62,7 +62,7 @@ void ERS_OBJECT_MODEL::SetRotation(glm::vec3 Rotation) {
 
 
 // Set Scale Functions
-void ERS_OBJECT_MODEL::SetScale(double X, double Y, double Z) {
+void ERS_STRUCT_Model::SetScale(double X, double Y, double Z) {
 
     // Convert Doubles GLM Vec3
     glm::vec3 Scale = glm::vec3(X, Y, Z);
@@ -72,7 +72,7 @@ void ERS_OBJECT_MODEL::SetScale(double X, double Y, double Z) {
 
 }
 
-void ERS_OBJECT_MODEL::SetScale(glm::vec3 Scale) {
+void ERS_STRUCT_Model::SetScale(glm::vec3 Scale) {
 
     // Set Scale to Pos
     ModelScale = Scale;
@@ -81,7 +81,7 @@ void ERS_OBJECT_MODEL::SetScale(glm::vec3 Scale) {
 
 
 // Set LocRotScale Functions
-void ERS_OBJECT_MODEL::SetLocRotScale(double LocX, double LocY, double LocZ, double RotX, double RotY, double RotZ, double ScaleX, double ScaleY, double ScaleZ) {
+void ERS_STRUCT_Model::SetLocRotScale(double LocX, double LocY, double LocZ, double RotX, double RotY, double RotZ, double ScaleX, double ScaleY, double ScaleZ) {
 
     // Calculate Loc, Rot, Scale Vecs
     glm::vec3 Position = glm::vec3(LocX, LocY, LocZ);
@@ -96,7 +96,7 @@ void ERS_OBJECT_MODEL::SetLocRotScale(double LocX, double LocY, double LocZ, dou
 }
 
 
-void ERS_OBJECT_MODEL::SetLocRotScale(glm::vec3 Position, glm::vec3 Rotation, glm::vec3 Scale) {
+void ERS_STRUCT_Model::SetLocRotScale(glm::vec3 Position, glm::vec3 Rotation, glm::vec3 Scale) {
 
     // Set Vecs
     ModelPosition = Position;
@@ -107,7 +107,7 @@ void ERS_OBJECT_MODEL::SetLocRotScale(glm::vec3 Position, glm::vec3 Rotation, gl
 
 
 // Apply Transformations
-bool ERS_OBJECT_MODEL::ApplyTransformations() {
+bool ERS_STRUCT_Model::ApplyTransformations() {
 
     // Check If Template Model
     //if (!IsTemplateModel) {
@@ -136,7 +136,7 @@ bool ERS_OBJECT_MODEL::ApplyTransformations() {
 }
 
 // Get Mat4
-glm::mat4 ERS_OBJECT_MODEL::GetMat4() {
+glm::mat4 ERS_STRUCT_Model::GetMat4() {
 
     // Return Mat4 Projection Matrix
     return ModelLocRotScale_;
