@@ -5,7 +5,7 @@
 #pragma once
 
 // Standard Libraries (BG convention: use <> instead of "")
-#include <memory.h>
+#include <memory>
 #include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
@@ -19,6 +19,21 @@
  */
 struct ERS_STRUCT_Viewport {
 
-    
+
+    std::string Name; /**<Name of the viewport*/
+    bool WasSelected; /**>Indicates if the gizmo was selected last frame*/
+
+    std::shared_ptr<bool> Enabled; /**<Indicates if the viewport is enabled*/
+    std::shared_ptr<InputProcessor> Processor; /**<Pointer to Input Processor*/
+    std::shared_ptr<ERS_OBJECT_CAMERA_NOCLIP> Camera; /**<Pointer To Camera Instance*/
+
+    unsigned int FramebufferObject; /**<FBO OpenGL ID*/
+    unsigned int FramebufferColorObject; /**<FBCO OpenGL ID*/
+    unsigned int RenderbufferObject; /**<RBO OpenGL ID*/
+
+    int Width; /**<Viewport Width*/
+    int Height; /**<Viewport Height*/
+
+
 
 };
