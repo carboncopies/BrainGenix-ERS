@@ -4,25 +4,25 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(NoClip 
+add_library(ERS_STRUCT_Camera 
 
             # Add Source Files (.cpp)
-            "NoClip.cpp"
+            "ERS_STRUCT_Camera.cpp"
 
             # Add Header Files (.h)
-            "NoClip.h"
+            "ERS_STRUCT_Camera.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(NoClip
+target_link_libraries(ERS_STRUCT_Camera
     glm
     glad
     )
 
 # Link Internal Libs
-target_link_libraries(NoClip
+target_link_libraries(ERS_STRUCT_Camera
     )
 
-target_include_directories(NoClip PUBLIC ./)
+target_include_directories(ERS_STRUCT_Camera PUBLIC ./)
