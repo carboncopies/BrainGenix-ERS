@@ -167,8 +167,8 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
 
 
     // Get Window Input
-    int RenderWidth = WindowTopLeftCornerX - WindowBottomRightCornerX;
-    int RenderHeight = WindowTopLeftCornerY - WindowBottomRightCornerY;
+    int RenderWidth  WindowBottomRightCornerX - WindowTopLeftCornerX;
+    int RenderHeight = WindowBottomRightCornerY - WindowTopLeftCornerY;
 
     std::cout<<RenderWidth<<" "<<RenderWidth<<std::endl;
 
