@@ -11,20 +11,20 @@
 
 #include <ERS_STRUCT_Camera.h>
 
-glm::mat4 ERS_OBJECT_CAMERA_NOCLIP::GetViewMatrix() {
+glm::mat4 ERS_STRUCT_Camera::GetViewMatrix() {
     return glm::lookAt(Position, Position + Front, Up);
 }
 
-glm::mat4 ERS_OBJECT_CAMERA_NOCLIP::GetProjectionMatrix() {
+glm::mat4 ERS_STRUCT_Camera::GetProjectionMatrix() {
     return glm::perspective(glm::radians(Zoom), AspectRatio_, 0.1f, 100.0f);
 }
 
 
-void ERS_OBJECT_CAMERA_NOCLIP::SetAspectRatio(float AspectRatio) {
+void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio) {
     AspectRatio_ = AspectRatio;
 }
 
-void ERS_OBJECT_CAMERA_NOCLIP::ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
+void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
 
     // Calculate Velocity
     float Velocity = MovementSpeed * DeltaTime;
@@ -46,7 +46,7 @@ void ERS_OBJECT_CAMERA_NOCLIP::ProcessKeyboard(CameraMovement Direction, float D
 }
 
 
-void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch) {
+void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch) {
 
     // Change Offset By Sensitivity
     XOffset *= MouseSensitivity;
@@ -73,7 +73,7 @@ void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseMovement(float XOffset, float YOffset
 }
 
 
-void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseScroll(float YOffset) {
+void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset) {
 
     // Update Movement Speed
     MovementSpeed += (MovementSpeed*(float)YOffset/10.0f);
@@ -90,7 +90,7 @@ void ERS_OBJECT_CAMERA_NOCLIP::ProcessMouseScroll(float YOffset) {
 
 }
 
-void ERS_OBJECT_CAMERA_NOCLIP::UpdateCameraVectors() {
+void ERS_STRUCT_Camera::UpdateCameraVectors() {
     
     // Calculate New Front Vector
     glm::vec3 NewFront;
