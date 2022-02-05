@@ -32,7 +32,7 @@ enum CameraMovement {
 
 
 // Setup Camera Options
-class ERS_OBJECT_CAMERA_NOCLIP {
+class ERS_STRUCT_Camera {
 
     public:
 
@@ -58,7 +58,7 @@ class ERS_OBJECT_CAMERA_NOCLIP {
         float MaxMovementSpeed = 50.0f;
 
         // Constructor With Vectors
-        ERS_OBJECT_CAMERA_NOCLIP(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f),
+        ERS_STRUCT_Camera(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f),
                                  glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f),
                                  float Yaw = -90.0f,
                                  float Pitch = 0.0f) : Front(glm::vec3(0.0f, 0.0f, -1.0f)),
@@ -76,7 +76,7 @@ class ERS_OBJECT_CAMERA_NOCLIP {
         }
 
         // Constructor With Scalar Values
-        ERS_OBJECT_CAMERA_NOCLIP(float PosX,
+        ERS_STRUCT_Camera(float PosX,
                                  float PosY,
                                  float PosZ,
                                  float UpX,
