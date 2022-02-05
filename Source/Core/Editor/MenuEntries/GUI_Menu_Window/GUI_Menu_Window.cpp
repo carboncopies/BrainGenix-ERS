@@ -107,8 +107,8 @@ void GUI_Menu_Window::Draw() {
             }
 
             if (ImGui::MenuItem("Remove Viewport")) {
-                if (VisualRenderer_->ViewportNames_.size() > 0) {
-                    VisualRenderer_->DeleteViewport(VisualRenderer_->ViewportNames_.size()-1);
+                if (VisualRenderer_->Viewports_.size() > 0) {
+                    VisualRenderer_->DeleteViewport(VisualRenderer_->Viewports_.size()-1);
                 }
             }
             
