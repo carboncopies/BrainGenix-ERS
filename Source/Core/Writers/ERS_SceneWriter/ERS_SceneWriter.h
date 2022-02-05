@@ -69,7 +69,7 @@ public:
      * 
      * @param FilePath 
      */
-    void ProcessScene(std::shared_ptr<ERS_OBJECT_SCENE>, long SceneID);
+    void ProcessScene(std::shared_ptr<ERS_STRUCT_Scene>, long SceneID);
 
 
 };
