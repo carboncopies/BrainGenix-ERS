@@ -52,7 +52,7 @@ private:
      * @param RawSceneData 
      * @return ERS_STRUCT_Scene 
      */
-    ERS_OBJECT_SCENE ProcessScene(YAML::Node RawSceneData, long AssetID);
+    ERS_STRUCT_Scene ProcessScene(YAML::Node RawSceneData, long AssetID);
 
 
 public:
