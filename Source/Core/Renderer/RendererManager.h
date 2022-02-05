@@ -63,7 +63,6 @@ class RendererManager {
         std::shared_ptr<FramebufferManager> FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
         std::shared_ptr<ERS_STRUCT_Shader> Shader_; /**<ERS Shader Object (Main System Shader)*/
         std::shared_ptr<GUISystem> GuiSystem_; /**<Instance of GUI System*/
-        std::shared_ptr<TextureLoader> TextureLoader_; /**<Pointer to Texture Loader Instance*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
         
         std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Copy Of Pointer Helper Struct*/
