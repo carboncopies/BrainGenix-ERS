@@ -30,16 +30,20 @@
  */
 class ERS_STRUCT_Mesh {
 
+
 private:
 
-    unsigned int VBO;
-    unsigned int EBO;
+    unsigned int VBO; /**<Vertex buffer object OpenGL ID.*/
+    unsigned int EBO; /**<OpenGL EBO Object ID*/
 
 
 
 public:
 
-    // Delcare Methods
+    /**
+     * @brief Setup the mesh (create opengl objects, etc.)
+     * 
+     */
     void SetupMesh();
 
     // Setup Mesh Data
