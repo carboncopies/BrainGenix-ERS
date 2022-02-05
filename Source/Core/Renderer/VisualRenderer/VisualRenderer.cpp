@@ -199,7 +199,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // Use Shader
-    int ShaderIndex = ActiveShaders_[Index];
+    int ShaderIndex = Viewports_[Index]->ShaderIndex;
     Shaders_[ShaderIndex]->MakeActive();
 
 
