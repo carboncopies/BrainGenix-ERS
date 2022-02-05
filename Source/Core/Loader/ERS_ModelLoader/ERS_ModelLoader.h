@@ -105,7 +105,7 @@ class ERS_CLASS_ModelLoader {
 
     public:
 
-        void ProcessGPU(std::shared_ptr<ERS_OBJECT_MODEL> Model); /**<Process the GPU stuff for each model*/
+        void ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model); /**<Process the GPU stuff for each model*/
 
 
         /**
