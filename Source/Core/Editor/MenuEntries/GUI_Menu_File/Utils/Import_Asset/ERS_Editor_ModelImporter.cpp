@@ -29,7 +29,7 @@ ERS_CLASS_ModelImporter::~ERS_CLASS_ModelImporter() {
 long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     // Clear Model Instance
-    ERS_OBJECT_MODEL Model;
+    ERS_STRUCT_Model Model;
 
     // Clear Textures List
     TextureList_ = std::vector<std::string>();
