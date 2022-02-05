@@ -120,7 +120,7 @@ add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer/Framebuffer)
 
 
 add_subdirectory(${SRC_DIR}/Core/Structures/Cameras/NoClip)
-add_subdirectory(${SRC_DIR}/Core/Structures/Meshes)
+add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Mesh)
 add_subdirectory(${SRC_DIR}/Core/Structures/Model)
 add_subdirectory(${SRC_DIR}/Core/Structures/Textures)
 add_subdirectory(${SRC_DIR}/Core/Structures/Vertex)
