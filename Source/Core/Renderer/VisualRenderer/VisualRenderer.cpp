@@ -130,7 +130,6 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
 
 void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager, float DeltaTime) {
 
-    std::cout<<Index<<std::endl;
 
     // Render To ImGui
     ImGui::Begin(Viewports_[Index]->Name.c_str(), Viewports_[Index]->Enabled.get());
