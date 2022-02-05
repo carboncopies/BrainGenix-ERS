@@ -75,7 +75,7 @@ class TextureLoader {
          * @param AssetID 
          * @return ERS_STRUCT_Texture 
          */
-        ERS_OBJECT_TEXTURE_2D LoadTexture(long AssetID, bool FlipImage = false, bool ProcessOpenGL = true);
+        ERS_STRUCT_Texture LoadTexture(long AssetID, bool FlipImage = false, bool ProcessOpenGL = true);
 
 
         // ADD FUNCTION TO BATCH LOAD TEXTURES
