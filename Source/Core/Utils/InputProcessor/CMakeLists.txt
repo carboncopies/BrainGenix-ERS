@@ -32,7 +32,7 @@ target_link_libraries(InputProcessor
     TextureLoader
 
     ERS_STRUCT_Model
-    Scene
+    ERS_STRUCT_Scene
     ERS_SceneManager
 
     VisualEditor
