@@ -142,7 +142,7 @@ void Window_ShaderEditor::DrawEditorWindow() {
 
 
                     // Program Selector Dropdown
-                    if (ImGui::BeginMenu("Programs")) {
+                    if (ImGui::BeginMenu("Open")) {
 
                         for (long i = 0; i < ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.size(); i++) {
 
@@ -159,6 +159,23 @@ void Window_ShaderEditor::DrawEditorWindow() {
 
                     ImGui::EndMenu();
                     }
+
+
+                    // Separator
+                    ImGui::Separator();
+
+
+                    // New Shader Option
+                    if (ImGui::MenuItem("New")) {
+
+                        // ERS_STRUCT_ShaderProgramAssetIDs ShaderProgram;
+                        // ShaderProgram.Name = "Untitled";
+                        // ShaderProgram.FragmentID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+                        // ShaderProgram.VertexID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+                        // ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.push_back(ShaderProgram);
+
+                    }
+
 
                 ImGui::EndMenu();
                 }
@@ -225,16 +242,7 @@ void Window_ShaderEditor::DrawEditorWindow() {
                     ImGui::EndMenu();
                     }
 
-                    // New Shader Menu Item
-                    if (ImGui::MenuItem("New Shader Program")) {
 
-                        // ERS_STRUCT_ShaderProgramAssetIDs ShaderProgram;
-                        // ShaderProgram.Name = "Untitled";
-                        // ShaderProgram.FragmentID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
-                        // ShaderProgram.VertexID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
-                        // ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.push_back(ShaderProgram);
-
-                    }
 
                 ImGui::EndMenu();
                 }
