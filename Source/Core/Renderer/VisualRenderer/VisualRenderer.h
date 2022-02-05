@@ -30,7 +30,7 @@
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_STRUCT_Shader.h>
 #include <ERS_STRUCT_Model.h>
-#include <NoClip.h>
+#include <ERS_STRUCT_Camera.h>
 #include <ERS_SceneManager.h>
 #include <ERS_SceneLoader.h>
 #include <ERS_CLASS_ShaderLoader.h>
