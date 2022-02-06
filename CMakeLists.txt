@@ -112,8 +112,8 @@ add_subdirectory(${SRC_DIR}/Core/Editor/MenuEntries)
 
 
 add_subdirectory(${SRC_DIR}/Core/Renderer)
-add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer)
-add_subdirectory(${SRC_DIR}/Core/Renderer/VisualRenderer/Framebuffer)
+add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_VisualRenderer)
+add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_VisualRenderer/Framebuffer)
 
 
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Camera)
