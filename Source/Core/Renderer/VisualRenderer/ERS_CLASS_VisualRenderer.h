@@ -47,7 +47,7 @@
  * @brief Handles viewport creation/deletion/rendering/updating.
  * 
  */
-class VisualRenderer {
+class ERS_CLASS_VisualRenderer {
 
 private:
 
@@ -125,13 +125,13 @@ public:
      * @param Window 
      * @param Cursors3D 
      */
-    VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D);
+    ERS_CLASS_VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D);
 
     /**
      * @brief Destroy the Visual Renderer object
      * 
      */
-    ~VisualRenderer();
+    ~ERS_CLASS_VisualRenderer();
 
 
     /**
