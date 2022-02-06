@@ -4,19 +4,19 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(VisualRenderer
+add_library(ERS_CLASS_VisualRenderer
 
             # Add Source Files (.cpp)
-            "VisualRenderer.cpp"
+            "ERS_CLASS_VisualRenderer.cpp"
 
             # Add Header Files (.h)
-            "VisualRenderer.h"
+            "ERS_CLASS_VisualRenderer.h"
 
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(VisualRenderer
+target_link_libraries(ERS_CLASS_VisualRenderer
     yaml-cpp
     glm
     glad
@@ -25,7 +25,7 @@ target_link_libraries(VisualRenderer
     )
 
 # Link Internal Libs
-target_link_libraries(VisualRenderer
+target_link_libraries(ERS_CLASS_VisualRenderer
     ERS_STRUCT_Camera
     InputProcessor
     ERS_CLASS_LoggingSystem
@@ -49,5 +49,5 @@ target_link_libraries(VisualRenderer
 
     )
 
-target_include_directories(VisualRenderer PUBLIC ./)
+target_include_directories(ERS_CLASS_VisualRenderer PUBLIC ./)
 
