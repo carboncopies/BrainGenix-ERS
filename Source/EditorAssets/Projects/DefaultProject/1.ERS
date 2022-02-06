@@ -41,4 +41,8 @@ ShaderPrograms:
         Name: "Default Shader Program"
         VertexID: 100
         FragmentID: 101
+    1:
+        Name: "Separation"
+        VertexID: 100
+        FragmentID: 101
 DefaultShaderProgram: 0
