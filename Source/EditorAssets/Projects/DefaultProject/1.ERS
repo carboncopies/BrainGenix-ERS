@@ -43,6 +43,10 @@ ShaderPrograms:
         FragmentID: 101
     1:
         Name: "Separation"
-        VertexID: 100
-        FragmentID: 101
+        VertexID: 102
+        FragmentID: 103
+    2:
+        Name: "Scatter"
+        VertexID: 104
+        FragmentID: 105
 DefaultShaderProgram: 0
