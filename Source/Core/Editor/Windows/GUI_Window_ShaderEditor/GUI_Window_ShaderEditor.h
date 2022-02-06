@@ -25,7 +25,7 @@
 
 #include <ERS_CLASS_ShaderLoader.h>
 
-#include <VisualRenderer.h>
+#include <ERS_CLASS_VisualRenderer.h>
 
 
 
