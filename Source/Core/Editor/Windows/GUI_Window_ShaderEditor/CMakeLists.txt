@@ -30,7 +30,7 @@ target_link_libraries(Window_ShaderEditor
 
     ERS_ShaderLoader
 
-    VisualRenderer
+    ERS_CLASS_VisualRenderer
     )
 
 target_include_directories(Window_ShaderEditor PUBLIC ./)
