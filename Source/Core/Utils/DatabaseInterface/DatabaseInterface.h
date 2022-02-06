@@ -2,13 +2,6 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-/*
-    Description: This is responsible for providing a simple class to interface with the ERS Databse schema.
-    Documentation Status: Complete
-    Additonal Notes: None
-    Date Created: 2021-01-27
-*/
-
 #pragma once
 
 
