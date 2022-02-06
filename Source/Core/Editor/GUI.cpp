@@ -13,7 +13,7 @@
 
 
 // GUISystem Constructor
-GUISystem::GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<VisualRenderer> VisualRendererInstance, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils) {
+GUISystem::GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRendererInstance, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils) {
 
     // Create Local Pointer
     SystemUtils_ = SystemUtils;
