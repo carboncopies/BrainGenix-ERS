@@ -29,7 +29,7 @@ target_link_libraries(Menu_Window
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
 
-    VisualRenderer
+    ERS_CLASS_VisualRenderer
 
     Widgets
     Window_SceneTree
