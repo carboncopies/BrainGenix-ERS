@@ -2,13 +2,6 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-/*
-    Description: This file is responsible for creating and managing the framebuffer.
-    Documentation Status: Complete
-    Additonal Notes: None
-    Date Created: 2021-11-28
-*/
-
 #include <Framebuffer.h>
 
 
