@@ -2,13 +2,6 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-/*
-    Description: This is responsible for providing a single I/O interface for asset loading/saving.
-    Documentation Status: Complete
-    Additonal Notes: None
-    Date Created: 2021-12-19
-*/
-
 #pragma once
 
 
