@@ -70,7 +70,7 @@ class GUI_Menu_Window {
         std::shared_ptr<Window_SceneTree> Window_SceneTree_; /**<Window Instance*/
         std::unique_ptr<Window_SystemLog> Window_SystemLog_; /**<Window Instance*/
         std::unique_ptr<Window_AssetExplorer> Window_AssetExplorer_; /**<Window Instance*/
-        std::shared_ptr<VisualRenderer> VisualRenderer_; /**<VisualRenderer instance*/
+        std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<VisualRenderer instance*/
 
 
     // Member Functions
