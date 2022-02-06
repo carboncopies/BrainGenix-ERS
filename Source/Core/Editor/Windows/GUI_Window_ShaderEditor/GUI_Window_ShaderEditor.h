@@ -92,7 +92,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<VisualRenderer> VisualRenderer);
+    Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer);
 
     /**
      * @brief Destroy the Window_ShaderEditor object
