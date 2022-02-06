@@ -2,13 +2,6 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-/*
-    Description: This is the Noclip Camera.
-    Additonal Notes: None
-    Date Created: 2021-11-05
-*/
-
-
 #include <ERS_STRUCT_Camera.h>
 
 glm::mat4 ERS_STRUCT_Camera::GetViewMatrix() {
