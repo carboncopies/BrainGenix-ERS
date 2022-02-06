@@ -13,7 +13,7 @@
 
 
 // Visual Rendere constructor
-VisualRenderer::VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D) {
+ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D) {
 
     // Create Pointers
     SystemUtils->Logger_->Log("Populating Renderer Member Pointers", 5);
@@ -31,7 +31,7 @@ VisualRenderer::VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUti
 
 }
 
-VisualRenderer::~VisualRenderer() {
+ERS_CLASS_VisualRenderer::~ERS_CLASS_VisualRenderer() {
 
     // Destroy Framebuffers
     for (int i = 0; i < Viewports_.size(); i++) {
@@ -49,18 +49,18 @@ VisualRenderer::~VisualRenderer() {
 
 }
 
-void VisualRenderer::SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID) {
+void ERS_CLASS_VisualRenderer::SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID) {
 
     Shaders_[ID] = Shader;
 
 }
 
-void VisualRenderer::SetDefaultShader(int ShaderID) {
+void ERS_CLASS_VisualRenderer::SetDefaultShader(int ShaderID) {
     
     DefaultShader_ = ShaderID;
 }
 
-void VisualRenderer::InitializeOpenGL() {
+void ERS_CLASS_VisualRenderer::InitializeOpenGL() {
 
     // Setup GLAD
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -69,7 +69,7 @@ void VisualRenderer::InitializeOpenGL() {
 
 }
 
-void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
+void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
 
     // Close Any Viewports That Aren't All Open
     int ViewportsToClose = -1;
@@ -128,7 +128,7 @@ void VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_
 
 }
 
-void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager, float DeltaTime) {
+void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager, float DeltaTime) {
 
 
     // Render To ImGui
@@ -273,7 +273,7 @@ void VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneMa
     ImGui::End();
 }
 
-void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
+void ERS_CLASS_VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
 
     // Update Render Color Buffer Size
     glBindTexture(GL_TEXTURE_2D, Viewports_[Index]->FramebufferColorObject);
@@ -286,7 +286,7 @@ void VisualRenderer::ResizeViewport(int Index, int Width, int Height) {
 
 }
 
-void VisualRenderer::DeleteViewport(int Index) {
+void ERS_CLASS_VisualRenderer::DeleteViewport(int Index) {
 
     // Log Deletion
     SystemUtils_->Logger_->Log(std::string(std::string("Destroying Viewport '") + Viewports_[Index]->Name + std::string("'")).c_str(), 5);
@@ -301,7 +301,7 @@ void VisualRenderer::DeleteViewport(int Index) {
 
 }
 
-void VisualRenderer::CreateViewport() {
+void ERS_CLASS_VisualRenderer::CreateViewport() {
 
     // Generate Name
     std::string Name = std::string("Viewport ") + std::to_string(Viewports_.size() + 1);
@@ -311,7 +311,7 @@ void VisualRenderer::CreateViewport() {
 
 }
 
-void VisualRenderer::CreateViewport(std::string ViewportName) {
+void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
 
     // Log Creation
@@ -395,7 +395,7 @@ void VisualRenderer::CreateViewport(std::string ViewportName) {
 
 }
 
-void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight) {
+void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight) {
 
     /**
 
@@ -429,7 +429,7 @@ void VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWi
 
 }
 
-void VisualRenderer::DrawViewportMenu(int Index) {
+void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
 
     // Menu Bar
     if (ImGui::BeginMenuBar()) {
