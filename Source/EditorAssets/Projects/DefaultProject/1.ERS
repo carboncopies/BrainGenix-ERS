@@ -49,4 +49,9 @@ ShaderPrograms:
         Name: "Scatter"
         VertexID: 104
         FragmentID: 105
+    3:
+        Name: "Glitch (Flashing Lights Warning)"
+        VertexID: 106
+        FragmentID: 107
+        
 DefaultShaderProgram: 0
