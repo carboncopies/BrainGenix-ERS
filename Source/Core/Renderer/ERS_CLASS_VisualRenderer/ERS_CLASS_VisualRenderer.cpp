@@ -428,6 +428,17 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
     // Menu Bar
     if (ImGui::BeginMenuBar()) {
 
+
+        // Viewport Cube Controls
+        if (ImGui::BeginMenu("Controls")) {
+
+            // Draw Controls
+            ImGui::MenuItem("Rotation Indicator", nullptr, &Viewports_[Index]->ShowCube);
+            ImGui::MenuItem("Gizmo", nullptr, &Viewports_[Index]->GizmoEnabled);
+
+        ImGui::EndMenu();
+        }
+
         // Shader Control Menu
         if(ImGui::BeginMenu("Shader")) {
 
@@ -437,16 +448,6 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
                     Viewports_[Index]->ShaderIndex = i;
                 }
             }
-
-        ImGui::EndMenu();
-        }
-
-        // Viewport Cube Controls
-        if (ImGui::BeginMenu("Controls")) {
-
-            // Draw Controls
-            ImGui::MenuItem("Rotation Indicator", nullptr, &Viewports_[Index]->ShowCube);
-            ImGui::MenuItem("Gizmo", nullptr, &Viewports_[Index]->GizmoEnabled);
 
         ImGui::EndMenu();
         }
