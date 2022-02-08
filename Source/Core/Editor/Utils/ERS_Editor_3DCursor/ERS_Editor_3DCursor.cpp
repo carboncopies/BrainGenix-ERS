@@ -30,7 +30,7 @@ void Cursors3D::SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
 
 
 // End Render Pass
-void Cursors3D::Draw(std::shared_ptr<ERS_STRUCT_Camera> Camera, bool IsCameraMoving, bool ShowCube) {
+void Cursors3D::Draw(std::shared_ptr<ERS_STRUCT_Camera> Camera, bool IsCameraMoving, bool ShowCube, bool ShowCursor) {
 
 
     // Copy In Values
