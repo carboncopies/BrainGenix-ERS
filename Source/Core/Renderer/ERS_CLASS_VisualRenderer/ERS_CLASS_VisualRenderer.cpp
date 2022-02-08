@@ -444,8 +444,9 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
         // Viewport Cube Controls
         if (ImGui::BeginMenu("Controls")) {
 
-            // Draw Checkbox For On/Off
-            ImGui::MenuItem("Viewport Rotation Indicator", nullptr, &Viewports_[Index]->ShowCube);
+            // Draw Controls
+            ImGui::MenuItem("Rotation Indicator", nullptr, &Viewports_[Index]->ShowCube);
+            ImGui::MenuItem("Gizmo", nullptr, &Viewports_[Index]->GizmoEnabled);
 
         ImGui::EndMenu();
         }
