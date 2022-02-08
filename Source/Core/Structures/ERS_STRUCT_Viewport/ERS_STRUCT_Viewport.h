@@ -26,6 +26,7 @@ struct ERS_STRUCT_Viewport {
     std::string Name; /**<Name of the viewport*/
     bool WasSelected = false; /**<Indicates if the gizmo was selected last frame*/
     bool MenuEnabled = true; /**>Indicate if the menu is enabled (opened by "`")*/
+    bool ShowCube = true; /**<Enable/Disable The Viewport Cube*/
     int ShaderIndex = 0; /**<Index of the shader to be used*/
 
     std::shared_ptr<bool> Enabled; /**<Indicates if the viewport is enabled*/
@@ -38,7 +39,5 @@ struct ERS_STRUCT_Viewport {
 
     int Width = 1; /**<Viewport Width*/
     int Height = 1; /**<Viewport Height*/
-
-
 
 };
