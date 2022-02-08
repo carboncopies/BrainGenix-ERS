@@ -60,8 +60,10 @@ void Cursors3D::Draw(std::shared_ptr<ERS_STRUCT_Camera> Camera, bool IsCameraMov
 
     float TmpMatrix[16];
     ImGuizmo::RecomposeMatrixFromComponents((float*)glm::value_ptr(Pos_), (float*)glm::value_ptr(Rot_), (float*)glm::value_ptr(Scale_), TmpMatrix);
-    ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, ImGuizmo::MODE::WORLD, TmpMatrix);
 
+    if (ShowCube) {
+        ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, ImGuizmo::MODE::WORLD, TmpMatrix);
+    }
 
 
     // If Using Gizmo
