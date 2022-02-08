@@ -25,7 +25,8 @@ struct ERS_STRUCT_Viewport {
 
     std::string Name; /**<Name of the viewport*/
     bool WasSelected = false; /**<Indicates if the gizmo was selected last frame*/
-    bool MenuEnabled = true; /**>Indicate if the menu is enabled (opened by "`")*/
+    bool MenuEnabled = true; /**<Indicate if the menu is enabled (opened by "`")*/
+    bool GizmoEnabled = true; /**<Toggle On/Off The 3D Gizmo*/
     bool ShowCube = true; /**<Enable/Disable The Viewport Cube*/
     int ShaderIndex = 0; /**<Index of the shader to be used*/
 
