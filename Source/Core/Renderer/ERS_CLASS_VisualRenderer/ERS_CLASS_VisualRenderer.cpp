@@ -261,7 +261,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
 
 
     // Draw 3D Cursor
-    Cursors3D_->Draw(Viewports_[Index]->Camera, CaptureCursor_, Viewports_[Index]->ShowCube);
+    Cursors3D_->Draw(Viewports_[Index]->Camera, CaptureCursor_, Viewports_[Index]->ShowCube, Viewports_[Index]->GizmoEnabled);
 
 
     ImGui::End();
