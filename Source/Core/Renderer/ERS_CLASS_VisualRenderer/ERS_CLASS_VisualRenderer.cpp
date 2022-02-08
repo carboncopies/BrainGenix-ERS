@@ -447,6 +447,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
             // Draw Checkbox For On/Off
             ImGui::MenuItem("Viewport Rotation Indicator", nullptr, &Viewports_[Index]->ShowCube);
 
+        ImGui::EndMenu();
         }
 
 
