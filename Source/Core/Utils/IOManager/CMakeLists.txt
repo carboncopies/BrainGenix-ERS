@@ -25,7 +25,7 @@ target_link_libraries(IOManager
 # Link Internal Libs
 target_link_libraries(IOManager
     ERS_CLASS_LoggingSystem
-    InputProcessor
+    ERS_CLASS_InputProcessor
     )
 
 target_include_directories(IOManager PUBLIC ./)
