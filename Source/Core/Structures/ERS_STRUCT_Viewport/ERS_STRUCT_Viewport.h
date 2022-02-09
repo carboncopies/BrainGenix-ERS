@@ -11,7 +11,7 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <InputProcessor.h>
+#include <ERS_CLASS_InputProcessor.h>
 #include <ERS_STRUCT_Camera.h>
 
 
