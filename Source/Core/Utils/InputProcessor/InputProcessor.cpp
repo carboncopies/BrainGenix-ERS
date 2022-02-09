@@ -2,11 +2,11 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include "InputProcessor.h"
+#include "ERS_CLASS_InputProcessor.h"
 
 
-// InputProcessor Constructor
-InputProcessor::InputProcessor(std::shared_ptr<ERS_STRUCT_Camera> Camera, GLFWwindow *Window) {
+// ERS_CLASS_InputProcessor Constructor
+ERS_CLASS_InputProcessor::ERS_CLASS_InputProcessor(std::shared_ptr<ERS_STRUCT_Camera> Camera, GLFWwindow *Window) {
 
     // Copy To Member Pointer
     Camera_ = Camera;
@@ -15,15 +15,15 @@ InputProcessor::InputProcessor(std::shared_ptr<ERS_STRUCT_Camera> Camera, GLFWwi
 
 }
 
-// InputProcessor Destructor
-InputProcessor::~InputProcessor() {
+// ERS_CLASS_InputProcessor Destructor
+ERS_CLASS_InputProcessor::~ERS_CLASS_InputProcessor() {
 
     // Nothing To Do
 }
 
 
 // Process Mouse Scroll Input
-void InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
+void ERS_CLASS_InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
 
     // Get Mouse Scroll Info
     float MouseScrollX = ImGui::GetIO().MouseWheel;
@@ -41,7 +41,7 @@ void InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
 }
 
 // UpdateFramebuffer Function
-void InputProcessor::UpdateFramebuffer() {
+void ERS_CLASS_InputProcessor::UpdateFramebuffer() {
 
     // Get Window Size
     int WindowX;
@@ -54,7 +54,7 @@ void InputProcessor::UpdateFramebuffer() {
 }
 
 // Update Mouse Function
-void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
+void ERS_CLASS_InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
 
     // Get Mouse Position
     double MouseX;
@@ -73,7 +73,7 @@ void InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
 }
 
 // Update Keyboard Input
-void InputProcessor::ProcessKeyboardInput(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_, float DeltaTime, bool WindowCaptureEnabled) {
+void ERS_CLASS_InputProcessor::ProcessKeyboardInput(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_, float DeltaTime, bool WindowCaptureEnabled) {
 
 
     // Get Keyboard Input
@@ -97,7 +97,7 @@ void InputProcessor::ProcessKeyboardInput(std::shared_ptr<ERS_CLASS_LoggingSyste
 }
 
 // Internal Callback Framebuffer
-void InputProcessor::FramebufferSizeCallback(int Width, int Height) {
+void ERS_CLASS_InputProcessor::FramebufferSizeCallback(int Width, int Height) {
 
 
     // Update Viewport
@@ -110,7 +110,7 @@ void InputProcessor::FramebufferSizeCallback(int Width, int Height) {
 }
 
 // Internal Callback MouseCallback
-void InputProcessor::MouseCallback(double XPos, double YPos) {
+void ERS_CLASS_InputProcessor::MouseCallback(double XPos, double YPos) {
 
     // Update Positions
     if (FirstMouse) {
@@ -137,7 +137,7 @@ void InputProcessor::MouseCallback(double XPos, double YPos) {
 }
 
 // Internal Callback ScrollCallback
-void InputProcessor::ScrollCallback(double YOffset) {
+void ERS_CLASS_InputProcessor::ScrollCallback(double YOffset) {
 
     Camera_->ProcessMouseScroll(YOffset);
 
