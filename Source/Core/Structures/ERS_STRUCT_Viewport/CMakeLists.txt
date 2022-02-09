@@ -19,7 +19,7 @@ target_link_libraries(ERS_STRUCT_Viewport
 # Link Internal Libs
 target_link_libraries(ERS_STRUCT_Viewport
     ERS_STRUCT_Camera
-    InputProcessor
+    ERS_CLASS_InputProcessor
     )
 
 
