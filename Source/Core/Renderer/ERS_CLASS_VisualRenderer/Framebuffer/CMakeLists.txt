@@ -7,10 +7,10 @@
 add_library(ERS_CLASS_Framebuffer
 
             # Add Source Files (.cpp)
-            "Framebuffer.cpp"
+            "ERS_CLASS_Framebuffer.cpp"
 
             # Add Header Files (.h)
-            "Framebuffer.h"
+            "ERS_CLASS_Framebuffer.h"
             
             ${BACKWARD_ENABLE}
             )
