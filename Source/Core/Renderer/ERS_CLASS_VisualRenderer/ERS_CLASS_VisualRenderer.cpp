@@ -330,7 +330,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
     // Create IOManager
     SystemUtils_->Logger_->Log("Creating New Input Processor", 4);
-    Viewport->Processor = std::make_shared<InputProcessor>(Viewport->Camera, Window_);
+    Viewport->Processor = std::make_shared<ERS_CLASS_InputProcessor>(Viewport->Camera, Window_);
 
 
     // Create Framebuffer
