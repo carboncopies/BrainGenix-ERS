@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <Framebuffer.h>
+#include <ERS_CLASS_Framebuffer.h>
 
 
 
