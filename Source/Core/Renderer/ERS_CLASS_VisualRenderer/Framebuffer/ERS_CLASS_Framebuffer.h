@@ -27,7 +27,7 @@
  * @brief Class to create/renderto/destruy framebuffer object.
  * 
  */
-class FramebufferManager {
+class ERS_CLASS_FramebufferManager {
 
 
     private:
