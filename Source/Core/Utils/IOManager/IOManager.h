@@ -18,7 +18,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
-#include <InputProcessor.h>
+#include <ERS_CLASS_InputProcessor.h>
 
 
 
