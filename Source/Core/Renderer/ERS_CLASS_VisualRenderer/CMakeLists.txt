@@ -29,7 +29,7 @@ target_link_libraries(ERS_CLASS_VisualRenderer
     ERS_STRUCT_Camera
     InputProcessor
     ERS_CLASS_LoggingSystem
-    Framebuffer
+    ERS_CLASS_Framebuffer
 
     ERS_STRUCT_Model
     ERS_STRUCT_Scene
