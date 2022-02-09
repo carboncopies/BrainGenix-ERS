@@ -1,0 +1,1 @@
+echo "This script will only work on ubuntu 21.04 and higher, if this doesn't work use the other install script"
