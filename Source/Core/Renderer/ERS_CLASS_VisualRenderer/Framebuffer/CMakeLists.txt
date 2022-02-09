@@ -4,7 +4,7 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Framebuffer
+add_library(ERS_CLASS_Framebuffer
 
             # Add Source Files (.cpp)
             "Framebuffer.cpp"
@@ -16,7 +16,7 @@ add_library(Framebuffer
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Framebuffer
+target_link_libraries(ERS_CLASS_Framebuffer
     glm
     glad
     glfw
@@ -24,10 +24,10 @@ target_link_libraries(Framebuffer
     )
 
 # Link Internal Libs
-target_link_libraries(Framebuffer
+target_link_libraries(ERS_CLASS_Framebuffer
     ERS_CLASS_LoggingSystem
     ERS_STRUCT_Shader
     ERS_ShaderLoader
     )
 
-target_include_directories(Framebuffer PUBLIC ./)
+target_include_directories(ERS_CLASS_Framebuffer PUBLIC ./)
