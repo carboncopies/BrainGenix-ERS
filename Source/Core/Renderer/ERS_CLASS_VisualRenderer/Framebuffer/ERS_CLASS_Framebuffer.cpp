@@ -16,8 +16,6 @@ ERS_CLASS_Framebuffer::ERS_CLASS_Framebuffer(std::shared_ptr<ERS_CLASS_LoggingSy
     // Log Initialization
     Logger_->Log("Initializing Framebuffer Manager", 5);
 
-
-
     // Load Screen Shaders
     Logger_->Log("Loading Screen Shaders", 5);
     ScreenShader_ = *ShaderLoader_->LoadShaderFromAsset(100, 101);
@@ -26,9 +24,6 @@ ERS_CLASS_Framebuffer::ERS_CLASS_Framebuffer(std::shared_ptr<ERS_CLASS_LoggingSy
     Logger_->Log("Making Screen Shaders Active", 3);
     ScreenShader_.MakeActive();
     ScreenShader_.SetInt("screenTexture", 0);
-
-
-
 
     // Create Screen Quad
     Logger_->Log("Generating Screen Quad VAO", 4);
