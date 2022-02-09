@@ -21,7 +21,7 @@
  * @brief The input processor class handles processing window input and converting that into usable information.
  * 
  */
-class InputProcessor {
+class ERS_CLASS_InputProcessor {
 
     private:
 
@@ -66,13 +66,13 @@ class InputProcessor {
          * 
          * @param Camera 
          */
-        InputProcessor(std::shared_ptr<ERS_STRUCT_Camera> Camera, GLFWwindow* Window);
+        ERS_CLASS_InputProcessor(std::shared_ptr<ERS_STRUCT_Camera> Camera, GLFWwindow* Window);
 
         /**
          * @brief Destroy the Input Processor object
          * 
          */
-        ~InputProcessor();
+        ~ERS_CLASS_InputProcessor();
 
 
 
