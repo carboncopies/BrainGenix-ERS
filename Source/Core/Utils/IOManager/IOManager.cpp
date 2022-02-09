@@ -20,7 +20,7 @@ IOManager::IOManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, GLFWwindow
 
     // Create InputProcssor
     Logger_->Log("Setting Up Window Input Processor", 5);
-    InputProcessor_ = std::make_shared<InputProcessor>(Camera_, Window_);
+    InputProcessor_ = std::make_shared<ERS_CLASS_InputProcessor>(Camera_, Window_);
 
 
 
