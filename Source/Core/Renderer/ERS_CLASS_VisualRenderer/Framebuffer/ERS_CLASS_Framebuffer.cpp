@@ -7,7 +7,7 @@
 
 
 // Framebuffer manager Constructor
-FramebufferManager::FramebufferManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader, float Width, float Height) {
+ERS_CLASS_Framebuffer::ERS_CLASS_Framebuffer(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader, float Width, float Height) {
 
     // Create Local Pointers
     Logger_ = Logger;
@@ -110,7 +110,7 @@ FramebufferManager::FramebufferManager(std::shared_ptr<ERS_CLASS_LoggingSystem> 
 }
 
 // Framebuffer manager Destructor
-FramebufferManager::~FramebufferManager() {
+ERS_CLASS_Framebuffer::~ERS_CLASS_Framebuffer() {
 
     // Log Destructor Called
     Logger_->Log("Framebuffer Manager Destructor Called", 6);
@@ -127,8 +127,8 @@ FramebufferManager::~FramebufferManager() {
 }
 
 
-// FramebufferManager Start FB Render Pass
-void FramebufferManager::StartFramebufferRenderPass() {
+// ERS_CLASS_Framebuffer Start FB Render Pass
+void ERS_CLASS_Framebuffer::StartFramebufferRenderPass() {
 
     // Bind To Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, FramebufferObject_);
@@ -138,8 +138,8 @@ void FramebufferManager::StartFramebufferRenderPass() {
 }
 
 
-// FramebufferManager Start Screen Render Pass
-void FramebufferManager::StartScreenRenderPass() {
+// ERS_CLASS_Framebuffer Start Screen Render Pass
+void ERS_CLASS_Framebuffer::StartScreenRenderPass() {
 
     // Use Default Framebuffer, And Render To It
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -159,7 +159,7 @@ void FramebufferManager::StartScreenRenderPass() {
 
 }
 
-void FramebufferManager::ResizeFramebuffer(int Width, int Height) {
+void ERS_CLASS_Framebuffer::ResizeFramebuffer(int Width, int Height) {
 
     // Update Render Color Buffer Size
     glBindTexture(GL_TEXTURE_2D, RenderTexture_);

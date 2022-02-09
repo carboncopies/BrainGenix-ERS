@@ -27,7 +27,7 @@
  * @brief Class to create/renderto/destruy framebuffer object.
  * 
  */
-class ERS_CLASS_FramebufferManager {
+class ERS_CLASS_Framebuffer {
 
 
     private:
@@ -55,13 +55,13 @@ class ERS_CLASS_FramebufferManager {
          * @param Width Width In Pixels
          * @param Height Height In Pixels
          */
-        FramebufferManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader, float Width = 800.0f, float Height = 600.0f);
+        ERS_CLASS_Framebuffer(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader, float Width = 800.0f, float Height = 600.0f);
 
         /**
          * @brief Destroy the Framebuffer Manager object.
          * 
          */
-        ~FramebufferManager();
+        ~ERS_CLASS_Framebuffer();
 
 
 
