@@ -29,7 +29,7 @@
 #include <ERS_SceneLoader.h>
 #include <ERS_CLASS_ShaderLoader.h>
 #include <InputProcessor.h>
-#include <Framebuffer.h>
+#include <ERS_CLASS_Framebuffer.h>
 #include <ERS_Editor_3DCursor.h>
 
 #include <ERS_STRUCT_LocRotScale.h>
