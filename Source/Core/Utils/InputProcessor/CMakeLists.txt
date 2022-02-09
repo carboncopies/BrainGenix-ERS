@@ -37,7 +37,7 @@ target_link_libraries(InputProcessor
 
     ERS_STRUCT_Shader
     ERS_ShaderLoader
-    Framebuffer
+    ERS_CLASS_Framebuffer
 
     ERS_SceneLoader
     )
