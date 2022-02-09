@@ -1,5 +1,0 @@
-# Copyright 2019-2020, Collabora, Ltd.
-# SPDX-License-Identifier: BSL-1.0
-
-add_subdirectory(external)
-add_subdirectory(xrt)

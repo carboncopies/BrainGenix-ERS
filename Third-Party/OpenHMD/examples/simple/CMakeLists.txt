@@ -1,8 +1,0 @@
-project (simple C)
-include_directories(${CMAKE_BINARY_DIR}/include)
-link_directories(${CMAKE_BINARY_DIR})
-add_executable(simple simple.c)
-target_link_libraries(simple PRIVATE openhmd)
-if (UNIX)
-    target_link_libraries(simple PRIVATE m)
-endif()
