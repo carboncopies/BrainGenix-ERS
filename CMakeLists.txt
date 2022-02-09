@@ -89,7 +89,7 @@ target_link_libraries(${PROJECT_NAME}
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_LoggingSystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/DatabaseInterface)
 add_subdirectory(${SRC_DIR}/Core/Utils/IOManager)
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_InputProcessor)
+
 add_subdirectory(${SRC_DIR}/Core/Utils/HardwareInformation)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_InputOutputSubsystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_IOTypeIdentifier)
@@ -113,7 +113,8 @@ add_subdirectory(${SRC_DIR}/Core/Editor/MenuEntries)
 
 add_subdirectory(${SRC_DIR}/Core/Renderer)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_VisualRenderer)
-add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_VisualRenderer/ERS_CLASS_Framebuffer)
+add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_InputProcessor)
+add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_Framebuffer)
 
 
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Camera)
