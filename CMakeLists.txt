@@ -89,33 +89,28 @@ target_link_libraries(${PROJECT_NAME}
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_LoggingSystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/DatabaseInterface)
 add_subdirectory(${SRC_DIR}/Core/Utils/IOManager)
-
 add_subdirectory(${SRC_DIR}/Core/Utils/HardwareInformation)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_InputOutputSubsystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_IOTypeIdentifier)
-
 
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_FramerateManager)
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_SceneManager)
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_ProjectManager)
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_ControllerManager)
 
+add_subdirectory(${SRC_DIR}/Core/Editor/)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_ThemeManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_FontManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_UserProfileManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_3DCursor)
-
-add_subdirectory(${SRC_DIR}/Core/Editor/)
 add_subdirectory(${SRC_DIR}/Core/Editor/Widgets)
 add_subdirectory(${SRC_DIR}/Core/Editor/Windows)
 add_subdirectory(${SRC_DIR}/Core/Editor/MenuEntries)
-
 
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_RendererManager)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_VisualRenderer)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_InputProcessor)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_Framebuffer)
-
 
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Camera)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Mesh)
@@ -136,13 +131,11 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ShaderProgramAssetIDs)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_RGBColor)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Viewport)
 
-
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_SceneLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ShaderLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ProjectLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ModelLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ControllerSettingsLoader)
-
 
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_SceneWriter)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ModelWriter)
