@@ -46,7 +46,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Miniscript.cmake)
-#include(${CMAKE_BUILD_UTILS_DIR}/Monado.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/Monado.cmake)
 
 
 
