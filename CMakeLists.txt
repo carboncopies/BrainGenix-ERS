@@ -111,7 +111,7 @@ add_subdirectory(${SRC_DIR}/Core/Editor/Windows)
 add_subdirectory(${SRC_DIR}/Core/Editor/MenuEntries)
 
 
-add_subdirectory(${SRC_DIR}/Core/Renderer)
+add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_RendererManager)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_VisualRenderer)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_InputProcessor)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_Framebuffer)
