@@ -28,6 +28,7 @@ target_link_libraries(Renderer
 target_link_libraries(Renderer
     ERS_CLASS_LoggingSystem
     ERS_CLASS_VisualRenderer
+    ERS_CLASS_Framebuffer
     IOManager
     VisualEditor
 
