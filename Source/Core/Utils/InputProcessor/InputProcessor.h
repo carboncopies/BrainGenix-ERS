@@ -14,7 +14,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_Camera.h>
 #include <ERS_CLASS_LoggingSystem.h>
-#include <Framebuffer.h>
+#include <ERS_CLASS_Framebuffer.h>
 
 
 /**
