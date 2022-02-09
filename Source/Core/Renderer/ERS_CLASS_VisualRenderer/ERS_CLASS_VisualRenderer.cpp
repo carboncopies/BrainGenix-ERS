@@ -101,7 +101,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<
     for (int i = 0; i < Viewports_.size(); i++) {
 
         // Get Input Processor
-        std::shared_ptr<InputProcessor> InputProcessor = Viewports_[i]->Processor;
+        std::shared_ptr<ERS_CLASS_InputProcessor> InputProcessorInstance = Viewports_[i]->Processor;
 
         bool CaptureEnabled = false;
         if ((CaptureIndex_ == i) && (CaptureCursor_)) {
@@ -109,10 +109,10 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<
         }
 
         // Update Viewport Camera/Position/Etc.
-        InputProcessor->ProcessKeyboardInput(SystemUtils_->Logger_, DeltaTime, CaptureEnabled);
-        InputProcessor->UpdateFramebuffer();
-        InputProcessor->UpdateMouse(CaptureEnabled);
-        InputProcessor->ProcessMouseScroll(CaptureEnabled);
+        InputProcessorInstance->ProcessKeyboardInput(SystemUtils_->Logger_, DeltaTime, CaptureEnabled);
+        InputProcessorInstance->UpdateFramebuffer();
+        InputProcessorInstance->UpdateMouse(CaptureEnabled);
+        InputProcessorInstance->ProcessMouseScroll(CaptureEnabled);
 
     }
 
