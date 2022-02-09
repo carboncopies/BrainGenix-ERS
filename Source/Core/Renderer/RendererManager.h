@@ -23,7 +23,7 @@
 #include <ERS_STRUCT_Camera.h>
 
 #include <ERS_CLASS_ShaderLoader.h>
-#include <Framebuffer.h>
+#include <ERS_CLASS_Framebuffer.h>
 #include <GUI.h>
 
 #include <ERS_ModelWriter.h>
@@ -54,7 +54,7 @@ class RendererManager {
         std::shared_ptr<IOManager> IOManager_; /**<Pointer To IOManager Instance*/
         GLFWwindow* Window_; /**<GLFW Window Instance*/
         std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
-        std::shared_ptr<FramebufferManager> FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
+        std::shared_ptr<ERS_CLASS_Framebuffer> FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
         std::shared_ptr<ERS_STRUCT_Shader> Shader_; /**<ERS Shader Object (Main System Shader)*/
         std::shared_ptr<GUISystem> GuiSystem_; /**<Instance of GUI System*/
         std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
