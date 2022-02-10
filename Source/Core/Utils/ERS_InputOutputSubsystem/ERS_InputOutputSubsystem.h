@@ -24,12 +24,8 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
-
-#include <ERS_CLASS_IOTypeIdentifier.h>
 #include <ERS_CLASS_AssetIndexIOM.h>
-
 #include <ERS_FUNCTION_CompareAssetIndexDelta.h>
-
 #include <ERS_STRUCT_IOData.h>
 
 
@@ -42,7 +38,6 @@ class ERS_CLASS_InputOutputSubsystem {
     private:
 
         std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Logging Class Pointer*/
-        std::unique_ptr<ERS_CLASS_IOTypeIdentifier> IOTypeIdentifier_; /**<Pointer To IO Type Identifier Class Instance*/
 
     public:
 
