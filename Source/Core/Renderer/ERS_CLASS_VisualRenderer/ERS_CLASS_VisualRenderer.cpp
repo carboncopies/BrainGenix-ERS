@@ -168,7 +168,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
         int RenderHeight = WindowBottomRightCornerY - WindowTopLeftCornerY;
 
 
-
         // Get Mouse Pos
         int MousePositionX = ImGui::GetMousePos().x;
         int MousePositionY = ImGui::GetMousePos().y;
