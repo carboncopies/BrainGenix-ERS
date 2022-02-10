@@ -130,140 +130,144 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
     if (Viewports_[Index]->MenuEnabled) {
         Flags |= ImGuiWindowFlags_MenuBar;
     }
-    ImGui::Begin(Viewports_[Index]->Name.c_str(), Viewports_[Index]->Enabled.get(), Flags);
+    bool Visible = ImGui::Begin(Viewports_[Index]->Name.c_str(), Viewports_[Index]->Enabled.get(), Flags);
     
 
     // Set Default Window Size
     ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
 
 
+    // Check If Window Visible
+    if (Visible) {
 
-    // Handle Viewport Menu
-    if (ImGui::IsKeyPressed(GLFW_KEY_GRAVE_ACCENT)) {
-        Viewports_[Index]->MenuEnabled = !Viewports_[Index]->MenuEnabled;
+        // Handle Viewport Menu
+        if (ImGui::IsKeyPressed(GLFW_KEY_GRAVE_ACCENT)) {
+            Viewports_[Index]->MenuEnabled = !Viewports_[Index]->MenuEnabled;
+        }
+        DrawViewportMenu(Index);
+
+
+
+        // Calculate Window Position
+        ImVec2 vMin = ImGui::GetWindowContentRegionMin();
+        ImVec2 vMax = ImGui::GetWindowContentRegionMax();
+
+        vMin.x += ImGui::GetWindowPos().x;
+        vMin.y += ImGui::GetWindowPos().y;
+        vMax.x += ImGui::GetWindowPos().x;
+        vMax.y += ImGui::GetWindowPos().y;
+
+        int WindowTopLeftCornerX = vMin.x;
+        int WindowTopLeftCornerY = vMin.y;
+        int WindowBottomRightCornerX = vMax.x;
+        int WindowBottomRightCornerY = vMax.y;
+
+
+        // Get Window Input
+        int RenderWidth = WindowBottomRightCornerX - WindowTopLeftCornerX;
+        int RenderHeight = WindowBottomRightCornerY - WindowTopLeftCornerY;
+
+
+
+        // Get Mouse Pos
+        int MousePositionX = ImGui::GetMousePos().x;
+        int MousePositionY = ImGui::GetMousePos().y;
+
+        // Check If In Bounding Box
+        bool MouseXInRange = (MousePositionX >= WindowTopLeftCornerX) && (MousePositionX < WindowBottomRightCornerX);
+        bool MouseYInRange = (MousePositionY >= WindowTopLeftCornerY) && (MousePositionY < WindowBottomRightCornerY);
+        bool MouseInRange = MouseXInRange && MouseYInRange;
+        
+
+        // Check If Input Enabled
+        bool EnableCameraMovement = !Cursors3D_->IsUsing();
+        if (ImGui::IsKeyDown(341)) { // Bind to left control key
+            EnableCameraMovement = true;
+        }
+        if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | Viewports_[Index]->WasSelected) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
+            CaptureCursor_ = true;
+            CaptureIndex_ = Index;
+            Viewports_[Index]->WasSelected = true;
+        } else {
+            CaptureCursor_ = false;
+            Viewports_[Index]->WasSelected = false;
+        }
+
+
+        glViewport(0, 0, RenderWidth, RenderHeight);
+        glScissor(0, 0, RenderWidth, RenderHeight);
+
+
+        // Resize Viewport If Needed
+        if ((RenderWidth != Viewports_[Index]->Width) || (RenderHeight != Viewports_[Index]->Height)) {
+            ResizeViewport(Index, RenderWidth, RenderHeight);
+        }
+
+
+        // Bind To Framebuffer
+        glBindFramebuffer(GL_FRAMEBUFFER, Viewports_[Index]->FramebufferObject);
+
+        // Rendering Commands Here
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        // Use Shader
+        int ShaderIndex = Viewports_[Index]->ShaderIndex;
+        Shaders_[ShaderIndex]->MakeActive();
+
+
+        // Update Camera
+        float AspectRatio = (float)RenderWidth / (float)RenderHeight;
+        Viewports_[Index]->Camera->SetAspectRatio(AspectRatio);
+        glm::mat4 projection = Viewports_[Index]->Camera->GetProjectionMatrix();
+        glm::mat4 view = Viewports_[Index]->Camera->GetViewMatrix();
+
+        // Update Shaders
+        UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight);
+        Shaders_[ShaderIndex]->SetMat4("projection", projection);
+        Shaders_[ShaderIndex]->SetMat4("view", view);
+
+
+        // Update Cursor If Selection Changed
+        if (SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged) {
+
+            // Get Selected Model
+            int SelectedModel = SceneManager->Scenes_[SceneManager->ActiveScene_]->SelectedModel;
+
+            // Get LocRotScale
+            glm::vec3 Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[SelectedModel]->ModelPosition;        
+            glm::vec3 Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[SelectedModel]->ModelRotation;        
+            glm::vec3 Scale = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[SelectedModel]->ModelScale;
+
+            // Set Cursor Position        
+            Cursors3D_->SetLocRotScale(Position, Rotation, Scale);
+
+            // Indicate Selection Hasn't Changed
+            SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged = false;
+        }
+
+
+        // Update Selected Object
+        SceneManager->UpdateLocRotScale(Cursors3D_->Pos_, Cursors3D_->Rot_, Cursors3D_->Scale_);
+        
+
+        // Draw Models
+        SceneManager->Render(Shaders_[ShaderIndex]);
+
+
+        // Render Framebuffer To Window
+        ImGui::GetWindowDrawList()->AddImage(
+            (void*)(intptr_t)Viewports_[Index]->FramebufferColorObject,
+            ImGui::GetCursorScreenPos(),
+            ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x, ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
+            ImVec2(0, 1),
+            ImVec2(1, 0)        
+        );
+
+
+        // Draw 3D Cursor
+        Cursors3D_->Draw(Viewports_[Index]->Camera, CaptureCursor_, Viewports_[Index]->ShowCube, Viewports_[Index]->GizmoEnabled);
+
     }
-    DrawViewportMenu(Index);
-
-
-
-    // Calculate Window Position
-    ImVec2 vMin = ImGui::GetWindowContentRegionMin();
-    ImVec2 vMax = ImGui::GetWindowContentRegionMax();
-
-    vMin.x += ImGui::GetWindowPos().x;
-    vMin.y += ImGui::GetWindowPos().y;
-    vMax.x += ImGui::GetWindowPos().x;
-    vMax.y += ImGui::GetWindowPos().y;
-
-    int WindowTopLeftCornerX = vMin.x;
-    int WindowTopLeftCornerY = vMin.y;
-    int WindowBottomRightCornerX = vMax.x;
-    int WindowBottomRightCornerY = vMax.y;
-
-
-    // Get Window Input
-    int RenderWidth = WindowBottomRightCornerX - WindowTopLeftCornerX;
-    int RenderHeight = WindowBottomRightCornerY - WindowTopLeftCornerY;
-
-
-
-    // Get Mouse Pos
-    int MousePositionX = ImGui::GetMousePos().x;
-    int MousePositionY = ImGui::GetMousePos().y;
-
-    // Check If In Bounding Box
-    bool MouseXInRange = (MousePositionX >= WindowTopLeftCornerX) && (MousePositionX < WindowBottomRightCornerX);
-    bool MouseYInRange = (MousePositionY >= WindowTopLeftCornerY) && (MousePositionY < WindowBottomRightCornerY);
-    bool MouseInRange = MouseXInRange && MouseYInRange;
-    
-
-    // Check If Input Enabled
-    bool EnableCameraMovement = !Cursors3D_->IsUsing();
-    if (ImGui::IsKeyDown(341)) { // Bind to left control key
-        EnableCameraMovement = true;
-    }
-    if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | Viewports_[Index]->WasSelected) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
-        CaptureCursor_ = true;
-        CaptureIndex_ = Index;
-        Viewports_[Index]->WasSelected = true;
-    } else {
-        CaptureCursor_ = false;
-        Viewports_[Index]->WasSelected = false;
-    }
-
-
-    glViewport(0, 0, RenderWidth, RenderHeight);
-    glScissor(0, 0, RenderWidth, RenderHeight);
-
-
-    // Resize Viewport If Needed
-    if ((RenderWidth != Viewports_[Index]->Width) || (RenderHeight != Viewports_[Index]->Height)) {
-        ResizeViewport(Index, RenderWidth, RenderHeight);
-    }
-
-
-    // Bind To Framebuffer
-    glBindFramebuffer(GL_FRAMEBUFFER, Viewports_[Index]->FramebufferObject);
-
-    // Rendering Commands Here
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    // Use Shader
-    int ShaderIndex = Viewports_[Index]->ShaderIndex;
-    Shaders_[ShaderIndex]->MakeActive();
-
-
-    // Update Camera
-    float AspectRatio = (float)RenderWidth / (float)RenderHeight;
-    Viewports_[Index]->Camera->SetAspectRatio(AspectRatio);
-    glm::mat4 projection = Viewports_[Index]->Camera->GetProjectionMatrix();
-    glm::mat4 view = Viewports_[Index]->Camera->GetViewMatrix();
-
-    // Update Shaders
-    UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight);
-    Shaders_[ShaderIndex]->SetMat4("projection", projection);
-    Shaders_[ShaderIndex]->SetMat4("view", view);
-
-
-    // Update Cursor If Selection Changed
-    if (SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged) {
-
-        // Get Selected Model
-        int SelectedModel = SceneManager->Scenes_[SceneManager->ActiveScene_]->SelectedModel;
-
-        // Get LocRotScale
-        glm::vec3 Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[SelectedModel]->ModelPosition;        
-        glm::vec3 Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[SelectedModel]->ModelRotation;        
-        glm::vec3 Scale = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[SelectedModel]->ModelScale;
-
-        // Set Cursor Position        
-        Cursors3D_->SetLocRotScale(Position, Rotation, Scale);
-
-        // Indicate Selection Hasn't Changed
-        SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged = false;
-    }
-
-
-    // Update Selected Object
-    SceneManager->UpdateLocRotScale(Cursors3D_->Pos_, Cursors3D_->Rot_, Cursors3D_->Scale_);
-    
-
-    // Draw Models
-    SceneManager->Render(Shaders_[ShaderIndex]);
-
-
-    // Render Framebuffer To Window
-    ImGui::GetWindowDrawList()->AddImage(
-        (void*)(intptr_t)Viewports_[Index]->FramebufferColorObject,
-        ImGui::GetCursorScreenPos(),
-        ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x, ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
-        ImVec2(0, 1),
-        ImVec2(1, 0)        
-    );
-
-
-    // Draw 3D Cursor
-    Cursors3D_->Draw(Viewports_[Index]->Camera, CaptureCursor_, Viewports_[Index]->ShowCube, Viewports_[Index]->GizmoEnabled);
 
 
     ImGui::End();
