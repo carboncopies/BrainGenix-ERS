@@ -131,6 +131,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
         Flags |= ImGuiWindowFlags_MenuBar;
     }
     ImGui::Begin(Viewports_[Index]->Name.c_str(), Viewports_[Index]->Enabled.get(), Flags);
+    
 
     // Set Default Window Size
     ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
@@ -163,6 +164,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
     // Get Window Input
     int RenderWidth = WindowBottomRightCornerX - WindowTopLeftCornerX;
     int RenderHeight = WindowBottomRightCornerY - WindowTopLeftCornerY;
+
 
 
     // Get Mouse Pos
