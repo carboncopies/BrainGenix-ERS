@@ -138,7 +138,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
 
 
     // Check If Window Visible
-    if (Visible) {
+    if (true) {
 
         // Handle Viewport Menu
         if (ImGui::IsKeyPressed(GLFW_KEY_GRAVE_ACCENT)) {
