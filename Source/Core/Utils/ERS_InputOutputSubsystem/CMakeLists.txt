@@ -28,12 +28,8 @@ target_link_libraries(ERS_InputOutputSubsystem
 
 # Link Internal Libs
 target_link_libraries(ERS_InputOutputSubsystem
-
-    ERS_STRUCT_IOData
-
-    ERS_IOTypeIdentifier
-
     ERS_CLASS_LoggingSystem
+    ERS_STRUCT_IOData
     )
 
 target_include_directories(ERS_InputOutputSubsystem PUBLIC ./)
