@@ -90,7 +90,6 @@ add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_LoggingSystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/IOManager)
 add_subdirectory(${SRC_DIR}/Core/Utils/HardwareInformation)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_InputOutputSubsystem)
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_IOTypeIdentifier)
 
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_FramerateManager)
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_SceneManager)
