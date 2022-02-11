@@ -53,5 +53,9 @@ ShaderPrograms:
         Name: "Glitch (Flashing Lights Warning)"
         VertexID: 106
         FragmentID: 107
+    4:
+        Name: "Manbelbrot Fractal Test"
+        VertexID: 108
+        FragmentID: 109
         
 DefaultShaderProgram: 0
