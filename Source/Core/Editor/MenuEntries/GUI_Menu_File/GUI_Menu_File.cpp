@@ -60,9 +60,8 @@ void GUI_Menu_File::Draw() {
         // Shader Editor
         if (ImGui::MenuItem("Shader Editor")) {
             ShaderEditor_->Enabled_ = !ShaderEditor_->Enabled_;
-            ImGui::Separator();
         }
-
+        ImGui::Separator();
 
         // Save Options
         if (ImGui::MenuItem("Save Active Scene")) {
