@@ -45,6 +45,7 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
         VisualRenderer_->SetShader(Shader_, i);
     }
 
+
     // Set Shader
     int DefaultShader = ProjectUtils_->ProjectManager_->Project_.DefaultShaderProgram;
     VisualRenderer_->SetDefaultShader(DefaultShader);
