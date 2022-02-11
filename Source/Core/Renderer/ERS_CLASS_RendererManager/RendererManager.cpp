@@ -35,15 +35,17 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 
     // Setup Shaders
     ShaderLoader_ = std::make_shared<ERS_CLASS_ShaderLoader>(SystemUtils_);
-    int DefaultShader = ProjectUtils_->ProjectManager_->Project_.DefaultShaderProgram;
-    long VertexShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[DefaultShader].VertexID;
-    long FragmentShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[DefaultShader].FragmentID;
-    std::string ShaderName = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[DefaultShader].Name;
-    Shader_ = ShaderLoader_->LoadShaderFromAsset(VertexShaderID, FragmentShaderID, ShaderName);
-    Shader_->MakeActive(SystemUtils_->Logger_);
-    Shader_->SetInt("texture_diffuse1", 0);
+    for (int i = 0; i < ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.size(); i++) {
+        long VertexShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].VertexID;
+        long FragmentShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].FragmentID;
+        std::string ShaderName = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].Name;
+        Shader_ = ShaderLoader_->LoadShaderFromAsset(VertexShaderID, FragmentShaderID, ShaderName);
+        Shader_->MakeActive(SystemUtils_->Logger_);
+        Shader_->SetInt("texture_diffuse1", 0);
+    }
 
     // Set Shader
+    int DefaultShader = ProjectUtils_->ProjectManager_->Project_.DefaultShaderProgram;
     VisualRenderer_->SetShader(Shader_, DefaultShader);
     VisualRenderer_->SetDefaultShader(DefaultShader);
 
