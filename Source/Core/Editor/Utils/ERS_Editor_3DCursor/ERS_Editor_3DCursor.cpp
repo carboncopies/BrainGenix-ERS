@@ -68,6 +68,9 @@ void Cursors3D::Draw(std::shared_ptr<ERS_STRUCT_Camera> Camera, bool IsCameraMov
         ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, ImGuizmo::MODE::WORLD, TmpMatrix);
     }
 
+    // Quaternions? 
+    // Identity matrix?
+    // https://www.mathworks.com/help/fusion/ref/quaternion.transpose.html
 
     // If Using Gizmo
     if (ImGuizmo::IsUsing()) {
