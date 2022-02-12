@@ -117,8 +117,8 @@ bool ERS_STRUCT_Model::ApplyTransformations() {
 
         X++;
 
-        ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(X), glm::vec3(1, 0, 0));
-        ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(ModelRotation[1]), glm::vec3(0, 1, 0));
+        ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(ModelRotation[0]), glm::vec3(1, 0, 0));
+        ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(X), glm::vec3(0, 1, 0));
         ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(ModelRotation[2]), glm::vec3(0, 0, 1));
 
 
