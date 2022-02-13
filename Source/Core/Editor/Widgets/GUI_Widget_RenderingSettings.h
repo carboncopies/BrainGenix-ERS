@@ -25,38 +25,37 @@
  */
 class Widget_RenderingSettings {
 
-    private:
+private:
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointer*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointer*/
 
-        ImVec4 ClearColor_ = ImVec4(0.2f, 0.2f, 0.2f, 1.0f); /**<Background Clearing Color */
-        bool OpenGLDrawLines_ = false; /**<Default Rendering Mode */
-
-
-    public:
-
-        // Show/Hide Var
-        bool Enabled_ = true; /**<Show/Hide Widget*/
+    ImVec4 ClearColor_ = ImVec4(0.2f, 0.2f, 0.2f, 1.0f); /**<Background Clearing Color */
+    bool OpenGLDrawLines_ = false; /**<Default Rendering Mode */
 
 
-        /**
-         * @brief Construct a new Widget_RenderingSettings object
-         * 
-         * @param SystemUtils 
-         */
-        Widget_RenderingSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+public:
 
-        /**
-         * @brief Destroy the Widget_RenderingSettings object
-         * 
-         */
-        ~Widget_RenderingSettings();
+    bool Enabled_ = true; /**<Show/Hide Widget*/
 
 
-        /**
-         * @brief Function that draws the window, should internally check if enable variable is set to true.
-         * 
-         */
-        void Draw();
+    /**
+     * @brief Construct a new Widget_RenderingSettings object
+     * 
+     * @param SystemUtils 
+     */
+    Widget_RenderingSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+
+    /**
+     * @brief Destroy the Widget_RenderingSettings object
+     * 
+     */
+    ~Widget_RenderingSettings();
+
+
+    /**
+     * @brief Function that draws the window, should internally check if enable variable is set to true.
+     * 
+     */
+    void Draw();
 
 };
