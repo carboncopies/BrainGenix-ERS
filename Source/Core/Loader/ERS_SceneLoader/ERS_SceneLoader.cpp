@@ -18,7 +18,6 @@ ERS_CLASS_SceneLoader::ERS_CLASS_SceneLoader(std::shared_ptr<ERS_STRUCT_SystemUt
 
 ERS_CLASS_SceneLoader::~ERS_CLASS_SceneLoader() {
 
-    // Log Destructor Call
     SystemUtils_->Logger_->Log("ERS_CLASS_SceneLoader Destructor Called", 6);
 
 }
