@@ -5,28 +5,21 @@
 #include <GUI_Window_AssetExplorer.h>
 
 
-// Constructor
 Window_AssetExplorer::Window_AssetExplorer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
-    // Copy System Utils Pointer Struct
     SystemUtils_ = SystemUtils;
-
-    // Log Init
     SystemUtils_->Logger_->Log("Initializing GUI_Window_AssetExplorer", 5);
 
 }
 
-// Destructor
 Window_AssetExplorer::~Window_AssetExplorer() {
 
-    // Log Destructor Call
     SystemUtils_->Logger_->Log("GUI_Window_AssetExplorer Destructor Called", 6);
 
 
 }
 
 
-// Draw Window
 void Window_AssetExplorer::Draw() {
 
     if (Enabled_) {
