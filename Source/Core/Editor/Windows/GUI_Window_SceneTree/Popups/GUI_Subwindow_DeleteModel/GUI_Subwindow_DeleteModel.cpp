@@ -8,7 +8,6 @@
 
 Subwindow_DeleteModel::Subwindow_DeleteModel(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
 
-    // Copy Pointer
     SceneManager_ = SceneManager;
 
 
@@ -16,7 +15,6 @@ Subwindow_DeleteModel::Subwindow_DeleteModel(std::shared_ptr<ERS_CLASS_SceneMana
 
 Subwindow_DeleteModel::~Subwindow_DeleteModel() {
 
-    // Hide All Popups
     bool ShowDeleteConfirm_ = false;
     bool ShowOneSceneDeleteError_ = false;
 
@@ -24,7 +22,6 @@ Subwindow_DeleteModel::~Subwindow_DeleteModel() {
 
 void Subwindow_DeleteModel::DeleteModel(int SceneIndex, int ModelIndex) {
 
-    // Enable Firstframe
     FirstFrame_ = true;
 
     // Show Popup Windows
@@ -43,7 +40,6 @@ void Subwindow_DeleteModel::Draw() {
 
 void Subwindow_DeleteModel::UpdateConfirmDeletePopup() {
 
-    // Begin Window
     if (ShowDeleteConfirm_) {
     ImGui::Begin("Delete Model?", &ShowDeleteConfirm_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
 
