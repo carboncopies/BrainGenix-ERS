@@ -5,24 +5,18 @@
 #include "ERS_CLASS_InputProcessor.h"
 
 
-// ERS_CLASS_InputProcessor Constructor
 ERS_CLASS_InputProcessor::ERS_CLASS_InputProcessor(std::shared_ptr<ERS_STRUCT_Camera> Camera, GLFWwindow *Window) {
 
-    // Copy To Member Pointer
     Camera_ = Camera;
     Window_ = Window;
     //FramebufferManager_ = FramebufferManager;
 
 }
 
-// ERS_CLASS_InputProcessor Destructor
 ERS_CLASS_InputProcessor::~ERS_CLASS_InputProcessor() {
-
-    // Nothing To Do
 }
 
 
-// Process Mouse Scroll Input
 void ERS_CLASS_InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
 
     // Get Mouse Scroll Info
@@ -40,7 +34,6 @@ void ERS_CLASS_InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
 
 }
 
-// UpdateFramebuffer Function
 void ERS_CLASS_InputProcessor::UpdateFramebuffer() {
 
     // Get Window Size
@@ -53,7 +46,6 @@ void ERS_CLASS_InputProcessor::UpdateFramebuffer() {
 
 }
 
-// Update Mouse Function
 void ERS_CLASS_InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
 
     // Get Mouse Position
@@ -72,7 +64,6 @@ void ERS_CLASS_InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
 
 }
 
-// Update Keyboard Input
 void ERS_CLASS_InputProcessor::ProcessKeyboardInput(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_, float DeltaTime, bool WindowCaptureEnabled) {
 
 
@@ -96,7 +87,6 @@ void ERS_CLASS_InputProcessor::ProcessKeyboardInput(std::shared_ptr<ERS_CLASS_Lo
 
 }
 
-// Internal Callback Framebuffer
 void ERS_CLASS_InputProcessor::FramebufferSizeCallback(int Width, int Height) {
 
 
@@ -109,7 +99,6 @@ void ERS_CLASS_InputProcessor::FramebufferSizeCallback(int Width, int Height) {
 
 }
 
-// Internal Callback MouseCallback
 void ERS_CLASS_InputProcessor::MouseCallback(double XPos, double YPos) {
 
     // Update Positions
@@ -136,7 +125,6 @@ void ERS_CLASS_InputProcessor::MouseCallback(double XPos, double YPos) {
 
 }
 
-// Internal Callback ScrollCallback
 void ERS_CLASS_InputProcessor::ScrollCallback(double YOffset) {
 
     Camera_->ProcessMouseScroll(YOffset);
