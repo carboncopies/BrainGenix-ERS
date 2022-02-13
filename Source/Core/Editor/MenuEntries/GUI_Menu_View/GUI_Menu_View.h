@@ -34,43 +34,41 @@
 class GUI_Menu_View {
 
 
-    // Member Vars
-    private:
+private:
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
-        std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Theme Manager Instance Ptr*/
-        std::unique_ptr<Window_ThemeSelector> Window_ThemeSelector_; /**<Theme Selector Window*/
-        std::shared_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
-        std::unique_ptr<Window_About> Window_About_; /**<Pointer to about window*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
+    std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Theme Manager Instance Ptr*/
+    std::unique_ptr<Window_ThemeSelector> Window_ThemeSelector_; /**<Theme Selector Window*/
+    std::shared_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
+    std::unique_ptr<Window_About> Window_About_; /**<Pointer to about window*/
 
-        // Window Show/Hide Vars
-        bool ShowFontPicker_ = false; /**<Control Varaible to show/hide font picker window*/
-
-
-    // Member Functions
-    public:
+    // Window Show/Hide Vars
+    bool ShowFontPicker_ = false; /**<Control Varaible to show/hide font picker window*/
 
 
-        /**
-         * @brief Construct a new gui menu object
-         * 
-         * @param SystemUtils 
-         */
-        GUI_Menu_View(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager, std::shared_ptr<ERS_CLASS_FontManager> FontManager);
+public:
 
 
-        /**
-         * @brief Destroy the gui menu object
-         * 
-         */
-        ~GUI_Menu_View();
+    /**
+     * @brief Construct a new gui menu object
+     * 
+     * @param SystemUtils 
+     */
+    GUI_Menu_View(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager, std::shared_ptr<ERS_CLASS_FontManager> FontManager);
 
 
-        /**
-         * @brief This function Draws The View Menu Contents.
-         * 
-         */
-        void Draw();
+    /**
+     * @brief Destroy the gui menu object
+     * 
+     */
+    ~GUI_Menu_View();
+
+
+    /**
+     * @brief This function Draws The View Menu Contents.
+     * 
+     */
+    void Draw();
 
 
 };
