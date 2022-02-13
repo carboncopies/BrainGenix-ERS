@@ -27,31 +27,31 @@
  */
 class Widget_ObjectProperties {
 
-    private:
+private:
 
-        std::shared_ptr<Cursors3D> Cursors3D_; /**<Instance pointer to cursors3d class*/
+    std::shared_ptr<Cursors3D> Cursors3D_; /**<Instance pointer to cursors3d class*/
 
-    public:
+public:
 
-        // Show/Hide Var
-        bool Enabled_ = true; /**<Show/Hide Widget*/
+    // Show/Hide Var
+    bool Enabled_ = true; /**<Show/Hide Widget*/
 
-        /**
-         * @brief Construct a new Widget_ObjectProperties object
-         * 
-         */
-        Widget_ObjectProperties(std::shared_ptr<Cursors3D> Cursors3D);
+    /**
+     * @brief Construct a new Widget_ObjectProperties object
+     * 
+     */
+    Widget_ObjectProperties(std::shared_ptr<Cursors3D> Cursors3D);
 
-        /**
-         * @brief Destroy the Widget_ObjectProperties object
-         * 
-         */
-        ~Widget_ObjectProperties();
+    /**
+     * @brief Destroy the Widget_ObjectProperties object
+     * 
+     */
+    ~Widget_ObjectProperties();
 
-        /**
-         * @brief Function that draws the window, should internally check if enable variable is set to true.
-         * 
-         */
-        void Draw();
+    /**
+     * @brief Function that draws the window, should internally check if enable variable is set to true.
+     * 
+     */
+    void Draw();
 
 };
