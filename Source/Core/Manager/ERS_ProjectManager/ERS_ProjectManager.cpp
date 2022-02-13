@@ -15,15 +15,12 @@ ERS_CLASS_ProjectManager::ERS_CLASS_ProjectManager(std::shared_ptr<ERS_STRUCT_Sy
 
     SystemUtils_->Logger_->Log("Initializing ERS Project Manager", 5);
 
-    // Setup Controller Settings Loader
     ControllerSettingsLoader_ = std::make_unique<ERS_CLASS_ControllerSettingsLoader>(SystemUtils_);
 
-    // Load Default Project
     LoadProject(1);
 
 }
 
-// Destructor
 ERS_CLASS_ProjectManager::~ERS_CLASS_ProjectManager() {
 
     // Log Destructor Call
