@@ -14,7 +14,6 @@
 
 
 
-
 /**
  * @brief This structure is used to store static hardware information.
  * 
