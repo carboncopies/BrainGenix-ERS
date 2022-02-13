@@ -27,38 +27,38 @@
  */
 class GUI_ImportAsset {
 
-    private:
+private:
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<used to get access to system utilites like IOmanager, logger, etc.*/
-        std::unique_ptr<Window_ImportProgressBar> Window_ImportProgressBar_; /**<Pointer To Window Import Progres Bar*/
-        std::unique_ptr<ERS_CLASS_ImportAsset> AssetImportBackend_; /**<Backend used to handle actual importing, threads, etc.*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<used to get access to system utilites like IOmanager, logger, etc.*/
+    std::unique_ptr<Window_ImportProgressBar> Window_ImportProgressBar_; /**<Pointer To Window Import Progres Bar*/
+    std::unique_ptr<ERS_CLASS_ImportAsset> AssetImportBackend_; /**<Backend used to handle actual importing, threads, etc.*/
 
-    public:
+public:
 
-        /**
-         * @brief Construct a new gui importasset object.
-         * 
-         * @param SystemUtils 
-         */
-        GUI_ImportAsset(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    /**
+     * @brief Construct a new gui importasset object.
+     * 
+     * @param SystemUtils 
+     */
+    GUI_ImportAsset(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
 
-        /**
-         * @brief Destroy the gui importasset object.
-         * 
-         */
-        ~GUI_ImportAsset();
+    /**
+     * @brief Destroy the gui importasset object.
+     * 
+     */
+    ~GUI_ImportAsset();
 
-        /**
-         * @brief Update Any Windows
-         * 
-         */
-        void Draw();
+    /**
+     * @brief Update Any Windows
+     * 
+     */
+    void Draw();
 
 
-        /**
-         * @brief Open File Dialog
-         * 
-         */
-        void OpenFileDialog();
+    /**
+     * @brief Open File Dialog
+     * 
+     */
+    void OpenFileDialog();
 
 };
