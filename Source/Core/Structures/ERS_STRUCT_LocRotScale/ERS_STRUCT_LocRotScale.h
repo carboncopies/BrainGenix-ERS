@@ -18,17 +18,14 @@
  */
 struct ERS_STRUCT_LocRotScale {
 
-    // Position
     float PosX;
     float PosY;
     float PosZ;
 
-    // Rotation
     float RotX;
     float RotY;
     float RotZ;
 
-    // Scale
     float ScaleX;
     float ScaleY;
     float ScaleZ;
