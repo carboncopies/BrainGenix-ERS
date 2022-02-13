@@ -33,7 +33,6 @@ void Subwindow_DeleteModel::DeleteModel(int SceneIndex, int ModelIndex) {
 
 void Subwindow_DeleteModel::Draw() {
 
-    // Update Window
     UpdateConfirmDeletePopup();
 
 }
