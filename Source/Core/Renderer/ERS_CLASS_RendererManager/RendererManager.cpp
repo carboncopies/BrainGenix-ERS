@@ -12,24 +12,19 @@ void ErrorCallback(int, const char* ErrorString) {
 
 
 
-// RendererManager Constructor
 RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils) {
 
-    // Create Pointers
     SystemUtils->Logger_->Log("Populating RendererManager Member Pointers", 5);
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
     HIDUtils_ = HIDUtils;
 
-    // Setup 3D Cursor
     Cursors3D_ = std::make_shared<Cursors3D>();
 
 
-    // Initialize Systems
     SystemUtils_->Logger_->Log("Initializing GLFW", 5);
     InitializeGLFW();
 
-    // Instantiate Renderers
     SystemUtils_->Logger_->Log("Instantiating Renderers", 5);
     VisualRenderer_ = std::make_shared<ERS_CLASS_VisualRenderer>(SystemUtils_, Window_, Cursors3D_);
 
@@ -44,39 +39,23 @@ RendererManager::RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
         Shader_->SetInt("texture_diffuse1", 0);
         VisualRenderer_->SetShader(Shader_, i);
     }
-
-
-    // Set Shader
     int DefaultShader = ProjectUtils_->ProjectManager_->Project_.DefaultShaderProgram;
     VisualRenderer_->SetDefaultShader(DefaultShader);
 
-    // Setup GUI
     GuiSystem_ = std::make_shared<GUISystem>(SystemUtils_, Window_, Cursors3D_, ProjectUtils_->SceneManager_, ProjectUtils_, VisualRenderer_, HIDUtils_);
 
-    // Setup IOManager
-    //SystemUtils_->Logger_->Log("Initializing Input/Output Manager", 5);
-    //IOManager_ = std::make_shared<IOManager>(SystemUtils_->Logger_, Window_, std::make_shared<ERS_STRUCT_Camera>(Camera_));
-
-    // Make Viewport
     VisualRenderer_->CreateViewport();
-    // VisualRenderer_->CreateViewport();
-    // VisualRenderer_->CreateViewport();
-    // VisualRenderer_->CreateViewport();
 
-    
 }
 
 
-// RendererManager Destructor
 RendererManager::~RendererManager() {
 
-    // Log Destructor Call
     SystemUtils_->Logger_->Log("RendererManager Destructor Called", 6);
 
 }
 
 
-// Initialize Window
 void RendererManager::InitializeGLFW() {
 
     // Initialize GLFW
