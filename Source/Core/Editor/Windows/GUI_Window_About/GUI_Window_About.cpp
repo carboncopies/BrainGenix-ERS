@@ -5,22 +5,18 @@
 #include <GUI_Window_About.h>
 
 
-// Constructor
 Window_About::Window_About(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
-    // Copy System Utils Pointer Struct
     SystemUtils_ = SystemUtils;
 
 }
 
-// Destructor
 Window_About::~Window_About() {
 
 }
 
 
 
-// Draw Window
 void Window_About::Draw() {
 
 
