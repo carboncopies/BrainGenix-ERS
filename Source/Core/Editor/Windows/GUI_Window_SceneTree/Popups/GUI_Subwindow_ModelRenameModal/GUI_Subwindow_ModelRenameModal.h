@@ -24,48 +24,48 @@
  */
 class Subwindow_ModelRenameModal {
 
-    private:
+private:
 
-        std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Model Manager Instance Pointer*/
-        char ModelInputName_[128] = ""; /**<Character Array To Store Model Name When Renaming*/
-
-
-    public:
-
-        // Show/Hide Var
-        bool Enabled_ = false; /**<Show/Hide Window*/
-        bool FirstFrame_ = false; /**<Used To Run Certain Things On Window Open*/
-        int SelectedModel_ = 0; /**<Indicate What Index The Selected Model Is*/
-        int SelectedScene_ = 0; /**<Indicate What Index The Selected Scene Is*/
-
-    public:
-
-        /**
-         * @brief Construct a new Subwindow_ModelRenameModal object
-         * 
-         */
-        Subwindow_ModelRenameModal(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
-
-        /**
-         * @brief Destroy the Subwindow_ModelRenameModal object
-         * 
-         */
-        ~Subwindow_ModelRenameModal();
+    std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Model Manager Instance Pointer*/
+    char ModelInputName_[128] = ""; /**<Character Array To Store Model Name When Renaming*/
 
 
-        /**
-         * @brief Show The Model Rename Modal
-         * 
-         * @param SelectedScene
-         * @param SelectedModel
-         */
-        void Activate(int SelectedScene, int SelectedModel);
+public:
+
+    // Show/Hide Var
+    bool Enabled_ = false; /**<Show/Hide Window*/
+    bool FirstFrame_ = false; /**<Used To Run Certain Things On Window Open*/
+    int SelectedModel_ = 0; /**<Indicate What Index The Selected Model Is*/
+    int SelectedScene_ = 0; /**<Indicate What Index The Selected Scene Is*/
+
+public:
+
+    /**
+     * @brief Construct a new Subwindow_ModelRenameModal object
+     * 
+     */
+    Subwindow_ModelRenameModal(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
+
+    /**
+     * @brief Destroy the Subwindow_ModelRenameModal object
+     * 
+     */
+    ~Subwindow_ModelRenameModal();
 
 
-        /**
-         * @brief Function that draws the window, should internally check if enable variable is set to true.
-         * 
-         */
-        void Draw();
+    /**
+     * @brief Show The Model Rename Modal
+     * 
+     * @param SelectedScene
+     * @param SelectedModel
+     */
+    void Activate(int SelectedScene, int SelectedModel);
+
+
+    /**
+     * @brief Function that draws the window, should internally check if enable variable is set to true.
+     * 
+     */
+    void Draw();
 
 };
