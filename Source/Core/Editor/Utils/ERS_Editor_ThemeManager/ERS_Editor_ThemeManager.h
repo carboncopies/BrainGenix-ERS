@@ -27,62 +27,62 @@
 class ERS_CLASS_ThemeManager {
 
 
-    private:
+private:
 
-        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<ERS_CLASS_LoggingSystem Instance*/
-        const char* ThemePath_; /**<Filepath Where Themes Are Located*/
+    std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<ERS_CLASS_LoggingSystem Instance*/
+    const char* ThemePath_; /**<Filepath Where Themes Are Located*/
 
-        std::vector<YAML::Node> ThemeFiles_; /**<List Of YAML::Node files*/
+    std::vector<YAML::Node> ThemeFiles_; /**<List Of YAML::Node files*/
 
-        ImVec4 ReadColor(const char* NodeName, YAML::Node Target); /**<Reads A Color From The Config*/
+    ImVec4 ReadColor(const char* NodeName, YAML::Node Target); /**<Reads A Color From The Config*/
 
 
-    public:
+public:
 
-        ImVec4 ClearColor_; /**Set Clear Color For Background*/
-        std::vector<std::string> ThemeNames_; /**<List of theme names (based on filename)*/
+    ImVec4 ClearColor_; /**Set Clear Color For Background*/
+    std::vector<std::string> ThemeNames_; /**<List of theme names (based on filename)*/
 
-        /**
-         * @brief Construct a new Theme Manager object
-         * 
-         * @param Logger_ 
-         * @param ThemePath 
-         */
-        ERS_CLASS_ThemeManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, const char* ThemePath = "EditorAssets/Configuration/Themes");
+    /**
+     * @brief Construct a new Theme Manager object
+     * 
+     * @param Logger_ 
+     * @param ThemePath 
+     */
+    ERS_CLASS_ThemeManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, const char* ThemePath = "EditorAssets/Configuration/Themes");
 
-        /**
-         * @brief Destroy the Theme Manager object
-         * 
-         */
-        ~ERS_CLASS_ThemeManager();
+    /**
+     * @brief Destroy the Theme Manager object
+     * 
+     */
+    ~ERS_CLASS_ThemeManager();
 
-        
+    
 
-        /**
-         * @brief Load themes from disk
-         * 
-         */
-        void LoadThemes();
+    /**
+     * @brief Load themes from disk
+     * 
+     */
+    void LoadThemes();
 
-        /**
-         * @brief Create the theme menu
-         * 
-         */
-        //FIXME: MOVE MENU UPDATE FUNCTION OUT OF GUP INTO THIS FUNCTION!!!!
-        void CreateThemeMenu();
+    /**
+     * @brief Create the theme menu
+     * 
+     */
+    //FIXME: MOVE MENU UPDATE FUNCTION OUT OF GUP INTO THIS FUNCTION!!!!
+    void CreateThemeMenu();
 
-        /**
-         * @brief Apply the selected theme
-         * 
-         * @param ThemeID 
-         */
-        void ApplyThemes(int ThemeID);
+    /**
+     * @brief Apply the selected theme
+     * 
+     * @param ThemeID 
+     */
+    void ApplyThemes(int ThemeID);
 
-        /**
-         * @brief Apply the selected theme
-         * 
-         * @param ThemeName 
-         */
-        void ApplyThemes(const char* ThemeName);
+    /**
+     * @brief Apply the selected theme
+     * 
+     * @param ThemeName 
+     */
+    void ApplyThemes(const char* ThemeName);
 
 };
