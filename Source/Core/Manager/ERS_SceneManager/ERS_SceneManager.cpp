@@ -20,13 +20,11 @@ ERS_CLASS_SceneManager::~ERS_CLASS_SceneManager() {
 
 }
 
-// Update Scene Object(s) LocRotScale
 void ERS_CLASS_SceneManager::UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
     Scenes_[ActiveScene_]->Models[Scenes_[ActiveScene_]->SelectedModel]->SetLocRotScale(Pos, Rot, Scale);
     Scenes_[ActiveScene_]->Models[Scenes_[ActiveScene_]->SelectedModel]->ApplyTransformations();
 }
 
-// Add Scene Function
 bool ERS_CLASS_SceneManager::AddScene(ERS_STRUCT_Scene Scene) {
 
     // Check If Scene Isn't Ready
@@ -45,7 +43,6 @@ bool ERS_CLASS_SceneManager::AddScene(ERS_STRUCT_Scene Scene) {
 
 }
 
-// Render All Models In Buffer
 void ERS_CLASS_SceneManager::Render(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
     
     // Iterate Through Models
@@ -65,7 +62,6 @@ void ERS_CLASS_SceneManager::Render(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
 
 }
 
-// SetActiveScene (Overloaded, int Version)
 bool ERS_CLASS_SceneManager::SetActiveScene(int SceneIndex) {
 
     // Check SceneIndex Validity
@@ -85,7 +81,6 @@ bool ERS_CLASS_SceneManager::SetActiveScene(int SceneIndex) {
 
 }
 
-// SetActiveScene (Overloaded, std::string Version)
 bool ERS_CLASS_SceneManager::SetActiveScene(std::string TargetSceneName) {
 
     // Iterate Through Scenes, Check Name Against Target
