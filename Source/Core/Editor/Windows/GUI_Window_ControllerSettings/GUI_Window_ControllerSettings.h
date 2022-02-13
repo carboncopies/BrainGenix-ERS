@@ -29,53 +29,53 @@
  */
 class Window_ControllerSettings {
 
-    private:
+private:
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
-        std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<Pointer To Human Input Device Info*/
-        std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Pointer Struct*/
-
-
-        const char* ControllerNames_[16]; /**<List Of Controller Names*/
-        int SelectedController_ = 0; /**<Active Selected Controller*/
-        const char* ControllerProfileNames_[128]; /**<List of Controller Profile Names*/
-        int SelectedControllerProfile_ = 0; /**<Index Of Selected Controller Profile*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
+    std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<Pointer To Human Input Device Info*/
+    std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Pointer Struct*/
 
 
-    private:
-        
-        /**
-         * @brief Draws ImGui Text For Pressed/Released
-         * 
-         * @param ButtonName 
-         * @param ButtonState 
-         */
-        void ButtonText(std::string ButtonName, bool ButtonState);
-
-    public:
-
-        bool Enabled_ = false; /**<Is Popup Enabled*/
+    const char* ControllerNames_[16]; /**<List Of Controller Names*/
+    int SelectedController_ = 0; /**<Active Selected Controller*/
+    const char* ControllerProfileNames_[128]; /**<List of Controller Profile Names*/
+    int SelectedControllerProfile_ = 0; /**<Index Of Selected Controller Profile*/
 
 
-    public:
+private:
+    
+    /**
+     * @brief Draws ImGui Text For Pressed/Released
+     * 
+     * @param ButtonName 
+     * @param ButtonState 
+     */
+    void ButtonText(std::string ButtonName, bool ButtonState);
 
-        /**
-         * @brief Construct a new Window_ControllerSettings object
-         * 
-         */
-        Window_ControllerSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
-        
-        /**
-         * @brief Destroy the Window_ControllerSettings object
-         * 
-         */
-        ~Window_ControllerSettings();
+public:
+
+    bool Enabled_ = false; /**<Is Popup Enabled*/
 
 
-        /**
-         * @brief Draw import bar if needed (call every frame)
-         * 
-         */
-        void Draw();
+public:
+
+    /**
+     * @brief Construct a new Window_ControllerSettings object
+     * 
+     */
+    Window_ControllerSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
+    
+    /**
+     * @brief Destroy the Window_ControllerSettings object
+     * 
+     */
+    ~Window_ControllerSettings();
+
+
+    /**
+     * @brief Draw import bar if needed (call every frame)
+     * 
+     */
+    void Draw();
 
 };
