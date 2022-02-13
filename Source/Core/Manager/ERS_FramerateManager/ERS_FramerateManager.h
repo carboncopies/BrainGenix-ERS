@@ -26,7 +26,6 @@
  */
 class ERS_CLASS_FramerateManager {
 
-// Private Member Vars
 private:
 
     std::chrono::high_resolution_clock Clock_; /**<High Res Clock Used For Frame Time Calcs*/
@@ -42,7 +41,6 @@ private:
     bool LastFrameSyncToMonitor_ = false; /**<Check If Last Sync To Monitor Changed*/
 
 
-// Public Info
 public:
 
     int TargetFrameRate_ = 60; /**<Target Frame Rate In FPS*/
@@ -56,7 +54,6 @@ public:
     
 
 
-// Public Methods
 public:
 
     /**
