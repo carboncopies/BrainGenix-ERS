@@ -5,17 +5,14 @@
 #include <ERS_ProjectManager.h>
 
 
-// Constructor
 ERS_CLASS_ProjectManager::ERS_CLASS_ProjectManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ProjectLoader> ProjectLoader, std::shared_ptr<ERS_CLASS_ProjectWriter> ProjectWriter, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_CLASS_SceneLoader> SceneLoader) {
 
-    // Copy Pointers
     SystemUtils_ = SystemUtils;
     ProjectLoader_ = ProjectLoader;
     SceneManager_ = SceneManager;
     SceneLoader_ = SceneLoader;
     ProjectWriter_ = ProjectWriter;
 
-    // Log Initialization
     SystemUtils_->Logger_->Log("Initializing ERS Project Manager", 5);
 
     // Setup Controller Settings Loader
