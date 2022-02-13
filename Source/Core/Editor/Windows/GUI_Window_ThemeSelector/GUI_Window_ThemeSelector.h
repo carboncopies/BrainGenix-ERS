@@ -20,40 +20,36 @@
  */
 class Window_ThemeSelector {
 
+private:
 
-    // Private Member Vars
-    private:
-
-        std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Theme Manager Instance*/
+    std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Theme Manager Instance*/
 
 
-    // Public Member Vars
-    public:
+public:
 
-        bool Enabled_ = false; /**<Show/Hide Window*/
+    bool Enabled_ = false; /**<Show/Hide Window*/
 
 
-    // Public Member Functions
-    public:
+public:
 
-        /**
-         * @brief Construct a new Window_ThemeSelector object
-         * 
-         * @param ThemeManager 
-         */
-        Window_ThemeSelector(std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager);
+    /**
+     * @brief Construct a new Window_ThemeSelector object
+     * 
+     * @param ThemeManager 
+     */
+    Window_ThemeSelector(std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager);
 
-        /**
-         * @brief Destroy the Window_ThemeSelector object
-         * 
-         */
-        ~Window_ThemeSelector();
+    /**
+     * @brief Destroy the Window_ThemeSelector object
+     * 
+     */
+    ~Window_ThemeSelector();
 
-        /**
-         * @brief Update the window contents, Call This Every Frame.
-         * 
-         */
-        void Draw();
+    /**
+     * @brief Update the window contents, Call This Every Frame.
+     * 
+     */
+    void Draw();
 
 
 
