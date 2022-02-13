@@ -23,7 +23,6 @@ ERS_CLASS_ProjectManager::ERS_CLASS_ProjectManager(std::shared_ptr<ERS_STRUCT_Sy
 
 ERS_CLASS_ProjectManager::~ERS_CLASS_ProjectManager() {
 
-    // Log Destructor Call
     SystemUtils_->Logger_->Log("ERS Project Manager Destructor Called", 6);
 
 }
