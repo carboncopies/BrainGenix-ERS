@@ -5,25 +5,20 @@
 #include <GUI_Menu_Window.h>
 
 
-// Constructor
 GUI_Menu_Window::GUI_Menu_Window(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRendererInstance) {
 
-    // Copy In Pointer Struct
     SystemUtils_ = SystemUtils;
     VisualRenderer_ = VisualRendererInstance;
     ProjectUtils_ = ProjectUtils;
-
-    // Log Initialization
     SystemUtils_->Logger_->Log("Editor Setting Up Window Menu", 4);
 
 
-    // Initialize Widgets
     SystemUtils_->Logger_->Log("Initializing Editor Widgets", 5);
     Widget_ObjectProperties_ = std::make_shared<Widget_ObjectProperties>(Cursors3D);
     Widget_RenderingSettings_ = std::make_unique<Widget_RenderingSettings>(SystemUtils_);
     Widget_FrameLatencyGraph_ = std::make_unique<Widget_FrameLatencyGraph>(SystemUtils_);
 
-    // Initialize Windows
+
     SystemUtils_->Logger_->Log("Initializing Editor Windows", 5);
     Window_SceneTree_ = std::make_shared<Window_SceneTree>(SceneManager, SystemUtils_, ProjectUtils_);
     Window_SystemLog_ = std::make_unique<Window_SystemLog>(SystemUtils_);
@@ -33,16 +28,13 @@ GUI_Menu_Window::GUI_Menu_Window(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemU
 }
 
 
-// Destructor
 GUI_Menu_Window::~GUI_Menu_Window() {
 
-    // Log Destructor
     SystemUtils_->Logger_->Log("Editor Destroying Window Menu", 4);
 
 }
 
 
-// Draw Function
 void GUI_Menu_Window::Draw() {
 
     // Window Menu
