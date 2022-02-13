@@ -25,46 +25,46 @@
  */
 class Subwindow_SceneRenameModal {
 
-    private:
+private:
 
-        std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
-        char SceneInputName_[128] = ""; /**<Character Array To Store Scene Name When Renaming*/
-
-
-    public:
-
-        // Show/Hide Var
-        bool Enabled_ = false; /**<Show/Hide Window*/
-        bool FirstFrame_ = false; /**<Used To Run Certain Things On Window Open*/
-        int SelectedScene_ = 0; /**<Indicate What Index The Selected Scene Is*/
-
-    public:
-
-        /**
-         * @brief Construct a new Subwindow_SceneRenameModal object
-         * 
-         */
-        Subwindow_SceneRenameModal(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
-
-        /**
-         * @brief Destroy the Subwindow_SceneRenameModal object
-         * 
-         */
-        ~Subwindow_SceneRenameModal();
+    std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
+    char SceneInputName_[128] = ""; /**<Character Array To Store Scene Name When Renaming*/
 
 
-        /**
-         * @brief Show The Scene Rename Modal
-         * 
-         * @param SelectedScene 
-         */
-        void Activate(int SelectedScene);
+public:
+
+    // Show/Hide Var
+    bool Enabled_ = false; /**<Show/Hide Window*/
+    bool FirstFrame_ = false; /**<Used To Run Certain Things On Window Open*/
+    int SelectedScene_ = 0; /**<Indicate What Index The Selected Scene Is*/
+
+public:
+
+    /**
+     * @brief Construct a new Subwindow_SceneRenameModal object
+     * 
+     */
+    Subwindow_SceneRenameModal(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
+
+    /**
+     * @brief Destroy the Subwindow_SceneRenameModal object
+     * 
+     */
+    ~Subwindow_SceneRenameModal();
 
 
-        /**
-         * @brief Function that draws the window, should internally check if enable variable is set to true.
-         * 
-         */
-        void Draw();
+    /**
+     * @brief Show The Scene Rename Modal
+     * 
+     * @param SelectedScene 
+     */
+    void Activate(int SelectedScene);
+
+
+    /**
+     * @brief Function that draws the window, should internally check if enable variable is set to true.
+     * 
+     */
+    void Draw();
 
 };
