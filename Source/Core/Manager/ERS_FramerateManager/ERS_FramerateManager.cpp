@@ -5,10 +5,8 @@
 #include <ERS_FramerateManager.h>
 
 
-// Constructor
 ERS_CLASS_FramerateManager::ERS_CLASS_FramerateManager() {
 
-    // Initialize
     SetTargetFramerate(60);
 
 }

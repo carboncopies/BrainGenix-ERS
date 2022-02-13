@@ -19,7 +19,6 @@ ERS_CLASS_ProjectLoader::~ERS_CLASS_ProjectLoader() {
 
 }
 
-// Project Loader Struct
 ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
 
     // Log Project Loading
