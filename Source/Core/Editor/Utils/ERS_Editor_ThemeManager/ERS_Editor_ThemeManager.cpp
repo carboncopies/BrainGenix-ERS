@@ -5,17 +5,12 @@
 #include <ERS_Editor_ThemeManager.h>
 
 
-// ERS_CLASS_ThemeManager Constructor
 ERS_CLASS_ThemeManager::ERS_CLASS_ThemeManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, const char* ThemePath) {
 
-    // Create Local Pointers
     Logger_ = Logger;
     ThemePath_ = ThemePath;
-
-    // Log Initialization
     Logger_->Log("Initializing Theme Manager", 5);
 
-    // Find Themes
     LoadThemes();
 
     // Default To Dark Mode
@@ -29,17 +24,14 @@ ERS_CLASS_ThemeManager::ERS_CLASS_ThemeManager(std::shared_ptr<ERS_CLASS_Logging
 
 }
 
-// ERS_CLASS_ThemeManager Destructor
 ERS_CLASS_ThemeManager::~ERS_CLASS_ThemeManager() {
 
-    // Log Destructor Call
     Logger_->Log("ERS_CLASS_ThemeManager Destructor Called", 6);
 
 }
 
 void ERS_CLASS_ThemeManager::ApplyThemes(const char* ThemeName) {
 
-    // Apply Target Theme
     int Index;
     bool HasFoundtheme = false;
     for (Index = 0; Index < ThemeNames_.size(); Index++) {
@@ -58,10 +50,8 @@ void ERS_CLASS_ThemeManager::ApplyThemes(const char* ThemeName) {
 
 }
 
-// Load Themes
 void ERS_CLASS_ThemeManager::LoadThemes() {
 
-    // Clear Vectors
     ThemeNames_ = *new std::vector<std::string>;
     ThemeFiles_ = *new std::vector<YAML::Node>;
 
@@ -88,15 +78,12 @@ void ERS_CLASS_ThemeManager::LoadThemes() {
     }
 
 
-    // Log Number Of Themes Found
     Logger_->Log(std::string(std::string("Found ") + std::to_string(ThemeNames_.size()) + std::string(" Themes")).c_str(), 1);
 
 }
 
-// Read Color
 ImVec4 ERS_CLASS_ThemeManager::ReadColor(const char* NodeName, YAML::Node Target) {
 
-    // Log Read
      Logger_->Log(std::string(std::string("Reading Theme For Value: '") + std::string(NodeName) + std::string("'")).c_str(), 1);
 
     // Get Subnode
@@ -111,19 +98,16 @@ ImVec4 ERS_CLASS_ThemeManager::ReadColor(const char* NodeName, YAML::Node Target
     Color.z = Subnode[2].as<float>()/255.0f;
     Color.w = Subnode[3].as<float>()/255.0f;
 
-    // Return Value
     return Color;
 
 }
 
-// Apply Theme
 void ERS_CLASS_ThemeManager::ApplyThemes(int ThemeID) {
 
     // Get Theme Name
     std::string ThemeName = ThemeNames_[ThemeID];
     YAML::Node ThemeNode = ThemeFiles_[ThemeID];
 
-    // Log Theme Loading
     Logger_->Log(std::string(std::string("Applying Theme: ") + ThemeName).c_str(), 4);
 
 
