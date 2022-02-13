@@ -28,19 +28,16 @@
 class Window_TestEditor {
 
 
-// Private Member Vars
 private:
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointer to system utils struct*/
     TextEditor Editor_; /** Editor Instance*/
 
-// Public Member Vars
 public:
 
     bool Enabled_ = false; /**<Control var for the window, enables or disables it.*/
 
 
-// Public Methods
 public:
 
     /**
