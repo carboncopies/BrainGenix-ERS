@@ -5,10 +5,8 @@
 #include <GUI_Widget_FrameratePlot.h>
 
 
-// Define Draw Function
 void Widget_FrameratePlot::Draw() {
 
-    // Push Back Current Framerate To Vector
     FramerateHistory_.push_back(ImGui::GetIO().Framerate);
     
 
@@ -26,7 +24,6 @@ void Widget_FrameratePlot::Draw() {
 
     }
 
-    // If Window Drawing Enabled
     if (Enabled_) {
         bool Visible = ImGui::Begin("Framerate Plot", &Enabled_);
 
