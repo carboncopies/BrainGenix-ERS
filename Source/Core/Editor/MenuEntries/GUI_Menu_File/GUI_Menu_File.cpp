@@ -5,19 +5,14 @@
 #include <GUI_Menu_File.h>
 
 
-// Constructor
 GUI_Menu_File::GUI_Menu_File(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer) {
 
-    // Copy In Pointer Struct
     SystemUtils_ = SystemUtils;
     SceneManager_ = SceneManager;
     ProjectUtils_ = ProjectUtils;
     VisualRenderer_ = VisualRenderer;
-
-    // Log Initialization
     SystemUtils_->Logger_->Log("Editor Setting Up File Menu", 4);
 
-    // Create Class Instances
     SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_);
     ImportAsset_ = std::make_unique<GUI_ImportAsset>(SystemUtils_);
     ShaderEditor_ = std::make_unique<Window_ShaderEditor>(SystemUtils_, ProjectUtils_, VisualRenderer_);
@@ -25,15 +20,12 @@ GUI_Menu_File::GUI_Menu_File(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils
 
 }
 
-// Destructor
 GUI_Menu_File::~GUI_Menu_File() {
 
-    // Log Destructor
     SystemUtils_->Logger_->Log("Editor Destroying File Menu", 4);
 
 }
 
-// Draw Function
 void GUI_Menu_File::Draw() {
 
     // File Menu
