@@ -4,24 +4,19 @@
 
 #include <GUI_Subwindow_ModelRenameModal.h>
 
-// Constructor
 Subwindow_ModelRenameModal::Subwindow_ModelRenameModal(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
 
-    // Update Ptr
     SceneManager_ = SceneManager;
 
 
 }
 
-// Destructor
 Subwindow_ModelRenameModal::~Subwindow_ModelRenameModal() {
     
 }
 
-// Define Activation Function
 void Subwindow_ModelRenameModal::Activate(int SceneIndex, int ModelIndex) {
 
-    // Activate
     SelectedScene_ = SceneIndex;
     SelectedModel_ = ModelIndex;
     Enabled_ = true;
@@ -29,10 +24,8 @@ void Subwindow_ModelRenameModal::Activate(int SceneIndex, int ModelIndex) {
 
 }
 
-// Define Draw Function
 void Subwindow_ModelRenameModal::Draw() {
 
-    // Draw Rename Model Window
     if (Enabled_) {
     ImGui::Begin("Rename Model", &Enabled_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
 
