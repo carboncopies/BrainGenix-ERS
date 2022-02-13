@@ -22,48 +22,46 @@
  */
 class Subwindow_DeleteScene {
 
-    // Private Vars
-    private:
+private:
 
-        std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<SceneManager Instance*/
-        int SceneIndex_ = 0; /**<SceneIndex Used To Remember What Scene To Delete*/
+    std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<SceneManager Instance*/
+    int SceneIndex_ = 0; /**<SceneIndex Used To Remember What Scene To Delete*/
 
-        bool FirstFrame_ = false; /**<Used to grab keyboard input on first frame window is open*/
+    bool FirstFrame_ = false; /**<Used to grab keyboard input on first frame window is open*/
 
-        bool ShowDeleteConfirm_ = false; /**<Confirm Deletion Of Scene*/
-        bool ShowOneSceneDeleteError_ = false; /**<Error popup that shows when one scene is remaining, (Can't have no scenes)*/
+    bool ShowDeleteConfirm_ = false; /**<Confirm Deletion Of Scene*/
+    bool ShowOneSceneDeleteError_ = false; /**<Error popup that shows when one scene is remaining, (Can't have no scenes)*/
 
-    // Private Functions
-    private:
+private:
 
-        void UpdateConfirmDeletePopup(); /**<Function To Update Popup Deletion Window*/
-        void UpdateOneSceneDeleteErrorPopup(); /**<Last scene deletion error popup*/
+    void UpdateConfirmDeletePopup(); /**<Function To Update Popup Deletion Window*/
+    void UpdateOneSceneDeleteErrorPopup(); /**<Last scene deletion error popup*/
 
-    public:
+public:
 
-        /**
-         * @brief Construct a new Subwindow_DeleteScene object
-         * 
-         */
-        Subwindow_DeleteScene(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
+    /**
+     * @brief Construct a new Subwindow_DeleteScene object
+     * 
+     */
+    Subwindow_DeleteScene(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
 
-        /**
-         * @brief Destroy the Subwindow_DeleteScene object
-         * 
-         */
-        ~Subwindow_DeleteScene();
+    /**
+     * @brief Destroy the Subwindow_DeleteScene object
+     * 
+     */
+    ~Subwindow_DeleteScene();
 
-        /**
-         * @brief Called by the GUI to delete a scene.
-         * 
-         * @param SceneIndex 
-         */
-        void DeleteScene(int SceneIndex);
+    /**
+     * @brief Called by the GUI to delete a scene.
+     * 
+     * @param SceneIndex 
+     */
+    void DeleteScene(int SceneIndex);
 
-        /**
-         * @brief Update all windows created by this class. Call every frame.
-         * 
-         */
-        void Draw();
+    /**
+     * @brief Update all windows created by this class. Call every frame.
+     * 
+     */
+    void Draw();
 
 };
