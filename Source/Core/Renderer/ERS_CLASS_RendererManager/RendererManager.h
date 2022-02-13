@@ -47,61 +47,57 @@ static ERS_STRUCT_Camera Camera_(glm::vec3(0.0f, 0.0f, 3.0f));
  */
 class RendererManager {
 
-    private:
+private:
 
-        // Member Variables
-        std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
-        std::shared_ptr<IOManager> IOManager_; /**<Pointer To IOManager Instance*/
-        GLFWwindow* Window_; /**<GLFW Window Instance*/
-        std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
-        std::shared_ptr<ERS_CLASS_Framebuffer> FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
-        std::shared_ptr<ERS_STRUCT_Shader> Shader_; /**<ERS Shader Object (Main System Shader)*/
-        std::shared_ptr<GUISystem> GuiSystem_; /**<Instance of GUI System*/
-        std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
-        
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Copy Of Pointer Helper Struct*/
-        std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Copy Of Project Utils Struct*/
-        std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<Copy Of Pointer To HIDM Struct*/
-
-
-        // Control Values
-        int WindowWidth_; /**<GLFW Window Width Varaible*/
-        int WindowHeight_; /**<GLFW Window Height Varaible*/
-        const char* WindowTitle_; /**GLFW Window Title Variable*/
+    // Member Variables
+    std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
+    std::shared_ptr<IOManager> IOManager_; /**<Pointer To IOManager Instance*/
+    GLFWwindow* Window_; /**<GLFW Window Instance*/
+    std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
+    std::shared_ptr<ERS_CLASS_Framebuffer> FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
+    std::shared_ptr<ERS_STRUCT_Shader> Shader_; /**<ERS Shader Object (Main System Shader)*/
+    std::shared_ptr<GUISystem> GuiSystem_; /**<Instance of GUI System*/
+    std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
+    
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Copy Of Pointer Helper Struct*/
+    std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Copy Of Project Utils Struct*/
+    std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<Copy Of Pointer To HIDM Struct*/
 
 
-        /**
-         * @brief Initialize And Create A GLFW Window
-         * 
-         */
-        void InitializeGLFW();
+    // Control Values
+    int WindowWidth_; /**<GLFW Window Width Varaible*/
+    int WindowHeight_; /**<GLFW Window Height Varaible*/
+    const char* WindowTitle_; /**GLFW Window Title Variable*/
 
 
-    public:
-
-        /**
-         * @brief Initializes all renderers that have been enabled in the configuration file.
-         * 
-         * @param SystemConfiguration 
-         * @param Logger 
-         * @param SystemShouldRun 
-         */
-        RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils);
-
-        /**
-         * @brief Shuts down the renderers and cleans up variables.
-         * 
-         */
-        ~RendererManager();
-
-        /**
-         * @brief Called by the main loop, updates all rendered outputs.
-         * 
-         */
-        void UpdateLoop(float DeltaTime);
+    /**
+     * @brief Initialize And Create A GLFW Window
+     * 
+     */
+    void InitializeGLFW();
 
 
+public:
 
+    /**
+     * @brief Initializes all renderers that have been enabled in the configuration file.
+     * 
+     * @param SystemConfiguration 
+     * @param Logger 
+     * @param SystemShouldRun 
+     */
+    RendererManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils);
+
+    /**
+     * @brief Shuts down the renderers and cleans up variables.
+     * 
+     */
+    ~RendererManager();
+
+    /**
+     * @brief Called by the main loop, updates all rendered outputs.
+     * 
+     */
+    void UpdateLoop(float DeltaTime);
 
 };
-
