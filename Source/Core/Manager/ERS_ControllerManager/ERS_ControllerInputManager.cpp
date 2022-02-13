@@ -24,7 +24,6 @@ ERS_CLASS_ControllerInputManager::~ERS_CLASS_ControllerInputManager() {
 }
 
 
-// Detect InputDevices
 void ERS_CLASS_ControllerInputManager::UpdateNumberInputDevices() {
 
     // Iterate Through All 16 Supported Controllers
@@ -37,7 +36,6 @@ void ERS_CLASS_ControllerInputManager::UpdateNumberInputDevices() {
 
 }
 
-// Update Number Axes Per Joystick
 void ERS_CLASS_ControllerInputManager::CheckIfSupportedControllers() {
 
     // Clear Controller Supported List
@@ -50,7 +48,6 @@ void ERS_CLASS_ControllerInputManager::CheckIfSupportedControllers() {
 
 }
 
-// Get Data For Each Axis
 void ERS_CLASS_ControllerInputManager::UpdateControllerStates() {
 
     // Clear States
@@ -85,7 +82,6 @@ void ERS_CLASS_ControllerInputManager::UpdateControllerStates() {
 }
 
 
-// Update Controllers
 void ERS_CLASS_ControllerInputManager::UpdateControllers() {
 
     // On First Frame, Detect Controllers
@@ -100,7 +96,6 @@ void ERS_CLASS_ControllerInputManager::UpdateControllers() {
 }
 
 
-// Index Controllers();
 void ERS_CLASS_ControllerInputManager::DetectControllers() {
 
     // Update Data
