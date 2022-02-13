@@ -23,58 +23,58 @@
  */
 class Window_ImportProgressBar {
 
-    private:
+private:
 
-        int CurrentAssetNumber_ = 0; /**<Set Current Number Of Asset Being Imported*/
-        int TotalAssetsToImport_ = 1; /**<Set Total Number Of Assets To Import*/
+    int CurrentAssetNumber_ = 0; /**<Set Current Number Of Asset Being Imported*/
+    int TotalAssetsToImport_ = 1; /**<Set Total Number Of Assets To Import*/
 
-        int ConsecFinished_ = 0; /**<Set number of consec frames that job is finished*/
-        int ConsecFinishedThreshold_ = 60; /**<Hide After 100 frames of finished job*/
-        
-        float PercentDone_; /**<Float Used By Progress Bar*/
-        bool IsJobFinishing_; /**<Bool Set By Thread*/
+    int ConsecFinished_ = 0; /**<Set number of consec frames that job is finished*/
+    int ConsecFinishedThreshold_ = 60; /**<Hide After 100 frames of finished job*/
+    
+    float PercentDone_; /**<Float Used By Progress Bar*/
+    bool IsJobFinishing_; /**<Bool Set By Thread*/
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
 
-    public:
+public:
 
-        bool Enabled_ = false; /**<Is Popup Enabled*/
-
-
-    public:
-
-        /**
-         * @brief Construct a new Window_ImportProgressBar object
-         * 
-         */
-        Window_ImportProgressBar(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
-        
-        /**
-         * @brief Destroy the Window_ImportProgressBar object
-         * 
-         */
-        ~Window_ImportProgressBar();
+    bool Enabled_ = false; /**<Is Popup Enabled*/
 
 
-        /**
-         * @brief Update Total items being processed (progress bar)
-         * 
-         * @param Current 
-         * @param Total 
-         */
-        void UpdateTotalItems(long Current, long Total);
+public:
 
-        /**
-         * @brief close the window a few frames after the job finishes
-         * 
-         * @param JobState 
-         */
-        void UpdateJobState(bool JobFinished);
+    /**
+     * @brief Construct a new Window_ImportProgressBar object
+     * 
+     */
+    Window_ImportProgressBar(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    
+    /**
+     * @brief Destroy the Window_ImportProgressBar object
+     * 
+     */
+    ~Window_ImportProgressBar();
 
-        /**
-         * @brief Draw import bar if needed (call every frame)
-         * 
-         */
-        void Draw();
+
+    /**
+     * @brief Update Total items being processed (progress bar)
+     * 
+     * @param Current 
+     * @param Total 
+     */
+    void UpdateTotalItems(long Current, long Total);
+
+    /**
+     * @brief close the window a few frames after the job finishes
+     * 
+     * @param JobState 
+     */
+    void UpdateJobState(bool JobFinished);
+
+    /**
+     * @brief Draw import bar if needed (call every frame)
+     * 
+     */
+    void Draw();
 
 };
