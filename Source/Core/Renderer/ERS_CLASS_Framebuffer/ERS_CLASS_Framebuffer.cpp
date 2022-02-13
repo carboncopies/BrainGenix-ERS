@@ -111,7 +111,6 @@ ERS_CLASS_Framebuffer::~ERS_CLASS_Framebuffer() {
 }
 
 
-// ERS_CLASS_Framebuffer Start FB Render Pass
 void ERS_CLASS_Framebuffer::StartFramebufferRenderPass() {
 
     // Bind To Framebuffer
