@@ -22,10 +22,6 @@ private:
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Info Struct*/
 
-private:
-
-public:
-
 public:
 
     /**
