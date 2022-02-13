@@ -5,7 +5,6 @@
 #include <GUI_Widget_FramerateHistogram.h>
 
 
-// Define Draw Function
 void Widget_FramerateHistogram::Draw() {
 
     // Push Back Current Framerate To Vector
@@ -26,7 +25,6 @@ void Widget_FramerateHistogram::Draw() {
 
     }
 
-    // If Window Drawing Enabled
     if (Enabled_) {
         bool Visible = ImGui::Begin("Framerate Histogram", &Enabled_);
 
