@@ -5,7 +5,6 @@
 #include <GUI_Widget_FramerateGraph.h>
 
 
-// Define Draw Function
 void Widget_FramerateGraph::Draw() {
 
     // Push Back Current Framerate To Vector
@@ -26,7 +25,6 @@ void Widget_FramerateGraph::Draw() {
 
     }
 
-    // If Window Drawing Enabled
     if (Enabled_) {
         bool WindowVisible = ImGui::Begin("Framerate Graph", &Enabled_);
 
