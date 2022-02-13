@@ -21,21 +21,21 @@
  */
 class Widget_FramerateHistogram {
 
-    private:
+private:
 
-        std::vector<float> FramerateHistory_; /**<Vector To Store Framerate histories*/ 
-        int HistoryLength_ = 1000; /**<Set Framerate History Length*/
+    std::vector<float> FramerateHistory_; /**<Vector To Store Framerate histories*/ 
+    int HistoryLength_ = 1000; /**<Set Framerate History Length*/
 
-    public:
+public:
 
-        // Show/Hide Var
-        bool Enabled_ = false; /**<Show/Hide Widget*/
+    // Show/Hide Var
+    bool Enabled_ = false; /**<Show/Hide Widget*/
 
 
-        /**
-         * @brief Function that draws the window, should internally check if enable variable is set to true.
-         * 
-         */
-        void Draw();
+    /**
+     * @brief Function that draws the window, should internally check if enable variable is set to true.
+     * 
+     */
+    void Draw();
 
 };
