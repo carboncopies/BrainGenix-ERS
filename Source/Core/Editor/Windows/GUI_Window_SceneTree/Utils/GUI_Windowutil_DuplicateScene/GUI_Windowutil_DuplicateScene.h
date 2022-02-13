@@ -15,5 +15,10 @@
 #include <ERS_SceneManager.h>
 #include <ERS_STRUCT_Scene.h>
 
-
+/**
+ * @brief Duplicate the scene in the project
+ * 
+ * @param SceneManager 
+ * @param SceneIndex 
+ */
 void GUI_Windowutil_DuplicateScene(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, int SceneIndex);
