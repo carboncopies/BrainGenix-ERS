@@ -23,74 +23,74 @@
  */
 class ERS_CLASS_SceneManager{
 
-    private:
+private:
 
-        // Internal Member Pointers
-        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer To Logger Instance*/
-
-
-    public:
-
-        std::vector<std::shared_ptr<ERS_STRUCT_Scene>> Scenes_; /**<Vector Containing Scenes To Be Drawn*/
-        int ActiveScene_ = 0; /**<Set The Active Scene */
-
-    public:
-
-        /**
-         * @brief Construct a new Scene Manager object
-         * 
-         * @param Logger 
-         */
-        ERS_CLASS_SceneManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger);
-        
-        /**
-         * @brief Destroy the Scene Manager object
-         * 
-         */
-        ~ERS_CLASS_SceneManager();
+    // Internal Member Pointers
+    std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer To Logger Instance*/
 
 
-        /**
-         * @brief Set the active scene. (Overloaded) [This Version Takes The Scene Index]. Returns True/False For Success/Fail
-         * 
-         * @param SceneIndex
-         * @return true 
-         * @return false 
-         */
-        bool SetActiveScene(int SceneIndex);
+public:
 
-        /**
-         * @brief Set the active scene. (Overloaded) [This Version Takes The Scene Name]. Returns True/False For Success/Fail
-         * 
-         * @param TargetSceneName 
-         * @return true 
-         * @return false 
-         */
-        bool SetActiveScene(std::string TargetSceneName);
+    std::vector<std::shared_ptr<ERS_STRUCT_Scene>> Scenes_; /**<Vector Containing Scenes To Be Drawn*/
+    int ActiveScene_ = 0; /**<Set The Active Scene */
+
+public:
+
+    /**
+     * @brief Construct a new Scene Manager object
+     * 
+     * @param Logger 
+     */
+    ERS_CLASS_SceneManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger);
+    
+    /**
+     * @brief Destroy the Scene Manager object
+     * 
+     */
+    ~ERS_CLASS_SceneManager();
 
 
-        /**
-         * @brief Add a populated scene structure to the scenes vector.
-         * 
-         * @param Scene 
-         * @return true 
-         * @return false
-         */
-        bool AddScene(ERS_STRUCT_Scene Scene);
+    /**
+     * @brief Set the active scene. (Overloaded) [This Version Takes The Scene Index]. Returns True/False For Success/Fail
+     * 
+     * @param SceneIndex
+     * @return true 
+     * @return false 
+     */
+    bool SetActiveScene(int SceneIndex);
 
-        /**
-         * @brief Render scene set to active.
-         * 
-         * @param Shader 
-         */
-        void Render(std::shared_ptr<ERS_STRUCT_Shader> Shader);
+    /**
+     * @brief Set the active scene. (Overloaded) [This Version Takes The Scene Name]. Returns True/False For Success/Fail
+     * 
+     * @param TargetSceneName 
+     * @return true 
+     * @return false 
+     */
+    bool SetActiveScene(std::string TargetSceneName);
 
-        /**
-         * @brief Send LocRotScale Update To Object(s) In Active Scene
-         * 
-         * @param LocRotScale 
-         */
-        void UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale);
-        
+
+    /**
+     * @brief Add a populated scene structure to the scenes vector.
+     * 
+     * @param Scene 
+     * @return true 
+     * @return false
+     */
+    bool AddScene(ERS_STRUCT_Scene Scene);
+
+    /**
+     * @brief Render scene set to active.
+     * 
+     * @param Shader 
+     */
+    void Render(std::shared_ptr<ERS_STRUCT_Shader> Shader);
+
+    /**
+     * @brief Send LocRotScale Update To Object(s) In Active Scene
+     * 
+     * @param LocRotScale 
+     */
+    void UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale);
+    
 
 };
