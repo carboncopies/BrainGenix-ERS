@@ -17,43 +17,44 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
 
+
 /**
  * @brief Window for the Import progress bar.
  * 
  */
 class Window_SystemLog {
 
-    private:
+private:
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
-        int MinLogLevel_ = 0; /**<Default Min Log Level*/
-        int StartingLogIndex_ = 0; /**<Starting Log Index, Set To Current Length To Clear*/
-        bool AutoScroll_ = true; /**<Autoscroll Log*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
+    int MinLogLevel_ = 0; /**<Default Min Log Level*/
+    int StartingLogIndex_ = 0; /**<Starting Log Index, Set To Current Length To Clear*/
+    bool AutoScroll_ = true; /**<Autoscroll Log*/
 
-    public:
+public:
 
-        bool Enabled_ = true; /**<Is Popup Enabled*/
-
-
-    public:
-
-        /**
-         * @brief Construct a new Window_SystemLog object
-         * 
-         */
-        Window_SystemLog(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
-        
-        /**
-         * @brief Destroy the Window_SystemLog object
-         * 
-         */
-        ~Window_SystemLog();
+    bool Enabled_ = true; /**<Is Popup Enabled*/
 
 
-        /**
-         * @brief Draw system log needed (call every frame)
-         * 
-         */
-        void Draw();
+public:
+
+    /**
+     * @brief Construct a new Window_SystemLog object
+     * 
+     */
+    Window_SystemLog(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    
+    /**
+     * @brief Destroy the Window_SystemLog object
+     * 
+     */
+    ~Window_SystemLog();
+
+
+    /**
+     * @brief Draw system log needed (call every frame)
+     * 
+     */
+    void Draw();
 
 };
