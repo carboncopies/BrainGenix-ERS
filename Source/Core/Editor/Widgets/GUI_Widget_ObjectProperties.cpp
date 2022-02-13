@@ -4,23 +4,19 @@
 
 #include <GUI_Widget_ObjectProperties.h>
 
-// Constructor
+
 Widget_ObjectProperties::Widget_ObjectProperties(std::shared_ptr<Cursors3D> Cursors3D) {
 
-    // Update Ptr
     Cursors3D_ = Cursors3D;
 
 }
 
-// Destructor
 Widget_ObjectProperties::~Widget_ObjectProperties() {
     
 }
 
-// Define Draw Function
 void Widget_ObjectProperties::Draw() {
 
-    // If Window Drawing Enabled
     if (Enabled_) {
         bool Visible = ImGui::Begin("Object Properties", &Enabled_);
 
