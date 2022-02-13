@@ -50,89 +50,89 @@
 class ERS_CLASS_ModelLoader {
 
 
-    private:
+private:
 
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Struct*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Struct*/
 
-        std::vector<std::shared_ptr<ERS_STRUCT_Model>> WorkItems_; /**<Items For The Worker To Process*/
-        std::vector<long> WorkIDs_; /**<Vector Containing IDs*/
-        std::vector<bool> FlipTextures_; /**<vector Containing FlipTexture For Work Items*/
-        std::vector<std::thread> WorkerThreads_; /**<List of worker threads*/
-        std::mutex BlockThread_; /**<Block Threads From Doing Things*/
-        bool ExitThreads_ = false; /**<Set To True To Make Threads Quit*/
+    std::vector<std::shared_ptr<ERS_STRUCT_Model>> WorkItems_; /**<Items For The Worker To Process*/
+    std::vector<long> WorkIDs_; /**<Vector Containing IDs*/
+    std::vector<bool> FlipTextures_; /**<vector Containing FlipTexture For Work Items*/
+    std::vector<std::thread> WorkerThreads_; /**<List of worker threads*/
+    std::mutex BlockThread_; /**<Block Threads From Doing Things*/
+    bool ExitThreads_ = false; /**<Set To True To Make Threads Quit*/
 
-        void WorkerThread(); /**<Worker Thread Function*/
+    void WorkerThread(); /**<Worker Thread Function*/
 
-        ERS_STRUCT_Texture LoadTexture(long ID, bool FlipTextures = false);
+    ERS_STRUCT_Texture LoadTexture(long ID, bool FlipTextures = false);
 
-        /**
-         * @brief Function Used To Process Subnodes Of SceneFiles.
-         * 
-         * @param Node 
-         * @param Scene 
-         */
-        void ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::vector<std::string> TexturePaths);
+    /**
+     * @brief Function Used To Process Subnodes Of SceneFiles.
+     * 
+     * @param Node 
+     * @param Scene 
+     */
+    void ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::vector<std::string> TexturePaths);
 
-        /**
-         * @brief Process Meshes From Model.
-         * 
-         * @param Mesh 
-         * @param Scene 
-         * @return ERS_STRUCT_Mesh 
-         */
-        ERS_STRUCT_Mesh ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::vector<std::string> TexturePaths);
+    /**
+     * @brief Process Meshes From Model.
+     * 
+     * @param Mesh 
+     * @param Scene 
+     * @return ERS_STRUCT_Mesh 
+     */
+    ERS_STRUCT_Mesh ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::vector<std::string> TexturePaths);
 
-        /**
-         * @brief Load Textures From Model.
-         * 
-         * @param Mat 
-         * @param Type 
-         * @param TypeName 
-         * @return std::vector<ERS_STRUCT_Texture> 
-         */
-        void LoadMaterialTextures(std::vector<int>* IDs, std::vector<std::string>* Types, std::vector<std::string> TextureList, ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName);
-
-
-    public:
-
-        void ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model); /**<Process the GPU stuff for each model*/
+    /**
+     * @brief Load Textures From Model.
+     * 
+     * @param Mat 
+     * @param Type 
+     * @param TypeName 
+     * @return std::vector<ERS_STRUCT_Texture> 
+     */
+    void LoadMaterialTextures(std::vector<int>* IDs, std::vector<std::string>* Types, std::vector<std::string> TextureList, ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName);
 
 
-        /**
-         * @brief Construct a new Model Loader object
-         * 
-         * @param Logger 
-         * @param TextureLoader 
-         */
-        ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, int MaxThreadCount = -1);
+public:
 
-        /**
-         * @brief Destroy the Model Loader object
-         * 
-         */
-        ~ERS_CLASS_ModelLoader();
+    void ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model); /**<Process the GPU stuff for each model*/
 
 
-        /**
-         * @brief Load Model From Given File.
-         * 
-         * @param AssetPath 
-         * @param FlipTextures 
-         * @return ERS_STRUCT_Model 
-         */
-        void LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures = false);
+    /**
+     * @brief Construct a new Model Loader object
+     * 
+     * @param Logger 
+     * @param TextureLoader 
+     */
+    ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, int MaxThreadCount = -1);
+
+    /**
+     * @brief Destroy the Model Loader object
+     * 
+     */
+    ~ERS_CLASS_ModelLoader();
 
 
-        /**
-         * @brief Process models in scene, perform opengl loading operations on models as needed - opengl cannot be done in another thread.
-         * 
-         * @param ActiveScene 
-         */
-        void ProcessNewModels(std::shared_ptr<ERS_STRUCT_Scene> ActiveScene);
+    /**
+     * @brief Load Model From Given File.
+     * 
+     * @param AssetPath 
+     * @param FlipTextures 
+     * @return ERS_STRUCT_Model 
+     */
+    void LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures = false);
 
 
-        void AddModelToLoadingQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures = false);
+    /**
+     * @brief Process models in scene, perform opengl loading operations on models as needed - opengl cannot be done in another thread.
+     * 
+     * @param ActiveScene 
+     */
+    void ProcessNewModels(std::shared_ptr<ERS_STRUCT_Scene> ActiveScene);
+
+
+    void AddModelToLoadingQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures = false);
 
 
 

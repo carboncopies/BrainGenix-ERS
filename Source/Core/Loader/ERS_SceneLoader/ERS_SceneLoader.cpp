@@ -9,16 +9,13 @@
 
 ERS_CLASS_SceneLoader::ERS_CLASS_SceneLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader) {
 
-    // Create Local Pointer
     SystemUtils_ = SystemUtils;
     ModelLoader_ = ModelLoader;
 
-    // Log Initializaton Start
     SystemUtils_->Logger_->Log("Initializing ERS_CLASS_SceneLoader Subsystem", 5);
 
 }
 
-// ERS_CLASS_SceneLoader Destructor
 ERS_CLASS_SceneLoader::~ERS_CLASS_SceneLoader() {
 
     // Log Destructor Call
