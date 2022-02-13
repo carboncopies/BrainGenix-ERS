@@ -117,7 +117,6 @@ bool ERS_CLASS_SceneManager::SetActiveScene(std::string TargetSceneName) {
     // Update Target Scene
     ActiveScene_ = TargetSceneIndex;
 
-    // Return Success
     return true;
     
 
