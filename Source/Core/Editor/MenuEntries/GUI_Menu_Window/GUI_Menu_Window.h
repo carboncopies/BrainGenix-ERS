@@ -44,52 +44,50 @@
 class GUI_Menu_Window {
 
 
-    // Member Vars
-    private:
+private:
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
-        std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Instance*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
+    std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Instance*/
 
-        // Instantiate Widgets here
-        Widget_FramerateCounter Widget_FramerateCounter_; /**<Widget Instance*/
-        Widget_FramerateHistogram Widget_FramerateHistogram_; /**<Widget Instance*/
-        Widget_FramerateGraph Widget_FramerateGraph_; /**<Widget Instance*/
-        Widget_FrameratePlot Widget_FrameratePlot_; /**<Widget Instance*/
-        std::unique_ptr<Widget_RenderingSettings> Widget_RenderingSettings_; /**<Widget Instance*/
-        std::shared_ptr<Widget_ObjectProperties> Widget_ObjectProperties_; /**<Widget Instance*/
-        std::unique_ptr<Widget_FrameLatencyGraph> Widget_FrameLatencyGraph_; /**<Widget Instance*/
+    // Instantiate Widgets here
+    Widget_FramerateCounter Widget_FramerateCounter_; /**<Widget Instance*/
+    Widget_FramerateHistogram Widget_FramerateHistogram_; /**<Widget Instance*/
+    Widget_FramerateGraph Widget_FramerateGraph_; /**<Widget Instance*/
+    Widget_FrameratePlot Widget_FrameratePlot_; /**<Widget Instance*/
+    std::unique_ptr<Widget_RenderingSettings> Widget_RenderingSettings_; /**<Widget Instance*/
+    std::shared_ptr<Widget_ObjectProperties> Widget_ObjectProperties_; /**<Widget Instance*/
+    std::unique_ptr<Widget_FrameLatencyGraph> Widget_FrameLatencyGraph_; /**<Widget Instance*/
 
-        // Instantiate Windows Here
-        std::shared_ptr<Window_SceneTree> Window_SceneTree_; /**<Window Instance*/
-        std::unique_ptr<Window_SystemLog> Window_SystemLog_; /**<Window Instance*/
-        std::unique_ptr<Window_AssetExplorer> Window_AssetExplorer_; /**<Window Instance*/
-        std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<ERS_CLASS_VisualRenderer instance*/
-
-
-    // Member Functions
-    public:
+    // Instantiate Windows Here
+    std::shared_ptr<Window_SceneTree> Window_SceneTree_; /**<Window Instance*/
+    std::unique_ptr<Window_SystemLog> Window_SystemLog_; /**<Window Instance*/
+    std::unique_ptr<Window_AssetExplorer> Window_AssetExplorer_; /**<Window Instance*/
+    std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<ERS_CLASS_VisualRenderer instance*/
 
 
-        /**
-         * @brief Construct a new gui menu object
-         * 
-         * @param SystemUtils 
-         */
-        GUI_Menu_Window(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRendererInstance);
+public:
 
 
-        /**
-         * @brief Destroy the gui menu object
-         * 
-         */
-        ~GUI_Menu_Window();
+    /**
+     * @brief Construct a new gui menu object
+     * 
+     * @param SystemUtils 
+     */
+    GUI_Menu_Window(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRendererInstance);
 
 
-        /**
-         * @brief This function Draws The View Menu Contents.
-         * 
-         */
-        void Draw();
+    /**
+     * @brief Destroy the gui menu object
+     * 
+     */
+    ~GUI_Menu_Window();
+
+
+    /**
+     * @brief This function Draws The View Menu Contents.
+     * 
+     */
+    void Draw();
 
 
 };
