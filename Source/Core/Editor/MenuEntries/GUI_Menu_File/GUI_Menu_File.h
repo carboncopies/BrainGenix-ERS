@@ -41,43 +41,40 @@
  */
 class GUI_Menu_File {
 
-    // Member Vars
-    private:
+private:
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
-        std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<shared pointer to visual renderer*/
-        std::unique_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
-        std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
-        std::unique_ptr<GUI_ImportAsset> ImportAsset_; /**<Pointer To Asset Importer System*/
-        std::unique_ptr<Window_ProjectSettings> Window_ProjectSettings_; /**<Project Settings Window*/
-        std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Pointer To Project Utils Instance*/
-        std::unique_ptr<Window_ShaderEditor> ShaderEditor_; /**<Pointer To Shader Editor Window Instance*/
-
-
-    // Member Functions
-    public:
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
+    std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<shared pointer to visual renderer*/
+    std::unique_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
+    std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
+    std::unique_ptr<GUI_ImportAsset> ImportAsset_; /**<Pointer To Asset Importer System*/
+    std::unique_ptr<Window_ProjectSettings> Window_ProjectSettings_; /**<Project Settings Window*/
+    std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Pointer To Project Utils Instance*/
+    std::unique_ptr<Window_ShaderEditor> ShaderEditor_; /**<Pointer To Shader Editor Window Instance*/
 
 
-        /**
-         * @brief Construct a new gui menu file object
-         * 
-         * @param SystemUtils 
-         */
-        GUI_Menu_File(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer);
+public:
 
 
-        /**
-         * @brief Destroy the gui menu file object
-         * 
-         */
-        ~GUI_Menu_File();
+    /**
+     * @brief Construct a new gui menu file object
+     * 
+     * @param SystemUtils 
+     */
+    GUI_Menu_File(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer);
 
 
-        /**
-         * @brief This function Draws The File Menu Contents.
-         * 
-         */
-        void Draw();
+    /**
+     * @brief Destroy the gui menu file object
+     * 
+     */
+    ~GUI_Menu_File();
 
+
+    /**
+     * @brief This function Draws The File Menu Contents.
+     * 
+     */
+    void Draw();
 
 };
