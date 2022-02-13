@@ -21,7 +21,6 @@ class Widget_FramerateCounter {
 
     public:
 
-        // Show/Hide Var
         bool Enabled_ = true; /**<Show/Hide Widget*/
 
 

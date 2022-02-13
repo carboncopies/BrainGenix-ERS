@@ -5,7 +5,6 @@
 #include <GUI_Widget_FramerateCounter.h>
 
 
-// Define Draw Function
 void Widget_FramerateCounter::Draw() {
 
     // If Window Drawing Enabled
