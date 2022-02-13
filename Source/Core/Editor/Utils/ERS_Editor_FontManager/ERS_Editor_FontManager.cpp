@@ -5,27 +5,18 @@
 #include <ERS_Editor_FontManager.h>
 
 
-// ERS_CLASS_FontManager Constructor
 ERS_CLASS_FontManager::ERS_CLASS_FontManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, const char* FontsDirPath) {
 
-    // Create Pointers
     Logger_ = Logger;
-
-    // Log Initialization
     Logger_->Log("Initializing Font Manager", 5);
 
-    // Copy Vars
     FontsDirectoryPath_ = FontsDirPath;
-
-    // Index Fonts
     IndexFonts();
 
 }
 
-// ERS_CLASS_FontManager Destructor
 ERS_CLASS_FontManager::~ERS_CLASS_FontManager() {
     
-    // Log Destructor Call
     Logger_->Log("Font Manager Destructor Called", 6);
 
 }
@@ -36,41 +27,26 @@ bool ERS_CLASS_FontManager::EndsWith(const std::string& Input, const std::string
     return std::equal(Input.begin() + Input.size() - Ending.size(), Input.end(), Ending.begin());
 }
 
-// Index Fonts Function
 void ERS_CLASS_FontManager::IndexFonts() {
 
-    // Clear Vectors
     FontPathList_.clear();
     FontNameList_.clear();
-
-    // Log Indexing
     Logger_->Log(std::string(std::string("Indexing Fonts In Dir: ") + std::string(FontsDirectoryPath_)).c_str(), 4);
 
 
-    // Get List Of Files At Path
     for (const auto &Entry : std::filesystem::recursive_directory_iterator(std::string(FontsDirectoryPath_))) {
 
-        // Get File Path        
         std::string FilePath{Entry.path().u8string()};
-
-        // Check Extension
         if ((EndsWith(FilePath, ".ttf")) || (EndsWith(FilePath, ".otf"))) {
 
-            // Append Path To PathList
             FontPathList_.push_back(FilePath);
-
-            // Strip File Extension
             std::string FontName = FilePath.substr(0, strlen(FilePath.c_str())-4);
 
-            // Strip Path
             int LastSlashIndex = FontName.find_last_of("/");
             FontName = FontName.substr(LastSlashIndex+1, strlen(FontName.c_str())-LastSlashIndex);
 
-            // Append Font Name To FontNameList
             FontNameList_.push_back(FontName); 
 
-
-            // Log Font Found
             std::string LogText = std::string("Indexed Font: ") + FilePath;
             Logger_->Log(LogText.c_str(), 3);
 
@@ -80,13 +56,10 @@ void ERS_CLASS_FontManager::IndexFonts() {
 
 }
 
-// Use Font Function
 void ERS_CLASS_FontManager::UseFont(int FontIndex) {
 
-    // Get Font Path From Dir
     const char* FontPath = FontPathList_[FontIndex].c_str();
 
-    // Log Font Adjustment
     Logger_->Log(std::string(std::string("Changing Font To: ") + std::string(FontPath)).c_str(), 4);
 
     // Load, Apply Font
@@ -99,7 +72,6 @@ void ERS_CLASS_FontManager::UseFont(int FontIndex) {
 
 }
 
-// Use Font Function
 void ERS_CLASS_FontManager::UseFont(std::string Font) {
 
     // Index to Find Font
@@ -115,13 +87,10 @@ void ERS_CLASS_FontManager::UseFont(std::string Font) {
     // Apply Font
     if (FoundFont) {
 
-        // Get Font Path From Dir
         const char* FontPath = FontPathList_[Index].c_str();
 
-        // Log Font Adjustment
         Logger_->Log(std::string(std::string("Changing Font To: ") + std::string(FontPath)).c_str(), 4);
 
-        // Load, Apply Font
         ImGuiIO& Io = ImGui::GetIO();
         Io.Fonts->Clear();
         Io.Fonts->AddFontFromFileTTF(FontPath, FontSize_);
@@ -133,18 +102,14 @@ void ERS_CLASS_FontManager::UseFont(std::string Font) {
 
 }
 
-// Set Font Size
 void ERS_CLASS_FontManager::SetFontSize(float FontSize) {
 
-    // Set Font Size
     FontSize_ = FontSize;
 
 }
 
-// CheckUpdate
 void ERS_CLASS_FontManager::CheckUpdateFont() {
 
-    // If Font Is To Be Updated
     if (UpdateFont_) {
         UseFont(FontSelector_);
         UpdateFont_ = false;
@@ -152,18 +117,14 @@ void ERS_CLASS_FontManager::CheckUpdateFont() {
 
 }
 
-// Font Selector Window
 void ERS_CLASS_FontManager::FontSelectorWindow(bool *WindowEnabled) {
 
-    // If Window Enabled
     if (*WindowEnabled) {
 
-        // Draw Window
         ImGuiWindowFlags Flags = ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse;
         if (ImGui::Begin("Font Selector", WindowEnabled, Flags)) {
             ImGui::SetWindowSize(ImVec2(0,0));
 
-                // Font Selector Radio Button List
                 ImGui::BeginChild("Font Radio Buttons", ImVec2(300, 400), true);
 
                     for (int i = 0; i < FontNameList_.size(); i++) {
@@ -172,16 +133,12 @@ void ERS_CLASS_FontManager::FontSelectorWindow(bool *WindowEnabled) {
 
                 ImGui::EndChild();
 
-                // Dividing Line
                 ImGui::Separator();
 
-                // Font Size Slider
                 ImGui::SliderFloat("Font Size", &FontSize_, 5.0f, 30.0f);
 
-                // Divider
                 ImGui::Separator();
 
-                // Reload, Apply, Close Buttons
                 if (ImGui::Button("Reload")) {
                     IndexFonts();
                 }
