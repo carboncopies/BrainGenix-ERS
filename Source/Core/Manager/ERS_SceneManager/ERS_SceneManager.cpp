@@ -74,7 +74,6 @@ bool ERS_CLASS_SceneManager::SetActiveScene(int SceneIndex) {
         // Log Scene Switch Error
         Logger_->Log(std::string(std::string("Failed To Set Active Scene To Index: ") + std::to_string(SceneIndex) + std::string(" Because Scenes_ Only Has") + std::to_string(Scenes_.size()-1) + std::string(" Elements")).c_str(), 7); 
 
-        // Return Failure
         return false;
     }
 
@@ -82,7 +81,6 @@ bool ERS_CLASS_SceneManager::SetActiveScene(int SceneIndex) {
     ActiveScene_ = SceneIndex;
 
 
-    // Return Success
     return true;
 
 }
@@ -113,7 +111,6 @@ bool ERS_CLASS_SceneManager::SetActiveScene(std::string TargetSceneName) {
         // Log Error
         Logger_->Log(std::string(std::string("Failed To Set Active Scene To: ") + TargetSceneName + std::string(" Because It Isn't In The Scenes_ Vector")).c_str(), 7); 
 
-        // Return Failure
         return false;
     } 
 
