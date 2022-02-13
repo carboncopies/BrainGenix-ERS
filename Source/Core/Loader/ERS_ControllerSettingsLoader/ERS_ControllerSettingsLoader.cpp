@@ -7,28 +7,21 @@
 
 ERS_CLASS_ControllerSettingsLoader::ERS_CLASS_ControllerSettingsLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
-    // Copy Pointer
     SystemUtils_ = SystemUtils;
-
-    // Log Initialization
     SystemUtils_->Logger_->Log("Initializing ERS Controller Settings Loader", 5);
 
 }
 
 
-// Destructor
 ERS_CLASS_ControllerSettingsLoader::~ERS_CLASS_ControllerSettingsLoader() {
 
-    // Log Destructor Call
     SystemUtils_->Logger_->Log("ERS Controller Settings Loader Destructor Called", 4);
 
 };
 
 
-// Load System Controller Settings
 bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(std::shared_ptr<ERS_STRUCT_ControllerSettings> ControllerSettings, long AssetID) {
 
-    // Log Loading
     SystemUtils_->Logger_->Log(std::string(std::string("Loading ERS Controller Settings From AssetID: ") + std::to_string(AssetID)).c_str(), 4);
 
     // Read Data
@@ -91,7 +84,6 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(std::shared_ptr<
 
     } catch(YAML::BadSubscript) {
         
-        // Log Error
         SystemUtils_->Logger_->Log("Error Loading Controller Configuration, Invalid Parameter(s), Will Use Default Instead", 9);
         
         // Use Defaults
