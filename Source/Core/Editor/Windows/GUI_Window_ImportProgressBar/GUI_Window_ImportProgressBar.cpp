@@ -5,31 +5,25 @@
 #include <GUI_Window_ImportProgressBar.h>
 
 
-// Constructor
 Window_ImportProgressBar::Window_ImportProgressBar(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
-    // Copy System Utils Pointer Struct
     SystemUtils_ = SystemUtils;
 
 }
 
-// Destructor
 Window_ImportProgressBar::~Window_ImportProgressBar() {
 
 }
 
 
 
-// Update Total Model Stats
 void Window_ImportProgressBar::UpdateTotalItems(long Current, long Total) {
 
-    // Update Totals
     CurrentAssetNumber_ = Current;
     TotalAssetsToImport_ = Total;
 
 }
 
-// Update Job State
 void Window_ImportProgressBar::UpdateJobState(bool JobFinished) {
 
     // Set Job State
@@ -49,7 +43,6 @@ void Window_ImportProgressBar::UpdateJobState(bool JobFinished) {
 
 }
 
-// Draw Window
 void Window_ImportProgressBar::Draw() {
 
 
