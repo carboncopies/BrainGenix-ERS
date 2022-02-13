@@ -6,26 +6,19 @@
 
 
 
-// Framebuffer manager Constructor
 ERS_CLASS_Framebuffer::ERS_CLASS_Framebuffer(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader, float Width, float Height) {
 
-    // Create Local Pointers
     Logger_ = Logger;
     ShaderLoader_ = ShaderLoader;
-
-    // Log Initialization
     Logger_->Log("Initializing Framebuffer Manager", 5);
 
-    // Load Screen Shaders
     Logger_->Log("Loading Screen Shaders", 5);
     ScreenShader_ = *ShaderLoader_->LoadShaderFromAsset(100, 101);
     
-    // Make Screen Shaders Active
     Logger_->Log("Making Screen Shaders Active", 3);
     ScreenShader_.MakeActive();
     ScreenShader_.SetInt("screenTexture", 0);
 
-    // Create Screen Quad
     Logger_->Log("Generating Screen Quad VAO", 4);
     glGenVertexArrays(1, &ScreenQuadVAO_);
 
@@ -104,17 +97,13 @@ ERS_CLASS_Framebuffer::ERS_CLASS_Framebuffer(std::shared_ptr<ERS_CLASS_LoggingSy
 
 }
 
-// Framebuffer manager Destructor
 ERS_CLASS_Framebuffer::~ERS_CLASS_Framebuffer() {
 
-    // Log Destructor Called
     Logger_->Log("Framebuffer Manager Destructor Called", 6);
 
-    // Destroy Framebuffer
     Logger_->Log("Destroying Framebuffer Object", 5);
     glDeleteFramebuffers(1, &FramebufferObject_);  
 
-    // Deallocate Screen Quad
     Logger_->Log("Destroying Screen Quad VAO/VBO", 4);
     glDeleteVertexArrays(1, &ScreenQuadVAO_);
     glDeleteBuffers(1, &ScreenQuadVBO_);
