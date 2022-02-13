@@ -4,398 +4,458 @@
 
 #include <ERS_InputOutputSubsystem.h>
 
-
 // Constructor
-ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, YAML::Node SystemConfiguration) {
+ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
+    std::shared_ptr<ERS_CLASS_LoggingSystem> Logger,
+    YAML::Node SystemConfiguration) {
 
-    // Copy Pointer
-    Logger_ = Logger;
+  // Copy Pointer
+  Logger_ = Logger;
 
-    // Log Initialization
-    Logger_->Log("Initializing Input/Output Subsystem", 5);
+  // Log Initialization
+  Logger_->Log("Initializing Input/Output Subsystem", 5);
 
-    // Setup Classes
-    AssetIndexIOManager_ = std::make_unique<ERS_CLASS_AssetIndexIOM>(Logger_);
+  // Setup Classes
+  AssetIndexIOManager_ = std::make_unique<ERS_CLASS_AssetIndexIOM>(Logger_);
 
-    // Get Database Loading / File Loading Config
-    Logger_->Log("Reading Configuration For 'BOOL' 'UseDatabaseLoading'", 1);
+  // Get Database Loading / File Loading Config
+  Logger_->Log("Reading Configuration For 'BOOL' 'UseDatabaseLoading'", 1);
+  try {
+    UseDatabase_ = SystemConfiguration["UseDatabaseLoading"].as<bool>();
+  } catch (YAML::TypedBadConversion<bool>) { // Config Param Doesn't Exist
+    Logger_->Log("Configuration Error, Parameter 'UseDatabaseLoading' Is Not "
+                 "In Config, System Will Default To False",
+                 8);
+    UseDatabase_ = false;
+  }
+
+  // If Using DB Loading, Get DB Params
+  if (UseDatabase_) {
+    Logger_->Log(
+        "Database Loading Enabled, Reading Config For Database Parameters", 5);
+
+    /*
+
+        DATABASE LOADING STUFF
+       HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    */
+
+  } else {
+    Logger_->Log("Database Lading Disabled, Reading Config For Asset Path", 5);
+
     try {
-        UseDatabase_ = SystemConfiguration["UseDatabaseLoading"].as<bool>();
+      Logger_->Log(
+          "Reading Configuration For 'STRING' 'DefaultProjectDirectory'", 1);
+      AssetPath_ =
+          SystemConfiguration["DefaultProjectDirectory"].as<std::string>();
+    } catch (YAML::TypedBadConversion<std::string>) {
+      Logger_->Log("Configuration Error, Parameter 'DefaultProjectDirectory' "
+                   "Is Not In Config, System Will Exit",
+                   10);
+      exit(1);
     }
-    catch(YAML::TypedBadConversion<bool>) { // Config Param Doesn't Exist
-        Logger_->Log("Configuration Error, Parameter 'UseDatabaseLoading' Is Not In Config, System Will Default To False", 8);
-        UseDatabase_ = false;
-    }
+  }
 
-    // If Using DB Loading, Get DB Params
-    if (UseDatabase_) {
-        Logger_->Log("Database Loading Enabled, Reading Config For Database Parameters", 5);
-
-        /*
-
-            DATABASE LOADING STUFF HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-        */
-
-    } else {
-        Logger_->Log("Database Lading Disabled, Reading Config For Asset Path", 5);
-
-        try {
-            Logger_->Log("Reading Configuration For 'STRING' 'DefaultProjectDirectory'", 1);
-            AssetPath_ = SystemConfiguration["DefaultProjectDirectory"].as<std::string>();
-        } catch (YAML::TypedBadConversion<std::string>) {
-            Logger_->Log("Configuration Error, Parameter 'DefaultProjectDirectory' Is Not In Config, System Will Exit", 10);
-            exit(1);
-        }
-
-    }
-
-
-    // Index Already Used AssetIDs
-    IndexUsedAssetIDs();
-
-
+  // Index Already Used AssetIDs
+  IndexUsedAssetIDs();
 }
 
 // Destructor
 ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
 
-    // Log Destructor Call
-    Logger_->Log("Input/Output Subsystem Destructor Called", 6);
+  // Log Destructor Call
+  Logger_->Log("Input/Output Subsystem Destructor Called", 6);
 
-    // Save Asset Index Metadata
-    Logger_->Log("Saving Asset Index Metadata", 4);
-    std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
-    AssetIndexIOManager_->WriteAssetIndex(Data);
-    WriteAsset(0, Data);
-    Logger_->Log("Finished Saving Asset Index Metadata", 5);
-
+  // Save Asset Index Metadata
+  Logger_->Log("Saving Asset Index Metadata", 4);
+  std::shared_ptr<ERS_STRUCT_IOData> Data =
+      std::make_shared<ERS_STRUCT_IOData>();
+  AssetIndexIOManager_->WriteAssetIndex(Data);
+  WriteAsset(0, Data);
+  Logger_->Log("Finished Saving Asset Index Metadata", 5);
 }
 
 // Update Asset Paths
 void ERS_CLASS_InputOutputSubsystem::UpdateAssetPath(std::string AssetPath) {
 
-    // Update Asset Path
-    Logger_->Log(std::string(std::string("Changing Asset Repository Directory To '") + std::string(AssetPath) + std::string("'")).c_str(), 5);
-    AssetPath_ = AssetPath;
-
+  // Update Asset Path
+  Logger_->Log(
+      std::string(std::string("Changing Asset Repository Directory To '") +
+                  std::string(AssetPath) + std::string("'"))
+          .c_str(),
+      5);
+  AssetPath_ = AssetPath;
 }
 
 // Allocate Asset Id
 long ERS_CLASS_InputOutputSubsystem::AllocateAssetID() {
 
-    std::unique_lock<std::mutex> lock(LockAssetIDAllocation_);
+  std::unique_lock<std::mutex> lock(LockAssetIDAllocation_);
 
-    long AssetID = UsedAssetIDs_.size();
+  long AssetID = UsedAssetIDs_.size();
 
-    UsedAssetIDs_.push_back(AssetID);
+  UsedAssetIDs_.push_back(AssetID);
 
-    return AssetID;
-
+  return AssetID;
 }
 
 // Group Allocate
-std::vector<long> ERS_CLASS_InputOutputSubsystem::BatchAllocateIDs(size_t NumberIDs) {
+std::vector<long>
+ERS_CLASS_InputOutputSubsystem::BatchAllocateIDs(size_t NumberIDs) {
 
-    std::vector<long> IDs;
-    IDs.reserve(NumberIDs);
+  std::vector<long> IDs;
+  IDs.reserve(NumberIDs);
 
-    std::unique_lock<std::mutex> lock(LockAssetIDAllocation_);
+  std::unique_lock<std::mutex> lock(LockAssetIDAllocation_);
 
-    size_t CurSize = UsedAssetIDs_.size();
-    size_t NewSize = CurSize + NumberIDs;
+  size_t CurSize = UsedAssetIDs_.size();
+  size_t NewSize = CurSize + NumberIDs;
 
-    UsedAssetIDs_.reserve(NewSize);
+  UsedAssetIDs_.reserve(NewSize);
 
-    for (size_t AssetID = CurSize; AssetID < NewSize; AssetID++) {
-      UsedAssetIDs_.push_back(AssetID);
-      IDs.push_back(AssetID);
-    }
+  for (size_t AssetID = CurSize; AssetID < NewSize; AssetID++) {
+    UsedAssetIDs_.push_back(AssetID);
+    IDs.push_back(AssetID);
+  }
 
-    return IDs;
-
+  return IDs;
 }
 
 // Index Asset IDs
 void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
 
-    // Log Start
-    Logger_->Log("Indexing Used Asset IDs");
-    UsedAssetIDs_ = std::vector<long>();
+  // Log Start
+  Logger_->Log("Indexing Used Asset IDs");
+  UsedAssetIDs_ = std::vector<long>();
 
-    // If Using Database Loading
-    if (UseDatabase_) {
+  // If Using Database Loading
+  if (UseDatabase_) {
 
-        // Do Database Indexing here...
+    // Do Database Indexing here...
 
-    } else { // Default To Regular File Loading
+  } else { // Default To Regular File Loading
 
+    // Get List Of Files At Path
+    try {
+      for (const auto &Entry :
+           std::filesystem::directory_iterator(std::string(AssetPath_))) {
 
-        // Get List Of Files At Path
+        // Get File Path
+        std::string FilePath{Entry.path().u8string()};
+        FilePath =
+            FilePath.substr(0, FilePath.find_last_of("."))
+                .substr(FilePath.find_last_of("/") + 1, FilePath.length());
+
+        // Convert To Long, Throw Log Message If Not Number
         try {
-            for (const auto &Entry : std::filesystem::directory_iterator(std::string(AssetPath_))) {
+          long ID = std::stoi(FilePath.c_str());
 
-                // Get File Path
-                std::string FilePath{Entry.path().u8string()};
-                FilePath = FilePath.substr(0, FilePath.find_last_of(".")).substr(FilePath.find_last_of("/") + 1, FilePath.length());
+          if (ID >= 0) {
+            UsedAssetIDs_.push_back(ID);
 
-                // Convert To Long, Throw Log Message If Not Number
-                try {
-                    long ID = std::stoi(FilePath.c_str());
+            // Log Checked Out ID
+            Logger_->Log(std::string(std::string("AssetID '") +
+                                     std::to_string(ID) +
+                                     std::string("' In Use"))
+                             .c_str(),
+                         3);
 
-                    if (ID >= 0) {
-                        UsedAssetIDs_.push_back(ID);
+          } else {
 
-                        // Log Checked Out ID
-                        Logger_->Log(std::string(std::string("AssetID '") + std::to_string(ID) + std::string("' In Use")).c_str(), 3);
+            Logger_->Log(std::string(std::string("AssetID '") +
+                                     std::to_string(ID) +
+                                     std::string("' Cannot Be Negative"))
+                             .c_str(),
+                         8);
+          }
 
-                    } else {
+        } catch (std::invalid_argument) {
 
-                        Logger_->Log(std::string(std::string("AssetID '") + std::to_string(ID) + std::string("' Cannot Be Negative")).c_str(), 8);
-                    }
+          // Log Error
+          Logger_->Log(
+              std::string(
+                  std::string("AssetID Identification Failed On Asset '") +
+                  FilePath + std::string("', Make Sure These Are Numbers"))
+                  .c_str(),
+              9);
 
-                } catch(std::invalid_argument) {
+        } catch (std::out_of_range) {
 
-                    // Log Error
-                    Logger_->Log(std::string(std::string("AssetID Identification Failed On Asset '") + FilePath + std::string("', Make Sure These Are Numbers")).c_str(), 9);
-
-                } catch (std::out_of_range) {
-
-                    Logger_->Log(std::string(std::string("AssetID Identification Failed On Asset '") + FilePath + std::string("', Invalid Asset ID")).c_str(), 9);
-
-                }
-
-            }
-        } catch(std::filesystem::filesystem_error) {
-            Logger_->Log("Error Indexing Assets, Local File Loading Enabled But Asset Directory Does Not Exist", 9);
+          Logger_->Log(
+              std::string(
+                  std::string("AssetID Identification Failed On Asset '") +
+                  FilePath + std::string("', Invalid Asset ID"))
+                  .c_str(),
+              9);
         }
-
+      }
+    } catch (std::filesystem::filesystem_error) {
+      Logger_->Log("Error Indexing Assets, Local File Loading Enabled But "
+                   "Asset Directory Does Not Exist",
+                   9);
     }
+  }
 
-    // Summarize Checked Out IDs
-    Logger_->Log(std::string(std::string("Identified ") + std::to_string(UsedAssetIDs_.size()) + std::string(" Asset IDs Are In Use")).c_str(), 4);
+  // Summarize Checked Out IDs
+  Logger_->Log(std::string(std::string("Identified ") +
+                           std::to_string(UsedAssetIDs_.size()) +
+                           std::string(" Asset IDs Are In Use"))
+                   .c_str(),
+               4);
 
+  // Load Asset Metadata
+  Logger_->Log("Attempting To Load Asset Metadata Index", 3);
+  std::shared_ptr<ERS_STRUCT_IOData> Data =
+      std::make_shared<ERS_STRUCT_IOData>();
+  ReadAsset(0, Data);
+  AssetIndexIOManager_->LoadAssetIndex(Data);
+  Logger_->Log("Finished Loading Asset Metadata Index", 4);
 
-    // Load Asset Metadata
-    Logger_->Log("Attempting To Load Asset Metadata Index", 3);
-    std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
-    ReadAsset(0, Data);
-    AssetIndexIOManager_->LoadAssetIndex(Data);
-    Logger_->Log("Finished Loading Asset Metadata Index", 4);
-
-
-    // Compare Indexes Of Assets
-    Logger_->Log("Comparing Asset Metadata With Indexed Assets", 3);
-    ERS_FUNCTION_CompareIndexDelta(Logger_, std::make_shared<std::vector<long>>(UsedAssetIDs_), AssetIndexIOManager_->AssetIDsFound_);
-    Logger_->Log("Finished Performing Asset Metadata Sanity Check", 4);
-
-
+  // Compare Indexes Of Assets
+  Logger_->Log("Comparing Asset Metadata With Indexed Assets", 3);
+  ERS_FUNCTION_CompareIndexDelta(
+      Logger_, std::make_shared<std::vector<long>>(UsedAssetIDs_),
+      AssetIndexIOManager_->AssetIDsFound_);
+  Logger_->Log("Finished Performing Asset Metadata Sanity Check", 4);
 }
 
 // Read Assets From File/DB, Return Bytes
-bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> OutputData) {
+bool ERS_CLASS_InputOutputSubsystem::ReadAsset(
+    long AssetID, std::shared_ptr<ERS_STRUCT_IOData> OutputData) {
 
-    // Asset ID Sanity Check
-    if (AssetID < 0) {
-        Logger_->Log(std::string(std::string("Error Reading Asset '") + std::to_string(AssetID) + std::string("', ID Is Negative")).c_str(), 9);
-        return false;
-    }
+  // Asset ID Sanity Check
+  if (AssetID < 0) {
+    Logger_->Log(std::string(std::string("Error Reading Asset '") +
+                             std::to_string(AssetID) +
+                             std::string("', ID Is Negative"))
+                     .c_str(),
+                 9);
+    return false;
+  }
 
+  // Populate Metadata
+  AssetIndexIOManager_->ReadAssetIndex(AssetID, OutputData);
 
-    // Populate Metadata
-    AssetIndexIOManager_->ReadAssetIndex(AssetID, OutputData);
+  // Start Clock To Measure File Metadata
+  auto StartTime = std::chrono::high_resolution_clock::now();
+  bool ReadSuccess = false;
+  float FileSize = 0;
 
+  // If Database Loading
+  if (UseDatabase_) {
 
-    // Start Clock To Measure File Metadata
-    auto StartTime = std::chrono::high_resolution_clock::now();
-    bool ReadSuccess = false;
-    float FileSize = 0;
+    // Load From DB
 
+  } else {
 
-    // If Database Loading
-    if (UseDatabase_) {
+    // Generate File Path
+    std::string FilePath =
+        AssetPath_ + std::to_string(AssetID) + std::string(".ERS");
 
-        // Load From DB
+    struct stat Buffer;
+    int FileStatus = stat(FilePath.c_str(), &Buffer);
+    FileSize = Buffer.st_size + 1;
 
+    if (FileStatus == 0) {
 
-    } else {
+      // Allocate Memory
+      OutputData->Data.reset(new unsigned char[Buffer.st_size + 1]);
+      if (OutputData->Data) {
 
-        // Generate File Path
-        std::string FilePath = AssetPath_ + std::to_string(AssetID) + std::string(".ERS");
+        FILE *Stream = fopen(FilePath.c_str(), "rb");
+        if (Stream) {
 
-        struct stat Buffer;
-        int FileStatus = stat(FilePath.c_str(), &Buffer);
-        FileSize = Buffer.st_size+1;
-
-
-        if (FileStatus == 0) {
-
-            // Allocate Memory
-            OutputData->Data.reset(new unsigned char[Buffer.st_size+1]);
-            if (OutputData->Data) {
-
-                FILE *Stream = fopen(FilePath.c_str(), "rb");
-                if (Stream) {
-
-                    fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size, Stream);
-                    OutputData->Data.get()[Buffer.st_size] = '\0';
-                    fclose(Stream);
-                    OutputData->HasLoaded = true;
-                    ReadSuccess = true;
-
-                } else {
-                    Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', Failed To Open Filestream")).c_str(), 9);
-                    OutputData->HasLoaded = false;
-                    ReadSuccess = false;
-                }
-
-            } else {
-                Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', Memory Allocation Failed")).c_str(), 9);
-                OutputData->HasLoaded = false;
-                ReadSuccess = false;
-            }
-
+          fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size,
+                Stream);
+          OutputData->Data.get()[Buffer.st_size] = '\0';
+          fclose(Stream);
+          OutputData->HasLoaded = true;
+          ReadSuccess = true;
 
         } else {
-            Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', File Not Found")).c_str(), 9);
-            OutputData->HasLoaded = false;
-            ReadSuccess = false;
+          Logger_->Log(std::string(std::string("Error Loading Asset '") +
+                                   std::to_string(AssetID) +
+                                   std::string("', Failed To Open Filestream"))
+                           .c_str(),
+                       9);
+          OutputData->HasLoaded = false;
+          ReadSuccess = false;
         }
 
+      } else {
+        Logger_->Log(std::string(std::string("Error Loading Asset '") +
+                                 std::to_string(AssetID) +
+                                 std::string("', Memory Allocation Failed"))
+                         .c_str(),
+                     9);
+        OutputData->HasLoaded = false;
+        ReadSuccess = false;
+      }
+
+    } else {
+      Logger_->Log(std::string(std::string("Error Loading Asset '") +
+                               std::to_string(AssetID) +
+                               std::string("', File Not Found"))
+                       .c_str(),
+                   9);
+      OutputData->HasLoaded = false;
+      ReadSuccess = false;
     }
+  }
 
+  // Measure End Time, Calculate Metadata
+  auto FinishTime = std::chrono::high_resolution_clock::now();
+  float Duration = std::chrono::duration<float>(
+                       std::chrono::duration_cast<std::chrono::nanoseconds>(
+                           FinishTime - StartTime))
+                       .count();
 
-    // Measure End Time, Calculate Metadata
-    auto FinishTime = std::chrono::high_resolution_clock::now();
-    float Duration = std::chrono::duration<float>(std::chrono::duration_cast<std::chrono::nanoseconds>(FinishTime - StartTime)).count();
+  OutputData->LoadTime_s = Duration;
+  OutputData->Size_B = FileSize;
+  OutputData->Size_KB = FileSize / 1000;
+  OutputData->Size_MB = FileSize / 1000000;
+  OutputData->Size_GB = FileSize / 1000000000;
 
-    OutputData->LoadTime_s = Duration;
-    OutputData->Size_B = FileSize;
-    OutputData->Size_KB = FileSize / 1000;
-    OutputData->Size_MB = FileSize / 1000000;
-    OutputData->Size_GB = FileSize / 1000000000;
+  OutputData->LoadSpeed_KBs = (FileSize / 1000) / Duration;
+  OutputData->LoadSpeed_MBs = (FileSize / 1000000) / Duration;
+  OutputData->LoadSpeed_GBs = (FileSize / 1000000000) / Duration;
 
-    OutputData->LoadSpeed_KBs = (FileSize / 1000) / Duration;
-    OutputData->LoadSpeed_MBs = (FileSize / 1000000) / Duration;
-    OutputData->LoadSpeed_GBs = (FileSize / 1000000000) / Duration;
-
-    // Return Data
-    return ReadSuccess;
-
+  // Return Data
+  return ReadSuccess;
 }
 
 // Batch Read Assets
-std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchReadAssets(std::vector<long> AssetIDs, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> AssetDatas) {
+std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchReadAssets(
+    std::vector<long> AssetIDs,
+    std::vector<std::shared_ptr<ERS_STRUCT_IOData>> AssetDatas) {
 
-    // Check Lengths Of Inputs
-    if (AssetIDs.size() != AssetDatas.size()) {
-        Logger_->Log("(BatchReadAssets) Input Vectors Are Not The Same Length, Undefined Behavior May Occur", 10);
-    }
+  // Check Lengths Of Inputs
+  if (AssetIDs.size() != AssetDatas.size()) {
+    Logger_->Log("(BatchReadAssets) Input Vectors Are Not The Same Length, "
+                 "Undefined Behavior May Occur",
+                 10);
+  }
 
-    // Iterate And Read
-    std::vector<bool> StatusVector;
-    for (int i = 0; i < AssetIDs.size(); i++) {
-        StatusVector.push_back(ReadAsset(AssetIDs[i], AssetDatas[i]));
-    }
+  // Iterate And Read
+  std::vector<bool> StatusVector;
+  for (size_t i = 0; i < AssetIDs.size(); i++) {
+    StatusVector.push_back(ReadAsset(AssetIDs[i], AssetDatas[i]));
+  }
 
-    // Return Status
-    return StatusVector;
-
+  // Return Status
+  return StatusVector;
 }
 
 // Write Data
-bool ERS_CLASS_InputOutputSubsystem::WriteAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> InputData) {
+bool ERS_CLASS_InputOutputSubsystem::WriteAsset(
+    long AssetID, std::shared_ptr<ERS_STRUCT_IOData> InputData) {
 
-    // Asset ID Sanity Check
-    if (AssetID < 0) {
-        Logger_->Log(std::string(std::string("Error Writing Asset '") + std::to_string(AssetID) + std::string("', ID Is Negative")).c_str(), 9);
-        return false;
-    }
+  // Asset ID Sanity Check
+  if (AssetID < 0) {
+    Logger_->Log(std::string(std::string("Error Writing Asset '") +
+                             std::to_string(AssetID) +
+                             std::string("', ID Is Negative"))
+                     .c_str(),
+                 9);
+    return false;
+  }
 
-    // Update Metadata
-    std::time_t RawCurrentTime;
-    std::tm* TimeInformation;
-    char TimeBuffer [80];
+  // Update Metadata
+  std::time_t RawCurrentTime;
+  std::tm *TimeInformation;
+  char TimeBuffer[80];
 
-    std::time(&RawCurrentTime);
-    TimeInformation = std::localtime(&RawCurrentTime);
+  std::time(&RawCurrentTime);
+  TimeInformation = std::localtime(&RawCurrentTime);
 
-    std::strftime(TimeBuffer, 80, "%Y-%m-%d-%H-%M-%S", TimeInformation);
-    std::string CurrentTime = std::string(TimeBuffer);
+  std::strftime(TimeBuffer, 80, "%Y-%m-%d-%H-%M-%S", TimeInformation);
+  std::string CurrentTime = std::string(TimeBuffer);
 
-    InputData->AssetModificationDate = CurrentTime;
-    AssetIndexIOManager_->UpdateAssetIndex(AssetID, InputData);
+  InputData->AssetModificationDate = CurrentTime;
+  AssetIndexIOManager_->UpdateAssetIndex(AssetID, InputData);
 
-    // Start Clock To Measure File Metadata
-    auto StartTime = std::chrono::high_resolution_clock::now();
-    bool Success = false;
+  // Start Clock To Measure File Metadata
+  auto StartTime = std::chrono::high_resolution_clock::now();
+  bool Success = false;
 
-    // If Database Loading
-    if (UseDatabase_) {
+  // If Database Loading
+  if (UseDatabase_) {
 
-        // Load From DB
+    // Load From DB
 
+  } else {
+
+    // Generate File Path
+    std::string FilePath =
+        AssetPath_ + std::to_string(AssetID) + std::string(".ERS");
+
+    // Check Filesize
+    if (InputData->Size_B > 0) {
+
+      FILE *Stream = fopen(FilePath.c_str(), "wb");
+
+      if (Stream) {
+
+        fwrite(InputData->Data.get(), 1,
+               sizeof(unsigned char) * InputData->Size_B, Stream);
+        fclose(Stream);
+        Success = true;
+
+      } else {
+        Logger_->Log(std::string(std::string("Error Writing Asset '") +
+                                 std::to_string(AssetID) +
+                                 std::string("', Failed To Open Filestream"))
+                         .c_str(),
+                     9);
+        Success = false;
+      }
 
     } else {
-
-        // Generate File Path
-        std::string FilePath = AssetPath_ + std::to_string(AssetID) + std::string(".ERS");
-
-        // Check Filesize
-        if (InputData->Size_B > 0) {
-
-            FILE *Stream = fopen(FilePath.c_str(), "wb");
-
-            if (Stream) {
-
-                fwrite(InputData->Data.get(), 1, sizeof(unsigned char)*InputData->Size_B, Stream);
-                fclose(Stream);
-                Success = true;
-
-            } else {
-                Logger_->Log(std::string(std::string("Error Writing Asset '") + std::to_string(AssetID) + std::string("', Failed To Open Filestream")).c_str(), 9);
-                Success = false;
-            }
-
-        } else {
-            Logger_->Log(std::string(std::string("Error Writing Asset '") + std::to_string(AssetID) + std::string("', Indicated 'Size_B' Is Invalid")).c_str(), 9);
-            Success = false;
-        }
-
+      Logger_->Log(std::string(std::string("Error Writing Asset '") +
+                               std::to_string(AssetID) +
+                               std::string("', Indicated 'Size_B' Is Invalid"))
+                       .c_str(),
+                   9);
+      Success = false;
     }
+  }
 
+  // Measure End Time, Calculate Metadata
+  auto FinishTime = std::chrono::high_resolution_clock::now();
+  float Duration = std::chrono::duration<float>(
+                       std::chrono::duration_cast<std::chrono::nanoseconds>(
+                           FinishTime - StartTime))
+                       .count();
 
-    // Measure End Time, Calculate Metadata
-    auto FinishTime = std::chrono::high_resolution_clock::now();
-    float Duration = std::chrono::duration<float>(std::chrono::duration_cast<std::chrono::nanoseconds>(FinishTime - StartTime)).count();
+  InputData->WriteTime_s = Duration;
 
-    InputData->WriteTime_s = Duration;
+  InputData->WriteSpeed_KBs = (InputData->Size_B / 1000) / Duration;
+  InputData->WriteSpeed_MBs = (InputData->Size_B / 1000000) / Duration;
+  InputData->WriteSpeed_GBs = (InputData->Size_B / 1000000000) / Duration;
 
-    InputData->WriteSpeed_KBs = (InputData->Size_B / 1000) / Duration;
-    InputData->WriteSpeed_MBs = (InputData->Size_B / 1000000) / Duration;
-    InputData->WriteSpeed_GBs = (InputData->Size_B / 1000000000) / Duration;
-
-
-    // Return Data
-    return Success;
-
+  // Return Data
+  return Success;
 }
 
 // Batch Write Data
-std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchWriteAssets(std::vector<long> AssetIDs, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> AssetDatas) {
+std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchWriteAssets(
+    std::vector<long> AssetIDs,
+    std::vector<std::shared_ptr<ERS_STRUCT_IOData>> AssetDatas) {
 
-    // Check Lengths Of Inputs
-    if (AssetIDs.size() != AssetDatas.size()) {
-        Logger_->Log("(BatchWriteAssets) Input Vectors Are Not The Same Length, Undefined Behavior May Occur", 10);
-    }
+  // Check Lengths Of Inputs
+  if (AssetIDs.size() != AssetDatas.size()) {
+    Logger_->Log("(BatchWriteAssets) Input Vectors Are Not The Same Length, "
+                 "Undefined Behavior May Occur",
+                 10);
+  }
 
-    // Iterate And Write
-    std::vector<bool> StatusVector;
-    for (int i = 0; i < AssetIDs.size(); i++) {
-        StatusVector.push_back(WriteAsset(AssetIDs[i], AssetDatas[i]));
-    }
+  // Iterate And Write
+  std::vector<bool> StatusVector;
+  for (size_t i = 0; i < AssetIDs.size(); i++) {
+    StatusVector.push_back(WriteAsset(AssetIDs[i], AssetDatas[i]));
+  }
 
-    // Return Status
-    return StatusVector;
-
+  // Return Status
+  return StatusVector;
 }
