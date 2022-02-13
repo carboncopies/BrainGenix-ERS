@@ -5,20 +5,16 @@
 #include <GUI_Widget_FrameLatencyGraph.h>
 
 
-// Constructor
 Widget_FrameLatencyGraph::Widget_FrameLatencyGraph(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
     
-    // Copy Pointer
     SystemUtils_ = SystemUtils;
 
 }
 
-// Destructor
 Widget_FrameLatencyGraph::~Widget_FrameLatencyGraph() {
 
 }
 
-// Define Draw Function
 void Widget_FrameLatencyGraph::Draw() {
 
     // If Window Drawing Enabled
