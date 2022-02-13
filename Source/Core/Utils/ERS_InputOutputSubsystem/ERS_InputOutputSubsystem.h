@@ -31,7 +31,7 @@
 
 /**
  * @brief This class provides a single input/ouput file operation system. It is thread safe.
- * 
+ *
  */
 class ERS_CLASS_InputOutputSubsystem {
 
@@ -42,7 +42,7 @@ class ERS_CLASS_InputOutputSubsystem {
     public:
 
         std::unique_ptr<ERS_CLASS_AssetIndexIOM> AssetIndexIOManager_; /**<Pointer to Asset Index Metadata System*/
-        
+
         std::string AssetPath_; /**<Relative Path To Prepend To All IO Operations, Used By File Loading*/
         std::vector<long> UsedAssetIDs_; /**<List Of Asset IDs That Are Already In Use*/
         std::mutex LockAssetIDAllocation_; /**<Used When Allocating AssetIDs*/
@@ -52,85 +52,85 @@ class ERS_CLASS_InputOutputSubsystem {
 
         /**
          * @brief Construct a new ers class inputoutputsubsystem object
-         * 
-         * @param Logger 
-         * @param LocalSystemConfiguration 
+         *
+         * @param Logger
+         * @param LocalSystemConfiguration
          */
         ERS_CLASS_InputOutputSubsystem(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, YAML::Node LocalSystemConfiguration);
-        
+
         /**
          * @brief Destroy the ers class inputoutputsubsystem object
-         * 
+         *
          */
         ~ERS_CLASS_InputOutputSubsystem();
 
 
         /**
          * @brief Returns an unused assetid that is guarenteed to not already exist.
-         * 
-         * @return long 
+         *
+         * @return long
          */
         long AllocateAssetID();
 
 
         /**
          * @brief Allocate A Batch Of IDs For Usage, Returns Vector Of Allocated IDs
-         * 
-         * @param NumberIDs 
-         * @return std::vector<long> 
+         *
+         * @param NumberIDs
+         * @return std::vector<long>
          */
-        std::vector<long> BatchAllocateIDs(int NumberIDs);
+        std::vector<long> BatchAllocateIDs(size_t NumberIDs);
 
 
         /**
          * @brief Write Asset Data To ID
-         * 
-         * @param AssetID 
-         * @param AssetData 
-         * @return true 
-         * @return false 
+         *
+         * @param AssetID
+         * @param AssetData
+         * @return true
+         * @return false
          */
         bool WriteAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> AssetData);
 
         /**
          * @brief Batch Write Data to IDs, Both Lists Should Be The Same Length. Returns List Of Status Variables (true=succes, false=fail)
-         * 
-         * @param AssetIDs 
-         * @param AssetDatas 
-         * @return std::vector<bool> 
+         *
+         * @param AssetIDs
+         * @param AssetDatas
+         * @return std::vector<bool>
          */
         std::vector<bool> BatchWriteAssets(std::vector<long> AssetIDs, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> AssetDatas);
 
         /**
          * @brief Read Asset Data From ID
-         * 
-         * @param AssetID 
-         * @param AssetData 
-         * @return true 
-         * @return false 
+         *
+         * @param AssetID
+         * @param AssetData
+         * @return true
+         * @return false
          */
         bool ReadAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> AssetData);
 
         /**
          * @brief Read A List Of Assets From The Given IDs, Both Vectors Should Be Equal In Length.
-         * 
-         * @param AssetIDs 
-         * @param AssetDatas 
-         * @return std::vector<bool> 
+         *
+         * @param AssetIDs
+         * @param AssetDatas
+         * @return std::vector<bool>
          */
         std::vector<bool> BatchReadAssets(std::vector<long> AssetIDs, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> AssetDatas);
 
 
         /**
          * @brief Updates the list of used asset IDs to prevent accidental data loss. Called during initialization.
-         * 
+         *
          */
         void IndexUsedAssetIDs();
 
         /**
          * @brief Update asset path to string passed in. This allows you to change projects (IE: load another project, etc.) REMEMBER TO CALL ASSET ID INDEXING AFTER THIS, ELSE DATA LOSS CAN OCCUR.
-         * 
-         * @param AssetPath 
+         *
+         * @param AssetPath
          */
         void UpdateAssetPath(std::string AssetPath);
 

@@ -21,7 +21,7 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(std::shared_ptr<E
     Logger_->Log("Reading Configuration For 'BOOL' 'UseDatabaseLoading'", 1);
     try {
         UseDatabase_ = SystemConfiguration["UseDatabaseLoading"].as<bool>();
-    } 
+    }
     catch(YAML::TypedBadConversion<bool>) { // Config Param Doesn't Exist
         Logger_->Log("Configuration Error, Parameter 'UseDatabaseLoading' Is Not In Config, System Will Default To False", 8);
         UseDatabase_ = false;
@@ -84,34 +84,34 @@ void ERS_CLASS_InputOutputSubsystem::UpdateAssetPath(std::string AssetPath) {
 // Allocate Asset Id
 long ERS_CLASS_InputOutputSubsystem::AllocateAssetID() {
 
-    // Lock Mutex, Allocate New ID
-    LockAssetIDAllocation_.lock();
+    std::unique_lock<std::mutex> lock(LockAssetIDAllocation_);
+
     long AssetID = UsedAssetIDs_.size();
 
-    // Add To Used ID List, Unlock
     UsedAssetIDs_.push_back(AssetID);
-    LockAssetIDAllocation_.unlock();
 
-    // Return ID
     return AssetID;
 
 }
 
 // Group Allocate
-std::vector<long> ERS_CLASS_InputOutputSubsystem::BatchAllocateIDs(int NumberIDs) {
+std::vector<long> ERS_CLASS_InputOutputSubsystem::BatchAllocateIDs(size_t NumberIDs) {
 
-    // Create Vector To Store IDs
     std::vector<long> IDs;
+    IDs.reserve(NumberIDs);
 
-    // Loop For Desired Number Times, Add New ID
-    for (int i = 0; i < NumberIDs; i++) {
+    std::unique_lock<std::mutex> lock(LockAssetIDAllocation_);
 
-        // Allocate ID
-        IDs.push_back(AllocateAssetID());
+    size_t CurSize = UsedAssetIDs_.size();
+    size_t NewSize = CurSize + NumberIDs;
 
+    UsedAssetIDs_.reserve(NewSize);
+
+    for (size_t AssetID = CurSize; AssetID < NewSize; AssetID++) {
+      UsedAssetIDs_.push_back(AssetID);
+      IDs.push_back(AssetID);
     }
 
-    // Return IDs
     return IDs;
 
 }
@@ -135,7 +135,7 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
         try {
             for (const auto &Entry : std::filesystem::directory_iterator(std::string(AssetPath_))) {
 
-                // Get File Path        
+                // Get File Path
                 std::string FilePath{Entry.path().u8string()};
                 FilePath = FilePath.substr(0, FilePath.find_last_of(".")).substr(FilePath.find_last_of("/") + 1, FilePath.length());
 
@@ -216,7 +216,7 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
     if (UseDatabase_) {
 
         // Load From DB
-        
+
 
     } else {
 
@@ -250,12 +250,12 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
                 }
 
             } else {
-                Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', Memory Allocation Failed")).c_str(), 9);            
+                Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', Memory Allocation Failed")).c_str(), 9);
                 OutputData->HasLoaded = false;
                 ReadSuccess = false;
             }
 
-        
+
         } else {
             Logger_->Log(std::string(std::string("Error Loading Asset '") + std::to_string(AssetID) + std::string("', File Not Found")).c_str(), 9);
             OutputData->HasLoaded = false;
@@ -276,8 +276,8 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(long AssetID, std::shared_ptr<ERS
     OutputData->Size_GB = FileSize / 1000000000;
 
     OutputData->LoadSpeed_KBs = (FileSize / 1000) / Duration;
-    OutputData->LoadSpeed_MBs = (FileSize / 1000000) / Duration; 
-    OutputData->LoadSpeed_GBs = (FileSize / 1000000000) / Duration; 
+    OutputData->LoadSpeed_MBs = (FileSize / 1000000) / Duration;
+    OutputData->LoadSpeed_GBs = (FileSize / 1000000000) / Duration;
 
     // Return Data
     return ReadSuccess;
@@ -334,7 +334,7 @@ bool ERS_CLASS_InputOutputSubsystem::WriteAsset(long AssetID, std::shared_ptr<ER
     if (UseDatabase_) {
 
         // Load From DB
-        
+
 
     } else {
 
@@ -372,8 +372,8 @@ bool ERS_CLASS_InputOutputSubsystem::WriteAsset(long AssetID, std::shared_ptr<ER
     InputData->WriteTime_s = Duration;
 
     InputData->WriteSpeed_KBs = (InputData->Size_B / 1000) / Duration;
-    InputData->WriteSpeed_MBs = (InputData->Size_B / 1000000) / Duration; 
-    InputData->WriteSpeed_GBs = (InputData->Size_B / 1000000000) / Duration; 
+    InputData->WriteSpeed_MBs = (InputData->Size_B / 1000000) / Duration;
+    InputData->WriteSpeed_GBs = (InputData->Size_B / 1000000000) / Duration;
 
 
     // Return Data
