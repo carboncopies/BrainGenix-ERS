@@ -8,13 +8,9 @@
 // Constructor
 GUI_Menu_Debug::GUI_Menu_Debug(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
-    // Copy In Pointer Struct
     SystemUtils_ = SystemUtils;
-
-    // Log Initialization
     SystemUtils_->Logger_->Log("Editor Setting Up Debug Menu", 4);
 
-    // Read System Config For Debug State
     SystemUtils_->Logger_->Log("Reading Configuration File For 'ShowEditorDebugMenu' Parameter", 1);
     DebugMenuEnabled_ = (*SystemUtils_->LocalSystemConfiguration_)["ShowEditorDebugMenu"].as<bool>();
 
