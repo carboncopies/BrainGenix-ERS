@@ -35,53 +35,53 @@
  */
 class Window_SceneTree {
 
-    private:
+private:
 
-        std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Pointer*/
-        std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<ProjectUtils Pointer*/
-        bool FirstFrame_ = true; /**<Bool Indicating if It's the first frame*/
+    std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Pointer*/
+    std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<ProjectUtils Pointer*/
+    bool FirstFrame_ = true; /**<Bool Indicating if It's the first frame*/
 
-        Subwindow_SceneRenameModal* Subwindow_SceneRenameModal_; /**<Scene Rename Modal Instance*/
-        Subwindow_ModelRenameModal* Subwindow_ModelRenameModal_; /**<Model Rename Modal Instance*/
-        Subwindow_DeleteScene* Subwindow_DeleteScene_; /**<Scene Deletion Modal Instance*/
-        Subwindow_DeleteModel* Subwindow_DeleteModel_; /**<Model Deletion Modal Instance*/
+    Subwindow_SceneRenameModal* Subwindow_SceneRenameModal_; /**<Scene Rename Modal Instance*/
+    Subwindow_ModelRenameModal* Subwindow_ModelRenameModal_; /**<Model Rename Modal Instance*/
+    Subwindow_DeleteScene* Subwindow_DeleteScene_; /**<Scene Deletion Modal Instance*/
+    Subwindow_DeleteModel* Subwindow_DeleteModel_; /**<Model Deletion Modal Instance*/
 
-    private:
+private:
 
-        /**
-         * @brief Draw A Scene Under A Tree Node
-         * 
-         * @param Scene 
-         * @param SceneIndex
-         */
-        void DrawScene(std::shared_ptr<ERS_STRUCT_Scene> Scene, int SceneIndex);
+    /**
+     * @brief Draw A Scene Under A Tree Node
+     * 
+     * @param Scene 
+     * @param SceneIndex
+     */
+    void DrawScene(std::shared_ptr<ERS_STRUCT_Scene> Scene, int SceneIndex);
 
 
 
-    public:
+public:
 
-        // Show/Hide Var
-        bool Enabled_ = true; /**<Show/Hide Window*/
+    // Show/Hide Var
+    bool Enabled_ = true; /**<Show/Hide Window*/
 
-    public:
+public:
 
-        /**
-         * @brief Construct a new Window_SceneTree object
-         * 
-         */
-        Window_SceneTree(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
+    /**
+     * @brief Construct a new Window_SceneTree object
+     * 
+     */
+    Window_SceneTree(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
 
-        /**
-         * @brief Destroy the Window_SceneTree object
-         * 
-         */
-        ~Window_SceneTree();
+    /**
+     * @brief Destroy the Window_SceneTree object
+     * 
+     */
+    ~Window_SceneTree();
 
-        /**
-         * @brief Function that draws the window, should internally check if enable variable is set to true.
-         * 
-         */
-        void Draw();
+    /**
+     * @brief Function that draws the window, should internally check if enable variable is set to true.
+     * 
+     */
+    void Draw();
 
 };
