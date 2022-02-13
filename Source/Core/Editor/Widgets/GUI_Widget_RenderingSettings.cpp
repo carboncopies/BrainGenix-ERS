@@ -4,26 +4,19 @@
 
 #include <GUI_Widget_RenderingSettings.h>
 
-// Constructor
 Widget_RenderingSettings::Widget_RenderingSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
-    // Copy System Utils
     SystemUtils_ = SystemUtils;
-
-    // Log Init
     SystemUtils_->Logger_->Log("Initializing Rendering Settings Widget", 5);
 
 }
 
-// Destructor
 Widget_RenderingSettings::~Widget_RenderingSettings() {
 
 }
 
-// Define Draw Function
 void Widget_RenderingSettings::Draw() {
 
-    // If Window Drawing Enabled
     if (Enabled_) {
         bool Visible = ImGui::Begin("Rendering Settings", &Enabled_);
 
