@@ -28,7 +28,6 @@ private:
 
 public:
 
-    // Show/Hide Var
     bool Enabled_ = true; /**<Show/Hide Widget*/
 
 public:
