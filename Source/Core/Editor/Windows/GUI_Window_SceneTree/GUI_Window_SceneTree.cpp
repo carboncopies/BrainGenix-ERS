@@ -4,32 +4,24 @@
 
 #include <GUI_Window_SceneTree.h>
 
-// Constructor
 Window_SceneTree::Window_SceneTree(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils) {
 
-    // Update Ptr
     SceneManager_ = SceneManager;
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
-
-    // Log Initialization
     SystemUtils_->Logger_->Log("Initializing ERS GUI Window_SceneTree", 4);
 
-    // Setup Subwindows
     Subwindow_SceneRenameModal_ = new Subwindow_SceneRenameModal(SceneManager_);
     Subwindow_ModelRenameModal_ = new Subwindow_ModelRenameModal(SceneManager_);
     Subwindow_DeleteScene_ = new Subwindow_DeleteScene(SceneManager_);
     Subwindow_DeleteModel_ = new Subwindow_DeleteModel(SceneManager_);
 
-    // Finish Init
     SystemUtils_->Logger_->Log("Finished Initializing ERS GUI Window_SceneTree", 5);
 
 }
 
-// Destructor
 Window_SceneTree::~Window_SceneTree() {
 
-    // Cleanup Instances
     Subwindow_SceneRenameModal_->~Subwindow_SceneRenameModal();
     Subwindow_ModelRenameModal_->~Subwindow_ModelRenameModal();
     Subwindow_DeleteScene_->~Subwindow_DeleteScene();
@@ -37,11 +29,9 @@ Window_SceneTree::~Window_SceneTree() {
 
 }
 
-// Define Draw Function
 void Window_SceneTree::Draw() {
 
 
-    // If Window Drawing Enabled
     if (Enabled_) {
     bool Visible = ImGui::Begin("Scene Tree", &Enabled_);
 
@@ -172,7 +162,6 @@ void Window_SceneTree::Draw() {
 }
 
 
-// Draw Contents Of Scene To Scene Tree Window Tree Node
 void Window_SceneTree::DrawScene(std::shared_ptr<ERS_STRUCT_Scene> Scene, int SceneIndex) {
 
     // Get Selected Item
