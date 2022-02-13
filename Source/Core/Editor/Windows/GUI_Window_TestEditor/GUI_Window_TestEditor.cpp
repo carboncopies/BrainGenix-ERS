@@ -5,27 +5,22 @@
 #include <GUI_Window_TestEditor.h>
 
 
-// Constructor
+
 Window_TestEditor::Window_TestEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
-    // Copy Pointer
-    SystemUtils_ = SystemUtils;
 
-    // Log Initialization
+    SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing Demo ImGui Editor Window", 4);
 
 }
 
-// Destructor
 Window_TestEditor::~Window_TestEditor() {
 
-    // Log Destructor Call
     SystemUtils_->Logger_->Log("ImGui Editor Window Destructor Called", 6);
 
 }
 
 
-// Draw Function
 void Window_TestEditor::Draw() {
 
     if (Enabled_) {
