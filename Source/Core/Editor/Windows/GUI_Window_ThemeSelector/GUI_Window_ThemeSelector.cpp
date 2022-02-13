@@ -6,24 +6,19 @@
 #include <GUI_Window_ThemeSelector.h>
 
 
-// Window Constructor
 Window_ThemeSelector::Window_ThemeSelector(std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager) {
 
-    // Copy Pointers
     ThemeManager_ = ThemeManager;
 
 }
 
-// Window Destructor
 Window_ThemeSelector::~Window_ThemeSelector() {
 
 }
 
 
-// Update Window
 void Window_ThemeSelector::Draw() {
 
-    // Draw Color Picker Menu
     if (Enabled_) {
     ImGuiWindowFlags Flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse;
     bool Visible = ImGui::Begin("Pick Color Theme", &Enabled_, Flags);
