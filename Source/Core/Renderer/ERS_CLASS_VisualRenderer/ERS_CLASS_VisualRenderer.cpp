@@ -6,22 +6,15 @@
 
 
 
-// Visual Rendere constructor
 ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D) {
 
-    // Create Pointers
     SystemUtils->Logger_->Log("Populating Renderer Member Pointers", 5);
     SystemUtils_ = SystemUtils;
     Window_ = Window;
     Cursors3D_ = Cursors3D;
 
-    
-
-    // Initialize OpenGL
     SystemUtils_->Logger_->Log("Initializing OpenGL", 5);
     InitializeOpenGL();
-
-
 
 }
 
