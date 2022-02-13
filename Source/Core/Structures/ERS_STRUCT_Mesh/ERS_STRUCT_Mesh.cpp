@@ -5,7 +5,6 @@
 #include "ERS_STRUCT_Mesh.h"
 
 
-// Setup Mesh
 void ERS_STRUCT_Mesh::SetupMesh() {
 
     // Initialize Buffers/Arrays
@@ -64,7 +63,6 @@ void ERS_STRUCT_Mesh::SetupMesh() {
 
 }
 
-// Draw The Mesh
 void ERS_STRUCT_Mesh::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
 
     // Bind To OpenGL Handles
