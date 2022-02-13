@@ -7,7 +7,6 @@
 
 Subwindow_DeleteScene::Subwindow_DeleteScene(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
 
-    // Copy Pointer
     SceneManager_ = SceneManager;
 
 
@@ -15,7 +14,6 @@ Subwindow_DeleteScene::Subwindow_DeleteScene(std::shared_ptr<ERS_CLASS_SceneMana
 
 Subwindow_DeleteScene::~Subwindow_DeleteScene() {
 
-    // Hide All Popups
     bool ShowDeleteConfirm_ = false;
     bool ShowOneSceneDeleteError_ = false;
 
@@ -23,7 +21,6 @@ Subwindow_DeleteScene::~Subwindow_DeleteScene() {
 
 void Subwindow_DeleteScene::DeleteScene(int SceneIndex) {
 
-    // Enable Firstframe
     FirstFrame_ = true;
 
     // Show Popup Windows
@@ -39,7 +36,6 @@ void Subwindow_DeleteScene::DeleteScene(int SceneIndex) {
 
 void Subwindow_DeleteScene::Draw() {
 
-    // Update Windows
     UpdateConfirmDeletePopup();
     UpdateOneSceneDeleteErrorPopup();
 
