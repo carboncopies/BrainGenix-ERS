@@ -24,7 +24,6 @@ void ERS_CLASS_FramerateManager::SetTargetFramerate(int Framerate) {
 
 }
 
-// Start Timer
 void ERS_CLASS_FramerateManager::StartNewFrame() {
 
     // Get Current Time, Set To Start Time
@@ -44,7 +43,6 @@ void ERS_CLASS_FramerateManager::StartNewFrame() {
 
 }
 
-// Delay Until Next Frame
 void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
 
     // Get Current Time
@@ -88,7 +86,6 @@ void ERS_CLASS_FramerateManager::DelayUntilNextFrame() {
 
 }
 
-// Get Last Frame Time
 float ERS_CLASS_FramerateManager::GetLastFrameTime() {
 
     // Return Exact Last Frame Time
