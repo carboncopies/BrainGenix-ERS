@@ -5,35 +5,26 @@
 #include <ERS_Editor_3DCursor.h>
 
 
-// 3D Cursor Constructor
 Cursors3D::Cursors3D() {
 
 }
 
-// 3D Cursor Destructor
 Cursors3D::~Cursors3D() {
 
 
 }
 
 
-// Set LocRotScale
 void Cursors3D::SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
-
-    // Copy 
     Pos_ = Pos;
     Rot_ = Rot;
     Scale_ = Scale;
-
 }
 
 
 
-// End Render Pass
 void Cursors3D::Draw(std::shared_ptr<ERS_STRUCT_Camera> Camera, bool IsCameraMoving, bool ShowCube, bool ShowCursor) {
 
-
-    // Copy In Values
     Camera_ = Camera;
     glm::mat4 Projection = Camera_->GetProjectionMatrix();
     glm::mat4 View = Camera_->GetViewMatrix();
@@ -48,8 +39,6 @@ void Cursors3D::Draw(std::shared_ptr<ERS_STRUCT_Camera> Camera, bool IsCameraMov
             CurrentGizmoOperation_ = ImGuizmo::SCALE;
         }
     }
-
-
 
     float WindowWidth = (float)ImGui::GetWindowWidth();
     float WindowHeight = (float)ImGui::GetWindowHeight();
@@ -109,12 +98,10 @@ void Cursors3D::Draw(std::shared_ptr<ERS_STRUCT_Camera> Camera, bool IsCameraMov
 }
 
 
-// IsUsing
 bool Cursors3D::IsUsing() {
     return ImGuizmo::IsUsing();
 }
 
-// IsHovered
 bool Cursors3D::IsHovered() {
     return ImGuizmo::IsOver();
 }
