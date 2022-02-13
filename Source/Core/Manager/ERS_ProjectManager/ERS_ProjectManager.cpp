@@ -28,7 +28,6 @@ ERS_CLASS_ProjectManager::~ERS_CLASS_ProjectManager() {
 }
 
 
-// Load Project
 void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
 
     // Load Into Project Struct
@@ -59,7 +58,6 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
 }
 
 
-// Write Project
 void ERS_CLASS_ProjectManager::WriteProject(long AssetID) {
 
     // Get Project Pointer. Write Project
