@@ -35,14 +35,12 @@ bool ERS_CLASS_SceneManager::AddScene(ERS_STRUCT_Scene Scene) {
         // Log Issue
         Logger_->Log("Failed To Add Scene To Buffer, Scene Isn't Yet Loaded!", 6);
 
-        // Return Failure
         return false;
     }
 
     // Append Scene To Scenes Model
     Scenes_.push_back(std::make_shared<ERS_STRUCT_Scene>(Scene));
 
-    // Return Success
     return true;
 
 }
