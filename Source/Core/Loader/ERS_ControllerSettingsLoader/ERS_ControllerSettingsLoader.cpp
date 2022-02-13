@@ -5,7 +5,6 @@
 #include <ERS_ControllerSettingsLoader.h>
 
 
-// Constructor
 ERS_CLASS_ControllerSettingsLoader::ERS_CLASS_ControllerSettingsLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
     // Copy Pointer
