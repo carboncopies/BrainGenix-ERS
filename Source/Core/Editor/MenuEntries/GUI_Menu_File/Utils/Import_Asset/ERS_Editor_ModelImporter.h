@@ -48,84 +48,77 @@
 class ERS_CLASS_ModelImporter {
 
 
-    private:
+private:
 
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointers*/
-        std::vector<std::string> TextureList_; /**<Texture List Vector*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointers*/
+    std::vector<std::string> TextureList_; /**<Texture List Vector*/
 
 
-        /**
-         * @brief Function Used To Process Subnodes Of SceneFiles.
-         * 
-         * @param Node 
-         * @param Scene 
-         */
-        void ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory);
+    /**
+     * @brief Function Used To Process Subnodes Of SceneFiles.
+     * 
+     * @param Node 
+     * @param Scene 
+     */
+    void ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory);
 
-        /**
-         * @brief Process Meshes From Model.
-         * 
-         * @param Mesh 
-         * @param Scene 
-         * @return ERS_STRUCT_Mesh 
-         */
-        void ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory);
+    /**
+     * @brief Process Meshes From Model.
+     * 
+     * @param Mesh 
+     * @param Scene 
+     * @return ERS_STRUCT_Mesh 
+     */
+    void ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory);
 
-        /**
-         * @brief Load Textures From Model.
-         * 
-         * @param Mat 
-         * @param Type 
-         * @param TypeName 
-         */
-        void AddTexture(ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory);
-
-
-        /**
-         * @brief Load a file into an IOData Struct
-         * 
-         * @param Path 
-         * @param IOData 
-         */
-        void ReadFile(std::string Path, std::shared_ptr<ERS_STRUCT_IOData> IOData);
+    /**
+     * @brief Load Textures From Model.
+     * 
+     * @param Mat 
+     * @param Type 
+     * @param TypeName 
+     */
+    void AddTexture(ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory);
 
 
-
-    public:
+    /**
+     * @brief Load a file into an IOData Struct
+     * 
+     * @param Path 
+     * @param IOData 
+     */
+    void ReadFile(std::string Path, std::shared_ptr<ERS_STRUCT_IOData> IOData);
 
 
 
-
-        /**
-         * @brief Construct a new Model Loader object
-         * 
-         * @param Logger 
-         * @param TextureLoader 
-         */
-        ERS_CLASS_ModelImporter(std::shared_ptr<ERS_STRUCT_SystemUtils>);
-
-        /**
-         * @brief Destroy the Model Loader object
-         * 
-         */
-        ~ERS_CLASS_ModelImporter();
-
-
-        /**
-         * @brief Import model from given path, return assetID of model metadata.
-         * 
-         * @param AssetPath 
-         * @param FlipTextures 
-         * @return std::vector<long> 
-         */
-        long ImportModel(std::string AssetPath);
+public:
 
 
 
 
+    /**
+     * @brief Construct a new Model Loader object
+     * 
+     * @param Logger 
+     * @param TextureLoader 
+     */
+    ERS_CLASS_ModelImporter(std::shared_ptr<ERS_STRUCT_SystemUtils>);
+
+    /**
+     * @brief Destroy the Model Loader object
+     * 
+     */
+    ~ERS_CLASS_ModelImporter();
 
 
+    /**
+     * @brief Import model from given path, return assetID of model metadata.
+     * 
+     * @param AssetPath 
+     * @param FlipTextures 
+     * @return std::vector<long> 
+     */
+    long ImportModel(std::string AssetPath);
 
 };
-
