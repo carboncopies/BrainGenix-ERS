@@ -15,10 +15,8 @@ ERS_CLASS_FramerateManager::~ERS_CLASS_FramerateManager() {
 
 }
 
-// Set Target Framerate
 void ERS_CLASS_FramerateManager::SetTargetFramerate(int Framerate) {
 
-    // Copy FR
     TargetFrameRate_ = Framerate;
 
     // Calculate Target Frame Time

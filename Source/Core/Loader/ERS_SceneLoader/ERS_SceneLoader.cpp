@@ -22,7 +22,6 @@ ERS_CLASS_SceneLoader::~ERS_CLASS_SceneLoader() {
 
 }
 
-// Load And Process Scene
 ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(long AssetID) {
 
     // Read Asset Info
@@ -40,7 +39,6 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(long AssetID) {
 
 }
 
-// ERS_CLASS_SceneLoader Process Scene Function
 ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, long AssetID) {
 
     // Create Scene Instance
@@ -117,7 +115,6 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
 
 }
 
-// Add Model To Scene
 void ERS_CLASS_SceneLoader::AddModel(std::shared_ptr<ERS_STRUCT_Scene> Scene, long AssetID) {
 
     // Log Model Addition
