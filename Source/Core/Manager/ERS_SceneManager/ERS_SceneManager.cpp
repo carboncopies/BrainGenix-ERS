@@ -5,22 +5,17 @@
 #include <ERS_SceneManager.h>
 
 
-// Constructor For ERS_CLASS_SceneManager Class
 ERS_CLASS_SceneManager::ERS_CLASS_SceneManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
-    // Copy To Local Pointer
     Logger_ = Logger;
 
-    // Log Initialization
     Logger_->Log("Initializing ERS_CLASS_SceneManager Instance", 5);
 
 }
 
 
-// Destructor For ERS_CLASS_SceneManager Class
 ERS_CLASS_SceneManager::~ERS_CLASS_SceneManager() {
 
-    // Log Destructor Call
     Logger_->Log("Destructor Called For ERS_CLASS_SceneManager Class", 6);
 
 }
