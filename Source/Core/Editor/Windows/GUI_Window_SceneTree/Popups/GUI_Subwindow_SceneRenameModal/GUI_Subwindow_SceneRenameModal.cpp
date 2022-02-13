@@ -4,31 +4,25 @@
 
 #include <GUI_Subwindow_SceneRenameModal.h>
 
-// Constructor
 Subwindow_SceneRenameModal::Subwindow_SceneRenameModal(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
 
-    // Update Ptr
     SceneManager_ = SceneManager;
 
 
 }
 
-// Destructor
 Subwindow_SceneRenameModal::~Subwindow_SceneRenameModal() {
     
 }
 
-// Define Activation Function
 void Subwindow_SceneRenameModal::Activate(int SceneIndex) {
 
-    // Activate
     SelectedScene_ = SceneIndex;
     Enabled_ = true;
     FirstFrame_ = true;        
 
 }
 
-// Define Draw Function
 void Subwindow_SceneRenameModal::Draw() {
 
     // Draw Rename Scene Window
