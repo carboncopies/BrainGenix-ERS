@@ -6,25 +6,19 @@
 
 
 
-// Constructor
 ERS_CLASS_ControllerInputManager::ERS_CLASS_ControllerInputManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
-    // Copy Pointer
     SystemUtils_ = SystemUtils;
 
-    // Log Initialization
     SystemUtils_->Logger_->Log("Initializing ERS Controller Input Manager", 5);
 
-    // Detect Controllers
     DetectControllers();
 
 
 }
 
-// Destructor
 ERS_CLASS_ControllerInputManager::~ERS_CLASS_ControllerInputManager() {
 
-    // Log Destructor Call
     SystemUtils_->Logger_->Log("ERS Controller Input Manager Destructor Called", 6);
 
 }
