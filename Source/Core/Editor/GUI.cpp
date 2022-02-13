@@ -5,10 +5,8 @@
 #include <GUI.h>
 
 
-// GUISystem Constructor
 GUISystem::GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRendererInstance, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils) {
 
-    // Create Local Pointer
     SystemUtils_ = SystemUtils;
     Window_ = Window;
     Cursors3D_ = Cursors3D;
@@ -16,8 +14,6 @@ GUISystem::GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwi
     ProjectUtils_ = ProjectUtils;
     VisualRenderer_ = VisualRendererInstance;
     HIDUtils_ = HIDUtils;
-
-    // Initialize ImGui
     SystemUtils_->Logger_->Log("Initializing DearImGui GUI Library", 5);
 
     IMGUI_CHECKVERSION();
@@ -59,13 +55,10 @@ GUISystem::GUISystem(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwi
 
 }
 
-// GUISystem Destructor
 GUISystem::~GUISystem() {
 
-    // Log Destructor Call
     SystemUtils_->Logger_->Log("GUISystem Destructor Called", 6);
 
-    // Deinit ImGui
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
@@ -73,7 +66,6 @@ GUISystem::~GUISystem() {
 
 }
 
-// Update GUI
 void GUISystem::UpdateGUI() {
 
     
