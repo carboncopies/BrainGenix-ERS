@@ -9,17 +9,12 @@
 // optionally optimize processgpu function to provide least amount of lag as possible
 // Add Placeholder meshes during loading
 
-// Constructor
 ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, int MaxModelLoadingThreads) {
 
-    // Create Local Pointer
     SystemUtils_ = SystemUtils;
-
-    // Log Initialization
     SystemUtils_->Logger_->Log("Initializing Model Loader", 5);
     FreeImage_Initialise();
 
-    // Create Worker Threads
     if (MaxModelLoadingThreads == -1) {
         SystemUtils_->Logger_->Log("Identifying Number Of CPU Cores", 4);
         MaxModelLoadingThreads = std::thread::hardware_concurrency();
@@ -35,10 +30,8 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUt
 
 }
 
-// Destructor
 ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 
-    // Log Destructor Call
     SystemUtils_->Logger_->Log("ERS_CLASS_ModelLoader Destructor Called", 6);
     FreeImage_DeInitialise();
 
@@ -57,11 +50,8 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 
 }
 
-// Worker Thread
 void ERS_CLASS_ModelLoader::WorkerThread() {
 
-
-    // Enter Loop
     bool ThreadShouldRun = true;
     while (ThreadShouldRun) {
 
@@ -104,7 +94,6 @@ void ERS_CLASS_ModelLoader::WorkerThread() {
 
 }
 
-// Updates The Current Scene, Loads In Models
 void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_STRUCT_Scene> ActiveScene) {
 
     // Check List Of Models
@@ -125,7 +114,6 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(std::shared_ptr<ERS_STRUCT_Scene> A
 
 }
 
-// Add Model To Load Queue
 void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures) {
 
     // Log Addition
@@ -142,7 +130,6 @@ void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr
 
 }
 
-// Process GPU Data (Must Be Done In Thread With OPENGL Context (should be main thread))
 void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) {
 
     // Push Textures To GPU RAM
@@ -206,7 +193,6 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
 
 }
 
-// Loads A Texture With The Given ID
 ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures) {
 
     // Load Image Bytes Into Memory
@@ -251,7 +237,6 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
 
 }
 
-// Load Model From File
 void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures) {
 
     // Log Loading For Debugging Purposes
@@ -326,7 +311,6 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     Model->IsReadyForGPU = true;
 }
 
-// Process Nodes
 void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::vector<std::string> TexturePaths) {
 
     // Process Meshes In Current Node
@@ -343,7 +327,6 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
 
 }
 
-// Process Mesh
 ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::vector<std::string> TexturePaths) {
 
     // Create Data Holders
@@ -424,7 +407,6 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, aiMe
 
 }
 
-// Check Material Textures
 void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<int>* IDs, std::vector<std::string>* Types, std::vector<std::string> TextureList, ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName) {
 
     // Iterate Through Textures

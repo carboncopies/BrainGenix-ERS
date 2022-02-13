@@ -7,7 +7,6 @@
 
 #include <ERS_SceneLoader.h>
 
-// ERS_CLASS_SceneLoader Constructor
 ERS_CLASS_SceneLoader::ERS_CLASS_SceneLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader) {
 
     // Create Local Pointer

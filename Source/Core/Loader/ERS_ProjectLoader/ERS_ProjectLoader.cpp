@@ -5,21 +5,16 @@
 #include <ERS_ProjectLoader.h>
 
 
-// Constructor
 ERS_CLASS_ProjectLoader::ERS_CLASS_ProjectLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
-    // Create Local Pointer
     SystemUtils_ = SystemUtils;
 
-    // Log Initialization
     SystemUtils_->Logger_->Log("Initializing Project Loader", 5);
 
 }
 
-// Destructor
 ERS_CLASS_ProjectLoader::~ERS_CLASS_ProjectLoader() {
 
-    // Log Destructor Call
     SystemUtils_->Logger_->Log("ERS_CLASS_ProjectLoader Destructor Called", 6);
 
 }
