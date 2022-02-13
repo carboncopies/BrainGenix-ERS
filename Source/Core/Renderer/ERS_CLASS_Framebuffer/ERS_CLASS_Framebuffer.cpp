@@ -121,10 +121,8 @@ void ERS_CLASS_Framebuffer::StartFramebufferRenderPass() {
 }
 
 
-// ERS_CLASS_Framebuffer Start Screen Render Pass
 void ERS_CLASS_Framebuffer::StartScreenRenderPass() {
 
-    // Use Default Framebuffer, And Render To It
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glDisable(GL_DEPTH_TEST);
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
