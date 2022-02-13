@@ -5,19 +5,14 @@
 #include <GUI_Window_ShaderEditor.h>
 
 
-// Constructor
 Window_ShaderEditor::Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer) {
 
-    // Copy Pointers
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
     VisualRenderer_ = VisualRenderer;
-
-    // Log Init
     SystemUtils_->Logger_->Log("Initializing GUI ShaderEditor Window", 4);
 
 
-    // Setup Editors
     Editors_.push_back(std::make_shared<TextEditor>());
     Editors_.push_back(std::make_shared<TextEditor>());
 
@@ -32,16 +27,13 @@ Window_ShaderEditor::Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils>
 
 }
 
-// Destructor
 Window_ShaderEditor::~Window_ShaderEditor() {
 
-    // Log Destructor Call
     SystemUtils_->Logger_->Log("GUI ShaderEditor Window Destructor Called", 6);
 
 }
 
 
-// Reload Assets
 void Window_ShaderEditor::ReloadEditorText() {
 
     // Load Vertex Shader
@@ -61,7 +53,6 @@ void Window_ShaderEditor::ReloadEditorText() {
 }
 
 
-// Save Shader
 void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
 
     // Write Data
@@ -77,7 +68,6 @@ void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
 
 }
 
-// Draw Window
 void Window_ShaderEditor::Draw() {
 
     // Check Enable Change
@@ -119,8 +109,6 @@ void Window_ShaderEditor::Draw() {
 
 
 
-
-// Draw The Editor Window
 void Window_ShaderEditor::DrawEditorWindow() {
 
     bool Visible = ImGui::Begin("Shader Editor", &Enabled_, ImGuiWindowFlags_MenuBar);
@@ -267,7 +255,6 @@ void Window_ShaderEditor::DrawEditorWindow() {
 }
 
 
-// Draw The Tools Window
 void Window_ShaderEditor::DrawToolsWindow() {
 
     bool CompileVisible = ImGui::Begin("Shader Tools", &Enabled_);
