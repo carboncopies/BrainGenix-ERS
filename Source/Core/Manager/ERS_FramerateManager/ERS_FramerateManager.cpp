@@ -11,7 +11,6 @@ ERS_CLASS_FramerateManager::ERS_CLASS_FramerateManager() {
 
 }
 
-// Destructor
 ERS_CLASS_FramerateManager::~ERS_CLASS_FramerateManager() {
 
 }
