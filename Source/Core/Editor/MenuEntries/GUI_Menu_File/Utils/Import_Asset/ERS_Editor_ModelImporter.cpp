@@ -5,15 +5,12 @@
 #include <ERS_Editor_ModelImporter.h>
 
 
-// Constructor
 ERS_CLASS_ModelImporter::ERS_CLASS_ModelImporter(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
-    // Create Local Pointer
     SystemUtils_ = SystemUtils;
 
 }
 
-// Destructor
 ERS_CLASS_ModelImporter::~ERS_CLASS_ModelImporter() {
 
 }
@@ -21,10 +18,7 @@ ERS_CLASS_ModelImporter::~ERS_CLASS_ModelImporter() {
 // Load Model From File
 long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
-    // Clear Model Instance
     ERS_STRUCT_Model Model;
-
-    // Clear Textures List
     TextureList_ = std::vector<std::string>();
 
 
@@ -93,11 +87,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(MetadataID) + std::string("' To Model Metadata")).c_str(), 4);
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(MetadataID, Data);
     
-
-
-    // Return Model Instance
     return MetadataID;
-
 }
 
 
@@ -163,7 +153,6 @@ void ERS_CLASS_ModelImporter::ReadFile(std::string FilePath, std::shared_ptr<ERS
 
         if (FileStatus == 0) {
 
-            // Allocate Memory
             OutputData->Data.reset(new unsigned char[Buffer.st_size]);
             if (OutputData->Data) {
 
