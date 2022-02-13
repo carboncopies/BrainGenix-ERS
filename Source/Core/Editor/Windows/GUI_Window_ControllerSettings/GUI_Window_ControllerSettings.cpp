@@ -5,23 +5,19 @@
 #include <GUI_Window_ControllerSettings.h>
 
 
-// Constructor
 Window_ControllerSettings::Window_ControllerSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils) {
 
-    // Copy System Utils Pointer Struct
     SystemUtils_ = SystemUtils;
     HIDUtils_ = HIDUtils;
     ProjectUtils_ = ProjectUtils;
 
 }
 
-// Destructor
 Window_ControllerSettings::~Window_ControllerSettings() {
 
 }
 
 
-// Button Text
 void Window_ControllerSettings::ButtonText(std::string ButtonName, bool ButtonState) {
 
     // Generate Text
@@ -30,11 +26,9 @@ void Window_ControllerSettings::ButtonText(std::string ButtonName, bool ButtonSt
         ButtonStateLabel = "Pressed";
     }
 
-    // Draw Text
     ImGui::Text("%s", (ButtonName + std::string(": ") + ButtonStateLabel).c_str());
 }
 
-// Draw Window
 void Window_ControllerSettings::Draw() {
 
 
