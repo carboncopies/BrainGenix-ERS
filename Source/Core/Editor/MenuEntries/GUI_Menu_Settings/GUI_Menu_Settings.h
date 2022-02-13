@@ -22,47 +22,46 @@
 
 #include <GUI_Window_ControllerSettings.h>
 
+
 /**
  * @brief This class provides the "File" Menu In The Editor.
  * 
  */
 class GUI_Menu_Settings {
 
-    // Member Vars
-    private:
+private:
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
-        std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<HID Utils Pointer*/
-        std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Structure*/
-
-
-        std::unique_ptr<Window_ControllerSettings> Window_ControllerSettings_; /**<ERS GUI Window*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
+    std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<HID Utils Pointer*/
+    std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Structure*/
 
 
-    // Member Functions
-    public:
+    std::unique_ptr<Window_ControllerSettings> Window_ControllerSettings_; /**<ERS GUI Window*/
 
 
-        /**
-         * @brief Construct a new gui menu settings object
-         * 
-         * @param SystemUtils 
-         */
-        GUI_Menu_Settings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils,  std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
+public:
 
 
-        /**
-         * @brief Destroy the gui menu settings object
-         * 
-         */
-        ~GUI_Menu_Settings();
+    /**
+     * @brief Construct a new gui menu settings object
+     * 
+     * @param SystemUtils 
+     */
+    GUI_Menu_Settings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils,  std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
 
 
-        /**
-         * @brief This function Draws The Settings Menu Contents.
-         * 
-         */
-        void Draw();
+    /**
+     * @brief Destroy the gui menu settings object
+     * 
+     */
+    ~GUI_Menu_Settings();
+
+
+    /**
+     * @brief This function Draws The Settings Menu Contents.
+     * 
+     */
+    void Draw();
 
 
 };
