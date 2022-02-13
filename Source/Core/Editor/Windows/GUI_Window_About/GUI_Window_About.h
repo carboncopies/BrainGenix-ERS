@@ -17,40 +17,41 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
 
+
 /**
  * @brief Window for the Import progress bar.
  * 
  */
 class Window_About {
 
-    private:
+private:
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
 
-    public:
+public:
 
-        bool Enabled_ = false; /**<Is Popup Enabled*/
-
-
-    public:
-
-        /**
-         * @brief Construct a new Window_About object
-         * 
-         */
-        Window_About(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
-        
-        /**
-         * @brief Destroy the Window_About object
-         * 
-         */
-        ~Window_About();
+    bool Enabled_ = false; /**<Is Popup Enabled*/
 
 
-        /**
-         * @brief Draw import bar if needed (call every frame)
-         * 
-         */
-        void Draw();
+public:
+
+    /**
+     * @brief Construct a new Window_About object
+     * 
+     */
+    Window_About(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    
+    /**
+     * @brief Destroy the Window_About object
+     * 
+     */
+    ~Window_About();
+
+
+    /**
+     * @brief Draw import bar if needed (call every frame)
+     * 
+     */
+    void Draw();
 
 };
