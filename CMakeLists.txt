@@ -128,6 +128,7 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ControllerSettings)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ShaderProgramAssetIDs)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_RGBColor)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Viewport)
+add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Light)
 
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_SceneLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ShaderLoader)
