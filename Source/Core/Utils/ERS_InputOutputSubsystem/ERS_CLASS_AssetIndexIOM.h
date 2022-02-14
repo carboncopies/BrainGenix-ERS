@@ -19,13 +19,11 @@
 
 class ERS_CLASS_AssetIndexIOM {
 
-// Private Member Vars
 private:
 
     std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer To Logger Instance*/
 
 
-// Public Member Vars
 public:
 
     std::map<long, std::string> AssetTypeName_; /**<Name of the type of asset, ex: Image or Model*/
@@ -33,7 +31,6 @@ public:
     std::map<long, std::string> AssetModificationDate_; /**<Date When Last Modified*/
     std::vector<long> AssetIDsFound_; /**<List of all asset ids in metadata system*/
 
-// Public Methods
 public:
 
     /**
