@@ -7,26 +7,19 @@
 
 #include <ERS_SceneWriter.h>
 
-// SceneWriter Constructor
 SceneWriter::SceneWriter(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
 
-    // Create Local Pointer
     SystemUtils_ = SystemUtils;
-
-    // Log Initializaton Start
     SystemUtils_->Logger_->Log("Initializing SceneWriter Subsystem", 5);
 
 }
 
-// SceneWriter Destructor
 SceneWriter::~SceneWriter() {
 
-    // Log Destructor Call
     SystemUtils_->Logger_->Log("SceneWriter Destructor Called", 6);
 
 }
 
-// Process Scenes
 void SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputScene, long AssetID) {
 
     // Convert Scene To YAML Encoded String
@@ -44,7 +37,6 @@ void SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputScene, lon
 
 }
 
-// SceneWriter Process Scene Function
 std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputScene) {
 
     // Log Scene Write
@@ -111,7 +103,6 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputSce
         SystemUtils_->Logger_->Log(LogError.c_str(), 8);
     }
 
-    // Return Scene
     return std::string(Output.c_str());
 
 }
