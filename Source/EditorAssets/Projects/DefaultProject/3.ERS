@@ -21,9 +21,9 @@ SceneData:
     LightType: Ambient
     AdditionalNotes: A test light.
     Intensity: 1.0
-    ColorRed: 0.9
+    ColorRed: 0.3
     ColorGreen: 0.9
-    ColorBlue: 0.9
+    ColorBlue: 0.3
     PosX: 1.0
     PosY: 0.0
     PosZ: 0.0
