@@ -111,7 +111,6 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
 
 
             Scene.Lights[LightIndex]->UserDefinedName = AssetName;
-            Scene.Lights[LightIndex]->UserAdditionalNotes = SceneDataNode[i]["AdditionalNotes"].as<std::string>();
             Scene.Lights[LightIndex]->LightType = SceneDataNode[i]["LightType"].as<std::string>();
             
             Scene.Lights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();

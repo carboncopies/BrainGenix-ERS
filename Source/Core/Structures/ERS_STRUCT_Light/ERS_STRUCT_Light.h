@@ -15,7 +15,6 @@
 struct ERS_STRUCT_Light {
 
     std::string UserDefinedName; /**Name of the light assigned by user*/
-    std::string UserAdditionalNotes; /**<Any user defined additional notes*/
     
     std::string LightType; /**<Type of light (point, area, etc.)*/
 
