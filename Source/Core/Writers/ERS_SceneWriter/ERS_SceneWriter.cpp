@@ -60,16 +60,15 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputSce
     long AssetIndex = 0;
     for (int i = 0; i < InputScene->Models.size(); i++) {
 
-        // Begin Asset Tag
         Output << YAML::Key << AssetIndex;
         Output << YAML::BeginMap;
 
-        // Write Asset Metadata
+
         Output << YAML::Key << "AssetName" << YAML::Value << InputScene->Models[AssetIndex]->Name;
         Output << YAML::Key << "AssetType" << YAML::Value << "Model";
         Output << YAML::Key << "AssetID" << YAML::Value << InputScene->Models[AssetIndex]->AssetID;
 
-        // Write Asset Position Data
+
         Output << YAML::Key << "AssetPositionX" << YAML::Value << InputScene->Models[AssetIndex]->ModelPosition[0];
         Output << YAML::Key << "AssetPositionY" << YAML::Value << InputScene->Models[AssetIndex]->ModelPosition[1];
         Output << YAML::Key << "AssetPositionZ" << YAML::Value << InputScene->Models[AssetIndex]->ModelPosition[2];
@@ -82,12 +81,11 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputSce
         Output << YAML::Key << "AssetScaleY" << YAML::Value << InputScene->Models[AssetIndex]->ModelScale[1];
         Output << YAML::Key << "AssetScaleZ" << YAML::Value << InputScene->Models[AssetIndex]->ModelScale[2];
 
-        // Write Asset Texture Data
+
         Output << YAML::Key << "FlipTextures" << YAML::Value << InputScene->Models[AssetIndex]->FlipTextures;
 
-        // End Map
-        Output << YAML::EndMap;
 
+        Output << YAML::EndMap;
         AssetIndex++;
     }
 
@@ -116,10 +114,7 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputSce
         Output << YAML::Key << "ScaleZ" << YAML::Value << InputScene->Lights[AssetIndex]->ScaleZ;
 
 
-
-
         Output << YAML::EndMap;
-
         AssetIndex++;
     }
 
