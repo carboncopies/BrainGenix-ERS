@@ -127,9 +127,9 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             Scene.Lights[LightIndex]->RotY = SceneDataNode[i]["RotY"].as<float>();
             Scene.Lights[LightIndex]->RotZ = SceneDataNode[i]["RotZ"].as<float>();
 
-            Scene.Lights[LightIndex]->PosX = SceneDataNode[i]["PosX"].as<float>();
-            Scene.Lights[LightIndex]->PosX = SceneDataNode[i]["PosX"].as<float>();
-            Scene.Lights[LightIndex]->PosX = SceneDataNode[i]["PosX"].as<float>();
+            Scene.Lights[LightIndex]->ScaleX = SceneDataNode[i]["ScaleX"].as<float>();
+            Scene.Lights[LightIndex]->ScaleY = SceneDataNode[i]["ScaleY"].as<float>();
+            Scene.Lights[LightIndex]->ScaleZ = SceneDataNode[i]["ScaleZ"].as<float>();
 
 
 
