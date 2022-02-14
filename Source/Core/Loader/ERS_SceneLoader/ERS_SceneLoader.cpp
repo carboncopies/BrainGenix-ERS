@@ -109,7 +109,7 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             int LightIndex = Scene.Lights.size() - 1;
 
             // Get Any Metadata
-            
+            Scene.Lights[LightIndex]->
 
 
 
