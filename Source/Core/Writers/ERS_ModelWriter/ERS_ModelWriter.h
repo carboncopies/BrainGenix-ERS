@@ -20,63 +20,62 @@
 #include <ERS_InputOutputSubsystem.h>
 
 
-// This Class Encodes Models In The ERS Format (Modified GLTF)
+/**
+ * @brief This Class Encodes Models In The ERS Format (Modified GLTF)
+ * 
+ */
 class ERS_CLASS_ModelWriter {
 
-    // Member Vars
-    private:
+private:
 
-        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer To Logger Instance*/
-        std::shared_ptr<ERS_CLASS_InputOutputSubsystem> IOSubsystem_; /**<Pointer To IOSubsystem*/
+    std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer To Logger Instance*/
+    std::shared_ptr<ERS_CLASS_InputOutputSubsystem> IOSubsystem_; /**<Pointer To IOSubsystem*/
 
-    // Member Functions
-    private:
+private:
 
-        /**
-         * @brief Generate YAML metadata from the model object.
-         * 
-         * @param Model 
-         * @return YAML::Node 
-         */
-        std::string GenerateModelMetadata(std::shared_ptr<ERS_STRUCT_Model> Model);
+    /**
+     * @brief Generate YAML metadata from the model object.
+     * 
+     * @param Model 
+     * @return YAML::Node 
+     */
+    std::string GenerateModelMetadata(std::shared_ptr<ERS_STRUCT_Model> Model);
 
 
 
-    // Public Member Vars
-    public:
+public:
 
-    // Public Member Functions
-    public:
+public:
 
-        /**
-         * @brief Construct a new ers class modelwriter object
-         * 
-         * @param Logger 
-         */
-        ERS_CLASS_ModelWriter(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, std::shared_ptr<ERS_CLASS_InputOutputSubsystem> IOSubsystem);
-        
-        /**
-         * @brief Destroy the ers class modelwriter object
-         * 
-         */
-        ~ERS_CLASS_ModelWriter();
+    /**
+     * @brief Construct a new ers class modelwriter object
+     * 
+     * @param Logger 
+     */
+    ERS_CLASS_ModelWriter(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, std::shared_ptr<ERS_CLASS_InputOutputSubsystem> IOSubsystem);
+    
+    /**
+     * @brief Destroy the ers class modelwriter object
+     * 
+     */
+    ~ERS_CLASS_ModelWriter();
 
 
-        /**
-         * 
-         * @brief Write a batch of models to storage in the ERS format
-         * 
-         * @param Models 
-         */
-        void BatchWriteModels(std::vector<std::shared_ptr<ERS_STRUCT_Model>> Models);
+    /**
+     * 
+     * @brief Write a batch of models to storage in the ERS format
+     * 
+     * @param Models 
+     */
+    void BatchWriteModels(std::vector<std::shared_ptr<ERS_STRUCT_Model>> Models);
 
-        /**
-         * @brief Copy A Model To Insternal Storage, Does Not Re-encode model in proper format. Single Threaded.
-         * 
-         * @param InputData 
-         * @param Model 
-         * @param OverwriteExisting 
-         */
-        void WriteModel(std::shared_ptr<ERS_STRUCT_IOData> InputData, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> TextureData, std::shared_ptr<ERS_STRUCT_Model> Model);
+    /**
+     * @brief Copy A Model To Insternal Storage, Does Not Re-encode model in proper format. Single Threaded.
+     * 
+     * @param InputData 
+     * @param Model 
+     * @param OverwriteExisting 
+     */
+    void WriteModel(std::shared_ptr<ERS_STRUCT_IOData> InputData, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> TextureData, std::shared_ptr<ERS_STRUCT_Model> Model);
 
 };
