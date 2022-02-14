@@ -6,7 +6,6 @@
 #include <ERS_STRUCT_Shader.h>
 
 
-// Shader Destructor
 ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
 
     // Deallocate Shader Program
@@ -14,7 +13,6 @@ ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
 
 }
 
-// Compile Vertex Shader
 std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Compile The Vertex Shader Text Into A Binary
@@ -42,7 +40,6 @@ std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, std::
 
 }
 
-// Compile Fragment Shader
 std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Compile The Fragment Shader Text Into A Binary
@@ -71,7 +68,6 @@ std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, s
 }
 
 
-// Compile Shader Program
 std::string ERS_STRUCT_Shader::CreateShaderProgram(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     // Check That Vertex And Fragment Shaders Are Initialized
@@ -122,7 +118,6 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(std::shared_ptr<ERS_CLASS_Log
 
 }
 
-// Make Shader Active
 bool ERS_STRUCT_Shader::MakeActive(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
 
     if ((!_ShaderProgramInitialized)) {
