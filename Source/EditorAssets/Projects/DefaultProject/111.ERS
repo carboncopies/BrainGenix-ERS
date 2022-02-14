@@ -5,8 +5,8 @@ in vec2 TexCoords;
 
 // Get Texture Sampler And Lighting Info
 uniform sampler2D texture_diffuse1;
-uniform vec3 LightColor;
-uniform float LightIntensity;
+uniform vec3 AmbientColor;
+
 
 // Get Input Vars
 uniform float Time; // Time since program started in seconds
@@ -17,7 +17,7 @@ uniform vec2 ViewportRes; // XY Resolution of the viewport
 
 
 void main()
-{    
-    FragColor = texture(texture_diffuse1, TexCoords);
+{
+    vec4 Ambient = vec4(AmbientColor, 1.0f);
+    FragColor = Ambient * texture(texture_diffuse1, TexCoords);
 }
-
