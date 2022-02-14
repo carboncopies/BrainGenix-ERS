@@ -6,20 +6,13 @@
 
 
 
-// HWinfo Constructor
 HardwareInformation::HardwareInformation(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, YAML::Node SystemConfig) {
 
-    // Copy Pointers
     Logger_ = Logger;
     SystemConfiguration_ = SystemConfig;
-
-    // Log Initialization
     Logger_->Log("Initializing Hardware Info Subsystem", 5);
 
-    // Collect Static Hardware Information
     Logger_->Log("Collecting Static Hardware Information", 5);
-
-    // Get System Info
     Logger_->Log("Getting System Information", 4);
     const auto KernelInfo = iware::system::kernel_info();
     const auto OSInfo = iware::system::OS_info();
@@ -116,10 +109,8 @@ HardwareInformation::HardwareInformation(std::shared_ptr<ERS_CLASS_LoggingSystem
 }
 
 
-// Destructor
 HardwareInformation::~HardwareInformation() {
 
-    // Log Destructor Call
     Logger_->Log("Hardware Information Destructor Called", 6);
 
     // Shut Down Dynamic Update Thread
@@ -130,22 +121,18 @@ HardwareInformation::~HardwareInformation() {
 }
 
 
-// Create Thread
 std::thread HardwareInformation::SpawnThread() {
 
     return std::thread(&HardwareInformation::DynamicInformationThread, this);
 
 }
 
-// Return Info
 ERS_STRUCT_HardwareInfo HardwareInformation::GetHWInfo() {
     return HardwareInfo_;
 }
 
-// Dynamic Info Update Function
 void HardwareInformation::DynamicInformationThread() {
 
-    // Enter Loop
     while (ShouldDynamicInfoThreadRun_) {
 
         // Get Dynamic Info
@@ -158,7 +145,6 @@ void HardwareInformation::DynamicInformationThread() {
 
 }
 
-// Dynamic Info
 void HardwareInformation::GetDynamicInformation() {
 
     // Get Memory Info
