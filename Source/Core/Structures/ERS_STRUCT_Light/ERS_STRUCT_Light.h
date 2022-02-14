@@ -10,3 +10,15 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
+
+
+struct ERS_STRUCT_Light {
+
+    float Intensity; /**<Brightness of the light*/
+
+    int Red; /**<Red Component*/
+    int Green; /**<Green Component*/
+    int Blue; /**<Blue Component*/
+    
+
+};
