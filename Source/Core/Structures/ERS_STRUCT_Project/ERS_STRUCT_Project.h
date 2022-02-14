@@ -21,7 +21,6 @@
  */
 struct ERS_STRUCT_Project {
 
-    // Project Metadata
     std::string ProjectName = ""; /**<Stores The Project's Name*/
     std::string ProjectDescription = ""; /**<Stores Project's description*/
     std::string ProjectVersion = ""; /**<Project Version Information*/
