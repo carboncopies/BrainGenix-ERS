@@ -57,5 +57,9 @@ ShaderPrograms:
         Name: "Manbelbrot Fractal Test"
         VertexID: 108
         FragmentID: 109
+    5:
+        Name: "Lighting Test"
+        VertexID: 110
+        FragmentID: 111
         
 DefaultShaderProgram: 0
