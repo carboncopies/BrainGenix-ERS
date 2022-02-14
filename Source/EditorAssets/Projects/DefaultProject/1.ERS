@@ -62,4 +62,4 @@ ShaderPrograms:
         VertexID: 110
         FragmentID: 111
         
-DefaultShaderProgram: 0
+DefaultShaderProgram: 5
