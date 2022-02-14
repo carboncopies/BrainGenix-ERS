@@ -22,9 +22,9 @@ struct ERS_STRUCT_Light {
 
     float Intensity; /**<Brightness of the light*/
     
-    int ColorRed; /**<Red Component*/
-    int ColorGreen; /**<Green Component*/
-    int ColorBlue; /**<Blue Component*/
+    float ColorRed; /**<Red Component*/
+    float ColorGreen; /**<Green Component*/
+    float ColorBlue; /**<Blue Component*/
     
 
     float PosX; /**<Position*/
