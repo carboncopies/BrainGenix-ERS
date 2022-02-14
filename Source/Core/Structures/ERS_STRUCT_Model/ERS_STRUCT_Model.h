@@ -27,7 +27,6 @@
 struct ERS_STRUCT_Model {
 
 
-    // NEW STUFF HERE
     std::vector<ERS_STRUCT_Texture> TexturesToPushToGPU_;
     std::vector<unsigned int> OpenGLTextureIDs_;
 
@@ -66,8 +65,6 @@ struct ERS_STRUCT_Model {
     glm::mat4 SourceModelLocRotScale_ = glm::mat4(1.0f);
     glm::mat4 ModelLocRotScale_ = glm::mat4(1.0f);
 
-
-    // Set The Position
     /**
      * @brief Set the Position object (Overloaded). Accepts X,Y,Z Floats. Remember to Call ApplyTrsnformations When Ready.
      * 
@@ -76,6 +73,7 @@ struct ERS_STRUCT_Model {
      * @param Z 
      */
     void SetPosition(double X, double Y, double Z);
+
     /**
      * @brief Set the Position object (Overloaded). Accepts glm::vec3(x,y,z). Remember to Call ApplyTrsnformations When Ready.
      * 
@@ -83,8 +81,6 @@ struct ERS_STRUCT_Model {
      */
     void SetPosition(glm::vec3 Position);
 
-
-    // Set Rotation
     /**
      * @brief Set the Rotation object (OVerloaded). Accepts X,Y,Z Floats. Remember to Call ApplyTrsnformations When Ready.
      * 
@@ -93,6 +89,7 @@ struct ERS_STRUCT_Model {
      * @param Z 
      */
     void SetRotation(double X, double Y, double Z);
+
     /**
      * @brief Set the Rotation object (Overloaded). Accepts glm::vec3(x,y,z). Remember to Call ApplyTrsnformations When Ready.
      * 
@@ -101,7 +98,6 @@ struct ERS_STRUCT_Model {
     void SetRotation(glm::vec3 Rotation);
 
 
-    // Set Scale
     /**
      * @brief Set the Scale object (OVerloaded). Accepts X,Y,Z Floats. Remember to Call ApplyTrsnformations When Ready.
      * 
@@ -110,6 +106,7 @@ struct ERS_STRUCT_Model {
      * @param Z 
      */
     void SetScale(double X, double Y, double Z);
+
     /**
      * @brief Set the Scale object (Overloaded). Accepts glm::vec3(x,y,z). Remember to Call ApplyTrsnformations When Ready.
      * 
@@ -117,8 +114,6 @@ struct ERS_STRUCT_Model {
      */
     void SetScale(glm::vec3 Scale);
 
-
-    // Set LocRotScale
     /**
      * @brief Set the Loc Rot Scale object (Overloaded) Sets the location, rotation, and scale by taking three doubles for each category. (XYZ). Remember to Call ApplyTrsnformations When Ready.
      * 
@@ -133,6 +128,7 @@ struct ERS_STRUCT_Model {
      * @param ScaleZ 
      */
     void SetLocRotScale(double LocX, double LocY, double LocZ, double RotX, double RotY, double RotZ, double ScaleX, double ScaleY, double ScaleZ);
+
     /**
      * @brief Set the Loc Rot Scale object (Overloaded). Sets the location, rotation, and scale by taking three glm::vec3 variables for positiom, rotation, scale. Remember to Call ApplyTrsnformations When Ready.
      * 
@@ -150,7 +146,6 @@ struct ERS_STRUCT_Model {
      */
     bool ApplyTransformations();
 
-
     /**
      * @brief Get the Mat 4 object
      * 
@@ -164,7 +159,6 @@ struct ERS_STRUCT_Model {
      * @param Shader 
      */
     void Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader);
-
 
 };
 
