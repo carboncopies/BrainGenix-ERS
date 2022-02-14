@@ -87,8 +87,9 @@ private:
      * @param DeltaTime 
      * @param RenderWidth 
      * @param RenderHeight 
+     * @param SceneManager
      */
-    void UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight);
+    void UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager);
 
 
     /**

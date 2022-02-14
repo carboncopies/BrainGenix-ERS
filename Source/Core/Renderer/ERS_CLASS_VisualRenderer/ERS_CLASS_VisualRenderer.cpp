@@ -413,7 +413,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetVec2("ViewportRes", RenderWidth, RenderHeight);
 
     // Set Lighting Params
-    
+    ActiveShader->SetVec3("LightColor", SceneManager);
 
 
 }
