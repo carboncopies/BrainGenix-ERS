@@ -6,16 +6,11 @@
 
 
 
-// IOManager Constructor
 IOManager::IOManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, GLFWwindow* Window, std::shared_ptr<ERS_STRUCT_Camera> Camera) {
 
-    // Copy Pointer
     Logger_ = Logger;
     Camera_ = Camera;
     Window_ = Window;
-    //FramebufferManager_ = FramebufferManager;
-
-    // Log Initialization
     Logger_->Log("Initializing IOManager", 5);
 
     // Create InputProcssor
@@ -27,10 +22,8 @@ IOManager::IOManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, GLFWwindow
 }
 
 
-// IOManager Destructor
 IOManager::~IOManager() {
 
-    // Log Destructor Call
     Logger_->Log("IOManager Destructor Called", 6);
 
 }
