@@ -214,7 +214,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
         glm::mat4 view = Viewports_[Index]->Camera->GetViewMatrix();
 
         // Update Shaders
-        UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight);
+        UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight, SceneManager);
         Shaders_[ShaderIndex]->SetMat4("projection", projection);
         Shaders_[ShaderIndex]->SetMat4("view", view);
 
@@ -387,7 +387,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
 }
 
-void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight) {
+void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager) {
 
     /**
 
@@ -413,7 +413,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetVec2("ViewportRes", RenderWidth, RenderHeight);
 
     // Set Lighting Params
-    ActiveShader->SetVec3("LightColor", SceneManager);
+    ActiveShader->SetVec3("LightColor", SceneManager->);
 
 
 }
