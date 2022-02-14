@@ -89,6 +89,8 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputSce
         AssetIndex++;
     }
 
+    std::cout<<InputScene->Lights.size()<<std::endl;
+
     for (int i = 0; i < InputScene->Lights.size(); i++) {
 
         Output << YAML::Key << AssetIndex;
