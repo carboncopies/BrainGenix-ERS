@@ -85,12 +85,42 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputSce
         // Write Asset Texture Data
         Output << YAML::Key << "FlipTextures" << YAML::Value << InputScene->Models[AssetIndex]->FlipTextures;
 
-        
         // End Map
         Output << YAML::EndMap;
 
         AssetIndex++;
     }
+
+    for (int i = 0; i < InputScene->Lights.size(); i++) {
+
+        Output << YAML::Key << AssetIndex;
+        Output << YAML::BeginMap;
+
+
+        Output << YAML::Key << "AssetName" << YAML::Value << InputScene->Lights[AssetIndex]->UserDefinedName;
+        Output << YAML::Key << "AssetType" << YAML::Value << "Light";
+        Output << YAML::Key << "LightType" << YAML::Value << InputScene->Lights[AssetIndex]->LightType;
+        Output << YAML::Key << "AdditionalNotes" << YAML::Value << InputScene->Lights[AssetIndex]->UserAdditionalNotes;
+
+
+        Output << YAML::Key << "PosX" << YAML::Value << InputScene->Lights[AssetIndex]->PosX;
+        Output << YAML::Key << "PosY" << YAML::Value << InputScene->Lights[AssetIndex]->PosY;
+        Output << YAML::Key << "PosZ" << YAML::Value << InputScene->Lights[AssetIndex]->PosZ;
+
+        Output << YAML::Key << "AssetRotationX" << YAML::Value << InputScene->Models[AssetIndex]->ModelRotation[0];
+        Output << YAML::Key << "AssetRotationY" << YAML::Value << InputScene->Models[AssetIndex]->ModelRotation[1];
+        Output << YAML::Key << "AssetRotationZ" << YAML::Value << InputScene->Models[AssetIndex]->ModelRotation[2];
+
+        Output << YAML::Key << "AssetScaleX" << YAML::Value << InputScene->Models[AssetIndex]->ModelScale[0];
+        Output << YAML::Key << "AssetScaleY" << YAML::Value << InputScene->Models[AssetIndex]->ModelScale[1];
+        Output << YAML::Key << "AssetScaleZ" << YAML::Value << InputScene->Models[AssetIndex]->ModelScale[2];
+
+
+        Output << YAML::EndMap;
+
+        AssetIndex++;
+    }
+
 
     // End Writing
     Output << YAML::EndMap;
