@@ -119,8 +119,18 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             Scene.Lights[LightIndex]->ColorGreen = SceneDataNode[i]["ColorGreen"].as<float>();
             Scene.Lights[LightIndex]->ColorBlue = SceneDataNode[i]["ColorBlue"].as<float>();
 
-            Scene.Lights[LightIndex]->ColorBlue = SceneDataNode[i]["ColorBlue"].as<float>();
-            
+            Scene.Lights[LightIndex]->PosX = SceneDataNode[i]["PosX"].as<float>();
+            Scene.Lights[LightIndex]->PosY = SceneDataNode[i]["PosY"].as<float>();
+            Scene.Lights[LightIndex]->PosZ = SceneDataNode[i]["PosZ"].as<float>();
+
+            Scene.Lights[LightIndex]->RotX = SceneDataNode[i]["PosX"].as<float>();
+            Scene.Lights[LightIndex]->RotY = SceneDataNode[i]["RotY"].as<float>();
+            Scene.Lights[LightIndex]->RotZ = SceneDataNode[i]["RotZ"].as<float>();
+
+            Scene.Lights[LightIndex]->PosX = SceneDataNode[i]["PosX"].as<float>();
+            Scene.Lights[LightIndex]->PosX = SceneDataNode[i]["PosX"].as<float>();
+            Scene.Lights[LightIndex]->PosX = SceneDataNode[i]["PosX"].as<float>();
+
 
 
         }
