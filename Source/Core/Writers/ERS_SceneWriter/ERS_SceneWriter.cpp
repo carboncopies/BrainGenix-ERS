@@ -107,6 +107,15 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputSce
         Output << YAML::Key << "PosY" << YAML::Value << InputScene->Lights[AssetIndex]->PosY;
         Output << YAML::Key << "PosZ" << YAML::Value << InputScene->Lights[AssetIndex]->PosZ;
 
+        Output << YAML::Key << "PosX" << YAML::Value << InputScene->Lights[AssetIndex]->PosX;
+        Output << YAML::Key << "PosY" << YAML::Value << InputScene->Lights[AssetIndex]->PosY;
+        Output << YAML::Key << "PosZ" << YAML::Value << InputScene->Lights[AssetIndex]->PosZ;
+
+        Output << YAML::Key << "PosX" << YAML::Value << InputScene->Lights[AssetIndex]->PosX;
+        Output << YAML::Key << "PosY" << YAML::Value << InputScene->Lights[AssetIndex]->PosY;
+        Output << YAML::Key << "PosZ" << YAML::Value << InputScene->Lights[AssetIndex]->PosZ;
+
+
 
 
         Output << YAML::EndMap;
