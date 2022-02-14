@@ -404,19 +404,16 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     // Get Pointer to Shader
     std::shared_ptr<ERS_STRUCT_Shader> ActiveShader = Shaders_[ShaderIndex];
 
-    // Set Current Time
+    // Set Metadata Params
     float Time = glfwGetTime();
     ActiveShader->SetFloat("Time", Time);
 
-    // Set Delta Time
     ActiveShader->SetFloat("FrameTime", DeltaTime);
-
-    // Set Frame Number
     ActiveShader->SetInt("FrameNumber", FrameNumber_);
-
-    // Set Viewport Resolution
     ActiveShader->SetVec2("ViewportRes", RenderWidth, RenderHeight);
 
+    // Set Lighting Params
+    
 
 
 }
