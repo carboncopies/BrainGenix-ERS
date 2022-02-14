@@ -413,12 +413,14 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetVec2("ViewportRes", RenderWidth, RenderHeight);
 
 
-    // Preprocess Lighting Info
+
     std::shared_ptr<ERS_STRUCT_Scene> ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_];
 
+    // Preprocess Lighting Info
     glm::vec3 AmbientColor = glm::vec3(0.0f);
-
     for (int i = 0; i < ActiveScene->Lights.size(); i++) {
+
+        std::cout<<ActiveScene->Lights[i]->LightType<<std::endl;
 
         // If Ambient Light, Add Contribution
         if (ActiveScene->Lights[i]->LightType == "Ambient") {
