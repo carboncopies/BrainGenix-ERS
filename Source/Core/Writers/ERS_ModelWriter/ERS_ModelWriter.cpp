@@ -5,28 +5,21 @@
 #include <ERS_ModelWriter.h>
 
 
-// Constructor
 ERS_CLASS_ModelWriter::ERS_CLASS_ModelWriter(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, std::shared_ptr<ERS_CLASS_InputOutputSubsystem> IOSubsystem) {
 
-    // Copy Shared Pointers
     Logger_ = Logger;
     IOSubsystem_ = IOSubsystem;
-
-    // Log Initialization
     Logger_->Log("Initializing ERS ModelWriter Subsystem", 5);
 
 }
 
-// Destructor
 ERS_CLASS_ModelWriter::~ERS_CLASS_ModelWriter() {
 
-    // Log Destructor Call
     Logger_->Log("ModelWriter Subsystem Destructor Invoked", 5);
 
 }
 
 
-// Generate Model Metadata
 std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(std::shared_ptr<ERS_STRUCT_Model> Model) {
 
     // Create Model Metadata, Begin Writing
@@ -44,7 +37,6 @@ std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(std::shared_ptr<ERS_STR
 }
 
 
-// Write Model
 void ERS_CLASS_ModelWriter::WriteModel(std::shared_ptr<ERS_STRUCT_IOData> ModelData, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> TextureData, std::shared_ptr<ERS_STRUCT_Model> Model) {
 
 
