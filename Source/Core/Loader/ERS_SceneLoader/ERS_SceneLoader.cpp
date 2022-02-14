@@ -102,6 +102,17 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             Scene.Models[CurrentSize-1]->Name = AssetName;
             Scene.Models[CurrentSize-1]->FlipTextures = FlipTextures;
 
+        } else if (AssetType == std::string("Light")) {
+
+            // Setup Model Pointer In Scene To Work On
+            Scene.Lights.push_back(std::make_shared<ERS_STRUCT_Light>());
+            int LightIndex = Scene.Lights.size() - 1;
+
+            // Get Any Metadata
+            
+
+
+
         }
 
     }
