@@ -418,20 +418,23 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     glm::vec3 AmbientColor = glm::vec3(0.0f);
 
-    for (int i = 0; i < )
+    for (int i = 0; i < ActiveScene->Lights.size(); i++) {
+
+        // If Ambient Light, Add Contribution
+        if (ActiveScene->Lights[i]->LightType == "Ambient") {
+            float R, G, B;
+            R = ActiveScene->Lights[i]->ColorRed;
+            G = ActiveScene->Lights[i]->ColorGreen;
+            B = ActiveScene->Lights[i]->ColorBlue;
+            glm::vec3 LightColor = glm::vec3(R,G,B);
+            AmbientColor += LightColor * ActiveScene->Lights[i]->Intensity;
+        }
+
+    }
 
 
     // Set Lighting Params
-    float R, G, B;
-    R = SceneManager->Scenes_[SceneManager->ActiveScene_]->Lights[0]->ColorRed;
-    G = SceneManager->Scenes_[SceneManager->ActiveScene_]->Lights[0]->ColorGreen;
-    B = SceneManager->Scenes_[SceneManager->ActiveScene_]->Lights[0]->ColorBlue;
-    glm::vec3 LightColor = glm::vec3(R,G,B);
-    ActiveShader->SetVec3("LightColor", LightColor);
-
-    ActiveShader->SetFloat("LightIntensity", SceneManager->Scenes_[SceneManager->ActiveScene_]->Lights[0]->Intensity);
-
-
+    ActiveShader->SetVec3("Ambient", AmbientColor);
 
 }
 
