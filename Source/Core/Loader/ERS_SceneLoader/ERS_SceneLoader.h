@@ -11,16 +11,16 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_CLASS_LoggingSystem.h>
-#include <ERS_STRUCT_Model.h>
 #include <ERS_ModelLoader.h>
+
+#include <ERS_CLASS_LoggingSystem.h>
+
+#include <ERS_STRUCT_Model.h>
 #include <ERS_STRUCT_Scene.h>
 #include <ERS_STRUCT_Mesh.h>
 #include <ERS_STRUCT_Texture.h>
-
-
 #include <ERS_STRUCT_Shader.h>
-
+#include <ERS_STRUCT_Light.h>
 
 /**
  * @brief The ERS_CLASS_SceneLoader Class Is responsible for loading scene files and associated models/textures.
