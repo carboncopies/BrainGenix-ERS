@@ -64,25 +64,25 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputSce
         Output << YAML::BeginMap;
 
 
-        Output << YAML::Key << "AssetName" << YAML::Value << InputScene->Models[AssetIndex]->Name;
+        Output << YAML::Key << "AssetName" << YAML::Value << InputScene->Models[i]->Name;
         Output << YAML::Key << "AssetType" << YAML::Value << "Model";
-        Output << YAML::Key << "AssetID" << YAML::Value << InputScene->Models[AssetIndex]->AssetID;
+        Output << YAML::Key << "AssetID" << YAML::Value << InputScene->Models[i]->AssetID;
 
 
-        Output << YAML::Key << "AssetPositionX" << YAML::Value << InputScene->Models[AssetIndex]->ModelPosition[0];
-        Output << YAML::Key << "AssetPositionY" << YAML::Value << InputScene->Models[AssetIndex]->ModelPosition[1];
-        Output << YAML::Key << "AssetPositionZ" << YAML::Value << InputScene->Models[AssetIndex]->ModelPosition[2];
+        Output << YAML::Key << "AssetPositionX" << YAML::Value << InputScene->Models[i]->ModelPosition[0];
+        Output << YAML::Key << "AssetPositionY" << YAML::Value << InputScene->Models[i]->ModelPosition[1];
+        Output << YAML::Key << "AssetPositionZ" << YAML::Value << InputScene->Models[i]->ModelPosition[2];
 
-        Output << YAML::Key << "AssetRotationX" << YAML::Value << InputScene->Models[AssetIndex]->ModelRotation[0];
-        Output << YAML::Key << "AssetRotationY" << YAML::Value << InputScene->Models[AssetIndex]->ModelRotation[1];
-        Output << YAML::Key << "AssetRotationZ" << YAML::Value << InputScene->Models[AssetIndex]->ModelRotation[2];
+        Output << YAML::Key << "AssetRotationX" << YAML::Value << InputScene->Models[i]->ModelRotation[0];
+        Output << YAML::Key << "AssetRotationY" << YAML::Value << InputScene->Models[i]->ModelRotation[1];
+        Output << YAML::Key << "AssetRotationZ" << YAML::Value << InputScene->Models[i]->ModelRotation[2];
 
-        Output << YAML::Key << "AssetScaleX" << YAML::Value << InputScene->Models[AssetIndex]->ModelScale[0];
-        Output << YAML::Key << "AssetScaleY" << YAML::Value << InputScene->Models[AssetIndex]->ModelScale[1];
-        Output << YAML::Key << "AssetScaleZ" << YAML::Value << InputScene->Models[AssetIndex]->ModelScale[2];
+        Output << YAML::Key << "AssetScaleX" << YAML::Value << InputScene->Models[i]->ModelScale[0];
+        Output << YAML::Key << "AssetScaleY" << YAML::Value << InputScene->Models[i]->ModelScale[1];
+        Output << YAML::Key << "AssetScaleZ" << YAML::Value << InputScene->Models[i]->ModelScale[2];
 
 
-        Output << YAML::Key << "FlipTextures" << YAML::Value << InputScene->Models[AssetIndex]->FlipTextures;
+        Output << YAML::Key << "FlipTextures" << YAML::Value << InputScene->Models[i]->FlipTextures;
 
 
         Output << YAML::EndMap;
@@ -97,23 +97,23 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputSce
         Output << YAML::BeginMap;
 
 
-        Output << YAML::Key << "AssetName" << YAML::Value << InputScene->Lights[AssetIndex]->UserDefinedName;
+        Output << YAML::Key << "AssetName" << YAML::Value << InputScene->Lights[i]->UserDefinedName;
         Output << YAML::Key << "AssetType" << YAML::Value << "Light";
-        Output << YAML::Key << "LightType" << YAML::Value << InputScene->Lights[AssetIndex]->LightType;
-        Output << YAML::Key << "AdditionalNotes" << YAML::Value << InputScene->Lights[AssetIndex]->UserAdditionalNotes;
+        Output << YAML::Key << "LightType" << YAML::Value << InputScene->Lights[i]->LightType;
+        Output << YAML::Key << "AdditionalNotes" << YAML::Value << InputScene->Lights[i]->UserAdditionalNotes;
 
 
-        Output << YAML::Key << "PosX" << YAML::Value << InputScene->Lights[AssetIndex]->PosX;
-        Output << YAML::Key << "PosY" << YAML::Value << InputScene->Lights[AssetIndex]->PosY;
-        Output << YAML::Key << "PosZ" << YAML::Value << InputScene->Lights[AssetIndex]->PosZ;
+        Output << YAML::Key << "PosX" << YAML::Value << InputScene->Lights[i]->PosX;
+        Output << YAML::Key << "PosY" << YAML::Value << InputScene->Lights[i]->PosY;
+        Output << YAML::Key << "PosZ" << YAML::Value << InputScene->Lights[i]->PosZ;
 
-        Output << YAML::Key << "RotX" << YAML::Value << InputScene->Lights[AssetIndex]->RotX;
-        Output << YAML::Key << "RotY" << YAML::Value << InputScene->Lights[AssetIndex]->RotY;
-        Output << YAML::Key << "RotZ" << YAML::Value << InputScene->Lights[AssetIndex]->RotZ;
+        Output << YAML::Key << "RotX" << YAML::Value << InputScene->Lights[i]->RotX;
+        Output << YAML::Key << "RotY" << YAML::Value << InputScene->Lights[i]->RotY;
+        Output << YAML::Key << "RotZ" << YAML::Value << InputScene->Lights[i]->RotZ;
 
-        Output << YAML::Key << "ScaleX" << YAML::Value << InputScene->Lights[AssetIndex]->ScaleX;
-        Output << YAML::Key << "ScaleY" << YAML::Value << InputScene->Lights[AssetIndex]->ScaleY;
-        Output << YAML::Key << "ScaleZ" << YAML::Value << InputScene->Lights[AssetIndex]->ScaleZ;
+        Output << YAML::Key << "ScaleX" << YAML::Value << InputScene->Lights[i]->ScaleX;
+        Output << YAML::Key << "ScaleY" << YAML::Value << InputScene->Lights[i]->ScaleY;
+        Output << YAML::Key << "ScaleZ" << YAML::Value << InputScene->Lights[i]->ScaleZ;
 
 
         Output << YAML::EndMap;
