@@ -4,15 +4,11 @@
 
 #include <ERS_InputOutputSubsystem.h>
 
-// Constructor
 ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
     std::shared_ptr<ERS_CLASS_LoggingSystem> Logger,
     YAML::Node SystemConfiguration) {
 
-  // Copy Pointer
   Logger_ = Logger;
-
-  // Log Initialization
   Logger_->Log("Initializing Input/Output Subsystem", 5);
 
   // Setup Classes
@@ -61,10 +57,8 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
   IndexUsedAssetIDs();
 }
 
-// Destructor
 ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
 
-  // Log Destructor Call
   Logger_->Log("Input/Output Subsystem Destructor Called", 6);
 
   // Save Asset Index Metadata
@@ -76,7 +70,6 @@ ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
   Logger_->Log("Finished Saving Asset Index Metadata", 5);
 }
 
-// Update Asset Paths
 void ERS_CLASS_InputOutputSubsystem::UpdateAssetPath(std::string AssetPath) {
 
   // Update Asset Path
@@ -88,7 +81,6 @@ void ERS_CLASS_InputOutputSubsystem::UpdateAssetPath(std::string AssetPath) {
   AssetPath_ = AssetPath;
 }
 
-// Allocate Asset Id
 long ERS_CLASS_InputOutputSubsystem::AllocateAssetID() {
 
   std::unique_lock<std::mutex> lock(LockAssetIDAllocation_);
@@ -100,7 +92,6 @@ long ERS_CLASS_InputOutputSubsystem::AllocateAssetID() {
   return AssetID;
 }
 
-// Group Allocate
 std::vector<long>
 ERS_CLASS_InputOutputSubsystem::BatchAllocateIDs(size_t NumberIDs) {
 
@@ -122,10 +113,8 @@ ERS_CLASS_InputOutputSubsystem::BatchAllocateIDs(size_t NumberIDs) {
   return IDs;
 }
 
-// Index Asset IDs
 void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
 
-  // Log Start
   Logger_->Log("Indexing Used Asset IDs");
   UsedAssetIDs_ = std::vector<long>();
 
@@ -220,7 +209,6 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
   Logger_->Log("Finished Performing Asset Metadata Sanity Check", 4);
 }
 
-// Read Assets From File/DB, Return Bytes
 bool ERS_CLASS_InputOutputSubsystem::ReadAsset(
     long AssetID, std::shared_ptr<ERS_STRUCT_IOData> OutputData) {
 
@@ -325,7 +313,7 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(
   return ReadSuccess;
 }
 
-// Batch Read Assets
+
 std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchReadAssets(
     std::vector<long> AssetIDs,
     std::vector<std::shared_ptr<ERS_STRUCT_IOData>> AssetDatas) {
@@ -347,7 +335,6 @@ std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchReadAssets(
   return StatusVector;
 }
 
-// Write Data
 bool ERS_CLASS_InputOutputSubsystem::WriteAsset(
     long AssetID, std::shared_ptr<ERS_STRUCT_IOData> InputData) {
 
@@ -434,11 +421,9 @@ bool ERS_CLASS_InputOutputSubsystem::WriteAsset(
   InputData->WriteSpeed_MBs = (InputData->Size_B / 1000000) / Duration;
   InputData->WriteSpeed_GBs = (InputData->Size_B / 1000000000) / Duration;
 
-  // Return Data
   return Success;
 }
 
-// Batch Write Data
 std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchWriteAssets(
     std::vector<long> AssetIDs,
     std::vector<std::shared_ptr<ERS_STRUCT_IOData>> AssetDatas) {
@@ -456,6 +441,5 @@ std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchWriteAssets(
     StatusVector.push_back(WriteAsset(AssetIDs[i], AssetDatas[i]));
   }
 
-  // Return Status
   return StatusVector;
 }
