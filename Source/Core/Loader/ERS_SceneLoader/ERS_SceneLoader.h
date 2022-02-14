@@ -33,10 +33,6 @@ private:
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Structure*/
     std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader_; /**<Contians A ModelLoader Class Pointer*/
 
-    // Templates
-    std::map<std::string, ERS_STRUCT_Model> TemplateModels_; /**<Template Map Used to Store Models In Original LocRotScale*/
-
-
 private:
 
     /**
