@@ -413,7 +413,15 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetVec2("ViewportRes", RenderWidth, RenderHeight);
 
     // Set Lighting Params
-    ActiveShader->SetVec3("LightColor", SceneManager->);
+    float R, G, B;
+    R = SceneManager->Scenes_[SceneManager->ActiveScene_]->Lights[0]->ColorRed;
+    G = SceneManager->Scenes_[SceneManager->ActiveScene_]->Lights[0]->ColorGreen;
+    B = SceneManager->Scenes_[SceneManager->ActiveScene_]->Lights[0]->ColorBlue;
+    glm::vec3 LightColor = glm::vec3(R,G,B);
+    ActiveShader->SetVec3("LightColor", LightColor);
+
+    ActiveShader->SetFloat("LightIntensity", SceneManager->Scenes_[SceneManager->ActiveScene_]->Lights[0]->Intensity);
+
 
 
 }
