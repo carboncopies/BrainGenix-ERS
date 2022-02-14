@@ -21,4 +21,7 @@ SceneData:
     LightType: Point
     AdditionalNotes: A test light.
     Intensity: 1.0
+    ColorRed: 0.9
+    ColorGreen: 0.9
+    ColorBlue: 0.9
     
