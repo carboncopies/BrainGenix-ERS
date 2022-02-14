@@ -115,6 +115,10 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             Scene.Lights[LightIndex]->LightType = SceneDataNode[i]["LightType"].as<std::string>();
             
             Scene.Lights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
+            Scene.Lights[LightIndex]->ColorRed = SceneDataNode[i]["ColorRed"].as<float>();
+            Scene.Lights[LightIndex]->ColorGreen = SceneDataNode[i]["ColorGreen"].as<float>();
+            Scene.Lights[LightIndex]->ColorBlue = SceneDataNode[i]["ColorBlue"].as<float>();
+            
 
 
         }
