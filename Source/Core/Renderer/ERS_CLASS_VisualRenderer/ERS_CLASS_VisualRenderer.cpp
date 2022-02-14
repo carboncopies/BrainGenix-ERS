@@ -433,7 +433,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     }
 
     // Set Lighting Params
-    ActiveShader->SetVec3("AmbientColor", AmbientColor);
+    ActiveShader->SetVec4("Ambient", glm::vec4(AmbientColor, 1.0f));
 
 }
 
