@@ -15,3 +15,6 @@ SceneData:
     AssetScaleY: 7.39901924
     AssetScaleZ: 7.3989563
     FlipTextures: true
+  1:
+    AssetName: Test Light
+    AssetType: Light

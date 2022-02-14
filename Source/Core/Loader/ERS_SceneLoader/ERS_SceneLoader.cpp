@@ -67,11 +67,12 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
         // Get Asset Information
         std::string AssetName = SceneDataNode[i]["AssetName"].as<std::string>();
         std::string AssetType = SceneDataNode[i]["AssetType"].as<std::string>();
-        long AssetID = SceneDataNode[i]["AssetID"].as<long>();
-
 
         // If type Is Model
         if (AssetType == std::string("Model")) {
+
+            long AssetID = SceneDataNode[i]["AssetID"].as<long>();
+
 
             // Get Model Texture Info
             bool FlipTextures = SceneDataNode[i]["FlipTextures"].as<bool>();
@@ -109,7 +110,11 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             int LightIndex = Scene.Lights.size() - 1;
 
             // Get Any Metadata
-            Scene.Lights[LightIndex]->
+            Scene.Lights[LightIndex]->UserDefinedName = AssetName;
+            Scene.Lights[LightIndex]->UserAdditionalNotes = SceneDataNode[i]["AdditionalNotes"].as<std::string>();
+            Scene.Lights[LightIndex]->LightType = SceneDataNode[i]["LightType"].as<std::string>();
+            
+            
 
 
 
