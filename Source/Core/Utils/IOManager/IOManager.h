@@ -29,48 +29,48 @@
  */
 class IOManager {
 
-    private:
+private:
 
-        // Class Instances
-        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Logging System Instance Pointer*/
-        std::shared_ptr<ERS_CLASS_InputProcessor> InputProcessor_; /**<Pointer to input processor instance*/
-        std::shared_ptr<ERS_STRUCT_Camera> Camera_; /**<Pointer To Camera Instance*/
-        //FramebufferManager *FramebufferManager_; /**<Pointer To Framebuffer Manager Instance*/
+    // Class Instances
+    std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Logging System Instance Pointer*/
+    std::shared_ptr<ERS_CLASS_InputProcessor> InputProcessor_; /**<Pointer to input processor instance*/
+    std::shared_ptr<ERS_STRUCT_Camera> Camera_; /**<Pointer To Camera Instance*/
+    //FramebufferManager *FramebufferManager_; /**<Pointer To Framebuffer Manager Instance*/
 
-        // Objects
-        GLFWwindow *Window_; /**<Pointer To GLFW Window */
+    // Objects
+    GLFWwindow *Window_; /**<Pointer To GLFW Window */
 
-        // Parameters
-        int WindowWidth_; /**<Window Width*/
-        int WindowHeight_; /**<Window Height*/
-
-
+    // Parameters
+    int WindowWidth_; /**<Window Width*/
+    int WindowHeight_; /**<Window Height*/
 
 
 
-    public:
-
-        /**
-         * @brief Construct a new IOManager object
-         * 
-         * @param Logger 
-         * @param Camera 
-         * @param FramebufferManager 
-         */
-        IOManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, GLFWwindow *Window, std::shared_ptr<ERS_STRUCT_Camera> Camera);
-
-        /**
-         * @brief Destroy the IOManager object
-         * 
-         */
-        ~IOManager();
 
 
-        /**
-         * @brief Update the input for this frame.
-         * 
-         * @param DeltaTime 
-         */
-        void UpdateFrame(float DeltaTime);
+public:
+
+    /**
+     * @brief Construct a new IOManager object
+     * 
+     * @param Logger 
+     * @param Camera 
+     * @param FramebufferManager 
+     */
+    IOManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, GLFWwindow *Window, std::shared_ptr<ERS_STRUCT_Camera> Camera);
+
+    /**
+     * @brief Destroy the IOManager object
+     * 
+     */
+    ~IOManager();
+
+
+    /**
+     * @brief Update the input for this frame.
+     * 
+     * @param DeltaTime 
+     */
+    void UpdateFrame(float DeltaTime);
 
 };
