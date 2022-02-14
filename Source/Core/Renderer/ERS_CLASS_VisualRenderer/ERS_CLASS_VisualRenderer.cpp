@@ -432,9 +432,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     }
 
-    std::cout<<glm::to_string(AmbientColor)<<std::endl;
     // Set Lighting Params
-    ActiveShader->SetVec3("Ambient", AmbientColor);
+    ActiveShader->SetVec3("AmbientColor", AmbientColor);
 
 }
 
