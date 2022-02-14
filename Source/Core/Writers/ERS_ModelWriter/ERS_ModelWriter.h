@@ -45,8 +45,6 @@ private:
 
 public:
 
-public:
-
     /**
      * @brief Construct a new ers class modelwriter object
      * 
