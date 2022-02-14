@@ -24,4 +24,6 @@ SceneData:
     ColorRed: 0.9
     ColorGreen: 0.9
     ColorBlue: 0.9
-    
+    PosX: 0.0
+    PosY: 0.0
+    PosZ: 0.0
