@@ -240,10 +240,19 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
 
         // Update Selected Object
         SceneManager->UpdateLocRotScale(Cursors3D_->Pos_, Cursors3D_->Rot_, Cursors3D_->Scale_);
-        
+
+
+        //*******************************************************************************
+        // Something here to render the background ui elements (like the grid)
+        //*******************************************************************************
 
         // Draw Models
         SceneManager->Render(Shaders_[ShaderIndex]);
+
+        //*******************************************************************************
+        // Something here to render the foreground ui elements (such as the light icons)
+        //*******************************************************************************
+
 
 
         // Render Framebuffer To Window
