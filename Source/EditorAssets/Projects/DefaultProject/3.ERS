@@ -20,4 +20,5 @@ SceneData:
     AssetType: Light
     LightType: Point
     AdditionalNotes: A test light.
+    Intensity: 1.0
     
