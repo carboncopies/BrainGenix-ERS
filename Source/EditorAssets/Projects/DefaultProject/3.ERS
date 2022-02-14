@@ -18,7 +18,7 @@ SceneData:
   1:
     AssetName: Test Light
     AssetType: Light
-    LightType: Point
+    LightType: Ambient
     AdditionalNotes: A test light.
     Intensity: 1.0
     ColorRed: 0.9
