@@ -14,6 +14,9 @@
 
 struct ERS_STRUCT_Light {
 
+
+    std::string Type; /**<Type of light (point, area, etc.)*/
+
     float Intensity; /**<Brightness of the light*/
 
     int Red; /**<Red Component*/
