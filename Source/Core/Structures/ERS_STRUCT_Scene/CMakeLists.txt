@@ -23,7 +23,7 @@ target_link_libraries(ERS_STRUCT_Scene
 # Link Internal Libs
 target_link_libraries(ERS_STRUCT_Scene
     ERS_STRUCT_Model
-    
+    ERS_STRUCT_Light
     )
 
 target_include_directories(ERS_STRUCT_Scene PUBLIC ./)

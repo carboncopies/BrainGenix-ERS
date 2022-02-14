@@ -12,6 +12,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_Model.h>
+#include <ERS_STRUCT_Light.h>
 
 
 
