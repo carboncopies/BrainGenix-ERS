@@ -56,9 +56,9 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputSce
     Output << YAML::Key << "SceneData";
     Output << YAML::Key << YAML::BeginMap;
 
-    long AssetIndex = 0;
 
-    while (AssetIndex < InputScene->Models.size()) {
+    long AssetIndex = 0;
+    for (int i = 0; i < InputScene->Models.size(); i++) {
 
         // Begin Asset Tag
         Output << YAML::Key << AssetIndex;
