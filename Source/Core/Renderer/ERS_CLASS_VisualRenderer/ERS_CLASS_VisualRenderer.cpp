@@ -412,6 +412,15 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetInt("FrameNumber", FrameNumber_);
     ActiveShader->SetVec2("ViewportRes", RenderWidth, RenderHeight);
 
+
+    // Preprocess Lighting Info
+    std::shared_ptr<ERS_STRUCT_Scene> ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_];
+
+    glm::vec3 AmbientColor = glm::vec3(0.0f);
+
+    for (int i = 0; i < )
+
+
     // Set Lighting Params
     float R, G, B;
     R = SceneManager->Scenes_[SceneManager->ActiveScene_]->Lights[0]->ColorRed;
