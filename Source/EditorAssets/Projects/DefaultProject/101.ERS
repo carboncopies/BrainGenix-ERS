@@ -1,16 +1,24 @@
 #version 330 core
+
+// Set Outputs
 out vec4 FragColor;
 
+// Set Inputs
 in vec2 TexCoords;
 
-// Get Texture Sampler
-uniform sampler2D texture_diffuse1;
 
-// Get Input Vars
+// Get Metadata Params
 uniform float Time; // Time since program started in seconds
 uniform float FrameTime; // Render Time Of The Frame
 uniform int FrameNumber; // Number of the frame, counts up from zero
 uniform vec2 ViewportRes; // XY Resolution of the viewport
+
+// Get Texture Info
+uniform sampler2D texture_diffuse1;
+
+// Get Lighting Info
+uniform vec3 LightPos;
+
 
 
 
