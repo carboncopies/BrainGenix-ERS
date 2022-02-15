@@ -17,9 +17,7 @@ int maxIterations = 100;
 
 vec2 squareImaginary(vec2 number){
     return vec2(
-        pow(number.x,2)-pow(number.y,2),
-        2number.xnumber.y
-    );
+        pow(number.x,2)-pow(number.y,2), number.xnumber.y );
 }
 
 float iterateMandelbrot(vec2 coord){
