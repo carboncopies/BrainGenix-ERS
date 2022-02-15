@@ -32,10 +32,10 @@ void main()
     
     // Diffuse Lighting Calculation
     vec3 Norm = normalize(Normal);
-    vec3 LightDir = normalize(LightPos - FragPos);
+    vec3 LightDir = normalize(Light_Position - FragPos);
 
     float AngleDifference = max(dot(Norm, LightDir), 0.0f);
-    vec3 Diffuse = AngleDifference * LightColor;
+    vec3 Diffuse = AngleDifference * Light_Color_Diffuse;
     
     
     // Generate Color For Fragment
