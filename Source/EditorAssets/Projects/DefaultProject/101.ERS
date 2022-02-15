@@ -40,8 +40,8 @@ void main()
     
     // Generate Color For Fragment
     vec4 TextureColor = texture(texture_diffuse1, TexCoords);
-    vec4 LightValue = Ambient + vec4(Diffuse, 1.0f);
-    FragColor = LightValue * TextureColor;
+    vec3 LightValue = Ambient + Diffuse;
+    FragColor = vec4(LightValue, 1.0f) * TextureColor;
     
 }
 
