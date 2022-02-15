@@ -35,12 +35,12 @@ void main()
     vec3 LightDir = normalize(Light_Position - FragPos);
 
     float AngleDifference = max(dot(Norm, LightDir), 0.0f);
-    vec3 Diffuse = AngleDifference * Light_Color_Diffuse;
+    vec3 Light_Diffuse_Color = AngleDifference * Light_Color_Diffuse;
     
     
     // Generate Color For Fragment
     vec4 TextureColor = texture(texture_diffuse1, TexCoords);
-    vec3 LightValue = Ambient + Diffuse;
+    vec3 LightValue = Light_Ambient_Color + Light_Diffuse_Color;
     FragColor = vec4(LightValue, 1.0f) * TextureColor;
     
 }
