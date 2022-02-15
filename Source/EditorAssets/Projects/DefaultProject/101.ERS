@@ -6,6 +6,7 @@ out vec4 FragColor;
 // Set Inputs
 in vec2 TexCoords;
 in vec3 FragPos;
+in vec3 Normal;
 
 
 // Get Metadata Params
@@ -19,7 +20,9 @@ uniform sampler2D texture_diffuse1;
 
 // Get Lighting Info
 uniform vec4 Ambient;
+
 uniform vec3 LightPos;
+uniform vec3 LightColor;
 
 
 
@@ -29,16 +32,17 @@ void main()
     
     // Diffuse Lighting Calculation
     vec3 Norm = normalize(Normal);
-    vec3 LightDir = normalize(lightPos - FragPos);
+    vec3 LightDir = normalize(LightPos - FragPos);
 
-    float diff = max(dot(Norm, LightDir), 0.0f);
-    vec3 Diffuse = diff * lightColor;
+    float AngleDifference = max(dot(Norm, LightDir), 0.0f);
+    vec3 Diffuse = AngleDifference * LightColor;
     
     
     // Generate Color For Fragment
     vec4 TextureColor = texture(texture_diffuse1, TexCoords);
-    vec4 LightValue = vec4((Ambient + Diffuse), 1.0f);
+    vec4 LightValue = Ambient + vec4(Diffuse, 1.0f);
     FragColor = LightValue * TextureColor;
     
 }
+
 
