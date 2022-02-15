@@ -19,10 +19,10 @@ uniform vec2 ViewportRes; // XY Resolution of the viewport
 uniform sampler2D texture_diffuse1;
 
 // Get Lighting Info
-uniform vec4 Ambient;
+uniform vec3 Light_Ambient_Color;
 
-uniform vec3 LightPos;
-uniform vec3 LightColor;
+uniform vec3 Light_Position;
+uniform vec3 Light_Color_Diffuse;
 
 
 
