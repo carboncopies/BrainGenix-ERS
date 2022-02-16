@@ -52,7 +52,7 @@ void ERS_CLASS_Grid::DrawGrid() {
 
 
     GridShader_->MakeActive();
-    GridShader_->SetMat4(GridModelArray_);
+    GridShader_->SetMat4("model", GridModelArray_);
 
     glBindVertexArray(GridVAO_);
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
