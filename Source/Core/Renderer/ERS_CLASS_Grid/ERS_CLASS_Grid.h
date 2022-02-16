@@ -24,14 +24,23 @@ class ERS_CLASS_Grid {
 
 private:
 
+    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Shared Pointer To System Utils*/
 
 
 public:
 
+    /**
+     * @brief Construct a new ers class grid object
+     * 
+     * @param SystemUtils 
+     */
+    ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
 
-    ERS_CLASS_Grid();
+    /**
+     * @brief Destroy the ers class grid object
+     * 
+     */
     ~ERS_CLASS_Grid();
 
 
-
-}
+};

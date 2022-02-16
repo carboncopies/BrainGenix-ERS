@@ -213,6 +213,20 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
         glm::mat4 projection = Viewports_[Index]->Camera->GetProjectionMatrix();
         glm::mat4 view = Viewports_[Index]->Camera->GetViewMatrix();
 
+
+        // Check If Grid Enabled
+        if (true) {
+        //*******************************************************************************
+        // Something here to render the background ui elements (like the grid)
+        //*******************************************************************************
+
+            
+
+
+
+        }
+
+
         // Update Shaders
         UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight, SceneManager);
         Shaders_[ShaderIndex]->SetMat4("projection", projection);
@@ -240,11 +254,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
 
         // Update Selected Object
         SceneManager->UpdateLocRotScale(Cursors3D_->Pos_, Cursors3D_->Rot_, Cursors3D_->Scale_);
-
-
-        //*******************************************************************************
-        // Something here to render the background ui elements (like the grid)
-        //*******************************************************************************
 
         // Draw Models
         SceneManager->Render(Shaders_[ShaderIndex]);
