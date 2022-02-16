@@ -43,7 +43,7 @@ ERS_CLASS_Grid::ERS_CLASS_Grid(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_
 
     // Setup Grid Model Matrix
     GridModelArray_ = glm::mat4();
-    GridModelArray_ = glm::scale(GridModelArray_, glm::vec3(25.0f));
+    GridModelArray_ = glm::scale(GridModelArray_, glm::vec3(GridScale_));
     GridModelArray_ = glm::rotate(GridModelArray_, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 
 }
@@ -70,6 +70,7 @@ void ERS_CLASS_Grid::DrawGrid(glm::mat4 View, glm::mat4 Projection, glm::vec3 Ca
     GridShader_->SetVec3("CameraPosition", CameraPosition);
 
     GridShader_->SetFloat("GRID_SIZE", GridSize_);
+    GridShader_->SetFloat("GRID_SCALE", GridScale_);
     GridShader_->SetFloat("GRID_LINE_THICKNESS", GridLineThickness_);
     GridShader_->SetVec3("GRID_COLOR_BASE", GridColor_);
     GridShader_->SetVec3("GRID_COLOR_X", GridColorX_);
