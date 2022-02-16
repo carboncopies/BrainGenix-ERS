@@ -9,13 +9,12 @@ in vec3 OriginalPosition;
 uniform vec3 GRID_COLOR_Base;
 uniform vec3 GRID_COLOR_X;
 uniform vec3 GRID_COLOR_Z;
-//uniform float GridSize;
+uniform float GRID_Size;
 
-float GridSize = 0.01f;
 
 void main(void)
 {
-    if(fract(UV.x / GridSize) < 0.01f || fract(UV.y / GridSize) < 0.01f) {
+    if(fract(UV.x / GRID_Size) < 0.01f || fract(UV.y / GRID_Size) < 0.01f) {
     
         float Alpha = 1.0f;
         FragColor = vec4(GRID_COLOR_Base, Alpha);
