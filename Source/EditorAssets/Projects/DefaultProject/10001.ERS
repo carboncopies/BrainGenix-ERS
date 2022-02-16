@@ -1,19 +1,25 @@
 #version 400
 
+// Return Grid Modified Pixels
 layout (location = 0) out vec4 FragColor;
 
-smooth in vec3 ex_UV;
-smooth in vec3 ex_originalPosition;
 
-uniform vec4 lineColor;
+// Get Input Params From Vertex Shader
+smooth in vec3 UV;
+//smooth in vec3 OriginalPosition;
 
-float GridSize = 0.1f;
+// Get Configuration Params
+uniform vec3 LineColor;
+uniform float GridSize;
 
 
 void main(void)
 {
-    if(fract(ex_UV.x / GridSize) < 0.01f || fract(ex_UV.y / GridSize) < 0.01f)
-        FragColor = vec4(1.0f);
-    //else
-    //    FragColor = vec4(0);
+    if(fract(UV.x / GridSize) < 0.01f || fract(UV.y / GridSize) < 0.01f) {
+    
+        float Alpha = 1.0f;
+        FragColor = vec4(LineColor, Alpha);
+    
+    }
 }
+
