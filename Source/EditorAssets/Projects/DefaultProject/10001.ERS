@@ -6,7 +6,7 @@ layout (location = 0) out vec4 FragColor;
 
 // Get Input Params From Vertex Shader
 smooth in vec3 UV;
-//smooth in vec3 OriginalPosition;
+smooth in vec3 OriginalPosition;
 
 // Get Configuration Params
 uniform vec3 GRID_COLOR_Base;
@@ -20,7 +20,7 @@ void main(void)
     if(fract(UV.x / GridSize) < 0.01f || fract(UV.y / GridSize) < 0.01f) {
     
         float Alpha = 1.0f;
-        FragColor = vec4(GRID_COLOR_Base, Alpha);
+        FragColor = vec4(1.0f, Alpha);
     
     }
 }
