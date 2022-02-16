@@ -11,6 +11,7 @@ ERS_CLASS_Grid::ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUti
     SystemUtils_->Logger_->Log("Creating Viewport Grid Instance", 4);
 
     // Create 2D Plane To Draw Grid On
+    SystemUtils_->Logger_->Log("Setting Up Grid Plane", 3);
     const float GridVertices[] = {
         -1.0,  1.0, 0.0, // Top Left
         -1.0, -1.0, 0.0, // Bottom Left
@@ -21,6 +22,8 @@ ERS_CLASS_Grid::ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUti
     glGenBuffers(1, &GridVBO_);
     glBindBuffer(GL_ARRAY_BUFFER, GridVBO_);
     glBufferData(GL_ARRAY_BUFFER, sizeof(GridVertices), GridVertices, GL_STATIC_DRAW);
+    
+    glGenVertexArrays(1, &GridVAO_)
 
 }
 
