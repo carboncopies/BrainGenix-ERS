@@ -34,7 +34,7 @@ ERS_CLASS_Grid::ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUti
     // Setup Grid Model Matrix
     GridModelArray_ = glm::mat4();
     glm::scale(GridModelArray_, glm::vec3(10.0f));
-    glm::rotate(GridModelArray_, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    glm::rotate(GridModelArray_, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
 }
 
