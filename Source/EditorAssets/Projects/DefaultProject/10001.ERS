@@ -10,7 +10,7 @@ uniform vec3 GRID_COLOR_BASE;
 uniform vec3 GRID_COLOR_X;
 uniform vec3 GRID_COLOR_Z;
 uniform float GRID_SIZE;
-uniform float GRID_LINE_THICKNESS
+uniform float GRID_LINE_THICKNESS;
 
 
 void main(void)
@@ -22,6 +22,7 @@ void main(void)
     
     }
 }
+
 
 
 
