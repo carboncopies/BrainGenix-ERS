@@ -210,7 +210,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
 
         // Check If Grid Enabled
         if (Viewports_[Index]->GridEnabled) {
-            Viewports_[Index]->Grid->DrawGrid(view);
+            Viewports_[Index]->Grid->DrawGrid(view, projection);
         }
 
         // Use Shader
