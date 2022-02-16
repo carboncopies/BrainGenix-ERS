@@ -44,7 +44,7 @@ ERS_CLASS_Grid::~ERS_CLASS_Grid() {
 }
 
 
-ERS_CLASS_Grid::DrawGrid() {
+void ERS_CLASS_Grid::DrawGrid() {
 
     glBindVertexArray(GridVAO_);
     GridShader_->MakeActive();
