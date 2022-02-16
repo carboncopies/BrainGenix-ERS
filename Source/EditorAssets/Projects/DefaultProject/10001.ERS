@@ -20,7 +20,7 @@ void main(void)
 {
     if(fract(UV.x / GRID_SIZE) < GRID_LINE_THICKNESS || fract(UV.y / GRID_SIZE) < GRID_LINE_THICKNESS) {
         float Distance = distance(vec3(0.0f), OriginalPosition);
-        float Alpha = (1.0f/pow(Distance, 5));
+        float Alpha = (0.0001f/pow(Distance, 10));
         FragColor = vec4(GRID_COLOR_BASE, Alpha);
     
     }
