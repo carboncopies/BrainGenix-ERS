@@ -13,15 +13,23 @@ uniform float GRID_SIZE;
 uniform float GRID_LINE_THICKNESS;
 
 
+
+
 void main(void)
 {
     if(fract(UV.x / GRID_SIZE) < GRID_LINE_THICKNESS || fract(UV.y / GRID_SIZE) < GRID_LINE_THICKNESS) {
     
-        float Alpha = 1.0f;
+        float Alpha = 1/distance(vec3(0.5f), UV);
         FragColor = vec4(GRID_COLOR_BASE, Alpha);
     
     }
 }
+
+
+
+
+
+
 
 
 
