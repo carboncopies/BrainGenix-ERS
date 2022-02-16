@@ -464,6 +464,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
             // Draw Controls
             ImGui::MenuItem("Rotation Indicator", nullptr, &Viewports_[Index]->ShowCube);
             ImGui::MenuItem("Gizmo", nullptr, &Viewports_[Index]->GizmoEnabled);
+            ImGui::MenuItem("Grid", nullptr, &Viewports_[Index]->GridEnabled);
 
 
         ImGui::EndMenu();
