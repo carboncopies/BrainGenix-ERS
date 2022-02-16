@@ -1,12 +1,11 @@
 #version 400
 
 // Return Grid Modified Pixels
-layout (location = 0) out vec4 FragColor;
-
+out vec4 FragColor;
 
 // Get Input Params From Vertex Shader
 smooth in vec3 UV;
-//smooth in vec3 OriginalPosition;
+smooth in vec3 OriginalPosition;
 
 // Get Configuration Params
 uniform vec3 GRID_COLOR_Base;
