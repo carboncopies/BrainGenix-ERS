@@ -208,10 +208,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
         glm::mat4 projection = Viewports_[Index]->Camera->GetProjectionMatrix();
         glm::mat4 view = Viewports_[Index]->Camera->GetViewMatrix();
 
-        // Check If Grid Enabled
-        if (Viewports_[Index]->GridEnabled) {
-            Viewports_[Index]->Grid->DrawGrid(view, projection);
-        }
+
 
         // Use Shader
         int ShaderIndex = Viewports_[Index]->ShaderIndex;
@@ -247,6 +244,11 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
 
         // Draw Models
         SceneManager->Render(Shaders_[ShaderIndex]);
+
+        // Check If Grid Enabled
+        if (Viewports_[Index]->GridEnabled) {
+            Viewports_[Index]->Grid->DrawGrid(view, projection);
+        }
 
         //*******************************************************************************
         // Something here to render the foreground ui elements (such as the light icons)
