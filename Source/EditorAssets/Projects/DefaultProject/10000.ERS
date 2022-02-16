@@ -7,13 +7,26 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
-smooth out vec3 ex_UV;
-smooth out vec3 ex_originalPosition;
+// Get Configuration Params
+uniform vec3 GRID_COLOR_Base;
+uniform vec3 GRID_COLOR_X;
+uniform vec3 GRID_COLOR_Z;
+uniform float GridSize;
+
+
+smooth out vec3 UV;
+smooth out vec3 OriginalPosition;
+
+
+
+
 
 void main()
 {
     gl_Position = projection * view * model * aPos;
 
-    ex_UV = aTexCoords;
-    ex_originalPosition = vec3(aPos.xyz);
+    UV = aTexCoords;
+    OriginalPosition = vec3(aPos.xyz);
 }
+
+
