@@ -212,16 +212,11 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
         int ShaderIndex = Viewports_[Index]->ShaderIndex;
         Shaders_[ShaderIndex]->MakeActive();
 
-
         // Update Camera
         float AspectRatio = (float)RenderWidth / (float)RenderHeight;
         Viewports_[Index]->Camera->SetAspectRatio(AspectRatio);
         glm::mat4 projection = Viewports_[Index]->Camera->GetProjectionMatrix();
         glm::mat4 view = Viewports_[Index]->Camera->GetViewMatrix();
-
-
-
-
 
         // Update Shaders
         UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight, SceneManager);
