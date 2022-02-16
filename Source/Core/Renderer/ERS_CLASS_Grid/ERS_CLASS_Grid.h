@@ -47,7 +47,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_Grid(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_Shader> GridShader, glm::vec3 CameraPosition);
+    ERS_CLASS_Grid(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_Shader> GridShader);
 
     /**
      * @brief Destroy the ers class grid object
@@ -60,6 +60,6 @@ public:
      * @brief Draw The Grid To The Viewport
      * 
      */
-    void DrawGrid(glm::mat4 View, glm::mat4 Projection);
+    void DrawGrid(glm::mat4 View, glm::mat4 Projection, glm::vec3 CameraPosition);
 
 };
