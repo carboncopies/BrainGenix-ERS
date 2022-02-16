@@ -5,31 +5,30 @@ SceneData:
     AssetName: Rock
     AssetType: Model
     AssetID: 10
-    AssetPositionX: -14.4506626
-    AssetPositionY: 2.52190971
-    AssetPositionZ: 3.84979033
+    AssetPositionX: -0.112269223
+    AssetPositionY: -0.0495069548
+    AssetPositionZ: 0.682488263
     AssetRotationX: 79.4834976
     AssetRotationY: 23.4872551
     AssetRotationZ: -16.1020374
-    AssetScaleX: 7.39897823
-    AssetScaleY: 7.39901924
-    AssetScaleZ: 7.3989563
+    AssetScaleX: 1.06278944
+    AssetScaleY: 1.06279552
+    AssetScaleZ: 1.06278646
     FlipTextures: true
   1:
     AssetName: Test Light
     AssetType: Light
     LightType: Ambient
-    AdditionalNotes: A test light.
-    Intensity: 1.0
+    Intensity: 1
     ColorRed: 0.25
     ColorGreen: 0.25
     ColorBlue: 0.25
-    PosX: 1.0
-    PosY: 0.0
-    PosZ: 0.0
-    RotX: 0.0
-    RotY: 0.0
-    RotZ: 0.0
-    ScaleX: 1.0
-    ScaleY: 1.0
-    ScaleZ: 1.0
+    PosX: 1
+    PosY: 0
+    PosZ: 0
+    RotX: 1
+    RotY: 0
+    RotZ: 0
+    ScaleX: 1
+    ScaleY: 1
+    ScaleZ: 1
