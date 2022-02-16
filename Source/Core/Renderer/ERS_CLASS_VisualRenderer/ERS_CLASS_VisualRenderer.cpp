@@ -207,6 +207,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
         Viewports_[Index]->Camera->SetAspectRatio(AspectRatio);
         glm::mat4 projection = Viewports_[Index]->Camera->GetProjectionMatrix();
         glm::mat4 view = Viewports_[Index]->Camera->GetViewMatrix();
+        
 
 
 
@@ -247,7 +248,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
 
         // Check If Grid Enabled
         if (Viewports_[Index]->GridEnabled) {
-            Viewports_[Index]->Grid->DrawGrid(view, projection);
+            Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position);
         }
 
         //*******************************************************************************
