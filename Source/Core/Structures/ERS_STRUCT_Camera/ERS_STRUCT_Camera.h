@@ -56,7 +56,7 @@ public:
                                 glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f),
                                 float Yaw = -90.0f,
                                 float Pitch = 0.0f) : Front(glm::vec3(0.0f, 0.0f, -1.0f)),
-                                MovementSpeed(6.0f),
+                                MovementSpeed(1.0f),
                                 MouseSensitivity(0.1f),
                                 Zoom(45.0f) {
         
@@ -78,7 +78,7 @@ public:
                                 float UpZ,
                                 float Yaw,
                                 float Pitch) : Front(glm::vec3(0.0f, 0.0f, -1.0f)),
-                                MovementSpeed(6.0f),
+                                MovementSpeed(1.0f),
                                 MouseSensitivity(0.1f),
                                 Zoom(45.0f) {
         Position = glm::vec3(PosX, PosY, PosZ);
