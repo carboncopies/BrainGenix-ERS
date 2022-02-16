@@ -6,6 +6,7 @@ in vec3 UV;
 in vec3 OriginalPosition;
 
 // Get Configuration Params
+uniform vec3 CameraPosition;
 uniform vec3 GRID_COLOR_BASE;
 uniform vec3 GRID_COLOR_X;
 uniform vec3 GRID_COLOR_Z;
@@ -18,12 +19,17 @@ uniform float GRID_LINE_THICKNESS;
 void main(void)
 {
     if(fract(UV.x / GRID_SIZE) < GRID_LINE_THICKNESS || fract(UV.y / GRID_SIZE) < GRID_LINE_THICKNESS) {
-    
-        float Alpha = 1/distance(vec3(0.5f), UV);
+        float Distance = distance(vec3(0.0f), OriginalPosition);
+        float Alpha = (1.0f/pow(Distance, 5));
         FragColor = vec4(GRID_COLOR_BASE, Alpha);
     
     }
 }
+
+
+
+
+
 
 
 
