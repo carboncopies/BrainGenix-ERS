@@ -335,6 +335,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     // Populate Viewport Struct
     Viewport->ShaderIndex = DefaultShader_;
     Viewport->Camera = std::make_shared<ERS_STRUCT_Camera>();
+    Viewport->Grid = std::make_shared<ERS_CLASS_Grid>(SystemUtils_, Shaders_[0]);
     Viewport->Name = ViewportName;
     
     Viewport->Width = 1;
