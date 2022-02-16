@@ -23,7 +23,11 @@ ERS_CLASS_Grid::ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUti
     glBindBuffer(GL_ARRAY_BUFFER, GridVBO_);
     glBufferData(GL_ARRAY_BUFFER, sizeof(GridVertices), GridVertices, GL_STATIC_DRAW);
     
-    glGenVertexArrays(1, &GridVAO_)
+    glGenVertexArrays(1, &GridVAO_);
+    glBindVertexArray(GridVAO_);
+
+
+    
 
 }
 
