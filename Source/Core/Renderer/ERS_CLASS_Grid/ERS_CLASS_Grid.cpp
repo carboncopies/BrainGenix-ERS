@@ -33,6 +33,21 @@ ERS_CLASS_Grid::ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUti
 
 }
 
+
 ERS_CLASS_Grid::~ERS_CLASS_Grid() {
+
     SystemUtils_->Logger_->Log("Viewport Grid Destructor Called", 6);
+
+    glDeleteBuffers(1, &GridVBO_);
+    glDeleteVertexArrays(1, &GridVAO_);
+
+}
+
+
+ERS_CLASS_Grid::DrawGrid() {
+
+    glBindVertexArray(GridVAO_);
+    GridShader_->MakeActive();
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+
 }
