@@ -42,24 +42,8 @@ ShaderPrograms:
         VertexID: 100
         FragmentID: 101
     1:
-        Name: "Separation"
+        Name: "Lit"
         VertexID: 102
         FragmentID: 103
-    2:
-        Name: "Scatter"
-        VertexID: 104
-        FragmentID: 105
-    3:
-        Name: "Glitch (Flashing Lights Warning)"
-        VertexID: 106
-        FragmentID: 107
-    4:
-        Name: "Manbelbrot Fractal Test"
-        VertexID: 108
-        FragmentID: 109
-    5:
-        Name: "Lighting Test"
-        VertexID: 110
-        FragmentID: 111
-        
-DefaultShaderProgram: 0
+
+DefaultShaderProgram: 1
