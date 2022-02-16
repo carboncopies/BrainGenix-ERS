@@ -56,11 +56,6 @@
 //
 
 
-/**
- * @brief Entry point.
- * 
- * @return int 
- */
 int main() {
 
     // Initialize System Vars
