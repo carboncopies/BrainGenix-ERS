@@ -202,6 +202,12 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
         // Rendering Commands Here
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+
+        // Check If Grid Enabled
+        if (Viewports_[Index]->GridEnabled) {
+            Viewports_[Index]->Grid->DrawGrid();
+        }
+
         // Use Shader
         int ShaderIndex = Viewports_[Index]->ShaderIndex;
         Shaders_[ShaderIndex]->MakeActive();
@@ -214,10 +220,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
         glm::mat4 view = Viewports_[Index]->Camera->GetViewMatrix();
 
 
-        // Check If Grid Enabled
-        if (Viewports_[Index]->GridEnabled) {
-            Viewports_[Index]->Grid->DrawGrid();
-        }
+
 
 
         // Update Shaders
