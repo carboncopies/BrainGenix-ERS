@@ -1,24 +1,14 @@
 #version 400
 
-layout (location = 3) in vec4 aPos;
-layout (location = 4) in vec3 aTexCoords;
+layout (location = 0) in vec4 aPos;
+layout (location = 2) in vec3 aTexCoords;
 
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
-// Get Configuration Params
-uniform vec3 GRID_COLOR_Base;
-uniform vec3 GRID_COLOR_X;
-uniform vec3 GRID_COLOR_Z;
-uniform float GridSize;
-
-
-smooth out vec3 UV;
-smooth out vec3 OriginalPosition;
-
-
-
+out vec3 UV;
+out vec3 OriginalPosition;
 
 
 void main()
@@ -28,5 +18,6 @@ void main()
     UV = aTexCoords;
     OriginalPosition = vec3(aPos.xyz);
 }
+
 
 

@@ -1,19 +1,17 @@
 #version 400
 
-// Return Grid Modified Pixels
+// Set IO
 out vec4 FragColor;
-
-
-// Get Input Params From Vertex Shader
-smooth in vec3 UV;
-smooth in vec3 OriginalPosition;
+in vec3 UV;
+in vec3 OriginalPosition;
 
 // Get Configuration Params
 uniform vec3 GRID_COLOR_Base;
 uniform vec3 GRID_COLOR_X;
 uniform vec3 GRID_COLOR_Z;
-uniform float GridSize;
+//uniform float GridSize;
 
+float GridSize = 0.01f;
 
 void main(void)
 {
@@ -24,5 +22,6 @@ void main(void)
     
     }
 }
+
 
 
