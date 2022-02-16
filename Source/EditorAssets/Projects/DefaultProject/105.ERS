@@ -15,11 +15,16 @@ uniform float FrameTime; // Render Time Of The Frame
 uniform int FrameNumber; // Number of the frame, counts up from zero
 uniform vec2 ViewportRes; // XY Resolution of the viewport
 
+// Get Texture Info
+uniform sampler2D texture_diffuse1;
+
 // Get Lighting Info
 uniform vec3 Light_Ambient_Color;
 
 uniform vec3 Light_Position;
 uniform vec3 Light_Diffuse_Color;
+
+
 
 
 void main()
@@ -37,12 +42,11 @@ void main()
     
     
     // Generate Color For Fragment
-    vec4 TextureColor = vec4(1.0f);
+    vec4 TextureColor = texture(texture_diffuse1, TexCoords);
     vec3 LightValue = Light_Ambient_Component + Light_Diffuse_Component;
     FragColor = vec4(LightValue, 1.0f) * TextureColor;
     
 }
-
 
 
 
