@@ -10,7 +10,7 @@ BrainGenix Environment Rendering System (ERS) aims to be a distributed multi-GPU
 
   It's pretty easy to build on linux and has been tested with Debian/Ubuntu to work. This is the primary development platform used, and such tends to work the best. 
   
-  Simply enter the `Tools` directory and run `sudo bash Install.sh` followed by `bash Build-CMake.sh`. If you're recompiling and your cmake cache has been created, you can simply run `bash Build.sh` to just rebuild what's needed.
+  Simply enter the `Tools` directory and run `sudo bash Install.sh` followed by `bash Build.sh`. If something isn't working quite right for you, you can try cleaning the build with `bash Clean.sh`.
 
   If some packages are missing on your distro, you'll have to substitute with whatever your distro uses. We try to include as many possible packages in our codebase as possible, but this isn't always possible or practical.
 
