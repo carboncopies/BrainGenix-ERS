@@ -5,7 +5,6 @@ in vec2 TexCoords;
 
 // Get Texture Sampler And Lighting Info
 uniform sampler2D texture_diffuse1;
-uniform vec4 Ambient;
 
 
 // Get Input Vars
@@ -15,8 +14,7 @@ uniform int FrameNumber; // Number of the frame, counts up from zero
 uniform vec2 ViewportRes; // XY Resolution of the viewport
 
 
-
 void main()
 {
-    FragColor = Ambient * texture(texture_diffuse1, TexCoords);
+    FragColor = texture(texture_diffuse1, TexCoords);
 }
