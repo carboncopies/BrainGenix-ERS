@@ -14,6 +14,6 @@ void main(void)
 {
     if(fract(ex_UV.x / GridSize) < 0.01f || fract(ex_UV.y / GridSize) < 0.01f)
         FragColor = vec4(1.0f);
-    else
-        FragColor = vec4(0);
+    //else
+    //    FragColor = vec4(0);
 }

@@ -11,6 +11,11 @@ ERS_CLASS_Grid::ERS_CLASS_Grid(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_
     GridShader_ = GridShader;
     SystemUtils_->Logger_->Log("Creating Viewport Grid Instance", 4);
 
+
+    // Enable blending
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     // Create 2D Plane To Draw Grid On
     SystemUtils_->Logger_->Log("Setting Up Grid Plane", 3);
     const float GridVertices[] = {
