@@ -30,9 +30,6 @@ private:
     unsigned int GridVAO_; /**<OpenGL ID To Grid Vertex Array Object*/
 
 
-
-
-
 public:
 
     /**
