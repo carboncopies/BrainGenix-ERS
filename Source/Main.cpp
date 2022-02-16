@@ -65,7 +65,7 @@ int main() {
 
     // Initialize System Vars
     std::shared_ptr<bool> SystemShouldRun = std::make_shared<bool>(true);
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils = std::make_shared<ERS_STRUCT_SystemUtils>();
+    std::unique_ptr<ERS_STRUCT_SystemUtils> SystemUtils = std::make_unique<ERS_STRUCT_SystemUtils>();
     SystemUtils->SystemShouldRun_ = SystemShouldRun;
 
     // Load Local System Configuration File
