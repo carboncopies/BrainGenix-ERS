@@ -3,6 +3,7 @@
 // Return Grid Modified Pixels
 out vec4 FragColor;
 
+
 // Get Input Params From Vertex Shader
 smooth in vec3 UV;
 smooth in vec3 OriginalPosition;
