@@ -22,7 +22,7 @@ uniform sampler2D texture_diffuse1;
 uniform vec3 Light_Ambient_Color;
 
 uniform vec3 Light_Position;
-uniform vec3 Light_Color_Diffuse;
+uniform vec3 Light_Diffuse_Color;
 
 
 
@@ -30,19 +30,23 @@ uniform vec3 Light_Color_Diffuse;
 void main()
 {    
     
+    // Ambient Lighting Contribution
+    vec3 Light_Ambient_Component = Light_Ambient_Color;
+    
     // Diffuse Lighting Calculation
     vec3 Norm = normalize(Normal);
     vec3 LightDir = normalize(Light_Position - FragPos);
 
     float AngleDifference = max(dot(Norm, LightDir), 0.0f);
-    vec3 Light_Diffuse_Color = AngleDifference * Light_Color_Diffuse;
+    vec3 Light_Diffuse_Component = AngleDifference * Light_Diffuse_Color;
     
     
     // Generate Color For Fragment
     vec4 TextureColor = texture(texture_diffuse1, TexCoords);
-    vec3 LightValue = Light_Ambient_Color + Light_Diffuse_Color;
+    vec3 LightValue = Light_Ambient_Component + Light_Diffuse_Component;
     FragColor = vec4(LightValue, 1.0f) * TextureColor;
     
 }
+
 
 
