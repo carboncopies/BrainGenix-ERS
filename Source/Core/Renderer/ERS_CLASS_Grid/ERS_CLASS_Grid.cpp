@@ -67,8 +67,11 @@ void ERS_CLASS_Grid::DrawGrid(glm::mat4 View, glm::mat4 Projection) {
     GridShader_->SetMat4("view", View);
     GridShader_->SetMat4("projection", Projection);
 
-    GridShader_->SetFloat("GridSize", GridSize_);
-    GridShader_->SetVec3("GridColor", GridColor_);
+    GridShader_->SetFloat("GRID_Size", GridSize_);
+    GridShader_->SetVec3("GRID_COLOR_Base", GridColor_);
+    GridShader_->SetVec3("GRID_COLOR_X", GridColorX_);
+    GridShader_->SetVec3("GRID_COLOR_Z", GridColorZ_);
+
 
     glBindVertexArray(GridVAO_);
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
