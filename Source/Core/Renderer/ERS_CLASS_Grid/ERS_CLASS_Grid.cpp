@@ -5,9 +5,10 @@
 #include <ERS_CLASS_Grid.h>
 
 
-ERS_CLASS_Grid::ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+ERS_CLASS_Grid::ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_Shader> GridShader) {
 
     SystemUtils_ = SystemUtils;
+    GridShader_ = GridShader;
     SystemUtils_->Logger_->Log("Creating Viewport Grid Instance", 4);
 
     // Create 2D Plane To Draw Grid On
@@ -27,7 +28,7 @@ ERS_CLASS_Grid::ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUti
     glBindVertexArray(GridVAO_);
 
 
-    
+
 
 }
 
