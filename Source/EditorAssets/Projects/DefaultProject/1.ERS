@@ -38,17 +38,22 @@ ControllerSettings:
 # Shader Program Metadata
 ShaderPrograms:
     0:
+        Name: "Grid"
+        VertexID: 10000
+        FragmentID: 10001
+    1:
         Name: "Material"
         VertexID: 100
         FragmentID: 101
-    1:
+    2:
         Name: "Mesh"
         VertexID: 102
         FragmentID: 103
-    2:
+    3:
         Name: "Viewport"
         VertexID: 104
         FragmentID: 105
 
 
-DefaultShaderProgram: 2
+
+DefaultShaderProgram: 3
