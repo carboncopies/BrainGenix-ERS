@@ -59,7 +59,7 @@ private:
     std::shared_ptr<GUISystem> GuiSystem_; /**<Instance of GUI System*/
     std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
     
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Copy Of Pointer Helper Struct*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**< Raw pointer to SystemUtils that is owned by the main() */
     std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Copy Of Project Utils Struct*/
     std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<Copy Of Pointer To HIDM Struct*/
 

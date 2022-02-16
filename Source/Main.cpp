@@ -158,7 +158,7 @@ int main() {
 
 
     // Instantiate RendererManager
-    RendererManager sERSRendererManager(SystemUtils, ProjectUtils, HIDUtils);
+    RendererManager sERSRendererManager(SystemUtils.get(), ProjectUtils, HIDUtils);
 
 
     
