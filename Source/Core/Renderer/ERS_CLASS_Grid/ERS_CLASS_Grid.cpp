@@ -16,8 +16,8 @@ ERS_CLASS_Grid::ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUti
     const float GridVertices[] = {
         -1.0,  1.0, 0.0, 1.0, 0.0,  // Top Left
         -1.0, -1.0, 0.0, 0.0, 0.0,  // Bottom Left
-        1.0, -1.0,  0.0, 1.0, 1.0,  // Bottom Right
-        1.0,  1.0,  0.0, 0.0, 1.0   // Top Right
+        1.0, -1.0,  0.0, 0.0, 1.0,  // Bottom Right
+        1.0,  1.0,  0.0, 1.0, 1.0   // Top Right
     };
 
     glGenBuffers(1, &GridVBO_);
