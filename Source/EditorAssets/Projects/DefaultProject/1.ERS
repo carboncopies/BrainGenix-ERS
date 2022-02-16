@@ -45,5 +45,9 @@ ShaderPrograms:
         Name: "Viewport"
         VertexID: 102
         FragmentID: 103
+    2:
+        Name: "Mesh"
+        VertexID: 104
+        FragmentID: 105
 
 DefaultShaderProgram: 1
