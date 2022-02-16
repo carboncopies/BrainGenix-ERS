@@ -35,6 +35,7 @@ private:
 public:
 
     float GridSize_ = 0.1f;
+    glm::vec3 GridColor_ = glm::vec3(0.8f); 
 
 
 public:
