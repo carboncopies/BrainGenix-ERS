@@ -6,21 +6,23 @@ in vec3 UV;
 in vec3 OriginalPosition;
 
 // Get Configuration Params
-uniform vec3 GRID_COLOR_Base;
+uniform vec3 GRID_COLOR_BASE;
 uniform vec3 GRID_COLOR_X;
 uniform vec3 GRID_COLOR_Z;
-uniform float GRID_Size;
+uniform float GRID_SIZE;
+uniform float GRID_LINE_THICKNESS
 
 
 void main(void)
 {
-    if(fract(UV.x / GRID_Size) < 0.01f || fract(UV.y / GRID_Size) < 0.01f) {
+    if(fract(UV.x / GRID_SIZE) < GRID_LINE_THICKNESS || fract(UV.y / GRID_Size) < GRID_LINE_THICKNESS) {
     
         float Alpha = 1.0f;
-        FragColor = vec4(GRID_COLOR_Base, Alpha);
+        FragColor = vec4(GRID_COLOR_BASE, Alpha);
     
     }
 }
+
 
 
 
