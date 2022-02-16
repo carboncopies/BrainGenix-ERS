@@ -6,6 +6,7 @@
 
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <memory>
 
 
 // Third-Party Libraries (BG convention: use <> instead of "")
@@ -15,3 +16,22 @@
 
 
 // Internal Libraries (BG convention: use <> instead of "")
+#include <ERS_STRUCT_SystemUtils.h>
+
+
+
+class ERS_CLASS_Grid {
+
+private:
+
+
+
+public:
+
+
+    ERS_CLASS_Grid();
+    ~ERS_CLASS_Grid();
+
+
+
+}

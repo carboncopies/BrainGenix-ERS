@@ -20,14 +20,11 @@ target_link_libraries(ERS_CLASS_Grid
     glm
     glad
     glfw
-    IMGUI
     )
 
 # Link Internal Libs
 target_link_libraries(ERS_CLASS_Grid
-    ERS_CLASS_LoggingSystem
-    ERS_STRUCT_Shader
-    ERS_ShaderLoader
+    ERS_STRUCT_SystemUtils
     )
 
 target_include_directories(ERS_CLASS_Grid PUBLIC ./)
