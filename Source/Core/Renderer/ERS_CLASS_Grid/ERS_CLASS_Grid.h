@@ -34,8 +34,8 @@ private:
 
 public:
 
-    float GridSize = 0.1f;
-    
+    float GridSize_ = 0.1f;
+
 
 public:
 

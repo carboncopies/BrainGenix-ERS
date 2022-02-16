@@ -67,6 +67,8 @@ void ERS_CLASS_Grid::DrawGrid(glm::mat4 View, glm::mat4 Projection) {
     GridShader_->SetMat4("view", View);
     GridShader_->SetMat4("projection", Projection);
 
+    GridShader_->SetFloat("GridSize", GridSize_);
+
     glBindVertexArray(GridVAO_);
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 
