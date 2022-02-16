@@ -3,3 +3,17 @@
 //======================================================================//
 
 #include <ERS_CLASS_Grid.h>
+
+
+ERS_CLASS_Grid::ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+
+    SystemUtils_ = SystemUtils;
+    SystemUtils_->Logger_->Log("Creating Viewport Grid Instance", 4);
+
+    // Create 2D Plane To Draw Grid On
+
+}
+
+ERS_CLASS_Grid::~ERS_CLASS_Grid() {
+    SystemUtils_->Logger_->Log("Viewport Grid Destructor Called", 6);
+}

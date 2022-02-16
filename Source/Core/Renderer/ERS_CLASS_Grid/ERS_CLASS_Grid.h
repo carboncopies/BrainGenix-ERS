@@ -26,6 +26,8 @@ private:
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Shared Pointer To System Utils*/
 
+    unsigned int GridVBO; /**<OpenGL ID To Grid Vertex Buffer Object*/
+    unsigned int GridVAO; /**<OpenGL ID To Grid VAO*/
 
 public:
 
