@@ -5,7 +5,7 @@
 #include <GUI_ImportAsset.h>
 
 
-GUI_ImportAsset::GUI_ImportAsset(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+GUI_ImportAsset::GUI_ImportAsset(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing Asset Importer GUI", 5);

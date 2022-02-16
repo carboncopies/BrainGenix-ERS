@@ -28,7 +28,7 @@ class ERS_CLASS_ImportAsset {
 
     private:
 
-        std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<used to get access to system utilites like IOmanager, logger, etc.*/
+        ERS_STRUCT_SystemUtils* SystemUtils_; /**<used to get access to system utilites like IOmanager, logger, etc.*/
         std::mutex LockAssetImportQueue_; /**<Mutex used to control access to list of assets to be imported*/
         std::mutex BlockThread_; /**<Use This To Block The Thread*/
         bool StopThread_ = false; /**<Set this to true to make the importer thread exit*/
@@ -51,7 +51,7 @@ class ERS_CLASS_ImportAsset {
          * 
          * @param SystemUtils 
          */
-        ERS_CLASS_ImportAsset(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+        ERS_CLASS_ImportAsset(ERS_STRUCT_SystemUtils* SystemUtils);
 
         /**
          * @brief Destroy the ers class importasset object

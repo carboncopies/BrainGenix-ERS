@@ -30,7 +30,7 @@ class ERS_CLASS_SceneLoader{
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Structure*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Structure*/
     std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader_; /**<Contians A ModelLoader Class Pointer*/
 
 private:
@@ -51,7 +51,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_SceneLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader);
+    ERS_CLASS_SceneLoader(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader);
 
     /**
      * @brief Destroy the Scene Loader object

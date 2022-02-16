@@ -5,7 +5,7 @@
 #include <GUI_Window_About.h>
 
 
-Window_About::Window_About(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+Window_About::Window_About(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
 

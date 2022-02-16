@@ -25,7 +25,7 @@ class ERS_CLASS_ProjectWriter {
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Instance*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Instance*/
 
 public:
 
@@ -34,7 +34,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_ProjectWriter(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    ERS_CLASS_ProjectWriter(ERS_STRUCT_SystemUtils* SystemUtils);
 
     /**
      * @brief Destroy the ers class projectwriter object

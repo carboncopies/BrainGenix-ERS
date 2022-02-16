@@ -4,7 +4,7 @@
 
 #include <GUI_Widget_RenderingSettings.h>
 
-Widget_RenderingSettings::Widget_RenderingSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+Widget_RenderingSettings::Widget_RenderingSettings(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing Rendering Settings Widget", 5);

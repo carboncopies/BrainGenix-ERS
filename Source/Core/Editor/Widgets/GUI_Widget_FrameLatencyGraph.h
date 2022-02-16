@@ -24,7 +24,7 @@ class Widget_FrameLatencyGraph {
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointer*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointer*/
 
 public:
 
@@ -37,7 +37,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    Widget_FrameLatencyGraph(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    Widget_FrameLatencyGraph(ERS_STRUCT_SystemUtils* SystemUtils);
     
     /**
      * @brief Destroy the Widget_FrameLatencyGraph object

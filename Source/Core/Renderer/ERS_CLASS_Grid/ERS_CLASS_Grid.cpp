@@ -5,7 +5,7 @@
 #include <ERS_CLASS_Grid.h>
 
 
-ERS_CLASS_Grid::ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_Shader> GridShader) {
+ERS_CLASS_Grid::ERS_CLASS_Grid(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_Shader> GridShader) {
 
     SystemUtils_ = SystemUtils;
     GridShader_ = GridShader;

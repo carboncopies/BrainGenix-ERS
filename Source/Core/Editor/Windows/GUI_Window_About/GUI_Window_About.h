@@ -26,7 +26,7 @@ class Window_About {
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointers To System Resources*/
 
 public:
 
@@ -39,7 +39,7 @@ public:
      * @brief Construct a new Window_About object
      * 
      */
-    Window_About(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    Window_About(ERS_STRUCT_SystemUtils* SystemUtils);
     
     /**
      * @brief Destroy the Window_About object

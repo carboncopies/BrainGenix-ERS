@@ -5,7 +5,7 @@
 #include <ERS_Editor_ModelImporter.h>
 
 
-ERS_CLASS_ModelImporter::ERS_CLASS_ModelImporter(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+ERS_CLASS_ModelImporter::ERS_CLASS_ModelImporter(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
 

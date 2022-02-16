@@ -5,7 +5,7 @@
 #include <ERS_ControllerSettingsLoader.h>
 
 
-ERS_CLASS_ControllerSettingsLoader::ERS_CLASS_ControllerSettingsLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+ERS_CLASS_ControllerSettingsLoader::ERS_CLASS_ControllerSettingsLoader(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing ERS Controller Settings Loader", 5);

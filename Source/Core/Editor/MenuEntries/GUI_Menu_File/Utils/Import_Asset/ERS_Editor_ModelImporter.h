@@ -51,7 +51,7 @@ class ERS_CLASS_ModelImporter {
 private:
 
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointers*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointers*/
     std::vector<std::string> TextureList_; /**<Texture List Vector*/
 
 
@@ -103,7 +103,7 @@ public:
      * @param Logger 
      * @param TextureLoader 
      */
-    ERS_CLASS_ModelImporter(std::shared_ptr<ERS_STRUCT_SystemUtils>);
+    ERS_CLASS_ModelImporter(ERS_STRUCT_SystemUtils*);
 
     /**
      * @brief Destroy the Model Loader object

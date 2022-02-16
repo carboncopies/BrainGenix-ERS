@@ -35,7 +35,7 @@ private:
     
 
     std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Pointer To Project Utils Instance*/
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Struct Pointer*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Struct Pointer*/
 
 public:
 
@@ -49,7 +49,7 @@ public:
      * @param ProjectUtils 
      * @param SystemUtils 
      */
-    Window_ProjectSettings(std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    Window_ProjectSettings(std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, ERS_STRUCT_SystemUtils* SystemUtils);
 
     /**
      * @brief Destroy the Window_ProjectSettings object

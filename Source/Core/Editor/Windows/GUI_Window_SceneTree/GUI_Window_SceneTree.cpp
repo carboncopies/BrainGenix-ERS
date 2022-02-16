@@ -4,7 +4,7 @@
 
 #include <GUI_Window_SceneTree.h>
 
-Window_SceneTree::Window_SceneTree(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils) {
+Window_SceneTree::Window_SceneTree(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils) {
 
     SceneManager_ = SceneManager;
     SystemUtils_ = SystemUtils;

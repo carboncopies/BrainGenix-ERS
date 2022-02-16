@@ -34,7 +34,7 @@ private:
     float PercentDone_; /**<Float Used By Progress Bar*/
     bool IsJobFinishing_; /**<Bool Set By Thread*/
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointers To System Resources*/
 
 public:
 
@@ -47,7 +47,7 @@ public:
      * @brief Construct a new Window_ImportProgressBar object
      * 
      */
-    Window_ImportProgressBar(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    Window_ImportProgressBar(ERS_STRUCT_SystemUtils* SystemUtils);
     
     /**
      * @brief Destroy the Window_ImportProgressBar object

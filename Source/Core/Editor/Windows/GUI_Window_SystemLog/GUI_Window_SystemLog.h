@@ -26,7 +26,7 @@ class Window_SystemLog {
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointers To System Resources*/
     int MinLogLevel_ = 0; /**<Default Min Log Level*/
     int StartingLogIndex_ = 0; /**<Starting Log Index, Set To Current Length To Clear*/
     bool AutoScroll_ = true; /**<Autoscroll Log*/
@@ -42,7 +42,7 @@ public:
      * @brief Construct a new Window_SystemLog object
      * 
      */
-    Window_SystemLog(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    Window_SystemLog(ERS_STRUCT_SystemUtils* SystemUtils);
     
     /**
      * @brief Destroy the Window_SystemLog object

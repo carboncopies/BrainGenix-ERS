@@ -5,7 +5,7 @@
 #include <ERS_ProjectLoader.h>
 
 
-ERS_CLASS_ProjectLoader::ERS_CLASS_ProjectLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+ERS_CLASS_ProjectLoader::ERS_CLASS_ProjectLoader(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
 

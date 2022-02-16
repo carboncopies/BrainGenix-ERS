@@ -30,7 +30,7 @@ class Window_TestEditor {
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointer to system utils struct*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to system utils struct*/
     TextEditor Editor_; /** Editor Instance*/
 
 public:
@@ -45,7 +45,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    Window_TestEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    Window_TestEditor(ERS_STRUCT_SystemUtils* SystemUtils);
 
     /**
      * @brief Destroy the Window_TestEditor object

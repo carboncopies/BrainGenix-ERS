@@ -5,7 +5,7 @@
 #include <GUI_Window_ProjectSettings.h>
 
 
-Window_ProjectSettings::Window_ProjectSettings(std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+Window_ProjectSettings::Window_ProjectSettings(std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;

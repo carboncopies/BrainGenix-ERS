@@ -6,7 +6,7 @@
 
 
 // Constructor
-GUI_Menu_Debug::GUI_Menu_Debug(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+GUI_Menu_Debug::GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Editor Setting Up Debug Menu", 4);

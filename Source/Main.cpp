@@ -108,27 +108,27 @@ int main() {
     ProjectUtils->SceneManager_ = sERSSceneManager;
 
     sERSLogger->Log("Instantiating Model Loader Shared Pointer", 4);
-    std::shared_ptr<ERS_CLASS_ModelLoader> sERSModelLoader = std::make_shared<ERS_CLASS_ModelLoader>(SystemUtils);
+    std::shared_ptr<ERS_CLASS_ModelLoader> sERSModelLoader = std::make_shared<ERS_CLASS_ModelLoader>(SystemUtils.get());
     sERSLogger->Log("Copying Shared Pointer To Project Utils Struct", 3);
     ProjectUtils->ModelLoader_ = sERSModelLoader;
 
     sERSLogger->Log("Instantiating Scene Loader Shared Pointer", 4);
-    std::shared_ptr<ERS_CLASS_SceneLoader> sERSSceneLoader = std::make_shared<ERS_CLASS_SceneLoader>(SystemUtils, sERSModelLoader);
+    std::shared_ptr<ERS_CLASS_SceneLoader> sERSSceneLoader = std::make_shared<ERS_CLASS_SceneLoader>(SystemUtils.get(), sERSModelLoader);
     sERSLogger->Log("Copying Shared Pointer To Project Utils Struct", 3);
     ProjectUtils->SceneLoader_ = sERSSceneLoader;
 
     sERSLogger->Log("Instantiating ERS Project Loader Pointer", 4);
-    std::shared_ptr<ERS_CLASS_ProjectLoader> sERSProjectLoader = std::make_shared<ERS_CLASS_ProjectLoader>(SystemUtils);
+    std::shared_ptr<ERS_CLASS_ProjectLoader> sERSProjectLoader = std::make_shared<ERS_CLASS_ProjectLoader>(SystemUtils.get());
     sERSLogger->Log("Instantiating Project Loader Shared Pointer", 4);
     ProjectUtils->ProjectLoader_ = sERSProjectLoader;
 
     sERSLogger->Log("Instantiating ERS Project Writer Pointer", 4);
-    std::shared_ptr<ERS_CLASS_ProjectWriter> sERSProjectWriter = std::make_shared<ERS_CLASS_ProjectWriter>(SystemUtils);
+    std::shared_ptr<ERS_CLASS_ProjectWriter> sERSProjectWriter = std::make_shared<ERS_CLASS_ProjectWriter>(SystemUtils.get());
     sERSLogger->Log("Instantiating Project Writer Shared Pointer", 4);
     ProjectUtils->ProjectWriter_ = sERSProjectWriter;
 
     sERSLogger->Log("Instantiating ERS Project Manager Pointer", 4);
-    std::shared_ptr<ERS_CLASS_ProjectManager> sERSProjectManager = std::make_shared<ERS_CLASS_ProjectManager>(SystemUtils, sERSProjectLoader, sERSProjectWriter, sERSSceneManager, sERSSceneLoader);
+    std::shared_ptr<ERS_CLASS_ProjectManager> sERSProjectManager = std::make_shared<ERS_CLASS_ProjectManager>(SystemUtils.get(), sERSProjectLoader, sERSProjectWriter, sERSSceneManager, sERSSceneLoader);
     sERSLogger->Log("Copying Shared Pointer To Project Utils Struct", 3);
     ProjectUtils->ProjectManager_ = sERSProjectManager;
 
@@ -141,7 +141,7 @@ int main() {
 
     // Setup Controller Manager
     sERSLogger->Log("Instantiating ERS Controller Input Manager", 5);
-    std::shared_ptr<ERS_CLASS_ControllerInputManager> sERSControllerManager = std::make_shared<ERS_CLASS_ControllerInputManager>(SystemUtils);
+    std::shared_ptr<ERS_CLASS_ControllerInputManager> sERSControllerManager = std::make_shared<ERS_CLASS_ControllerInputManager>(SystemUtils.get());
     sERSLogger->Log("Copying Shared Pointer To HumanInputDeviceUtils Struct", 4);
     HIDUtils->ControllerInputManager = sERSControllerManager;
 

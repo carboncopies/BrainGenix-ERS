@@ -6,7 +6,7 @@
 
 
 
-ERS_CLASS_ProjectWriter::ERS_CLASS_ProjectWriter(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+ERS_CLASS_ProjectWriter::ERS_CLASS_ProjectWriter(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
     SystemUtils->Logger_->Log("Initializing ERS Project Writer Class", 5);

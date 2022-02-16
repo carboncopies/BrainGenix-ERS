@@ -43,7 +43,7 @@ class GUI_Menu_File {
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
     std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<shared pointer to visual renderer*/
     std::unique_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
     std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
@@ -61,7 +61,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Menu_File(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer);
+    GUI_Menu_File(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer);
 
 
     /**

@@ -58,7 +58,7 @@ public:
     std::map<int, std::shared_ptr<ERS_STRUCT_Shader>> Shaders_; /**<Map of shader pointers and shader program ids*/
     int DefaultShader_ = 0; /**<Index of default shader program to be used*/
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Struct Containing Pointers To Important Info*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Struct Containing Pointers To Important Info*/
 
 
     bool CaptureCursor_ = false; /**<Indicate if cursor should be captured*/
@@ -121,7 +121,7 @@ public:
      * @param Window 
      * @param Cursors3D 
      */
-    ERS_CLASS_VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D);
+    ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D);
 
     /**
      * @brief Destroy the Visual Renderer object

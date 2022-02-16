@@ -25,7 +25,7 @@ class ERS_CLASS_Grid {
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Shared Pointer To System Utils*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Shared Pointer To System Utils*/
     std::shared_ptr<ERS_STRUCT_Shader> GridShader_; /**<Pointer To Shader With Grid*/
     glm::mat4 GridModelArray_; /**<Grid Model Mat4*/
 
@@ -40,7 +40,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_Shader> GridShader);
+    ERS_CLASS_Grid(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_Shader> GridShader);
 
     /**
      * @brief Destroy the ers class grid object

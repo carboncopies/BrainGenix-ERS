@@ -5,7 +5,7 @@
 #include <ERS_CLASS_ShaderLoader.h>
 
 
-ERS_CLASS_ShaderLoader::ERS_CLASS_ShaderLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+ERS_CLASS_ShaderLoader::ERS_CLASS_ShaderLoader(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
     SystemUtils->Logger_->Log("Initializing Shader Loader", 5);

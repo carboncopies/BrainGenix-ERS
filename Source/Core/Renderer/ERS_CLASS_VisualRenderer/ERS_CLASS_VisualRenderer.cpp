@@ -6,7 +6,7 @@
 
 
 
-ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D) {
+ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D) {
 
     SystemUtils->Logger_->Log("Populating Renderer Member Pointers", 5);
     SystemUtils_ = SystemUtils;

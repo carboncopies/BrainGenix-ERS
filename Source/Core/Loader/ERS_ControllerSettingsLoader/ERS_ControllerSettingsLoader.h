@@ -20,7 +20,7 @@ class ERS_CLASS_ControllerSettingsLoader {
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Info Struct*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Info Struct*/
 
 public:
 
@@ -29,7 +29,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_ControllerSettingsLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    ERS_CLASS_ControllerSettingsLoader(ERS_STRUCT_SystemUtils* SystemUtils);
 
 
     /**

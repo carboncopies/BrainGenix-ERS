@@ -32,7 +32,7 @@ class GUI_Menu_Debug {
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
     std::unique_ptr<Window_TestEditor> TestEditor_; /**<GUI Window Test Editor Instance*/
 
     bool ShowImGuiDemoWindow_ = false; /**<Show/hide ImGui DemoWindow*/
@@ -47,7 +47,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Menu_Debug(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils);
 
 
     /**

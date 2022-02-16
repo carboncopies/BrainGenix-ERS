@@ -5,7 +5,7 @@
 #include <GUI_Widget_FrameLatencyGraph.h>
 
 
-Widget_FrameLatencyGraph::Widget_FrameLatencyGraph(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+Widget_FrameLatencyGraph::Widget_FrameLatencyGraph(ERS_STRUCT_SystemUtils* SystemUtils) {
     
     SystemUtils_ = SystemUtils;
 

@@ -27,7 +27,7 @@ class Window_AssetExplorer {
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointers To System Resources*/
     std::vector<bool> AssetIDSelectionList_; /**<Select Multiple Asset IDs*/
     int LastSelectedIndex_ = 0; /**<Index of the last item to be clicked on*/
     int SelectedModelIndex_ = 0; /**<Index Of Selected Model*/
@@ -43,7 +43,7 @@ public:
      * @brief Construct a new Window_AssetExplorer object
      * 
      */
-    Window_AssetExplorer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils);
     
     /**
      * @brief Destroy the Window_AssetExplorer object

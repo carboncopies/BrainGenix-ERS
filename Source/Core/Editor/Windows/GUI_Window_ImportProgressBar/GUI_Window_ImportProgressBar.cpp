@@ -5,7 +5,7 @@
 #include <GUI_Window_ImportProgressBar.h>
 
 
-Window_ImportProgressBar::Window_ImportProgressBar(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+Window_ImportProgressBar::Window_ImportProgressBar(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
 

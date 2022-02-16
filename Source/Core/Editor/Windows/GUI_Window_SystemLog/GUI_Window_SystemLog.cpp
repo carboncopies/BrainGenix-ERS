@@ -5,7 +5,7 @@
 #include <GUI_Window_SystemLog.h>
 
 
-Window_SystemLog::Window_SystemLog(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+Window_SystemLog::Window_SystemLog(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing GUI_Window_SystemLog", 5);

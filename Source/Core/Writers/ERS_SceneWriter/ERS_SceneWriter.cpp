@@ -7,7 +7,7 @@
 
 #include <ERS_SceneWriter.h>
 
-SceneWriter::SceneWriter(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+SceneWriter::SceneWriter(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing SceneWriter Subsystem", 5);

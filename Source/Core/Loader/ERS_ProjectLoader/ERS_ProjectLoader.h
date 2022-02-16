@@ -31,7 +31,7 @@ class ERS_CLASS_ProjectLoader {
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointer to system utils*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to system utils*/
 
 
 
@@ -42,7 +42,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_ProjectLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    ERS_CLASS_ProjectLoader(ERS_STRUCT_SystemUtils* SystemUtils);
 
     /**
      * @brief 

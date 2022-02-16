@@ -29,7 +29,7 @@ class ERS_CLASS_ControllerInputManager {
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointer to SystemUtils Struct*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to SystemUtils Struct*/
 
     int NumberInputDevices_ = 0; /**<Current Number Of "Joysticks" Connected*/
     std::vector<bool> IsControllerSupported_; /**<Indicate If Controller Is Supported Or Not*/
@@ -64,7 +64,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_ControllerInputManager(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    ERS_CLASS_ControllerInputManager(ERS_STRUCT_SystemUtils* SystemUtils);
 
     /**
      * @brief Destroy the ers class ControllerInputManager object

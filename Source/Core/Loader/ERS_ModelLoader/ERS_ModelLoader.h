@@ -53,7 +53,7 @@ class ERS_CLASS_ModelLoader {
 private:
 
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Struct*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Struct*/
 
     std::vector<std::shared_ptr<ERS_STRUCT_Model>> WorkItems_; /**<Items For The Worker To Process*/
     std::vector<long> WorkIDs_; /**<Vector Containing IDs*/
@@ -105,7 +105,7 @@ public:
      * @param Logger 
      * @param TextureLoader 
      */
-    ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, int MaxThreadCount = -1);
+    ERS_CLASS_ModelLoader(ERS_STRUCT_SystemUtils* SystemUtils, int MaxThreadCount = -1);
 
     /**
      * @brief Destroy the Model Loader object

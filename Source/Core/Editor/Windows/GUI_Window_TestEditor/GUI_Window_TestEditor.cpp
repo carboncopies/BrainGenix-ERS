@@ -6,7 +6,7 @@
 
 
 
-Window_TestEditor::Window_TestEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+Window_TestEditor::Window_TestEditor(ERS_STRUCT_SystemUtils* SystemUtils) {
 
 
     SystemUtils_ = SystemUtils;

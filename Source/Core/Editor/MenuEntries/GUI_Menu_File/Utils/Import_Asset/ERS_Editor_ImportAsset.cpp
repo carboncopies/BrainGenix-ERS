@@ -5,7 +5,7 @@
 #include <ERS_Editor_ImportAsset.h>
 
 
-ERS_CLASS_ImportAsset::ERS_CLASS_ImportAsset(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+ERS_CLASS_ImportAsset::ERS_CLASS_ImportAsset(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing Asset Importer Backend", 5);

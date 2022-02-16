@@ -9,7 +9,7 @@
 // optionally optimize processgpu function to provide least amount of lag as possible
 // Add Placeholder meshes during loading
 
-ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, int MaxModelLoadingThreads) {
+ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(ERS_STRUCT_SystemUtils* SystemUtils, int MaxModelLoadingThreads) {
 
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing Model Loader", 5);

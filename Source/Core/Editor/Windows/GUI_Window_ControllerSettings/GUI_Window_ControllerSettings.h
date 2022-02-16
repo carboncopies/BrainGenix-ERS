@@ -31,7 +31,7 @@ class Window_ControllerSettings {
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Pointers To System Resources*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointers To System Resources*/
     std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<Pointer To Human Input Device Info*/
     std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Pointer Struct*/
 
@@ -63,7 +63,7 @@ public:
      * @brief Construct a new Window_ControllerSettings object
      * 
      */
-    Window_ControllerSettings(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
+    Window_ControllerSettings(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
     
     /**
      * @brief Destroy the Window_ControllerSettings object

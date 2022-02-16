@@ -40,7 +40,7 @@ class Window_ShaderEditor {
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<System Utils Pointer*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointer*/
     std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<Shared Pointer To Visual Renderer*/
     std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Pointer*/
     std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
@@ -92,7 +92,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    Window_ShaderEditor(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer);
+    Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer);
 
     /**
      * @brief Destroy the Window_ShaderEditor object

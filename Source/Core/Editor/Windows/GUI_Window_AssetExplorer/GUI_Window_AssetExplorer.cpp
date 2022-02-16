@@ -5,7 +5,7 @@
 #include <GUI_Window_AssetExplorer.h>
 
 
-Window_AssetExplorer::Window_AssetExplorer(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils) {
+Window_AssetExplorer::Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing GUI_Window_AssetExplorer", 5);

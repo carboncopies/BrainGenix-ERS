@@ -31,7 +31,7 @@ class SceneWriter{
 
 private:
 
-    std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Contains System Utils Instance*/
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Contains System Utils Instance*/
 
 
 public:
@@ -41,7 +41,7 @@ public:
      * 
      * @param SystemUtils
      */
-    SceneWriter(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    SceneWriter(ERS_STRUCT_SystemUtils* SystemUtils);
 
     /**
      * @brief Destroy the Scene Writer object
