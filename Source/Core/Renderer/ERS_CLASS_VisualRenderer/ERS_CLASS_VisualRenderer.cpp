@@ -216,14 +216,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
 
         // Check If Grid Enabled
         if (true) {
-        //*******************************************************************************
-        // Something here to render the background ui elements (like the grid)
-        //*******************************************************************************
-
-            
-
-
-
+            Viewports_[Index]->Grid->DrawGrid();
         }
 
 
