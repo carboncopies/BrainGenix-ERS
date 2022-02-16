@@ -29,6 +29,7 @@ struct ERS_STRUCT_Viewport {
     bool MenuEnabled = true; /**<Indicate if the menu is enabled (opened by "`")*/
     bool GizmoEnabled = true; /**<Toggle On/Off The 3D Gizmo*/
     bool ShowCube = true; /**<Enable/Disable The Viewport Cube*/
+    bool GridEnabled = true; /**<Enable/Disable The Viewport's Background Grid*/
     int ShaderIndex = 0; /**<Index of the shader to be used*/
 
     std::shared_ptr<bool> Enabled; /**<Indicates if the viewport is enabled*/
