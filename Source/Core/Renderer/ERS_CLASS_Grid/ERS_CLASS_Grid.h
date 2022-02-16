@@ -47,5 +47,11 @@ public:
      */
     ~ERS_CLASS_Grid();
 
+    
+    /**
+     * @brief Draw The Grid To The Viewport
+     * 
+     */
+    void DrawGrid();
 
 };
