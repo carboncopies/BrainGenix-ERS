@@ -40,6 +40,4 @@ struct ERS_STRUCT_SystemUtils {
     bool IsLinux_ = true; /**<Boolean Value Set To True When Binary Is Compiled For Linux, False Otherwise*/
 
 
-    //ERS_STRUCT_SystemUtils();
-
 };
