@@ -7,9 +7,12 @@ smooth in vec3 ex_originalPosition;
 
 uniform vec4 lineColor;
 
+float GridSize = 0.1f;
+
+
 void main(void)
 {
-    if(fract(ex_UV.x / 0.001f) < 0.01f || fract(ex_UV.y / 0.001f) < 0.01f)
+    if(fract(ex_UV.x / GridSize) < 0.01f || fract(ex_UV.y / GridSize) < 0.01f)
         FragColor = vec4(1.0f);
     else
         FragColor = vec4(0);
