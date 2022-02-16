@@ -32,6 +32,10 @@ private:
     unsigned int GridVBO_; /**<OpenGL ID To Grid Vertex Buffer Object*/
     unsigned int GridVAO_; /**<OpenGL ID To Grid Vertex Array Object*/
 
+public:
+
+    float GridSize = 0.1f;
+    
 
 public:
 
