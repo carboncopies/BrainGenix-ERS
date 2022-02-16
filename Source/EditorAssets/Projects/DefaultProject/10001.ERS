@@ -18,9 +18,15 @@ uniform float GRID_LINE_THICKNESS;
 
 void main(void)
 {
+
     if(fract(UV.x / GRID_SIZE) < GRID_LINE_THICKNESS || fract(UV.y / GRID_SIZE) < GRID_LINE_THICKNESS) {
-        float Distance = distance(vec3(0.0f), OriginalPosition);
-        float Alpha = (0.0001f/pow(Distance, 10));
+
+        // Calculate Opacity Based On Distance From Camera
+        vec3 CameraLocation2D = vec3(CameraPosition[0], CameraPosition[2], 0.0f);
+        float Distance = distance(CameraLocation2D, 25.0f*OriginalPosition);
+        float Alpha = 50.0f/pow(Distance, 3);
+        
+        // Draw Pixel
         FragColor = vec4(GRID_COLOR_BASE, Alpha);
     
     }
