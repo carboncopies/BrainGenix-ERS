@@ -25,6 +25,7 @@ target_link_libraries(ERS_CLASS_Grid
 # Link Internal Libs
 target_link_libraries(ERS_CLASS_Grid
     ERS_STRUCT_SystemUtils
+    ERS_STRUCT_Shader
     )
 
 target_include_directories(ERS_CLASS_Grid PUBLIC ./)

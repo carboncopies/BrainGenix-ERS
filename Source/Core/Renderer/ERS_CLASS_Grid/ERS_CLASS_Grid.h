@@ -17,6 +17,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_Shader.h>
 
 
 
@@ -25,6 +26,7 @@ class ERS_CLASS_Grid {
 private:
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Shared Pointer To System Utils*/
+    std::shared_ptr<ERS_STRUCT_Shader> GridShader_; /**<Pointer To Shader With Grid*/
 
     unsigned int GridVBO_; /**<OpenGL ID To Grid Vertex Buffer Object*/
     unsigned int GridVAO_; /**<OpenGL ID To Grid Vertex Array Object*/
@@ -37,7 +39,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils);
+    ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils, std::shared_ptr<ERS_STRUCT_Shader> GridShader);
 
     /**
      * @brief Destroy the ers class grid object
