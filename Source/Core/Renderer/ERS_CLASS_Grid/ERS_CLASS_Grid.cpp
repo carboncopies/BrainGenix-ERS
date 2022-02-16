@@ -48,11 +48,12 @@ ERS_CLASS_Grid::~ERS_CLASS_Grid() {
 }
 
 
-void ERS_CLASS_Grid::DrawGrid() {
+void ERS_CLASS_Grid::DrawGrid(glm::mat4 View) {
 
 
     GridShader_->MakeActive();
     GridShader_->SetMat4("model", GridModelArray_);
+    GridShader_->SetMat4("view", View);
 
     glBindVertexArray(GridVAO_);
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);

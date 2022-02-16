@@ -202,21 +202,20 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
         // Rendering Commands Here
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
-        // Check If Grid Enabled
-        if (Viewports_[Index]->GridEnabled) {
-            Viewports_[Index]->Grid->DrawGrid();
-        }
-
-        // Use Shader
-        int ShaderIndex = Viewports_[Index]->ShaderIndex;
-        Shaders_[ShaderIndex]->MakeActive();
-
         // Update Camera
         float AspectRatio = (float)RenderWidth / (float)RenderHeight;
         Viewports_[Index]->Camera->SetAspectRatio(AspectRatio);
         glm::mat4 projection = Viewports_[Index]->Camera->GetProjectionMatrix();
         glm::mat4 view = Viewports_[Index]->Camera->GetViewMatrix();
+
+        // Check If Grid Enabled
+        if (Viewports_[Index]->GridEnabled) {
+            Viewports_[Index]->Grid->DrawGrid(view);
+        }
+
+        // Use Shader
+        int ShaderIndex = Viewports_[Index]->ShaderIndex;
+        Shaders_[ShaderIndex]->MakeActive();
 
         // Update Shaders
         UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight, SceneManager);
