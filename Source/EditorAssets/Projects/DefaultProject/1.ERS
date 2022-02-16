@@ -42,7 +42,7 @@ ShaderPrograms:
         VertexID: 100
         FragmentID: 101
     1:
-        Name: "Lit"
+        Name: "Viewport"
         VertexID: 102
         FragmentID: 103
 
