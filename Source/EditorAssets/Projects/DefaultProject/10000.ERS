@@ -7,15 +7,13 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
-smooth out vec3 UV;
-smooth out vec3 OriginalPosition;
+smooth out vec3 ex_UV;
+smooth out vec3 ex_originalPosition;
 
 void main()
 {
     gl_Position = projection * view * model * aPos;
 
-    UV = aTexCoords;
-    OriginalPosition = vec3(aPos.xyz);
+    ex_UV = aTexCoords;
+    ex_originalPosition = vec3(aPos.xyz);
 }
-
-
