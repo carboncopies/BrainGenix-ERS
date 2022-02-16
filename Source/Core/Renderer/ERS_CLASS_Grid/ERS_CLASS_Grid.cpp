@@ -33,6 +33,7 @@ ERS_CLASS_Grid::ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUti
 
     // Setup Grid Model Matrix
     GridModelArray_ = glm::mat4();
+    glm::scale(GridModelArray_, glm::vec3(1.0f));
 
 }
 
@@ -49,8 +50,11 @@ ERS_CLASS_Grid::~ERS_CLASS_Grid() {
 
 void ERS_CLASS_Grid::DrawGrid() {
 
-    glBindVertexArray(GridVAO_);
+
     GridShader_->MakeActive();
+    GridShader_->SetMat4(GridModelArray_);
+
+    glBindVertexArray(GridVAO_);
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 
 }
