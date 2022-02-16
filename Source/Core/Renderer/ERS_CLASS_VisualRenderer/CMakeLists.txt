@@ -30,22 +30,21 @@ target_link_libraries(ERS_CLASS_VisualRenderer
     ERS_CLASS_InputProcessor
     ERS_CLASS_LoggingSystem
     ERS_CLASS_Framebuffer
+    ERS_CLASS_Grid
 
-    ERS_STRUCT_Model
-    ERS_STRUCT_Scene
     ERS_SceneManager
-
-
+    ERS_ShaderLoader
+    ERS_SceneLoader
 
     ERS_Editor_3DCursor
 
-    ERS_ShaderLoader
-    ERS_SceneLoader
 
     ERS_STRUCT_LocRotScale
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_Viewport
     ERS_STRUCT_Shader
+    ERS_STRUCT_Model
+    ERS_STRUCT_Scene
 
     )
 
