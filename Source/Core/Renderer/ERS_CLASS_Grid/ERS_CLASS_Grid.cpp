@@ -31,6 +31,9 @@ ERS_CLASS_Grid::ERS_CLASS_Grid(std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUti
     glVertexAttribPointer(PositionIndex, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float), (void*)0);
     glEnableVertexAttribArray(PositionIndex);
 
+    // Setup Grid Model Matrix
+    GridModelArray_ = glm::mat4();
+
 }
 
 

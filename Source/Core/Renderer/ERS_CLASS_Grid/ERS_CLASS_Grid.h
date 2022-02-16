@@ -27,6 +27,7 @@ private:
 
     std::shared_ptr<ERS_STRUCT_SystemUtils> SystemUtils_; /**<Shared Pointer To System Utils*/
     std::shared_ptr<ERS_STRUCT_Shader> GridShader_; /**<Pointer To Shader With Grid*/
+    glm::mat4 GridModelArray_; /**<Grid Model Mat4*/
 
     unsigned int GridVBO_; /**<OpenGL ID To Grid Vertex Buffer Object*/
     unsigned int GridVAO_; /**<OpenGL ID To Grid Vertex Array Object*/
