@@ -59,13 +59,15 @@ ERS_CLASS_Grid::~ERS_CLASS_Grid() {
 }
 
 
-void ERS_CLASS_Grid::DrawGrid(glm::mat4 View, glm::mat4 Projection) {
+void ERS_CLASS_Grid::DrawGrid(glm::mat4 View, glm::mat4 Projection, glm::vec3 CameraPosition) {
 
 
     GridShader_->MakeActive();
     GridShader_->SetMat4("model", GridModelArray_);
     GridShader_->SetMat4("view", View);
     GridShader_->SetMat4("projection", Projection);
+
+    GridShader_->SetVec3("CameraPosition", CameraPosition);
 
     GridShader_->SetFloat("GRID_SIZE", GridSize_);
     GridShader_->SetFloat("GRID_LINE_THICKNESS", GridLineThickness_);

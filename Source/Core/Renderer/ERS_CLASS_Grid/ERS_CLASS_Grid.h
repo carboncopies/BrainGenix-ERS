@@ -47,7 +47,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_Grid(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_Shader> GridShader);
+    ERS_CLASS_Grid(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_Shader> GridShader, glm::vec3 CameraPosition);
 
     /**
      * @brief Destroy the ers class grid object
