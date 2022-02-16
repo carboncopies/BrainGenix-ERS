@@ -215,7 +215,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
 
 
         // Check If Grid Enabled
-        if (true) {
+        if (Viewports_[Index]->GridEnabled) {
             Viewports_[Index]->Grid->DrawGrid();
         }
 
