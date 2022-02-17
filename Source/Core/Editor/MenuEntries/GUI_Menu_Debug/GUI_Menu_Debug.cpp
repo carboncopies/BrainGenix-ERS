@@ -39,20 +39,17 @@ void GUI_Menu_Debug::Draw() {
         // Debug Menu
         if (ImGui::BeginMenu("Debug")) {
 
-            std::cout<<"Test1\n";
 
             // Debugging Tools Menu
             if (ImGui::MenuItem("ImGui Demo Window")) {
                 ShowImGuiDemoWindow_ = !ShowImGuiDemoWindow_;
             }
-            std::cout<<"Test2\n";
 
             // Test Editor
             if (ImGui::MenuItem("Test Editor Window")) {
                 TestEditor_->Enabled_ = !TestEditor_->Enabled_;
             }
 
-            std::cout<<"Test3\n";
 
         ImGui::EndMenu();
         }
