@@ -193,7 +193,7 @@ vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData
 
 vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection) {
 
-    vec3 LightDirectionVector = normalize(Light.Direction - FragPos);
+    vec3 LightDirectionVector = normalize(Light.Position - FragPos);
     vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Normal);
 
     // Diffuse/Specular Components
