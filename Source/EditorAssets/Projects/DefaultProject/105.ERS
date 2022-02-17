@@ -16,11 +16,12 @@ in vec3 Normal;
 struct STRUCT_DirectionalLight {
 
     vec3 Position;
+    vec3 Direction;
 
     // Light Color Parameters
-    vec3 AmbientColor;
-    vec3 DiffuseColor;
-    vec3 SpecularColor;
+    vec3 Ambient;
+    vec3 Diffuse;
+    vec3 Specular;
 
 };
 
@@ -30,9 +31,9 @@ struct STRUCT_PointLight {
     vec3 Position;
 
     // Light Color Parameters
-    vec3 AmbientColor;
-    vec3 DiffuseColor;
-    vec3 SpecularColor;
+    vec3 Ambient;
+    vec3 Diffuse;
+    vec3 Specular;
 
     // Light Rolloff Parameters
     float ConstantRolloff;
@@ -48,9 +49,9 @@ struct STRUCT_SpotLight {
     vec3 Direction;
 
     // Light Color Parameters
-    vec3 AmbientColor;
-    vec3 DiffuseColor;
-    vec3 SpecularColor;
+    vec3 Ambient;
+    vec3 Diffuse;
+    vec3 Specular;
 
     // Light Rolloff Parameters
     float ConstantRolloff;
@@ -102,24 +103,20 @@ uniform vec3 CameraPosition; // Get Camera XYZ Position
 uniform STRUCT_Material Material;
 
 // Get Lighting Info
-#define MAXIMUM_DIRECTIONAL_LIGHTS 4;
-#define MAXIMUM_POINT_LIGHTS 256;
-#define MAXIMUM_SPOT_LIGHTS 128;
-
 uniform int NumberDirectionalLights;
-uniform STRUCT_DirectionalLight DirectionalLights[MAXIMUM_DIRECTIONAL_LIGHTS];
 uniform int NumberPointLights;
-uniform STRUCT_PointLight PointLights[MAXIMUM_POINT_LIGHTS];
 uniform int NumberSpotLights;
-uniform STRUCT_SpotLight SpotLights[MAXIMUM_SPOT_LIGHTS];
+uniform STRUCT_DirectionalLight DirectionalLights[4];
+uniform STRUCT_PointLight PointLights[256];
+uniform STRUCT_SpotLight SpotLights[256];
 
 
 
 
 // Declare Light Calculation Functions
-CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 ViewDirection);
-CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection);
-CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection);
+vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 ViewDirection);
+vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection);
+vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection);
 
 
 
@@ -136,22 +133,25 @@ void main()
     SampledData.HeightTextureColor = texture(Material.Height, TexCoords);
     
 
+    vec3 Norm = normalize(Normal);
+    vec3 ViewDirection = normalize(CameraPosition - FragPos);
+
     // ---- Calculate Lighting Contributions ---- //
     vec4 Result = vec4(0.0f);
 
     // Calculate Directional Lights
     for (int i = 0; i < NumberDirectionalLights; i++) {
-        Result += CalculateDirectionalLight(DirectionalLights[i], SampledData, Normal, ViewDirection);
+        Result += CalculateDirectionalLight(DirectionalLights[i], SampledData, Norm, ViewDirection);
     }
 
     // Calculate Point Lights
     for (int i = 0; i < NumberPointLights; i++) {
-        Result += CalculatePointLight(PointLights[i], SampledData, Normal, FragPos, ViewDirection);
+        Result += CalculatePointLight(PointLights[i], SampledData, Norm, FragPos, ViewDirection);
     }
 
     // Calculate Spot Lights
     for (int i = 0; i < NumberSpotLights; i++) {
-        Result += CalculateSpotLight(SpotLights[i], SampledData, Normal, FragPos, ViewDirection);
+        Result += CalculateSpotLight(SpotLights[i], SampledData, Norm, FragPos, ViewDirection);
     }
     
     FragColor = Result;
@@ -162,7 +162,7 @@ void main()
 vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 ViewDirection) {
     
     vec3 LightDirectionVector = normalize(-Light.Direction);
-    vec3 ReflectionDirectionVector = normalize(-LightDirectionVector, Normal);
+    vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Normal);
 
     // Diffuse/Specular Components
     float Diffuse = max(dot(Normal, LightDirectionVector), 0.0f);
@@ -179,8 +179,8 @@ vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData
 
 vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection) {
 
-    vec3 LightDirectionVector = normalize(Light.Direction - FragPos);
-    vec3 ReflectionDirectionVector = normalize(-LightDirectionVector, Normal);
+    vec3 LightDirectionVector = normalize(Light.Position - FragPos);
+    vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Normal);
 
     // Diffuse/Specular Components
     float Diffuse = max(dot(Normal, LightDirectionVector), 0.0f);
@@ -202,7 +202,7 @@ vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData
 vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection) {
 
     vec3 LightDirectionVector = normalize(Light.Direction - FragPos);
-    vec3 ReflectionDirectionVector = normalize(-LightDirectionVector, Normal);
+    vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Normal);
 
     // Diffuse/Specular Components
     float Diffuse = max(dot(Normal, LightDirectionVector), 0.0f);
