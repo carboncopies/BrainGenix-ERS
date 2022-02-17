@@ -174,6 +174,52 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 SceneDataNode[i]["PosZ"].as<float>()
                 );
 
+        } else if (AssetType == std::string("SpotLight")) {
+
+            // Setup Model Pointer In Scene To Work On
+            Scene.SpotLights.push_back(std::make_shared<ERS_STRUCT_SpotLight>());
+            int LightIndex = Scene.SpotLights.size() - 1;
+
+            Scene.SpotLights[LightIndex]->UserDefinedName = AssetName;
+
+
+            Scene.SpotLights[LightIndex]->RolloffConstant = SceneDataNode[i]["RolloffConstant"].as<float>();
+            Scene.SpotLights[LightIndex]->RolloffLinear = SceneDataNode[i]["RolloffLinear"].as<float>();
+            Scene.SpotLights[LightIndex]->RolloffQuadratic = SceneDataNode[i]["RolloffQuadratic"].as<float>();
+
+
+            Scene.SpotLights[LightIndex]->CutOff = SceneDataNode[i]["CutOff"].as<float>();
+            Scene.SpotLights[LightIndex]->OuterCutOff = SceneDataNode[i]["OuterCutOff"].as<float>();
+
+
+            Scene.SpotLights[LightIndex]->Ambient = glm::vec3(
+                SceneDataNode[i]["AmbientRed"].as<float>(),
+                SceneDataNode[i]["AmbientGreen"].as<float>(),
+                SceneDataNode[i]["AmbientBlue"].as<float>()
+                );
+            Scene.SpotLights[LightIndex]->Diffuse = glm::vec3(
+                SceneDataNode[i]["DiffuseRed"].as<float>(),
+                SceneDataNode[i]["DiffuseGreen"].as<float>(),
+                SceneDataNode[i]["DiffuseBlue"].as<float>()
+                );
+            Scene.SpotLights[LightIndex]->Specular = glm::vec3(
+                SceneDataNode[i]["SpecularRed"].as<float>(),
+                SceneDataNode[i]["SpecularGreen"].as<float>(),
+                SceneDataNode[i]["SpecularBlue"].as<float>()
+                );
+
+            Scene.SpotLights[LightIndex]->Pos = glm::vec3(
+                SceneDataNode[i]["PosX"].as<float>(),
+                SceneDataNode[i]["PosY"].as<float>(),
+                SceneDataNode[i]["PosZ"].as<float>()
+                );
+            Scene.SpotLights[LightIndex]->Rot = glm::vec3(
+                SceneDataNode[i]["RotX"].as<float>(),
+                SceneDataNode[i]["RotY"].as<float>(),
+                SceneDataNode[i]["RotZ"].as<float>()
+                );
+
+
         }
 
     }
