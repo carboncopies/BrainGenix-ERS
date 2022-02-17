@@ -454,9 +454,9 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     // Cheaty Lighting Setup
 
     // Diffuse Lamp
-    ActiveShader->SetInt("NumberDirectionalLights", 1);
-    ActiveShader->SetInt("NumberPointLights", 2);
-    ActiveShader->SetInt("NumberSpotLights", 0);
+    ActiveShader->SetInt("NumberDirectionalLights", 0);
+    ActiveShader->SetInt("NumberPointLights", 0);
+    ActiveShader->SetInt("NumberSpotLights", 1);
     
 
     ActiveShader->SetVec3("DirectionalLights[0].Direction", glm::vec3(0.0f));
