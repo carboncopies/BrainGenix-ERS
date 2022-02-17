@@ -96,7 +96,7 @@ struct STRUCT_Material {
 
     bool HasSpecularMap;
     bool HasNormalMap;
-    bool HasHeight;
+    bool HasHeightMap;
 
     float SpecularValue; // If set to something other than 0, this will make the target shiny
 
