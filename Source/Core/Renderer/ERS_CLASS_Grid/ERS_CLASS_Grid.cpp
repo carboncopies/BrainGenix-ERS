@@ -73,6 +73,7 @@ void ERS_CLASS_Grid::DrawGrid(glm::mat4 View, glm::mat4 Projection, glm::vec3 Ca
     GridShader_->SetFloat("GRID_SCALE", GridScale_);
     GridShader_->SetFloat("GRID_LINE_THICKNESS", GridLineThickness_);
     GridShader_->SetVec3("GRID_COLOR_BASE", GridColor_);
+    std::cout<<glm::to_string(GridColor_)<<std::endl;
     GridShader_->SetVec3("GRID_COLOR_X", GridColorX_);
     GridShader_->SetVec3("GRID_COLOR_Z", GridColorZ_);
 
