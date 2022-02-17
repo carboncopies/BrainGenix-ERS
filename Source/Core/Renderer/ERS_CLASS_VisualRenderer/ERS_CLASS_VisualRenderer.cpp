@@ -474,6 +474,17 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetVec3("PointLights[0].Diffuse", glm::vec3(1.0f));
     ActiveShader->SetVec3("PointLights[0].Specular", glm::vec3(1.0f));
 
+
+    ActiveShader->SetVec3("PointLights[1].Position", glm::vec3(-10.0f, 0.0f, 0.0f));
+    ActiveShader->SetFloat("PointLights[1].ConstantRolloff", 1.0f);
+    ActiveShader->SetFloat("PointLights[1].LinearRolloff", 0.09f);
+    ActiveShader->SetFloat("PointLights[1].QuadraticRolloff", 0.032f);
+    
+    ActiveShader->SetVec3("PointLights[1].Ambient", glm::vec3(0.0f));
+    ActiveShader->SetVec3("PointLights[1].Diffuse", glm::vec3(1.0f));
+    ActiveShader->SetVec3("PointLights[1].Specular", glm::vec3(1.0f));
+
+
     ActiveShader->SetFloat("Shinyness", 32.0f);
     
     
