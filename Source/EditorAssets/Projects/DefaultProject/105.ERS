@@ -90,7 +90,11 @@ struct Material {
     sampler2D Normal;
     sampler2D Height;
 
-    
+    bool HasSpecularMap = false;
+    bool HasNormalMap = false;
+    bool HasHeight = false;
+
+    float Specular = 0.0f; // If set to something other than 0, this will make the target shiny
 
 };
 
