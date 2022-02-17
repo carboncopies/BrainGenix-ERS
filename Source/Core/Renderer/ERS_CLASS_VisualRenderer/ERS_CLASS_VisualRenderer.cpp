@@ -490,6 +490,18 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
             // Grid Scale Submenu
             if (ImGui::BeginMenu("Scale")) {
 
+                if (ImGui::MenuItem("0.0625 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.00125f))) {
+                    Viewports_[Index]->Grid->GridSize_ = 0.00125f;
+                }
+
+                if (ImGui::MenuItem("0.125 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.0025f))) {
+                    Viewports_[Index]->Grid->GridSize_ = 0.0025f;
+                }
+
+                if (ImGui::MenuItem("0.25 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.005f))) {
+                    Viewports_[Index]->Grid->GridSize_ = 0.005f;
+                }
+
                 if (ImGui::MenuItem("0.5 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.01f))) {
                     Viewports_[Index]->Grid->GridSize_ = 0.01f;
                 }
