@@ -551,7 +551,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
             if (ImGui::BeginMenu("Colors")) {
 
                 // Base Color
-                if (ImGui::BeginMenu("Base Color")) {
+                if (ImGui::BeginMenu("Base")) {
 
 
                     if (ImGui::MenuItem("White")) {
@@ -580,6 +580,71 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
 
                 ImGui::EndMenu();
                 }
+
+                // X Axis Color
+                if (ImGui::BeginMenu("X Axis")) {
+
+
+                    if (ImGui::MenuItem("Red")) {
+                        Viewports_[Index]->Grid->GridColorX_ = glm::vec3(1.0f, 0.0f, 0.0f);
+                    }
+
+                    if (ImGui::MenuItem("Green")) {
+                        Viewports_[Index]->Grid->GridColorX_ = glm::vec3(0.0f, 1.0f, 0.0f);
+                    }
+
+                    if (ImGui::MenuItem("Blue")) {
+                        Viewports_[Index]->Grid->GridColorX_ = glm::vec3(0.0f, 0.0f, 1.0f);
+                    }
+
+                    if (ImGui::MenuItem("Dark Grey")) {
+                        Viewports_[Index]->Grid->GridColorX_ = glm::vec3(0.25f);
+                    }
+
+                    if (ImGui::MenuItem("Very Dark Grey")) {
+                        Viewports_[Index]->Grid->GridColorX_ = glm::vec3(0.1f);
+                    }
+
+                    if (ImGui::MenuItem("Black")) {
+                        Viewports_[Index]->Grid->GridColorX_ = glm::vec3(0.0f);
+                    }
+
+                ImGui::EndMenu();
+                }
+
+
+                // Z Axis Color
+                if (ImGui::BeginMenu("Z Axis")) {
+
+
+                    if (ImGui::MenuItem("Red")) {
+                        Viewports_[Index]->Grid->GridColorZ_ = glm::vec3(1.0f, 0.0f, 0.0f);
+                    }
+
+                    if (ImGui::MenuItem("Green")) {
+                        Viewports_[Index]->Grid->GridColorZ_ = glm::vec3(0.0f, 1.0f, 0.0f);
+                    }
+
+                    if (ImGui::MenuItem("Blue")) {
+                        Viewports_[Index]->Grid->GridColorZ_ = glm::vec3(0.0f, 0.0f, 1.0f);
+                    }
+
+                    if (ImGui::MenuItem("Dark Grey")) {
+                        Viewports_[Index]->Grid->GridColorZ_ = glm::vec3(0.25f);
+                    }
+
+                    if (ImGui::MenuItem("Very Dark Grey")) {
+                        Viewports_[Index]->Grid->GridColorZ_ = glm::vec3(0.1f);
+                    }
+
+                    if (ImGui::MenuItem("Black")) {
+                        Viewports_[Index]->Grid->GridColorZ_ = glm::vec3(0.0f);
+                    }
+
+                ImGui::EndMenu();
+                }
+
+
             ImGui::EndMenu();
             }
 
