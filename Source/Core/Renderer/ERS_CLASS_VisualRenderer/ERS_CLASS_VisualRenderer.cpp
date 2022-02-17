@@ -459,7 +459,13 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetInt("NumberSpotLights", 0);
     
 
-    ActiveShader->SetVec
+    ActiveShader->SetVec3("DirectionalLights[0].Direction", glm::vec3(0.0f));
+    ActiveShader->SetVec3("DirectionalLights[0].Ambient", glm::vec3(1.0f));
+    ActiveShader->SetVec3("DirectionalLights[0].Diffuse", glm::vec3(1.0f));
+    ActiveShader->SetVec3("DirectionalLights[0].Specular", glm::vec3(1.0f));
+    ActiveShader->SetFloat("Shinyness", 32.0f);
+    
+    
 
 
 }
