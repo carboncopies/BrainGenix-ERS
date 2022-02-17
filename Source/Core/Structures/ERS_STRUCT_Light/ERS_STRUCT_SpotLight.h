@@ -26,16 +26,8 @@ struct ERS_STRUCT_SpotLight {
     float OuterCutOff; /**<CutOff angleFor Spotlight (outer)*/
     
     
-    float ColorRed; /**<Red Component*/
-    float ColorGreen; /**<Green Component*/
-    float ColorBlue; /**<Blue Component*/
-    
-    float PosX; /**<Position*/
-    float PosY; /**<Position*/
-    float PosZ; /**<Position*/
-
-    float RotX; /**<Rotation (direction)*/
-    float RotY; /**<Rotation (direction)*/
-    float RotZ; /**<Rotation (direction)*/
+    glm::vec3 Color; /**<Color of the light*/
+    glm::vec3 Pos; /**<Position*/
+    glm::vec3 Rot; /**<Rotation or Direction Of Light*/
 
 };
