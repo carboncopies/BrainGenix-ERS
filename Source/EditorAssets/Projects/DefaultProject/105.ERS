@@ -25,11 +25,8 @@ uniform vec3 CameraPosition; // Get Camera XYZ Position
 uniform STRUCT_Material Material;
 
 // Get Lighting Info
-uniform vec3 Light_Ambient_Color;
-
-uniform vec3 Light_Position;
-uniform vec3 Light_Diffuse_Color;
-uniform vec3 Light_Specular_Color;
+uniform int NumberDirectionalLights;
+uniform STRUCT_DirectionalLight DirectionalLights[NumberDirectionalLights];
 
 
 
@@ -121,9 +118,20 @@ void main()
     SampledData.HeightTextureColor = texture(Material.Height, TexCoords);
     
 
+    // ---- Calculate Lighting Contributions ---- //
+    vec4 Result = vec4(0.0f);
+
+    // Calculate Directional Lights
+    for (int i = 0; i < NumberDirectionalLights; i++) {
+        Result += CalculateDirectionalLight(DirectionalLights[i], SampledData, Normal, ViewDirection);
+    }
+
+    // Calculate Point Lights
+
+    // Calculate Spot Lights
 
     
-    FragColor = FragDiffuseColor + FragSpecularColor;
+    FragColor = Result;
     
 }
 
