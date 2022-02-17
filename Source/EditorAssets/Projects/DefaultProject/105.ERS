@@ -119,20 +119,20 @@ void main()
     // ---- Extract Texture Vectors, Create SampledData Struct ---- //
     STRUCT_SampledData SampledData;
 
-    SampledColors.DiffuseTextureColor = texture(Material.Diffuse, TexCoords);
+    SampledData.DiffuseTextureColor = texture(Material.Diffuse, TexCoords);
 
     if (Material.HasSpecularMap) {
-        SampledColors.SpecularTextureColor = texture(Material.Specular, TexCoords);
+        SampledData.SpecularTextureColor = texture(Material.Specular, TexCoords);
     } else {
-        SampledColors.SpecularTextureColor = Material.SpecularValue;
+        SampledData.SpecularTextureColor = Material.SpecularValue;
     }
     
     if (Material.HasNormalMap) {
-        SampledColors.NormalTextureColor = texture(Material.Normal, TexCoords);
+        SampledData.NormalTextureColor = texture(Material.Normal, TexCoords);
     }
     
     if (Material.HasHeightMap) {
-        SampledColors.HeightTextureColor = texture(Material.Height, TexCoords);
+        SampledData.HeightTextureColor = texture(Material.Height, TexCoords);
     }
 
 
