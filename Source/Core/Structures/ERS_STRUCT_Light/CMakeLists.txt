@@ -21,6 +21,7 @@ add_library(ERS_STRUCT_Light
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_STRUCT_Light
+    glm
     )
 
 # Link Internal Libs

@@ -432,6 +432,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     // Directional lights: 4
     // Point Lights: 64
     // Spot Lights: 32
+    // TO DO BELOW:
     // When these limitations are reached, ERS will remove the lights that are farthest from the object
 
     // Prepare To Handle Lights
@@ -441,9 +442,23 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     std::shared_ptr<ERS_STRUCT_Scene> ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_];
 
 
+    // ~!!!!!!!!!!!!!!!FIXME: IMPLEMENT SYSTEM TO USE THE LIGHTS CLOSEST TO THE OBJECT !!!!!!!!!!!!!!!!!!!!!~ //
+
+
     // DIRECTIONAL LIGHTS
     int NumberDirectionalLights = ActiveScene->DirectionalLights.size();
 
+    ActiveShader->SetFloat("NumberDirectionalLights", NumberDirectionalLights);
+    for (int i = 0; i < NumberDirectionalLights; i++) {
+    
+        std::string UniformName = std::string("DirectionalLights[") + std::to_string(i) + std::string("]");
+
+        ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ActiveScene->DirectionalLights[i]->);
+        ActiveShader->SetVec3("DirectionalLights[0].Ambient", glm::vec3(0.2f));
+        ActiveShader->SetVec3("DirectionalLights[0].Diffuse", glm::vec3(0.3f));
+        ActiveShader->SetVec3("DirectionalLights[0].Specular", glm::vec3(0.3f));
+    
+    }
 
 
 
