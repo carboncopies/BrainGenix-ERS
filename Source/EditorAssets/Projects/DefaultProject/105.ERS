@@ -53,7 +53,32 @@ struct PointLight {
     vec3 DiffuseColor;
     vec3 SpecularColor;
 
-    
+    // Light Rolloff Parameters
+    float ConstantRolloff;
+    float LinearRolloff;
+    float QuadraticRolloff;
+
+}
+
+struct SpotLight {
+
+    // Physical Parameters
+    vec3 Position;
+    vec3 Direction;
+
+    // Light Color Parameters
+    vec3 AmbientColor;
+    vec3 DiffuseColor;
+    vec3 SpecularColor;
+
+    // Light Rolloff Parameters
+    float ConstantRolloff;
+    float LinearRolloff;
+    float QuadraticRolloff;
+
+    // Spotlight Parameters
+    float CutOff;
+    float OuterCutOff;
 
 }
 
