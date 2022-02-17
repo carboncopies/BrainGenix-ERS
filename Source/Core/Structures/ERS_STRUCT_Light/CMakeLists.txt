@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_Light
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_Light.cpp"
+            "ERS_STRUCT_SpotLight.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_Light.h"
+            "ERS_STRUCT_SpotLight.h"
             
             ${BACKWARD_ENABLE}
             )
