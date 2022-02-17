@@ -31,6 +31,33 @@ uniform vec3 Light_Specular_Color;
 float SpecularStrength = 1.0f;
 
 
+// Light Structs
+struct DirectionalLight {
+
+    vec3 Position;
+
+    // Light Color Parameters
+    vec3 AmbientColor;
+    vec3 DiffuseColor;
+    vec3 SpecularColor;
+
+}
+
+struct PointLight {
+
+    // Physical Parameters
+    vec3 Position;
+
+    // Light Color Parameters
+    vec3 AmbientColor;
+    vec3 DiffuseColor;
+    vec3 SpecularColor;
+
+    
+
+}
+
+
 void main()
 {    
 
