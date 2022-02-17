@@ -442,7 +442,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     std::shared_ptr<ERS_STRUCT_Scene> ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_];
 
 
-    // ~!!!!!!!!!!!!!!!FIXME: IMPLEMENT SYSTEM TO USE THE LIGHTS CLOSEST TO THE OBJECT !!!!!!!!!!!!!!!!!!!!!~ //
+    // ~-------------------------------------------------------------------!!!!!!!!!!!!!!!FIXME: IMPLEMENT SYSTEM TO USE THE LIGHTS CLOSEST TO THE OBJECT !!!!!!!!!!!!!!!!!!!!!~----------------------------------- //
 
 
     // Directional Lights
@@ -483,53 +483,32 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
 
     // Spot Lights
-        int NumberPointLights = ActiveScene->PointLights.size();
+    int NumberSpotLights = ActiveScene->SpotLights.size();
 
-    ActiveShader->SetFloat("NumberPointLights", NumberPointLights);
-    for (int i = 0; i < NumberPointLights; i++) {
+    ActiveShader->SetFloat("NumberSpotLights", NumberSpotLights);
+    for (int i = 0; i < NumberSpotLights; i++) {
     
-        std::string UniformName = std::string("PointLights[") + std::to_string(i) + std::string("]");
+        std::string UniformName = std::string("SpotLights[") + std::to_string(i) + std::string("]");
 
-        ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->PointLights[i]->Pos);
+        ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->SpotLights[i]->Pos);
+        ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ActiveScene->SpotLights[i]->Rot);
 
-        ActiveShader->SetFloat((UniformName + std::string(".ConstantRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffConstant);
-        ActiveShader->SetFloat((UniformName + std::string(".LinearRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffLinear);
-        ActiveShader->SetFloat((UniformName + std::string(".QuadraticRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffQuadratic);
+        ActiveShader->SetFloat((UniformName + std::string(".ConstantRolloff")).c_str(), ActiveScene->SpotLights[i]->RolloffConstant);
+        ActiveShader->SetFloat((UniformName + std::string(".LinearRolloff")).c_str(), ActiveScene->SpotLights[i]->RolloffLinear);
+        ActiveShader->SetFloat((UniformName + std::string(".QuadraticRolloff")).c_str(), ActiveScene->SpotLights[i]->RolloffQuadratic);
 
-        ActiveShader->SetVec3((UniformName + std::string(".Ambient")).c_str(), ActiveScene->PointLights[i]->Ambient);
-        ActiveShader->SetVec3((UniformName + std::string(".Diffuse")).c_str(), ActiveScene->PointLights[i]->Diffuse);
-        ActiveShader->SetVec3((UniformName + std::string(".Specular")).c_str(), ActiveScene->PointLights[i]->Specular);
+        ActiveShader->SetFloat((UniformName + std::string(".CutOff")).c_str(), ActiveScene->SpotLights[i]->CutOff);
+        ActiveShader->SetFloat((UniformName + std::string(".OuterCutOff")).c_str(), ActiveScene->SpotLights[i]->OuterCutOff);
+
+        ActiveShader->SetVec3((UniformName + std::string(".Ambient")).c_str(), ActiveScene->SpotLights[i]->Ambient);
+        ActiveShader->SetVec3((UniformName + std::string(".Diffuse")).c_str(), ActiveScene->SpotLights[i]->Diffuse);
+        ActiveShader->SetVec3((UniformName + std::string(".Specular")).c_str(), ActiveScene->SpotLights[i]->Specular);
     
     }
 
 
 
-    // Cheaty Lighting Setup
-
-    // Diffuse Lamp
-    ActiveShader->SetInt("NumberDirectionalLights", 0);
-    ActiveShader->SetInt("NumberPointLights", 0);
-    ActiveShader->SetInt("NumberSpotLights", 1);
-
-
-
-    ActiveShader->SetVec3("SpotLights[0].Position", Camera->Position);
-    ActiveShader->SetVec3("SpotLights[0].Direction", Camera->Front);
-    ActiveShader->SetFloat("SpotLights[0].ConstantRolloff", 1.0f);
-    ActiveShader->SetFloat("SpotLights[0].LinearRolloff", glm::cos(glm::radians(12.5f)));
-    ActiveShader->SetFloat("SpotLights[0].QuadraticRolloff", glm::cos(glm::radians(15.0f)));
-
-    ActiveShader->SetFloat("SpotLights[0].Cutoff", 0.91f);
-    ActiveShader->SetFloat("SpotLights[0].OuterCutoff", 0.82f);
-
-    ActiveShader->SetVec3("SpotLights[0].Ambient", glm::vec3(0.0f));
-    ActiveShader->SetVec3("SpotLights[0].Diffuse", glm::vec3(1.0f));
-    ActiveShader->SetVec3("SpotLights[0].Specular", glm::vec3(1.0f));
-
-
     ActiveShader->SetFloat("Shinyness", 32.0f);
-    
-    
 
 
 }
