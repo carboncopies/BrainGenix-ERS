@@ -33,7 +33,7 @@ void main(void)
         }
     
         // Calculate Opacity Based On Distance From Camera
-        vec3 CameraLocation2D = vec3(CameraPosition[0], CameraPosition[2], 0.0f);
+        vec3 CameraLocation2D = vec3(CameraPosition[0], CameraPosition[2], CameraPosition[1]/4.0f);
         float Distance = distance(CameraLocation2D, GRID_SCALE*OriginalPosition);
         float Alpha = 75.0f/pow(Distance, 3);
         
