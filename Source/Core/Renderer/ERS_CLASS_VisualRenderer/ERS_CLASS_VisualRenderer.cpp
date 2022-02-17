@@ -454,9 +454,9 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         std::string UniformName = std::string("DirectionalLights[") + std::to_string(i) + std::string("]");
 
         ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ActiveScene->DirectionalLights[i]->Rot);
-        ActiveShader->SetVec3("DirectionalLights[0].Ambient", ActiveScene->DirectionalLights[i]->Ambient);
-        ActiveShader->SetVec3("DirectionalLights[0].Diffuse", ActiveScene->DirectionalLights[i]->Diffuse);
-        ActiveShader->SetVec3("DirectionalLights[0].Specular", ActiveScene->DirectionalLights[i]->Specular);
+        ActiveShader->SetVec3((UniformName + std::string(".Ambient")).c_str(), ActiveScene->DirectionalLights[i]->Ambient);
+        ActiveShader->SetVec3((UniformName + std::string(".Diffuse")).c_str(), ActiveScene->DirectionalLights[i]->Diffuse);
+        ActiveShader->SetVec3((UniformName + std::string(".Specular")).c_str(), ActiveScene->DirectionalLights[i]->Specular);
     
     }
 
