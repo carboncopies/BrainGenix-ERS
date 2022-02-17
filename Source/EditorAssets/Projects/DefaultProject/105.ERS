@@ -121,10 +121,10 @@ void main()
     // ---- Extract Texture Vectors, Create SampledData Struct ---- //
     STRUCT_SampledData SampledData;
 
-    SampledData.DiffuseTextureColor = texture(Material.Diffuse, TexCoords);
-    SampledData.SpecularTextureColor = texture(Material.Specular, TexCoords);
-    SampledData.NormalTextureColor = texture(Material.Normal, TexCoords);
-    SampledData.HeightTextureColor = texture(Material.Height, TexCoords);
+    SampledData.DiffuseTextureColor = texture(texture_diffuse1, TexCoords);
+    SampledData.SpecularTextureColor = texture(texture_specular1, TexCoords);
+    SampledData.NormalTextureColor = texture(texture_normal1, TexCoords);
+    SampledData.HeightTextureColor = texture(texture_height1, TexCoords);
     
 
     vec3 Norm = normalize(Normal);
