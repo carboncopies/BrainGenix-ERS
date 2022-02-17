@@ -12,7 +12,9 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_Model.h>
-#include <ERS_STRUCT_Light.h>
+#include <ERS_STRUCT_PointLight.h>
+#include <ERS_STRUCT_SpotLight.h>
+#include <ERS_STRUCT_DirectionalLight.h>
 
 
 
@@ -27,7 +29,9 @@ struct ERS_STRUCT_Scene{
 
     // List Of Required Materials (For Now, Can Only Be Models)
     std::vector<std::shared_ptr<ERS_STRUCT_Model>> Models; /**<List of models*/
-    std::vector<std::shared_ptr<ERS_STRUCT_Light>> Lights; /**<List of lights*/
+    std::vector<std::shared_ptr<ERS_STRUCT_SpotLight>> SpotLights; /**<List of spot lights*/
+    std::vector<std::shared_ptr<ERS_STRUCT_DirectionalLight>> DirectionalLights; /**<List of spot lights*/
+    std::vector<std::shared_ptr<ERS_STRUCT_PointLight>> PointLights; /**<List of spot lights*/
 
     // Model That's Currently Selected
     int SelectedModel = 0; /**<The Model That Is Currently Selected*/
