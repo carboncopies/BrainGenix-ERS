@@ -122,42 +122,6 @@ void main()
     
 
 
-
-
-
-
-
-
-    // Calculate Texture Components
-    vec4 DiffuseColor = texture(texture_diffuse1, TexCoords);
-    vec4 SpecularColor = texture(texture_specular1, TexCoords);
-
-
-    // Ambient Lighting Calculation
-    vec3 Light_Ambient_Component = Light_Ambient_Color;
-
-
-    // Diffuse Lighting Calculation
-    vec3 Norm = normalize(Normal);
-    vec3 LightDir = normalize(Light_Position - FragPos);
-
-    float AngleDifference = max(dot(Norm, LightDir), 0.0f);
-    vec3 Light_Diffuse_Component = AngleDifference * Light_Diffuse_Color;
-
-    
-    // Specular Lighting Calculation
-    vec3 ViewDirection = normalize(CameraPosition - FragPos);
-    vec3 ReflectionDirection = reflect(-LightDir, Norm);
-
-    float Specular = pow(max(dot(ViewDirection, ReflectionDirection), 0.0), 32);
-    vec3 Light_Specular_Component = SpecularStrength * Specular * Light_Specular_Color;
-
-
-    // Generate Color For Fragments Based On TexMaps
-    vec3 LightValue = Light_Ambient_Component + Light_Diffuse_Component;
-    vec4 FragDiffuseColor = vec4(LightValue, 1.0f) * DiffuseColor;
-    
-    vec4 FragSpecularColor = vec4(Light_Specular_Component, 1.0f) * SpecularStrength;
     
     FragColor = FragDiffuseColor + FragSpecularColor;
     
