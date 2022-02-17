@@ -112,6 +112,11 @@ uniform STRUCT_SpotLight SpotLights[NumberSpotLights];
 
 
 
+// Declare Light Calculation Functions
+CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 ViewDirection);
+CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection);
+CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection);
+
 
 void main()
 {    
