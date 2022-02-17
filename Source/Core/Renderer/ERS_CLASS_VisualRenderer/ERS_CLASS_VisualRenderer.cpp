@@ -492,8 +492,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetFloat("SpotLights[0].LinearRolloff", 0.09f);
     ActiveShader->SetFloat("SpotLights[0].QuadraticRolloff", 0.032f);
 
-    ActiveShader->SetFloat("SpotLights[0].Cutoff", glm::cos(glm::radians(12.5f)));
-    ActiveShader->SetFloat("SpotLights[0].OuterCutoff", glm::cos(glm::radians(15.5f)));
+    ActiveShader->SetFloat("SpotLights[0].Cutoff", glm::cos(glm::radians(15.5f)));
+    ActiveShader->SetFloat("SpotLights[0].OuterCutoff", glm::cos(glm::radians(4.0f)));
 
     ActiveShader->SetVec3("SpotLights[0].Ambient", glm::vec3(0.0f));
     ActiveShader->SetVec3("SpotLights[0].Diffuse", glm::vec3(1.0f));
