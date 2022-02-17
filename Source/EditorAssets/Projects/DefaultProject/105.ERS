@@ -167,11 +167,11 @@ void main()
 vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 ViewDirection) {
     
     vec3 LightDirectionVector = normalize(-Light.Direction);
-    vec3 ReflectionDirectionVector = normalize(-LightDirectionVector, NormalTextureColor);
+    vec3 ReflectionDirectionVector = normalize(-LightDirectionVector, Normal);
 
     // Diffuse/Specular Components
-    float Diffuse = max(dot(Normal, LightDirectionVector), 0.0);
-    float Specular = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0), Material.Shinyness);
+    float Diffuse = max(dot(Normal, LightDirectionVector), 0.0f);
+    float Specular = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0f), Material.Shinyness);
 
     // Calculate Total Contribution From Components
     vec4 AmbientComponent = vec4(Light.Ambient, 1.0f) * SampledData.DiffuseTextureColor;
@@ -184,6 +184,16 @@ vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData
 
 vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection) {
 
-    
+    vec3 LightDirectionVector = normalize(Light.Direction - FragPos);
+    vec3 ReflectionDirectionVector = normalize(-LightDirectionVector, Normal);
+
+    // Diffuse/Specular Components
+    float Diffuse = max(dot(Normal, LightDirectionVector), 0.0f);
+    float Specular = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0f), Material.Shinyness);
+
+    // Attenuate 
+    float Distance = length(Light.Position - FragPos);
+    float Attenuation = 1.0f / ()
+
 
 }
