@@ -27,7 +27,10 @@ uniform STRUCT_Material Material;
 // Get Lighting Info
 uniform int NumberDirectionalLights;
 uniform STRUCT_DirectionalLight DirectionalLights[NumberDirectionalLights];
-
+uniform int NumberPointLights;
+uniform STRUCT_PointLight PointLights[NumberPointLights];
+uniform int NumberSpotLights;
+uniform STRUCT_SpotLight SpotLights[NumberSpotLights];
 
 
 
@@ -127,6 +130,7 @@ void main()
     }
 
     // Calculate Point Lights
+
 
     // Calculate Spot Lights
 
