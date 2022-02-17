@@ -553,6 +553,8 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
                 // Base Color
                 if (ImGui::BeginMenu("Base Color")) {
 
+                    std::cout<<glm::to_string(Viewports_[Index]->Grid->GridColor_)<<std::endl;
+
                     if (ImGui::MenuItem("White"), nullptr, (Viewports_[Index]->Grid->GridColor_ == glm::vec3(1.0f))) {
                         Viewports_[Index]->Grid->GridColor_ = glm::vec3(1.0f);
                     }
