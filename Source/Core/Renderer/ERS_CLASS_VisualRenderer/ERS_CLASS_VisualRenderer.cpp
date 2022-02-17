@@ -547,6 +547,32 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
             ImGui::EndMenu();
             }
 
+            // Color Scheme
+            if (ImGui::BeginMenu("Colors")) {
+
+                // Base Color
+                if (ImGui::BeginMenu("Base Color")) {
+
+                    if (ImGui::MenuItem("White"), nullptr, (Viewports_[Index]->Grid->GridColor_ == glm::vec3(1.0f))) {
+                        Viewports_[Index]->Grid->GridColor_ = glm::vec3(1.0f);
+                    }
+
+                    if (ImGui::MenuItem("Light Grey"), nullptr, (Viewports_[Index]->Grid->GridColor_ == glm::vec3(0.75f))) {
+                        Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.75f);
+                    }
+
+                    if (ImGui::MenuItem("Dark Grey"), nullptr, (Viewports_[Index]->Grid->GridColor_ == glm::vec3(0.25f))) {
+                        Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.25f);
+                    }
+
+                    if (ImGui::MenuItem("Black"), nullptr, (Viewports_[Index]->Grid->GridColor_ == glm::vec3(0.0f))) {
+                        Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.0f);
+                    }
+
+                }
+
+            }
+
 
         ImGui::EndMenu();
         }
