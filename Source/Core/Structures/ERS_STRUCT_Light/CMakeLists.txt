@@ -8,6 +8,7 @@ add_library(ERS_STRUCT_Light
 
             # Add Source Files (.cpp)
             "ERS_STRUCT_SpotLight.cpp"
+            "ERS_STRUCT_PointLight.cpp"
 
             # Add Header Files (.h)
             "ERS_STRUCT_SpotLight.h"
