@@ -38,8 +38,8 @@ public:
     float GridScale_ = 25.0f;
     float GridLineThickness_ = 0.02f;
     glm::vec3 GridColor_ = glm::vec3(1.0f); 
-    glm::vec3 GridColorX_ = glm::vec3(0.8f, 0.2f, 0.2f); 
-    glm::vec3 GridColorZ_ = glm::vec3(0.2f, 0.8f, 0.2f); 
+    glm::vec3 GridColorX_ = glm::vec3(1.0f, 0.0f, 0.0f); 
+    glm::vec3 GridColorZ_ = glm::vec3(0.0f, 1.0f, 0.0f); 
 
 public:
 
