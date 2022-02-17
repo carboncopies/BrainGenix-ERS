@@ -118,6 +118,7 @@ CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData, vec
 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection);
 
 
+
 void main()
 {    
 
