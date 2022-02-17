@@ -553,7 +553,6 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
                 // Base Color
                 if (ImGui::BeginMenu("Base Color")) {
 
-                    std::cout<<glm::to_string(Viewports_[Index]->Grid->GridColor_)<<std::endl;
 
                     if (ImGui::MenuItem("White")) {
                         Viewports_[Index]->Grid->GridColor_ = glm::vec3(1.0f);
@@ -561,11 +560,18 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
 
                     if (ImGui::MenuItem("Light Grey")) {
                         Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.75f);
-                        std::cout<<"Test\n";
+                    }
+
+                    if (ImGui::MenuItem("Grey")) {
+                        Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.5f);
                     }
 
                     if (ImGui::MenuItem("Dark Grey")) {
                         Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.25f);
+                    }
+
+                    if (ImGui::MenuItem("Very Dark Grey")) {
+                        Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.1f);
                     }
 
                     if (ImGui::MenuItem("Black")) {
