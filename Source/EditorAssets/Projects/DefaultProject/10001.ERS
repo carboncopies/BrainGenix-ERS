@@ -21,13 +21,24 @@ void main(void)
 
     if(fract(UV.x / GRID_SIZE) < GRID_LINE_THICKNESS || fract(UV.y / GRID_SIZE) < GRID_LINE_THICKNESS) {
 
+        // Check If X Or Y Axis Line, Set Color
+        vec3 LineColor;
+        float ScaledThickness = GRID_LINE_THICKNESS * GRID_SIZE;
+        if (abs(OriginalPosition[0]) < ScaledThickness) {
+            LineColor = GRID_COLOR_Z;
+        } else if (abs(OriginalPosition[1]) < ScaledThickness) {
+            LineColor = GRID_COLOR_X;
+        } else {
+            LineColor = GRID_COLOR_BASE;
+        }
+    
         // Calculate Opacity Based On Distance From Camera
         vec3 CameraLocation2D = vec3(CameraPosition[0], CameraPosition[2], 0.0f);
         float Distance = distance(CameraLocation2D, GRID_SCALE*OriginalPosition);
-        float Alpha = 50.0f/pow(Distance, 3);
+        float Alpha = 75.0f/pow(Distance, 3);
         
         // Draw Pixel
-        FragColor = vec4(GRID_COLOR_BASE, Alpha);
+        FragColor = vec4(LineColor, Alpha);
     
     }
 }
