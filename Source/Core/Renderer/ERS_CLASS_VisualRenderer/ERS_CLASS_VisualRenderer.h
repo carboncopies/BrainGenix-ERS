@@ -91,7 +91,7 @@ private:
      * @param RenderHeight 
      * @param SceneManager
      */
-    void UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager);
+    void UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager, glm::vec3 CameraPosition);
 
 
     /**

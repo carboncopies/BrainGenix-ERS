@@ -399,7 +399,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
 }
 
-void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager) {
+void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager, glm::vec3 CameraPosition) {
 
     /**
 
@@ -423,6 +423,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetFloat("FrameTime", DeltaTime);
     ActiveShader->SetInt("FrameNumber", FrameNumber_);
     ActiveShader->SetVec2("ViewportRes", RenderWidth, RenderHeight);
+    ActiveShader->SetVec3("CameraPosition", CameraPosition);
 
 
 
