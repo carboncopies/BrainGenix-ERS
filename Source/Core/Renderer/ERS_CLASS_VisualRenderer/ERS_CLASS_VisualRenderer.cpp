@@ -555,20 +555,20 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
 
                     std::cout<<glm::to_string(Viewports_[Index]->Grid->GridColor_)<<std::endl;
 
-                    if (ImGui::MenuItem("White"), nullptr, (Viewports_[Index]->Grid->GridColor_ == glm::vec3(1.0f))) {
+                    if (ImGui::MenuItem("White")) {
                         Viewports_[Index]->Grid->GridColor_ = glm::vec3(1.0f);
                     }
 
-                    if (ImGui::MenuItem("Light Grey"), nullptr, (Viewports_[Index]->Grid->GridColor_ == glm::vec3(0.75f))) {
+                    if (ImGui::MenuItem("Light Grey")) {
                         Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.75f);
                         std::cout<<"Test\n";
                     }
 
-                    if (ImGui::MenuItem("Dark Grey"), nullptr, (Viewports_[Index]->Grid->GridColor_ == glm::vec3(0.25f))) {
+                    if (ImGui::MenuItem("Dark Grey")) {
                         Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.25f);
                     }
 
-                    if (ImGui::MenuItem("Black"), nullptr, (Viewports_[Index]->Grid->GridColor_ == glm::vec3(0.0f))) {
+                    if (ImGui::MenuItem("Black")) {
                         Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.0f);
                     }
 
