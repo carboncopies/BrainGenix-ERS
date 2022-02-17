@@ -10,29 +10,6 @@ in vec3 Normal;
 
 
 
-// Get Metadata Params
-uniform int FrameNumber; // Number of the frame, counts up from zero
-
-uniform float Time; // Time since program started in seconds
-uniform float FrameTime; // Render Time Of The Frame
-
-uniform vec2 ViewportRes; // XY Resolution of the viewport
-uniform vec3 CameraPosition; // Get Camera XYZ Position
-
-
-
-// Get Texture Info
-uniform STRUCT_Material Material;
-
-// Get Lighting Info
-uniform int NumberDirectionalLights;
-uniform STRUCT_DirectionalLight DirectionalLights[NumberDirectionalLights];
-uniform int NumberPointLights;
-uniform STRUCT_PointLight PointLights[NumberPointLights];
-uniform int NumberSpotLights;
-uniform STRUCT_SpotLight SpotLights[NumberSpotLights];
-
-
 
 
 // Define Structs
@@ -105,6 +82,35 @@ struct STRUCT_SampledData {
     vec4 HeightTextureColor;
 
 }
+
+
+
+
+
+// Get Metadata Params
+uniform int FrameNumber; // Number of the frame, counts up from zero
+
+uniform float Time; // Time since program started in seconds
+uniform float FrameTime; // Render Time Of The Frame
+
+uniform vec2 ViewportRes; // XY Resolution of the viewport
+uniform vec3 CameraPosition; // Get Camera XYZ Position
+
+
+
+// Get Texture Info
+uniform STRUCT_Material Material;
+
+// Get Lighting Info
+uniform int NumberDirectionalLights;
+uniform STRUCT_DirectionalLight DirectionalLights[NumberDirectionalLights];
+uniform int NumberPointLights;
+uniform STRUCT_PointLight PointLights[NumberPointLights];
+uniform int NumberSpotLights;
+uniform STRUCT_SpotLight SpotLights[NumberSpotLights];
+
+
+
 
 
 void main()
