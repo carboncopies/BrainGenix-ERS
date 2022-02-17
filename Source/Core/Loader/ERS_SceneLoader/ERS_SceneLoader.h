@@ -20,7 +20,10 @@
 #include <ERS_STRUCT_Mesh.h>
 #include <ERS_STRUCT_Texture.h>
 #include <ERS_STRUCT_Shader.h>
-#include <ERS_STRUCT_Light.h>
+#include <ERS_STRUCT_SpotLight.h>
+#include <ERS_STRUCT_DirectionalLight.h>
+#include <ERS_STRUCT_PointLight.h>
+
 
 /**
  * @brief The ERS_CLASS_SceneLoader Class Is responsible for loading scene files and associated models/textures.
