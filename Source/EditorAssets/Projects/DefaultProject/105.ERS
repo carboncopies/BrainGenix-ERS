@@ -14,6 +14,7 @@ uniform float Time; // Time since program started in seconds
 uniform float FrameTime; // Render Time Of The Frame
 uniform int FrameNumber; // Number of the frame, counts up from zero
 uniform vec2 ViewportRes; // XY Resolution of the viewport
+uniform vec3 CameraPosition; // XYZ Of Camera
 
 // Get Texture Info
 uniform sampler2D texture_diffuse1;
