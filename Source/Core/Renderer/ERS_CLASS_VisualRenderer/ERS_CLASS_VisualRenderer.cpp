@@ -569,6 +569,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
                         Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.0f);
                     }
 
+                ImGui::EndMenu();
                 }
 
             }
