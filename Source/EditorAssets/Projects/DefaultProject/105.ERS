@@ -114,7 +114,11 @@ vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, 
 void main()
 {    
 
-
+    // Lighting Sanity Check
+    if ((NumberDirectionalLights == 0) && (NumberPointLights == 0) && (NumberSpotLights == 0)) {
+        FragColor = vec4(0.8f);
+        return;
+    }
 
     // ---- Extract Texture Vectors, Create SampledData Struct ---- //
     STRUCT_SampledData SampledData;
@@ -217,6 +221,7 @@ vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, 
     return (AmbientComponent + DiffuseComponent + SpecularComponent);
 
 }
+
 
 
 
