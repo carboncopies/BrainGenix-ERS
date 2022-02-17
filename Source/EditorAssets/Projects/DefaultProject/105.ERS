@@ -178,7 +178,7 @@ void main()
 }
 
 
-vec4 CalculateDirectionalLighting(STRUCT_DirectionalLight Light, STRUCT_SampledColors SampledColors, vec3 Normal, vec3 ViewDirection) {
+vec4 CalculateDirectionalLighting(STRUCT_DirectionalLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 ViewDirection) {
 
 
 
