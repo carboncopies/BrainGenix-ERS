@@ -454,15 +454,15 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     // Cheaty Lighting Setup
 
     // Diffuse Lamp
-    ActiveShader->SetInt("NumberDirectionalLights", 0);
+    ActiveShader->SetInt("NumberDirectionalLights", 1);
     ActiveShader->SetInt("NumberPointLights", 1);
     ActiveShader->SetInt("NumberSpotLights", 0);
     
 
     ActiveShader->SetVec3("DirectionalLights[0].Direction", glm::vec3(0.0f));
-    ActiveShader->SetVec3("DirectionalLights[0].Ambient", glm::vec3(1.0f));
-    ActiveShader->SetVec3("DirectionalLights[0].Diffuse", glm::vec3(1.0f));
-    ActiveShader->SetVec3("DirectionalLights[0].Specular", glm::vec3(1.0f));
+    ActiveShader->SetVec3("DirectionalLights[0].Ambient", glm::vec3(0.2f));
+    ActiveShader->SetVec3("DirectionalLights[0].Diffuse", glm::vec3(0.3f));
+    ActiveShader->SetVec3("DirectionalLights[0].Specular", glm::vec3(0.3f));
 
 
     ActiveShader->SetVec3("PointLights[0].Position", glm::vec3(0.0f));
@@ -470,7 +470,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetFloat("PointLights[0].LinearRolloff", 0.09f);
     ActiveShader->SetFloat("PointLights[0].QuadraticRolloff", 0.032f);
     
-    ActiveShader->SetVec3("PointLights[0].Ambient", glm::vec3(1.0f));
+    ActiveShader->SetVec3("PointLights[0].Ambient", glm::vec3(0.0f));
     ActiveShader->SetVec3("PointLights[0].Diffuse", glm::vec3(1.0f));
     ActiveShader->SetVec3("PointLights[0].Specular", glm::vec3(1.0f));
 
