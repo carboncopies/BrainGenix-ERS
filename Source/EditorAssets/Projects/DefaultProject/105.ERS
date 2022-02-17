@@ -90,11 +90,11 @@ struct Material {
     sampler2D Normal;
     sampler2D Height;
 
-    bool HasSpecularMap = false;
-    bool HasNormalMap = false;
-    bool HasHeight = false;
+    bool HasSpecularMap;
+    bool HasNormalMap;
+    bool HasHeight;
 
-    float Specular = 0.0f; // If set to something other than 0, this will make the target shiny
+    float SpecularValue; // If set to something other than 0, this will make the target shiny
 
 };
 
@@ -137,6 +137,7 @@ void main()
     FragColor = FragDiffuseColor + FragSpecularColor;
     
 }
+
 
 
 
