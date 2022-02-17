@@ -216,7 +216,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
         Shaders_[ShaderIndex]->MakeActive();
 
         // Update Shaders
-        UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewports_[Index]->Camera->Position);
+        UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewports_[Index]->Camera);
         Shaders_[ShaderIndex]->SetMat4("projection", projection);
         Shaders_[ShaderIndex]->SetMat4("view", view);
 
@@ -399,7 +399,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
 }
 
-void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager, glm::vec3 CameraPosition) {
+void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, std::shared_ptr<ERS_CLASS_SceneManager>SceneManager, std::shared_ptr<ERS_STRUCT_Camera> Camera) {
 
     /**
 
@@ -423,7 +423,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetFloat("FrameTime", DeltaTime);
     ActiveShader->SetInt("FrameNumber", FrameNumber_);
     ActiveShader->SetVec2("ViewportRes", RenderWidth, RenderHeight);
-    ActiveShader->SetVec3("CameraPosition", CameraPosition);
+    ActiveShader->SetVec3("CameraPosition", Camera->Position);
 
 
 
@@ -486,8 +486,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
 
 
-    ActiveShader->SetVec3("SpotLights[0].Position", glm::vec3(5.0f));
-    ActiveShader->SetVec3("SpotLights[0].Direction", glm::vec3(1.0f));
+    ActiveShader->SetVec3("SpotLights[0].Position", Camera->Position);
+    ActiveShader->SetVec3("SpotLights[0].Direction", Camera->Front);
     ActiveShader->SetFloat("SpotLights[0].ConstantRolloff", 1.0f);
     ActiveShader->SetFloat("SpotLights[0].LinearRolloff", 0.09f);
     ActiveShader->SetFloat("SpotLights[0].QuadraticRolloff", 0.032f);
