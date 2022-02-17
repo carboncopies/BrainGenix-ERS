@@ -118,6 +118,7 @@ void main()
 {    
 
 
+
     // ---- Extract Texture Vectors, Create SampledData Struct ---- //
     STRUCT_SampledData SampledData;
 
@@ -147,9 +148,9 @@ void main()
     for (int i = 0; i < NumberSpotLights; i++) {
         Result += CalculateSpotLight(SpotLights[i], SampledData, Norm, FragPos, ViewDirection);
     }
-    
+
     FragColor = Result;
-    
+
 }
 
 
@@ -219,4 +220,5 @@ vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, 
     return (AmbientComponent + DiffuseComponent + SpecularComponent);
 
 }
+
 
