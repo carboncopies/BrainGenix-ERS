@@ -445,7 +445,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     // ~!!!!!!!!!!!!!!!FIXME: IMPLEMENT SYSTEM TO USE THE LIGHTS CLOSEST TO THE OBJECT !!!!!!!!!!!!!!!!!!!!!~ //
 
 
-    // DIRECTIONAL LIGHTS
+    // Directional Lights
     int NumberDirectionalLights = ActiveScene->DirectionalLights.size();
 
     ActiveShader->SetFloat("NumberDirectionalLights", NumberDirectionalLights);
@@ -454,11 +454,34 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         std::string UniformName = std::string("DirectionalLights[") + std::to_string(i) + std::string("]");
 
         ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ActiveScene->DirectionalLights[i]->Rot);
+
         ActiveShader->SetVec3((UniformName + std::string(".Ambient")).c_str(), ActiveScene->DirectionalLights[i]->Ambient);
         ActiveShader->SetVec3((UniformName + std::string(".Diffuse")).c_str(), ActiveScene->DirectionalLights[i]->Diffuse);
         ActiveShader->SetVec3((UniformName + std::string(".Specular")).c_str(), ActiveScene->DirectionalLights[i]->Specular);
     
     }
+
+    // Point Lights
+    int NumberPointLights = ActiveScene->PointLights.size();
+
+    ActiveShader->SetFloat("NumberPointLights", NumberPointLights);
+    for (int i = 0; i < NumberPointLights; i++) {
+    
+        std::string UniformName = std::string("PointLights[") + std::to_string(i) + std::string("]");
+
+        ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->PointLights[i]->Pos);
+
+        ActiveShader->SetFloat((UniformName + std::string(".ConstantRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffConstant);
+        ActiveShader->SetFloat((UniformName + std::string(".LinearRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffLinear);
+        ActiveShader->SetFloat((UniformName + std::string(".QuadraticRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffQuadratic);
+
+
+        ActiveShader->SetVec3((UniformName + std::string(".Ambient")).c_str(), ActiveScene->PointLights[i]->Ambient);
+        ActiveShader->SetVec3((UniformName + std::string(".Diffuse")).c_str(), ActiveScene->PointLights[i]->Diffuse);
+        ActiveShader->SetVec3((UniformName + std::string(".Specular")).c_str(), ActiveScene->PointLights[i]->Specular);
+    
+    }
+
 
 
 
@@ -469,12 +492,6 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetInt("NumberPointLights", 0);
     ActiveShader->SetInt("NumberSpotLights", 1);
     
-
-    ActiveShader->SetVec3("DirectionalLights[0].Direction", glm::vec3(0.0f));
-    ActiveShader->SetVec3("DirectionalLights[0].Ambient", glm::vec3(0.2f));
-    ActiveShader->SetVec3("DirectionalLights[0].Diffuse", glm::vec3(0.3f));
-    ActiveShader->SetVec3("DirectionalLights[0].Specular", glm::vec3(0.3f));
-
 
     ActiveShader->SetVec3("PointLights[0].Position", glm::vec3(0.0f));
     ActiveShader->SetFloat("PointLights[0].ConstantRolloff", 1.0f);

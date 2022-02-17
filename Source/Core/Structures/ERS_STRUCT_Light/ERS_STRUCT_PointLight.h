@@ -27,6 +27,5 @@ struct ERS_STRUCT_PointLight {
     glm::vec3 Specular; /**<Ambient color of the light*/
 
     glm::vec3 Pos; /**<Position*/
-    glm::vec3 Rot; /**<Rotation or Direction Of Light*/
 
 };
