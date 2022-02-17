@@ -102,7 +102,7 @@ struct STRUCT_Material {
 
 };
 
-struct STRUCT_SampledColors {
+struct STRUCT_SampledData {
 
     vec4 DiffuseTextureColor;
     vec4 SpecularTextureColor;
@@ -116,8 +116,8 @@ void main()
 {    
 
 
-    // ---- Extract Texture Vectors, Create SampledColors Struct ---- //
-    STRUCT_SampledColors SampledColors;
+    // ---- Extract Texture Vectors, Create SampledData Struct ---- //
+    STRUCT_SampledData SampledData;
 
     SampledColors.DiffuseTextureColor = texture(Material.Diffuse, TexCoords);
 
@@ -178,7 +178,7 @@ void main()
 }
 
 
-vec4 CalculateDirectionalLighting(STRUCT_DirectionalLight Light, vec3 Normal, vec3 ViewDirection) {
+vec4 CalculateDirectionalLighting(STRUCT_DirectionalLight Light, STRUCT_SampledColors SampledColors, vec3 Normal, vec3 ViewDirection) {
 
 
 
