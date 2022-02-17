@@ -130,9 +130,6 @@ void main()
     vec3 Norm = normalize(Normal);
     vec3 ViewDirection = normalize(CameraPosition - FragPos);
 
-
-
-
     // ---- Calculate Lighting Contributions ---- //
     vec4 Result = vec4(0.0f);
 
@@ -163,7 +160,7 @@ vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData
 
     // Diffuse/Specular Components
     float Diffuse = max(dot(Normal, LightDirectionVector), 0.0f);
-    float Specular = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0f), Material.Shinyness);
+    float Specular = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0f), Shinyness);
 
     // Calculate Total Contribution From Components
     vec4 AmbientComponent = vec4(Light.Ambient, 1.0f) * SampledData.DiffuseTextureColor;
@@ -181,7 +178,7 @@ vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData
 
     // Diffuse/Specular Components
     float Diffuse = max(dot(Normal, LightDirectionVector), 0.0f);
-    float Specular = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0f), Material.Shinyness);
+    float Specular = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0f), Shinyness);
 
     // Attenuate 
     float Distance = length(Light.Position - FragPos);
@@ -203,7 +200,7 @@ vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, 
 
     // Diffuse/Specular Components
     float Diffuse = max(dot(Normal, LightDirectionVector), 0.0f);
-    float Specular = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0f), Material.Shinyness);
+    float Specular = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0f), Shinyness);
 
     // Calculate Attenuation
     float Distance = length(Light.Position - FragPos);
@@ -222,3 +219,4 @@ vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, 
     return (AmbientComponent + DiffuseComponent + SpecularComponent);
 
 }
+
