@@ -94,11 +94,7 @@ struct STRUCT_Material {
     sampler2D Normal;
     sampler2D Height;
 
-    bool HasSpecularMap;
-    bool HasNormalMap;
-    bool HasHeightMap;
-
-    float SpecularValue; // If set to something other than 0, this will make the target shiny
+    float Shinyness;
 
 };
 
@@ -120,20 +116,10 @@ void main()
     STRUCT_SampledData SampledData;
 
     SampledData.DiffuseTextureColor = texture(Material.Diffuse, TexCoords);
-
-    if (Material.HasSpecularMap) {
-        SampledData.SpecularTextureColor = texture(Material.Specular, TexCoords);
-    } else {
-        SampledData.SpecularTextureColor = Material.SpecularValue;
-    }
+    SampledData.SpecularTextureColor = texture(Material.Specular, TexCoords);
+    SampledData.NormalTextureColor = texture(Material.Normal, TexCoords);
+    SampledData.HeightTextureColor = texture(Material.Height, TexCoords);
     
-    if (Material.HasNormalMap) {
-        SampledData.NormalTextureColor = texture(Material.Normal, TexCoords);
-    }
-    
-    if (Material.HasHeightMap) {
-        SampledData.HeightTextureColor = texture(Material.Height, TexCoords);
-    }
 
 
 
