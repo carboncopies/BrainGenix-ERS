@@ -429,28 +429,38 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     std::shared_ptr<ERS_STRUCT_Scene> ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_];
 
-    // Preprocess Lighting Info
-    glm::vec3 AmbientColor = glm::vec3(0.0f);
-    for (int i = 0; i < ActiveScene->Lights.size(); i++) {
+    // // Preprocess Lighting Info
+    // glm::vec3 AmbientColor = glm::vec3(0.0f);
+    // for (int i = 0; i < ActiveScene->Lights.size(); i++) {
 
-        // If Ambient Light, Add Contribution
-        if (ActiveScene->Lights[i]->LightType == "Ambient") {
-            float R, G, B;
-            R = ActiveScene->Lights[i]->ColorRed;
-            G = ActiveScene->Lights[i]->ColorGreen;
-            B = ActiveScene->Lights[i]->ColorBlue;
-            glm::vec3 LightColor = glm::vec3(R,G,B);
-            AmbientColor += LightColor * ActiveScene->Lights[i]->Intensity;
-        }
+    //     // If Ambient Light, Add Contribution
+    //     if (ActiveScene->Lights[i]->LightType == "Ambient") {
+    //         float R, G, B;
+    //         R = ActiveScene->Lights[i]->ColorRed;
+    //         G = ActiveScene->Lights[i]->ColorGreen;
+    //         B = ActiveScene->Lights[i]->ColorBlue;
+    //         glm::vec3 LightColor = glm::vec3(R,G,B);
+    //         AmbientColor += LightColor * ActiveScene->Lights[i]->Intensity;
+    //     }
 
-    }
+    // }
 
-    // Set Lighting Params
-    ActiveShader->SetVec3("Light_Ambient_Color", AmbientColor);
-    ActiveShader->SetVec3("Light_Position", glm::vec3(3.0f));
-    ActiveShader->SetVec3("Light_Diffuse_Color", glm::vec3(1.0f));
-    ActiveShader->SetVec3("Light_Specular_Color", glm::vec3(1.0f));
+    // // Set Lighting Params
+    // ActiveShader->SetVec3("Light_Ambient_Color", AmbientColor);
+    // ActiveShader->SetVec3("Light_Position", glm::vec3(3.0f));
+    // ActiveShader->SetVec3("Light_Diffuse_Color", glm::vec3(1.0f));
+    // ActiveShader->SetVec3("Light_Specular_Color", glm::vec3(1.0f));
+
+    // Cheaty Lighting Setup
+
+    // Diffuse Lamp
+    ActiveShader->SetInt("NumberDirectionalLights", 1);
+    ActiveShader->SetInt("NumberPointLights", 0);
+    ActiveShader->SetInt("NumberSpotLights", 0);
     
+
+    ActiveShader->SetVec
+
 
 }
 
