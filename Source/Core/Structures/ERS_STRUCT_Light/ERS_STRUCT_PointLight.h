@@ -19,12 +19,7 @@ struct ERS_STRUCT_SpotLight {
     float RolloffConstant; /**<Rolloff constant*/
     float RolloffLinear; /**<Rolloff constant*/
     float RolloffQuadratic; /**<Rolloff constant*/
-    
 
-    float CutOff; /**<CutOff angle For Spotlight (inner)*/
-    float OuterCutOff; /**<CutOff angleFor Spotlight (outer)*/
-    
-    
     float ColorRed; /**<Red Component*/
     float ColorGreen; /**<Green Component*/
     float ColorBlue; /**<Blue Component*/
