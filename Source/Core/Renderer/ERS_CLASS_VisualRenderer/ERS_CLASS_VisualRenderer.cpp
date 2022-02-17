@@ -449,6 +449,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetVec3("Light_Ambient_Color", AmbientColor);
     ActiveShader->SetVec3("Light_Position", glm::vec3(3.0f));
     ActiveShader->SetVec3("Light_Diffuse_Color", glm::vec3(1.0f));
+    ActiveShader->SetVec3("Light_Specular_Color", glm::vec3(1.0f));
     
 
 }
