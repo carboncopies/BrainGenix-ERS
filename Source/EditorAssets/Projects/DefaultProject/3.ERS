@@ -36,3 +36,26 @@ SceneData:
     RotX: 90
     RotY: 0
     RotZ: 0
+
+  2:
+    AssetName: Default Directional Light
+    AssetType: PointLight
+
+    RolloffConstant: 1.0
+    RolloffLinear: 0.09
+    RolloffQuadratic: 0.032
+    
+    AmbientRed: 0.25
+    AmbientGreen: 0.25
+    AmbientBlue: 0.25
+    DiffuseRed: 0.25
+    DiffuseGreen: 0.25
+    DiffuseBlue: 0.25
+    SpecularRed: 0.25
+    SpecularGreen: 0.25
+    SpecularBlue: 0.25
+    
+    PosX: 3
+    PosY: 3
+    PosZ: 3
+
