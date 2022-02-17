@@ -202,5 +202,31 @@ vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData
 
     return (AmbientComponent + DiffuseComponent + SpecularComponent);
 
+}
+
+vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection) {
+
+    vec3 LightDirectionVector = normalize(Light.Direction - FragPos);
+    vec3 ReflectionDirectionVector = normalize(-LightDirectionVector, Normal);
+
+    // Diffuse/Specular Components
+    float Diffuse = max(dot(Normal, LightDirectionVector), 0.0f);
+    float Specular = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0f), Material.Shinyness);
+
+    // Calculate Attenuation
+    float Distance = length(Light.Position - FragPos);
+    float Attenuation = 1.0f / (Light.ConstantRolloff + Light.LinearRolloff * Distance + Light.QuadraticRolloff * (Distance * Diffuse));
+
+    // Calculate Spot Intensity
+    float Theta = dot(LightDirectionVector, normalize(-Light.Direction));
+    float Epsilon = Light.CutOff - Light.OuterCutOff;
+    float Intensity = clamp((Theta - Light.OuterCutOff) / Epsilon, 0.0f, 1.0f);
+
+    // Calculate Total Contribution From Components
+    vec4 AmbientComponent = vec4(Light.Ambient * Attenuation * Intensity, 1.0f) * SampledData.DiffuseTextureColor;
+    vec4 DiffuseComponent = vec4(Light.Diffuse * Attenuation * Intensity, 1.0f) * Diffuse * SampledData.DiffuseTextureColor;
+    vec4 SpecularComponent = vec4(Light.Specular * Attenuation * Intensity, 1.0f) * Specular * SampledData.SpecularTextureColor;
+
+    return (AmbientComponent + DiffuseComponent + SpecularComponent);
 
 }
