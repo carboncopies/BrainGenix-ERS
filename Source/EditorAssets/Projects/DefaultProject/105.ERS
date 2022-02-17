@@ -108,12 +108,25 @@ struct STRUCT_SampledColors {
     vec3 SpecularTextureColor;
     vec3 NormalTextureColor;
     vec3 HeightTextureColor;
-
+    
 }
 
 
 void main()
 {    
+
+
+    // ---- Extract Texture Vectors, Create SampledColors Struct ---- //
+    STRUCT_SampledColors SampledColors;
+
+
+
+
+
+
+
+
+
 
     // Calculate Texture Components
     vec4 DiffuseColor = texture(texture_diffuse1, TexCoords);
