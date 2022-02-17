@@ -104,11 +104,11 @@ struct STRUCT_Material {
 
 struct STRUCT_SampledColors {
 
-    vec3 DiffuseTextureColor;
-    vec3 SpecularTextureColor;
-    vec3 NormalTextureColor;
-    vec3 HeightTextureColor;
-    
+    vec4 DiffuseTextureColor;
+    vec4 SpecularTextureColor;
+    vec4 NormalTextureColor;
+    vec4 HeightTextureColor;
+
 }
 
 
