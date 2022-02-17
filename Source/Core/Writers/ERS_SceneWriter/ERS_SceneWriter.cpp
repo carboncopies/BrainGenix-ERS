@@ -55,9 +55,9 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputSce
     // Write SceneData
     Output << YAML::Key << "SceneData";
     Output << YAML::Key << YAML::BeginMap;
-
-
     long AssetIndex = 0;
+
+    //---- Write Models ----//
     for (int i = 0; i < InputScene->Models.size(); i++) {
 
         Output << YAML::Key << AssetIndex;
@@ -89,34 +89,120 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputSce
         AssetIndex++;
     }
 
-    for (int i = 0; i < InputScene->Lights.size(); i++) {
+    //---- Write Directional Lights ----//
+    for (int i = 0; i < InputScene->DirectionalLights.size(); i++) {
 
         Output << YAML::Key << AssetIndex;
         Output << YAML::BeginMap;
 
 
-        Output << YAML::Key << "AssetName" << YAML::Value << InputScene->Lights[i]->UserDefinedName;
-        Output << YAML::Key << "AssetType" << YAML::Value << "Light";
-        Output << YAML::Key << "LightType" << YAML::Value << InputScene->Lights[i]->LightType;
+        Output << YAML::Key << "AssetName" << YAML::Value << InputScene->DirectionalLights[i]->UserDefinedName;
+        Output << YAML::Key << "AssetType" << YAML::Value << "DirectionalLight";
 
-        Output << YAML::Key << "Intensity" << YAML::Value << InputScene->Lights[i]->Intensity;
-        Output << YAML::Key << "ColorRed" << YAML::Value << InputScene->Lights[i]->ColorRed;
-        Output << YAML::Key << "ColorGreen" << YAML::Value << InputScene->Lights[i]->ColorGreen;
-        Output << YAML::Key << "ColorBlue" << YAML::Value << InputScene->Lights[i]->ColorBlue;
+
+        Output << YAML::Key << "AmbientRed" << YAML::Value << InputScene->DirectionalLights[i]->Ambient[0];
+        Output << YAML::Key << "AmbientGreen" << YAML::Value << InputScene->DirectionalLights[i]->Ambient[1];
+        Output << YAML::Key << "AmbientBlue" << YAML::Value << InputScene->DirectionalLights[i]->Ambient[2];
         
+        Output << YAML::Key << "DiffuseRed" << YAML::Value << InputScene->DirectionalLights[i]->Diffuse[0];
+        Output << YAML::Key << "DiffuseGreen" << YAML::Value << InputScene->DirectionalLights[i]->Diffuse[1];
+        Output << YAML::Key << "DiffuseBlue" << YAML::Value << InputScene->DirectionalLights[i]->Diffuse[2];
+
+        Output << YAML::Key << "SpecularRed" << YAML::Value << InputScene->DirectionalLights[i]->Specular[0];
+        Output << YAML::Key << "SpecularGreen" << YAML::Value << InputScene->DirectionalLights[i]->Specular[1];
+        Output << YAML::Key << "SpecularBlue" << YAML::Value << InputScene->DirectionalLights[i]->Specular[2];
 
 
-        Output << YAML::Key << "PosX" << YAML::Value << InputScene->Lights[i]->PosX;
-        Output << YAML::Key << "PosY" << YAML::Value << InputScene->Lights[i]->PosY;
-        Output << YAML::Key << "PosZ" << YAML::Value << InputScene->Lights[i]->PosZ;
+        Output << YAML::Key << "PosX" << YAML::Value << InputScene->DirectionalLights[i]->Pos[0];
+        Output << YAML::Key << "PosY" << YAML::Value << InputScene->DirectionalLights[i]->Pos[1];
+        Output << YAML::Key << "PosZ" << YAML::Value << InputScene->DirectionalLights[i]->Pos[2];
 
-        Output << YAML::Key << "RotX" << YAML::Value << InputScene->Lights[i]->RotX;
-        Output << YAML::Key << "RotY" << YAML::Value << InputScene->Lights[i]->RotY;
-        Output << YAML::Key << "RotZ" << YAML::Value << InputScene->Lights[i]->RotZ;
+        Output << YAML::Key << "RotX" << YAML::Value << InputScene->DirectionalLights[i]->Rot[0];
+        Output << YAML::Key << "RotY" << YAML::Value << InputScene->DirectionalLights[i]->Rot[1];
+        Output << YAML::Key << "RotZ" << YAML::Value << InputScene->DirectionalLights[i]->Rot[2];
 
-        Output << YAML::Key << "ScaleX" << YAML::Value << InputScene->Lights[i]->ScaleX;
-        Output << YAML::Key << "ScaleY" << YAML::Value << InputScene->Lights[i]->ScaleY;
-        Output << YAML::Key << "ScaleZ" << YAML::Value << InputScene->Lights[i]->ScaleZ;
+
+        Output << YAML::EndMap;
+        AssetIndex++;
+    }
+
+    //---- Write Point Lights ----//
+    for (int i = 0; i < InputScene->PointLights.size(); i++) {
+
+        Output << YAML::Key << AssetIndex;
+        Output << YAML::BeginMap;
+
+
+        Output << YAML::Key << "AssetName" << YAML::Value << InputScene->PointLights[i]->UserDefinedName;
+        Output << YAML::Key << "AssetType" << YAML::Value << "PointLight";
+
+
+        Output << YAML::Key << "AmbientRed" << YAML::Value << InputScene->PointLights[i]->Ambient[0];
+        Output << YAML::Key << "AmbientGreen" << YAML::Value << InputScene->PointLights[i]->Ambient[1];
+        Output << YAML::Key << "AmbientBlue" << YAML::Value << InputScene->PointLights[i]->Ambient[2];
+        
+        Output << YAML::Key << "DiffuseRed" << YAML::Value << InputScene->PointLights[i]->Diffuse[0];
+        Output << YAML::Key << "DiffuseGreen" << YAML::Value << InputScene->PointLights[i]->Diffuse[1];
+        Output << YAML::Key << "DiffuseBlue" << YAML::Value << InputScene->PointLights[i]->Diffuse[2];
+
+        Output << YAML::Key << "SpecularRed" << YAML::Value << InputScene->PointLights[i]->Specular[0];
+        Output << YAML::Key << "SpecularGreen" << YAML::Value << InputScene->PointLights[i]->Specular[1];
+        Output << YAML::Key << "SpecularBlue" << YAML::Value << InputScene->PointLights[i]->Specular[2];
+
+
+        Output << YAML::Key << "PosX" << YAML::Value << InputScene->PointLights[i]->Pos[0];
+        Output << YAML::Key << "PosY" << YAML::Value << InputScene->PointLights[i]->Pos[1];
+        Output << YAML::Key << "PosZ" << YAML::Value << InputScene->PointLights[i]->Pos[2];
+
+
+        Output << YAML::Key << "RolloffConstant" << YAML::Value << InputScene->PointLights[i]->RolloffConstant;
+        Output << YAML::Key << "RolloffLinear" << YAML::Value << InputScene->PointLights[i]->RolloffLinear;
+        Output << YAML::Key << "RollofQuadratic" << YAML::Value << InputScene->PointLights[i]->RolloffQuadratic;
+
+
+        Output << YAML::EndMap;
+        AssetIndex++;
+    }
+
+    //---- Write Spot Lights ----//
+    for (int i = 0; i < InputScene->SpotLights.size(); i++) {
+
+        Output << YAML::Key << AssetIndex;
+        Output << YAML::BeginMap;
+
+
+        Output << YAML::Key << "AssetName" << YAML::Value << InputScene->SpotLights[i]->UserDefinedName;
+        Output << YAML::Key << "AssetType" << YAML::Value << "SpotLight";
+
+
+        Output << YAML::Key << "AmbientRed" << YAML::Value << InputScene->SpotLights[i]->Ambient[0];
+        Output << YAML::Key << "AmbientGreen" << YAML::Value << InputScene->SpotLights[i]->Ambient[1];
+        Output << YAML::Key << "AmbientBlue" << YAML::Value << InputScene->SpotLights[i]->Ambient[2];
+        
+        Output << YAML::Key << "DiffuseRed" << YAML::Value << InputScene->SpotLights[i]->Diffuse[0];
+        Output << YAML::Key << "DiffuseGreen" << YAML::Value << InputScene->SpotLights[i]->Diffuse[1];
+        Output << YAML::Key << "DiffuseBlue" << YAML::Value << InputScene->SpotLights[i]->Diffuse[2];
+
+        Output << YAML::Key << "SpecularRed" << YAML::Value << InputScene->SpotLights[i]->Specular[0];
+        Output << YAML::Key << "SpecularGreen" << YAML::Value << InputScene->SpotLights[i]->Specular[1];
+        Output << YAML::Key << "SpecularBlue" << YAML::Value << InputScene->SpotLights[i]->Specular[2];
+
+
+        Output << YAML::Key << "PosX" << YAML::Value << InputScene->SpotLights[i]->Pos[0];
+        Output << YAML::Key << "PosY" << YAML::Value << InputScene->SpotLights[i]->Pos[1];
+        Output << YAML::Key << "PosZ" << YAML::Value << InputScene->SpotLights[i]->Pos[2];
+
+        Output << YAML::Key << "RotX" << YAML::Value << InputScene->SpotLights[i]->Rot[0];
+        Output << YAML::Key << "RotY" << YAML::Value << InputScene->SpotLights[i]->Rot[1];
+        Output << YAML::Key << "RotZ" << YAML::Value << InputScene->SpotLights[i]->Rot[2];
+
+
+        Output << YAML::Key << "RolloffConstant" << YAML::Value << InputScene->SpotLights[i]->RolloffConstant;
+        Output << YAML::Key << "RolloffLinear" << YAML::Value << InputScene->SpotLights[i]->RolloffLinear;
+        Output << YAML::Key << "RollofQuadratic" << YAML::Value << InputScene->SpotLights[i]->RolloffQuadratic;
+
+        Output << YAML::Key << "CutOff" << YAML::Value << InputScene->SpotLights[i]->CutOff;
+        Output << YAML::Key << "OuterCutOff" << YAML::Value << InputScene->SpotLights[i]->OuterCutOff;
 
 
         Output << YAML::EndMap;
