@@ -81,7 +81,7 @@ struct STRUCT_SampledData {
     vec4 NormalTextureColor;
     vec4 HeightTextureColor;
 
-}
+};
 
 
 
@@ -102,12 +102,16 @@ uniform vec3 CameraPosition; // Get Camera XYZ Position
 uniform STRUCT_Material Material;
 
 // Get Lighting Info
+#define MAXIMUM_DIRECTIONAL_LIGHTS 4;
+#define MAXIMUM_POINT_LIGHTS 256;
+#define MAXIMUM_SPOT_LIGHTS 128;
+
 uniform int NumberDirectionalLights;
-uniform STRUCT_DirectionalLight DirectionalLights[NumberDirectionalLights];
+uniform STRUCT_DirectionalLight DirectionalLights[MAXIMUM_DIRECTIONAL_LIGHTS];
 uniform int NumberPointLights;
-uniform STRUCT_PointLight PointLights[NumberPointLights];
+uniform STRUCT_PointLight PointLights[MAXIMUM_POINT_LIGHTS];
 uniform int NumberSpotLights;
-uniform STRUCT_SpotLight SpotLights[NumberSpotLights];
+uniform STRUCT_SpotLight SpotLights[MAXIMUM_SPOT_LIGHTS];
 
 
 
