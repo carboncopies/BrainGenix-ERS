@@ -12,30 +12,29 @@
 // Internal Libraries (BG convention: use <> instead of "")
 
 
-struct ERS_STRUCT_Light {
+struct ERS_STRUCT_SpotLight {
 
     std::string UserDefinedName; /**Name of the light assigned by user*/
     
-    std::string LightType; /**<Type of light (point, area, etc.)*/
+    float RolloffConstant; /**<Rolloff constant*/
+    float RolloffLinear; /**<Rolloff constant*/
+    float RolloffQuadratic; /**<Rolloff constant*/
+    
 
-
-    float Intensity; /**<Brightness of the light*/
+    float CutOff; /**<CutOff angle For Spotlight (inner)*/
+    float OuterCutOff; /**<CutOff angleFor Spotlight (outer)*/
+    
     
     float ColorRed; /**<Red Component*/
     float ColorGreen; /**<Green Component*/
     float ColorBlue; /**<Blue Component*/
     
-
     float PosX; /**<Position*/
     float PosY; /**<Position*/
     float PosZ; /**<Position*/
 
-    float RotX; /**<Rotation*/
-    float RotY; /**<Rotation*/
-    float RotZ; /**<Rotation*/
-
-    float ScaleX; /**<Scale*/
-    float ScaleY; /**<Scale*/
-    float ScaleZ; /**<Scale*/
+    float RotX; /**<Rotation (direction)*/
+    float RotY; /**<Rotation (direction)*/
+    float RotZ; /**<Rotation (direction)*/
 
 };

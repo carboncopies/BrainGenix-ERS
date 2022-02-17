@@ -410,7 +410,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     uniform int FrameNumber; // Number of the frame, counts up from zero
     uniform vec2 ViewportRes; // XY Resolution of the viewport
 
-     */
+    **/
 
 
     // Get Pointer to Shader
@@ -427,8 +427,6 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
 
 
-    std::shared_ptr<ERS_STRUCT_Scene> ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_];
-
     // ---- SEND LIGHTING INFORMATION TO SHADERS ---- //
     // NOTE: Due to limitations with shaders, the maximum number of lights is as follows (per object) 
     // Directional lights: 4
@@ -436,9 +434,12 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     // Spot Lights: 32
     // When these limitations are reached, ERS will remove the lights that are farthest from the object
 
+    // Prepare To Handle Lights
+    std::shared_ptr<ERS_STRUCT_Scene> ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_];
+
 
     // DIRECTIONAL LIGHTS
-
+    //ActiveScene->
 
 
 
