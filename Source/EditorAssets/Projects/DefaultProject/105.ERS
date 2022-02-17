@@ -130,6 +130,9 @@ void main()
     vec3 Norm = normalize(Normal);
     vec3 ViewDirection = normalize(CameraPosition - FragPos);
 
+
+
+
     // ---- Calculate Lighting Contributions ---- //
     vec4 Result = vec4(0.0f);
 
