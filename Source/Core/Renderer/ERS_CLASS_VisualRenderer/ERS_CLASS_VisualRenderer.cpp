@@ -452,7 +452,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     for (int i = 0; i < NumberDirectionalLights; i++) {
     
         std::string UniformName = std::string("DirectionalLights[") + std::to_string(i) + std::string("]");
-
+        std::cout<<(UniformName + std::string(".Direction")).c_str()<<std::endl;
         ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ActiveScene->DirectionalLights[i]->Rot);
 
         ActiveShader->SetVec3((UniformName + std::string(".Ambient")).c_str(), ActiveScene->DirectionalLights[i]->Ambient);
