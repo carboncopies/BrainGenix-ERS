@@ -170,9 +170,13 @@ vec4 CalculateDirectionalLighting(STRUCT_DirectionalLight Light, STRUCT_SampledD
     vec3 ReflectionDirectionVector = normalize(-LightDirectionVector, NormalTextureColor);
 
     // Diffuse/Specular Components
-    float DiffuseDelta = max(dot(Normal, LightDirectionVector), 0.0);
-    float SpecularDelta = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0), M)
+    float Diffuse = max(dot(Normal, LightDirectionVector), 0.0);
+    float Specular = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0), Material.Shinyness);
 
+    // Calculate Total Contribution From Components
+    vec4 AmbientComponent = vec4(Light.Ambient, 1.0f) * SampledData.DiffuseTextureColor;
+    vec4 DiffuseComponent = vec4(Light.Diffuse, 1.0f) * Diffuse * SampledData.DiffuseTextureColor;
+    vec4 SpecularComponent = vec4(Light.Specular, 1.0f) * Specular * SampledData.SpecularTextureColor;
 
 }
 
