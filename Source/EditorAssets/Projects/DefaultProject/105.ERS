@@ -64,17 +64,6 @@ struct STRUCT_SpotLight {
 
 };
 
-struct STRUCT_Material {
-
-    sampler2D Diffuse;
-    sampler2D Specular;
-    sampler2D Normal;
-    sampler2D Height;
-
-    float Shinyness;
-
-};
-
 struct STRUCT_SampledData {
 
     vec4 DiffuseTextureColor;
@@ -100,7 +89,12 @@ uniform vec3 CameraPosition; // Get Camera XYZ Position
 
 
 // Get Texture Info
-uniform STRUCT_Material Material;
+uniform sampler2D texture_diffuse1;
+uniform sampler2D texture_specular1;
+uniform sampler2D texture_normal1;
+uniform sampler2D texture_height1;
+uniform float Shinyness;
+
 
 // Get Lighting Info
 uniform int NumberDirectionalLights;
