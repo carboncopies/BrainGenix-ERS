@@ -429,6 +429,20 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     std::shared_ptr<ERS_STRUCT_Scene> ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_];
 
+    // ---- SEND LIGHTING INFORMATION TO SHADERS ---- //
+    // NOTE: Due to limitations with shaders, the maximum number of lights is as follows (per object) 
+    // Directional lights: 4
+    // Point Lights: 64
+    // Spot Lights: 32
+    // When these limitations are reached, ERS will remove the lights that are farthest from the object
+
+
+    // DIRECTIONAL LIGHTS
+    
+
+
+
+
     // // Preprocess Lighting Info
     // glm::vec3 AmbientColor = glm::vec3(0.0f);
     // for (int i = 0; i < ActiveScene->Lights.size(); i++) {
