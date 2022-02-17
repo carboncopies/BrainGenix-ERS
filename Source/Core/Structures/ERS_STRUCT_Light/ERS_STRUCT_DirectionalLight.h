@@ -12,7 +12,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 
 
-struct ERS_STRUCT_SpotLight {
+struct ERS_STRUCT_DirectionalLight {
 
     std::string UserDefinedName; /**Name of the light assigned by user*/
     
