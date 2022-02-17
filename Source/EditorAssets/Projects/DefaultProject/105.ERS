@@ -17,8 +17,7 @@ uniform vec2 ViewportRes; // XY Resolution of the viewport
 uniform vec3 CameraPosition; // Get Camera XYZ Position
 
 // Get Texture Info
-uniform sampler2D texture_diffuse1;
-uniform sampler2D texture_specular1;
+uniform STRUCT_Material Material;
 
 // Get Lighting Info
 uniform vec3 Light_Ambient_Color;
@@ -32,7 +31,7 @@ float SpecularStrength = 1.0f;
 
 
 // Light Structs
-struct DirectionalLight {
+struct STRUCT_DirectionalLight {
 
     vec3 Position;
 
@@ -43,7 +42,7 @@ struct DirectionalLight {
 
 };
 
-struct PointLight {
+struct STRUCT_PointLight {
 
     // Physical Parameters
     vec3 Position;
@@ -60,7 +59,7 @@ struct PointLight {
 
 };
 
-struct SpotLight {
+struct STRUCT_SpotLight {
 
     // Physical Parameters
     vec3 Position;
@@ -83,7 +82,7 @@ struct SpotLight {
 };
 
 // Material Struct
-struct Material {
+struct STRUCT_Material {
 
     sampler2D Diffuse;
     sampler2D Specular;
