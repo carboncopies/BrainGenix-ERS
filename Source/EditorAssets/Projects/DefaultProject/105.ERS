@@ -18,6 +18,7 @@ uniform vec3 CameraPosition; // Get Camera XYZ Position
 
 // Get Texture Info
 uniform sampler2D texture_diffuse1;
+uniform sampler2D texture_specular1;
 
 // Get Lighting Info
 uniform vec3 Light_Ambient_Color;
@@ -59,14 +60,15 @@ void main()
 
 
     // Generate Color For Fragments Based On TexMaps
-    vec3 LightValue = Light_Ambient_Component + Light_Diffuse_Component
-    vec4 DiffuseColor = vec4(LightValue, 1.0f) * DiffuseColor;
+    vec3 LightValue = Light_Ambient_Component + Light_Diffuse_Component;
+    vec4 FragDiffuseColor = vec4(LightValue, 1.0f) * DiffuseColor;
     
-    vec4 SpecularColor = vec4(Light_Specular_Component, 1.0f) * SpecularStrength;
+    vec4 FragSpecularColor = vec4(Light_Specular_Component, 1.0f) * SpecularStrength;
     
-    FragColor = DiffuseColor + SpecularColor;
+    FragColor = FragDiffuseColor + FragSpecularColor;
     
 }
+
 
 
 
