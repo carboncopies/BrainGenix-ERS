@@ -216,7 +216,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
         Shaders_[ShaderIndex]->MakeActive();
 
         // Update Shaders
-        UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight, SceneManager);
+        UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewports_[Index]->Camera->Position);
         Shaders_[ShaderIndex]->SetMat4("projection", projection);
         Shaders_[ShaderIndex]->SetMat4("view", view);
 
