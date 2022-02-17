@@ -9,12 +9,17 @@ in vec3 FragPos;
 in vec3 Normal;
 
 
+
 // Get Metadata Params
+uniform int FrameNumber; // Number of the frame, counts up from zero
+
 uniform float Time; // Time since program started in seconds
 uniform float FrameTime; // Render Time Of The Frame
-uniform int FrameNumber; // Number of the frame, counts up from zero
+
 uniform vec2 ViewportRes; // XY Resolution of the viewport
 uniform vec3 CameraPosition; // Get Camera XYZ Position
+
+
 
 // Get Texture Info
 uniform STRUCT_Material Material;
@@ -27,7 +32,7 @@ uniform vec3 Light_Diffuse_Color;
 uniform vec3 Light_Specular_Color;
 
 
-float SpecularStrength = 1.0f;
+
 
 
 // Light Structs
@@ -138,7 +143,11 @@ void main()
 }
 
 
+vec3 CalculateDirectionalLighting {
 
+    
+
+}
 
 
 
