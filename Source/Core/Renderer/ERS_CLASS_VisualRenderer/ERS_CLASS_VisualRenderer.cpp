@@ -455,7 +455,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     // Diffuse Lamp
     ActiveShader->SetInt("NumberDirectionalLights", 1);
-    ActiveShader->SetInt("NumberPointLights", 1);
+    ActiveShader->SetInt("NumberPointLights", 2);
     ActiveShader->SetInt("NumberSpotLights", 0);
     
 
