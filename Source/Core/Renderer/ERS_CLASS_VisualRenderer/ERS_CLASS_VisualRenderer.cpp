@@ -447,7 +447,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     // Directional Lights
     int NumberDirectionalLights = ActiveScene->DirectionalLights.size();
-
+    std::cout<<NumberDirectionalLights<<std::endl;
     ActiveShader->SetFloat("NumberDirectionalLights", NumberDirectionalLights);
     for (int i = 0; i < NumberDirectionalLights; i++) {
     
