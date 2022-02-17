@@ -571,7 +571,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
 
                 ImGui::EndMenu();
                 }
-
+            ImGui::EndMenu();
             }
 
 
