@@ -145,6 +145,12 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             int LightIndex = Scene.PointLights.size() - 1;
 
             Scene.PointLights[LightIndex]->UserDefinedName = AssetName;
+
+
+            Scene.PointLights[LightIndex]->RolloffConstant = SceneDataNode[i]["RolloffConstant"].as<float>();
+            Scene.PointLights[LightIndex]->RolloffLinear = SceneDataNode[i]["RolloffLinear"].as<float>();
+            Scene.PointLights[LightIndex]->RolloffQuadratic = SceneDataNode[i]["RolloffQuadratic"].as<float>();
+
             
             Scene.PointLights[LightIndex]->Ambient = glm::vec3(
                 SceneDataNode[i]["AmbientRed"].as<float>(),
