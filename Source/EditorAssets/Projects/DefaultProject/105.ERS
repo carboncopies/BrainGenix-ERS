@@ -41,7 +41,7 @@ struct DirectionalLight {
     vec3 DiffuseColor;
     vec3 SpecularColor;
 
-}
+};
 
 struct PointLight {
 
@@ -58,7 +58,7 @@ struct PointLight {
     float LinearRolloff;
     float QuadraticRolloff;
 
-}
+};
 
 struct SpotLight {
 
@@ -80,7 +80,7 @@ struct SpotLight {
     float CutOff;
     float OuterCutOff;
 
-}
+};
 
 // Material Struct
 struct Material {
@@ -92,7 +92,7 @@ struct Material {
 
     
 
-}
+};
 
 
 
@@ -133,6 +133,7 @@ void main()
     FragColor = FragDiffuseColor + FragSpecularColor;
     
 }
+
 
 
 
