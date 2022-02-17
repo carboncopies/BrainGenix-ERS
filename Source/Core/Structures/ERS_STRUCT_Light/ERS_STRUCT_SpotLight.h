@@ -26,6 +26,8 @@ struct ERS_STRUCT_SpotLight {
     float OuterCutOff; /**<CutOff angleFor Spotlight (outer)*/
     
     
+    float Shinyness; /**<Power to raise specularity to, 32 is a good number in general*/
+
     glm::vec3 Ambient; /**<Ambient color of the light*/
     glm::vec3 Diffuse; /**<Ambient color of the light*/
     glm::vec3 Specular; /**<Ambient color of the light*/
