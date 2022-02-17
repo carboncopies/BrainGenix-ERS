@@ -130,10 +130,14 @@ void main()
     }
 
     // Calculate Point Lights
-
+    for (int i = 0; i < NumberPointLights; i++) {
+        Result += CalculatePointLight(PointLights[i], SampledData, Normal, FragPos, ViewDirection);
+    }
 
     // Calculate Spot Lights
-
+    for (int i = 0; i < NumberSpotLights; i++) {
+        Result += CalculateSpotLight(SpotLights[i], SampledData, Normal, FragPos, ViewDirection);
+    }
     
     FragColor = Result;
     
