@@ -561,6 +561,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
 
                     if (ImGui::MenuItem("Light Grey"), nullptr, (Viewports_[Index]->Grid->GridColor_ == glm::vec3(0.75f))) {
                         Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.75f);
+                        std::cout<<"Test\n";
                     }
 
                     if (ImGui::MenuItem("Dark Grey"), nullptr, (Viewports_[Index]->Grid->GridColor_ == glm::vec3(0.25f))) {
