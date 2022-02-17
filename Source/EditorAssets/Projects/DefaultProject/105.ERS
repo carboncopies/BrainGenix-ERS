@@ -193,7 +193,14 @@ vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData
 
     // Attenuate 
     float Distance = length(Light.Position - FragPos);
-    float Attenuation = 1.0f / ()
+    float Attenuation = 1.0f / (Light.ConstantRolloff + Light.LinearRolloff * Distance + Light.QuadraticRolloff * (Distance * Diffuse));
+
+    // Calculate Total Contribution From Components
+    vec4 AmbientComponent = vec4(Light.Ambient * Attenuation, 1.0f) * SampledData.DiffuseTextureColor;
+    vec4 DiffuseComponent = vec4(Light.Diffuse * Attenuation, 1.0f) * Diffuse * SampledData.DiffuseTextureColor;
+    vec4 SpecularComponent = vec4(Light.Specular * Attenuation, 1.0f) * Specular * SampledData.SpecularTextureColor;
+
+    return (AmbientComponent + DiffuseComponent + SpecularComponent);
 
 
 }
