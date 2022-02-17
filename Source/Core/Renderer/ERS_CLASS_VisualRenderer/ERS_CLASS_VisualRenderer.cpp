@@ -475,6 +475,26 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetFloat((UniformName + std::string(".LinearRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffLinear);
         ActiveShader->SetFloat((UniformName + std::string(".QuadraticRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffQuadratic);
 
+        ActiveShader->SetVec3((UniformName + std::string(".Ambient")).c_str(), ActiveScene->PointLights[i]->Ambient);
+        ActiveShader->SetVec3((UniformName + std::string(".Diffuse")).c_str(), ActiveScene->PointLights[i]->Diffuse);
+        ActiveShader->SetVec3((UniformName + std::string(".Specular")).c_str(), ActiveScene->PointLights[i]->Specular);
+    
+    }
+
+
+    // Spot Lights
+        int NumberPointLights = ActiveScene->PointLights.size();
+
+    ActiveShader->SetFloat("NumberPointLights", NumberPointLights);
+    for (int i = 0; i < NumberPointLights; i++) {
+    
+        std::string UniformName = std::string("PointLights[") + std::to_string(i) + std::string("]");
+
+        ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->PointLights[i]->Pos);
+
+        ActiveShader->SetFloat((UniformName + std::string(".ConstantRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffConstant);
+        ActiveShader->SetFloat((UniformName + std::string(".LinearRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffLinear);
+        ActiveShader->SetFloat((UniformName + std::string(".QuadraticRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffQuadratic);
 
         ActiveShader->SetVec3((UniformName + std::string(".Ambient")).c_str(), ActiveScene->PointLights[i]->Ambient);
         ActiveShader->SetVec3((UniformName + std::string(".Diffuse")).c_str(), ActiveScene->PointLights[i]->Diffuse);
@@ -484,33 +504,12 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
 
 
-
     // Cheaty Lighting Setup
 
     // Diffuse Lamp
     ActiveShader->SetInt("NumberDirectionalLights", 0);
     ActiveShader->SetInt("NumberPointLights", 0);
     ActiveShader->SetInt("NumberSpotLights", 1);
-    
-
-    ActiveShader->SetVec3("PointLights[0].Position", glm::vec3(0.0f));
-    ActiveShader->SetFloat("PointLights[0].ConstantRolloff", 1.0f);
-    ActiveShader->SetFloat("PointLights[0].LinearRolloff", 0.09f);
-    ActiveShader->SetFloat("PointLights[0].QuadraticRolloff", 0.032f);
-    
-    ActiveShader->SetVec3("PointLights[0].Ambient", glm::vec3(0.0f));
-    ActiveShader->SetVec3("PointLights[0].Diffuse", glm::vec3(1.0f));
-    ActiveShader->SetVec3("PointLights[0].Specular", glm::vec3(1.0f));
-
-
-    ActiveShader->SetVec3("PointLights[1].Position", glm::vec3(-10.0f, 0.0f, 0.0f));
-    ActiveShader->SetFloat("PointLights[1].ConstantRolloff", 1.0f);
-    ActiveShader->SetFloat("PointLights[1].LinearRolloff", 0.09f);
-    ActiveShader->SetFloat("PointLights[1].QuadraticRolloff", 0.032f);
-    
-    ActiveShader->SetVec3("PointLights[1].Ambient", glm::vec3(0.0f));
-    ActiveShader->SetVec3("PointLights[1].Diffuse", glm::vec3(1.0f));
-    ActiveShader->SetVec3("PointLights[1].Specular", glm::vec3(1.0f));
 
 
 
