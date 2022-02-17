@@ -103,32 +103,70 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             Scene.Models[CurrentSize-1]->Name = AssetName;
             Scene.Models[CurrentSize-1]->FlipTextures = FlipTextures;
 
-        } else if (AssetType == std::string("Light")) {
+        } else if (AssetType == std::string("DirectionalLight")) {
 
             // Setup Model Pointer In Scene To Work On
-            Scene.Lights.push_back(std::make_shared<ERS_STRUCT_Light>());
-            int LightIndex = Scene.Lights.size() - 1;
+            Scene.DirectionalLights.push_back(std::make_shared<ERS_STRUCT_DirectionalLight>());
+            int LightIndex = Scene.DirectionalLights.size() - 1;
 
-
-            Scene.Lights[LightIndex]->UserDefinedName = AssetName;
-            Scene.Lights[LightIndex]->LightType = SceneDataNode[i]["LightType"].as<std::string>();
+            Scene.DirectionalLights[LightIndex]->UserDefinedName = AssetName;
             
-            Scene.Lights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
-            Scene.Lights[LightIndex]->ColorRed = SceneDataNode[i]["ColorRed"].as<float>();
-            Scene.Lights[LightIndex]->ColorGreen = SceneDataNode[i]["ColorGreen"].as<float>();
-            Scene.Lights[LightIndex]->ColorBlue = SceneDataNode[i]["ColorBlue"].as<float>();
+            Scene.DirectionalLights[LightIndex]->Ambient = glm::vec3(
+                SceneDataNode[i]["AmbientRed"].as<float>(),
+                SceneDataNode[i]["AmbientGreen"].as<float>(),
+                SceneDataNode[i]["AmbientBlue"].as<float>()
+                );
+            Scene.DirectionalLights[LightIndex]->Diffuse = glm::vec3(
+                SceneDataNode[i]["DiffuseRed"].as<float>(),
+                SceneDataNode[i]["DiffuseGreen"].as<float>(),
+                SceneDataNode[i]["DiffuseBlue"].as<float>()
+                );
+            Scene.DirectionalLights[LightIndex]->Specular = glm::vec3(
+                SceneDataNode[i]["SpecularRed"].as<float>(),
+                SceneDataNode[i]["SpecularGreen"].as<float>(),
+                SceneDataNode[i]["SpecularBlue"].as<float>()
+                );
 
-            Scene.Lights[LightIndex]->PosX = SceneDataNode[i]["PosX"].as<float>();
-            Scene.Lights[LightIndex]->PosY = SceneDataNode[i]["PosY"].as<float>();
-            Scene.Lights[LightIndex]->PosZ = SceneDataNode[i]["PosZ"].as<float>();
+            Scene.DirectionalLights[LightIndex]->Pos = glm::vec3(
+                SceneDataNode[i]["PosX"].as<float>(),
+                SceneDataNode[i]["PosY"].as<float>(),
+                SceneDataNode[i]["PosZ"].as<float>()
+                );
+            Scene.DirectionalLights[LightIndex]->Rot = glm::vec3(
+                SceneDataNode[i]["RotX"].as<float>(),
+                SceneDataNode[i]["RotY"].as<float>(),
+                SceneDataNode[i]["RotZ"].as<float>()
+                );
 
-            Scene.Lights[LightIndex]->RotX = SceneDataNode[i]["PosX"].as<float>();
-            Scene.Lights[LightIndex]->RotY = SceneDataNode[i]["RotY"].as<float>();
-            Scene.Lights[LightIndex]->RotZ = SceneDataNode[i]["RotZ"].as<float>();
+        } else if (AssetType == std::string("PointLight")) {
 
-            Scene.Lights[LightIndex]->ScaleX = SceneDataNode[i]["ScaleX"].as<float>();
-            Scene.Lights[LightIndex]->ScaleY = SceneDataNode[i]["ScaleY"].as<float>();
-            Scene.Lights[LightIndex]->ScaleZ = SceneDataNode[i]["ScaleZ"].as<float>();
+            // Setup Model Pointer In Scene To Work On
+            Scene.PointLights.push_back(std::make_shared<ERS_STRUCT_PointLight>());
+            int LightIndex = Scene.PointLights.size() - 1;
+
+            Scene.PointLights[LightIndex]->UserDefinedName = AssetName;
+            
+            Scene.PointLights[LightIndex]->Ambient = glm::vec3(
+                SceneDataNode[i]["AmbientRed"].as<float>(),
+                SceneDataNode[i]["AmbientGreen"].as<float>(),
+                SceneDataNode[i]["AmbientBlue"].as<float>()
+                );
+            Scene.PointLights[LightIndex]->Diffuse = glm::vec3(
+                SceneDataNode[i]["DiffuseRed"].as<float>(),
+                SceneDataNode[i]["DiffuseGreen"].as<float>(),
+                SceneDataNode[i]["DiffuseBlue"].as<float>()
+                );
+            Scene.PointLights[LightIndex]->Specular = glm::vec3(
+                SceneDataNode[i]["SpecularRed"].as<float>(),
+                SceneDataNode[i]["SpecularGreen"].as<float>(),
+                SceneDataNode[i]["SpecularBlue"].as<float>()
+                );
+
+            Scene.PointLights[LightIndex]->Pos = glm::vec3(
+                SceneDataNode[i]["PosX"].as<float>(),
+                SceneDataNode[i]["PosY"].as<float>(),
+                SceneDataNode[i]["PosZ"].as<float>()
+                );
 
         }
 
