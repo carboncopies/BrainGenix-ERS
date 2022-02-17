@@ -31,11 +31,11 @@ private:
 
     unsigned int GridVBO_; /**<OpenGL ID To Grid Vertex Buffer Object*/
     unsigned int GridVAO_; /**<OpenGL ID To Grid Vertex Array Object*/
+    float GridScale_ = 25.0f; /**<Scale of the grid plane, does NOT set grid line scale. Use Grid Size For This Purpose.*/
 
 public:
 
     float GridSize_ = 0.01f;
-    float GridScale_ = 25.0f;
     float GridLineThickness_ = 0.01f;
     glm::vec3 GridColor_ = glm::vec3(1.0f); 
     glm::vec3 GridColorX_ = glm::vec3(1.0f, 0.0f, 0.0f); 
