@@ -86,7 +86,7 @@ struct STRUCT_SpotLight {
 
 };
 
-// Material Struct
+// Material Handling Structs
 struct STRUCT_Material {
 
     sampler2D Diffuse;
@@ -102,6 +102,14 @@ struct STRUCT_Material {
 
 };
 
+struct STRUCT_SampledColors {
+
+    vec3 DiffuseTextureColor;
+    vec3 SpecularTextureColor;
+    vec3 NormalTextureColor;
+    vec3 HeightTextureColor;
+
+}
 
 
 void main()
@@ -143,7 +151,7 @@ void main()
 }
 
 
-vec4 CalculateDirectionalLighting {
+vec4 CalculateDirectionalLighting(STRUCT_DirectionalLight Light, vec3 Normal, vec3 ViewDirection) {
 
 
 
