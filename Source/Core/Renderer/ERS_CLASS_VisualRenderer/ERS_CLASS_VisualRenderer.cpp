@@ -488,7 +488,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
         if (ImGui::BeginMenu("Grid")) {
 
             // Grid Scale Submenu
-            if (ImGui::BeginMenu("Grid Scale")) {
+            if (ImGui::BeginMenu("Scale")) {
 
                 if (ImGui::MenuItem("0.5 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.01f))) {
                     Viewports_[Index]->Grid->GridSize_ = 0.01f;
@@ -508,6 +508,29 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
                 
             ImGui::EndMenu();
             }
+
+            // Line Thickness Submenu
+            if (ImGui::BeginMenu("Line Thickness")) {
+
+                if (ImGui::MenuItem("0.5 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.01f))) {
+                    Viewports_[Index]->Grid->GridSize_ = 0.01f;
+                }
+
+                if (ImGui::MenuItem("1 Unit", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.02f))) {
+                    Viewports_[Index]->Grid->GridSize_ = 0.02f;
+                }
+
+                if (ImGui::MenuItem("2.5 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.05f))) {
+                    Viewports_[Index]->Grid->GridSize_ = 0.05f;
+                }
+
+                if (ImGui::MenuItem("5 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.1f))) {
+                    Viewports_[Index]->Grid->GridSize_ = 0.1f;
+                }
+                
+            ImGui::EndMenu();
+            }
+
 
         ImGui::EndMenu();
         }
