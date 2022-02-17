@@ -164,7 +164,7 @@ void main()
 }
 
 
-vec4 CalculateDirectionalLighting(STRUCT_DirectionalLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 ViewDirection) {
+vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 ViewDirection) {
     
     vec3 LightDirectionVector = normalize(-Light.Direction);
     vec3 ReflectionDirectionVector = normalize(-LightDirectionVector, NormalTextureColor);
@@ -182,6 +182,8 @@ vec4 CalculateDirectionalLighting(STRUCT_DirectionalLight Light, STRUCT_SampledD
 
 }
 
+vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection) {
 
+    
 
-
+}
