@@ -494,8 +494,20 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
                     Viewports_[Index]->Grid->GridSize_ = 0.01f;
                 }
 
-                if (ImGui::MenuItem("1 Unit", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.01f))) {
-                    Viewports_[Index]->Grid->GridSize_ = 0.01f;
+                if (ImGui::MenuItem("1 Unit", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.02f))) {
+                    Viewports_[Index]->Grid->GridSize_ = 0.02f;
+                }
+
+                if (ImGui::MenuItem("2 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.04f))) {
+                    Viewports_[Index]->Grid->GridSize_ = 0.04f;
+                }
+
+                if (ImGui::MenuItem("5 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.1f))) {
+                    Viewports_[Index]->Grid->GridSize_ = 0.1f;
+                }
+
+                if (ImGui::MenuItem("10 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.2f))) {
+                    Viewports_[Index]->Grid->GridSize_ = 0.2f;
                 }
                 
             ImGui::EndMenu();
