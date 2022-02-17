@@ -35,7 +35,7 @@ uniform STRUCT_SpotLight SpotLights[NumberSpotLights];
 
 
 
-// Light Structs
+// Define Structs
 struct STRUCT_DirectionalLight {
 
     vec3 Position;
@@ -86,7 +86,6 @@ struct STRUCT_SpotLight {
 
 };
 
-// Material Handling Structs
 struct STRUCT_Material {
 
     sampler2D Diffuse;
