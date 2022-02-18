@@ -6,7 +6,6 @@
 add_library(Window_SceneTree
 
             # Add Source Files (.cpp)
-
             "GUI_Window_SceneTree.cpp"
 
             # Add Header Files (.h)
