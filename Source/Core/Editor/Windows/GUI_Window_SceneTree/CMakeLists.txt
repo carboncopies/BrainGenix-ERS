@@ -41,10 +41,9 @@ target_link_libraries(Window_SceneTree
     ERS_STRUCT_ProjectUtils
 
     ERS_CLASS_LoggingSystem
-    
+
     ERS_STRUCT_Scene
     ERS_SceneManager
-
     )
 
 target_include_directories(Window_SceneTree PUBLIC ./)
