@@ -18,13 +18,13 @@
 #include <ERS_SceneManager.h>
 #include <ERS_STRUCT_Scene.h>
 
-#include <GUI_Subwindow_SceneRenameModal.h>
-#include <GUI_Subwindow_ModelRenameModal.h>
-#include <GUI_Subwindow_DeleteScene.h>
-#include <GUI_Subwindow_DeleteModel.h>
+#include <ERS_GUI_CLASS_SceneRenameModal.h>
+#include <ERS_GUI_CLASS_ModelRenameModal.h>
+#include <ERS_GUI_CLASS_DeleteScene.h>
+#include <ERS_GUI_CLASS_DeleteModel.h>
 
-#include <GUI_Windowutil_DuplicateScene.h>
-#include <GUI_Windowutil_DuplicateModel.h>
+#include <ERS_GUI_FUNCTION_DuplicateScene.h>
+#include <ERS_GUI_FUNCTION_DuplicateModel.h>
 
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
