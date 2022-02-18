@@ -115,20 +115,22 @@ void ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh,
     // Process Materials
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
 
-
+    
     AddTexture(Model, Material, aiTextureType_DIFFUSE, "texture_diffuse", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_SPECULAR, "texture_specular", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_METALNESS, "texture_specular", ModelDirectory); // cheaty but works for now
+    AddTexture(Model, Material, aiTextureType_METALNESS, "texture_metalness", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_NORMALS, "texture_normal", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_HEIGHT, "texture_height", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_AMBIENT, "texture_ambient", ModelDirectory);
 
-    
 
 }
 
 // Check Material Textures
 void ERS_CLASS_ModelImporter::AddTexture(ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory) {
+
+    std::string Message = std::string("Found Texture '") + TypeName + std::string("'");
+    SystemUtils_->Logger_->Log(Message, 3);
 
 
     for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {
