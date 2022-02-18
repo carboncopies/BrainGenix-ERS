@@ -147,8 +147,6 @@ void ERS_CLASS_ModelImporter::AddTexture(ERS_STRUCT_Model* Model, aiMaterial *Ma
         aiString Str;
         Mat->GetTexture(Type, i, &Str);
 
-
-
         // Calculate Texture Path, Append If Not Already In List
         std::string FilePath = std::string(ModelDirectory + std::string(Model->Directory)  + std::string("/") + std::string(Str.C_Str()));
         std::string Message = std::string("Found Texture Of Type '") + TypeName + std::string("' At Path '") + FilePath + std::string("'");
