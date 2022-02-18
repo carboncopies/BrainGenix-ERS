@@ -282,6 +282,9 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     }
 
 
+    // FIXME: fix the loader not matching the textures to the model
+    // perhaps also add a warning message to the system so that it will log when it can't find a texture?
+
     // Read Mesh
     Assimp::Importer Importer;
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Model With ID: ") + std::to_string(AssetID)).c_str(), 3);
