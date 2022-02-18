@@ -442,6 +442,10 @@ void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<int>* IDs, std::vec
         Mat->GetTexture(Type, i, &TextureString);
         std::string TextureIdentifier = std::string(std::string(TextureString.C_Str()));
 
+        // Log Texture Request
+        std::string Message = std::string("Model Requesting Texture Of Type '") + TypeName + std::string("' With Path '") + TextureIdentifier + std::string("'");
+        SystemUtils_->Logger_->Log(Message, 3);
+
         // Search Texture List For Index Of Same Match, Add -1 If Not Found
         int Index = -1;
         for (int x = 0; x < TextureList.size(); x++) {
