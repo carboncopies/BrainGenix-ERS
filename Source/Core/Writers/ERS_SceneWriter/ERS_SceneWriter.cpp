@@ -199,7 +199,7 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputSce
 
         Output << YAML::Key << "RolloffConstant" << YAML::Value << InputScene->SpotLights[i]->RolloffConstant;
         Output << YAML::Key << "RolloffLinear" << YAML::Value << InputScene->SpotLights[i]->RolloffLinear;
-        Output << YAML::Key << "RollofQuadratic" << YAML::Value << InputScene->SpotLights[i]->RolloffQuadratic;
+        Output << YAML::Key << "RolloffQuadratic" << YAML::Value << InputScene->SpotLights[i]->RolloffQuadratic;
 
         Output << YAML::Key << "CutOff" << YAML::Value << InputScene->SpotLights[i]->CutOff;
         Output << YAML::Key << "OuterCutOff" << YAML::Value << InputScene->SpotLights[i]->OuterCutOff;
