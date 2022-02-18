@@ -3,7 +3,7 @@
 Open Asset Import Library - Java Binding (jassimp)
 ---------------------------------------------------------------------------
 
-Copyright (c) 2006-2020, assimp team
+Copyright (c) 2006-2017, assimp team
 
 All rights reserved.
 
@@ -139,8 +139,10 @@ public class AiClassLoaderIOSystem implements AiIOSystem<AiInputStreamIOStream>
       {
          return false;
       }
-
-	  return true;
+      else
+      {
+         return true;
+      }
       
    }
 

@@ -3,7 +3,8 @@
 Open Asset Import Library (assimp)
 ---------------------------------------------------------------------------
 
-Copyright (c) 2006-2022, assimp team
+Copyright (c) 2006-2017, assimp team
+
 
 All rights reserved.
 
@@ -38,42 +39,38 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ---------------------------------------------------------------------------
 */
-#include "AbstractImportExportBase.h"
 #include "UnitTestPCH.h"
+#include "AbstractImportExportBase.h"
 
-#include <assimp/postprocess.h>
-#include <assimp/scene.h>
-#include <assimp/Exporter.hpp>
 #include <assimp/Importer.hpp>
+#include <assimp/Exporter.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 
-#include "AssetLib/3MF/D3MFExporter.h"
+#include "D3MFExporter.h"
 
 class utD3MFImporterExporter : public AbstractImportExportBase {
 public:
-    bool importerTest() override {
+    virtual bool importerTest() {
         Assimp::Importer importer;
         const aiScene *scene = importer.ReadFile(ASSIMP_TEST_MODELS_DIR "/3MF/box.3mf", aiProcess_ValidateDataStructure);
-        if (nullptr == scene) {
-            return false;
-        }
-
-        EXPECT_EQ(1u, scene->mNumMeshes);
-        aiMesh *mesh = scene->mMeshes[0];
-        EXPECT_NE(nullptr, mesh);
-        EXPECT_EQ(12u, mesh->mNumFaces);
-        EXPECT_EQ(8u, mesh->mNumVertices);
-
-        return (nullptr != scene);
+        EXPECT_EQ( 1u, scene->mNumMeshes );
+        aiMesh *mesh = scene->mMeshes[ 0 ];
+        EXPECT_NE( nullptr, mesh );
+        EXPECT_EQ( 12u, mesh->mNumFaces );
+        EXPECT_EQ( 8u, mesh->mNumVertices );
+        
+        return ( nullptr != scene );
     }
 
 #ifndef ASSIMP_BUILD_NO_EXPORT
 
-    bool exporterTest() override {
+    virtual bool exporterTest() {
         Assimp::Importer importer;
-        const aiScene *scene = importer.ReadFile(ASSIMP_TEST_MODELS_DIR "/3MF/box.3mf", 0);
+        const aiScene *scene = importer.ReadFile( ASSIMP_TEST_MODELS_DIR "/3MF/box.3mf", 0 );
 
         Assimp::Exporter exporter;
-        return AI_SUCCESS == exporter.Export(scene, "3mf", "test.3mf");
+        return AI_SUCCESS == exporter.Export( scene, "3mf", "test.3mf" );
     }
 #endif // ASSIMP_BUILD_NO_EXPORT
 };
@@ -84,16 +81,8 @@ TEST_F(utD3MFImporterExporter, import3MFFromFileTest) {
 
 #ifndef ASSIMP_BUILD_NO_EXPORT
 
-TEST_F(utD3MFImporterExporter, export3MFtoMemTest) {
-    EXPECT_TRUE(exporterTest());
-}
-
-TEST_F(utD3MFImporterExporter, roundtrip3MFtoMemTest) {
-    EXPECT_TRUE(exporterTest());
-
-    Assimp::Importer importer;
-    const aiScene *scene = importer.ReadFile("test.3mf", 0);
-    EXPECT_NE(nullptr, scene);
+TEST_F( utD3MFImporterExporter, export3MFtoMemTest ) {
+    EXPECT_TRUE( exporterTest() );
 }
 
 #endif // ASSIMP_BUILD_NO_EXPORT

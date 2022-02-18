@@ -3,7 +3,8 @@
 Open Asset Import Library (assimp)
 ---------------------------------------------------------------------------
 
-Copyright (c) 2006-2022, assimp team
+Copyright (c) 2006-2017, assimp team
+
 
 All rights reserved.
 
@@ -41,27 +42,32 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "UnitTestPCH.h"
 
 #include <assimp/cexport.h>
-#include <assimp/postprocess.h>
-#include <assimp/scene.h>
 #include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 
 class BlendImportMaterials : public ::testing::Test {
 public:
-    void SetUp() override {
+
+    virtual void SetUp()
+    {
         im = new Assimp::Importer();
     }
 
-    void TearDown() override {
+    virtual void TearDown()
+    {
         delete im;
     }
 
 protected:
-    Assimp::Importer *im;
+
+    Assimp::Importer* im;
 };
 
 // ------------------------------------------------------------------------------------------------
-TEST_F(BlendImportMaterials, testImportMaterial) {
-    const aiScene *pTest = im->ReadFile(ASSIMP_TEST_MODELS_DIR "/BLEND/BlenderMaterial_269.blend", aiProcess_ValidateDataStructure);
+TEST_F(BlendImportMaterials, testImportMaterial)
+{
+    const aiScene* pTest = im->ReadFile(ASSIMP_TEST_MODELS_DIR "/BLEND/BlenderMaterial_269.blend", aiProcess_ValidateDataStructure);
     ASSERT_TRUE(pTest != NULL);
     ASSERT_TRUE(pTest->HasMaterials());
 
@@ -69,15 +75,15 @@ TEST_F(BlendImportMaterials, testImportMaterial) {
 
     auto alpha = pTest->mMaterials[0];
 
-#define ASSERT_PROPERTY_EQ(expected, key, var)                             \
-    auto var = expected;                                                   \
-    ASSERT_EQ(aiReturn_SUCCESS, alpha->Get("$mat.blend." key, 0, 0, var)); \
-    ASSERT_EQ(expected, var);
+    #define ASSERT_PROPERTY_EQ(expected, key, var) \
+        auto var = expected; \
+        ASSERT_EQ(aiReturn_SUCCESS, alpha->Get("$mat.blend." key, 0, 0, var)); \
+        ASSERT_EQ(expected, var);
 
-#define ASSERT_PROPERTY_FLOAT_EQ(expected, key, var)                       \
-    auto var = expected;                                                   \
-    ASSERT_EQ(aiReturn_SUCCESS, alpha->Get("$mat.blend." key, 0, 0, var)); \
-    ASSERT_FLOAT_EQ(expected, var);
+    #define ASSERT_PROPERTY_FLOAT_EQ(expected, key, var) \
+        auto var = expected; \
+        ASSERT_EQ(aiReturn_SUCCESS, alpha->Get("$mat.blend." key, 0, 0, var)); \
+        ASSERT_FLOAT_EQ(expected, var);
 
     ASSERT_PROPERTY_EQ(aiColor3D(0.1f, 0.2f, 0.3f), "diffuse.color", diffuseColor);
     ASSERT_PROPERTY_EQ(0.4f, "diffuse.intensity", diffuseIntensity);
@@ -117,30 +123,4 @@ TEST_F(BlendImportMaterials, testImportMaterial) {
     ASSERT_PROPERTY_FLOAT_EQ(0.18f, "mirror.glossThreshold", mirrorGlossThreshold);
     ASSERT_PROPERTY_EQ(61, "mirror.glossSamples", mirrorGlossSamples);
     ASSERT_PROPERTY_FLOAT_EQ(0.87f, "mirror.glossAnisotropic", mirrorGlossAnisotropic);
-}
-
-TEST_F(BlendImportMaterials, testImportMaterialwith2texturesAnd2TexCoordMappings) {
-    const aiScene *pTest = im->ReadFile(ASSIMP_TEST_MODELS_DIR "/BLEND/plane_2_textures_2_texcoords_279.blend", aiProcess_ValidateDataStructure);
-    ASSERT_TRUE(pTest != NULL);
-
-    // material has 2 diffuse textures
-    ASSERT_TRUE(pTest->HasMaterials());
-    EXPECT_EQ(1u, pTest->mNumMaterials);
-    const aiMaterial *pMat = pTest->mMaterials[0];
-    ASSERT_TRUE(nullptr != pMat);
-    ASSERT_EQ(2u, pMat->GetTextureCount(aiTextureType_DIFFUSE));
-    aiString aPath;
-    aiTextureMapping tm = aiTextureMapping::aiTextureMapping_OTHER;
-    aiReturn result = pMat->GetTexture(aiTextureType_DIFFUSE, 0, &aPath, &tm);
-    ASSERT_EQ(aiReturn_SUCCESS, result);
-    result = pMat->GetTexture(aiTextureType_DIFFUSE, 1, &aPath, &tm);
-    ASSERT_EQ(aiReturn_SUCCESS, result);
-
-    // mesh has 2 texturecoord sets
-    ASSERT_TRUE(pTest->HasMeshes());
-    EXPECT_EQ(1u, pTest->mNumMeshes);
-    const aiMesh *pMesh = pTest->mMeshes[0];
-    ASSERT_TRUE(nullptr != pMesh);
-    ASSERT_TRUE(pMesh->HasTextureCoords(0));
-    ASSERT_TRUE(pMesh->HasTextureCoords(1));
 }

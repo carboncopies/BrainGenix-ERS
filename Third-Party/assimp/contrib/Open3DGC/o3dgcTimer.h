@@ -28,11 +28,9 @@ THE SOFTWARE.
 
 #ifdef _WIN32
 /* Thank you, Microsoft, for file WinDef.h with min/max redefinition. */
-#ifndef NOMINMAX
 #define NOMINMAX
-#endif
 #include <windows.h>
-#elif __APPLE__
+#elif __MACH__
 #include <mach/clock.h>
 #include <mach/mach.h>
 #else
@@ -75,7 +73,7 @@ namespace o3dgc
         LARGE_INTEGER m_freq;
 
     };
-#elif __APPLE__
+#elif __MACH__
     class Timer
     {
     public: 

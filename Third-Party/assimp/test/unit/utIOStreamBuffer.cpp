@@ -3,8 +3,7 @@
 Open Asset Import Library (assimp)
 ---------------------------------------------------------------------------
 
-Copyright (c) 2006-2022, assimp team
-
+Copyright (c) 2006-2017, assimp team
 
 
 All rights reserved.
@@ -42,7 +41,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "UnitTestPCH.h"
-#include <assimp/IOStreamBuffer.h>
+#include "IOStreamBuffer.h"
 #include "TestIOStream.h"
 #include "UnitTestFileGenerator.h"
 
@@ -81,14 +80,14 @@ TEST_F( IOStreamBufferTest, open_close_Test ) {
 
     EXPECT_FALSE( myBuffer.open( nullptr ) );
     EXPECT_FALSE( myBuffer.close() );
-
+    
     const auto dataSize = sizeof(data);
     const auto dataCount = dataSize / sizeof(*data);
 
     char fname[]={ "octest.XXXXXX" };
     auto* fs = MakeTmpFile(fname);
     ASSERT_NE(nullptr, fs);
-
+    
     auto written = std::fwrite( data, sizeof(*data), dataCount, fs );
     EXPECT_NE( 0U, written );
     auto flushResult = std::fflush( fs );
@@ -107,7 +106,7 @@ TEST_F( IOStreamBufferTest, open_close_Test ) {
 }
 
 TEST_F( IOStreamBufferTest, readlineTest ) {
-
+    
     const auto dataSize = sizeof(data);
     const auto dataCount = dataSize / sizeof(*data);
 

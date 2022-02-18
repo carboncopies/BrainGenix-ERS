@@ -3,7 +3,7 @@
 Open Asset Import Library - Java Binding (jassimp)
 ---------------------------------------------------------------------------
 
-Copyright (c) 2006-2020, assimp team
+Copyright (c) 2006-2012, assimp team
 
 All rights reserved.
 
@@ -55,24 +55,6 @@ import java.util.List;
  * writable and may be modified.
  */
 public final class AiBone {
-    /**
-     * Name of the bone.
-     */
-    private String m_name;
-    
-    
-    /**
-     * Bone weights.
-     */
-    private final List<AiBoneWeight> m_boneWeights = 
-            new ArrayList<AiBoneWeight>();
-    
-    
-    /**
-     * Offset matrix.
-     */
-    private Object m_offsetMatrix; 
-
     /**
      * Constructor.
      */
@@ -132,5 +114,24 @@ public final class AiBone {
             AiWrapperProvider<V3, M4, C, N, Q>  wrapperProvider) {
         
         return (M4) m_offsetMatrix;
-    }    
+    }
+    
+    
+    /**
+     * Name of the bone.
+     */
+    private String m_name;
+    
+    
+    /**
+     * Bone weights.
+     */
+    private final List<AiBoneWeight> m_boneWeights = 
+            new ArrayList<AiBoneWeight>();
+    
+    
+    /**
+     * Offset matrix.
+     */
+    private Object m_offsetMatrix; 
 }

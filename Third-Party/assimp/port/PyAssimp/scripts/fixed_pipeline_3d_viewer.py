@@ -24,13 +24,12 @@ This sample is based on several sources, including:
  - ASSIMP's C++ SimpleOpenGL viewer
 """
 
-import sys
+import os, sys
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
 from OpenGL.GL import *
 
-import logging
-logger = logging.getLogger("pyassimp_opengl")
+import logging;logger = logging.getLogger("pyassimp_opengl")
 logging.basicConfig(level=logging.INFO)
 
 import math

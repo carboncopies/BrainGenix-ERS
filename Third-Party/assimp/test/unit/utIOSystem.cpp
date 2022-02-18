@@ -3,8 +3,7 @@
 Open Asset Import Library (assimp)
 ---------------------------------------------------------------------------
 
-Copyright (c) 2006-2022, assimp team
-
+Copyright (c) 2006-2017, assimp team
 
 
 All rights reserved.
@@ -50,12 +49,12 @@ using namespace Assimp;
 
 class IOSystemTest : public ::testing::Test {
 public:
-    virtual void SetUp() {
-        pImp = new TestIOSystem();
+    virtual void SetUp() { 
+        pImp = new TestIOSystem(); 
     }
-
-    virtual void TearDown() {
-        delete pImp;
+    
+    virtual void TearDown() { 
+        delete pImp; 
     }
 
 protected:

@@ -2,8 +2,7 @@
 Open Asset Import Library (assimp)
 ---------------------------------------------------------------------------
 
-Copyright (c) 2006-2022, assimp team
-
+Copyright (c) 2006-2017, assimp team
 
 
 All rights reserved.
@@ -66,7 +65,7 @@ TEST_F( utDefaultIOStream, FileSizeTest ) {
     {
         auto written = std::fwrite(data, sizeof(*data), dataCount, fs );
         EXPECT_NE( 0U, written );
-
+    
         auto vflush = std::fflush( fs );
         ASSERT_EQ(vflush, 0);
 
