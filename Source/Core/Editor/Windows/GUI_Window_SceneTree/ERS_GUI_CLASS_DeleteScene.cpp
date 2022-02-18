@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <GUI_Subwindow_DeleteScene.h>
+#include <ERS_GUI_CLASS_DeleteScene.h>
 
 
 Subwindow_DeleteScene::Subwindow_DeleteScene(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {

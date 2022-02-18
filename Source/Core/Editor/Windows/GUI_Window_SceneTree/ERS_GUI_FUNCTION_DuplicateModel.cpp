@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <GUI_Windowutil_DuplicateModel.h>
+#include <ERS_GUI_FUNCTION_DuplicateModel.h>
 
 
 void GUI_Windowutil_DuplicateModel(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, int SceneIndex, int ModelIndex) {
