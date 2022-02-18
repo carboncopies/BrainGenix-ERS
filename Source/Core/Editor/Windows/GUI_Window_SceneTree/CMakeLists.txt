@@ -7,9 +7,22 @@ add_library(Window_SceneTree
 
             # Add Source Files (.cpp)
             "GUI_Window_SceneTree.cpp"
+            "ERS_GUI_FUNCTION_DuplicateModel.cpp"
+            "ERS_GUI_FUNCTION_DuplicateScene.cpp"
+            "ERS_GUI_CLASS_SceneRenameModal.cpp"
+            "ERS_GUI_CLASS_ModelRenameModal.cpp"
+            "ERS_GUI_CLASS_DeleteScene.cpp"
+            "ERS_GUI_CLASS_DeleteModel.cpp"
+
 
             # Add Header Files (.h)
             "GUI_Window_SceneTree.h"
+            "ERS_GUI_FUNCTION_DuplicateModel.h"
+            "ERS_GUI_FUNCTION_DuplicateScene.h"
+            "ERS_GUI_CLASS_SceneRenameModal.h"
+            "ERS_GUI_CLASS_ModelRenameModal.h"
+            "ERS_GUI_CLASS_DeleteScene.h"
+            "ERS_GUI_CLASS_DeleteModel.h"
 
 
             ${BACKWARD_ENABLE}
