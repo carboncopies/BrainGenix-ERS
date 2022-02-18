@@ -128,7 +128,7 @@ void ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh,
     AddTexture(Model, Material, aiTextureType_METALNESS, "texture_metalness", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_NONE, "texture_none", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_NORMAL_CAMERA, "texture_normal_camera", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_NORMALS, "texture_normal", ModelDirectory);
+    AddTexture(Model, Material, aiTextureType_NORMALS, "texture_normals", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_OPACITY, "texture_opacity", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_REFLECTION, "texture_reflection", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_SHININESS, "texture_shininess", ModelDirectory);
