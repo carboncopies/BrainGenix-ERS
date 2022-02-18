@@ -35,9 +35,9 @@ private:
 
 public:
 
-    float GridSize_ = 0.01f;
+    float GridSize_ = 0.005f;
     float GridLineThickness_ = 0.01f;
-    glm::vec3 GridColor_ = glm::vec3(1.0f); 
+    glm::vec3 GridColor_ = glm::vec3(0.75f); 
     glm::vec3 GridColorX_ = glm::vec3(1.0f, 0.0f, 0.0f); 
     glm::vec3 GridColorZ_ = glm::vec3(0.0f, 1.0f, 0.0f); 
 
