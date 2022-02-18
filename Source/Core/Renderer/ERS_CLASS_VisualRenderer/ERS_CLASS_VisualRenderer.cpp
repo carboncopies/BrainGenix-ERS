@@ -447,7 +447,6 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     // Directional Lights
     int NumberDirectionalLights = ActiveScene->DirectionalLights.size();
-    std::cout<<NumberDirectionalLights<<std::endl;
     ActiveShader->SetFloat("NumberDirectionalLights", NumberDirectionalLights);
     for (int i = 0; i < NumberDirectionalLights; i++) {
     
@@ -463,7 +462,6 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     // Point Lights
     int NumberPointLights = ActiveScene->PointLights.size();
-
     ActiveShader->SetFloat("NumberPointLights", NumberPointLights);
     for (int i = 0; i < NumberPointLights; i++) {
     
@@ -484,7 +482,6 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     // Spot Lights
     int NumberSpotLights = ActiveScene->SpotLights.size();
-
     ActiveShader->SetFloat("NumberSpotLights", NumberSpotLights);
     for (int i = 0; i < NumberSpotLights; i++) {
     
