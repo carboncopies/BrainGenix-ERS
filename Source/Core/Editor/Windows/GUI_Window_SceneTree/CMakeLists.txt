@@ -2,11 +2,6 @@
 # This file is part of the BrainGenix-ERS Environment Rendering System #
 ########################################################################
 
-# Add Dependencies
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Popups)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Utils)
-
-
 # Create Library (Name Should Be Parent Dir Name)
 add_library(Window_SceneTree
 
@@ -37,15 +32,6 @@ target_link_libraries(Window_SceneTree
     
     ERS_STRUCT_Scene
     ERS_SceneManager
-
-    GUI_Subwindow_SceneRenameModal
-    GUI_Subwindow_ModelRenameModal
-    GUI_Subwindow_DeleteScene
-    GUI_Subwindow_DeleteModel
-
-    GUI_Windowutil_DuplicateScene
-    GUI_Windowutil_DuplicateModel
-   
 
     )
 
