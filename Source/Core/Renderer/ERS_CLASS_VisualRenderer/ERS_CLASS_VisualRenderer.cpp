@@ -447,7 +447,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     // Directional Lights
     int NumberDirectionalLights = ActiveScene->DirectionalLights.size();
-    ActiveShader->SetFloat("NumberDirectionalLights", NumberDirectionalLights);
+    ActiveShader->SetInt("NumberDirectionalLights", NumberDirectionalLights);
     for (int i = 0; i < NumberDirectionalLights; i++) {
     
         std::string UniformName = std::string("DirectionalLights[") + std::to_string(i) + std::string("]");
@@ -462,7 +462,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     // Point Lights
     int NumberPointLights = ActiveScene->PointLights.size();
-    ActiveShader->SetFloat("NumberPointLights", NumberPointLights);
+    ActiveShader->SetInt("NumberPointLights", NumberPointLights);
     for (int i = 0; i < NumberPointLights; i++) {
     
         std::string UniformName = std::string("PointLights[") + std::to_string(i) + std::string("]");
@@ -482,7 +482,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     // Spot Lights
     int NumberSpotLights = ActiveScene->SpotLights.size();
-    ActiveShader->SetFloat("NumberSpotLights", NumberSpotLights);
+    ActiveShader->SetInt("NumberSpotLights", NumberSpotLights);
     for (int i = 0; i < NumberSpotLights; i++) {
     
         std::string UniformName = std::string("SpotLights[") + std::to_string(i) + std::string("]");
