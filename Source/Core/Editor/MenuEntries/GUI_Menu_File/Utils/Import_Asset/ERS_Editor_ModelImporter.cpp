@@ -118,9 +118,12 @@ void ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh,
 
     AddTexture(Model, Material, aiTextureType_DIFFUSE, "texture_diffuse", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_SPECULAR, "texture_specular", ModelDirectory);
+    AddTexture(Model, Material, aiTextureType_METALNESS, "texture_specular", ModelDirectory); // cheaty but works for now
     AddTexture(Model, Material, aiTextureType_NORMALS, "texture_normal", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_AMBIENT, "texture_height", ModelDirectory);
+    AddTexture(Model, Material, aiTextureType_HEIGHT, "texture_height", ModelDirectory);
+    AddTexture(Model, Material, aiTextureType_AMBIENT, "texture_ambient", ModelDirectory);
 
+    
 
 }
 
