@@ -90,6 +90,8 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
             
             if (!SecondTryStatus) {
                 SystemUtils_->Logger_->Log("Failed To Find Texture During Second Try Effort, Abandoning Texture", 8);
+            } else {
+                SystemUtils_->Logger_->Log("Found Probable File, However This Is Not Guarenteed To Be Correct", 6);
             }
 
         }
