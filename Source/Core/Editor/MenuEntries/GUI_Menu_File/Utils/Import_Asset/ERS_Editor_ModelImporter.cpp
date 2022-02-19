@@ -55,7 +55,8 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
         if (!Success) {
             SystemUtils_->Logger_->Log("Error Loading Texture From Given Path, Will Search Current Directory For Texture", 7);
 
-            
+            // Strip To Last Item In Path (With Forward Slashes)
+            std::string ProcessedPath = 
 
         }
         SystemUtils_->ERS_IOSubsystem_->WriteAsset(TextureIDs[i], Data);
