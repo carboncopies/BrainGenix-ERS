@@ -56,7 +56,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
         bool SecondTryStatus = false;
         if (!Success) {
-            SystemUtils_->Logger_->Log("Error Loading Texture From Given Path, Will Search Current Directory For Texture", 7);
+            SystemUtils_->Logger_->Log(std::string("Error Loading Texture From Given Path '") + AssetPath + std::string("', Will Search Current Directory For Texture"), 7);
 
             // Strip To Last Item In Path (With Forward Slashes And Backward Slashes)
             std::string Path = TextureList_[i];
