@@ -68,6 +68,11 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
                 Path = Path.substr(Path.find_last_of("\\") + 1, Path.size()-1);
             }
 
+
+
+
+
+
             SecondTryStatus = ReadFile(Path, Data);
             
             if (!SecondTryStatus) {
