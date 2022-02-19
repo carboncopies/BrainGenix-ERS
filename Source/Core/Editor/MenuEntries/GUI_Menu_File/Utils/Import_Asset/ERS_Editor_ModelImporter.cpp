@@ -70,7 +70,14 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
 
             // Check Against Filesystem
+            for (const auto &Entry : std::filesystem::recursive_directory_iterator(AssetPath)) {
 
+                std::string FilePath{Entry.path().u8string()};
+
+                std::cout<<FilePath<<std::endl;
+
+            
+            }
 
 
             SecondTryStatus = ReadFile(Path, Data);
