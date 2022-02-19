@@ -76,7 +76,17 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
                 std::string FileName = FilePath.substr(FilePath.find_last_of("/") + 1, FilePath.size() - 1);
                 std::string FileNameWithoutExtension = FileName.substr(0, FileName.find_first_of("."));
 
-                if (FileNameWithoutExtension == Path.substr(0, Path.find_first_of("."))) {
+                size_t Pos = 0;
+                while ((Pos = FileNameWithoutExtension.find(" ", Pos)) != std::string::npos) {
+                    FileNameWithoutExtension.replace(" ", 1, "_");
+                    Pos ++;
+                }
+
+
+                std::string RefString = Path.substr(0, Path.find_first_of("."));
+                
+
+                if (FileNameWithoutExtension == ) {
                     Path = FilePath;
                     SystemUtils_->Logger_->Log(std::string("Found Potential Match '") + FilePath + std::string("', Attempting To Load"), 5);
                     break;
