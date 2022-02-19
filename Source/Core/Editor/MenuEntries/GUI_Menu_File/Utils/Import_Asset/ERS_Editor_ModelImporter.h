@@ -19,6 +19,7 @@
 #include <future>
 #include <thread>
 #include <chrono>
+#include <filesystem>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
