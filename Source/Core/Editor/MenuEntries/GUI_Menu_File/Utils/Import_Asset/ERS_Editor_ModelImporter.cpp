@@ -115,7 +115,7 @@ void ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh,
     // Process Materials
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
 
-    SystemUtils_->Logger_->Log("Identifying Model Textures", 3);
+    SystemUtils_->Logger_->Log("Identifying Mesh Textures", 3);
     AddTexture(Model, Material, aiTextureType_AMBIENT, "texture_ambient", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_AMBIENT_OCCLUSION, "texture_ambient_occlusion", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_BASE_COLOR, "texture_base_color", ModelDirectory);
@@ -135,7 +135,7 @@ void ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh,
     AddTexture(Model, Material, aiTextureType_SHININESS, "texture_shininess", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_SPECULAR, "texture_specular", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_UNKNOWN, "texture_unknown", ModelDirectory);
-    SystemUtils_->Logger_->Log("Finshed Model Texture Identification", 4);
+    SystemUtils_->Logger_->Log("Finshed Mesh Texture Identification", 4);
 
 }
 
