@@ -161,7 +161,7 @@ void ERS_CLASS_ModelImporter::AddTexture(ERS_STRUCT_Model* Model, aiMaterial *Ma
 }
 
 // Load IOData
-void ERS_CLASS_ModelImporter::ReadFile(std::string FilePath, std::shared_ptr<ERS_STRUCT_IOData> OutputData) {
+bool ERS_CLASS_ModelImporter::ReadFile(std::string FilePath, std::shared_ptr<ERS_STRUCT_IOData> OutputData) {
 
 
     struct stat Buffer;
@@ -184,16 +184,21 @@ void ERS_CLASS_ModelImporter::ReadFile(std::string FilePath, std::shared_ptr<ERS
                 } else {
                     SystemUtils_->Logger_->Log(std::string(std::string("Error Loading Asset '") + FilePath + std::string("', Failed To Open Filestream")).c_str(), 9);
                     OutputData->HasLoaded = false;
+                    return false;
                 }
 
             } else {
                 SystemUtils_->Logger_->Log(std::string(std::string("Error Loading Asset '") + FilePath + std::string("', Memory Allocation Failed")).c_str(), 9);            
                 OutputData->HasLoaded = false;
+                return false;
             }
         
         } else {
             SystemUtils_->Logger_->Log(std::string(std::string("Error Loading Asset '") + FilePath + std::string("', File Not Found")).c_str(), 9);
             OutputData->HasLoaded = false;
+            return false;
         }
+
+    return true;
 
 }
