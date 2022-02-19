@@ -72,7 +72,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
             // Create Reference String To Be Tested Against
             std::string RefString = Path.substr(0, Path.find_first_of("."));
-            Pos = 0;
+            size_t Pos = 0;
             while ((Pos = RefString.find(" ", Pos)) != std::string::npos) {
                 RefString.replace(Pos, 1, "_");
                 Pos ++;
@@ -86,7 +86,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
                 std::string FileNameWithoutExtension = FileName.substr(0, FileName.find_first_of("."));
 
                 // Remove Spaces From Filename And Replace With Underscores
-                size_t Pos = 0;
+                Pos = 0;
                 while ((Pos = FileNameWithoutExtension.find(" ", Pos)) != std::string::npos) {
                     FileNameWithoutExtension.replace(Pos, 1, "_");
                     Pos ++;
