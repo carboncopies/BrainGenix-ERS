@@ -62,10 +62,10 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
             std::string Path = TextureList_[i];
 
             if (Path.find("/") != std::string::npos) {
-                Path = Path.substr(Path.find_last_of("/"), Path.size()-1);
+                Path = Path.substr(Path.find_last_of("/") + 1, Path.size()-1);
             }
             if (Path.find("\\") != std::string::npos) {
-                Path = Path.substr(Path.find_last_of("\\"), Path.size()-1);
+                Path = Path.substr(Path.find_last_of("\\") + 1, Path.size()-1);
             }
 
             SecondTryStatus = ReadFile(Path, Data);
