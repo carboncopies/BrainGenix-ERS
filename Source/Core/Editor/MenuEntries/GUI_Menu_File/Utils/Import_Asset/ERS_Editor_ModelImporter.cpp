@@ -78,7 +78,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
                 
                 if (FileName == Path) {
                     Path = FilePath;
-                    SystemUtils_->Logger_->Log(std::string("Found Potential Match '") + FilePath + std::string("', Attempting To Load") + , 8);
+                    SystemUtils_->Logger_->Log(std::string("Found Potential Match '") + FilePath + std::string("', Attempting To Load") + , 5);
                     break;
                 }
 
