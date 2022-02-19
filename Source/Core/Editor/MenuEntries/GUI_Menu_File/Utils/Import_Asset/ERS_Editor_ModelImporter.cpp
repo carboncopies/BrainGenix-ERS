@@ -51,7 +51,13 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     std::vector<long> TextureIDs = SystemUtils_->ERS_IOSubsystem_->BatchAllocateIDs(TextureList_.size());
     for (int i = 0; i < TextureList_.size(); i++) {
         SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(TextureIDs[i]) + std::string("' To Texture '") + TextureList_[i] + std::string("'")).c_str(), 4);
-        ReadFile(TextureList_[i], Data);
+        bool Success = ReadFile(TextureList_[i], Data);
+        if (!Success) {
+            SystemUtils_->Logger_->Log("Error Loading Texture From Given Path, Will Search Current Directory For Texture", 7);
+
+            
+
+        }
         SystemUtils_->ERS_IOSubsystem_->WriteAsset(TextureIDs[i], Data);
 
     }
