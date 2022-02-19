@@ -70,7 +70,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
 
             // Check Against Filesystem
-            for (const auto &Entry : std::filesystem::recursive_directory_iterator(AssetPath)) {
+            for (const auto &Entry : std::filesystem::recursive_directory_iterator(AssetPath.substr(AssetPath.find_last_of("/") + 1, AssetPath.size()-1))) {
 
                 std::string FilePath{Entry.path().u8string()};
 
