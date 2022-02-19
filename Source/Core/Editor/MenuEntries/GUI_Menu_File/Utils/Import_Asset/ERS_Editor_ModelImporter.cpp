@@ -52,6 +52,9 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     for (int i = 0; i < TextureList_.size(); i++) {
         SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(TextureIDs[i]) + std::string("' To Texture '") + TextureList_[i] + std::string("'")).c_str(), 4);
         bool Success = ReadFile(TextureList_[i], Data);
+
+        
+        bool SecondTryStatus = false;
         if (!Success) {
             SystemUtils_->Logger_->Log("Error Loading Texture From Given Path, Will Search Current Directory For Texture", 7);
 
@@ -65,9 +68,17 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
                 Path = Path.substr(Path.find_last_of("\\"), Path.size()-1);
             }
 
+            SecondTryStatus = ReadFile(TextureList_[i], Data);
+            
+            if (!SecondTryStatus) {
+                SystemUtils_->Logger_->Log("Failed To Find Texture During Second Try Effort, Abandoning Texture", 8);
+            }
 
         }
-        SystemUtils_->ERS_IOSubsystem_->WriteAsset(TextureIDs[i], Data);
+
+        if (Success || SecondTryStatus) {
+            SystemUtils_->ERS_IOSubsystem_->WriteAsset(TextureIDs[i], Data);
+        }
 
     }
 
