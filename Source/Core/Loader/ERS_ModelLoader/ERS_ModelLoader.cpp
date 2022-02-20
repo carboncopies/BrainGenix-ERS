@@ -78,7 +78,7 @@ void ERS_CLASS_ModelLoader::WorkerThread() {
                 BlockThread_.unlock();
 
                 // Process Item
-                LoadModel(WorkID, WorkItem.get(), FlipTexture);
+                LoadModel(WorkID, WorkItem, FlipTexture);
 
             } else {
                 
@@ -237,7 +237,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
 
 }
 
-void ERS_CLASS_ModelLoader::LoadModel(long AssetID, ERS_STRUCT_Model* Model, bool FlipTextures) {
+void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures) {
 
     // Log Loading For Debugging Purposes
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Model '") + std::to_string(AssetID) + std::string("'")).c_str(), 4);
