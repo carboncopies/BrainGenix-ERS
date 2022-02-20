@@ -121,7 +121,7 @@ public:
      * @param FlipTextures 
      * @return ERS_STRUCT_Model 
      */
-    void LoadModel(long AssetID, ERS_STRUCT_Model* Model, bool FlipTextures = false);
+    void LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures = false);
 
 
     /**
