@@ -78,7 +78,7 @@ void ERS_CLASS_ModelLoader::WorkerThread() {
                 BlockThread_.unlock();
 
                 // Process Item
-                LoadModel(WorkID, WorkItem, FlipTexture);
+                LoadModel(WorkID, WorkItem.get(), FlipTexture);
 
             } else {
                 
