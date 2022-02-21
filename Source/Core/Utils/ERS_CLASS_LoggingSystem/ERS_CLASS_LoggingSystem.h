@@ -13,6 +13,8 @@
 #include <map>
 #include <list>
 #include <array>
+#include <memory>
+#include <mutex>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -40,7 +42,8 @@ private:
     int LogLevelTargetWidth = 6;
     int LogTimeTargetWidth = 19;
     const char* InsertString = "                                                         ";
-
+    
+    std::mutex LogMutex_; /**<Used to ensure thread safety during vector operations*/
 
 
     std::map<int, ERS_STRUCT_RGBColor> ColorLookup_; /*!< Lookup for converting log level to RGB values (stored in RGBColor struct). Populated based on values stored in Config.yaml */
