@@ -438,7 +438,6 @@ void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<int>* IDs, std::vec
         Mat->GetTexture(Type, i, &TextureString);
         std::string TextureIdentifier = std::string(std::string(TextureString.C_Str()));
 
-        // Log Texture Request
         std::string Message = std::string("Model Requesting Texture Of Type '") + TypeName + std::string("' With Identifier '") + TextureIdentifier + std::string("'");
         SystemUtils_->Logger_->Log(Message, 3);
 
