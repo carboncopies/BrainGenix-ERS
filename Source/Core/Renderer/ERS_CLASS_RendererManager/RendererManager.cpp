@@ -108,9 +108,9 @@ void RendererManager::InitializeGLFW() {
     int Height = FreeImage_GetHeight(DefaulTexImageData);
     int Channels = FreeImage_GetLine(DefaulTexImageData) / FreeImage_GetWidth(DefaulTexImageData);
 
-
-    glGenTextures(1, &DefaultTextureID_);
-    glBindTexture(GL_TEXTURE_2D, DefaultTextureID_);
+    unsigned int DefaultTextureID;
+    glGenTextures(1, &DefaultTextureID);
+    glBindTexture(GL_TEXTURE_2D, DefaultTextureID);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
