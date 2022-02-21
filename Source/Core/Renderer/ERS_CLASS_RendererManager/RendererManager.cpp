@@ -101,7 +101,12 @@ void RendererManager::InitializeGLFW() {
 
 
     // Create Default Texture
-    glGenTextures(1 DefaultTextureID_);
+    SystemUtils_->Logger_->Log("Loading System Default Texture From EditorAssets", 3);
+    FREE_IMAGE_FORMAT DefaultTexFormat = FreeImage_GetFileType("EditorAssets/Icons/DefaultTexture/DefaultTexture1024.png", 0);
+    FIBITMAP* DefaulTexImageData = FreeImage_Load(DefaultTexFormat, "EditorAssets/Icons/DefaultTexture/DefaultTexture1024.png");
+
+
+    glGenTextures(1, &DefaultTextureID_);
 
     // Bring Window To Front, Unlock Framerate So Our Framerate System Is Used
     glfwMakeContextCurrent(Window_);
