@@ -108,17 +108,13 @@ void RendererManager::InitializeGLFW() {
     int Height = FreeImage_GetHeight(DefaulTexImageData);
     int Channels = FreeImage_GetLine(DefaulTexImageData) / FreeImage_GetWidth(DefaulTexImageData);
 
-    std::cout<<"1\n";
 
     glGenTextures(1, &DefaultTextureID_);
-    std::cout<<"1\n";
     glBindTexture(GL_TEXTURE_2D, DefaultTextureID_);
-    std::cout<<"1\n";
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    std::cout<<"1\n";
     if (Channels == 4) {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
     } else {
@@ -126,11 +122,7 @@ void RendererManager::InitializeGLFW() {
     }
     glGenerateMipmap(GL_TEXTURE_2D);
 
-    std::cout<<"1\n";
-
     FreeImage_Unload(DefaulTexImageData);
-
-    std::cout<<"1\n";
 
 
     FreeImage_DeInitialise();
