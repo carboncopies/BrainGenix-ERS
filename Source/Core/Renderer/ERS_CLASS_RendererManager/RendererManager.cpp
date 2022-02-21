@@ -97,16 +97,39 @@ void RendererManager::InitializeGLFW() {
     Icon[0].height = (int)FreeImage_GetHeight(ImageData);
     glfwSetWindowIcon(Window_, 1, Icon);
 
-    FreeImage_DeInitialise();
 
 
     // Create Default Texture
     SystemUtils_->Logger_->Log("Loading System Default Texture From EditorAssets", 3);
     FREE_IMAGE_FORMAT DefaultTexFormat = FreeImage_GetFileType("EditorAssets/Icons/DefaultTexture/DefaultTexture1024.png", 0);
     FIBITMAP* DefaulTexImageData = FreeImage_Load(DefaultTexFormat, "EditorAssets/Icons/DefaultTexture/DefaultTexture1024.png");
+    unsigned char* RawImageData = FreeImage_GetBits(DefaulTexImageData);
+    int Width = FreeImage_GetWidth(DefaulTexImageData);
+    int Height = FreeImage_GetHeight(DefaulTexImageData);
+    int Channels = FreeImage_GetLine(DefaulTexImageData) / FreeImage_GetWidth(DefaulTexImageData);
+    FreeImage_Unload(DefaulTexImageData);
 
 
     glGenTextures(1, &DefaultTextureID_);
+    glBindTexture(GL_TEXTURE_2D, DefaultTextureID_);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+
+    if (Channels == 4) {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
+    } else {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
+    }
+    glGenerateMipmap(GL_TEXTURE_2D);
+
+
+
+
+    FreeImage_DeInitialise();
+
 
     // Bring Window To Front, Unlock Framerate So Our Framerate System Is Used
     glfwMakeContextCurrent(Window_);
