@@ -102,6 +102,7 @@ void ERS_CLASS_LoggingSystem::Log(const char* LogItem, int LogLevel) {
 
 
     // Add To Log Output Vars
+    std::unique_lock<std::mutex> lock(LogMutex_);
     LogMessages_.push_back(std::string(LogItem));
     LogLevels_.push_back(LogLevel);
     LogTimes_.push_back(CurrentTime);
