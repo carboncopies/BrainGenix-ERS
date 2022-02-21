@@ -56,45 +56,17 @@ RendererManager::~RendererManager() {
 }
 
 
-void RendererManager::InitializeGLFW() {
+void RendererManager::LoadEditorData() {
 
-    // Initialize GLFW
-    glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-
-    // Read Out Width, Height
-    SystemUtils_->Logger_->Log("Read Configuration File For 'WindowWidth' Parameter", 1);
-    WindowWidth_ = (*SystemUtils_->LocalSystemConfiguration_)["WindowWidth"].as<int>();
-    SystemUtils_->Logger_->Log("Read Configuration File For 'WindowHeight' Parameter", 1);
-    WindowHeight_ = (*SystemUtils_->LocalSystemConfiguration_)["WindowHeight"].as<int>();
-    SystemUtils_->Logger_->Log("Read Configuration File For 'WindowTitle' Parameter", 1);
-    WindowTitle_ = (*SystemUtils_->LocalSystemConfiguration_)["WindowTitle"].as<std::string>().c_str();
-
-    // Create Window Object
-    glfwSetErrorCallback(ErrorCallback);
-    Window_ = glfwCreateWindow(WindowWidth_, WindowHeight_, WindowTitle_, NULL, NULL);
-    if (Window_ == NULL) {
-        glfwTerminate();
-    }
-
-
-    // Bring Window To Front, Unlock Framerate So Our Framerate System Is Used
-    glfwMakeContextCurrent(Window_);
-    glfwSwapInterval(0);
+    FreeImage_Initialise();
+    
 
 
     // Load Icon
     SystemUtils_->Logger_->Log("Loading System Icon From EditorAssets", 3);
-    FreeImage_Initialise();
 
-    // Load Image
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileType("EditorAssets/Icons/ProgramIcon/Icon.png", 0);
     FIBITMAP* ImageData = FreeImage_Load(Format, "EditorAssets/Icons/ProgramIcon/Icon.png");
-
-    // Apply Icon
     SystemUtils_->Logger_->Log("Applying System Icon", 4);
     GLFWimage Icon[1];
     FreeImage_FlipVertical(ImageData);
@@ -131,7 +103,42 @@ void RendererManager::InitializeGLFW() {
     FreeImage_Unload(DefaulTexImageData);
 
 
+
     FreeImage_DeInitialise();
+
+}
+
+void RendererManager::InitializeGLFW() {
+
+    // Initialize GLFW
+    glfwInit();
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+
+    // Read Out Width, Height
+    SystemUtils_->Logger_->Log("Read Configuration File For 'WindowWidth' Parameter", 1);
+    WindowWidth_ = (*SystemUtils_->LocalSystemConfiguration_)["WindowWidth"].as<int>();
+    SystemUtils_->Logger_->Log("Read Configuration File For 'WindowHeight' Parameter", 1);
+    WindowHeight_ = (*SystemUtils_->LocalSystemConfiguration_)["WindowHeight"].as<int>();
+    SystemUtils_->Logger_->Log("Read Configuration File For 'WindowTitle' Parameter", 1);
+    WindowTitle_ = (*SystemUtils_->LocalSystemConfiguration_)["WindowTitle"].as<std::string>().c_str();
+
+    // Create Window Object
+    glfwSetErrorCallback(ErrorCallback);
+    Window_ = glfwCreateWindow(WindowWidth_, WindowHeight_, WindowTitle_, NULL, NULL);
+    if (Window_ == NULL) {
+        glfwTerminate();
+    }
+
+
+    // Bring Window To Front, Unlock Framerate So Our Framerate System Is Used
+    glfwMakeContextCurrent(Window_);
+    glfwSwapInterval(0);
+
+
+
 
 
 
