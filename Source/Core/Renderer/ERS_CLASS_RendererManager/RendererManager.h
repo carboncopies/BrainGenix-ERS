@@ -78,7 +78,7 @@ private:
 
 
     /**
-     * @brief Load the editor's data such as the icons and other static images/data.
+     * @brief Load the editor's data such as the icons and other static images/data. Must be called after setting up an opengl context or a segfault will occur.
      * 
      */
     void LoadEditorData();
