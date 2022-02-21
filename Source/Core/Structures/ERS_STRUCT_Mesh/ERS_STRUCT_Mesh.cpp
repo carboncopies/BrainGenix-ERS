@@ -66,29 +66,6 @@ void ERS_STRUCT_Mesh::SetupMesh() {
 void ERS_STRUCT_Mesh::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
 
 
-
-
-
-    unsigned int AmbientHandle = 1;
-    unsigned int AmbientOcclusionHandle = 1;
-    unsigned int BaseColorHandle = 1;
-    unsigned int DiffuseHandle = 1;
-    unsigned int DiffuseRoughnessHandle = 1;
-    unsigned int DisplacementHandle = 1;
-    unsigned int EmissionColorHandle = 1;
-    unsigned int EmissiveHandle = 1;
-    unsigned int HeightHandle = 1;
-    unsigned int LightmapHandle = 1;
-    unsigned int MetalnessHandle = 1;
-    unsigned int NoneHandle = 1;
-    unsigned int NormalCameraHandle = 1;
-    unsigned int NormalsHandle = 1;
-    unsigned int OpacityHandle = 1;
-    unsigned int RelfectionHandle = 1;
-    unsigned int ShininessHandle = 1;
-    unsigned int SpecularHandle = 1;
-    unsigned int UnknownHandle = 1;
-
     /* These are the supported materials/textures that ERS will attempt to pass through
 
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_AMBIENT, "texture_ambient");
@@ -111,6 +88,29 @@ void ERS_STRUCT_Mesh::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_SPECULAR, "texture_specular");
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_UNKNOWN, "texture_unknown");
     */
+
+
+    unsigned int AmbientHandle = 1;
+    unsigned int AmbientOcclusionHandle = 1;
+    unsigned int BaseColorHandle = 1;
+    unsigned int DiffuseHandle = 1;
+    unsigned int DiffuseRoughnessHandle = 1;
+    unsigned int DisplacementHandle = 1;
+    unsigned int EmissionColorHandle = 1;
+    unsigned int EmissiveHandle = 1;
+    unsigned int HeightHandle = 1;
+    unsigned int LightmapHandle = 1;
+    unsigned int MetalnessHandle = 1;
+    unsigned int NoneHandle = 1;
+    unsigned int NormalCameraHandle = 1;
+    unsigned int NormalsHandle = 1;
+    unsigned int OpacityHandle = 1;
+    unsigned int RelfectionHandle = 1;
+    unsigned int ShininessHandle = 1;
+    unsigned int SpecularHandle = 1;
+    unsigned int UnknownHandle = 1;
+
+
     // Iterate Through Textures
     for (unsigned int i = 0; i < TextureIDs.size(); i++) {
 
