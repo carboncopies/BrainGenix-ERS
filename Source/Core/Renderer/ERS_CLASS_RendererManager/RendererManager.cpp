@@ -100,6 +100,9 @@ void RendererManager::InitializeGLFW() {
     FreeImage_DeInitialise();
 
 
+    // Create Default Texture
+    glGenTextures(1 DefaultTextureID_);
+
     // Bring Window To Front, Unlock Framerate So Our Framerate System Is Used
     glfwMakeContextCurrent(Window_);
     glfwSwapInterval(0);
