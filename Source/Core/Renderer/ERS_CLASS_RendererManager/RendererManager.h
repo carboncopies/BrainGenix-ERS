@@ -77,6 +77,12 @@ private:
     void InitializeGLFW();
 
 
+    /**
+     * @brief Load the editor's data such as the icons and other static images/data.
+     * 
+     */
+    void LoadEditorData();
+
 public:
 
     unsigned int DefaultTextureID_; /**<Default purple/black checkered texture pattern*/
