@@ -178,7 +178,7 @@ void ERS_STRUCT_Mesh::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
     glBindVertexArray(0);
 
     // Set Back To Default
-    glActiveTexture(0);
+    glActiveTexture(1);
 
 
 }
