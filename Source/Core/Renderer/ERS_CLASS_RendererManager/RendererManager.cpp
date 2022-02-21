@@ -80,6 +80,12 @@ void RendererManager::InitializeGLFW() {
         glfwTerminate();
     }
 
+
+    // Bring Window To Front, Unlock Framerate So Our Framerate System Is Used
+    glfwMakeContextCurrent(Window_);
+    glfwSwapInterval(0);
+
+
     // Load Icon
     SystemUtils_->Logger_->Log("Loading System Icon From EditorAssets", 3);
     FreeImage_Initialise();
@@ -128,9 +134,7 @@ void RendererManager::InitializeGLFW() {
     FreeImage_DeInitialise();
 
 
-    // Bring Window To Front, Unlock Framerate So Our Framerate System Is Used
-    glfwMakeContextCurrent(Window_);
-    glfwSwapInterval(0);
+
 
 }
 
