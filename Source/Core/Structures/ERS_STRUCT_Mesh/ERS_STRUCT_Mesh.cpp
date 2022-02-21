@@ -67,7 +67,7 @@ void ERS_STRUCT_Mesh::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
 
 
     /* These are the supported materials/textures that ERS will attempt to pass through
-    
+
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_AMBIENT, "texture_ambient");
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_AMBIENT_OCCLUSION, "texture_ambient_occlusion");
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_BASE_COLOR, "texture_base_color");
@@ -90,11 +90,26 @@ void ERS_STRUCT_Mesh::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
     */
 
 
-    // Bind To OpenGL Handles
+    unsigned int AmbientHandle = 1;
+    unsigned int AmbientOcclusionHandle = 1;
+    unsigned int BaseColorHandle = 1;
     unsigned int DiffuseHandle = 1;
-    unsigned int SpecularHandle = 1;
-    unsigned int NormalHandle = 1;
+    unsigned int DiffuseRoughnessHandle = 1;
+    unsigned int DisplacementHandle = 1;
+    unsigned int EmissionColorHandle = 1;
+    unsigned int EmissiveHandle = 1;
     unsigned int HeightHandle = 1;
+    unsigned int LightmapHandle = 1;
+    unsigned int MetalnessHandle = 1;
+    unsigned int NoneHandle = 1;
+    unsigned int NormalCameraHandle = 1;
+    unsigned int NormalsHandle = 1;
+    unsigned int OpacityHandle = 1;
+    unsigned int RelfectionHandle = 1;
+    unsigned int ShininessHandle = 1;
+    unsigned int SpecularHandle = 1;
+    unsigned int UnknownHandle = 1;
+
 
     // Iterate Through Textures
     for (unsigned int i = 0; i < TextureIDs.size(); i++) {
@@ -111,7 +126,7 @@ void ERS_STRUCT_Mesh::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
             Number = std::to_string(DiffuseHandle++);
         else if(Name == "texture_specular")
             Number = std::to_string(SpecularHandle++);
-        else if(Name == "texture_normal")
+        else if(Name == "texture_normals")
             Number = std::to_string(NormalHandle++);
         else if(Name == "texture_height")
             Number = std::to_string(HeightHandle++);
