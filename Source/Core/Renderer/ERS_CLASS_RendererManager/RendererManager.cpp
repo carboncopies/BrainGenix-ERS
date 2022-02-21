@@ -102,11 +102,17 @@ void RendererManager::InitializeGLFW() {
     // Create Default Texture
     SystemUtils_->Logger_->Log("Loading System Default Texture From EditorAssets", 3);
     FREE_IMAGE_FORMAT DefaultTexFormat = FreeImage_GetFileType("EditorAssets/Icons/DefaultTexture/DefaultTexture1024.png", 0);
+    std::cout<<"1\n";
     FIBITMAP* DefaulTexImageData = FreeImage_Load(DefaultTexFormat, "EditorAssets/Icons/DefaultTexture/DefaultTexture1024.png");
+    std::cout<<"1\n";
     unsigned char* RawImageData = FreeImage_GetBits(DefaulTexImageData);
+    std::cout<<"1\n";
     int Width = FreeImage_GetWidth(DefaulTexImageData);
+    std::cout<<"1\n";
     int Height = FreeImage_GetHeight(DefaulTexImageData);
+    std::cout<<"1\n";
     int Channels = FreeImage_GetLine(DefaulTexImageData) / FreeImage_GetWidth(DefaulTexImageData);
+    std::cout<<"1\n";
 
 
     glGenTextures(1, &DefaultTextureID_);
@@ -122,9 +128,11 @@ void RendererManager::InitializeGLFW() {
     }
     glGenerateMipmap(GL_TEXTURE_2D);
 
+    std::cout<<"1\n";
 
     FreeImage_Unload(DefaulTexImageData);
 
+    std::cout<<"1\n";
 
 
     FreeImage_DeInitialise();
