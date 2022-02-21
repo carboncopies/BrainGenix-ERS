@@ -104,6 +104,8 @@ void RendererManager::LoadEditorData() {
     FreeImage_Unload(DefaulTexImageData);
 
 
+    std::cout<<DefaultTextureID<<std::endl;
+
 
     FreeImage_DeInitialise();
 
