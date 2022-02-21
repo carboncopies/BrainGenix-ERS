@@ -108,7 +108,10 @@ void RendererManager::InitializeGLFW() {
     int Height = FreeImage_GetHeight(DefaulTexImageData);
     int Channels = FreeImage_GetLine(DefaulTexImageData) / FreeImage_GetWidth(DefaulTexImageData);
 
+    std::cout<<"1\n";
+
     glGenTextures(1, &DefaultTextureID_);
+    std::cout<<"1\n";
     glBindTexture(GL_TEXTURE_2D, DefaultTextureID_);
     std::cout<<"1\n";
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
