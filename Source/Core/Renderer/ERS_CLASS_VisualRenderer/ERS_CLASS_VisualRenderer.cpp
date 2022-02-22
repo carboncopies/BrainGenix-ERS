@@ -541,7 +541,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
             // Draw Selectable Menu Showing Active Viewport Shader
             for (int i = 0; i < Shaders_.size(); i++) {
                 
-                if (!Shaders_[i]->DisplayName.substr(0, 1) == "_") {
+                if (!Shaders_[i]->DisplayName.substr(size_t(0), size_t(1)) == "_") {
                     if (ImGui::Selectable(Shaders_[i]->DisplayName.c_str(), i == Viewports_[Index]->ShaderIndex)) {
                         Viewports_[Index]->ShaderIndex = i;
                     }
