@@ -38,7 +38,7 @@ ControllerSettings:
 # Shader Program Metadata
 ShaderPrograms:
     0:
-        Name: "Grid"
+        Name: "_Grid"
         VertexID: 10000
         FragmentID: 10001
     1:
