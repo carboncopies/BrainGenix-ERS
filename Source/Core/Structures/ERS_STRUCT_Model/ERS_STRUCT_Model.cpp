@@ -11,8 +11,8 @@ void ERS_STRUCT_Model::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shar
     // Only Draw When Fully Ready
     if (FullyReady) {
 
-        glBindTexture(GL_TEXTURE_2D, 1);
-        glActiveTexture(1);
+        glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
+        glActiveTexture(OpenGLDefaults->DefaultTexture_);
 
         // Draw All Meshes
         for (unsigned int i=0; i<Meshes.size(); i++) {
@@ -20,8 +20,8 @@ void ERS_STRUCT_Model::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shar
         }
 
 
-        glBindTexture(GL_TEXTURE_2D, 1);
-        glActiveTexture(1);
+        glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
+        glActiveTexture(OpenGLDefaults->DefaultTexture_);
 
 
     }
