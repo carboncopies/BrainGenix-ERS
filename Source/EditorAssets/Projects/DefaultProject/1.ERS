@@ -53,6 +53,14 @@ ShaderPrograms:
         Name: "Base Color Texture Map"
         VertexID: 10006
         FragmentID: 10007
+    5:
+        Name: "Diffuse Texture Map"
+        VertexID: 10008
+        FragmentID: 10009
+    6:
+        Name: "Diffuse Roughness Texture Map"
+        VertexID: 100010
+        FragmentID: 100011
     100:
         Name: "Viewport"
         VertexID: 104

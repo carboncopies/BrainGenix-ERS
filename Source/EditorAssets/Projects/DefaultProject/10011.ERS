@@ -4,7 +4,7 @@ out vec4 FragColor;
 in vec2 TexCoords;
 
 // Get Texture Sampler And Lighting Info
-uniform sampler2D texture_diffuse1;
+uniform sampler2D texture_diffuse_roughness1;
 
 
 // Get Input Vars
@@ -16,5 +16,5 @@ uniform vec2 ViewportRes; // XY Resolution of the viewport
 
 void main()
 {
-    FragColor = texture(texture_diffuse1, TexCoords);
+    FragColor = texture(texture_diffuse_roughness1, TexCoords);
 }
