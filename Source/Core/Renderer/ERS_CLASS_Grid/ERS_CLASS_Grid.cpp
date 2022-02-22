@@ -76,6 +76,8 @@ void ERS_CLASS_Grid::DrawGrid(glm::mat4 View, glm::mat4 Projection, glm::vec3 Ca
     GridShader_->SetVec3("GRID_COLOR_X", GridColorX_);
     GridShader_->SetVec3("GRID_COLOR_Z", GridColorZ_);
 
+    std::cout<<glm::to_string(View)<<std::endl;
+
 
     glBindVertexArray(GridVAO_);
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
