@@ -28,6 +28,7 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, std::share
     SystemUtils_->Logger_->Log("Instantiating Renderers", 5);
     VisualRenderer_ = std::make_shared<ERS_CLASS_VisualRenderer>(SystemUtils_, Window_, Cursors3D_);
     LoadEditorData();
+    VisualRenderer_->SetOpenGLDefaults(OpenGLDefaults_.get());
 
     // Setup Shaders
     ShaderLoader_ = std::make_shared<ERS_CLASS_ShaderLoader>(SystemUtils_);
