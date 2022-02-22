@@ -175,8 +175,4 @@ void ERS_STRUCT_Mesh::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
     glDrawElements(GL_TRIANGLES, NumberIndices, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 
-
-
-
 }
-
