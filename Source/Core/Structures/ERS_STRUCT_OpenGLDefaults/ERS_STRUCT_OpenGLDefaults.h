@@ -17,7 +17,7 @@
  * @brief struct to contain default opengl ids for textures, objects, etc.
  * 
  */
-struct ERS_STRUCT_Defaults {
+struct ERS_STRUCT_OpenGLDefaults {
 
     unsigned int DefaultTexture_; /** Default Texture ID To Be Bound To*/
     unsigned int DefaultObject_; /** Default Object To Be Bound To*/
