@@ -29,6 +29,7 @@ target_link_libraries(Renderer
     ERS_CLASS_LoggingSystem
     ERS_CLASS_VisualRenderer
     ERS_CLASS_Framebuffer
+
     IOManager
     VisualEditor
 
@@ -42,6 +43,7 @@ target_link_libraries(Renderer
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_HumanInputDeviceUtils
+    ERS_STRUCT_Defaults
     )
 
 target_include_directories(Renderer PUBLIC ./)
