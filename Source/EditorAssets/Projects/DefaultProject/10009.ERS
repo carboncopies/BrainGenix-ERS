@@ -1,0 +1,20 @@
+#version 330 core
+out vec4 FragColor;
+
+in vec2 TexCoords;
+
+// Get Texture Sampler And Lighting Info
+uniform sampler2D texture_base_color1;
+
+
+// Get Input Vars
+uniform float Time; // Time since program started in seconds
+uniform float FrameTime; // Render Time Of The Frame
+uniform int FrameNumber; // Number of the frame, counts up from zero
+uniform vec2 ViewportRes; // XY Resolution of the viewport
+
+
+void main()
+{
+    FragColor = texture(texture_base_color1, TexCoords);
+}
