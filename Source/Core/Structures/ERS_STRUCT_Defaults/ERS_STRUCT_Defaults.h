@@ -22,4 +22,4 @@ struct ERS_STRUCT_Defaults {
     unsigned int DefaultTexture_; /** Default Texture ID To Be Bound To*/
     unsigned int DefaultObject_; /** Default Object To Be Bound To*/
 
-}
+};
