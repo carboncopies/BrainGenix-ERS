@@ -58,7 +58,7 @@ void ERS_CLASS_VisualRenderer::InitializeOpenGL() {
 
 void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defaults) {
 
-    
+    OpenGLDefaults = Defaults;
 
 }
 
