@@ -45,6 +45,7 @@ target_link_libraries(ERS_CLASS_VisualRenderer
     ERS_STRUCT_Shader
     ERS_STRUCT_Model
     ERS_STRUCT_Scene
+    ERS_STRUCT_OpenGLDefaults
 
     )
 

@@ -38,6 +38,8 @@
 #include <ERS_STRUCT_Shader.h>
 #include <ERS_STRUCT_Model.h>
 #include <ERS_STRUCT_Camera.h>
+#include <ERS_STRUCT_OpenGLDefaults.h>
+
 
 /**
  * @brief Handles viewport creation/deletion/rendering/updating.
@@ -50,6 +52,7 @@ private:
     GLFWwindow *Window_; /**<GLFW Window Instance For Window Input To Viewports*/
     std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
     long int FrameNumber_ = 0; /**<Frame counter, starts at 0*/
+    ERS_STRUCT_OpenGLDefaults* OpenGLDefaults; /**<Pointer acquired from renderermanager*/
 
 public:
     
@@ -173,5 +176,12 @@ public:
      */
     void SetDefaultShader(int ShaderID);
 
+
+    /**
+     * @brief Set the OpenGL Defaults object
+     * 
+     * @param Defaults 
+     */
+    void SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defaults);
 
 };
