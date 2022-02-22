@@ -52,7 +52,7 @@ private:
     GLFWwindow *Window_; /**<GLFW Window Instance For Window Input To Viewports*/
     std::shared_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
     long int FrameNumber_ = 0; /**<Frame counter, starts at 0*/
-    ERS_STRUCT_OpenGLDefaults* OpenGLDefaults; /**<Pointer acquired from renderermanager*/
+    ERS_STRUCT_OpenGLDefaults* OpenGLDefaults_; /**<Pointer acquired from renderermanager*/
 
 public:
     

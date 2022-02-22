@@ -58,7 +58,7 @@ void ERS_CLASS_VisualRenderer::InitializeOpenGL() {
 
 void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defaults) {
 
-    OpenGLDefaults = Defaults;
+    OpenGLDefaults_ = Defaults;
 
 }
 
@@ -250,7 +250,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
         SceneManager->UpdateLocRotScale(Cursors3D_->Pos_, Cursors3D_->Rot_, Cursors3D_->Scale_);
 
         // Draw Models
-        SceneManager->Render(Shaders_[ShaderIndex]);
+        SceneManager->Render(OpenGLDefaults_, Shaders_[ShaderIndex]);
 
         // Check If Grid Enabled
         if (Viewports_[Index]->GridEnabled) {
