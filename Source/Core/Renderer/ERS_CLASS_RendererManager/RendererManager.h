@@ -35,7 +35,7 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
 #include <ERS_STRUCT_HumanInputDeviceUtils.h>
-#include <ERS_STRUCT_Defaults.h>
+#include <ERS_STRUCT_OpenGLDefaults.h>
 
 
 static ERS_STRUCT_Camera Camera_(glm::vec3(0.0f, 0.0f, 3.0f));
@@ -62,6 +62,7 @@ private:
     ERS_STRUCT_SystemUtils* SystemUtils_; /**< Raw pointer to SystemUtils that is owned by the main() */
     std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Copy Of Project Utils Struct*/
     std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<Copy Of Pointer To HIDM Struct*/
+    std::unique_ptr<ERS_STRUCT_OpenGLDefaults> OpenGLDefaults_; /**<Pointer To OpenGL Default Textures/Models*/
 
 
     // Control Values
