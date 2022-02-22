@@ -4,20 +4,20 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_STRUCT_Defaults 
+add_library(ERS_STRUCT_OpenGLDefaults 
 
             # Add Header Files (.h)
-            "ERS_STRUCT_Defaults.h"
+            "ERS_STRUCT_OpenGLDefaults.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_Defaults
+target_link_libraries(ERS_STRUCT_OpenGLDefaults
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_Defaults
+target_link_libraries(ERS_STRUCT_OpenGLDefaults
     )
 
-target_include_directories(ERS_STRUCT_Defaults PUBLIC ./)
+target_include_directories(ERS_STRUCT_OpenGLDefaults PUBLIC ./)
