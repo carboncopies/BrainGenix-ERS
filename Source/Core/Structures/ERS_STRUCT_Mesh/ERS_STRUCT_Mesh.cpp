@@ -63,7 +63,7 @@ void ERS_STRUCT_Mesh::SetupMesh() {
 
 }
 
-void ERS_STRUCT_Mesh::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
+void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader) {
 
 
     /* These are the supported materials/textures that ERS will attempt to pass through

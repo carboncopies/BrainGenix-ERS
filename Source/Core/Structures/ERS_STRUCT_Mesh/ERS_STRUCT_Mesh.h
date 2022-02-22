@@ -13,6 +13,7 @@
 #include <ERS_STRUCT_Shader.h>
 #include <ERS_STRUCT_Texture.h>
 #include <ERS_STRUCT_Vertex.h>
+#include <ERS_STRUCT_OpenGLDefaults.h>
 
 
 
@@ -55,6 +56,6 @@ public:
      * 
      * @param Shader 
      */
-    void Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader);
+    void Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader);
 
 };

@@ -16,7 +16,7 @@ void ERS_STRUCT_Model::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shar
 
         // Draw All Meshes
         for (unsigned int i=0; i<Meshes.size(); i++) {
-            Meshes[i].Draw(Shader);
+            Meshes[i].Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, Shader);
         }
 
 
