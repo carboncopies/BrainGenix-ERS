@@ -11,10 +11,19 @@ void ERS_STRUCT_Model::Draw(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
     // Only Draw When Fully Ready
     if (FullyReady) {
 
+        glBindTexture(GL_TEXTURE_2D, 1);
+        glActiveTexture(1);
+
         // Draw All Meshes
         for (unsigned int i=0; i<Meshes.size(); i++) {
             Meshes[i].Draw(Shader);
         }
+
+
+        glBindTexture(GL_TEXTURE_2D, 1);
+        glActiveTexture(1);
+
+
     }
 
 }
