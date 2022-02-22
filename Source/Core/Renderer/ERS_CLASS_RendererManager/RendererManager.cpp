@@ -139,14 +139,7 @@ void RendererManager::InitializeGLFW() {
     glfwMakeContextCurrent(Window_);
     glfwSwapInterval(0);
 
-
-
-
-
-
-
 }
-
 
 
 void RendererManager::UpdateLoop(float DeltaTime) { 
