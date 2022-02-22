@@ -43,7 +43,7 @@ target_link_libraries(Renderer
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_HumanInputDeviceUtils
-    ERS_STRUCT_Defaults
+    ERS_STRUCT_OpenGLDefaults
     )
 
 target_include_directories(Renderer PUBLIC ./)
