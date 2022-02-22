@@ -55,7 +55,7 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
         Shader->SetMat4("model", Model->GetMat4());
 
         // Call Draw
-        Model->Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, Shader);
+        Model->Draw(OpenGLDefaults, Shader);
         
 
     }
