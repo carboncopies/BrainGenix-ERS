@@ -82,8 +82,8 @@ void RendererManager::LoadEditorData() {
 
     // Create Default Texture
     SystemUtils_->Logger_->Log("Loading System Default Texture From EditorAssets", 3);
-    FREE_IMAGE_FORMAT DefaultTexFormat = FreeImage_GetFileType("EditorAssets/Icons/DefaultTexture/DefaultTexture1024.png", 0);
-    FIBITMAP* DefaulTexImageData = FreeImage_Load(DefaultTexFormat, "EditorAssets/Icons/DefaultTexture/DefaultTexture1024.png");
+    FREE_IMAGE_FORMAT DefaultTexFormat = FreeImage_GetFileType("EditorAssets/Icons/DefaultTexture/DefaultTexture256.png", 0);
+    FIBITMAP* DefaulTexImageData = FreeImage_Load(DefaultTexFormat, "EditorAssets/Icons/DefaultTexture/DefaultTexture256.png");
     unsigned char* RawImageData = FreeImage_GetBits(DefaulTexImageData);
     int Width = FreeImage_GetWidth(DefaulTexImageData);
     int Height = FreeImage_GetHeight(DefaulTexImageData);
