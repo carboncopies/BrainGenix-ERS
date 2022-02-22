@@ -513,7 +513,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     ActiveShader->SetFloat("Shinyness", 32.0f);
 
- Debug Color
+
+}
 
 void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
 
