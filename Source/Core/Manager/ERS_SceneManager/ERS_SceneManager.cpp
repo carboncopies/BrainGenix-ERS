@@ -43,7 +43,7 @@ bool ERS_CLASS_SceneManager::AddScene(ERS_STRUCT_Scene Scene) {
 
 }
 
-void ERS_CLASS_SceneManager::Render(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
+void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader) {
     
     // Iterate Through Models
     for (long i = 0; i < Scenes_[ActiveScene_]->Models.size(); i++) {
@@ -55,7 +55,7 @@ void ERS_CLASS_SceneManager::Render(std::shared_ptr<ERS_STRUCT_Shader> Shader) {
         Shader->SetMat4("model", Model->GetMat4());
 
         // Call Draw
-        Model->Draw(Shader);
+        Model->Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, Shader);
         
 
     }
