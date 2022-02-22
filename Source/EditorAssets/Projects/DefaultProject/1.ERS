@@ -41,15 +41,23 @@ ShaderPrograms:
         Name: "_Grid"
         VertexID: 10000
         FragmentID: 10001
-    1:
-        Name: "Diffuse Texture Map"
-        VertexID: 10000
-        FragmentID: 10001
     2:
+        Name: "Ambient Texture Map"
+        VertexID: 10002
+        FragmentID: 10003
+    3:
+        Name: "Ambient Occlusion Texture Map"
+        VertexID: 10004
+        FragmentID: 10005
+    4:
+        Name: "Base Color Texture Map"
+        VertexID: 10006
+        FragmentID: 10007
+    100:
         Name: "Viewport"
         VertexID: 104
         FragmentID: 105
 
 
 
-DefaultShaderProgram: 2
+DefaultShaderProgram: 100
