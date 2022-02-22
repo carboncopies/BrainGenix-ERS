@@ -86,11 +86,6 @@ private:
 
 public:
 
-    unsigned int DefaultTextureID_; /**<Default purple/black checkered texture pattern*/
-
-
-public:
-
     /**
      * @brief Initializes all renderers that have been enabled in the configuration file.
      * 

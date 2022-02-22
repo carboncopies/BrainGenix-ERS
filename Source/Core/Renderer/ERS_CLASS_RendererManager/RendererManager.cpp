@@ -59,6 +59,7 @@ RendererManager::~RendererManager() {
 
 void RendererManager::LoadEditorData() {
 
+    OpenGLDefaults_ = std::make_unique<ERS_STRUCT_OpenGLDefaults>();
     FreeImage_Initialise();
     
 
@@ -87,8 +88,8 @@ void RendererManager::LoadEditorData() {
     int Height = FreeImage_GetHeight(DefaulTexImageData);
     int Channels = FreeImage_GetLine(DefaulTexImageData) / FreeImage_GetWidth(DefaulTexImageData);
 
-    glGenTextures(1, &DefaultTextureID_);
-    glBindTexture(GL_TEXTURE_2D, DefaultTextureID_);
+    glGenTextures(1, &OpenGLDefaults_->DefaultTexture_);
+    glBindTexture(GL_TEXTURE_2D, OpenGLDefaults_->DefaultTexture_);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
