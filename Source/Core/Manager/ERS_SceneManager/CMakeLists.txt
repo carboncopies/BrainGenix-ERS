@@ -27,6 +27,7 @@ target_link_libraries(ERS_SceneManager
     ERS_CLASS_LoggingSystem
     ERS_STRUCT_LocRotScale
     ERS_STRUCT_Shader
+    ERS_STRUCT_OpenGLDefaults
     
     )
 

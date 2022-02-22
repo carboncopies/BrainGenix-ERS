@@ -15,6 +15,7 @@
 #include <ERS_STRUCT_Shader.h>
 #include <ERS_STRUCT_Scene.h>
 #include <ERS_STRUCT_LocRotScale.h>
+#include <ERS_STRUCT_OpenGLDefaults.h>
 
 
 /**
@@ -68,7 +69,6 @@ public:
      */
     bool SetActiveScene(std::string TargetSceneName);
 
-
     /**
      * @brief Add a populated scene structure to the scenes vector.
      * 
@@ -83,7 +83,7 @@ public:
      * 
      * @param Shader 
      */
-    void Render(std::shared_ptr<ERS_STRUCT_Shader> Shader);
+    void Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader);
 
     /**
      * @brief Send LocRotScale Update To Object(s) In Active Scene
