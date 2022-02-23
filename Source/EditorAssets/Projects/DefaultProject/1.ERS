@@ -61,11 +61,11 @@ ShaderPrograms:
         Name: "Diffuse Roughness Texture Map"
         VertexID: 10010
         FragmentID: 10011
-    100:
+    7:
         Name: "Viewport"
         VertexID: 104
         FragmentID: 105
 
 
 
-DefaultShaderProgram: 100
+DefaultShaderProgram: 7
