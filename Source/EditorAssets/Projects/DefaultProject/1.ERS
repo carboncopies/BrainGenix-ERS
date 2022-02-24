@@ -107,8 +107,8 @@ ShaderPrograms:
         FragmentID: 10033
     17:
         Name: "Specular Texture Map"
-        VertexID: 10010
-        FragmentID: 10011
+        VertexID: 10034
+        FragmentID: 10035
     18:
         Name: "Viewport"
         VertexID: 104
