@@ -117,12 +117,12 @@ void RendererManager::LoadEditorData() {
 
 unsigned int RendererManager::LoadEditorIcon(const char* Path) {
 
-    FREE_IMAGE_FORMAT DefaultTexFormat = FreeImage_GetFileType(Path, 0);
-    FIBITMAP* DefaulTexImageData = FreeImage_Load(DefaultTexFormat, Path);
-    unsigned char* RawImageData = FreeImage_GetBits(DefaulTexImageData);
-    int Width = FreeImage_GetWidth(DefaulTexImageData);
-    int Height = FreeImage_GetHeight(DefaulTexImageData);
-    int Channels = FreeImage_GetLine(DefaulTexImageData) / FreeImage_GetWidth(DefaulTexImageData);
+    FREE_IMAGE_FORMAT TexFormat = FreeImage_GetFileType(Path, 0);
+    FIBITMAP* TexImageData = FreeImage_Load(TexFormat, Path);
+    unsigned char* RawImageData = FreeImage_GetBits(TexImageData);
+    int Width = FreeImage_GetWidth(TexImageData);
+    int Height = FreeImage_GetHeight(TexImageData);
+    int Channels = FreeImage_GetLine(TexImageData) / FreeImage_GetWidth(TexImageData);
 
     unsigned int OpenGLTextureID;
     glGenTextures(1, &OpenGLTextureID);
@@ -138,7 +138,7 @@ unsigned int RendererManager::LoadEditorIcon(const char* Path) {
     }
     glGenerateMipmap(GL_TEXTURE_2D);
 
-    FreeImage_Unload(DefaulTexImageData);
+    FreeImage_Unload(TexImageData);
 
     return OpenGLTextureID;
 
