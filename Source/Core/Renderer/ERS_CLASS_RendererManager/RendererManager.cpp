@@ -114,6 +114,16 @@ void RendererManager::LoadEditorData() {
 
 }
 
+
+void RendererManager::LoadEditorIcon(const char* Path, unsigned int &OpenGLTextureID) {
+
+
+
+
+}
+
+
+
 void RendererManager::InitializeGLFW() {
 
     // Initialize GLFW
