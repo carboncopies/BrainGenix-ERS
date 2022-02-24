@@ -106,7 +106,7 @@ ShaderPrograms:
         VertexID: 10010
         FragmentID: 10011
     17:
-        Name: "Normals Texture Map"
+        Name: "Specular Texture Map"
         VertexID: 10010
         FragmentID: 10011
     18:
