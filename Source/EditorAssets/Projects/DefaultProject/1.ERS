@@ -75,8 +75,8 @@ ShaderPrograms:
         FragmentID: 10017
     9:
         Name: "Height Texture Map"
-        VertexID: 10010
-        FragmentID: 10011
+        VertexID: 10018
+        FragmentID: 10019
     10:
         Name: "Lightmap Texture Map"
         VertexID: 10010
