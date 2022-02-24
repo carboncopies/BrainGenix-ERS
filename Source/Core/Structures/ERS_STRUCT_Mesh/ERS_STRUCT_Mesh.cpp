@@ -164,7 +164,7 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
 
         glUniform1i(glGetUniformLocation(Shader->ShaderProgram, (Name + Number).c_str()), i);
         
-        std::cout<<Name<<TextureIDs[i]<<std::endl;
+        std::cout<<Name<<"|"<<TextureIDs[i]<<"|"<<Number<<std::endl;
 
         // Bind Texture
         glBindTexture(GL_TEXTURE_2D, TextureIDs[i]);
