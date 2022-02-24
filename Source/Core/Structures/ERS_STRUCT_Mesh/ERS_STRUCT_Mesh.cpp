@@ -101,14 +101,12 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
     unsigned int HeightHandle = 1;
     unsigned int LightmapHandle = 1;
     unsigned int MetalnessHandle = 1;
-    unsigned int NoneHandle = 1;
     unsigned int NormalCameraHandle = 1;
     unsigned int NormalsHandle = 1;
     unsigned int OpacityHandle = 1;
     unsigned int RelfectionHandle = 1;
     unsigned int ShininessHandle = 1;
     unsigned int SpecularHandle = 1;
-    unsigned int UnknownHandle = 1;
 
 
     // Iterate Through Textures
@@ -144,8 +142,6 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
             Number = std::to_string(LightmapHandle++);
         else if(Name == "texture_metalness")
             Number = std::to_string(MetalnessHandle++);
-        else if(Name == "texture_none")
-            Number = std::to_string(NoneHandle++);
         else if(Name == "texture_normal_camera")
             Number = std::to_string(NormalCameraHandle++);
         else if(Name == "texture_normals")
@@ -158,14 +154,10 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
             Number = std::to_string(ShininessHandle++);
         else if(Name == "texture_specular")
             Number = std::to_string(SpecularHandle++);
-        else if(Name == "texture_unknown")
-            Number = std::to_string(UnknownHandle++);
 
 
         glUniform1i(glGetUniformLocation(Shader->ShaderProgram, (Name + Number).c_str()), i);
         
-        std::cout<<Name + Number<<"|"<<TextureIDs[i]<<std::endl;
-
         // Bind Texture
         glBindTexture(GL_TEXTURE_2D, TextureIDs[i]);
 
