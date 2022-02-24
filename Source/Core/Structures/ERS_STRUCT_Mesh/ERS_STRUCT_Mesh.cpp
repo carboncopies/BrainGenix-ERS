@@ -128,30 +128,6 @@ void ERS_STRUCT_Mesh::SetupMesh() {
 void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader) {
 
 
-    /* These are the supported materials/textures that ERS will attempt to pass through
-
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_AMBIENT, "texture_ambient");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_AMBIENT_OCCLUSION, "texture_ambient_occlusion");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_BASE_COLOR, "texture_base_color");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_DIFFUSE, "texture_diffuse");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_DIFFUSE_ROUGHNESS, "texture_diffuse_roughness");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_DISPLACEMENT, "texture_displacement");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_EMISSION_COLOR, "texture_emission_color");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_EMISSIVE, "texture_emissive");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_HEIGHT, "texture_height");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_LIGHTMAP, "texture_lightmap");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_METALNESS, "texture_metalness");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_NONE, "texture_none");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_NORMAL_CAMERA, "texture_normal_camera");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_NORMALS, "texture_normals");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_OPACITY, "texture_opacity");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_REFLECTION, "texture_reflection");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_SHININESS, "texture_shininess");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_SPECULAR, "texture_specular");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_UNKNOWN, "texture_unknown");
-    */
-
-
     unsigned int AmbientHandle = 1;
     unsigned int AmbientOcclusionHandle = 1;
     unsigned int BaseColorHandle = 1;
@@ -227,22 +203,6 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
 
 
 
-    // // Check If Debug Mode
-    // if (true) {
-
-    //     if (AmbientHandle == 1) {
-    //         glUniform1i(glGetUniformLocation(Shader->ShaderProgram, "texture_ambient1"), GL_TEXTURE0);
-    //         glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
-    //     }
-
-    //     if (AmbientOcclusionHandle == 1) {
-    //         glUniform1i(glGetUniformLocation(Shader->ShaderProgram, "texture_ambient_occlusion1"), GL_TEXTURE0);
-    //         glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
-    //     }
-
-
-
-    // }
 
 
 
