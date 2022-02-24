@@ -80,7 +80,7 @@ void RendererManager::LoadEditorData() {
 
 
 
-    // Create Default Texture
+    // Create Default Checker Pattern Texture
     SystemUtils_->Logger_->Log("Loading System Default Texture From EditorAssets", 3);
     FREE_IMAGE_FORMAT DefaultTexFormat = FreeImage_GetFileType("EditorAssets/Icons/DefaultTexture/DefaultTexture256.png", 0);
     FIBITMAP* DefaulTexImageData = FreeImage_Load(DefaultTexFormat, "EditorAssets/Icons/DefaultTexture/DefaultTexture256.png");
@@ -105,6 +105,8 @@ void RendererManager::LoadEditorData() {
     FreeImage_Unload(DefaulTexImageData);
 
 
+    // Create All-Black Texture
+    glGenTextures(1, &OpenGLDefaults_)
 
 
     FreeImage_DeInitialise();
