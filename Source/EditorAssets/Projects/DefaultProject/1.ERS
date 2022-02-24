@@ -79,8 +79,8 @@ ShaderPrograms:
         FragmentID: 10019
     10:
         Name: "Lightmap Texture Map"
-        VertexID: 10010
-        FragmentID: 10011
+        VertexID: 10020
+        FragmentID: 10021
     11:
         Name: "Metalness Texture Map"
         VertexID: 10010
