@@ -61,6 +61,51 @@ void ERS_STRUCT_Mesh::SetupMesh() {
     // Set NumberIndices
     NumberIndices = Indices.size();
 
+
+    // Update Texture "Has" Parameters
+    for (int i = 0; i < TextureNames.size(); i++) {
+
+        std::string Name = TextureNames[i];
+
+        // Detect Type
+        if (Name == "texture_ambient")
+            HasAmbient_ = true;
+        else if(Name == "texture_ambient_occlusion")
+            HasAmbientOcclusion_ = true;
+        else if(Name == "texture_base_color")
+            HasBaseColor_ = true;
+        else if(Name == "texture_diffuse")
+            HasDiffuse_ = true;
+        else if(Name == "texture_diffuse_roughness")
+            HasDiffuseRoughness_ = true;
+        else if(Name == "texture_displacement")
+            Number = std::to_string(DisplacementHandle++);
+        else if(Name == "texture_emission_color")
+            Number = std::to_string(EmissionColorHandle++);
+        else if(Name == "texture_emissive")
+            Number = std::to_string(EmissiveHandle++);
+        else if(Name == "texture_height")
+            Number = std::to_string(HeightHandle++);
+        else if(Name == "texture_lightmap")
+            Number = std::to_string(LightmapHandle++);
+        else if(Name == "texture_metalness")
+            Number = std::to_string(MetalnessHandle++);
+        else if(Name == "texture_normal_camera")
+            Number = std::to_string(NormalCameraHandle++);
+        else if(Name == "texture_normals")
+            Number = std::to_string(NormalsHandle++);
+        else if(Name == "texture_opacity")
+            Number = std::to_string(OpacityHandle++);
+        else if(Name == "texture_reflection")
+            Number = std::to_string(RelfectionHandle++);
+        else if(Name == "texture_shininess")
+            Number = std::to_string(ShininessHandle++);
+        else if(Name == "texture_specular")
+            Number = std::to_string(SpecularHandle++);
+    }
+
+
+
 }
 
 void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader) {

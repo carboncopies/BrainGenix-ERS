@@ -34,19 +34,19 @@ private:
     bool HasAmbientOcclusion_; /**<Check If Has A Given Type Of Texture*/
     bool HasBaseColor_; /**<Check If Has A Given Type Of Texture*/
     bool HasDiffuse_; /**<Check If Has A Given Type Of Texture*/
-    bool HasDiffuseRoughness; /**<Check If Has A Given Type Of Texture*/
-    bool HasDisplacement; /**<Check If Has A Given Type Of Texture*/
-    bool HasEmissionColor; /**<Check If Has A Given Type Of Texture*/
-    bool HasEmissive; /**<Check If Has A Given Type Of Texture*/
-    bool HasHeight; /**<Check If Has A Given Type Of Texture*/
-    bool HasLightmap; /**<Check If Has A Given Type Of Texture*/
-    bool HasMetalness; /**<Check If Has A Given Type Of Texture*/
-    bool HasNormalCamera; /**<Check If Has A Given Type Of Texture*/
-    bool HasNormals; /**<Check If Has A Given Type Of Texture*/
-    bool HasOpacity; /**<Check If Has A Given Type Of Texture*/
-    bool HasReflection; /**<Check If Has A Given Type Of Texture*/
-    bool HasShininess; /**<Check If Has A Given Type Of Texture*/
-    bool HasSpecular; /**<Check If Has A Given Type Of Texture*/
+    bool HasDiffuseRoughness_; /**<Check If Has A Given Type Of Texture*/
+    bool HasDisplacement_; /**<Check If Has A Given Type Of Texture*/
+    bool HasEmissionColor_; /**<Check If Has A Given Type Of Texture*/
+    bool HasEmissive_; /**<Check If Has A Given Type Of Texture*/
+    bool HasHeight_; /**<Check If Has A Given Type Of Texture*/
+    bool HasLightmap_; /**<Check If Has A Given Type Of Texture*/
+    bool HasMetalness_; /**<Check If Has A Given Type Of Texture*/
+    bool HasNormalCamera_; /**<Check If Has A Given Type Of Texture*/
+    bool HasNormals_; /**<Check If Has A Given Type Of Texture*/
+    bool HasOpacity_; /**<Check If Has A Given Type Of Texture*/
+    bool HasReflection_; /**<Check If Has A Given Type Of Texture*/
+    bool HasShininess_; /**<Check If Has A Given Type Of Texture*/
+    bool HasSpecular_; /**<Check If Has A Given Type Of Texture*/
 
 
 public:
