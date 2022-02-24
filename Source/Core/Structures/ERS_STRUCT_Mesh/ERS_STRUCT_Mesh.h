@@ -56,14 +56,10 @@ public:
     long NumberIndices; /**<Size of Indices Array*/
     unsigned int VAO; /**<Vertex Array Object OpenGL Handle*/
 
-
     std::vector<int> TextureReferences_; /**<Texture Reference IDs*/
     std::vector<unsigned int> TextureIDs; /**<Textur IDs*/
     std::vector<std::string> TextureNames; /**<Human Readable Names Of Textures*/
     
-
-
-
 
     /**
      * @brief Setup the mesh (create opengl objects, etc.)
