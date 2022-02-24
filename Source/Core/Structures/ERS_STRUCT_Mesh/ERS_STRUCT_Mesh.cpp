@@ -148,11 +148,24 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
 
 
 
-
-    glUniform1i(glGetUniformLocation(Shader->ShaderProgram, "texture_ambient1"), 0);
-    glActiveTexture(GL_TEXTURE0 + 0);
-    glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
-
+    // Reset All Textures To Defaults
+    ResetTexture("texture_ambient1", 0);
+    ResetTexture("texture_ambient_occlusion1", 1);
+    ResetTexture("texture_base_color1", 2);
+    ResetTexture("texture_diffuse1", 3);
+    ResetTexture("texture_diffuse_roughness1", 4);
+    ResetTexture("texture_displacement1", 5);
+    ResetTexture("texture_emission_color1", 6);
+    ResetTexture("texture_emissive1", 7);
+    ResetTexture("texture_height1", 8);
+    ResetTexture("texture_lightmap1", 9);
+    ResetTexture("texture_metalness1", 10);
+    ResetTexture("texture_normal_camera1", 11);
+    ResetTexture("texture_normals1", 12);
+    ResetTexture("texture_opacity1", 13);
+    ResetTexture("texture_reflection1", 14);
+    ResetTexture("texture_shininess1", 15);
+    ResetTexture("texture_specular1", 16);
 
 
 
@@ -239,5 +252,14 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, NumberIndices, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
+
+}
+
+
+void ERS_STRUCT_MESH::ResetMesh(const char* Name, int Offset) {
+
+    glUniform1i(glGetUniformLocation(Shader->ShaderProgram, Name), Offset);
+    glActiveTexture(GL_TEXTURE0 + Offset);
+    glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
 
 }
