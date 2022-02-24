@@ -64,10 +64,8 @@ void RendererManager::LoadEditorData() {
     FreeImage_Initialise();
     
 
-
-    // Load Icon
+    // Load Program GLFW Icon
     SystemUtils_->Logger_->Log("Loading System Icon From EditorAssets", 3);
-
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileType("EditorAssets/Icons/ProgramIcon/Icon.png", 0);
     FIBITMAP* ImageData = FreeImage_Load(Format, "EditorAssets/Icons/ProgramIcon/Icon.png");
     SystemUtils_->Logger_->Log("Applying System Icon", 4);
@@ -79,35 +77,8 @@ void RendererManager::LoadEditorData() {
     glfwSetWindowIcon(Window_, 1, Icon);
 
 
-
-    // Create Default Checker Pattern Texture
-    SystemUtils_->Logger_->Log("Loading System Default Texture From EditorAssets", 3);
-    FREE_IMAGE_FORMAT DefaultTexFormat = FreeImage_GetFileType("EditorAssets/Icons/DefaultTexture/16x16/DefaultTexture2048.png", 0);
-    FIBITMAP* DefaulTexImageData = FreeImage_Load(DefaultTexFormat, "EditorAssets/Icons/DefaultTexture/16x16/DefaultTexture2048.png");
-    unsigned char* RawImageData = FreeImage_GetBits(DefaulTexImageData);
-    int Width = FreeImage_GetWidth(DefaulTexImageData);
-    int Height = FreeImage_GetHeight(DefaulTexImageData);
-    int Channels = FreeImage_GetLine(DefaulTexImageData) / FreeImage_GetWidth(DefaulTexImageData);
-
-    glGenTextures(1, &OpenGLDefaults_->DefaultTexture_);
-    glBindTexture(GL_TEXTURE_2D, OpenGLDefaults_->DefaultTexture_);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    if (Channels == 4) {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
-    } else {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
-    }
-    glGenerateMipmap(GL_TEXTURE_2D);
-
-    FreeImage_Unload(DefaulTexImageData);
-
-
-    // Create All-Black Texture
-    glGenTextures(1, &OpenGLDefaults_->AllBlackTexture_);
-
+    // Load Default Textures
+    OpenGLDefaults_->DefaultTexture_ = LoadEditorIcon("EditorAssets/Icons/DefaultTexture/64x64/DefaultTexture4096.png");
 
 
     FreeImage_DeInitialise();
@@ -116,6 +87,10 @@ void RendererManager::LoadEditorData() {
 
 
 unsigned int RendererManager::LoadEditorIcon(const char* Path) {
+
+
+    SystemUtils_->Logger_->Log(std::string("Loading Editor Icon '") + std::string(Path) + std::string("'"), 3);
+
 
     FREE_IMAGE_FORMAT TexFormat = FreeImage_GetFileType(Path, 0);
     FIBITMAP* TexImageData = FreeImage_Load(TexFormat, Path);
