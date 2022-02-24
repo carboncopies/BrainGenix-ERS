@@ -115,10 +115,32 @@ void RendererManager::LoadEditorData() {
 }
 
 
-void RendererManager::LoadEditorIcon(const char* Path, unsigned int &OpenGLTextureID) {
+unsigned int RendererManager::LoadEditorIcon(const char* Path) {
 
+    FREE_IMAGE_FORMAT DefaultTexFormat = FreeImage_GetFileType(Path, 0);
+    FIBITMAP* DefaulTexImageData = FreeImage_Load(DefaultTexFormat, Path);
+    unsigned char* RawImageData = FreeImage_GetBits(DefaulTexImageData);
+    int Width = FreeImage_GetWidth(DefaulTexImageData);
+    int Height = FreeImage_GetHeight(DefaulTexImageData);
+    int Channels = FreeImage_GetLine(DefaulTexImageData) / FreeImage_GetWidth(DefaulTexImageData);
 
+    unsigned int OpenGLTextureID;
+    glGenTextures(1, &OpenGLTextureID);
+    glBindTexture(GL_TEXTURE_2D, OpenGLTextureID);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    if (Channels == 4) {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
+    } else {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
+    }
+    glGenerateMipmap(GL_TEXTURE_2D);
 
+    FreeImage_Unload(DefaulTexImageData);
+
+    return OpenGLTextureID;
 
 }
 
