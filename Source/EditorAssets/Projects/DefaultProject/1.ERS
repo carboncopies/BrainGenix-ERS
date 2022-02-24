@@ -98,7 +98,7 @@ ShaderPrograms:
         VertexID: 10010
         FragmentID: 10011
     15:
-        Name: "Normals Texture Map"
+        Name: "Reflection Texture Map"
         VertexID: 10010
         FragmentID: 10011
     16:
