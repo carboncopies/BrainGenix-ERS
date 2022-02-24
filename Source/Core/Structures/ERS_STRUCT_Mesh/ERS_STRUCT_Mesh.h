@@ -30,20 +30,6 @@ private:
     unsigned int VBO; /**<Vertex buffer object OpenGL ID.*/
     unsigned int EBO; /**<OpenGL EBO Object ID*/
 
-
-public:
-
-    std::vector<ERS_STRUCT_Vertex> Vertices; /**<Array of Vertices*/
-    std::vector<unsigned int> Indices; /**<Array of Indices*/
-    long NumberIndices; /**<Size of Indices Array*/
-    unsigned int VAO; /**<Vertex Array Object OpenGL Handle*/
-
-
-    std::vector<int> TextureReferences_; /**<Texture Reference IDs*/
-    std::vector<unsigned int> TextureIDs; /**<Textur IDs*/
-    std::vector<std::string> TextureNames; /**<Human Readable Names Of Textures*/
-    
-
     bool HasAmbient_; /**<Check If Has A Given Type Of Texture*/
     bool HasAmbientOcclusion_; /**<Check If Has A Given Type Of Texture*/
     bool HasBaseColor_; /**<Check If Has A Given Type Of Texture*/
@@ -61,6 +47,22 @@ public:
     bool HasReflection; /**<Check If Has A Given Type Of Texture*/
     bool HasShininess; /**<Check If Has A Given Type Of Texture*/
     bool HasSpecular; /**<Check If Has A Given Type Of Texture*/
+
+
+public:
+
+    std::vector<ERS_STRUCT_Vertex> Vertices; /**<Array of Vertices*/
+    std::vector<unsigned int> Indices; /**<Array of Indices*/
+    long NumberIndices; /**<Size of Indices Array*/
+    unsigned int VAO; /**<Vertex Array Object OpenGL Handle*/
+
+
+    std::vector<int> TextureReferences_; /**<Texture Reference IDs*/
+    std::vector<unsigned int> TextureIDs; /**<Textur IDs*/
+    std::vector<std::string> TextureNames; /**<Human Readable Names Of Textures*/
+    
+
+
 
 
     /**
