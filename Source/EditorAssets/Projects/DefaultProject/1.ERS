@@ -83,8 +83,8 @@ ShaderPrograms:
         FragmentID: 10021
     11:
         Name: "Metalness Texture Map"
-        VertexID: 10010
-        FragmentID: 10011
+        VertexID: 10022
+        FragmentID: 10023
     12:
         Name: "Normal Camera Texture Map"
         VertexID: 10010
