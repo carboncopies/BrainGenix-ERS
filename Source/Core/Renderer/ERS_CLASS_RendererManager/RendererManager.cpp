@@ -98,6 +98,7 @@ unsigned int RendererManager::LoadEditorIcon(const char* Path) {
     unsigned char* RawImageData = FreeImage_GetBits(TexImageData);
     int Width = FreeImage_GetWidth(TexImageData);
     int Height = FreeImage_GetHeight(TexImageData);
+    std::cout<<Width<<std::endl;
     int Channels = FreeImage_GetLine(TexImageData) / Width;
 
     unsigned int OpenGLTextureID;
