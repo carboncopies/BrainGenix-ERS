@@ -90,7 +90,7 @@ void RendererManager::LoadEditorData() {
 unsigned int RendererManager::LoadEditorIcon(const char* Path) {
 
 
-    SystemUtils_->Logger_->Log(std::string("Loading Editor Icon '") + std::string(Path) + std::string("'"), 3);
+    SystemUtils_->Logger_->Log(std::string("Loading Editor Texture '") + std::string(Path) + std::string("'"), 3);
 
 
     FREE_IMAGE_FORMAT TexFormat = FreeImage_GetFileType(Path, 0);
