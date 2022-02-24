@@ -151,8 +151,10 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
 
         if (RawImageData != NULL) {
             if (Model->TexturesToPushToGPU_[i].Channels == 4) {
+                std::cout<<"IMAGE IS 4 CHAN\n";
                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
             } else {
+                std::cout<<"IMAGE IS 3 CHAN\n";
                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
             }
             glGenerateMipmap(GL_TEXTURE_2D);
