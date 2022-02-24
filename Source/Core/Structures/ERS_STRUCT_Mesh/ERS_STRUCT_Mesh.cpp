@@ -172,6 +172,44 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
     }
 
 
+
+    // Check If Debug Mode
+    if (true) {
+
+        if (AmbientHandle == 1) {
+            glUniform1i(glGetUniformLocation(Shader->ShaderProgram, "texture_ambient1"), GL_TEXTURE0);
+        }
+
+    }
+
+
+    // unsigned int AmbientHandle = 1;
+    // unsigned int AmbientOcclusionHandle = 1;
+    // unsigned int BaseColorHandle = 1;
+    // unsigned int DiffuseHandle = 1;
+    // unsigned int DiffuseRoughnessHandle = 1;
+    // unsigned int DisplacementHandle = 1;
+    // unsigned int EmissionColorHandle = 1;
+    // unsigned int EmissiveHandle = 1;
+    // unsigned int HeightHandle = 1;
+    // unsigned int LightmapHandle = 1;
+    // unsigned int MetalnessHandle = 1;
+    // unsigned int NoneHandle = 1;
+    // unsigned int NormalCameraHandle = 1;
+    // unsigned int NormalsHandle = 1;
+    // unsigned int OpacityHandle = 1;
+    // unsigned int RelfectionHandle = 1;
+    // unsigned int ShininessHandle = 1;
+    // unsigned int SpecularHandle = 1;
+    // unsigned int UnknownHandle = 1;
+
+
+
+    }
+
+
+
+
     // Draw Mesh
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, NumberIndices, GL_UNSIGNED_INT, 0);
