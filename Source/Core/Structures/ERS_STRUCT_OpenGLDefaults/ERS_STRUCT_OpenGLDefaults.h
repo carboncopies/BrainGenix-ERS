@@ -21,5 +21,7 @@ struct -BlERS_STRUCT_OpenGLDefaults {
 
     unsigned int DefaultTexture_; /** Default Texture ID To Be Bound To*/
     unsigned int DefaultObject_; /** Default Object To Be Bound To*/
+    unsigned int AllBlackTexture_; /**<Default All-Black Texture*/
+    unsigned int AllWhiteTexture_; /**<Completely white texture*/
 
 };
