@@ -102,7 +102,7 @@ ShaderPrograms:
         VertexID: 10010
         FragmentID: 10011
     16:
-        Name: "Normals Texture Map"
+        Name: "Shininess Texture Map"
         VertexID: 10010
         FragmentID: 10011
     17:
