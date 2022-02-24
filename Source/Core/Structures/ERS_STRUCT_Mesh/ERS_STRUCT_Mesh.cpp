@@ -152,7 +152,7 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
     glUniform1i(glGetUniformLocation(Shader->ShaderProgram, "texture_ambient1"), 0);
 
     glActiveTexture(GL_TEXTURE0 + 0);
-    glBindTexture(GL_TEXTURE0, OpenGLDefaults->DefaultTexture_);
+    glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
 
 
 
