@@ -87,8 +87,8 @@ ShaderPrograms:
         FragmentID: 10023
     12:
         Name: "Normal Camera Texture Map"
-        VertexID: 10010
-        FragmentID: 10011
+        VertexID: 10024
+        FragmentID: 10025
     13:
         Name: "Normals Texture Map"
         VertexID: 10010
