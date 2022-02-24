@@ -99,8 +99,8 @@ ShaderPrograms:
         FragmentID: 10029
     15:
         Name: "Reflection Texture Map"
-        VertexID: 10010
-        FragmentID: 10011
+        VertexID: 10030
+        FragmentID: 10031
     16:
         Name: "Shininess Texture Map"
         VertexID: 10010
