@@ -92,7 +92,7 @@ unsigned int RendererManager::LoadEditorIcon(const char* Path) {
 
     SystemUtils_->Logger_->Log(std::string("Loading Editor Texture '") + std::string(Path) + std::string("'"), 3);
 
-
+    std::cout<<Path<<std::endl;
     FREE_IMAGE_FORMAT TexFormat = FreeImage_GetFileType(Path, 0);
     FIBITMAP* TexImageData = FreeImage_Load(TexFormat, Path);
     unsigned char* RawImageData = FreeImage_GetBits(TexImageData);
