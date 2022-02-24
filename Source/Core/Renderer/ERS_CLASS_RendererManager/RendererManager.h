@@ -90,7 +90,7 @@ private:
      * @param Path 
      * @param OpenGLTextureID 
      */
-    void LoadEditorIcon(const char* Path, &unsigned int OpenGLTextureID);
+    void LoadEditorIcon(const char* Path, unsigned int &OpenGLTextureID);
 
 
 public:
