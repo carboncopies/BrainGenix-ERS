@@ -148,37 +148,18 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
 
         // Convert FIBITMAP* To Raw Image Bytes
         unsigned char* RawImageData = FreeImage_GetBits(Model->TexturesToPushToGPU_[i].ImageData);
-        
-
-
 
         if (RawImageData != NULL) {
-
-            SystemUtils_->Logger_->Log(std::string("Performing Image Data Size Sanity Check"), 2);
-
-            size_t ImageByteSize = strlen((char*)RawImageData);
-            size_t ImageIdentifiedSize = Model->TexturesToPushToGPU_[i].Channels*Model->TexturesToPushToGPU_[i].Width*Model->TexturesToPushToGPU_[i].Height*sizeof(unsigned char);
-            bool SanityCheckResult = (ImageByteSize == ImageIdentifiedSize);
-
-            std::cout<<ImageByteSize<<"|"<<ImageIdentifiedSize<<std::endl;
-
-            if (SanityCheckResult) {
-                SystemUtils_->Logger_->Log(std::string("Image Data Sanity Check 'PASS', Continuing Loading"), 3);
+                
+            if (Model->TexturesToPushToGPU_[i].Channels == 4) {
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
+            } else if (Model->TexturesToPushToGPU_[i].Channels == 3) {
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
             } else {
-                SystemUtils_->Logger_->Log(std::string("Image Data Sanity Check 'FAIL', Aborting Loading"), 3);
+                std::cout<<"Num Channels: "<<Model->TexturesToPushToGPU_[i].Channels<<std::endl;
             }
-
-            if (SanityCheckResult) {
-                    
-                if (Model->TexturesToPushToGPU_[i].Channels == 4) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
-                } else if (Model->TexturesToPushToGPU_[i].Channels == 3) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
-                } else {
-                    std::cout<<"Num Channels: "<<Model->TexturesToPushToGPU_[i].Channels<<std::endl;
-                }
-                glGenerateMipmap(GL_TEXTURE_2D);
-            }
+            glGenerateMipmap(GL_TEXTURE_2D);
+            
 
         } else {
             SystemUtils_->Logger_->Log("Texture Failed To Load, Cannot Push To GPU", 9);
