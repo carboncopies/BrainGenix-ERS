@@ -91,8 +91,8 @@ ShaderPrograms:
         FragmentID: 10025
     13:
         Name: "Normals Texture Map"
-        VertexID: 10010
-        FragmentID: 10011
+        VertexID: 10026
+        FragmentID: 10027
     14:
         Name: "Opacity Texture Map"
         VertexID: 10010
