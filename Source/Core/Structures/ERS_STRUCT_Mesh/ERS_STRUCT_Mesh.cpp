@@ -79,29 +79,29 @@ void ERS_STRUCT_Mesh::SetupMesh() {
         else if(Name == "texture_diffuse_roughness")
             HasDiffuseRoughness_ = true;
         else if(Name == "texture_displacement")
-            Number = std::to_string(DisplacementHandle++);
+            HasDisplacement_ = true;
         else if(Name == "texture_emission_color")
-            Number = std::to_string(EmissionColorHandle++);
+            HasEmissionColor_ = true;
         else if(Name == "texture_emissive")
-            Number = std::to_string(EmissiveHandle++);
+            HasEmissive_ = true;
         else if(Name == "texture_height")
-            Number = std::to_string(HeightHandle++);
+            HasHeight_ = true;
         else if(Name == "texture_lightmap")
-            Number = std::to_string(LightmapHandle++);
+            HasLightmap_ = true;
         else if(Name == "texture_metalness")
-            Number = std::to_string(MetalnessHandle++);
+            HasMetalness_ = true;
         else if(Name == "texture_normal_camera")
-            Number = std::to_string(NormalCameraHandle++);
+            HasNormalCamera_ = true;
         else if(Name == "texture_normals")
-            Number = std::to_string(NormalsHandle++);
+            HasNormals_ = true;
         else if(Name == "texture_opacity")
-            Number = std::to_string(OpacityHandle++);
+            HasOpacity_ = true;
         else if(Name == "texture_reflection")
-            Number = std::to_string(RelfectionHandle++);
+            HasReflection_ = true;
         else if(Name == "texture_shininess")
-            Number = std::to_string(ShininessHandle++);
+            HasShininess_ = true;
         else if(Name == "texture_specular")
-            Number = std::to_string(SpecularHandle++);
+            HasSpecular_ = true;
     }
 
 
