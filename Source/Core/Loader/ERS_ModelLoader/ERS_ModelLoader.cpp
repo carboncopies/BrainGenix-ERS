@@ -148,15 +148,14 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
 
         // Convert FIBITMAP* To Raw Image Bytes
         unsigned char* RawImageData = FreeImage_GetBits(Model->TexturesToPushToGPU_[i].ImageData);
+        size_t ImageByteSize = strlen((char*)RawImageData);
+        size_t ImageIdentifiedSize = Model->TexturesToPushToGPU_[i].Width*Model->TexturesToPushToGPU_[i].Height*sizeof(unsigned char)*TexturesToPushToGPU_[i].Channels;
+
 
         if (RawImageData != NULL) {
             if (Model->TexturesToPushToGPU_[i].Channels == 4) {
                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
             } else {
-                std::cout<<"IMAGE IS 3 CHAN\n";
-                std::cout<<"Height: "<<Model->TexturesToPushToGPU_[i].Height<<" Width: "<<Model->TexturesToPushToGPU_[i].Width<<std::endl;
-                std::cout<<strlen((char*)RawImageData)<<std::endl;
-                std::cout<<Model->TexturesToPushToGPU_[i].Width*Model->TexturesToPushToGPU_[i].Height*sizeof(unsigned char)<<std::endl;
                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
             }
             glGenerateMipmap(GL_TEXTURE_2D);
