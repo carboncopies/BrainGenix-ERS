@@ -147,6 +147,29 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
     unsigned int SpecularHandle = 1;
 
 
+
+
+
+    // Check If Debug Mode
+    if (true) {
+
+        if (!HasAmbient_) {
+            glUniform1i(glGetUniformLocation(Shader->ShaderProgram, "texture_ambient1"), GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
+        }
+
+        if (!HasAmbientOcclusion_) {
+            glUniform1i(glGetUniformLocation(Shader->ShaderProgram, "texture_ambient_occlusion1"), GL_TEXTURE1);
+            glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
+        }
+
+
+
+    }
+
+
+
+
     // Iterate Through Textures
     for (unsigned int i = 0; i < TextureIDs.size(); i++) {
 
