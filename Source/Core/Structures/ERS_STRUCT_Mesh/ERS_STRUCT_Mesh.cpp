@@ -181,6 +181,11 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
             glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
         }
 
+        if (AmbientOcclusionHandle == 1) {
+            glUniform1i(glGetUniformLocation(Shader->ShaderProgram, "texture_ambient_occlusion1"), GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
+        }
+
 
 
     // unsigned int AmbientHandle = 1;
