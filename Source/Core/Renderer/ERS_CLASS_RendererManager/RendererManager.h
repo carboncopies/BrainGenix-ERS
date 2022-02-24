@@ -84,6 +84,15 @@ private:
      */
     void LoadEditorData();
 
+    /**
+     * @brief Loads an icon and returns the path at the id. Remember to init and de-init freeimage before and after this function.
+     * 
+     * @param Path 
+     * @param OpenGLTextureID 
+     */
+    void LoadEditorIcon(const char* Path, &unsigned int OpenGLTextureID);
+
+
 public:
 
     /**
