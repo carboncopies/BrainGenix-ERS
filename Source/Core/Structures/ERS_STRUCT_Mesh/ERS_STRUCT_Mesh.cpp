@@ -256,10 +256,10 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
 }
 
 
-void ERS_STRUCT_Mesh::ResetTexture(const char* Name, int Offset) {
+void ERS_STRUCT_Mesh::ResetTexture(const char* Name, int Offset, unsigned int ShaderProgram, unsigned int TextureID) {
 
-    glUniform1i(glGetUniformLocation(Shader->ShaderProgram, Name), Offset);
+    glUniform1i(glGetUniformLocation(ShaderProgram, Name), Offset);
     glActiveTexture(GL_TEXTURE0 + Offset);
-    glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
+    glBindTexture(GL_TEXTURE_2D, TextureID);
 
 }

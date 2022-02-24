@@ -55,7 +55,7 @@ private:
      * @param Name 
      * @param Offset 
      */
-    void ResetTexture(const char* Name, int Offset);
+    void ResetTexture(const char* Name, int Offset, unsigned int ShaderProgram, unsigned int TextureID);
 
 public:
 
