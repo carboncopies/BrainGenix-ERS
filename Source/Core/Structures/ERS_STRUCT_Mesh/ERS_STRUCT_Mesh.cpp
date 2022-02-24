@@ -180,7 +180,6 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
             glUniform1i(glGetUniformLocation(Shader->ShaderProgram, "texture_ambient1"), GL_TEXTURE0);
         }
 
-    }
 
 
     // unsigned int AmbientHandle = 1;
