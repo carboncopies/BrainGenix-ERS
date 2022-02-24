@@ -62,35 +62,51 @@ ShaderPrograms:
         VertexID: 10010
         FragmentID: 10011
     6:
-        Name: "Diffuse Roughness Texture Map"
+        Name: "Displacement Texture Map"
         VertexID: 10010
         FragmentID: 10011
     7:
-        Name: "Diffuse Roughness Texture Map"
+        Name: "Emission Color Texture Map"
         VertexID: 10010
         FragmentID: 10011
     8:
-        Name: "Diffuse Roughness Texture Map"
+        Name: "Emissive Texture Map"
         VertexID: 10010
         FragmentID: 10011
     9:
-        Name: "Diffuse Roughness Texture Map"
+        Name: "Height Texture Map"
         VertexID: 10010
         FragmentID: 10011
     10:
-        Name: "Diffuse Roughness Texture Map"
+        Name: "Lightmap Texture Map"
         VertexID: 10010
         FragmentID: 10011
     11:
-        Name: "Diffuse Roughness Texture Map"
+        Name: "Metalness Texture Map"
         VertexID: 10010
         FragmentID: 10011
     12:
-        Name: "Diffuse Roughness Texture Map"
+        Name: "Normal Camera Texture Map"
         VertexID: 10010
         FragmentID: 10011
     13:
-        Name: "Diffuse Roughness Texture Map"
+        Name: "Normals Texture Map"
+        VertexID: 10010
+        FragmentID: 10011
+    14:
+        Name: "Normals Texture Map"
+        VertexID: 10010
+        FragmentID: 10011
+    15:
+        Name: "Normals Texture Map"
+        VertexID: 10010
+        FragmentID: 10011
+    16:
+        Name: "Normals Texture Map"
+        VertexID: 10010
+        FragmentID: 10011
+    17:
+        Name: "Normals Texture Map"
         VertexID: 10010
         FragmentID: 10011
     18:
