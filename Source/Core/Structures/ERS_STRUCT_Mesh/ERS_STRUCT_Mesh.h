@@ -49,6 +49,14 @@ private:
     bool HasSpecular_; /**<Check If Has A Given Type Of Texture*/
 
 
+    /**
+     * @brief Reset the texture to the default with the given name and offset.
+     * 
+     * @param Name 
+     * @param Offset 
+     */
+    void ResetTexture(const char* Name, int Offset);
+
 public:
 
     std::vector<ERS_STRUCT_Vertex> Vertices; /**<Array of Vertices*/
