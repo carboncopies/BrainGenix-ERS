@@ -106,7 +106,8 @@ void RendererManager::LoadEditorData() {
 
 
     // Create All-Black Texture
-    glGenTextures(1, &OpenGLDefaults_)
+    glGenTextures(1, &OpenGLDefaults_->AllBlackTexture_);
+    
 
 
     FreeImage_DeInitialise();
