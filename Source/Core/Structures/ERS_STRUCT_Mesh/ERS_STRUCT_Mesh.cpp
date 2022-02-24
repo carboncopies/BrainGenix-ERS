@@ -62,12 +62,29 @@ void ERS_STRUCT_Mesh::SetupMesh() {
     NumberIndices = Indices.size();
 
 
-    // Update Texture "Has" Parameters
+    // Reset Then Update Texture "Has" Parameters
+    HasAmbient_ = false;
+    HasAmbientOcclusion_ = false;
+    HasBaseColor_ = false;
+    HasDiffuse_ = false;
+    HasDiffuseRoughness_ = false;
+    HasDisplacement_ = false;
+    HasEmissionColor_ = false;
+    HasEmissive_ = false;
+    HasHeight_ = false;
+    HasLightmap_ = false;
+    HasMetalness_ = false;
+    HasNormalCamera_ = false;
+    HasNormals_ = false;
+    HasOpacity_ = false;
+    HasReflection_ = false;
+    HasShininess_ = false;
+    HasSpecular_ = false;
+
     for (int i = 0; i < TextureNames.size(); i++) {
 
         std::string Name = TextureNames[i];
 
-        // Detect Type
         if (Name == "texture_ambient")
             HasAmbient_ = true;
         else if(Name == "texture_ambient_occlusion")
