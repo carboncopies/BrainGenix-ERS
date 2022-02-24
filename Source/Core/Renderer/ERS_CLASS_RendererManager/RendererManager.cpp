@@ -92,13 +92,11 @@ unsigned int RendererManager::LoadEditorIcon(const char* Path) {
 
     SystemUtils_->Logger_->Log(std::string("Loading Editor Texture '") + std::string(Path) + std::string("'"), 3);
 
-    std::cout<<Path<<std::endl;
     FREE_IMAGE_FORMAT TexFormat = FreeImage_GetFileType(Path, 0);
     FIBITMAP* TexImageData = FreeImage_Load(TexFormat, Path);
     unsigned char* RawImageData = FreeImage_GetBits(TexImageData);
     int Width = FreeImage_GetWidth(TexImageData);
     int Height = FreeImage_GetHeight(TexImageData);
-    std::cout<<Width<<std::endl;
     int Channels = FreeImage_GetLine(TexImageData) / Width;
 
     unsigned int OpenGLTextureID;
