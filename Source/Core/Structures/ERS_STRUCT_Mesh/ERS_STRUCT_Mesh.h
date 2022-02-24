@@ -43,7 +43,25 @@ public:
     std::vector<unsigned int> TextureIDs; /**<Textur IDs*/
     std::vector<std::string> TextureNames; /**<Human Readable Names Of Textures*/
     
-    
+
+    bool HasAmbient_; /**<Check If Has A Given Type Of Texture*/
+    bool HasAmbientOcclusion_; /**<Check If Has A Given Type Of Texture*/
+    bool HasBaseColor_; /**<Check If Has A Given Type Of Texture*/
+    bool HasDiffuse_; /**<Check If Has A Given Type Of Texture*/
+    bool HasDiffuseRoughness; /**<Check If Has A Given Type Of Texture*/
+    bool HasDisplacement; /**<Check If Has A Given Type Of Texture*/
+    bool HasEmissionColor; /**<Check If Has A Given Type Of Texture*/
+    bool HasEmissive; /**<Check If Has A Given Type Of Texture*/
+    bool HasHeight; /**<Check If Has A Given Type Of Texture*/
+    bool HasLightmap; /**<Check If Has A Given Type Of Texture*/
+    bool HasMetalness; /**<Check If Has A Given Type Of Texture*/
+    bool HasNormalCamera; /**<Check If Has A Given Type Of Texture*/
+    bool HasNormals; /**<Check If Has A Given Type Of Texture*/
+    bool HasOpacity; /**<Check If Has A Given Type Of Texture*/
+    bool HasReflection; /**<Check If Has A Given Type Of Texture*/
+    bool HasShininess; /**<Check If Has A Given Type Of Texture*/
+    bool HasSpecular; /**<Check If Has A Given Type Of Texture*/
+
 
     /**
      * @brief Setup the mesh (create opengl objects, etc.)
