@@ -256,7 +256,7 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
 }
 
 
-void ERS_STRUCT_MESH::ResetMesh(const char* Name, int Offset) {
+void ERS_STRUCT_Mesh::ResetTexture(const char* Name, int Offset) {
 
     glUniform1i(glGetUniformLocation(Shader->ShaderProgram, Name), Offset);
     glActiveTexture(GL_TEXTURE0 + Offset);
