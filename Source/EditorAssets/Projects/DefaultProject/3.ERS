@@ -8,18 +8,16 @@ SceneData:
     AssetPositionX: -0.112269223
     AssetPositionY: -0.0495069548
     AssetPositionZ: 0.682488263
-    AssetRotationX: 79.4834976
-    AssetRotationY: 23.4872551
-    AssetRotationZ: -16.1020374
-    AssetScaleX: 1.06278944
-    AssetScaleY: 1.06279552
-    AssetScaleZ: 1.06278646
+    AssetRotationX: 18.9343262
+    AssetRotationY: 74.0657578
+    AssetRotationZ: -67.9051666
+    AssetScaleX: 0.012000001
+    AssetScaleY: 0.012000001
+    AssetScaleZ: 0.012000001
     FlipTextures: true
   1:
     AssetName: Default Directional Light
     AssetType: DirectionalLight
-
-
     AmbientRed: 0.25
     AmbientGreen: 0.25
     AmbientBlue: 0.25
@@ -29,22 +27,15 @@ SceneData:
     SpecularRed: 0.25
     SpecularGreen: 0.25
     SpecularBlue: 0.25
-    
     PosX: 3
     PosY: 3
     PosZ: 3
     RotX: 90
     RotY: 0
     RotZ: 0
-
   2:
     AssetName: Default Directional Light
     AssetType: PointLight
-
-    RolloffConstant: 1.0
-    RolloffLinear: 0.09
-    RolloffQuadratic: 0.032
-    
     AmbientRed: 0.25
     AmbientGreen: 0.25
     AmbientBlue: 0.25
@@ -54,34 +45,32 @@ SceneData:
     SpecularRed: 0.25
     SpecularGreen: 0.25
     SpecularBlue: 0.25
-    
     PosX: 3
     PosY: 3
     PosZ: 3
+    RolloffConstant: 1
+    RolloffLinear: 0.0900000036
+    RolloffQuadratic: 0.0320000015
   3:
     AssetName: Default Directional Light
     AssetType: SpotLight
-
-    RolloffConstant: 1.0
-    RolloffLinear: 0.09
-    RolloffQuadratic: 0.032
-    
-    CutOff: 0.97
-    OuterCutOff: 0.96
-    
-    AmbientRed: 0.0
-    AmbientGreen: 0.0
-    AmbientBlue: 0.0
+    AmbientRed: 0
+    AmbientGreen: 0
+    AmbientBlue: 0
     DiffuseRed: 0.25
     DiffuseGreen: 0.25
-    DiffuseBlue: 1.0
+    DiffuseBlue: 1
     SpecularRed: 0.25
-    SpecularGreen: 1.0
+    SpecularGreen: 1
     SpecularBlue: 0.25
-    
     PosX: -3
     PosY: -3
     PosZ: -3
     RotX: -90
     RotY: 0
     RotZ: 0
+    RolloffConstant: 1
+    RolloffLinear: 0.0900000036
+    RolloffQuadratic: 0.0320000015
+    CutOff: 0.970000029
+    OuterCutOff: 0.959999979
