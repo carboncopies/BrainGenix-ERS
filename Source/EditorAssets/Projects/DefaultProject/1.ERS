@@ -95,8 +95,8 @@ ShaderPrograms:
         FragmentID: 10027
     14:
         Name: "Opacity Texture Map"
-        VertexID: 10010
-        FragmentID: 10011
+        VertexID: 10028
+        FragmentID: 10029
     15:
         Name: "Reflection Texture Map"
         VertexID: 10010
