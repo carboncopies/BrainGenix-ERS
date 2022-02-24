@@ -160,6 +160,8 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
             size_t ImageIdentifiedSize = Model->TexturesToPushToGPU_[i].Channels*Model->TexturesToPushToGPU_[i].Width*Model->TexturesToPushToGPU_[i].Height*sizeof(unsigned char);
             bool SanityCheckResult = (ImageByteSize == ImageIdentifiedSize);
 
+            std::cout<<ImageByteSize<<"|"<<ImageIdentifiedSize<<std::endl;
+
             if (SanityCheckResult) {
                 SystemUtils_->Logger_->Log(std::string("Image Data Sanity Check 'PASS', Continuing Loading"), 3);
             } else {
