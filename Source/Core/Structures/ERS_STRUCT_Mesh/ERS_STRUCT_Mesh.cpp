@@ -149,23 +149,25 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
 
 
     // Reset All Textures To Defaults
-    ResetTexture("texture_ambient1", 0);
-    ResetTexture("texture_ambient_occlusion1", 1);
-    ResetTexture("texture_base_color1", 2);
-    ResetTexture("texture_diffuse1", 3);
-    ResetTexture("texture_diffuse_roughness1", 4);
-    ResetTexture("texture_displacement1", 5);
-    ResetTexture("texture_emission_color1", 6);
-    ResetTexture("texture_emissive1", 7);
-    ResetTexture("texture_height1", 8);
-    ResetTexture("texture_lightmap1", 9);
-    ResetTexture("texture_metalness1", 10);
-    ResetTexture("texture_normal_camera1", 11);
-    ResetTexture("texture_normals1", 12);
-    ResetTexture("texture_opacity1", 13);
-    ResetTexture("texture_reflection1", 14);
-    ResetTexture("texture_shininess1", 15);
-    ResetTexture("texture_specular1", 16);
+    unsigned int ShaderProgram = Shader->ShaderProgram;
+    unsigned int ResetTexID = OpenGLDefaults->DefaultTexture_;
+    ResetTexture("texture_ambient1", 0, ShaderProgram, ResetTexID);
+    ResetTexture("texture_ambient_occlusion1", 1, ShaderProgram, ResetTexID);
+    ResetTexture("texture_base_color1", 2, ShaderProgram, ResetTexID);
+    ResetTexture("texture_diffuse1", 3, ShaderProgram, ResetTexID);
+    ResetTexture("texture_diffuse_roughness1", 4, ShaderProgram, ResetTexID);
+    ResetTexture("texture_displacement1", 5, ShaderProgram, ResetTexID);
+    ResetTexture("texture_emission_color1", 6, ShaderProgram, ResetTexID);
+    ResetTexture("texture_emissive1", 7, ShaderProgram, ResetTexID);
+    ResetTexture("texture_height1", 8, ShaderProgram, ResetTexID);
+    ResetTexture("texture_lightmap1", 9, ShaderProgram, ResetTexID);
+    ResetTexture("texture_metalness1", 10, ShaderProgram, ResetTexID);
+    ResetTexture("texture_normal_camera1", 11, ShaderProgram, ResetTexID);
+    ResetTexture("texture_normals1", 12, ShaderProgram, ResetTexID);
+    ResetTexture("texture_opacity1", 13, ShaderProgram, ResetTexID);
+    ResetTexture("texture_reflection1", 14, ShaderProgram, ResetTexID);
+    ResetTexture("texture_shininess1", 15, ShaderProgram, ResetTexID);
+    ResetTexture("texture_specular1", 16, ShaderProgram, ResetTexID);
 
 
 
