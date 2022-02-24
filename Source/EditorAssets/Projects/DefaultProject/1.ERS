@@ -63,16 +63,16 @@ ShaderPrograms:
         FragmentID: 10011
     6:
         Name: "Displacement Texture Map"
-        VertexID: 10010
-        FragmentID: 10011
+        VertexID: 10012
+        FragmentID: 10013
     7:
         Name: "Emission Color Texture Map"
-        VertexID: 10010
-        FragmentID: 10011
+        VertexID: 10014
+        FragmentID: 10015
     8:
         Name: "Emissive Texture Map"
-        VertexID: 10010
-        FragmentID: 10011
+        VertexID: 10016
+        FragmentID: 10017
     9:
         Name: "Height Texture Map"
         VertexID: 10010
