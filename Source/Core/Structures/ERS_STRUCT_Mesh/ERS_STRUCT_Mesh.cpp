@@ -166,43 +166,61 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
         // Get Texture Number
         std::string Number;
         std::string Name = TextureNames[i];
+        int Type = 0;
 
         // Detect Type
-        if (Name == "texture_ambient")
+        if (Name == "texture_ambient") {
             Number = std::to_string(AmbientHandle++);
-        else if(Name == "texture_ambient_occlusion")
+            Type = 0;
+        } else if(Name == "texture_ambient_occlusion") {
             Number = std::to_string(AmbientOcclusionHandle++);
-        else if(Name == "texture_base_color")
+            Type = 1;
+        } else if(Name == "texture_base_color") {
             Number = std::to_string(BaseColorHandle++);
-        else if(Name == "texture_diffuse")
+            Type = 2;
+        } else if(Name == "texture_diffuse") {
             Number = std::to_string(DiffuseHandle++);
-        else if(Name == "texture_diffuse_roughness")
+            Type = 3;
+        } else if(Name == "texture_diffuse_roughness") {
             Number = std::to_string(DiffuseRoughnessHandle++);
-        else if(Name == "texture_displacement")
+            Type = 4;
+        } else if(Name == "texture_displacement") {
             Number = std::to_string(DisplacementHandle++);
-        else if(Name == "texture_emission_color")
+            Type = 5;
+        } else if(Name == "texture_emission_color") {
             Number = std::to_string(EmissionColorHandle++);
-        else if(Name == "texture_emissive")
+            Type = 6;
+        } else if(Name == "texture_emissive") {
             Number = std::to_string(EmissiveHandle++);
-        else if(Name == "texture_height")
+            Type = 7;
+        } else if(Name == "texture_height") {
             Number = std::to_string(HeightHandle++);
-        else if(Name == "texture_lightmap")
+            Type = 8;
+        } else if(Name == "texture_lightmap") {
             Number = std::to_string(LightmapHandle++);
-        else if(Name == "texture_metalness")
+            Type = 9;
+        } else if(Name == "texture_metalness") {
             Number = std::to_string(MetalnessHandle++);
-        else if(Name == "texture_normal_camera")
+            Type = 10;
+        } else if(Name == "texture_normal_camera") {
             Number = std::to_string(NormalCameraHandle++);
-        else if(Name == "texture_normals")
+            Type = 11;
+        } else if(Name == "texture_normals") {
             Number = std::to_string(NormalsHandle++);
-        else if(Name == "texture_opacity")
+            Type = 12;
+        } else if(Name == "texture_opacity") {
             Number = std::to_string(OpacityHandle++);
-        else if(Name == "texture_reflection")
+            Type = 13;
+        } else if(Name == "texture_reflection") {
             Number = std::to_string(RelfectionHandle++);
-        else if(Name == "texture_shininess")
+            Type = 14;
+        } else if(Name == "texture_shininess") {
             Number = std::to_string(ShininessHandle++);
-        else if(Name == "texture_specular")
+            Type = 15;
+        } else if(Name == "texture_specular") {
             Number = std::to_string(SpecularHandle++);
-
+            Type = 16;
+        }
 
         glUniform1i(glGetUniformLocation(Shader->ShaderProgram, (Name + Number).c_str()), i);
         
