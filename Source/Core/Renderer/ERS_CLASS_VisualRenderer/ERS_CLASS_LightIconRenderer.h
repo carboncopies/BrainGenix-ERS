@@ -19,6 +19,7 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_Shader.h>
 #include <ERS_STRUCT_OpenGLDefaults.h>
+#include <ERS_STRUCT_Camera.h>
 
 #include <ERS_SceneManager.h>
 
@@ -58,6 +59,6 @@ public:
      * @brief Draw Command
      * 
      */
-    void Draw(glm::mat4 View, glm::mat4 Projection, glm::vec3 CameraPosition, ERS_CLASS_SceneManager* SceneManager);
+    void Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneManager* SceneManager);
 
 };
