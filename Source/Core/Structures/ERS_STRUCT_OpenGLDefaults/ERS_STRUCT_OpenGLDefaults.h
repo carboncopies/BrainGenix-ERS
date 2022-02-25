@@ -24,4 +24,8 @@ struct ERS_STRUCT_OpenGLDefaults {
     unsigned int AllBlackTexture_; /**<Default All-Black Texture*/
     unsigned int AllWhiteTexture_; /**<Completely white texture*/
 
+    unsigned int PointLightTexture_; /**<Texture ID For Point Light*/
+    unsigned int DirectionalLightTexture_; /**<Texture ID For Directional Light*/
+    unsigned int SpotLightTexture_; /**<Texture ID For Spot Light*/
+
 };
