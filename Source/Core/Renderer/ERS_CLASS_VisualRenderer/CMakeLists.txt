@@ -14,6 +14,7 @@ add_library(ERS_CLASS_VisualRenderer
             # Add Header Files (.h)
             "ERS_CLASS_VisualRenderer.h"
             "ERS_CLASS_LightIconRenderer.h"
+            "ERS_CLASS_Grid.h"
 
             ${BACKWARD_ENABLE}
             )
