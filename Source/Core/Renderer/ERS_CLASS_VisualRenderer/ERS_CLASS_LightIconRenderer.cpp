@@ -52,6 +52,22 @@ ERS_CLASS_LightIconRenderer::~ERS_CLASS_LightIconRenderer() {
 void ERS_CLASS_LightIconRenderer::Draw(glm::mat4 View, glm::mat4 Projection, glm::vec3 CameraPosition, ERS_CLASS_SceneManager* SceneManager) {
 
     
+    LightIconRendererShader_->MakeActive();
 
+
+    // Draw All Point Lights
+    for (int i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights.size(); i++) {
+
+
+        LightIconRendererShader_->SetMat4("model", LightIconRendererModelArray_);
+        LightIconRendererShader_->SetMat4("view", View);
+        LightIconRendererShader_->SetMat4("projection", Projection);
+
+        LightIconRendererShader_->SetVec3("CameraPosition", CameraPosition);
+
+        glBindVertexArray(LightIconRendererVAO_);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+
+    }
 
 }
