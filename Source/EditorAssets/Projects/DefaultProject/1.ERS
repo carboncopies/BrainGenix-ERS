@@ -113,7 +113,10 @@ ShaderPrograms:
         Name: "Viewport"
         VertexID: 10036
         FragmentID: 10037
-
+    19:
+        Name: "LightIcon"
+        VertexID: 10038
+        FragmentID: 10039
 
 
 DefaultShaderProgram: 18
