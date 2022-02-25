@@ -11,6 +11,7 @@ ERS_CLASS_LightIconRenderer::ERS_CLASS_LightIconRenderer(ERS_STRUCT_OpenGLDefaul
 
     SystemUtils_ = SystemUtils;
     LightIconRendererShader_ = LightIconRendererShader;
+    OpenGLDefaults_ = Defaults;
 
 
     SystemUtils_->Logger_->Log("Setting Up VisualRenderer LightIconRenderer System", 5);
