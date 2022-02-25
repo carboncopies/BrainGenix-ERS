@@ -18,6 +18,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_Shader.h>
+#include <ERS_CLASS_SceneManager.h>
 
 
 
@@ -54,6 +55,6 @@ public:
      * @brief Draw Command
      * 
      */
-    void Draw();
+    void Draw(ERS_CLASS_SceneManager* SceneManager);
 
 };

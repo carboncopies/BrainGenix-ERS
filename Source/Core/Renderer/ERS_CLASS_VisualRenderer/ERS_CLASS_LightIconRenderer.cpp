@@ -49,8 +49,9 @@ ERS_CLASS_LightIconRenderer::~ERS_CLASS_LightIconRenderer() {
 }
 
 
-void ERS_CLASS_LightIconRenderer::Draw() {
+void ERS_CLASS_LightIconRenderer::Draw(ERS_CLASS_SceneManager* SceneManager) {
 
+    
 
 
 }
