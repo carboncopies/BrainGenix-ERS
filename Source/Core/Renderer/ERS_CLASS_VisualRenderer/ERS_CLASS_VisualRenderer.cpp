@@ -333,7 +333,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     Viewport->ShaderIndex = DefaultShader_;
     Viewport->Camera = std::make_shared<ERS_STRUCT_Camera>();
     Viewport->Grid = std::make_shared<ERS_CLASS_Grid>(SystemUtils_, Shaders_[0]);
-    Viewport->LightIconRenderer = std::make_shared<ERS_CLASS_LightIconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders[1]);
+    Viewport->LightIconRenderer = std::make_shared<ERS_CLASS_LightIconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[1]);
     Viewport->Name = ViewportName;
     
     Viewport->Width = 1;
