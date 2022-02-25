@@ -65,7 +65,7 @@ void ERS_CLASS_LightIconRenderer::Draw(glm::mat4 View, glm::mat4 Projection, glm
         glm::mat4 NewModelMatrix = glm::scale(LightIconRendererModelArray_, glm::vec3(LightIconRendererScale_));
         NewModelMatrix = glm::translate(NewModelMatrix, SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos);
 
-        LightIconRendererShader_->SetMat4("model", LightIconRendererModelArray_);
+        LightIconRendererShader_->SetMat4("model", NewModelMatrix);
         LightIconRendererShader_->SetMat4("view", View);
         LightIconRendererShader_->SetMat4("projection", Projection);
 
