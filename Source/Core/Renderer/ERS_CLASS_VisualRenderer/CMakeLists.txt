@@ -35,7 +35,6 @@ target_link_libraries(ERS_CLASS_VisualRenderer
     ERS_STRUCT_Camera
     ERS_CLASS_InputProcessor
     ERS_CLASS_LoggingSystem
-    ERS_CLASS_Framebuffer
 
     ERS_SceneManager
     ERS_ShaderLoader
