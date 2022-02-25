@@ -108,7 +108,6 @@ add_subdirectory(${SRC_DIR}/Core/Editor/MenuEntries)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_RendererManager)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_VisualRenderer)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_InputProcessor)
-add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_Framebuffer)
 
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Camera)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Mesh)
