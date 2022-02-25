@@ -40,13 +40,6 @@ ERS_CLASS_LightIconRenderer::ERS_CLASS_LightIconRenderer(ERS_STRUCT_SystemUtils*
     glVertexAttribPointer(TexCoordsIndex, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3*sizeof(float)));
 
 
-    // Setup LightIconRenderer Model Matrix
-    LightIconRendererModelArray_ = glm::mat4();
-    LightIconRendererModelArray_ = glm::scale(LightIconRendererModelArray_, glm::vec3(LightIconRendererScale_));
-    LightIconRendererModelArray_ = glm::rotate(LightIconRendererModelArray_, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-
-
-
 }
 
 ERS_CLASS_LightIconRenderer::~ERS_CLASS_LightIconRenderer() {

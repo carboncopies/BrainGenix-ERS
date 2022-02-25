@@ -31,7 +31,7 @@ private:
 
     unsigned int LightIconRendererVBO_; /**<OpenGL ID To LightIconRenderer Vertex Buffer Object*/
     unsigned int LightIconRendererVAO_; /**<OpenGL ID To LightIconRenderer Vertex Array Object*/
-    float LightIconRendererScale_ = 25.0f; /**<Scale of the grid plane, does NOT set grid line scale. Use LightIconRenderer Size For This Purpose.*/
+    float LightIconRendererScale_ = 1.0f; /**<Scale of editor icons*/
 
 
 public:
