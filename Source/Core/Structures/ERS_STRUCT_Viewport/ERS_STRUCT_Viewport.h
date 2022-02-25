@@ -13,6 +13,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_InputProcessor.h>
 #include <ERS_CLASS_Grid.h>
+#include <ERS_CLASS_LightIconRenderer.h>
 
 #include <ERS_STRUCT_Camera.h>
 
@@ -35,6 +36,7 @@ struct ERS_STRUCT_Viewport {
     std::shared_ptr<bool> Enabled; /**<Indicates if the viewport is enabled*/
     std::shared_ptr<ERS_CLASS_InputProcessor> Processor; /**<Pointer to Input Processor*/
     std::shared_ptr<ERS_CLASS_Grid> Grid; /**<Pointer to grid instance*/
+    std::shared_ptr<ERS_CLASS_LightIconRenderer> LightIconRenderer; /**<Light Icon Renderer Instance*/
     std::shared_ptr<ERS_STRUCT_Camera> Camera; /**<Pointer To Camera Instance*/
 
     unsigned int FramebufferObject; /**<FBO OpenGL ID*/
