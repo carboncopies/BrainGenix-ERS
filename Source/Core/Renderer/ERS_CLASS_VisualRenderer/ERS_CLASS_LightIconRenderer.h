@@ -19,3 +19,36 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_Shader.h>
 
+
+
+class ERS_CLASS_LightIconRenderer {
+
+private:
+
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Shared Pointer To System Utils*/
+    std::shared_ptr<ERS_STRUCT_Shader> LightIconRendererShader_; /**<Pointer To Shader With LightIconRenderer*/
+    glm::mat4 LightIconRendererModelArray_; /**<LightIconRenderer Model Mat4*/
+
+    unsigned int LightIconRendererVBO_; /**<OpenGL ID To LightIconRenderer Vertex Buffer Object*/
+    unsigned int LightIconRendererVAO_; /**<OpenGL ID To LightIconRenderer Vertex Array Object*/
+    float LightIconRendererScale_ = 25.0f; /**<Scale of the grid plane, does NOT set grid line scale. Use LightIconRenderer Size For This Purpose.*/
+
+
+public:
+
+    /**
+     * @brief Construct a new ers class grid object
+     * 
+     * @param SystemUtils 
+     */
+    ERS_CLASS_LightIconRenderer(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_Shader> LightIconRendererShader);
+
+    /**
+     * @brief Destroy the ers class grid object
+     * 
+     */
+    ~ERS_CLASS_LightIconRenderer();
+
+
+
+}
