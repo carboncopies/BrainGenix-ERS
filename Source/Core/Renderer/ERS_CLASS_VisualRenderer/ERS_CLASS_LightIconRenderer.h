@@ -50,5 +50,10 @@ public:
     ~ERS_CLASS_LightIconRenderer();
 
 
+    /**
+     * @brief Draw Command
+     * 
+     */
+    void Draw();
 
 };
