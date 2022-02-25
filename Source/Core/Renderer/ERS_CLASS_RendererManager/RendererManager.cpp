@@ -82,6 +82,10 @@ void RendererManager::LoadEditorData() {
     OpenGLDefaults_->AllBlackTexture_ = LoadEditorIcon("EditorAssets/Icons/AllBlackTexture/AllBlackTexture128.png");
     OpenGLDefaults_->AllWhiteTexture_ = LoadEditorIcon("EditorAssets/Icons/AllWhiteTexture/AllWhiteTexture128.png");
 
+
+    // Load Editor Texture Icons
+    
+
     FreeImage_DeInitialise();
 
 }
