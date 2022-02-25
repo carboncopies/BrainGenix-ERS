@@ -19,7 +19,6 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_CLASS_VisualRenderer.h>
-#include <IOManager.h>
 #include <ERS_STRUCT_Camera.h>
 
 #include <ERS_CLASS_ShaderLoader.h>
@@ -51,7 +50,6 @@ private:
 
     // Member Variables
     std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
-    std::shared_ptr<IOManager> IOManager_; /**<Pointer To IOManager Instance*/
     GLFWwindow* Window_; /**<GLFW Window Instance*/
     std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
     std::shared_ptr<ERS_CLASS_Framebuffer> FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/

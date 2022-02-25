@@ -29,7 +29,6 @@ target_link_libraries(Renderer
     ERS_CLASS_LoggingSystem
     ERS_CLASS_VisualRenderer
 
-    IOManager
     VisualEditor
 
     ERS_Editor_3DCursor
