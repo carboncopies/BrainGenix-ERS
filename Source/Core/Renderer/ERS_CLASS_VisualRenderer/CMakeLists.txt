@@ -11,12 +11,14 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_CLASS_LightIconRenderer.cpp"
             "ERS_CLASS_Grid.cpp"
             "ERS_CLASS_Framebuffer.cpp"
+            "ERS_CLASS_InputProcessor.cpp"
 
             # Add Header Files (.h)
             "ERS_CLASS_VisualRenderer.h"
             "ERS_CLASS_LightIconRenderer.h"
             "ERS_CLASS_Grid.h"
             "ERS_CLASS_Framebuffer.h"
+            "ERS_CLASS_InputProcessor.h"
 
             ${BACKWARD_ENABLE}
             )
