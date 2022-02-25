@@ -8,6 +8,7 @@ add_library(ERS_CLASS_VisualRenderer
 
             # Add Source Files (.cpp)
             "ERS_CLASS_VisualRenderer.cpp"
+            "ERS_CLASS_LightIconRenderer.cpp"
 
             # Add Header Files (.h)
             "ERS_CLASS_VisualRenderer.h"
