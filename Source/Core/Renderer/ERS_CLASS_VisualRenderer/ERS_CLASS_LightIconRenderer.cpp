@@ -57,7 +57,11 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
 
     
     LightIconRendererShader_->MakeActive();
-
+    glm::mat4 View = Camera->GetViewMatrix();
+    glm::mat4 Projection = Camera->GetProjectionMatrix();
+    glm::vec3 CameraPosition = Camera->Position;
+    glm::vec3 CameraUp = Camera->Up;
+    glm::vec3 CameraRight = Camera->Right;
 
     // Draw All Point Lights
     for (int i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights.size(); i++) {
@@ -69,9 +73,9 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
         LightIconRendererShader_->SetMat4("view", View);
         LightIconRendererShader_->SetMat4("projection", Projection);
 
-        LightIconRendererShader_->SetVec3("CameraRight", SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos);
         LightIconRendererShader_->SetVec3("CameraPosition", CameraPosition);
-        LightIconRendererShader_->SetVec3("CameraUp", SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos);
+        LightIconRendererShader_->SetVec3("CameraRight", CameraRight);
+        LightIconRendererShader_->SetVec3("CameraUp", CameraUp);
 
         LightIconRendererShader_->SetFloat("BillboardSize", LightIconRendererScale_);
         LightIconRendererShader_->SetVec3("BillboardPosition", SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos);
