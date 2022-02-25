@@ -170,10 +170,8 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     ProjectUtils_->ModelLoader_->ProcessNewModels(ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]);
 
     // Update IO
-    // Process Window Input
     glfwGetWindowSize(Window_, &WindowWidth_, &WindowHeight_);
     glfwPollEvents();
-    //IOManager_->UpdateFrame(DeltaTime);
 
     int Width, Height;
     glfwGetWindowSize(Window_, &Width, &Height);
