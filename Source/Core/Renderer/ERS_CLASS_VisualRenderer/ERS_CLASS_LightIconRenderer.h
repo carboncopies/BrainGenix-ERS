@@ -18,6 +18,8 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_Shader.h>
+#include <ERS_STRUCT_OpenGLDefaults.h>
+
 #include <ERS_SceneManager.h>
 
 
@@ -27,6 +29,7 @@ class ERS_CLASS_LightIconRenderer {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Shared Pointer To System Utils*/
+    ERS_STRUCT_OpenGLDefaults* OpenGLDefaults_; /**<Pointer acquired from renderermanager*/
     std::shared_ptr<ERS_STRUCT_Shader> LightIconRendererShader_; /**<Pointer To Shader With LightIconRenderer*/
     glm::mat4 LightIconRendererModelArray_; /**<LightIconRenderer Model Mat4*/
 
