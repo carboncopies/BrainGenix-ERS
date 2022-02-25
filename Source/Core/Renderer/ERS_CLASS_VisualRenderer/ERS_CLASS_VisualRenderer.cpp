@@ -255,7 +255,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
             Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position);
         }
         if (true) {
-            Viewports_[Index]->LightIconRenderer->Draw(Viewports[Index]->Camera.get(), SceneManager.get());
+            Viewports_[Index]->LightIconRenderer->Draw(Viewports_[Index]->Camera.get(), SceneManager.get());
         }
 
 
