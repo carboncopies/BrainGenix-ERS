@@ -249,17 +249,15 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
         // Update Selected Object
         SceneManager->UpdateLocRotScale(Cursors3D_->Pos_, Cursors3D_->Rot_, Cursors3D_->Scale_);
 
-        // Draw Models
+        // Render
         SceneManager->Render(OpenGLDefaults_, Shaders_[ShaderIndex]);
-
-        // Check If Grid Enabled
         if (Viewports_[Index]->GridEnabled) {
             Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position);
         }
+        if (true) {
+            Viewports_[Index]->LightIconRenderer->Draw(view, projection, Viewports_[Index]->Camera->Position, SceneManager.get())
+        }
 
-        //*******************************************************************************
-        // Something here to render the foreground ui elements (such as the light icons)
-        //*******************************************************************************
 
 
 

@@ -55,6 +55,6 @@ public:
      * @brief Draw Command
      * 
      */
-    void Draw(ERS_CLASS_SceneManager* SceneManager);
+    void Draw(glm::mat4 View, glm::mat4 Projection, glm::vec3 CameraPosition, ERS_CLASS_SceneManager* SceneManager);
 
 };

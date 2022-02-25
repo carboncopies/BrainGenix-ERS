@@ -49,7 +49,7 @@ ERS_CLASS_LightIconRenderer::~ERS_CLASS_LightIconRenderer() {
 }
 
 
-void ERS_CLASS_LightIconRenderer::Draw(ERS_CLASS_SceneManager* SceneManager) {
+void ERS_CLASS_LightIconRenderer::Draw(glm::mat4 View, glm::mat4 Projection, glm::vec3 CameraPosition, ERS_CLASS_SceneManager* SceneManager) {
 
     
 
