@@ -4,11 +4,11 @@
 out vec4 FragColor;
 in vec3 UV;
 in vec3 OriginalPosition;
-in vec2 TexCoords;
 
 // Get Configuration Params
-uniform vec3 CameraPosition;
 uniform sampler2D IconTexture;
+uniform vec3 CameraPosition;
+
 
 
 
@@ -16,7 +16,8 @@ void main(void)
 {
 
 
-    FragColor = texture(IconTexture, TexCoords);
+    FragColor = texture(IconTexture, vec2(UV));
     
 }
+
 

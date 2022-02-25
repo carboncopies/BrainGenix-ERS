@@ -9,7 +9,6 @@ uniform mat4 projection;
 
 out vec3 UV;
 out vec3 OriginalPosition;
-out vec2 TexCoords;
 
 
 void main()
@@ -18,8 +17,9 @@ void main()
 
     UV = aTexCoords;
     OriginalPosition = vec3(aPos.xyz);
-    TexCoords = aTexCoords; 
+
 }
+
 
 
 
