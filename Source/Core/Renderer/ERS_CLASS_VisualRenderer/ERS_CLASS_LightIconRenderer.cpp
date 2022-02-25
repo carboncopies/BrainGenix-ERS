@@ -70,6 +70,11 @@ void ERS_CLASS_LightIconRenderer::Draw(glm::mat4 View, glm::mat4 Projection, glm
         LightIconRendererShader_->SetMat4("projection", Projection);
 
         LightIconRendererShader_->SetVec3("CameraPosition", CameraPosition);
+        LightIconRendererShader_->SetFloat("BillboardSize", LightIconRendererScale_);
+        LightIconRendererShader_->SetVec3("BillboardPosition", SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos);
+        //LightIconRendererShader_->SetVec3("BillboardRotation", SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos);
+        
+        
 
 
         glUniform1i(glGetUniformLocation(LightIconRendererShader_->ShaderProgram, "IconTexture"), 0);
