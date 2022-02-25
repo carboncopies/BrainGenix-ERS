@@ -71,6 +71,11 @@ void ERS_CLASS_LightIconRenderer::Draw(glm::mat4 View, glm::mat4 Projection, glm
 
         LightIconRendererShader_->SetVec3("CameraPosition", CameraPosition);
 
+
+        glUniform1i(glGetUniformLocation(LightIconRendererShader_->ShaderProgram, "IconTexture"), 0);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, OpenGLDefaults_->PointLightTexture_);
+
         glBindVertexArray(LightIconRendererVAO_);
         glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 
