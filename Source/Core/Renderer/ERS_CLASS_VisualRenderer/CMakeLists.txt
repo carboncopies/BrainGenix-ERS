@@ -34,7 +34,6 @@ target_link_libraries(ERS_CLASS_VisualRenderer
     ERS_CLASS_InputProcessor
     ERS_CLASS_LoggingSystem
     ERS_CLASS_Framebuffer
-    ERS_CLASS_Grid
 
     ERS_SceneManager
     ERS_ShaderLoader
