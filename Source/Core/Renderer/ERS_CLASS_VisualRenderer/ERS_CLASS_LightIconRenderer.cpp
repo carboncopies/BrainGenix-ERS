@@ -62,7 +62,7 @@ void ERS_CLASS_LightIconRenderer::Draw(glm::mat4 View, glm::mat4 Projection, glm
     // Draw All Point Lights
     for (int i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights.size(); i++) {
 
-        NewModelMatrix = glm::translate(LightIconRendererModelArray_, SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos);
+        glm::mat4 NewModelMatrix = glm::translate(LightIconRendererModelArray_, SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos);
 
         LightIconRendererShader_->SetMat4("model", NewModelMatrix);
         LightIconRendererShader_->SetMat4("view", View);
