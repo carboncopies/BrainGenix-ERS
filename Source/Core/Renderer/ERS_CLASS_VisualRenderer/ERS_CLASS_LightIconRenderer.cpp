@@ -40,6 +40,9 @@ ERS_CLASS_LightIconRenderer::ERS_CLASS_LightIconRenderer(ERS_STRUCT_SystemUtils*
     glVertexAttribPointer(TexCoordsIndex, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3*sizeof(float)));
 
 
+    // Initialize Model Array
+    LightIconRendererModelArray_ = glm::mat4();
+
 }
 
 ERS_CLASS_LightIconRenderer::~ERS_CLASS_LightIconRenderer() {
@@ -58,6 +61,8 @@ void ERS_CLASS_LightIconRenderer::Draw(glm::mat4 View, glm::mat4 Projection, glm
     // Draw All Point Lights
     for (int i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights.size(); i++) {
 
+        glm::mat4 NewModelMatrix = glm::scale(LightIconRendererModelArray_, glm::vec3(LightIconRendererScale_));
+        NewModelMatrix = glm::translate()
 
         LightIconRendererShader_->SetMat4("model", LightIconRendererModelArray_);
         LightIconRendererShader_->SetMat4("view", View);
