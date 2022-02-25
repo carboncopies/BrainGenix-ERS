@@ -35,7 +35,6 @@ private:
 
     unsigned int LightIconRendererVBO_; /**<OpenGL ID To LightIconRenderer Vertex Buffer Object*/
     unsigned int LightIconRendererVAO_; /**<OpenGL ID To LightIconRenderer Vertex Array Object*/
-    float LightIconRendererScale_ = 0.1f; /**<Scale of editor icons*/
 
 
 public:
