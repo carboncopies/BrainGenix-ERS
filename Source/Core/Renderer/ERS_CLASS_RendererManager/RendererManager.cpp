@@ -85,6 +85,9 @@ void RendererManager::LoadEditorData() {
 
     // Load Editor Texture Icons
     OpenGLDefaults_->PointLightTexture_ = LoadEditorIcon("EditorAssets/Icons/LightingIcons/PointLight.png");
+    OpenGLDefaults_->DirectionalLightTexture_ = LoadEditorIcon("EditorAssets/Icons/LightingIcons/DirectionalLight.png");
+    OpenGLDefaults_->SpotLightTexture_ = LoadEditorIcon("EditorAssets/Icons/LightingIcons/SpotLight.png");
+
 
     FreeImage_DeInitialise();
 
