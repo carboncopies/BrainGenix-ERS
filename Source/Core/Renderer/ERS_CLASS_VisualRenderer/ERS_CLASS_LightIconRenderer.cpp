@@ -19,10 +19,10 @@ ERS_CLASS_LightIconRenderer::ERS_CLASS_LightIconRenderer(ERS_STRUCT_OpenGLDefaul
 
 
     const float LightIconRendererVertices[] = {
-        -1.0,  1.0, 0.0, 0.0, 1.0,  // Top Left
-        -1.0, -1.0, 0.0, 1.0, 1.0,  // Bottom Left
-        1.0, -1.0,  0.0, 1.0, 0.0,  // Bottom Right
-        1.0,  1.0,  0.0, 0.0, 0.0   // Top Right
+        -0.1,  0.1, 0.0, 0.0, 1.0,  // Top Left
+        -0.1, -0.1, 0.0, 1.0, 1.0,  // Bottom Left
+        0.1, -0.1,  0.0, 1.0, 0.0,  // Bottom Right
+        0.1,  0.1,  0.0, 0.0, 0.0   // Top Right
     };
 
     glGenBuffers(1, &LightIconRendererVBO_);
