@@ -23,3 +23,10 @@ ERS_CLASS_LightIconRenderer::~ERS_CLASS_LightIconRenderer() {
     SystemUtils_->Logger_->Log("LightIconRenderer Destructor Called", 6);
 
 }
+
+
+void ERS_CLASS_LightIconRenderer::Draw() {
+
+    
+
+}
