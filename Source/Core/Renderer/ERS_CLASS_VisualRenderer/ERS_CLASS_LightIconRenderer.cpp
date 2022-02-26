@@ -130,7 +130,7 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
         
         glUniform1i(glGetUniformLocation(LightIconRendererShader_->ShaderProgram, "IconTexture"), 0);
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, OpenGLDefaults_->PointLightTexture_);
+        glBindTexture(GL_TEXTURE_2D, OpenGLDefaults_->DirectionalLightTexture_);
 
         glBindVertexArray(LightIconRendererVAO_);
         glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
