@@ -138,6 +138,42 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
     }
 
 
+    // Draw All Spot Lights
+    for (int i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->SpotLights.size(); i++) {
+
+        glm::vec3 LightPosition = SceneManager->Scenes_[SceneManager->ActiveScene_]->SpotLights[i]->Pos;
+        glm::mat4 NewModelMatrix = glm::translate(LightIconRendererModelArray_, LightPosition);
+
+
+        // FIXME: Make Lights a "Billboard" So they Rotate Towards The Camera
+        // glm::vec3 ModelRotation = glm::normalize(CameraPosition - LightPosition);
+
+        glm::vec3 LampRotation = SceneManager->Scenes_[SceneManager->ActiveScene_]->SpotLights[i]->Rot;
+        NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.x, glm::vec3(1, 0, 0));
+        NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.y, glm::vec3(0, 1, 0));
+        NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.z, glm::vec3(0, 0, 1));
+        NewModelMatrix = glm::scale(NewModelMatrix, glm::vec3(LightIconRendererScale_));
+
+        LightIconRendererShader_->SetMat4("model", NewModelMatrix);
+        LightIconRendererShader_->SetMat4("view", View);
+        LightIconRendererShader_->SetMat4("projection", Projection);
+
+        LightIconRendererShader_->SetVec3("CameraPosition", CameraPosition);
+        LightIconRendererShader_->SetVec3("CameraRight", CameraRight);
+        LightIconRendererShader_->SetVec3("CameraUp", CameraUp);
+
+        LightIconRendererShader_->SetFloat("BillboardSize", LightIconRendererScale_);
+        LightIconRendererShader_->SetVec3("BillboardPosition", LightPosition);
+        LightIconRendererShader_->SetVec3("BillboardRotation", LampRotation);
+        
+        glUniform1i(glGetUniformLocation(LightIconRendererShader_->ShaderProgram, "IconTexture"), 0);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, OpenGLDefaults_->SpotLightTexture_);
+
+        glBindVertexArray(LightIconRendererVAO_);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+
+    }
 
 
 
