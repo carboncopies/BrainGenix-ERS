@@ -45,9 +45,9 @@ SceneData:
     SpecularRed: 0.25
     SpecularGreen: 0.25
     SpecularBlue: 0.25
-    PosX: 3
-    PosY: 3
-    PosZ: 3
+    PosX: 1
+    PosY: 1
+    PosZ: 1
     RolloffConstant: 1
     RolloffLinear: 0.0900000036
     RolloffQuadratic: 0.0320000015
