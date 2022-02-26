@@ -65,9 +65,11 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
     // Draw All Point Lights
     for (int i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights.size(); i++) {
 
-        glm::mat4 NewModelMatrix = glm::translate(LightIconRendererModelArray_, SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos);
+        glm::vec3 LightPosition = SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos;
+        glm::mat4 NewModelMatrix = glm::translate(LightIconRendererModelArray_, LightPosition);
 
-        glm::vec3 ModelRotation = glm::vec3(Camera->Up);
+        glm::vec3 ModelRotation = glm::normalize(CameraPosition - LightPosition);
+
         NewModelMatrix = glm::rotate(NewModelMatrix, ModelRotation.x, glm::vec3(1, 0, 0));
         NewModelMatrix = glm::rotate(NewModelMatrix, ModelRotation.y, glm::vec3(0, 1, 0));
         NewModelMatrix = glm::rotate(NewModelMatrix, ModelRotation.z, glm::vec3(0, 0, 1));
@@ -82,7 +84,7 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
         LightIconRendererShader_->SetVec3("CameraUp", CameraUp);
 
         LightIconRendererShader_->SetFloat("BillboardSize", LightIconRendererScale_);
-        LightIconRendererShader_->SetVec3("BillboardPosition", SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos);
+        LightIconRendererShader_->SetVec3("BillboardPosition", LightPosition);
         
         //LightIconRendererShader_->SetVec3("BillboardRotation", SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos);
         
