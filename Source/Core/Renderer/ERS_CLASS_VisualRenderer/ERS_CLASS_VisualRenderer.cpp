@@ -487,6 +487,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     // Spot Lights
     int NumberSpotLights = ActiveScene->SpotLights.size();
+    std::cout<<NumberSpotLights<<std::endl;
     ActiveShader->SetInt("NumberSpotLights", NumberSpotLights);
     for (int i = 0; i < NumberSpotLights; i++) {
     
