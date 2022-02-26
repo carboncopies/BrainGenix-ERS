@@ -72,6 +72,8 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
         NewModelMatrix = glm::rotate(NewModelMatrix, glm::radians(0.0f), glm::vec3(0, 0, 1));
         NewModelMatrix = glm::scale(NewModelMatrix, glm::vec3(LightIconRendererScale_));
 
+        NewModelMatrix = billboard(SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos, CameraUp, CameraRight);
+
 
         LightIconRendererShader_->SetMat4("model", NewModelMatrix);
         LightIconRendererShader_->SetMat4("view", View);
@@ -98,4 +100,18 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
 
     }
 
+}
+
+glm::mat4 billboard(glm::vec3 position, glm::vec3 cameraPos, glm::vec3 cameraUp) {
+    glm::vec3 look = glm::normalize(cameraPos - position);
+    glm::vec3 right = glm::cross(cameraUp, look);
+    glm::vec3 up2 = glm::cross(look, right);
+    glm::mat4 transform;
+    transform[0] = glm::vec4(right, 0);
+    transform[1] = glm::vec4(up2, 0);
+    transform[2] = glm::vec4(look, 0);
+    // Uncomment this line to translate the position as well
+    // (without it, it's just a rotation)
+    transform[3] = glm::vec4(position, 0);
+    return transform;
 }
