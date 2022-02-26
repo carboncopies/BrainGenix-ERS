@@ -42,7 +42,7 @@ ERS_CLASS_LightIconRenderer::ERS_CLASS_LightIconRenderer(ERS_STRUCT_OpenGLDefaul
 
 
     // Initialize Model Array
-    LightIconRendererModelArray_ = glm::mat4();
+    LightIconRendererModelArray_ = glm::mat4(1.0f);
 
 }
 
@@ -66,10 +66,12 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
     // Draw All Point Lights
     for (int i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights.size(); i++) {
 
-        glm::mat4 NewModelMatrix = glm::scale(LightIconRendererModelArray_, glm::vec3(LightIconRendererScale_));
-        NewModelMatrix = glm::translate(NewModelMatrix, SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos);
+        glm::mat4 NewModelMatrix = glm::translate(LightIconRendererModelArray_, SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos);
+        NewModelMatrix = glm::rotate(NewModelMatrix, glm::radians(0.0f), glm::vec3(1, 0, 0));
+        NewModelMatrix = glm::rotate(NewModelMatrix, glm::radians(0.0f), glm::vec3(0, 1, 0));
+        NewModelMatrix = glm::rotate(NewModelMatrix, glm::radians(0.0f), glm::vec3(0, 0, 1));
+        NewModelMatrix = glm::scale(NewModelMatrix, glm::vec3(LightIconRendererScale_));
 
-        std::cout<<glm::to_string(SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos)<<std::endl;
 
         LightIconRendererShader_->SetMat4("model", NewModelMatrix);
         LightIconRendererShader_->SetMat4("view", View);
