@@ -487,7 +487,6 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     // Spot Lights
     int NumberSpotLights = ActiveScene->SpotLights.size();
-    std::cout<<NumberSpotLights<<std::endl;
     ActiveShader->SetInt("NumberSpotLights", NumberSpotLights);
     for (int i = 0; i < NumberSpotLights; i++) {
     
@@ -506,7 +505,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetVec3((UniformName + std::string(".Ambient")).c_str(), ActiveScene->SpotLights[i]->Ambient);
         ActiveShader->SetVec3((UniformName + std::string(".Diffuse")).c_str(), ActiveScene->SpotLights[i]->Diffuse);
         ActiveShader->SetVec3((UniformName + std::string(".Specular")).c_str(), ActiveScene->SpotLights[i]->Specular);
-    
+        std::cout<<UniformName<<std::endl;
     }
 
 
