@@ -68,14 +68,23 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
         glm::vec3 LightPosition = SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos;
         glm::mat4 NewModelMatrix = glm::translate(LightIconRendererModelArray_, LightPosition);
 
-        glm::vec3 ModelRotation = glm::normalize(CameraPosition - LightPosition);
+        glm::vec3 Z_Axis = glm::normalize(CameraPosition - LightPosition);
+        glm::vec3 X_Axis = glm::normalize(glm::cross(glm::vec3(0,1,0), Z_Axis));
+        glm::vec3 Y_Axis = glm::normalize(glm::cross(Z_Axis, X_Axis));
 
-        NewModelMatrix = glm::rotate(NewModelMatrix, ModelRotation.x, glm::vec3(1, 0, 0));
-        NewModelMatrix = glm::rotate(NewModelMatrix, ModelRotation.y, glm::vec3(0, 1, 0));
-        NewModelMatrix = glm::rotate(NewModelMatrix, ModelRotation.z, glm::vec3(0, 0, 1));
+        glm::mat4 RotationMatrix(
+            glm::vec4(X_Axis, 1.0f),
+            glm::vec4(Y_Axis, 1.0f),
+            glm::vec4(Z_Axis, 1.0f),
+            glm::vec4(0.0f, 0.0f, 0.0f, 1.0f)
+            );
+
+        // NewModelMatrix = glm::rotate(NewModelMatrix, ModelRotation.x, glm::vec3(1, 0, 0));
+        // NewModelMatrix = glm::rotate(NewModelMatrix, ModelRotation.y, glm::vec3(0, 1, 0));
+        // NewModelMatrix = glm::rotate(NewModelMatrix, ModelRotation.z, glm::vec3(0, 0, 1));
         NewModelMatrix = glm::scale(NewModelMatrix, glm::vec3(LightIconRendererScale_));
 
-        LightIconRendererShader_->SetMat4("model", NewModelMatrix);
+        LightIconRendererShader_->SetMat4("model", RotationMatrix);
         LightIconRendererShader_->SetMat4("view", View);
         LightIconRendererShader_->SetMat4("projection", Projection);
 
