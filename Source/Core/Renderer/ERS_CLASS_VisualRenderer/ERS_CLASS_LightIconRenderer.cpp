@@ -70,9 +70,9 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
         glm::vec3 RotateBillboard = Camera->Up;  
         std::cout<<glm::to_string(RotateBillboard)<<std::endl;
 
-        NewModelMatrix = glm::rotate(NewModelMatrix, glm::radians(RotateBillboard.x), glm::vec3(1, 0, 0));
-        NewModelMatrix = glm::rotate(NewModelMatrix, glm::radians(RotateBillboard.y), glm::vec3(0, 1, 0));
-        NewModelMatrix = glm::rotate(NewModelMatrix, glm::radians(RotateBillboard.z), glm::vec3(0, 0, 1));
+        NewModelMatrix = glm::rotate(NewModelMatrix, RotateBillboard.x, glm::vec3(1, 0, 0));
+        NewModelMatrix = glm::rotate(NewModelMatrix, RotateBillboard.y, glm::vec3(0, 1, 0));
+        NewModelMatrix = glm::rotate(NewModelMatrix, RotateBillboard.z, glm::vec3(0, 0, 1));
         NewModelMatrix = glm::scale(NewModelMatrix, glm::vec3(LightIconRendererScale_));
 
         LightIconRendererShader_->SetMat4("model", NewModelMatrix);
