@@ -62,7 +62,7 @@ glm::mat4 billboard(glm::vec3 position, glm::vec3 cameraPos, glm::vec3 cameraUp)
     transform[2] = glm::vec4(look, 0);
     // Uncomment this line to translate the position as well
     // (without it, it's just a rotation)
-    transform[3] = glm::vec4(position, 0);
+    //transform[3] = glm::vec4(position, 0);
     return transform;
 }
 
