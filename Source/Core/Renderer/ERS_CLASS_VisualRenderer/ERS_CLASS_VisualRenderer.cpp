@@ -435,8 +435,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     // ---- SEND LIGHTING INFORMATION TO SHADERS ---- //
     // NOTE: Due to limitations with shaders, the maximum number of lights is as follows (per object) 
     // Directional lights: 4
-    // Point Lights: 64
-    // Spot Lights: 32
+    // Point Lights: 32
+    // Spot Lights: 16
     // TO DO BELOW:
     // When these limitations are reached, ERS will remove the lights that are farthest from the object
 
