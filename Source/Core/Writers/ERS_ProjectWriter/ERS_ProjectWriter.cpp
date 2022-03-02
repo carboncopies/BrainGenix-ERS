@@ -94,7 +94,7 @@ bool ERS_CLASS_ProjectWriter::SaveProject(std::shared_ptr<ERS_STRUCT_Project> Pr
     ProjectData->Size_B = ProjectByteString.size();
     memcpy(ProjectData->Data.get(), ProjectByteString.c_str(), ProjectByteString.size());
 
-    bool Status = SystemUtils_->ERS_IOSubsystem_->WriteAsset(AssetID, ProjectData);
+    bool Status = SystemUtils_->ERS_IOSubsystem_->WriteAsset(AssetID, ProjectData.get());
 
 
     return Status;
