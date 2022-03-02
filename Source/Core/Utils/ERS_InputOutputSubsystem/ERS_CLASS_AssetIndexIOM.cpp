@@ -5,7 +5,7 @@
 #include <ERS_CLASS_AssetIndexIOM.h>
 
 
-ERS_CLASS_AssetIndexIOM::ERS_CLASS_AssetIndexIOM(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
+ERS_CLASS_AssetIndexIOM::ERS_CLASS_AssetIndexIOM(ERS_CLASS_LoggingSystem* Logger) {
 
     Logger_ = Logger;
     Logger_->Log("Initializing ERS Asset Index Input/Output Manager", 5);
