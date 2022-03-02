@@ -35,7 +35,7 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::CreateShaderObject(co
         SystemUtils_->Logger_->Log("Finished Creating Vertex Shader", 4);
         SystemUtils_->Logger_->Log("Creating Fragment Shader", 3);
     }
-    ShaderStruct->CompileFragmentShader(FragmentText, SystemUtils_->Logger_);
+    ShaderStruct->CompileFragmentShader(FragmentText, SystemUtils_->Logger_.get());
     if (LogBuild) {
         SystemUtils_->Logger_->Log("Finished Creating Fragment Shader Object", 4);
     }
