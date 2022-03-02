@@ -210,7 +210,7 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
 }
 
 bool ERS_CLASS_InputOutputSubsystem::ReadAsset(
-    long AssetID, std::shared_ptr<ERS_STRUCT_IOData> OutputData) {
+    long AssetID, std::unique_ptr<ERS_STRUCT_IOData> OutputData) {
 
   // Asset ID Sanity Check
   if (AssetID < 0) {
