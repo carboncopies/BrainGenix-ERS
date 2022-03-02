@@ -54,7 +54,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_SceneLoader(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader);
+    ERS_CLASS_SceneLoader(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_ModelLoader* ModelLoader);
 
     /**
      * @brief Destroy the Scene Loader object
