@@ -182,7 +182,7 @@ int main() {
     float LastFrame = 0.0f;
 
     // Enter Main Loop
-    while (*SystemShouldRun) {
+    while (*SystemUtils->SystemShouldRun_) {
 
         // Calculate Frametime
         float CurrentTime = glfwGetTime();
