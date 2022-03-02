@@ -62,7 +62,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool WriteAssetIndex(std::shared_ptr<ERS_STRUCT_IOData> Data);
+    bool WriteAssetIndex(ERS_STRUCT_IOData* Data);
 
     /**
      * @brief This function is used to update the internal maps and metadata when an asset is saved.
