@@ -6,7 +6,7 @@
 #include <GUI_Window_ThemeSelector.h>
 
 
-Window_ThemeSelector::Window_ThemeSelector(std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager) {
+Window_ThemeSelector::Window_ThemeSelector(ERS_CLASS_ThemeManager* ThemeManager) {
 
     ThemeManager_ = ThemeManager;
 
