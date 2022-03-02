@@ -118,7 +118,7 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
 
 }
 
-bool ERS_STRUCT_Shader::MakeActive(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
+bool ERS_STRUCT_Shader::MakeActive(ERS_CLASS_LoggingSystem* Logger) {
 
     if ((!_ShaderProgramInitialized)) {
         if (Logger != nullptr) {
