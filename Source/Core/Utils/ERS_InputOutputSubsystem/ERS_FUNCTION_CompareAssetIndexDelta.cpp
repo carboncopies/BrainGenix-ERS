@@ -7,7 +7,7 @@
 
 
 
-void ERS_FUNCTION_CompareIndexDelta(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_, std::shared_ptr<std::vector<long>> UsedAssetIDIndex, std::vector<long> AssetIndexIOM) {
+void ERS_FUNCTION_CompareIndexDelta(ERS_CLASS_LoggingSystem* Logger_, std::shared_ptr<std::vector<long>> UsedAssetIDIndex, std::vector<long> AssetIndexIOM) {
 
     Logger_->Log("Comparing Indexed Assets With Asset Metadata Index", 4);
 
