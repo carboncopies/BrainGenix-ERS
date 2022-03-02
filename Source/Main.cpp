@@ -59,7 +59,7 @@
 int main() {
 
     // Initialize System Vars
-    std::shared_ptr<bool> SystemShouldRun = std::make_shared<bool>(true);
+    std::unique_ptr<bool> SystemShouldRun = std::make_unique<bool>(true);
     std::unique_ptr<ERS_STRUCT_SystemUtils> SystemUtils = std::make_unique<ERS_STRUCT_SystemUtils>();
     SystemUtils->SystemShouldRun_ = SystemShouldRun;
 
