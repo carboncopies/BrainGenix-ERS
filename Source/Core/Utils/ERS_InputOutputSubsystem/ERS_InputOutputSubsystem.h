@@ -103,7 +103,7 @@ public:
    */
   std::vector<bool> BatchWriteAssets(
       std::vector<long> AssetIDs,
-      std::vector<std::shared_ptr<ERS_STRUCT_IOData>> AssetDatas);
+      std::vector<ERS_STRUCT_IOData*> AssetDatas);
 
   /**
    * @brief Read Asset Data From ID
