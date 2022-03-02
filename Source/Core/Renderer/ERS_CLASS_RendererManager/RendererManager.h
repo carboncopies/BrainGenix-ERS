@@ -100,7 +100,7 @@ public:
      * @param Logger 
      * @param SystemShouldRun 
      */
-    RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils);
+    RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils);
 
     /**
      * @brief Shuts down the renderers and cleans up variables.
