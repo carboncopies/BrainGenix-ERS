@@ -66,7 +66,7 @@ ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
   std::unique_ptr<ERS_STRUCT_IOData> Data =
       std::make_unique<ERS_STRUCT_IOData>();
   AssetIndexIOManager_->WriteAssetIndex(Data.get());
-  WriteAsset(0, Data);
+  WriteAsset(0, Data.get());
   Logger_->Log("Finished Saving Asset Index Metadata", 5);
 }
 
