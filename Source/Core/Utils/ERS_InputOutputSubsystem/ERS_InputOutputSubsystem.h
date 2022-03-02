@@ -35,7 +35,7 @@
 class ERS_CLASS_InputOutputSubsystem {
 
 private:
-  std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Logging Class Pointer*/
+  ERS_CLASS_LoggingSystem* Logger_; /**<Logging Class Pointer*/
 
 public:
   std::unique_ptr<ERS_CLASS_AssetIndexIOM>
