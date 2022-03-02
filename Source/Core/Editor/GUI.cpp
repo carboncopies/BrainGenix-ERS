@@ -27,7 +27,7 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, st
     // Initialize Managers
     ThemeManager_ = std::make_shared<ERS_CLASS_ThemeManager>(SystemUtils_->Logger_);
     FontManager_ = std::make_shared<ERS_CLASS_FontManager>(SystemUtils_->Logger_);
-    UserProfileManager_ = std::make_shared<ERS_CLASS_UserProfileManager>(SystemUtils_->Logger_);
+    UserProfileManager_ = std::make_shared<ERS_CLASS_UserProfileManager>(SystemUtils_->Logger_.get());
 
     // Load User Profile
     ThemeManager_->ApplyThemes(UserProfileManager_->GetUserColorProfile().c_str());
