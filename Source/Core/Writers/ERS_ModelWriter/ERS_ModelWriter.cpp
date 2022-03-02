@@ -37,7 +37,7 @@ std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(std::shared_ptr<ERS_STR
 }
 
 
-void ERS_CLASS_ModelWriter::WriteModel(std::shared_ptr<ERS_STRUCT_IOData> ModelData, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> TextureData, std::shared_ptr<ERS_STRUCT_Model> Model) {
+void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_IOData* ModelData, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> TextureData, std::shared_ptr<ERS_STRUCT_Model> Model) {
 
 
     // Copy Model Data
