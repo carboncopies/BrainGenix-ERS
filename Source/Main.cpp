@@ -67,7 +67,7 @@ int main() {
     SystemUtils->LocalSystemConfiguration_ = YAML::LoadFile("Config.yaml");
 
     // Instantiate Logging Subsystem
-    SystemUtils->Logger_ = std::make_unique<ERS_CLASS_LoggingSystem>(sERSLocalSystemConfiguration);
+    SystemUtils->Logger_ = std::make_unique<ERS_CLASS_LoggingSystem>(*SystemUtils->LocalSystemConfiguration_.get());
     SystemUtils->Logger_->Log("Initialized Logging System", 5);
 
     // Setup Framerate Manager
