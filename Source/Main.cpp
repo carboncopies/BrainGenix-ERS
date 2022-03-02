@@ -64,8 +64,7 @@ int main() {
     SystemUtils->SystemShouldRun_ = SystemShouldRun;
 
     // Load Local System Configuration File
-    YAML::Node sERSLocalSystemConfiguration = YAML::LoadFile("Config.yaml");
-    SystemUtils->LocalSystemConfiguration_ = std::make_unique<YAML::Node>(sERSLocalSystemConfiguration);
+    SystemUtils->LocalSystemConfiguration_ = YAML::LoadFile("Config.yaml");
 
     // Instantiate Logging Subsystem
     SystemUtils->Logger_ = std::make_unique<ERS_CLASS_LoggingSystem>(sERSLocalSystemConfiguration);
