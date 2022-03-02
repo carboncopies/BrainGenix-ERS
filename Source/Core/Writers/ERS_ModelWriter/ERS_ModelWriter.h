@@ -29,7 +29,7 @@ class ERS_CLASS_ModelWriter {
 private:
 
     ERS_CLASS_LoggingSystem* Logger_; /**<Pointer To Logger Instance*/
-    std::shared_ptr<ERS_CLASS_InputOutputSubsystem> IOSubsystem_; /**<Pointer To IOSubsystem*/
+    ERS_CLASS_InputOutputSubsystem* IOSubsystem_; /**<Pointer To IOSubsystem*/
 
 private:
 
