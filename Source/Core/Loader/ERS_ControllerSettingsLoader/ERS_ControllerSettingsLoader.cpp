@@ -26,7 +26,7 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(std::shared_ptr<
 
     // Read Data
     std::unique_ptr<ERS_STRUCT_IOData> SettingsRawData = std::make_unique<ERS_STRUCT_IOData>();
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, SettingsRawData);
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, SettingsRawData.get());
     std::string SettingsEncodedString = std::string((const char*)SettingsRawData->Data.get());
     
 
