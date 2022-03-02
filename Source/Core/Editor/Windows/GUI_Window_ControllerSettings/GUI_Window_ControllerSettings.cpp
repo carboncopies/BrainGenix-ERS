@@ -162,7 +162,7 @@ void Window_ControllerSettings::Draw() {
                             SelectedControllerProfile_--;
                         }
                     }
-                    if (ControllerSettings.size() < 128) {
+                    if (ControllerSettings->size() < 128) {
                         ImGui::SameLine();
                         if (ImGui::Button("Add Profile")) {
                             ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.push_back(SystemUtils_->ERS_IOSubsystem_->AllocateAssetID());
