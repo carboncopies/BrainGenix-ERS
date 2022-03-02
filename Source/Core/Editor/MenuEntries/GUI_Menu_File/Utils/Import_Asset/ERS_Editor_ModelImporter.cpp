@@ -223,7 +223,7 @@ void ERS_CLASS_ModelImporter::AddTexture(ERS_STRUCT_Model* Model, aiMaterial *Ma
 }
 
 // Load IOData
-bool ERS_CLASS_ModelImporter::ReadFile(std::string FilePath, std::shared_ptr<ERS_STRUCT_IOData> OutputData) {
+bool ERS_CLASS_ModelImporter::ReadFile(std::string FilePath, ERS_STRUCT_IOData* OutputData) {
 
 
     struct stat Buffer;
