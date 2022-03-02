@@ -113,7 +113,7 @@ public:
    * @return true
    * @return false
    */
-  bool ReadAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> AssetData);
+  bool ReadAsset(long AssetID, ERS_STRUCT_IOData* AssetData);
 
   /**
    * @brief Read A List Of Assets From The Given IDs, Both Vectors Should Be
