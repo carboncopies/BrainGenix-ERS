@@ -37,7 +37,7 @@ class GUI_Menu_View {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
-    std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Theme Manager Instance Ptr*/
+    ERS_CLASS_ThemeManager* ThemeManager_; /**<Theme Manager Instance Ptr*/
     std::unique_ptr<Window_ThemeSelector> Window_ThemeSelector_; /**<Theme Selector Window*/
     std::shared_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
     std::unique_ptr<Window_About> Window_About_; /**<Pointer to about window*/
