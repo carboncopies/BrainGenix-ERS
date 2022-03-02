@@ -86,7 +86,7 @@ public:
     GUISystem(ERS_STRUCT_SystemUtils* SystemUtils,
     GLFWwindow* Window,
     std::shared_ptr<Cursors3D> Cursors3D,
-    std::shared_ptr<ERS_CLASS_SceneManager> SceneManager,
+    ERS_CLASS_SceneManager* SceneManager,
     ERS_STRUCT_ProjectUtils* ProjectUtils,
     std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRendererInstance,
     std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils
