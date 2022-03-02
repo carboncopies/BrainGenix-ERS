@@ -75,7 +75,7 @@ int main() {
     SystemUtils->Logger_->Log("Initializing Framerate Manager Subsystem", 5);
     std::shared_ptr<ERS_CLASS_FramerateManager> sERSFrameRateManager = std::make_shared<ERS_CLASS_FramerateManager>();
     SystemUtils->FramerateManager_ = sERSFrameRateManager;
-    sERSLogger->Log("Initialized Framerate Manager", 4);
+    SystemUtils->Logger_->Log("Initialized Framerate Manager", 4);
 
     // Copy Config Params
     try {
