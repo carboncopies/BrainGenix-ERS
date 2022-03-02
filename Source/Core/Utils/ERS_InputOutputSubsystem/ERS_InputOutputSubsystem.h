@@ -125,7 +125,7 @@ public:
    */
   std::vector<bool> BatchReadAssets(
       std::vector<long> AssetIDs,
-      std::vector<std::shared_ptr<ERS_STRUCT_IOData>> AssetDatas);
+      std::vector<ERS_STRUCT_IOData*> AssetDatas);
 
   /**
    * @brief Updates the list of used asset IDs to prevent accidental data loss.
