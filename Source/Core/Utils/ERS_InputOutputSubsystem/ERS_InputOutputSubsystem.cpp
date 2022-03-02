@@ -196,7 +196,7 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
   // Load Asset Metadata
   Logger_->Log("Attempting To Load Asset Metadata Index", 3);
   std::shared_ptr<ERS_STRUCT_IOData> Data =
-      std::make_shared<ERS_STRUCT_IOData>();
+      std::make_unique<ERS_STRUCT_IOData>();
   ReadAsset(0, Data);
   AssetIndexIOManager_->LoadAssetIndex(Data);
   Logger_->Log("Finished Loading Asset Metadata Index", 4);
