@@ -68,7 +68,7 @@ private:
 
 public:
 
-    std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Pointer To ThemeManager Instance*/
+    std::unique_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Pointer To ThemeManager Instance*/
 
     // Menu Items
     std::unique_ptr<GUI_Menu_File> Menu_File_; /**<Editor Menu Entry*/
