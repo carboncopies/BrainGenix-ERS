@@ -88,7 +88,7 @@ public:
     std::shared_ptr<Cursors3D> Cursors3D,
     ERS_CLASS_SceneManager* SceneManager,
     ERS_STRUCT_ProjectUtils* ProjectUtils,
-    std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRendererInstance,
+    ERS_CLASS_VisualRenderer* VisualRendererInstance,
     std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils
     );
 
