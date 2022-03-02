@@ -135,7 +135,7 @@ void Window_ControllerSettings::Draw() {
 
 
                     // Get Controller Settings Info
-                    std::vector<ERS_STRUCT_ControllerSettings>* ControllerSettings = ProjectUtils_->ProjectManager_->Project_.ControllerSettings.get();
+                    std::vector<ERS_STRUCT_ControllerSettings>* ControllerSettings = ProjectUtils_->ProjectManager_->Project_.ControllerSettings;
 
                     // ADD DEFAULT CONTROLLER LAYOUTS (IN PROJECT)
                     // ADD CONTROLLER SETTINGS BELOW (THIS FILE)
@@ -151,7 +151,7 @@ void Window_ControllerSettings::Draw() {
                     }
 
                     for (int i = 0; i < ControllerSettings->size(); i++) {
-                        ControllerProfileNames_[i] = (*ProjectUtils_->ProjectManager_->Project_.ControllerSettings)[i]->SettingsProfileName.c_str();
+                        ControllerProfileNames_[i] = (*ControllerSettings)[i].SettingsProfileName.c_str();
                     }
 
                     // Selector Dropdown
