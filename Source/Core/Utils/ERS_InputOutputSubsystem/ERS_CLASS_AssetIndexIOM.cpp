@@ -18,7 +18,7 @@ ERS_CLASS_AssetIndexIOM::~ERS_CLASS_AssetIndexIOM() {
 }
 
 
-bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(std::shared_ptr<ERS_STRUCT_IOData> Data) {
+bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(std::unique_ptr<ERS_STRUCT_IOData> Data) {
 
     Logger_->Log("Loading Asset Index", 4);
 
