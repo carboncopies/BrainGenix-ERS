@@ -63,7 +63,7 @@ void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
     memcpy(Data->Data.get(), ShaderText.c_str(), ShaderText.size());
 
     // Write To Storage
-    SystemUtils_->ERS_IOSubsystem_->WriteAsset(AssetID, Data);
+    SystemUtils_->ERS_IOSubsystem_->WriteAsset(AssetID, Data.get());
 
 
 }
