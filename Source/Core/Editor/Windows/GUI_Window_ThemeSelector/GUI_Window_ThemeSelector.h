@@ -22,7 +22,7 @@ class Window_ThemeSelector {
 
 private:
 
-    std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Theme Manager Instance*/
+    ERS_CLASS_ThemeManager* ThemeManager_; /**<Theme Manager Instance*/
 
 
 public:
