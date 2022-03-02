@@ -42,7 +42,7 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointer*/
     std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<Shared Pointer To Visual Renderer*/
-    std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Pointer*/
+    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils Pointer*/
     std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
     std::vector<std::shared_ptr<TextEditor>> Editors_; /**<List of editors, one for each type of shader*/
     std::shared_ptr<TextEditor> Editor_; /** Editor Instance*/
