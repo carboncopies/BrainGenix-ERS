@@ -135,7 +135,7 @@ void Window_ControllerSettings::Draw() {
 
 
                     // Get Controller Settings Info
-                    std::vector<std::shared_ptr<ERS_STRUCT_ControllerSettings>> ControllerSettings = ProjectUtils_->ProjectManager_->Project_.ControllerSettings;
+                    std::vector<std::unique_ptr<ERS_STRUCT_ControllerSettings>>* ControllerSettings = ProjectUtils_->ProjectManager_->Project_.ControllerSettings;
 
                     // ADD DEFAULT CONTROLLER LAYOUTS (IN PROJECT)
                     // ADD CONTROLLER SETTINGS BELOW (THIS FILE)
