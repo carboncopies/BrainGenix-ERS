@@ -42,7 +42,7 @@ void Window_ShaderEditor::ReloadEditorText() {
     std::string VertexText = std::string((const char*)Data->Data.get());
 
     // Load Fragment Shader
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID, Data);
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID, Data.get());
     std::string  FragmentText = std::string((const char*)Data->Data.get());
 
     // Set Editor Text
