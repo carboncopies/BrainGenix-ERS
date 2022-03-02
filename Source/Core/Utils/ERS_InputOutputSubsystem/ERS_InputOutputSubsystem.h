@@ -91,7 +91,7 @@ public:
    * @return true
    * @return false
    */
-  bool WriteAsset(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> AssetData);
+  bool WriteAsset(long AssetID, ERS_STRUCT_IOData* AssetData);
 
   /**
    * @brief Batch Write Data to IDs, Both Lists Should Be The Same Length.
