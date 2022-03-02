@@ -44,10 +44,10 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
         // Load Settings
         long ID = Project_.GameControllerSettingsIDs[i];
         std::unique_ptr<ERS_STRUCT_ControllerSettings> Settings = std::make_unique<ERS_STRUCT_ControllerSettings>();
-        ControllerSettingsLoader_->LoadControllerSettings(Settings, ID);
+        ControllerSettingsLoader_->LoadControllerSettings(Settings.get(), ID);
 
         // Add To Settings List
-        Project_.ControllerSettings.push_back(Settings);
+        Project_.ControllerSettings.push_back(std::move(Settings));
     }
 
     // Load Default Scene
