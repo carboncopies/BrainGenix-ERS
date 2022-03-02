@@ -44,7 +44,7 @@ public:
      * @brief Construct a new Subwindow_SceneRenameModal object
      * 
      */
-    Subwindow_SceneRenameModal(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
+    Subwindow_SceneRenameModal(ERS_CLASS_SceneManager* SceneManager);
 
     /**
      * @brief Destroy the Subwindow_SceneRenameModal object
