@@ -21,7 +21,7 @@ class ERS_CLASS_AssetIndexIOM {
 
 private:
 
-    std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer To Logger Instance*/
+    ERS_CLASS_LoggingSystem* Logger_; /**<Pointer To Logger Instance*/
 
 
 public:
