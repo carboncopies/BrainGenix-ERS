@@ -74,6 +74,6 @@ public:
      * @param Model 
      * @param OverwriteExisting 
      */
-    void WriteModel(std::shared_ptr<ERS_STRUCT_IOData> InputData, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> TextureData, std::shared_ptr<ERS_STRUCT_Model> Model);
+    void WriteModel(ERS_STRUCT_IOData* InputData, std::vector<std::shared_ptr<ERS_STRUCT_IOData>> TextureData, std::shared_ptr<ERS_STRUCT_Model> Model);
 
 };
