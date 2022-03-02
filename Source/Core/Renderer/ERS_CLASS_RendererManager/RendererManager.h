@@ -49,7 +49,7 @@ class RendererManager {
 private:
 
     // Member Variables
-    std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
+    std::unique_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
     GLFWwindow* Window_; /**<GLFW Window Instance*/
     std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
     std::shared_ptr<ERS_CLASS_Framebuffer> FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
