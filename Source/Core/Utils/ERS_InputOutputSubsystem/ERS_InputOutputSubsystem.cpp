@@ -336,7 +336,7 @@ std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchReadAssets(
 }
 
 bool ERS_CLASS_InputOutputSubsystem::WriteAsset(
-    long AssetID, std::shared_ptr<ERS_STRUCT_IOData> InputData) {
+    long AssetID, ERS_STRUCT_IOData* InputData) {
 
   // Asset ID Sanity Check
   if (AssetID < 0) {
