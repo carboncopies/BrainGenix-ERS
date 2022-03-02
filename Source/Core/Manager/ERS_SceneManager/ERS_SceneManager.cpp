@@ -5,7 +5,7 @@
 #include <ERS_SceneManager.h>
 
 
-ERS_CLASS_SceneManager::ERS_CLASS_SceneManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
+ERS_CLASS_SceneManager::ERS_CLASS_SceneManager(ERS_CLASS_LoggingSystem* Logger) {
 
     Logger_ = Logger;
 
