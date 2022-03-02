@@ -90,7 +90,10 @@ int main() {
         *SystemUtils->LocalSystemConfiguration_.get()
     );
 
-    SystemUtils->ERS_ModelWriter_ = std::make_unique<ERS_CLASS_ModelWriter>(SystemUtils->Logger_.get(), SystemUtils->ERS_IOSubsystem_.get());
+    SystemUtils->ERS_ModelWriter_ = std::make_unique<ERS_CLASS_ModelWriter>(
+        SystemUtils->Logger_.get(),
+        SystemUtils->ERS_IOSubsystem_.get()
+    );
 
 
     // Instantiate HardwareInformation System
