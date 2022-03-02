@@ -5,7 +5,7 @@
 #include <GUI_Window_ShaderEditor.h>
 
 
-Window_ShaderEditor::Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer) {
+Window_ShaderEditor::Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
