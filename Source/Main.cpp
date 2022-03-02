@@ -68,8 +68,7 @@ int main() {
     SystemUtils->LocalSystemConfiguration_ = std::make_shared<YAML::Node>(sERSLocalSystemConfiguration);
 
     // Instantiate Logging Subsystem
-    std::shared_ptr<ERS_CLASS_LoggingSystem> sERSLogger = std::make_shared<ERS_CLASS_LoggingSystem>(sERSLocalSystemConfiguration);
-    SystemUtils->Logger_ = sERSLogger;
+    SystemUtils->Logger_ = std::make_unique<ERS_CLASS_LoggingSystem>(sERSLocalSystemConfiguration);
     sERSLogger->Log("Initialized Logging System", 5);
 
     // Setup Framerate Manager
