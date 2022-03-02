@@ -25,7 +25,7 @@
 struct ERS_STRUCT_SystemUtils {
 
 
-    std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer To BG-ERS Logging System*/
+    std::unique_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer To BG-ERS Logging System*/
     std::shared_ptr<YAML::Node> LocalSystemConfiguration_; /**<Pointer To Config.yaml Data From Local Hard Drive*/
     std::shared_ptr<ERS_CLASS_InputOutputSubsystem> ERS_IOSubsystem_; /**<Pointer To ERS Input Output Subsystem*/
     std::shared_ptr<ERS_CLASS_ModelWriter> ERS_ModelWriter_; /**<Pointer To ERS Model Writer Instance*/
