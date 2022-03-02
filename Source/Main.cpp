@@ -189,7 +189,7 @@ int main() {
         LastFrame = CurrentTime;
 
         // Calculate Last FrameTime
-        sERSFrameRateManager->StartNewFrame();
+        SystemUtils->FramerateManager_->StartNewFrame();
 
 
         // Update Joysticks
@@ -202,7 +202,7 @@ int main() {
 
 
         // End Frame
-        sERSFrameRateManager->DelayUntilNextFrame();
+        SystemUtils->FramerateManager_->DelayUntilNextFrame();
 
     }
 
