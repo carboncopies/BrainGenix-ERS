@@ -78,6 +78,6 @@ public:
      * @param AssetID 
      * @param Data 
      */
-    bool ReadAssetIndex(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> Data);
+    bool ReadAssetIndex(long AssetID, ERS_STRUCT_IOData* Data);
 
 };
