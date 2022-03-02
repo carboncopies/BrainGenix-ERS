@@ -155,7 +155,7 @@ void Window_ControllerSettings::Draw() {
                     }
 
                     // Selector Dropdown
-                    if (ControllerSettings.size() > 0) {
+                    if (ControllerSettings->size() > 0) {
                         if (ImGui::Button("Delete Profile")) {
                             ProjectUtils_->ProjectManager_->Project_.ControllerSettings.erase(ProjectUtils_->ProjectManager_->Project_.ControllerSettings.begin() + SelectedControllerProfile_);
                             ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.erase(ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.begin() + SelectedControllerProfile_);
