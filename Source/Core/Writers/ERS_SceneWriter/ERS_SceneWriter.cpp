@@ -26,7 +26,7 @@ void SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputScene, lon
     std::string SceneByteString = ProcessScene(InputScene); 
 
     // Copy Into System IOData Struct
-    std::shared_ptr<ERS_STRUCT_IOData> SceneData = std::make_shared<ERS_STRUCT_IOData>();
+    std::shared_ptr<ERS_STRUCT_IOData> SceneData = std::make_unique<ERS_STRUCT_IOData>();
 
     SceneData->Data.reset(new unsigned char[SceneByteString.size()]);
     SceneData->Size_B = SceneByteString.size();
