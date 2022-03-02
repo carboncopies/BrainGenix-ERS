@@ -119,7 +119,7 @@ int main() {
     ProjectUtils->ProjectWriter_ = std::make_unique<ERS_CLASS_ProjectWriter>(SystemUtils.get());
 
     SystemUtils->Logger_->Log("Instantiating ERS Project Manager Pointer", 4);
-    ProjectUtils->ProjectManager_ = std::make_unique<ERS_CLASS_ProjectManager>(SystemUtils.get(), ProjectUtils->ProjectLoader_.get(), sERSProjectWriter, ProjectUtils->SceneManager_.get(), ProjectUtils->SceneLoader_.get());
+    ProjectUtils->ProjectManager_ = std::make_unique<ERS_CLASS_ProjectManager>(SystemUtils.get(), ProjectUtils->ProjectLoader_.get(), ProjectUtils->ProjectWriter_.get(), ProjectUtils->SceneManager_.get(), ProjectUtils->SceneLoader_.get());
 
 
     // Setup Human Input Devices
