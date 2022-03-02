@@ -6,7 +6,7 @@
 
 
 
-HardwareInformation::HardwareInformation(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, YAML::Node SystemConfig) {
+HardwareInformation::HardwareInformation(ERS_CLASS_LoggingSystem* Logger, YAML::Node SystemConfig) {
 
     Logger_ = Logger;
     SystemConfiguration_ = SystemConfig;
