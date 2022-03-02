@@ -5,7 +5,7 @@
 #include <GUI_Window_ControllerSettings.h>
 
 
-Window_ControllerSettings::Window_ControllerSettings(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils) {
+Window_ControllerSettings::Window_ControllerSettings(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
     SystemUtils_ = SystemUtils;
     HIDUtils_ = HIDUtils;
