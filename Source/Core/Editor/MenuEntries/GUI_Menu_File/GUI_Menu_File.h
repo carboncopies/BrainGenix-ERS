@@ -44,7 +44,7 @@ class GUI_Menu_File {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
-    std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<shared pointer to visual renderer*/
+    ERS_CLASS_VisualRenderer* VisualRenderer_; /**<shared pointer to visual renderer*/
     std::unique_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
     ERS_CLASS_SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
     std::unique_ptr<GUI_ImportAsset> ImportAsset_; /**<Pointer To Asset Importer System*/
