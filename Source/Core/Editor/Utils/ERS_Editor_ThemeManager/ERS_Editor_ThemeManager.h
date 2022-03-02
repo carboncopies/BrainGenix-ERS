@@ -29,7 +29,7 @@ class ERS_CLASS_ThemeManager {
 
 private:
 
-    std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<ERS_CLASS_LoggingSystem Instance*/
+    ERS_CLASS_LoggingSystem* Logger_; /**<ERS_CLASS_LoggingSystem Instance*/
     const char* ThemePath_; /**<Filepath Where Themes Are Located*/
 
     std::vector<YAML::Node> ThemeFiles_; /**<List Of YAML::Node files*/
