@@ -55,7 +55,7 @@ void ERS_CLASS_ModelWriter::WriteModel(std::shared_ptr<ERS_STRUCT_IOData> ModelD
     // Write Model Metadata
     std::string Metadata = GenerateModelMetadata(Model);
 
-    std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
+    std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
     
     // Set Metadata
     Data->AssetTypeName = "Model";
