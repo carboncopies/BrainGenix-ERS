@@ -102,7 +102,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
             }
 
 
-            SecondTryStatus = ReadFile(Path, Data);
+            SecondTryStatus = ReadFile(Path, Data.get());
             
             if (!SecondTryStatus) {
                 SystemUtils_->Logger_->Log("Failed To Find Texture During Second Try Effort, Abandoning Texture", 8);
