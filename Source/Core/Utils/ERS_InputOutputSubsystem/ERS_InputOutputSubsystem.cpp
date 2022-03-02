@@ -5,7 +5,7 @@
 #include <ERS_InputOutputSubsystem.h>
 
 ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
-    std::shared_ptr<ERS_CLASS_LoggingSystem> Logger,
+    ERS_CLASS_LoggingSystem* Logger,
     YAML::Node SystemConfiguration) {
 
   Logger_ = Logger;
