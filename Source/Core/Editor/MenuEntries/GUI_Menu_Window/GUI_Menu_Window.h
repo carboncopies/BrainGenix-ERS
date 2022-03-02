@@ -47,7 +47,7 @@ class GUI_Menu_Window {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
-    std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Instance*/
+    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils Instance*/
 
     // Instantiate Widgets here
     Widget_FramerateCounter Widget_FramerateCounter_; /**<Widget Instance*/
