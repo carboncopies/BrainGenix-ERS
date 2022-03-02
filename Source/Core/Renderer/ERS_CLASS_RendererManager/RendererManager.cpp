@@ -44,7 +44,7 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
     int DefaultShader = ProjectUtils_->ProjectManager_->Project_.DefaultShaderProgram;
     VisualRenderer_->SetDefaultShader(DefaultShader);
 
-    GuiSystem_ = std::make_shared<GUISystem>(SystemUtils_, Window_, Cursors3D_, ProjectUtils_->SceneManager_, ProjectUtils_, VisualRenderer_, HIDUtils_);
+    GuiSystem_ = std::make_shared<GUISystem>(SystemUtils_, Window_, Cursors3D_, ProjectUtils_->SceneManager_.get(), ProjectUtils_, VisualRenderer_, HIDUtils_);
 
     VisualRenderer_->CreateViewport();
 
