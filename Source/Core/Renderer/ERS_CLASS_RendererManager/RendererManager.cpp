@@ -12,7 +12,7 @@ void ErrorCallback(int, const char* ErrorString) {
 
 
 
-RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils) {
+RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils) {
 
     SystemUtils->Logger_->Log("Populating RendererManager Member Pointers", 5);
     SystemUtils_ = SystemUtils;
