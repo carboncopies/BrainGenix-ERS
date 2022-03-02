@@ -113,9 +113,7 @@ int main() {
     ProjectUtils->SceneLoader_ = std::make_unique<ERS_CLASS_SceneLoader>(SystemUtils.get(), ProjectUtils->ModelLoader_.get());
 
     SystemUtils->Logger_->Log("Instantiating ERS Project Loader Pointer", 4);
-    std::shared_ptr<ERS_CLASS_ProjectLoader> sERSProjectLoader = std::make_shared<ERS_CLASS_ProjectLoader>(SystemUtils.get());
-    SystemUtils->Logger_->Log("Instantiating Project Loader Shared Pointer", 4);
-    ProjectUtils->ProjectLoader_ = sERSProjectLoader;
+    ProjectUtils->ProjectLoader_ = std::make_unique<ERS_CLASS_ProjectLoader>(SystemUtils.get());
 
     SystemUtils->Logger_->Log("Instantiating ERS Project Writer Pointer", 4);
     std::shared_ptr<ERS_CLASS_ProjectWriter> sERSProjectWriter = std::make_shared<ERS_CLASS_ProjectWriter>(SystemUtils.get());
