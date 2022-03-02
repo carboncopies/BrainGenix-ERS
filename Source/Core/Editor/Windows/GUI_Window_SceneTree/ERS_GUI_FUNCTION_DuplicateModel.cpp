@@ -5,7 +5,7 @@
 #include <ERS_GUI_FUNCTION_DuplicateModel.h>
 
 
-void GUI_Windowutil_DuplicateModel(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, int SceneIndex, int ModelIndex) {
+void GUI_Windowutil_DuplicateModel(ERS_CLASS_SceneManager* SceneManager, int SceneIndex, int ModelIndex) {
 
     // Get Current Model
     ERS_STRUCT_Model NewModel = *SceneManager->Scenes_[SceneIndex]->Models[ModelIndex];
