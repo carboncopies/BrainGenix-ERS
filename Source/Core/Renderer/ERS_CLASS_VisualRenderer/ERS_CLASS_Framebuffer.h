@@ -55,7 +55,7 @@ public:
      * @param Width Width In Pixels
      * @param Height Height In Pixels
      */
-    ERS_CLASS_Framebuffer(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader, float Width = 800.0f, float Height = 600.0f);
+    ERS_CLASS_Framebuffer(ERS_CLASS_LoggingSystem* Logger, std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader, float Width = 800.0f, float Height = 600.0f);
 
     /**
      * @brief Destroy the Framebuffer Manager object.
