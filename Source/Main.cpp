@@ -59,9 +59,8 @@
 int main() {
 
     // Initialize System Vars
-    std::unique_ptr<bool> SystemShouldRun = std::make_unique<bool>(true);
     std::unique_ptr<ERS_STRUCT_SystemUtils> SystemUtils = std::make_unique<ERS_STRUCT_SystemUtils>();
-    SystemUtils->SystemShouldRun_ = SystemShouldRun;
+    SystemUtils->SystemShouldRun_ = std::make_unique<bool>(true);
 
     // Load Local System Configuration File
     SystemUtils->LocalSystemConfiguration_ = std::make_unique<YAML::Node>(YAML::LoadFile("Config.yaml"));
