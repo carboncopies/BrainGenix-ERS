@@ -13,7 +13,7 @@ ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
 
 }
 
-std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
+std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, ERS_CLASS_LoggingSystem* Logger) {
 
     // Compile The Vertex Shader Text Into A Binary
     std::string ErrorMessage;
