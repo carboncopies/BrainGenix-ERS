@@ -207,7 +207,7 @@ int main() {
 
 
     // Test Clear Project
-    sERSSceneManager->Scenes_.erase(sERSSceneManager->Scenes_.begin(), sERSSceneManager->Scenes_.end());
+    ProjectUtils->SceneManager_->Scenes_.erase(sERSSceneManager->Scenes_.begin(), sERSSceneManager->Scenes_.end());
 
 
     // Program Exit (Destructors Automatically Called)
