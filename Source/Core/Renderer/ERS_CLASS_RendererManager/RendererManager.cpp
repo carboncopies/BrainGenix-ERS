@@ -182,7 +182,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     GuiSystem_->UpdateGUI();
 
     // Call Updates
-    VisualRenderer_->UpdateViewports(DeltaTime, ProjectUtils_->SceneManager_);
+    VisualRenderer_->UpdateViewports(DeltaTime, ProjectUtils_->SceneManager_.get());
 
 
     // Update GUI Frame
