@@ -37,7 +37,7 @@ Window_ShaderEditor::~Window_ShaderEditor() {
 void Window_ShaderEditor::ReloadEditorText() {
 
     // Load Vertex Shader
-    std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
+    std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID, Data);
     std::string VertexText = std::string((const char*)Data->Data.get());
 
