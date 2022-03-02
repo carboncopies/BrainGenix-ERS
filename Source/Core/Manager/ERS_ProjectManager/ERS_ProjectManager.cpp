@@ -43,7 +43,7 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
 
         // Load Settings
         long ID = Project_.GameControllerSettingsIDs[i];
-        std::shared_ptr<ERS_STRUCT_ControllerSettings> Settings = std::make_shared<ERS_STRUCT_ControllerSettings>();
+        std::unique_ptr<ERS_STRUCT_ControllerSettings> Settings = std::make_unique<ERS_STRUCT_ControllerSettings>();
         ControllerSettingsLoader_->LoadControllerSettings(Settings, ID);
 
         // Add To Settings List
