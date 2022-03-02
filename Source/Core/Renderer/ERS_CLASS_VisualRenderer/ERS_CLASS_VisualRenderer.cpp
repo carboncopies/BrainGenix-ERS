@@ -108,7 +108,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, std::shared_ptr<
         }
 
         // Update Viewport Camera/Position/Etc.
-        InputProcessorInstance->ProcessKeyboardInput(SystemUtils_->Logger_, DeltaTime, CaptureEnabled);
+        InputProcessorInstance->ProcessKeyboardInput(SystemUtils_->Logger_.get(), DeltaTime, CaptureEnabled);
         InputProcessorInstance->UpdateFramebuffer();
         InputProcessorInstance->UpdateMouse(CaptureEnabled);
         InputProcessorInstance->ProcessMouseScroll(CaptureEnabled);
