@@ -92,7 +92,7 @@ int main() {
 
 
     // Instantiate HardwareInformation System
-    HardwareInformation sERSHardwareInformation(SystemUtils->Logger_.get(), sERSLocalSystemConfiguration);
+    HardwareInformation sERSHardwareInformation(SystemUtils->Logger_.get(), *SystemUtils->LocalSystemConfiguration_.get());
 
 
     // Create ProjectUtils Struct
