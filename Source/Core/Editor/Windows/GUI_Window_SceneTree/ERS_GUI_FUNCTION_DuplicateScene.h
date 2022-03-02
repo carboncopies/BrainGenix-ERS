@@ -21,4 +21,4 @@
  * @param SceneManager 
  * @param SceneIndex 
  */
-void GUI_Windowutil_DuplicateScene(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, int SceneIndex);
+void GUI_Windowutil_DuplicateScene(ERS_CLASS_SceneManager* SceneManager, int SceneIndex);
