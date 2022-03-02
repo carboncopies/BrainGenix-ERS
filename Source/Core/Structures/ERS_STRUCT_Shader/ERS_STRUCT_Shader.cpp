@@ -40,7 +40,7 @@ std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, ERS_C
 
 }
 
-std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
+std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, ERS_CLASS_LoggingSystem* Logger) {
 
     // Compile The Fragment Shader Text Into A Binary
     std::string ErrorMessage;
