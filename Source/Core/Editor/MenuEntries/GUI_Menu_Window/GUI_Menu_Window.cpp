@@ -14,7 +14,7 @@ GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
 
 
     SystemUtils_->Logger_->Log("Initializing Editor Widgets", 5);
-    Widget_ObjectProperties_ = std::make_shared<Widget_ObjectProperties>(Cursors3D);
+    Widget_ObjectProperties_ = std::make_unique<Widget_ObjectProperties>(Cursors3D);
     Widget_RenderingSettings_ = std::make_unique<Widget_RenderingSettings>(SystemUtils_);
     Widget_FrameLatencyGraph_ = std::make_unique<Widget_FrameLatencyGraph>(SystemUtils_);
 
