@@ -48,7 +48,7 @@ public:
      * @param Logger_ 
      * @param ThemePath 
      */
-    ERS_CLASS_ThemeManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, const char* ThemePath = "EditorAssets/Configuration/Themes");
+    ERS_CLASS_ThemeManager(ERS_CLASS_LoggingSystem* Logger, const char* ThemePath = "EditorAssets/Configuration/Themes");
 
     /**
      * @brief Destroy the Theme Manager object
