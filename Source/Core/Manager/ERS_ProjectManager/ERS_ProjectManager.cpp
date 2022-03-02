@@ -5,7 +5,7 @@
 #include <ERS_ProjectManager.h>
 
 
-ERS_CLASS_ProjectManager::ERS_CLASS_ProjectManager(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_CLASS_ProjectLoader> ProjectLoader, std::shared_ptr<ERS_CLASS_ProjectWriter> ProjectWriter, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_CLASS_SceneLoader> SceneLoader) {
+ERS_CLASS_ProjectManager::ERS_CLASS_ProjectManager(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_CLASS_ProjectLoader> ProjectLoader, std::shared_ptr<ERS_CLASS_ProjectWriter> ProjectWriter, ERS_CLASS_SceneManager* SceneManager, std::shared_ptr<ERS_CLASS_SceneLoader> SceneLoader) {
 
     SystemUtils_ = SystemUtils;
     ProjectLoader_ = ProjectLoader;
