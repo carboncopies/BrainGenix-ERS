@@ -58,7 +58,7 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::LoadShaderFromAsset(l
     // Load Shaders From Disk Into RAM
     SystemUtils_->Logger_->Log("Loading Shaders From Asset ID", 5);
 
-    std::shared_ptr<ERS_STRUCT_IOData> VertexData = std::make_unique<ERS_STRUCT_IOData>();
+    std::unique_ptr<ERS_STRUCT_IOData> VertexData = std::make_unique<ERS_STRUCT_IOData>();
     std::shared_ptr<ERS_STRUCT_IOData> FragmentData = std::make_unique<ERS_STRUCT_IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(VertexID, VertexData);
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(FragmentID, FragmentData);
