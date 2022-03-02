@@ -37,7 +37,7 @@ public:
      * 
      * @param ThemeManager 
      */
-    Window_ThemeSelector(std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager);
+    Window_ThemeSelector(ERS_CLASS_ThemeManager* ThemeManager);
 
     /**
      * @brief Destroy the Window_ThemeSelector object
