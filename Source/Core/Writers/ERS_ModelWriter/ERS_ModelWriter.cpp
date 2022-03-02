@@ -5,7 +5,7 @@
 #include <ERS_ModelWriter.h>
 
 
-ERS_CLASS_ModelWriter::ERS_CLASS_ModelWriter(ERS_CLASS_LoggingSystem* Logger, std::shared_ptr<ERS_CLASS_InputOutputSubsystem> IOSubsystem) {
+ERS_CLASS_ModelWriter::ERS_CLASS_ModelWriter(ERS_CLASS_LoggingSystem* Logger, ERS_CLASS_InputOutputSubsystem* IOSubsystem) {
 
     Logger_ = Logger;
     IOSubsystem_ = IOSubsystem;
