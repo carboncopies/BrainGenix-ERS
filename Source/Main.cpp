@@ -170,7 +170,7 @@ int main() {
     SystemUtils->Logger_->Log("", 5);
     SystemUtils->Logger_->Log("    +-----------------------------------------------------------------+", 4);
     SystemUtils->Logger_->Log("    |     BrainGenix-ERS Real-Time Environment Rendering System       |", 4);
-    sERSLogger->Log("    +-----------------------------------------------------------------+", 4);
+    SystemUtils->Logger_->Log("    +-----------------------------------------------------------------+", 4);
     sERSLogger->Log("", 4);
 
 
