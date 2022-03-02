@@ -97,7 +97,7 @@ int main() {
 
 
     // Create ProjectUtils Struct
-    sERSLogger->Log("Setting Up Project Utilities Structure", 3);
+    SystemUtils->Logger_->Log("Setting Up Project Utilities Structure", 3);
     std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils = std::make_shared<ERS_STRUCT_ProjectUtils>();
 
     // Setup Loaders
