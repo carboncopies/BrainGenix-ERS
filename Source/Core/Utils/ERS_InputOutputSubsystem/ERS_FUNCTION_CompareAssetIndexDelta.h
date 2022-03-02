@@ -25,4 +25,4 @@
  * @param UsedAssetIDIndex 
  * @param AssetIndexIOM 
  */
-void ERS_FUNCTION_CompareIndexDelta(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, std::shared_ptr<std::vector<long>> UsedAssetIDIndex, std::vector<long> AssetIndexIOM);
+void ERS_FUNCTION_CompareIndexDelta(ERS_CLASS_LoggingSystem* Logger, std::shared_ptr<std::vector<long>> UsedAssetIDIndex, std::vector<long> AssetIndexIOM);
