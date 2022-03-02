@@ -88,7 +88,7 @@ bool ERS_CLASS_ProjectWriter::SaveProject(std::shared_ptr<ERS_STRUCT_Project> Pr
 
     // Write To IOData
     SystemUtils_->Logger_->Log("Writing Project To Asset", 4);
-    std::shared_ptr<ERS_STRUCT_IOData> ProjectData = std::make_shared<ERS_STRUCT_IOData>();
+    std::shared_ptr<ERS_STRUCT_IOData> ProjectData = std::make_unique<ERS_STRUCT_IOData>();
     
     ProjectData->Data.reset(new unsigned char[ProjectByteString.size()]);
     ProjectData->Size_B = ProjectByteString.size();
