@@ -56,7 +56,7 @@ void Window_ShaderEditor::ReloadEditorText() {
 void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
 
     // Write Data
-    std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
+    std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
     
     Data->Data.reset(new unsigned char[ShaderText.size()]);
     Data->Size_B = ShaderText.size();
