@@ -7,7 +7,7 @@
 
 #include <ERS_SceneLoader.h>
 
-ERS_CLASS_SceneLoader::ERS_CLASS_SceneLoader(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader) {
+ERS_CLASS_SceneLoader::ERS_CLASS_SceneLoader(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_ModelLoader* ModelLoader) {
 
     SystemUtils_ = SystemUtils;
     ModelLoader_ = ModelLoader;
