@@ -79,7 +79,7 @@ int main() {
     // Copy Config Params
     try {
         SystemUtils->Logger_->Log("Reading Configuration File For 'IsLinux'", 2);
-        SystemUtils->IsLinux_ = sERSLocalSystemConfiguration["IsLinux"].as<bool>();
+        SystemUtils->IsLinux_ = (*SystemUtils->LocalSystemConfiguration_.get())["IsLinux"].as<bool>();
     } catch(YAML::BadSubscript) {
         SystemUtils->Logger_->Log("Error Reading Configuration File For 'IsLinux' Boolean Value, Defaulting To False", 9);
     }
