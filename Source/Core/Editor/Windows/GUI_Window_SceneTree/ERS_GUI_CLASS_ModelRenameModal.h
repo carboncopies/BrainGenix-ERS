@@ -26,7 +26,7 @@ class Subwindow_ModelRenameModal {
 
 private:
 
-    std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Model Manager Instance Pointer*/
+    ERS_CLASS_SceneManager* SceneManager_; /**<Model Manager Instance Pointer*/
     char ModelInputName_[128] = ""; /**<Character Array To Store Model Name When Renaming*/
 
 
