@@ -89,7 +89,7 @@ private:
      * @param Path 
      * @param IOData 
      */
-    bool ReadFile(std::string Path, std::shared_ptr<ERS_STRUCT_IOData> IOData);
+    bool ReadFile(std::string Path, ERS_STRUCT_IOData* IOData);
 
 
 
