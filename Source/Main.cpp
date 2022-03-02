@@ -116,7 +116,7 @@ int main() {
     ProjectUtils->ProjectLoader_ = std::make_unique<ERS_CLASS_ProjectLoader>(SystemUtils.get());
 
     SystemUtils->Logger_->Log("Instantiating ERS Project Writer Pointer", 4);
-    ProjectUtils->ProjectWriter_ = std::make_shared<ERS_CLASS_ProjectWriter>(SystemUtils.get());
+    ProjectUtils->ProjectWriter_ = std::make_unique<ERS_CLASS_ProjectWriter>(SystemUtils.get());
 
     SystemUtils->Logger_->Log("Instantiating ERS Project Manager Pointer", 4);
     ProjectUtils->ProjectManager_ = std::make_unique<ERS_CLASS_ProjectManager>(SystemUtils.get(), ProjectUtils->ProjectLoader_.get(), sERSProjectWriter, ProjectUtils->SceneManager_.get(), ProjectUtils->SceneLoader_.get());
