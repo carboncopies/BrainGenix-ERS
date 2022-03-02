@@ -86,7 +86,7 @@ int main() {
     }
 
     // Startup IO Subsystem And Other Related Systems
-    std::shared_ptr<ERS_CLASS_InputOutputSubsystem> sERSIOSubSystem = std::make_shared<ERS_CLASS_InputOutputSubsystem>(sERSLogger, sERSLocalSystemConfiguration);
+    std::shared_ptr<ERS_CLASS_InputOutputSubsystem> sERSIOSubSystem = std::make_shared<ERS_CLASS_InputOutputSubsystem>(SystemUtils->Logger_, sERSLocalSystemConfiguration);
     SystemUtils->ERS_IOSubsystem_ = sERSIOSubSystem;
     std::shared_ptr<ERS_CLASS_ModelWriter> sERSModelWriter = std::make_shared<ERS_CLASS_ModelWriter>(sERSLogger, sERSIOSubSystem);
     SystemUtils->ERS_ModelWriter_ = sERSModelWriter;
