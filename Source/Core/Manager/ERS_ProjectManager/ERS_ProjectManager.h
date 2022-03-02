@@ -35,7 +35,7 @@ private:
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer To System Utils Struct*/
     std::shared_ptr<ERS_CLASS_ProjectLoader> ProjectLoader_; /**<Project Loader Util*/
     ERS_CLASS_SceneManager* SceneManager_; /**<Scene Manager Class*/
-    std::shared_ptr<ERS_CLASS_SceneLoader> SceneLoader_; /**<Scene Loader Instance*/
+    ERS_CLASS_SceneLoader* SceneLoader_; /**<Scene Loader Instance*/
     std::shared_ptr<ERS_CLASS_ProjectWriter> ProjectWriter_; /**<Project Writer Util*/
     std::unique_ptr<ERS_CLASS_ControllerSettingsLoader> ControllerSettingsLoader_; /**<Controller Settings Loader*/
 
