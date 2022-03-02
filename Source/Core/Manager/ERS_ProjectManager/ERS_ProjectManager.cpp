@@ -43,7 +43,7 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
 
         // Load Settings
         long ID = Project_.GameControllerSettingsIDs[i];
-        ERS_STRUCT_ControllerSettings* Settings = &ERS_STRUCT_ControllerSettings();
+        ERS_STRUCT_ControllerSettings* Settings = new ERS_STRUCT_ControllerSettings();
         ControllerSettingsLoader_->LoadControllerSettings(Settings, ID);
 
         // Add To Settings List
