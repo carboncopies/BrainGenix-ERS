@@ -197,7 +197,7 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
   std::unique_ptr<ERS_STRUCT_IOData> Data =
       std::make_unique<ERS_STRUCT_IOData>();
   ReadAsset(0, Data.get());
-  AssetIndexIOManager_->LoadAssetIndex(Data);
+  AssetIndexIOManager_->LoadAssetIndex(Data.get());
   Logger_->Log("Finished Loading Asset Metadata Index", 4);
 
   // Compare Indexes Of Assets
