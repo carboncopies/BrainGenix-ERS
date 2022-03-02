@@ -47,7 +47,7 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
         ControllerSettingsLoader_->LoadControllerSettings(&Settings, ID);
 
         // Add To Settings List
-        Project_.ControllerSettings.push_back(Settings);
+        Project_.ControllerSettings->push_back(Settings);
     }
 
     // Load Default Scene
