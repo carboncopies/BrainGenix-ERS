@@ -133,7 +133,7 @@ int main() {
 
 
     // Setup Human Input Devices
-    sERSLogger->Log("Setting Up Human Input Device Managers", 5);
+    SystemUtils->Logger_->Log("Setting Up Human Input Device Managers", 5);
 
     // Create Struct
     std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils = std::make_shared<ERS_STRUCT_HumanInputDeviceUtils>();
