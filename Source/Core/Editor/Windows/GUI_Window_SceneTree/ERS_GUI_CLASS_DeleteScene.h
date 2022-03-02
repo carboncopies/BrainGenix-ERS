@@ -43,7 +43,7 @@ public:
      * @brief Construct a new Subwindow_DeleteScene object
      * 
      */
-    Subwindow_DeleteScene(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
+    Subwindow_DeleteScene(ERS_CLASS_SceneManager* SceneManager);
 
     /**
      * @brief Destroy the Subwindow_DeleteScene object
