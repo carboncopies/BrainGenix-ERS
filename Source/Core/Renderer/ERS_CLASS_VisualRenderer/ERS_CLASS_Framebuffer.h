@@ -32,7 +32,7 @@ class ERS_CLASS_Framebuffer {
 
 private:
 
-    std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer to instance of Logger Class*/
+    ERS_CLASS_LoggingSystem* Logger_; /**<Pointer to instance of Logger Class*/
     unsigned int FramebufferObject_; /**<Framebuffer OpenGL Handle (Used to Render Inside IMGUI Window Or On Screen Directly)*/
     unsigned int RenderTexture_; /**<OpenGL Renderes To This Texture, Then It's Displayed. (OpenGL Handle)*/
     unsigned int RenderBufferObject_; /**<RenderBuffer Object Handle.*/
