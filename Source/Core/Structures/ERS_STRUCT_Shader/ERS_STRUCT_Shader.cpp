@@ -68,7 +68,7 @@ std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, E
 }
 
 
-std::string ERS_STRUCT_Shader::CreateShaderProgram(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger) {
+std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logger) {
 
     // Check That Vertex And Fragment Shaders Are Initialized
     std::string ErrorMessage;
