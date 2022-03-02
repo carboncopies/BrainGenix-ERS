@@ -47,7 +47,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool LoadControllerSettings(std::shared_ptr<ERS_STRUCT_ControllerSettings> ControllerSettings, long AssetID);
+    bool LoadControllerSettings(ERS_STRUCT_ControllerSettings* ControllerSettings, long AssetID);
 
 
 };
