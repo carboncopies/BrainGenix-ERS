@@ -69,7 +69,7 @@ int main() {
 
     // Instantiate Logging Subsystem
     SystemUtils->Logger_ = std::make_unique<ERS_CLASS_LoggingSystem>(sERSLocalSystemConfiguration);
-    sERSLogger->Log("Initialized Logging System", 5);
+    SystemUtils->Logger_->Log("Initialized Logging System", 5);
 
     // Setup Framerate Manager
     sERSLogger->Log("Initializing Framerate Manager Subsystem", 5);
