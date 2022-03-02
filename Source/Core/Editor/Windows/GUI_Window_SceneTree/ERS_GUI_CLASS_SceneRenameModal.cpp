@@ -4,7 +4,7 @@
 
 #include <ERS_GUI_CLASS_SceneRenameModal.h>
 
-Subwindow_SceneRenameModal::Subwindow_SceneRenameModal(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
+Subwindow_SceneRenameModal::Subwindow_SceneRenameModal(ERS_CLASS_SceneManager* SceneManager) {
 
     SceneManager_ = SceneManager;
 
