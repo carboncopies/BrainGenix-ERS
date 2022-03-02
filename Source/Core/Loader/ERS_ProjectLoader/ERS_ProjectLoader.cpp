@@ -34,6 +34,7 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
 
     // Create New Struct
     ERS_STRUCT_Project Project;
+    Project.ControllerSettings = new std::vector<ERS_STRUCT_ControllerSettings>();
 
     // Populate Struct Metadata
     Project.ProjectName = ProjectNode["ProjectName"].as<std::string>();
