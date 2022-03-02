@@ -108,7 +108,7 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(std::unique_ptr<ERS_STRUCT_IOData>
 
 }
 
-bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> Data) {
+bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, std::unique_ptr<ERS_STRUCT_IOData> Data) {
 
     std::string AssetType = Data->AssetTypeName;
     std::string Modified = Data->AssetModificationDate;
