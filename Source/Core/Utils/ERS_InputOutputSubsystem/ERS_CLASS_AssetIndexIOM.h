@@ -38,7 +38,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_AssetIndexIOM(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger);
+    ERS_CLASS_AssetIndexIOM(ERS_CLASS_LoggingSystem* Logger);
 
     /**
      * @brief Destroy the ers class assetindexIOM object
