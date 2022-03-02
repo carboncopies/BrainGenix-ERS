@@ -39,7 +39,7 @@ private:
 
     std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Pointer*/
-    std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<ProjectUtils Pointer*/
+    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<ProjectUtils Pointer*/
     bool FirstFrame_ = true; /**<Bool Indicating if It's the first frame*/
 
     Subwindow_SceneRenameModal* Subwindow_SceneRenameModal_; /**<Scene Rename Modal Instance*/
@@ -70,7 +70,7 @@ public:
      * @brief Construct a new Window_SceneTree object
      * 
      */
-    Window_SceneTree(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils);
+    Window_SceneTree(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
 
     /**
      * @brief Destroy the Window_SceneTree object
