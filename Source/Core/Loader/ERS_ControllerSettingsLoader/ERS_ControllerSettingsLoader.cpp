@@ -20,7 +20,7 @@ ERS_CLASS_ControllerSettingsLoader::~ERS_CLASS_ControllerSettingsLoader() {
 };
 
 
-bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(std::shared_ptr<ERS_STRUCT_ControllerSettings> ControllerSettings, long AssetID) {
+bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(ERS_STRUCT_ControllerSettings* ControllerSettings, long AssetID) {
 
     SystemUtils_->Logger_->Log(std::string(std::string("Loading ERS Controller Settings From AssetID: ") + std::to_string(AssetID)).c_str(), 4);
 
