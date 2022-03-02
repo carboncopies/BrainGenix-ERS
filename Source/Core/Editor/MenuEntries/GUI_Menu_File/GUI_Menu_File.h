@@ -61,7 +61,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Menu_File(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer);
+    GUI_Menu_File(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils, std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer);
 
 
     /**
