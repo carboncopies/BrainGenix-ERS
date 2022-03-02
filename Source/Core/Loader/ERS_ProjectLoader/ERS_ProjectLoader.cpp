@@ -24,7 +24,7 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     // Log Project Loading
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Project With Asset ID ") + std::to_string(AssetID)).c_str(), 4);
     std::unique_ptr<ERS_STRUCT_IOData> ProjectData = std::make_unique<ERS_STRUCT_IOData>();
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, ProjectData);
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, ProjectData.get());
 
     // Decode YAML
     std::string DataString = std::string((const char*)ProjectData->Data.get());
