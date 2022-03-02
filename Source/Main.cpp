@@ -101,7 +101,7 @@ int main() {
     std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils = std::make_shared<ERS_STRUCT_ProjectUtils>();
 
     // Setup Loaders
-    sERSLogger->Log("Instantiating Scene Manager Shared Pointer", 4);
+    SystemUtils->Logger_->Log("Instantiating Scene Manager Shared Pointer", 4);
     std::shared_ptr<ERS_CLASS_SceneManager> sERSSceneManager = std::make_shared<ERS_CLASS_SceneManager>(SystemUtils->Logger_);
     sERSLogger->Log("Copying Shared Pointer To Project Utils Struct", 3);
     ProjectUtils->SceneManager_ = sERSSceneManager;
