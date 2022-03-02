@@ -132,6 +132,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
 
     const char* Name = Viewports_[Index]->Name.c_str();
     bool* ViewportEnable = Viewports_[Index]->Enabled.get();
+    std::cout<<*ViewportEnable<<std::endl;
     bool Visible = ImGui::Begin(Name, ViewportEnable, Flags);
 
     // Set Default Window Size
