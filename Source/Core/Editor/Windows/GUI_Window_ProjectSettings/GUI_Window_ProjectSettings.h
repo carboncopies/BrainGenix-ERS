@@ -34,7 +34,7 @@ private:
     bool IsProjectFree; /**<Presents A Warning If Propreitary(Non FOSS)*/
     
 
-    std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Pointer To Project Utils Instance*/
+    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer To Project Utils Instance*/
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Struct Pointer*/
 
 public:
