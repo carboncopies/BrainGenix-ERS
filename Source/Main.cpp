@@ -157,7 +157,7 @@ int main() {
 
     
     // Log Logo Text
-    sERSLogger->Log("Starting BrainGenix-ERS Instance", 2);
+    SystemUtils->Logger_->Log("Starting BrainGenix-ERS Instance", 2);
     sERSLogger->Log("", 5);
     sERSLogger->Log("---------------------------------------------------------------------------", 5);
     sERSLogger->Log("\x1b[38;2;0;128;55m██████╗ ██████╗  █████╗ ██╗███╗   ██╗\x1b[38;2;130;68;208m ██████╗ ███████╗███╗   ██╗██╗██╗  ██╗", 5);
