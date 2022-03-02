@@ -42,7 +42,7 @@ public:
      * @brief Construct a new Subwindow_DeleteModel object
      * 
      */
-    Subwindow_DeleteModel(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
+    Subwindow_DeleteModel(ERS_CLASS_SceneManager* SceneManager);
 
     /**
      * @brief Destroy the Subwindow_DeleteModel object
