@@ -69,7 +69,7 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
 
 }
 
-bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(std::unique_ptr<ERS_STRUCT_IOData> Data) {
+bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(ERS_STRUCT_IOData* Data) {
 
     Logger_->Log("Serializing Asset Database Metadata", 4);
 
