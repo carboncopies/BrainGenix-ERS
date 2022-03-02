@@ -166,7 +166,7 @@ void Window_ControllerSettings::Draw() {
                         ImGui::SameLine();
                         if (ImGui::Button("Add Profile")) {
                             ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.push_back(SystemUtils_->ERS_IOSubsystem_->AllocateAssetID());
-                            ProjectUtils_->ProjectManager_->Project_.ControllerSettings.push_back(std::make_unique<ERS_STRUCT_ControllerSettings>());
+                            ProjectUtils_->ProjectManager_->Project_.ControllerSettings->push_back(std::make_unique<ERS_STRUCT_ControllerSettings>());
                         }
                     }
                     ImGui::SameLine();
