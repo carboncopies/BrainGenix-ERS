@@ -170,7 +170,7 @@ void Window_ControllerSettings::Draw() {
                         }
                     }
                     ImGui::SameLine();
-                    ImGui::Combo("Selected Controller Profile", &SelectedControllerProfile_, ControllerProfileNames_, ControllerSettings->size(),  ControllerSettings.size());
+                    ImGui::Combo("Selected Controller Profile", &SelectedControllerProfile_, ControllerProfileNames_, ControllerSettings->size(),  ControllerSettings->size());
 
                     ImGui::Separator();
 
