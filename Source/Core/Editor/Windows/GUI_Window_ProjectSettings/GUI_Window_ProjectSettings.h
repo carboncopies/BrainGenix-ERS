@@ -49,7 +49,7 @@ public:
      * @param ProjectUtils 
      * @param SystemUtils 
      */
-    Window_ProjectSettings(std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils, ERS_STRUCT_SystemUtils* SystemUtils);
+    Window_ProjectSettings(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_SystemUtils* SystemUtils);
 
     /**
      * @brief Destroy the Window_ProjectSettings object
