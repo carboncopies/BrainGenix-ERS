@@ -134,7 +134,7 @@ bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, std::unique_ptr<ERS
 
 }
 
-bool ERS_CLASS_AssetIndexIOM::ReadAssetIndex(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> Data) {
+bool ERS_CLASS_AssetIndexIOM::ReadAssetIndex(long AssetID, std::unique_ptr<ERS_STRUCT_IOData> Data) {
 
     // Lookup Asset Info (If ID Not Zero)
     if (AssetID != 0) {
