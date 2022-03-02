@@ -33,7 +33,7 @@ void SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputScene, lon
     memcpy(SceneData->Data.get(), SceneByteString.c_str(), SceneByteString.size());
 
     // Write To Storage
-    SystemUtils_->ERS_IOSubsystem_->WriteAsset(AssetID, SceneData);
+    SystemUtils_->ERS_IOSubsystem_->WriteAsset(AssetID, SceneData.get());
 
 }
 
