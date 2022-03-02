@@ -62,7 +62,7 @@ private:
     std::shared_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
     std::shared_ptr<ERS_CLASS_UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
     std::shared_ptr<Cursors3D> Cursors3D_; /**<Pointer to Cursors3D Instance*/
-    std::shared_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Scene Manager Instance Pointer*/
+    ERS_CLASS_SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
     std::shared_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<Pointer to visual renderer for viewport modification*/
     std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<Pointer To Human Device Utils Struct*/
 
