@@ -34,7 +34,7 @@ class ERS_CLASS_SceneLoader{
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Structure*/
-    std::shared_ptr<ERS_CLASS_ModelLoader> ModelLoader_; /**<Contians A ModelLoader Class Pointer*/
+    ERS_CLASS_ModelLoader* ModelLoader_; /**<Contians A ModelLoader Class Pointer*/
 
 private:
 
