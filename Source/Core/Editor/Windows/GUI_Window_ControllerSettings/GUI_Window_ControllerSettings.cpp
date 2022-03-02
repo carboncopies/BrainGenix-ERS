@@ -182,7 +182,7 @@ void Window_ControllerSettings::Draw() {
 
                     
                     // Check if there aren't any controller profiles, display no controllers message
-                    if (ControllerSettings.size() == 0) {
+                    if (ControllerSettings->size() == 0) {
                         ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "No controller profiles found. Try adding a new one.");
                     } else {
 
