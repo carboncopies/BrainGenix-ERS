@@ -129,9 +129,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, std::shared_ptr<ERS_CLA
     if (Viewports_[Index]->MenuEnabled) {
         Flags |= ImGuiWindowFlags_MenuBar;
     }
-    std::cout<<"1\n";
-    bool Visible = ImGui::Begin(Viewports_[Index]->Name.c_str(), Viewports_[Index]->Enabled.get(), Flags);
-    std::cout<<"2\n";
+    bool Visible = true;
+    ImGui::Begin(Viewports_[Index]->Name.c_str(), Viewports_[Index]->Enabled.get(), Flags);
 
     // Set Default Window Size
     ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
