@@ -6,7 +6,7 @@
 #include <ERS_GUI_CLASS_DeleteModel.h>
 
 
-Subwindow_DeleteModel::Subwindow_DeleteModel(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
+Subwindow_DeleteModel::Subwindow_DeleteModel(ERS_CLASS_SceneManager* SceneManager) {
 
     SceneManager_ = SceneManager;
 
