@@ -105,7 +105,7 @@ private:
      * @param SceneManager 
      * @param DeltaTime 
      */
-    void UpdateViewport(int Index, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager, float DeltaTime);
+    void UpdateViewport(int Index, ERS_CLASS_SceneManager* SceneManager, float DeltaTime);
 
 
     /**
