@@ -41,7 +41,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_UserProfileManager(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, const char* UserProfilePath = "EditorAssets/Configuration/User/UserConfig.yaml");
+    ERS_CLASS_UserProfileManager(ERS_CLASS_LoggingSystem* Logger, const char* UserProfilePath = "EditorAssets/Configuration/User/UserConfig.yaml");
 
     /**
      * @brief Destroy the User Profile Manager object
