@@ -100,7 +100,7 @@ int main() {
 
     // Create ProjectUtils Struct
     SystemUtils->Logger_->Log("Setting Up Project Utilities Structure", 3);
-    std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils = std::make_shared<ERS_STRUCT_ProjectUtils>();
+    std::unique_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils = std::make_unique<ERS_STRUCT_ProjectUtils>();
 
     // Setup Loaders
     SystemUtils->Logger_->Log("Instantiating Scene Manager Shared Pointer", 4);
