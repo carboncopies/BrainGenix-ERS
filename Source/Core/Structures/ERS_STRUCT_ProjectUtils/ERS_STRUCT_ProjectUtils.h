@@ -29,7 +29,7 @@ struct ERS_STRUCT_ProjectUtils {
 
     std::unique_ptr<ERS_CLASS_SceneManager> SceneManager_; /**<Shared Ptr To Scene Manager*/
     std::unique_ptr<ERS_CLASS_ModelLoader> ModelLoader_; /**<Shared Ptr To Model Loader*/
-    std::shared_ptr<ERS_CLASS_SceneLoader> SceneLoader_; /**<Shared Ptr To Scene Loader*/
+    std::unique_ptr<ERS_CLASS_SceneLoader> SceneLoader_; /**<Shared Ptr To Scene Loader*/
     std::shared_ptr<ERS_CLASS_ProjectLoader> ProjectLoader_; /**<Shared Pointer To Project Loader*/
     std::shared_ptr<ERS_CLASS_ProjectManager> ProjectManager_; /**<Shared Pointer To Projet Manager Instance*/
     std::shared_ptr<ERS_CLASS_ProjectWriter> ProjectWriter_; /**<Shared Pointer to project writer instance*/
