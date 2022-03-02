@@ -5,7 +5,7 @@
 #include <ERS_GUI_CLASS_DeleteScene.h>
 
 
-Subwindow_DeleteScene::Subwindow_DeleteScene(std::shared_ptr<ERS_CLASS_SceneManager> SceneManager) {
+Subwindow_DeleteScene::Subwindow_DeleteScene(ERS_CLASS_SceneManager* SceneManager) {
 
     SceneManager_ = SceneManager;
 
