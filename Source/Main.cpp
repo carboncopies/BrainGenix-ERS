@@ -104,9 +104,8 @@ int main() {
 
     // Setup Loaders
     SystemUtils->Logger_->Log("Instantiating Scene Manager Shared Pointer", 4);
-    std::shared_ptr<ERS_CLASS_SceneManager> sERSSceneManager = std::make_shared<ERS_CLASS_SceneManager>(SystemUtils->Logger_.get());
+    ProjectUtils->SceneManager_ = std::make_shared<ERS_CLASS_SceneManager>(SystemUtils->Logger_.get());
     SystemUtils->Logger_->Log("Copying Shared Pointer To Project Utils Struct", 3);
-    ProjectUtils->SceneManager_ = sERSSceneManager;
 
     SystemUtils->Logger_->Log("Instantiating Model Loader Shared Pointer", 4);
     std::shared_ptr<ERS_CLASS_ModelLoader> sERSModelLoader = std::make_shared<ERS_CLASS_ModelLoader>(SystemUtils.get());
