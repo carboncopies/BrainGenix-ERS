@@ -31,7 +31,7 @@ class HardwareInformation {
     private:
 
         // Class Instances
-        std::shared_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Instance Of Logging System*/
+        ERS_CLASS_LoggingSystem* Logger_; /**<Instance Of Logging System*/
         ERS_STRUCT_HardwareInfo HardwareInfo_; /**<Internal Hardware Information Struct*/
 
         // Config
@@ -63,7 +63,7 @@ class HardwareInformation {
          * @param Logger 
          * @param SystemConfig 
          */
-        HardwareInformation(std::shared_ptr<ERS_CLASS_LoggingSystem> Logger, YAML::Node SystemConfig);
+        HardwareInformation(ERS_CLASS_LoggingSystem* Logger, YAML::Node SystemConfig);
 
         /**
          * @brief Destroy the Hardware Information object
