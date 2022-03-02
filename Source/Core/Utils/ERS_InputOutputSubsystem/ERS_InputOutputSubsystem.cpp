@@ -426,7 +426,7 @@ bool ERS_CLASS_InputOutputSubsystem::WriteAsset(
 
 std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchWriteAssets(
     std::vector<long> AssetIDs,
-    std::vector<std::shared_ptr<ERS_STRUCT_IOData>> AssetDatas) {
+    std::vector<ERS_STRUCT_IOData*> AssetDatas) {
 
   // Check Lengths Of Inputs
   if (AssetIDs.size() != AssetDatas.size()) {
