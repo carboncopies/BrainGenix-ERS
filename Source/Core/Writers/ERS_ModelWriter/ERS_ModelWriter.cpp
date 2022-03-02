@@ -66,6 +66,6 @@ void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_IOData* ModelData, std::vector
     Data->Size_B = Metadata.size();
 
     long ID = IOSubsystem_->AllocateAssetID();
-    IOSubsystem_->WriteAsset(ID, Data);
+    IOSubsystem_->WriteAsset(ID, Data.get());
 
 }
