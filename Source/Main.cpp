@@ -148,7 +148,7 @@ int main() {
 
     // More????
 
-    sERSLogger->Log("Finished Setting Up Human Input Device Managers", 5);    
+    SystemUtils->Logger_->Log("Finished Setting Up Human Input Device Managers", 5);    
 
 
     // Instantiate RendererManager
