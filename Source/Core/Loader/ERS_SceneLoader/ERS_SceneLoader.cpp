@@ -26,7 +26,7 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(long AssetID) {
 
     // Read Asset Info
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Scene At ID: ") + std::to_string(AssetID)).c_str(), 4);
-    std::shared_ptr<ERS_STRUCT_IOData> SceneData = std::make_shared<ERS_STRUCT_IOData>();
+    std::shared_ptr<ERS_STRUCT_IOData> SceneData = std::make_unique<ERS_STRUCT_IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, SceneData);
 
 
