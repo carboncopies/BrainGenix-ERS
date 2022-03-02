@@ -33,7 +33,7 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointers To System Resources*/
     std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<Pointer To Human Input Device Info*/
-    std::shared_ptr<ERS_STRUCT_ProjectUtils> ProjectUtils_; /**<Project Utils Pointer Struct*/
+    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils Pointer Struct*/
 
 
     const char* ControllerNames_[16]; /**<List Of Controller Names*/
