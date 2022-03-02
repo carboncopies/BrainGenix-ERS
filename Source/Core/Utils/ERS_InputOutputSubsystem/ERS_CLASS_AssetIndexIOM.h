@@ -70,7 +70,7 @@ public:
      * @param AssetID 
      * @param Data 
      */
-    bool UpdateAssetIndex(long AssetID, std::shared_ptr<ERS_STRUCT_IOData> Data);
+    bool UpdateAssetIndex(long AssetID, ERS_STRUCT_IOData* Data);
 
     /**
      * @brief Populates The Asset Metadata Parameters In the Data Struct Passed In Based On The AssetID Lookup
