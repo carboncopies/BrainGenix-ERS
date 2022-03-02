@@ -45,7 +45,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     ReadFile(AssetPath, Data.get());
     long ModelID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
     SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(ModelID) + std::string("' To Model '") + AssetPath + std::string("'")).c_str(), 4);
-    SystemUtils_->ERS_IOSubsystem_->WriteAsset(ModelID, Data);    
+    SystemUtils_->ERS_IOSubsystem_->WriteAsset(ModelID, Data.get());    
 
     // Copy Textures
     std::vector<long> TextureIDs = SystemUtils_->ERS_IOSubsystem_->BatchAllocateIDs(TextureList_.size());
