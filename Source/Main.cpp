@@ -123,7 +123,7 @@ int main() {
 
     SystemUtils->Logger_->Log("Instantiating ERS Project Writer Pointer", 4);
     std::shared_ptr<ERS_CLASS_ProjectWriter> sERSProjectWriter = std::make_shared<ERS_CLASS_ProjectWriter>(SystemUtils.get());
-    sERSLogger->Log("Instantiating Project Writer Shared Pointer", 4);
+    SystemUtils->Logger_->Log("Instantiating Project Writer Shared Pointer", 4);
     ProjectUtils->ProjectWriter_ = sERSProjectWriter;
 
     sERSLogger->Log("Instantiating ERS Project Manager Pointer", 4);
