@@ -90,7 +90,7 @@ int main() {
         *SystemUtils->LocalSystemConfiguration_.get()
     );
 
-    std::shared_ptr<ERS_CLASS_ModelWriter> sERSModelWriter = std::make_shared<ERS_CLASS_ModelWriter>(SystemUtils->Logger_.get(), sERSIOSubSystem);
+    std::shared_ptr<ERS_CLASS_ModelWriter> sERSModelWriter = std::make_shared<ERS_CLASS_ModelWriter>(SystemUtils->Logger_.get(), SystemUtils->ERS_IOSubsystem_.get());
     SystemUtils->ERS_ModelWriter_ = sERSModelWriter;
 
 
