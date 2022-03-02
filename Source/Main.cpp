@@ -128,7 +128,7 @@ int main() {
 
     SystemUtils->Logger_->Log("Instantiating ERS Project Manager Pointer", 4);
     std::shared_ptr<ERS_CLASS_ProjectManager> sERSProjectManager = std::make_shared<ERS_CLASS_ProjectManager>(SystemUtils.get(), sERSProjectLoader, sERSProjectWriter, sERSSceneManager, sERSSceneLoader);
-    sERSLogger->Log("Copying Shared Pointer To Project Utils Struct", 3);
+    SystemUtils->Logger_->Log("Copying Shared Pointer To Project Utils Struct", 3);
     ProjectUtils->ProjectManager_ = sERSProjectManager;
 
 
