@@ -113,7 +113,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
         }
 
         if (Success || SecondTryStatus) {
-            SystemUtils_->ERS_IOSubsystem_->WriteAsset(TextureIDs[i], Data);
+            SystemUtils_->ERS_IOSubsystem_->WriteAsset(TextureIDs[i], Data.get());
         }
 
     }
