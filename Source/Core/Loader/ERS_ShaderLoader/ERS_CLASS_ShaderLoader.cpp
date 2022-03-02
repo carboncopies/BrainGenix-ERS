@@ -60,7 +60,7 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::LoadShaderFromAsset(l
 
     std::unique_ptr<ERS_STRUCT_IOData> VertexData = std::make_unique<ERS_STRUCT_IOData>();
     std::unique_ptr<ERS_STRUCT_IOData> FragmentData = std::make_unique<ERS_STRUCT_IOData>();
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(VertexID, VertexData);
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(VertexID, VertexData.get());
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(FragmentID, FragmentData);
     std::string VertexText = std::string((const char*)VertexData->Data.get());
     std::string FragmentText = std::string((const char*)FragmentData->Data.get());
