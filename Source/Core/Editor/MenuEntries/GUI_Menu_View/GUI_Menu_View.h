@@ -54,7 +54,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Menu_View(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_CLASS_ThemeManager> ThemeManager, std::shared_ptr<ERS_CLASS_FontManager> FontManager);
+    GUI_Menu_View(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_ThemeManager* ThemeManager, std::shared_ptr<ERS_CLASS_FontManager> FontManager);
 
 
     /**
