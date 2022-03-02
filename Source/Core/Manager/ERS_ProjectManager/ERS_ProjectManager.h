@@ -52,7 +52,7 @@ public:
      * @param SystemUtils 
      * @param ProjectLoader 
      */
-    ERS_CLASS_ProjectManager(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_CLASS_ProjectLoader> ProjectLoader, std::shared_ptr<ERS_CLASS_ProjectWriter> ProjectWriter, ERS_CLASS_SceneManager* SceneManager, std::shared_ptr<ERS_CLASS_SceneLoader> SceneLoader);
+    ERS_CLASS_ProjectManager(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_CLASS_ProjectLoader> ProjectLoader, std::shared_ptr<ERS_CLASS_ProjectWriter> ProjectWriter, ERS_CLASS_SceneManager* SceneManager, ERS_CLASS_SceneLoader* SceneLoader);
 
     /**
      * @brief Destroy the ers class projectmanager object
