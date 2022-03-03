@@ -125,7 +125,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
     // Render To ImGui
-    ImGuiWindowFlags Flags;// = ImGuiWindowFlags_None;
+    ImGuiWindowFlags Flags = ImGuiWindowFlags_None;
     if (Viewports_[Index]->MenuEnabled) {
         Flags |= ImGuiWindowFlags_MenuBar;
     }
