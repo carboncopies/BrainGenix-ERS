@@ -130,7 +130,7 @@ int main() {
 
     // Setup Controller Manager
     SystemUtils->Logger_->Log("Instantiating ERS Controller Input Manager", 5);
-    std::shared_ptr<ERS_CLASS_ControllerInputManager> sERSControllerManager = std::make_unique<ERS_CLASS_ControllerInputManager>(SystemUtils.get());
+    HIDUtils->ControllerInputManager = std::make_unique<ERS_CLASS_ControllerInputManager>(SystemUtils.get());
     SystemUtils->Logger_->Log("Copying Shared Pointer To HumanInputDeviceUtils Struct", 4);
     HIDUtils->ControllerInputManager = sERSControllerManager;
 
