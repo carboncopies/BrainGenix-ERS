@@ -56,7 +56,7 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboo
     // Bound Pitch
     if (ConstrainPitch) {
 
-        if (Pitch > 89.0f) {
+        if (Pitch_ > 89.0f) {
             Pitch = 89.0f;
         }
         if (Pitch < -89.0f) {
