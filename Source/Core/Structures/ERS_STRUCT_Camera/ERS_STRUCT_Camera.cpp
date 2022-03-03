@@ -3,6 +3,7 @@
 //======================================================================//
 
 #include <ERS_STRUCT_Camera.h>
+#include <iostream>
 
 glm::mat4 ERS_STRUCT_Camera::GetViewMatrix() {
     return glm::lookAt(Position, Position + Front, Up);
@@ -44,6 +45,7 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboo
     // Change Offset By Sensitivity
     XOffset *= MouseSensitivity;
     YOffset *= MouseSensitivity;
+    std::cout<<XOffset<<"|"<<YOffset<<std::endl;
 
     // Update Pitch/Yaw
     Yaw += XOffset;
