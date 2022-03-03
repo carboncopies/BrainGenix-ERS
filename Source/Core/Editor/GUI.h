@@ -89,7 +89,7 @@ public:
     ERS_CLASS_SceneManager* SceneManager,
     ERS_STRUCT_ProjectUtils* ProjectUtils,
     ERS_CLASS_VisualRenderer* VisualRendererInstance,
-    std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils
+    ERS_STRUCT_HumanInputDeviceUtils* HIDUtils
     );
 
     /**
