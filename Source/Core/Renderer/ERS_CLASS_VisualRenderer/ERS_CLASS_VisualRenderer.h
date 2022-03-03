@@ -125,7 +125,7 @@ public:
      * @param Window 
      * @param Cursors3D 
      */
-    ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, std::shared_ptr<Cursors3D> Cursors3D);
+    ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, Cursors3D* Cursors3D);
 
     /**
      * @brief Destroy the Visual Renderer object
