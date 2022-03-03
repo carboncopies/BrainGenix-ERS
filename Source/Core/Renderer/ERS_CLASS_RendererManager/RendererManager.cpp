@@ -19,7 +19,7 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
     ProjectUtils_ = ProjectUtils;
     HIDUtils_ = HIDUtils;
 
-    Cursors3D_ = std::make_shared<Cursors3D>();
+    Cursors3D_ = std::make_unique<Cursors3D>();
 
 
     SystemUtils_->Logger_->Log("Initializing GLFW", 5);
