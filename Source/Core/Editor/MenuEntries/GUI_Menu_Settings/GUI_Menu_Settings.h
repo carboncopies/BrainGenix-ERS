@@ -32,7 +32,7 @@ class GUI_Menu_Settings {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
-    std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<HID Utils Pointer*/
+    ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_; /**<HID Utils Pointer*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils Structure*/
 
 
