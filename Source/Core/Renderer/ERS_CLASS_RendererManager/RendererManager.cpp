@@ -26,7 +26,7 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
     InitializeGLFW();
 
     SystemUtils_->Logger_->Log("Instantiating Renderers", 5);
-    VisualRenderer_ = std::make_unique<ERS_CLASS_VisualRenderer>(SystemUtils_, Window_, Cursors3D_);
+    VisualRenderer_ = std::make_unique<ERS_CLASS_VisualRenderer>(SystemUtils_, Window_, Cursors3D_.get());
     LoadEditorData();
     VisualRenderer_->SetOpenGLDefaults(OpenGLDefaults_.get());
 
