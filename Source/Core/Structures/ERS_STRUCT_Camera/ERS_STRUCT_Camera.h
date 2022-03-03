@@ -31,11 +31,11 @@ class ERS_STRUCT_Camera {
 public:
 
     // Camera Attributes
-    glm::vec3 Position;
-    glm::vec3 Front;
-    glm::vec3 Up;
-    glm::vec3 Right;
-    glm::vec3 WorldUp;
+    glm::vec3 Position_;
+    glm::vec3 Front_;
+    glm::vec3 Up_;
+    glm::vec3 Right_;
+    glm::vec3 WorldUp_;
 
     // Euler Angles
     float Yaw_;
