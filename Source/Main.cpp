@@ -131,8 +131,6 @@ int main() {
     // Setup Controller Manager
     SystemUtils->Logger_->Log("Instantiating ERS Controller Input Manager", 5);
     HIDUtils->ControllerInputManager = std::make_unique<ERS_CLASS_ControllerInputManager>(SystemUtils.get());
-    SystemUtils->Logger_->Log("Copying Shared Pointer To HumanInputDeviceUtils Struct", 4);
-    HIDUtils->ControllerInputManager = sERSControllerManager;
 
     // VR Driver here?
 
