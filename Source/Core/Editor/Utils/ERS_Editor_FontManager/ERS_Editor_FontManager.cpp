@@ -77,7 +77,7 @@ void ERS_CLASS_FontManager::UseFont(std::string Font) {
     // Index to Find Font
     int Index;
     bool FoundFont = false;
-    for (Index = 0; Index < FontNameList_.size(); Index++) {
+    for (Index = 0; (long)Index < FontNameList_.size(); Index++) {
         if (FontNameList_[Index] == Font) {
             FoundFont = true;
             break;
