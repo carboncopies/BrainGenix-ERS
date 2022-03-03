@@ -73,13 +73,13 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboo
 void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset) {
 
     // Update Movement Speed
-    MovementSpeed += (MovementSpeed*(float)YOffset/10.0f);
+    MovementSpeed_ += (MovementSpeed_*(float)YOffset/10.0f);
 
     // Adjust Movement Speed
-    if (MovementSpeed < MinMovementSpeed)
-        MovementSpeed = MinMovementSpeed;
-    if (MovementSpeed > MaxMovementSpeed)
-        MovementSpeed = MaxMovementSpeed;
+    if (MovementSpeed_ < MinMovementSpeed_)
+        MovementSpeed_ = MinMovementSpeed_;
+    if (MovementSpeed_ > MaxMovementSpeed_)
+        MovementSpeed_ = MaxMovementSpeed_;
 
     // Update Vectors
     //UpdateCameraVectors();
