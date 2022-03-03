@@ -120,6 +120,8 @@ void ERS_CLASS_InputProcessor::MouseCallback(double XPos, double YPos) {
     LastY = YPos;
 
 
+    std::cout<<XPos<<"|"<<YPos<<std::endl;
+
     // Process Camera Movement
     Camera_->ProcessMouseMovement(XOffset, YOffset);
 
