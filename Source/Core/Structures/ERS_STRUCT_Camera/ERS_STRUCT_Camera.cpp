@@ -50,7 +50,6 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboo
     Yaw_ += XOffset;
     Pitch_ -= YOffset;
 
-    std::cout<<Pitch_<<"|"<<Yaw_<<std::endl;
 
 
     // Bound Pitch
