@@ -22,7 +22,7 @@
 struct ERS_STRUCT_HumanInputDeviceUtils {
 
 
-    std::shared_ptr<ERS_CLASS_ControllerInputManager> ControllerInputManager; /**<Pointer to ERS Controller Input Manager*/
+    std::unique_ptr<ERS_CLASS_ControllerInputManager> ControllerInputManager; /**<Pointer to ERS Controller Input Manager*/
 
 
 };
