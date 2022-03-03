@@ -180,7 +180,7 @@ int main() {
 
 
         // Update Joysticks
-        sERSControllerManager->UpdateControllers();
+        HIDUtils->ControllerInputManager->UpdateControllers();
 
 
         // Update Renderers
