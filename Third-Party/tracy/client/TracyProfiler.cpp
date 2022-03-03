@@ -1,3 +1,10 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wall"
+#pragma GCC diagnostic ignored "-Wextra"
+#pragma GCC diagnostic ignored "-Wpedantic"
+
+
 #ifdef TRACY_ENABLE
 
 #ifdef _WIN32
@@ -4187,3 +4194,7 @@ TRACY_API void ___tracy_shutdown_profiler( void )
 #endif
 
 #endif
+
+
+
+#pragma GCC diagnostic pop

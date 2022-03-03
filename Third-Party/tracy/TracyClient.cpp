@@ -17,7 +17,6 @@
 #pragma GCC diagnostic ignored "-Wpedantic"
 
 
-
 #include "common/TracySystem.cpp"
 
 #ifdef TRACY_ENABLE
