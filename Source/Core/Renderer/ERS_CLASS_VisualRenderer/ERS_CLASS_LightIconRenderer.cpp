@@ -58,9 +58,9 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
     LightIconRendererShader_->MakeActive();
     glm::mat4 View = Camera->GetViewMatrix();
     glm::mat4 Projection = Camera->GetProjectionMatrix();
-    glm::vec3 CameraPosition = Camera->Position;
-    glm::vec3 CameraUp = Camera->Up;
-    glm::vec3 CameraRight = Camera->Right;
+    glm::vec3 CameraPosition = Camera->Position_;
+    glm::vec3 CameraUp = Camera->Up_;
+    glm::vec3 CameraRight = Camera->Right_;
 
     // Draw All Point Lights
     for (int i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights.size(); i++) {
