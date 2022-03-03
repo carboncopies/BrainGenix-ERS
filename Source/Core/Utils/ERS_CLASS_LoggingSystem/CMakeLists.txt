@@ -25,6 +25,8 @@ target_link_libraries(ERS_CLASS_LoggingSystem
     ERS_STRUCT_RGBColor
     )
 
-target_compile_options(ERS_CLASS_LoggingSystem PUBLIC -Wall -Wextra -pedantic)
+target_compile_options(ERS_CLASS_LoggingSystem PUBLIC -Wall -Wextra -Wpedantic)
+target_compile_options(ERS_CLASS_LoggingSystem PUBLIC -Werror=uninitialized)
+
 target_include_directories(ERS_CLASS_LoggingSystem PUBLIC ./)
 
