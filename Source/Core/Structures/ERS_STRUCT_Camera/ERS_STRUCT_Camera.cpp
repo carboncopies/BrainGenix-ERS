@@ -93,7 +93,7 @@ void ERS_STRUCT_Camera::UpdateCameraVectors() {
     glm::vec3 NewFront;
     NewFront.x = cos(glm::radians(Yaw_)) * cos(glm::radians(Pitch_));
     NewFront.y = sin(glm::radians(Pitch_));
-    NewFront.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
+    NewFront.z = sin(glm::radians(Yaw_)) * cos(glm::radians(Pitch_));
     Front = glm::normalize(NewFront);
 
     // Calculate Right, Up Vector
