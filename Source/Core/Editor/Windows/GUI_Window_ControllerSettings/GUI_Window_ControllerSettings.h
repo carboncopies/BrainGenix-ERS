@@ -63,7 +63,7 @@ public:
      * @brief Construct a new Window_ControllerSettings object
      * 
      */
-    Window_ControllerSettings(ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    Window_ControllerSettings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
     
     /**
      * @brief Destroy the Window_ControllerSettings object
