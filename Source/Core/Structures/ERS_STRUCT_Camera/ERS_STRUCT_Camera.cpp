@@ -60,7 +60,7 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboo
             Pitch_ = 89.0f;
         }
         if (Pitch_ < -89.0f) {
-            Pitch = -89.0f;
+            Pitch_ = -89.0f;
         }
     }
 
