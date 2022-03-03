@@ -55,7 +55,7 @@ private:
     std::shared_ptr<ERS_CLASS_Framebuffer> FramebufferManager_; /**<Pointer To Framebuffer Manager Instnace*/
     std::shared_ptr<ERS_STRUCT_Shader> Shader_; /**<ERS Shader Object (Main System Shader)*/
     std::shared_ptr<GUISystem> GuiSystem_; /**<Instance of GUI System*/
-    Cursors3D* Cursors3D_; /**<Setup 3D Cursor Class*/
+    std::unique_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
     
     ERS_STRUCT_SystemUtils* SystemUtils_; /**< Raw pointer to SystemUtils that is owned by the main() */
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Copy Of Project Utils Struct*/
