@@ -59,7 +59,7 @@ private:
     
     ERS_STRUCT_SystemUtils* SystemUtils_; /**< Raw pointer to SystemUtils that is owned by the main() */
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Copy Of Project Utils Struct*/
-    std::shared_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils_; /**<Copy Of Pointer To HIDM Struct*/
+    ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_; /**<Copy Of Pointer To HIDM Struct*/
     std::unique_ptr<ERS_STRUCT_OpenGLDefaults> OpenGLDefaults_; /**<Pointer To OpenGL Default Textures/Models*/
 
 
