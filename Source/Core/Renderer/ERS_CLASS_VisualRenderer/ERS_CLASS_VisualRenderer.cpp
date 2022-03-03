@@ -130,8 +130,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         Flags |= ImGuiWindowFlags_MenuBar;
     }
 
-    bool* ViewportEnable = Viewports_[Index]->Enabled.get();
-    bool Visible = ImGui::Begin(Viewports_[Index]->Name.c_str(), ViewportEnable, Flags);
+    bool Visible = ImGui::Begin(Viewports_[Index]->Name.c_str(), Viewports_[Index]->Enabled.get(), Flags);
 
     // Set Default Window Size
     ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
