@@ -126,7 +126,7 @@ int main() {
     SystemUtils->Logger_->Log("Setting Up Human Input Device Managers", 5);
 
     // Create Struct
-    std::unique_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils = std::make_shared<ERS_STRUCT_HumanInputDeviceUtils>();
+    std::unique_ptr<ERS_STRUCT_HumanInputDeviceUtils> HIDUtils = std::make_unique<ERS_STRUCT_HumanInputDeviceUtils>();
 
     // Setup Controller Manager
     SystemUtils->Logger_->Log("Instantiating ERS Controller Input Manager", 5);
