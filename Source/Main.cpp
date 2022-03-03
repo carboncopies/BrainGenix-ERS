@@ -78,7 +78,7 @@ int main() {
     try {
         SystemUtils->Logger_->Log("Reading Configuration File For 'IsLinux'", 2);
         SystemUtils->IsLinux_ = (*SystemUtils->LocalSystemConfiguration_.get())["IsLinux"].as<bool>();
-    } catch(YAML::BadSubscript) {
+    } catch(YAML::BadSubscript&) {
         SystemUtils->Logger_->Log("Error Reading Configuration File For 'IsLinux' Boolean Value, Defaulting To False", 9);
     }
 
