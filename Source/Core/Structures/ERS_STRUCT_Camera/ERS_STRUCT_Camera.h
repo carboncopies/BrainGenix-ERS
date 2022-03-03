@@ -48,8 +48,8 @@ public:
     float AspectRatio_;
 
     // Config Params
-    float MinMovementSpeed = 0.0f;
-    float MaxMovementSpeed = 50.0f;
+    float MinMovementSpeed_ = 0.0f;
+    float MaxMovementSpeed_ = 50.0f;
 
     // Constructor With Vectors
     ERS_STRUCT_Camera(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f),
