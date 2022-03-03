@@ -6,11 +6,11 @@
 #include <iostream>
 
 glm::mat4 ERS_STRUCT_Camera::GetViewMatrix() {
-    return glm::lookAt(Position, Position + Front, Up);
+    return glm::lookAt(Position_, Position_ + Front_, Up_);
 }
 
 glm::mat4 ERS_STRUCT_Camera::GetProjectionMatrix() {
-    return glm::perspective(glm::radians(Zoom), AspectRatio_, 0.1f, 100.0f);
+    return glm::perspective(glm::radians(Zoom_), AspectRatio_, 0.1f, 100.0f);
 }
 
 
@@ -21,21 +21,21 @@ void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio) {
 void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
 
     // Calculate Velocity
-    float Velocity = MovementSpeed * DeltaTime;
+    float Velocity = MovementSpeed_ * DeltaTime;
 
     // Update Position(s)
     if (Direction == FORWARD)
-        Position += Front * Velocity;
+        Position_ += Front_ * Velocity;
     if (Direction == BACKWARD)
-        Position -= Front * Velocity;
+        Position_ -= Front_ * Velocity;
     if (Direction == LEFT)
-        Position -= Right * Velocity;
+        Position_ -= Right_ * Velocity;
     if (Direction == RIGHT)
-        Position += Right * Velocity;
+        Position_ += Right_ * Velocity;
     if (Direction == UP)
-        Position += glm::vec3(0.0f, 1.0f, 0.0f) * Velocity;
+        Position_ += glm::vec3(0.0f, 1.0f, 0.0f) * Velocity;
     if (Direction == DOWN)
-        Position -= glm::vec3(0.0f, 1.0f, 0.0f) * Velocity;
+        Position_ -= glm::vec3(0.0f, 1.0f, 0.0f) * Velocity;
 
 }
 
@@ -43,8 +43,8 @@ void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement Direction, float DeltaTim
 void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch) {
 
     // Change Offset By Sensitivity
-    XOffset *= MouseSensitivity;
-    YOffset *= MouseSensitivity;
+    XOffset *= MouseSensitivity_;
+    YOffset *= MouseSensitivity_;
 
     // Update Pitch/Yaw
     Yaw += XOffset;
