@@ -97,7 +97,7 @@ void ERS_STRUCT_Camera::UpdateCameraVectors() {
     Front_ = glm::normalize(NewFront);
 
     // Calculate Right, Up Vector
-    Right = glm::normalize(glm::cross(Front, WorldUp));
+    Right_ = glm::normalize(glm::cross(Front_, WorldUp_));
     Up = glm::normalize(glm::cross(Right, Front));
 
 }
