@@ -42,9 +42,9 @@ public:
     float Pitch_;
 
     // Camera Options
-    double MovementSpeed;
-    float MouseSensitivity;
-    float Zoom;
+    double MovementSpeed_;
+    float MouseSensitivity_;
+    float Zoom_;
     float AspectRatio_;
 
     // Config Params
