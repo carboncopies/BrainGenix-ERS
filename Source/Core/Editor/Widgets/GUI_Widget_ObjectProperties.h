@@ -29,7 +29,7 @@ class Widget_ObjectProperties {
 
 private:
 
-    std::shared_ptr<Cursors3D> Cursors3D_; /**<Instance pointer to cursors3d class*/
+    Cursors3D* Cursors3D_; /**<Instance pointer to cursors3d class*/
 
 public:
 
