@@ -83,8 +83,8 @@ public:
                                 Zoom(45.0f) {
         Position = glm::vec3(PosX, PosY, PosZ);
         WorldUp = glm::vec3(UpX, UpY, UpZ);
-        Yaw = Yaw;
-        Pitch = Pitch;
+        Yaw_ = Yaw;
+        Pitch_ = Pitch;
         UpdateCameraVectors();
     }
 
