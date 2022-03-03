@@ -72,7 +72,7 @@ private:
     float* CameraView_; /**<Camera View Matrix, Converted From GLM::Mat4*/
     float* CameraProjection_; /**<Camera Projection Matrix, Converted From GLM::Mat4*/
 
-    std::shared_ptr<ERS_STRUCT_Camera> Camera_; /**<Camera Object Pointer*/
+    ERS_STRUCT_Camera* Camera_; /**<Camera Object Pointer*/
     ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE; /**<Set Current Cursor Operation*/
 
     bool HasObjectChanged_ = false; /*<Indicate If Update Needed*/
@@ -119,7 +119,7 @@ public:
      * @param Camera 
      * @param IsCameraMoving 
      */
-    void Draw(std::shared_ptr<ERS_STRUCT_Camera> Camera, bool IsCameraMoving, bool ShowCube, bool ShowCursor);
+    void Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCube, bool ShowCursor);
 
     /**
      * @brief Set the Loc Rot Scale object, accepts three glm::vec3 arrays indicating position, rotation and scale (in that order).

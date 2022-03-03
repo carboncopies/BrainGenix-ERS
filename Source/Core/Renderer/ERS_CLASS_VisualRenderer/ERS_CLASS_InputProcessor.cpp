@@ -5,7 +5,7 @@
 #include "ERS_CLASS_InputProcessor.h"
 
 
-ERS_CLASS_InputProcessor::ERS_CLASS_InputProcessor(std::shared_ptr<ERS_STRUCT_Camera> Camera, GLFWwindow *Window) {
+ERS_CLASS_InputProcessor::ERS_CLASS_InputProcessor(ERS_STRUCT_Camera* Camera, GLFWwindow *Window) {
 
     Camera_ = Camera;
     Window_ = Window;

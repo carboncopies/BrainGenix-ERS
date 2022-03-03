@@ -95,7 +95,7 @@ private:
      * @param RenderHeight 
      * @param SceneManager
      */
-    void UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, ERS_CLASS_SceneManager*SceneManager, std::shared_ptr<ERS_STRUCT_Camera> Camera);
+    void UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, ERS_CLASS_SceneManager*SceneManager, ERS_STRUCT_Camera* Camera);
 
 
     /**

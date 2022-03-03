@@ -222,7 +222,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         Shaders_[ShaderIndex]->MakeActive();
 
         // Update Shaders
-        UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewports_[Index]->Camera);
+        UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewports_[Index]->Camera.get());
         Shaders_[ShaderIndex]->SetMat4("projection", projection);
         Shaders_[ShaderIndex]->SetMat4("view", view);
 
@@ -272,7 +272,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
         // Draw 3D Cursor
-        Cursors3D_->Draw(Viewports_[Index]->Camera, CaptureCursor_, Viewports_[Index]->ShowCube, Viewports_[Index]->GizmoEnabled);
+        Cursors3D_->Draw(Viewports_[Index]->Camera.get(), CaptureCursor_, Viewports_[Index]->ShowCube, Viewports_[Index]->GizmoEnabled);
 
     }
 
@@ -331,7 +331,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
     // Populate Viewport Struct
     Viewport->ShaderIndex = DefaultShader_;
-    Viewport->Camera = std::make_shared<ERS_STRUCT_Camera>();
+    Viewport->Camera = std::make_unique<ERS_STRUCT_Camera>();
     Viewport->Grid = std::make_shared<ERS_CLASS_Grid>(SystemUtils_, Shaders_[0]);
     Viewport->LightIconRenderer = std::make_shared<ERS_CLASS_LightIconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[1]); //Set TO Shader 19 For Billboard Shader, Temp. Disabled As It Doesn't Work ATM
     Viewport->Name = ViewportName;
@@ -345,7 +345,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
     // Create Input Processor
     SystemUtils_->Logger_->Log("Creating New Input Processor", 4);
-    Viewport->Processor = std::make_shared<ERS_CLASS_InputProcessor>(Viewport->Camera, Window_);
+    Viewport->Processor = std::make_shared<ERS_CLASS_InputProcessor>(Viewport->Camera.get(), Window_);
 
 
     // Create Framebuffer
@@ -404,7 +404,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
 }
 
-void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, ERS_CLASS_SceneManager*SceneManager, std::shared_ptr<ERS_STRUCT_Camera> Camera) {
+void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, ERS_CLASS_SceneManager*SceneManager, ERS_STRUCT_Camera* Camera) {
 
     /**
 

@@ -37,7 +37,7 @@ struct ERS_STRUCT_Viewport {
     std::shared_ptr<ERS_CLASS_InputProcessor> Processor; /**<Pointer to Input Processor*/
     std::shared_ptr<ERS_CLASS_Grid> Grid; /**<Pointer to grid instance*/
     std::shared_ptr<ERS_CLASS_LightIconRenderer> LightIconRenderer; /**<Light Icon Renderer Instance*/
-    std::shared_ptr<ERS_STRUCT_Camera> Camera; /**<Pointer To Camera Instance*/
+    std::unique_ptr<ERS_STRUCT_Camera> Camera; /**<Pointer To Camera Instance*/
 
     unsigned int FramebufferObject; /**<FBO OpenGL ID*/
     unsigned int FramebufferColorObject; /**<FBCO OpenGL ID*/
