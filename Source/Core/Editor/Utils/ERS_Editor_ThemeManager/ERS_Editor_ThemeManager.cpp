@@ -15,7 +15,7 @@ ERS_CLASS_ThemeManager::ERS_CLASS_ThemeManager(ERS_CLASS_LoggingSystem* Logger, 
 
     // Default To Dark Mode
     int Index;
-    for (Index = 0; Index < ThemeNames_.size(); Index++) {
+    for (Index = 0; (long)Index < ThemeNames_.size(); Index++) {
         if (ThemeNames_[Index] == "Dark") {
             break;
         }
