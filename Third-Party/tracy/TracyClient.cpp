@@ -11,6 +11,12 @@
 
 // Define TRACY_ENABLE to enable profiler.
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wall"
+#pragma GCC diagnostic ignored "-Wextra"
+
+
+
 #include "common/TracySystem.cpp"
 
 #ifdef TRACY_ENABLE
@@ -54,3 +60,6 @@
 #endif
 
 #endif
+
+
+#pragma GCC diagnostic pop
