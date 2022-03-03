@@ -153,7 +153,7 @@ public:
      * @param DeltaTime 
      * @param SceneManager 
      */
-    void UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager);
+    void UpdateViewports(float DeltaTime, std::shared_ptr<ERS_CLASS_SceneManager> SceneManager);
 
     /**
      * @brief Delete a veiwport of specified index
