@@ -38,8 +38,8 @@ public:
     glm::vec3 WorldUp;
 
     // Euler Angles
-    float Yaw;
-    float Pitch;
+    float Yaw_;
+    float Pitch_;
 
     // Camera Options
     double MovementSpeed;
@@ -63,8 +63,8 @@ public:
         // Set Params
         Position = Position;
         WorldUp = Up;
-        Yaw = Yaw;
-        Pitch = Pitch;
+        Yaw_ = Yaw;
+        Pitch_ = Pitch;
         UpdateCameraVectors();
         
     }
