@@ -429,7 +429,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetFloat("FrameTime", DeltaTime);
     ActiveShader->SetInt("FrameNumber", FrameNumber_);
     ActiveShader->SetVec2("ViewportRes", RenderWidth, RenderHeight);
-    ActiveShader->SetVec3("CameraPosition", Camera->Position);
+    ActiveShader->SetVec3("CameraPosition", Camera->Position_);
 
 
 
