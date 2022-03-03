@@ -5,6 +5,7 @@ project(
 	VERSION "0.1.2"
 	LANGUAGES CXX
 	)
+add_compile_options(-Wall -Wextra -pedantic)
 
 # Set Compiler To G++ On APPLE
 # if (APPLE)
