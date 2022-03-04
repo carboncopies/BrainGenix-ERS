@@ -158,7 +158,7 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
                          8);
           }
 
-        } catch (std::invalid_argument) {
+        } catch (std::invalid_argument&) {
 
           // Log Error
           Logger_->Log(
