@@ -97,7 +97,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
 
     // Handle Window Input
-    for (int i = 0; i < Viewports_.size(); i++) {
+    for (int i = 0; (long)i < (long)Viewports_.size(); i++) {
 
         // Get Input Processor
         std::shared_ptr<ERS_CLASS_InputProcessor> InputProcessorInstance = Viewports_[i]->Processor;
