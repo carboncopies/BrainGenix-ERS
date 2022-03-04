@@ -21,7 +21,7 @@ void ERS_CLASS_InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
 
     // Get Mouse Scroll Info
     float MouseScrollX = ImGui::GetIO().MouseWheel;
-    float MouseScrollY = ImGui::GetIO().MouseWheelH;
+    //float MouseScrollY = ImGui::GetIO().MouseWheelH;
 
 
     // If Input Processing Enabled
