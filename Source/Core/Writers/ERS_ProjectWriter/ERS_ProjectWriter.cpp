@@ -53,7 +53,7 @@ bool ERS_CLASS_ProjectWriter::SaveProject(std::shared_ptr<ERS_STRUCT_Project> Pr
 
     ProjectEmitter<<YAML::Key<<"SceneIDs";
     ProjectEmitter<<YAML::Key<<YAML::BeginMap;
-    for (int i = 0; i < ProjectPointer->SceneIDs.size(); i++) {
+    for (int i = 0; i < (long)ProjectPointer->SceneIDs.size(); i++) {
         ProjectEmitter<<YAML::Key<<i<<ProjectPointer->SceneIDs[i];
     }
     ProjectEmitter<<YAML::EndMap;
