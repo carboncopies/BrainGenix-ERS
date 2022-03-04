@@ -34,7 +34,7 @@ void ERS_CLASS_ThemeManager::ApplyThemes(const char* ThemeName) {
 
     int Index;
     bool HasFoundtheme = false;
-    for (Index = 0; (long)Index < ThemeNames_.size(); Index++) {
+    for (Index = 0; (long)Index < (long)ThemeNames_.size(); Index++) {
         if (ThemeNames_[Index] == std::string(ThemeName)) {
             HasFoundtheme = true;
             break;
