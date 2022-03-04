@@ -28,7 +28,7 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
     YAML::Node AssetIndexMetadata;
     try {
         AssetIndexMetadata = YAML::Load(EncodedString);
-    } catch(YAML::BadFile) {
+    } catch (YAML::BadFile&) {
         Logger_->Log("Error Decoding, Invalid YAML Syntax", 9);
         return false;
     }
