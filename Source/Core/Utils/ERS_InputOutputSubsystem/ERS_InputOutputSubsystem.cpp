@@ -18,7 +18,7 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
   Logger_->Log("Reading Configuration For 'BOOL' 'UseDatabaseLoading'", 1);
   try {
     UseDatabase_ = SystemConfiguration["UseDatabaseLoading"].as<bool>();
-  } catch (YAML::TypedBadConversion<bool>) { // Config Param Doesn't Exist
+  } catch (YAML::TypedBadConversion<bool>&) { // Config Param Doesn't Exist
     Logger_->Log("Configuration Error, Parameter 'UseDatabaseLoading' Is Not "
                  "In Config, System Will Default To False",
                  8);
