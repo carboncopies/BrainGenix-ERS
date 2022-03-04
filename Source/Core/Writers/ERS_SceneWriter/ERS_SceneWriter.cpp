@@ -90,7 +90,7 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputSce
     }
 
     //---- Write Directional Lights ----//
-    for (int i = 0; i < InputScene->DirectionalLights.size(); i++) {
+    for (int i = 0; (long)i < (long)InputScene->DirectionalLights.size(); i++) {
 
         Output << YAML::Key << AssetIndex;
         Output << YAML::BeginMap;
