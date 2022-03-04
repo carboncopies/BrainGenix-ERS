@@ -62,7 +62,7 @@ bool ERS_CLASS_ProjectWriter::SaveProject(std::shared_ptr<ERS_STRUCT_Project> Pr
 
     ProjectEmitter<<YAML::Key<<"EditorLayouts";
     ProjectEmitter<<YAML::Key<<YAML::BeginMap;
-    for (int i = 0; i < ProjectPointer->EditorLayoutIDs.size(); i++) {
+    for (int i = 0; i < (long)ProjectPointer->EditorLayoutIDs.size(); i++) {
         ProjectEmitter<<YAML::Key<<i<<ProjectPointer->EditorLayoutIDs[i];
     }
     ProjectEmitter<<YAML::EndMap;
