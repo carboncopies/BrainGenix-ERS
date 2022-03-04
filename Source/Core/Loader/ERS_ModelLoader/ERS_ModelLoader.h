@@ -91,7 +91,7 @@ private:
      * @param TypeName 
      * @return std::vector<ERS_STRUCT_Texture> 
      */
-    void LoadMaterialTextures(std::vector<int>* IDs, std::vector<std::string>* Types, std::vector<std::string> TextureList, ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName);
+    void LoadMaterialTextures(std::vector<int>* IDs, std::vector<std::string>* Types, std::vector<std::string> TextureList, aiMaterial *Mat, aiTextureType Type, std::string TypeName);
 
 
 public:
