@@ -12,7 +12,7 @@ void Widget_FrameratePlot::Draw() {
 
 
     // Cap Array Length At Target Set
-    if (FramerateHistory_.size() > HistoryLength_) {
+    if ((long)FramerateHistory_.size() > (long)HistoryLength_) {
         FramerateHistory_.erase(FramerateHistory_.begin());
     } else {
 
