@@ -165,7 +165,7 @@ std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputSce
     }
 
     //---- Write Spot Lights ----//
-    for (int i = 0; i < InputScene->SpotLights.size(); i++) {
+    for (int i = 0; (long)i < (long)InputScene->SpotLights.size(); i++) {
 
         Output << YAML::Key << AssetIndex;
         Output << YAML::BeginMap;
