@@ -415,7 +415,7 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, aiMe
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Material, aiTextureType_DIFFUSE, "texture_diffuse");
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Material, aiTextureType_DIFFUSE_ROUGHNESS, "texture_diffuse_roughness");
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Material, aiTextureType_DISPLACEMENT, "texture_displacement");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_EMISSION_COLOR, "texture_emission_color");
+    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Material, aiTextureType_EMISSION_COLOR, "texture_emission_color");
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_EMISSIVE, "texture_emissive");
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_HEIGHT, "texture_height");
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_LIGHTMAP, "texture_lightmap");
