@@ -129,7 +129,7 @@ public:
      * 
      * @param ActiveScene 
      */
-    void ProcessNewModels(std::shared_ptr<ERS_STRUCT_Scene> ActiveScene);
+    void ProcessNewModels(ERS_STRUCT_Scene* ActiveScene);
 
 
     void AddModelToLoadingQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures = false);
