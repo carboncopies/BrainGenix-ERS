@@ -34,7 +34,7 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(ERS_STRUCT_Contr
     YAML::Node SettingsData;
     try {
         SettingsData = YAML::Load(SettingsEncodedString);
-    } catch(YAML::BadFile) {
+    } catch(YAML::BadFile&) {
         SystemUtils_->Logger_->Log("Error Loading, Invalid YAML Syntax", 9);
         return false;
     }
