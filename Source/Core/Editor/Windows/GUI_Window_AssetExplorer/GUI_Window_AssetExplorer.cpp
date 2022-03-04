@@ -103,7 +103,7 @@ void Window_AssetExplorer::Draw() {
                         }
 
                         // Iterate Through All Indexed Assets, List In Child Window
-                        for (int i = 0; i < SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size(); i++) {
+                        for (int i = 0; i < (long)SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size(); i++) {
                             bool ItemSelected = ImGui::Selectable(std::to_string(SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[i]).c_str(), AssetIDSelectionList_[i]);
                             if (ItemSelected) {
                                 AssetIDSelectionList_[i] = !AssetIDSelectionList_[i];
