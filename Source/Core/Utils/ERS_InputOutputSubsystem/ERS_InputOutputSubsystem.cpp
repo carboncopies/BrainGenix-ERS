@@ -45,7 +45,7 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
           "Reading Configuration For 'STRING' 'DefaultProjectDirectory'", 1);
       AssetPath_ =
           SystemConfiguration["DefaultProjectDirectory"].as<std::string>();
-    } catch (YAML::TypedBadConversion<std::string>) {
+    } catch (YAML::TypedBadConversion<std::string>&) {
       Logger_->Log("Configuration Error, Parameter 'DefaultProjectDirectory' "
                    "Is Not In Config, System Will Exit",
                    10);
