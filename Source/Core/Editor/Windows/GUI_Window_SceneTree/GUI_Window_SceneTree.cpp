@@ -120,7 +120,7 @@ void Window_SceneTree::Draw() {
 
                     if (TreeNode) {
 
-                        DrawScene(SceneManager_->Scenes_[SceneIndex], SceneIndex);
+                        DrawScene(SceneManager_->Scenes_[SceneIndex].get(), SceneIndex);
 
                         ImGui::TreePop();
                     }
