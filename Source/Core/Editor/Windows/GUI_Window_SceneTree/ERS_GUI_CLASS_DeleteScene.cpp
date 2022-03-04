@@ -14,8 +14,6 @@ Subwindow_DeleteScene::Subwindow_DeleteScene(ERS_CLASS_SceneManager* SceneManage
 
 Subwindow_DeleteScene::~Subwindow_DeleteScene() {
 
-    bool ShowDeleteConfirm_ = false;
-    bool ShowOneSceneDeleteError_ = false;
 
 }
 
