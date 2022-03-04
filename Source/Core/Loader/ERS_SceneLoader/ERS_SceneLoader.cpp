@@ -62,7 +62,7 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
 
 
     // Iterate Through Vector To Add Each Asset To Loading Queue Of Requested Type
-    for (long i = 0; i < SceneDataNode.size(); i++) {
+    for (long i = 0; (long)i < (long)SceneDataNode.size(); i++) {
 
         // Get Asset Information
         std::string AssetName = SceneDataNode[i]["AssetName"].as<std::string>();
