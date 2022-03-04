@@ -8,7 +8,7 @@
 void GUI_Windowutil_DuplicateScene(ERS_CLASS_SceneManager* SceneManager, int SceneIndex) {
 
     // Get Current Scene
-    ERS_STRUCT_Scene* NewScene = SceneManager->Scenes_[SceneIndex];
+    ERS_STRUCT_Scene* NewScene = SceneManager->Scenes_[SceneIndex].get();
 
     // Update Name
     std::string CurrentName = NewScene->SceneName;
