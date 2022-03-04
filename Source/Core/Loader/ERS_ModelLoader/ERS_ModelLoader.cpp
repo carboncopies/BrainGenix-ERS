@@ -42,7 +42,7 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
     BlockThread_.unlock();
 
     SystemUtils_->Logger_->Log("Joining Worker Threads", 6);
-    for (int i = 0; i < WorkerThreads_.size(); i++) {
+    for (int i = 0; i < (long)WorkerThreads_.size(); i++) {
         SystemUtils_->Logger_->Log(std::string(std::string("Joining Worker Thread ") + std::to_string(i)).c_str(), 3);
         WorkerThreads_[i].join();
     }
