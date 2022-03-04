@@ -21,7 +21,7 @@ ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* Syste
 ERS_CLASS_VisualRenderer::~ERS_CLASS_VisualRenderer() {
 
     // Destroy Framebuffers
-    for (int i = 0; i < Viewports_.size(); i++) {
+    for (int i = 0; (long)i < (long)Viewports_.size(); i++) {
 
         glDeleteFramebuffers(1, &Viewports_[i]->FramebufferObject);
         glDeleteTextures(1, &Viewports_[i]->FramebufferColorObject);
