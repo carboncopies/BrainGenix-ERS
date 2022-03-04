@@ -61,7 +61,7 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
 void ERS_CLASS_ProjectManager::WriteProject(long AssetID) {
 
     // Get Project Pointer. Write Project
-    std::shared_ptr<ERS_STRUCT_Project> ProjectPtr = std::make_shared<ERS_STRUCT_Project>(Project_);
+    ERS_STRUCT_Project* ProjectPtr = new ERS_STRUCT_Project(Project_);
     ProjectWriter_->SaveProject(ProjectPtr, AssetID);
 
 }
