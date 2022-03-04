@@ -6,7 +6,7 @@
 
 
 
-ERS_CLASS_Framebuffer::ERS_CLASS_Framebuffer(ERS_CLASS_LoggingSystem* Logger, std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader, float Width, float Height) {
+ERS_CLASS_Framebuffer::ERS_CLASS_Framebuffer(ERS_CLASS_LoggingSystem* Logger, ERS_CLASS_ShaderLoader* ShaderLoader, float Width, float Height) {
 
     Logger_ = Logger;
     ShaderLoader_ = ShaderLoader;
