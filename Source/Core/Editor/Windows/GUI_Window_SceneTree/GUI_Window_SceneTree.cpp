@@ -47,7 +47,7 @@ void Window_SceneTree::Draw() {
             // Convert Vector to Array
             if (ImGui::BeginCombo("Active Scene", SceneManager_->Scenes_[ActiveScene]->SceneName.c_str())) {
 
-                for (int i = 0; i < SceneManager_->Scenes_.size(); i++) {
+                for (int i = 0; (long)i < (long)SceneManager_->Scenes_.size(); i++) {
 
                     // Setup Selector
                     bool Selector = false;
