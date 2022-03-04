@@ -37,7 +37,7 @@ private:
     unsigned int RenderTexture_; /**<OpenGL Renderes To This Texture, Then It's Displayed. (OpenGL Handle)*/
     unsigned int RenderBufferObject_; /**<RenderBuffer Object Handle.*/
 
-    std::shared_ptr<ERS_CLASS_ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instance*/
+    ERS_CLASS_ShaderLoader* ShaderLoader_; /**<Pointer To Shader Loader Instance*/
     ERS_STRUCT_Shader ScreenShader_; /**<Screen Shader Instance, Used To Display Framebuffer To Screen*/
 
 
