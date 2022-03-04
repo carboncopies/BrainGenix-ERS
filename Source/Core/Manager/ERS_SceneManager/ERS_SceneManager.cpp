@@ -37,7 +37,7 @@ bool ERS_CLASS_SceneManager::AddScene(ERS_STRUCT_Scene Scene) {
     }
 
     // Append Scene To Scenes Model
-    Scenes_.push_back(std::make_shared<ERS_STRUCT_Scene>(Scene));
+    Scenes_.push_back(std::make_unique<ERS_STRUCT_Scene>(Scene));
 
     return true;
 
