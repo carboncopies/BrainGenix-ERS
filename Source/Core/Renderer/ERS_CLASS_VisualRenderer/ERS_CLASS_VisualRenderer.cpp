@@ -340,7 +340,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     Viewport->Height = 1;
 
     Viewport->WasSelected = false;
-    Viewport->Enabled = std::make_shared<bool>(true);
+    Viewport->Enabled = std::make_unique<bool>(true);
 
 
     // Create Input Processor
