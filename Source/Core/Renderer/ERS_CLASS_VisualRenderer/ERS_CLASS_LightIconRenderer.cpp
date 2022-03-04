@@ -63,7 +63,7 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
     glm::vec3 CameraRight = Camera->Right_;
 
     // Draw All Point Lights
-    for (int i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights.size(); i++) {
+    for (int i = 0; (long)i < (long)SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights.size(); i++) {
 
         glm::vec3 LightPosition = SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos;
         glm::mat4 NewModelMatrix = glm::translate(LightIconRendererModelArray_, LightPosition);
