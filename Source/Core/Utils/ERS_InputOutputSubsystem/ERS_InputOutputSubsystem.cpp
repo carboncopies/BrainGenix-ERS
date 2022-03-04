@@ -178,7 +178,7 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
               9);
         }
       }
-    } catch (std::filesystem::filesystem_error) {
+    } catch (std::filesystem::filesystem_error&) {
       Logger_->Log("Error Indexing Assets, Local File Loading Enabled But "
                    "Asset Directory Does Not Exist",
                    9);
