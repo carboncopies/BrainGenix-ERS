@@ -55,7 +55,7 @@ private:
      * @param Scene 
      * @param SceneIndex
      */
-    void DrawScene(std::shared_ptr<ERS_STRUCT_Scene> Scene, int SceneIndex);
+    void DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex);
 
 
 
