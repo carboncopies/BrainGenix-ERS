@@ -61,7 +61,7 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
 void ERS_CLASS_ProjectManager::WriteProject(long AssetID) {
 
     // Get Project Pointer. Write Project
-    ERS_STRUCT_Project* ProjectPtr = new ERS_STRUCT_Project(Project_);
+    ERS_STRUCT_Project* ProjectPtr = &Project_;
     ProjectWriter_->SaveProject(ProjectPtr, AssetID);
 
 }
