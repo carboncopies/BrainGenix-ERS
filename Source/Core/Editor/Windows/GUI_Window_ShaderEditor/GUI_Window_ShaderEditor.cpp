@@ -137,7 +137,7 @@ void Window_ShaderEditor::DrawEditorWindow() {
                     // Program Selector Dropdown
                     if (ImGui::BeginMenu("Open")) {
 
-                        for (long i = 0; i < ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.size(); i++) {
+                        for (long i = 0; (long)i < (long)ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.size(); i++) {
 
                             std::string ShaderProgramName = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].Name;
                             if (ImGui::MenuItem(ShaderProgramName.c_str())) {
