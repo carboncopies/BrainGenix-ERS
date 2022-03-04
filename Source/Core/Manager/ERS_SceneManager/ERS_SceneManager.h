@@ -32,7 +32,7 @@ private:
 
 public:
 
-    std::vector<ERS_STRUCT_Scene*> Scenes_; /**<Vector Containing Scenes To Be Drawn*/
+    std::vector<std::unique_ptr<ERS_STRUCT_Scene>> Scenes_; /**<Vector Containing Scenes To Be Drawn*/
     int ActiveScene_ = 0; /**<Set The Active Scene */
 
 public:
