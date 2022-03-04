@@ -49,7 +49,7 @@ void ERS_FUNCTION_CompareIndexDelta(ERS_CLASS_LoggingSystem* Logger_, std::share
 
     // Iterate Through Any Remaining Assets (Should Be Zero)
     // Would Be Caused By An Asset Not Being In Metadata For Some Reason
-    for (long i = 0; i < RemainingAssetIDs.size(); i++) { 
+    for (long i = 0; i < (long)RemainingAssetIDs.size(); i++) { 
 
         long IndexChecking = RemainingAssetIDs[i];
         Logger_->Log(std::string(std::string("No Asset Metadata Entry Exists For Asset '") + std::to_string(IndexChecking) + std::string("'")).c_str(), 8);
