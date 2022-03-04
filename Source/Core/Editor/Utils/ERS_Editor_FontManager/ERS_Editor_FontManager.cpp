@@ -127,7 +127,7 @@ void ERS_CLASS_FontManager::FontSelectorWindow(bool *WindowEnabled) {
 
                 ImGui::BeginChild("Font Radio Buttons", ImVec2(300, 400), true);
 
-                    for (int i = 0; (long)i < FontNameList_.size(); i++) {
+                    for (int i = 0; (long)i < (long)FontNameList_.size(); i++) {
                         ImGui::RadioButton(FontNameList_[i].c_str(), &FontSelector_, i);
                     }
 
