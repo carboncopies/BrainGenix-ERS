@@ -34,7 +34,7 @@ void ERS_FUNCTION_CompareIndexDelta(ERS_CLASS_LoggingSystem* Logger_, std::share
 
         // If Found, Remove From IDs Of Remaining Indexes
         if (Found) {
-            for (long i = 0; i < RemainingAssetIDs.size(); i++) {
+            for (long i = 0; i < (long)RemainingAssetIDs.size(); i++) {
                 if (RemainingAssetIDs[i] == IndexChecking) {
                     RemainingAssetIDs.erase(RemainingAssetIDs.begin() + i);
                     break;
