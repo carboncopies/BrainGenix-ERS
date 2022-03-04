@@ -120,7 +120,7 @@ bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, ERS_STRUCT_IOData* 
 
     // Check If Already In Loaded Assets, If Not, Add
     bool AlreadyInIndex = false;
-    for (long i = 0; (long)i < AssetIDsFound_.size(); i++) {
+    for (long i = 0; (long)i < (long)AssetIDsFound_.size(); i++) {
         if (AssetIDsFound_[i] == AssetID) {
             AlreadyInIndex = true;
             break;
