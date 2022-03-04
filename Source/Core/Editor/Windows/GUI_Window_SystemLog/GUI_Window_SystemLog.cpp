@@ -54,7 +54,7 @@ ImGui::SetWindowSize(ImVec2(300,0), ImGuiCond_FirstUseEver);
 
             // Draw Log Textbox
             ImGui::BeginChild("Log Text", ImVec2(0,0), true, ImGuiWindowFlags_HorizontalScrollbar);
-            for (int i = StartingLogIndex_; i < SystemUtils_->Logger_->LogMessages_.size(); i++) {
+            for (int i = StartingLogIndex_; (unsigned int)i < SystemUtils_->Logger_->LogMessages_.size(); i++) {
 
                 // Check Log Level
                 if (SystemUtils_->Logger_->LogLevels_[i] > MinLogLevel_) {
