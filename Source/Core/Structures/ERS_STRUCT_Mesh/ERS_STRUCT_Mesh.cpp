@@ -81,7 +81,7 @@ void ERS_STRUCT_Mesh::SetupMesh() {
     HasShininess_ = false;
     HasSpecular_ = false;
 
-    for (int i = 0; i < TextureNames.size(); i++) {
+    for (int i = 0; i < (long)TextureNames.size(); i++) {
 
         std::string Name = TextureNames[i];
 
