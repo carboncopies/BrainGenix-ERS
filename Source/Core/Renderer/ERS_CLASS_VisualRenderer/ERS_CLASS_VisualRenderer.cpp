@@ -100,7 +100,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     for (int i = 0; (long)i < (long)Viewports_.size(); i++) {
 
         // Get Input Processor
-        std::shared_ptr<ERS_CLASS_InputProcessor> InputProcessorInstance = Viewports_[i]->Processor;
+        ERS_CLASS_InputProcessor* InputProcessorInstance = Viewports_[i]->Processor.get();
 
         bool CaptureEnabled = false;
         if ((CaptureIndex_ == i) && (CaptureCursor_)) {
