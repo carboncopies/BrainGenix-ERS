@@ -121,7 +121,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
 }
 
-void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*SceneManager, float DeltaTime) {
+void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*SceneManager, float DeltaTime, bool DrawCursor) {
 
 
     // Render To ImGui
@@ -228,7 +228,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
         // Update Cursor If Selection Changed
-        if (SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged) {
+        if (SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged && DrawCursor) {
 
             // Get Selected Model
             int SelectedModel = SceneManager->Scenes_[SceneManager->ActiveScene_]->SelectedModel;
