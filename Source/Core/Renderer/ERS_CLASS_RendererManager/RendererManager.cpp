@@ -31,7 +31,7 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
     VisualRenderer_->SetOpenGLDefaults(OpenGLDefaults_.get());
 
     // Setup Shaders
-    ShaderLoader_ = std::make_shared<ERS_CLASS_ShaderLoader>(SystemUtils_);
+    ShaderLoader_ = std::make_unique<ERS_CLASS_ShaderLoader>(SystemUtils_);
     for (int i = 0; (long)i < (long)ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.size(); i++) {
         long VertexShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].VertexID;
         long FragmentShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].FragmentID;
