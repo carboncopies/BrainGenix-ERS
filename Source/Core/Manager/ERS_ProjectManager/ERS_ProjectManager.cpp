@@ -36,7 +36,7 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
 
     // Load Controller Settings
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Project Game Controller Settings")).c_str(), 5);
-    for (int i = 0; i < Project_.GameControllerSettingsIDs.size(); i++) {
+    for (int i = 0; (long)i < (long)Project_.GameControllerSettingsIDs.size(); i++) {
 
         // Log Loading
         SystemUtils_->Logger_->Log(std::string(std::string("Loading Project Controller Settings With ID ") + std::to_string(Project_.GameControllerSettingsIDs[i])).c_str(), 5);
