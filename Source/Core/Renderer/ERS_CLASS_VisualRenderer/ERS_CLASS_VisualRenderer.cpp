@@ -345,7 +345,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
     // Create Input Processor
     SystemUtils_->Logger_->Log("Creating New Input Processor", 4);
-    Viewport->Processor = std::make_shared<ERS_CLASS_InputProcessor>(Viewport->Camera.get(), Window_);
+    Viewport->Processor = std::make_unique<ERS_CLASS_InputProcessor>(Viewport->Camera.get(), Window_);
 
 
     // Create Framebuffer
