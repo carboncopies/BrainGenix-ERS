@@ -81,7 +81,7 @@ void ERS_CLASS_ImportAsset::AddToImportQueue(std::vector<std::string> AssetPaths
     SystemUtils_->Logger_->Log("Appending Assets To Asset Import Queue", 5);
     LockAssetImportQueue_.lock();
 
-    for (int i = 0; i < AssetPaths.size(); i++) {
+    for (int i = 0; (long)i < (long)AssetPaths.size(); i++) {
 
         std::string LogStr = std::string("Appending Asset: '") + AssetPaths[i] + std::string("' To Import Queue");
         SystemUtils_->Logger_->Log(LogStr.c_str(), 4);
