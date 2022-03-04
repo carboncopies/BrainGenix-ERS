@@ -15,9 +15,6 @@ Subwindow_DeleteModel::Subwindow_DeleteModel(ERS_CLASS_SceneManager* SceneManage
 
 Subwindow_DeleteModel::~Subwindow_DeleteModel() {
 
-    bool ShowDeleteConfirm_ = false;
-    bool ShowOneSceneDeleteError_ = false;
-
 }
 
 void Subwindow_DeleteModel::DeleteModel(int SceneIndex, int ModelIndex) {
