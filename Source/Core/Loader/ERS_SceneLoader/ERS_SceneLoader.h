@@ -80,7 +80,7 @@ public:
      * @param Scene 
      * @param AssetID 
      */
-    void AddModel(std::shared_ptr<ERS_STRUCT_Scene> Scene, long AssetID);
+    void AddModel(ERS_STRUCT_Scene* Scene, long AssetID);
 
 
 
