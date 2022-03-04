@@ -24,7 +24,7 @@ void ERS_FUNCTION_CompareIndexDelta(ERS_CLASS_LoggingSystem* Logger_, std::share
 
         // Check If Used asset ID Index Has Asset Found In Metadata
         bool Found = false;
-        for (long i = 0; i < UsedAssetIDs.size(); i++) {
+        for (long i = 0; i < (long)UsedAssetIDs.size(); i++) {
             if (UsedAssetIDs[i] == IndexChecking) {
                 Found = true;
                 Logger_->Log(std::string(std::string("Matched Asset Pair With ID '") + std::to_string(IndexChecking) + std::string("'")).c_str(), 4);
