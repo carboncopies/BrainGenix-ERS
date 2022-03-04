@@ -33,7 +33,7 @@ struct ERS_STRUCT_Viewport {
     bool GridEnabled = true; /**<Enable/Disable The Viewport's Background Grid*/
     int ShaderIndex = 0; /**<Index of the shader to be used*/
 
-    std::shared_ptr<bool> Enabled; /**<Indicates if the viewport is enabled*/
+    std::unique_ptr<bool> Enabled; /**<Indicates if the viewport is enabled*/
     std::unique_ptr<ERS_CLASS_InputProcessor> Processor; /**<Pointer to Input Processor*/
     std::unique_ptr<ERS_CLASS_Grid> Grid; /**<Pointer to grid instance*/
     std::unique_ptr<ERS_CLASS_LightIconRenderer> LightIconRenderer; /**<Light Icon Renderer Instance*/
