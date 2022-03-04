@@ -150,7 +150,7 @@ void Window_ControllerSettings::Draw() {
                         SelectedControllerProfile_ = ControllerSettings->size() - 1;
                     }
 
-                    for (int i = 0; i < ControllerSettings->size(); i++) {
+                    for (int i = 0; (long)i < (long)ControllerSettings->size(); i++) {
                         ControllerProfileNames_[i] = (*ControllerSettings)[i].SettingsProfileName.c_str();
                     }
 
