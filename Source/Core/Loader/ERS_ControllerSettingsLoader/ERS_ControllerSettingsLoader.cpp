@@ -82,7 +82,7 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(ERS_STRUCT_Contr
         ControllerSettings->DPADLeftButtonIndex = SettingsData["DPADLeftButtonIndex"].as<int>();
         ControllerSettings->DPADRightButtonIndex = SettingsData["DPADRightButtonIndex"].as<int>();
 
-    } catch(YAML::BadSubscript) {
+    } catch(YAML::BadSubscript&) {
         
         SystemUtils_->Logger_->Log("Error Loading Controller Configuration, Invalid Parameter(s), Will Use Default Instead", 9);
         
