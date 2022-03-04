@@ -277,7 +277,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     } catch(YAML::TypedBadConversion<long>&) {
         SystemUtils_->Logger_->Log(std::string(std::string("Error Loading Model '") + std::to_string(AssetID) + std::string("', ModelID/TextureIDs Corrupt")).c_str(), 9);
         return;        
-    } catch(YAML::TypedBadConversion<std::string>) {
+    } catch(YAML::TypedBadConversion<std::string>&) {
         SystemUtils_->Logger_->Log(std::string(std::string("Error Loading Model '") + std::to_string(AssetID) + std::string("', Model Name Corrupt")).c_str(), 9);
         return;        
     } 
