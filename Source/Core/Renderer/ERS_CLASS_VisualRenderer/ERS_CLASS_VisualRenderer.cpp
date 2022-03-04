@@ -83,7 +83,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     FrameNumber_++;
 
     // Iterate Through Viewports
-    for (int i = 0; i<Viewports_.size(); i++) {
+    for (int i = 0; (long)i < (long)Viewports_.size(); i++) {
         UpdateViewport(i, SceneManager, DeltaTime);
     }
 
