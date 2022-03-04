@@ -441,9 +441,11 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     // When these limitations are reached, ERS will remove the lights that are farthest from the object
 
     // Prepare To Handle Lights
-    const int DirectionalLightLimit = 4;
-    const int PointLightLimit = 64;
-    const int SpotLightLimit = 32;
+    //const int DirectionalLightLimit = 4;
+    //const int PointLightLimit = 64;
+    //const int SpotLightLimit = 32;
+
+
     std::shared_ptr<ERS_STRUCT_Scene> ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_];
 
 
