@@ -65,7 +65,7 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
 bool ERS_CLASS_SceneManager::SetActiveScene(int SceneIndex) {
 
     // Check SceneIndex Validity
-    if (SceneIndex < 0 || (long)SceneIndex > Scenes_.size()-1) {
+    if (SceneIndex < 0 || (long)SceneIndex > (long)Scenes_.size()-1) {
 
         // Log Scene Switch Error
         Logger_->Log(std::string(std::string("Failed To Set Active Scene To Index: ") + std::to_string(SceneIndex) + std::string(" Because Scenes_ Only Has") + std::to_string(Scenes_.size()-1) + std::string(" Elements")).c_str(), 7); 
