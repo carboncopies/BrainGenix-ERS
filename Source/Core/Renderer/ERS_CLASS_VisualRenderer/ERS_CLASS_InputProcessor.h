@@ -105,6 +105,6 @@ public:
      * @param Logger_ 
      * @param DeltaTime 
      */
-    void ProcessKeyboardInput(ERS_CLASS_LoggingSystem* Logger_, float DeltaTime, bool WindowCaptureEnabled);
+    void ProcessKeyboardInput(float DeltaTime, bool WindowCaptureEnabled);
 
 };
