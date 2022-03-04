@@ -101,7 +101,7 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
 
 
     // Draw All Directional Lights
-    for (int i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights.size(); i++) {
+    for (int i = 0; (long)i < (long)SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights.size(); i++) {
 
         glm::vec3 LightPosition = SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[i]->Pos;
         glm::mat4 NewModelMatrix = glm::translate(LightIconRendererModelArray_, LightPosition);
