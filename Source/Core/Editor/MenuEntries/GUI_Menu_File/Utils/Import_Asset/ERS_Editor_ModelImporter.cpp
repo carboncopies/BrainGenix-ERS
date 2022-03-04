@@ -49,7 +49,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     // Copy Textures
     std::vector<long> TextureIDs = SystemUtils_->ERS_IOSubsystem_->BatchAllocateIDs(TextureList_.size());
-    for (int i = 0; i < TextureList_.size(); i++) {
+    for (int i = 0; (long)i < (long)TextureList_.size(); i++) {
         SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(TextureIDs[i]) + std::string("' To Texture '") + TextureList_[i] + std::string("'")).c_str(), 4);
         bool Success = ReadFile(TextureList_[i], Data.get());
 
