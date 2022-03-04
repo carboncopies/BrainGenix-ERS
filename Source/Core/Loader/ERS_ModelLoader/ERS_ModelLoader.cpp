@@ -333,7 +333,7 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
 
     // Process Children Nodes
     for (unsigned int i = 0; i < Node->mNumChildren; i++) {
-        ProcessNode(Node->mChildren[i], Scene, TexturePaths);
+        ProcessNode(Model, Node->mChildren[i], Scene, TexturePaths);
     }
 
 
