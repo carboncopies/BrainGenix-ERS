@@ -42,7 +42,7 @@ ERS_CLASS_LoggingSystem::ERS_CLASS_LoggingSystem(YAML::Node SystemConfiguration)
     };
 
 
-};
+}
 
 ERS_CLASS_LoggingSystem::~ERS_CLASS_LoggingSystem() {
 
