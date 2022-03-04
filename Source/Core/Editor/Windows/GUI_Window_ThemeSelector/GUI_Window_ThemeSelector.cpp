@@ -32,7 +32,7 @@ void Window_ThemeSelector::Draw() {
                 ImGui::BeginChild("Theme Selector", ImVec2(250, 250), true);
 
                     static int ThemeSelector = 0;
-                    for (int i = 0; i < ThemeManager_->ThemeNames_.size(); i++) {
+                    for (int i = 0; (long)i < ThemeManager_->ThemeNames_.size(); i++) {
 
                         ImGui::RadioButton(ThemeManager_->ThemeNames_[i].c_str(), &ThemeSelector, i);
 
