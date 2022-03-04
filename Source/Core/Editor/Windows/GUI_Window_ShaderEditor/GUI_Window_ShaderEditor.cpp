@@ -20,7 +20,7 @@ Window_ShaderEditor::Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemUtils, ER
     ReloadEditorText();
 
     
-    ShaderLoader_ = std::make_shared<ERS_CLASS_ShaderLoader>(SystemUtils_);
+    ShaderLoader_ = std::make_unique<ERS_CLASS_ShaderLoader>(SystemUtils_);
     LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
 
 
