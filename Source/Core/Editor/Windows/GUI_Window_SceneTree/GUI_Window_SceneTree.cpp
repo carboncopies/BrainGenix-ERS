@@ -89,7 +89,7 @@ void Window_SceneTree::Draw() {
 
                     // Get Tree Metadata
                     const char* SceneName = SceneManager_->Scenes_[SceneIndex]->SceneName.c_str();
-                    const char* PopupName = std::string(std::string("SceneTreePopupMenu_") + std::to_string(SceneIndex)).c_str();
+                    //const char* PopupName = std::string(std::string("SceneTreePopupMenu_") + std::to_string(SceneIndex)).c_str();
 
 
                     // Begin Tree
