@@ -51,7 +51,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool SaveProject(std::shared_ptr<ERS_STRUCT_Project> ProjectPointer, long AssetID);
+    bool SaveProject(ERS_STRUCT_Project* ProjectPointer, long AssetID);
 
 
 };

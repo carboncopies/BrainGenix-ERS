@@ -20,7 +20,7 @@ ERS_CLASS_ProjectWriter::~ERS_CLASS_ProjectWriter() {
 }
 
 
-bool ERS_CLASS_ProjectWriter::SaveProject(std::shared_ptr<ERS_STRUCT_Project> ProjectPointer, long AssetID) {
+bool ERS_CLASS_ProjectWriter::SaveProject(ERS_STRUCT_Project* ProjectPointer, long AssetID) {
 
     SystemUtils_->Logger_->Log(std::string(std::string("Saving Project To Asset ID ") + std::to_string(AssetID)).c_str(), 5);
 
