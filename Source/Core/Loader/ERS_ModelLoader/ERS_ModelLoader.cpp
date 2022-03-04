@@ -313,7 +313,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     ProcessNode(&(*Model), Scene->mRootNode, Scene, TexturePaths);
 
     // Get Texture Images From Loader, Push Into Vector
-    for (int i = 0; i < DecodedTextures.size(); i++) {
+    for (int i = 0; (long)i < (long)DecodedTextures.size(); i++) {
         SystemUtils_->Logger_->Log(std::string(std::string("Getting Texture With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
         Model->TexturesToPushToGPU_.push_back(DecodedTextures[i].get());
     }
