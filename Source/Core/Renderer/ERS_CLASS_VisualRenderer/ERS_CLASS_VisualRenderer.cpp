@@ -446,7 +446,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     //const int SpotLightLimit = 32;
 
 
-    std::shared_ptr<ERS_STRUCT_Scene> ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_];
+    ERS_STRUCT_Scene* ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_];
 
 
     // ~-------------------------------------------------------------------!!!!!!!!!!!!!!!FIXME: IMPLEMENT SYSTEM TO USE THE LIGHTS CLOSEST TO THE OBJECT !!!!!!!!!!!!!!!!!!!!!~----------------------------------- //
