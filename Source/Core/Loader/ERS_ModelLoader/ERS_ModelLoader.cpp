@@ -423,7 +423,7 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, aiMe
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Material, aiTextureType_NONE, "texture_none");
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Material, aiTextureType_NORMAL_CAMERA, "texture_normal_camera");
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Material, aiTextureType_NORMALS, "texture_normals");
-    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_OPACITY, "texture_opacity");
+    LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Material, aiTextureType_OPACITY, "texture_opacity");
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_REFLECTION, "texture_reflection");
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_SHININESS, "texture_shininess");
     LoadMaterialTextures(&OutputMesh.TextureReferences_, &OutputMesh.TextureNames, TexturePaths, Model, Material, aiTextureType_SPECULAR, "texture_specular");
