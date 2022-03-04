@@ -20,7 +20,7 @@ SceneWriter::~SceneWriter() {
 
 }
 
-void SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputScene, long AssetID) {
+void SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene, long AssetID) {
 
     // Convert Scene To YAML Encoded String
     std::string SceneByteString = ProcessScene(InputScene); 
