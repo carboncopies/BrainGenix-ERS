@@ -16,7 +16,7 @@ void ERS_FUNCTION_CompareIndexDelta(ERS_CLASS_LoggingSystem* Logger_, std::share
     std::vector<long> UsedAssetIDs = *UsedAssetIDIndex;
 
     // Iterate Through All Asset Index Metadata
-    for (long i = 0; i < AssetIndexIOM.size(); i++) {
+    for (long i = 0; i < (long)AssetIndexIOM.size(); i++) {
 
         // Get Index Checking
         long IndexChecking = AssetIndexIOM[i];
