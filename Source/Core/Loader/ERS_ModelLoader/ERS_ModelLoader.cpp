@@ -434,7 +434,7 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, aiMe
 
 }
 
-void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<int>* IDs, std::vector<std::string>* Types, std::vector<std::string> TextureList, ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName) {
+void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<int>* IDs, std::vector<std::string>* Types, std::vector<std::string> TextureList, aiMaterial *Mat, aiTextureType Type, std::string TypeName) {
 
     // Iterate Through Textures
     for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {
