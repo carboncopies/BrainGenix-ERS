@@ -167,7 +167,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     glfwSetWindowTitle(Window_, SceneTitle.c_str());
 
     // Update Scene
-    ProjectUtils_->ModelLoader_->ProcessNewModels(ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]);
+    ProjectUtils_->ModelLoader_->ProcessNewModels(ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get());
 
     // Update IO
     glfwGetWindowSize(Window_, &WindowWidth_, &WindowHeight_);
