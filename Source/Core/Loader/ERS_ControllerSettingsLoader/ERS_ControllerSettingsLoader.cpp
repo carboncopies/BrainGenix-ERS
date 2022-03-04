@@ -17,7 +17,7 @@ ERS_CLASS_ControllerSettingsLoader::~ERS_CLASS_ControllerSettingsLoader() {
 
     SystemUtils_->Logger_->Log("ERS Controller Settings Loader Destructor Called", 4);
 
-};
+}
 
 
 bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(ERS_STRUCT_ControllerSettings* ControllerSettings, long AssetID) {
