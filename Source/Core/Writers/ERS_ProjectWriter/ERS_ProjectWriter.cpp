@@ -71,7 +71,7 @@ bool ERS_CLASS_ProjectWriter::SaveProject(std::shared_ptr<ERS_STRUCT_Project> Pr
     ProjectEmitter<<YAML::Key<<"DefaultShaderProgram"<<YAML::Value<<ProjectPointer->DefaultShaderProgram;
     ProjectEmitter<<YAML::Key<<"ShaderPrograms";
     ProjectEmitter<<YAML::Key<<YAML::BeginMap;
-    for (int i = 0; i < ProjectPointer->ShaderPrograms.size(); i++) {
+    for (int i = 0; i < (long)ProjectPointer->ShaderPrograms.size(); i++) {
         ProjectEmitter<<YAML::Key<<i;
         ProjectEmitter<<YAML::Key<<YAML::BeginMap;
         ProjectEmitter<<YAML::Key<<"Name"<<YAML::Value<<ProjectPointer->ShaderPrograms[i].Name;
