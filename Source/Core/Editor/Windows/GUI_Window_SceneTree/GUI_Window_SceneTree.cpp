@@ -79,7 +79,7 @@ void Window_SceneTree::Draw() {
 
 
                 // Create Scene Trees
-                for (int SceneIndex = 0; SceneIndex<SceneManager_->Scenes_.size(); SceneIndex++) {
+                for (int SceneIndex = 0; (long)SceneIndex < (long)SceneManager_->Scenes_.size(); SceneIndex++) {
 
                     // Setup Tree Flags
                     ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnArrow;
