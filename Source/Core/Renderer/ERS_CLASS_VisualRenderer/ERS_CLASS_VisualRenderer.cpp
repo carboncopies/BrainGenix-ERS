@@ -66,7 +66,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
     // Close Any Viewports That Aren't All Open
     int ViewportsToClose = -1;
-    for (int i = 0; i < Viewports_.size(); i++) {
+    for (int i = 0; (long)i < (long)Viewports_.size(); i++) {
         if (!*Viewports_[i]->Enabled) {
             ViewportsToClose = i;
         }
