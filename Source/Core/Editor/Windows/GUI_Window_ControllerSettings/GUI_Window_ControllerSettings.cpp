@@ -146,7 +146,7 @@ void Window_ControllerSettings::Draw() {
 
 
                     // Update Controller Dropdown List And Index
-                    if (SelectedControllerProfile_ > ControllerSettings->size()) {
+                    if ((long)SelectedControllerProfile_ > (long)ControllerSettings->size()) {
                         SelectedControllerProfile_ = (int)ControllerSettings->size() - 1;
                     }
 
