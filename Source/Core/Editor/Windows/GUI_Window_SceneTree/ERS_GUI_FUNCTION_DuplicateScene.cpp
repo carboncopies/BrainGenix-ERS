@@ -16,6 +16,6 @@ void GUI_Windowutil_DuplicateScene(ERS_CLASS_SceneManager* SceneManager, int Sce
     NewScene.SceneName = NewName;
 
     // Add To SceneManager
-    SceneManager->Scenes_.push_back(NewScene);
+    SceneManager->Scenes_.push_back(std::make_unique<ERS_STRUCT_Scene>(NewScene));
 
 }
