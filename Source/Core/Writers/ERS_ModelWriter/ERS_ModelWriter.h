@@ -39,7 +39,7 @@ private:
      * @param Model 
      * @return YAML::Node 
      */
-    std::string GenerateModelMetadata(std::shared_ptr<ERS_STRUCT_Model> Model);
+    std::string GenerateModelMetadata();
 
 
 
