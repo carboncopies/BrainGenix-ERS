@@ -64,7 +64,7 @@ void ERS_CLASS_InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
 
 }
 
-void ERS_CLASS_InputProcessor::ProcessKeyboardInput(ERS_CLASS_LoggingSystem* Logger_, float DeltaTime, bool WindowCaptureEnabled) {
+void ERS_CLASS_InputProcessor::ProcessKeyboardInput(float DeltaTime, bool WindowCaptureEnabled) {
 
 
     // Get Keyboard Input
