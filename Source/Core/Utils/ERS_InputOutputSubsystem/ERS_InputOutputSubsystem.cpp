@@ -168,7 +168,7 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
                   .c_str(),
               9);
 
-        } catch (std::out_of_range) {
+        } catch (std::out_of_range&) {
 
           Logger_->Log(
               std::string(
