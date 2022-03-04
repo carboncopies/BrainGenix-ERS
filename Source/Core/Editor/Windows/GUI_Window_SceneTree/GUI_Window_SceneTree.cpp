@@ -162,7 +162,7 @@ void Window_SceneTree::Draw() {
 }
 
 
-void Window_SceneTree::DrawScene(std::shared_ptr<ERS_STRUCT_Scene> Scene, int SceneIndex) {
+void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
     // Get Selected Item
     int SelectedSceneObjectIndex = Scene->SelectedModel;
