@@ -339,7 +339,7 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
 
 }
 
-ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::vector<std::string> TexturePaths) {
+ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(aiMesh *Mesh, const aiScene *Scene, std::vector<std::string> TexturePaths) {
 
     // Create Data Holders
     ERS_STRUCT_Mesh OutputMesh;
