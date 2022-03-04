@@ -180,7 +180,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
     Model->TexturesToPushToGPU_.erase(Model->TexturesToPushToGPU_.begin(), Model->TexturesToPushToGPU_.end());
 
     // Process Texture References, Setup Meshes
-    for (int i = 0; i < Model->Meshes.size(); i++) {
+    for (int i = 0; (long)i < (long)Model->Meshes.size(); i++) {
         for (int Index = 0; Index < Model->Meshes[i].TextureReferences_.size(); Index++) { // IF TEXTURES DONT WORK, CHECK HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             int TextureIndex = Model->Meshes[i].TextureReferences_[Index];
