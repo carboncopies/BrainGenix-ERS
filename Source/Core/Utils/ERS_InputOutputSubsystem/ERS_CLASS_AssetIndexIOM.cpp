@@ -76,7 +76,7 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(ERS_STRUCT_IOData* Data) {
     // Create Yaml Emitter
     YAML::Emitter Metadata;
     Metadata<<YAML::BeginMap;
-    for (long i = 0; i < AssetIDsFound_.size(); i++) {
+    for (long i = 0; (long)i < AssetIDsFound_.size(); i++) {
         
         Logger_->Log(std::string(std::string("Serializing Metadata For Asset ") + std::to_string(AssetIDsFound_[i])).c_str(), 3);
 
