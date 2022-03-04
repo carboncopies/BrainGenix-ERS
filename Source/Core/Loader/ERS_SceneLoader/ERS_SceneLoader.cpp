@@ -234,7 +234,7 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
 
 }
 
-void ERS_CLASS_SceneLoader::AddModel(std::shared_ptr<ERS_STRUCT_Scene> Scene, long AssetID) {
+void ERS_CLASS_SceneLoader::AddModel(ERS_STRUCT_Scene* Scene, long AssetID) {
 
     // Log Model Addition
     SystemUtils_->Logger_->Log(std::string(std::string("Adding Model With ID '") + std::to_string(AssetID) + std::string("' To Scene")).c_str(), 3);
