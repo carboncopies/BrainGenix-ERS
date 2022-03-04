@@ -87,7 +87,7 @@ bool ERS_CLASS_SceneManager::SetActiveScene(std::string TargetSceneName) {
     int TargetSceneIndex;
     bool TargetSceneFound = false;
 
-    for (TargetSceneIndex = 0; TargetSceneIndex < Scenes_.size(); TargetSceneIndex++) {
+    for (TargetSceneIndex = 0; (long)TargetSceneIndex < Scenes_.size(); TargetSceneIndex++) {
 
         // Get Scene Name
         std::string SceneName = Scenes_[TargetSceneIndex]->SceneName;
