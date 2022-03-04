@@ -37,7 +37,7 @@ void SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene, long AssetID) {
 
 }
 
-std::string SceneWriter::ProcessScene(std::shared_ptr<ERS_STRUCT_Scene> InputScene) {
+std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
     // Log Scene Write
     SystemUtils_->Logger_->Log(std::string(std::string("Serializing Scene '") + InputScene->SceneName + std::string("'")).c_str(), 4);
