@@ -77,6 +77,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
 
 
+
+
     // Setup Vars
     glEnable(GL_DEPTH_TEST);
     CaptureCursor_ = false;
