@@ -280,6 +280,15 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             }
         }
 
+        bool DrawCursor;
+        if (Cursors3D_->IsUsing() && (ActiveViewportCursorIndex_ == Index)) {
+            DrawCursor = true;
+        } else if (!Cursors3D_->IsUsing()) {
+            DrawCursor = true;
+        } else {
+            DrawCursor = false;
+        }
+
         if (DrawCursor) {
             Cursors3D_->Draw(Viewports_[Index]->Camera.get(), CaptureCursor_, Viewports_[Index]->ShowCube, Viewports_[Index]->GizmoEnabled);
         }
