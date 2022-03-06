@@ -184,12 +184,15 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         if (ImGui::IsKeyDown(341)) { // Bind to left control key
             EnableCameraMovement = true;
         }
+
+        bool EnableCursorCapture;
         if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | Viewports_[Index]->WasSelected) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
             CaptureCursor_ = true;
+            EnableCursorCapture = true;
             CaptureIndex_ = Index;
             Viewports_[Index]->WasSelected = true;
         } else {
-            CaptureCursor_ = false;
+            EnableCursorCapture = false;
             Viewports_[Index]->WasSelected = false;
         }
 
