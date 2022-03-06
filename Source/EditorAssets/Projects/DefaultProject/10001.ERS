@@ -42,6 +42,8 @@ void main(void)
             FragColor = vec4(LineColor, Alpha);
         }
 
+    } else {
+        FragColor = vec4(0.0f);
     }
 }
 
