@@ -105,7 +105,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
         ERS_CLASS_InputProcessor* InputProcessorInstance = Viewports_[i]->Processor.get();
 
         bool CaptureEnabled = false;
-        if ((CaptureIndex_ == i) && (CaptureCursor_)) {
+        if ((CaptureIndex_ == i) && (!Cursors3D_->IsUsing())) {
             CaptureEnabled = true;
         }
 
@@ -194,7 +194,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
 
-        
+
 
 
         glViewport(0, 0, RenderWidth, RenderHeight);
