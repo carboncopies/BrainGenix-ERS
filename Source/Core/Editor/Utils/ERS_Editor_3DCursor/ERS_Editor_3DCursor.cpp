@@ -28,6 +28,9 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     Camera_ = Camera;
     glm::mat4 Projection = Camera_->GetProjectionMatrix();
     glm::mat4 View = Camera_->GetViewMatrix();
+    LastFrameActiveState_ = ImGuizmo::IsUsing();
+
+
 
     // Set Gizmo Mode
     if (ImGui::IsWindowHovered() && !IsCameraMoving) {
@@ -85,7 +88,6 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     //ImGui::InputFloat3("Rotate", ObjectRotation_);
     //ImGui::InputFloat3("Scale", ObjectScale_);
     //ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
-
 
 
 
