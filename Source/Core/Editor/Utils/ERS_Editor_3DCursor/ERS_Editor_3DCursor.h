@@ -76,6 +76,7 @@ private:
     ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE; /**<Set Current Cursor Operation*/
 
     bool HasObjectChanged_ = false; /*<Indicate If Update Needed*/
+    bool LastFrameActiveState_ = false; /*<If the cursor was being used in the last frame or not*/ 
 
 public:
 
