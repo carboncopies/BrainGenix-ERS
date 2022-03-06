@@ -132,4 +132,13 @@ public:
     void SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale);
 
 
+    /**
+     * @brief Indicates if the cursor has changed from being not selected to selected or vise versa in the last frame.
+     * 
+     * @return true 
+     * @return false 
+     */
+    bool HasStateChanged();
+
+
 };
