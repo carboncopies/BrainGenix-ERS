@@ -116,6 +116,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
         InputProcessorInstance->ProcessMouseScroll(CaptureEnabled);
 
     }
+    CaptureCursor_ = false;
 
     // BIND To Default Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
