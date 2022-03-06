@@ -193,6 +193,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             Viewports_[Index]->WasSelected = false;
         }
 
+        
+
 
         glViewport(0, 0, RenderWidth, RenderHeight);
         glScissor(0, 0, RenderWidth, RenderHeight);
