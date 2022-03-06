@@ -192,7 +192,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             CaptureCursor_ = false;
             Viewports_[Index]->WasSelected = false;
         }
-        std::cout<<Index<<"|"<<CaptureCursor_<<std::endl;
 
 
         glViewport(0, 0, RenderWidth, RenderHeight);
