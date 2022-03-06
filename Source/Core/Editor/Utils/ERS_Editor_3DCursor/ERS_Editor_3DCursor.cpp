@@ -105,3 +105,7 @@ bool Cursors3D::IsUsing() {
 bool Cursors3D::IsHovered() {
     return ImGuizmo::IsOver();
 }
+
+bool Cursors3D::HasStateChanged() {
+    return LastFrameActiveState_ == ImGuizmo::IsUsing();
+}
