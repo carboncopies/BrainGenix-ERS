@@ -34,9 +34,11 @@ void Widget_FrameLatencyGraph::Draw() {
                 // Graph
                 if (WindowVisible && (SystemUtils_->FramerateManager_->ActualFrameTimesMS_.size() > 0)) {
                     ImPlot::SetNextAxesToFit();
-                    ImPlot::BeginPlot("Frame Latency Graph", GraphSize);
-                    ImPlot::PlotLine("Frame Latency", (const float*)SystemUtils_->FramerateManager_->ActualFrameTimesMS_.data(), SystemUtils_->FramerateManager_->ActualFrameTimesMS_.size());
-                    ImPlot::EndPlot();
+                    bool PlotVisible = ImPlot::BeginPlot("Frame Latency Graph", GraphSize);
+                    if (PlotVisible) {
+                        ImPlot::PlotLine("Frame Latency", (const float*)SystemUtils_->FramerateManager_->ActualFrameTimesMS_.data(), SystemUtils_->FramerateManager_->ActualFrameTimesMS_.size());
+                        ImPlot::EndPlot();
+                    }
                 }
 
             }
