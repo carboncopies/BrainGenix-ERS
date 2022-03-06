@@ -89,13 +89,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
         UpdateViewport(i, SceneManager, DeltaTime);
     }
 
-    // Update Mouse Capture State
-    if (CaptureCursor_) {
-        glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    } else {
-        glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-    }
-
 
 
     // Handle Window Input
@@ -107,6 +100,9 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
         bool CaptureEnabled = false;
         if ((CaptureIndex_ == i) && (!Cursors3D_->IsUsing())) {
             CaptureEnabled = true;
+            glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        } else {
+            glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
         }
 
         // Update Viewport Camera/Position/Etc.
