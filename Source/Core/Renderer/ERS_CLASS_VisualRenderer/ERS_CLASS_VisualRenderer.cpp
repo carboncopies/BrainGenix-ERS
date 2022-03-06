@@ -193,6 +193,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             Viewports_[Index]->WasSelected = false;
         }
 
+
         
 
 
