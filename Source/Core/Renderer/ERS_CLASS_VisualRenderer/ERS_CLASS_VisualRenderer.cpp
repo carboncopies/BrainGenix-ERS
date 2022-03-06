@@ -275,7 +275,9 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         // Draw 3D Cursor
         if (Cursors3D_->HasStateChanged()) {
-            
+            if (ImGui::IsWindowHovered()) {
+                ActiveViewportCursorIndex_ = Index;
+            }
         }
         if (DrawCursor) {
             Cursors3D_->Draw(Viewports_[Index]->Camera.get(), CaptureCursor_, Viewports_[Index]->ShowCube, Viewports_[Index]->GizmoEnabled);
