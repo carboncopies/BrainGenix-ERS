@@ -43,7 +43,7 @@ void Widget_FramerateGraph::Draw() {
                 ImPlot::SetNextAxesToFit();
                 bool PlotVisible = ImPlot::BeginPlot("Framerate Graph", GraphSize);
                 if (PlotVisible) {
-                    ImPlot::PlotLine("Framerate", (const float*)FramerateHistory_.data(), FramerateHistory_.size());
+                    ImPlot::PlotLine("Framerate (fps)", (const float*)FramerateHistory_.data(), FramerateHistory_.size());
                     ImPlot::EndPlot();
                 }
             }
