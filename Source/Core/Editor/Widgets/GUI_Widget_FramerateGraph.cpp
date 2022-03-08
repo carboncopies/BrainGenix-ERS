@@ -25,6 +25,7 @@ void Widget_FramerateGraph::Draw() {
 
     }
 
+
     if (Enabled_) {
         bool WindowVisible = ImGui::Begin("Framerate Graph", &Enabled_);
 
