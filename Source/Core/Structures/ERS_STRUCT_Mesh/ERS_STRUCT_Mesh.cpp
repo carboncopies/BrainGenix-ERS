@@ -249,7 +249,6 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
 
 
 
-
     // Draw Mesh
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, NumberIndices, GL_UNSIGNED_INT, 0);
