@@ -15,6 +15,7 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_CLASS_MeshRenderer.cpp"
             "ERS_FUNCTION_CheckForMeshTransparency.cpp"
             "ERS_FUNCTION_MeshTransparencySort.cpp"
+            "ERS_FUNCTION_DrawMesh.cpp"
 
             # Add Header Files (.h)
             "ERS_CLASS_VisualRenderer.h"
@@ -25,6 +26,8 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_CLASS_MeshRenderer.h"
             "ERS_FUNCTION_CheckForMeshTransparency.h"
             "ERS_FUNCTION_MeshTransparencySort.h"
+            "ERS_FUNCTION_DrawMesh.h"
+
 
             ${BACKWARD_ENABLE}
             )
