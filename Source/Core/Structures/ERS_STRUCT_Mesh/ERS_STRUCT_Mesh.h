@@ -59,8 +59,8 @@ private:
 
 public:
 
-    std::vector<ERS_STRUCT_Vertex> Vertices; /**<Array of Vertices*/
-    std::vector<unsigned int> Indices; /**<Array of Vertex Indices*/
+    std::vector<ERS_STRUCT_Vertex> Vertices; /**<Array of Mesh Vertices*/
+    std::vector<unsigned int> Indices; /**<Array of Mesh Vertex Indices*/
     long NumberIndices; /**<Size of Indices Array*/
     unsigned int VAO; /**<Vertex Array Object OpenGL Handle*/
 
