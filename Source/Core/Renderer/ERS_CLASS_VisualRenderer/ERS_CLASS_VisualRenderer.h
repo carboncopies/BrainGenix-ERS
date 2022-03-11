@@ -27,6 +27,7 @@
 #include <ERS_CLASS_Framebuffer.h>
 #include <ERS_CLASS_Grid.h>
 #include <ERS_CLASS_LightIconRenderer.h>
+#include <ERS_CLASS_MeshRenderer.h>
 
 #include <ERS_SceneManager.h>
 #include <ERS_SceneLoader.h>
@@ -56,6 +57,7 @@ private:
     int ActiveViewportCursorIndex_; /**<The index of the viewport which the gizmo is being interacted with*/
     ERS_STRUCT_OpenGLDefaults* OpenGLDefaults_; /**<Pointer acquired from renderermanager*/
 
+    std::unique_ptr<ERS_CLASS_MeshRenderer> MeshRenderer_; /**<Instance Of The Mesh Renderer Class Used To Hancle The Actual Rendering Of All Meshes In The Given Scene*/
 
 
 public:
