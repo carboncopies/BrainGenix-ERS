@@ -63,12 +63,11 @@ void ERS_CLASS_SceneManager::Render(glm::vec3 CameraPos, ERS_STRUCT_OpenGLDefaul
         for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
 
             ERS_STRUCT_Mesh* Mesh = &Model->Meshes[i];
+            Mesh->ModelMatrix = ModelMatrix;
             if (Mesh->HasTransparency_) {
                 TransparentMeshes.push_back(Mesh);
-                TransparentModelMatrices.push_back(ModelMatrix);
             } else {
                 OpaqueMeshes.push_back(Mesh);
-                OpaqueModelMatrices.push_back(ModelMatrix);
             }
 
         }
