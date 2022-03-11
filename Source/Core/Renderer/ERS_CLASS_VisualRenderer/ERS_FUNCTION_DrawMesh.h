@@ -16,3 +16,14 @@
 
 #include <ERS_STRUCT_Shader.h>
 #include <ERS_STRUCT_Model.h>
+
+
+
+/**
+ * @brief Draws the mesh passed in.
+ * 
+ * @param Mesh 
+ * @param OpenGLDefaults 
+ * @param Shader 
+ */
+void Draw(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader);

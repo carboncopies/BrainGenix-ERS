@@ -26,7 +26,7 @@
  * @brief This struct contains a mesh object that is a part of the model struct. It is ment for ERS Internal use.
  * 
  */
-class ERS_STRUCT_Mesh {
+struct ERS_STRUCT_Mesh {
 
 
 private:
