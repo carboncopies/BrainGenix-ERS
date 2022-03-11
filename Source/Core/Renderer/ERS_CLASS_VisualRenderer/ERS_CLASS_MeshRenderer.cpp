@@ -31,9 +31,9 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
     std::vector<ERS_STRUCT_Mesh*> OpaqueMeshes;
     std::vector<ERS_STRUCT_Mesh*> TransparentMeshes;
 
-    for (unsigned long i = 0; i < Scenes_[ActiveScene_]->Models.size(); i++) {
+    for (unsigned long i = 0; i < Scene->Models.size(); i++) {
 
-        ERS_STRUCT_Model *Model = Scenes_[ActiveScene_]->Models[i].get();
+        ERS_STRUCT_Model *Model = Scene->Models[i].get();
         glm::mat4 ModelMatrix = Model->GetMat4();
         for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
 
