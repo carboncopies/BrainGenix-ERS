@@ -6,30 +6,6 @@
 #include "ERS_STRUCT_Model.h"
 
 
-void ERS_STRUCT_Model::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader) {
-
-
-    // Only Draw When Fully Ready
-    if (FullyReady) {
-
-        glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
-        glActiveTexture(OpenGLDefaults->DefaultTexture_);
-
-        // Draw All Meshes
-        for (unsigned int i=0; i<Meshes.size(); i++) {
-            Meshes[i].Draw(OpenGLDefaults, Shader);
-        }
-
-
-        glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
-        glActiveTexture(OpenGLDefaults->DefaultTexture_);
-
-
-    }
-
-}
-
-
 void ERS_STRUCT_Model::SetPosition(double X, double Y, double Z) {
 
     glm::vec3 Position = glm::vec3(X, Y, Z);
