@@ -46,6 +46,8 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
     
 
     // Sort Out Transparent/Opaque Models
+    Scenes_[ActiveScene_]->ModelsWithTransparency_.erase(Scenes_[ActiveScene_]->ModelsWithTransparency_.begin(), Scenes_[ActiveScene_]->ModelsWithTransparency_.end());
+    Scenes_[ActiveScene_]->ModelsWithoutTransparency_.erase(Scenes_[ActiveScene_]->ModelsWithoutTransparency_.begin(), Scenes_[ActiveScene_]->ModelsWithoutTransparency_.end());
     for (long i = 0; (long)i < (long)Scenes_[ActiveScene_]->Models.size(); i++) {
         ERS_STRUCT_Model* Model = Scenes_[ActiveScene_]->Models[i].get();
         Model->UpdateTransparencyStatus();
