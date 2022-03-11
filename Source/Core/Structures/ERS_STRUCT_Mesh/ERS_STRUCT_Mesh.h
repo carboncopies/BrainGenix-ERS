@@ -29,7 +29,6 @@
 struct ERS_STRUCT_Mesh {
 
 
-private:
 
     unsigned int VBO; /**<Vertex buffer object OpenGL ID.*/
     unsigned int EBO; /**<OpenGL EBO Object ID*/
@@ -53,15 +52,7 @@ private:
     bool HasSpecular_; /**<Check If Has A Given Type Of Texture*/
 
 
-    /**
-     * @brief Reset the texture to the default with the given name and offset.
-     * 
-     * @param Name 
-     * @param Offset 
-     */
-    void ResetTexture(const char* Name, int Offset, unsigned int ShaderProgram, unsigned int TextureID);
 
-public:
 
     std::vector<ERS_STRUCT_Vertex> Vertices; /**<Array of Mesh Vertices*/
     std::vector<unsigned int> Indices; /**<Array of Mesh Vertex Indices*/
@@ -91,6 +82,13 @@ public:
      */
     void Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader);
 
+    /**
+     * @brief Reset the texture to the default with the given name and offset.
+     * 
+     * @param Name 
+     * @param Offset 
+     */
+    void ResetTexture(const char* Name, int Offset, unsigned int ShaderProgram, unsigned int TextureID);
 
     /**
      * @brief Updates if the model is transparent or not
