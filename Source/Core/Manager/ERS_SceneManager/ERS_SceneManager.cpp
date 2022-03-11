@@ -52,9 +52,7 @@ void ERS_CLASS_SceneManager::Render(glm::vec3 CameraPos, ERS_STRUCT_OpenGLDefaul
 
     // Get List Of Transparent/Opaque Meshes
     std::vector<ERS_STRUCT_Mesh*> OpaqueMeshes;
-    std::vector<glm::mat4> OpaqueModelMatrices;
     std::vector<ERS_STRUCT_Mesh*> TransparentMeshes;
-    std::vector<glm::mat4> TransparentModelMatrices;
 
     for (unsigned long i = 0; i < Scenes_[ActiveScene_]->Models.size(); i++) {
 
