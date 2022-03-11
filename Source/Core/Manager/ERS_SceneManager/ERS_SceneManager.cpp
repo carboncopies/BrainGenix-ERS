@@ -45,10 +45,6 @@ bool ERS_CLASS_SceneManager::AddScene(ERS_STRUCT_Scene Scene) {
 void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader) {
     
 
-    // Update If Meshes Are Transparent Or Not
-    for (unsigned long i = 0; i < Scenes_[ActiveScene_]->Models.size(); i++) {
-        Scenes_[ActiveScene_]->Models[i]->UpdateMeshTransparency();
-    }
 
     // Get List Of Transparent/Opaque Meshes
     std::vector<ERS_STRUCT_Mesh*> OpaqueMeshes;
