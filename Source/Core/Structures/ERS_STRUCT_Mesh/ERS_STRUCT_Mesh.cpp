@@ -264,7 +264,6 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
 
 }
 
-
 void ERS_STRUCT_Mesh::ResetTexture(const char* Name, int Offset, unsigned int ShaderProgram, unsigned int TextureID) {
 
     glUniform1i(glGetUniformLocation(ShaderProgram, Name), Offset);
