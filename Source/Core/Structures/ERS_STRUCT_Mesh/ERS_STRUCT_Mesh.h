@@ -49,9 +49,6 @@ private:
     bool HasSpecular_; /**<Check If Has A Given Type Of Texture*/
 
 
-
-
-
     /**
      * @brief Reset the texture to the default with the given name and offset.
      * 
