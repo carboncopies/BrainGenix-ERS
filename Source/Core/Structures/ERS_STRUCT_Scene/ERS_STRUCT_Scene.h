@@ -28,8 +28,7 @@ struct ERS_STRUCT_Scene{
     YAML::Node SceneData; /**<YAML::Node Containing Copy Of Raw Scene Information*/
 
     // List Of Required Materials (For Now, Can Only Be Models)
-    std::vector<std::shared_ptr<ERS_STRUCT_Model>> ModelsWithoutTransparency_; /**<List of models*/
-    std::vector<std::shared_ptr<ERS_STRUCT_Model>> ModelsWithTransparency_; /**<List of models in the scene with transparent textures*/
+    std::vector<std::shared_ptr<ERS_STRUCT_Model>> Models; /**<List of models*/
     std::vector<std::shared_ptr<ERS_STRUCT_SpotLight>> SpotLights; /**<List of spot lights*/
     std::vector<std::shared_ptr<ERS_STRUCT_DirectionalLight>> DirectionalLights; /**<List of spot lights*/
     std::vector<std::shared_ptr<ERS_STRUCT_PointLight>> PointLights; /**<List of spot lights*/
