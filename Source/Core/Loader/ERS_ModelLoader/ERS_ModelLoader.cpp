@@ -163,6 +163,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
                 SystemUtils_->Logger_->Log(std::string("Texture Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
             }
             glGenerateMipmap(GL_TEXTURE_2D);
+
             
 
         } else {
