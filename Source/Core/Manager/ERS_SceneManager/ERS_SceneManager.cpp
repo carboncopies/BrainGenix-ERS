@@ -83,26 +83,6 @@ void ERS_CLASS_SceneManager::Render(glm::vec3 CameraPos, ERS_STRUCT_OpenGLDefaul
         OpaqueMeshes[i]->Draw(OpenGLDefaults, Shader);
     }
 
-    // Depth Sort Transparent Meshes
-    std::vector<ERS_STRUCT_Mesh*> SortedTransparentMeshes;
-    std::vector<glm::mat4> SortedTransparentModelMatrices;
-    for (unsigned long i = 0; i < TransparentMeshes.size(); i++) {
-        
-        ERS_STRUCT_Mesh* Mesh = TransparentMeshes[i];
-        glm::vec3 Position = glm::vec3(
-            TransparentModelMatrices[i][3][0],
-            TransparentModelMatrices[i][3][1],
-            TransparentModelMatrices[i][3][2]
-            );
-        
-        // Terribly inefficnet sorting algo - fix this later
-        for (unsigned long i = 0; i < SortedTransparentMeshes.size(); i++) {
-            
-        }
-
-
-
-    }
 
     // Disable Depth Filtering
     glDisable(GL_DEPTH_TEST);

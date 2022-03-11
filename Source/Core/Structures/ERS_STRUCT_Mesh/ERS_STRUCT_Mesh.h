@@ -70,6 +70,7 @@ public:
     std::vector<int> TextureReferences_; /**<Texture Reference IDs*/
     std::vector<unsigned int> TextureIDs; /**<Textur IDs*/
     std::vector<std::string> TextureNames; /**<Human Readable Names Of Textures*/
+
     
 
     /**
