@@ -108,13 +108,11 @@ bool ERS_STRUCT_Model::ApplyTransformations() {
     ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(ModelRotation[2]), glm::vec3(0, 0, 1));
     ModelLocRotScale_ = glm::scale(ModelLocRotScale_, ModelScale);
 
-        // Check Color Channels
-    HasTransparency_ = false;
-    for (int i = 0; i < TextureColorChannels_.size(); i++) {
-        if (TextureColorChannels_[i] == 4) {
-            HasTransparency_ = true;
-        }
-    }
+    
+    return true;
+
+}
+
 glm::mat4 ERS_STRUCT_Model::GetMat4() {
 
     return ModelLocRotScale_;
