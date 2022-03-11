@@ -49,6 +49,10 @@ private:
     bool HasSpecular_; /**<Check If Has A Given Type Of Texture*/
 
 
+    std::vector<int> TextureColorChannels_; /**<List Of Number Of Color Channels In Texture*/
+    bool HasTransparency_; /**<Indicates if this model has any transparent textures (detected by number of channels)*/
+
+
     /**
      * @brief Reset the texture to the default with the given name and offset.
      * 

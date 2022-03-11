@@ -31,8 +31,7 @@ struct ERS_STRUCT_Model {
     std::vector<ERS_STRUCT_Texture> TexturesToPushToGPU_;
     std::vector<unsigned int> OpenGLTextureIDs_;
 
-    std::vector<int> TextureColorChannels_; /**<List Of Number Of Color Channels In Texture*/
-    bool HasTransparency_; /**<Indicates if this model has any transparent textures (detected by number of channels)*/
+
 
 
 
