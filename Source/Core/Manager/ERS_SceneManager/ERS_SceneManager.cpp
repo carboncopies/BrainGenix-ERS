@@ -46,7 +46,9 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
     
 
     // Update If Meshes Are Transparent Or Not
-    
+    for (unsigned long i = 0; i < Scenes_[ActiveScene_]->Models.size(); i++) {
+        Scenes_[ActiveScene_]->Models[i]->UpdateMeshTransparency();
+    }
 
     // Iterate Through Models
     for (long i = 0; (long)i < (long)Scenes_[ActiveScene_]->Models.size(); i++) {
