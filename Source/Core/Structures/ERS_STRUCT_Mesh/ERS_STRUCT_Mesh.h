@@ -66,6 +66,7 @@ public:
 
     std::vector<int> TextureColorChannels_; /**<List Of Number Of Color Channels In Texture*/
     bool HasTransparency_; /**<Indicates if this model has any transparent textures (detected by number of channels)*/
+    glm::mat4 ModelMatrix; /**<Model Matrix Given To The Shader When Rendering*/
 
     std::vector<int> TextureReferences_; /**<Texture Reference IDs*/
     std::vector<unsigned int> TextureIDs; /**<Textur IDs*/
