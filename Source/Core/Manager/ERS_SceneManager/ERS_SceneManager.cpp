@@ -76,7 +76,7 @@ void ERS_CLASS_SceneManager::Render(glm::vec3 CameraPos, ERS_STRUCT_OpenGLDefaul
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
         glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
         glActiveTexture(OpenGLDefaults->DefaultTexture_);
-        Shader->SetMat4("model", OpaqueModelMatrices[i]);
+        Shader->SetMat4("model", OpaqueMeshes[i]->ModelMatrix);
         OpaqueMeshes[i]->Draw(OpenGLDefaults, Shader);
     }
 
