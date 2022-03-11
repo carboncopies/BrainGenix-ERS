@@ -164,6 +164,12 @@ struct ERS_STRUCT_Model {
     void Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader);
 
 
+    /**
+     * @brief Updates the transparency of all meshes contained by this model.
+     * 
+     */
+    void UpdateMeshTransparency();
+
 
 };
 
