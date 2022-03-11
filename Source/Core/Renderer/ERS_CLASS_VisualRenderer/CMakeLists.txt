@@ -12,6 +12,7 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_CLASS_Grid.cpp"
             "ERS_CLASS_Framebuffer.cpp"
             "ERS_CLASS_InputProcessor.cpp"
+            "ERS_FUNCTION_CheckForMeshTransparency.cpp"
 
             # Add Header Files (.h)
             "ERS_CLASS_VisualRenderer.h"
@@ -19,6 +20,7 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_CLASS_Grid.h"
             "ERS_CLASS_Framebuffer.h"
             "ERS_CLASS_InputProcessor.h"
+            "ERS_FUNCTION_CheckForMeshTransparency.h"
 
             ${BACKWARD_ENABLE}
             )
