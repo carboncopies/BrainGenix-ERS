@@ -56,8 +56,27 @@ private:
 
 public:
 
+    /**
+     * @brief Construct a new ers class meshrenderer object
+     * 
+     * @param SystemUtils 
+     */
     ERS_CLASS_MeshRenderer(ERS_STRUCT_SystemUtils* SystemUtils);
+
+    /**
+     * @brief Destroy the ers class meshrenderer object
+     * 
+     */
     ~ERS_CLASS_MeshRenderer();
+
+    /**
+     * @brief Render the given scene with the given parameters.
+     * 
+     * @param Scene 
+     * @param OpenGLDefaults 
+     * @param Shader 
+     */
+    void RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader);
 
 
 };
