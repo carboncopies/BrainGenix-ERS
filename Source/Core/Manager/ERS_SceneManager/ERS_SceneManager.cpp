@@ -80,16 +80,16 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
     std::cout<<OpaqueMeshes.size()<<"|"<<TransparentMeshes.size()<<std::endl;
 
 
-    // Iterate Through Models
-    for (long i = 0; (long)i < (long)Scenes_[ActiveScene_]->Models.size(); i++) {
+    // // Iterate Through Models
+    // for (long i = 0; (long)i < (long)Scenes_[ActiveScene_]->Models.size(); i++) {
 
-        // Get Model Pointer
-        ERS_STRUCT_Model *Model = Scenes_[ActiveScene_]->Models[i].get();
-        Shader->SetMat4("model", Model->GetMat4());
-        Model->Draw(OpenGLDefaults, Shader);
+    //     // Get Model Pointer
+    //     ERS_STRUCT_Model *Model = Scenes_[ActiveScene_]->Models[i].get();
+    //     Shader->SetMat4("model", Model->GetMat4());
+    //     Model->Draw(OpenGLDefaults, Shader);
         
 
-    }
+    // }
 
 
     // Draw All Opaque Meshes
