@@ -79,13 +79,6 @@ public:
     bool AddScene(ERS_STRUCT_Scene Scene);
 
     /**
-     * @brief Render scene set to active.
-     * 
-     * @param Shader 
-     */
-    void Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader);
-
-    /**
      * @brief Send LocRotScale Update To Object(s) In Active Scene
      * 
      * @param LocRotScale 
