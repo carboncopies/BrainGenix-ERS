@@ -90,6 +90,8 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
         
         ERS_STRUCT_Mesh* Mesh = TransparentMeshes[i];
         std::cout<<glm::to_string(TransparentModelMatrices[i])<<std::endl;
+
+        glm::vec3 Position = glm::vec3(TransparentModelMatrices[i][3][0]
     }
 
     // Disable Depth Filtering
