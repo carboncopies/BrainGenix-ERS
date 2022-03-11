@@ -64,6 +64,8 @@ public:
     long NumberIndices; /**<Size of Indices Array*/
     unsigned int VAO; /**<Vertex Array Object OpenGL Handle*/
 
+    bool HasTransparency_; /**<Indicates if this mesh has any transparent textures (detected by number of channels)*/
+
     std::vector<int> TextureReferences_; /**<Texture Reference IDs*/
     std::vector<unsigned int> TextureIDs; /**<Textur IDs*/
     std::vector<std::string> TextureNames; /**<Human Readable Names Of Textures*/
