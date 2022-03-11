@@ -24,30 +24,9 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
 
     ERS_FUNCTION_UpdateMeshTransparency(Scene);
 
-    
-
-
-    // Get List Of Transparent/Opaque Meshes
     std::vector<ERS_STRUCT_Mesh*> OpaqueMeshes;
     std::vector<ERS_STRUCT_Mesh*> TransparentMeshes;
-
-    for (unsigned long i = 0; i < Scene->Models.size(); i++) {
-
-        ERS_STRUCT_Model *Model = Scene->Models[i].get();
-        glm::mat4 ModelMatrix = Model->GetMat4();
-        for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
-
-            ERS_STRUCT_Mesh* Mesh = &Model->Meshes[i];
-            Mesh->ModelMatrix = ModelMatrix;
-            if (Mesh->HasTransparency_) {
-                TransparentMeshes.push_back(Mesh);
-            } else {
-                OpaqueMeshes.push_back(Mesh);
-            }
-
-        }
-
-    }
+    ERS_FUNCTION_MeshTransparencySort(&OpaqueMeshes, &TransparentMeshes, Scene);
 
     // Draw All Opaque Meshes
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
