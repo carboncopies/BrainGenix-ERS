@@ -73,26 +73,7 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
 
         }
 
-
     }
-
-
-    std::cout<<OpaqueMeshes.size()<<"|"<<TransparentMeshes.size()<<std::endl;
-
-
-    // // Iterate Through Models
-    // for (long i = 0; (long)i < (long)Scenes_[ActiveScene_]->Models.size(); i++) {
-
-    //     // Get Model Pointer
-    //     ERS_STRUCT_Model *Model = Scenes_[ActiveScene_]->Models[i].get();
-    //     Shader->SetMat4("model", Model->GetMat4());
-    //     Model->Draw(OpenGLDefaults, Shader);
-        
-
-    // }
-
-
-
 
     // Draw All Opaque Meshes
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
@@ -105,6 +86,9 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
     // Depth Sort Transparent Meshes
     std::vector<ERS_STRUCT_Mesh*> SortedTransparentMeshes;
     std::vector<glm::mat4> SortedTransparentModelMatrices;
+    for (unsigned long i = 0; i < TransparentMeshes.size(); i++) {
+        
+    }
 
     // Disable Depth Filtering
     glDisable(GL_DEPTH_TEST);
