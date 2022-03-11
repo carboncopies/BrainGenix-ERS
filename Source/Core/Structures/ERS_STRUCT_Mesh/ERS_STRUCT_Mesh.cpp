@@ -264,3 +264,15 @@ void ERS_STRUCT_Mesh::ResetTexture(const char* Name, int Offset, unsigned int Sh
     glBindTexture(GL_TEXTURE_2D, TextureID);
 
 }
+
+void ERS_STRUCT_Mesh::UpdateTransparencyStatus() {
+
+    // Check Color Channels
+    HasTransparency_ = false;
+    for (unsigned long i = 0; i < TextureColorChannels_.size(); i++) {
+        if (TextureColorChannels_[i] == 4) {
+            HasTransparency_ = true;
+        }
+    }
+
+}
