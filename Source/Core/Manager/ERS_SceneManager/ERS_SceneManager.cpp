@@ -88,6 +88,8 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
     std::vector<glm::mat4> SortedTransparentModelMatrices;
     for (unsigned long i = 0; i < TransparentMeshes.size(); i++) {
         
+        ERS_STRUCT_Mesh* Mesh = TransparentMeshes[i];
+        std::cout<<glm::to_string(TransparentModelMatrices[i])<<std::endl;
     }
 
     // Disable Depth Filtering
