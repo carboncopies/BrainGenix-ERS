@@ -16,9 +16,9 @@ void ERS_FUNCTION_MeshTransparencySort(std::vector<ERS_STRUCT_Mesh*>* OpaqueMesh
             ERS_STRUCT_Mesh* Mesh = &Model->Meshes[i];
             Mesh->ModelMatrix = ModelMatrix;
             if (Mesh->HasTransparency_) {
-                TransparentMeshes.push_back(Mesh);
+                TransparentMeshes->push_back(Mesh);
             } else {
-                OpaqueMeshes.push_back(Mesh);
+                OpaqueMeshes->push_back(Mesh);
             }
 
         }
