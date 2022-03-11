@@ -13,7 +13,6 @@ ERS_CLASS_SceneManager::ERS_CLASS_SceneManager(ERS_CLASS_LoggingSystem* Logger) 
 
 }
 
-
 ERS_CLASS_SceneManager::~ERS_CLASS_SceneManager() {
 
     Logger_->Log("Destructor Called For ERS_CLASS_SceneManager Class", 6);
@@ -47,7 +46,7 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
     
 
     // Perform Depth Sorting
-    
+
 
     // Iterate Through Models
     for (long i = 0; (long)i < (long)Scenes_[ActiveScene_]->Models.size(); i++) {
