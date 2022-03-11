@@ -164,7 +164,6 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
             }
             glGenerateMipmap(GL_TEXTURE_2D);
 
-            Model->TextureColorChannels_.push_back(Model->TexturesToPushToGPU_[i].Channels);            
 
         } else {
             SystemUtils_->Logger_->Log("Texture Failed To Load, Cannot Push To GPU", 9);
@@ -191,6 +190,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
                 Model->Meshes[i].TextureIDs.push_back(-1);
             } else {
                 Model->Meshes[i].TextureIDs.push_back(Model->OpenGLTextureIDs_[TextureIndex]);
+                Model->Meshes[i].TextureColorChannels_.push_back(Model->TexturesToPushToGPU_[TextureIndex].Channels);
             }
     
 
