@@ -7,6 +7,7 @@
 
 void ERS_FUNCTION_MeshTransparencySort(std::vector<ERS_STRUCT_Mesh*>* OpaqueMeshes, std::vector<ERS_STRUCT_Mesh*>* TransparentMeshes, ERS_STRUCT_Scene* Scene) {
 
+
     for (unsigned long i = 0; i < Scene->Models.size(); i++) {
 
         ERS_STRUCT_Model *Model = Scene->Models[i].get();
@@ -24,5 +25,6 @@ void ERS_FUNCTION_MeshTransparencySort(std::vector<ERS_STRUCT_Mesh*>* OpaqueMesh
         }
 
     }
+
 
 }
