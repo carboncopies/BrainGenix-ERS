@@ -9,13 +9,7 @@
 void ERS_STRUCT_Model::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader) {
 
 
-    // Check Color Channels
-    HasTransparency_ = false;
-    for (int i = 0; i < TextureColorChannels_.size(); i++) {
-        if (TextureColorChannels_[i] == 4) {
-            HasTransparency_ = true;
-        }
-    }
+
 
 
     // Only Draw When Fully Ready
@@ -114,13 +108,27 @@ bool ERS_STRUCT_Model::ApplyTransformations() {
     ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(ModelRotation[2]), glm::vec3(0, 0, 1));
     ModelLocRotScale_ = glm::scale(ModelLocRotScale_, ModelScale);
 
-    
-    return true;
-
-}
-
+        // Check Color Channels
+    HasTransparency_ = false;
+    for (int i = 0; i < TextureColorChannels_.size(); i++) {
+        if (TextureColorChannels_[i] == 4) {
+            HasTransparency_ = true;
+        }
+    }
 glm::mat4 ERS_STRUCT_Model::GetMat4() {
 
     return ModelLocRotScale_;
+
+}
+
+void ERS_STRUCT_Model::UpdateTransparencyStatus() {
+
+    // Check Color Channels
+    HasTransparency_ = false;
+    for (int i = 0; i < TextureColorChannels_.size(); i++) {
+        if (TextureColorChannels_[i] == 4) {
+            HasTransparency_ = true;
+        }
+    }
 
 }
