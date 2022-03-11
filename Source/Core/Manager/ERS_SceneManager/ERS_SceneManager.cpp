@@ -92,6 +92,14 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
     }
 
 
+    // Draw All Opaque Meshes
+    for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
+        glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
+        glActiveTexture(OpenGLDefaults->DefaultTexture_);
+        Shader->SetMat4("model", OpaqueModelMatrices[i]);
+        OpaqueMeshes[i]->Draw(OpenGLDefaults, Shader);
+    }
+
 
     // TODO: Update rendering process
     // should be based around the idea that the models are used to get the meshes to be rendered
