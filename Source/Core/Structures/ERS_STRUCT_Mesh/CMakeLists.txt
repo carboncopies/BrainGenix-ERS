@@ -17,11 +17,7 @@ add_library(ERS_STRUCT_Mesh
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_STRUCT_Mesh
-    yaml-cpp
     glm
-    glad
-    glfw
-    assimp
     )
 
 # Link Internal Libs
