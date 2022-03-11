@@ -116,3 +116,11 @@ glm::mat4 ERS_STRUCT_Model::GetMat4() {
 
 }
 
+
+void ERS_STRUCT_Model::UpdateMeshTransparency() {
+
+    for (unsigned long i = 0; i < Meshes.size(); i++) {
+        Meshes[i].UpdateTransparencyStatus();
+    }
+
+}
