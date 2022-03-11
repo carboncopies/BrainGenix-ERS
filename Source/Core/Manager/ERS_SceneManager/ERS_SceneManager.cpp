@@ -93,6 +93,7 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
 
 
     // Enable Depth Filtering
+    glEnable(GL_DEPTH_TEST);
 
     // Draw All Opaque Meshes
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
@@ -105,9 +106,15 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
     // Depth Sort Transparent Meshes
 
     // Disable Depth Filtering
+    glDisable(GL_DEPTH_TEST);
 
     // Render Transparent Meshes In Right Order
-
+    for (unsigned long i = 0; i < TransparentMeshes.size(); i++) {
+        glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
+        glActiveTexture(OpenGLDefaults->DefaultTexture_);
+        Shader->SetMat4("model", TransparentModelMatrices[i]);
+        TransparentMeshes[i]->Draw(OpenGLDefaults, Shader);
+    }
 
     // TODO: Update rendering process
     // should be based around the idea that the models are used to get the meshes to be rendered
