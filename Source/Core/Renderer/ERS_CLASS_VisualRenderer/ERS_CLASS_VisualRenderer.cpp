@@ -264,7 +264,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         SceneManager->UpdateLocRotScale(Cursors3D_->Pos_, Cursors3D_->Rot_, Cursors3D_->Scale_);
 
         // Render
-        SceneManager->Render(OpenGLDefaults_, Shaders_[ShaderIndex]);
+        SceneManager->Render(Viewports_[Index]->Camera->Position_, OpenGLDefaults_, Shaders_[ShaderIndex]);
         if (Viewports_[Index]->GridEnabled) {
             Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position_);
         }
