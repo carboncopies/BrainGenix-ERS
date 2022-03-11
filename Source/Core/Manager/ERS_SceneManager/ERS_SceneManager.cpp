@@ -47,7 +47,14 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
 
     // Sort Out Transparent/Opaque Models
     for (long i = 0; (long)i < (long)Scenes_[ActiveScene_]->Models.size(); i++) {
-        
+        ERS_STRUCT_Model* Model = Scenes_[ActiveScene_]->Models[i].get();
+        Model->UpdateTransparencyStatus();
+
+        if (Model->HasTransparency_) {
+            Scenes_[ActiveScene_]->ModelsWithTransparency_.push_back(i);
+        } else {
+            Scenes_[ActiveScene_]->ModelsWithoutTransparency_.push_back(i);
+        }
     }
 
     // Perform Depth Sorting
