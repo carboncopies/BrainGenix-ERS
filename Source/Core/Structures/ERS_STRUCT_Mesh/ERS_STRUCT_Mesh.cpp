@@ -246,7 +246,13 @@ void ERS_STRUCT_Mesh::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::share
 
 
 
-
+    // Check Color Channels
+    HasTransparency_ = false;
+    for (int i = 0; i < TextureColorChannels_.size(); i++) {
+        if (TextureColorChannels_[i] == 4) {
+            HasTransparency_ = true;
+        }
+    }
 
 
     // Draw Mesh
