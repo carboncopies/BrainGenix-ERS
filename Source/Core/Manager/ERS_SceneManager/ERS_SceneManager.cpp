@@ -95,6 +95,13 @@ void ERS_CLASS_SceneManager::Render(glm::vec3 CameraPos, ERS_STRUCT_OpenGLDefaul
             TransparentModelMatrices[i][3][2]
             );
         
+        // Terribly inefficnet sorting algo - fix this later
+        for (unsigned long i = 0; i < SortedTransparentMeshes.size(); i++) {
+            
+        }
+
+
+
     }
 
     // Disable Depth Filtering
