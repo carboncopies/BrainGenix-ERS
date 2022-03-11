@@ -45,7 +45,6 @@ target_link_libraries(ERS_CLASS_VisualRenderer
 
     ERS_Editor_3DCursor
 
-
     ERS_STRUCT_LocRotScale
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_Viewport
