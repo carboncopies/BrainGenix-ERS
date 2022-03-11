@@ -50,6 +50,14 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
         Scenes_[ActiveScene_]->Models[i]->UpdateMeshTransparency();
     }
 
+    // Get List Of Transparent/Opaque Meshes
+    std::vector<ERS_STRUCT_Mesh*> OpaqueMeshes;
+    std::vector<ERS_STRUCT_Mesh*> TransparentMeshes;
+
+    
+
+
+
     // Iterate Through Models
     for (long i = 0; (long)i < (long)Scenes_[ActiveScene_]->Models.size(); i++) {
 
