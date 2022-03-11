@@ -92,8 +92,7 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
     // }
 
 
-    // Enable Depth Filtering
-    glEnable(GL_DEPTH_TEST);
+
 
     // Draw All Opaque Meshes
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
@@ -115,6 +114,10 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
         Shader->SetMat4("model", TransparentModelMatrices[i]);
         TransparentMeshes[i]->Draw(OpenGLDefaults, Shader);
     }
+
+    // Enable Depth Filtering
+    glEnable(GL_DEPTH_TEST);
+
 
     // TODO: Update rendering process
     // should be based around the idea that the models are used to get the meshes to be rendered
