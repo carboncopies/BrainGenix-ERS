@@ -103,6 +103,8 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
     }
 
     // Depth Sort Transparent Meshes
+    std::vector<ERS_STRUCT_Mesh*> SortedTransparentMeshes;
+    std::vector<glm::mat4> SortedTransparentModelMatrices;
 
     // Disable Depth Filtering
     glDisable(GL_DEPTH_TEST);
