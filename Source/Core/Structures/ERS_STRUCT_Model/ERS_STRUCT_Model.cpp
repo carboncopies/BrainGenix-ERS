@@ -120,7 +120,7 @@ void ERS_STRUCT_Model::UpdateTransparencyStatus() {
 
     // Check Color Channels
     HasTransparency_ = false;
-    for (int i = 0; i < TextureColorChannels_.size(); i++) {
+    for (unsigned long i = 0; i < TextureColorChannels_.size(); i++) {
         if (TextureColorChannels_[i] == 4) {
             HasTransparency_ = true;
         }
