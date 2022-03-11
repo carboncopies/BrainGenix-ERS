@@ -9,9 +9,6 @@
 void ERS_STRUCT_Model::Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader) {
 
 
-
-
-
     // Only Draw When Fully Ready
     if (FullyReady) {
 
