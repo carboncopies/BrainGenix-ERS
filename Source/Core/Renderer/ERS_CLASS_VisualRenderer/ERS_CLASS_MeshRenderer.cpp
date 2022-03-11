@@ -19,3 +19,11 @@ ERS_CLASS_MeshRenderer::~ERS_CLASS_MeshRenderer() {
 
 }
 
+
+void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader) {
+
+    
+
+
+
+}
