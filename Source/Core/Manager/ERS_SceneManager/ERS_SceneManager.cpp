@@ -52,9 +52,29 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
 
     // Get List Of Transparent/Opaque Meshes
     std::vector<ERS_STRUCT_Mesh*> OpaqueMeshes;
+    std::vector<glm::mat4> OpaqueModelMatrices;
     std::vector<ERS_STRUCT_Mesh*> TransparentMeshes;
+    std::vector<glm::mat4> TransparentModelMatrices;
 
-    
+    for (unsigned long i = 0; i < Scenes_[ActiveScene_]->Models.size(); i++) {
+
+        ERS_STRUCT_Model *Model = Scenes_[ActiveScene_]->Models[i].get();
+        glm::mat4 ModelMatrix = Model->GetMat4();
+        for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
+
+            ERS_STRUCT_Mesh* Mesh = &Model->Meshes[i];
+            if (Mesh->HasTransparency_) {
+                TransparentMeshes.push_back(Mesh);
+                TransparentModelMatrices.push_back(ModelMatrix);
+            } else {
+                OpaqueMeshes.push_back(Mesh);
+                OpaqueModelMatrices.push_back(ModelMatrix);
+            }
+
+        }
+
+
+    }
 
 
 
