@@ -9,6 +9,10 @@
 #include <string>
 #include <memory>
 
+// Third-Party Libraries (BG convention: use <> instead of "")
+#include <glm/glm.hpp>
+
+
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_Shader.h>
 #include <ERS_STRUCT_Texture.h>
