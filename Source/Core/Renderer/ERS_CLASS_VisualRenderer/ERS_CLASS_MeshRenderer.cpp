@@ -62,6 +62,8 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
     // A later method would be to implement support for OIT or something fancy like that but this will work for now.  
 
 
+    // todo: finish moving mesh draw stuff to this directory.
+
 
     // Also remove model draw call, as it's no longer used
     // then remove the mesh draw function and put it into here so that it's more consoldiated and self-explanitory
