@@ -84,5 +84,8 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
 
 
 
+    // Also remove model draw call, as it's no longer used
+    // then remove the mesh draw function and put it into here so that it's more consoldiated and self-explanitory
+    // then maybe move the renderer code into it's own namespace?
 
 }
