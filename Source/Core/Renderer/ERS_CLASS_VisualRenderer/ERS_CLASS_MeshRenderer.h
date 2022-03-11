@@ -28,6 +28,8 @@
 #include <ERS_CLASS_Grid.h>
 #include <ERS_CLASS_LightIconRenderer.h>
 
+#include <ERS_FUNCTION_CheckForMeshTransparency.h>
+
 #include <ERS_SceneManager.h>
 #include <ERS_SceneLoader.h>
 
