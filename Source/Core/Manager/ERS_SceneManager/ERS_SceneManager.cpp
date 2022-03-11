@@ -45,6 +45,11 @@ bool ERS_CLASS_SceneManager::AddScene(ERS_STRUCT_Scene Scene) {
 void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader) {
     
 
+    // Sort Out Transparent/Opaque Models
+    for (long i = 0; (long)i < (long)Scenes_[ActiveScene_]->Models.size(); i++) {
+        
+    }
+
     // Perform Depth Sorting
 
 
