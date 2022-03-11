@@ -29,6 +29,8 @@ struct ERS_STRUCT_Scene{
 
     // List Of Required Materials (For Now, Can Only Be Models)
     std::vector<std::shared_ptr<ERS_STRUCT_Model>> Models; /**<List of models*/
+    std::vector<int> ModelsWithTransparency_; /**<Indexes of models with transparent textures*/
+    std::vector<int> ModelsWithoutTransparency_; /**<Indexes of models without any transparent textures*/
     std::vector<std::shared_ptr<ERS_STRUCT_SpotLight>> SpotLights; /**<List of spot lights*/
     std::vector<std::shared_ptr<ERS_STRUCT_DirectionalLight>> DirectionalLights; /**<List of spot lights*/
     std::vector<std::shared_ptr<ERS_STRUCT_PointLight>> PointLights; /**<List of spot lights*/
