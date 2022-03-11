@@ -73,6 +73,19 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
 
     }
 
+
+
+    // TODO: Update rendering process
+    // should be based around the idea that the models are used to get the meshes to be rendered
+    // the meshes are then compiled into two lists to be rendered
+    // firstly, there are opaque meshes which are rendered normally (With the depth testing enabled)
+    // next, there's the transparent meshes which are sorted by distance on another thread while the opaque meshes are rendering
+    // then, these are rendered via depth peeling.
+
+    // A later method would be to implement support for OIT or something fancy like that but this will work for now.  
+
+
+
 }
 
 bool ERS_CLASS_SceneManager::SetActiveScene(int SceneIndex) {
