@@ -157,14 +157,6 @@ struct ERS_STRUCT_Model {
     glm::mat4 GetMat4();
 
     /**
-     * @brief Draw Model Using Shader
-     * 
-     * @param Shader 
-     */
-    void Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader);
-
-
-    /**
      * @brief Updates the transparency of all meshes contained by this model.
      * 
      */
