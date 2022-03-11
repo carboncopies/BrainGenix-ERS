@@ -54,6 +54,8 @@ void ERS_CLASS_VisualRenderer::InitializeOpenGL() {
         SystemUtils_->Logger_->Log("Failed To Initialize GLAD", 10);
     }
 
+    // Setup OpenGL For Blending (For Transparency Issues)
+
 }
 
 void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defaults) {
