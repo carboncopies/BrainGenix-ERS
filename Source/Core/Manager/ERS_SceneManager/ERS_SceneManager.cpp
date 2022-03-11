@@ -92,6 +92,8 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
     // }
 
 
+    // Enable Depth Filtering
+
     // Draw All Opaque Meshes
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
         glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
@@ -99,6 +101,12 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
         Shader->SetMat4("model", OpaqueModelMatrices[i]);
         OpaqueMeshes[i]->Draw(OpenGLDefaults, Shader);
     }
+
+    // Depth Sort Transparent Meshes
+
+    // Disable Depth Filtering
+
+    // Render Transparent Meshes In Right Order
 
 
     // TODO: Update rendering process
