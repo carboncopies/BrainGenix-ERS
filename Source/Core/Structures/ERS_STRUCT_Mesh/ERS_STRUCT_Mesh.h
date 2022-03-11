@@ -49,8 +49,7 @@ private:
     bool HasSpecular_; /**<Check If Has A Given Type Of Texture*/
 
 
-    std::vector<int> TextureColorChannels_; /**<List Of Number Of Color Channels In Texture*/
-    bool HasTransparency_; /**<Indicates if this model has any transparent textures (detected by number of channels)*/
+
 
 
     /**
@@ -68,6 +67,8 @@ public:
     long NumberIndices; /**<Size of Indices Array*/
     unsigned int VAO; /**<Vertex Array Object OpenGL Handle*/
 
+    std::vector<int> TextureColorChannels_; /**<List Of Number Of Color Channels In Texture*/
+    bool HasTransparency_; /**<Indicates if this model has any transparent textures (detected by number of channels)*/
 
     std::vector<int> TextureReferences_; /**<Texture Reference IDs*/
     std::vector<unsigned int> TextureIDs; /**<Textur IDs*/
