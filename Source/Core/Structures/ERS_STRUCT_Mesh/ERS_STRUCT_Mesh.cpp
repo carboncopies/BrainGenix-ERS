@@ -123,13 +123,6 @@ void ERS_STRUCT_Mesh::SetupMesh() {
 
 
 
-    // Check Color Channels
-    HasTransparency_ = false;
-    for (int i = 0; i < TextureColorChannels_.size(); i++) {
-        if (TextureColorChannels_[i] == 4) {
-            HasTransparency_ = true;
-        }
-    }
 
 
 }
