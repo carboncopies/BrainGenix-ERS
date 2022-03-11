@@ -50,11 +50,7 @@ void ERS_CLASS_SceneManager::Render(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, s
 
         // Get Model Pointer
         ERS_STRUCT_Model *Model = Scenes_[ActiveScene_]->Models[i].get();
-
-        // Set Shader Pointer
         Shader->SetMat4("model", Model->GetMat4());
-
-        // Call Draw
         Model->Draw(OpenGLDefaults, Shader);
         
 
