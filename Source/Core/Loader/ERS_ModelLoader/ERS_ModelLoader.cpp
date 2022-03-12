@@ -352,7 +352,17 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
-        Model->Meshes.push_back(ProcessMesh(Mesh, Scene, TexturePaths));
+        Model->Meshes.push_back(
+            ProcessMesh(
+                Model->MeshVertCount_[Model->MeshVertIndex],
+                Model->MeshIndiceCount_[Model->MeshIndIndex],
+                Mesh,
+                Scene,
+                TexturePaths
+            )
+        );
+        Model->MeshVertIndex++;
+        Model->MeshIndIndex++;
     }
 
     // Process Children Nodes
