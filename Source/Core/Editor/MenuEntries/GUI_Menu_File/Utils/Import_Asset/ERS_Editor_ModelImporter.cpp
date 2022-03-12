@@ -133,6 +133,11 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     }
     MetadataEmitter<<YAML::EndMap;
     
+    MetadataEmitter<<YAML::Key<<"Vertices"<<YAML::Value<<Model.TotalVertices_;
+    MetadataEmitter<<YAML::Key<<"Indices"<<YAML::Value<<Model.TotalIndices_;
+    
+
+
     MetadataEmitter<<YAML::EndMap;
 
 

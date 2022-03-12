@@ -34,10 +34,10 @@ struct ERS_STRUCT_Model {
     double LoadingFinishTime_; /**<Time When Loading Was Completed*/
     double TotalLoadingTime_; /**<The Total Time Needed To Load*/
     unsigned long TotalVertices_; /**<Total Number Of Verts In This Model*/ 
-    unsigned long Indices_; /**<Total Number Of Indices In Model*/
+    unsigned long TotalIndices_; /**<Total Number Of Indices In Model*/
 
     std::vector<unsigned long> MeshVertCount_; /**<Total number of verts in all the meshes*/
-    std::vector<unsigned long> IndiceCount_; /**<Total Number of indices in all the meshes*/
+    std::vector<unsigned long> MeshIndiceCount_; /**<Total Number of indices in all the meshes*/
 
 
     // Model Data
