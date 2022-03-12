@@ -118,6 +118,18 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     }
 
+
+    // Get Vert/Indice Metadata Info
+    for (unsigned long i = 0; i < Model.Meshes.size(); i++) {
+        unsigned long VertSize = Model.Meshes[i].Vertices.size();
+        unsigned long IndSize = Model.Meshes[i].Indices.size();
+        Model.TotalVertices_ += VertSize;
+        Model.TotalIndices_ += IndSize;
+
+        Model.MeshVertCount_.push_back(VertSize);
+        Model.MeshIndiceCount_.push_back(IndSize);
+    }
+
    
     // Generate Metadata
     YAML::Emitter MetadataEmitter;
