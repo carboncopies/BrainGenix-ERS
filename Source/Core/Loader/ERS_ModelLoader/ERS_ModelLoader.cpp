@@ -290,6 +290,11 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
             TexturePaths.push_back(it->first.as<std::string>());
             TextureIDs.push_back(it->second.as<long>());
         }
+        YAML::Node MeshInfo = Metadata["MeshInfo"];
+        for (YAML::const_iterator it=TexturePathNode.begin(); it!=TexturePathNode.end(); ++it) {
+            Model->MeshVertCount_.push_back(it->second["Vertices"].as<unsigned long>());
+            Model->MeshIndiceCount_.push_back(it->second["Indices"].as<unsigned long>());
+        }
     } catch(YAML::BadSubscript&) {
         SystemUtils_->Logger_->Log(std::string(std::string("Error Loading Model '") + std::to_string(AssetID) + std::string("', Asset Metadata Corrupt")).c_str(), 9);
         return;
