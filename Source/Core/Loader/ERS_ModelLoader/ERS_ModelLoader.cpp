@@ -290,14 +290,6 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
             TexturePaths.push_back(it->first.as<std::string>());
             TextureIDs.push_back(it->second.as<long>());
         }
-        YAML::Node MeshInfo = Metadata["MeshInfo"];
-        for (YAML::const_iterator it=MeshInfo.begin(); it!=MeshInfo.end(); ++it) {
-            Model->MeshVertCount_.push_back(it->second["Vertices"].as<unsigned long>());
-            Model->MeshIndiceCount_.push_back(it->second["Indices"].as<unsigned long>());
-            std::cout<<"Vert: "<<it->second["Vertices"].as<unsigned long>()<<std::endl;
-            std::cout<<"Ind: "<<it->second["Indices"].as<unsigned long>()<<std::endl;
-            
-        }
     } catch(YAML::BadSubscript&) {
         SystemUtils_->Logger_->Log(std::string(std::string("Error Loading Model '") + std::to_string(AssetID) + std::string("', Asset Metadata Corrupt")).c_str(), 9);
         return;
@@ -357,22 +349,16 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
-
-        for (unsigned long i = 0; i < Model->MeshVertCount_.size(); i++) {
-            std::cout<<Model->MeshVertCount_[i]<<std::endl;
-        }
-
         Model->Meshes.push_back(
             ProcessMesh(
-                Model->MeshVertCount_[Model->MeshVertIndex],
-                Model->MeshIndiceCount_[Model->MeshIndIndex],
+                (unsigned long)Mesh->mNumVertices,
+                (unsigned long)Mesh->mNumFaces*3,
                 Mesh,
                 Scene,
                 TexturePaths
             )
         );
-        Model->MeshVertIndex++;
-        Model->MeshIndIndex++;
+
     }
 
     // Process Children Nodes
