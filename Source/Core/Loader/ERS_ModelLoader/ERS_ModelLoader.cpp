@@ -191,7 +191,10 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
                 Model->Meshes[i].TextureColorChannels_.push_back(0);
             } else {
                 Model->Meshes[i].TextureIDs.push_back(Model->OpenGLTextureIDs_[TextureIndex]);
+                std::cout<<"1\n";
+                std::cout<<Model->TexturesToPushToGPU_[TextureIndex].Channels<<std::endl;
                 Model->Meshes[i].TextureColorChannels_.push_back(Model->TexturesToPushToGPU_[TextureIndex].Channels);
+                std::cout<<"2\n";
             }
     
 
