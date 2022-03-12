@@ -52,14 +52,14 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
 
 
     // Iterate Through Textures
-    for (unsigned int i = 0; i < TextureIDs.size(); i++) {
+    for (unsigned int i = 0; i < Mesh->TextureIDs.size(); i++) {
 
         // Set To Proper Texture
         glActiveTexture(GL_TEXTURE0 + i);
 
         // Get Texture Number
         std::string Number;
-        std::string Name = TextureNames[i];
+        std::string Name = Mesh->TextureNames[i];
         int Type = 0;
 
         // Detect Type
@@ -129,8 +129,8 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
 
 
     // Draw Mesh
-    glBindVertexArray(VAO);
-    glDrawElements(GL_TRIANGLES, NumberIndices, GL_UNSIGNED_INT, 0);
+    glBindVertexArray(Mesh->VAO);
+    glDrawElements(GL_TRIANGLES, Mesh->NumberIndices, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 
 }
