@@ -36,7 +36,8 @@ struct ERS_STRUCT_Model {
     unsigned long TotalVertices_; /**<Total Number Of Verts In This Model*/ 
     unsigned long Indices_; /**<Total Number Of Indices In Model*/
 
-
+    std::vector<unsigned long> MeshVertCount_; /**<Total number of verts in all the meshes*/
+    std::vector<unsigned long> IndiceCount_; /**<Total Number of indices in all the meshes*/
 
 
     // Model Data
