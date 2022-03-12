@@ -37,7 +37,7 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
 
 
     // Disable Depth Filtering
-    glDisable(GL_DEPTH_TEST);
+    //glDisable(GL_DEPTH_TEST);
 
     // Render Transparent Meshes In Right Order
     for (unsigned long i = 0; i < TransparentMeshes.size(); i++) {
@@ -47,7 +47,7 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
     }
 
     // Enable Depth Filtering
-    glEnable(GL_DEPTH_TEST);
+    //glEnable(GL_DEPTH_TEST);
 
 
     // TODO: Update rendering process
