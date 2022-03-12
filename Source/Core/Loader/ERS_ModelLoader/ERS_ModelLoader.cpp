@@ -197,7 +197,9 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         Model->Meshes[i].SetupMesh();
     }
 
-
+    Model->LoadingFinishTime_ = glfwGetTime();
+    Model->TotalLoadingTime_ = Model->LoadingFinishTime_ - Model->LoadingStartTime_;
+    SystemUtils_->Logger_->Log(std::string("Model Loading Completed In ") + std::to_string(Model->TotalLoadingTime_) + std::string(" Seconds"), 4);
 
 
 }
