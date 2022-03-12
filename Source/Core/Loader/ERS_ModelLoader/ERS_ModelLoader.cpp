@@ -358,8 +358,8 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
         std::cout<<Model->MeshIndiceCount_.size()<<std::endl;
         Model->Meshes.push_back(
             ProcessMesh(
-                Model->MeshVertCount_[Model->MeshVertIndex],
-                Model->MeshIndiceCount_[Model->MeshIndIndex],
+                Model->MeshVertCount_[i],
+                Model->MeshIndiceCount_[i],
                 Mesh,
                 Scene,
                 TexturePaths
