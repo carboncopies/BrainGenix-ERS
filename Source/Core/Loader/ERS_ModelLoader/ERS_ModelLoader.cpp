@@ -215,7 +215,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         + std::string(" Vertices, ")
         + std::to_string(VertsPerSec)
         + std::string(" Verts/Sec")
-        ,4);
+        ,5);
 
     
 
