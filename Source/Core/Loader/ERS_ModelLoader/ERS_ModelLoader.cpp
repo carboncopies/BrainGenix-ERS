@@ -132,7 +132,7 @@ void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr
 void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) {
 
     // Push Textures To GPU RAM
-    for (int i = 0; (long)i < (long)Model->TexturesToPushToGPU_.size(); i++) {
+    for (unsigned long i = 0; i < Model->TexturesToPushToGPU_.size(); i++) {
 
         // Generate Texture
         unsigned int TextureID;
