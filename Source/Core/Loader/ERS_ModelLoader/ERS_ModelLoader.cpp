@@ -175,11 +175,9 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         // Append To Texture Index
         Model->OpenGLTextureIDs_.push_back(TextureID);
     }
-    std::cout<<"Step2\n";
 
     // Erase List To Save Memory
     Model->TexturesToPushToGPU_.erase(Model->TexturesToPushToGPU_.begin(), Model->TexturesToPushToGPU_.end());
-    std::cout<<"Step3\n";
 
     // Process Texture References, Setup Meshes
     for (int i = 0; (long)i < (long)Model->Meshes.size(); i++) {
@@ -193,10 +191,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
                 Model->Meshes[i].TextureColorChannels_.push_back(0);
             } else {
                 Model->Meshes[i].TextureIDs.push_back(Model->OpenGLTextureIDs_[TextureIndex]);
-                std::cout<<"1\n";
-                std::cout<<"Channels: "<<Model->TexturesToPushToGPU_[TextureIndex].Channels<<std::endl;
                 Model->Meshes[i].TextureColorChannels_.push_back(Model->TexturesToPushToGPU_[TextureIndex].Channels);
-                std::cout<<"2\n";
             }
     
 
@@ -204,7 +199,6 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         Model->Meshes[i].SetupMesh();
     }
 
-    std::cout<<"Step4\n";
 
 
 
