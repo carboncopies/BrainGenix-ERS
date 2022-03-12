@@ -71,7 +71,7 @@ private:
      * @param Scene 
      * @return ERS_STRUCT_Mesh 
      */
-    void ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory);
+    ERS_STRUCT_Mesh ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory);
 
     /**
      * @brief Load Textures From Model.

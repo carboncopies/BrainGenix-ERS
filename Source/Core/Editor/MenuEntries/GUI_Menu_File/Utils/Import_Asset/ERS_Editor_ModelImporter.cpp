@@ -189,7 +189,7 @@ void ERS_CLASS_ModelImporter::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node,
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
-        ProcessMesh(Model, Mesh, Scene, ModelDirectory);
+        Model->Meshes.push_back(ProcessMesh(Model, Mesh, Scene, ModelDirectory));
     }
 
     // Process Children Nodes
