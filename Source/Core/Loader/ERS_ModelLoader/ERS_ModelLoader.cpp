@@ -294,6 +294,9 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
         for (YAML::const_iterator it=MeshInfo.begin(); it!=MeshInfo.end(); ++it) {
             Model->MeshVertCount_.push_back(it->second["Vertices"].as<unsigned long>());
             Model->MeshIndiceCount_.push_back(it->second["Indices"].as<unsigned long>());
+            std::cout<<"Vert: "<<it->second["Vertices"].as<unsigned long>()<<std::endl;
+            std::cout<<"Ind: "<<it->second["Indices"].as<unsigned long>()<<std::endl;
+            
         }
     } catch(YAML::BadSubscript&) {
         SystemUtils_->Logger_->Log(std::string(std::string("Error Loading Model '") + std::to_string(AssetID) + std::string("', Asset Metadata Corrupt")).c_str(), 9);
