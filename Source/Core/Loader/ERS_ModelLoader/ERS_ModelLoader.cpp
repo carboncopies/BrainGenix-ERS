@@ -99,7 +99,6 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(ERS_STRUCT_Scene* ActiveScene) {
     // Check List Of Models
     for (unsigned long i = 0; i <ActiveScene->Models.size(); i++) {
         
-        std::cout<<"Test1\n";
         if ( (ActiveScene->Models[i]->IsReadyForGPU) && !(ActiveScene->Models[i]->FullyReady) ) {
 
             std::cout<<"Test2\n";
