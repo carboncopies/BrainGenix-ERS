@@ -30,7 +30,9 @@ struct ERS_STRUCT_Model {
 
     std::vector<ERS_STRUCT_Texture> TexturesToPushToGPU_;
     std::vector<unsigned int> OpenGLTextureIDs_;
-
+    double LoadingStartTime_; /**<Time that the loading started*/
+    double LoadingFinishTime_; /**<Time When Loading Was Completed*/
+    double TotalLoadingTime_; /**<The Total Time Needed To Load*/
 
 
 
