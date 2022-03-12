@@ -101,7 +101,6 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(ERS_STRUCT_Scene* ActiveScene) {
         
         if ( (ActiveScene->Models[i]->IsReadyForGPU) && !(ActiveScene->Models[i]->FullyReady) ) {
 
-            std::cout<<"Test2\n";
             SystemUtils_->Logger_->Log(std::string(std::string("Pushing Material Information To GPU For Asset: ") + std::to_string(ActiveScene->Models[i]->AssetID)).c_str(), 4);
 
             ProcessGPU(ActiveScene->Models[i]);
