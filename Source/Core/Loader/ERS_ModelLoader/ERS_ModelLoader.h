@@ -81,7 +81,7 @@ private:
      * @param Scene 
      * @return ERS_STRUCT_Mesh 
      */
-    ERS_STRUCT_Mesh ProcessMesh(aiMesh *Mesh, const aiScene *Scene, std::vector<std::string> TexturePaths);
+    ERS_STRUCT_Mesh ProcessMesh(unsigned long PreallocVertSize, unsigned long PerallocIndSize, aiMesh *Mesh, const aiScene *Scene, std::vector<std::string> TexturePaths);
 
     /**
      * @brief Load Textures From Model.
