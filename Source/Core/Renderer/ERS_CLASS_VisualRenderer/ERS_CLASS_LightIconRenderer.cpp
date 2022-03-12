@@ -54,7 +54,7 @@ ERS_CLASS_LightIconRenderer::~ERS_CLASS_LightIconRenderer() {
 
 void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneManager* SceneManager) {
 
-    
+    glDisable(GL_DEPTH_TEST);
     LightIconRendererShader_->MakeActive();
     glm::mat4 View = Camera->GetViewMatrix();
     glm::mat4 Projection = Camera->GetProjectionMatrix();
@@ -176,6 +176,7 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
     }
 
 
+    glEnable(GL_DEPTH_TEST);
 
 
 }
