@@ -364,8 +364,8 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
 
         Model->Meshes.push_back(
             ProcessMesh(
-                Model->MeshVertCount_[i],
-                Model->MeshIndiceCount_[i],
+                Model->MeshVertCount_[Model->MeshVertIndex],
+                Model->MeshIndiceCount_[Model->MeshIndIndex],
                 Mesh,
                 Scene,
                 TexturePaths
