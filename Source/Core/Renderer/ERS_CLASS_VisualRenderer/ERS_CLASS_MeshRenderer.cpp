@@ -28,9 +28,6 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
     std::vector<ERS_STRUCT_Mesh*> TransparentMeshes;
     ERS_FUNCTION_MeshTransparencySort(&OpaqueMeshes, &TransparentMeshes, Scene);
 
-    std::cout<<OpaqueMeshes.size()<<std::endl;
-    std::cout<<TransparentMeshes.size()<<std::endl;
-
     // Draw All Opaque Meshes
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
         glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);

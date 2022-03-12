@@ -7,7 +7,6 @@
 
 void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader) {
 
-    std::cout<<glm::to_string(Mesh->ModelMatrix)<<std::endl;
     Shader->SetMat4("model", Mesh->ModelMatrix);
 
 
