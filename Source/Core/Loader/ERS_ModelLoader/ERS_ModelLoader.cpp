@@ -357,8 +357,11 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
-        std::cout<<Model->MeshVertCount_.size()<<std::endl;
-        std::cout<<Model->MeshIndiceCount_.size()<<std::endl;
+
+        for (unsigned long i = 0; i < Model->MeshVertCount_.size(); i++) {
+            std::cout<<Model->MeshVertCount_[i]<<std::endl;
+        }
+
         Model->Meshes.push_back(
             ProcessMesh(
                 Model->MeshVertCount_[i],
