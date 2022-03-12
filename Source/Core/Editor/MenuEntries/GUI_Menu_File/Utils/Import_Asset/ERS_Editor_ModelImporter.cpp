@@ -294,6 +294,7 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, ai
         }
     }
 
+    return OutputMesh;
 
 }
 
