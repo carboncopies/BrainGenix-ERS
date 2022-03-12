@@ -125,9 +125,6 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
         unsigned long IndSize = Model.Meshes[i].Indices.size();
         Model.TotalVertices_ += VertSize;
         Model.TotalIndices_ += IndSize;
-
-        Model.MeshVertCount_.push_back(VertSize);
-        Model.MeshIndiceCount_.push_back(IndSize);
     }
 
    
@@ -144,18 +141,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
         MetadataEmitter<<YAML::Key<<TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1))<<YAML::Value<<TextureIDs[i];
     }
     MetadataEmitter<<YAML::EndMap;
-    
-    MetadataEmitter<<YAML::Key<<"MeshInfo";
-    MetadataEmitter<<YAML::Key<<YAML::BeginMap;
-    for (unsigned long i = 0; i < Model.MeshVertCount_.size(); i++) {
-        MetadataEmitter<<YAML::Key<<std::to_string(i).c_str();
-        MetadataEmitter<<YAML::Key<<YAML::BeginMap;
-        MetadataEmitter<<YAML::Key<<"Vertices"<<YAML::Value<<Model.MeshVertCount_[i];
-        MetadataEmitter<<YAML::Key<<"Indices"<<YAML::Value<<Model.MeshIndiceCount_[i];
-        MetadataEmitter<<YAML::EndMap;
 
-    }
-    MetadataEmitter<<YAML::EndMap;
 
     MetadataEmitter<<YAML::Key<<"Vertices"<<YAML::Value<<Model.TotalVertices_;
     MetadataEmitter<<YAML::Key<<"Indices"<<YAML::Value<<Model.TotalIndices_;
