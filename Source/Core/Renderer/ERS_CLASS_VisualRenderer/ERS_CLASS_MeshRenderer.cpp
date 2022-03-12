@@ -32,8 +32,6 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
         glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
         glActiveTexture(OpenGLDefaults->DefaultTexture_);
-        Shader->SetMat4("model", OpaqueMeshes[i]->ModelMatrix);
-        //OpaqueMeshes[i]->Draw(OpenGLDefaults, Shader);
         ERS_FUNCTION_DrawMesh(OpaqueMeshes[i], OpenGLDefaults, Shader);
     }
 
