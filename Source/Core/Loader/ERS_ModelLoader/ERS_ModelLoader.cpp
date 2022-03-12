@@ -132,6 +132,7 @@ void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr
 
 void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) {
 
+    std::cout<<"Step1\n";
     // Push Textures To GPU RAM
     for (int i = 0; (long)i < (long)Model->TexturesToPushToGPU_.size(); i++) {
 
@@ -175,9 +176,11 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         // Append To Texture Index
         Model->OpenGLTextureIDs_.push_back(TextureID);
     }
+    std::cout<<"Step2\n";
 
     // Erase List To Save Memory
     Model->TexturesToPushToGPU_.erase(Model->TexturesToPushToGPU_.begin(), Model->TexturesToPushToGPU_.end());
+    std::cout<<"Step3\n";
 
     // Process Texture References, Setup Meshes
     for (int i = 0; (long)i < (long)Model->Meshes.size(); i++) {
@@ -202,6 +205,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         Model->Meshes[i].SetupMesh();
     }
 
+    std::cout<<"Step4\n";
 
 
 
