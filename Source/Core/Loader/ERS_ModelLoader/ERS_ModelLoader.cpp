@@ -373,10 +373,14 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
 
 }
 
-ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(unsigned long PreallocVertSize, unsigned long PerallocIndSize, aiMesh *Mesh, const aiScene *Scene, std::vector<std::string> TexturePaths) {
+ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(unsigned long PreallocVertSize, unsigned long PreallocIndSize, aiMesh *Mesh, const aiScene *Scene, std::vector<std::string> TexturePaths) {
 
     // Create Data Holders
     ERS_STRUCT_Mesh OutputMesh;
+
+
+    OutputMesh.Vertices.reserve(PreallocVertSize);
+    OutputMesh.Indices.reserve(PreallocIndSize);
 
     // Iterate Through Meshes' Vertices
     for (unsigned int i = 0; i < Mesh->mNumVertices; i++) {
