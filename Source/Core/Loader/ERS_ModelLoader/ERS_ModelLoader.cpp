@@ -177,6 +177,12 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
     // Erase List To Save Memory
     Model->TexturesToPushToGPU_.erase(Model->TexturesToPushToGPU_.begin(), Model->TexturesToPushToGPU_.end());
 
+
+    // Collect Vertex Count Analytics
+    for (unsigned long i = 0; i < Model->Meshes.size(); i++) {
+        Model->TotalVertices_ += Model->Meshes[i].Vertices.size();
+    }
+
     // Process Texture References, Setup Meshes
     for (int i = 0; (long)i < (long)Model->Meshes.size(); i++) {
         for (int Index = 0; (long)Index < (long)Model->Meshes[i].TextureReferences_.size(); Index++) { // IF TEXTURES DONT WORK, CHECK HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -195,12 +201,15 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
 
         }
         Model->Meshes[i].SetupMesh();
+        // Perhaps save mem by erasing the vertices after pusning? (also indices)
     }
 
     Model->LoadingFinishTime_ = glfwGetTime();
     Model->TotalLoadingTime_ = Model->LoadingFinishTime_ - Model->LoadingStartTime_;
-    SystemUtils_->Logger_->Log(std::string("Model Loading Completed In ") + std::to_string(Model->TotalLoadingTime_) + std::string(" Seconds"), 4);
+    double VertsPerSec = Model->TotalVertices_ / Model->TotalLoadingTime_;
+    SystemUtils_->Logger_->Log(std::string("Model Loading Completed In ") + std::to_string(Model->TotalLoadingTime_) + std::string(" Seconds, ") + std::to_string(VertsPerSec) + std::string(" Verts/Sec"), 4);
 
+    
 
 }
 
