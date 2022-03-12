@@ -75,12 +75,6 @@ struct ERS_STRUCT_Mesh {
      */
     void SetupMesh();
 
-    /**
-     * @brief Draw The Mesh (Called Once Per Frame For All Meshes To Be Rendered)
-     * 
-     * @param Shader 
-     */
-    void Draw(ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader);
 
     /**
      * @brief Reset the texture to the default with the given name and offset.
