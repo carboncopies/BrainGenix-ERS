@@ -250,7 +250,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
 
     // Log Loading For Debugging Purposes
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Model '") + std::to_string(AssetID) + std::string("'")).c_str(), 4);
-
+    Model->LoadingStartTime_ = glfwGetTime();
 
     // Read Metadata From Asset
     std::unique_ptr<ERS_STRUCT_IOData> ModelMetadata = std::make_unique<ERS_STRUCT_IOData>();
