@@ -120,7 +120,7 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
         
         // Bind Texture
         glActiveTexture(GL_TEXTURE0 + Type);
-        glBindTexture(GL_TEXTURE_2D, TextureIDs[i]);
+        glBindTexture(GL_TEXTURE_2D, Mesh->TextureIDs[i]);
 
     }
 
