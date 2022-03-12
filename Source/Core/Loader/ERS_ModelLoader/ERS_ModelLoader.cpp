@@ -97,18 +97,16 @@ void ERS_CLASS_ModelLoader::WorkerThread() {
 void ERS_CLASS_ModelLoader::ProcessNewModels(ERS_STRUCT_Scene* ActiveScene) {
 
     // Check List Of Models
-    std::unique_ptr<std::vector<std::shared_ptr<ERS_STRUCT_Model>>> Models = std::make_unique<std::vector<std::shared_ptr<ERS_STRUCT_Model>>>(ActiveScene->Models);
-
-    for (unsigned long i = 0; i < Models->size(); i++) {
+    for (unsigned long i = 0; i <ActiveScene->Models.size(); i++) {
         
         std::cout<<"Test1\n";
-        if ( ((*Models)[i]->IsReadyForGPU) && !((*Models)[i]->FullyReady) ) {
+        if ( (ActiveScene->Models[i]->IsReadyForGPU) && !(ActiveScene->Models[i]->FullyReady) ) {
 
             std::cout<<"Test2\n";
-            SystemUtils_->Logger_->Log(std::string(std::string("Pushing Material Information To GPU For Asset: ") + std::to_string((*Models)[i]->AssetID)).c_str(), 4);
+            SystemUtils_->Logger_->Log(std::string(std::string("Pushing Material Information To GPU For Asset: ") + std::to_string(ActiveScene->Models[i]->AssetID)).c_str(), 4);
 
-            ProcessGPU((*Models)[i]);
-            (*Models)[i]->FullyReady = true;
+            ProcessGPU(ActiveScene->Models[i]);
+            ActiveScene->Models[i]->FullyReady = true;
 
         }
 
