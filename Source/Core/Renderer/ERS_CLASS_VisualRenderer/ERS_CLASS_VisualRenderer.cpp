@@ -60,7 +60,6 @@ void ERS_CLASS_VisualRenderer::InitializeOpenGL() {
     // Setup OpenGL For Blending (For Transparency Issues)
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
-    //glEnable(GL_FRAMEBUFFER_SRGB);
 
 }
 
