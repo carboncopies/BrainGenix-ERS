@@ -100,9 +100,11 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(ERS_STRUCT_Scene* ActiveScene) {
     std::unique_ptr<std::vector<std::shared_ptr<ERS_STRUCT_Model>>> Models = std::make_unique<std::vector<std::shared_ptr<ERS_STRUCT_Model>>>(ActiveScene->Models);
 
     for (int i = 0; (long)i < (long)Models->size(); i++) {
-
+        
+        std::cout<<"Test1\n";
         if ( ((*Models)[i]->IsReadyForGPU) && !((*Models)[i]->FullyReady) ) {
 
+            std::cout<<"Test2\n";
             SystemUtils_->Logger_->Log(std::string(std::string("Pushing Material Information To GPU For Asset: ") + std::to_string((*Models)[i]->AssetID)).c_str(), 4);
 
             ProcessGPU((*Models)[i]);
@@ -325,7 +327,6 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     for (unsigned long i = 0; i < DecodedTextures.size(); i++) {
         SystemUtils_->Logger_->Log(std::string(std::string("Getting Texture With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
         Model->TexturesToPushToGPU_.push_back(DecodedTextures[i].get());
-        std::cout<<"Done\n";
     }
 
 
