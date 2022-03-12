@@ -99,7 +99,7 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(ERS_STRUCT_Scene* ActiveScene) {
     // Check List Of Models
     std::unique_ptr<std::vector<std::shared_ptr<ERS_STRUCT_Model>>> Models = std::make_unique<std::vector<std::shared_ptr<ERS_STRUCT_Model>>>(ActiveScene->Models);
 
-    for (int i = 0; (long)i < (long)Models->size(); i++) {
+    for (unsigned long i = 0; i < Models->size(); i++) {
         
         std::cout<<"Test1\n";
         if ( ((*Models)[i]->IsReadyForGPU) && !((*Models)[i]->FullyReady) ) {
