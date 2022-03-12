@@ -350,9 +350,12 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
 
 void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::vector<std::string> TexturePaths) {
 
+
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
+        std::cout<<Model->MeshVertCount_.size()<<std::endl;
+        std::cout<<Model->MeshIndiceCount_.size()<<std::endl;
         Model->Meshes.push_back(
             ProcessMesh(
                 Model->MeshVertCount_[Model->MeshVertIndex],
