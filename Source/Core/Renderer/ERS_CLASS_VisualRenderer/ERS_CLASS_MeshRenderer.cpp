@@ -36,6 +36,7 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
     }
 
 
+
     // Disable Depth Filtering
     //glDisable(GL_DEPTH_TEST);
 
