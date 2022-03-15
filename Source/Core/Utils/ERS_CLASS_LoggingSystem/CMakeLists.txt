@@ -25,7 +25,9 @@ target_link_libraries(ERS_CLASS_LoggingSystem
     ERS_STRUCT_RGBColor
     )
 
-if !(WIN32 OR APPLE)
+if (WIN32) 
+    ERSBuildLogger("Build Warnings Not Enabled")
+else ()
     target_compile_options(ERS_CLASS_LoggingSystem PUBLIC -Wall -Wextra -Wpedantic)
     target_compile_options(ERS_CLASS_LoggingSystem PUBLIC -Werror=uninitialized)
 endif()
