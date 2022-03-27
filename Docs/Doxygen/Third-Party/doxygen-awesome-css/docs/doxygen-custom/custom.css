@@ -1,3 +1,8 @@
+h1 {
+    font-size: 50px;
+    color: red;
+}
+
 .github-corner svg {
     fill: var(--primary-light-color);
     color: var(--page-background-color);
