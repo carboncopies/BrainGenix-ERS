@@ -121,7 +121,7 @@ private:
     void DrawViewportMenu(int Index);
 
     /**
-     * @brief Returns the index of the shader with name that matches the name given.
+     * @brief Returns the index of the shader with name that matches the name given. Will return 0 if the shader is not found.
      * 
      * @param Name 
      * @return long 
