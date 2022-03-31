@@ -24,7 +24,7 @@ add_library(Widgets
             "GUI_Widget_FrameratePlot.h"
             "GUI_Widget_RenderingSettings.h"
             "GUI_Widget_ObjectProperties.h"
-            "GUI_Widget_RamGraph.h"
+            "GUI_Widget_RAMGraph.h"
 
 
             ${BACKWARD_ENABLE}
