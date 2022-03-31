@@ -55,8 +55,8 @@ private:
     Widget_FramerateHistogram Widget_FramerateHistogram_; /**<Widget Instance*/
     Widget_FramerateGraph Widget_FramerateGraph_; /**<Widget Instance*/
     Widget_FrameratePlot Widget_FrameratePlot_; /**<Widget Instance*/
-    Widget_RAMGraph Widget_RAMGraph_; /**<Widget Instance*/
-    
+
+    std::unique_ptr<Widget_RAMGraph> Widget_RAMGraph_; /**<Widget Instance*/
     std::unique_ptr<Widget_RenderingSettings> Widget_RenderingSettings_; /**<Widget Instance*/
     std::unique_ptr<Widget_ObjectProperties> Widget_ObjectProperties_; /**<Widget Instance*/
     std::unique_ptr<Widget_FrameLatencyGraph> Widget_FrameLatencyGraph_; /**<Widget Instance*/
