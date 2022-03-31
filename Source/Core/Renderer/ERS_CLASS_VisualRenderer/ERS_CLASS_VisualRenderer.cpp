@@ -366,6 +366,8 @@ long ERS_CLASS_VisualRenderer::FindShaderIndex(std::string Name) {
         }
     }
 
+    return Index;
+
 }
 
 
