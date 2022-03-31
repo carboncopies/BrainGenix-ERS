@@ -21,6 +21,7 @@ void Widget_RAMGraph::Draw() {
     // Update Data In Vectors
     ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->HardwareInformation_->GetHWInfo();
     TotalRAM_.push_back(HWInfo.Dynamic_.PhysicalMemoryCapacity);
+    UsedRAM_.push_back(HWInfo.Dynamic_.PhysicalMemoryFree);
 
 
 
@@ -46,7 +47,7 @@ void Widget_RAMGraph::Draw() {
 
 
                     if (PlotVisible) {
-                        ImPlot::PlotLine("Total RAM", (const float*)SystemUtils_->FramerateManager_->ActualFrameTimesMS_.data(), SystemUtils_->FramerateManager_->ActualFrameTimesMS_.size());
+                        ImPlot::PlotLine("Total RAM", (const float*)TotalRAM_.data(), TotalRAM_.size());
                         ImPlot::EndPlot();
                     }
                 }
