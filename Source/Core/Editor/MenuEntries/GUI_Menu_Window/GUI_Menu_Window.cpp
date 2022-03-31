@@ -17,6 +17,7 @@ GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
     Widget_ObjectProperties_ = std::make_unique<Widget_ObjectProperties>(Cursors3D);
     Widget_RenderingSettings_ = std::make_unique<Widget_RenderingSettings>(SystemUtils_);
     Widget_FrameLatencyGraph_ = std::make_unique<Widget_FrameLatencyGraph>(SystemUtils_);
+    Widget_RAMGraph_ = std::make_unique<Widget_RAMGraph>(SystemUtils_);
 
 
     SystemUtils_->Logger_->Log("Initializing Editor Windows", 5);
