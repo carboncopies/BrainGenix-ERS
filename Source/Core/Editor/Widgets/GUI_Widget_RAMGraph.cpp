@@ -2,20 +2,20 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <GUI_Widget_FrameLatencyGraph.h>
+#include <GUI_Widget_RAMGraph.h>
 
 
-Widget_FrameLatencyGraph::Widget_FrameLatencyGraph(ERS_STRUCT_SystemUtils* SystemUtils) {
+Widget_RAMGraph::Widget_RAMGraph(ERS_STRUCT_SystemUtils* SystemUtils) {
     
     SystemUtils_ = SystemUtils;
 
 }
 
-Widget_FrameLatencyGraph::~Widget_FrameLatencyGraph() {
+Widget_RAMGraph::~Widget_RAMGraph() {
 
 }
 
-void Widget_FrameLatencyGraph::Draw() {
+void Widget_RAMGraph::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {

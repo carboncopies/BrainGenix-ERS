@@ -20,7 +20,7 @@
  * @brief Create GUI Widget "Framerate Graph"
  * 
  */
-class Widget_FrameLatencyGraph {
+class Widget_RAMGraph {
 
 private:
 
@@ -33,17 +33,17 @@ public:
 public:
 
     /**
-     * @brief Construct a new Widget_FrameLatencyGraph object
+     * @brief Construct a new Widget_RAMGraph object
      * 
      * @param SystemUtils 
      */
-    Widget_FrameLatencyGraph(ERS_STRUCT_SystemUtils* SystemUtils);
+    Widget_RAMGraph(ERS_STRUCT_SystemUtils* SystemUtils);
     
     /**
-     * @brief Destroy the Widget_FrameLatencyGraph object
+     * @brief Destroy the Widget_RAMGraph object
      * 
      */
-    ~Widget_FrameLatencyGraph();
+    ~Widget_RAMGraph();
 
 
     /**
