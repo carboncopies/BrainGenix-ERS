@@ -19,7 +19,7 @@ void Widget_RAMGraph::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {
-        bool WindowVisible = ImGui::Begin("Frame Latency Graph", &Enabled_);
+        bool WindowVisible = ImGui::Begin("RAM Graph", &Enabled_);
 
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(300,250), ImGuiCond_FirstUseEver);
