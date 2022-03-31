@@ -123,9 +123,10 @@ void GUI_Menu_Window::Draw() {
     Widget_FramerateHistogram_.Draw();
     Widget_FramerateGraph_.Draw();
     Widget_FrameratePlot_.Draw();
-    Widget_ObjectProperties_->Draw();
 
     // Update Widgets
+    Widget_ObjectProperties_->Draw();
+    Widget_RAMGraph_->Draw();
     Widget_RenderingSettings_->Draw();
     Widget_FrameLatencyGraph_->Draw();
 
