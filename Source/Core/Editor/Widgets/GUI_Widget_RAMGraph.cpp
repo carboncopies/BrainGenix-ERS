@@ -19,7 +19,7 @@ void Widget_RAMGraph::Draw() {
 
 
     // Update Data In Vectors
-    TotalRAM_.push_back(SystemUtils_->)
+    TotalRAM_.push_back(SystemUtils_->HardwareInformation_->)
 
     // If Window Drawing Enabled
     if (Enabled_) {
