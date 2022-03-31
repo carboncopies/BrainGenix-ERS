@@ -32,6 +32,7 @@ struct ERS_STRUCT_SystemUtils {
     std::unique_ptr<ERS_CLASS_ModelWriter> ERS_ModelWriter_; /**<Pointer To ERS Model Writer Instance*/
     std::unique_ptr<bool> SystemShouldRun_; /**<Pointer To Variable Setting If System Should Run Or Not*/
     std::unique_ptr<ERS_CLASS_FramerateManager> FramerateManager_; /**<Pointer to framerate subsystem*/
+    std::unique_ptr<HardwareInformation> HardwareInformation_; /**<Pointer to the hardware informaton class instance*/
 
 
     int RenderWidth_ = 0; /**<Width of the display being rendered to (if using a window, this is the size of the window)*/
