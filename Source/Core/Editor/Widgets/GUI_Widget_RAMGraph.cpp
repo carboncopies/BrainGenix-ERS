@@ -49,6 +49,7 @@ void Widget_RAMGraph::Draw() {
                     if (PlotVisible) {
                         ImPlot::PlotLine("Total RAM", (const float*)TotalRAM_.data(), TotalRAM_.size());
                         ImPlot::PlotLine("Used RAM", (const float*)UsedRAM_.data(), UsedRAM_.size());
+                        ImPlot::PlotLine("Total Swap", (const float*)TotalSwap_.data(), TotalSwap_.size());
 
                         ImPlot::EndPlot();
                     }
