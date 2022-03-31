@@ -28,9 +28,9 @@ private:
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointer*/
 
     std::vector<float> TotalRAM_; /**<Total Amount Of RAM In GB In The System*/
-    std::vector<float> UsedRAM_; /**<Total Amount Of RAM Used In The System*/
+    std::vector<float> FreeRAM_; /**<Total Amount Of Free RAM In The System*/
     std::vector<float> TotalSwap_; /**<Total Amount Of Swap In The System*/
-    std::vector<float> UsedSwap_; /**<Total Amount Of Used Swap In The SYstem*/
+    std::vector<float> FreeSwap_; /**<Total Amount Of Free Swap In The SYstem*/
 
 
 public:
