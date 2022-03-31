@@ -34,9 +34,9 @@ void Widget_RAMGraph::Draw() {
                 // Graph
                 if (WindowVisible && (SystemUtils_->FramerateManager_->ActualFrameTimesMS_.size() > 0)) {
                     ImPlot::SetNextAxesToFit();
-                    bool PlotVisible = ImPlot::BeginPlot("Frame Latency Graph", GraphSize);
+                    bool PlotVisible = ImPlot::BeginPlot("RAM Information", GraphSize);
                     if (PlotVisible) {
-                        ImPlot::PlotLine("Frame Latency (ms)", (const float*)SystemUtils_->FramerateManager_->ActualFrameTimesMS_.data(), SystemUtils_->FramerateManager_->ActualFrameTimesMS_.size());
+                        ImPlot::PlotLine("Total RAM", (const float*)SystemUtils_->FramerateManager_->ActualFrameTimesMS_.data(), SystemUtils_->FramerateManager_->ActualFrameTimesMS_.size());
                         ImPlot::EndPlot();
                     }
                 }

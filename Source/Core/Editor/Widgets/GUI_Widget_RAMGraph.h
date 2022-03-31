@@ -26,6 +26,10 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointer*/
 
+    std::vector<float> TotalRAM_; /**<Total Amount Of RAM In GB In The System*/
+
+
+
 public:
 
     bool Enabled_ = true; /**<Show/Hide Widget*/
