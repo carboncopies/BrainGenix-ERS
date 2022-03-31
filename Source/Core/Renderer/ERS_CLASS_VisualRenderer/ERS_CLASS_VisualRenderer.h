@@ -120,6 +120,14 @@ private:
      */
     void DrawViewportMenu(int Index);
 
+    /**
+     * @brief Returns the index of the shader with name that matches the name given.
+     * 
+     * @param Name 
+     * @return long 
+     */
+    long FindShaderIndex(std::string Name);
+
 
 public:
 
