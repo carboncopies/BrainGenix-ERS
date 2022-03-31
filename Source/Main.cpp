@@ -94,8 +94,10 @@ int main() {
     );
 
 
-    // Instantiate HardwareInformation System
-    HardwareInformation sERSHardwareInformation(SystemUtils->Logger_.get(), *SystemUtils->LocalSystemConfiguration_.get());
+    SystemUtils->HardwareInformation_ = std::make_unique<HardwareInformation>(
+        SystemUtils->Logger_.get(),
+        *SystemUtils->LocalSystemConfiguration_.get()
+    );
 
 
     // Create ProjectUtils Struct
