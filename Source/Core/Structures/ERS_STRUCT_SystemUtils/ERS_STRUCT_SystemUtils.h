@@ -16,6 +16,7 @@
 #include <ERS_InputOutputSubsystem.h>
 #include <ERS_ModelWriter.h>
 #include <ERS_FramerateManager.h>
+#include <HardwareInformation.h>
 
 
 /**
