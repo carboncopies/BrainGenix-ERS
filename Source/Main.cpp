@@ -93,7 +93,6 @@ int main() {
         SystemUtils->ERS_IOSubsystem_.get()
     );
 
-
     SystemUtils->HardwareInformation_ = std::make_unique<HardwareInformation>(
         SystemUtils->Logger_.get(),
         *SystemUtils->LocalSystemConfiguration_.get()
