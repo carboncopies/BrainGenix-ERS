@@ -22,6 +22,8 @@ void Widget_RAMGraph::Draw() {
     ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->HardwareInformation_->GetHWInfo();
     TotalRAM_.push_back(HWInfo.Dynamic_.PhysicalMemoryCapacity);
     UsedRAM_.push_back(HWInfo.Dynamic_.PhysicalMemoryFree);
+    TotalSwap_.push_back(HWInfo.Dynamic_.SwapCapacity);
+    UsedSwap_.push_back(HWInfo.Dynamic_.SwapFree);
 
 
 
