@@ -45,7 +45,7 @@ target_link_libraries(Widgets
     ERS_Editor_ThemeManager
     ERS_Editor_FontManager
     ERS_STRUCT_SystemUtils
-    ERS_STURCT_HardwareInformation
+    ERS_STRUCT_HardwareInfo
 
     ERS_Editor_3DCursor
 
