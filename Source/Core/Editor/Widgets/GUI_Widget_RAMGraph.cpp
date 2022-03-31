@@ -20,10 +20,10 @@ void Widget_RAMGraph::Draw() {
 
     // Update Data In Vectors
     ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->HardwareInformation_->GetHWInfo();
-    TotalRAM_.push_back(HWInfo.Dynamic_.PhysicalMemoryCapacity);
-    UsedRAM_.push_back(HWInfo.Dynamic_.PhysicalMemoryFree);
-    TotalSwap_.push_back(HWInfo.Dynamic_.SwapCapacity);
-    UsedSwap_.push_back(HWInfo.Dynamic_.SwapFree);
+    TotalRAM_.push_back(HWInfo.Dynamic_.PhysicalMemoryCapacity / 1073741824);
+    UsedRAM_.push_back(HWInfo.Dynamic_.PhysicalMemoryFree / 1073741824);
+    TotalSwap_.push_back(HWInfo.Dynamic_.SwapCapacity / 1073741824);
+    UsedSwap_.push_back(HWInfo.Dynamic_.SwapFree / 1073741824);
 
 
 
