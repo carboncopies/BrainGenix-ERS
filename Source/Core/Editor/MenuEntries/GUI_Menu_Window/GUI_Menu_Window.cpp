@@ -57,6 +57,15 @@ void GUI_Menu_Window::Draw() {
             ImGui::EndMenu();
             }
 
+            // System Resource Widgets
+            if (ImGui::BeginMenu("System Resources")) {
+
+                // Framerate Related Tools
+                ImGui::Checkbox("RAM", &Widget_RAMGraph_->Enabled_);
+
+            ImGui::EndMenu();
+            }
+
             // Viewport Widgets
             if (ImGui::BeginMenu("Viewport")) {
 
