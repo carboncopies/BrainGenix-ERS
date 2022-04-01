@@ -26,7 +26,7 @@ void Widget_RAMGraph::Draw() {
     FreeSwap_.push_back(HWInfo.Dynamic_.SwapFree / 1073741824.0);
 
     for (long i = 0; i < (long)FreeRAM_.size()-1000; i++) {
-        FreeRAM_.erase(FreeRAM_.begin(), FreeRAM_.begin()+1));
+        FreeRAM_.erase(FreeRAM_.begin(), FreeRAM_.begin()+1);
     }
 
     // If Window Drawing Enabled
