@@ -52,7 +52,7 @@ void Widget_RAMGraph::Draw() {
                         //ImPlot::PlotLine("Total RAM (GB)", (const float*)TotalRAM_.data(), TotalRAM_.size());
                         ImPlot::PlotLine("Free RAM (GB)", (const float*)FreeRAM_.data(), FreeRAM_.size());
                         //ImPlot::PlotLine("Total Swap (GB)", (const float*)TotalSwap_.data(), TotalSwap_.size());
-                        ImPlot::PlotLine("Free Swap (GB)", (const float*)FreeSwap_.data(), FreeSwap_.size());
+                        //ImPlot::PlotLine("Free Swap (GB)", (const float*)FreeSwap_.data(), FreeSwap_.size());
 
 
                         ImPlot::EndPlot();
