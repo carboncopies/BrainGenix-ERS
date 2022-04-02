@@ -224,7 +224,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 }
 
-void IndexSceneObjects() {
+void Window_SceneTree::IndexSceneObjects() {
 
 
 
