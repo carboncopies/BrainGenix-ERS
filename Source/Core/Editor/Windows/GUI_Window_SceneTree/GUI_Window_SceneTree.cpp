@@ -174,7 +174,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     for (unsigned long i = 0; i < SceneObjects_.size(); i++) {
 
         // Get Name Of Object
-        const char* ObjectName = SceneObjects_[i].Label.c_str();
+        const char* ObjectName = SceneObjects_[i].Label_.c_str();
 
         // Setup Node Flags
         ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
@@ -235,6 +235,7 @@ void Window_SceneTree::IndexSceneObjects(ERS_STRUCT_Scene* Scene) {
         ERS_STRUCT_SceneObject SceneObject;
         SceneObject.Type_ = std::string("Model");
         SceneObject.Index_ = i;
+        SceneObject.Label_ = Scene->Models[i]->Name;
         SceneObjects_.push_back(SceneObject);
     }
 
