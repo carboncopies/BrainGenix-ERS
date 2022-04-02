@@ -178,7 +178,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
         // Setup Node Flags
         ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
-        if (SelectedSceneObjectIndex == ObjectIndex) {
+        if ((unsigned long)SelectedSceneObjectIndex == ObjectIndex) {
             TreeFlags |= ImGuiTreeNodeFlags_Selected;
         }
 
