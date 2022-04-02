@@ -241,7 +241,7 @@ void Window_SceneTree::IndexSceneObjects(ERS_STRUCT_Scene* Scene) {
         ERS_STRUCT_SceneObject SceneObject;
         SceneObject.Type_ = std::string("Model");
         SceneObject.Index_ = i;
-        SceneObject.Label_ = Scene->Models[i]->Name;
+        SceneObject.Label_ = std::string("[M] ") + Scene->Models[i]->Name;
         SceneObjects_.push_back(SceneObject);
     }
     
@@ -250,21 +250,21 @@ void Window_SceneTree::IndexSceneObjects(ERS_STRUCT_Scene* Scene) {
         ERS_STRUCT_SceneObject SceneObject;
         SceneObject.Type_ = std::string("SpotLight");
         SceneObject.Index_ = i;
-        SceneObject.Label_ = Scene->SpotLights[i]->UserDefinedName;
+        SceneObject.Label_ = std::string("[L] ") + Scene->SpotLights[i]->UserDefinedName;
         SceneObjects_.push_back(SceneObject);
     }
     for (unsigned long i = 0; i < Scene->DirectionalLights.size(); i++) {
         ERS_STRUCT_SceneObject SceneObject;
         SceneObject.Type_ = std::string("DirectionalLight");
         SceneObject.Index_ = i;
-        SceneObject.Label_ = Scene->DirectionalLights[i]->UserDefinedName;
+        SceneObject.Label_ = std::string("[L] ") + Scene->DirectionalLights[i]->UserDefinedName;
         SceneObjects_.push_back(SceneObject);
     }
     for (unsigned long i = 0; i < Scene->PointLights.size(); i++) {
         ERS_STRUCT_SceneObject SceneObject;
         SceneObject.Type_ = std::string("PointLight");
         SceneObject.Index_ = i;
-        SceneObject.Label_ = Scene->PointLights[i]->UserDefinedName;
+        SceneObject.Label_ = std::string("[L] ") + Scene->PointLights[i]->UserDefinedName;
         SceneObjects_.push_back(SceneObject);
     }
 
