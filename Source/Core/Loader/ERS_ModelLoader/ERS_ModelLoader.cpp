@@ -495,9 +495,9 @@ void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<int>* IDs, std::vec
         if (Index == -1) {
 
             for (unsigned long x = 0; x < TextureList.size(); x++) {
-                std::cout<<TextureList[x].substr(TextureList[x].find_last_of("/") + 1, TextureList[x].length()-1)<<" | "<<TextureIdentifier.substr(TextureIdentifier.find_last_of("/") + 1, TextureIdentifier.length()-1)<<std::endl;
+                std::cout<<TextureList[x].substr(TextureList[x].find_last_of("/") + 1, TextureList[x].length())<<" | "<<TextureIdentifier.substr(TextureIdentifier.find_last_of("/") + 1, TextureIdentifier.length()-1)<<std::endl;
 
-                if (TextureList[x].substr(TextureList[x].find_last_of("/") + 1, TextureList[x].length() - 1) == TextureIdentifier.substr(TextureIdentifier.find_last_of("/") + 1, TextureIdentifier.length() - 1)) {
+                if (TextureList[x].substr(TextureList[x].find_last_of("/") + 1, TextureList[x].length()) == TextureIdentifier.substr(TextureIdentifier.find_last_of("/") + 1, TextureIdentifier.length() - 1)) {
 
                     Index = x;
                     break;
