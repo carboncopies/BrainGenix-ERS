@@ -244,6 +244,15 @@ void Window_SceneTree::IndexSceneObjects(ERS_STRUCT_Scene* Scene) {
         SceneObject.Label_ = Scene->Models[i]->Name;
         SceneObjects_.push_back(SceneObject);
     }
+    
+    // Add Lights
+    for (unsigned long i = 0; i < Scene->SpotLights.size(); i++) {
+        ERS_STRUCT_SceneObject SceneObject;
+        SceneObject.Type_ = std::string("SpotLight");
+        SceneObject.Index_ = i;
+        SceneObject.Label_ = Scene->SpotLights[i]->UserDefinedName;
+        SceneObjects_.push_back(SceneObject);
+    }
 
 
 }
