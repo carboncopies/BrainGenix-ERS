@@ -178,12 +178,12 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
         // Setup Node Flags
         ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
-        if ((unsigned long)SelectedSceneObjectIndex == ObjectIndex) {
+        if ((unsigned long)SelectedSceneObjectIndex == i) {
             TreeFlags |= ImGuiTreeNodeFlags_Selected;
         }
 
         // Create Tree Node
-        ImGui::TreeNodeEx((void*)(intptr_t)ObjectIndex, TreeFlags, "%s", ObjectName);
+        ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
 
         // If User Clicks Node, Update Object Index
         if (ImGui::IsItemClicked()) {
