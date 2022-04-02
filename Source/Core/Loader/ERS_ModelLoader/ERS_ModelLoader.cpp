@@ -502,9 +502,7 @@ void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<int>* IDs, std::vec
                     break;
                 }
             }
-
         }
-
 
         // If None Of Those Worked, Log Failure
         if (Index == -1) { 
