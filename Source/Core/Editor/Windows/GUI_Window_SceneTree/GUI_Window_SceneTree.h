@@ -75,7 +75,7 @@ private:
      * @brief Adds all models, lights, etc to the scene tree object vector.
      * 
      */
-    void IndexSceneObjects(); 
+    void IndexSceneObjects(ERS_STRUCT_Scene* Scene); 
 
 
 public:

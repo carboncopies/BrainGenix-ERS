@@ -224,8 +224,11 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 }
 
-void Window_SceneTree::IndexSceneObjects() {
+void Window_SceneTree::IndexSceneObjects(ERS_STRUCT_Scene* Scene) {
 
+    for (unsigned long i = 0; i < Scene->Models.size(); i++) {
+
+    }
 
 
 }
