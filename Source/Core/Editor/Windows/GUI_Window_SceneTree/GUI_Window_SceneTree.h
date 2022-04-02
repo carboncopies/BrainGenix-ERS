@@ -29,6 +29,18 @@
 #include <ERS_GUI_FUNCTION_DuplicateModel.h>
 
 
+
+/**
+ * @brief Struct containing the info about an object in the scene
+ * 
+ */
+struct ERS_STRUCT_SceneObject {
+
+    std::string Type_; /**<Name Of The Type Of The Object*/
+    unsigned long Index_; /**<Index in respective list (e.g. If Type Is Model, This Would Be The Index In The Model List)*/
+
+};
+
 /**
  * @brief Create GUI Window "Rendering Settings"
  * 
@@ -46,6 +58,8 @@ private:
     Subwindow_ModelRenameModal* Subwindow_ModelRenameModal_; /**<Model Rename Modal Instance*/
     Subwindow_DeleteScene* Subwindow_DeleteScene_; /**<Scene Deletion Modal Instance*/
     Subwindow_DeleteModel* Subwindow_DeleteModel_; /**<Model Deletion Modal Instance*/
+
+    std::vector<ERS_STRUCT_SceneObject> SceneObjects_; /**<Vector containing the type of the scene object*/
 
 private:
 
