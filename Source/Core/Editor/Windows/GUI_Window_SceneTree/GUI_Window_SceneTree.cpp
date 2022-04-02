@@ -167,7 +167,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     // Get Selected Item
     int SelectedSceneObjectIndex = Scene->SelectedModel;
 
-
+    IndexSceneObjects(Scene);
 
 
     // Iterate Through Scene Objects
@@ -226,8 +226,16 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 void Window_SceneTree::IndexSceneObjects(ERS_STRUCT_Scene* Scene) {
 
-    for (unsigned long i = 0; i < Scene->Models.size(); i++) {
+    // Clear The Vector
+    SceneObjects_.erase(SceneObjects_.begin(), SceneObjects_.end());
 
+
+    // Add Models
+    for (unsigned long i = 0; i < Scene->Models.size(); i++) {
+        ERS_STRUCT_SceneObject SceneObject;
+        SceneObject.Type_ = std::string("Model");
+        SceneObject.Index_ = i;
+        SceneObjects_.push_back(SceneObject);
     }
 
 
