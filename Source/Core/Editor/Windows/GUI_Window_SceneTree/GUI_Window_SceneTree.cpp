@@ -253,6 +253,19 @@ void Window_SceneTree::IndexSceneObjects(ERS_STRUCT_Scene* Scene) {
         SceneObject.Label_ = Scene->SpotLights[i]->UserDefinedName;
         SceneObjects_.push_back(SceneObject);
     }
-
+    for (unsigned long i = 0; i < Scene->DirectionalLights.size(); i++) {
+        ERS_STRUCT_SceneObject SceneObject;
+        SceneObject.Type_ = std::string("DirectionalLight");
+        SceneObject.Index_ = i;
+        SceneObject.Label_ = Scene->DirectionalLights[i]->UserDefinedName;
+        SceneObjects_.push_back(SceneObject);
+    }
+    for (unsigned long i = 0; i < Scene->PointLights.size(); i++) {
+        ERS_STRUCT_SceneObject SceneObject;
+        SceneObject.Type_ = std::string("PointLight");
+        SceneObject.Index_ = i;
+        SceneObject.Label_ = Scene->PointLights[i]->UserDefinedName;
+        SceneObjects_.push_back(SceneObject);
+    }
 
 }
