@@ -169,6 +169,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
 
+
     // Iterate Through Scene Objects
     for (unsigned long ObjectIndex = 0; ObjectIndex < Scene->Models.size(); ObjectIndex++) {
 
@@ -219,6 +220,12 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
     }
+
+
+}
+
+void IndexSceneObjects() {
+
 
 
 }
