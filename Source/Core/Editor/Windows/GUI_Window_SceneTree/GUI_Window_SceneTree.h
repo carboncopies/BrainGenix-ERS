@@ -71,6 +71,11 @@ private:
      */
     void DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex);
 
+    /**
+     * @brief Adds all models, lights, etc to the scene tree object vector.
+     * 
+     */
+    void IndexSceneObjects(); 
 
 
 public:
