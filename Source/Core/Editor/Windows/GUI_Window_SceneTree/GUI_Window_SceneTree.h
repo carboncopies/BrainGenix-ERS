@@ -37,6 +37,7 @@
 struct ERS_STRUCT_SceneObject {
 
     std::string Type_; /**<Name Of The Type Of The Object*/
+    std::string Label_; /**<Human Readable Name Of The Object*/
     unsigned long Index_; /**<Index in respective list (e.g. If Type Is Model, This Would Be The Index In The Model List)*/
 
 };

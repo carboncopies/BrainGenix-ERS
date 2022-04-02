@@ -171,10 +171,10 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
     // Iterate Through Scene Objects
-    for (unsigned long ObjectIndex = 0; ObjectIndex < Scene->Models.size(); ObjectIndex++) {
+    for (unsigned long i = 0; i < SceneObjects_.size(); i++) {
 
         // Get Name Of Object
-        const char* ObjectName = Scene->Models[ObjectIndex]->Name.c_str();
+        const char* ObjectName = SceneObjects_[i].Label.c_str();
 
         // Setup Node Flags
         ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
