@@ -486,6 +486,7 @@ void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<int>* IDs, std::vec
         int Index = -1;
         for (unsigned long x = 0; x < TextureList.size(); x++) {
             if (TextureList[x] == TextureIdentifier) {
+                SystemUtils_->Logger_->Log(std::string("Found Matching Texture '") + TextureList[x] + std::string("'"), 3);
                 Index = x;
                 break;
             }
@@ -493,10 +494,9 @@ void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<int>* IDs, std::vec
 
         // If Initial Search Failed To Match, Try Again By Only Checking End Of Path
         if (Index == -1) {
-
+            
+            SystemUtils_->Logger_->Log(std::string("Initial Model-Texture Matching Failed On Texture '") + TextureIdentifier + std::string("', Attempting Check With Substring"), 6);
             for (unsigned long x = 0; x < TextureList.size(); x++) {
-                std::cout<<TextureList[x].substr(TextureList[x].find_last_of("/") + 1, TextureList[x].length())<<" | "<<TextureIdentifier.substr(TextureIdentifier.find_last_of("/") + 1, TextureIdentifier.length()-1)<<std::endl;
-
                 if (TextureList[x].substr(TextureList[x].find_last_of("/") + 1, TextureList[x].length()) == TextureIdentifier.substr(TextureIdentifier.find_last_of("/") + 1, TextureIdentifier.length() - 1)) {
 
                     Index = x;
