@@ -492,6 +492,20 @@ void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<int>* IDs, std::vec
             }
         }
 
+        // If Initial Search Failed To Match, Try Again By Only Checking End Of Path
+        if (Index == -1) {
+
+        for (unsigned long x = 0; x < TextureList.size(); x++) {
+            std::cout<<TextureList[x]<<" | "<<TextureIdentifier<<std::endl;
+            if (TextureList[x] == TextureIdentifier) {
+                Index = x;
+                break;
+            }
+        }
+
+        }
+
+
         // Add To Output Vert
         IDs->push_back(Index);
         Types->push_back(TypeName);
