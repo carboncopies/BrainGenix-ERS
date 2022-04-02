@@ -170,7 +170,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
     // Iterate Through Scene Objects
-    for (int ObjectIndex = 0; (long)ObjectIndex < (long)Scene->Models.size(); ObjectIndex++) {
+    for (unsigned long ObjectIndex = 0; ObjectIndex < Scene->Models.size(); ObjectIndex++) {
 
         // Get Name Of Object
         const char* ObjectName = Scene->Models[ObjectIndex]->Name.c_str();
