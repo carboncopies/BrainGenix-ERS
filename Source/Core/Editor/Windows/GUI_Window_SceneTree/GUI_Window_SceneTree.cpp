@@ -187,8 +187,11 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
         // If User Clicks Node, Update Object Index
         if (ImGui::IsItemClicked()) {
-            Scene->SelectedModel = ObjectIndex;
-            Scene->HasSelectionChanged = true;
+            if (SceneObjects_[i].Type_ == std::string("Model")) {
+                Scene->SelectedModel = i;
+                Scene->HasSelectionChanged = true;
+            }
+
         }
 
 
@@ -197,22 +200,25 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         // Context Menu
         if (ImGui::BeginPopupContextItem()) {
 
-            // Rename Model
-            if (ImGui::MenuItem("Rename")) {
-                Subwindow_ModelRenameModal_->Activate(SceneIndex, ObjectIndex);
+            if (SceneObjects_[i].Type_ == std::string("Model")) {
 
-            } if (ImGui::MenuItem("Duplicate")) {
-                GUI_Windowutil_DuplicateModel(SceneManager_, SceneIndex, ObjectIndex);
+                // Rename Model
+                if (ImGui::MenuItem("Rename")) {
+                    Subwindow_ModelRenameModal_->Activate(SceneIndex, i);
+
+                } if (ImGui::MenuItem("Duplicate")) {
+                    GUI_Windowutil_DuplicateModel(SceneManager_, SceneIndex, i);
+
+                }
+
+
+                ImGui::Separator();
+
+                if (ImGui::MenuItem("Delete")) {
+                    Subwindow_DeleteModel_->DeleteModel(SceneIndex, i);
+                }
 
             }
-
-
-            ImGui::Separator();
-
-            if (ImGui::MenuItem("Delete")) {
-                Subwindow_DeleteModel_->DeleteModel(SceneIndex, ObjectIndex);
-            }
-
 
 
         ImGui::EndPopup();
