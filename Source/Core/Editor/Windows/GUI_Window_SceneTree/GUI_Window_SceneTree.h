@@ -16,9 +16,11 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_SceneManager.h>
+
 #include <ERS_STRUCT_Scene.h>
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
+#include <ERS_STRUCT_SceneObject.h>
 
 #include <ERS_GUI_CLASS_SceneRenameModal.h>
 #include <ERS_GUI_CLASS_ModelRenameModal.h>

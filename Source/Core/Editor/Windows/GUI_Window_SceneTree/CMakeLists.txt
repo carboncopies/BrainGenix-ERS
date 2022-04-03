@@ -56,6 +56,7 @@ target_link_libraries(Window_SceneTree
 target_link_libraries(Window_SceneTree
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
+    ERS_STRUCT_SCeneObject
 
     ERS_CLASS_LoggingSystem
 
