@@ -180,14 +180,14 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     // Get Selected Item
     int SelectedSceneObjectIndex = Scene->SelectedModel;
 
-    IndexSceneObjects(Scene);
+    Scene->IndexSceneObjects();
 
 
     // Iterate Through Scene Objects
-    for (unsigned long i = 0; i < SceneObjects_.size(); i++) {
+    for (unsigned long i = 0; i < Scene->SceneObjects_.size(); i++) {
 
         // Get Name Of Object
-        const char* ObjectName = SceneObjects_[i].Label_.c_str();
+        const char* ObjectName = Scene->SceneObjects_[i].Label_.c_str();
 
         // Setup Node Flags
         ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
@@ -200,7 +200,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
         // If User Clicks Node, Update Object Index
         if (ImGui::IsItemClicked()) {
-            if (SceneObjects_[i].Type_ == std::string("Model")) {
+            if (Scene->SceneObjects_[i].Type_ == std::string("Model")) {
                 Scene->SelectedModel = i;
                 Scene->HasSelectionChanged = true;
             }
@@ -213,51 +213,51 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         // Context Menu
         if (ImGui::BeginPopupContextItem()) {
 
-            if (SceneObjects_[i].Type_ == std::string("Model")) {
+            if (Scene->SceneObjects_[i].Type_ == std::string("Model")) {
                 if (ImGui::MenuItem("Rename")) {
-                    Subwindow_ModelRenameModal_->Activate(SceneIndex, SceneObjects_[i].Index_);
+                    Subwindow_ModelRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
                 } if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicateModel(SceneManager_, SceneIndex, SceneObjects_[i].Index_);
+                    GUI_Windowutil_DuplicateModel(SceneManager_, SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeleteModel_->DeleteModel(SceneIndex, SceneObjects_[i].Index_);
+                    Subwindow_DeleteModel_->DeleteModel(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
 
-            } else if (SceneObjects_[i].Type_ == std::string("PointLight")) {
+            } else if (Scene->SceneObjects_[i].Type_ == std::string("PointLight")) {
                 if (ImGui::MenuItem("Rename")) {
-                    Subwindow_PointLightRenameModal_->Activate(SceneIndex, SceneObjects_[i].Index_);
+                    Subwindow_PointLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
                 if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicatePointLight(SceneManager_, SceneIndex, SceneObjects_[i].Index_);
+                    GUI_Windowutil_DuplicatePointLight(SceneManager_, SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeletePointLight_->DeletePointLight(SceneIndex, SceneObjects_[i].Index_);
+                    Subwindow_DeletePointLight_->DeletePointLight(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
 
-            } else if (SceneObjects_[i].Type_ == std::string("DirectionalLight")) {
+            } else if (Scene->SceneObjects_[i].Type_ == std::string("DirectionalLight")) {
                 if (ImGui::MenuItem("Rename")) {
-                    Subwindow_DirectionalLightRenameModal_->Activate(SceneIndex, SceneObjects_[i].Index_);
+                    Subwindow_DirectionalLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
                 if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicateDirectionalLight(SceneManager_, SceneIndex, SceneObjects_[i].Index_);
+                    GUI_Windowutil_DuplicateDirectionalLight(SceneManager_, SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeleteDirectionalLight_->DeleteDirectionalLight(SceneIndex, SceneObjects_[i].Index_);
+                    Subwindow_DeleteDirectionalLight_->DeleteDirectionalLight(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
 
-            } else if (SceneObjects_[i].Type_ == std::string("SpotLight")) {
+            } else if (Scene->SceneObjects_[i].Type_ == std::string("SpotLight")) {
                 if (ImGui::MenuItem("Rename")) {
-                    Subwindow_SpotLightRenameModal_->Activate(SceneIndex, SceneObjects_[i].Index_);
+                    Subwindow_SpotLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
                 if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicateSpotLight(SceneManager_, SceneIndex, SceneObjects_[i].Index_);
+                    GUI_Windowutil_DuplicateSpotLight(SceneManager_, SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeleteSpotLight_->DeleteSpotLight(SceneIndex, SceneObjects_[i].Index_);
+                    Subwindow_DeleteSpotLight_->DeleteSpotLight(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
             }
 
