@@ -5,9 +5,10 @@
 #include <GUI_Widget_ObjectProperties.h>
 
 
-Widget_ObjectProperties::Widget_ObjectProperties(Cursors3D* Cursors3D) {
+Widget_ObjectProperties::Widget_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager) {
 
     Cursors3D_ = Cursors3D;
+    SceneManager_ = SceneManager;
 
 }
 

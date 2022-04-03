@@ -19,7 +19,7 @@
 
 #include <ERS_STRUCT_LocRotScale.h>
 
-#include <ERS_CLASS_SceneManager.h>
+#include <ERS_SceneManager.h>
 
 
 
