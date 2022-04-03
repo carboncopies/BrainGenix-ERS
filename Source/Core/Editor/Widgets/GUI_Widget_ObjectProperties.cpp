@@ -64,12 +64,11 @@ void Widget_ObjectProperties::Draw() {
                     ImGui::ColorEdit3("Ambient", AmbientColor);
                     FloatToVec(AmbientColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Ambient);
                     ImGui::Separator();
+
+                    ImGui::DragFloat("Rolloff Constant", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffConstant);
+                    ImGui::DragFloat("Rolloff Linear", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffLinear);
+                    ImGui::DragFloat("Rolloff Quadratic", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffQuadratic);
                     
-                    ImGui::DragFloat2("Rolloff Constant", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffConstant);
-                    ImGui::DragFloat2("Rolloff Linear", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffLinear);
-                    ImGui::DragFloat2("Rolloff Quadratic", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffQuadratic);
-                    
-                
 
 
                 }
