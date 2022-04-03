@@ -131,7 +131,7 @@ public:
      * @param Rot 
      * @param Scale 
      */
-    void SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale);
+    void SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale, bool HasRotation, bool HasScale);
 
 
     /**
