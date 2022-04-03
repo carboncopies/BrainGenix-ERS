@@ -205,16 +205,11 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         if (ImGui::BeginPopupContextItem()) {
 
             if (SceneObjects_[i].Type_ == std::string("Model")) {
-
-                // Rename Model
                 if (ImGui::MenuItem("Rename")) {
                     Subwindow_ModelRenameModal_->Activate(SceneIndex, i);
-
                 } if (ImGui::MenuItem("Duplicate")) {
                     GUI_Windowutil_DuplicateModel(SceneManager_, SceneIndex, i);
-
                 }
-
 
                 ImGui::Separator();
 
@@ -224,7 +219,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
             } else if (SceneObjects_[i].Type_ == std::string("PointLight")) {
                 if (ImGui::MenuItem("Rename")) {
-                    Subwindow_ModelRenameModal_->Activate(SceneIndex, i);
+                    Subwindow_PointLightRenameModal_->Activate(SceneIndex, i);
             }
 
 
