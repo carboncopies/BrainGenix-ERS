@@ -25,8 +25,12 @@
 #include <ERS_GUI_CLASS_PointLightRenameModal.h>
 #include <ERS_GUI_CLASS_SpotLightRenameModal.h>
 #include <ERS_GUI_CLASS_DirectionalLightRenameModal.h>
+
 #include <ERS_GUI_CLASS_DeleteScene.h>
 #include <ERS_GUI_CLASS_DeleteModel.h>
+#include <ERS_GUI_CLASS_DeletePointLight.h>
+#include <ERS_GUI_CLASS_DeleteDirectionalLight.h>
+#include <ERS_GUI_CLASS_DeleteSpotLight.h>
 
 #include <ERS_GUI_FUNCTION_DuplicateScene.h>
 #include <ERS_GUI_FUNCTION_DuplicateModel.h>
