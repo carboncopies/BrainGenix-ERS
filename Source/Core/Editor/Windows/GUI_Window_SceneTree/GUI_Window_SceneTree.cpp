@@ -134,6 +134,19 @@ void Window_SceneTree::Draw() {
                 }
             }
 
+
+
+        // Add Lights Context Menu
+        if (ImGui::BeginPopupContextItem()) {
+
+            if (ImGui::MenuItem("Test")) {
+                
+            }
+
+        ImGui::EndPopup();
+        }
+
+
         ImGui::EndChild();
         }
         
@@ -153,15 +166,7 @@ void Window_SceneTree::Draw() {
         ImGui::EndDragDropTarget();
         }
 
-        // Add Lights Context Menu
-        if (ImGui::BeginPopupContextItem()) {
 
-            if (ImGui::MenuItem("Test")) {
-                
-            }
-
-        ImGui::EndPopup();
-        }
 
 
 
