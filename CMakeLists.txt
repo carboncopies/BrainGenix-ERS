@@ -64,7 +64,7 @@ target_link_libraries(${PROJECT_NAME}
   # Internal Libs
   ERS_CLASS_LoggingSystem
   Renderer
-  HardwareInformation
+  ERS_CLASS_HardwareInformation
 
 
   ERS_SceneManager

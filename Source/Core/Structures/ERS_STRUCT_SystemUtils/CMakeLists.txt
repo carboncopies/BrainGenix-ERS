@@ -26,7 +26,7 @@ target_link_libraries(ERS_STRUCT_SystemUtils
     ERS_InputOutputSubsystem
     ERS_FramerateManager
     ERS_ModelWriter
-    HardwareInformation
+    ERS_CLASS_HardwareInformation
     )
 
 
