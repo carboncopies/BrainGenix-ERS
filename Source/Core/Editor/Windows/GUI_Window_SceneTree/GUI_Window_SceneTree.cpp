@@ -160,6 +160,7 @@ void Window_SceneTree::Draw() {
                 
             }
 
+        ImGui::EndPopup();
         }
 
 
