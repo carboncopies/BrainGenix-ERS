@@ -37,7 +37,7 @@ void Subwindow_DeletePointLight::Draw() {
 void Subwindow_DeletePointLight::UpdateConfirmDeletePopup() {
 
     if (ShowDeleteConfirm_) {
-    ImGui::Begin("Delete PointLight?", &ShowDeleteConfirm_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
+    ImGui::Begin("Delete Point Light?", &ShowDeleteConfirm_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
 
         // Grab Window Focus
         ImGui::SetWindowFocus();
@@ -50,7 +50,7 @@ void Subwindow_DeletePointLight::UpdateConfirmDeletePopup() {
 
         // Add Confirm Message
         ImGui::SetItemDefaultFocus();
-        ImGui::Text("This action will delete the selected PointLight.");
+        ImGui::Text("This action will delete the selected Point Light.");
         ImGui::Separator();
 
         // Confirm And Abort Buttons

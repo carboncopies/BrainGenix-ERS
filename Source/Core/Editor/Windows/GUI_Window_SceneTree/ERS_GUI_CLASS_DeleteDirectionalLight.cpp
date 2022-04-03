@@ -37,7 +37,7 @@ void Subwindow_DeleteDirectionalLight::Draw() {
 void Subwindow_DeleteDirectionalLight::UpdateConfirmDeletePopup() {
 
     if (ShowDeleteConfirm_) {
-    ImGui::Begin("Delete DirectionalLight?", &ShowDeleteConfirm_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
+    ImGui::Begin("Delete Directional Light?", &ShowDeleteConfirm_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
 
         // Grab Window Focus
         ImGui::SetWindowFocus();
@@ -50,7 +50,7 @@ void Subwindow_DeleteDirectionalLight::UpdateConfirmDeletePopup() {
 
         // Add Confirm Message
         ImGui::SetItemDefaultFocus();
-        ImGui::Text("This action will delete the selected DirectionalLight.");
+        ImGui::Text("This action will delete the selected Directional Light.");
         ImGui::Separator();
 
         // Confirm And Abort Buttons
