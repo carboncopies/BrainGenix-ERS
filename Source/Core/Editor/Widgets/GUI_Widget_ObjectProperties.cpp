@@ -56,6 +56,7 @@ void Widget_ObjectProperties::Draw() {
                     float DiffuseColor[3];
                     VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse, DiffuseColor);
                     ImGui::ColorEdit3("Diffuse", DiffuseColor);
+                    ImGui::SameLine();
                     ImGui::HelpMarker("Controls the main color of the light.");
                     FloatToVec(DiffuseColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse);
                     float AmbientColor[3];
