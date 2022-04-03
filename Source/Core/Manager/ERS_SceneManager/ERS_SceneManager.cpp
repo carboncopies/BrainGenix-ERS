@@ -115,4 +115,18 @@ bool ERS_CLASS_SceneManager::SetActiveScene(std::string TargetSceneName) {
 
 }
 
+void ERS_CLASS_SceneManager::AddPointLight() {
+
+    std::shared_ptr<ERS_STRUCT_PointLight> Light = std::make_shared<ERS_STRUCT_PointLight>();
+
+    Light->UserDefinedName = "New Point Light";
+    Light->Ambient = glm::vec3(0.0f);
+    Light->Diffuse = glm::vec3(0.5f);
+    Light->Specular = glm::vec3(0.5f);
+
+    Scenes_[ActiveScene_]->PointLights.push_back(Light);
+    Scenes_[ActiveScene_]->IndexSceneObjects();
+
+}
+
 
