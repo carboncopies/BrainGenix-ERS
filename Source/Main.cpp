@@ -23,7 +23,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <RendererManager.h>
 #include <ERS_CLASS_LoggingSystem.h>
-#include <HardwareInformation.h>
+#include <ERS_CLASS_HardwareInformation.h>
 
 #include <ERS_SceneManager.h>
 
