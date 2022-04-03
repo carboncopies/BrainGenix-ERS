@@ -33,6 +33,18 @@ void Widget_ObjectProperties::Draw() {
                 ImGui::DragFloat3("Scale", (float*)glm::value_ptr(Cursors3D_->Scale_), 0.05f, 0.0f, 65535.0f);
 
             
+                // Handle Extra Options For Lights
+                unsigned long SelectedSceneObject = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SelectedObject;
+                if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("PointLight")) {
+                    ImGui::Spacing();
+                    ImGui::Separator();
+                    ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Point Light Settings");
+                    ImGui::Separator();
+                    ImGui::Spacing();
+
+                }
+
+
             }
 
         // End System Controls Window
