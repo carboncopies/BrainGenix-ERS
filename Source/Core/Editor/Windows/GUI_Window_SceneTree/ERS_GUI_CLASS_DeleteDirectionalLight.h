@@ -20,13 +20,13 @@
  * @brief Implement Scene Deltion, Open Popup For Confirm, Error.
  * 
  */
-class Subwindow_DeletePointLight {
+class Subwindow_DeleteDirectionalLight {
 
 private:
 
     ERS_CLASS_SceneManager* SceneManager_; /**<SceneManager Instance*/
     int SceneIndex_ = 0; /**<Scene Index Used To Remember What Scene To Delete From*/
-    int PointLightIndex_ = 0; /**<Use to identify what PointLight to delete*/
+    int DirectionalLightIndex_ = 0; /**<Use to identify what DirectionalLight to delete*/
 
     bool FirstFrame_ = false; /**<Used to grab keyboard input on first frame window is open*/
 
@@ -39,24 +39,24 @@ private:
 public:
 
     /**
-     * @brief Construct a new Subwindow_DeletePointLight object
+     * @brief Construct a new Subwindow_DeleteDirectionalLight object
      * 
      */
-    Subwindow_DeletePointLight(ERS_CLASS_SceneManager* SceneManager);
+    Subwindow_DeleteDirectionalLight(ERS_CLASS_SceneManager* SceneManager);
 
     /**
-     * @brief Destroy the Subwindow_DeletePointLight object
+     * @brief Destroy the Subwindow_DeleteDirectionalLight object
      * 
      */
-    ~Subwindow_DeletePointLight();
+    ~Subwindow_DeleteDirectionalLight();
 
     /**
      * @brief Called by the GUI to delete a scene.
      * 
      * @param SceneIndex 
-     * @param PointLightIndex 
+     * @param DirectionalLightIndex 
      */
-    void DeletePointLight(int SceneIndex, int PointLightIndex);
+    void DeleteDirectionalLight(int SceneIndex, int DirectionalLightIndex);
 
     /**
      * @brief Update all windows created by this class. Call every frame.

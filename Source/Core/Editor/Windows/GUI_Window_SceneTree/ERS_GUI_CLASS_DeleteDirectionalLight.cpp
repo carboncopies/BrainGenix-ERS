@@ -3,41 +3,41 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_GUI_CLASS_DeletePointLight.h>
+#include <ERS_GUI_CLASS_DeleteDirectionalLight.h>
 
 
-Subwindow_DeletePointLight::Subwindow_DeletePointLight(ERS_CLASS_SceneManager* SceneManager) {
+Subwindow_DeleteDirectionalLight::Subwindow_DeleteDirectionalLight(ERS_CLASS_SceneManager* SceneManager) {
 
     SceneManager_ = SceneManager;
 
 
 }
 
-Subwindow_DeletePointLight::~Subwindow_DeletePointLight() {
+Subwindow_DeleteDirectionalLight::~Subwindow_DeleteDirectionalLight() {
 
 }
 
-void Subwindow_DeletePointLight::DeletePointLight(int SceneIndex, int PointLightIndex) {
+void Subwindow_DeleteDirectionalLight::DeleteDirectionalLight(int SceneIndex, int DirectionalLightIndex) {
 
     FirstFrame_ = true;
 
     // Show Popup Windows
     SceneIndex_ = SceneIndex;
-    PointLightIndex_ = PointLightIndex;
+    DirectionalLightIndex_ = DirectionalLightIndex;
     ShowDeleteConfirm_ = true;
     
 }
 
-void Subwindow_DeletePointLight::Draw() {
+void Subwindow_DeleteDirectionalLight::Draw() {
 
     UpdateConfirmDeletePopup();
 
 }
 
-void Subwindow_DeletePointLight::UpdateConfirmDeletePopup() {
+void Subwindow_DeleteDirectionalLight::UpdateConfirmDeletePopup() {
 
     if (ShowDeleteConfirm_) {
-    ImGui::Begin("Delete PointLight?", &ShowDeleteConfirm_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
+    ImGui::Begin("Delete DirectionalLight?", &ShowDeleteConfirm_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
 
         // Grab Window Focus
         ImGui::SetWindowFocus();
@@ -50,12 +50,12 @@ void Subwindow_DeletePointLight::UpdateConfirmDeletePopup() {
 
         // Add Confirm Message
         ImGui::SetItemDefaultFocus();
-        ImGui::Text("This action will delete the selected PointLight.");
+        ImGui::Text("This action will delete the selected DirectionalLight.");
         ImGui::Separator();
 
         // Confirm And Abort Buttons
         if (ImGui::Button("Confirm", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Enter Key Pressed
-            SceneManager_->Scenes_[SceneIndex_]->PointLights.erase(SceneManager_->Scenes_[SceneIndex_]->PointLights.begin() + PointLightIndex_);
+            SceneManager_->Scenes_[SceneIndex_]->DirectionalLights.erase(SceneManager_->Scenes_[SceneIndex_]->DirectionalLights.begin() + DirectionalLightIndex_);
             ShowDeleteConfirm_ = false;
         }
         ImGui::SameLine();
