@@ -4,21 +4,21 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_STRUCT_ShaderObject
+add_library(ERS_STRUCT_SceneObject
 
             # Add Header Files (.h)
-            "ERS_STRUCT_ShaderObject.h"
+            "ERS_STRUCT_SceneObject.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_ShaderObject
+target_link_libraries(ERS_STRUCT_SceneObject
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_ShaderObject
+target_link_libraries(ERS_STRUCT_SceneObject
     )
 
 
-target_include_directories(ERS_STRUCT_ShaderObject PUBLIC ./)
+target_include_directories(ERS_STRUCT_SceneObject PUBLIC ./)
