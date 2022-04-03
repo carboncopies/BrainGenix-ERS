@@ -42,6 +42,8 @@ void Widget_ObjectProperties::Draw() {
                     ImGui::Separator();
                     ImGui::Spacing();
 
+                    ImGui::ColorPicker3("Light Color")
+
                 }
 
 
