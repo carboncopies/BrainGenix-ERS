@@ -200,11 +200,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
         // If User Clicks Node, Update Object Index
         if (ImGui::IsItemClicked()) {
-            if (Scene->SceneObjects_[i].Type_ == std::string("Model")) {
-                Scene->SelectedModel = i;
-                Scene->HasSelectionChanged = true;
-            }
-
+            Scene->SelectedObject = i;
+            Scene->HasSelectionChanged = true;
         }
 
 

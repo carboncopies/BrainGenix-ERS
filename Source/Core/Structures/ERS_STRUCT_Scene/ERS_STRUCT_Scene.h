@@ -38,7 +38,7 @@ struct ERS_STRUCT_Scene{
     std::vector<ERS_STRUCT_SceneObject> SceneObjects_; /**<Vector containing the type of the scene object*/
 
     // Model That's Currently Selected
-    int SelectedModel = 0; /**<The Scene Object Index That Is Currently Selected*/
+    int SelectedObject = 0; /**<The Scene Object Index That Is Currently Selected*/
     bool HasSelectionChanged = true; /**<Indicates if the selected item(s) have changed*/
 
     // Scene Metadata
