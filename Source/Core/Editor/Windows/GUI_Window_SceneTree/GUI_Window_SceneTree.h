@@ -68,7 +68,7 @@ private:
     std::unique_ptr<Subwindow_DeleteSpotLight> Subwindow_DeleteSpotLight_; /**<SpotLight Delete Subwindow*/
     
 
-    std::vector<ERS_STRUCT_SceneObject> SceneObjects_; /**<Vector containing the type of the scene object*/
+
 
 private:
 
@@ -80,11 +80,7 @@ private:
      */
     void DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex);
 
-    /**
-     * @brief Adds all models, lights, etc to the scene tree object vector.
-     * 
-     */
-    void IndexSceneObjects(ERS_STRUCT_Scene* Scene); 
+
 
 
 public:

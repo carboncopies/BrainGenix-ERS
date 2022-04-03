@@ -35,6 +35,7 @@ struct ERS_STRUCT_Scene{
     std::vector<std::shared_ptr<ERS_STRUCT_SpotLight>> SpotLights; /**<List of spot lights*/
     std::vector<std::shared_ptr<ERS_STRUCT_DirectionalLight>> DirectionalLights; /**<List of spot lights*/
     std::vector<std::shared_ptr<ERS_STRUCT_PointLight>> PointLights; /**<List of spot lights*/
+    std::vector<ERS_STRUCT_SceneObject> SceneObjects_; /**<Vector containing the type of the scene object*/
 
     // Model That's Currently Selected
     int SelectedModel = 0; /**<The Scene Object Index That Is Currently Selected*/
@@ -47,5 +48,14 @@ struct ERS_STRUCT_Scene{
 
     // Status Variables
     bool IsSceneLoaded = false; /**<Status Variable Indiciating If The Scene Can Be Rendered Yet, Or If It's Yet To Be Loaded/Still Loading*/
+
+
+
+    /**
+     * @brief Adds all models, lights, etc to the scene tree object vector.
+     * 
+     */
+    void IndexSceneObjects(ERS_STRUCT_Scene* Scene); 
+
 
 };
