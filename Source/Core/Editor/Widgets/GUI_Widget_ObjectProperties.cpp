@@ -96,6 +96,7 @@ void Widget_ObjectProperties::Draw() {
                     float AmbientColor[3];
                     VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Ambient, AmbientColor);
                     ImGui::ColorEdit3("Ambient", AmbientColor);
+                    ImGui::SameLine();
                     ImGui::HelpMarker("Controls any additions to the ambient color of the environment.");
                     FloatToVec(AmbientColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Ambient);
                     float SpecularColor[3];
