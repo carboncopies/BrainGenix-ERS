@@ -60,9 +60,9 @@ void Widget_ObjectProperties::Draw() {
                     FloatToVec(DiffuseColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse);
 
                     float AmbientColor[3];
-                    VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse, AmbientColor);
+                    VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Ambient, AmbientColor);
                     ImGui::ColorEdit3("Ambient", AmbientColor);
-                    FloatToVec(AmbientColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse);
+                    FloatToVec(AmbientColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Ambient);
 
 
                 }
