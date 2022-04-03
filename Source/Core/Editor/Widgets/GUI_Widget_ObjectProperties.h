@@ -44,7 +44,7 @@ private:
      * @param In 
      * @param Out 
      */
-    void VecToFloat(glm::vec3& In, float* Out);
+    void VecToFloat(glm::vec3* In, float* Out);
 
     /**
      * @brief Converts from A Float* To A Vec

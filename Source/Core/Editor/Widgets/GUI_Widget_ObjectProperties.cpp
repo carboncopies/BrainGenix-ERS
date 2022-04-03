@@ -66,10 +66,18 @@ void Widget_ObjectProperties::Draw() {
 }
 
 
-void Widget_ObjectProperties::VecToFloat(glm::vec3& In, float* Out) {
+void Widget_ObjectProperties::VecToFloat(glm::vec3* In, float* Out) {
 
     Out[0] = In->x;
     Out[1] = In->y;
     Out[2] = In->z;
+
+}
+
+void Widget_ObjectProperties::FloatToVec(float* In, glm::vec3* Out) {
+
+    Out->x = In[0];
+    Out->y = In[1];
+    Out->z = In[2];
 
 }
