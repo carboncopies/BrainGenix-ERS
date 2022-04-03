@@ -17,16 +17,13 @@
 
 
 /**
- * @brief Stores Location, Rotation, Scale data in struct.
+ * @brief Struct containing the info about an object in the scene
  * 
  */
-struct ERS_STRUCT_ShaderProgramAssetIDs {
+struct ERS_STRUCT_SceneObject {
 
-    // Name Of Shader Program
-    std::string Name; /**<Name of the shader program, used to identify different programs*/
-
-    // Shader Asset IDs
-    long VertexID; /**<Vertex Shader Asset ID*/
-    long FragmentID; /**<Fragment Shader Asset ID*/
+    std::string Type_; /**<Name Of The Type Of The Object*/
+    std::string Label_; /**<Human Readable Name Of The Object*/
+    unsigned long Index_; /**<Index in respective list (e.g. If Type Is Model, This Would Be The Index In The Model List)*/
 
 };
