@@ -123,7 +123,7 @@ ERS_CLASS_HardwareInformation::~ERS_CLASS_HardwareInformation() {
 
 std::thread ERS_CLASS_HardwareInformation::SpawnThread() {
 
-    return std::thread(&HardwareInformation::DynamicInformationThread, this);
+    return std::thread(&ERS_CLASS_HardwareInformation::DynamicInformationThread, this);
 
 }
 

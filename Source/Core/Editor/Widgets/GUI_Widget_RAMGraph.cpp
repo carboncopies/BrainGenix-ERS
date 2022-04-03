@@ -19,7 +19,7 @@ void Widget_RAMGraph::Draw() {
 
 
     // Update Data In Vectors
-    ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->HardwareInformation_->GetHWInfo();
+    ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo();
     TotalRAM_.push_back(HWInfo.Dynamic_.PhysicalMemoryCapacity / 1073741824.0);
     FreeRAM_.push_back(HWInfo.Dynamic_.PhysicalMemoryFree / 1073741824.0);
     TotalSwap_.push_back(HWInfo.Dynamic_.SwapCapacity / 1073741824.0);
