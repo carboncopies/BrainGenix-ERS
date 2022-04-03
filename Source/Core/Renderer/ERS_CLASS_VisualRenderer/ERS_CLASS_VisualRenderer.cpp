@@ -799,6 +799,31 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
         }
 
 
+        // Add Items Menu
+        if (ImGui::BeginMenu("Add")) {
+
+            if (ImGui::BeginMenu("Light")) {
+
+                if (ImGui::MenuItem("Point Light")) {
+
+                }
+
+                if (ImGui::MenuItem("Spot Light")) {
+
+                }
+
+                if (ImGui::MenuItem("Directional Light")) {
+                    
+                }
+
+            ImGui::EndMenu();
+            }
+
+
+        ImGui::EndMenu();
+        }
+
+
     ImGui::EndMenuBar();
     }
 
