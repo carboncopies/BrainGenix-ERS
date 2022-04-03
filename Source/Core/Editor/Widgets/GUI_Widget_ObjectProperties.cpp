@@ -73,8 +73,9 @@ void Widget_ObjectProperties::Draw() {
                     ImGui::DragFloat("Rolloff Constant", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffConstant, 0.01f);
                     ImGui::HelpMarker("Sets the constant offset controlling lamp attenuation over distance. If you're trying to make the rolloff sharper, try linear or quadratic.");
                     ImGui::DragFloat("Rolloff Linear", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffLinear, 0.01f);
-                    ImGui::HelpMarker("");
+                    ImGui::HelpMarker("Component of rolloff proportional to distance from light to object. E.g. twice the distance means half the brightness.");
                     ImGui::DragFloat("Rolloff Quadratic", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffQuadratic, 0.01f);
+                    ImGui::HelpMarker("Exponential component of rolloff. Increasing this, makes the rolloff much sharper. For a linear rolloff, use the 'Rolloff Linear' value.");
 
                 } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("DirectionalLight")) {
                     
