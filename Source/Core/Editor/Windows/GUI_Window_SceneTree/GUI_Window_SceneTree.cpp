@@ -220,6 +220,14 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             } else if (SceneObjects_[i].Type_ == std::string("PointLight")) {
                 if (ImGui::MenuItem("Rename")) {
                     Subwindow_PointLightRenameModal_->Activate(SceneIndex, i);
+
+            } else if (SceneObjects_[i].Type_ == std::string("DirectionalLight")) {
+                if (ImGui::MenuItem("Rename")) {
+                    Subwindow_DirectionalLightRenameModal_->Activate(SceneIndex, i);
+
+            } else if (SceneObjects_[i].Type_ == std::string("SpotLight")) {
+                if (ImGui::MenuItem("Rename")) {
+                    Subwindow_SpotLightRenameModal_->Activate(SceneIndex, i);
             }
 
 
