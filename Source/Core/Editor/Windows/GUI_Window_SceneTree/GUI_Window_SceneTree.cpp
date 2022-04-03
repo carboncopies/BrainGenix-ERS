@@ -224,15 +224,24 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                 if (ImGui::MenuItem("Rename")) {
                     Subwindow_PointLightRenameModal_->Activate(SceneIndex, SceneObjects_[i].Index_);
                 }
+                if (ImGui::MenuItem("Duplicate")) {
+                    GUI_Windowutil_DuplicatePointLight(SceneManager_, SceneIndex, SceneObjects_[i].Index_);
+                }
 
             } else if (SceneObjects_[i].Type_ == std::string("DirectionalLight")) {
                 if (ImGui::MenuItem("Rename")) {
                     Subwindow_DirectionalLightRenameModal_->Activate(SceneIndex, SceneObjects_[i].Index_);
                 }
+                if (ImGui::MenuItem("Duplicate")) {
+                    GUI_Windowutil_DuplicateDirectionalLight(SceneManager_, SceneIndex, SceneObjects_[i].Index_);
+                }
 
             } else if (SceneObjects_[i].Type_ == std::string("SpotLight")) {
                 if (ImGui::MenuItem("Rename")) {
                     Subwindow_SpotLightRenameModal_->Activate(SceneIndex, SceneObjects_[i].Index_);
+                }
+                if (ImGui::MenuItem("Duplicate")) {
+                    GUI_Windowutil_DuplicateSpotLight(SceneManager_, SceneIndex, SceneObjects_[i].Index_);
                 }
             }
 
