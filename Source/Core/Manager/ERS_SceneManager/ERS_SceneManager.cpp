@@ -129,4 +129,30 @@ void ERS_CLASS_SceneManager::AddPointLight() {
 
 }
 
+void ERS_CLASS_SceneManager::AddDirectionalLight() {
 
+    std::shared_ptr<ERS_STRUCT_DirectionalLight> Light = std::make_shared<ERS_STRUCT_DirectionalLight>();
+
+    Light->UserDefinedName = "New Directional Light";
+    Light->Ambient = glm::vec3(0.0f);
+    Light->Diffuse = glm::vec3(0.5f);
+    Light->Specular = glm::vec3(0.5f);
+
+    Scenes_[ActiveScene_]->DirectionalLights.push_back(Light);
+    Scenes_[ActiveScene_]->IndexSceneObjects();
+
+}
+
+void ERS_CLASS_SceneManager::AddSpotLight() {
+
+    std::shared_ptr<ERS_STRUCT_SpotLight> Light = std::make_shared<ERS_STRUCT_SpotLight>();
+
+    Light->UserDefinedName = "New Spot Light";
+    Light->Ambient = glm::vec3(0.0f);
+    Light->Diffuse = glm::vec3(0.5f);
+    Light->Specular = glm::vec3(0.5f);
+
+    Scenes_[ActiveScene_]->SpotLights.push_back(Light);
+    Scenes_[ActiveScene_]->IndexSceneObjects();
+
+}
