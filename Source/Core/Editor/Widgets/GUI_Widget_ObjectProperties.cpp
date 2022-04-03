@@ -63,6 +63,10 @@ void Widget_ObjectProperties::Draw() {
                     VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Ambient, AmbientColor);
                     ImGui::ColorEdit3("Ambient", AmbientColor);
                     FloatToVec(AmbientColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Ambient);
+                    float SpecularColor[3];
+                    VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Specular, SpecularColor);
+                    ImGui::ColorEdit3("Specular", SpecularColor);
+                    FloatToVec(SpecularColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Specular);
                     ImGui::Separator();
 
                     ImGui::DragFloat("Rolloff Constant", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffConstant);
