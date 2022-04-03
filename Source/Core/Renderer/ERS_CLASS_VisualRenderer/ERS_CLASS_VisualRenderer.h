@@ -118,7 +118,7 @@ private:
      * 
      * @param Index 
      */
-    void DrawViewportMenu(int Index);
+    void DrawViewportMenu(int Index, ERS_CLASS_SceneManager* SceneManager);
 
     /**
      * @brief Returns the index of the shader with name that matches the name given. Will return 0 if the shader is not found.
