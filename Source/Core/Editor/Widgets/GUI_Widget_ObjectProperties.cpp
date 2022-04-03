@@ -133,7 +133,9 @@ void Widget_ObjectProperties::Draw() {
                     ImGui::Separator();
 
                     ImGui::DragFloat("Cutoff", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->CutOff, 0.01f);
+                    ImGui::HelpMarker("Set the inner circle cutoff point. Will start to attenuate outside of this circle.");
                     ImGui::DragFloat("Outer Cutoff", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->OuterCutOff, 0.01f);
+                    ImGui::HelpMarker("Sets the outer circle at which attenuation ends. Everything outside this circle is unaffected by the light.");
 
 
                 }
