@@ -11,9 +11,9 @@ void GUI_Windowutil_DuplicatePointLight(ERS_CLASS_SceneManager* SceneManager, in
     ERS_STRUCT_PointLight NewPointLight = *SceneManager->Scenes_[SceneIndex]->PointLights[PointLightIndex];
 
     // Update Name
-    std::string CurrentName = NewPointLight.Name;
+    std::string CurrentName = NewPointLight.UserDefinedName;
     std::string NewName = CurrentName + std::string(" - Copy");
-    NewPointLight.Name = NewName;
+    NewPointLight.UserDefinedName = NewName;
 
 
     // Add To SceneManager
