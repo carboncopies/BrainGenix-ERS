@@ -180,7 +180,6 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     // Get Selected Item
     int SelectedSceneObjectIndex = Scene->SelectedObject;
 
-    Scene->IndexSceneObjects();
 
 
     // Iterate Through Scene Objects
