@@ -5,6 +5,20 @@ SceneData:
     AssetName: Rock
     AssetType: Model
     AssetID: 10
+    AssetPositionX: 0.257804394
+    AssetPositionY: -0.0495069735
+    AssetPositionZ: 1.56041873
+    AssetRotationX: 45.0022621
+    AssetRotationY: 68.1705399
+    AssetRotationZ: -43.1638031
+    AssetScaleX: 0.012000001
+    AssetScaleY: 0.012000001
+    AssetScaleZ: 0.012000001
+    FlipTextures: true
+  1:
+    AssetName: Rock - Copy
+    AssetType: Model
+    AssetID: 10
     AssetPositionX: -0.112269223
     AssetPositionY: -0.0495069548
     AssetPositionZ: 0.682488263
@@ -15,7 +29,7 @@ SceneData:
     AssetScaleY: 0.012000001
     AssetScaleZ: 0.012000001
     FlipTextures: true
-  1:
+  2:
     AssetName: Default Directional Light
     AssetType: DirectionalLight
     AmbientRed: 0.25
@@ -27,13 +41,13 @@ SceneData:
     SpecularRed: 0.25
     SpecularGreen: 0.25
     SpecularBlue: 0.25
-    PosX: 3
-    PosY: 3
-    PosZ: 3
+    PosX: 0.0898500085
+    PosY: 1.15329742
+    PosZ: -0.723596871
     RotX: 0
     RotY: 0
     RotZ: 0
-  2:
+  3:
     AssetName: Default Point Light
     AssetType: PointLight
     AmbientRed: 0.25
@@ -45,13 +59,13 @@ SceneData:
     SpecularRed: 0.25
     SpecularGreen: 0.25
     SpecularBlue: 0.25
-    PosX: 1
-    PosY: 1
-    PosZ: 1
+    PosX: -0.83369267
+    PosY: 0.582210124
+    PosZ: -0.533189774
     RolloffConstant: 1
     RolloffLinear: 0.0900000036
     RolloffQuadratic: 0.0320000015
-  3:
+  4:
     AssetName: Default Spot Light
     AssetType: SpotLight
     AmbientRed: 0
@@ -63,12 +77,12 @@ SceneData:
     SpecularRed: 0.25
     SpecularGreen: 1
     SpecularBlue: 0.25
-    PosX: -3
-    PosY: -3
-    PosZ: -3
-    RotX: -90
-    RotY: 0
-    RotZ: 0
+    PosX: 0.993685424
+    PosY: 0.515645862
+    PosZ: -0.763120711
+    RotX: -156.130692
+    RotY: -44.4931717
+    RotZ: 141.395966
     RolloffConstant: 1
     RolloffLinear: 0.0900000036
     RolloffQuadratic: 0.0320000015
