@@ -52,9 +52,9 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     if (ImGui::IsWindowHovered() && !IsCameraMoving) {
         if (ImGui::IsKeyPressed(71)) {
             CurrentGizmoOperation_ = ImGuizmo::TRANSLATE;
-        } else if (ImGui::IsKeyPressed(82)) {
+        } else if (ImGui::IsKeyPressed(82) && EnableRotation_) {
             CurrentGizmoOperation_ = ImGuizmo::ROTATE;
-        } else if (ImGui::IsKeyPressed(83)) {
+        } else if (ImGui::IsKeyPressed(83) && EnableScale_) {
             CurrentGizmoOperation_ = ImGuizmo::SCALE;
         }
     }
