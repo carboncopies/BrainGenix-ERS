@@ -34,6 +34,10 @@ private:
     Cursors3D* Cursors3D_; /**<Instance pointer to cursors3d class*/
     ERS_CLASS_SceneManager* SceneManager_; /**<Pointer To Scene Manager Instance*/
 
+    float PointLightColor_[3]; /**<Color Of Point Light*/
+    float PointLightSpecular_[3]; /**<Color Of Point Specular Light*/
+    
+
 public:
 
     // Show/Hide Var
