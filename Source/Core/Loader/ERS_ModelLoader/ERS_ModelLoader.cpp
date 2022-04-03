@@ -300,8 +300,9 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
         return;        
     } 
 
-
-    Model->Name = Name;
+    if (Model->Name == std::string("Loading...")) {
+        Model->Name = Name;
+    }
 
     // Spawn Threads To Load Textures
     std::vector<std::future<ERS_STRUCT_Texture>> DecodedTextures;
