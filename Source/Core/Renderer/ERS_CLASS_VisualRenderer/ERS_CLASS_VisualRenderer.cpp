@@ -803,15 +803,15 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
             if (ImGui::BeginMenu("Light")) {
 
                 if (ImGui::MenuItem("Point Light")) {
-                    
+                    SceneManager->AddPointLight();
                 }
 
                 if (ImGui::MenuItem("Spot Light")) {
-
+                    SceneManager->AddSpotLight();
                 }
 
                 if (ImGui::MenuItem("Directional Light")) {
-
+                    SceneManager->AddDirectionalLight();
                 }
 
             ImGui::EndMenu();
