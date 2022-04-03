@@ -82,7 +82,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
         DeleteViewport(ViewportsToClose);
     }
 
-    SceneManager->Scenes_[SceneManager->ActiveScene_]->IndexSceneObjects();
 
 
 
