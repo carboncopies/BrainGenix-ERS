@@ -66,6 +66,7 @@ void Widget_ObjectProperties::Draw() {
                     float SpecularColor[3];
                     VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Specular, SpecularColor);
                     ImGui::ColorEdit3("Specular", SpecularColor);
+                    ImGui::SameLine();
                     ImGui::HelpMarker("Controls the color of the reflection.");
                     FloatToVec(SpecularColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Specular);
                     ImGui::Separator();
