@@ -21,10 +21,17 @@ ERS_CLASS_SceneManager::~ERS_CLASS_SceneManager() {
 
 void ERS_CLASS_SceneManager::UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
 
-    if (Scenes_[ActiveScene_]->SceneObjects_[Scenes_[ActiveScene_]->SelectedObject].Type_ == std::string("Model")) {   
-        Scenes_[ActiveScene_]->Models[Scenes_[ActiveScene_]->SelectedObject]->SetLocRotScale(Pos, Rot, Scale);
-        Scenes_[ActiveScene_]->Models[Scenes_[ActiveScene_]->SelectedObject]->ApplyTransformations();
+    unsigned long SelectedObject = Scenes_[ActiveScene_]->SelectedObject;
+
+    if (Scenes_[ActiveScene_]->SceneObjects_[SelectedObject].Type_ == std::string("Model")) {
+        unsigned long Index = Scenes_[ActiveScene_]->SceneObjects_[SelectedObject].Index_;
+        Scenes_[ActiveScene_]->Models[Index]->SetLocRotScale(Pos, Rot, Scale);
+        Scenes_[ActiveScene_]->Models[Index]->ApplyTransformations();
+    } else if (Scenes_[ActiveScene_]->SceneObjects_[Scenes_[ActiveScene_]->SelectedObject].Type_ == std::string("PointLight")) {
+        unsigned long Index = Scenes_[ActiveScene_]->SceneObjects_[SelectedObject].Index_;
+        Scenes_[ActiveScene_]->PointLights[Index]->Pos = Pos;
     }
+
 }
 
 bool ERS_CLASS_SceneManager::AddScene(ERS_STRUCT_Scene Scene) {
