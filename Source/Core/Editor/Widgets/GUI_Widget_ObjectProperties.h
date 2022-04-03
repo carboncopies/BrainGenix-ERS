@@ -19,6 +19,8 @@
 
 #include <ERS_STRUCT_LocRotScale.h>
 
+#include <ERS_CLASS_SceneManager.h>
+
 
 
 /**
@@ -40,7 +42,7 @@ public:
      * @brief Construct a new Widget_ObjectProperties object
      * 
      */
-    Widget_ObjectProperties(Cursors3D* Cursors3D);
+    Widget_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager);
 
     /**
      * @brief Destroy the Widget_ObjectProperties object
