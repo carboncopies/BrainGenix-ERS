@@ -36,6 +36,9 @@ void Widget_ObjectProperties::Draw() {
                 // Handle Extra Options For Lights
                 unsigned long SelectedSceneObject = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SelectedObject;
                 if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("PointLight")) {
+                    
+                    unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
+
                     ImGui::Spacing();
                     ImGui::Separator();
                     ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Point Light Settings");
@@ -43,7 +46,9 @@ void Widget_ObjectProperties::Draw() {
                     ImGui::Spacing();
 
                     
-                    ImGui::ColorPicker3("Light Color", PointLightColor_);
+                    glm::vec3 Color = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse;
+
+                    ImGui::ColorPicker3("Light Color", Color.);
 
                 }
 

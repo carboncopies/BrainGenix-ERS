@@ -36,7 +36,24 @@ private:
 
     float PointLightColor_[3]; /**<Color Of Point Light*/
     float PointLightSpecular_[3]; /**<Color Of Point Specular Light*/
-    
+
+
+    /**
+     * @brief Converts From A Vec To A Float*
+     * 
+     * @param In 
+     * @param Out 
+     */
+    void VecToFloat(glm::vec3* In, float* Out);
+
+    /**
+     * @brief Converts from A Float* To A Vec
+     * 
+     * @param In 
+     * @param Out 
+     */
+    void FloatToVec(float* In, glm::vec3* Out);
+
 
 public:
 
