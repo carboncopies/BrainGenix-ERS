@@ -61,6 +61,7 @@ void Widget_ObjectProperties::Draw() {
                     float AmbientColor[3];
                     VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Ambient, AmbientColor);
                     ImGui::ColorEdit3("Ambient", AmbientColor);
+                    ImGui::SameLine();
                     ImGui::HelpMarker("Controls any additions to the ambient color of the environment. Generally, you shouldn't do this with a point light, use a directional light whenever possible instead.");
                     FloatToVec(AmbientColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Ambient);
                     float SpecularColor[3];
