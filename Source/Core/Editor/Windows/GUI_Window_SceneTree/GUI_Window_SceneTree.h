@@ -22,6 +22,9 @@
 
 #include <ERS_GUI_CLASS_SceneRenameModal.h>
 #include <ERS_GUI_CLASS_ModelRenameModal.h>
+#include <ERS_GUI_CLASS_PointLightRenameModal.h>
+#include <ERS_GUI_CLASS_SpotLightRenameModal.h>
+#include <ERS_GUI_CLASS_DirectionalLightRenameModal.h>
 #include <ERS_GUI_CLASS_DeleteScene.h>
 #include <ERS_GUI_CLASS_DeleteModel.h>
 
@@ -57,6 +60,10 @@ private:
 
     Subwindow_SceneRenameModal* Subwindow_SceneRenameModal_; /**<Scene Rename Modal Instance*/
     Subwindow_ModelRenameModal* Subwindow_ModelRenameModal_; /**<Model Rename Modal Instance*/
+    std::unique_ptr<Subwindow_PointLightRenameModal> Subwindow_PointLightRenameModal_; /**<PointLight Rename Modal Instance*/
+    std::unique_ptr<Subwindow_DirectionalLightRenameModal> Subwindow_DirectionalLightRenameModal_; /**<DirectionalLight Rename Modal Instance*/
+    std::unique_ptr<Subwindow_SpotLightRenameModal> Subwindow_SpotLightRenameModal_; /**<SpotLight Rename Modal Instance*/
+    
     Subwindow_DeleteScene* Subwindow_DeleteScene_; /**<Scene Deletion Modal Instance*/
     Subwindow_DeleteModel* Subwindow_DeleteModel_; /**<Model Deletion Modal Instance*/
 
