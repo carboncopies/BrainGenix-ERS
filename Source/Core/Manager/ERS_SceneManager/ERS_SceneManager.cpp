@@ -126,7 +126,7 @@ void ERS_CLASS_SceneManager::AddPointLight() {
 
     Light->RolloffConstant = 1.0f;
     Light->RolloffLinear = 0.09f;
-    Light->RolloffQuadratic = 0.032f;
+    Light->RolloffQuadratic = 0.064f;
 
     Scenes_[ActiveScene_]->PointLights.push_back(Light);
     Scenes_[ActiveScene_]->IndexSceneObjects();
