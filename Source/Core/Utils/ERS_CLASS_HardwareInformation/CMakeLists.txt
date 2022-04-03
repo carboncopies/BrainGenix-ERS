@@ -4,7 +4,7 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(HardwareInformation
+add_library(ERS_CLASS_HardwareInformation
 
             # Add Source Files (.cpp)
             "ERS_CLASS_HardwareInformation.cpp"
@@ -16,13 +16,13 @@ add_library(HardwareInformation
             )
 
 # Link 3rd Party Libs
-target_link_libraries(HardwareInformation
+target_link_libraries(ERS_CLASS_HardwareInformation
     infoware
     ${CMAKE_THREAD_LIBS_INIT}
     )
 
 # Link Internal Libs
-target_link_libraries(HardwareInformation
+target_link_libraries(ERS_CLASS_HardwareInformation
 
     ERS_CLASS_LoggingSystem
 
@@ -30,4 +30,4 @@ target_link_libraries(HardwareInformation
 
     )
 
-target_include_directories(HardwareInformation PUBLIC ./)
+target_include_directories(ERS_CLASS_HardwareInformation PUBLIC ./)
