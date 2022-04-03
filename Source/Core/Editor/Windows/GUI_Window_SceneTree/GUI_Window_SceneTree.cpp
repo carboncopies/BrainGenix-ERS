@@ -153,6 +153,15 @@ void Window_SceneTree::Draw() {
         ImGui::EndDragDropTarget();
         }
 
+        // Add Lights Context Menu
+        if (ImGui::BeginPopupContextItem()) {
+
+            if (ImGui::MenuItem("Test")) {
+                
+            }
+
+        }
+
 
 
     // End System Controls Window
