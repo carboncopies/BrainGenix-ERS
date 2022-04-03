@@ -26,6 +26,15 @@ void Cursors3D::SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale, bo
 
     EnableRotation_ = HasRotation;
     EnableScale_ = HasScale;
+
+    if (CurrentGizmoOperation_ == ImGuizmo::ROTATE && !EnableRotation_) {
+        CurrentGizmoOperation_ = ImGuizmo::TRANSLATE;
+    }
+    if (CurrentGizmoOperation_ == ImGuizmo::SCALE && !EnableScale_) {
+        CurrentGizmoOperation_ = ImGuizmo::TRANSLATE;
+    }
+    
+
 }
 
 
