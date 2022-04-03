@@ -13,13 +13,13 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_SceneManager.h>
-#include <ERS_STRUCT_Model.h>
+#include <ERS_STRUCT_PointLight.h>
 
 /**
- * @brief Duplicate the model
+ * @brief Duplicate the PointLight
  * 
  * @param SceneManager 
  * @param SceneIndex 
- * @param ModelIndex 
+ * @param PointLightIndex 
  */
-void GUI_Windowutil_DuplicateModel(ERS_CLASS_SceneManager* SceneManager, int SceneIndex, int ModelIndex);
+void GUI_Windowutil_DuplicatePointLight(ERS_CLASS_SceneManager* SceneManager, int SceneIndex, int PointLightIndex);
