@@ -592,7 +592,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
 }
 
-void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
+void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManager* SceneManager) {
 
     // Menu Bar
     if (ImGui::BeginMenuBar()) {
