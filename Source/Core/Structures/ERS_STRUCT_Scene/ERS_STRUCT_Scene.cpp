@@ -6,41 +6,41 @@
 
 
 
-void ERS_STRUCT_Scene::IndexSceneObjects(ERS_STRUCT_Scene* Scene) {
+void ERS_STRUCT_Scene::IndexSceneObjects() {
 
     // Clear The Vector
     SceneObjects_.erase(SceneObjects_.begin(), SceneObjects_.end());
 
 
     // Add Models
-    for (unsigned long i = 0; i < Scene->Models.size(); i++) {
+    for (unsigned long i = 0; i < Models.size(); i++) {
         ERS_STRUCT_SceneObject SceneObject;
         SceneObject.Type_ = std::string("Model");
         SceneObject.Index_ = i;
-        SceneObject.Label_ = std::string("[M] ") + Scene->Models[i]->Name;
+        SceneObject.Label_ = std::string("[M] ") + Models[i]->Name;
         SceneObjects_.push_back(SceneObject);
     }
     
     // Add Lights
-    for (unsigned long i = 0; i < Scene->SpotLights.size(); i++) {
+    for (unsigned long i = 0; i < SpotLights.size(); i++) {
         ERS_STRUCT_SceneObject SceneObject;
         SceneObject.Type_ = std::string("SpotLight");
         SceneObject.Index_ = i;
-        SceneObject.Label_ = std::string("[L] ") + Scene->SpotLights[i]->UserDefinedName;
+        SceneObject.Label_ = std::string("[L] ") + SpotLights[i]->UserDefinedName;
         SceneObjects_.push_back(SceneObject);
     }
-    for (unsigned long i = 0; i < Scene->DirectionalLights.size(); i++) {
+    for (unsigned long i = 0; i < DirectionalLights.size(); i++) {
         ERS_STRUCT_SceneObject SceneObject;
         SceneObject.Type_ = std::string("DirectionalLight");
         SceneObject.Index_ = i;
-        SceneObject.Label_ = std::string("[L] ") + Scene->DirectionalLights[i]->UserDefinedName;
+        SceneObject.Label_ = std::string("[L] ") + DirectionalLights[i]->UserDefinedName;
         SceneObjects_.push_back(SceneObject);
     }
-    for (unsigned long i = 0; i < Scene->PointLights.size(); i++) {
+    for (unsigned long i = 0; i < PointLights.size(); i++) {
         ERS_STRUCT_SceneObject SceneObject;
         SceneObject.Type_ = std::string("PointLight");
         SceneObject.Index_ = i;
-        SceneObject.Label_ = std::string("[L] ") + Scene->PointLights[i]->UserDefinedName;
+        SceneObject.Label_ = std::string("[L] ") + PointLights[i]->UserDefinedName;
         SceneObjects_.push_back(SceneObject);
     }
 

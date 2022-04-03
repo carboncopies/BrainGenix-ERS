@@ -55,7 +55,7 @@ struct ERS_STRUCT_Scene{
      * @brief Adds all models, lights, etc to the scene tree object vector.
      * 
      */
-    void IndexSceneObjects(ERS_STRUCT_Scene* Scene); 
+    void IndexSceneObjects(); 
 
 
 };
