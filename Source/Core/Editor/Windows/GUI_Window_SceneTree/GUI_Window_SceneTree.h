@@ -74,6 +74,10 @@ private:
     
     Subwindow_DeleteScene* Subwindow_DeleteScene_; /**<Scene Deletion Modal Instance*/
     Subwindow_DeleteModel* Subwindow_DeleteModel_; /**<Model Deletion Modal Instance*/
+    std::unique_ptr<Subwindow_DeletePointLight> Subwindow_DeletePointLight_; /**<PointLight Delete Subwindow*/
+    std::unique_ptr<Subwindow_DeleteDirectionalLight> Subwindow_DeleteDirectionalLight_; /**<DirectionalLight Delete Subwindow*/
+    std::unique_ptr<Subwindow_DeleteSpotLight> Subwindow_DeleteSpotLight_; /**<SpotLight Delete Subwindow*/
+    
 
     std::vector<ERS_STRUCT_SceneObject> SceneObjects_; /**<Vector containing the type of the scene object*/
 
