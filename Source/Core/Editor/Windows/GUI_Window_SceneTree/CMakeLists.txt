@@ -19,6 +19,9 @@ add_library(Window_SceneTree
             "ERS_GUI_CLASS_ModelRenameModal.cpp"
             "ERS_GUI_CLASS_DeleteScene.cpp"
             "ERS_GUI_CLASS_DeleteModel.cpp"
+            "ERS_GUI_CLASS_DeletePointLight.cpp"
+            "ERS_GUI_CLASS_DeleteDirectionalLight.cpp"
+            "ERS_GUI_CLASS_DeleteSpotLight.cpp"
 
 
             # Add Header Files (.h)
@@ -35,7 +38,9 @@ add_library(Window_SceneTree
             "ERS_GUI_CLASS_ModelRenameModal.h"
             "ERS_GUI_CLASS_DeleteScene.h"
             "ERS_GUI_CLASS_DeleteModel.h"
-
+            "ERS_GUI_CLASS_DeletePointLight.h"
+            "ERS_GUI_CLASS_DeleteDirectionalLight.h"
+            "ERS_GUI_CLASS_DeleteSpotLight.h"
 
             ${BACKWARD_ENABLE}
             )
