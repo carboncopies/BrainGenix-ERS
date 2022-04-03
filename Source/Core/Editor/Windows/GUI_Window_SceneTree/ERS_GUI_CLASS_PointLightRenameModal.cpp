@@ -46,7 +46,7 @@ void Subwindow_PointLightRenameModal::Draw() {
 
         // Rename And Cancel Buttons
         if (ImGui::Button("Rename", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Enter Key Pressed
-            SceneManager_->Scenes_[SelectedScene_]->PointLights[SelectedPointLight_]->Name = std::string(PointLightInputName_);
+            SceneManager_->Scenes_[SelectedScene_]->PointLights[SelectedPointLight_]->UserDefinedName = std::string(PointLightInputName_);
             Enabled_ = false;
         }
         ImGui::SameLine();
