@@ -2,21 +2,21 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_GUI_FUNCTION_DuplicatePointLight.h>
+#include <ERS_GUI_FUNCTION_DuplicateDirectionalLight.h>
 
 
-void GUI_Windowutil_DuplicatePointLight(ERS_CLASS_SceneManager* SceneManager, int SceneIndex, int PointLightIndex) {
+void GUI_Windowutil_DuplicateDirectionalLight(ERS_CLASS_SceneManager* SceneManager, int SceneIndex, int DirectionalLightIndex) {
 
-    // Get Current PointLight
-    ERS_STRUCT_PointLight NewPointLight = *SceneManager->Scenes_[SceneIndex]->PointLights[PointLightIndex];
+    // Get Current DirectionalLight
+    ERS_STRUCT_DirectionalLight NewDirectionalLight = *SceneManager->Scenes_[SceneIndex]->DirectionalLights[DirectionalLightIndex];
 
     // Update Name
-    std::string CurrentName = NewPointLight.UserDefinedName;
+    std::string CurrentName = NewDirectionalLight.UserDefinedName;
     std::string NewName = CurrentName + std::string(" - Copy");
-    NewPointLight.UserDefinedName = NewName;
+    NewDirectionalLight.UserDefinedName = NewName;
 
 
     // Add To SceneManager
-    SceneManager->Scenes_[SceneIndex]->PointLights.push_back(std::make_shared<ERS_STRUCT_PointLight>(NewPointLight));
+    SceneManager->Scenes_[SceneIndex]->DirectionalLights.push_back(std::make_shared<ERS_STRUCT_DirectionalLight>(NewDirectionalLight));
 
 }
