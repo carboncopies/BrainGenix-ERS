@@ -222,6 +222,9 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     Subwindow_DeleteModel_->DeleteModel(SceneIndex, i);
                 }
 
+            } else if (SceneObjects_[i].Type_ == std::string("PointLight")) {
+                if (ImGui::MenuItem("Rename")) {
+                    Subwindow_ModelRenameModal_->Activate(SceneIndex, i);
             }
 
 
