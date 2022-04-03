@@ -32,6 +32,7 @@ class Widget_ObjectProperties {
 private:
 
     Cursors3D* Cursors3D_; /**<Instance pointer to cursors3d class*/
+    ERS_CLASS_SceneManager* SceneManager_; /**<Pointer To Scene Manager Instance*/
 
 public:
 
