@@ -128,6 +128,7 @@ void Widget_ObjectProperties::Draw() {
                     ImGui::Separator();
 
                     ImGui::DragFloat("Rolloff Constant", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->RolloffConstant, 0.01f);
+                    ImGui::HelpMarker("Sets the constant offset controlling lamp attenuation over distance. If you're trying to make the rolloff sharper, try linear or quadratic.");
                     ImGui::DragFloat("Rolloff Linear", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->RolloffLinear, 0.01f);
                     ImGui::DragFloat("Rolloff Quadratic", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->RolloffQuadratic, 0.01f);
                     ImGui::Separator();
