@@ -69,6 +69,8 @@ private:
 
 
     bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
+    bool EnableRotation_; /**<Enable/Disable The Rotation Gizmo*/
+    bool EnableScale_; /**<Enable/Disable The Scale Gizmo*/ 
     float* CameraView_; /**<Camera View Matrix, Converted From GLM::Mat4*/
     float* CameraProjection_; /**<Camera Projection Matrix, Converted From GLM::Mat4*/
 

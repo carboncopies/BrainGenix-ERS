@@ -15,10 +15,17 @@ Cursors3D::~Cursors3D() {
 }
 
 
-void Cursors3D::SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
+void Cursors3D::SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale, bool HasRotation, bool HasScale) {
     Pos_ = Pos;
-    Rot_ = Rot;
-    Scale_ = Scale;
+    if (HasRotation) {
+        Rot_ = Rot;
+    }
+    if (HasScale) {
+        Scale_ = Scale;
+    }
+
+    EnableRotation_ = HasRotation;
+    EnableScale_ = HasScale;
 }
 
 
