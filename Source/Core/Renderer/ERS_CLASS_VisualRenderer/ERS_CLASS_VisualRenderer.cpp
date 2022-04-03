@@ -258,22 +258,22 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             bool HasScale = false;
 
             if (SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Type_ == std::string("Model")) {
-                int Index = Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Index_;
+                unsigned long Index = SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Index_;
                 Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[Index]->ModelPosition;        
                 Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[Index]->ModelRotation;        
                 Scale = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[Index]->ModelScale;
                 HasRotation = true;
                 HasScale = true;
             } else if (SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Type_ == std::string("PointLight")) {
-                int Index = Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Index_;
+                unsigned long Index = SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Index_;
                 Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[Index]->Pos;        
             } else if (SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Type_ == std::string("DirectionalLight")) {
-                int Index = Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Index_;
+                unsigned long Index = SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Index_;
                 Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[Index]->Pos;        
                 Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[Index]->Rot;    
                 HasRotation = true;    
             } else if (SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Type_ == std::string("SpotLight")) {
-                int Index = Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Index_;
+                unsigned long Index = SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Index_;
                 Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->SpotLights[Index]->Pos;        
                 Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_]->SpotLights[Index]->Rot;    
                 HasRotation = true;    
