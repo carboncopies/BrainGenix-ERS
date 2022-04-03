@@ -178,6 +178,10 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     SystemUtils_->RenderWidth_ = Width;
     SystemUtils_->RenderHeight_ = Height;
 
+
+    ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->IndexSceneObjects();
+
+
     // Update GUI
     GuiSystem_->UpdateGUI();
 
