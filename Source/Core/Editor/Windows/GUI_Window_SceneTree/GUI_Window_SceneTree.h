@@ -30,6 +30,10 @@
 
 #include <ERS_GUI_FUNCTION_DuplicateScene.h>
 #include <ERS_GUI_FUNCTION_DuplicateModel.h>
+#include <ERS_GUI_FUNCTION_DuplicatePointLight.h>
+#include <ERS_GUI_FUNCTION_DuplicateDirectionalLight.h>
+#include <ERS_GUI_FUNCTION_DuplicateSpotLight.h>
+
 
 
 
