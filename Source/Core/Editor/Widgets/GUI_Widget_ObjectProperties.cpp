@@ -101,6 +101,7 @@ void Widget_ObjectProperties::Draw() {
                     float SpecularColor[3];
                     VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Specular, SpecularColor);
                     ImGui::ColorEdit3("Specular", SpecularColor);
+                    ImGui::HelpMarker("Controls the color of the reflection.");
                     FloatToVec(SpecularColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Specular);
                     ImGui::Separator();
 
