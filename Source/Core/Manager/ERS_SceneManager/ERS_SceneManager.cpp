@@ -20,6 +20,8 @@ ERS_CLASS_SceneManager::~ERS_CLASS_SceneManager() {
 }
 
 void ERS_CLASS_SceneManager::UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
+
+    if (Scenes_[ActiveScene_]->SceneObjects_[Scenes_[ActiveScene_]->SelectedObject])
     Scenes_[ActiveScene_]->Models[Scenes_[ActiveScene_]->SelectedModel]->SetLocRotScale(Pos, Rot, Scale);
     Scenes_[ActiveScene_]->Models[Scenes_[ActiveScene_]->SelectedModel]->ApplyTransformations();
 }
