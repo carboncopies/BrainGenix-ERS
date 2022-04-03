@@ -42,9 +42,6 @@
 
 
 
-
-
-
 /**
  * @brief Create GUI Window "Rendering Settings"
  * 
