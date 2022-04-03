@@ -34,9 +34,6 @@ private:
     Cursors3D* Cursors3D_; /**<Instance pointer to cursors3d class*/
     ERS_CLASS_SceneManager* SceneManager_; /**<Pointer To Scene Manager Instance*/
 
-    float PointLightDiffuse_[3]; /**<Color Of Point Diffuse Lighting*/
-    float PointLightAmbient_[3]; /**<Color Of Point Ambient Lighting*/
-
 
     /**
      * @brief Converts From A Vec To A Float*

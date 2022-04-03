@@ -28,6 +28,13 @@ void Widget_ObjectProperties::Draw() {
 
 
                 // LocRotScale Properties
+                ImGui::Spacing();
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Physical Parameters");
+                ImGui::Separator();
+                ImGui::Spacing();
+                ImGui::Spacing();
                 ImGui::DragFloat3("Location", (float*)glm::value_ptr(Cursors3D_->Pos_), 0.05f);
                 ImGui::DragFloat3("Rotation", (float*)glm::value_ptr(Cursors3D_->Rot_), 0.05f);// FIXME: MAKE ROLL OVER TO 180 Degrees?
                 ImGui::DragFloat3("Scale", (float*)glm::value_ptr(Cursors3D_->Scale_), 0.05f, 0.0f, 65535.0f);
@@ -40,15 +47,23 @@ void Widget_ObjectProperties::Draw() {
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
 
                     ImGui::Spacing();
+                    ImGui::Spacing();
                     ImGui::Separator();
                     ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Point Light Settings");
                     ImGui::Separator();
                     ImGui::Spacing();
+                    ImGui::Spacing();
 
-                    
-                    VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse, PointLightDiffuse_);
-                    ImGui::ColorPicker3("Diffuse", PointLightDiffuse_);
-                    FloatToVec(PointLightDiffuse_, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse);
+                    float DiffuseColor[3];
+                    VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse, DiffuseColor);
+                    ImGui::ColorEdit3("Diffuse", DiffuseColor);
+                    FloatToVec(DiffuseColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse);
+
+                    float AmbientColor[3];
+                    VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse, AmbientColor);
+                    ImGui::ColorEdit3("Dffuse", AmbientColor);
+                    FloatToVec(AmbientColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse);
+
 
                 }
 
