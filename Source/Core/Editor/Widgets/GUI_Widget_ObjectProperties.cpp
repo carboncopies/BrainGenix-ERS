@@ -45,7 +45,6 @@ void Widget_ObjectProperties::Draw() {
                 if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("PointLight")) {
                     
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
-
                     ImGui::Spacing();
                     ImGui::Spacing();
                     ImGui::Separator();
@@ -53,7 +52,6 @@ void Widget_ObjectProperties::Draw() {
                     ImGui::Separator();
                     ImGui::Spacing();
                     ImGui::Spacing();
-
 
                     float DiffuseColor[3];
                     VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse, DiffuseColor);
@@ -72,10 +70,36 @@ void Widget_ObjectProperties::Draw() {
                     ImGui::DragFloat("Rolloff Constant", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffConstant);
                     ImGui::DragFloat("Rolloff Linear", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffLinear);
                     ImGui::DragFloat("Rolloff Quadratic", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffQuadratic);
-                    
 
+                } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("DirectionalLight")) {
+                    
+                    unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
+                    ImGui::Spacing();
+                    ImGui::Spacing();
+                    ImGui::Separator();
+                    ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Directional Light Settings");
+                    ImGui::Separator();
+                    ImGui::Spacing();
+                    ImGui::Spacing();
+
+                    float DiffuseColor[3];
+                    VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Diffuse, DiffuseColor);
+                    ImGui::ColorEdit3("Diffuse", DiffuseColor);
+                    FloatToVec(DiffuseColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Diffuse);
+                    float AmbientColor[3];
+                    VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Ambient, AmbientColor);
+                    ImGui::ColorEdit3("Ambient", AmbientColor);
+                    FloatToVec(AmbientColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Ambient);
+                    float SpecularColor[3];
+                    VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Specular, SpecularColor);
+                    ImGui::ColorEdit3("Specular", SpecularColor);
+                    FloatToVec(SpecularColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Specular);
+                    ImGui::Separator();
 
                 }
+
+
+                
 
 
             }
