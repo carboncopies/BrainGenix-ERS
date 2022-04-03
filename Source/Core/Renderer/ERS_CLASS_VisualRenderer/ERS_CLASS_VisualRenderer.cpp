@@ -379,7 +379,6 @@ void ERS_CLASS_VisualRenderer::CreateViewport() {
 
 }
 
-
 long ERS_CLASS_VisualRenderer::FindShaderIndex(std::string Name) {
 
     long Index = 0;
@@ -393,7 +392,6 @@ long ERS_CLASS_VisualRenderer::FindShaderIndex(std::string Name) {
     return Index;
 
 }
-
 
 void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
@@ -805,7 +803,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
             if (ImGui::BeginMenu("Light")) {
 
                 if (ImGui::MenuItem("Point Light")) {
-
+                    
                 }
 
                 if (ImGui::MenuItem("Spot Light")) {
@@ -813,7 +811,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index) {
                 }
 
                 if (ImGui::MenuItem("Directional Light")) {
-                    
+
                 }
 
             ImGui::EndMenu();
