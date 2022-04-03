@@ -301,7 +301,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     } 
 
     if (Model->Name == std::string("Loading...")) {
-        Model->Name = Name.substr(Name.find_last_of("/"), Name.length()-1);
+        Model->Name = Name.substr(Name.find_last_of("/") + 1, Name.length()-1);
     }
 
     // Spawn Threads To Load Textures
