@@ -247,15 +247,35 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         if (SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged && DrawCursor) {
 
             // Get Selected Model
-            int SelectedModel = SceneManager->Scenes_[SceneManager->ActiveScene_]->SelectedModel;
+            int SelectedObject = SceneManager->Scenes_[SceneManager->ActiveScene_]->SelectedObject;
 
             // Get LocRotScale
-            glm::vec3 Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[SelectedModel]->ModelPosition;        
-            glm::vec3 Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[SelectedModel]->ModelRotation;        
-            glm::vec3 Scale = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[SelectedModel]->ModelScale;
+            glm::vec3 Position;        
+            glm::vec3 Rotation;      
+            glm::vec3 Scale;
+            bool HasRotation = false;
+            bool HasScale = false;
+
+            if (SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Type_ == std::string("Model")) {
+                Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[SelectedObject]->ModelPosition;        
+                Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[SelectedObject]->ModelRotation;        
+                Scale = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[SelectedObject]->ModelScale;
+                HasRotation = true;
+                HasScale = true;
+            } else if (SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Type_ == std::string("PointLight")) {
+                Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[SelectedObject]->Pos;        
+            } else if (SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Type_ == std::string("DirectionalLight")) {
+                Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[SelectedObject]->Pos;        
+                Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[SelectedObject]->Rot;    
+                HasRotation = true;    
+            } else if (SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Type_ == std::string("SpotLight")) {
+                Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->SpotLights[SelectedObject]->Pos;        
+                Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_]->SpotLights[SelectedObject]->Rot;    
+                HasRotation = true;    
+            }
 
             // Set Cursor Position        
-            Cursors3D_->SetLocRotScale(Position, Rotation, Scale);
+            Cursors3D_->SetLocRotScale(Position, Rotation, Scale, HasRotation, HasScale);
 
             // Indicate Selection Hasn't Changed
             SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged = false;
