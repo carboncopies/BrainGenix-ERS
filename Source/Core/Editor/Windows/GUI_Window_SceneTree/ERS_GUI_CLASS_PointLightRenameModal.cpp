@@ -27,7 +27,7 @@ void Subwindow_PointLightRenameModal::Activate(int SceneIndex, int PointLightInd
 void Subwindow_PointLightRenameModal::Draw() {
 
     if (Enabled_) {
-    ImGui::Begin("Rename PointLight", &Enabled_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
+    ImGui::Begin("Rename Point Light", &Enabled_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
 
         // Grab Window Focus
         ImGui::SetWindowFocus();
@@ -40,7 +40,7 @@ void Subwindow_PointLightRenameModal::Draw() {
 
         // Set Default Item To Type On, Add Input Box
         ImGui::SetItemDefaultFocus();
-        ImGui::InputTextWithHint("Rename PointLight", "Enter New PointLight Name", PointLightInputName_, IM_ARRAYSIZE(PointLightInputName_));
+        ImGui::InputTextWithHint("Rename Point Light", "Enter New Point Light Name", PointLightInputName_, IM_ARRAYSIZE(PointLightInputName_));
 
         ImGui::Separator();
 
