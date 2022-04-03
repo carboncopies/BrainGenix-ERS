@@ -124,6 +124,10 @@ void ERS_CLASS_SceneManager::AddPointLight() {
     Light->Diffuse = glm::vec3(0.5f);
     Light->Specular = glm::vec3(0.5f);
 
+    Light->RolloffConstant = 1.0f;
+    Light->RolloffLinear = 0.09f;
+    Light->RolloffQuadratic = 0.032f;
+
     Scenes_[ActiveScene_]->PointLights.push_back(Light);
     Scenes_[ActiveScene_]->IndexSceneObjects();
 
@@ -151,6 +155,13 @@ void ERS_CLASS_SceneManager::AddSpotLight() {
     Light->Ambient = glm::vec3(0.0f);
     Light->Diffuse = glm::vec3(0.5f);
     Light->Specular = glm::vec3(0.5f);
+    
+    Light->RolloffConstant = 1.0f;
+    Light->RolloffLinear = 0.09f;
+    Light->RolloffQuadratic = 0.032f;
+
+    Light->CutOff = 0.970f;
+    Light->OuterCutOff = 0.960f;
 
     Scenes_[ActiveScene_]->SpotLights.push_back(Light);
     Scenes_[ActiveScene_]->IndexSceneObjects();
