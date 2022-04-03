@@ -22,12 +22,12 @@
  * @brief Create GUI Window "Rendering Settings"
  * 
  */
-class Subwindow_PointLightRenameModal {
+class Subwindow_SpotLightRenameModal {
 
 private:
 
-    ERS_CLASS_SceneManager* SceneManager_; /**<PointLight Manager Instance Pointer*/
-    char PointLightInputName_[128] = ""; /**<Character Array To Store PointLight Name When Renaming*/
+    ERS_CLASS_SceneManager* SceneManager_; /**<SpotLight Manager Instance Spoter*/
+    char SpotLightInputName_[128] = ""; /**<Character Array To Store SpotLight Name When Renaming*/
 
 
 public:
@@ -35,31 +35,31 @@ public:
     // Show/Hide Var
     bool Enabled_ = false; /**<Show/Hide Window*/
     bool FirstFrame_ = false; /**<Used To Run Certain Things On Window Open*/
-    int SelectedPointLight_ = 0; /**<Indicate What Index The Selected PointLight Is*/
+    int SelectedSpotLight_ = 0; /**<Indicate What Index The Selected SpotLight Is*/
     int SelectedScene_ = 0; /**<Indicate What Index The Selected Scene Is*/
 
 public:
 
     /**
-     * @brief Construct a new Subwindow_PointLightRenameModal object
+     * @brief Construct a new Subwindow_SpotLightRenameModal object
      * 
      */
-    Subwindow_PointLightRenameModal(ERS_CLASS_SceneManager* SceneManager);
+    Subwindow_SpotLightRenameModal(ERS_CLASS_SceneManager* SceneManager);
 
     /**
-     * @brief Destroy the Subwindow_PointLightRenameModal object
+     * @brief Destroy the Subwindow_SpotLightRenameModal object
      * 
      */
-    ~Subwindow_PointLightRenameModal();
+    ~Subwindow_SpotLightRenameModal();
 
 
     /**
-     * @brief Show The PointLight Rename Modal
+     * @brief Show The SpotLight Rename Modal
      * 
      * @param SelectedScene
-     * @param SelectedPointLight
+     * @param SelectedSpotLight
      */
-    void Activate(int SelectedScene, int SelectedPointLight);
+    void Activate(int SelectedScene, int SelectedSpotLight);
 
 
     /**
