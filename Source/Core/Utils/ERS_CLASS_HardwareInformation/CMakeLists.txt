@@ -7,10 +7,10 @@
 add_library(HardwareInformation
 
             # Add Source Files (.cpp)
-            "HardwareInformation.cpp"
+            "ERS_CLASS_HardwareInformation.cpp"
 
             # Add Header Files (.h)
-            "HardwareInformation.h"
+            "ERS_CLASS_HardwareInformation.h"
             
             ${BACKWARD_ENABLE}
             )
