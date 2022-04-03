@@ -47,6 +47,7 @@ void Widget_ObjectProperties::Draw() {
 
                     
                     glm::vec3 DiffuseColor = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse;
+                    
 
                     ImGui::ColorPicker3("Diffuse", PointLightDiffuse_);
 
@@ -61,5 +62,14 @@ void Widget_ObjectProperties::Draw() {
     }
 
 
+
+}
+
+
+void Widget_ObjectProperties::VecToFloat(glm::vec3& In, float* Out) {
+
+    Out[0] = In->x;
+    Out[1] = In->y;
+    Out[2] = In->z;
 
 }
