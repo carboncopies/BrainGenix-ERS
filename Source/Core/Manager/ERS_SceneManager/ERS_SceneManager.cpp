@@ -158,7 +158,7 @@ void ERS_CLASS_SceneManager::AddSpotLight() {
     
     Light->RolloffConstant = 1.0f;
     Light->RolloffLinear = 0.09f;
-    Light->RolloffQuadratic = 0.032f;
+    Light->RolloffQuadratic = 0.064f;
 
     Light->CutOff = 0.970f;
     Light->OuterCutOff = 0.960f;
