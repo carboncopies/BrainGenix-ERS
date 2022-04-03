@@ -160,6 +160,9 @@ void Window_SceneTree::Draw() {
     // Draw Popup Modals
     Subwindow_SceneRenameModal_->Draw();
     Subwindow_ModelRenameModal_->Draw();
+    Subwindow_PointLightRenameModal_->Draw();
+    Subwindow_DirectionalLightRenameModal_->Draw();
+    Subwindow_SpotLightRenameModal_->Draw();
     Subwindow_DeleteScene_->Draw();
     Subwindow_DeleteModel_->Draw();
 
