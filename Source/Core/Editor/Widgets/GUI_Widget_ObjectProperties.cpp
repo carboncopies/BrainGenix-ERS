@@ -54,15 +54,22 @@ void Widget_ObjectProperties::Draw() {
                     ImGui::Spacing();
                     ImGui::Spacing();
 
+
                     float DiffuseColor[3];
                     VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse, DiffuseColor);
                     ImGui::ColorEdit3("Diffuse", DiffuseColor);
                     FloatToVec(DiffuseColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse);
-
                     float AmbientColor[3];
                     VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Ambient, AmbientColor);
                     ImGui::ColorEdit3("Ambient", AmbientColor);
                     FloatToVec(AmbientColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Ambient);
+                    ImGui::Separator();
+                    
+                    ImGui::DragFloat2("Rolloff Constant", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffConstant);
+                    ImGui::DragFloat2("Rolloff Linear", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffLinear);
+                    ImGui::DragFloat2("Rolloff Quadratic", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffQuadratic);
+                    
+                
 
 
                 }
