@@ -132,6 +132,7 @@ void Widget_ObjectProperties::Draw() {
                     ImGui::DragFloat("Rolloff Linear", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->RolloffLinear, 0.01f);
                     ImGui::HelpMarker("Component of rolloff proportional to distance from light to object. E.g. twice the distance means half the brightness.");
                     ImGui::DragFloat("Rolloff Quadratic", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->RolloffQuadratic, 0.01f);
+                    ImGui::HelpMarker("Exponential component of rolloff. Increasing this, makes the rolloff much sharper. For a linear rolloff, use the 'Rolloff Linear' value.");
                     ImGui::Separator();
 
                     ImGui::DragFloat("Cutoff", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->CutOff, 0.01f);
