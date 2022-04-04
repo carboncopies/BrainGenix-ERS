@@ -10,6 +10,9 @@ ERS_CLASS_PythonInterpreterIntegration::ERS_CLASS_PythonInterpreterIntegration(E
 
     Logger_ = Logger;
 
-    Logger_->Log("Initializing Python Interpreter Subsystem")
+    Logger_->Log("Initializing Python Interpreter Subsystem", 5);
+
+
+    
 
 }
