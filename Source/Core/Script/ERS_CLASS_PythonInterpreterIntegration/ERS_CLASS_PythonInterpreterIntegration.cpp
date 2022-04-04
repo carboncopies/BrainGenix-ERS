@@ -59,7 +59,7 @@ void ERS_CLASS_PythonInterpreterIntegration::ExecuteCode(std::string Code) {
     //assert(locals["c"].cast<int>() == 3);
     //assert(locals["message"].cast<std::string>() == "1 + 2 = 3");
 
-    std::cout<<locals["b"].cast<std::string>()<<"\n";
+    std::cout<<locals["b"].cast<int>()<<"\n";
 
 
 }
