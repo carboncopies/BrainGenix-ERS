@@ -40,7 +40,7 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
 
-#include <ERS_CLASS_PythonIntepreterIntegration.h>
+#include <ERS_CLASS_PythonInterpreterIntegration.h>
 
 
 //

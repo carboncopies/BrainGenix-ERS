@@ -68,7 +68,7 @@ target_link_libraries(${PROJECT_NAME}
   ERS_CLASS_HardwareInformation
 
 
-  ERS_CLASS_PythonIntepreterIntegration
+  ERS_CLASS_PythonInterpreterIntegration
 
   ERS_SceneManager
   ERS_ModelLoader
@@ -132,7 +132,7 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Light)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_OpenGLDefaults)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_SceneObject)
 
-add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_PythonIntepreterIntegration)
+add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_PythonInterpreterIntegration)
 
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_SceneLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ShaderLoader)

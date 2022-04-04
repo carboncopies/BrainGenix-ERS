@@ -16,10 +16,10 @@
 
 
 /**
- * @brief This class hosts the python intepreter, all other python systems use this class to run their python code.
+ * @brief This class hosts the python Interpreter, all other python systems use this class to run their python code.
  * 
  */
-class ERS_CLASS_PythonIntepreterIntegration {
+class ERS_CLASS_PythonInterpreterIntegration {
 
 private:
     ERS_CLASS_LoggingSystem* Logger_; /**<Pointer to the logging system class instance*/
@@ -27,17 +27,17 @@ private:
 public:
 
     /**
-     * @brief Construct a new ers class pythonintepreterintegration object
+     * @brief Construct a new ers class pythonInterpreterintegration object
      * 
      * @param Logger 
      */
-    ERS_CLASS_PythonIntepreterIntegration(ERS_CLASS_LoggingSystem* Logger);
+    ERS_CLASS_PythonInterpreterIntegration(ERS_CLASS_LoggingSystem* Logger);
 
     /**
-     * @brief Destroy the ers class pythonintepreterintegration object
+     * @brief Destroy the ers class pythonInterpreterintegration object
      * 
      */
-    ~ERS_CLASS_PythonIntepreterIntegration();
+    ~ERS_CLASS_PythonInterpreterIntegration();
 
 
 
