@@ -17,6 +17,7 @@ add_library(ERS_CLASS_PythonIntepreterIntegration
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_CLASS_PythonIntepreterIntegration
+    pybind11::embed
     )
 
 # Link Internal Libs
