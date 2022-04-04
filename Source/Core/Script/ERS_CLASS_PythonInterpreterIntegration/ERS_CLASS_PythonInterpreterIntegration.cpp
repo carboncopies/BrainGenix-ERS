@@ -18,7 +18,7 @@ ERS_CLASS_PythonInterpreterIntegration::ERS_CLASS_PythonInterpreterIntegration(E
     Guard_ = std::make_unique<pybind11::scoped_interpreter>();
     Logger_->Log("Finished Starting Python Interpreter", 4);
     
-
+    pybind11::print("Test!!");
 
 }
 
