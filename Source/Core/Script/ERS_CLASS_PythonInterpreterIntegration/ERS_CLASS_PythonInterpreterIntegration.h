@@ -22,7 +22,9 @@
 class ERS_CLASS_PythonInterpreterIntegration {
 
 private:
+
     ERS_CLASS_LoggingSystem* Logger_; /**<Pointer to the logging system class instance*/
+    pybind11::scoped_interpreter* Guard_; /**<Python Interpreter Guard Class*/
 
 public:
 

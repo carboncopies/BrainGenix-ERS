@@ -15,7 +15,7 @@ ERS_CLASS_PythonInterpreterIntegration::ERS_CLASS_PythonInterpreterIntegration(E
 
     // Start Python Interpreter
     Logger_->Log("Starting Python Interpreter", 5);
-    pybind11::scoped_interpreter guard{};
+     guard{};
     Logger_->Log("Finished Starting Python Interpreter", 4);
     
 
