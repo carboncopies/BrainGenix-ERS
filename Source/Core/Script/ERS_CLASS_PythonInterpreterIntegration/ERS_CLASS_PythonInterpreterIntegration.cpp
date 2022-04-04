@@ -13,6 +13,10 @@ ERS_CLASS_PythonInterpreterIntegration::ERS_CLASS_PythonInterpreterIntegration(E
     Logger_->Log("Initializing Python Interpreter Subsystem", 5);
 
 
+    // Start Python Interpreter
+    Logger_->Log("Starting Python Interpreter", 5);
+    pybind11::scoped_interpreter guard{};
+    
 
 
 }
