@@ -16,6 +16,9 @@
 #include <ERS_CLASS_LoggingSystem.h>
 
 
+// Clear warnings about visibility issues
+#pragma GCC visibility push(hidden)
+
 /**
  * @brief This class hosts the python Interpreter, all other python systems use this class to run their python code.
  * 
@@ -45,3 +48,7 @@ public:
 
 
 };
+
+
+// Re-enable warnings about visibility
+#pragma GCC visibility pop
