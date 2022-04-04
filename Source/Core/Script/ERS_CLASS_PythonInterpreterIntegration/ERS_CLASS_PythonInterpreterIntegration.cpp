@@ -52,7 +52,7 @@ void ERS_CLASS_PythonInterpreterIntegration::ExecuteCode(std::string Code) {
     //assert(locals["b"].cast<int>() == 2);
 
     pybind11::exec(R"(
-        b = test()
+        b = testfunc()
         print(b)
     )", pybind11::globals(), locals);
 
