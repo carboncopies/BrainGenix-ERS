@@ -22,7 +22,7 @@ target_link_libraries(ERS_CLASS_PythonIntepreterIntegration
 
 # Link Internal Libs
 target_link_libraries(ERS_CLASS_PythonIntepreterIntegration
-    
+    ERS_CLASS_LoggingSystem
     )
 
 target_include_directories(ERS_CLASS_PythonIntepreterIntegration PUBLIC ./)
