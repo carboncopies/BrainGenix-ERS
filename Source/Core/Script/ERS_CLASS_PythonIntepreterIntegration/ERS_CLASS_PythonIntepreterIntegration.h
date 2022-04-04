@@ -12,7 +12,7 @@
 #include <pybind11/embed.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-
+#include <ERS_CLASS_LoggingSystem.h>
 
 
 /**
@@ -22,10 +22,23 @@
 class ERS_CLASS_PythonIntepreterIntegration {
 
 private:
-
+    ERS_CLASS_LoggingSystem* Logger_; /**<Pointer to the logging system class instance*/
 
 public:
 
-    ERS_CLASS_PythonIntepreterIntegration()
+    /**
+     * @brief Construct a new ers class pythonintepreterintegration object
+     * 
+     * @param Logger 
+     */
+    ERS_CLASS_PythonIntepreterIntegration(ERS_CLASS_LoggingSystem* Logger);
+
+    /**
+     * @brief Destroy the ers class pythonintepreterintegration object
+     * 
+     */
+    ~ERS_CLASS_PythonIntepreterIntegration();
+
+
 
 };
