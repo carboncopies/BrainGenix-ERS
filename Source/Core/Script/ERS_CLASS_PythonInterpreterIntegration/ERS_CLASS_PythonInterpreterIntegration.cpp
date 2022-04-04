@@ -27,3 +27,7 @@ ERS_CLASS_PythonInterpreterIntegration::~ERS_CLASS_PythonInterpreterIntegration(
 
 }
 
+void ERS_CLASS_PythonInterpreterIntegration::ExecuteCode(std::string Code) {
+
+    //pybind11::cpp_function()
+}
