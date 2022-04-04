@@ -98,6 +98,7 @@ int main() {
         *SystemUtils->LocalSystemConfiguration_.get()
     );
 
+    ERS_CLASS_PythonInterpreterIntegration Test(SystemUtils->Logger_.get());
 
     // Create ProjectUtils Struct
     SystemUtils->Logger_->Log("Setting Up Project Utilities Structure", 3);
