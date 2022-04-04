@@ -13,6 +13,13 @@ ERS_CLASS_PythonInterpreterIntegration::ERS_CLASS_PythonInterpreterIntegration(E
     Logger_->Log("Initializing Python Interpreter Subsystem", 5);
 
 
-    
+
+
+}
+
+
+ERS_CLASS_PythonInterpreterIntegration::~ERS_CLASS_PythonInterpreterIntegration() {
+
+    Logger_->Log("Shutting Down Python Interpreter Subsystem", 6);
 
 }
