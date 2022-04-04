@@ -27,7 +27,22 @@ ERS_CLASS_PythonInterpreterIntegration::~ERS_CLASS_PythonInterpreterIntegration(
 
 }
 
+
+int ERS_CLASS_PythonInterpreterIntegration::foo() {
+    return 42;
+}
+
+
+int foo2() {
+    return 84;
+}
+
+
 void ERS_CLASS_PythonInterpreterIntegration::ExecuteCode(std::string Code) {
 
-    //pybind11::cpp_function()
+    pybind11::module module;
+    module.def("test", foo2);
+
+    auto locals = pybind11::dict("fmt"_a="{} + {} = {}", **module.attr("__dict__"));
+
 }
