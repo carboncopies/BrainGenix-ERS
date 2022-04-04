@@ -4,5 +4,5 @@
 
 ERSBuildLogger(${Green} "Configuring PyBind11 Library")
 add_subdirectory(${LIB_DIR}/pybind11)
-disable_target_warnings(pybind11)
+disable_target_warnings(pybind11::embed)
 ERSBuildLogger(${BoldGreen} "Finished Configuring PyBind11 Library")
