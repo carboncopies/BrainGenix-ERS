@@ -130,6 +130,8 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Light)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_OpenGLDefaults)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_SceneObject)
 
+add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_PythonIntepreterIntegration)
+
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_SceneLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ShaderLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ProjectLoader)
