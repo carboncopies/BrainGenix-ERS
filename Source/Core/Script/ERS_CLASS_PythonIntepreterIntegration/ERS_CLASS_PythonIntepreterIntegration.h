@@ -19,3 +19,13 @@
  * @brief This class hosts the python intepreter, all other python systems use this class to run their python code.
  * 
  */
+class ERS_CLASS_PythonIntepreterIntegration {
+
+private:
+
+
+public:
+
+    ERS_CLASS_PythonIntepreterIntegration()
+
+};
