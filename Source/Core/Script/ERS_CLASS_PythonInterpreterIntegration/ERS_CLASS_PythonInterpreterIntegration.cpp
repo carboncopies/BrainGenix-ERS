@@ -43,6 +43,19 @@ void ERS_CLASS_PythonInterpreterIntegration::ExecuteCode(std::string Code) {
     pybind11::module module;
     module.def("test", foo2);
 
-    auto locals = pybind11::dict("fmt"_a="{} + {} = {}", **module.attr("__dict__"));
+
+
+    pybind11::dict locals = module.attr("__dict__");
+    assert(locals["a"].cast<int>() == 1);
+    assert(locals["b"].cast<int>() == 2);
+
+    pybind11::exec(R"(
+        b = test()
+        print(b)
+    )", pybind11::globals(), locals);
+
+    assert(locals["c"].cast<int>() == 3);
+    assert(locals["message"].cast<std::string>() == "1 + 2 = 3");
+
 
 }
