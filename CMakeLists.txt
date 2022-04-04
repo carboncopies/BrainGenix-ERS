@@ -68,6 +68,8 @@ target_link_libraries(${PROJECT_NAME}
   ERS_CLASS_HardwareInformation
 
 
+  ERS_CLASS_PythonIntepreterIntegration
+
   ERS_SceneManager
   ERS_ModelLoader
   ERS_SceneLoader  
