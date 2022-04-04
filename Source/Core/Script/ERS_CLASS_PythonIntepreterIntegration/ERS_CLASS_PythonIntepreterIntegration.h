@@ -12,3 +12,10 @@
 #include <pybind11/embed.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
+
+
+
+/**
+ * @brief This class hosts the python intepreter, all other python systems use this class to run their python code.
+ * 
+ */
