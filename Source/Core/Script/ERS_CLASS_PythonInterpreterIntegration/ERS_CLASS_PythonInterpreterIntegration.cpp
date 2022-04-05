@@ -55,7 +55,7 @@ void ERS_CLASS_PythonInterpreterIntegration::ExecuteCode(std::string Code) {
 }
 
 
-void ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model) {
+bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model) {
 
     SetSystemInfoData();
 
@@ -64,6 +64,8 @@ void ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
     //ModelModule.attr("Position")
 
+
+    return true;
 
 }
 
