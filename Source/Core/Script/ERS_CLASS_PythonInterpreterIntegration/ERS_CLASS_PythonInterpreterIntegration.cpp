@@ -70,7 +70,10 @@ void ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
 void ERS_CLASS_PythonInterpreterIntegration::SetSystemInfoData() {
 
-    
+    // Set System Info Module
+    pybind11::module SystemInfo = pybind11::module_::import("SystemInfo");
+
+    SystemInfo.attr("GameTime");
 
 
 }
