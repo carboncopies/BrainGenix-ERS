@@ -63,6 +63,8 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     pybind11::module ModelModule = pybind11::module_::import("Model");
 
     //ModelModule.attr("Position")
+    pybind11::dict Locals = ModelModule.attr("__dict__");
+    pybind11::exec(ScriptSource, pybind11::globals(), Locals);
 
 
     return true;
