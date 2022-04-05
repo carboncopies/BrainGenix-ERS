@@ -57,13 +57,14 @@ void ERS_CLASS_PythonInterpreterIntegration::ExecuteCode(std::string Code) {
 
 bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model) {
 
-    SetSystemInfoData();
 
     // Inport The Model Module, Set Attributes
     pybind11::module ModelModule = pybind11::module_::import("Model");
+    pybind11::dict Locals = ModelModule.attr("__dict__");
+    SetSystemInfoData(&Locals);
 
     //ModelModule.attr("Position")
-    pybind11::dict Locals = ModelModule.attr("__dict__");
+
     pybind11::exec(ScriptSource, pybind11::globals(), Locals);
 
 
@@ -79,15 +80,15 @@ void ERS_CLASS_PythonInterpreterIntegration::UpdateSystemInfoData(double RunTime
 }
 
 
-void ERS_CLASS_PythonInterpreterIntegration::SetSystemInfoData() {
+void ERS_CLASS_PythonInterpreterIntegration::SetSystemInfoData(pybind11::dict* Locals) {
 
     // Set System Info Module
     pybind11::module SystemInfo = pybind11::module_::import("SystemInfo");
 
-    SystemInfo.attr("GameTime") = RunTime_;
+    Locals->attr("GameTime") = RunTime_;
 
     auto Clock = std::chrono::system_clock::now();
     double UnixEpoch = std::chrono::duration_cast<std::chrono::seconds>(Clock.time_since_epoch()).count();
-    SystemInfo.attr("SystemTime") = UnixEpoch;
+    Locals->attr("SystemTime") = UnixEpoch;
 
 }
