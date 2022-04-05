@@ -77,5 +77,8 @@ void ERS_CLASS_PythonInterpreterIntegration::SetSystemInfoData() {
 
     SystemInfo.attr("GameTime");
 
+    auto Clock = std::chrono::system_clock::now();
+    double UnixEpoch = std::chrono::duration_cast<std::chrono::seconds>(Clock.time_since_epoch()).count();
+    SystemInfo.attr("SystemTime") = UnixEpoch;
 
 }

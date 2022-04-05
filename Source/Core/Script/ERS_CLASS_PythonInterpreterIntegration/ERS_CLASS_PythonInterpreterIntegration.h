@@ -8,6 +8,7 @@
 #include <vector>
 #include <string>
 #include <memory>
+#include <chrono>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <pybind11/pybind11.h>
