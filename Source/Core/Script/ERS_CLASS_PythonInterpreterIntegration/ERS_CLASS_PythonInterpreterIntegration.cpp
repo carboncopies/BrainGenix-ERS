@@ -62,8 +62,18 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     pybind11::module ModelModule = pybind11::module_::import("Model");
     SetSystemInfoData(&ModelModule);
 
+    ModelModule.attr("ModelPosX") = Model->ModelPosition.x;
+    ModelModule.attr("ModelPosY") = Model->ModelPosition.y;
+    ModelModule.attr("ModelPosZ") = Model->ModelPosition.z;
+    
+
     pybind11::dict Locals = ModelModule.attr("__dict__");
     pybind11::exec(ScriptSource, pybind11::globals(), Locals);
+
+    double ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
+    double ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
+    double ModelPosZ = ModelModule.attr("ModelPosY").cast<double>();
+    Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
 
 
     return true;
