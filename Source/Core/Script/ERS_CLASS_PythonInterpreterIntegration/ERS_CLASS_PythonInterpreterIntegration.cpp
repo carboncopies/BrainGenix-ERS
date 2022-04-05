@@ -74,6 +74,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     double ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
     double ModelPosZ = ModelModule.attr("ModelPosZ").cast<double>();
     Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
+    Model->ApplyTransformations();
 
 
     return true;
