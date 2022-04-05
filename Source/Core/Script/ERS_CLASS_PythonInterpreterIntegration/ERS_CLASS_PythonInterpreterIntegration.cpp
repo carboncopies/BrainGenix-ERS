@@ -61,7 +61,8 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     // Inport The Model Module, Set Attributes
     pybind11::module ModelModule = pybind11::module_::import("Model");
     pybind11::dict Locals = ModelModule.attr("__dict__");
-    SetSystemInfoData(&Locals);
+    //SetSystemInfoData(&Locals);
+    Locals.attr("GameTime") = RunTime_;
 
     //ModelModule.attr("Position")
 
