@@ -70,12 +70,19 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 }
 
 
+void ERS_CLASS_PythonInterpreterIntegration::UpdateSystemInfoData(double RunTime) {
+
+    RunTime_ = RunTime;
+
+}
+
+
 void ERS_CLASS_PythonInterpreterIntegration::SetSystemInfoData() {
 
     // Set System Info Module
     pybind11::module SystemInfo = pybind11::module_::import("SystemInfo");
 
-    SystemInfo.attr("GameTime");
+    SystemInfo.attr("GameTime") = RunTime_;
 
     auto Clock = std::chrono::system_clock::now();
     double UnixEpoch = std::chrono::duration_cast<std::chrono::seconds>(Clock.time_since_epoch()).count();
