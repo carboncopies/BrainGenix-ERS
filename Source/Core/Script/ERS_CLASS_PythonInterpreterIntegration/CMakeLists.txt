@@ -25,6 +25,10 @@ target_link_libraries(ERS_CLASS_PythonInterpreterIntegration
 # Link Internal Libs
 target_link_libraries(ERS_CLASS_PythonInterpreterIntegration
     ERS_CLASS_LoggingSystem
+
+    ERS_STRUCT_Model
+    ERS_STRUCT_Light
+
     )
 
 target_include_directories(ERS_CLASS_PythonInterpreterIntegration PUBLIC ./)
