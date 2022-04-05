@@ -99,7 +99,7 @@ int main() {
     );
 
     SystemUtils->ERS_CLASS_PythonInterpreterIntegration_ = std::make_unique<ERS_CLASS_PythonInterpreterIntegration>(
-        SystemUtils->Logger_.get();
+        SystemUtils->Logger_.get()
     );
 
 
