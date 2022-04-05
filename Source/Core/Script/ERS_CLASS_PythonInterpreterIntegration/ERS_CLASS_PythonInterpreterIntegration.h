@@ -57,6 +57,14 @@ public:
 
 
     /**
+     * @brief Updates info sent to system info parts of the scripts. 
+     * 
+     * @param PlayTime 
+     */
+    void UpdateSystemInfoData(double PlayTime);
+
+
+    /**
      * @brief Runs some python code, passed in as the 'code' argument.
      * 
      * @param Code 
