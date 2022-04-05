@@ -19,6 +19,12 @@ ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* Syste
     SystemUtils_->Logger_->Log("Initializing MeshRenderer Class", 5);
     MeshRenderer_ = std::make_unique<ERS_CLASS_MeshRenderer>(SystemUtils_);
 
+
+    // DEFAULT MODES, CHANGE THIS LATER! --------------------------------
+    IsEditorMode_ = true;
+    
+
+
 }
 
 ERS_CLASS_VisualRenderer::~ERS_CLASS_VisualRenderer() {
@@ -821,6 +827,17 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
         ImGui::EndMenu();
         }
 
+
+        // Game Control Menu
+        if (ImGui::BeginMenu("Run")) {
+
+            // Run Option
+            if (ImGui::MenuItem("Run With Editor", "F5") || ImGui::IsKeyPressed(GLFW_KEY_F5)) {
+                IsEditorMode_ = false;
+            }
+
+        ImGui::EndMenu();
+        }
 
     ImGui::EndMenuBar();
     }
