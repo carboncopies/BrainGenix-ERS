@@ -55,8 +55,6 @@ public:
     void ExecuteCode(std::string Code);
 
 
-    int foo();
-
 };
 
 
