@@ -68,6 +68,12 @@ public:
      */
     bool ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model);
 
+    /**
+     * @brief Provides access to systeminfo data
+     * 
+     */
+    void SetSystemInfoData();
+
 };
 
 
