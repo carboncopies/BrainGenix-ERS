@@ -33,4 +33,6 @@ target_link_libraries(ERS_CLASS_PythonInterpreterIntegration
 
     )
 
+target_compile_options(ERS_CLASS_PythonInterpreterIntegration PRIVATE "fvisibility=hidden")
+
 target_include_directories(ERS_CLASS_PythonInterpreterIntegration PUBLIC ./)
