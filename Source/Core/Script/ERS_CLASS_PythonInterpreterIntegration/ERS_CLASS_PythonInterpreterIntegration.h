@@ -56,6 +56,11 @@ public:
      */
     void ExecuteCode(std::string Code);
 
+    /**
+     * @brief Runs a script attached to a model object
+     * 
+     */
+    bool ExecuteModelScript(std::string ScriptSource);
 
 };
 
