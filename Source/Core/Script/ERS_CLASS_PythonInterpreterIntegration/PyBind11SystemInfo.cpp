@@ -6,6 +6,6 @@
 
 
 
-PYBIND11_EMBEDDED_MODULE(Model, m) {
-    m.doc() = "Allows the script to manipulate the model that it's attached to.";
+PYBIND11_EMBEDDED_MODULE(SystemInfo, m) {
+    m.doc() = "Provides access to basic system information.";
 }
