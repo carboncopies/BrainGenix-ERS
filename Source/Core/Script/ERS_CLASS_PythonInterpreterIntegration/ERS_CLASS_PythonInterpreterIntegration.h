@@ -16,6 +16,11 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
 
+#include <ERS_STRUCT_Model.h>
+#include <ERS_STRUCT_PointLight.h>
+#include <ERS_STRUCT_DirectionalLight.h>
+#include <ERS_STRUCT_SpotLight.h>
+
 #include <PyBind11ModelClass.h>
 
 
@@ -60,7 +65,7 @@ public:
      * @brief Runs a script attached to a model object
      * 
      */
-    bool ExecuteModelScript(std::string ScriptSource);
+    bool ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model);
 
 };
 
