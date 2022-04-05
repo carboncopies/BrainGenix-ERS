@@ -40,8 +40,13 @@ int foo2() {
 PYBIND11_EMBEDDED_MODULE(test, m) {
     m.doc() = "test module";
 
+    m.attr("foo") = std::string("A value.");
+
     m.def("testfunc", &foo2, "test function");
 }
+
+
+
 
 
 void ERS_CLASS_PythonInterpreterIntegration::ExecuteCode(std::string Code) {
@@ -55,6 +60,7 @@ void ERS_CLASS_PythonInterpreterIntegration::ExecuteCode(std::string Code) {
     pybind11::exec(R"(
         b = testfunc()
         print(b)
+        print(foo)
     )", pybind11::globals(), locals);
 
     //assert(locals["c"].cast<int>() == 3);
