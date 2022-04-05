@@ -57,6 +57,9 @@ void ERS_CLASS_PythonInterpreterIntegration::ExecuteCode(std::string Code) {
 void ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model) {
 
     // Inport The Model Module, Set Attributes
+    pybind11::module ModelModule = pybind11::module_::import("Model");
+
+    //ModelModule.attr("Position")
 
 
 }
