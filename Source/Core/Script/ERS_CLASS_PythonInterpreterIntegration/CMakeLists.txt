@@ -38,5 +38,10 @@ set_target_properties(ERS_CLASS_PythonInterpreterIntegration
     CXX_VISIBILITY_PRESET
     hidden
 )
+set_target_properties(pybind11::embed
+    PROPERTIES
+    CXX_VISIBILITY_PRESET
+    hidden
+)
 
 target_include_directories(ERS_CLASS_PythonInterpreterIntegration PUBLIC ./)
