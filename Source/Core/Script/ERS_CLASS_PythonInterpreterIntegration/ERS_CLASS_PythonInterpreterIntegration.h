@@ -16,6 +16,8 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
 
+#include <PyBind11ModelClass.h>
+
 
 // Clear warnings about visibility issues
 #pragma GCC visibility push(hidden)
