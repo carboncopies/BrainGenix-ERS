@@ -18,6 +18,3 @@
 
 
 
-PYBIND11_EMBEDDED_MODULE(ERS_Model, m) {
-    m.doc() = "Allows the script to manipulate the model that it's attached to.";
-}
