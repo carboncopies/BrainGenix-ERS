@@ -20,8 +20,6 @@
 #include <ERS_CLASS_PythonInterpreterIntegration.h>
 
 
-// Clear warnings about visibility issues
-#pragma GCC visibility push(hidden)
 
 /**
  * @brief The System utils struct contains most system utils prepopulated as shared pointers within.
@@ -49,6 +47,3 @@ struct ERS_STRUCT_SystemUtils {
 
 };
 
-
-// Re-enable warnings about visibility
-#pragma GCC visibility pop
