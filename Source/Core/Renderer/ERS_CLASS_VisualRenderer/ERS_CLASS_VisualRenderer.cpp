@@ -113,12 +113,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     }
 
 
-    std::string Code = " 
-    
-    import math
-    model-x
-    
-    ";
+    std::string Code = "import math\nModelPosX = math.sin(SystemTime)";
     SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[0].get());
 
 

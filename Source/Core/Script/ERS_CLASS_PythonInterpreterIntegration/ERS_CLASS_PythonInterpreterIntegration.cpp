@@ -72,7 +72,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
     double ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
     double ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
-    double ModelPosZ = ModelModule.attr("ModelPosY").cast<double>();
+    double ModelPosZ = ModelModule.attr("ModelPosZ").cast<double>();
     Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
 
 
