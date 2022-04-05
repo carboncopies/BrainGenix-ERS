@@ -22,6 +22,7 @@
 #include <ERS_STRUCT_SpotLight.h>
 
 #include <PyBind11ModelClass.h>
+#include <PyBind11SystemInfo.h>
 
 
 // Clear warnings about visibility issues

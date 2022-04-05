@@ -7,6 +7,7 @@
 
 // yes this is bad i know, but idk how else to fix it
 #include <PyBind11ModelClass.cpp>
+#include <PyBind11SystemInfo.cpp>
 
 
 
