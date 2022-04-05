@@ -33,10 +33,4 @@ target_link_libraries(ERS_CLASS_PythonInterpreterIntegration
 
     )
 
-set_target_properties(ERS_CLASS_PythonInterpreterIntegration
-    PROPERTIES
-    CXX_VISIBILITY_PRESET
-    hidden
-)
-
 target_include_directories(ERS_CLASS_PythonInterpreterIntegration PUBLIC ./)
