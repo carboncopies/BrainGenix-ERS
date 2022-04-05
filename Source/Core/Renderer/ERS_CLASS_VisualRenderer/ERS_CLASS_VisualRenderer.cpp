@@ -112,6 +112,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
         glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
     }
 
+    SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript("print(SystemTime)", SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[0].get());
 
 
     // Handle Window Input
