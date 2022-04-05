@@ -97,6 +97,9 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     CaptureIndex_ = -1;
     FrameNumber_++;
 
+    RunTime_ = glfwGetTime() - GameStartTime_;
+    //SystemUtils_->
+
     // Iterate Through Viewports
     for (int i = 0; (long)i < (long)Viewports_.size(); i++) {
         UpdateViewport(i, SceneManager, DeltaTime);

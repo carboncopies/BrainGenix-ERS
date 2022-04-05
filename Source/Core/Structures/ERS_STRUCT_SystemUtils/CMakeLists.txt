@@ -27,6 +27,8 @@ target_link_libraries(ERS_STRUCT_SystemUtils
     ERS_FramerateManager
     ERS_ModelWriter
     ERS_CLASS_HardwareInformation
+    ERS_CLASS_PythonInterpreterIntegration
+
     )
 
 
