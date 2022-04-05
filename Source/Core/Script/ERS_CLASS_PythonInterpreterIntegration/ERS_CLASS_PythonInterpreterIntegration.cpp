@@ -53,18 +53,16 @@ void ERS_CLASS_PythonInterpreterIntegration::ExecuteCode(std::string Code) {
 
 
     pybind11::module module = pybind11::module_::import("test");
+    module.attr("foo2") = Code;
     pybind11::dict locals = module.attr("__dict__");
-    //assert(locals["a"].cast<int>() == 1);
-    //assert(locals["b"].cast<int>() == 2);
 
     pybind11::exec(R"(
         b = testfunc()
         print(b)
         print(foo)
+        prnt(foo2)
     )", pybind11::globals(), locals);
 
-    //assert(locals["c"].cast<int>() == 3);
-    //assert(locals["message"].cast<std::string>() == "1 + 2 = 3");
 
     std::cout<<locals["b"].cast<int>()<<"\n";
 
