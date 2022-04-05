@@ -60,8 +60,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
     // Inport The Model Module, Set Attributes
     pybind11::module ModelModule = pybind11::module_::import("Model");
-
-    ModelModule.attr("GameTime") = RunTime_;
+    SetSystemInfoData(&ModelModule);
 
     pybind11::dict Locals = ModelModule.attr("__dict__");
     pybind11::exec(ScriptSource, pybind11::globals(), Locals);
@@ -79,7 +78,7 @@ void ERS_CLASS_PythonInterpreterIntegration::UpdateSystemInfoData(double RunTime
 }
 
 
-void ERS_CLASS_PythonInterpreterIntegration::SetSystemInfoData(pybind11::dict* Locals) {
+void ERS_CLASS_PythonInterpreterIntegration::SetSystemInfoData(pybind11::module* Locals) {
 
     // Set System Info Module
     pybind11::module SystemInfo = pybind11::module_::import("SystemInfo");

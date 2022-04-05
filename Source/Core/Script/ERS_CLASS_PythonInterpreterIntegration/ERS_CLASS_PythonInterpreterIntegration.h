@@ -81,7 +81,7 @@ public:
      * @brief Provides access to systeminfo data
      * 
      */
-    void SetSystemInfoData(pybind11::dict* Locals);
+    void SetSystemInfoData(pybind11::module* Locals);
 
 };
 
