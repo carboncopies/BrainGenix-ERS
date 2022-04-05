@@ -28,23 +28,6 @@ ERS_CLASS_PythonInterpreterIntegration::~ERS_CLASS_PythonInterpreterIntegration(
 }
 
 
-int ERS_CLASS_PythonInterpreterIntegration::foo() {
-    return 42;
-}
-
-
-int foo2() {
-    return 84;
-}
-
-PYBIND11_EMBEDDED_MODULE(test, m) {
-    m.doc() = "test module";
-
-    m.attr("foo") = std::string("A value.");
-
-    m.def("testfunc", &foo2, "test function");
-}
-
 
 
 

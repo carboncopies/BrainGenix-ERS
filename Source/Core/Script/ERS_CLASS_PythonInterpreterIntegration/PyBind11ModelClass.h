@@ -15,3 +15,12 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
+
+
+
+PYBIND11_EMBEDDED_MODULE(Model, m) {
+    m.doc() = "Allows the script to manipulate the model that it's attached to.";
+
+    
+
+}
