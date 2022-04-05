@@ -60,7 +60,7 @@ void ERS_CLASS_PythonInterpreterIntegration::ExecuteCode(std::string Code) {
         b = testfunc()
         print(b)
         print(foo)
-        prnt(foo2)
+        print(foo2)
     )", pybind11::globals(), locals);
 
 
