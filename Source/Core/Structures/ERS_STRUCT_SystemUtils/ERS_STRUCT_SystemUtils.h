@@ -17,7 +17,7 @@
 #include <ERS_ModelWriter.h>
 #include <ERS_FramerateManager.h>
 #include <ERS_CLASS_HardwareInformation.h>
-
+#include <ERS_CLASS_PythonIntepreterIntegration.h>
 
 
 /**
