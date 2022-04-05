@@ -8,9 +8,11 @@ add_library(ERS_CLASS_PythonInterpreterIntegration
 
             # Add Source Files (.cpp)
             "ERS_CLASS_PythonInterpreterIntegration.cpp"
+            "PyBind11ModelClass.cpp"
 
             # Add Header Files (.h)
             "ERS_CLASS_PythonInterpreterIntegration.h"
+            "PyBind11ModelClass.h"
             
             ${BACKWARD_ENABLE}
             )
