@@ -98,13 +98,10 @@ int main() {
         *SystemUtils->LocalSystemConfiguration_.get()
     );
 
-    ERS_CLASS_PythonInterpreterIntegration Test(SystemUtils->Logger_.get());
+    SystemUtils->ERS_CLASS_PythonInterpreterIntegration_ = std::make_unique<ERS_CLASS_PythonInterpreterIntegration>(
+        SystemUtils->Logger_.get();
+    );
 
-    std::cout<<"--------------------------------------------\n";
-
-    Test.ExecuteCode(std::string(""));
-
-    std::cout<<"--------------------------------------------\n";
 
     // Create ProjectUtils Struct
     SystemUtils->Logger_->Log("Setting Up Project Utilities Structure", 3);
