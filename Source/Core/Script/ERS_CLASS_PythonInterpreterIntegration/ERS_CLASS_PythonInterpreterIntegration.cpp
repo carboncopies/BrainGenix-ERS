@@ -5,6 +5,9 @@
 #include <ERS_CLASS_PythonInterpreterIntegration.h>
 
 
+// yes this is bad i know, but idk how else to fix it
+#include <PyBind11ModelClass.cpp>
+
 
 ERS_CLASS_PythonInterpreterIntegration::ERS_CLASS_PythonInterpreterIntegration(ERS_CLASS_LoggingSystem* Logger) {
 
