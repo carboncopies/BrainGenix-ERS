@@ -113,9 +113,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
             } catch (pybind11::cast_error const&) {
                 ErrorHandle(ErrorMessageString, i, "CastError");
             } catch (pybind11::error_already_set &Exception) {
-                // make anther func to handle the PyException_ (all of them)
                 ErrorHandle(ErrorMessageString, i, Exception.what());
-                //ParsePythonErrors(ErrorMessageString, i, Exception);
             }
 
         }
