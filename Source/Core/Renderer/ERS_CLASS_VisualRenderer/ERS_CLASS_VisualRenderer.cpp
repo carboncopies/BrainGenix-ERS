@@ -100,7 +100,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
 
     RunTime_ = glfwGetTime() - GameStartTime_;
-    std::cout<<RunTime_<<std::endl;
     SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->UpdateSystemInfoData(RunTime_);
 
     // Iterate Through Viewports
