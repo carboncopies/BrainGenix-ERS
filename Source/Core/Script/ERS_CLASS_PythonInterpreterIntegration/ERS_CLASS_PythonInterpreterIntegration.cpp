@@ -95,6 +95,7 @@ void ERS_CLASS_PythonInterpreterIntegration::SetSystemInfoData(pybind11::module*
     // Set System Info Module
     pybind11::module SystemInfo = pybind11::module_::import("SystemInfo");
 
+    std::cout<<RunTime_<<std::endl;
     Locals->attr("GameTime") = RunTime_;
 
     auto Clock = std::chrono::system_clock::now();
