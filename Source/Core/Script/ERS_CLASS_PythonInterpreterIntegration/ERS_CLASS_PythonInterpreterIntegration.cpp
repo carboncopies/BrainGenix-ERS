@@ -70,6 +70,10 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     ModelModule.attr("ModelRotY") = Model->ModelRotation.y;
     ModelModule.attr("ModelRotZ") = Model->ModelRotation.z;
     
+    ModelModule.attr("ModelScaleX") = Model->ModelScale.x;
+    ModelModule.attr("ModelScaleY") = Model->ModelScale.y;
+    ModelModule.attr("ModelScaleZ") = Model->ModelScale.z;
+
 
     pybind11::dict Locals = ModelModule.attr("__dict__");
     pybind11::exec(ScriptSource, pybind11::globals(), Locals);
