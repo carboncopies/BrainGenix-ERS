@@ -52,7 +52,13 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     Project.DefaultScene = ProjectNode["DefaultScene"].as<int>();
     Project.DefaultShaderProgram = ProjectNode["DefaultShaderProgram"].as<int>();
     
-    Project.StartPlayingOnLoad = ProjectNode["PlayOnLoad"].as<bool>();
+    try {
+        Project.StartPlayingOnLoad = ProjectNode["PlayOnLoad"].as<bool>();
+    } catch (YAML::BadSubscript) {
+        Project.StartPlayingOnLoad = false;
+        SystemUtils_->Logger_->Log("Project Metadata Missing 'PlayOnLoad' Param, Defaulting to 'FALSE'", 7);
+    }
+
 
     // Populate Scene IDs
     YAML::Node ProjectSceneIDs = ProjectNode["SceneIDs"];
