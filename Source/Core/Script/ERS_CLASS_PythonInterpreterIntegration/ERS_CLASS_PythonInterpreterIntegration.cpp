@@ -87,44 +87,27 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
                 pybind11::exec(Lines[i], pybind11::globals(), Locals);
             } catch (pybind11::value_error) {
                 ErrorHandle(ErrorMessageString, i, "ValueError");
-                return false;
             } catch (pybind11::key_error) {
                 ErrorHandle(ErrorMessageString, i, "KeyError");
-                return false;
             } catch (pybind11::reference_cast_error) {
                 ErrorHandle(ErrorMessageString, i, "ReferenceCastError");
-                return false;
             } catch (pybind11::attribute_error) {
                 ErrorHandle(ErrorMessageString, i, "AttributeError");
-                return false;
             } catch (pybind11::import_error) {
                 ErrorHandle(ErrorMessageString, i, "ImportError");
-                return false;
             } catch (pybind11::buffer_error) {
                 ErrorHandle(ErrorMessageString, i, "BufferError");
-                return false;
             } catch (pybind11::index_error) {
                 ErrorHandle(ErrorMessageString, i, "IndexError");
-                return false;
             } catch (pybind11::type_error) {
                 ErrorHandle(ErrorMessageString, i, "TypeError");
-                return false;
             } catch (pybind11::cast_error) {
                 ErrorHandle(ErrorMessageString, i, "CastError");
-                return false;
             }
 
         }
 
     }
-
-    
-
-
-
-
-
-
 
 
     double ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
@@ -144,7 +127,11 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     Model->Enabled = ModelModule.attr("ModelEnabled").cast<bool>();
 
 
-    return true;
+    if (ErrorMessageString->size() > 0) {
+        return false;
+    } else {
+        return true;
+    }
 
 }
 
