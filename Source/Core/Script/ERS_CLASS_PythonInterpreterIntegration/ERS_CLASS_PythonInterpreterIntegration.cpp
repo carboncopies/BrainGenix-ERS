@@ -81,7 +81,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
         }
     } else {
         std::vector<std::string> Lines;
-        
+
     }
 
     
@@ -113,6 +113,29 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     return true;
 
 }
+
+// https://stackoverflow.com/questions/40699283/need-to-split-string-into-vector-with-delimiter
+std::vector<std::string> split(std::string target, std::string delim)
+{
+    std::vector<std::string> v;
+    if (!target.empty()) {
+        std::string::size_type start = 0;
+        do {
+            size_t x = target.find(delim, start);
+            if (x == std::string::npos)
+                break;
+
+            v.push_back(target.substr(start, x-start));
+            start += delim.size();
+        }
+        while (true);
+
+        v.push_back(target.substr(start));            
+    }
+    return v;
+}
+
+
 
 bool ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* Model) {
 
