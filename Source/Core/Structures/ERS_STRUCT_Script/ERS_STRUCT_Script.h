@@ -22,7 +22,7 @@
  */
 struct ERS_STRUCT_Script {
 
-    std::string Type_; /**<Display name of the script*/
+    std::string Name_; /**<Display name of the script*/
     std::string Code_; /**<Python Code Content Of The Script*/
     unsigned long AssetID; /**<AssetID Allocated To This Script*/
 
