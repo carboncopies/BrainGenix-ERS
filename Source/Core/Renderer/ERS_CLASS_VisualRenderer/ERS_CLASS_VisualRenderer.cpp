@@ -141,7 +141,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     // BIND To Default Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-    std::string Code = "import math\nModelPosX = math.sin(GameTime)";
+    std::string Code = "import math\nModelPosX = math.sin(GameTime)\nmath.an_error_here";
     std::vector<std::string> ErrorMsg;
     SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[0].get(), &ErrorMsg);
 
