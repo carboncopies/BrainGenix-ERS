@@ -141,8 +141,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     // BIND To Default Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-    std::string Code = "import math\nModelPosX = math.sin(GameTime)*1.5\nModelPosZ = math.cos(GameTime)*1.5\nModelRotZ = GameTime*10";
-    std::string Code2 = "import math\nModelPosX = math.sin(GameTime + 1.6)*1.5\nModelPosZ = math.cos(GameTime + 1.6)*1.5\nModelRotY = GameTime*10";
+    std::string Code = "import math\nModelPosX = math.sin(GameTime)*1.5\nModelPosZ = math.cos(GameTime)*1.5\nModelRotZ = GameTime*40";
+    std::string Code2 = "import math\nModelPosX = math.sin(GameTime + 1.6)*1.5\nModelPosZ = math.cos(GameTime + 1.6)*1.5\nModelRotY = GameTime*60";
     std::vector<std::string> ErrorMsg;
     if (!IsEditorMode_) {
         bool status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[0].get(), &ErrorMsg);
