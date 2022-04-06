@@ -10,30 +10,6 @@
 #include <PyBind11SystemInfo.cpp>
 
 
-// https://stackoverflow.com/questions/40699283/need-to-split-string-into-vector-with-delimiter
-std::vector<std::string> SplitByDelimiter(std::string target, std::string delim)
-{
-    std::vector<std::string> v;
-    if (!target.empty()) {
-        std::string::size_type start = 0;
-        do {
-            size_t x = target.find(delim, start);
-            if (x == std::string::npos)
-                break;
-
-            v.push_back(target.substr(start, x-start));
-            start += delim.size();
-        }
-        while (true);
-
-        v.push_back(target.substr(start));            
-    }
-    return v;
-}
-
-
-
-
 ERS_CLASS_PythonInterpreterIntegration::ERS_CLASS_PythonInterpreterIntegration(ERS_CLASS_LoggingSystem* Logger) {
 
     Logger_ = Logger;
@@ -109,14 +85,16 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
     } else {
         ErrorMessageString->erase(ErrorMessageString->begin(), ErrorMessageString->end());
-        std::vector<std::string> Lines = SplitByDelimiter(ScriptSource, "\n");
+        std::string Line;
+        std::stringstream StringStream(ScriptSource);
+        unsigned long i = 0;
 
-
-        for (unsigned long i = 0; i < Lines.size(); i++) {
-
-            std::cout<<i<<"|"<<Lines[i]<<std::endl;
+        while (getline(StringStream, Line, '\n')) {
+            
+            i++;
+            std::cout<<i<<"|"<<Line<<std::endl;
             try {
-                pybind11::exec(Lines[i], pybind11::globals(), Locals);
+                pybind11::exec(Line, pybind11::globals(), Locals);
             } catch (pybind11::value_error const&) {
                 ErrorHandle(ErrorMessageString, i, "ValueError");
             } catch (pybind11::key_error const&) {
