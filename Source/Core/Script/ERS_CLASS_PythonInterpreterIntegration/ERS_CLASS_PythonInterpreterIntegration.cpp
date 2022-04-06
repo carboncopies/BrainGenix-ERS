@@ -92,7 +92,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
         while (getline(StringStream, Line, '\n')) {
             
             i++;
-            std::cout<<i<<"|"<<Line<<std::endl;
             try {
                 pybind11::exec(Line, pybind11::globals(), Locals);
             } catch (pybind11::value_error const&) {
