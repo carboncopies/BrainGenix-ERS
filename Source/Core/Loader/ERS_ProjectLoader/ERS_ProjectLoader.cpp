@@ -93,19 +93,39 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     }
     SystemUtils_->Logger_->Log(std::string(std::string("Finished Loading Shader Programs")).c_str(), 4);
 
-    // Populate Script Structs
+    // Populate Script Structs With Metadata
     if (ProjectNode["Scripts"]) {
-        SystemUtils_->Logger_->Log("Loading Project Scripts", 5);
+        SystemUtils_->Logger_->Log("Loading Project Script Metadata", 5);
         YAML::Node Scripts = ProjectNode["Scripts"];
         for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
             ERS_STRUCT_Script Script;
             Script.Name_ = it->second["Name"].as<std::string>();
             Script.AssetID = it->second["AssetID"].as<long>();
+            Project.Scripts.push_back(Script);
         }
     } else {
-        SystemUtils_->Logger_->Log("Project Script Data Missing", 7);
+        SystemUtils_->Logger_->Log("Project Script Metadata Missing", 7);
     }
 
+
+    // Load Script(s)
+    SystemUtils_->Logger_->Log("Loading Project Scripts", 5);
+    for (unsigned long i = 0; i < Project.Scripts.size(); i++) {
+        
+        ERS_STRUCT_Script* Script = &Project.Scripts[i];
+
+        std::string LogStr = std::string("Loading Script '") + std::to_string(i) + std::string("' of '") + std::to_string(Project.Scripts.size()) + std::string("'");
+        SystemUtils_->Logger_->Log(LogStr, 4);
+
+
+        std::unique_ptr<ERS_STRUCT_IOData> ScriptData = std::make_unique<ERS_STRUCT_IOData>();
+        SystemUtils_->ERS_IOSubsystem_->ReadAsset(Script->AssetID, ScriptData.get());
+        Script->Code_ = std::string((const char*)ProjectData->Data.get());
+
+
+        LogStr = std::string("Loaded Script '") + Script->Name_ + std::string("'");
+        SystemUtils_->Logger_->Log(LogStr, 3);
+    }
 
 
     // Return Struct When Populated
