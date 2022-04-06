@@ -59,20 +59,40 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     try {
         pybind11::exec(ScriptSource, pybind11::globals(), Locals);
     } catch (pybind11::value_error) {
-
-        if (ErrorMessageString != nullptr) {
-            ErrorMessageString = &std::string("Value Error");
-        }
+        ErrorHandle(ErrorMessageString, "Value Error");
         return false;
-        
     } catch (pybind11::key_error) {
-
-        if (ErrorMessageString != nullptr) {
-            ErrorMessageString = &std::string("Key Error");
-        }
+        ErrorHandle(ErrorMessageString, "Key Error");
         return false;
-
+    } catch (pybind11::reference_cast_error) {
+        ErrorHandle(ErrorMessageString, "Reference Cast Error");
+        return false;
+    } catch (pybind11::attribute_error) {
+        ErrorHandle(ErrorMessageString, "Attribute Error");
+        return false;
+    } catch (pybind11::import_error) {
+        ErrorHandle(ErrorMessageString, "Import Error");
+        return false;
+    } catch (pybind11::buffer_error) {
+        ErrorHandle(ErrorMessageString, "Buffer Error");
+        return false;
+    } catch (pybind11::index_error) {
+        ErrorHandle(ErrorMessageString, "Index Error");
+        return false;
+    } catch (pybind11::type_error) {
+        ErrorHandle(ErrorMessageString, "Type Error");
+        return false;
+    } catch (pybind11::cast_error) {
+        ErrorHandle(ErrorMessageString, "Cast Error");
+        return false;
     }
+
+
+
+
+
+
+
 
     double ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
     double ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
@@ -99,6 +119,14 @@ bool ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* Mo
 
 }
 
+
+void ERS_CLASS_PythonInterpreterIntegration::ErrorHandle(std::string* Target, std::string Value) {
+
+    if (Target != nullptr) {
+        Target = &Value;
+    }
+
+}
 
 void ERS_CLASS_PythonInterpreterIntegration::UpdateSystemInfoData(double RunTime) {
 
