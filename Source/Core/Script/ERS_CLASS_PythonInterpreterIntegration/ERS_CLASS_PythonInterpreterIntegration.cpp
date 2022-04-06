@@ -34,27 +34,6 @@ ERS_CLASS_PythonInterpreterIntegration::~ERS_CLASS_PythonInterpreterIntegration(
 
 
 
-
-
-
-void ERS_CLASS_PythonInterpreterIntegration::ExecuteCode(std::string Code) {
-
-
-    pybind11::module module = pybind11::module_::import("Model");
-    module.attr("foo2") = Code;
-    pybind11::dict locals = module.attr("__dict__");
-
-    pybind11::exec(R"(
-        print(foo2)
-    )", pybind11::globals(), locals);
-
-
-    //std::cout<<locals["b"].cast<int>()<<"\n";
-
-
-}
-
-
 bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model) {
 
 
