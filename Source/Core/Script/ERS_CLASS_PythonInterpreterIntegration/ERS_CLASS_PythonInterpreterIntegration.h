@@ -40,6 +40,16 @@ private:
 
     double RunTime_; /**<Time since game started playing*/
 
+
+    /**
+     * @brief Writes to the target error handling string if there's a pointer passed in.
+     * 
+     * @param Target 
+     * @param Message 
+     */
+    void ErrorHandle(std::string* Target, std::string Message);
+
+
 public:
 
     /**

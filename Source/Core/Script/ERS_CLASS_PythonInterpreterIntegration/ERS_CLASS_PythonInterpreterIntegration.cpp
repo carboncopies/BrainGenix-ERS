@@ -34,7 +34,7 @@ ERS_CLASS_PythonInterpreterIntegration::~ERS_CLASS_PythonInterpreterIntegration(
 
 
 
-bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model, std::string* ErrorMessage) {
+bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model, std::string* ErrorMessageString) {
 
 
     // Inport The Model Module, Set Attributes
@@ -59,10 +59,20 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     try {
         pybind11::exec(ScriptSource, pybind11::globals(), Locals);
     } catch (pybind11::value_error) {
-        std::cout<<"ValueError\n";
-    } catch (pybind11::error_already_set) {
-        std::cout<<"Error Already Set\n";
-    } catch (pybind11::error)
+
+        if (ErrorMessageString != nullptr) {
+            ErrorMessageString = &std::string("Value Error");
+        }
+        return false;
+        
+    } catch (pybind11::key_error) {
+
+        if (ErrorMessageString != nullptr) {
+            ErrorMessageString = &std::string("Key Error");
+        }
+        return false;
+
+    }
 
     double ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
     double ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
