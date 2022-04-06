@@ -54,7 +54,7 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     
     try {
         Project.StartPlayingOnLoad = ProjectNode["PlayOnLoad"].as<bool>();
-    } catch (YAML::BadSubscript) {
+    } catch (YAML::TypedBadConversion) {
         Project.StartPlayingOnLoad = false;
         SystemUtils_->Logger_->Log("Project Metadata Missing 'PlayOnLoad' Param, Defaulting to 'FALSE'", 7);
     }
