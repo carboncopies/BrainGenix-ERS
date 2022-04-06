@@ -78,6 +78,19 @@ void Window_AssetExplorer::Draw() {
                 ImGui::EndTabItem();
                 }
 
+
+                // Add section for Scripts
+
+                // add section for shaders
+
+
+                // then, add system to bind scripts to scene objects (drag drop target in scene tree)
+                // then add drag drop source
+                // then make script editor
+                // then make script editor drag/drop target
+
+
+
                 // "Advanced" Asset ID Viewer
                 if (ImGui::BeginTabItem("Raw Asset IDs")) {
 
