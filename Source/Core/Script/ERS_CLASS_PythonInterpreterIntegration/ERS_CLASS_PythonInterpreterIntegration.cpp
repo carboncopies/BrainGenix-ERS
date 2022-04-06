@@ -103,7 +103,10 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
             return false;
         } catch (pybind11::cast_error const&) {
             return false;
+        } catch (pybind11::error_already_set &Exception) {
+            return false;
         }
+
     } else {
         ErrorMessageString->erase(ErrorMessageString->begin(), ErrorMessageString->end());
         std::vector<std::string> Lines = SplitByDelimiter(ScriptSource, std::string("\n"));
@@ -129,6 +132,9 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
                 ErrorHandle(ErrorMessageString, i, "TypeError");
             } catch (pybind11::cast_error const&) {
                 ErrorHandle(ErrorMessageString, i, "CastError");
+            } catch (pybind11::error_already_set &Exception) {
+                // make anther func to handle the PyException_ (all of them)
+                ErrorHandle(ErrorMessageString, i, "AllOtherErrors");
             }
 
         }
