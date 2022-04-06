@@ -114,8 +114,8 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
                 ErrorHandle(ErrorMessageString, i, "CastError");
             } catch (pybind11::error_already_set &Exception) {
                 // make anther func to handle the PyException_ (all of them)
-                ErrorHandle(ErrorMessageString, i, "AllOtherErrors");
-                ParsePythonErrors(ErrorMessageString, i, Exception);
+                ErrorHandle(ErrorMessageString, i, Exception.what());
+                //ParsePythonErrors(ErrorMessageString, i, Exception);
             }
 
         }
@@ -150,11 +150,11 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
 
 
-void ERS_CLASS_PythonInterpreterIntegration::ParsePythonErrors(std::vector<std::string>* Target, unsigned long LineNumber, pybind11::error_already_set &Exception) {
+// void ERS_CLASS_PythonInterpreterIntegration::ParsePythonErrors(std::vector<std::string>* Target, unsigned long LineNumber, pybind11::error_already_set &Exception) {
     
-    std::cout<<Exception.what()<<std::endl;
+//     std::cout<<Exception.what()<<std::endl;
 
-}
+// }
 
 void ERS_CLASS_PythonInterpreterIntegration::ErrorHandle(std::vector<std::string>* Target, unsigned long LineNumber, std::string Error) {
 
