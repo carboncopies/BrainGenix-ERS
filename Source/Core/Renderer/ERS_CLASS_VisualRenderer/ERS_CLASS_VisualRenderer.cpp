@@ -143,8 +143,12 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
     std::string Code = "import math\nModelPosX = math.sin(GameTime)\nmath.an_error_here";
     std::vector<std::string> ErrorMsg;
-    SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[0].get(), &ErrorMsg);
-
+    if (!IsEditorMode_) {
+        bool status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[0].get(), &ErrorMsg);
+        if (!status) {
+            IsEditorMode_ = true;
+        }
+    }
     for (unsigned long i = 0; i < ErrorMsg.size(); i++) {
         std::cout<<ErrorMsg[i];
     }
