@@ -49,6 +49,7 @@ bool ERS_CLASS_ProjectWriter::SaveProject(ERS_STRUCT_Project* ProjectPointer, lo
     ProjectEmitter<<YAML::Key<<"ProjectCreator"<<YAML::Value<<ProjectPointer->ProjectCreator;
     ProjectEmitter<<YAML::Key<<"ProjectLicense"<<YAML::Value<<ProjectPointer->ProjectLicense;
     ProjectEmitter<<YAML::Key<<"IsLicenseProprietary"<<YAML::Value<<ProjectPointer->IsLicenseProprietary;
+    ProjectEmitter<<YAML::Key<<"PlayOnLoad"<<YAML::Value<<ProjectPointer->StartPlayingOnLoad;
 
 
     ProjectEmitter<<YAML::Key<<"SceneIDs";

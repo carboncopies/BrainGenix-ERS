@@ -51,6 +51,7 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     Project.DefaultLayout = ProjectNode["DefaultLayout"].as<int>();
     Project.DefaultScene = ProjectNode["DefaultScene"].as<int>();
     Project.DefaultShaderProgram = ProjectNode["DefaultShaderProgram"].as<int>();
+    
     Project.StartPlayingOnLoad = ProjectNode["PlayOnLoad"].as<bool>();
 
     // Populate Scene IDs
