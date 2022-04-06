@@ -78,13 +78,16 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
 }
 
+bool ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* Model) {
+    
+}
+
 
 void ERS_CLASS_PythonInterpreterIntegration::UpdateSystemInfoData(double RunTime) {
 
     RunTime_ = RunTime;
 
 }
-
 
 void ERS_CLASS_PythonInterpreterIntegration::SetSystemInfoData(pybind11::module* Locals) {
 

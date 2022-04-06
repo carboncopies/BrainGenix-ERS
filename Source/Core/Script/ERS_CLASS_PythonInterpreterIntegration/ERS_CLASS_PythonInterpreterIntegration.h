@@ -70,6 +70,14 @@ public:
      */
     bool ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model);
 
+
+    /**
+     * @brief Runs a script attached to a point light
+     * 
+     */
+    bool ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* Model);
+
+
     /**
      * @brief Provides access to systeminfo data
      * 
