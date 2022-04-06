@@ -37,10 +37,11 @@ ERS_CLASS_PythonInterpreterIntegration::~ERS_CLASS_PythonInterpreterIntegration(
 bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model, std::vector<std::string>* ErrorMessageString) {
 
 
-    // Inport The Model Module, Set Attributes
+    // Inport The Model Module, Set System Info
     pybind11::module ModelModule = pybind11::module_::import("Model");
     SetSystemInfoData(&ModelModule);
 
+    // Set System Parameters
     ModelModule.attr("ModelPosX") = Model->ModelPosition.x;
     ModelModule.attr("ModelPosY") = Model->ModelPosition.y;
     ModelModule.attr("ModelPosZ") = Model->ModelPosition.z;
@@ -50,13 +51,14 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     ModelModule.attr("ModelScaleX") = Model->ModelScale.x;
     ModelModule.attr("ModelScaleY") = Model->ModelScale.y;
     ModelModule.attr("ModelScaleZ") = Model->ModelScale.z;
-
+    
     ModelModule.attr("ModelEnabled") = Model->Enabled;
 
 
+    // Get Local Dict
     pybind11::dict Locals = ModelModule.attr("__dict__");
 
-
+    // If No Message String Vec Provided, Run All At Once, Else Run Line By Line
     if (ErrorMessageString == nullptr) {
         try {
             pybind11::exec(ScriptSource, pybind11::globals(), Locals);
@@ -80,6 +82,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
             return false;
         }
     } else {
+        ErrorMessageString->erase(ErrorMessageString->begin(), ErrorMessageString->end());
         std::vector<std::string> Lines = SplitByDelimiter(ScriptSource, std::string("\n"));
         for (unsigned long i = 0; i < Lines.size(); i++) {
 
@@ -109,7 +112,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
     }
 
-
+    // Write Back Model Data
     double ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
     double ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
     double ModelPosZ = ModelModule.attr("ModelPosZ").cast<double>();
@@ -126,7 +129,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
     Model->Enabled = ModelModule.attr("ModelEnabled").cast<bool>();
 
-
+    // Return Status
     if (ErrorMessageString->size() > 0) {
         return false;
     } else {
