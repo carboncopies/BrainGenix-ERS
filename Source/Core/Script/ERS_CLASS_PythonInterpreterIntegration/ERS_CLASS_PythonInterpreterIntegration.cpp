@@ -65,14 +65,14 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     ModelModule.attr("ModelPosX") = Model->ModelPosition.x;
     ModelModule.attr("ModelPosY") = Model->ModelPosition.y;
     ModelModule.attr("ModelPosZ") = Model->ModelPosition.z;
-
     ModelModule.attr("ModelRotX") = Model->ModelRotation.x;
     ModelModule.attr("ModelRotY") = Model->ModelRotation.y;
     ModelModule.attr("ModelRotZ") = Model->ModelRotation.z;
-    
     ModelModule.attr("ModelScaleX") = Model->ModelScale.x;
     ModelModule.attr("ModelScaleY") = Model->ModelScale.y;
     ModelModule.attr("ModelScaleZ") = Model->ModelScale.z;
+
+    ModelModule.attr("ModelEnabled") = Model->Enabled;
 
 
     pybind11::dict Locals = ModelModule.attr("__dict__");
@@ -82,18 +82,17 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     double ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
     double ModelPosZ = ModelModule.attr("ModelPosZ").cast<double>();
     Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
-
     double ModelRotX = ModelModule.attr("ModelRotX").cast<double>();
     double ModelRotY = ModelModule.attr("ModelRotY").cast<double>();
     double ModelRotZ = ModelModule.attr("ModelRotZ").cast<double>();
     Model->SetRotation(glm::vec3(ModelRotX, ModelRotY, ModelRotZ));
-
     double ModelScaleX = ModelModule.attr("ModelScaleX").cast<double>();
     double ModelScaleY = ModelModule.attr("ModelScaleY").cast<double>();
     double ModelScaleZ = ModelModule.attr("ModelScaleZ").cast<double>();
     Model->SetScale(glm::vec3(ModelScaleX, ModelScaleY, ModelScaleZ));
-
     Model->ApplyTransformations();
+
+    Model->Enabled = ModelModule.attr("ModelEnabled").cast<bool>();
 
 
     return true;
