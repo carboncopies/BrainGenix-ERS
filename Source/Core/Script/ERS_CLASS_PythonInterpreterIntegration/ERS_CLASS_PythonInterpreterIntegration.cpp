@@ -73,7 +73,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     double ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
     double ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
     double ModelPosZ = ModelModule.attr("ModelPosZ").cast<double>();
-    std::cout<<ModelPosX<<std::endl;
+    //std::cout<<ModelPosX<<std::endl;
     Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
     Model->ApplyTransformations();
 
@@ -95,7 +95,7 @@ void ERS_CLASS_PythonInterpreterIntegration::SetSystemInfoData(pybind11::module*
     // Set System Info Module
     pybind11::module SystemInfo = pybind11::module_::import("SystemInfo");
 
-    std::cout<<RunTime_<<std::endl;
+    //std::cout<<RunTime_<<std::endl;
     //Locals->attr("GameTime") = pybind11::cast<double>(RunTime_);
 
     Locals->attr("GameTime") = pybind11::float_(RunTime_);
