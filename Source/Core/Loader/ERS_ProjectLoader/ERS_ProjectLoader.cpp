@@ -99,7 +99,8 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
         YAML::Node Scripts = ProjectNode["Scripts"];
         for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
             ERS_STRUCT_Script Script;
-            Script.
+            Script.Name_ = it->second["Name"].as<std::string>();
+            Script.AssetID = it->second["AssetID"].as<long>();
         }
     } else {
         SystemUtils_->Logger_->Log("Project Script Data Missing", 7);
