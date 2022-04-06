@@ -56,6 +56,8 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
     pybind11::dict Locals = ModelModule.attr("__dict__");
 
+    // For line by line errors, the source string could be split by lines, and then run sequentially. then the errors could be added to a vector and returned as an error list or something...
+
     try {
         pybind11::exec(ScriptSource, pybind11::globals(), Locals);
     } catch (pybind11::value_error) {
