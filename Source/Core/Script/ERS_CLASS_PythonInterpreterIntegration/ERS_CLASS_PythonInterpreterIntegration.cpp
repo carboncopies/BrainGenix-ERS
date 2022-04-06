@@ -34,7 +34,7 @@ ERS_CLASS_PythonInterpreterIntegration::~ERS_CLASS_PythonInterpreterIntegration(
 
 
 
-bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model, std::string* ErrorMessageString) {
+bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model, std::vector<std::string>* ErrorMessageString) {
 
 
     // Inport The Model Module, Set Attributes
@@ -56,38 +56,35 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
     pybind11::dict Locals = ModelModule.attr("__dict__");
 
-    // For line by line errors, the source string could be split by lines, and then run sequentially. then the errors could be added to a vector and returned as an error list or something...
 
-    try {
-        pybind11::exec(ScriptSource, pybind11::globals(), Locals);
-    } catch (pybind11::value_error) {
-        ErrorHandle(ErrorMessageString, "Value Error");
-        return false;
-    } catch (pybind11::key_error) {
-        ErrorHandle(ErrorMessageString, "Key Error");
-        return false;
-    } catch (pybind11::reference_cast_error) {
-        ErrorHandle(ErrorMessageString, "Reference Cast Error");
-        return false;
-    } catch (pybind11::attribute_error) {
-        ErrorHandle(ErrorMessageString, "Attribute Error");
-        return false;
-    } catch (pybind11::import_error) {
-        ErrorHandle(ErrorMessageString, "Import Error");
-        return false;
-    } catch (pybind11::buffer_error) {
-        ErrorHandle(ErrorMessageString, "Buffer Error");
-        return false;
-    } catch (pybind11::index_error) {
-        ErrorHandle(ErrorMessageString, "Index Error");
-        return false;
-    } catch (pybind11::type_error) {
-        ErrorHandle(ErrorMessageString, "Type Error");
-        return false;
-    } catch (pybind11::cast_error) {
-        ErrorHandle(ErrorMessageString, "Cast Error");
-        return false;
+    if (ErrorMessageString == nullptr) {
+        try {
+            pybind11::exec(ScriptSource, pybind11::globals(), Locals);
+        } catch (pybind11::value_error) {
+            return false;
+        } catch (pybind11::key_error) {
+            return false;
+        } catch (pybind11::reference_cast_error) {
+            return false;
+        } catch (pybind11::attribute_error) {
+            return false;
+        } catch (pybind11::import_error) {
+            return false;
+        } catch (pybind11::buffer_error) {
+            return false;
+        } catch (pybind11::index_error) {
+            return false;
+        } catch (pybind11::type_error) {
+            return false;
+        } catch (pybind11::cast_error) {
+            return false;
+        }
+    } else {
+        std::vector<std::string> Lines;
+        
     }
+
+    
 
 
 
