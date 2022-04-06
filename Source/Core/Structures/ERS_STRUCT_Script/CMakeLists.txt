@@ -4,21 +4,21 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_STRUCT_SceneObject
+add_library(ERS_STRUCT_Script
 
             # Add Header Files (.h)
-            "ERS_STRUCT_SceneObject.h"
+            "ERS_STRUCT_Script.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_SceneObject
+target_link_libraries(ERS_STRUCT_Script
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_SceneObject
+target_link_libraries(ERS_STRUCT_Script
     )
 
 
-target_include_directories(ERS_STRUCT_SceneObject PUBLIC ./)
+target_include_directories(ERS_STRUCT_Script PUBLIC ./)
