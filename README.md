@@ -50,3 +50,23 @@ BrainGenix Environment Rendering System (ERS) aims to be a distributed multi-GPU
     "[lmb] + [scroll wheel]" - Adjust Camera Movement
 
     "[`]" - Toggle Viewport Controls On/Off
+
+# Scripting API
+
+  The ERS scripting api uses the Python programming language to provide control over models, lights and more. Scripts can be "attached" to an object to allow for programatic control over it's attributes. Plese see the following API reference for more information.
+  
+  ## System Variables (provided to all scripts)
+    "GameTime" - Number of seconds since the start of the game.
+    "SystemTime" - Unix epoch as reported by the system.
+    
+  ## Model Variables
+    "ModelPosX" - X Position of the model
+    "ModelPosY" - Y Position of the model
+    "ModelPosZ" - Z Position of the model
+    "ModelRotX" - X Rotation of the model
+    "ModelRotY" - Y Rotation of the model
+    "ModelRotZ" - Z Rotation of the model
+    "ModelScaleX" - X Scale of the model
+    "ModelScaleY" - Y Scale of the model
+    "ModelScaleZ" - Z Scale of the model
+    "Enabled" - Enable/Disable rendering of the model
