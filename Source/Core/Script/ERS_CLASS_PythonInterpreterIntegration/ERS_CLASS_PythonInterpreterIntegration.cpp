@@ -65,6 +65,10 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     ModelModule.attr("ModelPosX") = Model->ModelPosition.x;
     ModelModule.attr("ModelPosY") = Model->ModelPosition.y;
     ModelModule.attr("ModelPosZ") = Model->ModelPosition.z;
+
+    ModelModule.attr("ModelRotX") = Model->ModelRotation.x;
+    ModelModule.attr("ModelRotY") = Model->ModelRotation.y;
+    ModelModule.attr("ModelRotZ") = Model->ModelRotation.z;
     
 
     pybind11::dict Locals = ModelModule.attr("__dict__");
@@ -73,8 +77,13 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     double ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
     double ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
     double ModelPosZ = ModelModule.attr("ModelPosZ").cast<double>();
-    //std::cout<<ModelPosX<<std::endl;
     Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
+
+    double ModelRotX = ModelModule.attr("ModelRotX").cast<double>();
+    double ModelRotY = ModelModule.attr("ModelRotY").cast<double>();
+    double ModelRotZ = ModelModule.attr("ModelRotZ").cast<double>();
+    Model->SetRotation(glm::vec3(ModelRotX, ModelRotY, ModelRotZ));
+
     Model->ApplyTransformations();
 
 
