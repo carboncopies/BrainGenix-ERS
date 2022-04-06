@@ -54,6 +54,15 @@ private:
      */
     void ErrorHandle(std::vector<std::string>* Target, unsigned long LineNumber, std::string Error);
 
+    /**
+     * @brief handle python thrown errors, add to error list
+     * 
+     * @param Target 
+     * @param LineNumber 
+     * @param Exception 
+     */
+    void ParsePythonErrors(std::vector<std::string>* Target, unsigned long LineNumber, pybind11::error_already_set &Exception);
+
 
 public:
 
