@@ -109,9 +109,12 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
     } else {
         ErrorMessageString->erase(ErrorMessageString->begin(), ErrorMessageString->end());
-        std::vector<std::string> Lines = SplitByDelimiter(ScriptSource, std::string("\n"));
+        std::vector<std::string> Lines = SplitByDelimiter(ScriptSource, "\n");
+
+
         for (unsigned long i = 0; i < Lines.size(); i++) {
 
+            std::cout<<i<<"|"<<Lines[i]<<std::endl;
             try {
                 pybind11::exec(Lines[i], pybind11::globals(), Locals);
             } catch (pybind11::value_error const&) {
