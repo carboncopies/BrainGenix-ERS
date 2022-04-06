@@ -65,13 +65,6 @@ public:
 
 
     /**
-     * @brief Runs some python code, passed in as the 'code' argument.
-     * 
-     * @param Code 
-     */
-    void ExecuteCode(std::string Code);
-
-    /**
      * @brief Runs a script attached to a model object
      * 
      */
