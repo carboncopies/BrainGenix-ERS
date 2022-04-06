@@ -115,6 +115,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
             } catch (pybind11::error_already_set &Exception) {
                 // make anther func to handle the PyException_ (all of them)
                 ErrorHandle(ErrorMessageString, i, "AllOtherErrors");
+                ParsePythonErrors(ErrorMessageString, i, Exception);
             }
 
         }
@@ -149,10 +150,9 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
 
 
-bool ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* Model) {
-
+void ERS_CLASS_PythonInterpreterIntegration::ParsePythonErrors(std::vector<std::string>* Target, unsigned long LineNumber, pybind11::error_already_set &Exception) {
+    
 }
-
 
 void ERS_CLASS_PythonInterpreterIntegration::ErrorHandle(std::vector<std::string>* Target, unsigned long LineNumber, std::string Error) {
 
