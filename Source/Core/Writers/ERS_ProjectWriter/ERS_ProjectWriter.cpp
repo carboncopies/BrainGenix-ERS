@@ -83,6 +83,22 @@ bool ERS_CLASS_ProjectWriter::SaveProject(ERS_STRUCT_Project* ProjectPointer, lo
     ProjectEmitter<<YAML::EndMap;
 
 
+    SystemUtils_->Logger_->Log("Serializing Script Metadata", 4);
+    ProjectEmitter<<YAML::Key<<"Scripts";
+    ProjectEmitter<<YAML::Key<<YAML::BeginMap;
+    for (unsigned long i = 0; i < ProjectPointer->Scripts.size(); i++) {
+
+        SystemUtils_->Logger_->Log(std::string("Writing Metadata For Script") + ProjectPointer->Scripts[i].Name_, 3);
+        ProjectEmitter<<YAML::Key<<i;
+        ProjectEmitter<<YAML::Key<<YAML::BeginMap;
+        ProjectEmitter<<YAML::Key<<"Name"<<YAML::Value<<ProjectPointer->Scripts[i].Name_;
+        ProjectEmitter<<YAML::Key<<"AssetID"<<YAML::Value<<ProjectPointer->Scripts[i].AssetID;
+        ProjectEmitter<<YAML::EndMap;
+
+    }
+    ProjectEmitter<<YAML::EndMap;
+
+
     // Convert Emitter To String
     std::string ProjectByteString = ProjectEmitter.c_str();
 
