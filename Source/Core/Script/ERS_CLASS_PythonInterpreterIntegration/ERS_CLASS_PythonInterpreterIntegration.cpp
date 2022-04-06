@@ -80,7 +80,33 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
             return false;
         }
     } else {
-        std::vector<std::string> Lines;
+        std::vector<std::string> Lines = SplitByDelimiter(ScriptSource, std::string("\n"));
+        for (unsigned long i = 0; i < Lines.size(); i++) {
+
+            try {
+                pybind11::exec(Lines[i], pybind11::globals(), Locals);
+            } catch (pybind11::value_error) {
+                
+                return false;
+            } catch (pybind11::key_error) {
+                return false;
+            } catch (pybind11::reference_cast_error) {
+                return false;
+            } catch (pybind11::attribute_error) {
+                return false;
+            } catch (pybind11::import_error) {
+                return false;
+            } catch (pybind11::buffer_error) {
+                return false;
+            } catch (pybind11::index_error) {
+                return false;
+            } catch (pybind11::type_error) {
+                return false;
+            } catch (pybind11::cast_error) {
+                return false;
+            }
+
+        }
 
     }
 
@@ -115,7 +141,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 }
 
 // https://stackoverflow.com/questions/40699283/need-to-split-string-into-vector-with-delimiter
-std::vector<std::string> split(std::string target, std::string delim)
+std::vector<std::string> SplitByDelimiter(std::string target, std::string delim)
 {
     std::vector<std::string> v;
     if (!target.empty()) {
@@ -142,11 +168,11 @@ bool ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* Mo
 }
 
 
-void ERS_CLASS_PythonInterpreterIntegration::ErrorHandle(std::string* Target, std::string Value) {
+void ERS_CLASS_PythonInterpreterIntegration::ErrorHandle(std::vector<std::string>* Target, unsigned long LineNumber, std::string Error) {
 
-    if (Target != nullptr) {
-        Target = &Value;
-    }
+    std::string ErrorMessage = std::string("Error On Line '") + std::to_string(LineNumber) + std::string("': ") + Error + std::string("\n");
+    Target->push_back(ErrorMessage);
+
 
 }
 

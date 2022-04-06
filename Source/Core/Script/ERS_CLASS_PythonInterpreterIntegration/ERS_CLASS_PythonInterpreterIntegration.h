@@ -45,9 +45,10 @@ private:
      * @brief Writes to the target error handling string if there's a pointer passed in.
      * 
      * @param Target 
-     * @param Message 
+     * @param LineNumber 
+     * @param Error 
      */
-    void ErrorHandle(std::string* Target, std::string Message);
+    void ErrorHandle(std::vector<std::string>* Target, unsigned long LineNumber, std::string Error);
 
 
 public:
