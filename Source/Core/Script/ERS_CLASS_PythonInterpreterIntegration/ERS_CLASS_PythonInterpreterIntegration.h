@@ -9,6 +9,10 @@
 #include <string>
 #include <memory>
 #include <chrono>
+#include <iostream>
+#include <algorithm>
+#include <sstream>
+#include <iterator>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <pybind11/pybind11.h>
