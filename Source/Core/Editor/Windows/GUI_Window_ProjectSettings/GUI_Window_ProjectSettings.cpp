@@ -91,6 +91,12 @@ void Window_ProjectSettings::Draw() {
             ImGui::HelpMarker("Set what scene is opened when the project is opened both for editing and as the distributed version.");
 
 
+            // Enable/Disbale Game Mode On Startup
+            ImGui::Checkbox("Run On Startup", &ProjectUtils_->ProjectManager_->Project_.StartPlayingOnLoad);
+            ImGui::SameLine();
+            ImGui::HelpMarker("By default ERS will launch in editor mode, which disables scripts and shows the viewport camera. Checking this will automatically start scripts and viewport(s) will show game cameras instead.");
+
+
             // Copy In New Values
             ProjectUtils_->ProjectManager_->Project_.ProjectName = std::string(ProjectNameBuffer);
             ProjectUtils_->ProjectManager_->Project_.ProjectDescription = std::string(ProjectDescriptionBuffer);
