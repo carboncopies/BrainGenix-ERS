@@ -21,12 +21,15 @@ target_link_libraries(ERS_STRUCT_SystemUtils
 
 # Link Internal Libs
 target_link_libraries(ERS_STRUCT_SystemUtils
-    ERS_CLASS_LoggingSystem
 
     ERS_InputOutputSubsystem
     ERS_FramerateManager
     ERS_ModelWriter
+
+    ERS_CLASS_LoggingSystem
     ERS_CLASS_HardwareInformation
+    ERS_CLASS_PythonInterpreterIntegration
+
     )
 
 

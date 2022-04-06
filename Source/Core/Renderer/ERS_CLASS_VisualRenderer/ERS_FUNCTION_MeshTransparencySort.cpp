@@ -12,7 +12,7 @@ void ERS_FUNCTION_MeshTransparencySort(std::vector<ERS_STRUCT_Mesh*>* OpaqueMesh
 
         ERS_STRUCT_Model *Model = Scene->Models[i].get();
         glm::mat4 ModelMatrix = Model->GetMat4();
-        if (Model->FullyReady) {
+        if (Model->FullyReady && Model->Enabled) {
             for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
 
                 ERS_STRUCT_Mesh* Mesh = &Model->Meshes[i];

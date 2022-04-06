@@ -45,6 +45,9 @@ struct ERS_STRUCT_Model {
     long AssetID;
 
 
+    // Enable Config
+    bool Enabled = true;
+
     // Loading Config
     bool HasTexturesLoaded = false;
     bool HasMeshLoaded = false;

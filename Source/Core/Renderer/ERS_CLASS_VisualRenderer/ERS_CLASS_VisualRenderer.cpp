@@ -19,6 +19,12 @@ ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* Syste
     SystemUtils_->Logger_->Log("Initializing MeshRenderer Class", 5);
     MeshRenderer_ = std::make_unique<ERS_CLASS_MeshRenderer>(SystemUtils_);
 
+
+    // DEFAULT MODES, CHANGE THIS LATER! --------------------------------
+    IsEditorMode_ = true;
+    
+
+
 }
 
 ERS_CLASS_VisualRenderer::~ERS_CLASS_VisualRenderer() {
@@ -91,6 +97,11 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     CaptureIndex_ = -1;
     FrameNumber_++;
 
+
+
+    RunTime_ = glfwGetTime() - GameStartTime_;
+    SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->UpdateSystemInfoData(RunTime_);
+
     // Iterate Through Viewports
     for (int i = 0; (long)i < (long)Viewports_.size(); i++) {
         UpdateViewport(i, SceneManager, DeltaTime);
@@ -102,6 +113,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     } else {
         glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
     }
+
+
 
 
 
@@ -127,6 +140,18 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
     // BIND To Default Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+    std::string Code = "import math\nModelPosX = math.sin(GameTime)*1.5\nModelPosZ = math.cos(GameTime)*1.5\nModelRotZ = GameTime*40";
+    std::vector<std::string> ErrorMsg;
+    if (!IsEditorMode_) {
+        bool status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[0].get(), &ErrorMsg);
+        if (!status) {
+            IsEditorMode_ = true;
+        }
+    }
+    for (unsigned long i = 0; i < ErrorMsg.size(); i++) {
+        std::cout<<ErrorMsg[i];
+    }
 
 
 }
@@ -822,7 +847,34 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
         }
 
 
+        // Game Control Menu
+        if (ImGui::BeginMenu("Run")) {
+
+            // Run Option
+            if (ImGui::MenuItem("Run With Editor", "F5")) {
+                IsEditorMode_ = false;
+                GameStartTime_ = glfwGetTime();
+            }
+
+            // Stop Option
+            if (ImGui::MenuItem("Stop", "Escape")) {
+                IsEditorMode_ = true;
+            }
+
+        ImGui::EndMenu();
+        }
+
     ImGui::EndMenuBar();
+    }
+
+
+    // Keybinds
+    if (ImGui::IsKeyPressed(GLFW_KEY_F5)) {
+        IsEditorMode_ = false;
+        GameStartTime_ = glfwGetTime();
+    }
+    if (ImGui::IsKeyPressed(GLFW_KEY_ESCAPE)) {
+        IsEditorMode_ = true;
     }
 
 }

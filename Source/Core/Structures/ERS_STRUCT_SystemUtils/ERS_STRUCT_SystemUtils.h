@@ -17,6 +17,8 @@
 #include <ERS_ModelWriter.h>
 #include <ERS_FramerateManager.h>
 #include <ERS_CLASS_HardwareInformation.h>
+#include <ERS_CLASS_PythonInterpreterIntegration.h>
+
 
 
 /**
@@ -33,6 +35,7 @@ struct ERS_STRUCT_SystemUtils {
     std::unique_ptr<bool> SystemShouldRun_; /**<Pointer To Variable Setting If System Should Run Or Not*/
     std::unique_ptr<ERS_CLASS_FramerateManager> FramerateManager_; /**<Pointer to framerate subsystem*/
     std::unique_ptr<ERS_CLASS_HardwareInformation> ERS_CLASS_HardwareInformation_; /**<Pointer to the hardware informaton class instance*/
+    std::unique_ptr<ERS_CLASS_PythonInterpreterIntegration> ERS_CLASS_PythonInterpreterIntegration_; /**<Pointer to the class integrating the python interpreter*/
 
 
     int RenderWidth_ = 0; /**<Width of the display being rendered to (if using a window, this is the size of the window)*/
@@ -43,3 +46,4 @@ struct ERS_STRUCT_SystemUtils {
 
 
 };
+

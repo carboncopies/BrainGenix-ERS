@@ -72,6 +72,10 @@ public:
 
     bool CaptureCursor_ = false; /**<Indicate if cursor should be captured*/
     int CaptureIndex_ = 0; /**<Index where cursor was captured*/
+    
+    double RunTime_; /**<Number of seconds since start of "play" mode. (other mode is editor mode)*/
+    double GameStartTime_; /**<Time when the game entered "play" mode, used to calc the runtime variable*/
+    bool IsEditorMode_; /**<Sets if in editor or play mode*/
 
 
 private:

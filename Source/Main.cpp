@@ -40,7 +40,7 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
 
-
+#include <ERS_CLASS_PythonInterpreterIntegration.h>
 
 
 //
@@ -96,6 +96,10 @@ int main() {
     SystemUtils->ERS_CLASS_HardwareInformation_ = std::make_unique<ERS_CLASS_HardwareInformation>(
         SystemUtils->Logger_.get(),
         *SystemUtils->LocalSystemConfiguration_.get()
+    );
+
+    SystemUtils->ERS_CLASS_PythonInterpreterIntegration_ = std::make_unique<ERS_CLASS_PythonInterpreterIntegration>(
+        SystemUtils->Logger_.get()
     );
 
 

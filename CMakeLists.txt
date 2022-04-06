@@ -21,6 +21,7 @@ set(CMAKE_UTIL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Utils")
 set(CMAKE_BUILD_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/BuildUtils")
 set(CMAKE_FIND_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/FindUtils")
 set(PROJECT_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 # Include Util CMake Scripts
 include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
@@ -47,6 +48,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Miniscript.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/OpenXR.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
 
 
 
@@ -66,6 +68,8 @@ target_link_libraries(${PROJECT_NAME}
   Renderer
   ERS_CLASS_HardwareInformation
 
+
+  ERS_CLASS_PythonInterpreterIntegration
 
   ERS_SceneManager
   ERS_ModelLoader
@@ -128,6 +132,8 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Viewport)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Light)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_OpenGLDefaults)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_SceneObject)
+
+add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_PythonInterpreterIntegration)
 
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_SceneLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ShaderLoader)
