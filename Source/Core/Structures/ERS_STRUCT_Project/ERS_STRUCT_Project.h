@@ -36,6 +36,7 @@ struct ERS_STRUCT_Project {
     std::vector<long> EditorLayoutIDs; /**<Vector Of Editor Layouts To Be Used In This Project*/
     std::vector<long> GameControllerSettingsIDs; /**<Vector of layouts for game controller settings*/
     std::vector<ERS_STRUCT_ShaderProgramAssetIDs> ShaderPrograms; /**<List of Shader Program Instances*/
+    std::vector<ERS_STRUCT_Script> Scripts; /**<List of scripts that are instantiated to models/lights/etc.*/
     long DefaultShaderProgram; /**<Set default index of the shader program*/
     std::vector<ERS_STRUCT_ControllerSettings>* ControllerSettings; /**<List of game controller settings instances*/
 
