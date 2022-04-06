@@ -51,6 +51,13 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     Project.DefaultLayout = ProjectNode["DefaultLayout"].as<int>();
     Project.DefaultScene = ProjectNode["DefaultScene"].as<int>();
     Project.DefaultShaderProgram = ProjectNode["DefaultShaderProgram"].as<int>();
+    
+    if (ProjectNode["PlayOnLoad"]) {
+        Project.StartPlayingOnLoad = ProjectNode["PlayOnLoad"].as<bool>();
+    } else {
+        Project.StartPlayingOnLoad = false;
+        SystemUtils_->Logger_->Log("Project Metadata Missing 'PlayOnLoad' Param, Defaulting to 'FALSE'", 7);
+    }
 
 
     // Populate Scene IDs

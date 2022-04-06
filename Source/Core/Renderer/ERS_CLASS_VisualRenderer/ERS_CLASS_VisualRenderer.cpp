@@ -24,7 +24,6 @@ ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* Syste
     IsEditorMode_ = true;
     
 
-
 }
 
 ERS_CLASS_VisualRenderer::~ERS_CLASS_VisualRenderer() {

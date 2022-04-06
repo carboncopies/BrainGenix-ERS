@@ -47,6 +47,7 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
     GuiSystem_ = std::make_shared<GUISystem>(SystemUtils_, Window_, Cursors3D_.get(), ProjectUtils_->SceneManager_.get(), ProjectUtils_, VisualRenderer_.get(), HIDUtils_);
 
     VisualRenderer_->CreateViewport();
+    VisualRenderer_->IsEditorMode_ = !ProjectUtils_->ProjectManager_->Project_.StartPlayingOnLoad;
 
 }
 
@@ -56,7 +57,6 @@ RendererManager::~RendererManager() {
     SystemUtils_->Logger_->Log("RendererManager Destructor Called", 6);
 
 }
-
 
 void RendererManager::LoadEditorData() {
 
@@ -93,7 +93,6 @@ void RendererManager::LoadEditorData() {
 
 }
 
-
 unsigned int RendererManager::LoadEditorIcon(const char* Path) {
 
 
@@ -126,8 +125,6 @@ unsigned int RendererManager::LoadEditorIcon(const char* Path) {
 
 }
 
-
-
 void RendererManager::InitializeGLFW() {
 
     // Initialize GLFW
@@ -158,7 +155,6 @@ void RendererManager::InitializeGLFW() {
     glfwSwapInterval(0);
 
 }
-
 
 void RendererManager::UpdateLoop(float DeltaTime) { 
 

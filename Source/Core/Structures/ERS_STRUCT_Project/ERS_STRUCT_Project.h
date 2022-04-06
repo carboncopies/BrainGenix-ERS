@@ -41,6 +41,7 @@ struct ERS_STRUCT_Project {
 
     int DefaultScene = 0; /**<Defualt Scene Index*/
     int DefaultLayout = 0; /**<Default Layout Used*/
+    bool StartPlayingOnLoad = false; /**<Indicate if the game should start playing when opened.*/
 
     ~ERS_STRUCT_Project() {
         ControllerSettings->~vector();
