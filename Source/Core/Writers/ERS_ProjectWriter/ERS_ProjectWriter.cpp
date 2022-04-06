@@ -113,7 +113,6 @@ bool ERS_CLASS_ProjectWriter::SaveProject(ERS_STRUCT_Project* ProjectPointer, lo
 
     bool Status = SystemUtils_->ERS_IOSubsystem_->WriteAsset(AssetID, ProjectData.get());
 
-
     return Status;
 
 }
