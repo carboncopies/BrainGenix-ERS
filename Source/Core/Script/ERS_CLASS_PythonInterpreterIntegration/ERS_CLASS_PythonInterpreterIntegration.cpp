@@ -34,7 +34,7 @@ ERS_CLASS_PythonInterpreterIntegration::~ERS_CLASS_PythonInterpreterIntegration(
 
 
 
-bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model) {
+bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model, std::string* ErrorMessage) {
 
 
     // Inport The Model Module, Set Attributes
@@ -55,7 +55,14 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
 
     pybind11::dict Locals = ModelModule.attr("__dict__");
-    pybind11::exec(ScriptSource, pybind11::globals(), Locals);
+
+    try {
+        pybind11::exec(ScriptSource, pybind11::globals(), Locals);
+    } catch (pybind11::value_error) {
+        std::cout<<"ValueError\n";
+    } catch (pybind11::error_already_set) {
+        std::cout<<"Error Already Set\n";
+    } catch (pybind11::error)
 
     double ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
     double ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
@@ -79,7 +86,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 }
 
 bool ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* Model) {
-    
+
 }
 
 

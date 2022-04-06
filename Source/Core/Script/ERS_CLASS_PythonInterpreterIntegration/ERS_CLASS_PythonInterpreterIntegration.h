@@ -68,7 +68,7 @@ public:
      * @brief Runs a script attached to a model object
      * 
      */
-    bool ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model);
+    bool ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model, std::string* ErrorMessage = nullptr);
 
 
     /**
