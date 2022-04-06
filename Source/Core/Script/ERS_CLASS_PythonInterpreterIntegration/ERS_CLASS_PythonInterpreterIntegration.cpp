@@ -88,6 +88,11 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     double ModelRotZ = ModelModule.attr("ModelRotZ").cast<double>();
     Model->SetRotation(glm::vec3(ModelRotX, ModelRotY, ModelRotZ));
 
+    double ModelScaleX = ModelModule.attr("ModelScaleX").cast<double>();
+    double ModelScaleY = ModelModule.attr("ModelScaleY").cast<double>();
+    double ModelScaleZ = ModelModule.attr("ModelScaleZ").cast<double>();
+    Model->SetScale(glm::vec3(ModelScaleX, ModelScaleY, ModelScaleZ));
+
     Model->ApplyTransformations();
 
 
