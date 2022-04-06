@@ -126,8 +126,6 @@ unsigned int RendererManager::LoadEditorIcon(const char* Path) {
 
 }
 
-
-
 void RendererManager::InitializeGLFW() {
 
     // Initialize GLFW
@@ -158,7 +156,6 @@ void RendererManager::InitializeGLFW() {
     glfwSwapInterval(0);
 
 }
-
 
 void RendererManager::UpdateLoop(float DeltaTime) { 
 
