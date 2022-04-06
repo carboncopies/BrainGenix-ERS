@@ -69,4 +69,4 @@ BrainGenix Environment Rendering System (ERS) aims to be a distributed multi-GPU
     "ModelScaleX" - X Scale of the model
     "ModelScaleY" - Y Scale of the model
     "ModelScaleZ" - Z Scale of the model
-    "Enabled" - Enable/Disable rendering of the model
+    "ModelEnabled" - Enable/Disable rendering of the model
