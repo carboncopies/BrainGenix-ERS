@@ -17,13 +17,13 @@
 
 
 /**
- * @brief Struct containing the info about an object in the scene
+ * @brief Struct containing a python script to be run in the editor
  * 
  */
-struct ERS_STRUCT_SceneObject {
+struct ERS_STRUCT_Script {
 
-    std::string Type_; /**<Name Of The Type Of The Object*/
-    std::string Label_; /**<Human Readable Name Of The Object*/
-    unsigned long Index_; /**<Index in respective list (e.g. If Type Is Model, This Would Be The Index In The Model List)*/
+    std::string Type_; /**<Display name of the script*/
+    std::string Code_; /**<Python Code Content Of The Script*/
+    unsigned long AssetID; /**<AssetID Allocated To This Script*/
 
 };
