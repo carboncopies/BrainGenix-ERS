@@ -93,6 +93,18 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     }
     SystemUtils_->Logger_->Log(std::string(std::string("Finished Loading Shader Programs")).c_str(), 4);
 
+    // Populate Script Structs
+    if (ProjectNode["Scripts"]) {
+        SystemUtils_->Logger_->Log("Loading Project Scripts", 5);
+        YAML::Node Scripts = ProjectNode["Scripts"];
+        for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
+            ERS_STRUCT_Script Script;
+            Script.
+        }
+    } else {
+        SystemUtils_->Logger_->Log("Project Script Data Missing", 7);
+    }
+
 
 
     // Return Struct When Populated
