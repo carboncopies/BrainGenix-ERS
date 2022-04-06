@@ -57,7 +57,6 @@ RendererManager::~RendererManager() {
 
 }
 
-
 void RendererManager::LoadEditorData() {
 
     OpenGLDefaults_ = std::make_unique<ERS_STRUCT_OpenGLDefaults>();
@@ -92,7 +91,6 @@ void RendererManager::LoadEditorData() {
     FreeImage_DeInitialise();
 
 }
-
 
 unsigned int RendererManager::LoadEditorIcon(const char* Path) {
 
