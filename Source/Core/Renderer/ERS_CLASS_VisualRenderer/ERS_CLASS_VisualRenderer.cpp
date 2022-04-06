@@ -97,7 +97,10 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     CaptureIndex_ = -1;
     FrameNumber_++;
 
-    RunTime_ = glfwGetTime() - GameStartTime_;
+
+    auto Clock = std::chrono::system_clock::now();
+    double UnixEpoch = std::chrono::duration_cast<std::chrono::seconds>(Clock.time_since_epoch()).count();
+    RunTime_ = UnixEpoch - GameStartTime_;
     SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->UpdateSystemInfoData(RunTime_);
 
     // Iterate Through Viewports
@@ -842,7 +845,9 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
             // Run Option
             if (ImGui::MenuItem("Run With Editor", "F5") || ImGui::IsKeyPressed(GLFW_KEY_F5)) {
                 IsEditorMode_ = false;
-                GameStartTime_ = glfwGetTime();
+                auto Clock = std::chrono::system_clock::now();
+                double UnixEpoch = std::chrono::duration_cast<std::chrono::seconds>(Clock.time_since_epoch()).count();
+                GameStartTime_ = UnixEpoch;
             }
 
             // Stop Option
