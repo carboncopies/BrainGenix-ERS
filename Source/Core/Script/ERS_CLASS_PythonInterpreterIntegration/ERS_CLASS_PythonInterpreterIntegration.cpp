@@ -139,12 +139,10 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
     Model->Enabled = ModelModule.attr("ModelEnabled").cast<bool>();
 
+
     // Return Status
-    if (ErrorMessageString->size() > 0) {
-        return false;
-    } else {
-        return true;
-    }
+    return true;
+    
 
 }
 
