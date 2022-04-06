@@ -88,7 +88,7 @@ bool ERS_CLASS_ProjectWriter::SaveProject(ERS_STRUCT_Project* ProjectPointer, lo
     ProjectEmitter<<YAML::Key<<YAML::BeginMap;
     for (unsigned long i = 0; i < ProjectPointer->Scripts.size(); i++) {
 
-        SystemUtils_->Logger_->Log(std::string("Writing Metadata For Script") + ProjectPointer->Scripts[i].Name_, 3);
+        SystemUtils_->Logger_->Log(std::string("Writing Metadata For Script '") + ProjectPointer->Scripts[i].Name_ + std::string("'"), 3);
         ProjectEmitter<<YAML::Key<<i;
         ProjectEmitter<<YAML::Key<<YAML::BeginMap;
         ProjectEmitter<<YAML::Key<<"Name"<<YAML::Value<<ProjectPointer->Scripts[i].Name_;
@@ -101,6 +101,22 @@ bool ERS_CLASS_ProjectWriter::SaveProject(ERS_STRUCT_Project* ProjectPointer, lo
 
     // Convert Emitter To String
     std::string ProjectByteString = ProjectEmitter.c_str();
+
+
+
+
+    // Write Scripts
+    SystemUtils_->Logger_->Log("Writing Scripts", 4);
+    for (unsigned long i = 0; i < ProjectPointer->Scripts.size(); i++) {
+
+        SystemUtils_->Logger_->Log(std::string("Writing Data For Script '") + ProjectPointer->Scripts[i].Name_ + std::string("'"), 3);
+        std::unique_ptr<ERS_STRUCT_IOData> ScriptData = std::make_unique<ERS_STRUCT_IOData>();
+        ScriptData->Data.reset(new unsigned char[ProjectPointer->Scripts[i].Code_.size()]);
+        ScriptData->Size_B = ProjectPointer->Scripts[i].Code_.size();
+        memcpy(ScriptData->Data.get(), ProjectPointer->Scripts[i].Code_.c_str(), ProjectPointer->Scripts[i].Code_.size());
+        SystemUtils_->ERS_IOSubsystem_->WriteAsset(AssetID, ScriptData.get());
+
+    }
 
 
     // Write To IOData
