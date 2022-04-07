@@ -100,7 +100,7 @@ void Window_AssetExplorer::Draw() {
                         if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
 
                             // Set Drag+Drop Payload
-                            ImGui::SetDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID", &ProjectUtils_->ProjectManager_->Project_.Scripts[i].AssetID, sizeof(long));
+                            ImGui::SetDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID", &i, sizeof(long));
                             ImGui::Text("%s", std::string(std::string("ERS Script '") + ProjectUtils_->ProjectManager_->Project_.Scripts[i].Name_ + std::string("'")).c_str());
 
                         ImGui::EndDragDropSource();
