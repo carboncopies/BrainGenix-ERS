@@ -207,3 +207,6 @@ int main() {
     return 0;
 
 }
+
+// TODO: Add script editor
+// add functions to duplicate scripts, etc.
