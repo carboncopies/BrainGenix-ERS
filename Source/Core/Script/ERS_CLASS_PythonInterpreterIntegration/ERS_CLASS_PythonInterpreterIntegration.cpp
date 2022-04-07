@@ -129,7 +129,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
         ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
         ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
         ModelPosZ = ModelModule.attr("ModelPosZ").cast<double>();
-    } catch (pybind11::cast_error) {
+    } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Position CAST_ERROR");
     }
 
@@ -137,7 +137,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
         ModelRotX = ModelModule.attr("ModelRotX").cast<double>();
         ModelRotY = ModelModule.attr("ModelRotY").cast<double>();
         ModelRotZ = ModelModule.attr("ModelRotZ").cast<double>();
-    } catch (pybind11::cast_error) {
+    } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Rotation CAST_ERROR");
     }
 
@@ -145,14 +145,14 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
         ModelScaleX = ModelModule.attr("ModelScaleX").cast<double>();
         ModelScaleY = ModelModule.attr("ModelScaleY").cast<double>();
         ModelScaleZ = ModelModule.attr("ModelScaleZ").cast<double>();
-    } catch (pybind11::cast_error) {
+    } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Scale CAST_ERROR");
     }
 
 
     try {
         Model->Enabled = ModelModule.attr("ModelEnabled").cast<bool>(); 
-    } catch (pybind11::cast_error) {
+    } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Enable CAST_ERROR");
     }
 
