@@ -56,10 +56,9 @@ public:
     /**
      * @brief Show The Script Rename Modal
      * 
-     * @param SelectedScene
      * @param SelectedScript
      */
-    void Activate(int SelectedScene, int SelectedScript);
+    void Activate(int SelectedScript);
 
 
     /**

@@ -15,9 +15,8 @@ Subwindow_ScriptRenameModal::~Subwindow_ScriptRenameModal() {
     
 }
 
-void Subwindow_ScriptRenameModal::Activate(int SceneIndex, int ScriptIndex) {
+void Subwindow_ScriptRenameModal::Activate( int ScriptIndex) {
 
-    SelectedScene_ = SceneIndex;
     SelectedScript_ = ScriptIndex;
     Enabled_ = true;
     FirstFrame_ = true;        
