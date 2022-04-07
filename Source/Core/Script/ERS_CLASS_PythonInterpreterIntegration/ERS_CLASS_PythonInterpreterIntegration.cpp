@@ -124,44 +124,47 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     double ModelPosX, ModelPosY, ModelPosZ;
     double ModelRotX, ModelRotY, ModelRotZ;
     double ModelScaleX, ModelScaleY, ModelScaleZ;
+    bool Successful = true;
 
     try {
         ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
         ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
         ModelPosZ = ModelModule.attr("ModelPosZ").cast<double>();
+        Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Position CAST_ERROR");
+        Successful = false;
     }
-
     try {
         ModelRotX = ModelModule.attr("ModelRotX").cast<double>();
         ModelRotY = ModelModule.attr("ModelRotY").cast<double>();
         ModelRotZ = ModelModule.attr("ModelRotZ").cast<double>();
+        Model->SetRotation(glm::vec3(ModelRotX, ModelRotY, ModelRotZ));
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Rotation CAST_ERROR");
+        Successful = false;
     }
-
     try {
         ModelScaleX = ModelModule.attr("ModelScaleX").cast<double>();
         ModelScaleY = ModelModule.attr("ModelScaleY").cast<double>();
         ModelScaleZ = ModelModule.attr("ModelScaleZ").cast<double>();
+        Model->SetScale(glm::vec3(ModelScaleX, ModelScaleY, ModelScaleZ));
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Scale CAST_ERROR");
+        Successful = false;
     }
-
 
     try {
         Model->Enabled = ModelModule.attr("ModelEnabled").cast<bool>(); 
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Enable CAST_ERROR");
+        Successful = false;
     }
 
 
-    Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
-    Model->SetRotation(glm::vec3(ModelRotX, ModelRotY, ModelRotZ));
-    Model->SetScale(glm::vec3(ModelScaleX, ModelScaleY, ModelScaleZ));
-    Model->ApplyTransformations();
-
+    if (Successful) {
+        Model->ApplyTransformations();
+    }
     
 
 
