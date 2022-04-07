@@ -57,31 +57,31 @@ void Window_ScriptEditor::SaveScript(std::string ScriptText, long AssetID) {
 
 void Window_ScriptEditor::Draw() {
 
-    // Check Enable Change
-    if (LastEnabledState_ != Enabled_) {
+    // // Check Enable Change
+    // if (LastEnabledState_ != Enabled_) {
 
-        // If Just Enabled
-        if (Enabled_) {
-            LivePreviewScriptIndex_ = VisualRenderer_->Scripts_.size();
-        } else {
-
-
-            // Set Any Viewports Scripts To 0 Who Are Using This Script
-            for (int i = 0; (long)i < (long)VisualRenderer_->Viewports_.size(); i++) {
-                if (VisualRenderer_->Viewports_[i]->ScriptIndex == LivePreviewScriptIndex_) {
-                    VisualRenderer_->Viewports_[i]->ScriptIndex = 0;
-                }
-            }
-
-            // Remove Script From List
-            VisualRenderer_->Scripts_.erase(LivePreviewScriptIndex_);
+    //     // If Just Enabled
+    //     if (Enabled_) {
+    //         LivePreviewScriptIndex_ = VisualRenderer_->Scripts_.size();
+    //     } else {
 
 
-        }
+    //         // Set Any Viewports Scripts To 0 Who Are Using This Script
+    //         for (int i = 0; (long)i < (long)VisualRenderer_->Viewports_.size(); i++) {
+    //             if (VisualRenderer_->Viewports_[i]->ScriptIndex == LivePreviewScriptIndex_) {
+    //                 VisualRenderer_->Viewports_[i]->ScriptIndex = 0;
+    //             }
+    //         }
 
-        // Update Last State
-        LastEnabledState_ = Enabled_;
-    }
+    //         // Remove Script From List
+    //         VisualRenderer_->Scripts_.erase(LivePreviewScriptIndex_);
+
+
+    //     }
+
+    //     // Update Last State
+    //     LastEnabledState_ = Enabled_;
+    // }
 
     // Draw Windows
     if (Enabled_) {
@@ -124,14 +124,14 @@ void Window_ScriptEditor::DrawEditorWindow() {
                     // Program Selector Dropdown
                     if (ImGui::BeginMenu("Open")) {
 
-                        for (long i = 0; (long)i < (long)ProjectUtils_->ProjectManager_->Project_.ScriptPrograms.size(); i++) {
+                        for (unsigned long i = 0; i < ProjectUtils_->ProjectManager_->Project_.Scripts.size(); i++) {
 
-                            std::string ScriptProgramName = ProjectUtils_->ProjectManager_->Project_.ScriptPrograms[i].Name;
+                            std::string ScriptProgramName = ProjectUtils_->ProjectManager_->Project_.Scripts[i].Name_;
                             if (ImGui::MenuItem(ScriptProgramName.c_str())) {
 
                                 // Update Index, REload
                                 SelectedScriptProgramIndex_ = i;
-                                ReloadEditorText();
+                                ReloadEditorText(i);
 
                             }
                         }
@@ -143,18 +143,8 @@ void Window_ScriptEditor::DrawEditorWindow() {
                     // Save Options
                     ImGui::Separator();
                     if (ImGui::MenuItem("Save")) {
-                        if (Mode_ == 0) {
-                            SaveScript(Editors_[0]->GetText(), ProjectUtils_->ProjectManager_->Project_.ScriptPrograms[SelectedScriptProgramIndex_].VertexID);
-                        } else {
-                            SaveScript(Editors_[1]->GetText(), ProjectUtils_->ProjectManager_->Project_.ScriptPrograms[SelectedScriptProgramIndex_].FragmentID);
-                        }
+                        SaveScript(Editor_->GetText(), ProjectUtils_->ProjectManager_->Project_.Scripts[SelectedScriptProgramIndex_].AssetID);
                     }
-
-                    if (ImGui::MenuItem("Save All")) {
-                        SaveScript(Editors_[0]->GetText(), ProjectUtils_->ProjectManager_->Project_.ScriptPrograms[SelectedScriptProgramIndex_].VertexID);
-                        SaveScript(Editors_[1]->GetText(), ProjectUtils_->ProjectManager_->Project_.ScriptPrograms[SelectedScriptProgramIndex_].FragmentID);
-                    }
-
 
                     // Exit Button
                     ImGui::Separator();
@@ -207,25 +197,6 @@ void Window_ScriptEditor::DrawEditorWindow() {
                     ImGui::EndMenu();
                 }
             
-
-                // Vertex/Fragment Mode Selector
-                if (ImGui::BeginMenu("Mode")) {
-                    
-                    if (ImGui::MenuItem("Vertex", nullptr, (Mode_==0))) {
-                        Mode_ = 0;
-                        Editor_ = Editors_[Mode_];
-                        Editor_->Render("Script Editor");
-                    }
-
-                    if (ImGui::MenuItem("Fragment", nullptr, (Mode_==1))) {
-                        Mode_ = 1;
-                        Editor_ = Editors_[Mode_];
-                        Editor_->Render("Script Editor");
-                    }
-
-
-                ImGui::EndMenu();
-                }
 
             
             ImGui::EndMenuBar();
