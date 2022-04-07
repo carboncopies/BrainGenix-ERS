@@ -121,21 +121,45 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     }
 
     // Write Back Model Data
-    double ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
-    double ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
-    double ModelPosZ = ModelModule.attr("ModelPosZ").cast<double>();
-    Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
-    double ModelRotX = ModelModule.attr("ModelRotX").cast<double>();
-    double ModelRotY = ModelModule.attr("ModelRotY").cast<double>();
-    double ModelRotZ = ModelModule.attr("ModelRotZ").cast<double>();
-    Model->SetRotation(glm::vec3(ModelRotX, ModelRotY, ModelRotZ));
-    double ModelScaleX = ModelModule.attr("ModelScaleX").cast<double>();
-    double ModelScaleY = ModelModule.attr("ModelScaleY").cast<double>();
-    double ModelScaleZ = ModelModule.attr("ModelScaleZ").cast<double>();
-    Model->SetScale(glm::vec3(ModelScaleX, ModelScaleY, ModelScaleZ));
-    Model->ApplyTransformations();
+    try {
 
-    Model->Enabled = ModelModule.attr("ModelEnabled").cast<bool>();
+        double ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
+        double ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
+        double ModelPosZ = ModelModule.attr("ModelPosZ").cast<double>();
+        Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
+        double ModelRotX = ModelModule.attr("ModelRotX").cast<double>();
+        double ModelRotY = ModelModule.attr("ModelRotY").cast<double>();
+        double ModelRotZ = ModelModule.attr("ModelRotZ").cast<double>();
+        Model->SetRotation(glm::vec3(ModelRotX, ModelRotY, ModelRotZ));
+        double ModelScaleX = ModelModule.attr("ModelScaleX").cast<double>();
+        double ModelScaleY = ModelModule.attr("ModelScaleY").cast<double>();
+        double ModelScaleZ = ModelModule.attr("ModelScaleZ").cast<double>();
+        Model->SetScale(glm::vec3(ModelScaleX, ModelScaleY, ModelScaleZ));
+        Model->ApplyTransformations();
+
+        Model->Enabled = ModelModule.attr("ModelEnabled").cast<bool>();
+
+    } catch (pybind11::value_error const&) {
+        ErrorHandle(ErrorMessageString, -1, "ValueError");
+    } catch (pybind11::key_error const&) {
+        ErrorHandle(ErrorMessageString, -1, "KeyError");
+    } catch (pybind11::reference_cast_error const&) {
+        ErrorHandle(ErrorMessageString, -1, "ReferenceCastError");
+    } catch (pybind11::attribute_error const&) {
+        ErrorHandle(ErrorMessageString, -1, "AttributeError");
+    } catch (pybind11::import_error const&) {
+        ErrorHandle(ErrorMessageString, -1, "ImportError");
+    } catch (pybind11::buffer_error const&) {
+        ErrorHandle(ErrorMessageString, -1, "BufferError");
+    } catch (pybind11::index_error const&) {
+        ErrorHandle(ErrorMessageString, -1, "IndexError");
+    } catch (pybind11::type_error const&) {
+        ErrorHandle(ErrorMessageString, -1, "TypeError");
+    } catch (pybind11::cast_error const&) {
+        ErrorHandle(ErrorMessageString, -1, "CastError");
+    } catch (pybind11::error_already_set &Exception) {
+        ErrorHandle(ErrorMessageString, -1, Exception.what());
+    }
 
 
     // Return Status

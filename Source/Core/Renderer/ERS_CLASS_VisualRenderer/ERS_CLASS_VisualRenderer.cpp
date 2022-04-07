@@ -77,6 +77,9 @@ void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defa
 
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
 
+
+
+
     // Close Any Viewports That Aren't All Open
     int ViewportsToClose = -1;
     for (int i = 0; (long)i < (long)Viewports_.size(); i++) {
@@ -175,13 +178,15 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
             }
 
 
-            // Reset Selected Script
-            SelectedScript_ = -1;
+
 
 
         }
 
     }
+
+    // Reset Selected Script
+    SelectedScript_ = -1;
 
 
 
