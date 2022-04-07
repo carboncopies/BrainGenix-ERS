@@ -122,6 +122,7 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
         SystemUtils_->ERS_IOSubsystem_->ReadAsset(Script->AssetID, ScriptData.get());
         Script->Code_ = std::string((const char*)ProjectData->Data.get());
 
+        std::cout<<Script->Code_<<std::endl;
 
         LogStr = std::string("Loaded Script '") + Script->Name_ + std::string("'");
         SystemUtils_->Logger_->Log(LogStr, 3);
