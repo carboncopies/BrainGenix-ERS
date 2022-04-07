@@ -217,39 +217,7 @@ void Window_ScriptEditor::DrawToolsWindow() {
 
     bool CompileVisible = ImGui::Begin("Script Tools", &Enabled_);
 
-        // Compile Script Object
-        std::string VertexText = Editors_[0]->GetText();
-        std::string FragmentText = Editors_[1]->GetText();
-
-        LivePreviewScript_->~ERS_STRUCT_Script();
-        LivePreviewScript_ = std::make_shared<ERS_STRUCT_Script>();
-        std::string VertexLog = LivePreviewScript_->CompileVertexScript(VertexText.c_str());
-        std::string FragmentLog = LivePreviewScript_->CompileFragmentScript(FragmentText.c_str());
-        LivePreviewScript_->CreateScriptProgram();
-        bool ScriptCompiled = LivePreviewScript_->MakeActive();
-        LivePreviewScript_->SetInt("texture_diffuse1", 0);
-        LivePreviewScript_->DisplayName = "Preview Script";
-        LivePreviewScript_->InternalName = "Preview Script";
-
-
-        // If Autopreview, Update Script
-        if (ScriptCompiled) {
-            VisualRenderer_->SetScript(LivePreviewScript_, LivePreviewScriptIndex_);
-        }
-
-
-        // Extract Script Log
-        std::string ScriptLog;
-        if (Mode_ == 0) {
-            ScriptLog = VertexLog;
-        } else if (Mode_ == 1) {
-            ScriptLog = FragmentLog;
-        }
-
-        if (ScriptLog == "") {
-            ScriptLog = "No errors detected.";
-        }
-
+        std::string DebugLog = "DebugLog";
 
         // Set Default Window Size
         ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
@@ -259,7 +227,7 @@ void Window_ScriptEditor::DrawToolsWindow() {
 
             // Draw Log
             ImGui::BeginChild("Script Log");
-            ImGui::TextWrapped("%s", ScriptLog.c_str());
+            ImGui::TextWrapped("%s", DebugLog.c_str());
             ImGui::EndChild();
 
         }
