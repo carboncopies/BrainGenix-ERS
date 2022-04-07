@@ -26,6 +26,8 @@ target_link_libraries(Window_ScriptEditor
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_Script
+
+    ERS_CLASS_VisualRenderer
     )
 
 target_include_directories(Window_ScriptEditor PUBLIC ./)
