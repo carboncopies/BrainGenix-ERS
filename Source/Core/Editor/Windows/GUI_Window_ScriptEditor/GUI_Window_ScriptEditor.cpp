@@ -231,6 +231,7 @@ void Window_ScriptEditor::DrawToolsWindow() {
             DebugLog += DebugLog_[i];
         }
 
+
         // Set Default Window Size
         ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
 
