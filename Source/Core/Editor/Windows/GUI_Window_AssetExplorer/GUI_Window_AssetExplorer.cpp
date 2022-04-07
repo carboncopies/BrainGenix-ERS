@@ -96,6 +96,12 @@ void Window_AssetExplorer::Draw() {
                             SelectedScriptIndex_ = i;
                         }
 
+
+                        if (ImGui::BeginPopupContextItem()) {
+
+                        ImGui::EndPopup();
+                        }
+
                         // Drag+Drop Source
                         if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
 
