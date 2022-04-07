@@ -98,11 +98,12 @@ void Window_AssetExplorer::Draw() {
                             SelectedScriptIndex_ = i;
                         }
 
-
+                        
+                        // Context menu, used for renaming and other such functions
                         if (ImGui::BeginPopupContextItem()) {
 
                             if (ImGui::MenuItem("Rename")) {
-                                // Rename function
+                                Subwindow_ScriptRenameModal_->Activate(i);
                             }
 
                         ImGui::EndPopup();
