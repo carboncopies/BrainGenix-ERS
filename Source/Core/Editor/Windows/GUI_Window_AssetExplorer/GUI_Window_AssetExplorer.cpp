@@ -99,6 +99,10 @@ void Window_AssetExplorer::Draw() {
 
                         if (ImGui::BeginPopupContextItem()) {
 
+                            if (ImGui::MenuItem("Rename")) {
+                                // Rename function
+                            }
+
                         ImGui::EndPopup();
                         }
 
