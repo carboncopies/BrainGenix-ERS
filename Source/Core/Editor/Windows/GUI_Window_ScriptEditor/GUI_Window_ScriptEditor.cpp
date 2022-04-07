@@ -27,11 +27,15 @@ Window_ScriptEditor::~Window_ScriptEditor() {
 void Window_ScriptEditor::ReloadEditorText(int ScriptIndex) {
 
     // Perform Sanity Check
-    if (ScriptIndex >= ProjectUtils_->ProjectManager_->Project_.Scripts.size())
-    std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex];
+    std::string Code;
+    if (ScriptIndex >= ProjectUtils_->ProjectManager_->Project_.Scripts.size()) {
+        Code = "Script Loading Error";
+    } else {
+        Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
+    }
 
     // Set Editor Text
-    Editor_->SetText(VertexText);
+    Editor_->SetText(Code);
 
 }
 
