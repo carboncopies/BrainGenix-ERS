@@ -28,7 +28,7 @@ void Window_ScriptEditor::ReloadEditorText(int ScriptIndex) {
 
     // Perform Sanity Check
     std::string Code;
-    if (ScriptIndex >= ProjectUtils_->ProjectManager_->Project_.Scripts.size()) {
+    if (ScriptIndex >= (int)ProjectUtils_->ProjectManager_->Project_.Scripts.size()) {
         Code = "Script Loading Error";
     } else {
         Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
