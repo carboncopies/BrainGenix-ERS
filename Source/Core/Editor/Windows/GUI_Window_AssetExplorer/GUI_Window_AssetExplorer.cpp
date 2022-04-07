@@ -5,9 +5,10 @@
 #include <GUI_Window_AssetExplorer.h>
 
 
-Window_AssetExplorer::Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils) {
+Window_AssetExplorer::Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
     SystemUtils_ = SystemUtils;
+    ProjectUtils_ = ProjectUtils;
     SystemUtils_->Logger_->Log("Initializing GUI_Window_AssetExplorer", 5);
 
 }
