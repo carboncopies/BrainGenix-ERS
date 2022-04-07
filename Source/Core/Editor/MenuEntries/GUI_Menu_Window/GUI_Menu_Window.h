@@ -33,6 +33,7 @@
 #include <GUI_Window_SceneTree.h>
 #include <GUI_Window_SystemLog.h>
 #include <GUI_Window_AssetExplorer.h>
+#include <GUI_Window_ScriptEditor.h>
 
 #include <ERS_Editor_3DCursor.h>
 #include <ERS_SceneManager.h>
@@ -65,6 +66,7 @@ private:
     std::unique_ptr<Window_SceneTree> Window_SceneTree_; /**<Window Instance*/
     std::unique_ptr<Window_SystemLog> Window_SystemLog_; /**<Window Instance*/
     std::unique_ptr<Window_AssetExplorer> Window_AssetExplorer_; /**<Window Instance*/
+    std::unique_ptr<Window_ScriptEditor> Window_ScriptEditor_; /**Window Instance*/
     ERS_CLASS_VisualRenderer* VisualRenderer_; /**<ERS_CLASS_VisualRenderer instance*/
 
 
