@@ -112,7 +112,6 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 }
             }
 
-            std::cout<<Scene.Models[CurrentSize-1]->AttachedScriptIndexes_.size()<<std::endl;
 
 
         } else if (AssetType == std::string("DirectionalLight")) {
