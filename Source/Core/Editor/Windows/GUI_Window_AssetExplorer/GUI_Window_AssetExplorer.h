@@ -29,9 +29,9 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointers To System Resources*/
     std::vector<bool> AssetIDSelectionList_; /**<Select Multiple Asset IDs*/
-    int LastSelectedIndex_ = 0; /**<Index of the last item to be clicked on*/
-    int SelectedModelIndex_ = 0; /**<Index Of Selected Model*/
-    int SelectedScriptIndex_ = 0; /**<Index of selected script*/
+    unsigned long LastSelectedIndex_ = 0; /**<Index of the last item to be clicked on*/
+    unsigned long SelectedModelIndex_ = 0; /**<Index Of Selected Model*/
+    unsigned long SelectedScriptIndex_ = 0; /**<Index of selected script*/
 
 public:
 
