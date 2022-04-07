@@ -208,7 +208,37 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         }
 
 
+        // Handle Drag/Drops
+        if (Scene->SceneObjects_[i].Type_ == std::string("Model")) {
 
+            // Drag/Drop Target
+            long PayloadID;
+            if (ImGui::BeginDragDropTarget()) {
+
+                if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID")) {
+                    memcpy(&PayloadID, Payload->Data, sizeof(long));
+                    SystemUtils_->Logger_->Log(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_SCRIPT_ID' With Value '") + std::to_string(PayloadID) + std::string("'"), 0);
+                    
+                    // Check If Already In Vector
+                    bool Contains = false; 
+                    for (unsigned long x = 0; x < Scene->Models[i]->AttachedScriptIndexes_.size(); x++) {
+                        if (PayloadID ==  Scene->Models[i]->AttachedScriptIndexes_[x]) {
+                            SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID', Already Attached").c_str(), 0);
+                            Contains = true;
+                            break;
+                        }
+                    }
+
+                    if (!Contains) {
+                        Scene->Models[i]->AttachedScriptIndexes_.push_back(PayloadID);
+                    }
+                }
+
+            ImGui::EndDragDropTarget();
+            }
+
+
+        }
 
         // Context Menu
         if (ImGui::BeginPopupContextItem()) {
@@ -223,35 +253,6 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                 if (ImGui::MenuItem("Delete")) {
                     Subwindow_DeleteModel_->DeleteModel(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
-
-
-                // Drag/Drop Target
-                long PayloadID;
-                if (ImGui::BeginDragDropTarget()) {
-
-                    if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID")) {
-                        memcpy(&PayloadID, Payload->Data, sizeof(long));
-                        SystemUtils_->Logger_->Log(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_SCRIPT_ID' With Value '") + std::to_string(PayloadID) + std::string("'"), 0);
-                        
-                        // Check If Already In Vector
-                        bool Contains = false; 
-                        for (unsigned long x = 0; x < Scene->Models[i]->AttachedScriptIndexes_.size(); x++) {
-                            if (PayloadID ==  Scene->Models[i]->AttachedScriptIndexes_[x]) {
-                                SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID', Already Attached").c_str(), 0);
-                                Contains = true;
-                                break;
-                            }
-                        }
-
-                        if (!Contains) {
-                            Scene->Models[i]->AttachedScriptIndexes_.push_back(PayloadID);
-                        }
-                    }
-
-                ImGui::EndDragDropTarget();
-                }
-
-
 
             } else if (Scene->SceneObjects_[i].Type_ == std::string("PointLight")) {
                 if (ImGui::MenuItem("Rename")) {
