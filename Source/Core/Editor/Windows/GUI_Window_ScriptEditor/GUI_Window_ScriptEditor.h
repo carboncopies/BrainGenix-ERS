@@ -22,6 +22,7 @@
 #include <ERS_STRUCT_ProjectUtils.h>
 #include <ERS_STRUCT_Script.h>
 
+#include <ERS_CLASS_VisualRenderer.h>
 
 
 
@@ -38,6 +39,8 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointer*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils Pointer*/
+    ERS_CLASS_VisualRenderer* VisualRenderer_; /**<Instance Of VisualRenderer*/
+
     std::unique_ptr<TextEditor> Editor_; /** Editor Instance*/
     long SelectedScriptProgramIndex_ = 0; /**<Index of the selected Script program in the project*/
     std::string LastFrameText_; /**Set The Last Text Shown In The Editor*/
