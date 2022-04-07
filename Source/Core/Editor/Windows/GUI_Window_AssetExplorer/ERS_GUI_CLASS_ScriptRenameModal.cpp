@@ -4,7 +4,7 @@
 
 #include <ERS_GUI_CLASS_ScriptRenameModal.h>
 
-Subwindow_ScriptRenameModal::Subwindow_ScriptRenameModal( ERS_STRUCT_ProjectUtils* ProjectUtils) {
+Subwindow_ScriptRenameModal::Subwindow_ScriptRenameModal(ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
     ProjectUtils_ = ProjectUtils;
 
