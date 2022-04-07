@@ -230,4 +230,7 @@ void Window_AssetExplorer::Draw() {
     }
 
 
+    Subwindow_ScriptRenameModal_->Draw();
+
+
 }

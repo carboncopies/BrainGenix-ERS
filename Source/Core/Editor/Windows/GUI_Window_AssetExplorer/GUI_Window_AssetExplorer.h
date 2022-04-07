@@ -33,7 +33,7 @@ private:
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointers To System Resources*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to project info struct*/
 
-    std::unique_ptr<Subwindow_ScriptRenameModal> Subwindow_ScriptRenameModal_ /**<Script Rename Modal*/ 
+    std::unique_ptr<Subwindow_ScriptRenameModal> Subwindow_ScriptRenameModal_; /**<Script Rename Modal*/ 
 
     std::vector<bool> AssetIDSelectionList_; /**<Select Multiple Asset IDs*/
     unsigned long LastSelectedIndex_ = 0; /**<Index of the last item to be clicked on*/
