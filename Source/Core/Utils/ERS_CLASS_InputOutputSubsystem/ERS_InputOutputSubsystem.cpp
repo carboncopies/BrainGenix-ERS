@@ -85,16 +85,14 @@ long ERS_CLASS_InputOutputSubsystem::AllocateAssetID() {
   // Make This Thread Safe
   std::unique_lock<std::mutex> lock(LockAssetIDAllocation_);
 
-  // Setup Random Number Generator
-  std::random_device rd;
-  std::mt19937 gen(rd());
+  // Ensure Only Unique IDs Are Used
   bool FoundUniqueID = false;
   long ProposedID;
-
-  // Ensure Only Unique IDs Are Used
   while (!FoundUniqueID) {
   
     // Propose Random Number
+    std::random_device rd;
+    std::mt19937 gen(rd());
     std::uniform_int_distribution<> distr(1, 2147483647);
     ProposedID = distr(gen);
   
