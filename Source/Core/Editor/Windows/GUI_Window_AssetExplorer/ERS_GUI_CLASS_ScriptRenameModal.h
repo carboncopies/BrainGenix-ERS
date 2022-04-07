@@ -15,7 +15,7 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_SceneManager.h>
+#include <ERS_STRUCT_ProjectUtils.h>
 
 
 /**
@@ -26,7 +26,7 @@ class Subwindow_ScriptRenameModal {
 
 private:
 
-    ERS_CLASS_SceneManager* SceneManager_; /**<Script Manager Instance Pointer*/
+    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils Instance Pointer*/
     char ScriptInputName_[128] = ""; /**<Character Array To Store Script Name When Renaming*/
 
 
@@ -44,7 +44,7 @@ public:
      * @brief Construct a new Subwindow_ScriptRenameModal object
      * 
      */
-    Subwindow_ScriptRenameModal(ERS_CLASS_SceneManager* SceneManager);
+    Subwindow_ScriptRenameModal(ERS_STRUCT_ProjectUtils* ProjectUtils);
 
     /**
      * @brief Destroy the Subwindow_ScriptRenameModal object
