@@ -20,12 +20,8 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
-#include <ERS_STRUCT_Shader.h>
-#include <ERS_STRUCT_ShaderProgramAssetIDs.h>
+#include <ERS_STRUCT_Script.h>
 
-#include <ERS_CLASS_ShaderLoader.h>
-
-#include <ERS_CLASS_VisualRenderer.h>
 
 
 
@@ -33,40 +29,39 @@
 
 
 /**
- * @brief This class provides the window for the shader editor.
+ * @brief This class provides the window for the script editor.
  * 
  */
-class Window_ShaderEditor {
+class Window_ScriptEditor {
 
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointer*/
     ERS_CLASS_VisualRenderer* VisualRenderer_; /**<Shared Pointer To Visual Renderer*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils Pointer*/
-    std::unique_ptr<ERS_CLASS_ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
-    std::vector<std::shared_ptr<TextEditor>> Editors_; /**<List of editors, one for each type of shader*/
+    std::vector<std::shared_ptr<TextEditor>> Editors_; /**<List of editors, one for each type of Script*/
     std::shared_ptr<TextEditor> Editor_; /** Editor Instance*/
-    int Mode_ = 0; /**<Used To Determine what shader the user is editing*/
-    long SelectedShaderProgramIndex_ = 0; /**<Index of the selected shader program in the project*/
+    int Mode_ = 0; /**<Used To Determine what Script the user is editing*/
+    long SelectedScriptProgramIndex_ = 0; /**<Index of the selected Script program in the project*/
     std::string LastFrameText_; /**Set The Last Text Shown In The Editor*/
-    std::shared_ptr<ERS_STRUCT_Shader> LivePreviewShader_; /**<Current live preview shader*/
+    std::shared_ptr<ERS_STRUCT_Script> LivePreviewScript_; /**<Current live preview Script*/
     bool LastEnabledState_ = false; /**<Last State From Last Frame*/
-    int LivePreviewShaderIndex_; /**<Index of Live Preview Shader*/
+    int LivePreviewScriptIndex_; /**<Index of Live Preview Script*/
 
 
 private:
 
     /**
-     * @brief Reloads the text from the selected asset id and shader program
+     * @brief Reloads the text from the selected asset id and Script program
      * 
      */
     void ReloadEditorText();
 
     /**
-     * @brief Save the shader to asset data.
+     * @brief Save the Script to asset data.
      * 
      */
-    void SaveShader(std::string ShaderText, long AssetID);
+    void SaveScript(std::string ScriptText, long AssetID);
 
     /**
      * @brief Draws the main editor window
@@ -75,7 +70,7 @@ private:
     void DrawEditorWindow();
 
     /**
-     * @brief Draws the shader tools window
+     * @brief Draws the Script tools window
      * 
      */
     void DrawToolsWindow();
@@ -83,22 +78,22 @@ private:
 
 public:
 
-    bool Enabled_ = false; /**<Enable/Disable the editor window*/
+    bool Enabled_ = true; /**<Enable/Disable the editor window*/
 
 public:
 
     /**
-     * @brief Construct a new Window_ShaderEditor object
+     * @brief Construct a new Window_ScriptEditor object
      * 
      * @param SystemUtils 
      */
-    Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer);
+    Window_ScriptEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
 
     /**
-     * @brief Destroy the Window_ShaderEditor object
+     * @brief Destroy the Window_ScriptEditor object
      * 
      */
-    ~Window_ShaderEditor();
+    ~Window_ScriptEditor();
 
     
     /**
