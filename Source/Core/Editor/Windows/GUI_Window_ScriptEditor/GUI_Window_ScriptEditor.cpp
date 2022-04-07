@@ -113,11 +113,11 @@ void Window_ScriptEditor::DrawEditorWindow() {
                     // New Script Option
                     if (ImGui::MenuItem("New")) {
 
-                        // ERS_STRUCT_ScriptProgramAssetIDs ScriptProgram;
-                        // ScriptProgram.Name = "Untitled";
-                        // ScriptProgram.FragmentID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
-                        // ScriptProgram.VertexID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
-                        // ProjectUtils_->ProjectManager_->Project_.ScriptPrograms.push_back(ScriptProgram);
+                        ERS_STRUCT_Script NewScript;
+                        NewScript.AssetID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+                        NewScript.Code_ = "# ERS Script\n";
+                        NewScript.Name_ = "Untitled Script";
+                        ProjectUtils_->ProjectManager_->Project_.Scripts.push_back(NewScript);
 
                     }
 
