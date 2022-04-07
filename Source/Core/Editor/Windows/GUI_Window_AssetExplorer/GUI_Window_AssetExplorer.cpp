@@ -55,9 +55,9 @@ void Window_AssetExplorer::Draw() {
                         if (Type == std::string("Model")) {
                             
 
-                            bool Selected = ImGui::Selectable(std::to_string(i).c_str(), i == SelectedModelIndex_);
+                            bool Selected = ImGui::Selectable(std::to_string(Key).c_str(), Key == SelectedModelIndex_);
                             if (Selected) {
-                                SelectedModelIndex_ = i;
+                                SelectedModelIndex_ = Key;
                             }
 
                             // Drag+Drop Source
