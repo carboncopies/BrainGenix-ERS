@@ -206,6 +206,9 @@ void Window_ScriptEditor::DrawEditorWindow() {
             // Render Editor
             Editor_->Render("Script Editor");
 
+            // Update Script
+            ProjectUtils_->ProjectManager_->Project_.Scripts[SelectedScriptProgramIndex_].Code_ = Editor_->GetText();
+
 
         }
     ImGui::End();
