@@ -897,7 +897,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
 
             // Stop Option
             if (ImGui::MenuItem("Stop", "Escape")) {
-                IsEditorMode_ = true;
+                IsEditorMode_ = !IsEditorMode_;
             }
 
         ImGui::EndMenu();
