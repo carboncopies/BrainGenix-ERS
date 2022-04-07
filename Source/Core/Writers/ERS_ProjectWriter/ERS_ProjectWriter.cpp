@@ -115,7 +115,7 @@ bool ERS_CLASS_ProjectWriter::SaveProject(ERS_STRUCT_Project* ProjectPointer, lo
         ScriptData->Data.reset(new unsigned char[ProjectPointer->Scripts[i].Code_.size()]);
         ScriptData->Size_B = ProjectPointer->Scripts[i].Code_.size();
         memcpy(ScriptData->Data.get(), ProjectPointer->Scripts[i].Code_.c_str(), ProjectPointer->Scripts[i].Code_.size());
-        SystemUtils_->ERS_IOSubsystem_->WriteAsset(AssetID, ScriptData.get());
+        SystemUtils_->ERS_IOSubsystem_->WriteAsset(ProjectPointer->Scripts[i].AssetID, ScriptData.get());
 
     }
 

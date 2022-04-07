@@ -361,6 +361,8 @@ std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchReadAssets(
   return StatusVector;
 }
 
+
+
 bool ERS_CLASS_InputOutputSubsystem::WriteAsset(
     long AssetID, ERS_STRUCT_IOData* InputData) {
 
