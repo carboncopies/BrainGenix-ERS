@@ -11,7 +11,7 @@ Window_AssetExplorer::Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils, 
     ProjectUtils_ = ProjectUtils;
     SystemUtils_->Logger_->Log("Initializing GUI_Window_AssetExplorer", 5);
 
-    Subwindow_ScriptRenameModal_ = std::make_unique<Subwindow_ScriptRenameModal>()
+    Subwindow_ScriptRenameModal_ = std::make_unique<Subwindow_ScriptRenameModal>(ProjectUtils_);
 
 }
 
