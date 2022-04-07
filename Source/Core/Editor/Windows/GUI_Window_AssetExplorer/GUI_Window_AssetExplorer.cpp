@@ -47,10 +47,11 @@ void Window_AssetExplorer::Draw() {
                     ImGui::BeginChild("Asset Model Child");
 
                     // Display Models
-                    for (unsigned long i = 0; i < SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_.size(); i++) {
+                    for (unsigned long i = 0; i < SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size(); i++) {
                         
                         // Check Type
-                        std::string Type = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i];
+                        unsigned long Key = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[i];
+                        std::string Type = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[Key];
                         if (Type == std::string("Model")) {
                             
 
@@ -79,43 +80,43 @@ void Window_AssetExplorer::Draw() {
                 }
 
 
-                // Script Explorer Tab
-                if (ImGui::BeginTabItem("Scripts")) {
+                // // Script Explorer Tab
+                // if (ImGui::BeginTabItem("Scripts")) {
 
-                    // Drag + Drop Source WIth List Of Scripts
-                    ImGui::BeginChild("Asset Script Child");
+                //     // Drag + Drop Source WIth List Of Scripts
+                //     ImGui::BeginChild("Asset Script Child");
 
-                    // Display Scripts
-                    for (long i = 0; i < (long)SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_.size(); i++) {
+                //     // Display Scripts
+                //     for (long i = 0; i < (long)SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_.size(); i++) {
                         
-                        // Check Type
-                        std::string Type = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i];
-                        if (Type == std::string("Script")) {
+                //         // Check Type
+                //         std::string Type = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i];
+                //         if (Type == std::string("Script")) {
                             
 
-                            bool Selected = ImGui::Selectable(std::to_string(i).c_str(), i == SelectedScriptIndex_);
-                            if (Selected) {
-                                SelectedScriptIndex_ = i;
-                            }
+                //             bool Selected = ImGui::Selectable(std::to_string(i).c_str(), i == SelectedScriptIndex_);
+                //             if (Selected) {
+                //                 SelectedScriptIndex_ = i;
+                //             }
 
-                            // Drag+Drop Source
-                            if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
+                //             // Drag+Drop Source
+                //             if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
 
-                                // Set Drag+Drop Payload
-                                ImGui::SetDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID", &i, sizeof(long));
-                                ImGui::Text("%s", std::string(std::string("ERS Script '") + std::to_string(i) + std::string("'")).c_str());
+                //                 // Set Drag+Drop Payload
+                //                 ImGui::SetDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID", &i, sizeof(long));
+                //                 ImGui::Text("%s", std::string(std::string("ERS Script '") + std::to_string(i) + std::string("'")).c_str());
 
-                            ImGui::EndDragDropSource();
-                            }
+                //             ImGui::EndDragDropSource();
+                //             }
 
-                        }
-                    }
+                //         }
+                //     }
 
 
-                    ImGui::EndChild();
+                //     ImGui::EndChild();
 
-                ImGui::EndTabItem();
-                }
+                // ImGui::EndTabItem();
+                // }
 
 
 
