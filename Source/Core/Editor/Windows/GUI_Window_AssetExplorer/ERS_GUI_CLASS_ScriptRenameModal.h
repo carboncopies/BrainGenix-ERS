@@ -22,12 +22,12 @@
  * @brief Create GUI Window "Rendering Settings"
  * 
  */
-class Subwindow_ModelRenameModal {
+class Subwindow_ScriptRenameModal {
 
 private:
 
-    ERS_CLASS_SceneManager* SceneManager_; /**<Model Manager Instance Pointer*/
-    char ModelInputName_[128] = ""; /**<Character Array To Store Model Name When Renaming*/
+    ERS_CLASS_SceneManager* SceneManager_; /**<Script Manager Instance Pointer*/
+    char ScriptInputName_[128] = ""; /**<Character Array To Store Script Name When Renaming*/
 
 
 public:
@@ -35,31 +35,31 @@ public:
     // Show/Hide Var
     bool Enabled_ = false; /**<Show/Hide Window*/
     bool FirstFrame_ = false; /**<Used To Run Certain Things On Window Open*/
-    int SelectedModel_ = 0; /**<Indicate What Index The Selected Model Is*/
+    int SelectedScript_ = 0; /**<Indicate What Index The Selected Script Is*/
     int SelectedScene_ = 0; /**<Indicate What Index The Selected Scene Is*/
 
 public:
 
     /**
-     * @brief Construct a new Subwindow_ModelRenameModal object
+     * @brief Construct a new Subwindow_ScriptRenameModal object
      * 
      */
-    Subwindow_ModelRenameModal(ERS_CLASS_SceneManager* SceneManager);
+    Subwindow_ScriptRenameModal(ERS_CLASS_SceneManager* SceneManager);
 
     /**
-     * @brief Destroy the Subwindow_ModelRenameModal object
+     * @brief Destroy the Subwindow_ScriptRenameModal object
      * 
      */
-    ~Subwindow_ModelRenameModal();
+    ~Subwindow_ScriptRenameModal();
 
 
     /**
-     * @brief Show The Model Rename Modal
+     * @brief Show The Script Rename Modal
      * 
      * @param SelectedScene
-     * @param SelectedModel
+     * @param SelectedScript
      */
-    void Activate(int SelectedScene, int SelectedModel);
+    void Activate(int SelectedScene, int SelectedScript);
 
 
     /**
