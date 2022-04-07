@@ -19,6 +19,8 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
 
+#include <ERS_GUI_CLASS_ScriptRenameModal.h>
+
 
 /**
  * @brief Window for the Import progress bar.
