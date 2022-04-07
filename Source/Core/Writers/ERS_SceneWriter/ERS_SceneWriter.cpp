@@ -85,6 +85,14 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "FlipTextures" << YAML::Value << InputScene->Models[i]->FlipTextures;
 
 
+        Output<<YAML::Key<<"AttachedScripts";
+        Output<<YAML::Key<<YAML::BeginMap;
+        for (unsigned long i = 0; i < InputScene->Models[i]->AttachedScriptIndexes_.size(); i++) {
+            Output<<YAML::Key<<i<<YAML::Value<<InputScene->Models[i]->AttachedScriptIndexes_[i];
+        }
+        Output<<YAML::EndMap;
+
+
         Output << YAML::EndMap;
         AssetIndex++;
     }
