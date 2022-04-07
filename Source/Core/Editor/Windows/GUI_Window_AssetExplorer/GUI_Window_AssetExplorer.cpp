@@ -88,7 +88,7 @@ void Window_AssetExplorer::Draw() {
                     ImGui::BeginChild("Asset Script Child");
 
                     // Display Scripts
-                    for (long i = 0; i < ProjectUtils_->ProjectManager_->Project_.Scripts.size(); i++) {
+                    for (unsigned long i = 0; i < ProjectUtils_->ProjectManager_->Project_.Scripts.size(); i++) {
                         
 
                         bool Selected = ImGui::Selectable(ProjectUtils_->ProjectManager_->Project_.Scripts[i].Name_.c_str(), i == SelectedScriptIndex_);
