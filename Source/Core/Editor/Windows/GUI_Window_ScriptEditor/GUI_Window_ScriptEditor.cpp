@@ -215,7 +215,24 @@ void Window_ScriptEditor::DrawEditorWindow() {
             }
 
 
+            // Drag/Drop Target
+            long PayloadID;
+            if (ImGui::BeginDragDropTarget()) {
+
+                if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID")) {
+                    memcpy(&PayloadID, Payload->Data, sizeof(long));
+                    SystemUtils_->Logger_->Log(std::string("Window_ScriptEditor Recieved Drag Drop Payload 'PAYLOAD_ASSET_SCRIPT_ID' With Value '") + std::to_string(PayloadID) + std::string("'"), 0);
+                    SelectedScriptProgramIndex_ = PayloadID;
+                    ReloadEditorText(PayloadID);
+
+                }
+
+            ImGui::EndDragDropTarget();
+            }
+
+
         }
+
     ImGui::End();
 
 }
