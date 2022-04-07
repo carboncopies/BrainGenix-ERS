@@ -2,32 +2,32 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_GUI_CLASS_ModelRenameModal.h>
+#include <ERS_GUI_CLASS_ScriptRenameModal.h>
 
-Subwindow_ModelRenameModal::Subwindow_ModelRenameModal(ERS_CLASS_SceneManager* SceneManager) {
+Subwindow_ScriptRenameModal::Subwindow_ScriptRenameModal(ERS_CLASS_SceneManager* SceneManager) {
 
     SceneManager_ = SceneManager;
 
 
 }
 
-Subwindow_ModelRenameModal::~Subwindow_ModelRenameModal() {
+Subwindow_ScriptRenameModal::~Subwindow_ScriptRenameModal() {
     
 }
 
-void Subwindow_ModelRenameModal::Activate(int SceneIndex, int ModelIndex) {
+void Subwindow_ScriptRenameModal::Activate(int SceneIndex, int ScriptIndex) {
 
     SelectedScene_ = SceneIndex;
-    SelectedModel_ = ModelIndex;
+    SelectedScript_ = ScriptIndex;
     Enabled_ = true;
     FirstFrame_ = true;        
 
 }
 
-void Subwindow_ModelRenameModal::Draw() {
+void Subwindow_ScriptRenameModal::Draw() {
 
     if (Enabled_) {
-    ImGui::Begin("Rename Model", &Enabled_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
+    ImGui::Begin("Rename Script", &Enabled_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
 
         // Grab Window Focus
         ImGui::SetWindowFocus();
@@ -40,13 +40,13 @@ void Subwindow_ModelRenameModal::Draw() {
 
         // Set Default Item To Type On, Add Input Box
         ImGui::SetItemDefaultFocus();
-        ImGui::InputTextWithHint("Rename Model", "Enter New Model Name", ModelInputName_, IM_ARRAYSIZE(ModelInputName_));
+        ImGui::InputTextWithHint("Rename Script", "Enter New Script Name", ScriptInputName_, IM_ARRAYSIZE(ScriptInputName_));
 
         ImGui::Separator();
 
         // Rename And Cancel Buttons
         if (ImGui::Button("Rename", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Enter Key Pressed
-            SceneManager_->Scenes_[SelectedScene_]->Models[SelectedModel_]->Name = std::string(ModelInputName_);
+            SceneManager_->Scenes_[SelectedScene_]->Scripts[SelectedScript_]->Name = std::string(ScriptInputName_);
             Enabled_ = false;
         }
         ImGui::SameLine();
