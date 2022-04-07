@@ -214,7 +214,6 @@ void Window_ScriptEditor::DrawEditorWindow() {
                 VisualRenderer_->SetScriptDebug(SelectedScriptProgramIndex_, &DebugLog_);
             }
 
-            // Update VisualRenderer Selected Script
 
         }
     ImGui::End();
@@ -226,7 +225,11 @@ void Window_ScriptEditor::DrawToolsWindow() {
 
     bool CompileVisible = ImGui::Begin("Script Tools", &Enabled_);
 
-        std::string DebugLog = "DebugLog";
+        std::string DebugLog = "";
+
+        for (unsigned long i = 0; i < DebugLog_.size(); i++) {
+            DebugLog += DebugLog_[i];
+        }
 
         // Set Default Window Size
         ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
