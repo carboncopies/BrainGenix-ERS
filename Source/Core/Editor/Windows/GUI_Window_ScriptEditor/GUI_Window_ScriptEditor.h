@@ -41,7 +41,8 @@ private:
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils Pointer*/
     ERS_CLASS_VisualRenderer* VisualRenderer_; /**<Instance Of VisualRenderer*/
 
-    std::unique_ptr<TextEditor> Editor_; /** Editor Instance*/
+    std::unique_ptr<TextEditor> Editor_; /**<Editor Instance*/
+    std::vector<std::string> DebugLog_; /**<Message Log where tracebacks are put for usage by the script tools window*/
     long SelectedScriptProgramIndex_ = 0; /**<Index of the selected Script program in the project*/
     std::string LastFrameText_; /**Set The Last Text Shown In The Editor*/
     std::shared_ptr<ERS_STRUCT_Script> LivePreviewScript_; /**<Current live preview Script*/
