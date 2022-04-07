@@ -52,7 +52,7 @@ private:
      * @brief Reloads the text from the selected asset id and Script program
      * 
      */
-    void ReloadEditorText();
+    void ReloadEditorText(int ScriptIndex);
 
     /**
      * @brief Save the Script to asset data.
