@@ -2,15 +2,15 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <GUI_Window_ShaderEditor.h>
+#include <GUI_Window_ScriptEditor.h>
 
 
-Window_ShaderEditor::Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer) {
+Window_ScriptEditor::Window_ScriptEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
     VisualRenderer_ = VisualRenderer;
-    SystemUtils_->Logger_->Log("Initializing GUI ShaderEditor Window", 4);
+    SystemUtils_->Logger_->Log("Initializing GUI ScriptEditor Window", 4);
 
 
     Editors_.push_back(std::make_shared<TextEditor>());
@@ -20,29 +20,29 @@ Window_ShaderEditor::Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemUtils, ER
     ReloadEditorText();
 
     
-    ShaderLoader_ = std::make_unique<ERS_CLASS_ShaderLoader>(SystemUtils_);
-    LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
+    ScriptLoader_ = std::make_unique<ERS_CLASS_ScriptLoader>(SystemUtils_);
+    LivePreviewScript_ = std::make_shared<ERS_STRUCT_Script>();
 
 
 
 }
 
-Window_ShaderEditor::~Window_ShaderEditor() {
+Window_ScriptEditor::~Window_ScriptEditor() {
 
-    SystemUtils_->Logger_->Log("GUI ShaderEditor Window Destructor Called", 6);
+    SystemUtils_->Logger_->Log("GUI ScriptEditor Window Destructor Called", 6);
 
 }
 
 
-void Window_ShaderEditor::ReloadEditorText() {
+void Window_ScriptEditor::ReloadEditorText() {
 
-    // Load Vertex Shader
+    // Load Vertex Script
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID, Data.get());
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ScriptPrograms[SelectedScriptProgramIndex_].VertexID, Data.get());
     std::string VertexText = std::string((const char*)Data->Data.get());
 
-    // Load Fragment Shader
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID, Data.get());
+    // Load Fragment Script
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ScriptPrograms[SelectedScriptProgramIndex_].FragmentID, Data.get());
     std::string  FragmentText = std::string((const char*)Data->Data.get());
 
     // Set Editor Text
@@ -53,14 +53,14 @@ void Window_ShaderEditor::ReloadEditorText() {
 }
 
 
-void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
+void Window_ScriptEditor::SaveScript(std::string ScriptText, long AssetID) {
 
     // Write Data
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
     
-    Data->Data.reset(new unsigned char[ShaderText.size()]);
-    Data->Size_B = ShaderText.size();
-    memcpy(Data->Data.get(), ShaderText.c_str(), ShaderText.size());
+    Data->Data.reset(new unsigned char[ScriptText.size()]);
+    Data->Size_B = ScriptText.size();
+    memcpy(Data->Data.get(), ScriptText.c_str(), ScriptText.size());
 
     // Write To Storage
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(AssetID, Data.get());
@@ -68,26 +68,26 @@ void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
 
 }
 
-void Window_ShaderEditor::Draw() {
+void Window_ScriptEditor::Draw() {
 
     // Check Enable Change
     if (LastEnabledState_ != Enabled_) {
 
         // If Just Enabled
         if (Enabled_) {
-            LivePreviewShaderIndex_ = VisualRenderer_->Shaders_.size();
+            LivePreviewScriptIndex_ = VisualRenderer_->Scripts_.size();
         } else {
 
 
-            // Set Any Viewports Shaders To 0 Who Are Using This Shader
+            // Set Any Viewports Scripts To 0 Who Are Using This Script
             for (int i = 0; (long)i < (long)VisualRenderer_->Viewports_.size(); i++) {
-                if (VisualRenderer_->Viewports_[i]->ShaderIndex == LivePreviewShaderIndex_) {
-                    VisualRenderer_->Viewports_[i]->ShaderIndex = 0;
+                if (VisualRenderer_->Viewports_[i]->ScriptIndex == LivePreviewScriptIndex_) {
+                    VisualRenderer_->Viewports_[i]->ScriptIndex = 0;
                 }
             }
 
-            // Remove Shader From List
-            VisualRenderer_->Shaders_.erase(LivePreviewShaderIndex_);
+            // Remove Script From List
+            VisualRenderer_->Scripts_.erase(LivePreviewScriptIndex_);
 
 
         }
@@ -109,9 +109,9 @@ void Window_ShaderEditor::Draw() {
 
 
 
-void Window_ShaderEditor::DrawEditorWindow() {
+void Window_ScriptEditor::DrawEditorWindow() {
 
-    bool Visible = ImGui::Begin("Shader Editor", &Enabled_, ImGuiWindowFlags_MenuBar);
+    bool Visible = ImGui::Begin("Script Editor", &Enabled_, ImGuiWindowFlags_MenuBar);
 
         // Set Default Window Size
         ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
@@ -123,27 +123,27 @@ void Window_ShaderEditor::DrawEditorWindow() {
                 if (ImGui::BeginMenu("File")) {
 
 
-                    // New Shader Option
+                    // New Script Option
                     if (ImGui::MenuItem("New")) {
 
-                        // ERS_STRUCT_ShaderProgramAssetIDs ShaderProgram;
-                        // ShaderProgram.Name = "Untitled";
-                        // ShaderProgram.FragmentID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
-                        // ShaderProgram.VertexID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
-                        // ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.push_back(ShaderProgram);
+                        // ERS_STRUCT_ScriptProgramAssetIDs ScriptProgram;
+                        // ScriptProgram.Name = "Untitled";
+                        // ScriptProgram.FragmentID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+                        // ScriptProgram.VertexID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+                        // ProjectUtils_->ProjectManager_->Project_.ScriptPrograms.push_back(ScriptProgram);
 
                     }
 
                     // Program Selector Dropdown
                     if (ImGui::BeginMenu("Open")) {
 
-                        for (long i = 0; (long)i < (long)ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.size(); i++) {
+                        for (long i = 0; (long)i < (long)ProjectUtils_->ProjectManager_->Project_.ScriptPrograms.size(); i++) {
 
-                            std::string ShaderProgramName = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].Name;
-                            if (ImGui::MenuItem(ShaderProgramName.c_str())) {
+                            std::string ScriptProgramName = ProjectUtils_->ProjectManager_->Project_.ScriptPrograms[i].Name;
+                            if (ImGui::MenuItem(ScriptProgramName.c_str())) {
 
                                 // Update Index, REload
-                                SelectedShaderProgramIndex_ = i;
+                                SelectedScriptProgramIndex_ = i;
                                 ReloadEditorText();
 
                             }
@@ -157,15 +157,15 @@ void Window_ShaderEditor::DrawEditorWindow() {
                     ImGui::Separator();
                     if (ImGui::MenuItem("Save")) {
                         if (Mode_ == 0) {
-                            SaveShader(Editors_[0]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID);
+                            SaveScript(Editors_[0]->GetText(), ProjectUtils_->ProjectManager_->Project_.ScriptPrograms[SelectedScriptProgramIndex_].VertexID);
                         } else {
-                            SaveShader(Editors_[1]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID);
+                            SaveScript(Editors_[1]->GetText(), ProjectUtils_->ProjectManager_->Project_.ScriptPrograms[SelectedScriptProgramIndex_].FragmentID);
                         }
                     }
 
                     if (ImGui::MenuItem("Save All")) {
-                        SaveShader(Editors_[0]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID);
-                        SaveShader(Editors_[1]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID);
+                        SaveScript(Editors_[0]->GetText(), ProjectUtils_->ProjectManager_->Project_.ScriptPrograms[SelectedScriptProgramIndex_].VertexID);
+                        SaveScript(Editors_[1]->GetText(), ProjectUtils_->ProjectManager_->Project_.ScriptPrograms[SelectedScriptProgramIndex_].FragmentID);
                     }
 
 
@@ -227,13 +227,13 @@ void Window_ShaderEditor::DrawEditorWindow() {
                     if (ImGui::MenuItem("Vertex", nullptr, (Mode_==0))) {
                         Mode_ = 0;
                         Editor_ = Editors_[Mode_];
-                        Editor_->Render("Shader Editor");
+                        Editor_->Render("Script Editor");
                     }
 
                     if (ImGui::MenuItem("Fragment", nullptr, (Mode_==1))) {
                         Mode_ = 1;
                         Editor_ = Editors_[Mode_];
-                        Editor_->Render("Shader Editor");
+                        Editor_->Render("Script Editor");
                     }
 
 
@@ -246,7 +246,7 @@ void Window_ShaderEditor::DrawEditorWindow() {
 
 
             // Render Editor
-            Editor_->Render("Shader Editor");
+            Editor_->Render("Script Editor");
 
 
         }
@@ -255,41 +255,41 @@ void Window_ShaderEditor::DrawEditorWindow() {
 }
 
 
-void Window_ShaderEditor::DrawToolsWindow() {
+void Window_ScriptEditor::DrawToolsWindow() {
 
-    bool CompileVisible = ImGui::Begin("Shader Tools", &Enabled_);
+    bool CompileVisible = ImGui::Begin("Script Tools", &Enabled_);
 
-        // Compile Shader Object
+        // Compile Script Object
         std::string VertexText = Editors_[0]->GetText();
         std::string FragmentText = Editors_[1]->GetText();
 
-        LivePreviewShader_->~ERS_STRUCT_Shader();
-        LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
-        std::string VertexLog = LivePreviewShader_->CompileVertexShader(VertexText.c_str());
-        std::string FragmentLog = LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
-        LivePreviewShader_->CreateShaderProgram();
-        bool ShaderCompiled = LivePreviewShader_->MakeActive();
-        LivePreviewShader_->SetInt("texture_diffuse1", 0);
-        LivePreviewShader_->DisplayName = "Preview Shader";
-        LivePreviewShader_->InternalName = "Preview Shader";
+        LivePreviewScript_->~ERS_STRUCT_Script();
+        LivePreviewScript_ = std::make_shared<ERS_STRUCT_Script>();
+        std::string VertexLog = LivePreviewScript_->CompileVertexScript(VertexText.c_str());
+        std::string FragmentLog = LivePreviewScript_->CompileFragmentScript(FragmentText.c_str());
+        LivePreviewScript_->CreateScriptProgram();
+        bool ScriptCompiled = LivePreviewScript_->MakeActive();
+        LivePreviewScript_->SetInt("texture_diffuse1", 0);
+        LivePreviewScript_->DisplayName = "Preview Script";
+        LivePreviewScript_->InternalName = "Preview Script";
 
 
-        // If Autopreview, Update Shader
-        if (ShaderCompiled) {
-            VisualRenderer_->SetShader(LivePreviewShader_, LivePreviewShaderIndex_);
+        // If Autopreview, Update Script
+        if (ScriptCompiled) {
+            VisualRenderer_->SetScript(LivePreviewScript_, LivePreviewScriptIndex_);
         }
 
 
-        // Extract Shader Log
-        std::string ShaderLog;
+        // Extract Script Log
+        std::string ScriptLog;
         if (Mode_ == 0) {
-            ShaderLog = VertexLog;
+            ScriptLog = VertexLog;
         } else if (Mode_ == 1) {
-            ShaderLog = FragmentLog;
+            ScriptLog = FragmentLog;
         }
 
-        if (ShaderLog == "") {
-            ShaderLog = "No errors detected.";
+        if (ScriptLog == "") {
+            ScriptLog = "No errors detected.";
         }
 
 
@@ -300,8 +300,8 @@ void Window_ShaderEditor::DrawToolsWindow() {
         if (CompileVisible) {
 
             // Draw Log
-            ImGui::BeginChild("Shader Log");
-            ImGui::TextWrapped("%s", ShaderLog.c_str());
+            ImGui::BeginChild("Script Log");
+            ImGui::TextWrapped("%s", ScriptLog.c_str());
             ImGui::EndChild();
 
         }
