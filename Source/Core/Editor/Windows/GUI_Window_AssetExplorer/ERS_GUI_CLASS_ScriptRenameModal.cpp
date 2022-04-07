@@ -15,7 +15,7 @@ Subwindow_ScriptRenameModal::~Subwindow_ScriptRenameModal() {
     
 }
 
-void Subwindow_ScriptRenameModal::Activate( int ScriptIndex) {
+void Subwindow_ScriptRenameModal::Activate(int ScriptIndex) {
 
     SelectedScript_ = ScriptIndex;
     Enabled_ = true;
@@ -45,7 +45,7 @@ void Subwindow_ScriptRenameModal::Draw() {
 
         // Rename And Cancel Buttons
         if (ImGui::Button("Rename", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Enter Key Pressed
-            SceneManager_->Scenes_[SelectedScene_]->Scripts[SelectedScript_]->Name = std::string(ScriptInputName_);
+            ProjectUtils_->ProjectManager_->Project_.Scripts[SelectedScript_].Name_ = std::string(ScriptInputName_);
             Enabled_ = false;
         }
         ImGui::SameLine();

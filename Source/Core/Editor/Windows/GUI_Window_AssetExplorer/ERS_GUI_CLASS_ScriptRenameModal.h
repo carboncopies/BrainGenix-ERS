@@ -36,7 +36,6 @@ public:
     bool Enabled_ = false; /**<Show/Hide Window*/
     bool FirstFrame_ = false; /**<Used To Run Certain Things On Window Open*/
     int SelectedScript_ = 0; /**<Indicate What Index The Selected Script Is*/
-    int SelectedScene_ = 0; /**<Indicate What Index The Selected Scene Is*/
 
 public:
 
