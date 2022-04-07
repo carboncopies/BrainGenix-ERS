@@ -88,30 +88,25 @@ void Window_AssetExplorer::Draw() {
                     ImGui::BeginChild("Asset Script Child");
 
                     // Display Scripts
-                    for (long i = 0; i < (long)SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size(); i++) {
+                    for (long i = 0; i < ProjectUtils_->ProjectManager_->Project_.Scripts.size(); i++) {
                         
-                        // Check Type
-                        unsigned long Key = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[i];
-                        std::string Type = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[Key];
-                        if (Type == std::string("Script")) {
-                            
 
-                            bool Selected = ImGui::Selectable(std::to_string(Key).c_str(), Key == SelectedScriptIndex_);
-                            if (Selected) {
-                                SelectedScriptIndex_ = Key;
-                            }
-
-                            // Drag+Drop Source
-                            if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
-
-                                // Set Drag+Drop Payload
-                                ImGui::SetDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID", &Key, sizeof(long));
-                                ImGui::Text("%s", std::string(std::string("ERS Script '") + std::to_string(Key) + std::string("'")).c_str());
-
-                            ImGui::EndDragDropSource();
-                            }
-
+                        bool Selected = ImGui::Selectable(ProjectUtils_->ProjectManager_->Project_.Scripts[i].Name_.c_str(), i == SelectedScriptIndex_);
+                        if (Selected) {
+                            SelectedScriptIndex_ = i;
                         }
+
+                        // Drag+Drop Source
+                        if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
+
+                            // Set Drag+Drop Payload
+                            ImGui::SetDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID", &ProjectUtils_->ProjectManager_->Project_.Scripts[i].AssetID, sizeof(long));
+                            ImGui::Text("%s", std::string(std::string("ERS Script '") + ProjectUtils_->ProjectManager_->Project_.Scripts[i].Name_ + std::string("'")).c_str());
+
+                        ImGui::EndDragDropSource();
+                        }
+
+                        
                     }
 
 
