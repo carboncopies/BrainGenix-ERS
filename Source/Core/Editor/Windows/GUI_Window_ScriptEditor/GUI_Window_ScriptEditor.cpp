@@ -5,10 +5,11 @@
 #include <GUI_Window_ScriptEditor.h>
 
 
-Window_ScriptEditor::Window_ScriptEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+Window_ScriptEditor::Window_ScriptEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
+    VisualRenderer_ = VisualRenderer;
     SystemUtils_->Logger_->Log("Initializing GUI ScriptEditor Window", 4);
 
 
