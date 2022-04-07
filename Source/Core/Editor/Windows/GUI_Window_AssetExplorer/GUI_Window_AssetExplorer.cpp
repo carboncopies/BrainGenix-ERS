@@ -47,7 +47,7 @@ void Window_AssetExplorer::Draw() {
                     ImGui::BeginChild("Asset Model Child");
 
                     // Display Models
-                    for (long i = 0; i < (long)SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_.size(); i++) {
+                    for (unsigned long i = 0; i < SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_.size(); i++) {
                         
                         // Check Type
                         std::string Type = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i];
