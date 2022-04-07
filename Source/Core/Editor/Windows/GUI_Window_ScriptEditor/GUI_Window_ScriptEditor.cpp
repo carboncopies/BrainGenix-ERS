@@ -14,7 +14,7 @@ Window_ScriptEditor::Window_ScriptEditor(ERS_STRUCT_SystemUtils* SystemUtils, ER
 
     Editor_ = std::make_unique<TextEditor>();
 
-    ReloadEditorText();
+    ReloadEditorText(0);
 }
 
 Window_ScriptEditor::~Window_ScriptEditor() {
@@ -24,21 +24,14 @@ Window_ScriptEditor::~Window_ScriptEditor() {
 }
 
 
-void Window_ScriptEditor::ReloadEditorText() {
+void Window_ScriptEditor::ReloadEditorText(int ScriptIndex) {
 
-    // Load Vertex Script
-    std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ScriptPrograms[SelectedScriptProgramIndex_].VertexID, Data.get());
-    std::string VertexText = std::string((const char*)Data->Data.get());
-
-    // Load Fragment Script
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ScriptPrograms[SelectedScriptProgramIndex_].FragmentID, Data.get());
-    std::string  FragmentText = std::string((const char*)Data->Data.get());
+    // Perform Sanity Check
+    if (ScriptIndex >= ProjectUtils_->ProjectManager_->Project_.Scripts.size())
+    std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex];
 
     // Set Editor Text
-    Editors_[0]->SetText(VertexText);
-    Editors_[1]->SetText(FragmentText);
-    Editor_ = Editors_[Mode_];
+    Editor_->SetText(VertexText);
 
 }
 
