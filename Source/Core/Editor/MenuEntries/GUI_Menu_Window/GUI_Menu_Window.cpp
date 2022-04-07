@@ -112,6 +112,8 @@ void GUI_Menu_Window::Draw() {
         ImGui::EndMenu();
         }
 
+        ImGui::MenuItem("Script Editor", "", &Window_ScriptEditor_->Enabled_);
+
 
     ImGui::EndMenu();
     }
@@ -134,6 +136,7 @@ void GUI_Menu_Window::Draw() {
     Window_SceneTree_->Draw();
     Window_SystemLog_->Draw();
     Window_AssetExplorer_->Draw();
+    Window_ScriptEditor_->Draw();
 
 
 }
