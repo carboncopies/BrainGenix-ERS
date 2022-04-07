@@ -4,24 +4,21 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_STRUCT_Project
+add_library(ERS_STRUCT_Script
 
             # Add Header Files (.h)
-            "ERS_STRUCT_Project.h"
+            "ERS_STRUCT_Script.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_Project
+target_link_libraries(ERS_STRUCT_Script
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_Project
-    ERS_STRUCT_ControllerSettings
-    ERS_STRUCT_ShaderProgramAssetIDs
-    ERS_STRUCT_Script
+target_link_libraries(ERS_STRUCT_Script
     )
 
 
-target_include_directories(ERS_STRUCT_Project PUBLIC ./)
+target_include_directories(ERS_STRUCT_Script PUBLIC ./)

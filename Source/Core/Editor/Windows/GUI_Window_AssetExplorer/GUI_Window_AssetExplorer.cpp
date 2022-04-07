@@ -5,9 +5,10 @@
 #include <GUI_Window_AssetExplorer.h>
 
 
-Window_AssetExplorer::Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils) {
+Window_AssetExplorer::Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
     SystemUtils_ = SystemUtils;
+    ProjectUtils_ = ProjectUtils;
     SystemUtils_->Logger_->Log("Initializing GUI_Window_AssetExplorer", 5);
 
 }
@@ -47,24 +48,25 @@ void Window_AssetExplorer::Draw() {
                     ImGui::BeginChild("Asset Model Child");
 
                     // Display Models
-                    for (long i = 0; i < (long)SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_.size(); i++) {
+                    for (unsigned long i = 0; i < SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size(); i++) {
                         
                         // Check Type
-                        std::string Type = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i];
+                        unsigned long Key = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[i];
+                        std::string Type = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[Key];
                         if (Type == std::string("Model")) {
                             
 
-                            bool Selected = ImGui::Selectable(std::to_string(i).c_str(), i == SelectedModelIndex_);
+                            bool Selected = ImGui::Selectable(std::to_string(Key).c_str(), Key == SelectedModelIndex_);
                             if (Selected) {
-                                SelectedModelIndex_ = i;
+                                SelectedModelIndex_ = Key;
                             }
 
                             // Drag+Drop Source
                             if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
 
                                 // Set Drag+Drop Payload
-                                ImGui::SetDragDropPayload("PAYLOAD_ASSET_MODEL_ID", &i, sizeof(long));
-                                ImGui::Text("%s", std::string(std::string("ERS Model '") + std::to_string(i) + std::string("'")).c_str());
+                                ImGui::SetDragDropPayload("PAYLOAD_ASSET_MODEL_ID", &Key, sizeof(long));
+                                ImGui::Text("%s", std::string(std::string("ERS Model '") + std::to_string(Key) + std::string("'")).c_str());
 
                             ImGui::EndDragDropSource();
                             }
@@ -77,6 +79,50 @@ void Window_AssetExplorer::Draw() {
 
                 ImGui::EndTabItem();
                 }
+
+
+                // Script Explorer Tab
+                if (ImGui::BeginTabItem("Scripts")) {
+
+                    // Drag + Drop Source WIth List Of Scripts
+                    ImGui::BeginChild("Asset Script Child");
+
+                    // Display Scripts
+                    for (unsigned long i = 0; i < ProjectUtils_->ProjectManager_->Project_.Scripts.size(); i++) {
+                        
+
+                        bool Selected = ImGui::Selectable(ProjectUtils_->ProjectManager_->Project_.Scripts[i].Name_.c_str(), i == SelectedScriptIndex_);
+                        if (Selected) {
+                            SelectedScriptIndex_ = i;
+                        }
+
+                        // Drag+Drop Source
+                        if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
+
+                            // Set Drag+Drop Payload
+                            ImGui::SetDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID", &i, sizeof(long));
+                            ImGui::Text("%s", std::string(std::string("ERS Script '") + ProjectUtils_->ProjectManager_->Project_.Scripts[i].Name_ + std::string("'")).c_str());
+
+                        ImGui::EndDragDropSource();
+                        }
+
+                        
+                    }
+
+
+                    ImGui::EndChild();
+
+                ImGui::EndTabItem();
+                }
+
+
+
+                // then, add system to bind scripts to scene objects (drag drop target in scene tree)
+                // then add drag drop source
+                // then make script editor
+                // then make script editor drag/drop target
+
+
 
                 // "Advanced" Asset ID Viewer
                 if (ImGui::BeginTabItem("Raw Asset IDs")) {

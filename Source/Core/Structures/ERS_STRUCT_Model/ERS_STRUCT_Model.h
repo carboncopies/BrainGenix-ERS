@@ -29,6 +29,7 @@ struct ERS_STRUCT_Model {
 
 
     std::vector<ERS_STRUCT_Texture> TexturesToPushToGPU_;
+    std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
     std::vector<unsigned int> OpenGLTextureIDs_;
     double LoadingStartTime_; /**<Time that the loading started*/
     double LoadingFinishTime_; /**<Time When Loading Was Completed*/

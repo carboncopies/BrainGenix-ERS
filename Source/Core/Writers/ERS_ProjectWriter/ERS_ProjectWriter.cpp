@@ -83,8 +83,41 @@ bool ERS_CLASS_ProjectWriter::SaveProject(ERS_STRUCT_Project* ProjectPointer, lo
     ProjectEmitter<<YAML::EndMap;
 
 
+    SystemUtils_->Logger_->Log("Serializing Script Metadata", 4);
+    ProjectEmitter<<YAML::Key<<"Scripts";
+    ProjectEmitter<<YAML::Key<<YAML::BeginMap;
+    for (unsigned long i = 0; i < ProjectPointer->Scripts.size(); i++) {
+
+        SystemUtils_->Logger_->Log(std::string("Writing Metadata For Script '") + ProjectPointer->Scripts[i].Name_ + std::string("'"), 3);
+        ProjectEmitter<<YAML::Key<<i;
+        ProjectEmitter<<YAML::Key<<YAML::BeginMap;
+        ProjectEmitter<<YAML::Key<<"Name"<<YAML::Value<<ProjectPointer->Scripts[i].Name_;
+        ProjectEmitter<<YAML::Key<<"AssetID"<<YAML::Value<<ProjectPointer->Scripts[i].AssetID;
+        ProjectEmitter<<YAML::EndMap;
+
+    }
+    ProjectEmitter<<YAML::EndMap;
+
+
     // Convert Emitter To String
     std::string ProjectByteString = ProjectEmitter.c_str();
+
+
+
+
+    // Write Scripts
+    SystemUtils_->Logger_->Log("Writing Scripts", 4);
+    for (unsigned long i = 0; i < ProjectPointer->Scripts.size(); i++) {
+
+        SystemUtils_->Logger_->Log(std::string("Writing Data For Script '") + ProjectPointer->Scripts[i].Name_ + std::string("'"), 3);
+        std::unique_ptr<ERS_STRUCT_IOData> ScriptData = std::make_unique<ERS_STRUCT_IOData>();
+        ScriptData->AssetTypeName = "Script";
+        ScriptData->Data.reset(new unsigned char[ProjectPointer->Scripts[i].Code_.size()]);
+        ScriptData->Size_B = ProjectPointer->Scripts[i].Code_.size();
+        memcpy(ScriptData->Data.get(), ProjectPointer->Scripts[i].Code_.c_str(), ProjectPointer->Scripts[i].Code_.size());
+        SystemUtils_->ERS_IOSubsystem_->WriteAsset(ProjectPointer->Scripts[i].AssetID, ScriptData.get());
+
+    }
 
 
     // Write To IOData
@@ -96,7 +129,6 @@ bool ERS_CLASS_ProjectWriter::SaveProject(ERS_STRUCT_Project* ProjectPointer, lo
     memcpy(ProjectData->Data.get(), ProjectByteString.c_str(), ProjectByteString.size());
 
     bool Status = SystemUtils_->ERS_IOSubsystem_->WriteAsset(AssetID, ProjectData.get());
-
 
     return Status;
 

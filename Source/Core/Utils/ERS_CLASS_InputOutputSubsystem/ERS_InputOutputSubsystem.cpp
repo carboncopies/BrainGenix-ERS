@@ -82,13 +82,40 @@ void ERS_CLASS_InputOutputSubsystem::UpdateAssetPath(std::string AssetPath) {
 
 long ERS_CLASS_InputOutputSubsystem::AllocateAssetID() {
 
+  // Make This Thread Safe
   std::unique_lock<std::mutex> lock(LockAssetIDAllocation_);
 
-  long AssetID = UsedAssetIDs_.size();
+  // Ensure Only Unique IDs Are Used
+  bool FoundUniqueID = false;
+  long ProposedID;
+  while (!FoundUniqueID) {
+  
+    // Propose Random Number
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distr(1, 2147483647);
+    ProposedID = distr(gen);
+  
+    // Ensure Number Isn't Already Used
+    bool Match = false;
+    for (unsigned long i = 0; i < UsedAssetIDs_.size(); i++) {
+      if (UsedAssetIDs_[i] == ProposedID) {
+        Match = true;
+        break;
+      }
+    }
 
-  UsedAssetIDs_.push_back(AssetID);
+    // Exit Loop, Use Number When Unique One Found
+    if (!Match) {
+      break;
+    }
 
-  return AssetID;
+  }
+
+
+  UsedAssetIDs_.push_back(ProposedID);
+
+  return ProposedID;
 }
 
 std::vector<long>
@@ -333,6 +360,8 @@ std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchReadAssets(
   // Return Status
   return StatusVector;
 }
+
+
 
 bool ERS_CLASS_InputOutputSubsystem::WriteAsset(
     long AssetID, ERS_STRUCT_IOData* InputData) {

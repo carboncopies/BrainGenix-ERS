@@ -6,10 +6,11 @@
 
 
 
-ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, Cursors3D* Cursors3D) {
+ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, GLFWwindow* Window, Cursors3D* Cursors3D) {
 
     SystemUtils->Logger_->Log("Populating Renderer Member Pointers", 5);
     SystemUtils_ = SystemUtils;
+    ProjectUtils_ = ProjectUtils;
     Window_ = Window;
     Cursors3D_ = Cursors3D;
 
@@ -140,17 +141,45 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     // BIND To Default Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-    std::string Code = "import math\nModelPosX = math.sin(GameTime)*1.5\nModelPosZ = math.cos(GameTime)*1.5\nModelRotZ = GameTime*40";
-    std::vector<std::string> ErrorMsg;
+
+
+
+
+    // RUN SCRIPTS WHEN NOT IN EDITOR MODE
     if (!IsEditorMode_) {
-        bool status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[0].get(), &ErrorMsg);
-        if (!status) {
-            IsEditorMode_ = true;
+
+        for (unsigned long i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size(); i++) {
+
+            // Get Model
+            ERS_STRUCT_Model* Model = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i].get();
+
+
+            // Go Through All Scripts In Model
+            for (unsigned long x = 0; x < Model->AttachedScriptIndexes_.size(); x++) {
+
+                long ScriptIndex = Model->AttachedScriptIndexes_[x];
+                std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
+
+                std::vector<std::string> ErrorMsg;
+
+
+                bool status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, Model, &ErrorMsg);
+                if (!status) {
+                    IsEditorMode_ = true;
+                }
+
+                for (unsigned long i = 0; i < ErrorMsg.size(); i++) {
+                    std::cout<<ErrorMsg[i];
+                }
+
+
+            }
+
+
         }
+
     }
-    for (unsigned long i = 0; i < ErrorMsg.size(); i++) {
-        std::cout<<ErrorMsg[i];
-    }
+
 
 
 }
@@ -841,6 +870,17 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
             ImGui::EndMenu();
             }
 
+            if (ImGui::MenuItem("Script")) {
+                
+                ERS_STRUCT_Script NewScript;
+                NewScript.AssetID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+                NewScript.Code_ = "# ERS Script\n";
+                NewScript.Name_ = "Untitled Script";
+                std::cout<<NewScript.AssetID<<std::endl;
+                ProjectUtils_->ProjectManager_->Project_.Scripts.push_back(NewScript);
+            
+            }
+
 
         ImGui::EndMenu();
         }
@@ -857,7 +897,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
 
             // Stop Option
             if (ImGui::MenuItem("Stop", "Escape")) {
-                IsEditorMode_ = true;
+                IsEditorMode_ = !IsEditorMode_;
             }
 
         ImGui::EndMenu();

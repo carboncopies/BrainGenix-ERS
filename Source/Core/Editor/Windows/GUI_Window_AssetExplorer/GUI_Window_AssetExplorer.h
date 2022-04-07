@@ -17,6 +17,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_ProjectUtils.h>
 
 
 /**
@@ -28,9 +29,12 @@ class Window_AssetExplorer {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointers To System Resources*/
+    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to project info struct*/
+
     std::vector<bool> AssetIDSelectionList_; /**<Select Multiple Asset IDs*/
-    int LastSelectedIndex_ = 0; /**<Index of the last item to be clicked on*/
-    int SelectedModelIndex_ = 0; /**<Index Of Selected Model*/
+    unsigned long LastSelectedIndex_ = 0; /**<Index of the last item to be clicked on*/
+    unsigned long SelectedModelIndex_ = 0; /**<Index Of Selected Model*/
+    unsigned long SelectedScriptIndex_ = 0; /**<Index of selected script*/
 
 public:
 
@@ -43,7 +47,7 @@ public:
      * @brief Construct a new Window_AssetExplorer object
      * 
      */
-    Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils);
+    Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
     
     /**
      * @brief Destroy the Window_AssetExplorer object

@@ -25,6 +25,7 @@ target_link_libraries(Window_AssetExplorer
 # Link Internal Libs
 target_link_libraries(Window_AssetExplorer
     ERS_STRUCT_SystemUtils
+    ERS_STRUCT_ProjectUtils
     )
 
 target_include_directories(Window_AssetExplorer PUBLIC ./)

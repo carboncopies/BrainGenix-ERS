@@ -17,6 +17,7 @@
 #include <string>
 #include <sys/stat.h>
 #include <thread>
+#include <random>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
