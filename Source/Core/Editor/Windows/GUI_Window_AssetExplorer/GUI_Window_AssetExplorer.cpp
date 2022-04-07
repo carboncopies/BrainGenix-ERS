@@ -119,9 +119,6 @@ void Window_AssetExplorer::Draw() {
 
 
 
-                // add section for shaders
-
-
                 // then, add system to bind scripts to scene objects (drag drop target in scene tree)
                 // then add drag drop source
                 // then make script editor
