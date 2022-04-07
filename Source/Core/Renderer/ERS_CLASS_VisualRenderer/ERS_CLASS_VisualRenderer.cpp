@@ -841,6 +841,10 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
             ImGui::EndMenu();
             }
 
+            if (ImGui::MenuItem("Script")) {
+                
+            }
+
 
         ImGui::EndMenu();
         }
