@@ -211,7 +211,7 @@ void Window_ScriptEditor::DrawEditorWindow() {
             // Update Script
             if (ProjectUtils_->ProjectManager_->Project_.Scripts.size() > 0) {
                 ProjectUtils_->ProjectManager_->Project_.Scripts[SelectedScriptProgramIndex_].Code_ = Editor_->GetText();
-                VisualRenderer_->SetScriptDebug(SelectedScriptProgramIndex_, )
+                VisualRenderer_->SetScriptDebug(SelectedScriptProgramIndex_, &DebugLog_);
             }
 
             // Update VisualRenderer Selected Script
