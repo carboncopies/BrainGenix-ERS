@@ -87,9 +87,8 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
         Output<<YAML::Key<<"AttachedScripts";
         Output<<YAML::Key<<YAML::BeginMap;
-        std::cout<<i<<"|"<<InputScene->Models[i]->AttachedScriptIndexes_.size()<<std::endl;
-        for (unsigned long i = 0; i < InputScene->Models[i]->AttachedScriptIndexes_.size(); i++) {
-            Output<<YAML::Key<<i<<YAML::Value<<InputScene->Models[i]->AttachedScriptIndexes_[i];
+        for (unsigned long x = 0; x < InputScene->Models[i]->AttachedScriptIndexes_.size(); x++) {
+            Output<<YAML::Key<<x<<YAML::Value<<InputScene->Models[i]->AttachedScriptIndexes_[x];
         }
         Output<<YAML::EndMap;
 
