@@ -79,7 +79,7 @@ void Window_AssetExplorer::Draw() {
                 }
 
 
-                // Script Explorer
+                // Script Explorer Tab
                 if (ImGui::BeginTabItem("Scripts")) {
 
                     // Drag + Drop Source WIth List Of Scripts
@@ -118,7 +118,6 @@ void Window_AssetExplorer::Draw() {
                 }
 
 
-                // Add section for Scripts
 
                 // add section for shaders
 
