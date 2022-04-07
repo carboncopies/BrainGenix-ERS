@@ -848,7 +848,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
                 NewScript.AssetID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
                 NewScript.Code_ = "";
                 NewScript.Name_ = "Untitled Script";
-
+                std::cout<<NewScript.AssetID<<std::endl;
                 ProjectUtils_->ProjectManager_->Project_.Scripts.push_back(NewScript);
             
             }
