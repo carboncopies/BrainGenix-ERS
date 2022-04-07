@@ -95,15 +95,15 @@ void Window_AssetExplorer::Draw() {
 
                             bool Selected = ImGui::Selectable(std::to_string(i).c_str(), i == SelectedScriptIndex_);
                             if (Selected) {
-                                SelectedModelIndex_ = i;
+                                SelectedScriptIndex_ = i;
                             }
 
                             // Drag+Drop Source
                             if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
 
                                 // Set Drag+Drop Payload
-                                ImGui::SetDragDropPayload("PAYLOAD_ASSET_MODEL_ID", &i, sizeof(long));
-                                ImGui::Text("%s", std::string(std::string("ERS Model '") + std::to_string(i) + std::string("'")).c_str());
+                                ImGui::SetDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID", &i, sizeof(long));
+                                ImGui::Text("%s", std::string(std::string("ERS Script '") + std::to_string(i) + std::string("'")).c_str());
 
                             ImGui::EndDragDropSource();
                             }

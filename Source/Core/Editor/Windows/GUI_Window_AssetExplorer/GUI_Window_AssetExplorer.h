@@ -31,6 +31,7 @@ private:
     std::vector<bool> AssetIDSelectionList_; /**<Select Multiple Asset IDs*/
     int LastSelectedIndex_ = 0; /**<Index of the last item to be clicked on*/
     int SelectedModelIndex_ = 0; /**<Index Of Selected Model*/
+    int SelectedScriptIndex_ = 0; /**<Index of selected script*/
 
 public:
 
