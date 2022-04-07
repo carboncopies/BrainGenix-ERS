@@ -5,26 +5,16 @@
 #include <GUI_Window_ScriptEditor.h>
 
 
-Window_ScriptEditor::Window_ScriptEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer) {
+Window_ScriptEditor::Window_ScriptEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
-    VisualRenderer_ = VisualRenderer;
     SystemUtils_->Logger_->Log("Initializing GUI ScriptEditor Window", 4);
 
 
-    Editors_.push_back(std::make_shared<TextEditor>());
-    Editors_.push_back(std::make_shared<TextEditor>());
+    Editor_ = std::make_unique<TextEditor>();
 
-    
     ReloadEditorText();
-
-    
-    ScriptLoader_ = std::make_unique<ERS_CLASS_ScriptLoader>(SystemUtils_);
-    LivePreviewScript_ = std::make_shared<ERS_STRUCT_Script>();
-
-
-
 }
 
 Window_ScriptEditor::~Window_ScriptEditor() {
