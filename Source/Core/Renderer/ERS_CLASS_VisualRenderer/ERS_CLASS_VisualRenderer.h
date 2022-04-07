@@ -133,6 +133,14 @@ private:
      */
     long FindShaderIndex(std::string Name);
 
+    /**
+     * @brief Tell the visual renderer what script the scripteditor window is working on, provide pointer to debug log used by the window.
+     * 
+     * @param ScriptIndex 
+     * @param DebugLog 
+     */
+    void SetScriptDebug(int ScriptIndex, std::vector<std::string>* DebugLog);
+
 
 public:
 
