@@ -37,11 +37,8 @@ class Window_ScriptEditor {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointer*/
-    ERS_CLASS_VisualRenderer* VisualRenderer_; /**<Shared Pointer To Visual Renderer*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils Pointer*/
-    std::vector<std::shared_ptr<TextEditor>> Editors_; /**<List of editors, one for each type of Script*/
-    std::shared_ptr<TextEditor> Editor_; /** Editor Instance*/
-    int Mode_ = 0; /**<Used To Determine what Script the user is editing*/
+    std::unique_ptr<TextEditor> Editor_; /** Editor Instance*/
     long SelectedScriptProgramIndex_ = 0; /**<Index of the selected Script program in the project*/
     std::string LastFrameText_; /**Set The Last Text Shown In The Editor*/
     std::shared_ptr<ERS_STRUCT_Script> LivePreviewScript_; /**<Current live preview Script*/
