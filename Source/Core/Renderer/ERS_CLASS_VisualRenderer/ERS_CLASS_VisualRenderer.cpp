@@ -169,7 +169,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 std::vector<std::string> ErrorMsg;
 
 
-                bool status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[0].get(), &ErrorMsg);
+                bool status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, Model, &ErrorMsg);
                 if (!status) {
                     IsEditorMode_ = true;
                 }
