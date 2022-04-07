@@ -79,6 +79,45 @@ void Window_AssetExplorer::Draw() {
                 }
 
 
+                // Script Explorer
+                if (ImGui::BeginTabItem("Scripts")) {
+
+                    // Drag + Drop Source WIth List Of Scripts
+                    ImGui::BeginChild("Asset Script Child");
+
+                    // Display Scripts
+                    for (long i = 0; i < (long)SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_.size(); i++) {
+                        
+                        // Check Type
+                        std::string Type = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i];
+                        if (Type == std::string("Script")) {
+                            
+
+                            bool Selected = ImGui::Selectable(std::to_string(i).c_str(), i == SelectedScriptIndex_);
+                            if (Selected) {
+                                SelectedModelIndex_ = i;
+                            }
+
+                            // Drag+Drop Source
+                            if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None)) {
+
+                                // Set Drag+Drop Payload
+                                ImGui::SetDragDropPayload("PAYLOAD_ASSET_MODEL_ID", &i, sizeof(long));
+                                ImGui::Text("%s", std::string(std::string("ERS Model '") + std::to_string(i) + std::string("'")).c_str());
+
+                            ImGui::EndDragDropSource();
+                            }
+
+                        }
+                    }
+
+
+                    ImGui::EndChild();
+
+                ImGui::EndTabItem();
+                }
+
+
                 // Add section for Scripts
 
                 // add section for shaders
