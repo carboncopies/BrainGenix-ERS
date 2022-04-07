@@ -120,9 +120,8 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
 
         std::unique_ptr<ERS_STRUCT_IOData> ScriptData = std::make_unique<ERS_STRUCT_IOData>();
         SystemUtils_->ERS_IOSubsystem_->ReadAsset(Script->AssetID, ScriptData.get());
-        Script->Code_ = std::string((const char*)ProjectData->Data.get());
+        Script->Code_ = std::string((const char*)ScriptData->Data.get());
 
-        std::cout<<Script->AssetID<<std::endl;
 
         LogStr = std::string("Loaded Script '") + Script->Name_ + std::string("'");
         SystemUtils_->Logger_->Log(LogStr, 3);
