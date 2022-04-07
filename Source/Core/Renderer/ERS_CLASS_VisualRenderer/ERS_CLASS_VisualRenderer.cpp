@@ -142,16 +142,50 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
     std::string Code = "import math\nModelPosX = math.sin(GameTime)*1.5\nModelPosZ = math.cos(GameTime)*1.5\nModelRotZ = GameTime*40";
-    std::vector<std::string> ErrorMsg;
     if (!IsEditorMode_) {
         bool status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[0].get(), &ErrorMsg);
         if (!status) {
             IsEditorMode_ = true;
         }
     }
-    for (unsigned long i = 0; i < ErrorMsg.size(); i++) {
-        std::cout<<ErrorMsg[i];
+
+
+
+    // RUN SCRIPTS WHEN NOT IN EDITOR MODE
+    if (!IsEditorMode_) {
+
+        for (unsigned long i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size(); i++) {
+
+            // Get Model
+            ERS_STRUCT_Model* Model = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i].get();
+
+
+            // Go Through All Scripts In Model
+            for (unsigned long x = 0; x < Model->AttachedScriptIndexes_.size(); x++) {
+
+                long ScriptIndex = Model->AttachedScriptIndexes_[x];
+                std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
+
+                std::vector<std::string> ErrorMsg;
+
+
+                bool status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[0].get(), &ErrorMsg);
+                if (!status) {
+                    IsEditorMode_ = true;
+                }
+
+                for (unsigned long i = 0; i < ErrorMsg.size(); i++) {
+                    std::cout<<ErrorMsg[i];
+                }
+
+
+            }
+
+
+        }
+
     }
+
 
 
 }
