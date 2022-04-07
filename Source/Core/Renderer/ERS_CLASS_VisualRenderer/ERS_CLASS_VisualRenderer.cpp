@@ -844,6 +844,13 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
 
             if (ImGui::MenuItem("Script")) {
                 
+                ERS_STRUCT_Script NewScript;
+                NewScript.AssetID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+                NewScript.Code_ = "";
+                NewScript.Name_ = "Untitled Script";
+
+                ProjectUtils_->ProjectManager_->Project_.Scripts.push_back(NewScript);
+            
             }
 
 
