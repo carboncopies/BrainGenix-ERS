@@ -4,9 +4,9 @@
 
 #include <ERS_GUI_CLASS_ScriptRenameModal.h>
 
-Subwindow_ScriptRenameModal::Subwindow_ScriptRenameModal(ERS_CLASS_SceneManager* SceneManager) {
+Subwindow_ScriptRenameModal::Subwindow_ScriptRenameModal( ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
-    SceneManager_ = SceneManager;
+    ProjectUtils_ = ProjectUtils;
 
 
 }
