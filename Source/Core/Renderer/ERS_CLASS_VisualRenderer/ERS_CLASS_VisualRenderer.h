@@ -41,6 +41,7 @@
 #include <ERS_STRUCT_Model.h>
 #include <ERS_STRUCT_Camera.h>
 #include <ERS_STRUCT_OpenGLDefaults.h>
+#include <ERS_STRUCT_ProjectUtils.h>
 
 
 /**
