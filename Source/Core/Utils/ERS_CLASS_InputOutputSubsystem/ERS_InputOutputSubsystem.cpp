@@ -82,13 +82,42 @@ void ERS_CLASS_InputOutputSubsystem::UpdateAssetPath(std::string AssetPath) {
 
 long ERS_CLASS_InputOutputSubsystem::AllocateAssetID() {
 
+  // Make This Thread Safe
   std::unique_lock<std::mutex> lock(LockAssetIDAllocation_);
 
-  long AssetID = UsedAssetIDs_.size();
+  // Setup Random Number Generator
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  bool FoundUniqueID = false;
+  long ProposedID;
 
-  UsedAssetIDs_.push_back(AssetID);
+  // Ensure Only Unique IDs Are Used
+  while (!FoundUniqueID) {
+  
+    // Propose Random Number
+    std::uniform_int_distribution<> distr(1, 2147483647);
+    ProposedID = distr(gen);
+  
+    // Ensure Number Isn't Already Used
+    bool Match = false;
+    for (unsigned long i = 0; i < UsedAssetIDs_.size(); i++) {
+      if (UsedAssetIDs_[i] == ProposedID) {
+        Match = true;
+        break;
+      }
+    }
 
-  return AssetID;
+    // Exit Loop, Use Number When Unique One Found
+    if (!Match) {
+      break;
+    }
+
+  }
+
+
+  UsedAssetIDs_.push_back(ProposedID);
+
+  return ProposedID;
 }
 
 std::vector<long>
