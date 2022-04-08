@@ -201,11 +201,15 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         // Create Tree Node
         bool DropdownEnabled = ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
 
+
         // If User Clicks Node, Update Object Index
         if (ImGui::IsItemClicked()) {
             Scene->SelectedObject = i;
             Scene->HasSelectionChanged = true;
         }
+
+
+
 
 
         // Handle Drag/Drops
@@ -237,6 +241,12 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             ImGui::EndDragDropTarget();
             }
 
+
+            // Draw Scripts
+            for (unsigned long x = 0; x < Scene->Models[Scene->SceneObjects_[i].Index_]->AttachedScriptIndexes_.size(); x++) {
+                unsigned long ScriptIndex = Scene->Models[Scene->SceneObjects_[i].Index_]->AttachedScriptIndexes_[i];
+                ImGui::TreeNodeEx(ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Name_.c_str());
+            }
 
         }
 
