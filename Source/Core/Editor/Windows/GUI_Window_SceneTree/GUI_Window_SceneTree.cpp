@@ -245,7 +245,11 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             // Draw Scripts
             for (unsigned long x = 0; x < Scene->Models[Scene->SceneObjects_[i].Index_]->AttachedScriptIndexes_.size(); x++) {
                 unsigned long ScriptIndex = Scene->Models[Scene->SceneObjects_[i].Index_]->AttachedScriptIndexes_[i];
-                ImGui::TreeNodeEx(ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Name_.c_str());
+                bool Selected = ImGui::TreeNodeEx(ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Name_.c_str());
+
+                if (Selected) {
+                    ImGui::TreePop();
+                }
             }
 
         }
