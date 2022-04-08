@@ -99,7 +99,7 @@ void Window_AssetExplorer::Draw() {
                         }
 
                         
-                        // Context menu, used for renaming and other such functions
+                        // Context menu, used for renaming and other such functions.
                         if (ImGui::BeginPopupContextItem()) {
 
                             if (ImGui::MenuItem("Rename")) {
