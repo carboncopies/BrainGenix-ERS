@@ -468,7 +468,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     try {
         DirectionalLight->RolloffConstant = DirectionalLightModule.attr("DirectionalLightRolloffConstant").cast<float>();
         DirectionalLight->RolloffLinear = DirectionalLightModule.attr("DirectionalLightRolloffLinear").cast<float>();
-        PointLight->RolloffQuadratic = PointLightModule.attr("PointLightRolloffQuadratic").cast<float>();
+        DirectionalLight->RolloffQuadratic = PointLightModule.attr("PointLightRolloffQuadratic").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Rolloff CAST_ERROR");
     }
