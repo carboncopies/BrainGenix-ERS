@@ -149,6 +149,14 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 SceneDataNode[i]["RotZ"].as<float>()
                 );
 
+            // Load Attached Scripts
+            if (SceneDataNode[i]["AttachedScripts"]) {
+                YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
+                for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
+                    Scene.DirectionalLights[LightIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
+                }
+            }
+
         } else if (AssetType == std::string("PointLight")) {
 
             // Setup Model Pointer In Scene To Work On
@@ -184,6 +192,14 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 SceneDataNode[i]["PosY"].as<float>(),
                 SceneDataNode[i]["PosZ"].as<float>()
                 );
+
+            // Load Attached Scripts
+            if (SceneDataNode[i]["AttachedScripts"]) {
+                YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
+                for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
+                    Scene.PointLights[LightIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
+                }
+            }
 
         } else if (AssetType == std::string("SpotLight")) {
 
@@ -230,6 +246,14 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 SceneDataNode[i]["RotZ"].as<float>()
                 );
 
+
+            // Load Attached Scripts
+            if (SceneDataNode[i]["AttachedScripts"]) {
+                YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
+                for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
+                    Scene.SpotLights[LightIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
+                }
+            }
 
         } else {
             SystemUtils_->Logger_->Log(std::string("Unsupported/Unknown Asset Type: ") + AssetType, 9);

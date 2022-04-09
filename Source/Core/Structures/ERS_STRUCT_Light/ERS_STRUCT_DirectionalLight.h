@@ -6,6 +6,7 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <string>
+#include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
@@ -17,6 +18,8 @@ struct ERS_STRUCT_DirectionalLight {
 
     std::string UserDefinedName; /**Name of the light assigned by user*/
     
+    std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
+
     glm::vec3 Ambient; /**<Ambient color of the light*/
     glm::vec3 Diffuse; /**<Ambient color of the light*/
     glm::vec3 Specular; /**<Ambient color of the light*/

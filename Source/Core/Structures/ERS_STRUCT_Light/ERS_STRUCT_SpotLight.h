@@ -6,6 +6,8 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <string>
+#include <vector>
+
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
@@ -21,6 +23,7 @@ struct ERS_STRUCT_SpotLight {
     float RolloffLinear; /**<Rolloff constant*/
     float RolloffQuadratic; /**<Rolloff constant*/
     
+    std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
 
     float CutOff; /**<CutOff angle For Spotlight (inner)*/
     float OuterCutOff; /**<CutOff angleFor Spotlight (outer)*/

@@ -6,6 +6,9 @@
 
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <string>
+#include <vector>
+#include <memory>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glad/glad.h>
@@ -18,6 +21,7 @@
 #include <ERS_Editor_3DCursor.h>
 
 #include <ERS_STRUCT_LocRotScale.h>
+#include <ERS_STRUCT_ProjectUtils.h>
 
 #include <ERS_SceneManager.h>
 
@@ -33,6 +37,10 @@ private:
 
     Cursors3D* Cursors3D_; /**<Instance pointer to cursors3d class*/
     ERS_CLASS_SceneManager* SceneManager_; /**<Pointer To Scene Manager Instance*/
+    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to projectutils struct*/
+
+    std::vector<long>* ScriptIndices_; /**<variable to store script names for list box*/
+    int ScriptIndex_; /**<Selected index of script*/
 
 
     /**
@@ -61,7 +69,7 @@ public:
      * @brief Construct a new Widget_ObjectProperties object
      * 
      */
-    Widget_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager);
+    Widget_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils);
 
     /**
      * @brief Destroy the Widget_ObjectProperties object
