@@ -28,6 +28,9 @@
 
 #include <PyBind11ModelClass.h>
 #include <PyBind11SystemInfo.h>
+#include <PyBind11PointLightClass.h>
+#include <PyBind11SpotLightClass.h>
+#include <PyBind11DirectionalLightClass.h>
 
 
 
