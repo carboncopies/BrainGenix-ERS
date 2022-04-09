@@ -168,9 +168,9 @@ void Widget_ObjectProperties::Draw() {
                     if (ImGui::BeginChild("Script Controls", ImVec2(0, 200), true)) {
 
 
-                        for (unsigned long i = 0; i < ScriptIndices_.size(); i++) {
+                        for (unsigned long i = 0; i < ScriptIndices_->size(); i++) {
 
-                            std::string ScriptName = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndices_[i]].Name_;
+                            std::string ScriptName = ProjectUtils_->ProjectManager_->Project_.Scripts[(*ScriptIndices_)[i]].Name_;
                             bool Selected = i==(unsigned long)ScriptIndex_;
                             if (ImGui::Selectable(ScriptName.c_str(), &Selected)) {
                                 ScriptIndex_ = i;
