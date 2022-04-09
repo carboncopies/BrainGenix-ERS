@@ -228,6 +228,14 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "OuterCutOff" << YAML::Value << InputScene->SpotLights[i]->OuterCutOff;
 
 
+        Output<<YAML::Key<<"AttachedScripts";
+        Output<<YAML::Key<<YAML::BeginMap;
+        for (unsigned long x = 0; x < InputScene->SpotLights[i]->AttachedScriptIndexes_.size(); x++) {
+            Output<<YAML::Key<<x<<YAML::Value<<InputScene->SpotLights[i]->AttachedScriptIndexes_[x];
+        }
+        Output<<YAML::EndMap;
+
+
         Output << YAML::EndMap;
         AssetIndex++;
     }
