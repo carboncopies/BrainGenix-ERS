@@ -199,7 +199,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         }
 
         // Create Tree Node
-        bool DropdownEnabled = ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
+        ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
 
 
         // If User Clicks Node, Update Object Index
