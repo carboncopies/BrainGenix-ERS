@@ -175,7 +175,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
 }
 
-bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* Model, std::vector<std::string>* ErrorMessageString = nullptr) {
+bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* PointLight, std::vector<std::string>* ErrorMessageString = nullptr) {
 
 
 
@@ -184,18 +184,26 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     SetSystemInfoData(&PointLightModule);
 
     // Set System Parameters
-    PointLightModule.attr("PointLightPosX") = PointLight->PointLightPosition.x;
-    PointLightModule.attr("PointLightPosY") = PointLight->PointLightPosition.y;
-    PointLightModule.attr("PointLightPosZ") = PointLight->PointLightPosition.z;
-    PointLightModule.attr("PointLightRotX") = PointLight->PointLightRotation.x;
-    PointLightModule.attr("PointLightRotY") = PointLight->PointLightRotation.y;
-    PointLightModule.attr("PointLightRotZ") = PointLight->PointLightRotation.z;
-    PointLightModule.attr("PointLightScaleX") = PointLight->PointLightScale.x;
-    PointLightModule.attr("PointLightScaleY") = PointLight->PointLightScale.y;
-    PointLightModule.attr("PointLightScaleZ") = PointLight->PointLightScale.z;
+    PointLightModule.attr("PointLightPosX") = PointLight->Pos.x;
+    PointLightModule.attr("PointLightPosY") = PointLight->Pos.y;
+    PointLightModule.attr("PointLightPosZ") = PointLight->Pos.z;
 
-    PointLightModule.attr("PointLightEnabled") = PointLight->Enabled;
+    PointLightModule.attr("PointLightDiffuseR") = PointLight->Diffuse.r;
+    PointLightModule.attr("PointLightDiffuseG") = PointLight->Diffuse.g;
+    PointLightModule.attr("PointLightDiffuseB") = PointLight->Diffuse.b;
+    
+    PointLightModule.attr("PointLightSpecularR") = PointLight->Specular.r;
+    PointLightModule.attr("PointLightSpecularG") = PointLight->Specular.g;
+    PointLightModule.attr("PointLightSpecularB") = PointLight->Specular.b;
 
+    PointLightModule.attr("PointLightAmbientR") = PointLight->Ambient.r;
+    PointLightModule.attr("PointLightAmbientG") = PointLight->Ambient.g;
+    PointLightModule.attr("PointLightAmbientB") = PointLight->Ambient.b;
+    
+    PointLightModule.attr("PointLightRolloffConstant") = PointLight->RolloffConstant;
+    PointLightModule.attr("PointLightRolloffLinear") = PointLight->RolloffLinear;
+    PointLightModule.attr("PointLightRolloffQuadratic") = PointLight->RolloffQuadratic;
+    
 
     // Get Local Dict
     pybind11::dict Locals = PointLightModule.attr("__dict__");
