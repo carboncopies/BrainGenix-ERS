@@ -150,7 +150,6 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 );
 
             // Load Attached Scripts
-            Scene.DirectionalLights[LightIndex]->AttachedScriptIndexes_ = std::vector<long>();
             if (SceneDataNode[i]["AttachedScripts"]) {
                 YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
                 for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
