@@ -247,6 +247,14 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 );
 
 
+            // Load Attached Scripts
+            if (SceneDataNode[i]["AttachedScripts"]) {
+                YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
+                for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
+                    Scene.SpotLights[LightIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
+                }
+            }
+
         } else {
             SystemUtils_->Logger_->Log(std::string("Unsupported/Unknown Asset Type: ") + AssetType, 9);
         }
