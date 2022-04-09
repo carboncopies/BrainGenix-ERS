@@ -192,8 +192,9 @@ void Widget_ObjectProperties::Draw() {
                         }
 
 
-                    ImGui::EndChild();
                     }
+                    ImGui::EndChild();
+
 
 
 
