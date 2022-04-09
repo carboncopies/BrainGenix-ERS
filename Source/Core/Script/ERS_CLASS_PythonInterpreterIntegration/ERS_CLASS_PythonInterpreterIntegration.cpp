@@ -440,6 +440,15 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     }
 
     try {
+        DirectionalLightRotX = DirectionalLightModule.attr("DirectionalLightRotX").cast<double>();
+        DirectionalLightRotY = DirectionalLightModule.attr("DirectionalLightRotY").cast<double>();
+        DirectionalLightRotZ = DirectionalLightModule.attr("DirectionalLightRotZ").cast<double>();
+        DirectionalLight->Rot = glm::vec3(DirectionalLightRotX, DirectionalLightRotY, DirectionalLightRotZ);
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("DirectionalLight Rotation CAST_ERROR");
+    }
+
+    try {
         DiffuseR = DirectionalLightModule.attr("DirectionalLightDiffuseR").cast<double>();
         DiffuseG = DirectionalLightModule.attr("DirectionalLightDiffuseG").cast<double>();
         DiffuseB = DirectionalLightModule.attr("DirectionalLightDiffuseB").cast<double>();
