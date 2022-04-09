@@ -449,7 +449,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
 
     try {
         SpecularR = DirectionalLightModule.attr("DirectionalLightSpecularR").cast<double>();
-        SpecularG = DirectionalLightModule.attr("PointLightSpecularG").cast<double>();
+        SpecularG = DirectionalLightModule.attr("DirectionalLightSpecularG").cast<double>();
         SpecularB = PointLightModule.attr("PointLightSpecularB").cast<double>();
         PointLight->Specular = glm::vec3(SpecularR, SpecularG, SpecularB);
     } catch (pybind11::cast_error const&) {
