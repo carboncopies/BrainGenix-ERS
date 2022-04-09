@@ -44,12 +44,14 @@ target_link_libraries(Widgets
     
     ERS_Editor_ThemeManager
     ERS_Editor_FontManager
-    ERS_STRUCT_SystemUtils
-    ERS_STRUCT_HardwareInfo
-
     ERS_Editor_3DCursor
 
+    ERS_STRUCT_SystemUtils
+    ERS_STRUCT_HardwareInfo
     ERS_STRUCT_Scene
+    ERS_STRUCT_ProjectUtils
+
+
     ERS_SceneManager
 
     )

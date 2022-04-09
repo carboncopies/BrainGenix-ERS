@@ -170,6 +170,7 @@ void Widget_ObjectProperties::Draw() {
 
                         for (unsigned long i = 0; i < ScriptIndices_.size(); i++) {
 
+                            std::string ScriptName = P
                             ImGui::Selectable(ScriptName, i==ScriptIndices_[i])
 
                         }
