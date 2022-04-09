@@ -13,6 +13,7 @@
 #include <PyBind11SpotLightClass.cpp>
 
 
+
 ERS_CLASS_PythonInterpreterIntegration::ERS_CLASS_PythonInterpreterIntegration(ERS_CLASS_LoggingSystem* Logger) {
 
     Logger_ = Logger;
@@ -27,14 +28,11 @@ ERS_CLASS_PythonInterpreterIntegration::ERS_CLASS_PythonInterpreterIntegration(E
     
 }
 
-
 ERS_CLASS_PythonInterpreterIntegration::~ERS_CLASS_PythonInterpreterIntegration() {
 
     Logger_->Log("Shutting Down Python Interpreter Subsystem", 6);
 
 }
-
-
 
 bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model, std::vector<std::string>* ErrorMessageString) {
 
@@ -176,7 +174,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     
 
 }
-
 
 bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* Model, std::vector<std::string>* ErrorMessageString = nullptr) {
 
