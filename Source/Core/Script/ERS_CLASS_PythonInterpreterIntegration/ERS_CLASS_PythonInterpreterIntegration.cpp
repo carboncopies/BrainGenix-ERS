@@ -353,12 +353,12 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     DirectionalLightModule.attr("DirectionalLightAmbientB") = DirectionalLight->Ambient.b;
     
     DirectionalLightModule.attr("DirectionalLightRolloffConstant") = DirectionalLight->RolloffConstant;
-    PointLightModule.attr("PointLightRolloffLinear") = PointLight->RolloffLinear;
-    PointLightModule.attr("PointLightRolloffQuadratic") = PointLight->RolloffQuadratic;
+    DirectionalLightModule.attr("DirectionalLightRolloffLinear") = DirectionalLight->RolloffLinear;
+    DirectionalLightModule.attr("DirectionalLightRolloffQuadratic") = DirectionalLight->RolloffQuadratic;
     
 
     // Get Local Dict
-    pybind11::dict Locals = PointLightModule.attr("__dict__");
+    pybind11::dict Locals = DirectionalLightModule.attr("__dict__");
 
     // If No Message String Vec Provided, Run All At Once, Else Run Line By Line
     if (ErrorMessageString == nullptr) {
@@ -423,24 +423,24 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
 
     }
 
-    // Write Back PointLight Data
-    double PointLightPosX, PointLightPosY, PointLightPosZ;
+    // Write Back DirectionalLight Data
+    double DirectionalLightPosX, DirectionalLightPosY, DirectionalLightPosZ;
     float DiffuseR, DiffuseG, DiffuseB;
     float SpecularR, SpecularG, SpecularB;
     float AmbientR, AmbientG, AmbientB;
 
     try {
-        PointLightPosX = PointLightModule.attr("PointLightPosX").cast<double>();
-        PointLightPosY = PointLightModule.attr("PointLightPosY").cast<double>();
-        PointLightPosZ = PointLightModule.attr("PointLightPosZ").cast<double>();
-        PointLight->Pos = glm::vec3(PointLightPosX, PointLightPosY, PointLightPosZ);
+        DirectionalLightPosX = DirectionalLightModule.attr("DirectionalLightPosX").cast<double>();
+        DirectionalLightPosY = DirectionalLightModule.attr("DirectionalLightPosY").cast<double>();
+        DirectionalLightPosZ = DirectionalLightModule.attr("DirectionalLightPosZ").cast<double>();
+        DirectionalLight->Pos = glm::vec3(DirectionalLightPosX, DirectionalLightPosY, DirectionalLightPosZ);
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Position CAST_ERROR");
+        ErrorMessageString->push_back("DirectionalLight Position CAST_ERROR");
     }
 
     try {
-        DiffuseR = PointLightModule.attr("PointLightDiffuseR").cast<double>();
-        DiffuseG = PointLightModule.attr("PointLightDiffuseG").cast<double>();
+        DiffuseR = DirectionalLightModule.attr("DirectionalLightDiffuseR").cast<double>();
+        DiffuseG = DirectionalLightModule.attr("DirectionalLightDiffuseG").cast<double>();
         DiffuseB = PointLightModule.attr("PointLightDiffuseB").cast<double>();
         PointLight->Diffuse = glm::vec3(DiffuseR, DiffuseG, DiffuseB);
     } catch (pybind11::cast_error const&) {
