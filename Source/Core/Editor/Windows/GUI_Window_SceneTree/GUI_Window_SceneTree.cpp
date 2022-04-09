@@ -215,6 +215,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         // Handle Drag/Drops
         if (Scene->SceneObjects_[i].Type_ == std::string("Model")) {
 
+            long Index = Scene->SceneObjects_[i].Index_;
+
             // Drag/Drop Target
             long PayloadID;
             if (ImGui::BeginDragDropTarget()) {
@@ -225,8 +227,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     
                     // Check If Already In Vector
                     bool Contains = false; 
-                    for (unsigned long x = 0; x < Scene->Models[i]->AttachedScriptIndexes_.size(); x++) {
-                        if (PayloadID ==  Scene->Models[i]->AttachedScriptIndexes_[x]) {
+                    for (unsigned long x = 0; x < Scene->Models[Index]->AttachedScriptIndexes_.size(); x++) {
+                        if (PayloadID ==  Scene->Models[Index]->AttachedScriptIndexes_[x]) {
                             SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'Model', Already Attached").c_str(), 0);
                             Contains = true;
                             break;
@@ -234,7 +236,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     }
 
                     if (!Contains) {
-                        Scene->Models[i]->AttachedScriptIndexes_.push_back(PayloadID);
+                        Scene->Models[Index]->AttachedScriptIndexes_.push_back(PayloadID);
                     }
                 }
 
