@@ -76,7 +76,7 @@ void Widget_ObjectProperties::Draw() {
                 } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("DirectionalLight")) {
                     
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
-                    if (ImGui::CollapsingHeader("Point Light Settings")) {
+                    if (ImGui::CollapsingHeader("Directional Light Settings")) {
 
                         float DiffuseColor[3];
                         VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Diffuse, DiffuseColor);
@@ -103,7 +103,7 @@ void Widget_ObjectProperties::Draw() {
                 } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("SpotLight")) {
                     
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
-                    if (ImGui::CollapsingHeader("Point Light Settings")) {
+                    if (ImGui::CollapsingHeader("Spot Light Settings")) {
 
                         float DiffuseColor[3];
                         VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Diffuse, DiffuseColor);
