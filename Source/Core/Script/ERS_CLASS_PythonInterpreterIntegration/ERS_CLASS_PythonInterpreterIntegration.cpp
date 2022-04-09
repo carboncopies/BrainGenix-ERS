@@ -480,6 +480,158 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     
 }
 
+bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string ScriptSource, ERS_STRUCT_SpotLight* SpotLight, std::vector<std::string>* ErrorMessageString = nullptr) {
+
+
+
+    // Inport The SpotLight Module, Set System Info
+    pybind11::module SpotLightModule = pybind11::module_::import("SpotLight");
+    SetSystemInfoData(&SpotLightModule);
+
+    // Set System Parameters
+    SpotLightModule.attr("SpotLightPosX") = SpotLight->Pos.x;
+    SpotLightModule.attr("SpotLightPosY") = SpotLight->Pos.y;
+    SpotLightModule.attr("SpotLightPosZ") = SpotLight->Pos.z;
+
+    SpotLightModule.attr("SpotLightRotX") = SpotLight->Rot.x;
+    SpotLightModule.attr("SpotLightRotY") = SpotLight->Rot.y;
+    SpotLightModule.attr("SpotLightRotZ") = SpotLight->Rot.z;
+
+    SpotLightModule.attr("SpotLightDiffuseR") = SpotLight->Diffuse.r;
+    SpotLightModule.attr("SpotLightDiffuseG") = SpotLight->Diffuse.g;
+    SpotLightModule.attr("SpotLightDiffuseB") = SpotLight->Diffuse.b;
+    
+    SpotLightModule.attr("SpotLightSpecularR") = SpotLight->Specular.r;
+    SpotLightModule.attr("SpotLightSpecularG") = SpotLight->Specular.g;
+    SpotLightModule.attr("SpotLightSpecularB") = SpotLight->Specular.b;
+
+    SpotLightModule.attr("SpotLightAmbientR") = SpotLight->Ambient.r;
+    SpotLightModule.attr("SpotLightAmbientG") = SpotLight->Ambient.g;
+    SpotLightModule.attr("SpotLightAmbientB") = SpotLight->Ambient.b;
+    
+
+    // Get Local Dict
+    pybind11::dict Locals = SpotLightModule.attr("__dict__");
+
+    // If No Message String Vec Provided, Run All At Once, Else Run Line By Line
+    if (ErrorMessageString == nullptr) {
+        try {
+            pybind11::exec(ScriptSource, pybind11::globals(), Locals);
+        } catch (pybind11::value_error const&) {
+            return false;
+        } catch (pybind11::key_error const&) {
+            return false;
+        } catch (pybind11::reference_cast_error const&) {
+            return false;
+        } catch (pybind11::attribute_error const&) {
+            return false;
+        } catch (pybind11::import_error const&) {
+            return false;
+        } catch (pybind11::buffer_error const&) {
+            return false;
+        } catch (pybind11::index_error const&) {
+            return false;
+        } catch (pybind11::type_error const&) {
+            return false;
+        } catch (pybind11::cast_error const&) {
+            return false;
+        } catch (pybind11::error_already_set &Exception) {
+            return false;
+        }
+
+    } else {
+        ErrorMessageString->erase(ErrorMessageString->begin(), ErrorMessageString->end());
+        std::string Line;
+        std::stringstream StringStream(ScriptSource);
+        unsigned long i = 0;
+
+        while (getline(StringStream, Line, '\n')) {
+            
+            i++;
+            try {
+                pybind11::exec(Line, pybind11::globals(), Locals);
+            } catch (pybind11::value_error const&) {
+                ErrorHandle(ErrorMessageString, i, "ValueError");
+            } catch (pybind11::key_error const&) {
+                ErrorHandle(ErrorMessageString, i, "KeyError");
+            } catch (pybind11::reference_cast_error const&) {
+                ErrorHandle(ErrorMessageString, i, "ReferenceCastError");
+            } catch (pybind11::attribute_error const&) {
+                ErrorHandle(ErrorMessageString, i, "AttributeError");
+            } catch (pybind11::import_error const&) {
+                ErrorHandle(ErrorMessageString, i, "ImportError");
+            } catch (pybind11::buffer_error const&) {
+                ErrorHandle(ErrorMessageString, i, "BufferError");
+            } catch (pybind11::index_error const&) {
+                ErrorHandle(ErrorMessageString, i, "IndexError");
+            } catch (pybind11::type_error const&) {
+                ErrorHandle(ErrorMessageString, i, "TypeError");
+            } catch (pybind11::cast_error const&) {
+                ErrorHandle(ErrorMessageString, i, "CastError");
+            } catch (pybind11::error_already_set &Exception) {
+                ErrorHandle(ErrorMessageString, i, Exception.what());
+            }
+
+        }
+
+    }
+
+    // Write Back SpotLight Data
+    double SpotLightPosX, SpotLightPosY, SpotLightPosZ;
+    double SpotLightRotX, SpotLightRotY, SpotLightRotZ;
+    float DiffuseR, DiffuseG, DiffuseB;
+    float SpecularR, SpecularG, SpecularB;
+    float AmbientR, AmbientG, AmbientB;
+
+    try {
+        SpotLightPosX = SpotLightModule.attr("SpotLightPosX").cast<double>();
+        SpotLightPosY = SpotLightModule.attr("SpotLightPosY").cast<double>();
+        SpotLightPosZ = SpotLightModule.attr("SpotLightPosZ").cast<double>();
+        SpotLight->Pos = glm::vec3(SpotLightPosX, SpotLightPosY, SpotLightPosZ);
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("SpotLight Position CAST_ERROR");
+    }
+
+    try {
+        SpotLightRotX = SpotLightModule.attr("SpotLightRotX").cast<double>();
+        SpotLightRotY = SpotLightModule.attr("SpotLightRotY").cast<double>();
+        SpotLightRotZ = SpotLightModule.attr("SpotLightRotZ").cast<double>();
+        SpotLight->Rot = glm::vec3(SpotLightRotX, SpotLightRotY, SpotLightRotZ);
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("SpotLight Rotation CAST_ERROR");
+    }
+
+    try {
+        DiffuseR = SpotLightModule.attr("SpotLightDiffuseR").cast<double>();
+        DiffuseG = SpotLightModule.attr("SpotLightDiffuseG").cast<double>();
+        DiffuseB = SpotLightModule.attr("SpotLightDiffuseB").cast<double>();
+        SpotLight->Diffuse = glm::vec3(DiffuseR, DiffuseG, DiffuseB);
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("SpotLight Diffuse CAST_ERROR");
+    }
+
+    try {
+        SpecularR = SpotLightModule.attr("SpotLightSpecularR").cast<double>();
+        SpecularG = SpotLightModule.attr("SpotLightSpecularG").cast<double>();
+        SpecularB = SpotLightModule.attr("SpotLightSpecularB").cast<double>();
+        SpotLight->Specular = glm::vec3(SpecularR, SpecularG, SpecularB);
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("SpotLight Specular CAST_ERROR");
+    }
+
+    try {
+        AmbientR = SpotLightModule.attr("SpotLightAmbientR").cast<double>();
+        AmbientG = SpotLightModule.attr("SpotLightAmbientG").cast<double>();
+        AmbientB = SpotLightModule.attr("SpotLightAmbientB").cast<double>();
+        SpotLight->Ambient = glm::vec3(AmbientR, AmbientG, AmbientB);
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("SpotLight Ambient CAST_ERROR");
+    }
+
+    // Return Status
+    return true;
+    
+}
 
 
 void ERS_CLASS_PythonInterpreterIntegration::ErrorHandle(std::vector<std::string>* Target, unsigned long LineNumber, std::string Error) {
