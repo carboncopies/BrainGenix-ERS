@@ -462,11 +462,11 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
         AmbientB = DirectionalLightModule.attr("DirectionalLightAmbientB").cast<double>();
         DirectionalLight->Ambient = glm::vec3(AmbientR, AmbientG, AmbientB);
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Ambient CAST_ERROR");
+        ErrorMessageString->push_back("DirectionalLight Ambient CAST_ERROR");
     }
 
     try {
-        PointLight->RolloffConstant = PointLightModule.attr("PointLightRolloffConstant").cast<float>();
+        DirectionalLight->RolloffConstant = PointLightModule.attr("PointLightRolloffConstant").cast<float>();
         PointLight->RolloffLinear = PointLightModule.attr("PointLightRolloffLinear").cast<float>();
         PointLight->RolloffQuadratic = PointLightModule.attr("PointLightRolloffQuadratic").cast<float>();
     } catch (pybind11::cast_error const&) {
