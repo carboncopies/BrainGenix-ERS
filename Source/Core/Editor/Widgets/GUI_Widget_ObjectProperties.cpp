@@ -5,10 +5,11 @@
 #include <GUI_Widget_ObjectProperties.h>
 
 
-Widget_ObjectProperties::Widget_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager) {
+Widget_ObjectProperties::Widget_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
     Cursors3D_ = Cursors3D;
     SceneManager_ = SceneManager;
+    ProjectUtils_ = ProjectUtils;
 
 }
 
