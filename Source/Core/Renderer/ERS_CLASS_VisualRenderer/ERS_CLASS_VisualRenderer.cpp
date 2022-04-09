@@ -175,8 +175,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
             }
         }
 
-
-
         for (unsigned long i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights.size(); i++) {
 
             // Get Model
@@ -200,7 +198,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 }
             }
         }
-
 
         for (unsigned long i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights.size(); i++) {
 
@@ -226,7 +223,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
             }
         }
 
-
         for (unsigned long i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->SpotLights.size(); i++) {
 
             // Get Model
@@ -250,8 +246,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 }
             }
         }
-
-
 
     }
 
