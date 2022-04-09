@@ -8,6 +8,9 @@
 // yes this is bad i know, but idk how else to fix it
 #include <PyBind11ModelClass.cpp>
 #include <PyBind11SystemInfo.cpp>
+#include <PyBind11DirectionalLightClass.cpp>
+#include <PyBind11PointLightClass.cpp>
+#include <PyBind11SpotLightClass.cpp>
 
 
 ERS_CLASS_PythonInterpreterIntegration::ERS_CLASS_PythonInterpreterIntegration(ERS_CLASS_LoggingSystem* Logger) {
