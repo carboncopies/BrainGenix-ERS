@@ -314,9 +314,9 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     }
 
     try {
-        PointLight->RolloffConstant = PointLightModule.attr("PointLightRolloffConstant").cast<double>();
-        PointLight->RolloffLinear = PointLightModule.attr("PointLightRolloffLinear").cast<double>();
-        PointLight->RolloffQuadratic = PointLightModule.attr("PointLightRolloffQuadratic").cast<double>();
+        PointLight->RolloffConstant = PointLightModule.attr("PointLightRolloffConstant").cast<float>();
+        PointLight->RolloffLinear = PointLightModule.attr("PointLightRolloffLinear").cast<float>();
+        PointLight->RolloffQuadratic = PointLightModule.attr("PointLightRolloffQuadratic").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Position CAST_ERROR");
     }
