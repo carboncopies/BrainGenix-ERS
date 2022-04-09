@@ -509,6 +509,11 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     SpotLightModule.attr("SpotLightAmbientG") = SpotLight->Ambient.g;
     SpotLightModule.attr("SpotLightAmbientB") = SpotLight->Ambient.b;
     
+    SpotLightModule.attr("SpotLightRolloffConstant") = SpotLight->RolloffConstant;
+    SpotLightModule.attr("SpotLightRolloffLinear") = SpotLight->RolloffLinear;
+    SpotLightModule.attr("SpotLightRolloffQuadratic") = SpotLight->RolloffQuadratic;
+    
+
 
     // Get Local Dict
     pybind11::dict Locals = SpotLightModule.attr("__dict__");
