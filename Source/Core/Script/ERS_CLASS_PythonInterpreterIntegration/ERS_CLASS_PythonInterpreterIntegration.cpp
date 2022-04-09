@@ -425,6 +425,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
 
     // Write Back DirectionalLight Data
     double DirectionalLightPosX, DirectionalLightPosY, DirectionalLightPosZ;
+    double DirectionalLightRotX, DirectionalLightRotY, DirectionalLightRotZ;
     float DiffuseR, DiffuseG, DiffuseB;
     float SpecularR, SpecularG, SpecularB;
     float AmbientR, AmbientG, AmbientB;
