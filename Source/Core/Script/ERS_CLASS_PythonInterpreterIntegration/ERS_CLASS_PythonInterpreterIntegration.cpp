@@ -444,7 +444,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
         DiffuseB = DirectionalLightModule.attr("DirectionalLightDiffuseB").cast<double>();
         DirectionalLight->Diffuse = glm::vec3(DiffuseR, DiffuseG, DiffuseB);
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Diffuse CAST_ERROR");
+        ErrorMessageString->push_back("DirectionalLight Diffuse CAST_ERROR");
     }
 
     try {
