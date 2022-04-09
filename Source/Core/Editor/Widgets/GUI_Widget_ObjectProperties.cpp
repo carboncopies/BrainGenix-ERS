@@ -171,7 +171,7 @@ void Widget_ObjectProperties::Draw() {
                         for (unsigned long i = 0; i < ScriptIndices_.size(); i++) {
 
                             std::string ScriptName = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndices_[i]].Name_;
-                            bool Selected = i==ScriptIndex_;
+                            bool Selected = i==(unsigned long)ScriptIndex_;
                             if (ImGui::Selectable(ScriptName.c_str(), &Selected)) {
                                 ScriptIndex_ = i;
                             }
