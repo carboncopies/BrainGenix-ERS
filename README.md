@@ -70,3 +70,23 @@ BrainGenix Environment Rendering System (ERS) aims to be a distributed multi-GPU
     "ModelScaleY" - Y Scale of the model
     "ModelScaleZ" - Z Scale of the model
     "ModelEnabled" - Enable/Disable rendering of the model
+
+  ## PointLight Variables
+
+    "PointLightPosX" - X Position of the model
+    "PointLightPosY" - Y Position of the model
+    "PointLightPosZ" - Z Position of the model
+    "PointLightDiffuseR" - Red component of diffuse color (from scale of 0 to 1)
+    "PointLightDiffuseG" - Green component of diffuse color (from scale of 0 to 1)
+    "PointLightDiffuseB" - Blue component of diffuse color (from scale of 0 to 1)
+    "PointLightSpecularR" - Red component of specular color (from scale of 0 to 1)
+    "PointLightSpecularG" - Green component of specular color (from scale of 0 to 1)
+    "PointLightSpecularB" - Blue component of specular color (from scale of 0 to 1)    
+    "PointLightAmbientR" - Red component of ambient color (from scale of 0 to 1)
+    "PointLightAmbientG" - Green component of ambient color (from scale of 0 to 1)
+    "PointLightAmbientB" - Blue component of ambient color (from scale of 0 to 1)
+    "PointLightRolloffConstant" - Constant component of light rolloff (float)
+    "PointLightRolloffLinear" - Linear component of light rolloff (float)
+    "PointLightRolloffQuadratic" - Quadratic component of light rolloff (float)
+    
+    
