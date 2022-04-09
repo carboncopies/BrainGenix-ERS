@@ -71,7 +71,7 @@ BrainGenix Environment Rendering System (ERS) aims to be a distributed multi-GPU
     "ModelScaleZ" - Z Scale of the model
     "ModelEnabled" - Enable/Disable rendering of the model
 
-  ## PointLight Variables
+  ## Point Light Variables
     "PointLightPosX" - X Position of the light
     "PointLightPosY" - Y Position of the light
     "PointLightPosZ" - Z Position of the light
@@ -88,7 +88,7 @@ BrainGenix Environment Rendering System (ERS) aims to be a distributed multi-GPU
     "PointLightRolloffLinear" - Linear component of light rolloff (float)
     "PointLightRolloffQuadratic" - Quadratic component of light rolloff (float)
     
-  ## DirectionalLight Variables
+  ## Directional Light Variables
     "DirectionalLightPosX" - X Position of the light
     "DirectionalLightPosY" - Y Position of the light
     "DirectionalLightPosZ" - Z Position of the light
@@ -104,3 +104,25 @@ BrainGenix Environment Rendering System (ERS) aims to be a distributed multi-GPU
     "DirectionalLightAmbientR" - Red component of ambient color (from scale of 0 to 1)
     "DirectionalLightAmbientG" - Green component of ambient color (from scale of 0 to 1)
     "DirectionalLightAmbientB" - Blue component of ambient color (from scale of 0 to 1)
+    
+  ## Spot Light Variables
+    "SpotLightPosX" - X Position of the light
+    "SpotLightPosY" - Y Position of the light
+    "SpotLightPosZ" - Z Position of the light
+    "SpotLightRotX" - X Rotation of the light
+    "SpotLightRotY" - Y Rotation of the light
+    "SpotLightRotZ" - Z Rotation of the light
+    "SpotLightDiffuseR" - Red component of diffuse color (from scale of 0 to 1)
+    "SpotLightDiffuseG" - Green component of diffuse color (from scale of 0 to 1)
+    "SpotLightDiffuseB" - Blue component of diffuse color (from scale of 0 to 1)
+    "SpotLightSpecularR" - Red component of specular color (from scale of 0 to 1)
+    "SpotLightSpecularG" - Green component of specular color (from scale of 0 to 1)
+    "SpotLightSpecularB" - Blue component of specular color (from scale of 0 to 1)    
+    "SpotLightAmbientR" - Red component of ambient color (from scale of 0 to 1)
+    "SpotLightAmbientG" - Green component of ambient color (from scale of 0 to 1)
+    "SpotLightAmbientB" - Blue component of ambient color (from scale of 0 to 1)
+    "SpotLightRolloffConstant" - Rolloff constant for light
+    "SpotLightRolloffLinear" - Linear component to rolloff for light
+    "SpotLightRolloffQuadratic" - Quadratic component to rolloff for light
+    "SpotLightCutoff" - Circular radius of spotlight inner lit area
+    "SpotlightOuterCutoff" - Outside area of spotlight cutoff
