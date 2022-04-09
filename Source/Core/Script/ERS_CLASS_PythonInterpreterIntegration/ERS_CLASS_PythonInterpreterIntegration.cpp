@@ -175,30 +175,30 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 }
 
 
-void ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* Model, std::vector<std::string>* ErrorMessageString = nullptr) {
+bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* Model, std::vector<std::string>* ErrorMessageString = nullptr) {
 
 
 
-    // Inport The Model Module, Set System Info
-    pybind11::module ModelModule = pybind11::module_::import("Model");
-    SetSystemInfoData(&ModelModule);
+    // Inport The PointLight Module, Set System Info
+    pybind11::module PointLightModule = pybind11::module_::import("PointLight");
+    SetSystemInfoData(&PointLightModule);
 
     // Set System Parameters
-    ModelModule.attr("ModelPosX") = Model->ModelPosition.x;
-    ModelModule.attr("ModelPosY") = Model->ModelPosition.y;
-    ModelModule.attr("ModelPosZ") = Model->ModelPosition.z;
-    ModelModule.attr("ModelRotX") = Model->ModelRotation.x;
-    ModelModule.attr("ModelRotY") = Model->ModelRotation.y;
-    ModelModule.attr("ModelRotZ") = Model->ModelRotation.z;
-    ModelModule.attr("ModelScaleX") = Model->ModelScale.x;
-    ModelModule.attr("ModelScaleY") = Model->ModelScale.y;
-    ModelModule.attr("ModelScaleZ") = Model->ModelScale.z;
+    PointLightModule.attr("PointLightPosX") = PointLight->PointLightPosition.x;
+    PointLightModule.attr("PointLightPosY") = PointLight->PointLightPosition.y;
+    PointLightModule.attr("PointLightPosZ") = PointLight->PointLightPosition.z;
+    PointLightModule.attr("PointLightRotX") = PointLight->PointLightRotation.x;
+    PointLightModule.attr("PointLightRotY") = PointLight->PointLightRotation.y;
+    PointLightModule.attr("PointLightRotZ") = PointLight->PointLightRotation.z;
+    PointLightModule.attr("PointLightScaleX") = PointLight->PointLightScale.x;
+    PointLightModule.attr("PointLightScaleY") = PointLight->PointLightScale.y;
+    PointLightModule.attr("PointLightScaleZ") = PointLight->PointLightScale.z;
 
-    ModelModule.attr("ModelEnabled") = Model->Enabled;
+    PointLightModule.attr("PointLightEnabled") = PointLight->Enabled;
 
 
     // Get Local Dict
-    pybind11::dict Locals = ModelModule.attr("__dict__");
+    pybind11::dict Locals = PointLightModule.attr("__dict__");
 
     // If No Message String Vec Provided, Run All At Once, Else Run Line By Line
     if (ErrorMessageString == nullptr) {
@@ -263,50 +263,50 @@ void ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
 
     }
 
-    // Write Back Model Data
-    double ModelPosX, ModelPosY, ModelPosZ;
-    double ModelRotX, ModelRotY, ModelRotZ;
-    double ModelScaleX, ModelScaleY, ModelScaleZ;
+    // Write Back PointLight Data
+    double PointLightPosX, PointLightPosY, PointLightPosZ;
+    double PointLightRotX, PointLightRotY, PointLightRotZ;
+    double PointLightScaleX, PointLightScaleY, PointLightScaleZ;
     bool Successful = true;
 
     try {
-        ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
-        ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
-        ModelPosZ = ModelModule.attr("ModelPosZ").cast<double>();
-        Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
+        PointLightPosX = PointLightModule.attr("PointLightPosX").cast<double>();
+        PointLightPosY = PointLightModule.attr("PointLightPosY").cast<double>();
+        PointLightPosZ = PointLightModule.attr("PointLightPosZ").cast<double>();
+        PointLight->SetPosition(glm::vec3(PointLightPosX, PointLightPosY, PointLightPosZ));
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("Model Position CAST_ERROR");
+        ErrorMessageString->push_back("PointLight Position CAST_ERROR");
         Successful = false;
     }
     try {
-        ModelRotX = ModelModule.attr("ModelRotX").cast<double>();
-        ModelRotY = ModelModule.attr("ModelRotY").cast<double>();
-        ModelRotZ = ModelModule.attr("ModelRotZ").cast<double>();
-        Model->SetRotation(glm::vec3(ModelRotX, ModelRotY, ModelRotZ));
+        PointLightRotX = PointLightModule.attr("PointLightRotX").cast<double>();
+        PointLightRotY = PointLightModule.attr("PointLightRotY").cast<double>();
+        PointLightRotZ = PointLightModule.attr("PointLightRotZ").cast<double>();
+        PointLight->SetRotation(glm::vec3(PointLightRotX, PointLightRotY, PointLightRotZ));
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("Model Rotation CAST_ERROR");
+        ErrorMessageString->push_back("PointLight Rotation CAST_ERROR");
         Successful = false;
     }
     try {
-        ModelScaleX = ModelModule.attr("ModelScaleX").cast<double>();
-        ModelScaleY = ModelModule.attr("ModelScaleY").cast<double>();
-        ModelScaleZ = ModelModule.attr("ModelScaleZ").cast<double>();
-        Model->SetScale(glm::vec3(ModelScaleX, ModelScaleY, ModelScaleZ));
+        PointLightScaleX = PointLightModule.attr("PointLightScaleX").cast<double>();
+        PointLightScaleY = PointLightModule.attr("PointLightScaleY").cast<double>();
+        PointLightScaleZ = PointLightModule.attr("PointLightScaleZ").cast<double>();
+        PointLight->SetScale(glm::vec3(PointLightScaleX, PointLightScaleY, PointLightScaleZ));
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("Model Scale CAST_ERROR");
+        ErrorMessageString->push_back("PointLight Scale CAST_ERROR");
         Successful = false;
     }
 
     try {
-        Model->Enabled = ModelModule.attr("ModelEnabled").cast<bool>(); 
+        PointLight->Enabled = PointLightModule.attr("PointLightEnabled").cast<bool>(); 
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("Model Enable CAST_ERROR");
+        ErrorMessageString->push_back("PointLight Enable CAST_ERROR");
         Successful = false;
     }
 
 
     if (Successful) {
-        Model->ApplyTransformations();
+        PointLight->ApplyTransformations();
     }
     
 
