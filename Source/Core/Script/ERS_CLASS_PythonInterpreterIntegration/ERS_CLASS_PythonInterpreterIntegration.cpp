@@ -286,7 +286,14 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
         ErrorMessageString->push_back("PointLight Position CAST_ERROR");
     }
 
-    
+    try {
+        DiffuseR = PointLightModule.attr("PointLightDiffuseR").cast<double>();
+        DiffuseG = PointLightModule.attr("PointLightDiffuseG").cast<double>();
+        DiffuseB = PointLightModule.attr("PointLightDiffuseB").cast<double>();
+        PointLight->Diffuse = glm::vec3(DiffuseR, DiffuseG, DiffuseB);
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("PointLight Position CAST_ERROR");
+    }
 
 
     // Return Status
