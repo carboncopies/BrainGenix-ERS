@@ -313,7 +313,13 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
         ErrorMessageString->push_back("PointLight Position CAST_ERROR");
     }
 
-
+    try {
+        PointLight->RolloffConstant = PointLightModule.attr("PointLightRolloffConstant").cast<double>();
+        PointLight->RolloffLinear = PointLightModule.attr("PointLightRolloffLinear").cast<double>();
+        PointLight->RolloffQuadratic = PointLightModule.attr("PointLightRolloffQuadratic").cast<double>();
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("PointLight Position CAST_ERROR");
+    }
 
     // Return Status
     return true;
