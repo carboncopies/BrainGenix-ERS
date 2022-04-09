@@ -305,13 +305,15 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     }
 
     try {
-        SpecularR = PointLightModule.attr("PointLightSpecularR").cast<double>();
-        SpecularG = PointLightModule.attr("PointLightSpecularG").cast<double>();
-        SpecularB = PointLightModule.attr("PointLightSpecularB").cast<double>();
-        PointLight->Specular = glm::vec3(SpecularR, SpecularG, SpecularB);
+        AmbientR = PointLightModule.attr("PointLightAmbientR").cast<double>();
+        AmbientG = PointLightModule.attr("PointLightAmbientG").cast<double>();
+        AmbientB = PointLightModule.attr("PointLightAmbientB").cast<double>();
+        PointLight->Ambient = glm::vec3(AmbientR, AmbientG, AmbientB);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Position CAST_ERROR");
     }
+
+
 
     // Return Status
     return true;
