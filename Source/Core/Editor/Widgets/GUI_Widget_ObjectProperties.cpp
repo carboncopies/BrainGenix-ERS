@@ -171,13 +171,16 @@ void Widget_ObjectProperties::Draw() {
 
                         for (unsigned long i = 0; i < ScriptIndices_.size(); i++) {
 
-                            std::string ScriptName = P
-                            ImGui::Selectable(ScriptName, i==ScriptIndices_[i])
+                            std::string ScriptName = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndices_[i]].Name_;
+                            bool Selected = i==ScriptIndex_;
+                            if (ImGui::Selectable(ScriptName.c_str(), &Selected)) {
+                                ScriptIndex_ = i;
+                            }
 
                         }
 
 
-                    ImGui::EndChild()
+                    ImGui::EndChild();
                     }
 
 
