@@ -33,6 +33,9 @@ private:
 
     Cursors3D* Cursors3D_; /**<Instance pointer to cursors3d class*/
     ERS_CLASS_SceneManager* SceneManager_; /**<Pointer To Scene Manager Instance*/
+    
+    char ScriptNames_[128][64]; /**<variable to store script names for list box*/
+    int ScriptIndex_; /**<Selected index of script*/
 
 
     /**
