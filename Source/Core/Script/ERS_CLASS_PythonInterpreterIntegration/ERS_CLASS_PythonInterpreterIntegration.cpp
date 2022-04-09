@@ -327,6 +327,157 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
 
 }
 
+bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::string ScriptSource, ERS_STRUCT_DirectionalLight* DirectionalLight, std::vector<std::string>* ErrorMessageString = nullptr) {
+
+
+
+    // Inport The DirectionalLight Module, Set System Info
+    pybind11::module DirectionalLightModule = pybind11::module_::import("DirectionalLight");
+    SetSystemInfoData(&DirectionalLightModule);
+
+    // Set System Parameters
+    DirectionalLightModule.attr("DirectionalLightPosX") = DirectionalLight->Pos.x;
+    DirectionalLightModule.attr("DirectionalLightPosY") = DirectionalLight->Pos.y;
+    DirectionalLightModule.attr("DirectionalLightPosZ") = DirectionalLight->Pos.z;
+
+    PointLightModule.attr("PointLightDiffuseR") = PointLight->Diffuse.r;
+    PointLightModule.attr("PointLightDiffuseG") = PointLight->Diffuse.g;
+    PointLightModule.attr("PointLightDiffuseB") = PointLight->Diffuse.b;
+    
+    PointLightModule.attr("PointLightSpecularR") = PointLight->Specular.r;
+    PointLightModule.attr("PointLightSpecularG") = PointLight->Specular.g;
+    PointLightModule.attr("PointLightSpecularB") = PointLight->Specular.b;
+
+    PointLightModule.attr("PointLightAmbientR") = PointLight->Ambient.r;
+    PointLightModule.attr("PointLightAmbientG") = PointLight->Ambient.g;
+    PointLightModule.attr("PointLightAmbientB") = PointLight->Ambient.b;
+    
+    PointLightModule.attr("PointLightRolloffConstant") = PointLight->RolloffConstant;
+    PointLightModule.attr("PointLightRolloffLinear") = PointLight->RolloffLinear;
+    PointLightModule.attr("PointLightRolloffQuadratic") = PointLight->RolloffQuadratic;
+    
+
+    // Get Local Dict
+    pybind11::dict Locals = PointLightModule.attr("__dict__");
+
+    // If No Message String Vec Provided, Run All At Once, Else Run Line By Line
+    if (ErrorMessageString == nullptr) {
+        try {
+            pybind11::exec(ScriptSource, pybind11::globals(), Locals);
+        } catch (pybind11::value_error const&) {
+            return false;
+        } catch (pybind11::key_error const&) {
+            return false;
+        } catch (pybind11::reference_cast_error const&) {
+            return false;
+        } catch (pybind11::attribute_error const&) {
+            return false;
+        } catch (pybind11::import_error const&) {
+            return false;
+        } catch (pybind11::buffer_error const&) {
+            return false;
+        } catch (pybind11::index_error const&) {
+            return false;
+        } catch (pybind11::type_error const&) {
+            return false;
+        } catch (pybind11::cast_error const&) {
+            return false;
+        } catch (pybind11::error_already_set &Exception) {
+            return false;
+        }
+
+    } else {
+        ErrorMessageString->erase(ErrorMessageString->begin(), ErrorMessageString->end());
+        std::string Line;
+        std::stringstream StringStream(ScriptSource);
+        unsigned long i = 0;
+
+        while (getline(StringStream, Line, '\n')) {
+            
+            i++;
+            try {
+                pybind11::exec(Line, pybind11::globals(), Locals);
+            } catch (pybind11::value_error const&) {
+                ErrorHandle(ErrorMessageString, i, "ValueError");
+            } catch (pybind11::key_error const&) {
+                ErrorHandle(ErrorMessageString, i, "KeyError");
+            } catch (pybind11::reference_cast_error const&) {
+                ErrorHandle(ErrorMessageString, i, "ReferenceCastError");
+            } catch (pybind11::attribute_error const&) {
+                ErrorHandle(ErrorMessageString, i, "AttributeError");
+            } catch (pybind11::import_error const&) {
+                ErrorHandle(ErrorMessageString, i, "ImportError");
+            } catch (pybind11::buffer_error const&) {
+                ErrorHandle(ErrorMessageString, i, "BufferError");
+            } catch (pybind11::index_error const&) {
+                ErrorHandle(ErrorMessageString, i, "IndexError");
+            } catch (pybind11::type_error const&) {
+                ErrorHandle(ErrorMessageString, i, "TypeError");
+            } catch (pybind11::cast_error const&) {
+                ErrorHandle(ErrorMessageString, i, "CastError");
+            } catch (pybind11::error_already_set &Exception) {
+                ErrorHandle(ErrorMessageString, i, Exception.what());
+            }
+
+        }
+
+    }
+
+    // Write Back PointLight Data
+    double PointLightPosX, PointLightPosY, PointLightPosZ;
+    float DiffuseR, DiffuseG, DiffuseB;
+    float SpecularR, SpecularG, SpecularB;
+    float AmbientR, AmbientG, AmbientB;
+
+    try {
+        PointLightPosX = PointLightModule.attr("PointLightPosX").cast<double>();
+        PointLightPosY = PointLightModule.attr("PointLightPosY").cast<double>();
+        PointLightPosZ = PointLightModule.attr("PointLightPosZ").cast<double>();
+        PointLight->Pos = glm::vec3(PointLightPosX, PointLightPosY, PointLightPosZ);
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("PointLight Position CAST_ERROR");
+    }
+
+    try {
+        DiffuseR = PointLightModule.attr("PointLightDiffuseR").cast<double>();
+        DiffuseG = PointLightModule.attr("PointLightDiffuseG").cast<double>();
+        DiffuseB = PointLightModule.attr("PointLightDiffuseB").cast<double>();
+        PointLight->Diffuse = glm::vec3(DiffuseR, DiffuseG, DiffuseB);
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("PointLight Diffuse CAST_ERROR");
+    }
+
+    try {
+        SpecularR = PointLightModule.attr("PointLightSpecularR").cast<double>();
+        SpecularG = PointLightModule.attr("PointLightSpecularG").cast<double>();
+        SpecularB = PointLightModule.attr("PointLightSpecularB").cast<double>();
+        PointLight->Specular = glm::vec3(SpecularR, SpecularG, SpecularB);
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("PointLight Specular CAST_ERROR");
+    }
+
+    try {
+        AmbientR = PointLightModule.attr("PointLightAmbientR").cast<double>();
+        AmbientG = PointLightModule.attr("PointLightAmbientG").cast<double>();
+        AmbientB = PointLightModule.attr("PointLightAmbientB").cast<double>();
+        PointLight->Ambient = glm::vec3(AmbientR, AmbientG, AmbientB);
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("PointLight Ambient CAST_ERROR");
+    }
+
+    try {
+        PointLight->RolloffConstant = PointLightModule.attr("PointLightRolloffConstant").cast<float>();
+        PointLight->RolloffLinear = PointLightModule.attr("PointLightRolloffLinear").cast<float>();
+        PointLight->RolloffQuadratic = PointLightModule.attr("PointLightRolloffQuadratic").cast<float>();
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("PointLight Rolloff CAST_ERROR");
+    }
+
+    // Return Status
+    return true;
+    
+
+}
 
 
 
