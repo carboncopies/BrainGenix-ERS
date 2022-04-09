@@ -176,6 +176,19 @@ void Widget_ObjectProperties::Draw() {
                                 ScriptIndex_ = i;
                             }
 
+
+                            // Context Menu
+                            if (ImGui::BeginPopupContextItem()) {
+
+                                if (ImGui::MenuItem("Remove Script")) {
+                                    
+                                }
+
+
+                            ImGui::EndPopup();
+                            }
+
+
                         }
 
 

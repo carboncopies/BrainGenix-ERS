@@ -39,7 +39,7 @@ private:
     ERS_CLASS_SceneManager* SceneManager_; /**<Pointer To Scene Manager Instance*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to projectutils struct*/
 
-    std::vector<long> ScriptIndices_; /**<variable to store script names for list box*/
+    std::vector<long>* ScriptIndices_; /**<variable to store script names for list box*/
     int ScriptIndex_; /**<Selected index of script*/
 
 
