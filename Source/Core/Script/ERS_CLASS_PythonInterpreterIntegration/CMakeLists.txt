@@ -10,11 +10,18 @@ add_library(ERS_CLASS_PythonInterpreterIntegration
             "ERS_CLASS_PythonInterpreterIntegration.cpp"
             "PyBind11ModelClass.cpp"
             "PyBind11SystemInfo.cpp"
+            "PyBind11PointLightClass.cpp"
+            "PyBind11DirectionalLightClass.cpp"
+            "PyBind11SpotLightClass.cpp"
+            
 
             # Add Header Files (.h)
             "ERS_CLASS_PythonInterpreterIntegration.h"
             "PyBind11ModelClass.h"
             "PyBind11SystemInfo.h"
+            "PyBind11PointLightClass.h"
+            "PyBind11DirectionalLightClass.h"
+            "PyBind11SpotLightClass.h"
             
             ${BACKWARD_ENABLE}
             )

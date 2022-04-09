@@ -24,7 +24,7 @@ GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
     Window_SceneTree_ = std::make_unique<Window_SceneTree>(SceneManager, SystemUtils_, ProjectUtils_);
     Window_SystemLog_ = std::make_unique<Window_SystemLog>(SystemUtils_);
     Window_AssetExplorer_ = std::make_unique<Window_AssetExplorer>(SystemUtils_, ProjectUtils_);
-    
+    Window_ScriptEditor_ = std::make_unique<Window_ScriptEditor>(SystemUtils_, ProjectUtils_, VisualRenderer_);
 
 }
 
@@ -112,6 +112,8 @@ void GUI_Menu_Window::Draw() {
         ImGui::EndMenu();
         }
 
+        ImGui::MenuItem("Script Editor", "", &Window_ScriptEditor_->Enabled_);
+
 
     ImGui::EndMenu();
     }
@@ -134,6 +136,7 @@ void GUI_Menu_Window::Draw() {
     Window_SceneTree_->Draw();
     Window_SystemLog_->Draw();
     Window_AssetExplorer_->Draw();
+    Window_ScriptEditor_->Draw();
 
 
 }

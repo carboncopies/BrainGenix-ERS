@@ -77,6 +77,9 @@ void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defa
 
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
 
+
+
+
     // Close Any Viewports That Aren't All Open
     int ViewportsToClose = -1;
     for (int i = 0; (long)i < (long)Viewports_.size(); i++) {
@@ -160,27 +163,39 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 long ScriptIndex = Model->AttachedScriptIndexes_[x];
                 std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
 
-                std::vector<std::string> ErrorMsg;
-
-
-                bool status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, Model, &ErrorMsg);
-                if (!status) {
-                    IsEditorMode_ = true;
+                bool Status;
+                if (x == (unsigned long)SelectedScript_) {
+                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, Model, DebugLog_);
+                } else {
+                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, Model);
                 }
 
-                for (unsigned long i = 0; i < ErrorMsg.size(); i++) {
-                    std::cout<<ErrorMsg[i];
+                if (!Status) {
+                    IsEditorMode_ = true;
                 }
 
 
             }
 
 
+
+
+
         }
 
     }
 
+    // Reset Selected Script
+    SelectedScript_ = -1;
 
+
+
+}
+
+void ERS_CLASS_VisualRenderer::SetScriptDebug(int Index, std::vector<std::string>* DebugLog) {
+
+    SelectedScript_ = Index;
+    DebugLog_ = DebugLog;
 
 }
 
@@ -876,7 +891,6 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
                 NewScript.AssetID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
                 NewScript.Code_ = "# ERS Script\n";
                 NewScript.Name_ = "Untitled Script";
-                std::cout<<NewScript.AssetID<<std::endl;
                 ProjectUtils_->ProjectManager_->Project_.Scripts.push_back(NewScript);
             
             }

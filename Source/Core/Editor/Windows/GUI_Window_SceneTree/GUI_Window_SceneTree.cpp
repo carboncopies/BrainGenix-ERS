@@ -199,13 +199,17 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         }
 
         // Create Tree Node
-        ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
+        bool DropdownEnabled = ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
+
 
         // If User Clicks Node, Update Object Index
         if (ImGui::IsItemClicked()) {
             Scene->SelectedObject = i;
             Scene->HasSelectionChanged = true;
         }
+
+
+
 
 
         // Handle Drag/Drops
@@ -237,8 +241,6 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             ImGui::EndDragDropTarget();
             }
 
-
-        }
 
         // Context Menu
         if (ImGui::BeginPopupContextItem()) {

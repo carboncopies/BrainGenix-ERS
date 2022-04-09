@@ -74,6 +74,9 @@ public:
     bool CaptureCursor_ = false; /**<Indicate if cursor should be captured*/
     int CaptureIndex_ = 0; /**<Index where cursor was captured*/
     
+    int SelectedScript_ = -1; /**<Set the selected script index*/
+    std::vector<std::string>* DebugLog_; /**<Script Debug Log Pointer, Sends Script Traceback/Error Info Here*/
+
     double RunTime_; /**<Number of seconds since start of "play" mode. (other mode is editor mode)*/
     double GameStartTime_; /**<Time when the game entered "play" mode, used to calc the runtime variable*/
     bool IsEditorMode_; /**<Sets if in editor or play mode*/
@@ -132,6 +135,8 @@ private:
      * @return long 
      */
     long FindShaderIndex(std::string Name);
+
+
 
 
 public:
@@ -202,5 +207,13 @@ public:
      * @param Defaults 
      */
     void SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defaults);
+
+    /**
+     * @brief Tell the visual renderer what script the scripteditor window is working on, provide pointer to debug log used by the window.
+     * 
+     * @param ScriptIndex 
+     * @param DebugLog 
+     */
+    void SetScriptDebug(int ScriptIndex, std::vector<std::string>* DebugLog);
 
 };

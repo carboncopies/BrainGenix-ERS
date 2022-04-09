@@ -28,6 +28,9 @@
 
 #include <PyBind11ModelClass.h>
 #include <PyBind11SystemInfo.h>
+#include <PyBind11PointLightClass.h>
+#include <PyBind11SpotLightClass.h>
+#include <PyBind11DirectionalLightClass.h>
 
 
 
@@ -99,7 +102,7 @@ public:
      * @brief Runs a script attached to a point light
      * 
      */
-    bool ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* Model);
+    bool ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* Model, std::vector<std::string>* ErrorMessageString = nullptr);
 
 
     /**

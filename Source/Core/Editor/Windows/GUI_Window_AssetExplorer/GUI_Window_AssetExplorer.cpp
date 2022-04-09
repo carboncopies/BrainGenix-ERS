@@ -11,6 +11,8 @@ Window_AssetExplorer::Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils, 
     ProjectUtils_ = ProjectUtils;
     SystemUtils_->Logger_->Log("Initializing GUI_Window_AssetExplorer", 5);
 
+    Subwindow_ScriptRenameModal_ = std::make_unique<Subwindow_ScriptRenameModal>(ProjectUtils_);
+
 }
 
 Window_AssetExplorer::~Window_AssetExplorer() {
@@ -94,6 +96,17 @@ void Window_AssetExplorer::Draw() {
                         bool Selected = ImGui::Selectable(ProjectUtils_->ProjectManager_->Project_.Scripts[i].Name_.c_str(), i == SelectedScriptIndex_);
                         if (Selected) {
                             SelectedScriptIndex_ = i;
+                        }
+
+                        
+                        // Context menu, used for renaming and other such functions.
+                        if (ImGui::BeginPopupContextItem()) {
+
+                            if (ImGui::MenuItem("Rename")) {
+                                Subwindow_ScriptRenameModal_->Activate(i);
+                            }
+
+                        ImGui::EndPopup();
                         }
 
                         // Drag+Drop Source
@@ -216,6 +229,9 @@ void Window_AssetExplorer::Draw() {
 
     ImGui::End();
     }
+
+
+    Subwindow_ScriptRenameModal_->Draw();
 
 
 }

@@ -35,7 +35,8 @@ target_link_libraries(Menu_Window
     Window_SceneTree
     Window_SystemLog
     Window_AssetExplorer
-    
+    Window_ScriptEditor
+
     )
 
 target_include_directories(Menu_Window PUBLIC ./)
