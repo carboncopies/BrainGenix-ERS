@@ -72,10 +72,9 @@ BrainGenix Environment Rendering System (ERS) aims to be a distributed multi-GPU
     "ModelEnabled" - Enable/Disable rendering of the model
 
   ## PointLight Variables
-
-    "PointLightPosX" - X Position of the model
-    "PointLightPosY" - Y Position of the model
-    "PointLightPosZ" - Z Position of the model
+    "PointLightPosX" - X Position of the light
+    "PointLightPosY" - Y Position of the light
+    "PointLightPosZ" - Z Position of the light
     "PointLightDiffuseR" - Red component of diffuse color (from scale of 0 to 1)
     "PointLightDiffuseG" - Green component of diffuse color (from scale of 0 to 1)
     "PointLightDiffuseB" - Blue component of diffuse color (from scale of 0 to 1)
@@ -89,4 +88,19 @@ BrainGenix Environment Rendering System (ERS) aims to be a distributed multi-GPU
     "PointLightRolloffLinear" - Linear component of light rolloff (float)
     "PointLightRolloffQuadratic" - Quadratic component of light rolloff (float)
     
-    
+  ## DirectionalLight Variables
+    "DirectionalLightPosX" - X Position of the light
+    "DirectionalLightPosY" - Y Position of the light
+    "DirectionalLightPosZ" - Z Position of the light
+    "DirectionalLightRotX" - X Rotation of the light
+    "DirectionalLightRotY" - Y Rotation of the light
+    "DirectionalLightRotZ" - Z Rotation of the light
+    "DirectionalLightDiffuseR" - Red component of diffuse color (from scale of 0 to 1)
+    "DirectionalLightDiffuseG" - Green component of diffuse color (from scale of 0 to 1)
+    "DirectionalLightDiffuseB" - Blue component of diffuse color (from scale of 0 to 1)
+    "DirectionalLightSpecularR" - Red component of specular color (from scale of 0 to 1)
+    "DirectionalLightSpecularG" - Green component of specular color (from scale of 0 to 1)
+    "DirectionalLightSpecularB" - Blue component of specular color (from scale of 0 to 1)    
+    "DirectionalLightAmbientR" - Red component of ambient color (from scale of 0 to 1)
+    "DirectionalLightAmbientG" - Green component of ambient color (from scale of 0 to 1)
+    "DirectionalLightAmbientB" - Blue component of ambient color (from scale of 0 to 1)
