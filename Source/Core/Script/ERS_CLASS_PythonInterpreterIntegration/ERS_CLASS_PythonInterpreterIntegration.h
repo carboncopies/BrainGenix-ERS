@@ -102,7 +102,21 @@ public:
      * @brief Runs a script attached to a point light
      * 
      */
-    bool ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* Model, std::vector<std::string>* ErrorMessageString = nullptr);
+    bool ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* PointLight, std::vector<std::string>* ErrorMessageString = nullptr);
+
+
+    /**
+     * @brief Runs a script attached to a directional light
+     * 
+     */
+    bool ExecuteDirectionalLightScript(std::string ScriptSource, ERS_STRUCT_DirectionalLight* DirectionalLight, std::vector<std::string>* ErrorMessageString = nullptr);
+
+
+    /**
+     * @brief Runs a script attached to a spot light
+     * 
+     */
+    bool ExecuteSpotLightScript(std::string ScriptSource, ERS_STRUCT_SpotLight* SpotLight, std::vector<std::string>* ErrorMessageString = nullptr);
 
 
     /**
