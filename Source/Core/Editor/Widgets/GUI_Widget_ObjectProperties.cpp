@@ -82,33 +82,29 @@ void Widget_ObjectProperties::Draw() {
                 } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("DirectionalLight")) {
                     
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
-                    ImGui::Spacing();
-                    ImGui::Spacing();
-                    ImGui::Separator();
-                    ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Directional Light Settings");
-                    ImGui::Separator();
-                    ImGui::Spacing();
-                    ImGui::Spacing();
+                    if (ImGui::CollapsingHeader("Point Light Settings")) {
 
-                    float DiffuseColor[3];
-                    VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Diffuse, DiffuseColor);
-                    ImGui::ColorEdit3("Diffuse", DiffuseColor);
-                    ImGui::SameLine();
-                    ImGui::HelpMarker("Controls the main color of the light.");
-                    FloatToVec(DiffuseColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Diffuse);
-                    float AmbientColor[3];
-                    VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Ambient, AmbientColor);
-                    ImGui::ColorEdit3("Ambient", AmbientColor);
-                    ImGui::SameLine();
-                    ImGui::HelpMarker("Controls any additions to the ambient color of the environment.");
-                    FloatToVec(AmbientColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Ambient);
-                    float SpecularColor[3];
-                    VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Specular, SpecularColor);
-                    ImGui::ColorEdit3("Specular", SpecularColor);
-                    ImGui::SameLine();
-                    ImGui::HelpMarker("Controls the color of the reflection. Generally, you shouldn't do this with a directional light, use a spot or point light instead.");
-                    FloatToVec(SpecularColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Specular);
-                    ImGui::Separator();
+                        float DiffuseColor[3];
+                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Diffuse, DiffuseColor);
+                        ImGui::ColorEdit3("Diffuse", DiffuseColor);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Controls the main color of the light.");
+                        FloatToVec(DiffuseColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Diffuse);
+                        float AmbientColor[3];
+                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Ambient, AmbientColor);
+                        ImGui::ColorEdit3("Ambient", AmbientColor);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Controls any additions to the ambient color of the environment.");
+                        FloatToVec(AmbientColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Ambient);
+                        float SpecularColor[3];
+                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Specular, SpecularColor);
+                        ImGui::ColorEdit3("Specular", SpecularColor);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Controls the color of the reflection. Generally, you shouldn't do this with a directional light, use a spot or point light instead.");
+                        FloatToVec(SpecularColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Specular);
+                        ImGui::Separator();
+
+                    }
 
                 } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("SpotLight")) {
                     
