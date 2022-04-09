@@ -175,6 +175,149 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 }
 
 
+void ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* Model, std::vector<std::string>* ErrorMessageString = nullptr) {
+
+
+
+    // Inport The Model Module, Set System Info
+    pybind11::module ModelModule = pybind11::module_::import("Model");
+    SetSystemInfoData(&ModelModule);
+
+    // Set System Parameters
+    ModelModule.attr("ModelPosX") = Model->ModelPosition.x;
+    ModelModule.attr("ModelPosY") = Model->ModelPosition.y;
+    ModelModule.attr("ModelPosZ") = Model->ModelPosition.z;
+    ModelModule.attr("ModelRotX") = Model->ModelRotation.x;
+    ModelModule.attr("ModelRotY") = Model->ModelRotation.y;
+    ModelModule.attr("ModelRotZ") = Model->ModelRotation.z;
+    ModelModule.attr("ModelScaleX") = Model->ModelScale.x;
+    ModelModule.attr("ModelScaleY") = Model->ModelScale.y;
+    ModelModule.attr("ModelScaleZ") = Model->ModelScale.z;
+
+    ModelModule.attr("ModelEnabled") = Model->Enabled;
+
+
+    // Get Local Dict
+    pybind11::dict Locals = ModelModule.attr("__dict__");
+
+    // If No Message String Vec Provided, Run All At Once, Else Run Line By Line
+    if (ErrorMessageString == nullptr) {
+        try {
+            pybind11::exec(ScriptSource, pybind11::globals(), Locals);
+        } catch (pybind11::value_error const&) {
+            return false;
+        } catch (pybind11::key_error const&) {
+            return false;
+        } catch (pybind11::reference_cast_error const&) {
+            return false;
+        } catch (pybind11::attribute_error const&) {
+            return false;
+        } catch (pybind11::import_error const&) {
+            return false;
+        } catch (pybind11::buffer_error const&) {
+            return false;
+        } catch (pybind11::index_error const&) {
+            return false;
+        } catch (pybind11::type_error const&) {
+            return false;
+        } catch (pybind11::cast_error const&) {
+            return false;
+        } catch (pybind11::error_already_set &Exception) {
+            return false;
+        }
+
+    } else {
+        ErrorMessageString->erase(ErrorMessageString->begin(), ErrorMessageString->end());
+        std::string Line;
+        std::stringstream StringStream(ScriptSource);
+        unsigned long i = 0;
+
+        while (getline(StringStream, Line, '\n')) {
+            
+            i++;
+            try {
+                pybind11::exec(Line, pybind11::globals(), Locals);
+            } catch (pybind11::value_error const&) {
+                ErrorHandle(ErrorMessageString, i, "ValueError");
+            } catch (pybind11::key_error const&) {
+                ErrorHandle(ErrorMessageString, i, "KeyError");
+            } catch (pybind11::reference_cast_error const&) {
+                ErrorHandle(ErrorMessageString, i, "ReferenceCastError");
+            } catch (pybind11::attribute_error const&) {
+                ErrorHandle(ErrorMessageString, i, "AttributeError");
+            } catch (pybind11::import_error const&) {
+                ErrorHandle(ErrorMessageString, i, "ImportError");
+            } catch (pybind11::buffer_error const&) {
+                ErrorHandle(ErrorMessageString, i, "BufferError");
+            } catch (pybind11::index_error const&) {
+                ErrorHandle(ErrorMessageString, i, "IndexError");
+            } catch (pybind11::type_error const&) {
+                ErrorHandle(ErrorMessageString, i, "TypeError");
+            } catch (pybind11::cast_error const&) {
+                ErrorHandle(ErrorMessageString, i, "CastError");
+            } catch (pybind11::error_already_set &Exception) {
+                ErrorHandle(ErrorMessageString, i, Exception.what());
+            }
+
+        }
+
+    }
+
+    // Write Back Model Data
+    double ModelPosX, ModelPosY, ModelPosZ;
+    double ModelRotX, ModelRotY, ModelRotZ;
+    double ModelScaleX, ModelScaleY, ModelScaleZ;
+    bool Successful = true;
+
+    try {
+        ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
+        ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
+        ModelPosZ = ModelModule.attr("ModelPosZ").cast<double>();
+        Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("Model Position CAST_ERROR");
+        Successful = false;
+    }
+    try {
+        ModelRotX = ModelModule.attr("ModelRotX").cast<double>();
+        ModelRotY = ModelModule.attr("ModelRotY").cast<double>();
+        ModelRotZ = ModelModule.attr("ModelRotZ").cast<double>();
+        Model->SetRotation(glm::vec3(ModelRotX, ModelRotY, ModelRotZ));
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("Model Rotation CAST_ERROR");
+        Successful = false;
+    }
+    try {
+        ModelScaleX = ModelModule.attr("ModelScaleX").cast<double>();
+        ModelScaleY = ModelModule.attr("ModelScaleY").cast<double>();
+        ModelScaleZ = ModelModule.attr("ModelScaleZ").cast<double>();
+        Model->SetScale(glm::vec3(ModelScaleX, ModelScaleY, ModelScaleZ));
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("Model Scale CAST_ERROR");
+        Successful = false;
+    }
+
+    try {
+        Model->Enabled = ModelModule.attr("ModelEnabled").cast<bool>(); 
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("Model Enable CAST_ERROR");
+        Successful = false;
+    }
+
+
+    if (Successful) {
+        Model->ApplyTransformations();
+    }
+    
+
+
+    // Return Status
+    return true;
+    
+
+}
+
+
 
 // void ERS_CLASS_PythonInterpreterIntegration::ParsePythonErrors(std::vector<std::string>* Target, unsigned long LineNumber, pybind11::error_already_set &Exception) {
     
