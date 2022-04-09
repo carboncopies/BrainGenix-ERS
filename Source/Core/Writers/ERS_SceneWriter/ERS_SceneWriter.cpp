@@ -175,6 +175,14 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "RolloffQuadratic" << YAML::Value << InputScene->PointLights[i]->RolloffQuadratic;
 
 
+        Output<<YAML::Key<<"AttachedScripts";
+        Output<<YAML::Key<<YAML::BeginMap;
+        for (unsigned long x = 0; x < InputScene->PointLights[i]->AttachedScriptIndexes_.size(); x++) {
+            Output<<YAML::Key<<x<<YAML::Value<<InputScene->PointLights[i]->AttachedScriptIndexes_[x];
+        }
+        Output<<YAML::EndMap;
+
+
         Output << YAML::EndMap;
         AssetIndex++;
     }
