@@ -345,11 +345,11 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     DirectionalLightModule.attr("DirectionalLightDiffuseB") = DirectionalLight->Diffuse.b;
     
     DirectionalLightModule.attr("DirectionalLightSpecularR") = DirectionalLight->Specular.r;
-    PointLightModule.attr("PointLightSpecularG") = PointLight->Specular.g;
-    PointLightModule.attr("PointLightSpecularB") = PointLight->Specular.b;
+    DirectionalLightModule.attr("DirectionalLightSpecularG") = DirectionalLight->Specular.g;
+    DirectionalLightModule.attr("DirectionalLightSpecularB") = DirectionalLight->Specular.b;
 
-    PointLightModule.attr("PointLightAmbientR") = PointLight->Ambient.r;
-    PointLightModule.attr("PointLightAmbientG") = PointLight->Ambient.g;
+    DirectionalLightModule.attr("DirectionalLightAmbientR") = DirectionalLight->Ambient.r;
+    DirectionalLightModule.attr("DirectionalLightAmbientG") = DirectionalLight->Ambient.g;
     PointLightModule.attr("PointLightAmbientB") = PointLight->Ambient.b;
     
     PointLightModule.attr("PointLightRolloffConstant") = PointLight->RolloffConstant;
