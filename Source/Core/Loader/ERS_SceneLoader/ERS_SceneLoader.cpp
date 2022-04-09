@@ -193,6 +193,14 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 SceneDataNode[i]["PosZ"].as<float>()
                 );
 
+            // Load Attached Scripts
+            if (SceneDataNode[i]["AttachedScripts"]) {
+                YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
+                for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
+                    Scene.PointLights[LightIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
+                }
+            }
+
         } else if (AssetType == std::string("SpotLight")) {
 
             // Setup Model Pointer In Scene To Work On
