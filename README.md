@@ -4,6 +4,9 @@
 
 BrainGenix Environment Rendering System (ERS) aims to be a distributed multi-GPU rendering system to implement virtual body and environment simulation functionality. ERS will perform sensory translation to convert simulated sensory data into action potentials that can be sent directly to the emulation. ERS is designed to be used in conjunction with other BrainGenix systems, but can also be used as a standalone game engine. 
 
+![Screenshot_20220409_071900](https://user-images.githubusercontent.com/49183477/162561372-b56cd331-3dad-40d9-8eb0-16b9e1aff46a.png)
+
+
 # Build Instructions
 
 ## Linux:
