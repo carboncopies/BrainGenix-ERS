@@ -311,6 +311,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
         } else if (Scene->SceneObjects_[i].Type_ == std::string("SpotLight")) {
 
+            long Index = Scene->SceneObjects_[i].Index_;
+
             // Drag/Drop Target
             long PayloadID;
             if (ImGui::BeginDragDropTarget()) {
