@@ -292,7 +292,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
         DiffuseB = PointLightModule.attr("PointLightDiffuseB").cast<double>();
         PointLight->Diffuse = glm::vec3(DiffuseR, DiffuseG, DiffuseB);
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Position CAST_ERROR");
+        ErrorMessageString->push_back("PointLight Diffuse CAST_ERROR");
     }
 
     try {
@@ -301,7 +301,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
         SpecularB = PointLightModule.attr("PointLightSpecularB").cast<double>();
         PointLight->Specular = glm::vec3(SpecularR, SpecularG, SpecularB);
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Position CAST_ERROR");
+        ErrorMessageString->push_back("PointLight Specular CAST_ERROR");
     }
 
     try {
@@ -310,7 +310,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
         AmbientB = PointLightModule.attr("PointLightAmbientB").cast<double>();
         PointLight->Ambient = glm::vec3(AmbientR, AmbientG, AmbientB);
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Position CAST_ERROR");
+        ErrorMessageString->push_back("PointLight Ambient CAST_ERROR");
     }
 
     try {
@@ -318,7 +318,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
         PointLight->RolloffLinear = PointLightModule.attr("PointLightRolloffLinear").cast<float>();
         PointLight->RolloffQuadratic = PointLightModule.attr("PointLightRolloffQuadratic").cast<float>();
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Position CAST_ERROR");
+        ErrorMessageString->push_back("PointLight Rolloff CAST_ERROR");
     }
 
     // Return Status
