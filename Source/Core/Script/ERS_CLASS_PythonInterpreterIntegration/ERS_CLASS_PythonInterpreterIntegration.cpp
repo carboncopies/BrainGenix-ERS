@@ -352,10 +352,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     DirectionalLightModule.attr("DirectionalLightAmbientG") = DirectionalLight->Ambient.g;
     DirectionalLightModule.attr("DirectionalLightAmbientB") = DirectionalLight->Ambient.b;
     
-    DirectionalLightModule.attr("DirectionalLightRolloffConstant") = DirectionalLight->RolloffConstant;
-    DirectionalLightModule.attr("DirectionalLightRolloffLinear") = DirectionalLight->RolloffLinear;
-    DirectionalLightModule.attr("DirectionalLightRolloffQuadratic") = DirectionalLight->RolloffQuadratic;
-    
 
     // Get Local Dict
     pybind11::dict Locals = DirectionalLightModule.attr("__dict__");
@@ -465,18 +461,9 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
         ErrorMessageString->push_back("DirectionalLight Ambient CAST_ERROR");
     }
 
-    try {
-        DirectionalLight->RolloffConstant = DirectionalLightModule.attr("DirectionalLightRolloffConstant").cast<float>();
-        DirectionalLight->RolloffLinear = DirectionalLightModule.attr("DirectionalLightRolloffLinear").cast<float>();
-        DirectionalLight->RolloffQuadratic = DirectionalLightModule.attr("DirectionalLightRolloffQuadratic").cast<float>();
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("DirectionalLight Rolloff CAST_ERROR");
-    }
-
     // Return Status
     return true;
     
-
 }
 
 
