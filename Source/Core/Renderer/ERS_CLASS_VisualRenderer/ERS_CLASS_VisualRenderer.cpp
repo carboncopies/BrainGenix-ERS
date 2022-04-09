@@ -180,7 +180,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
         for (unsigned long i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights.size(); i++) {
 
             // Get Model
-            ERS_STRUCT_PointLightl* Target = SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i].get();
+            ERS_STRUCT_PointLight* Target = SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i].get();
 
             // Go Through All Scripts In Model
             for (unsigned long x = 0; x < Target->AttachedScriptIndexes_.size(); x++) {
