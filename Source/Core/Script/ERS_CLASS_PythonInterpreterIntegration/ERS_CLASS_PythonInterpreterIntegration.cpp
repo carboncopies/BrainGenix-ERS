@@ -352,7 +352,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     DirectionalLightModule.attr("DirectionalLightAmbientG") = DirectionalLight->Ambient.g;
     DirectionalLightModule.attr("DirectionalLightAmbientB") = DirectionalLight->Ambient.b;
     
-    PointLightModule.attr("PointLightRolloffConstant") = PointLight->RolloffConstant;
+    DirectionalLightModule.attr("PointLightRolloffConstant") = PointLight->RolloffConstant;
     PointLightModule.attr("PointLightRolloffLinear") = PointLight->RolloffLinear;
     PointLightModule.attr("PointLightRolloffQuadratic") = PointLight->RolloffQuadratic;
     
