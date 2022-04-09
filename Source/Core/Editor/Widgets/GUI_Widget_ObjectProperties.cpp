@@ -148,6 +148,13 @@ void Widget_ObjectProperties::Draw() {
                 }
 
 
+                // Show Script Data
+                if (ImGui::CollapsingHeader("Scripts", ImGuiTreeNodeFlags_DefaultOpen)) {
+
+                    // Begin List Box
+                    ImGui::ListBox("Attached Scripts", )
+
+                }
 
 
 
