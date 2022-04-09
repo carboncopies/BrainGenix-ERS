@@ -273,9 +273,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
 
     // Write Back PointLight Data
     double PointLightPosX, PointLightPosY, PointLightPosZ;
-    double PointLightRotX, PointLightRotY, PointLightRotZ;
-    double PointLightScaleX, PointLightScaleY, PointLightScaleZ;
-    bool Successful = true;
+    float DiffuseR, DiffuseG, DiffuseB;
 
     try {
         PointLightPosX = PointLightModule.attr("PointLightPosX").cast<double>();
@@ -284,7 +282,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
         PointLight->SetPosition(glm::vec3(PointLightPosX, PointLightPosY, PointLightPosZ));
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Position CAST_ERROR");
-        Successful = false;
     }
     try {
         PointLightRotX = PointLightModule.attr("PointLightRotX").cast<double>();
@@ -293,7 +290,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
         PointLight->SetRotation(glm::vec3(PointLightRotX, PointLightRotY, PointLightRotZ));
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Rotation CAST_ERROR");
-        Successful = false;
     }
     try {
         PointLightScaleX = PointLightModule.attr("PointLightScaleX").cast<double>();
@@ -302,20 +298,14 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
         PointLight->SetScale(glm::vec3(PointLightScaleX, PointLightScaleY, PointLightScaleZ));
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Scale CAST_ERROR");
-        Successful = false;
     }
 
     try {
         PointLight->Enabled = PointLightModule.attr("PointLightEnabled").cast<bool>(); 
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Enable CAST_ERROR");
-        Successful = false;
     }
 
-
-    if (Successful) {
-        PointLight->ApplyTransformations();
-    }
     
 
 
