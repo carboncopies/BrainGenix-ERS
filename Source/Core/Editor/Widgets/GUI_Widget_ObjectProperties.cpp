@@ -152,8 +152,12 @@ void Widget_ObjectProperties::Draw() {
                 if (ImGui::CollapsingHeader("Scripts", ImGuiTreeNodeFlags_DefaultOpen)) {
 
                     // Populate Script List Char Array
+                    long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
+                    std::fill(std::begin(ScriptNames_), std::end(ScriptNames_), '\0');
                     if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("Model")) {
-
+                        for (unsigned long i = 0; i < SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[Index]->AttachedScriptIndexes_.size(); i++) {
+                            ScriptNames_[]
+                        }                        
                     } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("PointLight")) {
 
                     } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("DirectionalLight")) {
@@ -163,9 +167,8 @@ void Widget_ObjectProperties::Draw() {
                     }
 
 
+                    
 
-                    // Begin List Box
-                    ImGui::ListBox("Attached Scripts", )
 
                 }
 

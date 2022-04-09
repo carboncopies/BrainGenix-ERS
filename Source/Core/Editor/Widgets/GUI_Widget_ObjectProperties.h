@@ -6,6 +6,9 @@
 
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <string>
+#include <vector>
+#include <memory>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glad/glad.h>
@@ -33,8 +36,8 @@ private:
 
     Cursors3D* Cursors3D_; /**<Instance pointer to cursors3d class*/
     ERS_CLASS_SceneManager* SceneManager_; /**<Pointer To Scene Manager Instance*/
-    
-    char ScriptNames_[128][64]; /**<variable to store script names for list box*/
+
+    std::vector<std::string> ScriptNames_; /**<variable to store script names for list box*/
     int ScriptIndex_; /**<Selected index of script*/
 
 
