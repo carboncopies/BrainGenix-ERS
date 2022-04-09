@@ -192,7 +192,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 if (x == (unsigned long)SelectedScript_) {
                     Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecutePointLightScript(Code, Target, DebugLog_);
                 } else {
-                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecutePointLightcript(Code, Target);
+                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecutePointLightScript(Code, Target);
                 }
 
                 if (!Status) {
