@@ -460,7 +460,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
         AmbientR = DirectionalLightModule.attr("DirectionalLightAmbientR").cast<double>();
         AmbientG = DirectionalLightModule.attr("DirectionalLightAmbientG").cast<double>();
         AmbientB = DirectionalLightModule.attr("DirectionalLightAmbientB").cast<double>();
-        PointLight->Ambient = glm::vec3(AmbientR, AmbientG, AmbientB);
+        DirectionalLight->Ambient = glm::vec3(AmbientR, AmbientG, AmbientB);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Ambient CAST_ERROR");
     }
