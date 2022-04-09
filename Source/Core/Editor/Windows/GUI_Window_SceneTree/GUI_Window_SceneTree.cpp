@@ -259,8 +259,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     
                     // Check If Already In Vector
                     bool Contains = false; 
-                    for (unsigned long x = 0; x < Scene->PointLights[i]->AttachedScriptIndexes_.size(); x++) {
-                        if (PayloadID ==  Scene->PointLights[i]->AttachedScriptIndexes_[x]) {
+                    for (unsigned long x = 0; x < Scene->PointLights[Index]->AttachedScriptIndexes_.size(); x++) {
+                        if (PayloadID ==  Scene->PointLights[Index]->AttachedScriptIndexes_[x]) {
                             SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'PointLight', Already Attached").c_str(), 0);
                             Contains = true;
                             break;
@@ -268,7 +268,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     }
 
                     if (!Contains) {
-                        Scene->PointLights[i]->AttachedScriptIndexes_.push_back(PayloadID);
+                        Scene->PointLights[Index]->AttachedScriptIndexes_.push_back(PayloadID);
                     }
                 }
 
