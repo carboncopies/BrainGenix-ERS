@@ -323,9 +323,9 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     
                     // Check If Already In Vector
                     bool Contains = false; 
-                    std::cout<<Scene->SpotLights[i]->AttachedScriptIndexes_.size()<<std::endl;
-                    for (unsigned long x = 0; x < Scene->SpotLights[i]->AttachedScriptIndexes_.size(); x++) {
-                        if (PayloadID ==  Scene->SpotLights[i]->AttachedScriptIndexes_[x]) {
+                    std::cout<<Scene->SpotLights[Index]->AttachedScriptIndexes_.size()<<std::endl;
+                    for (unsigned long x = 0; x < Scene->SpotLights[Index]->AttachedScriptIndexes_.size(); x++) {
+                        if (PayloadID ==  Scene->SpotLights[Index]->AttachedScriptIndexes_[x]) {
                             SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'SpotLight', Already Attached").c_str(), 0);
                             Contains = true;
                             break;
@@ -333,7 +333,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     }
 
                     if (!Contains) {
-                        Scene->SpotLights[i]->AttachedScriptIndexes_.push_back(PayloadID);
+                        Scene->SpotLights[Index]->AttachedScriptIndexes_.push_back(PayloadID);
                     }
                 }
 
