@@ -274,36 +274,16 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     // Write Back PointLight Data
     double PointLightPosX, PointLightPosY, PointLightPosZ;
     float DiffuseR, DiffuseG, DiffuseB;
+    float SpecularR, SpecularG, SpecularB;
+    float AmbientR, AmbientG, AmbientB;
 
     try {
         PointLightPosX = PointLightModule.attr("PointLightPosX").cast<double>();
         PointLightPosY = PointLightModule.attr("PointLightPosY").cast<double>();
         PointLightPosZ = PointLightModule.attr("PointLightPosZ").cast<double>();
-        PointLight->SetPosition(glm::vec3(PointLightPosX, PointLightPosY, PointLightPosZ));
+        PointLight->Pos = glm::vec3(PointLightPosX, PointLightPosY, PointLightPosZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Position CAST_ERROR");
-    }
-    try {
-        PointLightRotX = PointLightModule.attr("PointLightRotX").cast<double>();
-        PointLightRotY = PointLightModule.attr("PointLightRotY").cast<double>();
-        PointLightRotZ = PointLightModule.attr("PointLightRotZ").cast<double>();
-        PointLight->SetRotation(glm::vec3(PointLightRotX, PointLightRotY, PointLightRotZ));
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Rotation CAST_ERROR");
-    }
-    try {
-        PointLightScaleX = PointLightModule.attr("PointLightScaleX").cast<double>();
-        PointLightScaleY = PointLightModule.attr("PointLightScaleY").cast<double>();
-        PointLightScaleZ = PointLightModule.attr("PointLightScaleZ").cast<double>();
-        PointLight->SetScale(glm::vec3(PointLightScaleX, PointLightScaleY, PointLightScaleZ));
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Scale CAST_ERROR");
-    }
-
-    try {
-        PointLight->Enabled = PointLightModule.attr("PointLightEnabled").cast<bool>(); 
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Enable CAST_ERROR");
     }
 
     
