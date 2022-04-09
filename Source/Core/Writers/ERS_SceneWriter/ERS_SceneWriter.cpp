@@ -130,6 +130,13 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "RotZ" << YAML::Value << InputScene->DirectionalLights[i]->Rot[2];
 
 
+        Output<<YAML::Key<<"AttachedScripts";
+        Output<<YAML::Key<<YAML::BeginMap;
+        for (unsigned long x = 0; x < InputScene->DirectionalLights[i]->AttachedScriptIndexes_.size(); x++) {
+            Output<<YAML::Key<<x<<YAML::Value<<InputScene->DirectionalLights[i]->AttachedScriptIndexes_[x];
+        }
+        Output<<YAML::EndMap;
+
         Output << YAML::EndMap;
         AssetIndex++;
     }
