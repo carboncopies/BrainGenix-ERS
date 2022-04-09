@@ -165,7 +165,7 @@ void Widget_ObjectProperties::Draw() {
                     }
 
                     // Draw List Box
-                    if (ImGui::BeginChild("Script Controls", ImVec2(0, 400), true)) {
+                    if (ImGui::BeginChild("Script Controls", ImVec2(0, 200), true)) {
 
 
                         for (unsigned long i = 0; i < ScriptIndices_.size(); i++) {
