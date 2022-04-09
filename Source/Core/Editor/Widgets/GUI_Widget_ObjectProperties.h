@@ -37,7 +37,7 @@ private:
     Cursors3D* Cursors3D_; /**<Instance pointer to cursors3d class*/
     ERS_CLASS_SceneManager* SceneManager_; /**<Pointer To Scene Manager Instance*/
 
-    std::vector<std::string> ScriptNames_; /**<variable to store script names for list box*/
+    std::vector<std::string> ScriptIndices_; /**<variable to store script names for list box*/
     int ScriptIndex_; /**<Selected index of script*/
 
 

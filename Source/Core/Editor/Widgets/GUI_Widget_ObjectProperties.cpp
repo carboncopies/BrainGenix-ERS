@@ -154,7 +154,7 @@ void Widget_ObjectProperties::Draw() {
                     // Populate Script List Char Array
                     long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
                     if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("Model")) {
-                        ScriptNames_ = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[Index]->AttachedScriptIndexes_                       
+                        ScriptIndices_ = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[Index]->AttachedScriptIndexes_                       
                     } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("PointLight")) {
 
                     } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("DirectionalLight")) {
@@ -168,9 +168,9 @@ void Widget_ObjectProperties::Draw() {
                     if (ImGui::BeginChild("Script Controls", ImVec2(0, 400), true)) {
 
 
-                        for (unsigned long i = 0; i < ScriptNames_.size(); i++) {
+                        for (unsigned long i = 0; i < ScriptIndices_.size(); i++) {
 
-                            ImGui::Selectable(ScriptName, i==ScriptNames_[i])
+                            ImGui::Selectable(ScriptName, i==ScriptIndices_[i])
 
                         }
 
