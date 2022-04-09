@@ -175,7 +175,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
 }
 
-bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* PointLight, std::vector<std::string>* ErrorMessageString = nullptr) {
+bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* PointLight, std::vector<std::string>* ErrorMessageString) {
 
 
 
@@ -327,7 +327,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
 
 }
 
-bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::string ScriptSource, ERS_STRUCT_DirectionalLight* DirectionalLight, std::vector<std::string>* ErrorMessageString = nullptr) {
+bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::string ScriptSource, ERS_STRUCT_DirectionalLight* DirectionalLight, std::vector<std::string>* ErrorMessageString) {
 
 
 
@@ -480,7 +480,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     
 }
 
-bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string ScriptSource, ERS_STRUCT_SpotLight* SpotLight, std::vector<std::string>* ErrorMessageString = nullptr) {
+bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string ScriptSource, ERS_STRUCT_SpotLight* SpotLight, std::vector<std::string>* ErrorMessageString) {
 
 
 
