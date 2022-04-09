@@ -118,6 +118,7 @@ public:
      */
     bool ExecuteSpotLightScript(std::string ScriptSource, ERS_STRUCT_SpotLight* SpotLight, std::vector<std::string>* ErrorMessageString = nullptr);
 
+
     /**
      * @brief Provides access to systeminfo data
      * 
