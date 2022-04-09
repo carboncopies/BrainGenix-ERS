@@ -156,7 +156,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
             // Get Model
             ERS_STRUCT_Model* Model = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i].get();
 
-
             // Go Through All Scripts In Model
             for (unsigned long x = 0; x < Model->AttachedScriptIndexes_.size(); x++) {
 
@@ -173,15 +172,37 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 if (!Status) {
                     IsEditorMode_ = true;
                 }
-
-
             }
-
-
-
-
-
         }
+
+
+
+        for (unsigned long i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights.size(); i++) {
+
+            // Get Model
+            ERS_STRUCT_Model* Model = SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i].get();
+
+            // Go Through All Scripts In Model
+            for (unsigned long x = 0; x < Model->AttachedScriptIndexes_.size(); x++) {
+
+                long ScriptIndex = Model->AttachedScriptIndexes_[x];
+                std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
+
+                bool Status;
+                if (x == (unsigned long)SelectedScript_) {
+                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecutePointLightscript(Code, Model, DebugLog_);
+                } else {
+                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecutePointLightscript(Code, Model);
+                }
+
+                if (!Status) {
+                    IsEditorMode_ = true;
+                }
+            }
+        }
+
+
+
 
     }
 
