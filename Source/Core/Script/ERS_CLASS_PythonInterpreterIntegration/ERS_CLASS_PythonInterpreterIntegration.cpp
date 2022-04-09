@@ -635,6 +635,23 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
         ErrorMessageString->push_back("SpotLight Ambient CAST_ERROR");
     }
 
+    try {
+        SpotLight->RolloffConstant = SpotLightModule.attr("SpotLightRolloffConstant").cast<float>();
+        SpotLight->RolloffLinear = SpotLightModule.attr("SpotLightRolloffLinear").cast<float>();
+        SpotLight->RolloffQuadratic = SpotLightModule.attr("SpotLightRolloffQuadratic").cast<float>();
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("SpotLight Rolloff CAST_ERROR");
+    }
+
+
+    try {
+        SpotLight->CutOff = SpotLightModule.attr("SpotLightCutoff").cast<float>();
+        SpotLight->OuterCutOff = SpotLightModule.attr("SpotLightOuterCutoff").cast<float>();
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("SpotLight Cutoff CAST_ERROR");
+    }
+
+
     // Return Status
     return true;
     
