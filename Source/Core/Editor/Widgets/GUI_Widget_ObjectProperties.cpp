@@ -181,7 +181,7 @@ void Widget_ObjectProperties::Draw() {
                             if (ImGui::BeginPopupContextItem()) {
 
                                 if (ImGui::MenuItem("Remove Script")) {
-
+                                    ScriptIndices_->erase(ScriptIndices_->begin() + i);
                                 }
 
 
