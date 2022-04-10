@@ -17,7 +17,7 @@ target_link_libraries(ImGuiFileDialog
 )
 
 option(USE_STD_FILESYSTEM "Enable std::filesystem use for path and ImGuiFileDialog" ON)
-
+message("VAR STATUS: ${USE_STD_FILESYSTEM}")
 message("Configuring ImGuiFileDialog File Interface System")
 if (USE_STD_FILESYSTEM)
 	add_definitions(-DUSE_STD_FILESYSTEM)
