@@ -16,7 +16,7 @@ target_link_libraries(ImGuiFileDialog
     glfw
 )
 
-option(USE_STD_FILESYSTEM "Enable std::filesystem use for path and ImGuiFileDialog" OFF)
+option(USE_STD_FILESYSTEM "Enable std::filesystem use for path and ImGuiFileDialog" ON)
 
 message("Configuring ImGuiFileDialog File Interface System")
 if (USE_STD_FILESYSTEM)
@@ -31,8 +31,8 @@ else()
 endif()
 message("Finished Configuring File Interface System")
 
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+# set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# set(CMAKE_CXX_EXTENSIONS OFF)
 
 
 target_include_directories(ImGuiFileDialog PUBLIC ./)
