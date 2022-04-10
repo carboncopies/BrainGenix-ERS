@@ -31,5 +31,8 @@ else()
 endif()
 message("Finished Configuring File Interface System")
 
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 
 target_include_directories(ImGuiFileDialog PUBLIC ./)
