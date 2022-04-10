@@ -16,7 +16,7 @@ target_link_libraries(ImGuiFileDialog
     glfw
 )
 
-option(USE_STD_FILESYSTEM "Enable std::filesystem use for path and ImGuiFileDialog" ON)
+option(USE_STD_FILESYSTEM "Enable std::filesystem use for path and ImGuiFileDialog" OFF)
 
 message("Configuring ImGuiFileDialog File Interface System")
 if (USE_STD_FILESYSTEM)
