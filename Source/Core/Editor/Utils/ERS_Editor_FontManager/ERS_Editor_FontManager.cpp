@@ -42,8 +42,13 @@ void ERS_CLASS_FontManager::IndexFonts() {
             FontPathList_.push_back(FilePath);
             std::string FontName = FilePath.substr(0, strlen(FilePath.c_str())-4);
 
+            // Unix File Systems Use Forward Slash
             int LastSlashIndex = FontName.find_last_of("/");
             FontName = FontName.substr(LastSlashIndex+1, strlen(FontName.c_str())-LastSlashIndex);
+
+            // Because *Windows*, Do It Again With A Backslash
+            int LastBackSlashIndex = FontName.find_last_of('\\');
+            FontName = FontName.substr(LastBackSlashIndex+1, strlen(FontName.c_str())-LastBackSlashIndex);
 
             FontNameList_.push_back(FontName); 
 
