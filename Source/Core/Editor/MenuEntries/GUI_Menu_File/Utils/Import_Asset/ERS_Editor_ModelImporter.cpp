@@ -83,6 +83,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
                 std::string FilePath{Entry.path().u8string()};
                 std::string FileName = FilePath.substr(FilePath.find_last_of("/") + 1, FilePath.size() - 1);
+                FileName = FilePath.substr(FilePath.find_last_of('\\') + 1, FilePath.size() - 1);
                 std::string FileNameWithoutExtension = FileName.substr(0, FileName.find_first_of("."));
 
                 // Remove Spaces From Filename And Replace With Underscores
