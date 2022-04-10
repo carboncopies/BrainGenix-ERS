@@ -91,7 +91,6 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
                     Pos ++;
                 }
 
-                std::cout<<FileNameWithoutExtension<<std::endl<<RefString<<std::endl;
 
                 if (FileNameWithoutExtension == RefString) {
                     Path = FilePath;
