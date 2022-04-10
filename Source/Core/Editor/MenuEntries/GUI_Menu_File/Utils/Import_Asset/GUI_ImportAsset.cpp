@@ -26,7 +26,7 @@ GUI_ImportAsset::~GUI_ImportAsset() {
 void GUI_ImportAsset::Draw() {
 
     // Draw File Dialog
-    if (ImGuiFileDialog::Instance()->Display("Import Model", ImGuiWindowFlags_None, ImVec2(200, 400))) {
+    if (ImGuiFileDialog::Instance()->Display("Import Model", ImGuiWindowFlags_None, ImVec2(400, 200))) {
 
 
         if (ImGuiFileDialog::Instance()->IsOk())
