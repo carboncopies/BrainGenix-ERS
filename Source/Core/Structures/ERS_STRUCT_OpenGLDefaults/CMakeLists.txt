@@ -21,3 +21,4 @@ target_link_libraries(ERS_STRUCT_OpenGLDefaults
     )
 
 target_include_directories(ERS_STRUCT_OpenGLDefaults PUBLIC ./)
+set_target_properties(ERS_STRUCT_OpenGLDefaults PROPERTIES LINKER_LANGUAGE CXX)
