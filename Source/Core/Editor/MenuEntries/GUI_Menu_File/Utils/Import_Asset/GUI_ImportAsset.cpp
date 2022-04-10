@@ -26,9 +26,7 @@ GUI_ImportAsset::~GUI_ImportAsset() {
 void GUI_ImportAsset::Draw() {
 
     // Draw File Dialog
-    if (ImGuiFileDialog::Instance()->Display("Import Model")) {
-
-    ImGui::SetWindowSize(ImVec2(200, 400), ImGuiCond_FirstUseEver);
+    if (ImGuiFileDialog::Instance()->Display("Import Model", ImGuiWindowFlags_None, ImVec2(200, 400))) {
 
 
         if (ImGuiFileDialog::Instance()->IsOk())
@@ -64,5 +62,6 @@ void GUI_ImportAsset::Draw() {
 void GUI_ImportAsset::OpenFileDialog() {
 
     ImGuiFileDialog::Instance()->OpenDialog("Import Model", "Import Model", ".*", ".", "", 0);
+
 
 }
