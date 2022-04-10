@@ -9,6 +9,8 @@ option(USE_STD_FILESYSTEM "Enable std::filesystem use for path and ImGuiFileDial
 
 include(cmake/3rdparty.cmake)
 
+add_subdirectory(dirent)
+
 if(MSVC)
     add_definitions(-DMSVC)
 else ()
