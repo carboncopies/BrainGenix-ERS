@@ -7,7 +7,7 @@ add_library(ImGuiFileDialog
     "ImGuiFileDialog.cpp"
 )
 
-set_property(TARGET ImGuiFileDialog PROPERTY CXX_STANDARD 17)
+
 
 target_link_libraries(ImGuiFileDialog
 
@@ -16,7 +16,7 @@ target_link_libraries(ImGuiFileDialog
     glfw
 )
 
-option(USE_STD_FILESYSTEM "Enable std::filesystem use for path and ImGuiFileDialog" OFF)
+option(USE_STD_FILESYSTEM "Enable std::filesystem use for path and ImGuiFileDialog" ON)
 
 message("Configuring ImGuiFileDialog File Interface System")
 if (USE_STD_FILESYSTEM)
