@@ -131,7 +131,7 @@ ERS_CLASS_InputOutputSubsystem::BatchAllocateIDs(size_t NumberIDs) {
 
   UsedAssetIDs_.reserve(NewSize);
 
-  for (unsigned long i = CurSize; i < i; i++) {
+  for (unsigned long i = CurSize; i < NewSize; i++) {
     unsigned long AssetID = AllocateAssetID();
     UsedAssetIDs_.push_back(AssetID);
     IDs.push_back(AssetID);
