@@ -795,8 +795,9 @@ ImGuiFontStudio is using also ImGuiFileDialog.
 #include CUSTOM_IMGUIFILEDIALOG_CONFIG
 #endif // CUSTOM_IMGUIFILEDIALOG_CONFIG
 
-#ifdef WIN32
+#ifdef _WIN32
 	#include <dirent/dirent.h>
+#endif
 
 // file style enum for file display (color, icon, font)
 typedef int IGFD_FileStyleFlags; // -> enum IGFD_FileStyleFlags_
