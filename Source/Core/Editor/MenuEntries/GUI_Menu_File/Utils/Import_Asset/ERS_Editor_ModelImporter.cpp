@@ -80,8 +80,8 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
             for (const auto &Entry : std::filesystem::recursive_directory_iterator(AssetPath.substr(0, AssetPath.find_last_of("/")))) {
 
                 std::string FilePath{Entry.path().u8string()};
-                std::string FileName = FilePath.substr(FilePath.find_last_of("/") + 1, FilePath.size() - 1);
-                FileName = FilePath.substr(FilePath.find_last_of('\\') + 1, FilePath.size() - 1);
+                std::replace(FilePath.begin(), FilePath.end(), '\\', '/');
+                std::string FileName = FilePath.substr(FilePath.find_last_of('/') + 1, FilePath.size() - 1);
                 std::string FileNameWithoutExtension = FileName.substr(0, FileName.find_first_of("."));
 
                 // Remove Spaces From Filename And Replace With Underscores
