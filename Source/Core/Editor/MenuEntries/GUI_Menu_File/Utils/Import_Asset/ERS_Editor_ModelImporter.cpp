@@ -60,12 +60,9 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
             // Strip To Last Item In Path (With Forward Slashes And Backward Slashes)
             std::string Path = TextureList_[i];
-
+            std::replace(Path.begin(), Path.end(), '\\', '/');
             if (Path.find("/") != std::string::npos) {
                 Path = Path.substr(Path.find_last_of("/") + 1, Path.size()-1);
-            }
-            if (Path.find("\\") != std::string::npos) {
-                Path = Path.substr(Path.find_last_of("\\") + 1, Path.size()-1);
             }
 
 
@@ -79,16 +76,8 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
             }
 
             // Check Against Filesystem
-            long PathEnd;
-            std::cout<<AssetPath.length()<<std::endl<<AssetPath.find_last_of("/")<<std::endl;
-            if (AssetPath.find_last_of("/") == AssetPath.length()) {
-                std::cout<<"Win\n";
-                PathEnd = AssetPath.find_last_of('\\');
-            } else {
-                std::cout<<"LINUX Filesystem\n";
-                PathEnd = AssetPath.find_last_of("/");
-            }
-            for (const auto &Entry : std::filesystem::recursive_directory_iterator(AssetPath.substr(0, PathEnd))) {
+            std::replace(AssetPath.begin(), AssetPath.end(), '\\', '/');
+            for (const auto &Entry : std::filesystem::recursive_directory_iterator(AssetPath.substr(0, AssetPath.find_last_of("/")))) {
 
                 std::string FilePath{Entry.path().u8string()};
                 std::string FileName = FilePath.substr(FilePath.find_last_of("/") + 1, FilePath.size() - 1);
