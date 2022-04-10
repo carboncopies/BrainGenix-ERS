@@ -5,6 +5,7 @@
 ERSBuildLogger(${Green} "Configuring Backward Library")
 if (${ENABLE_BACKWARD})
     add_subdirectory(${LIB_DIR}/backward)
-else
+else()
     set(BACKWARD_ENABLE "")
+endif()
 ERSBuildLogger(${BoldGreen} "Finished Configuring Backward Library")
