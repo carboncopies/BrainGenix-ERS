@@ -27,6 +27,9 @@ void GUI_ImportAsset::Draw() {
 
     // Draw File Dialog
     if (ImGuiFileDialog::Instance()->Display("ImportModel")) 
+
+    ImGui::SetWindowSize(ImVec2(200, 400), ImGuiCond_FirstUseEver);
+    
     {
         if (ImGuiFileDialog::Instance()->IsOk())
         {
