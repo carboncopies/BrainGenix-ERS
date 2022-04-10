@@ -81,6 +81,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
             // Check Against Filesystem
             long PathEnd;
             if (AssetPath.find_last_of("/") == AssetPath.length()-1) {
+                std::cout<<"Win\n";
                 PathEnd = AssetPath.find_last_of('\\');
             } else {
                 PathEnd = AssetPath.find_last_of("/");
