@@ -84,6 +84,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
                 std::cout<<"Win\n";
                 PathEnd = AssetPath.find_last_of('\\');
             } else {
+                std::cout<<"LINUX Filesystem\n";
                 PathEnd = AssetPath.find_last_of("/");
             }
             for (const auto &Entry : std::filesystem::recursive_directory_iterator(AssetPath.substr(0, PathEnd))) {
