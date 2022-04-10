@@ -22,3 +22,4 @@ target_link_libraries(ERS_STRUCT_Script
 
 
 target_include_directories(ERS_STRUCT_Script PUBLIC ./)
+set_target_properties(ERS_STRUCT_Script PROPERTIES LINKER_LANGUAGE CXX)
