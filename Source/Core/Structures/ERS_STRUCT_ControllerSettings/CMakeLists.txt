@@ -21,3 +21,4 @@ target_link_libraries(ERS_STRUCT_ControllerSettings
     )
 
 target_include_directories(ERS_STRUCT_ControllerSettings PUBLIC ./)
+set_target_properties(ERS_STRUCT_ControllerSettings PROPERTIES LINKER_LANGUAGE CXX)

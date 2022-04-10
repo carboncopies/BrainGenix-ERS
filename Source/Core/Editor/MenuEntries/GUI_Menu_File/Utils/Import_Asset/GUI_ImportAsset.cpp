@@ -26,8 +26,9 @@ GUI_ImportAsset::~GUI_ImportAsset() {
 void GUI_ImportAsset::Draw() {
 
     // Draw File Dialog
-    if (ImGuiFileDialog::Instance()->Display("ImportModel")) 
-    {
+    if (ImGuiFileDialog::Instance()->Display("Import Model", ImGuiWindowFlags_None, ImVec2(400, 200))) {
+
+
         if (ImGuiFileDialog::Instance()->IsOk())
         {
             // Get List Of Files From Selection, Convert To Vector
@@ -60,6 +61,7 @@ void GUI_ImportAsset::Draw() {
 
 void GUI_ImportAsset::OpenFileDialog() {
 
-    ImGuiFileDialog::Instance()->OpenDialog("ImportModel", "Import", ".*", ".", "", 0);
+    ImGuiFileDialog::Instance()->OpenDialog("Import Model", "Import Model", ".*", ".", "", 0);
+
 
 }

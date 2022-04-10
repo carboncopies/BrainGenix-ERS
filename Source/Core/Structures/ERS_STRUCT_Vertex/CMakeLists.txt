@@ -23,3 +23,5 @@ target_link_libraries(ERS_STRUCT_Vertex
 
 
 target_include_directories(ERS_STRUCT_Vertex PUBLIC ./)
+
+set_target_properties(ERS_STRUCT_Vertex PROPERTIES LINKER_LANGUAGE CXX)

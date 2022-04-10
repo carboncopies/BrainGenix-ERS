@@ -24,3 +24,4 @@ target_link_libraries(ERS_STRUCT_HardwareInfo
 
 
 target_include_directories(ERS_STRUCT_HardwareInfo PUBLIC ./)
+set_target_properties(ERS_STRUCT_HardwareInfo PROPERTIES LINKER_LANGUAGE CXX)

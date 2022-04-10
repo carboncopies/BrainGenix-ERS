@@ -22,3 +22,4 @@ target_link_libraries(ERS_STRUCT_ShaderProgramAssetIDs
 
 
 target_include_directories(ERS_STRUCT_ShaderProgramAssetIDs PUBLIC ./)
+set_target_properties(ERS_STRUCT_ShaderProgramAssetIDs PROPERTIES LINKER_LANGUAGE CXX)

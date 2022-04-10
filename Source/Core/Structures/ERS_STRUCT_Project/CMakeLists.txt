@@ -25,3 +25,4 @@ target_link_libraries(ERS_STRUCT_Project
 
 
 target_include_directories(ERS_STRUCT_Project PUBLIC ./)
+set_target_properties(ERS_STRUCT_Project PROPERTIES LINKER_LANGUAGE CXX)

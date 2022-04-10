@@ -22,3 +22,4 @@ target_link_libraries(ERS_STRUCT_SceneObject
 
 
 target_include_directories(ERS_STRUCT_SceneObject PUBLIC ./)
+set_target_properties(ERS_STRUCT_SceneObject PROPERTIES LINKER_LANGUAGE CXX)

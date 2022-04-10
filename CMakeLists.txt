@@ -6,12 +6,9 @@ project(
 	LANGUAGES CXX
 	)
 
-# Set Compiler To G++ On APPLE
-# if (APPLE)
-#   if (NOT CMAKE_COMPILER_IS_GNUCXX)
-#     message(FATAL_ERROR "Could Not Find g++, Please Use g++ Not Clang.")
-#   endif()
-# endif()
+# Set Configuration Options
+option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace information or not" OFF)
+
 
 # Set Dirs
 set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
@@ -30,6 +27,7 @@ include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 
 
 # Include Package Addition Scripts
+include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/YAML-CPP.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
@@ -43,10 +41,8 @@ include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/FreeImage.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Assimp.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/Miniscript.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/OpenXR.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
 
