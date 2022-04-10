@@ -124,8 +124,6 @@ ERS_CLASS_InputOutputSubsystem::BatchAllocateIDs(size_t NumberIDs) {
   std::vector<long> IDs;
   IDs.reserve(NumberIDs);
 
-  std::unique_lock<std::mutex> lock(LockAssetIDAllocation_);
-
   size_t CurSize = UsedAssetIDs_.size();
   size_t NewSize = CurSize + NumberIDs;
 
