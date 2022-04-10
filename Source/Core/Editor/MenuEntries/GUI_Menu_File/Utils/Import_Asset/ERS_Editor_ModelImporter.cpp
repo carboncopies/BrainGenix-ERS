@@ -79,7 +79,13 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
             }
 
             // Check Against Filesystem
-            for (const auto &Entry : std::filesystem::recursive_directory_iterator(AssetPath.substr(0, AssetPath.find_last_of("/")))) {
+            long PathEnd;
+            if (AssetPath.find_last_of("/") == AssetPath.length()-1) {
+                PathEnd = AssetPath.find_last_of('\\');
+            } else {
+                PathEnd = AssetPath.find_last_of("/");
+            }
+            for (const auto &Entry : std::filesystem::recursive_directory_iterator(AssetPath.substr(0, PathEnd))) {
 
                 std::string FilePath{Entry.path().u8string()};
                 std::string FileName = FilePath.substr(FilePath.find_last_of("/") + 1, FilePath.size() - 1);
