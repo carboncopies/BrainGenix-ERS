@@ -7,6 +7,7 @@
 add_library(ERS_STRUCT_Texture
 
             # Add Source Files (.cpp)
+            "ERS_STRUCT_Texture.cpp"
 
             # Add Header Files (.h)
             "ERS_STRUCT_Texture.h"
