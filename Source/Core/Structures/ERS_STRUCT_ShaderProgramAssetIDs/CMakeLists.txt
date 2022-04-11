@@ -6,6 +6,9 @@
 # Create Library (Name Should Be Parent Dir Name)
 add_library(ERS_STRUCT_ShaderProgramAssetIDs
 
+            # Add Source Files (.cpp)
+            "ERS_STRUCT_ShaderProgramAssetIDs.cpp"
+
             # Add Header Files (.h)
             "ERS_STRUCT_ShaderProgramAssetIDs.h"
             

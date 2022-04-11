@@ -7,6 +7,7 @@
 add_library(ERS_STRUCT_HumanInputDeviceUtils
 
             # Add Source Files (.cpp)
+            "ERS_STRUCT_HumanInputDeviceUtils.cpp"
 
             # Add Header Files (.h)
             "ERS_STRUCT_HumanInputDeviceUtils.h"
