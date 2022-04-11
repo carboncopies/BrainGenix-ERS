@@ -2,7 +2,6 @@
 # Builds Library For ERS #
 ##########################
 
-ERSBuildLogger(${Green} "Configuring FreeImage Library")
-add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
-disable_target_warnings(FreeImage)
-ERSBuildLogger(${BoldGreen} "Finished Configuring FreeImage Library")
+ERSBuildLogger(${Green} "Configuring OZZ-Animation Library")
+add_subdirectory(${LIB_DIR}/ozz-animation)
+ERSBuildLogger(${BoldGreen} "Finished Configuring OZZ-Animation Library")
