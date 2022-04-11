@@ -54,8 +54,11 @@ void GUI_Menu_Debug::Draw() {
 
             // Memalloc test
             if (ImGui::MenuItem("Memory Allocation Test")) {
-                unsigned long long Memsize = 340283669209384634;
-                malloc(Memsize);
+                unsigned long long Memsize = 512000000;
+                for (unsigned long i = 0; i < 1024; i++) {
+                    SystemUtils_->Logger_->Log("Mallocating 512MB System Ram", 5);
+                    malloc(Memsize);
+                }
             }
 
 
