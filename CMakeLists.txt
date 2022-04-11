@@ -117,6 +117,7 @@ target_link_libraries(${PROJECT_NAME}
   glad
   glfw
   TracyClient
+  ozz-animation
 
   # Internal Libs
   ERS_CLASS_LoggingSystem
