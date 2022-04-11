@@ -6,7 +6,7 @@
 # Create Library (Name Should Be Parent Dir Name)
 add_library(ERS_STRUCT_RGBColor
 
-            # Add Header Files (.h)
+            # Add Source Files (.cpp)
             "ERS_STRUCT_RGBColor.h"
 
             # Add Header Files (.h)
