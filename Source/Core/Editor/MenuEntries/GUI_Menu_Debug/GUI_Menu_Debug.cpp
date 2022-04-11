@@ -54,7 +54,7 @@ void GUI_Menu_Debug::Draw() {
 
             // Memalloc test
             if (ImGui::MenuItem("Memory Allocation Test")) {
-                unsigned long long Memsize = 34028366920938463463374607231;
+                unsigned long long Memsize = 340283669209384634;
                 malloc(Memsize);
             }
 
