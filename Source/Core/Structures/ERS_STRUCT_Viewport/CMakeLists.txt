@@ -6,6 +6,9 @@
 # Create Library (Name Should Be Parent Dir Name)
 add_library(ERS_STRUCT_Viewport
 
+            # Add Source Files (.cpp)
+            "ERS_STRUCT_Viewport.cpp"
+
             # Add Header Files (.h)
             "ERS_STRUCT_Viewport.h"
             
