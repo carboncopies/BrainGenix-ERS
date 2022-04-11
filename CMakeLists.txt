@@ -49,43 +49,6 @@ include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
 
 
 
-
-# Add Main.cpp
-add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp ${LIB_DIR}/tracy/TracyClient.cpp ${BACKWARD_ENABLE})
-target_link_libraries(${PROJECT_NAME}
-
-  # Third Party Libs
-  yaml-cpp
-  glad
-  glfw
-  TracyClient
-
-  # Internal Libs
-  ERS_CLASS_LoggingSystem
-  Renderer
-  ERS_CLASS_HardwareInformation
-
-
-  ERS_CLASS_PythonInterpreterIntegration
-
-  ERS_SceneManager
-  ERS_ModelLoader
-  ERS_SceneLoader  
-  ERS_ModelWriter
-  ERS_ProjectLoader
-  ERS_ProjectWriter
-  ERS_InputOutputSubsystem
-  ERS_FramerateManager
-  ERS_ProjectManager
-  ERS_ControllerInputManager
-  
-  ERS_STRUCT_HumanInputDeviceUtils
-  ERS_STRUCT_SystemUtils
-  ERS_STRUCT_ProjectUtils
-
-  )
-
-
 # ADD INTERNAL SUBDIRECTORIES
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_LoggingSystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_HardwareInformation)
@@ -142,6 +105,45 @@ add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ControllerSettingsLoader)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_SceneWriter)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ModelWriter)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ProjectWriter)
+
+
+# Add Main.cpp
+add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp ${LIB_DIR}/tracy/TracyClient.cpp ${BACKWARD_ENABLE})
+target_link_libraries(${PROJECT_NAME}
+
+  # Third Party Libs
+  yaml-cpp
+  glad
+  glfw
+  TracyClient
+
+  # Internal Libs
+  ERS_CLASS_LoggingSystem
+  Renderer
+  ERS_CLASS_HardwareInformation
+
+
+  ERS_CLASS_PythonInterpreterIntegration
+
+  ERS_SceneManager
+  ERS_ModelLoader
+  ERS_SceneLoader  
+  ERS_ModelWriter
+  ERS_ProjectLoader
+  ERS_ProjectWriter
+  ERS_InputOutputSubsystem
+  ERS_FramerateManager
+  ERS_ProjectManager
+  ERS_ControllerInputManager
+  
+  ERS_STRUCT_HumanInputDeviceUtils
+  ERS_STRUCT_SystemUtils
+  ERS_STRUCT_ProjectUtils
+
+  )
+
+
+
 
 
 # COPY FILES TO BINARY DIR
