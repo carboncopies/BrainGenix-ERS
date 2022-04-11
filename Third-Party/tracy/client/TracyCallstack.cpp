@@ -1,3 +1,21 @@
+
+
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+
+
+
+
+
+
+
+
+
+
+
 #include <new>
 #include <stdio.h>
 #include <string.h>
