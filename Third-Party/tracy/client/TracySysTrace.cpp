@@ -1,3 +1,13 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+
+
+
+
+
 #include "TracyDebug.hpp"
 #include "TracyStringHelpers.hpp"
 #include "TracySysTrace.hpp"
