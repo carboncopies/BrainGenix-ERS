@@ -4199,3 +4199,4 @@ TRACY_API void ___tracy_shutdown_profiler( void )
 #endif
 
 
+#pragma GCC diagnostic pop
