@@ -52,13 +52,6 @@ void GUI_Menu_Debug::Draw() {
 
 
 
-            // Memalloc test
-            if (ImGui::MenuItem("Memory Allocation Test")) {
-                std::vector<std::string> Test;
-                while (true) {
-                    Test.push_back(std::string("_________________________________"));
-                }
-            }
 
 
         ImGui::EndMenu();
