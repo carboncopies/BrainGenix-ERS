@@ -12,7 +12,7 @@ set(OZZ_VERSION ${OZZ_VERSION_MAJOR}.${OZZ_VERSION_MINOR}.${OZZ_VERSION_PATCH})
 # Add project build options
 option(BUILD_SHARED_LIBS "Build ozz as shared libraries" OFF)
 option(ozz_build_tools "Build tools" ON)
-option(ozz_build_fbx "Build Fbx pipeline (Requires Fbx SDK)" ON)
+option(ozz_build_fbx "Build Fbx pipeline (Requires Fbx SDK)" OFF)
 option(ozz_build_gltf "Build glTF importer (Requires c++11)" ON)
 option(ozz_build_data "Build data on code change" OFF)
 option(ozz_build_samples "Build samples" ON)
