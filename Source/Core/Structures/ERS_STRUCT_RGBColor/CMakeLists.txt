@@ -7,7 +7,7 @@
 add_library(ERS_STRUCT_RGBColor
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_RGBColor.h"
+            "ERS_STRUCT_RGBColor.cpp"
 
             # Add Header Files (.h)
             "ERS_STRUCT_RGBColor.h"
