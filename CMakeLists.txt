@@ -7,7 +7,7 @@ project(
 	)
 
 # Set Configuration Options
-option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace information or not" OFF)
+option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace information or not" ON)
 
 
 # Set Dirs
