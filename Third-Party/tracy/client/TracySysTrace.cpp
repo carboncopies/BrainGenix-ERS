@@ -1487,3 +1487,6 @@ void SysTraceGetExternalName( uint64_t thread, const char*& threadName, const ch
 #  endif
 
 #endif
+
+
+#pragma GCC diagnostic pop
