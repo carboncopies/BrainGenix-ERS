@@ -1,0 +1,15 @@
+# Unignore Binaries
+
+!*.pyd
+!*.dll
+!*.so
+!*.pth
+!*.zip
+
+!Windows/Binaries/*
+
+*.pyd
+*.dll
+*.so
+*.pth
+*.zip
