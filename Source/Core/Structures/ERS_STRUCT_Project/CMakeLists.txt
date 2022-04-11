@@ -7,7 +7,7 @@
 add_library(ERS_STRUCT_Project
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_Project.h"
+            "ERS_STRUCT_Project.cpp"
 
             # Add Header Files (.h)
             "ERS_STRUCT_Project.h"
