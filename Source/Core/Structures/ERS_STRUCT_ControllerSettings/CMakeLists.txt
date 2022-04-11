@@ -6,6 +6,9 @@
 # Create Library (Name Should Be Parent Dir Name)
 add_library(ERS_STRUCT_ControllerSettings 
 
+            # Add Source Files (.cpp)
+            "ERS_STRUCT_ControllerSettings.cpp"
+
             # Add Header Files (.h)
             "ERS_STRUCT_ControllerSettings.h"
             
