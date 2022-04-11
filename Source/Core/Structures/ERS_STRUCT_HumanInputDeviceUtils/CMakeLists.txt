@@ -4,7 +4,7 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_STRUCT_HumanInputDeviceUtils
+add_library(ERS_STRUCT_HumanInputDeviceUtils STATIC
 
             # Add Source Files (.cpp)
 
