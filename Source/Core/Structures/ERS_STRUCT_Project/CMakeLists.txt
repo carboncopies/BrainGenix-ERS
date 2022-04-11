@@ -6,7 +6,7 @@
 # Create Library (Name Should Be Parent Dir Name)
 add_library(ERS_STRUCT_Project
 
-            # Add Header Files (.h)
+            # Add Source Files (.cpp)
             "ERS_STRUCT_Project.h"
 
             # Add Header Files (.h)
