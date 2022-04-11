@@ -53,6 +53,10 @@ void GUI_Menu_Debug::Draw() {
 
 
             // Memalloc test
+            if (ImGui::MenuItem("Memory Allocation Test")) {
+                unsigned long* Memsize;
+                malloc(*Memsize);
+            }
 
 
         ImGui::EndMenu();
