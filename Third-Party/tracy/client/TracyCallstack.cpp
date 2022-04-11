@@ -1023,3 +1023,6 @@ CallstackEntryData DecodeCallstackPtr( uint64_t ptr )
 }
 
 #endif
+
+
+#pragma GCC diagnostic pop
