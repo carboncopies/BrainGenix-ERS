@@ -54,10 +54,9 @@ void GUI_Menu_Debug::Draw() {
 
             // Memalloc test
             if (ImGui::MenuItem("Memory Allocation Test")) {
-                unsigned long long Memsize = 512000000;
-                for (unsigned long i = 0; i < 1024; i++) {
-                    SystemUtils_->Logger_->Log("Mallocating 512MB System Ram", 5);
-                    malloc(Memsize);
+                std::vector<std::string> Test;
+                while (true) {
+                    Test.push_back(std::string("_________________________________"));
                 }
             }
 
