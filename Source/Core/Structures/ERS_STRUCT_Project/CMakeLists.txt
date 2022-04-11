@@ -8,6 +8,9 @@ add_library(ERS_STRUCT_Project
 
             # Add Header Files (.h)
             "ERS_STRUCT_Project.h"
+
+            # Add Header Files (.h)
+            "ERS_STRUCT_Project.h"
             
             ${BACKWARD_ENABLE}
             )
