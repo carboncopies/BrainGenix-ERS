@@ -8,6 +8,9 @@ add_library(ERS_STRUCT_RGBColor
 
             # Add Header Files (.h)
             "ERS_STRUCT_RGBColor.h"
+
+            # Add Header Files (.h)
+            "ERS_STRUCT_RGBColor.h"
             
             ${BACKWARD_ENABLE}
             )
