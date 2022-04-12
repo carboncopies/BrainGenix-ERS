@@ -498,7 +498,7 @@ void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<int>* IDs, std::vec
             SystemUtils_->Logger_->Log(std::string("Initial Model-Texture Matching Failed On Texture '") + TextureIdentifier + std::string("', Attempting Check With Substring"), 4);
             for (unsigned long x = 0; x < TextureList.size(); x++) {
                 if (TextureList[x].substr(TextureList[x].find_last_of("/") + 1, TextureList[x].length()) == TextureIdentifier.substr(TextureIdentifier.find_last_of("/") + 1, TextureIdentifier.length() - 1)) {
-                    SystemUtils_->Logger_->Log(std::string("Found Matching Textur During Substring Match '") + TextureList[x] + std::string("'"), 4);
+                    SystemUtils_->Logger_->Log(std::string("Found Matching Texture During Substring Match '") + TextureList[x] + std::string("'"), 4);
                     Index = x;
                     break;
                 }
