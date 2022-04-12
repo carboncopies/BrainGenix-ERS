@@ -1,3 +1,12 @@
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+
+
+
+
+
 #include <assert.h>
 #include <inttypes.h>
 #include <new>
@@ -747,3 +756,6 @@ const char* UdpListen::Read( size_t& len, IpAddress& addr, int timeout )
 }
 
 }
+
+
+#pragma GCC diagnostic pop

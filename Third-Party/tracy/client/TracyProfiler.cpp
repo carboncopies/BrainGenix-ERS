@@ -2,6 +2,14 @@
 
 #ifdef TRACY_ENABLE
 
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+
+
+
 #ifdef _WIN32
 #  ifndef NOMINMAX
 #    define NOMINMAX
@@ -4191,3 +4199,4 @@ TRACY_API void ___tracy_shutdown_profiler( void )
 #endif
 
 
+#pragma GCC diagnostic pop
