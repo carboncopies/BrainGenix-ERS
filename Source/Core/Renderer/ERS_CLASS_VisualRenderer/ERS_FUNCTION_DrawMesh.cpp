@@ -132,9 +132,11 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
         } else if(Name == "texture_normal_camera") {
             Number = std::to_string(NormalCameraHandle++);
             Type = 11;
+            HasNormalCamera = true;
         } else if(Name == "texture_normals") {
             Number = std::to_string(NormalsHandle++);
             Type = 12;
+            HasNormals = true;
         } else if(Name == "texture_opacity") {
             Number = std::to_string(OpacityHandle++);
             Type = 13;
