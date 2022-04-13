@@ -164,7 +164,45 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
     }
 
 
+    bool HasAmbient = false;
+    bool HasAmbientOcclusion = false;
+    bool HasBaseColor = false;
+    bool HasDiffuse = false;
+    bool HasDiffuseRoughness = false;
+    bool HasDisplacement = false;
+    bool HasEmissionColor = false;
+    bool HasEmissive = false;
+    bool HasHeight = false;
+    bool HasLightmap = false;
+    bool HasMetalness = false;
+    bool HasNormalCamera = false;
+    bool HasNormals = false;
+    bool HasOpacity = false;
+    bool HasRelfection = false;
+    bool HasShininess = false;
+    bool HasSpecular = false;
 
+    // Set Uniforms
+    Shader->SetBool("HasAmbient", HasAmbient);
+    Shader->SetBool("HasAmbientOcclusion", HasAmbientOcclusion);
+    Shader->SetBool("HasBaseColor", HasBaseColor);
+    Shader->SetBool("HasDiffuse", HasDiffuse);
+    Shader->SetBool("HasDiffuseRoughness", HasDiffuseRoughness);
+    Shader->SetBool("HasDisplacement", HasDisplacement);
+    Shader->SetBool("HasEmissionColor", HasEmissionColor);
+    Shader->SetBool("HasEmissive", HasEmissive);
+    Shader->SetBool("HasAmbient", HasAmbient);
+    Shader->SetBool("HasAmbient", HasAmbient);
+    Shader->SetBool("HasAmbient", HasAmbient);
+    Shader->SetBool("HasAmbient", HasAmbient);
+    Shader->SetBool("HasAmbient", HasAmbient);
+    Shader->SetBool("HasAmbient", HasAmbient);
+    Shader->SetBool("HasAmbient", HasAmbient);
+    Shader->SetBool("HasAmbient", HasAmbient);
+    Shader->SetBool("HasAmbient", HasAmbient);
+    Shader->SetBool("HasAmbient", HasAmbient);
+    Shader->SetBool("HasAmbient", HasAmbient);
+    
 
 
     // Draw Mesh
