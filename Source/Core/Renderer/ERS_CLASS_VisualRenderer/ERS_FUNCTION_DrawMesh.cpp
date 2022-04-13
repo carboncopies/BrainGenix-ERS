@@ -148,6 +148,7 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
         } else if(Name == "texture_shininess") {
             Number = std::to_string(ShininessHandle++);
             Type = 15;
+            HasShininess = true;
         } else if(Name == "texture_specular") {
             Number = std::to_string(SpecularHandle++);
             Type = 16;
