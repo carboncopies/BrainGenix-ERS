@@ -108,9 +108,11 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
         } else if(Name == "texture_displacement") {
             Number = std::to_string(DisplacementHandle++);
             Type = 5;
+            HasDisplacement = true;
         } else if(Name == "texture_emission_color") {
             Number = std::to_string(EmissionColorHandle++);
             Type = 6;
+            HasEmissionColor = true;
         } else if(Name == "texture_emissive") {
             Number = std::to_string(EmissiveHandle++);
             Type = 7;
