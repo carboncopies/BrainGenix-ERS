@@ -191,17 +191,15 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
     Shader->SetBool("HasDisplacement", HasDisplacement);
     Shader->SetBool("HasEmissionColor", HasEmissionColor);
     Shader->SetBool("HasEmissive", HasEmissive);
-    Shader->SetBool("HasAmbient", HasAmbient);
-    Shader->SetBool("HasAmbient", HasAmbient);
-    Shader->SetBool("HasAmbient", HasAmbient);
-    Shader->SetBool("HasAmbient", HasAmbient);
-    Shader->SetBool("HasAmbient", HasAmbient);
-    Shader->SetBool("HasAmbient", HasAmbient);
-    Shader->SetBool("HasAmbient", HasAmbient);
-    Shader->SetBool("HasAmbient", HasAmbient);
-    Shader->SetBool("HasAmbient", HasAmbient);
-    Shader->SetBool("HasAmbient", HasAmbient);
-    Shader->SetBool("HasAmbient", HasAmbient);
+    Shader->SetBool("HasAmbient", HasHeight);
+    Shader->SetBool("HasAmbient", HasLightmap);
+    Shader->SetBool("HasAmbient", HasMetalness);
+    Shader->SetBool("HasAmbient", HasNormalCamera);
+    Shader->SetBool("HasAmbient", HasNormals);
+    Shader->SetBool("HasAmbient", HasOpacity);
+    Shader->SetBool("HasAmbient", HasRelfection);
+    Shader->SetBool("HasAmbient", HasShininess);
+    Shader->SetBool("HasAmbient", HasSpecular);
     
 
 
