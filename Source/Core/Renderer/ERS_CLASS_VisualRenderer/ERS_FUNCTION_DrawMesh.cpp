@@ -116,9 +116,11 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
         } else if(Name == "texture_emissive") {
             Number = std::to_string(EmissiveHandle++);
             Type = 7;
+            HasEmissive = true;
         } else if(Name == "texture_height") {
             Number = std::to_string(HeightHandle++);
             Type = 8;
+            HasHeight = true;
         } else if(Name == "texture_lightmap") {
             Number = std::to_string(LightmapHandle++);
             Type = 9;
