@@ -1,3 +1,13 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+
+
+
+
+
 #include "TracyDebug.hpp"
 #include "TracyStringHelpers.hpp"
 #include "TracySysTrace.hpp"
@@ -1477,3 +1487,6 @@ void SysTraceGetExternalName( uint64_t thread, const char*& threadName, const ch
 #  endif
 
 #endif
+
+
+#pragma GCC diagnostic pop

@@ -37,6 +37,11 @@ void Widget_ObjectProperties::Draw() {
             
                 // Handle Extra Options For Lights
                 unsigned long SelectedSceneObject = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SelectedObject;
+                if (SelectedSceneObject >= SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_.size()) {
+                    SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SelectedObject = 0;
+                    SelectedSceneObject = 0;
+                }
+                
                 if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("PointLight")) {
                     
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;

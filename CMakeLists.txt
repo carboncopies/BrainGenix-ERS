@@ -46,6 +46,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/OpenXR.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/OZZ-Animation.cmake)
 
 
 
@@ -116,6 +117,7 @@ target_link_libraries(${PROJECT_NAME}
   glad
   glfw
   TracyClient
+  ozz_animation
 
   # Internal Libs
   ERS_CLASS_LoggingSystem
