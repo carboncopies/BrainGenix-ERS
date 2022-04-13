@@ -140,9 +140,11 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
         } else if(Name == "texture_opacity") {
             Number = std::to_string(OpacityHandle++);
             Type = 13;
+            HasOpacity = true;
         } else if(Name == "texture_reflection") {
             Number = std::to_string(RelfectionHandle++);
             Type = 14;
+            HasRelfection = true;
         } else if(Name == "texture_shininess") {
             Number = std::to_string(ShininessHandle++);
             Type = 15;
