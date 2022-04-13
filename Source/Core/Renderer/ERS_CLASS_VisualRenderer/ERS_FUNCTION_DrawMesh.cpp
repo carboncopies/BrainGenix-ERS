@@ -88,12 +88,15 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
         if (Name == "texture_ambient") {
             Number = std::to_string(AmbientHandle++);
             Type = 0;
+            HasAmbient = true;
         } else if(Name == "texture_ambient_occlusion") {
             Number = std::to_string(AmbientOcclusionHandle++);
             Type = 1;
+            HasAmbientOcclusion = true;
         } else if(Name == "texture_base_color") {
             Number = std::to_string(BaseColorHandle++);
             Type = 2;
+            HasBaseColor = true;
         } else if(Name == "texture_diffuse") {
             Number = std::to_string(DiffuseHandle++);
             Type = 3;
