@@ -163,8 +163,10 @@ void main()
     }
 
     // Add Emissive Texture
-    Result += SampledData.EmissiveTextureColor;
-
+    if (HasEmissive) {
+        Result += SampledData.EmissiveTextureColor;
+    }
+    
     FragColor = Result;
 
 }
@@ -236,6 +238,7 @@ vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, 
     return (AmbientComponent + DiffuseComponent + SpecularComponent);
 
 }
+
 
 
 
