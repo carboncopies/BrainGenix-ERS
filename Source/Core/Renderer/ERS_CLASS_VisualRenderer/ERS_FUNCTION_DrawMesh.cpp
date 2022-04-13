@@ -54,6 +54,25 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
 
 
 
+    bool HasAmbient = false;
+    bool HasAmbientOcclusion = false;
+    bool HasBaseColor = false;
+    bool HasDiffuse = false;
+    bool HasDiffuseRoughness = false;
+    bool HasDisplacement = false;
+    bool HasEmissionColor = false;
+    bool HasEmissive = false;
+    bool HasHeight = false;
+    bool HasLightmap = false;
+    bool HasMetalness = false;
+    bool HasNormalCamera = false;
+    bool HasNormals = false;
+    bool HasOpacity = false;
+    bool HasRelfection = false;
+    bool HasShininess = false;
+    bool HasSpecular = false;
+
+
     // Iterate Through Textures
     for (unsigned int i = 0; i < Mesh->TextureIDs.size(); i++) {
 
@@ -69,54 +88,71 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
         if (Name == "texture_ambient") {
             Number = std::to_string(AmbientHandle++);
             Type = 0;
+            HasAmbient = true;
         } else if(Name == "texture_ambient_occlusion") {
             Number = std::to_string(AmbientOcclusionHandle++);
             Type = 1;
+            HasAmbientOcclusion = true;
         } else if(Name == "texture_base_color") {
             Number = std::to_string(BaseColorHandle++);
             Type = 2;
+            HasBaseColor = true;
         } else if(Name == "texture_diffuse") {
             Number = std::to_string(DiffuseHandle++);
             Type = 3;
+            HasDiffuse = true;
         } else if(Name == "texture_diffuse_roughness") {
             Number = std::to_string(DiffuseRoughnessHandle++);
             Type = 4;
+            HasDiffuseRoughness = true;
         } else if(Name == "texture_displacement") {
             Number = std::to_string(DisplacementHandle++);
             Type = 5;
+            HasDisplacement = true;
         } else if(Name == "texture_emission_color") {
             Number = std::to_string(EmissionColorHandle++);
             Type = 6;
+            HasEmissionColor = true;
         } else if(Name == "texture_emissive") {
             Number = std::to_string(EmissiveHandle++);
             Type = 7;
+            HasEmissive = true;
         } else if(Name == "texture_height") {
             Number = std::to_string(HeightHandle++);
             Type = 8;
+            HasHeight = true;
         } else if(Name == "texture_lightmap") {
             Number = std::to_string(LightmapHandle++);
             Type = 9;
+            HasLightmap = true;
         } else if(Name == "texture_metalness") {
             Number = std::to_string(MetalnessHandle++);
             Type = 10;
+            HasMetalness = true;
         } else if(Name == "texture_normal_camera") {
             Number = std::to_string(NormalCameraHandle++);
             Type = 11;
+            HasNormalCamera = true;
         } else if(Name == "texture_normals") {
             Number = std::to_string(NormalsHandle++);
             Type = 12;
+            HasNormals = true;
         } else if(Name == "texture_opacity") {
             Number = std::to_string(OpacityHandle++);
             Type = 13;
+            HasOpacity = true;
         } else if(Name == "texture_reflection") {
             Number = std::to_string(RelfectionHandle++);
             Type = 14;
+            HasRelfection = true;
         } else if(Name == "texture_shininess") {
             Number = std::to_string(ShininessHandle++);
             Type = 15;
+            HasShininess = true;
         } else if(Name == "texture_specular") {
             Number = std::to_string(SpecularHandle++);
             Type = 16;
+            HasSpecular = true;
         }
 
         glUniform1i(glGetUniformLocation(Shader->ShaderProgram, (Name + Number).c_str()), Type);
@@ -127,8 +163,25 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
 
     }
 
-
-
+    // Set Uniforms
+    Shader->SetBool("HasAmbient", HasAmbient);
+    Shader->SetBool("HasAmbientOcclusion", HasAmbientOcclusion);
+    Shader->SetBool("HasBaseColor", HasBaseColor);
+    Shader->SetBool("HasDiffuse", HasDiffuse);
+    Shader->SetBool("HasDiffuseRoughness", HasDiffuseRoughness);
+    Shader->SetBool("HasDisplacement", HasDisplacement);
+    Shader->SetBool("HasEmissionColor", HasEmissionColor);
+    Shader->SetBool("HasEmissive", HasEmissive);
+    Shader->SetBool("HasHeight", HasHeight);
+    Shader->SetBool("HasLightmap", HasLightmap);
+    Shader->SetBool("HasMetalness", HasMetalness);
+    Shader->SetBool("HasNormalCamera", HasNormalCamera);
+    Shader->SetBool("HasNormals", HasNormals);
+    Shader->SetBool("HasOpacity", HasOpacity);
+    Shader->SetBool("HasReflection", HasRelfection);
+    Shader->SetBool("HasShininess", HasShininess);
+    Shader->SetBool("HasSpecular", HasSpecular);
+    
 
 
     // Draw Mesh
