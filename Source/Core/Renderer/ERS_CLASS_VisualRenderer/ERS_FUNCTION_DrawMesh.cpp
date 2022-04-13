@@ -152,6 +152,7 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
         } else if(Name == "texture_specular") {
             Number = std::to_string(SpecularHandle++);
             Type = 16;
+            HasSpecular = true;
         }
 
         glUniform1i(glGetUniformLocation(Shader->ShaderProgram, (Name + Number).c_str()), Type);
