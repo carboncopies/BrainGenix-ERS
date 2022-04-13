@@ -145,7 +145,12 @@ void main()
     STRUCT_SampledData SampledData;
 
     SampledData.DiffuseTextureColor = texture(texture_diffuse1, TexCoords);
-    SampledData.SpecularTextureColor = texture(texture_specular1, TexCoords);
+    
+    if (HasSpecular) {
+        SampledData.SpecularTextureColor = texture(texture_specular1, TexCoords);
+    } else {
+        SampledData.SpecularTextureColor = SampledData.DiffuseTextureColor;
+    }
     SampledData.NormalTextureColor = texture(texture_normals1, TexCoords);
     SampledData.HeightTextureColor = texture(texture_height1, TexCoords);
     SampledData.EmissiveTextureColor = texture(texture_emissive1, TexCoords);
