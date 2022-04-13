@@ -124,9 +124,11 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
         } else if(Name == "texture_lightmap") {
             Number = std::to_string(LightmapHandle++);
             Type = 9;
+            HasLightmap = true;
         } else if(Name == "texture_metalness") {
             Number = std::to_string(MetalnessHandle++);
             Type = 10;
+            HasMetalness = true;
         } else if(Name == "texture_normal_camera") {
             Number = std::to_string(NormalCameraHandle++);
             Type = 11;
