@@ -96,14 +96,24 @@ uniform sampler2D texture_height1;
 uniform sampler2D texture_emissive1;
 uniform float Shinyness;
 
-uniform bool HasDiffuse;
-uniform bool HasSpecular;
-uniform bool HasNormals;
-uniform bool HasHeight;
-uniform bool HasEmissive;
+
 uniform bool HasAmbient;
 uniform bool HasAmbientOcclusion;
-
+uniform bool HasBaseColor;
+uniform bool HasDiffuse;
+uniform bool HasDiffuseRoughness;
+uniform bool HasDisplacement;
+uniform bool HasEmissionColor;
+uniform bool HasEmissive;
+uniform bool HasHeight;
+uniform bool HasLightmap;
+uniform bool HasMetalness;
+uniform bool HasNormalCamera;
+uniform bool HasNormals;
+uniform bool HasOpacity;
+uniform bool HasReflection;
+uniform bool HasShininess;
+uniform bool HasSpecular;
 
 
 // Get Lighting Info
