@@ -100,9 +100,11 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
         } else if(Name == "texture_diffuse") {
             Number = std::to_string(DiffuseHandle++);
             Type = 3;
+            HasDiffuse = true;
         } else if(Name == "texture_diffuse_roughness") {
             Number = std::to_string(DiffuseRoughnessHandle++);
             Type = 4;
+            HasDiffuseRoughness = true;
         } else if(Name == "texture_displacement") {
             Number = std::to_string(DisplacementHandle++);
             Type = 5;
