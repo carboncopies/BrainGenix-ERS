@@ -3,5 +3,5 @@
 ##########################
 
 ERSBuildLogger(${Green} "Configuring STB Library")
-add_subdirectory(${LIB_DIR}/STB)
+include_directories(${LIB_DIR}/stb)
 ERSBuildLogger(${BoldGreen} "Finished Configuring STB Library")
