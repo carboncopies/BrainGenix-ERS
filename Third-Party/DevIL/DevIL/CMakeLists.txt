@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 2.6)
 
-project(ImageLib)
+project(
+    ImageLib
+    VERSION "1.8.0"
+    LANGUAGES CXX
+    )
 
 add_subdirectory(src-IL)
 add_subdirectory(src-ILU)
