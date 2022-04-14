@@ -74,6 +74,7 @@ struct STRUCT_SampledData {
     vec4 NormalTextureColor;
     vec4 HeightTextureColor;
     vec4 EmissiveTextureColor;
+    vec4 OpacityTextureColor;
 
 };
 
@@ -98,6 +99,7 @@ uniform sampler2D texture_specular1;
 uniform sampler2D texture_normals1;
 uniform sampler2D texture_height1;
 uniform sampler2D texture_emissive1;
+uniform sampler2D texture_opacity1;
 uniform float Shinyness;
 
 
@@ -191,6 +193,11 @@ void main()
         Result += SampledData.EmissiveTextureColor;
     }
 
+    // Multiply By Opacity
+    //if (HasOpacity) {
+    //    Result.a = SampledData.OpacityTextureColor.r;
+    //}
+
     // Apply Gamma Correction
     FragColor = GammaCorrectResult(Result, GammaCorrectionEnabled_);
 
@@ -226,6 +233,13 @@ STRUCT_SampledData SetSampledData() {
         SampledData.EmissiveTextureColor = GammaCorrectTexture(texture_emissive1, GammaCorrectionEnabled_);
     } else {
         SampledData.EmissiveTextureColor = vec4(0.0f);
+    }
+
+    // Handle Opacity Textures
+    if (HasEmissive) {
+        SampledData.OpacityTextureColor = texture(texture_opacity1, Object.TexCoords);
+    } else {
+        SampledData.OpacityTextureColor = vec4(0.0f);
     }
 
     return SampledData;
@@ -329,6 +343,7 @@ vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, 
     return (AmbientComponent + DiffuseComponent + SpecularComponent);
 
 }
+
 
 
 
