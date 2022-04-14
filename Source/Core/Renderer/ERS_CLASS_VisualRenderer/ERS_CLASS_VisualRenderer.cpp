@@ -373,6 +373,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewports_[Index]->Camera.get());
         Shaders_[ShaderIndex]->SetMat4("projection", projection);
         Shaders_[ShaderIndex]->SetMat4("view", view);
+        Shaders_[ShaderIndex]->SetBool("GammaCorrection", Viewports_[Index]->GammaCorrection);
 
 
         // Update Cursor If Selection Changed
