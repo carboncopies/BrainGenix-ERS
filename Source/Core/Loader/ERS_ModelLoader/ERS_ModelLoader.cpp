@@ -168,7 +168,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         }
 
         // Unload Image Data
-
+        FreeImage_Unload(Model->TexturesToPushToGPU_[i].ImageData);
 
         // Append To Texture Index
         Model->OpenGLTextureIDs_.push_back(TextureID);
@@ -263,7 +263,6 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
 
     // Set Image Bytes
     Texture.ImageBytes = FreeImage_GetBits(Image);
-    FreeImage_Unload(Image);
 
     // Return Value
     return Texture;
