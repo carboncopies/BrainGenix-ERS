@@ -105,6 +105,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     RunTime_ = glfwGetTime() - GameStartTime_;
     SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->UpdateSystemInfoData(RunTime_);
 
+
     // Iterate Through Viewports
     for (int i = 0; (long)i < (long)Viewports_.size(); i++) {
         UpdateViewport(i, SceneManager, DeltaTime);
@@ -143,7 +144,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
     // BIND To Default Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
 
 
 
@@ -373,6 +373,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewports_[Index]->Camera.get());
         Shaders_[ShaderIndex]->SetMat4("projection", projection);
         Shaders_[ShaderIndex]->SetMat4("view", view);
+        Shaders_[ShaderIndex]->SetBool("GammaCorrectionEnabled_", Viewports_[Index]->GammaCorrection);
 
 
         // Update Cursor If Selection Changed
@@ -427,7 +428,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         if (Viewports_[Index]->GridEnabled) {
             Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position_);
         }
-        if (true) {
+        if (Viewports_[Index]->LightIcons) {
             Viewports_[Index]->LightIconRenderer->Draw(Viewports_[Index]->Camera.get(), SceneManager);
         }
 
@@ -737,6 +738,8 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
             ImGui::MenuItem("Rotation Indicator", nullptr, &Viewports_[Index]->ShowCube);
             ImGui::MenuItem("Gizmo", nullptr, &Viewports_[Index]->GizmoEnabled);
             ImGui::MenuItem("Grid", nullptr, &Viewports_[Index]->GridEnabled);
+            ImGui::MenuItem("Light Icons", nullptr, &Viewports_[Index]->LightIcons);
+            ImGui::MenuItem("Gamma Correction", nullptr, &Viewports_[Index]->GammaCorrection);
 
 
         ImGui::EndMenu();
