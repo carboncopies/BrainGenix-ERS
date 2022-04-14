@@ -206,7 +206,7 @@ STRUCT_SampledData SetSampledData() {
     
     // Handle Specular Textures
     if (HasSpecular) {
-        SampledData.SpecularTextureColor = texture(texture_specular1, Object.TexCoords);
+        SampledData.SpecularTextureColor = GammaCorrectTexture(texture_specular1, GammaCorrectionEnabled_);
     } else {
         SampledData.SpecularTextureColor = SampledData.DiffuseTextureColor;
     }
@@ -223,7 +223,7 @@ STRUCT_SampledData SetSampledData() {
 
     // Handle Emissive Textures
     if (HasEmissive) {
-        SampledData.EmissiveTextureColor = texture(texture_emissive1, Object.TexCoords);
+        SampledData.EmissiveTextureColor = GammaCorrectTexture(texture_emissive1, GammaCorrectionEnabled_);
     } else {
         SampledData.EmissiveTextureColor = vec4(0.0f);
     }
