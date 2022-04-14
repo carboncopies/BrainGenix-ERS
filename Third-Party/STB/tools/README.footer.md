@@ -4,56 +4,17 @@ FAQ
 
 #### What's the license?
 
-These libraries are in the public domain. You can do anything you
-want with them. You have no legal obligation
+These libraries are in the public domain (or the equivalent where that is not
+possible). You can do anything you want with them. You have no legal obligation
 to do anything else, although I appreciate attribution.
-
-They are also licensed under the MIT open source license, if you have lawyers
-who are unhappy with public domain. Every source file includes an explicit
-dual-license for you to choose from.
-
-#### How do I use these libraries?
-
-The idea behind single-header file libraries is that they're easy to distribute and deploy
-because all the code is contained in a single file. By default, the .h files in here act as
-their own header files, i.e. they declare the functions contained in the file but don't
-actually result in any code getting compiled.
-
-So in addition, you should select _exactly one_ C/C++ source file that actually instantiates
-the code, preferably a file you're not editing frequently. This file should define a
-specific macro (this is documented per-library) to actually enable the function definitions.
-For example, to use stb_image, you should have exactly one C/C++ file that doesn't
-include stb_image.h regularly, but instead does
-
-    #define STB_IMAGE_IMPLEMENTATION
-    #include "stb_image.h"
-
-The right macro to define is pointed out right at the top of each of these libraries.
 
 #### <a name="other_libs"></a> Are there other single-file public-domain/open source libraries with minimal dependencies out there?
 
 [Yes.](https://github.com/nothings/single_file_libs)
 
-#### If I wrap an stb library in a new library, does the new library have to be public domain/MIT?
+#### If I wrap an stb library in a new library, does the new library have to be public domain?
 
-No, because it's public domain you can freely relicense it to whatever license your new
-library wants to be.
-
-#### What's the deal with SSE support in GCC-based compilers?
-
-stb_image will either use SSE2 (if you compile with -msse2) or
-will not use any SIMD at all, rather than trying to detect the
-processor at runtime and handle it correctly. As I understand it,
-the approved path in GCC for runtime-detection require
-you to use multiple source files, one for each CPU configuration.
-Because stb_image is a header-file library that compiles in only
-one source file, there's no approved way to build both an
-SSE-enabled and a non-SSE-enabled variation.
-
-While we've tried to work around it, we've had multiple issues over
-the years due to specific versions of gcc breaking what we're doing,
-so we've given up on it. See https://github.com/nothings/stb/issues/280
-and https://github.com/nothings/stb/issues/410 for examples.
+No.
 
 #### Some of these libraries seem redundant to existing open source libraries. Are they better somehow?
 
@@ -63,7 +24,7 @@ attribution requirement). They may be less featureful, slower,
 and/or use more memory. If you're already using an equivalent
 library, there's probably no good reason to switch.
 
-#### Can I link directly to the table of stb libraries?
+###### Can I link directly to the table of stb libraries?
 
 You can use [this URL](https://github.com/nothings/stb#stb_libs) to link directly to that list.
 
@@ -109,10 +70,11 @@ way of namespacing the filenames and source function names.
 
 #### Will you add more image types to stb_image.h?
 
-No. As stb_image use has grown, it has become more important
-for us to focus on security of the codebase. Adding new image
-formats increases the amount of code we need to secure, so it
-is no longer worth adding new formats.
+If people submit them, I generally add them, but the goal of stb_image
+is less for applications like image viewer apps (which need to support
+every type of image under the sun) and more for things like games which
+can choose what images to use, so I may decline to add them if they're
+too rare or if the size of implementation vs. apparent benefit is too low.
 
 #### Do you have any advice on how to create my own single-file library?
 
@@ -133,3 +95,6 @@ for other people to use them from other languages.
 
 I still use MSVC 6 (1998) as my IDE because it has better human factors
 for me than later versions of MSVC.
+
+
+

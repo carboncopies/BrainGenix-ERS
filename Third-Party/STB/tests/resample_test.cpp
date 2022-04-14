@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -57,11 +56,8 @@ void stbir_progress(float p)
 	STBIR_ASSERT(p >= 0 && p <= 1);
 }
 
-#ifdef __clang__
-#define STBIRDEF static inline
-#endif
-
 #define STBIR_PROGRESS_REPORT stbir_progress
+
 #define STB_IMAGE_RESIZE_IMPLEMENTATION
 #define STB_IMAGE_RESIZE_STATIC
 #include "stb_image_resize.h"
@@ -74,11 +70,9 @@ void stbir_progress(float p)
 
 #ifdef _WIN32
 #include <sys/timeb.h>
-#include <direct.h>
-#define mkdir(a, b) _mkdir(a)
-#else
-#include <sys/stat.h>
 #endif
+
+#include <direct.h>
 
 #define MT_SIZE 624
 static size_t g_aiMT[MT_SIZE];
@@ -131,7 +125,7 @@ inline float mtfrand()
 	return (float)(mtrand() % ninenine)/ninenine;
 }
 
-void resizer(int argc, char **argv)
+static void resizer(int argc, char **argv)
 {
 	unsigned char* input_pixels;
 	unsigned char* output_pixels;
@@ -148,7 +142,7 @@ void resizer(int argc, char **argv)
 	exit(0);
 }
 
-void performance(int argc, char **argv)
+static void performance(int argc, char **argv)
 {
 	unsigned char* input_pixels;
 	unsigned char* output_pixels;
@@ -839,7 +833,7 @@ void test_filters(void)
 
 #define UMAX32   4294967295U
 
-static void write32(const char *filename, stbir_uint32 *output, int w, int h)
+static void write32(char *filename, stbir_uint32 *output, int w, int h)
 {
     stbir_uint8 *data = (stbir_uint8*) malloc(w*h*3);
     for (int i=0; i < w*h*3; ++i)
@@ -875,9 +869,9 @@ static void test_32(void)
 void test_suite(int argc, char **argv)
 {
 	int i;
-	const char *barbara;
+	char *barbara;
 
-	mkdir("test-output", 777);
+	_mkdir("test-output");
 
 	if (argc > 1)
 		barbara = argv[1];

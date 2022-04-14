@@ -63,6 +63,18 @@ Package=<4>
 
 ###############################################################################
 
+Project: "pg_test"=.\pg_test\pg_test.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
 Project: "resize"=.\resize.dsp - Package Owner=<4>
 
 Package=<5>
@@ -90,6 +102,9 @@ Package=<4>
     Project_Dep_Name image_test
     End Project Dependency
     Begin Project Dependency
+    Project_Dep_Name stretch_test
+    End Project Dependency
+    Begin Project Dependency
     Project_Dep_Name c_lexer_test
     End Project Dependency
 }}}
@@ -108,7 +123,7 @@ Package=<4>
 
 ###############################################################################
 
-Project: "stblib"=.\stblib.dsp - Package Owner=<4>
+Project: "stretch_test"=.\stretch_test.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
