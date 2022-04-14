@@ -264,9 +264,20 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
     // If FreeImage Failed, Try STB
     if (FreeImageLoadFail) {
 
-        int width, height, nrChannels;
-        unsigned char *data = stbi_load("container.jpg", &width, &height, &nrChannels, 0); 
-        stbi_load_from_memory()
+        int Width, Weight, NumChannels;
+        unsigned char *ImageBytes = stbi_load_from_memory(ImageData->Data.get(), ImageData->Size_B, &Width, &Weight, &NumChannels, 0); 
+
+        // Perform Sanity Check
+        if ((Channels < 1) || (Channels > 4)) {
+            SystemUtils_->Logger_->Log("Fallback STB_Image Library Loading Failed, Image Has Invalid Number Of Channels", 8);
+            return Texture;
+        }
+
+        // Check Width/Height
+        if ((Width <= 0) || (Height <= 0)) {
+            SystemUtils_->Logger_->Log("Fallback STB_Image Library Loading Failed, Image Has Invalid Width/Height", 8);
+            return Texture;
+        }
 
     } else {
 
