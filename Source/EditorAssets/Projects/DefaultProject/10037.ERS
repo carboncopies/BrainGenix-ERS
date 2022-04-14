@@ -125,11 +125,17 @@ uniform STRUCT_PointLight PointLights[32];
 uniform STRUCT_SpotLight SpotLights[16];
 
 
+// Gamma Correction Info
+uniform bool GammaCorrectionEnabled_;
+
+
 // Declare Light Calculation Functions
 vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 ViewDirection);
 vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection);
 vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection);
 
+// Declare Gamma Correction Functions
+vec4 GammaCorrect(vec4 Input, bool GammaEnabled);
 
 
 void main()
@@ -182,7 +188,20 @@ void main()
         Result += SampledData.EmissiveTextureColor;
     }
     
-    FragColor = Result;
+    
+    // Apply Gamma Correction
+    FragColor = GammaCorrect(Result, GammaCorrectionEnabled_);
+
+}
+
+
+
+vec4 GammaCorrect(vec4 Input, bool GammaEnabled) {
+    if (GammaEnabled) {
+        float Gamma = 2.2f;
+        Input.rgb = pow(Input.rgb, vec3(1.0/Gamma));
+    }
+    return Input;
 
 }
 
@@ -253,6 +272,8 @@ vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, 
     return (AmbientComponent + DiffuseComponent + SpecularComponent);
 
 }
+
+
 
 
 
