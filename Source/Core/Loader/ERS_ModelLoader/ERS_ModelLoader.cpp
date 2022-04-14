@@ -227,9 +227,12 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(ID, ImageData.get());
 
     // Identify Image Format, Decode
+    bool FreeImageLoadFail = false;
     FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData->Data.get(), ImageData->Size_B);
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
     FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
+    FreeImage_CloseMemory(FIImageData);
+
 
     // Flip If Needed
     if (FlipTextures) {
@@ -247,22 +250,37 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
         Height = FreeImage_GetHeight(Image);
         Channels = FreeImage_GetLine(Image) / FreeImage_GetWidth(Image);
     } else {
-        SystemUtils_->Logger_->Log("Error Loading Texture, Width/Height Are Zero (Does Data Exist?)", 9);
-        return Texture;
+        SystemUtils_->Logger_->Log("FreeImage Error Loading Texture, Width/Height Are Zero Falling Back To STB_Image", 7);
+        FreeImageLoadFail = true;
     }
-    // Create Texture, Populate
-    Texture.Channels = Channels;
-    Texture.Height = Height;
-    Texture.Width = Width;
-    Texture.ImageData = Image;
-    Texture.HasImageData = true;
-    Texture.Path = std::to_string(ID);
 
-    // Deallocate FIImageData (ImageData IOData Struct Should Be Automatically Destroyed When Out Of Scope)
-    FreeImage_CloseMemory(FIImageData);
+    // Channel Sanity Check
+    if ((Channels < 1) || (Channels > 4)) {
+        SystemUtils_->Logger_->Log("FreeImage Failed Identify Number Of Channels, Falling Back To STB_Image", 7);
+        FreeImageLoadFail = true;
+    }
 
-    // Set Image Bytes
-    Texture.ImageBytes = FreeImage_GetBits(Image);
+
+    // If FreeImage Failed, Try STB
+    if (FreeImageLoadFail) {
+
+
+
+    } else {
+
+        // Create Texture, Populate
+        Texture.Channels = Channels;
+        Texture.Height = Height;
+        Texture.Width = Width;
+        Texture.ImageData = Image;
+        Texture.HasImageData = true;
+        Texture.Path = std::to_string(ID);
+
+
+        // Set Image Bytes
+        Texture.ImageBytes = FreeImage_GetBits(Image);
+    
+    }
 
     // Return Value
     return Texture;
