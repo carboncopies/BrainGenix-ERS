@@ -18,58 +18,6 @@ out VS_OUT {
 
 
 
-// Define Structs
-struct STRUCT_DirectionalLight {
-
-    vec3 Direction;
-
-    // Light Color Parameters
-    vec3 Ambient;
-    vec3 Diffuse;
-    vec3 Specular;
-
-};
-
-struct STRUCT_PointLight {
-
-    // Physical Parameters
-    vec3 Position;
-
-    // Light Color Parameters
-    vec3 Ambient;
-    vec3 Diffuse;
-    vec3 Specular;
-
-    // Light Rolloff Parameters
-    float ConstantRolloff;
-    float LinearRolloff;
-    float QuadraticRolloff;
-
-};
-
-struct STRUCT_SpotLight {
-
-    // Physical Parameters
-    vec3 Position;
-    vec3 Direction;
-
-    // Light Color Parameters
-    vec3 Ambient;
-    vec3 Diffuse;
-    vec3 Specular;
-
-    // Light Rolloff Parameters
-    float ConstantRolloff;
-    float LinearRolloff;
-    float QuadraticRolloff;
-
-    // Spotlight Parameters
-    float CutOff;
-    float OuterCutOff;
-
-};
-
-
 // Get Metadata Params
 uniform float Time; // Time since program started in seconds
 uniform float FrameTime; // Render Time Of The Frame
@@ -83,15 +31,6 @@ uniform mat4 projection;
 
 // Get Camera Info
 uniform vec3 CameraPosition;
-
-
-// Get Lighting Info
-uniform int NumberDirectionalLights;
-uniform int NumberPointLights;
-uniform int NumberSpotLights;
-uniform STRUCT_DirectionalLight DirectionalLights[4];
-uniform STRUCT_PointLight PointLights[32];
-uniform STRUCT_SpotLight SpotLights[16];
 
 
 
