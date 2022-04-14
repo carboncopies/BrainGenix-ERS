@@ -737,8 +737,8 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
             ImGui::MenuItem("Rotation Indicator", nullptr, &Viewports_[Index]->ShowCube);
             ImGui::MenuItem("Gizmo", nullptr, &Viewports_[Index]->GizmoEnabled);
             ImGui::MenuItem("Grid", nullptr, &Viewports_[Index]->GridEnabled);
-            
-            ImGui::MenuItem("Gamma Correction", nullptr, &Viewports_[Index]->Gamma Correction);
+            ImGui::MenuItem("Light Icons", nullptr, &Viewports_[Index]->LightIcons);
+            ImGui::MenuItem("Gamma Correction", nullptr, &Viewports_[Index]->GammaCorrection);
 
 
         ImGui::EndMenu();
