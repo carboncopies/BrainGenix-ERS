@@ -158,7 +158,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
             } else if (Model->TexturesToPushToGPU_[i].Channels == 1) {
                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RED, GL_UNSIGNED_BYTE, RawImageData);
             } else {
-                SystemUtils_->Logger_->Log(std::string("Texture '") + Model->TexturesToPushToGPU_[i].Path + std::string("' Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
+                SystemUtils_->Logger_->Log(std::string("Texture Of Type '") + Model->TexturesToPushToGPU_[i].Type + std::string("' With ID '") + Model->TexturesToPushToGPU_[i].Path + std::string("' For Model '") + Model->Name + std::string("' Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
             }
             glGenerateMipmap(GL_TEXTURE_2D);
 
@@ -255,6 +255,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
     Texture.Width = Width;
     Texture.ImageData = Image;
     Texture.HasImageData = true;
+    Texture.Path = std::to_string(ID);
 
     // Deallocate FIImageData (ImageData IOData Struct Should Be Automatically Destroyed When Out Of Scope)
     FreeImage_CloseMemory(FIImageData);
