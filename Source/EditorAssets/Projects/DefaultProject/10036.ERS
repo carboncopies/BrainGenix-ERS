@@ -4,11 +4,70 @@
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
 layout (location = 2) in vec2 aTexCoords;
+layout (location = 3) in vec3 aTangent;
+layout (location = 4) in vec3 aBitangent;
 
 // Set Outputs
-out vec2 TexCoords;
-out vec3 Normal;
-out vec3 FragPos;
+out VS_OUT {
+    vec3 FragPos;
+    vec2 TexCoords;
+    mat3 TBN;
+    vec3 TangentViewPos;
+    vec3 TangentFragPos;
+} Object;
+
+
+
+// Define Structs
+struct STRUCT_DirectionalLight {
+
+    vec3 Direction;
+
+    // Light Color Parameters
+    vec3 Ambient;
+    vec3 Diffuse;
+    vec3 Specular;
+
+};
+
+struct STRUCT_PointLight {
+
+    // Physical Parameters
+    vec3 Position;
+
+    // Light Color Parameters
+    vec3 Ambient;
+    vec3 Diffuse;
+    vec3 Specular;
+
+    // Light Rolloff Parameters
+    float ConstantRolloff;
+    float LinearRolloff;
+    float QuadraticRolloff;
+
+};
+
+struct STRUCT_SpotLight {
+
+    // Physical Parameters
+    vec3 Position;
+    vec3 Direction;
+
+    // Light Color Parameters
+    vec3 Ambient;
+    vec3 Diffuse;
+    vec3 Specular;
+
+    // Light Rolloff Parameters
+    float ConstantRolloff;
+    float LinearRolloff;
+    float QuadraticRolloff;
+
+    // Spotlight Parameters
+    float CutOff;
+    float OuterCutOff;
+
+};
 
 
 // Get Metadata Params
@@ -22,15 +81,41 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
+// Get Camera Info
+uniform vec3 CameraPosition;
+
+
+// Get Lighting Info
+uniform int NumberDirectionalLights;
+uniform int NumberPointLights;
+uniform int NumberSpotLights;
+uniform STRUCT_DirectionalLight DirectionalLights[4];
+uniform STRUCT_PointLight PointLights[32];
+uniform STRUCT_SpotLight SpotLights[16];
+
 
 
 void main()
 {
-    TexCoords = aTexCoords;    
+    Object.FragPos = vec3(model * vec4(aPos, 1.0));
+    Object.TexCoords = aTexCoords;
+    
+    mat3 NormalMatrix = transpose(inverse(mat3(model)));
+    vec3 T = normalize(NormalMatrix * aTangent);
+    vec3 N = normalize(NormalMatrix * aNormal);
+    T = normalize(T - dot(T, N) * N);
+    vec3 B = cross(N, T);
+    
+    mat3 TBN = transpose(mat3(T, B, N));
+    Object.TBN = TBN;
+    Object.TangentViewPos = TBN * CameraPosition;
+    Object.TangentFragPos = TBN * Object.FragPos;
+
     gl_Position = projection * view * model * vec4(aPos, 1.0f);
-    FragPos = vec3(model * vec4(aPos, 1.0));
-    Normal = mat3(transpose(inverse(model))) * aNormal;
+
 }
+
+
 
 
 
