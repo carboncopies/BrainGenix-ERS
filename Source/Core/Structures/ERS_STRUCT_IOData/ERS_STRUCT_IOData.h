@@ -32,10 +32,10 @@ struct ERS_STRUCT_IOData {
     float LoadTime_s = -1; /**<Float Indicating Number Of Seconds Loading Took, If Not Set, Value Is -1*/
     float WriteTime_s = -1; /**<Float Indiciating Number Of Seconds Writing Took, If Not Set, Value Is -1*/
 
-    float Size_B; /**<Number Indicating Size Of Data*/
-    float Size_KB; /**<Size In Kilobytes*/
-    float Size_MB; /**<Size In Megabytes*/
-    float Size_GB; /**<Size In Gigabytes*/
+    double Size_B; /**<Number Indicating Size Of Data*/
+    double Size_KB; /**<Size In Kilobytes*/
+    double Size_MB; /**<Size In Megabytes*/
+    double Size_GB; /**<Size In Gigabytes*/
 
     float LoadSpeed_GBs; /**<Loading Speed In Gigabytes/Second*/
     float LoadSpeed_MBs; /**<Loading Speed In Megabytes/Second*/
