@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 2.6)
 
-project(ILUT)
+cmake_policy(SET CMP0048 NEW)
+project(
+    ILUT
+    VERSION "1.8.0"
+    )
 
 file(GLOB ILUT_SRCS src/*.cpp)
 file(GLOB ILUT_INC include/*.h ../include/IL/devil_internal_exports.h ../include/IL/ilut.h)
