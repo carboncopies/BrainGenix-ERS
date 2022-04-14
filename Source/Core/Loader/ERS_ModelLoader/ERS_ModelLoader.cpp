@@ -145,7 +145,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
         // Convert FIBITMAP* To Raw Image Bytes
-        unsigned char* RawImageData = FreeImage_GetBits(Model->TexturesToPushToGPU_[i].ImageData);
+        unsigned char* RawImageData = Model->TexturesToPushToGPU_[i].ImageBytes;
 
         if (RawImageData != NULL) {
             
