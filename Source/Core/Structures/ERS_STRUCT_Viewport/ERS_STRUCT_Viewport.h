@@ -31,6 +31,8 @@ struct ERS_STRUCT_Viewport {
     bool GizmoEnabled = true; /**<Toggle On/Off The 3D Gizmo*/
     bool ShowCube = true; /**<Enable/Disable The Viewport Cube*/
     bool GridEnabled = true; /**<Enable/Disable The Viewport's Background Grid*/
+    bool LightICons = true; /**<Draw or don't draw the light icons*/
+    bool GammaCorrection = true; /**<Enable/disable gamma correction*/
     int ShaderIndex = 0; /**<Index of the shader to be used*/
 
     std::unique_ptr<bool> Enabled; /**<Indicates if the viewport is enabled*/
