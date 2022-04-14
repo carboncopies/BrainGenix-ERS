@@ -4,10 +4,13 @@
 out vec4 FragColor;
 
 // Set Inputs
-in vec2 TexCoords;
-in vec3 FragPos;
-in vec3 Normal;
-
+in VS_OUT {
+    vec3 FragPos;
+    vec2 TexCoords;
+    mat3 TBN;
+    vec3 TangentViewPos;
+    vec3 TangentFragPos;
+} Object;
 
 
 
@@ -139,6 +142,9 @@ vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, 
 vec4 GammaCorrectResult(vec4 Input, bool GammaEnabled);
 vec4 GammaCorrectTexture(sampler2D Texture, bool GammaEnabled);
 
+// Declare Normal Map Extractor Function
+vec3 AdjustNormal(sampler2D NormalMap, vec3 ExistingNormal);
+
 
 void main()
 {    
@@ -155,17 +161,20 @@ void main()
     SampledData.DiffuseTextureColor = GammaCorrectTexture(texture_diffuse1, GammaCorrectionEnabled_);
     
     if (HasSpecular) {
-        SampledData.SpecularTextureColor = texture(texture_specular1, TexCoords);
+        SampledData.SpecularTextureColor = texture(texture_specular1, Object.TexCoords);
     } else {
         SampledData.SpecularTextureColor = SampledData.DiffuseTextureColor;
     }
-    SampledData.NormalTextureColor = texture(texture_normals1, TexCoords);
-    SampledData.HeightTextureColor = texture(texture_height1, TexCoords);
-    SampledData.EmissiveTextureColor = texture(texture_emissive1, TexCoords);
+    SampledData.NormalTextureColor = texture(texture_normals1, Object.TexCoords);
+    SampledData.HeightTextureColor = texture(texture_height1, Object.TexCoords);
+    SampledData.EmissiveTextureColor = texture(texture_emissive1, Object.TexCoords);
     
 
-    vec3 Norm = normalize(Normal);
-    vec3 ViewDirection = normalize(CameraPosition - FragPos);
+    
+
+    vec3 Norm = texture(texture_normals1, Object.TexCoords).rgb;
+    Norm = normalize(Norm * 2.0f - 1.0f);
+    vec3 ViewDirection = normalize(Object.TangentViewPos - Object.TangentFragPos);
 
     // ---- Calculate Lighting Contributions ---- //
     vec4 Result = vec4(0.0f);
@@ -177,12 +186,12 @@ void main()
 
     // Calculate Point Lights
     for (int i = 0; i < NumberPointLights; i++) {
-        Result += CalculatePointLight(PointLights[i], SampledData, Norm, FragPos, ViewDirection);
+        Result += CalculatePointLight(PointLights[i], SampledData, Norm, Object.FragPos, ViewDirection);
     }
 
     // Calculate Spot Lights
     for (int i = 0; i < NumberSpotLights; i++) {
-        Result += CalculateSpotLight(SpotLights[i], SampledData, Norm, FragPos, ViewDirection);
+        Result += CalculateSpotLight(SpotLights[i], SampledData, Norm, Object.FragPos, ViewDirection);
     }
 
     // Add Emissive Texture
@@ -193,6 +202,14 @@ void main()
     
     // Apply Gamma Correction
     FragColor = GammaCorrectResult(Result, GammaCorrectionEnabled_);
+
+}
+
+
+
+vec3 AdjustNormal(sampler2D NormalMap, vec3 ExistingNormal) {
+
+    return vec3(1.0f);
 
 }
 
@@ -209,7 +226,7 @@ vec4 GammaCorrectResult(vec4 Input, bool GammaEnabled) {
 
 
 vec4 GammaCorrectTexture(sampler2D Texture, bool GammaEnabled) {
-    vec4 Color = texture(Texture, TexCoords);
+    vec4 Color = texture(Texture, Object.TexCoords);
 
     if (GammaEnabled) {
         Color.rgb = pow(Color.rgb, vec3(Gamma));
@@ -217,6 +234,7 @@ vec4 GammaCorrectTexture(sampler2D Texture, bool GammaEnabled) {
 
     return Color;
 }
+
 
 vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 ViewDirection) {
     
@@ -238,7 +256,7 @@ vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData
 
 vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection) {
 
-    vec3 LightDirectionVector = normalize(Light.Position - FragPos);
+    vec3 LightDirectionVector = normalize(Object.TBN * Light.Position - Object.TangentFragPos);
     vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Normal);
 
     // Diffuse/Specular Components
@@ -260,7 +278,7 @@ vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData
 
 vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection) {
 
-    vec3 LightDirectionVector = normalize(Light.Position - FragPos);
+    vec3 LightDirectionVector = normalize(Object.TBN * Light.Position - Object.TangentFragPos);
     vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Normal);
 
     // Diffuse/Specular Components
@@ -272,7 +290,7 @@ vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, 
     float Attenuation = 1.0f / (Light.ConstantRolloff + Light.LinearRolloff * Distance + Light.QuadraticRolloff * (Distance * Diffuse));
 
     // Calculate Spot Intensity
-    float Theta = dot(LightDirectionVector, normalize(-Light.Direction));
+    float Theta = dot(normalize(Light.Position  - FragPos), normalize(-Light.Direction));
     float Epsilon = Light.CutOff - Light.OuterCutOff;
     float Intensity = clamp((Theta - Light.OuterCutOff) / Epsilon, 0.0f, 1.0f);
 
@@ -284,6 +302,9 @@ vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, 
     return (AmbientComponent + DiffuseComponent + SpecularComponent);
 
 }
+
+
+
 
 
 
