@@ -95,7 +95,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
 
     // Setup Vars
-    glDisable(GL_FRAMEBUFFER_SRGB); 
     glEnable(GL_DEPTH_TEST);
     CaptureCursor_ = false;
     CaptureIndex_ = -1;
@@ -146,7 +145,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     // BIND To Default Framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-    glEnable(GL_FRAMEBUFFER_SRGB); 
 
 
 
