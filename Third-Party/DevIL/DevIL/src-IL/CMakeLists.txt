@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 2.6)
 
-project(DevIL)
+cmake_policy(SET CMP0048 NEW)
+project(
+    DevIL
+    VERSION "1.8.0"
+    )
 
 # include our custom modules
 set (CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
