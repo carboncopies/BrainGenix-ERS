@@ -162,7 +162,6 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
             }
             glGenerateMipmap(GL_TEXTURE_2D);
 
-
         } else {
             SystemUtils_->Logger_->Log("Texture Failed To Load, Cannot Push To GPU", 9);
         }
