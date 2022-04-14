@@ -133,18 +133,15 @@ uniform bool GammaCorrectionEnabled_;
 float Gamma = 2.2f;
 
 
-// Declare Light Calculation Functions
+// Declare Functions
 vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 ViewDirection);
 vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection);
 vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection);
 
-// Declare Gamma Correction Functions
 vec4 GammaCorrectResult(vec4 Input, bool GammaEnabled);
 vec4 GammaCorrectTexture(sampler2D Texture, bool GammaEnabled);
 
-// Declare Normal Map Extractor Function
-vec3 AdjustNormal(sampler2D NormalMap, vec3 ExistingNormal);
-
+STRUCT_SampledData SetSampledData();
 
 void main()
 {    
@@ -156,21 +153,7 @@ void main()
     }
 
     // ---- Extract Texture Vectors, Create SampledData Struct ---- //
-    STRUCT_SampledData SampledData;
-
-    SampledData.DiffuseTextureColor = GammaCorrectTexture(texture_diffuse1, GammaCorrectionEnabled_);
-    
-    if (HasSpecular) {
-        SampledData.SpecularTextureColor = texture(texture_specular1, Object.TexCoords);
-    } else {
-        SampledData.SpecularTextureColor = SampledData.DiffuseTextureColor;
-    }
-    SampledData.NormalTextureColor = texture(texture_normals1, Object.TexCoords);
-    SampledData.HeightTextureColor = texture(texture_height1, Object.TexCoords);
-    SampledData.EmissiveTextureColor = texture(texture_emissive1, Object.TexCoords);
-    
-
-    
+    STRUCT_SampledData SampledData = SetSampledData();
 
     vec3 Norm = texture(texture_normals1, Object.TexCoords).rgb;
     Norm = normalize(Norm * 2.0f - 1.0f);
@@ -207,12 +190,23 @@ void main()
 
 
 
-vec3 AdjustNormal(sampler2D NormalMap, vec3 ExistingNormal) {
-
-    return vec3(1.0f);
+STRUCT_SampledData SetSampledData() {
+    STRUCT_SampledData SampledData;
+    
+    SampledData.DiffuseTextureColor = GammaCorrectTexture(texture_diffuse1, GammaCorrectionEnabled_);
+    
+    if (HasSpecular) {
+        SampledData.SpecularTextureColor = texture(texture_specular1, Object.TexCoords);
+    } else {
+        SampledData.SpecularTextureColor = SampledData.DiffuseTextureColor;
+    }
+    SampledData.NormalTextureColor = texture(texture_normals1, Object.TexCoords);
+    SampledData.HeightTextureColor = texture(texture_height1, Object.TexCoords);
+    SampledData.EmissiveTextureColor = texture(texture_emissive1, Object.TexCoords);
+    
+    return SampledData;
 
 }
-
 
 
 vec4 GammaCorrectResult(vec4 Input, bool GammaEnabled) {
@@ -302,6 +296,7 @@ vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, 
     return (AmbientComponent + DiffuseComponent + SpecularComponent);
 
 }
+
 
 
 
