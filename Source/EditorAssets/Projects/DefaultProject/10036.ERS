@@ -14,6 +14,7 @@ out VS_OUT {
     mat3 TBN;
     vec3 TangentViewPos;
     vec3 TangentFragPos;
+    vec3 Normal; // Used when no normal map is available;
 } Object;
 
 
@@ -32,7 +33,8 @@ uniform mat4 projection;
 // Get Camera Info
 uniform vec3 CameraPosition;
 
-
+// Get Normal Info
+uniform bool HasNormals;
 
 void main()
 {
@@ -49,6 +51,7 @@ void main()
     Object.TBN = TBN;
     Object.TangentViewPos = TBN * CameraPosition;
     Object.TangentFragPos = TBN * Object.FragPos;
+    Object.Normal = mat3(transpose(inverse(model))) * aNormal;
 
     gl_Position = projection * view * model * vec4(aPos, 1.0f);
 

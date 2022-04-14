@@ -10,6 +10,7 @@ in VS_OUT {
     mat3 TBN;
     vec3 TangentViewPos;
     vec3 TangentFragPos;
+    vec3 Normal; // Used when normal texture not present
 } Object;
 
 
@@ -155,9 +156,17 @@ void main()
     // ---- Extract Texture Vectors, Create SampledData Struct ---- //
     STRUCT_SampledData SampledData = SetSampledData();
 
-    vec3 Norm = texture(texture_normals1, Object.TexCoords).rgb;
-    Norm = normalize(Norm * 2.0f - 1.0f);
-    vec3 ViewDirection = normalize(Object.TangentViewPos - Object.TangentFragPos);
+    vec3 Norm;
+    vec3 ViewDirection;
+    if (HasNormals) {
+        Norm = texture(texture_normals1, Object.TexCoords).rgb;
+        Norm = normalize(Norm * 2.0f - 1.0f);
+        ViewDirection = normalize(Object.TangentViewPos - Object.TangentFragPos);
+    } else {
+        Norm = normalize(Object.Normal);
+        ViewDirection = normalize(CameraPosition - Object.FragPos);
+    }
+
 
     // ---- Calculate Lighting Contributions ---- //
     vec4 Result = vec4(0.0f);
@@ -181,10 +190,10 @@ void main()
     if (HasEmissive) {
         Result += SampledData.EmissiveTextureColor;
     }
-    
-    
+
     // Apply Gamma Correction
     FragColor = GammaCorrectResult(Result, GammaCorrectionEnabled_);
+
 
 }
 
@@ -195,37 +204,50 @@ STRUCT_SampledData SetSampledData() {
     
     SampledData.DiffuseTextureColor = GammaCorrectTexture(texture_diffuse1, GammaCorrectionEnabled_);
     
+    // Handle Specular Textures
     if (HasSpecular) {
         SampledData.SpecularTextureColor = texture(texture_specular1, Object.TexCoords);
     } else {
         SampledData.SpecularTextureColor = SampledData.DiffuseTextureColor;
     }
-    SampledData.NormalTextureColor = texture(texture_normals1, Object.TexCoords);
-    SampledData.HeightTextureColor = texture(texture_height1, Object.TexCoords);
-    SampledData.EmissiveTextureColor = texture(texture_emissive1, Object.TexCoords);
     
+    // Handle Normal Textures
+    if (HasNormals) {
+        SampledData.NormalTextureColor = texture(texture_normals1, Object.TexCoords);
+    } else {
+        SampledData.NormalTextureColor = vec4(0.0f);
+    }
+
+
+    SampledData.HeightTextureColor = texture(texture_height1, Object.TexCoords);
+
+    // Handle Emissive Textures
+    if (HasEmissive) {
+        SampledData.EmissiveTextureColor = texture(texture_emissive1, Object.TexCoords);
+    } else {
+        SampledData.EmissiveTextureColor = vec4(0.0f);
+    }
+
     return SampledData;
 
 }
 
 
+// Used To Enable Gamma Correction On The Output
 vec4 GammaCorrectResult(vec4 Input, bool GammaEnabled) {
     if (GammaEnabled) {
-        
         Input.rgb = pow(Input.rgb, vec3(1.0/Gamma));
     }
     return Input;
-
 }
 
 
+// Used To Make Sure Textures Aren't Too Bright
 vec4 GammaCorrectTexture(sampler2D Texture, bool GammaEnabled) {
     vec4 Color = texture(Texture, Object.TexCoords);
-
     if (GammaEnabled) {
         Color.rgb = pow(Color.rgb, vec3(Gamma));
     }
-
     return Color;
 }
 
@@ -250,7 +272,13 @@ vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData
 
 vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection) {
 
-    vec3 LightDirectionVector = normalize(Object.TBN * Light.Position - Object.TangentFragPos);
+    vec3 LightDirectionVector ;
+    if (HasNormals) {
+        LightDirectionVector = normalize(Object.TBN * Light.Position - Object.TangentFragPos);
+    } else {
+        LightDirectionVector = normalize(Light.Position - FragPos);
+    }
+
     vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Normal);
 
     // Diffuse/Specular Components
@@ -272,7 +300,12 @@ vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData
 
 vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection) {
 
-    vec3 LightDirectionVector = normalize(Object.TBN * Light.Position - Object.TangentFragPos);
+    vec3 LightDirectionVector ;
+    if (HasNormals) {
+    LightDirectionVector = normalize(Object.TBN * Light.Position - Object.TangentFragPos);
+    } else {
+    LightDirectionVector = normalize(Light.Position - FragPos);
+    }
     vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Normal);
 
     // Diffuse/Specular Components
