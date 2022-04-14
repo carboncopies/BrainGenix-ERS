@@ -235,6 +235,8 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
         FreeImage_FlipVertical(Image);
     }
 
+    std::cout<< FreeImage_GetColorsUsed(Image)<<std::endl;
+
     // Get Metadata
     ERS_STRUCT_Texture Texture;
     Texture.HasImageData = false;
