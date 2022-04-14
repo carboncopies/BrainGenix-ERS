@@ -23,7 +23,7 @@ target_link_libraries(ERS_ModelLoader
     glfw
     assimp
     FreeImage
-    stb
+    stb_image
     )
 
 # Link Internal Libs
