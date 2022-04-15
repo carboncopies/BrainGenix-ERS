@@ -281,23 +281,23 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
     // If FreeImage Failed, Try STB
     if (FreeImageLoadFail) {
 
-        int Width, Weight, NumChannels;
-        unsigned char *ImageBytes = stbi_load_from_memory(ImageData->Data.get(), ImageData->Size_B, &Width, &Weight, &NumChannels, 0); 
+        int SWidth, SHeight, SChannels;
+        unsigned char *ImageBytes = stbi_load_from_memory(ImageData->Data.get(), ImageData->Size_B, &SWidth, &SHeight, &SChannels, 0); 
         
         // Perform Sanity Checks
-        if ((Channels < 1) || (Channels > 4)) {
-            SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed, Image Has Invalid Number Of Channels '") + std::to_string(NumChannels) + std::string("'"), 8);
+        if ((SChannels < 1) || (SChannels > 4)) {
+            SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed, Image Has Invalid Number Of Channels '") + std::to_string(SChannels) + std::string("'"), 8);
             return Texture;
         }
-        if ((Width <= 0) || (Height <= 0)) {
+        if ((SWidth <= 0) || (SHeight <= 0)) {
             SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed, Image Has Invalid Width/Height"), 8);
             return Texture;
         }
 
         // Populate Texture Struct
-        Texture.Channels = NumChannels;
-        Texture.Height = Height;
-        Texture.Width = Width;
+        Texture.Channels = SChannels;
+        Texture.Height = SHeight;
+        Texture.Width = SWidth;
         Texture.Path = std::to_string(ID);
         Texture.HasImageData = true;
         Texture.FreeImageBackend = false;
