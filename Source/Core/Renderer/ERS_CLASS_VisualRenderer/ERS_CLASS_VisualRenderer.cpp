@@ -374,8 +374,11 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         Shaders_[ShaderIndex]->SetMat4("projection", projection);
         Shaders_[ShaderIndex]->SetMat4("view", view);
         Shaders_[ShaderIndex]->SetBool("GammaCorrectionEnabled_", Viewports_[Index]->GammaCorrection);
-
-
+        Shaders_[ShaderIndex]->SetBool("HDREnabled_", Viewports_[Index]->HDREnabled_);
+        Shaders_[ShaderIndex]->SetFloat("Exposure_", Viewports_[Index]->Exposure_);
+        Shaders_[ShaderIndex]->SetFloat("Gamma_", Viewports_[Index]->Gamma_);
+        
+        
         // Update Cursor If Selection Changed
         if (SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged && DrawCursor) {
 
