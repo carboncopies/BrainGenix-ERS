@@ -266,13 +266,13 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
         Height = FreeImage_GetHeight(Image);
         Channels = FreeImage_GetLine(Image) / FreeImage_GetWidth(Image);
     } else {
-        SystemUtils_->Logger_->Log(std::string("FreeImage Error Loading Texture, Width/Height Are Zero Falling Back To STB_Image"), 7);
+        SystemUtils_->Logger_->Log(std::string("FreeImage Error Loading Texture '") + std::to_string(ID) + std::string("' , Width/Height Are Zero Falling Back To STB_Image"), 7);
         FreeImageLoadFail = true;
     }
 
     // Channel Sanity Check
     if ((Channels < 1) || (Channels > 4)) {
-        SystemUtils_->Logger_->Log(std::string("FreeImage Failed Identify Number Of Channels, Falling Back To STB_Image"), 7);
+        SystemUtils_->Logger_->Log(std::string("FreeImage Failed Identify Number Of Channels On Texture '") + std::to_string(ID) + std::string("' Falling Back To STB_Image"), 7);
         FreeImageLoadFail = true;
     }
 
@@ -285,11 +285,11 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
         
         // Perform Sanity Checks
         if ((SChannels < 1) || (SChannels > 4)) {
-            SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed, Image Has Invalid Number Of Channels '") + std::to_string(SChannels) + std::string("'"), 8);
+            SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed On Texture '") + std::to_string(ID) + std::string("' , Image Has Invalid Number Of Channels '") + std::to_string(SChannels) + std::string("'"), 8);
             return Texture;
         }
         if ((SWidth <= 0) || (SHeight <= 0)) {
-            SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed, Image Has Invalid Width/Height"), 8);
+            SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed On Texture '") + std::to_string(ID) + std::string("' , Image Has Invalid Width/Height"), 8);
             return Texture;
         }
 
