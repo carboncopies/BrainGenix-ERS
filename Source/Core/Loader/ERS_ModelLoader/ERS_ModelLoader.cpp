@@ -237,7 +237,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
     FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
     FreeImage_CloseMemory(FIImageData);
 
-
+    FreeImageLoadFail = true;
     // Flip If Needed
     if (FlipTextures) {
         FreeImage_FlipVertical(Image);
