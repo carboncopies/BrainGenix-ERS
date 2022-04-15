@@ -297,8 +297,9 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
         Texture.Channels = SChannels;
         Texture.Height = SHeight;
         Texture.Width = SWidth;
-        Texture.Path = std::to_string(ID);
         Texture.HasImageData = true;
+        Texture.Path = std::to_string(ID);
+        Texture.ID = ID;
         Texture.FreeImageBackend = false;
         Texture.ImageBytes = ImageBytes;
 
@@ -313,6 +314,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
         Texture.ImageData = Image;
         Texture.HasImageData = true;
         Texture.Path = std::to_string(ID);
+        Texture.ID = ID;
         Texture.FreeImageBackend = true;
         Texture.ImageBytes = FreeImage_GetBits(Image);
     
