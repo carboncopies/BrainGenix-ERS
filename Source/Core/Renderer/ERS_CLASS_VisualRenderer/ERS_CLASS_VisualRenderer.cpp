@@ -743,6 +743,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
             ImGui::MenuItem("Grid", nullptr, &Viewports_[Index]->GridEnabled);
             ImGui::MenuItem("Light Icons", nullptr, &Viewports_[Index]->LightIcons);
             ImGui::MenuItem("Gamma Correction", nullptr, &Viewports_[Index]->GammaCorrection);
+            ImGui::MenuItem("HDR", nullptr, &Viewports_[Index]->HDREnabled_);
 
 
         ImGui::EndMenu();
