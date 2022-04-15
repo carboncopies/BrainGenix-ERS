@@ -8,6 +8,7 @@ in VS_OUT {
     vec3 FragPos;
     vec2 TexCoords;
     mat3 TBN;
+    vec3 WorldPos;
     vec3 TangentViewPos;
     vec3 TangentFragPos;
     vec3 Normal; // Used when normal texture not present
@@ -69,12 +70,12 @@ struct STRUCT_SpotLight {
 
 struct STRUCT_SampledData {
 
-    vec4 DiffuseTextureColor;
-    vec4 SpecularTextureColor;
-    vec4 NormalTextureColor;
-    vec4 HeightTextureColor;
-    vec4 EmissiveTextureColor;
-    vec4 OpacityTextureColor;
+    vec4 Albedo;
+    vec3 Normal;
+    vec3 Emissive;
+    float Metallic;
+    float Roughness;
+    float AO;
 
 };
 
@@ -95,11 +96,11 @@ uniform vec3 CameraPosition; // Get Camera XYZ Position
 
 // Get Texture Info
 uniform sampler2D texture_diffuse1;
-uniform sampler2D texture_specular1;
 uniform sampler2D texture_normals1;
-uniform sampler2D texture_height1;
+uniform sampler2D texture_shininess1;
 uniform sampler2D texture_emissive1;
-uniform sampler2D texture_opacity1;
+uniform sampler2D texture_metalness1;
+uniform sampler2D texture_ambientocclusion1;
 uniform float Shinyness;
 
 
@@ -137,120 +138,70 @@ uniform bool HDREnabled_;
 uniform float Exposure_;
 uniform float Gamma_;
 
+const float PI = 3.14159265358979;
 
-// Declare Functions
-vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 ViewDirection);
-vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection);
-vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection);
+vec3 GetNormalFromMap(sampler2D Normal) {
+    vec3 TangentNormal = texture(Normal, Object.TexCoords).xyz * 2.0f - 1.0f;
 
-vec4 GammaCorrectResult(vec4 Input, bool GammaEnabled);
-vec4 GammaCorrectTexture(sampler2D Texture, bool GammaEnabled);
+    vec3 Q1 = dFdx(Object.WorldPos);
+    vec3 Q2 = dFdy(Object.WorldPos);
+    vec2 st1 = dFdx(Object.TexCoords);
+    vec2 st2 = dFdy(Object.TexCoords);
 
-STRUCT_SampledData SetSampledData();
+    vec3 N = normalize(Object.Normal);
+    vec3 T = normalize(Q1*st2.t - Q2*st1.t);
+    vec3 B = -normalize(cross(N, T));
+    mat3 TBN = mat3(T,B,N);
 
-void main()
-{    
-
-    // Lighting Sanity Check
-    if ((NumberDirectionalLights == 0) && (NumberPointLights == 0) && (NumberSpotLights == 0)) {
-        FragColor = vec4(0.8f);
-        return;
-    }
-
-    // ---- Extract Texture Vectors, Create SampledData Struct ---- //
-    STRUCT_SampledData SampledData = SetSampledData();
-
-    vec3 Norm;
-    vec3 ViewDirection;
-    if (HasNormals) {
-        Norm = texture(texture_normals1, Object.TexCoords).rgb;
-        Norm = normalize(Norm * 2.0f - 1.0f);
-        ViewDirection = normalize(Object.TangentViewPos - Object.TangentFragPos);
-    } else {
-        Norm = normalize(Object.Normal);
-        ViewDirection = normalize(CameraPosition - Object.FragPos);
-    }
-
-
-    // ---- Calculate Lighting Contributions ---- //
-    vec4 Result = vec4(0.0f);
-
-    // Calculate Directional Lights
-    for (int i = 0; i < NumberDirectionalLights; i++) {
-        Result += CalculateDirectionalLight(DirectionalLights[i], SampledData, Norm, ViewDirection);
-    }
-
-    // Calculate Point Lights
-    for (int i = 0; i < NumberPointLights; i++) {
-        Result += CalculatePointLight(PointLights[i], SampledData, Norm, Object.FragPos, ViewDirection);
-    }
-
-    // Calculate Spot Lights
-    for (int i = 0; i < NumberSpotLights; i++) {
-        Result += CalculateSpotLight(SpotLights[i], SampledData, Norm, Object.FragPos, ViewDirection);
-    }
-
-    // Add Emissive Texture
-    if (HasEmissive) {
-        Result += SampledData.EmissiveTextureColor;
-    }
-
-    // Multiply By Opacity
-    //if (HasOpacity) {
-    //    Result.a = SampledData.OpacityTextureColor.r;
-    //}
-
-    // Apply Gamma Correction
-    if (HDREnabled_) {
-        vec3 Mapped = vec3(1.0f) - exp(-Result.xyz * Exposure_);
-        FragColor = GammaCorrectResult(vec4(Mapped, 1.0f), GammaCorrectionEnabled_);
-    } else {
-        FragColor = GammaCorrectResult(Result, GammaCorrectionEnabled_);
-    }
+    return normalize(TBN * TangentNormal);
 
 }
 
 
+float DistributionGGX(vec3 N, vec3 H, float Roughness) {
 
-STRUCT_SampledData SetSampledData() {
-    STRUCT_SampledData SampledData;
+    float a = Roughness*Roughness;
+    float a2 = a*a;
+    float NdotH = max(dot(N,H), 0.0f);
+    float NdotH2 = NdotH*NdotH;
     
-    SampledData.DiffuseTextureColor = GammaCorrectTexture(texture_diffuse1, GammaCorrectionEnabled_);
+    float nom = a2;
+    float denom = (NdotH2 * (a2 - 1.0f) + 1.0f);
     
-    // Handle Specular Textures
-    if (HasSpecular) {
-        SampledData.SpecularTextureColor = GammaCorrectTexture(texture_specular1, GammaCorrectionEnabled_);
-    } else {
-        SampledData.SpecularTextureColor = SampledData.DiffuseTextureColor;
-    }
-    
-    // Handle Normal Textures
-    if (HasNormals) {
-        SampledData.NormalTextureColor = texture(texture_normals1, Object.TexCoords);
-    } else {
-        SampledData.NormalTextureColor = vec4(0.0f);
-    }
-
-
-    SampledData.HeightTextureColor = texture(texture_height1, Object.TexCoords);
-
-    // Handle Emissive Textures
-    if (HasEmissive) {
-        SampledData.EmissiveTextureColor = GammaCorrectTexture(texture_emissive1, GammaCorrectionEnabled_);
-    } else {
-        SampledData.EmissiveTextureColor = vec4(0.0f);
-    }
-
-    // Handle Opacity Textures
-    if (HasEmissive) {
-        SampledData.OpacityTextureColor = texture(texture_opacity1, Object.TexCoords);
-    } else {
-        SampledData.OpacityTextureColor = vec4(0.0f);
-    }
-
-    return SampledData;
+    return nom / denom;
 
 }
+// ----------------------------------------------------------------------------
+float GeometrySchlickGGX(float NdotV, float roughness)
+{
+    float r = (roughness + 1.0);
+    float k = (r*r) / 8.0;
+
+    float nom   = NdotV;
+    float denom = NdotV * (1.0 - k) + k;
+
+    return nom / denom;
+}
+// ----------------------------------------------------------------------------
+float GeometrySmith(vec3 N, vec3 V, vec3 L, float roughness)
+{
+    float NdotV = max(dot(N, V), 0.0);
+    float NdotL = max(dot(N, L), 0.0);
+    float ggx2 = GeometrySchlickGGX(NdotV, roughness);
+    float ggx1 = GeometrySchlickGGX(NdotL, roughness);
+
+    return ggx1 * ggx2;
+}
+// ----------------------------------------------------------------------------
+vec3 FresnelSchlick(float cosTheta, vec3 F0)
+{
+    return F0 + (1.0 - F0) * pow(clamp(1.0 - cosTheta, 0.0, 1.0), 5.0);
+}
+// ----------------------------------------------------------------------------
+
+
+
+
 
 
 // Used To Enable Gamma Correction On The Output
@@ -282,9 +233,9 @@ vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData
     float Specular = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0f), Shinyness);
 
     // Calculate Total Contribution From Components
-    vec4 AmbientComponent = vec4(Light.Ambient, 1.0f) * SampledData.DiffuseTextureColor;
-    vec4 DiffuseComponent = vec4(Light.Diffuse, 1.0f) * Diffuse * SampledData.DiffuseTextureColor;
-    vec4 SpecularComponent = vec4(Light.Specular, 1.0f) * Specular * SampledData.SpecularTextureColor;
+    vec4 AmbientComponent = vec4(Light.Ambient, 1.0f) * SampledData.Albedo;
+    vec4 DiffuseComponent = vec4(Light.Diffuse, 1.0f) * Diffuse * SampledData.Albedo;
+    vec4 SpecularComponent = vec4(Light.Specular, 1.0f) * Specular * SampledData.Albedo;
 
     return (AmbientComponent + DiffuseComponent + SpecularComponent);
 
@@ -310,15 +261,15 @@ vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData
     float Attenuation = 1.0f / (Light.ConstantRolloff + Light.LinearRolloff * Distance + Light.QuadraticRolloff * (Distance * Diffuse));
 
     // Calculate Total Contribution From Components
-    vec4 AmbientComponent = vec4(Light.Ambient * Attenuation, 1.0f) * SampledData.DiffuseTextureColor;
-    vec4 DiffuseComponent = vec4(Light.Diffuse * Attenuation, 1.0f) * Diffuse * SampledData.DiffuseTextureColor;
-    vec4 SpecularComponent = vec4(Light.Specular * Attenuation, 1.0f) * Specular * SampledData.SpecularTextureColor;
+    vec4 AmbientComponent = vec4(Light.Ambient * Attenuation, 1.0f) * SampledData.Albedo;
+    vec4 DiffuseComponent = vec4(Light.Diffuse * Attenuation, 1.0f) * Diffuse * SampledData.Albedo;
+    vec4 SpecularComponent = vec4(Light.Specular * Attenuation, 1.0f) * Specular * SampledData.Albedo;
 
     return (AmbientComponent + DiffuseComponent + SpecularComponent);
 
 }
 
-vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection) {
+vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection ) {
 
     vec3 LightDirectionVector ;
     if (HasNormals) {
@@ -342,13 +293,195 @@ vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, 
     float Intensity = clamp((Theta - Light.OuterCutOff) / Epsilon, 0.0f, 1.0f);
 
     // Calculate Total Contribution From Components
-    vec4 AmbientComponent = vec4(Light.Ambient * Attenuation * Intensity, 1.0f) * SampledData.DiffuseTextureColor;
-    vec4 DiffuseComponent = vec4(Light.Diffuse * Attenuation * Intensity, 1.0f) * Diffuse * SampledData.DiffuseTextureColor;
-    vec4 SpecularComponent = vec4(Light.Specular * Attenuation * Intensity, 1.0f) * Specular * SampledData.SpecularTextureColor;
+    vec4 AmbientComponent = vec4(Light.Ambient * Attenuation * Intensity, 1.0f) * SampledData.Albedo;
+    vec4 DiffuseComponent = vec4(Light.Diffuse * Attenuation * Intensity, 1.0f) * Diffuse * SampledData.Albedo;
+    vec4 SpecularComponent = vec4(Light.Specular * Attenuation * Intensity, 1.0f) * Specular * SampledData.Albedo;
 
     return (AmbientComponent + DiffuseComponent + SpecularComponent);
 
 }
+
+
+
+
+vec3 CalculateSpotLight2(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection, vec3 Reflectance) {
+
+    vec3 LightDirectionVector ;
+    if (HasNormals) {
+    LightDirectionVector = normalize(Object.TBN * Light.Position - Object.TangentFragPos);
+    } else {
+    LightDirectionVector = normalize(Light.Position - FragPos);
+    }
+    vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Normal);
+
+
+    // Per-Light Radiance
+    vec3 L = normalize(Light.Position - Object.WorldPos);
+    vec3 H = normalize(ViewDirection + L);
+    float Distance = length(Light.Position - Object.WorldPos);
+    float Attenuation = 1.0f / (Distance * Distance);
+    vec3 Radiance = Light.Diffuse * Attenuation;
+    
+    // Cook-Torrance BRDF
+    float NDF = DistributionGGX(Normal, H, SampledData.Roughness);
+    float G = GeometrySmith(Normal, ViewDirection, L, SampledData.Roughness);
+    vec3 Fresnel = FresnelSchlick(max(dot(H, ViewDirection), 0.0f), Reflectance);
+
+    vec3 Numerator = NDF * G * Fresnel;
+    float Denominator = 4.0f * max(dot(Normal, ViewDirection), 0.0f) * max(dot(Normal, L), 0.0f) + 0.0001f; // fix divide by zero error
+    vec3 Specular = Numerator / Denominator;
+
+
+    vec3 kS = Fresnel;
+    vec3 kD = vec3(1.0f) - kS;
+    kD *= 1.0f - SampledData.Metallic;
+
+
+    // Calculate Spot Intensity
+    float Theta = dot(normalize(Light.Position  - FragPos), normalize(-Light.Direction));
+    float Epsilon = Light.CutOff - Light.OuterCutOff;
+    float Intensity = clamp((Theta - Light.OuterCutOff) / Epsilon, 0.0f, 1.0f);
+
+    // Calculate Total Contribution From Components
+    float NdotL = max(dot(Normal, L), 0.0f);
+    return (kD * SampledData.Albedo.rgb / PI + Specular) * Radiance * NdotL;
+
+}
+
+
+
+STRUCT_SampledData SetSampledData() {
+    STRUCT_SampledData SampledData;
+    
+    // Handle Albedo/Diffuse Textures
+    SampledData.Albedo = GammaCorrectTexture(texture_diffuse1, GammaCorrectionEnabled_);
+
+    // Handle Metalness Textures
+    if (HasMetalness) {
+        SampledData.Metallic = texture2D(texture_metalness1, Object.TexCoords).r;
+    } else {
+        SampledData.Metallic = 0.5f;
+    }
+
+    // Handle Normal Textures
+    if (HasNormals) {
+        SampledData.Normal = GetNormalFromMap(texture_normals1);
+    } else {
+        SampledData.Normal = vec3(0.0f);
+    }
+
+    // Handle Shininess (Inverse Of Roughness)
+    if (HasShininess) {
+        SampledData.Roughness = texture2D(texture_shininess1, Object.TexCoords).r;
+    } else {
+        SampledData.Roughness = 1.0f;
+    }
+
+    // Handle Emissive Textures
+    if (HasEmissive) {
+        SampledData.Emissive = GammaCorrectTexture(texture_emissive1, GammaCorrectionEnabled_).rgb;
+    } else {
+        SampledData.Emissive = vec3(0.0f);
+    }
+
+
+    return SampledData;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+void main()
+{    
+
+    // Lighting Sanity Check
+    if ((NumberDirectionalLights == 0) && (NumberPointLights == 0) && (NumberSpotLights == 0)) {
+        FragColor = vec4(0.8f);
+        return;
+    }
+
+    // ---- Extract Texture Vectors, Create SampledData Struct ---- //
+    STRUCT_SampledData SampledData = SetSampledData();
+
+
+    vec3 Norm;
+    vec3 ViewDirection;
+    if (HasNormals) {
+        Norm = texture(texture_normals1, Object.TexCoords).rgb;
+        Norm = normalize(Norm * 2.0f - 1.0f);
+        ViewDirection = normalize(Object.TangentViewPos - Object.TangentFragPos);
+    } else {
+        Norm = normalize(Object.Normal);
+        ViewDirection = normalize(CameraPosition - Object.FragPos);
+    }
+
+
+    // Calculate Reflectance
+    vec3 Reflectance = vec3(0.0f);
+    Reflectance = mix(Reflectance, SampledData.Albedo.rgb, SampledData.Metallic);
+    
+    
+    
+
+
+
+
+
+
+
+    // ---- Calculate Lighting Contributions ---- //
+    vec4 Lo = vec4(0.0f);
+
+    // Calculate Directional Lights
+    //for (int i = 0; i < NumberDirectionalLights; i++) {
+    //    Result += CalculateDirectionalLight(DirectionalLights[i], SampledData, Norm, ViewDirection);
+    //}
+
+    // Calculate Point Lights
+    //for (int i = 0; i < NumberPointLights; i++) {
+    //    Result += CalculatePointLight(PointLights[i], SampledData, Norm, Object.FragPos, ViewDirection);
+    //}
+
+
+    // Calculate Spot Lights
+    for (int i = 0; i < NumberSpotLights; i++) {
+        Lo += vec4(CalculateSpotLight2(SpotLights[i], SampledData, Norm, Object.FragPos, ViewDirection, Reflectance), 1.0f);
+    }
+
+    // Add Ambient Lighting
+    vec4 Ambient = vec4(0.03) * SampledData.Albedo;// * SampledData.AmbientOcclusion;
+    vec4 Color = Ambient + Lo;
+
+    // Add Emissive Texture
+    if (HasEmissive) {
+        Color.rgb += SampledData.Emissive;
+    }
+
+
+
+    // Apply Gamma Correction
+    if (HDREnabled_) {
+        vec3 Mapped = vec3(1.0f) - exp(-Color.xyz * Exposure_);
+        FragColor = GammaCorrectResult(vec4(Mapped, 1.0f), GammaCorrectionEnabled_);
+    } else {
+        FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
+    }
+
+}
+
+
+
+
 
 
 
