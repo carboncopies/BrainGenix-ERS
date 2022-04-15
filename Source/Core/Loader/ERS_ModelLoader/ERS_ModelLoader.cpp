@@ -267,17 +267,25 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
         int Width, Weight, NumChannels;
         unsigned char *ImageBytes = stbi_load_from_memory(ImageData->Data.get(), ImageData->Size_B, &Width, &Weight, &NumChannels, 0); 
 
-        // Perform Sanity Check
+        // Perform Sanity Checks
         if ((Channels < 1) || (Channels > 4)) {
             SystemUtils_->Logger_->Log("Fallback STB_Image Library Loading Failed, Image Has Invalid Number Of Channels", 8);
             return Texture;
         }
-
-        // Check Width/Height
         if ((Width <= 0) || (Height <= 0)) {
             SystemUtils_->Logger_->Log("Fallback STB_Image Library Loading Failed, Image Has Invalid Width/Height", 8);
             return Texture;
         }
+
+        // Populate Texture Struct
+        Texture.Channels = NumChannels;
+        Texture.Height = Height;
+        Texture.Width = Width;
+        Texture.Path = std::to_string(ID);
+        Texture.HasImageData = true;
+        Texture.FreeImageBackend = false;
+        Texture.ImageBytes = ImageBytes;
+
 
     } else {
 
@@ -285,12 +293,9 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
         Texture.Channels = Channels;
         Texture.Height = Height;
         Texture.Width = Width;
-        Texture.ImageData = Image;
         Texture.HasImageData = true;
         Texture.Path = std::to_string(ID);
-
-
-        // Set Image Bytes
+        Texture.FreeImageBackend = true;
         Texture.ImageBytes = FreeImage_GetBits(Image);
     
     }
