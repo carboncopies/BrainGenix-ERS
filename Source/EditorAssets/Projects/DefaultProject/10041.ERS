@@ -372,7 +372,7 @@ STRUCT_SampledData SetSampledData() {
 
     // Handle Shininess (Inverse Of Roughness)
     if (HasShininess) {
-        SampledData.Roughness = texture2D(texture_shininess1, Object.TexCoords).r;
+        SampledData.Roughness = 1.0f - texture2D(texture_shininess1, Object.TexCoords).r;
     } else {
         SampledData.Roughness = 1.0f;
     }
@@ -455,7 +455,7 @@ void main()
 
     // Calculate Spot Lights
     for (int i = 0; i < NumberSpotLights; i++) {
-        Lo += vec4(CalculateSpotLight2(SpotLights[i], SampledData, Norm, Object.FragPos, ViewDirection, Reflectance), 1.0f);
+        Lo += vec4(CalculateSpotLight2(SpotLights[i], SampledData, GetNormalFromMap(texture_normals1), Object.FragPos, ViewDirection, Reflectance), 1.0f);
     }
 
     // Add Ambient Lighting
