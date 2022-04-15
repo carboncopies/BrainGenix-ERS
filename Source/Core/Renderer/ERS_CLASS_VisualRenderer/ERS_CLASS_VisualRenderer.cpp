@@ -374,8 +374,11 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         Shaders_[ShaderIndex]->SetMat4("projection", projection);
         Shaders_[ShaderIndex]->SetMat4("view", view);
         Shaders_[ShaderIndex]->SetBool("GammaCorrectionEnabled_", Viewports_[Index]->GammaCorrection);
-
-
+        Shaders_[ShaderIndex]->SetBool("HDREnabled_", Viewports_[Index]->HDREnabled_);
+        Shaders_[ShaderIndex]->SetFloat("Exposure_", Viewports_[Index]->Exposure_);
+        Shaders_[ShaderIndex]->SetFloat("Gamma_", Viewports_[Index]->Gamma_);
+        
+        
         // Update Cursor If Selection Changed
         if (SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged && DrawCursor) {
 
@@ -573,7 +576,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     SystemUtils_->Logger_->Log("Creating Render Texture", 4);
     glGenTextures(1, &FramebufferColorObject);
     glBindTexture(GL_TEXTURE_2D, FramebufferColorObject);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 800, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL); // NOTE: THIS MUST HAPPEN ON RESIZE!
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, 800, 800, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL); // NOTE: THIS MUST HAPPEN ON RESIZE!
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     Viewport->FramebufferColorObject = FramebufferColorObject;
@@ -740,6 +743,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
             ImGui::MenuItem("Grid", nullptr, &Viewports_[Index]->GridEnabled);
             ImGui::MenuItem("Light Icons", nullptr, &Viewports_[Index]->LightIcons);
             ImGui::MenuItem("Gamma Correction", nullptr, &Viewports_[Index]->GammaCorrection);
+            ImGui::MenuItem("HDR", nullptr, &Viewports_[Index]->HDREnabled_);
 
 
         ImGui::EndMenu();

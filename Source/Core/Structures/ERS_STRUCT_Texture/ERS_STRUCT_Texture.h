@@ -26,6 +26,8 @@ struct ERS_STRUCT_Texture {
     float Width;
     float Height;
     FIBITMAP* ImageData;
+    unsigned char* ImageBytes;
+    bool FreeImageBackend = true;
     bool HasImageData = false;
 
     // Set Metadata

@@ -145,30 +145,47 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
         // Convert FIBITMAP* To Raw Image Bytes
-        unsigned char* RawImageData = FreeImage_GetBits(Model->TexturesToPushToGPU_[i].ImageData);
+        unsigned char* RawImageData = Model->TexturesToPushToGPU_[i].ImageBytes;
 
         if (RawImageData != NULL) {
-                
-            if (Model->TexturesToPushToGPU_[i].Channels == 4) {
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
-            } else if (Model->TexturesToPushToGPU_[i].Channels == 3) {
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
-            } else if (Model->TexturesToPushToGPU_[i].Channels == 2) {
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RG, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RG, GL_UNSIGNED_BYTE, RawImageData);
-            } else if (Model->TexturesToPushToGPU_[i].Channels == 1) {
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RED, GL_UNSIGNED_BYTE, RawImageData);
+            
+            if (Model->TexturesToPushToGPU_[i].FreeImageBackend) {
+                if (Model->TexturesToPushToGPU_[i].Channels == 4) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
+                } else if (Model->TexturesToPushToGPU_[i].Channels == 3) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
+                } else if (Model->TexturesToPushToGPU_[i].Channels == 2) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RG, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RG, GL_UNSIGNED_BYTE, RawImageData);
+                } else if (Model->TexturesToPushToGPU_[i].Channels == 1) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RED, GL_UNSIGNED_BYTE, RawImageData);
+                } else {
+                    SystemUtils_->Logger_->Log(std::string("Texture With ID '") + Model->TexturesToPushToGPU_[i].Path + std::string("' For Model '") + Model->Name + std::string("' Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
+                }
             } else {
-                SystemUtils_->Logger_->Log(std::string("Texture Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
+                if (Model->TexturesToPushToGPU_[i].Channels == 4) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, RawImageData);
+                } else if (Model->TexturesToPushToGPU_[i].Channels == 3) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RGB, GL_UNSIGNED_BYTE, RawImageData);
+                } else if (Model->TexturesToPushToGPU_[i].Channels == 2) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RG, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RG, GL_UNSIGNED_BYTE, RawImageData);
+                } else if (Model->TexturesToPushToGPU_[i].Channels == 1) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RED, GL_UNSIGNED_BYTE, RawImageData);
+                } else {
+                    SystemUtils_->Logger_->Log(std::string("Texture With ID '") + Model->TexturesToPushToGPU_[i].Path + std::string("' For Model '") + Model->Name + std::string("' Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
+                }  
             }
             glGenerateMipmap(GL_TEXTURE_2D);
-
 
         } else {
             SystemUtils_->Logger_->Log("Texture Failed To Load, Cannot Push To GPU", 9);
         }
 
         // Unload Image Data
-        FreeImage_Unload(Model->TexturesToPushToGPU_[i].ImageData);
+        if (Model->TexturesToPushToGPU_[i].FreeImageBackend) {
+            FreeImage_Unload(Model->TexturesToPushToGPU_[i].ImageData);
+        } else {
+            stbi_image_free(Model->TexturesToPushToGPU_[i].ImageBytes);
+        }
 
         // Append To Texture Index
         Model->OpenGLTextureIDs_.push_back(TextureID);
@@ -227,14 +244,17 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(ID, ImageData.get());
 
     // Identify Image Format, Decode
+    bool FreeImageLoadFail = false;
     FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData->Data.get(), ImageData->Size_B);
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
     FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
+    FreeImage_CloseMemory(FIImageData);
 
     // Flip If Needed
     if (FlipTextures) {
         FreeImage_FlipVertical(Image);
     }
+
 
     // Get Metadata
     ERS_STRUCT_Texture Texture;
@@ -246,18 +266,59 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
         Height = FreeImage_GetHeight(Image);
         Channels = FreeImage_GetLine(Image) / FreeImage_GetWidth(Image);
     } else {
-        SystemUtils_->Logger_->Log("Error Loading Texture, Width/Height Are Zero (Does Data Exist?)", 9);
-        return Texture;
+        SystemUtils_->Logger_->Log(std::string("FreeImage Error Loading Texture '") + std::to_string(ID) + std::string("' , Width/Height Are Zero Falling Back To STB_Image"), 7);
+        FreeImageLoadFail = true;
     }
-    // Create Texture, Populate
-    Texture.Channels = Channels;
-    Texture.Height = Height;
-    Texture.Width = Width;
-    Texture.ImageData = Image;
-    Texture.HasImageData = true;
 
-    // Deallocate FIImageData (ImageData IOData Struct Should Be Automatically Destroyed When Out Of Scope)
-    FreeImage_CloseMemory(FIImageData);
+    // Channel Sanity Check
+    if ((Channels < 1) || (Channels > 4)) {
+        SystemUtils_->Logger_->Log(std::string("FreeImage Failed Identify Number Of Channels On Texture '") + std::to_string(ID) + std::string("' Falling Back To STB_Image"), 7);
+        FreeImageLoadFail = true;
+    }
+
+
+    // If FreeImage Failed, Try STB
+    if (FreeImageLoadFail) {
+
+        int SWidth, SHeight, SChannels;
+        unsigned char *ImageBytes = stbi_load_from_memory(ImageData->Data.get(), ImageData->Size_B, &SWidth, &SHeight, &SChannels, 0); 
+        
+        // Perform Sanity Checks
+        if ((SChannels < 1) || (SChannels > 4)) {
+            SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed On Texture '") + std::to_string(ID) + std::string("' , Image Has Invalid Number Of Channels '") + std::to_string(SChannels) + std::string("'"), 8);
+            return Texture;
+        }
+        if ((SWidth <= 0) || (SHeight <= 0)) {
+            SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed On Texture '") + std::to_string(ID) + std::string("' , Image Has Invalid Width/Height"), 8);
+            return Texture;
+        }
+
+        // Populate Texture Struct
+        Texture.Channels = SChannels;
+        Texture.Height = SHeight;
+        Texture.Width = SWidth;
+        Texture.HasImageData = true;
+        Texture.Path = std::to_string(ID);
+        Texture.ID = ID;
+        Texture.FreeImageBackend = false;
+        Texture.ImageBytes = ImageBytes;
+
+
+
+    } else {
+
+        // Create Texture, Populate
+        Texture.Channels = Channels;
+        Texture.Height = Height;
+        Texture.Width = Width;
+        Texture.ImageData = Image;
+        Texture.HasImageData = true;
+        Texture.Path = std::to_string(ID);
+        Texture.ID = ID;
+        Texture.FreeImageBackend = true;
+        Texture.ImageBytes = FreeImage_GetBits(Image);
+    
+    }
 
     // Return Value
     return Texture;
