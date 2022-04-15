@@ -91,6 +91,10 @@ ShaderPrograms:
     VertexID: 10036
     FragmentID: 10037
   19:
-    Name: LightIcon
+    Name: Viewport_PBR
+    VertexID: 10040
+    FragmentID: 10041
+  20:
+    Name: _LightIcon
     VertexID: 10038
     FragmentID: 10039
