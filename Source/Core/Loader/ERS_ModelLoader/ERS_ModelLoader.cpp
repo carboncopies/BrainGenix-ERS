@@ -168,7 +168,11 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         }
 
         // Unload Image Data
-        FreeImage_Unload(Model->TexturesToPushToGPU_[i].ImageData);
+        if (Model->TexturesToPushToGPU_[i].FreeImageBackend) {
+            FreeImage_Unload(Model->TexturesToPushToGPU_[i].ImageData);
+        } else {
+            stbi_image_free(Model->TexturesToPushToGPU_[i].ImageBytes);
+        }
 
         // Append To Texture Index
         Model->OpenGLTextureIDs_.push_back(TextureID);
