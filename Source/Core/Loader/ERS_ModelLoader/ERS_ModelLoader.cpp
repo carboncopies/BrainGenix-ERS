@@ -149,17 +149,30 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
 
         if (RawImageData != NULL) {
             
-            
-            if (Model->TexturesToPushToGPU_[i].Channels == 4) {
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
-            } else if (Model->TexturesToPushToGPU_[i].Channels == 3) {
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
-            } else if (Model->TexturesToPushToGPU_[i].Channels == 2) {
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RG, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RG, GL_UNSIGNED_BYTE, RawImageData);
-            } else if (Model->TexturesToPushToGPU_[i].Channels == 1) {
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RED, GL_UNSIGNED_BYTE, RawImageData);
+            if (Model->TexturesToPushToGPU_[i].FreeImageBackend) {
+                if (Model->TexturesToPushToGPU_[i].Channels == 4) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
+                } else if (Model->TexturesToPushToGPU_[i].Channels == 3) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
+                } else if (Model->TexturesToPushToGPU_[i].Channels == 2) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RG, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RG, GL_UNSIGNED_BYTE, RawImageData);
+                } else if (Model->TexturesToPushToGPU_[i].Channels == 1) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RED, GL_UNSIGNED_BYTE, RawImageData);
+                } else {
+                    SystemUtils_->Logger_->Log(std::string("Texture With ID '") + Model->TexturesToPushToGPU_[i].Path + std::string("' For Model '") + Model->Name + std::string("' Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
+                }
             } else {
-                SystemUtils_->Logger_->Log(std::string("Texture With ID '") + Model->TexturesToPushToGPU_[i].Path + std::string("' For Model '") + Model->Name + std::string("' Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
+                if (Model->TexturesToPushToGPU_[i].Channels == 4) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, RawImageData);
+                } else if (Model->TexturesToPushToGPU_[i].Channels == 3) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RGB, GL_UNSIGNED_BYTE, RawImageData);
+                } else if (Model->TexturesToPushToGPU_[i].Channels == 2) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RG, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RG, GL_UNSIGNED_BYTE, RawImageData);
+                } else if (Model->TexturesToPushToGPU_[i].Channels == 1) {
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RED, GL_UNSIGNED_BYTE, RawImageData);
+                } else {
+                    SystemUtils_->Logger_->Log(std::string("Texture With ID '") + Model->TexturesToPushToGPU_[i].Path + std::string("' For Model '") + Model->Name + std::string("' Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
+                }  
             }
             glGenerateMipmap(GL_TEXTURE_2D);
 
@@ -270,7 +283,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
 
         int Width, Weight, NumChannels;
         unsigned char *ImageBytes = stbi_load_from_memory(ImageData->Data.get(), ImageData->Size_B, &Width, &Weight, &NumChannels, 0); 
-
+        
         // Perform Sanity Checks
         if ((Channels < 1) || (Channels > 4)) {
             SystemUtils_->Logger_->Log("Fallback STB_Image Library Loading Failed, Image Has Invalid Number Of Channels", 8);
