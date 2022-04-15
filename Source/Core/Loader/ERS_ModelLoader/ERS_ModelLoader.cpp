@@ -287,12 +287,14 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
         Texture.ImageBytes = ImageBytes;
 
 
+
     } else {
 
         // Create Texture, Populate
         Texture.Channels = Channels;
         Texture.Height = Height;
         Texture.Width = Width;
+        Texture.ImageData = Image;
         Texture.HasImageData = true;
         Texture.Path = std::to_string(ID);
         Texture.FreeImageBackend = true;
