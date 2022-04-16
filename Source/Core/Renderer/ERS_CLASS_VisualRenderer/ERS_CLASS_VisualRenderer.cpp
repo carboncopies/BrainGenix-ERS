@@ -685,7 +685,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
         ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->PointLights[i]->Pos);
 
-        ActiveShader->SetFloat((UniformName + std::string(".ConstantRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffConstant);
+        ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->PointLights[i]->Intensity);
 
         ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->PointLights[i]->Color);
     
@@ -702,7 +702,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->SpotLights[i]->Pos);
         ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ActiveScene->SpotLights[i]->Rot);
 
-        ActiveShader->SetFloat((UniformName + std::string(".ConstantRolloff")).c_str(), ActiveScene->SpotLights[i]->RolloffConstant);
+        ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->SpotLights[i]->Intensity);
 
         ActiveShader->SetFloat((UniformName + std::string(".CutOff")).c_str(), ActiveScene->SpotLights[i]->CutOff);
         ActiveShader->SetFloat((UniformName + std::string(".OuterCutOff")).c_str(), ActiveScene->SpotLights[i]->OuterCutOff);
