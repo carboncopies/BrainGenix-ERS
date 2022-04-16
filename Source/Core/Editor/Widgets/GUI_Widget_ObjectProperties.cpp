@@ -90,9 +90,10 @@ void Widget_ObjectProperties::Draw() {
                         FloatToVec(Color, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Color);
 
 
-                        ImGui::DragFloat("Rolloff Constant", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->RolloffConstant, 0.01f);
+                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Intensity, 0.01f);
                         ImGui::SameLine();
-                        ImGui::HelpMarker("Sets the constant offset controlling lamp attenuation over distance. If you're trying to make the rolloff sharper, try linear or quadratic.");
+                        ImGui::HelpMarker("Sets the brightness of the light source, increase this for a brighter light.");
+
 
                         ImGui::DragFloat("Cutoff", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->CutOff, 0.01f);
                         ImGui::SameLine();
