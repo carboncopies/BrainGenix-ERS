@@ -121,12 +121,14 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             int LightIndex = Scene.DirectionalLights.size() - 1;
 
             Scene.DirectionalLights[LightIndex]->UserDefinedName = AssetName;
-            
-            Scene.DirectionalLights[LightIndex]->Color = glm::vec3(
-                SceneDataNode[i]["ColorRed"].as<float>(),
-                SceneDataNode[i]["ColorGreen"].as<float>(),
-                SceneDataNode[i]["ColorBlue"].as<float>()
-                );
+
+            if (SceneDataNode[i]["ColorRed"] && SceneDataNode[i]["ColorGreen"] && SceneDataNode[i]["ColorBlue"]) {
+                Scene.DirectionalLights[LightIndex]->Color = glm::vec3(
+                    SceneDataNode[i]["ColorRed"].as<float>(),
+                    SceneDataNode[i]["ColorGreen"].as<float>(),
+                    SceneDataNode[i]["ColorBlue"].as<float>()
+                    );
+            }
 
 
             Scene.DirectionalLights[LightIndex]->Pos = glm::vec3(
@@ -196,12 +198,13 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             Scene.SpotLights[LightIndex]->CutOff = SceneDataNode[i]["CutOff"].as<float>();
             Scene.SpotLights[LightIndex]->OuterCutOff = SceneDataNode[i]["OuterCutOff"].as<float>();
 
-
-            Scene.SpotLights[LightIndex]->Color = glm::vec3(
-                SceneDataNode[i]["ColorRed"].as<float>(),
-                SceneDataNode[i]["ColorGreen"].as<float>(),
-                SceneDataNode[i]["ColorBlue"].as<float>()
-                );
+            if (SceneDataNode[i]["ColorRed"] && SceneDataNode[i]["ColorGreen"] && SceneDataNode[i]["ColorBlue"]) {
+                Scene.SpotLights[LightIndex]->Color = glm::vec3(
+                    SceneDataNode[i]["ColorRed"].as<float>(),
+                    SceneDataNode[i]["ColorGreen"].as<float>(),
+                    SceneDataNode[i]["ColorBlue"].as<float>()
+                    );
+            }
 
 
             Scene.SpotLights[LightIndex]->Pos = glm::vec3(
