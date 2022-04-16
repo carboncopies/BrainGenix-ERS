@@ -322,14 +322,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     DirectionalLightModule.attr("DirectionalLightDiffuseG") = DirectionalLight->Diffuse.g;
     DirectionalLightModule.attr("DirectionalLightDiffuseB") = DirectionalLight->Diffuse.b;
     
-    DirectionalLightModule.attr("DirectionalLightSpecularR") = DirectionalLight->Specular.r;
-    DirectionalLightModule.attr("DirectionalLightSpecularG") = DirectionalLight->Specular.g;
-    DirectionalLightModule.attr("DirectionalLightSpecularB") = DirectionalLight->Specular.b;
-
-    DirectionalLightModule.attr("DirectionalLightAmbientR") = DirectionalLight->Ambient.r;
-    DirectionalLightModule.attr("DirectionalLightAmbientG") = DirectionalLight->Ambient.g;
-    DirectionalLightModule.attr("DirectionalLightAmbientB") = DirectionalLight->Ambient.b;
-    
 
     // Get Local Dict
     pybind11::dict Locals = DirectionalLightModule.attr("__dict__");
