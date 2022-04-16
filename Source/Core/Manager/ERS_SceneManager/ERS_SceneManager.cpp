@@ -148,13 +148,10 @@ void ERS_CLASS_SceneManager::AddSpotLight() {
     std::shared_ptr<ERS_STRUCT_SpotLight> Light = std::make_shared<ERS_STRUCT_SpotLight>();
 
     Light->UserDefinedName = "New Spot Light";
-    Light->Ambient = glm::vec3(0.0f);
-    Light->Diffuse = glm::vec3(0.5f);
-    Light->Specular = glm::vec3(0.5f);
+    Light->Color = glm::vec3(0.0f);
+
     
-    Light->RolloffConstant = 1.0f;
-    Light->RolloffLinear = 0.18f;
-    Light->RolloffQuadratic = 0.064f;
+    Light->Intensity = 1.0f;
 
     Light->CutOff = 0.970f;
     Light->OuterCutOff = 0.960f;
