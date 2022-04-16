@@ -423,23 +423,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
         ErrorMessageString->push_back("DirectionalLight Diffuse CAST_ERROR");
     }
 
-    try {
-        SpecularR = DirectionalLightModule.attr("DirectionalLightSpecularR").cast<double>();
-        SpecularG = DirectionalLightModule.attr("DirectionalLightSpecularG").cast<double>();
-        SpecularB = DirectionalLightModule.attr("DirectionalLightSpecularB").cast<double>();
-        DirectionalLight->Specular = glm::vec3(SpecularR, SpecularG, SpecularB);
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("DirectionalLight Specular CAST_ERROR");
-    }
-
-    try {
-        AmbientR = DirectionalLightModule.attr("DirectionalLightAmbientR").cast<double>();
-        AmbientG = DirectionalLightModule.attr("DirectionalLightAmbientG").cast<double>();
-        AmbientB = DirectionalLightModule.attr("DirectionalLightAmbientB").cast<double>();
-        DirectionalLight->Ambient = glm::vec3(AmbientR, AmbientG, AmbientB);
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("DirectionalLight Ambient CAST_ERROR");
-    }
 
     // Return Status
     return true;
