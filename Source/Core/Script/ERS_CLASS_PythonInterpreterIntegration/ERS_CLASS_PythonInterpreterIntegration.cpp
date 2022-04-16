@@ -188,9 +188,9 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     PointLightModule.attr("PointLightPosY") = PointLight->Pos.y;
     PointLightModule.attr("PointLightPosZ") = PointLight->Pos.z;
 
-    PointLightModule.attr("PointLightDiffuseR") = PointLight->Diffuse.r;
-    PointLightModule.attr("PointLightDiffuseG") = PointLight->Diffuse.g;
-    PointLightModule.attr("PointLightDiffuseB") = PointLight->Diffuse.b;
+    PointLightModule.attr("PointLightColorR") = PointLight->Color.r;
+    PointLightModule.attr("PointLightColorG") = PointLight->Color.g;
+    PointLightModule.attr("PointLightColorB") = PointLight->Color.b;
     
     PointLightModule.attr("PointLightRolloffConstant") = PointLight->RolloffConstant;
     PointLightModule.attr("PointLightRolloffLinear") = PointLight->RolloffLinear;
@@ -265,7 +265,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
 
     // Write Back PointLight Data
     double PointLightPosX, PointLightPosY, PointLightPosZ;
-    float DiffuseR, DiffuseG, DiffuseB;
+    float ColorR, ColorG, ColorB;
     float SpecularR, SpecularG, SpecularB;
     float AmbientR, AmbientG, AmbientB;
 
@@ -279,12 +279,12 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     }
 
     try {
-        DiffuseR = PointLightModule.attr("PointLightDiffuseR").cast<double>();
-        DiffuseG = PointLightModule.attr("PointLightDiffuseG").cast<double>();
-        DiffuseB = PointLightModule.attr("PointLightDiffuseB").cast<double>();
-        PointLight->Diffuse = glm::vec3(DiffuseR, DiffuseG, DiffuseB);
+        ColorR = PointLightModule.attr("PointLightColorR").cast<double>();
+        ColorG = PointLightModule.attr("PointLightColorG").cast<double>();
+        ColorB = PointLightModule.attr("PointLightColorB").cast<double>();
+        PointLight->Color = glm::vec3(ColorR, ColorG, ColorB);
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Diffuse CAST_ERROR");
+        ErrorMessageString->push_back("PointLight Color CAST_ERROR");
     }
 
     try {
@@ -318,9 +318,9 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     DirectionalLightModule.attr("DirectionalLightRotY") = DirectionalLight->Rot.y;
     DirectionalLightModule.attr("DirectionalLightRotZ") = DirectionalLight->Rot.z;
 
-    DirectionalLightModule.attr("DirectionalLightDiffuseR") = DirectionalLight->Diffuse.r;
-    DirectionalLightModule.attr("DirectionalLightDiffuseG") = DirectionalLight->Diffuse.g;
-    DirectionalLightModule.attr("DirectionalLightDiffuseB") = DirectionalLight->Diffuse.b;
+    DirectionalLightModule.attr("DirectionalLightColorR") = DirectionalLight->Color.r;
+    DirectionalLightModule.attr("DirectionalLightColorG") = DirectionalLight->Color.g;
+    DirectionalLightModule.attr("DirectionalLightColorB") = DirectionalLight->Color.b;
     
 
     // Get Local Dict
@@ -392,7 +392,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     // Write Back DirectionalLight Data
     double DirectionalLightPosX, DirectionalLightPosY, DirectionalLightPosZ;
     double DirectionalLightRotX, DirectionalLightRotY, DirectionalLightRotZ;
-    float DiffuseR, DiffuseG, DiffuseB;
+    float ColorR, ColorG, ColorB;
     float SpecularR, SpecularG, SpecularB;
     float AmbientR, AmbientG, AmbientB;
 
@@ -415,12 +415,12 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     }
 
     try {
-        DiffuseR = DirectionalLightModule.attr("DirectionalLightDiffuseR").cast<double>();
-        DiffuseG = DirectionalLightModule.attr("DirectionalLightDiffuseG").cast<double>();
-        DiffuseB = DirectionalLightModule.attr("DirectionalLightDiffuseB").cast<double>();
-        DirectionalLight->Diffuse = glm::vec3(DiffuseR, DiffuseG, DiffuseB);
+        ColorR = DirectionalLightModule.attr("DirectionalLightColorR").cast<double>();
+        ColorG = DirectionalLightModule.attr("DirectionalLightColorG").cast<double>();
+        ColorB = DirectionalLightModule.attr("DirectionalLightColorB").cast<double>();
+        DirectionalLight->Color = glm::vec3(ColorR, ColorG, ColorB);
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("DirectionalLight Diffuse CAST_ERROR");
+        ErrorMessageString->push_back("DirectionalLight Color CAST_ERROR");
     }
 
 
@@ -446,9 +446,9 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     SpotLightModule.attr("SpotLightRotY") = SpotLight->Rot.y;
     SpotLightModule.attr("SpotLightRotZ") = SpotLight->Rot.z;
 
-    SpotLightModule.attr("SpotLightDiffuseR") = SpotLight->Diffuse.r;
-    SpotLightModule.attr("SpotLightDiffuseG") = SpotLight->Diffuse.g;
-    SpotLightModule.attr("SpotLightDiffuseB") = SpotLight->Diffuse.b;
+    SpotLightModule.attr("SpotLightColorR") = SpotLight->Color.r;
+    SpotLightModule.attr("SpotLightColorG") = SpotLight->Color.g;
+    SpotLightModule.attr("SpotLightColorB") = SpotLight->Color.b;
     
     SpotLightModule.attr("SpotLightRolloffConstant") = SpotLight->RolloffConstant;
     SpotLightModule.attr("SpotLightRolloffLinear") = SpotLight->RolloffLinear;
@@ -527,7 +527,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     // Write Back SpotLight Data
     double SpotLightPosX, SpotLightPosY, SpotLightPosZ;
     double SpotLightRotX, SpotLightRotY, SpotLightRotZ;
-    float DiffuseR, DiffuseG, DiffuseB;
+    float ColorR, ColorG, ColorB;
     float SpecularR, SpecularG, SpecularB;
     float AmbientR, AmbientG, AmbientB;
 
@@ -550,12 +550,12 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     }
 
     try {
-        DiffuseR = SpotLightModule.attr("SpotLightDiffuseR").cast<double>();
-        DiffuseG = SpotLightModule.attr("SpotLightDiffuseG").cast<double>();
-        DiffuseB = SpotLightModule.attr("SpotLightDiffuseB").cast<double>();
-        SpotLight->Diffuse = glm::vec3(DiffuseR, DiffuseG, DiffuseB);
+        ColorR = SpotLightModule.attr("SpotLightColorR").cast<double>();
+        ColorG = SpotLightModule.attr("SpotLightColorG").cast<double>();
+        ColorB = SpotLightModule.attr("SpotLightColorB").cast<double>();
+        SpotLight->Color = glm::vec3(ColorR, ColorG, ColorB);
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("SpotLight Diffuse CAST_ERROR");
+        ErrorMessageString->push_back("SpotLight Color CAST_ERROR");
     }
 
     try {
