@@ -87,11 +87,11 @@ ShaderPrograms:
     VertexID: 10034
     FragmentID: 10035
   18:
-    Name: Viewport
+    Name: Viewport_Old
     VertexID: 10036
     FragmentID: 10037
   19:
-    Name: Viewport_PBR
+    Name: Viewport
     VertexID: 10040
     FragmentID: 10041
   20:
