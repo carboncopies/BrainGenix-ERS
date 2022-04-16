@@ -690,8 +690,6 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetFloat((UniformName + std::string(".QuadraticRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffQuadratic);
 
         ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->PointLights[i]->Color);
-        ActiveShader->SetVec3((UniformName + std::string(".Diffuse")).c_str(), ActiveScene->PointLights[i]->Diffuse);
-        ActiveShader->SetVec3((UniformName + std::string(".Specular")).c_str(), ActiveScene->PointLights[i]->Specular);
     
     }
 
