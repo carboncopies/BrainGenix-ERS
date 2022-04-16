@@ -108,9 +108,9 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "AssetType" << YAML::Value << "DirectionalLight";
 
 
-        Output << YAML::Key << "AmbientRed" << YAML::Value << InputScene->DirectionalLights[i]->Ambient[0];
-        Output << YAML::Key << "AmbientGreen" << YAML::Value << InputScene->DirectionalLights[i]->Ambient[1];
-        Output << YAML::Key << "AmbientBlue" << YAML::Value << InputScene->DirectionalLights[i]->Ambient[2];
+        Output << YAML::Key << "ColorRed" << YAML::Value << InputScene->DirectionalLights[i]->Color[0];
+        Output << YAML::Key << "ColorGreen" << YAML::Value << InputScene->DirectionalLights[i]->Color[1];
+        Output << YAML::Key << "ColorBlue" << YAML::Value << InputScene->DirectionalLights[i]->Color[2];
 
         Output << YAML::Key << "PosX" << YAML::Value << InputScene->DirectionalLights[i]->Pos[0];
         Output << YAML::Key << "PosY" << YAML::Value << InputScene->DirectionalLights[i]->Pos[1];
@@ -143,9 +143,9 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "AssetType" << YAML::Value << "PointLight";
 
 
-        Output << YAML::Key << "AmbientRed" << YAML::Value << InputScene->PointLights[i]->Ambient[0];
-        Output << YAML::Key << "AmbientGreen" << YAML::Value << InputScene->PointLights[i]->Ambient[1];
-        Output << YAML::Key << "AmbientBlue" << YAML::Value << InputScene->PointLights[i]->Ambient[2];
+        Output << YAML::Key << "ColorRed" << YAML::Value << InputScene->PointLights[i]->Color[0];
+        Output << YAML::Key << "ColorGreen" << YAML::Value << InputScene->PointLights[i]->Color[1];
+        Output << YAML::Key << "ColorBlue" << YAML::Value << InputScene->PointLights[i]->Color[2];
 
 
 
@@ -182,9 +182,9 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "AssetType" << YAML::Value << "SpotLight";
 
 
-        Output << YAML::Key << "AmbientRed" << YAML::Value << InputScene->SpotLights[i]->Ambient[0];
-        Output << YAML::Key << "AmbientGreen" << YAML::Value << InputScene->SpotLights[i]->Ambient[1];
-        Output << YAML::Key << "AmbientBlue" << YAML::Value << InputScene->SpotLights[i]->Ambient[2];
+        Output << YAML::Key << "ColorRed" << YAML::Value << InputScene->SpotLights[i]->Color[0];
+        Output << YAML::Key << "ColorGreen" << YAML::Value << InputScene->SpotLights[i]->Color[1];
+        Output << YAML::Key << "ColorBlue" << YAML::Value << InputScene->SpotLights[i]->Color[2];
 
 
         Output << YAML::Key << "PosX" << YAML::Value << InputScene->SpotLights[i]->Pos[0];
