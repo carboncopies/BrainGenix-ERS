@@ -264,8 +264,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     // Write Back PointLight Data
     double PointLightPosX, PointLightPosY, PointLightPosZ;
     float ColorR, ColorG, ColorB;
-    float SpecularR, SpecularG, SpecularB;
-    float AmbientR, AmbientG, AmbientB;
 
     try {
         PointLightPosX = PointLightModule.attr("PointLightPosX").cast<double>();
@@ -389,8 +387,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     double DirectionalLightPosX, DirectionalLightPosY, DirectionalLightPosZ;
     double DirectionalLightRotX, DirectionalLightRotY, DirectionalLightRotZ;
     float ColorR, ColorG, ColorB;
-    float SpecularR, SpecularG, SpecularB;
-    float AmbientR, AmbientG, AmbientB;
 
     try {
         DirectionalLightPosX = DirectionalLightModule.attr("DirectionalLightPosX").cast<double>();
@@ -522,8 +518,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     double SpotLightPosX, SpotLightPosY, SpotLightPosZ;
     double SpotLightRotX, SpotLightRotY, SpotLightRotZ;
     float ColorR, ColorG, ColorB;
-    float SpecularR, SpecularG, SpecularB;
-    float AmbientR, AmbientG, AmbientB;
 
     try {
         SpotLightPosX = SpotLightModule.attr("SpotLightPosX").cast<double>();
