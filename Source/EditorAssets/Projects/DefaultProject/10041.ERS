@@ -35,15 +35,10 @@ struct STRUCT_PointLight {
     vec3 Position;
 
     // Light Color Parameters
-    vec3 Ambient;
-    vec3 Diffuse;
-    vec3 Specular;
+    vec3 Color;
 
     // Light Rolloff Parameters
-    float ConstantRolloff;
-    float LinearRolloff;
-    float QuadraticRolloff;
-
+    float Intensity;
 };
 
 struct STRUCT_SpotLight {
@@ -53,14 +48,10 @@ struct STRUCT_SpotLight {
     vec3 Direction;
 
     // Light Color Parameters
-    vec3 Ambient;
-    vec3 Diffuse;
-    vec3 Specular;
+    vec3 Color;
 
     // Light Rolloff Parameters
-    float ConstantRolloff;
-    float LinearRolloff;
-    float QuadraticRolloff;
+    float Intensity;
 
     // Spotlight Parameters
     float CutOff;
@@ -223,6 +214,9 @@ vec4 GammaCorrectTexture(sampler2D Texture, bool GammaEnabled) {
 }
 
 
+
+/**
+
 vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 ViewDirection) {
     
     vec3 LightDirectionVector = normalize(-Light.Direction);
@@ -302,7 +296,7 @@ vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, 
 }
 
 
-
+**/
 
 STRUCT_SampledData SetSampledData() {
     STRUCT_SampledData SampledData;
@@ -352,7 +346,7 @@ vec3 PBRPointLight(STRUCT_PointLight Light, vec3 ViewDir, vec3 Reflectance, STRU
         vec3 H = normalize(ViewDir + L);
         float distance = length(Light.Position - Object.WorldPos);
         float attenuation = 1.0 / (distance * distance);
-        vec3 radiance = Light.Diffuse * attenuation;
+        vec3 radiance = Light.Color * attenuation;
 
         // Cook-Torrance BRDF
         float NDF = DistributionGGX(Model.Normal, H, Model.Roughness);   
@@ -394,14 +388,6 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
     }
     vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Object.Normal);
 
-    // Diffuse/Specular Components
-    float Diffuse = max(dot(Model.Normal, LightDirectionVector), 0.0f);
-    float Specular = pow(max(dot(ViewDir, ReflectionDirectionVector), 0.0f), Shinyness);
-
-    // Calculate Attenuation
-    float Distance = length(Light.Position - Object.FragPos);
-    float Attenuation = 1.0f / (Light.ConstantRolloff + Light.LinearRolloff * Distance + Light.QuadraticRolloff * (Distance * Diffuse));
-
     // Calculate Spot Intensity
     float Theta = dot(normalize(Light.Position  - Object.FragPos), normalize(-Light.Direction));
     float Epsilon = Light.CutOff - Light.OuterCutOff;
@@ -413,7 +399,7 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
         vec3 H = normalize(ViewDir + L);
         float distance = length(Light.Position - Object.WorldPos);
         float attenuation = 1.0 / (distance * distance);
-        vec3 radiance = Light.Diffuse * attenuation;
+        vec3 radiance = Light.Color * attenuation;
 
         // Cook-Torrance BRDF
         float NDF = DistributionGGX(Model.Normal, H, Model.Roughness);   
@@ -491,4 +477,5 @@ void main() {
         FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
 }
+
 
