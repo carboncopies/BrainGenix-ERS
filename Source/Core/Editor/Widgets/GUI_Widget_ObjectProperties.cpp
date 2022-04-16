@@ -88,19 +88,7 @@ void Widget_ObjectProperties::Draw() {
                         ImGui::SameLine();
                         ImGui::HelpMarker("Controls the main color of the light.");
                         FloatToVec(DiffuseColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Diffuse);
-                        float AmbientColor[3];
-                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Ambient, AmbientColor);
-                        ImGui::ColorEdit3("Ambient", AmbientColor);
-                        ImGui::SameLine();
-                        ImGui::HelpMarker("Controls any additions to the ambient color of the environment. Generally, you shouldn't do this with a spot light, use a directional light whenever possible instead.");
-                        FloatToVec(AmbientColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Ambient);
-                        float SpecularColor[3];
-                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Specular, SpecularColor);
-                        ImGui::ColorEdit3("Specular", SpecularColor);
-                        ImGui::SameLine();
-                        ImGui::HelpMarker("Controls the color of the reflection.");
-                        FloatToVec(SpecularColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Specular);
-                        ImGui::Separator();
+
 
                         ImGui::DragFloat("Rolloff Constant", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->RolloffConstant, 0.01f);
                         ImGui::SameLine();
