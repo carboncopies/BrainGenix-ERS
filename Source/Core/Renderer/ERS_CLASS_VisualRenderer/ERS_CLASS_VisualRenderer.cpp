@@ -672,9 +672,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         
         ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ActiveScene->DirectionalLights[i]->Rot);
 
-        ActiveShader->SetVec3((UniformName + std::string(".Ambient")).c_str(), ActiveScene->DirectionalLights[i]->Ambient);
-        ActiveShader->SetVec3((UniformName + std::string(".Diffuse")).c_str(), ActiveScene->DirectionalLights[i]->Diffuse);
-        ActiveShader->SetVec3((UniformName + std::string(".Specular")).c_str(), ActiveScene->DirectionalLights[i]->Specular);
+        ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->DirectionalLights[i]->Color);
     
     }
 
@@ -691,7 +689,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetFloat((UniformName + std::string(".LinearRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffLinear);
         ActiveShader->SetFloat((UniformName + std::string(".QuadraticRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffQuadratic);
 
-        ActiveShader->SetVec3((UniformName + std::string(".Ambient")).c_str(), ActiveScene->PointLights[i]->Ambient);
+        ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->PointLights[i]->Color);
         ActiveShader->SetVec3((UniformName + std::string(".Diffuse")).c_str(), ActiveScene->PointLights[i]->Diffuse);
         ActiveShader->SetVec3((UniformName + std::string(".Specular")).c_str(), ActiveScene->PointLights[i]->Specular);
     
