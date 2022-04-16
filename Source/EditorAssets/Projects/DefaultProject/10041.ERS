@@ -419,11 +419,11 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
         float NDF = DistributionGGX(Model.Normal, H, Model.Roughness);   
         float G   = GeometrySmith(Model.Normal, ViewDir, L, Model.Roughness);      
         vec3 F    = FresnelSchlick(max(dot(H, ViewDir), 0.0), Reflectance);
-           
+
         vec3 numerator    = NDF * G * F; 
         float denominator = 4.0 * max(dot(Model.Normal, ViewDir), 0.0) * max(dot(Model.Normal, L), 0.0) + 0.0001; // + 0.0001 to prevent divide by zero
         vec3 specular = numerator / denominator;
-        
+
         // kS is equal to Fresnel
         vec3 kS = F;
         // for energy conservation, the diffuse and specular light can't
@@ -466,18 +466,16 @@ void main() {
     for (int i = 0; i < NumberPointLights; i++) {
         Lo += vec4(PBRPointLight(PointLights[i], ViewDir, Reflectance, Model), 1.0f);
     }
-    
+
     // Calculate Spot Lights
     for(int i = 0; i < NumberSpotLights; ++i) {
         Lo += vec4(PBRSpotLight(SpotLights[i], ViewDir, Reflectance, Model), 1.0f);
     }
-    
-    
+
     // ambient lighting (note that the next IBL tutorial will replace 
     // this ambient lighting with environment lighting).
     vec4 Ambient = vec4(0.03) * Model.Albedo * Model.AO;
     vec4 Color = Ambient + Lo;
-
 
 
      // Add Emissive Texture
