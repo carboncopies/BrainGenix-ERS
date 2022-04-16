@@ -155,7 +155,9 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             int LightIndex = Scene.PointLights.size() - 1;
 
             Scene.PointLights[LightIndex]->UserDefinedName = AssetName;
-            Scene.PointLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
+            if (SceneDataNode[i]["Intensity"]) {
+                Scene.PointLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
+            }
 
             
             Scene.PointLights[LightIndex]->Color = glm::vec3(
@@ -187,8 +189,9 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
 
             Scene.SpotLights[LightIndex]->UserDefinedName = AssetName;
 
-
-            Scene.SpotLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
+            if (SceneDataNode[i]["Intensity"]) {
+                Scene.SpotLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
+            }
             Scene.SpotLights[LightIndex]->CutOff = SceneDataNode[i]["CutOff"].as<float>();
             Scene.SpotLights[LightIndex]->OuterCutOff = SceneDataNode[i]["OuterCutOff"].as<float>();
 
