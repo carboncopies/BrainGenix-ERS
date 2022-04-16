@@ -47,12 +47,12 @@ void Widget_ObjectProperties::Draw() {
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
                     if (ImGui::CollapsingHeader("Point Light Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
 
-                        float DiffuseColor[3];
-                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse, DiffuseColor);
-                        ImGui::ColorEdit3("Diffuse", DiffuseColor);
+                        float Color[3];
+                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Color, Color);
+                        ImGui::ColorEdit3("Color", Color);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Controls the main color of the light.");
-                        FloatToVec(DiffuseColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse);
+                        FloatToVec(Color, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Color);
   
 
                         ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Intensity, 0.01f);
@@ -67,12 +67,12 @@ void Widget_ObjectProperties::Draw() {
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
                     if (ImGui::CollapsingHeader("Directional Light Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
 
-                        float DiffuseColor[3];
-                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Diffuse, DiffuseColor);
-                        ImGui::ColorEdit3("Diffuse", DiffuseColor);
+                        float Color[3];
+                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Color, Color);
+                        ImGui::ColorEdit3("Color", Color);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Controls the main color of the light.");
-                        FloatToVec(DiffuseColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Diffuse);
+                        FloatToVec(Color, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Color);
 
 
                     }
@@ -82,12 +82,12 @@ void Widget_ObjectProperties::Draw() {
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
                     if (ImGui::CollapsingHeader("Spot Light Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
 
-                        float DiffuseColor[3];
-                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Diffuse, DiffuseColor);
-                        ImGui::ColorEdit3("Diffuse", DiffuseColor);
+                        float Color[3];
+                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Color, Color);
+                        ImGui::ColorEdit3("Color", Color);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Controls the main color of the light.");
-                        FloatToVec(DiffuseColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Diffuse);
+                        FloatToVec(Color, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Color);
 
 
                         ImGui::DragFloat("Rolloff Constant", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->RolloffConstant, 0.01f);
