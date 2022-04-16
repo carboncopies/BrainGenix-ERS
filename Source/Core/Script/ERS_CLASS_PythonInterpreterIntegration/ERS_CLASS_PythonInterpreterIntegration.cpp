@@ -559,24 +559,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     }
 
     try {
-        SpecularR = SpotLightModule.attr("SpotLightSpecularR").cast<double>();
-        SpecularG = SpotLightModule.attr("SpotLightSpecularG").cast<double>();
-        SpecularB = SpotLightModule.attr("SpotLightSpecularB").cast<double>();
-        SpotLight->Specular = glm::vec3(SpecularR, SpecularG, SpecularB);
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("SpotLight Specular CAST_ERROR");
-    }
-
-    try {
-        AmbientR = SpotLightModule.attr("SpotLightAmbientR").cast<double>();
-        AmbientG = SpotLightModule.attr("SpotLightAmbientG").cast<double>();
-        AmbientB = SpotLightModule.attr("SpotLightAmbientB").cast<double>();
-        SpotLight->Ambient = glm::vec3(AmbientR, AmbientG, AmbientB);
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("SpotLight Ambient CAST_ERROR");
-    }
-
-    try {
         SpotLight->RolloffConstant = SpotLightModule.attr("SpotLightRolloffConstant").cast<float>();
         SpotLight->RolloffLinear = SpotLightModule.attr("SpotLightRolloffLinear").cast<float>();
         SpotLight->RolloffQuadratic = SpotLightModule.attr("SpotLightRolloffQuadratic").cast<float>();
