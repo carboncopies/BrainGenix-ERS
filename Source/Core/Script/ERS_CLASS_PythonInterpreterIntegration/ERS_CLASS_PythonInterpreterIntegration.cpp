@@ -288,7 +288,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     try {
         PointLight->Intensity = PointLightModule.attr("PointLightIntensity").cast<float>();
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Rolloff CAST_ERROR");
+        ErrorMessageString->push_back("PointLight Intensity CAST_ERROR");
     }
 
     // Return Status
@@ -555,7 +555,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     try {
         SpotLight->Intensity = SpotLightModule.attr("SpotLightIntensity").cast<float>();
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("SpotLight Rolloff CAST_ERROR");
+        ErrorMessageString->push_back("SpotLight Intensity CAST_ERROR");
     }
 
 
