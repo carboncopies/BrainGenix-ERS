@@ -122,21 +122,12 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
 
             Scene.DirectionalLights[LightIndex]->UserDefinedName = AssetName;
             
-            Scene.DirectionalLights[LightIndex]->Ambient = glm::vec3(
-                SceneDataNode[i]["AmbientRed"].as<float>(),
-                SceneDataNode[i]["AmbientGreen"].as<float>(),
-                SceneDataNode[i]["AmbientBlue"].as<float>()
+            Scene.DirectionalLights[LightIndex]->Color = glm::vec3(
+                SceneDataNode[i]["ColorRed"].as<float>(),
+                SceneDataNode[i]["ColorGreen"].as<float>(),
+                SceneDataNode[i]["ColorBlue"].as<float>()
                 );
-            Scene.DirectionalLights[LightIndex]->Diffuse = glm::vec3(
-                SceneDataNode[i]["DiffuseRed"].as<float>(),
-                SceneDataNode[i]["DiffuseGreen"].as<float>(),
-                SceneDataNode[i]["DiffuseBlue"].as<float>()
-                );
-            Scene.DirectionalLights[LightIndex]->Specular = glm::vec3(
-                SceneDataNode[i]["SpecularRed"].as<float>(),
-                SceneDataNode[i]["SpecularGreen"].as<float>(),
-                SceneDataNode[i]["SpecularBlue"].as<float>()
-                );
+
 
             Scene.DirectionalLights[LightIndex]->Pos = glm::vec3(
                 SceneDataNode[i]["PosX"].as<float>(),
@@ -164,28 +155,15 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             int LightIndex = Scene.PointLights.size() - 1;
 
             Scene.PointLights[LightIndex]->UserDefinedName = AssetName;
-
-
-            Scene.PointLights[LightIndex]->RolloffConstant = SceneDataNode[i]["RolloffConstant"].as<float>();
-            Scene.PointLights[LightIndex]->RolloffLinear = SceneDataNode[i]["RolloffLinear"].as<float>();
-            Scene.PointLights[LightIndex]->RolloffQuadratic = SceneDataNode[i]["RolloffQuadratic"].as<float>();
+            Scene.PointLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
 
             
-            Scene.PointLights[LightIndex]->Ambient = glm::vec3(
-                SceneDataNode[i]["AmbientRed"].as<float>(),
-                SceneDataNode[i]["AmbientGreen"].as<float>(),
-                SceneDataNode[i]["AmbientBlue"].as<float>()
+            Scene.PointLights[LightIndex]->Color = glm::vec3(
+                SceneDataNode[i]["ColorRed"].as<float>(),
+                SceneDataNode[i]["ColorGreen"].as<float>(),
+                SceneDataNode[i]["ColorBlue"].as<float>()
                 );
-            Scene.PointLights[LightIndex]->Diffuse = glm::vec3(
-                SceneDataNode[i]["DiffuseRed"].as<float>(),
-                SceneDataNode[i]["DiffuseGreen"].as<float>(),
-                SceneDataNode[i]["DiffuseBlue"].as<float>()
-                );
-            Scene.PointLights[LightIndex]->Specular = glm::vec3(
-                SceneDataNode[i]["SpecularRed"].as<float>(),
-                SceneDataNode[i]["SpecularGreen"].as<float>(),
-                SceneDataNode[i]["SpecularBlue"].as<float>()
-                );
+
 
             Scene.PointLights[LightIndex]->Pos = glm::vec3(
                 SceneDataNode[i]["PosX"].as<float>(),
@@ -210,30 +188,17 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             Scene.SpotLights[LightIndex]->UserDefinedName = AssetName;
 
 
-            Scene.SpotLights[LightIndex]->RolloffConstant = SceneDataNode[i]["RolloffConstant"].as<float>();
-            Scene.SpotLights[LightIndex]->RolloffLinear = SceneDataNode[i]["RolloffLinear"].as<float>();
-            Scene.SpotLights[LightIndex]->RolloffQuadratic = SceneDataNode[i]["RolloffQuadratic"].as<float>();
-
-
+            Scene.SpotLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
             Scene.SpotLights[LightIndex]->CutOff = SceneDataNode[i]["CutOff"].as<float>();
             Scene.SpotLights[LightIndex]->OuterCutOff = SceneDataNode[i]["OuterCutOff"].as<float>();
 
 
-            Scene.SpotLights[LightIndex]->Ambient = glm::vec3(
-                SceneDataNode[i]["AmbientRed"].as<float>(),
-                SceneDataNode[i]["AmbientGreen"].as<float>(),
-                SceneDataNode[i]["AmbientBlue"].as<float>()
+            Scene.SpotLights[LightIndex]->Color = glm::vec3(
+                SceneDataNode[i]["ColorRed"].as<float>(),
+                SceneDataNode[i]["ColorGreen"].as<float>(),
+                SceneDataNode[i]["ColorBlue"].as<float>()
                 );
-            Scene.SpotLights[LightIndex]->Diffuse = glm::vec3(
-                SceneDataNode[i]["DiffuseRed"].as<float>(),
-                SceneDataNode[i]["DiffuseGreen"].as<float>(),
-                SceneDataNode[i]["DiffuseBlue"].as<float>()
-                );
-            Scene.SpotLights[LightIndex]->Specular = glm::vec3(
-                SceneDataNode[i]["SpecularRed"].as<float>(),
-                SceneDataNode[i]["SpecularGreen"].as<float>(),
-                SceneDataNode[i]["SpecularBlue"].as<float>()
-                );
+
 
             Scene.SpotLights[LightIndex]->Pos = glm::vec3(
                 SceneDataNode[i]["PosX"].as<float>(),
