@@ -193,8 +193,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     PointLightModule.attr("PointLightColorB") = PointLight->Color.b;
     
     PointLightModule.attr("PointLightRolloffConstant") = PointLight->RolloffConstant;
-    PointLightModule.attr("PointLightRolloffLinear") = PointLight->RolloffLinear;
-    PointLightModule.attr("PointLightRolloffQuadratic") = PointLight->RolloffQuadratic;
     
 
     // Get Local Dict
@@ -289,8 +287,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
 
     try {
         PointLight->RolloffConstant = PointLightModule.attr("PointLightRolloffConstant").cast<float>();
-        PointLight->RolloffLinear = PointLightModule.attr("PointLightRolloffLinear").cast<float>();
-        PointLight->RolloffQuadratic = PointLightModule.attr("PointLightRolloffQuadratic").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Rolloff CAST_ERROR");
     }
@@ -451,8 +447,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     SpotLightModule.attr("SpotLightColorB") = SpotLight->Color.b;
     
     SpotLightModule.attr("SpotLightRolloffConstant") = SpotLight->RolloffConstant;
-    SpotLightModule.attr("SpotLightRolloffLinear") = SpotLight->RolloffLinear;
-    SpotLightModule.attr("SpotLightRolloffQuadratic") = SpotLight->RolloffQuadratic;
     
     SpotLightModule.attr("SpotLightCutoff") = SpotLight->CutOff;
     SpotLightModule.attr("SpotLightOuterCutoff") = SpotLight->OuterCutOff;
@@ -560,8 +554,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
 
     try {
         SpotLight->RolloffConstant = SpotLightModule.attr("SpotLightRolloffConstant").cast<float>();
-        SpotLight->RolloffLinear = SpotLightModule.attr("SpotLightRolloffLinear").cast<float>();
-        SpotLight->RolloffQuadratic = SpotLightModule.attr("SpotLightRolloffQuadratic").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("SpotLight Rolloff CAST_ERROR");
     }
