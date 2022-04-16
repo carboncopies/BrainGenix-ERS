@@ -185,14 +185,6 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "AmbientRed" << YAML::Value << InputScene->SpotLights[i]->Ambient[0];
         Output << YAML::Key << "AmbientGreen" << YAML::Value << InputScene->SpotLights[i]->Ambient[1];
         Output << YAML::Key << "AmbientBlue" << YAML::Value << InputScene->SpotLights[i]->Ambient[2];
-        
-        Output << YAML::Key << "DiffuseRed" << YAML::Value << InputScene->SpotLights[i]->Diffuse[0];
-        Output << YAML::Key << "DiffuseGreen" << YAML::Value << InputScene->SpotLights[i]->Diffuse[1];
-        Output << YAML::Key << "DiffuseBlue" << YAML::Value << InputScene->SpotLights[i]->Diffuse[2];
-
-        Output << YAML::Key << "SpecularRed" << YAML::Value << InputScene->SpotLights[i]->Specular[0];
-        Output << YAML::Key << "SpecularGreen" << YAML::Value << InputScene->SpotLights[i]->Specular[1];
-        Output << YAML::Key << "SpecularBlue" << YAML::Value << InputScene->SpotLights[i]->Specular[2];
 
 
         Output << YAML::Key << "PosX" << YAML::Value << InputScene->SpotLights[i]->Pos[0];
