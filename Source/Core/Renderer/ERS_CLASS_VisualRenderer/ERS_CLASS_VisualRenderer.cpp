@@ -711,7 +711,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetFloat((UniformName + std::string(".CutOff")).c_str(), ActiveScene->SpotLights[i]->CutOff);
         ActiveShader->SetFloat((UniformName + std::string(".OuterCutOff")).c_str(), ActiveScene->SpotLights[i]->OuterCutOff);
 
-        ActiveShader->SetVec3((UniformName + std::string(".Ambient")).c_str(), ActiveScene->SpotLights[i]->Ambient);
+        ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->SpotLights[i]->Color);
 
     }
 
