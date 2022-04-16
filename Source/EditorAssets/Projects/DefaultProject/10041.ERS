@@ -346,7 +346,7 @@ vec3 PBRPointLight(STRUCT_PointLight Light, vec3 ViewDir, vec3 Reflectance, STRU
         vec3 H = normalize(ViewDir + L);
         float distance = length(Light.Position - Object.WorldPos);
         float attenuation = 1.0 / (distance * distance);
-        vec3 radiance = Light.Color * attenuation;
+        vec3 radiance = Light.Color * Light.Intensity * attenuation;
 
         // Cook-Torrance BRDF
         float NDF = DistributionGGX(Model.Normal, H, Model.Roughness);   
@@ -399,7 +399,7 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
         vec3 H = normalize(ViewDir + L);
         float distance = length(Light.Position - Object.WorldPos);
         float attenuation = 1.0 / (distance * distance);
-        vec3 radiance = Light.Color * attenuation;
+        vec3 radiance = Light.Color * Light.Intensity * attenuation;
 
         // Cook-Torrance BRDF
         float NDF = DistributionGGX(Model.Normal, H, Model.Roughness);   
@@ -477,5 +477,6 @@ void main() {
         FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
 }
+
 
 
