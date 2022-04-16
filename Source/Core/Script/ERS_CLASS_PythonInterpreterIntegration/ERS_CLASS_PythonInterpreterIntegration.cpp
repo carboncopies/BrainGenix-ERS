@@ -450,14 +450,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     SpotLightModule.attr("SpotLightDiffuseG") = SpotLight->Diffuse.g;
     SpotLightModule.attr("SpotLightDiffuseB") = SpotLight->Diffuse.b;
     
-    SpotLightModule.attr("SpotLightSpecularR") = SpotLight->Specular.r;
-    SpotLightModule.attr("SpotLightSpecularG") = SpotLight->Specular.g;
-    SpotLightModule.attr("SpotLightSpecularB") = SpotLight->Specular.b;
-
-    SpotLightModule.attr("SpotLightAmbientR") = SpotLight->Ambient.r;
-    SpotLightModule.attr("SpotLightAmbientG") = SpotLight->Ambient.g;
-    SpotLightModule.attr("SpotLightAmbientB") = SpotLight->Ambient.b;
-    
     SpotLightModule.attr("SpotLightRolloffConstant") = SpotLight->RolloffConstant;
     SpotLightModule.attr("SpotLightRolloffLinear") = SpotLight->RolloffLinear;
     SpotLightModule.attr("SpotLightRolloffQuadratic") = SpotLight->RolloffQuadratic;
