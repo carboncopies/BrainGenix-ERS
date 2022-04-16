@@ -192,14 +192,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     PointLightModule.attr("PointLightDiffuseG") = PointLight->Diffuse.g;
     PointLightModule.attr("PointLightDiffuseB") = PointLight->Diffuse.b;
     
-    PointLightModule.attr("PointLightSpecularR") = PointLight->Specular.r;
-    PointLightModule.attr("PointLightSpecularG") = PointLight->Specular.g;
-    PointLightModule.attr("PointLightSpecularB") = PointLight->Specular.b;
-
-    PointLightModule.attr("PointLightAmbientR") = PointLight->Ambient.r;
-    PointLightModule.attr("PointLightAmbientG") = PointLight->Ambient.g;
-    PointLightModule.attr("PointLightAmbientB") = PointLight->Ambient.b;
-    
     PointLightModule.attr("PointLightRolloffConstant") = PointLight->RolloffConstant;
     PointLightModule.attr("PointLightRolloffLinear") = PointLight->RolloffLinear;
     PointLightModule.attr("PointLightRolloffQuadratic") = PointLight->RolloffQuadratic;
