@@ -111,15 +111,6 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "AmbientRed" << YAML::Value << InputScene->DirectionalLights[i]->Ambient[0];
         Output << YAML::Key << "AmbientGreen" << YAML::Value << InputScene->DirectionalLights[i]->Ambient[1];
         Output << YAML::Key << "AmbientBlue" << YAML::Value << InputScene->DirectionalLights[i]->Ambient[2];
-        
-        Output << YAML::Key << "DiffuseRed" << YAML::Value << InputScene->DirectionalLights[i]->Diffuse[0];
-        Output << YAML::Key << "DiffuseGreen" << YAML::Value << InputScene->DirectionalLights[i]->Diffuse[1];
-        Output << YAML::Key << "DiffuseBlue" << YAML::Value << InputScene->DirectionalLights[i]->Diffuse[2];
-
-        Output << YAML::Key << "SpecularRed" << YAML::Value << InputScene->DirectionalLights[i]->Specular[0];
-        Output << YAML::Key << "SpecularGreen" << YAML::Value << InputScene->DirectionalLights[i]->Specular[1];
-        Output << YAML::Key << "SpecularBlue" << YAML::Value << InputScene->DirectionalLights[i]->Specular[2];
-
 
         Output << YAML::Key << "PosX" << YAML::Value << InputScene->DirectionalLights[i]->Pos[0];
         Output << YAML::Key << "PosY" << YAML::Value << InputScene->DirectionalLights[i]->Pos[1];
@@ -155,14 +146,7 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "AmbientRed" << YAML::Value << InputScene->PointLights[i]->Ambient[0];
         Output << YAML::Key << "AmbientGreen" << YAML::Value << InputScene->PointLights[i]->Ambient[1];
         Output << YAML::Key << "AmbientBlue" << YAML::Value << InputScene->PointLights[i]->Ambient[2];
-        
-        Output << YAML::Key << "DiffuseRed" << YAML::Value << InputScene->PointLights[i]->Diffuse[0];
-        Output << YAML::Key << "DiffuseGreen" << YAML::Value << InputScene->PointLights[i]->Diffuse[1];
-        Output << YAML::Key << "DiffuseBlue" << YAML::Value << InputScene->PointLights[i]->Diffuse[2];
 
-        Output << YAML::Key << "SpecularRed" << YAML::Value << InputScene->PointLights[i]->Specular[0];
-        Output << YAML::Key << "SpecularGreen" << YAML::Value << InputScene->PointLights[i]->Specular[1];
-        Output << YAML::Key << "SpecularBlue" << YAML::Value << InputScene->PointLights[i]->Specular[2];
 
 
         Output << YAML::Key << "PosX" << YAML::Value << InputScene->PointLights[i]->Pos[0];
