@@ -160,12 +160,13 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             }
 
             
-            Scene.PointLights[LightIndex]->Color = glm::vec3(
-                SceneDataNode[i]["ColorRed"].as<float>(),
-                SceneDataNode[i]["ColorGreen"].as<float>(),
-                SceneDataNode[i]["ColorBlue"].as<float>()
-                );
-
+            if (SceneDataNode[i]["ColorRed"] && SceneDataNode[i]["ColorGreen"] && SceneDataNode[i]["ColorBlue"]) {
+                Scene.PointLights[LightIndex]->Color = glm::vec3(
+                    SceneDataNode[i]["ColorRed"].as<float>(),
+                    SceneDataNode[i]["ColorGreen"].as<float>(),
+                    SceneDataNode[i]["ColorBlue"].as<float>()
+                    );
+            }
 
             Scene.PointLights[LightIndex]->Pos = glm::vec3(
                 SceneDataNode[i]["PosX"].as<float>(),
