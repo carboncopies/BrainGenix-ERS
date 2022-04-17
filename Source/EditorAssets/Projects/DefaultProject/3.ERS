@@ -44,15 +44,9 @@ SceneData:
   3:
     AssetName: Default Point Light
     AssetType: PointLight
-    AmbientRed: 0.25
-    AmbientGreen: 0.25
-    AmbientBlue: 0.25
-    DiffuseRed: 0.25
-    DiffuseGreen: 0.25
-    DiffuseBlue: 0.25
-    SpecularRed: 0.25
-    SpecularGreen: 0.25
-    SpecularBlue: 0.25
+    ColorRed: 1.0
+    ColorGreen: 1.0
+    ColorBlue: 1.0
     PosX: -0.83369267
     PosY: 0.582210124
     PosZ: -0.533189774
