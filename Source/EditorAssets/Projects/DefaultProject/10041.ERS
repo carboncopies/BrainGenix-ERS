@@ -117,7 +117,7 @@ uniform bool HasSpecular;
 uniform int NumberDirectionalLights;
 uniform int NumberPointLights;
 uniform int NumberSpotLights;
-uniform STRUCT_DirectionalLight DirectionalLight[1];
+uniform STRUCT_DirectionalLight DirectionalLights[1];
 uniform STRUCT_PointLight PointLights[128];
 uniform STRUCT_SpotLight SpotLights[96];
 
@@ -439,7 +439,7 @@ vec3 PBRDirectionalLight(STRUCT_DirectionalLight Light, vec3 ViewDir, vec3 Refle
     float Specular = pow(max(dot(ViewDir, ReflectionDirectionVector), 0.0f), Shinyness);
 
         // calculate per-light radiance
-        vec3 L = LightDirectionVector;//normalize(Light.Position - Object.WorldPos);
+        vec3 L = normalize(Light.Direction);
         vec3 H = normalize(ViewDir + L);
         vec3 radiance = Light.Color * Light.Intensity;
 
@@ -490,7 +490,7 @@ void main() {
 
     // Calculate Directional Lights
     for (int i = 0; i < NumberDirectionalLights; i++) {
-        Lo += vec4(PBRDirectionalLight(DirectionalLight[i], ViewDir, Reflectance, Model), 1.0f);
+        Lo += vec4(PBRDirectionalLight(DirectionalLights[i], ViewDir, Reflectance, Model), 1.0f);
     }
 
     // Calculate Point Lights
@@ -522,6 +522,7 @@ void main() {
         FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
 }
+
 
 
 
