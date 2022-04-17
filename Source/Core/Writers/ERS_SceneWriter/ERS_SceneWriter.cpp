@@ -120,6 +120,8 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "RotY" << YAML::Value << InputScene->DirectionalLights[i]->Rot[1];
         Output << YAML::Key << "RotZ" << YAML::Value << InputScene->DirectionalLights[i]->Rot[2];
 
+        Output << YAML::Key << "Intensity" << YAML::Value << InputScene->DirectionalLights[i]->Intensity;
+
 
         Output<<YAML::Key<<"AttachedScripts";
         Output<<YAML::Key<<YAML::BeginMap;
