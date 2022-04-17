@@ -50,9 +50,7 @@ SceneData:
     PosX: -0.83369267
     PosY: 0.582210124
     PosZ: -0.533189774
-    RolloffConstant: 1
-    RolloffLinear: 0.0900000036
-    RolloffQuadratic: 0.0320000015
+    Intensity: 25
   4:
     AssetName: Default Spot Light
     AssetType: SpotLight
