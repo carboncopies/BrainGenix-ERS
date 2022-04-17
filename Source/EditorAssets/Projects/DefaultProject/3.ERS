@@ -63,8 +63,6 @@ SceneData:
     RotX: -156.130692
     RotY: -44.4931717
     RotZ: 141.395966
-    RolloffConstant: 1
-    RolloffLinear: 0.0900000036
-    RolloffQuadratic: 0.0320000015
+    Intensity: 25
     CutOff: 0.970000029
     OuterCutOff: 0.959999979
