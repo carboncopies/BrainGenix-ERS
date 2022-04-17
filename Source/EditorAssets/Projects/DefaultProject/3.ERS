@@ -32,15 +32,9 @@ SceneData:
   2:
     AssetName: Default Directional Light
     AssetType: DirectionalLight
-    AmbientRed: 0.25
-    AmbientGreen: 0.25
-    AmbientBlue: 0.25
-    DiffuseRed: 0.25
-    DiffuseGreen: 0.25
-    DiffuseBlue: 0.25
-    SpecularRed: 0.25
-    SpecularGreen: 0.25
-    SpecularBlue: 0.25
+    ColorRed: 1.0
+    ColorGreen: 1.0
+    ColorBlue: 1.0
     PosX: 0.0898500085
     PosY: 1.15329742
     PosZ: -0.723596871
@@ -50,41 +44,25 @@ SceneData:
   3:
     AssetName: Default Point Light
     AssetType: PointLight
-    AmbientRed: 0.25
-    AmbientGreen: 0.25
-    AmbientBlue: 0.25
-    DiffuseRed: 0.25
-    DiffuseGreen: 0.25
-    DiffuseBlue: 0.25
-    SpecularRed: 0.25
-    SpecularGreen: 0.25
-    SpecularBlue: 0.25
+    ColorRed: 1.0
+    ColorGreen: 1.0
+    ColorBlue: 1.0
     PosX: -0.83369267
     PosY: 0.582210124
     PosZ: -0.533189774
-    RolloffConstant: 1
-    RolloffLinear: 0.0900000036
-    RolloffQuadratic: 0.0320000015
+    Intensity: 25
   4:
     AssetName: Default Spot Light
     AssetType: SpotLight
-    AmbientRed: 0
-    AmbientGreen: 0
-    AmbientBlue: 0
-    DiffuseRed: 0.25
-    DiffuseGreen: 0.25
-    DiffuseBlue: 1
-    SpecularRed: 0.25
-    SpecularGreen: 1
-    SpecularBlue: 0.25
+    ColorRed: 1.0
+    ColorGreen: 1.0
+    ColorBlue: 1.0
     PosX: 0.993685424
     PosY: 0.515645862
     PosZ: -0.763120711
     RotX: -156.130692
     RotY: -44.4931717
     RotZ: 141.395966
-    RolloffConstant: 1
-    RolloffLinear: 0.0900000036
-    RolloffQuadratic: 0.0320000015
+    Intensity: 25
     CutOff: 0.970000029
     OuterCutOff: 0.959999979

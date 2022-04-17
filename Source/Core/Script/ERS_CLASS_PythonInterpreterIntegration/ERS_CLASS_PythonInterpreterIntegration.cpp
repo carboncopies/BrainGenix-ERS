@@ -188,21 +188,11 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     PointLightModule.attr("PointLightPosY") = PointLight->Pos.y;
     PointLightModule.attr("PointLightPosZ") = PointLight->Pos.z;
 
-    PointLightModule.attr("PointLightDiffuseR") = PointLight->Diffuse.r;
-    PointLightModule.attr("PointLightDiffuseG") = PointLight->Diffuse.g;
-    PointLightModule.attr("PointLightDiffuseB") = PointLight->Diffuse.b;
+    PointLightModule.attr("PointLightColorR") = PointLight->Color.r;
+    PointLightModule.attr("PointLightColorG") = PointLight->Color.g;
+    PointLightModule.attr("PointLightColorB") = PointLight->Color.b;
     
-    PointLightModule.attr("PointLightSpecularR") = PointLight->Specular.r;
-    PointLightModule.attr("PointLightSpecularG") = PointLight->Specular.g;
-    PointLightModule.attr("PointLightSpecularB") = PointLight->Specular.b;
-
-    PointLightModule.attr("PointLightAmbientR") = PointLight->Ambient.r;
-    PointLightModule.attr("PointLightAmbientG") = PointLight->Ambient.g;
-    PointLightModule.attr("PointLightAmbientB") = PointLight->Ambient.b;
-    
-    PointLightModule.attr("PointLightRolloffConstant") = PointLight->RolloffConstant;
-    PointLightModule.attr("PointLightRolloffLinear") = PointLight->RolloffLinear;
-    PointLightModule.attr("PointLightRolloffQuadratic") = PointLight->RolloffQuadratic;
+    PointLightModule.attr("PointLightIntensity") = PointLight->Intensity;
     
 
     // Get Local Dict
@@ -273,9 +263,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
 
     // Write Back PointLight Data
     double PointLightPosX, PointLightPosY, PointLightPosZ;
-    float DiffuseR, DiffuseG, DiffuseB;
-    float SpecularR, SpecularG, SpecularB;
-    float AmbientR, AmbientG, AmbientB;
+    float ColorR, ColorG, ColorB;
 
     try {
         PointLightPosX = PointLightModule.attr("PointLightPosX").cast<double>();
@@ -287,38 +275,18 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     }
 
     try {
-        DiffuseR = PointLightModule.attr("PointLightDiffuseR").cast<double>();
-        DiffuseG = PointLightModule.attr("PointLightDiffuseG").cast<double>();
-        DiffuseB = PointLightModule.attr("PointLightDiffuseB").cast<double>();
-        PointLight->Diffuse = glm::vec3(DiffuseR, DiffuseG, DiffuseB);
+        ColorR = PointLightModule.attr("PointLightColorR").cast<double>();
+        ColorG = PointLightModule.attr("PointLightColorG").cast<double>();
+        ColorB = PointLightModule.attr("PointLightColorB").cast<double>();
+        PointLight->Color = glm::vec3(ColorR, ColorG, ColorB);
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Diffuse CAST_ERROR");
+        ErrorMessageString->push_back("PointLight Color CAST_ERROR");
     }
 
     try {
-        SpecularR = PointLightModule.attr("PointLightSpecularR").cast<double>();
-        SpecularG = PointLightModule.attr("PointLightSpecularG").cast<double>();
-        SpecularB = PointLightModule.attr("PointLightSpecularB").cast<double>();
-        PointLight->Specular = glm::vec3(SpecularR, SpecularG, SpecularB);
+        PointLight->Intensity = PointLightModule.attr("PointLightIntensity").cast<float>();
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Specular CAST_ERROR");
-    }
-
-    try {
-        AmbientR = PointLightModule.attr("PointLightAmbientR").cast<double>();
-        AmbientG = PointLightModule.attr("PointLightAmbientG").cast<double>();
-        AmbientB = PointLightModule.attr("PointLightAmbientB").cast<double>();
-        PointLight->Ambient = glm::vec3(AmbientR, AmbientG, AmbientB);
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Ambient CAST_ERROR");
-    }
-
-    try {
-        PointLight->RolloffConstant = PointLightModule.attr("PointLightRolloffConstant").cast<float>();
-        PointLight->RolloffLinear = PointLightModule.attr("PointLightRolloffLinear").cast<float>();
-        PointLight->RolloffQuadratic = PointLightModule.attr("PointLightRolloffQuadratic").cast<float>();
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("PointLight Rolloff CAST_ERROR");
+        ErrorMessageString->push_back("PointLight Intensity CAST_ERROR");
     }
 
     // Return Status
@@ -344,17 +312,9 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     DirectionalLightModule.attr("DirectionalLightRotY") = DirectionalLight->Rot.y;
     DirectionalLightModule.attr("DirectionalLightRotZ") = DirectionalLight->Rot.z;
 
-    DirectionalLightModule.attr("DirectionalLightDiffuseR") = DirectionalLight->Diffuse.r;
-    DirectionalLightModule.attr("DirectionalLightDiffuseG") = DirectionalLight->Diffuse.g;
-    DirectionalLightModule.attr("DirectionalLightDiffuseB") = DirectionalLight->Diffuse.b;
-    
-    DirectionalLightModule.attr("DirectionalLightSpecularR") = DirectionalLight->Specular.r;
-    DirectionalLightModule.attr("DirectionalLightSpecularG") = DirectionalLight->Specular.g;
-    DirectionalLightModule.attr("DirectionalLightSpecularB") = DirectionalLight->Specular.b;
-
-    DirectionalLightModule.attr("DirectionalLightAmbientR") = DirectionalLight->Ambient.r;
-    DirectionalLightModule.attr("DirectionalLightAmbientG") = DirectionalLight->Ambient.g;
-    DirectionalLightModule.attr("DirectionalLightAmbientB") = DirectionalLight->Ambient.b;
+    DirectionalLightModule.attr("DirectionalLightColorR") = DirectionalLight->Color.r;
+    DirectionalLightModule.attr("DirectionalLightColorG") = DirectionalLight->Color.g;
+    DirectionalLightModule.attr("DirectionalLightColorB") = DirectionalLight->Color.b;
     
 
     // Get Local Dict
@@ -426,9 +386,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     // Write Back DirectionalLight Data
     double DirectionalLightPosX, DirectionalLightPosY, DirectionalLightPosZ;
     double DirectionalLightRotX, DirectionalLightRotY, DirectionalLightRotZ;
-    float DiffuseR, DiffuseG, DiffuseB;
-    float SpecularR, SpecularG, SpecularB;
-    float AmbientR, AmbientG, AmbientB;
+    float ColorR, ColorG, ColorB;
 
     try {
         DirectionalLightPosX = DirectionalLightModule.attr("DirectionalLightPosX").cast<double>();
@@ -449,31 +407,14 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     }
 
     try {
-        DiffuseR = DirectionalLightModule.attr("DirectionalLightDiffuseR").cast<double>();
-        DiffuseG = DirectionalLightModule.attr("DirectionalLightDiffuseG").cast<double>();
-        DiffuseB = DirectionalLightModule.attr("DirectionalLightDiffuseB").cast<double>();
-        DirectionalLight->Diffuse = glm::vec3(DiffuseR, DiffuseG, DiffuseB);
+        ColorR = DirectionalLightModule.attr("DirectionalLightColorR").cast<double>();
+        ColorG = DirectionalLightModule.attr("DirectionalLightColorG").cast<double>();
+        ColorB = DirectionalLightModule.attr("DirectionalLightColorB").cast<double>();
+        DirectionalLight->Color = glm::vec3(ColorR, ColorG, ColorB);
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("DirectionalLight Diffuse CAST_ERROR");
+        ErrorMessageString->push_back("DirectionalLight Color CAST_ERROR");
     }
 
-    try {
-        SpecularR = DirectionalLightModule.attr("DirectionalLightSpecularR").cast<double>();
-        SpecularG = DirectionalLightModule.attr("DirectionalLightSpecularG").cast<double>();
-        SpecularB = DirectionalLightModule.attr("DirectionalLightSpecularB").cast<double>();
-        DirectionalLight->Specular = glm::vec3(SpecularR, SpecularG, SpecularB);
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("DirectionalLight Specular CAST_ERROR");
-    }
-
-    try {
-        AmbientR = DirectionalLightModule.attr("DirectionalLightAmbientR").cast<double>();
-        AmbientG = DirectionalLightModule.attr("DirectionalLightAmbientG").cast<double>();
-        AmbientB = DirectionalLightModule.attr("DirectionalLightAmbientB").cast<double>();
-        DirectionalLight->Ambient = glm::vec3(AmbientR, AmbientG, AmbientB);
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("DirectionalLight Ambient CAST_ERROR");
-    }
 
     // Return Status
     return true;
@@ -497,21 +438,11 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     SpotLightModule.attr("SpotLightRotY") = SpotLight->Rot.y;
     SpotLightModule.attr("SpotLightRotZ") = SpotLight->Rot.z;
 
-    SpotLightModule.attr("SpotLightDiffuseR") = SpotLight->Diffuse.r;
-    SpotLightModule.attr("SpotLightDiffuseG") = SpotLight->Diffuse.g;
-    SpotLightModule.attr("SpotLightDiffuseB") = SpotLight->Diffuse.b;
+    SpotLightModule.attr("SpotLightColorR") = SpotLight->Color.r;
+    SpotLightModule.attr("SpotLightColorG") = SpotLight->Color.g;
+    SpotLightModule.attr("SpotLightColorB") = SpotLight->Color.b;
     
-    SpotLightModule.attr("SpotLightSpecularR") = SpotLight->Specular.r;
-    SpotLightModule.attr("SpotLightSpecularG") = SpotLight->Specular.g;
-    SpotLightModule.attr("SpotLightSpecularB") = SpotLight->Specular.b;
-
-    SpotLightModule.attr("SpotLightAmbientR") = SpotLight->Ambient.r;
-    SpotLightModule.attr("SpotLightAmbientG") = SpotLight->Ambient.g;
-    SpotLightModule.attr("SpotLightAmbientB") = SpotLight->Ambient.b;
-    
-    SpotLightModule.attr("SpotLightRolloffConstant") = SpotLight->RolloffConstant;
-    SpotLightModule.attr("SpotLightRolloffLinear") = SpotLight->RolloffLinear;
-    SpotLightModule.attr("SpotLightRolloffQuadratic") = SpotLight->RolloffQuadratic;
+    SpotLightModule.attr("SpotLightIntensity") = SpotLight->Intensity;
     
     SpotLightModule.attr("SpotLightCutoff") = SpotLight->CutOff;
     SpotLightModule.attr("SpotLightOuterCutoff") = SpotLight->OuterCutOff;
@@ -586,9 +517,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     // Write Back SpotLight Data
     double SpotLightPosX, SpotLightPosY, SpotLightPosZ;
     double SpotLightRotX, SpotLightRotY, SpotLightRotZ;
-    float DiffuseR, DiffuseG, DiffuseB;
-    float SpecularR, SpecularG, SpecularB;
-    float AmbientR, AmbientG, AmbientB;
+    float ColorR, ColorG, ColorB;
 
     try {
         SpotLightPosX = SpotLightModule.attr("SpotLightPosX").cast<double>();
@@ -609,38 +538,18 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     }
 
     try {
-        DiffuseR = SpotLightModule.attr("SpotLightDiffuseR").cast<double>();
-        DiffuseG = SpotLightModule.attr("SpotLightDiffuseG").cast<double>();
-        DiffuseB = SpotLightModule.attr("SpotLightDiffuseB").cast<double>();
-        SpotLight->Diffuse = glm::vec3(DiffuseR, DiffuseG, DiffuseB);
+        ColorR = SpotLightModule.attr("SpotLightColorR").cast<double>();
+        ColorG = SpotLightModule.attr("SpotLightColorG").cast<double>();
+        ColorB = SpotLightModule.attr("SpotLightColorB").cast<double>();
+        SpotLight->Color = glm::vec3(ColorR, ColorG, ColorB);
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("SpotLight Diffuse CAST_ERROR");
+        ErrorMessageString->push_back("SpotLight Color CAST_ERROR");
     }
 
     try {
-        SpecularR = SpotLightModule.attr("SpotLightSpecularR").cast<double>();
-        SpecularG = SpotLightModule.attr("SpotLightSpecularG").cast<double>();
-        SpecularB = SpotLightModule.attr("SpotLightSpecularB").cast<double>();
-        SpotLight->Specular = glm::vec3(SpecularR, SpecularG, SpecularB);
+        SpotLight->Intensity = SpotLightModule.attr("SpotLightIntensity").cast<float>();
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("SpotLight Specular CAST_ERROR");
-    }
-
-    try {
-        AmbientR = SpotLightModule.attr("SpotLightAmbientR").cast<double>();
-        AmbientG = SpotLightModule.attr("SpotLightAmbientG").cast<double>();
-        AmbientB = SpotLightModule.attr("SpotLightAmbientB").cast<double>();
-        SpotLight->Ambient = glm::vec3(AmbientR, AmbientG, AmbientB);
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("SpotLight Ambient CAST_ERROR");
-    }
-
-    try {
-        SpotLight->RolloffConstant = SpotLightModule.attr("SpotLightRolloffConstant").cast<float>();
-        SpotLight->RolloffLinear = SpotLightModule.attr("SpotLightRolloffLinear").cast<float>();
-        SpotLight->RolloffQuadratic = SpotLightModule.attr("SpotLightRolloffQuadratic").cast<float>();
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("SpotLight Rolloff CAST_ERROR");
+        ErrorMessageString->push_back("SpotLight Intensity CAST_ERROR");
     }
 
 

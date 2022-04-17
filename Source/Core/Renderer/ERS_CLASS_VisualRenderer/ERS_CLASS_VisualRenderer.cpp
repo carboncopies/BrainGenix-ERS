@@ -544,7 +544,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     Viewport->ShaderIndex = DefaultShader_;
     Viewport->Camera = std::make_unique<ERS_STRUCT_Camera>();
     Viewport->Grid = std::make_unique<ERS_CLASS_Grid>(SystemUtils_, Shaders_[FindShaderIndex(std::string("_Grid"))]);
-    Viewport->LightIconRenderer = std::make_unique<ERS_CLASS_LightIconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[FindShaderIndex(std::string("LightIcon"))]); //Set TO Shader 19 For Billboard Shader, Temp. Disabled As It Doesn't Work ATM
+    Viewport->LightIconRenderer = std::make_unique<ERS_CLASS_LightIconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[FindShaderIndex(std::string("_LightIcon"))]); //Set TO Shader 19 For Billboard Shader, Temp. Disabled As It Doesn't Work ATM
     Viewport->Name = ViewportName;
     
     Viewport->Width = 1;
@@ -672,9 +672,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         
         ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ActiveScene->DirectionalLights[i]->Rot);
 
-        ActiveShader->SetVec3((UniformName + std::string(".Ambient")).c_str(), ActiveScene->DirectionalLights[i]->Ambient);
-        ActiveShader->SetVec3((UniformName + std::string(".Diffuse")).c_str(), ActiveScene->DirectionalLights[i]->Diffuse);
-        ActiveShader->SetVec3((UniformName + std::string(".Specular")).c_str(), ActiveScene->DirectionalLights[i]->Specular);
+        ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->DirectionalLights[i]->Color);
     
     }
 
@@ -687,13 +685,9 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
         ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->PointLights[i]->Pos);
 
-        ActiveShader->SetFloat((UniformName + std::string(".ConstantRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffConstant);
-        ActiveShader->SetFloat((UniformName + std::string(".LinearRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffLinear);
-        ActiveShader->SetFloat((UniformName + std::string(".QuadraticRolloff")).c_str(), ActiveScene->PointLights[i]->RolloffQuadratic);
+        ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->PointLights[i]->Intensity);
 
-        ActiveShader->SetVec3((UniformName + std::string(".Ambient")).c_str(), ActiveScene->PointLights[i]->Ambient);
-        ActiveShader->SetVec3((UniformName + std::string(".Diffuse")).c_str(), ActiveScene->PointLights[i]->Diffuse);
-        ActiveShader->SetVec3((UniformName + std::string(".Specular")).c_str(), ActiveScene->PointLights[i]->Specular);
+        ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->PointLights[i]->Color);
     
     }
 
@@ -708,16 +702,12 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->SpotLights[i]->Pos);
         ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ActiveScene->SpotLights[i]->Rot);
 
-        ActiveShader->SetFloat((UniformName + std::string(".ConstantRolloff")).c_str(), ActiveScene->SpotLights[i]->RolloffConstant);
-        ActiveShader->SetFloat((UniformName + std::string(".LinearRolloff")).c_str(), ActiveScene->SpotLights[i]->RolloffLinear);
-        ActiveShader->SetFloat((UniformName + std::string(".QuadraticRolloff")).c_str(), ActiveScene->SpotLights[i]->RolloffQuadratic);
+        ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->SpotLights[i]->Intensity);
 
         ActiveShader->SetFloat((UniformName + std::string(".CutOff")).c_str(), ActiveScene->SpotLights[i]->CutOff);
         ActiveShader->SetFloat((UniformName + std::string(".OuterCutOff")).c_str(), ActiveScene->SpotLights[i]->OuterCutOff);
 
-        ActiveShader->SetVec3((UniformName + std::string(".Ambient")).c_str(), ActiveScene->SpotLights[i]->Ambient);
-        ActiveShader->SetVec3((UniformName + std::string(".Diffuse")).c_str(), ActiveScene->SpotLights[i]->Diffuse);
-        ActiveShader->SetVec3((UniformName + std::string(".Specular")).c_str(), ActiveScene->SpotLights[i]->Specular);
+        ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->SpotLights[i]->Color);
 
     }
 

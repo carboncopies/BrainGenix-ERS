@@ -108,18 +108,9 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "AssetType" << YAML::Value << "DirectionalLight";
 
 
-        Output << YAML::Key << "AmbientRed" << YAML::Value << InputScene->DirectionalLights[i]->Ambient[0];
-        Output << YAML::Key << "AmbientGreen" << YAML::Value << InputScene->DirectionalLights[i]->Ambient[1];
-        Output << YAML::Key << "AmbientBlue" << YAML::Value << InputScene->DirectionalLights[i]->Ambient[2];
-        
-        Output << YAML::Key << "DiffuseRed" << YAML::Value << InputScene->DirectionalLights[i]->Diffuse[0];
-        Output << YAML::Key << "DiffuseGreen" << YAML::Value << InputScene->DirectionalLights[i]->Diffuse[1];
-        Output << YAML::Key << "DiffuseBlue" << YAML::Value << InputScene->DirectionalLights[i]->Diffuse[2];
-
-        Output << YAML::Key << "SpecularRed" << YAML::Value << InputScene->DirectionalLights[i]->Specular[0];
-        Output << YAML::Key << "SpecularGreen" << YAML::Value << InputScene->DirectionalLights[i]->Specular[1];
-        Output << YAML::Key << "SpecularBlue" << YAML::Value << InputScene->DirectionalLights[i]->Specular[2];
-
+        Output << YAML::Key << "ColorRed" << YAML::Value << InputScene->DirectionalLights[i]->Color[0];
+        Output << YAML::Key << "ColorGreen" << YAML::Value << InputScene->DirectionalLights[i]->Color[1];
+        Output << YAML::Key << "ColorBlue" << YAML::Value << InputScene->DirectionalLights[i]->Color[2];
 
         Output << YAML::Key << "PosX" << YAML::Value << InputScene->DirectionalLights[i]->Pos[0];
         Output << YAML::Key << "PosY" << YAML::Value << InputScene->DirectionalLights[i]->Pos[1];
@@ -152,17 +143,10 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "AssetType" << YAML::Value << "PointLight";
 
 
-        Output << YAML::Key << "AmbientRed" << YAML::Value << InputScene->PointLights[i]->Ambient[0];
-        Output << YAML::Key << "AmbientGreen" << YAML::Value << InputScene->PointLights[i]->Ambient[1];
-        Output << YAML::Key << "AmbientBlue" << YAML::Value << InputScene->PointLights[i]->Ambient[2];
-        
-        Output << YAML::Key << "DiffuseRed" << YAML::Value << InputScene->PointLights[i]->Diffuse[0];
-        Output << YAML::Key << "DiffuseGreen" << YAML::Value << InputScene->PointLights[i]->Diffuse[1];
-        Output << YAML::Key << "DiffuseBlue" << YAML::Value << InputScene->PointLights[i]->Diffuse[2];
+        Output << YAML::Key << "ColorRed" << YAML::Value << InputScene->PointLights[i]->Color[0];
+        Output << YAML::Key << "ColorGreen" << YAML::Value << InputScene->PointLights[i]->Color[1];
+        Output << YAML::Key << "ColorBlue" << YAML::Value << InputScene->PointLights[i]->Color[2];
 
-        Output << YAML::Key << "SpecularRed" << YAML::Value << InputScene->PointLights[i]->Specular[0];
-        Output << YAML::Key << "SpecularGreen" << YAML::Value << InputScene->PointLights[i]->Specular[1];
-        Output << YAML::Key << "SpecularBlue" << YAML::Value << InputScene->PointLights[i]->Specular[2];
 
 
         Output << YAML::Key << "PosX" << YAML::Value << InputScene->PointLights[i]->Pos[0];
@@ -170,9 +154,7 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "PosZ" << YAML::Value << InputScene->PointLights[i]->Pos[2];
 
 
-        Output << YAML::Key << "RolloffConstant" << YAML::Value << InputScene->PointLights[i]->RolloffConstant;
-        Output << YAML::Key << "RolloffLinear" << YAML::Value << InputScene->PointLights[i]->RolloffLinear;
-        Output << YAML::Key << "RolloffQuadratic" << YAML::Value << InputScene->PointLights[i]->RolloffQuadratic;
+        Output << YAML::Key << "Intensity" << YAML::Value << InputScene->PointLights[i]->Intensity;
 
 
         Output<<YAML::Key<<"AttachedScripts";
@@ -198,17 +180,9 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "AssetType" << YAML::Value << "SpotLight";
 
 
-        Output << YAML::Key << "AmbientRed" << YAML::Value << InputScene->SpotLights[i]->Ambient[0];
-        Output << YAML::Key << "AmbientGreen" << YAML::Value << InputScene->SpotLights[i]->Ambient[1];
-        Output << YAML::Key << "AmbientBlue" << YAML::Value << InputScene->SpotLights[i]->Ambient[2];
-        
-        Output << YAML::Key << "DiffuseRed" << YAML::Value << InputScene->SpotLights[i]->Diffuse[0];
-        Output << YAML::Key << "DiffuseGreen" << YAML::Value << InputScene->SpotLights[i]->Diffuse[1];
-        Output << YAML::Key << "DiffuseBlue" << YAML::Value << InputScene->SpotLights[i]->Diffuse[2];
-
-        Output << YAML::Key << "SpecularRed" << YAML::Value << InputScene->SpotLights[i]->Specular[0];
-        Output << YAML::Key << "SpecularGreen" << YAML::Value << InputScene->SpotLights[i]->Specular[1];
-        Output << YAML::Key << "SpecularBlue" << YAML::Value << InputScene->SpotLights[i]->Specular[2];
+        Output << YAML::Key << "ColorRed" << YAML::Value << InputScene->SpotLights[i]->Color[0];
+        Output << YAML::Key << "ColorGreen" << YAML::Value << InputScene->SpotLights[i]->Color[1];
+        Output << YAML::Key << "ColorBlue" << YAML::Value << InputScene->SpotLights[i]->Color[2];
 
 
         Output << YAML::Key << "PosX" << YAML::Value << InputScene->SpotLights[i]->Pos[0];
@@ -220,9 +194,7 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "RotZ" << YAML::Value << InputScene->SpotLights[i]->Rot[2];
 
 
-        Output << YAML::Key << "RolloffConstant" << YAML::Value << InputScene->SpotLights[i]->RolloffConstant;
-        Output << YAML::Key << "RolloffLinear" << YAML::Value << InputScene->SpotLights[i]->RolloffLinear;
-        Output << YAML::Key << "RolloffQuadratic" << YAML::Value << InputScene->SpotLights[i]->RolloffQuadratic;
+        Output << YAML::Key << "Intensity" << YAML::Value << InputScene->SpotLights[i]->Intensity;
 
         Output << YAML::Key << "CutOff" << YAML::Value << InputScene->SpotLights[i]->CutOff;
         Output << YAML::Key << "OuterCutOff" << YAML::Value << InputScene->SpotLights[i]->OuterCutOff;

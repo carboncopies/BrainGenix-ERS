@@ -47,35 +47,18 @@ void Widget_ObjectProperties::Draw() {
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
                     if (ImGui::CollapsingHeader("Point Light Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
 
-                        float DiffuseColor[3];
-                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse, DiffuseColor);
-                        ImGui::ColorEdit3("Diffuse", DiffuseColor);
+                        float Color[3];
+                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Color, Color);
+                        ImGui::ColorEdit3("Color", Color);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Controls the main color of the light.");
-                        FloatToVec(DiffuseColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Diffuse);
-                        float AmbientColor[3];
-                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Ambient, AmbientColor);
-                        ImGui::ColorEdit3("Ambient", AmbientColor);
-                        ImGui::SameLine();
-                        ImGui::HelpMarker("Controls any additions to the ambient color of the environment. Generally, you shouldn't do this with a point light, use a directional light whenever possible instead.");
-                        FloatToVec(AmbientColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Ambient);
-                        float SpecularColor[3];
-                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Specular, SpecularColor);
-                        ImGui::ColorEdit3("Specular", SpecularColor);
-                        ImGui::SameLine();
-                        ImGui::HelpMarker("Controls the color of the reflection.");
-                        FloatToVec(SpecularColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Specular);
-                        ImGui::Separator();
+                        FloatToVec(Color, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Color);
+  
 
-                        ImGui::DragFloat("Rolloff Constant", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffConstant, 0.01f);
+                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Intensity, 0.01f);
                         ImGui::SameLine();
-                        ImGui::HelpMarker("Sets the constant offset controlling lamp attenuation over distance. If you're trying to make the rolloff sharper, try linear or quadratic.");
-                        ImGui::DragFloat("Rolloff Linear", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffLinear, 0.01f);
-                        ImGui::SameLine();
-                        ImGui::HelpMarker("Component of rolloff proportional to distance from light to object. E.g. twice the distance means half the brightness.");
-                        ImGui::DragFloat("Rolloff Quadratic", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffQuadratic, 0.01f);
-                        ImGui::SameLine();
-                        ImGui::HelpMarker("Exponential component of rolloff. Increasing this, makes the rolloff much sharper. For a linear rolloff, use the 'Rolloff Linear' value.");
+                        ImGui::HelpMarker("Sets the brightness of the light source, increase this for a brighter light.");
+
 
                     }
 
@@ -84,25 +67,13 @@ void Widget_ObjectProperties::Draw() {
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
                     if (ImGui::CollapsingHeader("Directional Light Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
 
-                        float DiffuseColor[3];
-                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Diffuse, DiffuseColor);
-                        ImGui::ColorEdit3("Diffuse", DiffuseColor);
+                        float Color[3];
+                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Color, Color);
+                        ImGui::ColorEdit3("Color", Color);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Controls the main color of the light.");
-                        FloatToVec(DiffuseColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Diffuse);
-                        float AmbientColor[3];
-                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Ambient, AmbientColor);
-                        ImGui::ColorEdit3("Ambient", AmbientColor);
-                        ImGui::SameLine();
-                        ImGui::HelpMarker("Controls any additions to the ambient color of the environment.");
-                        FloatToVec(AmbientColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Ambient);
-                        float SpecularColor[3];
-                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Specular, SpecularColor);
-                        ImGui::ColorEdit3("Specular", SpecularColor);
-                        ImGui::SameLine();
-                        ImGui::HelpMarker("Controls the color of the reflection. Generally, you shouldn't do this with a directional light, use a spot or point light instead.");
-                        FloatToVec(SpecularColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Specular);
-                        ImGui::Separator();
+                        FloatToVec(Color, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Color);
+
 
                     }
 
@@ -111,36 +82,18 @@ void Widget_ObjectProperties::Draw() {
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
                     if (ImGui::CollapsingHeader("Spot Light Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
 
-                        float DiffuseColor[3];
-                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Diffuse, DiffuseColor);
-                        ImGui::ColorEdit3("Diffuse", DiffuseColor);
+                        float Color[3];
+                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Color, Color);
+                        ImGui::ColorEdit3("Color", Color);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Controls the main color of the light.");
-                        FloatToVec(DiffuseColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Diffuse);
-                        float AmbientColor[3];
-                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Ambient, AmbientColor);
-                        ImGui::ColorEdit3("Ambient", AmbientColor);
-                        ImGui::SameLine();
-                        ImGui::HelpMarker("Controls any additions to the ambient color of the environment. Generally, you shouldn't do this with a spot light, use a directional light whenever possible instead.");
-                        FloatToVec(AmbientColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Ambient);
-                        float SpecularColor[3];
-                        VecToFloat(&SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Specular, SpecularColor);
-                        ImGui::ColorEdit3("Specular", SpecularColor);
-                        ImGui::SameLine();
-                        ImGui::HelpMarker("Controls the color of the reflection.");
-                        FloatToVec(SpecularColor, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Specular);
-                        ImGui::Separator();
+                        FloatToVec(Color, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Color);
 
-                        ImGui::DragFloat("Rolloff Constant", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->RolloffConstant, 0.01f);
+
+                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Intensity, 0.01f);
                         ImGui::SameLine();
-                        ImGui::HelpMarker("Sets the constant offset controlling lamp attenuation over distance. If you're trying to make the rolloff sharper, try linear or quadratic.");
-                        ImGui::DragFloat("Rolloff Linear", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->RolloffLinear, 0.01f);
-                        ImGui::SameLine();
-                        ImGui::HelpMarker("Component of rolloff proportional to distance from light to object. E.g. twice the distance means half the brightness.");
-                        ImGui::DragFloat("Rolloff Quadratic", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->RolloffQuadratic, 0.01f);
-                        ImGui::SameLine();
-                        ImGui::HelpMarker("Exponential component of rolloff. Increasing this, makes the rolloff much sharper. For a linear rolloff, use the 'Rolloff Linear' value.");
-                        ImGui::Separator();
+                        ImGui::HelpMarker("Sets the brightness of the light source, increase this for a brighter light.");
+
 
                         ImGui::DragFloat("Cutoff", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->CutOff, 0.01f);
                         ImGui::SameLine();
