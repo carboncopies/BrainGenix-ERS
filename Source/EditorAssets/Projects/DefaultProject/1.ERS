@@ -87,14 +87,10 @@ ShaderPrograms:
     VertexID: 10034
     FragmentID: 10035
   18:
-    Name: Viewport_Old
-    VertexID: 10036
-    FragmentID: 10037
-  19:
     Name: Viewport
     VertexID: 10040
     FragmentID: 10041
-  20:
+  19:
     Name: _LightIcon
     VertexID: 10038
     FragmentID: 10039
