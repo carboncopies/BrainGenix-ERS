@@ -117,7 +117,7 @@ uniform bool HasSpecular;
 uniform int NumberDirectionalLights;
 uniform int NumberPointLights;
 uniform int NumberSpotLights;
-uniform STRUCT_DirectionalLight DirectionalLight;
+uniform STRUCT_DirectionalLight DirectionalLight[1];
 uniform STRUCT_PointLight PointLights[128];
 uniform STRUCT_SpotLight SpotLights[96];
 
@@ -490,7 +490,7 @@ void main() {
 
     // Calculate Directional Lights
     for (int i = 0; i < NumberDirectionalLights; i++) {
-        Lo += vec4(PBRDirectionalLight(DirectionalLight, ViewDir, Reflectance, Model), 1.0f);
+        Lo += vec4(PBRDirectionalLight(DirectionalLight[i], ViewDir, Reflectance, Model), 1.0f);
     }
 
     // Calculate Point Lights
@@ -522,6 +522,7 @@ void main() {
         FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
 }
+
 
 
 
