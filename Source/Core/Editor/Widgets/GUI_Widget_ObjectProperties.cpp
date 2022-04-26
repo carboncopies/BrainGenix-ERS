@@ -75,6 +75,11 @@ void Widget_ObjectProperties::Draw() {
                         FloatToVec(Color, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Color);
 
 
+                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Intensity, 0.01f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Sets the brightness of the light source, increase this for a brighter light.");
+
+
                     }
 
                 } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("SpotLight")) {

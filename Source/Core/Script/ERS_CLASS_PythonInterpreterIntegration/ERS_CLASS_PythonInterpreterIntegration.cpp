@@ -315,7 +315,8 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     DirectionalLightModule.attr("DirectionalLightColorR") = DirectionalLight->Color.r;
     DirectionalLightModule.attr("DirectionalLightColorG") = DirectionalLight->Color.g;
     DirectionalLightModule.attr("DirectionalLightColorB") = DirectionalLight->Color.b;
-    
+
+    DirectionalLightModule.attr("DirectionalLightIntensity") = DirectionalLight->Intensity;    
 
     // Get Local Dict
     pybind11::dict Locals = DirectionalLightModule.attr("__dict__");
@@ -413,6 +414,13 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
         DirectionalLight->Color = glm::vec3(ColorR, ColorG, ColorB);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("DirectionalLight Color CAST_ERROR");
+    }
+
+
+    try {
+        DirectionalLight->Intensity = DirectionalLightModule.attr("DirectionalLightIntensity").cast<float>();
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("DirectionalLight Intensity CAST_ERROR");
     }
 
 
