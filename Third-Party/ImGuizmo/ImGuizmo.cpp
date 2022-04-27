@@ -987,7 +987,7 @@ namespace ImGuizmo
       if (mode == LOCAL)
       {
          gContext.mModel = *(matrix_t*)matrix;
-         gContext.mModel.OrthoNormalize();
+         //gContext.mModel.OrthoNormalize();
       }
       else
       {
