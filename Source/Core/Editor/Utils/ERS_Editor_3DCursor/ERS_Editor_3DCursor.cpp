@@ -93,8 +93,7 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
         float TmpTranslation[3];
         float TmpRotation[3];
         float TmpScale[3];
-        //ImGuizmo::DecomposeMatrixToComponents(TmpMatrix, TmpTranslation, TmpRotation, TmpScale);
-        ImGuizmo::RecomposeMatrixFromComponents(TmpMatrix, TmpTranslation, TmpRotation, TmpScale);
+        ImGuizmo::DecomposeMatrixToComponents(TmpMatrix, TmpTranslation, TmpRotation, TmpScale);
 
         if (CurrentGizmoOperation_ == ImGuizmo::OPERATION::TRANSLATE) {
             Pos_ = glm::vec3(TmpTranslation[0], TmpTranslation[1], TmpTranslation[2]);
