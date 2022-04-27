@@ -57,6 +57,14 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
         } else if (ImGui::IsKeyPressed(83) && EnableScale_) {
             CurrentGizmoOperation_ = ImGuizmo::SCALE;
         }
+    
+        // World / Local Space
+        if (ImGui::IsKeyPressed(81)) { // User Pressed 'Q' Key
+            GizmoMode_ = ImGuizmo::MODE::WORLD;
+        } else if (ImGui::IsKeyPressed(69)) { // User Pressed 'E' Key
+            GizmoMode_ = ImGuizmo::MODE::LOCAL;
+        }
+    
     }
 
     float WindowWidth = (float)ImGui::GetWindowWidth();
