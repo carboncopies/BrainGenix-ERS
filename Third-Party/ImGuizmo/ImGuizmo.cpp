@@ -987,7 +987,7 @@ namespace ImGuizmo
       if (mode == LOCAL)
       {
          gContext.mModel = *(matrix_t*)matrix;
-         //gContext.mModel.OrthoNormalize();
+         gContext.mModel.OrthoNormalize();
       }
       else
       {
@@ -2169,9 +2169,7 @@ namespace ImGuizmo
          {
             
             //*(matrix_t*)matrix = scaleOrigin * deltaRotation * TrueGizmoRotation;
-            matrix_t TrueGizmoMatrix = *(matrix_t*)TrueGizmoRotation;
-            TrueGizmoMatrix.OrthoNormalize();
-            *(matrix_t*)matrix = scaleOrigin * deltaRotation * TrueGizmoMatrix;
+            *(matrix_t*)matrix = scaleOrigin * deltaRotation * *(matrix_t*)TrueGizmoRotation;
 
          }
          else
