@@ -106,20 +106,6 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     }
 
 
-    //ImGuizmo::DecomposeMatrixToComponents(Matrix_[16], ObjectTranslation_, ObjectRotation_, ObjectScale_);
-    //ImGui::InputFloat3("Translate", ObjectTranslation_);
-    //ImGui::InputFloat3("Rotate", ObjectRotation_);
-    //ImGui::InputFloat3("Scale", ObjectScale_);
-    //ImGuizmo::RecomposeMatrixFromComponents(ObjectTranslation_, ObjectRotation_, ObjectScale_, Matrix_[16]);
-
-
-
-
-
-
-
-
-
 }
 
 
