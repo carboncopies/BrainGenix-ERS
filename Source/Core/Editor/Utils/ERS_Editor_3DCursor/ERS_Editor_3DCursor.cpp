@@ -80,7 +80,7 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     // Identity matrix?
     // https://www.mathworks.com/help/fusion/ref/quaternion.transpose.html
 
-    // If Using Gizmo
+    // If Using Gizmo, Update Object LocRotScale
     if (ImGuizmo::IsUsing()) {
         
         float TmpTranslation[3];
