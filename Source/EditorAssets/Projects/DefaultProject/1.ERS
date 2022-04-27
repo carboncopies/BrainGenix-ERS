@@ -12,7 +12,7 @@ DefaultScene: 0
 EditorLayouts:
   0: 2
 DefaultLayout: 0
-DefaultShaderProgram: 18
+DefaultShaderProgram: 9
 ShaderPrograms:
   0:
     Name: _Grid
