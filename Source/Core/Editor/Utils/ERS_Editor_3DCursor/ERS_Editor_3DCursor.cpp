@@ -69,6 +69,13 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     }
 
 
+    /*
+    NOTE:
+    The variables Pos_, Rot_, and Scale_ are the object's loc rot and scale.
+    We use GLM internally, however they're converted to float* for ImGuizmo and back at the end.
+    */
+
+
     // Set Gizmo LocRotScale To Object LocRotScale
     float TmpMatrix[16];
     ImGuizmo::RecomposeMatrixFromComponents((float*)glm::value_ptr(Pos_), (float*)glm::value_ptr(Rot_), (float*)glm::value_ptr(Scale_), TmpMatrix);
