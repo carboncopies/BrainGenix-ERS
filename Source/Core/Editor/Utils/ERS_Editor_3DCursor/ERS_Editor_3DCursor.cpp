@@ -78,7 +78,8 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
 
     // Set Gizmo LocRotScale To Object LocRotScale
     float TmpMatrix[16];
-    ImGuizmo::RecomposeMatrixFromComponents((float*)glm::value_ptr(Pos_), (float*)glm::value_ptr(Rot_), (float*)glm::value_ptr(Scale_), TmpMatrix);
+    glm::vec3 SwizzledRot = vec3(Rot_[2], Rot_[1], Rot_[0])
+    ImGuizmo::RecomposeMatrixFromComponents((float*)glm::value_ptr(Pos_), (float*)glm::value_ptr(SwizzledRot), (float*)glm::value_ptr(Scale_), TmpMatrix);
 
 
     // Only Draw When ShowCursor Is True, Otherwise Don't Draw
@@ -98,7 +99,7 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
         if (CurrentGizmoOperation_ == ImGuizmo::OPERATION::TRANSLATE) {
             Pos_ = glm::vec3(TmpTranslation[0], TmpTranslation[1], TmpTranslation[2]);
         } else if (CurrentGizmoOperation_ == ImGuizmo::OPERATION::ROTATE) {
-            Rot_ = glm::vec3(TmpRotation[0], TmpRotation[2], TmpRotation[1]);
+            Rot_ = glm::vec3(TmpRotation[2], TmpRotation[1], TmpRotation[0]);
         } else if (CurrentGizmoOperation_ == ImGuizmo::OPERATION::SCALE) {
             Scale_ = glm::vec3(TmpScale[0], TmpScale[1], TmpScale[2]);
         }
