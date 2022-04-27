@@ -23,9 +23,8 @@ struct STRUCT_DirectionalLight {
     vec3 Direction;
 
     // Light Color Parameters
-    vec3 Ambient;
-    vec3 Diffuse;
-    vec3 Specular;
+    vec3 Color;
+    float Intensity;
 
 };
 
@@ -118,9 +117,9 @@ uniform bool HasSpecular;
 uniform int NumberDirectionalLights;
 uniform int NumberPointLights;
 uniform int NumberSpotLights;
-uniform STRUCT_DirectionalLight DirectionalLights[4];
-uniform STRUCT_PointLight PointLights[32];
-uniform STRUCT_SpotLight SpotLights[16];
+uniform STRUCT_DirectionalLight DirectionalLights[1];
+uniform STRUCT_PointLight PointLights[128];
+uniform STRUCT_SpotLight SpotLights[96];
 
 
 // Gamma Correction Info
@@ -430,7 +429,48 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
 }
 
 
+vec3 PBRDirectionalLight(STRUCT_DirectionalLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT_SampledData Model) {
+    
+    vec3 LightDirectionVector = normalize(-Light.Direction);
+    vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Model.Normal);
 
+    // Diffuse/Specular Components
+    float Diffuse = max(dot(Model.Normal, LightDirectionVector), 0.0f);
+    float Specular = pow(max(dot(ViewDir, ReflectionDirectionVector), 0.0f), Shinyness);
+
+        // calculate per-light radiance
+        vec3 L = normalize(Light.Direction);
+        vec3 H = normalize(ViewDir + L);
+        vec3 radiance = Light.Color * Light.Intensity;
+
+        // Cook-Torrance BRDF
+        float NDF = DistributionGGX(Model.Normal, H, Model.Roughness);   
+        float G   = GeometrySmith(Model.Normal, ViewDir, L, Model.Roughness);      
+        vec3 F    = FresnelSchlick(max(dot(H, ViewDir), 0.0), Reflectance);
+           
+        vec3 numerator    = NDF * G * F; 
+        float denominator = 4.0 * max(dot(Model.Normal, ViewDir), 0.0) * max(dot(Model.Normal, L), 0.0) + 0.0001; // + 0.0001 to prevent divide by zero
+        vec3 specular = numerator / denominator;
+        
+        // kS is equal to Fresnel
+        vec3 kS = F;
+        // for energy conservation, the diffuse and specular light can't
+        // be above 1.0 (unless the surface emits light); to preserve this
+        // relationship the diffuse component (kD) should equal 1.0 - kS.
+        vec3 kD = vec3(1.0) - kS;
+        // multiply kD by the inverse metalness such that only non-metals 
+        // have diffuse lighting, or a linear blend if partly metal (pure metals
+        // have no diffuse light).
+        kD *= 1.0 - Model.Metallic;	  
+
+        // scale light by NdotL
+        float NdotL = max(dot(Model.Normal, L), 0.0);        
+
+        // add to outgoing radiance Lo
+        return (kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL;  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
+
+
+}
 
 
 void main() {
@@ -447,6 +487,11 @@ void main() {
 
     // ---- Calculate Lighting Contributions ---- //
     vec4 Lo = vec4(0.0f);
+
+    // Calculate Directional Lights
+    for (int i = 0; i < NumberDirectionalLights; i++) {
+        Lo += vec4(PBRDirectionalLight(DirectionalLights[i], ViewDir, Reflectance, Model), 1.0f);
+    }
 
     // Calculate Point Lights
     for (int i = 0; i < NumberPointLights; i++) {
@@ -477,6 +522,9 @@ void main() {
         FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
 }
+
+
+
 
 
 

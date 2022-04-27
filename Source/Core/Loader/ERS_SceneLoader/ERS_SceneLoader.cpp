@@ -130,6 +130,9 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                     );
             }
 
+            if (SceneDataNode[i]["Intensity"]) {
+                Scene.DirectionalLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
+            }
 
             Scene.DirectionalLights[LightIndex]->Pos = glm::vec3(
                 SceneDataNode[i]["PosX"].as<float>(),
