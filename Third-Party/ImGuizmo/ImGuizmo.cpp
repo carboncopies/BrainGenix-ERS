@@ -2385,7 +2385,7 @@ namespace ImGuizmo
          {
             manipulated = HandleTranslation(matrix, deltaMatrix, operation, type, snap) ||
                           HandleScale(matrix, deltaMatrix, operation, type, snap) ||
-                          HandleRotation(matrix, deltaMatrix, operation, type, snap);
+                          HandleRotationGLM(matrix, deltaMatrix, TrueGizmoRotation, operation, type, snap);
          }
       }
 
