@@ -19,78 +19,39 @@ ShaderPrograms:
     VertexID: 10000
     FragmentID: 10001
   1:
-    Name: Ambient Texture Map
-    VertexID: 10002
-    FragmentID: 10003
+    Name: _LightIcon
+    VertexID: 10038
+    FragmentID: 10039
   2:
     Name: Ambient Occlusion Texture Map
     VertexID: 10004
     FragmentID: 10005
   3:
-    Name: Base Color Texture Map
-    VertexID: 10006
-    FragmentID: 10007
-  4:
     Name: Diffuse Texture Map
     VertexID: 10008
     FragmentID: 10009
-  5:
-    Name: Diffuse Roughness Texture Map
-    VertexID: 10010
-    FragmentID: 10011
-  6:
-    Name: Displacement Texture Map
-    VertexID: 10012
-    FragmentID: 10013
-  7:
-    Name: Emission Color Texture Map
-    VertexID: 10014
-    FragmentID: 10015
-  8:
+  4:
     Name: Emissive Texture Map
     VertexID: 10016
     FragmentID: 10017
-  9:
+  5:
     Name: Height Texture Map
     VertexID: 10018
     FragmentID: 10019
-  10:
-    Name: Lightmap Texture Map
-    VertexID: 10020
-    FragmentID: 10021
-  11:
-    Name: Metalness Texture Map
+  6:
+    Name: Metalic Texture Map
     VertexID: 10022
     FragmentID: 10023
-  12:
-    Name: Normal Camera Texture Map
-    VertexID: 10024
-    FragmentID: 10025
-  13:
+  7:
     Name: Normals Texture Map
     VertexID: 10026
     FragmentID: 10027
-  14:
-    Name: Opacity Texture Map
-    VertexID: 10028
-    FragmentID: 10029
-  15:
-    Name: Reflection Texture Map
-    VertexID: 10030
-    FragmentID: 10031
-  16:
+  8:
     Name: Shininess Texture Map
     VertexID: 10032
     FragmentID: 10033
-  17:
-    Name: Specular Texture Map
-    VertexID: 10034
-    FragmentID: 10035
-  18:
+  9:
     Name: Viewport
     VertexID: 10040
     FragmentID: 10041
-  19:
-    Name: _LightIcon
-    VertexID: 10038
-    FragmentID: 10039
+
