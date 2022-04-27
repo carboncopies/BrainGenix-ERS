@@ -76,6 +76,7 @@ private:
 
     ERS_STRUCT_Camera* Camera_; /**<Camera Object Pointer*/
     ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE; /**<Set Current Cursor Operation*/
+    ImGuizmo::MODE GizmoMode_ = ImGuizmo::WORLD; /**<Set Default Coordinate Space*/
 
     bool HasObjectChanged_ = false; /*<Indicate If Update Needed*/
     bool LastFrameActiveState_ = false; /*<If the cursor was being used in the last frame or not*/ 
