@@ -2360,7 +2360,7 @@ namespace ImGuizmo
    // Modified By ERS Team
    bool ManipulateGLM(const float* view, const float* projection, OPERATION operation, MODE mode, float* TrueGizmoRotation, float* matrix, float* deltaMatrix, const float* snap, const float* localBounds, const float* boundsSnap)
    {
-      ComputeContext(view, projection, matrix, mode);
+      ComputeContext(view, projection, TrueGizmoRotation, mode);
 
       // set delta to identity
       if (deltaMatrix)
@@ -2391,7 +2391,7 @@ namespace ImGuizmo
 
       if (localBounds && !gContext.mbUsing)
       {
-         HandleAndDrawLocalBounds(localBounds, (matrix_t*)matrix, boundsSnap, operation);
+         HandleAndDrawLocalBounds(localBounds, (matrix_t*)TrueGizmoRotation, boundsSnap, operation);
       }
 
       gContext.mOperation = operation;
