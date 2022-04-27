@@ -422,8 +422,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
 
-        // Update Selected Object
-        SceneManager->UpdateLocRotScale(Cursors3D_->Pos_, Cursors3D_->Rot_, Cursors3D_->Scale_);
+
 
         // Render
         //SceneManager->Render(OpenGLDefaults_, Shaders_[ShaderIndex]);
@@ -470,6 +469,12 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             Cursors3D_->Draw(Viewports_[Index]->Camera.get(), false, Viewports_[Index]->ShowCube, false);
 
         }
+
+
+
+        // Update Selected Object
+        SceneManager->UpdateLocRotScale(Cursors3D_->Pos_, Cursors3D_->Rot_, Cursors3D_->Scale_);
+
 
     }
 
