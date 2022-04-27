@@ -87,13 +87,13 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     // Set Gizmo LocRotScale To Object LocRotScale
     float TmpMatrix[16];
     float TrueGizmoRotation[16];
-    ImGuizmo::RecomposeMatrixFromComponents((float*)glm::value_ptr(Pos_), (float*)glm::value_ptr(glm::vec3(0)), (float*)glm::value_ptr(Scale_), TmpMatrix);
-    ImGuizmo::RecomposeMatrixFromComponents((float*)glm::value_ptr(Pos_), (float*)glm::value_ptr(glm::mod(Rot_, 360.0f)), (float*)glm::value_ptr(Scale_), TrueGizmoRotation);
+    ImGuizmo::RecomposeMatrixFromComponents((float*)glm::value_ptr(Pos_), (float*)glm::value_ptr(glm::vec3(0)), (float*)glm::value_ptr(Scale_), TrueGizmoRotation);
+    ImGuizmo::RecomposeMatrixFromComponents((float*)glm::value_ptr(Pos_), (float*)glm::value_ptr(Rot_), (float*)glm::value_ptr(Scale_), TmpMatrix);
 
     // Only Draw When ShowCursor Is True, Otherwise Don't Draw
     if (ShowCursor) {
 //        ImGuizmo::ManipulateGLM((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, GizmoMode_, TmpMatrix, TrueGizmoRotation);
-        ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, GizmoMode_, TrueGizmoRotation);
+        ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, GizmoMode_, TmpMatrix);
 
     }
 
