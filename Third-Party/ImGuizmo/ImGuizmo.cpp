@@ -2251,6 +2251,55 @@ namespace ImGuizmo
      gContext.mAllowAxisFlip = value;
    }
 
+
+   // Modified By ERS Team
+   bool ManipulateGLM(const float* view, const float* projection, OPERATION operation, MODE mode, float* TrueGizmoRotation, float* matrix, float* deltaMatrix, const float* snap, const float* localBounds, const float* boundsSnap)
+   {
+      ComputeContext(view, projection, matrix, mode);
+
+      // set delta to identity
+      if (deltaMatrix)
+      {
+         ((matrix_t*)deltaMatrix)->SetToIdentity();
+      }
+
+      // behind camera
+      vec_t camSpacePosition;
+      camSpacePosition.TransformPoint(makeVect(0.f, 0.f, 0.f), gContext.mMVP);
+      if (!gContext.mIsOrthographic && camSpacePosition.z < 0.001f)
+      {
+         return false;
+      }
+
+      // --
+      int type = MT_NONE;
+      bool manipulated = false;
+      if (gContext.mbEnable)
+      {
+         if (!gContext.mbUsingBounds)
+         {
+            manipulated = HandleTranslation(matrix, deltaMatrix, operation, type, snap) ||
+                          HandleScale(matrix, deltaMatrix, operation, type, snap) ||
+                          HandleRotation(matrix, deltaMatrix, operation, type, snap);
+         }
+      }
+
+      if (localBounds && !gContext.mbUsing)
+      {
+         HandleAndDrawLocalBounds(localBounds, (matrix_t*)matrix, boundsSnap, operation);
+      }
+
+      gContext.mOperation = operation;
+      if (!gContext.mbUsingBounds)
+      {
+         DrawRotationGizmo(operation, type);
+         DrawTranslationGizmo(operation, type);
+         DrawScaleGizmo(operation, type);
+      }
+      return manipulated;
+   }
+
+
    bool Manipulate(const float* view, const float* projection, OPERATION operation, MODE mode, float* matrix, float* deltaMatrix, const float* snap, const float* localBounds, const float* boundsSnap)
    {
       ComputeContext(view, projection, matrix, mode);
