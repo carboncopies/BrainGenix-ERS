@@ -1348,7 +1348,6 @@ namespace ImGuizmo
       }
    }
 
-
    static void DrawTranslationGizmo(OPERATION op, int type)
    {
       ImDrawList* drawList = gContext.mDrawList;
