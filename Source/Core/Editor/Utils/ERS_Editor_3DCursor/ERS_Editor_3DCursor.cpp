@@ -108,6 +108,7 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
             Pos_ = glm::vec3(TmpTranslation[0], TmpTranslation[1], TmpTranslation[2]);
         } else if (CurrentGizmoOperation_ == ImGuizmo::OPERATION::ROTATE) {
             Rot_ += glm::vec3(TmpRotation[0], TmpRotation[1], TmpRotation[2]);
+            Rot_ = glm::mod(Rot_, 360.0f);
         } else if (CurrentGizmoOperation_ == ImGuizmo::OPERATION::SCALE) {
             Scale_ = glm::vec3(TmpScale[0], TmpScale[1], TmpScale[2]);
         }
