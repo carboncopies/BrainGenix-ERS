@@ -106,7 +106,6 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
 
     }
 
-    std::cout<<glm::to_string(Rot_)<<std::endl;
 
 }
 
