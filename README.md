@@ -21,7 +21,7 @@
   
 
   - Open Visual Stuido 2019 (Has to be this version)
-  - Install python 3.9 (needed to link with the interpreter, embeddable version already included in project tree)
+  - Install python 3.9.5 (needed to link with the interpreter, embeddable version already included in project tree, also restart your machine after installing to avoid issues)
   - Clone the repository but note that you'll probably have to put it into a root level directory on your disk. This is because Microsoft has imposed a 260 character file name limit in their compiler. 
   - Open the CMakeLists.txt file, and generate the configuration
   - Put your build config into debug/release based on what you're doing
