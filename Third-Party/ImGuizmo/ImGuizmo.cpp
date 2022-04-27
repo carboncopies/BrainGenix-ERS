@@ -2159,6 +2159,7 @@ namespace ImGuizmo
          {
             modified = true;
          }
+         
          gContext.mRotationAngleOrigin = gContext.mRotationAngle;
 
          matrix_t scaleOrigin;
