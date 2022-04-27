@@ -2167,7 +2167,10 @@ namespace ImGuizmo
 
          if (applyRotationLocaly)
          {
-            *(matrix_t*)matrix = scaleOrigin * deltaRotation * gContext.mModel;
+            
+            //*(matrix_t*)matrix = scaleOrigin * deltaRotation * TrueGizmoRotation;
+            *(matrix_t*)matrix = scaleOrigin * deltaRotation * *(matrix_t*)TrueGizmoRotation;
+
          }
          else
          {
@@ -2360,7 +2363,7 @@ namespace ImGuizmo
    // Modified By ERS Team
    bool ManipulateGLM(const float* view, const float* projection, OPERATION operation, MODE mode, float* TrueGizmoRotation, float* matrix, float* deltaMatrix, const float* snap, const float* localBounds, const float* boundsSnap)
    {
-      ComputeContext(view, projection, TrueGizmoRotation, mode);
+      ComputeContext(view, projection, matrix, mode);
 
       // set delta to identity
       if (deltaMatrix)
