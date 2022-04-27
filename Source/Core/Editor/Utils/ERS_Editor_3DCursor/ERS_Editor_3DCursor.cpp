@@ -78,7 +78,7 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
 
     // Set Gizmo LocRotScale To Object LocRotScale
     float TmpMatrix[16];
-    glm::vec3 SwizzledRot = vec3(Rot_[2], Rot_[1], Rot_[0])
+    glm::vec3 SwizzledRot = glm::vec3(Rot_[2], Rot_[1], Rot_[0]);
     ImGuizmo::RecomposeMatrixFromComponents((float*)glm::value_ptr(Pos_), (float*)glm::value_ptr(SwizzledRot), (float*)glm::value_ptr(Scale_), TmpMatrix);
 
 
