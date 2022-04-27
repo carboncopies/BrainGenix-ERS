@@ -57,6 +57,14 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
         } else if (ImGui::IsKeyPressed(83) && EnableScale_) {
             CurrentGizmoOperation_ = ImGuizmo::SCALE;
         }
+    
+        // World / Local Space
+        if (ImGui::IsKeyPressed(81)) { // User Pressed 'Q' Key
+            GizmoMode_ = ImGuizmo::MODE::WORLD;
+        } else if (ImGui::IsKeyPressed(69)) { // User Pressed 'E' Key
+            GizmoMode_ = ImGuizmo::MODE::LOCAL;
+        }
+    
     }
 
     float WindowWidth = (float)ImGui::GetWindowWidth();
@@ -80,10 +88,10 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     float TmpMatrix[16];
     ImGuizmo::RecomposeMatrixFromComponents((float*)glm::value_ptr(Pos_), (float*)glm::value_ptr(Rot_), (float*)glm::value_ptr(Scale_), TmpMatrix);
 
-
     // Only Draw When ShowCursor Is True, Otherwise Don't Draw
     if (ShowCursor) {
-        ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, ImGuizmo::MODE::WORLD, TmpMatrix);
+        ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, GizmoMode_, TmpMatrix);
+
     }
 
 
@@ -99,6 +107,7 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
             Pos_ = glm::vec3(TmpTranslation[0], TmpTranslation[1], TmpTranslation[2]);
         } else if (CurrentGizmoOperation_ == ImGuizmo::OPERATION::ROTATE) {
             Rot_ = glm::vec3(TmpRotation[0], TmpRotation[1], TmpRotation[2]);
+            Rot_ = glm::mod(Rot_, 360.0f);
         } else if (CurrentGizmoOperation_ == ImGuizmo::OPERATION::SCALE) {
             Scale_ = glm::vec3(TmpScale[0], TmpScale[1], TmpScale[2]);
         }
