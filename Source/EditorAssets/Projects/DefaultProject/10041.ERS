@@ -305,7 +305,7 @@ STRUCT_SampledData SetSampledData() {
 
     // Handle Metalness Textures
     if (HasMetalness) {
-        SampledData.Metallic = texture2D(texture_metalness1, Object.TexCoords).r;
+        SampledData.Metallic = texture(texture_metalness1, Object.TexCoords).r;
     } else {
         SampledData.Metallic = 0.0f;
     }
@@ -319,7 +319,7 @@ STRUCT_SampledData SetSampledData() {
 
     // Handle Shininess (Inverse Of Roughness)
     if (HasShininess) {
-        SampledData.Roughness = 1.0f - texture2D(texture_shininess1, Object.TexCoords).r;
+        SampledData.Roughness = 1.0f - texture(texture_shininess1, Object.TexCoords).r;
     } else {
         SampledData.Roughness = 0.5f;
     }
