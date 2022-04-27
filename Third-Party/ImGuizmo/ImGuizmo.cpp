@@ -2169,7 +2169,8 @@ namespace ImGuizmo
          {
             
             //*(matrix_t*)matrix = scaleOrigin * deltaRotation * TrueGizmoRotation;
-            *(matrix_t*)matrix = scaleOrigin * deltaRotation * *(matrix_t*)TrueGizmoRotation;
+            matrix_t TrueGizmoMatrix = *(matrix_t*)TrueGizmoRotation;
+            *(matrix_t*)matrix = scaleOrigin * deltaRotation * TrueGizmoMatrix.OrthoNormalize();
 
          }
          else
