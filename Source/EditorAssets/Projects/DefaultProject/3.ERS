@@ -1,0 +1,856 @@
+SceneName: FightingMechanicScene
+SceneFormatVersion: 0
+SceneData:
+  0:
+    AssetName: StreetTile01
+    AssetType: Model
+    AssetID: 1254897313
+    AssetPositionX: 1
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: 4
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.0199999996
+    AssetScaleY: 0.0199999996
+    AssetScaleZ: 0.0199999996
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  1:
+    AssetName: StreetTile02
+    AssetType: Model
+    AssetID: 1254897313
+    AssetPositionX: 1
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: 0
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.0199999996
+    AssetScaleY: 0.0199999996
+    AssetScaleZ: 0.0199999996
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  2:
+    AssetName: StreetTile03
+    AssetType: Model
+    AssetID: 1254897313
+    AssetPositionX: 1
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: -4
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.0199999996
+    AssetScaleY: 0.0199999996
+    AssetScaleZ: 0.0199999996
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  3:
+    AssetName: WallTile01
+    AssetType: Model
+    AssetID: 345619823
+    AssetPositionX: -1
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: 5
+    AssetRotationX: 0
+    AssetRotationY: -90
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  4:
+    AssetName: WallTile02
+    AssetType: Model
+    AssetID: 1027312726
+    AssetPositionX: -1
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: 3
+    AssetRotationX: 0
+    AssetRotationY: -90
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  5:
+    AssetName: WallTile03
+    AssetType: Model
+    AssetID: 1027312726
+    AssetPositionX: -1
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: 1
+    AssetRotationX: 0
+    AssetRotationY: -90
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  6:
+    AssetName: WallTile04
+    AssetType: Model
+    AssetID: 1027312726
+    AssetPositionX: -1
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: -1
+    AssetRotationX: 0
+    AssetRotationY: -90
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  7:
+    AssetName: WallTile05
+    AssetType: Model
+    AssetID: 1027312726
+    AssetPositionX: -1
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: -3
+    AssetRotationX: 0
+    AssetRotationY: -90
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  8:
+    AssetName: WallTile06
+    AssetType: Model
+    AssetID: 1027312726
+    AssetPositionX: -1
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: -5
+    AssetRotationX: 0
+    AssetRotationY: -90
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  9:
+    AssetName: WallTile07
+    AssetType: Model
+    AssetID: 1027312726
+    AssetPositionX: 3
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: -5
+    AssetRotationX: 0
+    AssetRotationY: 90
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  10:
+    AssetName: WallTile08
+    AssetType: Model
+    AssetID: 1027312726
+    AssetPositionX: 3
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: -3
+    AssetRotationX: 0
+    AssetRotationY: 90
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  11:
+    AssetName: WallTile09
+    AssetType: Model
+    AssetID: 1027312726
+    AssetPositionX: 3
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: -1
+    AssetRotationX: 0
+    AssetRotationY: 90
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  12:
+    AssetName: WallTile10
+    AssetType: Model
+    AssetID: 1027312726
+    AssetPositionX: 3
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: 1
+    AssetRotationX: 0
+    AssetRotationY: 90
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  13:
+    AssetName: WallTile11
+    AssetType: Model
+    AssetID: 1027312726
+    AssetPositionX: 3
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: 3
+    AssetRotationX: 0
+    AssetRotationY: 90
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  14:
+    AssetName: WallTile12
+    AssetType: Model
+    AssetID: 1027312726
+    AssetPositionX: 3
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: 5
+    AssetRotationX: 0
+    AssetRotationY: 90
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  15:
+    AssetName: Dumpster
+    AssetType: Model
+    AssetID: 67868576
+    AssetPositionX: -0.427051216
+    AssetPositionY: 0.214919597
+    AssetPositionZ: 5.18545008
+    AssetRotationX: -4.71780768e-05
+    AssetRotationY: -82.9476395
+    AssetRotationZ: 4.75452325e-05
+    AssetScaleX: 0.00311163021
+    AssetScaleY: 0.00311163021
+    AssetScaleZ: 0.00311163021
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  16:
+    AssetName: ACUnit01
+    AssetType: Model
+    AssetID: 1106792841
+    AssetPositionX: 2.80428171
+    AssetPositionY: 1.36231256
+    AssetPositionZ: 5.12634373
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.00280800601
+    AssetScaleY: 0.00280800601
+    AssetScaleZ: 0.00280800601
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  17:
+    AssetName: ACUnit02
+    AssetType: Model
+    AssetID: 1106792841
+    AssetPositionX: 2.80428171
+    AssetPositionY: 1.36231256
+    AssetPositionZ: 4.12621737
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.00280800601
+    AssetScaleY: 0.00280800601
+    AssetScaleZ: 0.00280800601
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  18:
+    AssetName: ACUnit03
+    AssetType: Model
+    AssetID: 1106792841
+    AssetPositionX: 2.80428171
+    AssetPositionY: 1.36231256
+    AssetPositionZ: 3.12792492
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.00280800601
+    AssetScaleY: 0.00280800601
+    AssetScaleZ: 0.00280800601
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  19:
+    AssetName: ElectricalPanel
+    AssetType: Model
+    AssetID: 848721852
+    AssetPositionX: -0.961888015
+    AssetPositionY: 0.606941819
+    AssetPositionZ: -4.27554274
+    AssetRotationX: 0
+    AssetRotationY: 90
+    AssetRotationZ: 0
+    AssetScaleX: 0.00990002137
+    AssetScaleY: 0.00990002044
+    AssetScaleZ: 0.00990002137
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  20:
+    AssetName: BlueDrum01
+    AssetType: Model
+    AssetID: 515170514
+    AssetPositionX: -0.716660738
+    AssetPositionY: 3.64684092e-06
+    AssetPositionZ: 4.1245966
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.00736923702
+    AssetScaleY: 0.00736923702
+    AssetScaleZ: 0.00736923702
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  21:
+    AssetName: BlueDrum02
+    AssetType: Model
+    AssetID: 515170514
+    AssetPositionX: -0.716660738
+    AssetPositionY: 3.64684092e-06
+    AssetPositionZ: 3.60515833
+    AssetRotationX: -179.999756
+    AssetRotationY: -22.794733
+    AssetRotationZ: -179.999893
+    AssetScaleX: 0.00736923702
+    AssetScaleY: 0.00736923702
+    AssetScaleZ: 0.00736923702
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  22:
+    AssetName: BlueDrum03
+    AssetType: Model
+    AssetID: 515170514
+    AssetPositionX: -0.523179114
+    AssetPositionY: 1.36583304
+    AssetPositionZ: 3.81107211
+    AssetRotationX: 179.999237
+    AssetRotationY: 37.7693443
+    AssetRotationZ: -9.89678156e-05
+    AssetScaleX: 0.00736923702
+    AssetScaleY: 0.00736923702
+    AssetScaleZ: 0.00736923702
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  23:
+    AssetName: RedDrum01
+    AssetType: Model
+    AssetID: 1875027083
+    AssetPositionX: -0.751333117
+    AssetPositionY: 0
+    AssetPositionZ: 2.87504721
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.00800004043
+    AssetScaleY: 0.00800004043
+    AssetScaleZ: 0.00800004043
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  24:
+    AssetName: RedDrum02
+    AssetType: Model
+    AssetID: 1875027083
+    AssetPositionX: -0.751333117
+    AssetPositionY: 0
+    AssetPositionZ: 2.41534138
+    AssetRotationX: -179.999756
+    AssetRotationY: 71.5833664
+    AssetRotationZ: -179.999878
+    AssetScaleX: 0.00800004043
+    AssetScaleY: 0.00800004043
+    AssetScaleZ: 0.00800004043
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  25:
+    AssetName: Camera01Model
+    AssetType: Model
+    AssetID: 1397399839
+    AssetPositionX: -0.855923831
+    AssetPositionY: 1.62899446
+    AssetPositionZ: 5.94944334
+    AssetRotationX: 0
+    AssetRotationY: -90
+    AssetRotationZ: 0
+    AssetScaleX: 0.000735000067
+    AssetScaleY: 0.000735000009
+    AssetScaleZ: 0.000735000067
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  26:
+    AssetName: Camera02Model
+    AssetType: Model
+    AssetID: 1397399839
+    AssetPositionX: -0.855923831
+    AssetPositionY: 1.62899446
+    AssetPositionZ: 1.04445124
+    AssetRotationX: 0
+    AssetRotationY: -90
+    AssetRotationZ: 0
+    AssetScaleX: 0.000735000067
+    AssetScaleY: 0.000735000009
+    AssetScaleZ: 0.000735000067
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  27:
+    AssetName: Camera03Model
+    AssetType: Model
+    AssetID: 1397399839
+    AssetPositionX: -0.855923831
+    AssetPositionY: 1.62899446
+    AssetPositionZ: -4.87760067
+    AssetRotationX: 0
+    AssetRotationY: -90
+    AssetRotationZ: 0
+    AssetScaleX: 0.000735000067
+    AssetScaleY: 0.000735000009
+    AssetScaleZ: 0.000735000067
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  28:
+    AssetName: Camera04Model
+    AssetType: Model
+    AssetID: 1397399839
+    AssetPositionX: 2.85522318
+    AssetPositionY: 1.62899446
+    AssetPositionZ: -4.67070055
+    AssetRotationX: 0
+    AssetRotationY: 90
+    AssetRotationZ: 0
+    AssetScaleX: 0.000735000067
+    AssetScaleY: 0.000735000009
+    AssetScaleZ: 0.000735000067
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  29:
+    AssetName: Camera05Model
+    AssetType: Model
+    AssetID: 1397399839
+    AssetPositionX: 2.85522318
+    AssetPositionY: 1.62899446
+    AssetPositionZ: 0.987299681
+    AssetRotationX: 0
+    AssetRotationY: 90
+    AssetRotationZ: 0
+    AssetScaleX: 0.000735000067
+    AssetScaleY: 0.000735000009
+    AssetScaleZ: 0.000735000067
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  30:
+    AssetName: Keypad01
+    AssetType: Model
+    AssetID: 1460427430
+    AssetPositionX: -0.991477013
+    AssetPositionY: 0.91910845
+    AssetPositionZ: -1.67547178
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.00380000775
+    AssetScaleY: 0.00380000775
+    AssetScaleZ: 0.00380000775
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  31:
+    AssetName: Door01
+    AssetType: Model
+    AssetID: 142467978
+    AssetPositionX: -1.21630692
+    AssetPositionY: 0
+    AssetPositionZ: -0.857064366
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.00694000022
+    AssetScaleY: 0.00793306623
+    AssetScaleZ: 0.00694000022
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  32:
+    AssetName: CableSpool01
+    AssetType: Model
+    AssetID: 1618371310
+    AssetPositionX: -0.648701787
+    AssetPositionY: 0.181911156
+    AssetPositionZ: 0.54100287
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.0082000168
+    AssetScaleY: 0.0082000168
+    AssetScaleZ: 0.0082000168
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  33:
+    AssetName: CableSpool02
+    AssetType: Model
+    AssetID: 1618371310
+    AssetPositionX: -0.648701787
+    AssetPositionY: 0.181911156
+    AssetPositionZ: 1.08751225
+    AssetRotationX: 0
+    AssetRotationY: 128.800003
+    AssetRotationZ: 0
+    AssetScaleX: 0.0082000168
+    AssetScaleY: 0.0082000168
+    AssetScaleZ: 0.0082000168
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  34:
+    AssetName: Door02
+    AssetType: Model
+    AssetID: 142467978
+    AssetPositionX: 3.19474745
+    AssetPositionY: 3.81469727e-06
+    AssetPositionZ: 2.00759149
+    AssetRotationX: 0
+    AssetRotationY: 180
+    AssetRotationZ: 0
+    AssetScaleX: 0.00728000002
+    AssetScaleY: 0.00832000002
+    AssetScaleZ: 0.00728000002
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  35:
+    AssetName: Keypad02
+    AssetType: Model
+    AssetID: 1460427430
+    AssetPositionX: 2.99224949
+    AssetPositionY: 0.91900003
+    AssetPositionZ: 1.12266254
+    AssetRotationX: 0
+    AssetRotationY: 180
+    AssetRotationZ: 0
+    AssetScaleX: 0.00380000775
+    AssetScaleY: 0.00380000775
+    AssetScaleZ: 0.00380000775
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  36:
+    AssetName: Roadblock01
+    AssetType: Model
+    AssetID: 1962544010
+    AssetPositionX: -0.400803626
+    AssetPositionY: 0.247145414
+    AssetPositionZ: 0.00529244542
+    AssetRotationX: 0
+    AssetRotationY: 13.6876783
+    AssetRotationZ: 0
+    AssetScaleX: 0.00293800584
+    AssetScaleY: 0.00293800584
+    AssetScaleZ: 0.00293800584
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  37:
+    AssetName: Roadblock02
+    AssetType: Model
+    AssetID: 1962544010
+    AssetPositionX: 2.42215276
+    AssetPositionY: 0.247145638
+    AssetPositionZ: 0.423120558
+    AssetRotationX: 0
+    AssetRotationY: -8.68790245
+    AssetRotationZ: 0
+    AssetScaleX: 0.00300000003
+    AssetScaleY: 0.00293800584
+    AssetScaleZ: 0.00293800584
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  38:
+    AssetName: BlueDrum04
+    AssetType: Model
+    AssetID: 515170514
+    AssetPositionX: -0.285720527
+    AssetPositionY: 0.687465131
+    AssetPositionZ: 3.86453581
+    AssetRotationX: 0.000359971862
+    AssetRotationY: 81.5264206
+    AssetRotationZ: -179.999496
+    AssetScaleX: 0.00736923702
+    AssetScaleY: 0.00736923702
+    AssetScaleZ: 0.00736923702
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  39:
+    AssetName: BlueDrum05
+    AssetType: Model
+    AssetID: 515170514
+    AssetPositionX: -0.756376863
+    AssetPositionY: 0.687464952
+    AssetPositionZ: -2.7818315
+    AssetRotationX: 0.000359971862
+    AssetRotationY: 81.5264206
+    AssetRotationZ: -179.999496
+    AssetScaleX: 0.00736923702
+    AssetScaleY: 0.00736923702
+    AssetScaleZ: 0.00736923702
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  40:
+    AssetName: RoadBlock04
+    AssetType: Model
+    AssetID: 1962544010
+    AssetPositionX: -0.400803626
+    AssetPositionY: 0.247145414
+    AssetPositionZ: -2.30188632
+    AssetRotationX: 0
+    AssetRotationY: -8.68790245
+    AssetRotationZ: 0
+    AssetScaleX: 0.00300000003
+    AssetScaleY: 0.00293800584
+    AssetScaleZ: 0.00293800584
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  41:
+    AssetName: RoadBlock03
+    AssetType: Model
+    AssetID: 1962544010
+    AssetPositionX: 2.46419334
+    AssetPositionY: 0.247139737
+    AssetPositionZ: 3.59934139
+    AssetRotationX: -2.79549932
+    AssetRotationY: 15.9063158
+    AssetRotationZ: -0.766712785
+    AssetScaleX: 0.00300000003
+    AssetScaleY: 0.00293800584
+    AssetScaleZ: 0.00293800584
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  42:
+    AssetName: ACUnit04
+    AssetType: Model
+    AssetID: 1106792841
+    AssetPositionX: 2.82531524
+    AssetPositionY: 1.36231244
+    AssetPositionZ: -0.819252253
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.00280800601
+    AssetScaleY: 0.00280800601
+    AssetScaleZ: 0.00280800601
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  43:
+    AssetName: ACUnit05
+    AssetType: Model
+    AssetID: 1106792841
+    AssetPositionX: 2.82531524
+    AssetPositionY: 1.36231244
+    AssetPositionZ: -1.81414509
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.00280800601
+    AssetScaleY: 0.00280800601
+    AssetScaleZ: 0.00280800601
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  44:
+    AssetName: ACUnit06
+    AssetType: Model
+    AssetID: 1106792841
+    AssetPositionX: 2.82531524
+    AssetPositionY: 1.36231244
+    AssetPositionZ: -2.81660604
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.00280800601
+    AssetScaleY: 0.00280800601
+    AssetScaleZ: 0.00280800601
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  45:
+    AssetName: ACUnit07
+    AssetType: Model
+    AssetID: 1106792841
+    AssetPositionX: -0.804225624
+    AssetPositionY: 1.36230886
+    AssetPositionZ: -2.68692303
+    AssetRotationX: 0
+    AssetRotationY: 180
+    AssetRotationZ: 0
+    AssetScaleX: 0.00280800601
+    AssetScaleY: 0.00280800601
+    AssetScaleZ: 0.00280800601
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  46:
+    AssetName: ACUnit08
+    AssetType: Model
+    AssetID: 1106792841
+    AssetPositionX: -0.804225624
+    AssetPositionY: 1.36230886
+    AssetPositionZ: -3.68654251
+    AssetRotationX: 0
+    AssetRotationY: 180
+    AssetRotationZ: 0
+    AssetScaleX: 0.00280800601
+    AssetScaleY: 0.00280800601
+    AssetScaleZ: 0.00280800601
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  47:
+    AssetName: ElectricalPanel - Copy
+    AssetType: Model
+    AssetID: 848721852
+    AssetPositionX: 2.97192335
+    AssetPositionY: 0.606942356
+    AssetPositionZ: 3.11859632
+    AssetRotationX: 0
+    AssetRotationY: -90
+    AssetRotationZ: 0
+    AssetScaleX: 0.00990002137
+    AssetScaleY: 0.00990002044
+    AssetScaleZ: 0.00990002137
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  48:
+    AssetName: Camera01
+    AssetType: SpotLight
+    ColorRed: 1
+    ColorGreen: 1
+    ColorBlue: 1
+    PosX: -0.930386484
+    PosY: 1.5959357
+    PosZ: 6.00342846
+    RotX: 18.4778862
+    RotY: -15.6467848
+    RotZ: -7.83750677
+    Intensity: 25
+    CutOff: 0.910000026
+    OuterCutOff: 0.75999999
+    AttachedScripts:
+      {}
+  49:
+    AssetName: Camera02
+    AssetType: SpotLight
+    ColorRed: 1
+    ColorGreen: 1
+    ColorBlue: 1
+    PosX: -0.949999988
+    PosY: 1.5
+    PosZ: 1
+    RotX: 14.6964588
+    RotY: -8.51486015
+    RotZ: -3.0760181
+    Intensity: 25
+    CutOff: 0.910000026
+    OuterCutOff: 0.75999999
+    AttachedScripts:
+      {}
+  50:
+    AssetName: Camera03
+    AssetType: SpotLight
+    ColorRed: 1
+    ColorGreen: 1
+    ColorBlue: 1
+    PosX: -0.949999988
+    PosY: 1.5
+    PosZ: -4.8931241
+    RotX: 14.7390451
+    RotY: -6.51885748
+    RotZ: -1.36448181
+    Intensity: 25
+    CutOff: 0.910000026
+    OuterCutOff: 0.75999999
+    AttachedScripts:
+      {}
+  51:
+    AssetName: Camera04
+    AssetType: SpotLight
+    ColorRed: 1
+    ColorGreen: 1
+    ColorBlue: 1
+    PosX: 2.97785139
+    PosY: 1.5
+    PosZ: -4.70444107
+    RotX: -35.5486069
+    RotY: -20.949976
+    RotZ: 8.76933765
+    Intensity: 25
+    CutOff: 0.910000026
+    OuterCutOff: 0.75999999
+    AttachedScripts:
+      {}
+  52:
+    AssetName: Camera05
+    AssetType: SpotLight
+    ColorRed: 1
+    ColorGreen: 1
+    ColorBlue: 1
+    PosX: 2.97785139
+    PosY: 1.5
+    PosZ: 1.07611871
+    RotX: -34.3861809
+    RotY: -30.3114014
+    RotZ: 12.0187654
+    Intensity: 25
+    CutOff: 0.910000026
+    OuterCutOff: 0.75999999
+    AttachedScripts:
+      {}

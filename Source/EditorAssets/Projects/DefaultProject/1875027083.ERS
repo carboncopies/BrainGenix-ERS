@@ -1,0 +1,9 @@
+Name: /home/tliao/Desktop/EGSC_MVP/AssetSource/FightingMechanic/Third-Party/Barrel01/2K/Barrel_01_2k.fbx
+ModelID: 1245999622
+TextureIDs:
+  textures\Barrel_01_explosive_diff_2k.png: 1418856010
+  textures\Barrel_01_explosive_metallic_2k.png: 767566803
+  textures\Barrel_01_explosive_nor_gl_2k.png: 22323493
+  textures\Barrel_01_explosive_roughness_2k.png: 315876972
+Vertices: 23656
+Indices: 76281
