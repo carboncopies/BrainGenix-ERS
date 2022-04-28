@@ -356,7 +356,7 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
                     std::shared_ptr<ERS_STRUCT_Model> Target = ModelsToRefrence_[i];
                     std::shared_ptr<ERS_STRUCT_Model> Source = LoadedModelRefrences_[MatchIndex];
 
-                    std::cout<<Target->Name<<"|"<<Target->AssetID<<"|"<<i<<std::endl;
+
 
                     Target->Meshes = Source->Meshes;
                     Target->OpenGLTextureIDs_ = Source->OpenGLTextureIDs_;
@@ -384,6 +384,9 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
 void ERS_CLASS_ModelLoader::AddModelToReferenceQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model) {
 
     Model->AssetID = AssetID;
+
+    std::cout<<Model->Name<<"|"<<Model->AssetID<<"|"<<i<<std::endl;
+
     ModelsToRefrence_.push_back(Model);
 
 }
