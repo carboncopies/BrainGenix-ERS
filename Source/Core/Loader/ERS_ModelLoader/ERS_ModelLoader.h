@@ -64,10 +64,10 @@ private:
 
     std::vector<std::shared_ptr<ERS_STRUCT_Model>> LoadedModelRefrences_; /**<Used to check if a model has already been loaded*/
     std::vector<std::shared_ptr<ERS_STRUCT_Model>> ModelsToRefrence_; /**<Models that are wating for the refs to be copied*/
-    
+
     std::vector<std::thread> WorkerThreads_; /**<List of worker threads*/
     std::thread ModelRefrenceThread_; /**<Thread used to copy refrences from fully loaded models*/
-    
+
     std::mutex BlockThread_; /**<Block Threads From Doing Things*/
     std::mutex BlockRefThread_; /**<Lock the ref thread from modifying non-threadsafe vars*/
 
