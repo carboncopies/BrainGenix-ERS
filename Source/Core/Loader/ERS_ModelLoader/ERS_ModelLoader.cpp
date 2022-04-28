@@ -51,9 +51,10 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
     }
     SystemUtils_->Logger_->Log("Finished Joining Worker Threads", 6);
 
-    SystemUtils_->Logger_->Log("Joining Reference Loader Thread", 6);
+
+    SystemUtils_->Logger_->Log("Joining Reference Loader Thread", 5);
     ModelRefrenceThread_.join();
-    SystemUtils_->Logger_->Log("Finished Joining Reference Loader Thread", 6);
+    SystemUtils_->Logger_->Log("Finished Joining Reference Loader Thread", 5);
 
 
 }
