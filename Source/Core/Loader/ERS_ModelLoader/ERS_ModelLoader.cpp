@@ -124,7 +124,7 @@ void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr
     WorkItems_.push_back(Model);
     FlipTextures_.push_back(FlipTextures);
     LoadedModelRefrences_.push_back(Model);
-    
+
     BlockThread_.unlock();
 
 }

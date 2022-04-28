@@ -97,6 +97,15 @@ private:
      */
     void LoadMaterialTextures(std::vector<int>* IDs, std::vector<std::string>* Types, std::vector<std::string> TextureList, aiMaterial *Mat, aiTextureType Type, std::string TypeName);
 
+    /**
+     * @brief Checks if the target model has already been loaded, and returns refrences when completed.
+     * 
+     * @param AssetID 
+     * @return true 
+     * @return false 
+     */
+    bool CheckIfModelAlreadyLoaded(long AssetID);
+
 
 public:
 
