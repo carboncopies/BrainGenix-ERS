@@ -353,6 +353,8 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
         }
         BlockRefThread_.unlock();
 
+        std::this_thread::sleep_for(std::chrono::milliseconds(2));
+
     }
 
 }
@@ -370,12 +372,14 @@ void ERS_CLASS_ModelLoader::AddModelToReferenceQueue(long AssetID, std::shared_p
 void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures) {
 
     // Check If Already In Refs
+    BlockRefThread_.lock();
     if (CheckIfModelAlreadyLoaded(AssetID) != -1) {
         AddModelToReferenceQueue(AssetID, Model);
         return;
     } else {
         LoadedModelRefrences_.push_back(Model);
     }
+    BlockRefThread_.unlock();
 
     // Log Loading For Debugging Purposes
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Model '") + std::to_string(AssetID) + std::string("'")).c_str(), 4);
@@ -461,6 +465,7 @@ long ERS_CLASS_ModelLoader::CheckIfModelAlreadyLoaded(long AssetID) {
 
     // Iterate Through List OF Models Aready Loading/Loaded
     for (unsigned long i = 0; i < LoadedModelRefrences_.size(); i++) {
+        LoadedModelRefrences_[i]->AssetID;
         if (LoadedModelRefrences_[i]->AssetID == AssetID) {
             Index = i;
         }
