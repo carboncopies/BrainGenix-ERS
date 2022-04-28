@@ -61,7 +61,7 @@ private:
     std::vector<std::shared_ptr<ERS_STRUCT_Model>> WorkItems_; /**<Items For The Worker To Process*/
     std::vector<long> WorkIDs_; /**<Vector Containing IDs*/
     std::vector<bool> FlipTextures_; /**<vector Containing FlipTexture For Work Items*/
-    
+
     std::vector<std::shared_ptr<ERS_STRUCT_Model>> LoadedModelRefrences_; /**<Used to check if a model has already been loaded*/
     std::vector<std::shared_ptr<ERS_STRUCT_Model>> ModelsToRefrence_; /**<Models that are wating for the refs to be copied*/
     
@@ -108,6 +108,14 @@ private:
      * @return long 
      */
     long CheckIfModelAlreadyLoaded(long AssetID);
+
+    /**
+     * @brief Adds the given model to the queue of models with refs waiting to be copied
+     * 
+     * @param AssetID 
+     * @param Model 
+     */
+    void AddModelToReferenceQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model);
 
 
 public:
