@@ -42,6 +42,7 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
     SystemUtils_->Logger_->Log("Sending Join Command To Worker Threads", 5);
     BlockThread_.lock();
     ExitThreads_ = true;
+    ExitRefThread_ = true;
     BlockThread_.unlock();
 
     SystemUtils_->Logger_->Log("Joining Worker Threads", 6);
@@ -337,7 +338,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
 
 void ERS_CLASS_ModelLoader::ReferenceThread() {
 
-    while (!ExitRefThread_) {
+    while (true) {
         
         std::cout<<ModelsToRefrence_.size()<<std::endl;
 
