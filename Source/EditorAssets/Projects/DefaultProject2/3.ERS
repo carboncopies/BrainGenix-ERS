@@ -1,0 +1,68 @@
+SceneName: Demo Scene
+SceneFormatVersion: 0
+SceneData:
+  0:
+    AssetName: Rock
+    AssetType: Model
+    AssetID: 10
+    AssetPositionX: 0.257804394
+    AssetPositionY: -0.0495069735
+    AssetPositionZ: 1.56041873
+    AssetRotationX: 45.0022621
+    AssetRotationY: 68.1705399
+    AssetRotationZ: -43.1638031
+    AssetScaleX: 0.012000001
+    AssetScaleY: 0.012000001
+    AssetScaleZ: 0.012000001
+    FlipTextures: true
+  1:
+    AssetName: Rock - Copy
+    AssetType: Model
+    AssetID: 10
+    AssetPositionX: -0.112269223
+    AssetPositionY: -0.0495069548
+    AssetPositionZ: 0.682488263
+    AssetRotationX: 18.9343262
+    AssetRotationY: 74.0657578
+    AssetRotationZ: -67.9051666
+    AssetScaleX: 0.012000001
+    AssetScaleY: 0.012000001
+    AssetScaleZ: 0.012000001
+    FlipTextures: true
+  2:
+    AssetName: Default Directional Light
+    AssetType: DirectionalLight
+    ColorRed: 1.0
+    ColorGreen: 1.0
+    ColorBlue: 1.0
+    PosX: 0.0898500085
+    PosY: 1.15329742
+    PosZ: -0.723596871
+    RotX: 0
+    RotY: 0
+    RotZ: 0
+  3:
+    AssetName: Default Point Light
+    AssetType: PointLight
+    ColorRed: 1.0
+    ColorGreen: 1.0
+    ColorBlue: 1.0
+    PosX: -0.83369267
+    PosY: 0.582210124
+    PosZ: -0.533189774
+    Intensity: 25
+  4:
+    AssetName: Default Spot Light
+    AssetType: SpotLight
+    ColorRed: 1.0
+    ColorGreen: 1.0
+    ColorBlue: 1.0
+    PosX: 0.993685424
+    PosY: 0.515645862
+    PosZ: -0.763120711
+    RotX: -156.130692
+    RotY: -44.4931717
+    RotZ: 141.395966
+    Intensity: 25
+    CutOff: 0.970000029
+    OuterCutOff: 0.959999979

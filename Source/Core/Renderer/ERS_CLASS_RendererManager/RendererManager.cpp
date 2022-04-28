@@ -30,6 +30,7 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
     LoadEditorData();
     VisualRenderer_->SetOpenGLDefaults(OpenGLDefaults_.get());
 
+
     // Setup Shaders
     ShaderLoader_ = std::make_unique<ERS_CLASS_ShaderLoader>(SystemUtils_);
     for (int i = 0; (long)i < (long)ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.size(); i++) {

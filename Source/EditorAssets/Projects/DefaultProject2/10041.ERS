@@ -1,0 +1,530 @@
+#version 330 core
+
+// Set Outputs
+out vec4 FragColor;
+
+// Set Inputs
+in VS_OUT {
+    vec3 FragPos;
+    vec2 TexCoords;
+    mat3 TBN;
+    vec3 WorldPos;
+    vec3 TangentViewPos;
+    vec3 TangentFragPos;
+    vec3 Normal; // Used when normal texture not present
+} Object;
+
+
+
+
+// Define Structs
+struct STRUCT_DirectionalLight {
+
+    vec3 Direction;
+
+    // Light Color Parameters
+    vec3 Color;
+    float Intensity;
+
+};
+
+struct STRUCT_PointLight {
+
+    // Physical Parameters
+    vec3 Position;
+
+    // Light Color Parameters
+    vec3 Color;
+
+    // Light Rolloff Parameters
+    float Intensity;
+};
+
+struct STRUCT_SpotLight {
+
+    // Physical Parameters
+    vec3 Position;
+    vec3 Direction;
+
+    // Light Color Parameters
+    vec3 Color;
+
+    // Light Rolloff Parameters
+    float Intensity;
+
+    // Spotlight Parameters
+    float CutOff;
+    float OuterCutOff;
+
+};
+
+struct STRUCT_SampledData {
+
+    vec4 Albedo;
+    vec3 Normal;
+    vec3 Emissive;
+    float Metallic;
+    float Roughness;
+    float AO;
+
+};
+
+
+
+
+
+// Get Metadata Params
+uniform int FrameNumber; // Number of the frame, counts up from zero
+
+uniform float Time; // Time since program started in seconds
+uniform float FrameTime; // Render Time Of The Frame
+
+uniform vec2 ViewportRes; // XY Resolution of the viewport
+uniform vec3 CameraPosition; // Get Camera XYZ Position
+
+
+
+// Get Texture Info
+uniform sampler2D texture_diffuse1;
+uniform sampler2D texture_normals1;
+uniform sampler2D texture_shininess1;
+uniform sampler2D texture_emissive1;
+uniform sampler2D texture_metalness1;
+uniform sampler2D texture_ambientocclusion1;
+uniform float Shinyness;
+
+
+uniform bool HasAmbient;
+uniform bool HasAmbientOcclusion;
+uniform bool HasBaseColor;
+uniform bool HasDiffuse;
+uniform bool HasDiffuseRoughness;
+uniform bool HasDisplacement;
+uniform bool HasEmissionColor;
+uniform bool HasEmissive;
+uniform bool HasHeight;
+uniform bool HasLightmap;
+uniform bool HasMetalness;
+uniform bool HasNormalCamera;
+uniform bool HasNormals;
+uniform bool HasOpacity;
+uniform bool HasReflection;
+uniform bool HasShininess;
+uniform bool HasSpecular;
+
+
+// Get Lighting Info
+uniform int NumberDirectionalLights;
+uniform int NumberPointLights;
+uniform int NumberSpotLights;
+uniform STRUCT_DirectionalLight DirectionalLights[1];
+uniform STRUCT_PointLight PointLights[128];
+uniform STRUCT_SpotLight SpotLights[96];
+
+
+// Gamma Correction Info
+uniform bool GammaCorrectionEnabled_;
+uniform bool HDREnabled_;
+uniform float Exposure_;
+uniform float Gamma_;
+
+const float PI = 3.14159265358979;
+
+vec3 GetNormalFromMap(sampler2D Normal) {
+    vec3 TangentNormal = texture(Normal, Object.TexCoords).xyz * 2.0f - 1.0f;
+
+    vec3 Q1 = dFdx(Object.WorldPos);
+    vec3 Q2 = dFdy(Object.WorldPos);
+    vec2 st1 = dFdx(Object.TexCoords);
+    vec2 st2 = dFdy(Object.TexCoords);
+
+    vec3 N = normalize(Object.Normal);
+    vec3 T = normalize(Q1*st2.t - Q2*st1.t);
+    vec3 B = -normalize(cross(N, T));
+    mat3 TBN = mat3(T,B,N);
+
+    return normalize(TBN * TangentNormal);
+
+}
+
+
+float DistributionGGX(vec3 N, vec3 H, float Roughness) {
+
+    float a = Roughness*Roughness;
+    float a2 = a*a;
+    float NdotH = max(dot(N,H), 0.0f);
+    float NdotH2 = NdotH*NdotH;
+    
+    float nom = a2;
+    float denom = (NdotH2 * (a2 - 1.0f) + 1.0f);
+    
+    return nom / denom;
+
+}
+// ----------------------------------------------------------------------------
+float GeometrySchlickGGX(float NdotV, float roughness)
+{
+    float r = (roughness + 1.0);
+    float k = (r*r) / 8.0;
+
+    float nom   = NdotV;
+    float denom = NdotV * (1.0 - k) + k;
+
+    return nom / denom;
+}
+// ----------------------------------------------------------------------------
+float GeometrySmith(vec3 N, vec3 V, vec3 L, float roughness)
+{
+    float NdotV = max(dot(N, V), 0.0);
+    float NdotL = max(dot(N, L), 0.0);
+    float ggx2 = GeometrySchlickGGX(NdotV, roughness);
+    float ggx1 = GeometrySchlickGGX(NdotL, roughness);
+
+    return ggx1 * ggx2;
+}
+// ----------------------------------------------------------------------------
+vec3 FresnelSchlick(float cosTheta, vec3 F0)
+{
+    return F0 + (1.0 - F0) * pow(clamp(1.0 - cosTheta, 0.0, 1.0), 5.0);
+}
+// ----------------------------------------------------------------------------
+
+
+
+
+
+
+// Used To Enable Gamma Correction On The Output
+vec4 GammaCorrectResult(vec4 Input, bool GammaEnabled) {
+    if (GammaEnabled) {
+        Input.rgb = pow(Input.rgb, vec3(1.0/Gamma_));
+    }
+    return Input;
+}
+
+
+// Used To Make Sure Textures Aren't Too Bright
+vec4 GammaCorrectTexture(sampler2D Texture, bool GammaEnabled) {
+    vec4 Color = texture(Texture, Object.TexCoords);
+    if (GammaEnabled) {
+        Color.rgb = pow(Color.rgb, vec3(Gamma_));
+    }
+    return Color;
+}
+
+
+
+/**
+
+vec4 CalculateDirectionalLight(STRUCT_DirectionalLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 ViewDirection) {
+    
+    vec3 LightDirectionVector = normalize(-Light.Direction);
+    vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Normal);
+
+    // Diffuse/Specular Components
+    float Diffuse = max(dot(Normal, LightDirectionVector), 0.0f);
+    float Specular = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0f), Shinyness);
+
+    // Calculate Total Contribution From Components
+    vec4 AmbientComponent = vec4(Light.Ambient, 1.0f) * SampledData.Albedo;
+    vec4 DiffuseComponent = vec4(Light.Diffuse, 1.0f) * Diffuse * SampledData.Albedo;
+    vec4 SpecularComponent = vec4(Light.Specular, 1.0f) * Specular * SampledData.Albedo;
+
+    return (AmbientComponent + DiffuseComponent + SpecularComponent);
+
+}
+
+vec4 CalculatePointLight(STRUCT_PointLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection) {
+
+    vec3 LightDirectionVector ;
+    if (HasNormals) {
+        LightDirectionVector = normalize(Object.TBN * Light.Position - Object.TangentFragPos);
+    } else {
+        LightDirectionVector = normalize(Light.Position - FragPos);
+    }
+
+    vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Normal);
+
+    // Diffuse/Specular Components
+    float Diffuse = max(dot(Normal, LightDirectionVector), 0.0f);
+    float Specular = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0f), Shinyness);
+
+    // Attenuate 
+    float Distance = length(Light.Position - FragPos);
+    float Attenuation = 1.0f / (Light.ConstantRolloff + Light.LinearRolloff * Distance + Light.QuadraticRolloff * (Distance * Diffuse));
+
+    // Calculate Total Contribution From Components
+    vec4 AmbientComponent = vec4(Light.Ambient * Attenuation, 1.0f) * SampledData.Albedo;
+    vec4 DiffuseComponent = vec4(Light.Diffuse * Attenuation, 1.0f) * Diffuse * SampledData.Albedo;
+    vec4 SpecularComponent = vec4(Light.Specular * Attenuation, 1.0f) * Specular * SampledData.Albedo;
+
+    return (AmbientComponent + DiffuseComponent + SpecularComponent);
+
+}
+
+vec4 CalculateSpotLight(STRUCT_SpotLight Light, STRUCT_SampledData SampledData, vec3 Normal, vec3 FragPos, vec3 ViewDirection ) {
+
+    vec3 LightDirectionVector ;
+    if (HasNormals) {
+    LightDirectionVector = normalize(Object.TBN * Light.Position - Object.TangentFragPos);
+    } else {
+    LightDirectionVector = normalize(Light.Position - FragPos);
+    }
+    vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Normal);
+
+    // Diffuse/Specular Components
+    float Diffuse = max(dot(Normal, LightDirectionVector), 0.0f);
+    float Specular = pow(max(dot(ViewDirection, ReflectionDirectionVector), 0.0f), Shinyness);
+
+    // Calculate Attenuation
+    float Distance = length(Light.Position - FragPos);
+    float Attenuation = 1.0f / (Light.ConstantRolloff + Light.LinearRolloff * Distance + Light.QuadraticRolloff * (Distance * Diffuse));
+
+    // Calculate Spot Intensity
+    float Theta = dot(normalize(Light.Position  - FragPos), normalize(-Light.Direction));
+    float Epsilon = Light.CutOff - Light.OuterCutOff;
+    float Intensity = clamp((Theta - Light.OuterCutOff) / Epsilon, 0.0f, 1.0f);
+
+    // Calculate Total Contribution From Components
+    vec4 AmbientComponent = vec4(Light.Ambient * Attenuation * Intensity, 1.0f) * SampledData.Albedo;
+    vec4 DiffuseComponent = vec4(Light.Diffuse * Attenuation * Intensity, 1.0f) * Diffuse * SampledData.Albedo;
+    vec4 SpecularComponent = vec4(Light.Specular * Attenuation * Intensity, 1.0f) * Specular * SampledData.Albedo;
+
+    return (AmbientComponent + DiffuseComponent + SpecularComponent);
+
+}
+
+
+**/
+
+STRUCT_SampledData SetSampledData() {
+    STRUCT_SampledData SampledData;
+    
+    // Handle Albedo/Diffuse Textures
+    SampledData.Albedo = GammaCorrectTexture(texture_diffuse1, GammaCorrectionEnabled_);
+
+    // Handle Metalness Textures
+    if (HasMetalness) {
+        SampledData.Metallic = texture(texture_metalness1, Object.TexCoords).r;
+    } else {
+        SampledData.Metallic = 0.0f;
+    }
+
+    // Handle Normal Textures
+    if (HasNormals) {
+        SampledData.Normal = GetNormalFromMap(texture_normals1);
+    } else {
+        SampledData.Normal = vec3(0.5f, 0.5f, 1.0f);
+    }
+
+    // Handle Shininess (Inverse Of Roughness)
+    if (HasShininess) {
+        SampledData.Roughness = 1.0f - texture(texture_shininess1, Object.TexCoords).r;
+    } else {
+        SampledData.Roughness = 0.5f;
+    }
+
+    // Handle Emissive Textures
+    if (HasEmissive) {
+        SampledData.Emissive = GammaCorrectTexture(texture_emissive1, GammaCorrectionEnabled_).rgb;
+    } else {
+        SampledData.Emissive = vec3(0.0f);
+    }
+
+
+    return SampledData;
+
+}
+
+
+
+vec3 PBRPointLight(STRUCT_PointLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT_SampledData Model) {
+
+        // calculate per-light radiance
+        vec3 L = normalize(Light.Position - Object.WorldPos);
+        vec3 H = normalize(ViewDir + L);
+        float distance = length(Light.Position - Object.WorldPos);
+        float attenuation = 1.0 / (distance * distance);
+        vec3 radiance = Light.Color * Light.Intensity * attenuation;
+
+        // Cook-Torrance BRDF
+        float NDF = DistributionGGX(Model.Normal, H, Model.Roughness);   
+        float G   = GeometrySmith(Model.Normal, ViewDir, L, Model.Roughness);      
+        vec3 F    = FresnelSchlick(max(dot(H, ViewDir), 0.0), Reflectance);
+           
+        vec3 numerator    = NDF * G * F; 
+        float denominator = 4.0 * max(dot(Model.Normal, ViewDir), 0.0) * max(dot(Model.Normal, L), 0.0) + 0.0001; // + 0.0001 to prevent divide by zero
+        vec3 specular = numerator / denominator;
+        
+        // kS is equal to Fresnel
+        vec3 kS = F;
+        // for energy conservation, the diffuse and specular light can't
+        // be above 1.0 (unless the surface emits light); to preserve this
+        // relationship the diffuse component (kD) should equal 1.0 - kS.
+        vec3 kD = vec3(1.0) - kS;
+        // multiply kD by the inverse metalness such that only non-metals 
+        // have diffuse lighting, or a linear blend if partly metal (pure metals
+        // have no diffuse light).
+        kD *= 1.0 - Model.Metallic;	  
+
+        // scale light by NdotL
+        float NdotL = max(dot(Model.Normal, L), 0.0);        
+
+        // add to outgoing radiance Lo
+        return (kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL;  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
+
+
+}
+
+
+vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT_SampledData Model) {
+
+    vec3 LightDirectionVector ;
+    if (HasNormals) {
+    LightDirectionVector = normalize(Object.TBN * Light.Position - Object.TangentFragPos);
+    } else {
+    LightDirectionVector = normalize(Light.Position - Object.FragPos);
+    }
+    vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Object.Normal);
+
+    // Calculate Spot Intensity
+    float Theta = dot(normalize(Light.Position  - Object.FragPos), normalize(-Light.Direction));
+    float Epsilon = Light.CutOff - Light.OuterCutOff;
+    float Intensity = clamp((Theta - Light.OuterCutOff) / Epsilon, 0.0f, 1.0f);
+
+
+    // calculate per-light radiance
+        vec3 L = normalize(Light.Position - Object.WorldPos);
+        vec3 H = normalize(ViewDir + L);
+        float distance = length(Light.Position - Object.WorldPos);
+        float attenuation = 1.0 / (distance * distance);
+        vec3 radiance = Light.Color * Light.Intensity * attenuation;
+
+        // Cook-Torrance BRDF
+        float NDF = DistributionGGX(Model.Normal, H, Model.Roughness);   
+        float G   = GeometrySmith(Model.Normal, ViewDir, L, Model.Roughness);      
+        vec3 F    = FresnelSchlick(max(dot(H, ViewDir), 0.0), Reflectance);
+
+        vec3 numerator    = NDF * G * F; 
+        float denominator = 4.0 * max(dot(Model.Normal, ViewDir), 0.0) * max(dot(Model.Normal, L), 0.0) + 0.0001; // + 0.0001 to prevent divide by zero
+        vec3 specular = numerator / denominator;
+
+        // kS is equal to Fresnel
+        vec3 kS = F;
+        // for energy conservation, the diffuse and specular light can't
+        // be above 1.0 (unless the surface emits light); to preserve this
+        // relationship the diffuse component (kD) should equal 1.0 - kS.
+        vec3 kD = vec3(1.0) - kS;
+        // multiply kD by the inverse metalness such that only non-metals 
+        // have diffuse lighting, or a linear blend if partly metal (pure metals
+        // have no diffuse light).
+        kD *= 1.0 - Model.Metallic;	  
+
+        // scale light by NdotL
+        float NdotL = max(dot(Model.Normal, L), 0.0);        
+
+        // add to outgoing radiance Lo
+        return (kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL * Intensity;  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
+
+}
+
+
+vec3 PBRDirectionalLight(STRUCT_DirectionalLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT_SampledData Model) {
+    
+    vec3 LightDirectionVector = normalize(-Light.Direction);
+    vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Model.Normal);
+
+    // Diffuse/Specular Components
+    float Diffuse = max(dot(Model.Normal, LightDirectionVector), 0.0f);
+    float Specular = pow(max(dot(ViewDir, ReflectionDirectionVector), 0.0f), Shinyness);
+
+        // calculate per-light radiance
+        vec3 L = normalize(Light.Direction);
+        vec3 H = normalize(ViewDir + L);
+        vec3 radiance = Light.Color * Light.Intensity;
+
+        // Cook-Torrance BRDF
+        float NDF = DistributionGGX(Model.Normal, H, Model.Roughness);   
+        float G   = GeometrySmith(Model.Normal, ViewDir, L, Model.Roughness);      
+        vec3 F    = FresnelSchlick(max(dot(H, ViewDir), 0.0), Reflectance);
+           
+        vec3 numerator    = NDF * G * F; 
+        float denominator = 4.0 * max(dot(Model.Normal, ViewDir), 0.0) * max(dot(Model.Normal, L), 0.0) + 0.0001; // + 0.0001 to prevent divide by zero
+        vec3 specular = numerator / denominator;
+        
+        // kS is equal to Fresnel
+        vec3 kS = F;
+        // for energy conservation, the diffuse and specular light can't
+        // be above 1.0 (unless the surface emits light); to preserve this
+        // relationship the diffuse component (kD) should equal 1.0 - kS.
+        vec3 kD = vec3(1.0) - kS;
+        // multiply kD by the inverse metalness such that only non-metals 
+        // have diffuse lighting, or a linear blend if partly metal (pure metals
+        // have no diffuse light).
+        kD *= 1.0 - Model.Metallic;	  
+
+        // scale light by NdotL
+        float NdotL = max(dot(Model.Normal, L), 0.0);        
+
+        // add to outgoing radiance Lo
+        return (kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL;  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
+
+
+}
+
+
+void main() {
+
+    // Get Model Parameters
+    STRUCT_SampledData Model = SetSampledData();
+    vec3 ViewDir = normalize(CameraPosition - Object.WorldPos);
+
+    // calculate reflectance at normal incidence; if dia-electric (like plastic) use F0 
+    // of 0.04 and if it's a metal, use the albedo color as F0 (metallic workflow)    
+    vec3 Reflectance = vec3(0.04); 
+    Reflectance = mix(Reflectance, Model.Albedo.rgb, Model.Metallic);
+
+
+    // ---- Calculate Lighting Contributions ---- //
+    vec4 Lo = vec4(0.0f);
+
+    // Calculate Directional Lights
+    for (int i = 0; i < NumberDirectionalLights; i++) {
+        Lo += vec4(PBRDirectionalLight(DirectionalLights[i], ViewDir, Reflectance, Model), 1.0f);
+    }
+
+    // Calculate Point Lights
+    for (int i = 0; i < NumberPointLights; i++) {
+        Lo += vec4(PBRPointLight(PointLights[i], ViewDir, Reflectance, Model), 1.0f);
+    }
+
+    // Calculate Spot Lights
+    for(int i = 0; i < NumberSpotLights; ++i) {
+        Lo += vec4(PBRSpotLight(SpotLights[i], ViewDir, Reflectance, Model), 1.0f);
+    }
+
+    // ambient lighting (note that the next IBL tutorial will replace 
+    // this ambient lighting with environment lighting).
+    vec4 Ambient = vec4(0.03) * Model.Albedo * Model.AO;
+    vec4 Color = Ambient + Lo;
+
+
+     // Add Emissive Texture
+    if (HasEmissive) {
+        Color.rgb += Model.Emissive;
+    }
+
+    // Apply Gamma Correction
+    if (HDREnabled_) {
+        vec3 Mapped = vec3(1.0f) - exp(-Color.xyz * Exposure_);
+        FragColor = GammaCorrectResult(vec4(Mapped, 1.0f), GammaCorrectionEnabled_);
+    } else {
+        FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
+    }
+}
+
+
+
+
+
+

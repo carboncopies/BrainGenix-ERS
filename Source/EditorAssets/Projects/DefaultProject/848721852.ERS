@@ -1,0 +1,9 @@
+Name: /home/tliao/Desktop/EGSC_MVP/AssetSource/FightingMechanic/Third-Party/ElectricalPanel/2K/power_box_01_2k.fbx
+ModelID: 1936329760
+TextureIDs:
+  textures\power_box_01_diff_2k.jpg: 307275507
+  textures\power_box_01_metal_2k.exr: 1347499243
+  textures\power_box_01_nor_gl_2k.exr: 295286316
+  textures\power_box_01_rough_2k.exr: 561738694
+Vertices: 20471
+Indices: 63816
