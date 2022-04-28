@@ -29,7 +29,7 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(ERS_STRUCT_SystemUtils* SystemUtils
     }
 
     SystemUtils_->Logger_->Log("Creating Reference Loading Thread", 5);
-    WorkerThreads_.push_back(std::thread(&ERS_CLASS_ModelLoader::ReferenceThread, this));
+    ReferenceThread = std::thread(&ERS_CLASS_ModelLoader::ReferenceThread, this);
 
 }
 
@@ -52,20 +52,6 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
         WorkerThreads_[i].join();
     }
     SystemUtils_->Logger_->Log("Finished Joining Worker Threads", 6);
-
-
-    // // Shutdown Threads
-    // SystemUtils_->Logger_->Log("Sending Join Command To Worker Threads", 5);
-    // BlockThread_.lock();
-    // ExitThreads_ = true;
-    // BlockThread_.unlock();
-
-    // SystemUtils_->Logger_->Log("Joining Worker Threads", 6);
-    // for (int i = 0; (long)i < (long)WorkerThreads_.size(); i++) {
-    //     SystemUtils_->Logger_->Log(std::string(std::string("Joining Worker Thread ") + std::to_string(i)).c_str(), 3);
-    //     WorkerThreads_[i].join();
-    // }
-    // SystemUtils_->Logger_->Log("Finished Joining Worker Threads", 6);
 
 
     SystemUtils_->Logger_->Log("Sending Join Command To Reference Thread", 5);
