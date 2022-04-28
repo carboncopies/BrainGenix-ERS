@@ -364,10 +364,10 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
 
 void ERS_CLASS_ModelLoader::AddModelToReferenceQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model) {
 
-    BlockRefThread_.lock();
+    std::unique_lock<std::mutex> RefThreadLock (BlockRefThread_);
     Model->AssetID = AssetID;
     ModelsToRefrence_.push_back(Model);
-    BlockRefThread_.unlock();
+
 
 }
 
@@ -375,14 +375,12 @@ void ERS_CLASS_ModelLoader::AddModelToReferenceQueue(long AssetID, std::shared_p
 void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures) {
 
     // Check If Already In Refs
-    BlockRefThread_.lock();
+    std::unique_lock<std::mutex> RefThreadLock (BlockRefThread_);
     if (CheckIfModelAlreadyLoaded(AssetID) != -1) {
         AddModelToReferenceQueue(AssetID, Model);
-        BlockRefThread_.unlock();
         return;
     } else {
         LoadedModelRefrences_.push_back(Model);
-        BlockRefThread_.unlock();
     }
     
 
