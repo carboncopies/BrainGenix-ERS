@@ -61,12 +61,39 @@ private:
     std::vector<std::shared_ptr<ERS_STRUCT_Model>> WorkItems_; /**<Items For The Worker To Process*/
     std::vector<long> WorkIDs_; /**<Vector Containing IDs*/
     std::vector<bool> FlipTextures_; /**<vector Containing FlipTexture For Work Items*/
+
+    std::vector<std::shared_ptr<ERS_STRUCT_Model>> LoadedModelRefrences_; /**<Used to check if a model has already been loaded*/
+    std::vector<std::shared_ptr<ERS_STRUCT_Model>> ModelsToRefrence_; /**<Models that are wating for the refs to be copied*/
+
     std::vector<std::thread> WorkerThreads_; /**<List of worker threads*/
+    std::thread ModelRefrenceThread_; /**<Thread used to copy refrences from fully loaded models*/
+
     std::mutex BlockThread_; /**<Block Threads From Doing Things*/
+    std::mutex BlockRefThread_; /**<Lock the ref thread from modifying non-threadsafe vars*/
+
     bool ExitThreads_ = false; /**<Set To True To Make Threads Quit*/
+    bool ExitRefThread_ = false; /**Make ref matching thread exit*/
 
-    void WorkerThread(); /**<Worker Thread Function*/
 
+    /**
+     * @brief Thread used to load model(s) from disk/database
+     * 
+     */
+    void WorkerThread();
+
+    /**
+     * @brief Used to match references from models
+     * 
+     */
+    void ReferenceThread();
+
+    /**
+     * @brief Load a texture given the id
+     * 
+     * @param ID 
+     * @param FlipTextures 
+     * @return ERS_STRUCT_Texture 
+     */
     ERS_STRUCT_Texture LoadTexture(long ID, bool FlipTextures = false);
 
     /**
@@ -95,6 +122,22 @@ private:
      * @return std::vector<ERS_STRUCT_Texture> 
      */
     void LoadMaterialTextures(std::vector<int>* IDs, std::vector<std::string>* Types, std::vector<std::string> TextureList, aiMaterial *Mat, aiTextureType Type, std::string TypeName);
+
+    /**
+     * @brief Checks if the target model has already been loaded, and returns refrences when completed.
+     * 
+     * @param AssetID 
+     * @return long 
+     */
+    long CheckIfModelAlreadyLoaded(long AssetID);
+
+    /**
+     * @brief Adds the given model to the queue of models with refs waiting to be copied
+     * 
+     * @param AssetID 
+     * @param Model 
+     */
+    void AddModelToReferenceQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model);
 
 
 public:
@@ -135,6 +178,13 @@ public:
     void ProcessNewModels(ERS_STRUCT_Scene* ActiveScene);
 
 
+    /**
+     * @brief Add a model to the queue to be loaded.
+     * 
+     * @param AssetID 
+     * @param Model 
+     * @param FlipTextures 
+     */
     void AddModelToLoadingQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures = false);
 
 

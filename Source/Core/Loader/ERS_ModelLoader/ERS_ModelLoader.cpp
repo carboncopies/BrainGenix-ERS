@@ -28,12 +28,17 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(ERS_STRUCT_SystemUtils* SystemUtils
         WorkerThreads_.push_back(std::thread(&ERS_CLASS_ModelLoader::WorkerThread, this));
     }
 
+    SystemUtils_->Logger_->Log("Creating Reference Loading Thread", 5);
+    ModelRefrenceThread_ = std::thread(&ERS_CLASS_ModelLoader::ReferenceThread, this);
+
 }
 
 ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 
     SystemUtils_->Logger_->Log("ERS_CLASS_ModelLoader Destructor Called", 6);
     FreeImage_DeInitialise();
+
+
 
     // Shutdown Threads
     SystemUtils_->Logger_->Log("Sending Join Command To Worker Threads", 5);
@@ -47,6 +52,17 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
         WorkerThreads_[i].join();
     }
     SystemUtils_->Logger_->Log("Finished Joining Worker Threads", 6);
+
+
+    SystemUtils_->Logger_->Log("Sending Join Command To Reference Thread", 5);
+    BlockRefThread_.lock();
+    ExitRefThread_ = true;
+    BlockRefThread_.unlock();
+
+    SystemUtils_->Logger_->Log("Joining Reference Loader Thread", 5);
+    ModelRefrenceThread_.join();
+    SystemUtils_->Logger_->Log("Finished Joining Reference Loader Thread", 5);
+
 
 }
 
@@ -123,6 +139,7 @@ void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr
     WorkIDs_.push_back(AssetID);
     WorkItems_.push_back(Model);
     FlipTextures_.push_back(FlipTextures);
+    
 
     BlockThread_.unlock();
 
@@ -139,7 +156,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         glBindTexture(GL_TEXTURE_2D, TextureID);
 
         // Set Texture Properties
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -325,7 +342,71 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
 
 }
 
+void ERS_CLASS_ModelLoader::ReferenceThread() {
+
+    while (!ExitRefThread_) {
+
+        // Check Reference List
+        BlockRefThread_.lock();
+        for (unsigned long i = 0; i < ModelsToRefrence_.size(); i++) {
+            unsigned long TargetID = ModelsToRefrence_[i]->AssetID;
+            long MatchIndex = CheckIfModelAlreadyLoaded(TargetID);
+            if (MatchIndex != -1) {
+                if (LoadedModelRefrences_[MatchIndex]->FullyReady) {
+
+
+                    std::shared_ptr<ERS_STRUCT_Model> Target = ModelsToRefrence_[i];
+                    std::shared_ptr<ERS_STRUCT_Model> Source = LoadedModelRefrences_[MatchIndex];
+
+
+
+                    Target->Meshes = Source->Meshes;
+                    Target->OpenGLTextureIDs_ = Source->OpenGLTextureIDs_;
+                    Target->TextureIDs = Source->TextureIDs;
+                    Target->TotalIndices_ = Source->TotalIndices_;
+                    Target->TotalVertices_ = Source->TotalVertices_;
+                    Target->TotalLoadingTime_ = Source->TotalLoadingTime_;
+                    Target->FullyReady = true;
+
+                    ModelsToRefrence_.erase(ModelsToRefrence_.begin() + i);
+                    BlockRefThread_.unlock();
+                    break;
+                }
+            }
+
+        }
+        BlockRefThread_.unlock();
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(2));
+
+    }
+
+}
+
+void ERS_CLASS_ModelLoader::AddModelToReferenceQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model) {
+
+    Model->AssetID = AssetID;
+
+    std::cout<<Model->Name<<"|"<<Model->AssetID<<std::endl;
+
+    ModelsToRefrence_.push_back(Model);
+
+}
+
+
 void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures) {
+
+    // Check If Already In Refs
+    BlockRefThread_.lock();
+    if (CheckIfModelAlreadyLoaded(AssetID) != -1) {
+        AddModelToReferenceQueue(AssetID, Model);
+        BlockRefThread_.unlock();
+        return;
+    } else {
+        LoadedModelRefrences_.push_back(Model);
+        BlockRefThread_.unlock();
+    }
+    
 
     // Log Loading For Debugging Purposes
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Model '") + std::to_string(AssetID) + std::string("'")).c_str(), 4);
@@ -403,6 +484,22 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
 
     // Set Ready For GPU
     Model->IsReadyForGPU = true;
+}
+
+long ERS_CLASS_ModelLoader::CheckIfModelAlreadyLoaded(long AssetID) {
+
+    long Index = -1;    
+
+    // Iterate Through List OF Models Aready Loading/Loaded
+    for (unsigned long i = 0; i < LoadedModelRefrences_.size(); i++) {
+        LoadedModelRefrences_[i]->AssetID;
+        if (LoadedModelRefrences_[i]->AssetID == AssetID) {
+            Index = i;
+        }
+    }
+
+    return Index;
+
 }
 
 void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::vector<std::string> TexturePaths) {
