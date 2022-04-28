@@ -417,6 +417,8 @@ long ERS_CLASS_ModelLoader::CheckIfModelAlreadyLoaded(long AssetID) {
         }
     }
 
+    return Index;
+
 }
 
 void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::vector<std::string> TexturePaths) {
