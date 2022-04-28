@@ -358,7 +358,7 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
                     Target->TotalLoadingTime_ = Source->TotalLoadingTime_;
                     Target->FullyReady = true;
 
-                    LoadedModelRefrences_.erase(LoadedModelRefrences_.begin() + MatchIndex);
+                    ModelsToRefrence_.erase(ModelsToRefrence_.begin() + MatchIndex);
                     BlockRefThread_.unlock();
                     break;
                 }
