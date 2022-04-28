@@ -382,8 +382,9 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
         return;
     } else {
         LoadedModelRefrences_.push_back(Model);
+        BlockRefThread_.unlock();
     }
-    BlockRefThread_.unlock();
+    
 
     // Log Loading For Debugging Purposes
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Model '") + std::to_string(AssetID) + std::string("'")).c_str(), 4);
