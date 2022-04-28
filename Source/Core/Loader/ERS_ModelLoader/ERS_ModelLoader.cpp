@@ -346,13 +346,17 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
 
         // Check Reference List
         BlockRefThread_.lock();
-        for (unsigned long i = ModelsToRefrence_.size()-1; i > 0; i--) {
+        for (unsigned long i = 0; i < ModelsToRefrence_.size(); i++) {
             unsigned long TargetID = ModelsToRefrence_[i]->AssetID;
             long MatchIndex = CheckIfModelAlreadyLoaded(TargetID);
             if (MatchIndex != -1) {
                 if (LoadedModelRefrences_[MatchIndex]->FullyReady) {
+
+
                     std::shared_ptr<ERS_STRUCT_Model> Target = ModelsToRefrence_[i];
                     std::shared_ptr<ERS_STRUCT_Model> Source = LoadedModelRefrences_[MatchIndex];
+
+                    std::cout<<Target->Name<<std::endl;
 
                     Target->Meshes = Source->Meshes;
                     Target->OpenGLTextureIDs_ = Source->OpenGLTextureIDs_;
@@ -364,7 +368,7 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
 
                     ModelsToRefrence_.erase(ModelsToRefrence_.begin() + MatchIndex);
                     BlockRefThread_.unlock();
-
+                    break;
                 }
             }
 
