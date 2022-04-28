@@ -135,6 +135,13 @@ public:
     void ProcessNewModels(ERS_STRUCT_Scene* ActiveScene);
 
 
+    /**
+     * @brief Add a model to the queue to be loaded.
+     * 
+     * @param AssetID 
+     * @param Model 
+     * @param FlipTextures 
+     */
     void AddModelToLoadingQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures = false);
 
 
