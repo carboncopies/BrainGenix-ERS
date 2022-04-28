@@ -343,20 +343,18 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
         std::cout<<ModelsToRefrence_.size()<<std::endl;
 
         // Check Reference List
-        {
-            std::unique_lock<std::mutex> RefThreadLock (BlockRefThread_);
-
-            for (unsigned long i = 0; i < ModelsToRefrence_.size(); i++) {
-                unsigned long TargetID = ModelsToRefrence_[i]->AssetID;
-                long MatchIndex = CheckIfModelAlreadyLoaded(TargetID);
-                if (MatchIndex != -1) {
-                    if (LoadedModelRefrences_[MatchIndex]->FullyReady) {
-                        ModelsToRefrence_[i] = LoadedModelRefrences_[MatchIndex];
-                    }
+        BlockRefThread_.lock();
+        for (unsigned long i = 0; i < ModelsToRefrence_.size(); i++) {
+            unsigned long TargetID = ModelsToRefrence_[i]->AssetID;
+            long MatchIndex = CheckIfModelAlreadyLoaded(TargetID);
+            if (MatchIndex != -1) {
+                if (LoadedModelRefrences_[MatchIndex]->FullyReady) {
+                    ModelsToRefrence_[i] = LoadedModelRefrences_[MatchIndex];
                 }
-
             }
+
         }
+        BlockRefThread_.unlock();
 
         std::this_thread::sleep_for(std::chrono::milliseconds(2));
 
@@ -366,10 +364,8 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
 
 void ERS_CLASS_ModelLoader::AddModelToReferenceQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model) {
 
-    std::unique_lock<std::mutex> RefThreadLock (BlockRefThread_);
     Model->AssetID = AssetID;
     ModelsToRefrence_.push_back(Model);
-
 
 }
 
@@ -377,12 +373,14 @@ void ERS_CLASS_ModelLoader::AddModelToReferenceQueue(long AssetID, std::shared_p
 void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures) {
 
     // Check If Already In Refs
-    std::unique_lock<std::mutex> RefThreadLock (BlockRefThread_);
+    BlockRefThread_.lock();
     if (CheckIfModelAlreadyLoaded(AssetID) != -1) {
         AddModelToReferenceQueue(AssetID, Model);
+        BlockRefThread_.unlock();
         return;
     } else {
         LoadedModelRefrences_.push_back(Model);
+        BlockRefThread_.unlock();
     }
     
 
