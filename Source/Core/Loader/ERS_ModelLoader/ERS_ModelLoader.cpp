@@ -356,10 +356,11 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
                     Target->TotalIndices_ = Source->TotalIndices_;
                     Target->TotalVertices_ = Source->TotalVertices_;
                     Target->TotalLoadingTime_ = Source->TotalLoadingTime_;
-                    
-
                     Target->FullyReady = true;
 
+                    LoadedModelRefrences_.erase(LoadedModelRefrences_.begin() + MatchIndex);
+                    BlockRefThread_.unlock();
+                    break;
                 }
             }
 
