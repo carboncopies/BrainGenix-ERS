@@ -51,8 +51,10 @@
 
 
 
-/**
- * @brief Class for loading models (fbx, gltx, etc.) based on the ASSIMP library
+/**/**
+ * @brief 
+ * 
+ */
  * 
  */
 class ERS_CLASS_ModelLoader {
