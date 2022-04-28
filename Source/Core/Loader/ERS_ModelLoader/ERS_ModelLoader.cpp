@@ -339,6 +339,8 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
 
     while (!ExitRefThread_) {
         
+        std::cout<<ModelsToRefrence_.size()<<std::endl;
+
         // Check Reference List
         BlockRefThread_.lock();
         for (unsigned long i = 0; i < ModelsToRefrence_.size(); i++) {
