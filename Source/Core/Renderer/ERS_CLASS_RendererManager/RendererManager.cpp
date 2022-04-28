@@ -30,6 +30,8 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
     LoadEditorData();
     VisualRenderer_->SetOpenGLDefaults(OpenGLDefaults_.get());
 
+    // Debugging test, to see if this fixes the access violations
+    glEnable(GL_TEXTURE_2D);
 
     // Setup Shaders
     ShaderLoader_ = std::make_unique<ERS_CLASS_ShaderLoader>(SystemUtils_);
