@@ -72,6 +72,7 @@ private:
     std::mutex BlockRefThread_; /**<Lock the ref thread from modifying non-threadsafe vars*/
 
     bool ExitThreads_ = false; /**<Set To True To Make Threads Quit*/
+    bool ExitRefThread_ = false; /**Make ref matching thread exit*/
 
 
     /**
