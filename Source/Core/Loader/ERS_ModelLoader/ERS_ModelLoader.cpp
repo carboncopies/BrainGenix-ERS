@@ -385,7 +385,7 @@ void ERS_CLASS_ModelLoader::AddModelToReferenceQueue(long AssetID, std::shared_p
 
     Model->AssetID = AssetID;
 
-    std::cout<<Model->Name<<"|"<<Model->AssetID<std::endl;
+    std::cout<<Model->Name<<"|"<<Model->AssetID<<std::endl;
 
     ModelsToRefrence_.push_back(Model);
 
