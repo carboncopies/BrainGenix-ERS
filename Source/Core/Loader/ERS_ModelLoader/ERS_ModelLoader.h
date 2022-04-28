@@ -47,17 +47,7 @@
 // FIXME: Implement multithreaded image preloading?
 
 
-// Force Windows To Use Dedicated GPU
-#ifdef _WIN32
-    extern "C" 
-    {
-    _declspec(dllexport) unsigned long NvOptimusEnablement = 0x00000001;
-    }
-    extern "C"
-    {
-    __declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
-    }
-#endif
+
 
 
 
