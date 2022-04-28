@@ -343,18 +343,20 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
         std::cout<<ModelsToRefrence_.size()<<std::endl;
 
         // Check Reference List
-        BlockRefThread_.lock();
-        for (unsigned long i = 0; i < ModelsToRefrence_.size(); i++) {
-            unsigned long TargetID = ModelsToRefrence_[i]->AssetID;
-            long MatchIndex = CheckIfModelAlreadyLoaded(TargetID);
-            if (MatchIndex != -1) {
-                if (LoadedModelRefrences_[MatchIndex]->FullyReady) {
-                    ModelsToRefrence_[i] = LoadedModelRefrences_[MatchIndex];
-                }
-            }
+        {
+            std::unique_lock<std::mutex> RefThreadLock (BlockRefThread_);
 
+            for (unsigned long i = 0; i < ModelsToRefrence_.size(); i++) {
+                unsigned long TargetID = ModelsToRefrence_[i]->AssetID;
+                long MatchIndex = CheckIfModelAlreadyLoaded(TargetID);
+                if (MatchIndex != -1) {
+                    if (LoadedModelRefrences_[MatchIndex]->FullyReady) {
+                        ModelsToRefrence_[i] = LoadedModelRefrences_[MatchIndex];
+                    }
+                }
+
+            }
         }
-        BlockRefThread_.unlock();
 
         std::this_thread::sleep_for(std::chrono::milliseconds(2));
 
