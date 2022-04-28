@@ -67,8 +67,10 @@ private:
     
     std::vector<std::thread> WorkerThreads_; /**<List of worker threads*/
     std::thread ModelRefrenceThread_; /**<Thread used to copy refrences from fully loaded models*/
+    
     std::mutex BlockThread_; /**<Block Threads From Doing Things*/
     std::mutex BlockRefThread_; /**<Lock the ref thread from modifying non-threadsafe vars*/
+
     bool ExitThreads_ = false; /**<Set To True To Make Threads Quit*/
 
     void WorkerThread(); /**<Worker Thread Function*/
