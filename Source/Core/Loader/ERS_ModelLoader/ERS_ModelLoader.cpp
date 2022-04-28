@@ -42,7 +42,6 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
     SystemUtils_->Logger_->Log("Sending Join Command To Worker Threads", 5);
     BlockThread_.lock();
     ExitThreads_ = true;
-    ExitRefThread_ = true;
     BlockThread_.unlock();
 
     SystemUtils_->Logger_->Log("Joining Worker Threads", 6);
@@ -52,6 +51,11 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
     }
     SystemUtils_->Logger_->Log("Finished Joining Worker Threads", 6);
 
+
+    SystemUtils_->Logger_->Log("Sending Join Command To Reference Thread", 5);
+    BlockRefThread_.lock();
+    ExitRefThread_ = true;
+    BlockRefThread_.unlock();
 
     SystemUtils_->Logger_->Log("Joining Reference Loader Thread", 5);
     ModelRefrenceThread_.join();
