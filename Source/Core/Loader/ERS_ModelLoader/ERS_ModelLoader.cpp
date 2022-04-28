@@ -378,6 +378,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     BlockRefThread_.lock();
     if (CheckIfModelAlreadyLoaded(AssetID) != -1) {
         AddModelToReferenceQueue(AssetID, Model);
+        BlockRefThread_.unlock();
         return;
     } else {
         LoadedModelRefrences_.push_back(Model);
