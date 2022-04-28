@@ -339,8 +339,6 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
 void ERS_CLASS_ModelLoader::ReferenceThread() {
 
     while (!ExitRefThread_) {
-        
-        std::cout<<ModelsToRefrence_.size()<<std::endl;
 
         // Check Reference List
         BlockRefThread_.lock();
@@ -356,7 +354,7 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
         }
         BlockRefThread_.unlock();
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(2));
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
     }
 
