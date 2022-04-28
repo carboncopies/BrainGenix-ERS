@@ -406,6 +406,19 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     Model->IsReadyForGPU = true;
 }
 
+long ERS_CLASS_ModelLoader::CheckIfModelAlreadyLoaded(long AssetID) {
+
+    long Index = -1;    
+
+    // Iterate Through List OF Models Aready Loading/Loaded
+    for (unsigned long i = 0; i < LoadedModelRefrences_.size(); i++) {
+        if (LoadedModelRefrences_[i]->AssetID == AssetID) {
+            Index = i;
+        }
+    }
+
+}
+
 void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::vector<std::string> TexturePaths) {
 
 

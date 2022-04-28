@@ -101,10 +101,9 @@ private:
      * @brief Checks if the target model has already been loaded, and returns refrences when completed.
      * 
      * @param AssetID 
-     * @return true 
-     * @return false 
+     * @return long 
      */
-    bool CheckIfModelAlreadyLoaded(long AssetID);
+    long CheckIfModelAlreadyLoaded(long AssetID);
 
 
 public:
