@@ -51,7 +51,7 @@
 #ifdef _WIN32
     extern "C" 
     {
-  _     declspec(dllexport) unsigned long NvOptimusEnablement = 0x00000001;
+    _declspec(dllexport) unsigned long NvOptimusEnablement = 0x00000001;
     }
     extern "C"
     {
