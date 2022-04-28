@@ -1,0 +1,9 @@
+Name: /home/tliao/Desktop/EGSC_MVP/AssetSource/FightingMechanic/Third-Party/Barrel03/2K/barrel_03_2k.fbx
+ModelID: 1224950504
+TextureIDs:
+  textures\barrel_03_diff_2k.jpg: 847065284
+  textures\barrel_03_metal_2k.exr: 1756141961
+  textures\barrel_03_nor_gl_2k.exr: 1333102871
+  textures\barrel_03_rough_2k.jpg: 1402757478
+Vertices: 21600
+Indices: 68235
