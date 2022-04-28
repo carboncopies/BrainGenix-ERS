@@ -132,7 +132,7 @@ void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr
     WorkIDs_.push_back(AssetID);
     WorkItems_.push_back(Model);
     FlipTextures_.push_back(FlipTextures);
-    LoadedModelRefrences_.push_back(Model);
+    
 
     BlockThread_.unlock();
 
@@ -373,6 +373,8 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     if (CheckIfModelAlreadyLoaded(AssetID) != -1) {
         AddModelToReferenceQueue(AssetID, Model);
         return;
+    } else {
+        LoadedModelRefrences_.push_back(Model);
     }
 
     // Log Loading For Debugging Purposes
