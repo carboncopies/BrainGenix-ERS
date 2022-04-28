@@ -31,6 +31,10 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(ERS_STRUCT_SystemUtils* SystemUtils
     SystemUtils_->Logger_->Log("Creating Reference Loading Thread", 5);
     ModelRefrenceThread_ = std::thread(&ERS_CLASS_ModelLoader::ReferenceThread, this);
 
+    // Explicetly Enable 2D (Image) Textures In OpenGL
+    glEnable(GL_TEXTURE_2D);
+
+
 }
 
 ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
