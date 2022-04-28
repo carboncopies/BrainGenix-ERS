@@ -347,7 +347,19 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
             long MatchIndex = CheckIfModelAlreadyLoaded(TargetID);
             if (MatchIndex != -1) {
                 if (LoadedModelRefrences_[MatchIndex]->FullyReady) {
-                    ModelsToRefrence_[i] = LoadedModelRefrences_[MatchIndex];
+                    std::shared_ptr<ERS_STRUCT_Model> Target = ModelsToRefrence_[i];
+                    std::shared_ptr<ERS_STRUCT_Model> Source = LoadedModelRefrences_[MatchIndex];
+
+                    Target->Meshes = Source->Meshes;
+                    Target->OpenGLTextureIDs_ = Source->OpenGLTextureIDs_;
+                    Target->TextureIDs = Source->TextureIDs;
+                    Target->TotalIndices_ = Source->TotalIndices_;
+                    Target->TotalVertices_ = Source->TotalVertices_;
+                    Target->TotalLoadingTime_ = Source->TotalLoadingTime_;
+                    
+
+                    Target->FullyReady = true;
+
                 }
             }
 
