@@ -165,7 +165,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         unsigned char* RawImageData = Model->TexturesToPushToGPU_[i].ImageBytes;
 
         if (RawImageData != NULL) {
-            
+            std::cout << "Using FreeImage: " << Model->TexturesToPushToGPU_[i].FreeImageBackend << "|"<< Model->TexturesToPushToGPU_[i].Channels <<std::endl;
             if (Model->TexturesToPushToGPU_[i].FreeImageBackend) {
                 if (Model->TexturesToPushToGPU_[i].Channels == 4) {
                     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
@@ -183,8 +183,6 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
                     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, RawImageData);
                 } else if (Model->TexturesToPushToGPU_[i].Channels == 3) {
                     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RGB, GL_UNSIGNED_BYTE, RawImageData);
-                } else if (Model->TexturesToPushToGPU_[i].Channels == 2) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RG, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RG, GL_UNSIGNED_BYTE, RawImageData);
                 } else if (Model->TexturesToPushToGPU_[i].Channels == 1) {
                     glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RED, GL_UNSIGNED_BYTE, RawImageData);
                 } else {
