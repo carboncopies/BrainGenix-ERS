@@ -73,8 +73,26 @@ private:
 
     bool ExitThreads_ = false; /**<Set To True To Make Threads Quit*/
 
-    void WorkerThread(); /**<Worker Thread Function*/
 
+    /**
+     * @brief Thread used to load model(s) from disk/database
+     * 
+     */
+    void WorkerThread();
+
+    /**
+     * @brief Used to match references from models
+     * 
+     */
+    void ReferenceThread();
+
+    /**
+     * @brief Load a texture given the id
+     * 
+     * @param ID 
+     * @param FlipTextures 
+     * @return ERS_STRUCT_Texture 
+     */
     ERS_STRUCT_Texture LoadTexture(long ID, bool FlipTextures = false);
 
     /**
