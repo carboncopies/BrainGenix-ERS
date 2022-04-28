@@ -28,6 +28,9 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(ERS_STRUCT_SystemUtils* SystemUtils
         WorkerThreads_.push_back(std::thread(&ERS_CLASS_ModelLoader::WorkerThread, this));
     }
 
+    SystemUtils_->Logger_->Log("Creating Reference Loading Thread", 5);
+    WorkerThreads_.push_back(std::thread(&ERS_CLASS_ModelLoader::ReferenceThread, this));
+
 }
 
 ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
@@ -47,6 +50,11 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
         WorkerThreads_[i].join();
     }
     SystemUtils_->Logger_->Log("Finished Joining Worker Threads", 6);
+
+    SystemUtils_->Logger_->Log("Joining Reference Loader Thread", 6);
+    ModelRefrenceThread_.join();
+    SystemUtils_->Logger_->Log("Finished Joining Reference Loader Thread", 6);
+
 
 }
 
@@ -328,7 +336,23 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
 
 void ERS_CLASS_ModelLoader::ReferenceThread() {
 
-    //
+    while (!ExitRefThread_) {
+        
+        // Check Reference List
+        BlockRefThread_.lock();
+        for (unsigned long i = 0; i < ModelsToRefrence_.size(); i++) {
+            unsigned long TargetID = ModelsToRefrence_[i]->AssetID;
+            long MatchIndex = CheckIfModelAlreadyLoaded(TargetID);
+            if (MatchIndex != -1) {
+                if (LoadedModelRefrences_[MatchIndex]->FullyReady) {
+                    ModelsToRefrence_[i] = LoadedModelRefrences_[MatchIndex];
+                }
+            }
+
+        }
+        BlockRefThread_.unlock();
+
+    }
 
 }
 
