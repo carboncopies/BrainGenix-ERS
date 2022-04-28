@@ -346,7 +346,7 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
 
         // Check Reference List
         BlockRefThread_.lock();
-        for (unsigned long i = 0; i < ModelsToRefrence_.size(); i++) {
+        for (unsigned long i = ModelsToRefrence_.size(); i > 0; i--) {
             unsigned long TargetID = ModelsToRefrence_[i]->AssetID;
             long MatchIndex = CheckIfModelAlreadyLoaded(TargetID);
             if (MatchIndex != -1) {
@@ -364,7 +364,7 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
 
                     ModelsToRefrence_.erase(ModelsToRefrence_.begin() + MatchIndex);
                     BlockRefThread_.unlock();
-                    break;
+
                 }
             }
 
