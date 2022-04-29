@@ -264,6 +264,9 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
 
     // Identify Image Format, Decode
     bool FreeImageLoadFail = false;
+    ERS_STRUCT_Texture Texture;
+
+
     FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData->Data.get(), ImageData->Size_B);
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
     try {
@@ -276,7 +279,6 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
         }
 
         // Get Metadata
-        ERS_STRUCT_Texture Texture;
         Texture.HasImageData = false;
         Texture.ImageData = NULL;
         float Width, Height, Channels;
