@@ -300,7 +300,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
             FreeImageLoadFail = true;
         }
 
-    } catch (char const*) {
+    } catch (const char*) {
         SystemUtils_->Logger_->Log(std::string("FreeImage Loading Failed Reporting Corrupted Image On Texture '") + std::to_string(ID) + std::string("' Falling Back To STB_Image"), 7);
         FreeImageLoadFail = true;
     }
