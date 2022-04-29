@@ -264,6 +264,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
 
     // Setup Vars
     bool FreeImageLoadFail = false;
+    float Width, Height, Channels;
     ERS_STRUCT_Texture Texture;
     FIBITMAP* Image;
 
@@ -283,7 +284,6 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
         // Get Metadata
         Texture.HasImageData = false;
         Texture.ImageData = NULL;
-        float Width, Height, Channels;
         if (FreeImage_GetWidth(Image) != 0) {
             Width = FreeImage_GetWidth(Image);
             Height = FreeImage_GetHeight(Image);
