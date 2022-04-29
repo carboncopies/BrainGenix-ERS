@@ -150,24 +150,32 @@ void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr
 
 void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) {
 
+        
+
     // Push Textures To GPU RAM
     for (unsigned long i = 0; i < Model->TexturesToPushToGPU_.size(); i++) {
+        std::cout << "1\n";
 
         // Generate Texture
         unsigned int TextureID;
         glGenTextures(1, &TextureID);
         glBindTexture(GL_TEXTURE_2D, TextureID);
+        std::cout << "2\n";
 
         // Set Texture Properties
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        std::cout << "3\n";
 
         // Convert FIBITMAP* To Raw Image Bytes
         unsigned char* RawImageData = Model->TexturesToPushToGPU_[i].ImageBytes;
+        std::cout << "4\n";
 
         if (RawImageData != NULL) {
+            std::cout << "5\n";
+
             if (Model->TexturesToPushToGPU_[i].FreeImageBackend) {
                 if (Model->TexturesToPushToGPU_[i].Channels == 4) {
                     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
@@ -194,10 +202,13 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
                 }  
             }
             glGenerateMipmap(GL_TEXTURE_2D);
+            std::cout << "6\n";
 
         } else {
             SystemUtils_->Logger_->Log("Texture Failed To Load, Cannot Push To GPU", 9);
         }
+
+
 
         // Unload Image Data
         if (Model->TexturesToPushToGPU_[i].FreeImageBackend) {
@@ -210,8 +221,11 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         Model->OpenGLTextureIDs_.push_back(TextureID);
     }
 
+
+
     // Erase List To Save Memory
     Model->TexturesToPushToGPU_.erase(Model->TexturesToPushToGPU_.begin(), Model->TexturesToPushToGPU_.end());
+
 
 
     // Collect Vertex Count Analytics
@@ -239,6 +253,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         Model->Meshes[i].SetupMesh();
         // Perhaps save mem by erasing the vertices after pusning? (also indices)
     }
+
 
     Model->LoadingFinishTime_ = glfwGetTime();
     Model->TotalLoadingTime_ = Model->LoadingFinishTime_ - Model->LoadingStartTime_;
