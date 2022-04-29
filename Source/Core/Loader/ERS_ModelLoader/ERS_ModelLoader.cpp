@@ -386,9 +386,6 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
 void ERS_CLASS_ModelLoader::AddModelToReferenceQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model) {
 
     Model->AssetID = AssetID;
-
-    std::cout<<Model->Name<<"|"<<Model->AssetID<<std::endl;
-
     ModelsToRefrence_.push_back(Model);
 
 }
