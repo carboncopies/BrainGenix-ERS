@@ -396,16 +396,18 @@ void ERS_CLASS_ModelLoader::AddModelToReferenceQueue(long AssetID, std::shared_p
 void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures) {
 
     // Check If Already In Refs
-    BlockRefThread_.lock();
-    if (CheckIfModelAlreadyLoaded(AssetID) != -1) {
-        AddModelToReferenceQueue(AssetID, Model);
-        BlockRefThread_.unlock();
-        return;
-    } else {
-        LoadedModelRefrences_.push_back(Model);
-        BlockRefThread_.unlock();
+    if (EnableReferenceLoading_) {
+        BlockRefThread_.lock();
+        if (CheckIfModelAlreadyLoaded(AssetID) != -1) {
+            AddModelToReferenceQueue(AssetID, Model);
+            BlockRefThread_.unlock();
+            return;
+        }
+        else {
+            LoadedModelRefrences_.push_back(Model);
+            BlockRefThread_.unlock();
+        }
     }
-    
 
     // Log Loading For Debugging Purposes
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Model '") + std::to_string(AssetID) + std::string("'")).c_str(), 4);
