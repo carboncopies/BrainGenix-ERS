@@ -158,6 +158,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         // Generate Texture
         unsigned int TextureID;
         glGenTextures(1, &TextureID);
+        std::cout << std::endl << TextureID << std::endl;
         glBindTexture(GL_TEXTURE_2D, TextureID);
 
         // Set Texture Properties
@@ -171,7 +172,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
 
         if (RawImageData != NULL) {
             if (Model->TexturesToPushToGPU_[i].FreeImageBackend) {
-                std::cout << "\n1\n";
+                std::cout << "1\n";
                 std::cout << "Channels: " << Model->TexturesToPushToGPU_[i].Channels << std::endl;
                 std::cout << "Width: " << Model->TexturesToPushToGPU_[i].Width << " Height: " << Model->TexturesToPushToGPU_[i].Height << std::endl;
                 if (Model->TexturesToPushToGPU_[i].Channels == 4) {
