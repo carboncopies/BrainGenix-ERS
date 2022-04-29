@@ -262,21 +262,23 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
     std::unique_ptr<ERS_STRUCT_IOData> ImageData = std::make_unique<ERS_STRUCT_IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(ID, ImageData.get());
 
-    // Identify Image Format, Decode
+    // Setup Vars
     bool FreeImageLoadFail = false;
     ERS_STRUCT_Texture Texture;
+    FIBITMAP* Image;
 
-
+    // Identify Image Format, Decode
     FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData->Data.get(), ImageData->Size_B);
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
     try {
-        FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
+        Image = FreeImage_LoadFromMemory(Format, FIImageData);
         FreeImage_CloseMemory(FIImageData);
 
         // Flip If Needed
         if (FlipTextures) {
             FreeImage_FlipVertical(Image);
         }
+
 
         // Get Metadata
         Texture.HasImageData = false;
@@ -298,12 +300,12 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
             FreeImageLoadFail = true;
         }
 
-
     } catch (char const*) {
-        SystemUtils_->Logger_->Log(std::string("FreeImage Loading Error, Corrupted Image On Texture '") + std::to_string(ID) + std::string("' Falling Back To STB_Image"), 7);
+        SystemUtils_->Logger_->Log(std::string("FreeImage Loading Failed Reporting Corrupted Image On Texture '") + std::to_string(ID) + std::string("' Falling Back To STB_Image"), 7);
         FreeImageLoadFail = true;
     }
 
+    
 
 
     // If FreeImage Failed, Try STB
