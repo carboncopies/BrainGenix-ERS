@@ -32,8 +32,6 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(ERS_STRUCT_SystemUtils* SystemUtils
     ModelRefrenceThread_ = std::thread(&ERS_CLASS_ModelLoader::ReferenceThread, this);
 
 
-
-
 }
 
 ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
@@ -193,7 +191,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
                     SystemUtils_->Logger_->Log(std::string("Texture With ID '") + Model->TexturesToPushToGPU_[i].Path + std::string("' For Model '") + Model->Name + std::string("' Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
                 }  
             }
-            //glGenerateMipmap(GL_TEXTURE_2D);
+            glGenerateMipmap(GL_TEXTURE_2D);
 
         } else {
             SystemUtils_->Logger_->Log("Texture Failed To Load, Cannot Push To GPU", 9);
