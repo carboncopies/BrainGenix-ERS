@@ -262,50 +262,38 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
     std::unique_ptr<ERS_STRUCT_IOData> ImageData = std::make_unique<ERS_STRUCT_IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(ID, ImageData.get());
 
-    // Setup Vars
-    bool FreeImageLoadFail = false;
-    float Width, Height, Channels;
-    ERS_STRUCT_Texture Texture;
-    FIBITMAP* Image;
-
     // Identify Image Format, Decode
+    bool FreeImageLoadFail = false;
     FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData->Data.get(), ImageData->Size_B);
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-    try {
-        Image = FreeImage_LoadFromMemory(Format, FIImageData);
-        FreeImage_CloseMemory(FIImageData);
+    FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
+    FreeImage_CloseMemory(FIImageData);
 
-        // Flip If Needed
-        if (FlipTextures) {
-            FreeImage_FlipVertical(Image);
-        }
+    // Flip If Needed
+    if (FlipTextures) {
+        FreeImage_FlipVertical(Image);
+    }
 
 
-        // Get Metadata
-        Texture.HasImageData = false;
-        Texture.ImageData = NULL;
-        if (FreeImage_GetWidth(Image) != 0) {
-            Width = FreeImage_GetWidth(Image);
-            Height = FreeImage_GetHeight(Image);
-            Channels = FreeImage_GetLine(Image) / FreeImage_GetWidth(Image);
-        }
-        else {
-            SystemUtils_->Logger_->Log(std::string("FreeImage Error Loading Texture '") + std::to_string(ID) + std::string("' , Width/Height Are Zero Falling Back To STB_Image"), 7);
-            FreeImageLoadFail = true;
-        }
-
-        // Channel Sanity Check
-        if ((Channels < 1) || (Channels > 4)) {
-            SystemUtils_->Logger_->Log(std::string("FreeImage Failed Identify Number Of Channels On Texture '") + std::to_string(ID) + std::string("' Falling Back To STB_Image"), 7);
-            FreeImageLoadFail = true;
-        }
-
-    } catch (const char*) {
-        SystemUtils_->Logger_->Log(std::string("FreeImage Loading Failed Reporting Corrupted Image On Texture '") + std::to_string(ID) + std::string("' Falling Back To STB_Image"), 7);
+    // Get Metadata
+    ERS_STRUCT_Texture Texture;
+    Texture.HasImageData = false;
+    Texture.ImageData = NULL;
+    float Width, Height, Channels;
+    if (FreeImage_GetWidth(Image) != 0) {
+        Width = FreeImage_GetWidth(Image);
+        Height = FreeImage_GetHeight(Image);
+        Channels = FreeImage_GetLine(Image) / FreeImage_GetWidth(Image);
+    } else {
+        SystemUtils_->Logger_->Log(std::string("FreeImage Error Loading Texture '") + std::to_string(ID) + std::string("' , Width/Height Are Zero Falling Back To STB_Image"), 7);
         FreeImageLoadFail = true;
     }
 
-    
+    // Channel Sanity Check
+    if ((Channels < 1) || (Channels > 4)) {
+        SystemUtils_->Logger_->Log(std::string("FreeImage Failed Identify Number Of Channels On Texture '") + std::to_string(ID) + std::string("' Falling Back To STB_Image"), 7);
+        FreeImageLoadFail = true;
+    }
 
 
     // If FreeImage Failed, Try STB
