@@ -307,7 +307,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
     ERS_STRUCT_Texture Texture;
     Texture.HasImageData = false;
     Texture.ImageData = NULL;
-    float Width, Height, Channels;
+    int Width, Height, Channels;
     if (FreeImage_GetWidth(Image) != 0) {
         Width = FreeImage_GetWidth(Image);
         Height = FreeImage_GetHeight(Image);
