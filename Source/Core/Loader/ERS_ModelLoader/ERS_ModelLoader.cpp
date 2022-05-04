@@ -332,7 +332,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
         
         // Perform Sanity Checks
         if ((Channels < 1) || (Channels > 4)) {
-            SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed On Texture '") + std::to_string(ID) + std::string("' , Image Has Invalid Number Of Channels '") + std::to_string(SChannels) + std::string("'"), 8);
+            SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed On Texture '") + std::to_string(ID) + std::string("' , Image Has Invalid Number Of Channels '") + std::to_string(Channels) + std::string("'"), 8);
             return Texture;
         }
         if ((Width <= 0) || (Height <= 0)) {
