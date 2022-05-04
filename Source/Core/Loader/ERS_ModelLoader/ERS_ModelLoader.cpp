@@ -171,14 +171,8 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         unsigned char* RawImageData = Model->TexturesToPushToGPU_[i].ImageBytes;
 
         if (RawImageData != NULL) {
-            std::cout<<Model->TexturesToPushToGPU_[i].FreeImageBackend<<std::endl;
             if (Model->TexturesToPushToGPU_[i].FreeImageBackend) {
-                std::cout << "1\n";
-                std::cout << "Channels: " << Model->TexturesToPushToGPU_[i].Channels << std::endl;
-                std::cout << "Width: " << Model->TexturesToPushToGPU_[i].Width << " Height: " << Model->TexturesToPushToGPU_[i].Height << std::endl;
                 if (Model->TexturesToPushToGPU_[i].Channels == 4) {
-                    std::cout << "2\n";
-
                     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
                 } else if (Model->TexturesToPushToGPU_[i].Channels == 3) {
                     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
