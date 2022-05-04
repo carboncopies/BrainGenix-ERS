@@ -297,7 +297,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
 
 
     // If FreeImage Failed, Try STB
-    if (FreeImageLoadFail) {
+    if (true) {
 
         int SWidth, SHeight, SChannels;
         unsigned char *ImageBytes = stbi_load_from_memory(ImageData->Data.get(), ImageData->Size_B, &SWidth, &SHeight, &SChannels, 0); 
