@@ -171,6 +171,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         unsigned char* RawImageData = Model->TexturesToPushToGPU_[i].ImageBytes;
 
         if (RawImageData != NULL) {
+            std::cout<<Model->TexturesToPushToGPU_[i].FreeImageBackend<<std::endl;
             if (Model->TexturesToPushToGPU_[i].FreeImageBackend) {
                 std::cout << "1\n";
                 std::cout << "Channels: " << Model->TexturesToPushToGPU_[i].Channels << std::endl;
