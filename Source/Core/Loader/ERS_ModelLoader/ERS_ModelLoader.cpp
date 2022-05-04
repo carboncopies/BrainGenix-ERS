@@ -197,7 +197,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
                     SystemUtils_->Logger_->Log(std::string("Texture With ID '") + Model->TexturesToPushToGPU_[i].Path + std::string("' For Model '") + Model->Name + std::string("' Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
                 }
                 std::cout << "6\n";
-                std::cout<<glGetError();
+                std::cout<<glGetError()<<std::endl;
 
             } else {
                 if (Model->TexturesToPushToGPU_[i].Channels == 4) {
