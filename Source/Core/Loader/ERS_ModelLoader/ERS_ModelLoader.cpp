@@ -325,47 +325,37 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
 
 
     // If FreeImage Failed, Try STB
-    //if (true) {
+    if (FreeImageLoadFail) {
 
-        int SWidth, SHeight, SChannels;
-        unsigned char *ImageBytes = stbi_load_from_memory(ImageData->Data.get(), ImageData->Size_B, &SWidth, &SHeight, &SChannels, 0); 
+        
+        Texture.ImageBytes = stbi_load_from_memory(ImageData->Data.get(), ImageData->Size_B, &Width, &Height, &Channels, 0); 
         
         // Perform Sanity Checks
-        if ((SChannels < 1) || (SChannels > 4)) {
+        if ((Channels < 1) || (Channels > 4)) {
             SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed On Texture '") + std::to_string(ID) + std::string("' , Image Has Invalid Number Of Channels '") + std::to_string(SChannels) + std::string("'"), 8);
             return Texture;
         }
-        if ((SWidth <= 0) || (SHeight <= 0)) {
+        if ((Width <= 0) || (Height <= 0)) {
             SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed On Texture '") + std::to_string(ID) + std::string("' , Image Has Invalid Width/Height"), 8);
             return Texture;
         }
 
-        // Populate Texture Struct
-        Texture.Channels = SChannels;
-        Texture.Height = SHeight;
-        Texture.Width = SWidth;
-        Texture.HasImageData = true;
-        Texture.Path = std::to_string(ID);
-        Texture.ID = ID;
-        Texture.FreeImageBackend = false;
-        Texture.ImageBytes = ImageBytes;
 
+    } else {
+        Texture.ImageBytes = FreeImage_GetBits(Image);
+    }
 
-
-    // } else {
-
-    //     // Create Texture, Populate
-    //     Texture.Channels = Channels;
-    //     Texture.Height = Height;
-    //     Texture.Width = Width;
-    //     Texture.ImageData = Image;
-    //     Texture.HasImageData = true;
-    //     Texture.Path = std::to_string(ID);
-    //     Texture.ID = ID;
-    //     Texture.FreeImageBackend = true;
-    //     Texture.ImageBytes = FreeImage_GetBits(Image);
+    // Create Texture, Populate
+    Texture.Channels = Channels;
+    Texture.Height = Height;
+    Texture.Width = Width;
+    Texture.ImageData = Image;
+    Texture.HasImageData = true;
+    Texture.Path = std::to_string(ID);
+    Texture.ID = ID;
+    Texture.FreeImageBackend = !FreeImageLoadFail;
     
-    // }
+    
 
     // Return Value
     return Texture;
