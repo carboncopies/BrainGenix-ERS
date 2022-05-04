@@ -148,6 +148,8 @@ void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr
 
 void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) {
 
+        
+
     // Push Textures To GPU RAM
     for (unsigned long i = 0; i < Model->TexturesToPushToGPU_.size(); i++) {
 
@@ -191,11 +193,14 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
                     SystemUtils_->Logger_->Log(std::string("Texture With ID '") + Model->TexturesToPushToGPU_[i].Path + std::string("' For Model '") + Model->Name + std::string("' Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
                 }  
             }
+
             glGenerateMipmap(GL_TEXTURE_2D);
 
         } else {
             SystemUtils_->Logger_->Log("Texture Failed To Load, Cannot Push To GPU", 9);
         }
+
+
 
         // Unload Image Data
         if (Model->TexturesToPushToGPU_[i].FreeImageBackend) {
@@ -208,8 +213,11 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         Model->OpenGLTextureIDs_.push_back(TextureID);
     }
 
+
+
     // Erase List To Save Memory
     Model->TexturesToPushToGPU_.erase(Model->TexturesToPushToGPU_.begin(), Model->TexturesToPushToGPU_.end());
+
 
 
     // Collect Vertex Count Analytics
@@ -237,6 +245,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         Model->Meshes[i].SetupMesh();
         // Perhaps save mem by erasing the vertices after pusning? (also indices)
     }
+
 
     Model->LoadingFinishTime_ = glfwGetTime();
     Model->TotalLoadingTime_ = Model->LoadingFinishTime_ - Model->LoadingStartTime_;
@@ -277,7 +286,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
     ERS_STRUCT_Texture Texture;
     Texture.HasImageData = false;
     Texture.ImageData = NULL;
-    float Width, Height, Channels;
+    int Width, Height, Channels;
     if (FreeImage_GetWidth(Image) != 0) {
         Width = FreeImage_GetWidth(Image);
         Height = FreeImage_GetHeight(Image);
@@ -297,45 +306,35 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
     // If FreeImage Failed, Try STB
     if (FreeImageLoadFail) {
 
-        int SWidth, SHeight, SChannels;
-        unsigned char *ImageBytes = stbi_load_from_memory(ImageData->Data.get(), ImageData->Size_B, &SWidth, &SHeight, &SChannels, 0); 
+        
+        Texture.ImageBytes = stbi_load_from_memory(ImageData->Data.get(), ImageData->Size_B, &Width, &Height, &Channels, 0); 
         
         // Perform Sanity Checks
-        if ((SChannels < 1) || (SChannels > 4)) {
-            SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed On Texture '") + std::to_string(ID) + std::string("' , Image Has Invalid Number Of Channels '") + std::to_string(SChannels) + std::string("'"), 8);
+        if ((Channels < 1) || (Channels > 4)) {
+            SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed On Texture '") + std::to_string(ID) + std::string("' , Image Has Invalid Number Of Channels '") + std::to_string(Channels) + std::string("'"), 8);
             return Texture;
         }
-        if ((SWidth <= 0) || (SHeight <= 0)) {
+        if ((Width <= 0) || (Height <= 0)) {
             SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed On Texture '") + std::to_string(ID) + std::string("' , Image Has Invalid Width/Height"), 8);
             return Texture;
         }
 
-        // Populate Texture Struct
-        Texture.Channels = SChannels;
-        Texture.Height = SHeight;
-        Texture.Width = SWidth;
-        Texture.HasImageData = true;
-        Texture.Path = std::to_string(ID);
-        Texture.ID = ID;
-        Texture.FreeImageBackend = false;
-        Texture.ImageBytes = ImageBytes;
-
-
 
     } else {
-
-        // Create Texture, Populate
-        Texture.Channels = Channels;
-        Texture.Height = Height;
-        Texture.Width = Width;
-        Texture.ImageData = Image;
-        Texture.HasImageData = true;
-        Texture.Path = std::to_string(ID);
-        Texture.ID = ID;
-        Texture.FreeImageBackend = true;
         Texture.ImageBytes = FreeImage_GetBits(Image);
-    
     }
+
+    // Create Texture, Populate
+    Texture.Channels = Channels;
+    Texture.Height = Height;
+    Texture.Width = Width;
+    Texture.ImageData = Image;
+    Texture.HasImageData = true;
+    Texture.Path = std::to_string(ID);
+    Texture.ID = ID;
+    Texture.FreeImageBackend = !FreeImageLoadFail;
+    
+    
 
     // Return Value
     return Texture;
@@ -394,16 +393,18 @@ void ERS_CLASS_ModelLoader::AddModelToReferenceQueue(long AssetID, std::shared_p
 void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures) {
 
     // Check If Already In Refs
-    BlockRefThread_.lock();
-    if (CheckIfModelAlreadyLoaded(AssetID) != -1) {
-        AddModelToReferenceQueue(AssetID, Model);
-        BlockRefThread_.unlock();
-        return;
-    } else {
-        LoadedModelRefrences_.push_back(Model);
-        BlockRefThread_.unlock();
+    if (EnableReferenceLoading_) {
+        BlockRefThread_.lock();
+        if (CheckIfModelAlreadyLoaded(AssetID) != -1) {
+            AddModelToReferenceQueue(AssetID, Model);
+            BlockRefThread_.unlock();
+            return;
+        }
+        else {
+            LoadedModelRefrences_.push_back(Model);
+            BlockRefThread_.unlock();
+        }
     }
-    
 
     // Log Loading For Debugging Purposes
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Model '") + std::to_string(AssetID) + std::string("'")).c_str(), 4);
