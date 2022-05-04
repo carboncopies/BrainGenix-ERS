@@ -301,6 +301,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
         FreeImage_FlipVertical(Image);
     }
 
+    Image = FreeImage_ConvertTo8Bits(Image);
 
     // Get Metadata
     ERS_STRUCT_Texture Texture;
