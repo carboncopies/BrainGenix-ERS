@@ -158,7 +158,6 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         // Generate Texture
         unsigned int TextureID;
         glGenTextures(1, &TextureID);
-        std::cout << std::endl << TextureID << std::endl;
         glBindTexture(GL_TEXTURE_2D, TextureID);
 
         // Set Texture Properties
