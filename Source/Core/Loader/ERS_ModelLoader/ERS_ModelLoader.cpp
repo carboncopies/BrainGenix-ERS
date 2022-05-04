@@ -166,7 +166,6 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
         // Convert FIBITMAP* To Raw Image Bytes
         unsigned char* RawImageData = Model->TexturesToPushToGPU_[i].ImageBytes;
@@ -324,7 +323,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
 
 
     // If FreeImage Failed, Try STB
-    if (FreeImageLoadFail) {
+    if (true) {
 
         int SWidth, SHeight, SChannels;
         unsigned char *ImageBytes = stbi_load_from_memory(ImageData->Data.get(), ImageData->Size_B, &SWidth, &SHeight, &SChannels, 0); 
