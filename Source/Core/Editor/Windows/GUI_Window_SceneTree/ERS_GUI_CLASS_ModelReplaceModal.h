@@ -36,7 +36,8 @@ public:
     bool Enabled_ = false; /**<Show/Hide Window*/
     bool FirstFrame_ = false; /**<Used To Run Certain Things On Window Open*/
     unsigned long SelectedModel_ = 0; /**<Indicate What Index The Selected Model Is*/
-    int SelectedScene_ = 0; /**<Indicate What Index The Selected Scene Is*/
+    unsigned long SelectedScene_ = 0; /**<Indicate What Index The Selected Scene Is*/
+    unsigned long ReplacementModelIndex_ = 0; /**<Index of the model we're going to replace the selected model with*/
 
 public:
 

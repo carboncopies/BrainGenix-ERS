@@ -58,7 +58,9 @@ void Subwindow_ModelReplaceModal::Draw() {
 
         // Replace And Cancel Buttons
         if (ImGui::Button("Replace", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Enter Key Pressed
-            SceneManager_->Scenes_[SelectedScene_]->Models[SelectedModel_]->Name = std::string(ModelInputName_);
+            
+            for (unsigned int i = 0; i < )
+
             Enabled_ = false;
         }
         ImGui::SameLine();
