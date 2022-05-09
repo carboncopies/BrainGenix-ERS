@@ -36,11 +36,11 @@ void Subwindow_ModelReplaceModal::Draw() {
         if (FirstFrame_) {
             ImGui::SetKeyboardFocusHere(0);
             FirstFrame_ = false;
+            ImGui::SetItemDefaultFocus();
         }
 
 
         // Set Default Item To Type On, Add Input Box
-        ImGui::SetItemDefaultFocus();
         if (ImGui::BeginCombo("Replacement Model", SceneManager_->Scenes_[SelectedScene_]->Models[0]->Name.c_str())) {
 
             for (unsigned int i = 0; i < SceneManager_->Scenes_[SelectedScene_]->Models.size(); i++) {
