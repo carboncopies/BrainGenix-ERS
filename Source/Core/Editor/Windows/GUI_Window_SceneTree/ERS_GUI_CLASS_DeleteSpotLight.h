@@ -15,6 +15,7 @@
 #include <ERS_SceneManager.h>
 #include <ERS_STRUCT_Scene.h>
 
+#include <ERS_Editor_3DCursor.h>
 
 /**
  * @brief Implement Scene Deltion, Open Popup For Confirm, Error.
