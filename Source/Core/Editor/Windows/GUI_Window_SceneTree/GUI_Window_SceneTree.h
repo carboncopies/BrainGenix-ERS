@@ -63,6 +63,8 @@ private:
     std::unique_ptr<Subwindow_DirectionalLightRenameModal> Subwindow_DirectionalLightRenameModal_; /**<DirectionalLight Rename Modal Instance*/
     std::unique_ptr<Subwindow_SpotLightRenameModal> Subwindow_SpotLightRenameModal_; /**<SpotLight Rename Modal Instance*/
     
+    std::unique_ptr<Subwindow_ModelReplaceModal> Subwindow_ModelReplaceModal_; /**<Window with functions to replace all existing instances of a model with another one*/
+
     std::unique_ptr<Subwindow_DeleteScene> Subwindow_DeleteScene_; /**<Scene Deletion Modal Instance*/
     std::unique_ptr<Subwindow_DeleteModel> Subwindow_DeleteModel_; /**<Model Deletion Modal Instance*/
     std::unique_ptr<Subwindow_DeletePointLight> Subwindow_DeletePointLight_; /**<PointLight Delete Subwindow*/
