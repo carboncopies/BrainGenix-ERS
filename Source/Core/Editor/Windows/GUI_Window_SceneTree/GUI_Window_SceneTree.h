@@ -34,6 +34,8 @@
 #include <ERS_GUI_CLASS_DeleteDirectionalLight.h>
 #include <ERS_GUI_CLASS_DeleteSpotLight.h>
 
+#include <ERS_GUI_CLASS_ModelReplaceModal.h>
+
 #include <ERS_GUI_FUNCTION_DuplicateScene.h>
 #include <ERS_GUI_FUNCTION_DuplicateModel.h>
 #include <ERS_GUI_FUNCTION_DuplicatePointLight.h>
