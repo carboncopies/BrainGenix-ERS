@@ -27,7 +27,7 @@ void Subwindow_ModelReplaceModal::Activate(int SceneIndex, int ModelIndex) {
 void Subwindow_ModelReplaceModal::Draw() {
 
     if (Enabled_) {
-    ImGui::Begin("Replace Model", &Enabled_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
+    ImGui::Begin("Replace Model", &Enabled_);//, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
 
         // Grab Window Focus
         ImGui::SetWindowFocus();
@@ -35,8 +35,8 @@ void Subwindow_ModelReplaceModal::Draw() {
         // Set Default Keyboard Input
         if (FirstFrame_) {
             ImGui::SetKeyboardFocusHere(0);
-            FirstFrame_ = false;
             ImGui::SetItemDefaultFocus();
+            FirstFrame_ = false;
         }
 
 
