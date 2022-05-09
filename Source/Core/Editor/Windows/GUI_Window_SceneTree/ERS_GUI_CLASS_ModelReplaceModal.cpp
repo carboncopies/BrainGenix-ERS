@@ -44,7 +44,10 @@ void Subwindow_ModelReplaceModal::Draw() {
         ImGui::BeginCombo("Replacement Model", SceneManager_->Scenes_[SelectedScene_]->Models[0]->Name.c_str());
             for (unsigned int i = 0; i < SceneManager_->Scenes_[SelectedScene_]->Models.size(); i++) {
                 std::string ModelName = SceneManager_->Scenes_[SelectedScene_]->Models[i]->Name;
-                ImGui::Combo(ModelName.c_str(), )
+                bool ThisItemSelected = i==SelectedModel_;
+                if (ImGui::Selectable(ModelName.c_str(), &ThisItemSelected)) {
+                    SelectedModel_ = i;
+                }
 
             }
 

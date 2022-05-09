@@ -35,7 +35,7 @@ public:
     // Show/Hide Var
     bool Enabled_ = false; /**<Show/Hide Window*/
     bool FirstFrame_ = false; /**<Used To Run Certain Things On Window Open*/
-    int SelectedModel_ = 0; /**<Indicate What Index The Selected Model Is*/
+    unsigned long SelectedModel_ = 0; /**<Indicate What Index The Selected Model Is*/
     int SelectedScene_ = 0; /**<Indicate What Index The Selected Scene Is*/
 
 public:
