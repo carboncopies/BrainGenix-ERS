@@ -61,7 +61,6 @@ void Subwindow_ModelReplaceModal::Draw() {
             
             // Get ID of Model we're replacing as well as the info for the model to replace it with
             unsigned long IDBeingReplaced = SceneManager_->Scenes_[SelectedScene_]->Models[SelectedModel_]->AssetID;
-            unsigned long IDReplacingWith = SceneManager_->Scenes_[SelectedScene_]->Models[ReplacementModelIndex_]->AssetID;
 
             for (unsigned int i = 0; i < SceneManager_->Scenes_[SelectedScene_]->Models.size(); i++) {
                 if (SceneManager_->Scenes_[SelectedScene_]->Models[i]->AssetID == IDBeingReplaced) {
