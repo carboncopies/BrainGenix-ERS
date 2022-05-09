@@ -83,6 +83,7 @@ void Subwindow_ModelReplaceModal::Draw() {
                     // Copy Back Over Loc/Rot/Scale/Scripts
                     SceneManager_->Scenes_[SelectedScene_]->Models[i]->AttachedScriptIndexes_ = Scripts;
                     SceneManager_->Scenes_[SelectedScene_]->Models[i]->SetLocRotScale(Pos, Rot, Scale);
+                    SceneManager_->Scenes_[SelectedScene_]->Models[i]->ApplyTransformations();
                     SceneManager_->Scenes_[SelectedScene_]->Models[i]->Name = Name;
 
                 }
