@@ -38,10 +38,13 @@ void Subwindow_ModelReplaceModal::Draw() {
             FirstFrame_ = false;
         }
 
+
         // Set Default Item To Type On, Add Input Box
         ImGui::SetItemDefaultFocus();
-        ImGui::InputTextWithHint("Replace Model", "Enter New Model Name", ModelInputName_, IM_ARRAYSIZE(ModelInputName_));
+        ImGui::BeginCombo("Replacement Model", SceneManager_->Scenes_[SelectedScene_]->Models[0]->Name.c_str());
 
+
+        ImGui::EndCombo();
         ImGui::Separator();
 
         // Replace And Cancel Buttons
