@@ -129,3 +129,7 @@ bool Cursors3D::IsHovered() {
 bool Cursors3D::HasStateChanged() {
     return LastFrameActiveState_ == ImGuizmo::IsUsing();
 }
+
+void Cursors3D::ObjectHasChanged() {
+    HasObjectChanged_ = true;
+}
