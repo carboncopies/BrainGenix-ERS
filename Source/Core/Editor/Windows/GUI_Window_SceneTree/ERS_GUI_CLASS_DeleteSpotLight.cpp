@@ -6,7 +6,7 @@
 #include <ERS_GUI_CLASS_DeleteSpotLight.h>
 
 
-Subwindow_DeleteSpotLight::Subwindow_DeleteSpotLight(ERS_CLASS_SceneManager* SceneManager) {
+Subwindow_DeleteSpotLight::Subwindow_DeleteSpotLight(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor) {
 
     SceneManager_ = SceneManager;
 
