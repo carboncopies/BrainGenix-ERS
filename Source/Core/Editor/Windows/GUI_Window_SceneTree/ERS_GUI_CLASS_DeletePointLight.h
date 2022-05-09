@@ -15,6 +15,8 @@
 #include <ERS_SceneManager.h>
 #include <ERS_STRUCT_Scene.h>
 
+#include <ERS_Editor_3DCursor.h>
+
 
 /**
  * @brief Implement Scene Deltion, Open Popup For Confirm, Error.
@@ -25,6 +27,9 @@ class Subwindow_DeletePointLight {
 private:
 
     ERS_CLASS_SceneManager* SceneManager_; /**<SceneManager Instance*/
+    Cursors3D* Cursor_; /**<Instance of the 3d cursor object*/
+
+    
     int SceneIndex_ = 0; /**<Scene Index Used To Remember What Scene To Delete From*/
     int PointLightIndex_ = 0; /**<Use to identify what PointLight to delete*/
 
@@ -42,7 +47,7 @@ public:
      * @brief Construct a new Subwindow_DeletePointLight object
      * 
      */
-    Subwindow_DeletePointLight(ERS_CLASS_SceneManager* SceneManager);
+    Subwindow_DeletePointLight(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor);
 
     /**
      * @brief Destroy the Subwindow_DeletePointLight object

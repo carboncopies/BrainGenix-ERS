@@ -4,11 +4,12 @@
 
 #include <GUI_Window_SceneTree.h>
 
-Window_SceneTree::Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+Window_SceneTree::Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, Cursors3D* Cursors3D) {
 
     SceneManager_ = SceneManager;
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
+    Cursors3D_ = Cursors3D;
     SystemUtils_->Logger_->Log("Initializing ERS GUI Window_SceneTree", 4);
 
     Subwindow_SceneRenameModal_ = std::make_unique<Subwindow_SceneRenameModal>(SceneManager_);
@@ -19,11 +20,11 @@ Window_SceneTree::Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STR
 
     Subwindow_ModelReplaceModal_ = std::make_unique<Subwindow_ModelReplaceModal>(SceneManager_);
     
-    Subwindow_DeleteScene_ = std::make_unique<Subwindow_DeleteScene>(SceneManager_);
-    Subwindow_DeleteModel_ = std::make_unique<Subwindow_DeleteModel>(SceneManager_);
-    Subwindow_DeletePointLight_ = std::make_unique<Subwindow_DeletePointLight>(SceneManager_);
-    Subwindow_DeleteDirectionalLight_ = std::make_unique<Subwindow_DeleteDirectionalLight>(SceneManager_);
-    Subwindow_DeleteSpotLight_ = std::make_unique<Subwindow_DeleteSpotLight>(SceneManager_);
+    Subwindow_DeleteScene_ = std::make_unique<Subwindow_DeleteScene>(SceneManager_, Cursors3D_);
+    Subwindow_DeleteModel_ = std::make_unique<Subwindow_DeleteModel>(SceneManager_, Cursors3D_);
+    Subwindow_DeletePointLight_ = std::make_unique<Subwindow_DeletePointLight>(SceneManager_, Cursors3D_);
+    Subwindow_DeleteDirectionalLight_ = std::make_unique<Subwindow_DeleteDirectionalLight>(SceneManager_, Cursors3D_);
+    Subwindow_DeleteSpotLight_ = std::make_unique<Subwindow_DeleteSpotLight>(SceneManager_, Cursors3D_);
 
     SystemUtils_->Logger_->Log("Finished Initializing ERS GUI Window_SceneTree", 5);
 

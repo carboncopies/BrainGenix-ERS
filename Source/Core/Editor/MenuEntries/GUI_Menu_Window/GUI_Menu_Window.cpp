@@ -21,7 +21,7 @@ GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
 
 
     SystemUtils_->Logger_->Log("Initializing Editor Windows", 5);
-    Window_SceneTree_ = std::make_unique<Window_SceneTree>(SceneManager, SystemUtils_, ProjectUtils_);
+    Window_SceneTree_ = std::make_unique<Window_SceneTree>(SceneManager, SystemUtils_, ProjectUtils_, Cursors3D);
     Window_SystemLog_ = std::make_unique<Window_SystemLog>(SystemUtils_);
     Window_AssetExplorer_ = std::make_unique<Window_AssetExplorer>(SystemUtils_, ProjectUtils_);
     Window_ScriptEditor_ = std::make_unique<Window_ScriptEditor>(SystemUtils_, ProjectUtils_, VisualRenderer_);

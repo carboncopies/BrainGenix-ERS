@@ -15,6 +15,7 @@
 #include <ERS_SceneManager.h>
 #include <ERS_STRUCT_Scene.h>
 
+#include <ERS_Editor_3DCursor.h>
 
 /**
  * @brief Implement Scene Deltion, Open Popup For Confirm, Error.
@@ -25,6 +26,9 @@ class Subwindow_DeleteScene {
 private:
 
     ERS_CLASS_SceneManager* SceneManager_; /**<SceneManager Instance*/
+    Cursors3D* Cursor_; /**<Instance of the 3d cursor object*/
+
+    
     int SceneIndex_ = 0; /**<SceneIndex Used To Remember What Scene To Delete*/
 
     bool FirstFrame_ = false; /**<Used to grab keyboard input on first frame window is open*/
@@ -43,7 +47,7 @@ public:
      * @brief Construct a new Subwindow_DeleteScene object
      * 
      */
-    Subwindow_DeleteScene(ERS_CLASS_SceneManager* SceneManager);
+    Subwindow_DeleteScene(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor);
 
     /**
      * @brief Destroy the Subwindow_DeleteScene object

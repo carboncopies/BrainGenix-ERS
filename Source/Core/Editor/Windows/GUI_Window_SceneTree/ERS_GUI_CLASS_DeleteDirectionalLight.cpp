@@ -6,9 +6,10 @@
 #include <ERS_GUI_CLASS_DeleteDirectionalLight.h>
 
 
-Subwindow_DeleteDirectionalLight::Subwindow_DeleteDirectionalLight(ERS_CLASS_SceneManager* SceneManager) {
+Subwindow_DeleteDirectionalLight::Subwindow_DeleteDirectionalLight(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor) {
 
     SceneManager_ = SceneManager;
+    Cursor_ = Cursor;
 
 
 }

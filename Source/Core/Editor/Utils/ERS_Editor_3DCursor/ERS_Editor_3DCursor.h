@@ -78,7 +78,7 @@ private:
     ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE; /**<Set Current Cursor Operation*/
     ImGuizmo::MODE GizmoMode_ = ImGuizmo::WORLD; /**<Set Default Coordinate Space*/
 
-    bool HasObjectChanged_ = false; /*<Indicate If Update Needed*/
+    
     bool LastFrameActiveState_ = false; /*<If the cursor was being used in the last frame or not*/ 
 
 public:
@@ -86,17 +86,18 @@ public:
     glm::vec3 Pos_;
     glm::vec3 Rot_;
     glm::vec3 Scale_;
+    bool HasObjectChanged_ = false; /*<Indicate If Update Needed*/
 
 public:
 
     /**
-     * @brief Construct a new Cursors 3 D object
+     * @brief Construct a new Cursors 3D object
      * 
      */
     Cursors3D();
 
     /**
-     * @brief Destroy the Cursors 3 D object
+     * @brief Destroy the Cursors 3D object
      * 
      */
     ~Cursors3D();
@@ -116,6 +117,13 @@ public:
      * @return false 
      */
     bool IsHovered();
+
+
+    /**
+     * @brief Call this to tell the cursor that the object's position has changed and to update the cursor position.
+     * 
+     */
+    void ObjectHasChanged();
 
     /**
      * @brief Draw the gizmo

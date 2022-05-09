@@ -61,6 +61,8 @@ target_link_libraries(Window_SceneTree
     ERS_STRUCT_SceneObject
 
     ERS_CLASS_LoggingSystem
+    
+    ERS_Editor_3DCursor
 
     ERS_STRUCT_Scene
     ERS_SceneManager

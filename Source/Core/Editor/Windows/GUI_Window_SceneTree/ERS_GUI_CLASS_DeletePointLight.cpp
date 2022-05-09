@@ -6,9 +6,10 @@
 #include <ERS_GUI_CLASS_DeletePointLight.h>
 
 
-Subwindow_DeletePointLight::Subwindow_DeletePointLight(ERS_CLASS_SceneManager* SceneManager) {
+Subwindow_DeletePointLight::Subwindow_DeletePointLight(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor) {
 
     SceneManager_ = SceneManager;
+    Cursor_ = Cursor;
 
 
 }
