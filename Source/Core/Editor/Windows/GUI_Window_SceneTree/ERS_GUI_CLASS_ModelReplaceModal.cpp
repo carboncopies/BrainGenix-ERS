@@ -28,12 +28,10 @@ void Subwindow_ModelReplaceModal::Draw() {
 
     if (Enabled_) {
     ImGui::Begin("Replace Model", &Enabled_);//, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
-
-        // Grab Window Focus
-        ImGui::SetWindowFocus();
-        
+  
         // Set Default Keyboard Input
         if (FirstFrame_) {
+            ImGui::SetWindowFocus();
             ImGui::SetKeyboardFocusHere(0);
             ImGui::SetItemDefaultFocus();
             FirstFrame_ = false;
