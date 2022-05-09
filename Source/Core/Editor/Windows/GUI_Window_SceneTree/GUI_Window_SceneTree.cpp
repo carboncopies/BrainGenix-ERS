@@ -30,9 +30,6 @@ Window_SceneTree::Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STR
 Window_SceneTree::~Window_SceneTree() {
 
 
-    Subwindow_DeleteScene_->~Subwindow_DeleteScene();
-    Subwindow_DeleteModel_->~Subwindow_DeleteModel();
-
 }
 
 void Window_SceneTree::Draw() {
