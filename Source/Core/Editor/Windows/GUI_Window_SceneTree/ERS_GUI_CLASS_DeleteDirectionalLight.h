@@ -43,7 +43,7 @@ public:
      * @brief Construct a new Subwindow_DeleteDirectionalLight object
      * 
      */
-    Subwindow_DeleteDirectionalLight(ERS_CLASS_SceneManager* SceneManager);
+    Subwindow_DeleteDirectionalLight(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor);
 
     /**
      * @brief Destroy the Subwindow_DeleteDirectionalLight object
