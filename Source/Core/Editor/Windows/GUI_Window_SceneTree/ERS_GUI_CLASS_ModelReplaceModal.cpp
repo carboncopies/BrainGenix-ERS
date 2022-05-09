@@ -63,7 +63,7 @@ void Subwindow_ModelReplaceModal::Draw() {
             unsigned long IDBeingReplaced = SceneManager_->Scenes_[SelectedScene_]->Models[SelectedModel_]->AssetID;
 
             for (unsigned int i = 0; i < SceneManager_->Scenes_[SelectedScene_]->Models.size(); i++) {
-                if (SceneManager_->Scenes_[SelectedScene_]->Models[i]->AssetID == IDBeingReplaced) {
+                if (SceneManager_->Scenes_[SelectedScene_]->Models[i]->AssetID == (long)IDBeingReplaced) {
 
                     // Copy Loc/Rot/Scale/Scripts
                     glm::vec3 Pos, Rot, Scale;
