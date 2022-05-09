@@ -16,6 +16,8 @@ Window_SceneTree::Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STR
     Subwindow_PointLightRenameModal_ = std::make_unique<Subwindow_PointLightRenameModal>(SceneManager_);
     Subwindow_DirectionalLightRenameModal_ = std::make_unique<Subwindow_DirectionalLightRenameModal>(SceneManager_);
     Subwindow_SpotLightRenameModal_ = std::make_unique<Subwindow_SpotLightRenameModal>(SceneManager_);
+
+    Subwindow_ModelReplaceModal_ = std::make_unique<Subwindow_ModelReplaceModal>(SceneManager_);
     
     Subwindow_DeleteScene_ = std::make_unique<Subwindow_DeleteScene>(SceneManager_);
     Subwindow_DeleteModel_ = std::make_unique<Subwindow_DeleteModel>(SceneManager_);
