@@ -473,8 +473,11 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
         // Update Selected Object
-        if (Cursors3D_->HasStateChanged()) {
+        if (!Cursors3D_->HasObjectChanged_) {
             SceneManager->UpdateLocRotScale(Cursors3D_->Pos_, Cursors3D_->Rot_, Cursors3D_->Scale_);
+        } else {
+            Cursors3D_->HasObjectChanged_ = false;
+            
         }
 
     }
