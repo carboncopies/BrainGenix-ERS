@@ -20,11 +20,11 @@ Window_SceneTree::Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STR
 
     Subwindow_ModelReplaceModal_ = std::make_unique<Subwindow_ModelReplaceModal>(SceneManager_);
     
-    Subwindow_DeleteScene_ = std::make_unique<Subwindow_DeleteScene>(SceneManager_);
-    Subwindow_DeleteModel_ = std::make_unique<Subwindow_DeleteModel>(SceneManager_);
-    Subwindow_DeletePointLight_ = std::make_unique<Subwindow_DeletePointLight>(SceneManager_);
-    Subwindow_DeleteDirectionalLight_ = std::make_unique<Subwindow_DeleteDirectionalLight>(SceneManager_);
-    Subwindow_DeleteSpotLight_ = std::make_unique<Subwindow_DeleteSpotLight>(SceneManager_);
+    Subwindow_DeleteScene_ = std::make_unique<Subwindow_DeleteScene>(SceneManager_, Cursors3D_);
+    Subwindow_DeleteModel_ = std::make_unique<Subwindow_DeleteModel>(SceneManager_, Cursors3D_);
+    Subwindow_DeletePointLight_ = std::make_unique<Subwindow_DeletePointLight>(SceneManager_, Cursors3D_);
+    Subwindow_DeleteDirectionalLight_ = std::make_unique<Subwindow_DeleteDirectionalLight>(SceneManager_, Cursors3D_);
+    Subwindow_DeleteSpotLight_ = std::make_unique<Subwindow_DeleteSpotLight>(SceneManager_, Cursors3D_);
 
     SystemUtils_->Logger_->Log("Finished Initializing ERS GUI Window_SceneTree", 5);
 
