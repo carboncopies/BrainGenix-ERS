@@ -58,7 +58,7 @@ void Subwindow_DeleteModel::UpdateConfirmDeletePopup() {
         if (ImGui::Button("Confirm", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Enter Key Pressed
             SceneManager_->Scenes_[SceneIndex_]->Models.erase(SceneManager_->Scenes_[SceneIndex_]->Models.begin() + ModelIndex_);
             ShowDeleteConfirm_ = false;
-            Cursor_->ObjectHasChanged();
+            SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged = true;
         }
         ImGui::SameLine();
         if (ImGui::Button("Abort", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ESCAPE)) { // If Button Pressed, Or Escape Key Pressed
