@@ -44,7 +44,7 @@ public:
      * @brief Construct a new Subwindow_DeletePointLight object
      * 
      */
-    Subwindow_DeletePointLight(ERS_CLASS_SceneManager* SceneManager);
+    Subwindow_DeletePointLight(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor);
 
     /**
      * @brief Destroy the Subwindow_DeletePointLight object
