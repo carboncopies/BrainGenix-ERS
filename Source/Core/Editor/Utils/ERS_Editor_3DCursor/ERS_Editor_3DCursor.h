@@ -117,6 +117,13 @@ public:
      */
     bool IsHovered();
 
+
+    /**
+     * @brief Call this to tell the cursor that the object's position has changed and to update the cursor position.
+     * 
+     */
+    void ObjectHasChanged();
+
     /**
      * @brief Draw the gizmo
      * 
