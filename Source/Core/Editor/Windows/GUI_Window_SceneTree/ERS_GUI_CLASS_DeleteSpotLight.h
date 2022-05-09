@@ -43,7 +43,7 @@ public:
      * @brief Construct a new Subwindow_DeleteSpotLight object
      * 
      */
-    Subwindow_DeleteSpotLight(ERS_CLASS_SceneManager* SceneManager);
+    Subwindow_DeleteSpotLight(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor);
 
     /**
      * @brief Destroy the Subwindow_DeleteSpotLight object
