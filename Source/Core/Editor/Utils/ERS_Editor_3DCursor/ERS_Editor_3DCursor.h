@@ -91,13 +91,13 @@ public:
 public:
 
     /**
-     * @brief Construct a new Cursors 3 D object
+     * @brief Construct a new Cursors 3D object
      * 
      */
     Cursors3D();
 
     /**
-     * @brief Destroy the Cursors 3 D object
+     * @brief Destroy the Cursors 3D object
      * 
      */
     ~Cursors3D();
