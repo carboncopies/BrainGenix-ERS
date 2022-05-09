@@ -6,7 +6,7 @@
 #include <ERS_GUI_CLASS_DeleteModel.h>
 
 
-Subwindow_DeleteModel::Subwindow_DeleteModel(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor, Cursors3D* Cursor) {
+Subwindow_DeleteModel::Subwindow_DeleteModel(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor) {
 
     SceneManager_ = SceneManager;
     Cursor_ = Cursor;
