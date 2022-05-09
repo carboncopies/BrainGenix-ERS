@@ -22,7 +22,7 @@
  * @brief Create GUI Window "Rendering Settings"
  * 
  */
-class Subwindow_ModelRenameModal {
+class Subwindow_ModelReplaceModal {
 
 private:
 
@@ -41,20 +41,20 @@ public:
 public:
 
     /**
-     * @brief Construct a new Subwindow_ModelRenameModal object
+     * @brief Construct a new Subwindow_ModelReplaceModal object
      * 
      */
-    Subwindow_ModelRenameModal(ERS_CLASS_SceneManager* SceneManager);
+    Subwindow_ModelReplaceModal(ERS_CLASS_SceneManager* SceneManager);
 
     /**
-     * @brief Destroy the Subwindow_ModelRenameModal object
+     * @brief Destroy the Subwindow_ModelReplaceModal object
      * 
      */
-    ~Subwindow_ModelRenameModal();
+    ~Subwindow_ModelReplaceModal();
 
 
     /**
-     * @brief Show The Model Rename Modal
+     * @brief Show The Model Replace Modal
      * 
      * @param SelectedScene
      * @param SelectedModel
