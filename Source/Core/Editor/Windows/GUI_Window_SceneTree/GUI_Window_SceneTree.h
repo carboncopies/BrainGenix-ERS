@@ -57,8 +57,8 @@ private:
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<ProjectUtils Pointer*/
     bool FirstFrame_ = true; /**<Bool Indicating if It's the first frame*/
 
-    Subwindow_SceneRenameModal* Subwindow_SceneRenameModal_; /**<Scene Rename Modal Instance*/
-    Subwindow_ModelRenameModal* Subwindow_ModelRenameModal_; /**<Model Rename Modal Instance*/
+    std::unique_ptr<Subwindow_SceneRenameModal> Subwindow_SceneRenameModal_; /**<Scene Rename Modal Instance*/
+    std::unique_ptr<Subwindow_ModelRenameModal> Subwindow_ModelRenameModal_; /**<Model Rename Modal Instance*/
     std::unique_ptr<Subwindow_PointLightRenameModal> Subwindow_PointLightRenameModal_; /**<PointLight Rename Modal Instance*/
     std::unique_ptr<Subwindow_DirectionalLightRenameModal> Subwindow_DirectionalLightRenameModal_; /**<DirectionalLight Rename Modal Instance*/
     std::unique_ptr<Subwindow_SpotLightRenameModal> Subwindow_SpotLightRenameModal_; /**<SpotLight Rename Modal Instance*/
