@@ -27,7 +27,7 @@ void Subwindow_ModelReplaceModal::Activate(int SceneIndex, int ModelIndex) {
 void Subwindow_ModelReplaceModal::Draw() {
 
     if (Enabled_) {
-    ImGui::Begin("Replace Model", &Enabled_);//, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
+    ImGui::Begin("Replace Model", &Enabled_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
   
         // Set Default Keyboard Input
         if (FirstFrame_) {
