@@ -174,6 +174,7 @@ void Window_SceneTree::Draw() {
     Subwindow_DeletePointLight_->Draw();
     Subwindow_DeleteDirectionalLight_->Draw();
     Subwindow_DeleteSpotLight_->Draw();
+    Subwindow_ModelReplaceModal_->Draw();
 
 }
 
