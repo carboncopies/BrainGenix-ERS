@@ -42,7 +42,11 @@ void Subwindow_ModelReplaceModal::Draw() {
         // Set Default Item To Type On, Add Input Box
         ImGui::SetItemDefaultFocus();
         ImGui::BeginCombo("Replacement Model", SceneManager_->Scenes_[SelectedScene_]->Models[0]->Name.c_str());
+            for (unsigned int i = 0; i < SceneManager_->Scenes_[SelectedScene_]->Models.size(); i++) {
+                std::string ModelName = SceneManager_->Scenes_[SelectedScene_]->Models[i]->Name;
+                ImGui::Combo(ModelName.c_str(), )
 
+            }
 
         ImGui::EndCombo();
         ImGui::Separator();
