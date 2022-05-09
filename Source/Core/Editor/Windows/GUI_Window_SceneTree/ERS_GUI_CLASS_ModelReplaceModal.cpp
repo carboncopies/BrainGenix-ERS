@@ -59,7 +59,32 @@ void Subwindow_ModelReplaceModal::Draw() {
         // Replace And Cancel Buttons
         if (ImGui::Button("Replace", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Enter Key Pressed
             
-            for (unsigned int i = 0; i < )
+            // Get ID of Model we're replacing as well as the info for the model to replace it with
+            unsigned long IDBeingReplaced = SceneManager_->Scenes_[SelectedScene_]->Models[SelectedModel_]->AssetID;
+            unsigned long IDReplacingWith = SceneManager_->Scenes_[SelectedScene_]->Models[ReplacementModelIndex_]->AssetID;
+
+            for (unsigned int i = 0; i < SceneManager_->Scenes_[SelectedScene_]->Models.size(); i++) {
+                if (SceneManager_->Scenes_[SelectedScene_]->Models[i]->AssetID == IDBeingReplaced) {
+                    // Copy Loc/Rot/Scale/Scripts
+                    glm::vec3 Pos, Rot, Scale;
+                    std::vector<long> Scripts;
+                    Pos = SceneManager_->Scenes_[SelectedScene_]->Models[i]->ModelPosition;
+                    Rot = SceneManager_->Scenes_[SelectedScene_]->Models[i]->ModelRotation;
+                    Scale = SceneManager_->Scenes_[SelectedScene_]->Models[i]->ModelScale;
+                    Scripts = SceneManager_->Scenes_[SelectedScene_]->Models[i]->AttachedScriptIndexes_;
+                    
+                    
+                    // Overwrite With Copy Of Replacement Model
+                    SceneManager_->Scenes_[SelectedScene_]->Models[i] = SceneManager_->Scenes_[SelectedScene_]->Models[ReplacementModelIndex_];
+
+                    // Copy Back Over Loc/Rot/Scale/Scripts
+                    SceneManager_->Scenes_[SelectedScene_]->Models[i]->ModelPosition = Pos;
+                    SceneManager_->Scenes_[SelectedScene_]->Models[i]->ModelRotation = Rot;
+                    SceneManager_->Scenes_[SelectedScene_]->Models[i]->ModelScale = Scale;
+                    SceneManager_->Scenes_[SelectedScene_]->Models[i]->AttachedScriptIndexes_ = Scripts;
+
+                }
+            }
 
             Enabled_ = false;
         }
