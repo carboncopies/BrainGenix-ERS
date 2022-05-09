@@ -4,11 +4,12 @@
 
 #include <GUI_Window_SceneTree.h>
 
-Window_SceneTree::Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+Window_SceneTree::Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, Cursors3D* Cursors3D) {
 
     SceneManager_ = SceneManager;
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
+    Cursors3D_ = Cursors3D;
     SystemUtils_->Logger_->Log("Initializing ERS GUI Window_SceneTree", 4);
 
     Subwindow_SceneRenameModal_ = std::make_unique<Subwindow_SceneRenameModal>(SceneManager_);
