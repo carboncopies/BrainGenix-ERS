@@ -78,7 +78,7 @@ private:
     ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE; /**<Set Current Cursor Operation*/
     ImGuizmo::MODE GizmoMode_ = ImGuizmo::WORLD; /**<Set Default Coordinate Space*/
 
-    bool HasObjectChanged_ = false; /*<Indicate If Update Needed*/
+    
     bool LastFrameActiveState_ = false; /*<If the cursor was being used in the last frame or not*/ 
 
 public:
@@ -86,6 +86,7 @@ public:
     glm::vec3 Pos_;
     glm::vec3 Rot_;
     glm::vec3 Scale_;
+    bool HasObjectChanged_ = false; /*<Indicate If Update Needed*/
 
 public:
 
