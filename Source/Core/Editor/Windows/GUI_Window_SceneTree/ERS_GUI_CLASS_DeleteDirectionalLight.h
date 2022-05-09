@@ -26,6 +26,8 @@ class Subwindow_DeleteDirectionalLight {
 private:
 
     ERS_CLASS_SceneManager* SceneManager_; /**<SceneManager Instance*/
+    Cursors3D* Cursor_; /**<Instance of the 3d cursor object*/
+    
     int SceneIndex_ = 0; /**<Scene Index Used To Remember What Scene To Delete From*/
     int DirectionalLightIndex_ = 0; /**<Use to identify what DirectionalLight to delete*/
 
