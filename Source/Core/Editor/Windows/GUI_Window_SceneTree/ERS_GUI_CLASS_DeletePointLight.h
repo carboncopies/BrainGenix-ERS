@@ -27,6 +27,9 @@ class Subwindow_DeletePointLight {
 private:
 
     ERS_CLASS_SceneManager* SceneManager_; /**<SceneManager Instance*/
+    Cursors3D* Cursor_; /**<Instance of the 3d cursor object*/
+
+    
     int SceneIndex_ = 0; /**<Scene Index Used To Remember What Scene To Delete From*/
     int PointLightIndex_ = 0; /**<Use to identify what PointLight to delete*/
 
