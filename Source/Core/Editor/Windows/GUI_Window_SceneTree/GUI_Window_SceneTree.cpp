@@ -92,6 +92,7 @@ void Window_SceneTree::Draw() {
                     ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnArrow;
                     if (SceneIndex == ActiveScene) {
                         NodeFlags |= ImGuiTreeNodeFlags_Selected;
+                        NodeFlags |= ImGuiTreeNodeFlags_DefaultOpen;
                     }
 
                     // Get Tree Metadata
