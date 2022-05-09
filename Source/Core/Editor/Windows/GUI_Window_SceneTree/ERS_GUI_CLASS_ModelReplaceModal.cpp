@@ -78,7 +78,7 @@ void Subwindow_ModelReplaceModal::Draw() {
 
                     
                     // Overwrite With Copy Of Replacement Model
-                    SceneManager_->Scenes_[SelectedScene_]->Models[i] = SceneManager_->Scenes_[SelectedScene_]->Models[ReplacementModelIndex_];
+                    SceneManager_->Scenes_[SelectedScene_]->Models[i] = std::make_shared<ERS_STRUCT_Model>(&SceneManager_->Scenes_[SelectedScene_]->Models[ReplacementModelIndex_]);
 
                     // Copy Back Over Loc/Rot/Scale/Scripts
                     SceneManager_->Scenes_[SelectedScene_]->Models[i]->AttachedScriptIndexes_ = Scripts;
