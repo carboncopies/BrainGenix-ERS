@@ -26,6 +26,9 @@ class Subwindow_DeleteScene {
 private:
 
     ERS_CLASS_SceneManager* SceneManager_; /**<SceneManager Instance*/
+    Cursors3D* Cursor_; /**<Instance of the 3d cursor object*/
+
+    
     int SceneIndex_ = 0; /**<SceneIndex Used To Remember What Scene To Delete*/
 
     bool FirstFrame_ = false; /**<Used to grab keyboard input on first frame window is open*/
