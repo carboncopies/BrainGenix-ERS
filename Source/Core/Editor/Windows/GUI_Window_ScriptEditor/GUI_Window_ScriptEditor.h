@@ -79,7 +79,7 @@ private:
 
 public:
 
-    bool Enabled_ = true; /**<Enable/Disable the editor window*/
+    bool Enabled_ = false; /**<Enable/Disable the editor window*/
 
 public:
 

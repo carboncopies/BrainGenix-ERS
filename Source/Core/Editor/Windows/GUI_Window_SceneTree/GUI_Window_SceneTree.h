@@ -34,6 +34,8 @@
 #include <ERS_GUI_CLASS_DeleteDirectionalLight.h>
 #include <ERS_GUI_CLASS_DeleteSpotLight.h>
 
+#include <ERS_GUI_CLASS_ModelReplaceModal.h>
+
 #include <ERS_GUI_FUNCTION_DuplicateScene.h>
 #include <ERS_GUI_FUNCTION_DuplicateModel.h>
 #include <ERS_GUI_FUNCTION_DuplicatePointLight.h>
@@ -55,14 +57,16 @@ private:
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<ProjectUtils Pointer*/
     bool FirstFrame_ = true; /**<Bool Indicating if It's the first frame*/
 
-    Subwindow_SceneRenameModal* Subwindow_SceneRenameModal_; /**<Scene Rename Modal Instance*/
-    Subwindow_ModelRenameModal* Subwindow_ModelRenameModal_; /**<Model Rename Modal Instance*/
+    std::unique_ptr<Subwindow_SceneRenameModal> Subwindow_SceneRenameModal_; /**<Scene Rename Modal Instance*/
+    std::unique_ptr<Subwindow_ModelRenameModal> Subwindow_ModelRenameModal_; /**<Model Rename Modal Instance*/
     std::unique_ptr<Subwindow_PointLightRenameModal> Subwindow_PointLightRenameModal_; /**<PointLight Rename Modal Instance*/
     std::unique_ptr<Subwindow_DirectionalLightRenameModal> Subwindow_DirectionalLightRenameModal_; /**<DirectionalLight Rename Modal Instance*/
     std::unique_ptr<Subwindow_SpotLightRenameModal> Subwindow_SpotLightRenameModal_; /**<SpotLight Rename Modal Instance*/
     
-    Subwindow_DeleteScene* Subwindow_DeleteScene_; /**<Scene Deletion Modal Instance*/
-    Subwindow_DeleteModel* Subwindow_DeleteModel_; /**<Model Deletion Modal Instance*/
+    std::unique_ptr<Subwindow_ModelReplaceModal> Subwindow_ModelReplaceModal_; /**<Window with functions to replace all existing instances of a model with another one*/
+
+    std::unique_ptr<Subwindow_DeleteScene> Subwindow_DeleteScene_; /**<Scene Deletion Modal Instance*/
+    std::unique_ptr<Subwindow_DeleteModel> Subwindow_DeleteModel_; /**<Model Deletion Modal Instance*/
     std::unique_ptr<Subwindow_DeletePointLight> Subwindow_DeletePointLight_; /**<PointLight Delete Subwindow*/
     std::unique_ptr<Subwindow_DeleteDirectionalLight> Subwindow_DeleteDirectionalLight_; /**<DirectionalLight Delete Subwindow*/
     std::unique_ptr<Subwindow_DeleteSpotLight> Subwindow_DeleteSpotLight_; /**<SpotLight Delete Subwindow*/
