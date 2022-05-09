@@ -44,7 +44,7 @@ public:
      * @brief Construct a new Subwindow_DeleteScene object
      * 
      */
-    Subwindow_DeleteScene(ERS_CLASS_SceneManager* SceneManager);
+    Subwindow_DeleteScene(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor);
 
     /**
      * @brief Destroy the Subwindow_DeleteScene object
