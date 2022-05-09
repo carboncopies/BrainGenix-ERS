@@ -56,6 +56,7 @@ private:
     ERS_CLASS_SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Pointer*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<ProjectUtils Pointer*/
+    Cursors3D* Cursors3D_; /**<Pointer to Cursors3D Instance*/
     bool FirstFrame_ = true; /**<Bool Indicating if It's the first frame*/
 
     std::unique_ptr<Subwindow_SceneRenameModal> Subwindow_SceneRenameModal_; /**<Scene Rename Modal Instance*/
@@ -99,7 +100,7 @@ public:
      * @brief Construct a new Window_SceneTree object
      * 
      */
-    Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, Cursors3D* Cursors3D_);
 
     /**
      * @brief Destroy the Window_SceneTree object
