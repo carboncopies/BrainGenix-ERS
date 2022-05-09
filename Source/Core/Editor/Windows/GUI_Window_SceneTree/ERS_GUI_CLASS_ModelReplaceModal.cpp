@@ -64,6 +64,7 @@ void Subwindow_ModelReplaceModal::Draw() {
 
             for (unsigned int i = 0; i < SceneManager_->Scenes_[SelectedScene_]->Models.size(); i++) {
                 if (SceneManager_->Scenes_[SelectedScene_]->Models[i]->AssetID == IDBeingReplaced) {
+
                     // Copy Loc/Rot/Scale/Scripts
                     glm::vec3 Pos, Rot, Scale;
                     std::vector<long> Scripts;
@@ -71,7 +72,6 @@ void Subwindow_ModelReplaceModal::Draw() {
                     Rot = SceneManager_->Scenes_[SelectedScene_]->Models[i]->ModelRotation;
                     Scale = SceneManager_->Scenes_[SelectedScene_]->Models[i]->ModelScale;
                     Scripts = SceneManager_->Scenes_[SelectedScene_]->Models[i]->AttachedScriptIndexes_;
-                    
                     
                     // Overwrite With Copy Of Replacement Model
                     SceneManager_->Scenes_[SelectedScene_]->Models[i] = SceneManager_->Scenes_[SelectedScene_]->Models[ReplacementModelIndex_];
