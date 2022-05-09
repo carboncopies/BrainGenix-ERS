@@ -42,8 +42,10 @@ void Subwindow_ModelReplaceModal::Draw() {
         // Set Default Item To Type On, Add Input Box
         ImGui::SetItemDefaultFocus();
         if (ImGui::BeginCombo("Replacement Model", SceneManager_->Scenes_[SelectedScene_]->Models[0]->Name.c_str())) {
+
             for (unsigned int i = 0; i < SceneManager_->Scenes_[SelectedScene_]->Models.size(); i++) {
                 std::string ModelName = SceneManager_->Scenes_[SelectedScene_]->Models[i]->Name;
+                std::cout<<ModelName<<std::endl;
                 bool ThisItemSelected = i==SelectedModel_;
                 if (ImGui::Selectable(ModelName.c_str(), &ThisItemSelected)) {
                     SelectedModel_ = i;
@@ -51,8 +53,10 @@ void Subwindow_ModelReplaceModal::Draw() {
 
             }
 
-            ImGui::EndCombo();
+        ImGui::EndCombo();
         }
+
+
         ImGui::Separator();
 
         // Replace And Cancel Buttons
