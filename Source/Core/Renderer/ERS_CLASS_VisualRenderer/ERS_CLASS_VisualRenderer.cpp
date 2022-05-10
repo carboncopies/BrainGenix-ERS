@@ -481,7 +481,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
 
-        DrawViewportOverlay(Index);
+        DrawViewportOverlay(Index, SceneManager);
 
 
     }
