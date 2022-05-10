@@ -133,7 +133,7 @@ private:
      * 
      * @param Index 
      */
-    void DrawViewportOverlay(int Index);
+    void DrawViewportOverlay(int Index, ERS_CLASS_SceneManager* SceneManager);
 
     /**
      * @brief Returns the index of the shader with name that matches the name given. Will return 0 if the shader is not found.
