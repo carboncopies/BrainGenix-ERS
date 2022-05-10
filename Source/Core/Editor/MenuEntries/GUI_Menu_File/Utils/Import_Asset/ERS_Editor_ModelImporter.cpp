@@ -45,9 +45,9 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
     
     Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
-    Data->AssetTypeName = "Model";
+    Data->AssetTypeName = "Texture";
     Data->AssetFileName = ModelFileName;
-    std::cout<<ModelFileName<<std::endl;
+
 
     ReadFile(AssetPath, Data.get());
     long ModelID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
