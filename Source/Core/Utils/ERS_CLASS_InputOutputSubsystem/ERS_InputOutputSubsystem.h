@@ -143,4 +143,13 @@ public:
    * @param AssetPath
    */
   void UpdateAssetPath(std::string AssetPath);
+
+
+  /**
+   * @brief Get the Current Time and return it in an asset friendly format
+   * 
+   * @return std::string 
+   */
+  std::string GetCurrentTime();
+  
 };
