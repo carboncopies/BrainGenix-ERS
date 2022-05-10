@@ -480,6 +480,10 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             
         }
 
+
+        DrawViewportOverlay(Index);
+
+
     }
 
 
@@ -1002,7 +1006,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index) {
     // Draw Scene Info
     if (Viewports_[Index]->ShowSceneInfo_) {
 
-        
+
     }
 
 }
