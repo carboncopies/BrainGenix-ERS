@@ -223,6 +223,20 @@ void Window_AssetExplorer::Draw() {
                         SystemUtils_->ERS_IOSubsystem_->IndexUsedAssetIDs();
                     }
 
+                    if (ImGui::Button("Repair Asset Metadata")) {
+
+                        // Iterate Over All Assets Known
+                        for (unsigned int i = 0; i < SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetIDsFound_.size(); i++) {
+                            
+                            
+
+
+
+
+                        }
+
+                    }
+
                     // End Child
                     ImGui::EndChild();
 
