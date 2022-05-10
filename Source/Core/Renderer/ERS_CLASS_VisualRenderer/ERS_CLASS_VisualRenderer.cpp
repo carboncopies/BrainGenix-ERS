@@ -1001,10 +1001,14 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
 
 }
 
-void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index) {
+void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneManager* SceneManager) {
 
     // Draw Scene Info
     if (Viewports_[Index]->ShowSceneInfo_) {
+
+        // Generate Info
+        std::string VertexMessage =  std::string("");
+
         ImGui::Text("A Test Message!");
 
     }
