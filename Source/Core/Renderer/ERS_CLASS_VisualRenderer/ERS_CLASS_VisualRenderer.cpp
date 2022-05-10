@@ -1029,7 +1029,6 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
         std::string SceneMessage = std::string("Scene: ") + std::to_string(TotalModels) + std::string(" Models (") + std::to_string(InstancedModels)
         + std::string(" Instanced Models, ") + std::to_string(TotalModels - InstancedModels) + std::string(" Template Models), ") + std::to_string(NumVerts)
         + std::string(" Verts, ") + std::to_string(NumIndices) + std::string(" Indices, ") + std::to_string(NumTextures) + std::string(" Textures");
-        std::string ResourcesMessage; // Contains info about actual system load (gpu ram, cpu ram, num loaded verts/indexes and num real textures on hardware)
 
         ImGui::TextColored(ImVec4(0.25f, 1.0f, 0.25f, 1.0f), "%s", SceneMessage.c_str());
 
@@ -1044,11 +1043,14 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
 
         double InMemoryVerts = 0;
         double InMemoryIndices = 0;
-        
+
 
         for (unsigned long i = 0; i < NumModels; i++) {
 
-            AverageLoadingTime += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_;
+            if (SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->IsTemplateModel) {
+                InMemoryVerts += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalVertices_;
+                InMemoryIndices += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalIndices_;
+            }
 
         }
 
