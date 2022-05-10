@@ -996,3 +996,13 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
     }
 
 }
+
+void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index) {
+
+    // Draw Scene Info
+    if (Viewports_[Index]->ShowSceneInfo_) {
+
+        
+    }
+
+}

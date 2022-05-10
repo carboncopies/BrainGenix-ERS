@@ -129,6 +129,12 @@ private:
     void DrawViewportMenu(int Index, ERS_CLASS_SceneManager* SceneManager);
 
     /**
+     * @brief Draw the overlays on the viewport for debugging info such as textures and fps.
+     * 
+     */
+    void DrawViewportOverlay();
+
+    /**
      * @brief Returns the index of the shader with name that matches the name given. Will return 0 if the shader is not found.
      * 
      * @param Name 
