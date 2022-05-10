@@ -1028,7 +1028,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
             }
             
         }
-        std::string SceneMessage = std::string("Scene: ") + std::to_string(NumVerts) + std::string(" Verts, ") + std::to_string(NumIndices) + std::string(" Indices, ") + std::to_string(NumTextures) + std::string(" Textures"); // add info about number of instanced models vs real ones
+        std::string SceneMessage = std::string("Scene: ") + std::to_string(TotalModels) + std::string(" Models, ") + std::to_string(InstancedModels) + std::string(" Instanced Models, ") + std::to_string(NumVerts) + std::string(" Verts, ") + std::to_string(NumIndices) + std::string(" Indices, ") + std::to_string(NumTextures) + std::string(" Textures"); // add info about number of instanced models vs real ones
         std::string ResourcesMessage; // Contains info about actual system load (gpu ram, cpu ram, num loaded verts/indexes and num real textures on hardware)
         std::string LoadingTimeMessage = std::string("Longest Asset Loading Time: ") + std::to_string(LongestLoadingTime) + std::string(" Seconds");
 
