@@ -1005,7 +1005,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index) {
 
     // Draw Scene Info
     if (Viewports_[Index]->ShowSceneInfo_) {
-
+        ImGui::Text("A Test Message!");
 
     }
 
