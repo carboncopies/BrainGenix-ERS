@@ -1026,7 +1026,8 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
         std::string ResourcesMessage; // Contains info about actual system load (gpu ram, cpu ram, num loaded verts/indexes and num real textures on hardware)
         std::string LoadingTimeMessage = std::string("Longest Asset Loading Time: ") + std::to_string(LongestLoadingTime) + std::string(" Seconds");
 
-        ImGui::Text("A Test Message!");
+        ImGui::Text(SceneMessage.c_str());
+        ImGui::Text(LoadingTimeMessage.c_str());
 
     }
 
