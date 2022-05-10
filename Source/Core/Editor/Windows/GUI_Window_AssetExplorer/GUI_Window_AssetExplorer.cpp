@@ -242,7 +242,6 @@ void Window_AssetExplorer::Draw() {
                             for (unsigned int x = 0; x < ProjectUtils_->SceneManager_->Scenes_.size(); x++) {
 
 
-
                                 // Try And Find Match With Model Asset ID
                                 for (unsigned int y = 0; y < ProjectUtils_->SceneManager_->Scenes_[x]->Models.size(); y++) {
                                     if (ProjectUtils_->SceneManager_->Scenes_[x]->Models[y]->AssetID == AssetID) {
