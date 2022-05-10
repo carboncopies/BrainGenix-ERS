@@ -61,7 +61,7 @@ void Window_AssetExplorer::Draw() {
 
                             std::string DisplayName;
                             if (FileName == "") {
-                                DisplayName = std::to_string(Key);
+                                DisplayName = std::to_string(Key) + std::string(" (Filename Metadata Missing)");
                             } else {
                                 DisplayName = FileName;
                             }                  
