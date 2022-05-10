@@ -248,7 +248,7 @@ void Window_AssetExplorer::Draw() {
                                     if (ProjectUtils_->SceneManager_->Scenes_[x]->Models[y]->AssetID == AssetID) {
                                         SystemUtils_->Logger_->Log("Found AssetID Match In Scene Models", 4);
                                         AssetType = "Model";
-                                        AssetFileName =  ProjectUtils_->SceneManager_->Scenes_[x]->Models[y]->Directory;
+                                        AssetFileName =  ProjectUtils_->SceneManager_->Scenes_[x]->Models[y]->Name;
                                         break;
                                     }
 
