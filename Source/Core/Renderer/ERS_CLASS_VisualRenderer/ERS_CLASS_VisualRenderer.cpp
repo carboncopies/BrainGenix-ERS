@@ -1041,8 +1041,8 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
 
         // Generate Info
         unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
-        double InMemoryVerts = 0;
-        double InMemoryIndices = 0;
+        unsigned long InMemoryVerts = 0;
+        unsigned long InMemoryIndices = 0;
 
         for (unsigned long i = 0; i < NumModels; i++) {
             if (SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->IsTemplateModel) {
