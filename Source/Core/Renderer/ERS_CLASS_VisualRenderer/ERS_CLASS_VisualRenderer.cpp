@@ -1032,7 +1032,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
         std::string SceneMessage = std::string("Scene: ") + std::to_string(TotalModels) + std::string(" Models, ") + std::to_string(InstancedModels) + std::string(" Instanced Models, ") + std::to_string(NumVerts) + std::string(" Verts, ") + std::to_string(NumIndices) + std::string(" Indices, ") + std::to_string(NumTextures) + std::string(" Textures"); // add info about number of instanced models vs real ones
         std::string ResourcesMessage; // Contains info about actual system load (gpu ram, cpu ram, num loaded verts/indexes and num real textures on hardware)
 
-        ImGui::Text("%s", SceneMessage.c_str());
+        ImGui::TextColored(ImVec4(0.25f, 1.0f, 0.25f, 1.0f), "%s", SceneMessage.c_str());
 
 
     }
@@ -1063,7 +1063,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
         AverageLoadingTime /= NumModels;
 
         std::string LoadingTimeMessage = std::string("Asset Loading Times | Average: ") + std::to_string(AverageLoadingTime) + std::string(" Seconds, Shortest: ") + std::to_string(ShortestLoadingTime) + std::string(" Seconds, Longest: ") + std::to_string(LongestLoadingTime) + std::string(" Seconds");
-        ImGui::Text("%s", LoadingTimeMessage.c_str());
+        ImGui::TextColored(ImVec4(0.25f, 1.0f, 0.25f, 1.0f), "%s", LoadingTimeMessage.c_str());
 
     }
 
