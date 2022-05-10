@@ -134,7 +134,7 @@ vec3 GetNormalFromMap(sampler2D Normal) {
 
     // Ensure That Textures Are Present/Valid, If Not, Provide Fallback
     vec3 SampledColor = texture(Normal, Object.TexCoords).xyz;
-    if (!HasNormals && (SampledColor == vec3(0.0f))) {
+    if (!HasNormals || (SampledColor == vec3(0.0f))) {
        SampledColor = vec3(0.5f, 0.5f, 1.0f);
     }
 
@@ -450,6 +450,7 @@ void main() {
         FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
 }
+
 
 
 
