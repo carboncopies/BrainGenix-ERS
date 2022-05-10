@@ -93,6 +93,8 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(ERS_STRUCT_IOData* Data) {
         Metadata<<YAML::Key<<"AssetType"<<YAML::Value<<AssetTypeName_[CurrentIndex];
         Metadata<<YAML::Key<<"AssetCreationDate"<<YAML::Value<<AssetCreationDate_[CurrentIndex];
         Metadata<<YAML::Key<<"AssetModificationDate"<<YAML::Value<<AssetModificationDate_[CurrentIndex];
+        Metadata<<YAML::Key<<"AssetFileName"<<YAML::Value<<AssetFileName_[CurrentIndex];
+        
 
         Metadata<<YAML::EndMap;
 
