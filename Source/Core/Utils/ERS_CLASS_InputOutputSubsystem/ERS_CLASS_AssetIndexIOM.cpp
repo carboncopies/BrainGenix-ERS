@@ -60,6 +60,10 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
         AssetCreationDate_[Index] = {AssetMetadata["AssetCreationDate"].as<std::string>()};
         AssetModificationDate_[Index] = {AssetMetadata["AssetModificationDate"].as<std::string>()};
 
+        if (AssetMetadata["AssetFileName"]) {
+            
+        }
+
 
     }
     Logger_->Log("Finished Populating Asset Index Metadata", 4);
