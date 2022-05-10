@@ -34,6 +34,7 @@ struct ERS_STRUCT_Viewport {
     bool LightIcons = true; /**<Draw or don't draw the light icons*/
     bool GammaCorrection = true; /**<Enable/disable gamma correction*/
     bool HDREnabled_ = true; /**<Indicate if hdr should be used or not*/
+    bool ShowSceneInfo_ = true; /**<Enab;e/Disable Vertex And Texture Info Overlay*/
 
     float Exposure_ = 1.0f; /**<Set the camera exposure for that viewport*/
     float Gamma_ = 2.2f; /**<Set the gamma correction value for the viewport*/
