@@ -1011,12 +1011,18 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
         unsigned long NumVerts = 0;
         unsigned long NumIndices = 0;
         unsigned long NumTextures = 0;
+        unsigned long TotalModels = 0;
+        unsigned long InstancedModels = 0;
         double LongestLoadingTime = 0;
 
         for (unsigned long i = 0; i < NumModels; i++) {
             NumVerts += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalVertices_;
             NumIndices += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalIndices_;
             NumTextures += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TextureIDs.size();
+            TotalModels ++;
+            if (!SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->IsTemplateModel) {
+                InstancedModels++;
+            }
             if (SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_ > LongestLoadingTime) {
                 LongestLoadingTime = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_;
             }
