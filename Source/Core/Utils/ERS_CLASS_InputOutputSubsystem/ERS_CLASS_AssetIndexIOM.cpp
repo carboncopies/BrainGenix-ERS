@@ -62,7 +62,7 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
 
         if (AssetMetadata["AssetFileName"]) {
             std::cout<<Index<<"|"<<AssetMetadata["AssetFileName"]<<std::endl;
-            AssetModificationDate_[Index] = {AssetMetadata["AssetFileName"].as<std::string>()};
+            AssetFileName_[Index] = {AssetMetadata["AssetFileName"].as<std::string>()};
         } else {
             Logger_->Log(std::string("Failed To Find Asset Filename Metadata For Asset With ID ") + std::to_string(it->first.as<long>()), 7);
         }
