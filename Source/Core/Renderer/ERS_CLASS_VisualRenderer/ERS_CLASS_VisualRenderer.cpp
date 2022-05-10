@@ -736,10 +736,19 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
         if (ImGui::BeginMenu("Controls")) {
 
             // Draw Controls
+            ImGui::MenuItem("Scene Info Overlay", nullptr, &Viewports_[Index]->ShowSceneInfo_);
+            ImGui::MenuItem("System Resources Overlay", nullptr, &Viewports_[Index]->ShowResourceInfo_);
+            ImGui::MenuItem("Loading Time Overlay", nullptr, &Viewports_[Index]->ShowLoadingTimeInfo_);
+            
+            ImGui::Separator();
+
             ImGui::MenuItem("Rotation Indicator", nullptr, &Viewports_[Index]->ShowCube);
             ImGui::MenuItem("Gizmo", nullptr, &Viewports_[Index]->GizmoEnabled);
             ImGui::MenuItem("Grid", nullptr, &Viewports_[Index]->GridEnabled);
             ImGui::MenuItem("Light Icons", nullptr, &Viewports_[Index]->LightIcons);
+
+            ImGui::Separator();
+
             ImGui::MenuItem("Gamma Correction", nullptr, &Viewports_[Index]->GammaCorrection);
             ImGui::MenuItem("HDR", nullptr, &Viewports_[Index]->HDREnabled_);
 
