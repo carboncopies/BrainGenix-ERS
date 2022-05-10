@@ -24,6 +24,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     // Get Model Path
     std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
+    std::string ModelFileName = AssetPath.substr(AssetPath.find_last_of("/"), AssetPath.size()-1);
 
     // Read File
     Assimp::Importer Importer;
@@ -42,9 +43,15 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     // Copy Model File
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
+    
     Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
+    Data->AssetTypeName = "Model";
+    Data->AssetFileName = ModelFileName;
+    
+
     ReadFile(AssetPath, Data.get());
     long ModelID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+
     SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(ModelID) + std::string("' To Model '") + AssetPath + std::string("'")).c_str(), 4);
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(ModelID, Data.get());    
 
