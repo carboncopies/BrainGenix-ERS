@@ -228,22 +228,45 @@ void Window_AssetExplorer::Draw() {
                         // Iterate Over All Assets Known
                         for (unsigned int i = 0; i < SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetIDsFound_.size(); i++) {
                             
-                            // Get Asset ID
+                            // Setup Metadata
+                            std::string AssetType = "";
+                            std::string AssetFileName = "";
+                            std::string AssetCreationDate = "1970-01-01-00-00-00";
+                            std::string AssetModificationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
                             long AssetID = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetIDsFound_[i];
+
 
                             // Try And Find Match WIth Either Texture, Model, Script, Shader, Etc...
                             for (unsigned int x = 0; x < ProjectUtils_->SceneManager_->Scenes_.size(); x++) {
 
+
+
                                 // Try And Find Match With Model Asset ID
                                 for (unsigned int y = 0; y < ProjectUtils_->SceneManager_->Scenes_[x]->Models.size(); y++) {
-
-
+                                    if (ProjectUtils_->SceneManager_->Scenes_[x]->Models[y]->AssetID == AssetID) {
+                                        AssetType = "Model";
+                                        AssetFileName =  ProjectUtils_->SceneManager_->Scenes_[x]->Models[y]->Directory;
+                                        break;
+                                    }
 
                                 }
+
+
+
+
+
+
+
+                                // Check If Match Found
+                                if (AssetType != "") {
+                                    break;
+                                }
+
+
                             }
                             
 
-
+                            // Update 
 
 
                         }
