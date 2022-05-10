@@ -1042,8 +1042,9 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
 
         unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
 
-        double LongestLoadingTime = 0;
-
+        double InMemoryVerts = 0;
+        double InMemoryIndices = 0;
+        
 
         for (unsigned long i = 0; i < NumModels; i++) {
 
