@@ -1041,12 +1041,12 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
     // Show Loading Time Info
     if (Viewports[Index]->ShowLoadingInfo_) {
 
-        
+
         unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
 
         double LongestLoadingTime = 0;
         double ShortestLoadingTime = 65535;
-        std::vector<double> LoadingTimeList;
+        double AverageLoadingTime = 0;
 
         for (unsigned long i = 0; i < NumModels; i++) {
 
@@ -1057,9 +1057,13 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
                 ShortestLoadingTime = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_;
             }
 
-            LoadingTimeList.push_back(SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_);
+            AverageLoadingTime += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_;
 
         }
+
+        AverageLoadingTime /= NumModels;
+
+
 
     }
 
