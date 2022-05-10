@@ -121,6 +121,7 @@ bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, ERS_STRUCT_IOData* 
     std::string AssetType = Data->AssetTypeName;
     std::string Modified = Data->AssetModificationDate;
     std::string Created = Data->AssetCreationDate;
+    std::string FileName = Data->FileName;
 
     AssetTypeName_[AssetID] = {AssetType};
     AssetCreationDate_[AssetID] = {Created};
