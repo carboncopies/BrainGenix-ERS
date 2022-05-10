@@ -62,7 +62,9 @@ void Window_AssetExplorer::Draw() {
                             std::string DisplayName;
                             if (FileName == "") {
                                 DisplayName = std::to_string(Key);
-                            }                            
+                            } else {
+                                DisplayName = FileName;
+                            }                  
 
                             bool Selected = ImGui::Selectable(FileName.c_str(), Key == SelectedModelIndex_);
                             if (Selected) {
