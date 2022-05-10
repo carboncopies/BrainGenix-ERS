@@ -224,6 +224,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
     // Collect Vertex Count Analytics
     for (unsigned long i = 0; i < Model->Meshes.size(); i++) {
         Model->TotalVertices_ += Model->Meshes[i].Vertices.size();
+        Model->TotalIndices_ += Model->Meshes[i].Indices.size();
     }
 
     // Process Texture References, Setup Meshes
