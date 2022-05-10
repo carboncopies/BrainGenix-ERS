@@ -1013,7 +1013,6 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
         unsigned long NumTextures = 0;
         unsigned long TotalModels = 0;
         unsigned long InstancedModels = 0;
-        double LongestLoadingTime = 0;
 
         for (unsigned long i = 0; i < NumModels; i++) {
             NumVerts += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalVertices_;
@@ -1023,9 +1022,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
             if (!SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->IsTemplateModel) {
                 InstancedModels++;
             }
-            if (SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_ > LongestLoadingTime) {
-                LongestLoadingTime = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_;
-            }
+
             
         }
 
