@@ -129,8 +129,9 @@ private:
     void DrawViewportMenu(int Index, ERS_CLASS_SceneManager* SceneManager);
 
     /**
-     * @brief 
+     * @brief Draw the overlays on the viewport for debugging info such as textures and fps.
      * 
+     * @param Index 
      */
     void DrawViewportOverlay(int Index);
 
