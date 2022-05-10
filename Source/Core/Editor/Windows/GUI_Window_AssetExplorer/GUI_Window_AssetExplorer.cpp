@@ -246,6 +246,7 @@ void Window_AssetExplorer::Draw() {
                                 // Try And Find Match With Model Asset ID
                                 for (unsigned int y = 0; y < ProjectUtils_->SceneManager_->Scenes_[x]->Models.size(); y++) {
                                     if (ProjectUtils_->SceneManager_->Scenes_[x]->Models[y]->AssetID == AssetID) {
+                                        SystemUtils_->Logger_->Log("Found AssetID Match In Scene Models", 4);
                                         AssetType = "Model";
                                         AssetFileName =  ProjectUtils_->SceneManager_->Scenes_[x]->Models[y]->Directory;
                                         break;
