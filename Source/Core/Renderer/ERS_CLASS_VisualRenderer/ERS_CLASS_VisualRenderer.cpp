@@ -1007,7 +1007,21 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
     if (Viewports_[Index]->ShowSceneInfo_) {
 
         // Generate Info
-        std::string VertexMessage =  std::string("");
+        unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
+        unsigned long NumVerts = 0;
+        unsigned long NumIndices = 0;
+        unsigned long NumTextures = 0;
+        double LongestLoadingTime = 0;
+
+        for (unsigned long i = 0; i < NumModels; i++) {
+            NumVerts += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalVertices_;
+            NumIndices += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalIndices_;
+            if (SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_ > LongestLoadingTime) {
+                LongestLoadingTime = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_;
+            }
+            NumTextures += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->Textures_Loaded;
+        }
+        std::string VertexMessage = std::string("");
 
         ImGui::Text("A Test Message!");
 
