@@ -1039,8 +1039,8 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
     // Show System Resources Info
     if (Viewports_[Index]->ShowResourceInfo_) {
 
+        // Generate Info
         unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
-
         double InMemoryVerts = 0;
         double InMemoryIndices = 0;
 
