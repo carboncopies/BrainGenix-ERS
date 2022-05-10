@@ -66,7 +66,7 @@ void Window_AssetExplorer::Draw() {
                                 DisplayName = FileName;
                             }                  
 
-                            bool Selected = ImGui::Selectable(FileName.c_str(), Key == SelectedModelIndex_);
+                            bool Selected = ImGui::Selectable(DisplayName.c_str(), Key == SelectedModelIndex_);
                             if (Selected) {
                                 SelectedModelIndex_ = Key;
                             }
