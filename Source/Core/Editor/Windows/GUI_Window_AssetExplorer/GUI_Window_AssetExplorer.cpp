@@ -273,17 +273,17 @@ void Window_AssetExplorer::Draw() {
                             // Update Metadata Lists (Skipping If Data Is Already There)
                             if (SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetFileName_[i] == "") {
                                 SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetFileName_[i] = AssetFileName;
-                                SystemUtils_->Logger_->Log(std::string("Updating Metadata Property 'AssetFileName' For Asset '") + std::to_string(AssetID) + std::string("' To '") + AssetFileName + std::string("'"), 4);
+                                SystemUtils_->Logger_->Log(std::string("Updating Metadata Property 'AssetFileName' For Asset '") + std::to_string(AssetID) + std::string("' To '") + AssetFileName + std::string("'"), 3);
                             } else {
                                 SystemUtils_->Logger_->Log(std::string("Asset Already Has Metadata Property 'AssetFileName' For Asset '") + std::to_string(AssetID)
-                                + std::string("' Of Value '") + SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetFileName_[i] + std::string("'"), 4);
+                                + std::string("' Of Value '") + SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetFileName_[i] + std::string("'"), 3);
                             }
                             if (SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i] == "" || SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i] == "Undefined") {
                                 SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i] = AssetType;
-                                SystemUtils_->Logger_->Log(std::string("Updating Metadata Property 'AssetType' For Asset '") + std::to_string(AssetID) + std::string("' To '") + AssetType + std::string("'"), 4);
+                                SystemUtils_->Logger_->Log(std::string("Updating Metadata Property 'AssetType' For Asset '") + std::to_string(AssetID) + std::string("' To '") + AssetType + std::string("'"), 3);
                             } else {
                                 SystemUtils_->Logger_->Log(std::string("Asset Already Has Metadata Property 'AssetType' For Asset '") + std::to_string(AssetID)
-                                + std::string("' Of Value '") + SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i] + std::string("'"), 4);
+                                + std::string("' Of Value '") + SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i] + std::string("'"), 3);
                             }
                             
 
