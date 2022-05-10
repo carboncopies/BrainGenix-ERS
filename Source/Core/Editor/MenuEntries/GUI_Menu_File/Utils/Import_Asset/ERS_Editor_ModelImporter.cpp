@@ -44,7 +44,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     // Copy Model File
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
     
-    Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
+    
 
     ReadFile(AssetPath, Data.get());
     long ModelID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
@@ -59,6 +59,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
         bool Success = ReadFile(TextureList_[i], Data.get());
         Data->AssetTypeName = "Texture";
         Data->AssetFileName = TextureList_[i].substr(AssetPath.find_last_of("/") + 1, AssetPath.size() - 1);
+        Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
 
 
         bool SecondTryStatus = false;
@@ -167,6 +168,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     // Set Metadata (FIXME: Save Modification Date + Creation Date Here!)
     Data->AssetTypeName = "Model";
     Data->AssetFileName = ModelFileName;
+    Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
 
     long MetadataID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
     SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(MetadataID) + std::string("' To Model Metadata")).c_str(), 4);
