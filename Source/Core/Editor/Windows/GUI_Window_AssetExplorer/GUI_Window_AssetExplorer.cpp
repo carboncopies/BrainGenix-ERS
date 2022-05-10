@@ -223,6 +223,77 @@ void Window_AssetExplorer::Draw() {
                         SystemUtils_->ERS_IOSubsystem_->IndexUsedAssetIDs();
                     }
 
+                    if (ImGui::Button("Repair Asset Metadata")) {
+
+
+                        SystemUtils_->Logger_->Log("Attempting To Repairing Asset Metadata", 5);
+
+                        // Iterate Over All Assets Known
+                        for (unsigned int i = 0; i < SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetIDsFound_.size(); i++) {
+                            
+                            // Setup Metadata
+                            std::string AssetType = "";
+                            std::string AssetFileName = "";
+                            long AssetID = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetIDsFound_[i];
+                            SystemUtils_->Logger_->Log(std::string("Repairing For Asset ") + std::to_string(AssetID), 4);
+
+
+                            // Try And Find Match WIth Either Texture, Model, Script, Shader, Etc...
+                            for (unsigned int x = 0; x < ProjectUtils_->SceneManager_->Scenes_.size(); x++) {
+
+
+                                // Try And Find Match With Model Asset ID
+                                for (unsigned int y = 0; y < ProjectUtils_->SceneManager_->Scenes_[x]->Models.size(); y++) {
+                                    if (ProjectUtils_->SceneManager_->Scenes_[x]->Models[y]->AssetID == AssetID) {
+                                        SystemUtils_->Logger_->Log("Found AssetID Match In Scene Models", 2);
+                                        AssetType = "Model";
+                                        AssetFileName =  ProjectUtils_->SceneManager_->Scenes_[x]->Models[y]->Name;
+                                        break;
+                                    }
+
+                                }
+
+
+
+
+
+
+
+                                // Check If Match Found
+                                if (AssetType != "") {
+                                    break;
+                                }
+
+
+                            }
+                            
+
+                            // Update Metadata Lists (Skipping If Data Is Already There)
+                            if (SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetFileName_[AssetID] == "") {
+                                SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetFileName_[AssetID] = AssetFileName;
+                                SystemUtils_->Logger_->Log(std::string("Updating Metadata Property 'AssetFileName' For Asset '") + std::to_string(AssetID) + std::string("' To '") + AssetFileName + std::string("'"), 3);
+                            } else {
+                                SystemUtils_->Logger_->Log(std::string("Asset Already Has Metadata Property 'AssetFileName' For Asset '") + std::to_string(AssetID)
+                                + std::string("' Of Value '") + SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetFileName_[AssetID] + std::string("'"), 3);
+                            }
+                            if (SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[AssetID] == "" || SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[AssetID] == "Undefined") {
+                                SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[AssetID] = AssetType;
+                                SystemUtils_->Logger_->Log(std::string("Updating Metadata Property 'AssetType' For Asset '") + std::to_string(AssetID) + std::string("' To '") + AssetType + std::string("'"), 3);
+                            } else {
+                                SystemUtils_->Logger_->Log(std::string("Asset Already Has Metadata Property 'AssetType' For Asset '") + std::to_string(AssetID)
+                                + std::string("' Of Value '") + SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[AssetID] + std::string("'"), 3);
+                            }
+                            
+
+
+                        }
+
+
+                        SystemUtils_->Logger_->Log("Asset Metadata Repair Attempt Complete", 5);
+
+
+                    }
+
                     // End Child
                     ImGui::EndChild();
 
