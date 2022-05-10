@@ -1038,7 +1038,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
     }
 
     // Show Loading Time Info
-    if (Viewports[Index]->ShowLoadingInfo_) {
+    if (Viewports_[Index]->ShowLoadingInfo_) {
 
 
         unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
