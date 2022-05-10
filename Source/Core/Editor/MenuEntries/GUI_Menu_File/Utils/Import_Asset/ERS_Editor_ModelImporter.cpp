@@ -24,7 +24,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     // Get Model Path
     std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
-    std::string ModelFileName = AssetPath.substr(AssetPath.find_last_of("/"), AssetPath.size()-1);
+    std::string ModelFileName = AssetPath.substr(AssetPath.find_last_of("/") + 1, AssetPath.size()-1);
 
     // Read File
     Assimp::Importer Importer;
