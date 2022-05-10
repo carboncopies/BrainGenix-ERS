@@ -132,25 +132,26 @@ const float PI = 3.14159265358979;
 
 vec3 GetNormalFromMap(sampler2D Normal) {
 
+    // Ensure That Textures Are Present/Valid, If Not, Provide Fallback
     vec3 SampledColor = texture(Normal, Object.TexCoords).xyz;
     if (!HasNormals && (SampledColor == vec3(0.0f))) {
        SampledColor = vec3(0.5f, 0.5f, 1.0f);
     }
 
-        vec3 TangentNormal = SampledColor * 2.0f - 1.0f;
+    // Use Texture Data To Calculate Normal Data
+    vec3 TangentNormal = SampledColor * 2.0f - 1.0f;
 
-        vec3 Q1 = dFdx(Object.WorldPos);
-        vec3 Q2 = dFdy(Object.WorldPos);
-        vec2 st1 = dFdx(Object.TexCoords);
-        vec2 st2 = dFdy(Object.TexCoords);
+    vec3 Q1 = dFdx(Object.WorldPos);
+    vec3 Q2 = dFdy(Object.WorldPos);
+    vec2 st1 = dFdx(Object.TexCoords);
+    vec2 st2 = dFdy(Object.TexCoords);
 
-        vec3 N = normalize(Object.Normal);
-        vec3 T = normalize(Q1*st2.t - Q2*st1.t);
-        vec3 B = -normalize(cross(N, T));
-        mat3 TBN = mat3(T,B,N);
+    vec3 N = normalize(Object.Normal);
+    vec3 T = normalize(Q1*st2.t - Q2*st1.t);
+    vec3 B = -normalize(cross(N, T));
+    mat3 TBN = mat3(T,B,N);
 
-        return normalize(TBN * TangentNormal);
-    
+    return normalize(TBN * TangentNormal);
 }
 
 
