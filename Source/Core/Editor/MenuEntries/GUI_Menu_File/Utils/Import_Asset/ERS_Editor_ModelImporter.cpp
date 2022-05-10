@@ -47,7 +47,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
     Data->AssetTypeName = "Model";
     Data->AssetFileName = ModelFileName;
-    
+    std::cout<<ModelFileName<<std::endl;
 
     ReadFile(AssetPath, Data.get());
     long ModelID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
