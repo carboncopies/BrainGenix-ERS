@@ -266,7 +266,12 @@ void Window_AssetExplorer::Draw() {
                             }
                             
 
-                            // Update 
+                            // Update Metadata Lists
+                            SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetCreationDate_[i] = AssetCreationDate;
+                            SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetModificationDate_[i] = AssetModificationDate;
+                            SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetFileName_[i] = AssetFileName;
+                            SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[i] = AssetType;
+                            
 
 
                         }
