@@ -739,7 +739,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
             ImGui::MenuItem("Scene Info Overlay", nullptr, &Viewports_[Index]->ShowSceneInfo_);
             ImGui::MenuItem("System Resources Overlay", nullptr, &Viewports_[Index]->ShowResourceInfo_);
             ImGui::MenuItem("Loading Time Overlay", nullptr, &Viewports_[Index]->ShowLoadingTimeInfo_);
-            
+
             ImGui::Separator();
 
             ImGui::MenuItem("Rotation Indicator", nullptr, &Viewports_[Index]->ShowCube);
@@ -1012,7 +1012,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
 
 void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneManager* SceneManager) {
 
-    // Draw Scene Info
+    // Draw Scene Info Overlay
     if (Viewports_[Index]->ShowSceneInfo_) {
 
         // Generate Info
@@ -1045,7 +1045,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
     }
 
 
-    // Show System Resources Info
+    // Show System Resources Info Overlay
     if (Viewports_[Index]->ShowResourceInfo_) {
 
         // Generate Info
@@ -1066,7 +1066,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
 
     }
 
-    // Show Loading Time Info
+    // Show Loading Time Info Overlay
     if (Viewports_[Index]->ShowLoadingTimeInfo_) {
 
         // Generate Info
