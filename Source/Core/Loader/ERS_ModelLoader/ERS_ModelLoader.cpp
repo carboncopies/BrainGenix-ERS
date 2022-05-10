@@ -365,6 +365,7 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
                     Target->TotalIndices_ = Source->TotalIndices_;
                     Target->TotalVertices_ = Source->TotalVertices_;
                     Target->TotalLoadingTime_ = Source->TotalLoadingTime_;
+                    Target->IsTemplateModel = false;
                     Target->FullyReady = true;
 
                     ModelsToRefrence_.erase(ModelsToRefrence_.begin() + i);
@@ -388,7 +389,6 @@ void ERS_CLASS_ModelLoader::AddModelToReferenceQueue(long AssetID, std::shared_p
     ModelsToRefrence_.push_back(Model);
 
 }
-
 
 void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures) {
 
