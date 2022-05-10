@@ -225,6 +225,9 @@ void Window_AssetExplorer::Draw() {
 
                     if (ImGui::Button("Repair Asset Metadata")) {
 
+
+                        SystemUtils_->Logger_->Log("Attempting To Repairing Asset Metadata", 5);
+
                         // Iterate Over All Assets Known
                         for (unsigned int i = 0; i < SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetIDsFound_.size(); i++) {
                             
@@ -275,6 +278,10 @@ void Window_AssetExplorer::Draw() {
 
 
                         }
+
+
+                        SystemUtils_->Logger_->Log("Asset Metadata Repair Attempt Complete", 4);
+
 
                     }
 
