@@ -48,7 +48,7 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
     Logger_->Log("Populating Asset Index Metadata", 3);
     for (YAML::const_iterator it=AssetIndexMetadata.begin(); it!=AssetIndexMetadata.end(); ++it) {
 
-        Logger_->Log(std::string(std::string("Loading Metadata For Asset With ID: ") + std::to_string(it->first.as<long>())).c_str(), 3);
+        Logger_->Log(std::string(std::string("Loading Metadata For Asset With ID ") + std::to_string(it->first.as<long>())).c_str(), 3);
 
         // Get Asset Metadata Node
         long Index = it->first.as<long>();
@@ -61,7 +61,9 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
         AssetModificationDate_[Index] = {AssetMetadata["AssetModificationDate"].as<std::string>()};
 
         if (AssetMetadata["AssetFileName"]) {
-            
+            AssetModificationDate_[Index] = {AssetMetadata["AssetFileName"].as<std::string>()};
+        } else {
+            Logger_->Log(std::string("Failed To Find Asset Filename Metadata For Asset With ID ") + std::to_string(it->first.as<long>()), 7);
         }
 
 
