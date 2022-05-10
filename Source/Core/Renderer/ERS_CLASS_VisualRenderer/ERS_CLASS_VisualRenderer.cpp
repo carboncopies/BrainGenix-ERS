@@ -1062,7 +1062,6 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
 
         // Generate Info
         unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
-
         double LongestLoadingTime = 0;
         double ShortestLoadingTime = 65535;
         double AverageLoadingTime = 0;
