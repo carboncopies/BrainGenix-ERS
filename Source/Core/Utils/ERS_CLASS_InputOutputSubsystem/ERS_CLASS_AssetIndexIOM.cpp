@@ -126,6 +126,7 @@ bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, ERS_STRUCT_IOData* 
     AssetTypeName_[AssetID] = {AssetType};
     AssetCreationDate_[AssetID] = {Created};
     AssetModificationDate_[AssetID] = {Modified};
+    AssetFileName_[AssetID] = {FileName};
 
     // Check If Already In Loaded Assets, If Not, Add
     bool AlreadyInIndex = false;
