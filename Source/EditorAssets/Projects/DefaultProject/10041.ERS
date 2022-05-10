@@ -131,7 +131,15 @@ uniform float Gamma_;
 const float PI = 3.14159265358979;
 
 vec3 GetNormalFromMap(sampler2D Normal) {
-    vec3 TangentNormal = texture(Normal, Object.TexCoords).xyz * 2.0f - 1.0f;
+
+    // Ensure That Textures Are Present/Valid, If Not, Provide Fallback
+    vec3 SampledColor = texture(Normal, Object.TexCoords).xyz;
+    if (!HasNormals || (SampledColor == vec3(0.0f))) {
+       SampledColor = vec3(0.5f, 0.5f, 1.0f);
+    }
+
+    // Use Texture Data To Calculate Normal Data
+    vec3 TangentNormal = SampledColor * 2.0f - 1.0f;
 
     vec3 Q1 = dFdx(Object.WorldPos);
     vec3 Q2 = dFdy(Object.WorldPos);
@@ -144,7 +152,6 @@ vec3 GetNormalFromMap(sampler2D Normal) {
     mat3 TBN = mat3(T,B,N);
 
     return normalize(TBN * TangentNormal);
-
 }
 
 
@@ -443,6 +450,8 @@ void main() {
         FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
 }
+
+
 
 
 
