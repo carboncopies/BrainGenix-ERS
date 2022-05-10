@@ -229,7 +229,8 @@ void Window_AssetExplorer::Draw() {
                         SystemUtils_->Logger_->Log("Attempting To Repairing Asset Metadata", 5);
 
                         // Iterate Over All Assets Known
-                        for (unsigned int i = 0; i < SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetIDsFound_.size(); i++) {
+                        std::map<long, std::string> IteratorMap = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_;
+                        for (std::map<long, std::string>::iterator Iter = IteratorMap.begin(); Iter != IteratorMap.end(); ++Iter) {
                             
 
 
