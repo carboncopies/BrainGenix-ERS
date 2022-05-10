@@ -37,6 +37,7 @@ struct ERS_STRUCT_Viewport {
 
     bool ShowSceneInfo_ = true; /**<Enab;e/Disable Vertex And Texture Info Overlay*/
     bool ShowLoadingTimeInfo_ = true; /**<Enable/Disable Loading Time Info Overlay*/
+    bool ShowResourceInfo_ = true; /**<Enable/Disable System Resource Info Overlay*/
 
     float Exposure_ = 1.0f; /**<Set the camera exposure for that viewport*/
     float Gamma_ = 2.2f; /**<Set the gamma correction value for the viewport*/
