@@ -55,11 +55,11 @@ void Window_AssetExplorer::Draw() {
                         // Check Type
                         unsigned long Key = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[i];
                         std::string Type = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[Key];
-
+                        std::string FileName = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetFileName_[Key];
                         if (Type == std::string("Model")) {
                             
 
-                            bool Selected = ImGui::Selectable(std::to_string(Key).c_str(), Key == SelectedModelIndex_);
+                            bool Selected = ImGui::Selectable(FileName.c_str(), Key == SelectedModelIndex_);
                             if (Selected) {
                                 SelectedModelIndex_ = Key;
                             }
