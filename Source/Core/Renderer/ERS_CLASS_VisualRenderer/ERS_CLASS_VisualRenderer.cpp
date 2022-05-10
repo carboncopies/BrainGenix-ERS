@@ -1036,6 +1036,26 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
 
     }
 
+
+    // Show System Resources Info
+    if (Viewports_[Index]->ShowResourceInfo_) {
+
+        unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
+
+        double LongestLoadingTime = 0;
+
+
+        for (unsigned long i = 0; i < NumModels; i++) {
+
+            AverageLoadingTime += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_;
+
+        }
+
+
+
+
+    }
+
     // Show Loading Time Info
     if (Viewports_[Index]->ShowLoadingTimeInfo_) {
 
@@ -1067,24 +1087,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
     }
 
 
-    // Show System Resources Info
-    if (Viewports_[Index]->ShowResourceInfo_) {
 
-        unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
-
-        double LongestLoadingTime = 0;
-
-
-        for (unsigned long i = 0; i < NumModels; i++) {
-
-            AverageLoadingTime += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_;
-
-        }
-
-
-
-
-    }
 
 
 }
