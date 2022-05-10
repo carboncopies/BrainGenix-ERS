@@ -1015,15 +1015,15 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
         unsigned long InstancedModels = 0;
 
         for (unsigned long i = 0; i < NumModels; i++) {
-            NumVerts += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalVertices_;
-            NumIndices += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalIndices_;
-            NumTextures += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->OpenGLTextureIDs_.size();
-            TotalModels ++;
-            if (!SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->IsTemplateModel) {
-                InstancedModels++;
+            if (SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->Enabled) {
+                NumVerts += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalVertices_;
+                NumIndices += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalIndices_;
+                NumTextures += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->OpenGLTextureIDs_.size();
+                TotalModels ++;
+                if (!SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->IsTemplateModel) {
+                    InstancedModels++;
+                }
             }
-
-            
         }
 
         std::string SceneMessage = std::string("Scene: ") + std::to_string(TotalModels) + std::string(" Models (") + std::to_string(InstancedModels)
