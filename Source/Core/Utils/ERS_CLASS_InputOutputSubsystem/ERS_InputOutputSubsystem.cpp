@@ -470,3 +470,22 @@ std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchWriteAssets(
 
   return StatusVector;
 }
+
+
+
+std::string ERS_CLASS_InputOutputSubsystem::GetCurrentTime() {
+
+
+  std::time_t RawCurrentTime;
+  std::tm *TimeInformation;
+  char TimeBuffer[80];
+
+  std::time(&RawCurrentTime);
+  TimeInformation = std::localtime(&RawCurrentTime);
+
+  std::strftime(TimeBuffer, 80, "%Y-%m-%d-%H-%M-%S", TimeInformation);
+  std::string CurrentTime = std::string(TimeBuffer);
+
+  return CurrentTime;
+
+}
