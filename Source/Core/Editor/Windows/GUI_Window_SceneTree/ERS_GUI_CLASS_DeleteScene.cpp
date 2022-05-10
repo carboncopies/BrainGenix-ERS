@@ -66,6 +66,7 @@ void Subwindow_DeleteScene::UpdateConfirmDeletePopup() {
                 SceneManager_->Scenes_.erase(SceneManager_->Scenes_.begin() + SceneIndex_);
             }
             ShowDeleteConfirm_ = false;
+            SceneManager_->Scenes_[SceneManager_->ActiveScene_]->HasSelectionChanged = true;
         }
         ImGui::SameLine();
         if (ImGui::Button("Abort", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ESCAPE)) { // If Button Pressed, Or Escape Key Pressed
