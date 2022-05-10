@@ -228,6 +228,19 @@ void Window_AssetExplorer::Draw() {
                         // Iterate Over All Assets Known
                         for (unsigned int i = 0; i < SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetIDsFound_.size(); i++) {
                             
+                            // Get Asset ID
+                            long AssetID = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetIDsFound_[i];
+
+                            // Try And Find Match WIth Either Texture, Model, Script, Shader, Etc...
+                            for (unsigned int x = 0; x < ProjectUtils_->SceneManager_->Scenes_.size(); x++) {
+
+                                // Try And Find Match With Model Asset ID
+                                for (unsigned int y = 0; y < ProjectUtils_->SceneManager_->Scenes_[x]->Models.size(); y++) {
+
+
+
+                                }
+                            }
                             
 
 
