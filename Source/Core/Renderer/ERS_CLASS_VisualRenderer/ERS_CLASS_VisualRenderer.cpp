@@ -1044,14 +1044,11 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
         double InMemoryVerts = 0;
         double InMemoryIndices = 0;
 
-
         for (unsigned long i = 0; i < NumModels; i++) {
-
             if (SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->IsTemplateModel) {
                 InMemoryVerts += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalVertices_;
                 InMemoryIndices += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalIndices_;
             }
-
         }
 
 
