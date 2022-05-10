@@ -1062,7 +1062,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
 
         AverageLoadingTime /= NumModels;
 
-        std::string LoadingTimeMessage =  std::string("Average Asset Loading Time: ") + std::to_string(AverageLoadingTime) + std::string(" Seconds, Shortest Asset Loading Time: ") + std::to_string(ShortestLoadingTime) + std::string(" Seconds, Longest Asset Loading Time: ") + std::to_string(LongestLoadingTime) + std::string(" Seconds");
+        std::string LoadingTimeMessage = std::string("Asset Loading Times | Average: ") + std::to_string(AverageLoadingTime) + std::string(" Seconds, Shortest: ") + std::to_string(ShortestLoadingTime) + std::string(" Seconds, Longest: ") + std::to_string(LongestLoadingTime) + std::string(" Seconds");
         ImGui::Text("%s", LoadingTimeMessage.c_str());
 
     }
