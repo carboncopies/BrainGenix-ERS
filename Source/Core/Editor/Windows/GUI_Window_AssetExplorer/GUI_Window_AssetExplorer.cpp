@@ -55,6 +55,7 @@ void Window_AssetExplorer::Draw() {
                         // Check Type
                         unsigned long Key = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[i];
                         std::string Type = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[Key];
+
                         if (Type == std::string("Model")) {
                             
 
