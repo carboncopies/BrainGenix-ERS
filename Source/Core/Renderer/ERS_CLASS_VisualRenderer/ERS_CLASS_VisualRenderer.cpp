@@ -1066,4 +1066,15 @@ void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneMan
 
     }
 
+
+    // Show System Resources Info
+    if (Viewports_[Index]->ShowResourceInfo_) {
+
+
+
+
+        
+    }
+
+
 }
