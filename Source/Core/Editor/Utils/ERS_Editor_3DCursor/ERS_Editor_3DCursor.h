@@ -152,4 +152,13 @@ public:
     bool HasStateChanged();
 
 
+    /**
+     * @brief Use this function to determine if grid snap is enabled and if so to what scale.
+     * 
+     * @param Enabled 
+     * @param Amount 
+     */
+    void SetGridSnap(bool Enabled, float Amount);
+
+
 };
