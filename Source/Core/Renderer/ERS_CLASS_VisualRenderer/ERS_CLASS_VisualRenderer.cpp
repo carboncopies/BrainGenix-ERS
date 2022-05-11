@@ -985,7 +985,9 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
                 Viewports_[Index]->GizmoGridSnapEnabled_ = !Viewports_[Index]->GizmoGridSnapEnabled_;
             }
 
+
             ImGui::Separator();
+
 
             if (ImGui::MenuItem("0.01", nullptr, ((Viewports_[Index]->GizmoGridSnapEnabled_) && (Viewports_[Index]->GridSnapAmount_ == 0.01f)))) {
                 Viewports_[Index]->GizmoGridSnapEnabled_ = true;
