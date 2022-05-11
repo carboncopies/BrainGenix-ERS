@@ -455,7 +455,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
         bool DrawCursor;
-        Cursors3D_->SetGridSnap(Viewports_[Index]->GizmoGridSnapEnabled_, Viewports_[Index]->GridSnapAmount_);
+        Cursors3D_->SetGridSnap(Viewports_[Index]->GizmoGridSnapEnabled_, Viewports_[Index]->GridSnapAmountTranslate_, Viewports_[Index]->GridSnapAmountRotate_, Viewports_[Index]->GridSnapAmountScale_);
         if (Cursors3D_->IsUsing() && (ActiveViewportCursorIndex_ == Index)) {
             DrawCursor = true;
         } else if (!Cursors3D_->IsUsing()) {
