@@ -161,7 +161,9 @@ public:
      * @brief Use this function to determine if grid snap is enabled and if so to what scale.
      * 
      * @param Enabled 
-     * @param Amount 
+     * @param AmountTranslate 
+     * @param AmountRotate 
+     * @param AmountScale 
      */
     void SetGridSnap(bool Enabled, float AmountTranslate, float AmountRotate, float AmountScale);
 
