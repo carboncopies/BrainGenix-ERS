@@ -74,7 +74,10 @@ private:
     bool EnableGridSnap_; /**<Enables or Disables Grid Snapping*/
     float* CameraView_; /**<Camera View Matrix, Converted From GLM::Mat4*/
     float* CameraProjection_; /**<Camera Projection Matrix, Converted From GLM::Mat4*/
-    float GridSnapAmount_; /**<Unit To Snap To On Grid*/
+
+    float GridSnapAmountTranslate_; /**<Unit To Snap To On Grid During Translation Mode*/
+    float GridSnapAmountRotate_; /**<Unit To Snap To On Grid During Rotation Mode*/
+    float GridSnapAmountScale_; /**<Unit To Snap To On Grid During Scale Mode*/
 
     ERS_STRUCT_Camera* Camera_; /**<Camera Object Pointer*/
     ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE; /**<Set Current Cursor Operation*/
