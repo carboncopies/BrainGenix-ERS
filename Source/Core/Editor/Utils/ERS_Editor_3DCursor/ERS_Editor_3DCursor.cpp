@@ -94,13 +94,13 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
         float GridSnapArray[3];
         if (EnableGridSnap_) {
             if (GizmoMode_ == ImGuizmo::TRANSLATE) {
-                GridSnapArray[0] = GridSnapAmount_;
-                GridSnapArray[1] = GridSnapAmount_;
-                GridSnapArray[2] = GridSnapAmount_;
+                GridSnapArray[0] = GridSnapAmountTranslate_;
+                GridSnapArray[1] = GridSnapAmountTranslate_;
+                GridSnapArray[2] = GridSnapAmountTranslate_;
             } else if (GizmoMode_ == ImGuizmo::ROTATE) {
 
             } else if (GizmoMode_ == ImGuizmo::SCALE) {
-                
+
             }
         } else {
             GridSnapArray[0] = 0.0f;
