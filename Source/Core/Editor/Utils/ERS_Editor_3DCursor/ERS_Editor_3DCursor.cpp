@@ -157,9 +157,9 @@ void Cursors3D::ObjectHasChanged() {
     HasObjectChanged_ = true;
 }
 
-void Cursors3D::SetGridSnap(bool Enabled, float AmountTranslate, float AmountRotate, float AmountScale) {
+void Cursors3D::SetGridSnap(float AmountTranslate, float AmountRotate, float AmountScale) {
 
-    EnableGridSnap_ = Enabled;
+
     GridSnapAmountTranslate_ = AmountTranslate;
     GridSnapAmountRotate_ = AmountRotate;
     GridSnapAmountScale_ = AmountScale;
