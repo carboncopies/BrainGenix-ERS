@@ -346,9 +346,10 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
 
     while (!ExitRefThread_) {
 
+        // Extra Scope To Make The Lock Go Out Of Scope Before The Delay Runs
         {
             // Check Reference List
-            std::lock_guard<std::mutex> Deleteme(BlockRefThread_);
+            std::lock_guard<std::mutex> LockReferenceThread(BlockRefThread_);
             for (unsigned long i = 0; i < ModelsToRefrence_.size(); i++) {
                 unsigned long TargetID = ModelsToRefrence_[i]->AssetID;
                 long MatchIndex = CheckIfModelAlreadyLoaded(TargetID);
