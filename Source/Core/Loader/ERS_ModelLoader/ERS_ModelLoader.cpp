@@ -371,6 +371,10 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
                         Target->IsTemplateModel = false;
                         Target->FullyReady = true;
 
+                        if (Target->Name == "Loading...") {
+                            Target->Name = Source->Name;
+                        }
+
                         ModelsToRefrence_.erase(ModelsToRefrence_.begin() + i);
                         break;
                     }
