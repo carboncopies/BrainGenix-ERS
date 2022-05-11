@@ -455,6 +455,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
         bool DrawCursor;
+        Cursors3D_->SetGridSnap(Viewports_[Index]->GridSnapAmountTranslate_, Viewports_[Index]->GridSnapAmountRotate_, Viewports_[Index]->GridSnapAmountScale_);
         if (Cursors3D_->IsUsing() && (ActiveViewportCursorIndex_ == Index)) {
             DrawCursor = true;
         } else if (!Cursors3D_->IsUsing()) {
@@ -977,6 +978,100 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
         ImGui::EndMenu();
         }
 
+
+        // Grid Snapping Control Menu
+        if (ImGui::BeginMenu("Grid Snapping")) {
+
+            if (ImGui::BeginMenu("Translation")) {
+
+                if (ImGui::MenuItem("Disabled", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.0f))) {
+                    Viewports_[Index]->GridSnapAmountTranslate_ = 0.0f;
+                }
+
+                ImGui::Separator();
+                
+                if (ImGui::MenuItem("0.1", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.1f))) {
+                    Viewports_[Index]->GridSnapAmountTranslate_ = 0.1f;
+                }
+                if (ImGui::MenuItem("0.25", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.25f))) {
+                    Viewports_[Index]->GridSnapAmountTranslate_ = 0.25f;
+                }
+                if (ImGui::MenuItem("0.5", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.5f))) {
+                    Viewports_[Index]->GridSnapAmountTranslate_ = 0.5f;
+                }
+                if (ImGui::MenuItem("0.75", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.75f))) {
+                    Viewports_[Index]->GridSnapAmountTranslate_ = 0.75f;
+                }
+                if (ImGui::MenuItem("1.0", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 1.0f))) {
+                    Viewports_[Index]->GridSnapAmountTranslate_ = 1.0f;
+                }
+
+            ImGui::EndMenu();
+            }
+
+
+            if (ImGui::BeginMenu("Rotate")) {
+
+                if (ImGui::MenuItem("Disabled", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 0.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotate_ = 0.0f;
+                }
+
+                ImGui::Separator();
+                
+                if (ImGui::MenuItem("1", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 1.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotate_ = 1.0f;
+                }
+                if (ImGui::MenuItem("5", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 5.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotate_ = 5.0f;
+                }
+                if (ImGui::MenuItem("10", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 10.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotate_ = 10.0f;
+                }
+                if (ImGui::MenuItem("25", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 25.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotate_ = 25.0f;
+                }
+                if (ImGui::MenuItem("45", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 45.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotate_ = 45.0f;
+                }
+                if (ImGui::MenuItem("90", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 90.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotate_ = 90.0f;
+                }
+
+            ImGui::EndMenu();
+            }
+
+
+
+            if (ImGui::BeginMenu("Scale")) {
+
+                if (ImGui::MenuItem("Disabled", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 0.0f))) {
+                    Viewports_[Index]->GridSnapAmountScale_ = 0.0f;
+                }
+
+                ImGui::Separator();
+                
+                if (ImGui::MenuItem("0.1", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 0.1f))) {
+                    Viewports_[Index]->GridSnapAmountScale_ = 0.1f;
+                }
+                if (ImGui::MenuItem("0.25", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 0.25f))) {
+                    Viewports_[Index]->GridSnapAmountScale_ = 0.25f;
+                }
+                if (ImGui::MenuItem("0.5", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 0.5f))) {
+                    Viewports_[Index]->GridSnapAmountScale_ = 0.5f;
+                }
+                if (ImGui::MenuItem("0.75", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 0.75f))) {
+                    Viewports_[Index]->GridSnapAmountScale_ = 0.75f;
+                }
+                if (ImGui::MenuItem("1.0", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 1.0f))) {
+                    Viewports_[Index]->GridSnapAmountScale_ = 1.0f;
+                }
+
+            ImGui::EndMenu();
+            }
+
+
+        ImGui::EndMenu();
+        }
 
         // Game Control Menu
         if (ImGui::BeginMenu("Run")) {
