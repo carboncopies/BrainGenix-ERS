@@ -1034,6 +1034,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
                     Viewports_[Index]->GridSnapAmountScale_ = 1.0f;
                 }
 
+            ImGui::EndMenu();
             }
 
 
