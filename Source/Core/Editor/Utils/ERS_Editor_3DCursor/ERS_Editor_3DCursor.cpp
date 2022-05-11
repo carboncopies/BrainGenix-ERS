@@ -92,25 +92,20 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
 
         // Handle Grid Snapping
         float GridSnapArray[3];
-        if (EnableGridSnap_) {
-            if (GizmoMode_ == ImGuizmo::TRANSLATE) {
-                GridSnapArray[0] = GridSnapAmountTranslate_;
-                GridSnapArray[1] = GridSnapAmountTranslate_;
-                GridSnapArray[2] = GridSnapAmountTranslate_;
-            } else if (GizmoMode_ == ImGuizmo::ROTATE) {
-                GridSnapArray[0] = GridSnapAmountRotate_;
-                GridSnapArray[1] = GridSnapAmountRotate_;
-                GridSnapArray[2] = GridSnapAmountRotate_;
-            } else if (GizmoMode_ == ImGuizmo::SCALE) {
-                GridSnapArray[0] = GridSnapAmountScale_;
-                GridSnapArray[1] = GridSnapAmountScale_;
-                GridSnapArray[2] = GridSnapAmountScale_;
-            }
-        } else {
-            GridSnapArray[0] = 0.0f;
-            GridSnapArray[1] = 0.0f;
-            GridSnapArray[2] = 0.0f;
+        if (GizmoMode_ == ImGuizmo::TRANSLATE) {
+            GridSnapArray[0] = GridSnapAmountTranslate_;
+            GridSnapArray[1] = GridSnapAmountTranslate_;
+            GridSnapArray[2] = GridSnapAmountTranslate_;
+        } else if (GizmoMode_ == ImGuizmo::ROTATE) {
+            GridSnapArray[0] = GridSnapAmountRotate_;
+            GridSnapArray[1] = GridSnapAmountRotate_;
+            GridSnapArray[2] = GridSnapAmountRotate_;
+        } else if (GizmoMode_ == ImGuizmo::SCALE) {
+            GridSnapArray[0] = GridSnapAmountScale_;
+            GridSnapArray[1] = GridSnapAmountScale_;
+            GridSnapArray[2] = GridSnapAmountScale_;
         }
+
 
         // Draw gizmo
         ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, GizmoMode_, TmpMatrix, nullptr, GridSnapArray);
