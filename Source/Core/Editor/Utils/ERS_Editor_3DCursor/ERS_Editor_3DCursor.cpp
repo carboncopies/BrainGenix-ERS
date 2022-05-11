@@ -102,7 +102,9 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
                 GridSnapArray[1] = GridSnapAmountRotate_;
                 GridSnapArray[2] = GridSnapAmountRotate_;
             } else if (GizmoMode_ == ImGuizmo::SCALE) {
-
+                GridSnapArray[0] = GridSnapAmountScale_;
+                GridSnapArray[1] = GridSnapAmountScale_;
+                GridSnapArray[2] = GridSnapAmountScale_;
             }
         } else {
             GridSnapArray[0] = 0.0f;
