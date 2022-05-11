@@ -71,8 +71,10 @@ private:
     bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
     bool EnableRotation_; /**<Enable/Disable The Rotation Gizmo*/
     bool EnableScale_; /**<Enable/Disable The Scale Gizmo*/ 
+    bool EnableGridSnap_; /**<Enables or Disables Grid Snapping*/
     float* CameraView_; /**<Camera View Matrix, Converted From GLM::Mat4*/
     float* CameraProjection_; /**<Camera Projection Matrix, Converted From GLM::Mat4*/
+    float GridSnapAmount_; /**<Unit To Snap To On Grid*/
 
     ERS_STRUCT_Camera* Camera_; /**<Camera Object Pointer*/
     ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE; /**<Set Current Cursor Operation*/
