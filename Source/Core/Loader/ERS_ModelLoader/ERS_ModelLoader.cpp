@@ -57,9 +57,7 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 
     SystemUtils_->Logger_->Log("Sending Join Command To Reference Thread", 5);
     std::lock_guard<std::mutex> Deleteme(BlockRefThread_);
-    //BlockRefThread_.lock();
     ExitRefThread_ = true;
-    //BlockRefThread_.unlock();
 
     SystemUtils_->Logger_->Log("Joining Reference Loader Thread", 5);
     ModelRefrenceThread_.join();
@@ -348,39 +346,40 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
 
     while (!ExitRefThread_) {
 
-        // Check Reference List
-        std::lock_guard<std::mutex> Deleteme(BlockRefThread_);
-        for (unsigned long i = 0; i < ModelsToRefrence_.size(); i++) {
-            unsigned long TargetID = ModelsToRefrence_[i]->AssetID;
-            long MatchIndex = CheckIfModelAlreadyLoaded(TargetID);
-            if (MatchIndex != -1) {
-                if (LoadedModelRefrences_[MatchIndex]->FullyReady) {
+        {
+            // Check Reference List
+            std::lock_guard<std::mutex> Deleteme(BlockRefThread_);
+            for (unsigned long i = 0; i < ModelsToRefrence_.size(); i++) {
+                unsigned long TargetID = ModelsToRefrence_[i]->AssetID;
+                long MatchIndex = CheckIfModelAlreadyLoaded(TargetID);
+                if (MatchIndex != -1) {
+                    if (LoadedModelRefrences_[MatchIndex]->FullyReady) {
 
 
-                    std::shared_ptr<ERS_STRUCT_Model> Target = ModelsToRefrence_[i];
-                    std::shared_ptr<ERS_STRUCT_Model> Source = LoadedModelRefrences_[MatchIndex];
+                        std::shared_ptr<ERS_STRUCT_Model> Target = ModelsToRefrence_[i];
+                        std::shared_ptr<ERS_STRUCT_Model> Source = LoadedModelRefrences_[MatchIndex];
 
 
 
-                    Target->Meshes = Source->Meshes;
-                    Target->OpenGLTextureIDs_ = Source->OpenGLTextureIDs_;
-                    Target->TextureIDs = Source->TextureIDs;
-                    Target->TotalIndices_ = Source->TotalIndices_;
-                    Target->TotalVertices_ = Source->TotalVertices_;
-                    Target->TotalLoadingTime_ = Source->TotalLoadingTime_;
-                    Target->IsTemplateModel = false;
-                    Target->FullyReady = true;
+                        Target->Meshes = Source->Meshes;
+                        Target->OpenGLTextureIDs_ = Source->OpenGLTextureIDs_;
+                        Target->TextureIDs = Source->TextureIDs;
+                        Target->TotalIndices_ = Source->TotalIndices_;
+                        Target->TotalVertices_ = Source->TotalVertices_;
+                        Target->TotalLoadingTime_ = Source->TotalLoadingTime_;
+                        Target->IsTemplateModel = false;
+                        Target->FullyReady = true;
 
-                    ModelsToRefrence_.erase(ModelsToRefrence_.begin() + i);
-                    //BlockRefThread_.unlock();
-                    break;
+                        ModelsToRefrence_.erase(ModelsToRefrence_.begin() + i);
+                        break;
+                    }
                 }
+
             }
-
         }
-        //BlockRefThread_.unlock();
-
         std::this_thread::sleep_for(std::chrono::milliseconds(2));
+
+
 
     }
 
