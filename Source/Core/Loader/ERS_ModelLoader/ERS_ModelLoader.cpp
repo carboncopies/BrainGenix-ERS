@@ -56,9 +56,8 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 
 
     SystemUtils_->Logger_->Log("Sending Join Command To Reference Thread", 5);
-    BlockRefThread_.lock();
+    std::lock_guard<std::mutex> Deleteme(BlockRefThread_);
     ExitRefThread_ = true;
-    BlockRefThread_.unlock();
 
     SystemUtils_->Logger_->Log("Joining Reference Loader Thread", 5);
     ModelRefrenceThread_.join();
@@ -347,39 +346,45 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
 
     while (!ExitRefThread_) {
 
-        // Check Reference List
-        BlockRefThread_.lock();
-        for (unsigned long i = 0; i < ModelsToRefrence_.size(); i++) {
-            unsigned long TargetID = ModelsToRefrence_[i]->AssetID;
-            long MatchIndex = CheckIfModelAlreadyLoaded(TargetID);
-            if (MatchIndex != -1) {
-                if (LoadedModelRefrences_[MatchIndex]->FullyReady) {
+        // Extra Scope To Make The Lock Go Out Of Scope Before The Delay Runs
+        {
+            // Check Reference List
+            std::lock_guard<std::mutex> LockReferenceThread(BlockRefThread_);
+            for (unsigned long i = 0; i < ModelsToRefrence_.size(); i++) {
+                unsigned long TargetID = ModelsToRefrence_[i]->AssetID;
+                long MatchIndex = CheckIfModelAlreadyLoaded(TargetID);
+                if (MatchIndex != -1) {
+                    if (LoadedModelRefrences_[MatchIndex]->FullyReady) {
 
 
-                    std::shared_ptr<ERS_STRUCT_Model> Target = ModelsToRefrence_[i];
-                    std::shared_ptr<ERS_STRUCT_Model> Source = LoadedModelRefrences_[MatchIndex];
+                        std::shared_ptr<ERS_STRUCT_Model> Target = ModelsToRefrence_[i];
+                        std::shared_ptr<ERS_STRUCT_Model> Source = LoadedModelRefrences_[MatchIndex];
 
 
 
-                    Target->Meshes = Source->Meshes;
-                    Target->OpenGLTextureIDs_ = Source->OpenGLTextureIDs_;
-                    Target->TextureIDs = Source->TextureIDs;
-                    Target->TotalIndices_ = Source->TotalIndices_;
-                    Target->TotalVertices_ = Source->TotalVertices_;
-                    Target->TotalLoadingTime_ = Source->TotalLoadingTime_;
-                    Target->IsTemplateModel = false;
-                    Target->FullyReady = true;
+                        Target->Meshes = Source->Meshes;
+                        Target->OpenGLTextureIDs_ = Source->OpenGLTextureIDs_;
+                        Target->TextureIDs = Source->TextureIDs;
+                        Target->TotalIndices_ = Source->TotalIndices_;
+                        Target->TotalVertices_ = Source->TotalVertices_;
+                        Target->TotalLoadingTime_ = Source->TotalLoadingTime_;
+                        Target->IsTemplateModel = false;
+                        Target->FullyReady = true;
 
-                    ModelsToRefrence_.erase(ModelsToRefrence_.begin() + i);
-                    BlockRefThread_.unlock();
-                    break;
+                        if (Target->Name == "Loading...") {
+                            Target->Name = Source->Name;
+                        }
+
+                        ModelsToRefrence_.erase(ModelsToRefrence_.begin() + i);
+                        break;
+                    }
                 }
+
             }
-
         }
-        BlockRefThread_.unlock();
-
         std::this_thread::sleep_for(std::chrono::milliseconds(2));
+
+
 
     }
 
@@ -396,18 +401,17 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
 
     // Check If Already In Refs
     if (EnableReferenceLoading_) {
-        BlockRefThread_.lock();
+        std::lock_guard<std::mutex> BlockRefThread(BlockRefThread_);
         if (CheckIfModelAlreadyLoaded(AssetID) != -1) {
             AddModelToReferenceQueue(AssetID, Model);
-            BlockRefThread_.unlock();
             return;
         }
         else {
             LoadedModelRefrences_.push_back(Model);
-            BlockRefThread_.unlock();
+
         }
     }
-
+    
     // Log Loading For Debugging Purposes
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Model '") + std::to_string(AssetID) + std::string("'")).c_str(), 4);
     Model->LoadingStartTime_ = glfwGetTime();
