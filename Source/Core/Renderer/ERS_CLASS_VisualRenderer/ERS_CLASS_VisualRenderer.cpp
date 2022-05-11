@@ -982,48 +982,14 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
         // Grid Snapping Control Menu
         if (ImGui::BeginMenu("Grid Snapping")) {
 
-            if (ImGui::MenuItem("Disabled", nullptr, &Viewports_[Index]->GizmoGridSnapEnabled_)) {
-                Viewports_[Index]->GizmoGridSnapEnabled_ = !Viewports_[Index]->GizmoGridSnapEnabled_;
+
+
+
+            if (ImGui::MenuItem("0.01", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.01f))) {
+                Viewports_[Index]->GridSnapAmountTranslate_ = 0.01f;
             }
 
-
-            ImGui::Separator();
-
-
-            if (ImGui::MenuItem("0.01", nullptr, ((Viewports_[Index]->GizmoGridSnapEnabled_) && (Viewports_[Index]->GridSnapAmount_ == 0.01f)))) {
-                Viewports_[Index]->GizmoGridSnapEnabled_ = true;
-                Viewports_[Index]->GridSnapAmount_ = 0.01f;
-            }
-
-            if (ImGui::MenuItem("0.025", nullptr, ((Viewports_[Index]->GizmoGridSnapEnabled_) && (Viewports_[Index]->GridSnapAmount_ == 0.025f)))) {
-                Viewports_[Index]->GizmoGridSnapEnabled_ = true;
-                Viewports_[Index]->GridSnapAmount_ = 0.025f;
-            }
-
-            if (ImGui::MenuItem("0.05", nullptr, ((Viewports_[Index]->GizmoGridSnapEnabled_) && (Viewports_[Index]->GridSnapAmount_ == 0.05f)))) {
-                Viewports_[Index]->GizmoGridSnapEnabled_ = true;
-                Viewports_[Index]->GridSnapAmount_ = 0.05f;
-            }
-
-            if (ImGui::MenuItem("0.1", nullptr, ((Viewports_[Index]->GizmoGridSnapEnabled_) && (Viewports_[Index]->GridSnapAmount_ == 0.1f)))) {
-                Viewports_[Index]->GizmoGridSnapEnabled_ = true;
-                Viewports_[Index]->GridSnapAmount_ = 0.1f;
-            }
-
-            if (ImGui::MenuItem("0.25", nullptr, ((Viewports_[Index]->GizmoGridSnapEnabled_) && (Viewports_[Index]->GridSnapAmount_ == 0.25f)))) {
-                Viewports_[Index]->GizmoGridSnapEnabled_ = true;
-                Viewports_[Index]->GridSnapAmount_ = 0.25f;
-            }
-
-            if (ImGui::MenuItem("0.5", nullptr, ((Viewports_[Index]->GizmoGridSnapEnabled_) && (Viewports_[Index]->GridSnapAmount_ == 0.5f)))) {
-                Viewports_[Index]->GizmoGridSnapEnabled_ = true;
-                Viewports_[Index]->GridSnapAmount_ = 0.5f;
-            }
-
-            if (ImGui::MenuItem("1.0", nullptr, ((Viewports_[Index]->GizmoGridSnapEnabled_) && (Viewports_[Index]->GridSnapAmount_ == 1.0f)))) {
-                Viewports_[Index]->GizmoGridSnapEnabled_ = true;
-                Viewports_[Index]->GridSnapAmount_ = 1.0f;
-            }
+            
 
         ImGui::EndMenu();
         }

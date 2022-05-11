@@ -35,7 +35,6 @@ struct ERS_STRUCT_Viewport {
     bool GammaCorrection = true; /**<Enable/disable gamma correction*/
     bool HDREnabled_ = true; /**<Indicate if hdr should be used or not*/
 
-    bool GizmoGridSnapEnabled_ = true; /**<Enable/Disable Grid Snapping Using The Set Snap Values*/
     float GridSnapAmountTranslate_ = 0.01f; /**<Grid Snap Amount, User Adjustable In The Editor*/
     float GridSnapAmountRotate_ = 0.01f; /**<Grid Snap Amount, User Adjustable In The Editor*/
     float GridSnapAmountScale_ = 0.01f; /**<Grid Snap Amount, User Adjustable In The Editor*/
