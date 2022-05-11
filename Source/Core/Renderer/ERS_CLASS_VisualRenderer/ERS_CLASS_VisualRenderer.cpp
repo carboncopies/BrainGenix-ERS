@@ -982,28 +982,60 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
         // Grid Snapping Control Menu
         if (ImGui::BeginMenu("Grid Snapping")) {
 
+            if (ImGui::BeginMenu("Translation")) {
 
-            if (ImGui::MenuItem("Disabled", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.0f))) {
-                Viewports_[Index]->GridSnapAmountTranslate_ = 0.0f;
+                if (ImGui::MenuItem("Disabled", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.0f))) {
+                    Viewports_[Index]->GridSnapAmountTranslate_ = 0.0f;
+                }
+
+                ImGui::Separator();
+                
+                if (ImGui::MenuItem("0.1", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.1f))) {
+                    Viewports_[Index]->GridSnapAmountTranslate_ = 0.1f;
+                }
+                if (ImGui::MenuItem("0.25", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.25f))) {
+                    Viewports_[Index]->GridSnapAmountTranslate_ = 0.25f;
+                }
+                if (ImGui::MenuItem("0.5", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.5f))) {
+                    Viewports_[Index]->GridSnapAmountTranslate_ = 0.5f;
+                }
+                if (ImGui::MenuItem("0.75", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.75f))) {
+                    Viewports_[Index]->GridSnapAmountTranslate_ = 0.75f;
+                }
+                if (ImGui::MenuItem("1.0", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 1.0f))) {
+                    Viewports_[Index]->GridSnapAmountTranslate_ = 1.0f;
+                }
+
+            ImGui::EndMenu();
             }
 
-            ImGui::Separator();
-            
-            if (ImGui::MenuItem("0.1", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.1f))) {
-                Viewports_[Index]->GridSnapAmountTranslate_ = 0.1f;
+
+            if (ImGui::BeginMenu("Scale")) {
+
+                if (ImGui::MenuItem("Disabled", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 0.0f))) {
+                    Viewports_[Index]->GridSnapAmountScale_ = 0.0f;
+                }
+
+                ImGui::Separator();
+                
+                if (ImGui::MenuItem("0.1", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 0.1f))) {
+                    Viewports_[Index]->GridSnapAmountScale_ = 0.1f;
+                }
+                if (ImGui::MenuItem("0.25", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 0.25f))) {
+                    Viewports_[Index]->GridSnapAmountScale_ = 0.25f;
+                }
+                if (ImGui::MenuItem("0.5", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 0.5f))) {
+                    Viewports_[Index]->GridSnapAmountScale_ = 0.5f;
+                }
+                if (ImGui::MenuItem("0.75", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 0.75f))) {
+                    Viewports_[Index]->GridSnapAmountScale_ = 0.75f;
+                }
+                if (ImGui::MenuItem("1.0", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 1.0f))) {
+                    Viewports_[Index]->GridSnapAmountScale_ = 1.0f;
+                }
+
             }
-            if (ImGui::MenuItem("0.25", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.25f))) {
-                Viewports_[Index]->GridSnapAmountTranslate_ = 0.25f;
-            }
-            if (ImGui::MenuItem("0.5", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.5f))) {
-                Viewports_[Index]->GridSnapAmountTranslate_ = 0.5f;
-            }
-            if (ImGui::MenuItem("0.75", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.75f))) {
-                Viewports_[Index]->GridSnapAmountTranslate_ = 0.75f;
-            }
-            if (ImGui::MenuItem("1.0", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 1.0f))) {
-                Viewports_[Index]->GridSnapAmountTranslate_ = 1.0f;
-            }
+
 
         ImGui::EndMenu();
         }
