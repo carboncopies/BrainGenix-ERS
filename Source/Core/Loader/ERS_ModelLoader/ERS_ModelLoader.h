@@ -76,7 +76,7 @@ private:
     std::mutex BlockThread_; /**<Block Threads From Doing Things*/
     std::mutex BlockRefThread_; /**<Lock the ref thread from modifying non-threadsafe vars*/
 
-    bool ExitThreads_ = false; /**<Set To True To Make Threads Quit*/
+    std::atomic_bool ExitThreads_ = false; /**<Set To True To Make Threads Quit*/
     bool EnableReferenceLoading_ = true; /**<Enable Or Disable Re-Using Assets Instead Of Reloading (Massive Performance Improvement When Enabled)*/
     std::atomic_bool ExitRefThread_ = false; /**Make ref matching thread exit*/
 
