@@ -987,6 +987,8 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
                 Viewports_[Index]->GridSnapAmountTranslate_ = 0.0f;
             }
 
+            ImGui::Separator();
+            
             if (ImGui::MenuItem("0.25", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.25f))) {
                 Viewports_[Index]->GridSnapAmountTranslate_ = 0.25f;
             }
