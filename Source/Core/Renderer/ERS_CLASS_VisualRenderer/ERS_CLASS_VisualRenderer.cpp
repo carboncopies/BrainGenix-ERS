@@ -987,12 +987,12 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
 
             ImGui::Separator();
 
-            if (ImGui::MenuItem("0.01", nullptr, &((Viewports_[Index]->GizmoGridSnapEnabled_) && (Viewports_[Index]->GridSnapAmount_ == 0.01f)))) {
+            if (ImGui::MenuItem("0.01", nullptr, ((Viewports_[Index]->GizmoGridSnapEnabled_) && (Viewports_[Index]->GridSnapAmount_ == 0.01f)))) {
                 Viewports_[Index]->GizmoGridSnapEnabled_ = true;
                 Viewports_[Index]->GridSnapAmount_ = 0.01f;
             }
 
-            if (ImGui::MenuItem("0.02", nullptr, &((Viewports_[Index]->GizmoGridSnapEnabled_) && (Viewports_[Index]->GridSnapAmount_ == 0.02f)))) {
+            if (ImGui::MenuItem("0.02", nullptr, ((Viewports_[Index]->GizmoGridSnapEnabled_) && (Viewports_[Index]->GridSnapAmount_ == 0.02f)))) {
                 Viewports_[Index]->GizmoGridSnapEnabled_ = true;
                 Viewports_[Index]->GridSnapAmount_ = 0.02f;
             }
