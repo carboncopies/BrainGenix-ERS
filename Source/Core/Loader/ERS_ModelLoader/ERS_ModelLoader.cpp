@@ -400,13 +400,10 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
         std::lock_guard<std::mutex> BlockRefThread(BlockRefThread_);
         if (CheckIfModelAlreadyLoaded(AssetID) != -1) {
             AddModelToReferenceQueue(AssetID, Model);
-            //BlockRefThread_.unlock();
-
             return;
         }
         else {
             LoadedModelRefrences_.push_back(Model);
-            //BlockRefThread_.unlock();
 
         }
     }
