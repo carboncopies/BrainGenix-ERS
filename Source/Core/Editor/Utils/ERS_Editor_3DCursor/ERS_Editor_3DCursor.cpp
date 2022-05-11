@@ -133,3 +133,10 @@ bool Cursors3D::HasStateChanged() {
 void Cursors3D::ObjectHasChanged() {
     HasObjectChanged_ = true;
 }
+
+void Cursors3D::SetGridSnap(bool Enabled, float Amount) {
+
+    EnableGridSnap_ = Enabled;
+    GridSnapAmount_ = Amount;
+
+}
