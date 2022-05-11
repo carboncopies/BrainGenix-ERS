@@ -89,7 +89,13 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
 
     // Only Draw When ShowCursor Is True, Otherwise Don't Draw
     if (ShowCursor) {
-        ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, GizmoMode_, TmpMatrix, nullptr, &GridSnapAmount_);
+        float GridSnapArray[3];
+        if (EnableGridSnap_) {
+            GridSnapArray[0] = GridSnapAmount_;
+            GridSnapArray[1] = GridSnapAmount_;
+            GridSnapArray[2] = GridSnapAmount_;
+        }
+        ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, GizmoMode_, TmpMatrix, nullptr, &GridSnapArray);
 
     }
 
