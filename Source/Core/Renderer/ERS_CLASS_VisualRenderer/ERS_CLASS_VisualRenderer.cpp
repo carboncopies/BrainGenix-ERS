@@ -978,6 +978,12 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
         }
 
 
+        // Gizmo Control Menu
+        if (ImGui::BeginMenu("Gizmo")) {
+
+        ImGui::EndMenu();
+        }
+
         // Game Control Menu
         if (ImGui::BeginMenu("Run")) {
 
