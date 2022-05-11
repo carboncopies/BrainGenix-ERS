@@ -163,7 +163,7 @@ public:
      * @param Enabled 
      * @param Amount 
      */
-    void SetGridSnap(bool Enabled, float Amount);
+    void SetGridSnap(bool Enabled, float AmountTranslate, float AmountRotate, float AmountScale);
 
 
 };
