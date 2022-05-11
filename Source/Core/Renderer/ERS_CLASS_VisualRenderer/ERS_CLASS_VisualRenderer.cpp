@@ -1010,7 +1010,7 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
             }
 
 
-            if (ImGui::BeginMenu("Rotation")) {
+            if (ImGui::BeginMenu("Rotate")) {
 
                 if (ImGui::MenuItem("Disabled", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 0.0f))) {
                     Viewports_[Index]->GridSnapAmountRotation_ = 0.0f;
@@ -1018,23 +1018,23 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
 
                 ImGui::Separator();
                 
-                if (ImGui::MenuItem("1", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 1.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotation_ = 1.0f;
+                if (ImGui::MenuItem("1", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 1.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotate_ = 1.0f;
                 }
-                if (ImGui::MenuItem("5", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 5.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotation_ = 5.0f;
+                if (ImGui::MenuItem("5", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 5.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotate_ = 5.0f;
                 }
-                if (ImGui::MenuItem("10", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 10.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotation_ = 10.0f;
+                if (ImGui::MenuItem("10", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 10.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotate_ = 10.0f;
                 }
-                if (ImGui::MenuItem("25", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 25.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotation_ = 25.0f;
+                if (ImGui::MenuItem("25", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 25.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotate_ = 25.0f;
                 }
-                if (ImGui::MenuItem("45", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 45.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotation_ = 45.0f;
+                if (ImGui::MenuItem("45", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 45.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotate_ = 45.0f;
                 }
-                if (ImGui::MenuItem("90", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 90.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotation_ = 90.0f;
+                if (ImGui::MenuItem("90", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 90.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotate_ = 90.0f;
                 }
 
             ImGui::EndMenu();
