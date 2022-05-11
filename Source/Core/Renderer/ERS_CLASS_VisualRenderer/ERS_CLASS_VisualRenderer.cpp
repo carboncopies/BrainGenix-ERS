@@ -978,8 +978,10 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
         }
 
 
-        // Gizmo Control Menu
-        if (ImGui::BeginMenu("Gizmo")) {
+        // Grid Snapping Control Menu
+        if (ImGui::BeginMenu("Grid Snapping")) {
+
+            
 
         ImGui::EndMenu();
         }
