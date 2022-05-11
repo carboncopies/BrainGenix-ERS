@@ -106,7 +106,6 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
             GridSnapArray[2] = GridSnapAmountScale_;
             std::cout<<GridSnapArray[0]<<std::endl;
             std::cout<<GridSnapArray[0]<<std::endl;
-            std::cout<<GridSnapArray[0]<<std::endl;
         }
 
 
