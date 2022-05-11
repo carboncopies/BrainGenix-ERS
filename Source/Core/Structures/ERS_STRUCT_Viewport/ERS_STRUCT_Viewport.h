@@ -37,7 +37,7 @@ struct ERS_STRUCT_Viewport {
 
     bool GizmoGridSnapEnabled_ = true; /**<Enable/Disable Grid Snapping Using The Set Snap Values*/
     float GridSnapAmountTranslate_ = 0.01f; /**<Grid Snap Amount, User Adjustable In The Editor*/
-    float GridSnapAmountRotate = 0.01f; /**<Grid Snap Amount, User Adjustable In The Editor*/
+    float GridSnapAmountRotate_ = 0.01f; /**<Grid Snap Amount, User Adjustable In The Editor*/
     float GridSnapAmountScale_ = 0.01f; /**<Grid Snap Amount, User Adjustable In The Editor*/
 
 
