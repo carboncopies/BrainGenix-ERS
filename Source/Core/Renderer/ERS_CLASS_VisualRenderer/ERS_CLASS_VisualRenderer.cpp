@@ -1024,17 +1024,17 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
                 if (ImGui::MenuItem("5", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 5.0f))) {
                     Viewports_[Index]->GridSnapAmountRotation_ = 5.0f;
                 }
-                if (ImGui::MenuItem("10", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 0.5f))) {
-                    Viewports_[Index]->GridSnapAmountRotation_ = 0.5f;
+                if (ImGui::MenuItem("10", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 10.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotation_ = 10.0f;
                 }
-                if (ImGui::MenuItem("25", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 0.75f))) {
-                    Viewports_[Index]->GridSnapAmountRotation_ = 0.75f;
+                if (ImGui::MenuItem("25", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 25.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotation_ = 25.0f;
                 }
-                if (ImGui::MenuItem("45", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 1.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotation_ = 1.0f;
+                if (ImGui::MenuItem("45", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 45.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotation_ = 45.0f;
                 }
-                if (ImGui::MenuItem("90", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 1.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotation_ = 1.0f;
+                if (ImGui::MenuItem("90", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 90.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotation_ = 90.0f;
                 }
 
             ImGui::EndMenu();
