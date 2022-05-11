@@ -1012,8 +1012,8 @@ void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManage
 
             if (ImGui::BeginMenu("Rotate")) {
 
-                if (ImGui::MenuItem("Disabled", nullptr, (Viewports_[Index]->GridSnapAmountRotation_ == 0.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotation_ = 0.0f;
+                if (ImGui::MenuItem("Disabled", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 0.0f))) {
+                    Viewports_[Index]->GridSnapAmountRotate_ = 0.0f;
                 }
 
                 ImGui::Separator();
