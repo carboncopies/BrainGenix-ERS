@@ -95,6 +95,8 @@ void ERS_CLASS_ModelLoader::WorkerThread() {
                 BlockThread_.unlock();
 
                 // Process Item
+                std::cout << WorkID<<"\n";
+
                 LoadModel(WorkID, WorkItem, FlipTexture);
 
             } else {
