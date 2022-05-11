@@ -92,18 +92,18 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
 
         // Handle Grid Snapping
         float GridSnapArray[3];
-        if (GizmoMode_ == ImGuizmo::TRANSLATE) {
+        if (CurrentGizmoOperation_ == ImGuizmo::TRANSLATE) {
             GridSnapArray[0] = GridSnapAmountTranslate_;
             GridSnapArray[1] = GridSnapAmountTranslate_;
             GridSnapArray[2] = GridSnapAmountTranslate_;
             std::cout<<GridSnapArray[0]<<std::endl;
-        } else if (GizmoMode_ == ImGuizmo::ROTATE) {
+        } else if (CurrentGizmoOperation_ == ImGuizmo::ROTATE) {
             GridSnapArray[0] = GridSnapAmountRotate_;
             GridSnapArray[1] = GridSnapAmountRotate_;
             GridSnapArray[2] = GridSnapAmountRotate_;
             std::cout<<GridSnapArray[0]<<std::endl;
             std::cout<<GridSnapArray[0]<<std::endl;
-        } else if (GizmoMode_ == ImGuizmo::SCALE) {
+        } else if (CurrentGizmoOperation_ == ImGuizmo::SCALE) {
             GridSnapArray[0] = GridSnapAmountScale_;
             GridSnapArray[1] = GridSnapAmountScale_;
             GridSnapArray[2] = GridSnapAmountScale_;
