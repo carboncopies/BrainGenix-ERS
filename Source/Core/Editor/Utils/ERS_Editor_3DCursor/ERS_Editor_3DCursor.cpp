@@ -96,7 +96,6 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
             GridSnapArray[0] = GridSnapAmountTranslate_;
             GridSnapArray[1] = GridSnapAmountTranslate_;
             GridSnapArray[2] = GridSnapAmountTranslate_;
-            std::cout<<GridSnapArray[0]<<std::endl;
         } else if (CurrentGizmoOperation_ == ImGuizmo::ROTATE) {
             GridSnapArray[0] = GridSnapAmountRotate_;
             GridSnapArray[1] = GridSnapAmountRotate_;
