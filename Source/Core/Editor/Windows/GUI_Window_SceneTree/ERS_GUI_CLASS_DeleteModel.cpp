@@ -1,4 +1,3 @@
-
 //======================================================================//
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
@@ -6,9 +5,10 @@
 #include <ERS_GUI_CLASS_DeleteModel.h>
 
 
-Subwindow_DeleteModel::Subwindow_DeleteModel(ERS_CLASS_SceneManager* SceneManager) {
+Subwindow_DeleteModel::Subwindow_DeleteModel(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor) {
 
     SceneManager_ = SceneManager;
+    Cursor_ = Cursor;
 
 
 }
@@ -29,9 +29,7 @@ void Subwindow_DeleteModel::DeleteModel(int SceneIndex, int ModelIndex) {
 }
 
 void Subwindow_DeleteModel::Draw() {
-
     UpdateConfirmDeletePopup();
-
 }
 
 void Subwindow_DeleteModel::UpdateConfirmDeletePopup() {
@@ -57,6 +55,7 @@ void Subwindow_DeleteModel::UpdateConfirmDeletePopup() {
         if (ImGui::Button("Confirm", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Enter Key Pressed
             SceneManager_->Scenes_[SceneIndex_]->Models.erase(SceneManager_->Scenes_[SceneIndex_]->Models.begin() + ModelIndex_);
             ShowDeleteConfirm_ = false;
+            SceneManager_->Scenes_[SceneManager_->ActiveScene_]->HasSelectionChanged = true;
         }
         ImGui::SameLine();
         if (ImGui::Button("Abort", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ESCAPE)) { // If Button Pressed, Or Escape Key Pressed

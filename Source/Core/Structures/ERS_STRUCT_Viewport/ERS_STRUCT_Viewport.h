@@ -35,6 +35,15 @@ struct ERS_STRUCT_Viewport {
     bool GammaCorrection = true; /**<Enable/disable gamma correction*/
     bool HDREnabled_ = true; /**<Indicate if hdr should be used or not*/
 
+    float GridSnapAmountTranslate_ = 0.1f; /**<Grid Snap Amount, User Adjustable In The Editor*/
+    float GridSnapAmountRotate_ = 5.0f; /**<Grid Snap Amount, User Adjustable In The Editor*/
+    float GridSnapAmountScale_ = 0.1f; /**<Grid Snap Amount, User Adjustable In The Editor*/
+
+
+    bool ShowSceneInfo_ = true; /**<Enab;e/Disable Vertex And Texture Info Overlay*/
+    bool ShowLoadingTimeInfo_ = true; /**<Enable/Disable Loading Time Info Overlay*/
+    bool ShowResourceInfo_ = true; /**<Enable/Disable System Resource Info Overlay*/
+
     float Exposure_ = 1.0f; /**<Set the camera exposure for that viewport*/
     float Gamma_ = 2.2f; /**<Set the gamma correction value for the viewport*/
 

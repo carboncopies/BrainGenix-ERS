@@ -217,12 +217,14 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
 
     // Erase List To Save Memory
     Model->TexturesToPushToGPU_.erase(Model->TexturesToPushToGPU_.begin(), Model->TexturesToPushToGPU_.end());
+    Model->IsTemplateModel = true;
 
 
 
     // Collect Vertex Count Analytics
     for (unsigned long i = 0; i < Model->Meshes.size(); i++) {
         Model->TotalVertices_ += Model->Meshes[i].Vertices.size();
+        Model->TotalIndices_ += Model->Meshes[i].Indices.size();
     }
 
     // Process Texture References, Setup Meshes
@@ -365,6 +367,7 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
                     Target->TotalIndices_ = Source->TotalIndices_;
                     Target->TotalVertices_ = Source->TotalVertices_;
                     Target->TotalLoadingTime_ = Source->TotalLoadingTime_;
+                    Target->IsTemplateModel = false;
                     Target->FullyReady = true;
 
                     ModelsToRefrence_.erase(ModelsToRefrence_.begin() + i);
@@ -388,7 +391,6 @@ void ERS_CLASS_ModelLoader::AddModelToReferenceQueue(long AssetID, std::shared_p
     ModelsToRefrence_.push_back(Model);
 
 }
-
 
 void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures) {
 

@@ -52,7 +52,7 @@ SceneData:
   3:
     AssetName: WallTile01
     AssetType: Model
-    AssetID: 345619823
+    AssetID: 1027312726
     AssetPositionX: -1
     AssetPositionY: -0.00100000005
     AssetPositionZ: 5
@@ -754,7 +754,7 @@ SceneData:
     AttachedScripts:
       {}
   47:
-    AssetName: ElectricalPanel - Copy
+    AssetName: ElectricalPanel2
     AssetType: Model
     AssetID: 848721852
     AssetPositionX: 2.97192335
@@ -770,6 +770,214 @@ SceneData:
     AttachedScripts:
       {}
   48:
+    AssetName: WallTile13
+    AssetType: Model
+    AssetID: 1027312726
+    AssetPositionX: 4
+    AssetPositionY: -0.000999977812
+    AssetPositionZ: 6
+    AssetRotationX: 0
+    AssetRotationY: 180
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  49:
+    AssetName: WallTile14
+    AssetType: Model
+    AssetID: 1027312726
+    AssetPositionX: 6
+    AssetPositionY: -0.000999977812
+    AssetPositionZ: 6
+    AssetRotationX: 0
+    AssetRotationY: 180
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  50:
+    AssetName: WallTile15
+    AssetType: Model
+    AssetID: 1027312726
+    AssetPositionX: -2
+    AssetPositionY: -0.000999977812
+    AssetPositionZ: 6
+    AssetRotationX: 0
+    AssetRotationY: 180
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  51:
+    AssetName: WallTile16
+    AssetType: Model
+    AssetID: 1027312726
+    AssetPositionX: -4
+    AssetPositionY: -0.000999977812
+    AssetPositionZ: 6
+    AssetRotationX: 0
+    AssetRotationY: 180
+    AssetRotationZ: 0
+    AssetScaleX: 0.0100000501
+    AssetScaleY: 0.0100000501
+    AssetScaleZ: 0.0100000501
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  52:
+    AssetName: StreetTile04
+    AssetType: Model
+    AssetID: 1254897313
+    AssetPositionX: 1
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: 8
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.0199999996
+    AssetScaleY: 0.0199999996
+    AssetScaleZ: 0.0199999996
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  53:
+    AssetName: StreetTile05
+    AssetType: Model
+    AssetID: 1254897313
+    AssetPositionX: 5
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: 8
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.0199999996
+    AssetScaleY: 0.0199999996
+    AssetScaleZ: 0.0199999996
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  54:
+    AssetName: StreetTile06
+    AssetType: Model
+    AssetID: 1254897313
+    AssetPositionX: -3
+    AssetPositionY: -0.00100000005
+    AssetPositionZ: 8
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.0199999996
+    AssetScaleY: 0.0199999996
+    AssetScaleZ: 0.0199999996
+    FlipTextures: true
+    AttachedScripts:
+      {}
+  55:
+    AssetName: MainStreetLight01
+    AssetType: PointLight
+    ColorRed: 1
+    ColorGreen: 1
+    ColorBlue: 1
+    PosX: -4.5
+    PosY: 1.70000005
+    PosZ: 6.0999999
+    Intensity: 1
+    AttachedScripts:
+      {}
+  56:
+    AssetName: MainStreetLight02
+    AssetType: PointLight
+    ColorRed: 1
+    ColorGreen: 1
+    ColorBlue: 1
+    PosX: -3.5
+    PosY: 1.70000005
+    PosZ: 6.0999999
+    Intensity: 1
+    AttachedScripts:
+      {}
+  57:
+    AssetName: MainStreetLight03
+    AssetType: PointLight
+    ColorRed: 1
+    ColorGreen: 1
+    ColorBlue: 1
+    PosX: -2.5
+    PosY: 1.70000005
+    PosZ: 6.0999999
+    Intensity: 1
+    AttachedScripts:
+      {}
+  58:
+    AssetName: MainStreetLight04
+    AssetType: PointLight
+    ColorRed: 1
+    ColorGreen: 1
+    ColorBlue: 1
+    PosX: -1.5
+    PosY: 1.70000005
+    PosZ: 6.0999999
+    Intensity: 1
+    AttachedScripts:
+      {}
+  59:
+    AssetName: MainStreetLight05
+    AssetType: PointLight
+    ColorRed: 1
+    ColorGreen: 1
+    ColorBlue: 1
+    PosX: 3.5
+    PosY: 1.70000005
+    PosZ: 6.0999999
+    Intensity: 1
+    AttachedScripts:
+      {}
+  60:
+    AssetName: MainStreetLight06
+    AssetType: PointLight
+    ColorRed: 1
+    ColorGreen: 1
+    ColorBlue: 1
+    PosX: 4.5
+    PosY: 1.70000005
+    PosZ: 6.0999999
+    Intensity: 1
+    AttachedScripts:
+      {}
+  61:
+    AssetName: MainStreetLight07
+    AssetType: PointLight
+    ColorRed: 1
+    ColorGreen: 1
+    ColorBlue: 1
+    PosX: 5.5
+    PosY: 1.70000005
+    PosZ: 6.0999999
+    Intensity: 1
+    AttachedScripts:
+      {}
+  62:
+    AssetName: MainStreetLight08
+    AssetType: PointLight
+    ColorRed: 1
+    ColorGreen: 1
+    ColorBlue: 1
+    PosX: 6.5
+    PosY: 1.70000005
+    PosZ: 6.0999999
+    Intensity: 1
+    AttachedScripts:
+      {}
+  63:
     AssetName: Camera01
     AssetType: SpotLight
     ColorRed: 1
@@ -786,7 +994,7 @@ SceneData:
     OuterCutOff: 0.75999999
     AttachedScripts:
       {}
-  49:
+  64:
     AssetName: Camera02
     AssetType: SpotLight
     ColorRed: 1
@@ -803,7 +1011,7 @@ SceneData:
     OuterCutOff: 0.75999999
     AttachedScripts:
       {}
-  50:
+  65:
     AssetName: Camera03
     AssetType: SpotLight
     ColorRed: 1
@@ -820,7 +1028,7 @@ SceneData:
     OuterCutOff: 0.75999999
     AttachedScripts:
       {}
-  51:
+  66:
     AssetName: Camera04
     AssetType: SpotLight
     ColorRed: 1
@@ -837,7 +1045,7 @@ SceneData:
     OuterCutOff: 0.75999999
     AttachedScripts:
       {}
-  52:
+  67:
     AssetName: Camera05
     AssetType: SpotLight
     ColorRed: 1

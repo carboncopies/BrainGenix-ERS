@@ -47,7 +47,6 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     LastFrameActiveState_ = ImGuizmo::IsUsing();
 
 
-
     // Set Gizmo Mode
     if (ImGui::IsWindowHovered() && !IsCameraMoving) {
         if (ImGui::IsKeyPressed(71)) {
@@ -90,7 +89,26 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
 
     // Only Draw When ShowCursor Is True, Otherwise Don't Draw
     if (ShowCursor) {
-        ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, GizmoMode_, TmpMatrix);
+
+        // Handle Grid Snapping
+        float GridSnapArray[3];
+        if (CurrentGizmoOperation_ == ImGuizmo::TRANSLATE) {
+            GridSnapArray[0] = GridSnapAmountTranslate_;
+            GridSnapArray[1] = GridSnapAmountTranslate_;
+            GridSnapArray[2] = GridSnapAmountTranslate_;
+        } else if (CurrentGizmoOperation_ == ImGuizmo::ROTATE) {
+            GridSnapArray[0] = GridSnapAmountRotate_;
+            GridSnapArray[1] = GridSnapAmountRotate_;
+            GridSnapArray[2] = GridSnapAmountRotate_;
+        } else if (CurrentGizmoOperation_ == ImGuizmo::SCALE) {
+            GridSnapArray[0] = GridSnapAmountScale_;
+            GridSnapArray[1] = GridSnapAmountScale_;
+            GridSnapArray[2] = GridSnapAmountScale_;
+        }
+
+
+        // Draw gizmo
+        ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, GizmoMode_, TmpMatrix, nullptr, GridSnapArray);
 
     }
 
@@ -128,4 +146,17 @@ bool Cursors3D::IsHovered() {
 
 bool Cursors3D::HasStateChanged() {
     return LastFrameActiveState_ == ImGuizmo::IsUsing();
+}
+
+void Cursors3D::ObjectHasChanged() {
+    HasObjectChanged_ = true;
+}
+
+void Cursors3D::SetGridSnap(float AmountTranslate, float AmountRotate, float AmountScale) {
+
+
+    GridSnapAmountTranslate_ = AmountTranslate;
+    GridSnapAmountRotate_ = AmountRotate;
+    GridSnapAmountScale_ = AmountScale;
+
 }

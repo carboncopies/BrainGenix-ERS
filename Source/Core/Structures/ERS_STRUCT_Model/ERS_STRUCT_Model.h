@@ -58,7 +58,7 @@ struct ERS_STRUCT_Model {
     // Model Config
     bool GammaCorrection = false;
     bool FlipTextures = false;
-    bool IsTemplateModel = false; /**<This indicates if transformations are allowd. Template models are copied and transformed for instances, and thus cannot be transformed.*/
+    bool IsTemplateModel = false; /**<This indicates if the model is a the "master" copy of instanced models.*/
 
     long MetadataID;
     long ModelDataID;

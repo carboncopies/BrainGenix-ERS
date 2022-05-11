@@ -74,11 +74,15 @@ private:
     float* CameraView_; /**<Camera View Matrix, Converted From GLM::Mat4*/
     float* CameraProjection_; /**<Camera Projection Matrix, Converted From GLM::Mat4*/
 
+    float GridSnapAmountTranslate_; /**<Unit To Snap To On Grid During Translation Mode*/
+    float GridSnapAmountRotate_; /**<Unit To Snap To On Grid During Rotation Mode*/
+    float GridSnapAmountScale_; /**<Unit To Snap To On Grid During Scale Mode*/
+
     ERS_STRUCT_Camera* Camera_; /**<Camera Object Pointer*/
     ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE; /**<Set Current Cursor Operation*/
     ImGuizmo::MODE GizmoMode_ = ImGuizmo::WORLD; /**<Set Default Coordinate Space*/
 
-    bool HasObjectChanged_ = false; /*<Indicate If Update Needed*/
+    
     bool LastFrameActiveState_ = false; /*<If the cursor was being used in the last frame or not*/ 
 
 public:
@@ -86,17 +90,18 @@ public:
     glm::vec3 Pos_;
     glm::vec3 Rot_;
     glm::vec3 Scale_;
+    bool HasObjectChanged_ = false; /*<Indicate If Update Needed*/
 
 public:
 
     /**
-     * @brief Construct a new Cursors 3 D object
+     * @brief Construct a new Cursors 3D object
      * 
      */
     Cursors3D();
 
     /**
-     * @brief Destroy the Cursors 3 D object
+     * @brief Destroy the Cursors 3D object
      * 
      */
     ~Cursors3D();
@@ -116,6 +121,13 @@ public:
      * @return false 
      */
     bool IsHovered();
+
+
+    /**
+     * @brief Call this to tell the cursor that the object's position has changed and to update the cursor position.
+     * 
+     */
+    void ObjectHasChanged();
 
     /**
      * @brief Draw the gizmo
@@ -142,6 +154,16 @@ public:
      * @return false 
      */
     bool HasStateChanged();
+
+
+    /**
+     * @brief Use this function to determine if grid snap is enabled and if so to what scale.
+     * 
+     * @param AmountTranslate 
+     * @param AmountRotate 
+     * @param AmountScale 
+     */
+    void SetGridSnap(float AmountTranslate, float AmountRotate, float AmountScale);
 
 
 };

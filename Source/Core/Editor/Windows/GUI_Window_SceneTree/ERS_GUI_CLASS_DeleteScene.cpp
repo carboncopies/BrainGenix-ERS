@@ -5,9 +5,10 @@
 #include <ERS_GUI_CLASS_DeleteScene.h>
 
 
-Subwindow_DeleteScene::Subwindow_DeleteScene(ERS_CLASS_SceneManager* SceneManager) {
+Subwindow_DeleteScene::Subwindow_DeleteScene(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor) {
 
     SceneManager_ = SceneManager;
+    Cursor_ = Cursor;
 
 
 }
@@ -65,6 +66,7 @@ void Subwindow_DeleteScene::UpdateConfirmDeletePopup() {
                 SceneManager_->Scenes_.erase(SceneManager_->Scenes_.begin() + SceneIndex_);
             }
             ShowDeleteConfirm_ = false;
+            SceneManager_->Scenes_[SceneManager_->ActiveScene_]->HasSelectionChanged = true;
         }
         ImGui::SameLine();
         if (ImGui::Button("Abort", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ESCAPE)) { // If Button Pressed, Or Escape Key Pressed

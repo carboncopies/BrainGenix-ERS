@@ -6,9 +6,10 @@
 #include <ERS_GUI_CLASS_DeleteSpotLight.h>
 
 
-Subwindow_DeleteSpotLight::Subwindow_DeleteSpotLight(ERS_CLASS_SceneManager* SceneManager) {
+Subwindow_DeleteSpotLight::Subwindow_DeleteSpotLight(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor) {
 
     SceneManager_ = SceneManager;
+    Cursor_ = Cursor;
 
 
 }
@@ -57,6 +58,7 @@ void Subwindow_DeleteSpotLight::UpdateConfirmDeletePopup() {
         if (ImGui::Button("Confirm", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ENTER)) { // If Button Pressed, Or Enter Key Pressed
             SceneManager_->Scenes_[SceneIndex_]->SpotLights.erase(SceneManager_->Scenes_[SceneIndex_]->SpotLights.begin() + SpotLightIndex_);
             ShowDeleteConfirm_ = false;
+            SceneManager_->Scenes_[SceneManager_->ActiveScene_]->HasSelectionChanged = true;
         }
         ImGui::SameLine();
         if (ImGui::Button("Abort", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ESCAPE)) { // If Button Pressed, Or Escape Key Pressed

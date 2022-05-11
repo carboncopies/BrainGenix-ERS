@@ -22,6 +22,7 @@ add_library(Window_SceneTree
             "ERS_GUI_CLASS_DeletePointLight.cpp"
             "ERS_GUI_CLASS_DeleteDirectionalLight.cpp"
             "ERS_GUI_CLASS_DeleteSpotLight.cpp"
+            "ERS_GUI_CLASS_ModelReplaceModal.cpp"
 
 
             # Add Header Files (.h)
@@ -41,6 +42,7 @@ add_library(Window_SceneTree
             "ERS_GUI_CLASS_DeletePointLight.h"
             "ERS_GUI_CLASS_DeleteDirectionalLight.h"
             "ERS_GUI_CLASS_DeleteSpotLight.h"
+            "ERS_GUI_CLASS_ModelReplaceModal.h"
 
             ${BACKWARD_ENABLE}
             )
@@ -59,6 +61,8 @@ target_link_libraries(Window_SceneTree
     ERS_STRUCT_SceneObject
 
     ERS_CLASS_LoggingSystem
+    
+    ERS_Editor_3DCursor
 
     ERS_STRUCT_Scene
     ERS_SceneManager

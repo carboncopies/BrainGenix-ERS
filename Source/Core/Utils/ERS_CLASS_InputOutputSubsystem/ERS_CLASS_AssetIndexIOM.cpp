@@ -48,7 +48,7 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
     Logger_->Log("Populating Asset Index Metadata", 3);
     for (YAML::const_iterator it=AssetIndexMetadata.begin(); it!=AssetIndexMetadata.end(); ++it) {
 
-        Logger_->Log(std::string(std::string("Loading Metadata For Asset With ID: ") + std::to_string(it->first.as<long>())).c_str(), 3);
+        Logger_->Log(std::string(std::string("Loading Metadata For Asset With ID ") + std::to_string(it->first.as<long>())).c_str(), 3);
 
         // Get Asset Metadata Node
         long Index = it->first.as<long>();
@@ -59,6 +59,12 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
         AssetTypeName_[Index] = {AssetMetadata["AssetType"].as<std::string>()};
         AssetCreationDate_[Index] = {AssetMetadata["AssetCreationDate"].as<std::string>()};
         AssetModificationDate_[Index] = {AssetMetadata["AssetModificationDate"].as<std::string>()};
+
+        if (AssetMetadata["AssetFileName"]) {
+            AssetFileName_[Index] = {AssetMetadata["AssetFileName"].as<std::string>()};
+        } else {
+            Logger_->Log(std::string("Failed To Find Asset Filename Metadata For Asset With ID ") + std::to_string(it->first.as<long>()), 7);
+        }
 
 
     }
@@ -87,6 +93,8 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(ERS_STRUCT_IOData* Data) {
         Metadata<<YAML::Key<<"AssetType"<<YAML::Value<<AssetTypeName_[CurrentIndex];
         Metadata<<YAML::Key<<"AssetCreationDate"<<YAML::Value<<AssetCreationDate_[CurrentIndex];
         Metadata<<YAML::Key<<"AssetModificationDate"<<YAML::Value<<AssetModificationDate_[CurrentIndex];
+        Metadata<<YAML::Key<<"AssetFileName"<<YAML::Value<<AssetFileName_[CurrentIndex];
+        
 
         Metadata<<YAML::EndMap;
 
@@ -113,10 +121,12 @@ bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, ERS_STRUCT_IOData* 
     std::string AssetType = Data->AssetTypeName;
     std::string Modified = Data->AssetModificationDate;
     std::string Created = Data->AssetCreationDate;
+    std::string FileName = Data->AssetFileName;
 
     AssetTypeName_[AssetID] = {AssetType};
     AssetCreationDate_[AssetID] = {Created};
     AssetModificationDate_[AssetID] = {Modified};
+    AssetFileName_[AssetID] = {FileName};
 
     // Check If Already In Loaded Assets, If Not, Add
     bool AlreadyInIndex = false;
