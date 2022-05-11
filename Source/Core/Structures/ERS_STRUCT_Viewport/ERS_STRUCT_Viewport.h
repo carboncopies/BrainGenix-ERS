@@ -35,6 +35,9 @@ struct ERS_STRUCT_Viewport {
     bool GammaCorrection = true; /**<Enable/disable gamma correction*/
     bool HDREnabled_ = true; /**<Indicate if hdr should be used or not*/
 
+    bool GizmoGridSnapEnabled_ = true; /**<Enable/Disable Grid Snapping Using The Set Snap Values*/
+
+
     bool ShowSceneInfo_ = true; /**<Enab;e/Disable Vertex And Texture Info Overlay*/
     bool ShowLoadingTimeInfo_ = true; /**<Enable/Disable Loading Time Info Overlay*/
     bool ShowResourceInfo_ = true; /**<Enable/Disable System Resource Info Overlay*/
