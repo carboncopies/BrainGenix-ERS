@@ -88,7 +88,7 @@ void Window_SceneTree::Draw() {
                 for (int SceneIndex = 0; (long)SceneIndex < (long)SceneManager_->Scenes_.size(); SceneIndex++) {
 
                     // Setup Tree Flags
-                    ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnArrow;
+                    ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
                     if (SceneIndex == ActiveScene) {
                         NodeFlags |= ImGuiTreeNodeFlags_Selected;
                         NodeFlags |= ImGuiTreeNodeFlags_DefaultOpen;
@@ -186,37 +186,63 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     int SelectedSceneObjectIndex = Scene->SelectedObject;
 
 
+    // Sort Objects
+    std::vector<ERS_STRUCT_SceneObject> Models;
+    std::vector<unsigned long> ModelIndexes; // stores the index of the associated element in the Models list from the sceneobjects list
+    std::vector<ERS_STRUCT_SceneObject> PointLights;
+    std::vector<unsigned long> PointLightIndexes; // stores the index of the associated element in the Models list from the sceneobjects list
+    std::vector<ERS_STRUCT_SceneObject> DirectionalLights;
+    std::vector<unsigned long> DirectionalLightIndexes; // stores the index of the associated element in the Models list from the sceneobjects list
+    std::vector<ERS_STRUCT_SceneObject> SpotLights;
+    std::vector<unsigned long> SpotLightIndexes; // stores the index of the associated element in the Models list from the sceneobjects list
 
-    // Iterate Through Scene Objects
+
     for (unsigned long i = 0; i < Scene->SceneObjects_.size(); i++) {
 
-        // Get Name Of Object
-        const char* ObjectName = Scene->SceneObjects_[i].Label_.c_str();
-
-        // Setup Node Flags
-        ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
-        if ((unsigned long)SelectedSceneObjectIndex == i) {
-            TreeFlags |= ImGuiTreeNodeFlags_Selected;
+        if (Scene->SceneObjects_[i].Type_ == "Model") {
+            Models.push_back(Scene->SceneObjects_[i]);
+            ModelIndexes.push_back(i);
+        } else if (Scene->SceneObjects_[i].Type_ == "PointLight") {
+            PointLights.push_back(Scene->SceneObjects_[i]);
+            PointLightIndexes.push_back(i);
+        } else if (Scene->SceneObjects_[i].Type_ == "DirectionalLight") {
+            DirectionalLights.push_back(Scene->SceneObjects_[i]);
+            DirectionalLightIndexes.push_back(i);
+        } else if (Scene->SceneObjects_[i].Type_ == "SpotLight") {
+            SpotLights.push_back(Scene->SceneObjects_[i]);
+            SpotLightIndexes.push_back(i);
         }
 
-        // Create Tree Node
-        ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
-
-
-        // If User Clicks Node, Update Object Index
-        if (ImGui::IsItemClicked()) {
-            Scene->SelectedObject = i;
-            Scene->HasSelectionChanged = true;
-        }
+    }
+    
+    
 
 
 
 
+    // Draw Model Entries
+    if (ImGui::TreeNodeEx("Models", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow)) {
 
-        // Handle Drag/Drops
-        if (Scene->SceneObjects_[i].Type_ == std::string("Model")) {
+        for (unsigned int i = 0; i < Scene->Models.size(); i++) {
 
-            long Index = Scene->SceneObjects_[i].Index_;
+            unsigned long IndexInSceneObjects = ModelIndexes[i];
+
+
+            const char* ObjectName = Scene->SceneObjects_[IndexInSceneObjects].Label_.c_str();
+            ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+            if ((unsigned long)SelectedSceneObjectIndex == IndexInSceneObjects) {
+                TreeFlags |= ImGuiTreeNodeFlags_Selected;
+            }
+            ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
+
+
+            // If User Clicks Node, Update Object Index
+            if (ImGui::IsItemClicked()) {
+                Scene->SelectedObject = IndexInSceneObjects;
+                Scene->HasSelectionChanged = true;
+            }
+
+
 
             // Drag/Drop Target
             long PayloadID;
@@ -228,8 +254,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     
                     // Check If Already In Vector
                     bool Contains = false; 
-                    for (unsigned long x = 0; x < Scene->Models[Index]->AttachedScriptIndexes_.size(); x++) {
-                        if (PayloadID ==  Scene->Models[Index]->AttachedScriptIndexes_[x]) {
+                    for (unsigned long x = 0; x < Scene->Models[i]->AttachedScriptIndexes_.size(); x++) {
+                        if (PayloadID ==  Scene->Models[i]->AttachedScriptIndexes_[x]) {
                             SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'Model', Already Attached").c_str(), 0);
                             Contains = true;
                             break;
@@ -237,7 +263,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     }
 
                     if (!Contains) {
-                        Scene->Models[Index]->AttachedScriptIndexes_.push_back(PayloadID);
+                        Scene->Models[i]->AttachedScriptIndexes_.push_back(PayloadID);
                     }
                 }
 
@@ -245,113 +271,9 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             }
 
 
+            // Context Menu
+            if (ImGui::BeginPopupContextItem()) {
 
-        } else if (Scene->SceneObjects_[i].Type_ == std::string("PointLight")) {
-
-            long Index = Scene->SceneObjects_[i].Index_;
-
-            // Drag/Drop Target
-            long PayloadID;
-            if (ImGui::BeginDragDropTarget()) {
-
-                if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID")) {
-                    memcpy(&PayloadID, Payload->Data, sizeof(long));
-                    SystemUtils_->Logger_->Log(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_SCRIPT_ID' With Value '") + std::to_string(PayloadID) + std::string("'"), 0);
-                    
-                    // Check If Already In Vector
-                    bool Contains = false; 
-                    for (unsigned long x = 0; x < Scene->PointLights[Index]->AttachedScriptIndexes_.size(); x++) {
-                        if (PayloadID ==  Scene->PointLights[Index]->AttachedScriptIndexes_[x]) {
-                            SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'PointLight', Already Attached").c_str(), 0);
-                            Contains = true;
-                            break;
-                        }
-                    }
-
-                    if (!Contains) {
-                        Scene->PointLights[Index]->AttachedScriptIndexes_.push_back(PayloadID);
-                    }
-                }
-
-            ImGui::EndDragDropTarget();
-            }
-
-
-
-        } else if (Scene->SceneObjects_[i].Type_ == std::string("DirectionalLight")) {
-
-            long Index = Scene->SceneObjects_[i].Index_;
-
-            // Drag/Drop Target
-            long PayloadID;
-            if (ImGui::BeginDragDropTarget()) {
-
-                if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID")) {
-                    memcpy(&PayloadID, Payload->Data, sizeof(long));
-                    SystemUtils_->Logger_->Log(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_SCRIPT_ID' With Value '") + std::to_string(PayloadID) + std::string("'"), 0);
-                    
-                    // Check If Already In Vector
-                    bool Contains = false; 
-                    for (unsigned long x = 0; x < Scene->DirectionalLights[Index]->AttachedScriptIndexes_.size(); x++) {
-                        if (PayloadID ==  Scene->DirectionalLights[Index]->AttachedScriptIndexes_[x]) {
-                            SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'DirectionalLight', Already Attached").c_str(), 0);
-                            Contains = true;
-                            break;
-                        }
-                    }
-
-                    if (!Contains) {
-                        Scene->DirectionalLights[Index]->AttachedScriptIndexes_.push_back(PayloadID);
-                    }
-                }
-
-            ImGui::EndDragDropTarget();
-            }
-
-
-
-        } else if (Scene->SceneObjects_[i].Type_ == std::string("SpotLight")) {
-
-            long Index = Scene->SceneObjects_[i].Index_;
-
-            // Drag/Drop Target
-            long PayloadID;
-            if (ImGui::BeginDragDropTarget()) {
-
-                if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID")) {
-                    memcpy(&PayloadID, Payload->Data, sizeof(long));
-                    SystemUtils_->Logger_->Log(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_SCRIPT_ID' With Value '") + std::to_string(PayloadID) + std::string("'"), 0);
-                    
-                    // Check If Already In Vector
-                    bool Contains = false; 
-                    for (unsigned long x = 0; x < Scene->SpotLights[Index]->AttachedScriptIndexes_.size(); x++) {
-                        if (PayloadID ==  Scene->SpotLights[Index]->AttachedScriptIndexes_[x]) {
-                            SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'SpotLight', Already Attached").c_str(), 0);
-                            Contains = true;
-                            break;
-                        }
-                    }
-
-                    if (!Contains) {
-                        Scene->SpotLights[Index]->AttachedScriptIndexes_.push_back(PayloadID);
-                    }
-                }
-
-            ImGui::EndDragDropTarget();
-            }
-
-
-
-        }
-
-
-
-
-
-        // Context Menu
-        if (ImGui::BeginPopupContextItem()) {
-
-            if (Scene->SceneObjects_[i].Type_ == std::string("Model")) {
                 if (ImGui::MenuItem("Rename")) {
                     Subwindow_ModelRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
                 } if (ImGui::MenuItem("Duplicate")) {
@@ -364,7 +286,69 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     Subwindow_DeleteModel_->DeleteModel(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
 
-            } else if (Scene->SceneObjects_[i].Type_ == std::string("PointLight")) {
+            }
+
+
+        }
+
+    ImGui::TreePop();
+    }
+
+
+    // Draw Light Entries
+    if (ImGui::TreeNodeEx("Lights", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow)) {
+
+        // Point Lights
+        for (unsigned int i = 0; i < Scene->PointLights.size(); i++) {
+
+            unsigned long IndexInSceneObjects = PointLightIndexes[i];
+
+
+            const char* ObjectName = Scene->SceneObjects_[IndexInSceneObjects].Label_.c_str();
+            ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+            if ((unsigned long)SelectedSceneObjectIndex == IndexInSceneObjects) {
+                TreeFlags |= ImGuiTreeNodeFlags_Selected;
+            }
+            ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
+
+
+            // If User Clicks Node, Update Object Index
+            if (ImGui::IsItemClicked()) {
+                Scene->SelectedObject = IndexInSceneObjects;
+                Scene->HasSelectionChanged = true;
+            }
+
+
+            // Drag/Drop Target
+            long PayloadID;
+            if (ImGui::BeginDragDropTarget()) {
+
+                if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID")) {
+                    memcpy(&PayloadID, Payload->Data, sizeof(long));
+                    SystemUtils_->Logger_->Log(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_SCRIPT_ID' With Value '") + std::to_string(PayloadID) + std::string("'"), 0);
+                    
+                    // Check If Already In Vector
+                    bool Contains = false; 
+                    for (unsigned long x = 0; x < Scene->PointLights[i]->AttachedScriptIndexes_.size(); x++) {
+                        if (PayloadID ==  Scene->PointLights[i]->AttachedScriptIndexes_[x]) {
+                            SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'PointLight', Already Attached").c_str(), 0);
+                            Contains = true;
+                            break;
+                        }
+                    }
+
+                    if (!Contains) {
+                        Scene->PointLights[i]->AttachedScriptIndexes_.push_back(PayloadID);
+                    }
+                }
+
+            ImGui::EndDragDropTarget();
+            }
+
+
+            // Context Menu
+            if (ImGui::BeginPopupContextItem()) {
+
                 if (ImGui::MenuItem("Rename")) {
                     Subwindow_PointLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
@@ -376,7 +360,63 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     Subwindow_DeletePointLight_->DeletePointLight(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
 
-            } else if (Scene->SceneObjects_[i].Type_ == std::string("DirectionalLight")) {
+            }
+
+
+
+        }
+
+        // Directional Lights
+        for (unsigned int i = 0; i < Scene->DirectionalLights.size(); i++) {
+
+            unsigned long IndexInSceneObjects = DirectionalLightIndexes[i];
+
+
+            const char* ObjectName = Scene->SceneObjects_[IndexInSceneObjects].Label_.c_str();
+            ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+            if ((unsigned long)SelectedSceneObjectIndex == IndexInSceneObjects) {
+                TreeFlags |= ImGuiTreeNodeFlags_Selected;
+            }
+            ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
+
+
+            // If User Clicks Node, Update Object Index
+            if (ImGui::IsItemClicked()) {
+                Scene->SelectedObject = IndexInSceneObjects;
+                Scene->HasSelectionChanged = true;
+            }
+
+
+            // Drag/Drop Target
+            long PayloadID;
+            if (ImGui::BeginDragDropTarget()) {
+
+                if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID")) {
+                    memcpy(&PayloadID, Payload->Data, sizeof(long));
+                    SystemUtils_->Logger_->Log(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_SCRIPT_ID' With Value '") + std::to_string(PayloadID) + std::string("'"), 0);
+                    
+                    // Check If Already In Vector
+                    bool Contains = false; 
+                    for (unsigned long x = 0; x < Scene->DirectionalLights[i]->AttachedScriptIndexes_.size(); x++) {
+                        if (PayloadID ==  Scene->DirectionalLights[i]->AttachedScriptIndexes_[x]) {
+                            SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'DirectionalLight', Already Attached").c_str(), 0);
+                            Contains = true;
+                            break;
+                        }
+                    }
+
+                    if (!Contains) {
+                        Scene->DirectionalLights[i]->AttachedScriptIndexes_.push_back(PayloadID);
+                    }
+                }
+
+            ImGui::EndDragDropTarget();
+            }
+
+
+            // Context Menu
+            if (ImGui::BeginPopupContextItem()) {
+
                 if (ImGui::MenuItem("Rename")) {
                     Subwindow_DirectionalLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
@@ -388,7 +428,63 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     Subwindow_DeleteDirectionalLight_->DeleteDirectionalLight(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
 
-            } else if (Scene->SceneObjects_[i].Type_ == std::string("SpotLight")) {
+            }
+
+
+
+        }
+
+        // Spot Lights
+        for (unsigned int i = 0; i < Scene->SpotLights.size(); i++) {
+
+            unsigned long IndexInSceneObjects = SpotLightIndexes[i];
+
+
+            const char* ObjectName = Scene->SceneObjects_[IndexInSceneObjects].Label_.c_str();
+            ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+            if ((unsigned long)SelectedSceneObjectIndex == IndexInSceneObjects) {
+                TreeFlags |= ImGuiTreeNodeFlags_Selected;
+            }
+            ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
+
+
+            // If User Clicks Node, Update Object Index
+            if (ImGui::IsItemClicked()) {
+                Scene->SelectedObject = IndexInSceneObjects;
+                Scene->HasSelectionChanged = true;
+            }
+
+
+            // Drag/Drop Target
+            long PayloadID;
+            if (ImGui::BeginDragDropTarget()) {
+
+                if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID")) {
+                    memcpy(&PayloadID, Payload->Data, sizeof(long));
+                    SystemUtils_->Logger_->Log(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_SCRIPT_ID' With Value '") + std::to_string(PayloadID) + std::string("'"), 0);
+                    
+                    // Check If Already In Vector
+                    bool Contains = false; 
+                    for (unsigned long x = 0; x < Scene->SpotLights[i]->AttachedScriptIndexes_.size(); x++) {
+                        if (PayloadID ==  Scene->SpotLights[i]->AttachedScriptIndexes_[x]) {
+                            SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'SpotLight', Already Attached").c_str(), 0);
+                            Contains = true;
+                            break;
+                        }
+                    }
+
+                    if (!Contains) {
+                        Scene->SpotLights[i]->AttachedScriptIndexes_.push_back(PayloadID);
+                    }
+                }
+
+            ImGui::EndDragDropTarget();
+            }
+
+
+            // Context Menu
+            if (ImGui::BeginPopupContextItem()) {
+
                 if (ImGui::MenuItem("Rename")) {
                     Subwindow_SpotLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
@@ -399,14 +495,20 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                 if (ImGui::MenuItem("Delete")) {
                     Subwindow_DeleteSpotLight_->DeleteSpotLight(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
+
             }
 
 
-        ImGui::EndPopup();
+
         }
 
-
+    ImGui::TreePop();
     }
+
+
+
+
+    
 
 
 }

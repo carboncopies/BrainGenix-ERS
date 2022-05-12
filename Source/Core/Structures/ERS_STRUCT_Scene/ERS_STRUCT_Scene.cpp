@@ -26,21 +26,21 @@ void ERS_STRUCT_Scene::IndexSceneObjects() {
         ERS_STRUCT_SceneObject SceneObject;
         SceneObject.Type_ = std::string("SpotLight");
         SceneObject.Index_ = i;
-        SceneObject.Label_ = std::string("[L] ") + SpotLights[i]->UserDefinedName;
+        SceneObject.Label_ = std::string("[LS] ") + SpotLights[i]->UserDefinedName;
         SceneObjects_.push_back(SceneObject);
     }
     for (unsigned long i = 0; i < DirectionalLights.size(); i++) {
         ERS_STRUCT_SceneObject SceneObject;
         SceneObject.Type_ = std::string("DirectionalLight");
         SceneObject.Index_ = i;
-        SceneObject.Label_ = std::string("[L] ") + DirectionalLights[i]->UserDefinedName;
+        SceneObject.Label_ = std::string("[LD] ") + DirectionalLights[i]->UserDefinedName;
         SceneObjects_.push_back(SceneObject);
     }
     for (unsigned long i = 0; i < PointLights.size(); i++) {
         ERS_STRUCT_SceneObject SceneObject;
         SceneObject.Type_ = std::string("PointLight");
         SceneObject.Index_ = i;
-        SceneObject.Label_ = std::string("[L] ") + PointLights[i]->UserDefinedName;
+        SceneObject.Label_ = std::string("[LP] ") + PointLights[i]->UserDefinedName;
         SceneObjects_.push_back(SceneObject);
     }
 
