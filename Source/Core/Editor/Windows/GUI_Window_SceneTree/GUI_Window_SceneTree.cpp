@@ -230,10 +230,32 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             if (ImGui::MenuItem("Sort Alphabetically")) {
 
                 // First, Create List Of Model Names
+                std::vector<std::string> ModelNames;
+                for (unsigned int i = 0; i < SceneManager_->Scenes_[SceneIndex]->Models.size(); i++) {
+                    ModelNames.push_back(SceneManager_->Scenes_[SceneIndex]->Models[i]->Name);
+                }
 
                 // Next, Sort List Of Model Names
+                sort(ModelNames.begin(), ModelNames.end());
 
                 // Then, Re-Order Based On Sorted Model Name List
+                std::vector<std::shared_ptr<ERS_STRUCT_Model>> SortedList;
+                for (unsigned int i = 0; i < ModelNames.size(); i++) {
+
+                    std::string SortedName = ModelNames[i];
+
+                    // Match Names To Models
+                    for (unsigned int x = 0; x < SceneManager_->Scenes_[SceneIndex]->Models.size(); x++) {
+
+                        std::string NameToTestAgainst = SceneManager_->Scenes_[SceneIndex]->Models[x]->Name;
+
+                        if (SortedName == NameToTestAgainst) {
+                            
+                        }
+
+                    }
+
+                }
 
             }
 
