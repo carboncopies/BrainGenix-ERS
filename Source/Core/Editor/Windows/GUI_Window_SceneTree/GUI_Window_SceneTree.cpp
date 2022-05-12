@@ -227,7 +227,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
     if (ImGui::BeginPopupContextWindow()) {
 
-            if (ImGui::MenuItem("Sort Alphabetically")) {
+            if (ImGui::MenuItem("Sort Models Alphabetically")) {
 
                 // First, Create List Of Model Names
                 std::vector<std::string> ModelNames;
