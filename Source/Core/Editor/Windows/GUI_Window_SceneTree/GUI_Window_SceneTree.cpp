@@ -186,6 +186,10 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     int SelectedSceneObjectIndex = Scene->SelectedObject;
 
 
+    // Draw Model Entries
+    ImGui::TreeNodeEx("Models", ImGuiTreeNodeFlags_OpenOnDoubleClick);
+    
+
 
     // Iterate Through Scene Objects
     for (unsigned long i = 0; i < Scene->SceneObjects_.size(); i++) {
