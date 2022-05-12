@@ -331,12 +331,14 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     // Get Reference Info
                     long AssetIDToMatch = SceneManager_->Scenes_[SceneIndex]->Models[i]->AssetID;
                     std::string BaseName = SceneManager_->Scenes_[SceneIndex]->Models[i]->Name;
+                    long CurrentNumber = 1;
 
                     // Rename
                     for (unsigned int x = 0; x < SceneManager_->Scenes_[SceneIndex]->Models.size(); x++) {
                         long AssetIDToCheck = SceneManager_->Scenes_[SceneIndex]->Models[x]->AssetID;
                         if (AssetIDToCheck == AssetIDToMatch) {
-                            Indexes.pu
+                            SceneManager_->Scenes_[SceneIndex]->Models[x]->Name = BaseName+std::to_string(CurrentNumber);
+                            CurrentNumber++;
                         }
                     }
 
