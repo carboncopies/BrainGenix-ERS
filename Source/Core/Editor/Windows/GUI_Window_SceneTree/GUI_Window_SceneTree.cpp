@@ -191,10 +191,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     std::vector<unsigned long> ModelIndexes; // stores the index of the associated element in the Models list from the sceneobjects list
     std::vector<ERS_STRUCT_SceneObject> PointLights;
     std::vector<unsigned long> PointLightIndexes; // stores the index of the associated element in the Models list from the sceneobjects list
-    
     std::vector<ERS_STRUCT_SceneObject> DirectionalLights;
     std::vector<unsigned long> DirectionalLightIndexes; // stores the index of the associated element in the Models list from the sceneobjects list
-
     std::vector<ERS_STRUCT_SceneObject> SpotLights;
     std::vector<unsigned long> SpotLightIndexes; // stores the index of the associated element in the Models list from the sceneobjects list
 
