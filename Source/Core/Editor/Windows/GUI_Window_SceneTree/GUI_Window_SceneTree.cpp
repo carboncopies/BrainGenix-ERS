@@ -439,7 +439,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
             // Context Menu
-            if (ImGui::BeginPopupContextItem()) {
+            if (ImGui::BeginPopupContextItem(std::string(std::string("DirectionalLight")+std::to_string(i)).c_str()))) {
 
                 if (ImGui::MenuItem("Rename")) {
                     Subwindow_DirectionalLightRenameModal_->Activate(SceneIndex, i);
