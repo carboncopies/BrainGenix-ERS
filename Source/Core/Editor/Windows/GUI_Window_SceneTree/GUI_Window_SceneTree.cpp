@@ -460,7 +460,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         }
 
         // Spot Lights
-        unsigned long SpotLightSize =  Scene->SpotLights.size()
+        unsigned long SpotLightSize =  Scene->SpotLights.size();
         for (unsigned int i = 0; i < SpotLightSize; i++) {
 
             unsigned long IndexInSceneObjects = SpotLightIndexes[i];
