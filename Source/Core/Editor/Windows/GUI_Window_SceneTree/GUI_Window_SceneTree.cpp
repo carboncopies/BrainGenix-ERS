@@ -186,6 +186,14 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     int SelectedSceneObjectIndex = Scene->SelectedObject;
 
 
+    // Sort Objects
+    std::vector<ERS_STRUCT_SceneObject> Models;
+    std::vector<ERS_STRUCT_SceneObject> Lights;
+    
+
+
+
+
     // Draw Model Entries
     if (ImGui::TreeNodeEx("Models", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow)) {
 
