@@ -304,6 +304,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     Subwindow_DeleteModel_->DeleteModel(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
 
+            ImGui::EndPopup();
             }
 
 
