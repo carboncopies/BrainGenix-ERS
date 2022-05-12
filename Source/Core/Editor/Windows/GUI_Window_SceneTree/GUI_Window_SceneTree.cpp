@@ -448,6 +448,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     Subwindow_DeleteDirectionalLight_->DeleteDirectionalLight(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
 
+            ImGui::EndPopup();
             }
 
 
