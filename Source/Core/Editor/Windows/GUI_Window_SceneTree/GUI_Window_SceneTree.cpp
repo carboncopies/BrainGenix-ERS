@@ -437,7 +437,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         // Spot Lights
         for (unsigned int i = 0; i < Scene->SpotLights.size(); i++) {
 
-            unsigned long IndexInSceneObjects = DirectionalLightIndexes[i];
+            unsigned long IndexInSceneObjects = SpotLightIndexes[i];
 
 
             const char* ObjectName = Scene->SceneObjects_[IndexInSceneObjects].Label_.c_str();
@@ -454,77 +454,6 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                 Scene->HasSelectionChanged = true;
             }
 
-
-            // Drag/Drop Target
-            long PayloadID;
-            if (ImGui::BeginDragDropTarget()) {
-
-                if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID")) {
-                    memcpy(&PayloadID, Payload->Data, sizeof(long));
-                    SystemUtils_->Logger_->Log(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_SCRIPT_ID' With Value '") + std::to_string(PayloadID) + std::string("'"), 0);
-                    
-                    // Check If Already In Vector
-                    bool Contains = false; 
-                    for (unsigned long x = 0; x < Scene->DirectionalLights[i]->AttachedScriptIndexes_.size(); x++) {
-                        if (PayloadID ==  Scene->DirectionalLights[i]->AttachedScriptIndexes_[x]) {
-                            SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'DirectionalLight', Already Attached").c_str(), 0);
-                            Contains = true;
-                            break;
-                        }
-                    }
-
-                    if (!Contains) {
-                        Scene->DirectionalLights[i]->AttachedScriptIndexes_.push_back(PayloadID);
-                    }
-                }
-
-            ImGui::EndDragDropTarget();
-            }
-
-
-            // Context Menu
-            if (ImGui::BeginPopupContextItem()) {
-
-                if (ImGui::MenuItem("Rename")) {
-                    Subwindow_DirectionalLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
-                }
-                if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicateDirectionalLight(SceneManager_, SceneIndex, Scene->SceneObjects_[i].Index_);
-                }
-                ImGui::Separator();
-                if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeleteDirectionalLight_->DeleteDirectionalLight(SceneIndex, Scene->SceneObjects_[i].Index_);
-                }
-
-            }
-
-
-
-        }
-
-    ImGui::TreePop();
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-            
-
-
-
-
-
-        } else if (Scene->SceneObjects_[i].Type_ == std::string("SpotLight")) {
-
-            long Index = Scene->SceneObjects_[i].Index_;
 
             // Drag/Drop Target
             long PayloadID;
@@ -553,26 +482,9 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             }
 
 
+            // Context Menu
+            if (ImGui::BeginPopupContextItem()) {
 
-        }
-
-
-
-
-
-        // Context Menu
-        if (ImGui::BeginPopupContextItem()) {
-
-            if (Scene->SceneObjects_[i].Type_ == std::string("Model")) {
-
-
-            } else if (Scene->SceneObjects_[i].Type_ == std::string("PointLight")) {
-
-
-            } else if (Scene->SceneObjects_[i].Type_ == std::string("DirectionalLight")) {
-
-
-            } else if (Scene->SceneObjects_[i].Type_ == std::string("SpotLight")) {
                 if (ImGui::MenuItem("Rename")) {
                     Subwindow_SpotLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
@@ -583,14 +495,18 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                 if (ImGui::MenuItem("Delete")) {
                     Subwindow_DeleteSpotLight_->DeleteSpotLight(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
+
             }
 
 
-        ImGui::EndPopup();
+
         }
 
-
+    ImGui::TreePop();
     }
+
+
+
 
     
 
