@@ -329,6 +329,10 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                 } if (ImGui::MenuItem("Auto Number Assets Of This Type")) {
 
                     // Create List Of Asset Indexes with This Type
+
+                    // Rename
+
+                    
                 }
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
