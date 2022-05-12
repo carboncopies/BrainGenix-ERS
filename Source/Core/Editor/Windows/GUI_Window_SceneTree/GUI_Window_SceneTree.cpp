@@ -320,7 +320,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     if (ImGui::TreeNodeEx("Lights", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow)) {
 
         // Point Lights
-        for (unsigned int i = 0; i < Scene->PointLights.size(); i++) {
+        unsigned int PointLightSize = Scene->PointLights.size();
+        for (unsigned int i = 0; i < PointLightSize; i++) {
 
             unsigned long IndexInSceneObjects = PointLightIndexes[i];
 
@@ -389,7 +390,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         }
 
         // Directional Lights
-        for (unsigned int i = 0; i < Scene->DirectionalLights.size(); i++) {
+        unsigned long DirectionalLightSize = Scene->DirectionalLights.size();
+        for (unsigned int i = 0; i < DirectionalLightSize; i++) {
 
             unsigned long IndexInSceneObjects = DirectionalLightIndexes[i];
 
@@ -458,7 +460,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         }
 
         // Spot Lights
-        for (unsigned int i = 0; i < Scene->SpotLights.size(); i++) {
+        unsigned long SpotLightSize =  Scene->SpotLights.size()
+        for (unsigned int i = 0; i < SpotLightSize; i++) {
 
             unsigned long IndexInSceneObjects = SpotLightIndexes[i];
 
