@@ -227,13 +227,12 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
             unsigned long IndexInSceneObjects = ModelIndexes[i];
 
+
             const char* ObjectName = Scene->SceneObjects_[IndexInSceneObjects].Label_.c_str();
             ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
             if ((unsigned long)SelectedSceneObjectIndex == IndexInSceneObjects) {
                 TreeFlags |= ImGuiTreeNodeFlags_Selected;
             }
-
-            // Create Tree Node
             ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
 
 
@@ -242,6 +241,37 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                 Scene->SelectedObject = IndexInSceneObjects;
                 Scene->HasSelectionChanged = true;
             }
+
+
+
+            // Drag/Drop Target
+            long PayloadID;
+            if (ImGui::BeginDragDropTarget()) {
+
+                if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID")) {
+                    memcpy(&PayloadID, Payload->Data, sizeof(long));
+                    SystemUtils_->Logger_->Log(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_SCRIPT_ID' With Value '") + std::to_string(PayloadID) + std::string("'"), 0);
+                    
+                    // Check If Already In Vector
+                    bool Contains = false; 
+                    for (unsigned long x = 0; x < Scene->Models[i]->AttachedScriptIndexes_.size(); x++) {
+                        if (PayloadID ==  Scene->Models[i]->AttachedScriptIndexes_[x]) {
+                            SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'Model', Already Attached").c_str(), 0);
+                            Contains = true;
+                            break;
+                        }
+                    }
+
+                    if (!Contains) {
+                        Scene->Models[i]->AttachedScriptIndexes_.push_back(PayloadID);
+                    }
+                }
+
+            ImGui::EndDragDropTarget();
+            }
+
+
+
 
 
         }
