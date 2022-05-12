@@ -329,8 +329,12 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                 } if (ImGui::MenuItem("Auto Number Assets Of This Type")) {
 
                     // Create List Of Asset Indexes with This Type
+                    long AssetIDToMatch = SceneManager_->Scenes_[SceneIndex]->Models[i]->AssetID;
+                    std::string BaseName = SceneManager_->Scenes_[SceneIndex]->Models[i]->Name;
                     std::vector<long> Indexes;
-                    for (unsigned int i = 0; i < )
+                    for (unsigned int x = 0; x < SceneManager_->Scenes_[SceneIndex]->Models.size(); x++) {
+
+                    }
 
                     // Rename
 
