@@ -225,6 +225,22 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     // Draw Model Entries
     if (ImGui::TreeNodeEx("Models", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow)) {
 
+        if (ImGui::BeginPopupContextWindow()) {
+
+            if (ImGui::MenuItem("Sort Alphabetically")) {
+
+                // First, Create List Of Model Names
+
+                // Next, Sort List Of Model Names
+
+                // Then, Re-Order Based On Sorted Model Name List
+
+            }
+
+        ImGui::EndPopup();
+        }
+
+
         for (unsigned int i = 0; i < Scene->Models.size(); i++) {
 
             unsigned long IndexInSceneObjects = ModelIndexes[i];
