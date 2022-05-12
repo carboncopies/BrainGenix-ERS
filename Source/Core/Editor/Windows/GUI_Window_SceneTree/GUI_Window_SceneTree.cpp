@@ -328,16 +328,17 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     Subwindow_ModelReplaceModal_->Activate(SceneIndex, i);
                 } if (ImGui::MenuItem("Auto Number Assets Of This Type")) {
 
-                    // Create List Of Asset Indexes with This Type
+                    // Get Reference Info
                     long AssetIDToMatch = SceneManager_->Scenes_[SceneIndex]->Models[i]->AssetID;
                     std::string BaseName = SceneManager_->Scenes_[SceneIndex]->Models[i]->Name;
-                    std::vector<long> Indexes;
-                    for (unsigned int x = 0; x < SceneManager_->Scenes_[SceneIndex]->Models.size(); x++) {
-
-                    }
 
                     // Rename
-
+                    for (unsigned int x = 0; x < SceneManager_->Scenes_[SceneIndex]->Models.size(); x++) {
+                        long AssetIDToCheck = SceneManager_->Scenes_[SceneIndex]->Models[x]->AssetID;
+                        if (AssetIDToCheck == AssetIDToMatch) {
+                            Indexes.pu
+                        }
+                    }
 
                 }
                 ImGui::Separator();
