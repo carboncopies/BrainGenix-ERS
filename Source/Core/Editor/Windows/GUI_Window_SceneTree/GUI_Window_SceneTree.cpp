@@ -108,9 +108,11 @@ void Window_SceneTree::Draw() {
                         // Menu Items
                         if (ImGui::MenuItem("Rename")) {
                             Subwindow_SceneRenameModal_->Activate(SceneIndex);
-                        } if (ImGui::MenuItem("Duplicate")) {
+                        }
+                        if (ImGui::MenuItem("Duplicate")) {
                             GUI_Windowutil_DuplicateScene(SceneManager_, SceneIndex); // FIXME: Will need to update how scenes are saved, as right now these will overwrite other scenes when saved. (Solution could be a scenes folder?)
                         }
+
 
 
                         ImGui::Separator();
@@ -221,9 +223,53 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
     // Draw Model Entries
-    if (ImGui::TreeNodeEx("Models", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow)) {
+    bool ModelTree = ImGui::TreeNodeEx("Models", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow);
 
-        for (unsigned int i = 0; i < Scene->Models.size(); i++) {
+    if (ImGui::BeginPopupContextWindow("Models Context Menu")) {
+
+            if (ImGui::MenuItem("Sort Models Alphabetically")) {
+
+                // First, Create List Of Model Names
+                std::vector<std::string> ModelNames;
+                for (unsigned int i = 0; i < SceneManager_->Scenes_[SceneIndex]->Models.size(); i++) {
+                    ModelNames.push_back(SceneManager_->Scenes_[SceneIndex]->Models[i]->Name);
+                }
+
+                // Next, Sort List Of Model Names
+                sort(ModelNames.begin(), ModelNames.end());
+
+                // Then, Re-Order Based On Sorted Model Name List
+                std::vector<std::shared_ptr<ERS_STRUCT_Model>> SortedList;
+                for (unsigned int i = 0; i < ModelNames.size(); i++) {
+
+                    std::string SortedName = ModelNames[i];
+
+                    // Match Names To Models
+                    for (unsigned int x = 0; x < SceneManager_->Scenes_[SceneIndex]->Models.size(); x++) {
+
+                        std::string NameToTestAgainst = SceneManager_->Scenes_[SceneIndex]->Models[x]->Name;
+
+                        if (SortedName == NameToTestAgainst) {
+                            SortedList.push_back(SceneManager_->Scenes_[SceneIndex]->Models[x]);
+                            break;
+                        }
+
+                    }
+
+                }
+                SceneManager_->Scenes_[SceneIndex]->Models = SortedList;
+                SceneManager_->Scenes_[SceneIndex]->HasSelectionChanged = true;
+
+
+            }
+
+    ImGui::EndPopup();
+    }
+
+    if (ModelTree) {
+
+        unsigned int ModelListSize = Scene->Models.size();
+        for (unsigned int i = 0; i < ModelListSize; i++) {
 
             unsigned long IndexInSceneObjects = ModelIndexes[i];
 
@@ -275,17 +321,18 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             if (ImGui::BeginPopupContextItem()) {
 
                 if (ImGui::MenuItem("Rename")) {
-                    Subwindow_ModelRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
+                    Subwindow_ModelRenameModal_->Activate(SceneIndex, i);
                 } if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicateModel(SceneManager_, SceneIndex, Scene->SceneObjects_[i].Index_);
+                    GUI_Windowutil_DuplicateModel(SceneManager_, SceneIndex, i);
                 } if (ImGui::MenuItem("Replace All Instances")) {
-                    Subwindow_ModelReplaceModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
+                    Subwindow_ModelReplaceModal_->Activate(SceneIndex, i);
                 }
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeleteModel_->DeleteModel(SceneIndex, Scene->SceneObjects_[i].Index_);
+                    Subwindow_DeleteModel_->DeleteModel(SceneIndex, i);
                 }
 
+            ImGui::EndPopup();
             }
 
 
@@ -299,7 +346,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     if (ImGui::TreeNodeEx("Lights", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow)) {
 
         // Point Lights
-        for (unsigned int i = 0; i < Scene->PointLights.size(); i++) {
+        unsigned int PointLightSize = Scene->PointLights.size();
+        for (unsigned int i = 0; i < PointLightSize; i++) {
 
             unsigned long IndexInSceneObjects = PointLightIndexes[i];
 
@@ -347,19 +395,20 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
             // Context Menu
-            if (ImGui::BeginPopupContextItem()) {
+            if (ImGui::BeginPopupContextItem(std::string(std::string("PointLight")+std::to_string(i)).c_str())) {
 
                 if (ImGui::MenuItem("Rename")) {
-                    Subwindow_PointLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
+                    Subwindow_PointLightRenameModal_->Activate(SceneIndex, i);
                 }
                 if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicatePointLight(SceneManager_, SceneIndex, Scene->SceneObjects_[i].Index_);
+                    GUI_Windowutil_DuplicatePointLight(SceneManager_, SceneIndex, i);
                 }
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeletePointLight_->DeletePointLight(SceneIndex, Scene->SceneObjects_[i].Index_);
+                    Subwindow_DeletePointLight_->DeletePointLight(SceneIndex, i);
                 }
 
+            ImGui::EndPopup();
             }
 
 
@@ -367,7 +416,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         }
 
         // Directional Lights
-        for (unsigned int i = 0; i < Scene->DirectionalLights.size(); i++) {
+        unsigned long DirectionalLightSize = Scene->DirectionalLights.size();
+        for (unsigned int i = 0; i < DirectionalLightSize; i++) {
 
             unsigned long IndexInSceneObjects = DirectionalLightIndexes[i];
 
@@ -415,19 +465,20 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
             // Context Menu
-            if (ImGui::BeginPopupContextItem()) {
+            if (ImGui::BeginPopupContextItem(std::string(std::string("DirectionalLight")+std::to_string(i)).c_str())) {
 
                 if (ImGui::MenuItem("Rename")) {
-                    Subwindow_DirectionalLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
+                    Subwindow_DirectionalLightRenameModal_->Activate(SceneIndex, i);
                 }
                 if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicateDirectionalLight(SceneManager_, SceneIndex, Scene->SceneObjects_[i].Index_);
+                    GUI_Windowutil_DuplicateDirectionalLight(SceneManager_, SceneIndex, i);
                 }
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeleteDirectionalLight_->DeleteDirectionalLight(SceneIndex, Scene->SceneObjects_[i].Index_);
+                    Subwindow_DeleteDirectionalLight_->DeleteDirectionalLight(SceneIndex, i);
                 }
 
+            ImGui::EndPopup();
             }
 
 
@@ -435,7 +486,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         }
 
         // Spot Lights
-        for (unsigned int i = 0; i < Scene->SpotLights.size(); i++) {
+        unsigned long SpotLightSize =  Scene->SpotLights.size();
+        for (unsigned int i = 0; i < SpotLightSize; i++) {
 
             unsigned long IndexInSceneObjects = SpotLightIndexes[i];
 
@@ -483,19 +535,20 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
             // Context Menu
-            if (ImGui::BeginPopupContextItem()) {
+            if (ImGui::BeginPopupContextItem(std::string(std::string("SpotLight")+std::to_string(i)).c_str())) {
 
                 if (ImGui::MenuItem("Rename")) {
-                    Subwindow_SpotLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
+                    Subwindow_SpotLightRenameModal_->Activate(SceneIndex, i);
                 }
                 if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicateSpotLight(SceneManager_, SceneIndex, Scene->SceneObjects_[i].Index_);
+                    GUI_Windowutil_DuplicateSpotLight(SceneManager_, SceneIndex, i);
                 }
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeleteSpotLight_->DeleteSpotLight(SceneIndex, Scene->SceneObjects_[i].Index_);
+                    Subwindow_DeleteSpotLight_->DeleteSpotLight(SceneIndex, i);
                 }
 
+            ImGui::EndPopup();
             }
 
 
