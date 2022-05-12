@@ -371,6 +371,74 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
         }
 
+        // Directional Lights
+        for (unsigned int i = 0; i < Scene->DirectionalLights.size(); i++) {
+
+            unsigned long IndexInSceneObjects = DirectionalLightIndexes[i];
+
+
+            const char* ObjectName = Scene->SceneObjects_[IndexInSceneObjects].Label_.c_str();
+            ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+            if ((unsigned long)SelectedSceneObjectIndex == IndexInSceneObjects) {
+                TreeFlags |= ImGuiTreeNodeFlags_Selected;
+            }
+            ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
+
+
+            // If User Clicks Node, Update Object Index
+            if (ImGui::IsItemClicked()) {
+                Scene->SelectedObject = IndexInSceneObjects;
+                Scene->HasSelectionChanged = true;
+            }
+
+
+            // Drag/Drop Target
+            long PayloadID;
+            if (ImGui::BeginDragDropTarget()) {
+
+                if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID")) {
+                    memcpy(&PayloadID, Payload->Data, sizeof(long));
+                    SystemUtils_->Logger_->Log(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_SCRIPT_ID' With Value '") + std::to_string(PayloadID) + std::string("'"), 0);
+                    
+                    // Check If Already In Vector
+                    bool Contains = false; 
+                    for (unsigned long x = 0; x < Scene->PointLights[i]->AttachedScriptIndexes_.size(); x++) {
+                        if (PayloadID ==  Scene->PointLights[i]->AttachedScriptIndexes_[x]) {
+                            SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'PointLight', Already Attached").c_str(), 0);
+                            Contains = true;
+                            break;
+                        }
+                    }
+
+                    if (!Contains) {
+                        Scene->PointLights[i]->AttachedScriptIndexes_.push_back(PayloadID);
+                    }
+                }
+
+            ImGui::EndDragDropTarget();
+            }
+
+
+            // Context Menu
+            if (ImGui::BeginPopupContextItem()) {
+
+                if (ImGui::MenuItem("Rename")) {
+                    Subwindow_PointLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
+                }
+                if (ImGui::MenuItem("Duplicate")) {
+                    GUI_Windowutil_DuplicatePointLight(SceneManager_, SceneIndex, Scene->SceneObjects_[i].Index_);
+                }
+                ImGui::Separator();
+                if (ImGui::MenuItem("Delete")) {
+                    Subwindow_DeletePointLight_->DeletePointLight(SceneIndex, Scene->SceneObjects_[i].Index_);
+                }
+
+            }
+
+
+
+        }
+
     ImGui::TreePop();
     }
 
