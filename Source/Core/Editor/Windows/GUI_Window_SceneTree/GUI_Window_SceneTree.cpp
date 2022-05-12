@@ -294,15 +294,15 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             if (ImGui::BeginPopupContextItem()) {
 
                 if (ImGui::MenuItem("Rename")) {
-                    Subwindow_ModelRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[IndexInSceneObjects].Index_);
+                    Subwindow_ModelRenameModal_->Activate(SceneIndex, i);
                 } if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicateModel(SceneManager_, SceneIndex, Scene->SceneObjects_[IndexInSceneObjects].Index_);
+                    GUI_Windowutil_DuplicateModel(SceneManager_, SceneIndex, i);
                 } if (ImGui::MenuItem("Replace All Instances")) {
-                    Subwindow_ModelReplaceModal_->Activate(SceneIndex, Scene->SceneObjects_[IndexInSceneObjects].Index_);
+                    Subwindow_ModelReplaceModal_->Activate(SceneIndex, i);
                 }
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeleteModel_->DeleteModel(SceneIndex, Scene->SceneObjects_[IndexInSceneObjects].Index_);
+                    Subwindow_DeleteModel_->DeleteModel(SceneIndex, i);
                 }
 
             ImGui::EndPopup();
