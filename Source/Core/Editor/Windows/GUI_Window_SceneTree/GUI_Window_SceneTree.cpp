@@ -188,7 +188,10 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
     // Sort Objects
     std::vector<ERS_STRUCT_SceneObject> Models;
-    std::vector<ERS_STRUCT_SceneObject> Lights;
+    std::vector<ERS_STRUCT_SceneObject> PointLights;
+    std::vector<ERS_STRUCT_SceneObject> DirectionalLights;
+    std::vector<ERS_STRUCT_SceneObject> SpotLights;
+    
     
 
 
