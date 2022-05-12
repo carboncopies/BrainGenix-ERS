@@ -293,11 +293,6 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
     ImGui::TreePop();
     }
-    
-
-
-
-
 
 
     // Draw Light Entries
@@ -402,16 +397,16 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     
                     // Check If Already In Vector
                     bool Contains = false; 
-                    for (unsigned long x = 0; x < Scene->PointLights[i]->AttachedScriptIndexes_.size(); x++) {
-                        if (PayloadID ==  Scene->PointLights[i]->AttachedScriptIndexes_[x]) {
-                            SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'PointLight', Already Attached").c_str(), 0);
+                    for (unsigned long x = 0; x < Scene->DirectionalLights[i]->AttachedScriptIndexes_.size(); x++) {
+                        if (PayloadID ==  Scene->DirectionalLights[i]->AttachedScriptIndexes_[x]) {
+                            SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'DirectionalLight', Already Attached").c_str(), 0);
                             Contains = true;
                             break;
                         }
                     }
 
                     if (!Contains) {
-                        Scene->PointLights[i]->AttachedScriptIndexes_.push_back(PayloadID);
+                        Scene->DirectionalLights[i]->AttachedScriptIndexes_.push_back(PayloadID);
                     }
                 }
 
@@ -456,35 +451,6 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             
 
 
-        } else if (Scene->SceneObjects_[i].Type_ == std::string("DirectionalLight")) {
-
-            long Index = Scene->SceneObjects_[i].Index_;
-
-            // Drag/Drop Target
-            long PayloadID;
-            if (ImGui::BeginDragDropTarget()) {
-
-                if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID")) {
-                    memcpy(&PayloadID, Payload->Data, sizeof(long));
-                    SystemUtils_->Logger_->Log(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_SCRIPT_ID' With Value '") + std::to_string(PayloadID) + std::string("'"), 0);
-                    
-                    // Check If Already In Vector
-                    bool Contains = false; 
-                    for (unsigned long x = 0; x < Scene->DirectionalLights[i]->AttachedScriptIndexes_.size(); x++) {
-                        if (PayloadID ==  Scene->DirectionalLights[i]->AttachedScriptIndexes_[x]) {
-                            SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'DirectionalLight', Already Attached").c_str(), 0);
-                            Contains = true;
-                            break;
-                        }
-                    }
-
-                    if (!Contains) {
-                        Scene->DirectionalLights[i]->AttachedScriptIndexes_.push_back(PayloadID);
-                    }
-                }
-
-            ImGui::EndDragDropTarget();
-            }
 
 
 
