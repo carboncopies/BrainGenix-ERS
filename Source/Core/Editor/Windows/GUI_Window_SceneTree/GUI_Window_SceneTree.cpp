@@ -271,7 +271,11 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             }
 
 
+            // Context Menu
+            if (ImGui::BeginPopupContextItem()) {
 
+
+            }
 
 
         }
@@ -285,56 +289,29 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
 
+    // Draw Light Entries
+    if (ImGui::TreeNodeEx("Lights", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow)) {
+
+        // Point Lights
+        for (unsigned int i = 0; i < Scene->PointLights.size(); i++) {
+
+            unsigned long IndexInSceneObjects = PointLightIndexes[i];
 
 
+            const char* ObjectName = Scene->SceneObjects_[IndexInSceneObjects].Label_.c_str();
+            ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+            if ((unsigned long)SelectedSceneObjectIndex == IndexInSceneObjects) {
+                TreeFlags |= ImGuiTreeNodeFlags_Selected;
+            }
+            ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
 
 
+            // If User Clicks Node, Update Object Index
+            if (ImGui::IsItemClicked()) {
+                Scene->SelectedObject = IndexInSceneObjects;
+                Scene->HasSelectionChanged = true;
+            }
 
-
-
-
-
-
-
-
-
-    /**
-
-    // Iterate Through Scene Objects
-    for (unsigned long i = 0; i < Scene->SceneObjects_.size(); i++) {
-
-        // Get Name Of Object
-        const char* ObjectName = Scene->SceneObjects_[i].Label_.c_str();
-
-        // Setup Node Flags
-        ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
-        if ((unsigned long)SelectedSceneObjectIndex == i) {
-            TreeFlags |= ImGuiTreeNodeFlags_Selected;
-        }
-
-        // Create Tree Node
-        ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
-
-
-        // If User Clicks Node, Update Object Index
-        if (ImGui::IsItemClicked()) {
-            Scene->SelectedObject = i;
-            Scene->HasSelectionChanged = true;
-        }
-
-
-
-
-        // Handle Drag/Drops
-        if (Scene->SceneObjects_[i].Type_ == std::string("Model")) {
-
-            
-
-
-
-        } else if (Scene->SceneObjects_[i].Type_ == std::string("PointLight")) {
-
-            long Index = Scene->SceneObjects_[i].Index_;
 
             // Drag/Drop Target
             long PayloadID;
@@ -346,8 +323,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     
                     // Check If Already In Vector
                     bool Contains = false; 
-                    for (unsigned long x = 0; x < Scene->PointLights[Index]->AttachedScriptIndexes_.size(); x++) {
-                        if (PayloadID ==  Scene->PointLights[Index]->AttachedScriptIndexes_[x]) {
+                    for (unsigned long x = 0; x < Scene->PointLights[i]->AttachedScriptIndexes_.size(); x++) {
+                        if (PayloadID ==  Scene->PointLights[i]->AttachedScriptIndexes_[x]) {
                             SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'PointLight', Already Attached").c_str(), 0);
                             Contains = true;
                             break;
@@ -355,13 +332,39 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     }
 
                     if (!Contains) {
-                        Scene->PointLights[Index]->AttachedScriptIndexes_.push_back(PayloadID);
+                        Scene->PointLights[i]->AttachedScriptIndexes_.push_back(PayloadID);
                     }
                 }
 
             ImGui::EndDragDropTarget();
             }
 
+
+            // Context Menu
+            if (ImGui::BeginPopupContextItem()) {
+
+
+            }
+
+
+
+        }
+
+    ImGui::TreePop();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+            
 
 
         } else if (Scene->SceneObjects_[i].Type_ == std::string("DirectionalLight")) {
@@ -378,8 +381,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     
                     // Check If Already In Vector
                     bool Contains = false; 
-                    for (unsigned long x = 0; x < Scene->DirectionalLights[Index]->AttachedScriptIndexes_.size(); x++) {
-                        if (PayloadID ==  Scene->DirectionalLights[Index]->AttachedScriptIndexes_[x]) {
+                    for (unsigned long x = 0; x < Scene->DirectionalLights[i]->AttachedScriptIndexes_.size(); x++) {
+                        if (PayloadID ==  Scene->DirectionalLights[i]->AttachedScriptIndexes_[x]) {
                             SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'DirectionalLight', Already Attached").c_str(), 0);
                             Contains = true;
                             break;
@@ -387,7 +390,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     }
 
                     if (!Contains) {
-                        Scene->DirectionalLights[Index]->AttachedScriptIndexes_.push_back(PayloadID);
+                        Scene->DirectionalLights[i]->AttachedScriptIndexes_.push_back(PayloadID);
                     }
                 }
 
@@ -410,8 +413,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     
                     // Check If Already In Vector
                     bool Contains = false; 
-                    for (unsigned long x = 0; x < Scene->SpotLights[Index]->AttachedScriptIndexes_.size(); x++) {
-                        if (PayloadID ==  Scene->SpotLights[Index]->AttachedScriptIndexes_[x]) {
+                    for (unsigned long x = 0; x < Scene->SpotLights[i]->AttachedScriptIndexes_.size(); x++) {
+                        if (PayloadID ==  Scene->SpotLights[i]->AttachedScriptIndexes_[x]) {
                             SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'SpotLight', Already Attached").c_str(), 0);
                             Contains = true;
                             break;
@@ -419,7 +422,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     }
 
                     if (!Contains) {
-                        Scene->SpotLights[Index]->AttachedScriptIndexes_.push_back(PayloadID);
+                        Scene->SpotLights[i]->AttachedScriptIndexes_.push_back(PayloadID);
                     }
                 }
 
@@ -494,7 +497,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
     }
 
-    **/
+    
 
 
 }
