@@ -326,7 +326,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     GUI_Windowutil_DuplicateModel(SceneManager_, SceneIndex, i);
                 } if (ImGui::MenuItem("Replace All Instances")) {
                     Subwindow_ModelReplaceModal_->Activate(SceneIndex, i);
-                }
+                } if (Im)
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
                     Subwindow_DeleteModel_->DeleteModel(SceneIndex, i);
