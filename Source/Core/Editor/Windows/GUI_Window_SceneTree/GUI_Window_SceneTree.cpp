@@ -334,24 +334,6 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
 
 
-            // Context Menu
-            if (ImGui::BeginPopupContextItem("1")) {
-
-                if (ImGui::MenuItem("Rename")) {
-                    Subwindow_PointLightRenameModal_->Activate(SceneIndex, i);
-                }
-                if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicatePointLight(SceneManager_, SceneIndex, i);
-                }
-                ImGui::Separator();
-                if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeletePointLight_->DeletePointLight(SceneIndex, i);
-                }
-
-            ImGui::EndPopup();
-            }
-
-
             // If User Clicks Node, Update Object Index
             if (ImGui::IsItemClicked()) {
                 Scene->SelectedObject = IndexInSceneObjects;
@@ -386,7 +368,22 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             }
 
 
+            // Context Menu
+            if (ImGui::BeginPopupContextItem()) {
 
+                if (ImGui::MenuItem("Rename")) {
+                    Subwindow_PointLightRenameModal_->Activate(SceneIndex, i);
+                }
+                if (ImGui::MenuItem("Duplicate")) {
+                    GUI_Windowutil_DuplicatePointLight(SceneManager_, SceneIndex, i);
+                }
+                ImGui::Separator();
+                if (ImGui::MenuItem("Delete")) {
+                    Subwindow_DeletePointLight_->DeletePointLight(SceneIndex, i);
+                }
+
+            ImGui::EndPopup();
+            }
 
 
 
@@ -405,25 +402,6 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                 TreeFlags |= ImGuiTreeNodeFlags_Selected;
             }
             ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
-
-
-            // Context Menu
-            if (ImGui::BeginPopupContextItem("2")) {
-
-                if (ImGui::MenuItem("Rename")) {
-                    Subwindow_DirectionalLightRenameModal_->Activate(SceneIndex, i);
-                }
-                if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicateDirectionalLight(SceneManager_, SceneIndex, i);
-                }
-                ImGui::Separator();
-                if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeleteDirectionalLight_->DeleteDirectionalLight(SceneIndex, i);
-                }
-
-            ImGui::EndPopup();
-            }
-
 
 
             // If User Clicks Node, Update Object Index
@@ -460,6 +438,22 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             }
 
 
+            // Context Menu
+            if (ImGui::BeginPopupContextItem()) {
+
+                if (ImGui::MenuItem("Rename")) {
+                    Subwindow_DirectionalLightRenameModal_->Activate(SceneIndex, i);
+                }
+                if (ImGui::MenuItem("Duplicate")) {
+                    GUI_Windowutil_DuplicateDirectionalLight(SceneManager_, SceneIndex, i);
+                }
+                ImGui::Separator();
+                if (ImGui::MenuItem("Delete")) {
+                    Subwindow_DeleteDirectionalLight_->DeleteDirectionalLight(SceneIndex, i);
+                }
+
+            ImGui::EndPopup();
+            }
 
 
 
@@ -515,7 +509,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
             // Context Menu
-            if (ImGui::BeginPopupContextItem("3")) {
+            if (ImGui::BeginPopupContextItem()) {
 
                 if (ImGui::MenuItem("Rename")) {
                     Subwindow_SpotLightRenameModal_->Activate(SceneIndex, i);
