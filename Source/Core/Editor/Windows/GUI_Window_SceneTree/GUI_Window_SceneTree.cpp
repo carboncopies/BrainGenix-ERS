@@ -242,7 +242,8 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
     if (ModelTree) {
 
-        for (unsigned int i = 0; i < Scene->Models.size(); i++) {
+        unsigned int ModelListSize = Scene->Models.size();
+        for (unsigned int i = 0; i < ModelListSize; i++) {
 
             unsigned long IndexInSceneObjects = ModelIndexes[i];
 
