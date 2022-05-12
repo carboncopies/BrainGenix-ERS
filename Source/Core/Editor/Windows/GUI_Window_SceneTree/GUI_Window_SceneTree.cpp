@@ -88,7 +88,7 @@ void Window_SceneTree::Draw() {
                 for (int SceneIndex = 0; (long)SceneIndex < (long)SceneManager_->Scenes_.size(); SceneIndex++) {
 
                     // Setup Tree Flags
-                    ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnArrow;
+                    ImGuiTreeNodeFlags NodeFlags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
                     if (SceneIndex == ActiveScene) {
                         NodeFlags |= ImGuiTreeNodeFlags_Selected;
                         NodeFlags |= ImGuiTreeNodeFlags_DefaultOpen;
