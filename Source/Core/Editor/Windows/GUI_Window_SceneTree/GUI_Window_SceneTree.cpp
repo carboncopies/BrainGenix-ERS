@@ -250,12 +250,15 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                         std::string NameToTestAgainst = SceneManager_->Scenes_[SceneIndex]->Models[x]->Name;
 
                         if (SortedName == NameToTestAgainst) {
-                            
+                            SortedList.push_back(SceneManager_->Scenes_[SceneIndex]->Models[x]);
+                            break;
                         }
 
                     }
 
                 }
+                SceneManager_->Scenes_[SceneIndex]->Models = SortedList;
+
 
             }
 
