@@ -512,14 +512,14 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             if (ImGui::BeginPopupContextItem()) {
 
                 if (ImGui::MenuItem("Rename")) {
-                    Subwindow_SpotLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
+                    Subwindow_SpotLightRenameModal_->Activate(SceneIndex, i);
                 }
                 if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicateSpotLight(SceneManager_, SceneIndex, Scene->SceneObjects_[i].Index_);
+                    GUI_Windowutil_DuplicateSpotLight(SceneManager_, SceneIndex, i);
                 }
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeleteSpotLight_->DeleteSpotLight(SceneIndex, Scene->SceneObjects_[i].Index_);
+                    Subwindow_DeleteSpotLight_->DeleteSpotLight(SceneIndex, i);
                 }
 
             ImGui::EndPopup();
