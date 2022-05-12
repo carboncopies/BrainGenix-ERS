@@ -59,6 +59,9 @@ private:
     Cursors3D* Cursors3D_; /**<Pointer to Cursors3D Instance*/
     bool FirstFrame_ = true; /**<Bool Indicating if It's the first frame*/
 
+
+
+
     std::unique_ptr<Subwindow_SceneRenameModal> Subwindow_SceneRenameModal_; /**<Scene Rename Modal Instance*/
     std::unique_ptr<Subwindow_ModelRenameModal> Subwindow_ModelRenameModal_; /**<Model Rename Modal Instance*/
     std::unique_ptr<Subwindow_PointLightRenameModal> Subwindow_PointLightRenameModal_; /**<PointLight Rename Modal Instance*/
