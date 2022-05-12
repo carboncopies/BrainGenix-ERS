@@ -414,27 +414,27 @@ void main() {
 
 
     // ---- Calculate Lighting Contributions ---- //
-    vec4 Lo = vec4(0.0f);
+    vec3 Lo = vec3(0.0f);
 
     // Calculate Directional Lights
     for (int i = 0; i < NumberDirectionalLights; i++) {
-        Lo += vec4(PBRDirectionalLight(DirectionalLights[i], ViewDir, Reflectance, Model), 1.0f);
+        Lo += PBRDirectionalLight(DirectionalLights[i], ViewDir, Reflectance, Model);
     }
 
     // Calculate Point Lights
     for (int i = 0; i < NumberPointLights; i++) {
-        Lo += vec4(PBRPointLight(PointLights[i], ViewDir, Reflectance, Model), 1.0f);
+        Lo += PBRPointLight(PointLights[i], ViewDir, Reflectance, Model);
     }
 
     // Calculate Spot Lights
     for(int i = 0; i < NumberSpotLights; ++i) {
-        Lo += vec4(PBRSpotLight(SpotLights[i], ViewDir, Reflectance, Model), 1.0f);
+        Lo += PBRSpotLight(SpotLights[i], ViewDir, Reflectance, Model);
     }
 
     // ambient lighting (note that the next IBL tutorial will replace 
     // this ambient lighting with environment lighting).
     vec4 Ambient = vec4(0.03) * Model.Albedo * Model.AO;
-    vec4 Color = Ambient + Lo;
+    vec4 Color = Ambient + vec4(Lo, 1.0f);
 
 
      // Add Emissive Texture
@@ -450,6 +450,7 @@ void main() {
         FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
 }
+
 
 
 
