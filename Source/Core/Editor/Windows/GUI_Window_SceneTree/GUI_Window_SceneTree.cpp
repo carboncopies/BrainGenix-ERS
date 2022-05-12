@@ -333,7 +333,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     std::string BaseName = SceneManager_->Scenes_[SceneIndex]->Models[i]->Name;
                     long CurrentNumber = 1;
 
-                    // Rename
+                    // Rename And Incriment Current Number
                     for (unsigned int x = 0; x < SceneManager_->Scenes_[SceneIndex]->Models.size(); x++) {
                         long AssetIDToCheck = SceneManager_->Scenes_[SceneIndex]->Models[x]->AssetID;
                         if (AssetIDToCheck == AssetIDToMatch) {
