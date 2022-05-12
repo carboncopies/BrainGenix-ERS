@@ -223,9 +223,9 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
     // Draw Model Entries
-    if (ImGui::TreeNodeEx("Models", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow)) {
 
-        if (ImGui::BeginPopupContextWindow()) {
+
+    if (ImGui::BeginPopupContextWindow()) {
 
             if (ImGui::MenuItem("Sort Alphabetically")) {
 
@@ -237,8 +237,11 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
             }
 
-        ImGui::EndPopup();
-        }
+    ImGui::EndPopup();
+    }
+    if (ImGui::TreeNodeEx("Models", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow)) {
+
+
 
 
         for (unsigned int i = 0; i < Scene->Models.size(); i++) {
