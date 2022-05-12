@@ -225,7 +225,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     // Draw Model Entries
     bool ModelTree = ImGui::TreeNodeEx("Models", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow);
 
-    if (ImGui::BeginPopupContextWindow()) {
+    if (ImGui::BeginPopupContextWindow("Models Context Menu")) {
 
             if (ImGui::MenuItem("Sort Models Alphabetically")) {
 
