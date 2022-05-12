@@ -212,7 +212,6 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
 
-
         // Handle Drag/Drops
         if (Scene->SceneObjects_[i].Type_ == std::string("Model")) {
 
