@@ -442,14 +442,14 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             if (ImGui::BeginPopupContextItem()) {
 
                 if (ImGui::MenuItem("Rename")) {
-                    Subwindow_DirectionalLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
+                    Subwindow_DirectionalLightRenameModal_->Activate(SceneIndex, i);
                 }
                 if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicateDirectionalLight(SceneManager_, SceneIndex, Scene->SceneObjects_[i].Index_);
+                    GUI_Windowutil_DuplicateDirectionalLight(SceneManager_, SceneIndex, i);
                 }
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeleteDirectionalLight_->DeleteDirectionalLight(SceneIndex, Scene->SceneObjects_[i].Index_);
+                    Subwindow_DeleteDirectionalLight_->DeleteDirectionalLight(SceneIndex, i);
                 }
 
             ImGui::EndPopup();
