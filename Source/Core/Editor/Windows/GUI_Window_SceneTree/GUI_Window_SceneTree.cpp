@@ -191,6 +191,20 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     std::vector<ERS_STRUCT_SceneObject> PointLights;
     std::vector<ERS_STRUCT_SceneObject> DirectionalLights;
     std::vector<ERS_STRUCT_SceneObject> SpotLights;
+
+    for (unsigned long i = 0; i < Scene->SceneObjects_.size(); i++) {
+
+        if (Scene->SceneObjects_[i].Type_ == "Model") {
+            Models.push_back(Scene->SceneObjects_[i]);
+        } else if (Scene->SceneObjects_[i].Type_ == "PointLight") {
+            PointLights.push_back(Scene->SceneObjects_[i]);
+        } else if (Scene->SceneObjects_[i].Type_ == "DirectionalLight") {
+            DirectionalLights.push_back(Scene->SceneObjects_[i]);
+        } else if (Scene->SceneObjects_[i].Type_ == "SpotLight") {
+            SpotLights.push_back(Scene->SceneObjects_[i]);
+        }
+
+    }
     
     
 
