@@ -114,8 +114,12 @@ void Window_SceneTree::Draw() {
                         }
                         if (ImGui::MenuItem("Sort Alphabetically")) {
 
+                            // First, Create List Of Model Names
 
-                            
+                            // Next, Sort List Of Model Names
+
+                            // Then, Re-Order Based On Sorted Model Name List
+
                         }
 
 
