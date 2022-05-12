@@ -187,7 +187,10 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
     // Draw Model Entries
-    ImGui::TreeNodeEx("Models", ImGuiTreeNodeFlags_OpenOnDoubleClick);
+    if (ImGui::TreeNodeEx("Models", ImGuiTreeNodeFlags_OpenOnDoubleClick)) {
+
+    ImGui::TreePop();
+    }
     
 
 
