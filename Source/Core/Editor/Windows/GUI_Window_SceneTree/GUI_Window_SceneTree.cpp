@@ -418,14 +418,14 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             if (ImGui::BeginPopupContextItem()) {
 
                 if (ImGui::MenuItem("Rename")) {
-                    Subwindow_PointLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
+                    Subwindow_DirectionalLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
                 if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicatePointLight(SceneManager_, SceneIndex, Scene->SceneObjects_[i].Index_);
+                    GUI_Windowutil_DuplicateDirectionalLight(SceneManager_, SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeletePointLight_->DeletePointLight(SceneIndex, Scene->SceneObjects_[i].Index_);
+                    Subwindow_DeleteDirectionalLight_->DeleteDirectionalLight(SceneIndex, Scene->SceneObjects_[i].Index_);
                 }
 
             }
@@ -502,16 +502,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
             } else if (Scene->SceneObjects_[i].Type_ == std::string("DirectionalLight")) {
-                if (ImGui::MenuItem("Rename")) {
-                    Subwindow_DirectionalLightRenameModal_->Activate(SceneIndex, Scene->SceneObjects_[i].Index_);
-                }
-                if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicateDirectionalLight(SceneManager_, SceneIndex, Scene->SceneObjects_[i].Index_);
-                }
-                ImGui::Separator();
-                if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeleteDirectionalLight_->DeleteDirectionalLight(SceneIndex, Scene->SceneObjects_[i].Index_);
-                }
+
 
             } else if (Scene->SceneObjects_[i].Type_ == std::string("SpotLight")) {
                 if (ImGui::MenuItem("Rename")) {
