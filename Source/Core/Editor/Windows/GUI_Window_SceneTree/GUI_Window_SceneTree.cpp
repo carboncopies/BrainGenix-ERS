@@ -258,6 +258,7 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
                 }
                 SceneManager_->Scenes_[SceneIndex]->Models = SortedList;
+                SceneManager_->Scenes_[SceneIndex]->HasSelectionChanged = true;
 
 
             }
