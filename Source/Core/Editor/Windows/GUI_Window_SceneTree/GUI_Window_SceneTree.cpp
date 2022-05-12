@@ -192,27 +192,6 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         for (unsigned int i = 0; i < Scene->Models.size(); i++) {
 
 
-        // Get Name Of Object
-        const char* ObjectName = Scene->SceneObjects_[i].Label_.c_str();
-
-        // Setup Node Flags
-        ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
-        if ((unsigned long)SelectedSceneObjectIndex == i) {
-            TreeFlags |= ImGuiTreeNodeFlags_Selected;
-        }
-
-        // Create Tree Node
-        ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
-
-
-        // If User Clicks Node, Update Object Index
-        if (ImGui::IsItemClicked()) {
-            Scene->SelectedObject = i;
-            Scene->HasSelectionChanged = true;
-        }
-
-
-
         }
 
     ImGui::TreePop();
