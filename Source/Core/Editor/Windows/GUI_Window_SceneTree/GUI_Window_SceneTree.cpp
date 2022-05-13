@@ -326,6 +326,22 @@ void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     GUI_Windowutil_DuplicateModel(SceneManager_, SceneIndex, i);
                 } if (ImGui::MenuItem("Replace All Instances")) {
                     Subwindow_ModelReplaceModal_->Activate(SceneIndex, i);
+                } if (ImGui::MenuItem("Auto Number Assets Of This Type")) {
+
+                    // Get Reference Info
+                    long AssetIDToMatch = SceneManager_->Scenes_[SceneIndex]->Models[i]->AssetID;
+                    std::string BaseName = SceneManager_->Scenes_[SceneIndex]->Models[i]->Name;
+                    long CurrentNumber = 1;
+
+                    // Rename And Incriment Current Number
+                    for (unsigned int x = 0; x < SceneManager_->Scenes_[SceneIndex]->Models.size(); x++) {
+                        long AssetIDToCheck = SceneManager_->Scenes_[SceneIndex]->Models[x]->AssetID;
+                        if (AssetIDToCheck == AssetIDToMatch) {
+                            SceneManager_->Scenes_[SceneIndex]->Models[x]->Name = BaseName+std::to_string(CurrentNumber);
+                            CurrentNumber++;
+                        }
+                    }
+
                 }
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
