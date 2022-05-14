@@ -54,9 +54,7 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
 
 
 
-    bool HasAmbient = false;
     bool HasAmbientOcclusion = false;
-    bool HasBaseColor = false;
     bool HasDiffuse = false;
     bool HasDiffuseRoughness = false;
     bool HasDisplacement = false;
