@@ -75,18 +75,10 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
             Number = std::to_string(DiffuseHandle++);
             Type = 3;
             HasDiffuse = true;
-        } else if(Name == "texture_diffuse_roughness") {
-            Number = std::to_string(DiffuseRoughnessHandle++);
-            Type = 4;
-            HasDiffuseRoughness = true;
         } else if(Name == "texture_displacement") {
             Number = std::to_string(DisplacementHandle++);
             Type = 5;
             HasDisplacement = true;
-        } else if(Name == "texture_emission_color") {
-            Number = std::to_string(EmissionColorHandle++);
-            Type = 6;
-            HasEmissionColor = true;
         } else if(Name == "texture_emissive") {
             Number = std::to_string(EmissiveHandle++);
             Type = 7;
@@ -95,38 +87,18 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
             Number = std::to_string(HeightHandle++);
             Type = 8;
             HasHeight = true;
-        } else if(Name == "texture_lightmap") {
-            Number = std::to_string(LightmapHandle++);
-            Type = 9;
-            HasLightmap = true;
         } else if(Name == "texture_metalness") {
             Number = std::to_string(MetalnessHandle++);
             Type = 10;
             HasMetalness = true;
-        } else if(Name == "texture_normal_camera") {
-            Number = std::to_string(NormalCameraHandle++);
-            Type = 11;
-            HasNormalCamera = true;
         } else if(Name == "texture_normals") {
             Number = std::to_string(NormalsHandle++);
             Type = 12;
             HasNormals = true;
-        } else if(Name == "texture_opacity") {
-            Number = std::to_string(OpacityHandle++);
-            Type = 13;
-            HasOpacity = true;
-        } else if(Name == "texture_reflection") {
-            Number = std::to_string(RelfectionHandle++);
-            Type = 14;
-            HasRelfection = true;
         } else if(Name == "texture_shininess") {
             Number = std::to_string(ShininessHandle++);
             Type = 15;
             HasShininess = true;
-        } else if(Name == "texture_specular") {
-            Number = std::to_string(SpecularHandle++);
-            Type = 16;
-            HasSpecular = true;
         }
 
         glUniform1i(glGetUniformLocation(Shader->ShaderProgram, (Name + Number).c_str()), Type);
