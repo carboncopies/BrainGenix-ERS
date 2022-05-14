@@ -73,31 +73,31 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
             HasAmbientOcclusion = true;
         } else if(Name == "texture_diffuse") {
             Number = std::to_string(DiffuseHandle++);
-            Type = 3;
+            Type = 2;
             HasDiffuse = true;
         } else if(Name == "texture_displacement") {
             Number = std::to_string(DisplacementHandle++);
-            Type = 5;
+            Type = 3;
             HasDisplacement = true;
         } else if(Name == "texture_emissive") {
             Number = std::to_string(EmissiveHandle++);
-            Type = 7;
+            Type = 4;
             HasEmissive = true;
         } else if(Name == "texture_height") {
             Number = std::to_string(HeightHandle++);
-            Type = 8;
+            Type = 5;
             HasHeight = true;
         } else if(Name == "texture_metalness") {
             Number = std::to_string(MetalnessHandle++);
-            Type = 10;
+            Type = 6;
             HasMetalness = true;
         } else if(Name == "texture_normals") {
             Number = std::to_string(NormalsHandle++);
-            Type = 12;
+            Type = 7;
             HasNormals = true;
         } else if(Name == "texture_shininess") {
             Number = std::to_string(ShininessHandle++);
-            Type = 15;
+            Type = 8;
             HasShininess = true;
         }
 
