@@ -9,8 +9,6 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
 
     Shader->SetMat4("model", Mesh->ModelMatrix);
 
-
-    
     unsigned int AmbientOcclusionHandle = 1;
     unsigned int DiffuseHandle = 1;
     unsigned int DisplacementHandle = 1;
