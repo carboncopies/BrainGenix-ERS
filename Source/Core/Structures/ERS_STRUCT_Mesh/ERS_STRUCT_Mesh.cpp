@@ -63,62 +63,35 @@ void ERS_STRUCT_Mesh::SetupMesh() {
 
 
     // Reset Then Update Texture "Has" Parameters
-    HasAmbient_ = false;
     HasAmbientOcclusion_ = false;
-    HasBaseColor_ = false;
     HasDiffuse_ = false;
-    HasDiffuseRoughness_ = false;
     HasDisplacement_ = false;
-    HasEmissionColor_ = false;
     HasEmissive_ = false;
     HasHeight_ = false;
-    HasLightmap_ = false;
     HasMetalness_ = false;
-    HasNormalCamera_ = false;
     HasNormals_ = false;
-    HasOpacity_ = false;
-    HasReflection_ = false;
     HasShininess_ = false;
-    HasSpecular_ = false;
 
     for (int i = 0; i < (long)TextureNames.size(); i++) {
 
         std::string Name = TextureNames[i];
 
-        if (Name == "texture_ambient")
-            HasAmbient_ = true;
-        else if(Name == "texture_ambient_occlusion")
+        if(Name == "texture_ambient_occlusion")
             HasAmbientOcclusion_ = true;
-        else if(Name == "texture_base_color")
-            HasBaseColor_ = true;
         else if(Name == "texture_diffuse")
             HasDiffuse_ = true;
-        else if(Name == "texture_diffuse_roughness")
-            HasDiffuseRoughness_ = true;
         else if(Name == "texture_displacement")
             HasDisplacement_ = true;
-        else if(Name == "texture_emission_color")
-            HasEmissionColor_ = true;
         else if(Name == "texture_emissive")
             HasEmissive_ = true;
         else if(Name == "texture_height")
             HasHeight_ = true;
-        else if(Name == "texture_lightmap")
-            HasLightmap_ = true;
         else if(Name == "texture_metalness")
             HasMetalness_ = true;
-        else if(Name == "texture_normal_camera")
-            HasNormalCamera_ = true;
         else if(Name == "texture_normals")
             HasNormals_ = true;
-        else if(Name == "texture_opacity")
-            HasOpacity_ = true;
-        else if(Name == "texture_reflection")
-            HasReflection_ = true;
         else if(Name == "texture_shininess")
             HasShininess_ = true;
-        else if(Name == "texture_specular")
-            HasSpecular_ = true;
     }
 
 
