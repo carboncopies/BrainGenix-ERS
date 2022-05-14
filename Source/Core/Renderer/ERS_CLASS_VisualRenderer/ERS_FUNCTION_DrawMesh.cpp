@@ -34,23 +34,14 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
     // Reset All Textures To Defaults
     unsigned int ShaderProgram = Shader->ShaderProgram;
     unsigned int ResetTexID = OpenGLDefaults->DefaultTexture_;
-    ERS_FUNCTION_ResetMeshTexture("texture_ambient1", 0, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_ambient_occlusion1", 1, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_base_color1", 2, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_diffuse1", 3, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_diffuse_roughness1", 4, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_displacement1", 5, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_emission_color1", 6, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_emissive1", 7, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_height1", 8, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_lightmap1", 9, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_metalness1", 10, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_normal_camera1", 11, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_normals1", 12, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_opacity1", 13, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_reflection1", 14, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_shininess1", 15, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_specular1", 16, ShaderProgram, ResetTexID);
 
 
 
