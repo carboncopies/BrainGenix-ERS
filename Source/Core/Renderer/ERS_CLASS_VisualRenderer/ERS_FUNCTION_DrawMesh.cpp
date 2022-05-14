@@ -35,13 +35,13 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
     unsigned int ShaderProgram = Shader->ShaderProgram;
     unsigned int ResetTexID = OpenGLDefaults->DefaultTexture_;
     ERS_FUNCTION_ResetMeshTexture("texture_ambient_occlusion1", 1, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_diffuse1", 3, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_displacement1", 5, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_emissive1", 7, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_height1", 8, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_metalness1", 10, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_normals1", 12, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_shininess1", 15, ShaderProgram, ResetTexID);
+    ERS_FUNCTION_ResetMeshTexture("texture_diffuse1", 2, ShaderProgram, ResetTexID);
+    ERS_FUNCTION_ResetMeshTexture("texture_displacement1", 3, ShaderProgram, ResetTexID);
+    ERS_FUNCTION_ResetMeshTexture("texture_emissive1", 4, ShaderProgram, ResetTexID);
+    ERS_FUNCTION_ResetMeshTexture("texture_height1", 5, ShaderProgram, ResetTexID);
+    ERS_FUNCTION_ResetMeshTexture("texture_metalness1", 6, ShaderProgram, ResetTexID);
+    ERS_FUNCTION_ResetMeshTexture("texture_normals1", 7, ShaderProgram, ResetTexID);
+    ERS_FUNCTION_ResetMeshTexture("texture_shininess1", 8, ShaderProgram, ResetTexID);
 
 
 
@@ -67,18 +67,10 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
         int Type = 0;
 
         // Detect Type
-        if (Name == "texture_ambient") {
-            Number = std::to_string(AmbientHandle++);
-            Type = 0;
-            HasAmbient = true;
-        } else if(Name == "texture_ambient_occlusion") {
+        if(Name == "texture_ambient_occlusion") {
             Number = std::to_string(AmbientOcclusionHandle++);
             Type = 1;
             HasAmbientOcclusion = true;
-        } else if(Name == "texture_base_color") {
-            Number = std::to_string(BaseColorHandle++);
-            Type = 2;
-            HasBaseColor = true;
         } else if(Name == "texture_diffuse") {
             Number = std::to_string(DiffuseHandle++);
             Type = 3;
