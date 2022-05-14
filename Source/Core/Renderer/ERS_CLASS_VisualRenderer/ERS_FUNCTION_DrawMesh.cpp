@@ -110,23 +110,14 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
     }
 
     // Set Uniforms
-    Shader->SetBool("HasAmbient", HasAmbient);
     Shader->SetBool("HasAmbientOcclusion", HasAmbientOcclusion);
-    Shader->SetBool("HasBaseColor", HasBaseColor);
     Shader->SetBool("HasDiffuse", HasDiffuse);
-    Shader->SetBool("HasDiffuseRoughness", HasDiffuseRoughness);
     Shader->SetBool("HasDisplacement", HasDisplacement);
-    Shader->SetBool("HasEmissionColor", HasEmissionColor);
     Shader->SetBool("HasEmissive", HasEmissive);
     Shader->SetBool("HasHeight", HasHeight);
-    Shader->SetBool("HasLightmap", HasLightmap);
     Shader->SetBool("HasMetalness", HasMetalness);
-    Shader->SetBool("HasNormalCamera", HasNormalCamera);
     Shader->SetBool("HasNormals", HasNormals);
-    Shader->SetBool("HasOpacity", HasOpacity);
-    Shader->SetBool("HasReflection", HasRelfection);
     Shader->SetBool("HasShininess", HasShininess);
-    Shader->SetBool("HasSpecular", HasSpecular);
     
 
 
