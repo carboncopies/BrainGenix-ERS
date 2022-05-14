@@ -56,19 +56,12 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
 
     bool HasAmbientOcclusion = false;
     bool HasDiffuse = false;
-    bool HasDiffuseRoughness = false;
     bool HasDisplacement = false;
-    bool HasEmissionColor = false;
     bool HasEmissive = false;
     bool HasHeight = false;
-    bool HasLightmap = false;
     bool HasMetalness = false;
-    bool HasNormalCamera = false;
     bool HasNormals = false;
-    bool HasOpacity = false;
-    bool HasRelfection = false;
     bool HasShininess = false;
-    bool HasSpecular = false;
 
 
     // Iterate Through Textures
