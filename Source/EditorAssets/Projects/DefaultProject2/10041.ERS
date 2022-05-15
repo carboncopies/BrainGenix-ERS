@@ -91,7 +91,7 @@ uniform sampler2D texture_shininess1;
 uniform sampler2D texture_emissive1;
 uniform sampler2D texture_metalness1;
 uniform sampler2D texture_ambientocclusion1;
-uniform float Shinyness;
+
 
 
 uniform bool HasAmbient;
@@ -131,7 +131,15 @@ uniform float Gamma_;
 const float PI = 3.14159265358979;
 
 vec3 GetNormalFromMap(sampler2D Normal) {
-    vec3 TangentNormal = texture(Normal, Object.TexCoords).xyz * 2.0f - 1.0f;
+
+    // Ensure That Textures Are Present/Valid, If Not, Provide Fallback
+    vec3 SampledColor = texture(Normal, Object.TexCoords).xyz;
+    if (!HasNormals || (SampledColor == vec3(0.0f))) {
+       SampledColor = vec3(0.5f, 0.5f, 1.0f);
+    }
+
+    // Use Texture Data To Calculate Normal Data
+    vec3 TangentNormal = SampledColor * 2.0f - 1.0f;
 
     vec3 Q1 = dFdx(Object.WorldPos);
     vec3 Q2 = dFdy(Object.WorldPos);
@@ -144,7 +152,6 @@ vec3 GetNormalFromMap(sampler2D Normal) {
     mat3 TBN = mat3(T,B,N);
 
     return normalize(TBN * TangentNormal);
-
 }
 
 
@@ -237,7 +244,8 @@ STRUCT_SampledData SetSampledData() {
 
     // Handle Shininess (Inverse Of Roughness)
     if (HasShininess) {
-        SampledData.Roughness = 1.0f - texture(texture_shininess1, Object.TexCoords).r;
+        SampledData.Roughness = texture(texture_shininess1, Object.TexCoords).r;
+
     } else {
         SampledData.Roughness = 0.5f;
     }
@@ -357,7 +365,7 @@ vec3 PBRDirectionalLight(STRUCT_DirectionalLight Light, vec3 ViewDir, vec3 Refle
 
     // Diffuse/Specular Components
     float Diffuse = max(dot(Model.Normal, LightDirectionVector), 0.0f);
-    float Specular = pow(max(dot(ViewDir, ReflectionDirectionVector), 0.0f), Shinyness);
+    float Specular = pow(max(dot(ViewDir, ReflectionDirectionVector), 0.0f), Model.Roughness);
 
     // calculate per-light radiance
     vec3 L = normalize(Light.Direction);
@@ -443,6 +451,9 @@ void main() {
         FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
 }
+
+
+
 
 
 
