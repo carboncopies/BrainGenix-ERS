@@ -28,6 +28,7 @@
 #include <ERS_STRUCT_ProjectUtils.h>
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_Viewport.h>
+#include <ERS_STRUCT_DepthMap.h>
 
 
 
