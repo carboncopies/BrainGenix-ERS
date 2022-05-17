@@ -65,6 +65,18 @@ private:
     void BindToDepthMap(ERS_STRUCT_DepthMap* Input);
 
 
+    /**
+     * @brief This function renders shadows for a particular light to the given depth map.
+     * This function is designed to be used in shadow maps.
+     * 
+     * @param Target 
+     * @param Pos 
+     * @param Rot 
+     * @param Scale 
+     */
+    void UpdateShadowMap(ERS_STRUCT_DepthMap* Target, glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale = glm::vec3(0.0f, 1.0f, 0.0f));
+
+
 public:
 
     /**
