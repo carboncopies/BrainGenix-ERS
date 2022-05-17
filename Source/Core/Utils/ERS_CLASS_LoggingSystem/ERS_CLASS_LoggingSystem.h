@@ -60,6 +60,15 @@ private:
     void ColorizeText(std::string Message, int LogLevel);
 
 
+    /**
+     * @brief Add item to system log. 
+     * 
+     * @param LogItem Text to log.
+     * @param LogLevel Importance of log entry (consult Config.yaml for more info).
+     */
+    void LogItem(const char* LogItem, int LogLevel=5);
+
+
 public:
 
     std::vector<std::string> LogMessages_; /**<List Of Messages*/
@@ -85,19 +94,8 @@ public:
      */
     ~ERS_CLASS_LoggingSystem();
 
-    /**
-     * @brief Add item to system log. 
-     * 
-     * @param LogItem Text to log.
-     * @param LogLevel Importance of log entry (consult Config.yaml for more info).
-     */
-    void Log(const char* LogItem, int LogLevel=5);
 
-    /**
-     * @brief Log that takes std::string instead of const char ptr
-     * 
-     */
-    void Log(std::string LogMessage, int LogLevel=5);
+
 
     /**
      * @brief Overload allowing the user to enable/disable the log by passing in a bool to the enable param
