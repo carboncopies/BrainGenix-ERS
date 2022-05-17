@@ -21,6 +21,9 @@ struct ERS_STRUCT_DepthMap {
 
     unsigned int FrameBufferObjectID; /**<OpenGL Depth Map FBO ID*/
     unsigned int DepthMapTextureID; /**<OpenGL Depth Map Texture ID*/
-
+    
+    int ResolutionX; /**<Width In Pixels Of The Depth Map*/
+    int ResolutionY; /**<Height In Pixels Of The Depth Map*/
+    
 
 };
