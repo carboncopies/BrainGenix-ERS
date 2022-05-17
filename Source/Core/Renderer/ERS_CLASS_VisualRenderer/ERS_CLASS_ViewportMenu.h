@@ -32,10 +32,10 @@
 
 
 /**
- * @brief This class renders any ui/overlay info onto the viewport as requested by the viewport struct.
+ * @brief This class renders any ui/Menu info onto the viewport as requested by the viewport struct.
  * 
  */
-class ERS_CLASS_ViewportOverlay {
+class ERS_CLASS_ViewportMenu {
 
 private:
 
@@ -46,23 +46,23 @@ private:
 public:
 
     /**
-     * @brief Construct a new ers class viewportoverlay object
+     * @brief Construct a new ers class viewportMenu object
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_ViewportOverlay(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    ERS_CLASS_ViewportMenu(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
 
     /**
-     * @brief Destroy the ers class viewportoverlay object
+     * @brief Destroy the ers class viewportMenu object
      * 
      */
-    ~ERS_CLASS_ViewportOverlay();
+    ~ERS_CLASS_ViewportMenu();
 
     /**
-     * @brief Draw the overlay on the viewport pointer passed in.
+     * @brief Draw the Menu on the viewport pointer passed in.
      * 
      * @param Viewport 
      */
-    void DrawOverlay(ERS_STRUCT_Viewport* Viewport);
+    void DrawMenu(ERS_STRUCT_Viewport* Viewport);
 
 };

@@ -2,30 +2,30 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_CLASS_ViewportOverlay.h>
+#include <ERS_CLASS_ViewportMenu.h>
 
 
-ERS_CLASS_ViewportOverlay::ERS_CLASS_ViewportOverlay(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+ERS_CLASS_ViewportMenu::ERS_CLASS_ViewportMenu(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
 
-    SystemUtils_->Logger_->Log("Initializing Viewport Overlay Subsystem", 5);
+    SystemUtils_->Logger_->Log("Initializing Viewport Menu Subsystem", 5);
 
 }
 
 
-ERS_CLASS_ViewportOverlay::~ERS_CLASS_ViewportOverlay() {
+ERS_CLASS_ViewportMenu::~ERS_CLASS_ViewportMenu() {
 
-    SystemUtils_->Logger_->Log("Viewport Overlay Subsystem Destructor Invoked", 6);
+    SystemUtils_->Logger_->Log("Viewport Menu Subsystem Destructor Invoked", 6);
 
 }
 
 
-void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
+void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport) {
 
 
-    // Draw Scene Info Overlay
+    // Draw Scene Info Menu
     if (Viewport->ShowSceneInfo_) {
 
         // Generate Info
@@ -58,7 +58,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
     }
 
 
-    // Show System Resources Info Overlay
+    // Show System Resources Info Menu
     if (Viewport->ShowResourceInfo_) {
 
         // Generate Info
@@ -79,7 +79,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
     }
 
-    // Show Loading Time Info Overlay
+    // Show Loading Time Info Menu
     if (Viewport->ShowLoadingTimeInfo_) {
 
         // Generate Info
