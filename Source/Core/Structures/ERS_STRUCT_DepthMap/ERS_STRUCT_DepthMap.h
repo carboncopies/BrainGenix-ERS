@@ -13,14 +13,14 @@
 
 
 /**
- * @brief This class stores an rgb color value.
+ * @brief This struct stores the opengl ids for a full depth map 'object'. 
+ * Ie: the FBO id, Texture ID, etc.
  * 
  */
-struct ERS_STRUCT_RGBColor {
+struct ERS_STRUCT_DepthMap {
 
-    int Red; /**<Red Component*/
-    int Green; /**<Green Component*/
-    int Blue; /**<Blue Component*/
+    unsigned int FrameBufferObjectID; /**<OpenGL Depth Map FBO ID*/
+    unsigned int DepthMapTextureID; /**<OpenGL Depth Map Texture ID*/
 
 
 };
