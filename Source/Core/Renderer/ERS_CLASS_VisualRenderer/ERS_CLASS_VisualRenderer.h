@@ -28,6 +28,8 @@
 #include <ERS_CLASS_Grid.h>
 #include <ERS_CLASS_LightIconRenderer.h>
 #include <ERS_CLASS_MeshRenderer.h>
+#include <ERS_CLASS_ViewportOverlay.h>
+#include <ERS_CLASS_ViewportMenu.h>
 
 #include <ERS_SceneManager.h>
 #include <ERS_SceneLoader.h>
@@ -54,12 +56,17 @@ private:
 
     GLFWwindow *Window_; /**<GLFW Window Instance For Window Input To Viewports*/
     Cursors3D* Cursors3D_; /**<Setup 3D Cursor Class*/
-    long int FrameNumber_ = 0; /**<Frame counter, starts at 0*/
-    int ActiveViewportCursorIndex_; /**<The index of the viewport which the gizmo is being interacted with*/
+
     ERS_STRUCT_OpenGLDefaults* OpenGLDefaults_; /**<Pointer acquired from renderermanager*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils pointer, used to get info about scripts*/
 
     std::unique_ptr<ERS_CLASS_MeshRenderer> MeshRenderer_; /**<Instance Of The Mesh Renderer Class Used To Hancle The Actual Rendering Of All Meshes In The Given Scene*/
+    std::unique_ptr<ERS_CLASS_ViewportOverlay> ViewportOverlay_; /**<Class that handles overlaying ui elements and text onto the viewport when requested by the viewporr struct*/
+    std::unique_ptr<ERS_CLASS_ViewportMenu> ViewportMenu_; /**<Class that provides the viewport menu functionality in a convenient manner to the visualrenderer system*/
+
+    long int FrameNumber_ = 0; /**<Frame counter, starts at 0*/
+    int ActiveViewportCursorIndex_; /**<The index of the viewport which the gizmo is being interacted with*/
+
 
 public:
     
@@ -83,12 +90,6 @@ public:
 
 
 private:
-
-    /**
-     * @brief Initialize an opengl context for the viewport
-     * 
-     */
-    void InitializeOpenGL();
 
     /**
      * @brief Resize a viewport of specified index to the set width and height
@@ -121,19 +122,7 @@ private:
     void UpdateViewport(int Index, ERS_CLASS_SceneManager* SceneManager, float DeltaTime, bool DrawCursor = true);
 
 
-    /**
-     * @brief Draws the viewport's menu (enable/disable handled internally in this function)
-     * 
-     * @param Index 
-     */
-    void DrawViewportMenu(int Index, ERS_CLASS_SceneManager* SceneManager);
 
-    /**
-     * @brief Draw the overlays on the viewport for debugging info such as textures and fps.
-     * 
-     * @param Index 
-     */
-    void DrawViewportOverlay(int Index, ERS_CLASS_SceneManager* SceneManager);
 
     /**
      * @brief Returns the index of the shader with name that matches the name given. Will return 0 if the shader is not found.
