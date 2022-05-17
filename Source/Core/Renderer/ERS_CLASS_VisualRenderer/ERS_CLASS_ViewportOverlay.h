@@ -37,8 +37,13 @@
  */
 class ERS_CLASS_ViewportOverlay {
 
+private:
 
-    ERS_CLASS_ViewportOverlay();
+
+public:
+
+    
+    ERS_CLASS_ViewportOverlay(ERS_STRUCT_SystemUtils* SystemUtils);
     ~ERS_CLASS_ViewportOverlay();
 
 
