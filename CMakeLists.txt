@@ -95,6 +95,7 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Light)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_OpenGLDefaults)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_SceneObject)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Script)
+add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_DepthMap)
 
 add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_PythonInterpreterIntegration)
 
