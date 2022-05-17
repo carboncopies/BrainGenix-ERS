@@ -56,6 +56,14 @@ private:
      */
     ERS_STRUCT_DepthMap GenerateDepthMap(int ResolutionX = 2048, int ResolutionY = 2048, bool LogOutput = true);
 
+    /**
+     * @brief Setup The Depth Map For Rendering.
+     * This will bind to the depth map's framebuffer, clear the screen, and get map ready to be rendered to.
+     * 
+     * @param Input 
+     */
+    void BindToDepthMap(ERS_STRUCT_DepthMap* Input);
+
 
 public:
 

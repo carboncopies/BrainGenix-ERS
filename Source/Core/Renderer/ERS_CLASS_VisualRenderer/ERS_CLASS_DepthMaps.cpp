@@ -62,4 +62,5 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int R
 
     // Return Output
     return Output;
+
 }
