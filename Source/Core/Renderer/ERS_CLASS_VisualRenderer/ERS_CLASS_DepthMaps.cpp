@@ -21,3 +21,14 @@ ERS_CLASS_DepthMaps::~ERS_CLASS_DepthMaps() {
 
 }
 
+
+
+ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int ResolutionY, bool LogEnable) {
+
+    // 
+    ERS_STRUCT_DepthMap Output;
+
+
+
+
+}
