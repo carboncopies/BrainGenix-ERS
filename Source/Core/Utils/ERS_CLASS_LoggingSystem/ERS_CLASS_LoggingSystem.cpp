@@ -51,18 +51,18 @@ ERS_CLASS_LoggingSystem::~ERS_CLASS_LoggingSystem() {
 }
 
 
-void ERS_CLASS_LoggingSystem::Log(std::string Text, int LogLevel, bool Enable) {
+void ERS_CLASS_LoggingSystem::Log(std::string LogMessage, int LogLevel, bool Enable) {
 
     if (Enable) {
-        LogItem(Text.c_str(), LogLevel);
+        LogItem(LogMessage.c_str(), LogLevel);
     }
 
 }
 
-void ERS_CLASS_LoggingSystem::Log(const char* Text, int LogLevel, bool Enable) {
+void ERS_CLASS_LoggingSystem::Log(const char* LogMessage, int LogLevel, bool Enable) {
 
     if (Enable) {
-        LogItem(Text, LogLevel);
+        LogItem(LogMessage, LogLevel);
     }
 
 }
