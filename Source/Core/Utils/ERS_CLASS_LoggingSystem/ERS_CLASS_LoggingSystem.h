@@ -99,6 +99,15 @@ public:
      */
     void Log(std::string LogMessage, int LogLevel=5);
 
+    /**
+     * @brief Overload allowing the user to enable/disable the log by passing in a bool to the enable param
+     * 
+     * @param LogMessage 
+     * @param LogLevel 
+     * @param Enable 
+     */
+    void Log(std::string LogMessage, int LogLevel=5, bool Enable=true);
+
 };
 
 
