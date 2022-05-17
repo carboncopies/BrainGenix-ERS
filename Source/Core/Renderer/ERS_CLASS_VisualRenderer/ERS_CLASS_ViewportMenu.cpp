@@ -9,9 +9,9 @@ ERS_CLASS_ViewportMenu::ERS_CLASS_ViewportMenu(ERS_STRUCT_SystemUtils* SystemUti
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
-    GameStartTime_ = GamestartTime;
+    GameStartTime_ = GameStartTime;
     IsEditorMode_ = IsEditorMode;
-    
+
     SystemUtils_->Logger_->Log("Initializing Viewport Menu Subsystem", 5);
 
 }
