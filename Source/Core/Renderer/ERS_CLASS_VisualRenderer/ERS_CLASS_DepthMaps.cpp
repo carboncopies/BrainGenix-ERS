@@ -69,4 +69,8 @@ void ERS_CLASS_DepthMaps::BindToDepthMap(ERS_STRUCT_DepthMap* Input) {
 
 }
 
-void ERS_CLASS_DepthMaps::UpdateLightDepthMap()
+void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target,  glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
+
+
+    
+}
