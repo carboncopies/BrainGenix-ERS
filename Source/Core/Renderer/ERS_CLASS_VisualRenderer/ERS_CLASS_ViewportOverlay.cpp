@@ -5,10 +5,10 @@
 #include <ERS_CLASS_ViewportOverlay.h>
 
 
-ERS_CLASS_ViewportOverlay::ERS_CLASS_ViewportOverlay(ERS_STRUCT_SystemUtils* SystemUtils,  ERS_CLASS_SceneManager* SceneManager) {
+ERS_CLASS_ViewportOverlay::ERS_CLASS_ViewportOverlay(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
     SystemUtils_ = SystemUtils;
-    SceneManager_ = SceneManager;
+    ProjectUtils_ = ProjectUtils;
 
     SystemUtils_->Logger_->Log("Initializing Viewport Overlay Subsystem", 5);
 
