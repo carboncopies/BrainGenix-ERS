@@ -29,7 +29,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
     if (Viewport->ShowSceneInfo_) {
 
         // Generate Info
-        unsigned long NumModels = ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models.size();
+        unsigned long NumModels = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models.size();
         unsigned long NumVerts = 0;
         unsigned long NumIndices = 0;
         unsigned long NumTextures = 0;
@@ -37,12 +37,12 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
         unsigned long InstancedModels = 0;
 
         for (unsigned long i = 0; i < NumModels; i++) {
-            if (ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models[i]->Enabled) {
-                NumVerts += ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models[i]->TotalVertices_;
-                NumIndices += ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models[i]->TotalIndices_;
-                NumTextures += ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models[i]->OpenGLTextureIDs_.size();
+            if (ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->Enabled) {
+                NumVerts += ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalVertices_;
+                NumIndices += ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalIndices_;
+                NumTextures += ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->OpenGLTextureIDs_.size();
                 TotalModels ++;
-                if (!ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models[i]->IsTemplateModel) {
+                if (!ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->IsTemplateModel) {
                     InstancedModels++;
                 }
             }
@@ -62,14 +62,14 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
     if (Viewport->ShowResourceInfo_) {
 
         // Generate Info
-        unsigned long NumModels = ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models.size();
+        unsigned long NumModels = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models.size();
         unsigned long InMemoryVerts = 0;
         unsigned long InMemoryIndices = 0;
 
         for (unsigned long i = 0; i < NumModels; i++) {
-            if (ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models[i]->IsTemplateModel) {
-                InMemoryVerts += ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models[i]->TotalVertices_;
-                InMemoryIndices += ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models[i]->TotalIndices_;
+            if (ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->IsTemplateModel) {
+                InMemoryVerts += ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalVertices_;
+                InMemoryIndices += ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalIndices_;
             }
         }
 
@@ -83,19 +83,19 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
     if (Viewport->ShowLoadingTimeInfo_) {
 
         // Generate Info
-        unsigned long NumModels = ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models.size();
+        unsigned long NumModels = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models.size();
         double LongestLoadingTime = 0;
         double ShortestLoadingTime = 65535;
         double AverageLoadingTime = 0;
 
         for (unsigned long i = 0; i < NumModels; i++) {
-            if (ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models[i]->TotalLoadingTime_ > LongestLoadingTime) {
-                LongestLoadingTime = ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models[i]->TotalLoadingTime_;
+            if (ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_ > LongestLoadingTime) {
+                LongestLoadingTime = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_;
             }
-            if (ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models[i]->TotalLoadingTime_ < ShortestLoadingTime && ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models[i]->TotalLoadingTime_ != 0.0f) {
-                ShortestLoadingTime = ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models[i]->TotalLoadingTime_;
+            if (ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_ < ShortestLoadingTime && ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_ != 0.0f) {
+                ShortestLoadingTime = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_;
             }
-            AverageLoadingTime += ProjectUtils_->SceneManager_-->Scenes_[ProjectUtils_->SceneManager_-->ActiveScene_]->Models[i]->TotalLoadingTime_;
+            AverageLoadingTime += ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_;
         }
 
         AverageLoadingTime /= NumModels;
