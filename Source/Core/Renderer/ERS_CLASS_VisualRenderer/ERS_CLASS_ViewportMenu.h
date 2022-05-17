@@ -42,6 +42,9 @@ private:
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to systemtuils resource*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to project utils instance*/
 
+    bool* IsEditorMode_; /**<Pointer to bool setting editor mode to enabled or disablewd*/
+    float* GamestartTime_; /**<Pointer to float setting the glfw time when the game clock started*/
+
 
 public:
 
@@ -50,7 +53,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_ViewportMenu(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    ERS_CLASS_ViewportMenu(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, float* GameStartTime, bool* IsEditor);
 
     /**
      * @brief Destroy the ers class viewportMenu object
