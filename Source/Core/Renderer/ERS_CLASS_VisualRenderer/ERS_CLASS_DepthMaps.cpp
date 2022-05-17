@@ -14,14 +14,11 @@ ERS_CLASS_DepthMaps::ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ER
 
 }
 
-
 ERS_CLASS_DepthMaps::~ERS_CLASS_DepthMaps() {
 
     SystemUtils_->Logger_->Log("Viewport Overlay Subsystem Destructor Invoked", 6);
 
 }
-
-
 
 ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int ResolutionY, bool LogEnable) {
 
