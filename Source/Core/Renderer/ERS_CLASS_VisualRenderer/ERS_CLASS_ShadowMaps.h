@@ -62,6 +62,12 @@ public:
 
 
 
+    /**
+     * @brief This function will update the shadow maps of all lights in the scene.
+     * This function checks the scenemanger and other shared classes to get info about the scene.
+     * 
+     */
+    void UpdateShadowMaps();
 
 
 };
