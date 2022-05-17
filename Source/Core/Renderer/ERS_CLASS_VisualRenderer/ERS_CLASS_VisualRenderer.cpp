@@ -64,14 +64,7 @@ void ERS_CLASS_VisualRenderer::SetDefaultShader(int ShaderID) {
 
 void ERS_CLASS_VisualRenderer::InitializeOpenGL() {
 
-    // Setup GLAD
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        SystemUtils_->Logger_->Log("Failed To Initialize GLAD", 10);
-    }
 
-    // Setup OpenGL For Blending (For Transparency Issues)
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_BLEND);
 
 }
 

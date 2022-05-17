@@ -157,6 +157,18 @@ void RendererManager::InitializeGLFW() {
     glfwMakeContextCurrent(Window_);
     glfwSwapInterval(0);
 
+
+
+    // Setup GLAD
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        SystemUtils_->Logger_->Log("Failed To Initialize GLAD", 10);
+    }
+
+    // Setup OpenGL For Blending (For Transparency Issues)
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+
+
 }
 
 void RendererManager::UpdateLoop(float DeltaTime) { 
