@@ -23,6 +23,9 @@ ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* Syste
     SystemUtils_->Logger_->Log("Initializing Viewport Overlay Subsystem", 5);
     ViewportOverlay_ = std::make_unique<ERS_CLASS_ViewportOverlay>(SystemUtils_, ProjectUtils_);
 
+    SystemUtils_->Logger_->Log("Initializing Viewport Menu Subsystem", 5);
+    ViewportMenu_ = std::make_unique<ERS_CLASS_ViewportMenu>(SystemUtils_, ProjectUtils_, &GameStartTime_, &IsEditorMode_, &Shaders_);
+
 
     // DEFAULT MODES, CHANGE THIS LATER! --------------------------------
     IsEditorMode_ = true;
