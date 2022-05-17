@@ -29,7 +29,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
     if (Viewport->ShowSceneInfo_) {
 
         // Generate Info
-        unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
+        unsigned long NumModels = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models.size();
         unsigned long NumVerts = 0;
         unsigned long NumIndices = 0;
         unsigned long NumTextures = 0;
@@ -37,12 +37,12 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
         unsigned long InstancedModels = 0;
 
         for (unsigned long i = 0; i < NumModels; i++) {
-            if (SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->Enabled) {
-                NumVerts += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalVertices_;
-                NumIndices += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalIndices_;
-                NumTextures += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->OpenGLTextureIDs_.size();
+            if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[i]->Enabled) {
+                NumVerts += SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[i]->TotalVertices_;
+                NumIndices += SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[i]->TotalIndices_;
+                NumTextures += SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[i]->OpenGLTextureIDs_.size();
                 TotalModels ++;
-                if (!SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->IsTemplateModel) {
+                if (!SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[i]->IsTemplateModel) {
                     InstancedModels++;
                 }
             }
@@ -62,14 +62,14 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
     if (Viewport->ShowResourceInfo_) {
 
         // Generate Info
-        unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
+        unsigned long NumModels = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models.size();
         unsigned long InMemoryVerts = 0;
         unsigned long InMemoryIndices = 0;
 
         for (unsigned long i = 0; i < NumModels; i++) {
-            if (SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->IsTemplateModel) {
-                InMemoryVerts += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalVertices_;
-                InMemoryIndices += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalIndices_;
+            if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[i]->IsTemplateModel) {
+                InMemoryVerts += SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[i]->TotalVertices_;
+                InMemoryIndices += SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[i]->TotalIndices_;
             }
         }
 
@@ -83,19 +83,19 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
     if (Viewport->ShowLoadingTimeInfo_) {
 
         // Generate Info
-        unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
+        unsigned long NumModels = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models.size();
         double LongestLoadingTime = 0;
         double ShortestLoadingTime = 65535;
         double AverageLoadingTime = 0;
 
         for (unsigned long i = 0; i < NumModels; i++) {
-            if (SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_ > LongestLoadingTime) {
-                LongestLoadingTime = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_;
+            if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_ > LongestLoadingTime) {
+                LongestLoadingTime = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_;
             }
-            if (SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_ < ShortestLoadingTime && SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_ != 0.0f) {
-                ShortestLoadingTime = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_;
+            if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_ < ShortestLoadingTime && SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_ != 0.0f) {
+                ShortestLoadingTime = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_;
             }
-            AverageLoadingTime += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_;
+            AverageLoadingTime += SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_;
         }
 
         AverageLoadingTime /= NumModels;
