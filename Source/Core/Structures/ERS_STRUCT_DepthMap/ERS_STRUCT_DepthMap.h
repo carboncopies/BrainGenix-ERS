@@ -16,6 +16,9 @@
  * @brief This struct stores the opengl ids for a full depth map 'object'. 
  * Ie: the FBO id, Texture ID, etc.
  * 
+ * Please Note: The depth maps are managed by 'ERS_CLASS_DepthMaps' not the light itself.
+ * The depth maps are created and rendered-to by that class.
+ * 
  */
 struct ERS_STRUCT_DepthMap {
 
