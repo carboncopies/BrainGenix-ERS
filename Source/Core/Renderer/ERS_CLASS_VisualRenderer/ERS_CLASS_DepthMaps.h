@@ -75,7 +75,7 @@ private:
      * @param Rot 
      * @param Scale 
      */
-    void UpdateDepthMap(ERS_STRUCT_DepthMap* Target, glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale = glm::vec3(0.0f, 1.0f, 0.0f));
+    void UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT_Shader* DepthShader, glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale = glm::vec3(0.0f, 1.0f, 0.0f));
 
 
 public:
