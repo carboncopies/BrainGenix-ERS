@@ -377,13 +377,13 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport) {
 
             // Run Option
             if (ImGui::MenuItem("Run With Editor", "F5")) {
-                IsEditorMode_ = false;
-                GameStartTime_ = glfwGetTime();
+                *IsEditorMode_ = false;
+                *GameStartTime_ = glfwGetTime();
             }
 
             // Stop Option
             if (ImGui::MenuItem("Stop", "Escape")) {
-                IsEditorMode_ = !IsEditorMode_;
+                *IsEditorMode_ = !IsEditorMode_;
             }
 
         ImGui::EndMenu();
@@ -395,11 +395,11 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport) {
 
     // Keybinds
     if (ImGui::IsKeyPressed(GLFW_KEY_F5)) {
-        IsEditorMode_ = false;
-        GameStartTime_ = glfwGetTime();
+        *IsEditorMode_ = false;
+        *GameStartTime_ = glfwGetTime();
     }
     if (ImGui::IsKeyPressed(GLFW_KEY_ESCAPE)) {
-        IsEditorMode_ = true;
+        *IsEditorMode_ = true;
     }
 
 
