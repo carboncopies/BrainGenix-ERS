@@ -84,6 +84,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
     DepthShader->MakeActive();
     DepthShader->SetMat4("ObjectSpaceMatrix", ObjectSpace);
     BindToDepthMap(Target);
-    
+    glClear(GL_DEPTH_BUFFER_BIT);
+    glActiveTexture(GL_TEXTURE0);
 
 }
