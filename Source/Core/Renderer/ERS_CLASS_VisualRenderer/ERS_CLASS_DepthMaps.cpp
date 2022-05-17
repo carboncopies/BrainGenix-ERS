@@ -48,8 +48,18 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int R
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT); 
+    SystemUtils_->Logger_->Log("Created Depth Map Texture", 3, LogEnable);
+
+    // Attach Depth Map Texture To Framebuffer
+    SystemUtils_->Logger_->Log("Attaching Depth Map Texture To Framebuffer", 4, LogEnable);
+    glBindFramebuffer(GL_FRAMEBUFFER, Output.FrameBufferObjectID);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, Output.DepthMapTextureID, 0);
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0); 
+    SystemUtils_->Logger_->Log("Finished Attaching Texture To Framebuffer", 3, LogEnable);
 
 
-
-
+    // Return Output
+    return Output;
 }
