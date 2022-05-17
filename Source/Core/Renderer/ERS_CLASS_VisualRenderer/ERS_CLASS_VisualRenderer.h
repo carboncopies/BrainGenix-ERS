@@ -60,7 +60,7 @@ private:
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils pointer, used to get info about scripts*/
 
     std::unique_ptr<ERS_CLASS_MeshRenderer> MeshRenderer_; /**<Instance Of The Mesh Renderer Class Used To Hancle The Actual Rendering Of All Meshes In The Given Scene*/
-
+    std::unique_ptr<ERS_CLASS_ViewportOverlay> ViewportOverlay_; /**<Class that handles overlaying ui elements and text onto the viewport when requested by the viewporr struct*/
 
     long int FrameNumber_ = 0; /**<Frame counter, starts at 0*/
     int ActiveViewportCursorIndex_; /**<The index of the viewport which the gizmo is being interacted with*/
