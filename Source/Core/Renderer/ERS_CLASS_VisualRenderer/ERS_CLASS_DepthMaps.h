@@ -51,9 +51,9 @@ private:
      * 
      * @param ResolutionX 
      * @param ResolutionY 
-     * @return unsigned int 
+     * @return ERS_STRUCT_DepthMap 
      */
-    unsigned int GenerateDepthMap(int ResolutionX = 2048, int ResolutionY = 2048);
+    ERS_STRUCT_DepthMap GenerateDepthMap(int ResolutionX = 2048, int ResolutionY = 2048);
 
 
 public:
