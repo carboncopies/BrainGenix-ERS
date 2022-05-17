@@ -59,4 +59,18 @@ public:
     ~ERS_CLASS_DepthMaps();
 
 
+    /**
+     * @brief Checks the number of depth maps vs the number of lights and makes sure that the number of depth maps is equal to the number of lights.
+     * Will generate more depth maps and remove unused ones by calling internal functions in this class.
+     * 
+     */
+    void UpdateNumberOfDepthMaps();
+
+    /**
+     * @brief Iterates over all lights in the scene and renders all depth maps.
+     * 
+     */
+    void UpdateDepthMaps();
+
+
 };
