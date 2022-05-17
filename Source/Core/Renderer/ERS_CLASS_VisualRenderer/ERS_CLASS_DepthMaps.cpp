@@ -69,7 +69,7 @@ void ERS_CLASS_DepthMaps::BindToDepthMap(ERS_STRUCT_DepthMap* Input) {
 
 }
 
-void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target,  glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
+void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT_Shader* DepthShader, glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
 
     // Setup Variables
     glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
@@ -81,6 +81,9 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target,  glm::vec3
     ObjectSpace = ObjectProjection * ObjectView;
 
     // Render With Depth Shader
+    DepthShader->MakeActive();
+    DepthShader->SetMat4("ObjectSpaceMatrix", ObjectSpace);
+    BindToDepthMap(Target);
     
 
 }
