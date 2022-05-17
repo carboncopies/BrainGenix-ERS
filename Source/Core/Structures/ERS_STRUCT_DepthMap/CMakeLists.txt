@@ -4,25 +4,25 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_STRUCT_RGBColor
+add_library(ERS_STRUCT_DepthMap
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_RGBColor.cpp"
+            "ERS_STRUCT_DepthMap.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_RGBColor.h"
+            "ERS_STRUCT_DepthMap.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_RGBColor
+target_link_libraries(ERS_STRUCT_DepthMap
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_RGBColor
+target_link_libraries(ERS_STRUCT_DepthMap
     )
 
 
-target_include_directories(ERS_STRUCT_RGBColor PUBLIC ./)
-set_target_properties(ERS_STRUCT_RGBColor PROPERTIES LINKER_LANGUAGE CXX)
+target_include_directories(ERS_STRUCT_DepthMap PUBLIC ./)
+set_target_properties(ERS_STRUCT_DepthMap PROPERTIES LINKER_LANGUAGE CXX)
