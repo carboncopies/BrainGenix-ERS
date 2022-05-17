@@ -39,12 +39,29 @@ class ERS_CLASS_ViewportOverlay {
 
 private:
 
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to systemtuils resource*/
+
 
 public:
 
-    
+    /**
+     * @brief Construct a new ers class viewportoverlay object
+     * 
+     * @param SystemUtils 
+     */
     ERS_CLASS_ViewportOverlay(ERS_STRUCT_SystemUtils* SystemUtils);
+
+    /**
+     * @brief Destroy the ers class viewportoverlay object
+     * 
+     */
     ~ERS_CLASS_ViewportOverlay();
 
+    /**
+     * @brief Draw the overlay on the viewport pointer passed in.
+     * 
+     * @param Viewport 
+     */
+    void DrawOverlay(ERS_STRUCT_Viewport* Viewport);
 
 };
