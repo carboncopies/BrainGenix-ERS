@@ -45,7 +45,7 @@ private:
     std::map<int, std::shared_ptr<ERS_STRUCT_Shader>>* Shaders_; /**<Pointer to map containing shader information*/
 
     bool* IsEditorMode_; /**<Pointer to bool setting editor mode to enabled or disablewd*/
-    float* GamestartTime_; /**<Pointer to float setting the glfw time when the game clock started*/
+    float* GameStartTime_; /**<Pointer to float setting the glfw time when the game clock started*/
 
 
 public:
