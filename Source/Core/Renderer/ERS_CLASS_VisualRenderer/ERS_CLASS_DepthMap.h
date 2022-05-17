@@ -35,7 +35,7 @@
  * @brief This class renders any ui/overlay info onto the viewport as requested by the viewport struct.
  * 
  */
-class ERS_CLASS_ViewportOverlay {
+class ERS_CLASS_DepthMap {
 
 private:
 
@@ -46,23 +46,17 @@ private:
 public:
 
     /**
-     * @brief Construct a new ers class viewportoverlay object
+     * @brief Construct a new ers class DepthMap object
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_ViewportOverlay(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    ERS_CLASS_DepthMap(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
 
     /**
-     * @brief Destroy the ers class viewportoverlay object
+     * @brief Destroy the ers class DepthMap object
      * 
      */
-    ~ERS_CLASS_ViewportOverlay();
+    ~ERS_CLASS_DepthMap();
 
-    /**
-     * @brief Draw the overlay on the viewport pointer passed in.
-     * 
-     * @param Viewport 
-     */
-    void DrawOverlay(ERS_STRUCT_Viewport* Viewport);
 
 };
