@@ -5,7 +5,7 @@
 #include <ERS_CLASS_ViewportMenu.h>
 
 
-ERS_CLASS_ViewportMenu::ERS_CLASS_ViewportMenu(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, float* GameStartTime, bool* IsEditorMode, std::map<int, std::shared_ptr<ERS_STRUCT_Shader>>* Shaders) {
+ERS_CLASS_ViewportMenu::ERS_CLASS_ViewportMenu(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, double* GameStartTime, bool* IsEditorMode, std::map<int, std::shared_ptr<ERS_STRUCT_Shader>>* Shaders) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
