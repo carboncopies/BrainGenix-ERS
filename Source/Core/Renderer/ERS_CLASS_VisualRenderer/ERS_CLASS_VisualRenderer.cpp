@@ -14,9 +14,6 @@ ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* Syste
     Window_ = Window;
     Cursors3D_ = Cursors3D;
 
-    SystemUtils_->Logger_->Log("Initializing OpenGL", 5);
-    InitializeOpenGL();
-
     SystemUtils_->Logger_->Log("Initializing MeshRenderer Class", 5);
     MeshRenderer_ = std::make_unique<ERS_CLASS_MeshRenderer>(SystemUtils_);
 
