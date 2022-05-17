@@ -5,11 +5,13 @@
 #include <ERS_CLASS_ViewportMenu.h>
 
 
-ERS_CLASS_ViewportMenu::ERS_CLASS_ViewportMenu(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+ERS_CLASS_ViewportMenu::ERS_CLASS_ViewportMenu(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, float* GameStartTime, bool* IsEditorMode) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
-
+    GameStartTime_ = GamestartTime;
+    IsEditorMode_ = IsEditorMode;
+    
     SystemUtils_->Logger_->Log("Initializing Viewport Menu Subsystem", 5);
 
 }

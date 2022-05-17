@@ -53,7 +53,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_ViewportMenu(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, float* GameStartTime, bool* IsEditor);
+    ERS_CLASS_ViewportMenu(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, float* GameStartTime, bool* IsEditorMode);
 
     /**
      * @brief Destroy the ers class viewportMenu object
