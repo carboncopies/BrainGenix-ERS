@@ -71,6 +71,16 @@ void ERS_CLASS_DepthMaps::BindToDepthMap(ERS_STRUCT_DepthMap* Input) {
 
 void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target,  glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
 
+    // Setup Variables
+    glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
+    float NearPlane = 1.0f, FarPlane = 7.5f;
 
+    // Calculate Project, View, Space Matrices
+    ObjectProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, NearPlane, FarPlane);
+    ObjectView = glm::lookAt(Pos, glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    ObjectSpace = ObjectProjection * ObjectView;
+
+    // Render With Depth Shader
     
+
 }
