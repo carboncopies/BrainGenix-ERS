@@ -28,6 +28,7 @@
 #include <ERS_CLASS_Grid.h>
 #include <ERS_CLASS_LightIconRenderer.h>
 #include <ERS_CLASS_MeshRenderer.h>
+#include <ERS_CLASS_ViewportOverlay.h>
 
 #include <ERS_SceneManager.h>
 #include <ERS_SceneLoader.h>
