@@ -13,10 +13,12 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_CLASS_Framebuffer.cpp"
             "ERS_CLASS_InputProcessor.cpp"
             "ERS_CLASS_MeshRenderer.cpp"
+            "ERS_CLASS_ShadowMaps.cpp"
             "ERS_FUNCTION_CheckForMeshTransparency.cpp"
             "ERS_FUNCTION_MeshTransparencySort.cpp"
             "ERS_FUNCTION_DrawMesh.cpp"
             "ERS_FUNCTION_ResetMeshTexture.cpp"
+            
 
             # Add Header Files (.h)
             "ERS_CLASS_VisualRenderer.h"
@@ -25,6 +27,7 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_CLASS_Framebuffer.h"
             "ERS_CLASS_InputProcessor.h"
             "ERS_CLASS_MeshRenderer.h"
+            "ERS_CLASS_ShadowMaps.h"
             "ERS_FUNCTION_CheckForMeshTransparency.h"
             "ERS_FUNCTION_MeshTransparencySort.h"
             "ERS_FUNCTION_DrawMesh.h"
