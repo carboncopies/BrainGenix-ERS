@@ -25,9 +25,9 @@ ERS_CLASS_DepthMaps::~ERS_CLASS_DepthMaps() {
 
 ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int ResolutionY, bool LogEnable) {
 
-    if (LogEnable) {
-        SystemUtils_->Logger_->Log(std::string("Creating Depth Map With Resolution Of ") + std::to_string(ResolutionX) + std::string("x") + std::to_string(ResolutionY), 5);
-    }
+
+    SystemUtils_->Logger_->Log(std::string("Creating Depth Map With Resolution Of ") + std::to_string(ResolutionX) + std::string("x") + std::to_string(ResolutionY), 5, LogEnable);
+
 
     ERS_STRUCT_DepthMap Output;
 
