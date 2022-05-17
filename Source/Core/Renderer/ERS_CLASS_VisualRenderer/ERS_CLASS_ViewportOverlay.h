@@ -40,6 +40,7 @@ class ERS_CLASS_ViewportOverlay {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to systemtuils resource*/
+    ERS_CLASS_SceneManager* SceneManager_; /**<Pointer to scenemanager instance used by overlay*/
 
 
 public:
@@ -49,7 +50,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_ViewportOverlay(ERS_STRUCT_SystemUtils* SystemUtils);
+    ERS_CLASS_ViewportOverlay(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_SceneManager* SceneManager);
 
     /**
      * @brief Destroy the ers class viewportoverlay object

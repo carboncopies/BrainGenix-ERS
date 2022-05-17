@@ -5,9 +5,10 @@
 #include <ERS_CLASS_ViewportOverlay.h>
 
 
-ERS_CLASS_ViewportOverlay::ERS_CLASS_ViewportOverlay(ERS_STRUCT_SystemUtils* SystemUtils) {
+ERS_CLASS_ViewportOverlay::ERS_CLASS_ViewportOverlay(ERS_STRUCT_SystemUtils* SystemUtils,  ERS_CLASS_SceneManager* SceneManager) {
 
     SystemUtils_ = SystemUtils;
+    SceneManager_ = SceneManager;
 
     SystemUtils_->Logger_->Log("Initializing Viewport Overlay Subsystem", 5);
 
@@ -25,7 +26,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
 
     // Draw Scene Info Overlay
-    if (Viewports_[Index]->ShowSceneInfo_) {
+    if (Viewport->ShowSceneInfo_) {
 
         // Generate Info
         unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
@@ -58,7 +59,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
 
     // Show System Resources Info Overlay
-    if (Viewports_[Index]->ShowResourceInfo_) {
+    if (Viewport->ShowResourceInfo_) {
 
         // Generate Info
         unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
@@ -79,7 +80,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
     }
 
     // Show Loading Time Info Overlay
-    if (Viewports_[Index]->ShowLoadingTimeInfo_) {
+    if (Viewport->ShowLoadingTimeInfo_) {
 
         // Generate Info
         unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
