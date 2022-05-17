@@ -92,12 +92,6 @@ public:
 private:
 
     /**
-     * @brief Initialize an opengl context for the viewport
-     * 
-     */
-    void InitializeOpenGL();
-
-    /**
      * @brief Resize a viewport of specified index to the set width and height
      * 
      * @param Index 
