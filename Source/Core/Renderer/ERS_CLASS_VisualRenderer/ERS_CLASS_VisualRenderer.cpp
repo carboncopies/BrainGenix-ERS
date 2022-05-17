@@ -291,7 +291,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         if (ImGui::IsKeyPressed(GLFW_KEY_GRAVE_ACCENT)) {
             Viewports_[Index]->MenuEnabled = !Viewports_[Index]->MenuEnabled;
         }
-        DrawViewportMenu(Index, SceneManager);
+        ViewportMenu_->DrawMenu(Viewports_[Index].get());
 
 
 
