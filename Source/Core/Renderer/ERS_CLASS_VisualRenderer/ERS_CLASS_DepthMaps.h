@@ -35,7 +35,7 @@
  * @brief This class renders any ui/overlay info onto the viewport as requested by the viewport struct.
  * 
  */
-class ERS_CLASS_DepthMap {
+class ERS_CLASS_DepthMaps {
 
 private:
 
@@ -46,17 +46,17 @@ private:
 public:
 
     /**
-     * @brief Construct a new ers class DepthMap object
+     * @brief Construct a new ers class DepthMaps object
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_DepthMap(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
 
     /**
-     * @brief Destroy the ers class DepthMap object
+     * @brief Destroy the ers class DepthMaps object
      * 
      */
-    ~ERS_CLASS_DepthMap();
+    ~ERS_CLASS_DepthMaps();
 
 
 };
