@@ -43,6 +43,18 @@ private:
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to project utils instance*/
 
 
+    /**
+     * @brief Generates a depth map with the given resolution.
+     * This is usually used for shadows later on in the rendering process.
+     * Will also default to a 2048x2048 depth map by default. 
+     * 
+     * @param ResolutionX 
+     * @param ResolutionY 
+     * @return unsigned int 
+     */
+    unsigned int GenerateDepthMap(int ResolutionX = 2048, int ResolutionY = 2048);
+
+
 public:
 
     /**
