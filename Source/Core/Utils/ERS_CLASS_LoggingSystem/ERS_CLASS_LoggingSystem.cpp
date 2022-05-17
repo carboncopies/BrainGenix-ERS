@@ -51,6 +51,14 @@ ERS_CLASS_LoggingSystem::~ERS_CLASS_LoggingSystem() {
 }
 
 
+void ERS_CLASS_LoggingSystem::Log(std::string LogItem, int LogLevel, bool Enable) {
+
+    if (Enable) {
+        Log(LogItem.c_str(), LogLevel);
+    }
+
+}
+
 void ERS_CLASS_LoggingSystem::Log(std::string LogItem, int LogLevel) {
 
     Log(LogItem.c_str(), LogLevel);
