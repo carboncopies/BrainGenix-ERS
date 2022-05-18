@@ -82,8 +82,9 @@ public:
     /**
      * @brief Iterates over all lights in the scene and renders all depth maps.
      * 
+     * @param DepthShader 
      */
-    void UpdateDepthMaps();
+    void UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader);
 
 
     /**
