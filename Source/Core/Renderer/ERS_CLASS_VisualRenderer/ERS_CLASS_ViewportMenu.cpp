@@ -242,7 +242,6 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport) {
         ImGui::EndMenu();
         }
 
-
         // Add Items Menu
         if (ImGui::BeginMenu("Add")) {
 
@@ -276,7 +275,6 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport) {
 
         ImGui::EndMenu();
         }
-
 
         // Grid Snapping Control Menu
         if (ImGui::BeginMenu("Grid Snapping")) {
