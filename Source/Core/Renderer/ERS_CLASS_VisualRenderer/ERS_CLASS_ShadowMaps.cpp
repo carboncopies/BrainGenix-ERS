@@ -14,7 +14,6 @@ ERS_CLASS_ShadowMaps::ERS_CLASS_ShadowMaps(ERS_STRUCT_SystemUtils* SystemUtils, 
     SystemUtils_->Logger_->Log("Initializing Shadow Map Subsystem", 5);
     ERS_CLASS_DepthMaps_ = std::make_unique<ERS_CLASS_DepthMaps>(SystemUtils_, ProjectUtils_, Renderer_); 
 
-    DeleteMe = ERS_CLASS_DepthMaps_->GenerateDepthMap();
 
 }
 
