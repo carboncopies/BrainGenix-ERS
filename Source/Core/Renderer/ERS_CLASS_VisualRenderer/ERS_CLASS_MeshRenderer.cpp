@@ -73,13 +73,20 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
 
 void ERS_CLASS_MeshRenderer::RenderSceneNoTextures(ERS_STRUCT_Scene* Scene) {
 
+
+
+    // Sort Into Pesh Categories
+    std::vector<ERS_STRUCT_Mesh*> OpaqueMeshes;
+    std::vector<ERS_STRUCT_Mesh*> TransparentMeshes;
+    ERS_FUNCTION_MeshTransparencySort(&OpaqueMeshes, &TransparentMeshes, Scene);
+
     // Draw All Opaque Meshes
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
-        glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
-        glActiveTexture(OpenGLDefaults->DefaultTexture_);
-        ERS_FUNCTION_DrawMesh(OpaqueMeshes[i], OpenGLDefaults, Shader);
+        ERS_FUNCTION_DrawMeshNoTextures(OpaqueMeshes[i]);
     }
 
+
+    // ToDO: Make It So That The Transparency Of The Mesh Is Taken Into Account, Rather Than Being completely Bypassed Like It Is Now.
 
 
     // // Render Transparent Meshes In Right Order
