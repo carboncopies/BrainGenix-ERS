@@ -69,6 +69,7 @@ void ERS_CLASS_DepthMaps::BindToDepthMap(ERS_STRUCT_DepthMap* Input) {
 
     glViewport(0, 0, Input->ResolutionX, Input->ResolutionY);
     glBindFramebuffer(GL_FRAMEBUFFER, Input->FrameBufferObjectID);
+    glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, Input->DepthMapTextureID);
 
 }
