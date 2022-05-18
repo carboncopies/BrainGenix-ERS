@@ -423,6 +423,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         glActiveTexture(GL_TEXTURE9);
         glBindTexture(GL_TEXTURE_2D,  SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[0]->DepthMap.DepthMapTextureID);
 
+        OpenGLDefaults_->DefaultTexture_ = DepthMap.DepthMapTextureID;
 
         // Render
         MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, Shaders_[ShaderIndex].get());
