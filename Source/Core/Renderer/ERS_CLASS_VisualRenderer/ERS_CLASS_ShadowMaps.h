@@ -43,6 +43,7 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to systemtuils resource*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to project utils instance*/
+    ERS_STRUCT_Shader* DepthMapShader_; /**<Pointer to depth map shader*/
 
     std::map<int, std::shared_ptr<ERS_STRUCT_Shader>>* Shaders_; /**<Pointer to map of shader pointers and shader program ids*/
 
