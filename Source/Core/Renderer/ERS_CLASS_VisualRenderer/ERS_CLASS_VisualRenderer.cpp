@@ -84,7 +84,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
 
     // Generate Shadows
-    ShadowMaps_->UpdateShadowMaps(DepthMapShader_);
+    //ShadowMaps_->UpdateShadowMaps(DepthMapShader_);
 
 
     // Setup Vars
@@ -417,10 +417,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
 
-
-
-
-
         // Render
         //SceneManager->Render(OpenGLDefaults_, Shaders_[ShaderIndex]);
         MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, Shaders_[ShaderIndex].get());
@@ -430,7 +426,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         if (Viewports_[Index]->LightIcons) {
             Viewports_[Index]->LightIconRenderer->Draw(Viewports_[Index]->Camera.get(), SceneManager);
         }
-
 
 
 
