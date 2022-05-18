@@ -89,4 +89,8 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
     glClear(GL_DEPTH_BUFFER_BIT);
     glActiveTexture(GL_TEXTURE0);
 
+    ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+    ERS_STRUCT_OpenGLDefaults GLDefault;
+    Renderer_->RenderScene(TargetScene, GLDefault, DepthShader);
+
 }
