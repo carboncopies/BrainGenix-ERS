@@ -24,12 +24,10 @@
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_CLASS_DepthMaps.h>
 
-#include <ERS_SceneManager.h>
-
 #include <ERS_STRUCT_ProjectUtils.h>
 #include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_Viewport.h>
 #include <ERS_STRUCT_DepthMap.h>
+#include <ERS_STRUCT_Shader.h>
 
 
 
@@ -45,7 +43,6 @@ private:
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to project utils instance*/
     ERS_STRUCT_Shader* DepthMapShader_; /**<Pointer to depth map shader*/
 
-    std::map<int, std::shared_ptr<ERS_STRUCT_Shader>>* Shaders_; /**<Pointer to map of shader pointers and shader program ids*/
 
     std::unique_ptr<ERS_CLASS_DepthMaps> ERS_CLASS_DepthMaps_; /**<Instance of the depth map class*/
 
@@ -57,7 +54,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_ShadowMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, std::map<int, std::shared_ptr<ERS_STRUCT_Shader>>* Shaders);
+    ERS_CLASS_ShadowMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_Shader* DepthMapShader);
 
     /**
      * @brief Destroy the ers class ShadowMaps object
