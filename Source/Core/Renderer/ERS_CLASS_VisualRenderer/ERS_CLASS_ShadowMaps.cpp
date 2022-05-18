@@ -20,3 +20,10 @@ ERS_CLASS_ShadowMaps::~ERS_CLASS_ShadowMaps() {
 
 }
 
+
+void ERS_CLASS_ShadowMaps::UpdateShadowMaps() {
+
+    
+
+
+}
