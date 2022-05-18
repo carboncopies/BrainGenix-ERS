@@ -535,7 +535,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     SystemUtils_->Logger_->Log(std::string(std::string("Creating New Viewport '") + ViewportName + std::string("'")).c_str(), 5);
 
     // Set Depth Shader For Shadow System
-    DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthShader"), &Shaders_)].get();
+    DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthMap"), &Shaders_)].get();
 
 
     // Create Viewport Struct
