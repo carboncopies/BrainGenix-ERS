@@ -88,7 +88,7 @@ public:
      * 
      * @param Scene 
      */
-    void RenderSceneNoTextures(ERS_STRUCT_Scene*, Scene ERS_STRUCT_Shader* Shader);
+    void RenderSceneNoTextures(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Shader* Shader);
 
 
 };
