@@ -84,7 +84,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
 
     // Generate Shadows
-    ShadowMaps_->UpdateShadowMaps();
+    ShadowMaps_->UpdateShadowMaps(DepthMapShader_);
 
 
     // Setup Vars
