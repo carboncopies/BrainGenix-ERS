@@ -45,6 +45,8 @@
 #include <ERS_STRUCT_OpenGLDefaults.h>
 #include <ERS_STRUCT_ProjectUtils.h>
 
+#include <ERS_FUNCTION_FindShaderByName.h>
+
 
 /**
  * @brief Handles viewport creation/deletion/rendering/updating.
