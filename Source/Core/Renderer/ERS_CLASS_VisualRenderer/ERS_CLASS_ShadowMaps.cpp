@@ -14,7 +14,7 @@ ERS_CLASS_ShadowMaps::ERS_CLASS_ShadowMaps(ERS_STRUCT_SystemUtils* SystemUtils, 
     SystemUtils_->Logger_->Log("Initializing Shadow Map Subsystem", 5);
     ERS_CLASS_DepthMaps_ = std::make_shared<ERS_CLASS_DepthMaps>(SystemUtils_, ProjectUtils_); 
 
-    DeleteMe = ERS_CLASS_DepthMaps_->
+    DeleteMe = ERS_CLASS_DepthMaps_->GenerateDepthMap();
 
 }
 
@@ -30,7 +30,7 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps() {
     unsigned int SceneIndex = ProjectUtils_->SceneManager_->ActiveScene_;
 
     for (unsigned int i = 0; i < ProjectUtils_->SceneManager_->Scenes_[SceneIndex]->DirectionalLights.size(); i++) {
-        ERS_CLASS_DepthMaps_->UpdateDepthMap()
+        ERS_CLASS_DepthMaps_->UpdateDepthMap(&DeleteMe, DepthMapShader_, ProjectUtils_->SceneManager_->Scenes_[SceneIndex]->DirectionalLights[i]->Pos, glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     }
 
 
