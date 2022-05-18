@@ -110,8 +110,11 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps() {
 
         // Check If Light Has DepthMap
         if (!Light->DepthMap.Initialized) {
-            
+            Light->DepthMap = GenerateDepthMap(2048, 2048);   
         }
+
+        // Render To Depth Map
+        
 
     } 
 
