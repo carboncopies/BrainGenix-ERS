@@ -428,13 +428,11 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
 
-        Shaders_[ShaderIndex]->SetInt("DepthMap", ShadowMaps_->DeleteMe.DepthMapTextureID);
-        glBindTexture(GL_TEXTURE_2D, ShadowMaps_->DeleteMe.DepthMapTextureID);
 
 
         // Render Framebuffer To Window
         ImGui::GetWindowDrawList()->AddImage(
-            (void*)(intptr_t)Viewports_[Index]->FramebufferColorObject,
+            (void*)(intptr_t)ShadowMaps_->DeleteMe.DepthMapTextureID,
             ImGui::GetCursorScreenPos(),
             ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x, ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
             ImVec2(0, 1),
