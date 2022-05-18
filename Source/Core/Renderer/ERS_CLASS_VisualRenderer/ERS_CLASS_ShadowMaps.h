@@ -46,7 +46,6 @@ private:
     ERS_CLASS_MeshRenderer* Renderer_; /**<Pointer to mesh renderer instance*/
 
 
-    ERS_STRUCT_DepthMap DeleteMe;
 
 
 
@@ -54,6 +53,9 @@ private:
 
 
 public:
+
+    ERS_STRUCT_DepthMap DeleteMe;
+
 
     /**
      * @brief Construct a new ers class ShadowMaps object
