@@ -12,6 +12,9 @@ ERS_CLASS_ShadowMaps::ERS_CLASS_ShadowMaps(ERS_STRUCT_SystemUtils* SystemUtils, 
 
     SystemUtils_->Logger_->Log("Initializing Viewport Overlay Subsystem", 5);
 
+    ERS_CLASS_DepthMaps_ = std::make_shared<ERS_CLASS_DepthMaps>(SystemUtils_, ProjectUtils_); 
+
+
 }
 
 ERS_CLASS_ShadowMaps::~ERS_CLASS_ShadowMaps() {
@@ -23,7 +26,7 @@ ERS_CLASS_ShadowMaps::~ERS_CLASS_ShadowMaps() {
 
 void ERS_CLASS_ShadowMaps::UpdateShadowMaps() {
 
-    
+
 
 
 }
