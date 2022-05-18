@@ -65,15 +65,6 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int R
 
 }
 
-void ERS_CLASS_DepthMaps::BindToDepthMap(ERS_STRUCT_DepthMap* Input) {
-
-    glViewport(0, 0, Input->ResolutionX, Input->ResolutionY);
-    glBindFramebuffer(GL_FRAMEBUFFER, Input->FrameBufferObjectID);
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, Input->DepthMapTextureID);
-
-}
-
 void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT_Shader* DepthShader, glm::vec3 Pos, bool Orthogonal) {
 
     // Setup Variables
