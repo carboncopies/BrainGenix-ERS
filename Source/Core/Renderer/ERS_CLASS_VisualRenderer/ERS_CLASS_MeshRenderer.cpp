@@ -71,7 +71,7 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
 }
 
 
-void ERS_CLASS_MeshRenderer::RenderSceneNoTextures(ERS_STRUCT_Scene* Scene, , ERS_STRUCT_Shader* Shader) {
+void ERS_CLASS_MeshRenderer::RenderSceneNoTextures(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Shader* Shader) {
 
 
 
