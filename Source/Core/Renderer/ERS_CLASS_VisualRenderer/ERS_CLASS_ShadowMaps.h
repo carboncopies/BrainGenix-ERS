@@ -56,7 +56,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_ShadowMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    ERS_CLASS_ShadowMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, std::map<int, std::shared_ptr<ERS_STRUCT_Shader>>* Shaders);
 
     /**
      * @brief Destroy the ers class ShadowMaps object
