@@ -147,11 +147,11 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Check If Light Has DepthMap
         if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap(2048, 2048);   
+            Light->DepthMap = GenerateDepthMap(1024, 1024);   
         }
 
         // Render To Depth Map
-        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, false); // set this to false later, debugging
+        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, true); // set this to false later, debugging
 
     } 
 
