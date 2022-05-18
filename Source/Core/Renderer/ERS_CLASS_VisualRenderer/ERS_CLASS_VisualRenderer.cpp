@@ -438,7 +438,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         // Render Framebuffer To Window
         ImGui::GetWindowDrawList()->AddImage(
-            (void*)(intptr_t)SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[0]->DepthMap.DepthMapTextureID,
+            (void*)(intptr_t)Viewports_[Index]->FramebufferColorObject,
             ImGui::GetCursorScreenPos(),
             ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x, ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
             ImVec2(0, 1),
