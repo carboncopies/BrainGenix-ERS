@@ -418,14 +418,14 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
 
-        glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram, "DepthMap"), 9);
-        glActiveTexture(GL_TEXTURE9);
+        glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram, "DepthMap"), 0);
+        glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D,  SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[0]->DepthMap.DepthMapTextureID);
 
 
         // Render
         //SceneManager->Render(OpenGLDefaults_, Shaders_[ShaderIndex]);
-        MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, Shaders_[ShaderIndex].get());
+        MeshRenderer_->RenderSceneNoTextures(SceneManager->Scenes_[SceneManager->ActiveScene_].get());//, OpenGLDefaults_, Shaders_[ShaderIndex].get());
         if (Viewports_[Index]->GridEnabled) {
             Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position_);
         }
