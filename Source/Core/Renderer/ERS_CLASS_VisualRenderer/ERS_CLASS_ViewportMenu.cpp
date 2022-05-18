@@ -39,6 +39,7 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport) {
             ImGui::MenuItem("Scene Info Overlay", nullptr, &Viewport->ShowSceneInfo_);
             ImGui::MenuItem("System Resources Overlay", nullptr, &Viewport->ShowResourceInfo_);
             ImGui::MenuItem("Loading Time Overlay", nullptr, &Viewport->ShowLoadingTimeInfo_);
+            ImGui::MenuItem("Light Debug Overlay", nullptr, &Viewport->ShowLightInfo_);
 
             ImGui::Separator();
 
