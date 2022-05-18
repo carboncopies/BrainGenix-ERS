@@ -13,6 +13,7 @@
 #include <glm/glm.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
+#include <ERS_STRUCT_DepthMap.h>
 
 
 struct ERS_STRUCT_PointLight {
