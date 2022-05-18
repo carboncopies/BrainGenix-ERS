@@ -76,13 +76,13 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
     float NearPlane = 1.0f, FarPlane = 7.5f;
 
     // Calculate Project, View, Space Matrices
-    ObjectProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, NearPlane, FarPlane);
+    ObjectProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, NearPlane, FarPlane); // ortho models directional light source
     ObjectView = glm::lookAt(Pos, glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     ObjectSpace = ObjectProjection * ObjectView;
 
     // Render With Depth Shader
     DepthShader->MakeActive();
-    DepthShader->SetMat4("ObjectSpaceMatrix", ObjectSpace);
+    DepthShader->SetMat4("LightSpaceMatrix", ObjectSpace);
     BindToDepthMap(Target);
     glClear(GL_DEPTH_BUFFER_BIT);
     glActiveTexture(GL_TEXTURE0);
