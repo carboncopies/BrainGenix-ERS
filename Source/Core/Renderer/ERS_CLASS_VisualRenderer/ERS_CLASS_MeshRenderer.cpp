@@ -71,7 +71,7 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
 }
 
 
-void ERS_CLASS_MeshRenderer::RenderSceneNoTextures(ERS_STRUCT_Scene* Scene) {
+void ERS_CLASS_MeshRenderer::RenderSceneNoTextures(ERS_STRUCT_Scene* Scene, , ERS_STRUCT_Shader* Shader) {
 
 
 
@@ -82,7 +82,7 @@ void ERS_CLASS_MeshRenderer::RenderSceneNoTextures(ERS_STRUCT_Scene* Scene) {
 
     // Draw All Opaque Meshes
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
-        ERS_FUNCTION_DrawMeshNoTextures(OpaqueMeshes[i]);
+        ERS_FUNCTION_DrawMeshNoTextures(OpaqueMeshes[i], Shader);
     }
 
 
