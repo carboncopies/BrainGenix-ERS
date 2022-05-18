@@ -419,8 +419,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
 
-        glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram, "DepthMap"), 0);
-        glActiveTexture(GL_TEXTURE0);
+        glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram, "DepthMap"), 9);
+        glActiveTexture(GL_TEXTURE9);
         glBindTexture(GL_TEXTURE_2D,  SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[0]->DepthMap.DepthMapTextureID);
 
 
