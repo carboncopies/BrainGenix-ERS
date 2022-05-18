@@ -105,8 +105,8 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
     }
 
-
-    if (true) {
+    // Show/Hide Light Debug Info Overlay
+    if (Viewport->ShowLightInfo_) {
 
 
         // Initialize
