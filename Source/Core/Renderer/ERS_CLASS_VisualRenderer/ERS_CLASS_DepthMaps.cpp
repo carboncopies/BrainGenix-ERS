@@ -97,7 +97,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
 
 }
 
-void ERS_CLASS_DepthMaps::UpdateDepthMaps() {
+void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
     // Get Active Scene
     ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
@@ -114,6 +114,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps() {
         }
 
         // Render To Depth Map
+        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos);
 
 
     } 
