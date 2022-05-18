@@ -27,6 +27,8 @@ struct ERS_STRUCT_DepthMap {
     
     int ResolutionX; /**<Width In Pixels Of The Depth Map*/
     int ResolutionY; /**<Height In Pixels Of The Depth Map*/
+
+    bool Initialized = false; /**<Indiciates If The Target Is Initialized Or Not*/
     
 
 };

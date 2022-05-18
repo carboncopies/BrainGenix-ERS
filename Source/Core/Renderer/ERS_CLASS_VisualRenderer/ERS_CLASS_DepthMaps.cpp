@@ -94,3 +94,21 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
     Renderer_->RenderScene(TargetScene, &GLDefault, DepthShader);
 
 }
+
+void ERS_CLASS_DepthMaps::UpdateDepthMaps() {
+
+    // Get Active Scene
+    ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+
+    // Handle Directional Lights
+    for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
+
+        // Extract Struct
+        ERS_STRUCT_DirectionalLight* Light = ActiveScene->DirectionalLights[i].get();
+
+        // Check If Light Has DepthMap
+        if (Light->DepthMap)
+
+    } 
+
+}
