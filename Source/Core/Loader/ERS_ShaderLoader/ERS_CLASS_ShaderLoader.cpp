@@ -73,6 +73,9 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::LoadShaderFromAsset(l
     ShaderStruct->FragmentID = FragmentID;
     ShaderStruct->DisplayName = ShaderName;
     ShaderStruct->InternalName = ShaderName;
+
+    SystemUtils_->Logger_->Log(std::string("Loaded Shader '") + ShaderName + std::string("'"), 5);
+
     return ShaderStruct;
 
 
