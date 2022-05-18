@@ -2,10 +2,10 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_FUNCTION_DrawMesh.h>
+#include <ERS_FUNCTION_DrawMeshNoTextures.h>
 
 
-void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh) {
+void ERS_FUNCTION_DrawMeshNoTextures(ERS_STRUCT_Mesh* Mesh) {
 
     Shader->SetMat4("model", Mesh->ModelMatrix);
 
