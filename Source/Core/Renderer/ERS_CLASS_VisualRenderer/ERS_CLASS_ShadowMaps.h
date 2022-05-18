@@ -41,7 +41,6 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to systemtuils resource*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to project utils instance*/
-    ERS_STRUCT_Shader* DepthMapShader_; /**<Pointer to depth map shader*/
 
     ERS_STRUCT_DepthMap DeleteMe;
 
@@ -70,7 +69,7 @@ public:
      * This function checks the scenemanger and other shared classes to get info about the scene.
      * 
      */
-    void UpdateShadowMaps(, ERS_STRUCT_Shader* DepthMapShader);
+    void UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader);
 
 
 };

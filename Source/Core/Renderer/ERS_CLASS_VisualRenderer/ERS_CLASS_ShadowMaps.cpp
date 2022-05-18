@@ -25,12 +25,12 @@ ERS_CLASS_ShadowMaps::~ERS_CLASS_ShadowMaps() {
 }
 
 
-void ERS_CLASS_ShadowMaps::UpdateShadowMaps() {
+void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader) {
 
     unsigned int SceneIndex = ProjectUtils_->SceneManager_->ActiveScene_;
 
     for (unsigned int i = 0; i < ProjectUtils_->SceneManager_->Scenes_[SceneIndex]->DirectionalLights.size(); i++) {
-        ERS_CLASS_DepthMaps_->UpdateDepthMap(&DeleteMe, DepthMapShader_, ProjectUtils_->SceneManager_->Scenes_[SceneIndex]->DirectionalLights[i]->Pos, glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        ERS_CLASS_DepthMaps_->UpdateDepthMap(&DeleteMe, DepthMapShader, ProjectUtils_->SceneManager_->Scenes_[SceneIndex]->DirectionalLights[i]->Pos, glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     }
 
 
