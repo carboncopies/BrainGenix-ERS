@@ -28,4 +28,6 @@ struct ERS_STRUCT_PointLight {
 
     glm::vec3 Pos; /**<Position*/
 
+    ERS_STRUCT_DepthMap DepthMap; /**<Contains OpenGL IDS Used To Calculate Shadows*/
+
 };
