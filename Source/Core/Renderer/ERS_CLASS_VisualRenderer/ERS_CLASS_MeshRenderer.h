@@ -82,5 +82,12 @@ public:
      */
     void RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, ERS_STRUCT_Shader* Shader);
 
+    /**
+     * @brief Render the scene without textures (used to generate depth maps)
+     * 
+     * @param Scene 
+     */
+    void RenderSceneNoTextures(ERS_STRUCT_Scene* Scene);
+
 
 };

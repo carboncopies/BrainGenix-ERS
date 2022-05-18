@@ -69,3 +69,28 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
     // then maybe move the renderer code into it's own namespace?
 
 }
+
+
+void ERS_CLASS_MeshRenderer::RenderSceneNoTextures(ERS_STRUCT_Scene* Scene) {
+
+    // Draw All Opaque Meshes
+    for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
+        glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
+        glActiveTexture(OpenGLDefaults->DefaultTexture_);
+        ERS_FUNCTION_DrawMesh(OpaqueMeshes[i], OpenGLDefaults, Shader);
+    }
+
+
+
+    // // Render Transparent Meshes In Right Order
+    // for (unsigned long i = 0; i < TransparentMeshes.size(); i++) {
+    //     glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
+    //     glActiveTexture(OpenGLDefaults->DefaultTexture_);
+    //     ERS_FUNCTION_DrawMesh(TransparentMeshes[i], OpenGLDefaults, Shader);
+    // }
+
+
+
+
+
+}
