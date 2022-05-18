@@ -25,6 +25,9 @@ struct STRUCT_DirectionalLight {
     // Light Color Parameters
     vec3 Color;
     float Intensity;
+    
+    // Depth Texture
+    sampler2D DepthMap;
 
 };
 
@@ -38,6 +41,9 @@ struct STRUCT_PointLight {
 
     // Light Rolloff Parameters
     float Intensity;
+    
+    // Depth Texture
+    sampler2D DepthMap;
 };
 
 struct STRUCT_SpotLight {
@@ -55,6 +61,9 @@ struct STRUCT_SpotLight {
     // Spotlight Parameters
     float CutOff;
     float OuterCutOff;
+    
+    // Depth Texture
+    sampler2D DepthMap;
 
 };
 
@@ -451,6 +460,7 @@ void main() {
         FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
 }
+
 
 
 
