@@ -1,0 +1,9 @@
+Name: /home/tliao/Documents/EGSC_MVP/AssetSource/FightingMechanic/Third-Party/Barrel03/4K/barrel_03_4k.fbx
+ModelID: 1272856787
+TextureIDs:
+  textures\barrel_03_diff_4k.jpg: 87512494
+  textures\barrel_03_metal_4k.exr: 1193739940
+  textures\barrel_03_nor_gl_4k.exr: 781824128
+  textures\barrel_03_rough_4k.jpg: 1972203063
+Vertices: 1129
+Indices: 4419
