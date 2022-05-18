@@ -281,7 +281,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         ViewportMenu_->DrawMenu(Viewports_[Index].get());
 
 
-
         // Calculate Window Position
         ImVec2 vMin = ImGui::GetWindowContentRegionMin();
         ImVec2 vMax = ImGui::GetWindowContentRegionMax();
