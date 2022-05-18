@@ -107,7 +107,9 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps() {
         ERS_STRUCT_DirectionalLight* Light = ActiveScene->DirectionalLights[i].get();
 
         // Check If Light Has DepthMap
-        if (Light->DepthMap)
+        if (!Light->DepthMap.Initialized) {
+            
+        }
 
     } 
 
