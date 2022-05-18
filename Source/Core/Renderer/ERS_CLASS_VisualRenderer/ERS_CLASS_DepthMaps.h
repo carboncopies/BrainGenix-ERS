@@ -48,14 +48,6 @@ private:
 
 
     /**
-     * @brief Setup The Depth Map For Rendering.
-     * This will bind to the depth map's framebuffer, clear the screen, and get map ready to be rendered to.
-     * 
-     * @param Input 
-     */
-    void BindToDepthMap(ERS_STRUCT_DepthMap* Input);
-
-    /**
      * @brief Generates a depth map with the given resolution.
      * This is usually used for shadows later on in the rendering process.
      * Will also default to a 2048x2048 depth map by default. 
