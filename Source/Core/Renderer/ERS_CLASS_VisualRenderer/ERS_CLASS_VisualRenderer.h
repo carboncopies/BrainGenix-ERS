@@ -30,6 +30,7 @@
 #include <ERS_CLASS_MeshRenderer.h>
 #include <ERS_CLASS_ViewportOverlay.h>
 #include <ERS_CLASS_ViewportMenu.h>
+#include <ERS_CLASS_ShadowMaps.h>
 
 #include <ERS_SceneManager.h>
 #include <ERS_SceneLoader.h>
@@ -61,7 +62,8 @@ private:
 
     ERS_STRUCT_OpenGLDefaults* OpenGLDefaults_; /**<Pointer acquired from renderermanager*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils pointer, used to get info about scripts*/
-
+    
+    std::unique_ptr<ERS_CLASS_ShadowMaps> ShadowMaps_; /**<Instance of shadow mapping class used to provide system wide shadows*/
     std::unique_ptr<ERS_CLASS_MeshRenderer> MeshRenderer_; /**<Instance Of The Mesh Renderer Class Used To Hancle The Actual Rendering Of All Meshes In The Given Scene*/
     std::unique_ptr<ERS_CLASS_ViewportOverlay> ViewportOverlay_; /**<Class that handles overlaying ui elements and text onto the viewport when requested by the viewporr struct*/
     std::unique_ptr<ERS_CLASS_ViewportMenu> ViewportMenu_; /**<Class that provides the viewport menu functionality in a convenient manner to the visualrenderer system*/
