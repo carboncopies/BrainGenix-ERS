@@ -18,9 +18,9 @@
 
 /**
  * @brief Returns the index of a shader with a name that matches the input name.
- * Will re
+ * Will return 0 if the shader cannot be found.
  * 
  * @param Name 
  * @param Shaders 
  */
-void ERS_FUNCTION_FindShaderByName(std::string Name, std::map<int, std::shared_ptr<ERS_STRUCT_Shader>>* Shaders);
+unsigned int ERS_FUNCTION_FindShaderByName(std::string Name, std::map<int, std::shared_ptr<ERS_STRUCT_Shader>>* Shaders);
