@@ -371,7 +371,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         Shaders_[ShaderIndex]->SetFloat("Gamma_", Viewports_[Index]->Gamma_);
         
         Shaders_[ShaderIndex]->SetInt("DepthMap", ShadowMaps_->DeleteMe.DepthMapTextureID);
-        
+        glBindTexture(GL_TEXTURE_2D, ShadowMaps_->DeleteMe.DepthMapTextureID);
+
         // Update Cursor If Selection Changed
         if (SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged && DrawCursor) {
 
