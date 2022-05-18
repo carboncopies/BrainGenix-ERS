@@ -23,7 +23,7 @@ ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* Syste
     SystemUtils_->Logger_->Log("Initializing Viewport Menu Subsystem", 5);
     ViewportMenu_ = std::make_unique<ERS_CLASS_ViewportMenu>(SystemUtils_, ProjectUtils_, &GameStartTime_, &IsEditorMode_, &Shaders_);
 
-    ShadowMaps_ = std::make_unique<ERS_CLASS_ShadowMaps>(SystemUtils_, ProjectUtils_, &Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthShader"), &Shaders_)]);
+    ShadowMaps_ = std::make_unique<ERS_CLASS_ShadowMaps>(SystemUtils_, ProjectUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthShader"), &Shaders_)].get());
 
     // DEFAULT MODES, CHANGE THIS LATER! --------------------------------
     IsEditorMode_ = true;
