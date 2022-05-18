@@ -55,6 +55,19 @@ private:
      */
     void BindToDepthMap(ERS_STRUCT_DepthMap* Input);
 
+    /**
+     * @brief Generates a depth map with the given resolution.
+     * This is usually used for shadows later on in the rendering process.
+     * Will also default to a 2048x2048 depth map by default. 
+     * 
+     * @param ResolutionX Width in pixels of the depth map
+     * @param ResolutionY Height in pixels of the depth map
+     * @param LogOutput Enable/disable logging output
+     * @return ERS_STRUCT_DepthMap Struct containing the relevant opengl ids for this depth map
+     */
+    ERS_STRUCT_DepthMap GenerateDepthMap(int ResolutionX = 2048, int ResolutionY = 2048, bool LogOutput = true);
+
+
 
 public:
 
@@ -87,17 +100,7 @@ public:
     void UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader);
 
 
-    /**
-     * @brief Generates a depth map with the given resolution.
-     * This is usually used for shadows later on in the rendering process.
-     * Will also default to a 2048x2048 depth map by default. 
-     * 
-     * @param ResolutionX Width in pixels of the depth map
-     * @param ResolutionY Height in pixels of the depth map
-     * @param LogOutput Enable/disable logging output
-     * @return ERS_STRUCT_DepthMap Struct containing the relevant opengl ids for this depth map
-     */
-    ERS_STRUCT_DepthMap GenerateDepthMap(int ResolutionX = 2048, int ResolutionY = 2048, bool LogOutput = true);
+
 
 
 
