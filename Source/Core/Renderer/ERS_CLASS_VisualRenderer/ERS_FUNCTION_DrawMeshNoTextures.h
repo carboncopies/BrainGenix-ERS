@@ -26,4 +26,4 @@
  * 
  * @param Mesh 
  */
-void ERS_FUNCTION_DrawMeshNoTextures(ERS_STRUCT_Mesh* Mesh);
+void ERS_FUNCTION_DrawMeshNoTextures(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_Shader* Shader);

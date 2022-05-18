@@ -5,9 +5,9 @@
 #include <ERS_FUNCTION_DrawMeshNoTextures.h>
 
 
-void ERS_FUNCTION_DrawMeshNoTextures(ERS_STRUCT_Mesh* Mesh) {
+void ERS_FUNCTION_DrawMeshNoTextures(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_Shader* Shader) {
 
-    // Shader->SetMat4("model", Mesh->ModelMatrix);
+    Shader->SetMat4("model", Mesh->ModelMatrix);
 
     // unsigned int AmbientOcclusionHandle = 1;
     // unsigned int DiffuseHandle = 1;
