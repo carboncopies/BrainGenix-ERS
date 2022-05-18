@@ -72,14 +72,19 @@ void ERS_CLASS_DepthMaps::BindToDepthMap(ERS_STRUCT_DepthMap* Input) {
 
 }
 
-void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT_Shader* DepthShader, glm::vec3 Pos) {
+void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT_Shader* DepthShader, glm::vec3 Pos, bool Orthogonal) {
 
     // Setup Variables
     glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
     float NearPlane = 1.0f, FarPlane = 7.5f;
 
     // Calculate Project, View, Space Matrices
-    ObjectProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, NearPlane, FarPlane); // ortho models directional light source
+    if (Orthogonal) {
+        ObjectProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, NearPlane, FarPlane); // ortho models directional light source
+    } else {
+        float AspectRatio = Target->ResolutionX / Target->ResolutionY;
+        ObjectProjection = glm::perspective(glm::radians(110.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
+    }
     ObjectView = glm::lookAt(Pos, glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     ObjectSpace = ObjectProjection * ObjectView;
 
