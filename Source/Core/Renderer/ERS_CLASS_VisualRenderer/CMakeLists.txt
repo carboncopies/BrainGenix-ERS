@@ -21,6 +21,7 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_FUNCTION_CheckForMeshTransparency.cpp"
             "ERS_FUNCTION_MeshTransparencySort.cpp"
             "ERS_FUNCTION_DrawMesh.cpp"
+            "ERS_FUNCTION_DrawMeshNoTextures.cpp"
             "ERS_FUNCTION_ResetMeshTexture.cpp"
             
 
@@ -39,6 +40,7 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_FUNCTION_CheckForMeshTransparency.h"
             "ERS_FUNCTION_MeshTransparencySort.h"
             "ERS_FUNCTION_DrawMesh.h"
+            "ERS_FUNCTION_DrawMeshNoTextures.h"
             "ERS_FUNCTION_ResetMeshTexture.h"
 
 
