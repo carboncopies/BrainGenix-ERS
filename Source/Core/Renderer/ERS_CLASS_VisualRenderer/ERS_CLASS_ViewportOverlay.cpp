@@ -136,7 +136,12 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
             NumSpotLights++;
         }
 
-
+        for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
+            if (ActiveScene->PointLights[i]->DepthMap.Initialized) {
+                NumPointDepthMaps++;
+            }
+            NumPointLights++;
+        }
 
 
     }
