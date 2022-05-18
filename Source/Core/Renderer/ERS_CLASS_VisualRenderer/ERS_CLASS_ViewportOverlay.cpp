@@ -106,6 +106,31 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
     }
 
 
+    if (true) {
+
+
+        // Initialize
+        ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+
+        // Get Lighting Information
+        unsigned int NumDirectionalDepthMaps = 0;
+        unsigned int NumSpotDepthMaps = 0;
+        unsigned int NumPointDepthMaps = 0;
+        
+        unsigned int NumDirectionalLights = 0;
+        unsigned int NumSpotDepthMaps = 0;
+        unsigned int NumPointDepthMaps = 0;
+
+        for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
+            if (ActiveScene->DirectionalLights[i]->DepthMap.Initialized) {
+                NumDirectionalDepthMaps++;
+            }
+            NumDirectionalLights++;
+        }
+
+    }
+
+
 
 
 }
