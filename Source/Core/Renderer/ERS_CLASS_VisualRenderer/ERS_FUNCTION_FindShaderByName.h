@@ -8,6 +8,7 @@
 // Standard Libraries (BG convention: use <> instead of "")
 #include <iostream>
 #include <string>
+#include <map>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 
@@ -16,8 +17,10 @@
 
 
 /**
- * @brief Updates the transparency bool in each mesh, allowing for sorting to take place
+ * @brief Returns the index of a shader with a name that matches the input name.
+ * Will re
  * 
- * @param Scene 
+ * @param Name 
+ * @param Shaders 
  */
 void ERS_FUNCTION_FindShaderByName(std::string Name, std::map<int, std::shared_ptr<ERS_STRUCT_Shader>>* Shaders);
