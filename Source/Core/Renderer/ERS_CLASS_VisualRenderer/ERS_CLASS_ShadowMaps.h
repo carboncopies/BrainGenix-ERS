@@ -43,6 +43,7 @@ private:
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to project utils instance*/
     ERS_STRUCT_Shader* DepthMapShader_; /**<Pointer to depth map shader*/
 
+    ERS_STRUCT_DepthMap DeleteMe;
 
     std::unique_ptr<ERS_CLASS_DepthMaps> ERS_CLASS_DepthMaps_; /**<Instance of the depth map class*/
 
