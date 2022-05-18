@@ -23,6 +23,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_CLASS_DepthMaps.h>
+#include <ERS_CLASS_MeshRenderer.h>
 
 #include <ERS_STRUCT_ProjectUtils.h>
 #include <ERS_STRUCT_SystemUtils.h>
@@ -42,7 +43,12 @@ private:
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to systemtuils resource*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to project utils instance*/
 
+    ERS_CLASS_MeshRenderer* Renderer_; /**<Pointer to mesh renderer instance*/
+
+
     ERS_STRUCT_DepthMap DeleteMe;
+
+
 
     std::unique_ptr<ERS_CLASS_DepthMaps> ERS_CLASS_DepthMaps_; /**<Instance of the depth map class*/
 
@@ -54,7 +60,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_ShadowMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    ERS_CLASS_ShadowMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_MeshRenderer* Renderer);
 
     /**
      * @brief Destroy the ers class ShadowMaps object
