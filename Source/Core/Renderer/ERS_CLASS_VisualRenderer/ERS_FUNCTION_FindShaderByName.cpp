@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_FUNCTION_CheckForMeshTransparency.h>
+#include <ERS_FUNCTION_FindShaderByName.h>
 
 
 void ERS_FUNCTION_FindShaderByName(std::string Name, std::map<int, std::shared_ptr<ERS_STRUCT_Shader>>* Shaders) {
