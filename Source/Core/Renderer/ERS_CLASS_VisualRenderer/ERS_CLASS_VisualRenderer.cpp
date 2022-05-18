@@ -519,20 +519,6 @@ void ERS_CLASS_VisualRenderer::CreateViewport() {
 
 }
 
-long ERS_CLASS_VisualRenderer::FindShaderIndex(std::string Name) {
-
-    long Index = 0;
-    for (unsigned long i = 0; i < Shaders_.size(); i++) {
-        if (Shaders_[i]->InternalName == Name) {
-            Index = i;
-            break;
-        }
-    }
-
-    return Index;
-
-}
-
 void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
 
