@@ -118,8 +118,8 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
         unsigned int NumPointDepthMaps = 0;
         
         unsigned int NumDirectionalLights = 0;
-        unsigned int NumSpotDepthMaps = 0;
-        unsigned int NumPointDepthMaps = 0;
+        unsigned int NumSpotLights = 0;
+        unsigned int NumPointLights = 0;
 
         for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
             if (ActiveScene->DirectionalLights[i]->DepthMap.Initialized) {
@@ -127,6 +127,17 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
             }
             NumDirectionalLights++;
         }
+
+
+        for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
+            if (ActiveScene->SpotLights[i]->DepthMap.Initialized) {
+                NumSpotDepthMaps++;
+            }
+            NumSpotLights++;
+        }
+
+
+
 
     }
 
