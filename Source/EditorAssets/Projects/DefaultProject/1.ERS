@@ -24,8 +24,8 @@ ShaderPrograms:
     FragmentID: 10039
   2:
     Name: _DepthMap
-    VertexID: 10038
-    FragmentID: 10039
+    VertexID: 10042
+    FragmentID: 10043
   3:
     Name: Ambient Occlusion Texture Map
     VertexID: 10004
