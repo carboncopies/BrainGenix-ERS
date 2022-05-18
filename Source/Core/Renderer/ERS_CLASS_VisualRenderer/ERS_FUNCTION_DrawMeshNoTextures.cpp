@@ -5,7 +5,7 @@
 #include <ERS_FUNCTION_DrawMesh.h>
 
 
-void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, ERS_STRUCT_Shader* Shader) {
+void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh) {
 
     Shader->SetMat4("model", Mesh->ModelMatrix);
 
