@@ -55,7 +55,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_ShadowMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_Shader* DepthMapShader);
+    ERS_CLASS_ShadowMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
 
     /**
      * @brief Destroy the ers class ShadowMaps object
@@ -70,7 +70,7 @@ public:
      * This function checks the scenemanger and other shared classes to get info about the scene.
      * 
      */
-    void UpdateShadowMaps();
+    void UpdateShadowMaps(, ERS_STRUCT_Shader* DepthMapShader);
 
 
 };
