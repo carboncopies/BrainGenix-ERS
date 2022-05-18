@@ -63,7 +63,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_MeshRenderer* Renderer);
 
     /**
      * @brief Destroy the ers class DepthMaps object

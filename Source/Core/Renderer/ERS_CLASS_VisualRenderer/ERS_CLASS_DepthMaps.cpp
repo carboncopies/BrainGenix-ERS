@@ -5,10 +5,11 @@
 #include <ERS_CLASS_DepthMaps.h>
 
 
-ERS_CLASS_DepthMaps::ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+ERS_CLASS_DepthMaps::ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_MeshRenderer* Renderer) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
+    Renderer_ = Renderer;
 
     SystemUtils_->Logger_->Log("Initializing Viewport Overlay Subsystem", 5);
 
