@@ -119,9 +119,17 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
         }
 
         // Render To Depth Map
-        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos);
-
+        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, true);
 
     } 
+
+
+
+
+
+
+
+
+
 
 }
