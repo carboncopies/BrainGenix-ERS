@@ -128,7 +128,6 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
             NumDirectionalLights++;
         }
 
-
         for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
             if (ActiveScene->SpotLights[i]->DepthMap.Initialized) {
                 NumSpotDepthMaps++;
@@ -142,6 +141,12 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
             }
             NumPointLights++;
         }
+
+        std::string LabelText = std::to_string(NumDirectionalLights) + std::string(" Directional Lights (") + std::to_string(NumDirectionalDepthMaps)
+         + std::string(" Have Depth Maps) ") + std::to_string(NumSpotLights) + std::string(" Spot Lights (") + std::to_string(NumSpotDepthMaps)
+         + std::string(" Have Depth Maps) ") + std::to_string(NumPointLights) + std::string(" Point Lights (") + std::to_string(NumPointDepthMaps)
+         + std::string(" Have Depth Maps)");
+        ImGui::TextColored(ImVec4(0.25f, 1.0f, 0.25f, 1.0f), "%s", LabelText.c_str());
 
 
     }
