@@ -27,6 +27,11 @@ ERS_CLASS_ShadowMaps::~ERS_CLASS_ShadowMaps() {
 
 void ERS_CLASS_ShadowMaps::UpdateShadowMaps() {
 
+    unsigned int SceneIndex = ProjectUtils_->SceneManager_->ActiveScene_;
+
+    for (unsigned int i = 0; i < ProjectUtils_->SceneManager_->Scenes_[SceneIndex]->DirectionalLights.size(); i++) {
+        ERS_CLASS_DepthMaps_->
+    }
 
 
 }
