@@ -670,8 +670,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->DirectionalLights[i]->Color);
         ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->DirectionalLights[i]->Intensity);
 
-        glUniform1i(glGetUniformLocation(ActiveShader->ShaderProgram, "DepthMap"), 9);
-        glActiveTexture(GL_TEXTURE9);
+        glUniform1i(glGetUniformLocation(ActiveShader->ShaderProgram, "DepthMap"), 0);
+        glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D,  ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureID);
     
     }
