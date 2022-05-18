@@ -12,11 +12,7 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_SceneManager.h>
-
 #include <ERS_STRUCT_Shader.h>
-#include <ERS_STRUCT_Model.h>
-#include <ERS_STRUCT_Scene.h>
 
 
 /**
