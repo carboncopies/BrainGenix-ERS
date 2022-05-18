@@ -58,6 +58,8 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int R
     SystemUtils_->Logger_->Log("Finished Attaching Texture To Framebuffer", 3, LogEnable);
 
 
+    Output.Initialized = true;
+
     // Return Output
     return Output;
 
