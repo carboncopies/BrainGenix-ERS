@@ -10,7 +10,7 @@ glm::mat4 ERS_STRUCT_Camera::GetViewMatrix() {
 }
 
 glm::mat4 ERS_STRUCT_Camera::GetProjectionMatrix() {
-    return glm::perspective(glm::radians(Zoom_), AspectRatio_, 0.1f, 100.0f);
+    return glm::perspective(glm::radians(250.0f), AspectRatio_, 0.1f, 100.0f);
 }
 
 
