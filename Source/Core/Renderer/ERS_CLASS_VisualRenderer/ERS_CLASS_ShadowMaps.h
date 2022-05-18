@@ -43,8 +43,7 @@ private:
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to systemtuils resource*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to project utils instance*/
 
-
-
+    std::unique_ptr<ERS_CLASS_DepthMaps> DepthMap_; /**<Instance of the depth map class*/
 
 
 public:
