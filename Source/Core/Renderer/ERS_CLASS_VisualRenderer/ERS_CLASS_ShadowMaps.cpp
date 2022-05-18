@@ -5,10 +5,11 @@
 #include <ERS_CLASS_ShadowMaps.h>
 
 
-ERS_CLASS_ShadowMaps::ERS_CLASS_ShadowMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+ERS_CLASS_ShadowMaps::ERS_CLASS_ShadowMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, std::map<int, std::shared_ptr<ERS_STRUCT_Shader>>* Shaders) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
+    Shaders_ = Shaders;
 
     SystemUtils_->Logger_->Log("Initializing Viewport Overlay Subsystem", 5);
 
@@ -26,7 +27,7 @@ ERS_CLASS_ShadowMaps::~ERS_CLASS_ShadowMaps() {
 
 void ERS_CLASS_ShadowMaps::UpdateShadowMaps() {
 
-    
+
 
 
 }
