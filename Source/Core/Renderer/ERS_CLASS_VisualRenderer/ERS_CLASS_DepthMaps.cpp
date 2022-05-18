@@ -68,6 +68,7 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int R
 void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT_Shader* DepthShader, glm::vec3 Pos, bool Orthogonal) {
 
     // Setup Variables
+    ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
     float NearPlane = 1.0f, FarPlane = 7.5f;
 
@@ -88,14 +89,17 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
 
     glViewport(0, 0, Target->ResolutionX, Target->ResolutionY);
     glBindFramebuffer(GL_FRAMEBUFFER, Target->FrameBufferObjectID);
+
     glClear(GL_DEPTH_BUFFER_BIT);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, Target->DepthMapTextureID);
-
-
-
-    ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+
+
+ 
 
 }
 
