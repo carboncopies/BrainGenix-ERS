@@ -5,11 +5,16 @@
 #include <ERS_FUNCTION_CheckForMeshTransparency.h>
 
 
-void ERS_FUNCTION_FindShaderByName(ERS_STRUCT_Scene* Scene) {
+void ERS_FUNCTION_FindShaderByName(std::string Name, ) {
 
-    for (unsigned long i = 0; i < Scene->Models.size(); i++) {
-        Scene->Models[i]->FindShaderByName();
+    long Index = 0;
+    for (unsigned long i = 0; i < Shaders_.size(); i++) {
+        if (Shaders_[i]->InternalName == Name) {
+            Index = i;
+            break;
+        }
     }
 
+    return Index;
 
 }

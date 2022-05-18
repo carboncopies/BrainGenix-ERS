@@ -24,4 +24,4 @@
  * 
  * @param Scene 
  */
-void ERS_FUNCTION_FindShaderByName(ERS_STRUCT_Scene* Scene);
+void ERS_FUNCTION_FindShaderByName(std::string Name);
