@@ -32,4 +32,6 @@ struct ERS_STRUCT_SpotLight {
     glm::vec3 Pos; /**<Position*/
     glm::vec3 Rot; /**<Rotation or Direction Of Light*/
 
+    ERS_STRUCT_DepthMap DepthMap; /**<Contains OpenGL IDS Used To Calculate Shadows*/
+
 };
