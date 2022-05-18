@@ -89,12 +89,6 @@ void ERS_CLASS_MeshRenderer::RenderSceneNoTextures(ERS_STRUCT_Scene* Scene, ERS_
     // ToDO: Make It So That The Transparency Of The Mesh Is Taken Into Account, Rather Than Being completely Bypassed Like It Is Now.
 
 
-    // // Render Transparent Meshes In Right Order
-    // for (unsigned long i = 0; i < TransparentMeshes.size(); i++) {
-    //     glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
-    //     glActiveTexture(OpenGLDefaults->DefaultTexture_);
-    //     ERS_FUNCTION_DrawMesh(TransparentMeshes[i], OpenGLDefaults, Shader);
-    // }
 
 
 
