@@ -88,10 +88,4 @@ void ERS_CLASS_MeshRenderer::RenderSceneNoTextures(ERS_STRUCT_Scene* Scene, ERS_
 
     // ToDO: Make It So That The Transparency Of The Mesh Is Taken Into Account, Rather Than Being completely Bypassed Like It Is Now.
 
-
-
-
-
-
-
 }
