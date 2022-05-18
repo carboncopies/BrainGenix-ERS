@@ -84,7 +84,9 @@ void ERS_CLASS_MeshRenderer::RenderSceneNoTextures(ERS_STRUCT_Scene* Scene, ERS_
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
         ERS_FUNCTION_DrawMeshNoTextures(OpaqueMeshes[i], Shader);
     }
-
+    for (unsigned long i = 0; i < TransparentMeshes.size(); i++) {
+        ERS_FUNCTION_DrawMeshNoTextures(TransparentMeshes[i], Shader);
+    }
 
     // ToDO: Make It So That The Transparency Of The Mesh Is Taken Into Account, Rather Than Being completely Bypassed Like It Is Now.
 
