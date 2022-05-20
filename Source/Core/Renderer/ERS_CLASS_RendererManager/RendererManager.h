@@ -90,6 +90,12 @@ private:
      */
     unsigned int LoadEditorIcon(const char* Path);
 
+    /**
+     * @brief 
+     * 
+     */
+    void ReportOpenGLErrors(); 
+
 
 public:
 
