@@ -595,7 +595,6 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     SystemUtils_->Logger_->Log("Attaching Texture To Framebuffer", 4);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, FramebufferColorObject, 0);
 
-    std::cout<<"7|"<<glGetError()<<std::endl;
 
     // Create Render Buffer
     unsigned int RenderbufferObject;
@@ -604,7 +603,6 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     glBindRenderbuffer(GL_RENDERBUFFER, RenderbufferObject);
 
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 800, 800); // RESIZE THIS WITH THE WINDOW!
-    std::cout<<"8|"<<glGetError()<<std::endl;
 
 
     // Attach Renderbuffer to Depth And Stencil Attachment
@@ -612,7 +610,6 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, RenderbufferObject);
     Viewport->RenderbufferObject = RenderbufferObject;
 
-    std::cout<<"9|"<<glGetError()<<std::endl;
 
     // Check Framebuffer Status
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
