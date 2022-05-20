@@ -541,7 +541,6 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     // Create Viewport Struct
     std::shared_ptr<ERS_STRUCT_Viewport> Viewport = std::make_shared<ERS_STRUCT_Viewport>();
 
-    std::cout<<"1|"<<glGetError()<<std::endl;
 
     // Populate Viewport Struct
     Viewport->ShaderIndex = DefaultShader_;
@@ -556,27 +555,22 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     Viewport->WasSelected = false;
     Viewport->Enabled = std::make_unique<bool>(true);
 
-    std::cout<<"2|"<<glGetError()<<std::endl;
 
 
     // Create Input Processor
     SystemUtils_->Logger_->Log("Creating New Input Processor", 4);
     Viewport->Processor = std::make_unique<ERS_CLASS_InputProcessor>(Viewport->Camera.get(), Window_);
-    std::cout<<"3|"<<glGetError()<<std::endl;
-
 
     // Create Framebuffer
     unsigned int FramebufferObject;
     SystemUtils_->Logger_->Log("Creating Framebuffer Object", 4);
     glGenFramebuffers(1, &FramebufferObject);
-    std::cout<<"4|"<<glGetError()<<std::endl;
 
 
     // Bind To Framebuffer
     SystemUtils_->Logger_->Log("Binding To Framebuffer Object", 4);
     glBindFramebuffer(GL_FRAMEBUFFER, FramebufferObject);
     Viewport->FramebufferObject = FramebufferObject;
-    std::cout<<"5|"<<glGetError()<<std::endl;
 
 
     // Create RenderTexture
@@ -589,7 +583,6 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     Viewport->FramebufferColorObject = FramebufferColorObject;
 
-    std::cout<<"6|"<<glGetError()<<std::endl;
 
     // Attach Texture To Framebuffer
     SystemUtils_->Logger_->Log("Attaching Texture To Framebuffer", 4);
