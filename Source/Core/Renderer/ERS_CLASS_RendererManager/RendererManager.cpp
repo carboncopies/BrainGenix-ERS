@@ -230,7 +230,7 @@ void RendererManager::ReportOpenGLErrors() {
     if (GLErrorStatus != GL_NO_ERROR) {
 
         std::string ErrorMessage = std::string("OpenGL Context Reporting Error '") + std::to_string(GLErrorStatus) + std::string("'");
-        SystemUtils_->Logger->Log(ErrorMessage, 9);
+        SystemUtils_->Logger_->Log(ErrorMessage, 9);
 
     }
 
