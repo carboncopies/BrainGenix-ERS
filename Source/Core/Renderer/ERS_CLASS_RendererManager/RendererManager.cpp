@@ -222,3 +222,15 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
 }
 
+void VisualRenderer::ReportOpenGLErrors() {
+
+    // Get Current Errors
+    GLint GLErrorStatus = glGetError();
+
+    if (GLErrorStatus != GL_NO_ERROR) {
+
+        
+
+    }
+
+}
