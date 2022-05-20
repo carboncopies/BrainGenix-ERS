@@ -245,7 +245,7 @@ void RendererManager::ReportOpenGLErrors() {
             ErrorMeaning = "GL_INVALID_FRAMEBUFFER_OPERATION";
         }
 
-        std::string ErrorMessage = std::string("OpenGL Context Reporting Error '") + std::to_string(GLErrorStatus) + std::string("'");
+        std::string ErrorMessage = std::string("OpenGL Context Reporting Error '") + std::to_string(GLErrorStatus) + std::string("' (") + ErrorMeaning + std::string(")");
         SystemUtils_->Logger_->Log(ErrorMessage, 9);
 
     }
