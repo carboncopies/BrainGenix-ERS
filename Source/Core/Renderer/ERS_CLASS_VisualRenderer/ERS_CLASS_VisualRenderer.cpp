@@ -541,6 +541,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     // Create Viewport Struct
     std::shared_ptr<ERS_STRUCT_Viewport> Viewport = std::make_shared<ERS_STRUCT_Viewport>();
 
+    std::cout<<"1|"<<glGetError()<<std::endl;
 
     // Populate Viewport Struct
     Viewport->ShaderIndex = DefaultShader_;
@@ -555,22 +556,27 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     Viewport->WasSelected = false;
     Viewport->Enabled = std::make_unique<bool>(true);
 
+    std::cout<<"2|"<<glGetError()<<std::endl;
+
 
     // Create Input Processor
     SystemUtils_->Logger_->Log("Creating New Input Processor", 4);
     Viewport->Processor = std::make_unique<ERS_CLASS_InputProcessor>(Viewport->Camera.get(), Window_);
+    std::cout<<"3|"<<glGetError()<<std::endl;
 
 
     // Create Framebuffer
     unsigned int FramebufferObject;
     SystemUtils_->Logger_->Log("Creating Framebuffer Object", 4);
     glGenFramebuffers(1, &FramebufferObject);
+    std::cout<<"4|"<<glGetError()<<std::endl;
 
 
     // Bind To Framebuffer
     SystemUtils_->Logger_->Log("Binding To Framebuffer Object", 4);
     glBindFramebuffer(GL_FRAMEBUFFER, FramebufferObject);
     Viewport->FramebufferObject = FramebufferObject;
+    std::cout<<"5|"<<glGetError()<<std::endl;
 
 
     // Create RenderTexture
@@ -583,11 +589,13 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     Viewport->FramebufferColorObject = FramebufferColorObject;
 
+    std::cout<<"6|"<<glGetError()<<std::endl;
 
     // Attach Texture To Framebuffer
     SystemUtils_->Logger_->Log("Attaching Texture To Framebuffer", 4);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, FramebufferColorObject, 0);
 
+    std::cout<<"7|"<<glGetError()<<std::endl;
 
     // Create Render Buffer
     unsigned int RenderbufferObject;
@@ -596,6 +604,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     glBindRenderbuffer(GL_RENDERBUFFER, RenderbufferObject);
 
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 800, 800); // RESIZE THIS WITH THE WINDOW!
+    std::cout<<"8|"<<glGetError()<<std::endl;
 
 
     // Attach Renderbuffer to Depth And Stencil Attachment
@@ -603,6 +612,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, RenderbufferObject);
     Viewport->RenderbufferObject = RenderbufferObject;
 
+    std::cout<<"9|"<<glGetError()<<std::endl;
 
     // Check Framebuffer Status
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
