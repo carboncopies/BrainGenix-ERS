@@ -273,7 +273,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
     // Set Default Window Size
     ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
 
-    std::cout<<"1 | "<<glGetError()<<std::endl;
 
     // Check If Window Visible
     if (Visible) {
@@ -334,7 +333,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
 
-    std::cout<<"2 | "<<glGetError()<<std::endl;
 
 
         glViewport(0, 0, RenderWidth, RenderHeight);
@@ -376,7 +374,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         Shaders_[ShaderIndex]->SetFloat("Gamma_", Viewports_[Index]->Gamma_);
         
 
-    std::cout<<"3 | "<<glGetError()<<std::endl;
 
         // Update Cursor If Selection Changed
         if (SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged && DrawCursor) {
