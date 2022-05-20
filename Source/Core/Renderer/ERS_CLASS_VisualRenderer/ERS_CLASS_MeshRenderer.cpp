@@ -35,9 +35,6 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
 
     // Render Transparent Meshes In Right Order
     for (unsigned long i = 0; i < TransparentMeshes.size(); i++) {
-
-        // glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
-        // glActiveTexture(OpenGLDefaults->DefaultTexture_);
         ERS_FUNCTION_DrawMesh(TransparentMeshes[i], OpenGLDefaults, Shader);
     }
     std::cout<<"3 |"<<glGetError()<<std::endl;
