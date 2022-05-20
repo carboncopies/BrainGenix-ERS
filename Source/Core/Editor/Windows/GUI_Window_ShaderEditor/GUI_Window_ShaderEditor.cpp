@@ -98,15 +98,10 @@ void Window_ShaderEditor::Draw() {
 
     // Draw Windows
     if (Enabled_) {
-    std::cout<<"1 | "<<glGetError()<<std::endl;
     
         DrawEditorWindow();
-    std::cout<<"2 | "<<glGetError()<<std::endl;
-
         DrawToolsWindow();
-    std::cout<<"3 | "<<glGetError()<<std::endl;
         
-
     }
 
 
