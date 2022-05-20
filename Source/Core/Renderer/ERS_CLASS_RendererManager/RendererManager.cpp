@@ -173,6 +173,9 @@ void RendererManager::InitializeGLFW() {
 
 void RendererManager::UpdateLoop(float DeltaTime) { 
 
+    // Log Any Issues
+    ReportOpenGLErrors();
+
     // Update Window Title
     std::string SceneTitle = ProjectUtils_->ProjectManager_->Project_.ProjectName + std::string(" - BrainGenix-ERS");
     glfwSetWindowTitle(Window_, SceneTitle.c_str());
