@@ -258,14 +258,15 @@ void Window_ShaderEditor::DrawEditorWindow() {
 void Window_ShaderEditor::DrawToolsWindow() {
 
     bool CompileVisible = ImGui::Begin("Shader Tools", &Enabled_);
-    std::cout<<"1 | "<<glGetError()<<std::endl;
 
     // Compile Shader Object
     std::string VertexText = Editors_[0]->GetText();
     std::string FragmentText = Editors_[1]->GetText();
-    std::cout<<"2.5 | "<<glGetError()<<std::endl;
+    std::cout<<"1 | "<<glGetError()<<std::endl;
 
     LivePreviewShader_->~ERS_STRUCT_Shader();
+    std::cout<<"2.5 | "<<glGetError()<<std::endl;
+
     LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
     std::cout<<"2 | "<<glGetError()<<std::endl;
 
