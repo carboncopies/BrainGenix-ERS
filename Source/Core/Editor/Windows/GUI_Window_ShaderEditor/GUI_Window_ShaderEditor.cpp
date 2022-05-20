@@ -69,7 +69,6 @@ void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
 }
 
 void Window_ShaderEditor::Draw() {
-    std::cout<<"1 | "<<glGetError()<<std::endl;
 
     // Check Enable Change
     if (LastEnabledState_ != Enabled_) {
@@ -96,16 +95,19 @@ void Window_ShaderEditor::Draw() {
         // Update Last State
         LastEnabledState_ = Enabled_;
     }
-    std::cout<<"2 | "<<glGetError()<<std::endl;
 
     // Draw Windows
     if (Enabled_) {
+    std::cout<<"1 | "<<glGetError()<<std::endl;
     
         DrawEditorWindow();
+    std::cout<<"2 | "<<glGetError()<<std::endl;
+
         DrawToolsWindow();
+    std::cout<<"3 | "<<glGetError()<<std::endl;
+        
 
     }
-    std::cout<<"3 | "<<glGetError()<<std::endl;
 
 
 }
