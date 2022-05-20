@@ -33,8 +33,9 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
 
     // Draw All Opaque Meshes
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
-        //glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
-        //glActiveTexture(OpenGLDefaults->DefaultTexture_);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
+        glActiveTexture(OpenGLDefaults->DefaultTexture_);
         ERS_FUNCTION_DrawMesh(OpaqueMeshes[i], OpenGLDefaults, Shader);
     }
 
@@ -48,6 +49,7 @@ std::cout<<"Transparent\n";
 
     // Render Transparent Meshes In Right Order
     for (unsigned long i = 0; i < TransparentMeshes.size(); i++) {
+        glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
         glActiveTexture(OpenGLDefaults->DefaultTexture_);
         ERS_FUNCTION_DrawMesh(TransparentMeshes[i], OpenGLDefaults, Shader);
