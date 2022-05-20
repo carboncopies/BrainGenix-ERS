@@ -93,13 +93,17 @@ void GUISystem::UpdateGUI() {
 
     // Add Main Menu
     if (ImGui::BeginMainMenuBar()) {
+    std::cout<<"1 | "<<glGetError()<<std::endl;
 
         Menu_File_->Draw();
+    std::cout<<"2 | "<<glGetError()<<std::endl;
+
         Menu_View_->Draw();
         Menu_Window_->Draw();
         Menu_Settings_->Draw();
         Menu_Debug_->Draw();
 
+    std::cout<<"3 | "<<glGetError()<<std::endl;
 
     ImGui::EndMainMenuBar();
     }
