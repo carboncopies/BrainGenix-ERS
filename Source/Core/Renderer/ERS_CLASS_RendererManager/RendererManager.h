@@ -91,7 +91,7 @@ private:
     unsigned int LoadEditorIcon(const char* Path);
 
     /**
-     * @brief 
+     * @brief This function gets the current opengl error status and if there's an issue it reports it into the log.
      * 
      */
     void ReportOpenGLErrors(); 
