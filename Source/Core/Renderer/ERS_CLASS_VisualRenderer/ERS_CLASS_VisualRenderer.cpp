@@ -421,7 +421,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
 
-    std::cout<<"4 | "<<glGetError()<<std::endl;
 
 
 
@@ -479,7 +478,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         }
 
-    std::cout<<"5 | "<<glGetError()<<std::endl;
 
 
         // Update Selected Object
