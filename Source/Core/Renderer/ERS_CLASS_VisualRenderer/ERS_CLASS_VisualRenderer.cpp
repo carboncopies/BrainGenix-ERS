@@ -360,6 +360,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         // Use Shader
         int ShaderIndex = Viewports_[Index]->ShaderIndex;
+        std::cout<<Shaders_[ShaderIndex]->DisplayName;
         Shaders_[ShaderIndex]->MakeActive();
 
         // Update Shaders
