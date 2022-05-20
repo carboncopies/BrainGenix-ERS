@@ -258,43 +258,46 @@ void Window_ShaderEditor::DrawEditorWindow() {
 void Window_ShaderEditor::DrawToolsWindow() {
 
     bool CompileVisible = ImGui::Begin("Shader Tools", &Enabled_);
+    std::cout<<"1 | "<<glGetError()<<std::endl;
 
-        // Compile Shader Object
-        std::string VertexText = Editors_[0]->GetText();
-        std::string FragmentText = Editors_[1]->GetText();
+    // Compile Shader Object
+    std::string VertexText = Editors_[0]->GetText();
+    std::string FragmentText = Editors_[1]->GetText();
 
-        LivePreviewShader_->~ERS_STRUCT_Shader();
-        LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
-        std::string VertexLog = LivePreviewShader_->CompileVertexShader(VertexText.c_str());
-        std::string FragmentLog = LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
-        LivePreviewShader_->CreateShaderProgram();
-        bool ShaderCompiled = LivePreviewShader_->MakeActive();
-        LivePreviewShader_->SetInt("texture_diffuse1", 0);
-        LivePreviewShader_->DisplayName = "Preview Shader";
-        LivePreviewShader_->InternalName = "Preview Shader";
+    LivePreviewShader_->~ERS_STRUCT_Shader();
+    LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
+    std::string VertexLog = LivePreviewShader_->CompileVertexShader(VertexText.c_str());
+    std::string FragmentLog = LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
+    LivePreviewShader_->CreateShaderProgram();
+    bool ShaderCompiled = LivePreviewShader_->MakeActive();
+    LivePreviewShader_->SetInt("texture_diffuse1", 0);
+    LivePreviewShader_->DisplayName = "Preview Shader";
+    LivePreviewShader_->InternalName = "Preview Shader";
 
+    std::cout<<"2 | "<<glGetError()<<std::endl;
 
-        // If Autopreview, Update Shader
-        if (ShaderCompiled) {
-            VisualRenderer_->SetShader(LivePreviewShader_, LivePreviewShaderIndex_);
-        }
-
-
-        // Extract Shader Log
-        std::string ShaderLog;
-        if (Mode_ == 0) {
-            ShaderLog = VertexLog;
-        } else if (Mode_ == 1) {
-            ShaderLog = FragmentLog;
-        }
-
-        if (ShaderLog == "") {
-            ShaderLog = "No errors detected.";
-        }
+    // If Autopreview, Update Shader
+    if (ShaderCompiled) {
+        VisualRenderer_->SetShader(LivePreviewShader_, LivePreviewShaderIndex_);
+    }
 
 
-        // Set Default Window Size
-        ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
+    // Extract Shader Log
+    std::string ShaderLog;
+    if (Mode_ == 0) {
+        ShaderLog = VertexLog;
+    } else if (Mode_ == 1) {
+        ShaderLog = FragmentLog;
+    }
+
+    if (ShaderLog == "") {
+        ShaderLog = "No errors detected.";
+    }
+
+    std::cout<<"3 | "<<glGetError()<<std::endl;
+
+    // Set Default Window Size
+    ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
 
 
         if (CompileVisible) {
