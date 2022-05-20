@@ -194,15 +194,12 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
     ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->IndexSceneObjects();
 
-    std::cout<<"1 | "<<glGetError()<<std::endl;
 
     // Update GUI
     GuiSystem_->UpdateGUI();
-    std::cout<<"2 | "<<glGetError()<<std::endl;
 
     // Call Updates
     VisualRenderer_->UpdateViewports(DeltaTime, ProjectUtils_->SceneManager_.get());
-    std::cout<<"3 | "<<glGetError()<<std::endl;
 
 
     // Update GUI Frame
