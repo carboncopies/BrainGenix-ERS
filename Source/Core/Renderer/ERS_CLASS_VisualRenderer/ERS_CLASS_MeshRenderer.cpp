@@ -33,10 +33,7 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
         ERS_FUNCTION_DrawMesh(OpaqueMeshes[i], OpenGLDefaults, Shader);
     }
 
-    std::cout<<"2 |"<<glGetError()<<std::endl;
 
-
-std::cout<<"Transparent\n";
 
     // Disable Depth Filtering
     //glDisable(GL_DEPTH_TEST);
