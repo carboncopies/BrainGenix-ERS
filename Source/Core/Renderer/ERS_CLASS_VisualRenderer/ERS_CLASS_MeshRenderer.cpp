@@ -29,7 +29,7 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
     ERS_FUNCTION_MeshTransparencySort(&OpaqueMeshes, &TransparentMeshes, Scene);
 
     std::cout<<"opaque\n";
-    std::cout<<"1|"<<glGetError()<<std::endl;
+    std::cout<<"1 |"<<glGetError()<<std::endl;
 
     // Draw All Opaque Meshes
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
@@ -38,7 +38,7 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
         ERS_FUNCTION_DrawMesh(OpaqueMeshes[i], OpenGLDefaults, Shader);
     }
 
-    std::cout<<"2|"<<glGetError()<<std::endl;
+    std::cout<<"2 |"<<glGetError()<<std::endl;
 
 
 std::cout<<"Transparent\n";
@@ -52,7 +52,7 @@ std::cout<<"Transparent\n";
         glActiveTexture(OpenGLDefaults->DefaultTexture_);
         ERS_FUNCTION_DrawMesh(TransparentMeshes[i], OpenGLDefaults, Shader);
     }
-    std::cout<<"3|"<<glGetError()<<std::endl;
+    std::cout<<"3 |"<<glGetError()<<std::endl;
 
     // Enable Depth Filtering
     //glEnable(GL_DEPTH_TEST);
