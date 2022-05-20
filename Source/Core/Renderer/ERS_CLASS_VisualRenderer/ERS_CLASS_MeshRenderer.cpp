@@ -37,10 +37,6 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
     for (unsigned long i = 0; i < TransparentMeshes.size(); i++) {
         ERS_FUNCTION_DrawMesh(TransparentMeshes[i], OpenGLDefaults, Shader);
     }
-    std::cout<<"3 |"<<glGetError()<<std::endl;
-
-    // Enable Depth Filtering
-    //glEnable(GL_DEPTH_TEST);
 
 
     // TODO: Update rendering process
