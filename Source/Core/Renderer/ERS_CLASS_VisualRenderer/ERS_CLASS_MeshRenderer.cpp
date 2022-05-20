@@ -32,6 +32,7 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
 
     // Draw All Opaque Meshes
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
+        std::cout<<OpenGLDefaults->DefaultTexture_<<std::endl;
         glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->DefaultTexture_);
         glActiveTexture(OpenGLDefaults->DefaultTexture_);
         ERS_FUNCTION_DrawMesh(OpaqueMeshes[i], OpenGLDefaults, Shader);
