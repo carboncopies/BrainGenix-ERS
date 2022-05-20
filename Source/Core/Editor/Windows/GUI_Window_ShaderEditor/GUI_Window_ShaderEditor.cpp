@@ -263,6 +263,7 @@ void Window_ShaderEditor::DrawToolsWindow() {
     // Compile Shader Object
     std::string VertexText = Editors_[0]->GetText();
     std::string FragmentText = Editors_[1]->GetText();
+    std::cout<<"2.5 | "<<glGetError()<<std::endl;
 
     LivePreviewShader_->~ERS_STRUCT_Shader();
     LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
