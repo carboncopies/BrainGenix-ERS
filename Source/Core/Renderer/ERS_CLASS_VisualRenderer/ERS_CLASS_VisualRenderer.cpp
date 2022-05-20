@@ -261,6 +261,7 @@ void ERS_CLASS_VisualRenderer::SetScriptDebug(int Index, std::vector<std::string
 
 void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager* SceneManager, float DeltaTime, bool DrawCursor) {
 
+    std::cout<<"1|"<<glGetError()<<std::endl;
 
     // Render To ImGui
     ImGuiWindowFlags Flags = ImGuiWindowFlags_None;
@@ -272,6 +273,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
     // Set Default Window Size
     ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
+    std::cout<<"1|"<<glGetError()<<std::endl;
 
 
     // Check If Window Visible
@@ -283,6 +285,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
         ViewportMenu_->DrawMenu(Viewports_[Index].get());
 
+    std::cout<<"1|"<<glGetError()<<std::endl;
 
         // Calculate Window Position
         ImVec2 vMin = ImGui::GetWindowContentRegionMin();
@@ -302,6 +305,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         // Get Window Input
         int RenderWidth = WindowBottomRightCornerX - WindowTopLeftCornerX;
         int RenderHeight = WindowBottomRightCornerY - WindowTopLeftCornerY;
+    std::cout<<"1|"<<glGetError()<<std::endl;
 
 
         // Get Mouse Pos
@@ -331,6 +335,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             Viewports_[Index]->WasSelected = false;
         }
 
+    std::cout<<"1|"<<glGetError()<<std::endl;
 
 
 
@@ -358,6 +363,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         glm::mat4 view = Viewports_[Index]->Camera->GetViewMatrix();
         
 
+    std::cout<<"1|"<<glGetError()<<std::endl;
 
 
         // Use Shader
@@ -373,6 +379,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         Shaders_[ShaderIndex]->SetFloat("Exposure_", Viewports_[Index]->Exposure_);
         Shaders_[ShaderIndex]->SetFloat("Gamma_", Viewports_[Index]->Gamma_);
         
+    std::cout<<"1|"<<glGetError()<<std::endl;
 
 
         // Update Cursor If Selection Changed
@@ -419,6 +426,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
 
+    std::cout<<"1|"<<glGetError()<<std::endl;
 
 
         // glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram, "DepthMap"), 9);
@@ -437,6 +445,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
 
+    std::cout<<"1|"<<glGetError()<<std::endl;
 
 
         // Render Framebuffer To Window
@@ -448,6 +457,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             ImVec2(1, 0)        
         );
 
+    std::cout<<"1|"<<glGetError()<<std::endl;
 
         // Draw 3D Cursor
         if (Cursors3D_->HasStateChanged()) {
@@ -455,6 +465,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
                 ActiveViewportCursorIndex_ = Index;
             }
         }
+    std::cout<<"1|"<<glGetError()<<std::endl;
 
         bool DrawCursor;
         Cursors3D_->SetGridSnap(Viewports_[Index]->GridSnapAmountTranslate_, Viewports_[Index]->GridSnapAmountRotate_, Viewports_[Index]->GridSnapAmountScale_);
@@ -473,6 +484,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         }
 
+    std::cout<<"1|"<<glGetError()<<std::endl;
 
 
         // Update Selected Object
@@ -488,6 +500,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
     }
+    std::cout<<"1|"<<glGetError()<<std::endl;
     
 
     ImGui::End();
