@@ -6,7 +6,6 @@
 
 
 void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, ERS_STRUCT_Shader* Shader) {
-    std::cout<<"1|"<<glGetError()<<std::endl;
 
     Shader->SetMat4("model", Mesh->ModelMatrix);
 
@@ -18,7 +17,6 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
     unsigned int MetalnessHandle = 1;
     unsigned int NormalsHandle = 1;
     unsigned int ShininessHandle = 1;
-    std::cout<<"2|"<<glGetError()<<std::endl;
 
 
 
@@ -33,7 +31,6 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
     ERS_FUNCTION_ResetMeshTexture("texture_metalness1", 6, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_normals1", 7, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_shininess1", 8, ShaderProgram, ResetTexID);
-    std::cout<<"3|"<<glGetError()<<std::endl;
 
 
 
@@ -46,7 +43,6 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
     bool HasNormals = false;
     bool HasShininess = false;
 
-    std::cout<<"4|"<<glGetError()<<std::endl;
 
     // Iterate Through Textures
     for (unsigned int i = 0; i < Mesh->TextureIDs.size(); i++) {
@@ -103,7 +99,6 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
     }
 
 
-    std::cout<<"5|"<<glGetError()<<std::endl;
 
     // Set Uniforms
     Shader->SetBool("HasAmbientOcclusion", HasAmbientOcclusion);
@@ -115,7 +110,6 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
     Shader->SetBool("HasNormals", HasNormals);
     Shader->SetBool("HasShininess", HasShininess);
     
-    std::cout<<"6|"<<glGetError()<<std::endl;
 
 
     // Draw Mesh
