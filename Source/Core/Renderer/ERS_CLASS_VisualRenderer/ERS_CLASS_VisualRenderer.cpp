@@ -69,6 +69,8 @@ void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defa
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
 
 
+    // Set Depth Shader For Shadow System
+    DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthMap"), &Shaders_)].get();
 
 
     // Close Any Viewports That Aren't All Open
@@ -534,9 +536,6 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
     // Log Creation
     SystemUtils_->Logger_->Log(std::string(std::string("Creating New Viewport '") + ViewportName + std::string("'")).c_str(), 5);
-
-    // Set Depth Shader For Shadow System
-    DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthMap"), &Shaders_)].get();
 
 
     // Create Viewport Struct
