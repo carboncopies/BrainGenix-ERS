@@ -266,15 +266,19 @@ void Window_ShaderEditor::DrawToolsWindow() {
 
     LivePreviewShader_->~ERS_STRUCT_Shader();
     LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
+    std::cout<<"2 | "<<glGetError()<<std::endl;
+
     std::string VertexLog = LivePreviewShader_->CompileVertexShader(VertexText.c_str());
     std::string FragmentLog = LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
+    std::cout<<"3 | "<<glGetError()<<std::endl;
+
     LivePreviewShader_->CreateShaderProgram();
     bool ShaderCompiled = LivePreviewShader_->MakeActive();
     LivePreviewShader_->SetInt("texture_diffuse1", 0);
     LivePreviewShader_->DisplayName = "Preview Shader";
     LivePreviewShader_->InternalName = "Preview Shader";
 
-    std::cout<<"2 | "<<glGetError()<<std::endl;
+    std::cout<<"4 | "<<glGetError()<<std::endl;
 
     // If Autopreview, Update Shader
     if (ShaderCompiled) {
@@ -294,7 +298,6 @@ void Window_ShaderEditor::DrawToolsWindow() {
         ShaderLog = "No errors detected.";
     }
 
-    std::cout<<"3 | "<<glGetError()<<std::endl;
 
     // Set Default Window Size
     ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
