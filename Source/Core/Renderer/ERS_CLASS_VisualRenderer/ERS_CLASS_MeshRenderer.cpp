@@ -28,7 +28,7 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
     std::vector<ERS_STRUCT_Mesh*> TransparentMeshes;
     ERS_FUNCTION_MeshTransparencySort(&OpaqueMeshes, &TransparentMeshes, Scene);
 
-
+    std::cout<<"opaque\n";
 
     // Draw All Opaque Meshes
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
@@ -39,6 +39,8 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
     }
 
 
+
+std::cout<<"Transparent\n";
 
     // Disable Depth Filtering
     //glDisable(GL_DEPTH_TEST);
