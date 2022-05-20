@@ -426,12 +426,10 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         // glBindTexture(GL_TEXTURE_2D,  SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[0]->DepthMap.DepthMapTextureID);
 
         //OpenGLDefaults_->DefaultTexture_ = SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[0]->DepthMap.DepthMapTextureID;
-    std::cout<<"1|"<<glGetError()<<std::endl;
 
         // Render
         MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, Shaders_[ShaderIndex].get());
         
-    std::cout<<"2|"<<glGetError()<<std::endl;
 
         if (Viewports_[Index]->GridEnabled) {
             Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position_);
