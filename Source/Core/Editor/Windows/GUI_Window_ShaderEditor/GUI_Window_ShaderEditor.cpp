@@ -263,10 +263,10 @@ void Window_ShaderEditor::DrawToolsWindow() {
     std::string VertexText = Editors_[0]->GetText();
     std::string FragmentText = Editors_[1]->GetText();
 
-    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->~ERS_STRUCT_Shader();
+    //VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->~ERS_STRUCT_Shader();
     std::cout<<"1|"<<glGetError()<<std::endl;
-
-    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1] = std::make_unique<ERS_STRUCT_Shader>();
+    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ResetProgram();
+    //VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1] = std::make_unique<ERS_STRUCT_Shader>();
     std::cout<<"2|"<<glGetError()<<std::endl;
     bool T = glIsProgram(VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ShaderProgram_);
     std::cout<<T<<std::endl;
