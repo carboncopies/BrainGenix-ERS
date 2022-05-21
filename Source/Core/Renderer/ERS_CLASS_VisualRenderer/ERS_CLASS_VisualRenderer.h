@@ -181,7 +181,7 @@ public:
      * @param Shader 
      * @param ID 
      */
-    void SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID);
+    void SetShader(ERS_STRUCT_Shader>Shader, int ID);
         
     /**
      * @brief Set the Default Shader by index
