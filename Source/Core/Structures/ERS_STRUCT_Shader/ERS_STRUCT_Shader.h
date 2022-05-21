@@ -82,6 +82,13 @@ struct ERS_STRUCT_Shader {
     bool MakeActive();
 
 
+    /**
+     * @brief Clears and resets the shader program, used in the shader editor.
+     * 
+     */
+    void ResetProgram();
+
+
     // Population Functions
     // ------------------------------------------------------------------------
     /**
