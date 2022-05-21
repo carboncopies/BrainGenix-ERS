@@ -268,11 +268,14 @@ void Window_ShaderEditor::DrawToolsWindow() {
 
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1] = std::make_unique<ERS_STRUCT_Shader>();
     std::cout<<"2|"<<glGetError()<<std::endl;
+    std::cout<<glIsProgram(VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ShaderProgram_)<<std::endl;
+
     std::string VertexLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileVertexShader(VertexText.c_str());
     std::string FragmentLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileFragmentShader(FragmentText.c_str());
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CreateShaderProgram();
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->DisplayName = "Preview Shader";
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->InternalName = "Preview Shader";
+
 
     // Extract Shader Log
     std::string ShaderLog;
