@@ -279,7 +279,7 @@ void Window_ShaderEditor::DrawToolsWindow() {
     if (ShaderCompiled) {
         VisualRenderer_->SetShader(LivePreviewShader_, LivePreviewShaderIndex_);
     }
-    std::cout<<"IsShader: "<<glIsProgram(LivePreviewShader_)<<std::endl;
+    std::cout<<"IsShader: "<<glIsProgram(LivePreviewShader_->ShaderProgram_)<<std::endl;
 
     // Extract Shader Log
     std::string ShaderLog;
