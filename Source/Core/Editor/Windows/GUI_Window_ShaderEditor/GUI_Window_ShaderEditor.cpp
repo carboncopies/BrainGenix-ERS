@@ -263,33 +263,33 @@ void Window_ShaderEditor::DrawToolsWindow() {
     std::string VertexText = Editors_[0]->GetText();
     std::string FragmentText = Editors_[1]->GetText();
 
-    LivePreviewShader_->~ERS_STRUCT_Shader();
-    LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
+    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->~ERS_STRUCT_Shader();
+    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1] = std::make_shared<ERS_STRUCT_Shader>();
 
-    std::string VertexLog = LivePreviewShader_->CompileVertexShader(VertexText.c_str());
-    std::string FragmentLog = LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
+    std::string VertexLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileVertexShader(VertexText.c_str());
+    std::string FragmentLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileFragmentShader(FragmentText.c_str());
 
-    LivePreviewShader_->CreateShaderProgram();
-    bool ShaderCompiled = LivePreviewShader_->MakeActive();
-    LivePreviewShader_->DisplayName = "Preview Shader";
-    LivePreviewShader_->InternalName = "Preview Shader";
+    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CreateShaderProgram();
+    bool ShaderCompiled = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->MakeActive();
+    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->DisplayName = "Preview Shader";
+    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->InternalName = "Preview Shader";
     
 
     
     // If Autopreview, Update Shader
     if (ShaderCompiled) {
-        bool State = glIsProgram(LivePreviewShader_->ShaderProgram_);
+        bool State = glIsProgram(VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ShaderProgram_);
         std::cout<<"IsShader2: "<<State<<std::endl;
-        std::cout<<LivePreviewShader_->ShaderProgram_<<std::endl;
+        std::cout<<VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ShaderProgram_<<std::endl;
 
-        VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1] = LivePreviewShader_;
+        //VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1] = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1];
 
         //VisualRenderer_->Shaders_.erase(LivePreviewShaderIndex_);
-        //VisualRenderer_->Shaders_.insert(LivePreviewShaderIndex_, LivePreviewShader_);
+        //VisualRenderer_->Shaders_.insert(LivePreviewShaderIndex_, VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]);
 
-        State = glIsProgram(LivePreviewShader_->ShaderProgram_);
+        State = glIsProgram(VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ShaderProgram_);
         std::cout<<"IsShader3: "<<State<<std::endl;
-        std::cout<<LivePreviewShader_->ShaderProgram_<<std::endl;
+        std::cout<<VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ShaderProgram_<<std::endl;
     }
 
 
