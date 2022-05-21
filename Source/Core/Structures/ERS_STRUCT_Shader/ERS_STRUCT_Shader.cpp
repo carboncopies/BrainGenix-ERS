@@ -10,7 +10,7 @@ ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
 
     // Deallocate Shader Program
     glUseProgram(0);
-    glDeleteProgram(ShaderProgram);
+    glDeleteProgram(ShaderProgram_);
     //glDeleteShader(ShaderProgram);
 
 }
