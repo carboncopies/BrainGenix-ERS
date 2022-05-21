@@ -81,7 +81,7 @@ void Window_ShaderEditor::Draw() {
 
             // Set Any Viewports Shaders To 0 Who Are Using This Shader
             for (int i = 0; (long)i < (long)VisualRenderer_->Viewports_.size(); i++) {
-                if (VisualRenderer_->Viewports_[i]->ShaderIndex == VisualRenderer_->Shaders_.size() - 1) {
+                if (VisualRenderer_->Viewports_[i]->ShaderIndex == (int)(VisualRenderer_->Shaders_.size() - 1)) {
                     VisualRenderer_->Viewports_[i]->ShaderIndex = 0;
                 }
             }
