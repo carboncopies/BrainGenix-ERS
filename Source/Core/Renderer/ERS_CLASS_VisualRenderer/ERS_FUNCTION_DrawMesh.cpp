@@ -21,7 +21,7 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
 
 
     // Reset All Textures To Defaults
-    unsigned int ShaderProgram = Shader->ShaderProgram;
+    unsigned int ShaderProgram = Shader->ShaderProgram_;
     unsigned int ResetTexID = OpenGLDefaults->DefaultTexture_;
     ERS_FUNCTION_ResetMeshTexture("texture_ambient_occlusion1", 1, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_diffuse1", 2, ShaderProgram, ResetTexID);
@@ -90,7 +90,7 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
             HasShininess = true;
         }
 
-        glUniform1i(glGetUniformLocation(Shader->ShaderProgram, (Name + Number).c_str()), Type);
+        glUniform1i(glGetUniformLocation(Shader->ShaderProgram_, (Name + Number).c_str()), Type);
         
         // Bind Texture
         glActiveTexture(GL_TEXTURE0 + Type);
