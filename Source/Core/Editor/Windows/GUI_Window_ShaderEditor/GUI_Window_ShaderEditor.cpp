@@ -270,25 +270,11 @@ void Window_ShaderEditor::DrawToolsWindow() {
     std::string FragmentLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileFragmentShader(FragmentText.c_str());
 
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CreateShaderProgram();
-    bool ShaderCompiled = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->MakeActive();
+    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->MakeActive();
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->DisplayName = "Preview Shader";
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->InternalName = "Preview Shader";
     
 
-    
-    // If Autopreview, Update Shader
-    if (ShaderCompiled) {
-        bool State = glIsProgram(VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ShaderProgram_);
-        std::cout<<"IsShader2: "<<State<<std::endl;
-        std::cout<<VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ShaderProgram_<<std::endl;
-
-        //VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1] = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1];
-
-        //VisualRenderer_->Shaders_.erase(LivePreviewShaderIndex_);
-        //VisualRenderer_->Shaders_.insert(LivePreviewShaderIndex_, VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]);
-
-
-    }
 
 
 
