@@ -55,7 +55,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_ViewportMenu(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, double* GameStartTime, bool* IsEditorMode, std::vector<std::shared_ptr<ERS_STRUCT_Shader>>* Shaders);
+    ERS_CLASS_ViewportMenu(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, double* GameStartTime, bool* IsEditorMode, std::vector<std::unique_ptr<ERS_STRUCT_Shader>>* Shaders);
 
     /**
      * @brief Destroy the ers class viewportMenu object
