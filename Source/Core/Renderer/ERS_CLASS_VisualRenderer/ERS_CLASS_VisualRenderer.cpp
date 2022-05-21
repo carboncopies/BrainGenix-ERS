@@ -628,7 +628,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
 
     // Get Pointer to Shader
-    std::shared_ptr<ERS_STRUCT_Shader> ActiveShader = Shaders_[ShaderIndex];
+    ERS_STRUCT_Shader* ActiveShader = Shaders_[ShaderIndex].get();
 
     // Set Metadata Params
     float Time = glfwGetTime();
