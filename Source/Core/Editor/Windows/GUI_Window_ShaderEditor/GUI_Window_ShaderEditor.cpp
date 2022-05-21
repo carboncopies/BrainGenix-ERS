@@ -264,7 +264,7 @@ void Window_ShaderEditor::DrawToolsWindow() {
     std::string FragmentText = Editors_[1]->GetText();
     std::cout<<"1 | "<<glGetError()<<std::endl;
 
-    //LivePreviewShader_->~ERS_STRUCT_Shader();
+    LivePreviewShader_->~ERS_STRUCT_Shader();
     std::cout<<"2.5 | "<<glGetError()<<std::endl;
 
     LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
