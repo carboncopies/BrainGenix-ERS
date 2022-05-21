@@ -257,7 +257,7 @@ void Window_ShaderEditor::DrawEditorWindow() {
 
 void Window_ShaderEditor::DrawToolsWindow() {
 
-    bool CompileVisible = ImGui::Begin("Shader Tools", &Enabled_);
+    bool CompileVisible = ImGui::Begin("Compiler Log", &Enabled_);
 
     // Compile Shader Object
     std::string VertexText = Editors_[0]->GetText();
@@ -290,9 +290,6 @@ void Window_ShaderEditor::DrawToolsWindow() {
         ShaderLog = FragmentLog;
     }
 
-    if (ShaderLog == "") {
-        ShaderLog = "No errors detected.";
-    }
 
 
     // Set Default Window Size
