@@ -75,19 +75,19 @@ void Window_ShaderEditor::Draw() {
 
         // If Just Enabled
         if (Enabled_) {
-            LivePreviewShaderIndex_ = VisualRenderer_->Shaders_.size();
+
         } else {
 
 
             // Set Any Viewports Shaders To 0 Who Are Using This Shader
             for (int i = 0; (long)i < (long)VisualRenderer_->Viewports_.size(); i++) {
-                if (VisualRenderer_->Viewports_[i]->ShaderIndex == LivePreviewShaderIndex_) {
+                if (VisualRenderer_->Viewports_[i]->ShaderIndex == VisualRenderer_->Shaders_.size() - 1) {
                     VisualRenderer_->Viewports_[i]->ShaderIndex = 0;
                 }
             }
 
             // Remove Shader From List
-            VisualRenderer_->Shaders_.erase(VisualRenderer_->Shaders_.begin() + LivePreviewShaderIndex_);
+            VisualRenderer_->Shaders_.erase(VisualRenderer_->Shaders_.begin() + VisualRenderer_->Shaders_.size() - 1);
 
 
         }
@@ -282,7 +282,7 @@ void Window_ShaderEditor::DrawToolsWindow() {
         std::cout<<"IsShader2: "<<State<<std::endl;
         std::cout<<LivePreviewShader_->ShaderProgram_<<std::endl;
 
-        VisualRenderer_->Shaders_[LivePreviewShaderIndex_] = LivePreviewShader_;
+        VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1] = LivePreviewShader_;
 
         //VisualRenderer_->Shaders_.erase(LivePreviewShaderIndex_);
         //VisualRenderer_->Shaders_.insert(LivePreviewShaderIndex_, LivePreviewShader_);
