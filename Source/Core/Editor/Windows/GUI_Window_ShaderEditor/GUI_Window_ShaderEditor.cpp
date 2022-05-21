@@ -271,7 +271,6 @@ void Window_ShaderEditor::DrawToolsWindow() {
 
     LivePreviewShader_->CreateShaderProgram();
     bool ShaderCompiled = LivePreviewShader_->MakeActive();
-    LivePreviewShader_->SetInt("texture_diffuse1", 0);
     LivePreviewShader_->DisplayName = "Preview Shader";
     LivePreviewShader_->InternalName = "Preview Shader";
 
