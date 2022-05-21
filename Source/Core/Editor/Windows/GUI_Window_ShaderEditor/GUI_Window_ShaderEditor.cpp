@@ -270,7 +270,7 @@ void Window_ShaderEditor::DrawToolsWindow() {
     std::string FragmentLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileFragmentShader(FragmentText.c_str());
 
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CreateShaderProgram();
-    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->MakeActive();
+    //VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->MakeActive();
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->DisplayName = "Preview Shader";
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->InternalName = "Preview Shader";
     
