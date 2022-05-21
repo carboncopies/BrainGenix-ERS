@@ -282,7 +282,7 @@ void Window_ShaderEditor::DrawToolsWindow() {
         std::cout<<"IsShader2: "<<State<<std::endl;
         std::cout<<LivePreviewShader_->ShaderProgram_<<std::endl;
 
-        VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1] = LivePreviewShader_;
+        //VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1] = LivePreviewShader_;
 
 
         State = glIsProgram(LivePreviewShader_->ShaderProgram_);
