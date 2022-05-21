@@ -50,7 +50,7 @@ void ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const ch
 
 }
 
-std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::LoadShaderFromAsset(long VertexID, long FragmentID, ERS_STRUCT_Shader* ShaderStruct, std::string ShaderName) {
+void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(long VertexID, long FragmentID, ERS_STRUCT_Shader* ShaderStruct, std::string ShaderName) {
 
     // Load Shaders From Disk Into RAM
     SystemUtils_->Logger_->Log(std::string("Loading Shaders From Asset IDs ") + std::to_string(VertexID) + std::string(", ") + std::to_string(FragmentID), 5);
