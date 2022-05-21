@@ -43,6 +43,12 @@ struct ERS_STRUCT_Shader {
 
 
     /**
+     * @brief Construct a new ers struct shader object
+     * 
+     */
+    ERS_STRUCT_Shader();
+
+    /**
      * @brief Destroy the ers struct shader object
      * 
      */

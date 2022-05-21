@@ -6,6 +6,20 @@
 #include <ERS_STRUCT_Shader.h>
 
 
+ERS_STRUCT_Shader::ERS_STRUCT_Shader() {
+
+    ShaderProgram_ = 0;
+    VertexShader = 0;
+    FragmentShader = 0;
+
+
+    VertexID = 0;
+    FragmentID = 0;
+
+
+
+}
+
 ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
 
     // Deallocate Shader Program
