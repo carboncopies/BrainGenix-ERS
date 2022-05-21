@@ -278,13 +278,13 @@ void Window_ShaderEditor::DrawToolsWindow() {
     
     // If Autopreview, Update Shader
     if (ShaderCompiled) {
-            bool State = glIsProgram(LivePreviewShader_->ShaderProgram_);
-            std::cout<<"IsShader2: "<<State<<std::endl;
-            std::cout<<LivePreviewShader_->ShaderProgram_<<std::endl;
+        bool State = glIsProgram(LivePreviewShader_->ShaderProgram_);
+        std::cout<<"IsShader2: "<<State<<std::endl;
+        std::cout<<LivePreviewShader_->ShaderProgram_<<std::endl;
         VisualRenderer_->Shaders_[LivePreviewShaderIndex_] = LivePreviewShader_;
-            State = glIsProgram(LivePreviewShader_->ShaderProgram_);
-            std::cout<<"IsShader3: "<<State<<std::endl;
-            std::cout<<LivePreviewShader_->ShaderProgram_<<std::endl;
+        State = glIsProgram(LivePreviewShader_->ShaderProgram_);
+        std::cout<<"IsShader3: "<<State<<std::endl;
+        std::cout<<LivePreviewShader_->ShaderProgram_<<std::endl;
     }
 
 
