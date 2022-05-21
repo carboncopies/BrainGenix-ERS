@@ -78,7 +78,8 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
 
     // Link Program
     glLinkProgram(ShaderProgram_);
-
+    bool State = glIsProgram(ShaderProgram_);
+    std::cout<<"IsShader: "<<State<<std::endl;
 
     // Get Link Status
     int Success;
