@@ -44,7 +44,6 @@ std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, ERS_C
 std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, ERS_CLASS_LoggingSystem* Logger) {
 
     // Compile The Fragment Shader Text Into A Binary
-    std::string ErrorMessage;
     FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
     glShaderSource(FragmentShader, 1, &FragmentText, NULL);
@@ -53,6 +52,7 @@ std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, E
     // Report Compilation Status
     int FragmentSuccess;
     char FragmentInfoLog[65535];
+    std::string ErrorMessage;
     glGetShaderiv(FragmentShader, GL_COMPILE_STATUS, &FragmentSuccess);
     if (!FragmentSuccess) {
         glGetShaderInfoLog(FragmentShader, 65535, NULL, FragmentInfoLog);
@@ -82,6 +82,7 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
 
     // Get Link Status
     int Success;
+    std::string ErrorMessage;
     glGetProgramiv(ShaderProgram_, GL_LINK_STATUS, &Success);
     if (!Success) {
         char InfoLog[65535];
@@ -99,9 +100,7 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
     glDetachShader(ShaderProgram_, FragmentShader);
     glDeleteShader(FragmentShader);
 
-    // Set State Of Vertex/Fragment Shaders To Uninit
-    _VertexShaderInitialized = false;
-    _FragmentShaderInitialized = false;
+
 
 
     // Return Status
