@@ -36,8 +36,7 @@ std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, ERS_C
         }
     }
 
-    // Update Vars
-    _VertexShaderInitialized = true;
+
     return ErrorMessage;
 
 }
@@ -63,22 +62,12 @@ std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, E
         }
     }
 
-    // Update Vars
-    _FragmentShaderInitialized = true;
     return ErrorMessage;
 
 }
 
 
 std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logger) {
-
-    // Check That Vertex And Fragment Shaders Are Initialized
-    std::string ErrorMessage;
-    if (!_VertexShaderInitialized || !_FragmentShaderInitialized) {
-        if (Logger != nullptr) {
-            Logger->Log("Vertex/Fragment Shader Compile Error", 8);
-        }
-    }
 
     // Create Shader Program
     ShaderProgram_ = glCreateProgram();
@@ -101,10 +90,7 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
         if (Logger != nullptr) {
             Logger->Log("Shader Link Error: " +  std::string(InfoLog), 8);
         }
-    } else {
-        _ShaderProgramInitialized = true;
     }
-
 
     // Free RAM
     glDetachShader(ShaderProgram_, VertexShader);
