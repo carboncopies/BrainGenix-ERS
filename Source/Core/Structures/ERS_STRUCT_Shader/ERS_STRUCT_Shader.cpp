@@ -81,22 +81,22 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
     }
 
     // Create Shader Program
-    ShaderProgram = glCreateProgram();
+    ShaderProgram_ = glCreateProgram();
 
     // Attach Shaders To Program
-    glAttachShader(ShaderProgram, VertexShader);
-    glAttachShader(ShaderProgram, FragmentShader);
+    glAttachShader(ShaderProgram_, VertexShader);
+    glAttachShader(ShaderProgram_, FragmentShader);
 
     // Link Program
-    glLinkProgram(ShaderProgram);
+    glLinkProgram(ShaderProgram_);
 
 
     // Get Link Status
     int Success;
-    glGetProgramiv(ShaderProgram, GL_LINK_STATUS, &Success);
+    glGetProgramiv(ShaderProgram_, GL_LINK_STATUS, &Success);
     if (!Success) {
         char InfoLog[65535];
-        glGetProgramInfoLog(ShaderProgram, 65535, NULL, InfoLog);
+        glGetProgramInfoLog(ShaderProgram_, 65535, NULL, InfoLog);
         ErrorMessage = std::string(InfoLog);
         if (Logger != nullptr) {
             Logger->Log("Shader Link Error: " +  std::string(InfoLog), 8);
@@ -107,10 +107,10 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
 
 
     // Free RAM
-    glDetachShader(ShaderProgram, VertexShader);
+    glDetachShader(ShaderProgram_, VertexShader);
     glDeleteShader(VertexShader);
 
-    glDetachShader(ShaderProgram, FragmentShader);
+    glDetachShader(ShaderProgram_, FragmentShader);
     glDeleteShader(FragmentShader);
 
     // Set State Of Vertex/Fragment Shaders To Uninit
@@ -125,14 +125,7 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
 
 bool ERS_STRUCT_Shader::MakeActive(ERS_CLASS_LoggingSystem* Logger) {
 
-    if ((!_ShaderProgramInitialized)) {
-        if (Logger != nullptr) {
-            Logger->Log("Shader Not Yet Initialized", 8);
-        }
-        return false;
-    }
-
-    glUseProgram(ShaderProgram);
+    glUseProgram(ShaderProgram_);
     return true;
 
 }
