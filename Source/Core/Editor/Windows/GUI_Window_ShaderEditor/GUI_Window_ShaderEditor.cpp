@@ -270,6 +270,8 @@ void Window_ShaderEditor::DrawToolsWindow() {
     std::string FragmentLog = LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
 
     LivePreviewShader_->CreateShaderProgram();
+    bool State = glIsProgram(LivePreviewShader_->ShaderProgram_);
+    std::cout<<"IsShader: "<<State<<std::endl;
     bool ShaderCompiled = LivePreviewShader_->MakeActive();
     LivePreviewShader_->DisplayName = "Preview Shader";
     LivePreviewShader_->InternalName = "Preview Shader";
