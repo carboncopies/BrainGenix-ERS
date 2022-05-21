@@ -73,7 +73,7 @@ struct ERS_STRUCT_Shader {
      * @brief Make The Shader Stored Within The Struct Active.
      * 
      */
-    bool MakeActive(ERS_CLASS_LoggingSystem* Logger = nullptr);
+    bool MakeActive();
 
 
     // Population Functions
