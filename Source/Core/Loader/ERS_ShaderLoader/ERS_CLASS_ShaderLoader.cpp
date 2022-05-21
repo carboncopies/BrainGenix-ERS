@@ -18,7 +18,7 @@ ERS_CLASS_ShaderLoader::~ERS_CLASS_ShaderLoader() {
 
 }
 
-void ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText, bool LogBuild, ERS_STRUCT_Shader ShaderStruct) {
+void ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText, bool LogBuild, ERS_STRUCT_Shader* ShaderStruct) {
 
     if (LogBuild) {
         SystemUtils_->Logger_->Log("Creating Shader Object", 5);
@@ -50,7 +50,7 @@ void ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const ch
 
 }
 
-std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::LoadShaderFromAsset(long VertexID, long FragmentID, std::string ShaderName) {
+std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::LoadShaderFromAsset(long VertexID, long FragmentID, ERS_STRUCT_Shader* ShaderStruct, std::string ShaderName) {
 
     // Load Shaders From Disk Into RAM
     SystemUtils_->Logger_->Log(std::string("Loading Shaders From Asset IDs ") + std::to_string(VertexID) + std::string(", ") + std::to_string(FragmentID), 5);
@@ -65,7 +65,7 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::LoadShaderFromAsset(l
 
 
     // Return Compiled Shader
-    std::shared_ptr<ERS_STRUCT_Shader> ShaderStruct = CreateShaderObject(VertexText.c_str(), FragmentText.c_str());
+    CreateShaderObject(VertexText.c_str(), FragmentText.c_str(), ShaderStruct);
     ShaderStruct->VertexID = VertexID;
     ShaderStruct->FragmentID = FragmentID;
     ShaderStruct->DisplayName = ShaderName;
@@ -73,7 +73,6 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::LoadShaderFromAsset(l
 
     SystemUtils_->Logger_->Log(std::string("Loaded Shader '") + ShaderName + std::string("'"), 5);
 
-    return ShaderStruct;
 
 
 }
