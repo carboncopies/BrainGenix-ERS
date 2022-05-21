@@ -42,7 +42,7 @@ private:
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to systemtuils resource*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to project utils instance*/
 
-    std::map<int, std::shared_ptr<ERS_STRUCT_Shader>>* Shaders_; /**<Pointer to map containing shader information*/
+    std::vector<std::shared_ptr<ERS_STRUCT_Shader>>* Shaders_; /**<Pointer to vector containing shader information*/
 
     bool* IsEditorMode_; /**<Pointer to bool setting editor mode to enabled or disablewd*/
     double* GameStartTime_; /**<Pointer to float setting the glfw time when the game clock started*/
