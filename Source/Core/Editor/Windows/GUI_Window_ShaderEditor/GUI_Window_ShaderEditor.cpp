@@ -266,6 +266,7 @@ void Window_ShaderEditor::DrawToolsWindow() {
     std::string FragmentText = Editors_[1]->GetText();
 
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->~ERS_STRUCT_Shader();
+    std::cout<<"2.5|"<<glGetError()<<std::endl;
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1] = std::make_shared<ERS_STRUCT_Shader>();
     std::cout<<"2|"<<glGetError()<<std::endl;
     std::string VertexLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileVertexShader(VertexText.c_str());
