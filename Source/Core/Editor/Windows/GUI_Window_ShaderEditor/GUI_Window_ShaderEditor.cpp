@@ -87,7 +87,7 @@ void Window_ShaderEditor::Draw() {
             }
 
             // Remove Shader From List
-            VisualRenderer_->Shaders_.erase(LivePreviewShaderIndex_);
+            VisualRenderer_->Shaders_.erase(VisualRenderer_->Shaders_.begin() + LivePreviewShaderIndex_);
 
 
         }
