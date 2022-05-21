@@ -175,13 +175,7 @@ public:
      */
     void DeleteViewport(int Index);
     
-     /**
-     * @brief Set the Shader object
-     * 
-     * @param Shader 
-     * @param ID 
-     */
-    void SetShader(ERS_STRUCT_Shader>Shader, int ID);
+
         
     /**
      * @brief Set the Default Shader by index
