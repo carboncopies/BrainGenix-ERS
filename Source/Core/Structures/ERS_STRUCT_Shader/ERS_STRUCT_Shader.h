@@ -31,7 +31,7 @@
 struct ERS_STRUCT_Shader {
 
 
-    unsigned int ShaderProgram; /**<OpenGL refernece ID for Shader Program */
+    unsigned int ShaderProgram_; /**<OpenGL refernece ID for Shader Program */
     unsigned int VertexShader; /**<OpenGL Reference ID for Vertex Shader */
     unsigned int FragmentShader; /**<OpenGL Reference ID For Fragment Shader */
 
@@ -40,10 +40,6 @@ struct ERS_STRUCT_Shader {
 
     long VertexID; /**<Asset ID of vertex shader (optional, used for saving) */
     long FragmentID; /**<Asset ID of fragment shader (optional, used for saving) */
-
-    bool _VertexShaderInitialized = false; /**<Control Variable indicating Vertex Shader Initialization Status */
-    bool _FragmentShaderInitialized = false; /**<Control Variable Indicating Fragment Shader Initialization Status */
-    bool _ShaderProgramInitialized = false; /**<Control Variable Indicating Shader Program Initializatation Status */
 
 
     /**
