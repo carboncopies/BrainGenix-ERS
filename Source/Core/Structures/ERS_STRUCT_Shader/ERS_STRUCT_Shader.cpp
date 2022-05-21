@@ -101,8 +101,8 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
     glDetachShader(ShaderProgram_, FragmentShader);
     glDeleteShader(FragmentShader);
 
-    bool State = glIsProgram(ShaderProgram_);
-    std::cout<<"IsShader2: "<<State<<std::endl;
+    bool State2 = glIsProgram(ShaderProgram_);
+    std::cout<<"IsShader2: "<<State2<<std::endl;
 
 
     // Return Status
