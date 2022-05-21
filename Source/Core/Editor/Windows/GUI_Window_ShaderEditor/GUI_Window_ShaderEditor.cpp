@@ -287,9 +287,7 @@ void Window_ShaderEditor::DrawToolsWindow() {
         //VisualRenderer_->Shaders_.erase(LivePreviewShaderIndex_);
         //VisualRenderer_->Shaders_.insert(LivePreviewShaderIndex_, VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]);
 
-        State = glIsProgram(VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ShaderProgram_);
-        std::cout<<"IsShader3: "<<State<<std::endl;
-        std::cout<<VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ShaderProgram_<<std::endl;
+
     }
 
 
