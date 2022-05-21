@@ -268,7 +268,8 @@ void Window_ShaderEditor::DrawToolsWindow() {
 
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1] = std::make_unique<ERS_STRUCT_Shader>();
     std::cout<<"2|"<<glGetError()<<std::endl;
-    std::cout<<glIsProgram(VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ShaderProgram_)<<std::endl;
+    bool T = glIsProgram(VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ShaderProgram_);
+    std::cout<<T<<std::endl;
 
     std::string VertexLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileVertexShader(VertexText.c_str());
     std::string FragmentLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileFragmentShader(FragmentText.c_str());
