@@ -176,7 +176,6 @@ public:
     void DeleteViewport(int Index);
     
 
-        
     /**
      * @brief Set the Default Shader by index
      * 
