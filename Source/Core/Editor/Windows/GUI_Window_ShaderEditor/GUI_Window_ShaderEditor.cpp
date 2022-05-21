@@ -75,7 +75,7 @@ void Window_ShaderEditor::Draw() {
 
         // If Just Enabled
         if (Enabled_) {
-            VisualRenderer_->Shaders_.push_back(ERS_STRUCT_Shader());
+            VisualRenderer_->Shaders_.push_back(std::make_unique<ERS_STRUCT_Shader>());
         } else {
 
 
