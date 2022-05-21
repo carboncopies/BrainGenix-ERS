@@ -107,7 +107,10 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
 
 
     // Free RAM
+    glDetachShader(ShaderProgram, VertexShader);
     glDeleteShader(VertexShader);
+
+    glDetachShader(ShaderProgram, FragmentShader);
     glDeleteShader(FragmentShader);
 
     // Set State Of Vertex/Fragment Shaders To Uninit
