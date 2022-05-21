@@ -269,8 +269,6 @@ void Window_ShaderEditor::DrawToolsWindow() {
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->DisplayName = "Preview Shader";
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->InternalName = "Preview Shader";
 
-    bool T = glIsProgram(VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ShaderProgram_);
-    std::cout<<T<<std::endl;
     // Extract Shader Log
     std::string ShaderLog;
     if (Mode_ == 0) {
