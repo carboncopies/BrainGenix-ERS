@@ -24,6 +24,13 @@ ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
 
 }
 
+
+void ERS_STRUCT_Shader::ResetProgram() {
+
+    glDeleteProgram(ShaderProgram_);
+
+}
+
 std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, ERS_CLASS_LoggingSystem* Logger) {
 
     // Compile The Vertex Shader Text Into A Binary
