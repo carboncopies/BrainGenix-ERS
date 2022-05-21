@@ -23,4 +23,4 @@
  * @param Name 
  * @param Shaders 
  */
-unsigned int ERS_FUNCTION_FindShaderByName(std::string Name, std::vector<std::shared_ptr<ERS_STRUCT_Shader>>* Shaders);
+unsigned int ERS_FUNCTION_FindShaderByName(std::string Name, std::vector<std::unique_ptr<ERS_STRUCT_Shader>>* Shaders);

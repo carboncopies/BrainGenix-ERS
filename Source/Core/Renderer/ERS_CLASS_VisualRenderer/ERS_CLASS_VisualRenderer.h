@@ -77,7 +77,7 @@ public:
     
     std::vector<std::shared_ptr<ERS_STRUCT_Viewport>> Viewports_; /**Pointer to struct of viewports*/
 
-    std::vector<ERS_STRUCT_Shader> Shaders_; /**<Vector of shaders to be used in the system*/
+    std::vector<std::unique_ptr<ERS_STRUCT_Shader>> Shaders_; /**<Vector of shaders to be used in the system*/
     int DefaultShader_ = 0; /**<Index of default shader program to be used*/
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Struct Containing Pointers To Important Info*/
