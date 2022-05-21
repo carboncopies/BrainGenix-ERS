@@ -259,7 +259,7 @@ void Window_ShaderEditor::DrawToolsWindow() {
 
     bool CompileVisible = ImGui::Begin("Compiler Log", &Enabled_);
 
-    std::cout<<"1"<<glGetError()<<std::endl;
+    std::cout<<"1|"<<glGetError()<<std::endl;
 
     // Compile Shader Object
     std::string VertexText = Editors_[0]->GetText();
@@ -267,17 +267,17 @@ void Window_ShaderEditor::DrawToolsWindow() {
 
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->~ERS_STRUCT_Shader();
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1] = std::make_shared<ERS_STRUCT_Shader>();
-
+    std::cout<<"2|"<<glGetError()<<std::endl;
     std::string VertexLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileVertexShader(VertexText.c_str());
     std::string FragmentLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileFragmentShader(FragmentText.c_str());
-
+    std::cout<<"3|"<<glGetError()<<std::endl;
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CreateShaderProgram();
     //VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->MakeActive();
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->DisplayName = "Preview Shader";
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->InternalName = "Preview Shader";
     
 
-    std::cout<<"2"<<glGetError()<<std::endl;
+    std::cout<<"4|"<<glGetError()<<std::endl;
 
 
 
