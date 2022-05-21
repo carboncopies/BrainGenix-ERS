@@ -75,7 +75,7 @@ void Window_ShaderEditor::Draw() {
 
         // If Just Enabled
         if (Enabled_) {
-            VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1] = std::make_shared<ERS_STRUCT_Shader>();
+            VisualRenderer_->Shaders_.push_back(std::make_shared<ERS_STRUCT_Shader>());
         } else {
 
 
