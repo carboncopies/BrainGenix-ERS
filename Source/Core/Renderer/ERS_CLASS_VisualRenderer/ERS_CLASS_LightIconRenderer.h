@@ -31,7 +31,7 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Shared Pointer To System Utils*/
     ERS_STRUCT_OpenGLDefaults* OpenGLDefaults_; /**<Pointer acquired from renderermanager*/
-    std::shared_ptr<ERS_STRUCT_Shader> LightIconRendererShader_; /**<Pointer To Shader With LightIconRenderer*/
+    ERS_STRUCT_Shader* LightIconRendererShader_; /**<Pointer To Shader With LightIconRenderer*/
     glm::mat4 LightIconRendererModelArray_; /**<LightIconRenderer Model Mat4*/
 
     unsigned int LightIconRendererVBO_; /**<OpenGL ID To LightIconRenderer Vertex Buffer Object*/
@@ -46,7 +46,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_LightIconRenderer(ERS_STRUCT_OpenGLDefaults* Defaults, ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_Shader> LightIconRendererShader);
+    ERS_CLASS_LightIconRenderer(ERS_STRUCT_OpenGLDefaults* Defaults, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Shader* LightIconRendererShader);
 
     /**
      * @brief Destroy the ers class grid object
