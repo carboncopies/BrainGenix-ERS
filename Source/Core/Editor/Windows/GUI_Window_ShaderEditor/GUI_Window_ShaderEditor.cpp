@@ -259,6 +259,8 @@ void Window_ShaderEditor::DrawToolsWindow() {
 
     bool CompileVisible = ImGui::Begin("Compiler Log", &Enabled_);
 
+    std::cout<<glGetError()<<std::endl;
+
     // Compile Shader Object
     std::string VertexText = Editors_[0]->GetText();
     std::string FragmentText = Editors_[1]->GetText();
@@ -275,6 +277,7 @@ void Window_ShaderEditor::DrawToolsWindow() {
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->InternalName = "Preview Shader";
     
 
+    std::cout<<glGetError()<<std::endl;
 
 
 
