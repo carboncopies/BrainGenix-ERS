@@ -7,6 +7,7 @@
 
 
 ERS_STRUCT_Shader::ERS_STRUCT_Shader() {
+    std::cout<<"1|"<<glGetError()<<std::endl;
 
     ShaderProgram_ = 0;
     VertexShader = 0;
@@ -14,6 +15,8 @@ ERS_STRUCT_Shader::ERS_STRUCT_Shader() {
 
     VertexID = 0;
     FragmentID = 0;
+    std::cout<<"2|"<<glGetError()<<std::endl;
+
 }
 
 ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
