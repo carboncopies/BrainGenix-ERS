@@ -12,12 +12,8 @@ ERS_STRUCT_Shader::ERS_STRUCT_Shader() {
     VertexShader = 0;
     FragmentShader = 0;
 
-
     VertexID = 0;
     FragmentID = 0;
-
-
-
 }
 
 ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
