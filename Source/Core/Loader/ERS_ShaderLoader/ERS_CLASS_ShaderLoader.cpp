@@ -18,14 +18,12 @@ ERS_CLASS_ShaderLoader::~ERS_CLASS_ShaderLoader() {
 
 }
 
-std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText, bool LogBuild) {
+void ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText, bool LogBuild, ERS_STRUCT_Shader ShaderStruct) {
 
     if (LogBuild) {
         SystemUtils_->Logger_->Log("Creating Shader Object", 5);
     }
 
-    // Create Shader
-    std::shared_ptr<ERS_STRUCT_Shader> ShaderStruct = std::make_shared<ERS_STRUCT_Shader>();
 
     if (LogBuild) {
         SystemUtils_->Logger_->Log("Creating Vertex Shader Object", 3);
@@ -49,7 +47,6 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::CreateShaderObject(co
         SystemUtils_->Logger_->Log("Linked Shader Program", 4);
     }
 
-    return ShaderStruct;
 
 }
 
