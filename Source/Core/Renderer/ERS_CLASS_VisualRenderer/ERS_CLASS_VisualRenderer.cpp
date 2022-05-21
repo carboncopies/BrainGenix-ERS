@@ -51,8 +51,11 @@ ERS_CLASS_VisualRenderer::~ERS_CLASS_VisualRenderer() {
 
 void ERS_CLASS_VisualRenderer::SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID) {
 
-    Shaders_[ID] = Shader;
-
+    if (Shaders_.size() - 1 >= (unsigned int)ID) {
+        Shaders_[ID] = Shader;
+    } else {
+        Shaders_.push_back(Shader);
+    }
 }
 
 void ERS_CLASS_VisualRenderer::SetDefaultShader(int ShaderID) {

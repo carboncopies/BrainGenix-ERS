@@ -282,11 +282,8 @@ void Window_ShaderEditor::DrawToolsWindow() {
         std::cout<<"IsShader2: "<<State<<std::endl;
         std::cout<<LivePreviewShader_->ShaderProgram_<<std::endl;
 
-        if (LivePreviewShaderIndex_ == VisualRenderer_->Shaders_.size()-1) {
-            VisualRenderer_->Shaders_[LivePreviewShaderIndex_] = LivePreviewShader_;
-        } else {
-            VisualRenderer_->Shaders_.push_back(LivePreviewShader_);
-        }
+        VisualRenderer_->Shaders_[LivePreviewShaderIndex_] = LivePreviewShader_;
+
         //VisualRenderer_->Shaders_.erase(LivePreviewShaderIndex_);
         //VisualRenderer_->Shaders_.insert(LivePreviewShaderIndex_, LivePreviewShader_);
 
