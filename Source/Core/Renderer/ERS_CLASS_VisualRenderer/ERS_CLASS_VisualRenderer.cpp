@@ -49,7 +49,7 @@ ERS_CLASS_VisualRenderer::~ERS_CLASS_VisualRenderer() {
 
 }
 
-void ERS_CLASS_VisualRenderer::SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int Index) {
+void ERS_CLASS_VisualRenderer::SetShader(ERS_STRUCT_Shader Shader, int Index) {
 
     if ((unsigned int)Index <= Shaders_.size() - 1) {
         Shaders_[Index] = Shader;
