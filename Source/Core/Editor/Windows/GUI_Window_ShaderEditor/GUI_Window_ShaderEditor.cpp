@@ -262,17 +262,12 @@ void Window_ShaderEditor::DrawToolsWindow() {
     // Compile Shader Object
     std::string VertexText = Editors_[0]->GetText();
     std::string FragmentText = Editors_[1]->GetText();
-    std::cout<<"1 | "<<glGetError()<<std::endl;
 
     LivePreviewShader_->~ERS_STRUCT_Shader();
-    std::cout<<"2.5 | "<<glGetError()<<std::endl;
-
     LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
-    std::cout<<"2 | "<<glGetError()<<std::endl;
 
     std::string VertexLog = LivePreviewShader_->CompileVertexShader(VertexText.c_str());
     std::string FragmentLog = LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
-    std::cout<<"3 | "<<glGetError()<<std::endl;
 
     LivePreviewShader_->CreateShaderProgram();
     bool ShaderCompiled = LivePreviewShader_->MakeActive();
@@ -280,7 +275,6 @@ void Window_ShaderEditor::DrawToolsWindow() {
     LivePreviewShader_->DisplayName = "Preview Shader";
     LivePreviewShader_->InternalName = "Preview Shader";
 
-    std::cout<<"4 | "<<glGetError()<<std::endl;
 
     // If Autopreview, Update Shader
     if (ShaderCompiled) {
