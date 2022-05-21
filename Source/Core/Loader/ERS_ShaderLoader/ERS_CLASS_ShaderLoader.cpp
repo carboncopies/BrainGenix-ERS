@@ -18,7 +18,7 @@ ERS_CLASS_ShaderLoader::~ERS_CLASS_ShaderLoader() {
 
 }
 
-void ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText, bool LogBuild, ERS_STRUCT_Shader* ShaderStruct) {
+void ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText, ERS_STRUCT_Shader* ShaderStruct, bool LogBuild) {
 
     if (LogBuild) {
         SystemUtils_->Logger_->Log("Creating Shader Object", 5);
