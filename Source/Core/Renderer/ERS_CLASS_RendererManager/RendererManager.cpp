@@ -41,7 +41,7 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
         Shader_ = ShaderLoader_->LoadShaderFromAsset(VertexShaderID, FragmentShaderID, ShaderName);
         Shader_->MakeActive();
         Shader_->SetInt("texture_diffuse1", 0);
-        VisualRenderer_->SetShader(Shader_, i);
+        VisualRenderer_->Shaders_.push_back(Shader_);
     }
     int DefaultShader = ProjectUtils_->ProjectManager_->Project_.DefaultShaderProgram;
     VisualRenderer_->SetDefaultShader(DefaultShader);
