@@ -296,6 +296,7 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
     } else {
         SystemUtils_->Logger_->Log(std::string("FreeImage Error Loading Texture '") + std::to_string(ID) + std::string("' , Width/Height Are Zero Falling Back To STB_Image"), 7);
         FreeImageLoadFail = true;
+        Channels = -1;
     }
 
     // Channel Sanity Check
