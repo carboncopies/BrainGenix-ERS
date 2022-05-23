@@ -24,7 +24,6 @@
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_CLASS_ShaderLoader.h>
 #include <ERS_CLASS_InputProcessor.h>
-#include <ERS_CLASS_Framebuffer.h>
 #include <ERS_CLASS_Grid.h>
 #include <ERS_CLASS_LightIconRenderer.h>
 #include <ERS_CLASS_MeshRenderer.h>
