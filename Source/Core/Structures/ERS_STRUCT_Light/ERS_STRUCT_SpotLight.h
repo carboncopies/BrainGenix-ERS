@@ -34,4 +34,7 @@ struct ERS_STRUCT_SpotLight {
 
     ERS_STRUCT_DepthMap DepthMap; /**<Contains OpenGL IDS Used To Calculate Shadows*/
 
+    glm::mat4 LightSpaceMatrix; /**<Matrix From Light's Perspective*/
+
+
 };
