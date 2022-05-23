@@ -86,6 +86,10 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
     DepthShader->MakeActive();
     DepthShader->SetMat4("LightSpaceMatrix", ObjectSpace);
 
+    if (LightSpaceMatrix != nullptr) {
+        *LightSpaceMatrix = ObjectSpace;
+    }
+
     glViewport(0, 0, Target->ResolutionX, Target->ResolutionY);
     glBindFramebuffer(GL_FRAMEBUFFER, Target->FrameBufferObjectID);
 
