@@ -81,7 +81,9 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
         float AspectRatio = Target->ResolutionX / Target->ResolutionY;
         ObjectProjection = glm::perspective(glm::radians(110.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
     }
-    ObjectView = glm::lookAt(Pos, glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    
+    glm::vec3 Front = glm::normalize(Rot);
+    ObjectView = glm::lookAt(Pos, Pos+Front, glm::vec3(0.0f, 1.0f, 0.0f));
     ObjectSpace = ObjectProjection * ObjectView;
 
     // Render With Depth Shader
