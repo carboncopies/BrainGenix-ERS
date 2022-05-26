@@ -140,6 +140,7 @@ const float PI = 3.14159265358979;
 
 
 
+
 float ShadowCalculation(vec4 fragPosLightSpace, vec3 LightPos)
 {
     // perform perspective divide
@@ -155,7 +156,23 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 LightPos)
     // check whether current frag pos is in shadow
     vec3 LightDir = normalize(LightPos - Object.FragPos);
     float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), 0.005);
-    float shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
+    //float shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
+    
+    
+    float shadow = 0.0;
+	vec2 texelSize = 1.0 / textureSize(texture_ambient_occlusion1, 0);
+	int SampleSize = 1;
+	for(int x = -SampleSize; x <= SampleSize; ++x)
+	{
+	    for(int y = -SampleSize; y <= SampleSize; ++y)
+	    {
+	        float pcfDepth = texture(texture_ambient_occlusion1, projCoords.xy + vec2(x, y) * texelSize).r; 
+	        shadow += currentDepth - Bias > pcfDepth ? 1.0 : 0.0;        
+	    }    
+	}
+	shadow /= (SampleSize+1)*(SampleSize+1);
+    
+    
     
     if (projCoords.z > 1.0) {
         shadow = 0.0f;
@@ -491,6 +508,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace)), 1.0f);
 }
+
 
 
 
