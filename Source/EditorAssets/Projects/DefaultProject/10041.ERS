@@ -12,7 +12,13 @@ in VS_OUT {
     vec3 TangentViewPos;
     vec3 TangentFragPos;
     vec3 Normal; // Used when normal texture not present
+    vec4 FragPosLightSpace;
 } Object;
+
+
+
+
+
 
 
 
@@ -91,7 +97,7 @@ uniform sampler2D texture_normals1;
 uniform sampler2D texture_shininess1;
 uniform sampler2D texture_emissive1;
 uniform sampler2D texture_metalness1;
-uniform sampler2D texture_ambientocclusion1;
+uniform sampler2D texture_ambient_occlusion1;
 
 
 
@@ -130,6 +136,32 @@ uniform float Exposure_;
 uniform float Gamma_;
 
 const float PI = 3.14159265358979;
+
+
+
+
+float ShadowCalculation(vec4 fragPosLightSpace, vec3 LightPos)
+{
+    // perform perspective divide
+    vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
+    // transform to [0,1] range
+    projCoords = projCoords * 0.5f + 0.5;
+    
+    
+    // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
+    float closestDepth = texture(texture_ambient_occlusion1, projCoords.xy).r; 
+    // get depth of current fragment from light's perspective
+    float currentDepth = projCoords.z;
+    // check whether current frag pos is in shadow
+    vec3 LightDir = normalize(LightPos - Object.FragPos);
+    float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), 0.005);
+    float shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
+
+    return shadow;
+}
+
+
+
 
 vec3 GetNormalFromMap(sampler2D Normal) {
 
@@ -295,8 +327,8 @@ vec3 PBRPointLight(STRUCT_PointLight Light, vec3 ViewDir, vec3 Reflectance, STRU
     kD *= 1.0 - Model.Metallic;	  
 
     // scale light by NdotL
-    float NdotL = max(dot(Model.Normal, L), 0.0);        
-
+    float NdotL = max(dot(Model.Normal, L), 0.0);
+    
     // add to outgoing radiance Lo
     return (kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL;  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
 
@@ -436,6 +468,7 @@ void main() {
     // ambient lighting (note that the next IBL tutorial will replace 
     // this ambient lighting with environment lighting).
     vec4 Ambient = vec4(0.03) * Model.Albedo * Model.AO;
+    Lo.xyz = Lo.xyz * (1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction));
     vec4 Color = Ambient + Lo;
 
 
@@ -451,7 +484,13 @@ void main() {
     } else {
         FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
+    
+    //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace)), 1.0f);
 }
+
+
+
+
 
 
 
