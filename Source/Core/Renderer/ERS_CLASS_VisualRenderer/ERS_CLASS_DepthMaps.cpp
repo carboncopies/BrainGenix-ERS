@@ -81,7 +81,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
         float AspectRatio = Target->ResolutionX / Target->ResolutionY;
         ObjectProjection = glm::perspective(glm::radians(110.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
     }
-    
+
     glm::vec3 Front = glm::normalize(Rot);
     ObjectView = glm::lookAt(Pos, Pos+Front, glm::vec3(0.0f, 1.0f, 0.0f));
     ObjectSpace = ObjectProjection * ObjectView;
@@ -131,7 +131,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Render To Depth Map
         glm::mat4* LightSpaceMatrix = new glm::mat4();
-        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Rot, true, LightSpaceMatrix);
+        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Rot, true, LightSpaceMatrix);
         Light->LightSpaceMatrix = *LightSpaceMatrix;
 
     } 
@@ -149,7 +149,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Render To Depth Map
         glm::mat4* LightSpaceMatrix = new glm::mat4();
-        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, false, LightSpaceMatrix);
+        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Rot, false, LightSpaceMatrix);
         Light->LightSpaceMatrix = *LightSpaceMatrix;
 
     }
@@ -167,7 +167,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Render To Depth Map
         glm::mat4* LightSpaceMatrix = new glm::mat4();
-        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, false, LightSpaceMatrix); // set this to false later, debugging
+        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Pos, false, LightSpaceMatrix); // set this to false later, debugging
         Light->LightSpaceMatrix = *LightSpaceMatrix;
 
     } 
