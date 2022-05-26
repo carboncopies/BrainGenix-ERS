@@ -110,6 +110,9 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
 
 void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
+    // Fix Offset (Peter Panning)
+    glCullFace(GL_FRONT);
+
     // Get Active Scene
     ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
 
@@ -167,5 +170,8 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
     } 
 
+
+    // Return To Normal Culling
+    glCullFace(GL_BACK);
 
 }
