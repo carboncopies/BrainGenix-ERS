@@ -156,6 +156,10 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 LightPos)
     vec3 LightDir = normalize(LightPos - Object.FragPos);
     float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), 0.005);
     float shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
+    
+    if (projCoords.z > 1.0) {
+        shadow = 0.0f;
+    }
 
     return shadow;
 }
@@ -487,6 +491,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace)), 1.0f);
 }
+
 
 
 
