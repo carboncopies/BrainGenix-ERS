@@ -67,7 +67,7 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int R
 
 }
 
-void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT_Shader* DepthShader, glm::vec3 Pos, bool Orthogonal, glm::mat4* LightSpaceMatrix) {
+void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT_Shader* DepthShader, glm::vec3 Pos, glm::vec3 Rot, bool Orthogonal, glm::mat4* LightSpaceMatrix) {
 
     // Setup Variables
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
@@ -129,7 +129,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Render To Depth Map
         glm::mat4* LightSpaceMatrix = new glm::mat4();
-        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, true, LightSpaceMatrix);
+        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Rot, true, LightSpaceMatrix);
         Light->LightSpaceMatrix = *LightSpaceMatrix;
 
     } 
