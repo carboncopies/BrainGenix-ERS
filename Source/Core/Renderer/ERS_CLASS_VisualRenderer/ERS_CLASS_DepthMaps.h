@@ -63,6 +63,24 @@ private:
 
 public:
 
+
+    unsigned int DepthTextureArrayID; /**<OpenGL Object ID For Depth Map Textures*/
+    int DepthTextureArrayWidth; /***<Width of the depth map texture*/
+    int DepthTextureArrayHeight; /**<Height of the depth map texutre*/
+
+
+    /**
+     * @brief Generates a depth map array (array texture), with the given width, height and number of layers.
+     * 
+     * @param NumberOfTextures 
+     * @param Width 
+     * @param Height 
+     * @return true 
+     * @return false 
+     */
+    bool RegenerateDepthMapTextureArray(int NumberOfTextures, int Width = 2048, int Height = 2048);
+
+
     /**
      * @brief Construct a new ers class DepthMaps object
      * 
