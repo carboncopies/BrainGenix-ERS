@@ -29,7 +29,8 @@ ERS_CLASS_DepthMaps::~ERS_CLASS_DepthMaps() {
 
 bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, int Width, int Height) {
 
-    //
+    // Check If Already Texture, If So, Delete So We Can Overwrite it
+    
 
 
 
