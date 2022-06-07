@@ -102,9 +102,13 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex() {
     }
 
     // IF Not, Batch Allocate More
+    SystemUtils_->Logger_->Log("Depth Map Texture Array Full, Regenerating With More Textures", 5);
     int StartSize = DepthMapTexturesAlreadyAllocated_.size();
-    RegenerateDepthMapTextureArray(StartSize + DepthMapAllocationChunkSize, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+    RegenerateDepthMapTextureArray(StartSize + DepthMapAllocationChunkSize_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+    SystemUtils_->Logger_->Log(std::string("Finished Updating Depth Map Array, Allocating Depth Map Texture Array Index: ") + std::to_string(StartSize + DepthMapAllocationChunkSize_), 5);
 
+    return StartSize + DepthMapAllocationChunkSize_;
+    
 
 
 }
