@@ -143,7 +143,7 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex() {
 ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(bool LogEnable) {
 
 
-    SystemUtils_->Logger_->Log(std::string("Creating Depth Map With Resolution Of ") + std::to_string(DepthTextureArrayWidth_) + std::string("x") + std::to_string(DepthTextureArrayHeight), 5, LogEnable);
+    SystemUtils_->Logger_->Log(std::string("Creating Depth Map With Resolution Of ") + std::to_string(DepthTextureArrayWidth_) + std::string("x") + std::to_string(DepthTextureArrayHeight_), 5, LogEnable);
 
     // Setup Struct
     ERS_STRUCT_DepthMap Output;
