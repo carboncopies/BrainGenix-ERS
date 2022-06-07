@@ -63,7 +63,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
     glActiveTexture(GL_TEXTURE8);
     glBindTexture(GL_TEXTURE_2D, TestID);
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT16, Width, Height, 0, GL_DEPTH_COMPONENT16, GL_FLOAT, NULL);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT24, Width, Height, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
     
     // ** THIS CAUSES A SEG FAULT FOR SOME REASON...? NOT SURE WHY, SO USING WORKAROUND BELOW **
     // glTextureStorage3D(GL_TEXTURE_2D_ARRAY,
