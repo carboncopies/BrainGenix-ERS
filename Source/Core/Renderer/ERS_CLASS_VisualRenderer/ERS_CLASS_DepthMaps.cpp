@@ -30,7 +30,12 @@ ERS_CLASS_DepthMaps::~ERS_CLASS_DepthMaps() {
 bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, int Width, int Height, bool LogEnabled) {
 
 
-    SystemUtils_->Logger_->Log("Generating Depth Map Texture Array", 5, LogEnabled);
+    SystemUtils_->Logger_->Log(
+        std::string("Generating Depth Map Texture Array Of ") + std::to_string(NumberOfTextures)
+         + std::string(" Textures, With Width Of ") + std::to_string(Width)
+         + std::string(" Pixels, And Height Of ") + std::to_string(Height)
+         + std::string(" Pixels")
+        , 5, LogEnabled);
 
     // Check If Already Texture, If So, Delete So We Can Overwrite it
     SystemUtils_->Logger_->Log("Checking If Texture Array Already Exists", 4, LogEnabled);
