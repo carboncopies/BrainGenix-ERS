@@ -425,10 +425,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         // OpenGLDefaults_->DefaultTexture_ = SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[0]->DepthMap.DepthMapTextureID;
 
 
-        glActiveTexture(GL_TEXTURE0);
+        glActiveTexture(GL_TEXTURE8);
         glUniform1i(1, glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram_, "DepthMapArray"));
-
-        OpenGLDefaults_->DefaultTexture_ = ShadowMaps_->ERS_CLASS_DepthMaps_->TestID;
         glBindTexture(GL_TEXTURE_2D_ARRAY, ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureArrayID_);
 
 
