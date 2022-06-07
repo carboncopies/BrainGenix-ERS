@@ -62,7 +62,7 @@ private:
      * @return true 
      * @return false 
      */
-    bool DeallocateDepthMapIndex(unsigned int Index);
+    bool FreeDepthMapIndex(unsigned int Index);
 
 
 public:

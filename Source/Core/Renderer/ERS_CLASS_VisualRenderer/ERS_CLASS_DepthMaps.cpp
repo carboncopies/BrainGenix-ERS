@@ -89,6 +89,18 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
 }
 
 
+bool ERS_CLASS_DepthMaps::FreeDepthMapIndex(unsigned int Index) {
+
+    // Sanity Check
+    if (Index > DepthMapTexturesAlreadyAllocated_.size() - 1) {
+        return false; // Indicate Failure, Out Of Range
+    }
+
+    // DeAllocate From Array
+    DepthMapTexturesAlreadyAllocated_[Index] = false;
+
+}
+
 unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex() {
 
     // If Enough Textures Exist, Find One
