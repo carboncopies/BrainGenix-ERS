@@ -88,7 +88,6 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
 
 }
 
-
 bool ERS_CLASS_DepthMaps::FreeDepthMapIndex(unsigned int Index) {
 
     // Sanity Check
