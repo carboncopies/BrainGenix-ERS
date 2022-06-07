@@ -64,9 +64,9 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
     float BorderColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
     glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, BorderColor); 
-
-
     SystemUtils_->Logger_->Log("Depth Map Texture Array Initialization Complete", 5, LogEnabled);
+
+
 
 }
 

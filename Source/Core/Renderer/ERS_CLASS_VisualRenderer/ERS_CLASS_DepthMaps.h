@@ -60,6 +60,7 @@ public:
     int DepthTextureNumTextures_; /**<Number of textures that the tex array can hold*/
     std::vector<bool> DepthMapTexturesAlreadyAllocated_; /**<Use This To Check if the texture is already allocated or not*/
 
+
     /**
      * @brief Generates a depth map array (array texture), with the given width, height and number of layers.
      * 
