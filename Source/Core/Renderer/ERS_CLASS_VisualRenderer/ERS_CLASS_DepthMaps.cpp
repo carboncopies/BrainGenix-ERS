@@ -177,7 +177,7 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int R
 
 void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT_Shader* DepthShader, glm::vec3 Pos, glm::vec3 Rot, bool Orthogonal, glm::mat4* LightSpaceMatrix) {
 
-    std::cout<<glGetError()<<std::endl;
+    std::cout<<glGetError();
 
 
     // Setup Variables
@@ -215,7 +215,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     
-    std::cout<<glGetError()<<std::endl;
+    std::cout<<"|"<<glGetError()<<"|"<<Target->DepthMapTextureIndex<<std::endl;
 
 
 
