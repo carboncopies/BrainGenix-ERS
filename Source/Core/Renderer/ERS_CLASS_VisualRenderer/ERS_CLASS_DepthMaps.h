@@ -73,13 +73,14 @@ public:
     /**
      * @brief Generates a depth map array (array texture), with the given width, height and number of layers.
      * 
-     * @param NumberOfTextures 
-     * @param Width 
-     * @param Height 
+     * @param NumberOfTextures Number of textures in the array
+     * @param Width Height of the array
+     * @param Height Width of the array
+     * @param LogEnabled Enab;e/Disable Log Output
      * @return true 
      * @return false 
      */
-    bool RegenerateDepthMapTextureArray(int NumberOfTextures, int Width = 2048, int Height = 2048);
+    bool RegenerateDepthMapTextureArray(int NumberOfTextures, int Width = 2048, int Height = 2048, bool LogEnabled = true);
 
 
     /**
