@@ -69,9 +69,9 @@ public:
 
 
     unsigned int DepthTextureArrayID_; /**<OpenGL Object ID For Depth Map Textures*/
-    int DepthTextureArrayWidth_; /***<Width of the depth map texture*/
-    int DepthTextureArrayHeight_; /**<Height of the depth map texutre*/
-    int DepthTextureNumTextures_; /**<Number of textures that the tex array can hold*/
+    int DepthTextureArrayWidth_ = 2048; /***<Width of the depth map texture*/
+    int DepthTextureArrayHeight_ = 2048; /**<Height of the depth map texutre*/
+    int DepthTextureNumTextures_ = 16; /**<Number of textures that the tex array can hold*/
     std::vector<bool> DepthMapTexturesAlreadyAllocated_; /**<Use This To Check if the texture is already allocated or not*/
 
 
