@@ -159,7 +159,7 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(bool LogEnable) {
     // Attach Depth Map Texture To Framebuffer
     SystemUtils_->Logger_->Log(std::string("Attaching Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndex) + std::string("'"), 4, LogEnable);
     glBindFramebuffer(GL_FRAMEBUFFER, Output.FrameBufferObjectID);
-    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, Output.DepthMapTextureIndex);
+    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, 0);//Output.DepthMapTextureIndex);
     glDrawBuffer(GL_NONE);
     glReadBuffer(GL_NONE);
     glBindFramebuffer(GL_FRAMEBUFFER, 0); 
@@ -203,7 +203,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
     glBindFramebuffer(GL_FRAMEBUFFER, Target->FrameBufferObjectID);
 
-    glClearDepth(0.5f);
+    
     glClear(GL_DEPTH_BUFFER_BIT);
     glActiveTexture(GL_TEXTURE8);
     glBindTexture(GL_TEXTURE_2D_ARRAY, DepthTextureArrayID_);
@@ -241,41 +241,41 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
     } 
 
-    // Handle Spot Lights
-    for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
+    // // Handle Spot Lights
+    // for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
 
-        // Extract Struct
-        ERS_STRUCT_SpotLight* Light = ActiveScene->SpotLights[i].get();
+    //     // Extract Struct
+    //     ERS_STRUCT_SpotLight* Light = ActiveScene->SpotLights[i].get();
 
-        // Check If Light Has DepthMap
-        if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap();   
-        }
+    //     // Check If Light Has DepthMap
+    //     if (!Light->DepthMap.Initialized) {
+    //         Light->DepthMap = GenerateDepthMap();   
+    //     }
 
-        // Render To Depth Map
-        glm::mat4* LightSpaceMatrix = new glm::mat4();
-        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Rot, false, LightSpaceMatrix);
-        Light->LightSpaceMatrix = *LightSpaceMatrix;
+    //     // Render To Depth Map
+    //     glm::mat4* LightSpaceMatrix = new glm::mat4();
+    //     UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Rot, false, LightSpaceMatrix);
+    //     Light->LightSpaceMatrix = *LightSpaceMatrix;
 
-    }
+    // }
 
-    // Handle Point Lights
-    for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
+    // // Handle Point Lights
+    // for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
 
-        // Extract Struct
-        ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
+    //     // Extract Struct
+    //     ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
 
-        // Check If Light Has DepthMap
-        if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap();   
-        }
+    //     // Check If Light Has DepthMap
+    //     if (!Light->DepthMap.Initialized) {
+    //         Light->DepthMap = GenerateDepthMap();   
+    //     }
 
-        // Render To Depth Map
-        glm::mat4* LightSpaceMatrix = new glm::mat4();
-        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Pos, false, LightSpaceMatrix); // set this to false later, debugging
-        Light->LightSpaceMatrix = *LightSpaceMatrix;
+    //     // Render To Depth Map
+    //     glm::mat4* LightSpaceMatrix = new glm::mat4();
+    //     UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Pos, false, LightSpaceMatrix); // set this to false later, debugging
+    //     Light->LightSpaceMatrix = *LightSpaceMatrix;
 
-    } 
+    // } 
 
 
     // Return To Normal Culling
