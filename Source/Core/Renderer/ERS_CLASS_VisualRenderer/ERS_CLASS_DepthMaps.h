@@ -67,7 +67,6 @@ private:
 
 public:
 
-    unsigned int TestID;
 
 
     unsigned int DepthTextureArrayID_; /**<OpenGL Object ID For Depth Map Textures*/
