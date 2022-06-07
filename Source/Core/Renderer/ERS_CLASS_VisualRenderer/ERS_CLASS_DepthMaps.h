@@ -73,6 +73,13 @@ public:
     int DepthTextureArrayHeight_ = 2048; /**<Height of the depth map texutre*/
     int DepthTextureNumTextures_ = 16; /**<Number of textures that the tex array can hold*/
     std::vector<bool> DepthMapTexturesAlreadyAllocated_; /**<Use This To Check if the texture is already allocated or not*/
+    
+
+    // !!FIXME!!
+    // Replace above vector with instead pointers to struct list so we can keep track and automatically free, etc.
+
+    //std::vector<unsigned int> DepthMapTextureIndex_; /**<Use This To Check if the texture is already allocated or not*/
+    //std::vector<unsigned int> AssociatedDepthMapFramebufferIndex_; /**<Used To Pair The Framebuffer With The Depth Map*/
 
 
     /**
