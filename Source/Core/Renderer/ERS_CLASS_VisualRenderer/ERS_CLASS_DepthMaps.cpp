@@ -89,6 +89,12 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
 }
 
 
+unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex() {
+
+    // Generate Depth Maps
+
+}
+
 ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int ResolutionY, bool LogEnable) {
 
 
@@ -120,6 +126,7 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int R
     // SystemUtils_->Logger_->Log("Created Depth Map Texture", 3, LogEnable);
 
     // Allocate Depth Map Texture ID
+    
 
     // Attach Depth Map Texture To Framebuffer
     SystemUtils_->Logger_->Log("Attaching Depth Map Texture To Framebuffer", 4, LogEnable);
