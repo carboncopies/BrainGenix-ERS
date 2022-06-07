@@ -128,21 +128,6 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int R
     glGenFramebuffers(1, &Output.FrameBufferObjectID);
     SystemUtils_->Logger_->Log("Generated Framebuffer Object", 3, LogEnable);
 
-    // // Generate Depth Map Texture (What We Render The Depth Map To)
-    // SystemUtils_->Logger_->Log("Creating Depth Map Texture", 4, LogEnable);
-    // glGenTextures(1, &Output.DepthMapTextureID);
-    // glBindTexture(GL_TEXTURE_2D, Output.DepthMapTextureID);
-
-
-    // glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, ResolutionX, ResolutionY, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER); 
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER); 
-    // float BorderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-    // glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, BorderColor);  
-    // SystemUtils_->Logger_->Log("Created Depth Map Texture", 3, LogEnable);
-
     // Allocate Depth Map Texture ID
     Output.DepthMapTextureIndex = AllocateDepthMapIndex();
 
