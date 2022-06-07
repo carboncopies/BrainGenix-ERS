@@ -68,7 +68,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
     // );
 
     glTexImage3D(GL_TEXTURE_2D_ARRAY,
-        0,                    // Current 'mipmap level', We're not using these so 0 is fine
+        1,                    // Current 'mipmap level', We're not using these so 0 is fine
         GL_DEPTH_COMPONENT24,   // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
         Width, Height,        // Width and Height, Pretty Self Explanitory
         NumberOfTextures,     // Total Number Of Textures In The Array
@@ -159,7 +159,7 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(bool LogEnable) {
     // Attach Depth Map Texture To Framebuffer
     SystemUtils_->Logger_->Log(std::string("Attaching Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndex) + std::string("'"), 4, LogEnable);
     glBindFramebuffer(GL_FRAMEBUFFER, Output.FrameBufferObjectID);
-    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, Output.DepthMapTextureIndex);
+    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 1, Output.DepthMapTextureIndex);
     glDrawBuffer(GL_NONE);
     glReadBuffer(GL_NONE);
     glBindFramebuffer(GL_FRAMEBUFFER, 0); 
