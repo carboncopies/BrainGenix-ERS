@@ -29,20 +29,41 @@ ERS_CLASS_DepthMaps::~ERS_CLASS_DepthMaps() {
 
 bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, int Width, int Height, bool LogEnabled) {
 
+
+    SystemUtils_->Logger_->Log("Generating Depth Map Texture Array", 5, LogEnabled);
+
     // Check If Already Texture, If So, Delete So We Can Overwrite it
+    SystemUtils_->Logger_->Log("Checking If Texture Array Already Exists", 4, LogEnabled);
     bool TextureAlreadyExists = glIsTexture(DepthTextureArrayID_);
     if (TextureAlreadyExists) {
+        SystemUtils_->Logger_->Log("Array ID Already In Use, Freeing First", 4, LogEnabled);
         glDeleteTextures(1, &DepthTextureArrayID_);
+    } else {
+        SystemUtils_->Logger_->Log("Array ID Not Already In Use", 4, LogEnabled);
     }
 
     // Handle The Creation Of A New Texture Array
+    SystemUtils_->Logger_->Log("Setting Up Texture Array Metadata", 4, LogEnabled);
     DepthTextureArrayWidth_ = Width;
     DepthTextureArrayHeight_ = Height;
     DepthTextureNumTextures_ = NumberOfTextures;
 
+    SystemUtils_->Logger_->Log("Setting Up Texture Array OpenGL Parameters", 5, LogEnabled);
     glGenTextures(1, &DepthTextureArrayID_);
     glActiveTexture(GL_TEXTURE8);
     glBindTexture(GL_TEXTURE_2D_ARRAY, DepthTextureArrayID_);
+    
+    glTexStorage3D(GL_TEXTURE_2D_ARRAY,
+        5, // Number OF Mipmaps
+        GL_DEPTH_COMPONENT, // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
+        Width, Height, // Width and Height, Pretty Self Explanitory
+        NumberOfTextures // Total Number Of Textures In The Array
+    );
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+    float BorderColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, BorderColor); 
 
 
     
