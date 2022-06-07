@@ -77,8 +77,6 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
         GL_FLOAT,             // tells opengl how to store the data
         NULL                  // if we were loading an image in, we could then pass the data in here, but we're not so this is left as null
     );
-    
-    std::cout<<glGetError()<<std::endl;
 
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
