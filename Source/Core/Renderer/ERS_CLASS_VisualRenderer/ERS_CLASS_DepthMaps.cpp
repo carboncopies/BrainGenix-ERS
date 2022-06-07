@@ -71,7 +71,11 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
         0, // Current 'mipmap level', We're not using these so 0 is fine
         GL_DEPTH_COMPONENT16,
         Width, Height,
-        NumberOfTextures
+        NumberOfTextures,
+        0,
+        GL_DEPTH_COMPONENT16,
+        GL_UNSIGNED_BYTE,
+        NULL
     );
     
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
