@@ -92,7 +92,6 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
         SystemUtils_->Logger_->Log("Downsizing Array To Match Target Number Of Textures", 5, LogEnabled);
         DepthMapTexturesAlreadyAllocated_.erase(DepthMapTexturesAlreadyAllocated_.begin() + NumberOfTextures, DepthMapTexturesAlreadyAllocated_.end());
     } else if (SizeOfAllocationArray < (unsigned int)NumberOfTextures) {
-        std::cout<<NumberOfTextures - SizeOfAllocationArray<<std::endl;
         SystemUtils_->Logger_->Log("Upsizing Array To Match Target Number Of Textures", 5, LogEnabled);
         for (unsigned int i = 0; i < NumberOfTextures - SizeOfAllocationArray; i++) {
             DepthMapTexturesAlreadyAllocated_.push_back(false);
@@ -135,7 +134,7 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex() {
     RegenerateDepthMapTextureArray(StartSize + DepthMapAllocationChunkSize_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
     SystemUtils_->Logger_->Log(std::string("Finished Updating Depth Map Array, Allocating Depth Map Texture Array Index: ") + std::to_string(StartSize + DepthMapAllocationChunkSize_), 5);
 
-    return StartSize + DepthMapAllocationChunkSize_;
+    return StartSize + 1;
     
 
 
