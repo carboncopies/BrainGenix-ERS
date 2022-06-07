@@ -49,7 +49,20 @@ private:
     unsigned int DepthMapAllocationChunkSize_ = 16; /**<Allocate Depth Map In Chunks Of 5*/
 
 
+    /**
+     * @brief Allocate an index from the depth map texture array.
+     * 
+     * @return unsigned int 
+     */
     unsigned int AllocateDepthMapIndex();
+
+    /**
+     * @brief Deallocates an index from the depth map texture array.
+     * @param Index
+     * @return true 
+     * @return false 
+     */
+    bool DeallocateDepthMapIndex(unsigned int Index);
 
 
 public:
