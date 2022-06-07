@@ -25,8 +25,6 @@ ERS_CLASS_DepthMaps::~ERS_CLASS_DepthMaps() {
 
 }
 
-
-
 bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, int Width, int Height, bool LogEnabled) {
 
 
