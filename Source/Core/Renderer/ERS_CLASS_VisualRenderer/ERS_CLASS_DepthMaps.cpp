@@ -74,7 +74,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
         Height,
         NumberOfTextures,
         0,
-        GL_DEPTH_COMPONENT16,
+        GL_DEPTH_COMPONENT,
         GL_FLOAT,
         NULL
     );
