@@ -46,7 +46,7 @@ private:
 
     ERS_CLASS_MeshRenderer* Renderer_; /**<Pointer to Mesh Renderer Class Instance*/
 
-    unsigned int DepthMapAllocationChunkSize_ = 5; /**<Allocate Depth Map In Chunks Of 5*/
+    unsigned int DepthMapAllocationChunkSize_ = 16; /**<Allocate Depth Map In Chunks Of 5*/
 
 
     unsigned int AllocateDepthMapIndex();
