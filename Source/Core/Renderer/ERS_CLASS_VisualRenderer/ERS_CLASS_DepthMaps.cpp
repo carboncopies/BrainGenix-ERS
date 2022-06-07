@@ -70,7 +70,8 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
     glTexImage3D(GL_TEXTURE_2D_ARRAY,
         0, // Current 'mipmap level', We're not using these so 0 is fine
         GL_DEPTH_COMPONENT16,
-        Width, Height,
+        Width,
+        Height,
         NumberOfTextures,
         0,
         GL_DEPTH_COMPONENT16,
