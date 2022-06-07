@@ -47,17 +47,7 @@ private:
     ERS_CLASS_MeshRenderer* Renderer_; /**<Pointer to Mesh Renderer Class Instance*/
 
 
-    /**
-     * @brief Generates a depth map with the given resolution.
-     * This is usually used for shadows later on in the rendering process.
-     * Will also default to a 2048x2048 depth map by default. 
-     * 
-     * @param ResolutionX Width in pixels of the depth map
-     * @param ResolutionY Height in pixels of the depth map
-     * @param LogOutput Enable/disable logging output
-     * @return ERS_STRUCT_DepthMap Struct containing the relevant opengl ids for this depth map
-     */
-    ERS_STRUCT_DepthMap GenerateDepthMap(int ResolutionX = 2048, int ResolutionY = 2048, bool LogOutput = true);
+
 
 
 
@@ -68,7 +58,7 @@ public:
     int DepthTextureArrayWidth_; /***<Width of the depth map texture*/
     int DepthTextureArrayHeight_; /**<Height of the depth map texutre*/
     int DepthTextureNumTextures_; /**<Number of textures that the tex array can hold*/
-
+    std::vector<bool> DepthMapTexturesAlreadyAllocated_; /**<Use This To Check if the texture is already allocated or not*/
 
     /**
      * @brief Generates a depth map array (array texture), with the given width, height and number of layers.
@@ -81,6 +71,19 @@ public:
      * @return false 
      */
     bool RegenerateDepthMapTextureArray(int NumberOfTextures, int Width = 2048, int Height = 2048, bool LogEnabled = true);
+
+
+    /**
+     * @brief Generates a depth map with the given resolution.
+     * This is usually used for shadows later on in the rendering process.
+     * Will also default to a 2048x2048 depth map by default. 
+     * 
+     * @param ResolutionX Width in pixels of the depth map
+     * @param ResolutionY Height in pixels of the depth map
+     * @param LogOutput Enable/disable logging output
+     * @return ERS_STRUCT_DepthMap Struct containing the relevant opengl ids for this depth map
+     */
+    ERS_STRUCT_DepthMap GenerateDepthMap(int ResolutionX = 2048, int ResolutionY = 2048, bool LogOutput = true);
 
 
     /**

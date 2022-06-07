@@ -54,7 +54,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
     glBindTexture(GL_TEXTURE_2D_ARRAY, DepthTextureArrayID_);
     
     glTexStorage3D(GL_TEXTURE_2D_ARRAY,
-        1, // Number OF Mipmaps, Note that we're not using mipmaps so this is set to 1
+        0, // Number OF Mipmaps, Note that we're not using mipmaps so this is set to 1
         GL_DEPTH_COMPONENT, // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
         Width, Height, // Width and Height, Pretty Self Explanitory
         NumberOfTextures // Total Number Of Textures In The Array
@@ -90,6 +90,7 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int R
     SystemUtils_->Logger_->Log("Creating Depth Map Texture", 4, LogEnable);
     glGenTextures(1, &Output.DepthMapTextureID);
     glBindTexture(GL_TEXTURE_2D, Output.DepthMapTextureID);
+
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, ResolutionX, ResolutionY, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
