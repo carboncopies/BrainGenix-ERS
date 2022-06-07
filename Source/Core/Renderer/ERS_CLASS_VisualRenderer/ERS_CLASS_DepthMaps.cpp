@@ -140,15 +140,13 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex() {
 
 }
 
-ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int ResolutionY, bool LogEnable) {
+ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(bool LogEnable) {
 
 
-    SystemUtils_->Logger_->Log(std::string("Creating Depth Map With Resolution Of ") + std::to_string(ResolutionX) + std::string("x") + std::to_string(ResolutionY), 5, LogEnable);
+    SystemUtils_->Logger_->Log(std::string("Creating Depth Map With Resolution Of ") + std::to_string(DepthTextureArrayWidth_) + std::string("x") + std::to_string(DepthTextureArrayHeight), 5, LogEnable);
 
     // Setup Struct
     ERS_STRUCT_DepthMap Output;
-    Output.ResolutionX = ResolutionX;
-    Output.ResolutionY = ResolutionY;
 
     // Generate FBO
     SystemUtils_->Logger_->Log("Generating Framebuffer Object", 4, LogEnable);
@@ -186,7 +184,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
     if (Orthogonal) {
         ObjectProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, NearPlane, FarPlane); // ortho models directional light source
     } else {
-        float AspectRatio = Target->ResolutionX / Target->ResolutionY;
+        float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
         ObjectProjection = glm::perspective(glm::radians(110.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
     }
 
@@ -202,7 +200,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
         *LightSpaceMatrix = ObjectSpace;
     }
 
-    glViewport(0, 0, Target->ResolutionX, Target->ResolutionY);
+    glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
     glBindFramebuffer(GL_FRAMEBUFFER, Target->FrameBufferObjectID);
 
     glClear(GL_DEPTH_BUFFER_BIT);
@@ -232,7 +230,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Check If Light Has DepthMap
         if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap(2048, 2048);   
+            Light->DepthMap = GenerateDepthMap();   
         }
 
         // Render To Depth Map
@@ -250,7 +248,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Check If Light Has DepthMap
         if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap(2048, 2048);   
+            Light->DepthMap = GenerateDepthMap();   
         }
 
         // Render To Depth Map
@@ -268,7 +266,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Check If Light Has DepthMap
         if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap(2048, 2048);   
+            Light->DepthMap = GenerateDepthMap();   
         }
 
         // Render To Depth Map
