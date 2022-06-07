@@ -47,10 +47,13 @@ private:
 
 
 
-    std::unique_ptr<ERS_CLASS_DepthMaps> ERS_CLASS_DepthMaps_; /**<Instance of the depth map class*/
 
 
 public:
+
+    std::unique_ptr<ERS_CLASS_DepthMaps> ERS_CLASS_DepthMaps_; /**<Instance of the depth map class*/
+
+
 
     ERS_STRUCT_DepthMap DeleteMe;
 
