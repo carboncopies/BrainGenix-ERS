@@ -205,7 +205,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
 
     glClear(GL_DEPTH_BUFFER_BIT);
     glActiveTexture(GL_TEXTURE8);
-    glBindTexture(GL_TEXTURE_2D_ARRAY, DepthTextureArrayID_);
+    //glBindTexture(GL_TEXTURE_2D_ARRAY, DepthTextureArrayID_);
     Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
