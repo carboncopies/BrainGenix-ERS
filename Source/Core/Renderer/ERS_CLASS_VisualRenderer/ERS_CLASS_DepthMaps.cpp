@@ -195,10 +195,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-
-
- 
-
 }
 
 void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
