@@ -91,7 +91,19 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
 
 unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex() {
 
-    // Generate Depth Maps
+    // If Enough Textures Exist, Find One
+    for (unsigned int i = 0; i < DepthMapTexturesAlreadyAllocated_.size(); i++) {
+        if (!DepthMapTexturesAlreadyAllocated_[i]) {
+            DepthMapTexturesAlreadyAllocated_[i] = true;
+            return i;
+        }
+    }
+
+    // IF Not, Batch Allocate More
+    int StartSize = DepthMapTexturesAlreadyAllocated_.size();
+    RegenerateDepthMapTextureArray(StartSize + DepthMapAllocationChunkSize, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+    
+
 
 }
 
