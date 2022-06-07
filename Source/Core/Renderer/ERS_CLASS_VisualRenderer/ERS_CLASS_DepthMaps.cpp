@@ -216,6 +216,8 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
 
 void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
+    std::cout<<glGetError()<<std::endl;
+
     // Fix Offset (Peter Panning)
     glCullFace(GL_FRONT);
 
@@ -276,6 +278,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
     } 
 
+    std::cout<<glGetError()<<std::endl;
 
     // Return To Normal Culling
     glCullFace(GL_BACK);
