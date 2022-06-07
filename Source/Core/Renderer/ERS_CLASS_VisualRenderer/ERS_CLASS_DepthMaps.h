@@ -64,9 +64,10 @@ private:
 public:
 
 
-    unsigned int DepthTextureArrayID; /**<OpenGL Object ID For Depth Map Textures*/
-    int DepthTextureArrayWidth; /***<Width of the depth map texture*/
-    int DepthTextureArrayHeight; /**<Height of the depth map texutre*/
+    unsigned int DepthTextureArrayID_; /**<OpenGL Object ID For Depth Map Textures*/
+    int DepthTextureArrayWidth_; /***<Width of the depth map texture*/
+    int DepthTextureArrayHeight_; /**<Height of the depth map texutre*/
+    int DepthTextureNumTextures_; /**<Number of textures that the tex array can hold*/
 
 
     /**

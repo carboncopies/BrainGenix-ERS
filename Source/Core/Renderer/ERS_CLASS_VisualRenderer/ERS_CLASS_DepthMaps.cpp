@@ -30,8 +30,18 @@ ERS_CLASS_DepthMaps::~ERS_CLASS_DepthMaps() {
 bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, int Width, int Height) {
 
     // Check If Already Texture, If So, Delete So We Can Overwrite it
-    
+    bool TextureAlreadyExists = glIsTexture(DepthTextureArrayID_);
+    if (TextureAlreadyExists) {
+        glDeleteTextures(1, &DepthTextureArrayID_);
+    }
 
+    // Handle The Creation Of A New Texture Array
+    DepthTextureArrayWidth_ = Width;
+    DepthTextureArrayHeight_ = Height;
+    DepthTextureNumTextures_ = NumberOfTextures;
+
+    
+    
 
 
 }
