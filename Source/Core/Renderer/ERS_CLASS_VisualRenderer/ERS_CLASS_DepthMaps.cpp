@@ -14,7 +14,7 @@ ERS_CLASS_DepthMaps::ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ER
     SystemUtils_->Logger_->Log("Initializing Viewport Overlay Subsystem", 5);
 
     // Create Array Texture For Depth Maps
-    RegenerateDepthMapTextureArray(256, 2048, 2048);
+    RegenerateDepthMapTextureArray(4, 2048, 2048);
 
 
 }
@@ -63,10 +63,10 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
         NumberOfTextures // Total Number Of Textures In The Array
     );
     
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
     float BorderColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
-    glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, BorderColor); 
+    glTexParameterfv(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_BORDER_COLOR, BorderColor); 
     SystemUtils_->Logger_->Log("Depth Map Texture Array Initialization Complete", 5, LogEnabled);
 
 
