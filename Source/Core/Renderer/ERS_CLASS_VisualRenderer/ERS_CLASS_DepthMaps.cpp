@@ -177,6 +177,9 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int R
 
 void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT_Shader* DepthShader, glm::vec3 Pos, glm::vec3 Rot, bool Orthogonal, glm::mat4* LightSpaceMatrix) {
 
+    std::cout<<glGetError()<<std::endl;
+
+
     // Setup Variables
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
@@ -211,12 +214,15 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
     Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    
+    std::cout<<glGetError()<<std::endl;
+
+
 
 }
 
 void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
-    std::cout<<glGetError()<<std::endl;
 
     // Fix Offset (Peter Panning)
     glCullFace(GL_FRONT);
@@ -278,7 +284,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
     } 
 
-    std::cout<<glGetError()<<std::endl;
 
     // Return To Normal Culling
     glCullFace(GL_BACK);
