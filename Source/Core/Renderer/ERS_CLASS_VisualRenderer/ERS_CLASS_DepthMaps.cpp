@@ -55,15 +55,9 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
 
     SystemUtils_->Logger_->Log("Setting Up Texture Array OpenGL Parameters", 5, LogEnabled);
     glGenTextures(1, &DepthTextureArrayID_);
-    glActiveTexture(GL_TEXTURE0);
+    glActiveTexture(GL_TEXTURE8);
     glBindTexture(GL_TEXTURE_2D_ARRAY, DepthTextureArrayID_);
     
-
-    // glGenTextures(1, &TestID);
-    // glActiveTexture(GL_TEXTURE8);
-    // glBindTexture(GL_TEXTURE_2D, TestID);
-
-    // glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT24, Width, Height, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
     
     // ** THIS CAUSES A SEG FAULT FOR SOME REASON...? NOT SURE WHY, SO USING WORKAROUND BELOW **
     // glTextureStorage3D(GL_TEXTURE_2D_ARRAY,
@@ -84,18 +78,10 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
         NULL                  // if we were loading an image in, we could then pass the data in here, but we're not so this is left as null
     );
 
-    
-
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
     float BorderColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
     glTexParameterfv(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_BORDER_COLOR, BorderColor); 
-
-
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-    // float BorderColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
-    // glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, BorderColor); 
     SystemUtils_->Logger_->Log("Depth Map Texture Array Initialization Complete", 5, LogEnabled);
 
 
@@ -173,10 +159,7 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(bool LogEnable) {
     // Attach Depth Map Texture To Framebuffer
     SystemUtils_->Logger_->Log(std::string("Attaching Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndex) + std::string("'"), 4, LogEnable);
     glBindFramebuffer(GL_FRAMEBUFFER, Output.FrameBufferObjectID);
-    
-    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, Output.DepthMapTextureIndex);
-    //glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, TestID, 0);
-
+    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, 0);//Output.DepthMapTextureIndex);
     glDrawBuffer(GL_NONE);
     glReadBuffer(GL_NONE);
     glBindFramebuffer(GL_FRAMEBUFFER, 0); 
@@ -222,9 +205,8 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
 
     
     glClear(GL_DEPTH_BUFFER_BIT);
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D_ARRAY, DepthTextureArrayID_);
-    //glBindTexture(GL_TEXTURE_2D, TestID);
+    glActiveTexture(GL_TEXTURE8);
+    //glBindTexture(GL_TEXTURE_2D_ARRAY, DepthTextureArrayID_);
     Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
