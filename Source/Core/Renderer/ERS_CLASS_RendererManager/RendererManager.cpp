@@ -145,6 +145,9 @@ void RendererManager::InitializeGLFW() {
     SystemUtils_->Logger_->Log("Read Configuration File For 'WindowTitle' Parameter", 1);
     WindowTitle_ = (*SystemUtils_->LocalSystemConfiguration_)["WindowTitle"].as<std::string>().c_str();
 
+    // Log OpenGL Version Info
+    SystemUtils_->Logger_->Log(std::string("OpenGL Reporting Version Info: ") + std::string(glGetString(GL_VERSION)), 5);
+
     // Create Window Object
     glfwSetErrorCallback(ErrorCallback);
     Window_ = glfwCreateWindow(WindowWidth_, WindowHeight_, WindowTitle_, NULL, NULL);
