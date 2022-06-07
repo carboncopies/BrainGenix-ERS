@@ -13,6 +13,11 @@ ERS_CLASS_DepthMaps::ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ER
 
     SystemUtils_->Logger_->Log("Initializing Viewport Overlay Subsystem", 5);
 
+    // Create Array Texture For Depth Maps
+    RegenerateDepthMapTextureArray(4, 2048, 2048);
+
+    
+
 
 }
 
