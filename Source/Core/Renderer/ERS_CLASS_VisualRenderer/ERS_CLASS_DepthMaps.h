@@ -48,7 +48,6 @@ private:
 
     unsigned int DepthMapAllocationChunkSize_ = 16; /**<Allocate Depth Map In Chunks Of 5*/
 
-    unsigned int TestID;
 
     /**
      * @brief Allocate an index from the depth map texture array.
@@ -67,6 +66,8 @@ private:
 
 
 public:
+
+    unsigned int TestID;
 
 
     unsigned int DepthTextureArrayID_; /**<OpenGL Object ID For Depth Map Textures*/
