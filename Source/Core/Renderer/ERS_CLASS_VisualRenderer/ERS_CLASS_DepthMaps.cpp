@@ -160,7 +160,7 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int ResolutionX, int R
     Output.DepthMapTextureIndex = AllocateDepthMapIndex();
 
     // Attach Depth Map Texture To Framebuffer
-    SystemUtils_->Logger_->Log("Attaching Depth Map Texture To Framebuffer", 4, LogEnable);
+    SystemUtils_->Logger_->Log(std::string("Attaching Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndex) + std::string("'"), 4, LogEnable);
     glBindFramebuffer(GL_FRAMEBUFFER, Output.FrameBufferObjectID);
     glFramebufferTexture3D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D_ARRAY, DepthTextureArrayID_, 0, Output.DepthMapTextureIndex);
     //glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, Output.DepthMapTextureID, 0);
