@@ -110,7 +110,7 @@ bool ERS_CLASS_DepthMaps::FreeDepthMapIndex(unsigned int Index) {
     }
 
     // DeAllocate From Array
-    DepthMapTexturesAlreadyAllocated_[Index] = false;
+    DepthMapTexturesAlreadyAllocated_[Index] = -1;
     return true;
 
 }
