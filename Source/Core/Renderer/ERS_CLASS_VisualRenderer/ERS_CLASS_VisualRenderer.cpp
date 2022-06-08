@@ -686,9 +686,9 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex);
         ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->DirectionalLights[i]->LightSpaceMatrix);
         
-        std::cout<<"Index: "<<ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex
-        <<(UniformName + std::string(".LightSpaceMatrix")).c_str()<<glm::to_string(ActiveScene->DirectionalLights[i]->LightSpaceMatrix)
-        <<std::endl;
+        // std::cout<<"Index: "<<ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex
+        // <<(UniformName + std::string(".LightSpaceMatrix")).c_str()<<glm::to_string(ActiveScene->DirectionalLights[i]->LightSpaceMatrix)
+        // <<std::endl;
     
     }
 
