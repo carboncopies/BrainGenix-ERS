@@ -152,7 +152,7 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 LightPos)
     
     
     // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
-    float closestDepth = texture(texture_ambient_occlusion1, projCoords.xy).r; 
+    float closestDepth = texture(DepthMapArray, vec3(projCoords.xy, Index)).r; 
     // get depth of current fragment from light's perspective
     float currentDepth = projCoords.z;
     // check whether current frag pos is in shadow
@@ -509,8 +509,13 @@ void main() {
         FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
     
-    //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace)), 1.0f);
+    
+    
+    //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
+
+
 
 
 
