@@ -429,11 +429,11 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         glUniform1i(1, glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram_, "DepthMapArray"));
         glBindTexture(GL_TEXTURE_2D_ARRAY, ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureArrayID_);
 
-        int W, H;
-        glGetTexLevelParameteriv(GL_TEXTURE_2D_ARRAY, 0, GL_TEXTURE_WIDTH, &W);
-        glGetTexLevelParameteriv(GL_TEXTURE_2D_ARRAY, 0, GL_TEXTURE_WIDTH, &H);
+        // int W, H;
+        // glGetTexLevelParameteriv(GL_TEXTURE_2D_ARRAY, 0, GL_TEXTURE_WIDTH, &W);
+        // glGetTexLevelParameteriv(GL_TEXTURE_2D_ARRAY, 0, GL_TEXTURE_WIDTH, &H);
 
-        std::cout<<W<<"|"<<H<<std::endl;
+        // std::cout<<W<<"|"<<H<<std::endl;
         
 
 
