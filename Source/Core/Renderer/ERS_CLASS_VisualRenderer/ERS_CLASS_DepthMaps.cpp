@@ -239,23 +239,23 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
     } 
 
-    // Handle Spot Lights
-    for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
+    // // Handle Spot Lights
+    // for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
 
-        // Extract Struct
-        ERS_STRUCT_SpotLight* Light = ActiveScene->SpotLights[i].get();
+    //     // Extract Struct
+    //     ERS_STRUCT_SpotLight* Light = ActiveScene->SpotLights[i].get();
 
-        // Check If Light Has DepthMap
-        if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap();   
-        }
+    //     // Check If Light Has DepthMap
+    //     if (!Light->DepthMap.Initialized) {
+    //         Light->DepthMap = GenerateDepthMap();   
+    //     }
 
-        // Render To Depth Map
-        glm::mat4* LightSpaceMatrix = new glm::mat4();
-        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Rot, false, LightSpaceMatrix);
-        Light->LightSpaceMatrix = *LightSpaceMatrix;
+    //     // Render To Depth Map
+    //     glm::mat4* LightSpaceMatrix = new glm::mat4();
+    //     UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Rot, false, LightSpaceMatrix);
+    //     Light->LightSpaceMatrix = *LightSpaceMatrix;
 
-    }
+    // }
 
     // // Handle Point Lights
     // for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
