@@ -115,14 +115,14 @@ bool ERS_CLASS_DepthMaps::FreeDepthMapIndex(unsigned int Index) {
 
 }
 
-unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex() {
+unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex(unsigned int FramebufferObjectID) {
 
     // If Enough Textures Exist, Find One
     SystemUtils_->Logger_->Log("Allocating Depth Map Texture Array Index", 5);
     for (unsigned int i = 0; i < DepthMapTexturesAlreadyAllocated_.size(); i++) {
-        if (!DepthMapTexturesAlreadyAllocated_[i]) {
+        if (DepthMapTexturesAlreadyAllocated_[i] == -1) {
             SystemUtils_->Logger_->Log(std::string("Allocated Depth Map Texture Array Index: ") + std::to_string(i), 5);
-            DepthMapTexturesAlreadyAllocated_[i] = true;
+            DepthMapTexturesAlreadyAllocated_[i] = FramebufferObjectID;
             return i;
         }
     }

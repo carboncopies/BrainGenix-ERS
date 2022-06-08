@@ -54,7 +54,7 @@ private:
      * 
      * @return unsigned int 
      */
-    unsigned int AllocateDepthMapIndex();
+    unsigned int AllocateDepthMapIndex(unsigned int FramebufferObjectID);
 
     /**
      * @brief Deallocates an index from the depth map texture array.
