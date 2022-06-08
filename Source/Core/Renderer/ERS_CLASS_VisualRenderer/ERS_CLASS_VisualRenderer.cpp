@@ -429,13 +429,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         glActiveTexture(GL_TEXTURE8);
         glBindTexture(GL_TEXTURE_2D_ARRAY, ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureArrayID_);
 
-        // int W, H;
-        // glGetTexLevelParameteriv(GL_TEXTURE_2D_ARRAY, 0, GL_TEXTURE_WIDTH, &W);
-        // glGetTexLevelParameteriv(GL_TEXTURE_2D_ARRAY, 0, GL_TEXTURE_WIDTH, &H);
-
-        // std::cout<<W<<"|"<<H<<std::endl;
-        
-
 
 
         // Render
