@@ -421,8 +421,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         Shaders_[ShaderIndex]->SetMat4("LightSpaceMatrix", SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[0]->LightSpaceMatrix);
         Shaders_[ShaderIndex]->SetInt("Index", SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[0]->DepthMap.DepthMapTextureIndex);
         
-        std::cout<<glm::to_string(SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[0]->LightSpaceMatrix)<<std::endl;
-
         // OpenGLDefaults_->DefaultTexture_ = SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[0]->DepthMap.DepthMapTextureID;
 
 
