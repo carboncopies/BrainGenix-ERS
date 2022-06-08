@@ -12,16 +12,8 @@ in VS_OUT {
     vec3 TangentViewPos;
     vec3 TangentFragPos;
     vec3 Normal; // Used when normal texture not present
-    vec4 FragPosLightSpace;
+    //vec4 FragPosLightSpace;
 } Object;
-
-
-
-
-
-
-
-
 
 // Define Structs
 struct STRUCT_DirectionalLight {
@@ -31,6 +23,8 @@ struct STRUCT_DirectionalLight {
     // Light Color Parameters
     vec3 Color;
     float Intensity;
+    int DepthMapIndex;
+    mat4 LightSpaceMatrix;
 
 };
 
@@ -44,6 +38,9 @@ struct STRUCT_PointLight {
 
     // Light Rolloff Parameters
     float Intensity;
+    
+    int DepthMapIndex;
+    mat4 LightSpaceMatrix;
 
 };
 
@@ -62,6 +59,9 @@ struct STRUCT_SpotLight {
     // Spotlight Parameters
     float CutOff;
     float OuterCutOff;
+    
+    int DepthMapIndex;
+    mat4 LightSpaceMatrix;
 
 };
 
@@ -100,36 +100,22 @@ uniform sampler2D texture_metalness1;
 uniform sampler2D texture_ambient_occlusion1;
 uniform sampler2DArray DepthMapArray;
 
-
-uniform bool HasAmbient;
 uniform bool HasAmbientOcclusion;
-uniform bool HasBaseColor;
 uniform bool HasDiffuse;
-uniform bool HasDiffuseRoughness;
 uniform bool HasDisplacement;
-uniform bool HasEmissionColor;
 uniform bool HasEmissive;
-uniform bool HasHeight;
-uniform bool HasLightmap;
 uniform bool HasMetalness;
-uniform bool HasNormalCamera;
 uniform bool HasNormals;
-uniform bool HasOpacity;
-uniform bool HasReflection;
 uniform bool HasShininess;
-uniform bool HasSpecular;
 
 
 // Get Lighting Info
 uniform int NumberDirectionalLights;
 uniform int NumberPointLights;
 uniform int NumberSpotLights;
-uniform STRUCT_DirectionalLight DirectionalLights[1];
-uniform STRUCT_PointLight PointLights[128];
-uniform STRUCT_SpotLight SpotLights[96];
-
-
-uniform int Index;
+uniform STRUCT_DirectionalLight DirectionalLights[10];
+uniform STRUCT_PointLight PointLights[64];
+uniform STRUCT_SpotLight SpotLights[32];
 
 // Gamma Correction Info
 uniform bool GammaCorrectionEnabled_;
@@ -143,8 +129,10 @@ const float PI = 3.14159265358979;
 
 
 
-float ShadowCalculation(vec4 fragPosLightSpace, vec3 LightPos)
+float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
 {
+    vec4 fragPosLightSpace = LightSpaceMatrix * vec4(Object.FragPos, 1.0f);
+
     // perform perspective divide
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
     // transform to [0,1] range
@@ -476,7 +464,7 @@ void main() {
 
     // Calculate Directional Lights
     for (int i = 0; i < NumberDirectionalLights; i++) {
-        Lo += vec4(PBRDirectionalLight(DirectionalLights[i], ViewDir, Reflectance, Model), 1.0f);
+        Lo += vec4(PBRDirectionalLight(DirectionalLights[i], ViewDir, Reflectance, Model), 1.0f) * (1.0f - ShadowCalculation(DirectionalLights[i].LightSpaceMatrix, DirectionalLights[i].Direction, DirectionalLights[i].DepthMapIndex));
     }
 
     // Calculate Point Lights
@@ -492,7 +480,6 @@ void main() {
     // ambient lighting (note that the next IBL tutorial will replace 
     // this ambient lighting with environment lighting).
     vec4 Ambient = vec4(0.03) * Model.Albedo * Model.AO;
-    Lo.xyz = Lo.xyz * (1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction));
     vec4 Color = Ambient + Lo;
 
 
@@ -513,22 +500,6 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

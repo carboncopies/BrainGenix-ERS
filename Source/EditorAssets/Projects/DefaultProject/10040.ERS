@@ -16,7 +16,7 @@ out VS_OUT {
     vec3 TangentViewPos;
     vec3 TangentFragPos;
     vec3 Normal; // Used when no normal map is available;
-    vec4 FragPosLightSpace;
+    //vec4 FragPosLightSpace;
 } Object;
 
 
@@ -57,40 +57,10 @@ void main()
     Object.TangentFragPos = TBN * Object.FragPos;
     Object.Normal = mat3(model) * aNormal; // mat3(transpose(inverse(model))) * aNormal;
     Object.WorldPos = vec3(model*vec4(aPos, 1.0f));
-    Object.FragPosLightSpace = LightSpaceMatrix * vec4(Object.FragPos, 1.0f);
+    //Object.FragPosLightSpace = LightSpaceMatrix * vec4(Object.FragPos, 1.0f);
     gl_Position = projection * view * vec4(Object.WorldPos, 1.0f);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
