@@ -415,13 +415,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
 
-        // glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram_, "DepthMap"), 9);
-        // glActiveTexture(GL_TEXTURE9);
-        // glBindTexture(GL_TEXTURE_2D,  SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[0]->DepthMap.DepthMapTextureID);
-        //Shaders_[ShaderIndex]->SetMat4("LightSpaceMatrix", SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[0]->LightSpaceMatrix);
-        //Shaders_[ShaderIndex]->SetInt("Index", SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[0]->DepthMap.DepthMapTextureIndex);
-        
-        // OpenGLDefaults_->DefaultTexture_ = SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[0]->DepthMap.DepthMapTextureID;
 
 
         glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram_, "DepthMapArray"), 8);
