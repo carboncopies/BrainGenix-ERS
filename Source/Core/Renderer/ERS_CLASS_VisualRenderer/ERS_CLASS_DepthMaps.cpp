@@ -221,7 +221,23 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
     // Get Active Scene
     ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
 
+    // Handle Directional Lights
+    for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
 
+        // Extract Struct
+        ERS_STRUCT_DirectionalLight* Light = ActiveScene->DirectionalLights[i].get();
+
+        // Check If Light Has DepthMap
+        if (!Light->DepthMap.Initialized) {
+            Light->DepthMap = GenerateDepthMap();   
+        }
+
+        // Render To Depth Map
+        glm::mat4* LightSpaceMatrix = new glm::mat4();
+        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Rot, true, LightSpaceMatrix);
+        Light->LightSpaceMatrix = *LightSpaceMatrix;
+
+    } 
 
     // Handle Spot Lights
     for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
@@ -241,11 +257,11 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
     }
 
-    // Handle Directional Lights
-    for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
+    // Handle Point Lights
+    for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
 
         // Extract Struct
-        ERS_STRUCT_DirectionalLight* Light = ActiveScene->DirectionalLights[i].get();
+        ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
 
         // Check If Light Has DepthMap
         if (!Light->DepthMap.Initialized) {
@@ -254,28 +270,10 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Render To Depth Map
         glm::mat4* LightSpaceMatrix = new glm::mat4();
-        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Rot, true, LightSpaceMatrix);
+        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Pos, false, LightSpaceMatrix); // set this to false later, debugging
         Light->LightSpaceMatrix = *LightSpaceMatrix;
 
     } 
-
-    // // Handle Point Lights
-    // for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
-
-    //     // Extract Struct
-    //     ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
-
-    //     // Check If Light Has DepthMap
-    //     if (!Light->DepthMap.Initialized) {
-    //         Light->DepthMap = GenerateDepthMap();   
-    //     }
-
-    //     // Render To Depth Map
-    //     glm::mat4* LightSpaceMatrix = new glm::mat4();
-    //     UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Pos, false, LightSpaceMatrix); // set this to false later, debugging
-    //     Light->LightSpaceMatrix = *LightSpaceMatrix;
-
-    // } 
 
 
     // Return To Normal Culling
