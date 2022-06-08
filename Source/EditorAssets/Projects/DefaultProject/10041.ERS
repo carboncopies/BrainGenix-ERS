@@ -146,9 +146,11 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
     // check whether current frag pos is in shadow
     vec3 LightDir = normalize(LightPos - Object.FragPos);
     float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), 0.005);
-    //float shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
     
     
+    float shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
+    
+    /**
     float shadow = 0.0;
 	vec2 texelSize = 1.0 / textureSize(DepthMapArray, Index).xy;
 	int SampleSize = 1;
@@ -163,13 +165,14 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
 	}
 	shadow /= (SampleSize+1)*(SampleSize+1);
     
+    **/
     
     
     if (projCoords.z > 1.0) {
         shadow = 0.0f;
     }
 
-    return shadow;
+    return 1.0f - shadow;
 }
 
 
@@ -460,27 +463,27 @@ void main() {
 
 
     // ---- Calculate Lighting Contributions ---- //
-    vec4 Lo = vec4(0.0f);
+    vec3 Lo = vec3(0.0f);
 
     // Calculate Directional Lights
     for (int i = 0; i < NumberDirectionalLights; i++) {
-        Lo += vec4(PBRDirectionalLight(DirectionalLights[i], ViewDir, Reflectance, Model), 1.0f) * (1.0f - ShadowCalculation(DirectionalLights[i].LightSpaceMatrix, DirectionalLights[i].Direction, DirectionalLights[i].DepthMapIndex));
+        Lo += PBRDirectionalLight(DirectionalLights[i], ViewDir, Reflectance, Model) * ShadowCalculation(DirectionalLights[i].LightSpaceMatrix, DirectionalLights[i].Direction, DirectionalLights[i].DepthMapIndex);
     }
 
     // Calculate Point Lights
     for (int i = 0; i < NumberPointLights; i++) {
-        Lo += vec4(PBRPointLight(PointLights[i], ViewDir, Reflectance, Model), 1.0f);
+        Lo += PBRPointLight(PointLights[i], ViewDir, Reflectance, Model);// * (1.0f - ShadowCalculation(PointLights[i].LightSpaceMatrix, PointLights[i].Position, PointLights[i].DepthMapIndex));
     }
 
     // Calculate Spot Lights
     for(int i = 0; i < NumberSpotLights; ++i) {
-        Lo += vec4(PBRSpotLight(SpotLights[i], ViewDir, Reflectance, Model), 1.0f);
+        Lo += PBRSpotLight(SpotLights[i], ViewDir, Reflectance, Model);
     }
 
     // ambient lighting (note that the next IBL tutorial will replace 
     // this ambient lighting with environment lighting).
     vec4 Ambient = vec4(0.03) * Model.Albedo * Model.AO;
-    vec4 Color = Ambient + Lo;
+    vec4 Color = Ambient + vec4(Lo, Model.Albedo.a);
 
 
      // Add Emissive Texture
@@ -500,6 +503,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
