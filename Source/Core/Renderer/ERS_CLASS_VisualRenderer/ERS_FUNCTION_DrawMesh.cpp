@@ -72,21 +72,17 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
             Number = std::to_string(EmissiveHandle++);
             Type = 4;
             HasEmissive = true;
-        } else if(Name == "texture_height") {
-            Number = std::to_string(HeightHandle++);
-            Type = 5;
-            HasHeight = true;
         } else if(Name == "texture_metalness") {
             Number = std::to_string(MetalnessHandle++);
-            Type = 6;
+            Type = 5;
             HasMetalness = true;
         } else if(Name == "texture_normals") {
             Number = std::to_string(NormalsHandle++);
-            Type = 7;
+            Type = 6;
             HasNormals = true;
         } else if(Name == "texture_shininess") {
             Number = std::to_string(ShininessHandle++);
-            Type = 8;
+            Type = 7;
             HasShininess = true;
         }
 
