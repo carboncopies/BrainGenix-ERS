@@ -233,6 +233,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
         }
 
         // Render To Depth Map
+        delete Light->LightSpaceMatrix;
         glm::mat4* LightSpaceMatrix = new glm::mat4();
         UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Rot, true, LightSpaceMatrix);
         Light->LightSpaceMatrix = *LightSpaceMatrix;
@@ -251,6 +252,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
         }
 
         // Render To Depth Map
+        delete Light->LightSpaceMatrix;
         glm::mat4* LightSpaceMatrix = new glm::mat4();
         UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Rot, false, LightSpaceMatrix);
         Light->LightSpaceMatrix = *LightSpaceMatrix;
@@ -269,6 +271,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
         }
 
         // Render To Depth Map
+        delete Light->LightSpaceMatrix;
         glm::mat4* LightSpaceMatrix = new glm::mat4();
         UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Pos, false, LightSpaceMatrix); // set this to false later, debugging
         Light->LightSpaceMatrix = *LightSpaceMatrix;
