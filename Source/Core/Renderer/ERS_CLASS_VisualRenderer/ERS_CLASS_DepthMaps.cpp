@@ -93,7 +93,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
     } else if (SizeOfAllocationArray < (unsigned int)NumberOfTextures) {
         SystemUtils_->Logger_->Log("Upsizing Array To Match Target Number Of Textures", 5, LogEnabled);
         for (unsigned int i = 0; i < NumberOfTextures - SizeOfAllocationArray; i++) {
-            DepthMapTexturesAlreadyAllocated_.push_back(false);
+            DepthMapTexturesAlreadyAllocated_.push_back(-1);
         }
     }
     SystemUtils_->Logger_->Log("Done Updating/Checking Allocation Array", 5, LogEnabled);
