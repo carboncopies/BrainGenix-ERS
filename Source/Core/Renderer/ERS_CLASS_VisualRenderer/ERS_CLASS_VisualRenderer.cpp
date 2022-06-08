@@ -418,8 +418,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         // glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram_, "DepthMap"), 9);
         // glActiveTexture(GL_TEXTURE9);
         // glBindTexture(GL_TEXTURE_2D,  SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[0]->DepthMap.DepthMapTextureID);
-        Shaders_[ShaderIndex]->SetMat4("LightSpaceMatrix", SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[0]->LightSpaceMatrix);
-        Shaders_[ShaderIndex]->SetInt("Index", SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[0]->DepthMap.DepthMapTextureIndex);
+        //Shaders_[ShaderIndex]->SetMat4("LightSpaceMatrix", SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[0]->LightSpaceMatrix);
+        //Shaders_[ShaderIndex]->SetInt("Index", SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[0]->DepthMap.DepthMapTextureIndex);
         
         // OpenGLDefaults_->DefaultTexture_ = SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[0]->DepthMap.DepthMapTextureID;
 
@@ -683,6 +683,9 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->DirectionalLights[i]->Color);
         ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->DirectionalLights[i]->Intensity);
 
+        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex);
+        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->DirectionalLights[i]->LightSpaceMatrix);
+        
 
     
     }
