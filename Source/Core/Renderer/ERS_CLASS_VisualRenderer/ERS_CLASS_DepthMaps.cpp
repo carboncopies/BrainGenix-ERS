@@ -39,19 +39,19 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
     SystemUtils_->Logger_->Log("Checking If Texture Array Already Exists", 4, LogEnabled);
     bool TextureAlreadyExists = glIsTexture(DepthTextureArrayID_);
     if (TextureAlreadyExists) {
-        SystemUtils_->Logger_->Log("Array ID Already In Use, Freeing First", 4, LogEnabled);
+        SystemUtils_->Logger_->Log("Array ID Already In Use, Freeing First", 3, LogEnabled);
         glDeleteTextures(1, &DepthTextureArrayID_);
     } else {
-        SystemUtils_->Logger_->Log("Array ID Not Already In Use", 4, LogEnabled);
+        SystemUtils_->Logger_->Log("Array ID Not Already In Use", 3, LogEnabled);
     }
 
     // Handle The Creation Of A New Texture Array
-    SystemUtils_->Logger_->Log("Setting Up Texture Array Metadata", 4, LogEnabled);
+    SystemUtils_->Logger_->Log("Setting Up Texture Array Metadata", 3, LogEnabled);
     DepthTextureArrayWidth_ = Width;
     DepthTextureArrayHeight_ = Height;
     DepthTextureNumTextures_ = NumberOfTextures;
 
-    SystemUtils_->Logger_->Log("Setting Up Texture Array OpenGL Parameters", 5, LogEnabled);
+    SystemUtils_->Logger_->Log("Setting Up Texture Array OpenGL Parameters", 4, LogEnabled);
     glGenTextures(1, &DepthTextureArrayID_);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D_ARRAY, DepthTextureArrayID_);
@@ -81,22 +81,44 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     float BorderColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
     glTexParameterfv(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_BORDER_COLOR, BorderColor); 
-    SystemUtils_->Logger_->Log("Depth Map Texture Array Initialization Complete", 5, LogEnabled);
+    SystemUtils_->Logger_->Log("Depth Map Texture Array Initialization Complete", 4, LogEnabled);
 
 
     // Update Allocation Array
-    SystemUtils_->Logger_->Log("Checking Depth Map Texture Array Allocation Array", 4, LogEnabled);
+    SystemUtils_->Logger_->Log("Checking Depth Map Texture Array Allocation Array", 3, LogEnabled);
     unsigned long SizeOfAllocationArray = DepthMapTexturesAlreadyAllocated_.size();
     if (SizeOfAllocationArray > (unsigned int)NumberOfTextures) {
-        SystemUtils_->Logger_->Log("Downsizing Array To Match Target Number Of Textures", 5, LogEnabled);
+        SystemUtils_->Logger_->Log("Downsizing Array To Match Target Number Of Textures", 4, LogEnabled);
         DepthMapTexturesAlreadyAllocated_.erase(DepthMapTexturesAlreadyAllocated_.begin() + NumberOfTextures, DepthMapTexturesAlreadyAllocated_.end());
     } else if (SizeOfAllocationArray < (unsigned int)NumberOfTextures) {
-        SystemUtils_->Logger_->Log("Upsizing Array To Match Target Number Of Textures", 5, LogEnabled);
+        SystemUtils_->Logger_->Log("Upsizing Array To Match Target Number Of Textures", 4, LogEnabled);
         for (unsigned int i = 0; i < NumberOfTextures - SizeOfAllocationArray; i++) {
             DepthMapTexturesAlreadyAllocated_.push_back(-1);
         }
     }
-    SystemUtils_->Logger_->Log("Done Updating/Checking Allocation Array", 5, LogEnabled);
+    SystemUtils_->Logger_->Log("Done Updating/Checking Allocation Array", 3, LogEnabled);
+
+
+    // Rebind Any Framebuffers
+    SystemUtils_->Logger_->Log("Rebinding Framebuffer Objects Depth Textures", 4, LogEnabled);
+    for (unsigned int i = 0; i < DepthMapTexturesAlreadyAllocated_.size(); i++) {
+
+        long ID = DepthMapTexturesAlreadyAllocated_[i];
+
+        // Check If Valid ID
+        if (glIsFramebuffer(ID)) {
+
+            // If Valid, Rebind
+            SystemUtils_->Logger_->Log(std::string("Rebinding Framebuffer '") + std::to_string(ID) + std::string("' To Texture At Index '") + std::to_string(i) + std::string("'"), 4, LogEnabled);
+            glBindFramebuffer(GL_FRAMEBUFFER, ID);
+            glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, i);
+        
+        } else if (ID != -1) {
+            SystemUtils_->Logger_->Log("Framebuffer Object Is Invalid, Removing From Allocation Table", 4, LogEnabled);
+            DepthMapTexturesAlreadyAllocated_[i] = -1;
+        }
+
+    }
 
     return true;
 
@@ -151,7 +173,7 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(bool LogEnable) {
     SystemUtils_->Logger_->Log("Generated Framebuffer Object", 3, LogEnable);
 
     // Allocate Depth Map Texture ID
-    Output.DepthMapTextureIndex = AllocateDepthMapIndex();
+    Output.DepthMapTextureIndex = AllocateDepthMapIndex(Output.FrameBufferObjectID);
 
     // Attach Depth Map Texture To Framebuffer
     SystemUtils_->Logger_->Log(std::string("Attaching Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndex) + std::string("'"), 4, LogEnable);
