@@ -134,8 +134,6 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex() {
     SystemUtils_->Logger_->Log(std::string("Finished Updating Depth Map Array, Allocating Depth Map Texture Array Index: ") + std::to_string(StartSize + DepthMapAllocationChunkSize_), 5);
 
     return StartSize + 1;
-    
-
 
 }
 
