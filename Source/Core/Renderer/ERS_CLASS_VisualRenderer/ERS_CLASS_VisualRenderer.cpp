@@ -426,7 +426,9 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
         glActiveTexture(GL_TEXTURE0);
-        glUniform1i(1, glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram_, "DepthMapArray"));
+        int ULI = glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram_, "DepthMapArray");
+        std::cout<<ULI<<std::endl;
+        glUniform1i(1, ULI);
         glBindTexture(GL_TEXTURE_2D_ARRAY, ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureArrayID_);
 
         // int W, H;
