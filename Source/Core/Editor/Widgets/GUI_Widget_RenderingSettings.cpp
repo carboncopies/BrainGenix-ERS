@@ -105,8 +105,8 @@ void Widget_RenderingSettings::Draw() {
                 bool Apply = false;
 
 
-                Apply = ImGui::InputInt2("Depth Map Resolution", DepthMapResolution_, ImGuiInputTextFlags_EnterReturnsTrue);
-                //Apply |= ImGui::Button("Apply");
+                ImGui::InputInt2("Depth Map Resolution", DepthMapResolution_, ImGuiInputTextFlags_EnterReturnsTrue);
+                Apply = ImGui::Button("Apply");
                 
                 if (Apply) {
                     SystemUtils_->RendererSettings_->ShadowMapX_ = DepthMapResolution_[0];
