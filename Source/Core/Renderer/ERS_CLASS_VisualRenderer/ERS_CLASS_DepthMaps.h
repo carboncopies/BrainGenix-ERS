@@ -64,6 +64,11 @@ private:
      */
     bool FreeDepthMapIndex(unsigned int Index);
 
+    /**
+     * @brief Checks the settings of the renderer against the current parameters.
+     * 
+     */
+    void CheckSettings();
 
 public:
 
