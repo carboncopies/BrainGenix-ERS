@@ -194,7 +194,7 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(bool LogEnable) {
 
 void ERS_CLASS_DepthMaps::CheckSettings() {
 
-    //
+    // 
 
 }
 
