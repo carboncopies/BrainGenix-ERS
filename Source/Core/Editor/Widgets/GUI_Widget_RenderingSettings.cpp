@@ -105,7 +105,7 @@ void Widget_RenderingSettings::Draw() {
                 bool Apply = false;
 
 
-                ImGui::InputInt2("Depth Map Resolution", DepthMapResolution_, ImGuiInputTextFlags_EnterReturnsTrue);
+                ImGui::InputInt2("Depth Map Resolution", DepthMapResolution_);
                 Apply = ImGui::Button("Apply");
                 
                 if (Apply) {
