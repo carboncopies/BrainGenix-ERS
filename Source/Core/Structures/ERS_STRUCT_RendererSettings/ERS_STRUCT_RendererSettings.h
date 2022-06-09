@@ -17,13 +17,17 @@
 
 
 /**
- * @brief Struct containing a python script to be run in the editor
+ * @brief Struct containing renderer settings.
  * 
  */
-struct ERS_STRUCT_Script {
+struct ERS_STRUCT_RendererSettings {
 
-    std::string Name_; /**<Display name of the script*/
-    std::string Code_; /**<Python Code Content Of The Script*/
-    long AssetID; /**<AssetID Allocated To This Script*/
+    // Shadow Map Settings
+    int ShadowMapX_ = 2048;
+    int ShadowMapY_ = 2048;
+
+
+    // Indicate If Settings Have Changed
+    bool HaveSettingsChanged_ = false;
 
 };
