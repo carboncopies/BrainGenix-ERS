@@ -198,9 +198,9 @@ void ERS_CLASS_DepthMaps::CheckSettings() {
     bool NeedsToUpdate = true;
     
     if (SystemUtils_->RendererSettings_->ShadowMapX_ != DepthTextureArrayWidth_) {
-        DepthTextureArrayWidth_ = SystemUtils->RendererSettings_->ShadowMapX_;
+        DepthTextureArrayWidth_ = SystemUtils_->RendererSettings_->ShadowMapX_;
     } else if (SystemUtils_->RendererSettings_->ShadowMapX_ != DepthTextureArrayHeight_) {
-        DepthTextureArrayHeight_ = SystemUtils->RendererSettings_->ShadowMapY_;
+        DepthTextureArrayHeight_ = SystemUtils_->RendererSettings_->ShadowMapY_;
     } else {
         NeedsToUpdate = false;
     }
