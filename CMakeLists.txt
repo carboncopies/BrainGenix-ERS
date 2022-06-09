@@ -144,6 +144,7 @@ target_link_libraries(${PROJECT_NAME}
   ERS_STRUCT_HumanInputDeviceUtils
   ERS_STRUCT_SystemUtils
   ERS_STRUCT_ProjectUtils
+  ERS_STRUCT_RendererSettings
 
   )
 
