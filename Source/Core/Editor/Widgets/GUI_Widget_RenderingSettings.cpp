@@ -89,6 +89,9 @@ void Widget_RenderingSettings::Draw() {
                 //ImGui::Separator();
                 //ImGui::SliderInt("Viewport FOV", &Camera_, 1, 360)
 
+
+                ImGui::InputInt2("Depth Map Resolution")
+
             }
 
 

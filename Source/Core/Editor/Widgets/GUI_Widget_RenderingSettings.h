@@ -32,6 +32,9 @@ private:
     ImVec4 ClearColor_ = ImVec4(0.2f, 0.2f, 0.2f, 1.0f); /**<Background Clearing Color */
     bool OpenGLDrawLines_ = false; /**<Default Rendering Mode */
 
+    // Variables To Store Input Data
+    int DepthMapResolution_[2]; /**>Stores the value that the user is putting into the depth map input box*/
+
 
 public:
 
