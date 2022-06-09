@@ -194,7 +194,20 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(bool LogEnable) {
 
 void ERS_CLASS_DepthMaps::CheckSettings() {
 
-    // 
+    // Check Depth Maps
+    bool NeedsToUpdate = true;
+    
+    if (SystemUtils_->RendererSettings_->ShadowMapX_ != DepthTextureArrayWidth_) {
+        DepthTextureArrayWidth_ = SystemUtils->RendererSettings_->ShadowMapX_;
+    } else if (SystemUtils_->RendererSettings_->ShadowMapX_ != DepthTextureArrayHeight_) {
+        DepthTextureArrayHeight_ = SystemUtils->RendererSettings_->ShadowMapY_;
+    } else {
+        NeedsToUpdate = false;
+    }
+
+    if (NeedsToUpdate) {
+        RegenerateDepthMapTextureArray(DepthTextureNumTextures_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+    }
 
 }
 
