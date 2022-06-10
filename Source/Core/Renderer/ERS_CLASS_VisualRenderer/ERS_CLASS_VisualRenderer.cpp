@@ -710,7 +710,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
         // Re-Do Rotation
         glm::vec3 Rot = ActiveScene->SpotLights[i]->Rot;
-        glm::vec3 XYZRotation = glm::vec3(Rot[2], Rot[1], Rot[0]);
+        glm::vec3 XYZRotation = glm::vec3(Rot[0], Rot[1], Rot[2]);
         ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->SpotLights[i]->Pos);
         ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), XYZRotation);
         ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->SpotLights[i]->Intensity);
