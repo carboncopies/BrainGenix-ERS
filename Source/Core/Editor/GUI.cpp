@@ -104,7 +104,8 @@ void GUISystem::UpdateGUI() {
     ImGui::EndMainMenuBar();
     }
 
-
+    size_t settings_size = 0;
+    const char* settings = ImGui::SaveIniSettingsToMemory(&settings_size);
 }
 
 void GUISystem::DeferredFrameUpdate() {
