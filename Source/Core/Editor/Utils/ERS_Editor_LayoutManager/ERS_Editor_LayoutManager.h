@@ -27,6 +27,9 @@ private:
     ERS_CLASS_LoggingSystem* Logger_; /**<ERS_CLASS_LoggingSystem Instance Pointer*/
     std::string LayoutDirectory_; /**<This string stores the path to the editor's layout directory ending in a trailing slash*/
 
+    std::vector<YAML::Node> LayoutFiles_; /**<List Of YAML::Node files*/
+    std::vector<std::string> LayoutNames_; /**<List of layout display names (based on display name entry in YAML file)*/
+
 public:
 
     /**
@@ -50,5 +53,17 @@ public:
      * 
      */
     bool IndexConfigs();
+
+    /**
+    * @brief This method saves the current layout the user is using.
+    *  It will be saved to the layout dir specified in the constructor 
+    * with the display name the user has set.
+    */
+    void SaveLayout();
+
+    /**
+    * @brief This method loads the chosen layout according to the relevant YAML file.
+    */
+    void LoadLayout();
 
 };
