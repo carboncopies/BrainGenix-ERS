@@ -231,7 +231,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
     }
 
     // Re-Do Rotation
-    glm::vec3 XYZRotation = glm::vec3(Rot[0], Rot[1], Rot[2]);
+    glm::vec3 XYZRotation = glm::vec3(Rot[2], Rot[1], Rot[0]);
 
     glm::vec3 Front = glm::normalize(XYZRotation);
     ObjectView = glm::lookAt(Pos, Pos+Front, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
