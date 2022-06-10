@@ -692,7 +692,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         std::string UniformName = std::string("PointLights[") + std::to_string(i) + std::string("]");
 
         // Re-Do Rotation
-        glm::vec3 Rot = ActiveScene->DirectionalLights[i]->Rot;
+        glm::vec3 Rot = ActiveScene->PointLights[i]->Rot;
         glm::vec3 XYZRotation = glm::vec3(Rot[2], Rot[1], Rot[0]);
         ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), XYZRotation);
         ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->PointLights[i]->Intensity);
@@ -713,7 +713,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         std::string UniformName = std::string("SpotLights[") + std::to_string(i) + std::string("]");
 
         // Re-Do Rotation
-        glm::vec3 Rot = ActiveScene->DirectionalLights[i]->Rot;
+        glm::vec3 Rot = ActiveScene->SpotLights[i]->Rot;
         glm::vec3 XYZRotation = glm::vec3(Rot[2], Rot[1], Rot[0]);
         ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), XYZRotation);
         ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ActiveScene->SpotLights[i]->Rot);
