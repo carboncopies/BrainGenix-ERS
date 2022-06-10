@@ -691,10 +691,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     
         std::string UniformName = std::string("PointLights[") + std::to_string(i) + std::string("]");
 
-        // Re-Do Rotation
-        glm::vec3 Rot = ActiveScene->PointLights[i]->Rot;
-        glm::vec3 XYZRotation = glm::vec3(Rot[2], Rot[1], Rot[0]);
-        ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), XYZRotation);
+        ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->PointLights[i]->Pos);
         ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->PointLights[i]->Intensity);
         ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->PointLights[i]->Color);
     
@@ -715,8 +712,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         // Re-Do Rotation
         glm::vec3 Rot = ActiveScene->SpotLights[i]->Rot;
         glm::vec3 XYZRotation = glm::vec3(Rot[2], Rot[1], Rot[0]);
-        ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), XYZRotation);
-        ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ActiveScene->SpotLights[i]->Rot);
+        ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->SpotLights[i]->Pos);
+        ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), XYZRotation);
         ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->SpotLights[i]->Intensity);
         ActiveShader->SetFloat((UniformName + std::string(".CutOff")).c_str(), ActiveScene->SpotLights[i]->CutOff);
         ActiveShader->SetFloat((UniformName + std::string(".OuterCutOff")).c_str(), ActiveScene->SpotLights[i]->OuterCutOff);
