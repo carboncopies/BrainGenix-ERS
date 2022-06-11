@@ -51,14 +51,25 @@ ERS_CLASS_LoggingSystem::~ERS_CLASS_LoggingSystem() {
 }
 
 
-void ERS_CLASS_LoggingSystem::Log(std::string LogItem, int LogLevel) {
+void ERS_CLASS_LoggingSystem::Log(std::string LogMessage, int LogLevel, bool Enable) {
 
-    Log(LogItem.c_str(), LogLevel);
+    if (Enable) {
+        LogItem(LogMessage.c_str(), LogLevel);
+    }
+
+}
+
+void ERS_CLASS_LoggingSystem::Log(const char* LogMessage, int LogLevel, bool Enable) {
+
+    if (Enable) {
+        LogItem(LogMessage, LogLevel);
+    }
 
 }
 
 
-void ERS_CLASS_LoggingSystem::Log(const char* LogItem, int LogLevel) {
+
+void ERS_CLASS_LoggingSystem::LogItem(const char* LogItem, int LogLevel) {
 
     // Get Current Time In YYYY-MM-DD-HH-MM-SS Format
     std::time_t RawCurrentTime;

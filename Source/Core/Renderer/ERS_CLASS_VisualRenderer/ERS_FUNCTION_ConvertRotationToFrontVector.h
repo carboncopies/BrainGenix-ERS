@@ -10,22 +10,16 @@
 #include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_SceneManager.h>
-
-#include <ERS_FUNCTION_ResetMeshTexture.h>
-
-#include <ERS_STRUCT_Shader.h>
-#include <ERS_STRUCT_Model.h>
-
 
 
 /**
- * @brief Draws the mesh passed in.
+ * @brief Converts the passed in rotation to the front vector.
  * 
- * @param Mesh 
- * @param OpenGLDefaults 
- * @param Shader 
+ * @param Rotation 
+ * @return glm::vec3 
  */
-void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, ERS_STRUCT_Shader* Shader);
+glm::vec3 ERS_FUNCTION_ConvertRotationToFrontVector(glm::vec3 Rotation);

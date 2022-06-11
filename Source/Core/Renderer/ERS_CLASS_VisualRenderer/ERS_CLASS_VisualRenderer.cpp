@@ -14,12 +14,16 @@ ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* Syste
     Window_ = Window;
     Cursors3D_ = Cursors3D;
 
-    SystemUtils_->Logger_->Log("Initializing OpenGL", 5);
-    InitializeOpenGL();
-
     SystemUtils_->Logger_->Log("Initializing MeshRenderer Class", 5);
     MeshRenderer_ = std::make_unique<ERS_CLASS_MeshRenderer>(SystemUtils_);
 
+    SystemUtils_->Logger_->Log("Initializing Viewport Overlay Subsystem", 5);
+    ViewportOverlay_ = std::make_unique<ERS_CLASS_ViewportOverlay>(SystemUtils_, ProjectUtils_);
+
+    SystemUtils_->Logger_->Log("Initializing Viewport Menu Subsystem", 5);
+    ViewportMenu_ = std::make_unique<ERS_CLASS_ViewportMenu>(SystemUtils_, ProjectUtils_, &GameStartTime_, &IsEditorMode_, &Shaders_);
+
+    ShadowMaps_ = std::make_unique<ERS_CLASS_ShadowMaps>(SystemUtils_, ProjectUtils_, MeshRenderer_.get());
 
     // DEFAULT MODES, CHANGE THIS LATER! --------------------------------
     IsEditorMode_ = true;
@@ -45,28 +49,10 @@ ERS_CLASS_VisualRenderer::~ERS_CLASS_VisualRenderer() {
 
 }
 
-void ERS_CLASS_VisualRenderer::SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID) {
-
-    Shaders_[ID] = Shader;
-
-}
 
 void ERS_CLASS_VisualRenderer::SetDefaultShader(int ShaderID) {
     
     DefaultShader_ = ShaderID;
-}
-
-void ERS_CLASS_VisualRenderer::InitializeOpenGL() {
-
-    // Setup GLAD
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        SystemUtils_->Logger_->Log("Failed To Initialize GLAD", 10);
-    }
-
-    // Setup OpenGL For Blending (For Transparency Issues)
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_BLEND);
-
 }
 
 void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defaults) {
@@ -77,7 +63,8 @@ void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defa
 
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
 
-
+    // Set Depth Shader For Shadow System
+    DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthMap"), &Shaders_)].get();
 
 
     // Close Any Viewports That Aren't All Open
@@ -92,6 +79,9 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     }
 
 
+    // Generate Shadows
+    //DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("Preview Shader"), &Shaders_)].get();
+    ShadowMaps_->UpdateShadowMaps(DepthMapShader_);
 
 
     // Setup Vars
@@ -285,8 +275,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         if (ImGui::IsKeyPressed(GLFW_KEY_GRAVE_ACCENT)) {
             Viewports_[Index]->MenuEnabled = !Viewports_[Index]->MenuEnabled;
         }
-        DrawViewportMenu(Index, SceneManager);
-
+        ViewportMenu_->DrawMenu(Viewports_[Index].get());
 
 
         // Calculate Window Position
@@ -378,7 +367,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         Shaders_[ShaderIndex]->SetFloat("Exposure_", Viewports_[Index]->Exposure_);
         Shaders_[ShaderIndex]->SetFloat("Gamma_", Viewports_[Index]->Gamma_);
         
-        
+
+
         // Update Cursor If Selection Changed
         if (SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged && DrawCursor) {
 
@@ -424,9 +414,21 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
 
+
+
+
+        glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram_, "DepthMapArray"), 8);
+        glActiveTexture(GL_TEXTURE8);
+        glBindTexture(GL_TEXTURE_2D_ARRAY, ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureArrayID_);
+
+
+
         // Render
-        //SceneManager->Render(OpenGLDefaults_, Shaders_[ShaderIndex]);
-        MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, Shaders_[ShaderIndex]);
+        
+        //MeshRenderer_->RenderSceneNoTextures(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), Shaders_[ShaderIndex].get());
+        MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, Shaders_[ShaderIndex].get());
+        
+
         if (Viewports_[Index]->GridEnabled) {
             Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position_);
         }
@@ -482,11 +484,11 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
 
-        DrawViewportOverlay(Index, SceneManager);
+        ViewportOverlay_->DrawOverlay(Viewports_[Index].get());
 
 
     }
-
+    
 
     ImGui::End();
 }
@@ -529,20 +531,6 @@ void ERS_CLASS_VisualRenderer::CreateViewport() {
 
 }
 
-long ERS_CLASS_VisualRenderer::FindShaderIndex(std::string Name) {
-
-    long Index = 0;
-    for (unsigned long i = 0; i < Shaders_.size(); i++) {
-        if (Shaders_[i]->InternalName == Name) {
-            Index = i;
-            break;
-        }
-    }
-
-    return Index;
-
-}
-
 void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
 
@@ -557,8 +545,8 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     // Populate Viewport Struct
     Viewport->ShaderIndex = DefaultShader_;
     Viewport->Camera = std::make_unique<ERS_STRUCT_Camera>();
-    Viewport->Grid = std::make_unique<ERS_CLASS_Grid>(SystemUtils_, Shaders_[FindShaderIndex(std::string("_Grid"))]);
-    Viewport->LightIconRenderer = std::make_unique<ERS_CLASS_LightIconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[FindShaderIndex(std::string("_LightIcon"))]); //Set TO Shader 19 For Billboard Shader, Temp. Disabled As It Doesn't Work ATM
+    Viewport->Grid = std::make_unique<ERS_CLASS_Grid>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_Grid"), &Shaders_)].get());
+    Viewport->LightIconRenderer = std::make_unique<ERS_CLASS_LightIconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_LightIcon"), &Shaders_)].get()); //Set TO Shader 19 For Billboard Shader, Temp. Disabled As It Doesn't Work ATM
     Viewport->Name = ViewportName;
     
     Viewport->Width = 1;
@@ -568,10 +556,10 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     Viewport->Enabled = std::make_unique<bool>(true);
 
 
+
     // Create Input Processor
     SystemUtils_->Logger_->Log("Creating New Input Processor", 4);
     Viewport->Processor = std::make_unique<ERS_CLASS_InputProcessor>(Viewport->Camera.get(), Window_);
-
 
     // Create Framebuffer
     unsigned int FramebufferObject;
@@ -644,7 +632,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
 
     // Get Pointer to Shader
-    std::shared_ptr<ERS_STRUCT_Shader> ActiveShader = Shaders_[ShaderIndex];
+    ERS_STRUCT_Shader* ActiveShader = Shaders_[ShaderIndex].get();
 
     // Set Metadata Params
     float Time = glfwGetTime();
@@ -684,9 +672,13 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     
         std::string UniformName = std::string("DirectionalLights[") + std::to_string(i) + std::string("]");
         
-        ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ActiveScene->DirectionalLights[i]->Rot);
+        // Re-Do Rotation
+        ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->DirectionalLights[i]->Rot));
         ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->DirectionalLights[i]->Color);
         ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->DirectionalLights[i]->Intensity);
+
+        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex);
+        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->DirectionalLights[i]->LightSpaceMatrix);
     
     }
 
@@ -701,6 +693,9 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->PointLights[i]->Intensity);
         ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->PointLights[i]->Color);
     
+        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
+        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->PointLights[i]->LightSpaceMatrix);
+      
     }
 
 
@@ -711,12 +706,18 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     
         std::string UniformName = std::string("SpotLights[") + std::to_string(i) + std::string("]");
 
+        // Re-Do Rotation
         ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->SpotLights[i]->Pos);
-        ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ActiveScene->SpotLights[i]->Rot);
+        ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->SpotLights[i]->Rot));
         ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->SpotLights[i]->Intensity);
         ActiveShader->SetFloat((UniformName + std::string(".CutOff")).c_str(), ActiveScene->SpotLights[i]->CutOff);
         ActiveShader->SetFloat((UniformName + std::string(".OuterCutOff")).c_str(), ActiveScene->SpotLights[i]->OuterCutOff);
         ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->SpotLights[i]->Color);
+
+
+        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndex);
+        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->SpotLights[i]->LightSpaceMatrix);
+   
 
     }
 
@@ -727,468 +728,3 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
 }
 
-void ERS_CLASS_VisualRenderer::DrawViewportMenu(int Index, ERS_CLASS_SceneManager* SceneManager) {
-
-    // Menu Bar
-    if (ImGui::BeginMenuBar()) {
-
-
-        // Viewport Cube Controls
-        if (ImGui::BeginMenu("Controls")) {
-
-            // Draw Controls
-            ImGui::MenuItem("Scene Info Overlay", nullptr, &Viewports_[Index]->ShowSceneInfo_);
-            ImGui::MenuItem("System Resources Overlay", nullptr, &Viewports_[Index]->ShowResourceInfo_);
-            ImGui::MenuItem("Loading Time Overlay", nullptr, &Viewports_[Index]->ShowLoadingTimeInfo_);
-
-            ImGui::Separator();
-
-            ImGui::MenuItem("Rotation Indicator", nullptr, &Viewports_[Index]->ShowCube);
-            ImGui::MenuItem("Gizmo", nullptr, &Viewports_[Index]->GizmoEnabled);
-            ImGui::MenuItem("Grid", nullptr, &Viewports_[Index]->GridEnabled);
-            ImGui::MenuItem("Light Icons", nullptr, &Viewports_[Index]->LightIcons);
-
-            ImGui::Separator();
-
-            ImGui::MenuItem("Gamma Correction", nullptr, &Viewports_[Index]->GammaCorrection);
-            ImGui::MenuItem("HDR", nullptr, &Viewports_[Index]->HDREnabled_);
-
-
-        ImGui::EndMenu();
-        }
-
-
-        // Shader Control Menu
-        if(ImGui::BeginMenu("Shader")) {
-
-            // Draw Selectable Menu Showing Active Viewport Shader
-            for (int i = 0; (long)i < (long)Shaders_.size(); i++) {
-
-                if (strcmp(Shaders_[i]->DisplayName.substr(0, 1).c_str(), "_")) {
-                    if (ImGui::Selectable(Shaders_[i]->DisplayName.c_str(), i == Viewports_[Index]->ShaderIndex)) {
-                        Viewports_[Index]->ShaderIndex = i;
-                    }
-                }
-
-            }
-
-        ImGui::EndMenu();
-        }
-
-        // Grid Control Menu
-        if (ImGui::BeginMenu("Grid")) {
-
-            // Grid Scale Submenu
-            if (ImGui::BeginMenu("Scale")) {
-
-                if (ImGui::MenuItem("0.0625 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.00125f))) {
-                    Viewports_[Index]->Grid->GridSize_ = 0.00125f;
-                }
-
-                if (ImGui::MenuItem("0.125 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.0025f))) {
-                    Viewports_[Index]->Grid->GridSize_ = 0.0025f;
-                }
-
-                if (ImGui::MenuItem("0.25 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.005f))) {
-                    Viewports_[Index]->Grid->GridSize_ = 0.005f;
-                }
-
-                if (ImGui::MenuItem("0.5 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.01f))) {
-                    Viewports_[Index]->Grid->GridSize_ = 0.01f;
-                }
-
-                if (ImGui::MenuItem("1 Unit", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.02f))) {
-                    Viewports_[Index]->Grid->GridSize_ = 0.02f;
-                }
-
-                if (ImGui::MenuItem("2.5 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.05f))) {
-                    Viewports_[Index]->Grid->GridSize_ = 0.05f;
-                }
-
-                if (ImGui::MenuItem("5 Units", nullptr, (Viewports_[Index]->Grid->GridSize_ == 0.1f))) {
-                    Viewports_[Index]->Grid->GridSize_ = 0.1f;
-                }
-                
-            ImGui::EndMenu();
-            }
-
-            // Line Thickness Submenu
-            if (ImGui::BeginMenu("Line Thickness")) {
-
-                if (ImGui::MenuItem("0.5%", nullptr, (Viewports_[Index]->Grid->GridLineThickness_ == 0.005f))) {
-                    Viewports_[Index]->Grid->GridLineThickness_ = 0.005f;
-                }
-
-                if (ImGui::MenuItem("1%", nullptr, (Viewports_[Index]->Grid->GridLineThickness_ == 0.01f))) {
-                    Viewports_[Index]->Grid->GridLineThickness_ = 0.01f;
-                }
-
-                if (ImGui::MenuItem("2%", nullptr, (Viewports_[Index]->Grid->GridLineThickness_ == 0.02f))) {
-                    Viewports_[Index]->Grid->GridLineThickness_ = 0.02f;
-                }
-
-                if (ImGui::MenuItem("3%", nullptr, (Viewports_[Index]->Grid->GridLineThickness_ == 0.03f))) {
-                    Viewports_[Index]->Grid->GridLineThickness_ = 0.03f;
-                }
-
-                if (ImGui::MenuItem("4%", nullptr, (Viewports_[Index]->Grid->GridLineThickness_ == 0.04f))) {
-                    Viewports_[Index]->Grid->GridLineThickness_ = 0.04f;
-                }
-                
-            ImGui::EndMenu();
-            }
-
-            // Color Scheme
-            if (ImGui::BeginMenu("Colors")) {
-
-                // Base Color
-                if (ImGui::BeginMenu("Base")) {
-
-
-                    if (ImGui::MenuItem("White")) {
-                        Viewports_[Index]->Grid->GridColor_ = glm::vec3(1.0f);
-                    }
-
-                    if (ImGui::MenuItem("Light Grey")) {
-                        Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.75f);
-                    }
-
-                    if (ImGui::MenuItem("Grey")) {
-                        Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.5f);
-                    }
-
-                    if (ImGui::MenuItem("Dark Grey")) {
-                        Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.25f);
-                    }
-
-                    if (ImGui::MenuItem("Very Dark Grey")) {
-                        Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.1f);
-                    }
-
-                    if (ImGui::MenuItem("Black")) {
-                        Viewports_[Index]->Grid->GridColor_ = glm::vec3(0.0f);
-                    }
-
-                ImGui::EndMenu();
-                }
-
-                // X Axis Color
-                if (ImGui::BeginMenu("X Axis")) {
-
-
-                    if (ImGui::MenuItem("Red")) {
-                        Viewports_[Index]->Grid->GridColorX_ = glm::vec3(1.0f, 0.0f, 0.0f);
-                    }
-
-                    if (ImGui::MenuItem("Green")) {
-                        Viewports_[Index]->Grid->GridColorX_ = glm::vec3(0.0f, 1.0f, 0.0f);
-                    }
-
-                    if (ImGui::MenuItem("Blue")) {
-                        Viewports_[Index]->Grid->GridColorX_ = glm::vec3(0.0f, 0.0f, 1.0f);
-                    }
-
-                    if (ImGui::MenuItem("Dark Grey")) {
-                        Viewports_[Index]->Grid->GridColorX_ = glm::vec3(0.25f);
-                    }
-
-                    if (ImGui::MenuItem("Very Dark Grey")) {
-                        Viewports_[Index]->Grid->GridColorX_ = glm::vec3(0.1f);
-                    }
-
-                    if (ImGui::MenuItem("Black")) {
-                        Viewports_[Index]->Grid->GridColorX_ = glm::vec3(0.0f);
-                    }
-
-                ImGui::EndMenu();
-                }
-
-
-                // Z Axis Color
-                if (ImGui::BeginMenu("Z Axis")) {
-
-
-                    if (ImGui::MenuItem("Red")) {
-                        Viewports_[Index]->Grid->GridColorZ_ = glm::vec3(1.0f, 0.0f, 0.0f);
-                    }
-
-                    if (ImGui::MenuItem("Green")) {
-                        Viewports_[Index]->Grid->GridColorZ_ = glm::vec3(0.0f, 1.0f, 0.0f);
-                    }
-
-                    if (ImGui::MenuItem("Blue")) {
-                        Viewports_[Index]->Grid->GridColorZ_ = glm::vec3(0.0f, 0.0f, 1.0f);
-                    }
-
-                    if (ImGui::MenuItem("Dark Grey")) {
-                        Viewports_[Index]->Grid->GridColorZ_ = glm::vec3(0.25f);
-                    }
-
-                    if (ImGui::MenuItem("Very Dark Grey")) {
-                        Viewports_[Index]->Grid->GridColorZ_ = glm::vec3(0.1f);
-                    }
-
-                    if (ImGui::MenuItem("Black")) {
-                        Viewports_[Index]->Grid->GridColorZ_ = glm::vec3(0.0f);
-                    }
-
-                ImGui::EndMenu();
-                }
-
-
-            ImGui::EndMenu();
-            }
-
-
-        ImGui::EndMenu();
-        }
-
-
-        // Add Items Menu
-        if (ImGui::BeginMenu("Add")) {
-
-            if (ImGui::BeginMenu("Light")) {
-
-                if (ImGui::MenuItem("Point Light")) {
-                    SceneManager->AddPointLight();
-                }
-
-                if (ImGui::MenuItem("Spot Light")) {
-                    SceneManager->AddSpotLight();
-                }
-
-                if (ImGui::MenuItem("Directional Light")) {
-                    SceneManager->AddDirectionalLight();
-                }
-
-            ImGui::EndMenu();
-            }
-
-            if (ImGui::MenuItem("Script")) {
-                
-                ERS_STRUCT_Script NewScript;
-                NewScript.AssetID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
-                NewScript.Code_ = "# ERS Script\n";
-                NewScript.Name_ = "Untitled Script";
-                ProjectUtils_->ProjectManager_->Project_.Scripts.push_back(NewScript);
-            
-            }
-
-
-        ImGui::EndMenu();
-        }
-
-
-        // Grid Snapping Control Menu
-        if (ImGui::BeginMenu("Grid Snapping")) {
-
-            if (ImGui::BeginMenu("Translation")) {
-
-                if (ImGui::MenuItem("Disabled", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.0f))) {
-                    Viewports_[Index]->GridSnapAmountTranslate_ = 0.0f;
-                }
-
-                ImGui::Separator();
-                
-                if (ImGui::MenuItem("0.1", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.1f))) {
-                    Viewports_[Index]->GridSnapAmountTranslate_ = 0.1f;
-                }
-                if (ImGui::MenuItem("0.25", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.25f))) {
-                    Viewports_[Index]->GridSnapAmountTranslate_ = 0.25f;
-                }
-                if (ImGui::MenuItem("0.5", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.5f))) {
-                    Viewports_[Index]->GridSnapAmountTranslate_ = 0.5f;
-                }
-                if (ImGui::MenuItem("0.75", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 0.75f))) {
-                    Viewports_[Index]->GridSnapAmountTranslate_ = 0.75f;
-                }
-                if (ImGui::MenuItem("1.0", nullptr, (Viewports_[Index]->GridSnapAmountTranslate_ == 1.0f))) {
-                    Viewports_[Index]->GridSnapAmountTranslate_ = 1.0f;
-                }
-
-            ImGui::EndMenu();
-            }
-
-
-            if (ImGui::BeginMenu("Rotate")) {
-
-                if (ImGui::MenuItem("Disabled", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 0.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotate_ = 0.0f;
-                }
-
-                ImGui::Separator();
-                
-                if (ImGui::MenuItem("1", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 1.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotate_ = 1.0f;
-                }
-                if (ImGui::MenuItem("5", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 5.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotate_ = 5.0f;
-                }
-                if (ImGui::MenuItem("10", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 10.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotate_ = 10.0f;
-                }
-                if (ImGui::MenuItem("25", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 25.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotate_ = 25.0f;
-                }
-                if (ImGui::MenuItem("45", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 45.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotate_ = 45.0f;
-                }
-                if (ImGui::MenuItem("90", nullptr, (Viewports_[Index]->GridSnapAmountRotate_ == 90.0f))) {
-                    Viewports_[Index]->GridSnapAmountRotate_ = 90.0f;
-                }
-
-            ImGui::EndMenu();
-            }
-
-
-
-            if (ImGui::BeginMenu("Scale")) {
-
-                if (ImGui::MenuItem("Disabled", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 0.0f))) {
-                    Viewports_[Index]->GridSnapAmountScale_ = 0.0f;
-                }
-
-                ImGui::Separator();
-                
-                if (ImGui::MenuItem("0.1", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 0.1f))) {
-                    Viewports_[Index]->GridSnapAmountScale_ = 0.1f;
-                }
-                if (ImGui::MenuItem("0.25", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 0.25f))) {
-                    Viewports_[Index]->GridSnapAmountScale_ = 0.25f;
-                }
-                if (ImGui::MenuItem("0.5", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 0.5f))) {
-                    Viewports_[Index]->GridSnapAmountScale_ = 0.5f;
-                }
-                if (ImGui::MenuItem("0.75", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 0.75f))) {
-                    Viewports_[Index]->GridSnapAmountScale_ = 0.75f;
-                }
-                if (ImGui::MenuItem("1.0", nullptr, (Viewports_[Index]->GridSnapAmountScale_ == 1.0f))) {
-                    Viewports_[Index]->GridSnapAmountScale_ = 1.0f;
-                }
-
-            ImGui::EndMenu();
-            }
-
-
-        ImGui::EndMenu();
-        }
-
-        // Game Control Menu
-        if (ImGui::BeginMenu("Run")) {
-
-            // Run Option
-            if (ImGui::MenuItem("Run With Editor", "F5")) {
-                IsEditorMode_ = false;
-                GameStartTime_ = glfwGetTime();
-            }
-
-            // Stop Option
-            if (ImGui::MenuItem("Stop", "Escape")) {
-                IsEditorMode_ = !IsEditorMode_;
-            }
-
-        ImGui::EndMenu();
-        }
-
-    ImGui::EndMenuBar();
-    }
-
-
-    // Keybinds
-    if (ImGui::IsKeyPressed(GLFW_KEY_F5)) {
-        IsEditorMode_ = false;
-        GameStartTime_ = glfwGetTime();
-    }
-    if (ImGui::IsKeyPressed(GLFW_KEY_ESCAPE)) {
-        IsEditorMode_ = true;
-    }
-
-}
-
-void ERS_CLASS_VisualRenderer::DrawViewportOverlay(int Index, ERS_CLASS_SceneManager* SceneManager) {
-
-    // Draw Scene Info Overlay
-    if (Viewports_[Index]->ShowSceneInfo_) {
-
-        // Generate Info
-        unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
-        unsigned long NumVerts = 0;
-        unsigned long NumIndices = 0;
-        unsigned long NumTextures = 0;
-        unsigned long TotalModels = 0;
-        unsigned long InstancedModels = 0;
-
-        for (unsigned long i = 0; i < NumModels; i++) {
-            if (SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->Enabled) {
-                NumVerts += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalVertices_;
-                NumIndices += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalIndices_;
-                NumTextures += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->OpenGLTextureIDs_.size();
-                TotalModels ++;
-                if (!SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->IsTemplateModel) {
-                    InstancedModels++;
-                }
-            }
-        }
-
-        std::string SceneMessage = std::string("Scene: ") + std::to_string(TotalModels) + std::string(" Models (") + std::to_string(InstancedModels)
-        + std::string(" Instanced Models, ") + std::to_string(TotalModels - InstancedModels) + std::string(" Template Models), ") + std::to_string(NumVerts)
-        + std::string(" Verts, ") + std::to_string(NumIndices) + std::string(" Indices, ") + std::to_string(NumTextures) + std::string(" Textures");
-
-        ImGui::TextColored(ImVec4(0.25f, 1.0f, 0.25f, 1.0f), "%s", SceneMessage.c_str());
-
-
-    }
-
-
-    // Show System Resources Info Overlay
-    if (Viewports_[Index]->ShowResourceInfo_) {
-
-        // Generate Info
-        unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
-        unsigned long InMemoryVerts = 0;
-        unsigned long InMemoryIndices = 0;
-
-        for (unsigned long i = 0; i < NumModels; i++) {
-            if (SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->IsTemplateModel) {
-                InMemoryVerts += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalVertices_;
-                InMemoryIndices += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalIndices_;
-            }
-        }
-
-
-        std::string ResourcesMessages = std::to_string(InMemoryVerts) + std::string(" Verts In Memory, ") + std::to_string(InMemoryIndices) + std::string(" Indices In Memory");
-        ImGui::TextColored(ImVec4(0.25f, 1.0f, 0.25f, 1.0f), "%s", ResourcesMessages.c_str());
-
-    }
-
-    // Show Loading Time Info Overlay
-    if (Viewports_[Index]->ShowLoadingTimeInfo_) {
-
-        // Generate Info
-        unsigned long NumModels = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models.size();
-        double LongestLoadingTime = 0;
-        double ShortestLoadingTime = 65535;
-        double AverageLoadingTime = 0;
-
-        for (unsigned long i = 0; i < NumModels; i++) {
-            if (SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_ > LongestLoadingTime) {
-                LongestLoadingTime = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_;
-            }
-            if (SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_ < ShortestLoadingTime && SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_ != 0.0f) {
-                ShortestLoadingTime = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_;
-            }
-            AverageLoadingTime += SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[i]->TotalLoadingTime_;
-        }
-
-        AverageLoadingTime /= NumModels;
-
-        std::string LoadingTimeMessage = std::string("Asset Loading Times | Average: ") + std::to_string(AverageLoadingTime) + std::string(" Seconds, Shortest: ") + std::to_string(ShortestLoadingTime) + std::string(" Seconds, Longest: ") + std::to_string(LongestLoadingTime) + std::string(" Seconds");
-        ImGui::TextColored(ImVec4(0.25f, 1.0f, 0.25f, 1.0f), "%s", LoadingTimeMessage.c_str());
-
-    }
-
-
-
-
-
-}

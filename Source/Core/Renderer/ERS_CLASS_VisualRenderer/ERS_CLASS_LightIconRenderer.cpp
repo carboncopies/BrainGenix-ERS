@@ -6,7 +6,7 @@
 
 
 
-ERS_CLASS_LightIconRenderer::ERS_CLASS_LightIconRenderer(ERS_STRUCT_OpenGLDefaults* Defaults, ERS_STRUCT_SystemUtils* SystemUtils, std::shared_ptr<ERS_STRUCT_Shader> LightIconRendererShader) {
+ERS_CLASS_LightIconRenderer::ERS_CLASS_LightIconRenderer(ERS_STRUCT_OpenGLDefaults* Defaults, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Shader* LightIconRendererShader) {
 
 
     SystemUtils_ = SystemUtils;
@@ -90,7 +90,7 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
         
         //LightIconRendererShader_->SetVec3("BillboardRotation", SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[i]->Pos);
         
-        glUniform1i(glGetUniformLocation(LightIconRendererShader_->ShaderProgram, "IconTexture"), 0);
+        glUniform1i(glGetUniformLocation(LightIconRendererShader_->ShaderProgram_, "IconTexture"), 0);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, OpenGLDefaults_->PointLightTexture_);
 
@@ -128,7 +128,7 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
         LightIconRendererShader_->SetVec3("BillboardPosition", LightPosition);
         LightIconRendererShader_->SetVec3("BillboardRotation", LampRotation);
         
-        glUniform1i(glGetUniformLocation(LightIconRendererShader_->ShaderProgram, "IconTexture"), 0);
+        glUniform1i(glGetUniformLocation(LightIconRendererShader_->ShaderProgram_, "IconTexture"), 0);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, OpenGLDefaults_->DirectionalLightTexture_);
 
@@ -166,7 +166,7 @@ void ERS_CLASS_LightIconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_Scen
         LightIconRendererShader_->SetVec3("BillboardPosition", LightPosition);
         LightIconRendererShader_->SetVec3("BillboardRotation", LampRotation);
         
-        glUniform1i(glGetUniformLocation(LightIconRendererShader_->ShaderProgram, "IconTexture"), 0);
+        glUniform1i(glGetUniformLocation(LightIconRendererShader_->ShaderProgram_, "IconTexture"), 0);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, OpenGLDefaults_->SpotLightTexture_);
 

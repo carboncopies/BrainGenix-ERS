@@ -12,10 +12,8 @@ in VS_OUT {
     vec3 TangentViewPos;
     vec3 TangentFragPos;
     vec3 Normal; // Used when normal texture not present
+    //vec4 FragPosLightSpace;
 } Object;
-
-
-
 
 // Define Structs
 struct STRUCT_DirectionalLight {
@@ -25,6 +23,8 @@ struct STRUCT_DirectionalLight {
     // Light Color Parameters
     vec3 Color;
     float Intensity;
+    int DepthMapIndex;
+    mat4 LightSpaceMatrix;
 
 };
 
@@ -38,6 +38,10 @@ struct STRUCT_PointLight {
 
     // Light Rolloff Parameters
     float Intensity;
+    
+    int DepthMapIndex;
+    mat4 LightSpaceMatrix;
+
 };
 
 struct STRUCT_SpotLight {
@@ -55,6 +59,9 @@ struct STRUCT_SpotLight {
     // Spotlight Parameters
     float CutOff;
     float OuterCutOff;
+    
+    int DepthMapIndex;
+    mat4 LightSpaceMatrix;
 
 };
 
@@ -90,37 +97,25 @@ uniform sampler2D texture_normals1;
 uniform sampler2D texture_shininess1;
 uniform sampler2D texture_emissive1;
 uniform sampler2D texture_metalness1;
-uniform sampler2D texture_ambientocclusion1;
+uniform sampler2D texture_ambient_occlusion1;
+uniform sampler2DArray DepthMapArray;
 
-
-
-uniform bool HasAmbient;
 uniform bool HasAmbientOcclusion;
-uniform bool HasBaseColor;
 uniform bool HasDiffuse;
-uniform bool HasDiffuseRoughness;
 uniform bool HasDisplacement;
-uniform bool HasEmissionColor;
 uniform bool HasEmissive;
-uniform bool HasHeight;
-uniform bool HasLightmap;
 uniform bool HasMetalness;
-uniform bool HasNormalCamera;
 uniform bool HasNormals;
-uniform bool HasOpacity;
-uniform bool HasReflection;
 uniform bool HasShininess;
-uniform bool HasSpecular;
 
 
 // Get Lighting Info
 uniform int NumberDirectionalLights;
 uniform int NumberPointLights;
 uniform int NumberSpotLights;
-uniform STRUCT_DirectionalLight DirectionalLights[1];
-uniform STRUCT_PointLight PointLights[128];
-uniform STRUCT_SpotLight SpotLights[96];
-
+uniform STRUCT_DirectionalLight DirectionalLights[10];
+uniform STRUCT_PointLight PointLights[64];
+uniform STRUCT_SpotLight SpotLights[32];
 
 // Gamma Correction Info
 uniform bool GammaCorrectionEnabled_;
@@ -129,6 +124,157 @@ uniform float Exposure_;
 uniform float Gamma_;
 
 const float PI = 3.14159265358979;
+
+vec2 PoissonDisk[16] = vec2[]( 
+   vec2( 0.34495938, 0.29387760 ), 
+   vec2( -0.91588581, 0.45771432 ), 
+   vec2( -0.38277543, 0.27676845 ), 
+   vec2( 0.97484398, 0.75648379 ), 
+   vec2( 0.79197514, 0.19090188 ), 
+   vec2( -0.24188840, 0.99706507 ), 
+   vec2( -0.81409955, 0.91437590 ), 
+   vec2( 0.19984126, 0.78641367 ),
+   vec2(0.253, 0.622),
+   vec2(-0.253, 0.212),
+   vec2(0.353, 0.522),
+   vec2(-0.453, 0.772),
+   vec2(0.553, 0.572),
+   vec2(-0.653, 0.362),
+   vec2(0.753, 0.252),
+   vec2(-0.853, 0.432)
+);
+
+
+float random(vec3 seed, int i){
+	vec4 seed4 = vec4(seed,i);
+	float dot_product = dot(seed4, vec4(12.9898,78.233,45.164,94.673));
+	return fract(sin(dot_product) * 43758.5453);
+}
+
+
+float ShadowPCF(float Bias, vec3 ProjCoords, int Index, float CurrentDepth, int SampleSize) {
+
+    float shadow = 0.0;
+	vec2 texelSize = 1.0 / textureSize(DepthMapArray, 0).xy;
+	for(int x = -SampleSize; x <= SampleSize; ++x)
+	{
+	    for(int y = -SampleSize; y <= SampleSize; ++y)
+	    {
+            vec2 TexCoords2D = ProjCoords.xy + (vec2(x, y) * texelSize);
+	        float pcfDepth = texture(DepthMapArray, vec3(TexCoords2D, Index)).r;
+	        shadow += CurrentDepth - Bias > pcfDepth ? 1.0 : 0.0;      
+	    }    
+	}
+	shadow /= (SampleSize*2)*(SampleSize*2);
+
+	return shadow;
+
+}
+
+
+float ShadowPCFRandom(float Bias, vec3 ProjCoords, int Index, float CurrentDepth, int SampleSize) {
+
+    float shadow = 0.0f;
+	vec2 texelSize = 1.0f / textureSize(DepthMapArray, 0).xy;
+
+	for(int x = -SampleSize; x <= SampleSize; ++x)
+	{
+	    for(int y = -SampleSize; y <= SampleSize; ++y)
+	    {
+            vec2 TexCoords2D = ProjCoords.xy + (vec2(x, y) * texelSize);
+            int index = int(16.0f*random(floor(gl_FragCoord.yxz*1000.0f), x*y))%16;
+	        float pcfDepth = texture(DepthMapArray, vec3(TexCoords2D + PoissonDisk[index]/700.0f, Index)).r;
+	        //pcfDepth = texture(DepthMapArray, vec3(TexCoords2D, Index)).r;
+	        shadow += CurrentDepth - Bias > pcfDepth ? 1.0f : 0.0f;  
+	        
+	        
+	        
+	    }    
+	}
+	shadow /= (SampleSize*2)*(SampleSize*2);
+	
+	
+	return shadow;
+}
+
+
+
+
+float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
+{
+    vec4 fragPosLightSpace = LightSpaceMatrix * vec4(Object.FragPos, 1.0f);
+
+    // perform perspective divide
+    vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
+    // transform to [0,1] range
+    projCoords = projCoords * 0.5f + 0.5;
+    
+    
+    // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
+    float closestDepth = texture(DepthMapArray, vec3(projCoords.xy, Index)).r; 
+    // get depth of current fragment from light's perspective
+    float currentDepth = projCoords.z;
+    // check whether current frag pos is in shadow
+    vec3 LightDir = normalize(LightPos - Object.FragPos);
+    float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), 0.005);
+    
+    
+    //float Shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
+    
+
+	//float Shadow = 0.0f;
+
+	/**
+
+	// Sample the shadow map 4 times
+	for (int i=0;i<4;i++){
+		// use either :
+		//  - Always the same samples.
+		//    Gives a fixed pattern in the shadow, but no noise
+		int index = i;
+		//  - A random sample, based on the pixel's screen location. 
+		//    No banding, but the shadow moves with the camera, which looks weird.
+		// int index = int(16.0*random(gl_FragCoord.xyy, i))%16;
+		//  - A random sample, based on the pixel's position in world space.
+		//    The position is rounded to the millimeter to avoid too much aliasing
+		//int index = int(16.0*random(floor(Position_worldspace.xyz*1000.0), i))%16;
+		
+		// being fully in the shadow will eat up 4*0.2 = 0.8
+		// 0.2 potentially remain, which is quite dark.
+		Shadow += (1.0-texture(DepthMapArray, vec3(projCoords.xy + PoissonDisk[index]/700.0,  Index)));//(ShadowCoord.z-bias)/ShadowCoord.w) ));
+	}
+
+
+	**/
+
+
+    
+    float Shadow = ShadowPCFRandom(Bias, projCoords, Index, currentDepth, 1);
+    
+
+    
+    
+    
+    
+    if (projCoords.z > 1.0) {
+        Shadow = 0.0f;
+    }
+
+	if (Shadow > 1.0f) {
+		Shadow = 1.0f;
+	} else if (Shadow < 0.0f) {
+		Shadow = 0.0f;
+	}
+
+
+	
+
+
+    return 1.0f - Shadow;
+}
+
+
+
 
 vec3 GetNormalFromMap(sampler2D Normal) {
 
@@ -294,8 +440,8 @@ vec3 PBRPointLight(STRUCT_PointLight Light, vec3 ViewDir, vec3 Reflectance, STRU
     kD *= 1.0 - Model.Metallic;	  
 
     // scale light by NdotL
-    float NdotL = max(dot(Model.Normal, L), 0.0);        
-
+    float NdotL = max(dot(Model.Normal, L), 0.0);
+    
     // add to outgoing radiance Lo
     return (kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL;  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
 
@@ -415,27 +561,27 @@ void main() {
 
 
     // ---- Calculate Lighting Contributions ---- //
-    vec4 Lo = vec4(0.0f);
+    vec3 Lo = vec3(0.0f);
 
     // Calculate Directional Lights
     for (int i = 0; i < NumberDirectionalLights; i++) {
-        Lo += vec4(PBRDirectionalLight(DirectionalLights[i], ViewDir, Reflectance, Model), 1.0f);
+        Lo += PBRDirectionalLight(DirectionalLights[i], ViewDir, Reflectance, Model) * ShadowCalculation(DirectionalLights[i].LightSpaceMatrix, DirectionalLights[i].Direction, DirectionalLights[i].DepthMapIndex);
     }
 
     // Calculate Point Lights
     for (int i = 0; i < NumberPointLights; i++) {
-        Lo += vec4(PBRPointLight(PointLights[i], ViewDir, Reflectance, Model), 1.0f);
+        Lo += PBRPointLight(PointLights[i], ViewDir, Reflectance, Model);// * (1.0f - ShadowCalculation(PointLights[i].LightSpaceMatrix, PointLights[i].Position, PointLights[i].DepthMapIndex));
     }
 
     // Calculate Spot Lights
     for(int i = 0; i < NumberSpotLights; ++i) {
-        Lo += vec4(PBRSpotLight(SpotLights[i], ViewDir, Reflectance, Model), 1.0f);
+        Lo += PBRSpotLight(SpotLights[i], ViewDir, Reflectance, Model);
     }
 
     // ambient lighting (note that the next IBL tutorial will replace 
     // this ambient lighting with environment lighting).
     vec4 Ambient = vec4(0.03) * Model.Albedo * Model.AO;
-    vec4 Color = Ambient + Lo;
+    vec4 Color = Ambient + vec4(Lo, Model.Albedo.a);
 
 
      // Add Emissive Texture
@@ -450,9 +596,11 @@ void main() {
     } else {
         FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
+    
+    
+    
+    //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
-
-
 
 
 

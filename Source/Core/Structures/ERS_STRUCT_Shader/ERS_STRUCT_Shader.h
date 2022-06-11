@@ -31,7 +31,7 @@
 struct ERS_STRUCT_Shader {
 
 
-    unsigned int ShaderProgram; /**<OpenGL refernece ID for Shader Program */
+    unsigned int ShaderProgram_; /**<OpenGL refernece ID for Shader Program */
     unsigned int VertexShader; /**<OpenGL Reference ID for Vertex Shader */
     unsigned int FragmentShader; /**<OpenGL Reference ID For Fragment Shader */
 
@@ -41,10 +41,12 @@ struct ERS_STRUCT_Shader {
     long VertexID; /**<Asset ID of vertex shader (optional, used for saving) */
     long FragmentID; /**<Asset ID of fragment shader (optional, used for saving) */
 
-    bool _VertexShaderInitialized = false; /**<Control Variable indicating Vertex Shader Initialization Status */
-    bool _FragmentShaderInitialized = false; /**<Control Variable Indicating Fragment Shader Initialization Status */
-    bool _ShaderProgramInitialized = false; /**<Control Variable Indicating Shader Program Initializatation Status */
 
+    /**
+     * @brief Construct a new ers struct shader object
+     * 
+     */
+    ERS_STRUCT_Shader();
 
     /**
      * @brief Destroy the ers struct shader object
@@ -77,7 +79,14 @@ struct ERS_STRUCT_Shader {
      * @brief Make The Shader Stored Within The Struct Active.
      * 
      */
-    bool MakeActive(ERS_CLASS_LoggingSystem* Logger = nullptr);
+    bool MakeActive();
+
+
+    /**
+     * @brief Clears and resets the shader program, used in the shader editor.
+     * 
+     */
+    void ResetProgram();
 
 
     // Population Functions

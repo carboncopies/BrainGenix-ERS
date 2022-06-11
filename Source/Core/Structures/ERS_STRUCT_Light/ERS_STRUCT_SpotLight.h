@@ -13,6 +13,7 @@
 #include <glm/glm.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
+#include <ERS_STRUCT_DepthMap.h>
 
 
 struct ERS_STRUCT_SpotLight {
@@ -30,5 +31,10 @@ struct ERS_STRUCT_SpotLight {
 
     glm::vec3 Pos; /**<Position*/
     glm::vec3 Rot; /**<Rotation or Direction Of Light*/
+
+    ERS_STRUCT_DepthMap DepthMap; /**<Contains OpenGL IDS Used To Calculate Shadows*/
+
+    glm::mat4 LightSpaceMatrix; /**<Matrix From Light's Perspective*/
+
 
 };

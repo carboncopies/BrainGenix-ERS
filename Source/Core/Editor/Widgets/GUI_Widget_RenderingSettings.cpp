@@ -9,6 +9,15 @@ Widget_RenderingSettings::Widget_RenderingSettings(ERS_STRUCT_SystemUtils* Syste
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing Rendering Settings Widget", 5);
 
+    // Setup Default Values For Input Fields
+    SystemUtils_->Logger_->Log("Setting Up Default Renderer Setting Input Fields", 3);
+
+    SystemUtils_->Logger_->Log("Copying Shadow Map Resolution", 2);
+    DepthMapResolution_[0] = SystemUtils_->RendererSettings_->ShadowMapX_;
+    DepthMapResolution_[1] = SystemUtils_->RendererSettings_->ShadowMapY_;
+
+
+
 }
 
 Widget_RenderingSettings::~Widget_RenderingSettings() {
@@ -88,6 +97,22 @@ void Widget_RenderingSettings::Draw() {
                 // FOV Slider
                 //ImGui::Separator();
                 //ImGui::SliderInt("Viewport FOV", &Camera_, 1, 360)
+
+                // Handle Modifications To Renderer Settings
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+                bool Apply = false;
+
+
+                ImGui::InputInt2("Depth Map Resolution", DepthMapResolution_);
+                Apply = ImGui::Button("Apply");
+                
+                if (Apply) {
+                    SystemUtils_->RendererSettings_->ShadowMapX_ = DepthMapResolution_[0];
+                    SystemUtils_->RendererSettings_->ShadowMapY_ = DepthMapResolution_[1];
+                }
+
 
             }
 

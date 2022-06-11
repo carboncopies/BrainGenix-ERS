@@ -5,7 +5,7 @@
 #include <ERS_FUNCTION_DrawMesh.h>
 
 
-void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader) {
+void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, ERS_STRUCT_Shader* Shader) {
 
     Shader->SetMat4("model", Mesh->ModelMatrix);
 
@@ -21,7 +21,7 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
 
 
     // Reset All Textures To Defaults
-    unsigned int ShaderProgram = Shader->ShaderProgram;
+    unsigned int ShaderProgram = Shader->ShaderProgram_;
     unsigned int ResetTexID = OpenGLDefaults->DefaultTexture_;
     ERS_FUNCTION_ResetMeshTexture("texture_ambient_occlusion1", 1, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_diffuse1", 2, ShaderProgram, ResetTexID);
@@ -72,31 +72,29 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
             Number = std::to_string(EmissiveHandle++);
             Type = 4;
             HasEmissive = true;
-        } else if(Name == "texture_height") {
-            Number = std::to_string(HeightHandle++);
-            Type = 5;
-            HasHeight = true;
         } else if(Name == "texture_metalness") {
             Number = std::to_string(MetalnessHandle++);
-            Type = 6;
+            Type = 5;
             HasMetalness = true;
         } else if(Name == "texture_normals") {
             Number = std::to_string(NormalsHandle++);
-            Type = 7;
+            Type = 6;
             HasNormals = true;
         } else if(Name == "texture_shininess") {
             Number = std::to_string(ShininessHandle++);
-            Type = 8;
+            Type = 7;
             HasShininess = true;
         }
 
-        glUniform1i(glGetUniformLocation(Shader->ShaderProgram, (Name + Number).c_str()), Type);
+        glUniform1i(glGetUniformLocation(Shader->ShaderProgram_, (Name + Number).c_str()), Type);
         
         // Bind Texture
         glActiveTexture(GL_TEXTURE0 + Type);
         glBindTexture(GL_TEXTURE_2D, Mesh->TextureIDs[i]);
 
     }
+
+
 
     // Set Uniforms
     Shader->SetBool("HasAmbientOcclusion", HasAmbientOcclusion);

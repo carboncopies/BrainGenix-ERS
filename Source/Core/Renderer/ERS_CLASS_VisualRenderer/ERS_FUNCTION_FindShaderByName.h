@@ -8,24 +8,19 @@
 // Standard Libraries (BG convention: use <> instead of "")
 #include <iostream>
 #include <string>
+#include <map>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_SceneManager.h>
-
-#include <ERS_FUNCTION_ResetMeshTexture.h>
-
 #include <ERS_STRUCT_Shader.h>
-#include <ERS_STRUCT_Model.h>
-
 
 
 /**
- * @brief Draws the mesh passed in.
+ * @brief Returns the index of a shader with a name that matches the input name.
+ * Will return 0 if the shader cannot be found.
  * 
- * @param Mesh 
- * @param OpenGLDefaults 
- * @param Shader 
+ * @param Name 
+ * @param Shaders 
  */
-void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, ERS_STRUCT_Shader* Shader);
+unsigned int ERS_FUNCTION_FindShaderByName(std::string Name, std::vector<std::unique_ptr<ERS_STRUCT_Shader>>* Shaders);

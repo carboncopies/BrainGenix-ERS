@@ -12,7 +12,7 @@ DefaultScene: 0
 EditorLayouts:
   0: 2
 DefaultLayout: 0
-DefaultShaderProgram: 9
+DefaultShaderProgram: 10
 ShaderPrograms:
   0:
     Name: _Grid
@@ -23,34 +23,38 @@ ShaderPrograms:
     VertexID: 10038
     FragmentID: 10039
   2:
+    Name: _DepthMap
+    VertexID: 10042
+    FragmentID: 10043
+  3:
     Name: Ambient Occlusion Texture Map
     VertexID: 10004
     FragmentID: 10005
-  3:
+  4:
     Name: Diffuse Texture Map
     VertexID: 10008
     FragmentID: 10009
-  4:
+  5:
     Name: Emissive Texture Map
     VertexID: 10016
     FragmentID: 10017
-  5:
+  6:
     Name: Height Texture Map
     VertexID: 10018
     FragmentID: 10019
-  6:
+  7:
     Name: Metalic Texture Map
     VertexID: 10022
     FragmentID: 10023
-  7:
+  8:
     Name: Normals Texture Map
     VertexID: 10026
     FragmentID: 10027
-  8:
+  9:
     Name: Shininess Texture Map
     VertexID: 10032
     FragmentID: 10033
-  9:
+  10:
     Name: Viewport
     VertexID: 10040
     FragmentID: 10041

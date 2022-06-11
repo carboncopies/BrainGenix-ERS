@@ -18,14 +18,12 @@ ERS_CLASS_ShaderLoader::~ERS_CLASS_ShaderLoader() {
 
 }
 
-std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText, bool LogBuild) {
+void ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText, ERS_STRUCT_Shader* ShaderStruct, bool LogBuild) {
 
     if (LogBuild) {
         SystemUtils_->Logger_->Log("Creating Shader Object", 5);
     }
 
-    // Create Shader
-    std::shared_ptr<ERS_STRUCT_Shader> ShaderStruct = std::make_shared<ERS_STRUCT_Shader>();
 
     if (LogBuild) {
         SystemUtils_->Logger_->Log("Creating Vertex Shader Object", 3);
@@ -49,14 +47,13 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::CreateShaderObject(co
         SystemUtils_->Logger_->Log("Linked Shader Program", 4);
     }
 
-    return ShaderStruct;
 
 }
 
-std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::LoadShaderFromAsset(long VertexID, long FragmentID, std::string ShaderName) {
+void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(long VertexID, long FragmentID, ERS_STRUCT_Shader* ShaderStruct, std::string ShaderName) {
 
     // Load Shaders From Disk Into RAM
-    SystemUtils_->Logger_->Log("Loading Shaders From Asset ID", 5);
+    SystemUtils_->Logger_->Log(std::string("Loading Shaders From Asset IDs ") + std::to_string(VertexID) + std::string(", ") + std::to_string(FragmentID), 5);
 
     std::unique_ptr<ERS_STRUCT_IOData> VertexData = std::make_unique<ERS_STRUCT_IOData>();
     std::unique_ptr<ERS_STRUCT_IOData> FragmentData = std::make_unique<ERS_STRUCT_IOData>();
@@ -68,12 +65,14 @@ std::shared_ptr<ERS_STRUCT_Shader> ERS_CLASS_ShaderLoader::LoadShaderFromAsset(l
 
 
     // Return Compiled Shader
-    std::shared_ptr<ERS_STRUCT_Shader> ShaderStruct = CreateShaderObject(VertexText.c_str(), FragmentText.c_str());
+    CreateShaderObject(VertexText.c_str(), FragmentText.c_str(), ShaderStruct);
     ShaderStruct->VertexID = VertexID;
     ShaderStruct->FragmentID = FragmentID;
     ShaderStruct->DisplayName = ShaderName;
     ShaderStruct->InternalName = ShaderName;
-    return ShaderStruct;
+
+    SystemUtils_->Logger_->Log(std::string("Loaded Shader '") + ShaderName + std::string("'"), 5);
+
 
 
 }

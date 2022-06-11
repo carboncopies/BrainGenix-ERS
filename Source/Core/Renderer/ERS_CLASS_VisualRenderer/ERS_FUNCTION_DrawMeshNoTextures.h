@@ -25,7 +25,5 @@
  * @brief Draws the mesh passed in.
  * 
  * @param Mesh 
- * @param OpenGLDefaults 
- * @param Shader 
  */
-void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, ERS_STRUCT_Shader* Shader);
+void ERS_FUNCTION_DrawMeshNoTextures(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_Shader* Shader);
