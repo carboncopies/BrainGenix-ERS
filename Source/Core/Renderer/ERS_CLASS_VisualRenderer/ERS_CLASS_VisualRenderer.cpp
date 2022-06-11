@@ -710,16 +710,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
         // Re-Do Rotation
         glm::vec3 Rot = ActiveScene->SpotLights[i]->Rot;
-        // glm::vec3 XYZRotation;
 
-        // float yaw = glm::radians(Rot.z);
-        // float pitch = glm::radians(Rot.y);
-        // float roll = glm::radians(Rot.x);
-
-        
-        // XYZRotation.x = -cos(yaw)*sin(pitch)*sin(roll)-sin(yaw)*cos(roll);
-        // XYZRotation.y = -sin(yaw)*sin(pitch)*sin(roll)+cos(yaw)*cos(roll);
-        // XYZRotation.z = cos(pitch)*sin(roll);
 
         glm::mat4 RotMatrix;
         RotMatrix = glm::rotate(RotMatrix, glm::radians(Rot[2]), glm::vec3(0, 0, 1));
