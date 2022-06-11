@@ -675,7 +675,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         // Re-Do Rotation
         glm::vec3 Rot = ActiveScene->DirectionalLights[i]->Rot;
         glm::vec3 XYZRotation = glm::vec3(Rot[2], Rot[1], Rot[0]);
-        ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), XYZRotation);
+        ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->DirectionalLights[i]->Rot));
         ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->DirectionalLights[i]->Color);
         ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->DirectionalLights[i]->Intensity);
 
