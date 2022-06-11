@@ -37,13 +37,8 @@ bool ERS_CLASS_LayoutManager::IndexConfigs() {
         LayoutFiles_.push_back(Layout);
 
         // Parse Out Display Name From File Path
-        // TODO
         std::string LayoutName;
-
         LayoutName = Layout["DisplayName"].as<std::string>();
-        
-        //FilePath = FilePath.substr(strlen(ThemePath_) + 1);
-        //FilePath = FilePath.substr(0, strlen(FilePath.c_str()) - 5);
 
         // Add To Names Vector
         LayoutNames_.push_back(LayoutName);
