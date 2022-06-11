@@ -5,10 +5,13 @@
 #include <ERS_FUNCTION_ConvertRotationToFrontVector.h>
 
 
-void ERS_FUNCTION_ResetMeshTexture(const char* Name, int Offset, unsigned int ShaderProgram, unsigned int TextureID) {
+glm::vec3 ERS_FUNCTION_ConvertRotationToFrontVector(glm::vec3 Rotation) {
 
-    glUniform1i(glGetUniformLocation(ShaderProgram, Name), Offset);
-    glActiveTexture(GL_TEXTURE0 + Offset);
-    glBindTexture(GL_TEXTURE_2D, TextureID);
+    glm::mat4 RotMatrix;
+    RotMatrix = glm::rotate(RotMatrix, glm::radians(Rot[2]), glm::vec3(0, 0, 1));
+    RotMatrix = glm::rotate(RotMatrix, glm::radians(Rot[1]), glm::vec3(0, 1, 0));
+    RotMatrix = glm::rotate(RotMatrix, glm::radians(Rot[0]), glm::vec3(1, 0, 0));
+
+    return glm::vec3(RotMatrix[2][0], RotMatrix[2][1], RotMatrix[2][2]);
 
 }
