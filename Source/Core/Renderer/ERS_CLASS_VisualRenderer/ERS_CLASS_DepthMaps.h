@@ -31,7 +31,7 @@
 #include <ERS_STRUCT_Viewport.h>
 #include <ERS_STRUCT_DepthMap.h>
 
-
+#include <ERS_FUNCTION_ConvertRotationToFrontVector.h>
 
 /**
  * @brief This class renders any ui/overlay info onto the viewport as requested by the viewport struct.
