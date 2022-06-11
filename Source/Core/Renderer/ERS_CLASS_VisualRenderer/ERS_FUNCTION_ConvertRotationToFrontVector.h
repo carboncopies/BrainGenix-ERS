@@ -19,11 +19,9 @@
 
 
 /**
- * @brief Binds to the given texture using the given shader program.
+ * @brief Converts the passed in rotation to the front vector.
  * 
- * @param Name 
- * @param Offset 
- * @param ShaderProgram 
- * @param TextureID 
+ * @param Rotation 
+ * @return glm::vec3 
  */
-void ERS_FUNCTION_ResetMeshTexture(const char* Name, int Offset, unsigned int ShaderProgram, unsigned int TextureID);
+glm::vec3 ERS_FUNCTION_ConvertRotationToFrontVector(glm::vec3 Rotation);
