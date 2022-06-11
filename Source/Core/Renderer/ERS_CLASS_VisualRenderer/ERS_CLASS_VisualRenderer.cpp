@@ -722,9 +722,9 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         // XYZRotation.z = cos(pitch)*sin(roll);
 
         glm::mat4 RotMatrix;
-        RotMatrix = glm::rotate(RotMatrix, Rot[2], glm::vec3(0, 0, 1));
-        RotMatrix = glm::rotate(RotMatrix, Rot[1], glm::vec3(0, 1, 0));
-        RotMatrix = glm::rotate(RotMatrix, Rot[0], glm::vec3(1, 0, 0));
+        RotMatrix = glm::rotate(RotMatrix, glm::radians(Rot[2]), glm::vec3(0, 0, 1));
+        RotMatrix = glm::rotate(RotMatrix, glm::radians(Rot[1]), glm::vec3(0, 1, 0));
+        RotMatrix = glm::rotate(RotMatrix, glm::radians(Rot[0]), glm::vec3(1, 0, 0));
 
         glm::vec3 XYZRotation = glm::vec3(RotMatrix[2][0], RotMatrix[2][1], RotMatrix[2][2]);
         
