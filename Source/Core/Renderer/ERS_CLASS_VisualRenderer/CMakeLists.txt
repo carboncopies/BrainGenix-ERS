@@ -22,6 +22,7 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_FUNCTION_DrawMesh.cpp"
             "ERS_FUNCTION_DrawMeshNoTextures.cpp"
             "ERS_FUNCTION_ResetMeshTexture.cpp"
+            "ERS_FUNCTION_ConvertRotationToFrontVector.cpp"
             
 
             # Add Header Files (.h)
@@ -40,6 +41,8 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_FUNCTION_DrawMesh.h"
             "ERS_FUNCTION_DrawMeshNoTextures.h"
             "ERS_FUNCTION_ResetMeshTexture.h"
+            "ERS_FUNCTION_ConvertRotationToFrontVector.h"
+
 
 
             ${BACKWARD_ENABLE}
