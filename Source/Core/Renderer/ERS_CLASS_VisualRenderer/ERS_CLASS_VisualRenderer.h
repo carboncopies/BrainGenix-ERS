@@ -46,7 +46,7 @@
 #include <ERS_STRUCT_ProjectUtils.h>
 
 #include <ERS_FUNCTION_FindShaderByName.h>
-
+#include <ERS_FUNCTION_ConvertRotationToFrontVector.h>
 
 /**
  * @brief Handles viewport creation/deletion/rendering/updating.
