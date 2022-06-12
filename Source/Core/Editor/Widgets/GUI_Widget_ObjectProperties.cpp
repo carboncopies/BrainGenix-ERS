@@ -27,22 +27,22 @@ glm::vec3 Widget_ObjectProperties::XYZDragFloat(std::string Name, glm::vec3 Inpu
 
     // Draw Three Colored Boxes 
     ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.7f, 0.1f, 0.1f, 1.0f));
-    ImGui::DragFloat(nullptr, &X, SnapAmount);
+    ImGui::DragFloat("", &X, SnapAmount);
     ImGui::PopStyleColor();
     ImGui::SameLine();
 
     ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.1f, 0.7f, 0.1f, 1.0f));
-    ImGui::DragFloat(nullptr, &Y, SnapAmount);
+    ImGui::DragFloat("", &Y, SnapAmount);
     ImGui::PopStyleColor();
     ImGui::SameLine();
 
     ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.0f, 0.1f, 0.7f, 1.0f));
-    ImGui::DragFloat(nullptr, &Z, SnapAmount);
+    ImGui::DragFloat("", &Z, SnapAmount);
     ImGui::PopStyleColor();
     ImGui::SameLine();
 
     // Draw Label
-    ImGui::Text(Name.c_str());
+    ImGui::Text("%s", Name.c_str());
 
     // Return Value
     return glm::vec3(X, Y, Z);
