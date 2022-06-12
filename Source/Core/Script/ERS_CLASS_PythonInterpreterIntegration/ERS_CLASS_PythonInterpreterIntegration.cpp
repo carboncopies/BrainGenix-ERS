@@ -193,6 +193,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     PointLightModule.attr("PointLightColorB") = PointLight->Color.b;
     
     PointLightModule.attr("PointLightIntensity") = PointLight->Intensity;
+    PointLightModule.attr("PointLightMaxDistance") = PointLight->MaxDistance;
     
 
     // Get Local Dict
@@ -288,6 +289,13 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Intensity CAST_ERROR");
     }
+
+    try {
+        PointLight->Intensity = PointLightModule.attr("PointLightMaxDistance").cast<float>();
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("PointLight MaxDistance CAST_ERROR");
+    }
+
 
     // Return Status
     return true;
