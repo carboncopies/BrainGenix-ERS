@@ -209,8 +209,10 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 Scene.SpotLights[LightIndex]->MaxDistance = SceneDataNode[i]["MaxDistance"].as<float>();
             }
             Scene.SpotLights[LightIndex]->CutOff = SceneDataNode[i]["CutOff"].as<float>();
-            Scene.SpotLights[LightIndex]->Rolloff = SceneDataNode[i]["RollOff"].as<float>();
 
+            if (SceneDataNode[i]["RollOff"]) {
+                Scene.SpotLights[LightIndex]->Rolloff = SceneDataNode[i]["RollOff"].as<float>();
+            }
             if (SceneDataNode[i]["ColorRed"] && SceneDataNode[i]["ColorGreen"] && SceneDataNode[i]["ColorBlue"]) {
                 Scene.SpotLights[LightIndex]->Color = glm::vec3(
                     SceneDataNode[i]["ColorRed"].as<float>(),
