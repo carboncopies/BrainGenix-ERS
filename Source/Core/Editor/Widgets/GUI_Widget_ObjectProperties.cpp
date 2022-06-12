@@ -27,8 +27,19 @@ glm::vec3 Widget_ObjectProperties::XYZDragFloat(std::string Name, glm::vec3 Inpu
 
     // Draw Three Colored Boxes 
     ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.7f, 0.1f, 0.1f, 1.0f));
-    ImGui::DragFloat3("Location", (float*)glm::value_ptr(Cursors3D_->Pos_), SnapAmount);
+    ImGui::DragFloat(nullptr, &X, SnapAmount);
     ImGui::PopStyleColor();
+
+    ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.1f, 0.7f, 0.1f, 1.0f));
+    ImGui::DragFloat(nullptr, &Y, SnapAmount);
+    ImGui::PopStyleColor();
+
+    ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.0f, 0.1f, 0.7f, 1.0f));
+    ImGui::DragFloat(nullptr, &Z, SnapAmount);
+    ImGui::PopStyleColor();
+
+    // Return Value
+    return glm::vec3(X, Y, Z);
 
 }
 
