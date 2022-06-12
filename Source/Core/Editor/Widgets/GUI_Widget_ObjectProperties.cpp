@@ -59,9 +59,12 @@ void Widget_ObjectProperties::Draw() {
                         FloatToVec(Color, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Color);
   
 
-                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Intensity, 0.01f);
+                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Intensity, 0.25f);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the brightness of the light source, increase this for a brighter light.");
+
+                        ImGui::DragFloat("MaxDistance", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->MaxDistance, 0.5f);
+
 
 
                     }
@@ -79,7 +82,7 @@ void Widget_ObjectProperties::Draw() {
                         FloatToVec(Color, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Color);
 
 
-                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Intensity, 0.01f);
+                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Intensity, 0.25f);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the brightness of the light source, increase this for a brighter light.");
 
@@ -99,15 +102,15 @@ void Widget_ObjectProperties::Draw() {
                         FloatToVec(Color, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Color);
 
 
-                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Intensity, 0.01f);
+                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Intensity, 0.25f);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the brightness of the light source, increase this for a brighter light.");
 
 
-                        ImGui::DragFloat("Cutoff Angle", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->CutOff, 0.01f);
+                        ImGui::DragFloat("Cutoff Angle", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->CutOff, 1.0f);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Specifies the angle of the spot light's outer cone.");
-                        ImGui::DragFloat("Rolloff Angle", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Rolloff, 0.01f);
+                        ImGui::DragFloat("Rolloff Angle", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Rolloff, 0.5f);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the angle at which the outer cone begins to roll off. This angle sets the inner cone which is unaffected by rolloff. Rolloff occurs in the area between the outer and inner cone (this angle).");
 
