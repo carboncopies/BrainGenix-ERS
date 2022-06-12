@@ -13,7 +13,6 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
     unsigned int DiffuseHandle = 1;
     unsigned int DisplacementHandle = 1;
     unsigned int EmissiveHandle = 1;
-    unsigned int HeightHandle = 1;
     unsigned int MetalnessHandle = 1;
     unsigned int NormalsHandle = 1;
     unsigned int ShininessHandle = 1;
@@ -27,7 +26,6 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
     ERS_FUNCTION_ResetMeshTexture("texture_diffuse1", 2, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_displacement1", 3, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_emissive1", 4, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_height1", 5, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_metalness1", 6, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_normals1", 7, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_shininess1", 8, ShaderProgram, ResetTexID);
