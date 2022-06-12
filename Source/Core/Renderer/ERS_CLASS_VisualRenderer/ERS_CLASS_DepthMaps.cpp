@@ -266,18 +266,16 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     float NearPlane = 0.1f, FarPlane = 15.0f;
 
     // Calculate Project, View, Space Matrices
-    if (Orthogonal) {
-        ObjectProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, NearPlane, FarPlane); // ortho models directional light source
-    } else {
-        float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
-        ObjectProjection = glm::perspective(glm::radians(110.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
-    }
+
+    float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
+    ObjectProjection = glm::perspective(glm::radians(110.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
+    
 
     // Re-Do Rotation
-    glm::vec3 XYZRotation = ERS_FUNCTION_ConvertRotationToFrontVector(Rot);
+    glm::vec3 XYZRotation = ERS_FUNCTION_ConvertRotationToFrontVector(Light->Rot);
 
     glm::vec3 Front = glm::normalize(XYZRotation);
-    ObjectView = glm::lookAt(Pos, Pos+Front, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
+    ObjectView = glm::lookAt(Light->Pos, Light->Pos+Front, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
     ObjectSpace = ObjectProjection * ObjectView;
 
     // Render With Depth Shader
@@ -289,7 +287,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     }
 
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-    glBindFramebuffer(GL_FRAMEBUFFER, Target->FrameBufferObjectID);
+    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
 
     
     glClear(GL_DEPTH_BUFFER_BIT);
@@ -314,18 +312,16 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT
     float NearPlane = 0.1f, FarPlane = 15.0f;
 
     // Calculate Project, View, Space Matrices
-    if (Orthogonal) {
-        ObjectProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, NearPlane, FarPlane); // ortho models directional light source
-    } else {
-        float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
-        ObjectProjection = glm::perspective(glm::radians(110.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
-    }
+
+    float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
+    ObjectProjection = glm::perspective(glm::radians(110.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
+    
 
     // Re-Do Rotation
-    glm::vec3 XYZRotation = ERS_FUNCTION_ConvertRotationToFrontVector(Rot);
+    glm::vec3 XYZRotation = ERS_FUNCTION_ConvertRotationToFrontVector(Light->Rot);
 
     glm::vec3 Front = glm::normalize(XYZRotation);
-    ObjectView = glm::lookAt(Pos, Pos+Front, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
+    ObjectView = glm::lookAt(Light->Pos, Light->Pos+Front, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
     ObjectSpace = ObjectProjection * ObjectView;
 
     // Render With Depth Shader
@@ -337,7 +333,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT
     }
 
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-    glBindFramebuffer(GL_FRAMEBUFFER, Target->FrameBufferObjectID);
+    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
 
     
     glClear(GL_DEPTH_BUFFER_BIT);
