@@ -325,6 +325,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     DirectionalLightModule.attr("DirectionalLightColorB") = DirectionalLight->Color.b;
 
     DirectionalLightModule.attr("DirectionalLightIntensity") = DirectionalLight->Intensity;    
+    DirectionalLightModule.attr("DirectionalLightMaxDistance") = DirectionalLight->MaxDistance;   
 
     // Get Local Dict
     pybind11::dict Locals = DirectionalLightModule.attr("__dict__");
