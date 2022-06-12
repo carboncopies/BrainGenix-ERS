@@ -158,6 +158,7 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
 
         Output << YAML::Key << "Intensity" << YAML::Value << InputScene->PointLights[i]->Intensity;
+        Output << YAML::Key << "MaxDistance" << YAML::Value << InputScene->PointLights[i]->MaxDistance;
 
 
         Output<<YAML::Key<<"AttachedScripts";
