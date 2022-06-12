@@ -313,7 +313,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT
     // Calculate Project, View, Space Matrices
 
     float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
-    ObjectProjection = glm::perspective(glm::radians(Light->CutOff + 20.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
+    ObjectProjection = glm::perspective(glm::radians(Light->CutOff), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
     
 
     // Re-Do Rotation
