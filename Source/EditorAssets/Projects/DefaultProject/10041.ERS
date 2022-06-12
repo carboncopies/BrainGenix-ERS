@@ -461,8 +461,8 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
 
     // Calculate Spot Intensity
     float Theta = dot(normalize(Light.Position  - Object.FragPos), normalize(-Light.Direction));
-    float Epsilon = Light.CutOff - Light.OuterCutOff;
-    float Intensity = clamp((Theta - Light.OuterCutOff) / Epsilon, 0.0f, 1.0f);
+    float Epsilon = Light.OuterCutOff;
+    float Intensity = clamp((Theta - Light.CutOff) / Epsilon, 0.0f, 1.0f);
     
     if (GammaCorrectionEnabled_) {
         Intensity = pow(Intensity, Gamma_*Gamma_);
@@ -601,6 +601,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
