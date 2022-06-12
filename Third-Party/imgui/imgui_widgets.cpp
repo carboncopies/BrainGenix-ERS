@@ -2502,7 +2502,7 @@ bool ImGui::DragScalarN(const char* label, ImGuiDataType data_type, void* p_data
     EndGroup();
     return value_changed;
 }
-#include <iostream>
+
 bool ImGui::DragScalarN(const char* label, ImGuiDataType data_type, void* p_data, int components, float v_speed, float Color[], const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags)
 {
     ImGuiWindow* window = GetCurrentWindow();
