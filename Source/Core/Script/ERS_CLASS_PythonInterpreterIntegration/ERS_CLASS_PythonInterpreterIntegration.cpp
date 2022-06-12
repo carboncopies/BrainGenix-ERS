@@ -467,9 +467,10 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     SpotLightModule.attr("SpotLightColorB") = SpotLight->Color.b;
     
     SpotLightModule.attr("SpotLightIntensity") = SpotLight->Intensity;
+    SpotLightModule.attr("SpotLightMaxDistance") = SpotLight->MaxDistance;
     
     SpotLightModule.attr("SpotLightCutoff") = SpotLight->CutOff;
-    SpotLightModule.attr("SpotLightOuterCutoff") = SpotLight->OuterCutOff;
+    SpotLightModule.attr("SpotLightRolloff") = SpotLight->Rolloff;
  
 
     // Get Local Dict
