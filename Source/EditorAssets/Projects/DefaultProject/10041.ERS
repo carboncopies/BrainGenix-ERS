@@ -23,6 +23,7 @@ struct STRUCT_DirectionalLight {
     // Light Color Parameters
     vec3 Color;
     float Intensity;
+    float MaxDistance;
     int DepthMapIndex;
     mat4 LightSpaceMatrix;
 
@@ -38,6 +39,7 @@ struct STRUCT_PointLight {
 
     // Light Rolloff Parameters
     float Intensity;
+    float MaxDistance;
     
     int DepthMapIndex;
     mat4 LightSpaceMatrix;
@@ -55,10 +57,11 @@ struct STRUCT_SpotLight {
 
     // Light Rolloff Parameters
     float Intensity;
+    float MaxDistance;
 
     // Spotlight Parameters
     float CutOff;
-    float OuterCutOff;
+    float RollOff;
     
     int DepthMapIndex;
     mat4 LightSpaceMatrix;
@@ -113,7 +116,7 @@ uniform bool HasShininess;
 uniform int NumberDirectionalLights;
 uniform int NumberPointLights;
 uniform int NumberSpotLights;
-uniform STRUCT_DirectionalLight DirectionalLights[10];
+uniform STRUCT_DirectionalLight DirectionalLights[2];
 uniform STRUCT_PointLight PointLights[64];
 uniform STRUCT_SpotLight SpotLights[32];
 
@@ -461,7 +464,7 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
 
     // Calculate Spot Intensity
     float Theta = dot(normalize(Light.Position  - Object.FragPos), normalize(-Light.Direction));
-    float Epsilon = Light.OuterCutOff;
+    float Epsilon = Light.RollOff;
     float Intensity = clamp((Theta - Light.CutOff) / Epsilon, 0.0f, 1.0f);
     
     if (GammaCorrectionEnabled_) {
