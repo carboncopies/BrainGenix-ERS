@@ -26,7 +26,8 @@ glm::vec3 Widget_ObjectProperties::XYZDragFloat(std::string Name, glm::vec3 Inpu
     Z = Input.z;
 
     // Format Table 
-    if (ImGui::BeginTable(Name.c_str(), 4)) {
+    ImGuiTableFlags TableFlags = ImGuiTableFlags_NoPadInnerX | ImGuiTableFlags_NoBordersInBody;
+    if (ImGui::BeginTable(Name.c_str(), 4, TableFlags)) {
 
         ImGui::TableNextRow();
 
