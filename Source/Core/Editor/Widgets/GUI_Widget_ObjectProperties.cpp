@@ -84,11 +84,8 @@ void Widget_ObjectProperties::Draw() {
                     };
 
                     ImGui::DragFloat3("Location", (float*)glm::value_ptr(Cursors3D_->Pos_), 0.05f, Colors);
-                    // ImGui::PopStyleColor();
-                    //Cursors3D_->Pos_ = XYZDragFloat("Position", Cursors3D_->Pos_);
-
-                    ImGui::DragFloat3("Rotation", (float*)glm::value_ptr(Cursors3D_->Rot_), 0.05f);// FIXME: MAKE ROLL OVER TO 180 Degrees?
-                    ImGui::DragFloat3("Scale", (float*)glm::value_ptr(Cursors3D_->Scale_), 0.05f, 0.0f, 65535.0f);
+                    ImGui::DragFloat3("Rotation", (float*)glm::value_ptr(Cursors3D_->Rot_), 0.05f, Colors);
+                    ImGui::DragFloat3("Scale", (float*)glm::value_ptr(Cursors3D_->Scale_), 0.05f, Colors, 0.0f, 65535.0f);
                 }
             
                 // Handle Extra Options For Lights
