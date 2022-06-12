@@ -579,7 +579,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
 
 
     try {
-        SpotLight->Intensity = SpotLightModule.attr("SpotLightRolloff").cast<float>();
+        SpotLight->Rolloff = SpotLightModule.attr("SpotLightRolloff").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("SpotLight Rolloff CAST_ERROR");
     }
