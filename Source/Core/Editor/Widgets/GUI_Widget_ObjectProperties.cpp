@@ -25,24 +25,36 @@ glm::vec3 Widget_ObjectProperties::XYZDragFloat(std::string Name, glm::vec3 Inpu
     Y = Input.y;
     Z = Input.z;
 
-    // Draw Three Colored Boxes 
-    ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.7f, 0.1f, 0.1f, 1.0f));
-    ImGui::DragFloat("", &X, SnapAmount);
-    ImGui::PopStyleColor();
-    ImGui::SameLine();
+    // Format Table 
+    if (ImGui::BeginTable("##Table_%s", Name.c_str(), 4)) {
 
-    ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.1f, 0.7f, 0.1f, 1.0f));
-    ImGui::DragFloat("", &Y, SnapAmount);
-    ImGui::PopStyleColor();
-    ImGui::SameLine();
+        ImGui::TableNextRow();
 
-    ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.0f, 0.1f, 0.7f, 1.0f));
-    ImGui::DragFloat("", &Z, SnapAmount);
-    ImGui::PopStyleColor();
-    ImGui::SameLine();
+        // Draw Three Colored Boxes 
+        ImGui::TableNextColumn();
+        ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.7f, 0.1f, 0.1f, 1.0f));
+        ImGui::DragFloat("", &X, SnapAmount);
+        ImGui::PopStyleColor();
+        //ImGui::SameLine();
 
-    // Draw Label
-    ImGui::Text("%s", Name.c_str());
+        ImGui::TableNextColumn();
+        ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.1f, 0.7f, 0.1f, 1.0f));
+        ImGui::DragFloat("", &Y, SnapAmount);
+        ImGui::PopStyleColor();
+        //ImGui::SameLine();
+
+        ImGui::TableNextColumn();
+        ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.0f, 0.1f, 0.7f, 1.0f));
+        ImGui::DragFloat("", &Z, SnapAmount);
+        ImGui::PopStyleColor();
+        //ImGui::SameLine();
+
+        // Draw Label
+        ImGui::TableNextColumn();
+        ImGui::Text("%s", Name.c_str());
+
+    }
+    ImGui::EndTable();
 
     // Return Value
     return glm::vec3(X, Y, Z);
