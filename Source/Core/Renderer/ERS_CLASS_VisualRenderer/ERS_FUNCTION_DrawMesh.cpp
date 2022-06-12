@@ -26,9 +26,9 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
     ERS_FUNCTION_ResetMeshTexture("texture_diffuse1", 2, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_displacement1", 3, ShaderProgram, ResetTexID);
     ERS_FUNCTION_ResetMeshTexture("texture_emissive1", 4, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_metalness1", 6, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_normals1", 7, ShaderProgram, ResetTexID);
-    ERS_FUNCTION_ResetMeshTexture("texture_shininess1", 8, ShaderProgram, ResetTexID);
+    ERS_FUNCTION_ResetMeshTexture("texture_metalness1", 5, ShaderProgram, ResetTexID);
+    ERS_FUNCTION_ResetMeshTexture("texture_normals1", 6, ShaderProgram, ResetTexID);
+    ERS_FUNCTION_ResetMeshTexture("texture_shininess1", 7, ShaderProgram, ResetTexID);
 
 
 
