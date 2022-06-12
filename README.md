@@ -79,7 +79,8 @@
     "PointLightColorR" - Red component of Color(from scale of 0 to 1)
     "PointLightColorG" - Green component of color (from scale of 0 to 1)
     "PointLightColorB" - Blue component of color (from scale of 0 to 1)
-    "PointLightIntensity" - brighness of the light
+    "PointLightIntensity" - brighness of the light (float)
+    "PointLightMaxDistance" - maximum distance of the light after which the scene will not be affected (float)
     "PointLightRolloffConstant" - Constant component of light rolloff (float)
     "PointLightRolloffLinear" - Linear component of light rolloff (float)
     "PointLightRolloffQuadratic" - Quadratic component of light rolloff (float)
@@ -91,7 +92,8 @@
     "DirectionalLightRotX" - X Rotation of the light
     "DirectionalLightRotY" - Y Rotation of the light
     "DirectionalLightRotZ" - Z Rotation of the light
-    "DirectionalLightIntensity" - brighness of the light
+    "DirectionalLightIntensity" - brighness of the light (float)
+    "DirectionalLightMaxDistance" - maximum distance of the light after which the scene will not be affected (float)
     "DirectionalLightColorR" - Red component of color (from scale of 0 to 1)
     "DirectionalLightColorG" - Green component of color (from scale of 0 to 1)
     "DirectionalLightColorB" - Blue component of color (from scale of 0 to 1)
@@ -106,6 +108,7 @@
     "SpotLightColorR" - Red component of color (from scale of 0 to 1)
     "SpotLightColorG" - Green component of color (from scale of 0 to 1)
     "SpotLightColorB" - Blue component of color (from scale of 0 to 1)
-    "SpotLightIntensity" - brighness of the light
-    "SpotLightCutoff" - Circular radius of spotlight inner lit area
-    "SpotlightOuterCutoff" - Outside area of spotlight cutoff
+    "SpotLightIntensity" - brighness of the light (float)
+    "SpotLightMaxDistance" - maximum distance of the light after which the scene will not be affected (float)
+    "SpotLightCutoff" - Angle of area affected in degrees (float)
+    "SpotlightRolloff" - Rolloff angle in degrees (float)
