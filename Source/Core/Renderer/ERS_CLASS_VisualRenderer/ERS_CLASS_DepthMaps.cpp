@@ -313,7 +313,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT
     // Calculate Project, View, Space Matrices
 
     float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
-    float FOV = glm::radians(Light->CutOff) * 2;// * (0.01745329));
+    float FOV = glm::radians(130.0f);// * (0.01745329));
     ObjectProjection = glm::perspective(FOV, AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
     
 
