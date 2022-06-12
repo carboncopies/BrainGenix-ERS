@@ -219,10 +219,10 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
     float currentDepth = projCoords.z;
     // check whether current frag pos is in shadow
     vec3 LightDir = normalize(LightPos - Object.FragPos);
-    float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), 0.005);
+    float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), 0.00025);
     
     
-    //float Shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
+    
     
 
 	//float Shadow = 0.0f;
@@ -250,9 +250,9 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
 
 	**/
 
-
-    
-    float Shadow = ShadowPCFRandom(Bias, projCoords, Index, currentDepth, 1);
+    //float Shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
+    float Shadow = ShadowPCF(Bias, projCoords, Index, currentDepth, 2);
+    //float Shadow = ShadowPCFRandom(Bias, projCoords, Index, currentDepth, 1);
     
 
     
@@ -464,7 +464,7 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
 
     // Calculate Spot Intensity
     float Theta = dot(normalize(Light.Position  - Object.FragPos), normalize(-Light.Direction));
-    float Epsilon = Light.RollOff;
+    float Epsilon = (Light.RollOff);
     float Intensity = clamp((Theta - Light.CutOff) / Epsilon, 0.0f, 1.0f);
     
     if (GammaCorrectionEnabled_) {
@@ -604,6 +604,9 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
+
+
 
 
 

@@ -205,24 +205,30 @@ void Widget_ObjectProperties::Draw() {
 
                         for (unsigned long i = 0; i < ScriptIndices_->size(); i++) {
 
-                            std::string ScriptName = ProjectUtils_->ProjectManager_->Project_.Scripts[(*ScriptIndices_)[i]].Name_;
-                            bool Selected = i==(unsigned long)ScriptIndex_;
-                            if (ImGui::Selectable(ScriptName.c_str(), &Selected)) {
-                                ScriptIndex_ = i;
-                            }
+                            unsigned int Index = (*ScriptIndices_)[i];
 
 
-                            // Context Menu
-                            if (ImGui::BeginPopupContextItem()) {
+                            if (Index < ProjectUtils_->ProjectManager_->Project_.Scripts.size()) {
 
-                                if (ImGui::MenuItem("Remove Script")) {
-                                    ScriptIndices_->erase(ScriptIndices_->begin() + i);
+                                std::string ScriptName = ProjectUtils_->ProjectManager_->Project_.Scripts[Index].Name_;
+                                bool Selected = i==(unsigned long)ScriptIndex_;
+                                if (ImGui::Selectable(ScriptName.c_str(), &Selected)) {
+                                    ScriptIndex_ = i;
                                 }
 
 
-                            ImGui::EndPopup();
-                            }
+                                // Context Menu
+                                if (ImGui::BeginPopupContextItem()) {
 
+                                    if (ImGui::MenuItem("Remove Script")) {
+                                        ScriptIndices_->erase(ScriptIndices_->begin() + i);
+                                    }
+
+
+                                ImGui::EndPopup();
+                                }
+
+                            }
 
                         }
 
