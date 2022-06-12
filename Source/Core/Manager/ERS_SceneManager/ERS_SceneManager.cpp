@@ -120,10 +120,11 @@ void ERS_CLASS_SceneManager::AddPointLight() {
     std::shared_ptr<ERS_STRUCT_PointLight> Light = std::make_shared<ERS_STRUCT_PointLight>();
 
     Light->UserDefinedName = "New Point Light";
-    Light->Color = glm::vec3(0.0f);
-
+    Light->Color = glm::vec3(1.0f);
 
     Light->Intensity = 1.0f;
+    Light->MaxDistance = 20.0f;
+
 
     Scenes_[ActiveScene_]->PointLights.push_back(Light);
     Scenes_[ActiveScene_]->IndexSceneObjects();
@@ -135,7 +136,12 @@ void ERS_CLASS_SceneManager::AddDirectionalLight() {
     std::shared_ptr<ERS_STRUCT_DirectionalLight> Light = std::make_shared<ERS_STRUCT_DirectionalLight>();
 
     Light->UserDefinedName = "New Directional Light";
-    Light->Color = glm::vec3(0.0f);
+    Light->Color = glm::vec3(1.0f);
+
+    Light->Intensity = 5.0f;
+
+    Light->MaxDistance = 100.0f;
+
 
 
     Scenes_[ActiveScene_]->DirectionalLights.push_back(Light);
@@ -148,13 +154,14 @@ void ERS_CLASS_SceneManager::AddSpotLight() {
     std::shared_ptr<ERS_STRUCT_SpotLight> Light = std::make_shared<ERS_STRUCT_SpotLight>();
 
     Light->UserDefinedName = "New Spot Light";
-    Light->Color = glm::vec3(0.0f);
+    Light->Color = glm::vec3(1.0f);
 
     
     Light->Intensity = 1.0f;
+    Light->MaxDistance = 20.0f;
 
-    Light->CutOff = 0.970f;
-    Light->OuterCutOff = 0.960f;
+    Light->CutOff = 45.0f;
+    Light->Rolloff = 10.0f;
 
     Scenes_[ActiveScene_]->SpotLights.push_back(Light);
     Scenes_[ActiveScene_]->IndexSceneObjects();
