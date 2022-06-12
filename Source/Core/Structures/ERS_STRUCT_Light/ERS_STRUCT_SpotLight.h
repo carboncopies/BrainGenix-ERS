@@ -25,8 +25,8 @@ struct ERS_STRUCT_SpotLight {
     
     std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
 
-    float CutOff; /**<CutOff angle For Spotlight (inner)*/
-    float OuterCutOff; /**<CutOff angleFor Spotlight (outer)*/
+    float CutOff; /**<Total Angle Of Area Affected By Light*/
+    float Rolloff; /**<Angle At Which The Light Rolls Off*/
     
     glm::vec3 Color; /**<Color of the light*/
 
