@@ -173,6 +173,8 @@ void Widget_ObjectProperties::Draw() {
                         ImGui::DragFloat("Rolloff Angle", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Rolloff, 0.5f, 0.0f);
                         if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->CutOff < SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Rolloff) {
                             SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Rolloff = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->CutOff;
+                        } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Rolloff < 0.0f) {
+                            SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Rolloff = 0.0f;
                         }
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the angle at which the outer cone begins to roll off. This angle sets the inner cone which is unaffected by rolloff. Rolloff occurs in the area between the outer and inner cone (this angle).");
