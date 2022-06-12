@@ -2502,7 +2502,6 @@ bool ImGui::DragScalarN(const char* label, ImGuiDataType data_type, void* p_data
     EndGroup();
     return value_changed;
 }
-
 bool ImGui::DragScalarN(const char* label, ImGuiDataType data_type, void* p_data, int components, float v_speed, float Color[], const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags)
 {
     ImGuiWindow* window = GetCurrentWindow();
@@ -2520,8 +2519,7 @@ bool ImGui::DragScalarN(const char* label, ImGuiDataType data_type, void* p_data
         PushID(i);
         if (i > 0)
             SameLine(0, g.Style.ItemInnerSpacing.x);
-        PushStyleColor(ImGuiCol_FrameBg, ImVec4(Color[i*3], Color[i*3]+1, Color[i*3]+2, 1.0f));
-        std::cout<<ImVec4(Color[i*3], Color[i*3]+1, Color[i*3]+2, 1.0f)<<std::endl;
+        PushStyleColor(ImGuiCol_FrameBg, ImVec4(Color[i*3], Color[i*3+1], Color[i*3+2], 1.0f));
         value_changed |= DragScalar("", data_type, p_data, v_speed, p_min, p_max, format, flags);
         PopStyleColor();
         PopID();
