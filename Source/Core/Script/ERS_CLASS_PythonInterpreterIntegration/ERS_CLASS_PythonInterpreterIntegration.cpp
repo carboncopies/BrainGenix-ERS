@@ -432,6 +432,13 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
         ErrorMessageString->push_back("DirectionalLight Intensity CAST_ERROR");
     }
 
+    try {
+        DirectionalLight->Intensity = DirectionalLightModule.attr("DirectionalLightMaxDistance").cast<float>();
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("DirectionalLight MaxDistance CAST_ERROR");
+    }
+
+
 
     // Return Status
     return true;
