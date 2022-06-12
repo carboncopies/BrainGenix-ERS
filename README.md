@@ -1,7 +1,7 @@
 ![Build](https://github.com/carboncopies/BrainGenix-ERS/actions/workflows/cmake.yml/badge.svg)
 
 
-![Screenshot_20220409_071900](https://user-images.githubusercontent.com/49183477/162561372-b56cd331-3dad-40d9-8eb0-16b9e1aff46a.png)
+![Screenshot_20220612_092815](https://user-images.githubusercontent.com/49183477/173226862-11a7c10e-9aad-4363-8b21-88ffd7bf46c5.png)
 
 
 # Build Instructions
