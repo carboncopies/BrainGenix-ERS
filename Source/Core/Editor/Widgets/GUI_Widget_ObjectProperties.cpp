@@ -89,6 +89,10 @@ void Widget_ObjectProperties::Draw() {
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the brightness of the light source, increase this for a brighter light.");
 
+                        ImGui::DragFloat("MaxDistance", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->MaxDistance, 0.5f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Sets the distance after which the scene is no longer affected by this light source.");
+
 
                     }
 
