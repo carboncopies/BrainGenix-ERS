@@ -167,6 +167,9 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             if (SceneDataNode[i]["Intensity"]) {
                 Scene.PointLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
             }
+            if (SceneDataNode[i]["MaxDistance"]) {
+                Scene.PointLights[LightIndex]->MaxDistance = SceneDataNode[i]["MaxDistance"].as<float>();
+            }
 
             
             if (SceneDataNode[i]["ColorRed"] && SceneDataNode[i]["ColorGreen"] && SceneDataNode[i]["ColorBlue"]) {
