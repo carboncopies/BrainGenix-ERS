@@ -17,6 +17,21 @@ Widget_ObjectProperties::~Widget_ObjectProperties() {
     
 }
 
+glm::vec3 Widget_ObjectProperties::XYZDragFloat(std::string Name, glm::vec3 Input, float SnapAmount) {
+
+    // Convert Input To Values
+    float X, Y, Z;
+    X = Input.x;
+    Y = Input.y;
+    Z = Input.z;
+
+    // Draw Three Colored Boxes 
+    ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.7f, 0.1f, 0.1f, 1.0f));
+    ImGui::DragFloat3("Location", (float*)glm::value_ptr(Cursors3D_->Pos_), SnapAmount);
+    ImGui::PopStyleColor();
+
+}
+
 void Widget_ObjectProperties::Draw() {
 
     if (Enabled_) {
@@ -31,7 +46,7 @@ void Widget_ObjectProperties::Draw() {
                 // LocRotScale Properties
                 if (ImGui::CollapsingHeader("Physical Parameters", ImGuiTreeNodeFlags_DefaultOpen)) {
                     
-                    ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.8f, 0.1f, 0.1f, 1.0f));
+                    ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.7f, 0.1f, 0.1f, 1.0f));
                     ImGui::DragFloat3("Location", (float*)glm::value_ptr(Cursors3D_->Pos_), 0.05f);
                     ImGui::PopStyleColor();
 

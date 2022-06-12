@@ -59,6 +59,16 @@ private:
      */
     void FloatToVec(float* In, glm::vec3* Out);
 
+    /**
+     * @brief Draws a color coded drag float element.
+     * 
+     * @param Name 
+     * @param Value 
+     * @param SnapAmount
+     * @return glm::vec3 
+     */
+    glm::vec3 XYZDragFloat(std::string Name, glm::vec3 Value, float SnapAmount = 0.1f);
+
 
 public:
 
