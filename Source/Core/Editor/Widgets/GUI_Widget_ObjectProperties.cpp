@@ -100,12 +100,12 @@ void Widget_ObjectProperties::Draw() {
                         ImGui::HelpMarker("Sets the brightness of the light source, increase this for a brighter light.");
 
 
-                        ImGui::DragFloat("Cutoff", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->CutOff, 0.01f);
+                        ImGui::DragFloat("Cutoff Angle", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->CutOff, 0.01f);
                         ImGui::SameLine();
-                        ImGui::HelpMarker("Set the inner circle cutoff point. Will start to attenuate outside of this circle.");
-                        ImGui::DragFloat("Outer Cutoff", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->OuterCutOff, 0.01f);
+                        ImGui::HelpMarker("Specifies the angle of the spot light's outer cone.");
+                        ImGui::DragFloat("Rolloff Angle", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Rolloff, 0.01f);
                         ImGui::SameLine();
-                        ImGui::HelpMarker("Sets the outer circle at which attenuation ends. Everything outside this circle is unaffected by the light.");
+                        ImGui::HelpMarker("Sets the angle at which the outer cone begins to roll off. This angle sets the inner cone which is unaffected by rolloff. Rolloff occurs in the area between the outer and inner cone (this angle).");
 
                     }
 
