@@ -309,7 +309,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
     float NearPlane, FarPlane;
-    NearPlane = 0.001f;
+    NearPlane = 0.1f;
     FarPlane = Light->MaxDistance;
 
     // Calculate Project, View, Space Matrices
