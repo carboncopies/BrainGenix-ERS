@@ -383,6 +383,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
         // Check If Light Has DepthMap
         if (!Light->DepthMap.Initialized) {
             Light->DepthMap = GenerateDepthMap();   
+            std::cout<<i<<"|"<<Light->DepthMap.DepthMapTextureIndex<<std::endl;
         }
 
         // Render To Depth Map
