@@ -474,8 +474,8 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
     // calculate per-light radiance
     vec3 L = normalize(Light.Position - Object.WorldPos);
     vec3 H = normalize(ViewDir + L);
-    float distance = length(Light.Position - Object.WorldPos);
-    float attenuation = 1.0 / (distance * distance);
+    float LightDistance = length(Light.Position - Object.WorldPos);
+    float attenuation = 1.0 / (LightDistance * LightDistance);
     vec3 radiance = Light.Color * Light.Intensity * attenuation;
 
     // Cook-Torrance BRDF
@@ -500,6 +500,12 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
 
     // scale light by NdotL
     float NdotL = max(dot(Model.Normal, L), 0.0);        
+    
+    // Check Distance, And Roll Off According To Max Distance
+    float DistanceToEnd = Light.MaxDistance - LightDistance;
+    if (DistanceToEnd < 1.0f) {
+        Intensity = clamp(Intensity * (DistanceToEnd), 0.0f, 1.0f);
+    }
 
     // add to outgoing radiance Lo
     return (kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL * Intensity;  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
@@ -604,6 +610,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
