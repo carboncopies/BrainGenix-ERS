@@ -15,7 +15,7 @@ ERS_CLASS_DepthMaps::ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ER
 
     // Create Array Texture For Depth Maps
     RegenerateDepthMapTextureArray2D(16, SystemUtils_->RendererSettings_->ShadowMapX_, SystemUtils_->RendererSettings_->ShadowMapY_);
-
+    RegenerateDepthMapTextureCubeMapArray(2);
 
 }
 
