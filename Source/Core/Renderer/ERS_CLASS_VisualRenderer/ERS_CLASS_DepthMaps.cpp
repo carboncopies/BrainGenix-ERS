@@ -412,28 +412,27 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMapCubemap(bool LogEnable)
     ERS_STRUCT_DepthMap Output;
 
 
-    for (unsigned int i = 0; i < 6; i++) {
 
-        // Generate FBOs
-        SystemUtils_->Logger_->Log("Generating Framebuffer Objects", 4, LogEnable);
-        unsigned int FBOID;
-        glGenFramebuffers(1, &FBOID);
-        Output.FrameBufferObjectIDs.push_back(FBOID);
-        SystemUtils_->Logger_->Log("Generated Framebuffer Objects", 3, LogEnable);
 
-    }
+    // Generate FBOs
+    SystemUtils_->Logger_->Log("Generating Cubemap Framebuffer Objects", 4, LogEnable);
+    unsigned int FBOID;
+    glGenFramebuffers(1, &FBOID);
+    Output.FrameBufferObjectIDs.push_back(FBOID);
+    SystemUtils_->Logger_->Log("Generated Cubemap Framebuffer Objects", 3, LogEnable);
+
 
     // Allocate Depth Map Texture ID
-    Output.DepthMapTextureIndexes.push_back(AllocateDepthMapIndex2D(Output.FrameBufferObjectIDs[i]));
+    Output.DepthMapTextureIndexes.push_back(AllocateDepthMapIndex2D(Output.FrameBufferObjectIDs[0]));
 
     // Attach Depth Map Texture To Framebuffer
-    SystemUtils_->Logger_->Log(std::string("Attaching Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndexes[i]) + std::string("'"), 4, LogEnable);
-    glBindFramebuffer(GL_FRAMEBUFFER, Output.FrameBufferObjectIDs[i]);
-    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, Output.DepthMapTextureIndexes[i]);
+    SystemUtils_->Logger_->Log(std::string("Attaching Cubemap Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndexes[0]) + std::string("'"), 4, LogEnable);
+    glBindFramebuffer(GL_FRAMEBUFFER, Output.FrameBufferObjectIDs[0]);
+    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, Output.DepthMapTextureIndexes[0]);
     glDrawBuffer(GL_NONE);
     glReadBuffer(GL_NONE);
-    glBindFramebuffer(GL_FRAMEBUFFER, 0); 
-    SystemUtils_->Logger_->Log("Finished Attaching Texture To Framebuffer", 3, LogEnable);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    SystemUtils_->Logger_->Log("Finished Attaching Cubemap Texture To Framebuffer", 3, LogEnable);
 
     
     Output.Initialized = true;
