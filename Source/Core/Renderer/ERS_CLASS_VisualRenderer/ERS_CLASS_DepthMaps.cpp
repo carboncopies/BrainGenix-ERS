@@ -195,21 +195,25 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
 
     // Rebind Any Framebuffers
     SystemUtils_->Logger_->Log("Rebinding Framebuffer Objects Cubemap Depth Textures", 4, LogEnabled);
-    for (unsigned int i = 0; i < DepthMapTexturesAlreadyAllocated_.size(); i++) {
+    for (unsigned int i = 0; i < DepthMapTexturesCubemapAlreadyAllocated_.size(); i++) {
 
-        long ID = DepthMapTexturesAlreadyAllocated_[i];
+        unsigned int IDs[6] = DepthMapTexturesCubemapAlreadyAllocated_[i];
 
-        // Check If Valid ID
-        if (glIsFramebuffer(ID)) {
+        for (unsigned int x = 0; x < 6; x++) {
 
-            // If Valid, Rebind
-            SystemUtils_->Logger_->Log(std::string("Rebinding Framebuffer '") + std::to_string(ID) + std::string("' To Texture At Index '") + std::to_string(i) + std::string("'"), 4, LogEnabled);
-            glBindFramebuffer(GL_FRAMEBUFFER, ID);
-            glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, i);
-        
-        } else if (ID != -1) {
-            SystemUtils_->Logger_->Log("Framebuffer Object Is Invalid, Removing From Allocation Table", 4, LogEnabled);
-            DepthMapTexturesAlreadyAllocated_[i] = -1;
+            // Check If Valid ID
+            if (glIsFramebuffer(IDs[x])) {
+
+                // If Valid, Rebind
+                SystemUtils_->Logger_->Log(std::string("Rebinding Framebuffer '") + std::to_string(IDs[x]) + std::string("' To Texture At Index '") + std::to_string(i) + std::string("'"), 4, LogEnabled);
+                glBindFramebuffer(GL_FRAMEBUFFER, IDs[x]);
+                glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, i);
+            
+            } else if (ID != -1) {
+                SystemUtils_->Logger_->Log("Framebuffer Object Is Invalid, Removing From Allocation Table", 4, LogEnabled);
+                DepthMapTexturesAlreadyAllocated_[i] = -1;
+            }
+
         }
 
     }
