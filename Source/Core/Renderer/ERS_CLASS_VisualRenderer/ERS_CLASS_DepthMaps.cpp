@@ -174,15 +174,17 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int Number, bool LogEn
 
         // Generate FBO
         SystemUtils_->Logger_->Log("Generating Framebuffer Object", 4, LogEnable);
-        glGenFramebuffers(1, &Output.FrameBufferObjectID);
+        unsigned int FBOID;
+        glGenFramebuffers(1, &FBOID);
+        Output.FrameBufferObjectIDs.push_back(FBOID);
         SystemUtils_->Logger_->Log("Generated Framebuffer Object", 3, LogEnable);
 
         // Allocate Depth Map Texture ID
-        Output.DepthMapTextureIndexes.push_back(AllocateDepthMapIndex(Output.FrameBufferObjectID));
+        Output.DepthMapTextureIndexes.push_back(AllocateDepthMapIndex(Output.FrameBufferObjectIDs[i]));
 
         // Attach Depth Map Texture To Framebuffer
         SystemUtils_->Logger_->Log(std::string("Attaching Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndexes[i]) + std::string("'"), 4, LogEnable);
-        glBindFramebuffer(GL_FRAMEBUFFER, Output.FrameBufferObjectID);
+        glBindFramebuffer(GL_FRAMEBUFFER, Output.FrameBufferObjectIDs[i]);
         glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, Output.DepthMapTextureIndexes[i]);
         glDrawBuffer(GL_NONE);
         glReadBuffer(GL_NONE);
