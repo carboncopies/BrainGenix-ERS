@@ -98,7 +98,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool RegenerateDepthMapTextureArray(int NumberOfTextures, int Width = 2048, int Height = 2048, bool LogEnabled = true);
+    bool RegenerateDepthMapTextureArray2D(int NumberOfTextures, int Width = 2048, int Height = 2048, bool LogEnabled = true);
 
 
     /**
@@ -110,7 +110,7 @@ public:
      * @param LogOutput Enable/disable logging output
      * @return ERS_STRUCT_DepthMap Struct containing the relevant opengl ids for this depth map
      */
-    ERS_STRUCT_DepthMap GenerateDepthMap(int Number = 1, bool LogOutput = true);
+    ERS_STRUCT_DepthMap GenerateDepthMap2D(int Number = 1, bool LogOutput = true);
 
 
     /**
@@ -132,7 +132,7 @@ public:
      * Will generate more depth maps and remove unused ones by calling internal functions in this class.
      * 
      */
-    void UpdateNumberOfDepthMaps();
+    void UpdateNumberOfDepthMaps2D();
 
     /**
      * @brief Iterates over all lights in the scene and renders all depth maps.
