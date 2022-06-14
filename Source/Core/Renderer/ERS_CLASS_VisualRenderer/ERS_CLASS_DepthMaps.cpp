@@ -247,10 +247,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS
     // Render With Depth Shader
     DepthShader->MakeActive();
     DepthShader->SetMat4("LightSpaceMatrix", ObjectSpace);
-
-    if (LightSpaceMatrix != nullptr) {
-        *LightSpaceMatrix = ObjectSpace;
-    }
+    LightSpaceMatrixArray->push_back(ObjectSpace);
 
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
     glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectIDs[0]);
