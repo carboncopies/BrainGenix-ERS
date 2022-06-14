@@ -481,7 +481,7 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
     }
 
     // add to outgoing radiance Lo
-    return (kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL * Intensity;  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
+    return ((kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL * Intensity) * ShadowCalculation(Light.LightSpaceMatrix, Light.Direction, Light.DepthMapIndex);  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
 
 }
 
@@ -524,7 +524,7 @@ vec3 PBRDirectionalLight(STRUCT_DirectionalLight Light, vec3 ViewDir, vec3 Refle
     float NdotL = max(dot(Model.Normal, L), 0.0);        
 
     // add to outgoing radiance Lo
-    return (kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL;  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
+    return ((kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL) * ShadowCalculation(Light.LightSpaceMatrix, Light.Direction, Light.DepthMapIndex);  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
 
 
 }
@@ -547,7 +547,7 @@ void main() {
 
     // Calculate Directional Lights
     for (int i = 0; i < NumberDirectionalLights; i++) {
-        Lo += PBRDirectionalLight(DirectionalLights[i], ViewDir, Reflectance, Model) * ShadowCalculation(DirectionalLights[i].LightSpaceMatrix, DirectionalLights[i].Direction, DirectionalLights[i].DepthMapIndex);
+        Lo += PBRDirectionalLight(DirectionalLights[i], ViewDir, Reflectance, Model);
     }
 
     // Calculate Point Lights
@@ -557,7 +557,7 @@ void main() {
 
     // Calculate Spot Lights
     for(int i = 0; i < NumberSpotLights; ++i) {
-        Lo += PBRSpotLight(SpotLights[i], ViewDir, Reflectance, Model) * ShadowCalculation(SpotLights[i].LightSpaceMatrix, SpotLights[i].Direction, SpotLights[i].DepthMapIndex);
+        Lo += PBRSpotLight(SpotLights[i], ViewDir, Reflectance, Model);
     }
 
     // ambient lighting (note that the next IBL tutorial will replace 
