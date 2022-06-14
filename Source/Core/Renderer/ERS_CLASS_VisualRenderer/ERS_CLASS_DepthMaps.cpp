@@ -269,7 +269,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
 
     // Setup Variables
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
-    glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
+    glm::mat4 ObjectProjection, ObjectSpace;
     float NearPlane, FarPlane;
     NearPlane = 0.1f;
     FarPlane = Light->MaxDistance;
@@ -278,9 +278,18 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
     ObjectProjection = glm::perspective(glm::radians(90.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
     
+    std::vector<glm::mat4> ViewMatricies;
+    //ViewMatricies.push_back(glm::lookAt(Light->Pos, Light->Pos, glm::vec3(0.0f, 1.0f, 0.0f)));
 
-    ObjectView = glm::lookAt(Light->Pos, Light->Pos, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
-    ObjectSpace = ObjectProjection * ObjectView;
+    ViewMatricies.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 1.0, 0.0, 0.0), glm::vec3(0.0,-1.0, 0.0)));
+    ViewMatricies.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3(-1.0, 0.0, 0.0), glm::vec3(0.0,-1.0, 0.0)));
+    ViewMatricies.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 1.0, 0.0), glm::vec3(0.0, 0.0, 1.0)));
+    ViewMatricies.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0,-1.0, 0.0), glm::vec3(0.0, 0.0,-1.0)));
+    ViewMatricies.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0, 1.0), glm::vec3(0.0,-1.0, 0.0)));
+    ViewMatricies.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0,-1.0), glm::vec3(0.0,-1.0, 0.0)));
+
+
+    //ObjectSpace = ObjectProjection * ObjectView;
 
     // Render With Depth Shader
     DepthShader->MakeActive();
