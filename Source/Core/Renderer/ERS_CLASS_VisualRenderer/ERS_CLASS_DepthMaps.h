@@ -43,7 +43,7 @@ struct ERS_STRUCT_CubemapFBOIndexes {
     unsigned int FBO5;
     unsigned int FBO6;
     
-}
+};
 
 
 
