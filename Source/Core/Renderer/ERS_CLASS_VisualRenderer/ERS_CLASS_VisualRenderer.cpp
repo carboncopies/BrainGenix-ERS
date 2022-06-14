@@ -698,7 +698,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->PointLights[i]->MaxDistance);
 
 
-        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndexes[0]); // change this later
+        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex1")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndexes[0]);
         ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->PointLights[i]->LightSpaceMatrix);
       
     }
