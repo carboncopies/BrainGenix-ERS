@@ -294,18 +294,15 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
         // Render With Depth Shader
         DepthShader->MakeActive();
         DepthShader->SetMat4("LightSpaceMatrix", ShadowTransforms[i]);
-
-        if (LightSpaceMatrix != nullptr) {
-            *LightSpaceMatrix = ObjectSpace;
-        }
+        LightSpaceMatrixArray->push_back(ShadowTransforms[i]);
 
         glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-        glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectIDs[0]); // fix this later
+        glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectIDs[i]); // fix this later
         glClear(GL_DEPTH_BUFFER_BIT);
         glActiveTexture(GL_TEXTURE0);
         Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
 
-        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        //glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
     }
 
