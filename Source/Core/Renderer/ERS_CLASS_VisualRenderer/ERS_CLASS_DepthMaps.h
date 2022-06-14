@@ -36,12 +36,12 @@
 
 struct ERS_STRUCT_CubemapFBOIndexes {
 
-    unsigned int 1;
-    unsigned int 2;
-    unsigned int 3;
-    unsigned int 4;
-    unsigned int 5;
-    unsigned int 6;
+    unsigned int FBO1;
+    unsigned int FBO2;
+    unsigned int FBO3;
+    unsigned int FBO4;
+    unsigned int FBO5;
+    unsigned int FBO6;
     
 }
 
