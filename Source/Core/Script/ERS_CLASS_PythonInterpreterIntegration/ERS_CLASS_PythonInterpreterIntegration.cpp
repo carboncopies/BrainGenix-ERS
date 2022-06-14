@@ -193,6 +193,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     PointLightModule.attr("PointLightColorB") = PointLight->Color.b;
     
     PointLightModule.attr("PointLightIntensity") = PointLight->Intensity;
+    PointLightModule.attr("PointLightMaxDistance") = PointLight->MaxDistance;
     
 
     // Get Local Dict
@@ -289,6 +290,13 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
         ErrorMessageString->push_back("PointLight Intensity CAST_ERROR");
     }
 
+    try {
+        PointLight->Intensity = PointLightModule.attr("PointLightMaxDistance").cast<float>();
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("PointLight MaxDistance CAST_ERROR");
+    }
+
+
     // Return Status
     return true;
     
@@ -317,6 +325,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     DirectionalLightModule.attr("DirectionalLightColorB") = DirectionalLight->Color.b;
 
     DirectionalLightModule.attr("DirectionalLightIntensity") = DirectionalLight->Intensity;    
+    DirectionalLightModule.attr("DirectionalLightMaxDistance") = DirectionalLight->MaxDistance;   
 
     // Get Local Dict
     pybind11::dict Locals = DirectionalLightModule.attr("__dict__");
@@ -423,6 +432,13 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
         ErrorMessageString->push_back("DirectionalLight Intensity CAST_ERROR");
     }
 
+    try {
+        DirectionalLight->Intensity = DirectionalLightModule.attr("DirectionalLightMaxDistance").cast<float>();
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("DirectionalLight MaxDistance CAST_ERROR");
+    }
+
+
 
     // Return Status
     return true;
@@ -451,9 +467,10 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     SpotLightModule.attr("SpotLightColorB") = SpotLight->Color.b;
     
     SpotLightModule.attr("SpotLightIntensity") = SpotLight->Intensity;
+    SpotLightModule.attr("SpotLightMaxDistance") = SpotLight->MaxDistance;
     
     SpotLightModule.attr("SpotLightCutoff") = SpotLight->CutOff;
-    SpotLightModule.attr("SpotLightOuterCutoff") = SpotLight->OuterCutOff;
+    SpotLightModule.attr("SpotLightRolloff") = SpotLight->Rolloff;
  
 
     // Get Local Dict
@@ -562,8 +579,16 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
 
 
     try {
+        SpotLight->Rolloff = SpotLightModule.attr("SpotLightRolloff").cast<float>();
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("SpotLight Rolloff CAST_ERROR");
+    }
+
+
+
+    try {
         SpotLight->CutOff = SpotLightModule.attr("SpotLightCutoff").cast<float>();
-        SpotLight->OuterCutOff = SpotLightModule.attr("SpotLightOuterCutoff").cast<float>();
+        SpotLight->Rolloff = SpotLightModule.attr("SpotLightRolloff").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("SpotLight Cutoff CAST_ERROR");
     }

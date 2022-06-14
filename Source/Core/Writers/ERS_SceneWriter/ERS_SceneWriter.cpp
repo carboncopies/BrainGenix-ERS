@@ -121,6 +121,7 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "RotZ" << YAML::Value << InputScene->DirectionalLights[i]->Rot[2];
 
         Output << YAML::Key << "Intensity" << YAML::Value << InputScene->DirectionalLights[i]->Intensity;
+        Output << YAML::Key << "MaxDistance" << YAML::Value << InputScene->DirectionalLights[i]->MaxDistance;
 
 
         Output<<YAML::Key<<"AttachedScripts";
@@ -157,6 +158,7 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
 
         Output << YAML::Key << "Intensity" << YAML::Value << InputScene->PointLights[i]->Intensity;
+        Output << YAML::Key << "MaxDistance" << YAML::Value << InputScene->PointLights[i]->MaxDistance;
 
 
         Output<<YAML::Key<<"AttachedScripts";
@@ -197,9 +199,10 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
 
         Output << YAML::Key << "Intensity" << YAML::Value << InputScene->SpotLights[i]->Intensity;
+        Output << YAML::Key << "MaxDistance" << YAML::Value << InputScene->SpotLights[i]->MaxDistance;
 
         Output << YAML::Key << "CutOff" << YAML::Value << InputScene->SpotLights[i]->CutOff;
-        Output << YAML::Key << "OuterCutOff" << YAML::Value << InputScene->SpotLights[i]->OuterCutOff;
+        Output << YAML::Key << "RollOff" << YAML::Value << InputScene->SpotLights[i]->Rolloff;
 
 
         Output<<YAML::Key<<"AttachedScripts";

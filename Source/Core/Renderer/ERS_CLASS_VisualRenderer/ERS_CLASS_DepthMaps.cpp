@@ -14,7 +14,7 @@ ERS_CLASS_DepthMaps::ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ER
     SystemUtils_->Logger_->Log("Initializing Viewport Overlay Subsystem", 5);
 
     // Create Array Texture For Depth Maps
-    RegenerateDepthMapTextureArray(1, 2048, 2048);
+    RegenerateDepthMapTextureArray(64, SystemUtils_->RendererSettings_->ShadowMapX_, SystemUtils_->RendererSettings_->ShadowMapY_);
 
 
 }
@@ -155,6 +155,8 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex(unsigned int Framebuffer
     RegenerateDepthMapTextureArray(StartSize + DepthMapAllocationChunkSize_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
     SystemUtils_->Logger_->Log(std::string("Finished Updating Depth Map Array, Allocating Depth Map Texture Array Index: ") + std::to_string(StartSize + DepthMapAllocationChunkSize_), 5);
 
+    DepthMapTexturesAlreadyAllocated_[StartSize + 1] = FramebufferObjectID;
+
     return StartSize + 1;
 
 }
@@ -211,7 +213,7 @@ void ERS_CLASS_DepthMaps::CheckSettings() {
 
 }
 
-void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT_Shader* DepthShader, glm::vec3 Pos, glm::vec3 Rot, bool Orthogonal, glm::mat4* LightSpaceMatrix) {
+void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS_STRUCT_Shader* DepthShader, glm::mat4* LightSpaceMatrix) {
 
 
     // Check Settings
@@ -223,18 +225,14 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
     float NearPlane = 0.1f, FarPlane = 15.0f;
 
     // Calculate Project, View, Space Matrices
-    if (Orthogonal) {
-        ObjectProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, NearPlane, FarPlane); // ortho models directional light source
-    } else {
-        float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
-        ObjectProjection = glm::perspective(glm::radians(110.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
-    }
+    ObjectProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, NearPlane, FarPlane); // ortho models directional light source
+
 
     // Re-Do Rotation
-    glm::vec3 XYZRotation = ERS_FUNCTION_ConvertRotationToFrontVector(Rot);
+    glm::vec3 XYZRotation = ERS_FUNCTION_ConvertRotationToFrontVector(Light->Rot);
 
     glm::vec3 Front = glm::normalize(XYZRotation);
-    ObjectView = glm::lookAt(Pos, Pos+Front, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
+    ObjectView = glm::lookAt(Light->Pos, Light->Pos+Front, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
     ObjectSpace = ObjectProjection * ObjectView;
 
     // Render With Depth Shader
@@ -246,7 +244,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
     }
 
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-    glBindFramebuffer(GL_FRAMEBUFFER, Target->FrameBufferObjectID);
+    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
 
     
     glClear(GL_DEPTH_BUFFER_BIT);
@@ -257,6 +255,99 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT
     
 
 }
+
+void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUCT_Shader* DepthShader, glm::mat4* LightSpaceMatrix) {
+
+
+    // Check Settings
+    CheckSettings();
+
+    // Setup Variables
+    ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+    glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
+    float NearPlane = 0.1f, FarPlane = 15.0f;
+
+    // Calculate Project, View, Space Matrices
+
+    float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
+    ObjectProjection = glm::perspective(glm::radians(110.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
+    
+
+    // Re-Do Rotation
+    //glm::vec3 XYZRotation = ERS_FUNCTION_ConvertRotationToFrontVector(Light->Rot);
+
+    //glm::vec3 Front = glm::normalize(XYZRotation);
+    ObjectView = glm::lookAt(Light->Pos, Light->Pos, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
+    ObjectSpace = ObjectProjection * ObjectView;
+
+    // Render With Depth Shader
+    DepthShader->MakeActive();
+    DepthShader->SetMat4("LightSpaceMatrix", ObjectSpace);
+
+    if (LightSpaceMatrix != nullptr) {
+        *LightSpaceMatrix = ObjectSpace;
+    }
+
+    glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
+
+    
+    glClear(GL_DEPTH_BUFFER_BIT);
+    glActiveTexture(GL_TEXTURE0);
+    Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    
+
+}
+
+void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT_Shader* DepthShader, glm::mat4* LightSpaceMatrix) {
+
+
+    // Check Settings
+    CheckSettings();
+
+    // Setup Variables
+    ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+    glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
+    float NearPlane, FarPlane;
+    NearPlane = 0.1f;
+    FarPlane = Light->MaxDistance;
+
+    // Calculate Project, View, Space Matrices
+    float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
+    float FOV = glm::radians(130.0f);// * (0.01745329));
+    ObjectProjection = glm::perspective(FOV, AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
+    
+
+    // Re-Do Rotation
+    glm::vec3 XYZRotation = ERS_FUNCTION_ConvertRotationToFrontVector(Light->Rot);
+
+    glm::vec3 Front = glm::normalize(XYZRotation);
+    ObjectView = glm::lookAt(Light->Pos, Light->Pos+Front, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
+    ObjectSpace = ObjectProjection * ObjectView;
+
+    // Render With Depth Shader
+    DepthShader->MakeActive();
+    DepthShader->SetMat4("LightSpaceMatrix", ObjectSpace);
+
+    if (LightSpaceMatrix != nullptr) {
+        *LightSpaceMatrix = ObjectSpace;
+    }
+
+    glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
+
+    
+    glClear(GL_DEPTH_BUFFER_BIT);
+    glActiveTexture(GL_TEXTURE0);
+    Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+}
+
+
 
 void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
@@ -280,7 +371,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Render To Depth Map
         glm::mat4* LightSpaceMatrix = new glm::mat4();
-        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Rot, true, LightSpaceMatrix);
+        UpdateDepthMap(Light, DepthShader, LightSpaceMatrix);
         Light->LightSpaceMatrix = *LightSpaceMatrix;
 
     } 
@@ -294,11 +385,12 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
         // Check If Light Has DepthMap
         if (!Light->DepthMap.Initialized) {
             Light->DepthMap = GenerateDepthMap();   
+            std::cout<<i<<"|"<<Light->DepthMap.DepthMapTextureIndex<<std::endl;
         }
 
         // Render To Depth Map
         glm::mat4* LightSpaceMatrix = new glm::mat4();
-        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Rot, true, LightSpaceMatrix);
+        UpdateDepthMap(Light, DepthShader, LightSpaceMatrix);
         Light->LightSpaceMatrix = *LightSpaceMatrix;
 
     }
@@ -316,7 +408,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Render To Depth Map
         glm::mat4* LightSpaceMatrix = new glm::mat4();
-        UpdateDepthMap(&Light->DepthMap, DepthShader, Light->Pos, Light->Pos, true, LightSpaceMatrix); // set this to false later, debugging
+        UpdateDepthMap(Light, DepthShader, LightSpaceMatrix); // set this to false later, debugging
         Light->LightSpaceMatrix = *LightSpaceMatrix;
 
     } 

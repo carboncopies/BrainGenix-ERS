@@ -134,6 +134,10 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 Scene.DirectionalLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
             }
 
+            if (SceneDataNode[i]["MaxDistance"]) {
+                Scene.DirectionalLights[LightIndex]->MaxDistance = SceneDataNode[i]["MaxDistance"].as<float>();
+            }
+
             Scene.DirectionalLights[LightIndex]->Pos = glm::vec3(
                 SceneDataNode[i]["PosX"].as<float>(),
                 SceneDataNode[i]["PosY"].as<float>(),
@@ -162,6 +166,9 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             Scene.PointLights[LightIndex]->UserDefinedName = AssetName;
             if (SceneDataNode[i]["Intensity"]) {
                 Scene.PointLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
+            }
+            if (SceneDataNode[i]["MaxDistance"]) {
+                Scene.PointLights[LightIndex]->MaxDistance = SceneDataNode[i]["MaxDistance"].as<float>();
             }
 
             
@@ -198,9 +205,14 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             if (SceneDataNode[i]["Intensity"]) {
                 Scene.SpotLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
             }
+            if (SceneDataNode[i]["MaxDistance"]) {
+                Scene.SpotLights[LightIndex]->MaxDistance = SceneDataNode[i]["MaxDistance"].as<float>();
+            }
             Scene.SpotLights[LightIndex]->CutOff = SceneDataNode[i]["CutOff"].as<float>();
-            Scene.SpotLights[LightIndex]->OuterCutOff = SceneDataNode[i]["OuterCutOff"].as<float>();
 
+            if (SceneDataNode[i]["RollOff"]) {
+                Scene.SpotLights[LightIndex]->Rolloff = SceneDataNode[i]["RollOff"].as<float>();
+            }
             if (SceneDataNode[i]["ColorRed"] && SceneDataNode[i]["ColorGreen"] && SceneDataNode[i]["ColorBlue"]) {
                 Scene.SpotLights[LightIndex]->Color = glm::vec3(
                     SceneDataNode[i]["ColorRed"].as<float>(),

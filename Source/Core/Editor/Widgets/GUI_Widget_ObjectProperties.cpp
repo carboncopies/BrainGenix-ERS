@@ -17,6 +17,51 @@ Widget_ObjectProperties::~Widget_ObjectProperties() {
     
 }
 
+glm::vec3 Widget_ObjectProperties::XYZDragFloat(std::string Name, glm::vec3 Input, float SnapAmount) {
+
+    // Convert Input To Values
+    float X, Y, Z;
+    X = Input.x;
+    Y = Input.y;
+    Z = Input.z;
+
+    // Format Table 
+    ImGuiTableFlags TableFlags = ImGuiTableFlags_NoPadInnerX | ImGuiTableFlags_NoBordersInBody | ImGuiTableFlags_SizingFixedSame;
+    if (ImGui::BeginTable(Name.c_str(), 4, TableFlags)) {
+
+        ImGui::TableNextRow();
+
+        // Draw Three Colored Boxes 
+        ImGui::TableNextColumn();
+        ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.7f, 0.1f, 0.1f, 1.0f));
+        ImGui::DragFloat("", &X, SnapAmount);
+        ImGui::PopStyleColor();
+        //ImGui::SameLine();
+
+        ImGui::TableNextColumn();
+        ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.1f, 0.7f, 0.1f, 1.0f));
+        ImGui::DragFloat("", &Y, SnapAmount);
+        ImGui::PopStyleColor();
+        //ImGui::SameLine();
+
+        ImGui::TableNextColumn();
+        ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.0f, 0.1f, 0.7f, 1.0f));
+        ImGui::DragFloat("", &Z, SnapAmount);
+        ImGui::PopStyleColor();
+        //ImGui::SameLine();
+
+        // Draw Label
+        ImGui::TableNextColumn();
+        ImGui::Text("%s", Name.c_str());
+
+    }
+    ImGui::EndTable();
+
+    // Return Value
+    return glm::vec3(X, Y, Z);
+
+}
+
 void Widget_ObjectProperties::Draw() {
 
     if (Enabled_) {
@@ -30,9 +75,17 @@ void Widget_ObjectProperties::Draw() {
 
                 // LocRotScale Properties
                 if (ImGui::CollapsingHeader("Physical Parameters", ImGuiTreeNodeFlags_DefaultOpen)) {
-                    ImGui::DragFloat3("Location", (float*)glm::value_ptr(Cursors3D_->Pos_), 0.05f);
-                    ImGui::DragFloat3("Rotation", (float*)glm::value_ptr(Cursors3D_->Rot_), 0.05f);// FIXME: MAKE ROLL OVER TO 180 Degrees?
-                    ImGui::DragFloat3("Scale", (float*)glm::value_ptr(Cursors3D_->Scale_), 0.05f, 0.0f, 65535.0f);
+                    
+                    // ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.7f, 0.1f, 0.1f, 1.0f));
+                    float Colors[9] = {
+                        0.7f, 0.1f, 0.1f,
+                        0.1f, 0.7f, 0.1f,
+                        0.1f, 0.1f, 0.7f
+                    };
+
+                    ImGui::DragFloat3("Location", (float*)glm::value_ptr(Cursors3D_->Pos_), 0.05f, Colors);
+                    ImGui::DragFloat3("Rotation", (float*)glm::value_ptr(Cursors3D_->Rot_), 0.05f, Colors);
+                    ImGui::DragFloat3("Scale", (float*)glm::value_ptr(Cursors3D_->Scale_), 0.05f, Colors, 0.0f, 65535.0f);
                 }
             
                 // Handle Extra Options For Lights
@@ -55,9 +108,15 @@ void Widget_ObjectProperties::Draw() {
                         FloatToVec(Color, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Color);
   
 
-                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Intensity, 0.01f);
+                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->Intensity, 0.25f);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the brightness of the light source, increase this for a brighter light.");
+
+                        ImGui::DragFloat("MaxDistance", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->MaxDistance, 0.5f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Sets the distance after which the scene is no longer affected by this light source.");
+
+
 
 
                     }
@@ -75,9 +134,13 @@ void Widget_ObjectProperties::Draw() {
                         FloatToVec(Color, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Color);
 
 
-                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Intensity, 0.01f);
+                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->Intensity, 0.25f);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the brightness of the light source, increase this for a brighter light.");
+
+                        ImGui::DragFloat("MaxDistance", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->MaxDistance, 0.5f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Sets the distance after which the scene is no longer affected by this light source.");
 
 
                     }
@@ -95,17 +158,26 @@ void Widget_ObjectProperties::Draw() {
                         FloatToVec(Color, &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Color);
 
 
-                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Intensity, 0.01f);
+                        ImGui::DragFloat("Intensity", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Intensity, 0.25f);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the brightness of the light source, increase this for a brighter light.");
 
+                        ImGui::DragFloat("MaxDistance", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->MaxDistance, 0.5f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Sets the distance after which the scene is no longer affected by this light source.");
 
-                        ImGui::DragFloat("Cutoff", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->CutOff, 0.01f);
+
+                        ImGui::DragFloat("Cutoff Angle", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->CutOff, 1.0f, 0.0f, 120.0f);
                         ImGui::SameLine();
-                        ImGui::HelpMarker("Set the inner circle cutoff point. Will start to attenuate outside of this circle.");
-                        ImGui::DragFloat("Outer Cutoff", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->OuterCutOff, 0.01f);
+                        ImGui::HelpMarker("Specifies the angle of the spot light's outer cone.");
+                        ImGui::DragFloat("Rolloff Angle", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Rolloff, 0.5f, 0.0f);
+                        if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->CutOff < SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Rolloff) {
+                            SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Rolloff = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->CutOff;
+                        } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Rolloff < 0.0f) {
+                            SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->Rolloff = 0.0f;
+                        }
                         ImGui::SameLine();
-                        ImGui::HelpMarker("Sets the outer circle at which attenuation ends. Everything outside this circle is unaffected by the light.");
+                        ImGui::HelpMarker("Sets the angle at which the outer cone begins to roll off. This angle sets the inner cone which is unaffected by rolloff. Rolloff occurs in the area between the outer and inner cone (this angle).");
 
                     }
 
@@ -133,24 +205,30 @@ void Widget_ObjectProperties::Draw() {
 
                         for (unsigned long i = 0; i < ScriptIndices_->size(); i++) {
 
-                            std::string ScriptName = ProjectUtils_->ProjectManager_->Project_.Scripts[(*ScriptIndices_)[i]].Name_;
-                            bool Selected = i==(unsigned long)ScriptIndex_;
-                            if (ImGui::Selectable(ScriptName.c_str(), &Selected)) {
-                                ScriptIndex_ = i;
-                            }
+                            unsigned int Index = (*ScriptIndices_)[i];
 
 
-                            // Context Menu
-                            if (ImGui::BeginPopupContextItem()) {
+                            if (Index < ProjectUtils_->ProjectManager_->Project_.Scripts.size()) {
 
-                                if (ImGui::MenuItem("Remove Script")) {
-                                    ScriptIndices_->erase(ScriptIndices_->begin() + i);
+                                std::string ScriptName = ProjectUtils_->ProjectManager_->Project_.Scripts[Index].Name_;
+                                bool Selected = i==(unsigned long)ScriptIndex_;
+                                if (ImGui::Selectable(ScriptName.c_str(), &Selected)) {
+                                    ScriptIndex_ = i;
                                 }
 
 
-                            ImGui::EndPopup();
-                            }
+                                // Context Menu
+                                if (ImGui::BeginPopupContextItem()) {
 
+                                    if (ImGui::MenuItem("Remove Script")) {
+                                        ScriptIndices_->erase(ScriptIndices_->begin() + i);
+                                    }
+
+
+                                ImGui::EndPopup();
+                                }
+
+                            }
 
                         }
 

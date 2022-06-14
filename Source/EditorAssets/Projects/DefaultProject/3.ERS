@@ -891,6 +891,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 0
     AttachedScripts:
       {}
   56:
@@ -903,6 +904,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 0
     AttachedScripts:
       {}
   57:
@@ -915,6 +917,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 0
     AttachedScripts:
       {}
   58:
@@ -927,6 +930,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 0
     AttachedScripts:
       {}
   59:
@@ -939,6 +943,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 0
     AttachedScripts:
       {}
   60:
@@ -951,6 +956,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 0
     AttachedScripts:
       {}
   61:
@@ -963,6 +969,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 0
     AttachedScripts:
       {}
   62:
@@ -975,6 +982,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 0
     AttachedScripts:
       {}
   63:
@@ -983,15 +991,16 @@ SceneData:
     ColorRed: 1
     ColorGreen: 1
     ColorBlue: 1
-    PosX: -0.930386484
+    PosX: -0.730386496
     PosY: 1.5959357
     PosZ: 6.00342846
-    RotX: 18.4778862
-    RotY: -15.6467848
-    RotZ: -7.83750677
+    RotX: 209.56749
+    RotY: 59.9117813
+    RotZ: 160.184723
     Intensity: 25
-    CutOff: 0.910000026
-    OuterCutOff: 0.75999999
+    MaxDistance: 10
+    CutOff: 103
+    RollOff: 11.5
     AttachedScripts:
       {}
   64:
@@ -1000,15 +1009,16 @@ SceneData:
     ColorRed: 1
     ColorGreen: 1
     ColorBlue: 1
-    PosX: -0.949999988
+    PosX: -0.649999976
     PosY: 1.5
     PosZ: 1
-    RotX: 14.6964588
-    RotY: -8.51486015
-    RotZ: -3.0760181
+    RotX: 199.196381
+    RotY: 58.3953362
+    RotZ: 185.813049
     Intensity: 25
-    CutOff: 0.910000026
-    OuterCutOff: 0.75999999
+    MaxDistance: 15
+    CutOff: 120
+    RollOff: 16
     AttachedScripts:
       {}
   65:
@@ -1017,15 +1027,16 @@ SceneData:
     ColorRed: 1
     ColorGreen: 1
     ColorBlue: 1
-    PosX: -0.949999988
+    PosX: -0.849999964
     PosY: 1.5
     PosZ: -4.8931241
-    RotX: 14.7390451
-    RotY: -6.51885748
-    RotZ: -1.36448181
+    RotX: 47.6549835
+    RotY: 47.9395943
+    RotZ: 4.55612373
     Intensity: 25
-    CutOff: 0.910000026
-    OuterCutOff: 0.75999999
+    MaxDistance: 10
+    CutOff: 95
+    RollOff: 7
     AttachedScripts:
       {}
   66:
@@ -1037,12 +1048,13 @@ SceneData:
     PosX: 2.97785139
     PosY: 1.5
     PosZ: -4.70444107
-    RotX: -35.5486069
-    RotY: -20.949976
-    RotZ: 8.76933765
+    RotX: 4.07153368
+    RotY: 59.641552
+    RotZ: 250.978882
     Intensity: 25
-    CutOff: 0.910000026
-    OuterCutOff: 0.75999999
+    MaxDistance: 15
+    CutOff: 77
+    RollOff: 6
     AttachedScripts:
       {}
   67:
@@ -1054,11 +1066,12 @@ SceneData:
     PosX: 2.97785139
     PosY: 1.5
     PosZ: 1.07611871
-    RotX: -34.3861809
-    RotY: -30.3114014
-    RotZ: 12.0187654
+    RotX: 71.6560745
+    RotY: 347.370728
+    RotZ: 322.172424
     Intensity: 25
-    CutOff: 0.910000026
-    OuterCutOff: 0.75999999
+    MaxDistance: 10
+    CutOff: 80
+    RollOff: 9
     AttachedScripts:
       {}

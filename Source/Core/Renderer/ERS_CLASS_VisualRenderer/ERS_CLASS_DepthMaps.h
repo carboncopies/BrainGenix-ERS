@@ -156,6 +156,8 @@ public:
      * @param Scale 
      * @param Orthogonal Use Orthogonal for directional lights and perspective for everything else
      */
-    void UpdateDepthMap(ERS_STRUCT_DepthMap* Target, ERS_STRUCT_Shader* DepthShader, glm::vec3 Pos, glm::vec3 Rot, bool Orthogonal = true, glm::mat4* LightSpaceMatrix = nullptr);
+    void UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS_STRUCT_Shader* DepthShader, glm::mat4* LightSpaceMatrix = nullptr);
+    void UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUCT_Shader* DepthShader, glm::mat4* LightSpaceMatrix = nullptr);
+    void UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT_Shader* DepthShader, glm::mat4* LightSpaceMatrix = nullptr);
 
 };

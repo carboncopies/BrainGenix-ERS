@@ -21,11 +21,12 @@ struct ERS_STRUCT_SpotLight {
     std::string UserDefinedName; /**Name of the light assigned by user*/
     
     float Intensity; /**<Intensity of the light*/
+    float MaxDistance; /**<Distance After Which This Light No Longer Affects The Scene*/
     
     std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
 
-    float CutOff; /**<CutOff angle For Spotlight (inner)*/
-    float OuterCutOff; /**<CutOff angleFor Spotlight (outer)*/
+    float CutOff; /**<Total Angle Of Area Affected By Light*/
+    float Rolloff; /**<Angle At Which The Light Rolls Off*/
     
     glm::vec3 Color; /**<Color of the light*/
 

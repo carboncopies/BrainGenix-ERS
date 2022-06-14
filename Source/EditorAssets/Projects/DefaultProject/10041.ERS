@@ -23,6 +23,7 @@ struct STRUCT_DirectionalLight {
     // Light Color Parameters
     vec3 Color;
     float Intensity;
+    float MaxDistance;
     int DepthMapIndex;
     mat4 LightSpaceMatrix;
 
@@ -38,6 +39,7 @@ struct STRUCT_PointLight {
 
     // Light Rolloff Parameters
     float Intensity;
+    float MaxDistance;
     
     int DepthMapIndex;
     mat4 LightSpaceMatrix;
@@ -55,10 +57,11 @@ struct STRUCT_SpotLight {
 
     // Light Rolloff Parameters
     float Intensity;
+    float MaxDistance;
 
     // Spotlight Parameters
     float CutOff;
-    float OuterCutOff;
+    float RollOff;
     
     int DepthMapIndex;
     mat4 LightSpaceMatrix;
@@ -113,7 +116,7 @@ uniform bool HasShininess;
 uniform int NumberDirectionalLights;
 uniform int NumberPointLights;
 uniform int NumberSpotLights;
-uniform STRUCT_DirectionalLight DirectionalLights[10];
+uniform STRUCT_DirectionalLight DirectionalLights[2];
 uniform STRUCT_PointLight PointLights[64];
 uniform STRUCT_SpotLight SpotLights[32];
 
@@ -216,10 +219,10 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
     float currentDepth = projCoords.z;
     // check whether current frag pos is in shadow
     vec3 LightDir = normalize(LightPos - Object.FragPos);
-    float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), 0.005);
+    float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), 0.00025);
     
     
-    //float Shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
+    
     
 
 	//float Shadow = 0.0f;
@@ -247,9 +250,9 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
 
 	**/
 
-
-    
-    float Shadow = ShadowPCFRandom(Bias, projCoords, Index, currentDepth, 1);
+    //float Shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
+    float Shadow = ShadowPCF(Bias, projCoords, Index, currentDepth, 2);
+    //float Shadow = ShadowPCFRandom(Bias, projCoords, Index, currentDepth, 1);
     
 
     
@@ -461,8 +464,8 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
 
     // Calculate Spot Intensity
     float Theta = dot(normalize(Light.Position  - Object.FragPos), normalize(-Light.Direction));
-    float Epsilon = Light.CutOff - Light.OuterCutOff;
-    float Intensity = clamp((Theta - Light.OuterCutOff) / Epsilon, 0.0f, 1.0f);
+    float Epsilon = (Light.RollOff);
+    float Intensity = clamp((Theta - Light.CutOff) / Epsilon, 0.0f, 1.0f);
     
     if (GammaCorrectionEnabled_) {
         Intensity = pow(Intensity, Gamma_*Gamma_);
@@ -471,8 +474,8 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
     // calculate per-light radiance
     vec3 L = normalize(Light.Position - Object.WorldPos);
     vec3 H = normalize(ViewDir + L);
-    float distance = length(Light.Position - Object.WorldPos);
-    float attenuation = 1.0 / (distance * distance);
+    float LightDistance = length(Light.Position - Object.WorldPos);
+    float attenuation = 1.0 / (LightDistance * LightDistance);
     vec3 radiance = Light.Color * Light.Intensity * attenuation;
 
     // Cook-Torrance BRDF
@@ -497,6 +500,12 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
 
     // scale light by NdotL
     float NdotL = max(dot(Model.Normal, L), 0.0);        
+    
+    // Check Distance, And Roll Off According To Max Distance
+    float DistanceToEnd = Light.MaxDistance - LightDistance;
+    if (DistanceToEnd < 1.0f) {
+        Intensity = clamp(Intensity * (DistanceToEnd), 0.0f, 1.0f);
+    }
 
     // add to outgoing radiance Lo
     return (kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL * Intensity;  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
@@ -601,6 +610,11 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
+
+
+
+
 
 
 
