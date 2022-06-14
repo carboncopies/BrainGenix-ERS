@@ -499,6 +499,11 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0, 1.0), glm::vec3(0.0,-1.0, 0.0)));
     ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0,-1.0), glm::vec3(0.0,-1.0, 0.0)));
 
+    std::cout<<"-------------------------------\n";
+    std::cout<<glGetError()<<std::endl;
+    std::cout<<"----\n";
+
+
     // Render All Sides
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
     glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
@@ -510,6 +515,9 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
         glFramebufferTexture3D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, Face, DepthTextureCubemapArrayID_, 0, Light->DepthMap.DepthMapTextureIndex*6 + i);
         //glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, Light->DepthMap.DepthMapTextureIndex*6 + i);
 
+        std::cout<<i<<" | "<<glGetError()<<std::endl;
+        
+
         DepthShader->MakeActive();
         DepthShader->SetMat4("LightSpaceMatrix", ShadowTransforms[i]);
 
@@ -520,6 +528,9 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
         //glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
     }
+
+    std::cout<<"-------------------------------\n";
+
 
 }
 
