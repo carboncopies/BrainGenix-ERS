@@ -153,7 +153,7 @@ public:
      * @param Orthogonal Use Orthogonal for directional lights and perspective for everything else
      */
     void UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS_STRUCT_Shader* DepthShader, glm::mat4* LightSpaceMatrix = nullptr);
-    void UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUCT_Shader* DepthShader, std::vector<glm::mat4>* LightSpaceMatrixArray);
+    void UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUCT_Shader* DepthShader);
     void UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT_Shader* DepthShader, glm::mat4* LightSpaceMatrix = nullptr);
 
 };
