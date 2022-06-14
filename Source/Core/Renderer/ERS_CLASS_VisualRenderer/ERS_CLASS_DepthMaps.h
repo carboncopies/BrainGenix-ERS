@@ -33,6 +33,21 @@
 
 #include <ERS_FUNCTION_ConvertRotationToFrontVector.h>
 
+
+struct ERS_STRUCT_CubemapFBOIndexes {
+
+    unsigned int 1;
+    unsigned int 2;
+    unsigned int 3;
+    unsigned int 4;
+    unsigned int 5;
+    unsigned int 6;
+    
+}
+
+
+
+
 /**
  * @brief This class renders any ui/overlay info onto the viewport as requested by the viewport struct.
  * 

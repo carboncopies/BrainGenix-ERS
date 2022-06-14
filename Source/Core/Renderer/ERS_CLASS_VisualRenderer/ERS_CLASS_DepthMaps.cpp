@@ -222,7 +222,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
                 -1, -1, -1,
                 -1, -1, -1
                 };
-                DepthMapTexturesAlreadyAllocated_[i] = -1;
+                DepthMapTexturesCubemapAlreadyAllocated_[i] = Unallocated;
             }
 
         }
