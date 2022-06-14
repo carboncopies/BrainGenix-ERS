@@ -615,11 +615,11 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Check If Light Has DepthMap
         if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMapCubemap(); // Point lights need 6 depth maps for a "cubemap", which is a shadow map for each side of the cube, allowing shadows around the light in all directions
+            Light->DepthMap = GenerateDepthMapCubemap();
         }
 
         // Render To Depth Map
-        UpdateDepthMap(Light, DepthShader); // set this to false later, debugging
+        UpdateDepthMap(Light, DepthShader);
 
 
     } 
