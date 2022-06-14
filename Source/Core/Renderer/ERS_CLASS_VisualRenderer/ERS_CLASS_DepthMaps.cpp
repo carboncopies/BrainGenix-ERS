@@ -292,8 +292,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
 
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
     glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectIDs[0]); // fix this later
-
-    
     glClear(GL_DEPTH_BUFFER_BIT);
     glActiveTexture(GL_TEXTURE0);
     Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
