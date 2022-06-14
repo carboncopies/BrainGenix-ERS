@@ -17,6 +17,7 @@ add_library(ERS_STRUCT_DepthMap
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_STRUCT_DepthMap
+    glm
     )
 
 # Link Internal Libs
