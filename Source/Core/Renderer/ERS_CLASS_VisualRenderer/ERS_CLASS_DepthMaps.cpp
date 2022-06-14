@@ -507,8 +507,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
 
 
     std::cout<<"-------------------------------\n";
-    std::cout<<glGetError()<<std::endl;
-    std::cout<<"----\n";
 
 
     for (unsigned int i = 0; i < ShadowTransforms.size(); i++) {
