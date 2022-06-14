@@ -75,11 +75,11 @@ public:
 
 
     unsigned int DepthTextureArrayID_; /**<OpenGL Object ID For Depth Map Textures*/
-    unsigned int DepthTextureCubeMapArrayID_; /**<OpenGL Object ID For Depth Texture Cubemap Array*/
+    unsigned int DepthTextureCubemapArrayID_; /**<OpenGL Object ID For Depth Texture Cubemap Array*/
     int DepthTextureArrayWidth_ = 2048; /***<Width of the depth map texture*/
     int DepthTextureArrayHeight_ = 2048; /**<Height of the depth map texutre*/
     int DepthTextureNumTextures_ = 16; /**<Number of textures that the tex array can hold*/
-    int DepthTextureCubeMapNumTextures_ = 2; /**<Number of cubemaps the array can hold*/
+    int DepthTextureCubemapNumTextures_ = 2; /**<Number of cubemaps the array can hold*/
     std::vector<long> DepthMapTexturesAlreadyAllocated_; /**<Use This To Check if the texture is already allocated or not*/
     std::vector<unsigned int[6]> DepthMapTexturesCubeMapAlreadyAllocated_; /**<Used to check if a given cubemap index is in use, and to indiciate it's framebuffer objects, so they can be rebound on resize*/
     
@@ -116,7 +116,7 @@ public:
      * @return false 
      */
     bool RegenerateDepthMapTextureArray2D(int NumberOfTextures, int Width = 2048, int Height = 2048, bool LogEnabled = true);
-    bool RegenerateDepthMapTextureCubeMapArray(int NumberOfTextures, int Width = 2048, int Height = 2048, bool LogEnabled = true);
+    bool RegenerateDepthMapTextureCubeMapArray(int NumberOfTextures, bool LogEnabled = true);
 
     /**
      * @brief Generates a depth map with the given resolution.

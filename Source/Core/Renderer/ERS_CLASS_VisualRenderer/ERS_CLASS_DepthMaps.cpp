@@ -150,7 +150,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
     DepthTextureCubemapNumTextures_ = NumberOfTextures;
 
     SystemUtils_->Logger_->Log("Setting Up Cubemap Texture Array OpenGL Parameters", 4, LogEnabled);
-    glGenTextures(1, &DepthTextureArrayID_);
+    glGenTextures(1, &DepthTextureCubemapArrayID_);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D_ARRAY, DepthTextureArrayID_);
     
