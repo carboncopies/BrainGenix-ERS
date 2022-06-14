@@ -250,7 +250,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS
     }
 
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
+    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectIDs[0]);
 
     
     glClear(GL_DEPTH_BUFFER_BIT);
@@ -295,7 +295,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     }
 
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
+    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectIDs[0]); // fix this later
 
     
     glClear(GL_DEPTH_BUFFER_BIT);
@@ -342,7 +342,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT
     }
 
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
+    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectIDs[0]);
 
     
     glClear(GL_DEPTH_BUFFER_BIT);
