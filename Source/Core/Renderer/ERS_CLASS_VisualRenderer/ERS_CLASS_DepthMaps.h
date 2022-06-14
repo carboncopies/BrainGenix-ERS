@@ -141,11 +141,6 @@ public:
      */
     void UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader);
 
-
-
-
-
-
     /**
      * @brief This function creates a depth map from the perspective of the given position data.
      * The depth map texture is cleared, and then rendered to.
