@@ -152,7 +152,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
     SystemUtils_->Logger_->Log("Setting Up Cubemap Texture Array OpenGL Parameters", 4, LogEnabled);
     glGenTextures(1, &DepthTextureCubemapArrayID_);
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D_ARRAY, DepthTextureArrayID_);
+    glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, DepthTextureCubemapArrayID_);
     
     
     // ** THIS CAUSES A SEGFAULT FOR SOME REASON...? NOT SURE WHY, SO USING WORKAROUND BELOW **
@@ -163,15 +163,16 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
     //     NumberOfTextures // Total Number Of Textures In The Array
     // );
 
-    glTexImage3D(GL_TEXTURE_2D_ARRAY,
-        0,                    // Current 'mipmap level', We're not using these so 0 is fine
-        GL_DEPTH_COMPONENT24, // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
-        Width, Height,        // Width and Height, Pretty Self Explanitory
-        NumberOfTextures,     // Total Number Of Textures In The Array
-        0,                    // Border, we're not using this
-        GL_DEPTH_COMPONENT,   // Tells opengl what kind of data we're storing in this texture
-        GL_FLOAT,             // tells opengl how to store the data
-        NULL                  // if we were loading an image in, we could then pass the data in here, but we're not so this is left as null
+    glTexImage3D(GL_TEXTURE_CUBE_MAP_ARRAY,
+        0,                        // Current 'mipmap level', We're not using these so 0 is fine
+        GL_DEPTH_COMPONENT24,     // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
+        DepthTextureArrayWidth_,  // Cubemap Width
+        DepthTextureArrayHeight_, // Cubemap Height
+        NumberOfTextures,         // Total Number Of Textures In The Array
+        0,                        // Border, we're not using this
+        GL_DEPTH_COMPONENT,       // Tells opengl what kind of data we're storing in this texture
+        GL_FLOAT,                 // tells opengl how to store the data
+        NULL                      // if we were loading an image in, we could then pass the data in here, but we're not so this is left as null
     );
 
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
