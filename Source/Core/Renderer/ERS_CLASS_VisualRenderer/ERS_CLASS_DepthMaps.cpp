@@ -132,7 +132,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray2D(int NumberOfTextures,
 
 }
 
-bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfTextures, bool LogEnabled) {
+bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfTextures, bool LogEnabled) {
 
 
     SystemUtils_->Logger_->Log(
