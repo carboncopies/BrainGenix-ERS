@@ -146,7 +146,7 @@ public:
      * @return ERS_STRUCT_DepthMap Struct containing the relevant opengl ids for this depth map
      */
     ERS_STRUCT_DepthMap GenerateDepthMap2D(int Number = 1, bool LogOutput = true);
-
+    ERS_STRUCT_DepthMap GenerateDepthMapCubemap(bool LogOutput = true);
 
     /**
      * @brief Checks the number of depth maps vs the number of lights and makes sure that the number of depth maps is equal to the number of lights.
