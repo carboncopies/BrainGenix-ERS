@@ -361,7 +361,6 @@ void ERS_CLASS_DepthMaps::CheckSettings() {
 
 }
 
-
 ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap2D(int Number, bool LogEnable) {
 
 
@@ -397,8 +396,6 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap2D(int Number, bool Log
     return Output;
 
 }
-
-
 
 ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMapCubemap(bool LogEnable) {
 
