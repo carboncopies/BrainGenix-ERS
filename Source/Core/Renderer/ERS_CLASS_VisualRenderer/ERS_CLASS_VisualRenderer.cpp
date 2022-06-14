@@ -679,8 +679,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
         ActiveShader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->DirectionalLights[i]->MaxDistance);
 
-        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndexes[0]);
-        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.TransformationMatricies[0]);
+        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex);
+        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.TransformationMatrix);
     
     }
 
@@ -698,13 +698,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->PointLights[i]->MaxDistance);
 
 
-        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex1")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndexes[0]);
-        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex2")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndexes[1]);
-        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex3")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndexes[2]);
-        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex4")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndexes[3]);
-        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex5")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndexes[4]);
-        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex6")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndexes[5]);
-      
+        ActiveShader->SetInt((UniformName + std::string(".DepthCubemapIndex")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
+
     }
 
 
@@ -726,8 +721,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->SpotLights[i]->MaxDistance);
 
 
-        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndexes[0]);
-        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->SpotLights[i]->DepthMap.TransformationMatricies[0]);
+        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndex);
+        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->SpotLights[i]->DepthMap.TransformationMatrix);
    
     }
 
