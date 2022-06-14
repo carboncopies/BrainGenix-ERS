@@ -219,6 +219,10 @@ void ERS_CLASS_DepthMaps::CheckSettings() {
 
 }
 
+// TODO: Remove extra light space matrix array junk, and also remove extra texture index array stuff.
+// Then, implement cubemap array texture to allow us to render many point lights, add to depthmap struct to store the opengl ids needed for this
+// finally, update the visual renderer to use this, and update the shader to use these cubemaps.
+
 void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS_STRUCT_Shader* DepthShader) {
 
     // Check Settings
