@@ -373,35 +373,36 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap2D(int Number, bool Log
 ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMapCubemap(bool LogEnable) {
 
 
-    SystemUtils_->Logger_->Log(std::string("Creating ") + std::to_string(Number) + std::string(" Depth Map(s) With Resolution Of ") + std::to_string(DepthTextureArrayWidth_) + std::string("x") + std::to_string(DepthTextureArrayHeight_), 5, LogEnable);
+    SystemUtils_->Logger_->Log(std::string("Creating Cubemap Depth Map With Resolution Of ") + std::to_string(DepthTextureArrayWidth_) + std::string("x") + std::to_string(DepthTextureArrayHeight_), 5, LogEnable);
 
     // Setup Struct
     ERS_STRUCT_DepthMap Output;
 
-    // Iterate Over Total Quantity To Be Generated
-    for (unsigned int i = 0; i < (unsigned int)Number; i++) {
 
-        // Generate FBO
-        SystemUtils_->Logger_->Log("Generating Framebuffer Object", 4, LogEnable);
+    for (unsigned int i = 0; i < 6; i++) {
+
+        // Generate FBOs
+        SystemUtils_->Logger_->Log("Generating Framebuffer Objects", 4, LogEnable);
         unsigned int FBOID;
         glGenFramebuffers(1, &FBOID);
         Output.FrameBufferObjectIDs.push_back(FBOID);
-        SystemUtils_->Logger_->Log("Generated Framebuffer Object", 3, LogEnable);
-
-        // Allocate Depth Map Texture ID
-        Output.DepthMapTextureIndexes.push_back(AllocateDepthMapIndex2D(Output.FrameBufferObjectIDs[i]));
-
-        // Attach Depth Map Texture To Framebuffer
-        SystemUtils_->Logger_->Log(std::string("Attaching Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndexes[i]) + std::string("'"), 4, LogEnable);
-        glBindFramebuffer(GL_FRAMEBUFFER, Output.FrameBufferObjectIDs[i]);
-        glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, Output.DepthMapTextureIndexes[i]);
-        glDrawBuffer(GL_NONE);
-        glReadBuffer(GL_NONE);
-        glBindFramebuffer(GL_FRAMEBUFFER, 0); 
-        SystemUtils_->Logger_->Log("Finished Attaching Texture To Framebuffer", 3, LogEnable);
+        SystemUtils_->Logger_->Log("Generated Framebuffer Objects", 3, LogEnable);
 
     }
 
+    // Allocate Depth Map Texture ID
+    Output.DepthMapTextureIndexes.push_back(AllocateDepthMapIndex2D(Output.FrameBufferObjectIDs[i]));
+
+    // Attach Depth Map Texture To Framebuffer
+    SystemUtils_->Logger_->Log(std::string("Attaching Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndexes[i]) + std::string("'"), 4, LogEnable);
+    glBindFramebuffer(GL_FRAMEBUFFER, Output.FrameBufferObjectIDs[i]);
+    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, Output.DepthMapTextureIndexes[i]);
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0); 
+    SystemUtils_->Logger_->Log("Finished Attaching Texture To Framebuffer", 3, LogEnable);
+
+    
     Output.Initialized = true;
 
     // Return Output
