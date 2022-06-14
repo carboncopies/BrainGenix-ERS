@@ -41,8 +41,19 @@ struct STRUCT_PointLight {
     float Intensity;
     float MaxDistance;
     
-    int DepthMapIndex;
-    mat4 LightSpaceMatrix;
+    int DepthMapIndex1;
+    int DepthMapIndex2;
+    int DepthMapIndex3;
+    int DepthMapIndex4;
+    int DepthMapIndex5;
+    int DepthMapIndex6;
+    mat4 LightSpaceMatrix1;
+    mat4 LightSpaceMatrix2;
+    mat4 LightSpaceMatrix3;
+    mat4 LightSpaceMatrix4;
+    mat4 LightSpaceMatrix5;
+    mat4 LightSpaceMatrix6;
+
 
 };
 
@@ -610,6 +621,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
