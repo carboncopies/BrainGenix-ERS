@@ -444,11 +444,8 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS
     // Check Settings
     CheckSettings();
 
-    // Clear LSM Array
-    std::vector<glm::mat4>* LightSpaceMatrixArray = &Light->DepthMap.TransformationMatricies;
-    LightSpaceMatrixArray->clear();
-
     // Setup Variables
+    glm::mat4* LightSpaceMatrixArray = &Light->DepthMap.TransformationMatricies;
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
     float NearPlane = 0.1f, FarPlane = 15.0f;
