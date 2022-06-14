@@ -25,7 +25,7 @@ ERS_CLASS_DepthMaps::~ERS_CLASS_DepthMaps() {
 
 }
 
-bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, int Width, int Height, bool LogEnabled) {
+bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray2D(int NumberOfTextures, int Width, int Height, bool LogEnabled) {
 
 
     SystemUtils_->Logger_->Log(
@@ -124,7 +124,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
 
 }
 
-bool ERS_CLASS_DepthMaps::FreeDepthMapIndex(unsigned int Index) {
+bool ERS_CLASS_DepthMaps::FreeDepthMapIndex2D(unsigned int Index) {
 
     // Sanity Check
     if (Index > DepthMapTexturesAlreadyAllocated_.size() - 1) {
@@ -152,7 +152,7 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex2D(unsigned int Framebuff
     // IF Not, Batch Allocate More
     SystemUtils_->Logger_->Log("Depth Map Texture Array Full, Regenerating With More Textures", 5);
     int StartSize = DepthMapTexturesAlreadyAllocated_.size();
-    RegenerateDepthMapTextureArray(StartSize + DepthMapAllocationChunkSize_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+    RegenerateDepthMapTextureArray2D(StartSize + DepthMapAllocationChunkSize_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
     SystemUtils_->Logger_->Log(std::string("Finished Updating Depth Map Array, Allocating Depth Map Texture Array Index: ") + std::to_string(StartSize + DepthMapAllocationChunkSize_), 5);
 
     DepthMapTexturesAlreadyAllocated_[StartSize + 1] = FramebufferObjectID;
@@ -180,7 +180,7 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap2D(int Number, bool Log
         SystemUtils_->Logger_->Log("Generated Framebuffer Object", 3, LogEnable);
 
         // Allocate Depth Map Texture ID
-        Output.DepthMapTextureIndexes.push_back(AllocateDepthMapIndex(Output.FrameBufferObjectIDs[i]));
+        Output.DepthMapTextureIndexes.push_back(AllocateDepthMapIndex2D(Output.FrameBufferObjectIDs[i]));
 
         // Attach Depth Map Texture To Framebuffer
         SystemUtils_->Logger_->Log(std::string("Attaching Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndexes[i]) + std::string("'"), 4, LogEnable);
