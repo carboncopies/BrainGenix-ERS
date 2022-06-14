@@ -358,23 +358,23 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
     // Get Active Scene
     ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
 
-    // // Handle Directional Lights
-    // for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
+    // Handle Directional Lights
+    for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
 
-    //     // Extract Struct
-    //     ERS_STRUCT_DirectionalLight* Light = ActiveScene->DirectionalLights[i].get();
+        // Extract Struct
+        ERS_STRUCT_DirectionalLight* Light = ActiveScene->DirectionalLights[i].get();
 
-    //     // Check If Light Has DepthMap
-    //     if (!Light->DepthMap.Initialized) {
-    //         Light->DepthMap = GenerateDepthMap();   
-    //     }
+        // Check If Light Has DepthMap
+        if (!Light->DepthMap.Initialized) {
+            Light->DepthMap = GenerateDepthMap();   
+        }
 
-    //     // Render To Depth Map
-    //     glm::mat4* LightSpaceMatrix = new glm::mat4();
-    //     UpdateDepthMap(Light, DepthShader, LightSpaceMatrix);
-    //     Light->LightSpaceMatrix = *LightSpaceMatrix;
+        // Render To Depth Map
+        glm::mat4* LightSpaceMatrix = new glm::mat4();
+        UpdateDepthMap(Light, DepthShader, LightSpaceMatrix);
+        Light->LightSpaceMatrix = *LightSpaceMatrix;
 
-    // } 
+    } 
 
     // Handle Spot Lights
     for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
