@@ -487,11 +487,8 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     // Check Settings
     CheckSettings();
 
-    // Clear LSM Array
-    std::vector<glm::mat4>* LightSpaceMatrixArray = &Light->DepthMap.TransformationMatricies;
-    LightSpaceMatrixArray->clear();
-
     // Setup Variables
+    glm::mat4* LightSpaceMatrixArray = &Light->DepthMap.TransformationMatrix;
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     float NearPlane, FarPlane;
     NearPlane = 0.1f;
@@ -515,10 +512,9 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
         // Render With Depth Shader
         DepthShader->MakeActive();
         DepthShader->SetMat4("LightSpaceMatrix", ShadowTransforms[i]);
-        LightSpaceMatrixArray->push_back(ShadowTransforms[i]);
 
         glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-        glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectIDs[i]); // fix this later
+        glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID); // fix this later
         glClear(GL_DEPTH_BUFFER_BIT);
         glActiveTexture(GL_TEXTURE0);
         Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
@@ -534,11 +530,9 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT
     // Check Settings
     CheckSettings();
 
-    // Clear LSM Array
-    std::vector<glm::mat4>* LightSpaceMatrixArray = &Light->DepthMap.TransformationMatricies;
-    LightSpaceMatrixArray->clear();
 
     // Setup Variables
+    glm::mat4* LightSpaceMatrixArray = &Light->DepthMap.TransformationMatrix;
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
     float NearPlane, FarPlane;
@@ -559,11 +553,9 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT
     // Render With Depth Shader
     DepthShader->MakeActive();
     DepthShader->SetMat4("LightSpaceMatrix", ObjectSpace);
-    LightSpaceMatrixArray->push_back(ObjectSpace);
-    
 
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectIDs[0]);
+    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
     glClear(GL_DEPTH_BUFFER_BIT);
     glActiveTexture(GL_TEXTURE0);
     Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
