@@ -153,15 +153,6 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
     glGenTextures(1, &DepthTextureCubemapArrayID_);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, DepthTextureCubemapArrayID_);
-    
-    
-    // ** THIS CAUSES A SEGFAULT FOR SOME REASON...? NOT SURE WHY, SO USING WORKAROUND BELOW **
-    // glTextureStorage3D(GL_TEXTURE_2D_ARRAY,
-    //     0, // Number OF Mipmaps, Note that we're not using mipmaps so this is set to 1
-    //     GL_DEPTH_COMPONENT16, // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
-    //     Width, Height, // Width and Height, Pretty Self Explanitory
-    //     NumberOfTextures // Total Number Of Textures In The Array
-    // );
 
     glTexImage3D(GL_TEXTURE_CUBE_MAP_ARRAY,
         0,                        // Current 'mipmap level', We're not using these so 0 is fine
