@@ -197,7 +197,14 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
     SystemUtils_->Logger_->Log("Rebinding Framebuffer Objects Cubemap Depth Textures", 4, LogEnabled);
     for (unsigned int i = 0; i < DepthMapTexturesCubemapAlreadyAllocated_.size(); i++) {
 
-        unsigned int IDs[6] = DepthMapTexturesCubemapAlreadyAllocated_[i];
+        unsigned int IDs[6];
+        IDs[0] = DepthMapTexturesCubemapAlreadyAllocated_[i][0];
+        IDs[1] = DepthMapTexturesCubemapAlreadyAllocated_[i][1];
+        IDs[2] = DepthMapTexturesCubemapAlreadyAllocated_[i][2];
+        IDs[3] = DepthMapTexturesCubemapAlreadyAllocated_[i][3];
+        IDs[4] = DepthMapTexturesCubemapAlreadyAllocated_[i][4];
+        IDs[5] = DepthMapTexturesCubemapAlreadyAllocated_[i][5];
+        
 
         for (unsigned int x = 0; x < 6; x++) {
 
@@ -205,12 +212,16 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
             if (glIsFramebuffer(IDs[x])) {
 
                 // If Valid, Rebind
-                SystemUtils_->Logger_->Log(std::string("Rebinding Framebuffer '") + std::to_string(IDs[x]) + std::string("' To Texture At Index '") + std::to_string(i) + std::string("'"), 4, LogEnabled);
+                SystemUtils_->Logger_->Log(std::string("Rebinding Framebuffer '") + std::to_string(IDs[x]) + std::string("' To Texture At Index '") + std::to_string(i*6 + x) + std::string("'"), 4, LogEnabled);
                 glBindFramebuffer(GL_FRAMEBUFFER, IDs[x]);
-                glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, i);
+                glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, i*6 + x);
             
-            } else if (ID != -1) {
+            } else if (IDs[x] != -1) {
                 SystemUtils_->Logger_->Log("Framebuffer Object Is Invalid, Removing From Allocation Table", 4, LogEnabled);
+                unsigned int Unallocated[6] = {
+                -1, -1, -1,
+                -1, -1, -1
+                };
                 DepthMapTexturesAlreadyAllocated_[i] = -1;
             }
 
