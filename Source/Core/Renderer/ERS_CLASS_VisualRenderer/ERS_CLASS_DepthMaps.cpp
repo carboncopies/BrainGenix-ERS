@@ -363,6 +363,7 @@ void ERS_CLASS_DepthMaps::CheckSettings() {
 
     if (NeedsToUpdate) {
         RegenerateDepthMapTextureArray2D(DepthTextureNumTextures_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+        RegenerateDepthMapTextureArrayCubemap(DepthTextureCubemapNumTextures_);
     }
 
 }
