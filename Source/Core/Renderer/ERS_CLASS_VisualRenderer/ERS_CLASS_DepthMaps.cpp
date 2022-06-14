@@ -175,7 +175,6 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
 
     for (unsigned int i = 0; i < 6; ++i)
         glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_DEPTH_COMPONENT, DepthTextureArrayWidth_, DepthTextureArrayHeight_, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
-
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -203,7 +202,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
     SystemUtils_->Logger_->Log("Rebinding Framebuffer Objects Cubemap Depth Textures", 4, LogEnabled);
     for (unsigned int i = 0; i < DepthMapTexturesCubemapAlreadyAllocated_.size(); i++) {
 
-        unsigned int IDs[6];
+        long IDs[6];
         IDs[0] = DepthMapTexturesCubemapAlreadyAllocated_[i].FBO1;
         IDs[1] = DepthMapTexturesCubemapAlreadyAllocated_[i].FBO2;
         IDs[2] = DepthMapTexturesCubemapAlreadyAllocated_[i].FBO3;
