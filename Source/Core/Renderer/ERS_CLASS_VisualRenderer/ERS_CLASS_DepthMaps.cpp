@@ -247,6 +247,19 @@ bool ERS_CLASS_DepthMaps::FreeDepthMapIndex2D(unsigned int Index) {
 
 }
 
+bool ERS_CLASS_DepthMaps::FreeDepthMapIndexCubemap(unsigned int Index) {
+
+    // Sanity Check
+    if (Index > DepthMapTexturesCubemapAlreadyAllocated_.size() - 1) {
+        return false; // Indicate Failure, Out Of Range
+    }
+
+    // DeAllocate From Array
+    DepthMapTexturesCubemapAlreadyAllocated_[Index] = ERS_STRUCT_CubemapFBOIndexes();
+    return true;
+
+}
+
 unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex2D(unsigned int FramebufferObjectID) {
 
     // If Enough Textures Exist, Find One

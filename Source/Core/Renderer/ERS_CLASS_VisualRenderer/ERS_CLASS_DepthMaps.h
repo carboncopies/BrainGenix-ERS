@@ -79,6 +79,8 @@ private:
      * @return false 
      */
     bool FreeDepthMapIndex2D(unsigned int Index);
+    bool FreeDepthMapIndexCubemap(unsigned int Index);
+    
 
     /**
      * @brief Checks the settings of the renderer against the current parameters.
