@@ -378,7 +378,7 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap2D(int Number, bool Log
     SystemUtils_->Logger_->Log("Generated Framebuffer Object", 3, LogEnable);
 
     // Allocate Depth Map Texture ID
-    Output.DepthMapTextureIndex = AllocateDepthMapIndex2D(Output.FrameBufferObjectID));
+    Output.DepthMapTextureIndex = AllocateDepthMapIndex2D(Output.FrameBufferObjectID);
 
     // Attach Depth Map Texture To Framebuffer
     SystemUtils_->Logger_->Log(std::string("Attaching Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndex) + std::string("'"), 4, LogEnable);
