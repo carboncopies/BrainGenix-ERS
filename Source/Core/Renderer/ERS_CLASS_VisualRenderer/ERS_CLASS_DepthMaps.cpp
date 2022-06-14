@@ -183,11 +183,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
     } else if (SizeOfAllocationArray < (unsigned int)NumberOfTextures) {
         SystemUtils_->Logger_->Log("Upsizing Cubemap Array To Match Target Number Of Textures", 4, LogEnabled);
         for (unsigned int i = 0; i < NumberOfTextures - SizeOfAllocationArray; i++) {
-            unsigned int Unallocated[6] = {
-                -1, -1, -1,
-                -1, -1, -1
-            };
-            DepthMapTexturesCubemapAlreadyAllocated_.push_back(Unallocated);
+            DepthMapTexturesCubemapAlreadyAllocated_.push_back(ERS_STRUCT_CubemapFBOIndexes());
         }
     }
     SystemUtils_->Logger_->Log("Done Updating/Checking Cubemap Allocation Array", 3, LogEnabled);
@@ -218,11 +214,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
             
             } else if (IDs[x] != -1) {
                 SystemUtils_->Logger_->Log("Framebuffer Object Is Invalid, Removing From Allocation Table", 4, LogEnabled);
-                unsigned int Unallocated[6] = {
-                -1, -1, -1,
-                -1, -1, -1
-                };
-                DepthMapTexturesCubemapAlreadyAllocated_[i] = Unallocated;
+                DepthMapTexturesCubemapAlreadyAllocated_[i] = ERS_STRUCT_CubemapFBOIndexes();
             }
 
         }
