@@ -106,10 +106,11 @@ public:
      * This is usually used for shadows later on in the rendering process.
      * Resolution is specified by the 
      * 
+     * @param Number The Number OF Depth Maps To Assign To The Light In Question
      * @param LogOutput Enable/disable logging output
      * @return ERS_STRUCT_DepthMap Struct containing the relevant opengl ids for this depth map
      */
-    ERS_STRUCT_DepthMap GenerateDepthMap(bool LogOutput = true);
+    ERS_STRUCT_DepthMap GenerateDepthMap(int Number = 1, bool LogOutput = true);
 
 
     /**
