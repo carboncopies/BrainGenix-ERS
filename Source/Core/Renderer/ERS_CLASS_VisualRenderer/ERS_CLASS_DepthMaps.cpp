@@ -288,7 +288,7 @@ bool ERS_CLASS_DepthMaps::FreeDepthMapIndexCubemap(unsigned int Index) {
     }
 
     // DeAllocate From Array
-    DepthMapTexturesCubemapAlreadyAllocated_[Index] = ERS_STRUCT_CubemapFBOIndexes();
+    DepthMapTexturesCubemapAlreadyAllocated_[Index] = -1; //ERS_STRUCT_CubemapFBOIndexes();
     return true;
 
 }
