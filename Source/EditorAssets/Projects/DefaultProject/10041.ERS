@@ -47,12 +47,6 @@ struct STRUCT_PointLight {
     int DepthMapIndex4;
     int DepthMapIndex5;
     int DepthMapIndex6;
-    mat4 LightSpaceMatrix1;
-    mat4 LightSpaceMatrix2;
-    mat4 LightSpaceMatrix3;
-    mat4 LightSpaceMatrix4;
-    mat4 LightSpaceMatrix5;
-    mat4 LightSpaceMatrix6;
 
 
 };
@@ -252,6 +246,9 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
 
 
 
+
+
+
 vec3 GetNormalFromMap(sampler2D Normal) {
 
     // Ensure That Textures Are Present/Valid, If Not, Provide Fallback
@@ -386,6 +383,27 @@ STRUCT_SampledData SetSampledData() {
 
 
 
+float ShadowCalculation(STRUCT_PointLight Light)
+{
+    // get vector between fragment position and light position
+    vec3 fragToLight = Object.FragPos - Light.Position;
+    fragToLight.z += Light.DepthMapIndex2;
+    // ise the fragment to light vector to sample from the depth map    
+    float closestDepth = texture(DepthMapArray, fragToLight).r;
+    // it is currently in linear range between [0,1], let's re-transform it back to original depth value
+    closestDepth *= Light.MaxDistance;
+    // now get current linear depth as the length between the fragment and light position
+    float currentDepth = length(fragToLight);
+    // test for shadows
+    float bias = 0.05; // we use a much larger bias since depth is now in [near_plane, far_plane] range
+    float shadow = currentDepth -  bias > closestDepth ? 1.0 : 0.0;        
+    // display closestDepth as debug (to visualize depth cubemap)
+     FragColor = vec4(vec3(closestDepth / Light.MaxDistance), 1.0);    
+        
+    return 1.0f - shadow;
+}
+
+
 vec3 PBRPointLight(STRUCT_PointLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT_SampledData Model) {
 
     // calculate per-light radiance
@@ -419,7 +437,7 @@ vec3 PBRPointLight(STRUCT_PointLight Light, vec3 ViewDir, vec3 Reflectance, STRU
     float NdotL = max(dot(Model.Normal, L), 0.0);
     
     // add to outgoing radiance Lo
-    return (kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL;  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
+    return ((kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL) * ShadowCalculation(Light);  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
 
 
 }
@@ -574,15 +592,16 @@ void main() {
     // Apply Gamma Correction
     if (HDREnabled_) {
         vec3 Mapped = vec3(1.0f) - exp(-Color.xyz * Exposure_);
-        FragColor = GammaCorrectResult(vec4(Mapped, 1.0f), GammaCorrectionEnabled_);
+        //FragColor = GammaCorrectResult(vec4(Mapped, 1.0f), GammaCorrectionEnabled_);
     } else {
-        FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
+        //FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
     
     
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
