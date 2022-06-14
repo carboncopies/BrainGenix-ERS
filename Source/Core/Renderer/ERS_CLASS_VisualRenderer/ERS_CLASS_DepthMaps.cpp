@@ -155,7 +155,9 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex(unsigned int Framebuffer
     RegenerateDepthMapTextureArray(StartSize + DepthMapAllocationChunkSize_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
     SystemUtils_->Logger_->Log(std::string("Finished Updating Depth Map Array, Allocating Depth Map Texture Array Index: ") + std::to_string(StartSize + DepthMapAllocationChunkSize_), 5);
 
-    return StartSize;
+    DepthMapTexturesAlreadyAllocated_[StartSize + 1] = FramebufferObjectID;
+
+    return StartSize + 1;
 
 }
 
