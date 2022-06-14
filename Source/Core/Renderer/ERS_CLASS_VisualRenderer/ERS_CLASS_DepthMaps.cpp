@@ -279,10 +279,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     ObjectProjection = glm::perspective(glm::radians(110.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
     
 
-    // Re-Do Rotation
-    //glm::vec3 XYZRotation = ERS_FUNCTION_ConvertRotationToFrontVector(Light->Rot);
-
-    //glm::vec3 Front = glm::normalize(XYZRotation);
     ObjectView = glm::lookAt(Light->Pos, Light->Pos, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
     ObjectSpace = ObjectProjection * ObjectView;
 
