@@ -405,13 +405,10 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap2D(int Number, bool Log
 
 ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMapCubemap(bool LogEnable) {
 
-
     SystemUtils_->Logger_->Log(std::string("Creating Cubemap Depth Map With Resolution Of ") + std::to_string(DepthTextureArrayWidth_) + std::string("x") + std::to_string(DepthTextureArrayHeight_), 5, LogEnable);
 
     // Setup Struct
     ERS_STRUCT_DepthMap Output;
-
-
 
 
     // Generate FBOs
