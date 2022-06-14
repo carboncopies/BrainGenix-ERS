@@ -308,6 +308,26 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndexCubemap(ERS_STRUCT_Cubema
 
 }
 
+void ERS_CLASS_DepthMaps::CheckSettings() {
+
+    // Check Depth Maps
+    bool NeedsToUpdate = true;
+    
+    if (SystemUtils_->RendererSettings_->ShadowMapX_ != DepthTextureArrayWidth_) {
+        DepthTextureArrayWidth_ = SystemUtils_->RendererSettings_->ShadowMapX_;
+    } else if (SystemUtils_->RendererSettings_->ShadowMapX_ != DepthTextureArrayHeight_) {
+        DepthTextureArrayHeight_ = SystemUtils_->RendererSettings_->ShadowMapY_;
+    } else {
+        NeedsToUpdate = false;
+    }
+
+    if (NeedsToUpdate) {
+        RegenerateDepthMapTextureArray2D(DepthTextureNumTextures_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+        RegenerateDepthMapTextureArrayCubemap(DepthTextureCubemapNumTextures_);
+    }
+
+}
+
 
 ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap2D(int Number, bool LogEnable) {
 
@@ -348,25 +368,7 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap2D(int Number, bool Log
 
 }
 
-void ERS_CLASS_DepthMaps::CheckSettings() {
 
-    // Check Depth Maps
-    bool NeedsToUpdate = true;
-    
-    if (SystemUtils_->RendererSettings_->ShadowMapX_ != DepthTextureArrayWidth_) {
-        DepthTextureArrayWidth_ = SystemUtils_->RendererSettings_->ShadowMapX_;
-    } else if (SystemUtils_->RendererSettings_->ShadowMapX_ != DepthTextureArrayHeight_) {
-        DepthTextureArrayHeight_ = SystemUtils_->RendererSettings_->ShadowMapY_;
-    } else {
-        NeedsToUpdate = false;
-    }
-
-    if (NeedsToUpdate) {
-        RegenerateDepthMapTextureArray2D(DepthTextureNumTextures_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-        RegenerateDepthMapTextureArrayCubemap(DepthTextureCubemapNumTextures_);
-    }
-
-}
 
 // TODO: Remove extra light space matrix array junk, and also remove extra texture index array stuff.
 // Then, implement cubemap array texture to allow us to render many point lights, add to depthmap struct to store the opengl ids needed for this
