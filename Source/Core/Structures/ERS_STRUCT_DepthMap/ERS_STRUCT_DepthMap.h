@@ -23,9 +23,7 @@
 struct ERS_STRUCT_DepthMap {
 
     unsigned int FrameBufferObjectID; /**<OpenGL Depth Map FBO ID*/
-    int DepthMapTextureIndex; /**<OpenGL Depth Map Texture Index In 2D Array*/
-
+    std::vector<int> DepthMapTextureIndexes; /**<OpenGL Depth Map Texture Index In 2D Array, Multiple To Support CubeMaps For Point Lights*/
     bool Initialized = false; /**<Indiciates If The Target Is Initialized Or Not*/
-    
 
 };
