@@ -89,6 +89,20 @@ public:
 
 
     /**
+     * @brief Construct a new ers class DepthMaps object
+     * 
+     * @param SystemUtils 
+     */
+    ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_MeshRenderer* Renderer);
+
+    /**
+     * @brief Destroy the ers class DepthMaps object
+     * 
+     */
+    ~ERS_CLASS_DepthMaps();
+
+
+    /**
      * @brief Generates a depth map array (array texture), with the given width, height and number of layers.
      * 
      * @param NumberOfTextures Number of textures in the array
@@ -111,20 +125,6 @@ public:
      * @return ERS_STRUCT_DepthMap Struct containing the relevant opengl ids for this depth map
      */
     ERS_STRUCT_DepthMap GenerateDepthMap2D(int Number = 1, bool LogOutput = true);
-
-
-    /**
-     * @brief Construct a new ers class DepthMaps object
-     * 
-     * @param SystemUtils 
-     */
-    ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_MeshRenderer* Renderer);
-
-    /**
-     * @brief Destroy the ers class DepthMaps object
-     * 
-     */
-    ~ERS_CLASS_DepthMaps();
 
 
     /**
