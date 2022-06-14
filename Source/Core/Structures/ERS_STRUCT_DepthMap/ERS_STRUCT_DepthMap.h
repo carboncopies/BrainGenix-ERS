@@ -6,6 +6,7 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <memory.h>
+#include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 
