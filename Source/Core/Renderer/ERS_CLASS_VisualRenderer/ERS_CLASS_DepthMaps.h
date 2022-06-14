@@ -116,7 +116,7 @@ public:
      * @return false 
      */
     bool RegenerateDepthMapTextureArray2D(int NumberOfTextures, int Width = 2048, int Height = 2048, bool LogEnabled = true);
-
+    bool RegenerateDepthMapTextureCubeMapArray(int NumberOfTextures, int Width = 2048, int Height = 2048, bool LogEnabled = true);
 
     /**
      * @brief Generates a depth map with the given resolution.
