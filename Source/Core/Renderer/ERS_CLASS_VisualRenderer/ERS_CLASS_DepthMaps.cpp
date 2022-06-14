@@ -262,12 +262,13 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS
 
 }
 
-void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUCT_Shader* DepthShader, std::vector<glm::mat4>* LightSpaceMatrixArray) {
+void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUCT_Shader* DepthShader) {
 
     // Check Settings
     CheckSettings();
 
     // Clear LSM Array
+    std::vector<glm::mat4>* LightSpaceMatrixArray = &Light->DepthMap.TransformationMatricies;
     LightSpaceMatrixArray->clear();
 
     // Setup Variables
