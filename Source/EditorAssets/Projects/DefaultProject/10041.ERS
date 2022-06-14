@@ -41,13 +41,7 @@ struct STRUCT_PointLight {
     float Intensity;
     float MaxDistance;
     
-    int DepthMapIndex1;
-    int DepthMapIndex2;
-    int DepthMapIndex3;
-    int DepthMapIndex4;
-    int DepthMapIndex5;
-    int DepthMapIndex6;
-
+    int DepthCubemapIndex;
 
 };
 
@@ -122,8 +116,8 @@ uniform int NumberDirectionalLights;
 uniform int NumberPointLights;
 uniform int NumberSpotLights;
 uniform STRUCT_DirectionalLight DirectionalLights[2];
-uniform STRUCT_PointLight PointLights[16];
-uniform STRUCT_SpotLight SpotLights[32];
+uniform STRUCT_PointLight PointLights[32];
+uniform STRUCT_SpotLight SpotLights[64];
 
 // Gamma Correction Info
 uniform bool GammaCorrectionEnabled_;
@@ -387,7 +381,7 @@ float ShadowCalculation(STRUCT_PointLight Light)
 {
     // get vector between fragment position and light position
     vec3 fragToLight = Object.FragPos - Light.Position;
-    fragToLight.z += Light.DepthMapIndex2;
+
     // ise the fragment to light vector to sample from the depth map    
     float closestDepth = texture(DepthMapArray, fragToLight).r;
     // it is currently in linear range between [0,1], let's re-transform it back to original depth value
@@ -592,15 +586,16 @@ void main() {
     // Apply Gamma Correction
     if (HDREnabled_) {
         vec3 Mapped = vec3(1.0f) - exp(-Color.xyz * Exposure_);
-        //FragColor = GammaCorrectResult(vec4(Mapped, 1.0f), GammaCorrectionEnabled_);
+        FragColor = GammaCorrectResult(vec4(Mapped, 1.0f), GammaCorrectionEnabled_);
     } else {
-        //FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
+        FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
     
     
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
