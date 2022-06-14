@@ -170,7 +170,7 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int Number, bool LogEn
     ERS_STRUCT_DepthMap Output;
 
     // Iterate Over Total Quantity To Be Generated
-    for (unsigned int i = 0; i < Number; i++) {
+    for (unsigned int i = 0; i < (unsigned int)Number; i++) {
 
         // Generate FBO
         SystemUtils_->Logger_->Log("Generating Framebuffer Object", 4, LogEnable);
