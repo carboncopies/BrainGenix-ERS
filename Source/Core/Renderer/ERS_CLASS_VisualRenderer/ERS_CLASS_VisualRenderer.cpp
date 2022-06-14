@@ -704,12 +704,6 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex4")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndexes[3]);
         ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex5")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndexes[4]);
         ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex6")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndexes[5]);
-        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix1")).c_str(), ActiveScene->PointLights[i]->DepthMap.TransformationMatricies[0]);
-        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix2")).c_str(), ActiveScene->PointLights[i]->DepthMap.TransformationMatricies[1]);
-        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix3")).c_str(), ActiveScene->PointLights[i]->DepthMap.TransformationMatricies[2]);
-        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix4")).c_str(), ActiveScene->PointLights[i]->DepthMap.TransformationMatricies[3]);
-        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix5")).c_str(), ActiveScene->PointLights[i]->DepthMap.TransformationMatricies[4]);
-        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix6")).c_str(), ActiveScene->PointLights[i]->DepthMap.TransformationMatricies[5]);
       
     }
 
