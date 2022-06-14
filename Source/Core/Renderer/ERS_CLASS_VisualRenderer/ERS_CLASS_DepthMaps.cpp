@@ -214,7 +214,7 @@ void ERS_CLASS_DepthMaps::CheckSettings() {
     }
 
     if (NeedsToUpdate) {
-        RegenerateDepthMapTextureArray(DepthTextureNumTextures_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+        RegenerateDepthMapTextureArray2D(DepthTextureNumTextures_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
     }
 
 }
@@ -374,7 +374,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Check If Light Has DepthMap
         if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap();   
+            Light->DepthMap = GenerateDepthMap2D();   
         }
 
         // Render To Depth Map
@@ -390,7 +390,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Check If Light Has DepthMap
         if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap();   
+            Light->DepthMap = GenerateDepthMap2D();   
         }
 
         // Render To Depth Map
@@ -406,7 +406,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Check If Light Has DepthMap
         if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap(6); // Point lights need 6 depth maps for a "cubemap", which is a shadow map for each side of the cube, allowing shadows around the light in all directions
+            Light->DepthMap = GenerateDepthMap2D(6); // Point lights need 6 depth maps for a "cubemap", which is a shadow map for each side of the cube, allowing shadows around the light in all directions
         }
 
         // Render To Depth Map
