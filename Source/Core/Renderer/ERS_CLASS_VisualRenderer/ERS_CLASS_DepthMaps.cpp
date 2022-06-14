@@ -11,7 +11,7 @@ ERS_CLASS_DepthMaps::ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ER
     ProjectUtils_ = ProjectUtils;
     Renderer_ = Renderer;
 
-    SystemUtils_->Logger_->Log("Initializing Viewport Overlay Subsystem", 5);
+    SystemUtils_->Logger_->Log("Initializing Depth Map Subsystem", 5);
 
     // Create Array Texture For Depth Maps
     RegenerateDepthMapTextureArray2D(16, SystemUtils_->RendererSettings_->ShadowMapX_, SystemUtils_->RendererSettings_->ShadowMapY_);
@@ -21,7 +21,15 @@ ERS_CLASS_DepthMaps::ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ER
 
 ERS_CLASS_DepthMaps::~ERS_CLASS_DepthMaps() {
 
-    SystemUtils_->Logger_->Log("Viewport Overlay Subsystem Destructor Invoked", 6);
+    SystemUtils_->Logger_->Log("Depth Map Destructor Invoked", 6);
+
+
+    SystemUtils_->Logger_->Log("Depth Map Subsystem Destroying Array Textures", 4);
+    glDeleteTextures(1, &DepthTextureArrayID_);
+    SystemUtils_->Logger_->Log("Depth Map Subsystem Destroyed 2D Depth Array Texture", 4);
+    glDeleteTextures(1, &DepthTextureCubemapArrayID_);
+    SystemUtils_->Logger_->Log("Depth Map Subsystem Destroyed 3D Cubemap Array Texutre", 4);
+    
 
 }
 
@@ -137,10 +145,10 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
 
     // Check If Already Texture, If So, Delete So We Can Overwrite it
     SystemUtils_->Logger_->Log("Checking If Texture Cubemap Array Already Exists", 4, LogEnabled);
-    bool TextureAlreadyExists = glIsTexture(DepthTextureArrayID_);
+    bool TextureAlreadyExists = glIsTexture(DepthTextureCubemapArrayID_);
     if (TextureAlreadyExists) {
         SystemUtils_->Logger_->Log("Cubemap Array ID Already In Use, Freeing First", 3, LogEnabled);
-        glDeleteTextures(1, &DepthTextureArrayID_);
+        glDeleteTextures(1, &DepthTextureCubemapArrayID_);
     } else {
         SystemUtils_->Logger_->Log("Cubemap Array ID Not Already In Use", 3, LogEnabled);
     }
