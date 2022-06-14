@@ -182,10 +182,6 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
     glTexParameterfv(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_BORDER_COLOR, BorderColor); 
     SystemUtils_->Logger_->Log("Cubemap Depth Map Texture Array Initialization Complete", 4, LogEnabled);
 
-    std::cout<<"-----------------------------------\n";
-    std::cout<<glGetError()<<std::endl;
-    std::cout<<"-----------------------------------\n";
-
 
     // Update Allocation Array
     SystemUtils_->Logger_->Log("Checking Cubemap Depth Map Texture Array Allocation Array", 3, LogEnabled);
@@ -238,8 +234,6 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
 
 }
 
-
-
 bool ERS_CLASS_DepthMaps::FreeDepthMapIndex2D(unsigned int Index) {
 
     // Sanity Check
@@ -276,6 +270,31 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex2D(unsigned int Framebuff
     return StartSize + 1;
 
 }
+
+unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndexCubemap(ERS_STRUCT_CubemapFBOIndexes FBOs) {
+
+    // If Enough Textures Exist, Find One
+    SystemUtils_->Logger_->Log("Allocating Cubemap Depth Map Texture Array Index", 5);
+    for (unsigned int i = 0; i < DepthMapTexturesCubemapAlreadyAllocated_.size(); i++) {
+        if (DepthMapTexturesCubemapAlreadyAllocated_[i].FBO1 == -1) {
+            SystemUtils_->Logger_->Log(std::string("Allocated Cubemap Depth Map Texture Array Index: ") + std::to_string(i), 5);
+            DepthMapTexturesCubemapAlreadyAllocated_[i] = FBOs;
+            return i;
+        }
+    }
+
+    // IF Not, Batch Allocate More
+    SystemUtils_->Logger_->Log("Depth Cubemap Map Texture Array Full, Regenerating With More Textures", 5);
+    int StartSize = DepthMapTexturesCubemapAlreadyAllocated_.size();
+    RegenerateDepthMapTextureArrayCubemap(StartSize + DepthMapAllocationChunkSize_);
+    SystemUtils_->Logger_->Log(std::string("Finished Updating Cubemap Depth Map Array, Allocating Depth Map Texture Array Index: ") + std::to_string(StartSize + DepthMapAllocationChunkSize_), 5);
+
+    DepthMapTexturesCubemapAlreadyAllocated_[StartSize + 1] = FBOs;
+
+    return StartSize + 1;
+
+}
+
 
 ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap2D(int Number, bool LogEnable) {
 

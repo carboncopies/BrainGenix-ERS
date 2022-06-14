@@ -70,6 +70,7 @@ private:
      * @return unsigned int 
      */
     unsigned int AllocateDepthMapIndex2D(unsigned int FramebufferObjectID);
+    unsigned int AllocateDepthMapIndexCubemap(ERS_STRUCT_CubemapFBOIndexes FBOs);
 
     /**
      * @brief Deallocates an index from the depth map texture array.
