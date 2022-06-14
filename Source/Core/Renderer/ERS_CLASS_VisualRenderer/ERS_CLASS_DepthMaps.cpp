@@ -271,11 +271,13 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     // Setup Variables
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
-    float NearPlane = 0.1f, FarPlane = 15.0f;
+    float NearPlane, FarPlane;
+    NearPlane = 0.1f;
+    FarPlane = Light->MaxDistance;
 
     // Calculate Project, View, Space Matrices
     float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
-    ObjectProjection = glm::perspective(glm::radians(110.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
+    ObjectProjection = glm::perspective(glm::radians(90.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
     
 
     ObjectView = glm::lookAt(Light->Pos, Light->Pos, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
