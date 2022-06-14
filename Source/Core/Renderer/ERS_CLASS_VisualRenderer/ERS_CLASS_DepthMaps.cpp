@@ -219,8 +219,7 @@ void ERS_CLASS_DepthMaps::CheckSettings() {
 
 }
 
-void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS_STRUCT_Shader* DepthShader, glm::mat4* LightSpaceMatrix) {
-
+void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS_STRUCT_Shader* DepthShader) {
 
     // Check Settings
     CheckSettings();
@@ -309,10 +308,14 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
 
 }
 
-void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT_Shader* DepthShader, glm::mat4* LightSpaceMatrix) {
+void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT_Shader* DepthShader) {
 
     // Check Settings
     CheckSettings();
+
+    // Clear LSM Array
+    std::vector<glm::mat4>* LightSpaceMatrixArray = &Light->DepthMap.TransformationMatricies;
+    LightSpaceMatrixArray->clear();
 
     // Setup Variables
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
@@ -335,10 +338,8 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT
     // Render With Depth Shader
     DepthShader->MakeActive();
     DepthShader->SetMat4("LightSpaceMatrix", ObjectSpace);
-
-    if (LightSpaceMatrix != nullptr) {
-        *LightSpaceMatrix = ObjectSpace;
-    }
+    LightSpaceMatrixArray->push_back(ObjectSpace);
+    
 
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
     glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectIDs[0]);
