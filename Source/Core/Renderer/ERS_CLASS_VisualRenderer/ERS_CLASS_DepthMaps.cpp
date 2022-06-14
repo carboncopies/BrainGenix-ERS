@@ -445,7 +445,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS
     CheckSettings();
 
     // Setup Variables
-    glm::mat4* LightSpaceMatrixArray = &Light->DepthMap.TransformationMatricies;
+    glm::mat4* LightSpaceMatrixArray = &Light->DepthMap.TransformationMatrix;
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
     float NearPlane = 0.1f, FarPlane = 15.0f;
@@ -464,10 +464,9 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS
     // Render With Depth Shader
     DepthShader->MakeActive();
     DepthShader->SetMat4("LightSpaceMatrix", ObjectSpace);
-    LightSpaceMatrixArray->push_back(ObjectSpace);
 
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectIDs[0]);
+    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
 
     
     glClear(GL_DEPTH_BUFFER_BIT);
