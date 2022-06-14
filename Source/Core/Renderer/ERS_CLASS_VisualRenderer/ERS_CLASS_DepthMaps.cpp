@@ -185,14 +185,18 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
 
     // Update Allocation Array
     SystemUtils_->Logger_->Log("Checking Cubemap Depth Map Texture Array Allocation Array", 3, LogEnabled);
-    unsigned long SizeOfAllocationArray = DepthMapTexturesAlreadyAllocated_.size();
+    unsigned long SizeOfAllocationArray = DepthMapTexturesCubemapAlreadyAllocated_.size();
     if (SizeOfAllocationArray > (unsigned int)NumberOfTextures) {
         SystemUtils_->Logger_->Log("Downsizing Cubemap Array To Match Target Number Of Textures", 4, LogEnabled);
-        DepthMapTexturesAlreadyAllocated_.erase(DepthMapTexturesAlreadyAllocated_.begin() + NumberOfTextures, DepthMapTexturesAlreadyAllocated_.end());
+        DepthMapTexturesCubemapAlreadyAllocated_.erase(DepthMapTexturesCubemapAlreadyAllocated_.begin() + NumberOfTextures, DepthMapTexturesCubemapAlreadyAllocated_.end());
     } else if (SizeOfAllocationArray < (unsigned int)NumberOfTextures) {
         SystemUtils_->Logger_->Log("Upsizing Cubemap Array To Match Target Number Of Textures", 4, LogEnabled);
         for (unsigned int i = 0; i < NumberOfTextures - SizeOfAllocationArray; i++) {
-            DepthMapTexturesAlreadyAllocated_.push_back(-1);
+            unsigned int Unallocated[6] = {
+                -1, -1, -1,
+                -1, -1, -1
+            };
+            DepthMapTexturesCubemapAlreadyAllocated_.push_back(Unallocated);
         }
     }
     SystemUtils_->Logger_->Log("Done Updating/Checking Cubemap Allocation Array", 3, LogEnabled);
