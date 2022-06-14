@@ -15,7 +15,7 @@ ERS_CLASS_DepthMaps::ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ER
 
     // Create Array Texture For Depth Maps
     RegenerateDepthMapTextureArray2D(16, SystemUtils_->RendererSettings_->ShadowMapX_, SystemUtils_->RendererSettings_->ShadowMapY_);
-    RegenerateDepthMapTextureCubeMapArray(2);
+    RegenerateDepthMapTextureArrayCubemap(2);
 
 }
 
@@ -286,7 +286,7 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndexCubemap(ERS_STRUCT_Cubema
     // IF Not, Batch Allocate More
     SystemUtils_->Logger_->Log("Depth Cubemap Map Texture Array Full, Regenerating With More Textures", 5);
     int StartSize = DepthMapTexturesCubemapAlreadyAllocated_.size();
-    RegenerateDepthMapTextureArrayCubeMapArray(StartSize + DepthMapAllocationChunkSize_);
+    RegenerateDepthMapTextureArrayCubemap(StartSize + DepthMapAllocationChunkSize_);
     SystemUtils_->Logger_->Log(std::string("Finished Updating Cubemap Depth Map Array, Allocating Depth Map Texture Array Index: ") + std::to_string(StartSize + DepthMapAllocationChunkSize_), 5);
 
     DepthMapTexturesCubemapAlreadyAllocated_[StartSize + 1] = FBOs;
