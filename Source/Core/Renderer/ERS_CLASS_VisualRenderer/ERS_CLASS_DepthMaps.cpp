@@ -166,7 +166,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureCubeMapArray(int NumberOfText
         GL_DEPTH_COMPONENT24,     // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
         DepthTextureArrayWidth_,  // Cubemap Width
         DepthTextureArrayHeight_, // Cubemap Height
-        NumberOfTextures,         // Total Number Of Textures In The Array
+        NumberOfTextures * 6,         // Total Number Of Textures In The Array
         0,                        // Border, we're not using this
         GL_DEPTH_COMPONENT,       // Tells opengl what kind of data we're storing in this texture
         GL_FLOAT,                 // tells opengl how to store the data
