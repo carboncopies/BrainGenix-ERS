@@ -137,7 +137,7 @@ bool ERS_CLASS_DepthMaps::FreeDepthMapIndex(unsigned int Index) {
 
 }
 
-unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex(unsigned int FramebufferObjectID) {
+unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex2D(unsigned int FramebufferObjectID) {
 
     // If Enough Textures Exist, Find One
     SystemUtils_->Logger_->Log("Allocating Depth Map Texture Array Index", 5);
@@ -161,7 +161,7 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex(unsigned int Framebuffer
 
 }
 
-ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(int Number, bool LogEnable) {
+ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap2D(int Number, bool LogEnable) {
 
 
     SystemUtils_->Logger_->Log(std::string("Creating ") + std::to_string(Number) + std::string(" Depth Map(s) With Resolution Of ") + std::to_string(DepthTextureArrayWidth_) + std::string("x") + std::to_string(DepthTextureArrayHeight_), 5, LogEnable);

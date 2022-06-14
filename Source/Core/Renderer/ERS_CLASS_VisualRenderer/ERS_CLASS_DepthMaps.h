@@ -54,7 +54,7 @@ private:
      * 
      * @return unsigned int 
      */
-    unsigned int AllocateDepthMapIndex(unsigned int FramebufferObjectID);
+    unsigned int AllocateDepthMapIndex2D(unsigned int FramebufferObjectID);
 
     /**
      * @brief Deallocates an index from the depth map texture array.
@@ -62,7 +62,7 @@ private:
      * @return true 
      * @return false 
      */
-    bool FreeDepthMapIndex(unsigned int Index);
+    bool FreeDepthMapIndex2D(unsigned int Index);
 
     /**
      * @brief Checks the settings of the renderer against the current parameters.
