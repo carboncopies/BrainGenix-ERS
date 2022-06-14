@@ -395,23 +395,23 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
     }
 
-    // // Handle Point Lights
-    // for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
+    // Handle Point Lights
+    for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
 
-    //     // Extract Struct
-    //     ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
+        // Extract Struct
+        ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
 
-    //     // Check If Light Has DepthMap
-    //     if (!Light->DepthMap.Initialized) {
-    //         Light->DepthMap = GenerateDepthMap();   
-    //     }
+        // Check If Light Has DepthMap
+        if (!Light->DepthMap.Initialized) {
+            Light->DepthMap = GenerateDepthMap();   
+        }
 
-    //     // Render To Depth Map
-    //     glm::mat4* LightSpaceMatrix = new glm::mat4();
-    //     UpdateDepthMap(Light, DepthShader, LightSpaceMatrix); // set this to false later, debugging
-    //     Light->LightSpaceMatrix = *LightSpaceMatrix;
+        // Render To Depth Map
+        glm::mat4* LightSpaceMatrix = new glm::mat4();
+        UpdateDepthMap(Light, DepthShader, LightSpaceMatrix); // set this to false later, debugging
+        Light->LightSpaceMatrix = *LightSpaceMatrix;
 
-    // } 
+    } 
 
 
     // Return To Normal Culling
