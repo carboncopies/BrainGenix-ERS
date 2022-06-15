@@ -58,4 +58,8 @@ ShaderPrograms:
     Name: Viewport
     VertexID: 10040
     FragmentID: 10041
+  11:
+    Name: CubemapDepthShader
+    VertexID: 10044
+    FragmentID: 10045
 
