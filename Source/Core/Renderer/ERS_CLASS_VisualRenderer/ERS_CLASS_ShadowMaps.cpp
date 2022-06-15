@@ -24,10 +24,10 @@ ERS_CLASS_ShadowMaps::~ERS_CLASS_ShadowMaps() {
 }
 
 
-void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, ERS_STRUCT_Shader* CubemapDepthShader) {
+void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader) {
 
     // Update All Depth Maps
-    ERS_CLASS_DepthMaps_->UpdateDepthMaps(DepthMapShader, CubemapDepthShader);
+    ERS_CLASS_DepthMaps_->UpdateDepthMaps(DepthMapShader);
 
 
     // Provide Depth Map Textures
