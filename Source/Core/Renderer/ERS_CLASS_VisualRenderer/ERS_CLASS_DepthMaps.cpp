@@ -176,7 +176,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
     glTexStorage3D(GL_TEXTURE_CUBE_MAP_ARRAY,
         1,
         GL_DEPTH_COMPONENT24,
-        DepthTextureArrayWidth,
+        DepthTextureArrayWidth_,
         DepthTextureArrayHeight_,
         NumberOfTextures*6
     );
