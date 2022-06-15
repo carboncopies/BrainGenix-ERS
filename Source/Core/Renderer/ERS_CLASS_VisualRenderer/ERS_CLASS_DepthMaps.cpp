@@ -573,7 +573,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT
     glActiveTexture(GL_TEXTURE0);
     Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
 
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 }
 
