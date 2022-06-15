@@ -81,7 +81,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
     // Generate Shadows
     //DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("Preview Shader"), &Shaders_)].get();
-    ShadowMaps_->UpdateShadowMaps(DepthMapShader_);
+    ShadowMaps_->UpdateShadowMaps(DepthMapShader_, CubemapDepthShader_);
 
 
     // Setup Vars
