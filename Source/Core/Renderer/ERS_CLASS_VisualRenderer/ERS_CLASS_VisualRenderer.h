@@ -62,7 +62,6 @@ private:
     ERS_STRUCT_OpenGLDefaults* OpenGLDefaults_; /**<Pointer acquired from renderermanager*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils pointer, used to get info about scripts*/
     ERS_STRUCT_Shader* DepthMapShader_; /**<Depth Map Shader Pointer*/
-    ERS_STRUCT_Shader* CubemapDepthShader_; /**<Cubemap Depth Shader*/
     
     std::unique_ptr<ERS_CLASS_ShadowMaps> ShadowMaps_; /**<Instance of shadow mapping class used to provide system wide shadows*/
     std::unique_ptr<ERS_CLASS_MeshRenderer> MeshRenderer_; /**<Instance Of The Mesh Renderer Class Used To Hancle The Actual Rendering Of All Meshes In The Given Scene*/

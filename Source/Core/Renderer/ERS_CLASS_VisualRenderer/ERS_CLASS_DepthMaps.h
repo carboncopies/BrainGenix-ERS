@@ -161,7 +161,7 @@ public:
      * 
      * @param DepthShader 
      */
-    void UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader, ERS_STRUCT_Shader* CubemapDepthShader);
+    void UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader);
 
     /**
      * @brief This function creates a depth map from the perspective of the given position data.

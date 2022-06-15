@@ -556,7 +556,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT
 
 }
 
-void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader, ERS_STRUCT_Shader* CubemapDepthShader) {
+void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
 
     // Fix Offset (Peter Panning)
@@ -609,7 +609,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader, ERS_ST
         }
 
         // Render To Depth Map
-        UpdateDepthMap(Light, CubemapDepthShader);
+        UpdateDepthMap(Light, DepthShader);
 
 
     } 
