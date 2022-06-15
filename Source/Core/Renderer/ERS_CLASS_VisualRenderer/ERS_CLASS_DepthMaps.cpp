@@ -517,8 +517,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
         glActiveTexture(GL_TEXTURE0);
         Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
     }
-
-
 }
 
 void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT_Shader* DepthShader) {
