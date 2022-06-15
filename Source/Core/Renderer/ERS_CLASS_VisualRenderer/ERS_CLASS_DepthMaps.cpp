@@ -161,25 +161,19 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, DepthTextureCubemapArrayID_);
 
-    // glTexImage3D(GL_TEXTURE_CUBE_MAP_ARRAY,
-    //     1,                        // Current 'mipmap level', We're not using these so 0 is fine
-    //     GL_DEPTH_COMPONENT24,     // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
-    //     DepthTextureArrayWidth_,  // Cubemap Width
-    //     DepthTextureArrayHeight_, // Cubemap Height
-    //     NumberOfTextures * 6,         // Total Number Of Textures In The Array
-    //     0,                        // Border, we're not using this
-    //     GL_DEPTH_COMPONENT,       // Tells opengl what kind of data we're storing in this texture
-    //     GL_FLOAT,                 // tells opengl how to store the data
-    //     NULL                      // if we were loading an image in, we could then pass the data in here, but we're not so this is left as null
-    // );
-    
-    glTexStorage3D(GL_TEXTURE_CUBE_MAP_ARRAY,
-        1,
-        GL_DEPTH_COMPONENT24,
-        DepthTextureArrayWidth_,
-        DepthTextureArrayHeight_,
-        NumberOfTextures*6
+    glTexImage3D(GL_TEXTURE_CUBE_MAP_ARRAY,
+        0,                        // Current 'mipmap level', We're not using these so 0 is fine
+        GL_DEPTH_COMPONENT24,     // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
+        DepthTextureArrayWidth_,  // Cubemap Width
+        DepthTextureArrayHeight_, // Cubemap Height
+        NumberOfTextures * 6,     // Total Number Of Textures In The Array
+        0,                        // Border, we're not using this
+        GL_DEPTH_COMPONENT,       // Tells opengl what kind of data we're storing in this texture
+        GL_FLOAT,                 // tells opengl how to store the data
+        NULL                      // if we were loading an image in, we could then pass the data in here, but we're not so this is left as null
     );
+    
+
 
     for (unsigned int i = 0; i < 6; ++i)
         glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_DEPTH_COMPONENT, DepthTextureArrayWidth_, DepthTextureArrayHeight_, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
