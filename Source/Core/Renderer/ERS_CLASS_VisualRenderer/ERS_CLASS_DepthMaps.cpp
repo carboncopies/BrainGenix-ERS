@@ -516,11 +516,11 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     for (unsigned int i = 0; i < ShadowTransforms.size(); i++) {
 
         // Render With Depth Shader
-        //GLenum Face = GL_TEXTURE_CUBE_MAP_POSITIVE_X + i;
-        //glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, Face, depthCubemap, 0);
+        GLenum Face = GL_TEXTURE_CUBE_MAP_POSITIVE_X + i;
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, Face, DepthTextureCubemapArrayID_, 0);
         //glFramebufferTexture3D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, Face, DepthTextureCubemapArrayID_, 0, Light->DepthMap.DepthMapTextureIndex*6 + i);
         //glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, Light->DepthMap.DepthMapTextureIndex*6 + i);
-        glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, Light->DepthMap.DepthMapTextureIndex);
+        //glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, Light->DepthMap.DepthMapTextureIndex*6 + i);
 
         std::cout<<i<<" | "<<glGetError()<<std::endl;
         
