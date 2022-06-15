@@ -508,31 +508,15 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
     DepthShader->MakeActive();
 
-
-    std::cout<<"-------------------------------\n";
-
-
     for (unsigned int i = 0; i < ShadowTransforms.size(); i++) {
 
         // Render With Depth Shader
-
-        std::cout<<Light->DepthMap.DepthMapTextureIndex<<std::endl;
         glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, 0, Light->DepthMap.DepthMapTextureIndex*6 + i);
-
-        std::cout<<i<<" | "<<glGetError()<<std::endl;
-        
-
         DepthShader->SetMat4("LightSpaceMatrix", ShadowTransforms[i]);
-
         glClear(GL_DEPTH_BUFFER_BIT);
         glActiveTexture(GL_TEXTURE0);
         Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
-
-        //glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
     }
-
-    std::cout<<"-------------------------------\n";
 
 
 }
