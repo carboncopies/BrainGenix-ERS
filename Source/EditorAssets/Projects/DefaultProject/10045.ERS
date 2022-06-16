@@ -1,6 +1,16 @@
 #version 330 core
+in vec4 FragPos;
+
+uniform vec3 LightPos;
+uniform float FarPlane;
 
 void main()
-{             
-    // gl_FragDepth = gl_FragCoord.z;
-} 
+{
+    float LightDistance = length(FragPos.xyz - LightPos);
+    
+    // map to [0;1] range by dividing by far_plane
+    LightDistance = LightDistance / FarPlane;
+    
+    // write this as modified depth
+    gl_FragDepth = LightDistance;
+}
