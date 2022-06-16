@@ -65,7 +65,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
     // Set Depth Shader For Shadow System
     DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthMap"), &Shaders_)].get();
-    CubemapDepthShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("Preview Shader"), &Shaders_)].get();
+    CubemapDepthShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthCubeMap"), &Shaders_)].get();
 
     // Close Any Viewports That Aren't All Open
     int ViewportsToClose = -1;
