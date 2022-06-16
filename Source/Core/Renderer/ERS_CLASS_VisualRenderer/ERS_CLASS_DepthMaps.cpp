@@ -486,7 +486,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     // Setup Variables
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     float NearPlane, FarPlane;
-    NearPlane = 0.5f;
+    NearPlane = 0.1f;
     FarPlane = Light->MaxDistance;
 
     // Calculate Project, View, Space Matrices
