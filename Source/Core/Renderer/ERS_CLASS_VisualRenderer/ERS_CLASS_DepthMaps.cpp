@@ -515,6 +515,8 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
         // Render With Depth Shader
         glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, 0, Light->DepthMap.DepthMapTextureIndex*6 + i);
         DepthShader->SetMat4("LightSpaceMatrix", ShadowTransforms[i]);
+        DepthShader->SetVec3("LightPos", Light->Pos);
+        DepthShader->SetFloat("FarPlane", Light->MaxDistance);
         glClear(GL_DEPTH_BUFFER_BIT);
         glActiveTexture(GL_TEXTURE0);
         Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
