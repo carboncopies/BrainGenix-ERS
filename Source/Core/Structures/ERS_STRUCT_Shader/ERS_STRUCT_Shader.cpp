@@ -253,6 +253,16 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
         glDeleteShader(ComputeShader);
     }
 
+    if (HasTCShader) {
+        glDetachShader(ShaderProgram_, TCShader);
+        glDeleteShader(TCShader);
+    }
+
+    if (HasTEShader) {
+        glDetachShader(ShaderProgram_, TEShader);
+        glDeleteShader(TEShader);
+    }
+
 
     // Return Status
     return ErrorMessage;
