@@ -45,6 +45,8 @@ struct ERS_STRUCT_Shader {
 
     long VertexID; /**<Asset ID of vertex shader (optional, used for saving) */
     long FragmentID; /**<Asset ID of fragment shader (optional, used for saving) */
+    long GeometryID; /**<Asset ID of geometry shader (optional, used for saving) */
+    long ComputeID; /**<Asset ID of compute shader (optional, used for saving) */
 
 
     /**
