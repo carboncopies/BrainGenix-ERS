@@ -13,14 +13,20 @@ ERS_STRUCT_Shader::ERS_STRUCT_Shader() {
     FragmentShader = 0;
     GeometryShader = 0;
     ComputeShader = 0;
+    TCShader = 0;
+    TEShader = 0;
 
     HasGeometryShader = false;
     HasComputeShader = false;
+    HasTCShader = false;
+    HasTEShader = false;
 
     VertexID = -1;
     FragmentID = -1;
     GeometryID = -1;
     ComputeID = -1;
+    TessellationControlShaderID = -1;
+    TessellationEvaluationShaderID = -1;
 }
 
 ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
