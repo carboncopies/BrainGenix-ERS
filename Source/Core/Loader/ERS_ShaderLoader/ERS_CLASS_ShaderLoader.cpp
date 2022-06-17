@@ -74,6 +74,12 @@ void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct
         SystemUtils_->Logger_->Log("Finished Creating Geometry Shader Object", 4);
     }
 
+    if (ComputeID != -1) {
+        SystemUtils_->Logger_->Log("Creating Compute Shader", 3);
+        ShaderStruct->CompileFragmentShader(ComputeText.c_str(), SystemUtils_->Logger_.get());
+        SystemUtils_->Logger_->Log("Finished Creating Compute Shader Object", 4);
+    }
+
     // Attach Shaders
     SystemUtils_->Logger_->Log("Linking Shader Program", 5);
     
