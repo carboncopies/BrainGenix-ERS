@@ -85,6 +85,31 @@ std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, E
 std::string ERS_STRUCT_Shader::CompileGeometryShader(const char* GeometryText, ERS_CLASS_LoggingSystem* Logger) {
 
     // Compile The Fragment Shader Text Into A Binary
+    FragmentShader = glCreateShader(GL_GEOMETRY_SHADER);
+
+    glShaderSource(GeometryShader, 1, &GeometryText, NULL);
+    glCompileShader(GeometryShader);
+
+    // Report Compilation Status
+    int FragmentSuccess;
+    char FragmentInfoLog[65535];
+    std::string ErrorMessage;
+    glGetShaderiv(GeometryShader, GL_COMPILE_STATUS, &FragmentSuccess);
+    if (!FragmentSuccess) {
+        glGetShaderInfoLog(GeometryShader, 65535, NULL, FragmentInfoLog);
+        ErrorMessage = std::string(FragmentInfoLog);
+        if (Logger != nullptr) {
+            Logger->Log("Fragment Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
+        }
+    }
+
+    return ErrorMessage;
+
+}
+
+std::string ERS_STRUCT_Shader::CompileComputeShader(const char* ComputeText, ERS_CLASS_LoggingSystem* Logger) {
+
+    // Compile The Fragment Shader Text Into A Binary
     FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
     glShaderSource(FragmentShader, 1, &FragmentText, NULL);
@@ -106,7 +131,6 @@ std::string ERS_STRUCT_Shader::CompileGeometryShader(const char* GeometryText, E
     return ErrorMessage;
 
 }
-
 
 
 std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logger) {
