@@ -141,6 +141,9 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
     // Attach Shaders To Program
     glAttachShader(ShaderProgram_, VertexShader);
     glAttachShader(ShaderProgram_, FragmentShader);
+    glAttachShader(ShaderProgram_, GeometryShader);
+    glAttachShader(ShaderProgram_, ComputeShader);
+    
 
     // Link Program
     glLinkProgram(ShaderProgram_);
