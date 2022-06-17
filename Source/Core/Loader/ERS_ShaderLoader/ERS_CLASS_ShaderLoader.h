@@ -53,7 +53,7 @@ public:
      * @param FragmentText 
      * @return ERS_STRUCT_Shader 
      */
-   void CreateShaderObject(ERS_STRUCT_Shader* ShaderStruct, std::string VertexText, std::string FragmentText, std::string GeometryText = NULL, std::string ComputeText = NULL, std::string TCText = NULL, std::string TEText = NULL, bool LogBuild = true);
+   void CreateShaderObject(ERS_STRUCT_Shader* ShaderStruct, std::string VertexText, std::string FragmentText, std::string GeometryText, std::string ComputeText, std::string TCText, std::string TEText, bool LogBuild = true);
 
 
     /**
