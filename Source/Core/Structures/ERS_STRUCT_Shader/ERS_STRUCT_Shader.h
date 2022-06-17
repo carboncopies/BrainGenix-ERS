@@ -34,7 +34,10 @@ struct ERS_STRUCT_Shader {
     unsigned int ShaderProgram_; /**<OpenGL refernece ID for Shader Program */
     unsigned int VertexShader; /**<OpenGL Reference ID for Vertex Shader */
     unsigned int FragmentShader; /**<OpenGL Reference ID For Fragment Shader */
+
+    bool HasGeometryShader; /**<Indicate if the shader uses geometry shaders or not*/
     unsigned int GeometryShader; /*<<OpenGL ID For Geometry Shader (NOTE: Optional)*/
+    bool HasComputeShader; /**<Indicate if the shader uses compute shaders or not*/
     unsigned int ComputeShader; /**<OpenGL ID For Compute Shader (NOTE: Optional)*/
 
     std::string DisplayName = "Undefined"; /**<Name of shader to be shown to the user*/
