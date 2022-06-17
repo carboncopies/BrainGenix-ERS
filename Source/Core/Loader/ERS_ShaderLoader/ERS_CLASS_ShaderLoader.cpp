@@ -50,7 +50,7 @@ void ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const ch
 
 }
 
-void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader*, long VertexID, long FragmentID, long GeometryID, long ComputeID, ShaderStruct, std::string ShaderName) {
+void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct, long VertexID, long FragmentID, long GeometryID, long ComputeID, std::string ShaderName) {
 
     // Load Shaders From Disk Into RAM
     SystemUtils_->Logger_->Log(std::string("Loading Shaders From Asset IDs ")
