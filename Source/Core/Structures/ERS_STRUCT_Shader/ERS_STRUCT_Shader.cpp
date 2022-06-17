@@ -31,7 +31,6 @@ ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
 
 }
 
-
 void ERS_STRUCT_Shader::ResetProgram() {
 
     glDeleteProgram(ShaderProgram_);
@@ -139,7 +138,6 @@ std::string ERS_STRUCT_Shader::CompileComputeShader(const char* ComputeText, ERS
 
 }
 
-
 std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logger) {
 
     // Create Shader Program
@@ -203,7 +201,6 @@ bool ERS_STRUCT_Shader::MakeActive() {
     return true;
 
 }
-
 
 // Population Functions
 // ------------------------------------------------------------------------
