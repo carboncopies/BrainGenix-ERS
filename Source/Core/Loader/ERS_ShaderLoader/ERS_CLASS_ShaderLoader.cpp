@@ -18,9 +18,48 @@ ERS_CLASS_ShaderLoader::~ERS_CLASS_ShaderLoader() {
 
 }
 
-void ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText, ERS_STRUCT_Shader* ShaderStruct, bool LogBuild) {
+void ERS_CLASS_ShaderLoader::CreateShaderObject(ERS_STRUCT_Shader* ShaderStruct, const char* VertexText, const char* FragmentText, const char* GeometryText = NULL, const char* ComputeText = NULL, const char* TCText = NULL, const char* TEText = NULL, bool LogBuild) {
+
+    SystemUtils_->Logger_->Log("Creating Shader Object", 5);
 
 
+    SystemUtils_->Logger_->Log("Creating Vertex Shader Object", 3);
+    ShaderStruct->CompileVertexShader(VertexText, SystemUtils_->Logger_.get());
+    SystemUtils_->Logger_->Log("Finished Creating Vertex Shader", 4);
+
+    SystemUtils_->Logger_->Log("Creating Fragment Shader", 3);
+    ShaderStruct->CompileFragmentShader(FragmentText, SystemUtils_->Logger_.get());
+    SystemUtils_->Logger_->Log("Finished Creating Fragment Shader Object", 4);
+
+    if (GeometryText != nullptr) {
+        SystemUtils_->Logger_->Log("Creating Geometry Shader", 3);
+        ShaderStruct->CompileFragmentShader(GeometryText, SystemUtils_->Logger_.get());
+        SystemUtils_->Logger_->Log("Finished Creating Geometry Shader Object", 4);
+    }
+
+    if (ComputeText != nullptr) {
+        SystemUtils_->Logger_->Log("Creating Compute Shader", 3);
+        ShaderStruct->CompileFragmentShader(ComputeText, SystemUtils_->Logger_.get());
+        SystemUtils_->Logger_->Log("Finished Creating Compute Shader Object", 4);
+    }
+
+    if (TCText != nullptr) {
+        SystemUtils_->Logger_->Log("Creating Tessellation Control Shader", 3);
+        ShaderStruct->CompileFragmentShader(TCText, SystemUtils_->Logger_.get());
+        SystemUtils_->Logger_->Log("Finished Creating Tessellation Control Shader Object", 4);
+    }
+
+    if (TEText != nullptr) {
+        SystemUtils_->Logger_->Log("Creating Tessellation Evaluation Shader", 3);
+        ShaderStruct->CompileFragmentShader(TEText, SystemUtils_->Logger_.get());
+        SystemUtils_->Logger_->Log("Finished Creating Tessellation Evaluation Shader Object", 4);
+    }
+
+    // Attach Shaders
+    SystemUtils_->Logger_->Log("Linking Shader Program", 5);
+    
+    ShaderStruct->CreateShaderProgram(SystemUtils_->Logger_.get());
+    SystemUtils_->Logger_->Log("Linked Shader Program", 4);
 
 }
 
@@ -71,46 +110,7 @@ void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct
     std::string TEText = std::string((const char*)TEData->Data.get());
 
     // Return Compiled Shader
-    SystemUtils_->Logger_->Log("Creating Shader Object", 5);
-
-
-    SystemUtils_->Logger_->Log("Creating Vertex Shader Object", 3);
-    ShaderStruct->CompileVertexShader(VertexText.c_str(), SystemUtils_->Logger_.get());
-    SystemUtils_->Logger_->Log("Finished Creating Vertex Shader", 4);
-
-    SystemUtils_->Logger_->Log("Creating Fragment Shader", 3);
-    ShaderStruct->CompileFragmentShader(FragmentText.c_str(), SystemUtils_->Logger_.get());
-    SystemUtils_->Logger_->Log("Finished Creating Fragment Shader Object", 4);
-
-    if (GeometryID != -1) {
-        SystemUtils_->Logger_->Log("Creating Geometry Shader", 3);
-        ShaderStruct->CompileFragmentShader(GeometryText.c_str(), SystemUtils_->Logger_.get());
-        SystemUtils_->Logger_->Log("Finished Creating Geometry Shader Object", 4);
-    }
-
-    if (ComputeID != -1) {
-        SystemUtils_->Logger_->Log("Creating Compute Shader", 3);
-        ShaderStruct->CompileFragmentShader(ComputeText.c_str(), SystemUtils_->Logger_.get());
-        SystemUtils_->Logger_->Log("Finished Creating Compute Shader Object", 4);
-    }
-
-    if (TCID != -1) {
-        SystemUtils_->Logger_->Log("Creating Tessellation Control Shader", 3);
-        ShaderStruct->CompileFragmentShader(TCText.c_str(), SystemUtils_->Logger_.get());
-        SystemUtils_->Logger_->Log("Finished Creating Tessellation Control Shader Object", 4);
-    }
-
-    if (TEID != -1) {
-        SystemUtils_->Logger_->Log("Creating Tessellation Evaluation Shader", 3);
-        ShaderStruct->CompileFragmentShader(TEText.c_str(), SystemUtils_->Logger_.get());
-        SystemUtils_->Logger_->Log("Finished Creating Tessellation Evaluation Shader Object", 4);
-    }
-
-    // Attach Shaders
-    SystemUtils_->Logger_->Log("Linking Shader Program", 5);
     
-    ShaderStruct->CreateShaderProgram(SystemUtils_->Logger_.get());
-    SystemUtils_->Logger_->Log("Linked Shader Program", 4);
 
 
 
