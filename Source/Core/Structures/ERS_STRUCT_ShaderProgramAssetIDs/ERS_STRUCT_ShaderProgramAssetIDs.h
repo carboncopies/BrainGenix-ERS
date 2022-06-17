@@ -28,5 +28,8 @@ struct ERS_STRUCT_ShaderProgramAssetIDs {
     // Shader Asset IDs
     long VertexID; /**<Vertex Shader Asset ID*/
     long FragmentID; /**<Fragment Shader Asset ID*/
-
+    long GeometryID; /**<Shader Asset ID*/
+    long ComputeID; /**<Shader Asset ID*/
+    long TCID; /**<Shader Asset ID*/
+    long TEID; /**<Shader Asset ID*/
 };
