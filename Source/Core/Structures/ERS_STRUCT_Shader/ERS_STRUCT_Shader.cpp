@@ -179,12 +179,15 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
     glDetachShader(ShaderProgram_, FragmentShader);
     glDeleteShader(FragmentShader);
 
-    glDetachShader(ShaderProgram_, GeometryShader);
-    glDeleteShader(GeometryShader);
+    if (HasGeometryShader) {
+        glDetachShader(ShaderProgram_, GeometryShader);
+        glDeleteShader(GeometryShader);
+    }
 
-    glDetachShader(ShaderProgram_, ComputeShader);
-    glDeleteShader(ComputeShader);
-
+    if (HasComputeShader) {
+        glDetachShader(ShaderProgram_, ComputeShader);
+        glDeleteShader(ComputeShader);
+    }
 
 
     // Return Status
