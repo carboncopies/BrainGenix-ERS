@@ -194,8 +194,6 @@ std::string ERS_STRUCT_Shader::CompileTEShader(const char* TEText, ERS_CLASS_Log
 
 }
 
-
-
 std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logger) {
 
     // Create Shader Program
