@@ -112,7 +112,7 @@ std::string ERS_STRUCT_Shader::CompileComputeShader(const char* ComputeText, ERS
     // Compile The Fragment Shader Text Into A Binary
     ComputeShader = glCreateShader(GL_FRAGMENT_SHADER);
 
-    glShaderSource(ComputeShader, 1, &ComputeShader, NULL);
+    glShaderSource(ComputeShader, 1, &ComputeText, NULL);
     glCompileShader(ComputeShader);
 
     // Report Compilation Status
