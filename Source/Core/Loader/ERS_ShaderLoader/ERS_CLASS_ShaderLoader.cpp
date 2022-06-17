@@ -37,19 +37,19 @@ void ERS_CLASS_ShaderLoader::CreateShaderObject(ERS_STRUCT_Shader* ShaderStruct,
         SystemUtils_->Logger_->Log("Finished Creating Geometry Shader Object", 4);
     }
 
-    if (ComputeText != nullptr) {
+    if (ComputeText != "") {
         SystemUtils_->Logger_->Log("Creating Compute Shader", 3);
         ShaderStruct->CompileFragmentShader(ComputeText.c_str(), SystemUtils_->Logger_.get());
         SystemUtils_->Logger_->Log("Finished Creating Compute Shader Object", 4);
     }
 
-    if (TCText != nullptr) {
+    if (TCText != "") {
         SystemUtils_->Logger_->Log("Creating Tessellation Control Shader", 3);
         ShaderStruct->CompileFragmentShader(TCText.c_str(), SystemUtils_->Logger_.get());
         SystemUtils_->Logger_->Log("Finished Creating Tessellation Control Shader Object", 4);
     }
 
-    if (TEText != nullptr) {
+    if (TEText != "") {
         SystemUtils_->Logger_->Log("Creating Tessellation Evaluation Shader", 3);
         ShaderStruct->CompileFragmentShader(TEText.c_str(), SystemUtils_->Logger_.get());
         SystemUtils_->Logger_->Log("Finished Creating Tessellation Evaluation Shader Object", 4);
