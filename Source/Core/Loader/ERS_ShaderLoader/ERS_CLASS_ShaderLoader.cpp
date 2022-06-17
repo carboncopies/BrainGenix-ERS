@@ -20,32 +20,6 @@ ERS_CLASS_ShaderLoader::~ERS_CLASS_ShaderLoader() {
 
 void ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const char* FragmentText, ERS_STRUCT_Shader* ShaderStruct, bool LogBuild) {
 
-    if (LogBuild) {
-        SystemUtils_->Logger_->Log("Creating Shader Object", 5);
-    }
-
-
-    if (LogBuild) {
-        SystemUtils_->Logger_->Log("Creating Vertex Shader Object", 3);
-    }
-    ShaderStruct->CompileVertexShader(VertexText, SystemUtils_->Logger_.get());
-    if (LogBuild) {
-        SystemUtils_->Logger_->Log("Finished Creating Vertex Shader", 4);
-        SystemUtils_->Logger_->Log("Creating Fragment Shader", 3);
-    }
-    ShaderStruct->CompileFragmentShader(FragmentText, SystemUtils_->Logger_.get());
-    if (LogBuild) {
-        SystemUtils_->Logger_->Log("Finished Creating Fragment Shader Object", 4);
-    }
-
-    // Attach Shaders
-    if (LogBuild) {
-        SystemUtils_->Logger_->Log("Linking Shader Program", 5);
-    }
-    ShaderStruct->CreateShaderProgram(SystemUtils_->Logger_.get());
-    if (LogBuild) {
-        SystemUtils_->Logger_->Log("Linked Shader Program", 4);
-    }
 
 
 }
@@ -79,10 +53,35 @@ void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct
 
     std::string VertexText = std::string((const char*)VertexData->Data.get());
     std::string FragmentText = std::string((const char*)FragmentData->Data.get());
-
-
+    std::string GeometryText = std::string((const char*)GeometryData->Data.get());
+    std::string ComputeText = std::string((const char*)ComputeData->Data.get());
 
     // Return Compiled Shader
+    SystemUtils_->Logger_->Log("Creating Shader Object", 5);
+
+
+    SystemUtils_->Logger_->Log("Creating Vertex Shader Object", 3);
+    ShaderStruct->CompileVertexShader(VertexText.c_str(), SystemUtils_->Logger_.get());
+    SystemUtils_->Logger_->Log("Finished Creating Vertex Shader", 4);
+
+    SystemUtils_->Logger_->Log("Creating Fragment Shader", 3);
+    ShaderStruct->CompileFragmentShader(FragmentText.c_str(), SystemUtils_->Logger_.get());
+    SystemUtils_->Logger_->Log("Finished Creating Fragment Shader Object", 4);
+
+    if (GeometryID != -1) {
+        SystemUtils_->Logger_->Log("Creating Geometry Shader", 3);
+        ShaderStruct->CompileFragmentShader(GeometryText.c_str(), SystemUtils_->Logger_.get());
+        SystemUtils_->Logger_->Log("Finished Creating Geometry Shader Object", 4);
+    }
+
+    // Attach Shaders
+    SystemUtils_->Logger_->Log("Linking Shader Program", 5);
+    
+    ShaderStruct->CreateShaderProgram(SystemUtils_->Logger_.get());
+    SystemUtils_->Logger_->Log("Linked Shader Program", 4);
+
+
+
     CreateShaderObject(VertexText.c_str(), FragmentText.c_str(), ShaderStruct);
     ShaderStruct->VertexID = VertexID;
     ShaderStruct->FragmentID = FragmentID;
