@@ -77,6 +77,14 @@ struct ERS_STRUCT_Shader {
      */
     std::string CompileGeometryShader(const char* GeometryText, ERS_CLASS_LoggingSystem* Logger = nullptr);
 
+    /**
+     * @brief Function To Compile Compute Shader With Given Code (const char*)
+     * 
+     * @param ComputeText 
+     */
+    std::string CompileFragmentShader(const char* ComputeText, ERS_CLASS_LoggingSystem* Logger = nullptr);
+
+
 
     /**
      * @brief Create a Shader Program object from Fragment and Vertex Shaders.
