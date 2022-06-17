@@ -211,6 +211,14 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
         glAttachShader(ShaderProgram_, ComputeShader);
     }
 
+    if (HasTCShader) {
+        glAttachShader(ShaderProgram_, TCShader);
+    }
+
+    if (HasTEShader) {
+        glAttachShader(ShaderProgram_, TEShader);
+    }
+
     // Link Program
     glLinkProgram(ShaderProgram_);
 
