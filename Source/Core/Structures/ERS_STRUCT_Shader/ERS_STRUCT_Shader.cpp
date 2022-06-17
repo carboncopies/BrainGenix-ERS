@@ -11,6 +11,11 @@ ERS_STRUCT_Shader::ERS_STRUCT_Shader() {
     ShaderProgram_ = 0;
     VertexShader = 0;
     FragmentShader = 0;
+    GeometryShader = 0;
+    ComputeShader = 0;
+
+    HasGeometryShader = false;
+    HasComputeShader = false;
 
     VertexID = 0;
     FragmentID = 0;
