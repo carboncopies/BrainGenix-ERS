@@ -24,14 +24,16 @@ void ERS_CLASS_ShaderLoader::CreateShaderObject(const char* VertexText, const ch
 
 }
 
-void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct, long VertexID, long FragmentID, long GeometryID, long ComputeID, std::string ShaderName) {
+void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct, long VertexID, long FragmentID, long GeometryID, long ComputeID, long TCID, long TEID, std::string ShaderName) {
 
     // Load Shaders From Disk Into RAM
     SystemUtils_->Logger_->Log(std::string("Loading Shaders From Asset IDs ")
      + std::to_string(VertexID) + std::string(", ")
      + std::to_string(FragmentID) + std::string(", ")
      + std::to_string(GeometryID) + std::string(", ")
-     + std::to_string(ComputeID)
+     + std::to_string(ComputeID) + std::string(", ")
+     + std::to_string(TCID) + std::string(", ")
+     + std::to_string(TEID)
      , 5);
 
     std::unique_ptr<ERS_STRUCT_IOData> VertexData = std::make_unique<ERS_STRUCT_IOData>();
