@@ -18,7 +18,7 @@ ERS_CLASS_ShaderLoader::~ERS_CLASS_ShaderLoader() {
 
 }
 
-void ERS_CLASS_ShaderLoader::CreateShaderObject(ERS_STRUCT_Shader* ShaderStruct, std::string VertexText, std::string FragmentText, std::string GeometryText = NULL, std::string ComputeText = NULL, std::string TCText = NULL, std::string TEText = NULL, bool LogBuild) {
+void ERS_CLASS_ShaderLoader::CreateShaderObject(ERS_STRUCT_Shader* ShaderStruct, std::string VertexText, std::string FragmentText, std::string GeometryText, std::string ComputeText, std::string TCText, std::string TEText, bool LogBuild) {
 
     SystemUtils_->Logger_->Log("Creating Shader Object", 5);
 
