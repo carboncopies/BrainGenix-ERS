@@ -43,7 +43,7 @@ struct ERS_STRUCT_Shader {
     unsigned int TCShader; /**<OpenGL ID For TC Shader (NOTE: Optional)*/
     bool HasTEShader; /**<Indicate if the shader uses TE shaders or not*/
     unsigned int TEShader; /**<OpenGL ID For TE Shader (NOTE: Optional)*/
-    
+
     
 
     std::string DisplayName = "Undefined"; /**<Name of shader to be shown to the user*/
@@ -97,6 +97,19 @@ struct ERS_STRUCT_Shader {
      */
     std::string CompileComputeShader(const char* ComputeText, ERS_CLASS_LoggingSystem* Logger = nullptr);
 
+    /**
+     * @brief Function To Compile Compute Shader With Given Code (const char*)
+     * 
+     * @param ComputeText 
+     */
+    std::string CompileTCShader(const char* TCText, ERS_CLASS_LoggingSystem* Logger = nullptr);
+
+    /**
+     * @brief Function To Compile Compute Shader With Given Code (const char*)
+     * 
+     * @param ComputeText 
+     */
+    std::string CompileTEShader(const char* TEText, ERS_CLASS_LoggingSystem* Logger = nullptr);
 
 
     /**
