@@ -17,8 +17,10 @@ ERS_STRUCT_Shader::ERS_STRUCT_Shader() {
     HasGeometryShader = false;
     HasComputeShader = false;
 
-    VertexID = 0;
-    FragmentID = 0;
+    VertexID = -1;
+    FragmentID = -1;
+    GeometryID = -1;
+    ComputeID = -1;
 }
 
 ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
