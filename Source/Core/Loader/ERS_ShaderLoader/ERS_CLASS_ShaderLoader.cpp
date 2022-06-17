@@ -40,6 +40,8 @@ void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct
     std::unique_ptr<ERS_STRUCT_IOData> FragmentData = std::make_unique<ERS_STRUCT_IOData>();
     std::unique_ptr<ERS_STRUCT_IOData> GeometryData = std::make_unique<ERS_STRUCT_IOData>();
     std::unique_ptr<ERS_STRUCT_IOData> ComputeData = std::make_unique<ERS_STRUCT_IOData>();
+    std::unique_ptr<ERS_STRUCT_IOData> TCData = std::make_unique<ERS_STRUCT_IOData>();
+    std::unique_ptr<ERS_STRUCT_IOData> TEData = std::make_unique<ERS_STRUCT_IOData>();
     
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(VertexID, VertexData.get());
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(FragmentID, FragmentData.get());
@@ -52,11 +54,21 @@ void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct
         SystemUtils_->ERS_IOSubsystem_->ReadAsset(ComputeID, ComputeData.get());
     }
 
+    if (TCID != -1) {
+        SystemUtils_->ERS_IOSubsystem_->ReadAsset(TCID, TCData.get());
+    }
+
+    if (TEID != -1) {
+        SystemUtils_->ERS_IOSubsystem_->ReadAsset(TEID, TEData.get());
+    }
+
 
     std::string VertexText = std::string((const char*)VertexData->Data.get());
     std::string FragmentText = std::string((const char*)FragmentData->Data.get());
     std::string GeometryText = std::string((const char*)GeometryData->Data.get());
     std::string ComputeText = std::string((const char*)ComputeData->Data.get());
+    std::string TCText = std::string((const char*)TCData->Data.get());
+    std::string TEText = std::string((const char*)TEData->Data.get());
 
     // Return Compiled Shader
     SystemUtils_->Logger_->Log("Creating Shader Object", 5);
