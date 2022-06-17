@@ -82,7 +82,7 @@ struct ERS_STRUCT_Shader {
      * 
      * @param ComputeText 
      */
-    std::string CompileFragmentShader(const char* ComputeText, ERS_CLASS_LoggingSystem* Logger = nullptr);
+    std::string CompileComputeShader(const char* ComputeText, ERS_CLASS_LoggingSystem* Logger = nullptr);
 
 
 
