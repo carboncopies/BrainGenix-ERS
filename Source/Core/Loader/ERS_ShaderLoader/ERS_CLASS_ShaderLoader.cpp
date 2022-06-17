@@ -94,6 +94,18 @@ void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct
         SystemUtils_->Logger_->Log("Finished Creating Compute Shader Object", 4);
     }
 
+    if (TCID != -1) {
+        SystemUtils_->Logger_->Log("Creating Tessellation Control Shader", 3);
+        ShaderStruct->CompileFragmentShader(TCText.c_str(), SystemUtils_->Logger_.get());
+        SystemUtils_->Logger_->Log("Finished Creating Tessellation Control Shader Object", 4);
+    }
+
+    if (TEID != -1) {
+        SystemUtils_->Logger_->Log("Creating Tessellation Evaluation Shader", 3);
+        ShaderStruct->CompileFragmentShader(TEText.c_str(), SystemUtils_->Logger_.get());
+        SystemUtils_->Logger_->Log("Finished Creating Tessellation Evaluation Shader Object", 4);
+    }
+
     // Attach Shaders
     SystemUtils_->Logger_->Log("Linking Shader Program", 5);
     
@@ -105,6 +117,10 @@ void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct
     CreateShaderObject(VertexText.c_str(), FragmentText.c_str(), ShaderStruct);
     ShaderStruct->VertexID = VertexID;
     ShaderStruct->FragmentID = FragmentID;
+    ShaderStruct->GeometryID = GeometryID;
+    ShaderStruct->ComputeID = ComputeID;
+    ShaderStruct->TessellationControlShaderID = TCID;
+    ShaderStruct->TessellationEvaluationShaderID = TEID;
     ShaderStruct->DisplayName = ShaderName;
     ShaderStruct->InternalName = ShaderName;
 
