@@ -40,8 +40,13 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
 
         long VertexShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].VertexID;
         long FragmentShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].FragmentID;
+        long GeometryShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].GeometryID;
+        long ComputeShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].ComputeID;
+        long TCShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].TCID;
+        long TEShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].TEID;
+        
         std::string ShaderName = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].Name;
-        ShaderLoader_->LoadShaderFromAsset(VertexShaderID, FragmentShaderID, Shader, ShaderName);
+        ShaderLoader_->LoadShaderFromAsset(Shader, VertexShaderID, FragmentShaderID, GeometryShaderID, ComputeShaderID, TCShaderID, TEShaderID, ShaderName);
 
     }
     int DefaultShader = ProjectUtils_->ProjectManager_->Project_.DefaultShaderProgram;
