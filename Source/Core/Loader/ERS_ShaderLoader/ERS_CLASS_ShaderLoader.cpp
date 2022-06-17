@@ -110,7 +110,7 @@ void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct
     std::string TEText = std::string((const char*)TEData->Data.get());
 
     // Return Compiled Shader
-    CreateShaderObject(VertexText, FragmentText, GeometryText, ComputeText, TCText, TEText, ShaderStruct);
+    CreateShaderObject(ShaderStruct, VertexText, FragmentText, GeometryText, ComputeText, TCText, TEText);
     ShaderStruct->VertexID = VertexID;
     ShaderStruct->FragmentID = FragmentID;
     ShaderStruct->GeometryID = GeometryID;
