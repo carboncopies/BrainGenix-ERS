@@ -187,6 +187,24 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
     SystemUtils_->Logger_->Log("Cubemap Depth Map Texture Array Initialization Complete", 4, LogEnabled);
 
 
+
+
+
+    std::cout<<"----------------------------------\n";
+    std::cout<<glGetError()<<std::endl;
+
+    glGenFramebuffers(1, &CubemapFBO_);
+    glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
+    glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, CubemapFBO_, 0);
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
+
+    //glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, 0, Light->DepthMap.DepthMapTextureIndex*6);
+    glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0);
+
+
+    std::cout<<glGetError()<<std::endl;
+
     // // Update Allocation Array
     // SystemUtils_->Logger_->Log("Checking Cubemap Depth Map Texture Array Allocation Array", 3, LogEnabled);
     // unsigned long SizeOfAllocationArray = DepthMapTexturesCubemapAlreadyAllocated_.size();
@@ -513,14 +531,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
 
     // Render With Depth Shader
 
-    std::cout<<"----------------------------------\n";
-    std::cout<<glGetError()<<std::endl;
 
-    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, 0, Light->DepthMap.DepthMapTextureIndex*6);
-    //glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0);
-
-
-    std::cout<<glGetError()<<std::endl;
 
 
 

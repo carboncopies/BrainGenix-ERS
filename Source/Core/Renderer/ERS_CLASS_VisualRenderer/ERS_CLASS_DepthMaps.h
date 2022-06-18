@@ -103,6 +103,8 @@ public:
     std::vector<long> DepthMapTexturesCubemapAlreadyAllocated_; /**<Used to check if a given cubemap index is in use, and to indiciate it's framebuffer objects, so they can be rebound on resize*/
     
 
+    unsigned int CubemapFBO_;
+
     // !!FIXME!!
     // Replace above vector with instead pointers to struct list so we can keep track and automatically free, etc.
 
