@@ -111,7 +111,7 @@ std::string ERS_STRUCT_Shader::CompileGeometryShader(const char* GeometryText, E
         glGetShaderInfoLog(GeometryShader, 65535, NULL, FragmentInfoLog);
         ErrorMessage = std::string(FragmentInfoLog);
         if (Logger != nullptr) {
-            Logger->Log("Fragment Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
+            Logger->Log("Geometry Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
         }
     }
 
@@ -136,7 +136,7 @@ std::string ERS_STRUCT_Shader::CompileComputeShader(const char* ComputeText, ERS
         glGetShaderInfoLog(ComputeShader, 65535, NULL, FragmentInfoLog);
         ErrorMessage = std::string(FragmentInfoLog);
         if (Logger != nullptr) {
-            Logger->Log("Fragment Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
+            Logger->Log("Compute Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
         }
     }
 
@@ -161,7 +161,7 @@ std::string ERS_STRUCT_Shader::CompileTCShader(const char* TCText, ERS_CLASS_Log
         glGetShaderInfoLog(TCShader, 65535, NULL, FragmentInfoLog);
         ErrorMessage = std::string(FragmentInfoLog);
         if (Logger != nullptr) {
-            Logger->Log("Fragment Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
+            Logger->Log("Tess Control Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
         }
     }
 
@@ -186,7 +186,7 @@ std::string ERS_STRUCT_Shader::CompileTEShader(const char* TEText, ERS_CLASS_Log
         glGetShaderInfoLog(TEShader, 65535, NULL, FragmentInfoLog);
         ErrorMessage = std::string(FragmentInfoLog);
         if (Logger != nullptr) {
-            Logger->Log("Fragment Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
+            Logger->Log("Tess Eval Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
         }
     }
 
