@@ -33,25 +33,25 @@ void ERS_CLASS_ShaderLoader::CreateShaderObject(ERS_STRUCT_Shader* ShaderStruct,
 
     if (GeometryText != "") {
         SystemUtils_->Logger_->Log("Creating Geometry Shader", 3, LogBuild);
-        ShaderStruct->CompileFragmentShader(GeometryText.c_str(), SystemUtils_->Logger_.get());
+        ShaderStruct->CompileGeometryShader(GeometryText.c_str(), SystemUtils_->Logger_.get());
         SystemUtils_->Logger_->Log("Finished Creating Geometry Shader Object", 4, LogBuild);
     }
 
     if (ComputeText != "") {
         SystemUtils_->Logger_->Log("Creating Compute Shader", 3, LogBuild);
-        ShaderStruct->CompileFragmentShader(ComputeText.c_str(), SystemUtils_->Logger_.get());
+        ShaderStruct->CompileComputeShader(ComputeText.c_str(), SystemUtils_->Logger_.get());
         SystemUtils_->Logger_->Log("Finished Creating Compute Shader Object", 4, LogBuild);
     }
 
     if (TCText != "") {
         SystemUtils_->Logger_->Log("Creating Tessellation Control Shader", 3, LogBuild);
-        ShaderStruct->CompileFragmentShader(TCText.c_str(), SystemUtils_->Logger_.get());
+        ShaderStruct->CompileTCShader(TCText.c_str(), SystemUtils_->Logger_.get());
         SystemUtils_->Logger_->Log("Finished Creating Tessellation Control Shader Object", 4, LogBuild);
     }
 
     if (TEText != "") {
         SystemUtils_->Logger_->Log("Creating Tessellation Evaluation Shader", 3, LogBuild);
-        ShaderStruct->CompileFragmentShader(TEText.c_str(), SystemUtils_->Logger_.get());
+        ShaderStruct->CompileTEShader(TEText.c_str(), SystemUtils_->Logger_.get());
         SystemUtils_->Logger_->Log("Finished Creating Tessellation Evaluation Shader Object", 4, LogBuild);
     }
 
