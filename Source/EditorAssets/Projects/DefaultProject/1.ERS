@@ -30,6 +30,7 @@ ShaderPrograms:
     Name: _DepthCubeMap
     VertexID: 10044
     FragmentID: 10045
+    GeometryID: 10046
   4:
     Name: Ambient Occlusion Texture Map
     VertexID: 10004
