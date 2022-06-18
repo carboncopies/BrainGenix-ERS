@@ -539,6 +539,8 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
         DepthShader->SetMat4(std::string("shadowMatricies[") + std::to_string(i) + std::string("]"), ShadowTransforms[i]);
     }
 
+    // These uniforms don't seem to do anything in the geometry shader - perhaps there's something special we need to do? Or perhaps there's something special about sampling to a framebuffer? Not sure what's going on but try setting the gl_FraPos in the vert shader manually to figure out what's going on so that we can get this problem resolved.
+
     DepthShader->SetVec3("LightPos", Light->Pos);
     DepthShader->SetFloat("FarPlane", Light->MaxDistance);
     glClear(GL_DEPTH_BUFFER_BIT);
