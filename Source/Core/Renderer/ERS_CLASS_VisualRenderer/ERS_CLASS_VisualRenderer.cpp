@@ -657,7 +657,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     //const int PointLightLimit = 64;
     //const int SpotLightLimit = 32;
 
-Light
+
     ERS_STRUCT_Scene* ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
 
 
