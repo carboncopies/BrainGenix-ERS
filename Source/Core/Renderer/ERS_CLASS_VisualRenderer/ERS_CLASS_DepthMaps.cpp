@@ -193,7 +193,9 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
     std::cout<<"----------------------------------\n";
     std::cout<<glGetError()<<std::endl;
 
-    glGenFramebuffers(1, &CubemapFBO_);
+    if (!glIsFramebuffer(CubemapFBO_)) {
+        glGenFramebuffers(1, &CubemapFBO_);
+    }
     glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
     glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, CubemapFBO_, 0);
     glDrawBuffer(GL_NONE);
