@@ -539,8 +539,8 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
         DepthShader->SetMat4(std::string("shadowMatricies[") + std::to_string(i) + std::string("]"), ShadowTransforms[i]);
     }
 
-    DepthShader->SetVec3("lightPos", Light->Pos);
-    DepthShader->SetFloat("far_plane", Light->MaxDistance);
+    DepthShader->SetVec3("LightPos", Light->Pos);
+    DepthShader->SetFloat("FarPlane", Light->MaxDistance);
     glClear(GL_DEPTH_BUFFER_BIT);
     glActiveTexture(GL_TEXTURE0);
     Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
