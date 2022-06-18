@@ -512,10 +512,14 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     DepthShader->MakeActive();
 
     // Render With Depth Shader
+
+    std::cout<<"----------------------------------\n";
+    std::cout<<glGetError()<<std::endl;
+
     glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, 0, Light->DepthMap.DepthMapTextureIndex*6);
 
 
-
+    std::cout<<glGetError()<<std::endl;
 
 
     //glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0);
