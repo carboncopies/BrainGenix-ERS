@@ -657,7 +657,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     //const int PointLightLimit = 64;
     //const int SpotLightLimit = 32;
 
-
+Light
     ERS_STRUCT_Scene* ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
 
 
@@ -699,7 +699,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
         ActiveShader->SetInt((UniformName + std::string(".DepthCubemapIndex")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
 
-        ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
+        //ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
 
 
         // float NearPlane, FarPlane;
