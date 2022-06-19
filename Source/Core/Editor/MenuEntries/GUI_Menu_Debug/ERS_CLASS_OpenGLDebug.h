@@ -13,7 +13,7 @@
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <imgui.h>
-#include <glfw.>
+#include <glad/glad.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
