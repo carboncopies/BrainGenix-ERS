@@ -133,7 +133,7 @@ void ERS_CLASS_OpenGLLoggingSystem::SetCollectionStatus(bool Status) {
 
         Logger_->Log("Inserting Test Message", 3);
         std::string DebugMessage = "Debug Messages Are Now Enabled And Working Properly";
-        glDebugMessageInsert(GL_DEBUG_SOURCE_APPLICATION, GL_DEBUG_TYPE_ERROR, 0, GL_DEBUG_SEVERITY_HIGH, DebugMessage.size(), DebugMessage.c_str());
+        glDebugMessageInsert(GL_DEBUG_SOURCE_APPLICATION, GL_DEBUG_TYPE_OTHER, 0, GL_DEBUG_SEVERITY_NOTIFICATION, DebugMessage.size(), DebugMessage.c_str());
 
     } else {
         Logger_->Log("Disabling OpenGL Debug Output", 5);
