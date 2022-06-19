@@ -13,7 +13,7 @@ ERS_CLASS_OpenGLDebug::ERS_CLASS_OpenGLDebug(ERS_STRUCT_SystemUtils* SystemUtils
     SystemUtils_->Logger_->Log("Initializing OpenGL Debug Menu GUI Subsystem", 5);
 
 
-    ERS_CLASS_OpenGLLoggingSystem_ = std::make_unique<ERS_CLASS_OpenGLLoggingSystem>(SystemUtils_->Logger_);
+    ERS_CLASS_OpenGLLoggingSystem_ = std::make_unique<ERS_CLASS_OpenGLLoggingSystem>(SystemUtils_->Logger_.get());
 
 
 }
