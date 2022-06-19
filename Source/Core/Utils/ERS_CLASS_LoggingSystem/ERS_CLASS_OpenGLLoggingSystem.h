@@ -24,7 +24,7 @@ std::vector<std::string> OpenGLLogs_; /**List of messages as collected by the op
  * @brief This Class Provides A System To Get OpenGL Context Issues as well as debug other things related to opengl.
  * 
  */
-class ERS_CLASS_OpenGLLoggingSystem() {
+class ERS_CLASS_OpenGLLoggingSystem {
 
 private:
 
@@ -44,5 +44,13 @@ public:
      * 
      */
     ~ERS_CLASS_OpenGLLoggingSystem();
+
+
+    /**
+     * @brief Use This To Enable Or Disable Collection of Logs From OpenGL
+     * 
+     * @param Status 
+     */
+    void SetCollectionStatus(bool Status);
 
 };
