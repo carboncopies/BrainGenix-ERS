@@ -54,7 +54,10 @@ void GUI_Menu_Debug::Draw() {
             }
 
             // OpenGL Debug Submenu
-            
+            if (ImGui::BeginMenu("OpenGL Debugging")) {
+                ERS_CLASS_OpenGLDebug_->DrawMenu();
+            ImGui::EndMenu();
+            }
 
 
 
