@@ -102,12 +102,12 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint id, GLe
         break;
     }
 
-    printf("%d: %s of %s severity, raised from %s: %s\n",
-            id, _type, _severity, _source, msg);
+    // printf("%d: %s of %s severity, raised from %s: %s\n",
+    //         id, _type, _severity, _source, msg);
 
-    std::string Message = std::to_string(id), ;
+    std::string Message = std::to_string(id) + std::string(msg);
 
-    Logger->Log("test", 5);
+    Logger->Log(Message, 5);
 }
 
 
