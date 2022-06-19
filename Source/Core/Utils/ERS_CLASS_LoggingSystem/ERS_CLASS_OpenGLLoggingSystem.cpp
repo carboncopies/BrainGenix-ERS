@@ -14,3 +14,19 @@ ERS_CLASS_OpenGLLoggingSystem::ERS_CLASS_OpenGLLoggingSystem(ERS_CLASS_LoggingSy
 
 }
 
+ERS_CLASS_OpenGLLoggingSystem::~ERS_CLASS_OpenGLLoggingSystem() {
+
+    Logger_->Log("OpenGL Log Collection Subsystem Destructor Called", 6);
+
+}
+
+void ERS_CLASS_OpenGLLoggingSystem::SetCollectionStatus(bool Status) {
+
+    // If Enabled, Setup Logging
+    if (Status) {
+        glEnable(GL_DEBUG_OUTPUT);
+    } else {
+        glDisable(GL_DEBUG_OUTPUT);
+    }
+
+}
