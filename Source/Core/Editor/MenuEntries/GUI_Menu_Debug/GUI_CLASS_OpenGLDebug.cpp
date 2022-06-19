@@ -2,6 +2,6 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <GUI_FUNCTION_OpenGLDebug.h>
+#include <GUI_CLASS_OpenGLDebug.h>
 
 
