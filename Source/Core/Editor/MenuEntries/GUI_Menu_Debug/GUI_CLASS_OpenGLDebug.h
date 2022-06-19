@@ -15,3 +15,21 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
+
+
+
+/**
+ * @brief This class provides functionality to the menu including the Debugging and Profiling tools as provided by OpenGL.
+ * 
+ */
+class ERS_CLASS_OpenGLDebug {
+
+private:
+
+
+public:
+
+    ERS_CLASS_OpenGLDebug()
+
+
+};
