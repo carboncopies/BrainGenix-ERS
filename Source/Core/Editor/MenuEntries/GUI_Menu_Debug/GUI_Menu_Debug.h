@@ -19,6 +19,8 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
 
+#include <ERS_CLASS_OpenGLDebug.h>
+
 #include <GUI_Window_TestEditor.h>
 
 
