@@ -19,7 +19,7 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
 
-// Interna; Libraries (BG convention: use <> instead of "")
+// Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_RGBColor.h>
 
 
