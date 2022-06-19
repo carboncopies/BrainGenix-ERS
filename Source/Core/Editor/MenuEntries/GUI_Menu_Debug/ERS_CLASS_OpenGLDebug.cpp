@@ -19,7 +19,7 @@ ERS_CLASS_OpenGLDebug::ERS_CLASS_OpenGLDebug(ERS_STRUCT_SystemUtils* SystemUtils
 
 ERS_CLASS_OpenGLDebug::~ERS_CLASS_OpenGLDebug() {
 
-    SystemUtils->Logger_->Log("OpenGL Debug Menu GUI Subsystem Destructor Invoked", 6);
+    SystemUtils_->Logger_->Log("OpenGL Debug Menu GUI Subsystem Destructor Invoked", 6);
 
 }
 
