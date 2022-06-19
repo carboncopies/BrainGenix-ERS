@@ -6,7 +6,7 @@
 
 
 // Callback function for printing debug statements
-void APIENTRY ERS_MessageCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *msg, const void *data) {
+void APIENTRY ERS_MessageCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *msg, const void *data, ERS_CLASS_LoggingSystem* Logger) {
     char* _source;
     char* _type;
     char* _severity;
@@ -99,6 +99,7 @@ void APIENTRY ERS_MessageCallback(GLenum source, GLenum type, GLuint id, GLenum 
 
     printf("%d: %s of %s severity, raised from %s: %s\n",
             id, _type, _severity, _source, msg);
+    Logger->Log("test", 5);
 }
 
 
