@@ -10,6 +10,6 @@
 #include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
-#include <
+#include <glad/glad.h>
 
-// Interna; Libraries (BG convention: use <> instead of "")
+// Internal Libraries (BG convention: use <> instead of "")
