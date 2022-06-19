@@ -29,6 +29,8 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
 
+    bool DebugEnabled_ = false; /**<Used To Toggle On Or Off The Associated GL_DEBUG_OUTPUT Enum*/
+
 
 public:
 
