@@ -27,13 +27,9 @@ ERS_CLASS_OpenGLDebug::~ERS_CLASS_OpenGLDebug() {
 void ERS_CLASS_OpenGLDebug::DrawMenu() {
 
     if (ImGui::MenuItem("Debugging Enabled", "", &DebugEnabled_)) {
-        if (DebugEnabled_) {
-            SystemUtils_->Logger_->Log("Enabling OpenGL Debugging Output", 5);
-            glEnable(GL_DEBUG_OUTPUT);
-        } else {
-            SystemUtils_->Logger_->Log("Disabling OpenGL Debugging Output", 5);
-            glDisable(GL_DEBUG_OUTPUT);
-        }
+        DebugEnabled_ = !DebugEnabled_;
+        ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+
     }
 
 }
