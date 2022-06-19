@@ -18,7 +18,7 @@
 
 //std::vector<std::string> OpenGLLogs_; /**List of messages as collected by the opengl logging system*/
 
-void APIENTRY GLDebugMessageCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *msg, const void *data);
+void APIENTRY ERS_MessageCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *msg, const void *data);
 
 
 /**

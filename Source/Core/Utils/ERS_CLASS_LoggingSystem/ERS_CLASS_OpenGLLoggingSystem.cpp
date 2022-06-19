@@ -6,7 +6,7 @@
 
 
 // Callback function for printing debug statements
-void APIENTRY GLDebugMessageCallback(GLenum source, GLenum type, GLuint id,
+void APIENTRY ERS_MessageCallback(GLenum source, GLenum type, GLuint id,
                             GLenum severity, GLsizei length,
                             const GLchar *msg, const void *data)
 {
@@ -127,7 +127,7 @@ void ERS_CLASS_OpenGLLoggingSystem::SetCollectionStatus(bool Status) {
     if (Status) {
         Logger_->Log("Enabling OpenGL Debug Output", 5);
         glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-        glDebugMessageCallback(GLDebugMessageCallback, NULL);
+        glDebugMessageCallback(ERS_MessageCallback, NULL);
 
         std::string DebugMessage = "Debug Messages Are Now Enabled And Working Properly";
         glDebugMessageInsert(GL_DEBUG_SOURCE_APPLICATION, GL_DEBUG_TYPE_OTHER, 0, GL_DEBUG_SEVERITY_NOTIFICATION, DebugMessage.size(), DebugMessage.c_str());
