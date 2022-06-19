@@ -18,6 +18,9 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
 
+#include <ERS_CLASS_OpenGLLoggingSystem.h>
+
+
 
 /**
  * @brief This class provides functionality to the menu including the Debugging and Profiling tools as provided by OpenGL.
@@ -28,6 +31,7 @@ class ERS_CLASS_OpenGLDebug {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
+    std::unique_ptr<ERS_CLASS_OpenGLLoggingSystem> ERS_CLASS_OpenGLLoggingSystem_; /**<Logging System Used To Get OpenGL Callback Data*/
 
     bool DebugEnabled_ = false; /**<Used To Toggle On Or Off The Associated GL_DEBUG_OUTPUT Enum*/
 
