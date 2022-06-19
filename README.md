@@ -24,7 +24,7 @@
   - Install python 3.9.5 (needed to link with the interpreter, embeddable version already included in project tree, also restart your machine after installing to avoid issues) (If just installing, make sure to restart after to make it show up in visual studio)
   - Clone the repository but note that you'll probably have to put it into a root level directory on your disk. This is because Microsoft has imposed a 260 character file name limit in their compiler. 
   - Open the CMakeLists.txt file, and generate the configuration
-  - Put your build config into debug/release based on what you're doing
+  - Put your build config into "Release", currently debug doesn't work for some reason.
   - Set target to BrainGenix-ERS.exe
   - Hit `Build`
 
