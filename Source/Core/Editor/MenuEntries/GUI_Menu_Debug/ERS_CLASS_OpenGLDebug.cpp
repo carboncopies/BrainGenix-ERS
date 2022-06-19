@@ -28,7 +28,7 @@ void ERS_CLASS_OpenGLDebug::DrawMenu() {
 
     if (ImGui::MenuItem("Debugging Enabled", "", &DebugEnabled_)) {
         ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
-        DebugEnabled_ = !DebugEnabled_;
+        //DebugEnabled_ = !DebugEnabled_;
     }
 
 }
