@@ -127,7 +127,6 @@ void ERS_CLASS_OpenGLLoggingSystem::SetCollectionStatus(bool Status) {
     if (Status) {
         Logger_->Log("Enabling OpenGL Debug Output", 5);
         glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-        std::cout<<glGetString(GL_VERSION)<<std::endl;
         Logger_->Log("Registering OpenGL Message Callback", 4);
         glDebugMessageCallback(ERS_MessageCallback, NULL);
         Logger_->Log("Done Registering OpenGL Message Callback", 3);
