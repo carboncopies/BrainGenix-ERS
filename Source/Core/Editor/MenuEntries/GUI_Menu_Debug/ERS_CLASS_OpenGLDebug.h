@@ -45,4 +45,10 @@ public:
     ~ERS_CLASS_OpenGLDebug();
 
 
+    /**
+     * @brief Draws the menu into the debug menu when called
+     * 
+     */
+    void DrawMenu();
+
 };

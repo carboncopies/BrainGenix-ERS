@@ -16,3 +16,10 @@ ERS_CLASS_OpenGLDebug::ERS_CLASS_OpenGLDebug(ERS_STRUCT_SystemUtils* SystemUtils
     glDisable(GL_DEBUG_OUTPUT);
 
 }
+
+ERS_CLASS_OpenGLDebug::~ERS_CLASS_OpenGLDebug() {
+
+    SystemUtils->Logger->Log("OpenGL Debug Menu GUI Subsystem Destructor Invoked", 6);
+
+}
+
