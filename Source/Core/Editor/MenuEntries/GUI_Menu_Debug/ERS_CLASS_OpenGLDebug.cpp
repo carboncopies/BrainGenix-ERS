@@ -12,8 +12,6 @@ ERS_CLASS_OpenGLDebug::ERS_CLASS_OpenGLDebug(ERS_STRUCT_SystemUtils* SystemUtils
 
     SystemUtils_->Logger_->Log("Initializing OpenGL Debug Menu GUI Subsystem", 5);
 
-    // Set Default Settings
-    glDisable(GL_DEBUG_OUTPUT);
 
 }
 
