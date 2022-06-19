@@ -6,7 +6,7 @@
 
 
 // Callback function for printing debug statements
-void APIENTRY ERS_MessageCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *msg, const void *data) {
+void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint id, GLenum GLSeverity, GLsizei length, const GLchar *msg, const void *data) {
 
 
     ERS_CLASS_LoggingSystem* Logger = (ERS_CLASS_LoggingSystem*)data;
@@ -16,7 +16,7 @@ void APIENTRY ERS_MessageCallback(GLenum source, GLenum type, GLuint id, GLenum 
     std::string Severity;
 
 
-    switch (source) {
+    switch (GLSource) {
         case GL_DEBUG_SOURCE_API:
         Source = "API";
         break;
@@ -46,7 +46,7 @@ void APIENTRY ERS_MessageCallback(GLenum source, GLenum type, GLuint id, GLenum 
         break;
     }
 
-    switch (type) {
+    switch (GLType) {
         case GL_DEBUG_TYPE_ERROR:
         Type = "ERROR";
         break;
@@ -80,7 +80,7 @@ void APIENTRY ERS_MessageCallback(GLenum source, GLenum type, GLuint id, GLenum 
         break;
     }
 
-    switch (severity) {
+    switch (GLSeverity) {
         case GL_DEBUG_SEVERITY_HIGH:
         Severity= "HIGH";
         break;
@@ -105,7 +105,7 @@ void APIENTRY ERS_MessageCallback(GLenum source, GLenum type, GLuint id, GLenum 
     printf("%d: %s of %s severity, raised from %s: %s\n",
             id, _type, _severity, _source, msg);
 
-    std::string Message = ""
+    std::string Message = std::to_string(id), ;
 
     Logger->Log("test", 5);
 }
