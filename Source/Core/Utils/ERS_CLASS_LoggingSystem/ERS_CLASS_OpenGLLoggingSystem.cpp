@@ -25,11 +25,11 @@ void ERS_CLASS_OpenGLLoggingSystem::SetCollectionStatus(bool Status) {
     // If Enabled, Setup Logging
     if (Status) {
         Logger_->Log("Enabling OpenGL Debug Output", 5);
-        glEnable(GL_DEBUG_OUTPUT);
+        glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
         glDebugMessageCallback(GLDebugMessageCallback, NULL);
     } else {
         Logger_->Log("Disabling OpenGL Debug Output", 5);
-        glDisable(GL_DEBUG_OUTPUT);
+        glDisable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
     }
 
 }
