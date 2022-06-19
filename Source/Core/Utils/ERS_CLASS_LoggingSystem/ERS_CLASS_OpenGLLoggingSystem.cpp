@@ -11,98 +11,102 @@ void APIENTRY ERS_MessageCallback(GLenum source, GLenum type, GLuint id, GLenum 
 
     ERS_CLASS_LoggingSystem* Logger = (ERS_CLASS_LoggingSystem*)data;
 
-    char* _source;
-    char* _type;
-    char* _severity;
+    std::string Source;
+    std::string Type;
+    std::string Severity;
+
 
     switch (source) {
         case GL_DEBUG_SOURCE_API:
-        _source = "API";
+        Source = "API";
         break;
 
         case GL_DEBUG_SOURCE_WINDOW_SYSTEM:
-        _source = "WINDOW SYSTEM";
+        Source = "WINDOW SYSTEM";
         break;
 
         case GL_DEBUG_SOURCE_SHADER_COMPILER:
-        _source = "SHADER COMPILER";
+        Source = "SHADER COMPILER";
         break;
 
         case GL_DEBUG_SOURCE_THIRD_PARTY:
-        _source = "THIRD PARTY";
+        Source = "THIRD PARTY";
         break;
 
         case GL_DEBUG_SOURCE_APPLICATION:
-        _source = "APPLICATION";
+        Source = "APPLICATION";
         break;
 
         case GL_DEBUG_SOURCE_OTHER:
-        _source = "UNKNOWN";
+        Source = "UNKNOWN";
         break;
 
         default:
-        _source = "UNKNOWN";
+        Source = "UNKNOWN";
         break;
     }
 
     switch (type) {
         case GL_DEBUG_TYPE_ERROR:
-        _type = "ERROR";
+        Type = "ERROR";
         break;
 
         case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR:
-        _type = "DEPRECATED BEHAVIOR";
+        Type = "DEPRECATED BEHAVIOR";
         break;
 
         case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:
-        _type = "UDEFINED BEHAVIOR";
+        Type = "UDEFINED BEHAVIOR";
         break;
 
         case GL_DEBUG_TYPE_PORTABILITY:
-        _type = "PORTABILITY";
+        Type = "PORTABILITY";
         break;
 
         case GL_DEBUG_TYPE_PERFORMANCE:
-        _type = "PERFORMANCE";
+        Type = "PERFORMANCE";
         break;
 
         case GL_DEBUG_TYPE_OTHER:
-        _type = "OTHER";
+        Type = "OTHER";
         break;
 
         case GL_DEBUG_TYPE_MARKER:
-        _type = "MARKER";
+        Type = "MARKER";
         break;
 
         default:
-        _type = "UNKNOWN";
+        Type = "UNKNOWN";
         break;
     }
 
     switch (severity) {
         case GL_DEBUG_SEVERITY_HIGH:
-        _severity = "HIGH";
+        Severity= "HIGH";
         break;
 
         case GL_DEBUG_SEVERITY_MEDIUM:
-        _severity = "MEDIUM";
+        Severity= "MEDIUM";
         break;
 
         case GL_DEBUG_SEVERITY_LOW:
-        _severity = "LOW";
+        Severity= "LOW";
         break;
 
         case GL_DEBUG_SEVERITY_NOTIFICATION:
-        _severity = "NOTIFICATION";
+        Severity= "NOTIFICATION";
         break;
 
         default:
-        _severity = "UNKNOWN";
+        Severity= "UNKNOWN";
         break;
     }
 
     printf("%d: %s of %s severity, raised from %s: %s\n",
             id, _type, _severity, _source, msg);
+
+    std::string Message = ""
+
     Logger->Log("test", 5);
 }
 
