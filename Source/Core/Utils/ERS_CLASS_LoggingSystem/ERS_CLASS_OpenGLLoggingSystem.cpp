@@ -128,10 +128,14 @@ void ERS_CLASS_OpenGLLoggingSystem::SetCollectionStatus(bool Status) {
         Logger_->Log("Enabling OpenGL Debug Output", 5);
         glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
         std::cout<<glGetString(GL_VERSION)<<std::endl;
+        Logger_->Log("Registering OpenGL Message Callback", 4);
         glDebugMessageCallback(ERS_MessageCallback, NULL);
+        Logger_->Log("Done Registering OpenGL Message Callback", 3);
 
+        Logger_->Log("Inserting Test Message", 3);
         std::string DebugMessage = "Debug Messages Are Now Enabled And Working Properly";
         glDebugMessageInsert(GL_DEBUG_SOURCE_APPLICATION, GL_DEBUG_TYPE_OTHER, 0, GL_DEBUG_SEVERITY_NOTIFICATION, DebugMessage.size(), DebugMessage.c_str());
+
     } else {
         Logger_->Log("Disabling OpenGL Debug Output", 5);
         glDisable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
