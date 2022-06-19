@@ -35,6 +35,7 @@ class GUI_Menu_Debug {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
+    std::unique_ptr<ERS_CLASS_OpenGLDebug> ERS_CLASS_OpenGLDebug_; /**<Class used to draw the opengl debug menu into the main debug menu*/
     std::unique_ptr<Window_TestEditor> TestEditor_; /**<GUI Window Test Editor Instance*/
 
     bool ShowImGuiDemoWindow_ = false; /**<Show/hide ImGui DemoWindow*/
