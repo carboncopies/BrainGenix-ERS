@@ -23,3 +23,8 @@ ERS_CLASS_OpenGLDebug::~ERS_CLASS_OpenGLDebug() {
 
 }
 
+void ERS_CLASS_OpenGLDebug::DrawMenu() {
+
+    
+
+}
