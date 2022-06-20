@@ -22,4 +22,4 @@
  * @brief Used to collect messages and add them to the system log from opengl's callback system.
  * 
  */
-void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, GLenum GLSeverity, GLsizei, const GLchar *GLMessage, const void *UserData)
+void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, GLenum GLSeverity, GLsizei, const GLchar *GLMessage, const void *UserData);
