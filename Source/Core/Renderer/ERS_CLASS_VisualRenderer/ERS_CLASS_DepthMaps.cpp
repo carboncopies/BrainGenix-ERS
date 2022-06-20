@@ -284,7 +284,7 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex2D(unsigned int Framebuff
 
 }
 
-unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndexCubemap(unsigned int FramebufferObjectID) {
+unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndexCubemap() {
 
     // If Enough Textures Exist, Find One
     SystemUtils_->Logger_->Log("Allocating Cubemap Depth Map Texture Array Index", 5);
