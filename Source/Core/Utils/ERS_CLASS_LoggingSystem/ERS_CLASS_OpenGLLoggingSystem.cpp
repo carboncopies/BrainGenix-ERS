@@ -8,16 +8,15 @@
 // Callback function for printing debug statements
 void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, GLenum GLSeverity, GLsizei _, const GLchar *Message, const void *UserData) {
 
-
+    // Get System Pointers From User Data Void Ptr
     ERS_STRUCT_MessageCallbackParam* UserParamStruct = (ERS_STRUCT_MessageCallbackParam*)UserData;
     ERS_CLASS_LoggingSystem* Logger = (ERS_CLASS_LoggingSystem*)UserParamStruct->Logger_;
     ERS_CLASS_OpenGLLoggingSystem* OpenGLLoggingSystem = (ERS_CLASS_OpenGLLoggingSystem*)UserParamStruct->OpenGLLoggingSystem_;
 
-
+    // Convert GL Enum To Readable Strings
     std::string Source;
     std::string Type;
     std::string Severity;
-
 
     switch (GLSource) {
         case GL_DEBUG_SOURCE_API:
@@ -105,8 +104,6 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
         break;
     }
 
-    // printf("%d: %s of %s severity, raised from %s: %s\n",
-    //         id, _type, _severity, _source, msg);
 
     std::string Message = std::to_string(GLID) + std::string(Message);
 
@@ -118,11 +115,12 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
     Item.Message_ = std::string(Message);
     Item.ID_ = GLID;
     Item.Severity_ = GLSeverity;
-
+    Item.Source_ = GLSource;
+    Item.Type_ = GLType;
 
     // Append To List
     std::unique_lock<std::mutex> Lock =  std::unique_lock<std::mutex>(OpenGLLoggingSystem->LogItemMutex_);
-    OpenGLLoggingSystem->LogItems_.push_back()
+    OpenGLLoggingSystem->LogItems_.push_back(Item);
 
 }
 
