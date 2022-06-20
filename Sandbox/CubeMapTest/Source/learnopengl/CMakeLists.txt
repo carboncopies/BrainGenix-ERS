@@ -13,7 +13,7 @@ add_library(learnopengl
             ${BACKWARD_ENABLE}
 )
 
-set_property(TARGET learnopengl PROPERTY LANGUAGES CXX)
+set_target_properties(learnopengl PROPERTIES LINKER_LANGUAGE CXX)
 
 # Link 3rd Party Libs
 target_link_libraries(learnopengl
