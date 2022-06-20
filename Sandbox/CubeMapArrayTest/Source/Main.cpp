@@ -130,12 +130,19 @@ int main()
     glReadBuffer(GL_NONE);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+    std::cout<<"Cubemap: "<<depthCubemap<<std::endl;
+
 
     // shader configuration
     // --------------------
     shader.use();
     shader.setInt("diffuseTexture", 0);
-    shader.setInt("depthMap", 1);
+//    shader.setInt("depthMap", 1);
+
+
+    glUniform1i(glGetUniformLocation(shader.ID, "depthMap"), 1);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, depthCubemap);
 
     // lighting info
     // -------------
