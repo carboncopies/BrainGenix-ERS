@@ -1,7 +1,7 @@
  
 
 
-#version 450 core
+#version 420 core
 out vec4 FragColor;
 
 in VS_OUT {
@@ -30,7 +30,7 @@ vec3 gridSamplingDisk[20] = vec3[]
    vec3(0, 1,  1), vec3( 0, -1,  1), vec3( 0, -1, -1), vec3( 0, 1, -1)
 );
 
-float ShadowCalculation(vec3 fragPos)
+float ShadowCalculation2(vec3 fragPos)
 {
     // get vector between fragment position and light position
     vec3 fragToLight = fragPos - lightPos;
@@ -79,6 +79,25 @@ float ShadowCalculation(vec3 fragPos)
     // display closestDepth as debug (to visualize depth cubemap)
     // FragColor = vec4(vec3(closestDepth / far_plane), 1.0);    
         
+    return shadow;
+}
+
+
+
+float ShadowCalculation(vec3 fragPos)
+{
+    // get vector between fragment position and light position
+    vec3 fragToLight = fragPos - lightPos;
+    // use the light to fragment vector to sample from the depth map    
+    float closestDepth = texture(depthMap, vec4(fragToLight, 0)).r;
+    // it is currently in linear range between [0,1]. Re-transform back to original value
+    closestDepth *= far_plane;
+    // now get current linear depth as the length between the fragment and light position
+    float currentDepth = length(fragToLight);
+    // now test for shadows
+    float bias = 0.05; 
+    float shadow = currentDepth -  bias > closestDepth ? 1.0 : 0.0;
+
     return shadow;
 }
 
