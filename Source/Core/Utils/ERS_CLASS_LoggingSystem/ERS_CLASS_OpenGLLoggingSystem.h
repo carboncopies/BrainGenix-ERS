@@ -14,8 +14,12 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
+
+#include <ERS_FUNCTION_MessageCallback.h>
+
 #include <ERS_STRUCT_OpenGLLogItem.h>
 #include <ERS_STRUCT_MessageCallbackUserParam.h>
+
 
 
 /**
