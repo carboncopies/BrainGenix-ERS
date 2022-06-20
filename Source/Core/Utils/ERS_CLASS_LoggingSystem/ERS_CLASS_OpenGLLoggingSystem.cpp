@@ -180,6 +180,11 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
     }
 
 
+    // OVerride For System Info Data
+    if (GLSeverity == GL_DEBUG_SEVERITY_NOTIFICATION && GLSource == GL_DEBUG_SOURCE_APPLICATION && GLType == GL_DEBUG_TYPE_OTHER) {
+        WillLog = true;
+    }
+
     // Generate Log Message
     if (WillLog) {
         std::string Message = "["+ std::to_string(GLID) + "] ["
