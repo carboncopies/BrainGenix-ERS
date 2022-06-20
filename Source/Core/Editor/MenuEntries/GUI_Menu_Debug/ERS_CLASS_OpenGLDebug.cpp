@@ -60,7 +60,33 @@ void ERS_CLASS_OpenGLDebug::DrawMenu() {
     // Type Submenu
     if (ImGui::BeginMenu("GL Types")) {
 
-        
+        if (ImGui::MenuItem("GL_DEBUG_TYPE_ERROR", "", &ERS_CLASS_OpenGLLoggingSystem_->LogTypeError_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR", "", &ERS_CLASS_OpenGLLoggingSystem_->LogTypeDeprecatedBehavior_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR", "", &ERS_CLASS_OpenGLLoggingSystem_->LogTypeUndefinedBehavior_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_TYPE_PORTABILITY", "", &ERS_CLASS_OpenGLLoggingSystem_->LogTypePortability_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_TYPE_PERFORMANCE", "", &ERS_CLASS_OpenGLLoggingSystem_->LogTypePerformance_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_TYPE_MARKER", "", &ERS_CLASS_OpenGLLoggingSystem_->LogTypeMarker_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_TYPE_PUSH_GROUP", "", &ERS_CLASS_OpenGLLoggingSystem_->LogTypePushGroup_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_TYPE_POP_GROUP", "", &ERS_CLASS_OpenGLLoggingSystem_->LogTypePopGroup_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_TYPE_OTHER", "", &ERS_CLASS_OpenGLLoggingSystem_->LogTypeOther_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
 
     ImGui::EndMenu();
     }
