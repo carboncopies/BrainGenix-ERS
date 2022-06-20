@@ -105,7 +105,10 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
     }
 
 
-    std::string Message = std::to_string(GLID) + std::string(Message);
+    // Generate Log Message
+    std::string Message = "["+ std::to_string(GLID) + "] ["
+     + std::string(Source) + "] [" + std::string(Type) + "] ["
+     + std::string(Severity) + "] " + std::string(Message);
 
     Logger->Log(Message, 5);
 
