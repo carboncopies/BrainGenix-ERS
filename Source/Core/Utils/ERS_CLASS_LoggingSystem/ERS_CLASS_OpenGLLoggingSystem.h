@@ -50,6 +50,8 @@ public:
     std::vector<ERS_STRUCT_OpenGLLogItem> LogItems_; /**<List of log items as gotten from the opengl system*/
     std::mutex LogItemMutex_; /**<Mutex To Enxure Thread Safety For The Log Items Vector*/
 
+    int LogSeverityMin_ = 1; /**<Set the severity required to have the item logged*/
+
 
     /**
      * @brief Construct a new ers class openglloggingsystem object
