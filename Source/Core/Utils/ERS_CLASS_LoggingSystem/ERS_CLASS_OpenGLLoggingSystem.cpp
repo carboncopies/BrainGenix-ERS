@@ -162,6 +162,7 @@ void ERS_CLASS_OpenGLLoggingSystem::SetCollectionStatus(bool Status) {
         Logger_->Log("Registering OpenGL Message Callback", 4);
         UserParam_.Logger_ = (void*)Logger_;
         UserParam_.OpenGLLoggingSystem_ = (void*)this;
+        UserParam_.MinLogLevel = &LogSeverityMin_;
         glDebugMessageCallback(ERS_MessageCallback, &UserParam_);
         Logger_->Log("Done Registering OpenGL Message Callback", 3);
 
