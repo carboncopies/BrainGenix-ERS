@@ -39,7 +39,7 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
 
         case GL_DEBUG_SOURCE_SHADER_COMPILER:
         Source = "SHADER COMPILER";
-        if (!OpenGLLoggingSystem->LogSourceApi_){
+        if (!OpenGLLoggingSystem->LogSourceShaderCompiler_){
             WillLog = false;
         }
         break;
