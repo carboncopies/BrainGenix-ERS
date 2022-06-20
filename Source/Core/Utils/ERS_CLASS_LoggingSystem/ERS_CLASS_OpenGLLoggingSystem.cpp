@@ -46,14 +46,23 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
 
         case GL_DEBUG_SOURCE_THIRD_PARTY:
         Source = "THIRD PARTY";
+        if (!OpenGLLoggingSystem->LogSourceThirdParty_){
+            WillLog = false;
+        }
         break;
 
         case GL_DEBUG_SOURCE_APPLICATION:
         Source = "APPLICATION";
+        if (!OpenGLLoggingSystem->LogSourceApplication_){
+            WillLog = false;
+        }
         break;
 
         case GL_DEBUG_SOURCE_OTHER:
-        Source = "UNKNOWN";
+        Source = "OTHER";
+        if (!OpenGLLoggingSystem->LogSourceOther_){
+            WillLog = false;
+        }
         break;
 
         default:
