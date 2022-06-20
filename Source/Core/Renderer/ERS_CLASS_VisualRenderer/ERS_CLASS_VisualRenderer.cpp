@@ -419,7 +419,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram_, "DepthCubemapArray"), 9);
         glActiveTexture(GL_TEXTURE9);
-        glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, ShadowMaps_->ERS_CLASS_DepthMaps_->D);
+        glBindTexture(GL_TEXTURE_CUBE_MAP, ShadowMaps_->ERS_CLASS_DepthMaps_->TESTCubemap);
 
 
         // Render
