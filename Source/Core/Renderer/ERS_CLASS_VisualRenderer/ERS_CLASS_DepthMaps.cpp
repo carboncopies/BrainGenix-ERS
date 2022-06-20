@@ -364,37 +364,37 @@ ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap2D(int Number, bool Log
 
 }
 
-ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMapCubemap(bool LogEnable) {
+// ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMapCubemap(bool LogEnable) {
 
-    SystemUtils_->Logger_->Log(std::string("Creating Cubemap Depth Map With Resolution Of ") + std::to_string(DepthTextureArrayWidth_) + std::string("x") + std::to_string(DepthTextureArrayHeight_), 5, LogEnable);
+//     // SystemUtils_->Logger_->Log(std::string("Creating Cubemap Depth Map With Resolution Of ") + std::to_string(DepthTextureArrayWidth_) + std::string("x") + std::to_string(DepthTextureArrayHeight_), 5, LogEnable);
 
-    // Setup Struct
-    ERS_STRUCT_DepthMap Output;
-
-
-    // Generate FBOs
-    SystemUtils_->Logger_->Log("Generating Cubemap Framebuffer Objects", 4, LogEnable);
-    glGenFramebuffers(1, &Output.FrameBufferObjectID);
-    SystemUtils_->Logger_->Log("Generated Cubemap Framebuffer Objects", 3, LogEnable);
+//     // // Setup Struct
+//     // ERS_STRUCT_DepthMap Output;
 
 
-    // Allocate Depth Map Texture ID
-    Output.DepthMapTextureIndex = AllocateDepthMapIndexCubemap(Output.FrameBufferObjectID);
+//     // // Generate FBOs
+//     // SystemUtils_->Logger_->Log("Generating Cubemap Framebuffer Objects", 4, LogEnable);
+//     // glGenFramebuffers(1, &Output.FrameBufferObjectID);
+//     // SystemUtils_->Logger_->Log("Generated Cubemap Framebuffer Objects", 3, LogEnable);
 
-    // Attach Depth Map Texture To Framebuffer
-    SystemUtils_->Logger_->Log(std::string("Attaching Cubemap Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndex) + std::string("'"), 4, LogEnable);
-    glBindFramebuffer(GL_FRAMEBUFFER, Output.FrameBufferObjectID);
-    glDrawBuffer(GL_NONE);
-    glReadBuffer(GL_NONE);
-    SystemUtils_->Logger_->Log("Finished Attaching Cubemap Texture To Framebuffer", 3, LogEnable);
+
+//     // Allocate Depth Map Texture ID
+//     Output.DepthMapTextureIndex = AllocateDepthMapIndexCubemap(Output.FrameBufferObjectID);
+
+//     // Attach Depth Map Texture To Framebuffer
+//     SystemUtils_->Logger_->Log(std::string("Attaching Cubemap Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndex) + std::string("'"), 4, LogEnable);
+//     glBindFramebuffer(GL_FRAMEBUFFER, Output.FrameBufferObjectID);
+//     glDrawBuffer(GL_NONE);
+//     glReadBuffer(GL_NONE);
+//     SystemUtils_->Logger_->Log("Finished Attaching Cubemap Texture To Framebuffer", 3, LogEnable);
 
     
-    Output.Initialized = true;
+//     Output.Initialized = true;
 
-    // Return Output
-    return Output;
+//     // Return Output
+//     return Output;
 
-}
+// }
 
 
 // TODO: Remove extra light space matrix array junk, and also remove extra texture index array stuff.
@@ -574,9 +574,9 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
         ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
 
         // Check If Light Has DepthMap
-        // if (!Light->DepthMap.Initialized) {
-        //     Light->DepthMap = GenerateDepthMapCubemap();
-        // }
+        if (!Light->DepthMap.Initialized) {
+            Light->AttachedScriptIndexes_ = AllocateDepthMapIndexCubemap();
+        }
 
         // Render To Depth Map
         UpdateDepthMap(Light, CubemapDepthShader);
