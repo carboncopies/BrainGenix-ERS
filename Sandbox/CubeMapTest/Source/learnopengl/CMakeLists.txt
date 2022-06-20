@@ -13,6 +13,7 @@ add_library(learnopengl
             ${BACKWARD_ENABLE}
 )
 
+set_property(TARGET learnopengl xPROPERTY CXX_STANDARD 17)
 
 # Link 3rd Party Libs
 target_link_libraries(learnopengl
