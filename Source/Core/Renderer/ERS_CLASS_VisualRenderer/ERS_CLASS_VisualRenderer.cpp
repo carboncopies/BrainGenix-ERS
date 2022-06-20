@@ -426,7 +426,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         
         //MeshRenderer_->RenderSceneNoTextures(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), Shaders_[ShaderIndex].get());
         MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, Shaders_[ShaderIndex].get());
-        
 
         if (Viewports_[Index]->GridEnabled) {
             Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position_);
@@ -444,7 +443,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             ImGui::GetCursorScreenPos(),
             ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x, ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
             ImVec2(0, 1),
-            ImVec2(1, 0)        
+            ImVec2(1, 0)
         );
 
 
