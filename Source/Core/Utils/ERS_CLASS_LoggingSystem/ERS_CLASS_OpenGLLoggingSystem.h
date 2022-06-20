@@ -35,6 +35,10 @@ private:
     ERS_STRUCT_MessageCallbackParam UserParam_; /**<Used In Debug Callback*/
 
 
+    std::vector<ERS_STRUCT_OpenGLLogItem> LogItems_; /**<List of log items as gotten from the opengl system*/
+    std::mutex LogItemMutex_; /**<Mutex To Enxure Thread Safety For The Log Items Vector*/
+
+
 public:
 
     /**
