@@ -6,7 +6,7 @@
 
 
 // Callback function for printing debug statements
-void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, GLenum GLSeverity, GLsizei _, const GLchar *GLMessage, const void *UserData) {
+void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, GLenum GLSeverity, GLsizei, const GLchar *GLMessage, const void *UserData) {
 
     // Get System Pointers From User Data Void Ptr
     ERS_STRUCT_MessageCallbackParam* UserParamStruct = (ERS_STRUCT_MessageCallbackParam*)UserData;
