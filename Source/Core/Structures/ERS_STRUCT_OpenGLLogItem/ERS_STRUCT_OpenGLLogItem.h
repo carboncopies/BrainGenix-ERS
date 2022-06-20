@@ -11,6 +11,7 @@
 #include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
+#include <glad/glad.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 
@@ -22,12 +23,9 @@
  */
 struct ERS_STRUCT_OpenGLLogItem {
 
-    // Shadow Map Settings
-    int ShadowMapX_ = 2048;
-    int ShadowMapY_ = 2048;
+    std::string Message_; /**<Message To Be Logged*/
 
+    
 
-    // Indicate If Settings Have Changed
-    bool HaveSettingsChanged_ = false;
 
 };
