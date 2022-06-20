@@ -73,30 +73,51 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
     switch (GLType) {
         case GL_DEBUG_TYPE_ERROR:
         Type = "ERROR";
+        if (!OpenGLLoggingSystem->LogTypeError_){
+            WillLog = false;
+        }
         break;
 
         case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR:
         Type = "DEPRECATED BEHAVIOR";
+        if (!OpenGLLoggingSystem->LogTypeDeprecatedBehavior_){
+            WillLog = false;
+        }
         break;
 
         case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:
         Type = "UDEFINED BEHAVIOR";
+        if (!OpenGLLoggingSystem->LogTypeUndefinedBehavior_){
+            WillLog = false;
+        }
         break;
 
         case GL_DEBUG_TYPE_PORTABILITY:
         Type = "PORTABILITY";
+        if (!OpenGLLoggingSystem->LogTypePortability_){
+            WillLog = false;
+        }
         break;
 
         case GL_DEBUG_TYPE_PERFORMANCE:
         Type = "PERFORMANCE";
+        if (!OpenGLLoggingSystem->LogTypePerformance_){
+            WillLog = false;
+        }
         break;
 
         case GL_DEBUG_TYPE_OTHER:
         Type = "OTHER";
+        if (!OpenGLLoggingSystem->LogTypeOther_){
+            WillLog = false;
+        }
         break;
 
         case GL_DEBUG_TYPE_MARKER:
         Type = "MARKER";
+        if (!OpenGLLoggingSystem->LogTypeMarker_){
+            WillLog = false;
+        }
         break;
 
         default:
