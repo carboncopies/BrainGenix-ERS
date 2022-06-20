@@ -12,12 +12,10 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_CLASS_LoggingSystem.h>
-#include <ERS_CLASS_OpenGLLoggingSystem.h>
 
 struct ERS_STRUCT_MessageCallbackParam {
 
-    ERS_CLASS_LoggingSystem* Logger_;
-    ERS_CLASS_OpenGLLoggingSystem* OpenGLLoggingSystem_;
+    void* Logger_;
+    void* OpenGLLoggingSystem_;
 
 };
