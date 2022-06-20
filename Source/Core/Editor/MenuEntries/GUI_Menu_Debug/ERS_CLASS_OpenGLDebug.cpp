@@ -31,20 +31,38 @@ void ERS_CLASS_OpenGLDebug::DrawMenu() {
     }
 
     ImGui::Separator();
-    if (ImGui::MenuItem("GL_DEBUG_SOURCE_API", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceApi_)) {
-        ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+
+    // Source Submenu
+    if (ImGui::BeginMenu("GL Sources")) {
+
+        if (ImGui::MenuItem("GL_DEBUG_SOURCE_API", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceApi_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_SOURCE_WINDOW_SYSTEM", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceWindowSystem_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_SOURCE_SHADER_COMPILER", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceShaderCompiler_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_SOURCE_THIRD_PARTY", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceThirdParty_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_SOURCE_APPLICATION", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceApplication_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_SOURCE_OTHER", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceOther_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+    
+    ImGui::EndMenu();
     }
-    if (ImGui::MenuItem("GL_DEBUG_SOURCE_WINDOW_SYSTEM", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceWindowSystem_)) {
-        ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
-    }
-    if (ImGui::MenuItem("GL_DEBUG_SOURCE_API", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceApi_)) {
-        ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
-    }
-    if (ImGui::MenuItem("GL_DEBUG_SOURCE_API", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceApi_)) {
-        ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
-    }
-    if (ImGui::MenuItem("GL_DEBUG_SOURCE_API", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceApi_)) {
-        ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+
+    // Type Submenu
+    if (ImGui::BeginMenu("GL Types")) {
+
+        
+
+    ImGui::EndMenu();
     }
 
 }
