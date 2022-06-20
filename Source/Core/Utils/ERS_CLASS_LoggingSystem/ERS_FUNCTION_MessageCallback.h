@@ -16,3 +16,10 @@
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_STRUCT_OpenGLLogItem.h>
 #include <ERS_STRUCT_MessageCallbackUserParam.h>
+
+
+/**
+ * @brief Used to collect messages and add them to the system log from opengl's callback system.
+ * 
+ */
+void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, GLenum GLSeverity, GLsizei, const GLchar *GLMessage, const void *UserData)
