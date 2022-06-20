@@ -190,11 +190,6 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
 
 
 
-
-
-    std::cout<<"----------------------------------\n";
-    std::cout<<glGetError()<<std::endl;
-
     if (!glIsFramebuffer(CubemapFBO_)) {
         glGenFramebuffers(1, &CubemapFBO_);
     }
@@ -202,61 +197,6 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
     glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, 0);
     glDrawBuffer(GL_NONE);
     glReadBuffer(GL_NONE);
-
-    //glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, 0, Light->DepthMap.DepthMapTextureIndex*6);
-    //glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0);
-
-
-    std::cout<<glGetError()<<std::endl;
-
-    // // Update Allocation Array
-    // SystemUtils_->Logger_->Log("Checking Cubemap Depth Map Texture Array Allocation Array", 3, LogEnabled);
-    // unsigned long SizeOfAllocationArray = DepthMapTexturesCubemapAlreadyAllocated_.size();
-    // if (SizeOfAllocationArray > (unsigned int)NumberOfTextures) {
-    //     SystemUtils_->Logger_->Log("Downsizing Cubemap Array To Match Target Number Of Textures", 4, LogEnabled);
-    //     DepthMapTexturesCubemapAlreadyAllocated_.erase(DepthMapTexturesCubemapAlreadyAllocated_.begin() + NumberOfTextures, DepthMapTexturesCubemapAlreadyAllocated_.end());
-    // } else if (SizeOfAllocationArray < (unsigned int)NumberOfTextures) {
-    //     SystemUtils_->Logger_->Log("Upsizing Cubemap Array To Match Target Number Of Textures", 4, LogEnabled);
-    //     for (unsigned int i = 0; i < NumberOfTextures - SizeOfAllocationArray; i++) {
-    //         DepthMapTexturesCubemapAlreadyAllocated_.push_back(ERS_STRUCT_CubemapFBOIndexes());
-    //     }
-    // }
-    // SystemUtils_->Logger_->Log("Done Updating/Checking Cubemap Allocation Array", 3, LogEnabled);
-
-
-    // // Rebind Any Framebuffers
-    // SystemUtils_->Logger_->Log("Rebinding Framebuffer Objects Cubemap Depth Textures", 4, LogEnabled);
-    // for (unsigned int i = 0; i < DepthMapTexturesCubemapAlreadyAllocated_.size(); i++) {
-
-    //     long IDs[6];
-    //     IDs[0] = DepthMapTexturesCubemapAlreadyAllocated_[i].FBO1;
-    //     IDs[1] = DepthMapTexturesCubemapAlreadyAllocated_[i].FBO2;
-    //     IDs[2] = DepthMapTexturesCubemapAlreadyAllocated_[i].FBO3;
-    //     IDs[3] = DepthMapTexturesCubemapAlreadyAllocated_[i].FBO4;
-    //     IDs[4] = DepthMapTexturesCubemapAlreadyAllocated_[i].FBO5;
-    //     IDs[5] = DepthMapTexturesCubemapAlreadyAllocated_[i].FBO6;
-        
-
-    //     for (unsigned int x = 0; x < 6; x++) {
-
-    //         // Check If Valid ID
-    //         if (glIsFramebuffer(IDs[x])) {
-
-    //             // If Valid, Rebind
-    //             SystemUtils_->Logger_->Log(std::string("Rebinding Framebuffer '") + std::to_string(IDs[x]) + std::string("' To Texture At Index '") + std::to_string(i*6 + x) + std::string("'"), 4, LogEnabled);
-    //             glBindFramebuffer(GL_FRAMEBUFFER, IDs[x]);
-    //             glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, i*6 + x);
-            
-    //         } else if (IDs[x] != -1) {
-    //             SystemUtils_->Logger_->Log("Framebuffer Object Is Invalid, Removing From Allocation Table", 4, LogEnabled);
-    //             DepthMapTexturesCubemapAlreadyAllocated_[i] = ERS_STRUCT_CubemapFBOIndexes();
-    //         }
-
-    //     }
-
-    // }
-
-
 
     // Update Allocation Array
     SystemUtils_->Logger_->Log("Checking Cubemap Depth Map Texture Array Allocation Array", 3, LogEnabled);
