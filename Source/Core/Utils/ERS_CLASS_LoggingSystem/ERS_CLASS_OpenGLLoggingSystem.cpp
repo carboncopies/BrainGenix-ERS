@@ -6,7 +6,7 @@
 
 
 // Callback function for printing debug statements
-void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint id, GLenum GLSeverity, GLsizei length, const GLchar *msg, const void *data) {
+void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint ID, GLenum GLSeverity, GLsizei length, const GLchar *msg, const void *data) {
 
 
     ERS_STRUCT_MessageCallbackParam* UserParamStruct = (ERS_STRUCT_MessageCallbackParam*)data;
@@ -108,9 +108,21 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint id, GLe
     // printf("%d: %s of %s severity, raised from %s: %s\n",
     //         id, _type, _severity, _source, msg);
 
-    std::string Message = std::to_string(id) + std::string(msg);
+    std::string Message = std::to_string(ID) + std::string(msg);
 
     Logger->Log(Message, 5);
+
+    
+    // Create Struct
+    ERS_STRUCT_OpenGLLogItem Item;
+    Item.ID = ID;
+    Item.Message_ 
+
+
+    // Append To List
+    std::unique_lock<std::mutex> Lock =  std::unique_lock<std::mutex>(OpenGLLoggingSystem->LogItemMutex_);
+    OpenGLLoggingSystem->LogItems_.push_back()
+
 }
 
 

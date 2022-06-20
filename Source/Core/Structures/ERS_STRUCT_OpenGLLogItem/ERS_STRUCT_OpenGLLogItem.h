@@ -25,9 +25,9 @@ struct ERS_STRUCT_OpenGLLogItem {
 
     std::string Message_; /**<Message To Be Logged*/
     
-    GLenum Source; /**<OpenGL Parameter*/
-    GLenum Type; /**<OpenGL Parameter*/
-    GLuint ID; /**<OpenGL Parameter*/
-    GLenum Severity; /**<OpenGL Parameter*/
+    GLenum Source_; /**<OpenGL Parameter*/
+    GLenum Type_; /**<OpenGL Parameter*/
+    GLuint ID_; /**<OpenGL Parameter*/
+    GLenum Severity_; /**<OpenGL Parameter*/
 
 };
