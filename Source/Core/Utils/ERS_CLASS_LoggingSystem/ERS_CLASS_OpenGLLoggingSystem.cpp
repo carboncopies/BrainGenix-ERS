@@ -17,6 +17,7 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
     std::string Source;
     std::string Type;
     std::string Severity;
+    int LogLevel;
 
     switch (GLSource) {
         case GL_DEBUG_SOURCE_API:
@@ -85,22 +86,27 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
     switch (GLSeverity) {
         case GL_DEBUG_SEVERITY_HIGH:
         Severity= "HIGH";
+        LogLevel = 10;
         break;
 
         case GL_DEBUG_SEVERITY_MEDIUM:
         Severity= "MEDIUM";
+        LogLevel = 9;
         break;
 
         case GL_DEBUG_SEVERITY_LOW:
         Severity= "LOW";
+        LogLevel = 8;
         break;
 
         case GL_DEBUG_SEVERITY_NOTIFICATION:
         Severity= "NOTIFICATION";
+        LogLevel = 5;
         break;
 
         default:
         Severity= "UNKNOWN";
+        LogLevel = 7;
         break;
     }
 
