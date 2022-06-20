@@ -32,7 +32,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLM.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/STB.cmake)
-
+include(${CMAKE_BUILD_UTILS_DIR}/Assimp.cmake)
 
 add_subdirectory(Source/learnopengl)
 
