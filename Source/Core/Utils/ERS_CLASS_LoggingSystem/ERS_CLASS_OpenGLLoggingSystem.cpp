@@ -106,6 +106,27 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
         }
         break;
 
+        case GL_DEBUG_TYPE_MARKER:
+        Type = "MARKER";
+        if (!OpenGLLoggingSystem->LogTypeMarker_){
+            WillLog = false;
+        }
+        break;
+
+        case GL_DEBUG_TYPE_PUSH_GROUP:
+        Type = "PUSH_GROUP";
+        if (!OpenGLLoggingSystem->LogTypePushGroup_){
+            WillLog = false;
+        }
+        break;
+    
+        case GL_DEBUG_TYPE_POP_GROUP:
+        Type = "POP_GROUP";
+        if (!OpenGLLoggingSystem->LogTypePopGroup_){
+            WillLog = false;
+        }
+        break;
+
         case GL_DEBUG_TYPE_OTHER:
         Type = "OTHER";
         if (!OpenGLLoggingSystem->LogTypeOther_){
@@ -113,12 +134,6 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
         }
         break;
 
-        case GL_DEBUG_TYPE_MARKER:
-        Type = "MARKER";
-        if (!OpenGLLoggingSystem->LogTypeMarker_){
-            WillLog = false;
-        }
-        break;
 
         default:
         Type = "UNKNOWN";
