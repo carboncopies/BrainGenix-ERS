@@ -14,9 +14,10 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
+#include <ERS_CLASS_OpenGLLoggingSystem.h>
+
 #include <ERS_STRUCT_OpenGLLogItem.h>
 #include <ERS_STRUCT_MessageCallbackUserParam.h>
-
 
 /**
  * @brief Used to collect messages and add them to the system log from opengl's callback system.
