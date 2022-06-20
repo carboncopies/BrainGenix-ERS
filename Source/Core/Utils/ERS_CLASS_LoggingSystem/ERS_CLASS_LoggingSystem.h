@@ -19,7 +19,7 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
 
-// Interna; Libraries (BG convention: use <> instead of "")
+// Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_RGBColor.h>
 
 
@@ -33,10 +33,10 @@ private:
     YAML::Node LocalSystemConfiguration;
 
 
-    bool PrintLogOutput;
-    bool ColorizeLog;
-    bool ReplaceLevelWithText;
-    bool UseTextLogLevel_;
+    bool PrintLogOutput = true;
+    bool ColorizeLog = true;
+    bool ReplaceLevelWithText = false;
+    bool UseTextLogLevel_ = false;
     int MinimumLogLevel = 5;
 
     int LogLevelTargetWidth = 6;

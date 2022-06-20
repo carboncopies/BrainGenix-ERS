@@ -138,9 +138,11 @@ void RendererManager::InitializeGLFW() {
     // Initialize GLFW
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+
+    glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
 
     // Read Out Width, Height
     SystemUtils_->Logger_->Log("Read Configuration File For 'WindowWidth' Parameter", 1);
@@ -172,6 +174,7 @@ void RendererManager::InitializeGLFW() {
     // Setup OpenGL For Blending (For Transparency Issues)
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
+
 
 
 }

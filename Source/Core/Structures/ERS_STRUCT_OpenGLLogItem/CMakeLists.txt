@@ -4,33 +4,26 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Menu_Debug
+add_library(ERS_STRUCT_OpenGLLogItem
 
             # Add Source Files (.cpp)
-            "GUI_Menu_Debug.cpp"
-            "ERS_CLASS_OpenGLDebug.cpp"
+            "ERS_STRUCT_OpenGLLogItem.cpp"
 
             # Add Header Files (.h)
-            "GUI_Menu_Debug.h"
-            "ERS_CLASS_OpenGLDebug.h"
-
-
+            "ERS_STRUCT_OpenGLLogItem.h"
+            
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Menu_Debug
+target_link_libraries(ERS_STRUCT_OpenGLLogItem
     glad
-    glfw
-    IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(Menu_Debug
-
-    Window_TestEditor
-
-    ERS_STRUCT_SystemUtils
+target_link_libraries(ERS_STRUCT_OpenGLLogItem
     )
 
-target_include_directories(Menu_Debug PUBLIC ./)
+
+target_include_directories(ERS_STRUCT_OpenGLLogItem PUBLIC ./)
+set_target_properties(ERS_STRUCT_OpenGLLogItem PROPERTIES LINKER_LANGUAGE CXX)
