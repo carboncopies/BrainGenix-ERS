@@ -137,10 +137,9 @@ void ERS_CLASS_OpenGLLoggingSystem::SetCollectionStatus(bool Status) {
         Logger_->Log("Enabling OpenGL Debug Output", 5);
         glEnable(GL_DEBUG_OUTPUT);
         Logger_->Log("Registering OpenGL Message Callback", 4);
-        ERS_STRUCT_MessageCallbackParam UserParam;
-        UserParam.Logger_ = (void*)Logger_;
-        UserParam.OpenGLLoggingSystem_ = (void*)this;
-        glDebugMessageCallback(ERS_MessageCallback, &UserParam);
+        UserParam_.Logger_ = (void*)Logger_;
+        UserParam_.OpenGLLoggingSystem_ = (void*)this;
+        glDebugMessageCallback(ERS_MessageCallback, &UserParam_);
         Logger_->Log("Done Registering OpenGL Message Callback", 3);
 
         Logger_->Log("Inserting Test Message", 3);
