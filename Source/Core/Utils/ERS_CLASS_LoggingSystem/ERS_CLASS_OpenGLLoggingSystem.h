@@ -21,7 +21,17 @@
 #include <ERS_STRUCT_MessageCallbackUserParam.h>
 
 
-
+/**
+ * @brief Used as the callback to collect opengl debug messages and log them in the ERS system.
+ * 
+ * @param GLSource 
+ * @param GLType 
+ * @param GLID 
+ * @param GLSeverity 
+ * @param GLMessage 
+ * @param UserData 
+ */
+void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, GLenum GLSeverity, GLsizei, const GLchar *GLMessage, const void *UserData)
 
 
 /**
