@@ -20,7 +20,7 @@
  * @brief Struct containing renderer settings.
  * 
  */
-struct ERS_STRUCT_RendererSettings {
+struct ERS_STRUCT_OpenGLLogItem {
 
     // Shadow Map Settings
     int ShadowMapX_ = 2048;

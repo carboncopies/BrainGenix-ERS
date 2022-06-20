@@ -4,25 +4,25 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_STRUCT_RendererSettings
+add_library(ERS_STRUCT_OpenGLLogItem
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_RendererSettings.cpp"
+            "ERS_STRUCT_OpenGLLogItem.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_RendererSettings.h"
+            "ERS_STRUCT_OpenGLLogItem.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_RendererSettings
+target_link_libraries(ERS_STRUCT_OpenGLLogItem
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_RendererSettings
+target_link_libraries(ERS_STRUCT_OpenGLLogItem
     )
 
 
-target_include_directories(ERS_STRUCT_RendererSettings PUBLIC ./)
-set_target_properties(ERS_STRUCT_RendererSettings PROPERTIES LINKER_LANGUAGE CXX)
+target_include_directories(ERS_STRUCT_OpenGLLogItem PUBLIC ./)
+set_target_properties(ERS_STRUCT_OpenGLLogItem PROPERTIES LINKER_LANGUAGE CXX)
