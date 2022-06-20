@@ -13,6 +13,7 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint id, GLe
     ERS_CLASS_LoggingSystem* Logger = UserParamStruct->Logger_;
     ERS_CLASS_OpenGLLoggingSystem* OpenGLLoggingSystem = UserParamStruct->OpenGLLoggingSystem_;
 
+
     std::string Source;
     std::string Type;
     std::string Severity;
@@ -136,7 +137,10 @@ void ERS_CLASS_OpenGLLoggingSystem::SetCollectionStatus(bool Status) {
         Logger_->Log("Enabling OpenGL Debug Output", 5);
         glEnable(GL_DEBUG_OUTPUT);
         Logger_->Log("Registering OpenGL Message Callback", 4);
-        glDebugMessageCallback(ERS_MessageCallback, Logger_);
+        ERS_STRUCT_MessageCallbackParam UserParam;
+        UserParam.Logger_ = Logger_;
+        UserParam.OpenGLLoggingSystem_ = this;
+        glDebugMessageCallback(ERS_MessageCallback, &UserParam);
         Logger_->Log("Done Registering OpenGL Message Callback", 3);
 
         Logger_->Log("Inserting Test Message", 3);
