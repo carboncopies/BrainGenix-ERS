@@ -27,29 +27,11 @@ include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 
 
 # Include Package Addition Scripts
-include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/Python.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/YAML-CPP.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLM.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/ImGui.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/ImGuizmo.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/ImPlot.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/ImGuiFileDialog.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/ImGuiColorTextEdit.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/FreeImage.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/STB.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/Assimp.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
-#include(${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/OpenXR.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/OZZ-Animation.cmake)
-
-
 
 # ADD INTERNAL SUBDIRECTORIES
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_LoggingSystem)
