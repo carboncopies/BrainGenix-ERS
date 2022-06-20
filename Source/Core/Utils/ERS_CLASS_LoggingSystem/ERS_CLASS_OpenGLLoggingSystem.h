@@ -50,7 +50,27 @@ public:
     std::vector<ERS_STRUCT_OpenGLLogItem> LogItems_; /**<List of log items as gotten from the opengl system*/
     std::mutex LogItemMutex_; /**<Mutex To Enxure Thread Safety For The Log Items Vector*/
 
-    int LogSeverityMin_ = 1; /**<Set the severity required to have the item logged*/
+    bool LogSeverityHigh_ =             true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogSeverityMedium_ =           true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogSeverityLow_ =              true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogSeverityNotification_ =    false; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+
+    bool LogTypeError_ =                true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogTypeDeprecatedBehavior_ =   true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogTypeUndefinedBehavior_ =    true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogTypePortability_ =          true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogTypePerformance_ =          true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogTypeMarker_ =               true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogTypePushGroup_ =            true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogTypePopGroup_ =             true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogTypeOther_ =                true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+
+    bool LogSourceApi_ =                true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogSourceWindowSystem_ =       true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogSourceShaderCompiler_ =     true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogSourceThirdParty_ =         true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogSourceApplication_ =        true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogSourceOther_ =              true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
 
 
     /**
