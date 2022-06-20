@@ -26,6 +26,7 @@ target_link_libraries(ERS_CLASS_LoggingSystem
 # Link Internal Libs
 target_link_libraries(ERS_CLASS_LoggingSystem
     ERS_STRUCT_RGBColor
+    ERS_STRUCT_OpenGLLogItem
     )
 
 if (WIN32) 

@@ -14,6 +14,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
+#include <ERS_STRUCT_OpenGLLogItem.h>
 
 
 //std::vector<std::string> OpenGLLogs_; /**List of messages as collected by the opengl logging system*/
