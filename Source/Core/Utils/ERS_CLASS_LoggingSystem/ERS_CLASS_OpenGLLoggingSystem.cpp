@@ -6,10 +6,10 @@
 
 
 // Callback function for printing debug statements
-void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint ID, GLenum GLSeverity, GLsizei length, const GLchar *msg, const void *data) {
+void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, GLenum GLSeverity, GLsizei _, const GLchar *Message, const void *UserData) {
 
 
-    ERS_STRUCT_MessageCallbackParam* UserParamStruct = (ERS_STRUCT_MessageCallbackParam*)data;
+    ERS_STRUCT_MessageCallbackParam* UserParamStruct = (ERS_STRUCT_MessageCallbackParam*)UserData;
     ERS_CLASS_LoggingSystem* Logger = (ERS_CLASS_LoggingSystem*)UserParamStruct->Logger_;
     ERS_CLASS_OpenGLLoggingSystem* OpenGLLoggingSystem = (ERS_CLASS_OpenGLLoggingSystem*)UserParamStruct->OpenGLLoggingSystem_;
 
@@ -108,15 +108,16 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint ID, GLe
     // printf("%d: %s of %s severity, raised from %s: %s\n",
     //         id, _type, _severity, _source, msg);
 
-    std::string Message = std::to_string(ID) + std::string(msg);
+    std::string Message = std::to_string(GLID) + std::string(Message);
 
     Logger->Log(Message, 5);
 
     
     // Create Struct
     ERS_STRUCT_OpenGLLogItem Item;
-    Item.ID = ID;
-    Item.Message_ 
+    Item.Message_ = std::string(Message);
+    Item.ID_ = GLID;
+    Item.Severity_ = GLSeverity;
 
 
     // Append To List
