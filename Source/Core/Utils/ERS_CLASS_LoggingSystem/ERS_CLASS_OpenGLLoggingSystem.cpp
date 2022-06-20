@@ -144,21 +144,33 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
         case GL_DEBUG_SEVERITY_HIGH:
         Severity= "HIGH";
         LogLevel = 10;
+        if (!OpenGLLoggingSystem->LogSeverityHigh_){
+            WillLog = false;
+        }
         break;
 
         case GL_DEBUG_SEVERITY_MEDIUM:
         Severity= "MEDIUM";
         LogLevel = 9;
+        if (!OpenGLLoggingSystem->LogSeverityMedium_){
+            WillLog = false;
+        }
         break;
 
         case GL_DEBUG_SEVERITY_LOW:
         Severity= "LOW";
         LogLevel = 8;
+        if (!OpenGLLoggingSystem->LogSeverityLow_){
+            WillLog = false;
+        }
         break;
 
         case GL_DEBUG_SEVERITY_NOTIFICATION:
         Severity= "NOTIFICATION";
         LogLevel = 5;
+        if (!OpenGLLoggingSystem->LogSeverityNotification_){
+            WillLog = false;
+        }
         break;
 
         default:
