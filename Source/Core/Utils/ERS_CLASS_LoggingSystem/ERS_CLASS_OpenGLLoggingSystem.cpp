@@ -157,7 +157,7 @@ void ERS_CLASS_OpenGLLoggingSystem::SetCollectionStatus(bool Status) {
 
     // If Enabled, Setup Logging
     if (Status) {
-        Logger_->Log("Enabling OpenGL Debug Output", 5);
+        Logger_->Log("(Re)Enabling OpenGL Debug Output", 5);
         glEnable(GL_DEBUG_OUTPUT);
         Logger_->Log("Registering OpenGL Message Callback", 4);
         UserParam_.Logger_ = (void*)Logger_;
