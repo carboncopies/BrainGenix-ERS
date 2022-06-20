@@ -32,7 +32,19 @@ void ERS_CLASS_OpenGLDebug::DrawMenu() {
 
     ImGui::Separator();
     if (ImGui::MenuItem("GL_DEBUG_SOURCE_API", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceApi_)) {
-
+        ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+    }
+    if (ImGui::MenuItem("GL_DEBUG_SOURCE_WINDOW_SYSTEM", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceWindowSystem_)) {
+        ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+    }
+    if (ImGui::MenuItem("GL_DEBUG_SOURCE_API", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceApi_)) {
+        ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+    }
+    if (ImGui::MenuItem("GL_DEBUG_SOURCE_API", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceApi_)) {
+        ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+    }
+    if (ImGui::MenuItem("GL_DEBUG_SOURCE_API", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSourceApi_)) {
+        ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
     }
 
 }
