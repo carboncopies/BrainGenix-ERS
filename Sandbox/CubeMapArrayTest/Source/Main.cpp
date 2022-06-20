@@ -94,14 +94,30 @@ int main()
     // configure depth map FBO
     // -----------------------
     const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
+    unsigned int NumberOfTextures = 1;
     unsigned int depthMapFBO;
     glGenFramebuffers(1, &depthMapFBO);
     // create depth cubemap texture
     unsigned int depthCubemap;
     glGenTextures(1, &depthCubemap);
     glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, depthCubemap);
-    for (unsigned int i = 0; i < 6; ++i)
-        glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+    // for (unsigned int i = 0; i < 6; ++i)
+    //     glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+
+
+    glTexImage3D(GL_TEXTURE_CUBE_MAP_ARRAY,
+        0,                        // Current 'mipmap level', We're not using these so 0 is fine
+        GL_DEPTH_COMPONENT24,     // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
+        SHADOW_WIDTH,  // Cubemap Width
+        SHADOW_HEIGHT, // Cubemap Height
+        NumberOfTextures * 6,     // Total Number Of Textures In The Array
+        0,                        // Border, we're not using this
+        GL_DEPTH_COMPONENT,       // Tells opengl what kind of data we're storing in this texture
+        GL_FLOAT,                 // tells opengl how to store the data
+        NULL                      // if we were loading an image in, we could then pass the data in here, but we're not so this is left as null
+    );
+
+
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
