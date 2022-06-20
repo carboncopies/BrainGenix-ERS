@@ -165,9 +165,12 @@ void ERS_CLASS_OpenGLLoggingSystem::SetCollectionStatus(bool Status) {
         glDebugMessageCallback(ERS_MessageCallback, &UserParam_);
         Logger_->Log("Done Registering OpenGL Message Callback", 3);
 
+
         Logger_->Log("Inserting Test Message", 3);
+        Logger_->Log("A Test Message Saying Debug Messages Should Be Produced (Below) Shortly, If It Isn't Debug Messages Are Not Working. In This Case, You Can Try Enabling A Debug OpenGL Context In The Config File", 6);
         std::string DebugMessage = "Debug Messages Are Now Enabled And Working Properly";
         glDebugMessageInsert(GL_DEBUG_SOURCE_APPLICATION, GL_DEBUG_TYPE_OTHER, 0, GL_DEBUG_SEVERITY_NOTIFICATION, DebugMessage.size(), DebugMessage.c_str());
+
 
     } else {
         Logger_->Log("Disabling OpenGL Debug Output", 5);
