@@ -6,7 +6,7 @@
 
 
 // Callback function for printing debug statements
-void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, GLenum GLSeverity, GLsizei _, const GLchar *Message, const void *UserData) {
+void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, GLenum GLSeverity, GLsizei _, const GLchar *GLMessage, const void *UserData) {
 
     // Get System Pointers From User Data Void Ptr
     ERS_STRUCT_MessageCallbackParam* UserParamStruct = (ERS_STRUCT_MessageCallbackParam*)UserData;
@@ -114,14 +114,14 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
     // Generate Log Message
     std::string Message = "["+ std::to_string(GLID) + "] ["
      + std::string(Source) + "] [" + std::string(Type) + "] ["
-     + std::string(Severity) + "] " + std::string(Message);
+     + std::string(Severity) + "] " + std::string(GLMessage);
 
     Logger->Log(Message, LogLevel);
 
     
     // Create Struct
     ERS_STRUCT_OpenGLLogItem Item;
-    Item.Message_ = std::string(Message);
+    Item.Message_ = std::string(GLMessage);
     Item.ID_ = GLID;
     Item.Severity_ = GLSeverity;
     Item.Source_ = GLSource;
