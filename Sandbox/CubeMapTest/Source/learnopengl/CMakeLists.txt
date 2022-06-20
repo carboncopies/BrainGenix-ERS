@@ -26,6 +26,8 @@ target_link_libraries(learnopengl
 # Link Internal Libs
 target_link_libraries(learnopengl
 
+    assimp
+
     )
 
 target_include_directories(learnopengl PUBLIC ./)
