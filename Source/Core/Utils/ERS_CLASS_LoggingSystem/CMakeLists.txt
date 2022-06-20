@@ -9,10 +9,12 @@ add_library(ERS_CLASS_LoggingSystem
             # Add Source Files (.cpp)
             "ERS_CLASS_LoggingSystem.cpp"
             "ERS_CLASS_OpenGLLoggingSystem.cpp"
+            "ERS_STRUCT_MessageCallbackUserParam.cpp"
 
             # Add Header Files (.h)
             "ERS_CLASS_LoggingSystem.h"
             "ERS_CLASS_OpenGLLoggingSystem.h"
+            "ERS_STRUCT_MessageCallbackUserParam.h"
             
             ${BACKWARD_ENABLE}
             )
