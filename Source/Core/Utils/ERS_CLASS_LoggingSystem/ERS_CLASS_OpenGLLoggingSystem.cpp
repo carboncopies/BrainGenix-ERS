@@ -133,11 +133,13 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
 
 
     // Generate Log Message
-    std::string Message = "["+ std::to_string(GLID) + "] ["
-     + std::string(Source) + "] [" + std::string(Type) + "] ["
-     + std::string(Severity) + "] " + std::string(GLMessage);
+    if (WillLog) {
+        std::string Message = "["+ std::to_string(GLID) + "] ["
+        + std::string(Source) + "] [" + std::string(Type) + "] ["
+        + std::string(Severity) + "] " + std::string(GLMessage);
 
-    Logger->Log(Message, LogLevel);
+        Logger->Log(Message, LogLevel);
+    }
 
     
     // Create Struct
