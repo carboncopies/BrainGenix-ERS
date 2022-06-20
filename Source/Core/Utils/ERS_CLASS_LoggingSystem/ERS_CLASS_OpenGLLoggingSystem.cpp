@@ -10,8 +10,8 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint id, GLe
 
 
     ERS_STRUCT_MessageCallbackParam* UserParamStruct = (ERS_STRUCT_MessageCallbackParam*)data;
-    ERS_CLASS_LoggingSystem* Logger = UserParamStruct->Logger_;
-    ERS_CLASS_OpenGLLoggingSystem* OpenGLLoggingSystem = UserParamStruct->OpenGLLoggingSystem_;
+    ERS_CLASS_LoggingSystem* Logger = (ERS_CLASS_LoggingSystem*)UserParamStruct->Logger_;
+    ERS_CLASS_OpenGLLoggingSystem* OpenGLLoggingSystem = (ERS_CLASS_OpenGLLoggingSystem*)UserParamStruct->OpenGLLoggingSystem_;
 
 
     std::string Source;
