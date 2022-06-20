@@ -162,7 +162,30 @@ void ERS_CLASS_OpenGLLoggingSystem::SetCollectionStatus(bool Status) {
         Logger_->Log("Registering OpenGL Message Callback", 4);
         UserParam_.Logger_ = (void*)Logger_;
         UserParam_.OpenGLLoggingSystem_ = (void*)this;
-        UserParam_.MinLogLevel = &LogSeverityMin_;
+        
+        UserParam_.LogSeverityHigh_ =               &LogSeverityHigh_;
+        UserParam_.LogSeverityMedium_ =             &LogSeverityMedium_;
+        UserParam_.LogSeverityLow_ =                &LogSeverityLow_;
+        UserParam_.LogSeverityNotification_ =       &LogSeverityNotification_;
+
+        UserParam_.LogTypeError_ =                  &LogTypeError_;
+        UserParam_.LogTypeDeprecatedBehavior_ =     &LogTypeDeprecatedBehavior_;
+        UserParam_.LogTypeUndefinedBehavior_ =      &LogTypeUndefinedBehavior_;
+        UserParam_.LogTypePortability_ =            &LogTypePortability_;
+        UserParam_.LogTypePerformance_ =            &LogTypePerformance_;
+        UserParam_.LogTypeMarker_ =                 &LogTypeMarker_;
+        UserParam_.LogTypePushGroup_ =              &LogTypePushGroup_;
+        UserParam_.LogTypePopGroup_ =               &LogTypePopGroup_;
+        UserParam_.LogTypeOther_ =                  &LogTypeOther_;
+
+        UserParam_.LogSourceApi_ =                  &LogSourceApi_;
+        UserParam_.LogSourceWindowSystem_ =         &LogSourceWindowSystem_;
+        UserParam_.LogSourceShaderCompiler_ =       &LogSourceShaderCompiler_;
+        UserParam_.LogSourceThirdParty_ =           &LogSourceThirdParty_;
+        UserParam_.LogSourceApplication_ =          &LogSourceApplication_;
+        UserParam_.LogSourceOther_ =                &LogSourceOther_;
+
+
         glDebugMessageCallback(ERS_MessageCallback, &UserParam_);
         Logger_->Log("Done Registering OpenGL Message Callback", 3);
 
