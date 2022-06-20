@@ -208,23 +208,23 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
     } else if (SizeOfAllocationArray < (unsigned int)NumberOfTextures) {
         SystemUtils_->Logger_->Log("Upsizing Cubemap Array To Match Target Number Of Textures", 4, LogEnabled);
         for (unsigned int i = 0; i < NumberOfTextures - SizeOfAllocationArray; i++) {
-            DepthMapTexturesCubemapAlreadyAllocated_.push_back(-1);
+            DepthMapTexturesCubemapAlreadyAllocated_.push_back(false);
         }
     }
 
-    for (unsigned int i = 0; i < DepthMapTexturesCubemapAlreadyAllocated_.size(); i++) {
+    // for (unsigned int i = 0; i < DepthMapTexturesCubemapAlreadyAllocated_.size(); i++) {
 
-        long ID = DepthMapTexturesCubemapAlreadyAllocated_[i];
+    //     long ID = DepthMapTexturesCubemapAlreadyAllocated_[i];
 
-        // Check If Valid ID
-        if (glIsFramebuffer(ID)) {
+    //     // Check If Valid ID
+    //     if (glIsFramebuffer(ID)) {
             
-        } else if (ID != -1) {
-            SystemUtils_->Logger_->Log("Framebuffer Object Is Invalid, Removing From Allocation Table", 4, LogEnabled);
-            DepthMapTexturesCubemapAlreadyAllocated_[i] = -1;
-        }
+    //     } else if (ID != -1) {
+    //         SystemUtils_->Logger_->Log("Framebuffer Object Is Invalid, Removing From Allocation Table", 4, LogEnabled);
+    //         DepthMapTexturesCubemapAlreadyAllocated_[i] = -1;
+    //     }
 
-    }
+    // }
     SystemUtils_->Logger_->Log("Done Updating/Checking Cubemap Allocation Array", 3, LogEnabled);
 
 
@@ -284,14 +284,40 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex2D(unsigned int Framebuff
 
 }
 
+
+// unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndexCubemap() {
+
+//     // If Enough Textures Exist, Find One
+//     SystemUtils_->Logger_->Log("Allocating Cubemap Depth Map Texture Array Index", 5);
+//     for (unsigned int i = 0; i < DepthMapTexturesCubemapAlreadyAllocated_.size(); i++) {
+//         if (DepthMapTexturesCubemapAlreadyAllocated_[i] == -1) {
+//             SystemUtils_->Logger_->Log(std::string("Allocated Cubemap Depth Map Texture Array Index: ") + std::to_string(i), 5);
+//             DepthMapTexturesCubemapAlreadyAllocated_[i] = FramebufferObjectID;
+//             return i;
+//         }
+//     }
+
+//     // IF Not, Batch Allocate More
+//     SystemUtils_->Logger_->Log("Depth Cubemap Map Texture Array Full, Regenerating With More Textures", 5);
+//     int StartSize = DepthMapTexturesCubemapAlreadyAllocated_.size();
+//     RegenerateDepthMapTextureArrayCubemap(StartSize + DepthMapAllocationChunkSize_);
+//     SystemUtils_->Logger_->Log(std::string("Finished Updating Cubemap Depth Map Array, Allocating Depth Map Texture Array Index: ") + std::to_string(StartSize + DepthMapAllocationChunkSize_), 5);
+
+//     DepthMapTexturesCubemapAlreadyAllocated_[StartSize + 1] = FramebufferObjectID;
+
+//     return StartSize + 1;
+
+// }
+
+
 unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndexCubemap() {
 
     // If Enough Textures Exist, Find One
     SystemUtils_->Logger_->Log("Allocating Cubemap Depth Map Texture Array Index", 5);
     for (unsigned int i = 0; i < DepthMapTexturesCubemapAlreadyAllocated_.size(); i++) {
-        if (DepthMapTexturesCubemapAlreadyAllocated_[i] == -1) {
+        if (DepthMapTexturesCubemapAlreadyAllocated_[i] == false) {
             SystemUtils_->Logger_->Log(std::string("Allocated Cubemap Depth Map Texture Array Index: ") + std::to_string(i), 5);
-            DepthMapTexturesCubemapAlreadyAllocated_[i] = FramebufferObjectID;
+            DepthMapTexturesCubemapAlreadyAllocated_[i] = true;
             return i;
         }
     }
@@ -302,7 +328,7 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndexCubemap() {
     RegenerateDepthMapTextureArrayCubemap(StartSize + DepthMapAllocationChunkSize_);
     SystemUtils_->Logger_->Log(std::string("Finished Updating Cubemap Depth Map Array, Allocating Depth Map Texture Array Index: ") + std::to_string(StartSize + DepthMapAllocationChunkSize_), 5);
 
-    DepthMapTexturesCubemapAlreadyAllocated_[StartSize + 1] = FramebufferObjectID;
+    DepthMapTexturesCubemapAlreadyAllocated_[StartSize + 1] = true;
 
     return StartSize + 1;
 

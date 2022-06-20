@@ -100,7 +100,7 @@ public:
     int DepthTextureCubemapNumTextures_ = 2; /**<Number of cubemaps the array can hold*/
     std::vector<long> DepthMapTexturesAlreadyAllocated_; /**<Use This To Check if the texture is already allocated or not*/
     //std::vector<ERS_STRUCT_CubemapFBOIndexes> DepthMapTexturesCubemapAlreadyAllocated_; /**<Used to check if a given cubemap index is in use, and to indiciate it's framebuffer objects, so they can be rebound on resize*/
-    std::vector<long> DepthMapTexturesCubemapAlreadyAllocated_; /**<Used to check if a given cubemap index is in use, and to indiciate it's framebuffer objects, so they can be rebound on resize*/
+    std::vector<bool> DepthMapTexturesCubemapAlreadyAllocated_; /**<Used to check if a given cubemap index is in use, and to indiciate it's framebuffer objects, so they can be rebound on resize*/
     
 
     unsigned int CubemapFBO_;
