@@ -116,7 +116,7 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
      + std::string(Source) + "] [" + std::string(Type) + "] ["
      + std::string(Severity) + "] " + std::string(Message);
 
-    Logger->Log(Message, 5);
+    Logger->Log(Message, LogLevel);
 
     
     // Create Struct
