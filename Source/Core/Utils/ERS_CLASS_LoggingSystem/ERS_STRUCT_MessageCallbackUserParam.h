@@ -15,7 +15,7 @@
 
 struct ERS_STRUCT_MessageCallbackParam {
 
-    void* Logger_;
-    void* OpenGLLoggingSystem_;
+    const void* Logger_;
+    const void* OpenGLLoggingSystem_;
 
 };
