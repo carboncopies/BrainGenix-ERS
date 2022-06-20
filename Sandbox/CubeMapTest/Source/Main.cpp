@@ -9,9 +9,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include <learnopengl/shader.h>
-#include <learnopengl/camera.h>
-#include <learnopengl/model.h>
+#include "Source/learnopengl/shader.h"
+#include "Source/learnopengl/camera.h"
+#include "Source/learnopengl/model.h"
 
 #include <iostream>
 
