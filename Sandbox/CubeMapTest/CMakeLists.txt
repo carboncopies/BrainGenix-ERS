@@ -52,3 +52,6 @@ target_link_libraries(${PROJECT_NAME}
 
 # COPY FILES TO BINARY DIR
 file(COPY "${SRC_DIR}/Container.png" DESTINATION "${BIN_DIR}/")
+file(COPY "${SRC_DIR}/*.vs" DESTINATION "${BIN_DIR}/")
+file(COPY "${SRC_DIR}/*.fs" DESTINATION "${BIN_DIR}/")
+file(COPY "${SRC_DIR}/*.gs" DESTINATION "${BIN_DIR}/")
