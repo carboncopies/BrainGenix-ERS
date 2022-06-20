@@ -18,6 +18,10 @@
 #include <ERS_STRUCT_OpenGLLogItem.h>
 #include <ERS_STRUCT_MessageCallbackUserParam.h>
 
+
+// Forward Definition
+class ERS_CLASS_OpenGLLoggingSystem;
+
 /**
  * @brief Used to collect messages and add them to the system log from opengl's callback system.
  * 
