@@ -18,19 +18,30 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
     std::string Source;
     std::string Type;
     std::string Severity;
+    
     int LogLevel;
+    bool WillLog = true;
 
     switch (GLSource) {
         case GL_DEBUG_SOURCE_API:
         Source = "API";
+        if (!OpenGLLoggingSystem->LogSourceApi_){
+            WillLog = false;
+        }
         break;
 
         case GL_DEBUG_SOURCE_WINDOW_SYSTEM:
         Source = "WINDOW SYSTEM";
+        if (!OpenGLLoggingSystem->LogSourceWindowSystem_){
+            WillLog = false;
+        }
         break;
 
         case GL_DEBUG_SOURCE_SHADER_COMPILER:
         Source = "SHADER COMPILER";
+        if (!OpenGLLoggingSystem->LogSourceApi_){
+            WillLog = false;
+        }
         break;
 
         case GL_DEBUG_SOURCE_THIRD_PARTY:
