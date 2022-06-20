@@ -9,6 +9,7 @@ add_library(learnopengl
             "camera.h"
             "model.h"
             "shader.h"
+            "mesh.h"
 
             ${BACKWARD_ENABLE}
 )
