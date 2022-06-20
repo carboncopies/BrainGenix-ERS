@@ -128,6 +128,9 @@ ERS_CLASS_OpenGLLoggingSystem::~ERS_CLASS_OpenGLLoggingSystem() {
 
     Logger_->Log("OpenGL Log Collection Subsystem Destructor Called", 6);
 
+    // Turn Off Output As Callback Relies On PointerS Owned By This Class, Causing A Segfault If Not Disabled Here
+    glDisable(GL_DEBUG_OUTPUT);
+
 }
 
 void ERS_CLASS_OpenGLLoggingSystem::SetCollectionStatus(bool Status) {
