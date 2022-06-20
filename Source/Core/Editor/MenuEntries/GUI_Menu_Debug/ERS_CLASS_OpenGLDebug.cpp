@@ -91,4 +91,24 @@ void ERS_CLASS_OpenGLDebug::DrawMenu() {
     ImGui::EndMenu();
     }
 
+    // Severity Submenu
+    if (ImGui::BeginMenu("GL Severity")) {
+
+        if (ImGui::MenuItem("GL_DEBUG_SEVERITY_HIGH", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSeverityHigh_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_SEVERITY_MEDIUM", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSeverityMedium_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_SEVERITY_LOW", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSeverityLow_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+        if (ImGui::MenuItem("GL_DEBUG_SEVERITY_NOTIFICATION", "", &ERS_CLASS_OpenGLLoggingSystem_->LogSeverityNotification_)) {
+            ERS_CLASS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
+        }
+
+
+    ImGui::EndMenu();
+    }
+
 }
