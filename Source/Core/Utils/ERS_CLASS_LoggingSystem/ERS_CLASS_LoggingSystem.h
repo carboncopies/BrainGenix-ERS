@@ -33,10 +33,10 @@ private:
     YAML::Node LocalSystemConfiguration;
 
 
-    bool PrintLogOutput;
-    bool ColorizeLog;
-    bool ReplaceLevelWithText;
-    bool UseTextLogLevel_;
+    bool PrintLogOutput = true;
+    bool ColorizeLog = true;
+    bool ReplaceLevelWithText = false;
+    bool UseTextLogLevel_ = false;
     int MinimumLogLevel = 5;
 
     int LogLevelTargetWidth = 6;
