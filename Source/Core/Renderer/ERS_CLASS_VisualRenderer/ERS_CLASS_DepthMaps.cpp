@@ -206,20 +206,6 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
             DepthMapTexturesCubemapAlreadyAllocated_.push_back(false);
         }
     }
-
-    // for (unsigned int i = 0; i < DepthMapTexturesCubemapAlreadyAllocated_.size(); i++) {
-
-    //     long ID = DepthMapTexturesCubemapAlreadyAllocated_[i];
-
-    //     // Check If Valid ID
-    //     if (glIsFramebuffer(ID)) {
-            
-    //     } else if (ID != -1) {
-    //         SystemUtils_->Logger_->Log("Framebuffer Object Is Invalid, Removing From Allocation Table", 4, LogEnabled);
-    //         DepthMapTexturesCubemapAlreadyAllocated_[i] = -1;
-    //     }
-
-    // }
     SystemUtils_->Logger_->Log("Done Updating/Checking Cubemap Allocation Array", 3, LogEnabled);
 
 
