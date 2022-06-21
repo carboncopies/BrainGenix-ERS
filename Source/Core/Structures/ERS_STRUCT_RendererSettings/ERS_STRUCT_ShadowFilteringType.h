@@ -13,4 +13,8 @@
 
 
 
-/
+struct ERS_STRUCT_ShadowFilteringType {
+
+    
+
+}
