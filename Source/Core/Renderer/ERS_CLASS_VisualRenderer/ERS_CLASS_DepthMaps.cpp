@@ -459,11 +459,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
     // Check Settings
     CheckSettings();
 
-    ERS::Renderer::ShadowUpdateMode UpdateMode = SystemUtils_->RendererSettings_->ShadowUpdateMode_;
 
-
-    // Ensure That Shadows Aren't Supposed To Be Disabled
-    if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
 
 
         // Fix Offset (Peter Panning)
@@ -529,8 +525,5 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
         // Return To Normal Culling
         glCullFace(GL_BACK);
 
-
-
-    }
 
 }
