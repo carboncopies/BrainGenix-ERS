@@ -105,13 +105,13 @@ void Widget_RenderingSettings::Draw() {
                 bool Apply = false;
                 ERS_STRUCT_RendererSettings* Settings = SystemUtils_->RendererSettings_.get();
 
-                char* ShadowFilteringNames[] = {
+                const char* ShadowFilteringNames[] = {
                     "ERS_SHADOW_FILTERING_DISABLED",
                     "ERS_SHADOW_FILTERING_PCF",
                     "ERS_SHADOW_FILTERING_POISSON_SAMPLING",
                     "ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING"
                 };
-                char* ShadowUpdateNames[] = {
+                const char* ShadowUpdateNames[] = {
                     "ERS_SHADOW_UPDATE_MODE_DISABLED",
                     "ERS_SHADOW_UPDATE_MODE_RANDOM",
                     "ERS_SHADOW_UPDATE_MODE_CONSECUTIVE",
