@@ -43,7 +43,7 @@ private:
 
 public:
 
-    bool Enabled_ = false; /**<Show/Hide Widget*/
+    bool Enabled_ = true; /**<Show/Hide Widget*/
 
 
     /**
