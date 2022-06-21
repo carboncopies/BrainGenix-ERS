@@ -265,7 +265,7 @@ void Window_ShaderEditor::DrawToolsWindow() {
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ResetProgram();
     std::string VertexLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileVertexShader(VertexText.c_str());
     std::string FragmentLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileFragmentShader(FragmentText.c_str());
-    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CreateShaderProgram();
+    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CreateShaderProgram(false);
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->DisplayName = "Preview Shader";
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->InternalName = "Preview Shader";
 
