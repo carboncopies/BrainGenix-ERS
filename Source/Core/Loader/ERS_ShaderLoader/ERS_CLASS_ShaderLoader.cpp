@@ -87,7 +87,6 @@ void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(VertexID, VertexData.get());
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(FragmentID, FragmentData.get());
 
-    std::cout<<GeometryID<<std::endl;
 
     if (GeometryID != -1) {
         SystemUtils_->ERS_IOSubsystem_->ReadAsset(GeometryID, GeometryData.get());
