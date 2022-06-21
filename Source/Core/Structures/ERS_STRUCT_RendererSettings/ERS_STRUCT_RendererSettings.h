@@ -14,6 +14,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_ENUM_ShadowFilteringType.h>
+#include <ERS_ENUM_ShadowUpdateMode.h>
 
 
 /**
@@ -28,7 +29,7 @@ struct ERS_STRUCT_RendererSettings {
 
     // Set Shadow Update Settings
     ERS::Renderer::ShadowFilteringType ShadowFilteringType_ = ERS::Renderer::ERS_PCF_FILTERING;
-    
+    ERS::Renderer::ShadowUpdateMode ShadowUpdateMode_ = ERS::Renderer::ERS_
     int MaxShadowUpdatesPerFrame_ = 20;
 
 };
