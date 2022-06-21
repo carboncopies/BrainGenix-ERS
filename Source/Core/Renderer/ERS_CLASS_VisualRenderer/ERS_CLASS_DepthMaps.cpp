@@ -276,7 +276,7 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndexCubemap() {
 
     DepthMapTexturesCubemapAlreadyAllocated_[StartSize] = true;
 
-    return StartSize + 1;
+    return StartSize;
 
 }
 
