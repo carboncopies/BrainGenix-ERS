@@ -419,6 +419,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
 
     DepthShader->SetVec3("LightPos", Light->Pos);
     DepthShader->SetFloat("FarPlane", Light->MaxDistance);
+    DepthShader->SetInt("ShadowMapIndex", Light->DepthMap.DepthMapTextureIndex);
     Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
 
 }
@@ -509,10 +510,10 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
         ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
 
         // Check If Light Has DepthMap
-        // if (!Light->DepthMap.Initialized) {
-        //     Light->DepthMap.DepthMapTextureIndex = AllocateDepthMapIndexCubemap();
-        //     Light->DepthMap.Initialized = true;
-        // }
+        if (!Light->DepthMap.Initialized) {
+            Light->DepthMap.DepthMapTextureIndex = AllocateDepthMapIndexCubemap();
+            Light->DepthMap.Initialized = true;
+        }
 
         // Render To Depth Map
         UpdateDepthMap(Light, CubemapDepthShader);
