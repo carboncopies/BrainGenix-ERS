@@ -597,7 +597,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
 
     // Render All Sides
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-    glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);//Light->DepthMap.FrameBufferObjectID);
+    glBindFramebuffer(GL_FRAMEBUFFER, TESTFBO);//Light->DepthMap.FrameBufferObjectID);
     glClear(GL_DEPTH_BUFFER_BIT);
 
     DepthShader->MakeActive();
