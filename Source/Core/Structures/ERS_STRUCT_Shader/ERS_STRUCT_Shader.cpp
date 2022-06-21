@@ -202,35 +202,35 @@ std::string ERS_STRUCT_Shader::CompileTEShader(const char* TEText, ERS_CLASS_Log
 
 }
 
-std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logger) {
+std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logger, bool LogEnable) {
 
     // Create Shader Program
     ShaderProgram_ = glCreateProgram();
 
     // Attach Shaders To Program
-    Logger->Log("Attaching Vertex Shader", 3);
+    Logger->Log("Attaching Vertex Shader", 3, LogEnable);
     glAttachShader(ShaderProgram_, VertexShader);
 
-    Logger->Log("Attaching Fragment Shader", 3);
+    Logger->Log("Attaching Fragment Shader", 3, LogEnable);
     glAttachShader(ShaderProgram_, FragmentShader);
 
     if (HasGeometryShader) {
-        Logger->Log("Attaching Geometry Shader", 3);
+        Logger->Log("Attaching Geometry Shader", 3, LogEnable);
         glAttachShader(ShaderProgram_, GeometryShader);
     }
 
     if (HasComputeShader) {
-        Logger->Log("Attaching Compute Shader", 3);
+        Logger->Log("Attaching Compute Shader", 3, LogEnable);
         glAttachShader(ShaderProgram_, ComputeShader);
     }
 
     if (HasTCShader) {
-        Logger->Log("Attaching TC Shader", 3);
+        Logger->Log("Attaching TC Shader", 3, LogEnable);
         glAttachShader(ShaderProgram_, TCShader);
     }
 
     if (HasTEShader) {
-        Logger->Log("Attaching TE Shader", 3);
+        Logger->Log("Attaching TE Shader", 3, LogEnable);
         glAttachShader(ShaderProgram_, TEShader);
     }
 
@@ -246,9 +246,7 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
         char InfoLog[65535];
         glGetProgramInfoLog(ShaderProgram_, 65535, NULL, InfoLog);
         ErrorMessage = std::string(InfoLog);
-        if (Logger != nullptr) {
-            Logger->Log("Shader Link Error: " +  std::string(InfoLog), 8);
-        }
+        Logger->Log("Shader Link Error: " +  std::string(InfoLog), 8, LogEnable);
     }
 
     // Free RAM
