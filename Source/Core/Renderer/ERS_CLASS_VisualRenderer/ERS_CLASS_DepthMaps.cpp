@@ -165,49 +165,112 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray2D(int NumberOfTextures,
 bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfTextures, bool LogEnabled) {
 
 
-    SystemUtils_->Logger_->Log(
-        std::string("Generating Depth Map Texture Cube Map Array Of ") + std::to_string(NumberOfTextures)
-         + std::string(" Textures, With Width Of ") + std::to_string(DepthTextureArrayWidth_)
-         + std::string(" Pixels, And Height Of ") + std::to_string(DepthTextureArrayHeight_)
-         + std::string(" Pixels")
-        , 5, LogEnabled);
+    // SystemUtils_->Logger_->Log(
+    //     std::string("Generating Depth Map Texture Cube Map Array Of ") + std::to_string(NumberOfTextures)
+    //      + std::string(" Textures, With Width Of ") + std::to_string(DepthTextureArrayWidth_)
+    //      + std::string(" Pixels, And Height Of ") + std::to_string(DepthTextureArrayHeight_)
+    //      + std::string(" Pixels")
+    //     , 5, LogEnabled);
 
-    // Check If Already Texture, If So, Delete So We Can Overwrite it
-    SystemUtils_->Logger_->Log("Checking If Texture Cubemap Array Already Exists", 4, LogEnabled);
-    bool TextureAlreadyExists = glIsTexture(DepthTextureCubemapArrayID_);
-    if (TextureAlreadyExists) {
-        SystemUtils_->Logger_->Log("Cubemap Array ID Already In Use, Freeing First", 3, LogEnabled);
-        glDeleteTextures(1, &DepthTextureCubemapArrayID_);
-    } else {
-        SystemUtils_->Logger_->Log("Cubemap Array ID Not Already In Use", 3, LogEnabled);
-    }
+    // // Check If Already Texture, If So, Delete So We Can Overwrite it
+    // SystemUtils_->Logger_->Log("Checking If Texture Cubemap Array Already Exists", 4, LogEnabled);
+    // bool TextureAlreadyExists = glIsTexture(DepthTextureCubemapArrayID_);
+    // if (TextureAlreadyExists) {
+    //     SystemUtils_->Logger_->Log("Cubemap Array ID Already In Use, Freeing First", 3, LogEnabled);
+    //     glDeleteTextures(1, &DepthTextureCubemapArrayID_);
+    // } else {
+    //     SystemUtils_->Logger_->Log("Cubemap Array ID Not Already In Use", 3, LogEnabled);
+    // }
 
-    // Handle The Creation Of A New Texture Array
-    SystemUtils_->Logger_->Log("Setting Up Cubemap Texture Array Metadata", 3, LogEnabled);
-    DepthTextureCubemapNumTextures_ = NumberOfTextures;
-
-
-
-
-    if (!glIsFramebuffer(CubemapFBO_)) {
-        glGenFramebuffers(1, &CubemapFBO_);
-    }
+    // // Handle The Creation Of A New Texture Array
+    // SystemUtils_->Logger_->Log("Setting Up Cubemap Texture Array Metadata", 3, LogEnabled);
+    // DepthTextureCubemapNumTextures_ = NumberOfTextures;
 
 
 
-    SystemUtils_->Logger_->Log("Setting Up Cubemap Texture Array OpenGL Parameters", 4, LogEnabled);
-    glGenTextures(1, &DepthTextureCubemapArrayID_);
-    glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, DepthTextureCubemapArrayID_);
 
+    // if (!glIsFramebuffer(CubemapFBO_)) {
+    //     glGenFramebuffers(1, &CubemapFBO_);
+    // }
+
+
+
+    // SystemUtils_->Logger_->Log("Setting Up Cubemap Texture Array OpenGL Parameters", 4, LogEnabled);
+    // glGenTextures(1, &DepthTextureCubemapArrayID_);
+    // glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, DepthTextureCubemapArrayID_);
+
+    // // for (unsigned int i = 0; i < 6; ++i)
+    // //     glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_DEPTH_COMPONENT, DepthTextureArrayWidth_, DepthTextureArrayHeight_, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+
+
+    // glTexImage3D(GL_TEXTURE_CUBE_MAP_ARRAY,
+    //     0,                        // Current 'mipmap level', We're not using these so 0 is fine
+    //     GL_DEPTH_COMPONENT24,     // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
+    //     DepthTextureArrayWidth_,  // Cubemap Width
+    //     DepthTextureArrayHeight_, // Cubemap Height
+    //     NumberOfTextures * 6,     // Total Number Of Textures In The Array
+    //     0,                        // Border, we're not using this
+    //     GL_DEPTH_COMPONENT,       // Tells opengl what kind of data we're storing in this texture
+    //     GL_FLOAT,                 // tells opengl how to store the data
+    //     NULL                      // if we were loading an image in, we could then pass the data in here, but we're not so this is left as null
+    // );
+
+
+    // // glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+    // // glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+    // // glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_BORDER);
+    // // glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    // // glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    // // float BorderColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    // // glTexParameterfv(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_BORDER_COLOR, BorderColor); 
+
+    // glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    // glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    // glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    // glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    // glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+
+    // //glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, 0);
+
+
+ 
+    // SystemUtils_->Logger_->Log("Cubemap Depth Map Texture Array Initialization Complete", 4, LogEnabled);
+
+
+
+
+    // glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
+    // glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, 0);
+    // glDrawBuffer(GL_NONE);
+    // glReadBuffer(GL_NONE);
+    // glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+
+
+
+
+
+
+
+
+
+    const unsigned int SHADOW_WIDTH = 2048, SHADOW_HEIGHT = 2048;
+    unsigned int NumberOfTextures = 16;
+    unsigned int depthMapFBO;
+    glGenFramebuffers(1, &depthMapFBO);
+    // create depth cubemap texture
+    unsigned int depthCubemap;
+    glGenTextures(1, &depthCubemap);
+    glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, depthCubemap);
     // for (unsigned int i = 0; i < 6; ++i)
-    //     glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_DEPTH_COMPONENT, DepthTextureArrayWidth_, DepthTextureArrayHeight_, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+    //     glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
 
 
     glTexImage3D(GL_TEXTURE_CUBE_MAP_ARRAY,
         0,                        // Current 'mipmap level', We're not using these so 0 is fine
         GL_DEPTH_COMPONENT24,     // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
-        DepthTextureArrayWidth_,  // Cubemap Width
-        DepthTextureArrayHeight_, // Cubemap Height
+        SHADOW_WIDTH,  // Cubemap Width
+        SHADOW_HEIGHT, // Cubemap Height
         NumberOfTextures * 6,     // Total Number Of Textures In The Array
         0,                        // Border, we're not using this
         GL_DEPTH_COMPONENT,       // Tells opengl what kind of data we're storing in this texture
@@ -216,34 +279,28 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
     );
 
 
-    // glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
-    // glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-    // glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_BORDER);
-    // glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    // glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    // float BorderColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
-    // glTexParameterfv(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_BORDER_COLOR, BorderColor); 
-
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
-
-    //glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, 0);
-
-
- 
-    SystemUtils_->Logger_->Log("Cubemap Depth Map Texture Array Initialization Complete", 4, LogEnabled);
-
-
-
-
-    glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
-    glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, 0);
+    // attach depth texture as FBO's depth buffer
+    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+    glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, depthCubemap, 0);
     glDrawBuffer(GL_NONE);
     glReadBuffer(GL_NONE);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+
+
+
+    TESTFBO = depthMapFBO;
+    TESTCubemap = depthCubemap;
+
+
+
+
+
 
     // Update Allocation Array
     SystemUtils_->Logger_->Log("Checking Cubemap Depth Map Texture Array Allocation Array", 3, LogEnabled);
