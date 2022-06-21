@@ -26,6 +26,11 @@ struct ERS_STRUCT_RendererSettings {
     int ShadowMapX_ = 2048;
     int ShadowMapY_ = 2048;
 
+    // Set Shadow Filtering Type
+    
+    // Set Max Shadow Updates Per Frame
+    int MaxShadowUpdatesPerFrame = 20;
 
+    
 
 };
