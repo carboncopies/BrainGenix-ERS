@@ -272,7 +272,7 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndexCubemap() {
     SystemUtils_->Logger_->Log("Depth Cubemap Map Texture Array Full, Regenerating With More Textures", 5);
     int StartSize = DepthMapTexturesCubemapAlreadyAllocated_.size();
     RegenerateDepthMapTextureArrayCubemap(StartSize + DepthMapAllocationChunkSize_);
-    SystemUtils_->Logger_->Log(std::string("Finished Updating Cubemap Depth Map Array, Allocating Depth Map Texture Array Index: ") + std::to_string(StartSize + DepthMapAllocationChunkSize_), 5);
+    SystemUtils_->Logger_->Log(std::string("Finished Updating Cubemap Depth Map Array, Allocating Depth Map Texture Array Index: ") + std::to_string(StartSize + 1), 5);
 
     DepthMapTexturesCubemapAlreadyAllocated_[StartSize + 1] = true;
 
