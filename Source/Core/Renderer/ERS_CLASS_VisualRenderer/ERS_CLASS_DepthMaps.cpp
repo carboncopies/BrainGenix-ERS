@@ -459,68 +459,74 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
     // Check Settings
     CheckSettings();
 
+    ERS::Renderer::ShadowUpdateMode UpdateMode = SystemUtils_->RendererSettings_->ShadowUpdateMode_;
 
-    // Fix Offset (Peter Panning)
-    glCullFace(GL_FRONT);
+    // Ensure That Shadows Aren't Supposed To Be Disabled
+    if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
 
-    // Get Active Scene
-    ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+        // Fix Offset (Peter Panning)
+        glCullFace(GL_FRONT);
 
-    // Handle Directional Lights
-    for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
+        // Get Active Scene
+        ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
 
-        // Extract Struct
-        ERS_STRUCT_DirectionalLight* Light = ActiveScene->DirectionalLights[i].get();
+        // Handle Directional Lights
+        for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
 
-        // Check If Light Has DepthMap
-        if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap2D();   
+            // Extract Struct
+            ERS_STRUCT_DirectionalLight* Light = ActiveScene->DirectionalLights[i].get();
+
+            // Check If Light Has DepthMap
+            if (!Light->DepthMap.Initialized) {
+                Light->DepthMap = GenerateDepthMap2D();   
+            }
+
+            // Render To Depth Map
+            UpdateDepthMap(Light, DepthShader);
+
+        } 
+
+        // Handle Spot Lights
+        for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
+
+            // Extract Struct
+            ERS_STRUCT_SpotLight* Light = ActiveScene->SpotLights[i].get();
+
+            // Check If Light Has DepthMap
+            if (!Light->DepthMap.Initialized) {
+                Light->DepthMap = GenerateDepthMap2D();   
+            }
+
+            // Render To Depth Map
+            UpdateDepthMap(Light, DepthShader);
+
         }
 
-        // Render To Depth Map
-        UpdateDepthMap(Light, DepthShader);
+        // Handle Point Lights
+        glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
+        glClear(GL_DEPTH_BUFFER_BIT);
 
-    } 
+        for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
 
-    // Handle Spot Lights
-    for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
+            // Extract Struct
+            ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
 
-        // Extract Struct
-        ERS_STRUCT_SpotLight* Light = ActiveScene->SpotLights[i].get();
+            // Check If Light Has DepthMap
+            if (!Light->DepthMap.Initialized) {
+                Light->DepthMap.DepthMapTextureIndex = AllocateDepthMapIndexCubemap();
+                Light->DepthMap.Initialized = true;
+            }
 
-        // Check If Light Has DepthMap
-        if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap2D();   
-        }
+            // Render To Depth Map
+            UpdateDepthMap(Light, CubemapDepthShader);
 
-        // Render To Depth Map
-        UpdateDepthMap(Light, DepthShader);
+
+        } 
+
+
+        // Return To Normal Culling
+        glCullFace(GL_BACK);
 
     }
-
-    // Handle Point Lights
-    glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
-    glClear(GL_DEPTH_BUFFER_BIT);
-
-    for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
-
-        // Extract Struct
-        ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
-
-        // Check If Light Has DepthMap
-        if (!Light->DepthMap.Initialized) {
-            Light->DepthMap.DepthMapTextureIndex = AllocateDepthMapIndexCubemap();
-            Light->DepthMap.Initialized = true;
-        }
-
-        // Render To Depth Map
-        UpdateDepthMap(Light, CubemapDepthShader);
-
-
-    } 
-
-
-    // Return To Normal Culling
-    glCullFace(GL_BACK);
 
 }
