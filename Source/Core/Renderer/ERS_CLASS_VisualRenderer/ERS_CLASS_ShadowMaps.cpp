@@ -35,8 +35,8 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
     // Ensure That Shadows Aren't Supposed To Be Disabled
     if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
 
-    // Update All Depth Maps
-    ERS_CLASS_DepthMaps_->UpdateDepthMaps(DepthMapShader, CubemapDepthShader);
+        // Update All Depth Maps
+        ERS_CLASS_DepthMaps_->UpdateDepthMaps(DepthMapShader, CubemapDepthShader);
 
     }
 
