@@ -103,6 +103,7 @@ void Widget_RenderingSettings::Draw() {
                 ImGui::Separator();
                 ImGui::Spacing();
                 bool Apply = false;
+                ERS_STRUCT_RendererSettings* = SystemUtils_->RendererSettings_.get();
 
 
                 ImGui::InputInt2("Depth Map Resolution", DepthMapResolution_);
