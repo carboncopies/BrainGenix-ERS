@@ -31,8 +31,7 @@
 #include <ERS_STRUCT_Viewport.h>
 #include <ERS_STRUCT_DepthMap.h>
 
-#include <ERS_ENUM_ShadowFilteringType.h>
-#include <ERS_ENUM_ShadowUpdateMode.h>
+
 
 #include <ERS_FUNCTION_ConvertRotationToFrontVector.h>
 

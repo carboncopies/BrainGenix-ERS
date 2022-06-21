@@ -30,6 +30,8 @@
 #include <ERS_STRUCT_DepthMap.h>
 #include <ERS_STRUCT_Shader.h>
 
+#include <ERS_ENUM_ShadowFilteringType.h>
+#include <ERS_ENUM_ShadowUpdateMode.h>
 
 
 /**
