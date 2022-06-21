@@ -27,7 +27,5 @@ struct ERS_STRUCT_RendererSettings {
     int ShadowMapY_ = 2048;
 
 
-    // Indicate If Settings Have Changed
-    bool HaveSettingsChanged_ = false;
 
 };
