@@ -124,7 +124,7 @@ void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct
     ShaderStruct->DisplayName = ShaderName;
     ShaderStruct->InternalName = ShaderName;
 
-    SystemUtils_->Logger_->Log(std::string("Loaded Shader '") + ShaderName + std::string("'"), 5);
+    SystemUtils_->Logger_->Log(std::string("Loaded Shader '") + ShaderName + std::string("' With OpenGL Program ID '") + std::to_string(ShaderStruct->ShaderProgram_) + std::string("'"), 5);
 
 
 
