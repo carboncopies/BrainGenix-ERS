@@ -143,17 +143,17 @@ void Widget_RenderingSettings::Draw() {
                 }
 
 
-
+                // Draw Buttons/Input Fields
                 ImGui::InputInt2("Depth Map Resolution", DepthMapResolution_);
-                Apply = ImGui::Button("Apply");
                 
                 ImGui::InputInt("Max Shadow Updates Per Frame", &Settings->MaxShadowUpdatesPerFrame_);
-
 
                 ImGui::Combo("Shadow Filtering", &SelectedShadowFiltering_, ShadowFilteringNames, 4);
                 ImGui::Combo("Shadow Update Mode", &SelectedShadowUpdates_, ShadowUpdateNames, 5);
                 
 
+                // Handle Apply Button
+                Apply = ImGui::Button("Apply");
                 if (Apply) {
                     Settings->ShadowMapX_ = DepthMapResolution_[0];
                     Settings->ShadowMapY_ = DepthMapResolution_[1];
