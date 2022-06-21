@@ -12,15 +12,19 @@
 // Internal Libraries (BG convention: use <> instead of "")
 
 
-enum ERS_ShadowFilteringType {
+namespace ERS {
 
-    
+    namespace Renderer {
+
+        enum ShadowFilteringType {
+
+            ERS_NO_FILTERING,
+            ERS_PCF_FILTERING,
+            ERS_POISSON_SAMPLING,
+            ERS_STRATIFIED_POISSON_SAMPLING
+
+        };
+
+    }
 
 }
-
-
-struct ERS_STRUCT_ShadowFilteringType {
-
-
-
-};
