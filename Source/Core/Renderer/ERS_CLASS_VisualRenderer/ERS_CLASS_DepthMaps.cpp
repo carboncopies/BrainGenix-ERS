@@ -378,6 +378,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS
 
 void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUCT_Shader* DepthShader) {
 
+    // Only Update If Instructed To Do SO
     if (Light->DepthMap.ToBeUpdated) {
 
         // Setup Variables
@@ -421,7 +422,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
 
 void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT_Shader* DepthShader) {
 
-
+    // Only Update If Instructed To Do So
     if (Light->DepthMap.ToBeUpdated) {
 
 
