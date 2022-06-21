@@ -117,7 +117,7 @@ uniform int NumberDirectionalLights;
 uniform int NumberPointLights;
 uniform int NumberSpotLights;
 uniform STRUCT_DirectionalLight DirectionalLights[2];
-uniform STRUCT_PointLight PointLights[32];
+uniform STRUCT_PointLight PointLights[42];
 uniform STRUCT_SpotLight SpotLights[64];
 
 // Gamma Correction Info
@@ -596,6 +596,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
