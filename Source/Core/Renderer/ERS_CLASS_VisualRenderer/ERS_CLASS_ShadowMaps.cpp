@@ -26,12 +26,10 @@ ERS_CLASS_ShadowMaps::~ERS_CLASS_ShadowMaps() {
 
 void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, ERS_STRUCT_Shader* CubemapDepthShader) {
 
-
-    ERS_CLASS_DepthMaps_-Setting
-
-
+    // Get Updated Info From Renderer Settings
+    ERS_CLASS_DepthMaps_->CheckSettings();
     ERS::Renderer::ShadowUpdateMode UpdateMode = SystemUtils_->RendererSettings_->ShadowUpdateMode_;
-
+    ERS::Renderer::ShadowFilteringType FilterMode = SystemUtils_->RendererSettings_->ShadowFilteringType_;
 
 
     // Ensure That Shadows Aren't Supposed To Be Disabled
