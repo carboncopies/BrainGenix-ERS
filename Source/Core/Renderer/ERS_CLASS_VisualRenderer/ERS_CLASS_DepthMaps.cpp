@@ -555,7 +555,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     // Not sure what's going on but try setting the gl_FraPos in the vert shader manually to figure out what's going on so that we can get this problem resolved.
 
     DepthShader->SetVec3("lightPos", Light->Pos);
-    DepthShader->SetFloat("far_plane", Light->MaxDistance);
+    DepthShader->SetFloat("far_plane", FarPlane);
     //glActiveTexture(GL_TEXTURE0);
     Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
 
