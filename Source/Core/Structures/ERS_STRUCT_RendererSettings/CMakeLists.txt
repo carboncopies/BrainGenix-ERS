@@ -8,6 +8,7 @@ add_library(ERS_STRUCT_RendererSettings
 
             # Add Source Files (.cpp)
             "ERS_STRUCT_RendererSettings.cpp"
+            "ERS_"
 
             # Add Header Files (.h)
             "ERS_STRUCT_RendererSettings.h"
