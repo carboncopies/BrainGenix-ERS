@@ -28,8 +28,8 @@ struct ERS_STRUCT_RendererSettings {
     int ShadowMapY_ = 2048;
 
     // Set Shadow Update Settings
-    ERS::Renderer::ShadowFilteringType ShadowFilteringType_ = ERS::Renderer::ERS_PCF_FILTERING;
-    ERS::Renderer::ShadowUpdateMode ShadowUpdateMode_ = ERS::Renderer::ERS_
+    ERS::Renderer::ShadowFilteringType ShadowFilteringType_ = ERS::Renderer::ERS_SHADOW_FILTERING_PCF;
+    ERS::Renderer::ShadowUpdateMode ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL;
     int MaxShadowUpdatesPerFrame_ = 20;
 
 };
