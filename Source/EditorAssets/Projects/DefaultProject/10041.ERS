@@ -384,7 +384,7 @@ float ShadowCalculation(STRUCT_PointLight Light)
     vec3 fragToLight = Object.FragPos - Light.Position;
 
     // ise the fragment to light vector to sample from the depth map    
-    float closestDepth = texture(DepthMapCubeArray, vec4(fragToLight, 0)).r;
+    float closestDepth = texture(DepthMapCubeArray, vec4(fragToLight, Light.DepthCubemapIndex)).r;
     // it is currently in linear range between [0,1], let's re-transform it back to original depth value
     closestDepth *= Light.MaxDistance;
     // now get current linear depth as the length between the fragment and light position
@@ -596,6 +596,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
