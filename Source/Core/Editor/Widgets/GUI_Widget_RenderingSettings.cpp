@@ -107,7 +107,17 @@ void Widget_RenderingSettings::Draw() {
                 int SelectedShadowFiltering = 0;
                 int SelectedShadowUpdates = 0;
 
-                
+                if (Settings->ShadowFilteringType_ == ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED) {
+                    SelectedShadowFiltering = 0;
+                } else if (Settings->ShadowFilteringType_ == ERS::Renderer::ERS_SHADOW_FILTERING_PCF) {
+                    SelectedShadowFiltering = 1;
+                } else if (Settings->ShadowFilteringType_ == ERS::Renderer::ERS_SHADOW_FILTERING_POISSON_SAMPLING) {
+                    SelectedShadowFiltering = 2;
+                } else if (Settings->ShadowFilteringType_ == ERS::Renderer::ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING) {
+                    SelectedShadowFiltering = 3;
+                }
+
+
 
 
                 ImGui::InputInt2("Depth Map Resolution", DepthMapResolution_);
