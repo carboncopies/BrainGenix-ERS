@@ -459,6 +459,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
     // Check Settings
     CheckSettings();
 
+
     // Fix Offset (Peter Panning)
     glCullFace(GL_FRONT);
 
