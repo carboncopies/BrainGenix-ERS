@@ -108,6 +108,8 @@ void Widget_RenderingSettings::Draw() {
                 ImGui::InputInt2("Depth Map Resolution", DepthMapResolution_);
                 Apply = ImGui::Button("Apply");
                 
+                ImGui::InputInt("Max Shadow Updates Per Frame", &SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_);
+
                 if (Apply) {
                     SystemUtils_->RendererSettings_->ShadowMapX_ = DepthMapResolution_[0];
                     SystemUtils_->RendererSettings_->ShadowMapY_ = DepthMapResolution_[1];
