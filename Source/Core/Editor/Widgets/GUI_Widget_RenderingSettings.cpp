@@ -103,24 +103,27 @@ void Widget_RenderingSettings::Draw() {
                 ImGui::Separator();
                 ImGui::Spacing();
                 bool Apply = false;
-                ERS_STRUCT_RendererSettings* = SystemUtils_->RendererSettings_.get();
+                ERS_STRUCT_RendererSettings* Settings = SystemUtils_->RendererSettings_.get();
+                int SelectedShadowFiltering = 0;
+                int SelectedShadowUpdates = 0;
+
+                
 
 
                 ImGui::InputInt2("Depth Map Resolution", DepthMapResolution_);
                 Apply = ImGui::Button("Apply");
                 
-                ImGui::InputInt("Max Shadow Updates Per Frame", &SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_);
+                ImGui::InputInt("Max Shadow Updates Per Frame", &Settings->MaxShadowUpdatesPerFrame_);
 
 
-                int SelectedShadowFiltering = 0;
-                
+
 
 
                 ImGui::Combo("Shadow Filtering", )
 
                 if (Apply) {
-                    SystemUtils_->RendererSettings_->ShadowMapX_ = DepthMapResolution_[0];
-                    SystemUtils_->RendererSettings_->ShadowMapY_ = DepthMapResolution_[1];
+                    Settings->ShadowMapX_ = DepthMapResolution_[0];
+                    Settings->ShadowMapY_ = DepthMapResolution_[1];
                 }
 
 
