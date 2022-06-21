@@ -65,7 +65,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
     // Set Depth Shader For Shadow System
     DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthMap"), &Shaders_)].get();
-
+    CubemapDepthShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthCubeMap"), &Shaders_)].get();
 
     // Close Any Viewports That Aren't All Open
     int ViewportsToClose = -1;
@@ -81,7 +81,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
     // Generate Shadows
     //DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("Preview Shader"), &Shaders_)].get();
-    ShadowMaps_->UpdateShadowMaps(DepthMapShader_);
+    ShadowMaps_->UpdateShadowMaps(DepthMapShader_, CubemapDepthShader_);
 
 
     // Setup Vars
@@ -412,22 +412,20 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
 
-
-
-
-
-
+        // Bind To Shadow Maps
         glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram_, "DepthMapArray"), 8);
         glActiveTexture(GL_TEXTURE8);
         glBindTexture(GL_TEXTURE_2D_ARRAY, ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureArrayID_);
 
+        glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram_, "DepthCubemapArray"), 9);
+        glActiveTexture(GL_TEXTURE9);
+        glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureCubemapArrayID_);
 
 
         // Render
         
         //MeshRenderer_->RenderSceneNoTextures(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), Shaders_[ShaderIndex].get());
         MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, Shaders_[ShaderIndex].get());
-        
 
         if (Viewports_[Index]->GridEnabled) {
             Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position_);
@@ -445,7 +443,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             ImGui::GetCursorScreenPos(),
             ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x, ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
             ImVec2(0, 1),
-            ImVec2(1, 0)        
+            ImVec2(1, 0)
         );
 
 
@@ -680,7 +678,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->DirectionalLights[i]->MaxDistance);
 
         ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex);
-        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->DirectionalLights[i]->LightSpaceMatrix);
+        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.TransformationMatrix);
     
     }
 
@@ -698,9 +696,33 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->PointLights[i]->MaxDistance);
 
 
-        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
-        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->PointLights[i]->LightSpaceMatrix);
-      
+        ActiveShader->SetInt((UniformName + std::string(".DepthCubemapIndex")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
+
+        //ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
+
+
+        // float NearPlane, FarPlane;
+        // NearPlane = 0.1f;
+        // FarPlane = Light->MaxDistance;
+
+        // // Calculate Project, View, Space Matrices
+        // float AspectRatio = 2048 / 2048;
+        // glm::mat4 ObjectProjection = glm::perspective(glm::radians(90.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
+        
+        // std::vector<glm::mat4> ShadowTransforms;
+        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 1.0, 0.0, 0.0), glm::vec3(0.0,-1.0, 0.0)));
+        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3(-1.0, 0.0, 0.0), glm::vec3(0.0,-1.0, 0.0)));
+        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 1.0, 0.0), glm::vec3(0.0, 0.0, 1.0)));
+        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0,-1.0, 0.0), glm::vec3(0.0, 0.0,-1.0)));
+        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0, 1.0), glm::vec3(0.0,-1.0, 0.0)));
+        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0,-1.0), glm::vec3(0.0,-1.0, 0.0)));
+
+        // for (unsigned int x = 0; x < 6; x++) {
+
+        //     ActiveShader->SetMat4((UniformName + std::string(".Matrix") + std::to_string(x)).c_str(), ShadowTransforms[x]);
+
+        // }
+
     }
 
 
@@ -723,8 +745,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
 
         ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndex);
-        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->SpotLights[i]->LightSpaceMatrix);
-   
+        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->SpotLights[i]->DepthMap.TransformationMatrix);
+
     }
 
 

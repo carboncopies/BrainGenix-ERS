@@ -1,4 +1,4 @@
-#version 330 core
+#version 420 core
 
 // Set Outputs
 out vec4 FragColor;
@@ -41,8 +41,7 @@ struct STRUCT_PointLight {
     float Intensity;
     float MaxDistance;
     
-    int DepthMapIndex;
-    mat4 LightSpaceMatrix;
+    int DepthCubemapIndex;
 
 };
 
@@ -102,6 +101,7 @@ uniform sampler2D texture_emissive1;
 uniform sampler2D texture_metalness1;
 uniform sampler2D texture_ambient_occlusion1;
 uniform sampler2DArray DepthMapArray;
+uniform samplerCubeArray DepthMapCubeArray;
 
 uniform bool HasAmbientOcclusion;
 uniform bool HasDiffuse;
@@ -117,8 +117,8 @@ uniform int NumberDirectionalLights;
 uniform int NumberPointLights;
 uniform int NumberSpotLights;
 uniform STRUCT_DirectionalLight DirectionalLights[2];
-uniform STRUCT_PointLight PointLights[64];
-uniform STRUCT_SpotLight SpotLights[32];
+uniform STRUCT_PointLight PointLights[32];
+uniform STRUCT_SpotLight SpotLights[64];
 
 // Gamma Correction Info
 uniform bool GammaCorrectionEnabled_;
@@ -212,7 +212,6 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
     // transform to [0,1] range
     projCoords = projCoords * 0.5f + 0.5;
     
-    
     // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
     float closestDepth = texture(DepthMapArray, vec3(projCoords.xy, Index)).r; 
     // get depth of current fragment from light's perspective
@@ -221,43 +220,9 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
     vec3 LightDir = normalize(LightPos - Object.FragPos);
     float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), 0.00025);
     
-    
-    
-    
-
-	//float Shadow = 0.0f;
-
-	/**
-
-	// Sample the shadow map 4 times
-	for (int i=0;i<4;i++){
-		// use either :
-		//  - Always the same samples.
-		//    Gives a fixed pattern in the shadow, but no noise
-		int index = i;
-		//  - A random sample, based on the pixel's screen location. 
-		//    No banding, but the shadow moves with the camera, which looks weird.
-		// int index = int(16.0*random(gl_FragCoord.xyy, i))%16;
-		//  - A random sample, based on the pixel's position in world space.
-		//    The position is rounded to the millimeter to avoid too much aliasing
-		//int index = int(16.0*random(floor(Position_worldspace.xyz*1000.0), i))%16;
-		
-		// being fully in the shadow will eat up 4*0.2 = 0.8
-		// 0.2 potentially remain, which is quite dark.
-		Shadow += (1.0-texture(DepthMapArray, vec3(projCoords.xy + PoissonDisk[index]/700.0,  Index)));//(ShadowCoord.z-bias)/ShadowCoord.w) ));
-	}
-
-
-	**/
-
     //float Shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
     float Shadow = ShadowPCF(Bias, projCoords, Index, currentDepth, 2);
     //float Shadow = ShadowPCFRandom(Bias, projCoords, Index, currentDepth, 1);
-    
-
-    
-    
-    
     
     if (projCoords.z > 1.0) {
         Shadow = 0.0f;
@@ -270,11 +235,11 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
 	}
 
 
-	
-
-
     return 1.0f - Shadow;
 }
+
+
+
 
 
 
@@ -413,6 +378,27 @@ STRUCT_SampledData SetSampledData() {
 
 
 
+float ShadowCalculation(STRUCT_PointLight Light)
+{
+    // get vector between fragment position and light position
+    vec3 fragToLight = Object.FragPos - Light.Position;
+
+    // ise the fragment to light vector to sample from the depth map    
+    float closestDepth = texture(DepthMapCubeArray, vec4(fragToLight, Light.DepthCubemapIndex)).r;
+    // it is currently in linear range between [0,1], let's re-transform it back to original depth value
+    closestDepth *= Light.MaxDistance;
+    // now get current linear depth as the length between the fragment and light position
+    float currentDepth = length(fragToLight);
+    // test for shadows
+    float bias = 0.05; // we use a much larger bias since depth is now in [near_plane, far_plane] range
+    float shadow = currentDepth -  bias > closestDepth ? 1.0 : 0.0;        
+    // display closestDepth as debug (to visualize depth cubemap)
+    // FragColor = vec4(vec3(closestDepth / Light.MaxDistance), 1.0);    
+        
+    return 1.0f - shadow;
+}
+
+
 vec3 PBRPointLight(STRUCT_PointLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT_SampledData Model) {
 
     // calculate per-light radiance
@@ -446,7 +432,7 @@ vec3 PBRPointLight(STRUCT_PointLight Light, vec3 ViewDir, vec3 Reflectance, STRU
     float NdotL = max(dot(Model.Normal, L), 0.0);
     
     // add to outgoing radiance Lo
-    return (kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL;  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
+    return ((kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL) * ShadowCalculation(Light);  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
 
 
 }
@@ -508,7 +494,7 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
     }
 
     // add to outgoing radiance Lo
-    return (kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL * Intensity;  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
+    return ((kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL * Intensity) * ShadowCalculation(Light.LightSpaceMatrix, Light.Direction, Light.DepthMapIndex);  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
 
 }
 
@@ -551,7 +537,7 @@ vec3 PBRDirectionalLight(STRUCT_DirectionalLight Light, vec3 ViewDir, vec3 Refle
     float NdotL = max(dot(Model.Normal, L), 0.0);        
 
     // add to outgoing radiance Lo
-    return (kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL;  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
+    return ((kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL) * ShadowCalculation(Light.LightSpaceMatrix, Light.Direction, Light.DepthMapIndex);  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
 
 
 }
@@ -574,7 +560,7 @@ void main() {
 
     // Calculate Directional Lights
     for (int i = 0; i < NumberDirectionalLights; i++) {
-        Lo += PBRDirectionalLight(DirectionalLights[i], ViewDir, Reflectance, Model) * ShadowCalculation(DirectionalLights[i].LightSpaceMatrix, DirectionalLights[i].Direction, DirectionalLights[i].DepthMapIndex);
+        Lo += PBRDirectionalLight(DirectionalLights[i], ViewDir, Reflectance, Model);
     }
 
     // Calculate Point Lights
@@ -584,7 +570,7 @@ void main() {
 
     // Calculate Spot Lights
     for(int i = 0; i < NumberSpotLights; ++i) {
-        Lo += PBRSpotLight(SpotLights[i], ViewDir, Reflectance, Model) * ShadowCalculation(SpotLights[i].LightSpaceMatrix, SpotLights[i].Direction, SpotLights[i].DepthMapIndex);
+        Lo += PBRSpotLight(SpotLights[i], ViewDir, Reflectance, Model);
     }
 
     // ambient lighting (note that the next IBL tutorial will replace 
@@ -610,6 +596,11 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
+
+
+
+
 
 
 

@@ -18,6 +18,9 @@ GUI_Menu_Debug::GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils) {
     SystemUtils_->Logger_->Log("Initialiizng Debug Menu Window Instances", 5);
     TestEditor_ = std::make_unique<Window_TestEditor>(SystemUtils_);
 
+    // Setup OpenGL Debug Submenu
+    ERS_CLASS_OpenGLDebug_ = std::make_unique<ERS_CLASS_OpenGLDebug>(SystemUtils_);
+
 }
 
 
@@ -50,6 +53,11 @@ void GUI_Menu_Debug::Draw() {
                 TestEditor_->Enabled_ = !TestEditor_->Enabled_;
             }
 
+            // OpenGL Debug Submenu
+            if (ImGui::BeginMenu("OpenGL Debugging")) {
+                ERS_CLASS_OpenGLDebug_->DrawMenu();
+            ImGui::EndMenu();
+            }
 
 
 

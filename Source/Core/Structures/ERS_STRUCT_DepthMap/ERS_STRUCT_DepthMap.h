@@ -6,8 +6,10 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <memory.h>
+#include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
+#include <glm/glm.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
 
@@ -22,10 +24,11 @@
  */
 struct ERS_STRUCT_DepthMap {
 
-    unsigned int FrameBufferObjectID; /**<OpenGL Depth Map FBO ID*/
-    int DepthMapTextureIndex; /**<OpenGL Depth Map Texture Index In 2D Array*/
+    unsigned int FrameBufferObjectID; /**<OpenGL Depth Map FBO IDs*/
+
+    int DepthMapTextureIndex; /**<OpenGL Depth Map Texture Index In 2D Arrays*/
+    glm::mat4 TransformationMatrix; /**<Used to store the transformation matrix*/
 
     bool Initialized = false; /**<Indiciates If The Target Is Initialized Or Not*/
-    
 
 };

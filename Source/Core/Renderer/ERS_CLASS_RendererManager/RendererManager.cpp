@@ -40,8 +40,13 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
 
         long VertexShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].VertexID;
         long FragmentShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].FragmentID;
+        long GeometryShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].GeometryID;
+        long ComputeShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].ComputeID;
+        long TCShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].TCID;
+        long TEShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].TEID;
+        
         std::string ShaderName = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].Name;
-        ShaderLoader_->LoadShaderFromAsset(VertexShaderID, FragmentShaderID, Shader, ShaderName);
+        ShaderLoader_->LoadShaderFromAsset(Shader, VertexShaderID, FragmentShaderID, GeometryShaderID, ComputeShaderID, TCShaderID, TEShaderID, ShaderName);
 
     }
     int DefaultShader = ProjectUtils_->ProjectManager_->Project_.DefaultShaderProgram;
@@ -133,9 +138,11 @@ void RendererManager::InitializeGLFW() {
     // Initialize GLFW
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+
+    //glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
 
     // Read Out Width, Height
     SystemUtils_->Logger_->Log("Read Configuration File For 'WindowWidth' Parameter", 1);
@@ -167,6 +174,7 @@ void RendererManager::InitializeGLFW() {
     // Setup OpenGL For Blending (For Transparency Issues)
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
+
 
 
 }

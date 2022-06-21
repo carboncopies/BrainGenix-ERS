@@ -11,9 +11,22 @@ ERS_STRUCT_Shader::ERS_STRUCT_Shader() {
     ShaderProgram_ = 0;
     VertexShader = 0;
     FragmentShader = 0;
+    GeometryShader = 0;
+    ComputeShader = 0;
+    TCShader = 0;
+    TEShader = 0;
 
-    VertexID = 0;
-    FragmentID = 0;
+    HasGeometryShader = false;
+    HasComputeShader = false;
+    HasTCShader = false;
+    HasTEShader = false;
+
+    VertexID = -1;
+    FragmentID = -1;
+    GeometryID = -1;
+    ComputeID = -1;
+    TessellationControlShaderID = -1;
+    TessellationEvaluationShaderID = -1;
 }
 
 ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
@@ -23,7 +36,6 @@ ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
     glDeleteProgram(ShaderProgram_);
 
 }
-
 
 void ERS_STRUCT_Shader::ResetProgram() {
 
@@ -82,15 +94,145 @@ std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, E
 
 }
 
+std::string ERS_STRUCT_Shader::CompileGeometryShader(const char* GeometryText, ERS_CLASS_LoggingSystem* Logger) {
 
-std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logger) {
+    // Compile The Fragment Shader Text Into A Binary
+    GeometryShader = glCreateShader(GL_GEOMETRY_SHADER);
+
+    glShaderSource(GeometryShader, 1, &GeometryText, NULL);
+    glCompileShader(GeometryShader);
+
+    // Report Compilation Status
+    int FragmentSuccess;
+    char FragmentInfoLog[65535];
+    std::string ErrorMessage;
+    glGetShaderiv(GeometryShader, GL_COMPILE_STATUS, &FragmentSuccess);
+    if (!FragmentSuccess) {
+        glGetShaderInfoLog(GeometryShader, 65535, NULL, FragmentInfoLog);
+        ErrorMessage = std::string(FragmentInfoLog);
+        if (Logger != nullptr) {
+            Logger->Log("Geometry Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
+        }
+    } else {
+        HasGeometryShader = true;
+    }
+
+    return ErrorMessage;
+
+}
+
+std::string ERS_STRUCT_Shader::CompileComputeShader(const char* ComputeText, ERS_CLASS_LoggingSystem* Logger) {
+
+    // Compile The Fragment Shader Text Into A Binary
+    ComputeShader = glCreateShader(GL_COMPUTE_SHADER);
+
+    glShaderSource(ComputeShader, 1, &ComputeText, NULL);
+    glCompileShader(ComputeShader);
+
+    // Report Compilation Status
+    int FragmentSuccess;
+    char FragmentInfoLog[65535];
+    std::string ErrorMessage;
+    glGetShaderiv(ComputeShader, GL_COMPILE_STATUS, &FragmentSuccess);
+    if (!FragmentSuccess) {
+        glGetShaderInfoLog(ComputeShader, 65535, NULL, FragmentInfoLog);
+        ErrorMessage = std::string(FragmentInfoLog);
+        if (Logger != nullptr) {
+            Logger->Log("Compute Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
+        }
+    } else {
+        HasComputeShader = true;
+    }
+
+    return ErrorMessage;
+
+}
+
+std::string ERS_STRUCT_Shader::CompileTCShader(const char* TCText, ERS_CLASS_LoggingSystem* Logger) {
+
+    // Compile The Fragment Shader Text Into A Binary
+    TCShader = glCreateShader(GL_TESS_CONTROL_SHADER);
+
+    glShaderSource(TCShader, 1, &TCText, NULL);
+    glCompileShader(TCShader);
+
+    // Report Compilation Status
+    int FragmentSuccess;
+    char FragmentInfoLog[65535];
+    std::string ErrorMessage;
+    glGetShaderiv(TCShader, GL_COMPILE_STATUS, &FragmentSuccess);
+    if (!FragmentSuccess) {
+        glGetShaderInfoLog(TCShader, 65535, NULL, FragmentInfoLog);
+        ErrorMessage = std::string(FragmentInfoLog);
+        if (Logger != nullptr) {
+            Logger->Log("Tess Control Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
+        }
+    } else {
+        HasTCShader = true;
+    }
+
+    return ErrorMessage;
+
+}
+
+std::string ERS_STRUCT_Shader::CompileTEShader(const char* TEText, ERS_CLASS_LoggingSystem* Logger) {
+
+    // Compile The Fragment Shader Text Into A Binary
+    TEShader = glCreateShader(GL_TESS_EVALUATION_SHADER);
+
+    glShaderSource(TEShader, 1, &TEText, NULL);
+    glCompileShader(TEShader);
+
+    // Report Compilation Status
+    int FragmentSuccess;
+    char FragmentInfoLog[65535];
+    std::string ErrorMessage;
+    glGetShaderiv(TEShader, GL_COMPILE_STATUS, &FragmentSuccess);
+    if (!FragmentSuccess) {
+        glGetShaderInfoLog(TEShader, 65535, NULL, FragmentInfoLog);
+        ErrorMessage = std::string(FragmentInfoLog);
+        if (Logger != nullptr) {
+            Logger->Log("Tess Eval Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
+        }
+    } else {
+        HasTEShader = true;
+    }
+
+    return ErrorMessage;
+
+}
+
+std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logger, bool LogEnable) {
 
     // Create Shader Program
     ShaderProgram_ = glCreateProgram();
 
     // Attach Shaders To Program
+    Logger->Log("Attaching Vertex Shader", 3, LogEnable);
     glAttachShader(ShaderProgram_, VertexShader);
+
+    Logger->Log("Attaching Fragment Shader", 3, LogEnable);
     glAttachShader(ShaderProgram_, FragmentShader);
+
+    if (HasGeometryShader) {
+        Logger->Log("Attaching Geometry Shader", 3, LogEnable);
+        glAttachShader(ShaderProgram_, GeometryShader);
+    }
+
+    if (HasComputeShader) {
+        Logger->Log("Attaching Compute Shader", 3, LogEnable);
+        glAttachShader(ShaderProgram_, ComputeShader);
+    }
+
+    if (HasTCShader) {
+        Logger->Log("Attaching TC Shader", 3, LogEnable);
+        glAttachShader(ShaderProgram_, TCShader);
+    }
+
+    if (HasTEShader) {
+        Logger->Log("Attaching TE Shader", 3, LogEnable);
+        glAttachShader(ShaderProgram_, TEShader);
+    }
 
     // Link Program
     glLinkProgram(ShaderProgram_);
@@ -104,9 +246,7 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
         char InfoLog[65535];
         glGetProgramInfoLog(ShaderProgram_, 65535, NULL, InfoLog);
         ErrorMessage = std::string(InfoLog);
-        if (Logger != nullptr) {
-            Logger->Log("Shader Link Error: " +  std::string(InfoLog), 8);
-        }
+        Logger->Log("Shader Link Error: " +  std::string(InfoLog), 8, LogEnable);
     }
 
     // Free RAM
@@ -116,7 +256,25 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
     glDetachShader(ShaderProgram_, FragmentShader);
     glDeleteShader(FragmentShader);
 
+    if (HasGeometryShader) {
+        glDetachShader(ShaderProgram_, GeometryShader);
+        glDeleteShader(GeometryShader);
+    }
 
+    if (HasComputeShader) {
+        glDetachShader(ShaderProgram_, ComputeShader);
+        glDeleteShader(ComputeShader);
+    }
+
+    if (HasTCShader) {
+        glDetachShader(ShaderProgram_, TCShader);
+        glDeleteShader(TCShader);
+    }
+
+    if (HasTEShader) {
+        glDetachShader(ShaderProgram_, TEShader);
+        glDeleteShader(TEShader);
+    }
 
 
     // Return Status
@@ -130,7 +288,6 @@ bool ERS_STRUCT_Shader::MakeActive() {
     return true;
 
 }
-
 
 // Population Functions
 // ------------------------------------------------------------------------

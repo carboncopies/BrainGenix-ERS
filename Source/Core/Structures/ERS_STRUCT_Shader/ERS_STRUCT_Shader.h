@@ -35,11 +35,26 @@ struct ERS_STRUCT_Shader {
     unsigned int VertexShader; /**<OpenGL Reference ID for Vertex Shader */
     unsigned int FragmentShader; /**<OpenGL Reference ID For Fragment Shader */
 
+    bool HasGeometryShader; /**<Indicate if the shader uses geometry shaders or not*/
+    unsigned int GeometryShader; /*<<OpenGL ID For Geometry Shader (NOTE: Optional)*/
+    bool HasComputeShader; /**<Indicate if the shader uses compute shaders or not*/
+    unsigned int ComputeShader; /**<OpenGL ID For Compute Shader (NOTE: Optional)*/
+    bool HasTCShader; /**<Indicate if the shader uses TC shaders or not*/
+    unsigned int TCShader; /**<OpenGL ID For TC Shader (NOTE: Optional)*/
+    bool HasTEShader; /**<Indicate if the shader uses TE shaders or not*/
+    unsigned int TEShader; /**<OpenGL ID For TE Shader (NOTE: Optional)*/
+
+    
+
     std::string DisplayName = "Undefined"; /**<Name of shader to be shown to the user*/
     std::string InternalName = "Undefined"; /**<Intenral name of the shader, these are usually the same (Just not in the shader editor as it creates the preview shader)*/
 
     long VertexID; /**<Asset ID of vertex shader (optional, used for saving) */
     long FragmentID; /**<Asset ID of fragment shader (optional, used for saving) */
+    long GeometryID; /**<Asset ID of geometry shader (optional, used for saving) */
+    long ComputeID; /**<Asset ID of compute shader (optional, used for saving) */
+    long TessellationControlShaderID; /**<Asset ID of TCS shader (optional, used for saving) */
+    long TessellationEvaluationShaderID; /**<Asset ID of TES shader (optional, used for saving) */
 
 
     /**
@@ -69,11 +84,40 @@ struct ERS_STRUCT_Shader {
     std::string CompileFragmentShader(const char* FragmentText, ERS_CLASS_LoggingSystem* Logger = nullptr);
 
     /**
+     * @brief Function To Compile Geometry Shader With Given Code (const char*)
+     * 
+     * @param GeometryText 
+     */
+    std::string CompileGeometryShader(const char* GeometryText, ERS_CLASS_LoggingSystem* Logger = nullptr);
+
+    /**
+     * @brief Function To Compile Compute Shader With Given Code (const char*)
+     * 
+     * @param ComputeText 
+     */
+    std::string CompileComputeShader(const char* ComputeText, ERS_CLASS_LoggingSystem* Logger = nullptr);
+
+    /**
+     * @brief Function To Compile Compute Shader With Given Code (const char*)
+     * 
+     * @param ComputeText 
+     */
+    std::string CompileTCShader(const char* TCText, ERS_CLASS_LoggingSystem* Logger = nullptr);
+
+    /**
+     * @brief Function To Compile Compute Shader With Given Code (const char*)
+     * 
+     * @param ComputeText 
+     */
+    std::string CompileTEShader(const char* TEText, ERS_CLASS_LoggingSystem* Logger = nullptr);
+
+
+    /**
      * @brief Create a Shader Program object from Fragment and Vertex Shaders.
      * 
      * @param DeleteShadersUponLink 
      */
-    std::string CreateShaderProgram(ERS_CLASS_LoggingSystem* Logger = nullptr);
+    std::string CreateShaderProgram(ERS_CLASS_LoggingSystem* Logger, bool LogEnable = true);
 
     /**
      * @brief Make The Shader Stored Within The Struct Active.

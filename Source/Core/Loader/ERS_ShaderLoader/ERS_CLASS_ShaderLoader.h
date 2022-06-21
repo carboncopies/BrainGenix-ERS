@@ -53,7 +53,7 @@ public:
      * @param FragmentText 
      * @return ERS_STRUCT_Shader 
      */
-   void CreateShaderObject(const char* VertexText, const char* FragmentText, ERS_STRUCT_Shader* ShaderStruct, bool LogBuild = true);
+   void CreateShaderObject(ERS_STRUCT_Shader* ShaderStruct, std::string VertexText, std::string FragmentText, std::string GeometryText, std::string ComputeText, std::string TCText, std::string TEText, bool LogBuild = true);
 
 
     /**
@@ -63,7 +63,7 @@ public:
      * @param FragmentID 
      * @return std::shared_ptr<ERS_STRUCT_Shader> 
      */
-    void LoadShaderFromAsset(long VertexID, long FragmentID, ERS_STRUCT_Shader* ShaderStruct, std::string ShaderName = "Untitled Shader");
+    void LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct, long VertexID, long FragmentID, long GeometryID = -1, long ComputeID = -1, long TCID = -1, long TEID = -1, std::string ShaderName = "Untitled Shader");
 
 
 

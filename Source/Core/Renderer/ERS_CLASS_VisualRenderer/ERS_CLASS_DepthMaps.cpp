@@ -11,21 +11,29 @@ ERS_CLASS_DepthMaps::ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ER
     ProjectUtils_ = ProjectUtils;
     Renderer_ = Renderer;
 
-    SystemUtils_->Logger_->Log("Initializing Viewport Overlay Subsystem", 5);
+    SystemUtils_->Logger_->Log("Initializing Depth Map Subsystem", 5);
 
     // Create Array Texture For Depth Maps
-    RegenerateDepthMapTextureArray(64, SystemUtils_->RendererSettings_->ShadowMapX_, SystemUtils_->RendererSettings_->ShadowMapY_);
-
+    RegenerateDepthMapTextureArray2D(16, SystemUtils_->RendererSettings_->ShadowMapX_, SystemUtils_->RendererSettings_->ShadowMapY_);
+    RegenerateDepthMapTextureArrayCubemap(2);
 
 }
 
 ERS_CLASS_DepthMaps::~ERS_CLASS_DepthMaps() {
 
-    SystemUtils_->Logger_->Log("Viewport Overlay Subsystem Destructor Invoked", 6);
+    SystemUtils_->Logger_->Log("Depth Map Destructor Invoked", 6);
+
+
+    SystemUtils_->Logger_->Log("Depth Map Subsystem Destroying Array Textures", 4);
+    glDeleteTextures(1, &DepthTextureArrayID_);
+    SystemUtils_->Logger_->Log("Depth Map Subsystem Destroyed 2D Depth Array Texture", 4);
+    glDeleteTextures(1, &DepthTextureCubemapArrayID_);
+    SystemUtils_->Logger_->Log("Depth Map Subsystem Destroyed 3D Cubemap Array Texutre", 4);
+    
 
 }
 
-bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, int Width, int Height, bool LogEnabled) {
+bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray2D(int NumberOfTextures, int Width, int Height, bool LogEnabled) {
 
 
     SystemUtils_->Logger_->Log(
@@ -67,7 +75,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
 
     glTexImage3D(GL_TEXTURE_2D_ARRAY,
         0,                    // Current 'mipmap level', We're not using these so 0 is fine
-        GL_DEPTH_COMPONENT24,   // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
+        GL_DEPTH_COMPONENT24, // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
         Width, Height,        // Width and Height, Pretty Self Explanitory
         NumberOfTextures,     // Total Number Of Textures In The Array
         0,                    // Border, we're not using this
@@ -78,7 +86,8 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
 
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
     glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     float BorderColor[] = {1.0f, 1.0f, 1.0f, 1.0f};
     glTexParameterfv(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_BORDER_COLOR, BorderColor); 
     SystemUtils_->Logger_->Log("Depth Map Texture Array Initialization Complete", 4, LogEnabled);
@@ -124,7 +133,80 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray(int NumberOfTextures, i
 
 }
 
-bool ERS_CLASS_DepthMaps::FreeDepthMapIndex(unsigned int Index) {
+bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfTextures, bool LogEnabled) {
+
+
+    SystemUtils_->Logger_->Log(
+        std::string("Generating Depth Map Texture Cube Map Array Of ") + std::to_string(NumberOfTextures)
+         + std::string(" Textures, With Width Of ") + std::to_string(DepthTextureArrayWidth_)
+         + std::string(" Pixels, And Height Of ") + std::to_string(DepthTextureArrayHeight_)
+         + std::string(" Pixels")
+        , 5, LogEnabled);
+
+    // Check If Already Texture, If So, Delete So We Can Overwrite it
+    SystemUtils_->Logger_->Log("Checking If Texture Cubemap Array Already Exists", 4, LogEnabled);
+    bool TextureAlreadyExists = glIsTexture(DepthTextureCubemapArrayID_);
+    if (TextureAlreadyExists) {
+        SystemUtils_->Logger_->Log("Cubemap Array ID Already In Use, Freeing First", 3, LogEnabled);
+        glDeleteTextures(1, &DepthTextureCubemapArrayID_);
+    } else {
+        SystemUtils_->Logger_->Log("Cubemap Array ID Not Already In Use", 3, LogEnabled);
+    }
+
+    // Handle The Creation Of A New Texture Array
+    SystemUtils_->Logger_->Log("Setting Up Cubemap Texture Array Metadata", 3, LogEnabled);
+    DepthTextureCubemapNumTextures_ = NumberOfTextures;
+
+    if (!glIsFramebuffer(CubemapFBO_)) {
+        glGenFramebuffers(1, &CubemapFBO_);
+    }
+
+    SystemUtils_->Logger_->Log("Setting Up Cubemap Texture Array OpenGL Parameters", 4, LogEnabled);
+    glGenTextures(1, &DepthTextureCubemapArrayID_);
+    glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, DepthTextureCubemapArrayID_);
+
+    glTexImage3D(GL_TEXTURE_CUBE_MAP_ARRAY,
+        0,                        // Current 'mipmap level', We're not using these so 0 is fine
+        GL_DEPTH_COMPONENT24,     // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
+        DepthTextureArrayWidth_,  // Cubemap Width
+        DepthTextureArrayHeight_, // Cubemap Height
+        NumberOfTextures * 6,     // Total Number Of Textures In The Array
+        0,                        // Border, we're not using this
+        GL_DEPTH_COMPONENT,       // Tells opengl what kind of data we're storing in this texture
+        GL_FLOAT,                 // tells opengl how to store the data
+        NULL                      // if we were loading an image in, we could then pass the data in here, but we're not so this is left as null
+    );
+
+    glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+    SystemUtils_->Logger_->Log("Cubemap Depth Map Texture Array Initialization Complete", 4, LogEnabled);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
+    glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, 0);
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
+
+    // Update Allocation Array
+    SystemUtils_->Logger_->Log("Checking Cubemap Depth Map Texture Array Allocation Array", 3, LogEnabled);
+    unsigned long SizeOfAllocationArray = DepthMapTexturesCubemapAlreadyAllocated_.size();
+    if (SizeOfAllocationArray > (unsigned int)NumberOfTextures) {
+        SystemUtils_->Logger_->Log("Downsizing Cubemap Array To Match Target Number Of Textures", 4, LogEnabled);
+        DepthMapTexturesCubemapAlreadyAllocated_.erase(DepthMapTexturesCubemapAlreadyAllocated_.begin() + NumberOfTextures, DepthMapTexturesCubemapAlreadyAllocated_.end());
+    } else if (SizeOfAllocationArray < (unsigned int)NumberOfTextures) {
+        SystemUtils_->Logger_->Log("Upsizing Cubemap Array To Match Target Number Of Textures", 4, LogEnabled);
+        for (unsigned int i = 0; i < NumberOfTextures - SizeOfAllocationArray; i++) {
+            DepthMapTexturesCubemapAlreadyAllocated_.push_back(false);
+        }
+    }
+    SystemUtils_->Logger_->Log("Done Updating/Checking Cubemap Allocation Array", 3, LogEnabled);
+
+    return true;
+}
+
+bool ERS_CLASS_DepthMaps::FreeDepthMapIndex2D(unsigned int Index) {
 
     // Sanity Check
     if (Index > DepthMapTexturesAlreadyAllocated_.size() - 1) {
@@ -137,7 +219,20 @@ bool ERS_CLASS_DepthMaps::FreeDepthMapIndex(unsigned int Index) {
 
 }
 
-unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex(unsigned int FramebufferObjectID) {
+bool ERS_CLASS_DepthMaps::FreeDepthMapIndexCubemap(unsigned int Index) {
+
+    // Sanity Check
+    if (Index > DepthMapTexturesCubemapAlreadyAllocated_.size() - 1) {
+        return false; // Indicate Failure, Out Of Range
+    }
+
+    // DeAllocate From Array
+    DepthMapTexturesCubemapAlreadyAllocated_[Index] = -1; //ERS_STRUCT_CubemapFBOIndexes();
+    return true;
+
+}
+
+unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex2D(unsigned int FramebufferObjectID) {
 
     // If Enough Textures Exist, Find One
     SystemUtils_->Logger_->Log("Allocating Depth Map Texture Array Index", 5);
@@ -152,7 +247,7 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex(unsigned int Framebuffer
     // IF Not, Batch Allocate More
     SystemUtils_->Logger_->Log("Depth Map Texture Array Full, Regenerating With More Textures", 5);
     int StartSize = DepthMapTexturesAlreadyAllocated_.size();
-    RegenerateDepthMapTextureArray(StartSize + DepthMapAllocationChunkSize_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+    RegenerateDepthMapTextureArray2D(StartSize + DepthMapAllocationChunkSize_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
     SystemUtils_->Logger_->Log(std::string("Finished Updating Depth Map Array, Allocating Depth Map Texture Array Index: ") + std::to_string(StartSize + DepthMapAllocationChunkSize_), 5);
 
     DepthMapTexturesAlreadyAllocated_[StartSize + 1] = FramebufferObjectID;
@@ -161,36 +256,27 @@ unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndex(unsigned int Framebuffer
 
 }
 
-ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap(bool LogEnable) {
+unsigned int ERS_CLASS_DepthMaps::AllocateDepthMapIndexCubemap() {
 
+    // If Enough Textures Exist, Find One
+    SystemUtils_->Logger_->Log("Allocating Cubemap Depth Map Texture Array Index", 5);
+    for (unsigned int i = 0; i < DepthMapTexturesCubemapAlreadyAllocated_.size(); i++) {
+        if (DepthMapTexturesCubemapAlreadyAllocated_[i] == false) {
+            SystemUtils_->Logger_->Log(std::string("Allocated Cubemap Depth Map Texture Array Index: ") + std::to_string(i), 5);
+            DepthMapTexturesCubemapAlreadyAllocated_[i] = true;
+            return i;
+        }
+    }
 
-    SystemUtils_->Logger_->Log(std::string("Creating Depth Map With Resolution Of ") + std::to_string(DepthTextureArrayWidth_) + std::string("x") + std::to_string(DepthTextureArrayHeight_), 5, LogEnable);
+    // IF Not, Batch Allocate More
+    SystemUtils_->Logger_->Log("Depth Cubemap Map Texture Array Full, Regenerating With More Textures", 5);
+    int StartSize = DepthMapTexturesCubemapAlreadyAllocated_.size();
+    RegenerateDepthMapTextureArrayCubemap(StartSize + DepthMapAllocationChunkSize_);
+    SystemUtils_->Logger_->Log(std::string("Finished Updating Cubemap Depth Map Array, Allocating Depth Map Texture Array Index: ") + std::to_string(StartSize), 5);
 
-    // Setup Struct
-    ERS_STRUCT_DepthMap Output;
+    DepthMapTexturesCubemapAlreadyAllocated_[StartSize] = true;
 
-    // Generate FBO
-    SystemUtils_->Logger_->Log("Generating Framebuffer Object", 4, LogEnable);
-    glGenFramebuffers(1, &Output.FrameBufferObjectID);
-    SystemUtils_->Logger_->Log("Generated Framebuffer Object", 3, LogEnable);
-
-    // Allocate Depth Map Texture ID
-    Output.DepthMapTextureIndex = AllocateDepthMapIndex(Output.FrameBufferObjectID);
-
-    // Attach Depth Map Texture To Framebuffer
-    SystemUtils_->Logger_->Log(std::string("Attaching Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndex) + std::string("'"), 4, LogEnable);
-    glBindFramebuffer(GL_FRAMEBUFFER, Output.FrameBufferObjectID);
-    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, Output.DepthMapTextureIndex);
-    glDrawBuffer(GL_NONE);
-    glReadBuffer(GL_NONE);
-    glBindFramebuffer(GL_FRAMEBUFFER, 0); 
-    SystemUtils_->Logger_->Log("Finished Attaching Texture To Framebuffer", 3, LogEnable);
-
-
-    Output.Initialized = true;
-
-    // Return Output
-    return Output;
+    return StartSize;
 
 }
 
@@ -208,18 +294,55 @@ void ERS_CLASS_DepthMaps::CheckSettings() {
     }
 
     if (NeedsToUpdate) {
-        RegenerateDepthMapTextureArray(DepthTextureNumTextures_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+        RegenerateDepthMapTextureArray2D(DepthTextureNumTextures_, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+        RegenerateDepthMapTextureArrayCubemap(DepthTextureCubemapNumTextures_);
     }
 
 }
 
-void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS_STRUCT_Shader* DepthShader, glm::mat4* LightSpaceMatrix) {
+ERS_STRUCT_DepthMap ERS_CLASS_DepthMaps::GenerateDepthMap2D(int Number, bool LogEnable) {
 
+
+    SystemUtils_->Logger_->Log(std::string("Creating ") + std::to_string(Number) + std::string(" Depth Map(s) With Resolution Of ") + std::to_string(DepthTextureArrayWidth_) + std::string("x") + std::to_string(DepthTextureArrayHeight_), 5, LogEnable);
+
+    // Setup Struct
+    ERS_STRUCT_DepthMap Output;
+
+
+    // Generate FBO
+    SystemUtils_->Logger_->Log("Generating Framebuffer Object", 4, LogEnable);
+    glGenFramebuffers(1, &Output.FrameBufferObjectID);
+    
+    SystemUtils_->Logger_->Log("Generated Framebuffer Object", 3, LogEnable);
+
+    // Allocate Depth Map Texture ID
+    Output.DepthMapTextureIndex = AllocateDepthMapIndex2D(Output.FrameBufferObjectID);
+
+    // Attach Depth Map Texture To Framebuffer
+    SystemUtils_->Logger_->Log(std::string("Attaching Depth Map Texture To Framebuffer Texture '") + std::to_string(Output.DepthMapTextureIndex) + std::string("'"), 4, LogEnable);
+    glBindFramebuffer(GL_FRAMEBUFFER, Output.FrameBufferObjectID);
+    glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureArrayID_, 0, Output.DepthMapTextureIndex);
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0); 
+    SystemUtils_->Logger_->Log("Finished Attaching Texture To Framebuffer", 3, LogEnable);
+
+    
+
+    Output.Initialized = true;
+
+    // Return Output
+    return Output;
+
+}
+
+void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS_STRUCT_Shader* DepthShader) {
 
     // Check Settings
     CheckSettings();
 
     // Setup Variables
+    glm::mat4* LightSpaceMatrixArray = &Light->DepthMap.TransformationMatrix;
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
     float NearPlane = 0.1f, FarPlane = 15.0f;
@@ -238,10 +361,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS
     // Render With Depth Shader
     DepthShader->MakeActive();
     DepthShader->SetMat4("LightSpaceMatrix", ObjectSpace);
-
-    if (LightSpaceMatrix != nullptr) {
-        *LightSpaceMatrix = ObjectSpace;
-    }
+    *LightSpaceMatrixArray = ObjectSpace;
 
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
     glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
@@ -256,58 +376,54 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS
 
 }
 
-void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUCT_Shader* DepthShader, glm::mat4* LightSpaceMatrix) {
+void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUCT_Shader* DepthShader) {
 
-
-    // Check Settings
-    CheckSettings();
 
     // Setup Variables
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
-    glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
-    float NearPlane = 0.1f, FarPlane = 15.0f;
+    float NearPlane, FarPlane;
+    NearPlane = 0.1f;
+    FarPlane = Light->MaxDistance;
 
     // Calculate Project, View, Space Matrices
-
     float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
-    ObjectProjection = glm::perspective(glm::radians(110.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
+    glm::mat4 ShadowProjection = glm::perspective(glm::radians(90.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
     
+    std::vector<glm::mat4> ShadowTransforms;
+    ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 1.0, 0.0, 0.0), glm::vec3(0.0,-1.0, 0.0)));
+    ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3(-1.0, 0.0, 0.0), glm::vec3(0.0,-1.0, 0.0)));
+    ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 1.0, 0.0), glm::vec3(0.0, 0.0, 1.0)));
+    ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0,-1.0, 0.0), glm::vec3(0.0, 0.0,-1.0)));
+    ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0, 1.0), glm::vec3(0.0,-1.0, 0.0)));
+    ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0,-1.0), glm::vec3(0.0,-1.0, 0.0)));
 
-    // Re-Do Rotation
-    //glm::vec3 XYZRotation = ERS_FUNCTION_ConvertRotationToFrontVector(Light->Rot);
 
-    //glm::vec3 Front = glm::normalize(XYZRotation);
-    ObjectView = glm::lookAt(Light->Pos, Light->Pos, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
-    ObjectSpace = ObjectProjection * ObjectView;
+
+    // Render All Sides
+    glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+
+    DepthShader->MakeActive();
 
     // Render With Depth Shader
-    DepthShader->MakeActive();
-    DepthShader->SetMat4("LightSpaceMatrix", ObjectSpace);
-
-    if (LightSpaceMatrix != nullptr) {
-        *LightSpaceMatrix = ObjectSpace;
+    for (unsigned int i = 0; i < ShadowTransforms.size(); i++) {
+        DepthShader->SetMat4(std::string("ShadowMatrices[") + std::to_string(i) + std::string("]"), ShadowTransforms[i]);
     }
 
-    glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
-
-    
-    glClear(GL_DEPTH_BUFFER_BIT);
-    glActiveTexture(GL_TEXTURE0);
+    DepthShader->SetVec3("LightPos", Light->Pos);
+    DepthShader->SetFloat("FarPlane", Light->MaxDistance);
+    DepthShader->SetInt("ShadowMapLayer", Light->DepthMap.DepthMapTextureIndex);
     Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
-
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    
 
 }
 
-void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT_Shader* DepthShader, glm::mat4* LightSpaceMatrix) {
-
+void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT_Shader* DepthShader) {
 
     // Check Settings
     CheckSettings();
 
+
     // Setup Variables
+    glm::mat4* LightSpaceMatrixArray = &Light->DepthMap.TransformationMatrix;
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
     float NearPlane, FarPlane;
@@ -319,10 +435,8 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT
     float FOV = glm::radians(130.0f);// * (0.01745329));
     ObjectProjection = glm::perspective(FOV, AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
     
-
     // Re-Do Rotation
     glm::vec3 XYZRotation = ERS_FUNCTION_ConvertRotationToFrontVector(Light->Rot);
-
     glm::vec3 Front = glm::normalize(XYZRotation);
     ObjectView = glm::lookAt(Light->Pos, Light->Pos+Front, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
     ObjectSpace = ObjectProjection * ObjectView;
@@ -330,27 +444,20 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT
     // Render With Depth Shader
     DepthShader->MakeActive();
     DepthShader->SetMat4("LightSpaceMatrix", ObjectSpace);
-
-    if (LightSpaceMatrix != nullptr) {
-        *LightSpaceMatrix = ObjectSpace;
-    }
+    *LightSpaceMatrixArray = ObjectSpace;
 
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
     glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
-
-    
     glClear(GL_DEPTH_BUFFER_BIT);
     glActiveTexture(GL_TEXTURE0);
     Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
 
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
 }
 
+void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_STRUCT_Shader* CubemapDepthShader) {
 
-
-void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
-
+    // Check Settings
+    CheckSettings();
 
     // Fix Offset (Peter Panning)
     glCullFace(GL_FRONT);
@@ -366,13 +473,11 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Check If Light Has DepthMap
         if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap();   
+            Light->DepthMap = GenerateDepthMap2D();   
         }
 
         // Render To Depth Map
-        glm::mat4* LightSpaceMatrix = new glm::mat4();
-        UpdateDepthMap(Light, DepthShader, LightSpaceMatrix);
-        Light->LightSpaceMatrix = *LightSpaceMatrix;
+        UpdateDepthMap(Light, DepthShader);
 
     } 
 
@@ -384,18 +489,18 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Check If Light Has DepthMap
         if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap();   
-            std::cout<<i<<"|"<<Light->DepthMap.DepthMapTextureIndex<<std::endl;
+            Light->DepthMap = GenerateDepthMap2D();   
         }
 
         // Render To Depth Map
-        glm::mat4* LightSpaceMatrix = new glm::mat4();
-        UpdateDepthMap(Light, DepthShader, LightSpaceMatrix);
-        Light->LightSpaceMatrix = *LightSpaceMatrix;
+        UpdateDepthMap(Light, DepthShader);
 
     }
 
     // Handle Point Lights
+    glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
+    glClear(GL_DEPTH_BUFFER_BIT);
+
     for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
 
         // Extract Struct
@@ -403,13 +508,13 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader) {
 
         // Check If Light Has DepthMap
         if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap();   
+            Light->DepthMap.DepthMapTextureIndex = AllocateDepthMapIndexCubemap();
+            Light->DepthMap.Initialized = true;
         }
 
         // Render To Depth Map
-        glm::mat4* LightSpaceMatrix = new glm::mat4();
-        UpdateDepthMap(Light, DepthShader, LightSpaceMatrix); // set this to false later, debugging
-        Light->LightSpaceMatrix = *LightSpaceMatrix;
+        UpdateDepthMap(Light, CubemapDepthShader);
+
 
     } 
 
