@@ -378,8 +378,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS
 
 void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUCT_Shader* DepthShader) {
 
-    // Check Settings
-    CheckSettings();
+
 
     // Setup Variables
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
@@ -460,6 +459,8 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT
 
 void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_STRUCT_Shader* CubemapDepthShader) {
 
+    // Check Settings
+    CheckSettings();
 
     // Fix Offset (Peter Panning)
     glCullFace(GL_FRONT);
