@@ -12,9 +12,15 @@
 // Internal Libraries (BG convention: use <> instead of "")
 
 
-
-struct ERS_STRUCT_ShadowFilteringType {
+enum ERS_ShadowFilteringType {
 
     
 
 }
+
+
+struct ERS_STRUCT_ShadowFilteringType {
+
+
+
+};
