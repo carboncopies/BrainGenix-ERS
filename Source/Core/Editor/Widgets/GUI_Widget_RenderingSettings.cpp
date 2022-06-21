@@ -104,8 +104,21 @@ void Widget_RenderingSettings::Draw() {
                 ImGui::Spacing();
                 bool Apply = false;
                 ERS_STRUCT_RendererSettings* Settings = SystemUtils_->RendererSettings_.get();
-                int SelectedShadowFiltering = 0;
-                int SelectedShadowUpdates = 0;
+
+                char* ShadowFilteringNames[] = {
+                    "ERS_SHADOW_FILTERING_DISABLED",
+                    "ERS_SHADOW_FILTERING_PCF",
+                    "ERS_SHADOW_FILTERING_POISSON_SAMPLING",
+                    "ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING"
+                };
+                char* ShadowUpdateNames[] = {
+                    "ERS_SHADOW_UPDATE_MODE_DISABLED",
+                    "ERS_SHADOW_UPDATE_MODE_RANDOM",
+                    "ERS_SHADOW_UPDATE_MODE_CONSECUTIVE",
+                    "ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED",
+                    "ERS_SHADOW_UPDATE_MODE_ALL"
+                };
+
 
                 if (Settings->ShadowFilteringType_ == ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED) {
                     SelectedShadowFiltering = 0;
@@ -137,10 +150,7 @@ void Widget_RenderingSettings::Draw() {
                 ImGui::InputInt("Max Shadow Updates Per Frame", &Settings->MaxShadowUpdatesPerFrame_);
 
 
-
-
-
-                ImGui::Combo("Shadow Filtering", )
+                ImGui::Combo("Shadow Filtering", &SelectedShadowFiltering_, ShadowFilteringNames, 4);
 
                 if (Apply) {
                     Settings->ShadowMapX_ = DepthMapResolution_[0];

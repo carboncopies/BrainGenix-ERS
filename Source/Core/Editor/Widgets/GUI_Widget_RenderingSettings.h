@@ -38,7 +38,8 @@ private:
 
     // Variables To Store Input Data
     int DepthMapResolution_[2]; /**>Stores the value that the user is putting into the depth map input box*/
-
+    int SelectedShadowFiltering_ = 0;
+    int SelectedShadowUpdates_ = 0;
 
 public:
 
