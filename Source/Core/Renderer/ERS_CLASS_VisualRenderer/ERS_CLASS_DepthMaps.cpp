@@ -540,7 +540,9 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
 
     // Render All Sides
     glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-    glBindFramebuffer(GL_FRAMEBUFFER, TESTFBO);//CubemapFBO_);//Light->DepthMap.FrameBufferObjectID);
+    glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);//Light->DepthMap.FrameBufferObjectID);
+    glClear(GL_DEPTH_BUFFER_BIT);
+
     DepthShader->MakeActive();
 
     // Render With Depth Shader
@@ -554,7 +556,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
 
     DepthShader->SetVec3("LightPos", Light->Pos);
     DepthShader->SetFloat("FarPlane", Light->MaxDistance);
-    glClear(GL_DEPTH_BUFFER_BIT);
     //glActiveTexture(GL_TEXTURE0);
     Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
 
@@ -646,10 +647,10 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
         ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
 
         // Check If Light Has DepthMap
-        if (!Light->DepthMap.Initialized) {
-            Light->DepthMap.DepthMapTextureIndex = AllocateDepthMapIndexCubemap();
-            Light->DepthMap.Initialized = true;
-        }
+        // if (!Light->DepthMap.Initialized) {
+        //     Light->DepthMap.DepthMapTextureIndex = AllocateDepthMapIndexCubemap();
+        //     Light->DepthMap.Initialized = true;
+        // }
 
         // Render To Depth Map
         UpdateDepthMap(Light, CubemapDepthShader);
