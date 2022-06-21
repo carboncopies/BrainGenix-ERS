@@ -393,7 +393,7 @@ float ShadowCalculation(STRUCT_PointLight Light)
     float bias = 0.05; // we use a much larger bias since depth is now in [near_plane, far_plane] range
     float shadow = currentDepth -  bias > closestDepth ? 1.0 : 0.0;        
     // display closestDepth as debug (to visualize depth cubemap)
-     FragColor = vec4(vec3(closestDepth / Light.MaxDistance), 1.0);    
+    // FragColor = vec4(vec3(closestDepth / Light.MaxDistance), 1.0);    
         
     return 1.0f - shadow;
 }
@@ -587,7 +587,7 @@ void main() {
     // Apply Gamma Correction
     if (HDREnabled_) {
         vec3 Mapped = vec3(1.0f) - exp(-Color.xyz * Exposure_);
-        //FragColor = GammaCorrectResult(vec4(Mapped, 1.0f), GammaCorrectionEnabled_);
+        FragColor = GammaCorrectResult(vec4(Mapped, 1.0f), GammaCorrectionEnabled_);
     } else {
         FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
