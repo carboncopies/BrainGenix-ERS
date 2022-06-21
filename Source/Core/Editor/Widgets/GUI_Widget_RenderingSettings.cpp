@@ -117,6 +117,17 @@ void Widget_RenderingSettings::Draw() {
                     SelectedShadowFiltering = 3;
                 }
 
+                if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
+                    SelectedShadowUpdates = 0;
+                } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_RANDOM) {
+                    SelectedShadowUpdates = 1;
+                } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_CONSECUTIVE) {
+                    SelectedShadowUpdates = 2;
+                } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED) {
+                    SelectedShadowUpdates = 3;
+                } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL) {
+                    SelectedShadowUpdates = 4;
+                }
 
 
 
