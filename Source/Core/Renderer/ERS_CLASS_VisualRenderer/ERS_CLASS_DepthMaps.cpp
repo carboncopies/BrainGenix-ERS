@@ -499,8 +499,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
     }
 
     // Handle Point Lights
-    std::cout<<"Point lights\n";
-        glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);//Light->DepthMap.FrameBufferObjectID);
+    glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
     glClear(GL_DEPTH_BUFFER_BIT);
     for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
 
