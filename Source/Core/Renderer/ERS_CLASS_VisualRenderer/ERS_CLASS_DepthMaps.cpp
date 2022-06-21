@@ -412,7 +412,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     DepthShader->SetVec3("LightPos", Light->Pos);
     DepthShader->SetFloat("FarPlane", Light->MaxDistance);
     DepthShader->SetInt("ShadowMapLayer", Light->DepthMap.DepthMapTextureIndex);
-    std::cout<<Light->DepthMap.DepthMapTextureIndex<<std::endl;
     Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
 
 }
