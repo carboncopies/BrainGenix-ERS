@@ -18,10 +18,11 @@ namespace ERS {
 
         enum ShadowUpdateMode {
 
-            ERS_NO_FILTERING,
-            ERS_PCF_FILTERING,
-            ERS_POISSON_SAMPLING,
-            ERS_STRATIFIED_POISSON_SAMPLING
+            ERS_NO_SHADOW_UPDATES,
+            ERS_RANDOM_SHADOW_UPDATES,
+            ERS_CONSECUTIVE_SHADOW_UPDATES,
+            ERS_DISTANCE_PRIORITIZED_SHADOW_UPDATES,
+            ERS_ALL_SHADOW_UPDATES
 
         };
 
