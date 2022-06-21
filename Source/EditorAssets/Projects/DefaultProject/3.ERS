@@ -891,7 +891,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
-    MaxDistance: 0
+    MaxDistance: 15
     AttachedScripts:
       {}
   56:
@@ -904,7 +904,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
-    MaxDistance: 0
+    MaxDistance: 15
     AttachedScripts:
       {}
   57:
@@ -917,7 +917,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
-    MaxDistance: 0
+    MaxDistance: 15
     AttachedScripts:
       {}
   58:
@@ -930,7 +930,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
-    MaxDistance: 0
+    MaxDistance: 15
     AttachedScripts:
       {}
   59:
@@ -943,7 +943,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
-    MaxDistance: 0
+    MaxDistance: 15
     AttachedScripts:
       {}
   60:
@@ -956,7 +956,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
-    MaxDistance: 0
+    MaxDistance: 15
     AttachedScripts:
       {}
   61:
@@ -969,7 +969,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
-    MaxDistance: 0
+    MaxDistance: 15
     AttachedScripts:
       {}
   62:
@@ -982,7 +982,7 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
-    MaxDistance: 0
+    MaxDistance: 15
     AttachedScripts:
       {}
   63:
