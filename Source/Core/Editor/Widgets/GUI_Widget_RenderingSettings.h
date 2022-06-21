@@ -16,6 +16,10 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_RendererSettings.h>
+
+#include <ERS_ENUM_ShadowFilteringType.h>
+#include <ERS_ENUM_ShadowUpdateMode.h>
 
 
 
