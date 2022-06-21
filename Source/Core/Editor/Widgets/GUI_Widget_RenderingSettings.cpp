@@ -158,8 +158,6 @@ void Widget_RenderingSettings::Draw() {
                     Settings->ShadowMapX_ = DepthMapResolution_[0];
                     Settings->ShadowMapY_ = DepthMapResolution_[1];
 
-
-
                     if (SelectedShadowFiltering_ == 0) {
                         Settings->ShadowFilteringType_ = ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED;
                     } else if (SelectedShadowFiltering_ == 1) {
