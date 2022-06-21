@@ -30,5 +30,6 @@ struct ERS_STRUCT_DepthMap {
     glm::mat4 TransformationMatrix; /**<Used to store the transformation matrix*/
 
     bool Initialized = false; /**<Indiciates If The Target Is Initialized Or Not*/
+    bool ToBeUpdated = true; /**<Indicated If This Depth Map Should Be Updated Next Frame*/
 
 };
