@@ -151,6 +151,8 @@ void Widget_RenderingSettings::Draw() {
 
 
                 ImGui::Combo("Shadow Filtering", &SelectedShadowFiltering_, ShadowFilteringNames, 4);
+                ImGui::Combo("Shadow Update Mode", &SelectedShadowUpdates_, ShadowUpdateNames, 5);
+                
 
                 if (Apply) {
                     Settings->ShadowMapX_ = DepthMapResolution_[0];
