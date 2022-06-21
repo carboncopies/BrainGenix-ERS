@@ -84,11 +84,7 @@ private:
     bool FreeDepthMapIndexCubemap(unsigned int Index);
     
 
-    /**
-     * @brief Checks the settings of the renderer against the current parameters.
-     * 
-     */
-    void CheckSettings();
+
 
 public:
 
@@ -130,7 +126,12 @@ public:
      */
     ~ERS_CLASS_DepthMaps();
 
-
+    /**
+     * @brief Checks the settings of the renderer against the current parameters.
+     * 
+     */
+    void CheckSettings();
+    
     /**
      * @brief Generates a depth map array (array texture), with the given width, height and number of layers.
      * 
