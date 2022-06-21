@@ -208,11 +208,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
     }
     SystemUtils_->Logger_->Log("Done Updating/Checking Cubemap Allocation Array", 3, LogEnabled);
 
-
-
-
     return true;
-
 }
 
 bool ERS_CLASS_DepthMaps::FreeDepthMapIndex2D(unsigned int Index) {
