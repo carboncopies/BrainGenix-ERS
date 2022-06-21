@@ -32,6 +32,4 @@ struct ERS_STRUCT_RendererSettings {
     // Set Max Shadow Updates Per Frame
     int MaxShadowUpdatesPerFrame_ = 20;
 
-    
-
 };
