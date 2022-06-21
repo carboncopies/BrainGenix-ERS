@@ -200,22 +200,29 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
     ShaderProgram_ = glCreateProgram();
 
     // Attach Shaders To Program
+    Logger->Log("Attaching Vertex Shader", 3);
     glAttachShader(ShaderProgram_, VertexShader);
+
+    Logger->Log("Attaching Fragment Shader", 3);
     glAttachShader(ShaderProgram_, FragmentShader);
 
     if (HasGeometryShader) {
+        Logger->Log("Attaching Geometry Shader", 3);
         glAttachShader(ShaderProgram_, GeometryShader);
     }
 
     if (HasComputeShader) {
+        Logger->Log("Attaching Compute Shader", 3);
         glAttachShader(ShaderProgram_, ComputeShader);
     }
 
     if (HasTCShader) {
+        Logger->Log("Attaching TC Shader", 3);
         glAttachShader(ShaderProgram_, TCShader);
     }
 
     if (HasTEShader) {
+        Logger->Log("Attaching TE Shader", 3);
         glAttachShader(ShaderProgram_, TEShader);
     }
 
