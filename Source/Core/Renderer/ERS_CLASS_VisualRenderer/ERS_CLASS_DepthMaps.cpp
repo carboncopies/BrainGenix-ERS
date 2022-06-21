@@ -255,7 +255,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
 
 
     const unsigned int SHADOW_WIDTH = 2048, SHADOW_HEIGHT = 2048;
-    unsigned int NumberOfTextures = 16;
+    unsigned int NumberOfTextures2 = 16;
     unsigned int depthMapFBO;
     glGenFramebuffers(1, &depthMapFBO);
     // create depth cubemap texture
@@ -271,7 +271,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
         GL_DEPTH_COMPONENT24,     // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
         SHADOW_WIDTH,  // Cubemap Width
         SHADOW_HEIGHT, // Cubemap Height
-        NumberOfTextures * 6,     // Total Number Of Textures In The Array
+        NumberOfTextures2 * 6,     // Total Number Of Textures In The Array
         0,                        // Border, we're not using this
         GL_DEPTH_COMPONENT,       // Tells opengl what kind of data we're storing in this texture
         GL_FLOAT,                 // tells opengl how to store the data
