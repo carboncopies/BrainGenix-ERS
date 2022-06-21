@@ -121,25 +121,25 @@ void Widget_RenderingSettings::Draw() {
 
 
                 if (Settings->ShadowFilteringType_ == ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED) {
-                    SelectedShadowFiltering = 0;
+                    SelectedShadowFiltering_ = 0;
                 } else if (Settings->ShadowFilteringType_ == ERS::Renderer::ERS_SHADOW_FILTERING_PCF) {
-                    SelectedShadowFiltering = 1;
+                    SelectedShadowFiltering_ = 1;
                 } else if (Settings->ShadowFilteringType_ == ERS::Renderer::ERS_SHADOW_FILTERING_POISSON_SAMPLING) {
-                    SelectedShadowFiltering = 2;
+                    SelectedShadowFiltering_ = 2;
                 } else if (Settings->ShadowFilteringType_ == ERS::Renderer::ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING) {
-                    SelectedShadowFiltering = 3;
+                    SelectedShadowFiltering_ = 3;
                 }
 
                 if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
-                    SelectedShadowUpdates = 0;
+                    SelectedShadowUpdates_ = 0;
                 } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_RANDOM) {
-                    SelectedShadowUpdates = 1;
+                    SelectedShadowUpdates_ = 1;
                 } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_CONSECUTIVE) {
-                    SelectedShadowUpdates = 2;
+                    SelectedShadowUpdates_ = 2;
                 } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED) {
-                    SelectedShadowUpdates = 3;
+                    SelectedShadowUpdates_ = 3;
                 } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL) {
-                    SelectedShadowUpdates = 4;
+                    SelectedShadowUpdates_ = 4;
                 }
 
 
