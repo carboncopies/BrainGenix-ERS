@@ -117,7 +117,7 @@ struct ERS_STRUCT_Shader {
      * 
      * @param DeleteShadersUponLink 
      */
-    std::string CreateShaderProgram(ERS_CLASS_LoggingSystem* Logger = nullptr);
+    std::string CreateShaderProgram(ERS_CLASS_LoggingSystem* Logger, bool LogEnable = true);
 
     /**
      * @brief Make The Shader Stored Within The Struct Active.
