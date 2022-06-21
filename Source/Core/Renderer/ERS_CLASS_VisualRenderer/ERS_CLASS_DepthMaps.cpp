@@ -378,79 +378,84 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_DirectionalLight* Light, ERS
 
 void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUCT_Shader* DepthShader) {
 
+    if (Light->DepthMap.ToBeUpdated) {
 
-    // Setup Variables
-    ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
-    float NearPlane, FarPlane;
-    NearPlane = 0.1f;
-    FarPlane = Light->MaxDistance;
+        // Setup Variables
+        ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+        float NearPlane, FarPlane;
+        NearPlane = 0.1f;
+        FarPlane = Light->MaxDistance;
 
-    // Calculate Project, View, Space Matrices
-    float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
-    glm::mat4 ShadowProjection = glm::perspective(glm::radians(90.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
-    
-    std::vector<glm::mat4> ShadowTransforms;
-    ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 1.0, 0.0, 0.0), glm::vec3(0.0,-1.0, 0.0)));
-    ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3(-1.0, 0.0, 0.0), glm::vec3(0.0,-1.0, 0.0)));
-    ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 1.0, 0.0), glm::vec3(0.0, 0.0, 1.0)));
-    ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0,-1.0, 0.0), glm::vec3(0.0, 0.0,-1.0)));
-    ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0, 1.0), glm::vec3(0.0,-1.0, 0.0)));
-    ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0,-1.0), glm::vec3(0.0,-1.0, 0.0)));
+        // Calculate Project, View, Space Matrices
+        float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
+        glm::mat4 ShadowProjection = glm::perspective(glm::radians(90.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
+        
+        std::vector<glm::mat4> ShadowTransforms;
+        ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 1.0, 0.0, 0.0), glm::vec3(0.0,-1.0, 0.0)));
+        ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3(-1.0, 0.0, 0.0), glm::vec3(0.0,-1.0, 0.0)));
+        ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 1.0, 0.0), glm::vec3(0.0, 0.0, 1.0)));
+        ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0,-1.0, 0.0), glm::vec3(0.0, 0.0,-1.0)));
+        ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0, 1.0), glm::vec3(0.0,-1.0, 0.0)));
+        ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0,-1.0), glm::vec3(0.0,-1.0, 0.0)));
 
 
 
-    // Render All Sides
-    glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+        // Render All Sides
+        glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
 
-    DepthShader->MakeActive();
+        DepthShader->MakeActive();
 
-    // Render With Depth Shader
-    for (unsigned int i = 0; i < ShadowTransforms.size(); i++) {
-        DepthShader->SetMat4(std::string("ShadowMatrices[") + std::to_string(i) + std::string("]"), ShadowTransforms[i]);
+        // Render With Depth Shader
+        for (unsigned int i = 0; i < ShadowTransforms.size(); i++) {
+            DepthShader->SetMat4(std::string("ShadowMatrices[") + std::to_string(i) + std::string("]"), ShadowTransforms[i]);
+        }
+
+        DepthShader->SetVec3("LightPos", Light->Pos);
+        DepthShader->SetFloat("FarPlane", Light->MaxDistance);
+        DepthShader->SetInt("ShadowMapLayer", Light->DepthMap.DepthMapTextureIndex);
+        Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
+
     }
-
-    DepthShader->SetVec3("LightPos", Light->Pos);
-    DepthShader->SetFloat("FarPlane", Light->MaxDistance);
-    DepthShader->SetInt("ShadowMapLayer", Light->DepthMap.DepthMapTextureIndex);
-    Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
 
 }
 
 void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_SpotLight* Light, ERS_STRUCT_Shader* DepthShader) {
 
-    // Check Settings
-    CheckSettings();
+
+    if (Light->DepthMap.ToBeUpdated) {
 
 
-    // Setup Variables
-    glm::mat4* LightSpaceMatrixArray = &Light->DepthMap.TransformationMatrix;
-    ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
-    glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
-    float NearPlane, FarPlane;
-    NearPlane = 0.1f;
-    FarPlane = Light->MaxDistance;
+        // Setup Variables
+        glm::mat4* LightSpaceMatrixArray = &Light->DepthMap.TransformationMatrix;
+        ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+        glm::mat4 ObjectProjection, ObjectView, ObjectSpace;
+        float NearPlane, FarPlane;
+        NearPlane = 0.1f;
+        FarPlane = Light->MaxDistance;
 
-    // Calculate Project, View, Space Matrices
-    float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
-    float FOV = glm::radians(130.0f);// * (0.01745329));
-    ObjectProjection = glm::perspective(FOV, AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
-    
-    // Re-Do Rotation
-    glm::vec3 XYZRotation = ERS_FUNCTION_ConvertRotationToFrontVector(Light->Rot);
-    glm::vec3 Front = glm::normalize(XYZRotation);
-    ObjectView = glm::lookAt(Light->Pos, Light->Pos+Front, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
-    ObjectSpace = ObjectProjection * ObjectView;
+        // Calculate Project, View, Space Matrices
+        float AspectRatio = DepthTextureArrayWidth_ / DepthTextureArrayHeight_;
+        float FOV = glm::radians(130.0f);// * (0.01745329));
+        ObjectProjection = glm::perspective(FOV, AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
+        
+        // Re-Do Rotation
+        glm::vec3 XYZRotation = ERS_FUNCTION_ConvertRotationToFrontVector(Light->Rot);
+        glm::vec3 Front = glm::normalize(XYZRotation);
+        ObjectView = glm::lookAt(Light->Pos, Light->Pos+Front, glm::vec3(0.0f, 1.0f, 0.0f)); // Pos+Front
+        ObjectSpace = ObjectProjection * ObjectView;
 
-    // Render With Depth Shader
-    DepthShader->MakeActive();
-    DepthShader->SetMat4("LightSpaceMatrix", ObjectSpace);
-    *LightSpaceMatrixArray = ObjectSpace;
+        // Render With Depth Shader
+        DepthShader->MakeActive();
+        DepthShader->SetMat4("LightSpaceMatrix", ObjectSpace);
+        *LightSpaceMatrixArray = ObjectSpace;
 
-    glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-    glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
-    glClear(GL_DEPTH_BUFFER_BIT);
-    glActiveTexture(GL_TEXTURE0);
-    Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
+        glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+        glBindFramebuffer(GL_FRAMEBUFFER, Light->DepthMap.FrameBufferObjectID);
+        glClear(GL_DEPTH_BUFFER_BIT);
+        glActiveTexture(GL_TEXTURE0);
+        Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
+
+    }
 
 }
 
