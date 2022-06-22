@@ -193,7 +193,6 @@ void Widget_ObjectProperties::Draw() {
                         ImGui::SameLine();
                         ImGui::HelpMarker("Indicates if this model will cast shadows in dynamic lights. Avoid using this whenever possible due to performance related issues.");
 
-
                         ImGui::Checkbox("Casts Static Shadows", &Model->CastStaticShadows_);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Indicates if this model will cast shadows in static lights.");
