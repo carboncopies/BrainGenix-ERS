@@ -79,8 +79,6 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
         // Randomly Update The Light, Note: Updates Are Guarenteed To Be Less Than Max But Not Equal To That
         for (unsigned int i = 0; i < (unsigned int)SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
             int UpdateIndex = RandomNumberGenerator_(MersenneTwister_) % (DepthMaps.size()-1);
-            std::cout<<UpdateIndex<<std::endl;
-
             DepthMaps[UpdateIndex]->ToBeUpdated = true;
         }
 
