@@ -100,7 +100,7 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
 
             std::map<unsigned int, float> SortedLightDistances;
             for (auto const& Entry : LightDistances) {
-                SortedLightDistances[Entry.second] = Entry.first);
+                SortedLightDistances[Entry.second] = Entry.first];
             }
 
 
