@@ -83,7 +83,7 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
             for (unsigned int i = 0; i < DepthMaps.size(); i++) {
 
                 // Use Random Number Generator To Decide Which Lights To Update
-                if (rand() % 50 = 2) {
+                if (rand() % 50 == 2) {
                     DepthMaps[LastUpdateIndex_]->ToBeUpdated = true;
                     Updates++;
                 }
