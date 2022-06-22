@@ -387,6 +387,12 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     // Only Update If Instructed To Do SO
     if (Light->DepthMap.ToBeUpdated) {
 
+        for (unsigned int i = 0; i < 6; i++) {
+            glBindFramebuffer(GL_FRAMEBUFFER, PointLightClearFBO_);
+            glFramebufferTextureLayer(GL_FRAMEBUFFER,  GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, 0, Light->DepthMap.DepthMapTextureIndex*6 + i);
+            glClear(GL_DEPTH_BUFFER_BIT);
+        }
+
         // Setup Variables
         ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
         float NearPlane, FarPlane;
@@ -407,23 +413,26 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
 
 
 
+
+
         // Render All Sides
         glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-        
-    // glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
+        glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
     // glClear(GL_DEPTH_BUFFER_BIT);
-        glClearTexSubImage(DepthTextureCubemapArrayID_, // Texture To Clear
-        0,                                              // Mip Map Level
-        0,                                              // X Offset
-        0,                                              // Y Offset
-        Light->DepthMap.DepthMapTextureIndex,         // Z Offset
-        DepthTextureArrayWidth_,
-        DepthTextureArrayHeight_,
-        6,
-        GL_DEPTH_COMPONENT,
-        GL_FLOAT,
-        NULL
-        );
+        // glClearTexSubImage(DepthTextureCubemapArrayID_, // Texture To Clear
+        // 0,                                              // Mip Map Level
+        // 0,                                              // X Offset
+        // 0,                                              // Y Offset
+        // Light->DepthMap.DepthMapTextureIndex,         // Z Offset
+        // DepthTextureArrayWidth_,                        // Texture Width
+        // DepthTextureArrayHeight_,                       // Texture Height
+        // 6,                                              // Number Of Layers To Clear
+        // GL_DEPTH_COMPONENT,                             // Type OF Texture To Clear
+        // GL_FLOAT,                                       // GL Internal Format
+        // NULL                                            // Data To Put Back In
+        // );
+
+
 
         DepthShader->MakeActive();
 
