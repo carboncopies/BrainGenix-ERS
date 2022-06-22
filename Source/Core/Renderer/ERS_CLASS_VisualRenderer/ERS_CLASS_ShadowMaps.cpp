@@ -95,7 +95,7 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
             std::map<unsigned int, float> LightDistances;        
             for (unsigned int i = 0; i < DepthMaps.size(); i++) {
                 float Distance = glm::distance(CameraPosition, LightPositions[i]);
-                LightDistances[i] = Distance;
+                LightDistances.insert(std::make_pair(i, Distance));
             }
 
 
