@@ -70,7 +70,7 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
 
             }
         } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_CONSECUTIVE) {
-            for (unsigned int i = 0; i < (unsigned int)SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
+            for (i = 0; i < SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
 
                 // Calculate The Current index, Wrap At End Of List Size
                 LastUpdateIndex_++;
@@ -84,14 +84,14 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
         } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_RANDOM) {
 
             // Randomly Update The Light, Note: Updates Are Guarenteed To Be Less Than Max But Not Equal To That
-            for (unsigned int i = 0; i < (unsigned int)SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
+            for (int i = 0; i < SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
                 int UpdateIndex = RandomNumberGenerator_(MersenneTwister_) % (DepthMaps.size()-1);
                 DepthMaps[UpdateIndex]->ToBeUpdated = true;
             }
 
         } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED) {
             
-            // Create Map Of Indexes And Distances
+            // Create Sorted List Of Light Indexes Based On Distance
             std::map<float, unsigned int> LightDistances;        
             for (unsigned int i = 0; i < DepthMaps.size(); i++) {
                 float Distance = glm::distance(CameraPosition, LightPositions[i]);
@@ -104,9 +104,11 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
             }
 
 
-            for (unsigned int i = 0; i <SortedLightDistances.size();i++) {
-                std::cout<<SortedLightDistances[i]<<std::endl;
+            // Mark Lights To Be Updated
+            for (int i = 0; i < SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_) {
+                DepthMaps[SortedLightDistances[i]]->ToBeUpdated = true;
             }
+            
 
         }
 
