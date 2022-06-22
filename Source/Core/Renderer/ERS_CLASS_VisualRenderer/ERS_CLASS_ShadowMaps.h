@@ -50,11 +50,11 @@ private:
 
 
     std::mt19937 MersenneTwister_; /**<Used to generate rnd numbers for random light updates*/
-    unint32_t RandomSeed = 1; /**Seed used to set initial random generator*/
-    std::uniform_int_distrobution<unint32_t> RandomNumberGenerator_; /**<Actual class that spits out random numbers*/
+    uint32_t RandomSeed = 1; /**Seed used to set initial random generator*/
+    std::uniform_int_distrobution<uint32_t> RandomNumberGenerator_; /**<Actual class that spits out random numbers*/
 
 
-    
+
     unsigned int LastUpdateIndex_ = 0; /**<Used when updating the depth maps, indicates when the last consecuitive index was*/
 
 
