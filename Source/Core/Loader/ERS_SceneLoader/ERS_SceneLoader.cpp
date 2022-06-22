@@ -114,8 +114,16 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
 
 
             // Load Shadow Configuration
-            if (SceneDataNode[i]["CastsDynamicShadows"]) {
-                
+            if (SceneDataNode[i]["CastDynamicShadows"]) {
+                Scene.Models[CurrentSize-1]->CastDynamicShadows_ = SceneDataNode[i]["CastDynamicShadows"].as<bool>();
+            }
+
+            if (SceneDataNode[i]["CastStaticShadows"]) {
+                Scene.Models[CurrentSize-1]->CastStaticShadows_ = SceneDataNode[i]["CastStaticShadows"].as<bool>();
+            }
+
+            if (SceneDataNode[i]["ReceiveShadows"]) {
+                Scene.Models[CurrentSize-1]->ReceiveShadows_ = SceneDataNode[i]["ReceiveShadows"].as<bool>();
             }
 
 
