@@ -273,9 +273,10 @@ float ShadowCalculation(STRUCT_SpotLight Light)
     // check whether current frag pos is in shadow
     vec3 LightDir = normalize(Light.Position - Object.FragPos);
     
-    int TextureSize = textureSize(DepthMapArray, 0).x;
-    float BiasMax = 1.0f;
     
+    // Generate Shadow Map Bias
+    int TextureSize = textureSize(DepthMapArray, 0).x;
+    float BiasMax = 0.0005f;
     if (TextureSize == 512) {
         BiasMax = 0.003;
     } else if (TextureSize == 1024) {
