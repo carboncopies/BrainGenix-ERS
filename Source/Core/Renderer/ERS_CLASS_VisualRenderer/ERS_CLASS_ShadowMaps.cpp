@@ -25,7 +25,7 @@ ERS_CLASS_ShadowMaps::~ERS_CLASS_ShadowMaps() {
 }
 
 
-void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, ERS_STRUCT_Shader* CubemapDepthShader) {
+void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, ERS_STRUCT_Shader* CubemapDepthShader, glm::vec3 CameraPosition) {
 
     // Get Updated Info From Renderer Settings
     ERS_CLASS_DepthMaps_->CheckSettings();
@@ -36,14 +36,18 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
     // Create List Of All Depth Maps
     ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     std::vector<ERS_STRUCT_DepthMap*> DepthMaps;
-    for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
-        DepthMaps.push_back(&ActiveScene->DirectionalLights[i]->DepthMap);
-    }
+    std::vector<glm::vec3> LightPositions;
+    // for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
+    //     DepthMaps.push_back(&ActiveScene->DirectionalLights[i]->DepthMap);
+    //     LightPositions.push_back(ActiveScene->DirectionalLights[i]->Pos);
+    // }
     for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
         DepthMaps.push_back(&ActiveScene->PointLights[i]->DepthMap);
+        LightPositions.push_back(ActiveScene->PointLights[i]->Pos);
     }
     for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
         DepthMaps.push_back(&ActiveScene->SpotLights[i]->DepthMap);
+        LightPositions.push_back(ActiveScene->SpotLights[i]->Pos);
     }
 
     // Exit Early If No Lights Exist
@@ -84,11 +88,13 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
 
     } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED) {
         
-        // We
-        glm::vec3 CameraPosition = 
-
         // Create Map Of Indexes And Distances
-        
+        std::map<unsigned int, float> LightDistances;        
+
+        for (unsigned int i = 0; i < DepthMaps.size(); i++) {
+            float Distance = glm::distance
+        }
+
 
     }
 
