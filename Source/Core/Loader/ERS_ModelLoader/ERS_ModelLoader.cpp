@@ -233,6 +233,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
 
             int TextureIndex = Model->Meshes[i].TextureReferences_[Index];
         
+
             if (TextureIndex == -1) {
                 SystemUtils_->Logger_->Log("Failed To Find Corresponding Texture", 8);
                 Model->Meshes[i].TextureIDs.push_back(-1);
