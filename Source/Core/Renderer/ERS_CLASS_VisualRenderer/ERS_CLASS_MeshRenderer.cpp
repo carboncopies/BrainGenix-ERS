@@ -66,7 +66,7 @@ void ERS_CLASS_MeshRenderer::RenderSceneNoTextures(ERS_STRUCT_Scene* Scene, ERS_
     // Sort Into Pesh Categories
     std::vector<ERS_STRUCT_Mesh*> OpaqueMeshes;
     std::vector<ERS_STRUCT_Mesh*> TransparentMeshes;
-    ERS_FUNCTION_MeshTransparencySort(&OpaqueMeshes, &TransparentMeshes, Scene);
+    ERS_FUNCTION_MeshTransparencySortNoTextures(&OpaqueMeshes, &TransparentMeshes, Scene);
 
     // Draw All Opaque Meshes
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
