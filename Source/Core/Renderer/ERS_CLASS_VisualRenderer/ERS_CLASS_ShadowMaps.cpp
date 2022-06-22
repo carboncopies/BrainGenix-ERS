@@ -98,17 +98,6 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
                 LightDistances[i] = Distance;
             }
 
-            // Sort Based On Value In Acending Order
-            typedef std::pair<unsigned int, float> pair;
-            std::sort(LightDistances.begin(), LightDistances.end(),
-            [](const pair &l, const pair &r)
-            {
-                if (l.second != r.second) {
-                    return l.second < r.second;
-                }
- 
-                return l.first < r.first;
-            });
 
 
 
