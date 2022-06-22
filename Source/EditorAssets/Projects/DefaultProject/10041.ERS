@@ -114,6 +114,7 @@ uniform bool HasShininess;
 
 // Get Shadow Configuration Information
 uniform bool ReceiveShadows_;
+uniform int ShadowFilterType_;
 
 // Get Lighting Info
 uniform int NumberDirectionalLights;
@@ -228,10 +229,80 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
     float currentDepth = projCoords.z;
     // check whether current frag pos is in shadow
     vec3 LightDir = normalize(LightPos - Object.FragPos);
-    float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), 0.00025);
+    float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), 0.0025);
     
     //float Shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
     float Shadow = ShadowPCF(Bias, projCoords, Index, currentDepth, 2);
+    //float Shadow = ShadowPCFRandom(Bias, projCoords, Index, currentDepth, 1);
+    
+    if (projCoords.z > 1.0) {
+        Shadow = 0.0f;
+    }
+
+	if (Shadow > 1.0f) {
+		Shadow = 1.0f;
+	} else if (Shadow < 0.0f) {
+		Shadow = 0.0f;
+	}
+
+
+    return 1.0f - Shadow;
+}
+
+
+float ShadowCalculation(STRUCT_SpotLight Light)
+{
+
+    // If Shadows Are Not Enabled, Exit Early
+    if (!ReceiveShadows_) {
+     return 1.0f;
+    }
+    
+    
+    vec4 fragPosLightSpace = Light.LightSpaceMatrix * vec4(Object.FragPos, 1.0f);
+
+    // perform perspective divide
+    vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
+    // transform to [0,1] range
+    projCoords = projCoords * 0.5f + 0.5;
+    
+    // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
+    float closestDepth = texture(DepthMapArray, vec3(projCoords.xy, Light.DepthMapIndex)).r; 
+    // get depth of current fragment from light's perspective
+    float currentDepth = projCoords.z;
+    // check whether current frag pos is in shadow
+    vec3 LightDir = normalize(Light.Position - Object.FragPos);
+    
+    int TextureSize = textureSize(DepthMapArray, 0).x;
+    float BiasMax = 1.0f;
+    
+    if (TextureSize == 512) {
+        BiasMax = 0.003;
+    } else if (TextureSize == 1024) {
+        BiasMax = 0.0015;
+    } else if (TextureSize == 2048) {
+        BiasMax = 0.00075;
+    } else if (TextureSize == 4096) {
+        BiasMax = 0.00045;
+    } else if (TextureSize == 8192) {
+        BiasMax = 0.00025;
+    } else if (TextureSize == 16384) {
+        BiasMax = 0.00015;
+    }
+    
+    float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), BiasMax);//0.00225);
+    
+    
+    // Select Correct Filter Based On Selection Uniform
+    float Shadow;
+    if (ShadowFilterType_ == 0) { // No Filtering
+        Shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
+    } else if (ShadowFilterType_ == 1) {
+        Shadow = ShadowPCF(Bias, projCoords, Light.DepthMapIndex, currentDepth, 2);
+    } else {
+        return 0.0f; // Return Failure, All Black)
+    }
+    
     //float Shadow = ShadowPCFRandom(Bias, projCoords, Index, currentDepth, 1);
     
     if (projCoords.z > 1.0) {
@@ -510,7 +581,7 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
     }
 
     // add to outgoing radiance Lo
-    return ((kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL * Intensity) * ShadowCalculation(Light.LightSpaceMatrix, Light.Direction, Light.DepthMapIndex);  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
+    return ((kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL * Intensity) * ShadowCalculation(Light);  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
 
 }
 
