@@ -387,6 +387,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     // Only Update If Instructed To Do SO
     if (Light->DepthMap.ToBeUpdated) {
 
+        // Clear This Layer Of The Cubemap Array
         for (unsigned int i = 0; i < 6; i++) {
             glBindFramebuffer(GL_FRAMEBUFFER, PointLightClearFBO_);
             glFramebufferTextureLayer(GL_FRAMEBUFFER,  GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, 0, Light->DepthMap.DepthMapTextureIndex*6 + i);
@@ -412,35 +413,13 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
         ShadowTransforms.push_back(ShadowProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0,-1.0), glm::vec3(0.0,-1.0, 0.0)));
 
 
-
-
-
         // Render All Sides
         glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
         glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
-    // glClear(GL_DEPTH_BUFFER_BIT);
-        // glClearTexSubImage(DepthTextureCubemapArrayID_, // Texture To Clear
-        // 0,                                              // Mip Map Level
-        // 0,                                              // X Offset
-        // 0,                                              // Y Offset
-        // Light->DepthMap.DepthMapTextureIndex,         // Z Offset
-        // DepthTextureArrayWidth_,                        // Texture Width
-        // DepthTextureArrayHeight_,                       // Texture Height
-        // 6,                                              // Number Of Layers To Clear
-        // GL_DEPTH_COMPONENT,                             // Type OF Texture To Clear
-        // GL_FLOAT,                                       // GL Internal Format
-        // NULL                                            // Data To Put Back In
-        // );
-
-
-
         DepthShader->MakeActive();
-
-        // Render With Depth Shader
         for (unsigned int i = 0; i < ShadowTransforms.size(); i++) {
             DepthShader->SetMat4(std::string("ShadowMatrices[") + std::to_string(i) + std::string("]"), ShadowTransforms[i]);
         }
-
         DepthShader->SetVec3("LightPos", Light->Pos);
         DepthShader->SetFloat("FarPlane", Light->MaxDistance);
         DepthShader->SetInt("ShadowMapLayer", Light->DepthMap.DepthMapTextureIndex);
