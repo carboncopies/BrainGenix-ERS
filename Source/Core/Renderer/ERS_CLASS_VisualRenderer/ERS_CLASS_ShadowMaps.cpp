@@ -101,8 +101,8 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
 
 
 
-            for (unsigned int i = 0; i <LightDistances.size();i++) {
-                std::cout<<i<<" | "<<LightDistances[i]<<std::endl;
+            for (auto const& entry : LightDistances) {
+                std::cout<<entry.first<<" | "<<entry.second<<std::endl;
             }
 
         }
