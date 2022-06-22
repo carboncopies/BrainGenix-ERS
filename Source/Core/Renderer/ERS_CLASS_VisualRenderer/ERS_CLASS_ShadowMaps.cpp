@@ -46,10 +46,19 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
     }
 
     // Tell The Depth Map Update System Which Depth Maps To Update
-
-
-    //if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
-    //}
+    if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
+        
+    } else if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
+        
+    } else if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL) {
+        
+    } else if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_CONSECUTIVE) {
+        
+    } else if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_RANDOM) {
+        
+    } else if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED) {
+        
+    }
 
     // Update All Depth Maps
     ERS_CLASS_DepthMaps_->UpdateDepthMaps(DepthMapShader, CubemapDepthShader);
