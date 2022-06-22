@@ -282,13 +282,13 @@ float ShadowCalculation(STRUCT_SpotLight Light)
     } else if (TextureSize <= 1024) {
         BiasMax = 0.0015;
     } else if (TextureSize <= 2048) {
-        BiasMax = 0.00075;
+        BiasMax = 0.001;
     } else if (TextureSize <= 4096) {
-        BiasMax = 0.00045;
+        BiasMax = 0.00075;
     } else if (TextureSize <= 8192) {
-        BiasMax = 0.00025;
+        BiasMax = 0.00045;
     } else if (TextureSize <= 16384) {
-        BiasMax = 0.00015;
+        BiasMax = 0.00025;
     }
     
     float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), BiasMax);//0.00225);
@@ -684,6 +684,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
