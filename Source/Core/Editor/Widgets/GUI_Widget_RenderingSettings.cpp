@@ -175,6 +175,7 @@ void Widget_RenderingSettings::Draw() {
                         Settings->ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_RANDOM;
                     } else if (SelectedShadowUpdates_ == 2) {
                         Settings->ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_CONSECUTIVE;
+                        std::cout<<"applied to consec\n";
                     } else if (SelectedShadowUpdates_ == 3) {
                         Settings->ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED;
                     } else if (SelectedShadowUpdates_ == 4) {
