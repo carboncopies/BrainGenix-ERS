@@ -108,9 +108,9 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
             for (int i = 0; i < SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
                 unsigned int DepthMapIndex = SortedLightDistances[i];
                 if (RandomNumberGenerator_(MersenneTwister_) % (DepthMaps.size()-1) == i) {
-                    SystemUtils = RandomNumberGenerator_(MersenneTwister_) % (DepthMaps.size()-1);
+                    DepthMapIndex = RandomNumberGenerator_(MersenneTwister_) % (DepthMaps.size()-1);
                 }
-                DepthMaps[]->ToBeUpdated = true;
+                DepthMaps[DepthMapIndex]->ToBeUpdated = true;
             }
             
 
