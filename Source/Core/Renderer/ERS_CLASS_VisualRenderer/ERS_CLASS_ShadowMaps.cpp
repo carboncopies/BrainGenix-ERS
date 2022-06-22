@@ -32,15 +32,26 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
     ERS::Renderer::ShadowFilteringType FilterMode = SystemUtils_->RendererSettings_->ShadowFilteringType_;
 
 
-    // Ensure That Shadows Aren't Supposed To Be Disabled
-    if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
-
-        // Update All Depth Maps
-        ERS_CLASS_DepthMaps_->UpdateDepthMaps(DepthMapShader, CubemapDepthShader);
-
+    // Create List Of All Depth Maps
+    ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+    std::vector<ERS_STRUCT_DepthMap*> DepthMaps;
+    for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
+        DepthMaps.push_back(&ActiveScene->DirectionalLights[i]->DepthMap);
+    }
+    for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
+        DepthMaps.push_back(&ActiveScene->PointLights[i]->DepthMap);
+    }
+    for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
+        DepthMaps.push_back(&ActiveScene->SpotLights[i]->DepthMap);
     }
 
-    // Provide Depth Map Textures
-    
+    // Tell The Depth Map Update System Which Depth Maps To Update
+
+
+    //if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
+    //}
+
+    // Update All Depth Maps
+    ERS_CLASS_DepthMaps_->UpdateDepthMaps(DepthMapShader, CubemapDepthShader);
 
 }
