@@ -103,6 +103,9 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
     Shader->SetBool("HasMetalness", HasMetalness);
     Shader->SetBool("HasNormals", HasNormals);
     Shader->SetBool("HasShininess", HasShininess);
+
+    // Shadow Control Uniforms
+    Shader->SetBool("ReceiveShadows_", *Mesh->ReceiveShadows_);
     
 
 
