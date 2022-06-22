@@ -79,6 +79,7 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
         for (unsigned int i = 0; i < (unsigned int)SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
             int UpdateIndex = rand() % DepthMaps.size()-1;
             DepthMaps[UpdateIndex]->ToBeUpdated = true;
+            std::cout<<UpdateIndex<<std::endl;
         }
 
     } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED) {
