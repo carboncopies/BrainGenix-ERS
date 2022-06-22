@@ -152,7 +152,7 @@ void Widget_RenderingSettings::Draw() {
                 ImGui::Combo("Shadow Filtering", &SelectedShadowFiltering_, ShadowFilteringNames, 4);
                 ImGui::Combo("Shadow Update Mode", &SelectedShadowUpdates_, ShadowUpdateNames, 5);
                 
-
+                std::cout<<SelectedShadowUpdates_<<std::endl;
                 // Handle Apply Button
                 Apply = ImGui::Button("Apply");
                 if (Apply) {
