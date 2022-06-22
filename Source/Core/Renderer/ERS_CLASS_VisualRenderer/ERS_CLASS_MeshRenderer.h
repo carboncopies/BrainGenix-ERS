@@ -29,6 +29,7 @@
 
 #include <ERS_FUNCTION_CheckForMeshTransparency.h>
 #include <ERS_FUNCTION_MeshTransparencySort.h>
+#include <ERS_FUNCTION_MeshTransparencySortNoTextures.h>
 #include <ERS_FUNCTION_DrawMesh.h>
 #include <ERS_FUNCTION_DrawMeshNoTextures.h>
 
