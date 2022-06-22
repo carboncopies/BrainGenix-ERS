@@ -112,6 +112,9 @@ uniform bool HasNormals;
 uniform bool HasShininess;
 
 
+// Get Shadow Configuration Information
+uniform bool ReceiveShadows_;
+
 // Get Lighting Info
 uniform int NumberDirectionalLights;
 uniform int NumberPointLights;
@@ -205,6 +208,13 @@ float ShadowPCFRandom(float Bias, vec3 ProjCoords, int Index, float CurrentDepth
 
 float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
 {
+
+    // If Shadows Are Not Enabled, Exit Early
+    if (!ReceiveShadows_) {
+     return 1.0f;
+    }
+    
+    
     vec4 fragPosLightSpace = LightSpaceMatrix * vec4(Object.FragPos, 1.0f);
 
     // perform perspective divide
@@ -239,7 +249,31 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
 }
 
 
+float ShadowCalculation(STRUCT_PointLight Light)
+{
 
+    // If Shadows Are Not Enabled, Exit Early
+    if (!ReceiveShadows_) {
+     return 1.0f;
+    }
+    
+    // get vector between fragment position and light position
+    vec3 fragToLight = Object.FragPos - Light.Position;
+
+    // ise the fragment to light vector to sample from the depth map    
+    float closestDepth = texture(DepthMapCubeArray, vec4(fragToLight, Light.DepthCubemapIndex)).r;
+    // it is currently in linear range between [0,1], let's re-transform it back to original depth value
+    closestDepth *= Light.MaxDistance;
+    // now get current linear depth as the length between the fragment and light position
+    float currentDepth = length(fragToLight);
+    // test for shadows
+    float bias = 0.05; // we use a much larger bias since depth is now in [near_plane, far_plane] range
+    float shadow = currentDepth -  bias > closestDepth ? 1.0 : 0.0;        
+    // display closestDepth as debug (to visualize depth cubemap)
+    // FragColor = vec4(vec3(closestDepth / Light.MaxDistance), 1.0);    
+        
+    return 1.0f - shadow;
+}
 
 
 
@@ -378,25 +412,7 @@ STRUCT_SampledData SetSampledData() {
 
 
 
-float ShadowCalculation(STRUCT_PointLight Light)
-{
-    // get vector between fragment position and light position
-    vec3 fragToLight = Object.FragPos - Light.Position;
 
-    // ise the fragment to light vector to sample from the depth map    
-    float closestDepth = texture(DepthMapCubeArray, vec4(fragToLight, Light.DepthCubemapIndex)).r;
-    // it is currently in linear range between [0,1], let's re-transform it back to original depth value
-    closestDepth *= Light.MaxDistance;
-    // now get current linear depth as the length between the fragment and light position
-    float currentDepth = length(fragToLight);
-    // test for shadows
-    float bias = 0.05; // we use a much larger bias since depth is now in [near_plane, far_plane] range
-    float shadow = currentDepth -  bias > closestDepth ? 1.0 : 0.0;        
-    // display closestDepth as debug (to visualize depth cubemap)
-    // FragColor = vec4(vec3(closestDepth / Light.MaxDistance), 1.0);    
-        
-    return 1.0f - shadow;
-}
 
 
 vec3 PBRPointLight(STRUCT_PointLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT_SampledData Model) {
@@ -596,6 +612,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
