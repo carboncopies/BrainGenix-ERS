@@ -9,7 +9,7 @@
 #include <iostream>
 #include <string>
 #include <chrono>
-#include <stdlib.h>
+#include <random>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
@@ -49,6 +49,12 @@ private:
     ERS_CLASS_MeshRenderer* Renderer_; /**<Pointer to mesh renderer instance*/
 
 
+    std::mt19937 MersenneTwister_; /**<Used to generate rnd numbers for random light updates*/
+    unint32_t RandomSeed = 1; /**Seed used to set initial random generator*/
+    std::uniform_int_distrobution<unint32_t> RandomNumberGenerator_; /**<Actual class that spits out random numbers*/
+
+
+    
     unsigned int LastUpdateIndex_ = 0; /**<Used when updating the depth maps, indicates when the last consecuitive index was*/
 
 
