@@ -277,17 +277,17 @@ float ShadowCalculation(STRUCT_SpotLight Light)
     // Generate Shadow Map Bias
     int TextureSize = textureSize(DepthMapArray, 0).x;
     float BiasMax = 0.0005f;
-    if (TextureSize == 512) {
+    if (TextureSize <= 512) {
         BiasMax = 0.003;
-    } else if (TextureSize == 1024) {
+    } else if (TextureSize <= 1024) {
         BiasMax = 0.0015;
-    } else if (TextureSize == 2048) {
+    } else if (TextureSize <= 2048) {
         BiasMax = 0.00075;
-    } else if (TextureSize == 4096) {
+    } else if (TextureSize <= 4096) {
         BiasMax = 0.00045;
-    } else if (TextureSize == 8192) {
+    } else if (TextureSize <= 8192) {
         BiasMax = 0.00025;
-    } else if (TextureSize == 16384) {
+    } else if (TextureSize <= 16384) {
         BiasMax = 0.00015;
     }
     
@@ -684,6 +684,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
