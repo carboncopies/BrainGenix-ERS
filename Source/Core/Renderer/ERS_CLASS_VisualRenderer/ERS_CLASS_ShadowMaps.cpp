@@ -55,7 +55,9 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
         // Do Nothing As All Updates Are Disabled
     } else if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL) {
         for (unsigned int i = 0; i < DepthMaps.size(); i++) {
+
             DepthMaps[i]->ToBeUpdated = true;
+
         }
     } else if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_CONSECUTIVE) {
         for (unsigned int i = 0; i < SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
