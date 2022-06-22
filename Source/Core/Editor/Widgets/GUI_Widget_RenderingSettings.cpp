@@ -152,7 +152,6 @@ void Widget_RenderingSettings::Draw() {
                 ImGui::Combo("Shadow Filtering", &SelectedShadowFiltering_, ShadowFilteringNames, 4);
                 ImGui::Combo("Shadow Update Mode", &SelectedShadowUpdates_, ShadowUpdateNames, 5);
                 
-                std::cout<<SelectedShadowUpdates_<<std::endl;
                 // Handle Apply Button
                 Apply = ImGui::Button("Apply");
                 if (Apply) {
@@ -175,7 +174,6 @@ void Widget_RenderingSettings::Draw() {
                         Settings->ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_RANDOM;
                     } else if (SelectedShadowUpdates_ == 2) {
                         Settings->ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_CONSECUTIVE;
-                        std::cout<<"applied to consec\n";
                     } else if (SelectedShadowUpdates_ == 3) {
                         Settings->ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED;
                     } else if (SelectedShadowUpdates_ == 4) {

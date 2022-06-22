@@ -50,6 +50,8 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
         return;
     }
 
+    std::cout<<SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_<<std::endl;
+
     // Tell The Depth Map Update System Which Depth Maps To Update
     if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
         std::cout<<"Disabled\n";
