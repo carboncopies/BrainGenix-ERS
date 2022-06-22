@@ -113,6 +113,11 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             }
 
 
+            // Load Shadow Configuration
+            if (SceneDataNode[i]["CastsDynamicShadows"]) {
+                
+            }
+
 
         } else if (AssetType == std::string("DirectionalLight")) {
 
