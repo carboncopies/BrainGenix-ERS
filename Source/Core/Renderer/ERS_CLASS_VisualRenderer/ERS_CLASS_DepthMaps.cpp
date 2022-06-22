@@ -16,6 +16,7 @@ ERS_CLASS_DepthMaps::ERS_CLASS_DepthMaps(ERS_STRUCT_SystemUtils* SystemUtils, ER
     // Create Array Texture For Depth Maps
     RegenerateDepthMapTextureArray2D(16, SystemUtils_->RendererSettings_->ShadowMapX_, SystemUtils_->RendererSettings_->ShadowMapY_);
     RegenerateDepthMapTextureArrayCubemap(2);
+    glGenFramebuffers(1, &PointLightClearFBO_);
 
 }
 
@@ -160,6 +161,8 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
     if (!glIsFramebuffer(CubemapFBO_)) {
         glGenFramebuffers(1, &CubemapFBO_);
     }
+
+
 
     SystemUtils_->Logger_->Log("Setting Up Cubemap Texture Array OpenGL Parameters", 4, LogEnabled);
     glGenTextures(1, &DepthTextureCubemapArrayID_);
@@ -411,7 +414,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
     glClear(GL_DEPTH_BUFFER_BIT);
 
-    
+
         DepthShader->MakeActive();
 
         // Render With Depth Shader

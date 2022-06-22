@@ -100,6 +100,7 @@ public:
     
 
     unsigned int CubemapFBO_;
+    unsigned int PointLightClearFBO_;
 
     // !!FIXME!!
     // Replace above vector with instead pointers to struct list so we can keep track and automatically free, etc.
