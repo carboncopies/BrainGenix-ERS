@@ -23,6 +23,8 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_FUNCTION_DrawMeshNoTextures.cpp"
             "ERS_FUNCTION_ResetMeshTexture.cpp"
             "ERS_FUNCTION_ConvertRotationToFrontVector.cpp"
+            "ERS_FUNCTION_MeshTransparencySortNoTextures.cpp"
+
             
 
             # Add Header Files (.h)
@@ -42,6 +44,8 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_FUNCTION_DrawMeshNoTextures.h"
             "ERS_FUNCTION_ResetMeshTexture.h"
             "ERS_FUNCTION_ConvertRotationToFrontVector.h"
+            "ERS_FUNCTION_MeshTransparencySortNoTextures.h"
+
 
 
 
