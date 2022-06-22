@@ -98,14 +98,14 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
                 LightDistances.insert(std::make_pair(Distance, i));
             }
 
-            std::map<unsigned int, float> SortedLightDistances;
+            std::vector<unsigned int> SortedLightDistances;
             for (auto const& Entry : LightDistances) {
-                SortedLightDistances[Entry.second] = Entry.first];
+                SortedLightDistances.push_back(Entry.second);
             }
 
 
             for (unsigned int i = 0; i <SortedLightDistances.size();i++) {
-                std::cout<<i<<" | "<<SortedLightDistances[i]<<std::endl;
+                std::cout<<SortedLightDistances[i]<<std::endl;
             }
 
         }
