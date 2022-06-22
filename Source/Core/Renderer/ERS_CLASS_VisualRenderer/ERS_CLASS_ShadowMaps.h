@@ -89,7 +89,7 @@ public:
      * This function checks the scenemanger and other shared classes to get info about the scene.
      * 
      */
-    void UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, ERS_STRUCT_Shader* CubemapDepthShader);
+    void UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, ERS_STRUCT_Shader* CubemapDepthShader, glm::vec3 CameraPosition);
 
 
 };
