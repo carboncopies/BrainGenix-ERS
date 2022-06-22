@@ -53,10 +53,8 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
 
     // Tell The Depth Map Update System Which Depth Maps To Update
     if (UpdateMode = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
-        std::cout<<"Disabled\n";
         // Do Nothing As All Updates Are Disabled
     } else if (UpdateMode = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL) {
-        std::cout<<"All\n";
 
         for (unsigned int i = 0; i < DepthMaps.size(); i++) {
 
@@ -64,7 +62,6 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
 
         }
     } else if (UpdateMode = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_CONSECUTIVE) {
-        std::cout<<"consec\n";
         for (unsigned int i = 0; i < (unsigned int)SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
 
             // Calculate The Current index, Wrap At End Of List Size
@@ -78,9 +75,7 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
         }
     } else if (UpdateMode = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_RANDOM) {
         
-        std::cout<<"random\n";
     } else if (UpdateMode = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED) {
-        std::cout<<"prioritized\n";
         
     }
 
