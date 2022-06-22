@@ -754,7 +754,6 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     // Set Shadow Filter Info
     int ShadowFilterType = 0;
     ERS::Renderer::ShadowFilteringType ShadowFilterEnum = SystemUtils_->RendererSettings_->ShadowFilteringType_;
-
     if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED) {
         ShadowFilterType = 0;
     } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_PCF) {
@@ -764,6 +763,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING) {
         ShadowFilterType = 3;
     }
+    ActiveShader->SetInt("ShadowFilterType_", ShadowFilterType);
 
 
     ActiveShader->SetFloat("Shinyness", 32.0f);
