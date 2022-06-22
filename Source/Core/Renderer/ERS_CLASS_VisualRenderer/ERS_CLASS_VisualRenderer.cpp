@@ -751,6 +751,20 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     }
 
 
+    // Set Shadow Filter Info
+    int ShadowFilterType = 0;
+    ERS::Renderer::ShadowFilteringType ShadowFilterEnum = SystemUtils_->RendererSettings_->ShadowFilteringType_;
+
+    if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED) {
+        ShadowFilterType = 0;
+    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_PCF) {
+        ShadowFilterType = 1;
+    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_POISSON_SAMPLING) {
+        ShadowFilterType = 2;
+    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING) {
+        ShadowFilterType = 3;
+    }
+
 
     ActiveShader->SetFloat("Shinyness", 32.0f);
 
