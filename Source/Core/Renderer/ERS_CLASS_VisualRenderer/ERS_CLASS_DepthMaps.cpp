@@ -409,9 +409,10 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
 
         // Render All Sides
         glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
-    glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
-    glClear(GL_DEPTH_BUFFER_BIT);
-
+        
+    // glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
+    // glClear(GL_DEPTH_BUFFER_BIT);
+        glClearTexSubImage(DepthTextureCubemapArrayID_, 0, 0, 0, Light->DepthMap.DepthMapTextureIndex*6, DepthTextureArrayWidth_, DepthTextureArrayHeight_, 6, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
 
         DepthShader->MakeActive();
 
