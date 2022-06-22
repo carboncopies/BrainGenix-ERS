@@ -51,7 +51,7 @@ private:
 
     std::mt19937 MersenneTwister_; /**<Used to generate rnd numbers for random light updates*/
     uint32_t RandomSeed = 1; /**Seed used to set initial random generator*/
-    std::uniform_int_distrobution<uint32_t> RandomNumberGenerator_; /**<Actual class that spits out random numbers*/
+    std::uniform_int_distribution<uint32_t> RandomNumberGenerator_; /**<Actual class that spits out random numbers*/
 
 
 
