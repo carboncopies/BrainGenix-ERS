@@ -408,7 +408,10 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
 
         // Render All Sides
         glViewport(0, 0, DepthTextureArrayWidth_, DepthTextureArrayHeight_);
+    glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
+    glClear(GL_DEPTH_BUFFER_BIT);
 
+    
         DepthShader->MakeActive();
 
         // Render With Depth Shader
@@ -513,9 +516,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
     }
 
     // Handle Point Lights
-    glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
-    glClear(GL_DEPTH_BUFFER_BIT);
-
     for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
 
         // Extract Struct

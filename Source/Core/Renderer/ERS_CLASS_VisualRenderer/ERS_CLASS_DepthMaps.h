@@ -88,11 +88,6 @@ private:
 
 public:
 
-
-    unsigned int TESTFBO;
-    unsigned int TESTCubemap;
-
-
     unsigned int DepthTextureArrayID_; /**<OpenGL Object ID For Depth Map Textures*/
     unsigned int DepthTextureCubemapArrayID_; /**<OpenGL Object ID For Depth Texture Cubemap Array*/
     int DepthTextureArrayWidth_ = 2048; /***<Width of the depth map texture*/
