@@ -181,6 +181,30 @@ void Widget_ObjectProperties::Draw() {
 
                     }
 
+                } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("Model")) {
+                    
+                    unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
+                    if (ImGui::CollapsingHeader("Model Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
+
+                        // Get Current Model
+                        ERS_STRUCT_Model* Model = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[Index].get();
+
+                        ImGui::Checkbox("Casts Dynamic Shadows", &Model->CastDynamicShadows_);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Indicates if this model will cast shadows in dynamic lights. Avoid using this whenever possible due to performance related issues.");
+
+
+                        ImGui::Checkbox("Casts Static Shadows", &Model->CastStaticShadows_);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Indicates if this model will cast shadows in static lights.");
+
+                        ImGui::Checkbox("Receive Shadows", &Model->ReceiveShadows_);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Allow this model to have shadows cast upon it by other objects as well as itself.");
+
+
+                    }
+
                 }
 
 
