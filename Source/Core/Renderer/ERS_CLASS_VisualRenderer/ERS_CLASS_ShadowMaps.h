@@ -48,6 +48,7 @@ private:
     ERS_CLASS_MeshRenderer* Renderer_; /**<Pointer to mesh renderer instance*/
 
 
+    unsigned int LastUpdateIndex_ = 0; /**<Used when updating the depth maps, indicates when the last consecuitive index was*/
 
 
 

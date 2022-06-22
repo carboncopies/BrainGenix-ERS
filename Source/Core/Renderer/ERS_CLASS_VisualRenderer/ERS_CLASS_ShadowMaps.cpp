@@ -45,6 +45,11 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
         DepthMaps.push_back(&ActiveScene->SpotLights[i]->DepthMap);
     }
 
+    // Exit Early If No Lights Exist
+    if (DepthMaps.size() == 0) {
+        return;
+    }
+
     // Tell The Depth Map Update System Which Depth Maps To Update
     if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
         // Do Nothing As All Updates Are Disabled
@@ -53,7 +58,17 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
             DepthMaps[i]->ToBeUpdated = true;
         }
     } else if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_CONSECUTIVE) {
-        
+        for (unsigned int i = 0; i < SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
+
+            // Calculate The Current index, Wrap At End Of List Size
+            LastUpdateIndex_++;
+            if (LastUpdateIndex_ > DepthMaps.size() - 1) {
+                LastUpdateIndex_ = 0;
+            }
+
+            DepthMaps[LastUpdateIndex_]->ToBeUpdated = true;
+
+        }
     } else if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_RANDOM) {
         
     } else if (UpdateMode != ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED) {
