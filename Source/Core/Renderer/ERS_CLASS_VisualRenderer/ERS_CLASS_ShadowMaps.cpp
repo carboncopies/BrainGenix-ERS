@@ -92,17 +92,20 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
         } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED) {
             
             // Create Map Of Indexes And Distances
-            std::multimap<unsigned int, float, std::greater<int>> LightDistances;        
+            std::map<float, unsigned int> LightDistances;        
             for (unsigned int i = 0; i < DepthMaps.size(); i++) {
                 float Distance = glm::distance(CameraPosition, LightPositions[i]);
-                LightDistances.insert(std::make_pair(i, Distance));
+                LightDistances.insert(std::make_pair(Distance, i));
+            }
+
+            std::map<unsigned int, float> SortedLightDistances;
+            for (auto const& Entry : LightDistances) {
+                SortedLightDistances.insert(std::make_pair(Entry.second, Entry.first));
             }
 
 
-
-
-            for (auto const& entry : LightDistances) {
-                std::cout<<entry.first<<" | "<<entry.second<<std::endl;
+            for (unsigned int i = 0; i <SortedLightDistances.size();i++) {
+                std::cout<<i<<" | "<<SortedLightDistances[i]<<std::endl;
             }
 
         }
