@@ -12,7 +12,7 @@ void ERS_FUNCTION_MeshTransparencySortNoTextures(std::vector<ERS_STRUCT_Mesh*>* 
 
         ERS_STRUCT_Model *Model = Scene->Models[i].get();
         glm::mat4 ModelMatrix = Model->GetMat4();
-        if (Model->FullyReady && Model->Enabled) {
+        if (Model->FullyReady && Model->Enabled && Model->CastDynamicShadows_) {
             for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
 
                 ERS_STRUCT_Mesh* Mesh = &Model->Meshes[i];
