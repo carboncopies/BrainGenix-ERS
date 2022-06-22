@@ -74,7 +74,18 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
 
         }
     } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_RANDOM) {
-        
+        for (unsigned int i = 0; i < (unsigned int)SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
+
+            // Calculate The Current index, Wrap At End Of List Size
+            LastUpdateIndex_++;
+            if (LastUpdateIndex_ > DepthMaps.size() - 1) {
+                LastUpdateIndex_ = 0;
+            }
+
+            DepthMaps[LastUpdateIndex_]->ToBeUpdated = true;
+
+        }
+
     } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED) {
         
     }
