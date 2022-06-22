@@ -33,14 +33,12 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
     ERS::Renderer::ShadowFilteringType FilterMode = SystemUtils_->RendererSettings_->ShadowFilteringType_;
 
 
+
+
     // Create List Of All Depth Maps
     ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     std::vector<ERS_STRUCT_DepthMap*> DepthMaps;
     std::vector<glm::vec3> LightPositions;
-    // for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
-    //     DepthMaps.push_back(&ActiveScene->DirectionalLights[i]->DepthMap);
-    //     LightPositions.push_back(ActiveScene->DirectionalLights[i]->Pos);
-    // }
     for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
         DepthMaps.push_back(&ActiveScene->PointLights[i]->DepthMap);
         LightPositions.push_back(ActiveScene->PointLights[i]->Pos);
@@ -50,54 +48,63 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
         LightPositions.push_back(ActiveScene->SpotLights[i]->Pos);
     }
 
-    // Exit Early If No Lights Exist
-    if (DepthMaps.size() == 0) {
-        return;
+    // All Directional Lights Will Be Updated
+    for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
+        ActiveScene->DirectionalLights[i]->DepthMap.ToBeUpdated = true;
+
     }
 
+    
 
-    // Tell The Depth Map Update System Which Depth Maps To Update
-    if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
-        // Do Nothing As All Updates Are Disabled
-    } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL) {
+    // Skip Handling An Update If No Lights Are To Be Updated Here
+    if (DepthMaps.size() != 0) {
 
-        for (unsigned int i = 0; i < DepthMaps.size(); i++) {
+        // Tell The Depth Map Update System Which Depth Maps To Update
+        if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
+            // Do Nothing As All Updates Are Disabled
+        } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL) {
 
-            DepthMaps[i]->ToBeUpdated = true;
+            for (unsigned int i = 0; i < DepthMaps.size(); i++) {
 
-        }
-    } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_CONSECUTIVE) {
-        for (unsigned int i = 0; i < (unsigned int)SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
+                DepthMaps[i]->ToBeUpdated = true;
 
-            // Calculate The Current index, Wrap At End Of List Size
-            LastUpdateIndex_++;
-            if (LastUpdateIndex_ > DepthMaps.size() - 1) {
-                LastUpdateIndex_ = 0;
+            }
+        } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_CONSECUTIVE) {
+            for (unsigned int i = 0; i < (unsigned int)SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
+
+                // Calculate The Current index, Wrap At End Of List Size
+                LastUpdateIndex_++;
+                if (LastUpdateIndex_ > DepthMaps.size() - 1) {
+                    LastUpdateIndex_ = 0;
+                }
+
+                DepthMaps[LastUpdateIndex_]->ToBeUpdated = true;
+
+            }
+        } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_RANDOM) {
+
+            // Randomly Update The Light, Note: Updates Are Guarenteed To Be Less Than Max But Not Equal To That
+            for (unsigned int i = 0; i < (unsigned int)SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
+                int UpdateIndex = RandomNumberGenerator_(MersenneTwister_) % (DepthMaps.size()-1);
+                DepthMaps[UpdateIndex]->ToBeUpdated = true;
             }
 
-            DepthMaps[LastUpdateIndex_]->ToBeUpdated = true;
+        } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED) {
+            
+            // Create Map Of Indexes And Distances
+            std::map<unsigned int, float> LightDistances;        
+            for (unsigned int i = 0; i < DepthMaps.size(); i++) {
+                float Distance = glm::distance(CameraPosition, LightPositions[i]);
+                LightDistances[i] = Distance;
+            }
+
+            for (unsigned int i = 0; i <LightDistances.size();i++) {
+                std::cout<<i<<" | "<<LightDistances[i]<<std::endl;
+            }
 
         }
-    } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_RANDOM) {
-
-        // Randomly Update The Light, Note: Updates Are Guarenteed To Be Less Than Max But Not Equal To That
-        for (unsigned int i = 0; i < (unsigned int)SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
-            int UpdateIndex = RandomNumberGenerator_(MersenneTwister_) % (DepthMaps.size()-1);
-            DepthMaps[UpdateIndex]->ToBeUpdated = true;
-        }
-
-    } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED) {
-        
-        // Create Map Of Indexes And Distances
-        std::map<unsigned int, float> LightDistances;        
-
-        for (unsigned int i = 0; i < DepthMaps.size(); i++) {
-            float Distance = glm::distance
-        }
-
 
     }
-
     // Update All Depth Maps
     ERS_CLASS_DepthMaps_->UpdateDepthMaps(DepthMapShader, CubemapDepthShader);
 
