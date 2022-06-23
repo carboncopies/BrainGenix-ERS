@@ -130,7 +130,7 @@ uniform int NumberPointLights;
 uniform int NumberSpotLights;
 uniform STRUCT_DirectionalLight DirectionalLights[2];
 uniform STRUCT_PointLight PointLights[42];
-uniform STRUCT_SpotLight SpotLights[64];
+uniform STRUCT_SpotLight SpotLights[56];
 
 // Gamma Correction Info
 uniform bool GammaCorrectionEnabled_;
@@ -231,7 +231,7 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
 {
 
     // If Shadows Are Not Enabled, Exit Early
-    if (!ReceiveShadows_ || !Light.CastsShadows) {
+    if (!ReceiveShadows_) {
     return 1.0f;
     }
     
@@ -347,7 +347,7 @@ float ShadowCalculation(STRUCT_PointLight Light)
 {
 
     // If Shadows Are Not Enabled, Exit Early
-    if (!ReceiveShadows_) {
+    if (!ReceiveShadows_ || !Light.CastsShadows) {
     return 1.0f;
     }
     
@@ -706,6 +706,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
