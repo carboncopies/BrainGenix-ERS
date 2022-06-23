@@ -67,6 +67,14 @@ private:
      */
     void GetDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* DepthMaps, std::vector<glm::vec3>* LightPositions);
 
+    /**
+     * @brief Determines which depth maps should be updated, and also deallocates those on lights that are no longer being used.
+     * 
+     * @param DepthMaps 
+     * @param LightPositions 
+     */
+    void PrioritizeDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* DepthMaps, std::vector<glm::vec3>* LightPositions);
+
 
 public:
 
