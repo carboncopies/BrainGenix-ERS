@@ -217,9 +217,7 @@ float PCFSamplerCubemap(float BiasedCurrentDepth, vec3 TexCoords3D, int Index, f
 
     float shadow = 0.0;
 
-
-    int samples = SampleSize*SampleSize;
-    //float viewDistance = length(viewPos - fragPos);
+    int samples = SampleSize*SampleSize*SampleSize;
     float diskRadius = 0.01f;//(1.0 + (viewDistance / far_plane)) / 25.0;
     for(int i = 0; i < samples; ++i)
     {
