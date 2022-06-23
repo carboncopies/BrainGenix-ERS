@@ -229,15 +229,17 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
 
     // Process Texture References, Setup Meshes
     for (unsigned long i = 0; i < Model->Meshes.size(); i++) {
+
+        // Set Shadow Configuration Pointers
+        Model->Meshes[i].CastDynamicShadows_ = &Model->CastDynamicShadows_;
+        Model->Meshes[i].CastStaticShadows_ = &Model->CastStaticShadows_;
+        Model->Meshes[i].ReceiveShadows_ = &Model->ReceiveShadows_;
+
+
         for (unsigned long Index = 0; Index < Model->Meshes[i].TextureReferences_.size(); Index++) { // IF TEXTURES DONT WORK, CHECK HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             int TextureIndex = Model->Meshes[i].TextureReferences_[Index];
         
-            // Set Shadow Configuration Pointers
-            Model->Meshes[i].CastDynamicShadows_ = &Model->CastDynamicShadows_;
-            Model->Meshes[i].CastStaticShadows_ = &Model->CastStaticShadows_;
-            Model->Meshes[i].ReceiveShadows_ = &Model->ReceiveShadows_;
-
             if (TextureIndex == -1) {
                 SystemUtils_->Logger_->Log("Failed To Find Corresponding Texture", 8);
                 Model->Meshes[i].TextureIDs.push_back(-1);
