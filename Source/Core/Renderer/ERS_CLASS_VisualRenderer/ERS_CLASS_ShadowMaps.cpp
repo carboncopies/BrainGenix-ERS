@@ -55,6 +55,12 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
     // All Directional Lights Will Be Updated
     for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
         if (ActiveScene->DirectionalLights[i]->CastsShadows_) {
+
+            // Check If Light Has DepthMap
+            if (!ActiveScene->DirectionalLights[i]->DepthMap.Initialized) {
+                ActiveScene->DirectionalLights[i]->DepthMap = ERS_CLASS_DepthMaps_->GenerateDepthMap2D();   
+            }
+
             ActiveScene->DirectionalLights[i]->DepthMap.ToBeUpdated = true;
         }
 

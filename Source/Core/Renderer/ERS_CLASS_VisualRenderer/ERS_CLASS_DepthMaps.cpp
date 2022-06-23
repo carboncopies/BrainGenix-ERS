@@ -490,10 +490,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
         // Extract Struct
         ERS_STRUCT_DirectionalLight* Light = ActiveScene->DirectionalLights[i].get();
 
-        // Check If Light Has DepthMap
-        if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap2D();   
-        }
+
 
         // Render To Depth Map
         UpdateDepthMap(Light, DepthShader);
