@@ -41,6 +41,12 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
     std::vector<glm::vec3> LightPositions;
     for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
         if (ActiveScene->PointLights[i]->CastsShadows_) {
+
+            // Check If Light Has DepthMap
+            if (!ActiveScene->PointLights[i]->DepthMap.Initialized) {
+                ActiveScene->PointLights[i]->DepthMap = ERS_CLASS_DepthMaps_->GenerateDepthMap2D();   
+            }
+
             DepthMaps.push_back(&ActiveScene->PointLights[i]->DepthMap);
             LightPositions.push_back(ActiveScene->PointLights[i]->Pos);
         }
