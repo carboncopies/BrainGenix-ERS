@@ -503,11 +503,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
         // Extract Struct
         ERS_STRUCT_SpotLight* Light = ActiveScene->SpotLights[i].get();
 
-        // Check If Light Has DepthMap
-        if (!Light->DepthMap.Initialized) {
-            Light->DepthMap = GenerateDepthMap2D();   
-        }
-
         // Render To Depth Map
         if (Light->CastsShadows_) {
             UpdateDepthMap(Light, DepthShader);
