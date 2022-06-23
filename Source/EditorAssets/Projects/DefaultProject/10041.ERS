@@ -159,6 +159,25 @@ vec2( 0.19984126, 0.78641367 ),
 vec2( 0.14383161, -0.14100790 ) 
 );
 
+vec3 Poisson3D[16] = vec3[] (
+vec3(0.7439873218536399, -0.541186283808202, 0.17664264608175007),
+vec3(-0.275775456801057, -0.32272001542150996, 0.68133261147887),
+vec3(0.44897621078416994, -0.467917730100453, -0.659653108566999),
+vec3(-0.847784673329443, 0.028283810708670032, -0.400656977668405),
+vec3(-0.727825771085918, -0.283869738690555, 0.08675202075392008),
+vec3(-0.452855029609054, 0.66060589626431, 0.7711005629971599),
+vec3(0.61847387859598, -0.33074145298451196, 0.51381932664663),
+vec3(0.35371939232573, 0.3825031747110199, -0.18291005725040999),
+vec3(0.08679201826453009, 0.61422011069953, -0.5682788607664411),
+vec3(-0.733357671182603, 0.78749090107158, 0.42277105059474995),
+vec3(0.58986698603258, -0.422245749272406, 0.42315440950914995),
+vec3(-0.081056734547019, -0.26176304789259996, 0.33600588003173004),
+vec3(-0.158656360581517, -0.436631633434445, 0.09938938915729989),
+vec3(-0.534419173840433, 0.81530744861811, 0.26251380564645),
+vec3(0.7347787003964199, -0.17376213055103995, -0.05371918901801098),
+vec3(0.59472335595638, 0.43984056729822996, -0.564682560041547)
+);
+
 vec3 SampleOffsetDirections[20] = vec3[]
 (
    vec3( 1,  1,  1), vec3( 1, -1,  1), vec3(-1, -1,  1), vec3(-1,  1,  1), 
@@ -218,6 +237,36 @@ float PCFSamplerCubemap(float BiasedCurrentDepth, vec3 TexCoords3D, int Index, f
     return shadow;
 }
 
+
+float PoissonSamplerCube(float BiasedCurrentDepth, vec3 TexCoords3D, int Index, float ViewDistance, int SampleSize) {
+
+    float shadow = 0.0;
+
+    float samples = SampleSize;
+    float offset = 0.025;
+    int PoissonIndex = 0;
+    for(float x = -offset; x < offset; x += offset / (samples * 0.5))
+    {
+        for(float y = -offset; y < offset; y += offset / (samples * 0.5))
+        {
+            for(float z = -offset; z < offset; z += offset / (samples * 0.5))
+            {
+                PoissonIndex++;
+                vec3 PoissonOffset = vec3(Poisson3D[PoissonIndex%16]/75.0f);
+                float closestDepth = texture(DepthMapCubeArray, vec4(TexCoords3D + PoissonOffset, Index)).r;
+                closestDepth *= ViewDistance;
+                if(BiasedCurrentDepth > closestDepth)
+                    shadow += 1.0;
+            }
+        }
+    }
+    shadow /= (samples * samples * samples);
+
+    return shadow;
+
+}
+
+
 float StratifiedPoissonSampler(float Bias, vec3 ProjCoords, int Index, float CurrentDepth, int SampleSize) {
     float shadow = 0.0f;
     vec2 texelSize = 1.0f / textureSize(DepthMapArray, 0).xy;
@@ -226,6 +275,7 @@ float StratifiedPoissonSampler(float Bias, vec3 ProjCoords, int Index, float Cur
     {
         for(int y = -SampleSize; y <= SampleSize; ++y)
         {
+            
             vec2 TexCoords2D = ProjCoords.xy + (vec2(x, y) * texelSize);
             int index = int(16.0f*random(floor(gl_FragCoord.yxz*1000.0f), x*y))%16;
             float pcfDepth = texture(DepthMapArray, vec3(TexCoords2D + PoissonDisk[index]/700.0f, Index)).r;
@@ -257,6 +307,7 @@ float PoissonSampler(float Bias, vec3 ProjCoords, int Index, float CurrentDepth,
     return shadow;
 
 }
+
 
 
 float ShadowCalculation(STRUCT_PointLight Light)
@@ -305,7 +356,7 @@ float ShadowCalculation(STRUCT_PointLight Light)
     } else if (ShadowFilterType_ == 1) { // PCF Filtering
         Shadow = PCFSamplerCubemap(currentDepth-Bias, fragToLight, Light.DepthCubemapIndex, Light.MaxDistance, ShadowFilterKernelSize_);
     } else if (ShadowFilterType_ == 2) { // Poisson Filtering
-        //Shadow = PoissonSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, ShadowFilterKernelSize_);
+        Shadow = PoissonSamplerCube(currentDepth-Bias, fragToLight, Light.DepthCubemapIndex, Light.MaxDistance, ShadowFilterKernelSize_);
     } else if (ShadowFilterType_ == 3) {
         //Shadow = StratifiedPoissonSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, ShadowFilterKernelSize_);
     } else {
