@@ -40,17 +40,23 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
     std::vector<ERS_STRUCT_DepthMap*> DepthMaps;
     std::vector<glm::vec3> LightPositions;
     for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
-        DepthMaps.push_back(&ActiveScene->PointLights[i]->DepthMap);
-        LightPositions.push_back(ActiveScene->PointLights[i]->Pos);
+        if (ActiveScene->PointLights[i]->CastsShadows_) {
+            DepthMaps.push_back(&ActiveScene->PointLights[i]->DepthMap);
+            LightPositions.push_back(ActiveScene->PointLights[i]->Pos);
+        }
     }
     for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
-        DepthMaps.push_back(&ActiveScene->SpotLights[i]->DepthMap);
-        LightPositions.push_back(ActiveScene->SpotLights[i]->Pos);
+        if (ActiveScene->SpotLights[i]->CastsShadows_) {
+            DepthMaps.push_back(&ActiveScene->SpotLights[i]->DepthMap);
+            LightPositions.push_back(ActiveScene->SpotLights[i]->Pos);
+        }
     }
 
     // All Directional Lights Will Be Updated
     for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
-        ActiveScene->DirectionalLights[i]->DepthMap.ToBeUpdated = true;
+        if (ActiveScene->DirectionalLights[i]->CastsShadows_) {
+            ActiveScene->DirectionalLights[i]->DepthMap.ToBeUpdated = true;
+        }
 
     }
 
