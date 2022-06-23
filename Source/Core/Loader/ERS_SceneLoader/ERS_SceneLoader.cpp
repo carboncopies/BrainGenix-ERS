@@ -162,6 +162,11 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 SceneDataNode[i]["RotZ"].as<float>()
                 );
 
+
+            if (SceneDataNode[i]["CastShadows"]) {
+                Scene.DirectionalLights[LightIndex]->CastsShadows_ = SceneDataNode[i]["CastShadows"].as<bool>();
+            }
+
             // Load Attached Scripts
             if (SceneDataNode[i]["AttachedScripts"]) {
                 YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
@@ -198,6 +203,10 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 SceneDataNode[i]["PosY"].as<float>(),
                 SceneDataNode[i]["PosZ"].as<float>()
                 );
+
+            if (SceneDataNode[i]["CastShadows"]) {
+                Scene.PointLights[LightIndex]->CastsShadows_ = SceneDataNode[i]["CastShadows"].as<bool>();
+            }
 
             // Load Attached Scripts
             if (SceneDataNode[i]["AttachedScripts"]) {
@@ -246,6 +255,10 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 SceneDataNode[i]["RotZ"].as<float>()
                 );
 
+
+            if (SceneDataNode[i]["CastShadows"]) {
+                Scene.SpotLights[LightIndex]->CastsShadows_ = SceneDataNode[i]["CastShadows"].as<bool>();
+            }
 
             // Load Attached Scripts
             if (SceneDataNode[i]["AttachedScripts"]) {
