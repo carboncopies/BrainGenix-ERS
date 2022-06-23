@@ -166,17 +166,12 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
 
     // Get Updated Info From Renderer Settings
     ERS_CLASS_DepthMaps_->CheckSettings();
-    //ERS::Renderer::ShadowFilteringType FilterMode = SystemUtils_->RendererSettings_->ShadowFilteringType_;
 
-
-    // Create List Of All Depth Maps
+    // Handle Updating Depth Maps
     std::vector<ERS_STRUCT_DepthMap*> DepthMaps;
     std::vector<glm::vec3> LightPositions;
     GetDepthMaps(&DepthMaps, &LightPositions);
-
-    
-
-    
+    PrioritizeDepthMaps(DepthMaps, LightPositions, CameraPosition);
 
     // Update All Depth Maps
     ERS_CLASS_DepthMaps_->UpdateDepthMaps(DepthMapShader, CubemapDepthShader);
