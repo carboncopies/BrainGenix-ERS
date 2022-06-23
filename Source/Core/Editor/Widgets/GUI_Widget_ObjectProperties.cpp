@@ -116,7 +116,9 @@ void Widget_ObjectProperties::Draw() {
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the distance after which the scene is no longer affected by this light source.");
 
-
+                        ImGui::Checkbox("Cast Shadows", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->CastsShadows_);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Allows or disallows this light from creating shadows on the scene.");
 
 
                     }
@@ -181,6 +183,10 @@ void Widget_ObjectProperties::Draw() {
                         }
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the angle at which the outer cone begins to roll off. This angle sets the inner cone which is unaffected by rolloff. Rolloff occurs in the area between the outer and inner cone (this angle).");
+
+                        ImGui::Checkbox("Cast Shadows", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->CastsShadows_);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Allows or disallows this light from creating shadows on the scene.");
 
                     }
 
