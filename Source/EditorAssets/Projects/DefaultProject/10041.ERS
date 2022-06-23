@@ -217,6 +217,7 @@ float PCFSamplerCubemap(float BiasedCurrentDepth, vec3 TexCoords3D, int Index, f
 
     float shadow = 0.0;
 
+	/**
     float samples = SampleSize;
     float offset = 0.025;
     for(float x = -offset; x < offset; x += offset / (samples * 0.5))
@@ -233,6 +234,21 @@ float PCFSamplerCubemap(float BiasedCurrentDepth, vec3 TexCoords3D, int Index, f
         }
     }
     shadow /= (samples * samples * samples);
+
+	**/
+
+
+    int samples = SampleSize*SampleSize;
+    //float viewDistance = length(viewPos - fragPos);
+    float diskRadius = 0.01f;//(1.0 + (viewDistance / far_plane)) / 25.0;
+    for(int i = 0; i < samples; ++i)
+    {
+        float closestDepth = texture(DepthMapCubeArray, vec4(TexCoords3D + SampleOffsetDirections[i] * diskRadius, Index)).r;
+        closestDepth *= ViewDistance;   // undo mapping [0;1]
+        if(BiasedCurrentDepth > closestDepth)
+            shadow += 1.0;
+    }
+    shadow /= float(samples);
 
     return shadow;
 }
@@ -262,6 +278,7 @@ float PoissonSamplerCube(float BiasedCurrentDepth, vec3 TexCoords3D, int Index, 
 
     float shadow = 0.0;
 
+	/**
     float samples = SampleSize;
     float offset = 0.025;
     int PoissonIndex = 0;
@@ -280,7 +297,20 @@ float PoissonSamplerCube(float BiasedCurrentDepth, vec3 TexCoords3D, int Index, 
             }
         }
     }
-    shadow /= (samples * samples * samples);
+    shadow /= (samples * samples * samples);**/
+    
+    int samples = SampleSize*SampleSize*SampleSize;
+    for(int i = 0; i < samples; ++i)
+    {
+
+        vec3 PoissonOffset = vec3(Poisson3D[i%16]/150.0f);
+        float closestDepth = texture(DepthMapCubeArray, vec4(TexCoords3D + PoissonOffset, Index)).r;
+        closestDepth *= ViewDistance;   // undo mapping [0;1]
+        if(BiasedCurrentDepth > closestDepth)
+            shadow += 1.0;
+    }
+    shadow /= float(samples);
+
 
     return shadow;
 
@@ -850,6 +880,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
