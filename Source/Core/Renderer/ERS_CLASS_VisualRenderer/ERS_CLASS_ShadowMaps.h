@@ -73,7 +73,7 @@ private:
      * @param DepthMaps 
      * @param LightPositions 
      */
-    void PrioritizeDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* DepthMaps, std::vector<glm::vec3>* LightPositions);
+    void PrioritizeDepthMaps(std::vector<ERS_STRUCT_DepthMap*> DepthMaps, std::vector<glm::vec3> LightPositions, glm::vec3 CameraPosition);
 
 
 public:
