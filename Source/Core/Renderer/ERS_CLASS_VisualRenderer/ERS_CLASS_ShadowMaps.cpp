@@ -50,8 +50,12 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
 
             DepthMaps.push_back(&ActiveScene->PointLights[i]->DepthMap);
             LightPositions.push_back(ActiveScene->PointLights[i]->Pos);
+
         } else if (ActiveScene->PointLights[i]->DepthMap.Initialized) {
-            ERS_CLASS_DepthMaps_->
+            
+            // Free The Light Index If Not Enabled
+            ERS_CLASS_DepthMaps_->FreeDepthMapIndexCubemap(ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
+            ActiveScene->PointLights[i]->DepthMap.Initialized = false;
         }
     }
     for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
@@ -64,6 +68,12 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
 
             DepthMaps.push_back(&ActiveScene->SpotLights[i]->DepthMap);
             LightPositions.push_back(ActiveScene->SpotLights[i]->Pos);
+
+        } else if (ActiveScene->SpotLights[i]->DepthMap.Initialized) {
+            
+            // Free The Light Index If Not Enabled
+            ERS_CLASS_DepthMaps_->FreeDepthMapIndex2D(ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndex);
+            ActiveScene->SpotLights[i]->DepthMap.Initialized = false;
         }
     }
 
@@ -77,6 +87,11 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
             }
 
             ActiveScene->DirectionalLights[i]->DepthMap.ToBeUpdated = true;
+        } else if (ActiveScene->DirectionalLights[i]->DepthMap.Initialized) {
+            
+            // Free The Light Index If Not Enabled
+            ERS_CLASS_DepthMaps_->FreeDepthMapIndex2D(ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex);
+            ActiveScene->DirectionalLights[i]->DepthMap.Initialized = false;
         }
 
     }
