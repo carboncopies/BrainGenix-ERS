@@ -299,6 +299,7 @@ float StratifiedPoissonSamplerCube(float BiasedCurrentDepth, vec3 TexCoords3D, i
 
     float shadow = 0.0;
 
+	/**
     float samples = SampleSize;
     float offset = 0.025;
     for(float x = -offset; x < offset; x += offset / (samples * 0.5))
@@ -318,6 +319,24 @@ float StratifiedPoissonSamplerCube(float BiasedCurrentDepth, vec3 TexCoords3D, i
         }
     }
     shadow /= (samples * samples * samples);
+    
+    **/
+
+
+    int samples = SampleSize*SampleSize*SampleSize;
+    for(int i = 0; i < samples; ++i)
+    {
+        int PoissonIndex = int(16.0f*random(floor(gl_FragCoord.yxz*1000.0f), int(i)))%16;
+        vec3 PoissonOffset = vec3(Poisson3D[PoissonIndex]/150.0f);
+        float closestDepth = texture(DepthMapCubeArray, vec4(TexCoords3D + PoissonOffset, Index)).r;
+        closestDepth *= ViewDistance;   // undo mapping [0;1]
+        if(BiasedCurrentDepth > closestDepth)
+            shadow += 1.0;
+    }
+    shadow /= float(samples);
+
+
+    return shadow;
 
     return shadow;
 
