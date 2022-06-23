@@ -24,19 +24,10 @@ ERS_CLASS_ShadowMaps::~ERS_CLASS_ShadowMaps() {
 
 }
 
+void ERS_CLASS_ShadowMaps::GetDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* DepthMaps, std::vector<glm::vec3>* LightPositions) {
 
-void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, ERS_STRUCT_Shader* CubemapDepthShader, glm::vec3 CameraPosition) {
-
-    // Get Updated Info From Renderer Settings
-    ERS_CLASS_DepthMaps_->CheckSettings();
-    ERS::Renderer::ShadowUpdateMode UpdateMode = SystemUtils_->RendererSettings_->ShadowUpdateMode_;
-    //ERS::Renderer::ShadowFilteringType FilterMode = SystemUtils_->RendererSettings_->ShadowFilteringType_;
-
-
-    // Create List Of All Depth Maps
     ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
-    std::vector<ERS_STRUCT_DepthMap*> DepthMaps;
-    std::vector<glm::vec3> LightPositions;
+
     for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
         if (ActiveScene->PointLights[i]->CastsShadows_) {
 
@@ -48,8 +39,8 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
 
 
 
-            DepthMaps.push_back(&ActiveScene->PointLights[i]->DepthMap);
-            LightPositions.push_back(ActiveScene->PointLights[i]->Pos);
+            DepthMaps->push_back(&ActiveScene->PointLights[i]->DepthMap);
+            LightPositions->push_back(ActiveScene->PointLights[i]->Pos);
 
         } else if (ActiveScene->PointLights[i]->DepthMap.Initialized) {
             
@@ -66,8 +57,8 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
                 ActiveScene->SpotLights[i]->DepthMap = ERS_CLASS_DepthMaps_->GenerateDepthMap2D();   
             }
 
-            DepthMaps.push_back(&ActiveScene->SpotLights[i]->DepthMap);
-            LightPositions.push_back(ActiveScene->SpotLights[i]->Pos);
+            DepthMaps->push_back(&ActiveScene->SpotLights[i]->DepthMap);
+            LightPositions->push_back(ActiveScene->SpotLights[i]->Pos);
 
         } else if (ActiveScene->SpotLights[i]->DepthMap.Initialized) {
             
@@ -95,6 +86,21 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
         }
 
     }
+
+}
+
+void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, ERS_STRUCT_Shader* CubemapDepthShader, glm::vec3 CameraPosition) {
+
+    // Get Updated Info From Renderer Settings
+    ERS_CLASS_DepthMaps_->CheckSettings();
+    ERS::Renderer::ShadowUpdateMode UpdateMode = SystemUtils_->RendererSettings_->ShadowUpdateMode_;
+    //ERS::Renderer::ShadowFilteringType FilterMode = SystemUtils_->RendererSettings_->ShadowFilteringType_;
+
+
+    // Create List Of All Depth Maps
+    std::vector<ERS_STRUCT_DepthMap*> DepthMaps;
+    std::vector<glm::vec3> LightPositions;
+    
 
     
 

@@ -59,6 +59,14 @@ private:
     unsigned int LastUpdateIndex_ = 0; /**<Used when updating the depth maps, indicates when the last consecuitive index was*/
 
 
+    /**
+     * @brief Collect the depth maps from the scene's lights and create a list of them for the update system.
+     * 
+     * @param DepthMaps 
+     * @param LightPositions 
+     */
+    void GetDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* DepthMaps, std::vector<glm::vec3>* LightPositions);
+
 
 public:
 
