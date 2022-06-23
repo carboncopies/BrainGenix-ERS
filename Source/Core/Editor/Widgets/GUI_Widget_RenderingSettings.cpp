@@ -148,6 +148,7 @@ void Widget_RenderingSettings::Draw() {
                 ImGui::InputInt2("Depth Map Resolution", DepthMapResolution_);
                 
                 ImGui::InputInt("Max Shadow Updates Per Frame", &Settings->MaxShadowUpdatesPerFrame_);
+                ImGui::InputInt("Shadow Filter Kernel Size", &Settings->ShadowFilterKernelSize_);
 
                 ImGui::Combo("Shadow Filtering", &SelectedShadowFiltering_, ShadowFilteringNames, 4);
                 ImGui::Combo("Shadow Update Mode", &SelectedShadowUpdates_, ShadowUpdateNames, 5);
