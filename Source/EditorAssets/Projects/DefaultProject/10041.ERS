@@ -308,7 +308,33 @@ float StratifiedPoissonSampler(float Bias, vec3 ProjCoords, int Index, float Cur
 }
 
 
+float StratifiedPoissonSamplerCube(float BiasedCurrentDepth, vec3 TexCoords3D, int Index, float ViewDistance, int SampleSize) {
 
+    float shadow = 0.0;
+
+    float samples = SampleSize;
+    float offset = 0.025;
+    for(float x = -offset; x < offset; x += offset / (samples * 0.5))
+    {
+        for(float y = -offset; y < offset; y += offset / (samples * 0.5))
+        {
+            for(float z = -offset; z < offset; z += offset / (samples * 0.5))
+            {
+
+                int PoissonIndex = int(16.0f*random(floor(gl_FragCoord.yxz*1000.0f), int(10.0f*x*y*z)))%16;
+                vec3 PoissonOffset = vec3(Poisson3D[PoissonIndex%16]/250.0f);
+                float closestDepth = texture(DepthMapCubeArray, vec4(TexCoords3D + PoissonOffset, Index)).r;
+                closestDepth *= ViewDistance;
+                if(BiasedCurrentDepth > closestDepth)
+                    shadow += 1.0;
+            }
+        }
+    }
+    shadow /= (samples * samples * samples);
+
+    return shadow;
+
+}
 
 
 float ShadowCalculation(STRUCT_PointLight Light)
@@ -359,7 +385,7 @@ float ShadowCalculation(STRUCT_PointLight Light)
     } else if (ShadowFilterType_ == 2) { // Poisson Filtering
         Shadow = PoissonSamplerCube(currentDepth-Bias, fragToLight, Light.DepthCubemapIndex, Light.MaxDistance, ShadowFilterKernelSize_);
     } else if (ShadowFilterType_ == 3) {
-        //Shadow = StratifiedPoissonSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, ShadowFilterKernelSize_);
+        Shadow = StratifiedPoissonSamplerCube(currentDepth-Bias, fragToLight, Light.DepthCubemapIndex, Light.MaxDistance, ShadowFilterKernelSize_);
     } else {
         return 0.0f; // Return Failure, All Black)
     }
