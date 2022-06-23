@@ -764,6 +764,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ShadowFilterType = 3;
     }
     ActiveShader->SetInt("ShadowFilterType_", ShadowFilterType);
+    ActiveShader->SetInt("ShadowFilterKernelSize_", SystemUtils_->RendererSettings_->ShadowFilterKernelSize_);
+    
 
 
     ActiveShader->SetFloat("Shinyness", 32.0f);
