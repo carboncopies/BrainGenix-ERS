@@ -66,13 +66,7 @@ private:
     unsigned int DepthMapAllocationChunkSize_ = 16; /**<Allocate Depth Map In Chunks Of 5*/
 
 
-    /**
-     * @brief Allocate an index from the depth map texture array.
-     * 
-     * @return unsigned int 
-     */
-    unsigned int AllocateDepthMapIndex2D(unsigned int FramebufferObjectID);
-    unsigned int AllocateDepthMapIndexCubemap();
+
 
     /**
      * @brief Deallocates an index from the depth map texture array.
@@ -122,12 +116,23 @@ public:
      */
     ~ERS_CLASS_DepthMaps();
 
+
     /**
      * @brief Checks the settings of the renderer against the current parameters.
      * 
      */
     void CheckSettings();
     
+
+    /**
+     * @brief Allocate an index from the depth map texture array.
+     * 
+     * @return unsigned int 
+     */
+    unsigned int AllocateDepthMapIndex2D(unsigned int FramebufferObjectID);
+    unsigned int AllocateDepthMapIndexCubemap();
+
+
     /**
      * @brief Generates a depth map array (array texture), with the given width, height and number of layers.
      * 
