@@ -116,6 +116,7 @@ uniform bool HasShininess;
 // Get Shadow Configuration Information
 uniform bool ReceiveShadows_;
 uniform int ShadowFilterType_;
+uniform int ShadowFilterKernelSize_;
 
 // Get Lighting Info
 uniform int NumberDirectionalLights;
@@ -312,11 +313,11 @@ float ShadowCalculation(STRUCT_SpotLight Light)
     if (ShadowFilterType_ == 0) { // No Filtering
         Shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
     } else if (ShadowFilterType_ == 1) { // PCF Filtering
-        Shadow = PCFSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, 2);
+        Shadow = PCFSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, ShadowFilterKernelSize_);
     } else if (ShadowFilterType_ == 2) { // Poisson Filtering
-        Shadow = PoissonSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, 2);
+        Shadow = PoissonSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, ShadowFilterKernelSize_);
     } else if (ShadowFilterType_ == 3) {
-        Shadow = StratifiedPoissonSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, 2);
+        Shadow = StratifiedPoissonSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, ShadowFilterKernelSize_);
     } else {
         return 0.0f; // Return Failure, All Black)
     }
