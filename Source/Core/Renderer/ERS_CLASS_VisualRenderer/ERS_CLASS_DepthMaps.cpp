@@ -226,13 +226,17 @@ bool ERS_CLASS_DepthMaps::FreeDepthMapIndex2D(unsigned int Index) {
 
 bool ERS_CLASS_DepthMaps::FreeDepthMapIndexCubemap(unsigned int Index) {
 
+    SystemUtils_->Logger_->Log(std::string("Freeing Cubemap Array Depth Map Index '") + std::to_string(Index) + std::string("'"), 4);
+
     // Sanity Check
     if (Index > DepthMapTexturesCubemapAlreadyAllocated_.size() - 1) {
+        SystemUtils_->Logger_->Log(std::string("Cannot Free Invalid Cubemap Array Depth Map Index '") + std::to_string(Index) + std::string("', Index Out Of Range"), 9);
         return false; // Indicate Failure, Out Of Range
     }
 
     // DeAllocate From Array
-    DepthMapTexturesCubemapAlreadyAllocated_[Index] = -1; //ERS_STRUCT_CubemapFBOIndexes();
+    DepthMapTexturesCubemapAlreadyAllocated_[Index] = -1;
+    SystemUtils_->Logger_->Log(std::string("Deallocated Cubemap Array Depth Map Index '") + std::to_string(Index) + std::string("'"), 3);
     return true;
 
 }
