@@ -52,6 +52,7 @@ ERS_CLASS_ShadowMaps::~ERS_CLASS_ShadowMaps() {
         }
 
     } 
+    SystemUtils_->Logger_->Log("Finished Dallocating All Depth Map Indices", 4);
 
 
 }
