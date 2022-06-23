@@ -16,6 +16,7 @@ out VS_OUT {
     vec3 TangentViewPos;
     vec3 TangentFragPos;
     vec3 Normal; // Used when no normal map is available;
+
     //vec4 FragPosLightSpace;
 } Object;
 
@@ -61,6 +62,8 @@ void main()
     gl_Position = projection * view * vec4(Object.WorldPos, 1.0f);
 
 }
+
+
 
 
 

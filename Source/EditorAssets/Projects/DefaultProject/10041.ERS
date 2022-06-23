@@ -12,6 +12,7 @@ in VS_OUT {
     vec3 TangentViewPos;
     vec3 TangentFragPos;
     vec3 Normal; // Used when normal texture not present
+
     //vec4 FragPosLightSpace;
 } Object;
 
@@ -159,7 +160,7 @@ float random(vec3 seed, int i){
 }
 
 
-float ShadowPCF(float Bias, vec3 ProjCoords, int Index, float CurrentDepth, int SampleSize) {
+float PCFSampler(float Bias, vec3 ProjCoords, int Index, float CurrentDepth, int SampleSize) {
 
     float shadow = 0.0;
 	vec2 texelSize = 1.0 / textureSize(DepthMapArray, 0).xy;
@@ -178,9 +179,7 @@ float ShadowPCF(float Bias, vec3 ProjCoords, int Index, float CurrentDepth, int 
 
 }
 
-
-float ShadowPCFRandom(float Bias, vec3 ProjCoords, int Index, float CurrentDepth, int SampleSize) {
-
+float StratifiedPoissonSampler(float Bias, vec3 ProjCoords, int Index, float CurrentDepth, int SampleSize) {
     float shadow = 0.0f;
 	vec2 texelSize = 1.0f / textureSize(DepthMapArray, 0).xy;
 
@@ -193,18 +192,32 @@ float ShadowPCFRandom(float Bias, vec3 ProjCoords, int Index, float CurrentDepth
 	        float pcfDepth = texture(DepthMapArray, vec3(TexCoords2D + PoissonDisk[index]/700.0f, Index)).r;
 	        //pcfDepth = texture(DepthMapArray, vec3(TexCoords2D, Index)).r;
 	        shadow += CurrentDepth - Bias > pcfDepth ? 1.0f : 0.0f;  
-	        
-	        
-	        
-	    }    
+	    }
 	}
 	shadow /= (SampleSize*2)*(SampleSize*2);
-	
-	
 	return shadow;
 }
 
 
+float PoissonSampler(float Bias, vec3 ProjCoords, int Index, float CurrentDepth, int SampleSize) {
+
+    float shadow = 0.0f;
+	vec2 texelSize = 1.0f / textureSize(DepthMapArray, 0).xy;
+
+	for(int x = -SampleSize; x <= SampleSize; ++x)
+	{
+	    for(int y = -SampleSize; y <= SampleSize; ++y)
+	    {
+            vec2 TexCoords2D = ProjCoords.xy + (vec2(x, y) * texelSize);
+            int index = int(x*y)%16;
+	        float pcfDepth = texture(DepthMapArray, vec3(TexCoords2D + PoissonDisk[index]/700.0f, Index)).r;
+	        shadow += CurrentDepth - Bias > pcfDepth ? 1.0f : 0.0f;  
+	    }
+	}
+	shadow /= (SampleSize*2)*(SampleSize*2);
+	return shadow;
+
+}
 
 
 float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
@@ -232,7 +245,7 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
     float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), 0.0025);
     
     //float Shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
-    float Shadow = ShadowPCF(Bias, projCoords, Index, currentDepth, 2);
+    float Shadow = PCFSampler(Bias, projCoords, Index, currentDepth, 2);
     //float Shadow = ShadowPCFRandom(Bias, projCoords, Index, currentDepth, 1);
     
     if (projCoords.z > 1.0) {
@@ -298,13 +311,15 @@ float ShadowCalculation(STRUCT_SpotLight Light)
     float Shadow;
     if (ShadowFilterType_ == 0) { // No Filtering
         Shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
-    } else if (ShadowFilterType_ == 1) {
-        Shadow = ShadowPCF(Bias, projCoords, Light.DepthMapIndex, currentDepth, 2);
+    } else if (ShadowFilterType_ == 1) { // PCF Filtering
+        Shadow = PCFSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, 2);
+    } else if (ShadowFilterType_ == 2) { // Poisson Filtering
+        Shadow = PoissonSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, 2);
+    } else if (ShadowFilterType_ == 3) {
+        Shadow = StratifiedPoissonSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, 2);
     } else {
         return 0.0f; // Return Failure, All Black)
     }
-    
-    //float Shadow = ShadowPCFRandom(Bias, projCoords, Index, currentDepth, 1);
     
     if (projCoords.z > 1.0) {
         Shadow = 0.0f;
