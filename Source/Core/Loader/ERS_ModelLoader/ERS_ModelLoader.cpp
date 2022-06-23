@@ -145,6 +145,11 @@ void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr
 
 }
 
+// Todo: cubemap shaders running too many times
+// if needed, make one shader per filter technique and have it autogenerate multiple shaders
+// just general performance improvements, such as rendering shadows on lower quality models, and adding static shadows.
+
+
 void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) {
 
         
