@@ -209,13 +209,17 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
 
 bool ERS_CLASS_DepthMaps::FreeDepthMapIndex2D(unsigned int Index) {
 
+    SystemUtils_->Logger_->Log(std::string("Freeing 2D Array Depth Map Index '") + std::to_string(Index) + std::string("'"), 4);
+
     // Sanity Check
     if (Index > DepthMapTexturesAlreadyAllocated_.size() - 1) {
+        SystemUtils_->Logger_->Log(std::string("Cannot Free Invalid 2D Array Depth Map Index '") + std::to_string(Index) + std::string("', Index Out Of Range"), 9);
         return false; // Indicate Failure, Out Of Range
     }
 
     // DeAllocate From Array
     DepthMapTexturesAlreadyAllocated_[Index] = -1;
+    SystemUtils_->Logger_->Log(std::string("Deallocated 2D Array Depth Map Index '") + std::to_string(Index) + std::string("'"), 3);
     return true;
 
 }
