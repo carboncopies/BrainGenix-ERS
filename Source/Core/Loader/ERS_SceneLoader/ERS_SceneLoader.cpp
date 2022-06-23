@@ -302,16 +302,13 @@ void ERS_CLASS_SceneLoader::AddModel(ERS_STRUCT_Scene* Scene, long AssetID) {
     // Process Texture References, Setup Meshes
     ERS_STRUCT_Model* Model = Scene->Models[CurrentSize-1].get();
     for (unsigned long i = 0; i < Model->Meshes.size(); i++) {
-        for (unsigned long Index = 0; Index < Model->Meshes[i].TextureReferences_.size(); Index++) { // IF TEXTURES DONT WORK, CHECK HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-            int TextureIndex = Model->Meshes[i].TextureReferences_[Index];
         
-            // Set Shadow Configuration Pointers
-            Model->Meshes[i].CastDynamicShadows_ = &Model->CastDynamicShadows_;
-            Model->Meshes[i].CastStaticShadows_ = &Model->CastStaticShadows_;
-            Model->Meshes[i].ReceiveShadows_ = &Model->ReceiveShadows_;
+        // Set Shadow Configuration Pointers
+        Model->Meshes[i].CastDynamicShadows_ = &Model->CastDynamicShadows_;
+        Model->Meshes[i].CastStaticShadows_ = &Model->CastStaticShadows_;
+        Model->Meshes[i].ReceiveShadows_ = &Model->ReceiveShadows_;
 
-        }
+        
     }
 
 
