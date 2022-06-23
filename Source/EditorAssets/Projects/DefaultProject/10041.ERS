@@ -361,8 +361,27 @@ float ShadowCalculation(STRUCT_PointLight Light)
     // now get current linear depth as the length between the fragment and light position
     float currentDepth = length(fragToLight);
     // test for shadows
-    float bias = 0.05; // we use a much larger bias since depth is now in [near_plane, far_plane] range
-    float shadow = currentDepth -  bias > closestDepth ? 1.0 : 0.0;        
+
+    // Generate Shadow Map Bias
+    int TextureSize = textureSize(DepthMapCubeArray, 0).x;
+    float BiasMax = 0.005f;
+    if (TextureSize <= 512) {
+        BiasMax = 0.075;
+    } else if (TextureSize <= 1024) {
+        BiasMax = 0.05;
+    } else if (TextureSize <= 2048) {
+        BiasMax = 0.03;
+    } else if (TextureSize <= 4096) {
+        BiasMax = 0.02;
+    } else if (TextureSize <= 8192) {
+        BiasMax = 0.015;
+    } else if (TextureSize <= 16384) {
+        BiasMax = 0.01;
+    }
+    
+    float Bias = max(0.00 * (1.0 - dot(Object.Normal, normalize(fragToLight))), BiasMax);
+
+    float shadow = currentDepth -  Bias > closestDepth ? 1.0 : 0.0;        
     // display closestDepth as debug (to visualize depth cubemap)
     // FragColor = vec4(vec3(closestDepth / Light.MaxDistance), 1.0);    
         
@@ -706,6 +725,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
