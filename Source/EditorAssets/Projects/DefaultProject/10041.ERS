@@ -27,6 +27,8 @@ struct STRUCT_DirectionalLight {
     float MaxDistance;
     int DepthMapIndex;
     mat4 LightSpaceMatrix;
+    
+    bool CastsShadows;
 
 };
 
@@ -43,6 +45,8 @@ struct STRUCT_PointLight {
     float MaxDistance;
     
     int DepthCubemapIndex;
+    
+    bool CastsShadows;
 
 };
 
@@ -65,6 +69,8 @@ struct STRUCT_SpotLight {
     
     int DepthMapIndex;
     mat4 LightSpaceMatrix;
+    
+    bool CastsShadows;
 
 };
 
@@ -225,7 +231,7 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
 {
 
     // If Shadows Are Not Enabled, Exit Early
-    if (!ReceiveShadows_) {
+    if (!ReceiveShadows_ || !Light.CastsShadows) {
     return 1.0f;
     }
     
@@ -268,7 +274,7 @@ float ShadowCalculation(STRUCT_SpotLight Light)
 {
 
     // If Shadows Are Not Enabled, Exit Early
-    if (!ReceiveShadows_) {
+    if (!ReceiveShadows_ || !Light.CastsShadows) {
     return 1.0f;
     }
     
