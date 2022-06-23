@@ -217,26 +217,6 @@ float PCFSamplerCubemap(float BiasedCurrentDepth, vec3 TexCoords3D, int Index, f
 
     float shadow = 0.0;
 
-	/**
-    float samples = SampleSize;
-    float offset = 0.025;
-    for(float x = -offset; x < offset; x += offset / (samples * 0.5))
-    {
-        for(float y = -offset; y < offset; y += offset / (samples * 0.5))
-        {
-            for(float z = -offset; z < offset; z += offset / (samples * 0.5))
-            {
-                float closestDepth = texture(DepthMapCubeArray, vec4(TexCoords3D + vec3(x, y, z), Index)).r; // use lightdir to lookup cubemap
-                closestDepth *= ViewDistance;   // Undo mapping [0;1]
-                if(BiasedCurrentDepth > closestDepth)
-                    shadow += 1.0;
-            }
-        }
-    }
-    shadow /= (samples * samples * samples);
-
-	**/
-
 
     int samples = SampleSize*SampleSize;
     //float viewDistance = length(viewPos - fragPos);
