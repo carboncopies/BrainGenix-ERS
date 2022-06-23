@@ -22,37 +22,37 @@ ERS_CLASS_ShadowMaps::~ERS_CLASS_ShadowMaps() {
 
     SystemUtils_->Logger_->Log("Viewport Overlay Subsystem Destructor Invoked", 6);
 
-    // Iterate Over All Depth Maps, And Dellocate It
-    SystemUtils_->Logger_->Log("Deallocating All Depth Map Indices", 5);
-    ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+    // // Iterate Over All Depth Maps, And Dellocate It
+    // SystemUtils_->Logger_->Log("Deallocating All Depth Map Indices", 5);
+    // ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
 
-    for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
+    // for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
 
-        if (ActiveScene->PointLights[i]->DepthMap.Initialized) {
-            ERS_CLASS_DepthMaps_->FreeDepthMapIndexCubemap(ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
-            ActiveScene->PointLights[i]->DepthMap.Initialized = false;
-        }
+    //     if (ActiveScene->PointLights[i]->DepthMap.Initialized) {
+    //         ERS_CLASS_DepthMaps_->FreeDepthMapIndexCubemap(ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
+    //         ActiveScene->PointLights[i]->DepthMap.Initialized = false;
+    //     }
 
-    } 
+    // } 
 
-    for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
+    // for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
 
-        if (ActiveScene->SpotLights[i]->DepthMap.Initialized) {
-            ERS_CLASS_DepthMaps_->FreeDepthMapIndex2D(ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndex);
-            ActiveScene->SpotLights[i]->DepthMap.Initialized = false;
-        }
+    //     if (ActiveScene->SpotLights[i]->DepthMap.Initialized) {
+    //         ERS_CLASS_DepthMaps_->FreeDepthMapIndex2D(ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndex);
+    //         ActiveScene->SpotLights[i]->DepthMap.Initialized = false;
+    //     }
 
-    } 
+    // } 
 
-    for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
+    // for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
 
-        if (ActiveScene->DirectionalLights[i]->DepthMap.Initialized) {
-            ERS_CLASS_DepthMaps_->FreeDepthMapIndex2D(ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex);
-            ActiveScene->DirectionalLights[i]->DepthMap.Initialized = false;
-        }
+    //     if (ActiveScene->DirectionalLights[i]->DepthMap.Initialized) {
+    //         ERS_CLASS_DepthMaps_->FreeDepthMapIndex2D(ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex);
+    //         ActiveScene->DirectionalLights[i]->DepthMap.Initialized = false;
+    //     }
 
-    } 
-    SystemUtils_->Logger_->Log("Finished Dallocating All Depth Map Indices", 4);
+    // } 
+    // SystemUtils_->Logger_->Log("Finished Dallocating All Depth Map Indices", 4);
 
 
 }
