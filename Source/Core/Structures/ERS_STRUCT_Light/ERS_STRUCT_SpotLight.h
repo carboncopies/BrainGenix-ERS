@@ -35,6 +35,6 @@ struct ERS_STRUCT_SpotLight {
 
     ERS_STRUCT_DepthMap DepthMap; /**<Contains OpenGL IDS Used To Calculate Shadows*/
 
-    bool CastsShadows_; /*<Enable or disable shadows being cast from this light*/
+    bool CastsShadows_ = true; /*<Enable or disable shadows being cast from this light*/
 
 };
