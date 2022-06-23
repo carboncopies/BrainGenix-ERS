@@ -81,7 +81,7 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
     
 
     // Skip Handling An Update If No Lights Are To Be Updated Here
-    if (DepthMaps.size() >= 1) {
+    if (DepthMaps.size() > 1) {
 
         // Tell The Depth Map Update System Which Depth Maps To Update
         if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
