@@ -100,7 +100,7 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
     // Create List Of All Depth Maps
     std::vector<ERS_STRUCT_DepthMap*> DepthMaps;
     std::vector<glm::vec3> LightPositions;
-    
+    GetDepthMaps(&DepthMaps, &LightPositions);
 
     
 
