@@ -509,7 +509,9 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
         }
 
         // Render To Depth Map
-        UpdateDepthMap(Light, DepthShader);
+        if (Light->CastsShadows_) {
+            UpdateDepthMap(Light, DepthShader);
+        }
 
     }
 
@@ -526,7 +528,9 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
         }
 
         // Render To Depth Map
-        UpdateDepthMap(Light, CubemapDepthShader);
+        if (Light->CastsShadows_) {
+            UpdateDepthMap(Light, CubemapDepthShader);
+        }
 
 
     } 
