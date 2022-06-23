@@ -108,4 +108,11 @@ public:
     void UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, ERS_STRUCT_Shader* CubemapDepthShader, glm::vec3 CameraPosition);
 
 
+    /**
+     * @brief Deallocates all 
+     * 
+     */
+    void DeallocateLightMaps();
+
+
 };
