@@ -50,6 +50,8 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
 
             DepthMaps.push_back(&ActiveScene->PointLights[i]->DepthMap);
             LightPositions.push_back(ActiveScene->PointLights[i]->Pos);
+        } else if (ActiveScene->PointLights[i]->DepthMap.Initialized) {
+            ERS_CLASS_DepthMaps_->
         }
     }
     for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {

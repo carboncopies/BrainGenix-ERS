@@ -68,15 +68,7 @@ private:
 
 
 
-    /**
-     * @brief Deallocates an index from the depth map texture array.
-     * @param Index
-     * @return true 
-     * @return false 
-     */
-    bool FreeDepthMapIndex2D(unsigned int Index);
-    bool FreeDepthMapIndexCubemap(unsigned int Index);
-    
+
 
 
 
@@ -122,6 +114,16 @@ public:
      * 
      */
     void CheckSettings();
+
+
+    /**
+     * @brief Deallocates an index from the depth map texture array.
+     * @param Index
+     * @return true 
+     * @return false 
+     */
+    bool FreeDepthMapIndex2D(unsigned int Index);
+    bool FreeDepthMapIndexCubemap(unsigned int Index);
     
 
     /**
