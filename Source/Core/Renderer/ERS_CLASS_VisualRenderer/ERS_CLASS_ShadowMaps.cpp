@@ -140,7 +140,7 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
 
         }
 
-    } else { // Handle Edge Case Where One Light Breaks The Random Number Generator
+    } else if (DepthMaps.size() == 1) { // Handle Edge Case Where One Light Breaks The Random Number Generator
         DepthMaps[0]->ToBeUpdated = true;
     }
 
