@@ -142,6 +142,9 @@ void Widget_ObjectProperties::Draw() {
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the distance after which the scene is no longer affected by this light source.");
 
+                        ImGui::Checkbox("Cast Shadows", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->CastsShadows_);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Allows or disallows this light from creating shadows on the scene.");
 
                     }
 
