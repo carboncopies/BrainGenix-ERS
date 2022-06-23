@@ -42,8 +42,11 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
 
             // Check If Light Has DepthMap
             if (!ActiveScene->PointLights[i]->DepthMap.Initialized) {
-                ActiveScene->PointLights[i]->DepthMap = ERS_CLASS_DepthMaps_->GenerateDepthMap2D();   
+                ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex = ERS_CLASS_DepthMaps_->AllocateDepthMapIndexCubemap();
+                ActiveScene->PointLights[i]->DepthMap.Initialized = true;
             }
+
+
 
             DepthMaps.push_back(&ActiveScene->PointLights[i]->DepthMap);
             LightPositions.push_back(ActiveScene->PointLights[i]->Pos);
@@ -52,11 +55,9 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
     for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
         if (ActiveScene->SpotLights[i]->CastsShadows_) {
 
-
             // Check If Light Has DepthMap
             if (!ActiveScene->SpotLights[i]->DepthMap.Initialized) {
-                ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndex = ERS_CLASS_DepthMaps_->AllocateDepthMapIndexCubemap();
-                ActiveScene->SpotLights[i]->DepthMap.Initialized = true;
+                ActiveScene->SpotLights[i]->DepthMap = ERS_CLASS_DepthMaps_->GenerateDepthMap2D();   
             }
 
             DepthMaps.push_back(&ActiveScene->SpotLights[i]->DepthMap);
