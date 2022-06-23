@@ -521,12 +521,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
         // Extract Struct
         ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
 
-        // Check If Light Has DepthMap
-        if (!Light->DepthMap.Initialized) {
-            Light->DepthMap.DepthMapTextureIndex = AllocateDepthMapIndexCubemap();
-            Light->DepthMap.Initialized = true;
-        }
-
         // Render To Depth Map
         if (Light->CastsShadows_) {
             UpdateDepthMap(Light, CubemapDepthShader);
