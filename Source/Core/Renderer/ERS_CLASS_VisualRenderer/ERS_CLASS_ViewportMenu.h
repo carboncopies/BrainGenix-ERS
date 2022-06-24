@@ -71,4 +71,10 @@ public:
      */
     void DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_ShadowMaps* ShadowMaps);
 
+
+    void AddPointLight();
+    void AddDirectionalLight();
+    void AddSpotLight();
+    
+
 };
