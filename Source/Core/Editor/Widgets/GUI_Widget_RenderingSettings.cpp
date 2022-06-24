@@ -14,8 +14,8 @@ Widget_RenderingSettings::Widget_RenderingSettings(ERS_STRUCT_SystemUtils* Syste
 
     SystemUtils_->Logger_->Log("Copying Shadow Map Resolution", 2);
     ERS_STRUCT_RendererSettings* Settings = SystemUtils_->RendererSettings_.get();
-    DepthMapResolution_[0] = Settings->ShadowMapX_;
-    DepthMapResolution_[1] = Settings->ShadowMapY_;
+    DepthMapResolution_ = Settings->ShadowMapX_;
+
 
     if (Settings->ShadowFilteringType_ == ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED) {
         SelectedShadowFiltering_ = 0;
@@ -145,7 +145,7 @@ void Widget_RenderingSettings::Draw() {
 
 
                 // Draw Buttons/Input Fields
-                ImGui::InputInt2("Depth Map Resolution", DepthMapResolution_);
+                ImGui::InputInt("Depth Map Resolution", &DepthMapResolution_);
                 
                 ImGui::InputInt("Max Shadow Updates Per Frame", &Settings->MaxShadowUpdatesPerFrame_);
                 ImGui::InputInt("Shadow Filter Kernel Size", &Settings->ShadowFilterKernelSize_);
@@ -156,8 +156,8 @@ void Widget_RenderingSettings::Draw() {
                 // Handle Apply Button
                 Apply = ImGui::Button("Apply");
                 if (Apply) {
-                    Settings->ShadowMapX_ = DepthMapResolution_[0];
-                    Settings->ShadowMapY_ = DepthMapResolution_[1];
+                    Settings->ShadowMapX_ = DepthMapResolution_;
+                    Settings->ShadowMapY_ = DepthMapResolution_;
 
                     if (SelectedShadowFiltering_ == 0) {
                         Settings->ShadowFilteringType_ = ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED;
