@@ -1057,6 +1057,7 @@ SceneData:
     PosZ: 6.0999999
     Intensity: 1
     MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   56:
@@ -1070,6 +1071,7 @@ SceneData:
     PosZ: 6.0999999
     Intensity: 1
     MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   57:
@@ -1083,6 +1085,7 @@ SceneData:
     PosZ: 6.0999999
     Intensity: 1
     MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   58:
@@ -1096,6 +1099,7 @@ SceneData:
     PosZ: 6.0999999
     Intensity: 1
     MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   59:
@@ -1109,6 +1113,7 @@ SceneData:
     PosZ: 6.0999999
     Intensity: 1
     MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   60:
@@ -1122,6 +1127,7 @@ SceneData:
     PosZ: 6.0999999
     Intensity: 1
     MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   61:
@@ -1135,6 +1141,7 @@ SceneData:
     PosZ: 6.0999999
     Intensity: 1
     MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   62:
@@ -1148,6 +1155,7 @@ SceneData:
     PosZ: 6.0999999
     Intensity: 1
     MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   63:
@@ -1156,16 +1164,17 @@ SceneData:
     ColorRed: 1
     ColorGreen: 1
     ColorBlue: 1
-    PosX: -0.730386496
-    PosY: 1.5959357
+    PosX: -0.530386508
+    PosY: 1.69593573
     PosZ: 6.00342846
-    RotX: 209.56749
-    RotY: 59.9117851
-    RotZ: 165.184708
+    RotX: 200.34108
+    RotY: 58.297596
+    RotZ: 157.26207
     Intensity: 25
     MaxDistance: 10
     CutOff: 103
     RollOff: 11.5
+    CastShadows: true
     AttachedScripts:
       {}
   64:
@@ -1184,6 +1193,7 @@ SceneData:
     MaxDistance: 15
     CutOff: 120
     RollOff: 16
+    CastShadows: true
     AttachedScripts:
       {}
   65:
@@ -1202,6 +1212,7 @@ SceneData:
     MaxDistance: 10
     CutOff: 95
     RollOff: 7
+    CastShadows: true
     AttachedScripts:
       {}
   66:
@@ -1220,6 +1231,7 @@ SceneData:
     MaxDistance: 15
     CutOff: 77
     RollOff: 6
+    CastShadows: true
     AttachedScripts:
       {}
   67:
@@ -1238,5 +1250,6 @@ SceneData:
     MaxDistance: 10
     CutOff: 80
     RollOff: 9
+    CastShadows: true
     AttachedScripts:
       {}
