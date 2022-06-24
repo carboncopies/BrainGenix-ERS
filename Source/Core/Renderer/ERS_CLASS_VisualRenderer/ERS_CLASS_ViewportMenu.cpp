@@ -322,15 +322,15 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             if (ImGui::BeginMenu("Light")) {
 
                 if (ImGui::MenuItem("Point Light")) {
-                    ProjectUtils_->SceneManager_->AddPointLight(ShadowMaps);
+                    AddPointLight(ShadowMaps);
                 }
 
                 if (ImGui::MenuItem("Spot Light")) {
-                    ProjectUtils_->SceneManager_->AddSpotLight(ShadowMaps);
+                    AddSpotLight(ShadowMaps);
                 }
 
                 if (ImGui::MenuItem("Directional Light")) {
-                    ProjectUtils_->SceneManager_->AddDirectionalLight(ShadowMaps);
+                    AddDirectionalLight(ShadowMaps);
                 }
 
             ImGui::EndMenu();
