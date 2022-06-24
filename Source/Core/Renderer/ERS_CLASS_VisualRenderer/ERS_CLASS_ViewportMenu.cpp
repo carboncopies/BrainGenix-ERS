@@ -30,16 +30,18 @@ ERS_CLASS_ViewportMenu::~ERS_CLASS_ViewportMenu() {
 void ERS_CLASS_ViewportMenu::AddPointLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
 
     std::shared_ptr<ERS_STRUCT_PointLight> Light = std::make_shared<ERS_STRUCT_PointLight>();
+    ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
 
     Light->UserDefinedName = "New Point Light";
     Light->Color = glm::vec3(1.0f);
 
     Light->Intensity = 1.0f;
     Light->MaxDistance = 20.0f;
+    Light->DepthMap.DepthMapTextureIndex = ShadowMaps->ERS_CLASS_DepthMaps_->AllocateDepthMapIndexCubemap();
 
 
-    Scenes_[ActiveScene_]->PointLights.push_back(Light);
-    Scenes_[ActiveScene_]->IndexSceneObjects();
+    Scene->PointLights.push_back(Light);
+    Scene->IndexSceneObjects();
 
 }
 
