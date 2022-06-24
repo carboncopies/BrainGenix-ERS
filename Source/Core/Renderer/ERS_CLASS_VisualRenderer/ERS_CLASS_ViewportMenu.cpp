@@ -25,6 +25,79 @@ ERS_CLASS_ViewportMenu::~ERS_CLASS_ViewportMenu() {
 }
 
 
+
+
+void ERS_CLASS_ViewportMenu::AddPointLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
+
+    std::shared_ptr<ERS_STRUCT_PointLight> Light = std::make_shared<ERS_STRUCT_PointLight>();
+    ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+
+    Light->UserDefinedName = "New Point Light";
+    Light->Color = glm::vec3(1.0f);
+
+    Light->Intensity = 1.0f;
+    Light->MaxDistance = 20.0f;
+
+
+    Light->DepthMap.DepthMapTextureIndex = ShadowMaps->ERS_CLASS_DepthMaps_->AllocateDepthMapIndexCubemap();
+    Light->DepthMap.Initialized = true;
+    Light->DepthMap.ToBeUpdated = true;
+
+
+    Scene->PointLights.push_back(Light);
+    Scene->IndexSceneObjects();
+
+}
+
+void ERS_CLASS_ViewportMenu::AddDirectionalLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
+
+    std::shared_ptr<ERS_STRUCT_DirectionalLight> Light = std::make_shared<ERS_STRUCT_DirectionalLight>();
+    ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+
+    Light->UserDefinedName = "New Directional Light";
+    Light->Color = glm::vec3(1.0f);
+
+    Light->Intensity = 5.0f;
+
+    Light->MaxDistance = 100.0f;
+
+    Light->DepthMap = ShadowMaps->ERS_CLASS_DepthMaps_->GenerateDepthMap2D();
+    Light->DepthMap.Initialized = true;
+    Light->DepthMap.ToBeUpdated = true;
+
+
+    Scene->DirectionalLights.push_back(Light);
+    Scene->IndexSceneObjects();
+
+}
+
+void ERS_CLASS_ViewportMenu::AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
+
+    std::shared_ptr<ERS_STRUCT_SpotLight> Light = std::make_shared<ERS_STRUCT_SpotLight>();
+    ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+
+    Light->UserDefinedName = "New Spot Light";
+    Light->Color = glm::vec3(1.0f);
+
+    
+    Light->Intensity = 1.0f;
+    Light->MaxDistance = 20.0f;
+
+    Light->CutOff = 45.0f;
+    Light->Rolloff = 10.0f;
+
+    Light->DepthMap = ShadowMaps->ERS_CLASS_DepthMaps_->GenerateDepthMap2D();
+    Light->DepthMap.Initialized = true;
+    Light->DepthMap.ToBeUpdated = true;
+
+    Scene->SpotLights.push_back(Light);
+    Scene->IndexSceneObjects();
+
+}
+
+
+
+
 void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_ShadowMaps* ShadowMaps) {
 
 
@@ -249,15 +322,15 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             if (ImGui::BeginMenu("Light")) {
 
                 if (ImGui::MenuItem("Point Light")) {
-                    ProjectUtils_->SceneManager_->AddPointLight(ShadowMaps);
+                    AddPointLight(ShadowMaps);
                 }
 
                 if (ImGui::MenuItem("Spot Light")) {
-                    ProjectUtils_->SceneManager_->AddSpotLight(ShadowMaps);
+                    AddSpotLight(ShadowMaps);
                 }
 
                 if (ImGui::MenuItem("Directional Light")) {
-                    ProjectUtils_->SceneManager_->AddDirectionalLight(ShadowMaps);
+                    AddDirectionalLight(ShadowMaps);
                 }
 
             ImGui::EndMenu();

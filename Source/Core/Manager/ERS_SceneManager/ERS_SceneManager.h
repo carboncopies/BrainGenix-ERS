@@ -85,8 +85,6 @@ public:
      */
     void UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale);
     
-    void AddPointLight();
-    void AddDirectionalLight();
-    void AddSpotLight();
+
 
 };

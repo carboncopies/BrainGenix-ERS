@@ -29,6 +29,7 @@
 #include <ERS_STRUCT_ProjectUtils.h>
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_Viewport.h>
+#include <ERS_STRUCT_Scene.h>
 
 
 
@@ -70,5 +71,11 @@ public:
      * @param Viewport 
      */
     void DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_ShadowMaps* ShadowMaps);
+
+
+    void AddPointLight(ERS_CLASS_ShadowMaps* ShadowMaps);
+    void AddDirectionalLight(ERS_CLASS_ShadowMaps* ShadowMaps);
+    void AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps);
+    
 
 };
