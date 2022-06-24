@@ -61,7 +61,7 @@ void ERS_CLASS_ViewportMenu::AddDirectionalLight(ERS_CLASS_ShadowMaps* ShadowMap
 
     Light->MaxDistance = 100.0f;
 
-    Light->DepthMap.DepthMapTextureIndex = ShadowMaps->ERS_CLASS_DepthMaps_->AllocateDepthMapIndex2D();
+    Light->DepthMap = ShadowMaps->ERS_CLASS_DepthMaps_->GenerateDepthMap2D();
     Light->DepthMap.Initialized = true;
     Light->DepthMap.ToBeUpdated = true;
 
@@ -86,7 +86,7 @@ void ERS_CLASS_ViewportMenu::AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
     Light->CutOff = 45.0f;
     Light->Rolloff = 10.0f;
 
-    Light->DepthMap.DepthMapTextureIndex = ShadowMaps->ERS_CLASS_DepthMaps_->AllocateDepthMapIndex2D();
+    Light->DepthMap = ShadowMaps->ERS_CLASS_DepthMaps_->GenerateDepthMap2D();
     Light->DepthMap.Initialized = true;
     Light->DepthMap.ToBeUpdated = true;
 
