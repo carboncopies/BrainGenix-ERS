@@ -25,7 +25,7 @@ ERS_CLASS_ViewportMenu::~ERS_CLASS_ViewportMenu() {
 }
 
 
-void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport) {
+void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_ShadowMaps* ShadowMaps) {
 
 
     // Menu Bar

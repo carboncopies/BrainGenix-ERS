@@ -22,6 +22,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
+#include <ERS_CLASS_ShadowMaps.h>
 
 #include <ERS_SceneManager.h>
 
@@ -68,6 +69,6 @@ public:
      * 
      * @param Viewport 
      */
-    void DrawMenu(ERS_STRUCT_Viewport* Viewport);
+    void DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_ShadowMaps* ShadowMaps);
 
 };
