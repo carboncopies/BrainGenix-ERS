@@ -14,8 +14,8 @@ Widget_RenderingSettings::Widget_RenderingSettings(ERS_STRUCT_SystemUtils* Syste
 
     SystemUtils_->Logger_->Log("Copying Shadow Map Resolution", 2);
     ERS_STRUCT_RendererSettings* Settings = SystemUtils_->RendererSettings_.get();
-    DepthMapResolution_[0] = Settings->ShadowMapX_;
-    DepthMapResolution_[1] = Settings->ShadowMapY_;
+    DepthMapResolution_ = Settings->ShadowMapX_;
+
 
     if (Settings->ShadowFilteringType_ == ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED) {
         SelectedShadowFiltering_ = 0;
