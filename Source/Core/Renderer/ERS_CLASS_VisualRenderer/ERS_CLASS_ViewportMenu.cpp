@@ -27,7 +27,7 @@ ERS_CLASS_ViewportMenu::~ERS_CLASS_ViewportMenu() {
 
 
 
-void ERS_CLASS_ViewportMenu::AddPointLight() {
+void ERS_CLASS_ViewportMenu::AddPointLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
 
     std::shared_ptr<ERS_STRUCT_PointLight> Light = std::make_shared<ERS_STRUCT_PointLight>();
 
@@ -43,7 +43,7 @@ void ERS_CLASS_ViewportMenu::AddPointLight() {
 
 }
 
-void ERS_CLASS_ViewportMenu::AddDirectionalLight() {
+void ERS_CLASS_ViewportMenu::AddDirectionalLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
 
     std::shared_ptr<ERS_STRUCT_DirectionalLight> Light = std::make_shared<ERS_STRUCT_DirectionalLight>();
 
@@ -61,7 +61,7 @@ void ERS_CLASS_ViewportMenu::AddDirectionalLight() {
 
 }
 
-void ERS_CLASS_ViewportMenu::AddSpotLight() {
+void ERS_CLASS_ViewportMenu::AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
 
     std::shared_ptr<ERS_STRUCT_SpotLight> Light = std::make_shared<ERS_STRUCT_SpotLight>();
 
