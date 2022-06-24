@@ -13,9 +13,31 @@ Widget_RenderingSettings::Widget_RenderingSettings(ERS_STRUCT_SystemUtils* Syste
     SystemUtils_->Logger_->Log("Setting Up Default Renderer Setting Input Fields", 3);
 
     SystemUtils_->Logger_->Log("Copying Shadow Map Resolution", 2);
-    DepthMapResolution_[0] = SystemUtils_->RendererSettings_->ShadowMapX_;
-    DepthMapResolution_[1] = SystemUtils_->RendererSettings_->ShadowMapY_;
+    ERS_STRUCT_RendererSettings* Settings = SystemUtils_->RendererSettings_.get();
+    DepthMapResolution_[0] = Settings->ShadowMapX_;
+    DepthMapResolution_[1] = Settings->ShadowMapY_;
 
+    if (Settings->ShadowFilteringType_ == ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED) {
+        SelectedShadowFiltering_ = 0;
+    } else if (Settings->ShadowFilteringType_ == ERS::Renderer::ERS_SHADOW_FILTERING_PCF) {
+        SelectedShadowFiltering_ = 1;
+    } else if (Settings->ShadowFilteringType_ == ERS::Renderer::ERS_SHADOW_FILTERING_POISSON_SAMPLING) {
+        SelectedShadowFiltering_ = 2;
+    } else if (Settings->ShadowFilteringType_ == ERS::Renderer::ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING) {
+        SelectedShadowFiltering_ = 3;
+    }
+
+    if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
+        SelectedShadowUpdates_ = 0;
+    } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_RANDOM) {
+        SelectedShadowUpdates_ = 1;
+    } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_CONSECUTIVE) {
+        SelectedShadowUpdates_ = 2;
+    } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED) {
+        SelectedShadowUpdates_ = 3;
+    } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL) {
+        SelectedShadowUpdates_ = 4;
+    }
 
 
 }
@@ -103,14 +125,62 @@ void Widget_RenderingSettings::Draw() {
                 ImGui::Separator();
                 ImGui::Spacing();
                 bool Apply = false;
+                ERS_STRUCT_RendererSettings* Settings = SystemUtils_->RendererSettings_.get();
+
+                const char* ShadowFilteringNames[] = {
+                    "ERS_SHADOW_FILTERING_DISABLED",
+                    "ERS_SHADOW_FILTERING_PCF",
+                    "ERS_SHADOW_FILTERING_POISSON_SAMPLING",
+                    "ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING"
+                };
+                const char* ShadowUpdateNames[] = {
+                    "ERS_SHADOW_UPDATE_MODE_DISABLED",
+                    "ERS_SHADOW_UPDATE_MODE_RANDOM",
+                    "ERS_SHADOW_UPDATE_MODE_CONSECUTIVE",
+                    "ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED",
+                    "ERS_SHADOW_UPDATE_MODE_ALL"
+                };
 
 
+
+
+                // Draw Buttons/Input Fields
                 ImGui::InputInt2("Depth Map Resolution", DepthMapResolution_);
-                Apply = ImGui::Button("Apply");
                 
+                ImGui::InputInt("Max Shadow Updates Per Frame", &Settings->MaxShadowUpdatesPerFrame_);
+                ImGui::InputInt("Shadow Filter Kernel Size", &Settings->ShadowFilterKernelSize_);
+
+                ImGui::Combo("Shadow Filtering", &SelectedShadowFiltering_, ShadowFilteringNames, 4);
+                ImGui::Combo("Shadow Update Mode", &SelectedShadowUpdates_, ShadowUpdateNames, 5);
+                
+                // Handle Apply Button
+                Apply = ImGui::Button("Apply");
                 if (Apply) {
-                    SystemUtils_->RendererSettings_->ShadowMapX_ = DepthMapResolution_[0];
-                    SystemUtils_->RendererSettings_->ShadowMapY_ = DepthMapResolution_[1];
+                    Settings->ShadowMapX_ = DepthMapResolution_[0];
+                    Settings->ShadowMapY_ = DepthMapResolution_[1];
+
+                    if (SelectedShadowFiltering_ == 0) {
+                        Settings->ShadowFilteringType_ = ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED;
+                    } else if (SelectedShadowFiltering_ == 1) {
+                        Settings->ShadowFilteringType_ = ERS::Renderer::ERS_SHADOW_FILTERING_PCF;
+                    } else if (SelectedShadowFiltering_ == 2) {
+                        Settings->ShadowFilteringType_ = ERS::Renderer::ERS_SHADOW_FILTERING_POISSON_SAMPLING;
+                    } else if (SelectedShadowFiltering_ == 3) {
+                        Settings->ShadowFilteringType_ = ERS::Renderer::ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING;
+                    }
+
+                    if (SelectedShadowUpdates_ == 0) {
+                        Settings->ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED;
+                    } else if (SelectedShadowUpdates_ == 1) {
+                        Settings->ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_RANDOM;
+                    } else if (SelectedShadowUpdates_ == 2) {
+                        Settings->ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_CONSECUTIVE;
+                    } else if (SelectedShadowUpdates_ == 3) {
+                        Settings->ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED;
+                    } else if (SelectedShadowUpdates_ == 4) {
+                        Settings->ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL;
+                    }
+
                 }
 
 

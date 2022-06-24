@@ -13,7 +13,8 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-
+#include <ERS_ENUM_ShadowFilteringType.h>
+#include <ERS_ENUM_ShadowUpdateMode.h>
 
 
 /**
@@ -26,8 +27,10 @@ struct ERS_STRUCT_RendererSettings {
     int ShadowMapX_ = 2048;
     int ShadowMapY_ = 2048;
 
-
-    // Indicate If Settings Have Changed
-    bool HaveSettingsChanged_ = false;
+    // Set Shadow Update Settings
+    ERS::Renderer::ShadowFilteringType ShadowFilteringType_ = ERS::Renderer::ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING;
+    ERS::Renderer::ShadowUpdateMode ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED;
+    int MaxShadowUpdatesPerFrame_ = 5;
+    int ShadowFilterKernelSize_ = 1;
 
 };

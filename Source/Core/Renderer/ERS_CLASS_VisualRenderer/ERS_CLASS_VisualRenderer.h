@@ -48,6 +48,8 @@
 #include <ERS_FUNCTION_FindShaderByName.h>
 #include <ERS_FUNCTION_ConvertRotationToFrontVector.h>
 
+#include <ERS_ENUM_ShadowFilteringType.h>
+
 /**
  * @brief Handles viewport creation/deletion/rendering/updating.
  * 

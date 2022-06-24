@@ -46,6 +46,14 @@ struct ERS_STRUCT_Model {
     long AssetID;
 
 
+
+    // Shadows Information
+    bool CastDynamicShadows_ = true; /**<Indicate if this model is to be rendered when generating the depth maps (dynamically)*/
+    bool CastStaticShadows_ = true; /**<Set if this model is rendered when building static depth maps*/
+    bool ReceiveShadows_ = true; /**<Determines if this model is to have shadows applied to it.*/
+
+
+
     // Enable Config
     bool Enabled = true;
 
@@ -73,6 +81,9 @@ struct ERS_STRUCT_Model {
 
     glm::mat4 SourceModelLocRotScale_ = glm::mat4(1.0f);
     glm::mat4 ModelLocRotScale_ = glm::mat4(1.0f);
+
+
+
 
     /**
      * @brief Set the Position object (Overloaded). Accepts X,Y,Z Floats. Remember to Call ApplyTrsnformations When Ready.

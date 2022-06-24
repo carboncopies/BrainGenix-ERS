@@ -9,6 +9,8 @@
 #include <iostream>
 #include <string>
 #include <chrono>
+#include <random>
+#include <map>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
@@ -30,6 +32,8 @@
 #include <ERS_STRUCT_DepthMap.h>
 #include <ERS_STRUCT_Shader.h>
 
+#include <ERS_ENUM_ShadowFilteringType.h>
+#include <ERS_ENUM_ShadowUpdateMode.h>
 
 
 /**
@@ -46,7 +50,30 @@ private:
     ERS_CLASS_MeshRenderer* Renderer_; /**<Pointer to mesh renderer instance*/
 
 
+    std::mt19937 MersenneTwister_; /**<Used to generate rnd numbers for random light updates*/
+    uint32_t RandomSeed_ = 1; /**Seed used to set initial random generator*/
+    std::uniform_int_distribution<uint32_t> RandomNumberGenerator_; /**<Actual class that spits out random numbers*/
 
+
+
+    unsigned int LastUpdateIndex_ = 0; /**<Used when updating the depth maps, indicates when the last consecuitive index was*/
+
+
+    /**
+     * @brief Collect the depth maps from the scene's lights and create a list of them for the update system.
+     * 
+     * @param DepthMaps 
+     * @param LightPositions 
+     */
+    void GetDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* DepthMaps, std::vector<glm::vec3>* LightPositions);
+
+    /**
+     * @brief Determines which depth maps should be updated, and also deallocates those on lights that are no longer being used.
+     * 
+     * @param DepthMaps 
+     * @param LightPositions 
+     */
+    void PrioritizeDepthMaps(std::vector<ERS_STRUCT_DepthMap*> DepthMaps, std::vector<glm::vec3> LightPositions, glm::vec3 CameraPosition);
 
 
 public:
@@ -78,7 +105,14 @@ public:
      * This function checks the scenemanger and other shared classes to get info about the scene.
      * 
      */
-    void UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, ERS_STRUCT_Shader* CubemapDepthShader);
+    void UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, ERS_STRUCT_Shader* CubemapDepthShader, glm::vec3 CameraPosition);
+
+
+    /**
+     * @brief Deallocates all 
+     * 
+     */
+    void DeallocateLightMaps();
 
 
 };

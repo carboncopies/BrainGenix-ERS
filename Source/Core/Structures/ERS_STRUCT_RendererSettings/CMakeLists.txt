@@ -8,9 +8,14 @@ add_library(ERS_STRUCT_RendererSettings
 
             # Add Source Files (.cpp)
             "ERS_STRUCT_RendererSettings.cpp"
+            "ERS_ENUM_ShadowFilteringType.cpp"
+            "ERS_ENUM_ShadowUpdateMode.cpp"
+            
 
             # Add Header Files (.h)
             "ERS_STRUCT_RendererSettings.h"
+            "ERS_ENUM_ShadowFilteringType.h"
+            "ERS_ENUM_ShadowUpdateMode.h"
             
             ${BACKWARD_ENABLE}
             )

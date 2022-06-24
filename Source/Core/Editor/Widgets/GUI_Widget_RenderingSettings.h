@@ -16,6 +16,10 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_RendererSettings.h>
+
+#include <ERS_ENUM_ShadowFilteringType.h>
+#include <ERS_ENUM_ShadowUpdateMode.h>
 
 
 
@@ -34,11 +38,12 @@ private:
 
     // Variables To Store Input Data
     int DepthMapResolution_[2]; /**>Stores the value that the user is putting into the depth map input box*/
-
+    int SelectedShadowFiltering_ = 0;
+    int SelectedShadowUpdates_ = 0;
 
 public:
 
-    bool Enabled_ = false; /**<Show/Hide Widget*/
+    bool Enabled_ = true; /**<Show/Hide Widget*/
 
 
     /**

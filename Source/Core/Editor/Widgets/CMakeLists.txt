@@ -50,6 +50,7 @@ target_link_libraries(Widgets
     ERS_STRUCT_HardwareInfo
     ERS_STRUCT_Scene
     ERS_STRUCT_ProjectUtils
+    ERS_STRUCT_RendererSettings
 
 
     ERS_SceneManager

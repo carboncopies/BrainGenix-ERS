@@ -81,8 +81,9 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
     // Generate Shadows
     //DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("Preview Shader"), &Shaders_)].get();
-    ShadowMaps_->UpdateShadowMaps(DepthMapShader_, CubemapDepthShader_);
-
+    if (Viewports_.size() > 0) {
+        ShadowMaps_->UpdateShadowMaps(DepthMapShader_, CubemapDepthShader_, Viewports_[0]->Camera->Position_);
+    }
 
     // Setup Vars
     glEnable(GL_DEPTH_TEST);
@@ -677,6 +678,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
         ActiveShader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->DirectionalLights[i]->MaxDistance);
 
+        ActiveShader->SetBool((UniformName + std::string(".CastsShadows")).c_str(), ActiveScene->DirectionalLights[i]->CastsShadows_);
+
         ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex);
         ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.TransformationMatrix);
     
@@ -694,7 +697,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->PointLights[i]->Color);
     
         ActiveShader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->PointLights[i]->MaxDistance);
-
+        
+        ActiveShader->SetBool((UniformName + std::string(".CastsShadows")).c_str(), ActiveScene->PointLights[i]->CastsShadows_);
 
         ActiveShader->SetInt((UniformName + std::string(".DepthCubemapIndex")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
 
@@ -743,12 +747,30 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
         ActiveShader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->SpotLights[i]->MaxDistance);
 
+        ActiveShader->SetBool((UniformName + std::string(".CastsShadows")).c_str(), ActiveScene->SpotLights[i]->CastsShadows_);
+
 
         ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndex);
         ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->SpotLights[i]->DepthMap.TransformationMatrix);
 
     }
 
+
+    // Set Shadow Filter Info
+    int ShadowFilterType = 0;
+    ERS::Renderer::ShadowFilteringType ShadowFilterEnum = SystemUtils_->RendererSettings_->ShadowFilteringType_;
+    if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED) {
+        ShadowFilterType = 0;
+    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_PCF) {
+        ShadowFilterType = 1;
+    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_POISSON_SAMPLING) {
+        ShadowFilterType = 2;
+    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING) {
+        ShadowFilterType = 3;
+    }
+    ActiveShader->SetInt("ShadowFilterType_", ShadowFilterType);
+    ActiveShader->SetInt("ShadowFilterKernelSize_", SystemUtils_->RendererSettings_->ShadowFilterKernelSize_);
+    
 
 
     ActiveShader->SetFloat("Shinyness", 32.0f);

@@ -84,6 +84,11 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
         Output << YAML::Key << "FlipTextures" << YAML::Value << InputScene->Models[i]->FlipTextures;
 
+        Output << YAML::Key << "CastDynamicShadows" << YAML::Value << InputScene->Models[i]->CastDynamicShadows_;
+        Output << YAML::Key << "CastStaticShadows" << YAML::Value << InputScene->Models[i]->CastStaticShadows_;
+        Output << YAML::Key << "ReceiveShadows" << YAML::Value << InputScene->Models[i]->ReceiveShadows_;
+
+
 
         Output<<YAML::Key<<"AttachedScripts";
         Output<<YAML::Key<<YAML::BeginMap;
@@ -123,6 +128,8 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "Intensity" << YAML::Value << InputScene->DirectionalLights[i]->Intensity;
         Output << YAML::Key << "MaxDistance" << YAML::Value << InputScene->DirectionalLights[i]->MaxDistance;
 
+        Output << YAML::Key << "CastShadows" << YAML::Value << InputScene->DirectionalLights[i]->CastsShadows_;
+
 
         Output<<YAML::Key<<"AttachedScripts";
         Output<<YAML::Key<<YAML::BeginMap;
@@ -159,6 +166,8 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
         Output << YAML::Key << "Intensity" << YAML::Value << InputScene->PointLights[i]->Intensity;
         Output << YAML::Key << "MaxDistance" << YAML::Value << InputScene->PointLights[i]->MaxDistance;
+
+        Output << YAML::Key << "CastShadows" << YAML::Value << InputScene->PointLights[i]->CastsShadows_;
 
 
         Output<<YAML::Key<<"AttachedScripts";
@@ -203,6 +212,10 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
         Output << YAML::Key << "CutOff" << YAML::Value << InputScene->SpotLights[i]->CutOff;
         Output << YAML::Key << "RollOff" << YAML::Value << InputScene->SpotLights[i]->Rolloff;
+
+
+        Output << YAML::Key << "CastShadows" << YAML::Value << InputScene->SpotLights[i]->CastsShadows_;
+
 
 
         Output<<YAML::Key<<"AttachedScripts";

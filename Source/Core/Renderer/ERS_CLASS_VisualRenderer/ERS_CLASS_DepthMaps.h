@@ -31,6 +31,8 @@
 #include <ERS_STRUCT_Viewport.h>
 #include <ERS_STRUCT_DepthMap.h>
 
+
+
 #include <ERS_FUNCTION_ConvertRotationToFrontVector.h>
 
 
@@ -64,36 +66,13 @@ private:
     unsigned int DepthMapAllocationChunkSize_ = 16; /**<Allocate Depth Map In Chunks Of 5*/
 
 
-    /**
-     * @brief Allocate an index from the depth map texture array.
-     * 
-     * @return unsigned int 
-     */
-    unsigned int AllocateDepthMapIndex2D(unsigned int FramebufferObjectID);
-    unsigned int AllocateDepthMapIndexCubemap();
 
-    /**
-     * @brief Deallocates an index from the depth map texture array.
-     * @param Index
-     * @return true 
-     * @return false 
-     */
-    bool FreeDepthMapIndex2D(unsigned int Index);
-    bool FreeDepthMapIndexCubemap(unsigned int Index);
-    
 
-    /**
-     * @brief Checks the settings of the renderer against the current parameters.
-     * 
-     */
-    void CheckSettings();
+
+
+
 
 public:
-
-
-    unsigned int TESTFBO;
-    unsigned int TESTCubemap;
-
 
     unsigned int DepthTextureArrayID_; /**<OpenGL Object ID For Depth Map Textures*/
     unsigned int DepthTextureCubemapArrayID_; /**<OpenGL Object ID For Depth Texture Cubemap Array*/
@@ -107,6 +86,7 @@ public:
     
 
     unsigned int CubemapFBO_;
+    unsigned int PointLightClearFBO_;
 
     // !!FIXME!!
     // Replace above vector with instead pointers to struct list so we can keep track and automatically free, etc.
@@ -127,6 +107,32 @@ public:
      * 
      */
     ~ERS_CLASS_DepthMaps();
+
+
+    /**
+     * @brief Checks the settings of the renderer against the current parameters.
+     * 
+     */
+    void CheckSettings();
+
+
+    /**
+     * @brief Deallocates an index from the depth map texture array.
+     * @param Index
+     * @return true 
+     * @return false 
+     */
+    bool FreeDepthMapIndex2D(unsigned int Index);
+    bool FreeDepthMapIndexCubemap(unsigned int Index);
+    
+
+    /**
+     * @brief Allocate an index from the depth map texture array.
+     * 
+     * @return unsigned int 
+     */
+    unsigned int AllocateDepthMapIndex2D(unsigned int FramebufferObjectID);
+    unsigned int AllocateDepthMapIndexCubemap();
 
 
     /**
