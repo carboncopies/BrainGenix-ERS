@@ -43,7 +43,7 @@ void ERS_CLASS_ViewportMenu::AddPointLight() {
 
 }
 
-void ERS_CLASS_SceneManager::AddDirectionalLight() {
+void ERS_CLASS_ViewportMenu::AddDirectionalLight() {
 
     std::shared_ptr<ERS_STRUCT_DirectionalLight> Light = std::make_shared<ERS_STRUCT_DirectionalLight>();
 
@@ -61,7 +61,7 @@ void ERS_CLASS_SceneManager::AddDirectionalLight() {
 
 }
 
-void ERS_CLASS_SceneManager::AddSpotLight() {
+void ERS_CLASS_ViewportMenu::AddSpotLight() {
 
     std::shared_ptr<ERS_STRUCT_SpotLight> Light = std::make_shared<ERS_STRUCT_SpotLight>();
 
