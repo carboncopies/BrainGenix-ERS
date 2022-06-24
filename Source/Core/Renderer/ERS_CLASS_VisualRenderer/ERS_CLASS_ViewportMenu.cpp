@@ -48,6 +48,7 @@ void ERS_CLASS_ViewportMenu::AddPointLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
 void ERS_CLASS_ViewportMenu::AddDirectionalLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
 
     std::shared_ptr<ERS_STRUCT_DirectionalLight> Light = std::make_shared<ERS_STRUCT_DirectionalLight>();
+    ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
 
     Light->UserDefinedName = "New Directional Light";
     Light->Color = glm::vec3(1.0f);
@@ -66,6 +67,7 @@ void ERS_CLASS_ViewportMenu::AddDirectionalLight(ERS_CLASS_ShadowMaps* ShadowMap
 void ERS_CLASS_ViewportMenu::AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
 
     std::shared_ptr<ERS_STRUCT_SpotLight> Light = std::make_shared<ERS_STRUCT_SpotLight>();
+    ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
 
     Light->UserDefinedName = "New Spot Light";
     Light->Color = glm::vec3(1.0f);
