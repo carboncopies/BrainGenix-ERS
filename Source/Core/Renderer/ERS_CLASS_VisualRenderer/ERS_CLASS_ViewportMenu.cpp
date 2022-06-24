@@ -59,8 +59,8 @@ void ERS_CLASS_ViewportMenu::AddDirectionalLight(ERS_CLASS_ShadowMaps* ShadowMap
 
 
 
-    Scenes_[ActiveScene_]->DirectionalLights.push_back(Light);
-    Scenes_[ActiveScene_]->IndexSceneObjects();
+    Scene->DirectionalLights.push_back(Light);
+    Scene->IndexSceneObjects();
 
 }
 
@@ -79,8 +79,8 @@ void ERS_CLASS_ViewportMenu::AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
     Light->CutOff = 45.0f;
     Light->Rolloff = 10.0f;
 
-    Scenes_[ActiveScene_]->SpotLights.push_back(Light);
-    Scenes_[ActiveScene_]->IndexSceneObjects();
+    Scene->SpotLights.push_back(Light);
+    Scene->IndexSceneObjects();
 
 }
 
