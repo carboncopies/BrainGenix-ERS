@@ -68,6 +68,7 @@ void Window_SceneTree::Draw() {
                     if (Selector) {
                         SceneManager_->ActiveScene_ = i;
                         SceneManager_->Scenes_[i]->HasSelectionChanged = true;
+                        SceneManager_->Scenes_[i]->IndexSceneObjects();
                     }
                 }
 
