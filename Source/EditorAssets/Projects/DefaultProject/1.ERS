@@ -1,4 +1,4 @@
-ProjectName: Back Alley Test Scene
+ProjectName: ERS Test Project
 ProjectDescription: Test development scene for EGSC.
 ProjectVersion: 1.0.0
 ProjectCreationDate: 0000-00-00 00-00-00
@@ -8,6 +8,8 @@ ProjectLicense: AGPL-V3.0 Or Higher
 IsLicenseProprietary: false
 SceneIDs:
   0: 3
+  1: 12
+  2: 13
 DefaultScene: 0
 EditorLayouts:
   0: 2
