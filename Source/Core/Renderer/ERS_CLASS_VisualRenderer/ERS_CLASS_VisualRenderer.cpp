@@ -371,10 +371,11 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
         // Update Cursor If Selection Changed
-        if (SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged && DrawCursor) {
+        ERS_STRUCT_Scene* ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
+        if (ActiveScene->HasSelectionChanged && DrawCursor) {
 
             // Get Selected Model
-            int SelectedObject = SceneManager->Scenes_[SceneManager->ActiveScene_]->SelectedObject;
+            int SelectedObject = ActiveScene->SelectedObject;
 
             // Get LocRotScale
             glm::vec3 Position;        
@@ -383,25 +384,25 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             bool HasRotation = false;
             bool HasScale = false;
 
-            if (SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Type_ == std::string("Model")) {
-                unsigned long Index = SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Index_;
-                Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[Index]->ModelPosition;        
-                Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[Index]->ModelRotation;        
-                Scale = SceneManager->Scenes_[SceneManager->ActiveScene_]->Models[Index]->ModelScale;
+            if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("Model")) {
+                unsigned long Index = ActiveScene->SceneObjects_[SelectedObject].Index_;
+                Position = ActiveScene->Models[Index]->ModelPosition;        
+                Rotation = ActiveScene->Models[Index]->ModelRotation;        
+                Scale = ActiveScene->Models[Index]->ModelScale;
                 HasRotation = true;
                 HasScale = true;
-            } else if (SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Type_ == std::string("PointLight")) {
-                unsigned long Index = SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Index_;
-                Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->PointLights[Index]->Pos;        
-            } else if (SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Type_ == std::string("DirectionalLight")) {
-                unsigned long Index = SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Index_;
-                Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[Index]->Pos;        
-                Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_]->DirectionalLights[Index]->Rot;    
+            } else if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("PointLight")) {
+                unsigned long Index = ActiveScene->SceneObjects_[SelectedObject].Index_;
+                Position = ActiveScene->PointLights[Index]->Pos;        
+            } else if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("DirectionalLight")) {
+                unsigned long Index = ActiveScene->SceneObjects_[SelectedObject].Index_;
+                Position = ActiveScene->DirectionalLights[Index]->Pos;        
+                Rotation = ActiveScene->DirectionalLights[Index]->Rot;    
                 HasRotation = true;    
-            } else if (SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Type_ == std::string("SpotLight")) {
-                unsigned long Index = SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneObjects_[SelectedObject].Index_;
-                Position = SceneManager->Scenes_[SceneManager->ActiveScene_]->SpotLights[Index]->Pos;        
-                Rotation = SceneManager->Scenes_[SceneManager->ActiveScene_]->SpotLights[Index]->Rot;    
+            } else if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("SpotLight")) {
+                unsigned long Index = ActiveScene->SceneObjects_[SelectedObject].Index_;
+                Position = ActiveScene->SpotLights[Index]->Pos;        
+                Rotation = ActiveScene->SpotLights[Index]->Rot;    
                 HasRotation = true;    
             }
 
@@ -409,7 +410,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             Cursors3D_->SetLocRotScale(Position, Rotation, Scale, HasRotation, HasScale);
 
             // Indicate Selection Hasn't Changed
-            SceneManager->Scenes_[SceneManager->ActiveScene_]->HasSelectionChanged = false;
+            ActiveScene->HasSelectionChanged = false;
         }
 
 
@@ -425,7 +426,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         // Render
         
-        //MeshRenderer_->RenderSceneNoTextures(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), Shaders_[ShaderIndex].get());
+        //MeshRenderer_->RenderSceneNoTextures(ActiveScene.get(), Shaders_[ShaderIndex].get());
         MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, Shaders_[ShaderIndex].get());
 
         if (Viewports_[Index]->GridEnabled) {
