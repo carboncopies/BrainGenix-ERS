@@ -378,7 +378,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             int SelectedObject = ActiveScene->SelectedObject;
             if (SelectedObject >= ActiveScene->SceneObjects_.size()) {
                 SelectedObject = 0;
-                ActiveScene->SceneObjects_ = 0;
+                ActiveScene->SelectedObject = 0;
             }
 
             // Get LocRotScale
