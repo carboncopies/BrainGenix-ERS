@@ -376,7 +376,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
             // Get Selected Model
             int SelectedObject = ActiveScene->SelectedObject;
-            if (SelectedObject >= ActiveScene->SceneObjects_.size()) {
+            if ((unsigned int)SelectedObject >= ActiveScene->SceneObjects_.size()) {
                 SelectedObject = 0;
                 ActiveScene->SelectedObject = 0;
             }
