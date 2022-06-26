@@ -28,42 +28,47 @@ private:
     std::string LayoutDirectory_; /**<This string stores the path to the editor's layout directory ending in a trailing slash*/
 
     std::vector<YAML::Node> LayoutFiles_; /**<List Of YAML::Node files*/
-    std::vector<std::string> LayoutNames_; /**<List of layout display names (based on display name entry in YAML file)*/
-
+    
 public:
 
+    std::vector<std::string> LayoutNames_; /**<List of layout display names (based on display name entry in YAML file)*/
+
     /**
-     * @brief Construct a new User Profile Manager object
+     * @brief Construct a new Layout Manager object
      * 
      * @param Logger 
      */
     ERS_CLASS_LayoutManager(ERS_CLASS_LoggingSystem* Logger, const char* LayoutDirectory = "EditorAssets/Layouts/");
 
     /**
-     * @brief Destroy the User Profile Manager object
+     * @brief Destroy the Layout Manager object
      * 
      */
     ~ERS_CLASS_LayoutManager();
 
-
     /**
-     * @brief This method indexs all yaml files within the specified layout directory.
-     * This dir path is specified in the constructor. 
-     * Returns false on fail and true on success.
-     * 
-     */
-    bool IndexConfigs();
-
-    /**
-    * @brief This method saves the current layout the user is using.
+    * @brief Save the current layout the user is using.
     *  It will be saved to the layout dir specified in the constructor 
     * with the display name the user has set.
     */
-    void SaveLayout();
+    void SaveLayout(std::string LayoutName);
 
     /**
-    * @brief This method loads the chosen layout according to the relevant YAML file.
+    * @brief Load layouts from disk.
     */
-    void LoadLayout();
+    void LoadLayouts();
 
+    /**
+    * @brief Apply the selected layout.
+    * 
+    * @param LayoutID
+    */
+    void ApplyLayout(int LayoutID);
+
+    /**
+    * @brief Apply the selected layout.
+    *
+    * @param LayoutName
+    */
+    void ApplyLayout(std::string LayoutName);
 };

@@ -4,14 +4,14 @@
 
 #include <ERS_Editor_LayoutManager.h>
 #include <filesystem>
+#include <imgui.h>
 
 
 ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(ERS_CLASS_LoggingSystem* Logger, const char* LayoutDirectory) {
 
     Logger_ = Logger;
-    Logger_->Log("Initializing Layout Manager", 5);
-
     LayoutDirectory_ = LayoutDirectory;
+    Logger_->Log("Initializing Layout Manager", 5);
 
  }
 
@@ -22,14 +22,14 @@ ERS_CLASS_LayoutManager::~ERS_CLASS_LayoutManager() {
 
 }
 
-bool ERS_CLASS_LayoutManager::IndexConfigs() {
+void ERS_CLASS_LayoutManager::LoadLayouts() {
 
     LayoutFiles_ = *new std::vector<YAML::Node>;
 
     // Create List Of Files
     for (const auto& Entry : std::filesystem::directory_iterator(std::string(LayoutDirectory_))) {
 
-        // Get File Path        
+        // Get File Path
         std::string FilePath{ Entry.path().u8string() };
 
         // Load YAML::Node
@@ -53,14 +53,54 @@ bool ERS_CLASS_LayoutManager::IndexConfigs() {
 
 }
 
-void ERS_CLASS_LayoutManager::SaveLayout() {
+void ERS_CLASS_LayoutManager::SaveLayout(std::string LayoutName) {
 
+    std::string IniString;
 
+    size_t settings_size = 0;
+    IniString = static_cast<std::string> (ImGui::SaveIniSettingsToMemory(&settings_size));
+
+    // Save YAML file
+    YAML::Node Layout;
+    Layout["ImGuiIni"] = IniString;
+    LayoutFiles_.push_back(Layout);
+
+    // Set the layout name
+    Layout["DisplayName"] = LayoutName;
+
+    // Add To Names Vector
+    LayoutNames_.push_back(LayoutName);
 
 }
 
-void ERS_CLASS_LayoutManager::LoadLayout() {
+void ERS_CLASS_LayoutManager::ApplyLayout(std::string LayoutName) {
 
+    int Index;
+    bool HasFoundLayout = false;
+    for (Index = 0; (long)Index < (long)LayoutNames_.size(); Index++) {
+        if (LayoutNames_[Index] == std::string(LayoutName)) {
+            HasFoundLayout = true;
+            break;
+        }
+    }
 
+    if (HasFoundLayout) {
+        ApplyLayout(Index);
+    }
+    else {
+        Logger_->Log("Failed To Find Layout, Skipping", 5);
+    }
+
+}
+
+void ERS_CLASS_LayoutManager::ApplyLayout(int LayoutID) {
+
+    // Get Layout Name
+    std::string LayoutName = LayoutNames_[LayoutID];
+    YAML::Node LayoutNode = LayoutFiles_[LayoutID];
+
+    Logger_->Log(std::string(std::string("Applying Layout: ") + LayoutName).c_str(), 4);
+
+    ImGui::LoadIniSettingsFromMemory(LayoutNode["ImGuiIni"].as<const char*>());
 
 }
