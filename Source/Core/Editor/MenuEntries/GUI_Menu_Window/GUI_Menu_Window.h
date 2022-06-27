@@ -22,7 +22,7 @@
 #include <ERS_STRUCT_ProjectUtils.h>
 
 #include <GUI_Widget_FramerateCounter.h>
-#include <GUI_Widget_RenderingSettings.h>
+#include <GUI_Window_RenderingSettings.h>
 #include <GUI_Widget_FramerateHistogram.h>
 #include <GUI_Widget_FramerateGraph.h>
 #include <GUI_Widget_FrameratePlot.h>
