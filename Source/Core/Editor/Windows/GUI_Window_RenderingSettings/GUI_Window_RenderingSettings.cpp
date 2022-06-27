@@ -4,10 +4,10 @@
 
 #include <GUI_Window_RenderingSettings.h>
 
-Widget_RenderingSettings::Widget_RenderingSettings(ERS_STRUCT_SystemUtils* SystemUtils) {
+GUI_Window_RenderingSettings::GUI_Window_RenderingSettings(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
-    SystemUtils_->Logger_->Log("Initializing Rendering Settings Widget", 5);
+    SystemUtils_->Logger_->Log("Initializing Rendering Settings GUI_Window", 5);
 
     // Setup Default Values For Input Fields
     SystemUtils_->Logger_->Log("Setting Up Default Renderer Setting Input Fields", 3);
@@ -42,11 +42,11 @@ Widget_RenderingSettings::Widget_RenderingSettings(ERS_STRUCT_SystemUtils* Syste
 
 }
 
-Widget_RenderingSettings::~Widget_RenderingSettings() {
+GUI_Window_RenderingSettings::~GUI_Window_RenderingSettings() {
 
 }
 
-void Widget_RenderingSettings::Draw() {
+void GUI_Window_RenderingSettings::Draw() {
 
     if (Enabled_) {
         bool Visible = ImGui::Begin("Rendering Settings", &Enabled_);

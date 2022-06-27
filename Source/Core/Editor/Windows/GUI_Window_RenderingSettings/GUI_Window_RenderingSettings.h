@@ -24,10 +24,10 @@
 
 
 /**
- * @brief Create GUI Widget "Rendering Settings"
+ * @brief Create GUI GUI_Window "Rendering Settings"
  * 
  */
-class Widget_RenderingSettings {
+class GUI_Window_RenderingSettings {
 
 private:
 
@@ -43,21 +43,21 @@ private:
 
 public:
 
-    bool Enabled_ = true; /**<Show/Hide Widget*/
+    bool Enabled_ = true; /**<Show/Hide GUI_Window*/
 
 
     /**
-     * @brief Construct a new Widget_RenderingSettings object
+     * @brief Construct a new GUI_Window_RenderingSettings object
      * 
      * @param SystemUtils 
      */
-    Widget_RenderingSettings(ERS_STRUCT_SystemUtils* SystemUtils);
+    GUI_Window_RenderingSettings(ERS_STRUCT_SystemUtils* SystemUtils);
 
     /**
-     * @brief Destroy the Widget_RenderingSettings object
+     * @brief Destroy the GUI_Window_RenderingSettings object
      * 
      */
-    ~Widget_RenderingSettings();
+    ~GUI_Window_RenderingSettings();
 
 
     /**
