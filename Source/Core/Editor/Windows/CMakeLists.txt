@@ -40,6 +40,7 @@ target_link_libraries(Widgets
     )
 
 target_include_directories(ERS_CLASS_Windows PUBLIC ./)
+target_include_directories(ERS_CLASS_Windows PUBLIC GUI_Window_RenderingSettings)
 
 
 
