@@ -37,6 +37,8 @@ target_link_libraries(Menu_Window
     Window_AssetExplorer
     Window_ScriptEditor
 
+    ERS_Windows
+
     )
 
 target_include_directories(Menu_Window PUBLIC ./)

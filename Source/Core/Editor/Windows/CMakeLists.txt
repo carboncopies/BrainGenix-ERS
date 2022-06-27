@@ -4,7 +4,7 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_GUI_Windows
+add_library(ERS_CLASS_Windows
 
             "GUI_Window_RenderingSettings/GUI_Window_RenderingSettings.cpp"
             "GUI_Window_RenderingSettings/GUI_Window_RenderingSettings.h"
@@ -39,7 +39,7 @@ target_link_libraries(Widgets
 
     )
 
-target_include_directories(ERS_GUI_Windows PUBLIC ./)
+target_include_directories(ERS_CLASS_Windows PUBLIC ./)
 
 
 
