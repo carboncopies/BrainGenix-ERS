@@ -37,7 +37,7 @@ target_link_libraries(Menu_Window
     Window_AssetExplorer
     Window_ScriptEditor
 
-    ERS_Windows
+    ERS_CLASS_Windows
 
     )
 
