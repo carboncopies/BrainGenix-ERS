@@ -6,8 +6,8 @@
 # Create Library (Name Should Be Parent Dir Name)
 add_library(ERS_CLASS_Windows
 
-            "GUI_Window_RenderingSettings/GUI_Window_RenderingSettings.cpp"
-            "GUI_Window_RenderingSettings/GUI_Window_RenderingSettings.h"
+            "GUI_Window_RenderingSettings.cpp"
+            "GUI_Window_RenderingSettings.h"
 
             ${BACKWARD_ENABLE}
             )
