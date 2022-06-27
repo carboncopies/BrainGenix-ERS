@@ -59,9 +59,6 @@ target_link_libraries(Widgets
 
 target_include_directories(ERS_GUI_Windows PUBLIC ./)
 
-# FIXME: ADD README EXPLAINING TEMPLATES, WHAT STANDARD TO USE, ETC!
-
-
 
 
 # Add Window Subdirs
