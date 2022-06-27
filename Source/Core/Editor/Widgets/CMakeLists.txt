@@ -12,7 +12,6 @@ add_library(Widgets
             "GUI_Widget_FrameLatencyGraph.cpp"
             "GUI_Widget_FramerateGraph.cpp"
             "GUI_Widget_FrameratePlot.cpp"
-#            "GUI_Widget_RenderingSettings.cpp"
             "GUI_Widget_ObjectProperties.cpp"
             "GUI_Widget_RAMGraph.cpp"
 
@@ -22,7 +21,6 @@ add_library(Widgets
             "GUI_Widget_FrameLatencyGraph.h"
             "GUI_Widget_FramerateGraph.h"
             "GUI_Widget_FrameratePlot.h"
-#            "GUI_Widget_RenderingSettings.h"
             "GUI_Widget_ObjectProperties.h"
             "GUI_Widget_RAMGraph.h"
 
