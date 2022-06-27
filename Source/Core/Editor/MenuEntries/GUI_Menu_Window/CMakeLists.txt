@@ -7,7 +7,6 @@
 add_library(Menu_Window
 
             # Add Source Files (.cpp)
-
             "GUI_Menu_Window.cpp"
 
             # Add Header Files (.h)
