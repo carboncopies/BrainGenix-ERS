@@ -4,7 +4,8 @@
 
 
 
-target_sources(ERS_CLASS_Windows
+target_sources(ERS_CLASS_Windows PUBLIC
+
             "GUI_Window_RenderingSettings/GUI_Window_RenderingSettings.cpp"
             "GUI_Window_RenderingSettings/GUI_Window_RenderingSettings.h"
 
