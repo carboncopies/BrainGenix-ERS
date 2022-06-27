@@ -379,16 +379,18 @@ float ShadowCalculation(STRUCT_PointLight Light)
     return 1.0f - Shadow;
 }
 
-float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
+float ShadowCalculation(STRUCT_DirectionalLight Light)
 {
 
+     // ., Light.Direction, Light.DepthMapIndex
+
     // If Shadows Are Not Enabled, Exit Early
-    if (!ReceiveShadows_) {
-    return 1.0f;
+    if (!ReceiveShadows_ || !Light.CastsShadows) {
+        return 1.0f;
     }
     
     
-    vec4 fragPosLightSpace = LightSpaceMatrix * vec4(Object.FragPos, 1.0f);
+    vec4 fragPosLightSpace = Light.LightSpaceMatrix * vec4(Object.FragPos, 1.0f);
 
     // perform perspective divide
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
@@ -396,15 +398,16 @@ float ShadowCalculation(mat4 LightSpaceMatrix, vec3 LightPos, int Index)
     projCoords = projCoords * 0.5f + 0.5;
     
     // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
-    float closestDepth = texture(DepthMapArray, vec3(projCoords.xy, Index)).r; 
+    float closestDepth = texture(DepthMapArray, vec3(projCoords.xy, Light.DepthMapIndex)).r; 
     // get depth of current fragment from light's perspective
     float currentDepth = projCoords.z;
     // check whether current frag pos is in shadow
-    vec3 LightDir = normalize(LightPos - Object.FragPos);
-    float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), 0.0025);
+    //vec3 LightDir = normalize(L - Object.FragPos);
+    
+    float Bias = max(0.00 * (1.0 - dot(Object.Normal, Light.Direction)), 0.0025);
     
     //float Shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
-    float Shadow = PCFSampler(Bias, projCoords, Index, currentDepth, 2);
+    float Shadow = PCFSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, 2);
     //float Shadow = ShadowPCFRandom(Bias, projCoords, Index, currentDepth, 1);
     
     if (projCoords.z > 1.0) {
@@ -774,7 +777,7 @@ vec3 PBRDirectionalLight(STRUCT_DirectionalLight Light, vec3 ViewDir, vec3 Refle
     float NdotL = max(dot(Model.Normal, L), 0.0);        
 
     // add to outgoing radiance Lo
-    return ((kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL) * ShadowCalculation(Light.LightSpaceMatrix, Light.Direction, Light.DepthMapIndex);  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
+    return ((kD * Model.Albedo.rgb / PI + specular) * radiance * NdotL) * ShadowCalculation(Light);  // note that we already multiplied the BRDF by the Fresnel (kS) so we won't multiply by kS again
 
 
 }
@@ -833,6 +836,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 

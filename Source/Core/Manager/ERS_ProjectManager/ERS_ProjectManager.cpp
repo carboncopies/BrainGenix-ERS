@@ -52,7 +52,9 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
 
     // Load Default Scene
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Project Default Scene With ID ") + std::to_string(Project_.SceneIDs[Project_.DefaultScene])).c_str(), 5);
-    SceneManager_->AddScene(SceneLoader_->ProcessScene(Project_.SceneIDs[Project_.DefaultScene]));
+    for (unsigned int i = 0; i < Project_.SceneIDs.size(); i++) {
+        SceneManager_->AddScene(SceneLoader_->ProcessScene(Project_.SceneIDs[i]));
+    }
     SceneManager_->SetActiveScene(Project_.DefaultScene);
 
 }
