@@ -13,7 +13,7 @@ add_library(ERS_CLASS_Windows
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Widgets
+target_link_libraries(ERS_CLASS_Windows
     glad
     glfw
     IMGUI
@@ -21,7 +21,7 @@ target_link_libraries(Widgets
     )
 
 # Link Internal Libs
-target_link_libraries(Widgets
+target_link_libraries(ERS_CLASS_Windows
     ERS_CLASS_LoggingSystem
     
     ERS_Editor_ThemeManager
@@ -40,7 +40,6 @@ target_link_libraries(Widgets
     )
 
 target_include_directories(ERS_CLASS_Windows PUBLIC ./)
-target_include_directories(ERS_CLASS_Windows PUBLIC GUI_Window_RenderingSettings)
 
 
 
