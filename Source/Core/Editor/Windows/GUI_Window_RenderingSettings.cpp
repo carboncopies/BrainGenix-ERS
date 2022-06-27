@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <GUI_Widget_RenderingSettings.h>
+#include <GUI_Window_RenderingSettings.h>
 
 Widget_RenderingSettings::Widget_RenderingSettings(ERS_STRUCT_SystemUtils* SystemUtils) {
 
