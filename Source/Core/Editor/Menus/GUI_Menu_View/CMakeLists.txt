@@ -33,7 +33,7 @@ target_link_libraries(Menu_View
 
     GUI_Window_About
 
-    Window_ThemeSelector
+    GUI_Window_ThemeSelector
     )
 
 target_include_directories(Menu_View PUBLIC ./)
