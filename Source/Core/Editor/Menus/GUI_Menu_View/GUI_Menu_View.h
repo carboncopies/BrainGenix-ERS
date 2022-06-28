@@ -21,7 +21,7 @@
 #include <ERS_Editor_ThemeManager.h>
 #include <ERS_Editor_FontManager.h>
 
-#include <GUI_GUI_Window_ThemeSelector.h>
+#include <GUI_Window_ThemeSelector.h>
 
 #include <GUI_Window_About.h>
 
