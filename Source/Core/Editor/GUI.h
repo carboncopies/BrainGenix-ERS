@@ -27,8 +27,8 @@
 #include <ERS_STRUCT_ProjectUtils.h>
 #include <ERS_STRUCT_HumanInputDeviceUtils.h>
 
-#include <ERS_Editor_FontManager.h>
 #include <ERS_Editor_ThemeManager.h>
+#include <ERS_Editor_FontManager.h>
 #include <ERS_Editor_UserProfileManager.h>
 
 #include <ERS_SceneManager.h>
