@@ -10,7 +10,6 @@ add_library(GUI_Window_FramerateHistogram
 # Link 3rd Party Libs
 target_link_libraries(GUI_Window_FramerateHistogram
     IMGUI
-    ImPlot
     )
 
 # Link Internal Libs
