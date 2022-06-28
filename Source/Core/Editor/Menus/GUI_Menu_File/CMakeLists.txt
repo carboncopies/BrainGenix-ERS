@@ -39,7 +39,7 @@ target_link_libraries(Menu_File
     ERS_SceneManager
     ERS_STRUCT_Scene
 
-    Window_ProjectSettings
+    GUI_Window_ProjectSettings
     Window_ShaderEditor
     ERS_CLASS_VisualRenderer
     )
