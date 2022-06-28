@@ -38,6 +38,7 @@ target_link_libraries(Menu_Window
 
     GUI_Window_RenderingSettings
     GUI_Window_RAMGraph
+    GUI_Window_ObjectProperties
 
     )
 
