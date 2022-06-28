@@ -22,10 +22,10 @@
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
-#include <ERS_ProjectLoader.h>
 
 #include <GUI_ImportAsset.h>
 
+#include <ERS_ProjectLoader.h>
 #include <ERS_SceneWriter.h>
 #include <ERS_SceneManager.h>
 
