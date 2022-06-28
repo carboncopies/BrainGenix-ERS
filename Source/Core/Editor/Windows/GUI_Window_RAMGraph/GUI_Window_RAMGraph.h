@@ -18,10 +18,10 @@
 #include <ERS_STRUCT_HardwareInfo.h>
 
 /**
- * @brief Create GUI Widget "Framerate Graph"
+ * @brief Create GUI GUI_Window "Framerate Graph"
  * 
  */
-class Widget_RAMGraph {
+class GUI_Window_RAMGraph {
 
 private:
 
@@ -35,22 +35,22 @@ private:
 
 public:
 
-    bool Enabled_ = false; /**<Show/Hide Widget*/
+    bool Enabled_ = false; /**<Show/Hide GUI_Window*/
 
 public:
 
     /**
-     * @brief Construct a new Widget_RAMGraph object
+     * @brief Construct a new GUI_Window_RAMGraph object
      * 
      * @param SystemUtils 
      */
-    Widget_RAMGraph(ERS_STRUCT_SystemUtils* SystemUtils);
+    GUI_Window_RAMGraph(ERS_STRUCT_SystemUtils* SystemUtils);
     
     /**
-     * @brief Destroy the Widget_RAMGraph object
+     * @brief Destroy the GUI_Window_RAMGraph object
      * 
      */
-    ~Widget_RAMGraph();
+    ~GUI_Window_RAMGraph();
 
 
     /**

@@ -5,17 +5,17 @@
 #include <GUI_Window_RAMGraph.h>
 
 
-Widget_RAMGraph::Widget_RAMGraph(ERS_STRUCT_SystemUtils* SystemUtils) {
+GUI_Window_RAMGraph::GUI_Window_RAMGraph(ERS_STRUCT_SystemUtils* SystemUtils) {
     
     SystemUtils_ = SystemUtils;
 
 }
 
-Widget_RAMGraph::~Widget_RAMGraph() {
+GUI_Window_RAMGraph::~GUI_Window_RAMGraph() {
 
 }
 
-void Widget_RAMGraph::Draw() {
+void GUI_Window_RAMGraph::Draw() {
 
 
     // Update Data In Vectors
