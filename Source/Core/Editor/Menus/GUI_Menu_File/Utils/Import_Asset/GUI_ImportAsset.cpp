@@ -10,7 +10,7 @@ GUI_ImportAsset::GUI_ImportAsset(ERS_STRUCT_SystemUtils* SystemUtils) {
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing Asset Importer GUI", 5);
 
-    Window_ImportProgressBar_ = std::make_unique<Window_ImportProgressBar>(SystemUtils_);
+    GUI_Window_ImportProgressBar_ = std::make_unique<GUI_Window_ImportProgressBar>(SystemUtils_);
     AssetImportBackend_ = std::make_unique<ERS_CLASS_ImportAsset>(SystemUtils_);
 
 }
@@ -40,7 +40,7 @@ void GUI_ImportAsset::Draw() {
 
             // Add To Queue, Launch Import
             AssetImportBackend_->AddToImportQueue(FilePaths);
-            Window_ImportProgressBar_->Enabled_ = true;
+            GUI_Window_ImportProgressBar_->Enabled_ = true;
 
         }
 
@@ -49,12 +49,12 @@ void GUI_ImportAsset::Draw() {
 
 
     // Update Window Stats
-    if (Window_ImportProgressBar_->Enabled_) {
-        Window_ImportProgressBar_->UpdateTotalItems(AssetImportBackend_->GetTotalItemsImported(), AssetImportBackend_->GetTotalItemsToImport());
-        Window_ImportProgressBar_->UpdateJobState(AssetImportBackend_->HasJobFinished());
+    if (GUI_Window_ImportProgressBar_->Enabled_) {
+        GUI_Window_ImportProgressBar_->UpdateTotalItems(AssetImportBackend_->GetTotalItemsImported(), AssetImportBackend_->GetTotalItemsToImport());
+        GUI_Window_ImportProgressBar_->UpdateJobState(AssetImportBackend_->HasJobFinished());
     }
 
-    Window_ImportProgressBar_->Draw();
+    GUI_Window_ImportProgressBar_->Draw();
 
 
 }

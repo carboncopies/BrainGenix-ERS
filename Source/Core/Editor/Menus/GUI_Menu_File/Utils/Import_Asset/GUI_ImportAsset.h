@@ -30,7 +30,7 @@ class GUI_ImportAsset {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<used to get access to system utilites like IOmanager, logger, etc.*/
-    std::unique_ptr<Window_ImportProgressBar> Window_ImportProgressBar_; /**<Pointer To Window Import Progres Bar*/
+    std::unique_ptr<GUI_Window_ImportProgressBar> GUI_Window_ImportProgressBar_; /**<Pointer To Window Import Progres Bar*/
     std::unique_ptr<ERS_CLASS_ImportAsset> AssetImportBackend_; /**<Backend used to handle actual importing, threads, etc.*/
 
 public:
