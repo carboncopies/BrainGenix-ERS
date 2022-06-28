@@ -16,7 +16,7 @@ GUI_Menu_File::GUI_Menu_File(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_Scen
     SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_);
     ImportAsset_ = std::make_unique<GUI_ImportAsset>(SystemUtils_);
     ShaderEditor_ = std::make_unique<Window_ShaderEditor>(SystemUtils_, ProjectUtils_, VisualRenderer_);
-    Window_ProjectSettings_ = std::make_unique<Window_ProjectSettings>(ProjectUtils, SystemUtils);
+    GUI_Window_ProjectSettings_ = std::make_unique<GUI_Window_ProjectSettings>(ProjectUtils, SystemUtils);
 
 }
 
@@ -36,7 +36,7 @@ void GUI_Menu_File::Draw() {
             ProjectUtils_->ProjectManager_->WriteProject(1);
         }
         if (ImGui::MenuItem("Project Settings")) {
-            Window_ProjectSettings_->Enabled_ = !Window_ProjectSettings_->Enabled_;
+            GUI_Window_ProjectSettings_->Enabled_ = !GUI_Window_ProjectSettings_->Enabled_;
         }
         ImGui::Separator();
 
@@ -82,7 +82,7 @@ void GUI_Menu_File::Draw() {
 
     // Draw Subwindows
     ImportAsset_->Draw();
-    Window_ProjectSettings_->Draw();
+    GUI_Window_ProjectSettings_->Draw();
     ShaderEditor_->Draw();
 
 
