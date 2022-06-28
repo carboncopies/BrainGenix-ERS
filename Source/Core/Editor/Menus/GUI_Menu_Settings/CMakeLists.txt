@@ -28,7 +28,7 @@ target_link_libraries(Menu_Settings
     ERS_STRUCT_HumanInputDeviceUtils
     ERS_STRUCT_ProjectUtils
 
-    Window_ControllerSettings
+    GUI_Window_ControllerSettings
 
     )
 
