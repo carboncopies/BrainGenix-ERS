@@ -21,7 +21,7 @@
 #include <ERS_Editor_ThemeManager.h>
 #include <ERS_Editor_FontManager.h>
 
-#include <GUI_Window_ThemeSelector.h>
+#include <GUI_GUI_Window_ThemeSelector.h>
 
 #include <GUI_Window_About.h>
 
@@ -38,7 +38,7 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
     ERS_CLASS_ThemeManager* ThemeManager_; /**<Theme Manager Instance Ptr*/
-    std::unique_ptr<Window_ThemeSelector> Window_ThemeSelector_; /**<Theme Selector Window*/
+    std::unique_ptr<GUI_Window_ThemeSelector> GUI_Window_ThemeSelector_; /**<Theme Selector Window*/
     ERS_CLASS_FontManager* FontManager_; /**<Pointer To FontManager Instance*/
     std::unique_ptr<GUI_Window_About> GUI_GUI_Window_About_; /**<Pointer to about window*/
 
