@@ -33,7 +33,7 @@ target_link_libraries(ERS_Editor_ImportAsset
     ERS_CLASS_LoggingSystem
 
     ERS_STRUCT_SystemUtils
-    Window_ImportProgressBar
+    GUI_Window_ImportProgressBar
     )
 
 target_include_directories(ERS_Editor_ImportAsset PUBLIC ./)
