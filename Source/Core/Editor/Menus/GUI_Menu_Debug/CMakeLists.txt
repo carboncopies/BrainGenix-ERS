@@ -28,7 +28,7 @@ target_link_libraries(Menu_Debug
 # Link Internal Libs
 target_link_libraries(Menu_Debug
 
-    Window_TestEditor
+    GUI_Window_TestEditor
 
     ERS_STRUCT_SystemUtils
     )
