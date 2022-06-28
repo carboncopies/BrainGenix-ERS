@@ -52,6 +52,39 @@ void GUI_Menu_Window::Draw() {
             ImGui::Checkbox("Asset Explorer", &Window_AssetExplorer_->Enabled_);
             
 
+            // Framerate Widgets
+            if (ImGui::BeginMenu("Framerate")) {
+
+                // Framerate Related Tools
+                ImGui::Checkbox("Framerate Counter", &GUI_Window_FramerateCounter_.Enabled_);
+                ImGui::Checkbox("Framerate Histogram", &GUI_Window_FramerateHistogram_.Enabled_);
+                ImGui::Checkbox("Framerate Graph", &GUI_Window_FramerateGraph_.Enabled_);
+                ImGui::Checkbox("Framerate Plot", &GUI_Window_FrameratePlot_.Enabled_);
+                ImGui::Checkbox("Frame Latency Graph", &GUI_Window_FrameLatencyGraph_->Enabled_);
+
+            ImGui::EndMenu();
+            }
+
+            // System Resource Widgets
+            if (ImGui::BeginMenu("System Resources")) {
+
+                // Framerate Related Tools
+                ImGui::Checkbox("RAM", &GUI_Window_RAMGraph_->Enabled_);
+
+            ImGui::EndMenu();
+            }
+
+ 
+
+
+                // Viewport Settings
+                ImGui::Checkbox("Object Properties", &GUI_Window_ObjectProperties_->Enabled_);
+                ImGui::Checkbox("Global Viewport Settings", &GUI_Window_RenderingSettings_->Enabled_);
+                
+
+     
+
+
         ImGui::EndMenu();
         }
 
