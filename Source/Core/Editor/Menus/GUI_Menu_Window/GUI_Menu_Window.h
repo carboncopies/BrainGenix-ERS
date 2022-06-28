@@ -66,7 +66,7 @@ private:
     std::unique_ptr<GUI_Window_SceneTree> GUI_Window_SceneTree_; /**<Window Instance*/
     std::unique_ptr<Window_SystemLog> Window_SystemLog_; /**<Window Instance*/
     std::unique_ptr<GUI_Window_AssetExplorer> GUI_Window_AssetExplorer_; /**<Window Instance*/
-    std::unique_ptr<Window_ScriptEditor> Window_ScriptEditor_; /**Window Instance*/
+    std::unique_ptr<GUI_Window_ScriptEditor> GUI_Window_ScriptEditor_; /**Window Instance*/
     ERS_CLASS_VisualRenderer* VisualRenderer_; /**<ERS_CLASS_VisualRenderer instance*/
 
 
