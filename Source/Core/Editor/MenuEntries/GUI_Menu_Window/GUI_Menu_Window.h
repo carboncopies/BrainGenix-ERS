@@ -26,7 +26,7 @@
 #include <GUI_Widget_FramerateHistogram.h>
 #include <GUI_Window_FramerateGraph.h>
 #include <GUI_Widget_FrameratePlot.h>
-#include <GUI_Widget_FrameLatencyGraph.h>
+#include <GUI_Window_FrameLatencyGraph.h>
 #include <GUI_Window_ObjectProperties.h>
 #include <GUI_Window_RAMGraph.h>
 
