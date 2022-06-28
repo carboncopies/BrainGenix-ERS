@@ -4,7 +4,7 @@
 
 #include <GUI_Window_SceneTree.h>
 
-Window_SceneTree::Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, Cursors3D* Cursors3D) {
+GUI_Window_SceneTree::GUI_Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, Cursors3D* Cursors3D) {
 
     SceneManager_ = SceneManager;
     SystemUtils_ = SystemUtils;
@@ -30,12 +30,12 @@ Window_SceneTree::Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STR
 
 }
 
-Window_SceneTree::~Window_SceneTree() {
+GUI_Window_SceneTree::~GUI_Window_SceneTree() {
 
 
 }
 
-void Window_SceneTree::Draw() {
+void GUI_Window_SceneTree::Draw() {
 
 
     if (Enabled_) {
@@ -183,7 +183,7 @@ void Window_SceneTree::Draw() {
 }
 
 
-void Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
+void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
     // Get Selected Item
     int SelectedSceneObjectIndex = Scene->SelectedObject;
