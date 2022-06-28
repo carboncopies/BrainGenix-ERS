@@ -21,6 +21,7 @@ target_link_libraries(GUI_Window_RenderingSettings
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_RendererSettings
+    ERS_STRUCT_HardwareInfo
 
     )
 

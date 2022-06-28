@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <GUI_Widget_RAMGraph.h>
+#include <GUI_Window_RAMGraph.h>
 
 
 Widget_RAMGraph::Widget_RAMGraph(ERS_STRUCT_SystemUtils* SystemUtils) {
