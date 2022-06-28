@@ -23,7 +23,7 @@
 
 #include <GUI_GUI_Window_FramerateCounter.h>
 #include <GUI_Window_RenderingSettings.h>
-#include <GUI_Widget_FramerateHistogram.h>
+#include <GUI_GUI_Window_FramerateHistogram.h>
 #include <GUI_Window_FramerateGraph.h>
 #include <GUI_GUI_Window_FrameratePlot.h>
 #include <GUI_Window_FrameLatencyGraph.h>
@@ -53,7 +53,7 @@ private:
 
     // Instantiate Widgets here
     GUI_Window_FramerateCounter GUI_Window_FramerateCounter_; /**<Widget Instance*/
-    Widget_FramerateHistogram Widget_FramerateHistogram_; /**<Widget Instance*/
+    GUI_Window_FramerateHistogram GUI_Window_FramerateHistogram_; /**<Widget Instance*/
     GUI_Window_FramerateGraph GUI_Window_FramerateGraph_; /**<Widget Instance*/
     GUI_Window_FrameratePlot GUI_Window_FrameratePlot_; /**<Widget Instance*/
 
