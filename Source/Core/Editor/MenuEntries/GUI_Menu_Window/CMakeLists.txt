@@ -37,6 +37,7 @@ target_link_libraries(Menu_Window
     Window_ScriptEditor
 
     GUI_Window_RenderingSettings
+    GUI_Window_RAMGraph
 
     )
 
