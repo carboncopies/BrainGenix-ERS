@@ -76,12 +76,7 @@ void GUI_Menu_Window::Draw() {
             ImGui::EndMenu();
             }
 
- 
-
-
-
-
-     
+      
 
 
         ImGui::EndMenu();
