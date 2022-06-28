@@ -21,7 +21,7 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
 
-#include <GUI_Widget_FramerateCounter.h>
+#include <GUI_GUI_Window_FramerateCounter.h>
 #include <GUI_Window_RenderingSettings.h>
 #include <GUI_Widget_FramerateHistogram.h>
 #include <GUI_Window_FramerateGraph.h>
@@ -52,7 +52,7 @@ private:
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils Instance*/
 
     // Instantiate Widgets here
-    Widget_FramerateCounter Widget_FramerateCounter_; /**<Widget Instance*/
+    GUI_Window_FramerateCounter GUI_Window_FramerateCounter_; /**<Widget Instance*/
     Widget_FramerateHistogram Widget_FramerateHistogram_; /**<Widget Instance*/
     GUI_Window_FramerateGraph GUI_Window_FramerateGraph_; /**<Widget Instance*/
     Widget_FrameratePlot Widget_FrameratePlot_; /**<Widget Instance*/
