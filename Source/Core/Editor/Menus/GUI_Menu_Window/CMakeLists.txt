@@ -30,7 +30,6 @@ target_link_libraries(Menu_Window
 
     ERS_CLASS_VisualRenderer
 
-    Widgets
     Window_SceneTree
     Window_SystemLog
     Window_AssetExplorer
