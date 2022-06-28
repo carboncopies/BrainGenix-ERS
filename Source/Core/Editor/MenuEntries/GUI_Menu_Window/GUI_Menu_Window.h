@@ -24,7 +24,7 @@
 #include <GUI_Widget_FramerateCounter.h>
 #include <GUI_Window_RenderingSettings.h>
 #include <GUI_Widget_FramerateHistogram.h>
-#include <GUI_GUI_Window_FramerateGraph.h>
+#include <GUI_Window_FramerateGraph.h>
 #include <GUI_Widget_FrameratePlot.h>
 #include <GUI_Widget_FrameLatencyGraph.h>
 #include <GUI_Window_ObjectProperties.h>
