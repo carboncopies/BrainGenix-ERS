@@ -15,7 +15,6 @@ target_link_libraries(GUI_Window_FrameLatencyGraph
 
 # Link Internal Libs
 target_link_libraries(GUI_Window_FrameLatencyGraph
-    ERS_STRUCT_SystemUtils
     )
 
 target_include_directories(GUI_Window_FrameLatencyGraph PUBLIC ./)
