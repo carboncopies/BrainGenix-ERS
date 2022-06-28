@@ -14,14 +14,14 @@
 
 
 /**
- * @brief Create GUI Widget "Framerate Counter"
+ * @brief Create GUI GUI_Window "Framerate Counter"
  * 
  */
-class Widget_FramerateCounter {
+class GUI_Window_FramerateCounter {
 
 public:
 
-    bool Enabled_ = false; /**<Show/Hide Widget*/
+    bool Enabled_ = false; /**<Show/Hide GUI_Window*/
 
 
     /**
