@@ -20,5 +20,6 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_TestEditor)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_ShaderEditor)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_ScriptEditor)
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_RenderingSettings)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_RAMGraph)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_ObjectProperties)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_RenderingSettings)
