@@ -5,26 +5,26 @@
 #include <GUI_Window_SystemLog.h>
 
 
-Window_SystemLog::Window_SystemLog(ERS_STRUCT_SystemUtils* SystemUtils) {
+GUI_Window_SystemLog::GUI_Window_SystemLog(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing GUI_Window_SystemLog", 5);
 
 }
 
-Window_SystemLog::~Window_SystemLog() {
+GUI_Window_SystemLog::~GUI_Window_SystemLog() {
 
     SystemUtils_->Logger_->Log("GUI_Window_SystemLog Destructor Called", 6);
 
 }
 
 
-void Window_SystemLog::Draw() {
+void GUI_Window_SystemLog::Draw() {
 
     if (Enabled_) {
     bool Visible = ImGui::Begin("System Log", &Enabled_);
 
-ImGui::SetWindowSize(ImVec2(300,0), ImGuiCond_FirstUseEver);
+    ImGui::SetWindowSize(ImVec2(300,0), ImGuiCond_FirstUseEver);
 
 
         if (Visible) {
