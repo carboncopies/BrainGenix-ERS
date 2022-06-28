@@ -31,7 +31,7 @@ target_link_libraries(Menu_View
     ERS_Editor_ThemeManager
     ERS_Editor_FontManager
 
-    Window_About
+    GUI_Window_About
 
     Window_ThemeSelector
     )
