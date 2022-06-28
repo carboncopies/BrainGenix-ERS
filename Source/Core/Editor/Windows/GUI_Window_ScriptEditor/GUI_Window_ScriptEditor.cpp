@@ -25,7 +25,7 @@ GUI_Window_ScriptEditor::~GUI_Window_ScriptEditor() {
 }
 
 
-void GUI_Window_ScriptEditor::GUI_ReloadEditorText(int ScriptIndex) {
+void GUI_Window_ScriptEditor::ReloadEditorText(int ScriptIndex) {
 
     // Perform Sanity Check
     std::string Code;
