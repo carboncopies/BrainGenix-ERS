@@ -17,7 +17,7 @@ GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
     Widget_ObjectProperties_ = std::make_unique<Widget_ObjectProperties>(Cursors3D, SceneManager, ProjectUtils_);
     GUI_Window_RenderingSettings_ = std::make_unique<GUI_Window_RenderingSettings>(SystemUtils_);
     Widget_FrameLatencyGraph_ = std::make_unique<Widget_FrameLatencyGraph>(SystemUtils_);
-    Widget_RAMGraph_ = std::make_unique<Widget_RAMGraph>(SystemUtils_);
+    GUI_Window_RAMGraph_ = std::make_unique<GUI_Window_RAMGraph>(SystemUtils_);
 
 
     SystemUtils_->Logger_->Log("Initializing Editor Windows", 5);
@@ -61,7 +61,7 @@ void GUI_Menu_Window::Draw() {
             if (ImGui::BeginMenu("System Resources")) {
 
                 // Framerate Related Tools
-                ImGui::Checkbox("RAM", &Widget_RAMGraph_->Enabled_);
+                ImGui::Checkbox("RAM", &GUI_Window_RAMGraph_->Enabled_);
 
             ImGui::EndMenu();
             }
@@ -128,7 +128,7 @@ void GUI_Menu_Window::Draw() {
 
     // Update Widgets
     Widget_ObjectProperties_->Draw();
-    Widget_RAMGraph_->Draw();
+    GUI_Window_RAMGraph_->Draw();
     GUI_Window_RenderingSettings_->Draw();
     Widget_FrameLatencyGraph_->Draw();
 

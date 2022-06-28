@@ -28,7 +28,7 @@
 #include <GUI_Widget_FrameratePlot.h>
 #include <GUI_Widget_FrameLatencyGraph.h>
 #include <GUI_Widget_ObjectProperties.h>
-#include <GUI_Widget_RAMGraph.h>
+#include <GUI_GUI_Window_RAMGraph.h>
 
 #include <GUI_Window_SceneTree.h>
 #include <GUI_Window_SystemLog.h>
@@ -57,7 +57,7 @@ private:
     Widget_FramerateGraph Widget_FramerateGraph_; /**<Widget Instance*/
     Widget_FrameratePlot Widget_FrameratePlot_; /**<Widget Instance*/
 
-    std::unique_ptr<Widget_RAMGraph> Widget_RAMGraph_; /**<Widget Instance*/
+    std::unique_ptr<GUI_Window_RAMGraph> GUI_Window_RAMGraph_; /**<Widget Instance*/
     std::unique_ptr<GUI_Window_RenderingSettings> GUI_Window_RenderingSettings_; /**<Widget Instance*/
     std::unique_ptr<Widget_ObjectProperties> Widget_ObjectProperties_; /**<Widget Instance*/
     std::unique_ptr<Widget_FrameLatencyGraph> Widget_FrameLatencyGraph_; /**<Widget Instance*/
