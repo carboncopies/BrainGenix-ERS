@@ -30,7 +30,6 @@ target_link_libraries(ERS_ProjectManager
     ERS_SceneManager
     ERS_ProjectLoader
     ERS_ProjectWriter
-
     ERS_ControllerSettingsLoader
     )
 
