@@ -3,7 +3,7 @@
 ########################################################################
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Window_ImportProgressBar
+add_library(GUI_Window_ImportProgressBar
 
             # Add Source Files (.cpp)
             "GUI_Window_ImportProgressBar.cpp"
@@ -16,15 +16,15 @@ add_library(Window_ImportProgressBar
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Window_ImportProgressBar
+target_link_libraries(GUI_Window_ImportProgressBar
     glad
     glfw
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(Window_ImportProgressBar
+target_link_libraries(GUI_Window_ImportProgressBar
     ERS_STRUCT_SystemUtils
     )
 
-target_include_directories(Window_ImportProgressBar PUBLIC ./)
+target_include_directories(GUI_Window_ImportProgressBar PUBLIC ./)
