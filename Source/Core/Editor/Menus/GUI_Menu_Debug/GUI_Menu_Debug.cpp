@@ -16,7 +16,7 @@ GUI_Menu_Debug::GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     // Setup Window Instances
     SystemUtils_->Logger_->Log("Initialiizng Debug Menu Window Instances", 5);
-    TestEditor_ = std::make_unique<Window_TestEditor>(SystemUtils_);
+    TestEditor_ = std::make_unique<GUI_Window_TestEditor>(SystemUtils_);
 
     // Setup OpenGL Debug Submenu
     ERS_CLASS_OpenGLDebug_ = std::make_unique<ERS_CLASS_OpenGLDebug>(SystemUtils_);
