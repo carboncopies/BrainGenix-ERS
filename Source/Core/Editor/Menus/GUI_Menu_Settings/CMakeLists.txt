@@ -17,8 +17,6 @@ add_library(Menu_Settings
 
 # Link 3rd Party Libs
 target_link_libraries(Menu_Settings
-    glad
-    glfw
     IMGUI
     )
 
