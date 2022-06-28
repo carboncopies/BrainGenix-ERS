@@ -2,10 +2,10 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <GUI_Widget_FramerateGraph.h>
+#include <GUI_Window_FramerateGraph.h>
 
 
-void Widget_FramerateGraph::Draw() {
+void GUI_Window_FramerateGraph::Draw() {
 
     // Push Back Current Framerate To Vector
     FramerateHistory_.push_back(ImGui::GetIO().Framerate);
