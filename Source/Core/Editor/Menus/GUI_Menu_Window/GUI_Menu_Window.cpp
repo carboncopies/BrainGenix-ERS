@@ -50,7 +50,9 @@ void GUI_Menu_Window::Draw() {
             ImGui::Checkbox("Scene Tree", &Window_SceneTree_->Enabled_);
             ImGui::Checkbox("System Log", &Window_SystemLog_->Enabled_);
             ImGui::Checkbox("Asset Explorer", &Window_AssetExplorer_->Enabled_);
-            
+            ImGui::Checkbox("Object Properties", &GUI_Window_ObjectProperties_->Enabled_);
+            ImGui::Checkbox("Global Viewport Settings", &GUI_Window_RenderingSettings_->Enabled_);
+                
 
             // Framerate Widgets
             if (ImGui::BeginMenu("Framerate")) {
@@ -77,10 +79,7 @@ void GUI_Menu_Window::Draw() {
  
 
 
-                // Viewport Settings
-                ImGui::Checkbox("Object Properties", &GUI_Window_ObjectProperties_->Enabled_);
-                ImGui::Checkbox("Global Viewport Settings", &GUI_Window_RenderingSettings_->Enabled_);
-                
+
 
      
 
