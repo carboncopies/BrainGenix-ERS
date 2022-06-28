@@ -26,7 +26,7 @@
  * @brief Window for the Import progress bar.
  * 
  */
-class Window_AssetExplorer {
+class GUI_Window_AssetExplorer {
 
 private:
 
@@ -51,13 +51,13 @@ public:
      * @brief Construct a new Window_AssetExplorer object
      * 
      */
-    Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    GUI_Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
     
     /**
      * @brief Destroy the Window_AssetExplorer object
      * 
      */
-    ~Window_AssetExplorer();
+    ~GUI_Window_AssetExplorer();
 
 
     /**

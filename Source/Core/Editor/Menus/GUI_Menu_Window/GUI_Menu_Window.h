@@ -65,7 +65,7 @@ private:
     // Instantiate Windows Here
     std::unique_ptr<Window_SceneTree> Window_SceneTree_; /**<Window Instance*/
     std::unique_ptr<Window_SystemLog> Window_SystemLog_; /**<Window Instance*/
-    std::unique_ptr<Window_AssetExplorer> Window_AssetExplorer_; /**<Window Instance*/
+    std::unique_ptr<GUI_Window_AssetExplorer> GUI_Window_AssetExplorer_; /**<Window Instance*/
     std::unique_ptr<Window_ScriptEditor> Window_ScriptEditor_; /**Window Instance*/
     ERS_CLASS_VisualRenderer* VisualRenderer_; /**<ERS_CLASS_VisualRenderer instance*/
 
