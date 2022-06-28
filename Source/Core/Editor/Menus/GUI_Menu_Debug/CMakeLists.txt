@@ -21,7 +21,6 @@ add_library(Menu_Debug
 # Link 3rd Party Libs
 target_link_libraries(Menu_Debug
     glad
-    glfw
     IMGUI
     )
 
