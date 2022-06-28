@@ -14,7 +14,7 @@ GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
 
 
     SystemUtils_->Logger_->Log("Initializing Editor Widgets", 5);
-    Widget_ObjectProperties_ = std::make_unique<Widget_ObjectProperties>(Cursors3D, SceneManager, ProjectUtils_);
+    GUI_Window_ObjectProperties_ = std::make_unique<GUI_Window_ObjectProperties>(Cursors3D, SceneManager, ProjectUtils_);
     GUI_Window_RenderingSettings_ = std::make_unique<GUI_Window_RenderingSettings>(SystemUtils_);
     Widget_FrameLatencyGraph_ = std::make_unique<Widget_FrameLatencyGraph>(SystemUtils_);
     GUI_Window_RAMGraph_ = std::make_unique<GUI_Window_RAMGraph>(SystemUtils_);
@@ -70,7 +70,7 @@ void GUI_Menu_Window::Draw() {
             if (ImGui::BeginMenu("Viewport")) {
 
                 // Viewport Settings
-                ImGui::Checkbox("Object Properties", &Widget_ObjectProperties_->Enabled_);
+                ImGui::Checkbox("Object Properties", &GUI_Window_ObjectProperties_->Enabled_);
                 ImGui::Checkbox("Global Viewport Settings", &GUI_Window_RenderingSettings_->Enabled_);
                 
 
@@ -127,7 +127,7 @@ void GUI_Menu_Window::Draw() {
     Widget_FrameratePlot_.Draw();
 
     // Update Widgets
-    Widget_ObjectProperties_->Draw();
+    GUI_Window_ObjectProperties_->Draw();
     GUI_Window_RAMGraph_->Draw();
     GUI_Window_RenderingSettings_->Draw();
     Widget_FrameLatencyGraph_->Draw();

@@ -31,7 +31,7 @@
  * @brief Create GUI Widget "Rendering Settings"
  * 
  */
-class Widget_ObjectProperties {
+class GUI_Window_ObjectProperties {
 
 private:
 
@@ -76,16 +76,16 @@ public:
     bool Enabled_ = true; /**<Show/Hide Widget*/
 
     /**
-     * @brief Construct a new Widget_ObjectProperties object
+     * @brief Construct a new GUI_Window_ObjectProperties object
      * 
      */
-    Widget_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    GUI_Window_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils);
 
     /**
-     * @brief Destroy the Widget_ObjectProperties object
+     * @brief Destroy the GUI_Window_ObjectProperties object
      * 
      */
-    ~Widget_ObjectProperties();
+    ~GUI_Window_ObjectProperties();
 
     /**
      * @brief Function that draws the window, should internally check if enable variable is set to true.

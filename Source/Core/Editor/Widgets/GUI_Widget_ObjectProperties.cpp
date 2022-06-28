@@ -2,10 +2,10 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <GUI_Widget_ObjectProperties.h>
+#include <GUI_GUI_Window_ObjectProperties.h>
 
 
-Widget_ObjectProperties::Widget_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+GUI_Window_ObjectProperties::GUI_Window_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
     Cursors3D_ = Cursors3D;
     SceneManager_ = SceneManager;
@@ -13,11 +13,11 @@ Widget_ObjectProperties::Widget_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS
 
 }
 
-Widget_ObjectProperties::~Widget_ObjectProperties() {
+GUI_Window_ObjectProperties::~GUI_Window_ObjectProperties() {
     
 }
 
-glm::vec3 Widget_ObjectProperties::XYZDragFloat(std::string Name, glm::vec3 Input, float SnapAmount) {
+glm::vec3 GUI_Window_ObjectProperties::XYZDragFloat(std::string Name, glm::vec3 Input, float SnapAmount) {
 
     // Convert Input To Values
     float X, Y, Z;
@@ -62,7 +62,7 @@ glm::vec3 Widget_ObjectProperties::XYZDragFloat(std::string Name, glm::vec3 Inpu
 
 }
 
-void Widget_ObjectProperties::Draw() {
+void GUI_Window_ObjectProperties::Draw() {
 
     if (Enabled_) {
         bool Visible = ImGui::Begin("Object Properties", &Enabled_);
@@ -290,7 +290,7 @@ void Widget_ObjectProperties::Draw() {
 }
 
 
-void Widget_ObjectProperties::VecToFloat(glm::vec3* In, float* Out) {
+void GUI_Window_ObjectProperties::VecToFloat(glm::vec3* In, float* Out) {
 
     Out[0] = In->x;
     Out[1] = In->y;
@@ -298,7 +298,7 @@ void Widget_ObjectProperties::VecToFloat(glm::vec3* In, float* Out) {
 
 }
 
-void Widget_ObjectProperties::FloatToVec(float* In, glm::vec3* Out) {
+void GUI_Window_ObjectProperties::FloatToVec(float* In, glm::vec3* Out) {
 
     Out->x = In[0];
     Out->y = In[1];

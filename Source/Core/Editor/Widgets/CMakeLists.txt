@@ -12,7 +12,7 @@ add_library(Widgets
             "GUI_Widget_FrameLatencyGraph.cpp"
             "GUI_Widget_FramerateGraph.cpp"
             "GUI_Widget_FrameratePlot.cpp"
-            "GUI_Widget_ObjectProperties.cpp"
+            "GUI_GUI_Window_ObjectProperties.cpp"
 
             # Add Header Files (.h)
             "GUI_Widget_FramerateCounter.h"
@@ -20,7 +20,7 @@ add_library(Widgets
             "GUI_Widget_FrameLatencyGraph.h"
             "GUI_Widget_FramerateGraph.h"
             "GUI_Widget_FrameratePlot.h"
-            "GUI_Widget_ObjectProperties.h"
+            "GUI_GUI_Window_ObjectProperties.h"
 
 
             ${BACKWARD_ENABLE}
