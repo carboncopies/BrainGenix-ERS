@@ -41,6 +41,9 @@ target_link_libraries(Menu_Window
     GUI_Window_ObjectProperties
     GUI_Window_FramerateGraph
     GUI_Window_FrameLatencyGraph
+    GUI_Window_FramerateCounter
+    GUI_Window_FramerateHistogram
+    GUI_Window_FrameratePlot
 
     )
 
