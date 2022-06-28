@@ -30,7 +30,7 @@
 #include <GUI_Window_ObjectProperties.h>
 #include <GUI_Window_RAMGraph.h>
 
-#include <GUI_GUI_Window_SceneTree.h>
+#include <GUI_Window_SceneTree.h>
 #include <GUI_Window_SystemLog.h>
 #include <GUI_Window_AssetExplorer.h>
 #include <GUI_Window_ScriptEditor.h>
