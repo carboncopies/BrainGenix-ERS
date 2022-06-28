@@ -2,10 +2,10 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <GUI_Widget_FramerateCounter.h>
+#include <GUI_Window_FramerateCounter.h>
 
 
-void Widget_FramerateCounter::Draw() {
+void GUI_Window_FramerateCounter::Draw() {
 
     // If Window Drawing Enabled
     if (Enabled_) {
