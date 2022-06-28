@@ -17,10 +17,10 @@
 #include <ERS_STRUCT_SystemUtils.h>
 
 /**
- * @brief Create GUI Widget "Framerate Graph"
+ * @brief Create GUI GUI_Window "Framerate Graph"
  * 
  */
-class Widget_FrameLatencyGraph {
+class GUI_Window_FrameLatencyGraph {
 
 private:
 
@@ -28,22 +28,22 @@ private:
 
 public:
 
-    bool Enabled_ = true; /**<Show/Hide Widget*/
+    bool Enabled_ = true; /**<Show/Hide GUI_Window*/
 
 public:
 
     /**
-     * @brief Construct a new Widget_FrameLatencyGraph object
+     * @brief Construct a new GUI_Window_FrameLatencyGraph object
      * 
      * @param SystemUtils 
      */
-    Widget_FrameLatencyGraph(ERS_STRUCT_SystemUtils* SystemUtils);
+    GUI_Window_FrameLatencyGraph(ERS_STRUCT_SystemUtils* SystemUtils);
     
     /**
-     * @brief Destroy the Widget_FrameLatencyGraph object
+     * @brief Destroy the GUI_Window_FrameLatencyGraph object
      * 
      */
-    ~Widget_FrameLatencyGraph();
+    ~GUI_Window_FrameLatencyGraph();
 
 
     /**
