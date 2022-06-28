@@ -40,6 +40,7 @@ target_link_libraries(Menu_Window
     GUI_Window_RAMGraph
     GUI_Window_ObjectProperties
     GUI_Window_FramerateGraph
+    GUI_Window_FrameLatencyGraph
 
     )
 
