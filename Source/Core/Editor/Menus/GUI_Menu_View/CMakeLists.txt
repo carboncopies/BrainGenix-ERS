@@ -18,8 +18,6 @@ add_library(Menu_View
 
 # Link 3rd Party Libs
 target_link_libraries(Menu_View
-    glad
-    glfw
     IMGUI
     )
 
@@ -30,9 +28,9 @@ target_link_libraries(Menu_View
     ERS_Editor_ThemeManager
     ERS_Editor_FontManager
 
-    GUI_Window_About
-
     GUI_Window_ThemeSelector
+
+    GUI_Window_About
     )
 
 target_include_directories(Menu_View PUBLIC ./)
