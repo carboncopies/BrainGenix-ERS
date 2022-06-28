@@ -30,7 +30,7 @@
 #include <GUI_Window_ObjectProperties.h>
 #include <GUI_Window_RAMGraph.h>
 
-#include <GUI_Window_SceneTree.h>
+#include <GUI_GUI_Window_SceneTree.h>
 #include <GUI_Window_SystemLog.h>
 #include <GUI_Window_AssetExplorer.h>
 #include <GUI_Window_ScriptEditor.h>
@@ -63,7 +63,7 @@ private:
     std::unique_ptr<GUI_Window_FrameLatencyGraph> GUI_Window_FrameLatencyGraph_; /**<Widget Instance*/
 
     // Instantiate Windows Here
-    std::unique_ptr<Window_SceneTree> Window_SceneTree_; /**<Window Instance*/
+    std::unique_ptr<GUI_Window_SceneTree> GUI_Window_SceneTree_; /**<Window Instance*/
     std::unique_ptr<Window_SystemLog> Window_SystemLog_; /**<Window Instance*/
     std::unique_ptr<GUI_Window_AssetExplorer> GUI_Window_AssetExplorer_; /**<Window Instance*/
     std::unique_ptr<Window_ScriptEditor> Window_ScriptEditor_; /**Window Instance*/
