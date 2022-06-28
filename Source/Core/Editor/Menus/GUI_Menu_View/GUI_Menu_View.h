@@ -23,7 +23,7 @@
 
 #include <GUI_Window_ThemeSelector.h>
 
-#include <GUI_GUI_Window_About.h>
+#include <GUI_Window_About.h>
 
 
 
