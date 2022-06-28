@@ -25,3 +25,7 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_ObjectProperties)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_RenderingSettings)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_FramerateGraph)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_FrameLatencyGraph)
+
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_FramerateCounter)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_FramerateHistogram)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_FrameratePlot)
