@@ -31,7 +31,7 @@ target_link_libraries(Menu_Window
     ERS_CLASS_VisualRenderer
 
     GUI_Window_SceneTree
-    Window_SystemLog
+    GUI_Window_SystemLog
     GUI_Window_AssetExplorer
     GUI_Window_ScriptEditor
 
