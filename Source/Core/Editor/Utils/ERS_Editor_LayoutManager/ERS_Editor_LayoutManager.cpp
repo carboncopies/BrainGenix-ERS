@@ -5,6 +5,7 @@
 #include <ERS_Editor_LayoutManager.h>
 #include <filesystem>
 #include <imgui.h>
+#include <fstream>
 
 
 ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(ERS_CLASS_LoggingSystem* Logger, const char* LayoutDirectory) {
@@ -63,13 +64,34 @@ void ERS_CLASS_LayoutManager::SaveLayout(std::string LayoutName) {
     // Save YAML file
     YAML::Node Layout;
     Layout["ImGuiIni"] = IniString;
-    LayoutFiles_.push_back(Layout);
 
     // Set the layout name
     Layout["DisplayName"] = LayoutName;
 
+    LayoutFiles_.push_back(Layout);
+
     // Add To Names Vector
     LayoutNames_.push_back(LayoutName);
+
+    // Export the YAML string
+    YAML::Emitter LayoutYAML;
+    LayoutYAML << YAML::BeginMap;
+
+    // Set Constant Info
+    LayoutYAML << YAML::Key << "DisplayName" << YAML::Value << LayoutName;
+    LayoutYAML << YAML::Key << "ImGuiIni" << YAML::Value << IniString;
+
+    // Stop Writing, Generate LayoutYAML
+    LayoutYAML << YAML::EndMap;
+    std::string YAMLstring = std::string(LayoutYAML.c_str());
+
+    // Write the string into a YAML file in the directory
+    std::ofstream file(std::string(LayoutDirectory_) + LayoutName + ".yaml");
+
+    if (!file.fail())
+        file << YAMLstring;
+
+    file.close();
 
 }
 

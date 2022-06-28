@@ -48,8 +48,7 @@ public:
 
     /**
     * @brief Save the current layout the user is using.
-    *  It will be saved to the layout dir specified in the constructor 
-    * with the display name the user has set.
+    *  It will return the set YAML string for the layout
     */
     void SaveLayout(std::string LayoutName);
 
