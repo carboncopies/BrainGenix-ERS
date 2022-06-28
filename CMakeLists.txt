@@ -67,7 +67,7 @@ add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_FontManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_UserProfileManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_3DCursor)
 add_subdirectory(${SRC_DIR}/Core/Editor/Windows)
-add_subdirectory(${SRC_DIR}/Core/Editor/MenuEntries)
+add_subdirectory(${SRC_DIR}/Core/Editor/Menus)
 
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_RendererManager)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_VisualRenderer)
