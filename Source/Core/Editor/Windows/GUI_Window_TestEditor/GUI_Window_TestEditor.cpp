@@ -6,7 +6,7 @@
 
 
 
-Window_TestEditor::Window_TestEditor(ERS_STRUCT_SystemUtils* SystemUtils) {
+GUI_Window_TestEditor::GUI_Window_TestEditor(ERS_STRUCT_SystemUtils* SystemUtils) {
 
 
     SystemUtils_ = SystemUtils;
@@ -14,14 +14,14 @@ Window_TestEditor::Window_TestEditor(ERS_STRUCT_SystemUtils* SystemUtils) {
 
 }
 
-Window_TestEditor::~Window_TestEditor() {
+GUI_Window_TestEditor::~GUI_Window_TestEditor() {
 
     SystemUtils_->Logger_->Log("ImGui Editor Window Destructor Called", 6);
 
 }
 
 
-void Window_TestEditor::Draw() {
+void GUI_Window_TestEditor::Draw() {
 
     if (Enabled_) {
     bool Visible = ImGui::Begin("Test Editor Window", &Enabled_, ImGuiWindowFlags_MenuBar);

@@ -18,7 +18,7 @@
  * @brief This Class Provides The Theme Selector Window.
  * 
  */
-class Window_ThemeSelector {
+class GUI_Window_ThemeSelector {
 
 private:
 
@@ -37,13 +37,13 @@ public:
      * 
      * @param ThemeManager 
      */
-    Window_ThemeSelector(ERS_CLASS_ThemeManager* ThemeManager);
+    GUI_Window_ThemeSelector(ERS_CLASS_ThemeManager* ThemeManager);
 
     /**
      * @brief Destroy the Window_ThemeSelector object
      * 
      */
-    ~Window_ThemeSelector();
+    ~GUI_Window_ThemeSelector();
 
     /**
      * @brief Update the window contents, Call This Every Frame.

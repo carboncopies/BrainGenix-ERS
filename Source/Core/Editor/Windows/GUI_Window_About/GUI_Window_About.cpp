@@ -5,19 +5,19 @@
 #include <GUI_Window_About.h>
 
 
-Window_About::Window_About(ERS_STRUCT_SystemUtils* SystemUtils) {
+GUI_Window_About::GUI_Window_About(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
 
 }
 
-Window_About::~Window_About() {
+GUI_Window_About::~GUI_Window_About() {
 
 }
 
 
 
-void Window_About::Draw() {
+void GUI_Window_About::Draw() {
 
 
     if (Enabled_) {

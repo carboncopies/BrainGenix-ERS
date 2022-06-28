@@ -3,7 +3,7 @@
 ########################################################################
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Window_ShaderEditor
+add_library(GUI_Window_ShaderEditor
 
             # Add Source Files (.cpp)
             "GUI_Window_ShaderEditor.cpp"
@@ -16,13 +16,13 @@ add_library(Window_ShaderEditor
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Window_ShaderEditor
+target_link_libraries(GUI_Window_ShaderEditor
     IMGUI
     ImGuiColorTextEdit
     )
 
 # Link Internal Libs
-target_link_libraries(Window_ShaderEditor
+target_link_libraries(GUI_Window_ShaderEditor
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_Shader
@@ -33,4 +33,4 @@ target_link_libraries(Window_ShaderEditor
     ERS_CLASS_VisualRenderer
     )
 
-target_include_directories(Window_ShaderEditor PUBLIC ./)
+target_include_directories(GUI_Window_ShaderEditor PUBLIC ./)

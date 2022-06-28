@@ -5,7 +5,7 @@
 #include <GUI_Window_ShaderEditor.h>
 
 
-Window_ShaderEditor::Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer) {
+GUI_Window_ShaderEditor::GUI_Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
@@ -27,14 +27,14 @@ Window_ShaderEditor::Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemUtils, ER
 
 }
 
-Window_ShaderEditor::~Window_ShaderEditor() {
+GUI_Window_ShaderEditor::~GUI_Window_ShaderEditor() {
 
     SystemUtils_->Logger_->Log("GUI ShaderEditor Window Destructor Called", 6);
 
 }
 
 
-void Window_ShaderEditor::ReloadEditorText() {
+void GUI_Window_ShaderEditor::ReloadEditorText() {
 
     // Load Vertex Shader
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
@@ -53,7 +53,7 @@ void Window_ShaderEditor::ReloadEditorText() {
 }
 
 
-void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
+void GUI_Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
 
     // Write Data
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
@@ -68,7 +68,7 @@ void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
 
 }
 
-void Window_ShaderEditor::Draw() {
+void GUI_Window_ShaderEditor::Draw() {
 
     // Check Enable Change
     if (LastEnabledState_ != Enabled_) {
@@ -109,7 +109,7 @@ void Window_ShaderEditor::Draw() {
 
 
 
-void Window_ShaderEditor::DrawEditorWindow() {
+void GUI_Window_ShaderEditor::DrawEditorWindow() {
 
     bool Visible = ImGui::Begin("Shader Editor", &Enabled_, ImGuiWindowFlags_MenuBar);
 
@@ -255,7 +255,7 @@ void Window_ShaderEditor::DrawEditorWindow() {
 }
 
 
-void Window_ShaderEditor::DrawToolsWindow() {
+void GUI_Window_ShaderEditor::DrawToolsWindow() {
 
     bool CompileVisible = ImGui::Begin("Compiler Log", &Enabled_);
 

@@ -19,7 +19,7 @@
 
 
 
-class Window_ProjectSettings {
+class GUI_Window_ProjectSettings {
 
 private:
 
@@ -49,13 +49,13 @@ public:
      * @param ProjectUtils 
      * @param SystemUtils 
      */
-    Window_ProjectSettings(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_SystemUtils* SystemUtils);
+    GUI_Window_ProjectSettings(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_SystemUtils* SystemUtils);
 
     /**
      * @brief Destroy the Window_ProjectSettings object
      * 
      */
-    ~Window_ProjectSettings();
+    ~GUI_Window_ProjectSettings();
 
 
     /**
