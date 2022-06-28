@@ -36,7 +36,7 @@ private:
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils Structure*/
 
 
-    std::unique_ptr<Window_ControllerSettings> Window_ControllerSettings_; /**<ERS GUI Window*/
+    std::unique_ptr<GUI_Window_ControllerSettings> GUI_Window_ControllerSettings_; /**<ERS GUI Window*/
 
 
 public:
