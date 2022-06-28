@@ -51,7 +51,7 @@ void GUI_Menu_Window::Draw() {
                 ImGui::Checkbox("Framerate Counter", &GUI_Window_FramerateCounter_.Enabled_);
                 ImGui::Checkbox("Framerate Histogram", &Widget_FramerateHistogram_.Enabled_);
                 ImGui::Checkbox("Framerate Graph", &GUI_Window_FramerateGraph_.Enabled_);
-                ImGui::Checkbox("Framerate Plot", &Widget_FrameratePlot_.Enabled_);
+                ImGui::Checkbox("Framerate Plot", &GUI_Window_FrameratePlot_.Enabled_);
                 ImGui::Checkbox("Frame Latency Graph", &GUI_Window_FrameLatencyGraph_->Enabled_);
 
             ImGui::EndMenu();
@@ -124,7 +124,7 @@ void GUI_Menu_Window::Draw() {
     GUI_Window_FramerateCounter_.Draw();
     Widget_FramerateHistogram_.Draw();
     GUI_Window_FramerateGraph_.Draw();
-    Widget_FrameratePlot_.Draw();
+    GUI_Window_FrameratePlot_.Draw();
 
     // Update Widgets
     GUI_Window_ObjectProperties_->Draw();
