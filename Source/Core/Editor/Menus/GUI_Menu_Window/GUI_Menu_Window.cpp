@@ -22,7 +22,7 @@ GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
 
     SystemUtils_->Logger_->Log("Initializing Editor Windows", 5);
     GUI_Window_SceneTree_ = std::make_unique<GUI_Window_SceneTree>(SceneManager, SystemUtils_, ProjectUtils_, Cursors3D);
-    Window_SystemLog_ = std::make_unique<Window_SystemLog>(SystemUtils_);
+    GUI_Window_SystemLog_ = std::make_unique<GUI_Window_SystemLog>(SystemUtils_);
     GUI_Window_AssetExplorer_ = std::make_unique<GUI_Window_AssetExplorer>(SystemUtils_, ProjectUtils_);
     GUI_Window_ScriptEditor_ = std::make_unique<GUI_Window_ScriptEditor>(SystemUtils_, ProjectUtils_, VisualRenderer_);
 
@@ -48,7 +48,7 @@ void GUI_Menu_Window::Draw() {
 
             // Add Scene Tree Editor Window
             ImGui::Checkbox("Scene Tree", &GUI_Window_SceneTree_->Enabled_);
-            ImGui::Checkbox("System Log", &Window_SystemLog_->Enabled_);
+            ImGui::Checkbox("System Log", &GUI_Window_SystemLog_->Enabled_);
             ImGui::Checkbox("Asset Explorer", &GUI_Window_AssetExplorer_->Enabled_);
             ImGui::Checkbox("Object Properties", &GUI_Window_ObjectProperties_->Enabled_);
             ImGui::Checkbox("Global Viewport Settings", &GUI_Window_RenderingSettings_->Enabled_);
@@ -123,7 +123,7 @@ void GUI_Menu_Window::Draw() {
 
     // Update Windows
     GUI_Window_SceneTree_->Draw();
-    Window_SystemLog_->Draw();
+    GUI_Window_SystemLog_->Draw();
     GUI_Window_AssetExplorer_->Draw();
     GUI_Window_ScriptEditor_->Draw();
 
