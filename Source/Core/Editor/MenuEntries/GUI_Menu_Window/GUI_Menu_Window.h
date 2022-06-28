@@ -60,7 +60,7 @@ private:
     std::unique_ptr<GUI_Window_RAMGraph> GUI_Window_RAMGraph_; /**<Widget Instance*/
     std::unique_ptr<GUI_Window_RenderingSettings> GUI_Window_RenderingSettings_; /**<Widget Instance*/
     std::unique_ptr<GUI_Window_ObjectProperties> GUI_Window_ObjectProperties_; /**<Widget Instance*/
-    std::unique_ptr<Widget_FrameLatencyGraph> Widget_FrameLatencyGraph_; /**<Widget Instance*/
+    std::unique_ptr<GUI_Window_FrameLatencyGraph> GUI_Window_FrameLatencyGraph_; /**<Widget Instance*/
 
     // Instantiate Windows Here
     std::unique_ptr<Window_SceneTree> Window_SceneTree_; /**<Window Instance*/

@@ -16,7 +16,7 @@ GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
     SystemUtils_->Logger_->Log("Initializing Editor Widgets", 5);
     GUI_Window_ObjectProperties_ = std::make_unique<GUI_Window_ObjectProperties>(Cursors3D, SceneManager, ProjectUtils_);
     GUI_Window_RenderingSettings_ = std::make_unique<GUI_Window_RenderingSettings>(SystemUtils_);
-    Widget_FrameLatencyGraph_ = std::make_unique<Widget_FrameLatencyGraph>(SystemUtils_);
+    GUI_Window_FrameLatencyGraph_ = std::make_unique<GUI_Window_FrameLatencyGraph>(SystemUtils_);
     GUI_Window_RAMGraph_ = std::make_unique<GUI_Window_RAMGraph>(SystemUtils_);
 
 
@@ -52,7 +52,7 @@ void GUI_Menu_Window::Draw() {
                 ImGui::Checkbox("Framerate Histogram", &Widget_FramerateHistogram_.Enabled_);
                 ImGui::Checkbox("Framerate Graph", &GUI_Window_FramerateGraph_.Enabled_);
                 ImGui::Checkbox("Framerate Plot", &Widget_FrameratePlot_.Enabled_);
-                ImGui::Checkbox("Frame Latency Graph", &Widget_FrameLatencyGraph_->Enabled_);
+                ImGui::Checkbox("Frame Latency Graph", &GUI_Window_FrameLatencyGraph_->Enabled_);
 
             ImGui::EndMenu();
             }
@@ -130,7 +130,7 @@ void GUI_Menu_Window::Draw() {
     GUI_Window_ObjectProperties_->Draw();
     GUI_Window_RAMGraph_->Draw();
     GUI_Window_RenderingSettings_->Draw();
-    Widget_FrameLatencyGraph_->Draw();
+    GUI_Window_FrameLatencyGraph_->Draw();
 
     // Update Windows
     Window_SceneTree_->Draw();
