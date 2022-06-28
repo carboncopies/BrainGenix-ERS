@@ -5,7 +5,7 @@
 #include <GUI_Window_ControllerSettings.h>
 
 
-Window_ControllerSettings::Window_ControllerSettings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+GUI_Window_ControllerSettings::GUI_Window_ControllerSettings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
     SystemUtils_ = SystemUtils;
     HIDUtils_ = HIDUtils;
@@ -13,12 +13,12 @@ Window_ControllerSettings::Window_ControllerSettings(ERS_STRUCT_SystemUtils* Sys
 
 }
 
-Window_ControllerSettings::~Window_ControllerSettings() {
+GUI_Window_ControllerSettings::~GUI_Window_ControllerSettings() {
 
 }
 
 
-void Window_ControllerSettings::ButtonText(std::string ButtonName, bool ButtonState) {
+void GUI_Window_ControllerSettings::ButtonText(std::string ButtonName, bool ButtonState) {
 
     // Generate Text
     std::string ButtonStateLabel = "Released";
@@ -29,7 +29,7 @@ void Window_ControllerSettings::ButtonText(std::string ButtonName, bool ButtonSt
     ImGui::Text("%s", (ButtonName + std::string(": ") + ButtonStateLabel).c_str());
 }
 
-void Window_ControllerSettings::Draw() {
+void GUI_Window_ControllerSettings::Draw() {
 
 
     if (Enabled_) {

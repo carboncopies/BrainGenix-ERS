@@ -17,18 +17,17 @@ add_library(ERS_SceneManager
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_SceneManager
-    yaml-cpp
     glm
     )
 
 # Link Internal Libs
 target_link_libraries(ERS_SceneManager
-    ERS_STRUCT_Scene
     ERS_CLASS_LoggingSystem
-    ERS_STRUCT_LocRotScale
+
     ERS_STRUCT_Shader
-    ERS_STRUCT_OpenGLDefaults
-    
+    ERS_STRUCT_Scene
+    ERS_STRUCT_LocRotScale
+    ERS_STRUCT_OpenGLDefaults  
     )
 
 target_include_directories(ERS_SceneManager PUBLIC ./)

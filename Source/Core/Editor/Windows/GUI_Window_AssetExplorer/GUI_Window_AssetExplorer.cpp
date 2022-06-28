@@ -5,7 +5,7 @@
 #include <GUI_Window_AssetExplorer.h>
 
 
-Window_AssetExplorer::Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+GUI_Window_AssetExplorer::GUI_Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
@@ -15,7 +15,7 @@ Window_AssetExplorer::Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils, 
 
 }
 
-Window_AssetExplorer::~Window_AssetExplorer() {
+GUI_Window_AssetExplorer::~GUI_Window_AssetExplorer() {
 
     SystemUtils_->Logger_->Log("GUI_Window_AssetExplorer Destructor Called", 6);
 
@@ -23,7 +23,7 @@ Window_AssetExplorer::~Window_AssetExplorer() {
 }
 
 
-void Window_AssetExplorer::Draw() {
+void GUI_Window_AssetExplorer::Draw() {
 
     if (Enabled_) {
     bool Visible = ImGui::Begin("Asset Explorer", &Enabled_);

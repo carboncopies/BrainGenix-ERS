@@ -1,4 +1,4 @@
-SceneName: FightingMechanicScene
+SceneName: Alleyway Test Scene
 SceneFormatVersion: 0
 SceneData:
   0:
@@ -15,6 +15,9 @@ SceneData:
     AssetScaleY: 0.0199999996
     AssetScaleZ: 0.0199999996
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   1:
@@ -31,6 +34,9 @@ SceneData:
     AssetScaleY: 0.0199999996
     AssetScaleZ: 0.0199999996
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   2:
@@ -47,6 +53,9 @@ SceneData:
     AssetScaleY: 0.0199999996
     AssetScaleZ: 0.0199999996
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   3:
@@ -63,6 +72,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   4:
@@ -79,6 +91,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   5:
@@ -95,6 +110,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   6:
@@ -111,6 +129,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   7:
@@ -127,6 +148,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   8:
@@ -143,6 +167,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   9:
@@ -159,6 +186,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   10:
@@ -175,6 +205,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   11:
@@ -191,6 +224,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   12:
@@ -207,6 +243,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   13:
@@ -223,6 +262,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   14:
@@ -239,6 +281,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   15:
@@ -255,6 +300,9 @@ SceneData:
     AssetScaleY: 0.00311163021
     AssetScaleZ: 0.00311163021
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   16:
@@ -271,6 +319,9 @@ SceneData:
     AssetScaleY: 0.00280800601
     AssetScaleZ: 0.00280800601
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   17:
@@ -287,6 +338,9 @@ SceneData:
     AssetScaleY: 0.00280800601
     AssetScaleZ: 0.00280800601
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   18:
@@ -303,6 +357,9 @@ SceneData:
     AssetScaleY: 0.00280800601
     AssetScaleZ: 0.00280800601
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   19:
@@ -319,6 +376,9 @@ SceneData:
     AssetScaleY: 0.00990002044
     AssetScaleZ: 0.00990002137
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   20:
@@ -335,6 +395,9 @@ SceneData:
     AssetScaleY: 0.00736923702
     AssetScaleZ: 0.00736923702
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   21:
@@ -351,6 +414,9 @@ SceneData:
     AssetScaleY: 0.00736923702
     AssetScaleZ: 0.00736923702
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   22:
@@ -367,6 +433,9 @@ SceneData:
     AssetScaleY: 0.00736923702
     AssetScaleZ: 0.00736923702
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   23:
@@ -383,6 +452,9 @@ SceneData:
     AssetScaleY: 0.00800004043
     AssetScaleZ: 0.00800004043
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   24:
@@ -399,6 +471,9 @@ SceneData:
     AssetScaleY: 0.00800004043
     AssetScaleZ: 0.00800004043
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   25:
@@ -415,6 +490,9 @@ SceneData:
     AssetScaleY: 0.000735000009
     AssetScaleZ: 0.000735000067
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   26:
@@ -431,6 +509,9 @@ SceneData:
     AssetScaleY: 0.000735000009
     AssetScaleZ: 0.000735000067
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   27:
@@ -447,6 +528,9 @@ SceneData:
     AssetScaleY: 0.000735000009
     AssetScaleZ: 0.000735000067
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   28:
@@ -463,6 +547,9 @@ SceneData:
     AssetScaleY: 0.000735000009
     AssetScaleZ: 0.000735000067
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   29:
@@ -479,6 +566,9 @@ SceneData:
     AssetScaleY: 0.000735000009
     AssetScaleZ: 0.000735000067
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   30:
@@ -495,6 +585,9 @@ SceneData:
     AssetScaleY: 0.00380000775
     AssetScaleZ: 0.00380000775
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   31:
@@ -511,6 +604,9 @@ SceneData:
     AssetScaleY: 0.00793306623
     AssetScaleZ: 0.00694000022
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   32:
@@ -527,6 +623,9 @@ SceneData:
     AssetScaleY: 0.0082000168
     AssetScaleZ: 0.0082000168
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   33:
@@ -543,6 +642,9 @@ SceneData:
     AssetScaleY: 0.0082000168
     AssetScaleZ: 0.0082000168
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   34:
@@ -559,6 +661,9 @@ SceneData:
     AssetScaleY: 0.00832000002
     AssetScaleZ: 0.00728000002
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   35:
@@ -575,6 +680,9 @@ SceneData:
     AssetScaleY: 0.00380000775
     AssetScaleZ: 0.00380000775
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   36:
@@ -591,6 +699,9 @@ SceneData:
     AssetScaleY: 0.00293800584
     AssetScaleZ: 0.00293800584
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   37:
@@ -607,6 +718,9 @@ SceneData:
     AssetScaleY: 0.00293800584
     AssetScaleZ: 0.00293800584
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   38:
@@ -623,6 +737,9 @@ SceneData:
     AssetScaleY: 0.00736923702
     AssetScaleZ: 0.00736923702
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   39:
@@ -639,6 +756,9 @@ SceneData:
     AssetScaleY: 0.00736923702
     AssetScaleZ: 0.00736923702
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   40:
@@ -655,6 +775,9 @@ SceneData:
     AssetScaleY: 0.00293800584
     AssetScaleZ: 0.00293800584
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   41:
@@ -671,6 +794,9 @@ SceneData:
     AssetScaleY: 0.00293800584
     AssetScaleZ: 0.00293800584
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   42:
@@ -687,6 +813,9 @@ SceneData:
     AssetScaleY: 0.00280800601
     AssetScaleZ: 0.00280800601
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   43:
@@ -703,6 +832,9 @@ SceneData:
     AssetScaleY: 0.00280800601
     AssetScaleZ: 0.00280800601
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   44:
@@ -719,6 +851,9 @@ SceneData:
     AssetScaleY: 0.00280800601
     AssetScaleZ: 0.00280800601
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   45:
@@ -735,6 +870,9 @@ SceneData:
     AssetScaleY: 0.00280800601
     AssetScaleZ: 0.00280800601
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   46:
@@ -751,6 +889,9 @@ SceneData:
     AssetScaleY: 0.00280800601
     AssetScaleZ: 0.00280800601
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   47:
@@ -767,6 +908,9 @@ SceneData:
     AssetScaleY: 0.00990002044
     AssetScaleZ: 0.00990002137
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   48:
@@ -783,6 +927,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   49:
@@ -799,6 +946,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   50:
@@ -815,6 +965,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   51:
@@ -831,6 +984,9 @@ SceneData:
     AssetScaleY: 0.0100000501
     AssetScaleZ: 0.0100000501
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   52:
@@ -847,6 +1003,9 @@ SceneData:
     AssetScaleY: 0.0199999996
     AssetScaleZ: 0.0199999996
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   53:
@@ -863,6 +1022,9 @@ SceneData:
     AssetScaleY: 0.0199999996
     AssetScaleZ: 0.0199999996
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   54:
@@ -879,6 +1041,9 @@ SceneData:
     AssetScaleY: 0.0199999996
     AssetScaleZ: 0.0199999996
     FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
     AttachedScripts:
       {}
   55:
@@ -891,6 +1056,8 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   56:
@@ -903,6 +1070,8 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   57:
@@ -915,6 +1084,8 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   58:
@@ -927,6 +1098,8 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   59:
@@ -939,6 +1112,8 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   60:
@@ -951,6 +1126,8 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   61:
@@ -963,6 +1140,8 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   62:
@@ -975,6 +1154,8 @@ SceneData:
     PosY: 1.70000005
     PosZ: 6.0999999
     Intensity: 1
+    MaxDistance: 15
+    CastShadows: true
     AttachedScripts:
       {}
   63:
@@ -983,15 +1164,17 @@ SceneData:
     ColorRed: 1
     ColorGreen: 1
     ColorBlue: 1
-    PosX: -0.930386484
-    PosY: 1.5959357
+    PosX: -0.530386508
+    PosY: 1.69593573
     PosZ: 6.00342846
-    RotX: 18.4778862
-    RotY: -15.6467848
-    RotZ: -7.83750677
+    RotX: 200.34108
+    RotY: 58.297596
+    RotZ: 157.26207
     Intensity: 25
-    CutOff: 0.910000026
-    OuterCutOff: 0.75999999
+    MaxDistance: 10
+    CutOff: 103
+    RollOff: 11.5
+    CastShadows: true
     AttachedScripts:
       {}
   64:
@@ -1000,15 +1183,17 @@ SceneData:
     ColorRed: 1
     ColorGreen: 1
     ColorBlue: 1
-    PosX: -0.949999988
+    PosX: -0.649999976
     PosY: 1.5
     PosZ: 1
-    RotX: 14.6964588
-    RotY: -8.51486015
-    RotZ: -3.0760181
+    RotX: 199.196381
+    RotY: 58.3953362
+    RotZ: 185.813049
     Intensity: 25
-    CutOff: 0.910000026
-    OuterCutOff: 0.75999999
+    MaxDistance: 15
+    CutOff: 120
+    RollOff: 16
+    CastShadows: true
     AttachedScripts:
       {}
   65:
@@ -1017,15 +1202,17 @@ SceneData:
     ColorRed: 1
     ColorGreen: 1
     ColorBlue: 1
-    PosX: -0.949999988
-    PosY: 1.5
+    PosX: -0.74999994
+    PosY: 1.60000002
     PosZ: -4.8931241
-    RotX: 14.7390451
-    RotY: -6.51885748
-    RotZ: -1.36448181
+    RotX: 48.318615
+    RotY: 52.9613876
+    RotZ: 10.0683851
     Intensity: 25
-    CutOff: 0.910000026
-    OuterCutOff: 0.75999999
+    MaxDistance: 10
+    CutOff: 95
+    RollOff: 7
+    CastShadows: true
     AttachedScripts:
       {}
   66:
@@ -1034,15 +1221,17 @@ SceneData:
     ColorRed: 1
     ColorGreen: 1
     ColorBlue: 1
-    PosX: 2.97785139
+    PosX: 2.87785149
     PosY: 1.5
     PosZ: -4.70444107
-    RotX: -35.5486069
-    RotY: -20.949976
-    RotZ: 8.76933765
+    RotX: 11.295084
+    RotY: 50.5678635
+    RotZ: 239.557556
     Intensity: 25
-    CutOff: 0.910000026
-    OuterCutOff: 0.75999999
+    MaxDistance: 15
+    CutOff: 77
+    RollOff: 6
+    CastShadows: true
     AttachedScripts:
       {}
   67:
@@ -1054,11 +1243,13 @@ SceneData:
     PosX: 2.97785139
     PosY: 1.5
     PosZ: 1.07611871
-    RotX: -34.3861809
-    RotY: -30.3114014
-    RotZ: 12.0187654
+    RotX: 71.6560745
+    RotY: 347.370728
+    RotZ: 322.172424
     Intensity: 25
-    CutOff: 0.910000026
-    OuterCutOff: 0.75999999
+    MaxDistance: 10
+    CutOff: 80
+    RollOff: 9
+    CastShadows: true
     AttachedScripts:
       {}

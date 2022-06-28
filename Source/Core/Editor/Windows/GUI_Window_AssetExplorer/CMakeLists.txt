@@ -3,7 +3,7 @@
 ########################################################################
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Window_AssetExplorer
+add_library(GUI_Window_AssetExplorer
 
             # Add Source Files (.cpp)
             "GUI_Window_AssetExplorer.cpp"
@@ -18,16 +18,16 @@ add_library(Window_AssetExplorer
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Window_AssetExplorer
+target_link_libraries(GUI_Window_AssetExplorer
     glad
     glfw
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(Window_AssetExplorer
+target_link_libraries(GUI_Window_AssetExplorer
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
     )
 
-target_include_directories(Window_AssetExplorer PUBLIC ./)
+target_include_directories(GUI_Window_AssetExplorer PUBLIC ./)

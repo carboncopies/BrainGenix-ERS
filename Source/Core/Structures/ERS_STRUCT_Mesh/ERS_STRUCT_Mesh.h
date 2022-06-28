@@ -68,6 +68,11 @@ struct ERS_STRUCT_Mesh {
     std::vector<std::string> TextureNames; /**<Human Readable Names Of Textures*/
 
     
+    // Handle Shadow Configuration
+    bool* CastDynamicShadows_; /**<Indicate if this model is to be rendered when generating the depth maps (dynamically)*/
+    bool* CastStaticShadows_; /**<Set if this model is rendered when building static depth maps*/
+    bool* ReceiveShadows_ ; /**<Determines if this model is to have shadows applied to it.*/
+
 
     /**
      * @brief Setup the mesh (create opengl objects, etc.)

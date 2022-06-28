@@ -2502,6 +2502,42 @@ bool ImGui::DragScalarN(const char* label, ImGuiDataType data_type, void* p_data
     EndGroup();
     return value_changed;
 }
+bool ImGui::DragScalarN(const char* label, ImGuiDataType data_type, void* p_data, int components, float v_speed, float Color[], const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags)
+{
+    ImGuiWindow* window = GetCurrentWindow();
+    if (window->SkipItems)
+        return false;
+
+    ImGuiContext& g = *GImGui;
+    bool value_changed = false;
+    BeginGroup();
+    PushID(label);
+    PushMultiItemsWidths(components, CalcItemWidth());
+    size_t type_size = GDataTypeInfo[data_type].Size;
+    for (int i = 0; i < components; i++)
+    {
+        PushID(i);
+        if (i > 0)
+            SameLine(0, g.Style.ItemInnerSpacing.x);
+        PushStyleColor(ImGuiCol_FrameBg, ImVec4(Color[i*3], Color[i*3+1], Color[i*3+2], 1.0f));
+        value_changed |= DragScalar("", data_type, p_data, v_speed, p_min, p_max, format, flags);
+        PopStyleColor();
+        PopID();
+        PopItemWidth();
+        p_data = (void*)((char*)p_data + type_size);
+    }
+    PopID();
+
+    const char* label_end = FindRenderedTextEnd(label);
+    if (label != label_end)
+    {
+        SameLine(0, g.Style.ItemInnerSpacing.x);
+        TextEx(label, label_end);
+    }
+
+    EndGroup();
+    return value_changed;
+}
 
 bool ImGui::DragFloat(const char* label, float* v, float v_speed, float v_min, float v_max, const char* format, ImGuiSliderFlags flags)
 {
@@ -2516,6 +2552,11 @@ bool ImGui::DragFloat2(const char* label, float v[2], float v_speed, float v_min
 bool ImGui::DragFloat3(const char* label, float v[3], float v_speed, float v_min, float v_max, const char* format, ImGuiSliderFlags flags)
 {
     return DragScalarN(label, ImGuiDataType_Float, v, 3, v_speed, &v_min, &v_max, format, flags);
+}
+
+bool ImGui::DragFloat3(const char* label, float v[3], float v_speed, float colors[9], float v_min, float v_max, const char* format, ImGuiSliderFlags flags)
+{
+    return DragScalarN(label, ImGuiDataType_Float, v, 3, v_speed, colors, &v_min, &v_max, format, flags);
 }
 
 bool ImGui::DragFloat4(const char* label, float v[4], float v_speed, float v_min, float v_max, const char* format, ImGuiSliderFlags flags)

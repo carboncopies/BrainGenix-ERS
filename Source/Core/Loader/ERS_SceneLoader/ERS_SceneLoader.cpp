@@ -113,6 +113,19 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             }
 
 
+            // Load Shadow Configuration
+            if (SceneDataNode[i]["CastDynamicShadows"]) {
+                Scene.Models[CurrentSize-1]->CastDynamicShadows_ = SceneDataNode[i]["CastDynamicShadows"].as<bool>();
+            }
+
+            if (SceneDataNode[i]["CastStaticShadows"]) {
+                Scene.Models[CurrentSize-1]->CastStaticShadows_ = SceneDataNode[i]["CastStaticShadows"].as<bool>();
+            }
+
+            if (SceneDataNode[i]["ReceiveShadows"]) {
+                Scene.Models[CurrentSize-1]->ReceiveShadows_ = SceneDataNode[i]["ReceiveShadows"].as<bool>();
+            }
+
 
         } else if (AssetType == std::string("DirectionalLight")) {
 
@@ -134,6 +147,10 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 Scene.DirectionalLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
             }
 
+            if (SceneDataNode[i]["MaxDistance"]) {
+                Scene.DirectionalLights[LightIndex]->MaxDistance = SceneDataNode[i]["MaxDistance"].as<float>();
+            }
+
             Scene.DirectionalLights[LightIndex]->Pos = glm::vec3(
                 SceneDataNode[i]["PosX"].as<float>(),
                 SceneDataNode[i]["PosY"].as<float>(),
@@ -144,6 +161,11 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 SceneDataNode[i]["RotY"].as<float>(),
                 SceneDataNode[i]["RotZ"].as<float>()
                 );
+
+
+            if (SceneDataNode[i]["CastShadows"]) {
+                Scene.DirectionalLights[LightIndex]->CastsShadows_ = SceneDataNode[i]["CastShadows"].as<bool>();
+            }
 
             // Load Attached Scripts
             if (SceneDataNode[i]["AttachedScripts"]) {
@@ -163,6 +185,9 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             if (SceneDataNode[i]["Intensity"]) {
                 Scene.PointLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
             }
+            if (SceneDataNode[i]["MaxDistance"]) {
+                Scene.PointLights[LightIndex]->MaxDistance = SceneDataNode[i]["MaxDistance"].as<float>();
+            }
 
             
             if (SceneDataNode[i]["ColorRed"] && SceneDataNode[i]["ColorGreen"] && SceneDataNode[i]["ColorBlue"]) {
@@ -178,6 +203,10 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 SceneDataNode[i]["PosY"].as<float>(),
                 SceneDataNode[i]["PosZ"].as<float>()
                 );
+
+            if (SceneDataNode[i]["CastShadows"]) {
+                Scene.PointLights[LightIndex]->CastsShadows_ = SceneDataNode[i]["CastShadows"].as<bool>();
+            }
 
             // Load Attached Scripts
             if (SceneDataNode[i]["AttachedScripts"]) {
@@ -198,9 +227,14 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             if (SceneDataNode[i]["Intensity"]) {
                 Scene.SpotLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
             }
+            if (SceneDataNode[i]["MaxDistance"]) {
+                Scene.SpotLights[LightIndex]->MaxDistance = SceneDataNode[i]["MaxDistance"].as<float>();
+            }
             Scene.SpotLights[LightIndex]->CutOff = SceneDataNode[i]["CutOff"].as<float>();
-            Scene.SpotLights[LightIndex]->OuterCutOff = SceneDataNode[i]["OuterCutOff"].as<float>();
 
+            if (SceneDataNode[i]["RollOff"]) {
+                Scene.SpotLights[LightIndex]->Rolloff = SceneDataNode[i]["RollOff"].as<float>();
+            }
             if (SceneDataNode[i]["ColorRed"] && SceneDataNode[i]["ColorGreen"] && SceneDataNode[i]["ColorBlue"]) {
                 Scene.SpotLights[LightIndex]->Color = glm::vec3(
                     SceneDataNode[i]["ColorRed"].as<float>(),
@@ -221,6 +255,10 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 SceneDataNode[i]["RotZ"].as<float>()
                 );
 
+
+            if (SceneDataNode[i]["CastShadows"]) {
+                Scene.SpotLights[LightIndex]->CastsShadows_ = SceneDataNode[i]["CastShadows"].as<bool>();
+            }
 
             // Load Attached Scripts
             if (SceneDataNode[i]["AttachedScripts"]) {
@@ -259,6 +297,20 @@ void ERS_CLASS_SceneLoader::AddModel(ERS_STRUCT_Scene* Scene, long AssetID) {
     Scene->Models[CurrentSize-1]->AssetID = AssetID;
     Scene->Models[CurrentSize-1]->Name = std::string("Loading...");
     Scene->Models[CurrentSize-1]->FlipTextures = true;
+
+    
+    // Process Texture References, Setup Meshes
+    ERS_STRUCT_Model* Model = Scene->Models[CurrentSize-1].get();
+    for (unsigned long i = 0; i < Model->Meshes.size(); i++) {
+        
+        // Set Shadow Configuration Pointers
+        Model->Meshes[i].CastDynamicShadows_ = &Model->CastDynamicShadows_;
+        Model->Meshes[i].CastStaticShadows_ = &Model->CastStaticShadows_;
+        Model->Meshes[i].ReceiveShadows_ = &Model->ReceiveShadows_;
+
+        
+    }
+
 
     ModelLoader_->AddModelToLoadingQueue(AssetID, Scene->Models[CurrentSize-1], Scene->Models[CurrentSize-1]->FlipTextures);
 

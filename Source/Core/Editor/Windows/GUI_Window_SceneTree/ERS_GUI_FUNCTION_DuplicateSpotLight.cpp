@@ -15,6 +15,8 @@ void GUI_Windowutil_DuplicateSpotLight(ERS_CLASS_SceneManager* SceneManager, int
     std::string NewName = CurrentName + std::string(" - Copy");
     NewSpotLight.UserDefinedName = NewName;
 
+    NewSpotLight.DepthMap.Initialized = false;
+
 
     // Add To SceneManager
     SceneManager->Scenes_[SceneIndex]->SpotLights.push_back(std::make_shared<ERS_STRUCT_SpotLight>(NewSpotLight));

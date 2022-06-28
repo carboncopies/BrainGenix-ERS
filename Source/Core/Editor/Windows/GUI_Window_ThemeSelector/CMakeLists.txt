@@ -5,7 +5,7 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Window_ThemeSelector
+add_library(GUI_Window_ThemeSelector
 
             # Add Source Files (.cpp)
             "GUI_Window_ThemeSelector.cpp"
@@ -18,13 +18,13 @@ add_library(Window_ThemeSelector
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Window_ThemeSelector
+target_link_libraries(GUI_Window_ThemeSelector
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(Window_ThemeSelector
+target_link_libraries(GUI_Window_ThemeSelector
     ERS_Editor_ThemeManager
     )
 
-target_include_directories(Window_ThemeSelector PUBLIC ./)
+target_include_directories(GUI_Window_ThemeSelector PUBLIC ./)

@@ -14,6 +14,7 @@ void GUI_Windowutil_DuplicatePointLight(ERS_CLASS_SceneManager* SceneManager, in
     std::string CurrentName = NewPointLight.UserDefinedName;
     std::string NewName = CurrentName + std::string(" - Copy");
     NewPointLight.UserDefinedName = NewName;
+    NewPointLight.DepthMap.Initialized = false;
 
 
     // Add To SceneManager

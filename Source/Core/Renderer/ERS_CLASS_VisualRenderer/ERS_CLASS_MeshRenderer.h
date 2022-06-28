@@ -24,13 +24,14 @@
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_CLASS_ShaderLoader.h>
 #include <ERS_CLASS_InputProcessor.h>
-#include <ERS_CLASS_Framebuffer.h>
 #include <ERS_CLASS_Grid.h>
 #include <ERS_CLASS_LightIconRenderer.h>
 
 #include <ERS_FUNCTION_CheckForMeshTransparency.h>
 #include <ERS_FUNCTION_MeshTransparencySort.h>
+#include <ERS_FUNCTION_MeshTransparencySortNoTextures.h>
 #include <ERS_FUNCTION_DrawMesh.h>
+#include <ERS_FUNCTION_DrawMeshNoTextures.h>
 
 #include <ERS_SceneManager.h>
 #include <ERS_SceneLoader.h>
@@ -80,7 +81,14 @@ public:
      * @param OpenGLDefaults 
      * @param Shader 
      */
-    void RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::shared_ptr<ERS_STRUCT_Shader> Shader);
+    void RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, ERS_STRUCT_Shader* Shader);
+
+    /**
+     * @brief Render the scene without textures (used to generate depth maps)
+     * 
+     * @param Scene 
+     */
+    void RenderSceneNoTextures(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Shader* Shader);
 
 
 };

@@ -15,6 +15,8 @@ void GUI_Windowutil_DuplicateDirectionalLight(ERS_CLASS_SceneManager* SceneManag
     std::string NewName = CurrentName + std::string(" - Copy");
     NewDirectionalLight.UserDefinedName = NewName;
 
+    NewDirectionalLight.DepthMap.Initialized = false;
+
 
     // Add To SceneManager
     SceneManager->Scenes_[SceneIndex]->DirectionalLights.push_back(std::make_shared<ERS_STRUCT_DirectionalLight>(NewDirectionalLight));

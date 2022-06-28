@@ -5,7 +5,7 @@
 #include <GUI_Window_ShaderEditor.h>
 
 
-Window_ShaderEditor::Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer) {
+GUI_Window_ShaderEditor::GUI_Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
@@ -21,20 +21,20 @@ Window_ShaderEditor::Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemUtils, ER
 
     
     ShaderLoader_ = std::make_unique<ERS_CLASS_ShaderLoader>(SystemUtils_);
-    LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
+
 
 
 
 }
 
-Window_ShaderEditor::~Window_ShaderEditor() {
+GUI_Window_ShaderEditor::~GUI_Window_ShaderEditor() {
 
     SystemUtils_->Logger_->Log("GUI ShaderEditor Window Destructor Called", 6);
 
 }
 
 
-void Window_ShaderEditor::ReloadEditorText() {
+void GUI_Window_ShaderEditor::ReloadEditorText() {
 
     // Load Vertex Shader
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
@@ -53,7 +53,7 @@ void Window_ShaderEditor::ReloadEditorText() {
 }
 
 
-void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
+void GUI_Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
 
     // Write Data
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
@@ -68,26 +68,26 @@ void Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
 
 }
 
-void Window_ShaderEditor::Draw() {
+void GUI_Window_ShaderEditor::Draw() {
 
     // Check Enable Change
     if (LastEnabledState_ != Enabled_) {
 
         // If Just Enabled
         if (Enabled_) {
-            LivePreviewShaderIndex_ = VisualRenderer_->Shaders_.size();
+            VisualRenderer_->Shaders_.push_back(std::make_unique<ERS_STRUCT_Shader>());
         } else {
 
 
             // Set Any Viewports Shaders To 0 Who Are Using This Shader
             for (int i = 0; (long)i < (long)VisualRenderer_->Viewports_.size(); i++) {
-                if (VisualRenderer_->Viewports_[i]->ShaderIndex == LivePreviewShaderIndex_) {
+                if (VisualRenderer_->Viewports_[i]->ShaderIndex == (int)(VisualRenderer_->Shaders_.size() - 1)) {
                     VisualRenderer_->Viewports_[i]->ShaderIndex = 0;
                 }
             }
 
             // Remove Shader From List
-            VisualRenderer_->Shaders_.erase(LivePreviewShaderIndex_);
+            VisualRenderer_->Shaders_.erase(VisualRenderer_->Shaders_.begin() + VisualRenderer_->Shaders_.size() - 1);
 
 
         }
@@ -101,7 +101,7 @@ void Window_ShaderEditor::Draw() {
     
         DrawEditorWindow();
         DrawToolsWindow();
-
+        
     }
 
 
@@ -109,7 +109,7 @@ void Window_ShaderEditor::Draw() {
 
 
 
-void Window_ShaderEditor::DrawEditorWindow() {
+void GUI_Window_ShaderEditor::DrawEditorWindow() {
 
     bool Visible = ImGui::Begin("Shader Editor", &Enabled_, ImGuiWindowFlags_MenuBar);
 
@@ -255,60 +255,37 @@ void Window_ShaderEditor::DrawEditorWindow() {
 }
 
 
-void Window_ShaderEditor::DrawToolsWindow() {
+void GUI_Window_ShaderEditor::DrawToolsWindow() {
 
-    bool CompileVisible = ImGui::Begin("Shader Tools", &Enabled_);
+    bool CompileVisible = ImGui::Begin("Compiler Log", &Enabled_);
 
-        // Compile Shader Object
-        std::string VertexText = Editors_[0]->GetText();
-        std::string FragmentText = Editors_[1]->GetText();
+    // Compile Shader Object
+    std::string VertexText = Editors_[0]->GetText();
+    std::string FragmentText = Editors_[1]->GetText();
+    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ResetProgram();
+    std::string VertexLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileVertexShader(VertexText.c_str());
+    std::string FragmentLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileFragmentShader(FragmentText.c_str());
+    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CreateShaderProgram(SystemUtils_->Logger_.get(), false);
+    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->DisplayName = "Preview Shader";
+    VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->InternalName = "Preview Shader";
 
-        LivePreviewShader_->~ERS_STRUCT_Shader();
-        LivePreviewShader_ = std::make_shared<ERS_STRUCT_Shader>();
-        std::string VertexLog = LivePreviewShader_->CompileVertexShader(VertexText.c_str());
-        std::string FragmentLog = LivePreviewShader_->CompileFragmentShader(FragmentText.c_str());
-        LivePreviewShader_->CreateShaderProgram();
-        bool ShaderCompiled = LivePreviewShader_->MakeActive();
-        LivePreviewShader_->SetInt("texture_diffuse1", 0);
-        LivePreviewShader_->DisplayName = "Preview Shader";
-        LivePreviewShader_->InternalName = "Preview Shader";
+    // Extract Shader Log
+    std::string ShaderLog;
+    if (Mode_ == 0) {
+        ShaderLog = VertexLog;
+    } else if (Mode_ == 1) {
+        ShaderLog = FragmentLog;
+    }
 
-
-        // If Autopreview, Update Shader
-        if (ShaderCompiled) {
-            VisualRenderer_->SetShader(LivePreviewShader_, LivePreviewShaderIndex_);
-        }
-
-
-        // Extract Shader Log
-        std::string ShaderLog;
-        if (Mode_ == 0) {
-            ShaderLog = VertexLog;
-        } else if (Mode_ == 1) {
-            ShaderLog = FragmentLog;
-        }
-
-        if (ShaderLog == "") {
-            ShaderLog = "No errors detected.";
-        }
-
-
-        // Set Default Window Size
-        ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
-
-
+    // Set Default Window Size
+    ImGui::SetWindowSize(ImVec2(600,400), ImGuiCond_FirstUseEver);
         if (CompileVisible) {
-
             // Draw Log
             ImGui::BeginChild("Shader Log");
             ImGui::TextWrapped("%s", ShaderLog.c_str());
             ImGui::EndChild();
-
         }
-
-
- 
-    ImGui::End();
+     ImGui::End();
 
 }
 

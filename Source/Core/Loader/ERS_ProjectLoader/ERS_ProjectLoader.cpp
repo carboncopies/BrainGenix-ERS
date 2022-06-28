@@ -89,6 +89,33 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
         Program.Name = it->second["Name"].as<std::string>();
         Program.VertexID = it->second["VertexID"].as<long>();
         Program.FragmentID = it->second["FragmentID"].as<long>();
+
+        if (it->second["GeometryID"]) {
+            Program.GeometryID = it->second["GeometryID"].as<long>();
+        } else {
+            Program.GeometryID = -1;
+        }
+
+        if (it->second["ComputeID"]) {
+            Program.ComputeID = it->second["ComputeID"].as<long>();
+        } else {
+            Program.ComputeID = -1;
+        }
+
+        if (it->second["TessControlID"]) {
+            Program.TCID = it->second["TessControlID"].as<long>();
+        } else {
+            Program.TCID = -1;
+        }
+        
+        if (it->second["TessEvalID"]) {
+            Program.TEID = it->second["TessEvalID"].as<long>();
+        } else {
+            Program.TEID = -1;
+        }
+        
+        
+
         Project.ShaderPrograms.push_back(Program);
     }
     SystemUtils_->Logger_->Log(std::string(std::string("Finished Loading Shader Programs")).c_str(), 4);

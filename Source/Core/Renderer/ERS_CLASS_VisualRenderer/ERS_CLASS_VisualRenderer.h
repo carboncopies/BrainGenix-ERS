@@ -24,10 +24,12 @@
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_CLASS_ShaderLoader.h>
 #include <ERS_CLASS_InputProcessor.h>
-#include <ERS_CLASS_Framebuffer.h>
 #include <ERS_CLASS_Grid.h>
 #include <ERS_CLASS_LightIconRenderer.h>
 #include <ERS_CLASS_MeshRenderer.h>
+#include <ERS_CLASS_ViewportOverlay.h>
+#include <ERS_CLASS_ViewportMenu.h>
+#include <ERS_CLASS_ShadowMaps.h>
 
 #include <ERS_SceneManager.h>
 #include <ERS_SceneLoader.h>
@@ -43,6 +45,10 @@
 #include <ERS_STRUCT_OpenGLDefaults.h>
 #include <ERS_STRUCT_ProjectUtils.h>
 
+#include <ERS_FUNCTION_FindShaderByName.h>
+#include <ERS_FUNCTION_ConvertRotationToFrontVector.h>
+
+#include <ERS_ENUM_ShadowFilteringType.h>
 
 /**
  * @brief Handles viewport creation/deletion/rendering/updating.
@@ -54,18 +60,26 @@ private:
 
     GLFWwindow *Window_; /**<GLFW Window Instance For Window Input To Viewports*/
     Cursors3D* Cursors3D_; /**<Setup 3D Cursor Class*/
-    long int FrameNumber_ = 0; /**<Frame counter, starts at 0*/
-    int ActiveViewportCursorIndex_; /**<The index of the viewport which the gizmo is being interacted with*/
+
     ERS_STRUCT_OpenGLDefaults* OpenGLDefaults_; /**<Pointer acquired from renderermanager*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils pointer, used to get info about scripts*/
-
+    ERS_STRUCT_Shader* DepthMapShader_; /**<Depth Map Shader Pointer*/
+    ERS_STRUCT_Shader* CubemapDepthShader_; /**<Cubemap Depth Shader*/
+    
+    std::unique_ptr<ERS_CLASS_ShadowMaps> ShadowMaps_; /**<Instance of shadow mapping class used to provide system wide shadows*/
     std::unique_ptr<ERS_CLASS_MeshRenderer> MeshRenderer_; /**<Instance Of The Mesh Renderer Class Used To Hancle The Actual Rendering Of All Meshes In The Given Scene*/
+    std::unique_ptr<ERS_CLASS_ViewportOverlay> ViewportOverlay_; /**<Class that handles overlaying ui elements and text onto the viewport when requested by the viewporr struct*/
+    std::unique_ptr<ERS_CLASS_ViewportMenu> ViewportMenu_; /**<Class that provides the viewport menu functionality in a convenient manner to the visualrenderer system*/
+
+    long int FrameNumber_ = 0; /**<Frame counter, starts at 0*/
+    int ActiveViewportCursorIndex_; /**<The index of the viewport which the gizmo is being interacted with*/
+
 
 public:
     
     std::vector<std::shared_ptr<ERS_STRUCT_Viewport>> Viewports_; /**Pointer to struct of viewports*/
 
-    std::map<int, std::shared_ptr<ERS_STRUCT_Shader>> Shaders_; /**<Map of shader pointers and shader program ids*/
+    std::vector<std::unique_ptr<ERS_STRUCT_Shader>> Shaders_; /**<Vector of shaders to be used in the system*/
     int DefaultShader_ = 0; /**<Index of default shader program to be used*/
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Struct Containing Pointers To Important Info*/
@@ -83,12 +97,6 @@ public:
 
 
 private:
-
-    /**
-     * @brief Initialize an opengl context for the viewport
-     * 
-     */
-    void InitializeOpenGL();
 
     /**
      * @brief Resize a viewport of specified index to the set width and height
@@ -120,28 +128,6 @@ private:
      */
     void UpdateViewport(int Index, ERS_CLASS_SceneManager* SceneManager, float DeltaTime, bool DrawCursor = true);
 
-
-    /**
-     * @brief Draws the viewport's menu (enable/disable handled internally in this function)
-     * 
-     * @param Index 
-     */
-    void DrawViewportMenu(int Index, ERS_CLASS_SceneManager* SceneManager);
-
-    /**
-     * @brief Draw the overlays on the viewport for debugging info such as textures and fps.
-     * 
-     * @param Index 
-     */
-    void DrawViewportOverlay(int Index, ERS_CLASS_SceneManager* SceneManager);
-
-    /**
-     * @brief Returns the index of the shader with name that matches the name given. Will return 0 if the shader is not found.
-     * 
-     * @param Name 
-     * @return long 
-     */
-    long FindShaderIndex(std::string Name);
 
 
 
@@ -191,14 +177,7 @@ public:
      */
     void DeleteViewport(int Index);
     
-     /**
-     * @brief Set the Shader object
-     * 
-     * @param Shader 
-     * @param ID 
-     */
-    void SetShader(std::shared_ptr<ERS_STRUCT_Shader> Shader, int ID);
-        
+
     /**
      * @brief Set the Default Shader by index
      * 

@@ -1,7 +1,7 @@
 ![Build](https://github.com/carboncopies/BrainGenix-ERS/actions/workflows/cmake.yml/badge.svg)
 
 
-![Screenshot_20220409_071900](https://user-images.githubusercontent.com/49183477/162561372-b56cd331-3dad-40d9-8eb0-16b9e1aff46a.png)
+![Screenshot_20220612_092815](https://user-images.githubusercontent.com/49183477/173226862-11a7c10e-9aad-4363-8b21-88ffd7bf46c5.png)
 
 
 # Build Instructions
@@ -12,7 +12,7 @@
   
   Simply enter the `Tools` directory and run `sudo bash Install-Linux.sh` followed by `bash Build.sh 4`. The build command can be adjusted to fit the number of cpu cores that your system has by changing the argument. If you don't know how many CPU cores your system has, just leave the command as is. If something isn't working quite right for you, you can try cleaning the build with `bash Clean.sh`.
 
-  If some packages are missing on your distro, you'll have to substitute with whatever your distro uses. We try to include as many possible packages in our codebase as possible, but this isn't always possible or practical.
+  If some packages are missing on your distro, you'll have to substitute with whatever your distro uses. We try to include as many packages in our codebase as possible, but this isn't always possible or practical.
 
 
 ## Windows:
@@ -21,10 +21,10 @@
   
 
   - Open Visual Stuido 2019 (Has to be this version)
-  - Install python 3.9.5 (needed to link with the interpreter, embeddable version already included in project tree, also restart your machine after installing to avoid issues)
+  - Install python 3.9.5 (needed to link with the interpreter, embeddable version already included in project tree, also restart your machine after installing to avoid issues) (If just installing, make sure to restart after to make it show up in visual studio)
   - Clone the repository but note that you'll probably have to put it into a root level directory on your disk. This is because Microsoft has imposed a 260 character file name limit in their compiler. 
   - Open the CMakeLists.txt file, and generate the configuration
-  - Put your build config into debug/release based on what you're doing
+  - Put your build config into "Release", currently debug doesn't work for some reason.
   - Set target to BrainGenix-ERS.exe
   - Hit `Build`
 
@@ -79,7 +79,8 @@
     "PointLightColorR" - Red component of Color(from scale of 0 to 1)
     "PointLightColorG" - Green component of color (from scale of 0 to 1)
     "PointLightColorB" - Blue component of color (from scale of 0 to 1)
-    "PointLightIntensity" - brighness of the light
+    "PointLightIntensity" - brighness of the light (float)
+    "PointLightMaxDistance" - maximum distance of the light after which the scene will not be affected (float)
     "PointLightRolloffConstant" - Constant component of light rolloff (float)
     "PointLightRolloffLinear" - Linear component of light rolloff (float)
     "PointLightRolloffQuadratic" - Quadratic component of light rolloff (float)
@@ -91,7 +92,8 @@
     "DirectionalLightRotX" - X Rotation of the light
     "DirectionalLightRotY" - Y Rotation of the light
     "DirectionalLightRotZ" - Z Rotation of the light
-    "DirectionalLightIntensity" - brighness of the light
+    "DirectionalLightIntensity" - brighness of the light (float)
+    "DirectionalLightMaxDistance" - maximum distance of the light after which the scene will not be affected (float)
     "DirectionalLightColorR" - Red component of color (from scale of 0 to 1)
     "DirectionalLightColorG" - Green component of color (from scale of 0 to 1)
     "DirectionalLightColorB" - Blue component of color (from scale of 0 to 1)
@@ -106,6 +108,7 @@
     "SpotLightColorR" - Red component of color (from scale of 0 to 1)
     "SpotLightColorG" - Green component of color (from scale of 0 to 1)
     "SpotLightColorB" - Blue component of color (from scale of 0 to 1)
-    "SpotLightIntensity" - brighness of the light
-    "SpotLightCutoff" - Circular radius of spotlight inner lit area
-    "SpotlightOuterCutoff" - Outside area of spotlight cutoff
+    "SpotLightIntensity" - brighness of the light (float)
+    "SpotLightMaxDistance" - maximum distance of the light after which the scene will not be affected (float)
+    "SpotLightCutoff" - Angle of area affected in degrees (float)
+    "SpotlightRolloff" - Rolloff angle in degrees (float)

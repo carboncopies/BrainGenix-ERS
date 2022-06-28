@@ -49,7 +49,7 @@
  * @brief Create GUI Window "Rendering Settings"
  * 
  */
-class Window_SceneTree {
+class GUI_Window_SceneTree {
 
 private:
 
@@ -103,13 +103,13 @@ public:
      * @brief Construct a new Window_SceneTree object
      * 
      */
-    Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, Cursors3D* Cursors3D);
+    GUI_Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, Cursors3D* Cursors3D);
 
     /**
      * @brief Destroy the Window_SceneTree object
      * 
      */
-    ~Window_SceneTree();
+    ~GUI_Window_SceneTree();
 
     /**
      * @brief Function that draws the window, should internally check if enable variable is set to true.

@@ -67,9 +67,8 @@ add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_FontManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_UserProfileManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_LayoutManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_3DCursor)
-add_subdirectory(${SRC_DIR}/Core/Editor/Widgets)
 add_subdirectory(${SRC_DIR}/Core/Editor/Windows)
-add_subdirectory(${SRC_DIR}/Core/Editor/MenuEntries)
+add_subdirectory(${SRC_DIR}/Core/Editor/Menus)
 
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_RendererManager)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_VisualRenderer)
@@ -96,6 +95,9 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Light)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_OpenGLDefaults)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_SceneObject)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Script)
+add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_DepthMap)
+add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_RendererSettings)
+add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_OpenGLLogItem)
 
 add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_PythonInterpreterIntegration)
 
@@ -143,6 +145,7 @@ target_link_libraries(${PROJECT_NAME}
   ERS_STRUCT_HumanInputDeviceUtils
   ERS_STRUCT_SystemUtils
   ERS_STRUCT_ProjectUtils
+  ERS_STRUCT_RendererSettings
 
   )
 

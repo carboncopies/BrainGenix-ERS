@@ -12,12 +12,16 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
+#include <ERS_CLASS_HardwareInformation.h>
+#include <ERS_CLASS_PythonInterpreterIntegration.h>
+
+#include <ERS_STRUCT_RendererSettings.h>
 
 #include <ERS_InputOutputSubsystem.h>
 #include <ERS_ModelWriter.h>
 #include <ERS_FramerateManager.h>
-#include <ERS_CLASS_HardwareInformation.h>
-#include <ERS_CLASS_PythonInterpreterIntegration.h>
+
+
 
 
 
@@ -28,14 +32,17 @@
 struct ERS_STRUCT_SystemUtils {
 
 
-    std::unique_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer To BG-ERS Logging System*/
     std::unique_ptr<YAML::Node> LocalSystemConfiguration_; /**<Pointer To Config.yaml Data From Local Hard Drive*/
+    std::unique_ptr<bool> SystemShouldRun_; /**<Pointer To Variable Setting If System Should Run Or Not*/
+
+    std::unique_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer To BG-ERS Logging System*/
     std::unique_ptr<ERS_CLASS_InputOutputSubsystem> ERS_IOSubsystem_; /**<Pointer To ERS Input Output Subsystem*/
     std::unique_ptr<ERS_CLASS_ModelWriter> ERS_ModelWriter_; /**<Pointer To ERS Model Writer Instance*/
-    std::unique_ptr<bool> SystemShouldRun_; /**<Pointer To Variable Setting If System Should Run Or Not*/
     std::unique_ptr<ERS_CLASS_FramerateManager> FramerateManager_; /**<Pointer to framerate subsystem*/
     std::unique_ptr<ERS_CLASS_HardwareInformation> ERS_CLASS_HardwareInformation_; /**<Pointer to the hardware informaton class instance*/
     std::unique_ptr<ERS_CLASS_PythonInterpreterIntegration> ERS_CLASS_PythonInterpreterIntegration_; /**<Pointer to the class integrating the python interpreter*/
+
+    std::unique_ptr<ERS_STRUCT_RendererSettings> RendererSettings_; /**<Contains settings to be used by the renderer class, Automatically updates the renderer when this struct is updated.*/
 
 
     int RenderWidth_ = 0; /**<Width of the display being rendered to (if using a window, this is the size of the window)*/

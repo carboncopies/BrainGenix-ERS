@@ -30,19 +30,24 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
     LoadEditorData();
     VisualRenderer_->SetOpenGLDefaults(OpenGLDefaults_.get());
 
-    // Debugging test, to see if this fixes the access violations
-    glEnable(GL_TEXTURE_2D);
+
 
     // Setup Shaders
     ShaderLoader_ = std::make_unique<ERS_CLASS_ShaderLoader>(SystemUtils_);
     for (int i = 0; (long)i < (long)ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.size(); i++) {
+        VisualRenderer_->Shaders_.push_back(std::make_unique<ERS_STRUCT_Shader>());
+        ERS_STRUCT_Shader* Shader = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size()-1].get();
+
         long VertexShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].VertexID;
         long FragmentShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].FragmentID;
+        long GeometryShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].GeometryID;
+        long ComputeShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].ComputeID;
+        long TCShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].TCID;
+        long TEShaderID = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].TEID;
+        
         std::string ShaderName = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[i].Name;
-        Shader_ = ShaderLoader_->LoadShaderFromAsset(VertexShaderID, FragmentShaderID, ShaderName);
-        Shader_->MakeActive(SystemUtils_->Logger_.get());
-        Shader_->SetInt("texture_diffuse1", 0);
-        VisualRenderer_->SetShader(Shader_, i);
+        ShaderLoader_->LoadShaderFromAsset(Shader, VertexShaderID, FragmentShaderID, GeometryShaderID, ComputeShaderID, TCShaderID, TEShaderID, ShaderName);
+
     }
     int DefaultShader = ProjectUtils_->ProjectManager_->Project_.DefaultShaderProgram;
     VisualRenderer_->SetDefaultShader(DefaultShader);
@@ -132,10 +137,12 @@ void RendererManager::InitializeGLFW() {
 
     // Initialize GLFW
     glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+
+    //glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
 
     // Read Out Width, Height
     SystemUtils_->Logger_->Log("Read Configuration File For 'WindowWidth' Parameter", 1);
@@ -157,9 +164,25 @@ void RendererManager::InitializeGLFW() {
     glfwMakeContextCurrent(Window_);
     glfwSwapInterval(0);
 
+
+
+    // Setup GLAD
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        SystemUtils_->Logger_->Log("Failed To Initialize GLAD", 10);
+    }
+
+    // Setup OpenGL For Blending (For Transparency Issues)
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+
+
+
 }
 
 void RendererManager::UpdateLoop(float DeltaTime) { 
+
+    // Log Any Issues
+    ReportOpenGLErrors();
 
     // Update Window Title
     std::string SceneTitle = ProjectUtils_->ProjectManager_->Project_.ProjectName + std::string(" - BrainGenix-ERS");
@@ -204,5 +227,36 @@ void RendererManager::UpdateLoop(float DeltaTime) {
         *SystemUtils_->SystemShouldRun_ = false;
     }
 
+
+}
+
+void RendererManager::ReportOpenGLErrors() {
+
+    // Get Current Errors
+    GLint GLErrorStatus = glGetError();
+
+    if (GLErrorStatus != GL_NO_ERROR) {
+
+        std::string ErrorMeaning = "Unknown";
+        if (GLErrorStatus == GL_INVALID_ENUM) {
+            ErrorMeaning = "GL_INVALID_ENUM";
+        } else if (GLErrorStatus == GL_INVALID_VALUE) {
+            ErrorMeaning = "GL_INVALID_VALUE";
+        } else if (GLErrorStatus == GL_INVALID_OPERATION) {
+            ErrorMeaning = "GL_INVALID_OPERATION";
+        } else if (GLErrorStatus == GL_STACK_OVERFLOW) {
+            ErrorMeaning = "GL_STACK_OVERFLOW";
+        } else if (GLErrorStatus == GL_STACK_UNDERFLOW) {
+            ErrorMeaning = "GL_STACK_UNDERFLOW";
+        } else if (GLErrorStatus == GL_OUT_OF_MEMORY) {
+            ErrorMeaning = "GL_OUT_OF_MEMORY";
+        } else if (GLErrorStatus == GL_INVALID_FRAMEBUFFER_OPERATION) {
+            ErrorMeaning = "GL_INVALID_FRAMEBUFFER_OPERATION";
+        }
+
+        std::string ErrorMessage = std::string("OpenGL Context Reporting Error '") + std::to_string(GLErrorStatus) + std::string("' (") + ErrorMeaning + std::string(")");
+        SystemUtils_->Logger_->Log(ErrorMessage, 9);
+
+    }
 
 }

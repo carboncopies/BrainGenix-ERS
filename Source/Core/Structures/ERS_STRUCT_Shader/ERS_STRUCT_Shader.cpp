@@ -6,10 +6,40 @@
 #include <ERS_STRUCT_Shader.h>
 
 
+ERS_STRUCT_Shader::ERS_STRUCT_Shader() {
+
+    ShaderProgram_ = 0;
+    VertexShader = 0;
+    FragmentShader = 0;
+    GeometryShader = 0;
+    ComputeShader = 0;
+    TCShader = 0;
+    TEShader = 0;
+
+    HasGeometryShader = false;
+    HasComputeShader = false;
+    HasTCShader = false;
+    HasTEShader = false;
+
+    VertexID = -1;
+    FragmentID = -1;
+    GeometryID = -1;
+    ComputeID = -1;
+    TessellationControlShaderID = -1;
+    TessellationEvaluationShaderID = -1;
+}
+
 ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
 
     // Deallocate Shader Program
-    glDeleteProgram(ShaderProgram);
+    glUseProgram(0);
+    glDeleteProgram(ShaderProgram_);
+
+}
+
+void ERS_STRUCT_Shader::ResetProgram() {
+
+    glDeleteProgram(ShaderProgram_);
 
 }
 
@@ -34,8 +64,7 @@ std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, ERS_C
         }
     }
 
-    // Update Vars
-    _VertexShaderInitialized = true;
+
     return ErrorMessage;
 
 }
@@ -43,7 +72,6 @@ std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, ERS_C
 std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, ERS_CLASS_LoggingSystem* Logger) {
 
     // Compile The Fragment Shader Text Into A Binary
-    std::string ErrorMessage;
     FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
     glShaderSource(FragmentShader, 1, &FragmentText, NULL);
@@ -52,6 +80,7 @@ std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, E
     // Report Compilation Status
     int FragmentSuccess;
     char FragmentInfoLog[65535];
+    std::string ErrorMessage;
     glGetShaderiv(FragmentShader, GL_COMPILE_STATUS, &FragmentSuccess);
     if (!FragmentSuccess) {
         glGetShaderInfoLog(FragmentShader, 65535, NULL, FragmentInfoLog);
@@ -61,56 +90,191 @@ std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, E
         }
     }
 
-    // Update Vars
-    _FragmentShaderInitialized = true;
     return ErrorMessage;
 
 }
 
+std::string ERS_STRUCT_Shader::CompileGeometryShader(const char* GeometryText, ERS_CLASS_LoggingSystem* Logger) {
 
-std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logger) {
+    // Compile The Fragment Shader Text Into A Binary
+    GeometryShader = glCreateShader(GL_GEOMETRY_SHADER);
 
-    // Check That Vertex And Fragment Shaders Are Initialized
+    glShaderSource(GeometryShader, 1, &GeometryText, NULL);
+    glCompileShader(GeometryShader);
+
+    // Report Compilation Status
+    int FragmentSuccess;
+    char FragmentInfoLog[65535];
     std::string ErrorMessage;
-    if (!_VertexShaderInitialized || !_FragmentShaderInitialized) {
+    glGetShaderiv(GeometryShader, GL_COMPILE_STATUS, &FragmentSuccess);
+    if (!FragmentSuccess) {
+        glGetShaderInfoLog(GeometryShader, 65535, NULL, FragmentInfoLog);
+        ErrorMessage = std::string(FragmentInfoLog);
         if (Logger != nullptr) {
-            Logger->Log("Vertex/Fragment Shader Compile Error", 8);
+            Logger->Log("Geometry Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
         }
+    } else {
+        HasGeometryShader = true;
     }
 
+    return ErrorMessage;
+
+}
+
+std::string ERS_STRUCT_Shader::CompileComputeShader(const char* ComputeText, ERS_CLASS_LoggingSystem* Logger) {
+
+    // Compile The Fragment Shader Text Into A Binary
+    ComputeShader = glCreateShader(GL_COMPUTE_SHADER);
+
+    glShaderSource(ComputeShader, 1, &ComputeText, NULL);
+    glCompileShader(ComputeShader);
+
+    // Report Compilation Status
+    int FragmentSuccess;
+    char FragmentInfoLog[65535];
+    std::string ErrorMessage;
+    glGetShaderiv(ComputeShader, GL_COMPILE_STATUS, &FragmentSuccess);
+    if (!FragmentSuccess) {
+        glGetShaderInfoLog(ComputeShader, 65535, NULL, FragmentInfoLog);
+        ErrorMessage = std::string(FragmentInfoLog);
+        if (Logger != nullptr) {
+            Logger->Log("Compute Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
+        }
+    } else {
+        HasComputeShader = true;
+    }
+
+    return ErrorMessage;
+
+}
+
+std::string ERS_STRUCT_Shader::CompileTCShader(const char* TCText, ERS_CLASS_LoggingSystem* Logger) {
+
+    // Compile The Fragment Shader Text Into A Binary
+    TCShader = glCreateShader(GL_TESS_CONTROL_SHADER);
+
+    glShaderSource(TCShader, 1, &TCText, NULL);
+    glCompileShader(TCShader);
+
+    // Report Compilation Status
+    int FragmentSuccess;
+    char FragmentInfoLog[65535];
+    std::string ErrorMessage;
+    glGetShaderiv(TCShader, GL_COMPILE_STATUS, &FragmentSuccess);
+    if (!FragmentSuccess) {
+        glGetShaderInfoLog(TCShader, 65535, NULL, FragmentInfoLog);
+        ErrorMessage = std::string(FragmentInfoLog);
+        if (Logger != nullptr) {
+            Logger->Log("Tess Control Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
+        }
+    } else {
+        HasTCShader = true;
+    }
+
+    return ErrorMessage;
+
+}
+
+std::string ERS_STRUCT_Shader::CompileTEShader(const char* TEText, ERS_CLASS_LoggingSystem* Logger) {
+
+    // Compile The Fragment Shader Text Into A Binary
+    TEShader = glCreateShader(GL_TESS_EVALUATION_SHADER);
+
+    glShaderSource(TEShader, 1, &TEText, NULL);
+    glCompileShader(TEShader);
+
+    // Report Compilation Status
+    int FragmentSuccess;
+    char FragmentInfoLog[65535];
+    std::string ErrorMessage;
+    glGetShaderiv(TEShader, GL_COMPILE_STATUS, &FragmentSuccess);
+    if (!FragmentSuccess) {
+        glGetShaderInfoLog(TEShader, 65535, NULL, FragmentInfoLog);
+        ErrorMessage = std::string(FragmentInfoLog);
+        if (Logger != nullptr) {
+            Logger->Log("Tess Eval Shader Compile Error: " +  std::string(FragmentInfoLog), 8);
+        }
+    } else {
+        HasTEShader = true;
+    }
+
+    return ErrorMessage;
+
+}
+
+std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logger, bool LogEnable) {
+
     // Create Shader Program
-    ShaderProgram = glCreateProgram();
+    ShaderProgram_ = glCreateProgram();
 
     // Attach Shaders To Program
-    glAttachShader(ShaderProgram, VertexShader);
-    glAttachShader(ShaderProgram, FragmentShader);
+    Logger->Log("Attaching Vertex Shader", 3, LogEnable);
+    glAttachShader(ShaderProgram_, VertexShader);
+
+    Logger->Log("Attaching Fragment Shader", 3, LogEnable);
+    glAttachShader(ShaderProgram_, FragmentShader);
+
+    if (HasGeometryShader) {
+        Logger->Log("Attaching Geometry Shader", 3, LogEnable);
+        glAttachShader(ShaderProgram_, GeometryShader);
+    }
+
+    if (HasComputeShader) {
+        Logger->Log("Attaching Compute Shader", 3, LogEnable);
+        glAttachShader(ShaderProgram_, ComputeShader);
+    }
+
+    if (HasTCShader) {
+        Logger->Log("Attaching TC Shader", 3, LogEnable);
+        glAttachShader(ShaderProgram_, TCShader);
+    }
+
+    if (HasTEShader) {
+        Logger->Log("Attaching TE Shader", 3, LogEnable);
+        glAttachShader(ShaderProgram_, TEShader);
+    }
 
     // Link Program
-    glLinkProgram(ShaderProgram);
+    glLinkProgram(ShaderProgram_);
 
 
     // Get Link Status
     int Success;
-    glGetProgramiv(ShaderProgram, GL_LINK_STATUS, &Success);
+    std::string ErrorMessage;
+    glGetProgramiv(ShaderProgram_, GL_LINK_STATUS, &Success);
     if (!Success) {
         char InfoLog[65535];
-        glGetProgramInfoLog(ShaderProgram, 65535, NULL, InfoLog);
+        glGetProgramInfoLog(ShaderProgram_, 65535, NULL, InfoLog);
         ErrorMessage = std::string(InfoLog);
-        if (Logger != nullptr) {
-            Logger->Log("Shader Link Error: " +  std::string(InfoLog), 8);
-        }
-    } else {
-        _ShaderProgramInitialized = true;
+        Logger->Log("Shader Link Error: " +  std::string(InfoLog), 8, LogEnable);
     }
 
-
     // Free RAM
+    glDetachShader(ShaderProgram_, VertexShader);
     glDeleteShader(VertexShader);
+
+    glDetachShader(ShaderProgram_, FragmentShader);
     glDeleteShader(FragmentShader);
 
-    // Set State Of Vertex/Fragment Shaders To Uninit
-    _VertexShaderInitialized = false;
-    _FragmentShaderInitialized = false;
+    if (HasGeometryShader) {
+        glDetachShader(ShaderProgram_, GeometryShader);
+        glDeleteShader(GeometryShader);
+    }
+
+    if (HasComputeShader) {
+        glDetachShader(ShaderProgram_, ComputeShader);
+        glDeleteShader(ComputeShader);
+    }
+
+    if (HasTCShader) {
+        glDetachShader(ShaderProgram_, TCShader);
+        glDeleteShader(TCShader);
+    }
+
+    if (HasTEShader) {
+        glDetachShader(ShaderProgram_, TEShader);
+        glDeleteShader(TEShader);
+    }
 
 
     // Return Status
@@ -118,75 +282,67 @@ std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_CLASS_LoggingSystem* Logg
 
 }
 
-bool ERS_STRUCT_Shader::MakeActive(ERS_CLASS_LoggingSystem* Logger) {
+bool ERS_STRUCT_Shader::MakeActive() {
 
-    if ((!_ShaderProgramInitialized)) {
-        if (Logger != nullptr) {
-            Logger->Log("Shader Not Yet Initialized", 8);
-        }
-        return false;
-    }
-
-    glUseProgram(ShaderProgram);
+    glUseProgram(ShaderProgram_);
     return true;
 
 }
-
 
 // Population Functions
 // ------------------------------------------------------------------------
 void ERS_STRUCT_Shader::SetBool(const std::string &name, bool value) const
 {         
-    glUniform1i(glGetUniformLocation(ShaderProgram, name.c_str()), (int)value); 
+    glUniform1i(glGetUniformLocation(ShaderProgram_, name.c_str()), (int)value); 
 }
 // ------------------------------------------------------------------------
 void ERS_STRUCT_Shader::SetInt(const std::string &name, int value) const
 { 
-    glUniform1i(glGetUniformLocation(ShaderProgram, name.c_str()), value); 
+    glUniform1i(glGetUniformLocation(ShaderProgram_, name.c_str()), value); 
 }
 void ERS_STRUCT_Shader::SetFloat(const std::string &name, float value) const
 { 
-    glUniform1f(glGetUniformLocation(ShaderProgram, name.c_str()), value); 
+    glUniform1f(glGetUniformLocation(ShaderProgram_, name.c_str()), value); 
 }
 // ------------------------------------------------------------------------
 void ERS_STRUCT_Shader::SetVec2(const std::string &name, const glm::vec2 &value) const
 { 
-    glUniform2fv(glGetUniformLocation(ShaderProgram, name.c_str()), 1, &value[0]); 
+    glUniform2fv(glGetUniformLocation(ShaderProgram_, name.c_str()), 1, &value[0]); 
 }
 void ERS_STRUCT_Shader::SetVec2(const std::string &name, float x, float y) const
 { 
-    glUniform2f(glGetUniformLocation(ShaderProgram, name.c_str()), x, y); 
+    glUniform2f(glGetUniformLocation(ShaderProgram_, name.c_str()), x, y); 
 }
 // ------------------------------------------------------------------------
 void ERS_STRUCT_Shader::SetVec3(const std::string &name, const glm::vec3 &value) const
 { 
-    glUniform3fv(glGetUniformLocation(ShaderProgram, name.c_str()), 1, &value[0]); 
+    glUniform3fv(glGetUniformLocation(ShaderProgram_, name.c_str()), 1, &value[0]); 
 }
 void ERS_STRUCT_Shader::SetVec3(const std::string &name, float x, float y, float z) const
 { 
-    glUniform3f(glGetUniformLocation(ShaderProgram, name.c_str()), x, y, z); 
+    glUniform3f(glGetUniformLocation(ShaderProgram_, name.c_str()), x, y, z); 
 }
 // ------------------------------------------------------------------------
 void ERS_STRUCT_Shader::SetVec4(const std::string &name, const glm::vec4 &value) const
 { 
-    glUniform4fv(glGetUniformLocation(ShaderProgram, name.c_str()), 1, &value[0]); 
+    glUniform4fv(glGetUniformLocation(ShaderProgram_, name.c_str()), 1, &value[0]); 
 }
 void ERS_STRUCT_Shader::SetVec4(const std::string &name, float x, float y, float z, float w) 
 { 
-    glUniform4f(glGetUniformLocation(ShaderProgram, name.c_str()), x, y, z, w); 
+    glUniform4f(glGetUniformLocation(ShaderProgram_, name.c_str()), x, y, z, w); 
 }
 // ------------------------------------------------------------------------
 void ERS_STRUCT_Shader::SetMat2(const std::string &name, const glm::mat2 &mat) const
 {
-    glUniformMatrix2fv(glGetUniformLocation(ShaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
+    glUniformMatrix2fv(glGetUniformLocation(ShaderProgram_, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 // ------------------------------------------------------------------------
 void ERS_STRUCT_Shader::SetMat3(const std::string &name, const glm::mat3 &mat) const
 {
-    glUniformMatrix3fv(glGetUniformLocation(ShaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
+    glUniformMatrix3fv(glGetUniformLocation(ShaderProgram_, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 // ------------------------------------------------------------------------
 void ERS_STRUCT_Shader::SetMat4(const std::string &name, const glm::mat4 &mat) const
 {
-    glUniformMatrix4fv(glGetUniformLocation(ShaderProgram, name.c_str()), 1, GL_FALSE, &mat[0][0]);
+    glUniformMatrix4fv(glGetUniformLocation(ShaderProgram_, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }

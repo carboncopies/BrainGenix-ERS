@@ -33,7 +33,7 @@
  * @brief This class provides the window for the script editor.
  * 
  */
-class Window_ScriptEditor {
+class GUI_Window_ScriptEditor {
 
 private:
 
@@ -88,13 +88,13 @@ public:
      * 
      * @param SystemUtils 
      */
-    Window_ScriptEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer);
+    GUI_Window_ScriptEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer);
 
     /**
      * @brief Destroy the Window_ScriptEditor object
      * 
      */
-    ~Window_ScriptEditor();
+    ~GUI_Window_ScriptEditor();
 
     
     /**
