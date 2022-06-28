@@ -23,8 +23,8 @@ target_link_libraries(ERS_ControllerSettingsLoader
 # Link Internal Libs
 target_link_libraries(ERS_ControllerSettingsLoader
     ERS_STRUCT_SystemUtils
-    ERS_STRUCT_ControllerSettings
     ERS_STRUCT_IOData
+    ERS_STRUCT_ControllerSettings
     )
 
 
