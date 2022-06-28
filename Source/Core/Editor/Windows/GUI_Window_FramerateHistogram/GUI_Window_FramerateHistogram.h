@@ -16,10 +16,10 @@
 
 
 /**
- * @brief Create GUI Widget "Framerate Histogram"
+ * @brief Create GUI GUI_Window "Framerate Histogram"
  * 
  */
-class Widget_FramerateHistogram {
+class GUI_Window_FramerateHistogram {
 
 private:
 
@@ -29,7 +29,7 @@ private:
 public:
 
     // Show/Hide Var
-    bool Enabled_ = false; /**<Show/Hide Widget*/
+    bool Enabled_ = false; /**<Show/Hide GUI_Window*/
 
 
     /**
