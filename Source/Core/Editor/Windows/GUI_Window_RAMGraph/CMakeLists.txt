@@ -1,21 +1,19 @@
 # Create Library (Name Should Be Parent Dir Name)
-add_library(GUI_Window_RenderingSettings
+add_library(GUI_Window_RAMGraph
 
-            "GUI_Window_RenderingSettings.cpp"
-            "GUI_Window_RenderingSettings.h"
+            "GUI_Window_RAMGraph.cpp"
+            "GUI_Window_RAMGraph.h"
 
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_RenderingSettings
-    glad
-    glfw
+target_link_libraries(GUI_Window_RAMGraph
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_RenderingSettings
+target_link_libraries(GUI_Window_RAMGraph
     ERS_CLASS_LoggingSystem
     
     ERS_STRUCT_SystemUtils
@@ -25,4 +23,4 @@ target_link_libraries(GUI_Window_RenderingSettings
 
     )
 
-target_include_directories(GUI_Window_RenderingSettings PUBLIC ./)
+target_include_directories(GUI_Window_RAMGraph PUBLIC ./)
