@@ -16,10 +16,10 @@
 
 
 /**
- * @brief Create GUI Widget "Framerate Plot"
+ * @brief Create GUI GUI_Window "Framerate Plot"
  * 
  */
-class Widget_FrameratePlot {
+class GUI_Window_FrameratePlot {
 
 private:
 
@@ -28,7 +28,7 @@ private:
 
 public:
 
-    bool Enabled_ = false; /**<Show/Hide Widget*/
+    bool Enabled_ = false; /**<Show/Hide GUI_Window*/
 
 
     /**
