@@ -2,10 +2,10 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <GUI_Widget_FrameratePlot.h>
+#include <GUI_Window_FrameratePlot.h>
 
 
-void Widget_FrameratePlot::Draw() {
+void GUI_Window_FrameratePlot::Draw() {
 
     FramerateHistory_.push_back(ImGui::GetIO().Framerate);
     
