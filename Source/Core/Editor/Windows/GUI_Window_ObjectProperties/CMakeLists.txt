@@ -9,18 +9,17 @@ add_library(GUI_Window_ObjectProperties
 
 # Link 3rd Party Libs
 target_link_libraries(GUI_Window_ObjectProperties
+    glad
+    glfw
     IMGUI
-    ImPlot
     )
 
 # Link Internal Libs
 target_link_libraries(GUI_Window_ObjectProperties
-    ERS_CLASS_LoggingSystem
-    
-    ERS_STRUCT_SystemUtils
+        
+    ERS_Editor_3DCursor
     ERS_STRUCT_ProjectUtils
-    ERS_STRUCT_RendererSettings
-    ERS_STRUCT_HardwareInfo
+    ERS_SceneManager 
 
     )
 
