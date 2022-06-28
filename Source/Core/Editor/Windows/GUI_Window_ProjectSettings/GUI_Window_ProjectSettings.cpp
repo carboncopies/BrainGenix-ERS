@@ -5,7 +5,7 @@
 #include <GUI_Window_ProjectSettings.h>
 
 
-Window_ProjectSettings::Window_ProjectSettings(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_SystemUtils* SystemUtils) {
+GUI_Window_ProjectSettings::GUI_Window_ProjectSettings(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
@@ -13,14 +13,14 @@ Window_ProjectSettings::Window_ProjectSettings(ERS_STRUCT_ProjectUtils* ProjectU
 
 }
 
-Window_ProjectSettings::~Window_ProjectSettings() {
+GUI_Window_ProjectSettings::~GUI_Window_ProjectSettings() {
 
     SystemUtils_->Logger_->Log("ERS Window Project Settings Destructor Called", 6);
 
 }
 
 
-void Window_ProjectSettings::Draw() {
+void GUI_Window_ProjectSettings::Draw() {
 
     if (Enabled_) {
     bool Visible = ImGui::Begin("Project Settings", &Enabled_);
