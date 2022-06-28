@@ -17,10 +17,10 @@
 
 
 /**
- * @brief Create GUI Widget "Framerate Graph"
+ * @brief Create GUI GUI_Window "Framerate Graph"
  * 
  */
-class Widget_FramerateGraph {
+class GUI_Window_FramerateGraph {
 
 private:
 
@@ -30,7 +30,7 @@ private:
 public:
 
     // Show/Hide Var
-    bool Enabled_ = true; /**<Show/Hide Widget*/
+    bool Enabled_ = true; /**<Show/Hide GUI_Window*/
 
 
     /**
