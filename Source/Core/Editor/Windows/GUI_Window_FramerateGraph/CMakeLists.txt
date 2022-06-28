@@ -15,13 +15,6 @@ target_link_libraries(GUI_Window_FramerateGraph
 
 # Link Internal Libs
 target_link_libraries(GUI_Window_FramerateGraph
-    ERS_CLASS_LoggingSystem
-    
-    ERS_STRUCT_SystemUtils
-    ERS_STRUCT_ProjectUtils
-    ERS_STRUCT_RendererSettings
-    ERS_STRUCT_HardwareInfo
-
     )
 
 target_include_directories(GUI_Window_FramerateGraph PUBLIC ./)
