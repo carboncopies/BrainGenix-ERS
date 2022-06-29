@@ -15,11 +15,8 @@ target_link_libraries(GUI_Window_RAMGraph
 
 # Link Internal Libs
 target_link_libraries(GUI_Window_RAMGraph
-    ERS_CLASS_LoggingSystem
     
     ERS_STRUCT_SystemUtils
-    ERS_STRUCT_ProjectUtils
-    ERS_STRUCT_RendererSettings
     ERS_STRUCT_HardwareInfo
 
     )

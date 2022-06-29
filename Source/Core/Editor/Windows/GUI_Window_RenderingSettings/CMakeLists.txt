@@ -16,10 +16,7 @@ target_link_libraries(GUI_Window_RenderingSettings
 
 # Link Internal Libs
 target_link_libraries(GUI_Window_RenderingSettings
-    ERS_CLASS_LoggingSystem
-    
     ERS_STRUCT_SystemUtils
-    ERS_STRUCT_ProjectUtils
     ERS_STRUCT_RendererSettings
 
     )

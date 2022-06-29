@@ -20,9 +20,8 @@ add_library(Menu_File
 
 # Link 3rd Party Libs
 target_link_libraries(Menu_File
-    glad
-    glfw
     IMGUI
+    yaml-cpp
     )
 
 # Link Internal Libs
@@ -33,14 +32,15 @@ target_link_libraries(Menu_File
 
     ERS_Editor_ImportAsset
 
-    ERS_SceneWriter
     ERS_ProjectLoader
-
+    ERS_SceneWriter
     ERS_SceneManager
+
     ERS_STRUCT_Scene
 
     GUI_Window_ProjectSettings
     GUI_Window_ShaderEditor
+
     ERS_CLASS_VisualRenderer
     )
 

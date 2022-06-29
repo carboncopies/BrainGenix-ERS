@@ -21,19 +21,19 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
 
-#include <GUI_Window_FramerateCounter.h>
-#include <GUI_Window_RenderingSettings.h>
-#include <GUI_Window_FramerateHistogram.h>
-#include <GUI_Window_FramerateGraph.h>
-#include <GUI_Window_FrameratePlot.h>
-#include <GUI_Window_FrameLatencyGraph.h>
-#include <GUI_Window_ObjectProperties.h>
-#include <GUI_Window_RAMGraph.h>
-
 #include <GUI_Window_SceneTree.h>
 #include <GUI_Window_SystemLog.h>
 #include <GUI_Window_AssetExplorer.h>
 #include <GUI_Window_ScriptEditor.h>
+
+#include <GUI_Window_RenderingSettings.h>
+#include <GUI_Window_RAMGraph.h>
+#include <GUI_Window_ObjectProperties.h>
+#include <GUI_Window_FramerateGraph.h>
+#include <GUI_Window_FrameLatencyGraph.h>
+#include <GUI_Window_FramerateCounter.h>
+#include <GUI_Window_FramerateHistogram.h>
+#include <GUI_Window_FrameratePlot.h>
 
 #include <ERS_Editor_3DCursor.h>
 #include <ERS_SceneManager.h>

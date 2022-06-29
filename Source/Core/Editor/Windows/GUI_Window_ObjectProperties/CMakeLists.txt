@@ -18,7 +18,10 @@ target_link_libraries(GUI_Window_ObjectProperties
 target_link_libraries(GUI_Window_ObjectProperties
         
     ERS_Editor_3DCursor
+
     ERS_STRUCT_ProjectUtils
+    ERS_STRUCT_LocRotScale
+    
     ERS_SceneManager 
 
     )

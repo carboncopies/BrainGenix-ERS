@@ -18,17 +18,16 @@ add_library(Menu_Window
 
 # Link 3rd Party Libs
 target_link_libraries(Menu_Window
-    glad
-    glfw
     IMGUI
     )
 
 # Link Internal Libs
 target_link_libraries(Menu_Window
+    ERS_CLASS_VisualRenderer
+
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
 
-    ERS_CLASS_VisualRenderer
 
     GUI_Window_SceneTree
     GUI_Window_SystemLog

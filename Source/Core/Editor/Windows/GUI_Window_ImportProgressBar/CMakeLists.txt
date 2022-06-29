@@ -17,8 +17,6 @@ add_library(GUI_Window_ImportProgressBar
 
 # Link 3rd Party Libs
 target_link_libraries(GUI_Window_ImportProgressBar
-    glad
-    glfw
     IMGUI
     )
 

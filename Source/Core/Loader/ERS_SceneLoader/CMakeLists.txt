@@ -17,6 +17,7 @@ add_library(ERS_SceneLoader
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_SceneLoader
+    yaml-cpp
     )
 
 # Link Internal Libs

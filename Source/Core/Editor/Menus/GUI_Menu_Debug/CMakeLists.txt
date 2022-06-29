@@ -21,7 +21,6 @@ add_library(Menu_Debug
 # Link 3rd Party Libs
 target_link_libraries(Menu_Debug
     glad
-    glfw
     IMGUI
     )
 
@@ -31,6 +30,8 @@ target_link_libraries(Menu_Debug
     GUI_Window_TestEditor
 
     ERS_STRUCT_SystemUtils
+    
+    ERS_CLASS_LoggingSystem
     )
 
 target_include_directories(Menu_Debug PUBLIC ./)

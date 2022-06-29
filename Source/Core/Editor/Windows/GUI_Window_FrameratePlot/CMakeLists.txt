@@ -10,7 +10,6 @@ add_library(GUI_Window_FrameratePlot
 # Link 3rd Party Libs
 target_link_libraries(GUI_Window_FrameratePlot
     IMGUI
-    ImPlot
     )
 
 # Link Internal Libs
