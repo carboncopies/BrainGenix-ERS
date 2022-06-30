@@ -127,5 +127,8 @@ void GUI_Menu_Window::Draw() {
     GUI_Window_AssetExplorer_->Draw();
     GUI_Window_ScriptEditor_->Draw();
 
+    GUI_Window_ShaderEditor_->Draw();
+
+
 
 }
