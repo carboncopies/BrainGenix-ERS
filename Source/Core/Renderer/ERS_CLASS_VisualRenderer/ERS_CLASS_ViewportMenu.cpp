@@ -97,7 +97,12 @@ void ERS_CLASS_ViewportMenu::AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
 
 void ERS_CLASS_ViewportMenu::AddScene(ERS_STRUCT_Viewport* Viewport) {
 
-    // 
+    // Add Scene To List Of Scenes
+    ERS_STRUCT_Scene NewScene;
+    NewScene.ScenePath = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+    NewScene.SceneName = "New Scene";
+    ProjectUtils_->SceneManager_->AddScene(NewScene);
+
 
 }
 
