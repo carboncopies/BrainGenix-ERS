@@ -70,7 +70,7 @@ void GUI_Window_ObjectProperties::Draw() {
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
 
-            if (Visible) {
+            if (Visible && (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_.size() == 0)) {
 
 
                 // LocRotScale Properties
@@ -95,9 +95,7 @@ void GUI_Window_ObjectProperties::Draw() {
                     SelectedSceneObject = 0;
                 }
                 
-                if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_.size() == 0) {
-                    
-                } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("PointLight")) {
+                if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("PointLight")) {
                     
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
                     if (ImGui::CollapsingHeader("Point Light Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
