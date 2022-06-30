@@ -72,7 +72,6 @@ void GUI_Window_ObjectProperties::Draw() {
 
             if (Visible && (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_.size() == 0)) {
 
-
                 // LocRotScale Properties
                 if (ImGui::CollapsingHeader("Physical Parameters", ImGuiTreeNodeFlags_DefaultOpen)) {
                     
