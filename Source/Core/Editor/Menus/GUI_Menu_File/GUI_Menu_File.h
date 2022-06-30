@@ -30,7 +30,6 @@
 #include <ERS_SceneManager.h>
 
 #include <GUI_Window_ProjectSettings.h>
-#include <GUI_Window_ShaderEditor.h>
 
 #include <ERS_CLASS_VisualRenderer.h>
 
