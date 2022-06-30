@@ -37,6 +37,23 @@
  */
 struct ERS_STRUCT_Windows {
 
-
+    // Pointers to all Window Objects
+    std::unique_ptr<GUI_Window_About> GUI_Window_About_;
+    std::unique_ptr<GUI_Window_AssetExplorer> GUI_Window_AssetExplorer_;
+    std::unique_ptr<GUI_Window_ControllerSettings> GUI_Window_ControllerSettings_;
+    std::unique_ptr<GUI_Window_FrameLatencyGraph> GUI_Window_FrameLatencyGraph_;
+    std::unique_ptr<GUI_Window_FramerateCounter> GUI_Window_FramerateCounter_;
+    std::unique_ptr<GUI_Window_FramerateHistogram> GUI_Window_FramerateHistogram_;
+    std::unique_ptr<GUI_Window_FrameratePlot> GUI_Window_FrameratePlot_;
+    std::unique_ptr<GUI_Window_ImportProgressBar> GUI_Window_ImportProgressBar_;
+    std::unique_ptr<GUI_Window_ObjectProperties> GUI_Window_ObjectProperties_;
+    std::unique_ptr<GUI_Window_RAMGraph> GUI_Window_RAMGraph_;
+    std::unique_ptr<GUI_Window_RenderingSettings> GUI_Window_RenderingSettings_;
+    std::unique_ptr<GUI_Window_SceneTree> GUI_Window_SceneTree_;
+    std::unique_ptr<GUI_Window_ScriptEditor> GUI_Window_ScriptEditor_;
+    std::unique_ptr<GUI_Window_ShaderEditor> GUI_Window_ShaderEditor_;
+    std::unique_ptr<GUI_Window_SystemLog> GUI_Window_SystemLog_;
+    std::unique_ptr<GUI_Window_TestEditor> GUI_Window_TestEditor_;
+    std::unique_ptr<GUI_Window_ThemeSelector> GUI_Window_ThemeSelector_;
 
 };
