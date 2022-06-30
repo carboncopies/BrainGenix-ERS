@@ -70,7 +70,7 @@ void GUI_Window_ObjectProperties::Draw() {
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
 
-            if (Visible && (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_.size() == 0)) {
+            if (Visible && (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_.size() != 0)) {
 
                 // LocRotScale Properties
                 if (ImGui::CollapsingHeader("Physical Parameters", ImGuiTreeNodeFlags_DefaultOpen)) {
