@@ -75,7 +75,6 @@ void GUI_Menu_File::Draw() {
     // Draw Subwindows
     ImportAsset_->Draw();
     GUI_Window_ProjectSettings_->Draw();
-    ShaderEditor_->Draw();
 
 
 
