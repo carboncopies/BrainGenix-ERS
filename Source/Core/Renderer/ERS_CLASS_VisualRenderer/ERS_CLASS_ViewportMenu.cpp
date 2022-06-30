@@ -95,7 +95,10 @@ void ERS_CLASS_ViewportMenu::AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
 
 }
 
+void ERS_CLASS_ViewportMenu::AddScene(ERS_STRUCT_Viewport* Viewport) {
 
+    
+}
 
 
 void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_ShadowMaps* ShadowMaps) {

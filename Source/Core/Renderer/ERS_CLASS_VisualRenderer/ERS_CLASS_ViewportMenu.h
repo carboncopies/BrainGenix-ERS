@@ -76,6 +76,7 @@ public:
     void AddPointLight(ERS_CLASS_ShadowMaps* ShadowMaps);
     void AddDirectionalLight(ERS_CLASS_ShadowMaps* ShadowMaps);
     void AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps);
+    void AddScene(ERS_STRUCT_Viewport* Viewport);
     
 
 };
