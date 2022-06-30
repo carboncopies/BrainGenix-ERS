@@ -372,7 +372,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         // Update Cursor If Selection Changed
         ERS_STRUCT_Scene* ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
-        if (ActiveScene->HasSelectionChanged && DrawCursor) {
+        if (ActiveScene->HasSelectionChanged && DrawCursor && (ActiveScene->SceneObjects_.size() != 0)) {
 
             // Get Selected Model
             int SelectedObject = ActiveScene->SelectedObject;
