@@ -5,12 +5,3 @@
 #include <ERS_Editor_WindowManager.h>
 
 
-Cursors3D::Cursors3D() {
-
-}
-
-Cursors3D::~Cursors3D() {
-
-
-}
-
