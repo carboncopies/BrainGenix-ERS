@@ -361,7 +361,7 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             }
 
             if (ImGui::MenuItem("Scene")) {
-                AddScene(Viewport);
+                AddScene();
             }
 
 
