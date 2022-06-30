@@ -45,13 +45,6 @@ void GUI_Menu_File::Draw() {
         }
         ImGui::Separator();
 
-
-        // Shader Editor
-        if (ImGui::MenuItem("Shader Editor")) {
-            
-        }
-        ImGui::Separator();
-
         // Save Options
         if (ImGui::MenuItem("Save Active Scene")) {
             SceneWriter_->ProcessScene(
