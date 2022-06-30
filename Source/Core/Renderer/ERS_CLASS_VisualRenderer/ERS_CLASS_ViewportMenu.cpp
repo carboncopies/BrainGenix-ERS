@@ -101,6 +101,7 @@ void ERS_CLASS_ViewportMenu::AddScene(ERS_STRUCT_Viewport* Viewport) {
     ERS_STRUCT_Scene NewScene;
     NewScene.ScenePath = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
     NewScene.SceneName = "New Scene";
+    NewScene.IsSceneLoaded = true;
     ProjectUtils_->SceneManager_->AddScene(NewScene);
 
 
