@@ -21,8 +21,7 @@ target_link_libraries(ERS_Editor_WindowManager
 
 # Link Internal Libs
 target_link_libraries(ERS_Editor_WindowManager
-    ERS_CLASS_LoggingSystem
-    
+    ERS_STRUCT_SystemUtils    
     )
 
 target_include_directories(ERS_Editor_WindowManager PUBLIC ./)
