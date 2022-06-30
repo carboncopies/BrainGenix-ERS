@@ -22,7 +22,7 @@ GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
     GUI_Window_SystemLog_ = std::make_unique<GUI_Window_SystemLog>(SystemUtils_);
     GUI_Window_AssetExplorer_ = std::make_unique<GUI_Window_AssetExplorer>(SystemUtils_, ProjectUtils_);
     GUI_Window_ScriptEditor_ = std::make_unique<GUI_Window_ScriptEditor>(SystemUtils_, ProjectUtils_, VisualRenderer_);
-    ShaderEditor_ = std::make_unique<GUI_Window_ShaderEditor>(SystemUtils_, ProjectUtils_, VisualRenderer_);
+    GUI_Window_ShaderEditor_ = std::make_unique<GUI_Window_ShaderEditor>(SystemUtils_, ProjectUtils_, VisualRenderer_);
 
 
 }
