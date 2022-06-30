@@ -28,9 +28,9 @@ struct ERS_STRUCT_RendererSettings {
     int ShadowMapY_ = 2048;
 
     // Set Shadow Update Settings
-    ERS::Renderer::ShadowFilteringType ShadowFilteringType_ = ERS::Renderer::ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING;
+    ERS::Renderer::ShadowFilteringType ShadowFilteringType_ = ERS::Renderer::ERS_SHADOW_FILTERING_POISSON_SAMPLING;
     ERS::Renderer::ShadowUpdateMode ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED;
     int MaxShadowUpdatesPerFrame_ = 5;
-    int ShadowFilterKernelSize_ = 1;
+    int ShadowFilterKernelSize_ = 2;
 
 };
