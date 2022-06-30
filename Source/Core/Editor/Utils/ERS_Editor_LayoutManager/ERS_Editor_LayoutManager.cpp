@@ -7,12 +7,6 @@
 #include <imgui.h>
 #include <fstream>
 
-struct Layout {
-    int index;
-    std::string name;
-    std::string IniString;
-};
-
 ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(ERS_CLASS_LoggingSystem* Logger, const char* LayoutDirectory) {
 
     Logger_ = Logger;
@@ -30,8 +24,6 @@ ERS_CLASS_LayoutManager::~ERS_CLASS_LayoutManager() {
 
 void ERS_CLASS_LayoutManager::LoadLayouts() {
 
-    LayoutFiles_ = *new std::vector<YAML::Node>;
-
     // Create List Of Files
     for (const auto& Entry : std::filesystem::directory_iterator(std::string(LayoutDirectory_))) {
 
@@ -39,19 +31,30 @@ void ERS_CLASS_LayoutManager::LoadLayouts() {
         std::string FilePath{ Entry.path().u8string() };
 
         // Load YAML::Node
-        YAML::Node Layout = YAML::LoadFile(FilePath.c_str());
-        LayoutFiles_.push_back(Layout);
+        YAML::Node LayoutNode = YAML::LoadFile(FilePath.c_str());
+        
+        // Build Temp Layout
+        ERS_STRUCT_EditorLayout Layout;
+        Layout.index = Index;
 
-        // Parse Out Display Name From File Path
+        // Parse Out Display Name From File
         std::string LayoutName;
-        LayoutName = Layout["DisplayName"].as<std::string>();
+        LayoutName = LayoutNode["DisplayName"].as<std::string>();
+        Layout.name = LayoutName;
 
-        // Add To Names Vector
+        // Parse Out Ini String From File
+        std::string IniStr;
+        IniStr = LayoutNode["ImGuiIni"].as<std::string>();
+        Layout.IniString = IniStr;
+
+        // Add To Names and Layouts Vector
         LayoutNames_.push_back(LayoutName);
+        Layouts_.push_back(Layout);
 
         // Log Layout Indexed
         Logger_->Log(std::string(std::string("Indexed Layout: ") + FilePath).c_str(), 1);
 
+        Index++;
     }
 
 
@@ -61,22 +64,25 @@ void ERS_CLASS_LayoutManager::LoadLayouts() {
 
 void ERS_CLASS_LayoutManager::SaveLayout(std::string LayoutName) {
 
-    std::string IniString;
-
+    // Save the Ini String
+    std::string IniStr;
     size_t settings_size = 0;
-    IniString = static_cast<std::string> (ImGui::SaveIniSettingsToMemory(&settings_size));
-
-    // Save YAML file
-    YAML::Node Layout;
-    Layout["ImGuiIni"] = IniString;
-
-    // Set the layout name
-    Layout["DisplayName"] = LayoutName;
-
-    LayoutFiles_.push_back(Layout);
+    IniStr = static_cast<std::string> (ImGui::SaveIniSettingsToMemory(&settings_size));
 
     // Add To Names Vector
     LayoutNames_.push_back(LayoutName);
+
+    // Construct the New Layout Struct
+    ERS_STRUCT_EditorLayout newLayout;
+    newLayout.index = Index++;
+    newLayout.name = LayoutName;
+    newLayout.IniString = IniStr;
+    Layouts_.push_back(newLayout);
+
+    // Save YAML Node
+    YAML::Node Layout;
+    Layout["ImGuiIni"] = IniStr;
+    Layout["DisplayName"] = LayoutName;
 
     // Export the YAML string
     YAML::Emitter LayoutYAML;
@@ -84,7 +90,7 @@ void ERS_CLASS_LayoutManager::SaveLayout(std::string LayoutName) {
 
     // Set Constant Info
     LayoutYAML << YAML::Key << "DisplayName" << YAML::Value << LayoutName;
-    LayoutYAML << YAML::Key << "ImGuiIni" << YAML::Value << IniString;
+    LayoutYAML << YAML::Key << "ImGuiIni" << YAML::Value << IniStr;
 
     // Stop Writing, Generate LayoutYAML
     LayoutYAML << YAML::EndMap;
@@ -124,10 +130,10 @@ void ERS_CLASS_LayoutManager::ApplyLayout(int LayoutID) {
 
     // Get Layout Name
     std::string LayoutName = LayoutNames_[LayoutID];
-    YAML::Node LayoutNode = LayoutFiles_[LayoutID];
+    ERS_STRUCT_EditorLayout Layout = Layouts_[LayoutID];
 
     Logger_->Log(std::string(std::string("Applying Layout: ") + LayoutName).c_str(), 4);
 
-    ImGui::LoadIniSettingsFromMemory(LayoutNode["ImGuiIni"].as<const char*>());
+    ImGui::LoadIniSettingsFromMemory(Layout.IniString.c_str());
 
 }

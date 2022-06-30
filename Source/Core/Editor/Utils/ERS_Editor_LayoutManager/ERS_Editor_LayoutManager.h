@@ -14,6 +14,11 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
 
+struct ERS_STRUCT_EditorLayout {
+    int index;
+    std::string name;
+    std::string IniString;
+};
 
 /**
  * @brief Creates the user profile manager class.
@@ -28,10 +33,12 @@ private:
     std::string LayoutDirectory_; /**<This string stores the path to the editor's layout directory ending in a trailing slash*/
 
     std::vector<YAML::Node> LayoutFiles_; /**<List Of YAML::Node files*/
+    int Index = 0; /**<The index of Layout structs*/
     
 public:
 
     std::vector<std::string> LayoutNames_; /**<List of layout display names (based on display name entry in YAML file)*/
+    std::vector<ERS_STRUCT_EditorLayout> Layouts_; /**<List of Layout structs that store the layouts/
 
     /**
      * @brief Construct a new Layout Manager object
