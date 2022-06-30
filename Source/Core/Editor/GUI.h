@@ -12,12 +12,10 @@
 #include <GLFW/glfw3.h>
 
 #include <imgui.h>
-
-#include <implot.h>
-
-
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_opengl3.h>
+
+#include <implot.h>
 
 #include <ImGuizmo.h>
 
@@ -29,12 +27,12 @@
 #include <ERS_STRUCT_ProjectUtils.h>
 #include <ERS_STRUCT_HumanInputDeviceUtils.h>
 
-#include <ERS_Editor_FontManager.h>
 #include <ERS_Editor_ThemeManager.h>
+#include <ERS_Editor_FontManager.h>
 #include <ERS_Editor_UserProfileManager.h>
+#include <ERS_Editor_3DCursor.h>
 
 #include <ERS_SceneManager.h>
-#include <ERS_Editor_3DCursor.h>
 
 #include <GUI_Menu_File.h>
 #include <GUI_Menu_View.h>

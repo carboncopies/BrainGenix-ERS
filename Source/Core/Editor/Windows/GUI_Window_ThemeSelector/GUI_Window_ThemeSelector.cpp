@@ -6,18 +6,18 @@
 #include <GUI_Window_ThemeSelector.h>
 
 
-Window_ThemeSelector::Window_ThemeSelector(ERS_CLASS_ThemeManager* ThemeManager) {
+GUI_Window_ThemeSelector::GUI_Window_ThemeSelector(ERS_CLASS_ThemeManager* ThemeManager) {
 
     ThemeManager_ = ThemeManager;
 
 }
 
-Window_ThemeSelector::~Window_ThemeSelector() {
+GUI_Window_ThemeSelector::~GUI_Window_ThemeSelector() {
 
 }
 
 
-void Window_ThemeSelector::Draw() {
+void GUI_Window_ThemeSelector::Draw() {
 
     if (Enabled_) {
     ImGuiWindowFlags Flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse;

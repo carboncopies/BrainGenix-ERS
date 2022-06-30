@@ -19,7 +19,6 @@ set_property(TARGET ERS_Editor_UserProfileManager PROPERTY CXX_STANDARD 17)
 # Link 3rd Party Libs
 target_link_libraries(ERS_Editor_UserProfileManager
     yaml-cpp
-    IMGUI
     )
 
 # Link Internal Libs

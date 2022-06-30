@@ -3,7 +3,7 @@
 ########################################################################
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Window_About
+add_library(GUI_Window_About
 
             # Add Source Files (.cpp)
             "GUI_Window_About.cpp"
@@ -16,15 +16,15 @@ add_library(Window_About
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Window_About
+target_link_libraries(GUI_Window_About
     glad
     glfw
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(Window_About
+target_link_libraries(GUI_Window_About
     ERS_STRUCT_SystemUtils
     )
 
-target_include_directories(Window_About PUBLIC ./)
+target_include_directories(GUI_Window_About PUBLIC ./)

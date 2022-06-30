@@ -3,7 +3,7 @@
 ########################################################################
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Window_ControllerSettings
+add_library(GUI_Window_ControllerSettings
 
             # Add Source Files (.cpp)
             "GUI_Window_ControllerSettings.cpp"
@@ -16,18 +16,18 @@ add_library(Window_ControllerSettings
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Window_ControllerSettings
+target_link_libraries(GUI_Window_ControllerSettings
     glad
     glfw
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(Window_ControllerSettings
+target_link_libraries(GUI_Window_ControllerSettings
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_HumanInputDeviceUtils
     ERS_STRUCT_ControllerSettings
     )
 
-target_include_directories(Window_ControllerSettings PUBLIC ./)
+target_include_directories(GUI_Window_ControllerSettings PUBLIC ./)

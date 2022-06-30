@@ -3,7 +3,7 @@
 ########################################################################
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Window_ProjectSettings
+add_library(GUI_Window_ProjectSettings
 
             # Add Source Files (.cpp)
             "GUI_Window_ProjectSettings.cpp"
@@ -16,16 +16,16 @@ add_library(Window_ProjectSettings
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Window_ProjectSettings
+target_link_libraries(GUI_Window_ProjectSettings
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(Window_ProjectSettings
+target_link_libraries(GUI_Window_ProjectSettings
 
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
 
     )
 
-target_include_directories(Window_ProjectSettings PUBLIC ./)
+target_include_directories(GUI_Window_ProjectSettings PUBLIC ./)

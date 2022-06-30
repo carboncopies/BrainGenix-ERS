@@ -3,7 +3,7 @@
 ########################################################################
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Window_ScriptEditor
+add_library(GUI_Window_ScriptEditor
 
             # Add Source Files (.cpp)
             "GUI_Window_ScriptEditor.cpp"
@@ -16,13 +16,13 @@ add_library(Window_ScriptEditor
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Window_ScriptEditor
+target_link_libraries(GUI_Window_ScriptEditor
     IMGUI
     ImGuiColorTextEdit
     )
 
 # Link Internal Libs
-target_link_libraries(Window_ScriptEditor
+target_link_libraries(GUI_Window_ScriptEditor
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_Script
@@ -30,4 +30,4 @@ target_link_libraries(Window_ScriptEditor
     ERS_CLASS_VisualRenderer
     )
 
-target_include_directories(Window_ScriptEditor PUBLIC ./)
+target_include_directories(GUI_Window_ScriptEditor PUBLIC ./)
