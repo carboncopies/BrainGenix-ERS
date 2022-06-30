@@ -44,7 +44,7 @@ void GUI_Menu_File::Draw() {
         }
         ImGui::Separator();
 
-        // Save Options
+        // Scene Options
         if (ImGui::MenuItem("Save Active Scene")) {
             SceneWriter_->ProcessScene(
                 SceneManager_->Scenes_[SceneManager_->ActiveScene_].get(),
