@@ -12,6 +12,28 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
 
+#include <GUI_Window_About.h>
+#include <GUI_Window_AssetExplorer.h>
+#include <GUI_Window_ControllerSettings.h>
+#include <GUI_Window_FrameLatencyGraph.h>
+#include <GUI_Window_FramerateCounter.h>
+#include <GUI_Window_FramerateGraph.h>
+#include <GUI_Window_FramerateHistogram.h>
+#include <GUI_Window_FrameratePlot.h>
+#include <GUI_Window_ImportProgressBar.h>
+#include <GUI_Window_ObjectProperties.h>
+#include <GUI_Window_ProjectSettings.h>
+#include <GUI_Window_RAMGraph.h>
+#include <GUI_Window_RenderingSettings.h>
+#include <GUI_Window_SceneTree.h>
+#include <GUI_Window_ScriptEditor.h>
+#include <GUI_Window_ShaderEditor.h>
+#include <GUI_Window_SystemLog.h>
+#include <GUI_Window_TestEditor.h>
+#include <GUI_Window_ThemeSelector.h>
+
+
+
 
 /**
  * @brief This class owns all windows, and instantiates them. 
