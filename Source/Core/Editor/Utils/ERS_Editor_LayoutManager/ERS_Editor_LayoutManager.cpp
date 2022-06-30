@@ -7,6 +7,11 @@
 #include <imgui.h>
 #include <fstream>
 
+struct Layout {
+    int index;
+    std::string name;
+    std::string IniString;
+};
 
 ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(ERS_CLASS_LoggingSystem* Logger, const char* LayoutDirectory) {
 
@@ -86,7 +91,7 @@ void ERS_CLASS_LayoutManager::SaveLayout(std::string LayoutName) {
     std::string YAMLstring = std::string(LayoutYAML.c_str());
 
     // Write the string into a YAML file in the directory
-    std::ofstream file(std::string(LayoutDirectory_) + LayoutName + ".yaml");
+    std::ofstream file(std::string(LayoutDirectory_) + "/" + LayoutName + ".yaml");
 
     if (!file.fail())
         file << YAMLstring;
