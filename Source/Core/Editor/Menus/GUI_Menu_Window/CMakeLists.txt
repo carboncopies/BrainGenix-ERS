@@ -42,6 +42,8 @@ target_link_libraries(Menu_Window
     GUI_Window_FramerateCounter
     GUI_Window_FramerateHistogram
     GUI_Window_FrameratePlot
+    GUI_Window_ShaderEditor
+
 
     )
 
