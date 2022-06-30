@@ -95,8 +95,8 @@ void GUI_Window_ObjectProperties::Draw() {
                     SelectedSceneObject = 0;
                 }
                 
-                if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_.size() == 0) { // Early exit if no objects in scene
-                    return;
+                if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_.size() == 0) {
+                    
                 } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("PointLight")) {
                     
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
