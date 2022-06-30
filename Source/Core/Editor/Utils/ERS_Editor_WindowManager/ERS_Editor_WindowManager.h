@@ -25,6 +25,8 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to System utillities struct, used to get things like logger, etc.*/
 
+    std::vector<std::string> WindowNames_; /**<List of all understood window names, populated by constructor*/
+
 public:
 
     /**
