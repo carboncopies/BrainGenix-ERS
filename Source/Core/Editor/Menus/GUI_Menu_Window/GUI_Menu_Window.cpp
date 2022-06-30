@@ -102,6 +102,7 @@ void GUI_Menu_Window::Draw() {
         }
 
         ImGui::MenuItem("Script Editor", "", &GUI_Window_ScriptEditor_->Enabled_);
+        ImGui::MenuItem("Shader Editor", "", &ShaderEditor_->Enabled_);
 
 
     ImGui::EndMenu();
