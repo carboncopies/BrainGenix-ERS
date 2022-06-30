@@ -8,9 +8,11 @@ add_library(ERS_Editor_WindowManager
 
             # Add Source Files (.cpp)
             "ERS_Editor_WindowManager.cpp"
+            "ERS_STRUCT_Windows.cpp"
 
             # Add Header Files (.h)
             "ERS_Editor_WindowManager.h"
+            "ERS_STRUCT_Windows.h"
             
             ${BACKWARD_ENABLE}
             )
