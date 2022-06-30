@@ -95,7 +95,7 @@ void ERS_CLASS_ViewportMenu::AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
 
 }
 
-void ERS_CLASS_ViewportMenu::AddScene(ERS_STRUCT_Viewport* Viewport) {
+void ERS_CLASS_ViewportMenu::AddScene() {
 
     // Add Scene To List Of Scenes
     ERS_STRUCT_Scene NewScene;
