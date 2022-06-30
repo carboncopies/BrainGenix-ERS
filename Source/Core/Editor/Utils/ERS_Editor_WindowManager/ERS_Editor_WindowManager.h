@@ -14,4 +14,9 @@
 
 
 
-class ERS_
+class ERS_CLASS_WindowManager {
+
+    
+
+
+};
