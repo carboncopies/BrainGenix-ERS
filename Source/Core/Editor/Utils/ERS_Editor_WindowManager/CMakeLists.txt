@@ -17,17 +17,12 @@ add_library(ERS_Editor_WindowManager
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_Editor_WindowManager
-    glm
-    IMGUI
-    ImGuizmo
     )
 
 # Link Internal Libs
 target_link_libraries(ERS_Editor_WindowManager
     ERS_CLASS_LoggingSystem
     
-    ERS_STRUCT_Camera
-    ERS_STRUCT_LocRotScale
     )
 
 target_include_directories(ERS_Editor_WindowManager PUBLIC ./)
