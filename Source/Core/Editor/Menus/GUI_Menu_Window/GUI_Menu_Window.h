@@ -62,6 +62,9 @@ private:
     std::unique_ptr<GUI_Window_ObjectProperties> GUI_Window_ObjectProperties_; /**<Widget Instance*/
     std::unique_ptr<GUI_Window_FrameLatencyGraph> GUI_Window_FrameLatencyGraph_; /**<Widget Instance*/
 
+    std::unique_ptr<GUI_Window_ShaderEditor> GUI_Window_ShaderEditor_; /**<Pointer To Shader Editor Window Instance*/
+
+
     // Instantiate Windows Here
     std::unique_ptr<GUI_Window_SceneTree> GUI_Window_SceneTree_; /**<Window Instance*/
     std::unique_ptr<GUI_Window_SystemLog> GUI_Window_SystemLog_; /**<Window Instance*/
