@@ -31,9 +31,9 @@ void GUI_Menu_File::Draw() {
     if (ImGui::BeginMenu("File")) {
 
         // Project Options
-        if (ImGui::MenuItem("Save Project")) {
-            ProjectUtils_->ProjectManager_->WriteProject(1);
-        }
+        // if (ImGui::MenuItem("Save Project")) {
+        //     ProjectUtils_->ProjectManager_->WriteProject(1);
+        // }
         if (ImGui::MenuItem("Project Settings")) {
             GUI_Window_ProjectSettings_->Enabled_ = !GUI_Window_ProjectSettings_->Enabled_;
         }
@@ -45,14 +45,30 @@ void GUI_Menu_File::Draw() {
         ImGui::Separator();
 
         // Scene Options
-        if (ImGui::MenuItem("Save Active Scene")) {
-            SceneWriter_->ProcessScene(
-                SceneManager_->Scenes_[SceneManager_->ActiveScene_].get(),
-                SceneManager_->Scenes_[SceneManager_->ActiveScene_]->ScenePath
-                );
-        }
-        if (ImGui::MenuItem("Save All Scenes")) {
+        // if (ImGui::MenuItem("Save Active Scene")) {
+        //     SceneWriter_->ProcessScene(
+        //         SceneManager_->Scenes_[SceneManager_->ActiveScene_].get(),
+        //         SceneManager_->Scenes_[SceneManager_->ActiveScene_]->ScenePath
+        //         );
+        // }
+        // if (ImGui::MenuItem("Save All Scenes")) {
+        //     for (int i = 0; (long)i < (long)SceneManager_->Scenes_.size(); i++) {
+        //         SceneWriter_->ProcessScene(
+        //             SceneManager_->Scenes_[i].get(),
+        //             SceneManager_->Scenes_[i]->ScenePath
+        //             );
+        //     }
+        // }
+
+        // Save All
+        if (ImGui::MenuItem("Save")) {
+
+            SystemUtils_->Logger_->Log("Saving Project Data", 4);
+            ProjectUtils_->ProjectManager_->WriteProject(1);
+
+            SystemUtils_->Logger_->Log("Saving All Scenes", 4);
             for (int i = 0; (long)i < (long)SceneManager_->Scenes_.size(); i++) {
+                SystemUtils_->Logger_->Log(std::string("Saving Data For Scene ") + std::to_string(i), 3);
                 SceneWriter_->ProcessScene(
                     SceneManager_->Scenes_[i].get(),
                     SceneManager_->Scenes_[i]->ScenePath
