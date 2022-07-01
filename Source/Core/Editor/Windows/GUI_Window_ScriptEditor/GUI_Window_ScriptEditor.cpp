@@ -120,6 +120,8 @@ void GUI_Window_ScriptEditor::DrawEditorWindow() {
                         NewScript.Code_ = "# ERS Script\n";
                         NewScript.Name_ = "Untitled Script";
                         ProjectUtils_->ProjectManager_->Project_.Scripts.push_back(NewScript);
+
+                        SystemUtils_->Logger_->Log(std::string("Creating New Script With Asset ID '") + std::to_string(NewScript.AssetID) + std::string("'"), 0);
                         SaveScript(NewScript.Code_, NewScript.AssetID);
 
                     }
