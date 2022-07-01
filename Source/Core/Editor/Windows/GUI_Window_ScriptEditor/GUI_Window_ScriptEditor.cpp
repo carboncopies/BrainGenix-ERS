@@ -120,6 +120,7 @@ void GUI_Window_ScriptEditor::DrawEditorWindow() {
                         NewScript.Code_ = "# ERS Script\n";
                         NewScript.Name_ = "Untitled Script";
                         ProjectUtils_->ProjectManager_->Project_.Scripts.push_back(NewScript);
+                        SaveScript(NewScript.Code_, NewScript.AssetID);
 
                     }
 
@@ -145,7 +146,9 @@ void GUI_Window_ScriptEditor::DrawEditorWindow() {
                     // Save Options
                     ImGui::Separator();
                     if (ImGui::MenuItem("Save")) {
-                        SaveScript(Editor_->GetText(), ProjectUtils_->ProjectManager_->Project_.Scripts[SelectedScriptProgramIndex_].AssetID);
+                        long ScriptAssetID = ProjectUtils_->ProjectManager_->Project_.Scripts[SelectedScriptProgramIndex_].AssetID;
+                        SystemUtils_->Logger_->Log(std::string("Saving Script With Asset ID '") + std::to_string(ScriptAssetID) + std::string("'"), 0);
+                        SaveScript(Editor_->GetText(), ScriptAssetID);
                     }
 
                     // Exit Button
