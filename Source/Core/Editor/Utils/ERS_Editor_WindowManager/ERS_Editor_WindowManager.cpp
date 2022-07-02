@@ -68,7 +68,7 @@ ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* 
     WindowNames_.push_back("FrameratePlot");
     WindowNames_.push_back("ImportProgressBar");
     WindowNames_.push_back("ObjectProperties");
-    WindowNames_.push_back("ProjectSetttings");
+    WindowNames_.push_back("ProjectSettings");
     WindowNames_.push_back("RAMGraph");
     WindowNames_.push_back("RenderingSettings");
     WindowNames_.push_back("SceneTree");
@@ -198,6 +198,9 @@ bool ERS_CLASS_WindowManager::GetWindowStatus(std::string WindowName, bool* Stat
         return true;
     } else if (WindowName == "FramerateCounter") {
         *Status = Windows_->GUI_Window_FramerateCounter_->Enabled_;
+        return true;
+    } else if (WindowName == "FramerateHistogram") {
+        *Status = Windows_->GUI_Window_FramerateHistogram_->Enabled_;
         return true;
     } else if (WindowName == "FrameratePlot") {
         *Status = Windows_->GUI_Window_FrameratePlot_->Enabled_;
