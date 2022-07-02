@@ -102,6 +102,12 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     
 }
 
+bool ERS_CLASS_WindowManager::GetWindowStatus(std::string WindowName) {
+
+    
+
+}
+
 std::vector<std::string> ERS_CLASS_WindowManager::GetWindowNames() {
     return WindowNames_;
 }

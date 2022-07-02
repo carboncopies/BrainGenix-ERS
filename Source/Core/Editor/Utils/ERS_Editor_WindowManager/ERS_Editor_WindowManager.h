@@ -100,13 +100,15 @@ public:
 
     /**
      * @brief Use this function to get the state of the window in question.
-     * Will return true for enabled, or false for disabled.
+     * State of window is returned by the Status bool pointer.
+     * Will return false on error, true on success.
      * 
      * @param WindowName 
+     * @param Status
      * @return true 
      * @return false 
      */
-    bool GetWindowStatus(std::string WindowName);
+    bool GetWindowStatus(std::string WindowName, bool* Status);
 
     /**
      * @brief Enable or disable a window with this function.
