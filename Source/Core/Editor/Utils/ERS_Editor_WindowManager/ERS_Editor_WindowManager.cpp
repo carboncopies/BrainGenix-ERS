@@ -10,6 +10,14 @@ ERS_CLASS_WindowManager::ERS_CLASS_WindowManager(ERS_STRUCT_SystemUtils* SystemU
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing WindowManager Subsystem", 4);
 
-    
+
 
 }
+
+ERS_CLASS_WindowManager::~ERS_CLASS_WindowManager() {
+
+    SystemUtils_->Logger_->Log("WindowManager Subsystem Destructor Called", 6);
+
+}
+
+
