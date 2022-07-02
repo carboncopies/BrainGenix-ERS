@@ -71,9 +71,4 @@ void GUI_Menu_Debug::Draw() {
 
     }
 
-
-    // Draw Windows
-    TestEditor_->Draw();
-
-
 }
