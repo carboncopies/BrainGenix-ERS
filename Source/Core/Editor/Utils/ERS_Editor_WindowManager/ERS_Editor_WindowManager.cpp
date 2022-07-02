@@ -106,7 +106,67 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     
 }
 
+bool ERS_CLASS_WindowManager::SetWindowStatus(std::string WindowName, bool Status) {
 
+
+    // Handle Different windows, make sure to update this as well when adding new windows
+    if (WindowName == "About") {
+        Windows_->GUI_Window_About_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "AssetExplorer") {
+        Windows_->GUI_Window_AssetExplorer_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "ControllerSettings") {
+        Windows_->GUI_Window_ControllerSettings_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "FrameLatencyGraph") {
+        Windows_->GUI_Window_FrameLatencyGraph_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "FramerateGraph") {
+        Windows_->GUI_Window_FramerateGraph_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "FramerateCounter") {
+        Windows_->GUI_Window_FramerateCounter_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "FrameratePlot") {
+        Windows_->GUI_Window_FrameratePlot_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "ImportProgressBar") {
+        Windows_->GUI_Window_ImportProgressBar_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "ObjectProperties") {
+        Windows_->GUI_Window_ObjectProperties_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "RAMGraphj") {
+        Windows_->GUI_Window_RAMGraph_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "RenderingSettings") {
+        Windows_->GUI_Window_RenderingSettings_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "SceneTree") {
+        Windows_->GUI_Window_SceneTree_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "ScriptEditor") {
+        Windows_->GUI_Window_ScriptEditor_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "ShaderEditor") {
+        Windows_->GUI_Window_ShaderEditor_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "SystemLog") {
+        Windows_->GUI_Window_SystemLog_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "TestEditor") {
+        Windows_->GUI_Window_TestEditor_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "ThemeSelector") {
+        Windows_->GUI_Window_ThemeSelector_->Enabled_ = Status;
+        return true;
+    } else {
+        return false;
+    }
+
+
+}
 
 bool ERS_CLASS_WindowManager::GetWindowStatus(std::string WindowName, bool* Status) {
 
