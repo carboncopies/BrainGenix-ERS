@@ -35,7 +35,7 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
     ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_; /**<HID Utils Pointer*/
-    ERS_CLASS_WindowManager* WindowManager_; /**<Class to manage the system's windows*/
+    ERS_STRUCT_Windows* Windows_; /**<Struct Containing the system's windows*/
 
 
 
@@ -47,7 +47,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_CLASS_WindowManager* WindowManager);
+    GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_Windows* Windows);
 
 
     /**
