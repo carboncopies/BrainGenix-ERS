@@ -38,8 +38,8 @@ ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* 
     Windows_->GUI_Window_About_                = std::make_unique<GUI_Window_About>(SystemUtils_);
     Windows_->GUI_Window_AssetExplorer_        = std::make_unique<GUI_Window_AssetExplorer>(SystemUtils_, ProjectUtils);
     Windows_->GUI_Window_ControllerSettings_   = std::make_unique<GUI_Window_ControllerSettings>(SystemUtils_, HIDUtils, ProjectUtils);
-    Windows_->graph
     Windows_->GUI_Window_FrameLatencyGraph_    = std::make_unique<GUI_Window_FrameLatencyGraph>(SystemUtils_);
+    Windows_->GUI_Window_FramerateGraph_       = std::make_unique<GUI_Window_FramerateGraph>();
     Windows_->GUI_Window_FramerateCounter_     = std::make_unique<GUI_Window_FramerateCounter>();
     Windows_->GUI_Window_FramerateHistogram_   = std::make_unique<GUI_Window_FramerateHistogram>();
     Windows_->GUI_Window_FrameratePlot_        = std::make_unique<GUI_Window_FrameratePlot>();
