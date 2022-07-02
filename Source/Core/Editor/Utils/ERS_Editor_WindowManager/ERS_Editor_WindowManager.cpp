@@ -24,7 +24,7 @@ ERS_CLASS_WindowManager::~ERS_CLASS_WindowManager() {
 // Setup Window Struct
 void ERS_CLASS_WindowManager::GenerateWindowStruct(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils,
 ERS_STRUCT_ControllerSettings* ControllerSettings, ERS_CLASS_VisualRenderer* VisualRenderer,
-ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo) {
+ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* SceneManager) {
 
     // Setup Window System
     SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Struct", 4);
@@ -32,20 +32,20 @@ ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo) {
     // Construct All Widnows
     Windows_->GUI_Window_About_                = std::make_unique<GUI_Window_About>(SystemUtils_);
     Windows_->GUI_Window_AssetExplorer_        = std::make_unique<GUI_Window_AssetExplorer>(SystemUtils_, ProjectUtils);
-    Windows_->GUI_Window_ControllerSettings_   = 
-    Windows_->GUI_Window_FrameLatencyGraph_    = 
-    Windows_->GUI_Window_FramerateCounter_     =
-    Windows_->GUI_Window_FramerateHistogram_   =
-    Windows_->GUI_Window_FrameratePlot_        =
-    Windows_->GUI_Window_ImportProgressBar_    =
-    Windows_->GUI_Window_ObjectProperties_     =
-    Windows_->GUI_Window_RAMGraph_             =
-    Windows_->GUI_Window_RenderingSettings_    =
-    Windows_->GUI_Window_SceneTree_            =
-    Windows_->GUI_Window_ScriptEditor_         =
-    Windows_->GUI_Window_ShaderEditor_         =
-    Windows_->GUI_Window_SystemLog_            =
-    Windows_->GUI_Window_TestEditor_           =
-    Windows_->GUI_Window_ThemeSelector_        =
+    Windows_->GUI_Window_ControllerSettings_   = std::make_unique<GUI_Window_ControllerSettings>(SystemUtils_, HIDUtils, ProjectUtils);
+    Windows_->GUI_Window_FrameLatencyGraph_    = std::make_unique<GUI_Window_FrameLatencyGraph>(SystemUtils_);
+    Windows_->GUI_Window_FramerateCounter_     = std::make_unique<GUI_Window_FramerateCounter>();
+    Windows_->GUI_Window_FramerateHistogram_   = std::make_unique<GUI_Window_FramerateHistogram>();
+    Windows_->GUI_Window_FrameratePlot_        = std::make_unique<GUI_Window_FrameratePlot>();
+    Windows_->GUI_Window_ImportProgressBar_    = std::make_unique<GUI_Window_ImportProgressBar>(SystemUtils_);
+    Windows_->GUI_Window_ObjectProperties_     = std::make_unique<GUI_Window_ObjectProperties>(Cursors3D, SceneManager, ProjectUtils);
+    Windows_->GUI_Window_RAMGraph_             = std::make_unique<GUI_Window
+    Windows_->GUI_Window_RenderingSettings_    = std::make_unique<GUI_Window
+    Windows_->GUI_Window_SceneTree_            = std::make_unique<GUI_Window
+    Windows_->GUI_Window_ScriptEditor_         = std::make_unique<GUI_Window
+    Windows_->GUI_Window_ShaderEditor_         = std::make_unique<GUI_Window
+    Windows_->GUI_Window_SystemLog_            = std::make_unique<GUI_Window
+    Windows_->GUI_Window_TestEditor_           = std::make_unique<GUI_Window
+    Windows_->GUI_Window_ThemeSelector_        = std::make_unique<GUI_Window
 
 }
