@@ -30,6 +30,8 @@ target_link_libraries(Menu_Debug
     GUI_Window_TestEditor
     GUI_Window_ControllerSettings
 
+    ERS_Editor_WindowManager
+    
     ERS_STRUCT_SystemUtils
     
     ERS_CLASS_LoggingSystem
