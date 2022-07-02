@@ -109,6 +109,8 @@ void GUISystem::UpdateGUI() {
     ImGui::EndMainMenuBar();
     }
 
+    // Updates all the windows, draws their content if enabled
+    WindowManager_->UpdateAllWindows();
 
 }
 
