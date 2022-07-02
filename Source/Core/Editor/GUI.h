@@ -57,14 +57,15 @@ private:
     GLFWwindow* Window_; /**<Pointer to window instance*/
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Structure Containing Pointers To System Utilities*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**ProjectUtils Struct Pointer*/
-
-    std::unique_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
-    std::unique_ptr<ERS_CLASS_UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
     Cursors3D* Cursors3D_; /**<Pointer to Cursors3D Instance*/
     ERS_CLASS_SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
     ERS_CLASS_VisualRenderer* VisualRenderer_; /**<Pointer to visual renderer for viewport modification*/
     ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_; /**<Pointer To Human Device Utils Struct*/
 
+    std::unique_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
+    std::unique_ptr<ERS_CLASS_UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
+
+    
 public:
 
     std::unique_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Pointer To ThemeManager Instance*/
