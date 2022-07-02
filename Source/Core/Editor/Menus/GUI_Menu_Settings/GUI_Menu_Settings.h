@@ -37,8 +37,8 @@ private:
     ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_; /**<HID Utils Pointer*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils Structure*/
 
+    ERS_CLASS_WindowManager* WindowManager_; /**<Class to manage the system's windows*/
 
-    std::unique_ptr<GUI_Window_ControllerSettings> GUI_Window_ControllerSettings_; /**<ERS GUI Window*/
 
 
 public:
@@ -49,7 +49,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils,  ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils,  ERS_CLASS_WindowManager* WindowManager);
 
 
     /**
