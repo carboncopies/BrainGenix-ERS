@@ -20,6 +20,8 @@
 #include <ERS_STRUCT_HumanInputDeviceUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
 
+#include <ERS_Editor_WindowManager.h>
+
 #include <GUI_Window_ControllerSettings.h>
 
 
