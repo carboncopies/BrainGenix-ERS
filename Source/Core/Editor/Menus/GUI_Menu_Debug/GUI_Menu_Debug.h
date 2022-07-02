@@ -20,6 +20,8 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_Windows.h>
 
+#include <ERS_Editor_WindowManager.h>
+
 #include <ERS_CLASS_OpenGLDebug.h>
 
 
@@ -34,6 +36,7 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
     ERS_STRUCT_Windows* Windows_; /**<Windows struct*/
+    ERS_CLASS_WindowManager* WindowManager_; /**<Used for window debugging, controls all windows systemwide*/
 
     std::unique_ptr<ERS_CLASS_OpenGLDebug> ERS_CLASS_OpenGLDebug_; /**<Class used to draw the opengl debug menu into the main debug menu*/
 
@@ -50,7 +53,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Windows* Windows);
+    GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Windows* Windows, ERS_CLASS_WindowManager* WindowManager);
 
 
     /**
