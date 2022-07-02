@@ -32,7 +32,8 @@ ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo) {
 
     // Construct All Widnows
     Windows_->GUI_Window_About_ = std::make_unique<GUI_Window_About>(SystemUtils_);
-    Windows_->GUI_Window_
+    Windows_->GUI_Window_AssetExplorer_ = std::make_unique<GUI_Window_AssetExplorer>(SystemUtils_, ProjectUtils);
+    
 
 
 }
