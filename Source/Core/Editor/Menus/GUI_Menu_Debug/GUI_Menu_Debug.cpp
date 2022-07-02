@@ -6,17 +6,15 @@
 
 
 // Constructor
-GUI_Menu_Debug::GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils) {
+GUI_Menu_Debug::GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Windows* Windows) {
 
     SystemUtils_ = SystemUtils;
+    Windows_ = Windows;
     SystemUtils_->Logger_->Log("Editor Setting Up Debug Menu", 4);
 
     SystemUtils_->Logger_->Log("Reading Configuration File For 'ShowEditorDebugMenu' Parameter", 1);
     DebugMenuEnabled_ = (*SystemUtils_->LocalSystemConfiguration_)["ShowEditorDebugMenu"].as<bool>();
 
-    // Setup Window Instances
-    SystemUtils_->Logger_->Log("Initialiizng Debug Menu Window Instances", 5);
-    TestEditor_ = std::make_unique<GUI_Window_TestEditor>(SystemUtils_);
 
     // Setup OpenGL Debug Submenu
     ERS_CLASS_OpenGLDebug_ = std::make_unique<ERS_CLASS_OpenGLDebug>(SystemUtils_);
