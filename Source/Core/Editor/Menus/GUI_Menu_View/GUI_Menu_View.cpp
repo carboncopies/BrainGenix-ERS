@@ -8,12 +8,10 @@
 GUI_Menu_View::GUI_Menu_View(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_FontManager* FontManager, ERS_STRUCT_Windows* Windows) {
 
     SystemUtils_ = SystemUtils;
-
     FontManager_ = FontManager;
     Windows_ = Windows;
     SystemUtils_->Logger_->Log("Editor Setting Up View Menu", 4);
 
-    GUI_GUI_Window_About_ = std::make_unique<GUI_Window_About>(SystemUtils_);
 
 
 }
@@ -31,7 +29,7 @@ void GUI_Menu_View::Draw() {
 
 
         if (ImGui::MenuItem("Color Theme")) {
-            GUI_Window_ThemeSelector_->Enabled_ = true;
+            Windows_->GUI_Window_ThemeSelector_->Enabled_ = !Windows_->GUI_Window_ThemeSelector_->Enabled_;
         }
 
         if (ImGui::MenuItem("System Font")) {
@@ -41,7 +39,7 @@ void GUI_Menu_View::Draw() {
         ImGui::Separator();
 
         if (ImGui::MenuItem("About")) {
-            GUI_GUI_Window_About_->Enabled_ = true;
+            Windows_->GUI_Window_About_->Enabled_ = !Windows_->GUI_Window_About_->Enabled_;
         }
 
 
@@ -50,8 +48,6 @@ void GUI_Menu_View::Draw() {
 
 
     // Draw Windows
-    GUI_Window_ThemeSelector_->Draw();
-    GUI_GUI_Window_About_->Draw();
     FontManager_->FontSelectorWindow(&ShowFontPicker_);
 
 }
