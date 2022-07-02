@@ -41,7 +41,7 @@ private:
     ERS_STRUCT_Windows* Windows_; /**<Windows struct*/
 
     std::unique_ptr<ERS_CLASS_OpenGLDebug> ERS_CLASS_OpenGLDebug_; /**<Class used to draw the opengl debug menu into the main debug menu*/
-    std::unique_ptr<GUI_Window_TestEditor> TestEditor_; /**<GUI Window Test Editor Instance*/
+
 
     bool ShowImGuiDemoWindow_ = false; /**<Show/hide ImGui DemoWindow*/
     bool DebugMenuEnabled_ = false; /**Enable/Disable Debug Menu*/

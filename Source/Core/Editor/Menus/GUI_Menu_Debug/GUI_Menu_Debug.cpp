@@ -48,7 +48,7 @@ void GUI_Menu_Debug::Draw() {
 
             // Test Editor
             if (ImGui::MenuItem("Test Editor Window")) {
-                TestEditor_->Enabled_ = !TestEditor_->Enabled_;
+                Windows_->GUI_Window_TestEditor_->Enabled_ = !Windows_->GUI_Window_TestEditor_->Enabled_;
             }
 
             // OpenGL Debug Submenu
