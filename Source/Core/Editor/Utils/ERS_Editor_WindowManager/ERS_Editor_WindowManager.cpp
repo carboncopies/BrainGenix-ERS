@@ -45,6 +45,8 @@ ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* 
     Windows_->GUI_Window_FrameratePlot_        = std::make_unique<GUI_Window_FrameratePlot>();
     Windows_->GUI_Window_ImportProgressBar_    = std::make_unique<GUI_Window_ImportProgressBar>(SystemUtils_);
     Windows_->GUI_Window_ObjectProperties_     = std::make_unique<GUI_Window_ObjectProperties>(Gizmo, SceneManager, ProjectUtils);
+    Windows_->GUI_Window_ProjectSettings_      = std::make_unique<GUI_Window_ProjectSettings>(ProjectUtils, SystemUtils_);
+    
     Windows_->GUI_Window_RAMGraph_             = std::make_unique<GUI_Window_RAMGraph>(SystemUtils_);
     Windows_->GUI_Window_RenderingSettings_    = std::make_unique<GUI_Window_RenderingSettings>(SystemUtils_);
     Windows_->GUI_Window_SceneTree_            = std::make_unique<GUI_Window_SceneTree>(SceneManager, SystemUtils_, ProjectUtils, Gizmo);
