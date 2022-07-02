@@ -41,9 +41,7 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
     ERS_STRUCT_Windows* Windows_; /**<Pointer to windows struct*/
-
     ERS_CLASS_FontManager* FontManager_; /**<Pointer To FontManager Instance*/
-    std::unique_ptr<GUI_Window_About> GUI_GUI_Window_About_; /**<Pointer to about window*/
 
     // Window Show/Hide Vars
     bool ShowFontPicker_ = false; /**<Control Varaible to show/hide font picker window*/
