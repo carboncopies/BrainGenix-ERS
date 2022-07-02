@@ -6,7 +6,7 @@
 
 
 // Constructor
-GUI_Menu_Debug::GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Windows* Windows) {
+GUI_Menu_Debug::GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Windows* Windows, ERS_CLASS_WindowManager* WindowManager) {
 
     SystemUtils_ = SystemUtils;
     Windows_ = Windows;
