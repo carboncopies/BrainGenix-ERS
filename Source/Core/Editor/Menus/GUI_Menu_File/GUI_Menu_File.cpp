@@ -5,12 +5,13 @@
 #include <GUI_Menu_File.h>
 
 
-GUI_Menu_File::GUI_Menu_File(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer) {
+GUI_Menu_File::GUI_Menu_File(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_Windows* Windows) {
 
     SystemUtils_ = SystemUtils;
     SceneManager_ = SceneManager;
     ProjectUtils_ = ProjectUtils;
-    VisualRenderer_ = VisualRenderer;
+    Windows_ = Windows;
+
     SystemUtils_->Logger_->Log("Editor Setting Up File Menu", 4);
 
     SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_);
