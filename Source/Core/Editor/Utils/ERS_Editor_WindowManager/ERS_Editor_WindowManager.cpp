@@ -94,6 +94,7 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     Windows_->GUI_Window_FrameLatencyGraph_->Draw();
     Windows_->GUI_Window_FramerateGraph_->Draw();
     Windows_->GUI_Window_FramerateCounter_->Draw();
+    Windows_->GUI_Window_FramerateHistogram_->Draw();
     Windows_->GUI_Window_FrameratePlot_->Draw();
     Windows_->GUI_Window_ImportProgressBar_->Draw();
     Windows_->GUI_Window_ObjectProperties_->Draw();
@@ -131,6 +132,9 @@ bool ERS_CLASS_WindowManager::SetWindowStatus(std::string WindowName, bool Statu
     } else if (WindowName == "FramerateCounter") {
         Windows_->GUI_Window_FramerateCounter_->Enabled_ = Status;
         return true;
+    } else if (WindowName == "FramerateHistogram") {
+        Windows_->GUI_Window_FramerateHistogram_->Enabled_ = Status;
+        return true;
     } else if (WindowName == "FrameratePlot") {
         Windows_->GUI_Window_FrameratePlot_->Enabled_ = Status;
         return true;
@@ -143,7 +147,7 @@ bool ERS_CLASS_WindowManager::SetWindowStatus(std::string WindowName, bool Statu
     } else if (WindowName == "ProjectSettings") {
         Windows_->GUI_Window_ProjectSettings_->Enabled_ = Status;
         return true;
-    } else if (WindowName == "RAMGraphj") {
+    } else if (WindowName == "RAMGraph") {
         Windows_->GUI_Window_RAMGraph_->Enabled_ = Status;
         return true;
     } else if (WindowName == "RenderingSettings") {
