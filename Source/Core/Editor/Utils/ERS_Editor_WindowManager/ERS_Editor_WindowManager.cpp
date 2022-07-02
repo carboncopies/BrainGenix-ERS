@@ -30,7 +30,9 @@ ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo) {
     SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Struct", 4);
 
 
-    
+    // Construct All Widnows
+    Windows_->GUI_Window_About_ = std::make_unique<GUI_Window_About>(SystemUtils_);
+    Windows_->GUI_Window_
 
 
 }
