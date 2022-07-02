@@ -160,6 +160,8 @@ bool ERS_CLASS_WindowManager::GetWindowStatus(std::string WindowName, bool* Stat
     } else if (WindowName == "ThemeSelector") {
         *Status = Windows_->GUI_Window_ThemeSelector_->Enabled_;
         return true;
+    } else {
+        return false;
     }
 
 }
