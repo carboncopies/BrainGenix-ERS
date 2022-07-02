@@ -38,6 +38,7 @@ ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* 
     Windows_->GUI_Window_About_                = std::make_unique<GUI_Window_About>(SystemUtils_);
     Windows_->GUI_Window_AssetExplorer_        = std::make_unique<GUI_Window_AssetExplorer>(SystemUtils_, ProjectUtils);
     Windows_->GUI_Window_ControllerSettings_   = std::make_unique<GUI_Window_ControllerSettings>(SystemUtils_, HIDUtils, ProjectUtils);
+    Windows_->graph
     Windows_->GUI_Window_FrameLatencyGraph_    = std::make_unique<GUI_Window_FrameLatencyGraph>(SystemUtils_);
     Windows_->GUI_Window_FramerateCounter_     = std::make_unique<GUI_Window_FramerateCounter>();
     Windows_->GUI_Window_FramerateHistogram_   = std::make_unique<GUI_Window_FramerateHistogram>();
@@ -87,7 +88,7 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     Windows_->GUI_Window_About_->Draw();
     Windows_->GUI_Window_AssetExplorer_->Draw();
     Windows_->GUI_Window_ControllerSettings_->Draw();
-    Windows_->GUI_Window_FrameLatencyGraph_->Draw();
+    Windows_->Framerategr->Draw();
     Windows_->GUI_Window_FrameLatencyGraph_->Draw();
     Windows_->GUI_Window_FramerateCounter_->Draw();
     Windows_->GUI_Window_FrameratePlot_->Draw();
@@ -107,6 +108,19 @@ bool ERS_CLASS_WindowManager::GetWindowStatus(std::string WindowName, bool* Stat
     // Handle Different windows, make sure to update this as well when adding new windows
     if (WindowName == "About") {
         *Status = Windows_->GUI_Window_About_->Enabled_;
+        return true;
+    } else if (WindowName == "AssetExplorer") {
+        *Status = Windows_->GUI_Window_AssetExplorer_->Enabled_;
+        return true;
+    } else if (WindowName == "ControllerSettings") {
+        *Status = Windows_->GUI_Window_ControllerSettings_->Enabled_;
+        return true;
+    } else if (WindowName == "FrameLatencyGraph") {
+        *Status = Windows_->GUI_Window_FrameLatencyGraph_->Enabled_;
+        return true;
+    } else if (WindowName == "FrameLatency") {
+        *Status = Windows_->GUI_Window_AssetExplorer_->Enabled_;
+        return true;
     }
 
 }

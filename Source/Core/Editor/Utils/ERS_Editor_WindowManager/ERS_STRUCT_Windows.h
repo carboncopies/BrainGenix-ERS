@@ -44,6 +44,7 @@ struct ERS_STRUCT_Windows {
     std::unique_ptr<GUI_Window_FrameLatencyGraph> GUI_Window_FrameLatencyGraph_;
     std::unique_ptr<GUI_Window_FramerateCounter> GUI_Window_FramerateCounter_;
     std::unique_ptr<GUI_Window_FramerateHistogram> GUI_Window_FramerateHistogram_;
+    std::unique_ptr<GUI_Window_FramerateGraph> GUI_Window_FramerateGraph_;
     std::unique_ptr<GUI_Window_FrameratePlot> GUI_Window_FrameratePlot_;
     std::unique_ptr<GUI_Window_ImportProgressBar> GUI_Window_ImportProgressBar_;
     std::unique_ptr<GUI_Window_ObjectProperties> GUI_Window_ObjectProperties_;
