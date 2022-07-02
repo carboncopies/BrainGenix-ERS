@@ -23,11 +23,6 @@
 #include <ERS_CLASS_OpenGLDebug.h>
 
 
-#include <GUI_Window_TestEditor.h>
-
-
-
-
 /**
  * @brief This class provides the "File" Menu In The Editor.
  * 
