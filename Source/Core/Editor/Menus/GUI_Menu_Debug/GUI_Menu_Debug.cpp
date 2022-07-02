@@ -55,6 +55,11 @@ void GUI_Menu_Debug::Draw() {
             // Show All Windows
             if (ImGui::MenuItem("Show All Windows")) {
 
+                std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
+                for (unsigned int i = 0; i < WindowNames.size(); i++) {
+                    WindowManager_->SetWindowStatus(WindowNames[i], true);
+                }
+
             }
 
 
