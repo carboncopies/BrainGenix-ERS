@@ -29,6 +29,8 @@
 #include <ERS_SceneWriter.h>
 #include <ERS_SceneManager.h>
 
+#include <ERS_Editor_WindowManager.h>
+
 #include <GUI_Window_ProjectSettings.h>
 
 #include <ERS_CLASS_VisualRenderer.h>
@@ -44,10 +46,11 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
     ERS_CLASS_VisualRenderer* VisualRenderer_; /**<shared pointer to visual renderer*/
+    ERS_STRUCT_Windows* Windows_; /**<Struct containing all windows*/
+
     std::unique_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
     ERS_CLASS_SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
     std::unique_ptr<GUI_ImportAsset> ImportAsset_; /**<Pointer To Asset Importer System*/
-    std::unique_ptr<GUI_Window_ProjectSettings> GUI_Window_ProjectSettings_; /**<Project Settings Window*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer To Project Utils Instance*/
 
 
@@ -59,7 +62,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Menu_File(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer);
+    GUI_Menu_File(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_Windows* Windows);
 
 
     /**

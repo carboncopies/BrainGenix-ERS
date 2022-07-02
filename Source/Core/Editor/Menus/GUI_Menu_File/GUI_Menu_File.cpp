@@ -5,17 +5,18 @@
 #include <GUI_Menu_File.h>
 
 
-GUI_Menu_File::GUI_Menu_File(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer) {
+GUI_Menu_File::GUI_Menu_File(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_Windows* Windows) {
 
     SystemUtils_ = SystemUtils;
     SceneManager_ = SceneManager;
     ProjectUtils_ = ProjectUtils;
-    VisualRenderer_ = VisualRenderer;
+    Windows_ = Windows;
+
     SystemUtils_->Logger_->Log("Editor Setting Up File Menu", 4);
 
     SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_);
     ImportAsset_ = std::make_unique<GUI_ImportAsset>(SystemUtils_);
-    GUI_Window_ProjectSettings_ = std::make_unique<GUI_Window_ProjectSettings>(ProjectUtils, SystemUtils);
+
 
 }
 
@@ -35,7 +36,7 @@ void GUI_Menu_File::Draw() {
         //     ProjectUtils_->ProjectManager_->WriteProject(1);
         // }
         if (ImGui::MenuItem("Project Settings")) {
-            GUI_Window_ProjectSettings_->Enabled_ = !GUI_Window_ProjectSettings_->Enabled_;
+            Windows_->GUI_Window_ProjectSettings_->Enabled_ = !Windows_->GUI_Window_ProjectSettings_->Enabled_;
         }
         ImGui::Separator();
 
@@ -90,8 +91,5 @@ void GUI_Menu_File::Draw() {
 
     // Draw Subwindows
     ImportAsset_->Draw();
-    GUI_Window_ProjectSettings_->Draw();
-
-
 
 }

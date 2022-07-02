@@ -5,14 +5,15 @@
 #include <GUI_Menu_Settings.h>
 
 
-GUI_Menu_Settings::GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+GUI_Menu_Settings::GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_Windows* Windows) {
 
     SystemUtils_ = SystemUtils;
     HIDUtils_ = HIDUtils;
-    ProjectUtils_ = ProjectUtils;
+    Windows_ = Windows;
+
     SystemUtils_->Logger_->Log("Editor Setting Up Settings Menu", 4);
 
-    GUI_Window_ControllerSettings_ = std::make_unique<GUI_Window_ControllerSettings>(SystemUtils_, HIDUtils_, ProjectUtils_);
+
 
 }
 
@@ -37,7 +38,7 @@ void GUI_Menu_Settings::Draw() {
 
             // Open Settings MEnu
             if (ImGui::MenuItem("Game Controller Settings")) {
-                GUI_Window_ControllerSettings_->Enabled_ = !GUI_Window_ControllerSettings_->Enabled_;
+                Windows_->GUI_Window_ControllerSettings_->Enabled_ = !Windows_->GUI_Window_ControllerSettings_->Enabled_;
             }
 
         ImGui::EndMenu();
@@ -47,8 +48,5 @@ void GUI_Menu_Settings::Draw() {
     ImGui::EndMenu();
     }
 
-
-    // Draw Subwindows
-    GUI_Window_ControllerSettings_->Draw();
 
 }

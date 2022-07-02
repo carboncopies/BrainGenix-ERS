@@ -19,6 +19,8 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_HumanInputDeviceUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
+#include <ERS_STRUCT_Windows.h>
+
 
 #include <GUI_Window_ControllerSettings.h>
 
@@ -33,10 +35,8 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
     ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_; /**<HID Utils Pointer*/
-    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils Structure*/
+    ERS_STRUCT_Windows* Windows_; /**<Struct Containing the system's windows*/
 
-
-    std::unique_ptr<GUI_Window_ControllerSettings> GUI_Window_ControllerSettings_; /**<ERS GUI Window*/
 
 
 public:
@@ -47,7 +47,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils,  ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_Windows* Windows);
 
 
     /**

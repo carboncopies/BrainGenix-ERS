@@ -28,7 +28,9 @@ target_link_libraries(Menu_Window
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
 
+    ERS_Editor_WindowManager
 
+    
     GUI_Window_SceneTree
     GUI_Window_SystemLog
     GUI_Window_AssetExplorer
