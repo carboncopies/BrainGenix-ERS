@@ -16,9 +16,6 @@ GUI_Menu_Debug::GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_W
     DebugMenuEnabled_ = (*SystemUtils_->LocalSystemConfiguration_)["ShowEditorDebugMenu"].as<bool>();
 
 
-    // Setup OpenGL Debug Submenu
-    ERS_CLASS_OpenGLDebug_ = std::make_unique<ERS_CLASS_OpenGLDebug>(SystemUtils_);
-
 }
 
 
