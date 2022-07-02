@@ -70,6 +70,7 @@ public:
      */
     void GenerateWindowStruct();
 
+
     /**
      * @brief Call this once per frame at the end of the GUI update process - will call the draw function on all windows in the system.
      * 
