@@ -33,22 +33,22 @@ void GUI_Menu_Window::Draw() {
         if (ImGui::BeginMenu("Windows")) {
 
             // Add Scene Tree Editor Window
-            ImGui::Checkbox("Scene Tree", &GUI_Window_SceneTree_->Enabled_);
-            ImGui::Checkbox("System Log", &GUI_Window_SystemLog_->Enabled_);
-            ImGui::Checkbox("Asset Explorer", &GUI_Window_AssetExplorer_->Enabled_);
-            ImGui::Checkbox("Object Properties", &GUI_Window_ObjectProperties_->Enabled_);
-            ImGui::Checkbox("Global Viewport Settings", &GUI_Window_RenderingSettings_->Enabled_);
+            ImGui::Checkbox("Scene Tree", &Windows_->GUI_Window_SceneTree_->Enabled_);
+            ImGui::Checkbox("System Log", &Windows_->GUI_Window_SystemLog_->Enabled_);
+            ImGui::Checkbox("Asset Explorer", &Windows_->GUI_Window_AssetExplorer_->Enabled_);
+            ImGui::Checkbox("Object Properties", &Windows_->GUI_Window_ObjectProperties_->Enabled_);
+            ImGui::Checkbox("Global Viewport Settings", &Windows_->GUI_Window_RenderingSettings_->Enabled_);
                 
 
             // Framerate Widgets
             if (ImGui::BeginMenu("Framerate")) {
 
                 // Framerate Related Tools
-                ImGui::Checkbox("Framerate Counter", &GUI_Window_FramerateCounter_.Enabled_);
-                ImGui::Checkbox("Framerate Histogram", &GUI_Window_FramerateHistogram_.Enabled_);
-                ImGui::Checkbox("Framerate Graph", &GUI_Window_FramerateGraph_.Enabled_);
-                ImGui::Checkbox("Framerate Plot", &GUI_Window_FrameratePlot_.Enabled_);
-                ImGui::Checkbox("Frame Latency Graph", &GUI_Window_FrameLatencyGraph_->Enabled_);
+                ImGui::Checkbox("Framerate Counter", &Windows_->GUI_Window_FramerateCounter_->Enabled_);
+                ImGui::Checkbox("Framerate Histogram", &Windows_->GUI_Window_FramerateHistogram_->Enabled_);
+                ImGui::Checkbox("Framerate Graph", &Windows_->GUI_Window_FramerateGraph_->Enabled_);
+                ImGui::Checkbox("Framerate Plot", &Windows_->GUI_Window_FrameratePlot_->Enabled_);
+                ImGui::Checkbox("Frame Latency Graph", &Windows_->GUI_Window_FrameLatencyGraph_->Enabled_);
 
             ImGui::EndMenu();
             }
