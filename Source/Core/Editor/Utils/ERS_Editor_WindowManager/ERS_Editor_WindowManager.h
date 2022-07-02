@@ -80,7 +80,7 @@ public:
      * 
      */
     void GenerateWindowStruct(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_CLASS_VisualRenderer* VisualRenderer,
-    ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* SceneManager);
+    Cursors3D* Gizmo, ERS_CLASS_SceneManager* SceneManager);
 
 
     /**
