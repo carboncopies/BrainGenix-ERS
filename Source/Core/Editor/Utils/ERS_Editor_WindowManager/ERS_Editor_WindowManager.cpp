@@ -27,8 +27,10 @@ ERS_STRUCT_ControllerSettings* ControllerSettings, ERS_CLASS_VisualRenderer* Vis
 ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo) {
 
     // Setup Window System
-    SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Pointers", 4);
+    SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Struct", 4);
 
+
+    
 
 
 }
