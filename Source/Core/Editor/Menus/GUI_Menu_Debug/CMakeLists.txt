@@ -28,10 +28,12 @@ target_link_libraries(Menu_Debug
 target_link_libraries(Menu_Debug
 
     GUI_Window_TestEditor
+    GUI_Window_ControllerSettings
 
     ERS_STRUCT_SystemUtils
     
     ERS_CLASS_LoggingSystem
+
     )
 
 target_include_directories(Menu_Debug PUBLIC ./)
