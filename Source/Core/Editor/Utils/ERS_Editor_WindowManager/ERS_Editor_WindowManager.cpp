@@ -68,6 +68,7 @@ ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* 
     WindowNames_.push_back("FrameratePlot");
     WindowNames_.push_back("ImportProgressBar");
     WindowNames_.push_back("ObjectProperties");
+    WindowNames_.push_back("ProjectSetttings");
     WindowNames_.push_back("RAMGraph");
     WindowNames_.push_back("RenderingSettings");
     WindowNames_.push_back("SceneTree");
@@ -96,6 +97,7 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     Windows_->GUI_Window_FrameratePlot_->Draw();
     Windows_->GUI_Window_ImportProgressBar_->Draw();
     Windows_->GUI_Window_ObjectProperties_->Draw();
+    Windows_->GUI_Window_ProjectSettings_->Draw();
     Windows_->GUI_Window_RAMGraph_->Draw();
     Windows_->GUI_Window_RenderingSettings_->Draw();
     Windows_->GUI_Window_SceneTree_->Draw();
@@ -137,6 +139,9 @@ bool ERS_CLASS_WindowManager::SetWindowStatus(std::string WindowName, bool Statu
         return true;
     } else if (WindowName == "ObjectProperties") {
         Windows_->GUI_Window_ObjectProperties_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "ProjectSettings") {
+        Windows_->GUI_Window_ProjectSettings_->Enabled_ = Status;
         return true;
     } else if (WindowName == "RAMGraphj") {
         Windows_->GUI_Window_RAMGraph_->Enabled_ = Status;
@@ -199,7 +204,10 @@ bool ERS_CLASS_WindowManager::GetWindowStatus(std::string WindowName, bool* Stat
     } else if (WindowName == "ObjectProperties") {
         *Status = Windows_->GUI_Window_ObjectProperties_->Enabled_;
         return true;
-    } else if (WindowName == "RAMGraphj") {
+    } else if (WindowName == "ProjectSettings") {
+        *Status = Windows_->GUI_Window_ProjectSettings_->Enabled_;
+        return true;
+    } else if (WindowName == "RAMGraph") {
         *Status = Windows_->GUI_Window_RAMGraph_->Enabled_;
         return true;
     } else if (WindowName == "RenderingSettings") {
