@@ -58,9 +58,11 @@ private:
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to System utillities struct, used to get things like logger, etc.*/
 
     std::vector<std::string> WindowNames_; /**<List of all understood window names, populated by constructor*/
-    std::unique_ptr<ERS_STRUCT_Windows> Windows_; /**<Pointer to struct containing all windows setup in this subsystem*/
 
 public:
+
+    std::unique_ptr<ERS_STRUCT_Windows> Windows_; /**<Pointer to struct containing all windows setup in this subsystem*/
+
 
     /**
      * @brief Construct a new ers class windowmanager object
