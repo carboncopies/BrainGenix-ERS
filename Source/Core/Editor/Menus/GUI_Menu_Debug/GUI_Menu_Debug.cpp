@@ -60,7 +60,7 @@ void GUI_Menu_Debug::Draw() {
 
                     std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
                     for (unsigned int i = 0; i < WindowNames.size(); i++) {
-                        WindowManager_->SetWindowStatus(WindowNames[i], true);
+                        bool Status = WindowManager_->SetWindowStatus(WindowNames[i], true);
                     }
 
                 }
@@ -69,7 +69,10 @@ void GUI_Menu_Debug::Draw() {
 
                     std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
                     for (unsigned int i = 0; i < WindowNames.size(); i++) {
-                        WindowManager_->SetWindowStatus(WindowNames[i], false);
+                        bool Status = WindowManager_->SetWindowStatus(WindowNames[i], false);
+                        if (!Status) {
+                            SystemUtils_->Logger_->Log(std::string("Warning, WindowManager Window '") + WindowNames[i] + std::string("' Invalid, Check WindowManager Class For Errors In Code"), 10);
+                        }
                     }
 
                 }
@@ -79,7 +82,10 @@ void GUI_Menu_Debug::Draw() {
                     std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
                     for (unsigned int i = 0; i < WindowNames.size(); i++) {
                         bool WindowState;
-                        WindowManager_->GetWindowStatus(WindowNames[i], &WindowState);
+                        bool Status = WindowManager_->GetWindowStatus(WindowNames[i], &WindowState);
+                        if (!Status) {
+                            SystemUtils_->Logger_->Log(std::string("Warning, WindowManager Window '") + WindowNames[i] + std::string("' Invalid, Check WindowManager Class For Errors In Code"), 10);
+                        }
                         WindowManager_->SetWindowStatus(WindowNames[i], !WindowState);
                     }
 
