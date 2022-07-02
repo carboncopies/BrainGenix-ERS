@@ -53,6 +53,7 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils Instance*/
+    ERS_STRUCT_Windows* Windows_; /**<WIndows struct*/
 
     // Instantiate Widgets here
     GUI_Window_FramerateCounter GUI_Window_FramerateCounter_; /**<Widget Instance*/
@@ -84,7 +85,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Menu_Window(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_CLASS_VisualRenderer* VisualRendererInstance);
+    GUI_Menu_Window(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Windows* Windows, ERS_CLASS_VisualRenderer* VisualRendererInstance);
 
 
     /**

@@ -5,25 +5,12 @@
 #include <GUI_Menu_Window.h>
 
 
-GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_CLASS_VisualRenderer* VisualRendererInstance) {
+GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Windows* Windows,  ERS_CLASS_VisualRenderer* VisualRendererInstance) {
 
     SystemUtils_ = SystemUtils;
     VisualRenderer_ = VisualRendererInstance;
-    ProjectUtils_ = ProjectUtils;
+    Windows_ = Windows;
     SystemUtils_->Logger_->Log("Editor Setting Up Window Menu", 4);
-
-
-    SystemUtils_->Logger_->Log("Initializing Editor Windows", 5);
-    GUI_Window_ObjectProperties_ = std::make_unique<GUI_Window_ObjectProperties>(Cursors3D, SceneManager, ProjectUtils_);
-    GUI_Window_RenderingSettings_ = std::make_unique<GUI_Window_RenderingSettings>(SystemUtils_);
-    GUI_Window_FrameLatencyGraph_ = std::make_unique<GUI_Window_FrameLatencyGraph>(SystemUtils_);
-    GUI_Window_RAMGraph_ = std::make_unique<GUI_Window_RAMGraph>(SystemUtils_);
-    GUI_Window_SceneTree_ = std::make_unique<GUI_Window_SceneTree>(SceneManager, SystemUtils_, ProjectUtils_, Cursors3D);
-    GUI_Window_SystemLog_ = std::make_unique<GUI_Window_SystemLog>(SystemUtils_);
-    GUI_Window_AssetExplorer_ = std::make_unique<GUI_Window_AssetExplorer>(SystemUtils_, ProjectUtils_);
-    GUI_Window_ScriptEditor_ = std::make_unique<GUI_Window_ScriptEditor>(SystemUtils_, ProjectUtils_, VisualRenderer_);
-    GUI_Window_ShaderEditor_ = std::make_unique<GUI_Window_ShaderEditor>(SystemUtils_, ProjectUtils_, VisualRenderer_);
-
 
 }
 
