@@ -61,6 +61,7 @@ ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* 
     WindowNames_.push_back("AssetExplorer");
     WindowNames_.push_back("ControllerSettings");
     WindowNames_.push_back("FrameLatencyGraph");
+    WindowNames_.push_back("FramerateGraph");
     WindowNames_.push_back("FramerateCounter");
     WindowNames_.push_back("FramerateHistogram");
     WindowNames_.push_back("FrameratePlot");
@@ -88,7 +89,7 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     Windows_->GUI_Window_About_->Draw();
     Windows_->GUI_Window_AssetExplorer_->Draw();
     Windows_->GUI_Window_ControllerSettings_->Draw();
-    Windows_->Framerategr->Draw();
+    Windows_->GUI_Window_FramerateGraph_->Draw();
     Windows_->GUI_Window_FrameLatencyGraph_->Draw();
     Windows_->GUI_Window_FramerateCounter_->Draw();
     Windows_->GUI_Window_FrameratePlot_->Draw();
