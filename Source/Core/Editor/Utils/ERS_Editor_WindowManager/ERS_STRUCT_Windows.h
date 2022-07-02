@@ -48,6 +48,7 @@ struct ERS_STRUCT_Windows {
     std::unique_ptr<GUI_Window_FrameratePlot> GUI_Window_FrameratePlot_;
     std::unique_ptr<GUI_Window_ImportProgressBar> GUI_Window_ImportProgressBar_;
     std::unique_ptr<GUI_Window_ObjectProperties> GUI_Window_ObjectProperties_;
+    std::unique_ptr<GUI_Window_ProjectSettings> GUI_Window_ProjectSettings_;
     std::unique_ptr<GUI_Window_RAMGraph> GUI_Window_RAMGraph_;
     std::unique_ptr<GUI_Window_RenderingSettings> GUI_Window_RenderingSettings_;
     std::unique_ptr<GUI_Window_SceneTree> GUI_Window_SceneTree_;
