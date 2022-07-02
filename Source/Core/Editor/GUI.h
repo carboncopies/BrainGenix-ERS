@@ -31,6 +31,7 @@
 #include <ERS_Editor_FontManager.h>
 #include <ERS_Editor_UserProfileManager.h>
 #include <ERS_Editor_3DCursor.h>
+#include <ERS_Editor_WindowManager.h>
 
 #include <ERS_SceneManager.h>
 
