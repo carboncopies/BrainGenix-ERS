@@ -9,6 +9,7 @@ GUI_Menu_Settings::GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_ST
 
     SystemUtils_ = SystemUtils;
     HIDUtils_ = HIDUtils;
+    WindowManager_ = WindowManager;
 
     SystemUtils_->Logger_->Log("Editor Setting Up Settings Menu", 4);
 
