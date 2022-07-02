@@ -101,3 +101,7 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     Windows_->GUI_Window_SystemLog_->Draw();
     
 }
+
+std::vector<std::string> ERS_CLASS_WindowManager::GetWindowNames() {
+    return WindowNames_;
+}
