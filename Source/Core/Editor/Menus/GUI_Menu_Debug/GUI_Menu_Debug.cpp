@@ -71,7 +71,16 @@ void GUI_Menu_Debug::Draw() {
 
             }
 
-            
+            if (ImGui::MenuItem("Invert Window States")) {
+
+                std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
+                for (unsigned int i = 0; i < WindowNames.size(); i++) {
+                    bool WindowState;
+                    WindowManager_->GetWindowStatus(WindowNames[i], &WindowState);
+                    WindowManager_->SetWindowStatus(WindowNames[i], !WindowState);
+                }
+
+            }
 
 
             ImGui::Separator();
