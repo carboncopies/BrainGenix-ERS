@@ -27,8 +27,8 @@ ERS_CLASS_WindowManager::~ERS_CLASS_WindowManager() {
 
 
 // Setup Window Struct
-void ERS_CLASS_WindowManager::GenerateWindowStruct(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_CLASS_VisualRenderer* VisualRenderer,
-ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* SceneManager) {
+void ERS_CLASS_WindowManager::GenerateWindowStruct(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils,
+ERS_CLASS_VisualRenderer* VisualRenderer, Cursors3D* Gizmo, ERS_CLASS_SceneManager* SceneManager) {
 
     // Setup Window System
     SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Struct", 4);
