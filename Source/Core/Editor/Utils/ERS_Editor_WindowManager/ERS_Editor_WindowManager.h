@@ -14,6 +14,7 @@
 #include <ERS_STRUCT_ProjectUtils.h>
 #include <ERS_STRUCT_HumanInputDeviceUtils.h>
 #include <ERS_STRUCT_ControllerSettings.h>
+#include <ERS_STRUCT_Windows.h>
 
 #include <ERS_CLASS_VisualRenderer.h>
 
