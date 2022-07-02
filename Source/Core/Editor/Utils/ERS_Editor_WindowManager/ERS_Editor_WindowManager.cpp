@@ -54,6 +54,29 @@ ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* 
     Windows_->GUI_Window_ThemeSelector_        = std::make_unique<GUI_Window_ThemeSelector>();
 
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Struct", 3);
+    SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Index", 4);
+
+    WindowNames_.push_back("About");
+    WindowNames_.push_back("AssetExplorer");
+    WindowNames_.push_back("ControllerSettings");
+    WindowNames_.push_back("FrameLatencyGraph");
+    WindowNames_.push_back("FramerateCounter");
+    WindowNames_.push_back("FramerateHistogram");
+    WindowNames_.push_back("FrameratePlot");
+    WindowNames_.push_back("ImportProgressBar");
+    WindowNames_.push_back("ObjectProperties");
+    WindowNames_.push_back("RAMGraph");
+    WindowNames_.push_back("RenderingSettings");
+    WindowNames_.push_back("SceneTree");
+    WindowNames_.push_back("ScriptEditor");
+    WindowNames_.push_back("ShaderEditor");
+    WindowNames_.push_back("SystemLog");
+    WindowNames_.push_back("TestEditor");
+    WindowNames_.push_back("ThemeSelector");
+    
+    SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Index", 3);
+
+
 
 }
 
