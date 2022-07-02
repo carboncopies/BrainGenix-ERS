@@ -16,7 +16,8 @@ GUI_Menu_Debug::GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_W
     SystemUtils_->Logger_->Log("Reading Configuration File For 'ShowEditorDebugMenu' Parameter", 1);
     DebugMenuEnabled_ = (*SystemUtils_->LocalSystemConfiguration_)["ShowEditorDebugMenu"].as<bool>();
 
-
+    // Setup OpenGL Debug Submenu
+    ERS_CLASS_OpenGLDebug_ = std::make_unique<ERS_CLASS_OpenGLDebug>(SystemUtils_);
 }
 
 
@@ -63,7 +64,7 @@ void GUI_Menu_Debug::Draw() {
                         bool Status = WindowManager_->SetWindowStatus(WindowNames[i], true);
                         if (!Status) {
                             SystemUtils_->Logger_->Log(std::string("Warning, WindowManager Window '") + WindowNames[i] + std::string("' Invalid, Check WindowManager Class For Errors In Code"), 10);
-                        }
+                        }Z
                     }
 
                 }
