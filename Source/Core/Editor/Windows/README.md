@@ -14,3 +14,8 @@ Adding windows to ERS is a fairly simple process, and can be accomplished as fol
     - ## Add To WindowManager Class
     - In the file "ERS_Editor_WindowManager.h", include your window's header file there as well.
     - In "ERS_Editor_WindowManager.cpp", make sure to instantiate your window in the function named "GenerateWindowStruct" (follow what other windows are doing) 
+    - Additionally, make sure to add it to the update and other functions in the class - instructions in class file
+
+    - ## Add To Menu Class
+    - Open whatever menu you want to control the window (if any)
+    - Add to menu using enabled/disabled function in window or any other config param as normal
