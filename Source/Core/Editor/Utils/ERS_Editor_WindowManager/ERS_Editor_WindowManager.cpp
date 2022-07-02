@@ -240,3 +240,7 @@ bool ERS_CLASS_WindowManager::GetWindowStatus(std::string WindowName, bool* Stat
 std::vector<std::string> ERS_CLASS_WindowManager::GetWindowNames() {
     return WindowNames_;
 }
+
+ERS_STRUCT_Windows* ERS_CLASS_WindowManager::GetWindowsStruct() {
+    return Windows_.get();
+}

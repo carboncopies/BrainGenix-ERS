@@ -124,4 +124,11 @@ public:
      */
     bool SetWindowStatus(std::string WindowName, bool WindowStatus);
 
+    /**
+     * @brief Get the struct containing the system's windows.
+     * 
+     * @return ERS_STRUCT_Windows* 
+     */
+    ERS_STRUCT_Windows* GetWindowsStruct();
+
 };
