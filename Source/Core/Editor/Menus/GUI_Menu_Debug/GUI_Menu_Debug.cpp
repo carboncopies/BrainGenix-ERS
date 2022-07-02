@@ -62,6 +62,17 @@ void GUI_Menu_Debug::Draw() {
 
             }
 
+            if (ImGui::MenuItem("Hide All Windows")) {
+
+                std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
+                for (unsigned int i = 0; i < WindowNames.size(); i++) {
+                    WindowManager_->SetWindowStatus(WindowNames[i], false);
+                }
+
+            }
+
+            
+
 
             ImGui::Separator();
 
