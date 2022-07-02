@@ -106,6 +106,8 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     
 }
 
+
+
 bool ERS_CLASS_WindowManager::GetWindowStatus(std::string WindowName, bool* Status) {
 
     // Handle Different windows, make sure to update this as well when adding new windows

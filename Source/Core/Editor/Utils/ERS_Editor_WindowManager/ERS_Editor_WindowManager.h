@@ -114,9 +114,13 @@ public:
      * @brief Enable or disable a window with this function.
      * Pass in the window's name and the state to set it to.
      * 
+     * Returns false on failute, true otherwise. (Ie, if given window name is invalid)
+     * 
      * @param WindowName 
      * @param WindowStatus 
+     * @return true
+     * @return false
      */
-    void SetWindowStatus(std::string WindowName, bool WindowStatus);
+    bool SetWindowStatus(std::string WindowName, bool WindowStatus);
 
 };
