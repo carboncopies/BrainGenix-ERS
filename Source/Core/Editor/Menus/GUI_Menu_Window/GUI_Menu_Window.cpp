@@ -57,7 +57,7 @@ void GUI_Menu_Window::Draw() {
             if (ImGui::BeginMenu("System Resources")) {
 
                 // Framerate Related Tools
-                ImGui::Checkbox("RAM", &GUI_Window_RAMGraph_->Enabled_);
+                ImGui::Checkbox("RAM", &Windows_->GUI_Window_RAMGraph_->Enabled_);
 
             ImGui::EndMenu();
             }
@@ -87,35 +87,12 @@ void GUI_Menu_Window::Draw() {
         ImGui::EndMenu();
         }
 
-        ImGui::MenuItem("Script Editor", "", &GUI_Window_ScriptEditor_->Enabled_);
-        ImGui::MenuItem("Shader Editor", "", &GUI_Window_ShaderEditor_->Enabled_);
+        ImGui::MenuItem("Script Editor", "", &Windows_->GUI_Window_ScriptEditor_->Enabled_);
+        ImGui::MenuItem("Shader Editor", "", &Windows_->GUI_Window_ShaderEditor_->Enabled_);
 
 
     ImGui::EndMenu();
     }
-
-
-
-    // Update Widgets
-    GUI_Window_FramerateCounter_.Draw();
-    GUI_Window_FramerateHistogram_.Draw();
-    GUI_Window_FramerateGraph_.Draw();
-    GUI_Window_FrameratePlot_.Draw();
-
-    // Update Widgets
-    GUI_Window_ObjectProperties_->Draw();
-    GUI_Window_RAMGraph_->Draw();
-    GUI_Window_RenderingSettings_->Draw();
-    GUI_Window_FrameLatencyGraph_->Draw();
-
-    // Update Windows
-    GUI_Window_SceneTree_->Draw();
-    GUI_Window_SystemLog_->Draw();
-    GUI_Window_AssetExplorer_->Draw();
-    GUI_Window_ScriptEditor_->Draw();
-
-    GUI_Window_ShaderEditor_->Draw();
-
 
 
 }
