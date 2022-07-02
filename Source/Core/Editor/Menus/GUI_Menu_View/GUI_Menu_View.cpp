@@ -5,11 +5,12 @@
 #include <GUI_Menu_View.h>
 
 
-GUI_Menu_View::GUI_Menu_View(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, ERS_STRUCT_Windows* Windows) {
+GUI_Menu_View::GUI_Menu_View(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_FontManager* FontManager, ERS_STRUCT_Windows* Windows) {
 
     SystemUtils_ = SystemUtils;
-    ThemeManager_ = ThemeManager;
+
     FontManager_ = FontManager;
+    Windows_ = Windows;
     SystemUtils_->Logger_->Log("Editor Setting Up View Menu", 4);
 
     GUI_GUI_Window_About_ = std::make_unique<GUI_Window_About>(SystemUtils_);
