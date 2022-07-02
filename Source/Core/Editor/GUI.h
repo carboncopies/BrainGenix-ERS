@@ -65,6 +65,7 @@ private:
     std::unique_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
     std::unique_ptr<ERS_CLASS_UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
 
+    ERS_CLASS_WindowManager WindowManager_; /**<Class owning all gui windows*/
     
 public:
 
