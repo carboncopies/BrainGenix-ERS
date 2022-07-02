@@ -20,6 +20,8 @@
 
 #include <ERS_Editor_ThemeManager.h>
 #include <ERS_Editor_FontManager.h>
+#include <ERS_Editor_WindowManager.h>
+
 
 #include <GUI_Window_ThemeSelector.h>
 

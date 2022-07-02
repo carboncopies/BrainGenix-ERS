@@ -29,6 +29,8 @@
 #include <ERS_SceneWriter.h>
 #include <ERS_SceneManager.h>
 
+#include <ERS_Editor_WindowManager.h>
+
 #include <GUI_Window_ProjectSettings.h>
 
 #include <ERS_CLASS_VisualRenderer.h>

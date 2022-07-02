@@ -21,6 +21,8 @@
 
 #include <ERS_CLASS_OpenGLDebug.h>
 
+#include <ERS_Editor_WindowManager.h>
+
 #include <GUI_Window_TestEditor.h>
 
 
