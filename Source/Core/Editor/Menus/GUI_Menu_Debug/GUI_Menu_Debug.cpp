@@ -61,6 +61,9 @@ void GUI_Menu_Debug::Draw() {
                     std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
                     for (unsigned int i = 0; i < WindowNames.size(); i++) {
                         bool Status = WindowManager_->SetWindowStatus(WindowNames[i], true);
+                        if (!Status) {
+                            SystemUtils_->Logger_->Log(std::string("Warning, WindowManager Window '") + WindowNames[i] + std::string("' Invalid, Check WindowManager Class For Errors In Code"), 10);
+                        }
                     }
 
                 }
