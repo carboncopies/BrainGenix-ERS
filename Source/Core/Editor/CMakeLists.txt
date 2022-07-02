@@ -37,6 +37,7 @@ target_link_libraries(VisualEditor
     ERS_Editor_FontManager
     ERS_Editor_UserProfileManager
     ERS_Editor_3DCursor
+    ERS_Editor_WindowManager
 
     ERS_SceneManager
 
