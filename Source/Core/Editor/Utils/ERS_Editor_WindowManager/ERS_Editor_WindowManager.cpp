@@ -101,6 +101,8 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     Windows_->GUI_Window_ScriptEditor_->Draw();
     Windows_->GUI_Window_ShaderEditor_->Draw();
     Windows_->GUI_Window_SystemLog_->Draw();
+    Windows_->GUI_Window_TestEditor_->Draw();
+    Windows_->GUI_Window_ThemeSelector_->Draw();
     
 }
 
@@ -119,8 +121,44 @@ bool ERS_CLASS_WindowManager::GetWindowStatus(std::string WindowName, bool* Stat
     } else if (WindowName == "FrameLatencyGraph") {
         *Status = Windows_->GUI_Window_FrameLatencyGraph_->Enabled_;
         return true;
-    } else if (WindowName == "Fram") {
-        *Status = Windows_->GUI_Window_AssetExplorer_->Enabled_;
+    } else if (WindowName == "FramerateGraph") {
+        *Status = Windows_->GUI_Window_FramerateGraph_->Enabled_;
+        return true;
+    } else if (WindowName == "FramerateCounter") {
+        *Status = Windows_->GUI_Window_FramerateCounter_->Enabled_;
+        return true;
+    } else if (WindowName == "FrameratePlot") {
+        *Status = Windows_->GUI_Window_FrameratePlot_->Enabled_;
+        return true;
+    } else if (WindowName == "ImportProgressBar") {
+        *Status = Windows_->GUI_Window_ImportProgressBar_->Enabled_;
+        return true;
+    } else if (WindowName == "ObjectProperties") {
+        *Status = Windows_->GUI_Window_ObjectProperties_->Enabled_;
+        return true;
+    } else if (WindowName == "RAMGraphj") {
+        *Status = Windows_->GUI_Window_RAMGraph_->Enabled_;
+        return true;
+    } else if (WindowName == "RenderingSettings") {
+        *Status = Windows_->GUI_Window_RenderingSettings_->Enabled_;
+        return true;
+    } else if (WindowName == "SceneTree") {
+        *Status = Windows_->GUI_Window_SceneTree_->Enabled_;
+        return true;
+    } else if (WindowName == "ScriptEditor") {
+        *Status = Windows_->GUI_Window_ScriptEditor_->Enabled_;
+        return true;
+    } else if (WindowName == "ShaderEditor") {
+        *Status = Windows_->GUI_Window_ShaderEditor_->Enabled_;
+        return true;
+    } else if (WindowName == "SystemLog") {
+        *Status = Windows_->GUI_Window_SystemLog_->Enabled_;
+        return true;
+    } else if (WindowName == "TestEditor") {
+        *Status = Windows_->GUI_Window_TestEditor_->Enabled_;
+        return true;
+    } else if (WindowName == "ThemeSelector") {
+        *Status = Windows_->GUI_Window_ThemeSelector_->Enabled_;
         return true;
     }
 
