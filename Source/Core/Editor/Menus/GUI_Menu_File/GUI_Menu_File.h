@@ -46,7 +46,7 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
     ERS_CLASS_VisualRenderer* VisualRenderer_; /**<shared pointer to visual renderer*/
-    ERS_STRUCT_Windows* Windows; /**<Struct containing all windows*/
+    ERS_STRUCT_Windows* Windows_; /**<Struct containing all windows*/
 
     std::unique_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
     ERS_CLASS_SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
