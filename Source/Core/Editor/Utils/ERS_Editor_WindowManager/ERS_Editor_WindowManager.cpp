@@ -15,7 +15,8 @@ ERS_CLASS_WindowManager::ERS_CLASS_WindowManager(ERS_STRUCT_SystemUtils* SystemU
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing WindowManager Subsystem", 4);
 
-
+    
+    Windows_ = std::make_unique<ERS_STRUCT_Windows>();
 
 }
 
