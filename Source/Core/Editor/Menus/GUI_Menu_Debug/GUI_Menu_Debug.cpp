@@ -48,13 +48,23 @@ void GUI_Menu_Debug::Draw() {
                 Windows_->GUI_Window_TestEditor_->Enabled_ = !Windows_->GUI_Window_TestEditor_->Enabled_;
             }
 
+
+
+            ImGui::Separator();
+
+            // Show All Windows
+            if (ImGui::MenuItem("Show All Windows")) {
+
+            }
+
+
+            ImGui::Separator();
+
             // OpenGL Debug Submenu
             if (ImGui::BeginMenu("OpenGL Debugging")) {
                 ERS_CLASS_OpenGLDebug_->DrawMenu();
             ImGui::EndMenu();
             }
-
-            // Show All Windows
 
 
         ImGui::EndMenu();
