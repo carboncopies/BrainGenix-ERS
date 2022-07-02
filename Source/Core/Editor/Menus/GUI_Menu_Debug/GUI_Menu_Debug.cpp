@@ -10,6 +10,7 @@ GUI_Menu_Debug::GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_W
 
     SystemUtils_ = SystemUtils;
     Windows_ = Windows;
+    WindowManager_ = WindowManager;
     SystemUtils_->Logger_->Log("Editor Setting Up Debug Menu", 4);
 
     SystemUtils_->Logger_->Log("Reading Configuration File For 'ShowEditorDebugMenu' Parameter", 1);
