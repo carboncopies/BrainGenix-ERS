@@ -52,38 +52,42 @@ void GUI_Menu_Debug::Draw() {
 
             ImGui::Separator();
 
-            // Show All Windows
-            if (ImGui::MenuItem("Show All Windows")) {
+            // Window Manager Debug stuff - show, hide, toggle windows.
+            if (ImGui::BeginMenu("Window Manager Debugging")) {
 
-                std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
-                for (unsigned int i = 0; i < WindowNames.size(); i++) {
-                    WindowManager_->SetWindowStatus(WindowNames[i], true);
+                if (ImGui::MenuItem("Show All Windows")) {
+
+                    std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
+                    for (unsigned int i = 0; i < WindowNames.size(); i++) {
+                        WindowManager_->SetWindowStatus(WindowNames[i], true);
+                    }
+
                 }
 
-            }
+                if (ImGui::MenuItem("Hide All Windows")) {
 
-            if (ImGui::MenuItem("Hide All Windows")) {
+                    std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
+                    for (unsigned int i = 0; i < WindowNames.size(); i++) {
+                        WindowManager_->SetWindowStatus(WindowNames[i], false);
+                    }
 
-                std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
-                for (unsigned int i = 0; i < WindowNames.size(); i++) {
-                    WindowManager_->SetWindowStatus(WindowNames[i], false);
                 }
 
-            }
+                if (ImGui::MenuItem("Invert Window States")) {
 
-            if (ImGui::MenuItem("Invert Window States")) {
+                    std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
+                    for (unsigned int i = 0; i < WindowNames.size(); i++) {
+                        bool WindowState;
+                        WindowManager_->GetWindowStatus(WindowNames[i], &WindowState);
+                        WindowManager_->SetWindowStatus(WindowNames[i], !WindowState);
+                    }
 
-                std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
-                for (unsigned int i = 0; i < WindowNames.size(); i++) {
-                    bool WindowState;
-                    WindowManager_->GetWindowStatus(WindowNames[i], &WindowState);
-                    WindowManager_->SetWindowStatus(WindowNames[i], !WindowState);
                 }
 
+            ImGui::EndMenu();
             }
 
 
-            ImGui::Separator();
 
             // OpenGL Debug Submenu
             if (ImGui::BeginMenu("OpenGL Debugging")) {
