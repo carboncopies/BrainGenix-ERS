@@ -56,3 +56,25 @@ ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* 
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Struct", 3);
 
 }
+
+// Update Windows - See README in Windows Dir For More Info
+void ERS_CLASS_WindowManager::UpdateAllWindows() {
+
+    // Make sure to add your window here as well, again see the above mentioned readme for more info
+    Windows_->GUI_Window_About_->Draw();
+    Windows_->GUI_Window_AssetExplorer_->Draw();
+    Windows_->GUI_Window_ControllerSettings_->Draw();
+    Windows_->GUI_Window_FrameLatencyGraph_->Draw();
+    Windows_->GUI_Window_FrameLatencyGraph_->Draw();
+    Windows_->GUI_Window_FramerateCounter_->Draw();
+    Windows_->GUI_Window_FrameratePlot_->Draw();
+    Windows_->GUI_Window_ImportProgressBar_->Draw();
+    Windows_->GUI_Window_ObjectProperties_->Draw();
+    Windows_->GUI_Window_RAMGraph_->Draw();
+    Windows_->GUI_Window_RenderingSettings_->Draw();
+    Windows_->GUI_Window_SceneTree_->Draw();
+    Windows_->GUI_Window_ScriptEditor_->Draw();
+    Windows_->GUI_Window_ShaderEditor_->Draw();
+    Windows_->GUI_Window_SystemLog_->Draw();
+    
+}
