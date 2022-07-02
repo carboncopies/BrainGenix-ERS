@@ -27,8 +27,8 @@ ERS_CLASS_WindowManager::~ERS_CLASS_WindowManager() {
 
 
 // Setup Window Struct
-void ERS_CLASS_WindowManager::GenerateWindowStruct(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils,
-ERS_CLASS_VisualRenderer* VisualRenderer, Cursors3D* Gizmo, ERS_CLASS_SceneManager* SceneManager) {
+void ERS_CLASS_WindowManager::GenerateWindowStruct(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_CLASS_VisualRenderer* VisualRenderer,
+ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* SceneManager) {
 
     // Setup Window System
     SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Struct", 4);
@@ -51,7 +51,7 @@ ERS_CLASS_VisualRenderer* VisualRenderer, Cursors3D* Gizmo, ERS_CLASS_SceneManag
     Windows_->GUI_Window_ShaderEditor_         = std::make_unique<GUI_Window_ShaderEditor>(SystemUtils_, ProjectUtils, VisualRenderer);
     Windows_->GUI_Window_SystemLog_            = std::make_unique<GUI_Window_SystemLog>(SystemUtils_);
     Windows_->GUI_Window_TestEditor_           = std::make_unique<GUI_Window_TestEditor>(SystemUtils_);
-    Windows_->GUI_Window_ThemeSelector_        = std::make_unique<GUI_Window_ThemeSelector>();
+    Windows_->GUI_Window_ThemeSelector_        = std::make_unique<GUI_Window_ThemeSelector>(ThemeManager);
 
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Struct", 3);
     SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Index", 4);
