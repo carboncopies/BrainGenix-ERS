@@ -11,6 +11,15 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_ProjectUtils.h>
+#include <ERS_STRUCT_HumanInputDeviceUtils.h>
+#include <ERS_STRUCT_ControllerSettings.h>
+
+#include <ERS_CLASS_VisualRenderer.h>
+
+#include <ERS_Editor_ThemeManager.h>
+#include <ERS_Editor_3DCursor.h>
+
 
 #include <GUI_Window_About.h>
 #include <GUI_Window_AssetExplorer.h>
@@ -68,7 +77,9 @@ public:
      * @brief Generate Window Struct, Call As Soon As Possible.
      * 
      */
-    void GenerateWindowStruct();
+    void GenerateWindowStruct(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils,
+    ERS_STRUCT_ControllerSettings* ControllerSettings, ERS_CLASS_VisualRenderer* VisualRenderer,
+    ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo);
 
 
     /**
