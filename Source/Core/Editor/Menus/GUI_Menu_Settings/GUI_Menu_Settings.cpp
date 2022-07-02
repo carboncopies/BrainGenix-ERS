@@ -37,7 +37,7 @@ void GUI_Menu_Settings::Draw() {
 
             // Open Settings MEnu
             if (ImGui::MenuItem("Game Controller Settings")) {
-                WindowManager_->Enabled_ = !GUI_Window_ControllerSettings_->Enabled_;
+                WindowManager_->Windows_->GUI_Window_ControllerSettings_->Enabled_ = !WindowManager_->Windows_->GUI_Window_ControllerSettings_->Enabled_;
             }
 
         ImGui::EndMenu();
@@ -47,8 +47,5 @@ void GUI_Menu_Settings::Draw() {
     ImGui::EndMenu();
     }
 
-
-    // Draw Subwindows
-    GUI_Window_ControllerSettings_->Draw();
 
 }
