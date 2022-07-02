@@ -4,6 +4,11 @@
 
 #include <ERS_Editor_WindowManager.h>
 
+/*
+-- IMPORTANT NOTICE
+-- PLEASE SEE README.MD IN WINDOWS DIRECTORY FOR INFO ABOUT ADDING NEW WINDOWS --
+*/
+
 
 ERS_CLASS_WindowManager::ERS_CLASS_WindowManager(ERS_STRUCT_SystemUtils* SystemUtils) {
 
@@ -29,7 +34,7 @@ ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* 
     // Setup Window System
     SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Struct", 4);
 
-    // Construct All Widnows
+    // Construct All Widnows -- PLEASE SEE README.MD IN WINDOWS DIRECTORY FOR INFO ABOUT ADDING NEW WINDOWS --
     Windows_->GUI_Window_About_                = std::make_unique<GUI_Window_About>(SystemUtils_);
     Windows_->GUI_Window_AssetExplorer_        = std::make_unique<GUI_Window_AssetExplorer>(SystemUtils_, ProjectUtils);
     Windows_->GUI_Window_ControllerSettings_   = std::make_unique<GUI_Window_ControllerSettings>(SystemUtils_, HIDUtils, ProjectUtils);
