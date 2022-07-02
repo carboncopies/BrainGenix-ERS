@@ -53,4 +53,6 @@ ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* 
     Windows_->GUI_Window_TestEditor_           = std::make_unique<GUI_Window_TestEditor>(SystemUtils_);
     Windows_->GUI_Window_ThemeSelector_        = std::make_unique<GUI_Window_ThemeSelector>();
 
+    SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Struct", 3);
+
 }
