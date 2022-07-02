@@ -89,8 +89,8 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     Windows_->GUI_Window_About_->Draw();
     Windows_->GUI_Window_AssetExplorer_->Draw();
     Windows_->GUI_Window_ControllerSettings_->Draw();
-    Windows_->GUI_Window_FramerateGraph_->Draw();
     Windows_->GUI_Window_FrameLatencyGraph_->Draw();
+    Windows_->GUI_Window_FramerateGraph_->Draw();
     Windows_->GUI_Window_FramerateCounter_->Draw();
     Windows_->GUI_Window_FrameratePlot_->Draw();
     Windows_->GUI_Window_ImportProgressBar_->Draw();
@@ -119,7 +119,7 @@ bool ERS_CLASS_WindowManager::GetWindowStatus(std::string WindowName, bool* Stat
     } else if (WindowName == "FrameLatencyGraph") {
         *Status = Windows_->GUI_Window_FrameLatencyGraph_->Enabled_;
         return true;
-    } else if (WindowName == "FrameLatency") {
+    } else if (WindowName == "Fram") {
         *Status = Windows_->GUI_Window_AssetExplorer_->Enabled_;
         return true;
     }
