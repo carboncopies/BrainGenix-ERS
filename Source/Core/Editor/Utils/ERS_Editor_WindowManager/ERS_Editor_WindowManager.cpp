@@ -5,3 +5,11 @@
 #include <ERS_Editor_WindowManager.h>
 
 
+ERS_CLASS_WindowManager::ERS_CLASS_WindowManager(ERS_STRUCT_SystemUtils* SystemUtils) {
+
+    SystemUtils_ = SystemUtils;
+    SystemUtils_->Logger_->Log("Initializing WindowManager Subsystem", 4);
+
+    
+
+}

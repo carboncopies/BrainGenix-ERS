@@ -55,7 +55,7 @@ public:
      * @brief Construct a new ers class windowmanager object
      * 
      */
-    ERS_CLASS_WindowManager();
+    ERS_CLASS_WindowManager(ERS_STRUCT_SystemUtils* SystemUtils);
 
     /**
      * @brief Destroy the ers class windowmanager object
