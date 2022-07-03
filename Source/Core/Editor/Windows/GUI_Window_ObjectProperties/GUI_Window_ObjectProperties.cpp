@@ -210,6 +210,12 @@ void GUI_Window_ObjectProperties::Draw() {
                         ImGui::HelpMarker("Allow this model to have shadows cast upon it by other objects as well as itself.");
 
 
+                        // Shader Override Settings
+                        ImGui::Separator();
+
+                        // Shader Control Menu
+                        
+
                     }
 
                 }
