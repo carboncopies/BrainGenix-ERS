@@ -88,6 +88,8 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "CastStaticShadows" << YAML::Value << InputScene->Models[i]->CastStaticShadows_;
         Output << YAML::Key << "ReceiveShadows" << YAML::Value << InputScene->Models[i]->ReceiveShadows_;
 
+        Output << YAML::Key << "ShaderOverrideIndex" << YAML::Value << InputScene->Models[i]->ShaderOverrideIndex_;
+
 
 
         Output<<YAML::Key<<"AttachedScripts";
