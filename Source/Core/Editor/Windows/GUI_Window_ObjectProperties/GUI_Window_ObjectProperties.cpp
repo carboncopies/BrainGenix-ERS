@@ -221,12 +221,12 @@ void GUI_Window_ObjectProperties::Draw() {
                         // ImGui::Combo("Object Specific Shader", &ShaderIndex, );
                         // Model->ShaderOverrideIndex_ = ShaderIndex - 1;
 
-                        if (ImGui::BeginMenu("Stuff")) {
+                        if (ImGui::BeginCombo("Stuff", "abc")) {
 
                             ImGui::Selectable("foo");
                             ImGui::Selectable("bar");
 
-                        ImGui::EndMenu();
+                        ImGui::EndCombo();
                         }
 
                     }
