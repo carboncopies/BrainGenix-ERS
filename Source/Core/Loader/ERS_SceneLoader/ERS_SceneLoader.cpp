@@ -126,7 +126,6 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 Scene.Models[CurrentSize-1]->ReceiveShadows_ = SceneDataNode[i]["ReceiveShadows"].as<bool>();
             }
 
-
             if (SceneDataNode[i]["ShaderOverrideIndex"]) {
                 Scene.Models[CurrentSize-1]->ShaderOverrideIndex_ = SceneDataNode[i]["ShaderOverrideIndex"].as<long>();
             }
