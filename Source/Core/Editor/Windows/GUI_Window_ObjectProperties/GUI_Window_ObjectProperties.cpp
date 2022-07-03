@@ -5,11 +5,12 @@
 #include <GUI_Window_ObjectProperties.h>
 
 
-GUI_Window_ObjectProperties::GUI_Window_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+GUI_Window_ObjectProperties::GUI_Window_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer) {
 
     Cursors3D_ = Cursors3D;
     SceneManager_ = SceneManager;
     ProjectUtils_ = ProjectUtils;
+    VisualRenderer_ = VisualRenderer;
 
 }
 

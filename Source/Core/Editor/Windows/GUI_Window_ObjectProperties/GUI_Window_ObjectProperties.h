@@ -82,7 +82,7 @@ public:
      * @brief Construct a new GUI_Window_ObjectProperties object
      * 
      */
-    GUI_Window_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    GUI_Window_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer);
 
     /**
      * @brief Destroy the GUI_Window_ObjectProperties object
