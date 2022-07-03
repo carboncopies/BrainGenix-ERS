@@ -23,6 +23,8 @@
 #include <ERS_STRUCT_LocRotScale.h>
 #include <ERS_STRUCT_ProjectUtils.h>
 
+#include <ERS_CLASS_VisualRenderer.h>
+
 #include <ERS_SceneManager.h>
 
 
@@ -38,6 +40,7 @@ private:
     Cursors3D* Cursors3D_; /**<Instance pointer to cursors3d class*/
     ERS_CLASS_SceneManager* SceneManager_; /**<Pointer To Scene Manager Instance*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to projectutils struct*/
+    ERS_CLASS_VisualRenderer* VisualRenderer_; /**<Pointer to Visualrenderer used to get shader info*/
 
     std::vector<long>* ScriptIndices_; /**<variable to store script names for list box*/
     int ScriptIndex_; /**<Selected index of script*/
