@@ -12,7 +12,7 @@ GUI_Window_ObjectProperties::GUI_Window_ObjectProperties(Cursors3D* Cursors3D, E
     ProjectUtils_ = ProjectUtils;
     VisualRenderer_ = VisualRenderer;
 
-    ShaderNames_[0] = "Default";
+    //ShaderNames_[0] = "Default";
 
 }
 
@@ -217,9 +217,17 @@ void GUI_Window_ObjectProperties::Draw() {
                         ImGui::Separator();
 
                         // Shader Control Menu
-                        int ShaderIndex = Model->ShaderOverrideIndex_ + 1;
-                        ImGui::Combo("Object Specific Shader", &ShaderIndex, );
-                        Model->ShaderOverrideIndex_ = ShaderIndex - 1;
+                        // int ShaderIndex = Model->ShaderOverrideIndex_ + 1;
+                        // ImGui::Combo("Object Specific Shader", &ShaderIndex, );
+                        // Model->ShaderOverrideIndex_ = ShaderIndex - 1;
+
+                        if (ImGui::BeginMenu("Stuff")) {
+
+                            ImGui::Selectable("foo");
+                            ImGui::Selectable("bar");
+
+                        ImGui::EndMenu();
+                        }
 
                     }
 
