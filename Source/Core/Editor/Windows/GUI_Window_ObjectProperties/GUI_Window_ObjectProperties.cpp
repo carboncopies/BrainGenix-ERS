@@ -12,6 +12,8 @@ GUI_Window_ObjectProperties::GUI_Window_ObjectProperties(Cursors3D* Cursors3D, E
     ProjectUtils_ = ProjectUtils;
     VisualRenderer_ = VisualRenderer;
 
+    ShaderNames_[0] = "Default";
+
 }
 
 GUI_Window_ObjectProperties::~GUI_Window_ObjectProperties() {
@@ -215,7 +217,9 @@ void GUI_Window_ObjectProperties::Draw() {
                         ImGui::Separator();
 
                         // Shader Control Menu
-                        
+                        int ShaderIndex = Model->ShaderOverrideIndex_ + 1;
+                        ImGui::Combo("Object Specific Shader", &ShaderIndex, );
+                        Model->ShaderOverrideIndex_ = ShaderIndex - 1;
 
                     }
 

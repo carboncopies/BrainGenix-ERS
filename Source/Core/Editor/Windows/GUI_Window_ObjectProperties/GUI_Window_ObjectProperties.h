@@ -43,6 +43,7 @@ private:
     ERS_CLASS_VisualRenderer* VisualRenderer_; /**<Pointer to Visualrenderer used to get shader info*/
 
     std::vector<long>* ScriptIndices_; /**<variable to store script names for list box*/
+    char ShaderNames_[32][512]; /**<List of names to be used to store shader's names*/
     int ScriptIndex_; /**<Selected index of script*/
 
 
