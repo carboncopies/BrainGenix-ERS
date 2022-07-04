@@ -635,18 +635,14 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     **/
 
 
-    // Get Pointer to Shader
-    ERS_STRUCT_Shader* ActiveShader = Shaders_[ShaderIndex].get();
 
     // Set Metadata Params
     float Time = glfwGetTime();
-    ActiveShader->SetFloat("Time", Time);
-
-    ActiveShader->SetFloat("FrameTime", DeltaTime);
-    ActiveShader->SetInt("FrameNumber", FrameNumber_);
-    ActiveShader->SetVec2("ViewportRes", RenderWidth, RenderHeight);
-    ActiveShader->SetVec3("CameraPosition", Camera->Position_);
-
+    ShaderUniformData_->Time_ = Time;
+    ShaderUniformData_->FrameTime_ = DeltaTime;
+    ShaderUniformData_->FrameNumber_ = FrameNumber_;
+    ShaderUniformData_->ViewportRes_ = glm::vec2(RenderWidth, RenderHeight);
+    ShaderUniformData_->CameraPosition_ = Camera->Position_;
 
 
     // ---- SEND LIGHTING INFORMATION TO SHADERS ---- //
