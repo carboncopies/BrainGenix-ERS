@@ -78,7 +78,7 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     WindowNames_.push_back("SystemLog");
     WindowNames_.push_back("TestEditor");
     WindowNames_.push_back("ThemeSelector");
-    WindowNames_.push_back("FontManager");
+    WindowNames_.push_back("FontSelector");
     
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Index", 3);
 
