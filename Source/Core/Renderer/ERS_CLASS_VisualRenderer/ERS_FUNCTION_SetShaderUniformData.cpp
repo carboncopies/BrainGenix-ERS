@@ -9,12 +9,12 @@ void ERS_FUNCTION_SetShaderUniformData(ERS_STRUCT_Shader* Shader, ERS_STRUCT_Sha
 
     // Set Metadata Params
     float Time = glfwGetTime();
-    Shader->SetFloat("Time", Time);
+    Shader->SetFloat("Time", Data.Time_);
 
-    Shader->SetFloat("FrameTime", DeltaTime);
-    Shader->SetInt("FrameNumber", FrameNumber_);
-    Shader->SetVec2("ViewportRes", RenderWidth, RenderHeight);
-    Shader->SetVec3("CameraPosition", Camera->Position_);
+    Shader->SetFloat("FrameTime", Data.FrameTime_);
+    Shader->SetInt("FrameNumber", Data.FrameNumber_);
+    Shader->SetVec2("ViewportRes", Data.ViewportRes_);
+    Shader->SetVec3("CameraPosition", Data.CameraPosition_);
 
 
     // Set Shadow Filter Info
