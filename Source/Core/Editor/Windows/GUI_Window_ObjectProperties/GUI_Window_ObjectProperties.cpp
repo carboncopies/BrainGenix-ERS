@@ -226,7 +226,7 @@ void GUI_Window_ObjectProperties::Draw() {
 
 
                         std::string PreviewValue;
-                        if (ShaderIndex > (int)VisualRenderer_->Shaders_.size()) {
+                        if (ShaderIndex >= (int)VisualRenderer_->Shaders_.size()) {
                             PreviewValue = "Invalid Shader Index";
 
                         } else if (ShaderIndex == -1) {

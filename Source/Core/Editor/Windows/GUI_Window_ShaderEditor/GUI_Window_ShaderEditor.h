@@ -54,6 +54,8 @@ private:
     int LivePreviewShaderIndex_; /**<Index of Live Preview Shader*/
 
 
+    
+
 private:
 
     /**

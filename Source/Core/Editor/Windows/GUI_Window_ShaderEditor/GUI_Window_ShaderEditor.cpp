@@ -132,6 +132,7 @@ void GUI_Window_ShaderEditor::DrawEditorWindow() {
                         ShaderProgram.FragmentID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
                         ShaderProgram.VertexID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
                         ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.push_back(ShaderProgram);
+                        
 
                         // Save To Disk, So Opening It Works
                         SaveShader("#version 430 core\n", ShaderProgram.VertexID);
