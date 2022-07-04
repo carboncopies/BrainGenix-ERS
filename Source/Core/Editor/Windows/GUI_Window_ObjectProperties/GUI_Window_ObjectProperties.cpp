@@ -243,7 +243,7 @@ void GUI_Window_ObjectProperties::Draw() {
                             }
 
                             for (unsigned int i = 0; i < VisualRenderer_->Shaders_.size(); i++) {
-                                if (ImGui::Selectable(VisualRenderer_->Shaders_[i]->DisplayName, Model->ShaderOverrideIndex_ == i)) {
+                                if (ImGui::Selectable(VisualRenderer_->Shaders_[i]->DisplayName.c_str(), Model->ShaderOverrideIndex_ == i)) {
                                     Model->ShaderOverrideIndex_ = i;
                                 }
                             }
