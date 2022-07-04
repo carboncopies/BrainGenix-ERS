@@ -707,31 +707,6 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
         ActiveShader->SetInt((UniformName + std::string(".DepthCubemapIndex")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
 
-        //ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
-
-
-        // float NearPlane, FarPlane;
-        // NearPlane = 0.1f;
-        // FarPlane = Light->MaxDistance;
-
-        // // Calculate Project, View, Space Matrices
-        // float AspectRatio = 2048 / 2048;
-        // glm::mat4 ObjectProjection = glm::perspective(glm::radians(90.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
-        
-        // std::vector<glm::mat4> ShadowTransforms;
-        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 1.0, 0.0, 0.0), glm::vec3(0.0,-1.0, 0.0)));
-        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3(-1.0, 0.0, 0.0), glm::vec3(0.0,-1.0, 0.0)));
-        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 1.0, 0.0), glm::vec3(0.0, 0.0, 1.0)));
-        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0,-1.0, 0.0), glm::vec3(0.0, 0.0,-1.0)));
-        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0, 1.0), glm::vec3(0.0,-1.0, 0.0)));
-        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0,-1.0), glm::vec3(0.0,-1.0, 0.0)));
-
-        // for (unsigned int x = 0; x < 6; x++) {
-
-        //     ActiveShader->SetMat4((UniformName + std::string(".Matrix") + std::to_string(x)).c_str(), ShadowTransforms[x]);
-
-        // }
-
     }
 
 
