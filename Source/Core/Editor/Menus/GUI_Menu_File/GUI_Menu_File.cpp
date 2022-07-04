@@ -35,6 +35,13 @@ void GUI_Menu_File::Draw() {
         // if (ImGui::MenuItem("Save Project")) {
         //     ProjectUtils_->ProjectManager_->WriteProject(1);
         // }
+
+        if (ImGui::MenuItem("About")) {
+            Windows_->GUI_Window_About_->Enabled_ = !Windows_->GUI_Window_About_->Enabled_;
+        }
+
+        ImGui::Separator();
+
         if (ImGui::MenuItem("Project Settings")) {
             Windows_->GUI_Window_ProjectSettings_->Enabled_ = !Windows_->GUI_Window_ProjectSettings_->Enabled_;
         }
@@ -78,13 +85,6 @@ void GUI_Menu_File::Draw() {
         }
 
         ImGui::Separator();
-
-        if (ImGui::MenuItem("About")) {
-            Windows_->GUI_Window_About_->Enabled_ = !Windows_->GUI_Window_About_->Enabled_;
-        }
-
-        ImGui::Separator();
-
 
         // Exit Options
         if (ImGui::MenuItem("Exit")) {
