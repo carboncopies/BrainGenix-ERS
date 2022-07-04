@@ -46,12 +46,7 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     glm::mat4 View = Camera_->GetViewMatrix();
 
 
-    // Detect If Gizmo Just Enabled
-    if ((LastFrameActiveState_ != ImGuizmo::IsUsing()) && (!LastFrameActiveState_)) {
-        InitialPos_ = Pos_;
-        InitialRot_ = Rot_;
-        InitialScale_ = Scale_;
-    }
+
 
 
     // Set Gizmo Mode
@@ -80,6 +75,14 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
 
     if (ShowCube) {
         ImGuizmo::ViewManipulate((float*)glm::value_ptr(View), 5.0f, ImVec2(WindowWidth + ImGui::GetWindowPos().x - 128, ImGui::GetWindowPos().y), ImVec2(128, 128), 0x00000000);
+    }
+
+
+    // Detect If Gizmo Just Enabled, Set Initial Position
+    if ((LastFrameActiveState_ != ImGuizmo::IsUsing()) && (!LastFrameActiveState_)) {
+        InitialPos_ = Pos_;
+        InitialRot_ = Rot_;
+        InitialScale_ = Scale_;
     }
 
 
