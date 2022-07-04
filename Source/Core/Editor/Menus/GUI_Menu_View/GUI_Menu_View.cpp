@@ -28,19 +28,6 @@ void GUI_Menu_View::Draw() {
     if (ImGui::BeginMenu("View")) {
 
 
-        if (ImGui::MenuItem("Color Theme")) {
-            Windows_->GUI_Window_ThemeSelector_->Enabled_ = !Windows_->GUI_Window_ThemeSelector_->Enabled_;
-        }
-
-        if (ImGui::MenuItem("System Font")) {
-            Windows_->GUI_Window_FontSelector_->Enabled_ = !Windows_->GUI_Window_FontSelector_->Enabled_;
-        }
-
-        ImGui::Separator();
-
-        if (ImGui::MenuItem("About")) {
-            Windows_->GUI_Window_About_->Enabled_ = !Windows_->GUI_Window_About_->Enabled_;
-        }
 
 
     ImGui::EndMenu();
