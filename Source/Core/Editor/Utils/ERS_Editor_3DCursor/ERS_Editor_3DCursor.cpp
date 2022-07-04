@@ -90,7 +90,7 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     ImGuizmo::RecomposeMatrixFromComponents((float*)glm::value_ptr(Pos_), (float*)glm::value_ptr(Rot_), (float*)glm::value_ptr(Scale_), TmpMatrix);
 
     // Only Draw When ShowCursor Is True, Otherwise Don't Draw
-    if (ShowCursor && (DisableGizmoForFrames_ <= 0)) {
+    if (ShowCursor) {
 
         // Handle Grid Snapping
         float GridSnapArray[3];
@@ -125,7 +125,6 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
 
     }
 
-
     // If Using Gizmo, Update Object LocRotScale
     if (ImGuizmo::IsUsing()) {
         
@@ -156,6 +155,9 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     LastFrameActiveState_ = ImGuizmo::IsUsing();
     if (DisableGizmoForFrames_ > 0) {
         DisableGizmoForFrames_--;
+        ImGuizmo::Enable(false);
+    } else {
+        ImGuizmo::Enable(true);
     }
 
 
