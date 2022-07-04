@@ -82,7 +82,7 @@ public:
      * @param OpenGLDefaults 
      * @param Shader 
      */
-    void RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::vector<ERS_STRUCT_Shader>* Shaders, int DefaultShader, ERS_STRUCT_ShaderUniformData ShaderUniformInfo);
+    void RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::vector<ERS_STRUCT_Shader>* Shaders, int DefaultShaderIndex, ERS_STRUCT_ShaderUniformData ShaderUniformInfo);
 
     /**
      * @brief Render the scene without textures (used to generate depth maps)

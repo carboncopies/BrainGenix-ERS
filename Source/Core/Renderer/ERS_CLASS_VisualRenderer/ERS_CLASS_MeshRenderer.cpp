@@ -20,7 +20,7 @@ ERS_CLASS_MeshRenderer::~ERS_CLASS_MeshRenderer() {
 }
 
 
-void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::vector<ERS_STRUCT_Shader>* Shaders, int DefaultShader, ERS_STRUCT_ShaderUniformData ShaderUniformInfo) {
+void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::vector<ERS_STRUCT_Shader>* Shaders, int DefaultShaderIndex, ERS_STRUCT_ShaderUniformData ShaderUniformInfo) {
 
     ERS_FUNCTION_UpdateMeshTransparency(Scene);
 
@@ -29,12 +29,18 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
     ERS_FUNCTION_MeshTransparencySort(&OpaqueMeshes, &TransparentMeshes, Scene);
 
     // Setup Variables To Handle Shader Switching
-    int CurrentShaderIndex = DefaultShader;
-    ERS_STRUCT_Shader* = Shaders[CurrentShaderIndex];
+    int CurrentShaderIndex = DefaultShaderIndex;
+    ERS_STRUCT_Shader* Shader = Shaders[CurrentShaderIndex];
     ERS_FUNCTION_SetShaderUniformData(Shader, ShaderUniformInfo);
 
     // Draw All Opaque Meshes
     for (unsigned long i = 0; i < OpaqueMeshes.size(); i++) {
+
+        int MeshShaderOverrideIndex = OpaqueMeshes[i]->ShaderOverrideIndex_;
+        if (MeshShaderOverrideIndex == -1) {
+            MeshShaderOverrideIndex = DefaultShaderIndex;
+        }
+        if (OpaqueMeshes[i]->ShaderOverrideIndex_ != -)
         ERS_FUNCTION_DrawMesh(OpaqueMeshes[i], OpenGLDefaults, Shader);
     }
 
