@@ -86,6 +86,7 @@ private:
     glm::vec3 InitialPos_;   /**<Initial Scale, Used To Cancel Movement If Escape Is Pressed During An Operation*/
     glm::vec3 InitialRot_;   /**<Initial Scale, Used To Cancel Movement If Escape Is Pressed During An Operation*/
     glm::vec3 InitialScale_; /**<Initial Scale, Used To Cancel Movement If Escape Is Pressed During An Operation*/
+    int DisableGizmoForFrames_ = 0; /**<If nonzero, will disable the gizmo*/
     bool LastFrameActiveState_ = false; /*<If the cursor was being used in the last frame or not*/ 
 
 public:
