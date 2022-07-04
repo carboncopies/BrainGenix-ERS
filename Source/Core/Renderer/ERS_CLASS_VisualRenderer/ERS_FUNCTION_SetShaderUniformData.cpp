@@ -33,32 +33,29 @@ void ERS_FUNCTION_SetShaderUniformData(ERS_STRUCT_Shader* Shader, ERS_STRUCT_Sha
     
         std::string UniformName = std::string("DirectionalLights[") + std::to_string(i) + std::string("]");
 
-        Shader->SetVec3  ((UniformName + std::string(".Direction")).c_str(),        Data.DirectionalLights_[i].Direction_);
-        Shader->SetVec3  ((UniformName + std::string(".Color")).c_str(),            Data.DirectionalLights_[i].Color_);
-        Shader->SetFloat ((UniformName + std::string(".Intensity")).c_str(),        Data.DirectionalLights_[i].Intensity_);
-        Shader->SetFloat ((UniformName + std::string(".MaxDistance")).c_str(),      Data.DirectionalLights_[i].MaxDistance_);
-        Shader->SetBool  ((UniformName + std::string(".CastsShadows")).c_str(),     Data.DirectionalLights_[i].CastsShadows_);
-        Shader->SetInt   ((UniformName + std::string(".DepthMapIndex")).c_str(),    Data.DirectionalLights_[i].DepthMapIndex_);
-        Shader->SetMat4  ((UniformName + std::string(".LightSpaceMatrix")).c_str(), Data.DirectionalLights_[i].LightSpaceMatrix_);
+        Shader->SetMat4  ((UniformName + std::string(".LightSpaceMatrix")).c_str(),   Data.DirectionalLights_[i].LightSpaceMatrix_);
+        Shader->SetVec3  ((UniformName + std::string(".Direction")).c_str(),          Data.DirectionalLights_[i].Direction_);
+        Shader->SetVec3  ((UniformName + std::string(".Color")).c_str(),              Data.DirectionalLights_[i].Color_);
+        Shader->SetFloat ((UniformName + std::string(".Intensity")).c_str(),          Data.DirectionalLights_[i].Intensity_);
+        Shader->SetFloat ((UniformName + std::string(".MaxDistance")).c_str(),        Data.DirectionalLights_[i].MaxDistance_);
+        Shader->SetInt   ((UniformName + std::string(".DepthMapIndex")).c_str(),      Data.DirectionalLights_[i].DepthMapIndex_);
+        Shader->SetBool  ((UniformName + std::string(".CastsShadows")).c_str(),       Data.DirectionalLights_[i].CastsShadows_);
     
     }
 
     // Point Lights
-    int NumberPointLights = ActiveScene->PointLights.size();
-    Shader->SetInt("NumberPointLights", NumberPointLights);
-    for (int i = 0; i < NumberPointLights; i++) {
+
+    Shader->SetInt("NumberPointLights", Data.NumberPointLights_);
+    for (int i = 0; i < Data.NumberPointLights_; i++) {
     
         std::string UniformName = std::string("PointLights[") + std::to_string(i) + std::string("]");
 
-        Shader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->PointLights[i]->Pos);
-        Shader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->PointLights[i]->Intensity);
-        Shader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->PointLights[i]->Color);
-    
-        Shader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->PointLights[i]->MaxDistance);
-        
-        Shader->SetBool((UniformName + std::string(".CastsShadows")).c_str(), ActiveScene->PointLights[i]->CastsShadows_);
-
-        Shader->SetInt((UniformName + std::string(".DepthCubemapIndex")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
+        Shader->SetVec3  ((UniformName + std::string(".Position")).c_str(),           Data.PointLights_[i].Position_);
+        Shader->SetVec3  ((UniformName + std::string(".Color")).c_str(),              Data.PointLights_[i].Color_);
+        Shader->SetFloat ((UniformName + std::string(".MaxDistance")).c_str(),        Data.PointLights_[i].MaxDistance_);
+        Shader->SetFloat ((UniformName + std::string(".Intensity")).c_str(),          Data.PointLights_[i].Intensity_);
+        Shader->SetInt   ((UniformName + std::string(".DepthCubemapIndex")).c_str(),  Data.PointLights_[i].DepthCubemapIndex_);
+        Shader->SetBool  ((UniformName + std::string(".CastsShadows")).c_str(),       Data.PointLights_[i].CastsShadows_);
 
     }
 
