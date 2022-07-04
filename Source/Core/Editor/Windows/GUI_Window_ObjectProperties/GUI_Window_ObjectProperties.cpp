@@ -236,7 +236,7 @@ void GUI_Window_ObjectProperties::Draw() {
                             PreviewValue = VisualRenderer_->Shaders_[ShaderIndex]->DisplayName;
                         }
 
-                        if (ImGui::BeginCombo("Object Specific Shader", "abc")) {
+                        if (ImGui::BeginCombo("Object Specific Shader", PreviewValue.c_str())) {
 
                             ImGui::Selectable("foo");
                             ImGui::Selectable("bar");
