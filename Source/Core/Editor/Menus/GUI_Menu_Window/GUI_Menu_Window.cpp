@@ -33,7 +33,7 @@ void GUI_Menu_Window::Draw() {
         if (ImGui::BeginMenu("Windows")) {
 
             // Add Scene Tree Editor Window
-            ImGui::Selectable("Scene Tree", &Windows_->GUI_Window_SceneTree_->Enabled_);
+            ImGui::Selectable("Scene Tree", "", &Windows_->GUI_Window_SceneTree_->Enabled_);
             ImGui::Selectable("System Log", &Windows_->GUI_Window_SystemLog_->Enabled_);
             ImGui::Selectable("Asset Explorer", &Windows_->GUI_Window_AssetExplorer_->Enabled_);
             ImGui::Selectable("Object Properties", &Windows_->GUI_Window_ObjectProperties_->Enabled_);
