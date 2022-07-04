@@ -238,8 +238,15 @@ void GUI_Window_ObjectProperties::Draw() {
 
                         if (ImGui::BeginCombo("Object Specific Shader", PreviewValue.c_str())) {
 
-                            ImGui::Selectable("foo");
-                            ImGui::Selectable("bar");
+                            if (ImGui::Selectable("Default Shader", ShaderIndex == -1)) {
+                                Model->ShaderOverrideIndex_ = -1;
+                            }
+
+                            for (unsigned int i = 0; i < VisualRenderer_->Shaders_.size(); i++) {
+                                if (ImGui::Selectable(VisualRenderer_->Shaders_[i]->DisplayName, Model->ShaderOverrideIndex_ == i)) {
+                                    Model->ShaderOverrideIndex_ = i;
+                                }
+                            }
 
                         ImGui::EndCombo();
                         }
