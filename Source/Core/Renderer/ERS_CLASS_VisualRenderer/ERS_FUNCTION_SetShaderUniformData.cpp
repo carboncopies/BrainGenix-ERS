@@ -17,12 +17,12 @@ void ERS_FUNCTION_SetShaderUniformData(ERS_STRUCT_Shader* Shader, ERS_STRUCT_Sha
 
 
     // Set Camera Data
-    Shader->SetMat4  ("projection",               Data.Projection_);
-    Shader->SetMat4  ("view",                     Data.View_);
-    Shader->SetFloat ("Exposure_",                Data.Exposure_);
-    Shader->SetFloat ("Gamma_",                   Data.Gamma_);
-    Shader->SetBool  ("GammaCorrectionEnabled_",  Data.GammaCorrectionEnabled_);
-    Shader->SetBool  ("HDREnabled_",              Data.HDREnabled_);
+    Shader->SetMat4  ("projection",                              Data.Projection_);
+    Shader->SetMat4  ("view",                                    Data.View_);
+    Shader->SetFloat ("Exposure_",                               Data.Exposure_);
+    Shader->SetFloat ("Gamma_",                                  Data.Gamma_);
+    Shader->SetBool  ("GammaCorrectionEnabled_",                 Data.GammaCorrectionEnabled_);
+    Shader->SetBool  ("HDREnabled_",                             Data.HDREnabled_);
 
 
     // Set Shadow Info
