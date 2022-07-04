@@ -623,6 +623,9 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
 void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, ERS_CLASS_SceneManager*SceneManager, ERS_STRUCT_Camera* Camera) {
 
+    // Clear Shader Uniform Data
+    ShaderUniformData_ = std::make_unique<ERS_STRUCT_ShaderUniformData>();
+
     // Set Metadata Params
     float Time = glfwGetTime();
     ShaderUniformData_->Time_ = Time;
@@ -671,19 +674,13 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     int NumberDirectionalLights = ActiveScene->DirectionalLights.size();
     ShaderUniformData_->NumberDirectionalLights_ = NumberDirectionalLights;
     for (int i = 0; i < NumberDirectionalLights; i++) {
-    
-
-        ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->DirectionalLights[i]->Rot));
-        ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->DirectionalLights[i]->Color);
-        ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->DirectionalLights[i]->Intensity);
-
-        ActiveShader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->DirectionalLights[i]->MaxDistance);
-
-        ActiveShader->SetBool((UniformName + std::string(".CastsShadows")).c_str(), ActiveScene->DirectionalLights[i]->CastsShadows_);
-
-        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex);
-        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.TransformationMatrix);
-    
+        ShaderUniformData_->DirectionalLights_[i].Direction_         = ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->DirectionalLights[i]->Rot);
+        ShaderUniformData_->DirectionalLights_[i].Color_             = ActiveScene->DirectionalLights[i]->Color;
+        ShaderUniformData_->DirectionalLights_[i].Intensity_         = ActiveScene->DirectionalLights[i]->Intensity;
+        ShaderUniformData_->DirectionalLights_[i].MaxDistance_       = ActiveScene->DirectionalLights[i]->MaxDistance;
+        ShaderUniformData_->DirectionalLights_[i].CastsShadows_      = ActiveScene->DirectionalLights[i]->CastsShadows_;
+        ShaderUniformData_->DirectionalLights_[i].DepthMapIndex_     = ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex;
+        ShaderUniformData_->DirectionalLights_[i].LightSpaceMatrix_  = ActiveScene->DirectionalLights[i]->DepthMap.TransformationMatrix;
     }
 
     // Point Lights
