@@ -29,13 +29,8 @@ void GUI_Menu_Settings::Draw() {
     if (ImGui::BeginMenu("Settings")) {
 
         // Interface Config
-        if (ImGui::MenuItem("Color Theme")) {
-            Windows_->GUI_Window_ThemeSelector_->Enabled_ = !Windows_->GUI_Window_ThemeSelector_->Enabled_;
-        }
-
-        if (ImGui::MenuItem("System Font")) {
-            Windows_->GUI_Window_FontSelector_->Enabled_ = !Windows_->GUI_Window_FontSelector_->Enabled_;
-        }
+        ImGui::MenuItem("Color Theme", "", &Windows_->GUI_Window_ThemeSelector_->Enabled_);
+        ImGui::MenuItem("System Font", "", &Windows_->GUI_Window_FontSelector_->Enabled_);
 
 
         ImGui::Separator();
