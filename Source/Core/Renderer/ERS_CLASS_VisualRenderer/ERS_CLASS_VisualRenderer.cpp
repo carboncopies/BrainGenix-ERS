@@ -698,26 +698,18 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     // Spot Lights
     int NumberSpotLights = ActiveScene->SpotLights.size();
-    ActiveShader->SetInt("NumberSpotLights", NumberSpotLights);
+    ShaderUniformData_->NumberSpotLights_ = NumberSpotLights;
     for (int i = 0; i < NumberSpotLights; i++) {
-    
-  
-
-        ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->SpotLights[i]->Pos);
-        ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->SpotLights[i]->Rot));
-        ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->SpotLights[i]->Intensity);
-        ActiveShader->SetFloat((UniformName + std::string(".CutOff")).c_str(), 1.0f - (ActiveScene->SpotLights[i]->CutOff * (0.01745329 / 4)));
-        ActiveShader->SetFloat((UniformName + std::string(".RollOff")).c_str(), glm::radians(ActiveScene->SpotLights[i]->Rolloff));
-        ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->SpotLights[i]->Color);
-
-        ActiveShader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->SpotLights[i]->MaxDistance);
-
-        ActiveShader->SetBool((UniformName + std::string(".CastsShadows")).c_str(), ActiveScene->SpotLights[i]->CastsShadows_);
-
-
-        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndex);
-        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->SpotLights[i]->DepthMap.TransformationMatrix);
-
+        ShaderUniformData_->SpotLights_[i].Position_ = ActiveScene->SpotLights[i]->Pos;
+        ShaderUniformData_->SpotLights_[i].Direction_ = ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->SpotLights[i]->Rot);
+        ShaderUniformData_->SpotLights_[i].Intensity_ = ActiveScene->SpotLights[i]->Intensity;
+        ShaderUniformData_->SpotLights_[i].CutOff_ = 1.0f - (ActiveScene->SpotLights[i]->CutOff * (0.01745329 / 4));
+        ShaderUniformData_->SpotLights_[i].RollOff_ = glm::radians(ActiveScene->SpotLights[i]->Rolloff);
+        ShaderUniformData_->SpotLights_[i].Color_ = ActiveScene->SpotLights[i]->Color;
+        ShaderUniformData_->SpotLights_[i].MaxDistance_ = ActiveScene->SpotLights[i]->MaxDistance;
+        ShaderUniformData_->SpotLights_[i].CastsShadows_ = ActiveScene->SpotLights[i]->CastsShadows_;
+        ShaderUniformData_->SpotLights_[i].DepthMapIndex_ = ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndex;
+        ShaderUniformData_->SpotLights_[i].LightSpaceMatrix_ = ActiveScene->SpotLights[i]->DepthMap.TransformationMatrix;
     }
 
 
