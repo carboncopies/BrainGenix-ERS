@@ -57,7 +57,7 @@ void GUI_Menu_Window::Draw() {
             if (ImGui::BeginMenu("System Resources")) {
 
                 // Framerate Related Tools
-                ImGui::Checkbox("RAM", &Windows_->GUI_Window_RAMGraph_->Enabled_);
+                ImGui::Selectable("RAM", &Windows_->GUI_Window_RAMGraph_->Enabled_);
 
             ImGui::EndMenu();
             }
