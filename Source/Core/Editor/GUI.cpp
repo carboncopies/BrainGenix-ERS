@@ -40,7 +40,7 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, Cu
 
     // Setup WindowManager Class
     WindowManager_ = std::make_unique<ERS_CLASS_WindowManager>(SystemUtils_);
-    WindowManager_->GenerateWindowStruct(ProjectUtils_, HIDUtils_, VisualRenderer_, ThemeManager_.get(), FontManager.get(), Cursors3D_, SceneManager_);
+    WindowManager_->GenerateWindowStruct(ProjectUtils_, HIDUtils_, VisualRenderer_, ThemeManager_.get(), FontManager_.get(), Cursors3D_, SceneManager_);
     
 
     // Initialize Windows
