@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include <chrono>
+#include <memory>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
@@ -82,7 +83,7 @@ public:
      * @param OpenGLDefaults 
      * @param Shader 
      */
-    void RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::vector<ERS_STRUCT_Shader>* Shaders, int DefaultShaderIndex, ERS_STRUCT_ShaderUniformData ShaderUniformInfo);
+    void RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::vector<std::unique_ptr<ERS_STRUCT_Shader>>* Shaders, int DefaultShaderIndex, ERS_STRUCT_ShaderUniformData ShaderUniformInfo);
 
     /**
      * @brief Render the scene without textures (used to generate depth maps)

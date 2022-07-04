@@ -20,7 +20,7 @@ ERS_CLASS_MeshRenderer::~ERS_CLASS_MeshRenderer() {
 }
 
 
-void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::vector<ERS_STRUCT_Shader>* Shaders, int DefaultShaderIndex, ERS_STRUCT_ShaderUniformData ShaderUniformInfo) {
+void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_OpenGLDefaults* OpenGLDefaults, std::vector<ERS_STRUCT_Shader*> Shaders, int DefaultShaderIndex, ERS_STRUCT_ShaderUniformData ShaderUniformInfo) {
 
     ERS_FUNCTION_UpdateMeshTransparency(Scene);
 
@@ -40,7 +40,10 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
         if (MeshShaderOverrideIndex == -1) {
             MeshShaderOverrideIndex = DefaultShaderIndex;
         }
-        if (OpaqueMeshes[i]->ShaderOverrideIndex_ != -)
+        if (MeshShaderOverrideIndex != CurrentShaderIndex) {
+            CurrentShaderIndex = MeshShaderOverrideIndex;
+            
+        }
         ERS_FUNCTION_DrawMesh(OpaqueMeshes[i], OpenGLDefaults, Shader);
     }
 
