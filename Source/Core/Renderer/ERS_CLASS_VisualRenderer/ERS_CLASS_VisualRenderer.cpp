@@ -629,21 +629,16 @@ ERS_STRUCT_Viewport* Viewport) {
     ShaderUniformData_->ShininessOffset_ = 0.5f;
 
 
-
-
     // Viewport Config
     ShaderUniformData_->Projection_ = Projection;
     ShaderUniformData_->View_ = View;
 
     // Camera Info
     ShaderUniformData_->GammaCorrectionEnabled_ = Viewport->GammaCorrection;
+    ShaderUniformData_->Gamma_ = Viewport->Gamma_;
+    ShaderUniformData_->HDREnabled_ = Viewport->HDREnabled_;
+    ShaderUniformData_->Exposure_ = Viewport->Exposure_;
 
-        Shaders_[ShaderIndex]->SetMat4("projection", projection);
-        Shaders_[ShaderIndex]->SetMat4("view", view);
-        Shaders_[ShaderIndex]->SetBool("GammaCorrectionEnabled_", Viewports_[Index]->GammaCorrection);
-        Shaders_[ShaderIndex]->SetBool("HDREnabled_", Viewports_[Index]->HDREnabled_);
-        Shaders_[ShaderIndex]->SetFloat("Exposure_", Viewports_[Index]->Exposure_);
-        Shaders_[ShaderIndex]->SetFloat("Gamma_", Viewports_[Index]->Gamma_);
 
     // Set Shadow Filter Info
     int ShadowFilterType = 0;
