@@ -222,19 +222,21 @@ void GUI_Window_ObjectProperties::Draw() {
                         // Model->ShaderOverrideIndex_ = ShaderIndex - 1;
                         
                         int ShaderIndex = Model->ShaderOverrideIndex_;
-                        if (ShaderIndex > (int)VisualRenderer_->Shaders_.size()) {
-                            ShaderIndex = -2;
-                        }
+    
 
 
                         std::string PreviewValue;
-                        if (ShaderIndex == -1) {
-                            PreviewValue = "Default Shader";
-                        } else if (ShaderIndex == -2) {
+                        if (ShaderIndex > (int)VisualRenderer_->Shaders_.size()) {
                             PreviewValue = "Invalid Shader Index";
+
+                        } else if (ShaderIndex == -1) {
+                            PreviewValue = "Default Shader";
                         } else {
                             PreviewValue = VisualRenderer_->Shaders_[ShaderIndex]->DisplayName;
                         }
+
+              
+
 
                         if (ImGui::BeginCombo("Object Specific Shader", PreviewValue.c_str())) {
 
