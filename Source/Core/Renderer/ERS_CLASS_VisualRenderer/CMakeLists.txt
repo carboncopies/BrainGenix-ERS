@@ -82,6 +82,7 @@ target_link_libraries(ERS_CLASS_VisualRenderer
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_OpenGLDefaults
     ERS_STRUCT_RendererSettings
+    ERS_STRUCT_ShaderUniformData
 
     )
 
