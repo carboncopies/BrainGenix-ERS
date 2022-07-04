@@ -44,11 +44,11 @@ void GUI_Menu_Window::Draw() {
             if (ImGui::BeginMenu("Framerate")) {
 
                 // Framerate Related Tools
-                ImGui::MenuItem("Framerate Counter", &Windows_->GUI_Window_FramerateCounter_->Enabled_);
-                ImGui::MenuItem("Framerate Histogram", &Windows_->GUI_Window_FramerateHistogram_->Enabled_);
-                ImGui::MenuItem("Framerate Graph", &Windows_->GUI_Window_FramerateGraph_->Enabled_);
-                ImGui::MenuItem("Framerate Plot", &Windows_->GUI_Window_FrameratePlot_->Enabled_);
-                ImGui::MenuItem("Frame Latency Graph", &Windows_->GUI_Window_FrameLatencyGraph_->Enabled_);
+                ImGui::MenuItem("Framerate Counter", "", &Windows_->GUI_Window_FramerateCounter_->Enabled_);
+                ImGui::MenuItem("Framerate Histogram", "", &Windows_->GUI_Window_FramerateHistogram_->Enabled_);
+                ImGui::MenuItem("Framerate Graph", "", &Windows_->GUI_Window_FramerateGraph_->Enabled_);
+                ImGui::MenuItem("Framerate Plot", "", &Windows_->GUI_Window_FrameratePlot_->Enabled_);
+                ImGui::MenuItem("Frame Latency Graph", "", &Windows_->GUI_Window_FrameLatencyGraph_->Enabled_);
 
             ImGui::EndMenu();
             }
@@ -57,7 +57,7 @@ void GUI_Menu_Window::Draw() {
             if (ImGui::BeginMenu("System Resources")) {
 
                 // Framerate Related Tools
-                ImGui::MenuItem("RAM", &Windows_->GUI_Window_RAMGraph_->Enabled_);
+                ImGui::MenuItem("RAM", "", &Windows_->GUI_Window_RAMGraph_->Enabled_);
 
             ImGui::EndMenu();
             }
