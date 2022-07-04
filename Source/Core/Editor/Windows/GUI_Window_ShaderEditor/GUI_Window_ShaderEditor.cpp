@@ -127,7 +127,7 @@ void GUI_Window_ShaderEditor::DrawEditorWindow() {
                     if (ImGui::MenuItem("New")) {
 
                         ERS_STRUCT_ShaderProgramAssetIDs ShaderProgram;
-                        ShaderProgram.Name = "Untitled";
+                        ShaderProgram.Name = "New Shader Program";
                         ShaderProgram.FragmentID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
                         ShaderProgram.VertexID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
                         ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.push_back(ShaderProgram);
