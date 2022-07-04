@@ -36,15 +36,20 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, Cu
 
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(Window, true);
-    ImGui_ImplOpenGL3_Init("#version 330 core");
+    ImGui_ImplOpenGL3_Init("#version 440 core");
+
+    // Setup WindowManager Class
+    WindowManager_ = std::make_unique<ERS_CLASS_WindowManager>(SystemUtils_);
+    WindowManager_->GenerateWindowStruct(ProjectUtils_, HIDUtils_, VisualRenderer_, ThemeManager_.get(), Cursors3D_, SceneManager_);
+    
 
     // Initialize Windows
     SystemUtils_->Logger_->Log("Initializing Editor Menu", 5);
-    Menu_File_ = std::make_unique<GUI_Menu_File>(SystemUtils_, SceneManager_, ProjectUtils_, VisualRenderer_);
-    Menu_View_ = std::make_unique<GUI_Menu_View>(SystemUtils_, ThemeManager_.get(), FontManager_.get());
-    Menu_Window_ = std::make_unique<GUI_Menu_Window>(SystemUtils_, ProjectUtils_, Cursors3D_, SceneManager_, VisualRenderer_);
-    Menu_Debug_ = std::make_unique<GUI_Menu_Debug>(SystemUtils_);
-    Menu_Settings_ = std::make_unique<GUI_Menu_Settings>(SystemUtils_, HIDUtils_, ProjectUtils_);
+    Menu_File_ = std::make_unique<GUI_Menu_File>(SystemUtils_, SceneManager_, ProjectUtils_, WindowManager_->GetWindowsStruct());
+    Menu_View_ = std::make_unique<GUI_Menu_View>(SystemUtils_, FontManager_.get(), WindowManager_->GetWindowsStruct());
+    Menu_Window_ = std::make_unique<GUI_Menu_Window>(SystemUtils_, WindowManager_->GetWindowsStruct(), VisualRenderer_);
+    Menu_Debug_ = std::make_unique<GUI_Menu_Debug>(SystemUtils_, WindowManager_->GetWindowsStruct(), WindowManager_.get());
+    Menu_Settings_ = std::make_unique<GUI_Menu_Settings>(SystemUtils_, HIDUtils_, WindowManager_->GetWindowsStruct());
 
     // Disable Dragging Except By Title Bar
     ImGuiIO& IO = ImGui::GetIO();
@@ -104,8 +109,14 @@ void GUISystem::UpdateGUI() {
     ImGui::EndMainMenuBar();
     }
 
+
     size_t settings_size = 0;
     const char* settings = ImGui::SaveIniSettingsToMemory(&settings_size);
+
+    // Updates all the windows, draws their content if enabled
+    WindowManager_->UpdateAllWindows();
+
+
 }
 
 void GUISystem::DeferredFrameUpdate() {

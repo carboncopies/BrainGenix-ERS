@@ -28,7 +28,9 @@ target_link_libraries(Menu_Window
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
 
+    ERS_Editor_WindowManager
 
+    
     GUI_Window_SceneTree
     GUI_Window_SystemLog
     GUI_Window_AssetExplorer
@@ -42,6 +44,8 @@ target_link_libraries(Menu_Window
     GUI_Window_FramerateCounter
     GUI_Window_FramerateHistogram
     GUI_Window_FrameratePlot
+    GUI_Window_ShaderEditor
+
 
     )
 

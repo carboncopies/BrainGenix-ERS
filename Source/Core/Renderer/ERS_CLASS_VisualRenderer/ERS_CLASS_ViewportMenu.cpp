@@ -95,7 +95,21 @@ void ERS_CLASS_ViewportMenu::AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
 
 }
 
+void ERS_CLASS_ViewportMenu::AddScene() {
 
+    // Add Scene To List Of Scenes
+    ERS_STRUCT_Scene NewScene;
+    NewScene.ScenePath = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+    NewScene.SceneName = "New Scene";
+    NewScene.IsSceneLoaded = true;
+    NewScene.SceneFormatVersion = 1;
+    
+    ProjectUtils_->ProjectManager_->Project_.SceneIDs.push_back(NewScene.ScenePath);
+
+    ProjectUtils_->SceneManager_->AddScene(NewScene);
+
+
+}
 
 
 void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_ShadowMaps* ShadowMaps) {
@@ -344,6 +358,10 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
                 NewScript.Name_ = "Untitled Script";
                 ProjectUtils_->ProjectManager_->Project_.Scripts.push_back(NewScript);
             
+            }
+
+            if (ImGui::MenuItem("Scene")) {
+                AddScene();
             }
 
 

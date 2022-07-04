@@ -21,6 +21,11 @@ ERS_CLASS_SceneManager::~ERS_CLASS_SceneManager() {
 
 void ERS_CLASS_SceneManager::UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
 
+    // If The Scene Has No Models, Exit Early
+    if (Scenes_[ActiveScene_]->SceneObjects_.size() == 0) {
+        return;
+    }
+
     unsigned long SelectedObject = Scenes_[ActiveScene_]->SelectedObject;
 
     if (Scenes_[ActiveScene_]->SceneObjects_[SelectedObject].Type_ == std::string("Model")) {

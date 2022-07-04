@@ -28,6 +28,13 @@
   - Set target to BrainGenix-ERS.exe
   - Hit `Build`
 
+## Mac:
+  
+  - Install one of the following:
+    - [Ubuntu](https://ubuntu.com/download)
+    - [Debian](https://www.debian.org/distrib/)
+    - [Fedora](https://getfedora.org/workstation/download/)
+  - Follow Linux build instructions
 
 # Keybinds
 

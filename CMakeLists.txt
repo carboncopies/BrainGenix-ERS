@@ -2,7 +2,7 @@
 cmake_minimum_required (VERSION 3.1...3.21)
 project(
 	"BrainGenix-ERS"
-	VERSION "0.1.2"
+	VERSION "0.3.4"
 	LANGUAGES CXX
 	)
 
@@ -67,6 +67,7 @@ add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_FontManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_UserProfileManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_LayoutManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_3DCursor)
+add_subdirectory(${SRC_DIR}/Core/Editor/Utils/ERS_Editor_WindowManager)
 add_subdirectory(${SRC_DIR}/Core/Editor/Windows)
 add_subdirectory(${SRC_DIR}/Core/Editor/Menus)
 

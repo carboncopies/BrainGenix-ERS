@@ -6,21 +6,18 @@
 
 
 // Constructor
-GUI_Menu_Debug::GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils) {
+GUI_Menu_Debug::GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Windows* Windows, ERS_CLASS_WindowManager* WindowManager) {
 
     SystemUtils_ = SystemUtils;
+    Windows_ = Windows;
+    WindowManager_ = WindowManager;
     SystemUtils_->Logger_->Log("Editor Setting Up Debug Menu", 4);
 
     SystemUtils_->Logger_->Log("Reading Configuration File For 'ShowEditorDebugMenu' Parameter", 1);
     DebugMenuEnabled_ = (*SystemUtils_->LocalSystemConfiguration_)["ShowEditorDebugMenu"].as<bool>();
 
-    // Setup Window Instances
-    SystemUtils_->Logger_->Log("Initialiizng Debug Menu Window Instances", 5);
-    TestEditor_ = std::make_unique<GUI_Window_TestEditor>(SystemUtils_);
-
     // Setup OpenGL Debug Submenu
     ERS_CLASS_OpenGLDebug_ = std::make_unique<ERS_CLASS_OpenGLDebug>(SystemUtils_);
-
 }
 
 
@@ -50,16 +47,64 @@ void GUI_Menu_Debug::Draw() {
 
             // Test Editor
             if (ImGui::MenuItem("Test Editor Window")) {
-                TestEditor_->Enabled_ = !TestEditor_->Enabled_;
+                Windows_->GUI_Window_TestEditor_->Enabled_ = !Windows_->GUI_Window_TestEditor_->Enabled_;
             }
+
+
+
+            ImGui::Separator();
+
+            // Window Manager Debug stuff - show, hide, toggle windows.
+            if (ImGui::BeginMenu("Window Manager Debugging")) {
+
+                if (ImGui::MenuItem("Show All Windows")) {
+
+                    std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
+                    for (unsigned int i = 0; i < WindowNames.size(); i++) {
+                        bool Status = WindowManager_->SetWindowStatus(WindowNames[i], true);
+                        if (!Status) {
+                            SystemUtils_->Logger_->Log(std::string("Warning, WindowManager Window '") + WindowNames[i] + std::string("' Invalid, Check WindowManager Class For Errors In Code"), 10);
+                        }
+                    }
+
+                }
+
+                if (ImGui::MenuItem("Hide All Windows")) {
+
+                    std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
+                    for (unsigned int i = 0; i < WindowNames.size(); i++) {
+                        bool Status = WindowManager_->SetWindowStatus(WindowNames[i], false);
+                        if (!Status) {
+                            SystemUtils_->Logger_->Log(std::string("Warning, WindowManager Window '") + WindowNames[i] + std::string("' Invalid, Check WindowManager Class For Errors In Code"), 10);
+                        }
+                    }
+
+                }
+
+                if (ImGui::MenuItem("Invert Window States")) {
+
+                    std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
+                    for (unsigned int i = 0; i < WindowNames.size(); i++) {
+                        bool WindowState;
+                        bool Status = WindowManager_->GetWindowStatus(WindowNames[i], &WindowState);
+                        if (!Status) {
+                            SystemUtils_->Logger_->Log(std::string("Warning, WindowManager Window '") + WindowNames[i] + std::string("' Invalid, Check WindowManager Class For Errors In Code"), 10);
+                        }
+                        WindowManager_->SetWindowStatus(WindowNames[i], !WindowState);
+                    }
+
+                }
+
+            ImGui::EndMenu();
+            }
+
+
 
             // OpenGL Debug Submenu
             if (ImGui::BeginMenu("OpenGL Debugging")) {
                 ERS_CLASS_OpenGLDebug_->DrawMenu();
             ImGui::EndMenu();
             }
-
-
 
 
         ImGui::EndMenu();
@@ -72,10 +117,5 @@ void GUI_Menu_Debug::Draw() {
         }
 
     }
-
-
-    // Draw Windows
-    TestEditor_->Draw();
-
 
 }

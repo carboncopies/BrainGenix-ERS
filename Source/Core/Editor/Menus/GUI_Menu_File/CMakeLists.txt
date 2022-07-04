@@ -31,7 +31,8 @@ target_link_libraries(Menu_File
     ERS_STRUCT_ProjectUtils
 
     ERS_Editor_ImportAsset
-
+    ERS_Editor_WindowManager
+    
     ERS_ProjectLoader
     ERS_SceneWriter
     ERS_SceneManager
@@ -39,7 +40,6 @@ target_link_libraries(Menu_File
     ERS_STRUCT_Scene
 
     GUI_Window_ProjectSettings
-    GUI_Window_ShaderEditor
 
     ERS_CLASS_VisualRenderer
     )
