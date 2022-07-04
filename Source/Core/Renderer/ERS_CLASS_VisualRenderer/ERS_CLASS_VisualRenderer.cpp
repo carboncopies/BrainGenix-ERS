@@ -644,13 +644,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING) {
         ShadowFilterType = 3;
     }
-    ActiveShader->SetInt("ShadowFilterType_", ShadowFilterType);
-    ActiveShader->SetInt("ShadowFilterKernelSize_", SystemUtils_->RendererSettings_->ShadowFilterKernelSize_);
-    
-
-
-
-
+    ShaderUniformData_->ShadowFilterType_ = ShadowFilterType;
+    ShaderUniformData_->ShadowFilterKernelSize_ = SystemUtils_->RendererSettings_->ShadowFilterKernelSize_;
 
     // ---- SEND LIGHTING INFORMATION TO SHADERS ---- //
     // NOTE: Due to limitations with shaders, the maximum number of lights is as follows (per object) 
