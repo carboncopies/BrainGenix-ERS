@@ -695,7 +695,6 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ShaderUniformData_->PointLights_[i].DepthCubemapIndex_  = ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex;
     }
 
-
     // Spot Lights
     int NumberSpotLights = ActiveScene->SpotLights.size();
     ShaderUniformData_->NumberSpotLights_ = NumberSpotLights;
@@ -711,9 +710,5 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
         ShaderUniformData_->SpotLights_[i].DepthMapIndex_ = ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndex;
         ShaderUniformData_->SpotLights_[i].LightSpaceMatrix_ = ActiveScene->SpotLights[i]->DepthMap.TransformationMatrix;
     }
-
-
- 
-
 }
 
