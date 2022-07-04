@@ -222,7 +222,7 @@ void GUI_Window_ObjectProperties::Draw() {
                         // Model->ShaderOverrideIndex_ = ShaderIndex - 1;
                         
                         int ShaderIndex = Model->ShaderOverrideIndex_;
-                        if ((unsigned int)ShaderIndex > VisualRenderer_->Shaders_.size()) {
+                        if (ShaderIndex > (int)VisualRenderer_->Shaders_.size()) {
                             ShaderIndex = -2;
                         }
 
