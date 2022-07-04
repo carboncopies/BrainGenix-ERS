@@ -54,6 +54,9 @@ private:
     int LivePreviewShaderIndex_; /**<Index of Live Preview Shader*/
 
 
+    std::string NewShaderVertexText_;    /**<Default text in a new shader*/
+    std::string NewshaderFragmentText_;  /**<Default text in a new shader*/
+
     
 
 private:
