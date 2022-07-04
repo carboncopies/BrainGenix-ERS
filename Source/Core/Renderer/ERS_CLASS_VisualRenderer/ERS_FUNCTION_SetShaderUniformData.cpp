@@ -44,7 +44,6 @@ void ERS_FUNCTION_SetShaderUniformData(ERS_STRUCT_Shader* Shader, ERS_STRUCT_Sha
     }
 
     // Point Lights
-
     Shader->SetInt("NumberPointLights", Data.NumberPointLights_);
     for (int i = 0; i < Data.NumberPointLights_; i++) {
     
@@ -61,9 +60,8 @@ void ERS_FUNCTION_SetShaderUniformData(ERS_STRUCT_Shader* Shader, ERS_STRUCT_Sha
 
 
     // Spot Lights
-    int NumberSpotLights = ActiveScene->SpotLights.size();
-    Shader->SetInt("NumberSpotLights", NumberSpotLights);
-    for (int i = 0; i < NumberSpotLights; i++) {
+    Shader->SetInt("NumberSpotLights", Data.NumberSpotLights_);
+    for (int i = 0; i < Data.NumberSpotLights_; i++) {
     
         std::string UniformName = std::string("SpotLights[") + std::to_string(i) + std::string("]");
 
