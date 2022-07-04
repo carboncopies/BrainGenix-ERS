@@ -15,15 +15,15 @@ void ERS_FUNCTION_SetShaderUniformData(ERS_STRUCT_Shader* Shader, ERS_STRUCT_Sha
     Shader->SetInt("FrameNumber", Data.FrameNumber_);
     Shader->SetVec2("ViewportRes", Data.ViewportRes_);
     Shader->SetVec3("CameraPosition", Data.CameraPosition_);
+    Shader->SetFloat("ShininessOffset", Data.ShininessOffset_);
 
 
     // Set Shadow Filter Info
-    Shader->SetInt("ShadowFilterType_", ShadowFilterType);
-    Shader->SetInt("ShadowFilterKernelSize_", SystemUtils_->RendererSettings_->ShadowFilterKernelSize_);
+    Shader->SetInt("ShadowFilterType_", Data.ShadowFilterType_);
+    Shader->SetInt("ShadowFilterKernelSize_", Data.ShadowFilterKernelSize_);
     
 
 
-    Shader->SetFloat("Shinyness", 32.0f);
 
 
 
