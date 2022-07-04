@@ -131,7 +131,7 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
 
     }
 
-    // Set Infor For Other Windows To Use
+    // Set Info
     LastFrameActiveState_ = ImGuizmo::IsUsing();
 
 
