@@ -630,7 +630,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ShaderUniformData_->FrameNumber_ = FrameNumber_;
     ShaderUniformData_->ViewportRes_ = glm::vec2(RenderWidth, RenderHeight);
     ShaderUniformData_->CameraPosition_ = Camera->Position_;
-    ShaderUniformData_->ShininessOffset_ = 32.0f;
+    ShaderUniformData_->ShininessOffset_ = 0.5f;
 
    // Set Shadow Filter Info
     int ShadowFilterType = 0;
