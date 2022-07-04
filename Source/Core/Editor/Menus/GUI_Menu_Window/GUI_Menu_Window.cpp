@@ -34,10 +34,10 @@ void GUI_Menu_Window::Draw() {
 
             // Add Scene Tree Editor Window
             ImGui::Selectable("Scene Tree", &Windows_->GUI_Window_SceneTree_->Enabled_);
-            ImGui::Checkbox("System Log", &Windows_->GUI_Window_SystemLog_->Enabled_);
-            ImGui::Checkbox("Asset Explorer", &Windows_->GUI_Window_AssetExplorer_->Enabled_);
-            ImGui::Checkbox("Object Properties", &Windows_->GUI_Window_ObjectProperties_->Enabled_);
-            ImGui::Checkbox("Global Viewport Settings", &Windows_->GUI_Window_RenderingSettings_->Enabled_);
+            ImGui::Selectable("System Log", &Windows_->GUI_Window_SystemLog_->Enabled_);
+            ImGui::Selectable("Asset Explorer", &Windows_->GUI_Window_AssetExplorer_->Enabled_);
+            ImGui::Selectable("Object Properties", &Windows_->GUI_Window_ObjectProperties_->Enabled_);
+            ImGui::Selectable("Global Viewport Settings", &Windows_->GUI_Window_RenderingSettings_->Enabled_);
                 
 
             // Framerate Widgets
