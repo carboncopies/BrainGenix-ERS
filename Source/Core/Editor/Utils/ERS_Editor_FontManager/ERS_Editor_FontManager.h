@@ -33,16 +33,18 @@ private:
     ERS_CLASS_LoggingSystem* Logger_; /**<ERS_CLASS_LoggingSystem Instance Pointer*/
     const char* FontsDirectoryPath_; /**<Path where fonts are to be searched for */
 
+    bool EndsWith(const std::string& Input, const std::string& Ending);
+
+public:
+
     std::vector<std::string> FontPathList_; /**<List of fonts located at the given paths*/
     std::vector<std::string> FontNameList_; /**<List of font names for gui rendering*/
-    
+
     float FontSize_ = 14; /**<Set Default Font Size In Pixels*/
     int FontSelector_ = 0; /**<Set Font Selector Int*/
     bool UpdateFont_ = false; /**<Indicate If Font Needs To Be Updated*/
 
-    bool EndsWith(const std::string& Input, const std::string& Ending);
 
-public:
 
     ERS_CLASS_FontManager(ERS_CLASS_LoggingSystem* Logger, const char* FontsDirPath = "EditorAssets/Fonts");
     ~ERS_CLASS_FontManager();
