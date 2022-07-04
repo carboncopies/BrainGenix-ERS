@@ -31,7 +31,7 @@ struct ERS_STRUCT_ShaderUniformDataDirectionalLight {
     int DepthMapIndex_;
     glm::mat4 LightSpaceMatrix_;
 
-}
+};
 
 
 /**
@@ -47,7 +47,7 @@ struct ERS_STRUCT_ShaderUniformDataPointLight {
     bool CastsShadows_;
     int DepthCubemapIndex_;
 
-}
+};
 
 
 /**
@@ -68,7 +68,7 @@ struct ERS_STRUCT_ShaderUniformDataSpotLight {
     int DepthMapIndex_;
     glm::mat4 LightSpaceMatrix_;
 
-}
+};
 
 
 /**
@@ -77,27 +77,27 @@ struct ERS_STRUCT_ShaderUniformDataSpotLight {
  */
 struct ERS_STRUCT_ShaderUniformData {
 
-    // Shader Data
+    // Shader Metadata
     float Time_;
     float FrameTime_;
     int FrameNumber_;
     glm::vec2 ViewportRes_;
     glm::vec3 CameraPosition_;
-
-    int ShadowFilterType_;
-    int ShadowFilterKernelSize_;
-
     float ShininessOffset_;
 
+    // Shadow Info
+    int ShadowFilterType_;
+    int ShadowFilterKernelSize_;
+    unsigned int DepthMapArray_;
+    unsigned int DepthCubemapArray_;
 
+
+    // Lighting Info
     int NumberDirectionalLights_;
     std::vector<ERS_STRUCT_ShaderUniformDataDirectionalLight> DirectionalLights_;
-
     int NumberPointLights_;
     std::vector<ERS_STRUCT_ShaderUniformDataPointLight> PointLights_;
-
     int NumberSpotLights_;
     std::vector<ERS_STRUCT_ShaderUniformDataSpotLight> SpotLights_;
 
-
-}
+};
