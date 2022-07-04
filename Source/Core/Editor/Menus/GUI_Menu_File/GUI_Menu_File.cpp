@@ -34,9 +34,7 @@ void GUI_Menu_File::Draw() {
         ImGui::MenuItem("About", "", &Windows_->GUI_Window_About_->Enabled_);
         ImGui::Separator();
 
-        if (ImGui::MenuItem("Project Settings")) {
-            Windows_->GUI_Window_ProjectSettings_->Enabled_ = !Windows_->GUI_Window_ProjectSettings_->Enabled_;
-        }
+        ImGui::MenuItem("Project Settings", "", &Windows_->GUI_Window_ProjectSettings_->Enabled_);
         ImGui::Separator();
 
         if (ImGui::MenuItem("Import Model")) {
