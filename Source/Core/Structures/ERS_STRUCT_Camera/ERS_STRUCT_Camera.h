@@ -44,7 +44,7 @@ public:
     // Camera Options
     double MovementSpeed_;
     float MouseSensitivity_;
-    float Zoom_;
+    float FOV_;
     float AspectRatio_;
 
     // Config Params
@@ -58,7 +58,7 @@ public:
                                 float Pitch = 0.0f) : Front_(glm::vec3(0.0f, 0.0f, -1.0f)),
                                 MovementSpeed_(1.0f),
                                 MouseSensitivity_(0.1f),
-                                Zoom_(45.0f) {
+                                FOV_(45.0f) {
         
         // Set Params
         Position = Position;
@@ -80,7 +80,7 @@ public:
                                 float Pitch) : Front_(glm::vec3(0.0f, 0.0f, -1.0f)),
                                 MovementSpeed_(1.0f),
                                 MouseSensitivity_(0.1f),
-                                Zoom_(45.0f) {
+                                FOV_(45.0f) {
         Position_ = glm::vec3(PosX, PosY, PosZ);
         WorldUp_ = glm::vec3(UpX, UpY, UpZ);
         Yaw_ = Yaw;
