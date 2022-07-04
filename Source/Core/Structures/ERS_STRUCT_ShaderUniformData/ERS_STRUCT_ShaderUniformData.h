@@ -50,6 +50,26 @@ struct ERS_STRUCT_ShaderUniformDataPointLight {
 }
 
 
+/**
+ * @brief Struct for storing shader uniform data
+ * 
+ */
+struct ERS_STRUCT_ShaderUniformDataSpotLight {
+
+    glm::vec3 Position_;
+    glm::vec3 Direction_;
+    glm::vec3 Color_;
+    float Intensity_;
+    float CutOff_;
+    float RollOff_;
+
+    float MaxDistance_;
+    bool CastsShadows_;
+    int DepthMapIndex_;
+    glm::mat4 LightSpaceMatrix_;
+
+}
+
 
 /**
  * @brief Struct for storing shader uniform data
@@ -64,9 +84,20 @@ struct ERS_STRUCT_ShaderUniformData {
     glm::vec2 ViewportRes_;
     glm::vec3 CameraPosition_;
 
+    int ShadowFilterType_;
+    int ShadowFilterKernelSize_;
+
+    float ShinynessOffset_;
+
 
     int NumberDirectionalLights_;
+    std::vector<ERS_STRUCT_ShaderUniformDataDirectionalLight> DirectionalLights_;
+
     int NumberPointLights_;
+    std::vector<ERS_STRUCT_ShaderUniformDataPointLight> PointLights_;
+
+    int NumberSpotLights_;
+    std::vector<ERS_STRUCT_ShaderUniformDataSpotLight> SpotLights_;
 
 
 }
