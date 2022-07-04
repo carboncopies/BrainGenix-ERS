@@ -17,6 +17,26 @@ void ERS_FUNCTION_SetShaderUniformData(ERS_STRUCT_Shader* Shader, ERS_STRUCT_Sha
     Shader->SetVec3("CameraPosition", Camera->Position_);
 
 
+    // Set Shadow Filter Info
+    int ShadowFilterType = 0;
+    ERS::Renderer::ShadowFilteringType ShadowFilterEnum = SystemUtils_->RendererSettings_->ShadowFilteringType_;
+    if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED) {
+        ShadowFilterType = 0;
+    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_PCF) {
+        ShadowFilterType = 1;
+    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_POISSON_SAMPLING) {
+        ShadowFilterType = 2;
+    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING) {
+        ShadowFilterType = 3;
+    }
+    Shader->SetInt("ShadowFilterType_", ShadowFilterType);
+    Shader->SetInt("ShadowFilterKernelSize_", SystemUtils_->RendererSettings_->ShadowFilterKernelSize_);
+    
+
+
+    Shader->SetFloat("Shinyness", 32.0f);
+
+
 
     // Directional Lights
     int NumberDirectionalLights = ActiveScene->DirectionalLights.size();
@@ -85,23 +105,5 @@ void ERS_FUNCTION_SetShaderUniformData(ERS_STRUCT_Shader* Shader, ERS_STRUCT_Sha
     }
 
 
-    // Set Shadow Filter Info
-    int ShadowFilterType = 0;
-    ERS::Renderer::ShadowFilteringType ShadowFilterEnum = SystemUtils_->RendererSettings_->ShadowFilteringType_;
-    if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED) {
-        ShadowFilterType = 0;
-    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_PCF) {
-        ShadowFilterType = 1;
-    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_POISSON_SAMPLING) {
-        ShadowFilterType = 2;
-    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING) {
-        ShadowFilterType = 3;
-    }
-    Shader->SetInt("ShadowFilterType_", ShadowFilterType);
-    Shader->SetInt("ShadowFilterKernelSize_", SystemUtils_->RendererSettings_->ShadowFilterKernelSize_);
-    
-
-
-    Shader->SetFloat("Shinyness", 32.0f);
 
 }
