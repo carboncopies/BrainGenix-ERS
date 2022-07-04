@@ -29,6 +29,7 @@
 #include <GUI_Window_SystemLog.h>
 #include <GUI_Window_TestEditor.h>
 #include <GUI_Window_ThemeSelector.h>
+#include <GUI_Window_FontSelector.h>
 
 /**
  * @brief This structure holds unique pointers to all windows that are instantiated by the GUI.
@@ -57,5 +58,6 @@ struct ERS_STRUCT_Windows {
     std::unique_ptr<GUI_Window_SystemLog> GUI_Window_SystemLog_;
     std::unique_ptr<GUI_Window_TestEditor> GUI_Window_TestEditor_;
     std::unique_ptr<GUI_Window_ThemeSelector> GUI_Window_ThemeSelector_;
+    std::unique_ptr<GUI_Window_FontSelector> GUI_Window_FontSelector_;
 
 };

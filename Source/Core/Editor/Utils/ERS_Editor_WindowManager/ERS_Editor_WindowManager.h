@@ -19,6 +19,7 @@
 #include <ERS_CLASS_VisualRenderer.h>
 
 #include <ERS_Editor_ThemeManager.h>
+#include <ERS_Editor_FontManager.h>
 #include <ERS_Editor_3DCursor.h>
 
 
@@ -41,6 +42,7 @@
 #include <GUI_Window_SystemLog.h>
 #include <GUI_Window_TestEditor.h>
 #include <GUI_Window_ThemeSelector.h>
+#include <GUI_Window_FontSelector.h>
 
 
 
@@ -81,7 +83,7 @@ public:
      * 
      */
     void GenerateWindowStruct(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_CLASS_VisualRenderer* VisualRenderer,
-    ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* SceneManager);
+    ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* SceneManager);
 
 
     /**
