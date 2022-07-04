@@ -685,19 +685,15 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     // Point Lights
     int NumberPointLights = ActiveScene->PointLights.size();
-    ActiveShader->SetInt("NumberPointLights", NumberPointLights);
+    ShaderUniformData_->NumberPointLights_ = NumberPointLights;
     for (int i = 0; i < NumberPointLights; i++) {
     
-  
-        ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->PointLights[i]->Pos);
-        ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->PointLights[i]->Intensity);
-        ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->PointLights[i]->Color);
-    
-        ActiveShader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->PointLights[i]->MaxDistance);
-        
-        ActiveShader->SetBool((UniformName + std::string(".CastsShadows")).c_str(), ActiveScene->PointLights[i]->CastsShadows_);
-
-        ActiveShader->SetInt((UniformName + std::string(".DepthCubemapIndex")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
+        ShaderUniformData_->PointLights_[i].Position_           = ActiveScene->PointLights[i]->Pos;
+        ShaderUniformData_->PointLights_[i].Intensity_          = ActiveScene->PointLights[i]->Intensity;
+        ShaderUniformData_->PointLights_[i].Color_              = ActiveScene->PointLights[i]->Color;
+        ShaderUniformData_->PointLights_[i].MaxDistance_        = ActiveScene->PointLights[i]->MaxDistance;
+        ShaderUniformData_->PointLights_[i].CastsShadows_       = ActiveScene->PointLights[i]->CastsShadows_;
+        ShaderUniformData_->PointLights_[i].DepthCubemapIndex_  = ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex;
 
     }
 
