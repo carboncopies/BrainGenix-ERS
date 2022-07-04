@@ -28,23 +28,18 @@ void ERS_FUNCTION_SetShaderUniformData(ERS_STRUCT_Shader* Shader, ERS_STRUCT_Sha
 
 
     // Directional Lights
-    int NumberDirectionalLights = ActiveScene->DirectionalLights.size();
-    Shader->SetInt("NumberDirectionalLights", NumberDirectionalLights);
-    for (int i = 0; i < NumberDirectionalLights; i++) {
+    Shader->SetInt("NumberDirectionalLights", Data.NumberDirectionalLights_);
+    for (int i = 0; i < Data.NumberDirectionalLights_; i++) {
     
         std::string UniformName = std::string("DirectionalLights[") + std::to_string(i) + std::string("]");
-        
-        // Re-Do Rotation
-        Shader->SetVec3((UniformName + std::string(".Direction")).c_str(), ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->DirectionalLights[i]->Rot));
-        Shader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->DirectionalLights[i]->Color);
-        Shader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->DirectionalLights[i]->Intensity);
 
-        Shader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->DirectionalLights[i]->MaxDistance);
-
-        Shader->SetBool((UniformName + std::string(".CastsShadows")).c_str(), ActiveScene->DirectionalLights[i]->CastsShadows_);
-
-        Shader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex);
-        Shader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.TransformationMatrix);
+        Shader->SetVec3  ((UniformName + std::string(".Direction")).c_str(),        Data.DirectionalLights_[i].Direction_);
+        Shader->SetVec3  ((UniformName + std::string(".Color")).c_str(),            Data.DirectionalLights_[i].Color_);
+        Shader->SetFloat ((UniformName + std::string(".Intensity")).c_str(),        Data.DirectionalLights_[i].Intensity_);
+        Shader->SetFloat ((UniformName + std::string(".MaxDistance")).c_str(),      Data.DirectionalLights_[i].MaxDistance_);
+        Shader->SetBool  ((UniformName + std::string(".CastsShadows")).c_str(),     Data.DirectionalLights_[i].CastsShadows_);
+        Shader->SetInt   ((UniformName + std::string(".DepthMapIndex")).c_str(),    Data.DirectionalLights_[i].DepthMapIndex_);
+        Shader->SetMat4  ((UniformName + std::string(".LightSpaceMatrix")).c_str(), Data.DirectionalLights_[i].LightSpaceMatrix_);
     
     }
 
