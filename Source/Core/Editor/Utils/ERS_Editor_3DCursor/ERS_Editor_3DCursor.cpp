@@ -79,6 +79,8 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
 
 
     // Detect If Gizmo Just Enabled, Set Initial Position
+    bool CurrentState = ImGuizmo::IsUsing();
+    std::cout<< LastFrameActiveState_<<"|"<<ImGuizmo::IsUsing()<<std::endl;
     if ((LastFrameActiveState_ != ImGuizmo::IsUsing()) && (!LastFrameActiveState_)) {
         InitialPos_ = Pos_;
         InitialRot_ = Rot_;
