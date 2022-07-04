@@ -196,8 +196,8 @@ void GUI_Window_ShaderEditor::DrawEditorWindow() {
                         
 
                         // Save To Disk, So Opening It Works
-                        SaveShader("#version 430 core\n", ShaderProgram.VertexID);
-                        SaveShader("#version 430 core\n", ShaderProgram.FragmentID);
+                        SaveShader(NewShaderVertexText_,   ShaderProgram.VertexID);
+                        SaveShader(NewshaderFragmentText_, ShaderProgram.FragmentID);
 
                     }
 
