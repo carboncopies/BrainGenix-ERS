@@ -44,6 +44,14 @@ void GUI_Menu_Settings::Draw() {
         ImGui::EndMenu();
         }
 
+        if (ImGui::MenuItem("Color Theme")) {
+            Windows_->GUI_Window_ThemeSelector_->Enabled_ = !Windows_->GUI_Window_ThemeSelector_->Enabled_;
+        }
+
+        if (ImGui::MenuItem("System Font")) {
+            Windows_->GUI_Window_FontSelector_->Enabled_ = !Windows_->GUI_Window_FontSelector_->Enabled_;
+        }
+
 
     ImGui::EndMenu();
     }
