@@ -33,7 +33,7 @@ void GUI_Menu_View::Draw() {
         }
 
         if (ImGui::MenuItem("System Font")) {
-            ShowFontPicker_ = true;
+            Windows_->GUI_Window_FontSelector_->Enabled_ = !Windows_->GUI_Window_FontSelector_->Enabled_;
         }
 
         ImGui::Separator();
@@ -47,7 +47,5 @@ void GUI_Menu_View::Draw() {
     }
 
 
-    // Draw Windows
-    FontManager_->FontSelectorWindow(&ShowFontPicker_);
 
 }
