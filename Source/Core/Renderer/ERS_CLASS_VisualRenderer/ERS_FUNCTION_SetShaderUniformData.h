@@ -16,12 +16,7 @@
 #include <ERS_STRUCT_Shader.h>
 
 
-/**
- * @brief Binds to the given texture using the given shader program.
- * 
- * @param Name 
- * @param Offset 
- * @param ShaderProgram 
- * @param TextureID 
- */
-void ERS_FUNCTION_ResetMeshTexture(const char* Name, int Offset, unsigned int ShaderProgram, unsigned int TextureID);
+// add function to set shader uniform data given shader data struct
+// then update visualrenenderer to update that struct and pass it to the mesh renderer
+// then update mesh renderer to only call update function when the model's requested shader is not the same as the current shader
+// test 
