@@ -18,26 +18,6 @@ void ERS_FUNCTION_SetShaderUniformData(ERS_STRUCT_Shader* Shader, ERS_STRUCT_Sha
 
 
 
-    // ---- SEND LIGHTING INFORMATION TO SHADERS ---- //
-    // NOTE: Due to limitations with shaders, the maximum number of lights is as follows (per object) 
-    // Directional lights: 4
-    // Point Lights: 32
-    // Spot Lights: 16
-    // TO DO BELOW:
-    // When these limitations are reached, ERS will remove the lights that are farthest from the object
-
-    // Prepare To Handle Lights
-    //const int DirectionalLightLimit = 4;
-    //const int PointLightLimit = 64;
-    //const int SpotLightLimit = 32;
-
-
-    ERS_STRUCT_Scene* ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
-
-
-    // ~-------------------------------------------------------------------!!!!!!!!!!!!!!!FIXME: IMPLEMENT SYSTEM TO USE THE LIGHTS CLOSEST TO THE OBJECT !!!!!!!!!!!!!!!!!!!!!~----------------------------------- //
-
-
     // Directional Lights
     int NumberDirectionalLights = ActiveScene->DirectionalLights.size();
     Shader->SetInt("NumberDirectionalLights", NumberDirectionalLights);
