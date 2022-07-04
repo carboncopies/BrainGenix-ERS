@@ -672,6 +672,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(float DeltaTime, int RenderWidth, in
     int NumberDirectionalLights = ActiveScene->DirectionalLights.size();
     ShaderUniformData_->NumberDirectionalLights_ = NumberDirectionalLights;
     for (int i = 0; i < NumberDirectionalLights; i++) {
+        ShaderUniformData_->DirectionalLights_.push_back(ERS_STRUCT_ShaderUniformDataDirectionalLight());
         ShaderUniformData_->DirectionalLights_[i].Direction_         = ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->DirectionalLights[i]->Rot);
         ShaderUniformData_->DirectionalLights_[i].Color_             = ActiveScene->DirectionalLights[i]->Color;
         ShaderUniformData_->DirectionalLights_[i].Intensity_         = ActiveScene->DirectionalLights[i]->Intensity;
@@ -685,6 +686,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(float DeltaTime, int RenderWidth, in
     int NumberPointLights = ActiveScene->PointLights.size();
     ShaderUniformData_->NumberPointLights_ = NumberPointLights;
     for (int i = 0; i < NumberPointLights; i++) {
+        ShaderUniformData_->PointLights_.push_back(ERS_STRUCT_ShaderUniformDataPointLight());
         ShaderUniformData_->PointLights_[i].Position_           = ActiveScene->PointLights[i]->Pos;
         ShaderUniformData_->PointLights_[i].Intensity_          = ActiveScene->PointLights[i]->Intensity;
         ShaderUniformData_->PointLights_[i].Color_              = ActiveScene->PointLights[i]->Color;
@@ -697,6 +699,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(float DeltaTime, int RenderWidth, in
     int NumberSpotLights = ActiveScene->SpotLights.size();
     ShaderUniformData_->NumberSpotLights_ = NumberSpotLights;
     for (int i = 0; i < NumberSpotLights; i++) {
+        ShaderUniformData_->SpotLights_.push_back(ERS_STRUCT_ShaderUniformDataSpotLight());
         ShaderUniformData_->SpotLights_[i].Position_ = ActiveScene->SpotLights[i]->Pos;
         ShaderUniformData_->SpotLights_[i].Direction_ = ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->SpotLights[i]->Rot);
         ShaderUniformData_->SpotLights_[i].Intensity_ = ActiveScene->SpotLights[i]->Intensity;
