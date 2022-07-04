@@ -79,6 +79,13 @@ void GUI_Menu_File::Draw() {
 
         ImGui::Separator();
 
+        if (ImGui::MenuItem("About")) {
+            Windows_->GUI_Window_About_->Enabled_ = !Windows_->GUI_Window_About_->Enabled_;
+        }
+
+        ImGui::Separator();
+
+
         // Exit Options
         if (ImGui::MenuItem("Exit")) {
             *SystemUtils_->SystemShouldRun_ = false;
