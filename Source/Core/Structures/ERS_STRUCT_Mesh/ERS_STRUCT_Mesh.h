@@ -52,6 +52,8 @@ struct ERS_STRUCT_Mesh {
     bool HasSpecular_; /**<Check If Has A Given Type Of Texture*/
 
 
+    int ShaderOverrideIndex_ = -1; /**<Updated by the renderer - determines if we need to overried the default viewport shader*/  
+
 
 
     std::vector<ERS_STRUCT_Vertex> Vertices; /**<Array of Mesh Vertices*/
