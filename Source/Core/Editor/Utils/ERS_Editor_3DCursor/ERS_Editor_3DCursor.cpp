@@ -147,18 +147,13 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
             Pos_ = InitialPos_;
             Rot_ = InitialRot_;
             Scale_ = InitialScale_;
+            ImGuizmo::Enable(true);
         }
 
     }
 
     // Set Info
     LastFrameActiveState_ = ImGuizmo::IsUsing();
-    if (DisableGizmoForFrames_ > 0) {
-        DisableGizmoForFrames_--;
-        ImGuizmo::Enable(false);
-    } else {
-        ImGuizmo::Enable(true);
-    }
 
 
 }
