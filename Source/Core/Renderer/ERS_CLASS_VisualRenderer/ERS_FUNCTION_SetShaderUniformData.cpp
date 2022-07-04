@@ -7,11 +7,6 @@
 
 void ERS_FUNCTION_SetShaderUniformData(ERS_STRUCT_Shader* Shader, ERS_STRUCT_ShaderUniformData Data) {
 
-
-
-    // Get Pointer to Shader
-    ERS_STRUCT_Shader* Shader = Shaders_[ShaderIndex].get();
-
     // Set Metadata Params
     float Time = glfwGetTime();
     Shader->SetFloat("Time", Time);
