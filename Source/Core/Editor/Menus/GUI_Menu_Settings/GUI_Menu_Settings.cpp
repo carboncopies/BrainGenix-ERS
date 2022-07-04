@@ -32,7 +32,6 @@ void GUI_Menu_Settings::Draw() {
         ImGui::MenuItem("Color Theme", "", &Windows_->GUI_Window_ThemeSelector_->Enabled_);
         ImGui::MenuItem("System Font", "", &Windows_->GUI_Window_FontSelector_->Enabled_);
 
-
         ImGui::Separator();
 
 
@@ -45,9 +44,7 @@ void GUI_Menu_Settings::Draw() {
             }
 
             // Open Settings MEnu
-            if (ImGui::MenuItem("Game Controller Settings")) {
-                Windows_->GUI_Window_ControllerSettings_->Enabled_ = !Windows_->GUI_Window_ControllerSettings_->Enabled_;
-            }
+            ImGui::MenuItem("Game Controller Settings", "", &Windows_->GUI_Window_ControllerSettings_->Enabled_);
 
         ImGui::EndMenu();
         }
