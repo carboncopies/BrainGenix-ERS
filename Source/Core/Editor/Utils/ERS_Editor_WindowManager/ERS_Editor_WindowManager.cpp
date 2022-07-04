@@ -29,7 +29,7 @@ ERS_CLASS_WindowManager::~ERS_CLASS_WindowManager() {
 
 // Setup Window Struct
 void ERS_CLASS_WindowManager::GenerateWindowStruct(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_CLASS_VisualRenderer* VisualRenderer,
-ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* SceneManager) {
+ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* SceneManager) {
 
     // Setup Window System
     SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Struct", 4);
@@ -54,6 +54,7 @@ ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* 
     Windows_->GUI_Window_SystemLog_            = std::make_unique<GUI_Window_SystemLog>(SystemUtils_);
     Windows_->GUI_Window_TestEditor_           = std::make_unique<GUI_Window_TestEditor>(SystemUtils_);
     Windows_->GUI_Window_ThemeSelector_        = std::make_unique<GUI_Window_ThemeSelector>(ThemeManager);
+    Windows_->GUI_Window_FontSelector_         = std::make_unique<GUI_Window_FontSelector>(FontManager);
 
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Struct", 3);
     SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Index", 4);
@@ -77,6 +78,7 @@ ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* 
     WindowNames_.push_back("SystemLog");
     WindowNames_.push_back("TestEditor");
     WindowNames_.push_back("ThemeSelector");
+    WindowNames_.push_back("FontManager");
     
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Index", 3);
 
@@ -107,7 +109,8 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     Windows_->GUI_Window_SystemLog_->Draw();
     Windows_->GUI_Window_TestEditor_->Draw();
     Windows_->GUI_Window_ThemeSelector_->Draw();
-    
+    Windows_->GUI_Window_FontSelector_->Draw();
+
 }
 
 bool ERS_CLASS_WindowManager::SetWindowStatus(std::string WindowName, bool Status) {
