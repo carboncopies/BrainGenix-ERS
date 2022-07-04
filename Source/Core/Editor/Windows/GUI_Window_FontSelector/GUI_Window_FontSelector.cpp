@@ -19,53 +19,43 @@ GUI_Window_FontSelector::~GUI_Window_FontSelector() {
 
 void GUI_Window_FontSelector::Draw() {
 
-    if (Enabled_) {
-    ImGuiWindowFlags Flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse;
-    bool Visible = ImGui::Begin("Pick Color Font", &Enabled_, Flags);
+ if (Enabled_) {
 
-            ImGui::SetWindowSize(ImVec2(0, 0));
+        ImGuiWindowFlags Flags = ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse;
+        if (ImGui::Begin("Font Selector", &Enabled_, Flags)) {
+            ImGui::SetWindowSize(ImVec2(0,0));
 
+                ImGui::BeginChild("Font Radio Buttons", ImVec2(300, 400), true);
 
-            if (Visible) {
-
-                // Put Radio Buttons Here
-                ImGui::BeginChild("Font Selector", ImVec2(250, 250), true);
-
-                    static int FontSelector = 0;
-                    for (int i = 0; (long)i < (long)FontManager_->FontNames_.size(); i++) {
-
-                        ImGui::RadioButton(FontManager_->FontNames_[i].c_str(), &FontSelector, i);
-
+                    for (int i = 0; (long)i < (long)FontManager_->FontNameList_.size(); i++) {
+                        ImGui::RadioButton(FontManager_->FontNameList_[i].c_str(), &FontManager_->FontSelector_, i);
                     }
-                    
 
                 ImGui::EndChild();
 
+                ImGui::Separator();
+
+                ImGui::SliderFloat("Font Size", &FontManager_->FontSize_, 5.0f, 30.0f);
 
                 ImGui::Separator();
 
-
-                // Reload Button
-                if (ImGui::Button("Reload Fonts")) {
-                    FontManager_->LoadFonts();
+                if (ImGui::Button("Reload")) {
+                    FontManager_->IndexFonts();
                 }
                 ImGui::SameLine();
 
-                // Apply Button
                 if (ImGui::Button("Apply")) {
-                    FontManager_->ApplyFonts(FontSelector);
+                    FontManager_->UpdateFont_ = true;
                 }
                 ImGui::SameLine();
 
-                // Close Button
                 if (ImGui::Button("Close")) {
                     Enabled_ = false;
                 }
-            
 
-            }
 
-    ImGui::End();
+            ImGui::End();
+        }
+
     }
-
 }
