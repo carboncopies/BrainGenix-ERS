@@ -9,27 +9,47 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <string>
+#include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
+#include <glm/glm.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
 
 
+/**
+ * @brief Struct for storing shader uniform data
+ * 
+ */
+struct ERS_STRUCT_ShaderUniformDataDirectionalLight {
+
+    glm::vec3 Direction_;
+    glm::vec3 Color_;
+    float Intensity_;
+    float MaxDistance_;
+    bool CastsShadows_;
+    int DepthMapIndex_;
+    glm::mat4 LightSpaceMatrix_;
+
+}
+
+
 
 /**
- * @brief Stores Location, Rotation, Scale data in struct.
+ * @brief Struct for storing shader uniform data
  * 
  */
 struct ERS_STRUCT_ShaderUniformData {
 
-    // Name Of Shader Program
-    std::string Name; /**<Name of the shader program, used to identify different programs*/
+    // Shader Data
+    float Time_;
+    float FrameTime_;
+    int FrameNumber_;
+    glm::vec2 ViewportRes_;
+    glm::vec3 CameraPosition_;
 
-    // Shader Asset IDs
-    long VertexID; /**<Vertex Shader Asset ID*/
-    long FragmentID; /**<Fragment Shader Asset ID*/
-    long GeometryID; /**<Shader Asset ID*/
-    long ComputeID; /**<Shader Asset ID*/
-    long TCID; /**<Shader Asset ID*/
-    long TEID; /**<Shader Asset ID*/
-};
+
+    int NumberDirectionalLights_;
+
+
+}
