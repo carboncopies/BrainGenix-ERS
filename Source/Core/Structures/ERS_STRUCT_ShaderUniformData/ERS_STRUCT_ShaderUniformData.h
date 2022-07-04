@@ -20,7 +20,7 @@
  * @brief Stores Location, Rotation, Scale data in struct.
  * 
  */
-struct ERS_STRUCT_ShaderProgramAssetIDs {
+struct ERS_STRUCT_ShaderUniformData {
 
     // Name Of Shader Program
     std::string Name; /**<Name of the shader program, used to identify different programs*/
