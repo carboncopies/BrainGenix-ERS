@@ -147,7 +147,8 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
             Pos_ = InitialPos_;
             Rot_ = InitialRot_;
             Scale_ = InitialScale_;
-            ImGuizmo::Enable(true);
+            ImGuizmo::Enable(false);
+
         }
 
     }
