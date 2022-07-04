@@ -16,11 +16,18 @@ void ERS_FUNCTION_SetShaderUniformData(ERS_STRUCT_Shader* Shader, ERS_STRUCT_Sha
     Shader->SetInt("FrameNumber", Data.FrameNumber_);
 
 
-    // Set Shadow Filter Info
+    // Set Shadow Info
     Shader->SetInt("ShadowFilterType_", Data.ShadowFilterType_);
     Shader->SetInt("ShadowFilterKernelSize_", Data.ShadowFilterKernelSize_);
-    
 
+    // Bind To Shadow Maps
+    glUniform1i(glGetUniformLocation(Shader->ShaderProgram_, "DepthMapArray"), 8);
+    glActiveTexture(GL_TEXTURE8);
+    glBindTexture(GL_TEXTURE_2D_ARRAY, Data.DepthMapArray_);
+
+    glUniform1i(glGetUniformLocation(Shader->ShaderProgram_, "DepthCubemapArray"), 9);
+    glActiveTexture(GL_TEXTURE9);
+    glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, Data.DepthCubemapArray_);
 
 
 
