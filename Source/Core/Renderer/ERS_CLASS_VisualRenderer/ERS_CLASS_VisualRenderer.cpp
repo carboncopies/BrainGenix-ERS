@@ -687,14 +687,12 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     int NumberPointLights = ActiveScene->PointLights.size();
     ShaderUniformData_->NumberPointLights_ = NumberPointLights;
     for (int i = 0; i < NumberPointLights; i++) {
-    
         ShaderUniformData_->PointLights_[i].Position_           = ActiveScene->PointLights[i]->Pos;
         ShaderUniformData_->PointLights_[i].Intensity_          = ActiveScene->PointLights[i]->Intensity;
         ShaderUniformData_->PointLights_[i].Color_              = ActiveScene->PointLights[i]->Color;
         ShaderUniformData_->PointLights_[i].MaxDistance_        = ActiveScene->PointLights[i]->MaxDistance;
         ShaderUniformData_->PointLights_[i].CastsShadows_       = ActiveScene->PointLights[i]->CastsShadows_;
         ShaderUniformData_->PointLights_[i].DepthCubemapIndex_  = ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex;
-
     }
 
 
