@@ -34,6 +34,22 @@ struct ERS_STRUCT_ShaderUniformDataDirectionalLight {
 }
 
 
+/**
+ * @brief Struct for storing shader uniform data
+ * 
+ */
+struct ERS_STRUCT_ShaderUniformDataPointLight {
+
+    glm::vec3 Position_;
+    glm::vec3 Color_;
+    float Intensity_;
+    float MaxDistance_;
+    bool CastsShadows_;
+    int DepthCubemapIndex_;
+
+}
+
+
 
 /**
  * @brief Struct for storing shader uniform data
@@ -50,6 +66,7 @@ struct ERS_STRUCT_ShaderUniformData {
 
 
     int NumberDirectionalLights_;
+    int NumberPointLights_;
 
 
 }
