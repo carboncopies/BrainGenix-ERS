@@ -42,6 +42,7 @@
 
     "[lmb]" - (When Hovering Gizmo) - Move Gizmo
     "[left shift]" - (When Gizmo Active) - Move Camera While Moving Gizmo
+    "[esc]" - (When Gizmo Active) - Abort Current Movement
     "[s]" - Set Gizmo To Scale
     "[g]" - Set Gizmo To Translate
     "[r]" - Set Gizmo To Rotate

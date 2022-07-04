@@ -44,7 +44,9 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     Camera_ = Camera;
     glm::mat4 Projection = Camera_->GetProjectionMatrix();
     glm::mat4 View = Camera_->GetViewMatrix();
-    LastFrameActiveState_ = ImGuizmo::IsUsing();
+
+
+
 
 
     // Set Gizmo Mode
@@ -110,8 +112,18 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
         // Draw gizmo
         ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, GizmoMode_, TmpMatrix, nullptr, GridSnapArray);
 
-    }
 
+        // Detect If Gizmo Just Enabled, Set Initial Position
+        bool CurrentState = ImGuizmo::IsUsing();
+        if ((LastFrameActiveState_ != CurrentState) && (!LastFrameActiveState_)) {
+            InitialPos_ = Pos_;
+            InitialRot_ = Rot_;
+            InitialScale_ = Scale_;
+
+        }
+
+
+    }
 
     // If Using Gizmo, Update Object LocRotScale
     if (ImGuizmo::IsUsing()) {
@@ -130,6 +142,27 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
             Scale_ = glm::vec3(TmpScale[0], TmpScale[1], TmpScale[2]);
         }
 
+        // If User Cancles Movement
+        if (ImGui::IsKeyPressed(256)) { // Escape Key, Interrupts movement, resets to initial LRS
+            Pos_ = InitialPos_;
+            Rot_ = InitialRot_;
+            Scale_ = InitialScale_;
+            DisableGizmoForFrames_ = 4;
+
+        }
+
+    }
+
+    // Set Info
+    LastFrameActiveState_ = ImGuizmo::IsUsing();
+
+    // Handle Enabling/Disabling Gizmo
+    if (DisableGizmoForFrames_ > 0) {
+        ImGuizmo::Enable(false);
+        DisableGizmoForFrames_--;
+    } else if (DisableGizmoForFrames_ == 0) {
+        ImGuizmo::Enable(true);
+        DisableGizmoForFrames_--;
     }
 
 
