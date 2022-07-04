@@ -669,12 +669,10 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     // Directional Lights
     int NumberDirectionalLights = ActiveScene->DirectionalLights.size();
-    ActiveShader->SetInt("NumberDirectionalLights", NumberDirectionalLights);
+    ShaderUniformData_->NumberDirectionalLights_ = NumberDirectionalLights;
     for (int i = 0; i < NumberDirectionalLights; i++) {
     
-        std::string UniformName = std::string("DirectionalLights[") + std::to_string(i) + std::string("]");
-        
-        // Re-Do Rotation
+
         ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->DirectionalLights[i]->Rot));
         ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->DirectionalLights[i]->Color);
         ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->DirectionalLights[i]->Intensity);
@@ -693,8 +691,7 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetInt("NumberPointLights", NumberPointLights);
     for (int i = 0; i < NumberPointLights; i++) {
     
-        std::string UniformName = std::string("PointLights[") + std::to_string(i) + std::string("]");
-
+  
         ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->PointLights[i]->Pos);
         ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->PointLights[i]->Intensity);
         ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->PointLights[i]->Color);
@@ -713,9 +710,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     ActiveShader->SetInt("NumberSpotLights", NumberSpotLights);
     for (int i = 0; i < NumberSpotLights; i++) {
     
-        std::string UniformName = std::string("SpotLights[") + std::to_string(i) + std::string("]");
+  
 
-        // Re-Do Rotation
         ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->SpotLights[i]->Pos);
         ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->SpotLights[i]->Rot));
         ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->SpotLights[i]->Intensity);
