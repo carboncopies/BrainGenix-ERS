@@ -418,14 +418,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
 
-        // Bind To Shadow Maps
-        glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram_, "DepthMapArray"), 8);
-        glActiveTexture(GL_TEXTURE8);
-        glBindTexture(GL_TEXTURE_2D_ARRAY, ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureArrayID_);
 
-        glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram_, "DepthCubemapArray"), 9);
-        glActiveTexture(GL_TEXTURE9);
-        glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureCubemapArrayID_);
 
 
         // Render
@@ -652,6 +645,8 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
     }
     ShaderUniformData_->ShadowFilterType_ = ShadowFilterType;
     ShaderUniformData_->ShadowFilterKernelSize_ = SystemUtils_->RendererSettings_->ShadowFilterKernelSize_;
+    ShaderUniformData_->DepthMapArray_ = ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureArrayID_;
+    ShaderUniformData_->DepthCubemapArray_ = ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureCubemapArrayID_;
 
     // ---- SEND LIGHTING INFORMATION TO SHADERS ---- //
     // NOTE: Due to limitations with shaders, the maximum number of lights is as follows (per object) 
