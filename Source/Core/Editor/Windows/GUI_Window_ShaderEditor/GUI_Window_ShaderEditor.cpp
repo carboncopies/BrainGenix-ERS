@@ -15,14 +15,75 @@ GUI_Window_ShaderEditor::GUI_Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemU
 
     Editors_.push_back(std::make_shared<TextEditor>());
     Editors_.push_back(std::make_shared<TextEditor>());
-
     
     ReloadEditorText();
 
-    
     ShaderLoader_ = std::make_unique<ERS_CLASS_ShaderLoader>(SystemUtils_);
 
 
+    // Set Default Shader Text
+    NewShaderVertexText_ = "#version 420 core\n"
+    "layout (location = 0) in vec3 aPos;\n"
+    "layout (location = 1) in vec3 aNormal;\n"
+    "layout (location = 2) in vec2 aTexCoords;\n"
+    "\n"
+    "out vec2 TexCoords;\n"
+    "\n"
+    "\n"
+    "// Set Model Info\n"
+    "uniform mat4 model;\n"
+    "uniform mat4 view;\n"
+    "uniform mat4 projection;\n"
+    "\n"
+    "// Get Input Vars\n"
+    "uniform float Time; // Time since program started in seconds\n"
+    "uniform float FrameTime; // Render Time Of The Frame\n"
+    "uniform int FrameNumber; // Number of the frame, counts up from zero\n"
+    "uniform vec2 ViewportRes; // XY Resolution of the viewport\n"
+    "\n"
+    "\n"
+    "\n"
+    "void main()\n"
+    "{\n"
+    "    TexCoords = aTexCoords;    \n"
+    "    gl_Position = projection * view * model * vec4(aPos, 1.0);\n"
+    "}\n";
+
+    NewshaderFragmentText_ = "#version 420 core\n"
+    "out vec4 FragColor;\n"
+    "\n"
+    "in vec2 TexCoords;\n"
+    "\n"
+    "// Get Texture Sampler And Lighting Info\n"
+    "uniform sampler2D texture_ambient1;\n"
+    "uniform sampler2D texture_ambient_occlusion1;\n"
+    "uniform sampler2D texture_base_color1;\n"
+    "uniform sampler2D texture_diffuse1;\n"
+    "uniform sampler2D texture_diffuse_roughness1;\n"
+    "uniform sampler2D texture_displacement1;\n"
+    "uniform sampler2D texture_emission_color1;\n"
+    "uniform sampler2D texture_emissive1;\n"
+    "uniform sampler2D texture_height1;\n"
+    "uniform sampler2D texture_lightmap1;\n"
+    "uniform sampler2D texture_normal_camera1;\n"
+    "uniform sampler2D texture_normals1;\n"
+    "uniform sampler2D texture_opacity1;\n"
+    "uniform sampler2D texture_reflection1;\n"
+    "uniform sampler2D texture_shininess1;\n"
+    "uniform sampler2D texture_specular1;\n"
+    "\n"
+    "\n"
+    "// Get Input Vars\n"
+    "uniform float Time; // Time since program started in seconds\n"
+    "uniform float FrameTime; // Render Time Of The Frame\n"
+    "uniform int FrameNumber; // Number of the frame, counts up from zero\n"
+    "uniform vec2 ViewportRes; // XY Resolution of the viewport\n"
+    "\n"
+    "\n"
+    "void main()\n"
+    "{\n"
+    "    FragColor = texture(texture_diffuse1, TexCoords);\n"
+    "}\n";
 
 
 }
