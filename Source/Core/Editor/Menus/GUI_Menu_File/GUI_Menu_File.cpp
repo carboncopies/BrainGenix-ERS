@@ -35,6 +35,13 @@ void GUI_Menu_File::Draw() {
         // if (ImGui::MenuItem("Save Project")) {
         //     ProjectUtils_->ProjectManager_->WriteProject(1);
         // }
+
+        if (ImGui::MenuItem("About")) {
+            Windows_->GUI_Window_About_->Enabled_ = !Windows_->GUI_Window_About_->Enabled_;
+        }
+
+        ImGui::Separator();
+
         if (ImGui::MenuItem("Project Settings")) {
             Windows_->GUI_Window_ProjectSettings_->Enabled_ = !Windows_->GUI_Window_ProjectSettings_->Enabled_;
         }
@@ -44,22 +51,6 @@ void GUI_Menu_File::Draw() {
             ImportAsset_->OpenFileDialog();
         }
         ImGui::Separator();
-
-        // Scene Options
-        // if (ImGui::MenuItem("Save Active Scene")) {
-        //     SceneWriter_->ProcessScene(
-        //         SceneManager_->Scenes_[SceneManager_->ActiveScene_].get(),
-        //         SceneManager_->Scenes_[SceneManager_->ActiveScene_]->ScenePath
-        //         );
-        // }
-        // if (ImGui::MenuItem("Save All Scenes")) {
-        //     for (int i = 0; (long)i < (long)SceneManager_->Scenes_.size(); i++) {
-        //         SceneWriter_->ProcessScene(
-        //             SceneManager_->Scenes_[i].get(),
-        //             SceneManager_->Scenes_[i]->ScenePath
-        //             );
-        //     }
-        // }
 
         // Save All
         if (ImGui::MenuItem("Save")) {

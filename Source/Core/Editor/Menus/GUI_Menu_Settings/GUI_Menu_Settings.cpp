@@ -28,6 +28,19 @@ void GUI_Menu_Settings::Draw() {
     // File Menu
     if (ImGui::BeginMenu("Settings")) {
 
+        // Interface Config
+        if (ImGui::MenuItem("Color Theme")) {
+            Windows_->GUI_Window_ThemeSelector_->Enabled_ = !Windows_->GUI_Window_ThemeSelector_->Enabled_;
+        }
+
+        if (ImGui::MenuItem("System Font")) {
+            Windows_->GUI_Window_FontSelector_->Enabled_ = !Windows_->GUI_Window_FontSelector_->Enabled_;
+        }
+
+
+        ImGui::Separator();
+
+
         // Controller Settings
         if (ImGui::BeginMenu("Game Controllers")) {
 
