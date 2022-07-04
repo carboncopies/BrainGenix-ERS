@@ -360,7 +360,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         Shaders_[ShaderIndex]->MakeActive();
 
         // Update Shaders
-        UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewports_[Index]->Camera.get());
+        UpdateShader(DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewports_[Index]->Camera.get());
         Shaders_[ShaderIndex]->SetMat4("projection", projection);
         Shaders_[ShaderIndex]->SetMat4("view", view);
         Shaders_[ShaderIndex]->SetBool("GammaCorrectionEnabled_", Viewports_[Index]->GammaCorrection);
