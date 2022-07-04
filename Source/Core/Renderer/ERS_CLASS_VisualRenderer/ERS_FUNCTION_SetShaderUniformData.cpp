@@ -65,15 +65,15 @@ void ERS_FUNCTION_SetShaderUniformData(ERS_STRUCT_Shader* Shader, ERS_STRUCT_Sha
     
         std::string UniformName = std::string("SpotLights[") + std::to_string(i) + std::string("]");
 
-        Shader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->SpotLights[i]->DepthMap.TransformationMatrix);
-        Shader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->SpotLights[i]->Pos);
-        Shader->SetVec3((UniformName + std::string(".Direction")).c_str(), ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->SpotLights[i]->Rot));
-        Shader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->SpotLights[i]->Color);
-        Shader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->SpotLights[i]->Intensity);
-        Shader->SetFloat((UniformName + std::string(".CutOff")).c_str(), 1.0f - (ActiveScene->SpotLights[i]->CutOff * (0.01745329 / 4)));
-        Shader->SetFloat((UniformName + std::string(".RollOff")).c_str(), glm::radians(ActiveScene->SpotLights[i]->Rolloff));
-        Shader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->SpotLights[i]->MaxDistance);
-        Shader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndex);
-        Shader->SetBool((UniformName + std::string(".CastsShadows")).c_str(), ActiveScene->SpotLights[i]->CastsShadows_);
+        Shader->SetMat4  ((UniformName + std::string(".LightSpaceMatrix")).c_str(),   Data.SpotLights_[i].LightSpaceMatrix_);
+        Shader->SetVec3  ((UniformName + std::string(".Position")).c_str(),           Data.SpotLights_[i].Position_);
+        Shader->SetVec3  ((UniformName + std::string(".Direction")).c_str(),          Data.SpotLights_[i].Direction_);
+        Shader->SetVec3  ((UniformName + std::string(".Color")).c_str(),              Data.SpotLights_[i].Color_);
+        Shader->SetFloat ((UniformName + std::string(".Intensity")).c_str(),          Data.SpotLights_[i].Intensity_);
+        Shader->SetFloat ((UniformName + std::string(".CutOff")).c_str(),             Data.SpotLights_[i].CutOff_);
+        Shader->SetFloat ((UniformName + std::string(".RollOff")).c_str(),            Data.SpotLights_[i].RollOff_);
+        Shader->SetFloat ((UniformName + std::string(".MaxDistance")).c_str(),        Data.SpotLights_[i].MaxDistance_);
+        Shader->SetInt   ((UniformName + std::string(".DepthMapIndex")).c_str(),      Data.SpotLights_[i].DepthMapIndex_);
+        Shader->SetBool  ((UniformName + std::string(".CastsShadows")).c_str(),       Data.SpotLights_[i].CastsShadows_);
     }
 }
