@@ -361,12 +361,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         // Update Shaders
         UpdateShader(DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewports_[Index]->Camera.get());
-        Shaders_[ShaderIndex]->SetMat4("projection", projection);
-        Shaders_[ShaderIndex]->SetMat4("view", view);
-        Shaders_[ShaderIndex]->SetBool("GammaCorrectionEnabled_", Viewports_[Index]->GammaCorrection);
-        Shaders_[ShaderIndex]->SetBool("HDREnabled_", Viewports_[Index]->HDREnabled_);
-        Shaders_[ShaderIndex]->SetFloat("Exposure_", Viewports_[Index]->Exposure_);
-        Shaders_[ShaderIndex]->SetFloat("Gamma_", Viewports_[Index]->Gamma_);
+
         
 
 
@@ -617,7 +612,9 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
 }
 
-void ERS_CLASS_VisualRenderer::UpdateShader(float DeltaTime, int RenderWidth, int RenderHeight, ERS_CLASS_SceneManager*SceneManager, ERS_STRUCT_Camera* Camera) {
+void ERS_CLASS_VisualRenderer::UpdateShader(float DeltaTime, int RenderWidth, int RenderHeight, 
+ERS_CLASS_SceneManager*SceneManager, ERS_STRUCT_Camera* Camera, glm::mat4 Projection, glm::mat4 View,
+ERS_STRUCT_Viewport* Viewport) {
 
     // Clear Shader Uniform Data
     ShaderUniformData_ = std::make_unique<ERS_STRUCT_ShaderUniformData>();
@@ -631,7 +628,24 @@ void ERS_CLASS_VisualRenderer::UpdateShader(float DeltaTime, int RenderWidth, in
     ShaderUniformData_->CameraPosition_ = Camera->Position_;
     ShaderUniformData_->ShininessOffset_ = 0.5f;
 
-   // Set Shadow Filter Info
+
+
+
+    // Viewport Config
+    ShaderUniformData_->Projection_ = Projection;
+    ShaderUniformData_->View_ = View;
+
+    // Camera Info
+    ShaderUniformData_->GammaCorrectionEnabled_ = Viewport->GammaCorrection;
+
+        Shaders_[ShaderIndex]->SetMat4("projection", projection);
+        Shaders_[ShaderIndex]->SetMat4("view", view);
+        Shaders_[ShaderIndex]->SetBool("GammaCorrectionEnabled_", Viewports_[Index]->GammaCorrection);
+        Shaders_[ShaderIndex]->SetBool("HDREnabled_", Viewports_[Index]->HDREnabled_);
+        Shaders_[ShaderIndex]->SetFloat("Exposure_", Viewports_[Index]->Exposure_);
+        Shaders_[ShaderIndex]->SetFloat("Gamma_", Viewports_[Index]->Gamma_);
+
+    // Set Shadow Filter Info
     int ShadowFilterType = 0;
     ERS::Renderer::ShadowFilteringType ShadowFilterEnum = SystemUtils_->RendererSettings_->ShadowFilteringType_;
     if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED) {

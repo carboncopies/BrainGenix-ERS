@@ -84,6 +84,17 @@ struct ERS_STRUCT_ShaderUniformData {
     glm::vec2 ViewportRes_;
     glm::vec3 CameraPosition_;
     float ShininessOffset_;
+    
+    // Viewport Controls
+    bool GammaCorrectionEnabled_;
+    bool HDREnabled_;
+    float Exposure_;
+    float Gamma_;
+
+    // Camera Info
+    glm::mat4 Projection_;
+    glm::mat4 View_;
+
 
     // Shadow Info
     int ShadowFilterType_;
