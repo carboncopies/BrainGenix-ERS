@@ -429,9 +429,12 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
         // Render
-        
-        //MeshRenderer_->RenderSceneNoTextures(ActiveScene.get(), Shaders_[ShaderIndex].get());
-        MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, Shaders_[ShaderIndex].get());
+        std::vector<ERS_STRUCT_Shader*> ShaderPointers;
+        for (unsigned int i = 0; i < Shaders_.size(); i++) {
+            ShaderPointers.push_back(Shaders_[i].get());
+        }
+        MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, ShaderPointers, ShaderIndex, *ShaderUniformData_);
+
 
         if (Viewports_[Index]->GridEnabled) {
             Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position_);
