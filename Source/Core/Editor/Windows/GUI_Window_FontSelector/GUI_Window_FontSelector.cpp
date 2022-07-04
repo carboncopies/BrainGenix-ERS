@@ -3,25 +3,25 @@
 //======================================================================//
 
 
-#include <GUI_Window_ThemeSelector.h>
+#include <GUI_Window_FontSelector.h>
 
 
-GUI_Window_ThemeSelector::GUI_Window_ThemeSelector(ERS_CLASS_ThemeManager* ThemeManager) {
+GUI_Window_FontSelector::GUI_Window_FontSelector(ERS_CLASS_FontManager* FontManager) {
 
-    ThemeManager_ = ThemeManager;
-
-}
-
-GUI_Window_ThemeSelector::~GUI_Window_ThemeSelector() {
+    FontManager_ = FontManager;
 
 }
 
+GUI_Window_FontSelector::~GUI_Window_FontSelector() {
 
-void GUI_Window_ThemeSelector::Draw() {
+}
+
+
+void GUI_Window_FontSelector::Draw() {
 
     if (Enabled_) {
     ImGuiWindowFlags Flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse;
-    bool Visible = ImGui::Begin("Pick Color Theme", &Enabled_, Flags);
+    bool Visible = ImGui::Begin("Pick Color Font", &Enabled_, Flags);
 
             ImGui::SetWindowSize(ImVec2(0, 0));
 
@@ -29,12 +29,12 @@ void GUI_Window_ThemeSelector::Draw() {
             if (Visible) {
 
                 // Put Radio Buttons Here
-                ImGui::BeginChild("Theme Selector", ImVec2(250, 250), true);
+                ImGui::BeginChild("Font Selector", ImVec2(250, 250), true);
 
-                    static int ThemeSelector = 0;
-                    for (int i = 0; (long)i < (long)ThemeManager_->ThemeNames_.size(); i++) {
+                    static int FontSelector = 0;
+                    for (int i = 0; (long)i < (long)FontManager_->FontNames_.size(); i++) {
 
-                        ImGui::RadioButton(ThemeManager_->ThemeNames_[i].c_str(), &ThemeSelector, i);
+                        ImGui::RadioButton(FontManager_->FontNames_[i].c_str(), &FontSelector, i);
 
                     }
                     
@@ -46,14 +46,14 @@ void GUI_Window_ThemeSelector::Draw() {
 
 
                 // Reload Button
-                if (ImGui::Button("Reload Themes")) {
-                    ThemeManager_->LoadThemes();
+                if (ImGui::Button("Reload Fonts")) {
+                    FontManager_->LoadFonts();
                 }
                 ImGui::SameLine();
 
                 // Apply Button
                 if (ImGui::Button("Apply")) {
-                    ThemeManager_->ApplyThemes(ThemeSelector);
+                    FontManager_->ApplyFonts(FontSelector);
                 }
                 ImGui::SameLine();
 
