@@ -46,6 +46,14 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     glm::mat4 View = Camera_->GetViewMatrix();
 
 
+    // Detect If Gizmo Just Enabled
+    if ((LastFrameActiveState_ != ImGuizmo::IsUsing()) && (!LastFrameActiveState_)) {
+        InitialPos_ = Pos_;
+        InitialRot_ = Rot_;
+        InitialScale_ = Scale_;
+    }
+
+
     // Set Gizmo Mode
     if (ImGui::IsWindowHovered() && !IsCameraMoving) {
         if (ImGui::IsKeyPressed(71)) {
@@ -127,6 +135,13 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
             Rot_ = glm::mod(Rot_, 360.0f);
         } else if (CurrentGizmoOperation_ == ImGuizmo::OPERATION::SCALE) {
             Scale_ = glm::vec3(TmpScale[0], TmpScale[1], TmpScale[2]);
+        }
+
+        // If User Cancles Movement
+        if (ImGui::IsKeyPressed(256)) { // Escape Key, Interrupts movement, resets to initial LRS
+            Pos_ = InitialPos_;
+            Rot_ = InitialRot_;
+            Scale_ = InitialScale_;
         }
 
     }
