@@ -52,22 +52,6 @@ void GUI_Menu_File::Draw() {
         }
         ImGui::Separator();
 
-        // Scene Options
-        // if (ImGui::MenuItem("Save Active Scene")) {
-        //     SceneWriter_->ProcessScene(
-        //         SceneManager_->Scenes_[SceneManager_->ActiveScene_].get(),
-        //         SceneManager_->Scenes_[SceneManager_->ActiveScene_]->ScenePath
-        //         );
-        // }
-        // if (ImGui::MenuItem("Save All Scenes")) {
-        //     for (int i = 0; (long)i < (long)SceneManager_->Scenes_.size(); i++) {
-        //         SceneWriter_->ProcessScene(
-        //             SceneManager_->Scenes_[i].get(),
-        //             SceneManager_->Scenes_[i]->ScenePath
-        //             );
-        //     }
-        // }
-
         // Save All
         if (ImGui::MenuItem("Save")) {
 
