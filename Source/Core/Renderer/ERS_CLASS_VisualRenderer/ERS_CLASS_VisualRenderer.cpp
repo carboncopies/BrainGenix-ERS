@@ -623,19 +623,6 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
 void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, ERS_CLASS_SceneManager*SceneManager, ERS_STRUCT_Camera* Camera) {
 
-    /**
-
-    -- Current list of supported shader params: 
-
-    uniform float Time; // Time since program started in seconds
-    uniform float FrameTime; // Render Time Of The Frame
-    uniform int FrameNumber; // Number of the frame, counts up from zero
-    uniform vec2 ViewportRes; // XY Resolution of the viewport
-
-    **/
-
-
-
     // Set Metadata Params
     float Time = glfwGetTime();
     ShaderUniformData_->Time_ = Time;
