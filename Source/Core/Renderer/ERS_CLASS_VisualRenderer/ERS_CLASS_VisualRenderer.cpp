@@ -617,7 +617,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
 }
 
-void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, ERS_CLASS_SceneManager*SceneManager, ERS_STRUCT_Camera* Camera) {
+void ERS_CLASS_VisualRenderer::UpdateShader(float DeltaTime, int RenderWidth, int RenderHeight, ERS_CLASS_SceneManager*SceneManager, ERS_STRUCT_Camera* Camera) {
 
     // Clear Shader Uniform Data
     ShaderUniformData_ = std::make_unique<ERS_STRUCT_ShaderUniformData>();
