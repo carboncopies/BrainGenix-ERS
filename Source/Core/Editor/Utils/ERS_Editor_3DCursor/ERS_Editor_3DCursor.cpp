@@ -119,7 +119,7 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
             InitialPos_ = Pos_;
             InitialRot_ = Rot_;
             InitialScale_ = Scale_;
-            DisableGizmoForFrames_ = 2;
+
         }
 
 
