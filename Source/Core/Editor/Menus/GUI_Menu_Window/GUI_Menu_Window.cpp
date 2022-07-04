@@ -44,10 +44,10 @@ void GUI_Menu_Window::Draw() {
             if (ImGui::BeginMenu("Framerate")) {
 
                 // Framerate Related Tools
-                ImGui::Checkbox("Framerate Counter", &Windows_->GUI_Window_FramerateCounter_->Enabled_);
-                ImGui::Checkbox("Framerate Histogram", &Windows_->GUI_Window_FramerateHistogram_->Enabled_);
-                ImGui::Checkbox("Framerate Graph", &Windows_->GUI_Window_FramerateGraph_->Enabled_);
-                ImGui::Checkbox("Framerate Plot", &Windows_->GUI_Window_FrameratePlot_->Enabled_);
+                ImGui::Selectable("Framerate Counter", &Windows_->GUI_Window_FramerateCounter_->Enabled_);
+                ImGui::Selectable("Framerate Histogram", &Windows_->GUI_Window_FramerateHistogram_->Enabled_);
+                ImGui::Selectable("Framerate Graph", &Windows_->GUI_Window_FramerateGraph_->Enabled_);
+                ImGui::Selectable("Framerate Plot", &Windows_->GUI_Window_FrameratePlot_->Enabled_);
                 ImGui::Checkbox("Frame Latency Graph", &Windows_->GUI_Window_FrameLatencyGraph_->Enabled_);
 
             ImGui::EndMenu();
