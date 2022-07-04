@@ -78,16 +78,6 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     }
 
 
-    // Detect If Gizmo Just Enabled, Set Initial Position
-    bool CurrentState = ImGuizmo::IsUsing();
-    std::cout<< LastFrameActiveState_<<"|"<<CurrentState<<std::endl;
-    if ((LastFrameActiveState_ != CurrentState) && (!LastFrameActiveState_)) {
-        InitialPos_ = Pos_;
-        InitialRot_ = Rot_;
-        InitialScale_ = Scale_;
-    }
-
-
     /*
     NOTE:
     The variables Pos_, Rot_, and Scale_ are the object's loc rot and scale.
@@ -121,6 +111,17 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
 
         // Draw gizmo
         ImGuizmo::Manipulate((float*)glm::value_ptr(View), (float*)glm::value_ptr(Projection), CurrentGizmoOperation_, GizmoMode_, TmpMatrix, nullptr, GridSnapArray);
+
+
+        // Detect If Gizmo Just Enabled, Set Initial Position
+        bool CurrentState = ImGuizmo::IsUsing();
+        std::cout<< LastFrameActiveState_<<"|"<<CurrentState<<std::endl;
+        if ((LastFrameActiveState_ != CurrentState) && (!LastFrameActiveState_)) {
+            InitialPos_ = Pos_;
+            InitialRot_ = Rot_;
+            InitialScale_ = Scale_;
+        }
+
 
     }
 
