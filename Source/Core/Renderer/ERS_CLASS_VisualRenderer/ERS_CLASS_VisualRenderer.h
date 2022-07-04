@@ -118,7 +118,7 @@ private:
      * @param RenderHeight 
      * @param SceneManager
      */
-    void UpdateShader(float DeltaTime, int RenderWidth, int RenderHeight, ERS_CLASS_SceneManager*SceneManager, ERS_STRUCT_Camera* Camera);
+    void UpdateShader(float DeltaTime, int RenderWidth, int RenderHeight, ERS_CLASS_SceneManager*SceneManager, ERS_STRUCT_Camera* Camera, glm::mat4 Projection, glm::mat4 View, ERS_STRUCT_Viewport* Viewport);
 
 
     /**
