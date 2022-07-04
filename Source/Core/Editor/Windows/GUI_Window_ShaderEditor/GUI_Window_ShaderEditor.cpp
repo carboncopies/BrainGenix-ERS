@@ -192,6 +192,10 @@ void GUI_Window_ShaderEditor::DrawEditorWindow() {
                         ShaderProgram.Name = "New Shader Program";
                         ShaderProgram.FragmentID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
                         ShaderProgram.VertexID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+                        ShaderProgram.ComputeID = -1;
+                        ShaderProgram.GeometryID = -1;
+                        ShaderProgram.TCID = -1;
+                        ShaderProgram.TEID = -1;
                         ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.push_back(ShaderProgram);
                         
 
