@@ -115,10 +115,7 @@ void GUI_Window_RenderingSettings::Draw() {
                     }
                 }
 
-                // FIXME: Add Camera Struct To Grab FOV For All Cameras
-                // FOV Slider
-                //ImGui::Separator();
-                //ImGui::SliderInt("Viewport FOV", &Camera_, 1, 360)
+
 
                 // Handle Modifications To Renderer Settings
                 ImGui::Spacing();
@@ -142,6 +139,10 @@ void GUI_Window_RenderingSettings::Draw() {
                 };
 
 
+
+
+                // FOV Slider
+                ImGui::SliderFloat("FOV", &Settings->FOV_, 0.0f, 180.0f);
 
 
                 // Draw Buttons/Input Fields
