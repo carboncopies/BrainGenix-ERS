@@ -44,7 +44,6 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
     Camera_ = Camera;
     glm::mat4 Projection = Camera_->GetProjectionMatrix();
     glm::mat4 View = Camera_->GetViewMatrix();
-    LastFrameActiveState_ = ImGuizmo::IsUsing();
 
 
     // Set Gizmo Mode
@@ -131,6 +130,9 @@ void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCu
         }
 
     }
+
+    // Set Infor For Other Windows To Use
+    LastFrameActiveState_ = ImGuizmo::IsUsing();
 
 
 }
