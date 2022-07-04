@@ -87,7 +87,7 @@ struct ERS_STRUCT_ShaderUniformData {
     int ShadowFilterType_;
     int ShadowFilterKernelSize_;
 
-    float ShinynessOffset_;
+    float ShininessOffset_;
 
 
     int NumberDirectionalLights_;
