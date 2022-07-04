@@ -5,11 +5,14 @@
 #include <GUI_Window_ObjectProperties.h>
 
 
-GUI_Window_ObjectProperties::GUI_Window_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+GUI_Window_ObjectProperties::GUI_Window_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer) {
 
     Cursors3D_ = Cursors3D;
     SceneManager_ = SceneManager;
     ProjectUtils_ = ProjectUtils;
+    VisualRenderer_ = VisualRenderer;
+
+    //ShaderNames_[0] = "Default";
 
 }
 
@@ -209,6 +212,46 @@ void GUI_Window_ObjectProperties::Draw() {
                         ImGui::SameLine();
                         ImGui::HelpMarker("Allow this model to have shadows cast upon it by other objects as well as itself.");
 
+
+                        // Shader Override Settings
+                        ImGui::Separator();
+
+                        // Shader Control Menu
+                        // int ShaderIndex = Model->ShaderOverrideIndex_ + 1;
+                        // ImGui::Combo("Object Specific Shader", &ShaderIndex, );
+                        // Model->ShaderOverrideIndex_ = ShaderIndex - 1;
+                        
+                        int ShaderIndex = Model->ShaderOverrideIndex_;
+    
+
+
+                        std::string PreviewValue;
+                        if (ShaderIndex > (int)VisualRenderer_->Shaders_.size()) {
+                            PreviewValue = "Invalid Shader Index";
+
+                        } else if (ShaderIndex == -1) {
+                            PreviewValue = "Default Shader";
+                        } else {
+                            PreviewValue = VisualRenderer_->Shaders_[ShaderIndex]->DisplayName;
+                        }
+
+              
+
+
+                        if (ImGui::BeginCombo("Object Specific Shader", PreviewValue.c_str())) {
+
+                            if (ImGui::Selectable("Default Shader", ShaderIndex == -1)) {
+                                Model->ShaderOverrideIndex_ = -1;
+                            }
+
+                            for (unsigned int i = 0; i < VisualRenderer_->Shaders_.size(); i++) {
+                                if (ImGui::Selectable(VisualRenderer_->Shaders_[i]->DisplayName.c_str(), Model->ShaderOverrideIndex_ == i)) {
+                                    Model->ShaderOverrideIndex_ = i;
+                                }
+                            }
+
+                        ImGui::EndCombo();
+                        }
 
                     }
 

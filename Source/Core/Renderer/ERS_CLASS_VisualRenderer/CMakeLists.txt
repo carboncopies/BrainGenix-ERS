@@ -24,6 +24,7 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_FUNCTION_ResetMeshTexture.cpp"
             "ERS_FUNCTION_ConvertRotationToFrontVector.cpp"
             "ERS_FUNCTION_MeshTransparencySortNoTextures.cpp"
+            "ERS_FUNCTION_SetShaderUniformData.cpp"
 
             
 
@@ -45,6 +46,7 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_FUNCTION_ResetMeshTexture.h"
             "ERS_FUNCTION_ConvertRotationToFrontVector.h"
             "ERS_FUNCTION_MeshTransparencySortNoTextures.h"
+            "ERS_FUNCTION_SetShaderUniformData.h"
 
 
 
@@ -82,6 +84,7 @@ target_link_libraries(ERS_CLASS_VisualRenderer
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_OpenGLDefaults
     ERS_STRUCT_RendererSettings
+    ERS_STRUCT_ShaderUniformData
 
     )
 

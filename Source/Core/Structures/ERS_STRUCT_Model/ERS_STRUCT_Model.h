@@ -43,6 +43,7 @@ struct ERS_STRUCT_Model {
     std::vector<ERS_STRUCT_Texture> Textures_Loaded;
     std::string Directory;
     std::string Name = "Name Not Assigned";
+    long ShaderOverrideIndex_ = -1; /**<If not -1, This indicates that the model is requesting a custom shader, and the value is the index of the shader in the system*/
     long AssetID;
 
 
