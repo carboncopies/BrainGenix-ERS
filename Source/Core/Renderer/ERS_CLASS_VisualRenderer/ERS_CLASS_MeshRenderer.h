@@ -32,6 +32,7 @@
 #include <ERS_FUNCTION_MeshTransparencySortNoTextures.h>
 #include <ERS_FUNCTION_DrawMesh.h>
 #include <ERS_FUNCTION_DrawMeshNoTextures.h>
+#include <ERS_FUNCTION_SetShaderUniformData.h>
 
 #include <ERS_SceneManager.h>
 #include <ERS_SceneLoader.h>
