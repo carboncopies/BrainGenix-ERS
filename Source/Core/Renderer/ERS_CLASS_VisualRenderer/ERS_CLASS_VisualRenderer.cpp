@@ -360,7 +360,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         Shaders_[ShaderIndex]->MakeActive();
 
         // Update Shaders
-        UpdateShader(DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewports_[Index]->Camera.get());
+        UpdateShader(DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewports_[Index]->Camera.get(), projection, view, Viewports_[Index].get());
 
         
 
