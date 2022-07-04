@@ -5,26 +5,26 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(GUI_Window_ThemeSelector
+add_library(GUI_Window_FontSelector
 
             # Add Source Files (.cpp)
-            "GUI_Window_ThemeSelector.cpp"
+            "GUI_Window_FontSelector.cpp"
 
             # Add Header Files (.h)
-            "GUI_Window_ThemeSelector.h"
+            "GUI_Window_FontSelector.h"
 
 
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_ThemeSelector
+target_link_libraries(GUI_Window_FontSelector
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_ThemeSelector
-    ERS_Editor_ThemeManager
+target_link_libraries(GUI_Window_FontSelector
+    ERS_Editor_FontManager
     )
 
-target_include_directories(GUI_Window_ThemeSelector PUBLIC ./)
+target_include_directories(GUI_Window_FontSelector PUBLIC ./)
