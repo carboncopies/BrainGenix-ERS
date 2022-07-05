@@ -8,60 +8,60 @@
 GUI_Window_OpenProject::GUI_Window_OpenProject(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
-    SystemUtils_->Logger_->Log("Initializing Asset Importer GUI", 5);
-
-    GUI_Window_ImportProgressBar_ = std::make_unique<GUI_Window_ImportProgressBar>(SystemUtils_);
-    AssetImportBackend_ = std::make_unique<ERS_CLASS_Window_OpenProject>(SystemUtils_);
+    SystemUtils_->Logger_->Log("Seting Up Open Project Window Dialog", 5);
 
 }
 
 
 GUI_Window_OpenProject::~GUI_Window_OpenProject() {
 
-    SystemUtils_->Logger_->Log("Asset Importer GUI Destructor Called", 6);
+    SystemUtils_->Logger_->Log("Open Project Window Dialog Destructor Called", 6);
 
 }
 
 
 void GUI_Window_OpenProject::Draw() {
 
-    // Draw File Dialog
-    if (ImGuiFileDialog::Instance()->Display("Import Model", ImGuiWindowFlags_None, ImVec2(400, 200))) {
+    if (Enabled_ && !LastWindowState_) {
+        ImGuiFileDialog::Instance()->OpenDialog("Open Project Folder", "Open Project Folder", ".*", ".", "", 0);
+    }
+
+    if (Enabled_) {
+
+        // Draw File Dialog
+        if (ImGuiFileDialog::Instance()->Display("Open Project Folder", ImGuiWindowFlags_None, ImVec2(400, 200))) {
 
 
-        if (ImGuiFileDialog::Instance()->IsOk())
-        {
-            // Get List Of Files From Selection, Convert To Vector
-            std::vector<std::string> FilePaths;
-            std::map<std::string, std::string> selection = ImGuiFileDialog::Instance()->GetSelection(); // multiselection
-            for (const auto& elem:selection) {
-                FilePaths.push_back(elem.second);
+            if (ImGuiFileDialog::Instance()->IsOk())
+            {
+                // Get List Of Files From Selection, Convert To Vector
+                std::vector<std::string> FilePaths;
+                std::map<std::string, std::string> selection = ImGuiFileDialog::Instance()->GetSelection(); // multiselection
+                for (const auto& elem:selection) {
+                    FilePaths.push_back(elem.second);
+                }
+
+                // Add To Queue, Launch Import
+
+
             }
 
-            // Add To Queue, Launch Import
-            AssetImportBackend_->AddToImportQueue(FilePaths);
-            GUI_Window_ImportProgressBar_->Enabled_ = true;
-
+        ImGuiFileDialog::Instance()->Close();
         }
 
-    ImGuiFileDialog::Instance()->Close();
+
+
+
     }
 
-
-    // Update Window Stats
-    if (GUI_Window_ImportProgressBar_->Enabled_) {
-        GUI_Window_ImportProgressBar_->UpdateTotalItems(AssetImportBackend_->GetTotalItemsImported(), AssetImportBackend_->GetTotalItemsToImport());
-        GUI_Window_ImportProgressBar_->UpdateJobState(AssetImportBackend_->HasJobFinished());
-    }
-
-    GUI_Window_ImportProgressBar_->Draw();
+    LastWindowState_ = Enabled_;
 
 
 }
 
 void GUI_Window_OpenProject::OpenFileDialog() {
 
-    ImGuiFileDialog::Instance()->OpenDialog("Import Model", "Import Model", ".*", ".", "", 0);
+    
 
 
 }

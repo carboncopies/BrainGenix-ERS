@@ -28,6 +28,7 @@ class GUI_Window_OpenProject {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<used to get access to system utilites like IOmanager, logger, etc.*/
+    bool LastWindowState_ = false; /**<State of the wiundow last frame*/
 
 public:
 
