@@ -62,10 +62,6 @@
 
 int main(int NumArguments, char** ArguemntValues) {
 
-    for (int i = 0; i < NumArguments; i++) {
-        std::cout<<ArguemntValues[i]<<std::endl;
-    }
-
     // Initialize System Vars
     std::unique_ptr<ERS_STRUCT_SystemUtils> SystemUtils = std::make_unique<ERS_STRUCT_SystemUtils>();
     SystemUtils->SystemShouldRun_ = std::make_unique<bool>(true);
@@ -79,6 +75,7 @@ int main(int NumArguments, char** ArguemntValues) {
 
     // Handle Command Line Arguments
     ERS_CLASS_ArgumentParser ArgumentParser = ERS_CLASS_ArgumentParser(SystemUtils->Logger_.get());
+    ArgumentParser.ParseArguments(NumArguments, ArguemntValues);
     
 
     // Setup Framerate Manager
