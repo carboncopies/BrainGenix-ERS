@@ -75,7 +75,7 @@ bool ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** Argume
         }
 
 
-        Logger_->Log(std::string("Found Argument Key '") + Value1 + "' With Value '" + Value2, 1);
+        Logger_->Log(std::string("Found Argument Key '") + Value1 + "' With Value '" + Value2 + "'", 1);
 
         std::pair<std::string, std::string> ArgPair = std::make_pair(Value1, Value2);
 
