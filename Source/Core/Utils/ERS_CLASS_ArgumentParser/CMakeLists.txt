@@ -17,17 +17,10 @@ add_library(ERS_CLASS_ArgumentParser
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_CLASS_ArgumentParser
-    infoware
-    ${CMAKE_THREAD_LIBS_INIT}
     )
 
 # Link Internal Libs
 target_link_libraries(ERS_CLASS_ArgumentParser
-
-    ERS_CLASS_LoggingSystem
-
-    ERS_STRUCT_HardwareInfo
-
     )
 
 target_include_directories(ERS_CLASS_ArgumentParser PUBLIC ./)
