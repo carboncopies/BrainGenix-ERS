@@ -17,7 +17,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_Editor_ImportAsset.h>
+#include <ERS_Editor_Window_OpenProject.h>
 #include <GUI_Window_ImportProgressBar.h>
 
 
@@ -25,13 +25,11 @@
  * @brief This class provides the GUI to the import asset option within the file menu.
  *
  */
-class GUI_ImportAsset {
+class GUI_Window_OpenProject {
 
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<used to get access to system utilites like IOmanager, logger, etc.*/
-    std::unique_ptr<GUI_Window_ImportProgressBar> GUI_Window_ImportProgressBar_; /**<Pointer To Window Import Progres Bar*/
-    std::unique_ptr<ERS_CLASS_ImportAsset> AssetImportBackend_; /**<Backend used to handle actual importing, threads, etc.*/
 
 public:
 
@@ -40,13 +38,13 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_ImportAsset(ERS_STRUCT_SystemUtils* SystemUtils);
+    GUI_Window_OpenProject(ERS_STRUCT_SystemUtils* SystemUtils);
 
     /**
      * @brief Destroy the gui importasset object.
      * 
      */
-    ~GUI_ImportAsset();
+    ~GUI_Window_OpenProject();
 
     /**
      * @brief Update Any Windows
