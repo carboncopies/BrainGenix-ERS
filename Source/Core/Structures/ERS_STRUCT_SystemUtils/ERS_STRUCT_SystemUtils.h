@@ -32,6 +32,9 @@
 struct ERS_STRUCT_SystemUtils {
 
 
+    std::vector<std::pair<std::string, std::string>> Arguments_; /**<Pair of key and value arguments used to launch the program*/
+    std::string ArgumentString_; /**<String version of the argument pair*/
+
     std::unique_ptr<YAML::Node> LocalSystemConfiguration_; /**<Pointer To Config.yaml Data From Local Hard Drive*/
     std::unique_ptr<bool> SystemShouldRun_; /**<Pointer To Variable Setting If System Should Run Or Not*/
 
