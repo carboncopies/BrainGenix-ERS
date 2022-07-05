@@ -52,7 +52,7 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
         AssetPath_ = CurrentPair.second;
         HasProjectDirectory = true;
       }
-\
+
     }
 
 
