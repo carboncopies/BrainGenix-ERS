@@ -28,8 +28,10 @@ class ERS_CLASS_ArgumentParser {
 
         /**
          * @brief Construct a new Hardware Information object
+         * 
+         * @param Logger
          */
-        ERS_CLASS_ArgumentParser();
+        ERS_CLASS_ArgumentParser(ERS_CLASS_LoggingSystem* Logger);
 
         /**
          * @brief Destroy the Hardware Information object
