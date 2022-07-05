@@ -4,25 +4,25 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_CLASS_HardwareInformation
+add_library(ERS_CLASS_ArgumentParser
 
             # Add Source Files (.cpp)
-            "ERS_CLASS_HardwareInformation.cpp"
+            "ERS_CLASS_ArgumentParser.cpp"
 
             # Add Header Files (.h)
-            "ERS_CLASS_HardwareInformation.h"
+            "ERS_CLASS_ArgumentParser.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_CLASS_HardwareInformation
+target_link_libraries(ERS_CLASS_ArgumentParser
     infoware
     ${CMAKE_THREAD_LIBS_INIT}
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_CLASS_HardwareInformation
+target_link_libraries(ERS_CLASS_ArgumentParser
 
     ERS_CLASS_LoggingSystem
 
@@ -30,4 +30,4 @@ target_link_libraries(ERS_CLASS_HardwareInformation
 
     )
 
-target_include_directories(ERS_CLASS_HardwareInformation PUBLIC ./)
+target_include_directories(ERS_CLASS_ArgumentParser PUBLIC ./)
