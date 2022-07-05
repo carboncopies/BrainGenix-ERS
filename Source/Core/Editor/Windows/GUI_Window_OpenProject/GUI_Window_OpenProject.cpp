@@ -51,6 +51,9 @@ void GUI_Window_OpenProject::Draw() {
                 Command += '"' + Path + '"' + " &";
                 std::system(Command.c_str());
 
+                // Quit System
+                SystemUtils_->Logger_->Log("Shutting Down This Editor Window Now", 5);
+                *SystemUtils_->SystemShouldRun_ = false;
         
 
             }
