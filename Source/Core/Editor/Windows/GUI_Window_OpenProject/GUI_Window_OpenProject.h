@@ -31,6 +31,8 @@ private:
 
 public:
 
+    bool Enabled_ = false; /**<Show/hide the window*/
+
     /**
      * @brief Construct a new gui importasset object.
      * 
@@ -49,12 +51,5 @@ public:
      * 
      */
     void Draw();
-
-
-    /**
-     * @brief Open File Dialog
-     * 
-     */
-    void OpenFileDialog();
 
 };
