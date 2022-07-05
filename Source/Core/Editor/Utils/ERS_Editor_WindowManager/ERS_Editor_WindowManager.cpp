@@ -180,6 +180,9 @@ bool ERS_CLASS_WindowManager::SetWindowStatus(std::string WindowName, bool Statu
     } else if (WindowName == "FontSelector") {
         Windows_->GUI_Window_FontSelector_->Enabled_ = Status;
         return true;
+    } else if (WindowName == "OpenProject") {
+        Windows_->GUI_Window_OpenProject_->Enabled_ = Status;
+        return true;
     } else {
         return false;
     }
@@ -249,6 +252,9 @@ bool ERS_CLASS_WindowManager::GetWindowStatus(std::string WindowName, bool* Stat
         return true;
     } else if (WindowName == "FontSelector") {
         *Status = Windows_->GUI_Window_FontSelector_->Enabled_;
+        return true;
+    } else if (WindowName == "OpenProject") {
+        *Status = Windows_->GUI_Window_OpenProject_->Enabled_;
         return true;
     } else {
         return false;
