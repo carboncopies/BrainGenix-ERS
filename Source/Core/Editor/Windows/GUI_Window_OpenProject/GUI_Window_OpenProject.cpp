@@ -34,14 +34,11 @@ void GUI_Window_OpenProject::Draw() {
 
             if (ImGuiFileDialog::Instance()->IsOk())
             {
-                // Get List Of Files From Selection, Convert To Vector
-                std::vector<std::string> FilePaths;
-                std::map<std::string, std::string> selection = ImGuiFileDialog::Instance()->GetSelection(); // multiselection
-                for (const auto& elem:selection) {
-                    FilePaths.push_back(elem.second);
-                }
+               
+               std::string Path = ImGuiFileDialog::Instance()->GetCurrentPath();
+               SystemUtils_->Logger_->Log(std::string("Opening Project At Path '") + Path + "'", 5);
 
-                // Add To Queue, Launch Import
+
 
 
             }
@@ -59,9 +56,3 @@ void GUI_Window_OpenProject::Draw() {
 
 }
 
-void GUI_Window_OpenProject::OpenFileDialog() {
-
-    
-
-
-}
