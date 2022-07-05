@@ -62,7 +62,7 @@
 
 int main(int NumArguments, char** ArguemntValues) {
 
-    for (unsigned int i = 0 i < NumArguments; i++) {
+    for (int i = 0; i < NumArguments; i++) {
         std::cout<<ArguemntValues[i]<<std::endl;
     }
 
