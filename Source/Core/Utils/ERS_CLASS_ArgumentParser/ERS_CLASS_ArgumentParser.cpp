@@ -55,7 +55,23 @@ ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** ArgumentVal
         // Should Skip Every Other Argument
         int Index = i*2;
 
-        
+        // Sanity Check About Array Sizing
+        if (Index + 1 >= TmpArguments.size()) {
+            Logger_->Log("Error Parsing Arguments, Index Out Of Range", 8);
+            break;
+        }
+
+        std::string Value1 = TmpArguments[Index];
+        std::string Value2 = TmpArguments[Index+1];
+
+        // Strip Out "-" From Key (Value1)
+        if (Value1.substr(0, 1) != std::string("-")) {
+            Logger_->Log(std::string("Invalid Argument Key '") + Value1 + "' Will Attempt To Parse Anyway", 7);
+        } else { 
+            Value1 = Value1.substr(1, Value1.length());
+        }
+
+        std::pair<std::string, std::string> ArgPair = std::make_pair(Value1, Value2);
 
     }
     Logger_->Log("Finished Creating Argument Pair Vector", 3);
