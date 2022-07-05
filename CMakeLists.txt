@@ -128,11 +128,11 @@ target_link_libraries(${PROJECT_NAME}
 
   # Internal Libs
   ERS_CLASS_LoggingSystem
-  Renderer
+
+
   ERS_CLASS_HardwareInformation
-
-
   ERS_CLASS_PythonInterpreterIntegration
+  ERS_CLASS_ArgumentParser
 
   ERS_SceneManager
   ERS_ModelLoader
@@ -149,6 +149,9 @@ target_link_libraries(${PROJECT_NAME}
   ERS_STRUCT_SystemUtils
   ERS_STRUCT_ProjectUtils
   ERS_STRUCT_RendererSettings
+
+  Renderer
+
 
   )
 
