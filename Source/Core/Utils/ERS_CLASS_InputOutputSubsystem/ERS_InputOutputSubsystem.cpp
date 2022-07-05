@@ -6,7 +6,8 @@
 
 ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
     ERS_CLASS_LoggingSystem* Logger,
-    YAML::Node SystemConfiguration) {
+    YAML::Node SystemConfiguration, 
+    std::vector<std::pair<std::string, std::string>> ArgumentPair) {
 
   Logger_ = Logger;
   Logger_->Log("Initializing Input/Output Subsystem", 5);
@@ -41,10 +42,8 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
     Logger_->Log("Database Lading Disabled, Reading Config For Asset Path", 5);
 
     try {
-      Logger_->Log(
-          "Reading Configuration For 'STRING' 'DefaultProjectDirectory'", 1);
-      AssetPath_ =
-          SystemConfiguration["DefaultProjectDirectory"].as<std::string>();
+      Logger_->Log("Reading Configuration For 'STRING' 'DefaultProjectDirectory'", 1);
+      AssetPath_ = SystemConfiguration["DefaultProjectDirectory"].as<std::string>();
     } catch (YAML::TypedBadConversion<std::string>&) {
       Logger_->Log("Configuration Error, Parameter 'DefaultProjectDirectory' "
                    "Is Not In Config, System Will Exit",
