@@ -51,6 +51,7 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
         Logger_->Log("Found Directory In Arguments, Will Use That", 4);
         AssetPath_ = CurrentPair.second;
         HasProjectDirectory = true;
+        break;
       }
 
     }
