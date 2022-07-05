@@ -84,3 +84,11 @@ bool ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** Argume
     return !HasErrors;
 
 }
+
+std::string ERS_CLASS_ArgumentParser::GetArgumentString() {
+    return ArgumentString_;
+}
+
+std::vector<std::pair<std::string, std::string>> ERS_CLASS_ArgumentParser::GetArgumentPairs() {
+    return ArgumentPairs_;
+}
