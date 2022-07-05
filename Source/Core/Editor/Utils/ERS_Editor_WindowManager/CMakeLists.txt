@@ -46,6 +46,7 @@ target_link_libraries(ERS_Editor_WindowManager
     GUI_Window_TestEditor
     GUI_Window_ThemeSelector
     GUI_Window_FontSelector
+    GUI_Window_OpenProject
 
     )
 
