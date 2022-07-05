@@ -24,9 +24,9 @@
 #include <RendererManager.h>
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_CLASS_HardwareInformation.h>
+#include <ERS_CLASS_ArgumentParser.h>
 
 #include <ERS_SceneManager.h>
-
 
 #include <ERS_InputOutputSubsystem.h>
 #include <ERS_ModelWriter.h>
@@ -60,7 +60,7 @@
 
 
 
-int main() {
+int main(int NumArguments, char** ArguemntValues) {
 
     // Initialize System Vars
     std::unique_ptr<ERS_STRUCT_SystemUtils> SystemUtils = std::make_unique<ERS_STRUCT_SystemUtils>();
@@ -72,6 +72,13 @@ int main() {
     // Instantiate Logging Subsystem
     SystemUtils->Logger_ = std::make_unique<ERS_CLASS_LoggingSystem>(*SystemUtils->LocalSystemConfiguration_.get());
     SystemUtils->Logger_->Log("Initialized Logging System", 5);
+
+    // Handle Command Line Arguments
+    ERS_CLASS_ArgumentParser ArgumentParser = ERS_CLASS_ArgumentParser(SystemUtils->Logger_.get());
+    ArgumentParser.ParseArguments(NumArguments, ArguemntValues);
+    SystemUtils->ArgumentString_ = ArgumentParser.GetArgumentString();
+    SystemUtils->Arguments_ = ArgumentParser.GetArgumentPairs();
+    
 
     // Setup Framerate Manager
     SystemUtils->Logger_->Log("Initializing Framerate Manager Subsystem", 5);
@@ -89,7 +96,8 @@ int main() {
     // Startup IO Subsystem And Other Related Systems
     SystemUtils->ERS_IOSubsystem_ = std::make_unique<ERS_CLASS_InputOutputSubsystem>(
         SystemUtils->Logger_.get(),
-        *SystemUtils->LocalSystemConfiguration_.get()
+        *SystemUtils->LocalSystemConfiguration_.get(),
+        SystemUtils->Arguments_
     );
 
     SystemUtils->ERS_ModelWriter_ = std::make_unique<ERS_CLASS_ModelWriter>(
