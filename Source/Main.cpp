@@ -24,9 +24,9 @@
 #include <RendererManager.h>
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_CLASS_HardwareInformation.h>
+#include <ERS_CLASS_ArgumentParser.h>
 
 #include <ERS_SceneManager.h>
-
 
 #include <ERS_InputOutputSubsystem.h>
 #include <ERS_ModelWriter.h>
