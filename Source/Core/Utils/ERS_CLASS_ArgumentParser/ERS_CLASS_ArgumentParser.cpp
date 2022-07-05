@@ -42,8 +42,6 @@ bool ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** Argume
         ArgumentString_ += CurrentArgument + " ";
         Arguments_.push_back(CurrentArgument);
 
-        std::cout<<CurrentArgument<<std::endl;
-
     }
     Logger_->Log("Finished Creating Argument Vector", 2);
 
