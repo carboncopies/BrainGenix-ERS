@@ -46,11 +46,13 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
     for (unsigned int i = 0; i < ArgumentPair.size(); i++) {
 
       std::pair<std::string, std::string> CurrentPair = ArgumentPair[i];
+
       if (CurrentPair.first == "ProjectDirectory") {
         Logger_->Log("Found Directory In Arguments, Will Use That", 4);
         AssetPath_ = CurrentPair.second;
         HasProjectDirectory = true;
       }
+\
     }
 
 
