@@ -57,7 +57,7 @@ bool ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** Argume
         int Index = i*2;
 
         // Sanity Check About Array Sizing
-        if (Index + 1 >= TmpArguments.size()) {
+        if (Index + 1 >= (int)TmpArguments.size()) {
             Logger_->Log("Error Parsing Arguments, Index Out Of Range", 8);
             HasErrors = true;
             break;
@@ -73,6 +73,9 @@ bool ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** Argume
         } else { 
             Value1 = Value1.substr(1, Value1.length());
         }
+
+
+        Logger_->Log(std::string("Found Argument Key '") + Value1 + "' With Value '" + Value2, 1);
 
         std::pair<std::string, std::string> ArgPair = std::make_pair(Value1, Value2);
 
