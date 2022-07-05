@@ -25,7 +25,7 @@ class ERS_CLASS_ArgumentParser {
         std::vector<std::pair<std::string, std::string>> ArgumentPairs_; /**<List of argument values and their paires, etc.*/
         std::vector<std::string> Arguments_; /**<Just a list of all strings In Command*/
         std::string ArgumentString_; /**<Argument String including All Arguments*/
-        
+
         ERS_CLASS_LoggingSysem* Logger_; /**<Pointer To Logger, Allowing The System To List Argument Value Stuff*/
 
     public:
@@ -42,6 +42,28 @@ class ERS_CLASS_ArgumentParser {
          * 
          */
         ~ERS_CLASS_ArgumentParser();
+
+
+        /**
+         * @brief Parses the arguments, populating the argument pairs and other internal vars.
+         * Returns true on success, false on failure.
+         * Will Clear Internal State Of The Arg Parser, So Only Call Once.
+         * 
+         * @param NumberArguments 
+         * @param ArgumentValues 
+         * @return true 
+         * @return false 
+         */
+        bool ParseArguments(int NumberArguments, char** ArgumentValues);
+
+
+
+        /**
+         * @brief Returns the entire string that was used to launch ERS.
+         * 
+         * @return std::string 
+         */
+        std::string GetArgumentString();
 
 
 
