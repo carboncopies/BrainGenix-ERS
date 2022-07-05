@@ -55,6 +55,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/OZZ-Animation.cmake)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_LoggingSystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_HardwareInformation)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_InputOutputSubsystem)
+add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ArgumentParser)
 
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_FramerateManager)
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_SceneManager)
