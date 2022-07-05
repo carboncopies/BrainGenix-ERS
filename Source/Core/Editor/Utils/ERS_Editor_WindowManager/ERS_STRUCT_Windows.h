@@ -60,7 +60,7 @@ struct ERS_STRUCT_Windows {
     std::unique_ptr<GUI_Window_TestEditor> GUI_Window_TestEditor_;
     std::unique_ptr<GUI_Window_ThemeSelector> GUI_Window_ThemeSelector_;
     std::unique_ptr<GUI_Window_FontSelector> GUI_Window_FontSelector_;
-    std::unique_ptr<GUI_Window_OpenProject> GUI_Window_OpenProject;
+    std::unique_ptr<GUI_Window_OpenProject> GUI_Window_OpenProject_;
     
 
 };
