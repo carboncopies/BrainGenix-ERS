@@ -22,9 +22,10 @@ ERS_CLASS_ArgumentParser::~ERS_CLASS_ArgumentParser() {
 
 }
 
-ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** ArgumentValues) {
+bool ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** ArgumentValues) {
 
     Logger_->Log("Argument Parser Invoked, Populating Internal State With Argument Data", 5);
+    bool HasErrors = false;
 
     // Clear Args
     Logger_->Log("Clearing Internal State", 2);
@@ -58,6 +59,7 @@ ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** ArgumentVal
         // Sanity Check About Array Sizing
         if (Index + 1 >= TmpArguments.size()) {
             Logger_->Log("Error Parsing Arguments, Index Out Of Range", 8);
+            HasErrors = true;
             break;
         }
 
@@ -67,6 +69,7 @@ ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** ArgumentVal
         // Strip Out "-" From Key (Value1)
         if (Value1.substr(0, 1) != std::string("-")) {
             Logger_->Log(std::string("Invalid Argument Key '") + Value1 + "' Will Attempt To Parse Anyway", 7);
+            HasErrors = true;
         } else { 
             Value1 = Value1.substr(1, Value1.length());
         }
@@ -75,5 +78,6 @@ ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** ArgumentVal
 
     }
     Logger_->Log("Finished Creating Argument Pair Vector", 3);
+    return !HasErrors;
 
 }
