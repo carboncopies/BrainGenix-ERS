@@ -20,6 +20,7 @@ target_link_libraries(GUI_Window_OpenProject
     glad
     glfw
     IMGUI
+    ImGuiFileDialog
     )
 
 # Link Internal Libs
