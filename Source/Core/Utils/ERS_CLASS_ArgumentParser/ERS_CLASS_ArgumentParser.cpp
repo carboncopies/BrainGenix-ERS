@@ -59,7 +59,7 @@ bool ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** Argume
         int Index = i*2;
 
         // Sanity Check About Array Sizing
-        if (Index + 1 >= (int)TmpArguments.size()) {
+        if (Index + 1 >= TmpArguments.size()) {
             Logger_->Log("Error Parsing Arguments, Index Out Of Range", 8);
             HasErrors = true;
             break;
