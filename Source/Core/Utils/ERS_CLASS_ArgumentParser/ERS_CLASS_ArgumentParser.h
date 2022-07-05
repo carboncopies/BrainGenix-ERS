@@ -26,7 +26,7 @@ class ERS_CLASS_ArgumentParser {
         std::vector<std::string> Arguments_; /**<Just a list of all strings In Command*/
         std::string ArgumentString_; /**<Argument String including All Arguments*/
 
-        ERS_CLASS_LoggingSysem* Logger_; /**<Pointer To Logger, Allowing The System To List Argument Value Stuff*/
+        ERS_CLASS_LoggingSystem* Logger_; /**<Pointer To Logger, Allowing The System To List Argument Value Stuff*/
 
     public:
 
