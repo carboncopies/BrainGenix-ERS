@@ -23,13 +23,13 @@ GUI_Window_OpenProject::~GUI_Window_OpenProject() {
 void GUI_Window_OpenProject::Draw() {
 
     if (Enabled_ && !LastWindowState_) {
-        ImGuiFileDialog::Instance()->OpenDialog("Open Project Folder", "Open Project Folder", ".*", ".", "", 0);
+        ImGuiFileDialog::Instance()->OpenDialog("Open Project", "Open Project", "1.ERS", ".", "", 0);
     }
 
     if (Enabled_) {
 
         // Draw File Dialog
-        if (ImGuiFileDialog::Instance()->Display("Open Project Folder", ImGuiWindowFlags_None, ImVec2(400, 200))) {
+        if (ImGuiFileDialog::Instance()->Display("Open Project", ImGuiWindowFlags_None, ImVec2(400, 200))) {
 
 
             if (ImGuiFileDialog::Instance()->IsOk())
