@@ -41,14 +41,27 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
   } else {
     Logger_->Log("Database Lading Disabled, Reading Config For Asset Path", 5);
 
-    try {
-      Logger_->Log("Reading Configuration For 'STRING' 'DefaultProjectDirectory'", 1);
-      AssetPath_ = SystemConfiguration["DefaultProjectDirectory"].as<std::string>();
-    } catch (YAML::TypedBadConversion<std::string>&) {
-      Logger_->Log("Configuration Error, Parameter 'DefaultProjectDirectory' "
-                   "Is Not In Config, System Will Exit",
-                   10);
-      exit(1);
+    Logger_->Log("Traversing Arguments To Check For Project Dir", 3);
+    bool HasProjectDirectory = false;
+    for (unsigned int i = 0; i < ArgumentPair.size(); i++) {
+
+      std::pair<std::string, std::string> CurrentPair = ArgumentPair[i];
+      if (CurrentPair.first == "ProjectDirectory") {
+        Logger_->Log("Found Directory In Arguments, Will Use That", 4);
+        AssetPath_ = CurrentPair.second;
+        HasProjectDirectory = true;
+      }
+    }
+
+
+    if (!HasProjectDirectory) {
+      try {
+        Logger_->Log("Reading Configuration For 'STRING' 'DefaultProjectDirectory'", 1);
+        AssetPath_ = SystemConfiguration["DefaultProjectDirectory"].as<std::string>();
+      } catch (YAML::TypedBadConversion<std::string>&) {
+        Logger_->Log("Configuration Error, Parameter 'DefaultProjectDirectory' Is Not In Config, System Will Exit", 10);
+        exit(1);
+      }
     }
   }
 
