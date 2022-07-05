@@ -43,6 +43,7 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
 
     Logger_->Log("Traversing Arguments To Check For Project Dir", 3);
     bool HasProjectDirectory = false;
+    std::cout<<ArgumentPair.size()<<std::endl;
     for (unsigned int i = 0; i < ArgumentPair.size(); i++) {
 
       std::pair<std::string, std::string> CurrentPair = ArgumentPair[i];
