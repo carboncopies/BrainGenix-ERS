@@ -76,9 +76,4 @@ ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** ArgumentVal
     }
     Logger_->Log("Finished Creating Argument Pair Vector", 3);
 
-
-
-
-//
-
 }
