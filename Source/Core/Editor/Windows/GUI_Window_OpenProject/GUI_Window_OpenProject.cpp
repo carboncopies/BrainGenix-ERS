@@ -23,7 +23,7 @@ GUI_Window_OpenProject::~GUI_Window_OpenProject() {
 void GUI_Window_OpenProject::Draw() {
 
     if (Enabled_ && !LastWindowState_) {
-        ImGuiFileDialog::Instance()->OpenDialog("Open Project", "Open Project", "1.ERS", ".", "", 0);
+        ImGuiFileDialog::Instance()->OpenDialog("Open Project", "Open Project", ".ERS", ".", "", 0);
     }
 
     if (Enabled_) {
@@ -50,7 +50,7 @@ void GUI_Window_OpenProject::Draw() {
                 Command += "BrainGenix-ERS -ProjectDirectory ";
                 Command += '"' + Path + '"';
                 std::system(Command.c_str());
-                
+
         
 
             }
