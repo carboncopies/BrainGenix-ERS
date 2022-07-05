@@ -36,6 +36,7 @@ void GUI_Window_OpenProject::Draw() {
             {
                
                 std::string Path = ImGuiFileDialog::Instance()->GetCurrentPath();
+                Path += "/";
                 SystemUtils_->Logger_->Log(std::string("Opening Project At Path '") + Path + "'", 5);
                 
                 std::string Command;
