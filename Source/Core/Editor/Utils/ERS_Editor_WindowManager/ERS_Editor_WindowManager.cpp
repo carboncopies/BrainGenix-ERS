@@ -55,6 +55,7 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     Windows_->GUI_Window_TestEditor_           = std::make_unique<GUI_Window_TestEditor>(SystemUtils_);
     Windows_->GUI_Window_ThemeSelector_        = std::make_unique<GUI_Window_ThemeSelector>(ThemeManager);
     Windows_->GUI_Window_FontSelector_         = std::make_unique<GUI_Window_FontSelector>(FontManager);
+    Windows_->GUI_Window_OpenProject           = std::make_unique<GUI_Window_OpenProject>(SystemUtils_);
 
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Struct", 3);
     SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Index", 4);
@@ -79,6 +80,7 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     WindowNames_.push_back("TestEditor");
     WindowNames_.push_back("ThemeSelector");
     WindowNames_.push_back("FontSelector");
+    WindowNames_.push_back("OpenProject");
     
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Index", 3);
 
