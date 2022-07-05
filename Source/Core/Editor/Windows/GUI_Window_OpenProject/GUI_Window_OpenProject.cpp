@@ -49,6 +49,8 @@ void GUI_Window_OpenProject::Draw() {
 #endif
                 Command += "BrainGenix-ERS -ProjectDirectory ";
                 Command += '"' + Path + '"';
+                std::system(Command.c_str());
+                
         
 
             }
