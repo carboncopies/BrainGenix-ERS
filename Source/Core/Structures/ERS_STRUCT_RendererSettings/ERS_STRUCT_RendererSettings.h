@@ -33,6 +33,6 @@ struct ERS_STRUCT_RendererSettings {
     int MaxShadowUpdatesPerFrame_ = 5;
     int ShadowFilterKernelSize_ = 2;
 
-    float FOV_ = 70.0f;
+    float FOV_ = 90.0f;
 
 };
