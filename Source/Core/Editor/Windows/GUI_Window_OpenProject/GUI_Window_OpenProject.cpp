@@ -38,8 +38,18 @@ void GUI_Window_OpenProject::Draw() {
                 std::string Path = ImGuiFileDialog::Instance()->GetCurrentPath();
                 SystemUtils_->Logger_->Log(std::string("Opening Project At Path '") + Path + "'", 5);
                 
-
-
+                std::string Command;
+                
+#if defined(_WIN32)
+                Command += "";
+#elif defined(__APPLE__)
+                Command += "./";
+#else
+                Command += "./";
+#endif
+                Command += "BrainGenix-ERS -ProjectDirectory ";
+                Command += '"' + Path + '"';
+        
 
             }
 
