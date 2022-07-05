@@ -35,9 +35,9 @@ void GUI_Window_OpenProject::Draw() {
             if (ImGuiFileDialog::Instance()->IsOk())
             {
                
-               std::string Path = ImGuiFileDialog::Instance()->GetCurrentPath();
-               SystemUtils_->Logger_->Log(std::string("Opening Project At Path '") + Path + "'", 5);
-
+                std::string Path = ImGuiFileDialog::Instance()->GetCurrentPath();
+                SystemUtils_->Logger_->Log(std::string("Opening Project At Path '") + Path + "'", 5);
+                
 
 
 
