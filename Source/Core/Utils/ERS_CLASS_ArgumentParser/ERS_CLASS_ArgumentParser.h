@@ -66,5 +66,13 @@ class ERS_CLASS_ArgumentParser {
         std::string GetArgumentString();
 
 
+        /**
+         * @brief Returns a list of each argument with it's key being the first value in the pair and the value the second.
+         * 
+         * @return std::vector<std::pair<std::string, std::string>> 
+         */
+        std::vector<std::pair<std::string, std::string>> GetArgumentPairs();
+
+
 
 };
