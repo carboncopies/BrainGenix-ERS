@@ -76,6 +76,8 @@ int main(int NumArguments, char** ArguemntValues) {
     // Handle Command Line Arguments
     ERS_CLASS_ArgumentParser ArgumentParser = ERS_CLASS_ArgumentParser(SystemUtils->Logger_.get());
     ArgumentParser.ParseArguments(NumArguments, ArguemntValues);
+    SystemUtils->ArgumentString_ = ArgumentParser.GetArgumentString();
+    SystemUtils->Arguments_ = ArgumentParser.GetArgumentPairs();
     
 
     // Setup Framerate Manager
