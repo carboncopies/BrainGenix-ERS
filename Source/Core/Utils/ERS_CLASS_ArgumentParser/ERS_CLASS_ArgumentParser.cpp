@@ -49,6 +49,15 @@ ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** ArgumentVal
     // Create Internal Argument Pairs
     Logger_->Log("Creating Argument Pair Vector", 4);
     std::vector<std::string> TmpArguments = Arguments_;
+    TmpArguments.erase(TmpArguments.begin());
+    for (unsigned int i = 0; i < (TmpArguments.size() / 2); i++) {
+        
+        // Should Skip Every Other Argument
+        int Index = i*2;
+
+        
+
+    }
     Logger_->Log("Finished Creating Argument Pair Vector", 3);
 
 
