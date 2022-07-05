@@ -77,6 +77,10 @@ int main(int NumArguments, char** ArguemntValues) {
     SystemUtils->Logger_ = std::make_unique<ERS_CLASS_LoggingSystem>(*SystemUtils->LocalSystemConfiguration_.get());
     SystemUtils->Logger_->Log("Initialized Logging System", 5);
 
+    // Handle Command Line Arguments
+    ERS_CLASS_ArgumentParser ArgumentParser = ERS_CLASS_ArgumentParser(SystemUtils->Logger_.get());
+    
+
     // Setup Framerate Manager
     SystemUtils->Logger_->Log("Initializing Framerate Manager Subsystem", 5);
     SystemUtils->FramerateManager_ = std::make_unique<ERS_CLASS_FramerateManager>();
