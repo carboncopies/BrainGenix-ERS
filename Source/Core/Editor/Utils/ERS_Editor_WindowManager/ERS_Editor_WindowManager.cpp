@@ -115,6 +115,7 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     Windows_->GUI_Window_ThemeSelector_->Draw();
     Windows_->GUI_Window_FontSelector_->Draw();
     Windows_->GUI_Window_OpenProject_->Draw();
+    Windows_->GUI_Window_NewProject_->Draw();
 
 }
 
