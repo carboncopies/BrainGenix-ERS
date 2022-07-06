@@ -41,6 +41,10 @@ void GUI_Window_NewProject::Draw() {
                 SystemUtils_->Logger_->Log(std::string("Creating New Project In Target Directory '") + Path + "'", 5);
     
 
+                std::filesystem::directory_iterator DirIterator = std::filesystem::directory_iterator(Path);
+
+                for (stdit)
+
 
                 std::string Command;
 #if defined(_WIN32)
