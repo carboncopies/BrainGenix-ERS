@@ -40,6 +40,10 @@ void GUI_Window_NewProject::Draw() {
                 Path += "/";
                 SystemUtils_->Logger_->Log(std::string("Creating New Project In Target Directory '") + Path + "'", 5);
     
+                // TodO add system to get project dir from config file,
+                // then have it iterate over all files, copying them to the new selected path
+                // finally, have the system load that
+                // check for bugs and edge-cases
 
                 std::filesystem::directory_iterator DirIterator = std::filesystem::directory_iterator(Path);
 
