@@ -24,7 +24,7 @@
  * @brief This class provides the GUI to the import asset option within the file menu.
  *
  */
-class GUI_Window_OpenProject {
+class GUI_Window_NewProject {
 
 private:
 
@@ -40,13 +40,13 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Window_OpenProject(ERS_STRUCT_SystemUtils* SystemUtils);
+    GUI_Window_NewProject(ERS_STRUCT_SystemUtils* SystemUtils);
 
     /**
      * @brief Destroy the gui importasset object.
      * 
      */
-    ~GUI_Window_OpenProject();
+    ~GUI_Window_NewProject();
 
     /**
      * @brief Update Any Windows
