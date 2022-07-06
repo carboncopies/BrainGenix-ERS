@@ -23,7 +23,7 @@ GUI_Window_NewProject::~GUI_Window_NewProject() {
 void GUI_Window_NewProject::Draw() {
 
     if (Enabled_ && !LastWindowState_) {
-        ImGuiFileDialog::Instance()->OpenDialog("New Project", "New Project", nullptr, ".", "", 0);
+        ImGuiFileDialog::Instance()->OpenDialog("New Project", "New Project", nullptr, "~", "", 0);
 
     }
 
@@ -41,7 +41,9 @@ void GUI_Window_NewProject::Draw() {
                 SystemUtils_->Logger_->Log(std::string("Newing Project At Path '") + Path + "'", 5);
                 
                 std::string Command;
-                
+
+
+
 #if defined(_WIN32)
                 Command += "";
 #elif defined(__APPLE__)
