@@ -29,7 +29,7 @@ void GUI_Window_OpenProject::Draw() {
     if (Enabled_) {
 
         // Draw File Dialog
-        if (ImGuiFileDialog::Instance()->Display("Open Project", ImGuiWindowFlags_None, ImVec2(400, 200))) {
+        if (ImGuiFileDialog::Instance()->Display("Open Project", ImGuiWindowFlags_None, ImVec2(600, 300))) {
 
 
             if (ImGuiFileDialog::Instance()->IsOk())
