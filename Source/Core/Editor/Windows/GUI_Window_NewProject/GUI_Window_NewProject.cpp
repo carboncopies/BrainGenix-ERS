@@ -45,12 +45,12 @@ void GUI_Window_NewProject::Draw() {
                 // finally, have the system load that
                 // check for bugs and edge-cases
 
-                std::string DefualtProjectPath = "EditorAssets/Projects/NewProject/"
+                std::string DefualtProjectPath = "EditorAssets/Projects/NewProject/";
                 for (const auto &Entry : std::filesystem::recursive_directory_iterator(DefualtProjectPath)) {
 
                     std::string File{Entry.path().u8string()};
-
-                    std::filesystem::copy()
+                    SystemUtils_->Logger_->Log(std::string("Copying File '") + File + "' To New Project Directory", 4);
+                    std::filesystem::copy_file(File, Path);
 
                 }
 
