@@ -262,6 +262,9 @@ bool ERS_CLASS_WindowManager::GetWindowStatus(std::string WindowName, bool* Stat
     } else if (WindowName == "OpenProject") {
         *Status = Windows_->GUI_Window_OpenProject_->Enabled_;
         return true;
+    } else if (WindowName == "NewProject") {
+        *Status = Windows_->GUI_Window_NewProject_->Enabled_;
+        return true;
     } else {
         return false;
     }
