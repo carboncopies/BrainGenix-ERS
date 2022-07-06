@@ -2,34 +2,34 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <GUI_Window_OpenProject.h>
+#include <GUI_Window_NewProject.h>
 
 
-GUI_Window_OpenProject::GUI_Window_OpenProject(ERS_STRUCT_SystemUtils* SystemUtils) {
+GUI_Window_NewProject::GUI_Window_NewProject(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
-    SystemUtils_->Logger_->Log("Seting Up Open Project Window Dialog", 5);
+    SystemUtils_->Logger_->Log("Seting Up New Project Window Dialog", 5);
 
 }
 
 
-GUI_Window_OpenProject::~GUI_Window_OpenProject() {
+GUI_Window_NewProject::~GUI_Window_NewProject() {
 
-    SystemUtils_->Logger_->Log("Open Project Window Dialog Destructor Called", 6);
+    SystemUtils_->Logger_->Log("New Project Window Dialog Destructor Called", 6);
 
 }
 
 
-void GUI_Window_OpenProject::Draw() {
+void GUI_Window_NewProject::Draw() {
 
     if (Enabled_ && !LastWindowState_) {
-        ImGuiFileDialog::Instance()->OpenDialog("Open Project", "Open Project", ".ERS", ".", "", 0);
+        ImGuiFileDialog::Instance()->NewDialog("New Project", "New Project", ".ERS", ".", "", 0);
     }
 
     if (Enabled_) {
 
         // Draw File Dialog
-        if (ImGuiFileDialog::Instance()->Display("Open Project", ImGuiWindowFlags_None, ImVec2(400, 200))) {
+        if (ImGuiFileDialog::Instance()->Display("New Project", ImGuiWindowFlags_None, ImVec2(400, 200))) {
 
 
             if (ImGuiFileDialog::Instance()->IsOk())
@@ -37,7 +37,7 @@ void GUI_Window_OpenProject::Draw() {
                
                 std::string Path = ImGuiFileDialog::Instance()->GetCurrentPath();
                 Path += "/";
-                SystemUtils_->Logger_->Log(std::string("Opening Project At Path '") + Path + "'", 5);
+                SystemUtils_->Logger_->Log(std::string("Newing Project At Path '") + Path + "'", 5);
                 
                 std::string Command;
                 
