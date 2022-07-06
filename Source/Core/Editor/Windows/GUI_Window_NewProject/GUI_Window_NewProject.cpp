@@ -38,12 +38,13 @@ void GUI_Window_NewProject::Draw() {
                
                 std::string Path = ImGuiFileDialog::Instance()->GetCurrentPath();
                 Path += "/";
-                SystemUtils_->Logger_->Log(std::string("Newing Project At Path '") + Path + "'", 5);
+                SystemUtils_->Logger_->Log(std::string("Creating New Project In Target Directory '") + Path + "'", 5);
+    
+
+                // Create New Files
                 
+
                 std::string Command;
-
-
-
 #if defined(_WIN32)
                 Command += "";
 #elif defined(__APPLE__)
@@ -56,7 +57,7 @@ void GUI_Window_NewProject::Draw() {
                 std::system(Command.c_str());
 
                 // Quit System
-                SystemUtils_->Logger_->Log("Shutting Down This Editor Window Now", 5);
+                SystemUtils_->Logger_->Log("Shutting Down This Editor Window Now, Launching Editor For That Project", 5);
                 *SystemUtils_->SystemShouldRun_ = false;
         
 
