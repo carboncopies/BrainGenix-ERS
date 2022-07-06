@@ -23,7 +23,7 @@ GUI_Window_NewProject::~GUI_Window_NewProject() {
 void GUI_Window_NewProject::Draw() {
 
     if (Enabled_ && !LastWindowState_) {
-        ImGuiFileDialog::Instance()->NewDialog("New Project", "New Project", ".ERS", ".", "", 0);
+        ImGuiFileDialog::Instance()->OpenDialog("New Project", "New Project", ".ERS", ".", "", 0);
     }
 
     if (Enabled_) {
