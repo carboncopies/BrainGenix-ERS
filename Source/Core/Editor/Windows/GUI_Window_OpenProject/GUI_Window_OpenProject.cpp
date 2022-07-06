@@ -23,7 +23,7 @@ GUI_Window_OpenProject::~GUI_Window_OpenProject() {
 void GUI_Window_OpenProject::Draw() {
 
     if (Enabled_ && !LastWindowState_) {
-        ImGuiFileDialog::Instance()->OpenDialog("Open Project", "Open Project", nullptr, ".", "", 0);
+        ImGuiFileDialog::Instance()->OpenDialog("Open Project", "Open Project", nullptr, "~", "", 0);
     }
 
     if (Enabled_) {
