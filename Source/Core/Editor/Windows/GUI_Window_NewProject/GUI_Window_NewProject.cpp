@@ -41,8 +41,6 @@ void GUI_Window_NewProject::Draw() {
                 SystemUtils_->Logger_->Log(std::string("Creating New Project In Target Directory '") + Path + "'", 5);
     
 
-                // Create New Files
-                
 
                 std::string Command;
 #if defined(_WIN32)
