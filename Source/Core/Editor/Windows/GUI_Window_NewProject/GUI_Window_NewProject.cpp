@@ -47,7 +47,7 @@ void GUI_Window_NewProject::Draw() {
 
                 std::filesystem::directory_iterator DirIterator = std::filesystem::directory_iterator(Path);
 
-                for (stdit)
+                //for (stdit)
 
 
                 std::string Command;
