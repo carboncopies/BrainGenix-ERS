@@ -3,20 +3,20 @@
 ########################################################################
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(GUI_Window_OpenProject
+add_library(GUI_Window_NewProject
 
             # Add Source Files (.cpp)
-            "GUI_Window_OpenProject.cpp"
+            "GUI_Window_NewProject.cpp"
 
             # Add Header Files (.h)
-            "GUI_Window_OpenProject.h"
+            "GUI_Window_NewProject.h"
 
 
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_OpenProject
+target_link_libraries(GUI_Window_NewProject
     glad
     glfw
     IMGUI
@@ -24,8 +24,8 @@ target_link_libraries(GUI_Window_OpenProject
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_OpenProject
+target_link_libraries(GUI_Window_NewProject
     ERS_STRUCT_SystemUtils
     )
 
-target_include_directories(GUI_Window_OpenProject PUBLIC ./)
+target_include_directories(GUI_Window_NewProject PUBLIC ./)
