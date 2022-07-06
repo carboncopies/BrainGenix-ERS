@@ -82,6 +82,7 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     WindowNames_.push_back("ThemeSelector");
     WindowNames_.push_back("FontSelector");
     WindowNames_.push_back("OpenProject");
+    WindowNames_.push_back("NewProject");
     
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Index", 3);
 
