@@ -31,7 +31,7 @@ void GUI_Menu_File::Draw() {
     // File Menu
     if (ImGui::BeginMenu("File")) {
 
-        ImGui::MenuItem("New", "");
+        ImGui::MenuItem("New", "", &Windows_->GUI_Window_NewProject_->Enabled_);
         ImGui::MenuItem("Open", "", &Windows_->GUI_Window_OpenProject_->Enabled_);
         ImGui::Separator();
 
