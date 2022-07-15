@@ -63,6 +63,9 @@ void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defa
 
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
 
+    std::cout<<glGetError()<<std::endl;
+
+
     // Set Depth Shader For Shadow System
     DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthMap"), &Shaders_)].get();
     CubemapDepthShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthCubeMap"), &Shaders_)].get();
