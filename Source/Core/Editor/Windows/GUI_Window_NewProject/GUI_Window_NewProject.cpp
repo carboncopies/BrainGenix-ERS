@@ -56,7 +56,7 @@ void GUI_Window_NewProject::Draw() {
                     std::string FileName = PathRelativeName.substr(PathRelativeName.find_last_of("/"), sizeof(PathRelativeName));
 
                     SystemUtils_->Logger_->Log(std::string("Copying File '") + File + "' To New Project Directory", 4);
-                    std::filesystem::copy_file(File, Path + PathRelativeName);
+                    std::filesystem::copy_file(File, Path + FileName);
 
                 }
 
