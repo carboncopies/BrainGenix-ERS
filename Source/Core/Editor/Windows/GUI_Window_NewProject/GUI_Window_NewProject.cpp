@@ -51,7 +51,7 @@ void GUI_Window_NewProject::Draw() {
                 for (const auto &Entry : std::filesystem::recursive_directory_iterator(DefualtProjectPath)) {
 
                     std::string FileName{Entry.path().u8string()};
-                    std::string File = CurrentExecutablePath + FileName;
+                    std::string File = CurrentExecutablePath + "/" + FileName;
                     SystemUtils_->Logger_->Log(std::string("Copying File '") + File + "' To New Project Directory", 4);
                     std::filesystem::copy_file(File, Path);
 
