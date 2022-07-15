@@ -63,7 +63,6 @@ void ERS_CLASS_ShadowMaps::DeallocateLightMaps() {
 void ERS_CLASS_ShadowMaps::GetDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* DepthMaps, std::vector<glm::vec3>* LightPositions) {
 
     ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
-    std::cout<<"===========================================ONCE="<<glGetError()<<std::endl;
 
     for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
         if (ActiveScene->PointLights[i]->CastsShadows_) {
@@ -74,7 +73,6 @@ void ERS_CLASS_ShadowMaps::GetDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* Depth
                 ActiveScene->PointLights[i]->DepthMap.Initialized = true;
             }
 
-    std::cout<<"===========================================R!="<<glGetError()<<std::endl;
 
 
             DepthMaps->push_back(&ActiveScene->PointLights[i]->DepthMap);
@@ -86,7 +84,6 @@ void ERS_CLASS_ShadowMaps::GetDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* Depth
             ERS_CLASS_DepthMaps_->FreeDepthMapIndexCubemap(ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
             ActiveScene->PointLights[i]->DepthMap.Initialized = false;
         }
-    std::cout<<"===========================================R2="<<glGetError()<<std::endl;
 
     }
     for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
