@@ -496,8 +496,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
     // Fix Offset (Peter Panning)
     glCullFace(GL_FRONT);
 
-    std::cout<<glGetError()<<std::endl;
-
 
     // Get Active Scene
     ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
@@ -515,7 +513,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
 
     } 
 
-    std::cout<<glGetError()<<std::endl;
 
 
     // Handle Spot Lights
@@ -531,7 +528,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
 
     }
 
-    std::cout<<"FDSAFDSA"<<glGetError()<<std::endl;
 
 
     // Handle Point Lights
