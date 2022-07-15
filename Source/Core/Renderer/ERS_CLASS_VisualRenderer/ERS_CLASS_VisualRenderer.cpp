@@ -63,7 +63,7 @@ void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defa
 
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
 
-    std::cout<<glGetError()<<std::endl;
+    std::cout<<"============================================"<<glGetError()<<std::endl;
 
 
     // Set Depth Shader For Shadow System
