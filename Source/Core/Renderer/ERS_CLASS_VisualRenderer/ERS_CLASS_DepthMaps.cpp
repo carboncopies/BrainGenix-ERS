@@ -525,6 +525,9 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
 
     }
 
+    std::cout<<"FDSAFDSA"<<glGetError()<<std::endl;
+
+
     // Handle Point Lights
     for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
 
