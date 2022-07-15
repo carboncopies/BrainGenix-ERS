@@ -136,14 +136,12 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray2D(int NumberOfTextures,
 
 bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfTextures, bool LogEnabled) {
 
-
     SystemUtils_->Logger_->Log(
         std::string("Generating Depth Map Texture Cube Map Array Of ") + std::to_string(NumberOfTextures)
          + std::string(" Textures, With Width Of ") + std::to_string(DepthTextureArrayWidth_)
          + std::string(" Pixels, And Height Of ") + std::to_string(DepthTextureArrayHeight_)
          + std::string(" Pixels")
         , 5, LogEnabled);
-    std::cout<<"===========================================R2="<<glGetError()<<std::endl;
 
     // Check If Already Texture, If So, Delete So We Can Overwrite it
     SystemUtils_->Logger_->Log("Checking If Texture Cubemap Array Already Exists", 4, LogEnabled);
@@ -154,7 +152,6 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
     } else {
         SystemUtils_->Logger_->Log("Cubemap Array ID Not Already In Use", 3, LogEnabled);
     }
-    std::cout<<"===========================================R2="<<glGetError()<<std::endl;
 
     // Handle The Creation Of A New Texture Array
     SystemUtils_->Logger_->Log("Setting Up Cubemap Texture Array Metadata", 3, LogEnabled);
@@ -188,14 +185,12 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
     SystemUtils_->Logger_->Log("Cubemap Depth Map Texture Array Initialization Complete", 4, LogEnabled);
-    std::cout<<"===========================================R2="<<glGetError()<<std::endl;
 
     glBindFramebuffer(GL_FRAMEBUFFER, CubemapFBO_);
     glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, 0);
     glDrawBuffer(GL_NONE);
     glReadBuffer(GL_NONE);
 
-    std::cout<<"===========================================R2="<<glGetError()<<std::endl;
 
     // Update Allocation Array
     SystemUtils_->Logger_->Log("Checking Cubemap Depth Map Texture Array Allocation Array", 3, LogEnabled);
