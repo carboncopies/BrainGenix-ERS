@@ -168,7 +168,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
 
     glTexImage3D(GL_TEXTURE_CUBE_MAP_ARRAY,
         0,                        // Current 'mipmap level', We're not using these so 0 is fine
-        GL_DEPTH_COMPONENT24,     // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
+        GL_DEPTH_COMPONENT,     // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
         DepthTextureArrayWidth_,  // Cubemap Width
         DepthTextureArrayHeight_, // Cubemap Height
         NumberOfTextures * 6,     // Total Number Of Textures In The Array
