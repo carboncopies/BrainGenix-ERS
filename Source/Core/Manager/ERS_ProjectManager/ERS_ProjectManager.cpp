@@ -50,13 +50,28 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
         Project_.ControllerSettings->push_back(Settings);
     }
 
-    // Load Default Scene
+    // Handle The Defaut Scene
     if (Project_.SceneIDs.size() > 0) {
+
+        // Load Default Scene If Applicable
         SystemUtils_->Logger_->Log(std::string(std::string("Loading Project Default Scene With ID ") + std::to_string(Project_.SceneIDs[Project_.DefaultScene])).c_str(), 5);
         for (unsigned int i = 0; i < Project_.SceneIDs.size(); i++) {
             SceneManager_->AddScene(SceneLoader_->ProcessScene(Project_.SceneIDs[i]));
         }
         SceneManager_->SetActiveScene(Project_.DefaultScene);
+
+    } else {
+
+        // Create Blank Scene For The System
+        ERS_STRUCT_Scene NewScene;
+        NewScene.ScenePath = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+        NewScene.SceneName = "Untitled Scene";
+        NewScene.IsSceneLoaded = true;
+        NewScene.SceneFormatVersion = 1;
+        
+        Project_.SceneIDs.push_back(NewScene.ScenePath);
+        SceneManager_->AddScene(NewScene);
+
     }
 
 }
