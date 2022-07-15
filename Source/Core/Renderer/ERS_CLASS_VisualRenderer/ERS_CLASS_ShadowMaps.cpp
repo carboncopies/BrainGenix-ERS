@@ -199,15 +199,18 @@ void ERS_CLASS_ShadowMaps::PrioritizeDepthMaps(std::vector<ERS_STRUCT_DepthMap*>
 }
 
 void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, ERS_STRUCT_Shader* CubemapDepthShader, glm::vec3 CameraPosition) {
+    std::cout<<"============================================"<<glGetError()<<std::endl;
 
     // Get Updated Info From Renderer Settings
     ERS_CLASS_DepthMaps_->CheckSettings();
+    std::cout<<"============================================"<<glGetError()<<std::endl;
 
     // Handle Updating Depth Maps
     std::vector<ERS_STRUCT_DepthMap*> DepthMaps;
     std::vector<glm::vec3> LightPositions;
     GetDepthMaps(&DepthMaps, &LightPositions);
     PrioritizeDepthMaps(DepthMaps, LightPositions, CameraPosition);
+    std::cout<<"============================================"<<glGetError()<<std::endl;
 
     // Update All Depth Maps
     ERS_CLASS_DepthMaps_->UpdateDepthMaps(DepthMapShader, CubemapDepthShader);
