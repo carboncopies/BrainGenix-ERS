@@ -46,9 +46,12 @@ void GUI_Window_NewProject::Draw() {
                 // check for bugs and edge-cases
 
                 std::string DefualtProjectPath = "EditorAssets/Projects/NewProject/";
+                std::string CurrentExecutablePath = std::filesystem::current_path();
+
                 for (const auto &Entry : std::filesystem::recursive_directory_iterator(DefualtProjectPath)) {
 
-                    std::string File{Entry.path().u8string()};
+                    std::string FileName{Entry.path().u8string()};
+                    std::string File = CurrentExecutablePath + FileName;
                     SystemUtils_->Logger_->Log(std::string("Copying File '") + File + "' To New Project Directory", 4);
                     std::filesystem::copy_file(File, Path);
 
