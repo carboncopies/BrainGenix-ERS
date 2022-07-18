@@ -15,6 +15,8 @@ add_library(GUI_Window_NewProject
             ${BACKWARD_ENABLE}
             )
 
+set_property(TARGET GUI_Window_NewProject PROPERTY CXX_STANDARD 17) # Adds Support For Filesystem Header By Setting To C++ 17
+
 # Link 3rd Party Libs
 target_link_libraries(GUI_Window_NewProject
     glad
