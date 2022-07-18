@@ -39,6 +39,7 @@ target_link_libraries(ERS_ModelLoader
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_Scene
     ERS_STRUCT_Camera
+    ERS_STRUCT_HardwareInfo
     )
 
 target_include_directories(ERS_ModelLoader PUBLIC ./)
