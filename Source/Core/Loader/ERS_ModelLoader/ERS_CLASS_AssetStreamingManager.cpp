@@ -11,7 +11,7 @@ ERS_CLASS_AssetStreamingManager::ERS_CLASS_AssetStreamingManager(ERS_STRUCT_Syst
     SystemUtils_->Logger_->Log("Initializing Asset Streaming Subsystem", 5);
 
     // Setup Subsystems
-    ResourceMonitor_ = std::make_shared<ERS_CLASS_AssetStreamingSystemResourceMonitor>(SystemUtils_);
+    ResourceMonitor_ = std::make_unique<ERS_CLASS_AssetStreamingSystemResourceMonitor>(SystemUtils_);
 
 }
 
