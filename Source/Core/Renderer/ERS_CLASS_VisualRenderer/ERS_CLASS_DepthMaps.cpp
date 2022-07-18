@@ -164,7 +164,6 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
     SystemUtils_->Logger_->Log("Setting Up Cubemap Texture Array OpenGL Parameters", 4, LogEnabled);
     glGenTextures(1, &DepthTextureCubemapArrayID_);
     glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, DepthTextureCubemapArrayID_);
-    std::cout<<"===========================================R2="<<glGetError()<<std::endl;
 
     glTexImage3D(GL_TEXTURE_CUBE_MAP_ARRAY,
         0,                        // Current 'mipmap level', We're not using these so 0 is fine
@@ -177,7 +176,6 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
         GL_FLOAT,                 // tells opengl how to store the data
         NULL                      // if we were loading an image in, we could then pass the data in here, but we're not so this is left as null
     );
-    std::cout<<"===========================================R2="<<glGetError()<<std::endl;
 
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -397,7 +395,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     // Only Update If Instructed To Do SO
     if (Light->DepthMap.ToBeUpdated) {
 
-    std::cout<<glGetError()<<std::endl;
 
 
         // Clear This Layer Of The Cubemap Array
