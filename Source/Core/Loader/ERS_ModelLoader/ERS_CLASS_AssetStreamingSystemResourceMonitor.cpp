@@ -30,10 +30,10 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
 
         // Update The Internal System RAM Limit After Adding The Margin
         SystemUtils_->Logger_->Log("Reading Configuration File For RAM Margin", 4);
-        long VRAMMargin = SystemUtils_->LocalSystemConfiguration_["RAMMarginBytes"].as<long>();
-        SystemUtils_->Logger_->Log(std::string("Adding RAM Margin Of ") + std::to_string(VRAMMargin) + " Bytes", 4);
+        long RAMMargin = SystemUtils_->LocalSystemConfiguration_["RAMMarginBytes"].as<long>();
+        SystemUtils_->Logger_->Log(std::string("Adding RAM Margin Of ") + std::to_string(RAMMargin) + " Bytes", 4);
         
-        TotalSystemVRAM_ -= VRAMMargin;
+        TotalSystemRAM_ -= RAMMargin;
 
     }
 
