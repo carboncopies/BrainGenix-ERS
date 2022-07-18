@@ -16,5 +16,7 @@ ERS_CLASS_AssetStreamingManager::ERS_CLASS_AssetStreamingManager(ERS_STRUCT_Syst
 }
 
 ERS_CLASS_AssetStreamingManager::~ERS_CLASS_AssetStreamingManager() {
-    
+
+    SystemUtils_->Logger_->Log("Asset Streaming Destructor Invoked", 6);
+
 }
