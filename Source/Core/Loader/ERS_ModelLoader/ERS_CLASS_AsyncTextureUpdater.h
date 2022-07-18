@@ -71,7 +71,7 @@ public:
 
     /**
      * @brief Add work item(s) to load all texture levels up to the specified range.
-     * If you put int for example 4 as the tex level, we'll load 0,1,2,3,4 (unless one of those is already loaded in which case we skip it)
+     * If you put int for example 4 as the tex level, we'll load levels [1,2,3,4] (unless one of those is already loaded in which case we skip it)
      * 
      * 
      * Texture levels are the inverse of mip maps, the higher the number, the higher the resolution.
@@ -82,6 +82,23 @@ public:
      */
     void LoadTextureLevelRange(ERS_STRUCT_Model* Model, int TextureLevel);
 
+    /**
+     * @brief Unload a specific texture level from memory.
+     * 
+     * @param Model 
+     * @param TextureLevel 
+     */
+    void UnloadTextureLevel(ERS_STRUCT_Model* Model, int TextureLevel);
+
+    /**
+     * @brief Does the same thing as unload level, but unloads every level down to the specified level.
+     * Example:
+     * Loaded: [0,1,2,3,4,5,6], TextureLevel given is 4, we unload [6,5,4]
+     * 
+     * @param Model 
+     * @param TextureLevel 
+     */
+    void UnloadTextureRange(ERS_STRUCT_Model* Model, int TextureLevel);
 
 };
 
