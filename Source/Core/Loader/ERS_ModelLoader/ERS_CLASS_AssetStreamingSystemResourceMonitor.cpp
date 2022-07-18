@@ -25,6 +25,8 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
         TotalSystemRAM_ = SystemUtils_->LocalSystemConfiguration_["RAMSizeBytes"].as<long>();
         SystemUtils_->Logger_->Log(std::string("Using User Set RAM Size Of ") + std::to_string(TotalSystemRAM_) + " Bytes", 3);
     } else {
+
+        // Detect Physical Memory Capacity
         TotalSystemRAM_ = HWInfo.Dynamic_.PhysicalMemoryCapacity;
         SystemUtils_->Logger_->Log(std::string("Detected RAM Size To Be ") + std::to_string(TotalSystemRAM_) + " Bytes", 3);
 
