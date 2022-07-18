@@ -66,6 +66,23 @@ public:
     void SetTextureVRAMBudget(unsigned long NewTextureVRAMBudget);
 
     /**
+     * @brief Allows us to keep track of what VRAM we've used.
+     * Remember to deallocate here when you destroy the texture!
+     * 
+     * @param Size 
+     */
+    void AllocateTextureVRAMFromBudget(unsigned int Size);
+
+    /**
+     * @brief Dallocates previously allocated vram from the budget.
+     * Again, make sure you have the right size here so we don't loose track of how much VRAM we've used.
+     * 
+     * @param Size 
+     */
+    void DeallocateTextureVRAMFromBudget(unsigned int Size);
+
+
+    /**
      * @brief Determines if we can fit the given texture into regular system memory and within our self-imposed budget.
      * This is basically the same as 'TextureFitsInVRAMBudget' but for system memory.
      * 
@@ -86,5 +103,21 @@ public:
      */
     void SetTextureRAMBudget(unsigned long NewTextureRAMBudget);
 
+    /**
+     * @brief Allows us to keep track of what RAM we've used.
+     * Remember to deallocate here when you destroy the texture!
+     * 
+     * @param Size 
+     */
+    void AllocateTextureRAMFromBudget(unsigned int Size);
+
+    /**
+     * @brief Dallocates previously allocated ram from the budget.
+     * Again, make sure you have the right size here so we don't loose track of how much RAM we've used.
+     * 
+     * @param Size 
+     */
+    void DeallocateTextureRAMFromBudget(unsigned int Size);
+    
 
 };
