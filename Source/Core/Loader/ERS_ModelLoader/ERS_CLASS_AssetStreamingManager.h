@@ -18,6 +18,10 @@
 #include <ERS_STRUCT_Camera.h>
 
 
+#include <ERS_CLASS_AssetStreamingSystemResourceMonitor.h>
+#include <ERS_CLASS_AsyncTextureUpdater.h>
+
+
 /**
  * @brief This class is responsible for indicating to the worker threads what needs to be done.
  * The other threads handle loading the vertex data and textures as well as unloading them when told to do so.
