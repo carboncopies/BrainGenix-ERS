@@ -23,15 +23,10 @@ ERS_CLASS_AssetStreamingManager::~ERS_CLASS_AssetStreamingManager() {
 
 
 void ERS_CLASS_AssetStreamingManager::WorkerThread() {
-
     SystemUtils_->Logger_->Log("Starting Scene Texture Prioritization Thread", 5);
-
     while (true) {
-
-        // 
-
+        
     }
-
 }
 
 
