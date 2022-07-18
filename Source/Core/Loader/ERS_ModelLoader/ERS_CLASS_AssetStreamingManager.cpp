@@ -22,6 +22,18 @@ ERS_CLASS_AssetStreamingManager::~ERS_CLASS_AssetStreamingManager() {
 }
 
 
+void ERS_CLASS_AssetStreamingManager::WorkerThread() {
+
+    SystemUtils_->Logger_->Log("Starting Scene Texture Prioritization Thread", 5);
+
+    while (true) {
+
+        // 
+
+    }
+
+}
+
 
 void ERS_CLASS_AssetStreamingManager::SetCurrentScene(ERS_STRUCT_Scene* Scene) {
     HasSceneChanged_ = CurrentScene_ != Scene;
