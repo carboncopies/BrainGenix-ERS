@@ -22,6 +22,30 @@ ERS_CLASS_AssetStreamingManager::~ERS_CLASS_AssetStreamingManager() {
 }
 
 
+void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras) {
+
+    // Firstly, Extract List Of Models
+    std::vector<ERS_STRUCT_Model*> Models;
+    for (unsigned int i = 0; i < Scene->Models.size(); i++) {
+        Models.push_back(Scene->Models[i].get());        
+    }
+
+    // Then, For Each Camera, Sort By Distance
+
+    // Next, Based On Camera Priority, Create List Of Items Needing To Be Updated Most, as well as 
+
+    // Also Ensure that 
+    
+    // Then, Go Down List, And Check If it'll fit into memory Of The Items Selected
+
+    // If Feasable And Not Already In Loading Queue, Add To Queue
+
+
+
+}
+
+
+
 void ERS_CLASS_AssetStreamingManager::WorkerThread() {
     SystemUtils_->Logger_->Log("Starting Scene Texture Prioritization Thread", 5);
     while (true) {
@@ -39,7 +63,6 @@ void ERS_CLASS_AssetStreamingManager::WorkerThread() {
 
     }
 }
-
 
 void ERS_CLASS_AssetStreamingManager::SetCurrentScene(ERS_STRUCT_Scene* Scene) {
     HasSceneChanged_ = CurrentScene_ != Scene;
