@@ -80,8 +80,8 @@ bool ERS_CLASS_AssetStreamingSystemResourceMonitor::TextureFitsInVRAMBudget(unsi
     long BudgetFreeBytes = SystemUtils_->RendererSettings_->VRAMBudget_ - UsedSystemVRAM_;
 
     // Perform Comparison To Check If The Texture Would Fit
-    bool FitsInHardware = Size < HardwareFreeBytes;
-    bool FitsInBudget = Size < BudgetFreeBytes;
+    bool FitsInHardware = (long)Size < HardwareFreeBytes;
+    bool FitsInBudget = (long)Size < BudgetFreeBytes;
 
     // Return Result
     return FitsInBudget && FitsInHardware;
@@ -107,8 +107,8 @@ bool ERS_CLASS_AssetStreamingSystemResourceMonitor::TextureFitsInRAMBudget(unsig
     long BudgetFreeBytes = SystemUtils_->RendererSettings_->RAMBudget_ - UsedSystemRAM_;
 
     // Perform Comparison To Check If The Texture Would Fit
-    bool FitsInHardware = Size < HardwareFreeBytes;
-    bool FitsInBudget = Size < BudgetFreeBytes;
+    bool FitsInHardware = (long)Size < HardwareFreeBytes;
+    bool FitsInBudget = (long)Size < BudgetFreeBytes;
 
     // Return Result
     return FitsInBudget && FitsInHardware;
