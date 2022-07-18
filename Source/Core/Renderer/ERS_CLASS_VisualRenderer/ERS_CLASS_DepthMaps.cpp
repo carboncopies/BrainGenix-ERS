@@ -404,7 +404,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
             glClear(GL_DEPTH_BUFFER_BIT);
         }
 
-    std::cout<<glGetError()<<std::endl;
 
         // Setup Variables
         ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
@@ -436,7 +435,6 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
         DepthShader->SetFloat("FarPlane", Light->MaxDistance);
         DepthShader->SetInt("ShadowMapLayer", Light->DepthMap.DepthMapTextureIndex);
         Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
-    std::cout<<glGetError()<<std::endl;
 
         // Reset After Updating
         Light->DepthMap.ToBeUpdated = false;
