@@ -14,6 +14,8 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_Scene.h>
+#include <ERS_STRUCT_Camera.h>
 
 
 /**
@@ -47,6 +49,20 @@ public:
      */
     ~ERS_CLASS_AssetStreamingManager();
 
-    
+    /**
+     * @brief Tells the streaming manager what the current scene is so that it knows what assets are actually relevant and what aren't.
+     * We handle what the current scene is internally, so calling this every frame is okay, we check if the pointer is the same.
+     * If you want to start loading another scene in advance (perhaps the camera is getting close to a scene switch, use the PreloadScene function).
+     * 
+     * @param CurrentScene 
+     */
+    void SetCurrentScene(ERS_STRUCT_Scene* CurrentScene);
+
+    /**
+     * @brief Not yet implemented!
+     * 
+     * @param Scene 
+     */
+    void PreloadScene(ERS_STRUCT_Scene* Scene);
 
 };
