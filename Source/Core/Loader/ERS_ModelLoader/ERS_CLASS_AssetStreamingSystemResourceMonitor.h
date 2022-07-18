@@ -30,9 +30,14 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
 
-
+    // Total Amounts Assumed For System RAM and VRAM In Bytes
     long TotalSystemRAM_; /**<Number of bytes of RAM that the system has*/
     long TotalSystemVRAM_; /**<Number of bytes of VRAM that the system has*/
+
+    // Used Amounts
+    long UsedSystemRAM_; /**<Number of bytes of RAM used by textures*/
+    long UsedSystemVRAM_; /**<Number of bytes of VRAM used by textures*/
+    
 
 
 public:
