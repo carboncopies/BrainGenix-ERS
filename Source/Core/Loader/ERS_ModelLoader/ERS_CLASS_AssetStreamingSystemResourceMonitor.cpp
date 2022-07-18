@@ -40,13 +40,9 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
 
         // Update The Internal System VRAM Limit After Adding The Margin
         SystemUtils_->Logger_->Log("Reading Configuration File For VRAM Margin", 4);
-        long VRAMMargin = 4294967296; // Add 4GB Default Margin
-        if (SystemUtils_->LocalSystemConfiguration_["VRAMMarginBytes"]) {
-            VRAMMargin = SystemUtils_->LocalSystemConfiguration_["VRAMMarginBytes"].as<long>();
-            SystemUtils_->Logger_->Log(std::string("Adding Margin Of ") + std::to_string(VRAMMargin) + " Bytes", 4);
-        } else {
-            SystemUtils_->Logger_->Log(std::string("Failed To Find VRAMMarginBytes Parameter, Assuming A Margin Of ") + std::to_string(VRAMMargin) + " Bytes", 8);
-        }
+        long VRAMMargin = SystemUtils_->LocalSystemConfiguration_["VRAMMarginBytes"].as<long>();
+        SystemUtils_->Logger_->Log(std::string("Adding Margin Of ") + std::to_string(VRAMMargin) + " Bytes", 4);
+        
         TotalSystemVRAM_ -= VRAMMargin;
 
     } else {
