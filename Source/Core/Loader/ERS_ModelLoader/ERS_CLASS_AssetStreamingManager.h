@@ -37,6 +37,7 @@ private:
 
     // System Vars
     ERS_STRUCT_Scene* CurrentScene_ = nullptr;
+    bool HasSceneChanged_ = false;
 
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
