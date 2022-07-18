@@ -27,5 +27,13 @@
  */
 class ERS_CLASS_AssetStreamingManager {
 
+private:
+
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
+    
+
+public:
+
+    ERS_CLASS_AssetStreamingManager(ERS_STRUCT_SystemUtils* SystemUtils);
 
 };
