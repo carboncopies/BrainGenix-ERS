@@ -25,9 +25,20 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
     if (HWInfo.Static_.GPUVRAMSizes.size() > 0) {
         TotalSystemVRAM_ = HWInfo.Static_.GPUVRAMSizes[0];
         SystemUtils_->Logger_->Log(std::string("Detected VRAM Size To Be ") + std::to_string(TotalSystemVRAM_) + " Bytes", 3);
+
+        SystemUtils_->Logger_->Log("Reading Configuration File For VRAM Margin", 4);
+
+        long VRAMMargin = 4294967296; // Add 4GB Default Margin
+        if (SystemUtils_->LocalSystemConfiguration_["VRAMMarginBytes"]) {
+            VRAMMargin = SystemUtils_->LocalSystemConfiguration_["VRAMMarginBytes"].as<long>();
+            SystemUtils_->Logger_->Log(std::string("Adding Margin Of ") + std::to_string(VRAMMargin) + " Bytes", 4);
+            TotalSystemVRAM_ -= VRAMMargin;
+        } else {
+            SystemUtils_->Logger_->Log(std::string("Failed To Find VRAMMarginBytes Parameter, Assuming A Margin Of ") + std::to_string(VRAMMargin) + " Bytes", 8);
+        }
     } else {
         TotalSystemVRAM_ = 4294967296; // Assume 4gb of VRAM min
-        SystemUtils_->Logger_->Log(std::string("Failed To Detect VRAM Size, Assuming Minimum Of ") + std::to_string(TotalSystemVRAM_) + " Bytes", 7);
+        SystemUtils_->Logger_->Log(std::string("Failed To Detect VRAM Size, Assuming Minimum Of ") + std::to_string(TotalSystemVRAM_) + " Bytes Free", 7);
     }
 
 }
