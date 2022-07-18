@@ -28,12 +28,12 @@ DefaultProjectDirectory: "EditorAssets/Projects/DefaultProject/" # NOTE: PATH MU
 
 # Memory Settings
 OverrideRAM: False
-RAMSizeBytes: 4294967296
-RAMMarginBytes: 1000000000
+RAMSizeBytes: 42949672960
+RAMMarginBytes: 1073741824
 
 OverrideVRAM: False
-VRAMSizeBytes: 4294967296
-VRAMMarginBytes: 1000000000
+VRAMSizeBytes: 10737418240
+VRAMMarginBytes: 1073741824
 
 
 # Set Logger Configuration Parameters #
