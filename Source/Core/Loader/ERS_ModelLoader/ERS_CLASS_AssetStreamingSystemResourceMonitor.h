@@ -83,7 +83,7 @@ public:
      * 
      * @param Size 
      */
-    void AllocateTextureVRAMFromBudget(unsigned int Size);
+    void AllocateTextureVRAMFromBudget(unsigned long Size);
 
     /**
      * @brief Dallocates previously allocated vram from the budget.
@@ -91,7 +91,7 @@ public:
      * 
      * @param Size 
      */
-    void DeallocateTextureVRAMFromBudget(unsigned int Size);
+    void DeallocateTextureVRAMFromBudget(unsigned long Size);
 
 
 
@@ -122,7 +122,7 @@ public:
      * 
      * @param Size 
      */
-    void AllocateTextureRAMFromBudget(unsigned int Size);
+    void AllocateTextureRAMFromBudget(unsigned long Size);
 
     /**
      * @brief Dallocates previously allocated ram from the budget.
@@ -130,7 +130,7 @@ public:
      * 
      * @param Size 
      */
-    void DeallocateTextureRAMFromBudget(unsigned int Size);
+    void DeallocateTextureRAMFromBudget(unsigned long Size);
     
 
 };
