@@ -82,6 +82,7 @@ public:
     void DeallocateTextureVRAMFromBudget(unsigned int Size);
 
 
+
     /**
      * @brief Determines if we can fit the given texture into regular system memory and within our self-imposed budget.
      * This is basically the same as 'TextureFitsInVRAMBudget' but for system memory.
