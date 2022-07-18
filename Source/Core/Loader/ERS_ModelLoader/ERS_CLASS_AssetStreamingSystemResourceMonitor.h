@@ -29,6 +29,8 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
 
+    long TotalSystemRAM_; /**<Number of bytes of RAM that the system has*/
+    long TotalSystemVRAM_; /**<Number of bytes of VRAM that the system has*/
 
 
 public:
