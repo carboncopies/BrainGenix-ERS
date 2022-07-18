@@ -10,7 +10,7 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Starting Asset Streaming Subsystem", 5);
 
-    
+    // Get System Resource Info
 
 
 
