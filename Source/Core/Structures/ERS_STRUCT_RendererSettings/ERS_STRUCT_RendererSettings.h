@@ -32,6 +32,9 @@ struct ERS_STRUCT_RendererSettings {
     ERS::Renderer::ShadowUpdateMode ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED;
     int MaxShadowUpdatesPerFrame_ = 5;
     int ShadowFilterKernelSize_ = 2;
+    
+    long VRAMBudget_ = 68719476736; // 64 GB default
+    long RAMBudget_ = 549755813888; // 512 GB default
 
     float FOV_ = 90.0f;
 
