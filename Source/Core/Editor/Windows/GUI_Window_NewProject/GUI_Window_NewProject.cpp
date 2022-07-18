@@ -46,7 +46,7 @@ void GUI_Window_NewProject::Draw() {
                 // check for bugs and edge-cases
 
                 std::string DefualtProjectPath = "EditorAssets/Projects/NewProject/";
-                std::string CurrentExecutablePath = std::filesystem::current_path();
+                std::string CurrentExecutablePath = std::filesystem::current_path().u8string();
 
                 for (const auto &Entry : std::filesystem::recursive_directory_iterator(DefualtProjectPath)) {
 
