@@ -39,7 +39,6 @@ private:
     ERS_STRUCT_Scene* CurrentScene = nullptr;
 
 
-    
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
 
     // Class Instances
