@@ -14,3 +14,7 @@ ERS_CLASS_AssetStreamingManager::ERS_CLASS_AssetStreamingManager(ERS_STRUCT_Syst
     ResourceMonitor_ = std::make_shared<ERS_CLASS_AssetStreamingSystemResourceMonitor>(SystemUtils_);
 
 }
+
+ERS_CLASS_AssetStreamingManager::~ERS_CLASS_AssetStreamingManager() {
+    
+}
