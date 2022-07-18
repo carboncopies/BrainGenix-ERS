@@ -35,8 +35,10 @@ target_link_libraries(ERS_ModelLoader
     ERS_STRUCT_Model
     ERS_STRUCT_Texture
     ERS_STRUCT_Vertex
-    
+
     ERS_STRUCT_SystemUtils
+    ERS_STRUCT_Scene
+    ERS_STRUCT_Camera
     )
 
 target_include_directories(ERS_ModelLoader PUBLIC ./)
