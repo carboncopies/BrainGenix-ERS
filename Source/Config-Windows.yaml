@@ -26,6 +26,15 @@ DatabasePassword: "" # FIX ME
 # File Loading Params
 DefaultProjectDirectory: "EditorAssets/Projects/DefaultProject/" # NOTE: PATH MUST END WITH A "/"
 
+# Memory Settings
+OverrideRAM: False
+RAMSizeBytes: 4294967296
+RAMMarginBytes: 1000000000
+
+OverrideVRAM: False
+VRAMSizeBytes: 4294967296
+VRAMMarginBytes: 1000000000
+
 
 # Set Logger Configuration Parameters #
 EnablePrintOutput: True
