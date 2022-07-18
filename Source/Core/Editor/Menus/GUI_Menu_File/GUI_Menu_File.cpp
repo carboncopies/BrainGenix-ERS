@@ -31,21 +31,12 @@ void GUI_Menu_File::Draw() {
     // File Menu
     if (ImGui::BeginMenu("File")) {
 
+        ImGui::MenuItem("New", "", &Windows_->GUI_Window_NewProject_->Enabled_);
         ImGui::MenuItem("Open", "", &Windows_->GUI_Window_OpenProject_->Enabled_);
         ImGui::Separator();
 
-        ImGui::MenuItem("About", "", &Windows_->GUI_Window_About_->Enabled_);
-        ImGui::Separator();
 
-        ImGui::MenuItem("Project Settings", "", &Windows_->GUI_Window_ProjectSettings_->Enabled_);
         ImGui::Separator();
-
-        if (ImGui::MenuItem("Import Model")) {
-            ImportAsset_->OpenFileDialog();
-        }
-        ImGui::Separator();
-
-        // Save All
         if (ImGui::MenuItem("Save")) {
 
             SystemUtils_->Logger_->Log("Saving Project Data", 4);
@@ -61,6 +52,13 @@ void GUI_Menu_File::Draw() {
             }
         }
 
+        ImGui::MenuItem("Project Settings", "", &Windows_->GUI_Window_ProjectSettings_->Enabled_);
+        ImGui::MenuItem("About", "", &Windows_->GUI_Window_About_->Enabled_);
+        ImGui::Separator();
+
+        if (ImGui::MenuItem("Import Model")) {
+            ImportAsset_->OpenFileDialog();
+        }
         ImGui::Separator();
 
         // Exit Options

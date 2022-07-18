@@ -136,7 +136,6 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray2D(int NumberOfTextures,
 
 bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfTextures, bool LogEnabled) {
 
-
     SystemUtils_->Logger_->Log(
         std::string("Generating Depth Map Texture Cube Map Array Of ") + std::to_string(NumberOfTextures)
          + std::string(" Textures, With Width Of ") + std::to_string(DepthTextureArrayWidth_)
@@ -165,10 +164,11 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
     SystemUtils_->Logger_->Log("Setting Up Cubemap Texture Array OpenGL Parameters", 4, LogEnabled);
     glGenTextures(1, &DepthTextureCubemapArrayID_);
     glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, DepthTextureCubemapArrayID_);
+    std::cout<<"===========================================R2="<<glGetError()<<std::endl;
 
     glTexImage3D(GL_TEXTURE_CUBE_MAP_ARRAY,
         0,                        // Current 'mipmap level', We're not using these so 0 is fine
-        GL_DEPTH_COMPONENT24,     // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
+        GL_DEPTH_COMPONENT,     // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
         DepthTextureArrayWidth_,  // Cubemap Width
         DepthTextureArrayHeight_, // Cubemap Height
         NumberOfTextures * 6,     // Total Number Of Textures In The Array
@@ -177,6 +177,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
         GL_FLOAT,                 // tells opengl how to store the data
         NULL                      // if we were loading an image in, we could then pass the data in here, but we're not so this is left as null
     );
+    std::cout<<"===========================================R2="<<glGetError()<<std::endl;
 
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_CUBE_MAP_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -189,6 +190,7 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArrayCubemap(int NumberOfText
     glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, 0);
     glDrawBuffer(GL_NONE);
     glReadBuffer(GL_NONE);
+
 
     // Update Allocation Array
     SystemUtils_->Logger_->Log("Checking Cubemap Depth Map Texture Array Allocation Array", 3, LogEnabled);
@@ -395,12 +397,17 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
     // Only Update If Instructed To Do SO
     if (Light->DepthMap.ToBeUpdated) {
 
+    std::cout<<glGetError()<<std::endl;
+
+
         // Clear This Layer Of The Cubemap Array
         for (unsigned int i = 0; i < 6; i++) {
             glBindFramebuffer(GL_FRAMEBUFFER, PointLightClearFBO_);
             glFramebufferTextureLayer(GL_FRAMEBUFFER,  GL_DEPTH_ATTACHMENT, DepthTextureCubemapArrayID_, 0, Light->DepthMap.DepthMapTextureIndex*6 + i);
             glClear(GL_DEPTH_BUFFER_BIT);
         }
+
+    std::cout<<glGetError()<<std::endl;
 
         // Setup Variables
         ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
@@ -432,6 +439,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMap(ERS_STRUCT_PointLight* Light, ERS_STRUC
         DepthShader->SetFloat("FarPlane", Light->MaxDistance);
         DepthShader->SetInt("ShadowMapLayer", Light->DepthMap.DepthMapTextureIndex);
         Renderer_->RenderSceneNoTextures(TargetScene, DepthShader);
+    std::cout<<glGetError()<<std::endl;
 
         // Reset After Updating
         Light->DepthMap.ToBeUpdated = false;
@@ -489,6 +497,7 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
     // Fix Offset (Peter Panning)
     glCullFace(GL_FRONT);
 
+
     // Get Active Scene
     ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
 
@@ -505,6 +514,8 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
 
     } 
 
+
+
     // Handle Spot Lights
     for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
 
@@ -517,6 +528,8 @@ void ERS_CLASS_DepthMaps::UpdateDepthMaps(ERS_STRUCT_Shader* DepthShader,  ERS_S
         }
 
     }
+
+
 
     // Handle Point Lights
     for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {

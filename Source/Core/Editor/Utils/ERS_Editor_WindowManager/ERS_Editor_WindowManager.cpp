@@ -55,7 +55,8 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     Windows_->GUI_Window_TestEditor_           = std::make_unique<GUI_Window_TestEditor>(SystemUtils_);
     Windows_->GUI_Window_ThemeSelector_        = std::make_unique<GUI_Window_ThemeSelector>(ThemeManager);
     Windows_->GUI_Window_FontSelector_         = std::make_unique<GUI_Window_FontSelector>(FontManager);
-    Windows_->GUI_Window_OpenProject_           = std::make_unique<GUI_Window_OpenProject>(SystemUtils_);
+    Windows_->GUI_Window_OpenProject_          = std::make_unique<GUI_Window_OpenProject>(SystemUtils_);
+    Windows_->GUI_Window_NewProject_           = std::make_unique<GUI_Window_NewProject>(SystemUtils_);
 
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Struct", 3);
     SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Index", 4);
@@ -81,6 +82,7 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     WindowNames_.push_back("ThemeSelector");
     WindowNames_.push_back("FontSelector");
     WindowNames_.push_back("OpenProject");
+    WindowNames_.push_back("NewProject");
     
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Index", 3);
 
@@ -113,6 +115,7 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     Windows_->GUI_Window_ThemeSelector_->Draw();
     Windows_->GUI_Window_FontSelector_->Draw();
     Windows_->GUI_Window_OpenProject_->Draw();
+    Windows_->GUI_Window_NewProject_->Draw();
 
 }
 
@@ -182,6 +185,9 @@ bool ERS_CLASS_WindowManager::SetWindowStatus(std::string WindowName, bool Statu
         return true;
     } else if (WindowName == "OpenProject") {
         Windows_->GUI_Window_OpenProject_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "NewProject") {
+        Windows_->GUI_Window_NewProject_->Enabled_ = Status;
         return true;
     } else {
         return false;
@@ -255,6 +261,9 @@ bool ERS_CLASS_WindowManager::GetWindowStatus(std::string WindowName, bool* Stat
         return true;
     } else if (WindowName == "OpenProject") {
         *Status = Windows_->GUI_Window_OpenProject_->Enabled_;
+        return true;
+    } else if (WindowName == "NewProject") {
+        *Status = Windows_->GUI_Window_NewProject_->Enabled_;
         return true;
     } else {
         return false;

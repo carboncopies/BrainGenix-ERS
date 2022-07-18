@@ -84,6 +84,7 @@ void ERS_CLASS_ShadowMaps::GetDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* Depth
             ERS_CLASS_DepthMaps_->FreeDepthMapIndexCubemap(ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
             ActiveScene->PointLights[i]->DepthMap.Initialized = false;
         }
+
     }
     for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
         if (ActiveScene->SpotLights[i]->CastsShadows_) {
@@ -206,8 +207,13 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
     // Handle Updating Depth Maps
     std::vector<ERS_STRUCT_DepthMap*> DepthMaps;
     std::vector<glm::vec3> LightPositions;
+    //std::cout<<"============================================"<<glGetError()<<std::endl;
+
     GetDepthMaps(&DepthMaps, &LightPositions);
+    //std::cout<<"============================================"<<glGetError()<<std::endl;
+
     PrioritizeDepthMaps(DepthMaps, LightPositions, CameraPosition);
+    //std::cout<<"============================================"<<glGetError()<<std::endl;
 
     // Update All Depth Maps
     ERS_CLASS_DepthMaps_->UpdateDepthMaps(DepthMapShader, CubemapDepthShader);

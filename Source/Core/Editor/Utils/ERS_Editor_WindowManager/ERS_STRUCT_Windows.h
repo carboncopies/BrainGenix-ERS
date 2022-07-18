@@ -31,6 +31,7 @@
 #include <GUI_Window_ThemeSelector.h>
 #include <GUI_Window_FontSelector.h>
 #include <GUI_Window_OpenProject.h>
+#include <GUI_Window_NewProject.h>
 
 /**
  * @brief This structure holds unique pointers to all windows that are instantiated by the GUI.
@@ -61,6 +62,7 @@ struct ERS_STRUCT_Windows {
     std::unique_ptr<GUI_Window_ThemeSelector> GUI_Window_ThemeSelector_;
     std::unique_ptr<GUI_Window_FontSelector> GUI_Window_FontSelector_;
     std::unique_ptr<GUI_Window_OpenProject> GUI_Window_OpenProject_;
+    std::unique_ptr<GUI_Window_NewProject> GUI_Window_NewProject_;
     
 
 };
