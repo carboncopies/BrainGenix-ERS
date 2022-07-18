@@ -68,7 +68,8 @@ public:
     void PreloadScene(ERS_STRUCT_Scene* Scene);
 
     /**
-     * @brief Set the Camera Structs object
+     * @brief Give us a list containing the cameras in the scene so we know where we need to keep the textures loaded in versus where we can dump them.
+     * Feel free to call this every frame or only when the cameras change, we monitor what's going on internally so it doesn't matter. (Just make sure we have no null pointers!)
      * 
      * @param Cameras 
      */
