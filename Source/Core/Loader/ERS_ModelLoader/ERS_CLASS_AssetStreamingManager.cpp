@@ -20,3 +20,8 @@ ERS_CLASS_AssetStreamingManager::~ERS_CLASS_AssetStreamingManager() {
     SystemUtils_->Logger_->Log("Asset Streaming Destructor Invoked", 6);
 
 }
+
+
+void ERS_CLASS_AssetStreamingManager::SetCurrentScene(ERS_STRUCT_Scene* Scene) {
+    CurrentScene_ = Scene;
+}

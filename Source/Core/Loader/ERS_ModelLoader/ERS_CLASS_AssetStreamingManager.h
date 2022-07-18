@@ -36,7 +36,7 @@ class ERS_CLASS_AssetStreamingManager {
 private:
 
     // System Vars
-    ERS_STRUCT_Scene* CurrentScene = nullptr;
+    ERS_STRUCT_Scene* CurrentScene_ = nullptr;
 
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
