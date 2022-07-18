@@ -13,27 +13,8 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCT_Mesh.h>
-#include <ERS_STRUCT_Texture.h>
-#include <ERS_STRUCT_Vertex.h>
-#include <ERS_STRUCT_Model.h>
-
 #include <ERS_STRUCT_SystemUtils.h>
 
-
-/**
- * @brief This class is responsible for indicating to the worker threads what needs to be done.
- * The other threads handle loading the vertex data and textures as well as unloading them when told to do so.
- * They also update the model struct to reflect the status of what's in GPU memory to ensure that there are no issues resulting from "cunfusion" as to what's in memory.
- * 
- * To summarize, this class looks at the current scene, and determines what's around the player camera(s) and determines if it needs to be in memory or not.
- * Additionally, it tells the loading system when to start loading more into memory, so that as the camera gets closer to an object, the higher res textures will be loaded.
- * 
- */
-class ERS_CLASS_AssetStreamingManager {
-
-
-};
 
 
 /**
@@ -50,14 +31,3 @@ class ERS_CLASS_AsyncTextureUpdater {
 
 };
 
-
-/**
- * @brief This class gets information about how the system is performing to influence the streaming manager.
- * Essentially, it just informs the manager when we're about to run out of memory to ensure that we can unload things as needed.
- * Additionally, it does the opposite - informing us when we have more memory so that we know when we can load more textures into CPU RAM.
- * This class gets the CPU/System RAM info from the Hardware Information Class, and processes that info to make 'reccomendataions' to the manager.
- * 
- */
-class ERS_CLASS_AssetStreamingSystemResourceMonitor {
-
-};
