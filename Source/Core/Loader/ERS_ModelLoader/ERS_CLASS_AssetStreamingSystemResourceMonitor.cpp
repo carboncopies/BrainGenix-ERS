@@ -30,6 +30,15 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
         SystemUtils_->Logger_->Log(std::string("Failed To Detect VRAM Size, Assuming Minimum Of ") + std::to_string(TotalSystemVRAM_) + " Bytes", 7);
     }
 
+    // TODO: Add thread setup here to handle the other system bits such as the sorting and all that.
     
+}
+
+ERS_CLASS_AssetStreamingSystemResourceMonitor::~ERS_CLASS_AssetStreamingSystemResourceMonitor() {
+
+    SystemUtils_->Logger_->Log("Asset Streaming Subsystem Destructor Invoked", 6);
+
+    // Stop threads here
 
 }
+
