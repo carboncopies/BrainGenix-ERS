@@ -28,8 +28,7 @@ void ERS_CLASS_AssetStreamingManager::SetCurrentScene(ERS_STRUCT_Scene* Scene) {
 }
 
 void ERS_CLASS_AssetStreamingManager::SetCameraStructs(std::vector<ERS_STRUCT_Camera*> Cameras) {
-
-
+    Cameras_ = Cameras;
 }
 
 // Not Yet Implemented
