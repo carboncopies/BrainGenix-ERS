@@ -9,6 +9,8 @@
 #include <vector>
 #include <thread>
 #include <chrono>
+#include <mutex>
+#include <memory>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 
@@ -53,6 +55,14 @@ private:
      * 
      */
     void WorkerThread();
+
+    /**
+     * @brief Goes through the scene and marks different models to be updated
+     * 
+     * @param Scene 
+     * @param Cameras 
+     */
+    void UpdateSceneStreamingQueue(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras);
 
 
 public:
