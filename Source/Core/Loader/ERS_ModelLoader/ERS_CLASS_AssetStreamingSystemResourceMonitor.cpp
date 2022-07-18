@@ -10,15 +10,20 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Starting Asset Streaming Subsystem", 5);
 
-    // Get System Resource Info
+    // Get System Memory Size Info
     SystemUtils_->Logger_->Log("Detecting Hardware Memory Information", 4);
     ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo();
 
     TotalSystemRAM_ = HWInfo.Dynamic_.PhysicalMemoryCapacity;
-    
+    SystemUtils_->Logger_->Log(std::string("Detected RAM Size To Be ") + std::to_string(TotalSystemRAM_) + " Bytes", 3);
     if (HWInfo.Static_.GPUVRAMSizes.size() > 0) {
         TotalSystemVRAM_ = HWInfo.Static_.GPUVRAMSizes[0];
+        SystemUtils_->Logger_->Log(std::string("Detected VRAM Size To Be ") + std::to_string(TotalSystemVRAM_) + " Bytes", 3);
     } else {
         TotalSystemVRAM_ = 4294967296; // Assume 4gb of VRAM min
+        SystemUtils_->Logger_->Log(std::string("Failed To Detect VRAM Size, Assuming Minimum Of ") + std::to_string(TotalSystemVRAM_) + " Bytes", 3);
     }
+
+    
+
 }
