@@ -20,6 +20,7 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_ShaderEditor)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_ScriptEditor)
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_OpenProject)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_NewProject)
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_ThemeSelector)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_FontSelector)

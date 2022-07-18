@@ -1,0 +1,64 @@
+ProjectName: ERS Test Project
+ProjectDescription: Test development scene for EGSC.
+ProjectVersion: 1.0.0
+ProjectCreationDate: 0000-00-00 00-00-00
+ProjectModificationDate: 2022-04-03 02-53-58
+ProjectCreator: BrainGenix-ERS Development Team
+ProjectLicense: AGPL-V3.0 Or Higher
+IsLicenseProprietary: false
+SceneIDs:
+DefaultScene: 0
+EditorLayouts:
+  0: 2
+DefaultLayout: 0
+DefaultShaderProgram: 11
+ShaderPrograms:
+  0:
+    Name: _Grid
+    VertexID: 10000
+    FragmentID: 10001
+  1:
+    Name: _LightIcon
+    VertexID: 10038
+    FragmentID: 10039
+  2:
+    Name: _DepthMap
+    VertexID: 10042
+    FragmentID: 10043
+  3:
+    Name: _DepthCubeMap
+    VertexID: 10044
+    FragmentID: 10045
+    GeometryID: 10046
+  4:
+    Name: Ambient Occlusion Texture Map
+    VertexID: 10004
+    FragmentID: 10005
+  5:
+    Name: Diffuse Texture Map
+    VertexID: 10008
+    FragmentID: 10009
+  6:
+    Name: Emissive Texture Map
+    VertexID: 10016
+    FragmentID: 10017
+  7:
+    Name: Height Texture Map
+    VertexID: 10018
+    FragmentID: 10019
+  8:
+    Name: Metalic Texture Map
+    VertexID: 10022
+    FragmentID: 10023
+  9:
+    Name: Normals Texture Map
+    VertexID: 10026
+    FragmentID: 10027
+  10:
+    Name: Shininess Texture Map
+    VertexID: 10032
+    FragmentID: 10033
+  11:
+    Name: Viewport
+    VertexID: 10040
+    FragmentID: 10041
