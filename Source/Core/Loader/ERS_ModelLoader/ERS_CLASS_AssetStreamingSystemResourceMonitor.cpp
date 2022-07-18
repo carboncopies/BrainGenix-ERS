@@ -43,7 +43,7 @@ bool ERS_CLASS_AssetStreamingSystemResourceMonitor::TextureFitsInVRAMBudget(unsi
 
     // Calculate Free Sizes
     long HardwareFreeBytes = TotalSystemVRAM_ - UsedSystemVRAM_;
-    long BudgetFreeBytes = SystemUtils_->RendererSettings_->VRAMBudget_ - UsedSystemVRAM_
+    long BudgetFreeBytes = SystemUtils_->RendererSettings_->VRAMBudget_ - UsedSystemVRAM_;
 
     // Perform Comparison To Check If The Texture Would Fit
     bool FitsInHardware = Size < HardwareFreeBytes;
