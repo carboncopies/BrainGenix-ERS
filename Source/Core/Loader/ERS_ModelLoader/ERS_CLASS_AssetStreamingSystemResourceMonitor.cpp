@@ -21,7 +21,7 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
         SystemUtils_->Logger_->Log(std::string("Detected VRAM Size To Be ") + std::to_string(TotalSystemVRAM_) + " Bytes", 3);
     } else {
         TotalSystemVRAM_ = 4294967296; // Assume 4gb of VRAM min
-        SystemUtils_->Logger_->Log(std::string("Failed To Detect VRAM Size, Assuming Minimum Of ") + std::to_string(TotalSystemVRAM_) + " Bytes", 3);
+        SystemUtils_->Logger_->Log(std::string("Failed To Detect VRAM Size, Assuming Minimum Of ") + std::to_string(TotalSystemVRAM_) + " Bytes", 7);
     }
 
     
