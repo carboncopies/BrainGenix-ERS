@@ -42,6 +42,9 @@
 #include <ERS_STRUCT_SystemUtils.h>
 
 
+// TESTING STUFF HERE
+#include <ERS_CLASS_AssetStreamingSystemResourceMonitor.h>
+
 // FIXME: Fix reloading of same textures
 // FIXME: Fix limitation of one thread
 // FIXME: Implement multithreaded image preloading?
