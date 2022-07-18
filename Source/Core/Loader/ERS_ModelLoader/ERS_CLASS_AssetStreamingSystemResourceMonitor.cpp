@@ -61,3 +61,33 @@ void ERS_CLASS_AssetStreamingSystemResourceMonitor::AllocateTextureVRAMFromBudge
     UsedSystemVRAM_ += Size;
 }
 
+void ERS_CLASS_AssetStreamingSystemResourceMonitor::DeallocateTextureVRAMFromBudget(unsigned long Size) {
+    UsedSystemVRAM_ -= Size;
+}
+
+
+bool ERS_CLASS_AssetStreamingSystemResourceMonitor::TextureFitsInRAMBudget(unsigned long Size) {
+
+    // Calculate Free Sizes
+    long HardwareFreeBytes = TotalSystemRAM_ - UsedSystemRAM_;
+    long BudgetFreeBytes = SystemUtils_->RendererSettings_->RAMBudget_ - UsedSystemRAM_;
+
+    // Perform Comparison To Check If The Texture Would Fit
+    bool FitsInHardware = Size < HardwareFreeBytes;
+    bool FitsInBudget = Size < BudgetFreeBytes;
+
+    // Return Result
+    return FitsInBudget && FitsInHardware;
+}
+
+void ERS_CLASS_AssetStreamingSystemResourceMonitor::SetTextureRAMBudget(unsigned long Size) {
+    SystemUtils_->RendererSettings_->RAMBudget_ = Size;
+}
+
+void ERS_CLASS_AssetStreamingSystemResourceMonitor::AllocateTextureRAMFromBudget(unsigned long Size) {
+    UsedSystemRAM_ += Size;
+}
+
+void ERS_CLASS_AssetStreamingSystemResourceMonitor::DeallocateTextureRAMFromBudget(unsigned long Size) {
+    UsedSystemRAM_ -= Size;
+}
