@@ -31,7 +31,7 @@ void GUI_Menu_File::Draw() {
     // File Menu
     if (ImGui::BeginMenu("File")) {
 
-        ImGui::MenuItem("C'est un test");
+        ImGui::MenuItem("Ceci est un test d'ajout de français");
 
         ImGui::MenuItem("Open", "", &Windows_->GUI_Window_OpenProject_->Enabled_);
         ImGui::Separator();
