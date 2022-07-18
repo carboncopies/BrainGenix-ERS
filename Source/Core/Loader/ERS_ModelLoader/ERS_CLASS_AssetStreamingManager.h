@@ -35,8 +35,14 @@ class ERS_CLASS_AssetStreamingManager {
 
 private:
 
+    // System Vars
+    ERS_STRUCT_Scene* CurrentScene = nullptr;
+
+
+    
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
 
+    // Class Instances
     std::unique_ptr<ERS_CLASS_AssetStreamingSystemResourceMonitor> ResourceMonitor_; /**<Instance of System Monitor Used For Tex Streaming Choices*/
 
 
