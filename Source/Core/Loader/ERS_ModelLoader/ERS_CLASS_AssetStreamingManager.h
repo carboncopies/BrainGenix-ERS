@@ -48,6 +48,13 @@ private:
     std::unique_ptr<ERS_CLASS_AssetStreamingSystemResourceMonitor> ResourceMonitor_; /**<Instance of System Monitor Used For Tex Streaming Choices*/
 
 
+    /**
+     * @brief This function is for internal use, and is the main loop that the sorter thread.
+     * 
+     */
+    void WorkerThread();
+
+
 public:
 
     /**

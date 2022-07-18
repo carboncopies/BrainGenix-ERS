@@ -22,6 +22,7 @@ ERS_CLASS_AssetStreamingManager::~ERS_CLASS_AssetStreamingManager() {
 }
 
 
+
 void ERS_CLASS_AssetStreamingManager::SetCurrentScene(ERS_STRUCT_Scene* Scene) {
     HasSceneChanged_ = CurrentScene_ != Scene;
     CurrentScene_ = Scene;
