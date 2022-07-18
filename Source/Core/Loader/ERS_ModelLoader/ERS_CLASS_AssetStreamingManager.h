@@ -40,14 +40,17 @@ private:
     // System Vars
     ERS_STRUCT_Scene* CurrentScene_ = nullptr; /**<Pointer to the current scene*/
     bool HasSceneChanged_ = false; /**<Indicate if the scene has changed since the last frame*/
-
     std::vector<ERS_STRUCT_Camera*> Cameras_; /**<List of cameras that assets are loaded around*/
-
-
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
 
     // Class Instances
     std::unique_ptr<ERS_CLASS_AssetStreamingSystemResourceMonitor> ResourceMonitor_; /**<Instance of System Monitor Used For Tex Streaming Choices*/
+
+
+    // Threads
+    std::thread SceneSortingThread_; /**<Thread used to sort the different models in the scene and indicate what textures they should have*/
+    std::mutex SortingThreadMutex_; /**<Mutex that can be locked to block the sorting thread*/
+    bool SortingThreadShouldExit_ = false; /**<Used to indicate if the thread should be shut down.*/
 
 
     /**

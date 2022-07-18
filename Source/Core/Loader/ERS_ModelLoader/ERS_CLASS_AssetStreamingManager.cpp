@@ -25,7 +25,15 @@ ERS_CLASS_AssetStreamingManager::~ERS_CLASS_AssetStreamingManager() {
 void ERS_CLASS_AssetStreamingManager::WorkerThread() {
     SystemUtils_->Logger_->Log("Starting Scene Texture Prioritization Thread", 5);
     while (true) {
-        
+
+        // Update Scene
+        UpdateSceneStreamingQueue(CurrentScene_, Cameras_);
+
+        // Check If Thread Is Still Good to Go
+        std::unique_lock<std::mutex> Lock(SortingThreadMutex_);
+        if (SortingThreadShouldExit_) {
+            break;
+        }
     }
 }
 
