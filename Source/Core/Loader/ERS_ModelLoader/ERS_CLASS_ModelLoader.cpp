@@ -17,7 +17,7 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(ERS_STRUCT_SystemUtils* SystemUtils
 
 
 
-    AssetStreamingManager_ = std::make_shared<ERS_CLASS_AssetStreamingManager>(SystemUtils_);
+    AssetStreamingManager_ = std::make_unique<ERS_CLASS_AssetStreamingManager>(SystemUtils_);
     
 
 
