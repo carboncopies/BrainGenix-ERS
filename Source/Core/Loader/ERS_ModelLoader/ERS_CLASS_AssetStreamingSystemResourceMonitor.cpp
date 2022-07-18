@@ -52,3 +52,12 @@ bool ERS_CLASS_AssetStreamingSystemResourceMonitor::TextureFitsInVRAMBudget(unsi
     // Return Result
     return FitsInBudget && FitsInHardware;
 }
+
+void ERS_CLASS_AssetStreamingSystemResourceMonitor::SetTextureVRAMBudget(unsigned long Size) {
+    SystemUtils_->RendererSettings_->VRAMBudget_ = Size;
+}
+
+void ERS_CLASS_AssetStreamingSystemResourceMonitor::AllocateTextureVRAMFromBudget(unsigned long Size) {
+    UsedSystemVRAM_ += Size;
+}
+
