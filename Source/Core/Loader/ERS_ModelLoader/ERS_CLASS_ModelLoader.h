@@ -43,7 +43,7 @@
 
 
 // TESTING STUFF HERE
-#include <ERS_CLASS_AssetStreamingSystemResourceMonitor.h>
+#include <ERS_CLASS_AssetStreamingManager.h>
 
 // FIXME: Fix reloading of same textures
 // FIXME: Fix limitation of one thread
@@ -62,6 +62,8 @@ class ERS_CLASS_ModelLoader {
 
 
 private:
+
+    std::unique_ptr<ERS_CLASS_AssetStreamingManager> AssetStreamingManager_; /**<Asset Streaming Manager Instance*/
 
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Struct*/

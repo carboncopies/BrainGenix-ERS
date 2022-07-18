@@ -15,6 +15,12 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(ERS_STRUCT_SystemUtils* SystemUtils
     SystemUtils_->Logger_->Log("Initializing Model Loader", 5);
     FreeImage_Initialise();
 
+
+
+    AssetStreamingManager_ = std::make_shared<ERS_CLASS_AssetStreamingManager>(SystemUtils_);
+    
+
+
     if (MaxModelLoadingThreads == -1) {
         SystemUtils_->Logger_->Log("Identifying Number Of CPU Cores", 4);
         MaxModelLoadingThreads = std::thread::hardware_concurrency();
