@@ -7,10 +7,10 @@
 add_library(ERS_ModelLoader
 
             # Add Source Files (.cpp)
-            "ERS_ModelLoader.cpp"
+            "ERS_CLASS_ModelLoader.cpp"
 
             # Add Header Files (.h)
-            "ERS_ModelLoader.h"
+            "ERS_CLASS_ModelLoader.h"
 
             ${BACKWARD_ENABLE}
             )
