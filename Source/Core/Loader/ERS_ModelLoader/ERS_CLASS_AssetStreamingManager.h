@@ -36,8 +36,10 @@ class ERS_CLASS_AssetStreamingManager {
 private:
 
     // System Vars
-    ERS_STRUCT_Scene* CurrentScene_ = nullptr;
-    bool HasSceneChanged_ = false;
+    ERS_STRUCT_Scene* CurrentScene_ = nullptr; /**<Pointer to the current scene*/
+    bool HasSceneChanged_ = false; /**<Indicate if the scene has changed since the last frame*/
+
+    std::vector<ERS_STRUCT_Camera*> Cameras_; /**<List of cameras that assets are loaded around*/
 
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
