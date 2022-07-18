@@ -25,7 +25,7 @@
 #include <GUI.h>
 
 #include <ERS_ModelWriter.h>
-#include <ERS_ModelLoader.h>
+#include <ERS_CLASS_ModelLoader.h>
 
 #include <ERS_Editor_3DCursor.h>
 
