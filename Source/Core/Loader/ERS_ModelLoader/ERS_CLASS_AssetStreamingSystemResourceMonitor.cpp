@@ -20,7 +20,7 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
     SystemUtils_->Logger_->Log("Detecting Hardware Memory Information", 4);
     ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo();
 
-    // Check Config For Memory Override Config
+    // RAM
     if (SystemUtils_->LocalSystemConfiguration_["OverrideRAM"].as<bool>()) {
         TotalSystemRAM_ = SystemUtils_->LocalSystemConfiguration_["RAMSizeBytes"].as<long>();
         SystemUtils_->Logger_->Log(std::string("Using User Set RAM Size Of ") + std::to_string(TotalSystemRAM_) + " Bytes", 3);
@@ -39,12 +39,14 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
 
     }
 
-
+    // VRAM
     if (SystemUtils_->LocalSystemConfiguration_["OverrideVRAM"].as<bool>()) {
         TotalSystemVRAM_ = SystemUtils_->LocalSystemConfiguration_["VRAMSizeBytes"].as<long>();
         SystemUtils_->Logger_->Log(std::string("Using User Specified VRAM Size Of ") + std::to_string(TotalSystemVRAM_) + " Bytes", 3);
 
     } else if (HWInfo.Static_.GPUVRAMSizes.size() > 0) {
+        
+        // Detect VRAM Capacity
         TotalSystemVRAM_ = HWInfo.Static_.GPUVRAMSizes[0];
         SystemUtils_->Logger_->Log(std::string("Detected VRAM Size To Be ") + std::to_string(TotalSystemVRAM_) + " Bytes", 3);
 
