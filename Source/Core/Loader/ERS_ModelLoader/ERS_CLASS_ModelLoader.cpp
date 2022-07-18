@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_ModelLoader.h>
+#include <ERS_CLASS_ModelLoader.h>
 
 // FIXME:
 // Cleanup Doxygen, fix headers, etc.
