@@ -8,11 +8,11 @@ add_library(ERS_ModelLoader
 
             # Add Source Files (.cpp)
             "ERS_CLASS_ModelLoader.cpp"
-            "ERS_CLASS_TextureStreamingManager.cpp"
+            "ERS_CLASS_AssetStreamingManager.cpp"
 
             # Add Header Files (.h)
             "ERS_CLASS_ModelLoader.h"
-            "ERS_CLASS_TextureStreamingManager.h"
+            "ERS_CLASS_AssetStreamingManager.h"
 
             ${BACKWARD_ENABLE}
             )
