@@ -27,6 +27,14 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
     } else {
         TotalSystemRAM_ = HWInfo.Dynamic_.PhysicalMemoryCapacity;
         SystemUtils_->Logger_->Log(std::string("Detected RAM Size To Be ") + std::to_string(TotalSystemRAM_) + " Bytes", 3);
+
+        // Update The Internal System RAM Limit After Adding The Margin
+        SystemUtils_->Logger_->Log("Reading Configuration File For RAM Margin", 4);
+        long VRAMMargin = SystemUtils_->LocalSystemConfiguration_["RAMMarginBytes"].as<long>();
+        SystemUtils_->Logger_->Log(std::string("Adding RAM Margin Of ") + std::to_string(VRAMMargin) + " Bytes", 4);
+        
+        TotalSystemVRAM_ -= VRAMMargin;
+
     }
 
 
@@ -41,8 +49,8 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
         // Update The Internal System VRAM Limit After Adding The Margin
         SystemUtils_->Logger_->Log("Reading Configuration File For VRAM Margin", 4);
         long VRAMMargin = SystemUtils_->LocalSystemConfiguration_["VRAMMarginBytes"].as<long>();
-        SystemUtils_->Logger_->Log(std::string("Adding Margin Of ") + std::to_string(VRAMMargin) + " Bytes", 4);
-        
+        SystemUtils_->Logger_->Log(std::string("Adding VRAM Margin Of ") + std::to_string(VRAMMargin) + " Bytes", 4);
+
         TotalSystemVRAM_ -= VRAMMargin;
 
     } else {
