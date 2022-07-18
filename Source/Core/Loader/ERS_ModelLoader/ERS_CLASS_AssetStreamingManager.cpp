@@ -35,3 +35,4 @@ void ERS_CLASS_AssetStreamingManager::SetCameraStructs(std::vector<ERS_STRUCT_Ca
 void ERS_CLASS_AssetStreamingManager::PreloadScene(ERS_STRUCT_Scene* Scene) {
     std::cout<<"WARNING: NOT YET IMPLEMENTED!\n";
 }
+
