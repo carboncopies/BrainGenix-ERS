@@ -61,8 +61,17 @@ public:
     /**
      * @brief Not yet implemented!
      * 
+     * Will start loading this new scene in the background so our loading time is shorter when we switch scenes.
+     * 
      * @param Scene 
      */
     void PreloadScene(ERS_STRUCT_Scene* Scene);
+
+    /**
+     * @brief Set the Camera Structs object
+     * 
+     * @param Cameras 
+     */
+    void SetCameraStructs(std::vector<ERS_STRUCT_Camera*> Cameras);
 
 };
