@@ -25,3 +25,13 @@ ERS_CLASS_AssetStreamingManager::~ERS_CLASS_AssetStreamingManager() {
 void ERS_CLASS_AssetStreamingManager::SetCurrentScene(ERS_STRUCT_Scene* Scene) {
     CurrentScene_ = Scene;
 }
+
+void ERS_CLASS_AssetStreamingManager::SetCameraStructs(std::vector<ERS_STRUCT_Camera*> Cameras) {
+
+    
+}
+
+// Not Yet Implemented
+void ERS_CLASS_AssetStreamingManager::PreloadScene(ERS_STRUCT_Scene* Scene) {
+    std::cout<<"WARNING: NOT YET IMPLEMENTED!\n";
+}
