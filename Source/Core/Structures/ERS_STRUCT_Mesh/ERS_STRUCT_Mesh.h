@@ -28,8 +28,11 @@
  */
 struct ERS_STRUCT_Mesh {
 
+    // Bounding Box Info
+    glm::vec3 MinXYZ_; /**<Smallest XYZ Coord For This Mesh*/
+    glm::vec3 MaxXYZ_; /**<Largest XYZ Coord For This Mesh*/
 
-
+    // OpenGL IDs
     unsigned int VBO; /**<Vertex buffer object OpenGL ID.*/
     unsigned int EBO; /**<OpenGL EBO Object ID*/
 
