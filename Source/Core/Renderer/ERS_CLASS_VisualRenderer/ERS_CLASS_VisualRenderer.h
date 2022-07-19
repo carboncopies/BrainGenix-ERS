@@ -74,7 +74,6 @@ private:
     std::unique_ptr<ERS_CLASS_MeshRenderer> MeshRenderer_; /**<Instance Of The Mesh Renderer Class Used To Hancle The Actual Rendering Of All Meshes In The Given Scene*/
     std::unique_ptr<ERS_CLASS_ViewportOverlay> ViewportOverlay_; /**<Class that handles overlaying ui elements and text onto the viewport when requested by the viewporr struct*/
     std::unique_ptr<ERS_CLASS_ViewportMenu> ViewportMenu_; /**<Class that provides the viewport menu functionality in a convenient manner to the visualrenderer system*/
-    std::unique_ptr<ERS_CLASS_BoundingBoxRenderer> BoundingBoxRenderer_; /**<This system draws bounding boxes around all models in the scene when enabled*/
 
     long int FrameNumber_ = 0; /**<Frame counter, starts at 0*/
     int ActiveViewportCursorIndex_; /**<The index of the viewport which the gizmo is being interacted with*/

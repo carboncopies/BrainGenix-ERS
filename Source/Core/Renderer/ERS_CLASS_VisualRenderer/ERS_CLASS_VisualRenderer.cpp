@@ -24,7 +24,6 @@ ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* Syste
     ViewportMenu_ = std::make_unique<ERS_CLASS_ViewportMenu>(SystemUtils_, ProjectUtils_, &GameStartTime_, &IsEditorMode_, &Shaders_);
 
     ShadowMaps_ = std::make_unique<ERS_CLASS_ShadowMaps>(SystemUtils_, ProjectUtils_, MeshRenderer_.get());
-    BoundingBoxRenderer_ = std::make_unique<ERS_CLASS_BoundingBoxRenderer>(SystemUtils_, Shader)
 
     // DEFAULT MODES, CHANGE THIS LATER! --------------------------------
     IsEditorMode_ = true;
