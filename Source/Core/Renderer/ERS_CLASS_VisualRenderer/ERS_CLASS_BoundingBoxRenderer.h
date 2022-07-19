@@ -18,10 +18,9 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_Shader.h>
-#include <ERS_STRUCT_OpenGLDefaults.h>
 #include <ERS_STRUCT_Camera.h>
+#include <ERS_STRUCT_Scene.h>
 
-#include <ERS_SceneManager.h>
 
 
 
