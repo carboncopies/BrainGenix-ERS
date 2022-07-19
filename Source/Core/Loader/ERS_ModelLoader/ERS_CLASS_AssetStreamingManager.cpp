@@ -34,6 +34,9 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
     // Also update the model struct with a parameter that forces it to always be loaded in
     // 
 
+    // To perform this sorting, we can use the std::map sort that was used in the shadowmap prioritization system
+    
+
     // Then, For Each Camera, Sort By Distance
 
     // Next, Based On Camera Priority, Create List Of Items Needing To Be Updated Most,
