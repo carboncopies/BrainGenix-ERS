@@ -69,7 +69,7 @@ public:
      * @param Model 
      * @param Color
      */
-    void DrawModel(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Model* Model, glm::vec3 Color = glm::vec3(0.0f, 0.0f, 0.0f));
+    void DrawModel(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Model* Model, glm::vec3 Color = glm::vec3(0.4f, 0.4f, 0.0f));
 
     /**
      * @brief Enable or disable depth testing
