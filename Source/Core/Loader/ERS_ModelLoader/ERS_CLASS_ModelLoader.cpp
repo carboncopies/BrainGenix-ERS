@@ -531,6 +531,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
         }
     }
     Model->BoxScale_ = abs(ModelMaxXYZ) + abs(ModelMinXYZ);
+    Model->BoxOffset_ = ModelMaxXYZ - ModelMinXYZ;
     
     std::string LogMsg = std::string("Calculated Model Bounding Box To Be '") 
     + std::to_string(Model->BoxScale_.x) + "X, "
