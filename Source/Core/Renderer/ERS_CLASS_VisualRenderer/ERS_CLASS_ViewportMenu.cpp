@@ -134,6 +134,7 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             ImGui::MenuItem("Gizmo", nullptr, &Viewport->GizmoEnabled);
             ImGui::MenuItem("Grid", nullptr, &Viewport->GridEnabled);
             ImGui::MenuItem("Light Icons", nullptr, &Viewport->LightIcons);
+            ImGui::MenuItem("Model Bounding Boxes", nullptr, &Viewport->ShowBoundingBox_);
 
             ImGui::Separator();
 
@@ -475,6 +476,18 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             if (ImGui::MenuItem("Stop", "Escape")) {
                 *IsEditorMode_ = !IsEditorMode_;
             }
+
+        ImGui::EndMenu();
+        }
+
+
+        // Bounding Box Controls
+        if (ImGui::BeginMenu("Bounding Box")) {
+
+            // Options
+            ImGui::MenuItem("Always In Front", nullptr, Viewpor->DisableBoundingBoxDepthTest_);
+            ImGui::MenuItem("Wireframe", nullptr, Viewpor->WireframeBoundingBoxes_);
+
 
         ImGui::EndMenu();
         }
