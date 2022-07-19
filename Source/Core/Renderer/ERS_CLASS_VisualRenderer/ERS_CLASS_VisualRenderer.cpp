@@ -370,9 +370,30 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         
 
+        // Render
+        ERS_STRUCT_Scene* ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
+
+        std::vector<ERS_STRUCT_Shader*> ShaderPointers;
+        for (unsigned int i = 0; i < Shaders_.size(); i++) {
+            ShaderPointers.push_back(Shaders_[i].get());
+        }
+        MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, ShaderPointers, ShaderIndex, *ShaderUniformData_);
+
+
+        if (Viewports_[Index]->GridEnabled) {
+            Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position_);
+        }
+        if (Viewports_[Index]->LightIcons) {
+            Viewports_[Index]->LightIconRenderer->Draw(Viewports_[Index]->Camera.get(), SceneManager);
+        }
+        if (Viewports_[Index]->ShowBoundingBox_) {
+            Viewports_[Index]->BoundingBoxRenderer->SetDepthTest(Viewports_[Index]->DisableBoundingBoxDepthTest_);
+            Viewports_[Index]->BoundingBoxRenderer->SetDrawMode(Viewports_[Index]->WireframeBoundingBoxes_);
+            Viewports_[Index]->BoundingBoxRenderer->DrawAll(Viewports_[Index]->Camera.get(), ActiveScene);
+        }
+
 
         // Update Cursor If Selection Changed
-        ERS_STRUCT_Scene* ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
         if (ActiveScene->HasSelectionChanged && DrawCursor && (ActiveScene->SceneObjects_.size() != 0)) {
 
             // Get Selected Model
@@ -427,25 +448,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
 
-        // Render
-        std::vector<ERS_STRUCT_Shader*> ShaderPointers;
-        for (unsigned int i = 0; i < Shaders_.size(); i++) {
-            ShaderPointers.push_back(Shaders_[i].get());
-        }
-        MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, ShaderPointers, ShaderIndex, *ShaderUniformData_);
 
-
-        if (Viewports_[Index]->GridEnabled) {
-            Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position_);
-        }
-        if (Viewports_[Index]->LightIcons) {
-            Viewports_[Index]->LightIconRenderer->Draw(Viewports_[Index]->Camera.get(), SceneManager);
-        }
-        if (Viewports_[Index]->ShowBoundingBox_) {
-            Viewports_[Index]->BoundingBoxRenderer->SetDepthTest(Viewports_[Index]->DisableBoundingBoxDepthTest_);
-            Viewports_[Index]->BoundingBoxRenderer->SetDrawMode(Viewports_[Index]->WireframeBoundingBoxes_);
-            Viewports_[Index]->BoundingBoxRenderer->DrawAll(Viewports_[Index]->Camera.get(), ActiveScene);
-        }
 
 
 
