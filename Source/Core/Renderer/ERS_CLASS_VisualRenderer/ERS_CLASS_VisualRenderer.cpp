@@ -436,9 +436,11 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         if (Viewports_[Index]->LightIcons) {
             Viewports_[Index]->LightIconRenderer->Draw(Viewports_[Index]->Camera.get(), SceneManager);
         }
-
-        Viewports_[Index]->BoundingBoxRenderer->Draw(Viewports_[Index]->Camera.get(), ActiveScene);
-
+        if (Viewports_[Index]->ShowBoundingBox_) {
+            Viewports_[Index]->BoundingBoxRenderer->SetDepthTest(Viewports_[Index]->DisableBoundingBoxDepthTest_);
+            Viewports_[Index]->BoundingBoxRenderer->SetDrawMode(Viewports_[Index]->WireframeBoundingBoxes_);
+            Viewports_[Index]->BoundingBoxRenderer->Draw(Viewports_[Index]->Camera.get(), ActiveScene);
+        }
 
 
 
