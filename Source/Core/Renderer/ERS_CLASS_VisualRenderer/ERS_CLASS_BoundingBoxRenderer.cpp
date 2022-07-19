@@ -143,7 +143,6 @@ void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUC
 
 void ERS_CLASS_BoundingBoxRenderer::DrawModel(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Model* Model, glm::vec3 Color) {
 
-    std::cout<<"FDSAFDSA\n";
 
     if (DrawWireframe_) {
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
