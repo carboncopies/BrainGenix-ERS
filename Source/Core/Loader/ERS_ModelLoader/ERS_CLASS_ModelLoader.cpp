@@ -510,8 +510,6 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
         glm::vec3 MeshMinXYZ = Model->Meshes[i].MinXYZ_;
         glm::vec3 MeshMaxXYZ = Model->Meshes[i].MaxXYZ_;
 
-        //std::cout<<glm::to_string(MeshMinXYZ)<<"|"<<glm::to_string(MeshMaxXYZ)<<"|"<<glm::to_string(abs(ModelMaxXYZ) + abs(ModelMinXYZ))<<std::endl;
-
         // Check If Larger/Smaller Than Model Min/Max
         if (MeshMinXYZ.x < ModelMinXYZ.x) {
             ModelMinXYZ.x = MeshMinXYZ.x;
@@ -534,7 +532,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     }
     Model->BoxScale_ = abs(ModelMaxXYZ) + abs(ModelMinXYZ);
     
-    std::string LogMsg = std::string("Calculated Model's Bounding Box To Be '") 
+    std::string LogMsg = std::string("Calculated Model Bounding Box To Be '") 
     + std::to_string(Model->BoxScale_.x) + "X, "
     + std::to_string(Model->BoxScale_.y) + "Y, "
     + std::to_string(Model->BoxScale_.z) + "Z'";
