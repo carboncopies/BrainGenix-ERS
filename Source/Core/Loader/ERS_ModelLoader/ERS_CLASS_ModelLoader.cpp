@@ -530,6 +530,13 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
             ModelMaxXYZ.z = MeshMaxXYZ.z;
         }
     }
+    Model->BoxScale_ = ModelMaxXYZ - ModelMinXYZ;
+    
+    std::string LogMsg = std::string("Calculated Model's Bounding Box To Be '") 
+    + std::to_string(Model->BoxScale_.x) + "X, "
+    + std::to_string(Model->BoxScale_.y) + "Y, "
+    + std::to_string(Model->BoxScale_.z) + "Z";
+    SystemUtils_->Logger_->Log(LogMsg, 3);
 
     // Set Ready For GPU
     Model->IsReadyForGPU = true;
