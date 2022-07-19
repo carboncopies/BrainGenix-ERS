@@ -141,6 +141,48 @@ void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUC
 }
 
 
+void ERS_CLASS_BoundingBoxRenderer::DrawModel(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Model* Model, glm::vec3 Color) {
+
+  if (DrawWireframe_) {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    }
+    if (DisableDepthTest_) {
+        glDisable(GL_DEPTH_TEST);
+    }
+
+    BoundingBoxRendererShader_->MakeActive();
+    glm::mat4 View = Camera->GetViewMatrix();
+    glm::mat4 Projection = Camera->GetProjectionMatrix();
+
+
+    // Calculate Model Matrix For The Bounding Box
+    glm::mat4 ModelMatrix = glm::translate(BoundingBoxRendererModelArray_, Model->ModelPosition + (Model->BoxOffset_ * Model->ModelScale));
+    ModelMatrix = glm::rotate(ModelMatrix, glm::radians(Model->ModelRotation.z), glm::vec3(0, 0, 1));
+    ModelMatrix = glm::rotate(ModelMatrix, glm::radians(Model->ModelRotation.y), glm::vec3(0, 1, 0));
+    ModelMatrix = glm::rotate(ModelMatrix, glm::radians(Model->ModelRotation.x), glm::vec3(1, 0, 0));
+    ModelMatrix = glm::scale(ModelMatrix, Model->ModelScale * Model->BoxScale_);
+
+    // Set Shader Uniforms
+    BoundingBoxRendererShader_->SetMat4("Model", ModelMatrix);
+    BoundingBoxRendererShader_->SetMat4("View", View);
+    BoundingBoxRendererShader_->SetMat4("Projection", Projection);
+
+    BoundingBoxRendererShader_->SetVec4("Color", glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+
+    // Draw Vertices
+    glBindVertexArray(BoundingBoxRendererVAO_);
+    glDrawArrays(GL_TRIANGLES, 0, 36); // 36 Verts to draw, count size of cube array
+
+
+    if (DrawWireframe_) {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    }
+    if (DisableDepthTest_) {
+        glEnable(GL_DEPTH_TEST);
+    }
+
+}
+
 void ERS_CLASS_BoundingBoxRenderer::SetDepthTest(bool DepthTestEnabled) {
     DisableDepthTest_ = !DepthTestEnabled;
 }
