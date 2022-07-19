@@ -427,7 +427,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         for (unsigned int i = 0; i < Shaders_.size(); i++) {
             ShaderPointers.push_back(Shaders_[i].get());
         }
-        //MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, ShaderPointers, ShaderIndex, *ShaderUniformData_);
+        MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, ShaderPointers, ShaderIndex, *ShaderUniformData_);
 
 
         if (Viewports_[Index]->GridEnabled) {

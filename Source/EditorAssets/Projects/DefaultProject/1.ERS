@@ -65,3 +65,7 @@ ShaderPrograms:
     Name: Viewport
     VertexID: 10040
     FragmentID: 10041
+  12:
+    Name: _BoundingBox
+    VertexID: 10047
+    FragmentID: 10048
