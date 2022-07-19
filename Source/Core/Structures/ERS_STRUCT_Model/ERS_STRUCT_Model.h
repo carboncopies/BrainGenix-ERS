@@ -39,6 +39,7 @@ struct ERS_STRUCT_Model {
 
     // Bounding Box Info
     glm::vec3 BoxScale_; /**<Bounding Box Size In Local Space (Multiply By Object's scale value to get true size)*/
+    glm::vec3 BoxOffset_; /**<Offset the center of the box so it's synced with the center of the model*/
 
     // Model Data
     std::vector<ERS_STRUCT_Mesh> Meshes;
