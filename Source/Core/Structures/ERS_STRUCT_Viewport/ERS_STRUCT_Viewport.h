@@ -35,6 +35,10 @@ struct ERS_STRUCT_Viewport {
     bool LightIcons = true; /**<Draw or don't draw the light icons*/
     bool GammaCorrection = true; /**<Enable/disable gamma correction*/
     bool HDREnabled_ = true; /**<Indicate if hdr should be used or not*/
+    bool ShowBoundingBox_ = true; /**<Draw the bounding boxes or don't*/
+    
+    bool WireframeBoundingBoxes_ = true; /**<Set bounding boxes to opaque or wireframe*/
+    bool DisableBoundingBoxDepthTest_ = true; /**<Disable Bounding Box Depth Test Or Not*/
 
     float GridSnapAmountTranslate_ = 0.1f; /**<Grid Snap Amount, User Adjustable In The Editor*/
     float GridSnapAmountRotate_ = 5.0f; /**<Grid Snap Amount, User Adjustable In The Editor*/
