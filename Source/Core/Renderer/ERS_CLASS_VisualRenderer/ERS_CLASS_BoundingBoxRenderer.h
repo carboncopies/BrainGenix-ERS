@@ -30,7 +30,6 @@ class ERS_CLASS_BoundingBoxRenderer {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Shared Pointer To System Utils*/
-    ERS_STRUCT_OpenGLDefaults* OpenGLDefaults_; /**<Pointer acquired from renderermanager*/
     ERS_STRUCT_Shader* BoundingBoxRendererShader_; /**<Pointer To Shader With BoundingBoxRenderer*/
     glm::mat4 BoundingBoxRendererModelArray_; /**<BoundingBoxRenderer Model Mat4*/
 
@@ -46,7 +45,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_BoundingBoxRenderer(ERS_STRUCT_OpenGLDefaults* Defaults, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Shader* BoundingBoxRendererShader);
+    ERS_CLASS_BoundingBoxRenderer(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Shader* BoundingBoxRendererShader);
 
     /**
      * @brief Destroy the ers class grid object
