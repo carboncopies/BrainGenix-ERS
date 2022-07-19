@@ -214,7 +214,7 @@ void GUI_Window_ObjectProperties::Draw() {
 
                         ImGui::Checkbox("Render Model", &Model->Enabled);
                         ImGui::SameLine();
-                        ImGui::HelpMarker("Tell the rendering system to skip this model. Essentially makes it invisible.")
+                        ImGui::HelpMarker("Tell the rendering system to skip this model. Essentially makes it invisible.");
 
                         // Shader Override Settings
                         ImGui::Separator();
