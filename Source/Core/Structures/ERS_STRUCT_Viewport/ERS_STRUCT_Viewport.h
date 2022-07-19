@@ -14,6 +14,7 @@
 #include <ERS_CLASS_InputProcessor.h>
 #include <ERS_CLASS_Grid.h>
 #include <ERS_CLASS_LightIconRenderer.h>
+#include <ERS_CLASS_BoundingBoxRenderer.h>
 
 #include <ERS_STRUCT_Camera.h>
 
@@ -54,6 +55,7 @@ struct ERS_STRUCT_Viewport {
     std::unique_ptr<ERS_CLASS_InputProcessor> Processor; /**<Pointer to Input Processor*/
     std::unique_ptr<ERS_CLASS_Grid> Grid; /**<Pointer to grid instance*/
     std::unique_ptr<ERS_CLASS_LightIconRenderer> LightIconRenderer; /**<Light Icon Renderer Instance*/
+    std::unique_ptr<ERS_CLASS_BoundingBoxRenderer> BoundingBoxRenderer; /**<Used to draw bounding boxes around objects in the scene*/
     std::unique_ptr<ERS_STRUCT_Camera> Camera; /**<Pointer To Camera Instance*/
 
     unsigned int FramebufferObject; /**<FBO OpenGL ID*/
