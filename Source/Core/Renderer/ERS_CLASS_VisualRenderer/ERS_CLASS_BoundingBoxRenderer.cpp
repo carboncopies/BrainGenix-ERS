@@ -88,7 +88,10 @@ ERS_CLASS_BoundingBoxRenderer::~ERS_CLASS_BoundingBoxRenderer() {
 
 void ERS_CLASS_BoundingBoxRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Scene* Scene) {
 
+
     glDisable(GL_DEPTH_TEST);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
     BoundingBoxRendererShader_->MakeActive();
     glm::mat4 View = Camera->GetViewMatrix();
     glm::mat4 Projection = Camera->GetProjectionMatrix();
@@ -118,43 +121,8 @@ void ERS_CLASS_BoundingBoxRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_S
     }
 
 
-    // Draw All Spot Lights
-    for (int i = 0; (long)i < (long)Scene->SpotLights.size(); i++) {
 
-        glm::vec3 LightPosition = Scene->SpotLights[i]->Pos;
-        glm::mat4 NewModelMatrix = glm::translate(BoundingBoxRendererModelArray_, LightPosition);
-
-
-        // FIXME: Make Lights a "Billboard" So they Rotate Towards The Camera
-        // glm::vec3 ModelRotation = glm::normalize(CameraPosition - LightPosition);
-
-        glm::vec3 LampRotation = Scene->SpotLights[i]->Rot;
-        NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.x, glm::vec3(1, 0, 0));
-        NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.y, glm::vec3(0, 1, 0));
-        NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.z, glm::vec3(0, 0, 1));
-        NewModelMatrix = glm::scale(NewModelMatrix, glm::vec3(BoundingBoxRendererScale_));
-
-        BoundingBoxRendererShader_->SetMat4("model", NewModelMatrix);
-        BoundingBoxRendererShader_->SetMat4("view", View);
-        BoundingBoxRendererShader_->SetMat4("projection", Projection);
-
-        BoundingBoxRendererShader_->SetVec3("CameraPosition", CameraPosition);
-        BoundingBoxRendererShader_->SetVec3("CameraRight", CameraRight);
-        BoundingBoxRendererShader_->SetVec3("CameraUp", CameraUp);
-
-        BoundingBoxRendererShader_->SetFloat("BillboardSize", BoundingBoxRendererScale_);
-        BoundingBoxRendererShader_->SetVec3("BillboardPosition", LightPosition);
-        BoundingBoxRendererShader_->SetVec3("BillboardRotation", LampRotation);
-        
-        glUniform1i(glGetUniformLocation(BoundingBoxRendererShader_->ShaderProgram_, "IconTexture"), 0);
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, OpenGLDefaults_->SpotLightTexture_);
-
-        glBindVertexArray(BoundingBoxRendererVAO_);
-        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-
-    }
-
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     glEnable(GL_DEPTH_TEST);
 
