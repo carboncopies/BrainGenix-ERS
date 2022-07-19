@@ -384,6 +384,8 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
                         Target->TotalIndices_ = Source->TotalIndices_;
                         Target->TotalVertices_ = Source->TotalVertices_;
                         Target->TotalLoadingTime_ = Source->TotalLoadingTime_;
+                        Target->BoxOffset_ = Source->BoxOffset_;
+                        Target->BoxScale_ = Source->BoxScale_;
                         Target->IsTemplateModel = false;
                         Target->FullyReady = true;
 
