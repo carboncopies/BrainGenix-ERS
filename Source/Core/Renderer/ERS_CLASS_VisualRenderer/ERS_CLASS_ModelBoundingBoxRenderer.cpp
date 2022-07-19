@@ -17,7 +17,7 @@ ERS_CLASS_BoundingBoxRenderer::ERS_CLASS_BoundingBoxRenderer(ERS_STRUCT_OpenGLDe
     SystemUtils_->Logger_->Log("Setting Up VisualRenderer BoundingBoxRenderer System", 5);
 
 
-    // 'Borrowed' (Stolen) From https://learnopengl.com - Thanks Joey!
+    // Cube Vert Array 'Borrowed' (Stolen) From https://learnopengl.com - Thanks Joey!
     const float BoundingBoxVerticies[] = {
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
          0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
