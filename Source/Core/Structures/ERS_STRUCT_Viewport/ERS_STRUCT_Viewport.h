@@ -39,6 +39,7 @@ struct ERS_STRUCT_Viewport {
     
     bool WireframeBoundingBoxes_ = true; /**<Set bounding boxes to opaque or wireframe*/
     bool DisableBoundingBoxDepthTest_ = true; /**<Disable Bounding Box Depth Test Or Not*/
+    bool ShowBoxOnSelectedModel_ = true; /**<Cause the system to draw the model around the selected model*/
 
     float GridSnapAmountTranslate_ = 0.1f; /**<Grid Snap Amount, User Adjustable In The Editor*/
     float GridSnapAmountRotate_ = 5.0f; /**<Grid Snap Amount, User Adjustable In The Editor*/
