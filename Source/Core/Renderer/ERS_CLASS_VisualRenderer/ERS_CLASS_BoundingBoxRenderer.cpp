@@ -83,7 +83,7 @@ ERS_CLASS_BoundingBoxRenderer::ERS_CLASS_BoundingBoxRenderer( ERS_STRUCT_SystemU
 ERS_CLASS_BoundingBoxRenderer::~ERS_CLASS_BoundingBoxRenderer() {
 
     SystemUtils_->Logger_->Log("BoundingBoxRenderer Destructor Called", 6);
-    
+
     SystemUtils_->Logger_->Log("Freeing Cube VAO/VBO", 4);
     glDeleteVertexArrays(1, &BoundingBoxRendererVAO_);
     glDeleteBuffers(1, &BoundingBoxRendererVBO_);
@@ -100,12 +100,10 @@ void ERS_CLASS_BoundingBoxRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_S
     BoundingBoxRendererShader_->MakeActive();
     glm::mat4 View = Camera->GetViewMatrix();
     glm::mat4 Projection = Camera->GetProjectionMatrix();
-    glm::vec3 CameraPosition = Camera->Position_;
-    glm::vec3 CameraUp = Camera->Up_;
-    glm::vec3 CameraRight = Camera->Right_;
 
     
     for (unsigned int i = 0; i < Scene->Models.size(); i++) {
+
 
         // Calculate Model Matrix For The Bounding Box
         glm::mat4 ModelMatrix = glm::translate(BoundingBoxRendererModelArray_, Scene->Models[i]->ModelPosition);
@@ -118,6 +116,8 @@ void ERS_CLASS_BoundingBoxRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_S
         BoundingBoxRendererShader_->SetMat4("model", ModelMatrix);
         BoundingBoxRendererShader_->SetMat4("view", View);
         BoundingBoxRendererShader_->SetMat4("projection", Projection);
+
+        std::cout<<glm::to_string(ModelMatrix)<<std::endl;
 
         // Draw Vertices
         glBindVertexArray(BoundingBoxRendererVAO_);
