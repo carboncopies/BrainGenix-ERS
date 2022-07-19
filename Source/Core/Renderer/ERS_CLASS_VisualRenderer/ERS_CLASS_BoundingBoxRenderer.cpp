@@ -91,7 +91,7 @@ ERS_CLASS_BoundingBoxRenderer::~ERS_CLASS_BoundingBoxRenderer() {
 
 }
 
-void ERS_CLASS_BoundingBoxRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Scene* Scene) {
+void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Scene* Scene) {
 
 
     if (DrawWireframe_) {

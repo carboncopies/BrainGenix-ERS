@@ -60,7 +60,16 @@ public:
      * @brief Renders the bounding boxes in the target scene from the camera's perspective
      * 
      */
-    void Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Scene* Scene);
+    void DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Scene* Scene);
+
+    /**
+     * @brief Draw a bounding box around the target with the specified color.
+     * 
+     * @param Camera 
+     * @param Model 
+     * @param Color
+     */
+    void DrawModel(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Model* Model, glm::vec3 Color = glm::vec3(0.0f, 0.0f, 0.0f));
 
     /**
      * @brief Enable or disable depth testing
