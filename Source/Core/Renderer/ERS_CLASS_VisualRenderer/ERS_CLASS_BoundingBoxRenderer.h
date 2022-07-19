@@ -58,6 +58,6 @@ public:
      * @brief Draw Command
      * 
      */
-    void Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneManager* SceneManager);
+    void Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Scene* Scene);
 
 };
