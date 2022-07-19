@@ -30,13 +30,20 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
         Models.push_back(Scene->Models[i].get());        
     }
 
+    // Update camera struct with param about priority
+    // Also update the model struct with a parameter that forces it to always be loaded in
+    // 
+
     // Then, For Each Camera, Sort By Distance
 
-    // Next, Based On Camera Priority, Create List Of Items Needing To Be Updated Most, as well as 
-
-    // Also Ensure that 
+    // Next, Based On Camera Priority, Create List Of Items Needing To Be Updated Most,
+    // as well as items that should be loaded to RAM
     
+    // Also, Create A List Of Items In Memory That Can Be Deallocated as they're the least close
+    // or smallest, or just contribute to the view least 
+
     // Then, Go Down List, And Check If it'll fit into memory Of The Items Selected
+    // Do that for each category such as VRAM and RAM
 
     // If Feasable And Not Already In Loading Queue, Add To Queue
 
