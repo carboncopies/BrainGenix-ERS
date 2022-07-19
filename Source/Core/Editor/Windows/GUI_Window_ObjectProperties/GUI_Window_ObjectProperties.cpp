@@ -212,6 +212,9 @@ void GUI_Window_ObjectProperties::Draw() {
                         ImGui::SameLine();
                         ImGui::HelpMarker("Allow this model to have shadows cast upon it by other objects as well as itself.");
 
+                        ImGui::Checkbox("Render Model", &Model->Enabled);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Tell the rendering system to skip this model. Essentially makes it invisible.")
 
                         // Shader Override Settings
                         ImGui::Separator();
