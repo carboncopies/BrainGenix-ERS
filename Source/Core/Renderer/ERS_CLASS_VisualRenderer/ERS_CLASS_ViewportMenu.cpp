@@ -485,8 +485,8 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
         if (ImGui::BeginMenu("Bounding Box")) {
 
             // Options
-            ImGui::MenuItem("Always In Front", nullptr, Viewpor->DisableBoundingBoxDepthTest_);
-            ImGui::MenuItem("Wireframe", nullptr, Viewpor->WireframeBoundingBoxes_);
+            ImGui::MenuItem("Always In Front", nullptr, Viewport->DisableBoundingBoxDepthTest_);
+            ImGui::MenuItem("Wireframe", nullptr, Viewport->WireframeBoundingBoxes_);
 
 
         ImGui::EndMenu();
