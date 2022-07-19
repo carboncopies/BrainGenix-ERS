@@ -6,12 +6,12 @@
 
 
 
-ERS_CLASS_BoundingBoxRenderer::ERS_CLASS_BoundingBoxRenderer(ERS_STRUCT_OpenGLDefaults* Defaults, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Shader* BoundingBoxRendererShader) {
+ERS_CLASS_BoundingBoxRenderer::ERS_CLASS_BoundingBoxRenderer( ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Shader* BoundingBoxRendererShader) {
 
 
     SystemUtils_ = SystemUtils;
     BoundingBoxRendererShader_ = BoundingBoxRendererShader;
-    OpenGLDefaults_ = Defaults;
+
 
 
     SystemUtils_->Logger_->Log("Setting Up VisualRenderer BoundingBoxRenderer System", 5);
