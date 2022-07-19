@@ -126,7 +126,7 @@ void ERS_CLASS_BoundingBoxRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_S
 
         // Draw Vertices
         glBindVertexArray(BoundingBoxRendererVAO_);
-        glDrawArrays(GL_TRIANGLE_FAN, 0, 36); // 36 Verts to draw, count size of cube array
+        glDrawArrays(GL_TRIANGLES, 0, 36); // 36 Verts to draw, count size of cube array
 
     }
 
