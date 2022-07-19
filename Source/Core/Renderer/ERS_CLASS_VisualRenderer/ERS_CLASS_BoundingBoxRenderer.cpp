@@ -117,7 +117,6 @@ void ERS_CLASS_BoundingBoxRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_S
         BoundingBoxRendererShader_->SetMat4("view", View);
         BoundingBoxRendererShader_->SetMat4("projection", Projection);
 
-        std::cout<<glm::to_string(ModelMatrix)<<std::endl;
 
         // Draw Vertices
         glBindVertexArray(BoundingBoxRendererVAO_);
