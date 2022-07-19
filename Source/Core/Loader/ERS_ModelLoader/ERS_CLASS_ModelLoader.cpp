@@ -501,6 +501,35 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
         Model->TexturesToPushToGPU_.push_back(DecodedTextures[i].get());
     }
 
+    // Calculate Bounding Box
+    glm::vec3 ModelMinXYZ;
+    glm::vec3 ModelMaxXYZ;
+    for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
+
+        // Get Mesh Min/Max
+        glm::vec3 MeshMinXYZ = Model->Meshes[i].MinXYZ_;
+        glm::vec3 MeshMaxXYZ = Model->Meshes[i].MaxXYZ_;
+
+        // Check If Larger/Smaller Than Model Min/Max
+        if (ModelMinXYZ.x < MeshMinXYZ.x) {
+            ModelMinXYZ.x = MeshMinXYZ.x;
+        }
+        if (ModelMinXYZ.y < MeshMinXYZ.y) {
+            ModelMinXYZ.y = MeshMinXYZ.y;
+        }
+        if (ModelMinXYZ.z < MeshMinXYZ.z) {
+            ModelMinXYZ.z = MeshMinXYZ.z;
+        }
+        if (ModelMaxXYZ.x > MeshMaxXYZ.x) {
+            ModelMaxXYZ.x = MeshMaxXYZ.x;
+        }
+        if (ModelMaxXYZ.y > MeshMaxXYZ.y) {
+            ModelMaxXYZ.y = MeshMaxXYZ.y;
+        }
+        if (ModelMaxXYZ.z > MeshMaxXYZ.z) {
+            ModelMaxXYZ.z = MeshMaxXYZ.z;
+        }
+    }
 
     // Set Ready For GPU
     Model->IsReadyForGPU = true;
