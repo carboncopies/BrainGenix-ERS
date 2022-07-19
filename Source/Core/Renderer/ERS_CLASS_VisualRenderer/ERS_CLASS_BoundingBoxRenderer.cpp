@@ -113,9 +113,11 @@ void ERS_CLASS_BoundingBoxRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_S
         ModelMatrix = glm::scale(ModelMatrix, Scene->Models[i]->ModelScale * Scene->Models[i]->BoxScale_);
 
         // Set Shader Uniforms
-        BoundingBoxRendererShader_->SetMat4("model", ModelMatrix);
-        BoundingBoxRendererShader_->SetMat4("view", View);
-        BoundingBoxRendererShader_->SetMat4("projection", Projection);
+        BoundingBoxRendererShader_->SetMat4("Model", ModelMatrix);
+        BoundingBoxRendererShader_->SetMat4("View", View);
+        BoundingBoxRendererShader_->SetMat4("Projection", Projection);
+
+        BoundingBoxRendererShader_->SetVec4("Color", glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
 
 
         // Draw Vertices
