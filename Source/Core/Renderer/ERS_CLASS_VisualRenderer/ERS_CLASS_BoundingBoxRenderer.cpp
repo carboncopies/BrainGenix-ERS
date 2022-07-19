@@ -108,8 +108,8 @@ void ERS_CLASS_BoundingBoxRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_S
         // Calculate Model Matrix For The Bounding Box
         glm::mat4 ModelMatrix = glm::translate(BoundingBoxRendererModelArray_, Scene->Models[i]->ModelPosition);
         ModelMatrix = glm::rotate(ModelMatrix, Scene->Models[i]->ModelRotation.x, glm::vec3(1, 0, 0));
-        ModelMatrix = glm::rotate(ModelMatrix, Scene->Models[i]->ModelRotation.x, glm::vec3(0, 1, 0));
-        ModelMatrix = glm::rotate(ModelMatrix, Scene->Models[i]->ModelRotation.x, glm::vec3(0, 0, 1));
+        ModelMatrix = glm::rotate(ModelMatrix, Scene->Models[i]->ModelRotation.y, glm::vec3(0, 1, 0));
+        ModelMatrix = glm::rotate(ModelMatrix, Scene->Models[i]->ModelRotation.z, glm::vec3(0, 0, 1));
         ModelMatrix = glm::scale(ModelMatrix, Scene->Models[i]->ModelScale * Scene->Models[i]->BoxScale_);
 
         // Set Shader Uniforms
