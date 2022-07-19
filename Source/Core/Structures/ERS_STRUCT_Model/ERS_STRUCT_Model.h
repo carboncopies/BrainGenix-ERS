@@ -37,6 +37,8 @@ struct ERS_STRUCT_Model {
     unsigned long TotalVertices_; /**<Total Number Of Verts In This Model*/ 
     unsigned long TotalIndices_; /**<Total Number Of Indices In Model*/
 
+    // Bounding Box Info
+    glm::vec3 BoxScale_; /**<Scale relative to the world's scale showing the size of this model*/
 
     // Model Data
     std::vector<ERS_STRUCT_Mesh> Meshes;
