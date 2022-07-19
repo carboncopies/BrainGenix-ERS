@@ -396,9 +396,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
                 Scale = ActiveScene->Models[ModelIndex]->ModelScale;                
                 HasRotation = true;
                 HasScale = true;
-
-
-
             } else if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("PointLight")) {
                 unsigned long Index = ActiveScene->SceneObjects_[SelectedObject].Index_;
                 Position = ActiveScene->PointLights[Index]->Pos;        
@@ -444,7 +441,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             Viewports_[Index]->BoundingBoxRenderer->SetDrawMode(Viewports_[Index]->WireframeBoundingBoxes_);
             Viewports_[Index]->BoundingBoxRenderer->DrawAll(Viewports_[Index]->Camera.get(), ActiveScene);
         }
-        if (Viewports_[Index]->ShowBoxOnSelectedModel_) {
+        if (Viewports_[Index]->ShowBoxOnSelectedModel_ && ActiveScene->SceneObjects_[ActiveScene->SelectedObject].Type_ == std::string("Model")) {
             unsigned long ModelIndex = ActiveScene->SceneObjects_[ActiveScene->SelectedObject].Index_;
             Viewports_[Index]->BoundingBoxRenderer->DrawModel(Viewports_[Index]->Camera.get(), ActiveScene->Models[ModelIndex].get());
         }
