@@ -100,20 +100,20 @@ void ERS_CLASS_BoundingBoxRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_S
     glm::vec3 CameraRight = Camera->Right_;
 
     
-    for (unsigned int i = 0; i < )
+    //for (unsigned int i = 0; i < Scene->)
 
 
     // Draw All Spot Lights
-    for (int i = 0; (long)i < (long)SceneManager->Scenes_[SceneManager->ActiveScene_]->SpotLights.size(); i++) {
+    for (int i = 0; (long)i < (long)Scene->SpotLights.size(); i++) {
 
-        glm::vec3 LightPosition = SceneManager->Scenes_[SceneManager->ActiveScene_]->SpotLights[i]->Pos;
+        glm::vec3 LightPosition = Scene->SpotLights[i]->Pos;
         glm::mat4 NewModelMatrix = glm::translate(BoundingBoxRendererModelArray_, LightPosition);
 
 
         // FIXME: Make Lights a "Billboard" So they Rotate Towards The Camera
         // glm::vec3 ModelRotation = glm::normalize(CameraPosition - LightPosition);
 
-        glm::vec3 LampRotation = SceneManager->Scenes_[SceneManager->ActiveScene_]->SpotLights[i]->Rot;
+        glm::vec3 LampRotation = Scene->SpotLights[i]->Rot;
         NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.x, glm::vec3(1, 0, 0));
         NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.y, glm::vec3(0, 1, 0));
         NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.z, glm::vec3(0, 0, 1));
