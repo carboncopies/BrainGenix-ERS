@@ -85,8 +85,12 @@ ERS_CLASS_BoundingBoxRenderer::ERS_CLASS_BoundingBoxRenderer( ERS_STRUCT_SystemU
 ERS_CLASS_BoundingBoxRenderer::~ERS_CLASS_BoundingBoxRenderer() {
 
     SystemUtils_->Logger_->Log("BoundingBoxRenderer Destructor Called", 6);
+    
+    SystemUtils_->Logger_->Log("Freeing Cube VAO/VBO", 4);
+    glDeleteVertexArrays(1, &BoundingBoxRendererVAO_);
+    glDeleteBuffers(1, &BoundingBoxRendererVBO_);
+    SystemUtils_->Logger_->Log("Freed Cube VAO/VBO", 3);
 
-    glDeleteVertexArrays()
 
 }
 
