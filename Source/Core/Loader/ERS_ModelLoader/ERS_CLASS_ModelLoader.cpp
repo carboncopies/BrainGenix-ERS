@@ -513,23 +513,22 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
         //std::cout<<glm::to_string(MeshMinXYZ)<<"|"<<glm::to_string(MeshMaxXYZ)<<"|"<<glm::to_string(abs(ModelMaxXYZ) + abs(ModelMinXYZ))<<std::endl;
 
         // Check If Larger/Smaller Than Model Min/Max
-        if (ModelMinXYZ.x < MeshMinXYZ.x) {
+        if (MeshMinXYZ.x < ModelMinXYZ.x) {
             ModelMinXYZ.x = MeshMinXYZ.x;
-            std::cout<<"LESSTHAN\n";
         }
-        if (ModelMinXYZ.y < MeshMinXYZ.y) {
+        if (MeshMinXYZ.y < ModelMinXYZ.y) {
             ModelMinXYZ.y = MeshMinXYZ.y;
         }
-        if (ModelMinXYZ.z < MeshMinXYZ.z) {
+        if (MeshMinXYZ.z < ModelMinXYZ.z) {
             ModelMinXYZ.z = MeshMinXYZ.z;
         }
-        if (ModelMaxXYZ.x > MeshMaxXYZ.x) {
+        if (MeshMaxXYZ.x > ModelMaxXYZ.x) {
             ModelMaxXYZ.x = MeshMaxXYZ.x;
         }
-        if (ModelMaxXYZ.y > MeshMaxXYZ.y) {
+        if (MeshMaxXYZ.y > ModelMaxXYZ.y) {
             ModelMaxXYZ.y = MeshMaxXYZ.y;
         }
-        if (ModelMaxXYZ.z > MeshMaxXYZ.z) {
+        if (MeshMaxXYZ.z > ModelMaxXYZ.z) {
             ModelMaxXYZ.z = MeshMaxXYZ.z;
         }
     }
