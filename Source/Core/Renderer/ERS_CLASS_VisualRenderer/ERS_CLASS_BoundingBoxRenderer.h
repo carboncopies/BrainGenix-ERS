@@ -57,9 +57,24 @@ public:
 
 
     /**
-     * @brief Draw Command
+     * @brief Renders the bounding boxes in the target scene from the camera's perspective
      * 
      */
     void Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Scene* Scene);
+
+    /**
+     * @brief Enable or disable depth testing
+     * 
+     * @param DepthTestEnabled 
+     */
+    void SetDepthTest(bool DepthTestEnabled);
+
+    /**
+     * @brief Set the draw mode to be wireframe or solid
+     * 
+     * @param WireframeEnabled 
+     */
+    void SetDrawMode(bool WireframeEnabled);
+
 
 };
