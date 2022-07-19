@@ -532,7 +532,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
             ModelMaxXYZ.z = MeshMaxXYZ.z;
         }
     }
-    Model->BoxScale_ = ModelMaxXYZ - ModelMinXYZ;
+    Model->BoxScale_ = abs(ModelMaxXYZ) + abs(ModelMinXYZ);
     
     std::string LogMsg = std::string("Calculated Model's Bounding Box To Be '") 
     + std::to_string(Model->BoxScale_.x) + "X, "
