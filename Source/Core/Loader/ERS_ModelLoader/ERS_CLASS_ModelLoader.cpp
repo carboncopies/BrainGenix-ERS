@@ -510,11 +510,12 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
         glm::vec3 MeshMinXYZ = Model->Meshes[i].MinXYZ_;
         glm::vec3 MeshMaxXYZ = Model->Meshes[i].MaxXYZ_;
 
-        std::cout<<glm::to_string(MeshMinXYZ)<<"|"<<glm::to_string(MeshMaxXYZ)<<"|"<<glm::to_string(abs(ModelMaxXYZ) + abs(ModelMinXYZ))<<std::endl;
+        //std::cout<<glm::to_string(MeshMinXYZ)<<"|"<<glm::to_string(MeshMaxXYZ)<<"|"<<glm::to_string(abs(ModelMaxXYZ) + abs(ModelMinXYZ))<<std::endl;
 
         // Check If Larger/Smaller Than Model Min/Max
         if (ModelMinXYZ.x < MeshMinXYZ.x) {
             ModelMinXYZ.x = MeshMinXYZ.x;
+            std::cout<<"LESSTHAN\n";
         }
         if (ModelMinXYZ.y < MeshMinXYZ.y) {
             ModelMinXYZ.y = MeshMinXYZ.y;
