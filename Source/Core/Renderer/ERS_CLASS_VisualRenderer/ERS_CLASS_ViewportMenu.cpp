@@ -134,6 +134,7 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             ImGui::MenuItem("Gizmo", nullptr, &Viewport->GizmoEnabled);
             ImGui::MenuItem("Grid", nullptr, &Viewport->GridEnabled);
             ImGui::MenuItem("Light Icons", nullptr, &Viewport->LightIcons);
+            ImGui::MenuItem("Outline Selected Model", nullptr, &Viewport->ShowBoxOnSelectedModel_);
             ImGui::MenuItem("Model Bounding Boxes", nullptr, &Viewport->ShowBoundingBox_);
 
             ImGui::Separator();

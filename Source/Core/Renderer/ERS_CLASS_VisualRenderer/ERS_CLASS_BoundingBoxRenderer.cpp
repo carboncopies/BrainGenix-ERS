@@ -167,7 +167,7 @@ void ERS_CLASS_BoundingBoxRenderer::DrawModel(ERS_STRUCT_Camera* Camera, ERS_STR
     BoundingBoxRendererShader_->SetMat4("View", View);
     BoundingBoxRendererShader_->SetMat4("Projection", Projection);
 
-    BoundingBoxRendererShader_->SetVec4("Color", glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+    BoundingBoxRendererShader_->SetVec4("Color", glm::vec4(Color, 1.0f));
 
     // Draw Vertices
     glBindVertexArray(BoundingBoxRendererVAO_);
