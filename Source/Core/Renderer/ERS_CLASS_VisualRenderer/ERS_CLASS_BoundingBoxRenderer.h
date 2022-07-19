@@ -37,6 +37,9 @@ private:
     float BoundingBoxRendererScale_ = 0.1f; /**<Scale of editor icons*/
 
 
+    bool DisableDepthTest_ = true; /**<Tell the renderer to disable the depth test prior to drawing the boxes*/
+    bool DrawWireframe_ = true; /**<Tell the system to enable or disable wireframe mode*/
+
 public:
 
     /**

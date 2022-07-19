@@ -94,8 +94,12 @@ ERS_CLASS_BoundingBoxRenderer::~ERS_CLASS_BoundingBoxRenderer() {
 void ERS_CLASS_BoundingBoxRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Scene* Scene) {
 
 
-    glDisable(GL_DEPTH_TEST);
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    if (DrawWireframe_) {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    }
+    if (DisableDepthTest_) {
+        glDisable(GL_DEPTH_TEST);
+    }
 
     BoundingBoxRendererShader_->MakeActive();
     glm::mat4 View = Camera->GetViewMatrix();
@@ -127,11 +131,12 @@ void ERS_CLASS_BoundingBoxRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_S
     }
 
 
-
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-    glEnable(GL_DEPTH_TEST);
-
+    if (DrawWireframe_) {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    }
+    if (DisableDepthTest_) {
+        glEnable(GL_DEPTH_TEST);
+    }
 
 }
 
