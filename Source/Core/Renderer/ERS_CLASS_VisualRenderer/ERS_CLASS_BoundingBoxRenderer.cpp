@@ -140,3 +140,12 @@ void ERS_CLASS_BoundingBoxRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_STRUCT_S
 
 }
 
+
+void ERS_CLASS_BoundingBoxRenderer::SetDepthTest(bool DepthTestEnabled) {
+    DisableDepthTest_ = !DepthTestEnabled;
+}
+
+void ERS_CLASS_BoundingBoxRenderer::SetDrawMode(bool WireframeEnabled) {
+    DrawWireframe_ = WireframeEnabled;
+}
+
