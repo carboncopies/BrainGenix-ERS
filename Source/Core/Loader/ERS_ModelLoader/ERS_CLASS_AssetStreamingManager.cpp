@@ -103,6 +103,8 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
 
     } 
 
+    return UpdateRequests;
+
 
 }
 
@@ -149,6 +151,7 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
 
     } 
 
+    return UpdateRequests;
 
 }
 
