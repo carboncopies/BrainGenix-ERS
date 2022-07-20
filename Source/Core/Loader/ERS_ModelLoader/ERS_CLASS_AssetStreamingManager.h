@@ -109,6 +109,18 @@ private:
      */
     std::vector<ERS_STRUCT_Model*> CreateListOfModelsToLoadNextLevelToVRAM(std::map<unsigned int, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera);
 
+    /**
+     * @brief Creates a list of models that should be loaded into RAM ASAP.
+     * Prioritizes based on the camera update quotas generated earlier.
+     * 
+     * @param CameraUpdatesQuota 
+     * @param Scene
+     * @param DistancesFromCamera
+     * @return std::vector<ERS_STRUCT_Model*> 
+     */
+    std::vector<ERS_STRUCT_Model*> CreateListOfModelsToLoadNextLevelToRAM(std::map<unsigned int, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera);
+
+
 
 public:
 
