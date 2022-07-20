@@ -22,9 +22,9 @@ struct ERS_STRUCT_Texture {
     unsigned int ID;
     
     // New Loading System Info
-    std::vector<unsigned int> TextureIDs; /**<List of opengl ids for every texture level*/
-    std::vector<bool> LoadedInRAM; /**<True/false for every level showing if that level is loaded in RAM*/
-    std::vector<bool> LoadedInVRAM; /**<True/false for every level showing f that level is loaded in VRAM*/  
+    std::vector<unsigned int> LevelTextureIDs; /**<List of opengl ids for every texture level*/
+    std::vector<bool> LevelLoadedInRAM; /**<True/false for every level showing if that level is loaded in RAM*/
+    std::vector<bool> LevelLoadedInVRAM; /**<True/false for every level showing f that level is loaded in VRAM*/  
     std::vector<std::pair<int, int>> LevelResolutions; /**<List of all texture level's resolutions*/
     int NumberChannels; /**<Shows the number of color channels in this texture*/
 
