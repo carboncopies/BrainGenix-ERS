@@ -35,10 +35,7 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
     // 
 
     // Sort All Models Based On Distance From Each Camera
-    std::vector<std::map<float, unsigned int>> DistancesFromCamera;
-    for (unsigned int i = 0; i < Cameras.size(); i++) {
-        DistancesFromCamera.push_back(SortModelsByDistanceFromCamera(Scene, Cameras[i]));
-    }
+    std::vector<std::map<float, unsigned int>> DistancesFromCamera = SortModelsByDistanceFromCameras(Scene, Cameras);
 
 
 
@@ -60,10 +57,13 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 
 std::vector<std::map<float, unsigned int>> ERS_CLASS_AssetStreamingManager::SortModelsByDistanceFromCameras(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras) {
 
-    
+    std::vector<std::map<float, unsigned int>> DistancesFromCamera;
+    for (unsigned int i = 0; i < Cameras.size(); i++) {
+        DistancesFromCamera.push_back(SortModelsByDistanceFromCamera(Scene, Cameras[i]));
+    }
+    return DistancesFromCamera;
 
 }
-
 
 std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDistanceFromCamera(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Camera* Camera) {
 
@@ -80,7 +80,6 @@ std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDista
 
     return SortedDistances;
 }
-
 
 void ERS_CLASS_AssetStreamingManager::WorkerThread() {
     SystemUtils_->Logger_->Log("Starting Scene Texture Prioritization Thread", 5);
