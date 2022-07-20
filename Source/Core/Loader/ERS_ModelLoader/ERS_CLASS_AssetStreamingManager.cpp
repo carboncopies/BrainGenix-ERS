@@ -54,7 +54,7 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 
 }
 
-std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfModelsToLoadNextLevelToVRAM(std::map<ERS_STRUCT_Camera*, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera) {
+std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfModelsToLoadNextLevelToVRAM(std::map<unsigned int, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera) {
 
     // Create Vector Containing Models Which Should Be Pushed into RAM if possible
     std::vector<ERS_STRUCT_Model*> UpdateRequests;
@@ -67,15 +67,26 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
         int NumberUpdates = 0;
 
         for (unsigned int i = 0; i < ModelDistances.size(); i++) {
+
             ERS_STRUCT_Model* CurrentModel = Scene->Models[ModelDistances[i]].get();
+            if (NumberUpdates >= CameraUpdatesQuota[x]) {
+                break;
+            }
 
             // Check If Next Level Exists
-            if (CurrentModel->TextureLevelInVRAM_ < CurrentModel->MaxTextureLevel_) {
+            int CurrentLevel = CurrentModel->TextureLevelInVRAM_;
+            if (CurrentLevel < CurrentModel->MaxTextureLevel_) {
                 
                 // Calculate Total Texture Size For Next Level
                 int NextLevelTextureSize = 0;
                 for (unsigned int z = 0; z < CurrentModel->Textures_Loaded.size(); z++) {
-                    
+                    NextLevelTextureSize += CurrentModel->Textures_Loaded[i].LevelMemorySizeBytes[CurrentLevel];
+                }
+
+                // Check If Will Fit In Mem
+                if (ResourceMonitor_->TextureFitsInVRAMBudget(NextLevelTextureSize)) {
+                    UpdateRequests.push_back(CurrentModel);
+                    NumberUpdates++;
                 }
 
             }
