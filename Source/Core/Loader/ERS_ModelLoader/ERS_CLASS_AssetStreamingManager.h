@@ -91,10 +91,11 @@ private:
      * @brief Generates a dictionary based on the camera's pointer indicating how many loads/unloads should be allowed for every camera
      * This is based on the camera's priority setting.
      * 
-     * @param Cameras 
-     * @return std::map<ERS_STRUCT_Camera*, int> 
+     * @param NumberMaxUpdates The total amount of updates that are to be divided up between the different cameras
+     * @param Cameras Vector containing all the cameras pointers in it
+     * @return std::map<ERS_STRUCT_Camera*, int> Dict containing the camera's struct as the key, and the value being the number of loads/unloads it should have
      */
-    std::map<ERS_STRUCT_Camera*, int> CalculateCameraMaxUpdates(std::vector<ERS_STRUCT_Camera*> Cameras);
+    std::map<ERS_STRUCT_Camera*, int> CalculateCameraMaxUpdates(int NumberMaxUpdates, std::vector<ERS_STRUCT_Camera*> Cameras);
 
 
 public:
