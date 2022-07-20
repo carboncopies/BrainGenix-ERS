@@ -67,7 +67,15 @@ private:
      */
     void UpdateSceneStreamingQueue(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras);
 
-    
+    /**
+     * @brief Sorts the models in the given scene based on their distance from the camera.
+     * Returns a map containing the distance as well as the index in the model list for that model.
+     * 
+     * @param Scene 
+     * @param Camera 
+     * @return std::map<float, unsigned int> 
+     */
+    std::map<float, unsigned int> SortModelsByDistanceFromCamera(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Camera* Camera);
 
 
 public:
