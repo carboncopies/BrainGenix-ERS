@@ -67,6 +67,8 @@ private:
      */
     void UpdateSceneStreamingQueue(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras);
 
+    
+
 
 public:
 
