@@ -40,10 +40,7 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
         DistancesFromCamera.push_back(SortModelsByDistanceFromCamera(Scene, Cameras[i]));
     }
 
-    // To perform this sorting, we can use the std::map sort that was used in the shadowmap prioritization system
-    
 
-    // Then, For Each Camera, Sort By Distance
 
     // Next, Based On Camera Priority, Create List Of Items Needing To Be Updated Most,
     // as well as items that should be loaded to RAM
