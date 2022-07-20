@@ -8,6 +8,7 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <string>
+#include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <FreeImage.h>
