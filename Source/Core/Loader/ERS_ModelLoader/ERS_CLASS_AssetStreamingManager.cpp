@@ -56,6 +56,18 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
     std::vector<std::map<float, unsigned int>> DistancesFromCamera = SortModelsByDistanceFromCameras(Scene, Cameras);
 
 
+    for (std::map<float, unsigned int>::iterator it = DistancesFromCamera[0].begin(); it != DistancesFromCamera[0].end(); ++it) {
+        float Distance = it->first;
+        ERS_STRUCT_Model* Model = Scene->Models[it->second].get();
+
+        if (Distance < 2) {
+            Model->ModelLoadingStatus_ = "LoadNextLevelToVRAM";
+        } else {
+            Model->ModelLoadingStatus_ = "NoChange";
+        }
+
+    }
+
 
     // Next, Based On Camera Priority, Create List Of Items Needing To Be Updated Most,
     // as well as items that should be loaded to RAM
