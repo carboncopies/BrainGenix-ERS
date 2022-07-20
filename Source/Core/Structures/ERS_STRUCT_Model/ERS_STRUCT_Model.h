@@ -54,8 +54,6 @@ struct ERS_STRUCT_Model {
     std::string ModelLoadingStatus_ = "Not Yet Assigned"; /**<This stores the command state that the asset management system uses to determine what to do*/
     int TextureLevelInRAM_ = 0; /**<Determines the current texture level in RAM*/
     int TextureLevelInVRAM_ = 0; /**<Determines the current texture level in RAM*/
-    int MaxTextureLevel_ = -1; /**<Determines the max texture level available, Only should be adjusted by the asset system*/
-
 
 
     // Shadows Information

@@ -56,7 +56,25 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 
 std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfModelsToLoadNextLevelToVRAM(std::map<ERS_STRUCT_Camera*, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera) {
 
-    // 
+    // Create Vector Containing Models Which Should Be Pushed into RAM if possible
+    std::vector<ERS_STRUCT_Model*> UpdateRequests;
+
+    // Iterate Over All Cameras, And Determine What Needs To Be Loaded
+    for (unsigned int x = 0; x < DistancesFromCamera.size(); x++) {
+
+        // Setup Vars To Count Number Of Updates, etc.
+        std::map<float, unsigned int> ModelDistances = DistancesFromCamera[x];
+        int NumberUpdates = 0;
+
+        for (unsigned int i = 0; i < ModelDistances.size(); i++) {
+            ERS_STRUCT_Model* CurrentModel = Scene->Models[ModelDistances[i]].get();
+
+            CurrentModel->
+
+        }
+
+    } 
+
 
 }
 
