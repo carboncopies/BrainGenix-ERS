@@ -54,6 +54,8 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 
 }
 
+// TODO: Add visual contribution as a factor when determining what textures to load
+
 std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfModelsToLoadNextLevelToVRAM(std::map<unsigned int, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera) {
 
     // Create Vector Containing Models Which Should Be Pushed into RAM if possible
@@ -86,6 +88,7 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
                 // Check If Will Fit In Mem
                 if (ResourceMonitor_->TextureFitsInVRAMBudget(NextLevelTextureSize)) {
                     UpdateRequests.push_back(CurrentModel);
+                    CurrentModel->AssetLoadngStateVRAM = 1;
                     NumberUpdates++;
                 }
 
