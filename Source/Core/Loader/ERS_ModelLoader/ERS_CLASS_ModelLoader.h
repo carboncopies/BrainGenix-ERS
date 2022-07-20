@@ -63,7 +63,6 @@ class ERS_CLASS_ModelLoader {
 
 private:
 
-    std::unique_ptr<ERS_CLASS_AssetStreamingManager> AssetStreamingManager_; /**<Asset Streaming Manager Instance*/
 
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Struct*/
@@ -152,6 +151,9 @@ private:
 
 
 public:
+
+    std::unique_ptr<ERS_CLASS_AssetStreamingManager> AssetStreamingManager_; /**<Asset Streaming Manager Instance*/
+
 
     void ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model); /**<Process the GPU stuff for each model*/
 
