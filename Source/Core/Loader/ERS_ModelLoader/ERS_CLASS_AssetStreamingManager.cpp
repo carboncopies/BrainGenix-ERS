@@ -113,7 +113,7 @@ std::map<unsigned int, int> ERS_CLASS_AssetStreamingManager::CalculateCameraMaxU
     }
 
     // Convert Update Percentages Into Actual Update Totals
-    std::map<ERS_STRUCT_Camera*, int> CameraUpdateMap;
+    std::map<int, int> CameraUpdateMap;
     for (unsigned int i = 0; i < Cameras.size(); i++) {
         int CameraUpdateCount = round(CameraUpdatePercentages[i] * NumberMaxUpdates);
         CameraUpdateMap.insert(std::make_pair(i, CameraUpdateCount));
