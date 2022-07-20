@@ -164,7 +164,6 @@ void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUC
 // todo:
 // add option to viewport struct to color code the bounding boxes based on the loading system (so different colors would indicate loading vs unloading for example)
 // then add option to just draw normal color
-// fix offset caused during rotation due to object's center not being the center of the box.
 
 void ERS_CLASS_BoundingBoxRenderer::DrawModel(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Model* Model, glm::vec3 Color) {
 
