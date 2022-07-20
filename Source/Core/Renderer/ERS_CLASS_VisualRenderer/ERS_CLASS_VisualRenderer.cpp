@@ -63,6 +63,8 @@ void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defa
 
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
 
+    // TEMPORARY____________________-------------------------------------------------------------------------------------------------------------
+    ProjectUtils_->ModelLoader_->AssetStreamingManager_->SetCurrentScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get());
 
 
     // Set Depth Shader For Shadow System
