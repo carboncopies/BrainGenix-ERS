@@ -41,6 +41,8 @@ struct ERS_STRUCT_Model {
     glm::vec3 BoxScale_; /**<Bounding Box Size In Local Space (Multiply By Object's scale value to get true size)*/
     glm::vec3 BoxOffset_; /**<Offset the center of the box so it's synced with the center of the model*/
 
+
+
     // Model Data
     std::vector<ERS_STRUCT_Mesh> Meshes;
     std::vector<ERS_STRUCT_Texture> Textures_Loaded;
@@ -48,6 +50,11 @@ struct ERS_STRUCT_Model {
     std::string Name = "Name Not Assigned";
     long ShaderOverrideIndex_ = -1; /**<If not -1, This indicates that the model is requesting a custom shader, and the value is the index of the shader in the system*/
     long AssetID;
+
+    std::string ModelLoadingStatus_ = "Not Yet Assigned"; /**<This stores the command state that the asset management system uses to determine what to do*/
+    int TextureLevelInRAM_ = 0; /**<Determines the current texture level in RAM*/
+    int TextureLevelInVRAM_ = 0; /**<Determines the current texture level in RAM*/
+    int MaxTextureLevel_ = -1; /**<Determines the max texture level available, Only should be adjusted by the asset system*/
 
 
 
