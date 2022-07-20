@@ -103,9 +103,11 @@ private:
      * Prioritizes based on the camera update quotas generated earlier.
      * 
      * @param CameraUpdatesQuota 
+     * @param Scene
+     * @param DistancesFromCamera
      * @return std::vector<ERS_STRUCT_Model*> 
      */
-    std::vector<ERS_STRUCT_Model*> CreateListOfModelsToLoadNextLevelToVRAM(std::map<ERS_STRUCT_Camera*, int> CameraUpdatesQuota);
+    std::vector<ERS_STRUCT_Model*> CreateListOfModelsToLoadNextLevelToVRAM(std::map<ERS_STRUCT_Camera*, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera);
 
 
 public:
