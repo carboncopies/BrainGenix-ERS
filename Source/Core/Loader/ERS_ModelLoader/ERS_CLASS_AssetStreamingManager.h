@@ -87,6 +87,15 @@ private:
      */
     std::vector<std::map<float, unsigned int>> SortModelsByDistanceFromCameras(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras);
 
+    /**
+     * @brief Generates a dictionary based on the camera's pointer indicating how many loads/unloads should be allowed for every camera
+     * This is based on the camera's priority setting.
+     * 
+     * @param Cameras 
+     * @return std::map<ERS_STRUCT_Camera*, int> 
+     */
+    std::map<ERS_STRUCT_Camera*, int> CalculateCameraMaxUpdates(std::vector<ERS_STRUCT_Camera*> Cameras);
+
 
 public:
 
