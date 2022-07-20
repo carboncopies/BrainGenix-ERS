@@ -13,6 +13,8 @@ ERS_CLASS_AssetStreamingManager::ERS_CLASS_AssetStreamingManager(ERS_STRUCT_Syst
     // Setup Subsystems
     ResourceMonitor_ = std::make_unique<ERS_CLASS_AssetStreamingSystemResourceMonitor>(SystemUtils_);
 
+    // Create Worker Thread
+
 }
 
 ERS_CLASS_AssetStreamingManager::~ERS_CLASS_AssetStreamingManager() {
@@ -207,7 +209,9 @@ void ERS_CLASS_AssetStreamingManager::WorkerThread() {
         std::unique_lock<std::mutex> Lock(SortingThreadMutex_);
 
         // Update Scene
-        UpdateSceneStreamingQueue(CurrentScene_, Cameras_);
+        if (CurrentScene_ != nullptr) {
+            UpdateSceneStreamingQueue(CurrentScene_, Cameras_);
+        }
 
         // Check If Thread Needs To Exit
         if (SortingThreadShouldExit_) {
