@@ -116,12 +116,32 @@ void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUC
         ModelMatrix = glm::rotate(ModelMatrix, glm::radians(Scene->Models[i]->ModelRotation.x), glm::vec3(1, 0, 0));
         ModelMatrix = glm::scale(ModelMatrix, Scene->Models[i]->ModelScale * Scene->Models[i]->BoxScale_);
 
+
+        // Determine Color Based On Loading Status
+        std::string LoadingStatus = Scene->Models[i]->ModelLoadingStatus_;
+        glm::vec3 ModelOutlineColor = glm::vec3(1.0f, 1.0f, 1.0f);
+        if (LoadingStatus == "LoadNextLevelToRAM") {
+            ModelOutlineColor = glm::vec3(0.2f, 0.2f, 0.5f);
+        } else if (LoadingStatus == "LoadNextLevelToVRAM") {
+            ModelOutlineColor = glm::vec3(0.1f, 0.1f, 1.0f);
+        } else if (LoadingStatus == "UnloadCurrentLevelFromVRAM") {
+            ModelOutlineColor = glm::vec3(1.0f, 0.1f, 0.1f);
+        } else if (LoadingStatus == "UnloadcurrentLevelFromRAM") {
+            ModelOutlineColor = glm::vec3(0.5f, 0.2f, 0.2f);
+        } else if (LoadingStatus == "UnloadAllLevels") {
+            ModelOutlineColor = glm::vec3(0.75f, 0.75f, 0.1f);
+        } else if (LoadingStatus == "LoadAllLevels") {
+            ModelOutlineColor = glm::vec3(0.1f, 0.75f, 0.75f);
+        } else if (LoadingStatus == "NoChange") {
+            ModelOutlineColor = glm::vec3(0.1f, 1.0f, 1.0f);
+        }
+
         // Set Shader Uniforms
         BoundingBoxRendererShader_->SetMat4("Model", ModelMatrix);
         BoundingBoxRendererShader_->SetMat4("View", View);
         BoundingBoxRendererShader_->SetMat4("Projection", Projection);
 
-        BoundingBoxRendererShader_->SetVec4("Color", glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+        BoundingBoxRendererShader_->SetVec4("Color", glm::vec4(ModelOutlineColor, 1.0f));
 
 
         // Draw Vertices
