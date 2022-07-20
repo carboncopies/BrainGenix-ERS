@@ -20,13 +20,22 @@ struct ERS_STRUCT_Texture {
 
     // Set OpenGL Handles
     unsigned int ID;
-    
+
+
+
     // New Loading System Info
     std::vector<unsigned int> LevelTextureIDs; /**<List of opengl ids for every texture level*/
     std::vector<bool> LevelLoadedInRAM; /**<True/false for every level showing if that level is loaded in RAM*/
     std::vector<bool> LevelLoadedInVRAM; /**<True/false for every level showing f that level is loaded in VRAM*/  
     std::vector<std::pair<int, int>> LevelResolutions; /**<List of all texture level's resolutions*/
+    std::vector<int> LevelMemorySizeBytes; /**<Tells the system how many bytes every level will take*/
+
+    int TextureLevelInRAM_ = 0; /**<Determines the current texture level in RAM*/
+    int TextureLevelInVRAM_ = 0; /**<Determines the current texture level in RAM*/
+
     int NumberChannels; /**<Shows the number of color channels in this texture*/
+
+
 
     // Set ImageData For Deferred OpenGL Loading
     float Channels;

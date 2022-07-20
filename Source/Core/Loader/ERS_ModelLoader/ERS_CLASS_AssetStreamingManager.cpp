@@ -69,7 +69,10 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
         for (unsigned int i = 0; i < ModelDistances.size(); i++) {
             ERS_STRUCT_Model* CurrentModel = Scene->Models[ModelDistances[i]].get();
 
-            CurrentModel->
+            // Check If Next Level Exists
+            if ()
+
+            // Calculate Total Texture Size For Next Level
 
         }
 
