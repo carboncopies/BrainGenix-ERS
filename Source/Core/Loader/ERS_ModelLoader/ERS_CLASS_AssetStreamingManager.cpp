@@ -101,6 +101,53 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
 
 }
 
+
+std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfModelsToLoadNextLevelToRAM(std::map<unsigned int, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera) {
+
+    // Create Vector Containing Models Which Should Be Pushed into RAM if possible
+    std::vector<ERS_STRUCT_Model*> UpdateRequests;
+
+    // Iterate Over All Cameras, And Determine What Needs To Be Loaded
+    for (unsigned int x = 0; x < DistancesFromCamera.size(); x++) {
+
+        // Setup Vars To Count Number Of Updates, etc.
+        std::map<float, unsigned int> ModelDistances = DistancesFromCamera[x];
+        int NumberUpdates = 0;
+
+        for (unsigned int i = 0; i < ModelDistances.size(); i++) {
+
+            ERS_STRUCT_Model* CurrentModel = Scene->Models[ModelDistances[i]].get();
+            if (NumberUpdates >= CameraUpdatesQuota[x]) {
+                break;
+            }
+
+            // Check If Next Level Exists
+            int CurrentLevel = CurrentModel->TextureLevelInRAM_;
+            if (CurrentLevel < CurrentModel->MaxTextureLevel_) {
+                
+                // Calculate Total Texture Size For Next Level
+                int NextLevelTextureSize = 0;
+                for (unsigned int z = 0; z < CurrentModel->Textures_Loaded.size(); z++) {
+                    NextLevelTextureSize += CurrentModel->Textures_Loaded[i].LevelMemorySizeBytes[CurrentLevel];
+                }
+
+                // Check If Will Fit In Mem
+                if (ResourceMonitor_->TextureFitsInRAMBudget(NextLevelTextureSize)) {
+                    UpdateRequests.push_back(CurrentModel);
+                    CurrentModel->AssetLoadngStateRAM = 1;
+                    NumberUpdates++;
+                }
+
+            }
+
+        }
+
+    } 
+
+
+}
+
+
 std::map<unsigned int, int> ERS_CLASS_AssetStreamingManager::CalculateCameraMaxUpdates(int NumberMaxUpdates, std::vector<ERS_STRUCT_Camera*> Cameras) {
 
     // Sum Camera Priorities
