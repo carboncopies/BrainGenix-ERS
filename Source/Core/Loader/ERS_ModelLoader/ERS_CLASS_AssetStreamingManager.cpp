@@ -56,7 +56,24 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 
 std::map<ERS_STRUCT_Camera*, int> ERS_CLASS_AssetStreamingManager::CalculateCameraMaxUpdates(int NumberMaxUpdates, std::vector<ERS_STRUCT_Camera*> Cameras) {
 
-    // 
+    // Sum Camera Priorities
+    int TotalCameraPriorities = 0;
+    for (unsigned int i = 0; i < Cameras.size(); i++) {
+        TotalCameraPriorities += Cameras[i]->Priority_;
+    }
+
+    // Calculate Percentage Of Total Updates Each Camera Should Have
+    std::vector<float> CameraUpdatePercentages;
+    for (unsigned int i = 0; i < Cameras.size(); i++) {
+        CameraUpdatePercentages.push_back(Cameras[i]->Priority_ / TotalCameraPriorities);
+    }
+
+    // Convert Update Percentages Into Actual Update Totals
+    std::map<ERS_STRUCT_Camera*, int> CameraUpdateCount;
+    for (unsigned int i = 0; i < Cameras.size(); i++) {
+        int CameraUpdateCount = round(CameraUpdatePercentages[i] * NumberMaxUpdates);
+        CameraUpdateCount.insert(std::make_pair(Cameras[i], CameraUpdateCount));
+    }
 
 }
 
