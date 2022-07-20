@@ -77,6 +77,16 @@ private:
      */
     std::map<float, unsigned int> SortModelsByDistanceFromCamera(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Camera* Camera);
 
+    /**
+     * @brief Sorts all models in the scene for every camera.
+     * Returns map of distances and model index sorted by distance for each camera.
+     * 
+     * @param Scene 
+     * @param Cameras 
+     * @return std::vector<std::map<float, unsigned int>> 
+     */
+    std::vector<std::map<float, unsigned int>> SortModelsByDistanceFromCameras(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras);
+
 
 public:
 
