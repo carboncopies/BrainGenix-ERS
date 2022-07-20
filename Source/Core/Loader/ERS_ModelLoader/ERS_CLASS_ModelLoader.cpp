@@ -556,6 +556,31 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     SystemUtils_->Logger_->Log("Finished Moving Model By Detected Offset", 3);
 
 
+
+
+    // Testing Stuff -Delete Later-
+    for (unsigned int i = 0; i < Model->Textures_Loaded.size(); i++) {
+        ERS_STRUCT_Texture* Tex = &Model->Textures_Loaded[i];
+        
+        int NumLayers = 4;
+
+        for (unsigned int x = 0; x < NumLayers; x++) {
+            Tex->LevelTextureIDs.push_back(0);
+            Tex->LevelLoadedInRAM.push_back(false);
+            Tex->LevelLoadedInVRAM.push_back(false);
+            Tex->LevelResolutions.push_back(std::make_pair(x*x*10,x*x*10));
+            Tex->LevelMemorySizeBytes.push_back(x*x*80000000);
+            
+        }
+
+    }
+
+
+
+
+
+
+
     // Set Ready For GPU
     Model->IsReadyForGPU = true;
 }
