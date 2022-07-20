@@ -55,6 +55,22 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 }
 
 
+std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDistanceFromCamera(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Camera* Camera) {
+
+    // Create Sorted List Of Distances Based On Position
+    std::map<float, unsigned int> Distances;        
+    for (unsigned int i = 0; i < Scene->Models.size(); i++) {
+        float Distance = glm::distance(Camera->Position_, Scene->Models[i]->ModelPosition);
+        Distances.insert(std::make_pair(Distance, i));
+    }
+    std::map<float, unsigned int> SortedDistances; 
+    for (auto const& Entry : Distances) {
+        SortedDistances.insert(std::make_pair(Entry.first, Entry.second));
+    }
+
+    return SortedDistances;
+}
+
 
 void ERS_CLASS_AssetStreamingManager::WorkerThread() {
     SystemUtils_->Logger_->Log("Starting Scene Texture Prioritization Thread", 5);
