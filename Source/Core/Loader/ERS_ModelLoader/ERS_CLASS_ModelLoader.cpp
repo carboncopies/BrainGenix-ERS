@@ -545,6 +545,17 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     + std::to_string(Model->BoxOffset_.z) + "Z'";
     SystemUtils_->Logger_->Log(LogMsg, 3);
 
+
+    // Move Verts By Detected Offset
+    SystemUtils_->Logger_->Log("Moving Model By Detected Offset", 4);
+    for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
+        for (unsigned long x = 0; x < Model->Meshes[i].Vertices.size(); x++) {
+            Model->Meshes[i].Vertices[x].Position += Model->BoxOffset_;
+        }
+    }
+    SystemUtils_->Logger_->Log("Finished Moving Model By Detected Offset", 3);
+
+
     // Set Ready For GPU
     Model->IsReadyForGPU = true;
 }
