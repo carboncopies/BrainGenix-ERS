@@ -54,7 +54,11 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 
 }
 
+std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfModelsToLoadNextLevelToVRAM(std::map<ERS_STRUCT_Camera*, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene) {
 
+    // 
+
+}
 
 std::map<ERS_STRUCT_Camera*, int> ERS_CLASS_AssetStreamingManager::CalculateCameraMaxUpdates(int NumberMaxUpdates, std::vector<ERS_STRUCT_Camera*> Cameras) {
 
