@@ -34,6 +34,12 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
     // Also update the model struct with a parameter that forces it to always be loaded in
     // 
 
+    // Sort All Models Based On Distance From Each Camera
+    std::vector<std::map<float, unsigned int>> DistancesFromCamera;
+    for (unsigned int i = 0; i < Cameras.size(); i++) {
+        DistancesFromCamera.push_back(SortModelsByDistanceFromCamera(Scene, Cameras[i]));
+    }
+
     // To perform this sorting, we can use the std::map sort that was used in the shadowmap prioritization system
     
 
