@@ -97,6 +97,16 @@ private:
      */
     std::map<ERS_STRUCT_Camera*, int> CalculateCameraMaxUpdates(int NumberMaxUpdates, std::vector<ERS_STRUCT_Camera*> Cameras);
 
+    
+    /**
+     * @brief Creates a list of models that should be loaded into VRAM ASAP.
+     * Prioritizes based on the camera update quotas generated earlier.
+     * 
+     * @param CameraUpdatesQuota 
+     * @return std::vector<ERS_STRUCT_Model*> 
+     */
+    std::vector<ERS_STRUCT_Model*> CreateListOfModelsToLoadNextLevelToVRAM(std::map<ERS_STRUCT_Camera*, int> CameraUpdatesQuota);
+
 
 public:
 

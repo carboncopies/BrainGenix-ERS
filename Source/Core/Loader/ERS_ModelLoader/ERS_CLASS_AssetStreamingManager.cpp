@@ -54,6 +54,8 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 
 }
 
+
+
 std::map<ERS_STRUCT_Camera*, int> ERS_CLASS_AssetStreamingManager::CalculateCameraMaxUpdates(int NumberMaxUpdates, std::vector<ERS_STRUCT_Camera*> Cameras) {
 
     // Sum Camera Priorities
