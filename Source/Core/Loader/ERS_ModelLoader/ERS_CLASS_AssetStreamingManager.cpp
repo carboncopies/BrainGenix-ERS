@@ -98,7 +98,7 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
 
 }
 
-std::map<ERS_STRUCT_Camera*, int> ERS_CLASS_AssetStreamingManager::CalculateCameraMaxUpdates(int NumberMaxUpdates, std::vector<ERS_STRUCT_Camera*> Cameras) {
+std::map<unsigned int, int> ERS_CLASS_AssetStreamingManager::CalculateCameraMaxUpdates(int NumberMaxUpdates, std::vector<ERS_STRUCT_Camera*> Cameras) {
 
     // Sum Camera Priorities
     int TotalCameraPriorities = 0;
@@ -116,7 +116,7 @@ std::map<ERS_STRUCT_Camera*, int> ERS_CLASS_AssetStreamingManager::CalculateCame
     std::map<ERS_STRUCT_Camera*, int> CameraUpdateMap;
     for (unsigned int i = 0; i < Cameras.size(); i++) {
         int CameraUpdateCount = round(CameraUpdatePercentages[i] * NumberMaxUpdates);
-        CameraUpdateMap.insert(std::make_pair(Cameras[i], CameraUpdateCount));
+        CameraUpdateMap.insert(std::make_pair(i, CameraUpdateCount));
     }
 
     return CameraUpdateMap;

@@ -93,9 +93,9 @@ private:
      * 
      * @param NumberMaxUpdates The total amount of updates that are to be divided up between the different cameras
      * @param Cameras Vector containing all the cameras pointers in it
-     * @return std::map<ERS_STRUCT_Camera*, int> Dict containing the camera's struct as the key, and the value being the number of loads/unloads it should have
+     * @return std::map<unsigned int, int> Dict containing the camera's index as the key, and the value being the number of loads/unloads it should have
      */
-    std::map<ERS_STRUCT_Camera*, int> CalculateCameraMaxUpdates(int NumberMaxUpdates, std::vector<ERS_STRUCT_Camera*> Cameras);
+    std::map<unsigned int, int> CalculateCameraMaxUpdates(int NumberMaxUpdates, std::vector<ERS_STRUCT_Camera*> Cameras);
 
     
     /**
@@ -107,7 +107,7 @@ private:
      * @param DistancesFromCamera
      * @return std::vector<ERS_STRUCT_Model*> 
      */
-    std::vector<ERS_STRUCT_Model*> CreateListOfModelsToLoadNextLevelToVRAM(std::map<ERS_STRUCT_Camera*, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera);
+    std::vector<ERS_STRUCT_Model*> CreateListOfModelsToLoadNextLevelToVRAM(std::map<unsigned int, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera);
 
 
 public:
