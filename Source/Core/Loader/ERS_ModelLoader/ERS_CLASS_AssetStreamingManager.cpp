@@ -75,6 +75,8 @@ std::map<ERS_STRUCT_Camera*, int> ERS_CLASS_AssetStreamingManager::CalculateCame
         CameraUpdateMap.insert(std::make_pair(Cameras[i], CameraUpdateCount));
     }
 
+    return CameraUpdateMap;
+
 }
 
 std::vector<std::map<float, unsigned int>> ERS_CLASS_AssetStreamingManager::SortModelsByDistanceFromCameras(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras) {
