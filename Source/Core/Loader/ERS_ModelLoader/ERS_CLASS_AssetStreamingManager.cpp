@@ -14,6 +14,9 @@ ERS_CLASS_AssetStreamingManager::ERS_CLASS_AssetStreamingManager(ERS_STRUCT_Syst
     ResourceMonitor_ = std::make_unique<ERS_CLASS_AssetStreamingSystemResourceMonitor>(SystemUtils_);
 
     // Create Worker Thread
+    SystemUtils_->Logger_->Log("Starting Asset Streaming Subsystem Sorting Thread", 4);
+    SceneSortingThread_ = std::thread(&ERS_CLASS_AssetStreamingManager::WorkerThread, this);
+    SystemUtils_->Logger_->Log("Launched Asset Streaming Subsystem Sorting Thread", 3);
 
 }
 
@@ -202,7 +205,7 @@ std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDista
 }
 
 void ERS_CLASS_AssetStreamingManager::WorkerThread() {
-    SystemUtils_->Logger_->Log("Starting Scene Texture Prioritization Thread", 5);
+    SystemUtils_->Logger_->Log("Asset Streaming Subsystem Sorting Thread Started", 3);
     while (true) {
 
         // Make Sure Nobody Messes With The Scene Pointers While We're Using Them
