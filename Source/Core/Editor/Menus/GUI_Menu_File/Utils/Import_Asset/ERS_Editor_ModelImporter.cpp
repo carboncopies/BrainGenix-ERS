@@ -232,6 +232,77 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
 
 
+void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath) {
+
+    // Copy Textures
+    std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
+    std::vector<long> TextureIDs = SystemUtils_->ERS_IOSubsystem_->BatchAllocateIDs(TextureList_.size());
+    for (int i = 0; (long)i < (long)TextureList_.size(); i++) {
+        SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(TextureIDs[i]) + std::string("' To Texture '") + TextureList_[i] + std::string("'")).c_str(), 4);
+        bool Success = ReadFile(TextureList_[i], Data.get());
+        Data->AssetTypeName = "Texture";
+        Data->AssetFileName = TextureList_[i].substr(AssetPath.find_last_of("/") + 1, AssetPath.size() - 1);
+        Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
+
+
+        bool SecondTryStatus = false;
+        if (!Success) {
+            SystemUtils_->Logger_->Log(std::string("Error Loading Texture From Given Path '") + AssetPath + std::string("', Will Search Current Directory For Texture"), 7);
+
+            // Strip To Last Item In Path (With Forward Slashes And Backward Slashes)
+            std::string Path = TextureList_[i];
+            std::replace(Path.begin(), Path.end(), '\\', '/');
+            if (Path.find("/") != std::string::npos) {
+                Path = Path.substr(Path.find_last_of("/") + 1, Path.size()-1);
+            }
+
+            // Create Reference String To Be Tested Against
+            std::string RefString = Path.substr(0, Path.find_first_of("."));
+            size_t Pos = 0;
+            while ((Pos = RefString.find(" ", Pos)) != std::string::npos) {
+                RefString.replace(Pos, 1, "_");
+                Pos ++;
+            }
+
+            // Check Against Filesystem
+            std::replace(AssetPath.begin(), AssetPath.end(), '\\', '/');
+            for (const auto &Entry : std::filesystem::recursive_directory_iterator(AssetPath.substr(0, AssetPath.find_last_of("/")))) {
+
+                std::string FilePath{Entry.path().u8string()};
+                std::replace(FilePath.begin(), FilePath.end(), '\\', '/');
+                std::string FileName = FilePath.substr(FilePath.find_last_of('/') + 1, FilePath.size() - 1);
+                std::string FileNameWithoutExtension = FileName.substr(0, FileName.find_first_of("."));
+
+                // Remove Spaces From Filename And Replace With Underscores
+                Pos = 0;
+                while ((Pos = FileNameWithoutExtension.find(" ", Pos)) != std::string::npos) {
+                    FileNameWithoutExtension.replace(Pos, 1, "_");
+                    Pos ++;
+                }
+
+
+                if (FileNameWithoutExtension == RefString) {
+                    Path = FilePath;
+                    SystemUtils_->Logger_->Log(std::string("Found Potential Match '") + FilePath + std::string("', Attempting To Load"), 5);
+                    break;
+                }
+
+            
+            }
+
+
+            SecondTryStatus = ReadFile(Path, Data.get());
+            
+            if (!SecondTryStatus) {
+                SystemUtils_->Logger_->Log("Failed To Find Texture During Second Try Effort, Abandoning Texture", 8);
+            } else {
+                SystemUtils_->Logger_->Log("Found Probable File, However This Is Not Guarenteed To Be Correct", 6);
+            }
+
+        }
+
+}
+
 // Process Nodes
 void ERS_CLASS_ModelImporter::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory) {
 
