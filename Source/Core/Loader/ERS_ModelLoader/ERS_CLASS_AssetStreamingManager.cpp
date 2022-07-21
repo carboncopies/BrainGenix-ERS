@@ -149,8 +149,6 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
 
 
 }
-
-
 std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfModelsToLoadNextLevelToRAM(std::map<unsigned int, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera) {
 
     // Create Vector Containing Models Which Should Be Pushed into RAM if possible
@@ -196,7 +194,6 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
     return UpdateRequests;
 
 }
-
 
 std::map<unsigned int, int> ERS_CLASS_AssetStreamingManager::CalculateCameraMaxUpdates(int NumberMaxUpdates, std::vector<ERS_STRUCT_Camera*> Cameras) {
 

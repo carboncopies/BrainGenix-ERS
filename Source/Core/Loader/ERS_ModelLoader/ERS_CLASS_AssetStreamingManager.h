@@ -114,6 +114,16 @@ private:
      */
     std::vector<ERS_STRUCT_Model*> CreateListOfModelsToLoadNextLevelToRAM(std::map<unsigned int, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera);
 
+    
+    /**
+     * @brief Iterates over all models in the scene and sorts what they should be doing.
+     * 
+     * @param CameraUpdatesQuota 
+     * @param DistancesFromCamera 
+     * @param Scene 
+     */
+    void SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::map<float, unsigned int>> DistancesFromCamera, ERS_STRUCT_Scene* Scene);
+
 
 
 public:
