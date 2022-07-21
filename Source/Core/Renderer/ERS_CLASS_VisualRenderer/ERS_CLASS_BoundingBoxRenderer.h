@@ -36,7 +36,7 @@ private:
     unsigned int BoundingBoxRendererVAO_; /**<OpenGL ID To BoundingBoxRenderer Vertex Array Object*/
     float BoundingBoxRendererScale_ = 0.1f; /**<Scale of editor icons*/
 
-    int BoundingBoxDisplayMode_ = 0; /**<Sets the type of info displayed. 0 is a solid color, 1 is RAM priority, 2, VRAM priority, 3 is ram current texture level, 4 is vram current tex level*/ 
+    int BoundingBoxDisplayMode_ = 1; /**<Sets the type of info displayed. 0 is a solid color, 1 is RAM priority, 2, VRAM priority, 3 is ram current texture level, 4 is vram current tex level*/ 
 
     bool DisableDepthTest_ = true; /**<Tell the renderer to disable the depth test prior to drawing the boxes*/
     bool DrawWireframe_ = true; /**<Tell the system to enable or disable wireframe mode*/
