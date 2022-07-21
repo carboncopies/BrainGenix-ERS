@@ -559,6 +559,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
 
 
     // Testing Stuff -Delete Later-
+    Model->MaxTextureLevel_ = 10;
     for (unsigned int i = 0; i < Model->Textures_Loaded.size(); i++) {
         ERS_STRUCT_Texture* Tex = &Model->Textures_Loaded[i];
         
