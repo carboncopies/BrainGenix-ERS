@@ -60,7 +60,7 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
         float Distance = it->first;
         ERS_STRUCT_Model* Model = Scene->Models[it->second].get();
 
-        if (Distance < 2) {
+        if (Distance < 4) {
             Model->ModelLoadingStatus_ = "LoadNextLevelToVRAM";
         } else {
             Model->ModelLoadingStatus_ = "NoChange";
