@@ -48,13 +48,7 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
         Models.push_back(Scene->Models[i].get());        
     }
 
-    // Update camera struct with param about priority
-    // Also update the model struct with a parameter that forces it to always be loaded in
-    // 
 
-    for (unsigned int i = 0; i < Scene->Models.size(); i++) {
-        Scene->Models[i]->ModelLoadingStatus_ = "NoChange";
-    }
 
     // Sort All Models Based On Distance From Each Camera
     std::vector<std::map<float, unsigned int>> DistancesFromCamera = SortModelsByDistanceFromCameras(Scene, Cameras);

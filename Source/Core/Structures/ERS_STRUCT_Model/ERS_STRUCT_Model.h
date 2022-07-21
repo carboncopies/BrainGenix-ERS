@@ -51,7 +51,6 @@ struct ERS_STRUCT_Model {
     long ShaderOverrideIndex_ = -1; /**<If not -1, This indicates that the model is requesting a custom shader, and the value is the index of the shader in the system*/
     long AssetID;
 
-    std::string ModelLoadingStatus_ = "Not Yet Assigned"; /**<This stores the command state that the asset management system uses to determine what to do*/
     int TextureLevelInRAM_ = 0; /**<Determines the current texture level in RAM*/
     int TextureLevelInVRAM_ = 0; /**<Determines the current texture level in RAM*/
     int MaxTextureLevel_ = -1; /**<Determines the max texture level available, Only should be adjusted by the asset system*/
