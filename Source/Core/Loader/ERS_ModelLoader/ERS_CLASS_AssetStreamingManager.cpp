@@ -97,7 +97,7 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 
 }
 
-void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::map<float, unsigned int>> DistancesFromCamera, ERS_STRUCT_Scene* Scene, float DistanceCutoff) {
+void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::map<float, unsigned int>> DistancesFromCamera, ERS_STRUCT_Scene* Scene, float DistanceCutoffVRAM, float DistanceCutoffRAM) {
 
     // Reset All Target Distances
     for (unsigned int i = 0; i < Scene->Models.size(); i++) {
@@ -122,36 +122,45 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             int NumberTextureLevels = Model->MaxTextureLevel_ + 1;
 
             // Calculate Distance Per Level Cutoff
-            float DistancePerLevel = DistanceCutoff / NumberTextureLevels;
-            int TargetTextureLevel = NumberTextureLevels - round(ModelDistance / DistancePerLevel);
-            if (TargetTextureLevel > NumberTextureLevels - 1) {
-                TargetTextureLevel = NumberTextureLevels - 1;
+            float DistancePerLevelVRAM = DistanceCutoffVRAM / NumberTextureLevels;
+            float DistancePerLevelRAM = DistanceCutoffRAM / NumberTextureLevels;
+            int TargetTextureLevelVRAM = NumberTextureLevels - round(ModelDistance / DistancePerLevelVRAM);
+            int TargetTextureLevelRAM = NumberTextureLevels - round(ModelDistance / DistancePerLevelRAM);
+            if (TargetTextureLevelVRAM > NumberTextureLevels - 1) {
+                TargetTextureLevelVRAM = NumberTextureLevels - 1;
+            }
+            if (TargetTextureLevelRAM > NumberTextureLevels - 1) {
+                TargetTextureLevelRAM = NumberTextureLevels - 1;
             }
 
             // Calculate Texture Size
-            int TextureSize = 0;
+            int TextureSizeVRAM = 0;
+            int TextureSizeRAM = 0;
             for (unsigned int i = 0; i < Model->Textures_Loaded.size(); i++) {
-                TextureSize += Model->Textures_Loaded[i].LevelMemorySizeBytes[TargetTextureLevel];
+                TextureSizeVRAM += Model->Textures_Loaded[i].LevelMemorySizeBytes[TargetTextureLevelVRAM];
+            }
+            for (unsigned int i = 0; i < Model->Textures_Loaded.size(); i++) {
+                TextureSizeRAM += Model->Textures_Loaded[i].LevelMemorySizeBytes[TargetTextureLevelRAM];
             }
 
             // Check What Can Fit Into VRAM
-            bool AlreadyHasVRAMLevel = Model->TextureLevelInVRAM_ >= TargetTextureLevel;
+            bool AlreadyHasVRAMLevel = Model->TextureLevelInVRAM_ >= TargetTextureLevelVRAM;
             bool VRAMUpdateQuotaExceeded = CameraVRAMUpdates >= MaxCameraUpdates;
-            bool TextureFitsInVRAM = ResourceMonitor_->TextureFitsInVRAMBudget(TextureSize);
+            bool TextureFitsInVRAM = ResourceMonitor_->TextureFitsInVRAMBudget(TextureSizeVRAM);
             if (!AlreadyHasVRAMLevel && !VRAMUpdateQuotaExceeded && TextureFitsInVRAM) {
-                if (Model->TargetTextureLevelVRAM < TargetTextureLevel) {
-                    Model->TargetTextureLevelVRAM = TargetTextureLevel;
+                if (Model->TargetTextureLevelVRAM < TargetTextureLevelVRAM) {
+                    Model->TargetTextureLevelVRAM = TargetTextureLevelVRAM;
                     CameraVRAMUpdates++;
                 }
             }
 
             // Check What Can Fit Into RAM
-            bool AlreadyHasRAMLevel = Model->TextureLevelInRAM_ >= TargetTextureLevel;
+            bool AlreadyHasRAMLevel = Model->TextureLevelInRAM_ >= TargetTextureLevelRAM;
             bool RAMUpdateQuotaExceeded = CameraRAMUpdates >= MaxCameraUpdates;
-            bool TextureFitsInRAM = ResourceMonitor_->TextureFitsInRAMBudget(TextureSize);
+            bool TextureFitsInRAM = ResourceMonitor_->TextureFitsInRAMBudget(TextureSizeRAM);
             if (!AlreadyHasRAMLevel && !RAMUpdateQuotaExceeded && TextureFitsInRAM) {
-                if (Model->TargetTextureLevelRAM < TargetTextureLevel) {
-                    Model->TargetTextureLevelRAM = TargetTextureLevel;
+                if (Model->TargetTextureLevelRAM < TargetTextureLevelRAM) {
+                    Model->TargetTextureLevelRAM = TargetTextureLevelRAM;
                     CameraRAMUpdates++;
                 }
             }
