@@ -65,6 +65,12 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
     // TEMPORARY____________________-------------------------------------------------------------------------------------------------------------
     ProjectUtils_->ModelLoader_->AssetStreamingManager_->SetCurrentScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get());
+    std::vector<ERS_STRUCT_Camera*> Cameras;
+    for (unsigned int i = 0; i < Viewports_.size(); i++) {
+        Cameras.push_back(Viewports_[i]->Camera.get());
+    }
+    ProjectUtils_->ModelLoader_->AssetStreamingManager_->SetCameraStructs(Cameras);
+    
 
 
     // Set Depth Shader For Shadow System
