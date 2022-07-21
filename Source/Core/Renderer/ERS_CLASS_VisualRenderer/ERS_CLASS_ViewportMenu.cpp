@@ -489,6 +489,29 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             ImGui::MenuItem("Depth Test", nullptr, &Viewport->DisableBoundingBoxDepthTest_);
             ImGui::MenuItem("Wireframe", nullptr, &Viewport->WireframeBoundingBoxes_);
 
+            // Mode selector
+            if (ImGui::BeginMenu("Mode")) {
+                if (ImGui::MenuItem("Plain Color", nullptr, Viewport->BoundingBoxRenderer->GetBoundingBoxDisplayMode()) == 0) {
+                    Viewport->BoundingBoxRenderer->SetBoundingBoxDisplayMode(0);
+                }
+
+                if (ImGui::MenuItem("Target Texture Level (RAM)", nullptr, Viewport->BoundingBoxRenderer->GetBoundingBoxDisplayMode()) == 1) {
+                    Viewport->BoundingBoxRenderer->SetBoundingBoxDisplayMode(1);
+                }
+
+                if (ImGui::MenuItem("Target Texture Level (VRAM)", nullptr, Viewport->BoundingBoxRenderer->GetBoundingBoxDisplayMode()) == 2) {
+                    Viewport->BoundingBoxRenderer->SetBoundingBoxDisplayMode(2);
+                }
+
+                if (ImGui::MenuItem("Current Texture Level (RAM)", nullptr, Viewport->BoundingBoxRenderer->GetBoundingBoxDisplayMode()) == 3) {
+                    Viewport->BoundingBoxRenderer->SetBoundingBoxDisplayMode(3);
+                }
+
+                if (ImGui::MenuItem("Current Texture Level (VRAM)", nullptr, Viewport->BoundingBoxRenderer->GetBoundingBoxDisplayMode()) == 4) {
+                    Viewport->BoundingBoxRenderer->SetBoundingBoxDisplayMode(4);
+                }
+            ImGui::EndMenu();
+            }
 
         ImGui::EndMenu();
         }
