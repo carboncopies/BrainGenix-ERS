@@ -48,32 +48,12 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
         Models.push_back(Scene->Models[i].get());        
     }
 
-
-
     // Sort All Models Based On Distance From Each Camera
     std::vector<std::map<float, unsigned int>> DistancesFromCamera = SortModelsByDistanceFromCameras(Scene, Cameras);
 
     std::map<unsigned int, int> CameraUpdateQuota = CalculateCameraMaxUpdates(100, Cameras);
     SortSceneModels(CameraUpdateQuota, DistancesFromCamera, Scene);
 
-    //std::vector<ERS_STRUCT_Model*> NextLevelToVRAM = CreateListOfModelsToLoadNextLevelToVRAM(CameraUpdateQuota, Scene, DistancesFromCamera);
-
-
-    // for (std::map<float, unsigned int>::iterator it = DistancesFromCamera[0].begin(); it != DistancesFromCamera[0].end(); ++it) {
-    //     float Distance = it->first;
-    //     ERS_STRUCT_Model* Model = Scene->Models[it->second].get();
-
-    //     if (Distance < 4) {
-    //         Model->ModelLoadingStatus_ = "LoadNextLevelToVRAM";
-    //     } else {
-    //         Model->ModelLoadingStatus_ = "NoChange";
-    //     }
-
-    // }
-
-    // for (unsigned int i = 0; i < NextLevelToVRAM.size(); i++) {
-    //     NextLevelToVRAM[i]->ModelLoadingStatus_ = "LoadNextLevelToVRAM";
-    // }
 
 
     // Next, Based On Camera Priority, Create List Of Items Needing To Be Updated Most,
