@@ -98,4 +98,12 @@ public:
      */
     void SetBoundingBoxDisplayMode(int Mode);
 
+    /**
+     * @brief Returns integer code of the bounding box display mode.
+     * See SetBoundingBoxDisplayMode docs for more info about code meanings.
+     * 
+     * @return int 
+     */
+    int GetBoundingBoxDisplayMode();
+
 };
