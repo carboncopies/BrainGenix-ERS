@@ -122,9 +122,32 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             // Calculate Distance Per Level Cutoff
             float DistancePerLevel = DistanceCutoff / NumberTextureLevels;
             int TargetTextureLevel = round(ModelDistance / DistancePerLevel);
-            if (Model->TargetTextureLevel < TargetTextureLevel) {
-                Model->TargetTextureLevel = TargetTextureLevel;
+            if (TargetTextureLevel > NumberTextureLevels - 1) {
+                TargetTextureLevel = NumberTextureLevels - 1;
             }
+
+            // Calculate Texture Size
+            int TextureSize = 0;
+            for (unsigned int i = 0; i < Model->Textures_Loaded.size(); i++) {
+                TextureSize += Model->Textures_Loaded[i].LevelMemorySizeBytes[TargetTextureLevel];
+            }
+
+            // Check What Can Fit Into VRAM
+            if (CameraVRAMUpdates < MaxCameraUpdates && ResourceMonitor_->TextureFitsInVRAMBudget(TextureSize)) {
+                if (Model->TargetTextureLevelVRAM < TargetTextureLevel) {
+                    Model->TargetTextureLevelVRAM = TargetTextureLevel;
+                    CameraVRAMUpdates++;
+                }
+            }
+
+            // Check What Can Fit Into RAM
+            if (CameraRAMUpdates < MaxCameraUpdates && ResourceMonitor_->TextureFitsInRAMBudget(TextureSize)) {
+                if (Model->TargetTextureLevelRAM < TargetTextureLevel) {
+                    Model->TargetTextureLevelRAM = TargetTextureLevel;
+                    CameraRAMUpdates++;
+                }
+            }
+
             
 
         }
