@@ -95,7 +95,23 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 
 }
 
-// TODO: Add visual contribution as a factor when determining what textures to load
+void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::map<float, unsigned int>> DistancesFromCamera, ERS_STRUCT_Scene* Scene) {
+
+    // Iterate Over All Cameras, Make Recomendations From There
+    for (unsigned int CameraIndex = 0; CameraIndex < CameraUpdatesQuota.size(); CameraIndex++) {
+
+        
+        // Sort Models From Cameras
+        unsigned int MaxCameraUpdates = CameraUpdatesQuota[CameraIndex];
+        for (unsigned int ModelIndex = 0; ModelIndex < DistancesFromCamera[CameraIndex].size(); ModelIndex++) {
+            
+        }
+
+
+    }
+
+
+}
 
 std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfModelsToLoadNextLevelToVRAM(std::map<unsigned int, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera) {
 
