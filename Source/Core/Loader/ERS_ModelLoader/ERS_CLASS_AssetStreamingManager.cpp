@@ -104,9 +104,12 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
         // Sort Models From Cameras
         unsigned int MaxCameraUpdates = CameraUpdatesQuota[CameraIndex];
         for (auto DistanceMapIterator = DistancesFromCamera[0].begin(); DistanceMapIterator != DistancesFromCamera[0].end(); ++DistanceMapIterator) {
+            
+            // Get Parameters From Model Array
             float ModelDistance = DistanceMapIterator->first;
             unsigned int ModelIndex = DistanceMapIterator->second;
-            int NumberTextureLevels = Scene->Models[ModelIndex]->MaxTextureLevel_ + 1;
+            ERS_STRUCT_Model* Model = Scene->Models[ModelIndex].get();
+            int NumberTextureLevels = Model->MaxTextureLevel_ + 1;
 
 
             
