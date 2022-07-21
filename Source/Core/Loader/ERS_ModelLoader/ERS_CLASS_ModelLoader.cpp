@@ -392,6 +392,8 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
                         Target->BoxScale_ = Source->BoxScale_;
                         Target->IsTemplateModel = false;
                         Target->FullyReady = true;
+                        
+                        Target->MaxTextureLevel_ = Source->MaxTextureLevel_;
 
                         if (Target->Name == "Loading...") {
                             Target->Name = Source->Name;
