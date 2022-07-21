@@ -59,13 +59,7 @@ private:
      */
     void WorkerThread();
 
-    /**
-     * @brief Goes through the scene and marks different models to be updated
-     * 
-     * @param Scene 
-     * @param Cameras 
-     */
-    void UpdateSceneStreamingQueue(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras);
+
 
     /**
      * @brief Sorts the models in the given scene based on their distance from the camera.
@@ -162,5 +156,13 @@ public:
      * @param Cameras 
      */
     void SetCameraStructs(std::vector<ERS_STRUCT_Camera*> Cameras);
+
+    /**
+     * @brief Goes through the scene and marks different models to be updated
+     * 
+     * @param Scene 
+     * @param Cameras 
+     */
+    void UpdateSceneStreamingQueue(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras);
 
 };
