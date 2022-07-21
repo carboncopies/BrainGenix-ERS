@@ -196,8 +196,17 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     MetadataEmitter<<YAML::EndMap;
 
 
+    // Write Vert Info
     MetadataEmitter<<YAML::Key<<"Vertices"<<YAML::Value<<Model.TotalVertices_;
     MetadataEmitter<<YAML::Key<<"Indices"<<YAML::Value<<Model.TotalIndices_;
+
+    // Write Bounding Box + Offset Info
+    MetadataEmitter<<YAML::Key<<"BoundingBoxX"<<YAML::Value<<Model.BoxScale_.x;
+    MetadataEmitter<<YAML::Key<<"BoundingBoxY"<<YAML::Value<<Model.BoxScale_.y;
+    MetadataEmitter<<YAML::Key<<"BoundingBoxZ"<<YAML::Value<<Model.BoxScale_.z;
+    MetadataEmitter<<YAML::Key<<"OffsetX"<<YAML::Value<<Model.BoxOffset_.x;
+    MetadataEmitter<<YAML::Key<<"OffsetY"<<YAML::Value<<Model.BoxOffset_.y;
+    MetadataEmitter<<YAML::Key<<"OffsetZ"<<YAML::Value<<Model.BoxOffset_.z;
     
 
 
