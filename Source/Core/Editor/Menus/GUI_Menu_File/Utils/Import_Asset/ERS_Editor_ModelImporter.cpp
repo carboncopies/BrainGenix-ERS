@@ -41,6 +41,51 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     ProcessNode(&Model, Scene->mRootNode, Scene, ModelDirectory);
 
 
+
+    // Calculate Bounding Box
+    glm::vec3 ModelMinXYZ;
+    glm::vec3 ModelMaxXYZ;
+    for (unsigned int i = 0; i < Model.Meshes.size(); i++) {
+
+        // Get Mesh Min/Max
+        glm::vec3 MeshMinXYZ = Model.Meshes[i].MinXYZ_;
+        glm::vec3 MeshMaxXYZ = Model.Meshes[i].MaxXYZ_;
+
+        // Check If Larger/Smaller Than Model Min/Max
+        if (MeshMinXYZ.x < ModelMinXYZ.x) {
+            ModelMinXYZ.x = MeshMinXYZ.x;
+        }
+        if (MeshMinXYZ.y < ModelMinXYZ.y) {
+            ModelMinXYZ.y = MeshMinXYZ.y;
+        }
+        if (MeshMinXYZ.z < ModelMinXYZ.z) {
+            ModelMinXYZ.z = MeshMinXYZ.z;
+        }
+        if (MeshMaxXYZ.x > ModelMaxXYZ.x) {
+            ModelMaxXYZ.x = MeshMaxXYZ.x;
+        }
+        if (MeshMaxXYZ.y > ModelMaxXYZ.y) {
+            ModelMaxXYZ.y = MeshMaxXYZ.y;
+        }
+        if (MeshMaxXYZ.z > ModelMaxXYZ.z) {
+            ModelMaxXYZ.z = MeshMaxXYZ.z;
+        }
+    }
+    Model.BoxScale_ = abs(ModelMaxXYZ) + abs(ModelMinXYZ);
+
+    Model.BoxOffset_ = (Model.BoxScale_ / 2.0f) + ModelMinXYZ;
+    
+    std::string LogMsg = std::string("Calculated Model Bounding Box To Be '") 
+    + std::to_string(Model.BoxScale_.x) + "X, "
+    + std::to_string(Model.BoxScale_.y) + "Y, "
+    + std::to_string(Model.BoxScale_.z) + "Z' With Offset Of '"
+    + std::to_string(Model.BoxOffset_.x) + "X, "
+    + std::to_string(Model.BoxOffset_.y) + "Y, "
+    + std::to_string(Model.BoxOffset_.z) + "Z'";
+    SystemUtils_->Logger_->Log(LogMsg, 3);
+
+
+
     // Copy Model File
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
     
