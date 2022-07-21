@@ -234,11 +234,12 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
 void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath) {
 
-    // Copy Textures
-    std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
-    std::vector<long> TextureIDs = SystemUtils_->ERS_IOSubsystem_->BatchAllocateIDs(TextureList_.size());
+    // Create List Of Texture Files To Be Copied
+    std::vector<std::pair<std::string, std::unique_ptr<ERS_STRUCT_IOData>>> TextureFiles;
     for (int i = 0; (long)i < (long)TextureList_.size(); i++) {
-        SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(TextureIDs[i]) + std::string("' To Texture '") + TextureList_[i] + std::string("'")).c_str(), 4);
+
+        std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
+        std::string TexturePath = TextureList_[i];
         bool Success = ReadFile(TextureList_[i], Data.get());
         Data->AssetTypeName = "Texture";
         Data->AssetFileName = TextureList_[i].substr(AssetPath.find_last_of("/") + 1, AssetPath.size() - 1);
@@ -292,6 +293,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath) {
 
 
             SecondTryStatus = ReadFile(Path, Data.get());
+            TexturePath = Path;
             
             if (!SecondTryStatus) {
                 SystemUtils_->Logger_->Log("Failed To Find Texture During Second Try Effort, Abandoning Texture", 8);
@@ -301,6 +303,23 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath) {
 
         }
 
+        if (Success || SecondTryStatus) {
+            TextureFiles.push_back(std::make_pair(TexturePath, Data));
+        }
+
+    }
+
+    // Load Textures Into Memory
+    std::vector<std::pair<std::string, FIBITMAP*>> ImageBytes;
+    for (unsigned int i = 0; i < TextureFiles.size(); i++) {
+
+        ERS_STRUCT_IOData* ImageData = TextureFiles[i].second.get();
+        FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData->Data.get(), ImageData->Size_B);
+        FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
+        FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
+        FreeImage_CloseMemory(FIImageData);
+
+        ImageBytes.push_back(std::make_pair(TextureFiles[i].first, Image));
     }
 
 }
