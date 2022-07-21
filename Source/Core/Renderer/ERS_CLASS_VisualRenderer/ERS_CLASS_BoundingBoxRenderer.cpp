@@ -91,6 +91,12 @@ ERS_CLASS_BoundingBoxRenderer::~ERS_CLASS_BoundingBoxRenderer() {
 
 }
 
+void ERS_CLASS_BoundingBoxRenderer::SetBoundingBoxDisplayMode(int Mode) {
+
+    BoundingBoxDisplayMode_ = Mode;
+
+}
+
 void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Scene* Scene) {
 
 
