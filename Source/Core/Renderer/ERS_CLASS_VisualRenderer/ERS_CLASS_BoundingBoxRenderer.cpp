@@ -123,7 +123,6 @@ void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUC
         int TargetTextureLevel = Scene->Models[i]->TargetTextureLevelRAM;
         glm::vec3 ModelOutlineColor = glm::vec3(1.0f, 1.0f, 1.0f);
 
-        std::cout<<TargetTextureLevel<<std::endl;
         float Value = (float)TargetTextureLevel / (float)MaxTextureLevel;
         ModelOutlineColor = glm::vec3(1.0f - Value, Value, 0.0f);
 
