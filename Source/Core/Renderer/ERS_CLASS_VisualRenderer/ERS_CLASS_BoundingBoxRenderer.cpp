@@ -92,9 +92,7 @@ ERS_CLASS_BoundingBoxRenderer::~ERS_CLASS_BoundingBoxRenderer() {
 }
 
 void ERS_CLASS_BoundingBoxRenderer::SetBoundingBoxDisplayMode(int Mode) {
-
     BoundingBoxDisplayMode_ = Mode;
-
 }
 
 void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUCT_Scene* Scene) {
@@ -132,21 +130,7 @@ void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUC
         float Value = (float)TargetTextureLevel / (float)MaxTextureLevel;
         ModelOutlineColor = glm::vec3(1.0f - Value, Value, 0.0f);
 
-        // if (LoadingStatus == "LoadNextLevelToRAM") {
-        //     ModelOutlineColor = glm::vec3(0.2f, 0.2f, 0.5f);
-        // } else if (LoadingStatus == "LoadNextLevelToVRAM") {
-        //     ModelOutlineColor = glm::vec3(0.1f, 0.1f, 1.0f);
-        // } else if (LoadingStatus == "UnloadCurrentLevelFromVRAM") {
-        //     ModelOutlineColor = glm::vec3(1.0f, 0.1f, 0.1f);
-        // } else if (LoadingStatus == "UnloadcurrentLevelFromRAM") {
-        //     ModelOutlineColor = glm::vec3(0.5f, 0.2f, 0.2f);
-        // } else if (LoadingStatus == "UnloadAllLevels") {
-        //     ModelOutlineColor = glm::vec3(0.75f, 0.75f, 0.1f);
-        // } else if (LoadingStatus == "LoadAllLevels") {
-        //     ModelOutlineColor = glm::vec3(0.1f, 0.75f, 0.75f);
-        // } else if (LoadingStatus == "NoChange") {
-        //     ModelOutlineColor = glm::vec3(0.1f, 1.0f, 1.0f);
-        // }
+
 
         // Set Shader Uniforms
         BoundingBoxRendererShader_->SetMat4("Model", ModelMatrix);
