@@ -61,7 +61,7 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 
     std::map<unsigned int, int> CameraUpdateQuota = CalculateCameraMaxUpdates(100, Cameras);
     SortSceneModels(CameraUpdateQuota, DistancesFromCamera, Scene);
-    
+
     //std::vector<ERS_STRUCT_Model*> NextLevelToVRAM = CreateListOfModelsToLoadNextLevelToVRAM(CameraUpdateQuota, Scene, DistancesFromCamera);
 
 
@@ -136,9 +136,9 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
 
             // Check What Can Fit Into VRAM
             bool AlreadyHasVRAMLevel = Model->TextureLevelInVRAM_ >= TargetTextureLevel;
-            bool VRAMUpdateQuotaExceeded = CameraVRAMUpdates < MaxCameraUpdates;
+            bool VRAMUpdateQuotaExceeded = CameraVRAMUpdates >= MaxCameraUpdates;
             bool TextureFitsInVRAM = ResourceMonitor_->TextureFitsInVRAMBudget(TextureSize);
-            if (AlreadyHasVRAMLevel && VRAMUpdateQuotaExceeded && TextureFitsInVRAM) {
+            if (AlreadyHasVRAMLevel && !VRAMUpdateQuotaExceeded && TextureFitsInVRAM) {
                 if (Model->TargetTextureLevelVRAM < TargetTextureLevel) {
                     Model->TargetTextureLevelVRAM = TargetTextureLevel;
                     CameraVRAMUpdates++;
@@ -147,9 +147,9 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
 
             // Check What Can Fit Into RAM
             bool AlreadyHasRAMLevel = Model->TextureLevelInRAM_ >= TargetTextureLevel;
-            bool RAMUpdateQuotaExceeded = CameraRAMUpdates < MaxCameraUpdates;
+            bool RAMUpdateQuotaExceeded = CameraRAMUpdates >= MaxCameraUpdates;
             bool TextureFitsInRAM = ResourceMonitor_->TextureFitsInRAMBudget(TextureSize);
-            if (AlreadyHasRAMLevel && RAMUpdateQuotaExceeded && TextureFitsInRAM) {
+            if (AlreadyHasRAMLevel && !RAMUpdateQuotaExceeded && TextureFitsInRAM) {
                 if (Model->TargetTextureLevelRAM < TargetTextureLevel) {
                     Model->TargetTextureLevelRAM = TargetTextureLevel;
                     CameraRAMUpdates++;
