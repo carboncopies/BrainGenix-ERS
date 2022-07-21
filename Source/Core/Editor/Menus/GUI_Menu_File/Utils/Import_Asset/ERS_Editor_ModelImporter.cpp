@@ -325,7 +325,15 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath, int MipMaps) 
     // Resize For Mipmaps, Save To New Project
     for (unsigned int i = 0; i < ImageBytes.size(); i++) {
 
+        FIBITMAP* Image = ImageBytes[i].second;
+        int SourceImageWidth = FreeImage_GetWidth(Image);
+        int SourceImageHeight = FreeImage_GetHeight(Image);
 
+
+        std::vector<std::pair<int, int>> Resolutions;
+        for (unsigned int MipMapIndex = 0; MipMapIndex < MipMaps; MipMapIndex++) {
+            
+        }
 
     }
 
