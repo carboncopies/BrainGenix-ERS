@@ -97,6 +97,11 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 
 void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::map<float, unsigned int>> DistancesFromCamera, ERS_STRUCT_Scene* Scene, float DistanceCutoff) {
 
+    // Reset All Target Distances
+    for (unsigned int i = 0; i < Scene->Models.size(); i++) {
+        Scene->Models[i]->TargetTextureLevel = -1;
+    }
+
     // Iterate Over All Cameras, Make Recomendations From There
     for (unsigned int CameraIndex = 0; CameraIndex < CameraUpdatesQuota.size(); CameraIndex++) {
 
@@ -111,7 +116,12 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             ERS_STRUCT_Model* Model = Scene->Models[ModelIndex].get();
             int NumberTextureLevels = Model->MaxTextureLevel_ + 1;
 
-
+            // Calculate Distance Per Level Cutoff
+            float DistancePerLevel = DistanceCutoff / NumberTextureLevels;
+            int TargetTextureLevel = round(ModelDistance / DistancePerLevel);
+            if (Model->TargetTextureLevel < TargetTextureLevel) {
+                Model->TargetTextureLevel = TargetTextureLevel;
+            }
             
 
         }
