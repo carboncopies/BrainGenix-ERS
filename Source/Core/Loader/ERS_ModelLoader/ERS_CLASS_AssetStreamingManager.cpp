@@ -133,7 +133,10 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             }
 
             // Check What Can Fit Into VRAM
-            if (CameraVRAMUpdates < MaxCameraUpdates && ResourceMonitor_->TextureFitsInVRAMBudget(TextureSize)) {
+            bool AlreadyHasVRAMLevel = Model->TextureLevelInVRAM_ >= TargetTextureLevel;
+            bool VRAMUpdateQuotaExceeded = CameraVRAMUpdates < MaxCameraUpdates;
+            bool TextureFitsInVRAM = ResourceMonitor_->TextureFitsInVRAMBudget(TextureSize);
+            if (AlreadyHasVRAMLevel && VRAMUpdateQuotaExceeded && TextureFitsInVRAM) {
                 if (Model->TargetTextureLevelVRAM < TargetTextureLevel) {
                     Model->TargetTextureLevelVRAM = TargetTextureLevel;
                     CameraVRAMUpdates++;
@@ -141,7 +144,10 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             }
 
             // Check What Can Fit Into RAM
-            if (CameraRAMUpdates < MaxCameraUpdates && ResourceMonitor_->TextureFitsInRAMBudget(TextureSize)) {
+            bool AlreadyHasRAMLevel = Model->TextureLevelInRAM_ >= TargetTextureLevel;
+            bool RAMUpdateQuotaExceeded = CameraRAMUpdates < MaxCameraUpdates;
+            bool TextureFitsInRAM = ResourceMonitor_->TextureFitsInRAMBudget(TextureSize);
+            if (AlreadyHasRAMLevel && RAMUpdateQuotaExceeded && TextureFitsInRAM) {
                 if (Model->TargetTextureLevelRAM < TargetTextureLevel) {
                     Model->TargetTextureLevelRAM = TargetTextureLevel;
                     CameraRAMUpdates++;
