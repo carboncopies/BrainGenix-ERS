@@ -185,7 +185,9 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     YAML::Emitter MetadataEmitter;
     MetadataEmitter<<YAML::BeginMap;
 
-    MetadataEmitter<<YAML::Key<<"Name"<<YAML::Value<<AssetPath; // Default name is file path, user can rename
+    MetadataEmitter<<YAML::Key<<"Name"<<YAML::Value<<AssetPath;
+    MetadataEmitter<<YAML::Key<<"FormatVersion"<<YAML::Value<<"0.0.2";
+    
     MetadataEmitter<<YAML::Key<<"ModelID"<<YAML::Value<<ModelID;
 
     MetadataEmitter<<YAML::Key<<"TextureIDs";
