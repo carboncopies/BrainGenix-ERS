@@ -21,7 +21,6 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     ERS_STRUCT_Model Model;
     TextureList_ = std::vector<std::string>();
 
-
     // Get Model Path
     std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
     std::string ModelFileName = AssetPath.substr(AssetPath.find_last_of("/") + 1, AssetPath.size() - 1);
@@ -118,8 +117,6 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
                 Path = Path.substr(Path.find_last_of("/") + 1, Path.size()-1);
             }
 
-
-
             // Create Reference String To Be Tested Against
             std::string RefString = Path.substr(0, Path.find_first_of("."));
             size_t Pos = 0;
@@ -187,7 +184,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     MetadataEmitter<<YAML::Key<<"Name"<<YAML::Value<<AssetPath;
     MetadataEmitter<<YAML::Key<<"FormatVersion"<<YAML::Value<<"0.0.2";
-    
+
     MetadataEmitter<<YAML::Key<<"ModelID"<<YAML::Value<<ModelID;
 
     MetadataEmitter<<YAML::Key<<"TextureIDs";
