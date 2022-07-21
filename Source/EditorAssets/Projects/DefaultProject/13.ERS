@@ -18,5 +18,6 @@ SceneData:
     CastDynamicShadows: true
     CastStaticShadows: true
     ReceiveShadows: true
+    ShaderOverrideIndex: -1
     AttachedScripts:
       {}
