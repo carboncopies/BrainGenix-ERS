@@ -59,7 +59,8 @@ struct ERS_STRUCT_Model {
     int AssetLoadngStateVRAM = 0; /**<0 means nothing happening, -1 means unloading, 1 means loading next*/
     int AssetLoadngStateRAM = 0; /**<0 means nothing happening, -1 means unloading, 1 means loading next*/
 
-    int TargetTextureLevel = -1; /**<Used in preliminary sorting to determine how much this needs to be loaded*/
+    int TargetTextureLevelVRAM = -1; /**<Used in preliminary sorting to determine how much this needs to be loaded*/
+    int TargetTextureLevelRAM = -1; /**<Used in preliminary sorting to determine how much this needs to be loaded*/
 
 
     // Shadows Information
