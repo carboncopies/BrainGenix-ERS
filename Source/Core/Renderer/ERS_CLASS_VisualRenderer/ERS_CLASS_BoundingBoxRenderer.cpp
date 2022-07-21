@@ -121,14 +121,17 @@ void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUC
         ModelMatrix = glm::scale(ModelMatrix, Scene->Models[i]->ModelScale * Scene->Models[i]->BoxScale_);
 
 
-        // Determine Color Based On Loading Status
+        // Determine Color Based On Mode And Info
         std::string LoadingStatus = Scene->Models[i]->ModelLoadingStatus_;
         int MaxTextureLevel = Scene->Models[i]->MaxTextureLevel_;
-        int TargetTextureLevel = Scene->Models[i]->TargetTextureLevelRAM;
-        glm::vec3 ModelOutlineColor = glm::vec3(1.0f, 1.0f, 1.0f);
+        glm::vec3 ModelOutlineColor;
 
-        float Value = (float)TargetTextureLevel / (float)MaxTextureLevel;
-        ModelOutlineColor = glm::vec3(1.0f - Value, Value, 0.0f);
+        if (BoundingBoxDisplayMode_ == 0) { // Fixed Color (White)
+            ModelOutlineColor = glm::vec3(1.0f, 1.0f, 1.0f);
+        } else if (BoundingBoxDisplayMode_ == 1) { // Target RAM Level
+            float LevelPercentage = (float)Scene->Models[i]->TargetTextureLevelRAM / MaxTextureLevel;
+            ModelOutlineColor = glm::vec3(1.0f - LevelPercentage, LevelPercentage, 0.0f);
+        }
 
 
 
