@@ -64,12 +64,12 @@ void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defa
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
 
     // TEMPORARY____________________-------------------------------------------------------------------------------------------------------------
-    ProjectUtils_->ModelLoader_->AssetStreamingManager_->SetCurrentScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get());
     std::vector<ERS_STRUCT_Camera*> Cameras;
     for (unsigned int i = 0; i < Viewports_.size(); i++) {
         Cameras.push_back(Viewports_[i]->Camera.get());
     }
-    ProjectUtils_->ModelLoader_->AssetStreamingManager_->SetCameraStructs(Cameras);
+    ProjectUtils_->ModelLoader_->AssetStreamingManager_->UpdateSceneStreamingQueue(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), Cameras);
+    
     
 
 
