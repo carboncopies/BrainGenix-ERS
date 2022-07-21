@@ -54,8 +54,6 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
     std::map<unsigned int, int> CameraUpdateQuota = CalculateCameraMaxUpdates(100, Cameras);
     SortSceneModels(CameraUpdateQuota, DistancesFromCamera, Scene);
 
-
-
     // Next, Based On Camera Priority, Create List Of Items Needing To Be Updated Most,
     // as well as items that should be loaded to RAM
     
