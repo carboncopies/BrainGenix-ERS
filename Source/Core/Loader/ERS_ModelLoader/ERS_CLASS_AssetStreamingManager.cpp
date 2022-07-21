@@ -240,7 +240,7 @@ void ERS_CLASS_AssetStreamingManager::WorkerThread() {
         std::unique_lock<std::mutex> Lock(SortingThreadMutex_);
 
         // Update Scene
-        if (CurrentScene_ != nullptr) {
+        if (CurrentScene_ != nullptr && Cameras_.size() > 0) {
             UpdateSceneStreamingQueue(CurrentScene_, Cameras_);
         }
 
