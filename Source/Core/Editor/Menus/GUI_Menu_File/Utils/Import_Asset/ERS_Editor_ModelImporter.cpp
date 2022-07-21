@@ -301,6 +301,8 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath) {
 
         }
 
+    }
+
 }
 
 // Process Nodes
