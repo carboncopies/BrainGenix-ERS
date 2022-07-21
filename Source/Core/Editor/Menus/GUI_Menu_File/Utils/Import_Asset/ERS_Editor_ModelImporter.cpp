@@ -240,6 +240,29 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, ai
         Vector.z = Mesh->mVertices[i].z;
         Vertex.Position = Vector;
 
+
+        // Calculate Min/Max XYZ
+        if (Vector.x < OutputMesh.MinXYZ_.x) {
+            OutputMesh.MinXYZ_.x = Vector.x;
+        }
+        if (Vector.y < OutputMesh.MinXYZ_.y) {
+            OutputMesh.MinXYZ_.y = Vector.y;
+        }
+        if (Vector.z < OutputMesh.MinXYZ_.z) {
+            OutputMesh.MinXYZ_.z = Vector.z;
+        }
+        if (Vector.x > OutputMesh.MaxXYZ_.x) {
+            OutputMesh.MaxXYZ_.x = Vector.x;
+        }
+        if (Vector.y > OutputMesh.MaxXYZ_.y) {
+            OutputMesh.MaxXYZ_.y = Vector.y;
+        }
+        if (Vector.z > OutputMesh.MaxXYZ_.z) {
+            OutputMesh.MaxXYZ_.z = Vector.z;
+        }
+
+
+
         if (Mesh->HasNormals())
         {
             Vector.x = Mesh->mNormals[i].x;
