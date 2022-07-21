@@ -232,7 +232,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
 
 
-void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath) {
+void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath, int MipMaps) {
 
     // Create List Of Texture Files To Be Copied
     std::vector<std::pair<std::string, std::unique_ptr<ERS_STRUCT_IOData>>> TextureFiles;
@@ -320,6 +320,13 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath) {
         FreeImage_CloseMemory(FIImageData);
 
         ImageBytes.push_back(std::make_pair(TextureFiles[i].first, Image));
+    }
+
+    // Resize For Mipmaps, Save To New Project
+    for (unsigned int i = 0; i < ImageBytes.size(); i++) {
+
+
+
     }
 
 }

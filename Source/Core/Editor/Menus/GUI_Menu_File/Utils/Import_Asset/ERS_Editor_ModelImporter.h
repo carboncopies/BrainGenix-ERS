@@ -91,7 +91,7 @@ private:
      */
     bool ReadFile(std::string Path, ERS_STRUCT_IOData* IOData);
 
-    void WriteTextures(std::string AssetPath)
+    void WriteTextures(std::string AssetPath, int MipMaps = 10)
 
 public:
 
