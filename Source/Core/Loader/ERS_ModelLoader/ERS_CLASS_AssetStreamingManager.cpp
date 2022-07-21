@@ -109,7 +109,13 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
         std::map<float, unsigned int> ModelDistances = DistancesFromCamera[x];
         int NumberUpdates = 0;
 
+
+        std::cout<<ModelDistances.size()<<std::endl;
         for (unsigned int i = 0; i < ModelDistances.size(); i++) {
+
+            if (i >= ModelDistances.size()) {
+                std::cout<<i<<std::endl;
+            }
 
             ERS_STRUCT_Model* CurrentModel = Scene->Models[ModelDistances[i]].get();
             if (NumberUpdates >= CameraUpdatesQuota[x]) {
