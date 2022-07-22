@@ -255,12 +255,6 @@ YAML::Emitter ERS_CLASS_ModelImporter::WriteTextures(YAML::Emitter Emitter, std:
 
     Emitter<<YAML::Key<<"TextureIDs";
     Emitter<<YAML::Key<<YAML::BeginMap;
-    // for (int i = 0; (long)i < (long)TextureIDs.size(); i++) {
-    //     MetadataEmitter<<YAML::Key<<TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1))<<YAML::Value<<TextureIDs[i];
-    // }
-    Emitter<<YAML::EndMap;
-
-
     for (unsigned int i = 0; i < ImageBytes.size(); i++) {
 
         // Get Raw Source Texture Information
@@ -319,8 +313,12 @@ YAML::Emitter ERS_CLASS_ModelImporter::WriteTextures(YAML::Emitter Emitter, std:
         FreeImage_Unload(Image);
 
         // Update Metadata
+        Emitter<<YAML::Key<<TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1))<<YAML::Value<<YAML::BeginMap;
+        
+        Emitter<<YAML::EndMap;
 
     }
+    Emitter<<YAML::EndMap;
 
 }
 
