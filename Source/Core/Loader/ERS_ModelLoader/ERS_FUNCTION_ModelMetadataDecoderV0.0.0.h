@@ -24,7 +24,9 @@
  * 
  * @param Metadata 
  * @param Model 
+ * @param SystemUtils
+ * @param AssetID
  * @return true 
  * @return false 
  */
-bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model* Model);
+bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model* Model, ERS_STRUCT_SystemUtils* SystemUtils, long AssetID);
