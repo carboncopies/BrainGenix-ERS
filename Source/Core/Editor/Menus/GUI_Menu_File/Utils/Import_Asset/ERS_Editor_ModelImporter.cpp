@@ -290,7 +290,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
         std::vector<std::pair<int, int>> Resolutions;
         int X = SourceImageWidth;
         int Y = SourceImageHeight;
-        for (unsigned int MipMapIndex = 0; MipMapIndex < MipMaps; MipMapIndex++) {
+        for (int MipMapIndex = 0; MipMapIndex < MipMaps; MipMapIndex++) {
             Resolutions.push_back(std::make_pair(X, Y));
             SystemUtils_->Logger_->Log(std::string("Calculating Texture Level '") + std::to_string(MipMapIndex) + "' Size '" + std::to_string(X) + "," + std::to_string(Y) + "'", 4);
             X /= 2;
@@ -300,7 +300,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
         // Resize Images
         std::vector<int> ImageMemorySizes;
         std::vector<long> ImageAssetIDs;
-        for (unsigned int MipMapIndex = 0; MipMapIndex < MipMaps; MipMapIndex++) {
+        for (int MipMapIndex = 0; MipMapIndex < MipMaps; MipMapIndex++) {
 
             // Resize Image
             int TargetX, TargetY;
