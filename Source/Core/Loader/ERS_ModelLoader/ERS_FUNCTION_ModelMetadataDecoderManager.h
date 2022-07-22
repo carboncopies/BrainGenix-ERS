@@ -9,11 +9,9 @@
 #include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
+#include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCT_Mesh.h>
 #include <ERS_STRUCT_Model.h>
 #include <ERS_STRUCT_SystemUtils.h>
 

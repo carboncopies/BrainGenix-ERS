@@ -9,6 +9,8 @@
 #include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
+#include <yaml-cpp/yaml.h>
+
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
