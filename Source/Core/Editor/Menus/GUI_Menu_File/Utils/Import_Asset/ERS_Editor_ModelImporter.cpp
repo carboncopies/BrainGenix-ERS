@@ -341,11 +341,12 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
             Data->Data.reset(new unsigned char[ImageCompressedSize]);
             ::memcpy(Data->Data.get(), Memory->data, ImageCompressedSize);
             FreeImage_CloseMemory(Memory);
-            
+
             Data->Size_B = ImageCompressedSize;
             Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
             Data->AssetModificationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
             SystemUtils_->ERS_IOSubsystem_->WriteAsset(ImageAssetID, Data.get());
+            std::cout<<ImageAssetID<<std::endl;
 
 
         }
