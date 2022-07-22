@@ -38,7 +38,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model*
         if (Metadata["TextureIDs"]) {
             YAML::Node TexturePathNode = Metadata["TextureIDs"];
             for (YAML::const_iterator it=TexturePathNode.begin(); it!=TexturePathNode.end(); ++it) {
-                Model->TexturePaths.push_back(it->first.as<std::string>());
+                TexturePaths.push_back(it->first.as<std::string>());
                 TextureIDs.push_back(it->second.as<long>());
             }
         } else {
