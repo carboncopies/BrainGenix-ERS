@@ -342,7 +342,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath, int MipMaps) 
 
         // Resize Images
         std::vector<int> ImageMemorySizes;
-        std::vector<FIBITMAP*> Images;
+        std::vector<long> ImageAssetIDs;
         for (unsigned int MipMapIndex = 0; MipMapIndex < MipMaps; MipMapIndex++) {
 
             int TargetX, TargetY;
