@@ -340,8 +340,8 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
             int ImageCompressedSize = FreeImage_GetMemorySize(Memory);
             Data->Data.reset(new unsigned char[ImageCompressedSize]);
             ::memcpy(Data->Data.get(), Memory->data, ImageCompressedSize);
-
             FreeImage_CloseMemory(Memory);
+            
             Data->Size_B = ImageCompressedSize;
             Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
             Data->AssetModificationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
