@@ -277,9 +277,6 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         ,5);
 
 
-    // Testing Stuff -Delete Later-
-    Model->MaxTextureLevel_ = 3;
-
 
 }
 
