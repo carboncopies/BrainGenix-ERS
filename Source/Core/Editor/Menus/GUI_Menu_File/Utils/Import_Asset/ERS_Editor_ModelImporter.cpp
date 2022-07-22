@@ -334,7 +334,6 @@ YAML::Emitter ERS_CLASS_ModelImporter::WriteTextures(YAML::Emitter Emitter, std:
 
 }
 
-// Process Nodes
 void ERS_CLASS_ModelImporter::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory) {
 
     // Process Meshes In Current Node
