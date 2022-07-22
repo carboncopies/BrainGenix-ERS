@@ -321,13 +321,16 @@ YAML::Emitter ERS_CLASS_ModelImporter::WriteTextures(YAML::Emitter Emitter, std:
             Emitter<<YAML::Key<<"TextureLevelMemorySizeBytes"<<YAML::Value<<ImageMemorySizes[MipMapIndex];
             Emitter<<YAML::Key<<"TextureLevelResolutionX"<<YAML::Value<<Resolutions[MipMapIndex].first;
             Emitter<<YAML::Key<<"TextureLevelResolutionY"<<YAML::Value<<Resolutions[MipMapIndex].second;
-            
+
             Emitter<<YAML::EndMap;
         }
         Emitter<<YAML::EndMap;
 
     }
     Emitter<<YAML::EndMap;
+
+
+    return Emitter;
 
 }
 
