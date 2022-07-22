@@ -96,7 +96,6 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(ModelID) + std::string("' To Model '") + AssetPath + std::string("'")).c_str(), 4);
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(ModelID, Data.get());    
 
-    WriteTextures(AssetPath);
 
 
     // Get Vert/Indice Metadata Info
@@ -117,13 +116,10 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     MetadataEmitter<<YAML::Key<<"ModelID"<<YAML::Value<<ModelID;
 
-    MetadataEmitter<<YAML::Key<<"TextureIDs";
-    MetadataEmitter<<YAML::Key<<YAML::BeginMap;
-    // for (int i = 0; (long)i < (long)TextureIDs.size(); i++) {
-    //     MetadataEmitter<<YAML::Key<<TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1))<<YAML::Value<<TextureIDs[i];
-    // }
-    MetadataEmitter<<YAML::EndMap;
 
+    WriteTextures(&MetadataEmitter, AssetPath);
+
+    
 
     // Write Vert Info
     MetadataEmitter<<YAML::Key<<"Vertices"<<YAML::Value<<Model.TotalVertices_;
@@ -165,7 +161,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 // then make loader able to understand this version
 // also cleanup loader to just be generally more sensible
 
-void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
+YAML::Emitter ERS_CLASS_ModelImporter::WriteTextures(YAML::Emitter Emitter, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
     // Create List Of Texture Files To Be Copied
     std::vector<std::pair<std::string, std::shared_ptr<ERS_STRUCT_IOData>>> TextureFiles;
@@ -256,6 +252,15 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath, FREE_IMAGE_FO
     }
 
     // Resize For Mipmaps, Save To New Project
+
+    Emitter<<YAML::Key<<"TextureIDs";
+    Emitter<<YAML::Key<<YAML::BeginMap;
+    // for (int i = 0; (long)i < (long)TextureIDs.size(); i++) {
+    //     MetadataEmitter<<YAML::Key<<TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1))<<YAML::Value<<TextureIDs[i];
+    // }
+    Emitter<<YAML::EndMap;
+
+
     for (unsigned int i = 0; i < ImageBytes.size(); i++) {
 
         // Get Raw Source Texture Information
@@ -311,8 +316,9 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath, FREE_IMAGE_FO
 
 
         }
-
         FreeImage_Unload(Image);
+
+        // Update Metadata
 
     }
 
