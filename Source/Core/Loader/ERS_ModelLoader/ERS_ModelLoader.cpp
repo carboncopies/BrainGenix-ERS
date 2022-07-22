@@ -317,9 +317,13 @@ ERS_STRUCT_Texture ERS_CLASS_ModelLoader::LoadTexture(long ID, bool FlipTextures
     // If FreeImage Failed, Try STB
     if (FreeImageLoadFail) {
 
-        
-        Texture.ImageBytes = stbi_load_from_memory(ImageData->Data.get(), ImageData->Size_B, &Width, &Height, &Channels, 0); 
-        
+        if (ImageData->Data.get() != nullptr) {
+            Texture.ImageBytes = stbi_load_from_memory(ImageData->Data.get(), ImageData->Size_B, &Width, &Height, &Channels, 0); 
+        } else {
+            SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed On Texture '") + std::to_string(ID) + std::string("' , Nullptr '") + std::to_string(Channels) + std::string("'"), 9);
+            return Texture;
+        }
+
         // Perform Sanity Checks
         if ((Channels < 1) || (Channels > 4)) {
             SystemUtils_->Logger_->Log(std::string("Fallback STB_Image Library Loading Failed On Texture '") + std::to_string(ID) + std::string("' , Image Has Invalid Number Of Channels '") + std::to_string(Channels) + std::string("'"), 8);
