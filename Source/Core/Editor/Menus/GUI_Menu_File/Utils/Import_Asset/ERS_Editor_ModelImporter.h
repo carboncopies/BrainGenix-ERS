@@ -91,7 +91,7 @@ private:
      */
     bool ReadFile(std::string Path, ERS_STRUCT_IOData* IOData);
 
-    YAML::Emitter WriteTextures(YAML::Emitter MetadataEmitter, std::string AssetPath, FREE_IMAGE_FORMAT Format = FIF_PNG, int MipMaps = 10);
+    void WriteTextures(std::vector<std::vector<int>>* TextureMemorySizes, std::vector<std::vector<long>>* ImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* ImageResolutions, std::string AssetPath, FREE_IMAGE_FORMAT Format = FIF_PNG, int MipMaps = 10);
 
 public:
 
