@@ -41,6 +41,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model*
                 ERS_STRUCT_Texture Texture;
                 Texture.Path = it->first.as<std::string>();
                 Texture.LevelTextureIDs.push_back(it->second.as<long>());
+                Model->Textures_.push_back(Texture);
             }
         } else {
             SystemUtils->Logger_->Log(std::string("Error Loading Texture Manifest From Model Metadata'") + std::to_string(AssetID) + "'", 7); 
