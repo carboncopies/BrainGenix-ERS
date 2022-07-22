@@ -349,8 +349,6 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
             Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
             Data->AssetModificationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
             SystemUtils_->ERS_IOSubsystem_->WriteAsset(ImageAssetID, Data.get());
-            std::cout<<ImageAssetID<<std::endl;
-
 
         }
         FreeImage_Unload(Image);
