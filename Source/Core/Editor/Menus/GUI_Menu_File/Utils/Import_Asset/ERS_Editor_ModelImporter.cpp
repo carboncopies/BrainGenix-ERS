@@ -345,21 +345,39 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath, FREE_IMAGE_FO
         std::vector<long> ImageAssetIDs;
         for (unsigned int MipMapIndex = 0; MipMapIndex < MipMaps; MipMapIndex++) {
 
+            // Resize Image
             int TargetX, TargetY;
             TargetX = Resolutions[MipMapIndex].first;
             TargetY = Resolutions[MipMapIndex].second;
+            SystemUtils_->Logger_->Log(std::string("Resizing Texture Image To Size '") + std::to_string(TargetX) + "," + std::to_string(TargetY) + "'", 4);
             FIBITMAP* NewImage = FreeImage_Rescale(Image, TargetX, TargetY);
 
+            // Get Metadata Info
             int MemorySize = FreeImage_GetMemorySize(NewImage);
+            long ImageAssetID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
             ImageMemorySizes.push_back(MemorySize);
-            
+            ImageAssetIDs.push_back(ImageAssetID);
+            SystemUtils_->Logger_->Log(std::string("Generating Texture Image Metadata,  Size Is '") + std::to_string(MemorySize) + "' Bytes, ID Is '" + std::to_string(ImageAssetID) + "'", 3);
+
+
+            // Save Image
             FIMEMORY* Memory = FreeImage_OpenMemory(0, MemorySize);
             FreeImage_SaveToMemory(Format, NewImage, Memory);
-            FreeImage_
+            FreeImage_Unload(NewImage);
+            
+            std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
+            Data->AssetTypeName = "TextureImage";
+            Data->Data.reset(new unsigned char[MemorySize]);
+            ::memcpy(Data->Data.get(), Memory->data, MemorySize);
+            Data->Size_B = MemorySize;
+            Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
+            Data->AssetModificationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
+            SystemUtils_->ERS_IOSubsystem_->WriteAsset(ImageAssetID, Data.get());
+
 
         }
 
-
+        FreeImage_Unload(Image);
 
     }
 
