@@ -447,111 +447,111 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     ERS_FUNCTION_DecodeModelMetadata(Metadata, Model.get(), SystemUtils_, AssetID);
 
     // Spawn Threads To Load Textures
-    std::vector<std::future<ERS_STRUCT_Texture>> DecodedTextures;
-    for (int i = 0; (long)i < (long)TexturePaths.size(); i++) {
-        SystemUtils_->Logger_->Log(std::string(std::string("Assigning Texture To Thread With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
-        DecodedTextures.push_back(std::async(&ERS_CLASS_ModelLoader::LoadTexture, this, TextureIDs[i], FlipTextures));
-    }
+    // std::vector<std::future<ERS_STRUCT_Texture>> DecodedTextures;
+    // for (int i = 0; (long)i < (long)TexturePaths.size(); i++) {
+    //     SystemUtils_->Logger_->Log(std::string(std::string("Assigning Texture To Thread With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
+    //     DecodedTextures.push_back(std::async(&ERS_CLASS_ModelLoader::LoadTexture, this, TextureIDs[i], FlipTextures));
+    // }
 
 
     // FIXME: fix the loader not matching the textures to the model
     // perhaps also add a warning message to the system so that it will log when it can't find a texture?
 
-    // Read Mesh
-    Assimp::Importer Importer;
-    SystemUtils_->Logger_->Log(std::string(std::string("Loading Model With ID: ") + std::to_string(AssetID)).c_str(), 3);
+    // // Read Mesh
+    // Assimp::Importer Importer;
+    // SystemUtils_->Logger_->Log(std::string(std::string("Loading Model With ID: ") + std::to_string(AssetID)).c_str(), 3);
 
-    std::unique_ptr<ERS_STRUCT_IOData> ModelData = std::make_unique<ERS_STRUCT_IOData>();
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ModelID, ModelData.get());
-    const aiScene* Scene = Importer.ReadFileFromMemory(ModelData->Data.get(), (int)ModelData->Size_B, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_PreTransformVertices | aiProcess_JoinIdenticalVertices, "");
+    // std::unique_ptr<ERS_STRUCT_IOData> ModelData = std::make_unique<ERS_STRUCT_IOData>();
+    // SystemUtils_->ERS_IOSubsystem_->ReadAsset(Model->ModelDataID, ModelData.get());
+    // const aiScene* Scene = Importer.ReadFileFromMemory(ModelData->Data.get(), (int)ModelData->Size_B, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_PreTransformVertices | aiProcess_JoinIdenticalVertices, "");
 
-    // Log Errors
-    if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
-        SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
-        Model->IsReadyForGPU = false;
-        return;
-    }
+    // // Log Errors
+    // if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
+    //     SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
+    //     Model->IsReadyForGPU = false;
+    //     return;
+    // }
 
-    // Decode Mesh, Create Texture Pointers
-    ProcessNode(&(*Model), Scene->mRootNode, Scene, TexturePaths);
+    // // Decode Mesh, Create Texture Pointers
+    // ProcessNode(&(*Model), Scene->mRootNode, Scene, TexturePaths);
 
-    // Get Texture Images From Loader, Push Into Vector
-    for (unsigned long i = 0; i < DecodedTextures.size(); i++) {
-        SystemUtils_->Logger_->Log(std::string(std::string("Getting Texture With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
-        Model->TexturesToPushToGPU_.push_back(DecodedTextures[i].get());
-    }
+    // // Get Texture Images From Loader, Push Into Vector
+    // for (unsigned long i = 0; i < DecodedTextures.size(); i++) {
+    //     SystemUtils_->Logger_->Log(std::string(std::string("Getting Texture With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
+    //     Model->TexturesToPushToGPU_.push_back(DecodedTextures[i].get());
+    // }
 
-    // Calculate Bounding Box
-    glm::vec3 ModelMinXYZ;
-    glm::vec3 ModelMaxXYZ;
-    for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
+    // // Calculate Bounding Box
+    // glm::vec3 ModelMinXYZ;
+    // glm::vec3 ModelMaxXYZ;
+    // for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
 
-        // Get Mesh Min/Max
-        glm::vec3 MeshMinXYZ = Model->Meshes[i].MinXYZ_;
-        glm::vec3 MeshMaxXYZ = Model->Meshes[i].MaxXYZ_;
+    //     // Get Mesh Min/Max
+    //     glm::vec3 MeshMinXYZ = Model->Meshes[i].MinXYZ_;
+    //     glm::vec3 MeshMaxXYZ = Model->Meshes[i].MaxXYZ_;
 
-        // Check If Larger/Smaller Than Model Min/Max
-        if (MeshMinXYZ.x < ModelMinXYZ.x) {
-            ModelMinXYZ.x = MeshMinXYZ.x;
-        }
-        if (MeshMinXYZ.y < ModelMinXYZ.y) {
-            ModelMinXYZ.y = MeshMinXYZ.y;
-        }
-        if (MeshMinXYZ.z < ModelMinXYZ.z) {
-            ModelMinXYZ.z = MeshMinXYZ.z;
-        }
-        if (MeshMaxXYZ.x > ModelMaxXYZ.x) {
-            ModelMaxXYZ.x = MeshMaxXYZ.x;
-        }
-        if (MeshMaxXYZ.y > ModelMaxXYZ.y) {
-            ModelMaxXYZ.y = MeshMaxXYZ.y;
-        }
-        if (MeshMaxXYZ.z > ModelMaxXYZ.z) {
-            ModelMaxXYZ.z = MeshMaxXYZ.z;
-        }
-    }
-    Model->BoxScale_ = abs(ModelMaxXYZ) + abs(ModelMinXYZ);
+    //     // Check If Larger/Smaller Than Model Min/Max
+    //     if (MeshMinXYZ.x < ModelMinXYZ.x) {
+    //         ModelMinXYZ.x = MeshMinXYZ.x;
+    //     }
+    //     if (MeshMinXYZ.y < ModelMinXYZ.y) {
+    //         ModelMinXYZ.y = MeshMinXYZ.y;
+    //     }
+    //     if (MeshMinXYZ.z < ModelMinXYZ.z) {
+    //         ModelMinXYZ.z = MeshMinXYZ.z;
+    //     }
+    //     if (MeshMaxXYZ.x > ModelMaxXYZ.x) {
+    //         ModelMaxXYZ.x = MeshMaxXYZ.x;
+    //     }
+    //     if (MeshMaxXYZ.y > ModelMaxXYZ.y) {
+    //         ModelMaxXYZ.y = MeshMaxXYZ.y;
+    //     }
+    //     if (MeshMaxXYZ.z > ModelMaxXYZ.z) {
+    //         ModelMaxXYZ.z = MeshMaxXYZ.z;
+    //     }
+    // }
+    // Model->BoxScale_ = abs(ModelMaxXYZ) + abs(ModelMinXYZ);
 
-    Model->BoxOffset_ = (Model->BoxScale_ / 2.0f) + ModelMinXYZ;
+    // Model->BoxOffset_ = (Model->BoxScale_ / 2.0f) + ModelMinXYZ;
     
-    std::string LogMsg = std::string("Calculated Model Bounding Box To Be '") 
-    + std::to_string(Model->BoxScale_.x) + "X, "
-    + std::to_string(Model->BoxScale_.y) + "Y, "
-    + std::to_string(Model->BoxScale_.z) + "Z' With Offset Of '"
-    + std::to_string(Model->BoxOffset_.x) + "X, "
-    + std::to_string(Model->BoxOffset_.y) + "Y, "
-    + std::to_string(Model->BoxOffset_.z) + "Z'";
-    SystemUtils_->Logger_->Log(LogMsg, 3);
+    // std::string LogMsg = std::string("Calculated Model Bounding Box To Be '") 
+    // + std::to_string(Model->BoxScale_.x) + "X, "
+    // + std::to_string(Model->BoxScale_.y) + "Y, "
+    // + std::to_string(Model->BoxScale_.z) + "Z' With Offset Of '"
+    // + std::to_string(Model->BoxOffset_.x) + "X, "
+    // + std::to_string(Model->BoxOffset_.y) + "Y, "
+    // + std::to_string(Model->BoxOffset_.z) + "Z'";
+    // SystemUtils_->Logger_->Log(LogMsg, 3);
 
 
-    // Move Verts By Detected Offset
-    SystemUtils_->Logger_->Log("Moving Model By Detected Offset", 4);
-    for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
-        for (unsigned long x = 0; x < Model->Meshes[i].Vertices.size(); x++) {
-            Model->Meshes[i].Vertices[x].Position -= Model->BoxOffset_;
-        }
-    }
-    SystemUtils_->Logger_->Log("Finished Moving Model By Detected Offset", 3);
+    // // Move Verts By Detected Offset
+    // SystemUtils_->Logger_->Log("Moving Model By Detected Offset", 4);
+    // for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
+    //     for (unsigned long x = 0; x < Model->Meshes[i].Vertices.size(); x++) {
+    //         Model->Meshes[i].Vertices[x].Position -= Model->BoxOffset_;
+    //     }
+    // }
+    // SystemUtils_->Logger_->Log("Finished Moving Model By Detected Offset", 3);
 
 
 
 
-    // Testing Stuff -Delete Later-
-    for (unsigned int i = 0; i < Model->Textures_Loaded.size(); i++) {
-        ERS_STRUCT_Texture* Tex = &Model->Textures_Loaded[i];
+    // // Testing Stuff -Delete Later-
+    // for (unsigned int i = 0; i < Model->Textures_Loaded.size(); i++) {
+    //     ERS_STRUCT_Texture* Tex = &Model->Textures_Loaded[i];
         
-        int NumLayers = 4;
+    //     int NumLayers = 4;
 
-        for (unsigned int x = 0; x < NumLayers; x++) {
-            Tex->LevelTextureIDs.push_back(0);
-            Tex->LevelLoadedInRAM.push_back(false);
-            Tex->LevelLoadedInVRAM.push_back(false);
-            Tex->LevelResolutions.push_back(std::make_pair(x*x*10,x*x*10));
-            Tex->LevelMemorySizeBytes.push_back(x*x*80000000);
+    //     for (unsigned int x = 0; x < NumLayers; x++) {
+    //         Tex->LevelTextureIDs.push_back(0);
+    //         Tex->LevelLoadedInRAM.push_back(false);
+    //         Tex->LevelLoadedInVRAM.push_back(false);
+    //         Tex->LevelResolutions.push_back(std::make_pair(x*x*10,x*x*10));
+    //         Tex->LevelMemorySizeBytes.push_back(x*x*80000000);
             
-        }
+    //     }
 
-    }
+    // }
 
 
 
