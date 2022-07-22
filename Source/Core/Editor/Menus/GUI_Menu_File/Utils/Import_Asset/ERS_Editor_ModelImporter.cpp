@@ -180,7 +180,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 // then make loader able to understand this version
 // also cleanup loader to just be generally more sensible
 
-void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* TextureMemorySizes, std::vector<std::vector<long>>* ImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* ImageResolutions, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
+void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
     // Create List Of Texture Files To Be Copied
     std::vector<std::pair<std::string, std::shared_ptr<ERS_STRUCT_IOData>>> TextureFiles;
@@ -328,12 +328,12 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
         }
         FreeImage_Unload(Image);
 
-       
+        // Add To Output Vectors
+        TextureImageMemorySizes->push_back(ImageMemorySizes);
+        TextureImageAssetIDs->push_back(ImageAssetIDs);
+        TextureImageResolutions->push_back(Resolutions);
 
     }
-    
-
-
 
 }
 
