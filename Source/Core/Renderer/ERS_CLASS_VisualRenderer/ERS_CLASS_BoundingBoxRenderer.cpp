@@ -126,7 +126,6 @@ void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUC
 
 
         // Determine Color Based On Mode And Info
-        std::string LoadingStatus = Scene->Models[i]->ModelLoadingStatus_;
         int MaxTextureLevel = Scene->Models[i]->MaxTextureLevel_;
         glm::vec3 ModelOutlineColor;
 
