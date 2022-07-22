@@ -62,5 +62,4 @@ bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model*
     } 
 
 
-
 }
