@@ -47,15 +47,18 @@ bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model*
             TextureIDs = std::vector<long>();
             SystemUtils->Logger_->Log(std::string("Error Loading Texture Manifest From Model Metadata'") + std::to_string(AssetID) + "'", 7); 
         }
+
     } catch(YAML::BadSubscript&) {
         SystemUtils->Logger_->Log(std::string(std::string("Error Loading Model '") + std::to_string(AssetID) + std::string("', Asset Metadata Corrupt")).c_str(), 9);
         return;
+
     } catch(YAML::TypedBadConversion<long>&) {
         SystemUtils->Logger_->Log(std::string(std::string("Error Loading Model '") + std::to_string(AssetID) + std::string("', ModelID/TextureIDs Corrupt")).c_str(), 9);
-        return;        
+        return;
+
     } catch(YAML::TypedBadConversion<std::string>&) {
         SystemUtils->Logger_->Log(std::string(std::string("Error Loading Model '") + std::to_string(AssetID) + std::string("', Model Name Corrupt")).c_str(), 9);
-        return;        
+        return;
     } 
 
 
