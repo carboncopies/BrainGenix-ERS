@@ -41,7 +41,7 @@
 
 #include <ERS_STRUCT_SystemUtils.h>
 
-
+#include <ERS_FUNCTION_ModelMetadataDecoderManager.h>
 
 // TESTING STUFF HERE
 #include <ERS_CLASS_AssetStreamingManager.h>

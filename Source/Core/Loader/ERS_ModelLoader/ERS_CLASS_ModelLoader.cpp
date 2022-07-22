@@ -444,6 +444,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     YAML::Node Metadata = YAML::Load(ModelMetadataString);
 
 
+    ERS_FUNCTION_DecodeModelMetadata(Metadata, Model.get(), SystemUtils_, AssetID);
 
     // Spawn Threads To Load Textures
     std::vector<std::future<ERS_STRUCT_Texture>> DecodedTextures;
