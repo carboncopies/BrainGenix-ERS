@@ -22,9 +22,9 @@
  * @brief Decodes model metadata from the yaml system.
  * Handles metadata for model with version 0 - or unspecified.
  * 
- * @param Source 
+ * @param Metadata 
  * @param Model 
  * @return true 
  * @return false 
  */
-bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Source, ERS_STRUCT_Model* Model);
+bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model* Model);
