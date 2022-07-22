@@ -7,7 +7,7 @@
 
 bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model* Model, ERS_STRUCT_SystemUtils* SystemUtils, long AssetID) {
 
-    
+
     // Setup Processing Variables
     bool DecodeStatus = true;
 
@@ -17,11 +17,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
 
         if (Metadata["Name"]) {
             std::string Name = Metadata["Name"].as<std::string>();
-            if (Model->Name == std::string("Loading...")) {
-                Model->Name = Name.substr(Name.find_last_of("/") + 1, Name.length()-1);
-            } else {
-                Model->Name = Name; 
-            }
+            Model->Name = Name.substr(Name.find_last_of("/") + 1, Name.length()-1);
         } else {
             Model->Name = "_Error_";
             SystemUtils->Logger_->Log(std::string("Error Loading Name From Model Metadata '") + std::to_string(AssetID) + "'", 7); 
