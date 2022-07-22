@@ -83,8 +83,8 @@ struct ERS_STRUCT_Model {
     bool FlipTextures = false;
     bool IsTemplateModel = false; /**<This indicates if the model is a the "master" copy of instanced models.*/
 
-    long MetadataID;
-    long ModelDataID;
+    long MetadataID; /**<Asset ID containing the YAML string with the model's info*/
+    long ModelDataID; /**<Asset ID containing the 3d model file used by the asset*/
     
     std::vector<long> TextureIDs;
     

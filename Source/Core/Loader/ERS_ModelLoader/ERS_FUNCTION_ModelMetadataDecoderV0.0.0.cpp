@@ -8,7 +8,7 @@
 bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model* Model, ERS_STRUCT_SystemUtils* SystemUtils, long AssetID) {
 
     // Setup Processing Variables
-    std::string Name;
+
     long ModelID;
     std::vector<std::string> TexturePaths;
     std::vector<long> TextureIDs;
@@ -17,16 +17,22 @@ bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model*
     try {
 
         if (Metadata["Name"]) {
-            Name = Metadata["Name"].as<std::string>();
+            std::string Name = Metadata["Name"].as<std::string>();
+            if (Model->Name == std::string("Loading...")) {
+                Model->Name = Name.substr(Name.find_last_of("/") + 1, Name.length()-1);
+            } else {
+                Model->Name = Name; 
+            }
         } else {
-            Name = "_Error_";
+
+            Model->Name = "_Error_";
             SystemUtils->Logger_->Log(std::string("Error Loading Name From Model Metadata '") + std::to_string(AssetID) + "'", 7); 
         }
 
         if (Metadata["ModelID"]) {
-            ModelID = Metadata["ModelID"].as<long>();
+            Model->ModelDataID = Metadata["ModelID"].as<long>();
         } else {
-            ModelID = -1;
+            Model->ModelDataID = -1;
             SystemUtils->Logger_->Log(std::string("Error Loading 3DAssetID From Model Metadata '") + std::to_string(AssetID) + "'", 7); 
         }
 
@@ -52,8 +58,6 @@ bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model*
         return;        
     } 
 
-    if (Model->Name == std::string("Loading...")) {
-        Model->Name = Name.substr(Name.find_last_of("/") + 1, Name.length()-1);
-    }
+
 
 }
