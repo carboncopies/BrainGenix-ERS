@@ -7,18 +7,39 @@
 
 bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model* Model, ERS_STRUCT_SystemUtils* SystemUtils, long AssetID) {
 
-    // Process Metadata
+    // Setup Processing Variables
     std::string Name;
     long ModelID;
     std::vector<std::string> TexturePaths;
     std::vector<long> TextureIDs;
+
+    // Attempt To Decode, Handle Errors
     try {
-        Name = Metadata["Name"].as<std::string>();
-        ModelID = Metadata["ModelID"].as<long>();
-        YAML::Node TexturePathNode = Metadata["TextureIDs"];
-        for (YAML::const_iterator it=TexturePathNode.begin(); it!=TexturePathNode.end(); ++it) {
-            TexturePaths.push_back(it->first.as<std::string>());
-            TextureIDs.push_back(it->second.as<long>());
+
+        if (Metadata["Name"]) {
+            Name = Metadata["Name"].as<std::string>();
+        } else {
+            Name = "_Error_";
+            SystemUtils->Logger_->Log(std::string("Error Loading Name From Model Metadata '") + std::to_string(AssetID) + "'", 7); 
+        }
+
+        if (Metadata["ModelID"]) {
+            ModelID = Metadata["ModelID"].as<long>();
+        } else {
+            ModelID = -1;
+            SystemUtils->Logger_->Log(std::string("Error Loading 3DAssetID From Model Metadata '") + std::to_string(AssetID) + "'", 7); 
+        }
+
+        if (Metadata["TextureIDs"]) {
+            YAML::Node TexturePathNode = Metadata["TextureIDs"];
+            for (YAML::const_iterator it=TexturePathNode.begin(); it!=TexturePathNode.end(); ++it) {
+                TexturePaths.push_back(it->first.as<std::string>());
+                TextureIDs.push_back(it->second.as<long>());
+            }
+        } else {
+            TexturePaths = std::vector<std::string>();
+            TextureIDs = std::vector<long>();
+            SystemUtils->Logger_->Log(std::string("Error Loading Texture Manifest From Model Metadata'") + std::to_string(AssetID) + "'", 7); 
         }
     } catch(YAML::BadSubscript&) {
         SystemUtils->Logger_->Log(std::string(std::string("Error Loading Model '") + std::to_string(AssetID) + std::string("', Asset Metadata Corrupt")).c_str(), 9);
