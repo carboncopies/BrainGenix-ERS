@@ -20,7 +20,8 @@
 
 /**
  * @brief Decodes All Supported Versions Of Model Metadata,
- * Handles All Supported Versions
+ * Handles All Supported Versions.
+ * Returns True on Success, False On Failure
  * 
  * @param Metadata 
  * @param Model 
