@@ -161,7 +161,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 // then make loader able to understand this version
 // also cleanup loader to just be generally more sensible
 
-YAML::Emitter ERS_CLASS_ModelImporter::WriteTextures(YAML::Emitter Emitter, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
+YAML::Emitter ERS_CLASS_ModelImporter::WriteTextures(YAML::Emitter MetadataEmitter, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
     // Create List Of Texture Files To Be Copied
     std::vector<std::pair<std::string, std::shared_ptr<ERS_STRUCT_IOData>>> TextureFiles;
@@ -253,8 +253,8 @@ YAML::Emitter ERS_CLASS_ModelImporter::WriteTextures(YAML::Emitter Emitter, std:
 
     // Resize For Mipmaps, Save To New Project
 
-    Emitter<<YAML::Key<<"Textures";
-    Emitter<<YAML::Key<<YAML::BeginMap;
+    MetadataEmitter<<YAML::Key<<"Textures";
+    MetadataEmitter<<YAML::Key<<YAML::BeginMap;
     for (unsigned int i = 0; i < ImageBytes.size(); i++) {
 
         // Get Raw Source Texture Information
@@ -313,24 +313,24 @@ YAML::Emitter ERS_CLASS_ModelImporter::WriteTextures(YAML::Emitter Emitter, std:
         FreeImage_Unload(Image);
 
         // Update Metadata
-        Emitter<<YAML::Key<<TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1))<<YAML::Value<<YAML::BeginMap;
+        MetadataEmitter<<YAML::Key<<TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1))<<YAML::Value<<YAML::BeginMap;
         for (unsigned int MipMapIndex = 0; MipMapIndex < MipMaps; MipMapIndex++) {
-            Emitter<<YAML::Key<<MipMapIndex<<YAML::Value<<YAML::BeginMap;
+            MetadataEmitter<<YAML::Key<<MipMapIndex<<YAML::Value<<YAML::BeginMap;
 
-            Emitter<<YAML::Key<<"TextureLevelAssetID"<<YAML::Value<<ImageAssetIDs[MipMapIndex];
-            Emitter<<YAML::Key<<"TextureLevelMemorySizeBytes"<<YAML::Value<<ImageMemorySizes[MipMapIndex];
-            Emitter<<YAML::Key<<"TextureLevelResolutionX"<<YAML::Value<<Resolutions[MipMapIndex].first;
-            Emitter<<YAML::Key<<"TextureLevelResolutionY"<<YAML::Value<<Resolutions[MipMapIndex].second;
+            MetadataEmitter<<YAML::Key<<"TextureLevelAssetID"<<YAML::Value<<ImageAssetIDs[MipMapIndex];
+            MetadataEmitter<<YAML::Key<<"TextureLevelMemorySizeBytes"<<YAML::Value<<ImageMemorySizes[MipMapIndex];
+            MetadataEmitter<<YAML::Key<<"TextureLevelResolutionX"<<YAML::Value<<Resolutions[MipMapIndex].first;
+            MetadataEmitter<<YAML::Key<<"TextureLevelResolutionY"<<YAML::Value<<Resolutions[MipMapIndex].second;
 
-            Emitter<<YAML::EndMap;
+            MetadataEmitter<<YAML::EndMap;
         }
-        Emitter<<YAML::EndMap;
+        MetadataEmitter<<YAML::EndMap;
 
     }
-    Emitter<<YAML::EndMap;
+    MetadataEmitter<<YAML::EndMap;
 
 
-    return Emitter;
+    return MetadataEmitter;
 
 }
 
