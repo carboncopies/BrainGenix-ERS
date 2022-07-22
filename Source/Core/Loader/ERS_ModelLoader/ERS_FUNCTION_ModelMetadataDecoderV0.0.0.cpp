@@ -5,7 +5,7 @@
 #include <ERS_FUNCTION_ModelMetadataDecoderV0.0.0.h>
 
 
-bool DecodeMetadataV000() {
+bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Source, ERS_STRUCT_Model* Model) {
 
     // Process Metadata
     std::string Name;
