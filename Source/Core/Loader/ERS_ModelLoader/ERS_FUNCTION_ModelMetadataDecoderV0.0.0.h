@@ -1,0 +1,30 @@
+//======================================================================//
+// This file is part of the BrainGenix-ERS Environment Rendering System //
+//======================================================================//
+
+#pragma once
+
+// Standard Libraries (BG convention: use <> instead of "")
+#include <string>
+#include <vector>
+
+// Third-Party Libraries (BG convention: use <> instead of "")
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
+// Internal Libraries (BG convention: use <> instead of "")
+#include <ERS_STRUCT_Mesh.h>
+#include <ERS_STRUCT_Model.h>
+#include <ERS_STRUCT_SystemUtils.h>
+
+
+/**
+ * @brief Decodes model metadata from the yaml system.
+ * Handles metadata for model with version 0 - or unspecified.
+ * 
+ * @param Source 
+ * @param Model 
+ * @return true 
+ * @return false 
+ */
+bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Source, ERS_STRUCT_Model* Model);
