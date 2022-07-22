@@ -470,7 +470,6 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, ai
 
 }
 
-// Check Material Textures
 void ERS_CLASS_ModelImporter::AddTexture(ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory) {
 
 
