@@ -450,11 +450,12 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         if (Viewports_[Index]->ShowBoundingBox_) {
             Viewports_[Index]->BoundingBoxRenderer->DrawAll(Viewports_[Index]->Camera.get(), ActiveScene);
         }
-        if (Viewports_[Index]->ShowBoxOnSelectedModel_ && ActiveScene->SceneObjects_[ActiveScene->SelectedObject].Type_ == std::string("Model")) {
-            unsigned long ModelIndex = ActiveScene->SceneObjects_[ActiveScene->SelectedObject].Index_;
-            Viewports_[Index]->BoundingBoxRenderer->DrawModel(Viewports_[Index]->Camera.get(), ActiveScene->Models[ModelIndex].get());
+        if (ActiveScene->SceneObjects_.size() > 0) {
+            if (Viewports_[Index]->ShowBoxOnSelectedModel_ && ActiveScene->SceneObjects_[ActiveScene->SelectedObject].Type_ == std::string("Model")) {
+                unsigned long ModelIndex = ActiveScene->SceneObjects_[ActiveScene->SelectedObject].Index_;
+                Viewports_[Index]->BoundingBoxRenderer->DrawModel(Viewports_[Index]->Camera.get(), ActiveScene->Models[ModelIndex].get());
+            }
         }
-
 
         // Render Framebuffer To Window
         ImGui::GetWindowDrawList()->AddImage(
