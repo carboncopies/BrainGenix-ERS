@@ -117,7 +117,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     MetadataEmitter<<YAML::Key<<"ModelID"<<YAML::Value<<ModelID;
 
 
-    WriteTextures(&MetadataEmitter, AssetPath);
+    MetadataEmitter = WriteTextures(MetadataEmitter, AssetPath);
 
     
 
