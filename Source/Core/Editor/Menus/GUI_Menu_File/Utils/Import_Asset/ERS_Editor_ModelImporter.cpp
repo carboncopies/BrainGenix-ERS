@@ -335,6 +335,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
             Data->AssetTypeName = "TextureImage";
             Data->Data.reset(new unsigned char[MemorySize]);
             ::memcpy(Data->Data.get(), Memory->data, MemorySize);
+            FreeImage_CloseMemory(Memory);
             Data->Size_B = MemorySize;
             Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
             Data->AssetModificationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
