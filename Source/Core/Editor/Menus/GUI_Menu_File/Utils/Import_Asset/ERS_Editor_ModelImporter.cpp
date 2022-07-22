@@ -327,11 +327,11 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
             + "' With ID '" + std::to_string(ImageAssetID)
             + "' For Asset Texture '" + TextureList_[i], 3);
 
-            FIMEMORY* Memory = FreeImage_OpenMemory(0, MemorySize);
-            FreeImage_Save(Format, NewImage, "Test.png");
+            FIMEMORY* Memory = FreeImage_OpenMemory();
             FreeImage_SaveToMemory(Format, NewImage, Memory);
             FreeImage_Unload(NewImage);
             
+            sizeof(Memory->data);
             std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
             Data->AssetTypeName = "TextureImage";
             Data->Data.reset(new unsigned char[MemorySize]);
