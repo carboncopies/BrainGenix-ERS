@@ -352,6 +352,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath, int MipMaps) 
 
             ImageMemorySizes.push_back(FreeImage_GetMemorySize(NewImage));
             
+            FreeImage_SaveToMemory()
 
         }
 
