@@ -316,11 +316,12 @@ YAML::Emitter ERS_CLASS_ModelImporter::WriteTextures(YAML::Emitter Emitter, std:
         Emitter<<YAML::Key<<TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1))<<YAML::Value<<YAML::BeginMap;
         for (unsigned int MipMapIndex = 0; MipMapIndex < MipMaps; MipMapIndex++) {
             Emitter<<YAML::Key<<MipMapIndex<<YAML::Value<<YAML::BeginMap;
+
             Emitter<<YAML::Key<<"TextureLevelAssetID"<<YAML::Value<<ImageAssetIDs[MipMapIndex];
             Emitter<<YAML::Key<<"TextureLevelMemorySizeBytes"<<YAML::Value<<ImageMemorySizes[MipMapIndex];
             Emitter<<YAML::Key<<"TextureLevelResolutionX"<<YAML::Value<<Resolutions[MipMapIndex].first;
             Emitter<<YAML::Key<<"TextureLevelResolutionY"<<YAML::Value<<Resolutions[MipMapIndex].second;
-
+            
             Emitter<<YAML::EndMap;
         }
         Emitter<<YAML::EndMap;
