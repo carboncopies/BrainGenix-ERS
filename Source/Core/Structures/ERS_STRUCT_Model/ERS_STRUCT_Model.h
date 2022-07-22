@@ -54,7 +54,7 @@ struct ERS_STRUCT_Model {
 
 
     // New Model Decoding System
-    std::vector<std::unique_ptr<ERS_STRUCT_Texture>> Textures_;
+    std::vector<ERS_STRUCT_Texture> Textures_;
 
 
 
