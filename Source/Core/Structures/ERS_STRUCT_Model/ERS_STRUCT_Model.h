@@ -34,8 +34,8 @@ struct ERS_STRUCT_Model {
     double LoadingStartTime_; /**<Time that the loading started*/
     double LoadingFinishTime_; /**<Time When Loading Was Completed*/
     double TotalLoadingTime_; /**<The Total Time Needed To Load*/
-    unsigned long TotalVertices_; /**<Total Number Of Verts In This Model*/ 
-    unsigned long TotalIndices_; /**<Total Number Of Indices In Model*/
+    unsigned long TotalVertices_ = 0; /**<Total Number Of Verts In This Model*/ 
+    unsigned long TotalIndices_ = 0; /**<Total Number Of Indices In Model*/
 
     // Bounding Box Info
     glm::vec3 BoxScale_; /**<Bounding Box Size In Local Space (Multiply By Object's scale value to get true size)*/
