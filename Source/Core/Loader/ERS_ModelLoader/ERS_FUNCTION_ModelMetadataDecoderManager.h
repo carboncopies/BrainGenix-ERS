@@ -17,6 +17,9 @@
 #include <ERS_STRUCT_Model.h>
 #include <ERS_STRUCT_SystemUtils.h>
 
+#include <ERS_FUNCTION_ModelMetadataDecoderV0.0.0.h>
+#include <ERS_FUNCTION_ModelMetadataDecoderV0.0.1.h>
+
 
 /**
  * @brief Decodes All Supported Versions Of Model Metadata,
