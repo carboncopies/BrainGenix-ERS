@@ -336,12 +336,10 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
             Data->AssetTypeName = "TextureImage";
 
 
-            DWORD ImageCompressedSize = 0;
-            BYTE *ImageCompressedBytes;
-            FreeImage_AcquireMemory(Memory, &ImageCompressedBytes, &ImageCompressedSize);
-
+            //FreeImage_AcquireMemory(Memory, &ImageCompressedBytes, &ImageCompressedSize);
+            int ImageCompressedSize = FreeImage_GetMemorySize(Memory);
             Data->Data.reset(new unsigned char[ImageCompressedSize]);
-            ::memcpy(Data->Data.get(), ImageCompressedBytes, ImageCompressedSize);
+            ::memcpy(Data->Data.get(), Memory->data, ImageCompressedSize);
 
             FreeImage_CloseMemory(Memory);
             Data->Size_B = ImageCompressedSize;
