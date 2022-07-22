@@ -328,6 +328,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
             + "' For Asset Texture '" + TextureList_[i], 3);
 
             FIMEMORY* Memory = FreeImage_OpenMemory(0, MemorySize);
+            FreeImage_Save(Format, NewImage, "Test.png");
             FreeImage_SaveToMemory(Format, NewImage, Memory);
             FreeImage_Unload(NewImage);
             
