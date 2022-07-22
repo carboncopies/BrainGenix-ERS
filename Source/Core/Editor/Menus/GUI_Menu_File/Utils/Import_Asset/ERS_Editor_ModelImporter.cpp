@@ -330,14 +330,18 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
             FIMEMORY* Memory = FreeImage_OpenMemory();
             FreeImage_SaveToMemory(Format, NewImage, Memory);
             FreeImage_Unload(NewImage);
-            
+
             sizeof(Memory->data);
             std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
             Data->AssetTypeName = "TextureImage";
-            Data->Data.reset(new unsigned char[MemorySize]);
-            ::memcpy(Data->Data.get(), Memory->data, MemorySize);
+            //Data->Data.reset(new unsigned char[MemorySize]);
+            //::memcpy(Data->Data.get(), Memory->data, MemorySize);
+
+            DWORD ImageCompressedBytes = 0;
+            FreeImage_AcquireMemory(Memory, Data->Data.get(), &ImageCompressedBytes)
+
             FreeImage_CloseMemory(Memory);
-            Data->Size_B = MemorySize;
+            Data->Size_B = ImageCompressedBytes;
             Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
             Data->AssetModificationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
             SystemUtils_->ERS_IOSubsystem_->WriteAsset(ImageAssetID, Data.get());
