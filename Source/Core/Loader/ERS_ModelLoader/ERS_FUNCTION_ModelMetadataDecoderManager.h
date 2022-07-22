@@ -19,8 +19,8 @@
 
 
 /**
- * @brief Decodes model metadata from the yaml system.
- * Handles metadata for model with version 0 - or unspecified.
+ * @brief Decodes All Supported Versions Of Model Metadata,
+ * Handles All Supported Versions
  * 
  * @param Metadata 
  * @param Model 
@@ -29,4 +29,4 @@
  * @return true 
  * @return false 
  */
-bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model* Model, ERS_STRUCT_SystemUtils* SystemUtils, long AssetID);
+bool ERS_FUNCTION_DecodeModelMetadata(YAML::Node Metadata, ERS_STRUCT_Model* Model, ERS_STRUCT_SystemUtils* SystemUtils, long AssetID);
