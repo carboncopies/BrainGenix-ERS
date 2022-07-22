@@ -337,7 +337,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
 
 
             DWORD ImageCompressedSize = 0;
-            BYTE** ImageCompressedBytes
+            BYTE *ImageCompressedBytes;
             FreeImage_AcquireMemory(Memory, &ImageCompressedBytes, &ImageCompressedSize);
 
             Data->Data.reset(new unsigned char[ImageCompressedSize]);
