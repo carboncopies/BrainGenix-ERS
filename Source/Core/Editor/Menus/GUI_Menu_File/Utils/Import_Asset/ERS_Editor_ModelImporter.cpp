@@ -232,7 +232,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
 
 
-void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath, int MipMaps) {
+void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
     // Create List Of Texture Files To Be Copied
     std::vector<std::pair<std::string, std::unique_ptr<ERS_STRUCT_IOData>>> TextureFiles;
@@ -350,9 +350,12 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath, int MipMaps) 
             TargetY = Resolutions[MipMapIndex].second;
             FIBITMAP* NewImage = FreeImage_Rescale(Image, TargetX, TargetY);
 
-            ImageMemorySizes.push_back(FreeImage_GetMemorySize(NewImage));
+            int MemorySize = FreeImage_GetMemorySize(NewImage);
+            ImageMemorySizes.push_back(MemorySize);
             
-            FreeImage_SaveToMemory()
+            FIMEMORY* Memory = FreeImage_OpenMemory(0, MemorySize);
+            FreeImage_SaveToMemory(Format, NewImage, Memory);
+            FreeImage_
 
         }
 
