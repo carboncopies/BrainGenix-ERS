@@ -118,7 +118,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     MetadataEmitter<<YAML::BeginMap;
 
     MetadataEmitter<<YAML::Key<<"Name"<<YAML::Value<<AssetPath;
-    MetadataEmitter<<YAML::Key<<"FormatVersion"<<YAML::Value<<"0.0.2";
+    MetadataEmitter<<YAML::Key<<"FormatVersion"<<YAML::Value<<"0.0.1";
 
     MetadataEmitter<<YAML::Key<<"ModelID"<<YAML::Value<<ModelID;
 
