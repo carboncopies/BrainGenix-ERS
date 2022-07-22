@@ -168,10 +168,10 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
     // Create List Of Texture Files To Be Copied
-    std::vector<std::pair<std::string, std::unique_ptr<ERS_STRUCT_IOData>>> TextureFiles;
+    std::vector<std::pair<std::string, std::shared_ptr<ERS_STRUCT_IOData>>> TextureFiles;
     for (int i = 0; (long)i < (long)TextureList_.size(); i++) {
 
-        std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
+        std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
         std::string TexturePath = TextureList_[i];
         bool Success = ReadFile(TextureList_[i], Data.get());
         Data->AssetTypeName = "Texture";
