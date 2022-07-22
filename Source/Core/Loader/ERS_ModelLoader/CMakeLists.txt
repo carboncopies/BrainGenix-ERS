@@ -12,6 +12,8 @@ add_library(ERS_ModelLoader
             "ERS_CLASS_AsyncTextureUpdater.cpp"
             "ERS_CLASS_AssetStreamingSystemResourceMonitor.cpp"
             "ERS_FUNCTION_ModelMetadataDecoderV0.0.0.cpp"
+            "ERS_FUNCTION_ModelMetadataDecoderV0.0.1.cpp"
+            "ERS_FUNCTION_ModelMetadataDecoderManager.cpp"
 
             # Add Header Files (.h)
             "ERS_CLASS_ModelLoader.h"
@@ -19,6 +21,8 @@ add_library(ERS_ModelLoader
             "ERS_CLASS_AsyncTextureUpdater.h"
             "ERS_CLASS_AssetStreamingSystemResourceMonitor.h"
             "ERS_FUNCTION_ModelMetadataDecoderV0.0.0.h"
+            "ERS_FUNCTION_ModelMetadataDecoderV0.0.1.h"
+            "ERS_FUNCTION_ModelMetadataDecoderManager.h"
 
 
             ${BACKWARD_ENABLE}
