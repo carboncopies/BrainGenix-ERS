@@ -230,7 +230,10 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     return MetadataID;
 }
 
-
+// todo: make write textures function take emitter pointer
+// then test, fix bugs
+// then make loader able to understand this version
+// also cleanup loader to just be generally more sensible
 
 void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
