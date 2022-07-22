@@ -178,6 +178,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     long MetadataID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
     SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(MetadataID) + std::string("' To Model Metadata")).c_str(), 4);
+    SystemUtils_->Logger_->Log("Done Importing Model", 5);
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(MetadataID, Data.get());
     
     return MetadataID;
