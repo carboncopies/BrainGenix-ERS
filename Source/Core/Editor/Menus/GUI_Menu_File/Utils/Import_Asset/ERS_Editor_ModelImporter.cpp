@@ -336,7 +336,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::string AssetPath, FREE_IMAGE_FO
         int Y = SourceImageHeight;
         for (unsigned int MipMapIndex = 0; MipMapIndex < MipMaps; MipMapIndex++) {
             Resolutions.push_back(std::make_pair(X, Y));
-            SystemUtils_->Logger_->Log(std::string("Calculating Texture Level '") + std::to_string(MipMapIndex) + "' Size '") + std::to_string(X) + "," + std::to_string(Y) + "'", 4);
+            SystemUtils_->Logger_->Log(std::string("Calculating Texture Level '") + std::to_string(MipMapIndex) + "' Size '" + std::to_string(X) + "," + std::to_string(Y) + "'", 4);
             X /= 2;
             Y /= 2;
         }
