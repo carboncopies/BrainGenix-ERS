@@ -34,7 +34,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
 
         if (Metadata["Textures"]) {
             YAML::Node TexturePathNode = Metadata["Textures"];
-            for (YAML::const_iterator it=TexturePathNode.begin(); it!=TexturePathNode.end(); ++it) {\
+            for (YAML::const_iterator it=TexturePathNode.begin(); it!=TexturePathNode.end(); ++it) {
 
                 // Handle All Levels For This Texture
                 ERS_STRUCT_Texture Texture;
