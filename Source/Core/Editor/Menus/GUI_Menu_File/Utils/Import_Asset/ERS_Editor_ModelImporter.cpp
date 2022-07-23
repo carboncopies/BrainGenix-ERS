@@ -323,7 +323,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
 
             // Save Image
             SystemUtils_->Logger_->Log(std::string("Writing Texture Image For Layer '")
-            + std::to_string(MipMapIndex)
+            + std::to_string((MipMaps - 1) - MipMapIndex)
             + "' With ID '" + std::to_string(ImageAssetID)
             + "' For Asset Texture '" + TextureList_[i], 3);
 
