@@ -109,7 +109,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     std::vector<std::vector<int>> TextureMemorySizes;
     std::vector<std::vector<long>> ImageAssetIDs;
     std::vector<std::vector<std::pair<int, int>>> ImageResolutions;
-    WriteTextures(&TextureMemorySizes, &ImageAssetIDs, &ImageResolutions, AssetPath);
+    WriteTextures(&TextureMemorySizes, &ImageAssetIDs, &ImageResolutions, AssetPath, FIF_PNG, 50);
 
 
 
