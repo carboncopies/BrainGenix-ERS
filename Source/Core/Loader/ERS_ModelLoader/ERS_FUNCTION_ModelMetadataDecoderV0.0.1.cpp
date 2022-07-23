@@ -36,9 +36,12 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
             YAML::Node TexturePathNode = Metadata["Textures"];
             for (YAML::const_iterator it=TexturePathNode.begin(); it!=TexturePathNode.end(); ++it) {
 
-                // Handle All Levels For This Texture
+                // Setup Texture Struct
                 ERS_STRUCT_Texture Texture;
                 Texture.Path = it->first.as<std::string>();
+                SystemUtils->Logger_->Log(std::string("Found Texture '") + Texture.Path + "'", 3);
+
+                // Add All Levels To This Texture
                 YAML::Node TextureLevels = it->second;
                 for (YAML::const_iterator LevelIterator = TextureLevels.begin(); LevelIterator != TextureLevels.end(); ++LevelIterator) {
 
