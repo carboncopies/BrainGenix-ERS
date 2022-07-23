@@ -472,63 +472,63 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     // Decode Mesh, Create Texture Pointers
     ProcessNode(&(*Model), Scene->mRootNode, Scene, TexturePaths);
 
-    // Get Texture Images From Loader, Push Into Vector
-    for (unsigned long i = 0; i < DecodedTextures.size(); i++) {
-        SystemUtils_->Logger_->Log(std::string(std::string("Getting Texture With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
-        Model->TexturesToPushToGPU_.push_back(DecodedTextures[i].get());
-    }
+    // // Get Texture Images From Loader, Push Into Vector
+    // for (unsigned long i = 0; i < DecodedTextures.size(); i++) {
+    //     SystemUtils_->Logger_->Log(std::string(std::string("Getting Texture With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
+    //     Model->TexturesToPushToGPU_.push_back(DecodedTextures[i].get());
+    // }
 
-    // Calculate Bounding Box
-    glm::vec3 ModelMinXYZ;
-    glm::vec3 ModelMaxXYZ;
-    for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
+    // // Calculate Bounding Box
+    // glm::vec3 ModelMinXYZ;
+    // glm::vec3 ModelMaxXYZ;
+    // for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
 
-        // Get Mesh Min/Max
-        glm::vec3 MeshMinXYZ = Model->Meshes[i].MinXYZ_;
-        glm::vec3 MeshMaxXYZ = Model->Meshes[i].MaxXYZ_;
+    //     // Get Mesh Min/Max
+    //     glm::vec3 MeshMinXYZ = Model->Meshes[i].MinXYZ_;
+    //     glm::vec3 MeshMaxXYZ = Model->Meshes[i].MaxXYZ_;
 
-        // Check If Larger/Smaller Than Model Min/Max
-        if (MeshMinXYZ.x < ModelMinXYZ.x) {
-            ModelMinXYZ.x = MeshMinXYZ.x;
-        }
-        if (MeshMinXYZ.y < ModelMinXYZ.y) {
-            ModelMinXYZ.y = MeshMinXYZ.y;
-        }
-        if (MeshMinXYZ.z < ModelMinXYZ.z) {
-            ModelMinXYZ.z = MeshMinXYZ.z;
-        }
-        if (MeshMaxXYZ.x > ModelMaxXYZ.x) {
-            ModelMaxXYZ.x = MeshMaxXYZ.x;
-        }
-        if (MeshMaxXYZ.y > ModelMaxXYZ.y) {
-            ModelMaxXYZ.y = MeshMaxXYZ.y;
-        }
-        if (MeshMaxXYZ.z > ModelMaxXYZ.z) {
-            ModelMaxXYZ.z = MeshMaxXYZ.z;
-        }
-    }
-    Model->BoxScale_ = abs(ModelMaxXYZ) + abs(ModelMinXYZ);
+    //     // Check If Larger/Smaller Than Model Min/Max
+    //     if (MeshMinXYZ.x < ModelMinXYZ.x) {
+    //         ModelMinXYZ.x = MeshMinXYZ.x;
+    //     }
+    //     if (MeshMinXYZ.y < ModelMinXYZ.y) {
+    //         ModelMinXYZ.y = MeshMinXYZ.y;
+    //     }
+    //     if (MeshMinXYZ.z < ModelMinXYZ.z) {
+    //         ModelMinXYZ.z = MeshMinXYZ.z;
+    //     }
+    //     if (MeshMaxXYZ.x > ModelMaxXYZ.x) {
+    //         ModelMaxXYZ.x = MeshMaxXYZ.x;
+    //     }
+    //     if (MeshMaxXYZ.y > ModelMaxXYZ.y) {
+    //         ModelMaxXYZ.y = MeshMaxXYZ.y;
+    //     }
+    //     if (MeshMaxXYZ.z > ModelMaxXYZ.z) {
+    //         ModelMaxXYZ.z = MeshMaxXYZ.z;
+    //     }
+    // }
+    // Model->BoxScale_ = abs(ModelMaxXYZ) + abs(ModelMinXYZ);
 
-    Model->BoxOffset_ = (Model->BoxScale_ / 2.0f) + ModelMinXYZ;
+    // Model->BoxOffset_ = (Model->BoxScale_ / 2.0f) + ModelMinXYZ;
     
-    std::string LogMsg = std::string("Calculated Model Bounding Box To Be '") 
-    + std::to_string(Model->BoxScale_.x) + "X, "
-    + std::to_string(Model->BoxScale_.y) + "Y, "
-    + std::to_string(Model->BoxScale_.z) + "Z' With Offset Of '"
-    + std::to_string(Model->BoxOffset_.x) + "X, "
-    + std::to_string(Model->BoxOffset_.y) + "Y, "
-    + std::to_string(Model->BoxOffset_.z) + "Z'";
-    SystemUtils_->Logger_->Log(LogMsg, 3);
+    // std::string LogMsg = std::string("Calculated Model Bounding Box To Be '") 
+    // + std::to_string(Model->BoxScale_.x) + "X, "
+    // + std::to_string(Model->BoxScale_.y) + "Y, "
+    // + std::to_string(Model->BoxScale_.z) + "Z' With Offset Of '"
+    // + std::to_string(Model->BoxOffset_.x) + "X, "
+    // + std::to_string(Model->BoxOffset_.y) + "Y, "
+    // + std::to_string(Model->BoxOffset_.z) + "Z'";
+    // SystemUtils_->Logger_->Log(LogMsg, 3);
 
 
-    // Move Verts By Detected Offset
-    SystemUtils_->Logger_->Log("Moving Model By Detected Offset", 4);
-    for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
-        for (unsigned long x = 0; x < Model->Meshes[i].Vertices.size(); x++) {
-            Model->Meshes[i].Vertices[x].Position -= Model->BoxOffset_;
-        }
-    }
-    SystemUtils_->Logger_->Log("Finished Moving Model By Detected Offset", 3);
+    // // Move Verts By Detected Offset
+    // SystemUtils_->Logger_->Log("Moving Model By Detected Offset", 4);
+    // for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
+    //     for (unsigned long x = 0; x < Model->Meshes[i].Vertices.size(); x++) {
+    //         Model->Meshes[i].Vertices[x].Position -= Model->BoxOffset_;
+    //     }
+    // }
+    // SystemUtils_->Logger_->Log("Finished Moving Model By Detected Offset", 3);
 
 
 
