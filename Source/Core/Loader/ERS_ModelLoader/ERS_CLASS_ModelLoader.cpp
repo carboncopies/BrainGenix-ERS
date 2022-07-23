@@ -690,7 +690,7 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(unsigned long PreallocVertSiz
 
 }
 
-void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<int>* IDs, std::vector<std::string>* Types, std::vector<std::string> TextureList, aiMaterial *Mat, aiTextureType Type, std::string TypeName) {
+void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<std::pair<std::string, std::string>>* ModelRequestedTextures, aiMaterial *Mat) {
 
     std::vector<std::pair<aiTextureType, std::string>> TexturesToIterateOver;
     TexturesToIterateOver.push_back(std::make_pair(aiTextureType_AMBIENT, "texture_ambient"));
@@ -713,52 +713,58 @@ void ERS_CLASS_ModelLoader::LoadMaterialTextures(std::vector<int>* IDs, std::vec
     TexturesToIterateOver.push_back(std::make_pair(aiTextureType_SPECULAR, "texture_specular"));
     TexturesToIterateOver.push_back(std::make_pair(aiTextureType_UNKNOWN, "texture_unknown"));
 
+    // Iterate Over All Texture Types
+    for (unsigned int TextureTypeIndex = 0; TextureTypeIndex < TexturesToIterateOver.size(); TextureTypeIndex++) {
 
-    // Iterate Through Textures
-    for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {
+        aiTextureType Type = TexturesToIterateOver[TextureTypeIndex].first;
+        std::string TypeName = TexturesToIterateOver[TextureTypeIndex].second;
+
+        // Iterate Through Textures For This Type
+        for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {
 
 
-        // Calculate Texture Path
-        aiString TextureString;
-        Mat->GetTexture(Type, i, &TextureString);
-        std::string TextureIdentifier = std::string(std::string(TextureString.C_Str()));
+            // Calculate Texture Path
+            aiString TextureString;
+            Mat->GetTexture(Type, i, &TextureString);
+            std::string TextureIdentifier = std::string(std::string(TextureString.C_Str()));
 
-        std::string Message = std::string("Model Requesting Texture Of Type '") + TypeName + std::string("' With Identifier '") + TextureIdentifier + std::string("'");
-        SystemUtils_->Logger_->Log(Message, 3);
+            std::string Message = std::string("Model Requesting Texture Of Type '") + TypeName + std::string("' With Identifier '") + TextureIdentifier + std::string("'");
+            SystemUtils_->Logger_->Log(Message, 3);
 
-        // Search Texture List For Index Of Same Match, Add -1 If Not Found
-        int Index = -1;
-        for (unsigned long x = 0; x < TextureList.size(); x++) {
-            if (TextureList[x] == TextureIdentifier) {
-                SystemUtils_->Logger_->Log(std::string("Found Matching Texture '") + TextureList[x] + std::string("'"), 3);
-                Index = x;
-                break;
-            }
-        }
-
-        // If Initial Search Failed To Match, Try Again By Only Checking End Of Path
-        if (Index == -1) {
-            SystemUtils_->Logger_->Log(std::string("Initial Model-Texture Matching Failed On Texture '") + TextureIdentifier + std::string("', Attempting Check With Substring"), 4);
+            // Search Texture List For Index Of Same Match, Add -1 If Not Found
+            int Index = -1;
             for (unsigned long x = 0; x < TextureList.size(); x++) {
-                if (TextureList[x].substr(TextureList[x].find_last_of("/") + 1, TextureList[x].length()) == TextureIdentifier.substr(TextureIdentifier.find_last_of("/") + 1, TextureIdentifier.length() - 1)) {
-                    SystemUtils_->Logger_->Log(std::string("Found Matching Texture During Substring Match '") + TextureList[x] + std::string("'"), 4);
+                if (TextureList[x] == TextureIdentifier) {
+                    SystemUtils_->Logger_->Log(std::string("Found Matching Texture '") + TextureList[x] + std::string("'"), 3);
                     Index = x;
                     break;
                 }
             }
+
+            // If Initial Search Failed To Match, Try Again By Only Checking End Of Path
+            if (Index == -1) {
+                SystemUtils_->Logger_->Log(std::string("Initial Model-Texture Matching Failed On Texture '") + TextureIdentifier + std::string("', Attempting Check With Substring"), 4);
+                for (unsigned long x = 0; x < TextureList.size(); x++) {
+                    if (TextureList[x].substr(TextureList[x].find_last_of("/") + 1, TextureList[x].length()) == TextureIdentifier.substr(TextureIdentifier.find_last_of("/") + 1, TextureIdentifier.length() - 1)) {
+                        SystemUtils_->Logger_->Log(std::string("Found Matching Texture During Substring Match '") + TextureList[x] + std::string("'"), 4);
+                        Index = x;
+                        break;
+                    }
+                }
+            }
+
+            // If None Of Those Worked, Log Failure
+            if (Index == -1) { 
+                SystemUtils_->Logger_->Log(std::string("Failed To Find Suitable Texture Match, Texture Will Not Load"), 8);
+            }
+
+
+            // Add To Output Vert
+            IDs->push_back(Index);
+            Types->push_back(TypeName);
         }
 
-        // If None Of Those Worked, Log Failure
-        if (Index == -1) { 
-            SystemUtils_->Logger_->Log(std::string("Failed To Find Suitable Texture Match, Texture Will Not Load"), 8);
-        }
-
-
-        // Add To Output Vert
-        IDs->push_back(Index);
-        Types->push_back(TypeName);
     }
-
 
 }
 
