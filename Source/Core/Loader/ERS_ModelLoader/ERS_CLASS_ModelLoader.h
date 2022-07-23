@@ -122,7 +122,7 @@ private:
      * @param Scene 
      * @return ERS_STRUCT_Mesh 
      */
-    ERS_STRUCT_Mesh ProcessMesh(unsigned long PreallocVertSize, unsigned long PerallocIndSize, aiMesh *Mesh, const aiScene *Scene, std::vector<std::string> TexturePaths);
+    ERS_STRUCT_Mesh ProcessMesh(unsigned long PreallocVertSize, unsigned long PerallocIndSize, aiMesh *Mesh, const aiScene *Scene, std::vector<std::pair<std::string, std::string>>* ModelRequestedTextures);
 
     /**
      * @brief Load Textures From Model.
@@ -132,7 +132,7 @@ private:
      * @param TypeName 
      * @return std::vector<ERS_STRUCT_Texture> 
      */
-    void LoadMaterialTextures(std::vector<int>* IDs, std::vector<std::string>* Types, std::vector<std::string> TextureList, aiMaterial *Mat, aiTextureType Type, std::string TypeName);
+    void LoadMaterialTextures(std::vector<int>* IDs, std::vector<std::string>* Types, std::vector<std::pair<std::string, std::string>>* ModelRequestedTextures, aiMaterial *Mat, aiTextureType Type, std::string TypeName);
 
     /**
      * @brief Checks if the target model has already been loaded, and returns refrences when completed.
