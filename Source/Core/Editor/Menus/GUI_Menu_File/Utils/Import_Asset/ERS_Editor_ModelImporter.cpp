@@ -134,7 +134,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
         // Set Path For Each Texture, Iterate OVer All Levels Of This Texture
         MetadataEmitter<<YAML::Key<<TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1))<<YAML::Value<<YAML::BeginMap;
         for (unsigned int TextureLevel = 0; TextureLevel < TextureMemorySizes[i].size(); TextureLevel++) {
-            MetadataEmitter<<YAML::Key<<TextureLevel<<YAML::Value<<YAML::BeginMap;
+            MetadataEmitter<<YAML::Key<<(TextureMemorySizes[i].size() - 1) - TextureLevel<<YAML::Value<<YAML::BeginMap;
 
             MetadataEmitter<<YAML::Key<<"TextureLevelAssetID"<<YAML::Value<<ImageAssetIDs[i][TextureLevel];
             MetadataEmitter<<YAML::Key<<"TextureLevelMemorySizeBytes"<<YAML::Value<<TextureMemorySizes[i][TextureLevel];
@@ -294,7 +294,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
         std::vector<std::pair<int, int>> Resolutions;
         int X = SourceImageWidth;
         int Y = SourceImageHeight;
-        for (int MipMapIndex = 0; MipMapIndex < MipMaps; MipMapIndex++) {
+        for (int MipMapIndex = MipMaps - 1; MipMapIndex >= 0; MipMapIndex--) {
             Resolutions.push_back(std::make_pair(X, Y));
             SystemUtils_->Logger_->Log(std::string("Calculating Texture Level '") + std::to_string(MipMapIndex) + "' Size '" + std::to_string(X) + "," + std::to_string(Y) + "'", 4);
             X /= 2;
@@ -304,7 +304,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
         // Resize Images
         std::vector<int> ImageMemorySizes;
         std::vector<long> ImageAssetIDs;
-        for (int MipMapIndex = MipMaps - 1; MipMapIndex >= 0; MipMapIndex--) {
+        for (int MipMapIndex = 0; MipMapIndex < MipMaps; MipMapIndex++) {
 
             // Resize Image
             int TargetX, TargetY;
