@@ -46,6 +46,10 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
                     Texture.LevelTextureIDs.push_back(LevelInfo["TextureLevelAssetID"].as<long>());
                     Texture.LevelMemorySizeBytes.push_back(LevelInfo["TextureLevelMemorySizeBytes"].as<int>());
                     Texture.LevelResolutions.push_back(std::make_pair(LevelInfo["TextureLevelResolutionX"].as<int>(), LevelInfo["TextureLevelResolutionY"].as<int>()));
+                    SystemUtils->Logger_->Log(std::string("Detected Texture Level '") + std::to_string(LevelIterator->first.as<int>())
+                    + "', Resolution '" + std::to_string(LevelInfo["TextureLevelResolutionX"].as<int>())
+                    + "x" + std::to_string(LevelInfo["TextureLevelResolutionY"].as<int>())
+                    + "'", 1);
 
                 }
 
