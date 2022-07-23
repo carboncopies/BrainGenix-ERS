@@ -41,7 +41,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
                 Texture.Path = it->first.as<std::string>();
                 YAML::Node TextureLevels = it->second;
                 for (YAML::const_iterator LevelIterator = TextureLevels.begin(); LevelIterator != TextureLevels.end(); ++LevelIterator) {
-                    int Level = LevelIterator->first;
+                    int Level = LevelIterator->first.as<int>();
                     YAML::Node LevelInfo = LevelIterator->second;
 
                     Texture.LevelMemorySizeBytes.push_back(LevelInfo["TextureLevelMemorySizeBytes"].as<int>());
