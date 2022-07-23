@@ -32,12 +32,23 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
             DecodeStatus = false;
         }
 
-        if (Metadata["TextureIDs"]) {
-            YAML::Node TexturePathNode = Metadata["TextureIDs"];
-            for (YAML::const_iterator it=TexturePathNode.begin(); it!=TexturePathNode.end(); ++it) {
+        if (Metadata["Textures"]) {
+            YAML::Node TexturePathNode = Metadata["Textures"];
+            for (YAML::const_iterator it=TexturePathNode.begin(); it!=TexturePathNode.end(); ++it) {\
+
+                // Handle All Levels For This Texture
                 ERS_STRUCT_Texture Texture;
                 Texture.Path = it->first.as<std::string>();
-                Texture.LevelTextureIDs.push_back(it->second.as<long>());
+                YAML::Node TextureLevels = it->second;
+                for (YAML::const_iterator LevelIterator = TextureLevels.begin(); LevelIterator != TextureLevels.end(); ++LevelIterator) {
+                    int Level = LevelIterator->first;
+                    YAML::Node LevelInfo = LevelIterator->second;
+
+                    Texture.LevelMemorySizeBytes.push_back(LevelInfo["TextureLevelMemorySizeBytes"].as<int>());
+                    Texture.LevelTextureIDs.push_back(LevelInfo["TextureLevelMemorySizeBytes"].as<int>());
+
+                }
+
                 Model->Textures_.push_back(Texture);
             }
         } else {
