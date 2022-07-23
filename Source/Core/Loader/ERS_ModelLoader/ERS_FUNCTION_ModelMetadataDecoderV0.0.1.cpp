@@ -14,6 +14,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
     // Attempt To Decode, Handle Errors
     try {
 
+        SystemUtils->Logger_->Log("Decoding Model Metadata", 3);
 
         if (Metadata["Name"]) {
             std::string Name = Metadata["Name"].as<std::string>();
@@ -49,7 +50,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
                     Texture.LevelTextureIDs.push_back(LevelInfo["TextureLevelAssetID"].as<long>());
                     Texture.LevelMemorySizeBytes.push_back(LevelInfo["TextureLevelMemorySizeBytes"].as<int>());
                     Texture.LevelResolutions.push_back(std::make_pair(LevelInfo["TextureLevelResolutionX"].as<int>(), LevelInfo["TextureLevelResolutionY"].as<int>()));
-                    
+
                     SystemUtils->Logger_->Log(std::string("Detected Texture Level '") + std::to_string(LevelIterator->first.as<int>())
                     + "', Resolution '" + std::to_string(LevelInfo["TextureLevelResolutionX"].as<int>())
                     + "x" + std::to_string(LevelInfo["TextureLevelResolutionY"].as<int>())
@@ -64,6 +65,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
             DecodeStatus = false;
         }
 
+        SystemUtils->Logger_->Log("Finished Decoding Model Metadata", 3);
         return DecodeStatus;
 
     } catch(YAML::BadSubscript&) {
