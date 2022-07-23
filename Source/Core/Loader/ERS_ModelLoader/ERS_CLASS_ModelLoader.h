@@ -132,7 +132,7 @@ private:
      * @param TypeName 
      * @return std::vector<ERS_STRUCT_Texture> 
      */
-    void LoadMaterialTextures(std::vector<int>* IDs, std::vector<std::string>* Types, std::vector<std::pair<std::string, std::string>>* ModelRequestedTextures, aiMaterial *Mat, aiTextureType Type, std::string TypeName);
+    void LoadMaterialTextures(std::vector<std::pair<std::string, std::string>>* ModelRequestedTextures, aiMaterial *Mat);
 
     /**
      * @brief Checks if the target model has already been loaded, and returns refrences when completed.
