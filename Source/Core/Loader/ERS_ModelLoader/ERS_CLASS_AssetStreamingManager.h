@@ -43,10 +43,12 @@ private:
     std::vector<ERS_STRUCT_Camera*> Cameras_; /**<List of cameras that assets are loaded around*/
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
 
+public:
     // Class Instances
     std::unique_ptr<ERS_CLASS_AssetStreamingSystemResourceMonitor> ResourceMonitor_; /**<Instance of System Monitor Used For Tex Streaming Choices*/
     std::unique_ptr<ERS_CLASS_AsyncTextureUpdater> AsyncTextureUpdater_; /**<Texture loader/unloader system*/
 
+private:
     // Threads
     std::thread SceneSortingThread_; /**<Thread used to sort the different models in the scene and indicate what textures they should have*/
     std::mutex SortingThreadMutex_; /**<Mutex that can be locked to block the sorting thread*/

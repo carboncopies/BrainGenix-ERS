@@ -48,7 +48,7 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
     } else {
     std::cout<<"Main thread: False"<<std::endl;
     }    
-
+    
     //glfwMakeContextCurrent(MainThreadWindowContext_);
     SystemUtils_->Logger_->Log("Setup Worker Thread Pool", 3);
 

@@ -44,7 +44,6 @@ private:
     std::mutex BlockThreads_; /**<Lock this to block all the treads (Usually done to add new items to the work queue)*/
     std::atomic_bool StopThreads_; /**<Used to start/stop threads*/
     std::vector<std::shared_ptr<ERS_STRUCT_Model>> WorkItems_; /**<Models here have some work that needs to be done to them*/
-    unsigned int TestTexID;
     std::atomic_bool HasTex;
     /**
      * @brief Method called as worker thread.
@@ -178,6 +177,7 @@ private:
 
 
 public:
+    unsigned int TestTexID;
 
     /**
      * @brief Create instance of the texture updater. The optional threads parameters sets the limit on the number of threads we can use.
