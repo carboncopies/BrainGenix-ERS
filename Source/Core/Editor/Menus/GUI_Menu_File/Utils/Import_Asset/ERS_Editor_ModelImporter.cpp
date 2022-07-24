@@ -105,6 +105,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     // Process Root Node Recursively, Identify Textures/Files
     ProcessNode(&Model, Scene->mRootNode, Scene, ModelDirectory);
     DetectBoundingBox(&Model);
+    CalculateTotalVertsIndices(&Model);
 
     // Copy Model File
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
