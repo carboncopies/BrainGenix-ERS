@@ -563,6 +563,7 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
         Model->Meshes.push_back(
             ProcessMesh(
+                Model
                 (unsigned long)Mesh->mNumVertices,
                 (unsigned long)Mesh->mNumFaces*3,
                 Mesh,
@@ -580,7 +581,7 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
 
 }
 
-ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(unsigned long PreallocVertSize, unsigned long PreallocIndSize, aiMesh *Mesh, const aiScene *Scene) {
+ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, unsigned long PreallocVertSize, unsigned long PreallocIndSize, aiMesh *Mesh, const aiScene *Scene) {
 
     // Create Data Holders
     ERS_STRUCT_Mesh OutputMesh;
@@ -600,28 +601,7 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(unsigned long PreallocVertSiz
         Vector.x = Mesh->mVertices[i].x;
         Vector.y = Mesh->mVertices[i].y;
         Vector.z = Mesh->mVertices[i].z;
-        Vertex.Position = Vector;
-
-        // Calculate Min/Max XYZ
-        if (Vector.x < OutputMesh.MinXYZ_.x) {
-            OutputMesh.MinXYZ_.x = Vector.x;
-        }
-        if (Vector.y < OutputMesh.MinXYZ_.y) {
-            OutputMesh.MinXYZ_.y = Vector.y;
-        }
-        if (Vector.z < OutputMesh.MinXYZ_.z) {
-            OutputMesh.MinXYZ_.z = Vector.z;
-        }
-        if (Vector.x > OutputMesh.MaxXYZ_.x) {
-            OutputMesh.MaxXYZ_.x = Vector.x;
-        }
-        if (Vector.y > OutputMesh.MaxXYZ_.y) {
-            OutputMesh.MaxXYZ_.y = Vector.y;
-        }
-        if (Vector.z > OutputMesh.MaxXYZ_.z) {
-            OutputMesh.MaxXYZ_.z = Vector.z;
-        }
-
+        Vertex.Position = Vector - Model->BoxOffset_;
 
         if (Mesh->HasNormals())
         {
