@@ -586,7 +586,7 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
 // then, implement asset streaming manager system
 // finally, setup system to load textures properly, and make sure everything works
 
-ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(unsigned long PreallocVertSize, unsigned long PreallocIndSize, aiMesh *Mesh, const aiScene *Scene, std::vector<std::pair<std::string, std::string>>* ModelRequestedTextures) {
+ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(unsigned long PreallocVertSize, unsigned long PreallocIndSize, aiMesh *Mesh, const aiScene *Scene) {
 
     // Create Data Holders
     ERS_STRUCT_Mesh OutputMesh;
