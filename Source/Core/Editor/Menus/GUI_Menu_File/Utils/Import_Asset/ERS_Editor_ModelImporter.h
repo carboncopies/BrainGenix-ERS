@@ -107,10 +107,8 @@ private:
      * @brief Calculates the bounding box of the model and it's offset
      * 
      * @param Model
-     * @param BoundingBox 
-     * @param Offset 
      */
-    void DetectBoundingBox(ERS_STRUCT_Model* Model, glm::vec3* BoundingBox, glm::vec3* Offset);
+    void DetectBoundingBox(ERS_STRUCT_Model* Model);
 
 public:
 
