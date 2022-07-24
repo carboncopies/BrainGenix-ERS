@@ -243,21 +243,21 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         Model->Meshes[i].ReceiveShadows_ = &Model->ReceiveShadows_;
 
 
-        for (unsigned long Index = 0; Index < Model->Meshes[i].TextureReferences_.size(); Index++) { // IF TEXTURES DONT WORK, CHECK HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // for (unsigned long Index = 0; Index < Model->Meshes[i].TextureReferences_.size(); Index++) { // IF TEXTURES DONT WORK, CHECK HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            int TextureIndex = Model->Meshes[i].TextureReferences_[Index];
+        //     int TextureIndex = Model->Meshes[i].TextureReferences_[Index];
         
-            if (TextureIndex == -1) {
-                SystemUtils_->Logger_->Log("Failed To Find Corresponding Texture", 8);
-                Model->Meshes[i].TextureIDs.push_back(-1);
-                Model->Meshes[i].TextureColorChannels_.push_back(0);
-            } else {
-                Model->Meshes[i].TextureIDs.push_back(Model->OpenGLTextureIDs_[TextureIndex]);
-                Model->Meshes[i].TextureColorChannels_.push_back(Model->TexturesToPushToGPU_[TextureIndex].Channels);
-            }
+        //     if (TextureIndex == -1) {
+        //         SystemUtils_->Logger_->Log("Failed To Find Corresponding Texture", 8);
+        //         Model->Meshes[i].TextureIDs.push_back(-1);
+        //         Model->Meshes[i].TextureColorChannels_.push_back(0);
+        //     } else {
+        //         Model->Meshes[i].TextureIDs.push_back(Model->OpenGLTextureIDs_[TextureIndex]);
+        //         Model->Meshes[i].TextureColorChannels_.push_back(Model->TexturesToPushToGPU_[TextureIndex].Channels);
+        //     }
     
 
-        }
+        // }
         Model->Meshes[i].SetupMesh();
         // Perhaps save mem by erasing the vertices after pusning? (also indices)
     }
