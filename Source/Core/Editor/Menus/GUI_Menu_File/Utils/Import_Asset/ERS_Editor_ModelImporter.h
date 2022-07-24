@@ -91,7 +91,25 @@ private:
      */
     bool ReadFile(std::string Path, ERS_STRUCT_IOData* IOData);
 
+    /**
+     * @brief Decodes and writes resized textures into the ERS project file.
+     * 
+     * @param TextureMemorySizes 
+     * @param ImageAssetIDs 
+     * @param ImageResolutions 
+     * @param AssetPath 
+     * @param Format 
+     * @param MipMaps 
+     */
     void WriteTextures(std::vector<std::vector<int>>* TextureMemorySizes, std::vector<std::vector<long>>* ImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* ImageResolutions, std::string AssetPath, FREE_IMAGE_FORMAT Format = FIF_PNG, int MipMaps = 10);
+
+    /**
+     * @brief Calculates the bounding box of the model and it's offset
+     * 
+     * @param BoundingBox 
+     * @param Offset 
+     */
+    void DetectBoundingBox(glm::vec3* BoundingBox, glm::vec3* Offset);
 
 public:
 
