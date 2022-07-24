@@ -45,7 +45,7 @@ private:
 
     // Class Instances
     std::unique_ptr<ERS_CLASS_AssetStreamingSystemResourceMonitor> ResourceMonitor_; /**<Instance of System Monitor Used For Tex Streaming Choices*/
-
+    std::unique_ptr<ERS_CLASS_AsyncTextureUpdater> AsyncTextureUpdater_: /**<Texture loader/unloader system*/
 
     // Threads
     std::thread SceneSortingThread_; /**<Thread used to sort the different models in the scene and indicate what textures they should have*/

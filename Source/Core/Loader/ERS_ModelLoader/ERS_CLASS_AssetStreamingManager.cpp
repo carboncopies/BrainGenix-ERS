@@ -12,6 +12,7 @@ ERS_CLASS_AssetStreamingManager::ERS_CLASS_AssetStreamingManager(ERS_STRUCT_Syst
 
     // Setup Subsystems
     ResourceMonitor_ = std::make_unique<ERS_CLASS_AssetStreamingSystemResourceMonitor>(SystemUtils_);
+    AsyncTextureUpdater_ = std::make_unique<ERS_CLASS_AsyncTextureUpdater>(SystemUtils_);
 
     // // Create Worker Thread
     // SystemUtils_->Logger_->Log("Starting Asset Streaming Subsystem Sorting Thread", 4);
