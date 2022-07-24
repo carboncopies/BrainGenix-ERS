@@ -114,14 +114,11 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(ModelID) + std::string("' To Model '") + AssetPath + std::string("'")).c_str(), 4);
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(ModelID, Data.get());    
 
-
     // Set Textures
     std::vector<std::vector<int>> TextureMemorySizes;
     std::vector<std::vector<long>> ImageAssetIDs;
     std::vector<std::vector<std::pair<int, int>>> ImageResolutions;
     WriteTextures(&TextureMemorySizes, &ImageAssetIDs, &ImageResolutions, AssetPath);
-
-
 
     // Generate Metadata
     YAML::Emitter MetadataEmitter;
@@ -129,7 +126,6 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     MetadataEmitter<<YAML::Key<<"Name"<<YAML::Value<<AssetPath;
     MetadataEmitter<<YAML::Key<<"FormatVersion"<<YAML::Value<<"0.0.1";
-
     MetadataEmitter<<YAML::Key<<"ModelID"<<YAML::Value<<ModelID;
 
 
@@ -428,29 +424,6 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, ai
         Vector.y = Mesh->mVertices[i].y;
         Vector.z = Mesh->mVertices[i].z;
         Vertex.Position = Vector;
-
-
-        // Calculate Min/Max XYZ
-        if (Vector.x < OutputMesh.MinXYZ_.x) {
-            OutputMesh.MinXYZ_.x = Vector.x;
-        }
-        if (Vector.y < OutputMesh.MinXYZ_.y) {
-            OutputMesh.MinXYZ_.y = Vector.y;
-        }
-        if (Vector.z < OutputMesh.MinXYZ_.z) {
-            OutputMesh.MinXYZ_.z = Vector.z;
-        }
-        if (Vector.x > OutputMesh.MaxXYZ_.x) {
-            OutputMesh.MaxXYZ_.x = Vector.x;
-        }
-        if (Vector.y > OutputMesh.MaxXYZ_.y) {
-            OutputMesh.MaxXYZ_.y = Vector.y;
-        }
-        if (Vector.z > OutputMesh.MaxXYZ_.z) {
-            OutputMesh.MaxXYZ_.z = Vector.z;
-        }
-
-
 
         if (Mesh->HasNormals())
         {
