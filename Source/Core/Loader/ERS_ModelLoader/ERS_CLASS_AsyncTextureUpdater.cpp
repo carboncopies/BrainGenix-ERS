@@ -12,6 +12,24 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing Automatic Texture Loading Subsystem", 5);
 
-    
+    // If Threads Is Left To Autodetect, Use That
+    if (Threads <= 0) {
+
+        // Check If Config Has Param
+        if ((*SystemUtils_->LocalSystemConfiguration_)["TextureLoaderThreadCount"]) {
+            SystemUtils_->Logger_->Log("Using Config File To Set Number Of Texture Loader Threads", 4);
+            Threads = (*SystemUtils_->LocalSystemConfiguration_)["TextureLoaderThreadCount"].as<int>();
+        } else {
+            SystemUtils_->Logger_->Log("Autodetecting Number Of Threads To Use", 4);
+            Threads = std::thread::hardware_concurrency();
+        }
+    }
+
+    // Setup Threads
+    SystemUtils_->Logger_->Log("Starting Worker Thread Pool", 4);
+    SystemUtils_->Logger_->Log(std::string("Worker Pool Will Have ") + std::to_string(Threads) + " Threads", 3);
+    for (unsigned int i = 0; i < Threads; i++) {
+        
+    }    
 
 }

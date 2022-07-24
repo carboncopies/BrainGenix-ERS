@@ -11,6 +11,7 @@
 #include <chrono>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
+#include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
@@ -35,6 +36,12 @@ private:
 
     std::vector<std::thread> TextureWorkerThreads_; /**<Vector containing thread objects for the worker pool*/
     std::mutex BlockThreads_; /**<Lock this to block all the treads (Usually done to add new items to the work queue)*/
+
+    /**
+     * @brief Method called as worker thread.
+     * 
+     */
+    void TextureModifierWorkerThread();
 
 public:
 
