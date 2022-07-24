@@ -115,7 +115,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
     }
 
 
-    glfwTerminate()
+    glfwTerminate();
 
 }
 
