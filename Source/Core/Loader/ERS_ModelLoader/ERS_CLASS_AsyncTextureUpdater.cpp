@@ -108,6 +108,13 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
         glEnable(GL_TEXTURE_2D);
 
+
+        // todo:
+        // test shared objects (make texture here and use it in main thread?)
+        // then setup model texture level loading system (finally!)
+        // exciting isn't it?
+
+
         // Process Item, If Item Doens't Exist, Sleep Thread
         if (HasWorkItem) {
             // Process Work Item
