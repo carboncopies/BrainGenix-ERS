@@ -684,12 +684,6 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(unsigned long PreallocVertSiz
 
 }
 
-
-// Some todo stuff:
-// Maoe the model requested textures into mesh requested textures, 
-// make texture loader check all meshes and generate list of actual textures that need to be loaded
-
-
 void ERS_CLASS_ModelLoader::IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mesh* Mesh) {
 
     std::vector<std::pair<aiTextureType, std::string>> TextureTypes;
