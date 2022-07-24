@@ -112,9 +112,6 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
     }
 
-    // Shutdown OpenGL
-    glfwTerminate();
-
 }
 
 
