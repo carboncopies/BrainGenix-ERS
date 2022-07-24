@@ -10,7 +10,7 @@
 ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, unsigned int Threads) {
 
     SystemUtils_ = SystemUtils;
-    Window_ = Window;
+    MainThreadWindowContext_ = Window;
     SystemUtils_->Logger_->Log("Initializing Automatic Texture Loading Subsystem", 5);
 
     // If Threads Is Left To Autodetect, Use That
@@ -114,6 +114,8 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
     }
 
+
+    glfwTerminate()
 
 }
 
