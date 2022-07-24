@@ -698,7 +698,7 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(unsigned long PreallocVertSiz
 
 void ERS_CLASS_ModelLoader::IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mesh* Mesh) {
 
-std::vector<std::pair<aiTextureType, std::string>> TextureTypes;
+    std::vector<std::pair<aiTextureType, std::string>> TextureTypes;
     TextureTypes.push_back(std::make_pair(aiTextureType_AMBIENT, "texture_ambient"));
     TextureTypes.push_back(std::make_pair(aiTextureType_AMBIENT_OCCLUSION, "texture_ambient_occlusion"));
     TextureTypes.push_back(std::make_pair(aiTextureType_BASE_COLOR, "texture_base_color"));
