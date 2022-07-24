@@ -33,6 +33,44 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
             DecodeStatus = false;
         }
 
+        if (Metadata["Vertices"]) {
+            Model->TotalVertices_ = Metadata["Vertices"].as<long>();
+        } else {
+            Model->TotalVertices_ = -1;
+            SystemUtils->Logger_->Log(std::string("Error Loading Vertices Parameter From Model Metadata '") + std::to_string(AssetID) + "'", 7); 
+            DecodeStatus = false;
+        }
+
+        if (Metadata["Indices"]) {
+            Model->TotalIndices_ = Metadata["Indices"].as<long>();
+        } else {
+            Model->TotalIndices_ = -1;
+            SystemUtils->Logger_->Log(std::string("Error Loading Indices Parameter From Model Metadata '") + std::to_string(AssetID) + "'", 7); 
+            DecodeStatus = false;
+        }
+
+        if (Metadata["BoundingBoxX"] && Metadata["BoundingBoxY"] && Metadata["BoundingBoxZ"]) {
+            double BoxX = Metadata["BoundingBoxX"].as<long>();
+            double BoxY = Metadata["BoundingBoxY"].as<long>();
+            double BoxZ = Metadata["BoundingBoxZ"].as<long>();
+            Model->BoxScale_ = glm::vec3(BoxX, BoxY, BoxZ);
+        } else {
+            Model->BoxScale_ = glm::vec3(1.0f);
+            SystemUtils->Logger_->Log(std::string("Error Loading Bounding Box Size Parameter From Model Metadata '") + std::to_string(AssetID) + "'", 7); 
+            DecodeStatus = false;
+        }
+
+        if (Metadata["OffsetX"] && Metadata["OffsetY"] && Metadata["OffsetZ"]) {
+            double OffsetX = Metadata["OffsetX"].as<long>();
+            double OffsetY = Metadata["OffsetY"].as<long>();
+            double OffsetZ = Metadata["OffsetZ"].as<long>();
+            Model->BoxOffset_ = glm::vec3(OffsetX, OffsetY, OffsetZ);
+        } else {
+            Model->BoxOffset_ = glm::vec3(1.0f);
+            SystemUtils->Logger_->Log(std::string("Error Loading Origin Offset Parameter From Model Metadata '") + std::to_string(AssetID) + "'", 7); 
+            DecodeStatus = false;
+        }
+
         if (Metadata["Textures"]) {
             YAML::Node TexturePathNode = Metadata["Textures"];
             for (YAML::const_iterator it=TexturePathNode.begin(); it!=TexturePathNode.end(); ++it) {
