@@ -563,7 +563,7 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
         Model->Meshes.push_back(
             ProcessMesh(
-                Model
+                Model,
                 (unsigned long)Mesh->mNumVertices,
                 (unsigned long)Mesh->mNumFaces*3,
                 Mesh,
