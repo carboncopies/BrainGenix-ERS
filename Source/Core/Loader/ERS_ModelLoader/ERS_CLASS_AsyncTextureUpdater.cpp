@@ -26,14 +26,21 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
         }
     }
 
+    Threads = 1;
+
     // Setup Threads
     SystemUtils_->Logger_->Log("Starting Worker Thread Pool", 4);
     SystemUtils_->Logger_->Log(std::string("Worker Pool Will Have ") + std::to_string(Threads) + " Threads", 3);
     StopThreads_ = false;
+    HasTex = false
     for (unsigned int i = 0; i < Threads; i++) {
         TextureWorkerThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread, this));
         SystemUtils_->Logger_->Log(std::string("Started Worker Thread '") + std::to_string(i) + "'", 2);
     }
+
+    while (!HasTex) {
+    }
+    std::cout<<glIsTexture(TestTexID);
     //glfwMakeContextCurrent(MainThreadWindowContext_);
     SystemUtils_->Logger_->Log("Setup Worker Thread Pool", 3);
 
@@ -107,7 +114,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
         BlockThreads_.unlock();
 
         glEnable(GL_TEXTURE_2D);
-
+        glGenTextures(1, &TestTexID);
 
         // todo:
         // test shared objects (make texture here and use it in main thread?)
