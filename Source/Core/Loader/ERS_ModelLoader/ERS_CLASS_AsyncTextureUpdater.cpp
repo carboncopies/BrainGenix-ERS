@@ -60,7 +60,24 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
     while (!StopThreads_) {
 
+        // Get Work Item If It Exists
+        std::shared_ptr<ERS_STRUCT_Model*> WorkItem;
+        bool HasWorkItem = false;
+        BlockThreads_.lock();
+        if (WorkItems_.size() > 0) {
+            WorkItem = WorkItems_[0];
+            HasWorkItem = true;
+            WorkItems_.erase(WorkItems_.begin());
+        }
+        BlockThreads_.unlock();
 
+
+        // Process Item, If Item Doens't Exist, Sleep Thread
+        if (HasWorkItem) {
+            // Process Work Item
+        } else {
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        }
 
     }
 
