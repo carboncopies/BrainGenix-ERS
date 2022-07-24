@@ -66,7 +66,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
             double OffsetZ = Metadata["OffsetZ"].as<long>();
             Model->BoxOffset_ = glm::vec3(OffsetX, OffsetY, OffsetZ);
         } else {
-            Model->BoxOffset_ = glm::vec3(1.0f);
+            Model->BoxOffset_ = glm::vec3(0.0f);
             SystemUtils->Logger_->Log(std::string("Error Loading Origin Offset Parameter From Model Metadata '") + std::to_string(AssetID) + "'", 7); 
             DecodeStatus = false;
         }
