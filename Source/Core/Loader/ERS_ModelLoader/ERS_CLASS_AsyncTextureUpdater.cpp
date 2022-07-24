@@ -84,6 +84,10 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 
 void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
+    // Setup OpenGL Shared Context
+    gladLoadGL(glfwGetProcAddress);
+
+
     while (!StopThreads_) {
 
         // Get Work Item If It Exists
@@ -97,6 +101,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
         }
         BlockThreads_.unlock();
 
+        glEnable(GL_TEXTURE_2D);
 
         // Process Item, If Item Doens't Exist, Sleep Thread
         if (HasWorkItem) {
@@ -106,6 +111,9 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
         }
 
     }
+
+    // Shutdown OpenGL
+    glfwTerminate();
 
 }
 
