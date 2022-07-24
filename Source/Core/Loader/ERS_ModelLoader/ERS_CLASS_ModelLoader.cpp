@@ -682,7 +682,7 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(unsigned long PreallocVertSiz
 
     // Process Materials
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
-    LoadMaterialTextures(ModelRequestedTextures, Material);
+    IdentifyMeshTextures(Material, &OutputMesh);
 
 
     // Return Populated Mesh
