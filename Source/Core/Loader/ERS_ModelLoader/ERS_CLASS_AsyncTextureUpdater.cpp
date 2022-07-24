@@ -123,7 +123,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
         glEnable(GL_TEXTURE_2D);
 
-        std::string Path = "EditorAssets/Icons/LoadingTexture/4x4/LoadingTexture1024.png";
+        const char* Path = "EditorAssets/Icons/LoadingTexture/4x4/LoadingTexture1024.png";
         FREE_IMAGE_FORMAT TexFormat = FreeImage_GetFileType(Path, 0);
         FIBITMAP* TexImageData = FreeImage_Load(TexFormat, Path);
         unsigned char* RawImageData = FreeImage_GetBits(TexImageData);
