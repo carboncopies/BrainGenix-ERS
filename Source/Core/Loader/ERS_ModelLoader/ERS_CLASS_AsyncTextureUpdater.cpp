@@ -85,7 +85,7 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
     // Setup OpenGL Shared Context
-    gladLoadGL(glfwGetProcAddress);
+    gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
 
 
     while (!StopThreads_) {
