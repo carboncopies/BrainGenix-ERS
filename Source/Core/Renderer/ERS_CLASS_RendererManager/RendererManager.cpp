@@ -98,6 +98,7 @@ void RendererManager::LoadEditorData() {
     OpenGLDefaults_->DirectionalLightTexture_ = LoadEditorIcon("EditorAssets/Icons/LightingIcons/DirectionalLight.png");
     OpenGLDefaults_->SpotLightTexture_ = LoadEditorIcon("EditorAssets/Icons/LightingIcons/SpotLight.png");
 
+    OpenGLDefaults_->DefaultTexture_ = ProjectUtils_->ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->TestTexID;
 
     FreeImage_DeInitialise();
 
@@ -182,7 +183,6 @@ void RendererManager::InitializeGLFW() {
     SystemUtils_->Logger_->Log("Initializing Texture Streaming Subsystem", 5);
     ProjectUtils_->ModelLoader_->AssetStreamingManager_->SetupTextureStreamer(Window_);
     SystemUtils_->Logger_->Log("Finished Initializing Texture Streaming Subsystem", 4);
-    OpenGLDefaults_->DefaultTexture_ = ProjectUtils_->ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->TestTexID;
 
 
 
