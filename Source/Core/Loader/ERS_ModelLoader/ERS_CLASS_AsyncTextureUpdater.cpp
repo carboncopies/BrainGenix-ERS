@@ -42,7 +42,7 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
 
     while (!HasTex) {
     }
-    glGenTextures(1, &t);
+
     if (glIsTexture(TestTexID)) {
     std::cout<<"Main thread: True"<<std::endl;
     } else {
