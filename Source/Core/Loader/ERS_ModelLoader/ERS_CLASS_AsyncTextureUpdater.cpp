@@ -117,6 +117,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
         glGenTextures(1, &TestTexID);
         std::cout<<"Worker thread: "<<glIsTexture(TestTexID)<<std::endl;
         HasTex = true;
+        break;
 
         // todo:
         // test shared objects (make texture here and use it in main thread?)
