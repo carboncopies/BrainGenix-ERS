@@ -110,6 +110,13 @@ private:
      */
     void DetectBoundingBox(ERS_STRUCT_Model* Model);
 
+    /**
+     * @brief Sets metadata parameters for number of vertices and indices in the model
+     * 
+     * @param Model 
+     */
+    void CalculateTotalVertsIndices(ERS_STRUCT_Model* Model);
+
 public:
 
 
