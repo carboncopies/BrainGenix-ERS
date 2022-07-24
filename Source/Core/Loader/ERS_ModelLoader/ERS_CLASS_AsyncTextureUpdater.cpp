@@ -31,20 +31,9 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
     SystemUtils_->Logger_->Log(std::string("Worker Pool Will Have ") + std::to_string(Threads) + " Threads", 3);
     StopThreads_ = false;
     for (unsigned int i = 0; i < Threads; i++) {
-        BlockThreads_.lock();
         TextureWorkerThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread, this));
-        BlockThreads_.unlock();
         SystemUtils_->Logger_->Log(std::string("Started Worker Thread '") + std::to_string(i) + "'", 2);
-
     }
-    
-
-    // Wait Until Threads Have Contexts Setup
-    while (NumThreadsWithContexts < (Threads - 1)) {
-    }
-    BlockThreads_.lock();
-    glfwMakeContextCurrent(MainThreadWindowContext_);
-    BlockThreads_.unlock();
     SystemUtils_->Logger_->Log("Setup Worker Thread Pool", 3);
 
 }
@@ -97,13 +86,10 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
     // Setup OpenGL Shared Context
-    BlockThreads_.lock();
-    glfwMakeContextCurrent(MainThreadWindowContext_);
-    gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
-    NumThreadsWithContexts++;
-    BlockThreads_.unlock();
-    // GLFWwindow* ThreadWindow = glfwCreateWindow(1, 1, "", NULL, MainThreadWindowContext_);
-    // glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+    // glfwMakeContextCurrent(MainThreadWindowContext_);
+    // gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
+    GLFWwindow* ThreadWindow = glfwCreateWindow(1, 1, "", NULL, MainThreadWindowContext_);
+    glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
 
 
     while (!StopThreads_) {
@@ -131,7 +117,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
     }
 
 
-    glfwTerminate();
+    glfwTerminate()
 
 }
 
