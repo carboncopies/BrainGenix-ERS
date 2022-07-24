@@ -16,7 +16,7 @@ ERS_CLASS_ModelImporter::~ERS_CLASS_ModelImporter() {
 }
 
 
-ERS_CLASS_ModelImporter::DetectBoundingBox(ERS_STRUCT_Model* Model) {
+void ERS_CLASS_ModelImporter::DetectBoundingBox(ERS_STRUCT_Model* Model) {
 
     // Calculate Bounding Box
     glm::vec3 ModelMinXYZ;
