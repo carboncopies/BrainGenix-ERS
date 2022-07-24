@@ -156,69 +156,69 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
 
         
 
-    // Push Textures To GPU RAM
-    for (unsigned long i = 0; i < Model->TexturesToPushToGPU_.size(); i++) {
+    // // Push Textures To GPU RAM
+    // for (unsigned long i = 0; i < Model->TexturesToPushToGPU_.size(); i++) {
 
-        // Generate Texture
-        unsigned int TextureID;
-        glGenTextures(1, &TextureID);
-        glBindTexture(GL_TEXTURE_2D, TextureID);
+    //     // Generate Texture
+    //     unsigned int TextureID;
+    //     glGenTextures(1, &TextureID);
+    //     glBindTexture(GL_TEXTURE_2D, TextureID);
 
-        // Set Texture Properties
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-
-        // Convert FIBITMAP* To Raw Image Bytes
-        unsigned char* RawImageData = Model->TexturesToPushToGPU_[i].ImageBytes;
-
-        if (RawImageData != NULL) {
-            if (Model->TexturesToPushToGPU_[i].FreeImageBackend) {
-                if (Model->TexturesToPushToGPU_[i].Channels == 4) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
-                } else if (Model->TexturesToPushToGPU_[i].Channels == 3) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
-                } else if (Model->TexturesToPushToGPU_[i].Channels == 2) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RG, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RG, GL_UNSIGNED_BYTE, RawImageData);
-                } else if (Model->TexturesToPushToGPU_[i].Channels == 1) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RED, GL_UNSIGNED_BYTE, RawImageData);
-                } else {
-                    SystemUtils_->Logger_->Log(std::string("Texture With ID '") + Model->TexturesToPushToGPU_[i].Path + std::string("' For Model '") + Model->Name + std::string("' Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
-                }
-            } else {
-                if (Model->TexturesToPushToGPU_[i].Channels == 4) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, RawImageData);
-                } else if (Model->TexturesToPushToGPU_[i].Channels == 3) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RGB, GL_UNSIGNED_BYTE, RawImageData);
-                } else if (Model->TexturesToPushToGPU_[i].Channels == 2) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RG, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RG, GL_UNSIGNED_BYTE, RawImageData);
-                } else if (Model->TexturesToPushToGPU_[i].Channels == 1) {
-                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RED, GL_UNSIGNED_BYTE, RawImageData);
-                } else {
-                    SystemUtils_->Logger_->Log(std::string("Texture With ID '") + Model->TexturesToPushToGPU_[i].Path + std::string("' For Model '") + Model->Name + std::string("' Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
-                }  
-            }
-
-            glGenerateMipmap(GL_TEXTURE_2D);
-
-        } else {
-            SystemUtils_->Logger_->Log("Texture Failed To Load, Cannot Push To GPU", 9);
-        }
+    //     // Set Texture Properties
+    //     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    //     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    //     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    //     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 
+    //     // Convert FIBITMAP* To Raw Image Bytes
+    //     unsigned char* RawImageData = Model->TexturesToPushToGPU_[i].ImageBytes;
 
-        // Unload Image Data
-        if (Model->TexturesToPushToGPU_[i].FreeImageBackend) {
-            FreeImage_Unload(Model->TexturesToPushToGPU_[i].ImageData);
-        } else {
-            stbi_image_free(Model->TexturesToPushToGPU_[i].ImageBytes);
-        }
+    //     if (RawImageData != NULL) {
+    //         if (Model->TexturesToPushToGPU_[i].FreeImageBackend) {
+    //             if (Model->TexturesToPushToGPU_[i].Channels == 4) {
+    //                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
+    //             } else if (Model->TexturesToPushToGPU_[i].Channels == 3) {
+    //                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
+    //             } else if (Model->TexturesToPushToGPU_[i].Channels == 2) {
+    //                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RG, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RG, GL_UNSIGNED_BYTE, RawImageData);
+    //             } else if (Model->TexturesToPushToGPU_[i].Channels == 1) {
+    //                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RED, GL_UNSIGNED_BYTE, RawImageData);
+    //             } else {
+    //                 SystemUtils_->Logger_->Log(std::string("Texture With ID '") + Model->TexturesToPushToGPU_[i].Path + std::string("' For Model '") + Model->Name + std::string("' Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
+    //             }
+    //         } else {
+    //             if (Model->TexturesToPushToGPU_[i].Channels == 4) {
+    //                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, RawImageData);
+    //             } else if (Model->TexturesToPushToGPU_[i].Channels == 3) {
+    //                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RGB, GL_UNSIGNED_BYTE, RawImageData);
+    //             } else if (Model->TexturesToPushToGPU_[i].Channels == 2) {
+    //                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RG, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RG, GL_UNSIGNED_BYTE, RawImageData);
+    //             } else if (Model->TexturesToPushToGPU_[i].Channels == 1) {
+    //                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Model->TexturesToPushToGPU_[i].Width, Model->TexturesToPushToGPU_[i].Height, 0, GL_RED, GL_UNSIGNED_BYTE, RawImageData);
+    //             } else {
+    //                 SystemUtils_->Logger_->Log(std::string("Texture With ID '") + Model->TexturesToPushToGPU_[i].Path + std::string("' For Model '") + Model->Name + std::string("' Has Unsupported Number Of Channels: ") + std::to_string(Model->TexturesToPushToGPU_[i].Channels), 8);
+    //             }  
+    //         }
 
-        // Append To Texture Index
-        Model->OpenGLTextureIDs_.push_back(TextureID);
-    }
+    //         glGenerateMipmap(GL_TEXTURE_2D);
+
+    //     } else {
+    //         SystemUtils_->Logger_->Log("Texture Failed To Load, Cannot Push To GPU", 9);
+    //     }
+
+
+
+    //     // Unload Image Data
+    //     if (Model->TexturesToPushToGPU_[i].FreeImageBackend) {
+    //         FreeImage_Unload(Model->TexturesToPushToGPU_[i].ImageData);
+    //     } else {
+    //         stbi_image_free(Model->TexturesToPushToGPU_[i].ImageBytes);
+    //     }
+
+    //     // Append To Texture Index
+    //     Model->OpenGLTextureIDs_.push_back(TextureID);
+    // }
 
 
 
@@ -650,9 +650,9 @@ void ERS_CLASS_ModelLoader::IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mes
 
             // Search Texture List For Index Of Same Match, Add To List Of Unique Textures If Not Found
             bool AlreadyHasTexture = false;
-            for (unsigned long x = 0; x < Mesh->RequestedTextureInformation_.size(); x++) {
-                if (Mesh->RequestedTextureInformation_[x].second == TextureIdentifier) {
-                    SystemUtils_->Logger_->Log(std::string("Found Matching Texture '") + Mesh->RequestedTextureInformation_[x].second + "'", 3);
+            for (unsigned long x = 0; x < Mesh->Loader_RequestedTextureInformation_.size(); x++) {
+                if (Mesh->Loader_RequestedTextureInformation_[x].second == TextureIdentifier) {
+                    SystemUtils_->Logger_->Log(std::string("Found Matching Texture '") + Mesh->Loader_RequestedTextureInformation_[x].second + "'", 3);
                     AlreadyHasTexture = true;
                     break;
                 }
@@ -660,7 +660,7 @@ void ERS_CLASS_ModelLoader::IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mes
 
             // If It's Not Already In The List, Add IT
             if (!AlreadyHasTexture) {
-                Mesh->RequestedTextureInformation_.push_back(std::make_pair(TypeName, TextureIdentifier));
+                Mesh->Loader_RequestedTextureInformation_.push_back(std::make_pair(TypeName, TextureIdentifier));
             }
 
 

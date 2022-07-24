@@ -34,7 +34,7 @@ struct ERS_STRUCT_Mesh {
     unsigned int VAO; /**<Vertex Array Object OpenGL Handle*/
 
     // Loading System
-    std::vector<std::pair<std::string, std::string>> RequestedTextureInformation_; /**<Contains the file path for the original texture paired with the texture's type as identified by assimp.*/
+    std::vector<std::pair<std::string, std::string>> Loader_RequestedTextureInformation_; /**<Contains the file path for the original texture paired with the texture's type as identified by assimp.*/
 
 
     std::vector<ERS_STRUCT_Vertex> Vertices; /**<Array of Mesh Vertices*/
