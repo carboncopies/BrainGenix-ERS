@@ -36,6 +36,7 @@ private:
 
     std::vector<std::thread> TextureWorkerThreads_; /**<Vector containing thread objects for the worker pool*/
     std::mutex BlockThreads_; /**<Lock this to block all the treads (Usually done to add new items to the work queue)*/
+    std::atomic_bool StopThreads_ = false; /**<Used to start/stop threads*/
 
     /**
      * @brief Method called as worker thread.
