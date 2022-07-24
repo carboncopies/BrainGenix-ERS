@@ -115,9 +115,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(ModelID, Data.get());    
 
 
-
-
-
+    // Set Textures
     std::vector<std::vector<int>> TextureMemorySizes;
     std::vector<std::vector<long>> ImageAssetIDs;
     std::vector<std::vector<std::pair<int, int>>> ImageResolutions;
@@ -172,8 +170,6 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     MetadataEmitter<<YAML::Key<<"OffsetY"<<YAML::Value<<Model.BoxOffset_.y;
     MetadataEmitter<<YAML::Key<<"OffsetZ"<<YAML::Value<<Model.BoxOffset_.z;
     
-
-
     MetadataEmitter<<YAML::EndMap;
 
 
