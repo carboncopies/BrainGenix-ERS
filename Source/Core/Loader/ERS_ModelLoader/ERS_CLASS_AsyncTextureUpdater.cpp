@@ -56,6 +56,32 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 
 }
 
+void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
+
+    // Iterate Over All Models
+    for (unsigned int i = 0; i < Scene->Models.size(); i++) {
+        
+        // Check RAM Level vs Target
+        int CurrentRAMLevel = Scene->Models[i]->TextureLevelInRAM_;
+        int TargetRAMLevel = Scene->Models[i]->TargetTextureLevelRAM;
+        bool RAMUpdate = CurrentRAMLevel!=TargetRAMLevel;
+
+        // Check VRAM Level vs Target
+        int CurrentVRAMLevel = Scene->Models[i]->TextureLevelInVRAM_;
+        int TargetVRAMLevel = Scene->Models[i]->TargetTextureLevelVRAM;
+        bool VRAMUpdate = CurrentVRAMLevel!=TargetVRAMLevel;
+
+        // If There's Anything To Update, Add To Queue
+        if (VRAMUpdate || RAMUpdate) {
+            BlockThreads_.lock();
+            WorkItems_.push_back(Scene->Models[i]);
+            BlockThreads_.unlock();
+        }
+
+    }
+
+}
+
 void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
     while (!StopThreads_) {
@@ -84,28 +110,3 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 }
 
 
-void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
-
-    // Iterate Over All Models
-    for (unsigned int i = 0; i < Scene->Models.size(); i++) {
-        
-        // Check RAM Level vs Target
-        int CurrentRAMLevel = Scene->Models[i]->TextureLevelInRAM_;
-        int TargetRAMLevel = Scene->Models[i]->TargetTextureLevelRAM;
-        bool RAMUpdate = CurrentRAMLevel!=TargetRAMLevel;
-
-        // Check VRAM Level vs Target
-        int CurrentVRAMLevel = Scene->Models[i]->TextureLevelInVRAM_;
-        int TargetVRAMLevel = Scene->Models[i]->TargetTextureLevelVRAM;
-        bool VRAMUpdate = CurrentVRAMLevel!=TargetVRAMLevel;
-
-        // If There's Anything To Update, Add To Queue
-        if (VRAMUpdate || RAMUpdate) {
-            BlockThreads_.lock();
-            WorkItems_.push_back(Scene->Models[i]);
-            BlockThreads_.unlock();
-        }
-
-    }
-
-}
