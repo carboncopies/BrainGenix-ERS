@@ -188,7 +188,8 @@ public:
 
 
     /**
-     * @brief Sorts through all items in the scene and automatically adds them to the update queue
+     * @brief Sorts through all items in the scene and automatically adds them to the update queue.
+     * Ideally this should be called every frame to ensure that the models marked for updates are updated.
      * 
      * @param Scene 
      */
