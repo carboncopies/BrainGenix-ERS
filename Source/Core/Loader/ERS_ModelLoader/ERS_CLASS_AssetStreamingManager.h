@@ -142,6 +142,14 @@ public:
     ~ERS_CLASS_AssetStreamingManager();
 
     /**
+     * @brief Call this once there's a valid opengl context setup - only once that has been created can this be called.
+     * Calling this earlier will result in a segmentation fault.
+     * 
+     */
+    void SetupTextureStreamer();
+
+
+    /**
      * @brief Tells the streaming manager what the current scene is so that it knows what assets are actually relevant and what aren't.
      * We handle what the current scene is internally, so calling this every frame is okay, we check if the pointer is the same.
      * If you want to start loading another scene in advance (perhaps the camera is getting close to a scene switch, use the PreloadScene function).
