@@ -36,7 +36,7 @@ class ERS_CLASS_AsyncTextureUpdater {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
-    GLFWWindow* MainThreadWindowContext_; /**<GLFWWindow Object Used To Setup Shared Contexts*/
+    GLFWwindow* MainThreadWindowContext_; /**<GLFWWindow Object Used To Setup Shared Contexts*/
 
     std::vector<std::thread> TextureWorkerThreads_; /**<Vector containing thread objects for the worker pool*/
     std::mutex BlockThreads_; /**<Lock this to block all the treads (Usually done to add new items to the work queue)*/
