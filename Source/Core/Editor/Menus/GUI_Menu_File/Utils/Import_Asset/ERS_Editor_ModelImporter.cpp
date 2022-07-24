@@ -53,6 +53,15 @@ void ERS_CLASS_ModelImporter::DetectBoundingBox(ERS_STRUCT_Model* Model) {
     Model->BoxScale_ = abs(ModelMaxXYZ) + abs(ModelMinXYZ);
     Model->BoxOffset_ = (Model->BoxScale_ / 2.0f) + ModelMinXYZ;
 
+    std::string LogMsg = std::string("Calculated Model Bounding Box To Be '") 
+    + std::to_string(Model->BoxScale_.x) + "X, "
+    + std::to_string(Model->BoxScale_.y) + "Y, "
+    + std::to_string(Model->BoxScale_.z) + "Z' With Offset Of '"
+    + std::to_string(Model->BoxOffset_.x) + "X, "
+    + std::to_string(Model->BoxOffset_.y) + "Y, "
+    + std::to_string(Model->BoxOffset_.z) + "Z'";
+    SystemUtils_->Logger_->Log(LogMsg, 3);
+
 }
 
 // Load Model From File
@@ -78,19 +87,11 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     // Process Root Node Recursively, Identify Textures/Files
     ProcessNode(&Model, Scene->mRootNode, Scene, ModelDirectory);
-
-
+    DetectBoundingBox(&Model);
 
 
     
-    std::string LogMsg = std::string("Calculated Model Bounding Box To Be '") 
-    + std::to_string(Model.BoxScale_.x) + "X, "
-    + std::to_string(Model.BoxScale_.y) + "Y, "
-    + std::to_string(Model.BoxScale_.z) + "Z' With Offset Of '"
-    + std::to_string(Model.BoxOffset_.x) + "X, "
-    + std::to_string(Model.BoxOffset_.y) + "Y, "
-    + std::to_string(Model.BoxOffset_.z) + "Z'";
-    SystemUtils_->Logger_->Log(LogMsg, 3);
+
 
 
 
