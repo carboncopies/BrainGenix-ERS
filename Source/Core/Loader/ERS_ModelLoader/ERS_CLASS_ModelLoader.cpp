@@ -556,7 +556,7 @@ long ERS_CLASS_ModelLoader::CheckIfModelAlreadyLoaded(long AssetID) {
 
 }
 
-void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::vector<std::pair<std::string, std::string>>* ModelRequestedTextures) {
+void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene) {
 
 
     // Process Meshes In Current Node
@@ -567,8 +567,7 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
                 (unsigned long)Mesh->mNumVertices,
                 (unsigned long)Mesh->mNumFaces*3,
                 Mesh,
-                Scene,
-                ModelRequestedTextures
+                Scene
             )
         );
 
@@ -576,7 +575,7 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
 
     // Process Children Nodes
     for (unsigned int i = 0; i < Node->mNumChildren; i++) {
-        ProcessNode(Model, Node->mChildren[i], Scene, ModelRequestedTextures);
+        ProcessNode(Model, Node->mChildren[i], Scene);
     }
 
 
