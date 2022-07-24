@@ -40,7 +40,7 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
 
     while (!HasTex) {
     }
-    std::cout<<glIsTexture(TestTexID);
+    std::cout<<glIsTexture(TestTexID)<<std::endl;
     //glfwMakeContextCurrent(MainThreadWindowContext_);
     SystemUtils_->Logger_->Log("Setup Worker Thread Pool", 3);
 
