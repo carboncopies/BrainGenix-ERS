@@ -470,8 +470,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     }
 
     // Decode Mesh, Create Texture Pointers
-    std::vector<std::pair<std::string, std::string>>* ModelRequestedTextures;
-    ProcessNode(&(*Model), Scene->mRootNode, Scene, ModelRequestedTextures);
+    ProcessNode(&(*Model), Scene->mRootNode, Scene);
 
     // // Get Texture Images From Loader, Push Into Vector
     // for (unsigned long i = 0; i < DecodedTextures.size(); i++) {
