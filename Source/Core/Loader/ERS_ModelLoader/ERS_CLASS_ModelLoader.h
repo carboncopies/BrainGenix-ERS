@@ -46,14 +46,6 @@
 // TESTING STUFF HERE
 #include <ERS_CLASS_AssetStreamingManager.h>
 
-// FIXME: Fix reloading of same textures
-// FIXME: Fix limitation of one thread
-// FIXME: Implement multithreaded image preloading?
-
-
-
-
-
 
 /**
  * @brief Class for loading models (fbx, gltx, etc.) based on the ASSIMP library
