@@ -739,9 +739,9 @@ void ERS_CLASS_ModelLoader::IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mes
 
             // Search Texture List For Index Of Same Match, Add To List Of Unique Textures If Not Found
             bool AlreadyHasTexture = false;
-            for (unsigned long x = 0; x < ModelRequestedTextures->size(); x++) {
-                if ((*ModelRequestedTextures)[x].second == TextureIdentifier) {
-                    SystemUtils_->Logger_->Log(std::string("Found Matching Texture '") + (*ModelRequestedTextures)[x].second + "'", 3);
+            for (unsigned long x = 0; x < Mesh->RequestedTextureInformation_.size(); x++) {
+                if (Mesh->RequestedTextureInformation_[x].second == TextureIdentifier) {
+                    SystemUtils_->Logger_->Log(std::string("Found Matching Texture '") + Mesh->RequestedTextureInformation_[x].second + "'", 3);
                     AlreadyHasTexture = true;
                     break;
                 }
@@ -749,7 +749,7 @@ void ERS_CLASS_ModelLoader::IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mes
 
             // If It's Not Already In The List, Add IT
             if (!AlreadyHasTexture) {
-                ModelRequestedTextures->push_back(std::make_pair(TypeName, TextureIdentifier));
+                Mesh->RequestedTextureInformation_.push_back(std::make_pair(TypeName, TextureIdentifier));
             }
 
 
