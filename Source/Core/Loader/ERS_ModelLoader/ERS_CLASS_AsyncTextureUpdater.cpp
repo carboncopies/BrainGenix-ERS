@@ -10,6 +10,7 @@
 ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, unsigned int Threads) {
 
     SystemUtils_ = SystemUtils;
+    Window_ = Window;
     SystemUtils_->Logger_->Log("Initializing Automatic Texture Loading Subsystem", 5);
 
     // If Threads Is Left To Autodetect, Use That
@@ -26,7 +27,6 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
     }
 
     // Setup Threads
-    glfwMakeContextCurrent(Window)
     SystemUtils_->Logger_->Log("Starting Worker Thread Pool", 4);
     SystemUtils_->Logger_->Log(std::string("Worker Pool Will Have ") + std::to_string(Threads) + " Threads", 3);
     StopThreads_ = false;
@@ -86,7 +86,8 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
     // Setup OpenGL Shared Context
-    gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
+    GLFWwindow* ThreadWindow = glfwCreateWindow(1, 1, "", NULL, MainThreadWindowContext_);
+    glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
 
 
     while (!StopThreads_) {
@@ -112,6 +113,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
         }
 
     }
+
 
 }
 
