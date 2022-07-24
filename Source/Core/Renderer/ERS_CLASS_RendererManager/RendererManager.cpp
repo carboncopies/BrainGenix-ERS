@@ -178,6 +178,12 @@ void RendererManager::InitializeGLFW() {
     glEnable(GL_BLEND);
 
 
+    // Setup Texture Streamer
+    SystemUtils_->Logger_->Log("Initializing Texture Streaming Subsystem", 5);
+    ProjectUtils_->ModelLoader_->AssetStreamingManager_->SetupTextureStreamer();
+    SystemUtils_->Logger_->Log("Finished Initializing Texture Streaming Subsystem", 4);
+
+
 
 }
 
