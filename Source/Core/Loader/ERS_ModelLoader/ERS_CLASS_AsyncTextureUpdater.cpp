@@ -53,6 +53,14 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
     }
     SystemUtils_->Logger_->Log("Finished Joining Worker Thread Pool", 4);
 
+}
 
+void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
+
+    while (!StopThreads_) {
+
+
+
+    }
 
 }
