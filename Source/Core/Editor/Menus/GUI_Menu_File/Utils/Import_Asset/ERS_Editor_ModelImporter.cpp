@@ -16,40 +16,42 @@ ERS_CLASS_ModelImporter::~ERS_CLASS_ModelImporter() {
 }
 
 
-ERS_CLASS_ModelImporter::DetectBoundingBox(ERS_STRUCT_Model* Model, glm::vec3* BoundingBoxScale, glm::vec3 Offset) {
+ERS_CLASS_ModelImporter::DetectBoundingBox(ERS_STRUCT_Model* Model) {
 
     // Calculate Bounding Box
     glm::vec3 ModelMinXYZ;
     glm::vec3 ModelMaxXYZ;
-    for (unsigned int i = 0; i < Model.Meshes.size(); i++) {
+    for (unsigned int MeshIndex = 0; MeshIndex < Model->Meshes.size(); MeshIndex++) {
 
-        // Get Mesh Min/Max
-        glm::vec3 MeshMinXYZ = Model.Meshes[i].MinXYZ_;
-        glm::vec3 MeshMaxXYZ = Model.Meshes[i].MaxXYZ_;
+        for (unsigned int VertIndex = 0; VertIndex < Model->Meshes[MeshIndex].Vertices.size(); VertIndex++) {
 
-        // Check If Larger/Smaller Than Model Min/Max
-        if (MeshMinXYZ.x < ModelMinXYZ.x) {
-            ModelMinXYZ.x = MeshMinXYZ.x;
-        }
-        if (MeshMinXYZ.y < ModelMinXYZ.y) {
-            ModelMinXYZ.y = MeshMinXYZ.y;
-        }
-        if (MeshMinXYZ.z < ModelMinXYZ.z) {
-            ModelMinXYZ.z = MeshMinXYZ.z;
-        }
-        if (MeshMaxXYZ.x > ModelMaxXYZ.x) {
-            ModelMaxXYZ.x = MeshMaxXYZ.x;
-        }
-        if (MeshMaxXYZ.y > ModelMaxXYZ.y) {
-            ModelMaxXYZ.y = MeshMaxXYZ.y;
-        }
-        if (MeshMaxXYZ.z > ModelMaxXYZ.z) {
-            ModelMaxXYZ.z = MeshMaxXYZ.z;
+            // Get Mesh Min/Max
+            glm::vec3 VertPos = Model->Meshes[MeshIndex].Vertices[VertIndex].Position;
+
+            // Check If Larger/Smaller Than Model Min/Max
+            if (VertPos.x < ModelMinXYZ.x) {
+                ModelMinXYZ.x = VertPos.x;
+            }
+            if (VertPos.y < ModelMinXYZ.y) {
+                ModelMinXYZ.y = VertPos.y;
+            }
+            if (VertPos.z < ModelMinXYZ.z) {
+                ModelMinXYZ.z = VertPos.z;
+            }
+            if (VertPos.x > ModelMaxXYZ.x) {
+                ModelMaxXYZ.x = VertPos.x;
+            }
+            if (VertPos.y > ModelMaxXYZ.y) {
+                ModelMaxXYZ.y = VertPos.y;
+            }
+            if (VertPos.z > ModelMaxXYZ.z) {
+                ModelMaxXYZ.z = VertPos.z;
+            }
+
         }
     }
-    Model.BoxScale_ = abs(ModelMaxXYZ) + abs(ModelMinXYZ);
-
-    Model.BoxOffset_ = (Model.BoxScale_ / 2.0f) + ModelMinXYZ;
+    Model->BoxScale_ = abs(ModelMaxXYZ) + abs(ModelMinXYZ);
+    Model->BoxOffset_ = (Model->BoxScale_ / 2.0f) + ModelMinXYZ;
 
 }
 
