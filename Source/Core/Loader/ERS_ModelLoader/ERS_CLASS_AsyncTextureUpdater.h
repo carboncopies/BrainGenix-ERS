@@ -45,22 +45,6 @@ private:
      */
     void TextureModifierWorkerThread();
 
-public:
-
-    /**
-     * @brief Create instance of the texture updater. The optional threads parameters sets the limit on the number of threads we can use.
-     * 
-     * @param SystemUtils 
-     * @param Threads Setting this to 0 will autodetect the number of threads we should use. Otherwise, we'll use whatever is passed in.
-     */
-    ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, unsigned int Threads = 0);
-
-    /**
-     * @brief Destroy the ers class asynctextureupdater object
-     * 
-     */
-    ~ERS_CLASS_AsyncTextureUpdater();
-
 
     /**
      * @brief Adds a work item to the queue to load the minimum size texture to VRAM so we have something to display - this is kept in memory constantly.
@@ -184,6 +168,31 @@ public:
      */
     void UnloadInitialTextureRAM(ERS_STRUCT_Model* Model);
 
+
+
+public:
+
+    /**
+     * @brief Create instance of the texture updater. The optional threads parameters sets the limit on the number of threads we can use.
+     * 
+     * @param SystemUtils 
+     * @param Threads Setting this to 0 will autodetect the number of threads we should use. Otherwise, we'll use whatever is passed in.
+     */
+    ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, unsigned int Threads = 0);
+
+    /**
+     * @brief Destroy the ers class asynctextureupdater object
+     * 
+     */
+    ~ERS_CLASS_AsyncTextureUpdater();
+
+
+    /**
+     * @brief Sorts through all items in the scene and automatically adds them to the update queue
+     * 
+     * @param Scene 
+     */
+    void SortModels(ERS_STRUCT_Scene* Scene);
 
 
 
