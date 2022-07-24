@@ -581,11 +581,6 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
 
 }
 
-// TODO:
-// update process mesh to not require the texture path list, and instead generate a list with the textures and their types (maybe std::pair?)
-// then, implement asset streaming manager system
-// finally, setup system to load textures properly, and make sure everything works
-
 ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(unsigned long PreallocVertSize, unsigned long PreallocIndSize, aiMesh *Mesh, const aiScene *Scene) {
 
     // Create Data Holders
