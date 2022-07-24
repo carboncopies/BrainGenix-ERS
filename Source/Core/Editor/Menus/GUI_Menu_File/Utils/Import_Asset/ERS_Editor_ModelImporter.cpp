@@ -184,11 +184,6 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     return MetadataID;
 }
 
-// todo: make write textures function take emitter pointer
-// then test, fix bugs
-// then make loader able to understand this version
-// also cleanup loader to just be generally more sensible
-
 void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
     // Create List Of Texture Files To Be Copied
