@@ -146,7 +146,7 @@ public:
      * Calling this earlier will result in a segmentation fault.
      * 
      */
-    void SetupTextureStreamer();
+    void SetupTextureStreamer(GLFWwindow* Window);
 
 
     /**

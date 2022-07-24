@@ -39,8 +39,8 @@ ERS_CLASS_AssetStreamingManager::~ERS_CLASS_AssetStreamingManager() {
 
 }
 
-void ERS_CLASS_AssetStreamingManager::SetupTextureStreamer() {
-    AsyncTextureUpdater_ = std::make_unique<ERS_CLASS_AsyncTextureUpdater>(SystemUtils_);
+void ERS_CLASS_AssetStreamingManager::SetupTextureStreamer(GLFWwindow* Window) {
+    AsyncTextureUpdater_ = std::make_unique<ERS_CLASS_AsyncTextureUpdater>(SystemUtils_, Window);
 }
 
 void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras) {

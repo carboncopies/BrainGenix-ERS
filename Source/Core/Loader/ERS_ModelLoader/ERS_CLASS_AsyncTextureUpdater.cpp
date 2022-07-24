@@ -7,7 +7,7 @@
 // todo, implement system that searches over all models in the scene and loads the requested texture level
 // also for now, we disable reference loading acceleration due to simplicity.
 
-ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, unsigned int Threads) {
+ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, unsigned int Threads) {
 
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing Automatic Texture Loading Subsystem", 5);
@@ -26,6 +26,7 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
     }
 
     // Setup Threads
+    glfwMakeContextCurrent(Window)
     SystemUtils_->Logger_->Log("Starting Worker Thread Pool", 4);
     SystemUtils_->Logger_->Log(std::string("Worker Pool Will Have ") + std::to_string(Threads) + " Threads", 3);
     StopThreads_ = false;

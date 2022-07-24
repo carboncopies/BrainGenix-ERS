@@ -180,7 +180,7 @@ void RendererManager::InitializeGLFW() {
 
     // Setup Texture Streamer
     SystemUtils_->Logger_->Log("Initializing Texture Streaming Subsystem", 5);
-    ProjectUtils_->ModelLoader_->AssetStreamingManager_->SetupTextureStreamer();
+    ProjectUtils_->ModelLoader_->AssetStreamingManager_->SetupTextureStreamer(Window_);
     SystemUtils_->Logger_->Log("Finished Initializing Texture Streaming Subsystem", 4);
 
 

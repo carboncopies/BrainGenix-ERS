@@ -181,7 +181,7 @@ public:
      * @param SystemUtils 
      * @param Threads Setting this to 0 will autodetect the number of threads we should use. Otherwise, we'll use whatever is passed in.
      */
-    ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, unsigned int Threads = 0);
+    ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, unsigned int Threads = 0);
 
     /**
      * @brief Destroy the ers class asynctextureupdater object
