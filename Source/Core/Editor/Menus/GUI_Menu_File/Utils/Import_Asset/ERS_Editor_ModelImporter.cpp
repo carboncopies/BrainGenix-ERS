@@ -15,31 +15,8 @@ ERS_CLASS_ModelImporter::~ERS_CLASS_ModelImporter() {
 
 }
 
-// Load Model From File
-long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
-    ERS_STRUCT_Model Model;
-    TextureList_ = std::vector<std::string>();
-
-    // Get Model Path
-    std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
-    std::string ModelFileName = AssetPath.substr(AssetPath.find_last_of("/") + 1, AssetPath.size() - 1);
-
-    // Read File
-    Assimp::Importer Importer;
-    SystemUtils_->Logger_->Log(std::string(std::string("Loading Model At File Path: ") + std::string(AssetPath)).c_str(), 3);
-    const aiScene* Scene = Importer.ReadFile(AssetPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_PreTransformVertices | aiProcess_JoinIdenticalVertices);
-
-    // Log Errors
-    if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
-        SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
-        return -1;
-    }
-
-    // Process Root Node Recursively, Identify Textures/Files
-    ProcessNode(&Model, Scene->mRootNode, Scene, ModelDirectory);
-
-
+ERS_CLASS_ModelImporter::DetectBoundingBox(ERS_STRUCT_Model* Model, glm::vec3* BoundingBoxScale, glm::vec3 Offset) {
 
     // Calculate Bounding Box
     glm::vec3 ModelMinXYZ;
@@ -73,6 +50,36 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     Model.BoxScale_ = abs(ModelMaxXYZ) + abs(ModelMinXYZ);
 
     Model.BoxOffset_ = (Model.BoxScale_ / 2.0f) + ModelMinXYZ;
+
+}
+
+// Load Model From File
+long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
+
+    ERS_STRUCT_Model Model;
+    TextureList_ = std::vector<std::string>();
+
+    // Get Model Path
+    std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
+    std::string ModelFileName = AssetPath.substr(AssetPath.find_last_of("/") + 1, AssetPath.size() - 1);
+
+    // Read File
+    Assimp::Importer Importer;
+    SystemUtils_->Logger_->Log(std::string(std::string("Loading Model At File Path: ") + std::string(AssetPath)).c_str(), 3);
+    const aiScene* Scene = Importer.ReadFile(AssetPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_PreTransformVertices | aiProcess_JoinIdenticalVertices);
+
+    // Log Errors
+    if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
+        SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
+        return -1;
+    }
+
+    // Process Root Node Recursively, Identify Textures/Files
+    ProcessNode(&Model, Scene->mRootNode, Scene, ModelDirectory);
+
+
+
+
     
     std::string LogMsg = std::string("Calculated Model Bounding Box To Be '") 
     + std::to_string(Model.BoxScale_.x) + "X, "
