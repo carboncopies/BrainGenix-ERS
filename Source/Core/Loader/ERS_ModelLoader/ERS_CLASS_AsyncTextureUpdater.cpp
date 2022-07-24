@@ -124,12 +124,15 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
         glEnable(GL_TEXTURE_2D);
 
         const char* Path = "EditorAssets/Icons/LoadingTexture/4x4/LoadingTexture1024.png";
+        std::cout<<"Loading Texture "<<std::endl;
+        FreeImage_Initialise();
         FREE_IMAGE_FORMAT TexFormat = FreeImage_GetFileType(Path, 0);
         FIBITMAP* TexImageData = FreeImage_Load(TexFormat, Path);
         unsigned char* RawImageData = FreeImage_GetBits(TexImageData);
         int Width = FreeImage_GetWidth(TexImageData);
         int Height = FreeImage_GetHeight(TexImageData);
         int Channels = FreeImage_GetLine(TexImageData) / Width;
+        std::cout<<"sending to gpu"<<std::endl;
 
         unsigned int OpenGLTextureID;
         glGenTextures(1, &OpenGLTextureID);
@@ -146,6 +149,9 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
         glGenerateMipmap(GL_TEXTURE_2D);
 
         FreeImage_Unload(TexImageData);
+
+
+        std::cout<<"Done, checking tex state"<<std::endl;
 
         TestTexID = OpenGLTextureID;
 
@@ -174,7 +180,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
     }
 
-
+    FreeImage_DeInitialise();
     glfwTerminate();
 
 }
