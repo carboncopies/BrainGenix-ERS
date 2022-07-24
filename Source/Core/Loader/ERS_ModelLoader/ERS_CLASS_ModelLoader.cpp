@@ -223,7 +223,7 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
 
 
     // Erase List To Save Memory
-    Model->TexturesToPushToGPU_.erase(Model->TexturesToPushToGPU_.begin(), Model->TexturesToPushToGPU_.end());
+    //Model->TexturesToPushToGPU_.erase(Model->TexturesToPushToGPU_.begin(), Model->TexturesToPushToGPU_.end());
     Model->IsTemplateModel = true;
 
 
@@ -380,7 +380,7 @@ void ERS_CLASS_ModelLoader::ReferenceThread() {
 
 
                         Target->Meshes = Source->Meshes;
-                        Target->OpenGLTextureIDs_ = Source->OpenGLTextureIDs_;
+                        //Target->OpenGLTextureIDs_ = Source->OpenGLTextureIDs_;
                         Target->TextureIDs = Source->TextureIDs;
                         Target->TotalIndices_ = Source->TotalIndices_;
                         Target->TotalVertices_ = Source->TotalVertices_;
