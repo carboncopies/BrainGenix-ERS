@@ -36,15 +36,7 @@ struct ERS_STRUCT_Model {
     long ShaderOverrideIndex_ = -1; /**<If not -1, This indicates that the model is requesting a custom shader, and the value is the index of the shader in the system*/
     long AssetID;
 
-    int TextureLevelInRAM_ = 0; /**<Determines the current texture level in RAM*/
-    int TextureLevelInVRAM_ = 0; /**<Determines the current texture level in RAM*/
-    int MaxTextureLevel_ = -1; /**<Determines the max texture level available, Only should be adjusted by the asset system*/
     
-    int AssetLoadngStateVRAM = 0; /**<0 means nothing happening, -1 means unloading, 1 means loading next*/
-    int AssetLoadngStateRAM = 0; /**<0 means nothing happening, -1 means unloading, 1 means loading next*/
-
-    int TargetTextureLevelVRAM = -1; /**<Used in preliminary sorting to determine how much this needs to be loaded*/
-    int TargetTextureLevelRAM = -1; /**<Used in preliminary sorting to determine how much this needs to be loaded*/
 
 
     // Shadows Information
@@ -55,34 +47,29 @@ struct ERS_STRUCT_Model {
 
     // New Model Decoding System
     std::vector<ERS_STRUCT_Texture> Textures_;
+    int TextureLevelInRAM_ = 0; /**<Determines the current texture level in RAM*/
+    int TextureLevelInVRAM_ = 0; /**<Determines the current texture level in RAM*/
+    int MaxTextureLevel_ = -1; /**<Determines the max texture level available, Only should be adjusted by the asset system*/
+    
+    int AssetLoadngStateVRAM = 0; /**<0 means nothing happening, -1 means unloading, 1 means loading next*/
+    int AssetLoadngStateRAM = 0; /**<0 means nothing happening, -1 means unloading, 1 means loading next*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    std::vector<ERS_STRUCT_Texture> TexturesToPushToGPU_;
-    std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
-    std::vector<unsigned int> OpenGLTextureIDs_;
-    double LoadingStartTime_; /**<Time that the loading started*/
-    double LoadingFinishTime_; /**<Time When Loading Was Completed*/
-    double TotalLoadingTime_; /**<The Total Time Needed To Load*/
-    unsigned long TotalVertices_ = 0; /**<Total Number Of Verts In This Model*/ 
-    unsigned long TotalIndices_ = 0; /**<Total Number Of Indices In Model*/
+    int TargetTextureLevelVRAM = -1; /**<Used in preliminary sorting to determine how much this needs to be loaded*/
+    int TargetTextureLevelRAM = -1; /**<Used in preliminary sorting to determine how much this needs to be loaded*/
 
     // Bounding Box Info
     glm::vec3 BoxScale_; /**<Bounding Box Size In Local Space (Multiply By Object's scale value to get true size)*/
     glm::vec3 BoxOffset_; /**<Offset the center of the box so it's synced with the center of the model*/
 
+
+
+    std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
+
+    double LoadingStartTime_; /**<Time that the loading started*/
+    double LoadingFinishTime_; /**<Time When Loading Was Completed*/
+    double TotalLoadingTime_; /**<The Total Time Needed To Load*/
+    unsigned long TotalVertices_ = 0; /**<Total Number Of Verts In This Model*/ 
+    unsigned long TotalIndices_ = 0; /**<Total Number Of Indices In Model*/
 
 
  
