@@ -38,17 +38,16 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
         SystemUtils_->Logger_->Log(std::string("Started Worker Thread '") + std::to_string(i) + "'", 2);
     }
 
-    unsigned int t;
+  
+
+    while (!HasTex) {
+    }
     glGenTextures(1, &t);
-    if (glIsTexture(t)) {
+    if (glIsTexture(TestTexID)) {
     std::cout<<"Main thread: True"<<std::endl;
     } else {
     std::cout<<"Main thread: False"<<std::endl;
     }    
-
-    while (!HasTex) {
-    }
-    std::cout<<"Main thread: "<<glIsTexture(TestTexID)<<std::endl;
 
     //glfwMakeContextCurrent(MainThreadWindowContext_);
     SystemUtils_->Logger_->Log("Setup Worker Thread Pool", 3);
@@ -124,7 +123,11 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
         glEnable(GL_TEXTURE_2D);
         glGenTextures(1, &TestTexID);
-        std::cout<<"Worker thread: "<<glIsTexture(TestTexID)<<std::endl;
+        if (glIsTexture(TestTexID)) {
+        std::cout<<"Tex thread: True"<<std::endl;
+        } else {
+        std::cout<<"Tex thread: False"<<std::endl;
+        }  
         HasTex = true;
         while (!StopThreads_) {
 
