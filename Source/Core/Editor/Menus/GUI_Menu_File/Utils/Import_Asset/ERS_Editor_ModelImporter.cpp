@@ -64,6 +64,23 @@ void ERS_CLASS_ModelImporter::DetectBoundingBox(ERS_STRUCT_Model* Model) {
 
 }
 
+void ERS_CLASS_ModelImporter::CalculateTotalVertsIndices(ERS_STRUCT_Model* Model) {
+
+    // Get Vert/Indice Metadata Info
+    Model->TotalVertices_ = 0;
+    Model->TotalIndices_ = 0;
+
+    for (unsigned long i = 0; i < Model->Meshes.size(); i++) {
+
+        unsigned long VertSize = Model->Meshes[i].Vertices.size();
+        unsigned long IndSize = Model->Meshes[i].Indices.size();
+        Model->TotalVertices_ += VertSize;
+        Model->TotalIndices_ += IndSize;
+
+    }
+
+}
+
 // Load Model From File
 long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
@@ -96,13 +113,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(ModelID) + std::string("' To Model '") + AssetPath + std::string("'")).c_str(), 4);
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(ModelID, Data.get());    
 
-    // Get Vert/Indice Metadata Info
-    for (unsigned long i = 0; i < Model.Meshes.size(); i++) {
-        unsigned long VertSize = Model.Meshes[i].Vertices.size();
-        unsigned long IndSize = Model.Meshes[i].Indices.size();
-        Model.TotalVertices_ += VertSize;
-        Model.TotalIndices_ += IndSize;
-    }
+
 
 
 
