@@ -63,12 +63,12 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
     SystemUtils_->Logger_->Log("Stop Command Sent", 3);
 
     // Join Threads
-    SystemUtils_->Logger_->Log("Joining Worker Thread Pool", 5);
+    SystemUtils_->Logger_->Log("Joining Texture Streaming Worker Thread Pool", 5);
     for (unsigned int i = 0; i < TextureWorkerThreads_.size(); i++) {
-        SystemUtils_->Logger_->Log(std::string("Joining Worker Thread '") + std::to_string(i) + "'", 3);
+        SystemUtils_->Logger_->Log(std::string("Joining Texture Streaming Worker Thread '") + std::to_string(i) + "'", 3);
         TextureWorkerThreads_[i].join();
     }
-    SystemUtils_->Logger_->Log("Finished Joining Worker Thread Pool", 4);
+    SystemUtils_->Logger_->Log("Finished Joining Texture Streaming Worker Thread Pool", 4);
 
     // Cleanup
     SystemUtils_->Logger_->Log("Cleaning Up OpenGL/GLFW", 6);
