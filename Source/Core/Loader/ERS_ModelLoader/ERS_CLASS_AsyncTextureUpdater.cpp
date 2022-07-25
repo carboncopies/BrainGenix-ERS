@@ -136,6 +136,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
         unsigned int OpenGLTextureID;
         glGenTextures(1, &OpenGLTextureID);
         glBindTexture(GL_TEXTURE_2D, OpenGLTextureID);
+        std::cout<<"Tex ID: "<<OpenGLTextureID<<std::endl;
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
