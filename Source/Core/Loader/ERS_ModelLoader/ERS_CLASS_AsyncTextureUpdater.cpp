@@ -72,6 +72,11 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 
 }
 
+
+    // // Cleanup
+    // SystemUtils_->Logger_->Log("Cleaning Up OpenGL/GLFW", 6);
+    // glfwTerminate();
+
 void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 
     // Iterate Over All Models

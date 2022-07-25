@@ -65,11 +65,6 @@ RendererManager::~RendererManager() {
 
     SystemUtils_->Logger_->Log("RendererManager Destructor Called", 6);
 
-    // Cleanup
-    SystemUtils_->Logger_->Log("Cleaning Up OpenGL/GLFW", 6);
-    glfwTerminate();
-
-
 }
 
 void RendererManager::LoadEditorData() {
