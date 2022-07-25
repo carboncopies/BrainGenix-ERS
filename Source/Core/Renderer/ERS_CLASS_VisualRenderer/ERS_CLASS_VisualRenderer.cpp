@@ -42,11 +42,6 @@ ERS_CLASS_VisualRenderer::~ERS_CLASS_VisualRenderer() {
 
     }
 
-
-    // Cleanup
-    SystemUtils_->Logger_->Log("Cleaning Up OpenGL/GLFW", 6);
-    glfwTerminate();
-
 }
 
 

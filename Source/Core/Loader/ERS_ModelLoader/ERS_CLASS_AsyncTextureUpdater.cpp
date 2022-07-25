@@ -182,6 +182,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
     }
 
     FreeImage_DeInitialise();
+    glfwDestroyWindow(ThreadWindow);
     glfwTerminate();
 
 }
