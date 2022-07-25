@@ -105,7 +105,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
     //gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
     glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
     GLFWwindow* ThreadWindow = glfwCreateWindow(1, 1, "", NULL, MainThreadWindowContext_);
-
+    glfwMakeContextCurrent(ThreadWindow);
 
     while (!StopThreads_) {
 
