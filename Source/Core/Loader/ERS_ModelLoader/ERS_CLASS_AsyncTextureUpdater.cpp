@@ -70,12 +70,14 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
     }
     SystemUtils_->Logger_->Log("Finished Joining Worker Thread Pool", 4);
 
+    // Cleanup
+    SystemUtils_->Logger_->Log("Cleaning Up OpenGL/GLFW", 6);
+    glfwTerminate();
+
 }
 
 
-    // // Cleanup
-    // SystemUtils_->Logger_->Log("Cleaning Up OpenGL/GLFW", 6);
-    // glfwTerminate();
+
 
 void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 
