@@ -38,7 +38,6 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
         SystemUtils_->Logger_->Log(std::string("Started Worker Thread '") + std::to_string(i) + "'", 2);
     }
 
-  
 
     while (!HasTex) {
     }
@@ -149,6 +148,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
         glGenerateMipmap(GL_TEXTURE_2D);
 
         FreeImage_Unload(TexImageData);
+        glFinish();
 
 
         std::cout<<"Done, checking tex state"<<std::endl;
