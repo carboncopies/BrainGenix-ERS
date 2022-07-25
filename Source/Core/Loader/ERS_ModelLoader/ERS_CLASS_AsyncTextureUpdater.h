@@ -174,11 +174,11 @@ private:
      */
     void UnloadInitialTextureRAM(ERS_STRUCT_Model* Model);
 
-    // /**
-    //  * @brief Uploads specified texture into memory with 
-    //  * 
-    //  */
-    // void UploadTexture();
+    /**
+     * @brief Uploads specified texture into memory with 
+     * 
+     */
+    void UploadTexture();
 
 public:
     unsigned int TestTexID;
