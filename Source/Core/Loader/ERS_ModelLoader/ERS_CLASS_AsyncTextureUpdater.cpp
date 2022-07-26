@@ -77,7 +77,16 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 }
 
 
+void ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel, int RowsPerUpload = -1) {
 
+    // Generate PBO
+    unsigned int PixelBufferObjectID;
+    glGenBuffers(1, &PixelBufferObjectID);
+    glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PixelBufferObjectID);
+    glBufferData(GL_PIXEL_UNPACK_BUFFER, Width*Height)
+
+
+}
 
 void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 

@@ -174,11 +174,18 @@ private:
      */
     void UnloadInitialTextureRAM(ERS_STRUCT_Model* Model);
 
+
     /**
-     * @brief Uploads specified texture into memory with 
+     * @brief Uploads the given image into memory with the given image data at the target mipmap.
      * 
+     * @param ImageData 
+     * @param Width 
+     * @param Height 
+     * @param TextureID 
+     * @param MipMapLevel 
+     * @param RowsPerUpload 
      */
-    void UploadTexture();
+    void UploadTextureData(FIBITMAP* ImageData, int Width, int Height, unsigned int TextureID, int MipMapLevel, int RowsPerUpload = -1);
 
 public:
     unsigned int TestTexID;
