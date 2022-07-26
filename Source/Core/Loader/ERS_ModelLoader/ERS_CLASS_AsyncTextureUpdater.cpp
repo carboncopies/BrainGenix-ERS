@@ -79,45 +79,53 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 
 bool ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel) {
 
-    // Generate PBO
-    // We use this as an intermediary stage to transfer image data from ram to GPU texture
-    unsigned int PixelBufferObjectID;
-    glGenBuffers(1, &PixelBufferObjectID);
+    // Try using normal (non-pbo) operations
+    // see if we can upload texutres this way without the need for a pbo.
+    // if we need to use pbos, let's start with uploading it all at once, and then implement the code to upload bit by bit later.
+    // then work on sorting out other texture management/RAM loading
+    // on a side note, we should regenerate the texture for every mip-map level we load in (async of course), perhaps we can change this later but for now it's okay 
+    // - we could always implement settings to skip unloading unless needed by memory or some other issue.
 
-    // Initialize PBO
-    glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PixelBufferObjectID);
-    glBufferData(GL_PIXEL_UNPACK_BUFFER, Width*Height*Channels, NULL, GL_STREAM_DRAW);
 
-    // Get Image Data, Copy Into Buffer
-    unsigned char* ImageBytes = (unsigned char*)ImageData->data;
-    void* MappedBufferData = glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_WRITE_ONLY);
-    memcpy(MappedBufferData, ImageBytes, Width*Height*Channels*sizeof(unsigned char));
+    // // Generate PBO
+    // // We use this as an intermediary stage to transfer image data from ram to GPU texture
+    // unsigned int PixelBufferObjectID;
+    // glGenBuffers(1, &PixelBufferObjectID);
 
-    // Identify Format
-    GLint TextureInternFormat;
-    GLenum TextureExternFormat;
-    if (Channels == 4) {
-        TextureInternFormat = GL_RGBA;
-        TextureExternFormat = GL_BGRA;
-    } else if (Channels == 3) {
-        TextureInternFormat = GL_RGB;
-        TextureExternFormat = GL_BGR;
-    } else if (Channels == 2) {
-        TextureInternFormat = GL_RG;
-        TextureExternFormat = GL_RG;
-    } else if (Channels == 1) {
-        TextureInternFormat = GL_RED;
-        TextureExternFormat = GL_RED;
-    } else {
-        glBindTexture(GL_TEXTURE_2D, 0);
-        glDeleteBuffers(1, &PixelBufferObjectID);
-        return false;
-    }
+    // // Initialize PBO
+    // glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PixelBufferObjectID);
+    // glBufferData(GL_PIXEL_UNPACK_BUFFER, Width*Height*Channels, NULL, GL_STREAM_DRAW);
 
-    // Transfer Data From Buffer To Texture (Async)
-    glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PixelBufferObjectID);
-    glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
-    glTexImage2D(GL_TEXTURE_2D, MipMapLevel, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
+    // // Get Image Data, Copy Into Buffer
+    // unsigned char* ImageBytes = (unsigned char*)ImageData->data;
+    // void* MappedBufferData = glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_WRITE_ONLY);
+    // memcpy(MappedBufferData, ImageBytes, Width*Height*Channels*sizeof(unsigned char));
+
+    // // Identify Format
+    // GLint TextureInternFormat;
+    // GLenum TextureExternFormat;
+    // if (Channels == 4) {
+    //     TextureInternFormat = GL_RGBA;
+    //     TextureExternFormat = GL_BGRA;
+    // } else if (Channels == 3) {
+    //     TextureInternFormat = GL_RGB;
+    //     TextureExternFormat = GL_BGR;
+    // } else if (Channels == 2) {
+    //     TextureInternFormat = GL_RG;
+    //     TextureExternFormat = GL_RG;
+    // } else if (Channels == 1) {
+    //     TextureInternFormat = GL_RED;
+    //     TextureExternFormat = GL_RED;
+    // } else {
+    //     glBindTexture(GL_TEXTURE_2D, 0);
+    //     glDeleteBuffers(1, &PixelBufferObjectID);
+    //     return false;
+    // }
+
+    // // Transfer Data From Buffer To Texture (Async)
+    // glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PixelBufferObjectID);
+    // glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+    // glTexImage2D(GL_TEXTURE_2D, MipMapLevel, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
     
 
 }
