@@ -92,6 +92,23 @@ void ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int W
     unsigned char* ImageBytes = (unsigned char*)ImageData->data;
     void* MappedBufferData = glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_WRITE_ONLY);
     memcpy(MappedBufferData, ImageBytes, Width*Height*Channels*sizeof(unsigned char));
+
+    // Identify Format
+    GLint TextureFormat;
+    if (Channels == 4) {
+        TextureFormat = GL_RGBA;
+    } else if (Channels == 3) {
+        TextureFormat = GL_RGB;
+    } else if (Channels == 2) {
+        TextureFormat = GL_RG;
+    } else if (Channels == 1) {
+        TextureFormat = GL_RED;
+    }
+
+    // Transfer Data From Buffer To Texture
+    glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PixelBufferObjectID);
+    glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+    glTexImage2D(GL_TEXTURE_2D, MipMapLevel, )
     
 
 }

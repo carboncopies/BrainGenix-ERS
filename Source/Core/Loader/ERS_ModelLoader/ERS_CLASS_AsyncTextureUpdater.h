@@ -177,6 +177,7 @@ private:
 
     /**
      * @brief Uploads the given image into memory with the given image data at the target mipmap.
+     * Returns true on success, false on failure.
      * 
      * @param ImageData 
      * @param Width 
@@ -184,8 +185,11 @@ private:
      * @param Channels
      * @param TextureID 
      * @param MipMapLevel 
+     * 
+     * @return True
+     * @return False
      */
-    void UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel);
+    bool UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel);
 
 public:
     unsigned int TestTexID;
