@@ -114,10 +114,10 @@ bool ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int W
         return false;
     }
 
-    // Transfer Data From Buffer To Texture
+    // Transfer Data From Buffer To Texture (Async)
     glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PixelBufferObjectID);
     glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
-    glTexImage2D(GL_TEXTURE_2D, MipMapLevel, TextureInternFormat, Width, Height, 0, )
+    glTexImage2D(GL_TEXTURE_2D, MipMapLevel, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
     
 
 }
