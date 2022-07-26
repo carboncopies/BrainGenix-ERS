@@ -98,6 +98,8 @@ bool ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int W
         return false;
     }
 
+    
+    // 
 
 
     // Try using normal (non-pbo) operations
