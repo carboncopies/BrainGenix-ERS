@@ -94,21 +94,30 @@ bool ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int W
     memcpy(MappedBufferData, ImageBytes, Width*Height*Channels*sizeof(unsigned char));
 
     // Identify Format
-    GLint TextureFormat;
+    GLint TextureInternFormat;
+    GLenum TextureExternFormat;
     if (Channels == 4) {
-        TextureFormat = GL_RGBA;
+        TextureInternFormat = GL_RGBA;
+        TextureExternFormat = GL_BGRA;
     } else if (Channels == 3) {
-        TextureFormat = GL_RGB;
+        TextureInternFormat = GL_RGB;
+        TextureExternFormat = GL_BGR;
     } else if (Channels == 2) {
-        TextureFormat = GL_RG;
+        TextureInternFormat = GL_RG;
+        TextureExternFormat = GL_RG;
     } else if (Channels == 1) {
-        TextureFormat = GL_RED;
+        TextureInternFormat = GL_RED;
+        TextureExternFormat = GL_RED;
+    } else {
+        glBindTexture(GL_TEXTURE_2D, 0);
+        glDeleteBuffers(1, &PixelBufferObjectID);
+        return false;
     }
 
     // Transfer Data From Buffer To Texture
     glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PixelBufferObjectID);
     glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
-    glTexImage2D(GL_TEXTURE_2D, MipMapLevel, )
+    glTexImage2D(GL_TEXTURE_2D, MipMapLevel, TextureInternFormat, Width, Height, 0, )
     
 
 }
