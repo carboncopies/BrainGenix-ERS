@@ -79,6 +79,27 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 
 bool ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel) {
 
+    // Identify Format
+    GLint TextureInternFormat;
+    GLenum TextureExternFormat;
+    if (Channels == 4) {
+        TextureInternFormat = GL_RGBA;
+        TextureExternFormat = GL_BGRA;
+    } else if (Channels == 3) {
+        TextureInternFormat = GL_RGB;
+        TextureExternFormat = GL_BGR;
+    } else if (Channels == 2) {
+        TextureInternFormat = GL_RG;
+        TextureExternFormat = GL_RG;
+    } else if (Channels == 1) {
+        TextureInternFormat = GL_RED;
+        TextureExternFormat = GL_RED;
+    } else {
+        return false;
+    }
+
+
+
     // Try using normal (non-pbo) operations
     // see if we can upload texutres this way without the need for a pbo.
     // if we need to use pbos, let's start with uploading it all at once, and then implement the code to upload bit by bit later.
