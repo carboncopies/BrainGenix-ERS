@@ -184,9 +184,8 @@ private:
      * @param Channels
      * @param TextureID 
      * @param MipMapLevel 
-     * @param RowsPerUpload 
      */
-    void UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel, int RowsPerUpload = -1);
+    void UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel);
 
 public:
     unsigned int TestTexID;
