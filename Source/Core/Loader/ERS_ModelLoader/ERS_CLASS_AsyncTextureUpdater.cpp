@@ -79,7 +79,7 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 
 bool ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel) {
 
-    // Identify Format
+    // Identify Required Texture Format
     GLint TextureInternFormat;
     GLenum TextureExternFormat;
     if (Channels == 4) {
