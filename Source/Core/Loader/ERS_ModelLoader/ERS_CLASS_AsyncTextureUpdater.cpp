@@ -77,7 +77,7 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 }
 
 
-void ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel) {
+bool ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel) {
 
     // Generate PBO
     // We use this as an intermediary stage to transfer image data from ram to GPU texture
