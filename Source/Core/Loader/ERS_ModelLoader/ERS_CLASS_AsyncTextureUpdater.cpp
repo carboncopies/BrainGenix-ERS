@@ -86,7 +86,6 @@ bool ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int W
     // on a side note, we should regenerate the texture for every mip-map level we load in (async of course), perhaps we can change this later but for now it's okay 
     // - we could always implement settings to skip unloading unless needed by memory or some other issue.
 
-
     // // Generate PBO
     // // We use this as an intermediary stage to transfer image data from ram to GPU texture
     // unsigned int PixelBufferObjectID;
