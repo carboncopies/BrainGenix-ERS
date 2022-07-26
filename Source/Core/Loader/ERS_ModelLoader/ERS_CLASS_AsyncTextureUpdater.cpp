@@ -77,13 +77,16 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 }
 
 
-void ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel, int RowsPerUpload = -1) {
+void ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel) {
 
-    // Generate PBO
+    // Generate And Initialize PBO (We use this as an intermediary stage to transfer image data from ram to GPU Texture)
     unsigned int PixelBufferObjectID;
     glGenBuffers(1, &PixelBufferObjectID);
     glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PixelBufferObjectID);
-    glBufferData(GL_PIXEL_UNPACK_BUFFER, Width*Height)
+    glBufferData(GL_PIXEL_UNPACK_BUFFER, Width*Height*Channels, NULL, GL_STREAM_DRAW);
+
+    // Get Image Data
+    unsigned char* ImageBytes = (unsigned char*)ImageData->data;
 
 
 }
