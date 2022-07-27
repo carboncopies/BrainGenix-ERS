@@ -329,10 +329,7 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessWorkItem(ERS_STRUCT_Model* Model) {
 
     // Perform RAM Updates
     if (Model->TextureLevelInRAM_!= TargetRAMLevel) {
-
-
-
-
+        SetLevelRAM(Model, TargetRAMLevel, true);
     }
     // Perform VRAM Updates
 
