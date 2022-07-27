@@ -325,7 +325,7 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessWorkItem(ERS_STRUCT_Model* Model) {
     
     // Identify Type Of Work To Be Done
     int TargetRAMLevel = Model->TargetTextureLevelRAM;
-    int TargetVRAMLevel = Model->TargetTextureLevelVRAM;
+    //int TargetVRAMLevel = Model->TargetTextureLevelVRAM;
 
 
     // Perform RAM Updates
