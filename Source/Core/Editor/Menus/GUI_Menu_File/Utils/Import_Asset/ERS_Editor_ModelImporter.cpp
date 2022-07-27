@@ -190,7 +190,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     return MetadataID;
 }
 
-void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
+void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::vector<std::vector<int>> TextureImageChannels, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
     // Create List Of Texture Files To Be Copied
     std::vector<std::pair<std::string, std::shared_ptr<ERS_STRUCT_IOData>>> TextureFiles;
@@ -310,6 +310,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
         // Resize Images
         std::vector<int> ImageMemorySizes;
         std::vector<long> ImageAssetIDs;
+        std::vector<int> ImageChannels;
         for (int MipMapIndex = 0; MipMapIndex < MipMaps; MipMapIndex++) {
 
             // Resize Image
@@ -324,6 +325,11 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
             long ImageAssetID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
             ImageMemorySizes.push_back(MemorySize);
             ImageAssetIDs.push_back(ImageAssetID);
+
+            // Detect Channels
+            ImageChannels.push_back(FreeImage_GetLine(Image) / FreeImage_GetWidth(Image));
+
+
             SystemUtils_->Logger_->Log(std::string("Generating Texture Image Metadata,  Size Is '") + std::to_string(MemorySize) + "' Bytes, ID Is '" + std::to_string(ImageAssetID) + "'", 3);
 
 
@@ -363,6 +369,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
         TextureImageMemorySizes->push_back(ImageMemorySizes);
         TextureImageAssetIDs->push_back(ImageAssetIDs);
         TextureImageResolutions->push_back(Resolutions);
+        TextureImageChannels->push_back(ImageChannels);
 
     }
 
