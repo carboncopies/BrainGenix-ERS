@@ -385,6 +385,8 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
     while (!StopThreads_) {
 
+        std::cout<<"Thread working\n";
+
         // Get Work Item If It Exists
         std::shared_ptr<ERS_STRUCT_Model> WorkItem;
         bool HasWorkItem = false;
