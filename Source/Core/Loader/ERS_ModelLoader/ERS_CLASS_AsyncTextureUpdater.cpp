@@ -303,6 +303,7 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessWorkItem(ERS_STRUCT_Model* Model) {
     int TargetRAMLevel = Model->TargetTextureLevelRAM;
     int TargetVRAMLevel = Model->TargetTextureLevelVRAM;
 
+
     // Perform RAM Updates
 
         // NOTE: RAM UPDATES MUST BE CONSECUATIVE (you must have every level loaded consecuitively, eg: if you have level 3 loaded, you must also have 0,1,2 as well)
