@@ -77,8 +77,21 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 }
 
 
-void ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, int Level, FIBITMAP** Image) {
-    
+bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, int Level, FIBITMAP** Image) {
+
+    // Check If Requested Level Exists
+    if (Level < 0) {
+        return false;
+    } else if (Level > Texture->LevelResolutions.size()) {
+        return false;
+    }
+
+    // Load Image Data
+    ERS_STRUCT_IOData ImageData;
+    long LevelAssetID = Texture->LevelTextureIDs[Level];
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(LevelAssetID, &ImageData);
+
+
 }
 
 bool ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel) {
