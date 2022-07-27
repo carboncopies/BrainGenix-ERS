@@ -85,7 +85,8 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
                 for (YAML::const_iterator LevelIterator = TextureLevels.begin(); LevelIterator != TextureLevels.end(); ++LevelIterator) {
 
                     YAML::Node LevelInfo = LevelIterator->second;
-                    Texture.LevelTextureIDs.push_back(LevelInfo["TextureLevelAssetID"].as<long>());
+                    Texture.LevelTextureAssetIDs.push_back(LevelInfo["TextureLevelAssetID"].as<long>());
+                    Texture.LevelTextureOpenGLIDs.push_back(0);
                     Texture.LevelMemorySizeBytes.push_back(LevelInfo["TextureLevelMemorySizeBytes"].as<int>());
                     Texture.LevelResolutions.push_back(std::make_pair(LevelInfo["TextureLevelResolutionX"].as<int>(), LevelInfo["TextureLevelResolutionY"].as<int>()));
                     Texture.LevelChannels.push_back(LevelInfo["TextureLevelChannels"].as<int>());

@@ -36,10 +36,11 @@ bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model*
             for (YAML::const_iterator it=TexturePathNode.begin(); it!=TexturePathNode.end(); ++it) {
                 ERS_STRUCT_Texture Texture;
                 Texture.Path = it->first.as<std::string>();
-                Texture.LevelTextureIDs.push_back(it->second.as<long>());
+                Texture.LevelTextureAssetIDs.push_back(it->second.as<long>());
+                Texture.LevelTextureOpenGLIDs.push_back(0);
                 Texture.LevelLoadedInRAM.push_back(false);
                 Texture.LevelLoadedInVRAM.push_back(false);
-                Texture.NumberChannels.push_back(-1);
+                Texture.LevelChannels.push_back(-1);
                 Texture.LevelBitmaps.push_back(nullptr);
                 Texture.LevelMemorySizeBytes.push_back(-1);
                 Texture.LevelResolutions.push_back(std::make_pair(-1, -1));
