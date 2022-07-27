@@ -191,6 +191,19 @@ private:
      */
     bool UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel);
 
+    /**
+     * @brief Loads the given mip-map level fromt the texture provided as a FIBITMAP
+     * Returns true on success, false otherwise
+     * 
+     * @param Texture Target texture struct
+     * @param MipMapLevel What texture level should we load
+     * @param Image Pointer to FIBITMAP Pointer (We have to change the pointer's location, hence the double pointer)
+     * 
+     * @return true 
+     * @return false 
+     */
+    bool LoadImageData(ERS_STRUCT_Texture* Texture, int MipMapLevel, FIBITMAP** Image);
+
 public:
     unsigned int TestTexID;
 
