@@ -253,7 +253,7 @@ private:
      * @param Model 
      * @param LogEnable
      */
-    void SetLevelRAM(ERS_STRUCT_Model* Model bool LogEnable = true);
+    void SetLevelRAM(ERS_STRUCT_Model* Model, LogEnable = true);
 
 public:
 
