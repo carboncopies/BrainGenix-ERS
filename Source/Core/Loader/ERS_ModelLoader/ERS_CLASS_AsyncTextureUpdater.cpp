@@ -273,13 +273,13 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         unsigned char* ImageBytes = (unsigned char*)ImageData->data;
         glTexImage2D(GL_TEXTURE_2D, i, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
     }
+    glBindTexture(GL_TEXTURE_2D, 0);
 
     // Update Struct
     Texture->LevelTextureOpenGLIDs[Level] = OpenGLTextureID;
     Texture->LevelLoadedInVRAM[Level] = true;
 
-    glBindTexture(GL_TEXTURE_2D, 0);
-
+    return true;
 }
 
 bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
@@ -299,7 +299,14 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Text
         return false;
     }
 
+    // Delete Texture
+    glDeleteTextures(1, &Texture->LevelTextureOpenGLIDs[Level]);
 
+    // Update Struct
+    Texture->LevelTextureOpenGLIDs[Level] = 0;
+    Texture->LevelLoadedInVRAM[Level] = false;
+
+    return true;
 
 }
 
