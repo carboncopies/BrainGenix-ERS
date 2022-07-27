@@ -31,6 +31,7 @@ struct ERS_STRUCT_Texture {
     std::vector<std::pair<int, int>> LevelResolutions; /**<List of all texture level's resolutions*/
     std::vector<int> LevelMemorySizeBytes; /**<Tells the system how many bytes every level will take*/
     std::vector<FIBITMAP*> LevelBitmaps; /**<List of bitmaps for each level - contains the texture's RAM data.*/
+    std::vector<int> LevelChannels; /**<List containing number of channels for every texture layer*/
 
     int TextureLevelInRAM_ = 0; /**<Determines the current texture level in RAM*/
     int TextureLevelInVRAM_ = 0; /**<Determines the current texture level in RAM*/
