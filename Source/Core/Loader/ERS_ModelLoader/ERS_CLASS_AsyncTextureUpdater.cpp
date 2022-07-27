@@ -210,7 +210,20 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     }
 
 
-    // Check That All Previous Levels Are Loaded
+    // Get Image Metadata, Perform Checks
+    int Channels = Texture->LevelChannels[Level];
+    if (Channels > 4) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "' Channel Count >4", 8, LogEnable);
+        return false;
+    }
+    if (Channels < 1) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "' Channel Count <1", 8, LogEnable);
+        return false;
+    }
     for (unsigned int i = 0; i < Level; i++) {
         if (!Texture->LevelLoadedInRAM[i]) {
             SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
@@ -256,10 +269,8 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     // Load Images Into Texture
     for (unsigned int i = 0; i < Level; i++) {
         FIBITMAP* ImageData = Texture->LevelBitmaps[Level - i];
-        int Channels = Texture->LevelChannels[Level - i];
         int Width = Texture->LevelResolutions[Level - i].first;
         int Height = Texture->LevelResolutions[Level - i].second;
-
         unsigned char* ImageBytes = (unsigned char*)ImageData->data;
         glTexImage2D(GL_TEXTURE_2D, Level, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
     }
