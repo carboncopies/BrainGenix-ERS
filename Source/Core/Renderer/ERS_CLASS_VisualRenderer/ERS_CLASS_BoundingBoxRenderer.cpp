@@ -145,7 +145,7 @@ void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUC
             ModelOutlineColor = glm::vec3(1.0f - LevelPercentage, LevelPercentage, 0.0f);
         }
 
-        std::cout<<Scene->Models[i]->BoxScale_<<std::endl;
+        std::cout<<glm::to_string(Scene->Models[i]->BoxScale_)<<std::endl;
 
         // Set Shader Uniforms
         BoundingBoxRendererShader_->SetMat4("Model", ModelMatrix);
