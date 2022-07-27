@@ -329,11 +329,15 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 
 void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
+    // Setup FreeImage
+    FreeImage_Initialise();
+
     // Setup OpenGL Shared Context
     glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
     GLFWwindow* ThreadWindow = glfwCreateWindow(1, 1, "", NULL, MainThreadWindowContext_);
     glfwMakeContextCurrent(ThreadWindow);
 
+    // Prepare OGL Context
     glEnable(GL_TEXTURE_2D);
 
     while (!StopThreads_) {
@@ -358,8 +362,10 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
     }
 
-    FreeImage_DeInitialise();
+    // Destroy OpenGL Context
     glfwDestroyWindow(ThreadWindow);
+
+    // Shut Down FreeImage
+    FreeImage_DeInitialise();
+
 }
-
-
