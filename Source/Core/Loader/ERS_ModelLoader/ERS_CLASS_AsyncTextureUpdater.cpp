@@ -70,7 +70,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     if (Level < 0) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Negative Texture Level", 8, LogEnable);
         return false;
-    } else if (Level > Texture->LevelResolutions.size()) {
+    } else if (Level > (int)Texture->LevelResolutions.size()) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Nonexistant Texture Level", 8, LogEnable);
         return false;
     }
@@ -159,7 +159,7 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Textu
     if (Level < 0) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Negative Texture Level", 8, LogEnable);
         return false;
-    } else if (Level > Texture->LevelResolutions.size()) {
+    } else if (Level > (int)Texture->LevelResolutions.size()) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Nonexistant Texture Level", 8, LogEnable);
         return false;
     }
@@ -185,7 +185,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     if (Level < 0) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Negative Texture Level Into VRAM", 8, LogEnable);
         return false;
-    } else if (Level > Texture->LevelResolutions.size()) {
+    } else if (Level > (int)Texture->LevelResolutions.size()) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Nonexistant Texture Level Into VRAM", 8, LogEnable);
         return false;
     }
@@ -275,7 +275,7 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Text
     if (Level < 0) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Negative Texture Level Out Of VRAM", 8, LogEnable);
         return false;
-    } else if (Level > Texture->LevelResolutions.size()) {
+    } else if (Level > (int)Texture->LevelResolutions.size()) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Nonexistant Texture Level Out Of VRAM", 8, LogEnable);
         return false;
     }
