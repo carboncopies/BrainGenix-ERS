@@ -1,0 +1,42 @@
+SceneName: Untitled Scene
+SceneFormatVersion: 1
+SceneData:
+  0:
+    AssetName: storage_RC.fbx
+    AssetType: Model
+    AssetID: 202267003
+    AssetPositionX: 0
+    AssetPositionY: 0
+    AssetPositionZ: 0
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.00240000035
+    AssetScaleY: 0.00240000035
+    AssetScaleZ: 0.00240000035
+    FlipTextures: true
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
+    ShaderOverrideIndex: -1
+    AttachedScripts:
+      {}
+  1:
+    AssetName: New Spot Light
+    AssetType: SpotLight
+    ColorRed: 1
+    ColorGreen: 1
+    ColorBlue: 1
+    PosX: 1.00931978
+    PosY: 0.877606809
+    PosZ: -0.315448433
+    RotX: 22.3399544
+    RotY: 338.475494
+    RotZ: 359.943207
+    Intensity: 209.5
+    MaxDistance: 38
+    CutOff: 120
+    RollOff: 0
+    CastShadows: true
+    AttachedScripts:
+      {}

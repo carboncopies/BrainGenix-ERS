@@ -2,13 +2,15 @@ ProjectName: ERS Test Project
 ProjectDescription: Test development scene for EGSC.
 ProjectVersion: 1.0.0
 ProjectCreationDate: 0000-00-00 00-00-00
-ProjectModificationDate: 2022-07-27 07-18-16
+ProjectModificationDate: 2022-07-21 03-45-03
 ProjectCreator: BrainGenix-ERS Development Team
 ProjectLicense: AGPL-V3.0 Or Higher
 IsLicenseProprietary: false
 PlayOnLoad: false
 SceneIDs:
-  0: 1744105170
+  0: 3
+  1: 12
+  2: 13
 DefaultScene: 0
 EditorLayouts:
   0: 2
@@ -107,6 +109,14 @@ ShaderPrograms:
     Name: Viewport
     VertexID: 10040
     FragmentID: 10041
+    GeometryID: -1
+    ComputeID: -1
+    TessContolID: -1
+    TessEvalID: -1
+  12:
+    Name: _BoundingBox
+    VertexID: 10047
+    FragmentID: 10048
     GeometryID: -1
     ComputeID: -1
     TessContolID: -1
