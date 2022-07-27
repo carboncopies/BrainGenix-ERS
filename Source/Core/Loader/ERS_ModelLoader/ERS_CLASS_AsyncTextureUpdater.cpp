@@ -247,6 +247,11 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         return false;
     }
 
+    // Generate OpenGL Texture ID
+    unsigned int OpenGLTextureID;
+    glGenTextures(1, &OpenGLTextureID);
+    
+
     // Identify Required Texture Format
     GLint TextureInternFormat;
     GLenum TextureExternFormat;
