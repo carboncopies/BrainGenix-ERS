@@ -191,6 +191,9 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     // Log Any Issues
     ReportOpenGLErrors();
 
+    ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+    ProjectUtils_->ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SortModels(TargetScene);
+
     // Update Window Title
     std::string SceneTitle = ProjectUtils_->ProjectManager_->Project_.ProjectName + std::string(" - BrainGenix-ERS");
     glfwSetWindowTitle(Window_, SceneTitle.c_str());
