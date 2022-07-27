@@ -81,13 +81,16 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, i
 
     // Check If Requested Level Exists
     if (Level < 0) {
+        SystemUtils_->Logger_->Log("Texture Updater Tried To Load Negative Texture Level", 8, LogEnable);
         return false;
     } else if (Level > Texture->LevelResolutions.size()) {
+        SystemUtils_->Logger_->Log("Texture Updater Tried To Load Nonexistant Texture Level", 8, LogEnable);
         return false;
     }
 
     // Check If Level Already Loaded
     if (Texture->LevelBitmaps[Level] != nullptr) {
+        SystemUtils_->Logger_->Log("Texture Updater Tried To Load Already Loaded Image", 8, LogEnable);
         return false;
     }
 
@@ -158,6 +161,29 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, i
     // Finally After Passing Sanity Checks, Populate Info
     Texture->LevelLoadedInRAM[Level] = true;
     Texture->LevelBitmaps[Level] = Image;
+
+}
+
+bool ERS_CLASS_AsyncTextureUpdater::UnloadImageData(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
+
+    // Check If Requested Level Exists
+    if (Level < 0) {
+        SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Negative Texture Level", 8, LogEnable);
+        return false;
+    } else if (Level > Texture->LevelResolutions.size()) {
+        SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Nonexistant Texture Level", 8, LogEnable);
+        return false;
+    }
+
+    // Check If Level Already Not Loaded
+    if (Texture->LevelBitmaps[Level] == nullptr) {
+        SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Not Loaded Image", 8, LogEnable);
+        return false;
+    }
+
+
+    // Update Data
+
 
 }
 
