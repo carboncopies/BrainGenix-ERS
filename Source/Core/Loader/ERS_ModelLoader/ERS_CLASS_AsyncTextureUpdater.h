@@ -202,7 +202,19 @@ private:
      * @return true 
      * @return false 
      */
-    bool LoadImageData(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable);
+    bool LoadImageData(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable = true);
+
+    /**
+     * @brief Unloads the target texture level from the texture struct
+     * returns true on success, false otherwise
+     * 
+     * @param Texture 
+     * @param Level 
+     * @param LogEnable 
+     * @return true 
+     * @return false 
+     */
+    bool UnloadImageData(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable = true);
 
 public:
     unsigned int TestTexID;
