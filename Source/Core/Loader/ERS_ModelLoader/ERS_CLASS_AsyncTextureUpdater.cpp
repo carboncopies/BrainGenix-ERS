@@ -367,5 +367,5 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
     // Shut Down FreeImage
     FreeImage_DeInitialise();
-
 }
+
