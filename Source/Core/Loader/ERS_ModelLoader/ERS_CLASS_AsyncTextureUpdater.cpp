@@ -297,7 +297,7 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Text
 
 }
 
-void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, int Level, bool LogEnable) {
+void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool LogEnable) {
 
         // NOTE: RAM UPDATES MUST BE CONSECUATIVE (you must have every level loaded consecuitively, eg: if you have level 3 loaded, you must also have 0,1,2 as well)
 
@@ -330,7 +330,7 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessWorkItem(ERS_STRUCT_Model* Model) {
 
     // Perform RAM Updates
     if (Model->TextureLevelInRAM_!= TargetRAMLevel) {
-        SetLevelRAM(Model, TargetRAMLevel, true);
+        SetLevelRAM(Model, true);
     }
     // Perform VRAM Updates
 
