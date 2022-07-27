@@ -118,7 +118,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     std::vector<std::vector<int>> TextureMemorySizes;
     std::vector<std::vector<long>> ImageAssetIDs;
     std::vector<std::vector<std::pair<int, int>>> ImageResolutions;
-    std::vector<int> ImageChannels;
+    std::vector<std::vector<int>> ImageChannels;
     WriteTextures(&TextureMemorySizes, &ImageAssetIDs, &ImageResolutions, &ImageChannels, AssetPath);
 
     // Generate Metadata
