@@ -194,6 +194,47 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Textu
 
 bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
+    // Check If Requested Level Exists
+    if (Level < 0) {
+        SystemUtils_->Logger_->Log("Texture Updater Tried To Load Negative Texture Level Into VRAM", 8, LogEnable);
+        return false;
+    } else if (Level > Texture->LevelResolutions.size()) {
+        SystemUtils_->Logger_->Log("Texture Updater Tried To Load Nonexistant Texture Level Into VRAM", 8, LogEnable);
+        return false;
+    }
+
+    // Check If Level Already Loaded
+    if ((Texture->LevelTextureIDs[Level] != 0)) {
+        SystemUtils_->Logger_->Log("Texture Updater Tried To Load Already Loaded Image Into VRAM", 8, LogEnable);
+        return false;
+    }
+
+
+    // Identify Required Texture Format
+    int Channels = Texture->LevelChannels[Level];
+    GLint TextureInternFormat;
+    GLenum TextureExternFormat;
+    if (Channels == 4) {
+        TextureInternFormat = GL_RGBA;
+        TextureExternFormat = GL_BGRA;
+    } else if (Channels == 3) {
+        TextureInternFormat = GL_RGB;
+        TextureExternFormat = GL_BGR;
+    } else if (Channels == 2) {
+        TextureInternFormat = GL_RG;
+        TextureExternFormat = GL_RG;
+    } else if (Channels == 1) {
+        TextureInternFormat = GL_RED;
+        TextureExternFormat = GL_RED;
+    } else {
+        return false;
+    }
+
+    // Load Image
+    unsigned char* ImageBytes = (unsigned char*)ImageData->data;
+    glBindTexture(GL_TEXTURE_2D, TextureID);
+    glTexImage2D(GL_TEXTURE_2D, MipMapLevel, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
+
 }
 
 bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
