@@ -109,14 +109,14 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, i
     if (Width <= 0) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
-        + "' Width Is <1", 8);
+        + "' Width Is <1", 8, LogEnable);
         FreeImage_Unload(Image);
         return false;
     }
     if (Height <= 0) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
-        + "' Height Is <1", 8);
+        + "' Height Is <1", 8, LogEnable);
         FreeImage_Unload(Image);
         return false;
     }
@@ -125,14 +125,14 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, i
     if (TargetWidthHeight.first != Width) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
-        + "' Width Does Not Match Metadata Target", 8);
+        + "' Width Does Not Match Metadata Target", 8, LogEnable);
         FreeImage_Unload(Image);
         return false;
     }
     if (TargetWidthHeight.second != Height) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
-        + "' Height Does Not Match Metadata Target", 8);
+        + "' Height Does Not Match Metadata Target", 8, LogEnable);
         FreeImage_Unload(Image);
         return false;
     }
@@ -140,6 +140,17 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, i
 
     // Detect NumChannels
     int Channels = FreeImage_GetLine(Image) / FreeImage_GetWidth(Image);
+    if ((Channels < 1) || (Channels > 4)) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
+        + "' Invalid Number Of Channels", 8, LogEnable);
+        FreeImage_Unload(Image);
+        return false;
+    }
+
+    // Finally After Passing Sanity Checks, Populate Info
+    Texture->LevelLoadedInRAM[Level] = true;
+    Texture->LevelBitmaps[Level] = Image;
 
 }
 
