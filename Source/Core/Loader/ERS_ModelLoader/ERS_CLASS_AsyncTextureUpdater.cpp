@@ -299,7 +299,9 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Text
 
 void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, int Level, bool LogEnable) {
 
-    
+        // NOTE: RAM UPDATES MUST BE CONSECUATIVE (you must have every level loaded consecuitively, eg: if you have level 3 loaded, you must also have 0,1,2 as well)
+
+        // Load New Levels Into Memory
         if (Model->TextureLevelInRAM_ < Model->TargetTextureLevelRAM) {
             for (unsigned int LevelToLoad = Model->TextureLevelInRAM_; LevelToLoad < Model->TargetTextureLevelRAM; LevelToLoad++) {
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
@@ -307,15 +309,15 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, int Lev
                 }
             }
         }
-        // if (Model->TextureLevelInRAM_ > Model->TargetTextureLevelRAM) {
 
-        // }
-
-        // NOTE: RAM UPDATES MUST BE CONSECUATIVE (you must have every level loaded consecuitively, eg: if you have level 3 loaded, you must also have 0,1,2 as well)
-
-        // Perform Loads 
-        // Perform Unloads
-
+        // Unload Old 
+        if (Model->TextureLevelInRAM_ > Model->TargetTextureLevelRAM) {
+            for (unsigned int LevelToUnload = Model->TargetTextureLevelRAM; LevelToUnload < Model->TextureLevelInRAM_; LevelToUnload++) {
+                for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
+                    UnloadImageDataRAM(&Model->Textures_[TextureIndex], LevelToUnload, LogEnable);
+                }
+            }
+        }
 }
 
 void ERS_CLASS_AsyncTextureUpdater::ProcessWorkItem(ERS_STRUCT_Model* Model) {
