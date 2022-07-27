@@ -100,6 +100,7 @@ bool ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int W
 
     // Load Image
     unsigned char* ImageBytes = (unsigned char*)ImageData->data;
+    glBindTexture(GL_TEXTURE_2D, TextureID);
     glTexImage2D(GL_TEXTURE_2D, MipMapLevel, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
 
 
