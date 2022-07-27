@@ -231,6 +231,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
         glGenerateMipmap(GL_TEXTURE_2D);
 
         FreeImage_Unload(TexImageData);
+        UploadTextureData(TexImageData, 1024, 1024, 3, OpenGLTextureID, 0);
         glFinish();
 
 
