@@ -32,23 +32,10 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
     SystemUtils_->Logger_->Log("Starting Worker Thread Pool", 4);
     SystemUtils_->Logger_->Log(std::string("Worker Pool Will Have ") + std::to_string(Threads) + " Threads", 3);
     StopThreads_ = false;
-    HasTex = false;
     for (unsigned int i = 0; i < Threads; i++) {
         TextureWorkerThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread, this));
         SystemUtils_->Logger_->Log(std::string("Started Worker Thread '") + std::to_string(i) + "'", 2);
     }
-
-
-    while (!HasTex) {
-    }
-
-    if (glIsTexture(TestTexID)) {
-    std::cout<<"Main thread: True"<<std::endl;
-    } else {
-    std::cout<<"Main thread: False"<<std::endl;
-    }    
-    
-    //glfwMakeContextCurrent(MainThreadWindowContext_);
     SystemUtils_->Logger_->Log("Setup Worker Thread Pool", 3);
 
 }
@@ -419,11 +406,11 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
     // Setup OpenGL Shared Context
-    //glfwMakeContextCurrent(MainThreadWindowContext_);
-    //gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
     glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
     GLFWwindow* ThreadWindow = glfwCreateWindow(1, 1, "", NULL, MainThreadWindowContext_);
     glfwMakeContextCurrent(ThreadWindow);
+
+    glEnable(GL_TEXTURE_2D);
 
     while (!StopThreads_) {
 
@@ -437,59 +424,6 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
             WorkItems_.erase(WorkItems_.begin());
         }
         BlockThreads_.unlock();
-
-        glEnable(GL_TEXTURE_2D);
-
-        const char* Path = "EditorAssets/Icons/LoadingTexture/4x4/LoadingTexture1024.png";
-        std::cout<<"Loading Texture "<<std::endl;
-        FreeImage_Initialise();
-        FREE_IMAGE_FORMAT TexFormat = FreeImage_GetFileType(Path, 0);
-        FIBITMAP* TexImageData = FreeImage_Load(TexFormat, Path);
-        unsigned char* RawImageData = FreeImage_GetBits(TexImageData);
-        int Width = FreeImage_GetWidth(TexImageData);
-        int Height = FreeImage_GetHeight(TexImageData);
-        int Channels = FreeImage_GetLine(TexImageData) / Width;
-        std::cout<<"sending to gpu"<<std::endl;
-
-        unsigned int OpenGLTextureID;
-        glGenTextures(1, &OpenGLTextureID);
-        glBindTexture(GL_TEXTURE_2D, OpenGLTextureID);
-        std::cout<<"Tex ID: "<<OpenGLTextureID<<std::endl;
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        if (Channels == 4) {
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_BGRA, GL_UNSIGNED_BYTE, RawImageData);
-        } else {
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_BGR, GL_UNSIGNED_BYTE, RawImageData);
-        }
-        glGenerateMipmap(GL_TEXTURE_2D);
-
-        FreeImage_Unload(TexImageData);
-        UploadTextureData(TexImageData, 1024, 1024, 3, OpenGLTextureID, 0);
-        glFinish();
-
-
-        std::cout<<"Done, checking tex state"<<std::endl;
-
-        TestTexID = OpenGLTextureID;
-
-        if (glIsTexture(TestTexID)) {
-        std::cout<<"Tex thread: True"<<std::endl;
-        } else {
-        std::cout<<"Tex thread: False"<<std::endl;
-        }  
-        HasTex = true;
-        while (!StopThreads_) {
-
-        }
-
-        // todo:
-        // test shared objects (make texture here and use it in main thread?)
-        // then setup model texture level loading system (finally!)
-        // exciting isn't it?
-
 
         // Process Item, If Item Doens't Exist, Sleep Thread
         if (HasWorkItem) {
