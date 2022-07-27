@@ -102,7 +102,7 @@ private:
      * @param Format 
      * @param MipMaps 
      */
-    void WriteTextures(std::vector<std::vector<int>>* TextureMemorySizes, std::vector<std::vector<long>>* ImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* ImageResolutions, std::vector<std::vector<int>> ImageChannels std::string AssetPath, FREE_IMAGE_FORMAT Format = FIF_PNG, int MipMaps = 10);
+    void WriteTextures(std::vector<std::vector<int>>* TextureMemorySizes, std::vector<std::vector<long>>* ImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* ImageResolutions, std::vector<std::vector<int>>* ImageChannels, std::string AssetPath, FREE_IMAGE_FORMAT Format = FIF_PNG, int MipMaps = 10);
 
     /**
      * @brief Calculates the bounding box of the model and it's offset

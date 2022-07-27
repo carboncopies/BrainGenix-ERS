@@ -190,7 +190,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     return MetadataID;
 }
 
-void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::vector<std::vector<int>> TextureImageChannels, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
+void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::vector<std::vector<int>>* TextureImageChannels, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
     // Create List Of Texture Files To Be Copied
     std::vector<std::pair<std::string, std::shared_ptr<ERS_STRUCT_IOData>>> TextureFiles;
