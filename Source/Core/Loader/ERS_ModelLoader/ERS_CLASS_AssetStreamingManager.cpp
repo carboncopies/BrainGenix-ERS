@@ -61,7 +61,7 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 
 void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::map<float, unsigned int>> DistancesFromCamera, ERS_STRUCT_Scene* Scene, float DistanceCutoffVRAM, float DistanceCutoffRAM) {
 
-    Reset All Target Distances
+    // Reset All Target Distances
     for (unsigned int i = 0; i < Scene->Models.size(); i++) {
         Scene->Models[i]->TargetTextureLevelVRAM = -1;
         Scene->Models[i]->TargetTextureLevelRAM = -1;
