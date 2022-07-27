@@ -97,7 +97,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
 
     // Load Image Data
     ERS_STRUCT_IOData ImageData;
-    long LevelAssetID = Texture->LevelTextureIDs[Level];
+    long LevelAssetID = Texture->LevelTextureAssetIDs[Level];
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(LevelAssetID, &ImageData);
 
     // Decode Image
@@ -204,14 +204,39 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     }
 
     // Check If Level Already Loaded
-    if ((Texture->LevelTextureIDs[Level] != 0)) {
+    if ((Texture->LevelTextureOpenGLIDs[Level] != 0)) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Already Loaded Image Into VRAM", 8, LogEnable);
         return false;
     }
 
 
-    // Identify Required Texture Format
+    // Get Image Metadata, Perform Checks
     int Channels = Texture->LevelChannels[Level];
+    FIBITMAP* ImageData = Texture->LevelBitmaps[Level];
+    int Width = Texture->LevelResolutions[Level].first;
+    int Height = Texture->LevelResolutions[Level].second;
+
+    if (ImageData == nullptr) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelT)
+        + "' Number Channels Does Not Match Metadata Target", 8, LogEnable);
+        return false;
+        return false;
+    }
+    if (Width < 1) {
+        return false;
+    }
+    if (Height < 1) {
+        return false;
+    }
+    if (Channels > 4) {
+        return false;
+    }
+    if (Channels < 1) {
+        return false;
+    }
+
+    // Identify Required Texture Format
     GLint TextureInternFormat;
     GLenum TextureExternFormat;
     if (Channels == 4) {
@@ -233,7 +258,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     // Load Image
     unsigned char* ImageBytes = (unsigned char*)ImageData->data;
     glBindTexture(GL_TEXTURE_2D, TextureID);
-    glTexImage2D(GL_TEXTURE_2D, MipMapLevel, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
+    glTexImage2D(GL_TEXTURE_2D, Level, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
 
 }
 
