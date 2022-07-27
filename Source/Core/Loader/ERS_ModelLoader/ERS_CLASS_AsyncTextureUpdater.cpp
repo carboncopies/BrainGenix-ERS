@@ -209,7 +209,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         return false;
     }
 
-
     // Get Image Metadata, Perform Checks
     int Channels = Texture->LevelChannels[Level];
     if (Channels > 4) {
@@ -272,8 +271,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         int Width = Texture->LevelResolutions[Level - i].first;
         int Height = Texture->LevelResolutions[Level - i].second;
         unsigned char* ImageBytes = (unsigned char*)ImageData->data;
-        glTexImage2D(GL_TEXTURE_2D, Level, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
+        glTexImage2D(GL_TEXTURE_2D, i, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
     }
+
+    glBindTexture(GL_TEXTURE_2D, 0);
 
 }
 
