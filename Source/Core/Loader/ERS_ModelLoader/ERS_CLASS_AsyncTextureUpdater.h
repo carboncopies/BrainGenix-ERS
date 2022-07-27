@@ -251,8 +251,10 @@ private:
      * @brief Loads/Unloads all textures in the model as needed to get the target level.
      * 
      * @param Model 
+     * @param Level
+     * @param LogEnable
      */
-    void SetLevelRAM(ERS_STRUCT_Model* Model);
+    void SetLevelRAM(ERS_STRUCT_Model* Model, int Level, bool LogEnable = true);
 
 public:
 
