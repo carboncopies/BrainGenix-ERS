@@ -98,8 +98,9 @@ bool ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int W
         return false;
     }
 
-    
-    // 
+    // Load Image
+    unsigned char* ImageBytes = (unsigned char*)ImageData->data;
+    glTexImage2D(GL_TEXTURE_2D, MipMapLevel, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
 
 
     // Try using normal (non-pbo) operations
