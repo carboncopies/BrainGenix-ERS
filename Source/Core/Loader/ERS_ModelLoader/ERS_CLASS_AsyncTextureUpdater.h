@@ -51,144 +51,144 @@ private:
     void TextureModifierWorkerThread();
 
 
-    /**
-     * @brief Adds a work item to the queue to load the minimum size texture to VRAM so we have something to display - this is kept in memory constantly.
-     * Calling this will have the system check if the specified texture is already in system ram. If so, we'll push to gpu, if not, we'll load to system ram first.
-     * 
-     * @param Model 
-     */
-    void LoadInitialTextureVRAM(ERS_STRUCT_Model* Model);
+    // /**
+    //  * @brief Adds a work item to the queue to load the minimum size texture to VRAM so we have something to display - this is kept in memory constantly.
+    //  * Calling this will have the system check if the specified texture is already in system ram. If so, we'll push to gpu, if not, we'll load to system ram first.
+    //  * 
+    //  * @param Model 
+    //  */
+    // void LoadInitialTextureVRAM(ERS_STRUCT_Model* Model);
 
-    /**
-     * @brief Adds a work item to the queue to load the specified texture (resolution) level.
-     * Calling this will have the system check if the specified texture is already in system ram. If so, we'll push to gpu, if not, we'll load to system ram first.
-     * If the level does not exist, no work will be done.
-     * 
-     * Texture levels are the inverse of mip maps, the higher the number, the higher the resolution.
-     * We do this to simplify what goes on inside this class, apologies for the confusion.
-     * 
-     * @param Model 
-     * @param TextureLevel 
-     */
-    void LoadTextureLevelVRAM(ERS_STRUCT_Model* Model, int TextureLevel);
+    // /**
+    //  * @brief Adds a work item to the queue to load the specified texture (resolution) level.
+    //  * Calling this will have the system check if the specified texture is already in system ram. If so, we'll push to gpu, if not, we'll load to system ram first.
+    //  * If the level does not exist, no work will be done.
+    //  * 
+    //  * Texture levels are the inverse of mip maps, the higher the number, the higher the resolution.
+    //  * We do this to simplify what goes on inside this class, apologies for the confusion.
+    //  * 
+    //  * @param Model 
+    //  * @param TextureLevel 
+    //  */
+    // void LoadTextureLevelVRAM(ERS_STRUCT_Model* Model, int TextureLevel);
 
-    /**
-     * @brief Add work item(s) to load all texture levels up to the specified range to VRAM.
-     * Calling this will have the system check if the specified texture is already in system ram. If so, we'll push to gpu, if not, we'll load to system ram first.
-     * If you put int for example 4 as the tex level, we'll load levels [1,2,3,4] (unless one of those is already loaded in which case we skip it)
-     * 
-     * 
-     * Texture levels are the inverse of mip maps, the higher the number, the higher the resolution.
-     * We do this to simplify what goes on inside this class, apologies for the confusion.
-     * 
-     * @param Model 
-     * @param TextureLevel 
-     */
-    void LoadTextureLevelRangeVRAM(ERS_STRUCT_Model* Model, int TextureLevel);
-
-
-    /**
-     * @brief Unload a specific texture level from VRAM.
-     * 
-     * @param Model 
-     * @param TextureLevel 
-     */
-    void UnloadTextureLevelVRAM(ERS_STRUCT_Model* Model, int TextureLevel);
-
-    /**
-     * @brief Does the same thing as unload level, but unloads every level down to the specified level from VRAM.
-     * Example:
-     * Loaded: [0,1,2,3,4,5,6], TextureLevel given is 4, we unload [6,5,4]
-     * 
-     * @param Model 
-     * @param TextureLevel 
-     */
-    void UnloadTextureRangeVRAM(ERS_STRUCT_Model* Model, int TextureLevel);
-
-    /**
-     * @brief Unload all textures for the model because it's going to be removed from VRAM completely.
-     * 
-     * @param Model 
-     */
-    void UnloadInitialTextureVRAM(ERS_STRUCT_Model* Model);
+    // /**
+    //  * @brief Add work item(s) to load all texture levels up to the specified range to VRAM.
+    //  * Calling this will have the system check if the specified texture is already in system ram. If so, we'll push to gpu, if not, we'll load to system ram first.
+    //  * If you put int for example 4 as the tex level, we'll load levels [1,2,3,4] (unless one of those is already loaded in which case we skip it)
+    //  * 
+    //  * 
+    //  * Texture levels are the inverse of mip maps, the higher the number, the higher the resolution.
+    //  * We do this to simplify what goes on inside this class, apologies for the confusion.
+    //  * 
+    //  * @param Model 
+    //  * @param TextureLevel 
+    //  */
+    // void LoadTextureLevelRangeVRAM(ERS_STRUCT_Model* Model, int TextureLevel);
 
 
+    // /**
+    //  * @brief Unload a specific texture level from VRAM.
+    //  * 
+    //  * @param Model 
+    //  * @param TextureLevel 
+    //  */
+    // void UnloadTextureLevelVRAM(ERS_STRUCT_Model* Model, int TextureLevel);
+
+    // /**
+    //  * @brief Does the same thing as unload level, but unloads every level down to the specified level from VRAM.
+    //  * Example:
+    //  * Loaded: [0,1,2,3,4,5,6], TextureLevel given is 4, we unload [6,5,4]
+    //  * 
+    //  * @param Model 
+    //  * @param TextureLevel 
+    //  */
+    // void UnloadTextureRangeVRAM(ERS_STRUCT_Model* Model, int TextureLevel);
+
+    // /**
+    //  * @brief Unload all textures for the model because it's going to be removed from VRAM completely.
+    //  * 
+    //  * @param Model 
+    //  */
+    // void UnloadInitialTextureVRAM(ERS_STRUCT_Model* Model);
 
 
-    /**
-     * @brief Adds a work item to the queue to load the minimum size texture to system RAM so we have something to display - this is kept in memory constantly.
-     * 
-     * @param Model 
-     */
-    void LoadInitialTextureRAM(ERS_STRUCT_Model* Model);
-
-    /**
-     * @brief Adds a work item to the queue to load the specified texture (resolution) level to system RAM.
-     * If the level does not exist, no work will be done.
-     * 
-     * Texture levels are the inverse of mip maps, the higher the number, the higher the resolution.
-     * We do this to simplify what goes on inside this class, apologies for the confusion.
-     * 
-     * @param Model 
-     * @param TextureLevel 
-     */
-    void LoadTextureLevelRAM(ERS_STRUCT_Model* Model, int TextureLevel);
-
-    /**
-     * @brief Add work item(s) to load all texture levels up to the specified range to system RAM.
-     * If you put int for example 4 as the tex level, we'll load levels [1,2,3,4] (unless one of those is already loaded in which case we skip it)
-     * 
-     * 
-     * Texture levels are the inverse of mip maps, the higher the number, the higher the resolution.
-     * We do this to simplify what goes on inside this class, apologies for the confusion.
-     * 
-     * @param Model 
-     * @param TextureLevel 
-     */
-    void LoadTextureLevelRangeRAM(ERS_STRUCT_Model* Model, int TextureLevel);
 
 
-    /**
-     * @brief Unload a specific texture level from system RAM.
-     * 
-     * @param Model 
-     * @param TextureLevel 
-     */
-    void UnloadTextureLevelRAM(ERS_STRUCT_Model* Model, int TextureLevel);
+    // /**
+    //  * @brief Adds a work item to the queue to load the minimum size texture to system RAM so we have something to display - this is kept in memory constantly.
+    //  * 
+    //  * @param Model 
+    //  */
+    // void LoadInitialTextureRAM(ERS_STRUCT_Model* Model);
 
-    /**
-     * @brief Does the same thing as unload level, but unloads every level down to the specified level from system RAM.
-     * Example:
-     * Loaded: [0,1,2,3,4,5,6], TextureLevel given is 4, we unload [6,5,4]
-     * 
-     * @param Model 
-     * @param TextureLevel 
-     */
-    void UnloadTextureRangeRAM(ERS_STRUCT_Model* Model, int TextureLevel);
+    // /**
+    //  * @brief Adds a work item to the queue to load the specified texture (resolution) level to system RAM.
+    //  * If the level does not exist, no work will be done.
+    //  * 
+    //  * Texture levels are the inverse of mip maps, the higher the number, the higher the resolution.
+    //  * We do this to simplify what goes on inside this class, apologies for the confusion.
+    //  * 
+    //  * @param Model 
+    //  * @param TextureLevel 
+    //  */
+    // void LoadTextureLevelRAM(ERS_STRUCT_Model* Model, int TextureLevel);
 
-    /**
-     * @brief Unload all textures for the model from system RAM because it's going to be removed from memory completely.
-     * 
-     * @param Model 
-     */
-    void UnloadInitialTextureRAM(ERS_STRUCT_Model* Model);
+    // /**
+    //  * @brief Add work item(s) to load all texture levels up to the specified range to system RAM.
+    //  * If you put int for example 4 as the tex level, we'll load levels [1,2,3,4] (unless one of those is already loaded in which case we skip it)
+    //  * 
+    //  * 
+    //  * Texture levels are the inverse of mip maps, the higher the number, the higher the resolution.
+    //  * We do this to simplify what goes on inside this class, apologies for the confusion.
+    //  * 
+    //  * @param Model 
+    //  * @param TextureLevel 
+    //  */
+    // void LoadTextureLevelRangeRAM(ERS_STRUCT_Model* Model, int TextureLevel);
 
 
-    /**
-     * @brief Uploads the given image into memory with the given image data at the target mipmap.
-     * Returns true on success, false on failure.
-     * 
-     * @param ImageData 
-     * @param Width 
-     * @param Height 
-     * @param Channels
-     * @param TextureID 
-     * @param MipMapLevel 
-     * 
-     * @return True
-     * @return False
-     */
-    bool UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel);
+    // /**
+    //  * @brief Unload a specific texture level from system RAM.
+    //  * 
+    //  * @param Model 
+    //  * @param TextureLevel 
+    //  */
+    // void UnloadTextureLevelRAM(ERS_STRUCT_Model* Model, int TextureLevel);
+
+    // /**
+    //  * @brief Does the same thing as unload level, but unloads every level down to the specified level from system RAM.
+    //  * Example:
+    //  * Loaded: [0,1,2,3,4,5,6], TextureLevel given is 4, we unload [6,5,4]
+    //  * 
+    //  * @param Model 
+    //  * @param TextureLevel 
+    //  */
+    // void UnloadTextureRangeRAM(ERS_STRUCT_Model* Model, int TextureLevel);
+
+    // /**
+    //  * @brief Unload all textures for the model from system RAM because it's going to be removed from memory completely.
+    //  * 
+    //  * @param Model 
+    //  */
+    // void UnloadInitialTextureRAM(ERS_STRUCT_Model* Model);
+
+
+    // /**
+    //  * @brief Uploads the given image into memory with the given image data at the target mipmap.
+    //  * Returns true on success, false on failure.
+    //  * 
+    //  * @param ImageData 
+    //  * @param Width 
+    //  * @param Height 
+    //  * @param Channels
+    //  * @param TextureID 
+    //  * @param MipMapLevel 
+    //  * 
+    //  * @return True
+    //  * @return False
+    //  */
+    // bool UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel);
 
     /**
      * @brief Loads the given mip-map level fromt the texture provided as a FIBITMAP

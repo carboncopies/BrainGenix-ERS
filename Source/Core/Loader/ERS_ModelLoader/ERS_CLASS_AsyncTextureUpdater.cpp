@@ -305,12 +305,26 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessWorkItem(ERS_STRUCT_Model* Model) {
 
 
     // Perform RAM Updates
+    if (Model->TextureLevelInRAM_!= TargetRAMLevel) {
+
+
+        if (Model->TextureLevelInRAM_ < TargetRAMLevel) {
+
+            for (unsigned int i = Model->TextureLevelInRAM_; i < TargetRAMLevel; i++) {
+                
+            }
+
+        }
+        if (Model->TextureLevelInRAM_ > TargetRAMLevel) {
+
+        }
 
         // NOTE: RAM UPDATES MUST BE CONSECUATIVE (you must have every level loaded consecuitively, eg: if you have level 3 loaded, you must also have 0,1,2 as well)
 
         // Perform Loads 
         // Perform Unloads
 
+    }
     // Perform VRAM Updates
 
         // NOTE: VRAM Updates don't need to be consecuative, but they must have every prior level loaded in ram first, so we might need to perform that loading first.
@@ -377,7 +391,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
 
         // Process Item, If Item Doens't Exist, Sleep Thread
         if (HasWorkItem) {
-            // Process Work Item
+            ProcessWorkItem(WorkItem.get());
         } else {
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
