@@ -103,16 +103,43 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, i
     FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
     FreeImage_CloseMemory(FIImageData);
 
-    // Detect Number Channels
-    if (FreeImage_GetWidth(Image) <= 0) {
+    // Detect Width/Height
+    int Width = FreeImage_GetWidth(Image);
+    int Height = FreeImage_GetHeight(Image);
+    if (Width <= 0) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
         + "' Width Is <1", 8);
+        FreeImage_Unload(Image);
+        return false;
+    }
+    if (Height <= 0) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
+        + "' Height Is <1", 8);
+        FreeImage_Unload(Image);
+        return false;
     }
 
-    Width = FreeImage_GetWidth(Image);
-    Height = FreeImage_GetHeight(Image);
-    Channels = FreeImage_GetLine(Image) / FreeImage_GetWidth(Image);
+    std::pair<int, int> TargetWidthHeight = Texture->LevelResolutions[Level];
+    if (TargetWidthHeight.first != Width) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
+        + "' Width Does Not Match Metadata Target", 8);
+        FreeImage_Unload(Image);
+        return false;
+    }
+    if (TargetWidthHeight.second != Height) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
+        + "' Height Does Not Match Metadata Target", 8);
+        FreeImage_Unload(Image);
+        return false;
+    }
+    
+
+    // Detect NumChannels
+    int Channels = FreeImage_GetLine(Image) / FreeImage_GetWidth(Image);
 
 }
 
