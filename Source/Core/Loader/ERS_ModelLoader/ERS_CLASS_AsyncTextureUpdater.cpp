@@ -218,21 +218,32 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     if (ImageData == nullptr) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelT)
-        + "' Number Channels Does Not Match Metadata Target", 8, LogEnable);
-        return false;
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "' ImageData Not Yet In RAM", 8, LogEnable);
         return false;
     }
     if (Width < 1) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "' Width Is <1", 8, LogEnable);
         return false;
     }
     if (Height < 1) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "' Height Is <1", 8, LogEnable);
         return false;
     }
     if (Channels > 4) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "' Channel Count >4", 8, LogEnable);
         return false;
     }
     if (Channels < 1) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "' Channel Count <1", 8, LogEnable);
         return false;
     }
 
