@@ -280,6 +280,23 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
 bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
     
+    // Check If Requested Level Exists
+    if (Level < 0) {
+        SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Negative Texture Level Out Of VRAM", 8, LogEnable);
+        return false;
+    } else if (Level > Texture->LevelResolutions.size()) {
+        SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Nonexistant Texture Level Out Of VRAM", 8, LogEnable);
+        return false;
+    }
+
+    // Check If Level Already Unloaded
+    if ((Texture->LevelTextureOpenGLIDs[Level] != 0)) {
+        SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Already Loaded Image Out Of VRAM", 8, LogEnable);
+        return false;
+    }
+
+
+
 }
 
 
