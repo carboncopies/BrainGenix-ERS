@@ -274,6 +274,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         glTexImage2D(GL_TEXTURE_2D, i, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
     }
 
+    // Update Struct
+    Texture->LevelTextureOpenGLIDs[Level] = OpenGLTextureID;
+    Texture->LevelLoadedInVRAM[Level] = true;
+
     glBindTexture(GL_TEXTURE_2D, 0);
 
 }
@@ -290,7 +294,7 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Text
     }
 
     // Check If Level Already Unloaded
-    if ((Texture->LevelTextureOpenGLIDs[Level] != 0)) {
+    if ((Texture->LevelTextureOpenGLIDs[Level] == 0)) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Already Loaded Image Out Of VRAM", 8, LogEnable);
         return false;
     }
