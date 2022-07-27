@@ -50,9 +50,9 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
         }
 
         if (Metadata["BoundingBoxX"] && Metadata["BoundingBoxY"] && Metadata["BoundingBoxZ"]) {
-            double BoxX = Metadata["BoundingBoxX"].as<long>();
-            double BoxY = Metadata["BoundingBoxY"].as<long>();
-            double BoxZ = Metadata["BoundingBoxZ"].as<long>();
+            double BoxX = Metadata["BoundingBoxX"].as<double>();
+            double BoxY = Metadata["BoundingBoxY"].as<double>();
+            double BoxZ = Metadata["BoundingBoxZ"].as<double>();
             Model->BoxScale_ = glm::vec3(BoxX, BoxY, BoxZ);
         } else {
             Model->BoxScale_ = glm::vec3(1.0f);
@@ -61,9 +61,9 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
         }
 
         if (Metadata["OffsetX"] && Metadata["OffsetY"] && Metadata["OffsetZ"]) {
-            double OffsetX = Metadata["OffsetX"].as<long>();
-            double OffsetY = Metadata["OffsetY"].as<long>();
-            double OffsetZ = Metadata["OffsetZ"].as<long>();
+            double OffsetX = Metadata["OffsetX"].as<double>();
+            double OffsetY = Metadata["OffsetY"].as<double>();
+            double OffsetZ = Metadata["OffsetZ"].as<double>();
             Model->BoxOffset_ = glm::vec3(OffsetX, OffsetY, OffsetZ);
         } else {
             Model->BoxOffset_ = glm::vec3(0.0f);
@@ -89,7 +89,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
                     Texture.LevelTextureOpenGLIDs.push_back(0);
                     Texture.LevelMemorySizeBytes.push_back(LevelInfo["TextureLevelMemorySizeBytes"].as<int>());
                     Texture.LevelResolutions.push_back(std::make_pair(LevelInfo["TextureLevelResolutionX"].as<int>(), LevelInfo["TextureLevelResolutionY"].as<int>()));
-                    Texture.LevelChannels.push_back(LevelInfo["TextureLevelChannels"].as<int>());
+                    Texture.LevelChannels.push_back(LevelInfo["TextureLevelNumberChannels"].as<int>());
                     Texture.LevelBitmaps.push_back(nullptr);
                     Texture.LevelLoadedInRAM.push_back(false);
                     Texture.LevelLoadedInVRAM.push_back(false);
