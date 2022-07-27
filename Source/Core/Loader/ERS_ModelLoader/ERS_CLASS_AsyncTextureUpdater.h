@@ -197,12 +197,12 @@ private:
      * 
      * @param Texture Target texture struct
      * @param Level What texture level should we load
-     * @param Image Pointer to FIBITMAP Pointer (We have to change the pointer's location, hence the double pointer)
+     * @param LogEnable Enable or disable error logging here
      * 
      * @return true 
      * @return false 
      */
-    bool LoadImageData(ERS_STRUCT_Texture* Texture, int Level, FIBITMAP** Image);
+    bool LoadImageData(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable);
 
 public:
     unsigned int TestTexID;

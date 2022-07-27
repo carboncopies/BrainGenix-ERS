@@ -100,12 +100,14 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, i
     // Decode Image
     FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData.Data.get(), ImageData.Size_B);
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-    FIBITMAP* NewImage = FreeImage_LoadFromMemory(Format, FIImageData);
+    FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
     FreeImage_CloseMemory(FIImageData);
 
     // Detect Number Channels
-    if (FreeImage_GetWidth(Image) != 0) {
-        
+    if (FreeImage_GetWidth(Image) <= 0) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
+        + "' Width Is <1", 8);
     }
 
     Width = FreeImage_GetWidth(Image);
