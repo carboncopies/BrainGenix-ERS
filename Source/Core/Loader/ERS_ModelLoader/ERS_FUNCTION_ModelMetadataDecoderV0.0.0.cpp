@@ -39,6 +39,8 @@ bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model*
                 Texture.LevelTextureIDs.push_back(it->second.as<long>());
                 Texture.LevelLoadedInRAM.push_back(false);
                 Texture.LevelLoadedInVRAM.push_back(false);
+                Texture.NumberChannels.push_back(-1);
+                Texture.LevelBitmaps.push_back(nullptr);
                 Texture.LevelMemorySizeBytes.push_back(-1);
                 Texture.LevelResolutions.push_back(std::make_pair(-1, -1));
                 Model->Textures_.push_back(Texture);
