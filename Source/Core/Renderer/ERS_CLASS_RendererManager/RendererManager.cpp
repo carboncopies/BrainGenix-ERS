@@ -98,8 +98,6 @@ void RendererManager::LoadEditorData() {
     OpenGLDefaults_->DirectionalLightTexture_ = LoadEditorIcon("EditorAssets/Icons/LightingIcons/DirectionalLight.png");
     OpenGLDefaults_->SpotLightTexture_ = LoadEditorIcon("EditorAssets/Icons/LightingIcons/SpotLight.png");
 
-    OpenGLDefaults_->DefaultTexture_ = ProjectUtils_->ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->TestTexID;
-
     FreeImage_DeInitialise();
 
 }
