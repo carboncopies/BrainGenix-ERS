@@ -162,6 +162,8 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, i
     Texture->LevelLoadedInRAM[Level] = true;
     Texture->LevelBitmaps[Level] = Image;
 
+    return true;
+
 }
 
 bool ERS_CLASS_AsyncTextureUpdater::UnloadImageData(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
@@ -183,8 +185,11 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageData(ERS_STRUCT_Texture* Texture,
 
 
     // Update Data
+    FreeImage_Unload(Texture->LevelBitmaps[Level]);
+    Texture->LevelBitmaps[Level] = nullptr;
+    Texture->LevelLoadedInRAM[Level] = false;
 
-
+    return true;
 }
 
 bool ERS_CLASS_AsyncTextureUpdater::UploadTextureData(FIBITMAP* ImageData, int Width, int Height, int Channels, unsigned int TextureID, int MipMapLevel) {
