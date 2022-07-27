@@ -246,11 +246,25 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         + "' Channel Count <1", 8, LogEnable);
         return false;
     }
+    for (unsigned int i = 0; i < Level; i++) {
+        if (!Texture->LevelLoadedInRAM[i]) {
+            SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+            + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+            + "' Not All Prior Levels Are Loaded Into RAM", 8, LogEnable);
+            return false;
+        }
+    }
 
     // Generate OpenGL Texture ID
     unsigned int OpenGLTextureID;
     glGenTextures(1, &OpenGLTextureID);
-    
+    glBindTexture(GL_TEXTURE_2D, OpenGLTextureID);
+
+    // Set Texture Properties
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     // Identify Required Texture Format
     GLint TextureInternFormat;
@@ -273,7 +287,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     // Load Image
     unsigned char* ImageBytes = (unsigned char*)ImageData->data;
-    glBindTexture(GL_TEXTURE_2D, TextureID);
     glTexImage2D(GL_TEXTURE_2D, Level, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
 
 }
