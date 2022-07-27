@@ -122,14 +122,14 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, i
     }
 
     std::pair<int, int> TargetWidthHeight = Texture->LevelResolutions[Level];
-    if (TargetWidthHeight.first != Width) {
+    if ((TargetWidthHeight.first != Width) && (TargetWidthHeight.first != -1)) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
         + "' Width Does Not Match Metadata Target", 8, LogEnable);
         FreeImage_Unload(Image);
         return false;
     }
-    if (TargetWidthHeight.second != Height) {
+    if ((TargetWidthHeight.second != Height) && (TargetWidthHeight.second != -1)) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
         + "' Height Does Not Match Metadata Target", 8, LogEnable);
@@ -147,7 +147,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, i
         FreeImage_Unload(Image);
         return false;
     }
-    if (Texture->LevelChannels[Level] != Channels) {
+    if ((Texture->LevelChannels[Level] != Channels) && (Texture->LevelChannels[Level] != -1)) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
         + "' Number Channels Does Not Match Metadata Target", 8, LogEnable);
