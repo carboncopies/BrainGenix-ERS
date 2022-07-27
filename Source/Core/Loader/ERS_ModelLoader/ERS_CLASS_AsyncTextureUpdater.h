@@ -240,6 +240,12 @@ private:
      */
     bool UnloadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable = true);
 
+    /**
+     * @brief Process a model that needs some texture modification operation performed
+     * 
+     * @param Model 
+     */
+    void ProcessWorkItem(ERS_STRUCT_Model* Model);
 
 public:
 
