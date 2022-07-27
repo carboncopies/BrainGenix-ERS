@@ -118,7 +118,8 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     std::vector<std::vector<int>> TextureMemorySizes;
     std::vector<std::vector<long>> ImageAssetIDs;
     std::vector<std::vector<std::pair<int, int>>> ImageResolutions;
-    WriteTextures(&TextureMemorySizes, &ImageAssetIDs, &ImageResolutions, AssetPath);
+    std::vector<int> ImageChannels;
+    WriteTextures(&TextureMemorySizes, &ImageAssetIDs, &ImageResolutions, &ImageChannels, AssetPath);
 
     // Generate Metadata
     YAML::Emitter MetadataEmitter;
@@ -146,6 +147,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
             MetadataEmitter<<YAML::Key<<"TextureLevelMemorySizeBytes"<<YAML::Value<<TextureMemorySizes[i][TextureLevel];
             MetadataEmitter<<YAML::Key<<"TextureLevelResolutionX"<<YAML::Value<<ImageResolutions[i][TextureLevel].first;
             MetadataEmitter<<YAML::Key<<"TextureLevelResolutionY"<<YAML::Value<<ImageResolutions[i][TextureLevel].second;
+            MetadataEmitter<<YAML::Key<<"TextureLevelNumberChannels"<<YAML::Value<<ImageChannels[i][TextureLevel];
 
             MetadataEmitter<<YAML::EndMap;
         }
