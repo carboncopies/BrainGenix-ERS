@@ -30,21 +30,20 @@ struct ERS_STRUCT_Texture {
     std::vector<bool> LevelLoadedInVRAM; /**<True/false for every level showing f that level is loaded in VRAM*/  
     std::vector<std::pair<int, int>> LevelResolutions; /**<List of all texture level's resolutions*/
     std::vector<int> LevelMemorySizeBytes; /**<Tells the system how many bytes every level will take*/
+    std::vector<FIBITMAP*> LevelBitmaps; /**<List of bitmaps for each level - contains the texture's RAM data.*/
 
     int TextureLevelInRAM_ = 0; /**<Determines the current texture level in RAM*/
     int TextureLevelInVRAM_ = 0; /**<Determines the current texture level in RAM*/
 
     int NumberChannels; /**<Shows the number of color channels in this texture*/
 
-
-
     // Set ImageData For Deferred OpenGL Loading
-    float Channels;
-    float Width;
-    float Height;
-    FIBITMAP* ImageData;
-    unsigned char* ImageBytes;
-    bool FreeImageBackend = true;
+    // float Channels;
+    // float Width;
+    // float Height;
+    // FIBITMAP* ImageData;
+    // unsigned char* ImageBytes;
+    // bool FreeImageBackend = true;
     bool HasImageData = false;
 
     // Set Metadata
