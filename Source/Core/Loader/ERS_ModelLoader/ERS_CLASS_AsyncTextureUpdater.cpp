@@ -91,6 +91,14 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, i
     long LevelAssetID = Texture->LevelTextureIDs[Level];
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(LevelAssetID, &ImageData);
 
+    // Decode Image
+    FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData.Data.get(), ImageData.Size_B);
+    FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
+    FIBITMAP* NewImage = FreeImage_LoadFromMemory(Format, FIImageData);
+    FreeImage_CloseMemory(FIImageData);
+
+    // Update New Image Info
+    Image = &NewImage;
 
 }
 
