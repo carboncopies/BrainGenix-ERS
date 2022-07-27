@@ -202,7 +202,7 @@ private:
      * @return true 
      * @return false 
      */
-    bool LoadImageData(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable = true);
+    bool LoadImageDataRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable = true);
 
     /**
      * @brief Unloads the target texture level from the texture struct
@@ -214,7 +214,33 @@ private:
      * @return true 
      * @return false 
      */
-    bool UnloadImageData(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable = true);
+    bool UnloadImageDataRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable = true);
+
+    /**
+     * @brief Load the given texture level into opengl, and assign an object id for use.
+     * Returns true on success, false otherwise.
+     * 
+     * @param Texture 
+     * @param Level 
+     * @param LogEnable 
+     * @return true 
+     * @return false 
+     */
+    bool LoadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable = true);
+
+
+    /**
+     * @brief Removes a given texture level from opengl memory 
+     * Returns true on success, false otherwise.
+     * 
+     * @param Texture 
+     * @param Level 
+     * @param LogEnable 
+     * @return true 
+     * @return false 
+     */
+    bool UnloadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable = true);
+
 
 public:
     unsigned int TestTexID;

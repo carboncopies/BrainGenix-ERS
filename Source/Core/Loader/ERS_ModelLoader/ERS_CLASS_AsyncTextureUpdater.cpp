@@ -77,7 +77,7 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 }
 
 
-bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
+bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
     // Check If Requested Level Exists
     if (Level < 0) {
@@ -166,7 +166,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, i
 
 }
 
-bool ERS_CLASS_AsyncTextureUpdater::UnloadImageData(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
+bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
     // Check If Requested Level Exists
     if (Level < 0) {
