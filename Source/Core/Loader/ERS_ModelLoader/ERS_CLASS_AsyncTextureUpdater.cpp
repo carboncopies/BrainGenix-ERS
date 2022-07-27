@@ -77,7 +77,7 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 }
 
 
-bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, int Level, FIBITMAP** Image) {
+bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
     // Check If Requested Level Exists
     if (Level < 0) {
@@ -85,6 +85,12 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, i
     } else if (Level > Texture->LevelResolutions.size()) {
         return false;
     }
+
+    // Check If Level Already Loaded
+    if (Texture->LevelBitmaps[Level] != nullptr) {
+        return false;
+    }
+
 
     // Load Image Data
     ERS_STRUCT_IOData ImageData;
@@ -97,8 +103,14 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageData(ERS_STRUCT_Texture* Texture, i
     FIBITMAP* NewImage = FreeImage_LoadFromMemory(Format, FIImageData);
     FreeImage_CloseMemory(FIImageData);
 
-    // Update New Image Info
-    Image = &NewImage;
+    // Detect Number Channels
+    if (FreeImage_GetWidth(Image) != 0) {
+        
+    }
+
+    Width = FreeImage_GetWidth(Image);
+    Height = FreeImage_GetHeight(Image);
+    Channels = FreeImage_GetLine(Image) / FreeImage_GetWidth(Image);
 
 }
 
