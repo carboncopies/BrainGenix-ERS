@@ -299,6 +299,27 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Text
 
 void ERS_CLASS_AsyncTextureUpdater::ProcessWorkItem(ERS_STRUCT_Model* Model) {
     
+    // Identify Type Of Work To Be Done
+    int TargetRAMLevel = Model->TargetTextureLevelRAM;
+    int TargetVRAMLevel = Model->TargetTextureLevelVRAM;
+
+    // Perform RAM Updates
+
+        // NOTE: RAM UPDATES MUST BE CONSECUATIVE (you must have every level loaded consecuitively, eg: if you have level 3 loaded, you must also have 0,1,2 as well)
+
+        // Perform Loads 
+        // Perform Unloads
+
+    // Perform VRAM Updates
+
+        // NOTE: VRAM Updates don't need to be consecuative, but they must have every prior level loaded in ram first, so we might need to perform that loading first.
+
+        // Perform Loads 
+        // Perform Unloads
+
+        
+
+
 }
 
 void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
