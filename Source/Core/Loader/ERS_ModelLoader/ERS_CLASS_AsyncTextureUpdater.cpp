@@ -396,9 +396,9 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
         }
 
         if (Model->TargetTextureLevelVRAM > Model->TextureLevelInVRAM_) {
-            RAMQueueString += "P";
+            VRAMQueueString += "P";
         } else if (Model->TargetTextureLevelVRAM < Model->TextureLevelInVRAM_) {
-            RAMQueueString += "F";
+            VRAMQueueString += "F";
         }
     }
     BlockThreads_.unlock();
