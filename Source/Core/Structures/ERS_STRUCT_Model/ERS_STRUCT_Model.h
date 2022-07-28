@@ -62,6 +62,8 @@ struct ERS_STRUCT_Model {
     glm::vec3 BoxOffset_; /**<Offset the center of the box so it's synced with the center of the model*/
 
 
+    // Texture Streaming System
+    std::atomic_bool TexturesAlreadyBeingProcessed_; /**<Used to set if the system is already procesisng textures*/
 
     std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
 
