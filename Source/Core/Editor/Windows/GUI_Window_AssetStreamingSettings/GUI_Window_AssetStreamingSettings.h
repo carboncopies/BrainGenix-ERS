@@ -33,9 +33,7 @@ class GUI_Window_AssetStreamingSettings {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointer*/
-
-    ImVec4 ClearColor_ = ImVec4(0.2f, 0.2f, 0.2f, 1.0f); /**<Background Clearing Color */
-    bool OpenGLDrawLines_ = false; /**<Default AssetStreaming Mode */
+    ERS_STRUCT_ProjectUtils ProjectUtils_; /**<Project Utils Struct So We Can Get To The Model Loader*/
 
     // Variables To Store Input Data
     int DepthMapResolution_; /**>Stores the value that the user is putting into the depth map input box*/
