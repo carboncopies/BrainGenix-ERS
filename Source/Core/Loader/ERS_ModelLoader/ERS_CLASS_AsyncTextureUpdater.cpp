@@ -380,9 +380,12 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread(int Index) {
     FreeImage_Initialise();
 
     // Setup OpenGL Shared Context
+    SystemUtils_->Logger_->Log(std::string("Texture Streaming Thead '") + std::to_string(Index) + "' Creating Shared OpenGL Context", 4);
     glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-    GLFWwindow* ThreadWindow = glfwCreateWindow(1, 1, "", NULL, MainThreadWindowContext_);
+    GLFWwindow* ThreadWindow = glfwCreateWindow(1, 1, std::to_string(Index).c_str(), NULL, MainThreadWindowContext_);
     glfwMakeContextCurrent(ThreadWindow);
+    SystemUtils_->Logger_->Log(std::string("Texture Streaming Thead '") + std::to_string(Index) + "' Finished Creating OpenGL Context", 3);
+
 
     // Prepare OGL Context
     glEnable(GL_TEXTURE_2D);
