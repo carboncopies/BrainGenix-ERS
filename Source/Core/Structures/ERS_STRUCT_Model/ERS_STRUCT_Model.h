@@ -49,7 +49,7 @@ struct ERS_STRUCT_Model {
     std::vector<ERS_STRUCT_Texture> Textures_;
     int TextureLevelInRAM_ = 0; /**<Determines the current texture level in RAM*/
     int TextureLevelInVRAM_ = 0; /**<Determines the current texture level in RAM*/
-    int MaxTextureLevel_ = -1; /**<Determines the max texture level available, Only should be adjusted by the asset system*/
+    int MaxTextureLevel_ = 0; /**<Determines the max texture level available, Only should be adjusted by the asset system*/
     
     int AssetLoadngStateVRAM = 0; /**<0 means nothing happening, -1 means unloading, 1 means loading next*/
     int AssetLoadngStateRAM = 0; /**<0 means nothing happening, -1 means unloading, 1 means loading next*/
