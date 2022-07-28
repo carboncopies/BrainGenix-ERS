@@ -79,7 +79,6 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             
             // Get Parameters From Model Array
             float ModelDistance = DistanceMapIterator->first;
-            std::cout<<ModelDistance<<std::endl;
             unsigned int ModelIndex = DistanceMapIterator->second;
             ERS_STRUCT_Model* Model = Scene->Models[ModelIndex].get();
             int NumberTextureLevels = Model->MaxTextureLevel_ + 1;
