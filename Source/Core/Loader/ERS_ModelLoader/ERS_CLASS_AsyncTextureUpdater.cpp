@@ -410,9 +410,10 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread(int Index) {
         if (HasWorkItem) {
             WorkItem->TexturesAlreadyBeingProcessed_ = true;
             ProcessWorkItem(WorkItem.get());
+            std::cout<<Index<<std::endl;
             WorkItem->TexturesAlreadyBeingProcessed_ = false;
         } else {
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            //std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
 
     }
