@@ -63,8 +63,8 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
 
     // Reset All Target Distances
     // for (unsigned int i = 0; i < Scene->Models.size(); i++) {
-    //     Scene->Models[i]->TargetTextureLevelVRAM = -1;
-    //     Scene->Models[i]->TargetTextureLevelRAM = -1;
+    //     Scene->Models[i]->TargetTextureLevelVRAM = 0;
+    //     Scene->Models[i]->TargetTextureLevelRAM = 0;
     // }
 
     // Iterate Over All Cameras, Make Recomendations From There
