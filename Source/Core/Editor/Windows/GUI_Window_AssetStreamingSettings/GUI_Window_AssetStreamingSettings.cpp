@@ -13,6 +13,7 @@ GUI_Window_AssetStreamingSettings::GUI_Window_AssetStreamingSettings(ERS_STRUCT_
 
     // Setup Default Values For Input Fields
 
+
 }
 
 GUI_Window_AssetStreamingSettings::~GUI_Window_AssetStreamingSettings() {
