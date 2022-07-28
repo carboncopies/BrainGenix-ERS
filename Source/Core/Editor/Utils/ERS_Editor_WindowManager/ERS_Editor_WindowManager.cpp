@@ -35,28 +35,29 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Struct", 4);
 
     // Construct All Widnows -- PLEASE SEE README.MD IN WINDOWS DIRECTORY FOR INFO ABOUT ADDING NEW WINDOWS --
-    Windows_->GUI_Window_About_                = std::make_unique<GUI_Window_About>(SystemUtils_);
-    Windows_->GUI_Window_AssetExplorer_        = std::make_unique<GUI_Window_AssetExplorer>(SystemUtils_, ProjectUtils);
-    Windows_->GUI_Window_ControllerSettings_   = std::make_unique<GUI_Window_ControllerSettings>(SystemUtils_, HIDUtils, ProjectUtils);
-    Windows_->GUI_Window_FrameLatencyGraph_    = std::make_unique<GUI_Window_FrameLatencyGraph>(SystemUtils_);
-    Windows_->GUI_Window_FramerateGraph_       = std::make_unique<GUI_Window_FramerateGraph>();
-    Windows_->GUI_Window_FramerateCounter_     = std::make_unique<GUI_Window_FramerateCounter>();
-    Windows_->GUI_Window_FramerateHistogram_   = std::make_unique<GUI_Window_FramerateHistogram>();
-    Windows_->GUI_Window_FrameratePlot_        = std::make_unique<GUI_Window_FrameratePlot>();
-    Windows_->GUI_Window_ImportProgressBar_    = std::make_unique<GUI_Window_ImportProgressBar>(SystemUtils_);
-    Windows_->GUI_Window_ObjectProperties_     = std::make_unique<GUI_Window_ObjectProperties>(Gizmo, SceneManager, ProjectUtils, VisualRenderer);
-    Windows_->GUI_Window_ProjectSettings_      = std::make_unique<GUI_Window_ProjectSettings>(ProjectUtils, SystemUtils_);
-    Windows_->GUI_Window_RAMGraph_             = std::make_unique<GUI_Window_RAMGraph>(SystemUtils_);
-    Windows_->GUI_Window_RenderingSettings_    = std::make_unique<GUI_Window_RenderingSettings>(SystemUtils_);
-    Windows_->GUI_Window_SceneTree_            = std::make_unique<GUI_Window_SceneTree>(SceneManager, SystemUtils_, ProjectUtils, Gizmo);
-    Windows_->GUI_Window_ScriptEditor_         = std::make_unique<GUI_Window_ScriptEditor>(SystemUtils_, ProjectUtils, VisualRenderer);
-    Windows_->GUI_Window_ShaderEditor_         = std::make_unique<GUI_Window_ShaderEditor>(SystemUtils_, ProjectUtils, VisualRenderer);
-    Windows_->GUI_Window_SystemLog_            = std::make_unique<GUI_Window_SystemLog>(SystemUtils_);
-    Windows_->GUI_Window_TestEditor_           = std::make_unique<GUI_Window_TestEditor>(SystemUtils_);
-    Windows_->GUI_Window_ThemeSelector_        = std::make_unique<GUI_Window_ThemeSelector>(ThemeManager);
-    Windows_->GUI_Window_FontSelector_         = std::make_unique<GUI_Window_FontSelector>(FontManager);
-    Windows_->GUI_Window_OpenProject_          = std::make_unique<GUI_Window_OpenProject>(SystemUtils_);
-    Windows_->GUI_Window_NewProject_           = std::make_unique<GUI_Window_NewProject>(SystemUtils_);
+    Windows_->GUI_Window_About_                  = std::make_unique<GUI_Window_About>(SystemUtils_);
+    Windows_->GUI_Window_AssetExplorer_          = std::make_unique<GUI_Window_AssetExplorer>(SystemUtils_, ProjectUtils);
+    Windows_->GUI_Window_ControllerSettings_     = std::make_unique<GUI_Window_ControllerSettings>(SystemUtils_, HIDUtils, ProjectUtils);
+    Windows_->GUI_Window_FrameLatencyGraph_      = std::make_unique<GUI_Window_FrameLatencyGraph>(SystemUtils_);
+    Windows_->GUI_Window_FramerateGraph_         = std::make_unique<GUI_Window_FramerateGraph>();
+    Windows_->GUI_Window_FramerateCounter_       = std::make_unique<GUI_Window_FramerateCounter>();
+    Windows_->GUI_Window_FramerateHistogram_     = std::make_unique<GUI_Window_FramerateHistogram>();
+    Windows_->GUI_Window_FrameratePlot_          = std::make_unique<GUI_Window_FrameratePlot>();
+    Windows_->GUI_Window_ImportProgressBar_      = std::make_unique<GUI_Window_ImportProgressBar>(SystemUtils_);
+    Windows_->GUI_Window_ObjectProperties_       = std::make_unique<GUI_Window_ObjectProperties>(Gizmo, SceneManager, ProjectUtils, VisualRenderer);
+    Windows_->GUI_Window_ProjectSettings_        = std::make_unique<GUI_Window_ProjectSettings>(ProjectUtils, SystemUtils_);
+    Windows_->GUI_Window_RAMGraph_               = std::make_unique<GUI_Window_RAMGraph>(SystemUtils_);
+    Windows_->GUI_Window_RenderingSettings_      = std::make_unique<GUI_Window_RenderingSettings>(SystemUtils_);
+    Windows_->GUI_Window_SceneTree_              = std::make_unique<GUI_Window_SceneTree>(SceneManager, SystemUtils_, ProjectUtils, Gizmo);
+    Windows_->GUI_Window_ScriptEditor_           = std::make_unique<GUI_Window_ScriptEditor>(SystemUtils_, ProjectUtils, VisualRenderer);
+    Windows_->GUI_Window_ShaderEditor_           = std::make_unique<GUI_Window_ShaderEditor>(SystemUtils_, ProjectUtils, VisualRenderer);
+    Windows_->GUI_Window_SystemLog_              = std::make_unique<GUI_Window_SystemLog>(SystemUtils_);
+    Windows_->GUI_Window_TestEditor_             = std::make_unique<GUI_Window_TestEditor>(SystemUtils_);
+    Windows_->GUI_Window_ThemeSelector_          = std::make_unique<GUI_Window_ThemeSelector>(ThemeManager);
+    Windows_->GUI_Window_FontSelector_           = std::make_unique<GUI_Window_FontSelector>(FontManager);
+    Windows_->GUI_Window_OpenProject_            = std::make_unique<GUI_Window_OpenProject>(SystemUtils_);
+    Windows_->GUI_Window_NewProject_             = std::make_unique<GUI_Window_NewProject>(SystemUtils_);
+    Windows_->GUI_Window_AssetStreamingSettings_ = std::make_unique<GUI_Window_AssetStreamingSettings>(SystemUtils_, ProjectUtils);
 
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Struct", 3);
     SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Index", 4);
@@ -83,6 +84,7 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     WindowNames_.push_back("FontSelector");
     WindowNames_.push_back("OpenProject");
     WindowNames_.push_back("NewProject");
+    WindowNames_.push_back("AssetStreamingSettings");
     
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Index", 3);
 
@@ -116,6 +118,7 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     Windows_->GUI_Window_FontSelector_->Draw();
     Windows_->GUI_Window_OpenProject_->Draw();
     Windows_->GUI_Window_NewProject_->Draw();
+    Windows_->GUI_Window_AssetStreamingSettings_->Draw();
 
 }
 
@@ -187,6 +190,9 @@ bool ERS_CLASS_WindowManager::SetWindowStatus(std::string WindowName, bool Statu
         Windows_->GUI_Window_OpenProject_->Enabled_ = Status;
         return true;
     } else if (WindowName == "NewProject") {
+        Windows_->GUI_Window_NewProject_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "AssetStreamingSettings") {
         Windows_->GUI_Window_NewProject_->Enabled_ = Status;
         return true;
     } else {
@@ -263,6 +269,9 @@ bool ERS_CLASS_WindowManager::GetWindowStatus(std::string WindowName, bool* Stat
         *Status = Windows_->GUI_Window_OpenProject_->Enabled_;
         return true;
     } else if (WindowName == "NewProject") {
+        *Status = Windows_->GUI_Window_NewProject_->Enabled_;
+        return true;
+    } else if (WindowName == "AssetStreamingSettings") {
         *Status = Windows_->GUI_Window_NewProject_->Enabled_;
         return true;
     } else {
