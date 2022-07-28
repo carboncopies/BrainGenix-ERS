@@ -159,15 +159,15 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
         // Detect Color
         int QueueSize = RAMLoadingQueue.size();
         ImVec4 Color = ImVec4(0.0f, 0.0f, 0.0f, 1.0f);
-        if (QueueSize < 10) {
+        if (QueueSize < 15) {
             Color = ImVec4(0.0f, 1.0f, 0.0f, 1.0f);
-        } else if (QueueSize < 20) {
-            Color = ImVec4(0.2f, 0.8f, 0.0f, 1.0f);
         } else if (QueueSize < 30) {
+            Color = ImVec4(0.2f, 0.8f, 0.0f, 1.0f);
+        } else if (QueueSize < 45) {
             Color = ImVec4(0.4f, 0.6f, 0.0f, 1.0f);
-        } else if (QueueSize < 40) {
+        } else if (QueueSize < 60) {
             Color = ImVec4(0.6f, 0.4f, 0.0f, 1.0f);
-        } else if (QueueSize < 50) {
+        } else if (QueueSize < 75) {
             Color = ImVec4(0.8f, 0.2f, 0.0f, 1.0f);
         } else {
             Color = ImVec4(1.0f, 0.0f, 0.0f, 1.0f);
