@@ -257,6 +257,9 @@ private:
 
 public:
 
+    std::string RAMQueueString = "";
+    std::string VRAMQueueString = "";
+
     /**
      * @brief Create instance of the texture updater. The optional threads parameters sets the limit on the number of threads we can use.
      * 
