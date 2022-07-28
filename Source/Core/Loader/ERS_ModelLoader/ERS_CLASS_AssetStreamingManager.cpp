@@ -81,7 +81,7 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             float ModelDistance = DistanceMapIterator->first;
             unsigned int ModelIndex = DistanceMapIterator->second;
             ERS_STRUCT_Model* Model = Scene->Models[ModelIndex].get();
-            int NumberTextureLevels = Model->MaxTextureLevel_;
+            int NumberTextureLevels = Model->MaxTextureLevel_ + 1;
 
             // Calculate Distance Per Level Cutoff
             float DistancePerLevelVRAM = DistanceCutoffVRAM / NumberTextureLevels;
