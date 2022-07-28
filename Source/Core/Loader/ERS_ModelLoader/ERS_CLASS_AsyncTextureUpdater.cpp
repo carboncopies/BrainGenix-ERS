@@ -397,15 +397,19 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
         bool HasWorkItem = false;
         BlockThreads_.lock();
         if (WorkItems_.size() > 0) {
-            WorkItem = WorkItems_[0];
-            HasWorkItem = true;
-            WorkItems_.erase(WorkItems_.begin());
+            if (!WorkItem->TexturesAlreadyBeingProcessed_) {
+                WorkItem = WorkItems_[0];
+                HasWorkItem = true;
+                WorkItems_.erase(WorkItems_.begin());
+            }
         }
         BlockThreads_.unlock();
 
         // Process Item, If Item Doens't Exist, Sleep Thread
         if (HasWorkItem) {
+            WorkItem->TexturesAlreadyBeingProcessed_ = true;
             ProcessWorkItem(WorkItem.get());
+            WorkItem->TexturesAlreadyBeingProcessed_ = false;
         } else {
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
