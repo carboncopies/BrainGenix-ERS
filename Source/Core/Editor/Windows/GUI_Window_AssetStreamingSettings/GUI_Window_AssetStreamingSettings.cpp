@@ -7,6 +7,8 @@
 GUI_Window_AssetStreamingSettings::GUI_Window_AssetStreamingSettings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
     SystemUtils_ = SystemUtils;
+    ProjectUtils_ = ProjectUtils;
+    ModelLoader_ = ProjectUtils_.ModelLoader_.get();
     SystemUtils_->Logger_->Log("Initializing AssetStreaming Settings GUI_Window", 5);
 
     // Setup Default Values For Input Fields
