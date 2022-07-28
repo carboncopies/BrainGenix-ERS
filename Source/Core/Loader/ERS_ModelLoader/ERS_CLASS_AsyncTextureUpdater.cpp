@@ -33,7 +33,7 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
     SystemUtils_->Logger_->Log(std::string("Worker Pool Will Have ") + std::to_string(Threads) + " Threads", 3);
     StopThreads_ = false;
     for (unsigned int i = 0; i < Threads; i++) {
-        TextureWorkerThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread, this));
+        TextureWorkerThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread, i, this));
         SystemUtils_->Logger_->Log(std::string("Started Worker Thread '") + std::to_string(i) + "'", 2);
     }
     SystemUtils_->Logger_->Log("Setup Worker Thread Pool", 3);
@@ -374,7 +374,7 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 
 }
 
-void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
+void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread(int Index) {
 
     // Setup FreeImage
     FreeImage_Initialise();

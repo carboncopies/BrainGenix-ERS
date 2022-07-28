@@ -48,7 +48,7 @@ private:
      * @brief Method called as worker thread.
      * 
      */
-    void TextureModifierWorkerThread();
+    void TextureModifierWorkerThread(int Index);
 
 
     // /**
