@@ -4,7 +4,7 @@
 
 #include <GUI_Window_AssetStreamingSettings.h>
 
-GUI_Window_AssetStreamingSettings::GUI_Window_AssetStreamingSettings(ERS_STRUCT_SystemUtils* SystemUtils) {
+GUI_Window_AssetStreamingSettings::GUI_Window_AssetStreamingSettings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing AssetStreaming Settings GUI_Window", 5);
