@@ -152,7 +152,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
     }
 
     // RAM Loading Queue
-    if (true) {
+    if (Viewport->ShowRAMLoadingInfo_) {
 
         std::string RAMLoadingQueue = ProjectUtils_->ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->RAMQueueString;
 
@@ -179,7 +179,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
 
     // VRAM Loading Queue
-    if (true) {
+    if (Viewport->ShowVRAMLoadingInfo_) {
 
         std::string VRAMLoadingQueue = ProjectUtils_->ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->VRAMQueueString;
 
