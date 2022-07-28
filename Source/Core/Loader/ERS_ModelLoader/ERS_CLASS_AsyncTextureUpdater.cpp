@@ -372,6 +372,7 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
                     AlreadyInQueue = true;
                     break;
                 }
+            }
             if (!AlreadyInQueue) {
                 WorkItems_.push_back(Scene->Models[i]);
             }
