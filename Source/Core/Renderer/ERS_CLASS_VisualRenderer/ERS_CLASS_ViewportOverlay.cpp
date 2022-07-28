@@ -173,10 +173,36 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
             Color = ImVec4(1.0f, 0.0f, 0.0f, 1.0f);
         }
 
-        ImGui::TextColored(Color, "%s", RAMLoadingQueue.c_str());
+        ImGui::TextColored(Color, "RAM Loading Queue: %s", RAMLoadingQueue.c_str());
 
     }
 
+
+    // VRAM Loading Queue
+    if (true) {
+
+        std::string VRAMLoadingQueue = ProjectUtils_->ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->VRAMQueueString;
+
+        // Detect Color
+        int QueueSize = VRAMLoadingQueue.size();
+        ImVec4 Color = ImVec4(0.0f, 0.0f, 0.0f, 1.0f);
+        if (QueueSize < 5) {
+            Color = ImVec4(0.0f, 1.0f, 0.0f, 1.0f);
+        } else if (QueueSize < 10) {
+            Color = ImVec4(0.0f, 0.8f, 0.2f, 1.0f);
+        } else if (QueueSize < 15) {
+            Color = ImVec4(0.0f, 0.6f, 0.4f, 1.0f);
+        } else if (QueueSize < 25) {
+            Color = ImVec4(0.0f, 0.4f, 0.6f, 1.0f);
+        } else if (QueueSize < 25) {
+            Color = ImVec4(0.0f, 0.2f, 0.8f, 1.0f);
+        } else {
+            Color = ImVec4(0.0f, 0.0f, 1.0f, 1.0f);
+        }
+
+        ImGui::TextColored(Color, "VRAM Loading Queue: %s", VRAMLoadingQueue.c_str());
+
+    }
 
 
 }
