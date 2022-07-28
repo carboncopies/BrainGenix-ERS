@@ -38,7 +38,7 @@ private:
 
 
     // Settings
-
+    int TextureStreamingThreads_ = -1;
 
 
 public:
