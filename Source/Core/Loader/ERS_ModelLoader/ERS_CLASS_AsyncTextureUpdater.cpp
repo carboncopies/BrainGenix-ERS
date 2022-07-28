@@ -350,10 +350,6 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessWorkItem(ERS_STRUCT_Model* Model) {
 
 void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 
-    // Reset Strings
-    RAMQueueString = "";
-    VRAMQueueString = "";
-
     // Iterate Over All Models
     for (unsigned int i = 0; i < Scene->Models.size(); i++) {
         
@@ -384,6 +380,31 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
         }
 
     }
+
+    // Reset Strings
+    RAMQueueString = "";
+    VRAMQueueString = "";
+
+    BlockThreads_.lock();
+    for (unsigned int i = 0; i < WorkItems_.size(); i++) {
+        ERS_STRUCT_Model* Model = WorkItems_[i].get();
+
+        if (Model->TargetTextureLevelRAM > Model->TextureLevelInRAM_) {
+            RAMQueueString += "L";
+        } else if (Model->TargetTextureLevelRAM < Model->TextureLevelInRAM_) {
+            RAMQueueString += "U";
+        }
+
+        if (Model->TargetTextureLevelVRAM > Model->TextureLevelInVRAM_) {
+            RAMQueueString += "P";
+        } else if (Model->TargetTextureLevelVRAM < Model->TextureLevelInVRAM_) {
+            RAMQueueString += "F";
+        }
+    }
+    BlockThreads_.unlock();
+
+
+
 
 }
 
