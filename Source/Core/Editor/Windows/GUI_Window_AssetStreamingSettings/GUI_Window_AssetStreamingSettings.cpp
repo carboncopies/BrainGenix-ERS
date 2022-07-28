@@ -1,13 +1,13 @@
 //======================================================================//
-// This file is part of the BrainGenix-ERS Environment Rendering System //
+// This file is part of the BrainGenix-ERS Environment AssetStreaming System //
 //======================================================================//
 
-#include <GUI_Window_RenderingSettings.h>
+#include <GUI_Window_AssetStreamingSettings.h>
 
-GUI_Window_RenderingSettings::GUI_Window_RenderingSettings(ERS_STRUCT_SystemUtils* SystemUtils) {
+GUI_Window_AssetStreamingSettings::GUI_Window_AssetStreamingSettings(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
-    SystemUtils_->Logger_->Log("Initializing Rendering Settings GUI_Window", 5);
+    SystemUtils_->Logger_->Log("Initializing AssetStreaming Settings GUI_Window", 5);
 
     // Setup Default Values For Input Fields
     SystemUtils_->Logger_->Log("Setting Up Default Renderer Setting Input Fields", 3);
@@ -42,14 +42,14 @@ GUI_Window_RenderingSettings::GUI_Window_RenderingSettings(ERS_STRUCT_SystemUtil
 
 }
 
-GUI_Window_RenderingSettings::~GUI_Window_RenderingSettings() {
+GUI_Window_AssetStreamingSettings::~GUI_Window_AssetStreamingSettings() {
 
 }
 
-void GUI_Window_RenderingSettings::Draw() {
+void GUI_Window_AssetStreamingSettings::Draw() {
 
     if (Enabled_) {
-        bool Visible = ImGui::Begin("Rendering Settings", &Enabled_);
+        bool Visible = ImGui::Begin("AssetStreaming Settings", &Enabled_);
 
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
@@ -84,11 +84,11 @@ void GUI_Window_RenderingSettings::Draw() {
                 ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "Basic Settings");
                 ImGui::Separator();
 
-                // Wireframe Rendering Mode
-                ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines_);
+                // Wireframe AssetStreaming Mode
+                ImGui::Checkbox("Wireframe AssetStreaming Mode", &OpenGLDrawLines_);
                 ImGui::NewLine();
 
-                // Rendering Background Clear Color
+                // AssetStreaming Background Clear Color
                 ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor_);
                 ImGui::NewLine();
 
