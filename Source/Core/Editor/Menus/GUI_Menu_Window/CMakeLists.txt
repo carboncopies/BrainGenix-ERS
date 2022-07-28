@@ -45,6 +45,7 @@ target_link_libraries(Menu_Window
     GUI_Window_FramerateHistogram
     GUI_Window_FrameratePlot
     GUI_Window_ShaderEditor
+    GUI_Window_AssetStreamingSettings
 
 
     )
