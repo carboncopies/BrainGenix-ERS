@@ -45,9 +45,9 @@ private:
 
 public:
 
-    //
-    DistanceCutoffVRAM_ = 9.0f;
-    DistanceCutoffRAM_ = 25.0f;
+    // Set Configuration Parameters To Be Used By The Settings Window
+    float DistanceCutoffVRAM_ = 9.0f;
+    float DistanceCutoffRAM_ = 25.0f;
 
     // Class Instances
     std::unique_ptr<ERS_CLASS_AssetStreamingSystemResourceMonitor> ResourceMonitor_; /**<Instance of System Monitor Used For Tex Streaming Choices*/
