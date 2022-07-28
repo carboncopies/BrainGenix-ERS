@@ -59,7 +59,7 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 
 }
 
-void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::map<float, unsigned int>> DistancesFromCamera, ERS_STRUCT_Scene* Scene, float DistanceCutoffVRAM, float DistanceCutoffRAM) {
+void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::map<float, unsigned int>> DistancesFromCamera, ERS_STRUCT_Scene* Scene) {
 
     // Reset All Target Distances
     // for (unsigned int i = 0; i < Scene->Models.size(); i++) {
@@ -84,8 +84,8 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             int NumberTextureLevels = Model->MaxTextureLevel_ + 1;
 
             // Calculate Distance Per Level Cutoff
-            float DistancePerLevelVRAM = DistanceCutoffVRAM / NumberTextureLevels;
-            float DistancePerLevelRAM = DistanceCutoffRAM / NumberTextureLevels;
+            float DistancePerLevelVRAM = DistanceCutoffVRAM_ / NumberTextureLevels;
+            float DistancePerLevelRAM = DistanceCutoffRAM_ / NumberTextureLevels;
             int TargetTextureLevelVRAM = NumberTextureLevels - round(ModelDistance / DistancePerLevelVRAM);
             int TargetTextureLevelRAM = NumberTextureLevels - round(ModelDistance / DistancePerLevelRAM);
             if (TargetTextureLevelVRAM > NumberTextureLevels - 1) {
