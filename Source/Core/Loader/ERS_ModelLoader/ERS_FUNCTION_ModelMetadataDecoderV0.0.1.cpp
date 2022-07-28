@@ -94,10 +94,10 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
                     Texture.LevelLoadedInRAM.push_back(false);
                     Texture.LevelLoadedInVRAM.push_back(false);
 
-                    SystemUtils->Logger_->Log(std::string("Detected Texture Level '") + std::to_string(LevelIterator->first.as<int>())
-                    + "', Resolution '" + std::to_string(LevelInfo["TextureLevelResolutionX"].as<int>())
-                    + "x" + std::to_string(LevelInfo["TextureLevelResolutionY"].as<int>())
-                    + "'", 1);
+                    // SystemUtils->Logger_->Log(std::string("Detected Texture Level '") + std::to_string(LevelIterator->first.as<int>())
+                    // + "', Resolution '" + std::to_string(LevelInfo["TextureLevelResolutionX"].as<int>())
+                    // + "x" + std::to_string(LevelInfo["TextureLevelResolutionY"].as<int>())
+                    // + "'", 1);
 
                 }
 
