@@ -28,11 +28,7 @@ void GUI_Window_AssetStreamingSettings::Draw() {
 
             if (Visible) {
 
-                // Get Rendering Settings
 
-                // AssetStreaming Background Clear Color
-                ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor_);
-                ImGui::NewLine();
 
 
             }
@@ -43,7 +39,5 @@ void GUI_Window_AssetStreamingSettings::Draw() {
         ImGui::End();
 
     }
-
-    glClearColor(ClearColor_.x, ClearColor_.y, ClearColor_.z, ClearColor_.w);
 
 }
