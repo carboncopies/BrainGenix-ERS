@@ -95,6 +95,8 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             }
             if (TargetTextureLevelRAM > NumberTextureLevels - 1) {
                 TargetTextureLevelRAM = NumberTextureLevels - 1;
+            } else if (TargetTextureLevelRAM < 0) {
+                TargetTextureLevelRAM = 0;
             }
 
             // Calculate Texture Size
