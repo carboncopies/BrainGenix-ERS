@@ -124,7 +124,7 @@ private:
      * @param DistancesFromCamera 
      * @param Scene 
      */
-    void SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::map<float, unsigned int>> DistancesFromCamera, ERS_STRUCT_Scene* Scene, float DistanceCutoffVRAM = 9.0f, float DistanceCutoffRAM = 30.0f);
+    void SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::map<float, unsigned int>> DistancesFromCamera, ERS_STRUCT_Scene* Scene, float DistanceCutoffVRAM = 9.0f, float DistanceCutoffRAM = 25.0f);
 
 
 
