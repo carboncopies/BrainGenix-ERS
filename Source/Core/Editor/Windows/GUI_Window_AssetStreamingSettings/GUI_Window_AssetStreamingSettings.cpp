@@ -11,9 +11,6 @@ GUI_Window_AssetStreamingSettings::GUI_Window_AssetStreamingSettings(ERS_STRUCT_
     ModelLoader_ = ProjectUtils_->ModelLoader_.get();
     SystemUtils_->Logger_->Log("Initializing AssetStreaming Settings GUI_Window", 5);
 
-    // Setup Default Values For Input Fields
-
-
 }
 
 GUI_Window_AssetStreamingSettings::~GUI_Window_AssetStreamingSettings() {
@@ -31,7 +28,7 @@ void GUI_Window_AssetStreamingSettings::Draw() {
 
             if (Visible) {
 
-
+                ImGui::DragFloat("VRAM Cutoff", &ModelLoader_->AssetStreamingManager_->)
 
 
             }

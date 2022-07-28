@@ -44,6 +44,11 @@ private:
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
 
 public:
+
+    //
+    DistanceCutoffVRAM_ = 9.0f;
+    DistanceCutoffRAM_ = 25.0f;
+
     // Class Instances
     std::unique_ptr<ERS_CLASS_AssetStreamingSystemResourceMonitor> ResourceMonitor_; /**<Instance of System Monitor Used For Tex Streaming Choices*/
     std::unique_ptr<ERS_CLASS_AsyncTextureUpdater> AsyncTextureUpdater_; /**<Texture loader/unloader system*/
@@ -124,7 +129,7 @@ private:
      * @param DistancesFromCamera 
      * @param Scene 
      */
-    void SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::map<float, unsigned int>> DistancesFromCamera, ERS_STRUCT_Scene* Scene, float DistanceCutoffVRAM = 9.0f, float DistanceCutoffRAM = 25.0f);
+    void SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::map<float, unsigned int>> DistancesFromCamera, ERS_STRUCT_Scene* Scene);
 
 
 
