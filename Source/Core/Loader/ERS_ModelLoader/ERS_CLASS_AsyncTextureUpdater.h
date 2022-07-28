@@ -51,6 +51,7 @@ private:
     void TextureModifierWorkerThread(int Index);
 
 
+
     /**
      * @brief Loads the given mip-map level fromt the texture provided as a FIBITMAP
      * Returns true on success, false otherwise
@@ -144,6 +145,31 @@ public:
      */
     void SortModels(ERS_STRUCT_Scene* Scene);
 
+
+    /**
+     * @brief Returns the number of threads being used by the streaming system
+     * 
+     * @return int 
+     */
+    int GetNumThreads();
+
+    /**
+     * @brief Tell the system how many threads we should be using - only applies when we teardown threads and then set them up again.
+     * 
+     */
+    void SetNumThreads();
+
+    /**
+     * @brief Create the threads based on the numthreads setting
+     * 
+     */
+    void SetupThreads();
+    
+    /**
+     * @brief Destroy threads, used in destructor or when changing number of threads.
+     * 
+     */
+    void TeardownThreads();
 
 
 };
