@@ -28,8 +28,8 @@ void GUI_Window_AssetStreamingSettings::Draw() {
 
             if (Visible) {
 
-                ImGui::DragFloat("VRAM Cutoff", &ModelLoader_->AssetStreamingManager_->R)
-
+                ImGui::DragFloat("VRAM Cutoff", &ModelLoader_->AssetStreamingManager_->DistanceCutoffVRAM_);
+                ImGui::DragFloat("RAM Cutoff", &ModelLoader_->AssetStreamingManager_->DistanceCutoffRAM_);
 
             }
 
