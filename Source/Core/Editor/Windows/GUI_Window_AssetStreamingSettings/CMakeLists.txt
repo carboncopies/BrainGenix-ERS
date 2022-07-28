@@ -17,8 +17,8 @@ target_link_libraries(GUI_Window_AssetStreamingSettings
 # Link Internal Libs
 target_link_libraries(GUI_Window_AssetStreamingSettings
     ERS_STRUCT_SystemUtils
-    ERS_STRUCT_RendererSettings
-
+    ERS_STRUCT_ProjectUtils
+    ERS_CLASS_ModelLoader
     )
 
 target_include_directories(GUI_Window_AssetStreamingSettings PUBLIC ./)
