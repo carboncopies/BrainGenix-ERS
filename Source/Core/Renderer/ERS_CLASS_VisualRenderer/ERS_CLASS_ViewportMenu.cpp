@@ -127,6 +127,8 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             ImGui::MenuItem("System Resources Overlay", nullptr, &Viewport->ShowResourceInfo_);
             ImGui::MenuItem("Loading Time Overlay", nullptr, &Viewport->ShowLoadingTimeInfo_);
             ImGui::MenuItem("Light Debug Overlay", nullptr, &Viewport->ShowLightInfo_);
+            ImGui::MenuItem("RAM Loading Queue Overlay", nullptr, &Viewport->ShowRAMLoadingInfo_);
+            ImGui::MenuItem("VRAM Loading Queue Overlay", nullptr, &Viewport->ShowVRAMLoadingInfo_);
 
             ImGui::Separator();
 
