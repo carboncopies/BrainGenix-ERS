@@ -90,6 +90,8 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             int TargetTextureLevelRAM = NumberTextureLevels - round(ModelDistance / DistancePerLevelRAM);
             if (TargetTextureLevelVRAM > NumberTextureLevels - 1) {
                 TargetTextureLevelVRAM = NumberTextureLevels - 1;
+            } else if (TargetTextureLevelVRAM < 0) {
+                TargetTextureLevelVRAM = 0;
             }
             if (TargetTextureLevelRAM > NumberTextureLevels - 1) {
                 TargetTextureLevelRAM = NumberTextureLevels - 1;
