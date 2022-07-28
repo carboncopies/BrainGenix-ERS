@@ -315,7 +315,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
 
         // Unload Old 
         if (Model->TextureLevelInRAM_ > Model->TargetTextureLevelRAM) {
-            for (unsigned int LevelToUnload = (unsigned int)Model->TargetTextureLevelRAM; LevelToUnload <= (unsigned int)Model->TextureLevelInRAM_; LevelToUnload++) {
+            for (unsigned int LevelToUnload = (unsigned int)Model->TextureLevelInRAM_; LevelToUnload > (unsigned int)Model->TargetTextureLevelRAM; LevelToUnload--) {
             std::cout<<LevelToUnload<<std::endl;
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     std::cout<<Model->Name<<" Unloading Texture Level "<<LevelToUnload<<" For Tex "<<TextureIndex<<std::endl;
