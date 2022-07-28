@@ -397,8 +397,8 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread() {
         bool HasWorkItem = false;
         BlockThreads_.lock();
         if (WorkItems_.size() > 0) {
+            WorkItem = WorkItems_[0];
             if (!WorkItem->TexturesAlreadyBeingProcessed_) {
-                WorkItem = WorkItems_[0];
                 HasWorkItem = true;
                 WorkItems_.erase(WorkItems_.begin());
             }
