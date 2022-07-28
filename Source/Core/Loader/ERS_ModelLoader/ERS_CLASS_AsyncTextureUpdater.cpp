@@ -303,7 +303,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
         // Also apparenly I don't know how to spell...
         // Load New Levels Into Memory
         if (Model->TextureLevelInRAM_ < Model->TargetTextureLevelRAM) {
-            for (unsigned int LevelToLoad = (unsigned int)Model->TextureLevelInRAM_; LevelToLoad < (unsigned int)Model->TargetTextureLevelRAM; LevelToLoad++) {
+            for (unsigned int LevelToLoad = (unsigned int)Model->TextureLevelInRAM_; LevelToLoad <= (unsigned int)Model->TargetTextureLevelRAM; LevelToLoad++) {
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     std::cout<<Model->Name<<" Loading Texture Level "<<LevelToLoad<<" For Tex "<<TextureIndex<<std::endl;
                     LoadImageDataRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
@@ -315,7 +315,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
 
         // Unload Old 
         if (Model->TextureLevelInRAM_ > Model->TargetTextureLevelRAM) {
-            for (unsigned int LevelToUnload = (unsigned int)Model->TargetTextureLevelRAM; LevelToUnload < (unsigned int)Model->TextureLevelInRAM_; LevelToUnload++) {
+            for (unsigned int LevelToUnload = (unsigned int)Model->TargetTextureLevelRAM; LevelToUnload <= (unsigned int)Model->TextureLevelInRAM_; LevelToUnload++) {
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     UnloadImageDataRAM(&Model->Textures_[TextureIndex], LevelToUnload, LogEnable);
                 }
