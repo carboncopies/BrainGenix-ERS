@@ -133,16 +133,16 @@ void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUC
             ModelOutlineColor = glm::vec3(1.0f, 1.0f, 1.0f);
         } else if (BoundingBoxDisplayMode_ == 1) { // Target RAM Level
             float LevelPercentage = (float)Scene->Models[i]->TargetTextureLevelRAM / MaxTextureLevel;
-            ModelOutlineColor = glm::vec3(1.0f - LevelPercentage, LevelPercentage, 0.0f);
+            ModelOutlineColor = glm::vec3(1.0f - LevelPercentage, LevelPercentage, 1.0f - LevelPercentage);
         } else if (BoundingBoxDisplayMode_ == 2) { // Target VRAM Level
             float LevelPercentage = (float)Scene->Models[i]->TargetTextureLevelVRAM / MaxTextureLevel;
-            ModelOutlineColor = glm::vec3(1.0f - LevelPercentage, LevelPercentage, 0.0f);
+            ModelOutlineColor = glm::vec3(1.0f - LevelPercentage, LevelPercentage, 1.0f - LevelPercentage);
         } else if (BoundingBoxDisplayMode_ == 3) { // Current RAM Level
             float LevelPercentage = (float)Scene->Models[i]->TextureLevelInRAM_ / MaxTextureLevel;
-            ModelOutlineColor = glm::vec3(1.0f - LevelPercentage, LevelPercentage, 0.0f);
+            ModelOutlineColor = glm::vec3(1.0f - LevelPercentage, LevelPercentage, 1.0f - LevelPercentage);
         } else if (BoundingBoxDisplayMode_ == 4) { // Current VRAM Level
             float LevelPercentage = (float)Scene->Models[i]->TextureLevelInVRAM_ / MaxTextureLevel;
-            ModelOutlineColor = glm::vec3(1.0f - LevelPercentage, LevelPercentage, 0.0f);
+            ModelOutlineColor = glm::vec3(1.0f - LevelPercentage, LevelPercentage, 1.0f - LevelPercentage);
         }
 
         // Set Shader Uniforms
