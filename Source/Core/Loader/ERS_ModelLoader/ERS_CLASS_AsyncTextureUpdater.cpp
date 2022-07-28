@@ -308,6 +308,8 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
                     std::cout<<Model->Name<<" Loading Texture Level "<<LevelToLoad<<" For Tex "<<TextureIndex<<std::endl;
                     LoadImageDataRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
                 }
+                Model->TextureLevelInRAM_ = LevelToLoad;
+
             }
         }
 
@@ -317,6 +319,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     UnloadImageDataRAM(&Model->Textures_[TextureIndex], LevelToUnload, LogEnable);
                 }
+                Model->TextureLevelInRAM_ = LevelToUnload;
             }
         }
 
