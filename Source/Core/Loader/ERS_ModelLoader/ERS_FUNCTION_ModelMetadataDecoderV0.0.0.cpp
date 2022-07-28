@@ -45,6 +45,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model*
                 Texture.LevelMemorySizeBytes.push_back(-1);
                 Texture.LevelResolutions.push_back(std::make_pair(-1, -1));
                 Model->Textures_.push_back(Texture);
+                Model->TexturesAlreadyBeingProcessed_ = false;
                 Model->MaxTextureLevel_ = 0;
             }
         } else {
