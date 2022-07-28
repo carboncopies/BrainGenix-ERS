@@ -302,7 +302,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
         // NOTE: RAM UPDATES MUST BE CONSECUATIVE (you must have every level loaded consecuitively, eg: if you have level 3 loaded, you must also have 0,1,2 as well)
         // Also apparenly I don't know how to spell...
         // Load New Levels Into Memory
-sssssssss        if (Model->TextureLevelInRAM_ < Model->TargetTextureLevelRAM) {
+        if (Model->TextureLevelInRAM_ < Model->TargetTextureLevelRAM) {
             for (unsigned int LevelToLoad = (unsigned int)Model->TextureLevelInRAM_; LevelToLoad <= (unsigned int)Model->TargetTextureLevelRAM; LevelToLoad++) {
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     std::cout<<Model->Name<<" Loading Texture Level "<<LevelToLoad<<" For Tex "<<TextureIndex<<std::endl;
