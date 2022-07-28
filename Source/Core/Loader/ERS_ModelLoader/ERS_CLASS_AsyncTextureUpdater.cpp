@@ -26,7 +26,7 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
         }
     }
 
-    Threads = 1;
+    //Threads = 1;
 
     // Setup Threads
     SystemUtils_->Logger_->Log("Starting Worker Thread Pool", 4);
