@@ -190,7 +190,6 @@ public:
     bool GetQueuePrioritizationEnabled();
     void SetQueuePrioritizationEnabled(bool State);
 
-//PrioritizeQueueByVisualImpact_
 
 };
 
