@@ -242,7 +242,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     int MaxWidth = Texture->LevelResolutions[Level].first;
     int MaxHeight = Texture->LevelResolutions[Level].second;
     glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, NULL);
-    glGenerateMipmap(GL_TEXTURE_2D);
+    //glGenerateMipmap(GL_TEXTURE_2D);
 
     // Load MipMaps Into Texture
     for (int i = 0; i < Level; i++) {
