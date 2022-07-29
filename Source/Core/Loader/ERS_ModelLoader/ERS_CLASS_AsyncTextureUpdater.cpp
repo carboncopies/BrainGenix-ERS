@@ -44,18 +44,8 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 
     SystemUtils_->Logger_->Log("Automatic Texture Loading Subsystem Shutdown Invoked", 6);
 
-    // Send Shutdown Command
-    SystemUtils_->Logger_->Log("Sending Stop Command To Worker Thread Pool", 5);
-    StopThreads_ = true;
-    SystemUtils_->Logger_->Log("Stop Command Sent", 3);
 
-    // Join Threads
-    SystemUtils_->Logger_->Log("Joining Texture Streaming Worker Thread Pool", 5);
-    for (unsigned int i = 0; i < TextureWorkerThreads_.size(); i++) {
-        SystemUtils_->Logger_->Log(std::string("Joining Texture Streaming Worker Thread '") + std::to_string(i) + "'", 3);
-        TextureWorkerThreads_[i].join();
-    }
-    SystemUtils_->Logger_->Log("Finished Joining Texture Streaming Worker Thread Pool", 4);
+    TeardownThreads();
 
     // Cleanup
     SystemUtils_->Logger_->Log("Cleaning Up OpenGL/GLFW", 6);
@@ -456,5 +446,34 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread(int Index) {
 
     // Shut Down FreeImage
     FreeImage_DeInitialise();
+}
+
+int ERS_CLASS_AsyncTextureUpdater::GetNumThreads() {
+    return NumThreads_;
+}
+
+void ERS_CLASS_AsyncTextureUpdater::SetNumThreads(int NumThreads) {
+    NumThreads_ = NumThreads;
+}
+
+void ERS_CLASS_AsyncTextureUpdater::SetupThreads() {
+
+}
+
+void ERS_CLASS_AsyncTextureUpdater::TeardownThreads() {
+
+    // Send Shutdown Command
+    SystemUtils_->Logger_->Log("Sending Stop Command To Worker Thread Pool", 5);
+    StopThreads_ = true;
+    SystemUtils_->Logger_->Log("Stop Command Sent", 3);
+
+    // Join Threads
+    SystemUtils_->Logger_->Log("Joining Texture Streaming Worker Thread Pool", 5);
+    for (unsigned int i = 0; i < TextureWorkerThreads_.size(); i++) {
+        SystemUtils_->Logger_->Log(std::string("Joining Texture Streaming Worker Thread '") + std::to_string(i) + "'", 3);
+        TextureWorkerThreads_[i].join();
+    }
+    SystemUtils_->Logger_->Log("Finished Joining Texture Streaming Worker Thread Pool", 4);
+
 }
 

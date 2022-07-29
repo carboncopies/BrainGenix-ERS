@@ -40,10 +40,13 @@ private:
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
     GLFWwindow* MainThreadWindowContext_; /**<GLFWWindow Object Used To Setup Shared Contexts*/
 
+    int NumThreads_ = 0; /**<Target Number of threads that we should be using*/
     std::vector<std::thread> TextureWorkerThreads_; /**<Vector containing thread objects for the worker pool*/
     std::mutex BlockThreads_; /**<Lock this to block all the treads (Usually done to add new items to the work queue)*/
     std::atomic_bool StopThreads_; /**<Used to start/stop threads*/
     std::vector<std::shared_ptr<ERS_STRUCT_Model>> WorkItems_; /**<Models here have some work that needs to be done to them*/
+
+
     /**
      * @brief Method called as worker thread.
      * 
@@ -156,8 +159,9 @@ public:
     /**
      * @brief Tell the system how many threads we should be using - only applies when we teardown threads and then set them up again.
      * 
+     * @param NumThreads
      */
-    void SetNumThreads();
+    void SetNumThreads(int NumThreads);
 
     /**
      * @brief Create the threads based on the numthreads setting
