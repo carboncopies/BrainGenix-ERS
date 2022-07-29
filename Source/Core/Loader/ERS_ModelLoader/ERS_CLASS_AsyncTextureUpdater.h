@@ -118,12 +118,21 @@ private:
     void ProcessWorkItem(ERS_STRUCT_Model* Model);
 
     /**
-     * @brief Loads/Unloads all textures in the model as needed to get the target level.
+     * @brief Loads/Unloads all textures in the model as needed to get the target level (For RAM).
      * 
      * @param Model 
      * @param LogEnable
      */
     void SetLevelRAM(ERS_STRUCT_Model* Model, bool LogEnable = true);
+
+    /**
+     * @brief Loads/Unloads all textures in the model as needed to get the target level (For VRAM).
+     * 
+     * @param Model 
+     * @param LogEnable
+     */
+    void SetLevelVRAM(ERS_STRUCT_Model* Model, bool LogEnable = true);
+
 
 public:
 
