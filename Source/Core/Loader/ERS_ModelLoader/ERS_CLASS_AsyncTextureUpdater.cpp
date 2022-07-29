@@ -313,11 +313,11 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
 void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool LogEnable) {
 
 
-        if (Model->TextureLevelInRAM_ < Model->TargetTextureLevelRAM) {
+        if (Model->TextureLevelInVRAM_ < Model->TargetTextureLevelVRAM) {
             
         }
 
-        else if (Model->TextureLevelInRAM_ > Model->TargetTextureLevelRAM) {
+        else if (Model->TextureLevelInVRAM_ > Model->TargetTextureLevelVRAM) {
 
         }
 
