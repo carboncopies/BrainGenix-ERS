@@ -12,7 +12,7 @@ GUI_Window_AssetStreamingSettings::GUI_Window_AssetStreamingSettings(ERS_STRUCT_
     SystemUtils_->Logger_->Log("Initializing AssetStreaming Settings GUI_Window", 5);
 
     // Copy In Default Parameters
-    TextureStreamingThreads_ = ModelLoader_->AssetStreamingManager_->GetNumThreads();
+    TextureStreamingThreads_ = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetNumThreads();
 
 }
 
@@ -23,7 +23,7 @@ GUI_Window_AssetStreamingSettings::~GUI_Window_AssetStreamingSettings() {
 void GUI_Window_AssetStreamingSettings::Draw() {
 
     if (Enabled_) {
-        bool Visible = ImGui::Begin("AssetStreaming Settings", &Enabled_);
+        bool Visible = ImGui::Begin("Asset Streaming Settings", &Enabled_);
 
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
@@ -31,8 +31,18 @@ void GUI_Window_AssetStreamingSettings::Draw() {
 
             if (Visible) {
 
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+
+
                 ImGui::DragFloat("VRAM Cutoff", &ModelLoader_->AssetStreamingManager_->DistanceCutoffVRAM_, 0.01f, 0.0f, 999.0f);
                 ImGui::DragFloat("RAM Cutoff", &ModelLoader_->AssetStreamingManager_->DistanceCutoffRAM_, 0.01f, 0.0f, 999.0f);
+
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+
 
             }
 
