@@ -66,7 +66,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     ProjectUtils_->ModelLoader_->AssetStreamingManager_->UpdateSceneStreamingQueue(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), Cameras);
     
     
-    std::cout<<sizeof(SceneManager->Scenes_[0]->Models)<<std::endl;
 
     // Set Depth Shader For Shadow System
     DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthMap"), &Shaders_)].get();
