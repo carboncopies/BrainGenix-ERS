@@ -372,7 +372,7 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
                     int HighestTargetLevel = max(Scene->Models[i]->TargetTextureLevelRAM, Scene->Models[i]->TargetTextureLevelVRAM);
                     float Priority = HighestTargetLevel / Scene->Models[i]->MaxTextureLevel_;
                     int Index = WorkItems_.size() * Priority;
-                    WorkItems_.insert(Scene->Models[i], Index);
+                    WorkItems_.insert(Index, Scene->Models[i]);
                 } else {
                     WorkItems_.push_back(Scene->Models[i]);
                 }
