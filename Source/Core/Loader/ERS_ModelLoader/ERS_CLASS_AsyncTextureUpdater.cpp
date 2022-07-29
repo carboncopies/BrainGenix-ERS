@@ -324,10 +324,19 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
                 SetLevelRAM(Model, LogEnable);
             }
 
+
             // Load This VRAM Level For All Textures
             int LevelToLoad = Model->TargetTextureLevelVRAM;
             for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
+
+                // Requested Level
                 LoadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
+
+                // Ensure That Level 0 Is Always Loaded
+                if (!Model->Textures_[TextureIndex].LevelLoadedInVRAM[0]) {
+                    LoadImageDataVRAM(&Model->Textures_[TextureIndex], 0, LogEnable);
+                }
+
             }
             Model->TextureLevelInVRAM_ = LevelToLoad;
         }
@@ -342,6 +351,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
                     if (Model->Textures_[TextureIndex].LevelLoadedInVRAM[LevelToUnload]) {
                         UnloadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToUnload, LogEnable);
                     }
+
                 }
                 Model->TextureLevelInVRAM_ = LevelToUnload - 1;
             }
