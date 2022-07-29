@@ -239,10 +239,9 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     // Load Images Into Texture
     for (int i = 0; i < Level; i++) {
-        FIBITMAP* ImageData = Texture->LevelBitmaps[Level - i];
         int Width = Texture->LevelResolutions[Level - i].first;
         int Height = Texture->LevelResolutions[Level - i].second;
-        unsigned char* ImageBytes = (unsigned char*)ImageData->data;
+        unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[Level - i]);
         glTexImage2D(GL_TEXTURE_2D, i, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
     }
     glBindTexture(GL_TEXTURE_2D, 0);
