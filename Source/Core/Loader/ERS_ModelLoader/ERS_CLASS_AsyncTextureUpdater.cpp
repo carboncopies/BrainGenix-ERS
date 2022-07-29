@@ -333,6 +333,8 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
         }
 
         else if (Model->TextureLevelInVRAM_ > Model->TargetTextureLevelVRAM) {
+
+            // Here, we unload *all* levels that are above the target (if they're loaded)
             for (unsigned int LevelToUnload = (unsigned int)Model->TextureLevelInVRAM_; LevelToUnload > (unsigned int)Model->TargetTextureLevelVRAM; LevelToUnload--) {
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     
