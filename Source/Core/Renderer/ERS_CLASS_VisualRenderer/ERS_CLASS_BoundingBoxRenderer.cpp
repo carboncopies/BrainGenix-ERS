@@ -122,7 +122,7 @@ void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUC
         ModelMatrix = glm::rotate(ModelMatrix, glm::radians(Scene->Models[i]->ModelRotation.z), glm::vec3(0, 0, 1));
         ModelMatrix = glm::rotate(ModelMatrix, glm::radians(Scene->Models[i]->ModelRotation.y), glm::vec3(0, 1, 0));
         ModelMatrix = glm::rotate(ModelMatrix, glm::radians(Scene->Models[i]->ModelRotation.x), glm::vec3(1, 0, 0));
-        ModelMatrix = glm::scale(ModelMatrix, Scene->Models[i]->ModelScale * Scene->Models[i]->BoxScale_ * glm::vec3(1.025));
+        ModelMatrix = glm::scale(ModelMatrix, Scene->Models[i]->ModelScale * Scene->Models[i]->BoxScale_ * glm::vec3(1.025)); // Fix Z-Flghting
 
 
         // Determine Color Based On Mode And Info
