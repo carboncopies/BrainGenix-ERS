@@ -369,7 +369,10 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
             if (CanAdd) {
 
                 if (PrioritizeQueueByVisualImpact_) {
-
+                    int HighestTargetLevel = max(Scene->Models[i]->TargetTextureLevelRAM, Scene->Models[i]->TargetTextureLevelVRAM);
+                    float Priority = HighestTargetLevel / Scene->Models[i]->MaxTextureLevel_;
+                    int Index = WorkItems_.size() * Priority;
+                    WorkItems_.insert(Scene->Models[i], Index);
                 } else {
                     WorkItems_.push_back(Scene->Models[i]);
                 }
