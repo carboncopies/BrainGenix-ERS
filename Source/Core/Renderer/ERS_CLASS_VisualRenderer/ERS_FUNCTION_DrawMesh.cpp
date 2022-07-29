@@ -88,28 +88,14 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
 
         // Check If Texture Has Any Levels
         if (Mesh->Textures_[i]->HasAnyLevelReady) {
-
-            
-            
-            // Bind Texture
             glActiveTexture(GL_TEXTURE0 + TypeID);
             glBindTexture(GL_TEXTURE_2D, Mesh->Textures_[i]->BestAvailableOpenGLID);
 
-            bool IsTex = glIsTexture(Mesh->Textures_[i]->BestAvailableOpenGLID);
-            std::cout<<Mesh->Textures_[i]->BestAvailableOpenGLID<<"|"<<IsTex<<std::endl;
-
         } else {
-
-            // Bind Texture
             glActiveTexture(GL_TEXTURE0 + TypeID);
             glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->Loadingtexture_);
 
         }
-
-
-                    // Bind Texture
-            glActiveTexture(GL_TEXTURE0 + TypeID);
-            glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->Loadingtexture_);
 
     }
 
