@@ -314,7 +314,22 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
 
 
         if (Model->TextureLevelInVRAM_ < Model->TargetTextureLevelVRAM) {
-            
+
+            // We Need All Texture Levels In RAM To Push To VRAM, Check This Is True!
+            // If It's Not, We're Going To Load Them
+            if (Model->TextureLevelInRAM_ <= Model->TargetTextureLevelVRAM) {
+                if (Model->TargetTextureLevelRAM < Model->TargetTextureLevelVRAM) {
+                    Model->TargetTextureLevelRAM = Model->TargetTextureLevelVRAM;
+                }
+                SetLevelRAM(Model, LogEnable);
+            }
+
+            // Load This VRAM Level For All Textures
+            int LevelToLoad = Model->TargetTextureLevelVRAM;
+            for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
+                LoadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
+            }
+            Model->TextureLevelInVRAM_ = LevelToLoad;
         }
 
         else if (Model->TextureLevelInVRAM_ > Model->TargetTextureLevelVRAM) {
