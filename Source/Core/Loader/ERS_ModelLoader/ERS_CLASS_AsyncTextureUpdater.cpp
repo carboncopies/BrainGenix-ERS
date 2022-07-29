@@ -26,7 +26,7 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
         }
     }
 
-    SetNumThreads(Threads);
+    SetNumThreads(1);
     SetupThreads();
 
 }
@@ -288,13 +288,13 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     LoadImageDataRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
                 }
-                Model->TextureLevelInRAM_ = LevelToLoad + 1;
+                Model->TextureLevelInRAM_ = LevelToLoad;
 
             }
         }
 
         // Unload Old 
-        if (Model->TextureLevelInRAM_ > Model->TargetTextureLevelRAM) {
+        else if (Model->TextureLevelInRAM_ > Model->TargetTextureLevelRAM) {
             for (unsigned int LevelToUnload = (unsigned int)Model->TextureLevelInRAM_; LevelToUnload > (unsigned int)Model->TargetTextureLevelRAM; LevelToUnload--) {
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     UnloadImageDataRAM(&Model->Textures_[TextureIndex], LevelToUnload, LogEnable);
