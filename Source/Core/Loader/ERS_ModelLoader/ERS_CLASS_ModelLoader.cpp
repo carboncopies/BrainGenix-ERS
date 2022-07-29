@@ -480,7 +480,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
 
 
     // Math Textures To Meshes
-    MatchTextures(Model.get();)
+    MatchTextures(Model.get());
 
 
     // Set Ready For GPU
