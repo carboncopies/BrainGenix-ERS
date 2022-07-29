@@ -14,6 +14,8 @@ GUI_Window_AssetStreamingSettings::GUI_Window_AssetStreamingSettings(ERS_STRUCT_
     // Copy In Default Parameters
     TextureStreamingThreads_ = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetNumThreads();
 
+    MaxThreads_ = std::thread::hardware_concurrency();
+
 }
 
 GUI_Window_AssetStreamingSettings::~GUI_Window_AssetStreamingSettings() {
@@ -33,6 +35,8 @@ void GUI_Window_AssetStreamingSettings::Draw() {
 
                 ImGui::Spacing();
                 ImGui::Separator();
+                ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Texture Streaming");
+                ImGui::Separator();
                 ImGui::Spacing();
 
 
@@ -42,6 +46,17 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                 ImGui::Spacing();
                 ImGui::Separator();
                 ImGui::Spacing();
+
+                ImGui::SliderInt("Texture Streaming Threads", &TextureStreamingThreads_, 0, MaxThreads_);
+
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+                if (ImGui::Button("Apply")) {
+                    ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetNumThreads(TextureStreamingThreads_);
+                    ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->TeardownThreads();
+                    ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetupThreads();
+                }
 
 
             }
