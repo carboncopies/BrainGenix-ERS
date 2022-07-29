@@ -277,6 +277,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
         FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
         FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
         FreeImage_CloseMemory(FIImageData);
+        FreeImage_FlipVertical(Image);
         SystemUtils_->Logger_->Log(std::string("Loaded Texture Image"), 3);
 
 
