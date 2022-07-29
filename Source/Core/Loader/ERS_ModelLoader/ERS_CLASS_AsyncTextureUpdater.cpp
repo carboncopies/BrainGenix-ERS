@@ -73,6 +73,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
     FreeImage_CloseMemory(FIImageData);
 
+
     // Detect Width/Height
     int Width = FreeImage_GetWidth(Image);
     int Height = FreeImage_GetHeight(Image);
