@@ -354,21 +354,19 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessWorkItem(ERS_STRUCT_Model* Model) {
     
     // Identify Type Of Work To Be Done
     int TargetRAMLevel = Model->TargetTextureLevelRAM;
-    //int TargetVRAMLevel = Model->TargetTextureLevelVRAM;
+    int TargetVRAMLevel = Model->TargetTextureLevelVRAM;
 
 
     // Perform RAM Updates
     if (Model->TextureLevelInRAM_!= TargetRAMLevel) {
         SetLevelRAM(Model, true);
     }
+
     // Perform VRAM Updates
-
-        // NOTE: VRAM Updates don't need to be consecuative, but they must have every prior level loaded in ram first, so we might need to perform that loading first.
-
-        // Perform Loads 
-        // Perform Unloads
-
-        
+    if (Model->TextureLevelInVRAM_ != TargetVRAMLevel) {
+        SetLevelVRAM(Model, true);
+    }
+       
 
 
 }
