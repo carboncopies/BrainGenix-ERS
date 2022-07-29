@@ -39,6 +39,7 @@ private:
 
     // Settings
     int TextureStreamingThreads_ = -1;
+    int TextureStreamingQueueLimit_ = -1;
     int MaxThreads_ = -1;
 
 
