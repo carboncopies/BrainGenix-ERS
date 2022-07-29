@@ -479,6 +479,10 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     // }
 
 
+    // Math Textures To Meshes
+    
+
+
     // Set Ready For GPU
     Model->IsReadyForGPU = true;
 }

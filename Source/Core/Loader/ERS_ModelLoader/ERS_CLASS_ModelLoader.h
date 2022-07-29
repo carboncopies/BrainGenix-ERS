@@ -142,6 +142,12 @@ private:
      */
     void AddModelToReferenceQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model);
 
+    /**
+     * @brief Creates texture pointers within the model's meshes
+     * 
+     * @param Model 
+     */
+    void MatchTextures(ERS_STRUCT_Model* Model);
 
 public:
 
