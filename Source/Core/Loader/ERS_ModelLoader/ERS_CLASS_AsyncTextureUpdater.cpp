@@ -351,7 +351,7 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
             bool CanAdd = true;
 
             // Check If Queue Full
-            if (WorkItems_.size() >= WorkQueueLimit_) {
+            if (WorkItems_.size() >= (unsigned int)WorkQueueLimit_) {
                 CanAdd = false;
             }
 
