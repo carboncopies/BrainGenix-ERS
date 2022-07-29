@@ -321,6 +321,21 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
             SystemUtils_->Logger_->Log(std::string("Resizing Texture Image To Size '") + std::to_string(TargetX) + "," + std::to_string(TargetY) + "'", 4);
             FIBITMAP* NewImage = FreeImage_Rescale(Image, TargetX, TargetY);
 
+            // Swap Colors From RGB To BGR
+            FIBITMAP* Red = FreeImage_GetChannel(NewImage, FICC_RED);
+            FIBITMAP* Green = FreeImage_GetChannel(NewImage, FICC_GREEN);
+            FIBITMAP* Blue = FreeImage_GetChannel(NewImage, FICC_BLUE);
+            
+            FreeImage_SetChannel(NewImage, Red, FICC_BLUE);
+            FreeImage_SetChannel(NewImage, Green, FICC_GREEN);
+            FreeImage_SetChannel(NewImage, Blue, FICC_RED);
+            
+            FreeImage_Unload(Red);
+            FreeImage_Unload(Green);
+            FreeImage_Unload(Blue);
+            
+
+
             // Get Metadata Info
             int MemorySize = FreeImage_GetMemorySize(NewImage);
             long ImageAssetID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
