@@ -22,7 +22,11 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
             Threads = (*SystemUtils_->LocalSystemConfiguration_)["TextureLoaderThreadCount"].as<int>();
         } else {
             SystemUtils_->Logger_->Log("Autodetecting Number Of Threads To Use", 4);
-            Threads = std::thread::hardware_concurrency();
+            Threads = std::thread::hardware_concurrency() - 2;
+            if (Threads < 2) {
+                Threads = 2;
+                SystemUtils_->Logger_->Log("Less Than Two CPUs Detected, Will Use Two Threads Regardless, However Frame Drops May Happen", 6);
+            }
         }
     }
 
