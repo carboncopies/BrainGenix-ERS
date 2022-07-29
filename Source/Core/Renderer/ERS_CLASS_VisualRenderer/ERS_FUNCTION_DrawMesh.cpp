@@ -45,50 +45,55 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
     // Iterate Through Textures
     for (unsigned int i = 0; i < Mesh->Textures_.size(); i++) {
 
-        // Set To Proper Texture
-        glActiveTexture(GL_TEXTURE0 + i);
+        // Check If Texture Has Any Levels
+        if (Mesh->Textures_[i]->HasAnyLevelReady) {
 
-        // Get Texture Number
-        std::string Number;
-        std::string Type = Mesh->Textures_[i]->Type;
-        int TypeID = 0;
+            // Set To Proper Texture
+            glActiveTexture(GL_TEXTURE0 + i);
 
-        // Detect Type
-        if(Type == "texture_ambient_occlusion") {
-            Number = std::to_string(AmbientOcclusionHandle++);
-            TypeID = 1;
-            HasAmbientOcclusion = true;
-        } else if(Type == "texture_diffuse") {
-            Number = std::to_string(DiffuseHandle++);
-            TypeID = 2;
-            HasDiffuse = true;
-        } else if(Type == "texture_displacement") {
-            Number = std::to_string(DisplacementHandle++);
-            TypeID = 3;
-            HasDisplacement = true;
-        } else if(Type == "texture_emissive") {
-            Number = std::to_string(EmissiveHandle++);
-            TypeID = 4;
-            HasEmissive = true;
-        } else if(Type == "texture_metalness") {
-            Number = std::to_string(MetalnessHandle++);
-            TypeID = 5;
-            HasMetalness = true;
-        } else if(Type == "texture_normals") {
-            Number = std::to_string(NormalsHandle++);
-            TypeID = 6;
-            HasNormals = true;
-        } else if(Type == "texture_shininess") {
-            Number = std::to_string(ShininessHandle++);
-            TypeID = 7;
-            HasShininess = true;
+            // Get Texture Type ID
+            std::string Number;
+            std::string Type = Mesh->Textures_[i]->Type;
+            int TypeID = 0;
+
+            // Detect Type
+            if(Type == "texture_ambient_occlusion") {
+                Number = std::to_string(AmbientOcclusionHandle++);
+                TypeID = 1;
+                HasAmbientOcclusion = true;
+            } else if(Type == "texture_diffuse") {
+                Number = std::to_string(DiffuseHandle++);
+                TypeID = 2;
+                HasDiffuse = true;
+            } else if(Type == "texture_displacement") {
+                Number = std::to_string(DisplacementHandle++);
+                TypeID = 3;
+                HasDisplacement = true;
+            } else if(Type == "texture_emissive") {
+                Number = std::to_string(EmissiveHandle++);
+                TypeID = 4;
+                HasEmissive = true;
+            } else if(Type == "texture_metalness") {
+                Number = std::to_string(MetalnessHandle++);
+                TypeID = 5;
+                HasMetalness = true;
+            } else if(Type == "texture_normals") {
+                Number = std::to_string(NormalsHandle++);
+                TypeID = 6;
+                HasNormals = true;
+            } else if(Type == "texture_shininess") {
+                Number = std::to_string(ShininessHandle++);
+                TypeID = 7;
+                HasShininess = true;
+            }
+
+            glUniform1i(glGetUniformLocation(Shader->ShaderProgram_, (Type + Number).c_str()), TypeID);
+            
+            // Bind Texture
+            glActiveTexture(GL_TEXTURE0 + TypeID);
+            glBindTexture(GL_TEXTURE_2D, Mesh->Textures_[i]->BestAvailableOpenGLID);
+
         }
-
-        glUniform1i(glGetUniformLocation(Shader->ShaderProgram_, (Type + Number).c_str()), TypeID);
-        
-        // Bind Texture
-        glActiveTexture(GL_TEXTURE0 + TypeID);
-        glBindTexture(GL_TEXTURE_2D, Mesh->Textures_[i]->BestAvailableOpenGLID);
 
     }
 
