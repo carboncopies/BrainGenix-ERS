@@ -66,6 +66,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     ERS_STRUCT_IOData ImageData;
     long LevelAssetID = Texture->LevelTextureAssetIDs[Level];
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(LevelAssetID, &ImageData);
+    std::cout<<ImageData.Size_B<<"|"<<ImageData.LoadSpeed_MBs<<std::endl;
 
     // Decode Image
     FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData.Data.get(), ImageData.Size_B);
