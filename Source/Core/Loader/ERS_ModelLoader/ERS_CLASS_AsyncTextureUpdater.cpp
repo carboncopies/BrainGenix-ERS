@@ -335,6 +335,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
                 // Ensure That Level 0 Is Always Loaded
                 if (!Model->Textures_[TextureIndex].LevelLoadedInVRAM[0]) {
                     LoadImageDataVRAM(&Model->Textures_[TextureIndex], 0, LogEnable);
+                    Model->Textures_[TextureIndex].HasAnyLevelReady = true;
                 }
 
             }
