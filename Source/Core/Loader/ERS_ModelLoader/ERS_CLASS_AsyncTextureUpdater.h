@@ -185,8 +185,10 @@ public:
     void SetQueueLimit(int QueueLimit);
     bool GetDupeQueueEntryPrevention();
     void SetDupeQueueEntryPrevention(bool State);
-    //bool GetWorkQueuePrioritization();
-    //void SetDupeQueueEntryPreventi(bool State);
+    bool GetWorkQueuePrioritization();
+    void SetDupeQueueEntryPreventi(bool State);
+    bool GetQueuePrioritizationEnabled();
+    void SetQueuePrioritizationEnabled(bool State);
 
 //PrioritizeQueueByVisualImpact_
 

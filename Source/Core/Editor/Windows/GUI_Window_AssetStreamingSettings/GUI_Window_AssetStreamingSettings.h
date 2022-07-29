@@ -42,6 +42,7 @@ private:
     int TextureStreamingQueueLimit_ = -1;
 
     bool PreventDupeQueueEntries_ = false;
+    bool QueuePrioritizationEnabled_ = false;
 
     int MaxThreads_ = -1;
 
