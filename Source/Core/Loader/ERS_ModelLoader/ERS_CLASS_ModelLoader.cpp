@@ -646,7 +646,7 @@ void ERS_CLASS_ModelLoader::IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mes
             std::string TextureIdentifier = std::string(std::string(TextureString.C_Str()));
 
             //std::string Message = std::string("Model Requesting Texture Of Type '") + TypeName + std::string("' With Identifier '") + TextureIdentifier + std::string("'");
-            SystemUtils_->Logger_->Log(Message, 3);
+            //SystemUtils_->Logger_->Log(Message, 3);
 
             // Search Texture List For Index Of Same Match, Add To List Of Unique Textures If Not Found
             bool AlreadyHasTexture = false;
