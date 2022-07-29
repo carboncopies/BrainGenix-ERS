@@ -9,6 +9,7 @@
 #include <vector>
 #include <thread>
 #include <chrono>
+#include <math>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
