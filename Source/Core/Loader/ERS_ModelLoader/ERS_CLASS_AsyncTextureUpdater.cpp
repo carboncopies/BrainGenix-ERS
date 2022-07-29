@@ -330,10 +330,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     GLenum TextureExternFormat;
     if (Channels == 4) {
         TextureInternFormat = GL_RGBA;
-        TextureExternFormat = GL_BGRA;
+        TextureExternFormat = GL_RGBA;
     } else if (Channels == 3) {
         TextureInternFormat = GL_RGB;
-        TextureExternFormat = GL_BGR;
+        TextureExternFormat = GL_RGB;
     } else if (Channels == 2) {
         TextureInternFormat = GL_RG;
         TextureExternFormat = GL_RG;
