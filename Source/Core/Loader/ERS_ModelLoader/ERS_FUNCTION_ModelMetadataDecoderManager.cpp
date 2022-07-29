@@ -17,10 +17,10 @@ bool ERS_FUNCTION_DecodeModelMetadata(YAML::Node Metadata, ERS_STRUCT_Model* Mod
     // Decode Based On Version
     if (FormatVersion == "0.0.0") {
         SystemUtils->Logger_->Log("Determined Model Metadata Version To Be '0.0.0', Attempting To Decode Model Metadata", 3, LogEnable);
-        return ERS_FUNCTION_DecodeModelMetadataV000(Metadata, Model, SystemUtils, AssetID);
+        return ERS_FUNCTION_DecodeModelMetadataV000(Metadata, Model, SystemUtils, AssetID, LogEnable);
     } else if (FormatVersion == "0.0.1") {
         SystemUtils->Logger_->Log("Determined Model Metadata Version To Be '0.0.1', Attempting To Decode Model Metadata", 3, LogEnable);
-        return ERS_FUNCTION_DecodeModelMetadataV001(Metadata, Model, SystemUtils, AssetID, false);
+        return ERS_FUNCTION_DecodeModelMetadataV001(Metadata, Model, SystemUtils, AssetID, LogEnable);
     }
 
     // Failed To Decode Version
