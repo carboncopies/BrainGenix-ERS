@@ -451,9 +451,9 @@ void ERS_CLASS_AsyncTextureUpdater::SetupThreads() {
 
     // Setup Threads
     SystemUtils_->Logger_->Log("Starting Worker Thread Pool", 4);
-    SystemUtils_->Logger_->Log(std::string("Worker Pool Will Have ") + std::to_string(Threads) + " Threads", 3);
+    SystemUtils_->Logger_->Log(std::string("Worker Pool Will Have ") + std::to_string(NumThreads_) + " Threads", 3);
     StopThreads_ = false;
-    for (unsigned int i = 0; i < Threads; i++) {
+    for (unsigned int i = 0; i < NumThreads_; i++) {
         TextureWorkerThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread, this, i));
         SystemUtils_->Logger_->Log(std::string("Started Worker Thread '") + std::to_string(i) + "'", 2);
     }
@@ -474,6 +474,8 @@ void ERS_CLASS_AsyncTextureUpdater::TeardownThreads() {
         SystemUtils_->Logger_->Log(std::string("Joining Texture Streaming Worker Thread '") + std::to_string(i) + "'", 3);
         TextureWorkerThreads_[i].join();
     }
+    TextureWorkerThreads_.clear();
+
     SystemUtils_->Logger_->Log("Finished Joining Texture Streaming Worker Thread Pool", 4);
 
 }
