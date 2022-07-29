@@ -501,4 +501,13 @@ void ERS_CLASS_AsyncTextureUpdater::SetQueueLimit(int QueueLimit) {
     WorkQueueLimit_ = QueueLimit;
 }
 
+bool ERS_CLASS_AsyncTextureUpdater::GetDupeQueueEntryPrevention() {
+    return PreventDuplicateWorkItems_;
+}
+
+void ERS_CLASS_AsyncTextureUpdater::SetDupeQueueEntryPrevention(bool State) {
+    PreventDuplicateWorkItems_ = State;
+}
+
+
 
