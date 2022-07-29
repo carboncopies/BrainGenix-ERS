@@ -501,14 +501,17 @@ void ERS_CLASS_ModelLoader::MatchTextures(ERS_STRUCT_Model* Model) {
 
         // Iterate Over Mesh's Requested Textures, Try To Match With What Model Has
         for (unsigned int TextureIndex = 0; TextureIndex < CurrentMesh->Loader_RequestedTextureInformation_.size(); TextureIndex++) {
-            std::string TextureType = CurrentMesh->Loader_RequestedTextureInformation_[TextureIndex].first;
             std::string TextureIdentifier = CurrentMesh->Loader_RequestedTextureInformation_[TextureIndex].second;
 
             // Now, Search Model's Textures For Match
             for (unsigned int ModelTextureIndex = 0; ModelTextureIndex < Model->Textures_.size(); ModelTextureIndex++) {
-                std::string ModelTextureType = Model->Textures_[ModelTextureIndex].Type;
                 std::string ModelTextureIdentifier = Model->Textures_[ModelTextureIndex].Path;
                 
+                if (ModelTextureIdentifier == TextureIdentifier) {
+                    CurrentMesh->Textures_.push_back(&Model->Textures_[ModelTextureIndex]);
+                    break;
+                }
+
             }
 
         }
