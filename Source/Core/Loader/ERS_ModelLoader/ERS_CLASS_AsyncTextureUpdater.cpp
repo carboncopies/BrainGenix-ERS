@@ -239,19 +239,18 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     
     // Setup Texture To Accept MipMaps
-    int MaxLevel = Texture->LevelResolutions.size() - 1;
-    int MaxWidth = Texture->LevelResolutions[MaxLevel - Level].first;
-    int MaxHeight = Texture->LevelResolutions[MaxLevel - Level].second;
+    int MaxWidth = Texture->LevelResolutions[Level].first;
+    int MaxHeight = Texture->LevelResolutions[Level].second;
     glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, NULL);
+    glGenerateMipmap(GL_TEXTURE_2D);
 
     // Load MipMaps Into Texture
-    for (int i = Level; i >= 0; i--) {
-        int Width = Texture->LevelResolutions[MaxLevel - i].first;
-        int Height = Texture->LevelResolutions[MaxLevel - i].second;
-        unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[MaxLevel - i]);
-        glTexSubImage2D(GL_TEXTURE_2D, MaxLevel - i, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
+    for (int i = 0; i < Level; i++) {
+        int Width = Texture->LevelResolutions[Level - i].first;
+        int Height = Texture->LevelResolutions[Level - i].second;
+        unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[Level - i]);
+        glTexSubImage2D(GL_TEXTURE_2D, i, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
     }
-    glGenerateMipmap(GL_TEXTURE_2D);
 
     // Update Struct
     Texture->LevelTextureOpenGLIDs[Level] = OpenGLTextureID;
