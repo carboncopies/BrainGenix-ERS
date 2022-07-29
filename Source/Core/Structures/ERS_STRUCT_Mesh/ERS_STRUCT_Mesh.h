@@ -36,6 +36,7 @@ struct ERS_STRUCT_Mesh {
     // Loading System
     std::vector<std::pair<std::string, std::string>> Loader_RequestedTextureInformation_; /**<Contains the file path for the original texture paired with the texture's type as identified by assimp.*/
 
+    std::vector<ERS_STRUCT_Texture*> Textures_; /**<Pointers to the textures for this mesh - the Model struct owns these*/
 
     std::vector<ERS_STRUCT_Vertex> Vertices; /**<Array of Mesh Vertices*/
     std::vector<unsigned int> Indices; /**<Array of Mesh Vertex Indices*/
