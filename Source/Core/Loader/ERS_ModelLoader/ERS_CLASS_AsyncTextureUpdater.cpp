@@ -347,14 +347,18 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
         // If There's Anything To Update, Add To Queue
         if (VRAMUpdate || RAMUpdate) {
             BlockThreads_.lock();
-            bool AlreadyInQueue = false;
+            bool CanAdd = true;
+            if (WorkItems_.size() >= WorkQueueLimit_) {
+                BlockThreads_.unlock();
+                return;
+            }
             for (unsigned int x = 0; x < WorkItems_.size(); x++) {
                 if (WorkItems_[x] == Scene->Models[i]) {
-                    AlreadyInQueue = true;
+                    CanAdd = false;
                     break;
                 }
             }
-            if (!AlreadyInQueue) {
+            if (CanAdd) {
                 WorkItems_.push_back(Scene->Models[i]);
             }
             BlockThreads_.unlock();
