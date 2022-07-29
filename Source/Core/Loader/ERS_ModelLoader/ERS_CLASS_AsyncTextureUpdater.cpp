@@ -310,6 +310,20 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
 
 }
 
+void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool LogEnable) {
+
+
+        if (Model->TextureLevelInRAM_ < Model->TargetTextureLevelRAM) {
+            
+        }
+
+        else if (Model->TextureLevelInRAM_ > Model->TargetTextureLevelRAM) {
+
+        }
+
+
+}
+
 void ERS_CLASS_AsyncTextureUpdater::ProcessWorkItem(ERS_STRUCT_Model* Model) {
     
     // Identify Type Of Work To Be Done
