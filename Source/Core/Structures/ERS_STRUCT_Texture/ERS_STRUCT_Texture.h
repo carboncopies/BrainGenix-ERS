@@ -19,11 +19,6 @@
 // Structure To Hold 2D ERS Texture
 struct ERS_STRUCT_Texture {
 
-    // Set OpenGL Handles
-    unsigned int ID;
-
-
-
     // New Loading System Info
     std::vector<unsigned int> LevelTextureOpenGLIDs; /**<List of opengl ids for every texture level*/
     std::vector<unsigned int> LevelTextureAssetIDs; /**<List of asset ids for every texture level*/
@@ -33,6 +28,9 @@ struct ERS_STRUCT_Texture {
     std::vector<int> LevelMemorySizeBytes; /**<Tells the system how many bytes every level will take*/
     std::vector<FIBITMAP*> LevelBitmaps; /**<List of bitmaps for each level - contains the texture's RAM data.*/
     std::vector<int> LevelChannels; /**<List containing number of channels for every texture layer*/
+
+    unsigned int BestAvailableOpenGLID = 0; /**<The current best ID we have loaded*/
+    bool HasAnyLevelReady = false; /**<Tells the mesh renderer if we have any levels ready for it*/
 
     int TextureLevelInRAM_ = 0; /**<Determines the current texture level in RAM*/
     int TextureLevelInVRAM_ = 0; /**<Determines the current texture level in RAM*/
