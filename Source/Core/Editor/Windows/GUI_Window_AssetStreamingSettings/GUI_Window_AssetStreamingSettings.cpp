@@ -14,6 +14,7 @@ GUI_Window_AssetStreamingSettings::GUI_Window_AssetStreamingSettings(ERS_STRUCT_
     // Copy In Default Parameters
     TextureStreamingThreads_ = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetNumThreads();
     TextureStreamingQueueLimit_ = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetQueueLimit();
+    PreventDupeQueueEntries_ = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetDupeQueueEntryPrevention();
 
     MaxThreads_ = std::thread::hardware_concurrency();
 
@@ -50,6 +51,7 @@ void GUI_Window_AssetStreamingSettings::Draw() {
 
                 ImGui::SliderInt("Texture Streaming Threads", &TextureStreamingThreads_, 1, MaxThreads_);
                 ImGui::SliderInt("Queue Limit", &TextureStreamingQueueLimit_, 1, MaxThreads_ * 25);
+                ImGui::Checkbox("Prevent Duplicate Entry", &PreventDupeQueueEntries_);
 
                 ImGui::Spacing();
                 ImGui::Separator();
@@ -58,6 +60,8 @@ void GUI_Window_AssetStreamingSettings::Draw() {
 
                     // Update Queue Info
                     ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetQueueLimit(TextureStreamingQueueLimit_);
+                    ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetDupeQueueEntryPrevention(PreventDupeQueueEntries_);
+                    
 
                     // Update Threads
                     int LastThreadCount = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetNumThreads();
