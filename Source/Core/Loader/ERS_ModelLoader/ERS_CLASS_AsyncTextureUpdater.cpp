@@ -58,7 +58,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
 
     // Check If Level Already Loaded
     if (Texture->LevelBitmaps[Level] != nullptr) {
-        SystemUtils_->Logger_->Log("Texture Updater Tried To Load Already Loaded Image", 8, LogEnable);
         return false;
     }
 
