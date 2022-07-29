@@ -517,7 +517,6 @@ void ERS_CLASS_AsyncTextureUpdater::SetDupeQueueEntryPrevention(bool State) {
     PreventDuplicateWorkItems_ = State;
 }
 
-
 bool ERS_CLASS_AsyncTextureUpdater::GetQueuePrioritizationEnabled() {
     return PrioritizeQueueByVisualImpact_;
 }
