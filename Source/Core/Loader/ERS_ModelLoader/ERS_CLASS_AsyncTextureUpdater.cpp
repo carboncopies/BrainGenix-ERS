@@ -356,7 +356,7 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
             }
 
             // Skip Checking If Already In Queue If We Can't Add
-            if (CanAdd) {
+            if (CanAdd && PreventDuplicateWorkItems_) {
                 for (unsigned int x = 0; x < WorkItems_.size(); x++) {
                     if (WorkItems_[x] == Scene->Models[i]) {
                         CanAdd = false;
