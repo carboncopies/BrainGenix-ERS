@@ -43,6 +43,7 @@ private:
     int NumThreads_ = 0; /**<Target Number of threads that we should be using*/
     int WorkQueueLimit_ = 512; /**<Sets the maxinum number of itesm in the queue - won't add anything else to queue once this limit reached - prevents loading where the player already left*/
     bool PreventDuplicateWorkItems_ = true; /**<Stop Dupe Queue Entries*/
+    bool PrioritizeQueueByVisualImpact_ = true; /**<Sort the queue by the texture level to be loaded*/
 
     std::vector<std::thread> TextureWorkerThreads_; /**<Vector containing thread objects for the worker pool*/
     std::mutex BlockThreads_; /**<Lock this to block all the treads (Usually done to add new items to the work queue)*/

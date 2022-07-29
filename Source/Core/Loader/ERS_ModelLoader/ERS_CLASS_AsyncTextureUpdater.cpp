@@ -367,7 +367,12 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 
             // If We Can Actually Add It, Do SO
             if (CanAdd) {
-                WorkItems_.push_back(Scene->Models[i]);
+
+                if (PrioritizeQueueByVisualImpact_) {
+
+                } else {
+                    WorkItems_.push_back(Scene->Models[i]);
+                }
             }
 
             BlockThreads_.unlock();
