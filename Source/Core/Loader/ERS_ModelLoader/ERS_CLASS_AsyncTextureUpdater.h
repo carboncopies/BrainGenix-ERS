@@ -177,5 +177,8 @@ public:
     void TeardownThreads();
 
 
+    int GetQueueLimit();
+    void SetQueueLimit(int QueueLimit);
+
 };
 

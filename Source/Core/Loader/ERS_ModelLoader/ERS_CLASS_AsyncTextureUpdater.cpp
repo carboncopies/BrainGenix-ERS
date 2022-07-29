@@ -369,7 +369,7 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
             if (CanAdd) {
                 WorkItems_.push_back(Scene->Models[i]);
             }
-            
+
             BlockThreads_.unlock();
         }
 
@@ -492,4 +492,13 @@ void ERS_CLASS_AsyncTextureUpdater::TeardownThreads() {
     SystemUtils_->Logger_->Log("Finished Joining Texture Streaming Worker Thread Pool", 4);
 
 }
+
+int ERS_CLASS_AsyncTextureUpdater::GetQueueLimit() {
+    return WorkQueueLimit_;
+}
+
+void ERS_CLASS_AsyncTextureUpdater::SetQueueLimit(int QueueLimit) {
+    WorkQueueLimit_ = QueueLimit;
+}
+
 
