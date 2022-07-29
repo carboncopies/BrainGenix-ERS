@@ -509,6 +509,7 @@ void ERS_CLASS_ModelLoader::MatchTextures(ERS_STRUCT_Model* Model) {
                 
                 if (ModelTextureIdentifier == TextureIdentifier) {
                     CurrentMesh->Textures_.push_back(&Model->Textures_[ModelTextureIndex]);
+                    std::cout<<ModelTextureIdentifier<<std::endl;
                     break;
                 }
 
