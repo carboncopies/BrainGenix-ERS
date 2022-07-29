@@ -164,6 +164,34 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Textu
     return true;
 }
 
+
+///////////////////////////////////////////////////////////////////////////////
+// copy an image data to texture buffer
+///////////////////////////////////////////////////////////////////////////////
+void updatePixels(GLubyte* dst, int size, int Height, int Width)
+{
+    static int color = 0;
+
+    if(!dst)
+        return;
+
+    int* ptr = (int*)dst;
+
+    // copy 4 bytes at once
+    for(int i = 0; i < Height; ++i)
+    {
+        for(int j = 0; j < Width; ++j)
+        {
+            *ptr = color;
+            ++ptr;
+        }
+        color += 257;
+    }
+    ++color;            // scroll down
+}
+
+
+
 bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
     // Check If Requested Level Exists
@@ -205,79 +233,20 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     }
 
 
-    // Generate OpenGL Texture ID
-    unsigned int OpenGLTextureID;
-    glGenTextures(1, &OpenGLTextureID);
-    glBindTexture(GL_TEXTURE_2D, OpenGLTextureID);
-
-
-    // Set Texture Properties
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0); // disable mip maps for now
-
-
-    // Identify Required Texture Format
-    GLint TextureInternFormat;
-    GLenum TextureExternFormat;
-    if (Channels == 4) {
-        TextureInternFormat = GL_RGBA;
-        TextureExternFormat = GL_BGRA;
-    } else if (Channels == 3) {
-        TextureInternFormat = GL_RGB;
-        TextureExternFormat = GL_BGR;
-    } else if (Channels == 2) {
-        TextureInternFormat = GL_RG;
-        TextureExternFormat = GL_RG;
-    } else if (Channels == 1) {
-        TextureInternFormat = GL_RED;
-        TextureExternFormat = GL_RED;
-    } else {
-        return false;
-    }
-
-
-    unsigned int pbo;
-    glGenBuffers(1, &pbo);
-    glBindBuffer(GL_PIXEL_UNPACK_BUFFER, pbo);
-
-
-    int MaxLevel = Texture->LevelResolutions.size() - 1;
-    int Width = Texture->LevelResolutions[MaxLevel - Level].first;
-    int Height = Texture->LevelResolutions[MaxLevel - Level].second;
-    glBufferData(GL_PIXEL_UNPACK_BUFFER, Width*Height*Channels, NULL, GL_STREAM_DRAW);
-    void* mappedBuffer = glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_WRITE_ONLY);
-
-    //write data into the mapped buffer, possibly in another thread.
-    unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[MaxLevel - Level]);
-    memcpy(mappedBuffer, ImageBytes, Width*Height*Channels);
-
-
-    // after reading is complete back on the main thread
-    glBindBuffer(GL_PIXEL_UNPACK_BUFFER, pbo);
-    glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
-    glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, Width, Height, 0, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
-
-
-
-
     // // Generate OpenGL Texture ID
     // unsigned int OpenGLTextureID;
     // glGenTextures(1, &OpenGLTextureID);
     // glBindTexture(GL_TEXTURE_2D, OpenGLTextureID);
 
+
     // // Set Texture Properties
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
     // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, Level);
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0); // disable mip maps for now
 
     // // Identify Required Texture Format
     // GLint TextureInternFormat;
@@ -298,13 +267,91 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     //     return false;
     // }
 
-    
-    // // Setup Texture To Accept MipMaps
+
+    // // Setup Texture Storage
     // int MaxLevel = Texture->LevelResolutions.size() - 1;
     // int MaxWidth = Texture->LevelResolutions[MaxLevel - Level].first;
     // int MaxHeight = Texture->LevelResolutions[MaxLevel - Level].second;
     // glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, NULL);
     // glGenerateMipmap(GL_TEXTURE_2D);
+    // glBindTexture(GL_TEXTURE_2D, 0);
+
+
+    // // Get Texture Info
+
+    // int LevelInvertedIndex = MaxLevel - Level;
+    
+    // int Width = Texture->LevelResolutions[LevelInvertedIndex].first;
+    // int Height = Texture->LevelResolutions[LevelInvertedIndex].second;
+    // int MemSize = Texture->LevelMemorySizeBytes[LevelInvertedIndex];
+    // unsigned char* ImageData = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[LevelInvertedIndex]);
+
+
+    // unsigned int PixelBuffers[2];
+    // glGenBuffers(2, PixelBuffers);
+    // unsigned int CurrentPBO = 0;
+
+
+    // // Send Texture Data From This Thread To PBO (CPU->PBO)
+    // glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PixelBuffers[CurrentPBO]);
+    // glBufferData(GL_PIXEL_UNPACK_BUFFER, MemSize, 0, GL_STREAM_DRAW);
+    // GLubyte* BufferPointer = (GLubyte*)glMapBufferRange(GL_PIXEL_UNPACK_BUFFER, 0, MemSize, GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT);
+    // memcpy(BufferPointer, ImageData, MemSize);
+    // glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+
+    // // Copy Pixels From PBO To Texture (PBO->GPU)
+    // glBindTexture(GL_TEXTURE_2D, OpenGLTextureID);
+    // glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PixelBuffers[1-CurrentPBO]);
+    // glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
+    // glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
+    // glBindTexture(GL_TEXTURE_2D, 0);
+
+    // CurrentPBO = 1-CurrentPBO;
+
+
+
+
+    // Generate OpenGL Texture ID
+    unsigned int OpenGLTextureID;
+    glGenTextures(1, &OpenGLTextureID);
+    glBindTexture(GL_TEXTURE_2D, OpenGLTextureID);
+
+    // Set Texture Properties
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, Level);
+
+    // Identify Required Texture Format
+    GLint TextureInternFormat;
+    GLenum TextureExternFormat;
+    if (Channels == 4) {
+        TextureInternFormat = GL_RGBA;
+        TextureExternFormat = GL_BGRA;
+    } else if (Channels == 3) {
+        TextureInternFormat = GL_RGB;
+        TextureExternFormat = GL_BGR;
+    } else if (Channels == 2) {
+        TextureInternFormat = GL_RG;
+        TextureExternFormat = GL_RG;
+    } else if (Channels == 1) {
+        TextureInternFormat = GL_RED;
+        TextureExternFormat = GL_RED;
+    } else {
+        return false;
+    }
+
+    
+    // Setup Texture To Accept MipMaps
+    int MaxLevel = Texture->LevelResolutions.size() - 1;
+    int MaxWidth = Texture->LevelResolutions[MaxLevel - Level].first;
+    int MaxHeight = Texture->LevelResolutions[MaxLevel - Level].second;
+    unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[MaxLevel - Level]);
+    glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
+    glGenerateMipmap(GL_TEXTURE_2D);
 
     // // Load MipMaps Into Texture
     // for (int i = 0; i < Level; i++) {
@@ -314,10 +361,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     //     glTexSubImage2D(GL_TEXTURE_2D, i, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
     // }
 
-    // // Update Struct
-    // Texture->LevelTextureOpenGLIDs[Level] = OpenGLTextureID;
-    // Texture->LevelLoadedInVRAM[Level] = true;
-    // glBindTexture(GL_TEXTURE_2D, 0);
+    // Update Struct
+    Texture->LevelTextureOpenGLIDs[Level] = OpenGLTextureID;
+    Texture->LevelLoadedInVRAM[Level] = true;
+    glBindTexture(GL_TEXTURE_2D, 0);
 
 
     return true;
