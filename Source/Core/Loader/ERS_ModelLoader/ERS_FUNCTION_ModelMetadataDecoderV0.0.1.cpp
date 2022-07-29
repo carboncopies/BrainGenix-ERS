@@ -5,7 +5,7 @@
 #include <ERS_FUNCTION_ModelMetadataDecoderV0.0.0.h>
 
 
-bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model* Model, ERS_STRUCT_SystemUtils* SystemUtils, long AssetID) {
+bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model* Model, ERS_STRUCT_SystemUtils* SystemUtils, long AssetID, bool LogEnable) {
 
 
     // Setup Processing Variables
@@ -14,7 +14,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
     // Attempt To Decode, Handle Errors
     try {
 
-        SystemUtils->Logger_->Log("Decoding Model Metadata", 3);
+        SystemUtils->Logger_->Log("Decoding Model Metadata", 3, LogEnable);
 
         if (Metadata["Name"]) {
             std::string Name = Metadata["Name"].as<std::string>();
@@ -78,7 +78,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
                 // Setup Texture Struct
                 ERS_STRUCT_Texture Texture;
                 Texture.Path = it->first.as<std::string>();
-                SystemUtils->Logger_->Log(std::string("Found Texture '") + Texture.Path + "'", 3);
+                SystemUtils->Logger_->Log(std::string("Found Texture '") + Texture.Path + "'", 3, LogEnable);
 
                 // Add All Levels To This Texture
                 YAML::Node TextureLevels = it->second;
@@ -94,10 +94,10 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
                     Texture.LevelLoadedInRAM.push_back(false);
                     Texture.LevelLoadedInVRAM.push_back(false);
 
-                    // SystemUtils->Logger_->Log(std::string("Detected Texture Level '") + std::to_string(LevelIterator->first.as<int>())
-                    // + "', Resolution '" + std::to_string(LevelInfo["TextureLevelResolutionX"].as<int>())
-                    // + "x" + std::to_string(LevelInfo["TextureLevelResolutionY"].as<int>())
-                    // + "'", 1);
+                    SystemUtils->Logger_->Log(std::string("Detected Texture Level '") + std::to_string(LevelIterator->first.as<int>())
+                    + "', Resolution '" + std::to_string(LevelInfo["TextureLevelResolutionX"].as<int>())
+                    + "x" + std::to_string(LevelInfo["TextureLevelResolutionY"].as<int>())
+                    + "'", 1, LogEnable);
 
                 }
 
@@ -111,7 +111,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
             DecodeStatus = false;
         }
 
-        SystemUtils->Logger_->Log("Finished Decoding Model Metadata", 3);
+        SystemUtils->Logger_->Log("Finished Decoding Model Metadata", 3, LogEnable);
         return DecodeStatus;
 
     } catch(YAML::BadSubscript&) {
