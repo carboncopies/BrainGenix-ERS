@@ -331,6 +331,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
 
                 // Requested Level
                 LoadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
+                Model->Textures_[TextureIndex].BestAvailableOpenGLID = Model->Textures_[TextureIndex].LevelTextureOpenGLIDs[LevelToLoad];
 
                 // Ensure That Level 0 Is Always Loaded
                 if (!Model->Textures_[TextureIndex].LevelLoadedInVRAM[0]) {
@@ -351,6 +352,13 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
                     // Check If Level Already Loaded, Otherwise, Don't Try To Unload It
                     if (Model->Textures_[TextureIndex].LevelLoadedInVRAM[LevelToUnload]) {
                         UnloadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToUnload, LogEnable);
+                    }
+
+                    // Find New Best OpenGL ID
+                    for (unsigned int i = 0; i < Model->Textures_[TextureIndex].LevelTextureOpenGLIDs.size(); i++) {
+                        if (Model->Textures_[TextureIndex].LevelLoadedInVRAM[i]) {
+                            Model->Textures_[TextureIndex].BestAvailableOpenGLID = Model->Textures_[TextureIndex].LevelTextureOpenGLIDs[i];
+                        }
                     }
 
                 }
