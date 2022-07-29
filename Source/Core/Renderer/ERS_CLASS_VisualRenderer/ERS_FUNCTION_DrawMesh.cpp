@@ -92,7 +92,9 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
             // Bind Texture
             glActiveTexture(GL_TEXTURE0 + TypeID);
             glBindTexture(GL_TEXTURE_2D, Mesh->Textures_[i]->BestAvailableOpenGLID);
-            std::cout<<Mesh->Textures_[i]->BestAvailableOpenGLID<<"|"<<glIsTexture(Mesh->Textures_[i]->BestAvailableOpenGLID)<<std::endl;
+
+            bool IsTex = glIsTexture(Mesh->Textures_[i]->BestAvailableOpenGLID);
+            std::cout<<Mesh->Textures_[i]->BestAvailableOpenGLID<<"|"<<IsTex<<std::endl;
 
         }
 
