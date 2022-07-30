@@ -309,7 +309,8 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     // CurrentPBO = 1-CurrentPBO;
 
 
-
+    // Flush GL First
+    glFinish();
 
     // Generate OpenGL Texture ID
     unsigned int OpenGLTextureID;
