@@ -43,13 +43,17 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                 ImGui::Spacing();
 
 
-                ImGui::DragFloat("VRAM Cutoff", &ModelLoader_->AssetStreamingManager_->DistanceCutoffVRAM_, 0.01f, 0.0f, 999.0f);
-                ImGui::DragFloat("RAM Cutoff", &ModelLoader_->AssetStreamingManager_->DistanceCutoffRAM_, 0.01f, 0.0f, 999.0f);
-
+                ImGui::DragFloat("VRAM Cutoff", &ModelLoader_->AssetStreamingManager_->DistanceCutoffVRAM_, 0.05f, 0.0f, 999.0f);
+                ImGui::DragFloat("RAM Cutoff", &ModelLoader_->AssetStreamingManager_->DistanceCutoffRAM_, 0.05f, 0.0f, 999.0f);
+                ImGui::Spacing();
                 ImGui::Checkbox("Use Quadratic Scaling", &ModelLoader_->AssetStreamingManager_->UseQuadraticDistanceRolloff_);
-                ImGui::DragFloat("Quadratic Component", &ModelLoader_->AssetStreamingManager_->QuadraticDistanceComponent_);
-                ImGui::DragFloat("Linear Component", &ModelLoader_->AssetStreamingManager_->LinearDistanceComponent_);
-                ImGui::DragFloat("Const Component", &ModelLoader_->AssetStreamingManager_->ConstantDistanceComponent_);
+                ImGui::DragFloat("Quadratic Component", &ModelLoader_->AssetStreamingManager_->QuadraticDistanceComponent_, 0.01f, -10.0f, 10.0f);
+                ImGui::DragFloat("Linear Component", &ModelLoader_->AssetStreamingManager_->LinearDistanceComponent_, 0.02f, -20.0f, 20.0f);
+                ImGui::DragFloat("Const Component", &ModelLoader_->AssetStreamingManager_->ConstantDistanceComponent_, 0.25f, -50.0f, 50.0f);
+                ImGui::Spacing();
+                ImGui::SliderInt("Minimum LOD", &ModelLoader_->AssetStreamingManager_->MinLOD_, 0, 99);
+                ImGui::SliderInt("Maximum LOD", &ModelLoader_->AssetStreamingManager_->MaxLOD_, 0, 99);
+                
 
                 ImGui::Spacing();
                 ImGui::Separator();
