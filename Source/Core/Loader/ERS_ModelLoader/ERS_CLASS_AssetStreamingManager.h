@@ -56,6 +56,10 @@ public:
     float LinearDistanceComponent_ = 0.5f; /**<Parameters to set the loading system's LOD*/
     float ConstantDistanceComponent_ = 1.0f; /**<Parameters to set the loading system's LOD*/
 
+    int MinLOD_ = 0; /**<Sets the minimum LOD*/
+    int MaxLOD_ = 0; /**<Sets the maximum LOD*/
+    
+
 
     // Class Instances
     std::unique_ptr<ERS_CLASS_AssetStreamingSystemResourceMonitor> ResourceMonitor_; /**<Instance of System Monitor Used For Tex Streaming Choices*/
