@@ -354,8 +354,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[MaxLevel - Level]);
     glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
     glGenerateMipmap(GL_TEXTURE_2D);
-    //glFinish();
-    glFlush();
+    //glFlush();
 
     // // Load MipMaps Into Texture
     // for (int i = 0; i < Level; i++) {
@@ -365,10 +364,13 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     //     glTexSubImage2D(GL_TEXTURE_2D, i, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
     // }
 
+    glBindTexture(GL_TEXTURE_2D, 0);
+    glFinish();
+
     // Update Struct
     Texture->LevelTextureOpenGLIDs[Level] = OpenGLTextureID;
     Texture->LevelLoadedInVRAM[Level] = true;
-    glBindTexture(GL_TEXTURE_2D, 0);
+
 
 
     return true;
