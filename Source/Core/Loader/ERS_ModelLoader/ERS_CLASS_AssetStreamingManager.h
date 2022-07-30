@@ -43,11 +43,19 @@ private:
     std::vector<ERS_STRUCT_Camera*> Cameras_; /**<List of cameras that assets are loaded around*/
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
 
+
+
 public:
 
     // Set Configuration Parameters To Be Used By The Settings Window
     float DistanceCutoffVRAM_ = 9.0f;
     float DistanceCutoffRAM_ = 25.0f;
+
+    bool UseQuadraticDistanceRolloff_ = true; /**<Use Linear Or Quadratic Equations To Determine What LOD the Textures Should Be At*/
+    float QuadraticDistanceComponent_ = 1.5f; /**<Parameters to set the loading system's LOD*/
+    float LinearDistanceComponent_ = 0.8f; /**<Parameters to set the loading system's LOD*/
+    float ConstantDistanceComponent_ = 0.25f; /**<Parameters to set the loading system's LOD*/
+
 
     // Class Instances
     std::unique_ptr<ERS_CLASS_AssetStreamingSystemResourceMonitor> ResourceMonitor_; /**<Instance of System Monitor Used For Tex Streaming Choices*/
