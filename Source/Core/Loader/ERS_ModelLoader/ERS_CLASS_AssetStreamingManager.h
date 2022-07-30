@@ -52,9 +52,9 @@ public:
     float DistanceCutoffRAM_ = 25.0f;
 
     bool UseQuadraticDistanceRolloff_ = true; /**<Use Linear Or Quadratic Equations To Determine What LOD the Textures Should Be At*/
-    float QuadraticDistanceComponent_ = 1.5f; /**<Parameters to set the loading system's LOD*/
-    float LinearDistanceComponent_ = 0.8f; /**<Parameters to set the loading system's LOD*/
-    float ConstantDistanceComponent_ = 0.25f; /**<Parameters to set the loading system's LOD*/
+    float QuadraticDistanceComponent_ = 0.5f; /**<Parameters to set the loading system's LOD*/
+    float LinearDistanceComponent_ = 0.5f; /**<Parameters to set the loading system's LOD*/
+    float ConstantDistanceComponent_ = 1.0f; /**<Parameters to set the loading system's LOD*/
 
 
     // Class Instances
