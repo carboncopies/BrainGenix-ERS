@@ -84,10 +84,20 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             int NumberTextureLevels = Model->MaxTextureLevel_ + 1;
 
             // Calculate Distance Per Level Cutoff
+            int TargetTextureLevelVRAM;
+            int TargetTextureLevelRAM;
             float DistancePerLevelVRAM = DistanceCutoffVRAM_ / NumberTextureLevels;
             float DistancePerLevelRAM = DistanceCutoffRAM_ / NumberTextureLevels;
-            int TargetTextureLevelVRAM = NumberTextureLevels - round(ModelDistance / DistancePerLevelVRAM);
-            int TargetTextureLevelRAM = NumberTextureLevels - round(ModelDistance / DistancePerLevelRAM);
+
+            if (!UseQuadraticDistanceRolloff_) {
+                TargetTextureLevelVRAM = NumberTextureLevels - round(ModelDistance / DistancePerLevelVRAM);
+                TargetTextureLevelRAM = NumberTextureLevels - round(ModelDistance / DistancePerLevelRAM);
+            } else {
+                float EquationValue = pow(ModelDistance, QuadraticDistanceComponent_) + ModelDistance*LinearDistanceComponent_ + ConstantDistanceComponent_;
+                TargetTextureLevelVRAM = NumberTextureLevels - round(EquationValue / DistancePerLevelVRAM);
+                TargetTextureLevelRAM = NumberTextureLevels - round(EquationValue / DistancePerLevelRAM);
+            }   
+            
             if (TargetTextureLevelVRAM > NumberTextureLevels - 1) {
                 TargetTextureLevelVRAM = NumberTextureLevels - 1;
             } else if (TargetTextureLevelVRAM < 0) {
