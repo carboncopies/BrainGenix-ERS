@@ -99,6 +99,14 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             }   
             
             // Cap Texture Level Range
+            if (MinLOD_ > 0) {
+                TargetTextureLevelRAM = std::max(MinLOD_, TargetTextureLevelRAM);
+                TargetTextureLevelVRAM = std::max(MinLOD_, TargetTextureLevelVRAM);
+            }
+            if (MaxLOD_ > 0) {
+                TargetTextureLevelRAM = std::min(MaxLOD_, TargetTextureLevelRAM);
+                TargetTextureLevelVRAM = std::min(MaxLOD_, TargetTextureLevelVRAM);
+            }
             if (TargetTextureLevelVRAM > NumberTextureLevels - 1) {
                 TargetTextureLevelVRAM = NumberTextureLevels - 1;
             } else if (TargetTextureLevelVRAM < 0) {
@@ -110,14 +118,7 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
                 TargetTextureLevelRAM = 0;
             }
 
-            if (MinLOD_ > 0) {
-                TargetTextureLevelRAM = std::max(MinLOD_, TargetTextureLevelRAM);
-                TargetTextureLevelVRAM = std::max(MinLOD_, TargetTextureLevelVRAM);
-            }
-            if (MaxLOD_ > 0) {
-                TargetTextureLevelRAM = std::min(MaxLOD_, TargetTextureLevelRAM);
-                TargetTextureLevelVRAM = std::min(MaxLOD_, TargetTextureLevelVRAM);
-            }
+  
 
 
             // Calculate Texture Size
