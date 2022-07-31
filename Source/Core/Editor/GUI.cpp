@@ -28,6 +28,7 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, Cu
     ThemeManager_ = std::make_unique<ERS_CLASS_ThemeManager>(SystemUtils_->Logger_.get());
     FontManager_ = std::make_unique<ERS_CLASS_FontManager>(SystemUtils_->Logger_.get());
     UserProfileManager_ = std::make_unique<ERS_CLASS_UserProfileManager>(SystemUtils_->Logger_.get());
+    LayoutManager_ = std::make_unique<ERS_CLASS_LayoutManager>(SystemUtils_, SystemUtils->LocalSystemConfiguration["LayoutDirectory"])
 
     // Load User Profile
     ThemeManager_->ApplyThemes(UserProfileManager_->GetUserColorProfile().c_str());
