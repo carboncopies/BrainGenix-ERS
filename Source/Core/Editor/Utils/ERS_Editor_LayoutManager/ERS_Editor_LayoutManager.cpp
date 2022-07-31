@@ -106,6 +106,9 @@ void ERS_CLASS_LayoutManager::SaveLayout(std::string LayoutName) {
 
     file.close();
 
+    // Update Active Layout String
+    ActiveLayoutName_ = LayoutName;
+
 }
 
 void ERS_CLASS_LayoutManager::ApplyLayout(std::string LayoutName) {
@@ -142,7 +145,7 @@ void ERS_CLASS_LayoutManager::ApplyLayout(int LayoutID) {
 
 
 std::string ERS_CLASS_LayoutManager::GetActiveLayoutName() {
-    
+    return ActiveLayoutName_;
 }
 
 

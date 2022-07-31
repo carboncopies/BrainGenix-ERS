@@ -37,7 +37,7 @@ private:
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
     ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_; /**<HID Utils Pointer*/
     ERS_STRUCT_Windows* Windows_; /**<Struct Containing the system's windows*/
-    ERS_Editor_LayoutManager* LayoutManager_; /**<Pointer to layout manager*/
+    ERS_CLASS_LayoutManager* LayoutManager_; /**<Pointer to layout manager*/
 
 
 
