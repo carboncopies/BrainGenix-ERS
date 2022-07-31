@@ -21,6 +21,7 @@
 #include <ERS_STRUCT_ProjectUtils.h>
 #include <ERS_STRUCT_Windows.h>
 
+#include <ERS_Editor_LayoutManager.h>
 
 #include <GUI_Window_ControllerSettings.h>
 
@@ -36,6 +37,7 @@ private:
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
     ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_; /**<HID Utils Pointer*/
     ERS_STRUCT_Windows* Windows_; /**<Struct Containing the system's windows*/
+    ERS_Editor_LayoutManager* LayoutManager_; /**<Pointer to layout manager*/
 
 
 
@@ -47,7 +49,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_Windows* Windows);
+    GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_Windows* Windows, ERS_Editor_LayoutManager* LayoutManager);
 
 
     /**

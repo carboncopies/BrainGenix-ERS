@@ -27,6 +27,7 @@ target_link_libraries(Menu_Settings
     ERS_STRUCT_ProjectUtils
 
     ERS_Editor_WindowManager
+    ERS_Editor_LayoutManager
 
     GUI_Window_ControllerSettings
 
