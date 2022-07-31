@@ -153,3 +153,15 @@ std::vector<std::string> ERS_CLASS_LayoutManager::GetLayoutNames() {
     return LayoutNames_;
 }
 
+void ERS_CLASS_LayoutManager::CreateLayout(std::string Name) {
+
+    // Add Name To Layouts List
+    LayoutNames_.push_back(Name);
+
+    // Save Layout
+    SaveLayout(Name);
+
+
+    // This might not work - fixme!
+
+}

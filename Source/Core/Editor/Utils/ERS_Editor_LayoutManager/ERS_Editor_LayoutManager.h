@@ -106,4 +106,11 @@ public:
      */
     std::vector<std::string> GetLayoutNames();
 
+    /**
+     * @brief Creates a new layout and adds it to the editor's layout choices.
+     * 
+     * @param Name 
+     */
+    void CreateLayout(std::string Name);
+
 };
