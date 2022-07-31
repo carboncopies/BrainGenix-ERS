@@ -139,3 +139,14 @@ void ERS_CLASS_LayoutManager::ApplyLayout(int LayoutID) {
     ImGui::LoadIniSettingsFromMemory(Layout.IniString.c_str());
 
 }
+
+
+std::string ERS_CLASS_LayoutManager::GetActiveLayoutName() {
+    
+}
+
+
+std::vector<std::string> ERS_CLASS_LayoutManager::GetLayoutNames() {
+    return LayoutNames_;
+}
+
