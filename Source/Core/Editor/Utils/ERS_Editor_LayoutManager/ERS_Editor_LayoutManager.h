@@ -40,7 +40,7 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to System utillities struct, used to get things like logger, etc.*/
     ERS_CLASS_LoggingSystem* Logger_; /**<ERS_CLASS_LoggingSystem Instance Pointer*/
-    ERS_CLASS_WindowManager WindowManager;
+    ERS_CLASS_WindowManager* WindowManager;
     std::string LayoutDirectory_; /**<This string stores the path to the editor's layout directory ending in a trailing slash*/
 
     std::vector<YAML::Node> LayoutFiles_; /**<List Of YAML::Node files*/
@@ -55,8 +55,10 @@ public:
      * @brief Construct a new Layout Manager object
      *
      * @param Logger
+     * @param WindowManager
+     * @param LayoutDirectory
      */
-    ERS_CLASS_LayoutManager(ERS_STRUCT_SystemUtils* SystemUtils, const char* LayoutDirectory = "EditorAssets/Layouts/");
+    ERS_CLASS_LayoutManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_WindowManager* WindowManager, const char* LayoutDirectory = "EditorAssets/Layouts/");
 
     /**
      * @brief Destroy the Layout Manager object

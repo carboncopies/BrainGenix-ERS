@@ -5,12 +5,15 @@
 #include <ERS_Editor_LayoutManager.h>
 
 
-ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager( ERS_STRUCT_SystemUtils* SystemUtils, const char* LayoutDirectory) {
+ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_WindowManager* WindowManager, const char* LayoutDirectory) {
 
     SystemUtils_ = SystemUtils;
     Logger_ = SystemUtils_->Logger_.get();
     LayoutDirectory_ = LayoutDirectory;
+    WindowManager_ = WindowManager;
     Logger_->Log("Initializing Layout Manager", 5);
+
+
 
 }
 
