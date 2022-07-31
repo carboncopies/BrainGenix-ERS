@@ -52,7 +52,7 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, Cu
     Menu_View_ = std::make_unique<GUI_Menu_View>(SystemUtils_, FontManager_.get(), WindowManager_->GetWindowsStruct());
     Menu_Window_ = std::make_unique<GUI_Menu_Window>(SystemUtils_, WindowManager_->GetWindowsStruct(), VisualRenderer_);
     Menu_Debug_ = std::make_unique<GUI_Menu_Debug>(SystemUtils_, WindowManager_->GetWindowsStruct(), WindowManager_.get());
-    Menu_Settings_ = std::make_unique<GUI_Menu_Settings>(SystemUtils_, HIDUtils_, WindowManager_->GetWindowsStruct());
+    Menu_Settings_ = std::make_unique<GUI_Menu_Settings>(SystemUtils_, HIDUtils_, WindowManager_->GetWindowsStruct(), LayoutManager_.get());
 
     // Disable Dragging Except By Title Bar
     ImGuiIO& IO = ImGui::GetIO();
