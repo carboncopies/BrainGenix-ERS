@@ -28,6 +28,38 @@ void GUI_Menu_Settings::Draw() {
     // File Menu
     if (ImGui::BeginMenu("Settings")) {
 
+        // Layout Menu
+        if (ImGui::BeginMenu("Editor Layout")) {
+            
+            
+            // Create Submenu with layouts which the user can select from
+            if (ImGui::BeginMenu("Select Layouts")) {
+
+
+
+            ImGui::EndMenu();
+            }
+
+            // Normal buttons that the user can select
+            if (ImGui::MenuItem("Save Active Layout")) {
+
+            }
+            
+            if (ImGui::MenuItem("Create New Layout")) {
+
+            }
+
+            if (ImGui::MenuItem("Rename Active Layout")) {
+
+            }
+
+            if (ImGui::MenuItem("Re-Detect Layouts")) {
+
+            }
+
+        ImGui::EndMenu();
+        }
+
         // Controller Settings
         if (ImGui::BeginMenu("Game Controllers")) {
 
