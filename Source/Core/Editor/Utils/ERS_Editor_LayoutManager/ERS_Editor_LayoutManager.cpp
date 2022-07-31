@@ -13,7 +13,7 @@ ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(ERS_CLASS_LoggingSystem* Logger
     LayoutDirectory_ = LayoutDirectory;
     Logger_->Log("Initializing Layout Manager", 5);
 
- }
+}
 
 
 ERS_CLASS_LayoutManager::~ERS_CLASS_LayoutManager() {
@@ -32,7 +32,7 @@ void ERS_CLASS_LayoutManager::LoadLayouts() {
 
         // Load YAML::Node
         YAML::Node LayoutNode = YAML::LoadFile(FilePath.c_str());
-        
+
         // Build Temp Layout
         ERS_STRUCT_EditorLayout Layout;
         Layout.index = Index;
