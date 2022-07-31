@@ -7,6 +7,9 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <string>
+#include <filesystem>
+#include <imgui.h>
+#include <fstream>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -15,6 +18,7 @@
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_Editor_WindowManager.h>
+
 
 struct ERS_STRUCT_EditorLayout {
     int index;

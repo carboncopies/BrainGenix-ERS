@@ -3,9 +3,7 @@
 //======================================================================//
 
 #include <ERS_Editor_LayoutManager.h>
-#include <filesystem>
-#include <imgui.h>
-#include <fstream>
+
 
 ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(ERS_CLASS_LoggingSystem* Logger, const char* LayoutDirectory) {
 
