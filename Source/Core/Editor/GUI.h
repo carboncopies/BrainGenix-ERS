@@ -22,7 +22,6 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_CLASS_VisualRenderer.h>
-#include <ERS_CLASS_LayoutManager.h>
 
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
@@ -33,6 +32,7 @@
 #include <ERS_Editor_UserProfileManager.h>
 #include <ERS_Editor_3DCursor.h>
 #include <ERS_Editor_WindowManager.h>
+#include <ERS_Editor_LayoutManager.h>
 
 #include <ERS_SceneManager.h>
 
