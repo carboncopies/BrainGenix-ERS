@@ -8,7 +8,7 @@
 ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager( ERS_STRUCT_SystemUtils* SystemUtils, const char* LayoutDirectory) {
 
     SystemUtils_ = SystemUtils;
-    Logger_ = SystemUtils_->Logger.get();
+    Logger_ = SystemUtils_->Logger_.get();
     LayoutDirectory_ = LayoutDirectory;
     Logger_->Log("Initializing Layout Manager", 5);
 
