@@ -13,28 +13,35 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
+#include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_Editor_WindowManager.h>
 
 struct ERS_STRUCT_EditorLayout {
     int index;
     std::string name;
     std::string IniString;
+
+    std::vector<std::string> WindowNames;
+    std::vector<bool> WindowStatus;
 };
 
 /**
  * @brief Creates the user profile manager class.
- * 
+ *
  */
 class ERS_CLASS_LayoutManager {
 
 
 private:
 
+    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to System utillities struct, used to get things like logger, etc.*/
     ERS_CLASS_LoggingSystem* Logger_; /**<ERS_CLASS_LoggingSystem Instance Pointer*/
+    ERS_CLASS_WindowManager WindowManager;
     std::string LayoutDirectory_; /**<This string stores the path to the editor's layout directory ending in a trailing slash*/
 
     std::vector<YAML::Node> LayoutFiles_; /**<List Of YAML::Node files*/
     int Index = 0; /**<The index of Layout structs*/
-    
+
 public:
 
     std::vector<std::string> LayoutNames_; /**<List of layout display names (based on display name entry in YAML file)*/
@@ -42,14 +49,14 @@ public:
 
     /**
      * @brief Construct a new Layout Manager object
-     * 
-     * @param Logger 
+     *
+     * @param Logger
      */
     ERS_CLASS_LayoutManager(ERS_CLASS_LoggingSystem* Logger, const char* LayoutDirectory = "EditorAssets/Layouts/");
 
     /**
      * @brief Destroy the Layout Manager object
-     * 
+     *
      */
     ~ERS_CLASS_LayoutManager();
 
@@ -66,7 +73,7 @@ public:
 
     /**
     * @brief Apply the selected layout.
-    * 
+    *
     * @param LayoutID
     */
     void ApplyLayout(int LayoutID);
