@@ -22,6 +22,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_CLASS_VisualRenderer.h>
+#include <ERS_CLASS_LayoutManager.h>
 
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
@@ -64,6 +65,7 @@ private:
 
     std::unique_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
     std::unique_ptr<ERS_CLASS_UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
+    std::unique_ptr<ERS_CLASS_LayoutManager> LayoutManager_; /**<Instance of the layout manager class*/
 
     std::unique_ptr<ERS_CLASS_WindowManager> WindowManager_; /**<Class owning all gui windows*/
     
