@@ -5,7 +5,7 @@
 #include <GUI_Menu_Settings.h>
 
 
-GUI_Menu_Settings::GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_Windows* Windows, ERS_Editor_LayoutManager* LayoutManager) {
+GUI_Menu_Settings::GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_Windows* Windows, ERS_CLASS_LayoutManager* LayoutManager) {
 
     SystemUtils_ = SystemUtils;
     HIDUtils_ = HIDUtils;

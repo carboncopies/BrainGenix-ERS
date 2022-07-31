@@ -49,7 +49,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_Windows* Windows, ERS_Editor_LayoutManager* LayoutManager);
+    GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_Windows* Windows, ERS_CLASS_LayoutManager* LayoutManager);
 
 
     /**
