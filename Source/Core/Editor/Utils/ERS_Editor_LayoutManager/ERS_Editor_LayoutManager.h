@@ -90,4 +90,19 @@ public:
     * @param LayoutName
     */
     void ApplyLayout(std::string LayoutName);
+
+    /**
+     * @brief Returns the name of the active layout.
+     * 
+     * @return std::string 
+     */
+    std::string GetActiveLayoutName();
+
+    /**
+     * @brief Returns a list of names for all layouts.
+     * 
+     * @return std::vector<std::string> 
+     */
+    std::vector<std::string> GetLayoutNames();
+
 };
