@@ -149,6 +149,14 @@ private:
      */
     void MatchTextures(ERS_STRUCT_Model* Model);
 
+    /**
+     * @brief Here, we reduce the number of textures or convert into the expected ERS system
+     * For example, alpha maps are baked into the diffuse map.
+     * 
+     * @param Model 
+     */
+    void MergeTextures(ERS_STRUCT_Model* Modle);
+
 public:
 
     std::unique_ptr<ERS_CLASS_AssetStreamingManager> AssetStreamingManager_; /**<Asset Streaming Manager Instance*/
