@@ -190,12 +190,28 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     return MetadataID;
 }
 
-void ERS_CLASS_ModelImporter::MergeTextures(ERS_STRUCT_Model* Model) {
+FIBITMAP* FindTextureBitmap(std::string TexturePath, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures) {
+
+    // Iterate Over Array, Try And Find Match
+    for (unsigned int LoadedTextureIndex = 0; LoadedTextureIndex < LoadedTextures->size(); LoadedTextureIndex++) {
+        if ((*LoadedTextures)[LoadedTextureIndex].first == TexturePath) {
+            return (*LoadedTextures)[LoadedTextureIndex].second;
+        }
+    }
+
+    // Return NULL On Failure
+    return NULL;
+}
+
+void ERS_CLASS_ModelImporter::MergeTextures(std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures) {
 
     // Check For Alpha Map, If Found, Add As Alpha Channel To Diffuse Model
-    for (unsigned int i = 0; i < TextureList_.size(); i++) {
+    for (unsigned int SortingTextureIndex = 0; SortingTextureIndex < TextureList_.size(); SortingTextureIndex++) {
 
-        
+        std::string TextureName = TextureList_[SortingTextureIndex];
+        std::string TextureType = TextureTypes_[SortingTextureIndex];
+
+
 
     }
 
