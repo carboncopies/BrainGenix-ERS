@@ -189,9 +189,8 @@ void ERS_CLASS_ShadowMaps::PrioritizeDepthMaps(std::vector<ERS_STRUCT_DepthMap*>
 
                 // Ensure That Depth Maps Aren't Out Of Range
                 DepthMapIndex = std::max(DepthMapIndex, (unsigned int)DepthMaps.size());
-
-                // Mark For Update
-                DepthMaps[DepthMapIndex]->ToBeUpdated = true;
+                ERS_STRUCT_DepthMap* Target = DepthMaps[DepthMapIndex]; 
+                Target->ToBeUpdated = true;
             }
             
 
