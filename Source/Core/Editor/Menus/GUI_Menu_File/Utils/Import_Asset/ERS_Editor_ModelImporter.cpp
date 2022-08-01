@@ -203,6 +203,26 @@ FIBITMAP* FindTextureBitmap(std::string TexturePath, std::vector<std::pair<std::
     return NULL;
 }
 
+void DeleteTextureBitmap(std::string TexturePath, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures) {
+
+    int Index = -1;
+
+    // Iterate Over Array, Try And Find Match
+    for (unsigned int LoadedTextureIndex = 0; LoadedTextureIndex < LoadedTextures->size(); LoadedTextureIndex++) {
+        if ((*LoadedTextures)[LoadedTextureIndex].first == TexturePath) {
+            Index = LoadedTextureIndex;
+            break;
+        }
+    }
+
+    // Delete
+    if (Index != -1) {
+        LoadedTextures->erase(LoadedTextures->begin() + Index);
+    }
+
+
+}
+
 std::pair<std::string, std::string> FindTextureMatches(ERS_STRUCT_Mesh* Mesh, std::string Type1, std::string Type2) {
 
     // Setup Initialization Variables
@@ -242,13 +262,44 @@ void ERS_CLASS_ModelImporter::MergeTextures(ERS_STRUCT_Model* Model, std::vector
     // Create Pair Of All Textures With Opacity/Alpha Maps
     std::vector<std::pair<std::string, std::string>> OpacityAlphaMaps;
     for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
-        std::pair<std::string, std::string> Match = FindTextureMatches("texture_opacity", "texture_diffuse")
+
+        // Find Matching Types For The Same Mesh
+        std::pair<std::string, std::string> Match = FindTextureMatches(&Model->Meshes[i], "texture_opacity", "texture_diffuse");
+
+        // If Not Empty (Matching Failed) And It's Not Already In The Opacity Map, Add It
+        if (Match != std::make_pair(std::string(""), std::string(""))) {
+
+            bool InArray = false;
+            for (unsigned int x = 0; x < OpacityAlphaMaps.size(); x++) {
+                if (OpacityAlphaMaps[x] == Match) {
+                    InArray = true;
+                    break;
+                } 
+            }
+            if (!InArray) {
+                OpacityAlphaMaps.push_back(Match);
+            }
+
+        }
     }
 
-    // then, iterate over that and merge the two
+    // Iterate Over All Matches, Merge The Two
+    for (unsigned int i = 0; i < OpacityAlphaMaps.size(); i++) {
+        
+        // Get Alpha, Diffuse From Real Loaded Texture Maps
+        FIBITMAP* AlphaTexture = FindTextureBitmap(OpacityAlphaMaps[i].first, LoadedTextures);
+        FIBITMAP* DiffuseTexture = FindTextureBitmap(OpacityAlphaMaps[i].second, LoadedTextures);
 
+        // Merge Together (If Images Are Not NULL)
+        if (AlphaTexture != NULL && DiffuseTexture != NULL) {
+            FIBITMAP* AlphaChannel = FreeImage_GetChannel(AlphaTexture, FICC_ALPHA);
+            FreeImage_SetChannel(DiffuseTexture, AlphaChannel, FICC_ALPHA);
+        }
 
+        // Delete ALpha Texture
+        DeleteTextureBitmap(OpacityAlphaMaps[i].first, LoadedTextures);
 
+    }
 
 }
 
