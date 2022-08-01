@@ -10,6 +10,8 @@ bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model*
     // Setup Processing Variables
     bool DecodeStatus = true;
 
+    SystemUtils->Logger->Log("Loading Model Metadata Version '0.0.0'", 3, LogEnable);
+
     // Attempt To Decode, Handle Errors
     try {
 
