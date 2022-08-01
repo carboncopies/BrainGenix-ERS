@@ -124,7 +124,7 @@ private:
      * 
      * @param Model 
      */
-    void MergeTextures(ERS_STRUCT_Model* Modle);
+    void MergeTextures(ERS_STRUCT_Model* Model);
 
 public:
 
