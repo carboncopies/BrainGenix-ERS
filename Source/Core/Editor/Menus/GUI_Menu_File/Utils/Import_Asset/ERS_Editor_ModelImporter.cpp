@@ -448,7 +448,7 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, ai
 
     // Process Materials
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
-    HandleMeshTextures(Model, Material, ModelDirectory)
+    HandleMeshTextures(Model, Material, ModelDirectory);
 
 
     // Create Data Holders
