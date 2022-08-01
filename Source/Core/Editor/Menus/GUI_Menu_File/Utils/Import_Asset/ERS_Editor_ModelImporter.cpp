@@ -389,12 +389,18 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
     for (unsigned int i = 0; i < TextureFiles.size(); i++) {
 
         SystemUtils_->Logger_->Log(std::string("Loading Texture Image '")  + TextureFiles[i].first + "'", 4);
+        
         ERS_STRUCT_IOData* ImageData = TextureFiles[i].second.get();
         FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData->Data.get(), ImageData->Size_B);
         FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-        FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
+        FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
         FreeImage_CloseMemory(FIImageData);
-        FreeImage_FlipVertical(Image);
+
+        FreeImage_FlipVertical(RawImage);
+
+        FIBITMAP* Image FreeImage_ConvertTo32Bits(RawImage);
+        FreeImage_Unload(RawImage);
+
         SystemUtils_->Logger_->Log(std::string("Loaded Texture Image"), 3);
 
 
