@@ -431,14 +431,12 @@ void ERS_CLASS_ModelImporter::HandleMeshTextures(ERS_STRUCT_Model* Model, aiMate
     AddTexture(Model, Material, aiTextureType_HEIGHT, "texture_height", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_LIGHTMAP, "texture_lightmap", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_METALNESS, "texture_metalness", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_NONE, "texture_none", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_NORMAL_CAMERA, "texture_normal_camera", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_NORMALS, "texture_normals", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_OPACITY, "texture_opacity", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_REFLECTION, "texture_reflection", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_SHININESS, "texture_shininess", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_SPECULAR, "texture_specular", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_UNKNOWN, "texture_unknown", ModelDirectory);
     SystemUtils_->Logger_->Log("Finshed Mesh Texture Identification", 4);
 
 }
