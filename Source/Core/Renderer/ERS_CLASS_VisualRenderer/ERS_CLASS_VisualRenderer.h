@@ -181,14 +181,6 @@ public:
     
 
     /**
-     * @brief Set the Default Shader by index
-     * 
-     * @param ShaderID 
-     */
-    void SetDefaultShader(int ShaderID);
-
-
-    /**
      * @brief Set the OpenGL Defaults object
      * 
      * @param Defaults 
