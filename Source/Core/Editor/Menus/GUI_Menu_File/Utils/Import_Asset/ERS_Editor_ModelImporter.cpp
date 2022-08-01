@@ -398,7 +398,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
 
         FreeImage_FlipVertical(RawImage);
 
-        FIBITMAP* Image FreeImage_ConvertTo32Bits(RawImage);
+        FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
         FreeImage_Unload(RawImage);
 
         SystemUtils_->Logger_->Log(std::string("Loaded Texture Image"), 3);
