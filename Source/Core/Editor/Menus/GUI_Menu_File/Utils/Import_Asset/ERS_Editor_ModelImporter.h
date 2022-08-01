@@ -54,6 +54,7 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointers*/
     std::vector<std::string> TextureList_; /**<Texture List Vector*/
+    std::vector<std::string> TextureTypes_; /**<Types of the textures in the texture list*/
 
 
     /**
