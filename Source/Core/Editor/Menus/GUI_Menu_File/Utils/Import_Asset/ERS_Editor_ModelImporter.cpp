@@ -423,15 +423,21 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
         int X = SourceImageWidth;
         int Y = SourceImageHeight;
         for (int MipMapIndex = MipMaps - 1; MipMapIndex >= 0; MipMapIndex--) {
+
+            X = std::max(1, X);
+            Y = std::max(1, Y);
+            
             Resolutions.push_back(std::make_pair(X, Y));
             SystemUtils_->Logger_->Log(std::string("Calculating Texture Level '") + std::to_string(MipMapIndex) + "' Size '" + std::to_string(X) + "," + std::to_string(Y) + "'", 4);
 
+            // Limit Sizes
             if (X > 1) {
                 X /= 2;
             }
             if (Y > 1) {
                 Y /= 2;
             }
+
         }
 
         // Resize Images
