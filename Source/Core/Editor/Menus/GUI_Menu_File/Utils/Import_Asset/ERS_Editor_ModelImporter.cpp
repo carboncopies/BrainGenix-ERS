@@ -203,14 +203,58 @@ FIBITMAP* FindTextureBitmap(std::string TexturePath, std::vector<std::pair<std::
     return NULL;
 }
 
-void ERS_CLASS_ModelImporter::MergeTextures(std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures) {
+std::pair<std::string, std::string> FindTextureMatches(ERS_STRUCT_Mesh* Mesh, std::string Type1, std::string Type2) {
+
+    // Setup Initialization Variables
+    bool HasType1 = false;
+    std::string Type1Name;
+
+    bool HasType2 = false;
+    std::string Type2Name;
+
+    // Traverse Textures Array, Try And find Types
+    for (unsigned int i = 0; i < Mesh->Textures_.size(); i++) {
+        if (Mesh->Textures_[i]->Type == Type1) {
+            HasType1 = true;
+            Type1Name = Mesh->Textures_[i]->Path;
+            break;
+        }
+    }
+    for (unsigned int i = 0; i < Mesh->Textures_.size(); i++) {
+        if (Mesh->Textures_[i]->Type == Type2) {
+            HasType2 = true;
+            Type2Name = Mesh->Textures_[i]->Path;
+            break;
+        }
+    }
+
+    // Check That Both Are Sorted
+    if (HasType1 && HasType2) {
+        return std::make_pair(Type1Name, Type2Name);
+    } else {
+        return std::make_pair(std::string(""), std::string(""));
+    }
+
+}
+
+void ERS_CLASS_ModelImporter::MergeTextures(ERS_STRUCT_Model* Model, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures) {
+
+    // Create Pair Of All Textures With Opacity/Alpha Maps
+    std::vector<std::pair<std::string, std::string>> OpacityAlphaMaps;
+    for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
+        std::pair<std::string, std::string> Match = 
+    }
+
+    // then, iterate over that and merge the two
+
+    Model->Meshes[0].Textures_[0]->
 
     // Check For Alpha Map, If Found, Add As Alpha Channel To Diffuse Model
     for (unsigned int SortingTextureIndex = 0; SortingTextureIndex < TextureList_.size(); SortingTextureIndex++) {
 
         std::string TextureName = TextureList_[SortingTextureIndex];
         std::string TextureType = TextureTypes_[SortingTextureIndex];
-
+        FIBITMAP* TextureMap = FindTextureBitmap(TextureName, LoadedTextures);
 
 
     }
