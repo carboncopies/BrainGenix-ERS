@@ -125,7 +125,7 @@ private:
      * 
      * @param Model 
      */
-    void MergeTextures(ERS_STRUCT_Model* Model);
+    void MergeTextures(ERS_STRUCT_Model* Model, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures);
 
     /**
      * @brief Handles sorting out the mesh's requested materials
