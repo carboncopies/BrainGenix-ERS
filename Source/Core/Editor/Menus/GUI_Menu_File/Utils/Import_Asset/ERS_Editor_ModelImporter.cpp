@@ -473,8 +473,13 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
             ImageAssetIDs.push_back(ImageAssetID);
 
             // Detect Channels
-            ImageChannels.push_back(FreeImage_GetLine(Image) / FreeImage_GetWidth(Image));
-
+            int Line = FreeImage_GetLine(Image);
+            int Width = FreeImage_GetWidth(Image);
+            if (Width == 0 || Line == 0) {
+                ImageChannels.push_back(0);
+            } else {
+                ImageChannels.push_back(Line / Width);
+            }
 
             SystemUtils_->Logger_->Log(std::string("Generating Texture Image Metadata,  Size Is '") + std::to_string(MemorySize) + "' Bytes, ID Is '" + std::to_string(ImageAssetID) + "'", 3);
 
