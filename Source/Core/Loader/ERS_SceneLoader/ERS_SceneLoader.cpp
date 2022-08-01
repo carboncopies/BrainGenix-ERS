@@ -73,10 +73,6 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
 
             long AssetID = SceneDataNode[i]["AssetID"].as<long>();
 
-
-            // Get Model Texture Info
-            bool FlipTextures = SceneDataNode[i]["FlipTextures"].as<bool>();
-
             // Get Asset LocRotScale
             float PosX = SceneDataNode[i]["AssetPositionX"].as<double>();
             float PosY = SceneDataNode[i]["AssetPositionY"].as<double>();
@@ -93,7 +89,7 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             //Load Model 
             Scene.Models.push_back(std::make_shared<ERS_STRUCT_Model>());
             int CurrentSize = Scene.Models.size();
-            ModelLoader_->AddModelToLoadingQueue(AssetID, Scene.Models[CurrentSize-1], FlipTextures);
+            ModelLoader_->AddModelToLoadingQueue(AssetID, Scene.Models[CurrentSize-1]);
 
             // Add Instance To Models Vector
             Scene.Models[CurrentSize-1]->IsTemplateModel = false;
@@ -101,7 +97,6 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             Scene.Models[CurrentSize-1]->ApplyTransformations();
             Scene.Models[CurrentSize-1]->AssetID = AssetID;
             Scene.Models[CurrentSize-1]->Name = AssetName;
-            Scene.Models[CurrentSize-1]->FlipTextures = FlipTextures;
 
 
             // Load Attached Scripts
