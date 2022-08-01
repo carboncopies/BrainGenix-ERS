@@ -103,7 +103,13 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
 
                 Model->Textures_.push_back(Texture);
             }
-            Model->MaxTextureLevel_ = Model->Textures_[0].LevelResolutions.size() - 1;
+
+            if (Model->Textures_.size() > 0) {
+                Model->MaxTextureLevel_ = Model->Textures_[0].LevelResolutions.size() - 1;
+            } else {
+                Model->MaxTextureLevel_ = -1;
+            }
+
             Model->TexturesAlreadyBeingProcessed_ = false;
 
         } else {
