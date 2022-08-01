@@ -295,7 +295,6 @@ void ERS_CLASS_SceneLoader::AddModel(ERS_STRUCT_Scene* Scene, long AssetID) {
     Scene->Models[CurrentSize-1]->ApplyTransformations();
     Scene->Models[CurrentSize-1]->AssetID = AssetID;
     Scene->Models[CurrentSize-1]->Name = std::string("Loading...");
-    Scene->Models[CurrentSize-1]->FlipTextures = true;
 
     
     // Process Texture References, Setup Meshes
@@ -311,7 +310,7 @@ void ERS_CLASS_SceneLoader::AddModel(ERS_STRUCT_Scene* Scene, long AssetID) {
     }
 
 
-    ModelLoader_->AddModelToLoadingQueue(AssetID, Scene->Models[CurrentSize-1], Scene->Models[CurrentSize-1]->FlipTextures);
+    ModelLoader_->AddModelToLoadingQueue(AssetID, Scene->Models[CurrentSize-1]);
 
 
 
