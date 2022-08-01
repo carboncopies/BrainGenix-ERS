@@ -242,7 +242,7 @@ void ERS_CLASS_ModelImporter::MergeTextures(ERS_STRUCT_Model* Model, std::vector
     // Create Pair Of All Textures With Opacity/Alpha Maps
     std::vector<std::pair<std::string, std::string>> OpacityAlphaMaps;
     for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
-        std::pair<std::string, std::string> Match = 
+        std::pair<std::string, std::string> Match = FindTextureMatches("texture_opacity", "texture_diffuse")
     }
 
     // then, iterate over that and merge the two
