@@ -122,13 +122,13 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         FreeImage_Unload(Image);
         return false;
     }
-    if ((Texture->LevelChannels[Level] != Channels) && (Texture->LevelChannels[Level] != -1)) {
-        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
-        + "' Number Channels Does Not Match Metadata Target", 8, LogEnable);
-        FreeImage_Unload(Image);
-        return false;
-    }
+    // if ((Texture->LevelChannels[Level] != Channels) && (Texture->LevelChannels[Level] != -1)) {
+    //     SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+    //     + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
+    //     + "' Number Channels Does Not Match Metadata Target", 8, LogEnable);
+    //     FreeImage_Unload(Image);
+    //     return false;
+    // }
 
     // Finally After Passing Sanity Checks, Populate Info
     Texture->LevelLoadedInRAM[Level] = true;
