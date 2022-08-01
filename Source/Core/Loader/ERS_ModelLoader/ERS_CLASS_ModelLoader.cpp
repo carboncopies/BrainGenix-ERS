@@ -340,7 +340,7 @@ void ERS_CLASS_ModelLoader::AddModelToReferenceQueue(long AssetID, std::shared_p
 
 }
 
-void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model, bool FlipTextures) {
+void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model) {
 
     // Check If Already In Refs
     if (EnableReferenceLoading_) {
