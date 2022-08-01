@@ -277,6 +277,8 @@ void ERS_CLASS_ModelImporter::MergeTextures(ERS_STRUCT_Model* Model, std::vector
                 } 
             }
             if (!InArray) {
+
+                SystemUtils_->Logger_->Log(std::string("Found Opacity Map For Diffuse Texture '") + Match.second + "', Adding To Merge Queue", 2);
                 OpacityAlphaMaps.push_back(Match);
             }
 
@@ -294,6 +296,8 @@ void ERS_CLASS_ModelImporter::MergeTextures(ERS_STRUCT_Model* Model, std::vector
         if (AlphaTexture != NULL && DiffuseTexture != NULL) {
             FIBITMAP* AlphaChannel = FreeImage_GetChannel(AlphaTexture, FICC_ALPHA);
             FreeImage_SetChannel(DiffuseTexture, AlphaChannel, FICC_ALPHA);
+            SystemUtils_->Logger_->Log(std::string("Merging Opacity Map For Texture '") + Match.second + "'", 2);
+
         }
 
         // Delete ALpha Texture
