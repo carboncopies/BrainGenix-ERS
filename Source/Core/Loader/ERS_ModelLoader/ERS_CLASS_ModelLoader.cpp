@@ -91,16 +91,16 @@ void ERS_CLASS_ModelLoader::WorkerThread() {
                 // Get Item, Remove From Queue, Unlock
                 std::shared_ptr<ERS_STRUCT_Model> WorkItem = WorkItems_[0];
                 long WorkID = WorkIDs_[0];
-                bool FlipTexture = FlipTextures_[0];
+
 
                 WorkItems_.erase(WorkItems_.begin());
                 WorkIDs_.erase(WorkIDs_.begin());
-                FlipTextures_.erase(FlipTextures_.begin());
+
 
                 BlockThread_.unlock();
 
                 // Process Item
-                LoadModel(WorkID, WorkItem, FlipTexture);
+                LoadModel(WorkID, WorkItem);
 
             } else {
                 
