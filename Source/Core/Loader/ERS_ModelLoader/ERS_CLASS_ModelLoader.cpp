@@ -444,12 +444,7 @@ void ERS_CLASS_ModelLoader::MatchTextures(ERS_STRUCT_Model* Model) {
 
 }
 
-void ERS_CLASS_ModelLoader::MergeTextures(ERS_STRUCT_Model* Model) {
 
-    // Check For Alpha Map, If Found, Add As Alpha Channel To Diffuse Model
-    for (unsigned int i = 0; i < Model->)
-
-}
 
 long ERS_CLASS_ModelLoader::CheckIfModelAlreadyLoaded(long AssetID) {
 

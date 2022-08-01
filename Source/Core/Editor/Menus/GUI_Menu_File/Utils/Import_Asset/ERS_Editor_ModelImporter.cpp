@@ -190,6 +190,17 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     return MetadataID;
 }
 
+void ERS_CLASS_ModelImporter::MergeTextures(ERS_STRUCT_Model* Model) {
+
+    // Check For Alpha Map, If Found, Add As Alpha Channel To Diffuse Model
+    for (unsigned int i = 0; i < Model->Loader_RequestedTextureInformation.size(); i++) {
+
+        
+
+    }
+
+}
+
 void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::vector<std::vector<int>>* TextureImageChannels, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
     // Create List Of Texture Files To Be Copied
