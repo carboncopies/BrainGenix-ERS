@@ -19,8 +19,8 @@ ERS_CLASS_ModelImporter::~ERS_CLASS_ModelImporter() {
 void ERS_CLASS_ModelImporter::DetectBoundingBox(ERS_STRUCT_Model* Model) {
 
     // Calculate Bounding Box
-    glm::vec3 ModelMinXYZ;
-    glm::vec3 ModelMaxXYZ;
+    glm::vec3 ModelMinXYZ = Model->Meshes[0].Vertices[0].Position;
+    glm::vec3 ModelMaxXYZ = Model->Meshes[0].Vertices[0].Position;
     for (unsigned int MeshIndex = 0; MeshIndex < Model->Meshes.size(); MeshIndex++) {
 
         for (unsigned int VertIndex = 0; VertIndex < Model->Meshes[MeshIndex].Vertices.size(); VertIndex++) {
