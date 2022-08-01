@@ -126,6 +126,15 @@ private:
      */
     void MergeTextures(ERS_STRUCT_Model* Model);
 
+    /**
+     * @brief Handles sorting out the mesh's requested materials
+     * 
+     * @param Model 
+     * @param Material 
+     * @param ModelDirectory 
+     */
+    void HandleMeshTextures(ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory);
+
 public:
 
 

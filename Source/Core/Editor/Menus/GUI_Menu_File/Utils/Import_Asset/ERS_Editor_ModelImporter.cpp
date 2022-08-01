@@ -416,10 +416,8 @@ void ERS_CLASS_ModelImporter::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node,
 
 }
 
-ERS_STRUCT_Mesh ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory) {
 
-    // Process Materials
-    aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
+void ERS_CLASS_ModelImporter::HandleMeshTextures(ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory) {
 
     SystemUtils_->Logger_->Log("Identifying Mesh Textures", 3);
     AddTexture(Model, Material, aiTextureType_AMBIENT, "texture_ambient", ModelDirectory);
@@ -442,6 +440,16 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, ai
     AddTexture(Model, Material, aiTextureType_SPECULAR, "texture_specular", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_UNKNOWN, "texture_unknown", ModelDirectory);
     SystemUtils_->Logger_->Log("Finshed Mesh Texture Identification", 4);
+
+}
+
+
+ERS_STRUCT_Mesh ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory) {
+
+    // Process Materials
+    aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
+    HandleMeshTextures(Model, Material, ModelDirectory)
+
 
     // Create Data Holders
     ERS_STRUCT_Mesh OutputMesh;
