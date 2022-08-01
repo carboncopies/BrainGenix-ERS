@@ -416,7 +416,6 @@ void ERS_CLASS_ModelImporter::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node,
 
 }
 
-
 void ERS_CLASS_ModelImporter::HandleMeshTextures(ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory) {
 
     SystemUtils_->Logger_->Log("Identifying Mesh Textures", 3);
@@ -440,7 +439,6 @@ void ERS_CLASS_ModelImporter::HandleMeshTextures(ERS_STRUCT_Model* Model, aiMate
     SystemUtils_->Logger_->Log("Finshed Mesh Texture Identification", 4);
 
 }
-
 
 ERS_STRUCT_Mesh ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory) {
 
