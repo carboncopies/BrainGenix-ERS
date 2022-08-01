@@ -192,12 +192,12 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
 void ERS_CLASS_ModelImporter::MergeTextures(ERS_STRUCT_Model* Model) {
 
-    // Check For Alpha Map, If Found, Add As Alpha Channel To Diffuse Model
-    for (unsigned int i = 0; i < Model->Loader_RequestedTextureInformation.size(); i++) {
+    // // Check For Alpha Map, If Found, Add As Alpha Channel To Diffuse Model
+    // for (unsigned int i = 0; i < Model->Loader_RequestedTextureInformation.size(); i++) {
 
         
 
-    }
+    // }
 
 }
 
