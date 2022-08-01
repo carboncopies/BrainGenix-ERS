@@ -45,6 +45,11 @@ ERS_CLASS_VisualRenderer::~ERS_CLASS_VisualRenderer() {
 }
 
 
+void ERS_CLASS_VisualRenderer::SetDefaultShader(int ShaderID) {
+    
+    DefaultShader_ = ShaderID;
+}
+
 void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defaults) {
 
     OpenGLDefaults_ = Defaults;
@@ -550,7 +555,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
 
     // Populate Viewport Struct
-    Viewport->ShaderIndex = ERS_FUNCTION_FindShaderByName(std::string("Viewport"), &Shaders_);
+    Viewport->ShaderIndex = DefaultShader_;
     Viewport->Camera = std::make_unique<ERS_STRUCT_Camera>();
     Viewport->Grid = std::make_unique<ERS_CLASS_Grid>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_Grid"), &Shaders_)].get());
     Viewport->LightIconRenderer = std::make_unique<ERS_CLASS_LightIconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_LightIcon"), &Shaders_)].get()); //Set TO Shader 19 For Billboard Shader, Temp. Disabled As It Doesn't Work ATM
