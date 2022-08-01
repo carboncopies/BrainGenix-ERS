@@ -247,17 +247,8 @@ void ERS_CLASS_ModelImporter::MergeTextures(ERS_STRUCT_Model* Model, std::vector
 
     // then, iterate over that and merge the two
 
-    Model->Meshes[0].Textures_[0]->
-
-    // Check For Alpha Map, If Found, Add As Alpha Channel To Diffuse Model
-    for (unsigned int SortingTextureIndex = 0; SortingTextureIndex < TextureList_.size(); SortingTextureIndex++) {
-
-        std::string TextureName = TextureList_[SortingTextureIndex];
-        std::string TextureType = TextureTypes_[SortingTextureIndex];
-        FIBITMAP* TextureMap = FindTextureBitmap(TextureName, LoadedTextures);
 
 
-    }
 
 }
 
