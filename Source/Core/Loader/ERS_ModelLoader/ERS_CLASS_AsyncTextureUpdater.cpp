@@ -165,33 +165,6 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Textu
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
-// copy an image data to texture buffer
-///////////////////////////////////////////////////////////////////////////////
-void updatePixels(GLubyte* dst, int size, int Height, int Width)
-{
-    static int color = 0;
-
-    if(!dst)
-        return;
-
-    int* ptr = (int*)dst;
-
-    // copy 4 bytes at once
-    for(int i = 0; i < Height; ++i)
-    {
-        for(int j = 0; j < Width; ++j)
-        {
-            *ptr = color;
-            ++ptr;
-        }
-        color += 257;
-    }
-    ++color;            // scroll down
-}
-
-
-
 bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
     // Check If Requested Level Exists
