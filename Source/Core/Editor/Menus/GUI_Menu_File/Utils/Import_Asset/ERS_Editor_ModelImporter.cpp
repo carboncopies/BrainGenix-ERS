@@ -119,7 +119,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     std::vector<std::vector<long>> ImageAssetIDs;
     std::vector<std::vector<std::pair<int, int>>> ImageResolutions;
     std::vector<std::vector<int>> ImageChannels;
-    WriteTextures(&TextureMemorySizes, &ImageAssetIDs, &ImageResolutions, &ImageChannels, AssetPath);
+    WriteTextures(&Model, &TextureMemorySizes, &ImageAssetIDs, &ImageResolutions, &ImageChannels, AssetPath);
 
     // Generate Metadata
     YAML::Emitter MetadataEmitter;
@@ -303,7 +303,7 @@ void ERS_CLASS_ModelImporter::MergeTextures(ERS_STRUCT_Model* Model, std::vector
 
 }
 
-void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::vector<std::vector<int>>* TextureImageChannels, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
+void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::vector<std::vector<int>>* TextureImageChannels, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
     // Create List Of Texture Files To Be Copied
     std::vector<std::pair<std::string, std::shared_ptr<ERS_STRUCT_IOData>>> TextureFiles;
@@ -396,6 +396,9 @@ void ERS_CLASS_ModelImporter::WriteTextures(std::vector<std::vector<int>>* Textu
 
         ImageBytes.push_back(std::make_pair(TextureFiles[i].first, Image));
     }
+
+    // Remove Duplicate Stuff (Like Alpha Maps), Just Generally Consolidate Stuff
+    MergeTextures(Model, &ImageBytes);
 
     // Resize For Mipmaps, Save To New Project
     for (unsigned int i = 0; i < ImageBytes.size(); i++) {
