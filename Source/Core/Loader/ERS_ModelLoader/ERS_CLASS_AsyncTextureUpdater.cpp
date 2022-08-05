@@ -4,8 +4,6 @@
 
 #include <ERS_CLASS_AsyncTextureUpdater.h>
 
-// todo, implement system that searches over all models in the scene and loads the requested texture level
-// also for now, we disable reference loading acceleration due to simplicity.
 
 ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, unsigned int Threads) {
 
