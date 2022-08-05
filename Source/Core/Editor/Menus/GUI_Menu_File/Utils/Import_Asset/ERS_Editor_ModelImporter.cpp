@@ -499,25 +499,25 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
 
 
             // Test Re-Loading Image And Confirm it's all good
-            SystemUtils->ERS_IOSubsystem->ReadAsset(ImageAssetID, Data.get());
+            SystemUtils_->ERS_IOSubsystem->ReadAsset(ImageAssetID, Data.get());
             FIMEMORY* FIImageData = FreeImage_OpenMemory(Data->Data.get(), Data->Size_B);
             FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
             FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
             FreeImage_CloseMemory(FIImageData);
             FreeImage_FlipVertical(RawImage);
-            FIBITMAP* NewImage = FreeImage_ConvertTo32Bits(RawImage);
+            FIBITMAP* TestImage = FreeImage_ConvertTo32Bits(RawImage);
             FreeImage_Unload(RawImage)
 
             // Detect Channels
-            int Line = FreeImage_GetLine(NewImage);
-            int Width = FreeImage_GetWidth(NewImage);
+            int Line = FreeImage_GetLine(TestImage);
+            int Width = FreeImage_GetWidth(TestImage);
             if (Width == 0 || Line == 0) {
                 ImageChannels.push_back(0);
             } else {
                 ImageChannels.push_back(Line / Width);
             }
 
-            FreeImage_Unload(NewImage);
+            FreeImage_Unload(TestImage);
 
 
         }
