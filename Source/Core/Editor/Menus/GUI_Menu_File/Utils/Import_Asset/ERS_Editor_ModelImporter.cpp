@@ -498,6 +498,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
             bool WriteSuccess = SystemUtils_->ERS_IOSubsystem_->WriteAsset(ImageAssetID, Data.get());
             if (!WriteSuccess) {
                 SystemUtils_->Logger_->Log("Error Writing Texture File", 8);
+                ImageChannels.push_back(0);
             }
 
 
