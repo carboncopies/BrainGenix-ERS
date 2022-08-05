@@ -523,7 +523,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
                 ImageChannels.push_back(Line / Width);
             }
             SystemUtils_->Logger_->Log(std::string("Detected Number Of Channels To Be '")
-            + std::to_string(Line/Width) + "'" + TextureList_[i], 3);
+            + std::to_string(Line/Width) + "' For " + TextureList_[i], 3);
             FreeImage_Unload(TestImage);
 
 
