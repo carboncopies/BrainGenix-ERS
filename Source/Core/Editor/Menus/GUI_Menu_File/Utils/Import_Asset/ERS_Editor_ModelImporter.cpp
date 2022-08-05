@@ -495,34 +495,45 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
             Data->Size_B = ImageCompressedSize;
             Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
             Data->AssetModificationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
-            SystemUtils_->ERS_IOSubsystem_->WriteAsset(ImageAssetID, Data.get());
-
-
-
-
-            // Test Re-Loading Image And Confirm it's all good
-            SystemUtils_->Logger_->Log(std::string("Testing Texture Image For Layer '")
-            + std::to_string((MipMaps - 1) - MipMapIndex)
-            + "' With ID '" + std::to_string(ImageAssetID)
-            + "' For Asset Texture '" + TextureList_[i], 3);
-            SystemUtils_->ERS_IOSubsystem_->ReadAsset(ImageAssetID, Data.get());
-            FIMEMORY* FIImageData = FreeImage_OpenMemory(Data->Data.get(), Data->Size_B);
-            FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-            FIBITMAP* TestImage = FreeImage_LoadFromMemory(Format, FIImageData);
-            FreeImage_CloseMemory(FIImageData);
-            FreeImage_FlipVertical(TestImage);
-
-            // Detect Channels
-            int Line = FreeImage_GetLine(TestImage);
-            int Width = FreeImage_GetWidth(TestImage);
-            if (Width == 0 || Line == 0) {
-                ImageChannels.push_back(0);
-            } else {
-                ImageChannels.push_back(Line / Width);
+            bool WriteSuccess = SystemUtils_->ERS_IOSubsystem_->WriteAsset(ImageAssetID, Data.get());
+            if (!WriteSuccess) {
+                SystemUtils_->Logger_->Log("Error Writing Texture File", 8);
             }
-            SystemUtils_->Logger_->Log(std::string("Detected Number Of Channels To Be '")
-            + std::to_string(Line/Width) + "' For " + TextureList_[i], 3);
-            FreeImage_Unload(TestImage);
+
+
+            if (WriteSuccess) {
+
+                // Test Re-Loading Image And Confirm it's all good
+                SystemUtils_->Logger_->Log(std::string("Testing Texture Image For Layer '")
+                + std::to_string((MipMaps - 1) - MipMapIndex)
+                + "' With ID '" + std::to_string(ImageAssetID)
+                + "' For Asset Texture '" + TextureList_[i], 3);
+                bool ReadSuccess = SystemUtils_->ERS_IOSubsystem_->ReadAsset(ImageAssetID, Data.get());
+
+                if (ReadSuccess) {
+                    FIMEMORY* FIImageData = FreeImage_OpenMemory(Data->Data.get(), Data->Size_B);
+                    FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
+                    FIBITMAP* TestImage = FreeImage_LoadFromMemory(Format, FIImageData);
+                    FreeImage_CloseMemory(FIImageData);
+                    FreeImage_FlipVertical(TestImage);
+
+                    // Detect Channels
+                    int Line = FreeImage_GetLine(TestImage);
+                    int Width = FreeImage_GetWidth(TestImage);
+                    if (Width == 0 || Line == 0) {
+                        ImageChannels.push_back(0);
+                    } else {
+                        ImageChannels.push_back(Line / Width);
+                    }
+                    SystemUtils_->Logger_->Log(std::string("Detected Number Of Channels To Be '")
+                    + std::to_string(Line/Width) + "' For " + TextureList_[i], 3);
+                    FreeImage_Unload(TestImage);
+                } else {
+                    SystemUtils->Logger_->Log("Error Reading Image Asset Data", 8);
+                    ImageChannels.push_back(0);
+                }
+
+            }
 
 
         }
