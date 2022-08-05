@@ -182,7 +182,7 @@ void ERS_CLASS_ShadowMaps::PrioritizeDepthMaps(std::vector<ERS_STRUCT_DepthMap*>
 
             // Mark Lights To Be Updated
             int NumberUpdates = SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_;
-            NumberUpdates = std::max(NumberUpdates, SortedLightDistances.size());
+            NumberUpdates = std::max(NumberUpdates, (int)SortedLightDistances.size());
             for (int i = 0; i < NumberUpdates; i++) {
                 unsigned int DepthMapIndex = SortedLightDistances[i];
                 if ((signed long)RandomNumberGenerator_(MersenneTwister_) % (signed long)(DepthMaps.size()-1) == (signed long)i) {
