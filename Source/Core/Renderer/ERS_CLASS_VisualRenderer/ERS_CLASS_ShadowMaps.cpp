@@ -188,6 +188,7 @@ void ERS_CLASS_ShadowMaps::PrioritizeDepthMaps(std::vector<ERS_STRUCT_DepthMap*>
                 if ((signed long)RandomNumberGenerator_(MersenneTwister_) % (signed long)(DepthMaps.size()-1) == (signed long)i) {
                     DepthMapIndex = RandomNumberGenerator_(MersenneTwister_) % (DepthMaps.size()-1);
                 }
+                DepthMapIndex = std::max(DepthMapIndex, (int)DepthMaps.size());
                 DepthMaps[DepthMapIndex]->ToBeUpdated = true;
             }
             
