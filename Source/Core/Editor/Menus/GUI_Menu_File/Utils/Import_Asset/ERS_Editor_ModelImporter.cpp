@@ -479,7 +479,6 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
             + std::to_string((MipMaps - 1) - MipMapIndex)
             + "' With ID '" + std::to_string(ImageAssetID)
             + "' For Asset Texture '" + TextureList_[i], 3);
-
             FIMEMORY* Memory = FreeImage_OpenMemory();
             FreeImage_SaveToMemory(Format, NewImage, Memory);
             FreeImage_Unload(NewImage);
@@ -487,16 +486,11 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
 
             std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
             Data->AssetTypeName = "TextureImage";
-
-
             DWORD ImageCompressedSize = 0;
             BYTE *ImageCompressedBytes;
             FreeImage_AcquireMemory(Memory, &ImageCompressedBytes, &ImageCompressedSize);
-            
-
             Data->Data.reset(new unsigned char[ImageCompressedSize]);
             ::memcpy(Data->Data.get(), ImageCompressedBytes, ImageCompressedSize);
-
             FreeImage_CloseMemory(Memory);
             Data->Size_B = ImageCompressedSize;
             Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
@@ -510,21 +504,20 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
             FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
             FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
             FreeImage_CloseMemory(FIImageData);
-
             FreeImage_FlipVertical(RawImage);
-
-            FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
+            FIBITMAP* NewImage = FreeImage_ConvertTo32Bits(RawImage);
             FreeImage_Unload(RawImage)
 
             // Detect Channels
-            int Line = FreeImage_GetLine(Image);
-            int Width = FreeImage_GetWidth(Image);
+            int Line = FreeImage_GetLine(NewImage);
+            int Width = FreeImage_GetWidth(NewImage);
             if (Width == 0 || Line == 0) {
                 ImageChannels.push_back(0);
             } else {
                 ImageChannels.push_back(Line / Width);
             }
 
+            FreeImage_Unload(NewImage);
 
 
         }
