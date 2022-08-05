@@ -529,7 +529,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
                     + std::to_string(Line/Width) + "' For " + TextureList_[i], 3);
                     FreeImage_Unload(TestImage);
                 } else {
-                    SystemUtils->Logger_->Log("Error Reading Image Asset Data", 8);
+                    SystemUtils_->Logger_->Log("Error Reading Image Asset Data", 8);
                     ImageChannels.push_back(0);
                 }
 
