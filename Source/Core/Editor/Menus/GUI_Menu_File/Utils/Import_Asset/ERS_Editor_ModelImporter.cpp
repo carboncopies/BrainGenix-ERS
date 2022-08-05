@@ -471,16 +471,6 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
             long ImageAssetID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
             ImageMemorySizes.push_back(MemorySize);
             ImageAssetIDs.push_back(ImageAssetID);
-
-            // Detect Channels
-            int Line = FreeImage_GetLine(Image);
-            int Width = FreeImage_GetWidth(Image);
-            if (Width == 0 || Line == 0) {
-                ImageChannels.push_back(0);
-            } else {
-                ImageChannels.push_back(Line / Width);
-            }
-
             SystemUtils_->Logger_->Log(std::string("Generating Texture Image Metadata,  Size Is '") + std::to_string(MemorySize) + "' Bytes, ID Is '" + std::to_string(ImageAssetID) + "'", 3);
 
 
@@ -512,6 +502,30 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
             Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
             Data->AssetModificationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
             SystemUtils_->ERS_IOSubsystem_->WriteAsset(ImageAssetID, Data.get());
+
+
+            // Test Re-Loading Image And Confirm it's all good
+            SystemUtils->ERS_IOSubsystem->ReadAsset(ImageAssetID, Data.get());
+            FIMEMORY* FIImageData = FreeImage_OpenMemory(Data->Data.get(), Data->Size_B);
+            FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
+            FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
+            FreeImage_CloseMemory(FIImageData);
+
+            FreeImage_FlipVertical(RawImage);
+
+            FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
+            FreeImage_Unload(RawImage)
+
+            // Detect Channels
+            int Line = FreeImage_GetLine(Image);
+            int Width = FreeImage_GetWidth(Image);
+            if (Width == 0 || Line == 0) {
+                ImageChannels.push_back(0);
+            } else {
+                ImageChannels.push_back(Line / Width);
+            }
+
+
 
         }
         FreeImage_Unload(Image);
