@@ -11,6 +11,7 @@
 #include <chrono>
 #include <random>
 #include <map>
+#include <algorithm>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
