@@ -508,11 +508,9 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
             SystemUtils_->ERS_IOSubsystem_->ReadAsset(ImageAssetID, Data.get());
             FIMEMORY* FIImageData = FreeImage_OpenMemory(Data->Data.get(), Data->Size_B);
             FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-            FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
+            FIBITMAP* TestImage = FreeImage_LoadFromMemory(Format, FIImageData);
             FreeImage_CloseMemory(FIImageData);
-            FreeImage_FlipVertical(RawImage);
-            FIBITMAP* TestImage = FreeImage_ConvertTo32Bits(RawImage);
-            FreeImage_Unload(RawImage);
+            FreeImage_FlipVertical(TestImage);
 
             // Detect Channels
             int Line = FreeImage_GetLine(TestImage);
