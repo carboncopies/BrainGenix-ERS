@@ -308,7 +308,9 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
         std::cout<<"GLError Status3: "<<glGetError()<<std::endl;
 
-        glTexSubImage2D(GL_TEXTURE_2D, Level - i, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
+        int MipMapLevel = Level - i;
+        std::cout<<MipMapLevel<<"|"<<Width<<"|"<<Height<<std::endl;
+        glTexSubImage2D(GL_TEXTURE_2D, MipMapLevel, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
         glFinish();
         std::cout<<"GLError Status4: "<<glGetError()<<std::endl;
 
