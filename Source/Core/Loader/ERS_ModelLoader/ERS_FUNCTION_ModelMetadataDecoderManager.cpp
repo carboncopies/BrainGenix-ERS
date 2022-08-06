@@ -23,6 +23,13 @@ bool ERS_FUNCTION_DecodeModelMetadata(YAML::Node Metadata, ERS_STRUCT_Model* Mod
         return ERS_FUNCTION_DecodeModelMetadataV001(Metadata, Model, SystemUtils, AssetID, LogEnable);
     }
 
+    // Sort All Texture Levels
+    for (unsigned int TextureID = 0; TextureID < Model->Textures_.size(); i++) {
+
+        
+
+    }
+
     // Failed To Decode Version
     SystemUtils->Logger_->Log("Failed To Decode Metadata Version, Aborting Load", 8);
     return false;
