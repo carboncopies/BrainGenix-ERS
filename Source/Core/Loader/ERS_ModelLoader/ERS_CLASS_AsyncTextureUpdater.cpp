@@ -282,14 +282,13 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     }
     
     
-    std::cout<<"GLError Status0: "<<glGetError()<<std::endl;
 
     // Generate Texture
     glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
 
 
     // Load MipMaps Into Texture
-    for (int i = 0; i <= Level; i++) {
+    for (int i = Level; i >= 0; i--) {
         int Width = Texture->TextureLevels[i].LevelResolution.first;
         int Height = Texture->TextureLevels[i].LevelResolution.second;
         unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->TextureLevels[i].LevelBitmap);
@@ -303,13 +302,13 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
             SystemUtils_->Logger_->Log("Error Mapping PBO, glMapBuffer Returned Nullptr", 8);
         }
 
-        std::cout<<"GLError Status3: "<<glGetError()<<std::endl;
+        std::cout<<"GLError Status1: "<<glGetError()<<std::endl;
 
         int MipMapLevel = Level - i;
         std::cout<<MipMapLevel<<"|"<<Width<<"|"<<Height<<std::endl;
         glTexSubImage2D(GL_TEXTURE_2D, MipMapLevel, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
         glFinish();
-        std::cout<<"GLError Status4: "<<glGetError()<<std::endl;
+        std::cout<<"GLError Status2: "<<glGetError()<<std::endl;
 
     }
 
