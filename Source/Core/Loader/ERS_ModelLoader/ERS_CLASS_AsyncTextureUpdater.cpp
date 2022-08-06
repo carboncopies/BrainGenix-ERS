@@ -403,10 +403,10 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
 
                 // Requested Level
                 LoadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
-                Model->Textures_[TextureIndex].BestAvailableOpenGLID = Model->Textures_[TextureIndex].LevelTextureOpenGLIDs[LevelToLoad];
+                Model->Textures_[TextureIndex].BestAvailableOpenGLID = Model->Textures_[TextureIndex].TextureLevels[LevelToLoad].LevelTextureOpenGLID;
 
                 // Ensure That Level 0 Is Always Loaded
-                if (!Model->Textures_[TextureIndex].LevelLoadedInVRAM[0]) {
+                if (!Model->Textures_[TextureIndex].TextureLevels[0].LevelLoadedInVRAM) {
                     LoadImageDataVRAM(&Model->Textures_[TextureIndex], 0, LogEnable);
                     Model->Textures_[TextureIndex].HasAnyLevelReady = true;
                 }
@@ -422,14 +422,14 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     
                     // Check If Level Already Loaded, Otherwise, Don't Try To Unload It
-                    if (Model->Textures_[TextureIndex].LevelLoadedInVRAM[LevelToUnload]) {
+                    if (Model->Textures_[TextureIndex].TextureLevels[LevelToUnload].LevelLoadedInVRAM) {
                         UnloadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToUnload, LogEnable);
                     }
 
                     // Find New Best OpenGL ID
-                    for (unsigned int i = 0; i < Model->Textures_[TextureIndex].LevelTextureOpenGLIDs.size(); i++) {
-                        if (Model->Textures_[TextureIndex].LevelLoadedInVRAM[i]) {
-                            Model->Textures_[TextureIndex].BestAvailableOpenGLID = Model->Textures_[TextureIndex].LevelTextureOpenGLIDs[i];
+                    for (unsigned int i = 0; i < Model->Textures_[TextureIndex].TextureLevels.size(); i++) {
+                        if (Model->Textures_[TextureIndex].TextureLevels[i].LevelLoadedInVRAM) {
+                            Model->Textures_[TextureIndex].BestAvailableOpenGLID = Model->Textures_[TextureIndex].TextureLevels[i].LevelTextureOpenGLID;
                         }
                     }
 
