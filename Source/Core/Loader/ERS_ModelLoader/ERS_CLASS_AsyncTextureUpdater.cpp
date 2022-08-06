@@ -211,9 +211,9 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     // Get Texture Information
     int MaxLevel = Texture->LevelResolutions.size() - 1;
-    int MaxWidth = Texture->LevelResolutions[0].first;
-    int MaxHeight = Texture->LevelResolutions[0].second;
-    int ImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[0]);//Texture->LevelMemorySizeBytes[MaxLevel - Level];
+    int MaxWidth = Texture->LevelResolutions[MaxLevel - (Level+1)].first;
+    int MaxHeight = Texture->LevelResolutions[MaxLevel - (Level+1)].second;
+    int ImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[MaxLevel - (Level+1)]);//Texture->LevelMemorySizeBytes[MaxLevel - Level];
 
 
 
