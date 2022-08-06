@@ -466,15 +466,10 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
             FreeImage_Unload(Green);
             FreeImage_Unload(Blue);
 
-            // Get Metadata Info
-            int MemorySize = FreeImage_GetMemorySize(NewImage);
-            long ImageAssetID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
-            ImageMemorySizes.push_back(MemorySize);
-            ImageAssetIDs.push_back(ImageAssetID);
-            SystemUtils_->Logger_->Log(std::string("Generating Texture Image Metadata,  Size Is '") + std::to_string(MemorySize) + "' Bytes, ID Is '" + std::to_string(ImageAssetID) + "'", 3);
 
 
             // Save Image
+            long ImageAssetID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
             SystemUtils_->Logger_->Log(std::string("Writing Texture Image For Layer '")
             + std::to_string((MipMaps - 1) - MipMapIndex)
             + "' With ID '" + std::to_string(ImageAssetID)
