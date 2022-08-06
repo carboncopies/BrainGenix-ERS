@@ -14,7 +14,7 @@
 #include <FreeImage.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-
+#include <ERS_STRUCT_TextureLevel.h>
 
 // Structure To Hold 2D ERS Texture
 struct ERS_STRUCT_Texture {
