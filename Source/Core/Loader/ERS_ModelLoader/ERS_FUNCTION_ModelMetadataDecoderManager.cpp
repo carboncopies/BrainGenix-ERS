@@ -42,17 +42,8 @@ bool ERS_FUNCTION_DecodeModelMetadata(YAML::Node Metadata, ERS_STRUCT_Model* Mod
                 }
             }
         }
-
-        for (unsigned int i = 0; i < OutputTextureLevels.size(); i++) {
-            std::cout<<OutputTextureLevels[i].Level<<std::endl;
-        }
-
         Texture->TextureLevels = OutputTextureLevels;
-
-
-
     }
 
     return Status;
-
 }
