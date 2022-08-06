@@ -491,13 +491,15 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
             Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
             Data->AssetModificationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
             bool WriteSuccess = SystemUtils_->ERS_IOSubsystem_->WriteAsset(ImageAssetID, Data.get());
+
             if (!WriteSuccess) {
                 SystemUtils_->Logger_->Log("Error Writing Texture File", 8);
                 ImageChannels.push_back(0);
-            }
+                ImageChannels.push_back(0);
+                ImageMemorySizes.push_back(0);
+                ImageAssetIDs.push_back(-1);
 
-
-            if (WriteSuccess) {
+            } else {
 
                 // Test Re-Loading Image And Confirm it's all good
                 SystemUtils_->Logger_->Log(std::string("Testing Texture Image For Layer '")
@@ -523,10 +525,21 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
                     }
                     SystemUtils_->Logger_->Log(std::string("Detected Number Of Channels To Be '")
                     + std::to_string(Line/Width) + "' For " + TextureList_[i], 3);
+
+                    // Get Metadata Info
+                    int MemorySize = FreeImage_GetMemorySize(TestImage);
+                    ImageMemorySizes.push_back(MemorySize);
+                    ImageAssetIDs.push_back(ImageAssetID);
+                    SystemUtils_->Logger_->Log(std::string("Generating Texture Image Metadata,  Size Is '") + std::to_string(MemorySize) + "' Bytes, ID Is '" + std::to_string(ImageAssetID) + "'", 3);
+
                     FreeImage_Unload(TestImage);
+
+
                 } else {
                     SystemUtils_->Logger_->Log("Error Reading Image Asset Data", 8);
                     ImageChannels.push_back(0);
+                    ImageMemorySizes.push_back(0);
+                    ImageAssetIDs.push_back(-1);
                 }
 
             }
