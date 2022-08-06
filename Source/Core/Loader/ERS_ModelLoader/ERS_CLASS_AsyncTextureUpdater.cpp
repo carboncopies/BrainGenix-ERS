@@ -283,10 +283,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     // Load MipMaps Into Texture
     for (int i = 0; i < Level; i++) {
-        int Width = Texture->LevelResolutions[i].first;
-        int Height = Texture->LevelResolutions[i].second;
-        unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[i]);
-        int LevelImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[i]);
+        int Width = Texture->LevelResolutions[(MaxLevel - Level) + i].first;
+        int Height = Texture->LevelResolutions[(MaxLevel - Level) + i].second;
+        unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[(MaxLevel - Level) + i]);
+        int LevelImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[(MaxLevel - Level) + i]);
 
 
         GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
@@ -298,7 +298,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         }
 
 
-        glTexSubImage2D(GL_TEXTURE_2D, Level - i, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
+        glTexSubImage2D(GL_TEXTURE_2D, i, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
         glFinish();
     }
 
