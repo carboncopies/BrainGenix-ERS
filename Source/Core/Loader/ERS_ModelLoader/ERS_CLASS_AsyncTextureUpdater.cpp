@@ -349,7 +349,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         }
         ErrorMessage = std::string("OpenGL Context Reporting Error '") + std::to_string(GLErrorStatus) + std::string("' (") + ErrorMeaning + std::string(")");
         SystemUtils_->Logger_->Log(ErrorMessage, 10);
-        std::cout<<MipMapLevel<<"|"<<Width<<"|"<<Height<<std::endl;
+        std::cout<<MipMapLevel<<"|"<<Width<<"|"<<Height<<std::endl<<std::endl;
 
         glFinish();
         
