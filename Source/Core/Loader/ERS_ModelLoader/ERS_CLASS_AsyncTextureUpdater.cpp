@@ -53,20 +53,20 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     if (Level < 0) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Negative Texture Level", 8, LogEnable);
         return false;
-    } else if (Level > (int)Texture->LevelResolutions.size()) {
+    } else if (Level > (int)Texture->TextureLevels.size()) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Nonexistant Texture Level", 8, LogEnable);
         return false;
     }
 
     // Check If Level Already Loaded
-    if (Texture->LevelBitmaps[Level] != nullptr) {
+    if (Texture->TextureLevels[Level].LevelBitmap != nullptr) {
         return false;
     }
 
 
     // Load Image Data
     ERS_STRUCT_IOData ImageData;
-    long LevelAssetID = Texture->LevelTextureAssetIDs[Level];
+    long LevelAssetID = Texture->TextureLevels[Level].LevelTextureAssetID;
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(LevelAssetID, &ImageData);
 
     // Decode Image
@@ -94,7 +94,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         return false;
     }
 
-    std::pair<int, int> TargetWidthHeight = Texture->LevelResolutions[Level];
+    std::pair<int, int> TargetWidthHeight = Texture->TextureLevels[Level].LevelResolution;
     if ((TargetWidthHeight.first != Width) && (TargetWidthHeight.first != -1)) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
@@ -120,11 +120,11 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         FreeImage_Unload(Image);
         return false;
     }
-    if ((Texture->LevelChannels[Level] != Channels) && (Texture->LevelChannels[Level] != -1)) {
+    if ((Texture->TextureLevels[Level].LevelChannel != Channels) && (Texture->TextureLevels[Level].LevelChannel != -1)) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
         + "' Number Channels '" + std::to_string(Channels) + "' Does Not Match Metadata Target '"
-        + std::to_string(Texture->LevelChannels[Level]) + "'", 8, LogEnable);
+        + std::to_string(Texture->TextureLevels[Level].LevelChannel) + "'", 8, LogEnable);
         FreeImage_Unload(Image);
         return false;
     }
@@ -133,8 +133,8 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     // add error textures so that we can display the error on the model to make it easier to understand what the issue is - for example, display "Loading Error: Invalid Num Image Channels" for the above issue and add the same for the other issues.
 
     // Finally After Passing Sanity Checks, Populate Info
-    Texture->LevelLoadedInRAM[Level] = true;
-    Texture->LevelBitmaps[Level] = Image;
+    Texture->TextureLevels[Level].LevelLoadedInRAM = true;
+    Texture->TextureLevels[Level].LevelBitmap = Image;
 
     return true;
 
