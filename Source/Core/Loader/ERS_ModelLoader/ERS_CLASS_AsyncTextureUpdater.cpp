@@ -286,11 +286,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     // Generate Texture
     glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
 
-
-    int Data;
-    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &Data);
-    std::cout<<"MAXLEVELS: "<<Data<<std::endl;
-
     // Load MipMaps Into Texture
     for (int i = Level; i >= 0; i--) {
         int Width = Texture->TextureLevels[i].LevelResolution.first;
@@ -333,7 +328,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
 
         int MipMapLevel = Level - i;
-        glTexSubImage2D(GL_TEXTURE_2D, MipMapLevel, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
+        glTexSubImage2D(GL_TEXTURE_2D, MipMapLevel, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, LevelImageBytes);
 
         GLErrorStatus = glGetError();
         if (GLErrorStatus == GL_INVALID_ENUM) {
