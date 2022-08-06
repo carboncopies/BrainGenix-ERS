@@ -85,14 +85,16 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
                 for (YAML::const_iterator LevelIterator = TextureLevels.begin(); LevelIterator != TextureLevels.end(); ++LevelIterator) {
 
                     YAML::Node LevelInfo = LevelIterator->second;
-                    Texture.LevelTextureAssetIDs.push_back(LevelInfo["TextureLevelAssetID"].as<long>());
-                    Texture.LevelTextureOpenGLIDs.push_back(0);
-                    Texture.LevelMemorySizeBytes.push_back(LevelInfo["TextureLevelMemorySizeBytes"].as<int>());
-                    Texture.LevelResolutions.push_back(std::make_pair(LevelInfo["TextureLevelResolutionX"].as<int>(), LevelInfo["TextureLevelResolutionY"].as<int>()));
-                    Texture.LevelChannels.push_back(LevelInfo["TextureLevelNumberChannels"].as<int>());
-                    Texture.LevelBitmaps.push_back(nullptr);
-                    Texture.LevelLoadedInRAM.push_back(false);
-                    Texture.LevelLoadedInVRAM.push_back(false);
+                    ERS_STRUCT_TextureLevel TexLevel;
+                    TexLevel.LevelTextureAssetID = LevelInfo["TextureLevelAssetID"].as<long>();
+                    TexLevel.LevelTextureOpenGLID = 0;
+                    TexLevel.LevelMemorySizeBytes = LevelInfo["TextureLevelMemorySizeBytes"].as<int>();
+                    TexLevel.LevelResolution = std::make_pair(LevelInfo["TextureLevelResolutionX"].as<int>(), LevelInfo["TextureLevelResolutionY"].as<int>());
+                    TexLevel.LevelChannel = LevelInfo["TextureLevelNumberChannels"].as<int>();
+                    TexLevel.LevelBitmap = nullptr;
+                    TexLevel.LevelLoadedInRAM = false;
+                    TexLevel.LevelLoadedInVRAM = false;
+                    TexLevel.Level = LevelIterator->first.as<int>();
 
                     SystemUtils->Logger_->Log(std::string("Detected Texture Level '") + std::to_string(LevelIterator->first.as<int>())
                     + "', Resolution '" + std::to_string(LevelInfo["TextureLevelResolutionX"].as<int>())
