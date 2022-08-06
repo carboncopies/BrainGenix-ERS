@@ -209,10 +209,14 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
 
 
+    // Setup PBO
+    unsigned int PBOID;
+    glGenBuffers(1, &PBOID);
+    glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PBOID);
+    glBufferData(GL_PIXEL_UNPACK_BUFFER, GL_BUFFER_DATA_SIZE, 0, GL_STREAM_DRAW);
 
 
-    // Flush GL First
-    glFinish();
+
 
     // Generate OpenGL Texture ID
     unsigned int OpenGLTextureID;
@@ -609,6 +613,72 @@ void ERS_CLASS_AsyncTextureUpdater::SetQueuePrioritizationEnabled(bool State) {
     PrioritizeQueueByVisualImpact_ = State;
 }
 
+
+
+
+/// OLD WORKING STUFF
+
+// // Generate OpenGL Texture ID
+//     unsigned int OpenGLTextureID;
+//     glGenTextures(1, &OpenGLTextureID);
+//     glBindTexture(GL_TEXTURE_2D, OpenGLTextureID);
+
+//     // Set Texture Properties
+//     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+//     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+//     // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
+//     // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, Level);
+
+//     // Identify Required Texture Format
+//     GLint TextureInternFormat;
+//     GLenum TextureExternFormat;
+//     if (Channels == 4) {
+//         TextureInternFormat = GL_RGBA;
+//         TextureExternFormat = GL_RGBA;
+//     } else if (Channels == 3) {
+//         TextureInternFormat = GL_RGB;
+//         TextureExternFormat = GL_RGB;
+//     } else if (Channels == 2) {
+//         TextureInternFormat = GL_RG;
+//         TextureExternFormat = GL_RG;
+//     } else if (Channels == 1) {
+//         TextureInternFormat = GL_RED;
+//         TextureExternFormat = GL_RED;
+//     } else {
+//         return false;
+//     }
+
+    
+//     // Setup Texture To Accept MipMaps
+//     int MaxLevel = Texture->LevelResolutions.size() - 1;
+//     int MaxWidth = Texture->LevelResolutions[MaxLevel - Level].first;
+//     int MaxHeight = Texture->LevelResolutions[MaxLevel - Level].second;
+//     unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[MaxLevel - Level]);
+//     glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
+//     glGenerateMipmap(GL_TEXTURE_2D);
+//     //glFlush();
+
+//     // // Load MipMaps Into Texture
+//     // for (int i = 0; i < Level; i++) {
+//     //     int Width = Texture->LevelResolutions[i].first;
+//     //     int Height = Texture->LevelResolutions[i].second;
+//     //     unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[i]);
+//     //     glTexSubImage2D(GL_TEXTURE_2D, i, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
+//     // }
+
+//     glBindTexture(GL_TEXTURE_2D, 0);
+//     glFinish();
+
+//     // Update Struct
+//     Texture->LevelTextureOpenGLIDs[Level] = OpenGLTextureID;
+//     Texture->LevelLoadedInVRAM[Level] = true;
+
+
+
+// OLD STUFF
 
     // // Generate OpenGL Texture ID
     // unsigned int OpenGLTextureID;
