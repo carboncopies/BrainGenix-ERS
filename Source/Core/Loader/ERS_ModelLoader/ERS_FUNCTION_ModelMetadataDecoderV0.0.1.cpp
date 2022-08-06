@@ -101,6 +101,10 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
 
                 }
 
+                //***************************************************************************************************************************************************************
+                // NOTE: If using more than 10 levels this might fail if the iterator orders things like: 0,1,10,2,3,4,5,6,7,8,9 rather than 0,2,3,4,5,6,7,8,9,10.
+                //***************************************************************************************************************************************************************
+
                 // Reverse Orders Of Texture Info To Count Up
                 std::reverse(Texture.LevelTextureAssetIDs.begin(), Texture.LevelTextureAssetIDs.end());
                 std::reverse(Texture.LevelTextureOpenGLIDs.begin(), Texture.LevelTextureOpenGLIDs.end());
