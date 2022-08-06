@@ -268,12 +268,13 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[(MaxLevel - Level) + i]);
         int LevelImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[(MaxLevel - Level) + i]);
 
+        std::cout<<"GLError Status1: "<<glGetError()<<std::endl;
 
         GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
-        std::cout<<"GLError Status: "<<glGetError()<<std::endl;
+        std::cout<<"GLError Status2: "<<glGetError()<<std::endl;
         if (PBOPointer != nullptr) {
 
-            std::cout<<PBOPointer<<"|"<<LevelImageSize<<std::endl;
+            std::cout<<"Size: "<<LevelImageSize<<std::endl;
             memcpy(PBOPointer, LevelImageBytes, LevelImageSize);
             glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
         } else {
