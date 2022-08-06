@@ -146,22 +146,22 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Textu
     if (Level < 0) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Negative Texture Level", 8, LogEnable);
         return false;
-    } else if (Level > (int)Texture->LevelResolutions.size()) {
+    } else if (Level > (int)Texture->TextureLevels.size()) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Nonexistant Texture Level", 8, LogEnable);
         return false;
     }
 
     // Check If Level Already Not Loaded
-    if (Texture->LevelBitmaps[Level] == nullptr) {
+    if (Texture->TextureLevels[Level].LevelBitmap == nullptr) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Not Loaded Image", 8, LogEnable);
         return false;
     }
 
 
     // Update Data
-    FreeImage_Unload(Texture->LevelBitmaps[Level]);
-    Texture->LevelBitmaps[Level] = nullptr;
-    Texture->LevelLoadedInRAM[Level] = false;
+    FreeImage_Unload(Texture->TextureLevels[Level].LevelBitmap);
+    Texture->TextureLevels[Level].LevelBitmap = nullptr;
+    Texture->TextureLevels[Level].LevelLoadedInRAM = false;
 
     return true;
 }
