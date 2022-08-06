@@ -285,13 +285,13 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     for (int i = 0; i < Level; i++) {
         int Width = Texture->LevelResolutions[i].first;
         int Height = Texture->LevelResolutions[i].second;
-        unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[i]);
-        int ImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[i]);
+        unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[i]);
+        int LevelImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[i]);
 
 
         GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
         if (PBOPointer != nullptr) {
-            memcpy(PBOPointer, ImageBytes, ImageSize);
+            memcpy(PBOPointer, LevelImageBytes, LevelImageSize);
             glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
         } else {
             SystemUtils_->Logger_->Log("Error Mapping PBO, glMapBuffer Returned Nullptr", 8);
