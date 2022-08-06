@@ -253,15 +253,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     glGenTextures(1, &OpenGLTextureID);
     glBindTexture(GL_TEXTURE_2D, OpenGLTextureID);
 
-    // Set Texture Properties
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, Level);
-
     // Identify Required Texture Format
     GLint TextureInternFormat;
     GLenum TextureExternFormat;
@@ -281,10 +272,17 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         return false;
     }
     
-    
-
     // Generate Texture
     glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
+
+    // Set Texture Properties
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, Level);
 
     // Load MipMaps Into Texture
     for (int i = Level; i >= 0; i--) {
@@ -328,7 +326,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
 
         int MipMapLevel = Level - i;
-        glTexSubImage2D(GL_TEXTURE_2D, MipMapLevel, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, LevelImageBytes);
+        glTexSubImage2D(GL_TEXTURE_2D, MipMapLevel, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
 
         GLErrorStatus = glGetError();
         if (GLErrorStatus == GL_INVALID_ENUM) {
