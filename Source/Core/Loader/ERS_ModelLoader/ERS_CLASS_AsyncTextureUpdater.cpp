@@ -334,7 +334,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         glFinish();
         
 
-        GLint GLErrorStatus = glGetError();
+        GLErrorStatus = glGetError();
         if (GLErrorStatus != GL_NO_ERROR) {
             std::string ErrorMeaning = "Unknown";
             if (GLErrorStatus == GL_INVALID_ENUM) {
