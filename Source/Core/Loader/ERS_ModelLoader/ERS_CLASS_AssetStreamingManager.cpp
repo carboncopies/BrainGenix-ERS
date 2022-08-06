@@ -249,7 +249,7 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
                 // Calculate Total Texture Size For Next Level
                 int NextLevelTextureSize = 0;
                 for (unsigned int z = 0; z < CurrentModel->Textures_Loaded.size(); z++) {
-                    NextLevelTextureSize += CurrentModel->Textures_Loaded[i].LevelMemorySizeBytes[CurrentLevel];
+                    NextLevelTextureSize += CurrentModel->Textures_Loaded[i].TextureLevels[CurrentLevel].LevelMemorySizeBytes;
                 }
 
                 // Check If Will Fit In Mem
