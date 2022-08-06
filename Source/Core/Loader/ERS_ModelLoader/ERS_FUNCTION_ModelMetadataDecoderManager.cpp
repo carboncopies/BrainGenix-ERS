@@ -37,7 +37,7 @@ bool ERS_FUNCTION_DecodeModelMetadata(YAML::Node Metadata, ERS_STRUCT_Model* Mod
         std::vector<ERS_STRUCT_TextureLevel> OutputTextureLevels;
         for (unsigned int TextureLevelIndex = 0; TextureLevelIndex < Texture->TextureLevels.size(); TextureLevelIndex++) {
             for (unsigned int i = 0; i < InputTextureLevels.size(); i++) {
-                if (InputTextureLevels[i].Level == TextureLevelIndex) {
+                if (InputTextureLevels[i].Level == (int)TextureLevelIndex) {
                     OutputTextureLevels.push_back(InputTextureLevels[i]);
                 }
             }
