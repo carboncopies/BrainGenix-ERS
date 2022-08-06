@@ -95,6 +95,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
                     TexLevel.LevelLoadedInRAM = false;
                     TexLevel.LevelLoadedInVRAM = false;
                     TexLevel.Level = LevelIterator->first.as<int>();
+                    Texture.TextureLevels.push_back(TexLevel);
 
                     SystemUtils->Logger_->Log(std::string("Detected Texture Level '") + std::to_string(LevelIterator->first.as<int>())
                     + "', Resolution '" + std::to_string(LevelInfo["TextureLevelResolutionX"].as<int>())
