@@ -238,6 +238,8 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     }
 
 
+    // TODO: Fix mip map loading
+    // FIx segfaults caused when lots of loading is in the queue - unknown why this happens
 
 
 
@@ -291,8 +293,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->TextureLevels[i].LevelBitmap);
         int LevelImageSize = FreeImage_GetMemorySize(Texture->TextureLevels[i].LevelBitmap);
 
-        glBufferData(GL_PIXEL_UNPACK_BUFFER, LevelImageSize, 0, GL_STREAM_DRAW);
-
+        //glBufferData(GL_PIXEL_UNPACK_BUFFER, LevelImageSize, 0, GL_STREAM_DRAW);
         GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
         if (PBOPointer != nullptr) {
             memcpy(PBOPointer, LevelImageBytes, LevelImageSize);
