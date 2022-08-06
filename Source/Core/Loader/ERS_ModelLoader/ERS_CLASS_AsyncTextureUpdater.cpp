@@ -186,51 +186,53 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     // Get Image Metadata, Perform Checks
     int MaxLevel = Texture->LevelResolutions.size() - 1;
-    int MaxWidth = Texture->LevelResolutions[MaxLevel - Level].first;
-    int MaxHeight = Texture->LevelResolutions[MaxLevel - Level].second;
-    int ImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[MaxLevel - Level]);//Texture->LevelMemorySizeBytes[MaxLevel - Level];
-    int Channels = Texture->LevelChannels[Level];
+    int CorrectedIndex = MaxLevel - Level;
+
+    int MaxWidth = Texture->LevelResolutions[CorrectedIndex].first;
+    int MaxHeight = Texture->LevelResolutions[CorrectedIndex].second;
+    int ImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[CorrectedIndex]);//Texture->LevelMemorySizeBytes[MaxLevel - Level];
+    int Channels = Texture->LevelChannels[CorrectedIndex];
     if (Channels > 4) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[CorrectedIndex])
         + "' Channel Count >4", 8, LogEnable);
         return false;
     }
     if (Channels < 1) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[CorrectedIndex])
         + "' Channel Count <1", 8, LogEnable);
         return false;
     }
     for ( int i = 0; i < Level; i++) {
         if (!Texture->LevelLoadedInRAM[i]) {
             SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-            + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+            + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[CorrectedIndex])
             + "' Not All Prior Levels Are Loaded Into RAM", 8, LogEnable);
             return false;
         }
     }
     if (MaxLevel < 0) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[CorrectedIndex])
         + "' No Levels To Load", 8, LogEnable);
         return false;    
     }
     if (MaxWidth < 1) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[CorrectedIndex])
         + "' Width is 0", 8, LogEnable);
         return false;    
     }
     if (MaxHeight < 1) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[CorrectedIndex])
         + "' Height is 0", 8, LogEnable);
         return false;    
     }
     if (ImageSize < 1) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[CorrectedIndex])
         + "' Image Byte Array Has Size Of 0", 8, LogEnable);
         return false;    
     }
@@ -317,8 +319,8 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
 
     // Update Struct
-    Texture->LevelTextureOpenGLIDs[Level] = OpenGLTextureID;
-    Texture->LevelLoadedInVRAM[Level] = true;
+    Texture->LevelTextureOpenGLIDs[CorrectedIndex] = OpenGLTextureID;
+    Texture->LevelLoadedInVRAM[CorrectedIndex] = true;
 
 
     return true;
