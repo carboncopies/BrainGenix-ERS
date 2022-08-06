@@ -125,10 +125,10 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             int TextureSizeVRAM = 0;
             int TextureSizeRAM = 0;
             for (unsigned int i = 0; i < Model->Textures_Loaded.size(); i++) {
-                TextureSizeVRAM += Model->Textures_Loaded[i].LevelMemorySizeBytes[TargetTextureLevelVRAM];
+                TextureSizeVRAM += Model->Textures_Loaded[i].TextureLevels[TargetTextureLevelVRAM].LevelLoadedInVRAM;
             }
             for (unsigned int i = 0; i < Model->Textures_Loaded.size(); i++) {
-                TextureSizeRAM += Model->Textures_Loaded[i].LevelMemorySizeBytes[TargetTextureLevelRAM];
+                TextureSizeRAM += Model->Textures_Loaded[i].TextureLevels[TargetTextureLevelRAM].LevelMemorySizeBytes;
             }
 
             // Check What Can Fit Into VRAM
