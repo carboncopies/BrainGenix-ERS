@@ -17,37 +17,15 @@
 
 
 // Structure To Hold 2D ERS Texture
-struct ERS_STRUCT_Texture {
+struct ERS_STRUCT_TextureLevel {
 
-    // New Loading System Info
-    std::vector<unsigned int> LevelTextureOpenGLIDs; /**<List of opengl ids for every texture level*/
-    std::vector<unsigned int> LevelTextureAssetIDs; /**<List of asset ids for every texture level*/
-    std::vector<bool> LevelLoadedInRAM; /**<True/false for every level showing if that level is loaded in RAM*/
-    std::vector<bool> LevelLoadedInVRAM; /**<True/false for every level showing f that level is loaded in VRAM*/  
-    std::vector<std::pair<int, int>> LevelResolutions; /**<List of all texture level's resolutions*/
-    std::vector<int> LevelMemorySizeBytes; /**<Tells the system how many bytes every level will take*/
-    std::vector<FIBITMAP*> LevelBitmaps; /**<List of bitmaps for each level - contains the texture's RAM data.*/
-    std::vector<int> LevelChannels; /**<List containing number of channels for every texture layer*/
-
-    unsigned int BestAvailableOpenGLID = 0; /**<The current best ID we have loaded*/
-    bool HasAnyLevelReady = false; /**<Tells the mesh renderer if we have any levels ready for it*/
-
-    int TextureLevelInRAM_ = 0; /**<Determines the current texture level in RAM*/
-    int TextureLevelInVRAM_ = 0; /**<Determines the current texture level in RAM*/
-
-    int NumberChannels; /**<Shows the number of color channels in this texture*/
-
-    // Set ImageData For Deferred OpenGL Loading
-    // float Channels;
-    // float Width;
-    // float Height;
-    // FIBITMAP* ImageData;
-    // unsigned char* ImageBytes;
-    // bool FreeImageBackend = true;
-    bool HasImageData = false;
-
-    // Set Metadata
-    std::string Type;
-    std::string Path;
+    unsigned int LevelTextureOpenGLIDs; /**<List of opengl ids for every texture level*/
+    unsigned int LevelTextureAssetIDs; /**<List of asset ids for every texture level*/
+    bool LevelLoadedInRAM; /**<True/false for every level showing if that level is loaded in RAM*/
+    bool LevelLoadedInVRAM; /**<True/false for every level showing f that level is loaded in VRAM*/  
+    std::pair<int, int> LevelResolutions; /**<List of all texture level's resolutions*/
+    int LevelMemorySizeBytes; /**<Tells the system how many bytes every level will take*/
+    FIBITMAP* LevelBitmaps; /**<List of bitmaps for each level - contains the texture's RAM data.*/
+    int LevelChannels; /**<List containing number of channels for every texture layer*/
 
 };
