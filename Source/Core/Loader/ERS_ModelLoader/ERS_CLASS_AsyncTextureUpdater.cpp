@@ -332,23 +332,23 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Text
     if (Level < 0) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Negative Texture Level Out Of VRAM", 8, LogEnable);
         return false;
-    } else if (Level > (int)Texture->LevelResolutions.size()) {
+    } else if (Level > (int)Texture->TextureLevels.size()) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Nonexistant Texture Level Out Of VRAM", 8, LogEnable);
         return false;
     }
 
     // Check If Level Already Unloaded
-    if ((Texture->LevelTextureOpenGLIDs[Level] == 0)) {
+    if ((Texture->TextureLevels[Level].LevelTextureOpenGLID == 0)) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Unload Already Loaded Image Out Of VRAM", 8, LogEnable);
         return false;
     }
 
     // Delete Texture
-    glDeleteTextures(1, &Texture->LevelTextureOpenGLIDs[Level]);
+    glDeleteTextures(1, &Texture->TextureLevels[Level].LevelTextureOpenGLID);
 
     // Update Struct
-    Texture->LevelTextureOpenGLIDs[Level] = 0;
-    Texture->LevelLoadedInVRAM[Level] = false;
+    Texture->TextureLevels[Level].LevelTextureOpenGLID = 0;
+    Texture->TextureLevels[Level].LevelLoadedInVRAM = false;
 
     return true;
 
