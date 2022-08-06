@@ -38,14 +38,18 @@ bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model*
             for (YAML::const_iterator it=TexturePathNode.begin(); it!=TexturePathNode.end(); ++it) {
                 ERS_STRUCT_Texture Texture;
                 Texture.Path = it->first.as<std::string>();
-                Texture.LevelTextureAssetIDs.push_back(it->second.as<long>());
-                Texture.LevelTextureOpenGLIDs.push_back(0);
-                Texture.LevelLoadedInRAM.push_back(false);
-                Texture.LevelLoadedInVRAM.push_back(false);
-                Texture.LevelChannels.push_back(-1);
-                Texture.LevelBitmaps.push_back(nullptr);
-                Texture.LevelMemorySizeBytes.push_back(-1);
-                Texture.LevelResolutions.push_back(std::make_pair(-1, -1));
+
+                ERS_STRUCT_TextureLevel TexLevel;
+                TexLevel.LevelTextureAssetID = it->second.as<long>();
+                TexLevel.LevelTextureOpenGLID = 0;
+                TexLevel.LevelLoadedInRAM = false;
+                TexLevel.LevelLoadedInVRAM = false;
+                TexLevel.LevelChannel = -1;
+                TexLevel.LevelBitmap = nullptr;
+                TexLevel.LevelMemorySizeBytes = -1;
+                TexLevel.LevelResolution = std::make_pair(-1, -1);
+                TexLevel.Level = 0;
+                Texture.TextureLevels.push_back(TexLevel);
                 Model->Textures_.push_back(Texture);
                 Model->TexturesAlreadyBeingProcessed_ = false;
                 Model->MaxTextureLevel_ = 0;

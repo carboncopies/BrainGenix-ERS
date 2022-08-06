@@ -27,5 +27,6 @@ struct ERS_STRUCT_TextureLevel {
     int LevelMemorySizeBytes; /**<Tells the system how many bytes every level will take*/
     FIBITMAP* LevelBitmap; /**<List of bitmaps for each level - contains the texture's RAM data.*/
     int LevelChannel; /**<List containing number of channels for every texture layer*/
+    int Level; /**<What level is this (used for sorting internally)*/
 
 };
