@@ -216,8 +216,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     glBufferData(GL_PIXEL_UNPACK_BUFFER, GL_BUFFER_DATA_SIZE, 0, GL_STREAM_DRAW);
 
 
-
-
     // Generate OpenGL Texture ID
     unsigned int OpenGLTextureID;
     glGenTextures(1, &OpenGLTextureID);
