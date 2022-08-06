@@ -204,8 +204,8 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         + "' Channel Count <1", 8, LogEnable);
         return false;
     }
-    for ( int i = 0; i < Level; i++) {
-        if (!Texture->TextureLevels[i]) {
+    for (int i = 0; i < Level; i++) {
+        if (!Texture->TextureLevels[i].LevelLoadedInRAM) {
             SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
             + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
             + "' Not All Prior Levels Are Loaded Into RAM", 8, LogEnable);
