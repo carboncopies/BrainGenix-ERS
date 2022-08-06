@@ -240,7 +240,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     // TODO: Fix mip map loading
     // FIx segfaults caused when lots of loading is in the queue - unknown why this happens
-
+    bool EnableMipMaps = false;
 
 
     // Setup PBO
@@ -283,79 +283,99 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, Level);
 
-    // Load MipMaps Into Texture
-    for (int i = Level; i >= 0; i--) {
-        int Width = Texture->TextureLevels[i].LevelResolution.first;
-        int Height = Texture->TextureLevels[i].LevelResolution.second;
-        unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->TextureLevels[i].LevelBitmap);
-        int LevelImageSize = FreeImage_GetMemorySize(Texture->TextureLevels[i].LevelBitmap);
+    // If MipMaps Are To Be Used
+    if (EnableMipMaps) {
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, Level);
 
-        //glBufferData(GL_PIXEL_UNPACK_BUFFER, LevelImageSize, 0, GL_STREAM_DRAW);
-        GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
-        if (PBOPointer != nullptr) {
-            memcpy(PBOPointer, LevelImageBytes, LevelImageSize);
-            glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
-        } else {
-            SystemUtils_->Logger_->Log("Error Mapping PBO, glMapBuffer Returned Nullptr", 8);
-        }
-        glFinish();
+        // Load MipMaps Into Texture
+        for (int i = Level; i >= 0; i--) {
+            int Width = Texture->TextureLevels[i].LevelResolution.first;
+            int Height = Texture->TextureLevels[i].LevelResolution.second;
+            unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->TextureLevels[i].LevelBitmap);
+            int LevelImageSize = FreeImage_GetMemorySize(Texture->TextureLevels[i].LevelBitmap);
 
-
-
-        GLint GLErrorStatus = glGetError();
-        std::string ErrorMeaning = "Unknown";
-        if (GLErrorStatus == GL_INVALID_ENUM) {
-            ErrorMeaning = "GL_INVALID_ENUM";
-        } else if (GLErrorStatus == GL_INVALID_VALUE) {
-            ErrorMeaning = "GL_INVALID_VALUE";
-        } else if (GLErrorStatus == GL_INVALID_OPERATION) {
-            ErrorMeaning = "GL_INVALID_OPERATION";
-        } else if (GLErrorStatus == GL_STACK_OVERFLOW) {
-            ErrorMeaning = "GL_STACK_OVERFLOW";
-        } else if (GLErrorStatus == GL_STACK_UNDERFLOW) {
-            ErrorMeaning = "GL_STACK_UNDERFLOW";
-        } else if (GLErrorStatus == GL_OUT_OF_MEMORY) {
-            ErrorMeaning = "GL_OUT_OF_MEMORY";
-        } else if (GLErrorStatus == GL_INVALID_FRAMEBUFFER_OPERATION) {
-            ErrorMeaning = "GL_INVALID_FRAMEBUFFER_OPERATION";
-        }
-        std::string ErrorMessage = std::string("OpenGL Context Reporting Error '") + std::to_string(GLErrorStatus) + std::string("' (") + ErrorMeaning + std::string(")");
-        SystemUtils_->Logger_->Log(ErrorMessage, 10);
-    
+            //glBufferData(GL_PIXEL_UNPACK_BUFFER, LevelImageSize, 0, GL_STREAM_DRAW);
+            GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
+            if (PBOPointer != nullptr) {
+                memcpy(PBOPointer, LevelImageBytes, LevelImageSize);
+                glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+            } else {
+                SystemUtils_->Logger_->Log("Error Mapping PBO, glMapBuffer Returned Nullptr", 8);
+            }
+            glFinish();
 
 
 
-        int MipMapLevel = Level - i;
-        glTexSubImage2D(GL_TEXTURE_2D, MipMapLevel, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
-
-        GLErrorStatus = glGetError();
-        if (GLErrorStatus == GL_INVALID_ENUM) {
-            ErrorMeaning = "GL_INVALID_ENUM";
-        } else if (GLErrorStatus == GL_INVALID_VALUE) {
-            ErrorMeaning = "GL_INVALID_VALUE";
-        } else if (GLErrorStatus == GL_INVALID_OPERATION) {
-            ErrorMeaning = "GL_INVALID_OPERATION";
-        } else if (GLErrorStatus == GL_STACK_OVERFLOW) {
-            ErrorMeaning = "GL_STACK_OVERFLOW";
-        } else if (GLErrorStatus == GL_STACK_UNDERFLOW) {
-            ErrorMeaning = "GL_STACK_UNDERFLOW";
-        } else if (GLErrorStatus == GL_OUT_OF_MEMORY) {
-            ErrorMeaning = "GL_OUT_OF_MEMORY";
-        } else if (GLErrorStatus == GL_INVALID_FRAMEBUFFER_OPERATION) {
-            ErrorMeaning = "GL_INVALID_FRAMEBUFFER_OPERATION";
-        }
-        ErrorMessage = std::string("OpenGL Context Reporting Error '") + std::to_string(GLErrorStatus) + std::string("' (") + ErrorMeaning + std::string(")");
-        SystemUtils_->Logger_->Log(ErrorMessage, 10);
-        std::cout<<MipMapLevel<<"|CW"<<Width<<"|CH"<<Height<<"|MW"<<MaxWidth<<"|MH"<<MaxHeight<<std::endl<<std::endl;
-
-        glFinish();
+            GLint GLErrorStatus = glGetError();
+            std::string ErrorMeaning = "Unknown";
+            if (GLErrorStatus == GL_INVALID_ENUM) {
+                ErrorMeaning = "GL_INVALID_ENUM";
+            } else if (GLErrorStatus == GL_INVALID_VALUE) {
+                ErrorMeaning = "GL_INVALID_VALUE";
+            } else if (GLErrorStatus == GL_INVALID_OPERATION) {
+                ErrorMeaning = "GL_INVALID_OPERATION";
+            } else if (GLErrorStatus == GL_STACK_OVERFLOW) {
+                ErrorMeaning = "GL_STACK_OVERFLOW";
+            } else if (GLErrorStatus == GL_STACK_UNDERFLOW) {
+                ErrorMeaning = "GL_STACK_UNDERFLOW";
+            } else if (GLErrorStatus == GL_OUT_OF_MEMORY) {
+                ErrorMeaning = "GL_OUT_OF_MEMORY";
+            } else if (GLErrorStatus == GL_INVALID_FRAMEBUFFER_OPERATION) {
+                ErrorMeaning = "GL_INVALID_FRAMEBUFFER_OPERATION";
+            }
+            std::string ErrorMessage = std::string("OpenGL Context Reporting Error '") + std::to_string(GLErrorStatus) + std::string("' (") + ErrorMeaning + std::string(")");
+            SystemUtils_->Logger_->Log(ErrorMessage, 10);
         
 
 
 
+            int MipMapLevel = Level - i;
+            glTexSubImage2D(GL_TEXTURE_2D, MipMapLevel, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
+
+            GLErrorStatus = glGetError();
+            if (GLErrorStatus == GL_INVALID_ENUM) {
+                ErrorMeaning = "GL_INVALID_ENUM";
+            } else if (GLErrorStatus == GL_INVALID_VALUE) {
+                ErrorMeaning = "GL_INVALID_VALUE";
+            } else if (GLErrorStatus == GL_INVALID_OPERATION) {
+                ErrorMeaning = "GL_INVALID_OPERATION";
+            } else if (GLErrorStatus == GL_STACK_OVERFLOW) {
+                ErrorMeaning = "GL_STACK_OVERFLOW";
+            } else if (GLErrorStatus == GL_STACK_UNDERFLOW) {
+                ErrorMeaning = "GL_STACK_UNDERFLOW";
+            } else if (GLErrorStatus == GL_OUT_OF_MEMORY) {
+                ErrorMeaning = "GL_OUT_OF_MEMORY";
+            } else if (GLErrorStatus == GL_INVALID_FRAMEBUFFER_OPERATION) {
+                ErrorMeaning = "GL_INVALID_FRAMEBUFFER_OPERATION";
+            }
+            ErrorMessage = std::string("OpenGL Context Reporting Error '") + std::to_string(GLErrorStatus) + std::string("' (") + ErrorMeaning + std::string(")");
+            SystemUtils_->Logger_->Log(ErrorMessage, 10);
+            std::cout<<MipMapLevel<<"|CW"<<Width<<"|CH"<<Height<<"|MW"<<MaxWidth<<"|MH"<<MaxHeight<<std::endl<<std::endl;
+
+            glFinish();
+            
+
+
+
+        }
+    } else {
+            int Width = Texture->TextureLevels[Level].LevelResolution.first;
+            int Height = Texture->TextureLevels[Level].LevelResolution.second;
+            unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->TextureLevels[Level].LevelBitmap);
+            int LevelImageSize = FreeImage_GetMemorySize(Texture->TextureLevels[Level].LevelBitmap);
+
+            //glBufferData(GL_PIXEL_UNPACK_BUFFER, LevelImageSize, 0, GL_STREAM_DRAW);
+            GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
+            if (PBOPointer != nullptr) {
+                memcpy(PBOPointer, LevelImageBytes, LevelImageSize);
+                glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+            } else {
+                SystemUtils_->Logger_->Log("Error Mapping PBO, glMapBuffer Returned Nullptr", 8);
+            }
+            glFinish();
+            glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
     }
 
     // Cleanup Buffers, Wait For Everything To Finish
