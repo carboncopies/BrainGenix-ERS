@@ -330,8 +330,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
         int MipMapLevel = Level - i;
         glTexSubImage2D(GL_TEXTURE_2D, MipMapLevel, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
-        glFinish();
-        
 
         GLErrorStatus = glGetError();
         if (GLErrorStatus == GL_INVALID_ENUM) {
@@ -352,6 +350,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         ErrorMessage = std::string("OpenGL Context Reporting Error '") + std::to_string(GLErrorStatus) + std::string("' (") + ErrorMeaning + std::string(")");
         SystemUtils_->Logger_->Log(ErrorMessage, 10);
         std::cout<<MipMapLevel<<"|"<<Width<<"|"<<Height<<std::endl;
+
+        glFinish();
+        
+
 
 
     }
