@@ -258,9 +258,13 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     int ImageSize = Texture->LevelMemorySizeBytes[MaxLevel - Level];
 
     GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
-    memcpy(PBOPointer, ImageBytes, ImageSize);
-    glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
-
+    std::cout<<PBOPointer<<std::endl;
+    if (PBOPointer != nullptr) {
+        memcpy(PBOPointer, ImageBytes, ImageSize);
+        glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+    } else {
+        SystemUtils_->Logger_->Log("Error Mapping PBO, glMapBuffer Returned Nullptr", 8);
+    }
     glFinish();
 
 
