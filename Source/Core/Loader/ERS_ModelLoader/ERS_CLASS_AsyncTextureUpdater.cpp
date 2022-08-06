@@ -185,6 +185,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     }
 
     // Get Image Metadata, Perform Checks
+    int MaxLevel = Texture->LevelResolutions.size() - 1;
+    int MaxWidth = Texture->LevelResolutions[MaxLevel - Level].first;
+    int MaxHeight = Texture->LevelResolutions[MaxLevel - Level].second;
+    int ImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[MaxLevel - Level]);//Texture->LevelMemorySizeBytes[MaxLevel - Level];
     int Channels = Texture->LevelChannels[Level];
     if (Channels > 4) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
@@ -206,16 +210,33 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
             return false;
         }
     }
+    if (MaxLevel < 0) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "' No Levels To Load", 8, LogEnable);
+        return false;    
+    }
+    if (MaxWidth < 1) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "' Width is 0", 8, LogEnable);
+        return false;    
+    }
+    if (MaxHeight < 1) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "' Height is 0", 8, LogEnable);
+        return false;    
+    }
+    if (ImageSize < 1) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[Level])
+        + "' Image Byte Array Has Size Of 0", 8, LogEnable);
+        return false;    
+    }
 
 
 
-    // Get Texture Information
-    int MaxLevel = Texture->LevelResolutions.size() - 1;
-    int MaxWidth = Texture->LevelResolutions[MaxLevel - Level].first;
-    int MaxHeight = Texture->LevelResolutions[MaxLevel - Level].second;
-    int ImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[MaxLevel - Level]);//Texture->LevelMemorySizeBytes[MaxLevel - Level];
-
-    std::cout<<"GLError Status1: "<<glGetError()<<std::endl;
 
 
     // Setup PBO
@@ -259,7 +280,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     }
     
     
-    std::cout<<"GLError Status2: "<<glGetError()<<std::endl;
+    std::cout<<"GLError Status0: "<<glGetError()<<std::endl;
 
     // Generate Texture
     glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
@@ -272,10 +293,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[(MaxLevel - Level) + i]);
         int LevelImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[(MaxLevel - Level) + i]);
 
-        std::cout<<"GLError Status3: "<<glGetError()<<std::endl;
+        std::cout<<"GLError Status1: "<<glGetError()<<std::endl;
 
         GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
-        std::cout<<"GLError Status4: "<<glGetError()<<std::endl;
+        std::cout<<"GLError Status2: "<<glGetError()<<std::endl;
         if (PBOPointer != nullptr) {
 
             std::cout<<"Size: "<<LevelImageSize<<std::endl;
