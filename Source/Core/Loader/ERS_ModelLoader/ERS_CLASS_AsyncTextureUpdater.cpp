@@ -286,7 +286,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     // Generate Texture
     glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
 
-    std::cout<<"MAXLEVELS: "<<glGetIntegerv(GL_MAX_TEXTURE_SIZE)<<std::endl;
+
+    int Data;
+    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &Data);
+    std::cout<<"MAXLEVELS: "<<Data<<std::endl;
 
     // Load MipMaps Into Texture
     for (int i = Level; i >= 0; i--) {
