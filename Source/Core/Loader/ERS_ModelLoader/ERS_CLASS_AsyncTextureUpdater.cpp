@@ -186,7 +186,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     // Get Image Metadata, Perform Checks
     int MaxLevel = Texture->TextureLevels.size() - 1;
-    int CorrectedIndex = MaxLevel - Level;
+    int CorrectedIndex = Level;
 
     int MaxWidth = Texture->TextureLevels[CorrectedIndex].LevelResolution.first;
     int MaxHeight = Texture->TextureLevels[CorrectedIndex].LevelResolution.second;
@@ -290,10 +290,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     // Load MipMaps Into Texture
     for (int i = 0; i <= Level; i++) {
-        int Width = Texture->TextureLevels[(MaxLevel - Level) + i].LevelResolution.first;
-        int Height = Texture->TextureLevels[(MaxLevel - Level) + i].LevelResolution.second;
-        unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->TextureLevels[(MaxLevel - Level) + i].LevelBitmap);
-        int LevelImageSize = FreeImage_GetMemorySize(Texture->TextureLevels[(MaxLevel - Level) + i].LevelBitmap);
+        int Width = Texture->TextureLevels[i].LevelResolution.first;
+        int Height = Texture->TextureLevels[i].LevelResolution.second;
+        unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->TextureLevels[i].LevelBitmap);
+        int LevelImageSize = FreeImage_GetMemorySize(Texture->TextureLevels[i].LevelBitmap);
 
         std::cout<<"GLError Status1: "<<glGetError()<<std::endl;
 
@@ -309,8 +309,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         }
 
 
-        glTexSubImage2D(GL_TEXTURE_2D, i, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
+        glTexSubImage2D(GL_TEXTURE_2D, Level - i, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
         glFinish();
+        std::cout<<"GLError Status3: "<<glGetError()<<std::endl;
+
     }
 
     // Cleanup Buffers, Wait For Everything To Finish
