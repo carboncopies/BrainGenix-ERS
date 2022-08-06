@@ -273,7 +273,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
 
-    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, MaxWidth, MaxHeight, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes)
+    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, MaxWidth, MaxHeight, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
 
     // // Load MipMaps Into Texture
     // for (int i = 0; i < Level; i++) {
