@@ -259,10 +259,14 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
     memcpy(PBOPointer, ImageBytes, ImageSize);
+    glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+
+    glFinish();
 
 
-    // glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
-    // glGenerateMipmap(GL_TEXTURE_2D);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
+    glGenerateMipmap(GL_TEXTURE_2D);
     //glFlush();
 
     // // Load MipMaps Into Texture
