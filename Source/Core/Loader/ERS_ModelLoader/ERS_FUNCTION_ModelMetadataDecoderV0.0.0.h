@@ -18,7 +18,7 @@
 #include <ERS_STRUCT_Mesh.h>
 #include <ERS_STRUCT_Model.h>
 #include <ERS_STRUCT_SystemUtils.h>
-
+#include <ERS_STRUCT_TextureLevel.h>
 
 /**
  * @brief Decodes model metadata from the yaml system.

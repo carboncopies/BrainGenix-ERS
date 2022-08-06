@@ -41,6 +41,7 @@ target_link_libraries(ERS_ModelLoader
     ERS_STRUCT_Mesh
     ERS_STRUCT_Model
     ERS_STRUCT_Texture
+    ERS_STRUCT_TextureLevel
     ERS_STRUCT_Vertex
 
     ERS_STRUCT_SystemUtils
