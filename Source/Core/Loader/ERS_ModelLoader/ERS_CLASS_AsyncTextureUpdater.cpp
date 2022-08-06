@@ -213,15 +213,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     int MaxLevel = Texture->LevelResolutions.size() - 1;
     int MaxWidth = Texture->LevelResolutions[MaxLevel - Level].first;
     int MaxHeight = Texture->LevelResolutions[MaxLevel - Level].second;
-    unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[MaxLevel - Level]);
-    int ImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[MaxLevel - Level]);//Texture->LevelMemorySizeBytes[MaxLevel - Level];
 
 
-    // // Setup PBO
-    // unsigned int PBOID;
-    // glGenBuffers(1, &PBOID);
-    // glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PBOID);
-    // glBufferData(GL_PIXEL_UNPACK_BUFFER, ImageSize, 0, GL_STREAM_DRAW);
+
+
 
 
     // Generate OpenGL Texture ID
@@ -260,20 +255,34 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     
 
 
-    // GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
-    // std::cout<<(PBOPointer==nullptr)<<std::endl;
-    // if (PBOPointer != nullptr) {
-    //     memcpy(PBOPointer, ImageBytes, ImageSize);
-    //     glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
-    // } else {
-    //     SystemUtils_->Logger_->Log("Error Mapping PBO, glMapBuffer Returned Nullptr", 8);
-    // }
+
 
 
 
     glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
 
-    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, MaxWidth, MaxHeight, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
+
+    unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[MaxLevel - Level]);
+    int ImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[MaxLevel - Level]);//Texture->LevelMemorySizeBytes[MaxLevel - Level];
+
+
+    // Setup PBO
+    unsigned int PBOID;
+    glGenBuffers(1, &PBOID);
+    glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PBOID);
+    glBufferData(GL_PIXEL_UNPACK_BUFFER, ImageSize, 0, GL_STREAM_DRAW);
+
+
+    GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
+    std::cout<<(PBOPointer==nullptr)<<std::endl;
+    if (PBOPointer != nullptr) {
+        memcpy(PBOPointer, ImageBytes, ImageSize);
+        glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+    } else {
+        SystemUtils_->Logger_->Log("Error Mapping PBO, glMapBuffer Returned Nullptr", 8);
+    }
+
+    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, MaxWidth, MaxHeight, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
 
     // // Load MipMaps Into Texture
     // for (int i = 0; i < Level; i++) {
