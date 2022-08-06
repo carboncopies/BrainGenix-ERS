@@ -290,10 +290,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     // Load MipMaps Into Texture
     for (int i = 0; i <= Level; i++) {
-        int Width = Texture->LevelResolutions[(MaxLevel - Level) + i].first;
-        int Height = Texture->LevelResolutions[(MaxLevel - Level) + i].second;
-        unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[(MaxLevel - Level) + i]);
-        int LevelImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[(MaxLevel - Level) + i]);
+        int Width = Texture->TextureLevels[(MaxLevel - Level) + i].LevelResolution.first;
+        int Height = Texture->TextureLevels[(MaxLevel - Level) + i].LevelResolution.second;
+        unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->TextureLevels[(MaxLevel - Level) + i].LevelBitmap);
+        int LevelImageSize = FreeImage_GetMemorySize(Texture->TextureLevels[(MaxLevel - Level) + i].LevelBitmap);
 
         std::cout<<"GLError Status1: "<<glGetError()<<std::endl;
 
@@ -319,8 +319,8 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
 
     // Update Struct
-    Texture->LevelTextureOpenGLIDs[CorrectedIndex] = OpenGLTextureID;
-    Texture->LevelLoadedInVRAM[CorrectedIndex] = true;
+    Texture->TextureLevels[CorrectedIndex].LevelTextureOpenGLID = OpenGLTextureID;
+    Texture->TextureLevels[CorrectedIndex].LevelLoadedInVRAM = true;
 
 
     return true;
