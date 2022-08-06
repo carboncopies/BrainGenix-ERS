@@ -301,14 +301,62 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         } else {
             SystemUtils_->Logger_->Log("Error Mapping PBO, glMapBuffer Returned Nullptr", 8);
         }
+        glFinish();
 
-        std::cout<<"GLError Status1: "<<glGetError()<<std::endl;
+
+
+        GLint GLErrorStatus = glGetError();
+        if (GLErrorStatus != GL_NO_ERROR) {
+            std::string ErrorMeaning = "Unknown";
+            if (GLErrorStatus == GL_INVALID_ENUM) {
+                ErrorMeaning = "GL_INVALID_ENUM";
+            } else if (GLErrorStatus == GL_INVALID_VALUE) {
+                ErrorMeaning = "GL_INVALID_VALUE";
+            } else if (GLErrorStatus == GL_INVALID_OPERATION) {
+                ErrorMeaning = "GL_INVALID_OPERATION";
+            } else if (GLErrorStatus == GL_STACK_OVERFLOW) {
+                ErrorMeaning = "GL_STACK_OVERFLOW";
+            } else if (GLErrorStatus == GL_STACK_UNDERFLOW) {
+                ErrorMeaning = "GL_STACK_UNDERFLOW";
+            } else if (GLErrorStatus == GL_OUT_OF_MEMORY) {
+                ErrorMeaning = "GL_OUT_OF_MEMORY";
+            } else if (GLErrorStatus == GL_INVALID_FRAMEBUFFER_OPERATION) {
+                ErrorMeaning = "GL_INVALID_FRAMEBUFFER_OPERATION";
+            }
+            std::string ErrorMessage = std::string("OpenGL Context Reporting Error '") + std::to_string(GLErrorStatus) + std::string("' (") + ErrorMeaning + std::string(")");
+            SystemUtils_->Logger_->Log(ErrorMessage, 9);
+        }
+
+
 
         int MipMapLevel = Level - i;
-        std::cout<<MipMapLevel<<"|"<<Width<<"|"<<Height<<std::endl;
         glTexSubImage2D(GL_TEXTURE_2D, MipMapLevel, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
         glFinish();
-        std::cout<<"GLError Status2: "<<glGetError()<<std::endl;
+        
+
+        GLint GLErrorStatus = glGetError();
+        if (GLErrorStatus != GL_NO_ERROR) {
+            std::string ErrorMeaning = "Unknown";
+            if (GLErrorStatus == GL_INVALID_ENUM) {
+                ErrorMeaning = "GL_INVALID_ENUM";
+            } else if (GLErrorStatus == GL_INVALID_VALUE) {
+                ErrorMeaning = "GL_INVALID_VALUE";
+            } else if (GLErrorStatus == GL_INVALID_OPERATION) {
+                ErrorMeaning = "GL_INVALID_OPERATION";
+            } else if (GLErrorStatus == GL_STACK_OVERFLOW) {
+                ErrorMeaning = "GL_STACK_OVERFLOW";
+            } else if (GLErrorStatus == GL_STACK_UNDERFLOW) {
+                ErrorMeaning = "GL_STACK_UNDERFLOW";
+            } else if (GLErrorStatus == GL_OUT_OF_MEMORY) {
+                ErrorMeaning = "GL_OUT_OF_MEMORY";
+            } else if (GLErrorStatus == GL_INVALID_FRAMEBUFFER_OPERATION) {
+                ErrorMeaning = "GL_INVALID_FRAMEBUFFER_OPERATION";
+            }
+            std::string ErrorMessage = std::string("OpenGL Context Reporting Error '") + std::to_string(GLErrorStatus) + std::string("' (") + ErrorMeaning + std::string(")");
+            SystemUtils_->Logger_->Log(ErrorMessage, 9);
+        }
+        std::cout<<MipMapLevel<<"|"<<Width<<"|"<<Height<<std::endl;
+
 
     }
 
