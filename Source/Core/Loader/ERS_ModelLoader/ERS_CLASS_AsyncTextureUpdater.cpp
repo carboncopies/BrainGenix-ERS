@@ -214,7 +214,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     int MaxWidth = Texture->LevelResolutions[MaxLevel - Level].first;
     int MaxHeight = Texture->LevelResolutions[MaxLevel - Level].second;
     unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[MaxLevel - Level]);
-    int ImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[MaxLevel - Level])//Texture->LevelMemorySizeBytes[MaxLevel - Level];
+    int ImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[MaxLevel - Level]);//Texture->LevelMemorySizeBytes[MaxLevel - Level];
 
 
     // Setup PBO
