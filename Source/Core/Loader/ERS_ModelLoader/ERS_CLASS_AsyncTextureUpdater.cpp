@@ -271,6 +271,8 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
         GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
         if (PBOPointer != nullptr) {
+
+            std::cout<<PBOPointer<<"|"<<LevelImageSize<<std::endl;
             memcpy(PBOPointer, LevelImageBytes, LevelImageSize);
             glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
         } else {
