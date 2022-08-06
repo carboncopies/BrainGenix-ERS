@@ -173,66 +173,66 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     if (Level < 0) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Negative Texture Level Into VRAM", 8, LogEnable);
         return false;
-    } else if (Level > (int)Texture->LevelResolutions.size()) {
+    } else if (Level > (int)Texture->TextureLevels.size()) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Nonexistant Texture Level Into VRAM", 8, LogEnable);
         return false;
     }
 
     // Check If Level Already Loaded
-    if ((Texture->LevelTextureOpenGLIDs[Level] != 0)) {
+    if ((Texture->TextureLevels[Level].LevelTextureOpenGLID != 0)) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Already Loaded Image Into VRAM", 8, LogEnable);
         return false;
     }
 
     // Get Image Metadata, Perform Checks
-    int MaxLevel = Texture->LevelResolutions.size() - 1;
+    int MaxLevel = Texture->TextureLevels.size() - 1;
     int CorrectedIndex = MaxLevel - Level;
 
-    int MaxWidth = Texture->LevelResolutions[CorrectedIndex].first;
-    int MaxHeight = Texture->LevelResolutions[CorrectedIndex].second;
-    int ImageSize = FreeImage_GetMemorySize(Texture->LevelBitmaps[CorrectedIndex]);//Texture->LevelMemorySizeBytes[MaxLevel - Level];
-    int Channels = Texture->LevelChannels[CorrectedIndex];
+    int MaxWidth = Texture->TextureLevels[CorrectedIndex].LevelResolution.first;
+    int MaxHeight = Texture->TextureLevels[CorrectedIndex].LevelResolution.second;
+    int ImageSize = FreeImage_GetMemorySize(Texture->TextureLevels[CorrectedIndex].LevelBitmap);//Texture->LevelMemorySizeBytes[MaxLevel - Level];
+    int Channels = Texture->TextureLevels[CorrectedIndex].LevelChannel;
     if (Channels > 4) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[CorrectedIndex])
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Channel Count >4", 8, LogEnable);
         return false;
     }
     if (Channels < 1) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[CorrectedIndex])
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Channel Count <1", 8, LogEnable);
         return false;
     }
     for ( int i = 0; i < Level; i++) {
-        if (!Texture->LevelLoadedInRAM[i]) {
+        if (!Texture->TextureLevels[i]) {
             SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-            + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[CorrectedIndex])
+            + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
             + "' Not All Prior Levels Are Loaded Into RAM", 8, LogEnable);
             return false;
         }
     }
     if (MaxLevel < 0) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[CorrectedIndex])
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' No Levels To Load", 8, LogEnable);
         return false;    
     }
     if (MaxWidth < 1) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[CorrectedIndex])
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Width is 0", 8, LogEnable);
         return false;    
     }
     if (MaxHeight < 1) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[CorrectedIndex])
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Height is 0", 8, LogEnable);
         return false;    
     }
     if (ImageSize < 1) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->LevelTextureAssetIDs[CorrectedIndex])
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Image Byte Array Has Size Of 0", 8, LogEnable);
         return false;    
     }
