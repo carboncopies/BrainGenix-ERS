@@ -105,15 +105,15 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
                 // NOTE: If using more than 10 levels this might fail if the iterator orders things like: 0,1,10,2,3,4,5,6,7,8,9 rather than 0,2,3,4,5,6,7,8,9,10.
                 //***************************************************************************************************************************************************************
 
-                // Reverse Orders Of Texture Info To Count Up
-                std::reverse(Texture.LevelTextureAssetIDs.begin(), Texture.LevelTextureAssetIDs.end());
-                std::reverse(Texture.LevelTextureOpenGLIDs.begin(), Texture.LevelTextureOpenGLIDs.end());
-                std::reverse(Texture.LevelMemorySizeBytes.begin(), Texture.LevelMemorySizeBytes.end());
-                std::reverse(Texture.LevelResolutions.begin(), Texture.LevelResolutions.end());
-                std::reverse(Texture.LevelChannels.begin(), Texture.LevelChannels.end());
-                std::reverse(Texture.LevelBitmaps.begin(), Texture.LevelBitmaps.end());
-                std::reverse(Texture.LevelLoadedInRAM.begin(), Texture.LevelLoadedInRAM.end());
-                std::reverse(Texture.LevelLoadedInVRAM.begin(), Texture.LevelLoadedInVRAM.end());
+                // // Reverse Orders Of Texture Info To Count Up
+                // std::reverse(Texture.LevelTextureAssetIDs.begin(), Texture.LevelTextureAssetIDs.end());
+                // std::reverse(Texture.LevelTextureOpenGLIDs.begin(), Texture.LevelTextureOpenGLIDs.end());
+                // std::reverse(Texture.LevelMemorySizeBytes.begin(), Texture.LevelMemorySizeBytes.end());
+                // std::reverse(Texture.LevelResolutions.begin(), Texture.LevelResolutions.end());
+                // std::reverse(Texture.LevelChannels.begin(), Texture.LevelChannels.end());
+                // std::reverse(Texture.LevelBitmaps.begin(), Texture.LevelBitmaps.end());
+                // std::reverse(Texture.LevelLoadedInRAM.begin(), Texture.LevelLoadedInRAM.end());
+                // std::reverse(Texture.LevelLoadedInVRAM.begin(), Texture.LevelLoadedInVRAM.end());
 
 
                 Model->Textures_.push_back(Texture);
