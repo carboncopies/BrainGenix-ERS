@@ -209,11 +209,19 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
 
 
+    // Get Texture Information
+    int MaxLevel = Texture->LevelResolutions.size() - 1;
+    int MaxWidth = Texture->LevelResolutions[MaxLevel - Level].first;
+    int MaxHeight = Texture->LevelResolutions[MaxLevel - Level].second;
+    unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[MaxLevel - Level]);
+    int ImageSize = Texture->LevelMemorySizeBytes[MaxLevel - Level];
+
+
     // Setup PBO
     unsigned int PBOID;
     glGenBuffers(1, &PBOID);
     glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PBOID);
-    glBufferData(GL_PIXEL_UNPACK_BUFFER, GL_BUFFER_DATA_SIZE, 0, GL_STREAM_DRAW);
+    glBufferData(GL_PIXEL_UNPACK_BUFFER, ImageSize, 0, GL_STREAM_DRAW);
 
 
     // Generate OpenGL Texture ID
@@ -250,12 +258,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     }
 
     
-    // Setup Texture To Accept MipMaps
-    int MaxLevel = Texture->LevelResolutions.size() - 1;
-    int MaxWidth = Texture->LevelResolutions[MaxLevel - Level].first;
-    int MaxHeight = Texture->LevelResolutions[MaxLevel - Level].second;
-    unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[MaxLevel - Level]);
-    int ImageSize = Texture->LevelMemorySizeBytes[MaxLevel - Level];
+
 
     GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
     std::cout<<(PBOPointer==nullptr)<<std::endl;
