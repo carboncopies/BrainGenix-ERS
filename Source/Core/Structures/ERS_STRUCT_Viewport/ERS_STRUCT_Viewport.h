@@ -14,6 +14,7 @@
 #include <ERS_CLASS_InputProcessor.h>
 #include <ERS_CLASS_Grid.h>
 #include <ERS_CLASS_LightIconRenderer.h>
+#include <ERS_CLASS_BoundingBoxRenderer.h>
 
 #include <ERS_STRUCT_Camera.h>
 
@@ -34,6 +35,11 @@ struct ERS_STRUCT_Viewport {
     bool LightIcons = true; /**<Draw or don't draw the light icons*/
     bool GammaCorrection = true; /**<Enable/disable gamma correction*/
     bool HDREnabled_ = true; /**<Indicate if hdr should be used or not*/
+    bool ShowBoundingBox_ = true; /**<Draw the bounding boxes or don't*/
+    
+    bool WireframeBoundingBoxes_ = true; /**<Set bounding boxes to opaque or wireframe*/
+    bool DisableBoundingBoxDepthTest_ = true; /**<Disable Bounding Box Depth Test Or Not*/
+    bool ShowBoxOnSelectedModel_ = true; /**<Cause the system to draw the model around the selected model*/
 
     float GridSnapAmountTranslate_ = 0.1f; /**<Grid Snap Amount, User Adjustable In The Editor*/
     float GridSnapAmountRotate_ = 5.0f; /**<Grid Snap Amount, User Adjustable In The Editor*/
@@ -44,6 +50,9 @@ struct ERS_STRUCT_Viewport {
     bool ShowLoadingTimeInfo_ = true; /**<Enable/Disable Loading Time Info Overlay*/
     bool ShowResourceInfo_ = true; /**<Enable/Disable System Resource Info Overlay*/
     bool ShowLightInfo_ = true; /**<Enable/Disable System Light Debug Info Overlay*/
+    bool ShowRAMLoadingInfo_ = true; /**<Enab;e/Disable RAM Loading Queue Overlay*/ 
+    bool ShowVRAMLoadingInfo_ = true; /**<Enab;e/Disable RAM Loading Queue Overlay*/ 
+    bool ShowMemoryInfo_ = true; /**<Enable/Disables the memory information overlay*/
 
     float Exposure_ = 1.0f; /**<Set the camera exposure for that viewport*/
     float Gamma_ = 2.2f; /**<Set the gamma correction value for the viewport*/
@@ -54,6 +63,7 @@ struct ERS_STRUCT_Viewport {
     std::unique_ptr<ERS_CLASS_InputProcessor> Processor; /**<Pointer to Input Processor*/
     std::unique_ptr<ERS_CLASS_Grid> Grid; /**<Pointer to grid instance*/
     std::unique_ptr<ERS_CLASS_LightIconRenderer> LightIconRenderer; /**<Light Icon Renderer Instance*/
+    std::unique_ptr<ERS_CLASS_BoundingBoxRenderer> BoundingBoxRenderer; /**<Used to draw bounding boxes around objects in the scene*/
     std::unique_ptr<ERS_STRUCT_Camera> Camera; /**<Pointer To Camera Instance*/
 
     unsigned int FramebufferObject; /**<FBO OpenGL ID*/

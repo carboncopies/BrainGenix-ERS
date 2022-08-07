@@ -127,6 +127,10 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             ImGui::MenuItem("System Resources Overlay", nullptr, &Viewport->ShowResourceInfo_);
             ImGui::MenuItem("Loading Time Overlay", nullptr, &Viewport->ShowLoadingTimeInfo_);
             ImGui::MenuItem("Light Debug Overlay", nullptr, &Viewport->ShowLightInfo_);
+            ImGui::MenuItem("Memory Info Overlay", nullptr, &Viewport->ShowMemoryInfo_);
+            ImGui::MenuItem("RAM Loading Queue Overlay", nullptr, &Viewport->ShowRAMLoadingInfo_);
+            ImGui::MenuItem("VRAM Loading Queue Overlay", nullptr, &Viewport->ShowVRAMLoadingInfo_);
+            
 
             ImGui::Separator();
 
@@ -134,6 +138,8 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             ImGui::MenuItem("Gizmo", nullptr, &Viewport->GizmoEnabled);
             ImGui::MenuItem("Grid", nullptr, &Viewport->GridEnabled);
             ImGui::MenuItem("Light Icons", nullptr, &Viewport->LightIcons);
+            ImGui::MenuItem("Outline Selected Model", nullptr, &Viewport->ShowBoxOnSelectedModel_);
+            ImGui::MenuItem("Model Bounding Boxes", nullptr, &Viewport->ShowBoundingBox_);
 
             ImGui::Separator();
 
@@ -474,6 +480,41 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             // Stop Option
             if (ImGui::MenuItem("Stop", "Escape")) {
                 *IsEditorMode_ = !IsEditorMode_;
+            }
+
+        ImGui::EndMenu();
+        }
+
+
+        // Bounding Box Controls
+        if (ImGui::BeginMenu("Bounding Box")) {
+
+            // Options
+            ImGui::MenuItem("Depth Test", nullptr, &Viewport->DisableBoundingBoxDepthTest_);
+            ImGui::MenuItem("Wireframe", nullptr, &Viewport->WireframeBoundingBoxes_);
+
+            // Mode selector
+            if (ImGui::BeginMenu("Mode")) {
+                if (ImGui::MenuItem("Plain Color", nullptr, Viewport->BoundingBoxRenderer->GetBoundingBoxDisplayMode() == 0)) {
+                    Viewport->BoundingBoxRenderer->SetBoundingBoxDisplayMode(0);
+                }
+
+                if (ImGui::MenuItem("Target Texture Level (RAM)", nullptr, Viewport->BoundingBoxRenderer->GetBoundingBoxDisplayMode() == 1)) {
+                    Viewport->BoundingBoxRenderer->SetBoundingBoxDisplayMode(1);
+                }
+
+                if (ImGui::MenuItem("Target Texture Level (VRAM)", nullptr, Viewport->BoundingBoxRenderer->GetBoundingBoxDisplayMode() == 2)) {
+                    Viewport->BoundingBoxRenderer->SetBoundingBoxDisplayMode(2);
+                }
+
+                if (ImGui::MenuItem("Current Texture Level (RAM)", nullptr, Viewport->BoundingBoxRenderer->GetBoundingBoxDisplayMode() == 3)) {
+                    Viewport->BoundingBoxRenderer->SetBoundingBoxDisplayMode(3);
+                }
+
+                if (ImGui::MenuItem("Current Texture Level (VRAM)", nullptr, Viewport->BoundingBoxRenderer->GetBoundingBoxDisplayMode() == 4)) {
+                    Viewport->BoundingBoxRenderer->SetBoundingBoxDisplayMode(4);
+                }
+            ImGui::EndMenu();
             }
 
         ImGui::EndMenu();

@@ -28,49 +28,28 @@
  */
 struct ERS_STRUCT_Mesh {
 
-
-
+    // OpenGL IDs
     unsigned int VBO; /**<Vertex buffer object OpenGL ID.*/
     unsigned int EBO; /**<OpenGL EBO Object ID*/
+    unsigned int VAO; /**<Vertex Array Object OpenGL Handle*/
 
-    bool HasAmbient_; /**<Check If Has A Given Type Of Texture*/
-    bool HasAmbientOcclusion_; /**<Check If Has A Given Type Of Texture*/
-    bool HasBaseColor_; /**<Check If Has A Given Type Of Texture*/
-    bool HasDiffuse_; /**<Check If Has A Given Type Of Texture*/
-    bool HasDiffuseRoughness_; /**<Check If Has A Given Type Of Texture*/
-    bool HasDisplacement_; /**<Check If Has A Given Type Of Texture*/
-    bool HasEmissionColor_; /**<Check If Has A Given Type Of Texture*/
-    bool HasEmissive_; /**<Check If Has A Given Type Of Texture*/
-    bool HasHeight_; /**<Check If Has A Given Type Of Texture*/
-    bool HasLightmap_; /**<Check If Has A Given Type Of Texture*/
-    bool HasMetalness_; /**<Check If Has A Given Type Of Texture*/
-    bool HasNormalCamera_; /**<Check If Has A Given Type Of Texture*/
-    bool HasNormals_; /**<Check If Has A Given Type Of Texture*/
-    bool HasOpacity_; /**<Check If Has A Given Type Of Texture*/
-    bool HasReflection_; /**<Check If Has A Given Type Of Texture*/
-    bool HasShininess_; /**<Check If Has A Given Type Of Texture*/
-    bool HasSpecular_; /**<Check If Has A Given Type Of Texture*/
+    // Loading System
+    std::vector<std::pair<std::string, std::string>> Loader_RequestedTextureInformation_; /**<Contains the file path for the original texture paired with the texture's type as identified by assimp.*/
 
-
-    int ShaderOverrideIndex_ = -1; /**<Updated by the renderer - determines if we need to overried the default viewport shader*/  
-
-
+    std::vector<ERS_STRUCT_Texture*> Textures_; /**<Pointers to the textures for this mesh - the Model struct owns these*/
 
     std::vector<ERS_STRUCT_Vertex> Vertices; /**<Array of Mesh Vertices*/
     std::vector<unsigned int> Indices; /**<Array of Mesh Vertex Indices*/
     long NumberIndices; /**<Size of Indices Array*/
-    unsigned int VAO; /**<Vertex Array Object OpenGL Handle*/
 
     std::vector<int> TextureColorChannels_; /**<List Of Number Of Color Channels In Texture*/
+
     bool HasTransparency_; /**<Indicates if this model has any transparent textures (detected by number of channels)*/
     glm::mat4 ModelMatrix; /**<Model Matrix Given To The Shader When Rendering*/
-
-    std::vector<int> TextureReferences_; /**<Texture Reference IDs*/
-    std::vector<unsigned int> TextureIDs; /**<Textur IDs*/
-    std::vector<std::string> TextureNames; /**<Human Readable Names Of Textures*/
-
     
-    // Handle Shadow Configuration
+    // Renderer Settings
+    int ShaderOverrideIndex_ = -1; /**<Updated by the renderer - determines if we need to overried the default viewport shader*/  
+
     bool* CastDynamicShadows_; /**<Indicate if this model is to be rendered when generating the depth maps (dynamically)*/
     bool* CastStaticShadows_; /**<Set if this model is rendered when building static depth maps*/
     bool* ReceiveShadows_ ; /**<Determines if this model is to have shadows applied to it.*/

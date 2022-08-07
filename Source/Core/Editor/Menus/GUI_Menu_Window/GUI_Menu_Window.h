@@ -36,6 +36,7 @@
 #include <GUI_Window_FramerateHistogram.h>
 #include <GUI_Window_FrameratePlot.h>
 #include <GUI_Window_ShaderEditor.h>
+#include <GUI_Window_AssetStreamingSettings.h>
 
 
 #include <ERS_Editor_3DCursor.h>

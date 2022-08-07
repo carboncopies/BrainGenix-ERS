@@ -21,7 +21,9 @@
 #include <GLFW/glfw3.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
+#include <ERS_CLASS_GPURequest.h>
 #include <RendererManager.h>
+
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_CLASS_HardwareInformation.h>
 #include <ERS_CLASS_ArgumentParser.h>
@@ -55,7 +57,6 @@
 //
 //-----------------------------------------------------------------------------------------------------
 //
-
 
 
 
@@ -164,7 +165,7 @@ int main(int NumArguments, char** ArguemntValues) {
 
     
     // Log Logo Text
-    /*SystemUtils->Logger_->Log("Starting BrainGenix-ERS Instance", 2);
+    SystemUtils->Logger_->Log("Starting BrainGenix-ERS Instance", 2);
     SystemUtils->Logger_->Log("", 5);
     SystemUtils->Logger_->Log("---------------------------------------------------------------------------", 5);
     SystemUtils->Logger_->Log("\x1b[38;2;0;128;55m██████╗ ██████╗  █████╗ ██╗███╗   ██╗\x1b[38;2;130;68;208m ██████╗ ███████╗███╗   ██╗██╗██╗  ██╗", 5);
@@ -178,7 +179,7 @@ int main(int NumArguments, char** ArguemntValues) {
     SystemUtils->Logger_->Log("    +-----------------------------------------------------------------+", 4);
     SystemUtils->Logger_->Log("    |     BrainGenix-ERS Real-Time Environment Rendering System       |", 4);
     SystemUtils->Logger_->Log("    +-----------------------------------------------------------------+", 4);
-    SystemUtils->Logger_->Log("", 4);*/
+    SystemUtils->Logger_->Log("", 4);
 
 
     // Initialize Times

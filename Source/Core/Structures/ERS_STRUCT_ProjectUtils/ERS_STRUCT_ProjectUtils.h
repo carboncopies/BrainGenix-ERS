@@ -13,7 +13,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_SceneManager.h>
 
-#include <ERS_ModelLoader.h>
+#include <ERS_CLASS_ModelLoader.h>
 #include <ERS_SceneLoader.h>
 #include <ERS_ProjectLoader.h>
 #include <ERS_ProjectManager.h>

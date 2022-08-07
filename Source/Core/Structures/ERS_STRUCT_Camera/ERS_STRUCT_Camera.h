@@ -37,6 +37,9 @@ public:
     glm::vec3 Right_;
     glm::vec3 WorldUp_;
 
+    // Asset Streaming Config
+    int Priority_ = 1; // Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)
+
     // Euler Angles
     float Yaw_;
     float Pitch_;

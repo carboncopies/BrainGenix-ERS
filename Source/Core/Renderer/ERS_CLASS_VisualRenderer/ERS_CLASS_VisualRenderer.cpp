@@ -42,11 +42,6 @@ ERS_CLASS_VisualRenderer::~ERS_CLASS_VisualRenderer() {
 
     }
 
-
-    // Cleanup
-    SystemUtils_->Logger_->Log("Cleaning Up OpenGL/GLFW", 6);
-    glfwTerminate();
-
 }
 
 
@@ -63,7 +58,14 @@ void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defa
 
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
 
-
+    // TEMPORARY____________________-------------------------------------------------------------------------------------------------------------
+    std::vector<ERS_STRUCT_Camera*> Cameras;
+    for (unsigned int i = 0; i < Viewports_.size(); i++) {
+        Cameras.push_back(Viewports_[i]->Camera.get());
+    }
+    ProjectUtils_->ModelLoader_->AssetStreamingManager_->UpdateSceneStreamingQueue(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), Cameras);
+    
+    
 
     // Set Depth Shader For Shadow System
     DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthMap"), &Shaders_)].get();
@@ -390,10 +392,10 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             bool HasScale = false;
 
             if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("Model")) {
-                unsigned long Index = ActiveScene->SceneObjects_[SelectedObject].Index_;
-                Position = ActiveScene->Models[Index]->ModelPosition;        
-                Rotation = ActiveScene->Models[Index]->ModelRotation;        
-                Scale = ActiveScene->Models[Index]->ModelScale;
+                unsigned long ModelIndex = ActiveScene->SceneObjects_[SelectedObject].Index_;
+                Position = ActiveScene->Models[ModelIndex]->ModelPosition;        
+                Rotation = ActiveScene->Models[ModelIndex]->ModelRotation;        
+                Scale = ActiveScene->Models[ModelIndex]->ModelScale;                
                 HasRotation = true;
                 HasScale = true;
             } else if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("PointLight")) {
@@ -437,8 +439,17 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             Viewports_[Index]->LightIconRenderer->Draw(Viewports_[Index]->Camera.get(), SceneManager);
         }
 
-
-
+        Viewports_[Index]->BoundingBoxRenderer->SetDepthTest(Viewports_[Index]->DisableBoundingBoxDepthTest_);
+        Viewports_[Index]->BoundingBoxRenderer->SetDrawMode(Viewports_[Index]->WireframeBoundingBoxes_);
+        if (Viewports_[Index]->ShowBoundingBox_) {
+            Viewports_[Index]->BoundingBoxRenderer->DrawAll(Viewports_[Index]->Camera.get(), ActiveScene);
+        }
+        if (ActiveScene->SceneObjects_.size() > 0) {
+            if (Viewports_[Index]->ShowBoxOnSelectedModel_ && ActiveScene->SceneObjects_[ActiveScene->SelectedObject].Type_ == std::string("Model")) {
+                unsigned long ModelIndex = ActiveScene->SceneObjects_[ActiveScene->SelectedObject].Index_;
+                Viewports_[Index]->BoundingBoxRenderer->DrawModel(Viewports_[Index]->Camera.get(), ActiveScene->Models[ModelIndex].get());
+            }
+        }
 
         // Render Framebuffer To Window
         ImGui::GetWindowDrawList()->AddImage(
@@ -532,6 +543,8 @@ void ERS_CLASS_VisualRenderer::CreateViewport() {
 
 }
 
+
+
 void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
 
@@ -548,6 +561,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     Viewport->Camera = std::make_unique<ERS_STRUCT_Camera>();
     Viewport->Grid = std::make_unique<ERS_CLASS_Grid>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_Grid"), &Shaders_)].get());
     Viewport->LightIconRenderer = std::make_unique<ERS_CLASS_LightIconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_LightIcon"), &Shaders_)].get()); //Set TO Shader 19 For Billboard Shader, Temp. Disabled As It Doesn't Work ATM
+    Viewport->BoundingBoxRenderer = std::make_unique<ERS_CLASS_BoundingBoxRenderer>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_BoundingBox"), &Shaders_)].get());
     Viewport->Name = ViewportName;
     
     Viewport->Width = 1;

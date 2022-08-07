@@ -45,6 +45,7 @@
 #include <GUI_Window_FontSelector.h>
 #include <GUI_Window_OpenProject.h>
 #include <GUI_Window_NewProject.h>
+#include <GUI_Window_AssetStreamingSettings.h>
 
 
 

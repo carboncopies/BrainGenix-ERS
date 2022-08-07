@@ -30,6 +30,7 @@
 #include <ERS_CLASS_ViewportOverlay.h>
 #include <ERS_CLASS_ViewportMenu.h>
 #include <ERS_CLASS_ShadowMaps.h>
+#include <ERS_CLASS_BoundingBoxRenderer.h>
 
 #include <ERS_SceneManager.h>
 #include <ERS_SceneLoader.h>

@@ -48,6 +48,7 @@ target_link_libraries(ERS_Editor_WindowManager
     GUI_Window_FontSelector
     GUI_Window_OpenProject
     GUI_Window_NewProject
+    GUI_Window_AssetStreamingSettings
 
     )
 

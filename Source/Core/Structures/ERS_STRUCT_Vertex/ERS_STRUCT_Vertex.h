@@ -31,19 +31,4 @@ struct ERS_STRUCT_Vertex {
     int BoneIDs[MAX_BONE_INFLUENCE];
     float Weights[MAX_BONE_INFLUENCE];
 
-
-    // Set Helper Vars
-    bool _HasInitialized = false;
-
-
-    // Define Helper Functions
-    void Initialize() {
-        _HasInitialized = true;
-    }
-
-    bool IsInitialized() {
-        return _HasInitialized;
-    }
-
-
 };

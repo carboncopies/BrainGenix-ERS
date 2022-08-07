@@ -82,8 +82,6 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "AssetScaleZ" << YAML::Value << InputScene->Models[i]->ModelScale[2];
 
 
-        Output << YAML::Key << "FlipTextures" << YAML::Value << InputScene->Models[i]->FlipTextures;
-
         Output << YAML::Key << "CastDynamicShadows" << YAML::Value << InputScene->Models[i]->CastDynamicShadows_;
         Output << YAML::Key << "CastStaticShadows" << YAML::Value << InputScene->Models[i]->CastStaticShadows_;
         Output << YAML::Key << "ReceiveShadows" << YAML::Value << InputScene->Models[i]->ReceiveShadows_;

@@ -32,6 +32,7 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
 
 
 
+
     // Setup Shaders
     ShaderLoader_ = std::make_unique<ERS_CLASS_ShaderLoader>(SystemUtils_);
     for (int i = 0; (long)i < (long)ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.size(); i++) {
@@ -86,16 +87,16 @@ void RendererManager::LoadEditorData() {
 
 
     // Load Default Textures
-    OpenGLDefaults_->DefaultTexture_ = LoadEditorIcon("EditorAssets/Icons/DefaultTexture/64x64/DefaultTexture1024.png");
-    OpenGLDefaults_->AllBlackTexture_ = LoadEditorIcon("EditorAssets/Icons/AllBlackTexture/AllBlackTexture128.png");
-    OpenGLDefaults_->AllWhiteTexture_ = LoadEditorIcon("EditorAssets/Icons/AllWhiteTexture/AllWhiteTexture128.png");
+    OpenGLDefaults_->DefaultTexture_ = LoadEditorIcon("EditorAssets/Icons/DefaultTexture/4x4/DefaultTexture1024.png");
+    OpenGLDefaults_->Loadingtexture_ = LoadEditorIcon("EditorAssets/Icons/LoadingTexture/4x4/LoadingTexture1024.png");
+    OpenGLDefaults_->AllBlackTexture_ = LoadEditorIcon("EditorAssets/Icons/AllBlackTexture/AllBlackTexture2.png");
+    OpenGLDefaults_->AllWhiteTexture_ = LoadEditorIcon("EditorAssets/Icons/AllWhiteTexture/AllWhiteTexture2.png");
 
 
     // Load Editor Texture Icons
     OpenGLDefaults_->PointLightTexture_ = LoadEditorIcon("EditorAssets/Icons/LightingIcons/PointLight.png");
     OpenGLDefaults_->DirectionalLightTexture_ = LoadEditorIcon("EditorAssets/Icons/LightingIcons/DirectionalLight.png");
     OpenGLDefaults_->SpotLightTexture_ = LoadEditorIcon("EditorAssets/Icons/LightingIcons/SpotLight.png");
-
 
     FreeImage_DeInitialise();
 
@@ -162,7 +163,7 @@ void RendererManager::InitializeGLFW() {
 
     // Bring Window To Front, Unlock Framerate So Our Framerate System Is Used
     glfwMakeContextCurrent(Window_);
-    glfwSwapInterval(0);
+    glfwSwapInterval(1);
 
 
 
@@ -176,6 +177,12 @@ void RendererManager::InitializeGLFW() {
     glEnable(GL_BLEND);
 
 
+    // Setup Texture Streamer
+    SystemUtils_->Logger_->Log("Initializing Texture Streaming Subsystem", 5);
+    ProjectUtils_->ModelLoader_->AssetStreamingManager_->SetupTextureStreamer(Window_);
+    SystemUtils_->Logger_->Log("Finished Initializing Texture Streaming Subsystem", 4);
+
+
 
 }
 
@@ -183,6 +190,9 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
     // Log Any Issues
     ReportOpenGLErrors();
+
+    ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+    ProjectUtils_->ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SortModels(TargetScene);
 
     // Update Window Title
     std::string SceneTitle = ProjectUtils_->ProjectManager_->Project_.ProjectName + std::string(" - BrainGenix-ERS");

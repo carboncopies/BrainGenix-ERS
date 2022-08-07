@@ -62,41 +62,6 @@ void ERS_STRUCT_Mesh::SetupMesh() {
     NumberIndices = Indices.size();
 
 
-    // Reset Then Update Texture "Has" Parameters
-    HasAmbientOcclusion_ = false;
-    HasDiffuse_ = false;
-    HasDisplacement_ = false;
-    HasEmissive_ = false;
-    HasHeight_ = false;
-    HasMetalness_ = false;
-    HasNormals_ = false;
-    HasShininess_ = false;
-
-    for (int i = 0; i < (long)TextureNames.size(); i++) {
-
-        std::string Name = TextureNames[i];
-
-        if(Name == "texture_ambient_occlusion")
-            HasAmbientOcclusion_ = true;
-        else if(Name == "texture_diffuse")
-            HasDiffuse_ = true;
-        else if(Name == "texture_displacement")
-            HasDisplacement_ = true;
-        else if(Name == "texture_emissive")
-            HasEmissive_ = true;
-        else if(Name == "texture_height")
-            HasHeight_ = true;
-        else if(Name == "texture_metalness")
-            HasMetalness_ = true;
-        else if(Name == "texture_normals")
-            HasNormals_ = true;
-        else if(Name == "texture_shininess")
-            HasShininess_ = true;
-    }
-
-
-
-
 
 }
 
