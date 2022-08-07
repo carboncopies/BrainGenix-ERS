@@ -642,7 +642,8 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread(int Index) {
     GLFWwindow* ThreadWindow = glfwCreateWindow(1, 1, std::to_string(Index).c_str(), NULL, MainThreadWindowContext_);
     glfwMakeContextCurrent(ThreadWindow);
     SystemUtils_->Logger_->Log(std::string("Texture Streaming Thead '") + std::to_string(Index) + "' Finished Creating OpenGL Context", 2);
-    (*GPUWorkerThreadsComplete_[Index]) = true;
+    ThreadReady_ = true;
+    
     while (!StopThreads_) {
 
 
@@ -697,29 +698,11 @@ void ERS_CLASS_AsyncTextureUpdater::SetupThreads() {
     StopThreads_ = false;
     glfwMakeContextCurrent(NULL);
 
-    GPUWorkerThreadsComplete_.clear();
     for (unsigned int i = 0; i < (unsigned int)NumThreads_; i++) {
-        GPUWorkerThreadsComplete_.push_back(std::make_unique<std::atomic_bool>(false));
-    }
-
-    for (unsigned int i = 0; i < (unsigned int)NumThreads_; i++) {
+        ThreadReady_ = false;
         TextureWorkerThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread, this, i));
         SystemUtils_->Logger_->Log(std::string("Started Worker Thread '") + std::to_string(i) + "'", 2);
-    }
-
-    // Block until all threads are started and have their contexts setup
-    while (true) {
-        bool AllThreadsStarted = true;
-        for (unsigned int i = 0; i < GPUWorkerThreadsComplete_.size(); i++) {
-            if (!GPUWorkerThreadsComplete_[i]) {
-                AllThreadsStarted = false;
-            }
-        }
-        if (AllThreadsStarted) {
-            break;
-        } else {
-            std::cout<<"Blocking\n";
-        }
+        while (!ThreadReady_) {}
     }
 
     glfwMakeContextCurrent(MainThreadWindowContext_);
