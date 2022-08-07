@@ -117,11 +117,7 @@ add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ProjectWriter)
 
 
 # Add Main.cpp
-add_executable(${PROJECT_NAME} 
-  ${SRC_DIR}/Main.cpp 
-  ${SRC_DIR}/GPURequest.h
-  ${LIB_DIR}/tracy/TracyClient.cpp 
-  ${BACKWARD_ENABLE})
+add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp ${LIB_DIR}/tracy/TracyClient.cpp ${BACKWARD_ENABLE})
 target_link_libraries(${PROJECT_NAME}
 
   # Third Party Libs
