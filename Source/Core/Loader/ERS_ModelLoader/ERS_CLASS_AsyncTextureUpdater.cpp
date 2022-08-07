@@ -72,7 +72,21 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     // Decode Image
     FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData.Data.get(), ImageData.Size_B);
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-    FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
+    FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
+
+    FIBITMAP* Image = nullptr;
+    int Channels = FreeImage_GetLine(RawImage) / FreeImage_GetWidth(RawImage);
+    if (Channels == 1) {
+        Image = FreeImage_ConvertTo8Bits(RawImage);
+    } else if (Channels == 2) {
+        Image = FreeImage_ConvertTo16Bits555(RawImage);
+    } else if (Channels == 3) {
+        Image = FreeImage_ConvertTo24Bits(RawImage);
+    } else if (Channels == 4) {
+        Image = FreeImage_ConvertTo32Bits(RawImage);
+    }
+    FreeImage_Unload(RawImage);
+    
     FreeImage_CloseMemory(FIImageData);
 
 
@@ -112,7 +126,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     
 
     // Detect NumChannels
-    int Channels = FreeImage_GetLine(Image) / FreeImage_GetWidth(Image);
     if ((Channels < 1) || (Channels > 4)) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
@@ -375,7 +388,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
             unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->TextureLevels[Level].LevelBitmap);
             int LevelImageSize = FreeImage_GetMemorySize(Texture->TextureLevels[Level].LevelBitmap);
 
-            std::cout<<"Channels: "<<FreeImage_GetPalette(Texture->TextureLevels[Level].LevelBitmap)<<std::endl;
 
             //glBufferData(GL_PIXEL_UNPACK_BUFFER, LevelImageSize, 0, GL_STREAM_DRAW);
             GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
