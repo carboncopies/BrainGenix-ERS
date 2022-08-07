@@ -155,10 +155,10 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
     if (Viewport->ShowMemoryInfo_) {
 
 
-        float RAMMiBBudget = SystemUtils_->RendererSettings_->RAMBudget_ / 1048576;
-        float VRAMMiBBudget = SystemUtils_->RendererSettings_->VRAMBudget_ / 1048576;
-        float RAMMiBUsage = SystemUtils_->RendererSettings_->CurrentRAMUsage_ / 1048576;
-        float VRAMMiBUsage = SystemUtils_->RendererSettings_->CurrentVRAMUsage_ / 1048576;
+        float RAMMiBBudget = SystemUtils_->RendererSettings_->RAMBudget_ / 1048576.0f;
+        float VRAMMiBBudget = SystemUtils_->RendererSettings_->VRAMBudget_ / 1048576.0f;
+        float RAMMiBUsage = SystemUtils_->RendererSettings_->CurrentRAMUsage_ / 1048576.0f;
+        float VRAMMiBUsage = SystemUtils_->RendererSettings_->CurrentVRAMUsage_ / 1048576.0f;
 
         std::string LabelText = "VRAM Budget (" + std::to_string(VRAMMiBBudget)
         + "MiB) RAM Budget (" + std::to_string(RAMMiBBudget)
