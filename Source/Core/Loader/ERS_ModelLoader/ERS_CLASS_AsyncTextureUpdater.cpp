@@ -641,7 +641,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread(int Index) {
     glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
     GLFWwindow* ThreadWindow = glfwCreateWindow(1, 1, std::to_string(Index).c_str(), NULL, MainThreadWindowContext_);
     glfwMakeContextCurrent(ThreadWindow);
-    GPUWorkerThreadsComplete_[Index] = true;
+    (*GPUWorkerThreadsComplete_[Index]) = true;
     SystemUtils_->Logger_->Log(std::string("Texture Streaming Thead '") + std::to_string(Index) + "' Finished Creating OpenGL Context", 2);
 
     while (!StopThreads_) {
@@ -700,7 +700,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetupThreads() {
 
     GPUWorkerThreadsComplete_.clear();
     for (unsigned int i = 0; i < (unsigned int)NumThreads_; i++) {
-        GPUWorkerThreadsComplete_.push_back(std::atomic_bool(false));
+        GPUWorkerThreadsComplete_.push_back(std::make_unique<std::atomic_bool>(false));
     }
 
     for (unsigned int i = 0; i < (unsigned int)NumThreads_; i++) {

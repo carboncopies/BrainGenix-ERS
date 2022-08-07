@@ -47,7 +47,7 @@ private:
     bool PrioritizeQueueByVisualImpact_ = true; /**<Sort the queue by the texture level to be loaded*/
 
     std::vector<std::thread> TextureWorkerThreads_; /**<Vector containing thread objects for the worker pool*/
-    std::vector<std::atomic_bool> GPUWorkerThreadsComplete_; /**<Used to indicate if the given texture is complete or not*/
+    std::vector<std::unique_ptr<std::atomic_bool>> GPUWorkerThreadsComplete_; /**<Used to indicate if the given texture is complete or not*/
     std::mutex BlockThreads_; /**<Lock this to block all the treads (Usually done to add new items to the work queue)*/
     std::atomic_bool StopThreads_; /**<Used to start/stop threads*/
     std::vector<std::shared_ptr<ERS_STRUCT_Model>> WorkItems_; /**<Models here have some work that needs to be done to them*/
