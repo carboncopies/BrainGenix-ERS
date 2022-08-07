@@ -95,7 +95,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     // Detect Width/Height/memsize
     int Width = FreeImage_GetWidth(Image);
     int Height = FreeImage_GetHeight(Image);
-    long MemorySize = FreeImage_GetMemorySize(Image);
     if (Width <= 0) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
@@ -148,8 +147,9 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     // fix images loading incorrectly (perhaps due to broken numbers of channels?
     // add error textures so that we can display the error on the model to make it easier to understand what the issue is - for example, display "Loading Error: Invalid Num Image Channels" for the above issue and add the same for the other issues.
 
-    // Finally After Passing Sanity Checks, Populate Info
-    
+    // Finally After Passing Sanity Checks, Populate Info.
+    long MemorySize = FreeImage_GetMemorySize(Image);
+    ResourceMonitor_->AllocateTextureRAMFromBudget(MemorySize);
     Texture->TextureLevels[Level].LevelBitmap = Image;
     Texture->TextureLevels[Level].LevelLoadedInRAM = true;
 
@@ -174,6 +174,9 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Textu
         return false;
     }
 
+
+    long MemorySize = FreeImage_GetMemorySize(Texture->TextureLevels[Level].LevelBitmap);
+    ResourceMonitor_->DeallocateTextureRAMFromBudget(MemorySize);
 
     // Update Data
     FreeImage_Unload(Texture->TextureLevels[Level].LevelBitmap);
@@ -410,6 +413,8 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     glDeleteBuffers(1, &PBOID);
 
     // Update Struct
+    long MemorySize = FreeImage_GetMemorySize(Texture->TextureLevels[Level].LevelBitmap);
+    ResourceMonitor_->AllocateTextureVRAMFromBudget(MemorySize);
     Texture->TextureLevels[CorrectedIndex].LevelTextureOpenGLID = OpenGLTextureID;
     Texture->TextureLevels[CorrectedIndex].LevelLoadedInVRAM = true;
 
@@ -438,6 +443,8 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Text
     glDeleteTextures(1, &Texture->TextureLevels[Level].LevelTextureOpenGLID);
 
     // Update Struct
+    long MemorySize = FreeImage_GetMemorySize(Texture->TextureLevels[Level].LevelBitmap);
+    ResourceMonitor_->DeallocateTextureVRAMFromBudget(MemorySize);
     Texture->TextureLevels[Level].LevelTextureOpenGLID = 0;
     Texture->TextureLevels[Level].LevelLoadedInVRAM = false;
 
