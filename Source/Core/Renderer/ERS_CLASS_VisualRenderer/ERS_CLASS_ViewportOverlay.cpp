@@ -161,10 +161,10 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
         float VRAMMiBUsage = SystemUtils_->RendererSettings_->CurrentVRAMUsage_ / 1048576;
 
         std::string LabelText = "VRAM Budget (" + std::to_string(VRAMMiBBudget)
-        + ") RAM Budget (" + std::to_string(RAMMiBBudget)
-        + ") VRAM Usage (" + std::to_string(VRAMMiBUsage)
-        + ") RAM Usage (" + std::to_string(RAMMiBUsage)
-        + ")";
+        + "MiB) RAM Budget (" + std::to_string(RAMMiBBudget)
+        + "MiB) VRAM Usage (" + std::to_string(VRAMMiBUsage)
+        + "MiB) RAM Usage (" + std::to_string(RAMMiBUsage)
+        + "MiB)";
         ImGui::TextColored(ImVec4(0.25f, 1.0f, 0.25f, 1.0f), "%s", LabelText.c_str());
 
 
