@@ -21,6 +21,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_CLASS_AssetStreamingSystemResourceMonitor.h>
 
 
 
@@ -39,6 +40,7 @@ class ERS_CLASS_AsyncTextureUpdater {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
+    ERS_CLASS_AssetStreamingSystemResourceMonitor* ResourceMonitor_; /**<used to keep track of system resource budgets*/
     GLFWwindow* MainThreadWindowContext_; /**<GLFWWindow Object Used To Setup Shared Contexts*/
 
     int NumThreads_ = 0; /**<Target Number of threads that we should be using*/
@@ -146,7 +148,7 @@ public:
      * @param SystemUtils 
      * @param Threads Setting this to 0 will autodetect the number of threads we should use. Otherwise, we'll use whatever is passed in.
      */
-    ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, unsigned int Threads = 0);
+    ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_AssetStreamingSystemResourceMonitor* ResourceMonitor, GLFWwindow* Window, unsigned int Threads = 0);
 
     /**
      * @brief Destroy the ers class asynctextureupdater object

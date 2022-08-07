@@ -91,9 +91,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     FreeImage_CloseMemory(FIImageData);
 
 
-    // Detect Width/Height
+    // Detect Width/Height/memsize
     int Width = FreeImage_GetWidth(Image);
     int Height = FreeImage_GetHeight(Image);
+    long MemorySize = FreeImage_GetMemorySize(Image);
     if (Width <= 0) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
@@ -147,6 +148,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     // add error textures so that we can display the error on the model to make it easier to understand what the issue is - for example, display "Loading Error: Invalid Num Image Channels" for the above issue and add the same for the other issues.
 
     // Finally After Passing Sanity Checks, Populate Info
+    
     Texture->TextureLevels[Level].LevelBitmap = Image;
     Texture->TextureLevels[Level].LevelLoadedInRAM = true;
 
