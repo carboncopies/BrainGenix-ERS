@@ -52,6 +52,7 @@ struct ERS_STRUCT_Viewport {
     bool ShowLightInfo_ = true; /**<Enable/Disable System Light Debug Info Overlay*/
     bool ShowRAMLoadingInfo_ = true; /**<Enab;e/Disable RAM Loading Queue Overlay*/ 
     bool ShowVRAMLoadingInfo_ = true; /**<Enab;e/Disable RAM Loading Queue Overlay*/ 
+    bool ShowMemoryInfo_ = true; /**<Enable/Disables the memory information overlay*/
 
     float Exposure_ = 1.0f; /**<Set the camera exposure for that viewport*/
     float Gamma_ = 2.2f; /**<Set the gamma correction value for the viewport*/
