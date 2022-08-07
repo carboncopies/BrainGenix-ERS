@@ -72,9 +72,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     // Decode Image
     FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData.Data.get(), ImageData.Size_B);
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-    FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
-    FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
-    FreeImage_Unload(RawImage);
+    FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
     FreeImage_CloseMemory(FIImageData);
 
 
