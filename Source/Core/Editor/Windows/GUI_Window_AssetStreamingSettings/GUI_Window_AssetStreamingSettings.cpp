@@ -62,8 +62,8 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                 ImGui::Separator();
                 ImGui::Spacing();
 
-                ImGui::DragFloat("VRAM Budget (MiB)", &VRAMBudgetMiB_, 1.0f, 0.0f, 1048576);
-                ImGui::DragFloat("RAM Budget (MiB)", &RAMBudgetMiB_, 1.0f, 0.0f, 536870912);
+                ImGui::DragFloat("VRAM Budget (MiB)", &VRAMBudgetMiB_, 64.0f, 0.0f, 1048576);
+                ImGui::DragFloat("RAM Budget (MiB)", &RAMBudgetMiB_, 128.0f, 0.0f, 536870912);
 
                 ImGui::Spacing();
                 ImGui::Separator();
