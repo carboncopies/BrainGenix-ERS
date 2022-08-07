@@ -33,8 +33,8 @@ struct ERS_STRUCT_RendererSettings {
     int MaxShadowUpdatesPerFrame_ = 5;
     int ShadowFilterKernelSize_ = 2;
     
-    long VRAMBudget_ = 68719476736; // 64 GB default
-    long RAMBudget_ = 549755813888; // 512 GB default
+    unsigned long long VRAMBudget_ = 68719476736; // 64 GB default
+    unsigned long long RAMBudget_ = 549755813888; // 512 GB default
 
     float FOV_ = 90.0f;
 
