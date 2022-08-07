@@ -413,7 +413,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     glDeleteBuffers(1, &PBOID);
 
     // Update Struct
-    long MemorySize = FreeImage_GetMemorySize(Texture->TextureLevels[Level].LevelBitmap);
+    long MemorySize = Texture->TextureLevels[Level].LevelMemorySizeBytes;
     ResourceMonitor_->AllocateTextureVRAMFromBudget(MemorySize);
     Texture->TextureLevels[CorrectedIndex].LevelTextureOpenGLID = OpenGLTextureID;
     Texture->TextureLevels[CorrectedIndex].LevelLoadedInVRAM = true;
@@ -443,7 +443,7 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Text
     glDeleteTextures(1, &Texture->TextureLevels[Level].LevelTextureOpenGLID);
 
     // Update Struct
-    long MemorySize = FreeImage_GetMemorySize(Texture->TextureLevels[Level].LevelBitmap);
+    long MemorySize = Texture->TextureLevels[Level].LevelMemorySizeBytes;
     ResourceMonitor_->DeallocateTextureVRAMFromBudget(MemorySize);
     Texture->TextureLevels[Level].LevelTextureOpenGLID = 0;
     Texture->TextureLevels[Level].LevelLoadedInVRAM = false;
