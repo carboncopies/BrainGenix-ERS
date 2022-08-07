@@ -85,7 +85,10 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                     ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetDupeQueueEntryPrevention(PreventDupeQueueEntries_);
                     ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetQueuePrioritizationEnabled(QueuePrioritizationEnabled_);
                     
-
+                    // Update Budget Info
+                    SystemUtils_->RendererSettings_->VRAMBudget_ = VRAMBudgetMiB_ * 1048576;
+                    SystemUtils_->RendererSettings_->RAMBudget_ = RAMBudgetMiB_ * 1048576;
+                    
                     // Update Threads
                     int LastThreadCount = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetNumThreads();
                     if (LastThreadCount != TextureStreamingThreads_) {
