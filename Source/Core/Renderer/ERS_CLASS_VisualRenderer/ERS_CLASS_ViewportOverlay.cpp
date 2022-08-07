@@ -157,13 +157,14 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
         float RAMMiBBudget = SystemUtils_->RendererSettings_->RAMBudget_ / 1048576;
         float VRAMMiBBudget = SystemUtils_->RendererSettings_->VRAMBudget_ / 1048576;
-        
+        float RAMMiBUsage = SystemUtils_->RendererSettings_->CurrentRAMUsage_ / 1048576;
+        float VRAMMiBUsage = SystemUtils_->RendererSettings_->CurrentVRAMUsage_ / 1048576;
 
-
-        std::string LabelText = std::to_string(NumDirectionalLights) + std::string(" Directional Lights (") + std::to_string(NumDirectionalDepthMaps)
-         + std::string(" Have Depth Maps) ") + std::to_string(NumSpotLights) + std::string(" Spot Lights (") + std::to_string(NumSpotDepthMaps)
-         + std::string(" Have Depth Maps) ") + std::to_string(NumPointLights) + std::string(" Point Lights (") + std::to_string(NumPointDepthMaps)
-         + std::string(" Have Depth Maps)");
+        std::string LabelText = "VRAM Budget (" + std::to_string(VRAMMiBBudget)
+        + ") RAM Budget (" + std::to_string(RAMMiBBudget)
+        + ") VRAM Usage (" + std::to_string(VRAMMiBUsage)
+        + ") RAM Usage (" + std::to_string(RAMMiBUsage)
+        + ")";
         ImGui::TextColored(ImVec4(0.25f, 1.0f, 0.25f, 1.0f), "%s", LabelText.c_str());
 
 
