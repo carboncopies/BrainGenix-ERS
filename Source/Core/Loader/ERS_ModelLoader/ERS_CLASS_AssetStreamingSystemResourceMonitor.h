@@ -34,12 +34,12 @@ private:
     std::mutex BlockUpdates_; /**<Used to ensure thread-safety when updating the system*/
 
     // Total Amounts Assumed For System RAM and VRAM In Bytes
-    long TotalSystemRAM_; /**<Number of bytes of RAM that the system has*/
-    long TotalSystemVRAM_; /**<Number of bytes of VRAM that the system has*/
+    unsigned long long TotalSystemRAM_; /**<Number of bytes of RAM that the system has*/
+    unsigned long long TotalSystemVRAM_; /**<Number of bytes of VRAM that the system has*/
 
     // Used Amounts
-    long UsedSystemRAM_; /**<Number of bytes of RAM used by textures*/
-    long UsedSystemVRAM_; /**<Number of bytes of VRAM used by textures*/
+    unsigned long long UsedSystemRAM_; /**<Number of bytes of RAM used by textures*/
+    unsigned long long UsedSystemVRAM_; /**<Number of bytes of VRAM used by textures*/
     
 
 
