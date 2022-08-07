@@ -4,11 +4,17 @@
 
 #pragma once
 
-// Standard Libraries (BG convention: use <> instead of "")
-#include <thread>
-#include <chrono>
-#include <iostream>
 
-// Third-Party Libraries (BG convention: use <> instead of "")
+// Requests using the high power gpu on windows platforms
+#ifdef _WIN32
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-// Internal Libraries (BG convention: use <> instead of "")
+__declspec(dllexport) DWORD NvOptimusEnablement = 1;
+__declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
+
+#ifdef __cplusplus
+}
+#endif
+#endif
