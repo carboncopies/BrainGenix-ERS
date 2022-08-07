@@ -89,7 +89,7 @@ bool ERS_CLASS_AssetStreamingSystemResourceMonitor::TextureFitsInVRAMBudget(unsi
 
 
     // Return Result
-    std::cout<<"VRAM Fits: "<<(FitsInBudget && FitsInHardware)<<" Size: "<<Size<<std::endl;
+    std::cout<<"VRAM Fits: "<<(FitsInBudget && FitsInHardware)<<" Size: "<<Size<<" Budget: "<<BudgetFreeBytes<<" HW: "<<HardwareFreeBytes<<std::endl;
     return FitsInBudget && FitsInHardware;
 }
 
@@ -125,7 +125,7 @@ bool ERS_CLASS_AssetStreamingSystemResourceMonitor::TextureFitsInRAMBudget(unsig
     BlockUpdates_.unlock();
 
     // Return Result
-    std::cout<<"VRAM Fits: "<<(FitsInBudget && FitsInHardware)<<" Size: "<<Size<<std::endl;
+    std::cout<<"VRAM Fits: "<<(FitsInBudget && FitsInHardware)<<" Size: "<<Size<<" Budget: "<<BudgetFreeBytes<<" HW: "<<HardwareFreeBytes<<std::endl;
 
     return FitsInBudget && FitsInHardware;
 }
