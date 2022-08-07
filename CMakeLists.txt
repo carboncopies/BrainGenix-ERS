@@ -56,6 +56,7 @@ add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_LoggingSystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_HardwareInformation)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_InputOutputSubsystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ArgumentParser)
+add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_GPURequest)
 
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_FramerateManager)
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_SceneManager)
@@ -128,6 +129,7 @@ target_link_libraries(${PROJECT_NAME}
   ozz_animation
 
   # Internal Libs
+  ERS_CLASS_GPURequest
   ERS_CLASS_LoggingSystem
 
 
