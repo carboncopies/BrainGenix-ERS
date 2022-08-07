@@ -122,19 +122,12 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
 
 
             // Calculate Texture Size
-            int TextureSizeVRAM = 0;
-            int TextureSizeRAM = 0;
-            for (unsigned int i = 0; i < Model->Textures_Loaded.size(); i++) {
-                TextureSizeVRAM += Model->Textures_Loaded[i].TextureLevels[TargetTextureLevelVRAM].LevelLoadedInVRAM;
-            }
-            for (unsigned int i = 0; i < Model->Textures_Loaded.size(); i++) {
-                TextureSizeRAM += Model->Textures_Loaded[i].TextureLevels[TargetTextureLevelRAM].LevelMemorySizeBytes;
-            }
+            int TextureSize = Model->Textures_Loaded[i].TextureLevels[TargetTextureLevelRAM].LevelMemorySizeBytes;
 
             // Check What Can Fit Into VRAM
             bool AlreadyHasVRAMLevel = Model->TextureLevelInVRAM_ >= TargetTextureLevelVRAM;
             bool VRAMUpdateQuotaExceeded = CameraVRAMUpdates >= MaxCameraUpdates;
-            bool TextureFitsInVRAM = ResourceMonitor_->TextureFitsInVRAMBudget(TextureSizeVRAM);
+            bool TextureFitsInVRAM = ResourceMonitor_->TextureFitsInVRAMBudget(TextureSize);
             if (!AlreadyHasVRAMLevel && !VRAMUpdateQuotaExceeded && TextureFitsInVRAM) {
                 if (Model->TargetTextureLevelVRAM < TargetTextureLevelVRAM) {
                     Model->TargetTextureLevelVRAM = TargetTextureLevelVRAM;
@@ -149,7 +142,7 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             // Check What Can Fit Into RAM
             bool AlreadyHasRAMLevel = Model->TextureLevelInRAM_ >= TargetTextureLevelRAM;
             bool RAMUpdateQuotaExceeded = CameraRAMUpdates >= MaxCameraUpdates;
-            bool TextureFitsInRAM = ResourceMonitor_->TextureFitsInRAMBudget(TextureSizeRAM);
+            bool TextureFitsInRAM = ResourceMonitor_->TextureFitsInRAMBudget(TextureSize);
             if (!AlreadyHasRAMLevel && !RAMUpdateQuotaExceeded && TextureFitsInRAM) {
                 if (Model->TargetTextureLevelRAM < TargetTextureLevelRAM) {
                     Model->TargetTextureLevelRAM = TargetTextureLevelRAM;
