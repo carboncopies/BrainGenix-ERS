@@ -41,6 +41,9 @@ private:
     int TextureStreamingThreads_ = -1;
     int TextureStreamingQueueLimit_ = -1;
 
+    float VRAMBudgetMiB = 0;
+    float RAMBudgetMiB = 0;
+
     bool PreventDupeQueueEntries_ = false;
     bool QueuePrioritizationEnabled_ = false;
 
