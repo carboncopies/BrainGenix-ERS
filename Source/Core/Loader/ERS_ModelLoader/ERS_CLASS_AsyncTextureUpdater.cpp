@@ -5,10 +5,11 @@
 #include <ERS_CLASS_AsyncTextureUpdater.h>
 
 
-ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, unsigned int Threads) {
+ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_AssetStreamingSystemResourceMonitor* ResourceMonitor, GLFWwindow* Window, unsigned int Threads) {
 
     SystemUtils_ = SystemUtils;
     MainThreadWindowContext_ = Window;
+    ResourceMonitor_ = ResourceMonitor;
     SystemUtils_->Logger_->Log("Initializing Automatic Texture Loading Subsystem", 5);
 
     // If Threads Is Left To Autodetect, Use That
