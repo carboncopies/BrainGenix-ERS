@@ -74,6 +74,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
     FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
 
+    // Force The Image Into A Constant Number Of Channels
     FIBITMAP* Image = nullptr;
     int Channels = FreeImage_GetLine(RawImage) / FreeImage_GetWidth(RawImage);
     if (Channels == 1) {
@@ -86,7 +87,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         Image = FreeImage_ConvertTo32Bits(RawImage);
     }
     FreeImage_Unload(RawImage);
-    
+
     FreeImage_CloseMemory(FIImageData);
 
 
@@ -386,13 +387,12 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
             int Height = Texture->TextureLevels[Level].LevelResolution.second;
 
             unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->TextureLevels[Level].LevelBitmap);
-            int LevelImageSize = FreeImage_GetMemorySize(Texture->TextureLevels[Level].LevelBitmap);
-
+            int ImageLevelSize = Width*Height*Channels*sizeof(unsigned char);
 
             //glBufferData(GL_PIXEL_UNPACK_BUFFER, LevelImageSize, 0, GL_STREAM_DRAW);
             GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
             if (PBOPointer != nullptr) {
-                ::memcpy(PBOPointer, LevelImageBytes, LevelImageSize);
+                ::memcpy(PBOPointer, LevelImageBytes, ImageLevelSize);
                 glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
             } else {
                 SystemUtils_->Logger_->Log("Error Mapping PBO, glMapBuffer Returned Nullptr", 8);
