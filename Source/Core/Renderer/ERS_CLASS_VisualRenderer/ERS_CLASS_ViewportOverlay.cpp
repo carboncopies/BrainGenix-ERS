@@ -177,7 +177,6 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
     }
 
-
     // VRAM Loading Queue
     if (Viewport->ShowVRAMLoadingInfo_) {
 
