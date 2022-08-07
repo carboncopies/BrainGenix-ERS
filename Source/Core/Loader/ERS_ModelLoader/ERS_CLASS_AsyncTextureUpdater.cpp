@@ -691,12 +691,36 @@ void ERS_CLASS_AsyncTextureUpdater::SetupThreads() {
     // Setup Threads
     SystemUtils_->Logger_->Log("Starting Worker Thread Pool", 4);
     SystemUtils_->Logger_->Log(std::string("Worker Pool Will Have ") + std::to_string(NumThreads_) + " Threads", 3);
+    
+
+    // For some reason windows cannot handle sharing a context if it's in use by another thread so we have to do this bullshit.
+    // thanks, windows! /s
     StopThreads_ = false;
     glfwMakeContextCurrent(NULL);
+
+    GPUWorkerThreadsComplete_.clear();
+    for (unsigned int i = 0; i < (unsigned int)NumThreads_; i++) {
+        GPUWorkerThreadsComplete_.push_back(std::atomic_bool(false));
+    }
+
     for (unsigned int i = 0; i < (unsigned int)NumThreads_; i++) {
         TextureWorkerThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread, this, i));
         SystemUtils_->Logger_->Log(std::string("Started Worker Thread '") + std::to_string(i) + "'", 2);
     }
+
+    // Block until all threads are started and have their contexts setup
+    while (true) {
+        bool AllThreadsStarted = true;
+        for (unsigned int i = 0; i < GPUWorkerThreadsComplete_.size(); i++) {
+            if (!GPUWorkerThreadsComplete_[i]) {
+                AllThreadsStarted = false;
+            }
+        }
+        if (AllThreadsStarted) {
+            break;
+        }
+    }
+
     glfwMakeContextCurrent(MainThreadWindowContext_);
     SystemUtils_->Logger_->Log("Setup Worker Thread Pool", 3);
 
