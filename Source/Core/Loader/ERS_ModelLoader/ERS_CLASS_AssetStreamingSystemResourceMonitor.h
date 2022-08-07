@@ -31,6 +31,8 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Struct containing essential services such as logging and Asset IO*/
 
+    std::mutex BlockUpdates_; /**<Used to ensure thread-safety when updating the system*/
+
     // Total Amounts Assumed For System RAM and VRAM In Bytes
     long TotalSystemRAM_; /**<Number of bytes of RAM that the system has*/
     long TotalSystemVRAM_; /**<Number of bytes of VRAM that the system has*/

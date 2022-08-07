@@ -75,6 +75,8 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::~ERS_CLASS_AssetStreamingSystemRe
 
 bool ERS_CLASS_AssetStreamingSystemResourceMonitor::TextureFitsInVRAMBudget(unsigned long Size) {
 
+    BlockUpdates_.lock();
+ 
     // Calculate Free Sizes
     long HardwareFreeBytes = TotalSystemVRAM_ - UsedSystemVRAM_;
     long BudgetFreeBytes = SystemUtils_->RendererSettings_->VRAMBudget_ - UsedSystemVRAM_;
@@ -82,6 +84,9 @@ bool ERS_CLASS_AssetStreamingSystemResourceMonitor::TextureFitsInVRAMBudget(unsi
     // Perform Comparison To Check If The Texture Would Fit
     bool FitsInHardware = (long)Size < HardwareFreeBytes;
     bool FitsInBudget = (long)Size < BudgetFreeBytes;
+
+    BlockUpdates_.unlock();
+
 
     // Return Result
     return FitsInBudget && FitsInHardware;
@@ -92,15 +97,21 @@ void ERS_CLASS_AssetStreamingSystemResourceMonitor::SetTextureVRAMBudget(unsigne
 }
 
 void ERS_CLASS_AssetStreamingSystemResourceMonitor::AllocateTextureVRAMFromBudget(unsigned long Size) {
+    BlockUpdates_.lock();
     UsedSystemVRAM_ += Size;
+    BlockUpdates_.unlock();
 }
 
 void ERS_CLASS_AssetStreamingSystemResourceMonitor::DeallocateTextureVRAMFromBudget(unsigned long Size) {
+    BlockUpdates_.lock();
     UsedSystemVRAM_ -= Size;
+    BlockUpdates_.unlock();
 }
 
 
 bool ERS_CLASS_AssetStreamingSystemResourceMonitor::TextureFitsInRAMBudget(unsigned long Size) {
+
+    BlockUpdates_.lock();
 
     // Calculate Free Sizes
     long HardwareFreeBytes = TotalSystemRAM_ - UsedSystemRAM_;
@@ -109,6 +120,8 @@ bool ERS_CLASS_AssetStreamingSystemResourceMonitor::TextureFitsInRAMBudget(unsig
     // Perform Comparison To Check If The Texture Would Fit
     bool FitsInHardware = (long)Size < HardwareFreeBytes;
     bool FitsInBudget = (long)Size < BudgetFreeBytes;
+
+    BlockUpdates_.unlock();
 
     // Return Result
     return FitsInBudget && FitsInHardware;
@@ -119,11 +132,15 @@ void ERS_CLASS_AssetStreamingSystemResourceMonitor::SetTextureRAMBudget(unsigned
 }
 
 void ERS_CLASS_AssetStreamingSystemResourceMonitor::AllocateTextureRAMFromBudget(unsigned long Size) {
+    BlockUpdates_.lock();
     UsedSystemRAM_ += Size;
+    BlockUpdates_.unlock();
 }
 
 void ERS_CLASS_AssetStreamingSystemResourceMonitor::DeallocateTextureRAMFromBudget(unsigned long Size) {
+    BlockUpdates_.lock();
     UsedSystemRAM_ -= Size;
+    BlockUpdates_.unlock();
 }
 
 void ERS_CLASS_AssetStreamingSystemResourceMonitor::UpdateTotals() {
