@@ -125,3 +125,10 @@ void ERS_CLASS_AssetStreamingSystemResourceMonitor::AllocateTextureRAMFromBudget
 void ERS_CLASS_AssetStreamingSystemResourceMonitor::DeallocateTextureRAMFromBudget(unsigned long Size) {
     UsedSystemRAM_ -= Size;
 }
+
+void ERS_CLASS_AssetStreamingSystemResourceMonitor::UpdateTotals() {
+
+    SystemUtils_->RendererSettings_->CurrentRAMUsage_ = UsedSystemRAM_;
+    SystemUtils_->RendererSettings_->CurrentVRAMUsage_ = UsedSystemVRAM_;
+    
+}

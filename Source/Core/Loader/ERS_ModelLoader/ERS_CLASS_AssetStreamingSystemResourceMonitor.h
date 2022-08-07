@@ -132,5 +132,10 @@ public:
      */
     void DeallocateTextureRAMFromBudget(unsigned long Size);
     
+    /**
+     * @brief Updates the totals in the systemutils' renderer settings struct.
+     * 
+     */
+    void UpdateTotals();
 
 };
