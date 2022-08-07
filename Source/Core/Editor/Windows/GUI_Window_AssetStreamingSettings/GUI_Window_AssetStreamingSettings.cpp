@@ -59,6 +59,14 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                 ImGui::Separator();
                 ImGui::Spacing();
 
+                ImGui::DragInt("VRAM Budget", &SystemUtils_->RendererSettings_->VRAMBudget_, 1048576, 0, 549755813888);
+                ImGui::DragInt("RAM Budget", &SystemUtils_->RendererSettings_->RAMBudget_, 1048576, 0, 549755813888);
+
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+
+
                 ImGui::SliderInt("Texture Streaming Threads", &TextureStreamingThreads_, 1, MaxThreads_);
                 ImGui::SliderInt("Queue Limit", &TextureStreamingQueueLimit_, 1, MaxThreads_ * 25);
                 ImGui::Checkbox("Prevent Duplicate Entry", &PreventDupeQueueEntries_);
