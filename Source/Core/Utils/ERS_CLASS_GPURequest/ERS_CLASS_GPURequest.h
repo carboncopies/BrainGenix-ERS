@@ -5,7 +5,7 @@
 #pragma once
 
 
-// Requests using the high power gpu on windows platforms
+// Requests using the high power gpu on windows (YUCK!) platforms
 #ifdef _WIN32
 #ifdef __cplusplus
 extern "C" {
