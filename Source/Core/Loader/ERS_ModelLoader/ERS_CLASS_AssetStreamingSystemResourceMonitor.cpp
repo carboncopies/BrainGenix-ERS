@@ -78,12 +78,12 @@ bool ERS_CLASS_AssetStreamingSystemResourceMonitor::TextureFitsInVRAMBudget(unsi
     BlockUpdates_.lock();
  
     // Calculate Free Sizes
-    long HardwareFreeBytes = TotalSystemVRAM_ - UsedSystemVRAM_;
-    long BudgetFreeBytes = SystemUtils_->RendererSettings_->VRAMBudget_ - UsedSystemVRAM_;
+    long long HardwareFreeBytes = TotalSystemVRAM_ - UsedSystemVRAM_;
+    long long BudgetFreeBytes = SystemUtils_->RendererSettings_->VRAMBudget_ - UsedSystemVRAM_;
 
     // Perform Comparison To Check If The Texture Would Fit
-    bool FitsInHardware = (long)Size < HardwareFreeBytes;
-    bool FitsInBudget = (long)Size < BudgetFreeBytes;
+    bool FitsInHardware = (long long)Size < HardwareFreeBytes;
+    bool FitsInBudget = (long long)Size < BudgetFreeBytes;
 
     BlockUpdates_.unlock();
 
@@ -115,12 +115,12 @@ bool ERS_CLASS_AssetStreamingSystemResourceMonitor::TextureFitsInRAMBudget(unsig
     BlockUpdates_.lock();
 
     // Calculate Free Sizes
-    long HardwareFreeBytes = TotalSystemRAM_ - UsedSystemRAM_;
-    long BudgetFreeBytes = SystemUtils_->RendererSettings_->RAMBudget_ - UsedSystemRAM_;
+    long long HardwareFreeBytes = TotalSystemRAM_ - UsedSystemRAM_;
+    long long BudgetFreeBytes = SystemUtils_->RendererSettings_->RAMBudget_ - UsedSystemRAM_;
 
     // Perform Comparison To Check If The Texture Would Fit
-    bool FitsInHardware = (long)Size < HardwareFreeBytes;
-    bool FitsInBudget = (long)Size < BudgetFreeBytes;
+    bool FitsInHardware = (long long)Size < HardwareFreeBytes;
+    bool FitsInBudget = (long long)Size < BudgetFreeBytes;
 
     BlockUpdates_.unlock();
 
