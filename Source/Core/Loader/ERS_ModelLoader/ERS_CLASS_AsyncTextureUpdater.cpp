@@ -371,15 +371,9 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
             int Width = Texture->TextureLevels[Level].LevelResolution.first;
             int Height = Texture->TextureLevels[Level].LevelResolution.second;
-            FIBITMAP* Image = Texture->TextureLevels[Level].LevelBitmap;
 
-            FIBITMAP* NewImage = FreeImage_ConvertTo32Bits(Image);
-            
-
-            unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(NewImage);
+            unsigned char* LevelImageBytes = (unsigned char*)FreeImage_GetBits(Texture->TextureLevels[Level].LevelBitmap);
             int LevelImageSize = FreeImage_GetMemorySize(Texture->TextureLevels[Level].LevelBitmap);
-
-
 
             //glBufferData(GL_PIXEL_UNPACK_BUFFER, LevelImageSize, 0, GL_STREAM_DRAW);
             GLubyte* PBOPointer = (GLubyte*)glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
@@ -389,10 +383,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
             } else {
                 SystemUtils_->Logger_->Log("Error Mapping PBO, glMapBuffer Returned Nullptr", 8);
             }
-
-            FreeImage_Unload(NewImage);
-
-
             glFinish();
             glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
     }
