@@ -151,6 +151,25 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
     }
 
+    // Show/Hide Memory Overlay Information
+    if (Viewport->ShowMemoryInfo_) {
+
+
+        float RAMMiBBudget = SystemUtils_->RendererSettings_->RAMBudget_ / 1048576;
+        float VRAMMiBBudget = SystemUtils_->RendererSettings_->VRAMBudget_ / 1048576;
+        
+
+
+        std::string LabelText = std::to_string(NumDirectionalLights) + std::string(" Directional Lights (") + std::to_string(NumDirectionalDepthMaps)
+         + std::string(" Have Depth Maps) ") + std::to_string(NumSpotLights) + std::string(" Spot Lights (") + std::to_string(NumSpotDepthMaps)
+         + std::string(" Have Depth Maps) ") + std::to_string(NumPointLights) + std::string(" Point Lights (") + std::to_string(NumPointDepthMaps)
+         + std::string(" Have Depth Maps)");
+        ImGui::TextColored(ImVec4(0.25f, 1.0f, 0.25f, 1.0f), "%s", LabelText.c_str());
+
+
+    }
+
+
     // RAM Loading Queue
     if (Viewport->ShowRAMLoadingInfo_) {
 

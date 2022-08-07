@@ -36,6 +36,10 @@ struct ERS_STRUCT_RendererSettings {
     unsigned long long VRAMBudget_ = 68719476736; // 64 GB default
     unsigned long long RAMBudget_ = 549755813888; // 512 GB default
 
+    unsigned long long CurrentVRAMUsage_ = 0;
+    unsigned long long CurrentRAMUsage_ = 0;
+    
+
     float FOV_ = 90.0f;
 
 };
