@@ -21,7 +21,7 @@
 #include <GLFW/glfw3.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <GPURequest.h>
+#include <ERS_CLASS_GPURequest.h>
 #include <RendererManager.h>
 
 #include <ERS_CLASS_LoggingSystem.h>
