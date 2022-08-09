@@ -258,7 +258,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     // TODO: Fix mip map loading
     // FIx segfaults caused when lots of loading is in the queue - unknown why this happens
-    bool EnableMipMaps = false;
+    //bool EnableMipMaps = false;
 
 
     // Setup PBO
