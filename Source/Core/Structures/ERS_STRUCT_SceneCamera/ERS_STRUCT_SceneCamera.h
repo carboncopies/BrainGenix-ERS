@@ -20,18 +20,18 @@
 
 
 /**
- * @brief Struct containing a viewport that would allow the visualrender to be simplified.
+ * @brief Struct containing a SceneCamera that would allow the visualrender to be simplified.
  * 
  */
-struct ERS_STRUCT_Viewport {
+struct ERS_STRUCT_SceneCamera {
 
 
-    std::string Name; /**<Name of the viewport*/
+    std::string Name; /**<Name of the SceneCamera*/
     bool WasSelected = false; /**<Indicates if the gizmo was selected last frame*/
     bool MenuEnabled = true; /**<Indicate if the menu is enabled (opened by "`")*/
     bool GizmoEnabled = true; /**<Toggle On/Off The 3D Gizmo*/
-    bool ShowCube = true; /**<Enable/Disable The Viewport Cube*/
-    bool GridEnabled = true; /**<Enable/Disable The Viewport's Background Grid*/
+    bool ShowCube = true; /**<Enable/Disable The SceneCamera Cube*/
+    bool GridEnabled = true; /**<Enable/Disable The SceneCamera's Background Grid*/
     bool LightIcons = true; /**<Draw or don't draw the light icons*/
     bool GammaCorrection = true; /**<Enable/disable gamma correction*/
     bool HDREnabled_ = true; /**<Indicate if hdr should be used or not*/
@@ -54,12 +54,12 @@ struct ERS_STRUCT_Viewport {
     bool ShowVRAMLoadingInfo_ = true; /**<Enab;e/Disable RAM Loading Queue Overlay*/ 
     bool ShowMemoryInfo_ = true; /**<Enable/Disables the memory information overlay*/
 
-    float Exposure_ = 1.0f; /**<Set the camera exposure for that viewport*/
-    float Gamma_ = 2.2f; /**<Set the gamma correction value for the viewport*/
+    float Exposure_ = 1.0f; /**<Set the camera exposure for that SceneCamera*/
+    float Gamma_ = 2.2f; /**<Set the gamma correction value for the SceneCamera*/
 
     int ShaderIndex = 0; /**<Index of the shader to be used*/
 
-    std::unique_ptr<bool> Enabled; /**<Indicates if the viewport is enabled*/
+    std::unique_ptr<bool> Enabled; /**<Indicates if the SceneCamera is enabled*/
     std::unique_ptr<ERS_CLASS_InputProcessor> Processor; /**<Pointer to Input Processor*/
     std::unique_ptr<ERS_CLASS_Grid> Grid; /**<Pointer to grid instance*/
     std::unique_ptr<ERS_CLASS_LightIconRenderer> LightIconRenderer; /**<Light Icon Renderer Instance*/
@@ -70,7 +70,7 @@ struct ERS_STRUCT_Viewport {
     unsigned int FramebufferColorObject; /**<FBCO OpenGL ID*/
     unsigned int RenderbufferObject; /**<RBO OpenGL ID*/
 
-    int Width = 1; /**<Viewport Width*/
+    int Width = 1; /**<SceneCamera Width*/
     int Height = 1; /**<Viewport Height*/
 
 };
