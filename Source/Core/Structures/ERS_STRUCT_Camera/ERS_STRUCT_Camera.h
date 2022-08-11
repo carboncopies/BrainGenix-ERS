@@ -114,7 +114,7 @@ struct ERS_STRUCT_Camera {
         // Asset Streaming Config
         int Priority_ = 1; // Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)
 
-		float FOV;
+		float FOV_;
 		float zoom;
 		float zoomDelta	= glm::radians(1.0f);	
 
@@ -188,9 +188,9 @@ ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov,  int width, int height, float ne
 	: ERS_STRUCT_Camera(fov, width, height, nearClip, farClip, glm::vec3(0.0f, 0.0f, 1.0f))
 {}
 ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov, int width, int height, float nearClip, float farClip, glm::vec3 Position_)
-	: FOV(fov), zoom(fov), aspect(float(width)/float(height)), nearClip(nearClip), farClip(farClip), Position_(Position_){
+	: FOV_(fov), zoom(fov), aspect(float(width)/float(height)), nearClip(nearClip), farClip(farClip), Position_(Position_){
 	
-	perspectiveMatrix = glm::perspective(FOV, aspect, nearClip, farClip);
+	perspectiveMatrix = glm::perspective(FOV_, aspect, nearClip, farClip);
 	mousePosition.x = width / 2.0f;
 	mousePosition.y = height / 2.0f;
 }
@@ -277,8 +277,8 @@ void ERS_STRUCT_Camera::Zoom(ZoomState z){
 			}
 			break;
 		case ZoomState::_OUT:
-			if((zoom += zoomDelta) > FOV){
-				zoom = FOV;
+			if((zoom += zoomDelta) > FOV_){
+				zoom = FOV_;
 				recalculatePerspective = false;
 			}
 			break;

@@ -369,8 +369,9 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         // Update Camera
         float AspectRatio = (float)RenderWidth / (float)RenderHeight;
         Viewport->Camera->SetAspectRatio(AspectRatio);
-        glm::mat4 projection = Viewport->Camera->GetProjectionMatrix();
-        glm::mat4 view = Viewport->Camera->GetViewMatrix();
+        glm::mat4 Projection;
+        glm::mat4 View;
+        Camera->GetMatrices(Projection, View);
         
 
 
@@ -380,7 +381,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         Shaders_[ShaderIndex]->MakeActive();
 
         // Update Shaders
-        UpdateShader(DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewport->Camera.get(), projection, view, Viewport);
+        UpdateShader(DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewport->Camera.get(), Projection, View, Viewport);
 
         
 
