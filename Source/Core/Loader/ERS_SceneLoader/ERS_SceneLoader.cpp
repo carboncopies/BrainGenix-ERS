@@ -48,6 +48,10 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
     Scene.SceneName = RawSceneData["SceneName"].as<std::string>();
     Scene.ScenePath = AssetID;
 
+    if (RawSceneData["ActiveCameraIndex"]) {
+        Scene.ActiveSceneCameraIndex = RawSceneData["ActiveCameraIndex"].as<int>();
+    }
+
     // Log Scene Processing
     SystemUtils_->Logger_->Log(std::string(std::string("Processing Scene: ") + std::string(Scene.SceneName)).c_str(), 3);
 
