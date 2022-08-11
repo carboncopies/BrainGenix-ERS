@@ -268,7 +268,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
     // Get Vars
     ERS_STRUCT_Viewport* Viewport = Viewports_[Index].get();
-    ERS_STRUCT_Scene* Scene = Scene.get();
+    ERS_STRUCT_Scene* Scene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
 
     // Render To ImGui
     ImGuiWindowFlags Flags = ImGuiWindowFlags_None;
