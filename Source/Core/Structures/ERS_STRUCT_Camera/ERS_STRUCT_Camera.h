@@ -163,10 +163,10 @@ class ERS_STRUCT_Camera {
 	
         // Done
 		void ProcessKeyboard(CameraMovement td, float DeltaTime);
+		void ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch = true);		// control pitch and yaw
 
         // Todo
 		void Update(float delta = 1.0f);
-		void MouseMoveEvent(float x, float y);		// control pitch and yaw
 		void MouseScrollEvent(float yOffset);		// control roll
 		void Zoom(ZoomState z);		
 
@@ -241,19 +241,19 @@ void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement td, float DeltaTime){
 }
 
 
-void ERS_STRUCT_Camera::MouseMoveEvent(float x, float y){
+void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch){
 	// updateing yaw
-	yaw += (x - mousePosition.x) * mouseSenstivitiy;
+	yaw += (XOffset - mousePosition.x) * mouseSenstivitiy;
 	if(yaw > twoPI) yaw -= twoPI;
 	else if(yaw < -twoPI) yaw += twoPI;
 
 	// updateing pitch
-	pitch += (y - mousePosition.y) * mouseSenstivitiy;
+	pitch += (YOffset - mousePosition.y) * mouseSenstivitiy;
 	if(pitch > twoPI) pitch -= twoPI;
 	else if(pitch < -twoPI) pitch += twoPI;
 
-	mousePosition.x = x;
-	mousePosition.y = y;
+	mousePosition.x = XOffset;
+	mousePosition.y = YOffset;
 }
 
 void ERS_STRUCT_Camera::MouseScrollEvent(float yOffset){
