@@ -142,10 +142,10 @@ struct ERS_STRUCT_Camera {
 		float damp				= 0.8f;			// a value to damp the camera rotational speed
 
 		// the angles to rotate the camera by.
-		float Yaw_	= 0.0f;						// rotate about the y axis
-		float Pitch_	= 0.0f;						// rotate about the x axis
-		float Roll_	= 0.0f;						// rotate about the z axis
-		float twoPI = glm::two_pi<float>();		// check radian bound
+		float Yaw_	 = 0.0f;						// rotate about the y axis
+		float Pitch_ = 0.0f;						// rotate about the x axis
+		float Roll_	 = 0.0f;						// rotate about the z axis
+		float twoPI  = glm::two_pi<float>();		// check radian bound
 
 		float MovementSpeed_ = 0.2f;			// the linear travel speed of the camera
 
