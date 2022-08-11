@@ -121,8 +121,6 @@ void ERS_CLASS_IconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneMana
         IconRendererShader_->SetMat4("projection", Projection);
 
         IconRendererShader_->SetVec3("CameraPosition", CameraPosition);
-        IconRendererShader_->SetVec3("CameraRight", CameraRight);
-        IconRendererShader_->SetVec3("CameraUp", CameraUp);
 
         IconRendererShader_->SetFloat("BillboardSize", IconRendererScale_);
         IconRendererShader_->SetVec3("BillboardPosition", LightPosition);
@@ -159,8 +157,6 @@ void ERS_CLASS_IconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneMana
         IconRendererShader_->SetMat4("projection", Projection);
 
         IconRendererShader_->SetVec3("CameraPosition", CameraPosition);
-        IconRendererShader_->SetVec3("CameraRight", CameraRight);
-        IconRendererShader_->SetVec3("CameraUp", CameraUp);
 
         IconRendererShader_->SetFloat("BillboardSize", IconRendererScale_);
         IconRendererShader_->SetVec3("BillboardPosition", LightPosition);
@@ -197,8 +193,6 @@ void ERS_CLASS_IconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneMana
         IconRendererShader_->SetMat4("projection", Projection);
 
         IconRendererShader_->SetVec3("CameraPosition", CameraPosition);
-        IconRendererShader_->SetVec3("CameraRight", CameraRight);
-        IconRendererShader_->SetVec3("CameraUp", CameraUp);
 
         IconRendererShader_->SetFloat("BillboardSize", IconRendererScale_);
         IconRendererShader_->SetVec3("BillboardPosition", CameraPosition);
