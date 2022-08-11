@@ -116,6 +116,10 @@ void ERS_STRUCT_Camera::UpdateCameraVectors() {
 
     // Calculate Right, Up Vector
     Right_ = glm::normalize(glm::cross(Front_, WorldUp_));
+
     Up_ = glm::normalize(glm::cross(Right_, Front_));
+
+    glm::mat4 roll_mat = glm::rotate(glm::mat4(1.0f), glm::radians(Roll_), Front_);
+    Up_ = glm::mat3(roll_mat) * Up_;
 
 }
