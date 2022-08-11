@@ -266,13 +266,17 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
     // update the camera's position/rot to the scene's active scenecamera position/rot 
     // disable user input directly through the editor system (the user will have to handle this via the scripting system)
 
+    // Get Vars
+    ERS_STRUCT_Viewport* Viewport = Viewports_[Index].get();
+    ERS_STRUCT_Scene* Scene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
+
     // Render To ImGui
     ImGuiWindowFlags Flags = ImGuiWindowFlags_None;
-    if (Viewports_[Index]->MenuEnabled) {
+    if (Viewport->MenuEnabled) {
         Flags |= ImGuiWindowFlags_MenuBar;
     }
 
-    bool Visible = ImGui::Begin(Viewports_[Index]->Name.c_str(), Viewports_[Index]->Enabled.get(), Flags);
+    bool Visible = ImGui::Begin(Viewport->Name.c_str(), Viewport->Enabled.get(), Flags);
 
     // Set Default Window Size
     ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
@@ -283,9 +287,9 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         // Handle Viewport Menu
         if (ImGui::IsKeyPressed(GLFW_KEY_GRAVE_ACCENT)) {
-            Viewports_[Index]->MenuEnabled = !Viewports_[Index]->MenuEnabled;
+            Viewport->MenuEnabled = !Viewport->MenuEnabled;
         }
-        ViewportMenu_->DrawMenu(Viewports_[Index].get(), ShadowMaps_.get());
+        ViewportMenu_->DrawMenu(Viewport, ShadowMaps_.get());
 
 
         // Calculate Window Position
@@ -319,7 +323,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         
 
         // Update FOV
-        Viewports_[Index]->Camera->FOV_ = SystemUtils_->RendererSettings_->FOV_;
+        Viewport->Camera->FOV_ = SystemUtils_->RendererSettings_->FOV_;
 
         // Check If Input Enabled
         bool EnableCameraMovement = !Cursors3D_->IsUsing();
@@ -328,14 +332,14 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
         bool EnableCursorCapture;
-        if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | Viewports_[Index]->WasSelected) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
+        if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | Viewport->WasSelected) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
             CaptureCursor_ = true;
             EnableCursorCapture = true;
             CaptureIndex_ = Index;
-            Viewports_[Index]->WasSelected = true;
+            Viewport->WasSelected = true;
         } else {
             EnableCursorCapture = false;
-            Viewports_[Index]->WasSelected = false;
+            Viewport->WasSelected = false;
         }
 
 
@@ -347,32 +351,32 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
         // Resize Viewport If Needed
-        if ((RenderWidth != Viewports_[Index]->Width) || (RenderHeight != Viewports_[Index]->Height)) {
+        if ((RenderWidth != Viewport->Width) || (RenderHeight != Viewport->Height)) {
             ResizeViewport(Index, RenderWidth, RenderHeight);
         }
 
 
         // Bind To Framebuffer
-        glBindFramebuffer(GL_FRAMEBUFFER, Viewports_[Index]->FramebufferObject);
+        glBindFramebuffer(GL_FRAMEBUFFER, Viewport->FramebufferObject);
 
         // Rendering Commands Here
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // Update Camera
         float AspectRatio = (float)RenderWidth / (float)RenderHeight;
-        Viewports_[Index]->Camera->SetAspectRatio(AspectRatio);
-        glm::mat4 projection = Viewports_[Index]->Camera->GetProjectionMatrix();
-        glm::mat4 view = Viewports_[Index]->Camera->GetViewMatrix();
+        Viewport->Camera->SetAspectRatio(AspectRatio);
+        glm::mat4 projection = Viewport->Camera->GetProjectionMatrix();
+        glm::mat4 view = Viewport->Camera->GetViewMatrix();
         
 
 
 
         // Use Shader
-        int ShaderIndex = Viewports_[Index]->ShaderIndex;
+        int ShaderIndex = Viewport->ShaderIndex;
         Shaders_[ShaderIndex]->MakeActive();
 
         // Update Shaders
-        UpdateShader(DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewports_[Index]->Camera.get(), projection, view, Viewports_[Index].get());
+        UpdateShader(DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewport->Camera.get(), projection, view, Viewport);
 
         
 
@@ -431,7 +435,10 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
 
-
+        // Update Camera Location If System Running
+        if (IsEditorMode_ && Index == 0) {
+            Viewport->Camera->Position_ = 
+        }
 
 
         // Render
@@ -442,28 +449,28 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, ShaderPointers, ShaderIndex, *ShaderUniformData_);
 
 
-        if (Viewports_[Index]->GridEnabled) {
-            Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position_);
+        if (Viewport->GridEnabled) {
+            Viewport->Grid->DrawGrid(view, projection, Viewport->Camera->Position_);
         }
-        if (Viewports_[Index]->LightIcons) {
-            Viewports_[Index]->IconRenderer->Draw(Viewports_[Index]->Camera.get(), SceneManager);
+        if (Viewport->LightIcons) {
+            Viewport->IconRenderer->Draw(Viewport->Camera.get(), SceneManager);
         }
 
-        Viewports_[Index]->BoundingBoxRenderer->SetDepthTest(Viewports_[Index]->DisableBoundingBoxDepthTest_);
-        Viewports_[Index]->BoundingBoxRenderer->SetDrawMode(Viewports_[Index]->WireframeBoundingBoxes_);
-        if (Viewports_[Index]->ShowBoundingBox_) {
-            Viewports_[Index]->BoundingBoxRenderer->DrawAll(Viewports_[Index]->Camera.get(), ActiveScene);
+        Viewport->BoundingBoxRenderer->SetDepthTest(Viewport->DisableBoundingBoxDepthTest_);
+        Viewport->BoundingBoxRenderer->SetDrawMode(Viewport->WireframeBoundingBoxes_);
+        if (Viewport->ShowBoundingBox_) {
+            Viewport->BoundingBoxRenderer->DrawAll(Viewport->Camera.get(), ActiveScene);
         }
         if (ActiveScene->SceneObjects_.size() > 0) {
-            if (Viewports_[Index]->ShowBoxOnSelectedModel_ && ActiveScene->SceneObjects_[ActiveScene->SelectedObject].Type_ == std::string("Model")) {
+            if (Viewport->ShowBoxOnSelectedModel_ && ActiveScene->SceneObjects_[ActiveScene->SelectedObject].Type_ == std::string("Model")) {
                 unsigned long ModelIndex = ActiveScene->SceneObjects_[ActiveScene->SelectedObject].Index_;
-                Viewports_[Index]->BoundingBoxRenderer->DrawModel(Viewports_[Index]->Camera.get(), ActiveScene->Models[ModelIndex].get());
+                Viewport->BoundingBoxRenderer->DrawModel(Viewport->Camera.get(), ActiveScene->Models[ModelIndex].get());
             }
         }
 
         // Render Framebuffer To Window
         ImGui::GetWindowDrawList()->AddImage(
-            (void*)(intptr_t)Viewports_[Index]->FramebufferColorObject,
+            (void*)(intptr_t)Viewport->FramebufferColorObject,
             ImGui::GetCursorScreenPos(),
             ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x, ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
             ImVec2(0, 1),
@@ -479,7 +486,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
         bool DrawCursor;
-        Cursors3D_->SetGridSnap(Viewports_[Index]->GridSnapAmountTranslate_, Viewports_[Index]->GridSnapAmountRotate_, Viewports_[Index]->GridSnapAmountScale_);
+        Cursors3D_->SetGridSnap(Viewport->GridSnapAmountTranslate_, Viewport->GridSnapAmountRotate_, Viewport->GridSnapAmountScale_);
         if (Cursors3D_->IsUsing() && (ActiveViewportCursorIndex_ == Index)) {
             DrawCursor = true;
         } else if (!Cursors3D_->IsUsing()) {
@@ -489,9 +496,9 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
         if (DrawCursor) {
-            Cursors3D_->Draw(Viewports_[Index]->Camera.get(), EnableCursorCapture, Viewports_[Index]->ShowCube, Viewports_[Index]->GizmoEnabled);
+            Cursors3D_->Draw(Viewport->Camera.get(), EnableCursorCapture, Viewport->ShowCube, Viewport->GizmoEnabled);
         } else {
-            Cursors3D_->Draw(Viewports_[Index]->Camera.get(), false, Viewports_[Index]->ShowCube, false);
+            Cursors3D_->Draw(Viewport->Camera.get(), false, Viewport->ShowCube, false);
 
         }
 
@@ -506,7 +513,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
 
-        ViewportOverlay_->DrawOverlay(Viewports_[Index].get());
+        ViewportOverlay_->DrawOverlay(Viewport);
 
 
     }
