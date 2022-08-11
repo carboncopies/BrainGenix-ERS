@@ -164,13 +164,13 @@ class ERS_STRUCT_Camera {
         // Done
 		void ProcessKeyboard(CameraMovement td, float DeltaTime);
 		void ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch = true);		// control pitch and yaw
+		void ProcessMouseScroll(float YOffset);		// control roll
 
         // Todo
 		void Update(float delta = 1.0f);
-		void MouseScrollEvent(float yOffset);		// control roll
 		void Zoom(ZoomState z);		
 
-		void SetAspect(float aspect);
+		void SetAspectRatio(float AspectRatio);
 
 		void SetMousePosition(float x, float y);
 		void GetMatrices(glm::mat4& perspective, glm::mat4& view);
@@ -240,7 +240,6 @@ void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement td, float DeltaTime){
 	}
 }
 
-
 void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch){
 	// updateing yaw
 	yaw += (XOffset - mousePosition.x) * mouseSenstivitiy;
@@ -256,8 +255,8 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboo
 	mousePosition.y = YOffset;
 }
 
-void ERS_STRUCT_Camera::MouseScrollEvent(float yOffset){
-	roll -= yOffset * ROLL_ANGLE;	
+void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset){
+	roll -= YOffset * ROLL_ANGLE;	
 	if(roll > twoPI) roll -= twoPI;
 	else if(roll < -twoPI) roll += twoPI;
 }
@@ -281,9 +280,9 @@ void ERS_STRUCT_Camera::Zoom(ZoomState z){
 	if(recalculatePerspective) perspectiveMatrix = glm::perspective(zoom, aspect, nearClip, farClip);
 }
 
-void ERS_STRUCT_Camera::SetAspect(float aspect){ 
-	this->aspect = aspect; 
-	perspectiveMatrix = glm::perspective(zoom, aspect, nearClip, farClip);
+void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio){ 
+	this->aspect = AspectRatio; 
+	perspectiveMatrix = glm::perspective(zoom, AspectRatio, nearClip, farClip);
 }
 
 
