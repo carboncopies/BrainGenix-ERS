@@ -41,8 +41,9 @@ public:
     int Priority_ = 1; // Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)
 
     // Euler Angles
-    float Yaw_;
-    float Pitch_;
+    float Yaw_ = 0.0f;
+    float Pitch_ = 0.0f;
+    float Roll_ = 0.0f;
 
     // Camera Options
     double MovementSpeed_;
