@@ -9,6 +9,7 @@
 // suspects include GetViewMatrix or GetProjectionMatrix. These might be ignoring this, try googling it?
 
 glm::mat4 ERS_STRUCT_Camera::GetViewMatrix() {
+    std::cout<<glm::to_string(Up_)<<std::endl;
     return glm::lookAt(Position_, Position_ + Front_, Up_);
 }
 
