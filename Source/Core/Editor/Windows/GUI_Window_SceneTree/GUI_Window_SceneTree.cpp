@@ -584,15 +584,6 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     // Draw Scene Camera Entries
 
     bool SceneCameraTree = ImGui::TreeNodeEx("Cameras", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow);
-
-    // if (ImGui::BeginPopupContextWindow("Scene Camera Context Menu")) {
-
-
-
-    // ImGui::EndPopup();
-    // }
-
-
     if (SceneCameraTree) {
 
         unsigned int SceneCameraListSize = Scene->SceneCameras.size();
