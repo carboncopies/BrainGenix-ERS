@@ -48,7 +48,7 @@ void ERS_STRUCT_Camera::Update(){
 	// Roll_	*= rollDamp;
 
 
-	PerspectiveMatrix_ = PerspectiveMatrix_;	
+	PerspectiveMatrix_ = glm::perspective(FOV_, aspect, nearClip, farClip);	
 	ViewMatrix_ = glm::translate(glm::mat4_cast(orientation), Position_);;
 
 }
