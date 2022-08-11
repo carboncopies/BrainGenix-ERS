@@ -19,19 +19,12 @@
 
 
 
-enum class TravelDirection{
-	UP, DOWN, LEFT, RIGHT, FORWARD, BACKWARD
-};
 
 // FOV zooming
 enum class ZoomState{
 	_IN, _OUT
 };
 
-
-
-
-// Define Camera Directions
 enum CameraMovement {
     FORWARD,
     BACKWARD,
@@ -70,7 +63,7 @@ public:
     float MaxMovementSpeed_ = 50.0f;
 
     // Constructor With Vectors
-    ERS_STRUCT_Camera(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f),
+    ERS_STRUCT_Camera_old(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f),
                                 glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f),
                                 float Yaw = -90.0f,
                                 float Pitch = 0.0f) : Front_(glm::vec3(0.0f, 0.0f, -1.0f)),
@@ -144,7 +137,7 @@ class ERS_STRUCT_Camera {
 		float roll	= 0.0f;						// rotate about the z axis
 		float twoPI = glm::two_pi<float>();		// check radian bound
 
-		float speed = 0.2f;						// the linear travel speed of the camera
+		float MovementSpeed_ = 0.2f;			// the linear travel speed of the camera
 
 		glm::mat4 perspectiveMatrix;
 		//glm::mat4 viewMatrix;	
@@ -168,8 +161,11 @@ class ERS_STRUCT_Camera {
 		ERS_STRUCT_Camera(float fov, int width, int height, float near, float far, glm::vec3 position);
 		
 	
+        // Done
+		void ProcessKeyboard(CameraMovement td, float DeltaTime);
+
+        // Todo
 		void Update(float delta = 1.0f);
-		void Move(TravelDirection td);
 		void MouseMoveEvent(float x, float y);		// control pitch and yaw
 		void MouseScrollEvent(float yOffset);		// control roll
 		void Zoom(ZoomState z);		
@@ -178,14 +174,21 @@ class ERS_STRUCT_Camera {
 
 		void SetMousePosition(float x, float y);
 		void GetMatrices(glm::mat4& perspective, glm::mat4& view);
+
+
+        // Proces Keyboard Input
+        void ProcessKeyboard(CameraMovement Direction, float DeltaTime);
+
+
+
 };
 
 
 // ctor
-ERS_STRUCT_Camera::Camera(float fov,  int width, int height, float nearClip, float farClip)  
-	: Camera(fov, width, height, nearClip, farClip, glm::vec3(0.0f, 0.0f, 1.0f))
+ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov,  int width, int height, float nearClip, float farClip)  
+	: ERS_STRUCT_Camera(fov, width, height, nearClip, farClip, glm::vec3(0.0f, 0.0f, 1.0f))
 {}
-ERS_STRUCT_Camera::Camera(float fov, int width, int height, float nearClip, float farClip, glm::vec3 position)
+ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov, int width, int height, float nearClip, float farClip, glm::vec3 position)
 	: FOV(fov), zoom(fov), aspect(float(width)/float(height)), nearClip(nearClip), farClip(farClip), position(position){
 	
 	perspectiveMatrix = glm::perspective(FOV, aspect, nearClip, farClip);
@@ -208,29 +211,31 @@ void ERS_STRUCT_Camera::rotate(float angle, const glm::vec3 &axis){
 	orientation *= glm::angleAxis(angle, axis * orientation);
 }
 
-void ERS_STRUCT_Camera::Move(TravelDirection td){
+void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement td, float DeltaTime){
+
 
 	// basically, translating the position vector
+    float Velocity = MovementSpeed_ * DeltaTime;
 
 	glm::vec3 temp;
 	switch(td){
-		case TravelDirection::UP:
-			position -= glm::vec3(0.0f, speed, 0.0f) * orientation;
+		case CameraMovement::UP:
+			position -= glm::vec3(0.0f, Velocity, 0.0f) * orientation;
 			break;
-		case TravelDirection::DOWN:
-			position += glm::vec3(0.0f, speed, 0.0f) * orientation;
+		case CameraMovement::DOWN:
+			position += glm::vec3(0.0f, Velocity, 0.0f) * orientation;
 			break;
-		case TravelDirection::LEFT:
-			position += glm::vec3(speed, 0.0f, 0.0f) * orientation;
+		case CameraMovement::LEFT:
+			position += glm::vec3(Velocity, 0.0f, 0.0f) * orientation;
 			break;
-		case TravelDirection::RIGHT:
-			position -= glm::vec3(speed, 0.0f, 0.0f) * orientation;
+		case CameraMovement::RIGHT:
+			position -= glm::vec3(Velocity, 0.0f, 0.0f) * orientation;
 			break;
-		case TravelDirection::FORWARD:
-			position += glm::vec3(0.0f, 0.0f, speed) * orientation;
+		case CameraMovement::FORWARD:
+			position += glm::vec3(0.0f, 0.0f, Velocity) * orientation;
 			break;
-		case TravelDirection::BACKWARD:
-			position -= glm::vec3(0.0f, 0.0f, speed) * orientation;
+		case CameraMovement::BACKWARD:
+			position -= glm::vec3(0.0f, 0.0f, Velocity) * orientation;
 			break;
 	}
 }
