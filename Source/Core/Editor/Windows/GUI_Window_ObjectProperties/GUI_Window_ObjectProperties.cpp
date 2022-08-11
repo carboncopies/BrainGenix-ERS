@@ -271,7 +271,7 @@ void GUI_Window_ObjectProperties::Draw() {
                             SceneManager_->Scenes_[SceneManager_->ActiveScene_]->ActiveSceneCameraIndex = Index;
                         }
                         ImGui::SameLine();
-                        ImGui::HelpMarker("Indicates if this model will cast shadows in dynamic lights. Avoid using this whenever possible due to performance related issues.");
+                        ImGui::HelpMarker("Indicates if this is the active camera or not. There can only be one active camera at a time. The system then renders the scene from the active camera's perspective on viewport 0.");
 
                     }
 
