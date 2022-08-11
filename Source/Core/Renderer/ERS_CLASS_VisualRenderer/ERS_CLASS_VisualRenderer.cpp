@@ -436,7 +436,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position_);
         }
         if (Viewports_[Index]->LightIcons) {
-            Viewports_[Index]->LightIconRenderer->Draw(Viewports_[Index]->Camera.get(), SceneManager);
+            Viewports_[Index]->IconRenderer->Draw(Viewports_[Index]->Camera.get(), SceneManager);
         }
 
         Viewports_[Index]->BoundingBoxRenderer->SetDepthTest(Viewports_[Index]->DisableBoundingBoxDepthTest_);
@@ -560,7 +560,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     Viewport->ShaderIndex = DefaultShader_;
     Viewport->Camera = std::make_unique<ERS_STRUCT_Camera>();
     Viewport->Grid = std::make_unique<ERS_CLASS_Grid>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_Grid"), &Shaders_)].get());
-    Viewport->LightIconRenderer = std::make_unique<ERS_CLASS_LightIconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_LightIcon"), &Shaders_)].get()); //Set TO Shader 19 For Billboard Shader, Temp. Disabled As It Doesn't Work ATM
+    Viewport->IconRenderer = std::make_unique<ERS_CLASS_IconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_LightIcon"), &Shaders_)].get()); //Set TO Shader 19 For Billboard Shader, Temp. Disabled As It Doesn't Work ATM
     Viewport->BoundingBoxRenderer = std::make_unique<ERS_CLASS_BoundingBoxRenderer>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_BoundingBox"), &Shaders_)].get());
     Viewport->Name = ViewportName;
     
