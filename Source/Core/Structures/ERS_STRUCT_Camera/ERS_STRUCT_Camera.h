@@ -178,6 +178,7 @@ struct ERS_STRUCT_Camera {
 
 		void SetMousePosition(float x, float y);
 		void GetMatrices(glm::mat4& perspective, glm::mat4& view);
+        //void GetDirectionVectors(glm::vec3 &Front, glm::vec3 &Right, glm::vec3 &Up);
 
 };
 
@@ -301,3 +302,17 @@ void ERS_STRUCT_Camera::GetMatrices(glm::mat4& perspective, glm::mat4& view){
 	perspective = perspectiveMatrix;	
 	view = glm::translate(glm::mat4_cast(orientation), Position_);;
 }
+
+// void ERS_STRUCT_Camera::GetDirectionVectors(glm::vec3 &Front, glm::vec3 &Right, glm::vec3 &Up) {
+
+//     // glm::mat4 RotMatrix;
+//     // RotMatrix = glm::rotate(RotMatrix, glm::radians(Rotation[0]), glm::vec3(1, 0, 0));
+//     // RotMatrix = glm::rotate(RotMatrix, glm::radians(Rotation[1]), glm::vec3(0, 1, 0));
+//     // RotMatrix = glm::rotate(RotMatrix, glm::radians(Rotation[2]), glm::vec3(0, 0, 1));
+//     // Front_ = glm::normalize(glm::vec3(RotMatrix[2]));
+
+//     // // Calculate Right, Up Vector
+//     // Right_ = glm::normalize(glm::cross(Front_, WorldUp_));
+//     // Up_ = glm::normalize(glm::cross(Right_, Front_));
+
+// }

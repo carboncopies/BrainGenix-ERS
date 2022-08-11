@@ -56,11 +56,11 @@ void ERS_CLASS_IconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneMana
 
     glDisable(GL_DEPTH_TEST);
     IconRendererShader_->MakeActive();
-    glm::mat4 View = Camera->GetViewMatrix();
-    glm::mat4 Projection = Camera->GetProjectionMatrix();
+    glm::mat4 Projection;
+    glm::mat4 View;
+    Camera->GetMatrices(Projection, View);
+
     glm::vec3 CameraPosition = Camera->Position_;
-    glm::vec3 CameraUp = Camera->Up_;
-    glm::vec3 CameraRight = Camera->Right_;
 
     ERS_STRUCT_Scene* Scene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
 
@@ -84,8 +84,6 @@ void ERS_CLASS_IconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneMana
         IconRendererShader_->SetMat4("projection", Projection);
 
         IconRendererShader_->SetVec3("CameraPosition", CameraPosition);
-        IconRendererShader_->SetVec3("CameraRight", CameraRight);
-        IconRendererShader_->SetVec3("CameraUp", CameraUp);
 
         IconRendererShader_->SetFloat("BillboardSize", IconRendererScale_);
         IconRendererShader_->SetVec3("BillboardPosition", LightPosition);
