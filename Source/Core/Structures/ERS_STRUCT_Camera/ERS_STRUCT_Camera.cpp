@@ -149,8 +149,8 @@ void ERS_STRUCT_Camera::SetMousePosition(float x, float y){
 void ERS_STRUCT_Camera::GetMatrices(glm::mat4& perspective, glm::mat4& view){
 	// perspective = perspectiveMatrix;	
 	// view = glm::translate(glm::mat4_cast(orientation), Position_);;
-    (*perspective) = PerspectiveMatrix_;
-    (*view) = ViewMatrix_; 
+    perspective = PerspectiveMatrix_;
+    view = ViewMatrix_; 
 
 }
 
