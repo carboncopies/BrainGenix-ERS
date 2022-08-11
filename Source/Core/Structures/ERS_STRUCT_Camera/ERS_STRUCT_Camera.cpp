@@ -13,6 +13,11 @@ glm::mat4 ERS_STRUCT_Camera::GetProjectionMatrix() {
     return glm::perspective(glm::radians(FOV_), AspectRatio_, 0.01f, 100.0f);
 }
 
+void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
+    Front = Rotation;
+    UpdateCameraVectors();
+}
+
 
 void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio) {
     AspectRatio_ = AspectRatio;
