@@ -12,7 +12,7 @@
 
 
 
-
+//todo: rever tto old camera system, try using the quaternion stuff learned from this system.
 
 
 
@@ -161,7 +161,7 @@ void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio){
 void ERS_STRUCT_Camera::GetMatrices(glm::mat4& perspective, glm::mat4& view){
 	// perspective = PerspectiveMatrix_;	
 	// view = glm::translate(glm::mat4_cast(orientation), Position_);;
-    Update();
+    //Update();
     perspective = PerspectiveMatrix_;
     view = ViewMatrix_; 
 
