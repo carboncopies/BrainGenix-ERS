@@ -44,4 +44,14 @@ void ERS_STRUCT_Scene::IndexSceneObjects() {
         SceneObjects_.push_back(SceneObject);
     }
 
+    // Add Scene Cameras
+    for (unsigned long i = 0; i < SceneCameras.size(); i++) {
+        ERS_STRUCT_SceneObject SceneObject;
+        SceneObject.Type_ = std::string("SceneCamera");
+        SceneObject.Index_ = i;
+        SceneObject.Label_ = std::string("[C] ") + Models[i]->Name;
+        SceneObjects_.push_back(SceneObject);
+    }
+    
+
 }
