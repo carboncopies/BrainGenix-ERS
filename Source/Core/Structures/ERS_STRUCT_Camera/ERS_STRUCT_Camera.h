@@ -172,7 +172,7 @@ struct ERS_STRUCT_Camera {
 		void ProcessKeyboard(CameraMovement Direction, float DeltaTime);
 		void ProcessMouseMovement(float XOffset, float YOffset);		// control pitch and yaw
 		void ProcessMouseScroll(float YOffset);		// control Roll_
-        void Rotate(glm::vec3 Rotation);
+        void SetRotation(glm::vec3 Rotation);
 		void SetAspectRatio(float AspectRatio);
 		void Update();
 

@@ -58,7 +58,7 @@ void ERS_STRUCT_Camera::Rotate(float angle, const glm::vec3 &axis){
 	orientation *= glm::angleAxis(glm::radians(angle), axis * orientation);
 }
 
-void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
+void ERS_STRUCT_Camera::SetRotation(glm::vec3 Rotation) {
     Yaw_ = Rotation[0];
     Pitch_ = Rotation[1];
     Roll_ = Rotation[2];
