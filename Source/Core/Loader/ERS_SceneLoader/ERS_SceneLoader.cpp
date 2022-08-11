@@ -270,7 +270,7 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
         } else if (AssetType == std::string("SceneCamera")) {
 
             // Setup Model Pointer In Scene To Work On
-            Scene.SceneCameras.push_back(std::make_unique<ERS_STRUCT_SceneCamera>());
+            Scene.SceneCameras.push_back(std::make_shared<ERS_STRUCT_SceneCamera>());
             int SceneCameraIndex = Scene.SceneCameras.size() - 1;
 
             Scene.SceneCameras[SceneCameraIndex]->UserDefinedName_ = AssetName;
