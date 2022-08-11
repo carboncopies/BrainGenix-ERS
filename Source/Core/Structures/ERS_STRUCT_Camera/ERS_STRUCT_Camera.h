@@ -35,71 +35,71 @@ enum CameraMovement {
 };
 
 
-// Setup Camera Options
-class ERS_STRUCT_Camera_old {
+// // Setup Camera Options
+// class ERS_STRUCT_Camera_old {
 
-public:
+// public:
 
-    // Camera Attributes
-    glm::vec3 Position_;
-    glm::vec3 Front_;
-    glm::vec3 Up_;
-    glm::vec3 Right_;
-    glm::vec3 WorldUp_;
+//     // Camera Attributes
+//     glm::vec3 Position_;
+//     glm::vec3 Front_;
+//     glm::vec3 Up_;
+//     glm::vec3 Right_;
+//     glm::vec3 WorldUp_;
 
-    // Asset Streaming Config
-    int Priority_ = 1; // Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)
+//     // Asset Streaming Config
+//     int Priority_ = 1; // Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)
 
-    glm::quat Orientation_; 
+//     glm::quat Orientation_; 
 
-    // Camera Options
-    double MovementSpeed_;
-    float MouseSensitivity_;
-    float FOV_;
-    float AspectRatio_;
+//     // Camera Options
+//     double MovementSpeed_;
+//     float MouseSensitivity_;
+//     float FOV_;
+//     float AspectRatio_;
 
-    // Config Params
-    float MinMovementSpeed_ = 0.0f;
-    float MaxMovementSpeed_ = 50.0f;
+//     // Config Params
+//     float MinMovementSpeed_ = 0.0f;
+//     float MaxMovementSpeed_ = 50.0f;
 
-    // Constructor With Vectors
-    ERS_STRUCT_Camera_old(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f),
-                                glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f),
-                                float Yaw = -90.0f,
-                                float Pitch = 0.0f) : Front_(glm::vec3(0.0f, 0.0f, -1.0f)),
-                                MovementSpeed_(1.0f),
-                                MouseSensitivity_(0.1f),
-                                FOV_(45.0f) {
+//     // Constructor With Vectors
+//     ERS_STRUCT_Camera_old(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f),
+//                                 glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f),
+//                                 float Yaw = -90.0f,
+//                                 float Pitch = 0.0f) : Front_(glm::vec3(0.0f, 0.0f, -1.0f)),
+//                                 MovementSpeed_(1.0f),
+//                                 MouseSensitivity_(0.1f),
+//                                 FOV_(45.0f) {
         
-        // Set Params
-        Position = Position;
-        WorldUp_ = Up;
-        UpdateCameraVectors();
+//         // Set Params
+//         Position = Position;
+//         WorldUp_ = Up;
+//         UpdateCameraVectors();
         
-    }
+//     }
 
 
-    // Return View Matrix
-    glm::mat4 GetViewMatrix();
-    glm::mat4 GetProjectionMatrix();
+//     // Return View Matrix
+//     glm::mat4 GetViewMatrix();
+//     glm::mat4 GetProjectionMatrix();
 
 
-    // Proces Keyboard Input
-    void ProcessKeyboard(CameraMovement Direction, float DeltaTime);
+//     // Proces Keyboard Input
+//     void ProcessKeyboard(CameraMovement Direction, float DeltaTime);
 
-    // Process Mouse Input
-    void ProcessMouseMovement(float XOffset, float Yoffset, GLboolean ConstrainPitch = true);
-    void ProcessMouseScroll(float YOffset);
+//     // Process Mouse Input
+//     void ProcessMouseMovement(float XOffset, float Yoffset, GLboolean ConstrainPitch = true);
+//     void ProcessMouseScroll(float YOffset);
 
-    void SetAspectRatio(float AspectRatio);
-    void Rotate(glm::vec3 Rotation);
+//     void SetAspectRatio(float AspectRatio);
+//     void Rotate(glm::vec3 Rotation);
 
-private:
+// private:
 
-    void UpdateCameraVectors();
+//     void UpdateCameraVectors();
 
 
-};
+// };
 
 
 
