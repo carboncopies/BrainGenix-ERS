@@ -371,7 +371,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         Viewport->Camera->SetAspectRatio(AspectRatio);
         glm::mat4 Projection;
         glm::mat4 View;
-        Camera->GetMatrices(Projection, View);
+        Viewport->Camera->GetMatrices(Projection, View);
         
 
 
