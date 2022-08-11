@@ -23,9 +23,9 @@ void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
     Roll_ = Rotation.z;
 
     glm::mat4 RotMatrix;
-    RotMatrix = glm::rotate(RotMatrix, glm::radians(Rotation[2]), glm::vec3(0, 0, 1));
-    RotMatrix = glm::rotate(RotMatrix, glm::radians(Rotation[1]), glm::vec3(0, 1, 0));
     RotMatrix = glm::rotate(RotMatrix, glm::radians(Rotation[0]), glm::vec3(1, 0, 0));
+    RotMatrix = glm::rotate(RotMatrix, glm::radians(Rotation[1]), glm::vec3(0, 1, 0));
+    RotMatrix = glm::rotate(RotMatrix, glm::radians(Rotation[2]), glm::vec3(0, 0, 1));
     Front_ = glm::normalize(glm::vec3(RotMatrix[2]));
 
     // Calculate Right, Up Vector
