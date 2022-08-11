@@ -104,6 +104,7 @@ public:
     void ProcessMouseScroll(float YOffset);
 
     void SetAspectRatio(float AspectRatio);
+    void Rotate(glm::vec3 Rotation);
 
 private:
 

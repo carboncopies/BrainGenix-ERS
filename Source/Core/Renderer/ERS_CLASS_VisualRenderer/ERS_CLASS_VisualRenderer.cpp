@@ -437,7 +437,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         // Update Camera Location If System Running
         if (!IsEditorMode_ && Index == 0 && Scene->ActiveSceneCameraIndex != -1) {
             Viewport->Camera->Position_ = Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Pos_;
-            Viewport->Camera->Front_ = Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Rot_;
+            Viewport->Camera->Rotate(Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Rot_);
             
         }
 
