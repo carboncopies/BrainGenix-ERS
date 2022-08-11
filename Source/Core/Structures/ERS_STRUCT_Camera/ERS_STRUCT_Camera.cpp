@@ -41,6 +41,10 @@ void ERS_STRUCT_Camera::Update(){
 	Pitch_	*= damp;
 	Yaw_		*= damp;
 	Roll_	*= rollDamp;
+
+	PerspectiveMatrix_ = perspectiveMatrix;	
+	ViewMatrix_ = glm::translate(glm::mat4_cast(orientation), Position_);;
+
 }
 
 
@@ -143,8 +147,11 @@ void ERS_STRUCT_Camera::SetMousePosition(float x, float y){
 }
 
 void ERS_STRUCT_Camera::GetMatrices(glm::mat4& perspective, glm::mat4& view){
-	perspective = perspectiveMatrix;	
-	view = glm::translate(glm::mat4_cast(orientation), Position_);;
+	// perspective = perspectiveMatrix;	
+	// view = glm::translate(glm::mat4_cast(orientation), Position_);;
+    (*perspective) = PerspectiveMatrix_;
+    (*view) = ViewMatrix_; 
+
 }
 
 // void ERS_STRUCT_Camera::GetDirectionVectors(glm::vec3 &Front, glm::vec3 &Right, glm::vec3 &Up) {
