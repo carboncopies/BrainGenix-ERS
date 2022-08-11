@@ -146,7 +146,6 @@ class ERS_STRUCT_Camera {
 		glm::vec3 yAxis = glm::vec3(0.0f, 1.0f, 0.0f);
 		glm::vec3 zAxis = glm::vec3(0.0f, 0.0f, 1.0f);
 
-		void rotate(float angle, const glm::vec3 &axis);
 
 	public:
 		ERS_STRUCT_Camera() = delete;
@@ -165,6 +164,8 @@ class ERS_STRUCT_Camera {
 		void ProcessKeyboard(CameraMovement td, float DeltaTime);
 		void ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch = true);		// control pitch and yaw
 		void ProcessMouseScroll(float YOffset);		// control roll
+		void Rotate(float angle, const glm::vec3 &axis);
+        void Rotate(glm::vec3 Rotation);
 
         // Todo
 		void Update(float delta = 1.0f);
@@ -197,9 +198,9 @@ ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov, int width, int height, float nea
 }
 
 void ERS_STRUCT_Camera::Update(float delta){		
-	if(pitch != 0.0f)		rotate(pitch, xAxis);
-	if(yaw != 0.0f)			rotate(yaw, yAxis);
-	if(roll != 0.0f)		rotate(roll, zAxis);
+	if(pitch != 0.0f)		Rotate(pitch, xAxis);
+	if(yaw != 0.0f)			Rotate(yaw, yAxis);
+	if(roll != 0.0f)		Rotate(roll, zAxis);
 	//
 	//// instead of setting to zero immediately, we have the value eventually go to zero.
 	pitch	*= damp;
@@ -207,8 +208,15 @@ void ERS_STRUCT_Camera::Update(float delta){
 	roll	*= rollDamp;
 }
 
-void ERS_STRUCT_Camera::rotate(float angle, const glm::vec3 &axis){
+
+void ERS_STRUCT_Camera::Rotate(float angle, const glm::vec3 &axis){
 	orientation *= glm::angleAxis(angle, axis * orientation);
+}
+
+void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
+    Rotate(Rotation[0], glm::vec3(1, 0, 0));
+    Rotate(Rotation[1], glm::vec3(0, 1, 0));
+    Rotate(Rotation[2], glm::vec3(0, 0, 1));
 }
 
 void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement td, float DeltaTime){
