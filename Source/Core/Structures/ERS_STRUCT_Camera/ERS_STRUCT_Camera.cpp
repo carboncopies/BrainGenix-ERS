@@ -106,7 +106,7 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset){
 	mousePosition.x = XOffset;
 	mousePosition.y = YOffset;
 
-    Update();
+
 }
 
 void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset){

@@ -111,7 +111,6 @@ enum CameraMovement {
 struct ERS_STRUCT_Camera {
     private:
 		void Rotate(float angle, const glm::vec3 &axis);
-		void Update();
 
         glm::mat4 PerspectiveMatrix_;
         glm::mat4 ViewMatrix_;
@@ -175,6 +174,7 @@ struct ERS_STRUCT_Camera {
 		void ProcessMouseScroll(float YOffset);		// control Roll_
         void Rotate(glm::vec3 Rotation);
 		void SetAspectRatio(float AspectRatio);
+		void Update();
 
         // Todo
 		void Zoom(ZoomState z);		
