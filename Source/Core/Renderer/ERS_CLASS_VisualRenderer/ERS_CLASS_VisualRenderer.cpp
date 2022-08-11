@@ -411,7 +411,13 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
                 Position = ActiveScene->SpotLights[Index]->Pos;        
                 Rotation = ActiveScene->SpotLights[Index]->Rot;    
                 HasRotation = true;    
+            } else if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("SceneCamera")) {
+                unsigned long Index = ActiveScene->SceneObjects_[SelectedObject].Index_;
+                Position = ActiveScene->SceneCameras[Index]->Pos_;        
+                Rotation = ActiveScene->SceneCameras[Index]->Rot_;    
+                HasRotation = true;    
             }
+
 
             // Set Cursor Position        
             Cursors3D_->SetLocRotScale(Position, Rotation, Scale, HasRotation, HasScale);
