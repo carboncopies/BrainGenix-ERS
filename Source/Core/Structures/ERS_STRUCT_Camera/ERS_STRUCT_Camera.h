@@ -161,6 +161,7 @@ struct ERS_STRUCT_Camera {
 		///<param name="Position_">The Position_ of the camera</param>
 		ERS_STRUCT_Camera(float fov, int width, int height, float near, float far);
 		ERS_STRUCT_Camera(float fov, int width, int height, float near, float far, glm::vec3 Position_);
+        ERS_STRUCT_Camera();
 		
 	
         // Done
@@ -193,6 +194,9 @@ ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov, int width, int height, float nea
 	perspectiveMatrix = glm::perspective(FOV_, aspect, nearClip, farClip);
 	mousePosition.x = width / 2.0f;
 	mousePosition.y = height / 2.0f;
+}
+ERS_STRUCT_Camera::ERS_STRUCT_Camera() {
+    ERS_STRUCT_Camera(70.0f, 128, 128, 0.01f, 100.0f);
 }
 
 void ERS_STRUCT_Camera::Update(float delta){		
