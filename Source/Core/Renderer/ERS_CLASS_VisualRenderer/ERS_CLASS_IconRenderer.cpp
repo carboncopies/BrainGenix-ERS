@@ -188,7 +188,7 @@ void ERS_CLASS_IconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneMana
         // FIXME: Make Lights a "Billboard" So they Rotate Towards The Camera
         // glm::vec3 ModelRotation = glm::normalize(CameraPosition - LightPosition);
 
-        glm::vec3 LampRotation = Scene->SpotLights[i]->Rot;
+        glm::vec3 LampRotation = Scene->SceneCameras[i]->Rot_;
         NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.x, glm::vec3(1, 0, 0));
         NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.y, glm::vec3(0, 1, 0));
         NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.z, glm::vec3(0, 0, 1));
