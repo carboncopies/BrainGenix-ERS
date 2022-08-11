@@ -14,8 +14,11 @@ glm::mat4 ERS_STRUCT_Camera::GetProjectionMatrix() {
 }
 
 void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
-    Front_ = Rotation;
-    UpdateCameraVectors();
+    Front_ = glm::normalize(Rotation);
+
+    // Calculate Right, Up Vector
+    Right_ = glm::normalize(glm::cross(Front_, WorldUp_));
+    Up_ = glm::normalize(glm::cross(Right_, Front_));
 }
 
 
