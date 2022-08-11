@@ -150,8 +150,6 @@ struct ERS_STRUCT_Camera {
 
 		float MovementSpeed_ = 0.2f;			// the linear travel speed of the camera
 
-		glm::mat4 perspectiveMatrix;
-		//glm::mat4 viewMatrix;	
 		
 		glm::vec3 xAxis = glm::vec3(1.0f, 0.0f, 0.0f);
 		glm::vec3 yAxis = glm::vec3(0.0f, 1.0f, 0.0f);

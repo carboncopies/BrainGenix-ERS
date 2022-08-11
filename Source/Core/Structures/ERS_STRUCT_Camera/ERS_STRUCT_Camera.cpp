@@ -24,7 +24,7 @@ ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov,  int width, int height, float ne
 ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov, int width, int height, float nearClip, float farClip, glm::vec3 Position)
 	: FOV_(fov), zoom(fov), aspect(float(width)/float(height)), nearClip(nearClip), farClip(farClip), Position_(Position){
 	
-	perspectiveMatrix = glm::perspective(FOV_, aspect, nearClip, farClip);
+	PerspectiveMatrix_ = glm::perspective(FOV_, aspect, nearClip, farClip);
 	mousePosition.x = width / 2.0f;
 	mousePosition.y = height / 2.0f;
 }
@@ -42,7 +42,7 @@ void ERS_STRUCT_Camera::Update(){
 	Yaw_		*= damp;
 	Roll_	*= rollDamp;
 
-	PerspectiveMatrix_ = perspectiveMatrix;	
+	PerspectiveMatrix_ = PerspectiveMatrix_;	
 	ViewMatrix_ = glm::translate(glm::mat4_cast(orientation), Position_);;
 
 }
@@ -131,12 +131,12 @@ void ERS_STRUCT_Camera::Zoom(ZoomState z){
 			}
 			break;
 	}
-	if(recalculatePerspective) perspectiveMatrix = glm::perspective(zoom, aspect, nearClip, farClip);
+	if(recalculatePerspective) PerspectiveMatrix_ = glm::perspective(zoom, aspect, nearClip, farClip);
 }
 
 void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio){ 
 	this->aspect = AspectRatio; 
-	perspectiveMatrix = glm::perspective(zoom, AspectRatio, nearClip, farClip);
+	PerspectiveMatrix_ = glm::perspective(zoom, AspectRatio, nearClip, farClip);
 }
 
 
@@ -147,7 +147,7 @@ void ERS_STRUCT_Camera::SetMousePosition(float x, float y){
 }
 
 void ERS_STRUCT_Camera::GetMatrices(glm::mat4& perspective, glm::mat4& view){
-	// perspective = perspectiveMatrix;	
+	// perspective = PerspectiveMatrix_;	
 	// view = glm::translate(glm::mat4_cast(orientation), Position_);;
     perspective = PerspectiveMatrix_;
     view = ViewMatrix_; 
