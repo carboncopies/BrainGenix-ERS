@@ -51,7 +51,6 @@ void ERS_STRUCT_Camera::Update(){
 	PerspectiveMatrix_ = glm::perspective(FOV_, aspect, nearClip, farClip);	
 	ViewMatrix_ = glm::translate(glm::mat4_cast(orientation), Position_);;
 
-    std::cout<<glm::to_string(PerspectiveMatrix_)<<"|"<<glm::to_string(ViewMatrix_)<<std::endl;
 
 }
 
@@ -162,6 +161,7 @@ void ERS_STRUCT_Camera::SetMousePosition(float x, float y){
 void ERS_STRUCT_Camera::GetMatrices(glm::mat4& perspective, glm::mat4& view){
 	// perspective = PerspectiveMatrix_;	
 	// view = glm::translate(glm::mat4_cast(orientation), Position_);;
+    Update();
     perspective = PerspectiveMatrix_;
     view = ViewMatrix_; 
 
