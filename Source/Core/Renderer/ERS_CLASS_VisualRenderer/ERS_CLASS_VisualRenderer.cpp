@@ -125,9 +125,13 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
         ERS_CLASS_InputProcessor* InputProcessorInstance = Viewports_[i]->Processor.get();
 
         bool CaptureEnabled = false;
-        if ((CaptureIndex_ == i) && (!Cursors3D_->IsUsing())) {
+        if ((CaptureIndex_ == i) && (!Cursors3D_->IsUsing())) {         
             CaptureEnabled = true;
         }
+        if (!IsEditorMode_ && i == 0) {
+            CaptureEnabled = false;
+        }
+
 
         // Update Viewport Camera/Position/Etc.
         InputProcessorInstance->ProcessKeyboardInput(DeltaTime, CaptureEnabled);
