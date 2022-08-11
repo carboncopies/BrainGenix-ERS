@@ -368,6 +368,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         // Update Camera
         float AspectRatio = (float)RenderWidth / (float)RenderHeight;
+        Viewport->Camera->Update();
         Viewport->Camera->SetAspectRatio(AspectRatio);
         glm::mat4 Projection;
         glm::mat4 View;
