@@ -49,7 +49,7 @@ void ERS_STRUCT_Scene::IndexSceneObjects() {
         ERS_STRUCT_SceneObject SceneObject;
         SceneObject.Type_ = std::string("SceneCamera");
         SceneObject.Index_ = i;
-        SceneObject.Label_ = std::string("[C] ") + SceneCameras[i]->Name;
+        SceneObject.Label_ = std::string("[C] ") + SceneCameras[i]->UserDefinedName_;
         SceneObjects_.push_back(SceneObject);
     }
     
