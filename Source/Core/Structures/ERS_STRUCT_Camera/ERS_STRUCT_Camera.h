@@ -111,6 +111,7 @@ enum CameraMovement {
 struct ERS_STRUCT_Camera {
     private:
 		void Rotate(float angle, const glm::vec3 &axis);
+		void Update();
 
 	public:
 
@@ -169,13 +170,12 @@ struct ERS_STRUCT_Camera {
 	
         // Done
 		void ProcessKeyboard(CameraMovement Direction, float DeltaTime);
-		void ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch = true);		// control pitch and yaw
+		void ProcessMouseMovement(float XOffset, float YOffset);		// control pitch and yaw
 		void ProcessMouseScroll(float YOffset);		// control Roll_
         void Rotate(glm::vec3 Rotation);
 		void SetAspectRatio(float AspectRatio);
 
         // Todo
-		void Update(float delta = 1.0f);
 		void Zoom(ZoomState z);		
 
 
@@ -201,7 +201,7 @@ ERS_STRUCT_Camera::ERS_STRUCT_Camera(glm::vec3 Position) {
     ERS_STRUCT_Camera(70.0f, 128, 128, 0.01f, 100.0f, Position);
 }
 
-void ERS_STRUCT_Camera::Update(float delta){		
+void ERS_STRUCT_Camera::Update(){		
 	if(Pitch_ != 0.0f)		Rotate(Pitch_, xAxis);
 	if(Yaw_ != 0.0f)			Rotate(Yaw_, yAxis);
 	if(Roll_ != 0.0f)		Rotate(Roll_, zAxis);
@@ -256,7 +256,7 @@ void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement td, float DeltaTime){
 	}
 }
 
-void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch){
+void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset){
 	// updateing yaw
 	Yaw_ += (XOffset - mousePosition.x) * mouseSenstivitiy;
 	if(Yaw_ > twoPI) Yaw_ -= twoPI;
