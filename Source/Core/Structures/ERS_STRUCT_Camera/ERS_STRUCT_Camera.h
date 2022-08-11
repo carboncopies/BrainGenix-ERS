@@ -164,7 +164,7 @@ struct ERS_STRUCT_Camera {
 		
 	
         // Done
-		void ProcessKeyboard(CameraMovement td, float DeltaTime);
+		void ProcessKeyboard(CameraMovement Direction, float DeltaTime);
 		void ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch = true);		// control pitch and yaw
 		void ProcessMouseScroll(float YOffset);		// control roll
 		void Rotate(float angle, const glm::vec3 &axis);
@@ -178,12 +178,6 @@ struct ERS_STRUCT_Camera {
 
 		void SetMousePosition(float x, float y);
 		void GetMatrices(glm::mat4& perspective, glm::mat4& view);
-
-
-        // Proces Keyboard Input
-        void ProcessKeyboard(CameraMovement Direction, float DeltaTime);
-
-
 
 };
 
