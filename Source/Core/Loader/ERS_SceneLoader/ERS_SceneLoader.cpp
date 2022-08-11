@@ -267,6 +267,58 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 }
             }
 
+        } else if (AssetType == std::string("SceneCamera")) {
+
+            // Setup Model Pointer In Scene To Work On
+            Scene.SceneCameras.push_back(std::make_unique<ERS_STRUCT_SceneCamera>());
+            int LightIndex = Scene.SpotLights.size() - 1;
+
+            Scene.SpotLights[LightIndex]->UserDefinedName = AssetName;
+
+            if (SceneDataNode[i]["Intensity"]) {
+                Scene.SpotLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
+            }
+            if (SceneDataNode[i]["MaxDistance"]) {
+                Scene.SpotLights[LightIndex]->MaxDistance = SceneDataNode[i]["MaxDistance"].as<float>();
+            }
+            Scene.SpotLights[LightIndex]->CutOff = SceneDataNode[i]["CutOff"].as<float>();
+
+            if (SceneDataNode[i]["RollOff"]) {
+                Scene.SpotLights[LightIndex]->Rolloff = SceneDataNode[i]["RollOff"].as<float>();
+            }
+            if (SceneDataNode[i]["ColorRed"] && SceneDataNode[i]["ColorGreen"] && SceneDataNode[i]["ColorBlue"]) {
+                Scene.SpotLights[LightIndex]->Color = glm::vec3(
+                    SceneDataNode[i]["ColorRed"].as<float>(),
+                    SceneDataNode[i]["ColorGreen"].as<float>(),
+                    SceneDataNode[i]["ColorBlue"].as<float>()
+                    );
+            }
+
+
+            Scene.SpotLights[LightIndex]->Pos = glm::vec3(
+                SceneDataNode[i]["PosX"].as<float>(),
+                SceneDataNode[i]["PosY"].as<float>(),
+                SceneDataNode[i]["PosZ"].as<float>()
+                );
+            Scene.SpotLights[LightIndex]->Rot = glm::vec3(
+                SceneDataNode[i]["RotX"].as<float>(),
+                SceneDataNode[i]["RotY"].as<float>(),
+                SceneDataNode[i]["RotZ"].as<float>()
+                );
+
+
+            if (SceneDataNode[i]["CastShadows"]) {
+                Scene.SpotLights[LightIndex]->CastsShadows_ = SceneDataNode[i]["CastShadows"].as<bool>();
+            }
+
+            // Load Attached Scripts
+            if (SceneDataNode[i]["AttachedScripts"]) {
+                YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
+                for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
+                    Scene.SpotLights[LightIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
+                }
+            }
+
         } else {
             SystemUtils_->Logger_->Log(std::string("Unsupported/Unknown Asset Type: ") + AssetType, 9);
         }
