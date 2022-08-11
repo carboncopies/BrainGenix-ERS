@@ -217,7 +217,7 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             SpotLights.push_back(Scene->SceneObjects_[i]);
             SpotLightIndexes.push_back(i);
         } else if (Scene->SceneObjects_[i].Type_ == "SceneCamera") {
-            SceneCamera.push_back(Scene->SceneObjects_[i]);
+            SceneCameras.push_back(Scene->SceneObjects_[i]);
             SceneCameraIndexes.push_back(i);
         }
 
