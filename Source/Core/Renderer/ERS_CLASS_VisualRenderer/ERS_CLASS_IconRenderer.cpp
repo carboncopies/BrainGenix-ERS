@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_CLASS_LightIconRenderer.h>
+#include <ERS_CLASS_IconRenderer.h>
 
 
 
