@@ -34,7 +34,7 @@ ERS_STRUCT_Camera::ERS_STRUCT_Camera(glm::vec3 Position) {
 
 void ERS_STRUCT_Camera::Update(){		
 
-    std::cout<<glm::to_string(Position_)<<std::endl;
+    
 
     orientation = glm::quat();
 
@@ -50,6 +50,8 @@ void ERS_STRUCT_Camera::Update(){
 
 	PerspectiveMatrix_ = glm::perspective(FOV_, aspect, nearClip, farClip);	
 	ViewMatrix_ = glm::translate(glm::mat4_cast(orientation), Position_);;
+
+    std::cout<<glm::to_string(PerspectiveMatrix_)<<"|"<<glm::to_string(ViewMatrix_)<<std::endl;
 
 }
 
