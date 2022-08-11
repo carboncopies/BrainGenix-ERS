@@ -128,27 +128,27 @@ void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset){
 }
 
 void ERS_STRUCT_Camera::Zoom(ZoomState z){
-	bool recalculatePerspective = true;
-	switch(z){
-		case ZoomState::_IN:
-			if((zoom -= zoomDelta) < 0){ 
-				zoom = 0;
-				recalculatePerspective = false;
-			}
-			break;
-		case ZoomState::_OUT:
-			if((zoom += zoomDelta) > FOV_){
-				zoom = FOV_;
-				recalculatePerspective = false;
-			}
-			break;
-	}
-	if(recalculatePerspective) PerspectiveMatrix_ = glm::perspective(zoom, aspect, nearClip, farClip);
+	// bool recalculatePerspective = true;
+	// switch(z){
+	// 	case ZoomState::_IN:
+	// 		if((zoom -= zoomDelta) < 0){ 
+	// 			zoom = 0;
+	// 			recalculatePerspective = false;
+	// 		}
+	// 		break;
+	// 	case ZoomState::_OUT:
+	// 		if((zoom += zoomDelta) > FOV_){
+	// 			zoom = FOV_;
+	// 			recalculatePerspective = false;
+	// 		}
+	// 		break;
+	// }
+	// if(recalculatePerspective) PerspectiveMatrix_ = glm::perspective(zoom, aspect, nearClip, farClip);
 }
 
 void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio){ 
 	this->aspect = AspectRatio; 
-	PerspectiveMatrix_ = glm::perspective(zoom, AspectRatio, nearClip, farClip);
+	PerspectiveMatrix_ = glm::perspective(FOV_, AspectRatio, nearClip, farClip);
 }
 
 
