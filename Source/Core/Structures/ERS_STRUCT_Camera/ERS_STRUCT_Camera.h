@@ -109,6 +109,9 @@ private:
 
 
 struct ERS_STRUCT_Camera {
+    private:
+		void Rotate(float angle, const glm::vec3 &axis);
+
 	public:
 
         // Asset Streaming Config
@@ -136,9 +139,9 @@ struct ERS_STRUCT_Camera {
 		float damp				= 0.8f;			// a value to damp the camera rotational speed
 
 		// the angles to rotate the camera by.
-		float yaw	= 0.0f;						// rotate about the y axis
-		float pitch	= 0.0f;						// rotate about the x axis
-		float roll	= 0.0f;						// rotate about the z axis
+		float Yaw_	= 0.0f;						// rotate about the y axis
+		float Pitch_	= 0.0f;						// rotate about the x axis
+		float Roll_	= 0.0f;						// rotate about the z axis
 		float twoPI = glm::two_pi<float>();		// check radian bound
 
 		float MovementSpeed_ = 0.2f;			// the linear travel speed of the camera
@@ -167,8 +170,7 @@ struct ERS_STRUCT_Camera {
         // Done
 		void ProcessKeyboard(CameraMovement Direction, float DeltaTime);
 		void ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch = true);		// control pitch and yaw
-		void ProcessMouseScroll(float YOffset);		// control roll
-		void Rotate(float angle, const glm::vec3 &axis);
+		void ProcessMouseScroll(float YOffset);		// control Roll_
         void Rotate(glm::vec3 Rotation);
 		void SetAspectRatio(float AspectRatio);
 
@@ -200,14 +202,14 @@ ERS_STRUCT_Camera::ERS_STRUCT_Camera() {
 }
 
 void ERS_STRUCT_Camera::Update(float delta){		
-	if(pitch != 0.0f)		Rotate(pitch, xAxis);
-	if(yaw != 0.0f)			Rotate(yaw, yAxis);
-	if(roll != 0.0f)		Rotate(roll, zAxis);
+	if(Pitch_ != 0.0f)		Rotate(Pitch_, xAxis);
+	if(Yaw_ != 0.0f)			Rotate(Yaw_, yAxis);
+	if(Roll_ != 0.0f)		Rotate(Roll_, zAxis);
 	//
 	//// instead of setting to zero immediately, we have the value eventually go to zero.
-	pitch	*= damp;
-	yaw		*= damp;
-	roll	*= rollDamp;
+	Pitch_	*= damp;
+	Yaw_		*= damp;
+	Roll_	*= rollDamp;
 }
 
 
@@ -217,8 +219,12 @@ void ERS_STRUCT_Camera::Rotate(float angle, const glm::vec3 &axis){
 
 void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
     Rotate(Rotation[0], glm::vec3(1, 0, 0));
+    Yaw_ = Rotation[0];
     Rotate(Rotation[1], glm::vec3(0, 1, 0));
+    Pitch_ = Rotation[1];
     Rotate(Rotation[2], glm::vec3(0, 0, 1));
+    Roll_ = Rotation[2];
+
 }
 
 void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement td, float DeltaTime){
@@ -252,23 +258,23 @@ void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement td, float DeltaTime){
 
 void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch){
 	// updateing yaw
-	yaw += (XOffset - mousePosition.x) * mouseSenstivitiy;
-	if(yaw > twoPI) yaw -= twoPI;
-	else if(yaw < -twoPI) yaw += twoPI;
+	Yaw_ += (XOffset - mousePosition.x) * mouseSenstivitiy;
+	if(Yaw_ > twoPI) Yaw_ -= twoPI;
+	else if(Yaw_ < -twoPI) Yaw_ += twoPI;
 
-	// updateing pitch
-	pitch += (YOffset - mousePosition.y) * mouseSenstivitiy;
-	if(pitch > twoPI) pitch -= twoPI;
-	else if(pitch < -twoPI) pitch += twoPI;
+	// updateing Pitch_
+	Pitch_ += (YOffset - mousePosition.y) * mouseSenstivitiy;
+	if(Pitch_ > twoPI) Pitch_ -= twoPI;
+	else if(Pitch_ < -twoPI) Pitch_ += twoPI;
 
 	mousePosition.x = XOffset;
 	mousePosition.y = YOffset;
 }
 
 void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset){
-	roll -= YOffset * ROLL_ANGLE;	
-	if(roll > twoPI) roll -= twoPI;
-	else if(roll < -twoPI) roll += twoPI;
+	Roll_ -= YOffset * ROLL_ANGLE;	
+	if(Roll_ > twoPI) Roll_ -= twoPI;
+	else if(Roll_ < -twoPI) Roll_ += twoPI;
 }
 
 void ERS_STRUCT_Camera::Zoom(ZoomState z){
