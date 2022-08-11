@@ -110,8 +110,9 @@ void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUC
     }
 
     BoundingBoxRendererShader_->MakeActive();
-    glm::mat4 View = Camera->GetViewMatrix();
-    glm::mat4 Projection = Camera->GetProjectionMatrix();
+    glm::mat4 Projection;
+    glm::mat4 View;
+    Camera->GetMatrices(Projection, View);
 
     
     for (unsigned int i = 0; i < Scene->Models.size(); i++) {
@@ -180,8 +181,9 @@ void ERS_CLASS_BoundingBoxRenderer::DrawModel(ERS_STRUCT_Camera* Camera, ERS_STR
     }
 
     BoundingBoxRendererShader_->MakeActive();
-    glm::mat4 View = Camera->GetViewMatrix();
-    glm::mat4 Projection = Camera->GetProjectionMatrix();
+    glm::mat4 Projection;
+    glm::mat4 View;
+    Camera->GetMatrices(Projection, View);
 
 
     // Calculate Model Matrix For The Bounding Box
