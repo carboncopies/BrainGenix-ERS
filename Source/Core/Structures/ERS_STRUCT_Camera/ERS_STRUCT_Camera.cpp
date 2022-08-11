@@ -14,7 +14,7 @@ glm::mat4 ERS_STRUCT_Camera::GetProjectionMatrix() {
 }
 
 void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
-    Front = Rotation;
+    Front_ = Rotation;
     UpdateCameraVectors();
 }
 
