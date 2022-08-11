@@ -41,10 +41,7 @@ public:
     // Asset Streaming Config
     int Priority_ = 1; // Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)
 
-    // Euler Angles
-    float Yaw_ = 0.0f;
-    float Pitch_ = 0.0f;
-    float Roll_ = 0.0f;
+    glm::quat Orientation_; 
 
     // Camera Options
     double MovementSpeed_;
@@ -68,30 +65,10 @@ public:
         // Set Params
         Position = Position;
         WorldUp_ = Up;
-        Yaw_ = Yaw;
-        Pitch_ = Pitch;
         UpdateCameraVectors();
         
     }
 
-    // Constructor With Scalar Values
-    ERS_STRUCT_Camera(float PosX,
-                                float PosY,
-                                float PosZ,
-                                float UpX,
-                                float UpY,
-                                float UpZ,
-                                float Yaw,
-                                float Pitch) : Front_(glm::vec3(0.0f, 0.0f, -1.0f)),
-                                MovementSpeed_(1.0f),
-                                MouseSensitivity_(0.1f),
-                                FOV_(45.0f) {
-        Position_ = glm::vec3(PosX, PosY, PosZ);
-        WorldUp_ = glm::vec3(UpX, UpY, UpZ);
-        Yaw_ = Yaw;
-        Pitch_ = Pitch;
-        UpdateCameraVectors();
-    }
 
     // Return View Matrix
     glm::mat4 GetViewMatrix();

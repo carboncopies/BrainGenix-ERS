@@ -8,6 +8,8 @@
 //fixme: implement support for roll in the camera, currently it ignores this./
 // suspects include GetViewMatrix or GetProjectionMatrix. These might be ignoring this, try googling it?
 
+
+
 glm::mat4 ERS_STRUCT_Camera::GetViewMatrix() {
     glm::mat4 Output = glm::lookAt(Position_, Position_ + Front_, Up_);
     std::cout<<glm::to_string(Output)<<std::endl;
