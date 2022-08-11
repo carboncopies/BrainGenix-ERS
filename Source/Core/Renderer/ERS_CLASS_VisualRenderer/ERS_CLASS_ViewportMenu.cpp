@@ -111,6 +111,18 @@ void ERS_CLASS_ViewportMenu::AddScene() {
 
 }
 
+void ERS_CLASS_ViewportMenu::AddSceneCamera() {
+
+    std::shared_ptr<ERS_STRUCT_SceneCamera> SceneCamera = std::make_shared<ERS_STRUCT_SceneCamera>();
+    ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+
+    SceneCamera->UserDefinedName_ = "New Camera";
+
+    Scene->SceneCameras.push_back(SceneCamera);
+    Scene->IndexSceneObjects();
+
+}
+
 
 void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_ShadowMaps* ShadowMaps) {
 
