@@ -268,7 +268,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
     // Get Vars
     ERS_STRUCT_Viewport* Viewport = Viewports_[Index].get();
-    ERS_STRUCT_Scene* Scene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
+    ERS_STRUCT_Scene* Scene = Scene.get();
 
     // Render To ImGui
     ImGuiWindowFlags Flags = ImGuiWindowFlags_None;
@@ -382,14 +382,13 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
         // Update Cursor If Selection Changed
-        ERS_STRUCT_Scene* ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
-        if (ActiveScene->HasSelectionChanged && DrawCursor && (ActiveScene->SceneObjects_.size() != 0)) {
+        if (Scene->HasSelectionChanged && DrawCursor && (Scene->SceneObjects_.size() != 0)) {
 
             // Get Selected Model
-            int SelectedObject = ActiveScene->SelectedObject;
-            if ((unsigned int)SelectedObject >= ActiveScene->SceneObjects_.size()) {
+            int SelectedObject = Scene->SelectedObject;
+            if ((unsigned int)SelectedObject >= Scene->SceneObjects_.size()) {
                 SelectedObject = 0;
-                ActiveScene->SelectedObject = 0;
+                Scene->SelectedObject = 0;
             }
 
             // Get LocRotScale
@@ -399,30 +398,30 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             bool HasRotation = false;
             bool HasScale = false;
 
-            if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("Model")) {
-                unsigned long ModelIndex = ActiveScene->SceneObjects_[SelectedObject].Index_;
-                Position = ActiveScene->Models[ModelIndex]->ModelPosition;        
-                Rotation = ActiveScene->Models[ModelIndex]->ModelRotation;        
-                Scale = ActiveScene->Models[ModelIndex]->ModelScale;                
+            if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("Model")) {
+                unsigned long ModelIndex = Scene->SceneObjects_[SelectedObject].Index_;
+                Position = Scene->Models[ModelIndex]->ModelPosition;        
+                Rotation = Scene->Models[ModelIndex]->ModelRotation;        
+                Scale = Scene->Models[ModelIndex]->ModelScale;                
                 HasRotation = true;
                 HasScale = true;
-            } else if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("PointLight")) {
-                unsigned long Index = ActiveScene->SceneObjects_[SelectedObject].Index_;
-                Position = ActiveScene->PointLights[Index]->Pos;        
-            } else if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("DirectionalLight")) {
-                unsigned long Index = ActiveScene->SceneObjects_[SelectedObject].Index_;
-                Position = ActiveScene->DirectionalLights[Index]->Pos;        
-                Rotation = ActiveScene->DirectionalLights[Index]->Rot;    
+            } else if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("PointLight")) {
+                unsigned long Index = Scene->SceneObjects_[SelectedObject].Index_;
+                Position = Scene->PointLights[Index]->Pos;        
+            } else if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("DirectionalLight")) {
+                unsigned long Index = Scene->SceneObjects_[SelectedObject].Index_;
+                Position = Scene->DirectionalLights[Index]->Pos;        
+                Rotation = Scene->DirectionalLights[Index]->Rot;    
                 HasRotation = true;    
-            } else if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("SpotLight")) {
-                unsigned long Index = ActiveScene->SceneObjects_[SelectedObject].Index_;
-                Position = ActiveScene->SpotLights[Index]->Pos;        
-                Rotation = ActiveScene->SpotLights[Index]->Rot;    
+            } else if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("SpotLight")) {
+                unsigned long Index = Scene->SceneObjects_[SelectedObject].Index_;
+                Position = Scene->SpotLights[Index]->Pos;        
+                Rotation = Scene->SpotLights[Index]->Rot;    
                 HasRotation = true;    
-            } else if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("SceneCamera")) {
-                unsigned long Index = ActiveScene->SceneObjects_[SelectedObject].Index_;
-                Position = ActiveScene->SceneCameras[Index]->Pos_;        
-                Rotation = ActiveScene->SceneCameras[Index]->Rot_;    
+            } else if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("SceneCamera")) {
+                unsigned long Index = Scene->SceneObjects_[SelectedObject].Index_;
+                Position = Scene->SceneCameras[Index]->Pos_;        
+                Rotation = Scene->SceneCameras[Index]->Rot_;    
                 HasRotation = true;    
             }
 
@@ -431,13 +430,15 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             Cursors3D_->SetLocRotScale(Position, Rotation, Scale, HasRotation, HasScale);
 
             // Indicate Selection Hasn't Changed
-            ActiveScene->HasSelectionChanged = false;
+            Scene->HasSelectionChanged = false;
         }
 
 
         // Update Camera Location If System Running
-        if (IsEditorMode_ && Index == 0) {
-            Viewport->Camera->Position_ = 
+        if (IsEditorMode_ && Index == 0 && Scene->ActiveSceneCameraIndex != -1) {
+            Viewport->Camera->Position_ = Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Pos_;
+            Viewport->Camera->Front_ = Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Rot_;
+            
         }
 
 
@@ -446,7 +447,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         for (unsigned int i = 0; i < Shaders_.size(); i++) {
             ShaderPointers.push_back(Shaders_[i].get());
         }
-        MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, ShaderPointers, ShaderIndex, *ShaderUniformData_);
+        MeshRenderer_->RenderScene(Scene, OpenGLDefaults_, ShaderPointers, ShaderIndex, *ShaderUniformData_);
 
 
         if (Viewport->GridEnabled) {
@@ -459,12 +460,12 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         Viewport->BoundingBoxRenderer->SetDepthTest(Viewport->DisableBoundingBoxDepthTest_);
         Viewport->BoundingBoxRenderer->SetDrawMode(Viewport->WireframeBoundingBoxes_);
         if (Viewport->ShowBoundingBox_) {
-            Viewport->BoundingBoxRenderer->DrawAll(Viewport->Camera.get(), ActiveScene);
+            Viewport->BoundingBoxRenderer->DrawAll(Viewport->Camera.get(), Scene);
         }
-        if (ActiveScene->SceneObjects_.size() > 0) {
-            if (Viewport->ShowBoxOnSelectedModel_ && ActiveScene->SceneObjects_[ActiveScene->SelectedObject].Type_ == std::string("Model")) {
-                unsigned long ModelIndex = ActiveScene->SceneObjects_[ActiveScene->SelectedObject].Index_;
-                Viewport->BoundingBoxRenderer->DrawModel(Viewport->Camera.get(), ActiveScene->Models[ModelIndex].get());
+        if (Scene->SceneObjects_.size() > 0) {
+            if (Viewport->ShowBoxOnSelectedModel_ && Scene->SceneObjects_[Scene->SelectedObject].Type_ == std::string("Model")) {
+                unsigned long ModelIndex = Scene->SceneObjects_[Scene->SelectedObject].Index_;
+                Viewport->BoundingBoxRenderer->DrawModel(Viewport->Camera.get(), Scene->Models[ModelIndex].get());
             }
         }
 
