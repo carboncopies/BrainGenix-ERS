@@ -94,15 +94,25 @@ void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement td, float DeltaTime){
 }
 
 void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset){
-	// updateing yaw
-	Yaw_ += (XOffset - mousePosition.x) * mouseSenstivitiy;
-	if(Yaw_ > twoPI) Yaw_ -= twoPI;
-	else if(Yaw_ < -twoPI) Yaw_ += twoPI;
+	// // updateing yaw
+	// Yaw_ += (XOffset - mousePosition.x) * mouseSenstivitiy;
+	// if(Yaw_ > twoPI) Yaw_ -= twoPI;
+	// else if(Yaw_ < -twoPI) Yaw_ += twoPI;
 
-	// updateing Pitch_
-	Pitch_ += (YOffset - mousePosition.y) * mouseSenstivitiy;
-	if(Pitch_ > twoPI) Pitch_ -= twoPI;
-	else if(Pitch_ < -twoPI) Pitch_ += twoPI;
+	// // updateing Pitch_
+	// Pitch_ += (YOffset - mousePosition.y) * mouseSenstivitiy;
+	// if(Pitch_ > twoPI) Pitch_ -= twoPI;
+	// else if(Pitch_ < -twoPI) Pitch_ += twoPI;
+
+
+    // Change Offset By Sensitivity
+    XOffset *= 0.1f;
+    YOffset *= 0.1f;
+
+    // Update Pitch/Yaw
+    Yaw_ += XOffset;
+    Pitch_ -= YOffset;
+
 
 	mousePosition.x = XOffset;
 	mousePosition.y = YOffset;
