@@ -45,7 +45,7 @@ void ERS_STRUCT_Camera::Update(){
 
 
 void ERS_STRUCT_Camera::Rotate(float angle, const glm::vec3 &axis){
-	orientation *= glm::angleAxis(angle, axis * orientation);
+	orientation *= glm::angleAxis(glm::radians(angle), axis * orientation);
 }
 
 void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
