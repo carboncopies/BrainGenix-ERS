@@ -113,6 +113,9 @@ struct ERS_STRUCT_Camera {
 		void Rotate(float angle, const glm::vec3 &axis);
 		void Update();
 
+        glm::mat4 PerspectiveMatrix_;
+        glm::mat4 ViewMatrix_;
+
 	public:
 
         // Asset Streaming Config
