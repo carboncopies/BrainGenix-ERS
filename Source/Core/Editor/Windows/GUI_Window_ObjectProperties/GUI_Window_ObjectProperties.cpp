@@ -291,6 +291,8 @@ void GUI_Window_ObjectProperties::Draw() {
                         ScriptIndices_ = &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->AttachedScriptIndexes_;     
                     } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("SpotLight")) {
                         ScriptIndices_ = &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->AttachedScriptIndexes_;     
+                    } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("SceneCamera")) {
+                        ScriptIndices_ = &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneCameras[Index]->AttachedScriptIndexes_;     
                     }
 
                     // Draw List Box
