@@ -456,7 +456,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
         if (Viewport->GridEnabled) {
-            Viewport->Grid->DrawGrid(view, projection, Viewport->Camera->Position_);
+            Viewport->Grid->DrawGrid(View, Projection, Viewport->Camera->Position_);
         }
         if (Viewport->LightIcons) {
             Viewport->IconRenderer->Draw(Viewport->Camera.get(), SceneManager);
