@@ -108,8 +108,12 @@ private:
 
 
 
-class ERS_STRUCT_Camera {
-	private:
+struct ERS_STRUCT_Camera {
+	public:
+
+        // Asset Streaming Config
+        int Priority_ = 1; // Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)
+
 		float FOV;
 		float zoom;
 		float zoomDelta	= glm::radians(1.0f);	
@@ -118,7 +122,7 @@ class ERS_STRUCT_Camera {
 		float nearClip;
 		float farClip;
 
-		glm::vec3 position;
+		glm::vec3 Position_;
 				
 		glm::quat orientation;					// store rotation and orientation data
 
@@ -147,17 +151,16 @@ class ERS_STRUCT_Camera {
 		glm::vec3 zAxis = glm::vec3(0.0f, 0.0f, 1.0f);
 
 
-	public:
-		ERS_STRUCT_Camera() = delete;
+		//ERS_STRUCT_Camera() = delete;
 
 		///<param name="FOV">The vertical Field of View. In radians</param>
 		///<param name="windowWidth">The width of the display window</param>
 		///<param name="windowHeight">The height of the display window</param>
 		///<param name="near">The near-clipping plane</param>
 		///<param name="far">The far-clipping plane</param>
-		///<param name="position">The position of the camera</param>
+		///<param name="Position_">The Position_ of the camera</param>
 		ERS_STRUCT_Camera(float fov, int width, int height, float near, float far);
-		ERS_STRUCT_Camera(float fov, int width, int height, float near, float far, glm::vec3 position);
+		ERS_STRUCT_Camera(float fov, int width, int height, float near, float far, glm::vec3 Position_);
 		
 	
         // Done
@@ -166,12 +169,12 @@ class ERS_STRUCT_Camera {
 		void ProcessMouseScroll(float YOffset);		// control roll
 		void Rotate(float angle, const glm::vec3 &axis);
         void Rotate(glm::vec3 Rotation);
+		void SetAspectRatio(float AspectRatio);
 
         // Todo
 		void Update(float delta = 1.0f);
 		void Zoom(ZoomState z);		
 
-		void SetAspectRatio(float AspectRatio);
 
 		void SetMousePosition(float x, float y);
 		void GetMatrices(glm::mat4& perspective, glm::mat4& view);
@@ -189,8 +192,8 @@ class ERS_STRUCT_Camera {
 ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov,  int width, int height, float nearClip, float farClip)  
 	: ERS_STRUCT_Camera(fov, width, height, nearClip, farClip, glm::vec3(0.0f, 0.0f, 1.0f))
 {}
-ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov, int width, int height, float nearClip, float farClip, glm::vec3 position)
-	: FOV(fov), zoom(fov), aspect(float(width)/float(height)), nearClip(nearClip), farClip(farClip), position(position){
+ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov, int width, int height, float nearClip, float farClip, glm::vec3 Position_)
+	: FOV(fov), zoom(fov), aspect(float(width)/float(height)), nearClip(nearClip), farClip(farClip), Position_(Position_){
 	
 	perspectiveMatrix = glm::perspective(FOV, aspect, nearClip, farClip);
 	mousePosition.x = width / 2.0f;
@@ -222,28 +225,28 @@ void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
 void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement td, float DeltaTime){
 
 
-	// basically, translating the position vector
+	// basically, translating the Position_ vector
     float Velocity = MovementSpeed_ * DeltaTime;
 
 	glm::vec3 temp;
 	switch(td){
 		case CameraMovement::UP:
-			position -= glm::vec3(0.0f, Velocity, 0.0f) * orientation;
+			Position_ -= glm::vec3(0.0f, Velocity, 0.0f) * orientation;
 			break;
 		case CameraMovement::DOWN:
-			position += glm::vec3(0.0f, Velocity, 0.0f) * orientation;
+			Position_ += glm::vec3(0.0f, Velocity, 0.0f) * orientation;
 			break;
 		case CameraMovement::LEFT:
-			position += glm::vec3(Velocity, 0.0f, 0.0f) * orientation;
+			Position_ += glm::vec3(Velocity, 0.0f, 0.0f) * orientation;
 			break;
 		case CameraMovement::RIGHT:
-			position -= glm::vec3(Velocity, 0.0f, 0.0f) * orientation;
+			Position_ -= glm::vec3(Velocity, 0.0f, 0.0f) * orientation;
 			break;
 		case CameraMovement::FORWARD:
-			position += glm::vec3(0.0f, 0.0f, Velocity) * orientation;
+			Position_ += glm::vec3(0.0f, 0.0f, Velocity) * orientation;
 			break;
 		case CameraMovement::BACKWARD:
-			position -= glm::vec3(0.0f, 0.0f, Velocity) * orientation;
+			Position_ -= glm::vec3(0.0f, 0.0f, Velocity) * orientation;
 			break;
 	}
 }
@@ -294,7 +297,7 @@ void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio){
 }
 
 
-// ideally you want to set the mouse position to the center of the scene
+// ideally you want to set the mouse Position_ to the center of the scene
 void ERS_STRUCT_Camera::SetMousePosition(float x, float y){ 
 	mousePosition.x = x;
 	mousePosition.y = y;
@@ -302,5 +305,5 @@ void ERS_STRUCT_Camera::SetMousePosition(float x, float y){
 
 void ERS_STRUCT_Camera::GetMatrices(glm::mat4& perspective, glm::mat4& view){
 	perspective = perspectiveMatrix;	
-	view = glm::translate(glm::mat4_cast(orientation), position);;
+	view = glm::translate(glm::mat4_cast(orientation), Position_);;
 }
