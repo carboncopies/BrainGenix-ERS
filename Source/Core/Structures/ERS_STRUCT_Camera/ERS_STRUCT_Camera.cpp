@@ -22,9 +22,9 @@ ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov,  int width, int height, float ne
 	: ERS_STRUCT_Camera(fov, width, height, nearClip, farClip, glm::vec3(0.0f, 0.0f, 1.0f))
 {}
 ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov, int width, int height, float nearClip, float farClip, glm::vec3 Position)
-	: FOV_(fov), zoom(fov), aspect(float(width)/float(height)), nearClip(nearClip), farClip(farClip), Position_(Position){
+	: FOV_(fov), zoom(fov), AspectRatio_(float(width)/float(height)), NearClip_(nearClip), FarClip_(farClip), Position_(Position){
 	
-	PerspectiveMatrix_ = glm::perspective(FOV_, aspect, nearClip, farClip);
+	PerspectiveMatrix_ = glm::perspective(FOV_, AspectRatio_, nearClip, farClip);
 	mousePosition.x = width / 2.0f;
 	mousePosition.y = height / 2.0f;
 }
@@ -48,7 +48,7 @@ void ERS_STRUCT_Camera::Update(){
 	// Roll_	*= rollDamp;
 
 
-	PerspectiveMatrix_ = glm::perspective(FOV_, aspect, nearClip, farClip);	
+	PerspectiveMatrix_ = glm::perspective(FOV_, AspectRatio_, NearClip_, FarClip_);	
 	ViewMatrix_ = glm::translate(glm::mat4_cast(orientation), Position_);;
 
 
@@ -147,16 +147,16 @@ void ERS_STRUCT_Camera::Zoom(ZoomState z){
 }
 
 void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio){ 
-	this->aspect = AspectRatio; 
-	PerspectiveMatrix_ = glm::perspective(FOV_, AspectRatio, nearClip, farClip);
+	AspectRatio_ = AspectRatio; 
+	PerspectiveMatrix_ = glm::perspective(FOV_, AspectRatio, NearClip_, FarClip_);
 }
 
 
-// ideally you want to set the mouse Position_ to the center of the scene
-void ERS_STRUCT_Camera::SetMousePosition(float x, float y){ 
-	mousePosition.x = x;
-	mousePosition.y = y;
-}
+// // ideally you want to set the mouse Position_ to the center of the scene
+// void ERS_STRUCT_Camera::SetMousePosition(float x, float y){ 
+// 	mousePosition.x = x;
+// 	mousePosition.y = y;
+// }
 
 void ERS_STRUCT_Camera::GetMatrices(glm::mat4& perspective, glm::mat4& view){
 	// perspective = PerspectiveMatrix_;	

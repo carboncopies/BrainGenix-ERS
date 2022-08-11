@@ -115,6 +115,10 @@ struct ERS_STRUCT_Camera {
         glm::mat4 PerspectiveMatrix_;
         glm::mat4 ViewMatrix_;
 
+        float AspectRatio_;
+		float NearClip_;
+		float FarClip_;
+
 	public:
 
         // Asset Streaming Config
@@ -124,9 +128,7 @@ struct ERS_STRUCT_Camera {
 		float zoom;
 		float zoomDelta	= glm::radians(1.0f);	
 
-		float aspect;
-		float nearClip;
-		float farClip;
+
 
 		glm::vec3 Position_;
 				
