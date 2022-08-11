@@ -289,7 +289,7 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
             if (SceneDataNode[i]["AttachedScripts"]) {
                 YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
                 for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
-                    Scene.SceneCameras[LightIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
+                    Scene.SceneCameras[SceneCameraIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
                 }
             }
 
