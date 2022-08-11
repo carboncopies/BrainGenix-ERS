@@ -543,8 +543,6 @@ void ERS_CLASS_VisualRenderer::CreateViewport() {
 
 }
 
-
-
 void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
 
