@@ -262,6 +262,11 @@ void ERS_CLASS_VisualRenderer::SetScriptDebug(int Index, std::vector<std::string
 void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager* SceneManager, float DeltaTime, bool DrawCursor) {
 
 
+    //todo: check if is Viewport0. then check if the system is in running mode or editor mode. if it's both, then do the following:
+    // on transition, store the current editor position / rotation of the camera
+    // update the camera's position/rot to the scene's active scenecamera position/rot 
+    // disable user input directly through the editor system (the user will have to handle this via the scripting system)
+
     // Render To ImGui
     ImGuiWindowFlags Flags = ImGuiWindowFlags_None;
     if (Viewports_[Index]->MenuEnabled) {
