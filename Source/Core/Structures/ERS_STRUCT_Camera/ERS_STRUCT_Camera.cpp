@@ -10,18 +10,18 @@
 
 
 
-glm::mat4 ERS_STRUCT_Camera::GetViewMatrix() {
+glm::mat4 ERS_STRUCT_Camera_old::GetViewMatrix() {
     glm::mat4 Output = glm::lookAt(Position_, Position_ + Front_, Up_);
     std::cout<<glm::to_string(Output)<<std::endl;
 
     return Output;
 }
 
-glm::mat4 ERS_STRUCT_Camera::GetProjectionMatrix() {
+glm::mat4 ERS_STRUCT_Camera_old::GetProjectionMatrix() {
     return glm::perspective(glm::radians(FOV_), AspectRatio_, 0.01f, 100.0f);
 }
 
-void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
+void ERS_STRUCT_Camera_old::Rotate(glm::vec3 Rotation) {
 
     Yaw_ = Rotation.x;
     Pitch_ = Rotation.y;
@@ -44,11 +44,11 @@ void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
 }
 
 
-void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio) {
+void ERS_STRUCT_Camera_old::SetAspectRatio(float AspectRatio) {
     AspectRatio_ = AspectRatio;
 }
 
-void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
+void ERS_STRUCT_Camera_old::ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
 
     // Calculate Velocity
     float Velocity = MovementSpeed_ * DeltaTime;
@@ -70,7 +70,7 @@ void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement Direction, float DeltaTim
 }
 
 
-void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch) {
+void ERS_STRUCT_Camera_old::ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch) {
 
     // Change Offset By Sensitivity
     XOffset *= MouseSensitivity_;
@@ -99,7 +99,7 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboo
 }
 
 
-void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset) {
+void ERS_STRUCT_Camera_old::ProcessMouseScroll(float YOffset) {
 
     // Update Movement Speed
     MovementSpeed_ += (MovementSpeed_*(float)YOffset/10.0f);
@@ -116,7 +116,7 @@ void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset) {
 
 }
 
-void ERS_STRUCT_Camera::UpdateCameraVectors() {
+void ERS_STRUCT_Camera_old::UpdateCameraVectors() {
     
     // Calculate New Front Vector
     glm::vec3 NewFront;
