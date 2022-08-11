@@ -163,8 +163,8 @@ struct ERS_STRUCT_Camera {
 		///<param name="far">The far-clipping plane</param>
 		///<param name="Position_">The Position_ of the camera</param>
 		ERS_STRUCT_Camera(float fov, int width, int height, float near, float far);
-		ERS_STRUCT_Camera(float fov, int width, int height, float near, float far, glm::vec3 Position_);
-        ERS_STRUCT_Camera();
+		ERS_STRUCT_Camera(float fov, int width, int height, float near, float far, glm::vec3 Position);
+        ERS_STRUCT_Camera(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f));
 		
 	
         // Done
@@ -190,15 +190,15 @@ struct ERS_STRUCT_Camera {
 ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov,  int width, int height, float nearClip, float farClip)  
 	: ERS_STRUCT_Camera(fov, width, height, nearClip, farClip, glm::vec3(0.0f, 0.0f, 1.0f))
 {}
-ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov, int width, int height, float nearClip, float farClip, glm::vec3 Position_)
-	: FOV_(fov), zoom(fov), aspect(float(width)/float(height)), nearClip(nearClip), farClip(farClip), Position_(Position_){
+ERS_STRUCT_Camera::ERS_STRUCT_Camera(float fov, int width, int height, float nearClip, float farClip, glm::vec3 Position)
+	: FOV_(fov), zoom(fov), aspect(float(width)/float(height)), nearClip(nearClip), farClip(farClip), Position_(Position){
 	
 	perspectiveMatrix = glm::perspective(FOV_, aspect, nearClip, farClip);
 	mousePosition.x = width / 2.0f;
 	mousePosition.y = height / 2.0f;
 }
-ERS_STRUCT_Camera::ERS_STRUCT_Camera() {
-    ERS_STRUCT_Camera(70.0f, 128, 128, 0.01f, 100.0f);
+ERS_STRUCT_Camera::ERS_STRUCT_Camera(glm::vec3 Position) {
+    ERS_STRUCT_Camera(70.0f, 128, 128, 0.01f, 100.0f, Position);
 }
 
 void ERS_STRUCT_Camera::Update(float delta){		
