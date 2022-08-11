@@ -22,7 +22,7 @@ void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
     RotMatrix = glm::rotate(RotMatrix, glm::radians(Rotation[0]), glm::vec3(1, 0, 0));
 
 
-    Front_ = glm::normalize(glm::vec3(RotMatrix[2]));
+    Front_ = glm::normalize(glm::vec3(gim::inverse(RotMatrix[2])));
 
     // Calculate Right, Up Vector
     Right_ = glm::normalize(glm::cross(Front_, WorldUp_));
