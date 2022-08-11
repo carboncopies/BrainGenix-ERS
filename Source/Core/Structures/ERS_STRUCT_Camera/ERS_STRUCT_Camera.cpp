@@ -33,6 +33,9 @@ ERS_STRUCT_Camera::ERS_STRUCT_Camera(glm::vec3 Position) {
 }
 
 void ERS_STRUCT_Camera::Update(){		
+
+    std::cout<<Pitch_<<"|"<<Yaw_<<"|"<<Roll_<<"\n";
+
 	if(Pitch_ != 0.0f)		Rotate(Pitch_, xAxis);
 	if(Yaw_ != 0.0f)			Rotate(Yaw_, yAxis);
 	if(Roll_ != 0.0f)		Rotate(Roll_, zAxis);
