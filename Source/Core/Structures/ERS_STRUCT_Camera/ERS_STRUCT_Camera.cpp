@@ -36,14 +36,17 @@ void ERS_STRUCT_Camera::Update(){
 
     std::cout<<Pitch_<<"|"<<Yaw_<<"|"<<Roll_<<"\n";
 
+    orientation = glm::quat();
+
 	if(Pitch_ != 0.0f)		Rotate(Pitch_, xAxis);
 	if(Yaw_ != 0.0f)			Rotate(Yaw_, yAxis);
 	if(Roll_ != 0.0f)		Rotate(Roll_, zAxis);
 	//
-	//// instead of setting to zero immediately, we have the value eventually go to zero.
-	Pitch_	*= damp;
-	Yaw_		*= damp;
-	Roll_	*= rollDamp;
+	// //// instead of setting to zero immediately, we have the value eventually go to zero.
+	// Pitch_	*= damp;
+	// Yaw_		*= damp;
+	// Roll_	*= rollDamp;
+
 
 	PerspectiveMatrix_ = PerspectiveMatrix_;	
 	ViewMatrix_ = glm::translate(glm::mat4_cast(orientation), Position_);;
