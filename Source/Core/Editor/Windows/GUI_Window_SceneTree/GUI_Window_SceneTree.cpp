@@ -198,6 +198,8 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     std::vector<unsigned long> DirectionalLightIndexes; // stores the index of the associated element in the Models list from the sceneobjects list
     std::vector<ERS_STRUCT_SceneObject> SpotLights;
     std::vector<unsigned long> SpotLightIndexes; // stores the index of the associated element in the Models list from the sceneobjects list
+    std::vector<ERS_STRUCT_SceneObject> SceneCameras;
+    std::vector<unsigned long> SceneCameraIndexes; // stores the index of the associated element in the SceneCamera list
 
 
     for (unsigned long i = 0; i < Scene->SceneObjects_.size(); i++) {
@@ -214,6 +216,9 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         } else if (Scene->SceneObjects_[i].Type_ == "SpotLight") {
             SpotLights.push_back(Scene->SceneObjects_[i]);
             SpotLightIndexes.push_back(i);
+        } else if (Scene->SceneObjects_[i].Type_ == "SceneCamera") {
+            SceneCamera.push_back(Scene->SceneObjects_[i]);
+            SceneCameraIndexes.push_back(i);
         }
 
     }
