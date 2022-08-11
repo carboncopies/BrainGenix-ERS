@@ -258,69 +258,20 @@ void GUI_Window_ObjectProperties::Draw() {
 
                     }
 
-                } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("Model")) {
+                } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("SceneCamera")) {
                     
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
-                    if (ImGui::CollapsingHeader("Model Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
+                    if (ImGui::CollapsingHeader("Camera Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
 
-                        // Get Current Model
-                        ERS_STRUCT_Model* Model = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->Models[Index].get();
+                        // Get Current Camera
+                        ERS_STRUCT_SceneCamera* Camera = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneCameras[Index].get();
 
-                        ImGui::Checkbox("Casts Dynamic Shadows", &Model->CastDynamicShadows_);
+                        bool Selected = (bool)SceneManager_->Scenes_[SceneManager_->ActiveScene_]->ActiveSceneCameraIndex == Index;
+                        if (ImGui::Checkbox("Active Camera", &Selected)) {
+                            SceneManager_->Scenes_[SceneManager_->ActiveScene_]->ActiveSceneCameraIndex = Index;
+                        }
                         ImGui::SameLine();
                         ImGui::HelpMarker("Indicates if this model will cast shadows in dynamic lights. Avoid using this whenever possible due to performance related issues.");
-
-                        ImGui::Checkbox("Casts Static Shadows", &Model->CastStaticShadows_);
-                        ImGui::SameLine();
-                        ImGui::HelpMarker("Indicates if this model will cast shadows in static lights.");
-
-                        ImGui::Checkbox("Receive Shadows", &Model->ReceiveShadows_);
-                        ImGui::SameLine();
-                        ImGui::HelpMarker("Allow this model to have shadows cast upon it by other objects as well as itself.");
-
-                        ImGui::Checkbox("Render Model", &Model->Enabled);
-                        ImGui::SameLine();
-                        ImGui::HelpMarker("Tell the rendering system to skip this model. Essentially makes it invisible.");
-
-                        // Shader Override Settings
-                        ImGui::Separator();
-
-                        // Shader Control Menu
-                        // int ShaderIndex = Model->ShaderOverrideIndex_ + 1;
-                        // ImGui::Combo("Object Specific Shader", &ShaderIndex, );
-                        // Model->ShaderOverrideIndex_ = ShaderIndex - 1;
-                        
-                        int ShaderIndex = Model->ShaderOverrideIndex_;
-    
-
-
-                        std::string PreviewValue;
-                        if (ShaderIndex >= (int)VisualRenderer_->Shaders_.size()) {
-                            PreviewValue = "Invalid Shader Index";
-
-                        } else if (ShaderIndex == -1) {
-                            PreviewValue = "Default Shader";
-                        } else {
-                            PreviewValue = VisualRenderer_->Shaders_[ShaderIndex]->DisplayName;
-                        }
-
-              
-
-
-                        if (ImGui::BeginCombo("Object Specific Shader", PreviewValue.c_str())) {
-
-                            if (ImGui::Selectable("Default Shader", ShaderIndex == -1)) {
-                                Model->ShaderOverrideIndex_ = -1;
-                            }
-
-                            for (unsigned int i = 0; i < VisualRenderer_->Shaders_.size(); i++) {
-                                if (ImGui::Selectable(VisualRenderer_->Shaders_[i]->DisplayName.c_str(), Model->ShaderOverrideIndex_ == i)) {
-                                    Model->ShaderOverrideIndex_ = i;
-                                }
-                            }
-
-                        ImGui::EndCombo();
-                        }
 
                     }
 
