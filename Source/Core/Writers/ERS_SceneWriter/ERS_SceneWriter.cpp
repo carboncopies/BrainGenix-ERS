@@ -234,7 +234,7 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
 
     //---- Write Scene Cameras ----//
-    for (int i = 0; (long)i < (long)InputScene->SpotLights.size(); i++) {
+    for (int i = 0; (long)i < (long)InputScene->SceneCameras.size(); i++) {
 
         Output << YAML::Key << AssetIndex;
         Output << YAML::BeginMap;
