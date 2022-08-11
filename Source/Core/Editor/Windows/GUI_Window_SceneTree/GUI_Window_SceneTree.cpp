@@ -644,39 +644,19 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             }
 
 
-            // Context Menu
-            if (ImGui::BeginPopupContextItem()) {
+            // // Context Menu
+            // if (ImGui::BeginPopupContextItem()) {
 
-                if (ImGui::MenuItem("Rename")) {
-                    Subwindow_SceneCameraRenameModal_->Activate(SceneIndex, i);
-                } if (ImGui::MenuItem("Duplicate")) {
-                    GUI_Windowutil_DuplicateSceneCamera(SceneManager_, SceneIndex, i);
-                } if (ImGui::MenuItem("Replace All Instances")) {
-                    Subwindow_SceneCameraReplaceModal_->Activate(SceneIndex, i);
-                } if (ImGui::MenuItem("Auto Number Assets Of This Type")) {
+            //     if (ImGui::MenuItem("Rename")) {
+            //         Subwindow_SceneCameraRenameModal_->Activate(SceneIndex, i);
+            //     }
+            //     ImGui::Separator();
+            //     if (ImGui::MenuItem("Delete")) {
+            //         Subwindow_DeleteSceneCamera_->DeleteSceneCamera(SceneIndex, i);
+            //     }
 
-                    // Get Reference Info
-                    long AssetIDToMatch = SceneManager_->Scenes_[SceneIndex]->SceneCameras[i]->AssetID;
-                    std::string BaseName = SceneManager_->Scenes_[SceneIndex]->SceneCameras[i]->Name;
-                    long CurrentNumber = 1;
-
-                    // Rename And Incriment Current Number
-                    for (unsigned int x = 0; x < SceneManager_->Scenes_[SceneIndex]->SceneCameras.size(); x++) {
-                        long AssetIDToCheck = SceneManager_->Scenes_[SceneIndex]->SceneCameras[x]->AssetID;
-                        if (AssetIDToCheck == AssetIDToMatch) {
-                            SceneManager_->Scenes_[SceneIndex]->SceneCameras[x]->Name = BaseName+std::to_string(CurrentNumber);
-                            CurrentNumber++;
-                        }
-                    }
-
-                }
-                ImGui::Separator();
-                if (ImGui::MenuItem("Delete")) {
-                    Subwindow_DeleteSceneCamera_->DeleteSceneCamera(SceneIndex, i);
-                }
-
-            ImGui::EndPopup();
-            }
+            // ImGui::EndPopup();
+            // }
 
 
         }
