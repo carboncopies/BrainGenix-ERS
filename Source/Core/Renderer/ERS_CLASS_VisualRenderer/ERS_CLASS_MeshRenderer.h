@@ -26,7 +26,6 @@
 #include <ERS_CLASS_ShaderLoader.h>
 #include <ERS_CLASS_InputProcessor.h>
 #include <ERS_CLASS_Grid.h>
-//#include <ERS_CLASS_IconRenderer.h>
 
 #include <ERS_FUNCTION_CheckForMeshTransparency.h>
 #include <ERS_FUNCTION_MeshTransparencySort.h>
