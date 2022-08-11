@@ -34,7 +34,7 @@ ERS_STRUCT_Camera::ERS_STRUCT_Camera(glm::vec3 Position) {
 
 void ERS_STRUCT_Camera::Update(){		
 
-    std::cout<<Pitch_<<"|"<<Yaw_<<"|"<<Roll_<<"\n";
+    std::cout<<glm::to_string(Position_)<<std::endl;
 
     orientation = glm::quat();
 
