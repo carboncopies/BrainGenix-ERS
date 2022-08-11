@@ -59,14 +59,9 @@ void ERS_STRUCT_Camera::Rotate(float angle, const glm::vec3 &axis){
 }
 
 void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
-    orientation = glm::quat();
-    Rotate(Rotation[0], glm::vec3(1, 0, 0));
     Yaw_ = Rotation[0];
-    Rotate(Rotation[1], glm::vec3(0, 1, 0));
     Pitch_ = Rotation[1];
-    Rotate(Rotation[2], glm::vec3(0, 0, 1));
     Roll_ = Rotation[2];
-
 }
 
 void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement td, float DeltaTime){
