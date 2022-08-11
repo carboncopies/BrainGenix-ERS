@@ -26,5 +26,6 @@ struct ERS_STRUCT_SceneCamera {
     glm::vec3 Rot_; /**<Rotation of the camera object*/
 
     std::vector<int> AttachedScriptIndexes_; /**<Indices of scripts that are attached to this camera*/
+    std::string UserDefinedName; /**<Name that appears in the editor's scene tree*/
 
 };

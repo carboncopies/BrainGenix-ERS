@@ -231,6 +231,56 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
     }
 
 
+    //---- Write Scene Cameras ----//
+    for (int i = 0; (long)i < (long)InputScene->SpotLights.size(); i++) {
+
+        Output << YAML::Key << AssetIndex;
+        Output << YAML::BeginMap;
+
+
+        Output << YAML::Key << "AssetName" << YAML::Value << InputScene->SceneCameras[i]->UserDefinedName;
+        Output << YAML::Key << "AssetType" << YAML::Value << "SceneCameras";
+
+
+        Output << YAML::Key << "ColorRed" << YAML::Value << InputScene->SpotLights[i]->Color[0];
+        Output << YAML::Key << "ColorGreen" << YAML::Value << InputScene->SpotLights[i]->Color[1];
+        Output << YAML::Key << "ColorBlue" << YAML::Value << InputScene->SpotLights[i]->Color[2];
+
+
+        Output << YAML::Key << "PosX" << YAML::Value << InputScene->SpotLights[i]->Pos[0];
+        Output << YAML::Key << "PosY" << YAML::Value << InputScene->SpotLights[i]->Pos[1];
+        Output << YAML::Key << "PosZ" << YAML::Value << InputScene->SpotLights[i]->Pos[2];
+
+        Output << YAML::Key << "RotX" << YAML::Value << InputScene->SpotLights[i]->Rot[0];
+        Output << YAML::Key << "RotY" << YAML::Value << InputScene->SpotLights[i]->Rot[1];
+        Output << YAML::Key << "RotZ" << YAML::Value << InputScene->SpotLights[i]->Rot[2];
+
+
+        Output << YAML::Key << "Intensity" << YAML::Value << InputScene->SpotLights[i]->Intensity;
+        Output << YAML::Key << "MaxDistance" << YAML::Value << InputScene->SpotLights[i]->MaxDistance;
+
+        Output << YAML::Key << "CutOff" << YAML::Value << InputScene->SpotLights[i]->CutOff;
+        Output << YAML::Key << "RollOff" << YAML::Value << InputScene->SpotLights[i]->Rolloff;
+
+
+        Output << YAML::Key << "CastShadows" << YAML::Value << InputScene->SpotLights[i]->CastsShadows_;
+
+
+
+        Output<<YAML::Key<<"AttachedScripts";
+        Output<<YAML::Key<<YAML::BeginMap;
+        for (unsigned long x = 0; x < InputScene->SpotLights[i]->AttachedScriptIndexes_.size(); x++) {
+            Output<<YAML::Key<<x<<YAML::Value<<InputScene->SpotLights[i]->AttachedScriptIndexes_[x];
+        }
+        Output<<YAML::EndMap;
+
+
+        Output << YAML::EndMap;
+        AssetIndex++;
+    }
+
+
+
     // End Writing
     Output << YAML::EndMap;
     Output << YAML::EndMap;
