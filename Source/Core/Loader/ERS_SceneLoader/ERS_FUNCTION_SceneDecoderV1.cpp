@@ -46,6 +46,8 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
             ERS_FUNCTION_GetBool   (Item, "CastStaticShadows",    Model.CastStaticShadows_   );
             ERS_FUNCTION_GetBool   (Item, "ReceiveShadows",       Model.ReceiveShadows_      );
             ERS_FUNCTION_GetLong   (Item, "ShaderOverrideIndex",  Model.ShaderOverrideIndex_ );
+            ERS_FUNCTION_GetString (Item, "AssetName",            Model.Name                 );
+            Model.IsTemplateModel = false;
             
             //Model.ApplyTransformations();
 
@@ -53,10 +55,6 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
             Scene->Models.push_back(std::make_shared<ERS_STRUCT_Model>(Model));
             int CurrentSize = Scene->Models.size();
             ModelLoader->AddModelToLoadingQueue(Scene->Models[CurrentSize-1]);
-
-            // Add Instance To Models Vector
-            Scene->Models[CurrentSize-1]->IsTemplateModel = false;
-            Scene->Models[CurrentSize-1]->Name = AssetName;
 
 
             // Load Attached Scripts
