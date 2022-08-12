@@ -13,10 +13,10 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
     SystemUtils->Logger_->Log(std::string("Processing Scene '") + Scene->SceneName + "'", 3, LogEnable);
     std::vector<YAML::Node> SceneItems;
 
-    ERS_FUNCTION_GetLong       (SceneData, "SceneFormatVersion", Scene->SceneFormatVersion    );
-    ERS_FUNCTION_GetString     (SceneData, "SceneName",          Scene->SceneName             );
-    ERS_FUNCTION_GetInt        (SceneData, "ActiveCameraIndex",  Scene->ActiveSceneCameraIndex);
-    ERS_FUNCTION_GetNodeVector (SceneData, "SceneData",          SceneItems                   );
+    ERS_FUNCTION_GetLong       (SceneData, "SceneFormatVersion", Scene->SceneFormatVersion      );
+    ERS_FUNCTION_GetString     (SceneData, "SceneName",          Scene->SceneName               );
+    ERS_FUNCTION_GetInt        (SceneData, "ActiveCameraIndex",  Scene->ActiveSceneCameraIndex  );
+    ERS_FUNCTION_GetNodeVector (SceneData, "SceneData",          SceneItems                     );
 
     // Iterate Through Vector To Add Each Asset To Loading Queue Of Requested Type
     for (long i = 0; (long)i < (long)SceneItems.size(); i++) {
@@ -33,26 +33,17 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
             ERS_STRUCT_Model Model;
 
-            ERS_FUNCTION_GetLong   (Item, "AssetID",              Model.AssetID               );
-            ERS_FUNCTION_GetVec3   (Item, "AssetPosition",        Model.ModelPosition         );
-            ERS_FUNCTION_GetVec3   (Item, "AssetRotation",        Model.ModelRotation         );
-            ERS_FUNCTION_GetVec3   (Item, "AssetScale",           Model.ModelScale            );
-            ERS_FUNCTION_GetBool   (Item, "CastDynamicShadows",   Model.CastDynamicShadows_   );
-            ERS_FUNCTION_GetBool   (Item, "CastStaticShadows",    Model.CastStaticShadows_    );
-            ERS_FUNCTION_GetBool   (Item, "ReceiveShadows",       Model.ReceiveShadows_       );
-            ERS_FUNCTION_GetLong   (Item, "ShaderOverrideIndex",  Model.ShaderOverrideIndex_  );
-            ERS_FUNCTION_GetString (Item, "AssetName",            Model.Name                  );
-            
-           // Load Attached Scripts
-            if (SceneItems[i]["AttachedScripts"]) {
-                YAML::Node Scripts = SceneItems[i]["AttachedScripts"];
-                for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
-                    Model.AttachedScriptIndexes_.push_back(it->second.as<long>());
-                }
-            }
+            ERS_FUNCTION_GetLong       (Item, "AssetID",              Model.AssetID                 );
+            ERS_FUNCTION_GetVec3       (Item, "AssetPosition",        Model.ModelPosition           );
+            ERS_FUNCTION_GetVec3       (Item, "AssetRotation",        Model.ModelRotation           );
+            ERS_FUNCTION_GetVec3       (Item, "AssetScale",           Model.ModelScale              );
+            ERS_FUNCTION_GetBool       (Item, "CastDynamicShadows",   Model.CastDynamicShadows_     );
+            ERS_FUNCTION_GetBool       (Item, "CastStaticShadows",    Model.CastStaticShadows_      );
+            ERS_FUNCTION_GetBool       (Item, "ReceiveShadows",       Model.ReceiveShadows_         );
+            ERS_FUNCTION_GetLong       (Item, "ShaderOverrideIndex",  Model.ShaderOverrideIndex_    );
+            ERS_FUNCTION_GetString     (Item, "AssetName",            Model.Name                    );
+            ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Model.AttachedScriptIndexes_  );
 
-
-            //Model.ApplyTransformations();
 
             //Load Model 
             Scene->Models.push_back(std::make_shared<ERS_STRUCT_Model>(Model));
