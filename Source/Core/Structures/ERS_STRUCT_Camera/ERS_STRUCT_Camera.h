@@ -77,15 +77,8 @@ public:
 
 
     // Constructor With Vectors
-    ERS_STRUCT_Camera(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f)) {
-        
-        // Set Params
-        Position = Position;
-        LocalUp_ = glm::vec3(0.0f, 1.0f, 0.0f);
-        Update();
-        
-    }
-
+    ERS_STRUCT_Camera(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f));
+    ~ERS_STRUCT_Camera();
 
     // Proces Keyboard Input
     void ProcessKeyboard(CameraMovement Direction, float DeltaTime);

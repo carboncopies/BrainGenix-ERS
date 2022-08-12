@@ -234,6 +234,13 @@
 //     // Up_ = glm::mat3(roll_mat) * Up_;
 // }
 
+ERS_STRUCT_Camera::ERS_STRUCT_Camera(glm::vec3 Position) {
+    Position_ = Position;
+}
+
+ERS_STRUCT_Camera::~ERS_STRUCT_Camera() {
+    
+}
 
 void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio) {
     AspectRatio_ = AspectRatio;
