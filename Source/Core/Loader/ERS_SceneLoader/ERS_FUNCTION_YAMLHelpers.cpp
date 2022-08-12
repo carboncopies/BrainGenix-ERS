@@ -4,7 +4,7 @@
 
 #include <ERS_FUNCTION_YAMLHelpers.h>
 
-
+// Standart Type Helper Functions
 bool ERS_FUNCTION_GetInt(YAML::Node Data, std::string Name, int &Target) {
     try {
         Target = Data[Name].as<int>();
@@ -95,6 +95,18 @@ bool ERS_FUNCTION_GetUnsignedLongLong(YAML::Node Data, std::string Name, unsigne
         return false;
     }
 }
+bool ERS_FUNCTION_GetString(YAML::Node Data, std::string Name, std::string &Target) {
+    try {
+        Target = Data[Name].as<std::string>();
+        return true;
+    } catch (YAML::TypedBadConversion<std::string>) {
+        return false;
+    } catch (YAML::KeyNotFound) {
+        return false;
+    }
+}
+
+// GLM Helper Functions
 bool ERS_FUNCTION_GetString(YAML::Node Data, std::string Name, std::string &Target) {
     try {
         Target = Data[Name].as<std::string>();
