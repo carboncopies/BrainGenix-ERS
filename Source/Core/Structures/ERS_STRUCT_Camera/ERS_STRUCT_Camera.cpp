@@ -161,7 +161,9 @@ void ERS_STRUCT_Camera::SetPosition(glm::vec3 Position) {
 void ERS_STRUCT_Camera::GetPosition(glm::vec3 &Position) {
     Position = Position_;
 }
-
+glm::vec3 ERS_STRUCT_Camera::GetPosition() {
+    return Position_;
+}
 void ERS_STRUCT_Camera::GetStreamingPriority(int &StreamingPriority) {
     StreamingPriority = StreamingPriority_;
 }

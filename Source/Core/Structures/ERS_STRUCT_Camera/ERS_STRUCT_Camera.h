@@ -201,6 +201,7 @@ public:
      * @param Position Position (x,y,z) in units relative to world origin.
      */
     void GetPosition(glm::vec3 &Position);
+    glm::vec3 GetPosition();
 
     /**
      * @brief Get the camera's streaming priority.
