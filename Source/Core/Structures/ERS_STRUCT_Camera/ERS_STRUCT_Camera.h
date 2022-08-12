@@ -115,8 +115,8 @@ private:
     // Camea Configuration Information
     float NearClip_          = 0.01f; /**<Closest distance before geometry is culled.*/
     float FarClip_           = 100.0f; /**<Farthest distance before geometry is called*/
-    float MinMovementSpeed_  = 0.01f; /**<Slowest movement speed allowed*/
-    float MaxMovementSpeed_  = 50.0f; /**<Fastest movement speed allowed*/
+    float MinMovementSpeed_  = 0.01f; /**<Slowest movement speed allowed in units per second*/
+    float MaxMovementSpeed_  = 50.0f; /**<Fastest movement speed allowed in units per second*/
 
 
 

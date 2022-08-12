@@ -113,3 +113,14 @@ void ERS_STRUCT_Camera::GetMatrices(glm::mat4& Perspective, glm::mat4& View){
     Perspective = PerspectiveMatrix_;
     View = ViewMatrix_;
 }
+
+
+// Camera Parameter Helper Functions
+void ERS_STRUCT_Camera::SetClipBoundries(float NearClip, float FarClip) {
+    NearClip_ = NearClip;
+    FarClip_ = FarClip;
+}
+void ERS_STRUCT_Camera::GetClipBoundires(float &NearClip, float &FarClip) {
+    NearClip = NearClip_;
+    FarClip = FarClip_;
+}
