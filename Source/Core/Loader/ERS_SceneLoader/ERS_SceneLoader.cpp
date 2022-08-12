@@ -42,7 +42,7 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
 
     // Create Scene Instance
     ERS_STRUCT_Scene Scene;
-
+    Scene.ScenePath = AssetID;
 
 
     // Return Scene

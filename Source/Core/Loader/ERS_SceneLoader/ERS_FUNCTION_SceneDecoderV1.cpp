@@ -10,22 +10,21 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
 
     // Grab Metadata
-    Scene->SceneFormatVersion = RawSceneData["SceneFormatVersion"].as<long>();
-    Scene->SceneName = RawSceneData["SceneName"].as<std::string>();
-    Scene->ScenePath = AssetID;
+    Scene->SceneFormatVersion = SceneData["SceneFormatVersion"].as<long>();
+    Scene->SceneName = SceneData["SceneName"].as<std::string>();
 
-    if (RawSceneData["ActiveCameraIndex"]) {
-        Scene->ActiveSceneCameraIndex = RawSceneData["ActiveCameraIndex"].as<int>();
+    if (SceneData["ActiveCameraIndex"]) {
+        Scene->ActiveSceneCameraIndex = SceneData["ActiveCameraIndex"].as<int>();
     }
 
     // Log Scene Processing
-    SystemUtils_->Logger_->Log(std::string("Processing Scene: ") + std::string(Scene->SceneName), 3);
+    SystemUtils->Logger_->Log(std::string("Processing Scene: ") + std::string(Scene->SceneName), 3);
 
     // Create Vector Of YAML::Nodes
     std::vector<YAML::Node> SceneItems;
 
     // Populate Vector With Elements From SceneData
-    YAML::Node SceneDataNode = RawSceneData["SceneData"];
+    YAML::Node SceneDataNode = SceneData["SceneData"];
     for (YAML::const_iterator it=SceneDataNode.begin(); it!=SceneDataNode.end(); ++it) {
         SceneItems.push_back(it->second);
     }
