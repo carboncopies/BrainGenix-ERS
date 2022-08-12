@@ -68,7 +68,6 @@ public:
     void ProcessMouseMovement(float XOffset, float Yoffset, GLboolean ConstrainPitch = true);
     void ProcessMouseScroll(float YOffset);
 
-    void SetRotation(glm::vec3 Rotation);
 
     
 
@@ -164,6 +163,33 @@ public:
      */
     void SetAspectRatio(float AspectRatio);
 
+    /**
+     * @brief Sets the rotation of the camera.
+     * 
+     * @param Rotation Rotation in degrees (x,y,z) or (pitch, yaw, roll)
+     */
+    void SetRotation(glm::vec3 Rotation);
+
+    /**
+     * @brief Get the rotation 
+     * 
+     * @param Rotation Rotation in degrees (x,y,z) or (pitch, yaw, roll)
+     */
+    void GetRotation(glm::vec3 &Rotation);
+
+    /**
+     * @brief Set the position of the camera.
+     * 
+     * @param Position Position (x,y,z) in units relative to world origin.
+     */
+    void SetPosition(glm::vec3 Position);
+    
+    /**
+     * @brief Get the position of the camera.
+     * 
+     * @param Position Position (x,y,z) in units relative to world origin.
+     */
+    void GetPosition(glm::vec3 &Position);
 
 private:
 
