@@ -48,19 +48,19 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboo
     YOffset *= MouseSensitivity_;
 
     // Update Pitch/Yaw
-    Yaw_   += XOffset;
-    Pitch_ += YOffset;
+    Orientation_.y   += XOffset;
+    Orientation_.p += YOffset;
 
 
 
     // Bound Pitch
     if (ConstrainPitch) {
 
-        if (Pitch_ > 89.0f) {
-            Pitch_ = 89.0f;
+        if (Orientation_.p > 89.0f) {
+            Orientation_.p = 89.0f;
         }
-        if (Pitch_ < -89.0f) {
-            Pitch_ = -89.0f;
+        if (Orientation_.p < -89.0f) {
+            Orientation_.p = -89.0f;
         }
     }
 
@@ -83,9 +83,9 @@ void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset) {
 void ERS_STRUCT_Camera::Update() {
     
     // Recalculate Orientation Quat
-    glm::quat QuatPitch  = glm::angleAxis(glm::radians(Pitch_), glm::vec3(1, 0, 0));
-    glm::quat QuatYaw    = glm::angleAxis(glm::radians(Yaw_  ), glm::vec3(0, 1, 0));
-    glm::quat QuatRoll   = glm::angleAxis(glm::radians(Roll_ ), glm::vec3(0, 0, 1));
+    glm::quat QuatPitch  = glm::angleAxis(glm::radians(Orientation_.p), glm::vec3(1, 0, 0));
+    glm::quat QuatYaw    = glm::angleAxis(glm::radians(Orientation_.y  ), glm::vec3(0, 1, 0));
+    glm::quat QuatRoll   = glm::angleAxis(glm::radians(Orientation_.r ), glm::vec3(0, 0, 1));
     
     glm::quat Orientation = QuatPitch * QuatYaw;
     Orientation = glm::normalize(Orientation);
@@ -108,9 +108,9 @@ void ERS_STRUCT_Camera::Update() {
 
 
 void ERS_STRUCT_Camera::SetRotation(glm::vec3 Rotation) {
-    Pitch_  = Rotation.x;
-    Yaw_    = Rotation.y;
-    Roll_   = Rotation.z;
+    Orientation_.p  = Rotation.x;
+    Orientation_.y    = Rotation.y;
+    Orientation_.r   = Rotation.z;
 }
 
 void ERS_STRUCT_Camera::GetMatrices(glm::mat4& Perspective, glm::mat4& View){

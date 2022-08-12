@@ -54,10 +54,8 @@ public:
     float FOV_               = 50.0f;
     float AspectRatio_       = 1.25f;
 
-    float Yaw_               = 0.0f;
-    float Pitch_             = 0.0f;
-    float Roll_              = 0.0f;
-    
+
+    glm::vec3 Orientation_;    
     glm::vec3 Position_;
     
     glm::vec3 Front_;
