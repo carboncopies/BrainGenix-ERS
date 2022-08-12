@@ -39,8 +39,6 @@ struct ERS_STRUCT_Camera {
 
 public:
 
-    // Asset Streaming Config
-    int Priority_ = 1; // Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)
 
 
     /**
@@ -212,6 +210,7 @@ private:
     float MinMovementSpeed_  = 0.01f;  /**<Slowest movement speed allowed in units per second*/
     float MaxMovementSpeed_  = 50.0f;  /**<Fastest movement speed allowed in units per second*/
 
+
     // Internal Camera State Information
     float MovementSpeed_     = 0.2f;   /**<Current Movement Speed*/
     float MouseSensitivity_  = 0.05f;  /**<Mouse sensitivity multiplier*/
@@ -227,6 +226,10 @@ private:
 
     glm::mat4 PerspectiveMatrix_;      /**<Perspective/projection matrix, updated every time the Update function is called*/
     glm::mat4 ViewMatrix_;             /**<View matrix, updated every time the Update function is called*/
+
+
+    // Asset Streaming Settings
+    int Priority_ = 1;                 /**< Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)*/
 
 
 };
