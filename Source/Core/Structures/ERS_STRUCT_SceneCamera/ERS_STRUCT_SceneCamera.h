@@ -31,6 +31,7 @@ struct ERS_STRUCT_SceneCamera {
 
     // Internal Camera State Information
     float FOV_               = 50.0f;  /**<Field of view in degrees*/
+    bool EnforceAspectRatio_ = false;  /**<Manually Override the aspect ratio with a set one*/
     float AspectRatio_       = 1.25f;  /**<Internal variable used to setup the projection matrix*/
     glm::vec3 Pos_; /**<Position of the camera object*/
     glm::vec3 Rot_; /**<Rotation of the camera object*/
