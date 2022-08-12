@@ -11,23 +11,18 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
     // Grab Metadata
     SystemUtils->Logger_->Log(std::string("Processing Scene '") + Scene->SceneName + "'", 3, LogEnable);
-    ERS_FUNCTION_GetLong    (SceneData, "SceneFormatVersion", Scene->SceneFormatVersion    );
-    ERS_FUNCTION_GetString  (SceneData, "SceneName",          Scene->SceneName             );
-    ERS_FUNCTION_GetInt     (SceneData, "ActiveCameraIndex",  Scene->ActiveSceneCameraIndex);
-
-    // Create List Of Scene Items
     std::vector<YAML::Node> SceneItems;
-    YAML::Node SceneDataNode = SceneData["SceneData"];
-    for (YAML::const_iterator it=SceneDataNode.begin(); it!=SceneDataNode.end(); ++it) {
-        SceneItems.push_back(it->second);
-    }
 
+    ERS_FUNCTION_GetLong       (SceneData, "SceneFormatVersion", Scene->SceneFormatVersion    );
+    ERS_FUNCTION_GetString     (SceneData, "SceneName",          Scene->SceneName             );
+    ERS_FUNCTION_GetInt        (SceneData, "ActiveCameraIndex",  Scene->ActiveSceneCameraIndex);
+    ERS_FUNCTION_GetNodeVector (SceneData, "SceneData",          SceneItems                   );
 
     // Iterate Through Vector To Add Each Asset To Loading Queue Of Requested Type
-    for (long i = 0; (long)i < (long)SceneDataNode.size(); i++) {
+    for (long i = 0; (long)i < (long)SceneItems.size(); i++) {
 
         // Get Asset Information
-        YAML::Node Item = SceneDataNode[i];
+        YAML::Node Item = SceneItems[i];
         std::string AssetName, AssetType;
         ERS_FUNCTION_GetString(Item, "AssetName", AssetName);
         ERS_FUNCTION_GetString(Item, "AssetType", AssetType);
@@ -38,20 +33,20 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
             ERS_STRUCT_Model Model;
 
-            ERS_FUNCTION_GetLong   (Item, "AssetID",              Model.AssetID              );
-            ERS_FUNCTION_GetVec3   (Item, "AssetPosition",        Model.ModelPosition        );
-            ERS_FUNCTION_GetVec3   (Item, "AssetRotation",        Model.ModelRotation        );
-            ERS_FUNCTION_GetVec3   (Item, "AssetScale",           Model.ModelScale           );
-            ERS_FUNCTION_GetBool   (Item, "CastDynamicShadows",   Model.CastDynamicShadows_  );
-            ERS_FUNCTION_GetBool   (Item, "CastStaticShadows",    Model.CastStaticShadows_   );
-            ERS_FUNCTION_GetBool   (Item, "ReceiveShadows",       Model.ReceiveShadows_      );
-            ERS_FUNCTION_GetLong   (Item, "ShaderOverrideIndex",  Model.ShaderOverrideIndex_ );
-            ERS_FUNCTION_GetString (Item, "AssetName",            Model.Name                 );
+            ERS_FUNCTION_GetLong   (Item, "AssetID",              Model.AssetID               );
+            ERS_FUNCTION_GetVec3   (Item, "AssetPosition",        Model.ModelPosition         );
+            ERS_FUNCTION_GetVec3   (Item, "AssetRotation",        Model.ModelRotation         );
+            ERS_FUNCTION_GetVec3   (Item, "AssetScale",           Model.ModelScale            );
+            ERS_FUNCTION_GetBool   (Item, "CastDynamicShadows",   Model.CastDynamicShadows_   );
+            ERS_FUNCTION_GetBool   (Item, "CastStaticShadows",    Model.CastStaticShadows_    );
+            ERS_FUNCTION_GetBool   (Item, "ReceiveShadows",       Model.ReceiveShadows_       );
+            ERS_FUNCTION_GetLong   (Item, "ShaderOverrideIndex",  Model.ShaderOverrideIndex_  );
+            ERS_FUNCTION_GetString (Item, "AssetName",            Model.Name                  );
             Model.IsTemplateModel = false;
             
            // Load Attached Scripts
-            if (SceneDataNode[i]["AttachedScripts"]) {
-                YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
+            if (SceneItems[i]["AttachedScripts"]) {
+                YAML::Node Scripts = SceneItems[i]["AttachedScripts"];
                 for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
                     Model.AttachedScriptIndexes_.push_back(it->second.as<long>());
                 }
@@ -77,41 +72,41 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
             Scene->DirectionalLights[LightIndex]->UserDefinedName = AssetName;
 
-            if (SceneDataNode[i]["ColorRed"] && SceneDataNode[i]["ColorGreen"] && SceneDataNode[i]["ColorBlue"]) {
+            if (SceneItems[i]["ColorRed"] && SceneItems[i]["ColorGreen"] && SceneItems[i]["ColorBlue"]) {
                 Scene->DirectionalLights[LightIndex]->Color = glm::vec3(
-                    SceneDataNode[i]["ColorRed"].as<float>(),
-                    SceneDataNode[i]["ColorGreen"].as<float>(),
-                    SceneDataNode[i]["ColorBlue"].as<float>()
+                    SceneItems[i]["ColorRed"].as<float>(),
+                    SceneItems[i]["ColorGreen"].as<float>(),
+                    SceneItems[i]["ColorBlue"].as<float>()
                     );
             }
 
-            if (SceneDataNode[i]["Intensity"]) {
-                Scene->DirectionalLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
+            if (SceneItems[i]["Intensity"]) {
+                Scene->DirectionalLights[LightIndex]->Intensity = SceneItems[i]["Intensity"].as<float>();
             }
 
-            if (SceneDataNode[i]["MaxDistance"]) {
-                Scene->DirectionalLights[LightIndex]->MaxDistance = SceneDataNode[i]["MaxDistance"].as<float>();
+            if (SceneItems[i]["MaxDistance"]) {
+                Scene->DirectionalLights[LightIndex]->MaxDistance = SceneItems[i]["MaxDistance"].as<float>();
             }
 
             Scene->DirectionalLights[LightIndex]->Pos = glm::vec3(
-                SceneDataNode[i]["PosX"].as<float>(),
-                SceneDataNode[i]["PosY"].as<float>(),
-                SceneDataNode[i]["PosZ"].as<float>()
+                SceneItems[i]["PosX"].as<float>(),
+                SceneItems[i]["PosY"].as<float>(),
+                SceneItems[i]["PosZ"].as<float>()
                 );
             Scene->DirectionalLights[LightIndex]->Rot = glm::vec3(
-                SceneDataNode[i]["RotX"].as<float>(),
-                SceneDataNode[i]["RotY"].as<float>(),
-                SceneDataNode[i]["RotZ"].as<float>()
+                SceneItems[i]["RotX"].as<float>(),
+                SceneItems[i]["RotY"].as<float>(),
+                SceneItems[i]["RotZ"].as<float>()
                 );
 
 
-            if (SceneDataNode[i]["CastShadows"]) {
-                Scene->DirectionalLights[LightIndex]->CastsShadows_ = SceneDataNode[i]["CastShadows"].as<bool>();
+            if (SceneItems[i]["CastShadows"]) {
+                Scene->DirectionalLights[LightIndex]->CastsShadows_ = SceneItems[i]["CastShadows"].as<bool>();
             }
 
             // Load Attached Scripts
-            if (SceneDataNode[i]["AttachedScripts"]) {
-                YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
+            if (SceneItems[i]["AttachedScripts"]) {
+                YAML::Node Scripts = SceneItems[i]["AttachedScripts"];
                 for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
                     Scene->DirectionalLights[LightIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
                 }
@@ -124,35 +119,35 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
             int LightIndex = Scene->PointLights.size() - 1;
 
             Scene->PointLights[LightIndex]->UserDefinedName = AssetName;
-            if (SceneDataNode[i]["Intensity"]) {
-                Scene->PointLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
+            if (SceneItems[i]["Intensity"]) {
+                Scene->PointLights[LightIndex]->Intensity = SceneItems[i]["Intensity"].as<float>();
             }
-            if (SceneDataNode[i]["MaxDistance"]) {
-                Scene->PointLights[LightIndex]->MaxDistance = SceneDataNode[i]["MaxDistance"].as<float>();
+            if (SceneItems[i]["MaxDistance"]) {
+                Scene->PointLights[LightIndex]->MaxDistance = SceneItems[i]["MaxDistance"].as<float>();
             }
 
             
-            if (SceneDataNode[i]["ColorRed"] && SceneDataNode[i]["ColorGreen"] && SceneDataNode[i]["ColorBlue"]) {
+            if (SceneItems[i]["ColorRed"] && SceneItems[i]["ColorGreen"] && SceneItems[i]["ColorBlue"]) {
                 Scene->PointLights[LightIndex]->Color = glm::vec3(
-                    SceneDataNode[i]["ColorRed"].as<float>(),
-                    SceneDataNode[i]["ColorGreen"].as<float>(),
-                    SceneDataNode[i]["ColorBlue"].as<float>()
+                    SceneItems[i]["ColorRed"].as<float>(),
+                    SceneItems[i]["ColorGreen"].as<float>(),
+                    SceneItems[i]["ColorBlue"].as<float>()
                     );
             }
 
             Scene->PointLights[LightIndex]->Pos = glm::vec3(
-                SceneDataNode[i]["PosX"].as<float>(),
-                SceneDataNode[i]["PosY"].as<float>(),
-                SceneDataNode[i]["PosZ"].as<float>()
+                SceneItems[i]["PosX"].as<float>(),
+                SceneItems[i]["PosY"].as<float>(),
+                SceneItems[i]["PosZ"].as<float>()
                 );
 
-            if (SceneDataNode[i]["CastShadows"]) {
-                Scene->PointLights[LightIndex]->CastsShadows_ = SceneDataNode[i]["CastShadows"].as<bool>();
+            if (SceneItems[i]["CastShadows"]) {
+                Scene->PointLights[LightIndex]->CastsShadows_ = SceneItems[i]["CastShadows"].as<bool>();
             }
 
             // Load Attached Scripts
-            if (SceneDataNode[i]["AttachedScripts"]) {
-                YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
+            if (SceneItems[i]["AttachedScripts"]) {
+                YAML::Node Scripts = SceneItems[i]["AttachedScripts"];
                 for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
                     Scene->PointLights[LightIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
                 }
@@ -166,45 +161,45 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
             Scene->SpotLights[LightIndex]->UserDefinedName = AssetName;
 
-            if (SceneDataNode[i]["Intensity"]) {
-                Scene->SpotLights[LightIndex]->Intensity = SceneDataNode[i]["Intensity"].as<float>();
+            if (SceneItems[i]["Intensity"]) {
+                Scene->SpotLights[LightIndex]->Intensity = SceneItems[i]["Intensity"].as<float>();
             }
-            if (SceneDataNode[i]["MaxDistance"]) {
-                Scene->SpotLights[LightIndex]->MaxDistance = SceneDataNode[i]["MaxDistance"].as<float>();
+            if (SceneItems[i]["MaxDistance"]) {
+                Scene->SpotLights[LightIndex]->MaxDistance = SceneItems[i]["MaxDistance"].as<float>();
             }
-            Scene->SpotLights[LightIndex]->CutOff = SceneDataNode[i]["CutOff"].as<float>();
+            Scene->SpotLights[LightIndex]->CutOff = SceneItems[i]["CutOff"].as<float>();
 
-            if (SceneDataNode[i]["RollOff"]) {
-                Scene->SpotLights[LightIndex]->Rolloff = SceneDataNode[i]["RollOff"].as<float>();
+            if (SceneItems[i]["RollOff"]) {
+                Scene->SpotLights[LightIndex]->Rolloff = SceneItems[i]["RollOff"].as<float>();
             }
-            if (SceneDataNode[i]["ColorRed"] && SceneDataNode[i]["ColorGreen"] && SceneDataNode[i]["ColorBlue"]) {
+            if (SceneItems[i]["ColorRed"] && SceneItems[i]["ColorGreen"] && SceneItems[i]["ColorBlue"]) {
                 Scene->SpotLights[LightIndex]->Color = glm::vec3(
-                    SceneDataNode[i]["ColorRed"].as<float>(),
-                    SceneDataNode[i]["ColorGreen"].as<float>(),
-                    SceneDataNode[i]["ColorBlue"].as<float>()
+                    SceneItems[i]["ColorRed"].as<float>(),
+                    SceneItems[i]["ColorGreen"].as<float>(),
+                    SceneItems[i]["ColorBlue"].as<float>()
                     );
             }
 
 
             Scene->SpotLights[LightIndex]->Pos = glm::vec3(
-                SceneDataNode[i]["PosX"].as<float>(),
-                SceneDataNode[i]["PosY"].as<float>(),
-                SceneDataNode[i]["PosZ"].as<float>()
+                SceneItems[i]["PosX"].as<float>(),
+                SceneItems[i]["PosY"].as<float>(),
+                SceneItems[i]["PosZ"].as<float>()
                 );
             Scene->SpotLights[LightIndex]->Rot = glm::vec3(
-                SceneDataNode[i]["RotX"].as<float>(),
-                SceneDataNode[i]["RotY"].as<float>(),
-                SceneDataNode[i]["RotZ"].as<float>()
+                SceneItems[i]["RotX"].as<float>(),
+                SceneItems[i]["RotY"].as<float>(),
+                SceneItems[i]["RotZ"].as<float>()
                 );
 
 
-            if (SceneDataNode[i]["CastShadows"]) {
-                Scene->SpotLights[LightIndex]->CastsShadows_ = SceneDataNode[i]["CastShadows"].as<bool>();
+            if (SceneItems[i]["CastShadows"]) {
+                Scene->SpotLights[LightIndex]->CastsShadows_ = SceneItems[i]["CastShadows"].as<bool>();
             }
 
             // Load Attached Scripts
-            if (SceneDataNode[i]["AttachedScripts"]) {
-                YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
+            if (SceneItems[i]["AttachedScripts"]) {
+                YAML::Node Scripts = SceneItems[i]["AttachedScripts"];
                 for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
                     Scene->SpotLights[LightIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
                 }
@@ -218,19 +213,19 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
             Scene->SceneCameras[SceneCameraIndex]->UserDefinedName_ = AssetName;
             Scene->SceneCameras[SceneCameraIndex]->Pos_ = glm::vec3(
-                SceneDataNode[i]["PosX"].as<float>(),
-                SceneDataNode[i]["PosY"].as<float>(),
-                SceneDataNode[i]["PosZ"].as<float>()
+                SceneItems[i]["PosX"].as<float>(),
+                SceneItems[i]["PosY"].as<float>(),
+                SceneItems[i]["PosZ"].as<float>()
                 );
             Scene->SceneCameras[SceneCameraIndex]->Rot_ = glm::vec3(
-                SceneDataNode[i]["RotX"].as<float>(),
-                SceneDataNode[i]["RotY"].as<float>(),
-                SceneDataNode[i]["RotZ"].as<float>()
+                SceneItems[i]["RotX"].as<float>(),
+                SceneItems[i]["RotY"].as<float>(),
+                SceneItems[i]["RotZ"].as<float>()
                 );
 
             // Load Attached Scripts
-            if (SceneDataNode[i]["AttachedScripts"]) {
-                YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
+            if (SceneItems[i]["AttachedScripts"]) {
+                YAML::Node Scripts = SceneItems[i]["AttachedScripts"];
                 for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
                     Scene->SceneCameras[SceneCameraIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
                 }
