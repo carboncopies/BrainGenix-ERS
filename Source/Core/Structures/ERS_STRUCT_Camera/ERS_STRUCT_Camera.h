@@ -78,17 +78,11 @@ public:
 
 
     // Constructor With Vectors
-    ERS_STRUCT_Camera(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f),
-                                glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f),
-                                float Yaw = -90.0f,
-                                float Pitch = 0.0f) : Front_(glm::vec3(0.0f, 0.0f, -1.0f)),
-                                MovementSpeed_(1.0f),
-                                MouseSensitivity_(0.1f),
-                                FOV_(45.0f) {
+    ERS_STRUCT_Camera(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f)) {
         
         // Set Params
         Position = Position;
-        WorldUp_ = Up;
+        WorldUp_ = glm::vec3(0.0f, 1.0f, 0.0f);
         Update();
         
     }
