@@ -129,8 +129,32 @@ bool ERS_FUNCTION_GetStringVector(YAML::Node Data, std::string Name, std::vector
         return false;
     }
 }
-
-
+bool ERS_FUNCTION_GetIntVector(YAML::Node Data, std::string Name, std::vector<int> &Target) {
+    try {
+        YAML::Node TargetNode = Data[Name];
+        for (YAML::const_iterator it=TargetNode.begin(); it!=TargetNode.end(); ++it) {
+            Target.push_back(it->second.as<int>());
+        }
+        return true;
+    } catch (YAML::TypedBadConversion<int>&) {
+        return false;
+    } catch (YAML::KeyNotFound&) {
+        return false;
+    }
+}
+bool ERS_FUNCTION_GetLongVector(YAML::Node Data, std::string Name, std::vector<long> &Target) {
+    try {
+        YAML::Node TargetNode = Data[Name];
+        for (YAML::const_iterator it=TargetNode.begin(); it!=TargetNode.end(); ++it) {
+            Target.push_back(it->second.as<long>());
+        }
+        return true;
+    } catch (YAML::TypedBadConversion<long>&) {
+        return false;
+    } catch (YAML::KeyNotFound&) {
+        return false;
+    }
+}
 
 // GLM Helper Functions
 bool ERS_FUNCTION_GetVec3(YAML::Node Data, std::string NameBase, glm::vec3 &Target) {
