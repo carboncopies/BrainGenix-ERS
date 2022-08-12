@@ -104,9 +104,9 @@ void ERS_STRUCT_Camera::Update() {
 
 
 void ERS_STRUCT_Camera::SetRotation(glm::vec3 Rotation) {
-    Orientation_.p  = Rotation.x;
-    Orientation_.y    = Rotation.y;
-    Orientation_.r   = Rotation.z;
+    Orientation_.p = Rotation.x;
+    Orientation_.y = Rotation.y;
+    Orientation_.r = Rotation.z;
 }
 
 void ERS_STRUCT_Camera::GetMatrices(glm::mat4& Perspective, glm::mat4& View){
