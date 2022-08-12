@@ -122,13 +122,21 @@ public:
      */
     void GetMovementSpeedBoundries(float &MinSpeed, float &MaxSpeed);
 
+    /**
+     * @brief Helper function, Sets the speed of the camera.
+     * 
+     * @param Speed Desired speed in units per second
+     * @param EnforceSpeedBoundries
+     */
+    void SetMovementSpeed(float Speed, bool EnforceSpeedBoundries = true);
+
 private:
 
     // Camea Configuration Information
-    float NearClip_          = 0.01f; /**<Closest distance before geometry is culled.*/
+    float NearClip_          = 0.01f;  /**<Closest distance before geometry is culled.*/
     float FarClip_           = 100.0f; /**<Farthest distance before geometry is called*/
-    float MinMovementSpeed_  = 0.01f; /**<Slowest movement speed allowed in units per second*/
-    float MaxMovementSpeed_  = 50.0f; /**<Fastest movement speed allowed in units per second*/
+    float MinMovementSpeed_  = 0.01f;  /**<Slowest movement speed allowed in units per second*/
+    float MaxMovementSpeed_  = 50.0f;  /**<Fastest movement speed allowed in units per second*/
 
     // Internal Camera State Information
     float MovementSpeed_     = 0.2f; /**<Current Movement Speed*/
