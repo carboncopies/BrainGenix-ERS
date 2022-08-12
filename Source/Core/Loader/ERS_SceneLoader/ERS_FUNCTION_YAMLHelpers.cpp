@@ -105,6 +105,29 @@ bool ERS_FUNCTION_GetString(YAML::Node Data, std::string Name, std::string &Targ
         return false;
     }
 }
+bool ERS_FUNCTION_GetNode(YAML::Node Data, std::string Name, YAML::Node &Target) {
+    try {
+        Target = Data[Name];
+        return true;
+    } catch (YAML::KeyNotFound&) {
+        return false;
+    }
+}
+
+
+// Vector Helpers
+bool ERS_FUNCTION_GetStringVector(YAML::Node Data, std::string Name, std::vector<std::string> &Target) {
+    try {
+        Target = Data[Name].as<std::string>();
+        return true;
+    } catch (YAML::TypedBadConversion<std::string>&) {
+        return false;
+    } catch (YAML::KeyNotFound&) {
+        return false;
+    }
+}
+
+
 
 // GLM Helper Functions
 bool ERS_FUNCTION_GetVec3(YAML::Node Data, std::string NameBase, glm::vec3 &Target) {
