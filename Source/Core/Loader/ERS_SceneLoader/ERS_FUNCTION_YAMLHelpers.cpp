@@ -124,7 +124,7 @@ bool ERS_FUNCTION_GetVec3FromFloats(YAML::Node Data, std::string NameBase, glm::
         float Z = Data[NameBase + "Z"].as<float>();
         Target = glm::vec3(X,Y,Z);
         return true;
-    } catch (YAML::TypedBadConversion<glm::vec3>) {
+    } catch (YAML::TypedBadConversion<float>) {
         return false;
     } catch (YAML::KeyNotFound) {
         return false;
