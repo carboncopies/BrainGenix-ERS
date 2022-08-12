@@ -308,7 +308,7 @@ void ERS_STRUCT_Camera::Update() {
     glm::quat QuatYaw    = glm::angleAxis(glm::radians(Yaw_  ), glm::vec3(0, 1, 0));
     glm::quat QuatRoll   = glm::angleAxis(glm::radians(Roll_ ), glm::vec3(1, 0, 0));
     
-    glm::quat Orientation = QuatPitch * QuatYaw * QuatRoll;
+    glm::quat Orientation = QuatPitch * QuatYaw;
     Orientation = glm::normalize(Orientation);
 
 
@@ -322,15 +322,15 @@ void ERS_STRUCT_Camera::Update() {
  	//ViewMatrix_ = glm::translate(glm::mat4_cast(Orientation_), Position_);;
 
     // Calculate Movement Direction Vectors
-    Front_ = Orientation * LocalFront_;
+    //Front_ = Orientation * LocalFront_;
     // Up_    = Orientation_ * LocalUp_;
     // Right_ = Orientation_ * LocalRight_;
     
-    // Front_ = glm::vec3();
-    // Front_.x = cos(glm::radians(Rotation_.y)) * cos(glm::radians(Rotation_.x));
-    // Front_.y = sin(glm::radians(Rotation_.x));
-    // Front_.z = sin(glm::radians(Rotation_.y)) * cos(glm::radians(Rotation_.x));
-    // Front_ = glm::normalize(Front_);
+    Front_ = glm::vec3();
+    Front_.x = cos(glm::radians(Yaw_)) * cos(glm::radians(Pitch_));
+    Front_.y = sin(glm::radians(Pitch_));
+    Front_.z = sin(glm::radians(Yaw_)) * cos(glm::radians(Pitch_));
+    Front_ = glm::normalize(Front_);
 
     // Right_ = glm::normalize(glm::cross(Front_, LocalUp_));
     // Up_ = glm::normalize(glm::cross(Right_, Front_));
