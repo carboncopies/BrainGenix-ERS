@@ -12,8 +12,13 @@ bool ERS_FUNCTION_DecodeScene(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, ERS
     SystemUtils->Logger_->Log("Decoding ERS Scene", 5, LogEnable);
 
     // Extract Current Version
-    int Version;
+    int Version = 0;
     SystemUtils->Logger_->Log("Identifying Scene Format Version", 4, LogEnable);
-    if (SceneData["SceneFormatVersion"])
+    if (SceneData["SceneFormatVersion"]) {
+        Version = SceneData["SceneFormatVersion"].as<int>();
+    } else {
+        SystemUtils->Logger_->Log("Unable To Find Metadata Tag For 'SceneFormatVersion', Unable To Identify Version", 9);
+        return false;
+    }
 
 }
