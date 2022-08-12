@@ -23,10 +23,24 @@
  */
 struct ERS_STRUCT_SceneCamera {
 
+    // Camea Configuration Information
+    float NearClip_          = 0.01f;  /**<Closest distance before geometry is culled.*/
+    float FarClip_           = 100.0f; /**<Farthest distance before geometry is called*/
+    float MinMovementSpeed_  = 0.01f;  /**<Slowest movement speed allowed in units per second*/
+    float MaxMovementSpeed_  = 50.0f;  /**<Fastest movement speed allowed in units per second*/
+    std::vector<long> AttachedScriptIndexes_; /**<Indices of scripts that are attached to this camera*/
+    std::string UserDefinedName_; /**<Name that appears in the editor's scene tree*/
+
+    // Internal Camera State Information
+    float MovementSpeed_     = 0.2f;   /**<Current Movement Speed*/
+    float MouseSensitivity_  = 0.05f;  /**<Mouse sensitivity multiplier*/
+    float FOV_               = 50.0f;  /**<Field of view in degrees*/
+    float AspectRatio_       = 1.25f;  /**<Internal variable used to setup the projection matrix*/
     glm::vec3 Pos_; /**<Position of the camera object*/
     glm::vec3 Rot_; /**<Rotation of the camera object*/
 
-    std::vector<long> AttachedScriptIndexes_; /**<Indices of scripts that are attached to this camera*/
-    std::string UserDefinedName_; /**<Name that appears in the editor's scene tree*/
+
+    // Asset Streaming Settings
+    int StreamingPriority_ = 1;                 /**< Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)*/
 
 };

@@ -263,8 +263,9 @@ void GUI_Window_ObjectProperties::Draw() {
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
                     if (ImGui::CollapsingHeader("Camera Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
 
-                        // Get Current Camera
-                        //ERS_STRUCT_SceneCamera* Camera = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneCameras[Index].get();
+                        // Get Current Camera, Get Properties
+                        ERS_STRUCT_SceneCamera* Camera = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneCameras[Index].get();
+                        //float FOV = Camera.
 
                         bool Selected = (bool)SceneManager_->Scenes_[SceneManager_->ActiveScene_]->ActiveSceneCameraIndex == Index;
                         if (ImGui::Checkbox("Active Camera", &Selected)) {
