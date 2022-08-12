@@ -312,11 +312,11 @@ void ERS_STRUCT_Camera::Update() {
     glm::quat QuatYaw    = glm::angleAxis(glm::radians(Rotation_.y), glm::vec3(0, 1, 0));
     glm::quat QuatRoll   = glm::angleAxis(glm::radians(Rotation_.z), glm::vec3(0, 0, 1));
     
-    Orientation_ = QuatPitch * QuatYaw;
-    Orientation_ = glm::normalize(Orientation_);
+    glm::quat Orientation = QuatPitch * QuatYaw;
+    Orientation = glm::normalize(Orientation);
 
 
-    glm::mat4 Rotate = glm::mat4_cast(Orientation_);
+    glm::mat4 Rotate = glm::mat4_cast(Orientation);
     glm::mat4 Translate = glm::mat4(1.0f);
     Translate = glm::translate(Translate, -Position_);
     ViewMatrix_ = Rotate * Translate;
@@ -326,7 +326,7 @@ void ERS_STRUCT_Camera::Update() {
  	//ViewMatrix_ = glm::translate(glm::mat4_cast(Orientation_), Position_);;
 
     // Calculate Movement Direction Vectors
-    Front_ = Orientation_ * LocalFront_;
+    Front_ = Orientation * LocalFront_;
     // Up_    = Orientation_ * LocalUp_;
     // Right_ = Orientation_ * LocalRight_;
     
@@ -344,16 +344,16 @@ void ERS_STRUCT_Camera::Update() {
 
 }
 
-void ERS_STRUCT_Camera::Rotate(float Angle, glm::vec3 Axis) {
-	Orientation_ *= glm::angleAxis(glm::radians(Angle), Axis * Orientation_);
-}
+// void ERS_STRUCT_Camera::Rotate(float Angle, glm::vec3 Axis) {
+// 	Orientation_ *= glm::angleAxis(glm::radians(Angle), Axis * Orientation_);
+// }
 
-void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
-    Orientation_ = glm::quat();
-    Rotate(Rotation.x, glm::vec3(1, 0, 0));
-    Rotate(Rotation.y, glm::vec3(0, 1, 0));
-    Rotate(Rotation.z, glm::vec3(0, 0, 1));
-}
+// void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
+//     Orientation_ = glm::quat();
+//     Rotate(Rotation.x, glm::vec3(1, 0, 0));
+//     Rotate(Rotation.y, glm::vec3(0, 1, 0));
+//     Rotate(Rotation.z, glm::vec3(0, 0, 1));
+// }
 
 void ERS_STRUCT_Camera::SetRotation(glm::vec3 Rotation) {
     Rotation_ = Rotation;

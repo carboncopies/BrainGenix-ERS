@@ -58,7 +58,6 @@ public:
     float FOV_               = 50.0f;
     float AspectRatio_       = 1.25f;
 
-    glm::quat Orientation_; 
     glm::vec3 Rotation_;
     glm::vec3 Position_;
     
