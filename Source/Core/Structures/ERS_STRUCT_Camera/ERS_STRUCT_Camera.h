@@ -120,23 +120,6 @@ private:
 
 
 
-    /**
-     * @brief Updates the orientation quat for one axis (xyz)
-     * Example: Rotate(glm::radians(90.0f), glm::vec3(1,0,0)); 
-     * That would rotate the x axis 90 degrees.
-     * 
-     * @param Angle 
-     * @param Axis 
-     */
-    void Rotate(float Angle, glm::vec3 Axis); 
-
-    /**
-     * @brief Applies the Rotation_ vector by calling the other overload of rotate for every axis.
-     * Also clears the orientation quat so that we start rotating from 0,0,0
-     * 
-     * @param Rotation 
-     */
-    void Rotate(glm::vec3 Rotation);
 };
 
 
