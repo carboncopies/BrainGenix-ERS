@@ -47,53 +47,16 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
         } else if (AssetType == std::string("DirectionalLight")) {
 
-            // Setup Model Pointer In Scene To Work On
             ERS_STRUCT_DirectionalLight Light;
-            ERS_FUNCTION_GetVec3Color  (Item, "Color")
-            Scene->DirectionalLights.push_back(std::make_shared<ERS_STRUCT_DirectionalLight>());
-            int LightIndex = Scene->DirectionalLights.size() - 1;
-
-            Scene->DirectionalLights[LightIndex]->UserDefinedName = AssetName;
-
-            if (SceneItems[i]["ColorRed"] && SceneItems[i]["ColorGreen"] && SceneItems[i]["ColorBlue"]) {
-                Scene->DirectionalLights[LightIndex]->Color = glm::vec3(
-                    SceneItems[i]["ColorRed"].as<float>(),
-                    SceneItems[i]["ColorGreen"].as<float>(),
-                    SceneItems[i]["ColorBlue"].as<float>()
-                    );
-            }
-
-            if (SceneItems[i]["Intensity"]) {
-                Scene->DirectionalLights[LightIndex]->Intensity = SceneItems[i]["Intensity"].as<float>();
-            }
-
-            if (SceneItems[i]["MaxDistance"]) {
-                Scene->DirectionalLights[LightIndex]->MaxDistance = SceneItems[i]["MaxDistance"].as<float>();
-            }
-
-            Scene->DirectionalLights[LightIndex]->Pos = glm::vec3(
-                SceneItems[i]["PosX"].as<float>(),
-                SceneItems[i]["PosY"].as<float>(),
-                SceneItems[i]["PosZ"].as<float>()
-                );
-            Scene->DirectionalLights[LightIndex]->Rot = glm::vec3(
-                SceneItems[i]["RotX"].as<float>(),
-                SceneItems[i]["RotY"].as<float>(),
-                SceneItems[i]["RotZ"].as<float>()
-                );
-
-
-            if (SceneItems[i]["CastShadows"]) {
-                Scene->DirectionalLights[LightIndex]->CastsShadows_ = SceneItems[i]["CastShadows"].as<bool>();
-            }
-
-            // Load Attached Scripts
-            if (SceneItems[i]["AttachedScripts"]) {
-                YAML::Node Scripts = SceneItems[i]["AttachedScripts"];
-                for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
-                    Scene->DirectionalLights[LightIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
-                }
-            }
+            ERS_FUNCTION_GetString     (Item, "AssetName",            Light.UserDefinedName         );
+            ERS_FUNCTION_GetVec3Color  (Item, "Color",                Light.Color                   );
+            ERS_FUNCTION_GetVec3       (Item, "Pos",                  Light.Pos                     );
+            ERS_FUNCTION_GetVec3       (Item, "Rot",                  Light.Rot                     );
+            ERS_FUNCTION_GetFloat      (Item, "Intensity",            Light.Intensity               );
+            ERS_FUNCTION_GetFloat      (Item, "MaxDistance",          Light.MaxDistance             );
+            ERS_FUNCTION_GetBool       (Item, "CastShadows",          Light.CastsShadows_           );
+            ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Light.AttachedScriptIndexes_  );
+            Scene->DirectionalLights.push_back(std::make_shared<ERS_STRUCT_DirectionalLight>(Light));
 
         } else if (AssetType == std::string("PointLight")) {
 
