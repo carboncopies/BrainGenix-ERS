@@ -269,18 +269,18 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboo
 
     // Update Pitch/Yaw
     Rotation_.x += XOffset;
-    Rotation_.y -= YOffset;
+    Rotation_.z -= YOffset;
 
 
 
     // Bound Pitch
     if (ConstrainPitch) {
 
-        if (Rotation_.y > 89.0f) {
-            Rotation_.y = 89.0f;
+        if (Rotation_.z > 89.0f) {
+            Rotation_.z = 89.0f;
         }
-        if (Rotation_.y < -89.0f) {
-            Rotation_.y = -89.0f;
+        if (Rotation_.z < -89.0f) {
+            Rotation_.z = -89.0f;
         }
     }
 
