@@ -205,17 +205,17 @@ public:
     /**
      * @brief Get the camera's streaming priority.
      * 
-     * @param Priority Int between 1-10 setting the priority. 
+     * @param StreamingPriority Int between 1-10 setting the priority. 
      */
-    void GetStreamingPriority(int &Priority);
+    void GetStreamingPriority(int &StreamingPriority);
     int GetStreamingPriority();
-    
+
     /**
      * @brief Set the Streaming Priority int.
      * 
-     * @param Priority Int between 1-10 setting the priority. 
+     * @param StreamingPriority Int between 1-10 setting the priority. 
      */
-    void SetStreamingPriority(int Priority);
+    void SetStreamingPriority(int StreamingPriority);
 
 private:
 
@@ -244,7 +244,7 @@ private:
 
 
     // Asset Streaming Settings
-    int Priority_ = 1;                 /**< Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)*/
+    int StreamingPriority_ = 1;                 /**< Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)*/
 
 
 };
