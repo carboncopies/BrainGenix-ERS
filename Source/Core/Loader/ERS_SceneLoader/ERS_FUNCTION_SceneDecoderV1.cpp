@@ -10,12 +10,10 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
 
     // Grab Metadata
-    Scene->SceneFormatVersion = SceneData["SceneFormatVersion"].as<long>();
-    Scene->SceneName = SceneData["SceneName"].as<std::string>();
+    Scene->SceneFormatVersion = 1;
+    ERS_FUNCTION_GetString  (SceneData, "SceneName", Scene->SceneName);
+    ERS_FUNCTION_GetInt     (SceneData, "ActiveCameraIndex", Scene->ActiveSceneCameraIndex);
 
-    if (SceneData["ActiveCameraIndex"]) {
-        Scene->ActiveSceneCameraIndex = SceneData["ActiveCameraIndex"].as<int>();
-    }
 
     // Log Scene Processing
     SystemUtils->Logger_->Log(std::string("Processing Scene: ") + std::string(Scene->SceneName), 3, LogEnable);
