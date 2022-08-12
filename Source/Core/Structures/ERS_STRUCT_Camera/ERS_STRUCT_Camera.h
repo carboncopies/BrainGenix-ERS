@@ -159,7 +159,8 @@ public:
      * @param FOV Field of view in degrees.
      */
     void GetFOV(float &FOV);
-
+    float GetFOV();
+    
     /**
      * @brief Sets the field of view angle.
      * 

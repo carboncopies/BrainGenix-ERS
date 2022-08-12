@@ -143,6 +143,9 @@ void ERS_STRUCT_Camera::SetFOV(float FOV) {
 void ERS_STRUCT_Camera::GetFOV(float &FOV) {
     FOV = FOV_;
 }
+float ERS_STRUCT_Camera::GetFOV() {
+    return FOV_;
+}
 void ERS_STRUCT_Camera::GetMouseSensitivity(float &Sensitivity) {
     Sensitivity = MouseSensitivity_;
 }
