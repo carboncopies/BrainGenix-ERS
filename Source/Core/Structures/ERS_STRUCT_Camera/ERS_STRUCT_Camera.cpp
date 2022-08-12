@@ -246,13 +246,13 @@ void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement Direction, float DeltaTim
 
     // Update Position(s)
     if (Direction == FORWARD)
-        Position_ += Front_ * Velocity;
+        Position_ += LocalFront_ * Velocity;
     if (Direction == BACKWARD)
-        Position_ -= Front_ * Velocity;
+        Position_ -= LocalFront_ * Velocity;
     if (Direction == LEFT)
-        Position_ -= Right_ * Velocity;
+        Position_ -= LocalRight_ * Velocity;
     if (Direction == RIGHT)
-        Position_ += Right_ * Velocity;
+        Position_ += LocalRight_ * Velocity;
     if (Direction == UP)
         Position_ += LocalUp_ * Velocity;
     if (Direction == DOWN)
