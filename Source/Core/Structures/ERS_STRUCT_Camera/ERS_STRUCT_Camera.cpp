@@ -317,7 +317,7 @@ void ERS_STRUCT_Camera::Update() {
     Front_ = Orientation_ * LocalFront_;
     Up_    = Orientation_ * LocalUp_;
     Right_ = Orientation_ * LocalRight_;
-
+    
     // Front_ = glm::vec3();
     // Front_.x = cos(glm::radians(Rotation_.y)) * cos(glm::radians(Rotation_.x));
     // Front_.y = sin(glm::radians(Rotation_.x));
@@ -338,9 +338,9 @@ void ERS_STRUCT_Camera::Rotate(float Angle, glm::vec3 Axis) {
 
 void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
     Orientation_ = glm::quat();
-    Rotate(Rotation.z, glm::vec3(0, 0, 1));
-    Rotate(Rotation.y, glm::vec3(0, 1, 0));
     Rotate(Rotation.x, glm::vec3(1, 0, 0));
+    Rotate(Rotation.y, glm::vec3(0, 1, 0));
+    Rotate(Rotation.z, glm::vec3(0, 0, 1));
 }
 
 void ERS_STRUCT_Camera::SetRotation(glm::vec3 Rotation) {
