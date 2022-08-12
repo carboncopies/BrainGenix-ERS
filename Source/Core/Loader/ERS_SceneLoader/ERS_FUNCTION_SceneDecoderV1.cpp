@@ -36,6 +36,10 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
         // If type Is Model
         if (AssetType == "Model") {
 
+            ERS_STRUCT_Model Model;
+
+            ERS_FUNCTION_GetLong(Item, "AssetID", Model->AssetID);
+
             long AssetID = SceneDataNode[i]["AssetID"].as<long>();
 
             // Get Asset LocRotScale
