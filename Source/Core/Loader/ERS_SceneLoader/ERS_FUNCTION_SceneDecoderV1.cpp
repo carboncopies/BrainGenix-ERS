@@ -28,11 +28,9 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
         ERS_FUNCTION_GetString(Item, "AssetType", AssetType);
 
 
-        // If type Is Model
         if (AssetType == "Model") {
 
             ERS_STRUCT_Model Model;
-
             ERS_FUNCTION_GetLong       (Item, "AssetID",              Model.AssetID                 );
             ERS_FUNCTION_GetVec3       (Item, "AssetPosition",        Model.ModelPosition           );
             ERS_FUNCTION_GetVec3       (Item, "AssetRotation",        Model.ModelRotation           );
@@ -44,15 +42,8 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
             ERS_FUNCTION_GetString     (Item, "AssetName",            Model.Name                    );
             ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Model.AttachedScriptIndexes_  );
 
-
-            //Load Model 
             Scene->Models.push_back(std::make_shared<ERS_STRUCT_Model>(Model));
             ModelLoader->AddModelToLoadingQueue(Scene->Models[Scene->Models.size()-1]);
-
-
- 
-
-
 
         } else if (AssetType == std::string("DirectionalLight")) {
 
