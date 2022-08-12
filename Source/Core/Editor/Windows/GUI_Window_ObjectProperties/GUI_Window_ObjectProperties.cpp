@@ -296,13 +296,15 @@ void GUI_Window_ObjectProperties::Draw() {
                         ImGui::Spacing();
 
                         ImGui::Checkbox("Enforce Aspect Ratio", &Camera->EnforceAspectRatio_);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Manually override the camera's aspect ratio. Will cause letterboxing if the ratios don't match.");
 
                         if (!Camera->EnforceAspectRatio_) {
                             ImGui::BeginDisabled();
                         }
                         ImGui::DragFloat("Aspect Ratio", &Camera->AspectRatio_, 0.05f, 0.1f, 4.0f);
                         ImGui::SameLine();
-                        ImGui::HelpMarker("Manually override the camera's aspect ratio. Will cause letterboxing if the ratios don't match.");
+                        ImGui::HelpMarker("Aspect ratio to override the camera's automatic one with. Ratio is width/height.");
                         if (!Camera->EnforceAspectRatio_) {
                             ImGui::EndDisabled();
                         }
