@@ -258,6 +258,23 @@ void GUI_Window_ObjectProperties::Draw() {
 
                     }
 
+                } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("SceneCamera")) {
+                    
+                    unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
+                    if (ImGui::CollapsingHeader("Camera Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
+
+                        // Get Current Camera
+                        //ERS_STRUCT_SceneCamera* Camera = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneCameras[Index].get();
+
+                        bool Selected = (bool)SceneManager_->Scenes_[SceneManager_->ActiveScene_]->ActiveSceneCameraIndex == Index;
+                        if (ImGui::Checkbox("Active Camera", &Selected)) {
+                            SceneManager_->Scenes_[SceneManager_->ActiveScene_]->ActiveSceneCameraIndex = Index;
+                        }
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Indicates if this is the active camera or not. There can only be one active camera at a time. The system then renders the scene from the active camera's perspective on viewport 0.");
+
+                    }
+
                 }
 
 
@@ -274,6 +291,8 @@ void GUI_Window_ObjectProperties::Draw() {
                         ScriptIndices_ = &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->DirectionalLights[Index]->AttachedScriptIndexes_;     
                     } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("SpotLight")) {
                         ScriptIndices_ = &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->AttachedScriptIndexes_;     
+                    } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("SceneCamera")) {
+                        ScriptIndices_ = &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneCameras[Index]->AttachedScriptIndexes_;     
                     }
 
                     // Draw List Box

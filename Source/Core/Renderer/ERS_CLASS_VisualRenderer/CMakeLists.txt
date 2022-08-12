@@ -8,7 +8,7 @@ add_library(ERS_CLASS_VisualRenderer
 
             # Add Source Files (.cpp)
             "ERS_CLASS_VisualRenderer.cpp"
-            "ERS_CLASS_LightIconRenderer.cpp"
+            "ERS_CLASS_IconRenderer.cpp"
             "ERS_CLASS_Grid.cpp"
             "ERS_CLASS_InputProcessor.cpp"
             "ERS_CLASS_MeshRenderer.cpp"
@@ -31,7 +31,7 @@ add_library(ERS_CLASS_VisualRenderer
 
             # Add Header Files (.h)
             "ERS_CLASS_VisualRenderer.h"
-            "ERS_CLASS_LightIconRenderer.h"
+            "ERS_CLASS_IconRenderer.h"
             "ERS_CLASS_Grid.h"
             "ERS_CLASS_InputProcessor.h"
             "ERS_CLASS_MeshRenderer.h"
@@ -87,6 +87,7 @@ target_link_libraries(ERS_CLASS_VisualRenderer
     ERS_STRUCT_OpenGLDefaults
     ERS_STRUCT_RendererSettings
     ERS_STRUCT_ShaderUniformData
+    ERS_STRUCT_SceneCamera
 
     )
 

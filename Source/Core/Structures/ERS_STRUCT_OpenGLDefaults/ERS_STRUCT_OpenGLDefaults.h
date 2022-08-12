@@ -28,5 +28,7 @@ struct ERS_STRUCT_OpenGLDefaults {
     unsigned int PointLightTexture_; /**<Texture ID For Point Light*/
     unsigned int DirectionalLightTexture_; /**<Texture ID For Directional Light*/
     unsigned int SpotLightTexture_; /**<Texture ID For Spot Light*/
+    
+    unsigned int SceneCameraTexture_; /**<Texture ID For Scene Camera Icon*/
 
 };

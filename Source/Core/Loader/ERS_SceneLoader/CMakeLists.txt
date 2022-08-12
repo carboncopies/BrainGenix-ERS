@@ -33,6 +33,7 @@ target_link_libraries(ERS_SceneLoader
     ERS_STRUCT_Texture
     ERS_STRUCT_Shader
     ERS_STRUCT_Light
+    ERS_STRUCT_SceneCamera
 
     )
 

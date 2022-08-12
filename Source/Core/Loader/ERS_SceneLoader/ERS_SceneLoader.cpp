@@ -48,6 +48,10 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
     Scene.SceneName = RawSceneData["SceneName"].as<std::string>();
     Scene.ScenePath = AssetID;
 
+    if (RawSceneData["ActiveCameraIndex"]) {
+        Scene.ActiveSceneCameraIndex = RawSceneData["ActiveCameraIndex"].as<int>();
+    }
+
     // Log Scene Processing
     SystemUtils_->Logger_->Log(std::string(std::string("Processing Scene: ") + std::string(Scene.SceneName)).c_str(), 3);
 
@@ -264,6 +268,32 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
                 YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
                 for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
                     Scene.SpotLights[LightIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
+                }
+            }
+
+        } else if (AssetType == std::string("SceneCamera")) {
+
+            // Setup Model Pointer In Scene To Work On
+            Scene.SceneCameras.push_back(std::make_shared<ERS_STRUCT_SceneCamera>());
+            int SceneCameraIndex = Scene.SceneCameras.size() - 1;
+
+            Scene.SceneCameras[SceneCameraIndex]->UserDefinedName_ = AssetName;
+            Scene.SceneCameras[SceneCameraIndex]->Pos_ = glm::vec3(
+                SceneDataNode[i]["PosX"].as<float>(),
+                SceneDataNode[i]["PosY"].as<float>(),
+                SceneDataNode[i]["PosZ"].as<float>()
+                );
+            Scene.SceneCameras[SceneCameraIndex]->Rot_ = glm::vec3(
+                SceneDataNode[i]["RotX"].as<float>(),
+                SceneDataNode[i]["RotY"].as<float>(),
+                SceneDataNode[i]["RotZ"].as<float>()
+                );
+
+            // Load Attached Scripts
+            if (SceneDataNode[i]["AttachedScripts"]) {
+                YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
+                for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
+                    Scene.SceneCameras[SceneCameraIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
                 }
             }
 

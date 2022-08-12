@@ -43,6 +43,10 @@ void ERS_CLASS_SceneManager::UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm
         unsigned long Index = Scenes_[ActiveScene_]->SceneObjects_[SelectedObject].Index_;
         Scenes_[ActiveScene_]->SpotLights[Index]->Pos = Pos;
         Scenes_[ActiveScene_]->SpotLights[Index]->Rot = Rot;
+    } else if (Scenes_[ActiveScene_]->SceneObjects_[Scenes_[ActiveScene_]->SelectedObject].Type_ == std::string("SceneCamera")) {
+        unsigned long Index = Scenes_[ActiveScene_]->SceneObjects_[SelectedObject].Index_;
+        Scenes_[ActiveScene_]->SceneCameras[Index]->Pos_ = Pos;
+        Scenes_[ActiveScene_]->SceneCameras[Index]->Rot_ = Rot;
     }
 
 }

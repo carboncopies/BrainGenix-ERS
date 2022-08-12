@@ -271,13 +271,13 @@ std::map<unsigned int, int> ERS_CLASS_AssetStreamingManager::CalculateCameraMaxU
     // Sum Camera Priorities
     int TotalCameraPriorities = 0;
     for (unsigned int i = 0; i < Cameras.size(); i++) {
-        TotalCameraPriorities += Cameras[i]->Priority_;
+        TotalCameraPriorities += Cameras[i]->GetStreamingPriority();
     }
 
     // Calculate Percentage Of Total Updates Each Camera Should Have
     std::vector<float> CameraUpdatePercentages;
     for (unsigned int i = 0; i < Cameras.size(); i++) {
-        CameraUpdatePercentages.push_back(Cameras[i]->Priority_ / TotalCameraPriorities);
+        CameraUpdatePercentages.push_back(Cameras[i]->GetStreamingPriority() / TotalCameraPriorities);
     }
 
     // Convert Update Percentages Into Actual Update Totals
@@ -306,7 +306,7 @@ std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDista
     // Create Sorted List Of Distances Based On Position
     std::map<float, unsigned int> Distances;        
     for (unsigned int i = 0; i < Scene->Models.size(); i++) {
-        float Distance = glm::distance(Camera->Position_, Scene->Models[i]->ModelPosition);
+        float Distance = glm::distance(Camera->GetPosition(), Scene->Models[i]->ModelPosition);
         Distances.insert(std::make_pair(Distance, i));
     }
     std::map<float, unsigned int> SortedDistances; 
@@ -346,8 +346,5 @@ void ERS_CLASS_AssetStreamingManager::SetCameraStructs(std::vector<ERS_STRUCT_Ca
     Cameras_ = Cameras;
 }
 
-// Not Yet Implemented
-// void ERS_CLASS_AssetStreamingManager::PreloadScene(ERS_STRUCT_Scene* Scene) {
-//     std::cout<<"WARNING: NOT YET IMPLEMENTED!\n";
-// }
+
 

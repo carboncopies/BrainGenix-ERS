@@ -20,23 +20,24 @@
 #include <ERS_STRUCT_Shader.h>
 #include <ERS_STRUCT_OpenGLDefaults.h>
 #include <ERS_STRUCT_Camera.h>
+#include <ERS_STRUCT_Scene.h>
 
 #include <ERS_SceneManager.h>
 
 
 
-class ERS_CLASS_LightIconRenderer {
+class ERS_CLASS_IconRenderer {
 
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<Shared Pointer To System Utils*/
     ERS_STRUCT_OpenGLDefaults* OpenGLDefaults_; /**<Pointer acquired from renderermanager*/
-    ERS_STRUCT_Shader* LightIconRendererShader_; /**<Pointer To Shader With LightIconRenderer*/
-    glm::mat4 LightIconRendererModelArray_; /**<LightIconRenderer Model Mat4*/
+    ERS_STRUCT_Shader* IconRendererShader_; /**<Pointer To Shader With IconRenderer*/
+    glm::mat4 IconRendererModelArray_; /**<IconRenderer Model Mat4*/
 
-    unsigned int LightIconRendererVBO_; /**<OpenGL ID To LightIconRenderer Vertex Buffer Object*/
-    unsigned int LightIconRendererVAO_; /**<OpenGL ID To LightIconRenderer Vertex Array Object*/
-    float LightIconRendererScale_ = 0.1f; /**<Scale of editor icons*/
+    unsigned int IconRendererVBO_; /**<OpenGL ID To IconRenderer Vertex Buffer Object*/
+    unsigned int IconRendererVAO_; /**<OpenGL ID To IconRenderer Vertex Array Object*/
+    float IconRendererScale_ = 0.1f; /**<Scale of editor icons*/
 
 
 public:
@@ -46,13 +47,13 @@ public:
      * 
      * @param SystemUtils 
      */
-    ERS_CLASS_LightIconRenderer(ERS_STRUCT_OpenGLDefaults* Defaults, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Shader* LightIconRendererShader);
+    ERS_CLASS_IconRenderer(ERS_STRUCT_OpenGLDefaults* Defaults, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Shader* IconRendererShader);
 
     /**
      * @brief Destroy the ers class grid object
      * 
      */
-    ~ERS_CLASS_LightIconRenderer();
+    ~ERS_CLASS_IconRenderer();
 
 
     /**

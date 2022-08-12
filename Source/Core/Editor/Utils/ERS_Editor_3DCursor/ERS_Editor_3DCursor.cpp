@@ -42,8 +42,9 @@ void Cursors3D::SetLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale, bo
 void Cursors3D::Draw(ERS_STRUCT_Camera* Camera, bool IsCameraMoving, bool ShowCube, bool ShowCursor) {
 
     Camera_ = Camera;
-    glm::mat4 Projection = Camera_->GetProjectionMatrix();
-    glm::mat4 View = Camera_->GetViewMatrix();
+    glm::mat4 Projection;
+    glm::mat4 View;
+    Camera_->GetMatrices(Projection, View);
 
 
 
