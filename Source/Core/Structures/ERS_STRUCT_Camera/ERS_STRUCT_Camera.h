@@ -65,7 +65,9 @@ public:
     glm::vec3 Right_;
     // end delete
 
-    glm::vec3 WorldUp_;
+    glm::vec3 LocalFront_     = glm::vec3(0.0f, 0.0f, 1.0f);
+    glm::vec3 LocalUp_        = glm::vec3(0.0f, 1.0f, 0.0f);
+    glm::vec3 LocalRight_     = glm::vec3(1.0f, 0.0f, 0.0f);
 
     glm::mat4 PerspectiveMatrix_;
     glm::mat4 ViewMatrix_;
@@ -82,7 +84,7 @@ public:
         
         // Set Params
         Position = Position;
-        WorldUp_ = glm::vec3(0.0f, 1.0f, 0.0f);
+        LocalUp_ = glm::vec3(0.0f, 1.0f, 0.0f);
         Update();
         
     }

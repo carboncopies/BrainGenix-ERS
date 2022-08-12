@@ -176,7 +176,7 @@
 // //     // Front_ = glm::normalize(glm::vec3(RotMatrix[2]));
 
 // //     // // Calculate Right, Up Vector
-// //     // Right_ = glm::normalize(glm::cross(Front_, WorldUp_));
+// //     // Right_ = glm::normalize(glm::cross(Front_, LocalUp_));
 // //     // Up_ = glm::normalize(glm::cross(Right_, Front_));
 
 // // }
@@ -227,7 +227,7 @@
 //     // Front_ = glm::normalize(glm::vec3(RotMatrix[2]));
 
 //     // // Calculate Right, Up Vector
-//     // Right_ = glm::normalize(glm::cross(Front_, WorldUp_));
+//     // Right_ = glm::normalize(glm::cross(Front_, LocalUp_));
 //     // Up_ = glm::normalize(glm::cross(Right_, Front_));
     
 //     // glm::mat4 roll_mat = glm::rotate(glm::mat4(1.0f), glm::radians(Roll_), Front_);
@@ -320,7 +320,7 @@ void ERS_STRUCT_Camera::Update() {
     Front_.z = sin(glm::radians(Rotation_.y)) * cos(glm::radians(Rotation_.x));
     Front_ = glm::normalize(Front_);
 
-    Right_ = glm::normalize(glm::cross(Front_, WorldUp_));
+    Right_ = glm::normalize(glm::cross(Front_, LocalUp_));
     Up_ = glm::normalize(glm::cross(Right_, Front_));
 
     glm::mat4 roll_mat = glm::rotate(glm::mat4(1.0f), glm::radians(Rotation_.z), Front_);
