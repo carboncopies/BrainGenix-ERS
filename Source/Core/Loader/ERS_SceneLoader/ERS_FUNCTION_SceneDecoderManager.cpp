@@ -21,4 +21,13 @@ bool ERS_FUNCTION_DecodeScene(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, ERS
         return false;
     }
 
+    // Attempt Decoding With Known Decoding Systems
+    if (Version == 1) {
+        
+    } else if (Version == 2) {
+        
+    } else if (Version == 3) {
+
+    }
+
 }
