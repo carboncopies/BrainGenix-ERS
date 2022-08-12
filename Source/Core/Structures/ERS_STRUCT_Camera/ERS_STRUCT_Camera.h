@@ -84,15 +84,24 @@ public:
     void SetAspectRatio(float AspectRatio);
     void SetRotation(glm::vec3 Rotation);
 
-    void GetMatrices(glm::mat4& perspective, glm::mat4& view);
+    
 
 
     /**
-     * @brief Updates The Following Camera Matricies/Vars:
-     * View, Projection, Orientation Quat
+     * @brief Updates the camera's matricies, should be called once per frame.
      * 
      */
     void Update();
+    
+
+    /**
+     * @brief Helper function, gets the projection/perspective matrix and the view matrix.
+     * Note that if called before the update function, the values returned will be from the last frame.
+     * 
+     * @param Perspective 
+     * @param View 
+     */
+    void GetMatrices(glm::mat4& Perspective, glm::mat4& View);
 
     /**
      * @brief Helper function, sets the camera's clipping distance.
