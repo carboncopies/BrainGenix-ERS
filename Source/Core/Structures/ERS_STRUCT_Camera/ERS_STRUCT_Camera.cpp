@@ -217,9 +217,6 @@ glm::mat4 ERS_STRUCT_Camera::GetProjectionMatrix() {
 
 void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
 
-    Yaw_ = Rotation.x;
-    Pitch_ = Rotation.y;
-    Roll_ = Rotation.z;
 
     UpdateCameraVectors();
 
@@ -271,24 +268,24 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboo
     YOffset *= MouseSensitivity_;
 
     // Update Pitch/Yaw
-    Yaw_ += XOffset;
-    Pitch_ -= YOffset;
+    Rotation_.x += XOffset;
+    Rotation_.y -= YOffset;
 
 
 
     // Bound Pitch
     if (ConstrainPitch) {
 
-        if (Pitch_ > 89.0f) {
-            Pitch_ = 89.0f;
+        if (Rotation_.y > 89.0f) {
+            Rotation_.y = 89.0f;
         }
-        if (Pitch_ < -89.0f) {
-            Pitch_ = -89.0f;
+        if (Rotation_.y < -89.0f) {
+            Rotation_.y = -89.0f;
         }
     }
 
     // Update Front, Right, Up Vectors
-    UpdateCameraVectors();
+    Update();
 
 }
 
@@ -310,7 +307,7 @@ void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset) {
 
 }
 
-void ERS_STRUCT_Camera::UpdateCameraVectors() {
+void ERS_STRUCT_Camera::Update() {
     
     // Calculate New Front Vector
     glm::vec3 NewFront;

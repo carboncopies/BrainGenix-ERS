@@ -36,21 +36,16 @@ enum CameraMovement {
 
 
 // Setup Camera Options
-class ERS_STRUCT_Camera_old {
+struct ERS_STRUCT_Camera {
 
 public:
 
-    // Camera Attributes
-    glm::vec3 Position_;
-    glm::vec3 Front_;
-    glm::vec3 Up_;
-    glm::vec3 Right_;
-    glm::vec3 WorldUp_;
+
 
     // Asset Streaming Config
     int Priority_ = 1; // Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)
 
-    glm::quat Orientation_; 
+
 
     // Camera Options
     double MovementSpeed_;
@@ -63,7 +58,7 @@ public:
     float MaxMovementSpeed_ = 50.0f;
 
     // Constructor With Vectors
-    ERS_STRUCT_Camera_old(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f),
+    ERS_STRUCT_Camera(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f),
                                 glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f),
                                 float Yaw = -90.0f,
                                 float Pitch = 0.0f) : Front_(glm::vec3(0.0f, 0.0f, -1.0f)),
@@ -74,7 +69,7 @@ public:
         // Set Params
         Position = Position;
         WorldUp_ = Up;
-        UpdateCameraVectors();
+        Update();
         
     }
 
@@ -96,7 +91,25 @@ public:
 
 private:
 
-    void UpdateCameraVectors();
+    // Internal Camera State Information
+    glm::quat Orientation_; 
+    glm::vec3 Rotation_;
+    glm::vec3 Position_;
+    
+    // delete
+    glm::vec3 Front_;
+    glm::vec3 Up_;
+    glm::vec3 Right_;
+    // end delete
+
+    glm::vec3 WorldUp_;
+
+    /**
+     * @brief Updates The Following Camera Matricies/Vars:
+     * View, Projection, Orientation Quat
+     * 
+     */
+    void Update();
 
 
 };
