@@ -215,3 +215,16 @@ bool ERS_FUNCTION_GetNodeVector(YAML::Node Data, std::string NameBase, std::vect
  * @return false 
  */
 bool ERS_FUNCTION_GetVec3(YAML::Node Data, std::string NameBase, glm::vec3 &Target);
+
+/**
+ * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
+ * Returns true on success, false on fail.
+ * Will append Red,Green,Blue to get the three components of the vector.
+ * 
+ * @param Data YAML::Node containing the target data
+ * @param Name Name of the parameter in the yaml node
+ * @param Target Reference to the variable to be set to the decoded value
+ * @return true
+ * @return false 
+ */
+bool ERS_FUNCTION_GetVec3Color(YAML::Node Data, std::string NameBase, glm::vec3 &Target);

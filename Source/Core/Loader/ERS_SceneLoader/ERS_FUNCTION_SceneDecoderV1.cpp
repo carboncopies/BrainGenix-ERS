@@ -48,6 +48,8 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
         } else if (AssetType == std::string("DirectionalLight")) {
 
             // Setup Model Pointer In Scene To Work On
+            ERS_STRUCT_DirectionalLight Light;
+            ERS_FUNCTION_GetVec3Color  (Item, "Color")
             Scene->DirectionalLights.push_back(std::make_shared<ERS_STRUCT_DirectionalLight>());
             int LightIndex = Scene->DirectionalLights.size() - 1;
 

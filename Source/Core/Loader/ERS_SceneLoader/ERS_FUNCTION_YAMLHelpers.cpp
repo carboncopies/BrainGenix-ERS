@@ -182,3 +182,16 @@ bool ERS_FUNCTION_GetVec3(YAML::Node Data, std::string NameBase, glm::vec3 &Targ
         return false;
     }
 }
+bool ERS_FUNCTION_GetVec3Color(YAML::Node Data, std::string NameBase, glm::vec3 &Target) {
+    try {
+        float X = Data[NameBase + "Red"].as<float>();
+        float Y = Data[NameBase + "Green"].as<float>();
+        float Z = Data[NameBase + "Blue"].as<float>();
+        Target = glm::vec3(X,Y,Z);
+        return true;
+    } catch (YAML::TypedBadConversion<float>&) {
+        return false;
+    } catch (YAML::KeyNotFound&) {
+        return false;
+    }
+}
