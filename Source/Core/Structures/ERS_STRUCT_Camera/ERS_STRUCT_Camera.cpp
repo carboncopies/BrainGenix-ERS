@@ -7,8 +7,7 @@
 
 
 // Constructor/Destructor
-ERS_STRUCT_Camera::ERS_STRUCT_Camera(glm::vec3 Position) {
-    Position_ = Position;
+ERS_STRUCT_Camera::ERS_STRUCT_Camera() {
 }
 ERS_STRUCT_Camera::~ERS_STRUCT_Camera() {
 
