@@ -200,6 +200,7 @@ public:
      * @param FlipTextures 
      */
     void AddModelToLoadingQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model);
+    void AddModelToLoadingQueue(std::shared_ptr<ERS_STRUCT_Model> Model);
 
 
 

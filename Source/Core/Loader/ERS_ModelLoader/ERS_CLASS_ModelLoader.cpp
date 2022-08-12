@@ -132,6 +132,10 @@ void ERS_CLASS_ModelLoader::ProcessNewModels(ERS_STRUCT_Scene* ActiveScene) {
 
 }
 
+void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(std::shared_ptr<ERS_STRUCT_Model> Model) {
+    AddModelToLoadingQueue(Model->AssetID, Model);
+}
+
 void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model) {
 
     // Log Addition

@@ -38,22 +38,11 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
             ERS_STRUCT_Model Model;
 
-            ERS_FUNCTION_GetLong(Item, "AssetID", Model->AssetID);
-
-            long AssetID = SceneDataNode[i]["AssetID"].as<long>();
-
-            // Get Asset LocRotScale
-            float PosX = SceneDataNode[i]["AssetPositionX"].as<double>();
-            float PosY = SceneDataNode[i]["AssetPositionY"].as<double>();
-            float PosZ = SceneDataNode[i]["AssetPositionZ"].as<double>();
-
-            float RotX = SceneDataNode[i]["AssetRotationX"].as<double>();
-            float RotY = SceneDataNode[i]["AssetRotationY"].as<double>();
-            float RotZ = SceneDataNode[i]["AssetRotationZ"].as<double>();
-
-            float ScaleX = SceneDataNode[i]["AssetScaleX"].as<double>();
-            float ScaleY = SceneDataNode[i]["AssetScaleY"].as<double>();
-            float ScaleZ = SceneDataNode[i]["AssetScaleZ"].as<double>();
+            ERS_FUNCTION_GetLong   (Item, "AssetID",        Model.AssetID       );
+            ERS_FUNCTION_GetVec3   (Item, "AssetPosition",  Model.ModelPosition );
+            ERS_FUNCTION_GetVec3   (Item, "AssetRotation",  Model.ModelRotation );
+            ERS_FUNCTION_GetVec3   (Item, "AssetScale",     Model.ModelScale    );
+            //Model.ApplyTransformations();
 
             //Load Model 
             Scene->Models.push_back(std::make_shared<ERS_STRUCT_Model>());
@@ -62,9 +51,6 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
             // Add Instance To Models Vector
             Scene->Models[CurrentSize-1]->IsTemplateModel = false;
-            Scene->Models[CurrentSize-1]->SetLocRotScale(glm::vec3(PosX, PosY, PosZ), glm::vec3(RotX, RotY, RotZ), glm::vec3(ScaleX, ScaleY, ScaleZ));
-            Scene->Models[CurrentSize-1]->ApplyTransformations();
-            Scene->Models[CurrentSize-1]->AssetID = AssetID;
             Scene->Models[CurrentSize-1]->Name = AssetName;
 
 
