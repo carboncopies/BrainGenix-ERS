@@ -293,7 +293,26 @@ void GUI_Window_ObjectProperties::Draw() {
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the maximum distance after which geometry is ignored.");
 
+                        ImGui::Spacing();
 
+                        bool ToggleAspectRatio = ImGui::Checkbox("Enforce Aspect Ratio", (Camera->AspectRatio_ != 0.0f));
+                        if (ToggleAspectRatio) {
+                            if (Camera->AspectRatio_ != 0.0f) {
+                                Camera->AspectRatio_ = 0.0f;
+                            } else {
+                                Camera->AspectRatio_ = 1.0f;
+                            }
+                        }
+
+                        if (Camera->AspectRatio_ == 0.0f) {
+                            ImGui::BeginDisabled();
+                        }
+                        ImGui::DragFloat("Aspect Ratio", &Camera->AspectRatio_, 0.05f, 0.1f, 4.0f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Manually override the camera's aspect ratio. Will cause letterboxing if the ratios don't match.");
+                        if (Camera->AspectRatio_ == 0.0f) {
+                            ImGui::EndDisabled();
+                        }
 
                     }
 
