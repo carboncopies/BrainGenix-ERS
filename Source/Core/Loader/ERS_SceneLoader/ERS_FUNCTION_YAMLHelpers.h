@@ -150,7 +150,10 @@ bool ERS_FUNCTION_GetString(YAML::Node Data, std::string Name, std::string &Targ
  * @return true
  * @return false 
  */
-bool ERS_FUNCTION_GetVec3(YAML::Node Data, std::string NameBase, glm::vec3 &Target);
+bool ERS_FUNCTION_GetStringVector(YAML::Node Data, std::string NameBase, std::vector<std::string> &Target);
+
+
+
 
 /**
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
@@ -164,6 +167,9 @@ bool ERS_FUNCTION_GetVec3(YAML::Node Data, std::string NameBase, glm::vec3 &Targ
  */
 bool ERS_FUNCTION_GetNode(YAML::Node Data, std::string NameBase, YAML::Node &Target);
 
+
+
+
 /**
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
@@ -175,4 +181,4 @@ bool ERS_FUNCTION_GetNode(YAML::Node Data, std::string NameBase, YAML::Node &Tar
  * @return true
  * @return false 
  */
-bool ERS_FUNCTION_GetStringVector(YAML::Node Data, std::string NameBase, std::vector<std::string> &Target);
+bool ERS_FUNCTION_GetVec3(YAML::Node Data, std::string NameBase, glm::vec3 &Target);
