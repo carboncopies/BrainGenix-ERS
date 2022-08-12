@@ -44,7 +44,8 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(YAML::Node RawSceneData, lo
     ERS_STRUCT_Scene Scene;
     Scene.ScenePath = AssetID;
 
-    ERS_FUNCT
+    // Decode
+    ERS_FUNCTION_DecodeScene(RawSceneData, &Scene, SystemUtils_, ModelLoader_);
 
     // Return Scene
     return Scene;
