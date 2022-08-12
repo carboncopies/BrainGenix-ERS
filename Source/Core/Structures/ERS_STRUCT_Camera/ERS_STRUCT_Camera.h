@@ -139,10 +139,10 @@ private:
     float MaxMovementSpeed_  = 50.0f;  /**<Fastest movement speed allowed in units per second*/
 
     // Internal Camera State Information
-    float MovementSpeed_     = 0.2f; /**<Current Movement Speed*/
-    float MouseSensitivity_  = 0.05f;
-    float FOV_               = 50.0f;
-    float AspectRatio_       = 1.25f;
+    float MovementSpeed_     = 0.2f;   /**<Current Movement Speed*/
+    float MouseSensitivity_  = 0.05f;  /**<Mouse sensitivity multiplier*/
+    float FOV_               = 50.0f;  /**<Field of view in degrees*/
+    float AspectRatio_       = 1.25f;  /**<Internal variable used to 
 
     glm::vec3 Orientation_;         /**<Rotation of the camera in degrees. */
     glm::vec3 Position_;            /**<Position of the camera in units */

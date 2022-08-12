@@ -133,4 +133,12 @@ void ERS_STRUCT_Camera::GetMovementSpeedBoundries(float &MinSpeed, float &MaxSpe
     MaxSpeed = MaxMovementSpeed_;
 }
 
-
+void ERS_STRUCT_Camera::SetMovementSpeed(float Speed, bool EnforceBoundries) {
+    if (EnforceBoundries) {
+        Speed = std::max(MinMovementSpeed_, Speed);
+        Speed = std::min(MaxMovementSpeed_, Speed);
+        MovementSpeed_ = Speed;
+    } else {
+        MovementSpeed_ = Speed;
+    }
+}
