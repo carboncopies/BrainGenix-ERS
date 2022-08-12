@@ -304,9 +304,9 @@ void ERS_STRUCT_Camera::Update() {
     
     // Recalculate Orientation Quat
     // Rotate(Rotation_);
-    glm::quat QuatPitch  = glm::angleAxis(glm::radians(Rotation_.x), glm::vec3(0, 0, 1));
-    glm::quat QuatYaw    = glm::angleAxis(glm::radians(Rotation_.y), glm::vec3(0, 1, 0));
-    glm::quat QuatRoll   = glm::angleAxis(glm::radians(Rotation_.z), glm::vec3(1, 0, 0));
+    glm::quat QuatPitch  = glm::angleAxis(glm::radians(Pitch_), glm::vec3(0, 0, 1));
+    glm::quat QuatYaw    = glm::angleAxis(glm::radians(Yaw_  ), glm::vec3(0, 1, 0));
+    glm::quat QuatRoll   = glm::angleAxis(glm::radians(Roll_ ), glm::vec3(1, 0, 0));
     
     glm::quat Orientation = QuatPitch * QuatYaw;
     Orientation = glm::normalize(Orientation);
@@ -352,7 +352,9 @@ void ERS_STRUCT_Camera::Update() {
 // }
 
 void ERS_STRUCT_Camera::SetRotation(glm::vec3 Rotation) {
-    Rotation_ = Rotation;
+    Pitch_  = Rotation.x;
+    Yaw_    = Rotation.y;
+    Roll_   = Rotation.z;
 }
 
 void ERS_STRUCT_Camera::GetMatrices(glm::mat4& Perspective, glm::mat4& View){
