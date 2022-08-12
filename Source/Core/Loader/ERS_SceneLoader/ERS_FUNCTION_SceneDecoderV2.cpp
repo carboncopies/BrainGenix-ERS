@@ -259,6 +259,14 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
                 SceneDataNode[i]["RotZ"].as<float>()
                 );
 
+            Scene->SceneCameras[SceneCameraIndex]->NearClip_                = SceneDataNode[i]["NearClip"].as<float>();
+            Scene->SceneCameras[SceneCameraIndex]->FarClip_                 = SceneDataNode[i]["FarClip"].as<float>();
+            Scene->SceneCameras[SceneCameraIndex]->FOV_                     = SceneDataNode[i]["FOV"].as<float>();
+            Scene->SceneCameras[SceneCameraIndex]->EnforceAspectRatio_      = SceneDataNode[i]["EnforceAspectRatio"].as<float>();
+            Scene->SceneCameras[SceneCameraIndex]->AspectRatio_             = SceneDataNode[i]["AspectRatio"].as<float>();
+            Scene->SceneCameras[SceneCameraIndex]->StreamingPriority_       = SceneDataNode[i]["StreamingPriority"].as<float>();
+            
+
             // Load Attached Scripts
             if (SceneDataNode[i]["AttachedScripts"]) {
                 YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
