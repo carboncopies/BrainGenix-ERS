@@ -38,16 +38,21 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
             ERS_STRUCT_Model Model;
 
-            ERS_FUNCTION_GetLong   (Item, "AssetID",        Model.AssetID       );
-            ERS_FUNCTION_GetVec3   (Item, "AssetPosition",  Model.ModelPosition );
-            ERS_FUNCTION_GetVec3   (Item, "AssetRotation",  Model.ModelRotation );
-            ERS_FUNCTION_GetVec3   (Item, "AssetScale",     Model.ModelScale    );
+            ERS_FUNCTION_GetLong   (Item, "AssetID",              Model.AssetID              );
+            ERS_FUNCTION_GetVec3   (Item, "AssetPosition",        Model.ModelPosition        );
+            ERS_FUNCTION_GetVec3   (Item, "AssetRotation",        Model.ModelRotation        );
+            ERS_FUNCTION_GetVec3   (Item, "AssetScale",           Model.ModelScale           );
+            ERS_FUNCTION_GetBool   (Item, "CastDynamicShadows",   Model.CastDynamicShadows_  );
+            ERS_FUNCTION_GetBool   (Item, "CastStaticShadows",    Model.CastStaticShadows_   );
+            ERS_FUNCTION_GetBool   (Item, "ReceiveShadows",       Model.ReceiveShadows_      );
+            ERS_FUNCTION_GetLong   (Item, "ShaderOverrideIndex",  Model.ShaderOverrideIndex_ );
+            
             //Model.ApplyTransformations();
 
             //Load Model 
-            Scene->Models.push_back(std::make_shared<ERS_STRUCT_Model>());
+            Scene->Models.push_back(std::make_shared<ERS_STRUCT_Model>(Model));
             int CurrentSize = Scene->Models.size();
-            ModelLoader->AddModelToLoadingQueue(AssetID, Scene->Models[CurrentSize-1]);
+            ModelLoader->AddModelToLoadingQueue(Scene->Models[CurrentSize-1]);
 
             // Add Instance To Models Vector
             Scene->Models[CurrentSize-1]->IsTemplateModel = false;
@@ -63,22 +68,6 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
             }
 
 
-            // Load Shadow Configuration
-            if (SceneDataNode[i]["CastDynamicShadows"]) {
-                Scene->Models[CurrentSize-1]->CastDynamicShadows_ = SceneDataNode[i]["CastDynamicShadows"].as<bool>();
-            }
-
-            if (SceneDataNode[i]["CastStaticShadows"]) {
-                Scene->Models[CurrentSize-1]->CastStaticShadows_ = SceneDataNode[i]["CastStaticShadows"].as<bool>();
-            }
-
-            if (SceneDataNode[i]["ReceiveShadows"]) {
-                Scene->Models[CurrentSize-1]->ReceiveShadows_ = SceneDataNode[i]["ReceiveShadows"].as<bool>();
-            }
-
-            if (SceneDataNode[i]["ShaderOverrideIndex"]) {
-                Scene->Models[CurrentSize-1]->ShaderOverrideIndex_ = SceneDataNode[i]["ShaderOverrideIndex"].as<long>();
-            }
 
 
         } else if (AssetType == std::string("DirectionalLight")) {
