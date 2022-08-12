@@ -302,10 +302,6 @@ void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset) {
     if (MovementSpeed_ > MaxMovementSpeed_)
         MovementSpeed_ = MaxMovementSpeed_;
 
-    // Update Vectors
-    //UpdateCameraVectors();
-
-
 }
 
 void ERS_STRUCT_Camera::Update() {

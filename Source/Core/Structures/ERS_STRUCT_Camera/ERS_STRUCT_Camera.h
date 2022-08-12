@@ -46,17 +46,6 @@ public:
     int Priority_ = 1; // Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)
 
 
-
-    // Camera Options
-    double MovementSpeed_;
-    float MouseSensitivity_;
-    float FOV_;
-    float AspectRatio_;
-
-    // Config Params
-    float MinMovementSpeed_ = 0.0f;
-    float MaxMovementSpeed_ = 50.0f;
-
     // Constructor With Vectors
     ERS_STRUCT_Camera(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f),
                                 glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f),
@@ -74,9 +63,6 @@ public:
     }
 
 
-
-
-
     // Proces Keyboard Input
     void ProcessKeyboard(CameraMovement Direction, float DeltaTime);
 
@@ -91,9 +77,17 @@ public:
 
 private:
 
-    // Internal Camera State Information
+    // Camea Limit Information
     float NearClip_ = 0.01f; /**<Closest distance before geometry is culled.*/
     float FarClip_ = 100.0f; /**<Farthest distance before geometry is called*/
+    float MinMovementSpeed_ = 0.01f; /**<Slowest movement speed allowed*/
+    float MaxMovementSpeed_ = 50.0f; /**<Fastest movement speed allowed*/
+
+    // Internal Camera State Information
+    float MovementSpeed_; /**<Current Movement Speed*/
+    float MouseSensitivity_;
+    float FOV_;
+    float AspectRatio_;
 
     glm::quat Orientation_; 
     glm::vec3 Rotation_;
@@ -109,6 +103,8 @@ private:
 
     glm::mat4 PerspectiveMatrix_;
     glm::mat4 ViewMatrix_;
+
+
 
     /**
      * @brief Updates The Following Camera Matricies/Vars:
