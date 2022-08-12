@@ -331,9 +331,9 @@ void ERS_STRUCT_Camera::Update() {
     // Right_ = Orientation_ * LocalRight_;
     
     Front_ = glm::vec3();
-    Front_.x = cos(glm::radians(Rotation_.y)) * cos(glm::radians(Rotation_.x));
-    Front_.y = sin(glm::radians(Rotation_.x));
-    Front_.z = sin(glm::radians(Rotation_.y)) * cos(glm::radians(Rotation_.x));
+    Front_.x = cos(glm::radians(Rotation_.x)) * cos(glm::radians(Rotation_.y));
+    Front_.y = sin(glm::radians(Rotation_.y));
+    Front_.z = sin(glm::radians(Rotation_.x)) * cos(glm::radians(Rotation_.y));
     Front_ = glm::normalize(Front_);
 
     Right_ = glm::normalize(glm::cross(Front_, LocalUp_));
