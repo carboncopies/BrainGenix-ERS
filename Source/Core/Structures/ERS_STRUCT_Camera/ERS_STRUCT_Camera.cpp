@@ -204,35 +204,35 @@
 
 
 
-glm::mat4 ERS_STRUCT_Camera::GetViewMatrix() {
-    glm::mat4 Output = glm::lookAt(Position_, Position_ + Front_, Up_);
-    std::cout<<glm::to_string(Output)<<std::endl;
+// glm::mat4 ERS_STRUCT_Camera::GetViewMatrix() {
+//     glm::mat4 Output = glm::lookAt(Position_, Position_ + Front_, Up_);
+//     std::cout<<glm::to_string(Output)<<std::endl;
 
-    return Output;
-}
+//     return Output;
+// }
 
-glm::mat4 ERS_STRUCT_Camera::GetProjectionMatrix() {
-    return glm::perspective(glm::radians(FOV_), AspectRatio_, 0.01f, 100.0f);
-}
+// glm::mat4 ERS_STRUCT_Camera::GetProjectionMatrix() {
+//     return glm::perspective(glm::radians(FOV_), AspectRatio_, 0.01f, 100.0f);
+// }
 
-void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
+// void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
 
 
-    UpdateCameraVectors();
+//     UpdateCamera();
 
-    // glm::mat4 RotMatrix;
-    // RotMatrix = glm::rotate(RotMatrix, glm::radians(Rotation[0]), glm::vec3(1, 0, 0));
-    // RotMatrix = glm::rotate(RotMatrix, glm::radians(Rotation[1]), glm::vec3(0, 1, 0));
-    // RotMatrix = glm::rotate(RotMatrix, glm::radians(Rotation[2]), glm::vec3(0, 0, 1));
-    // Front_ = glm::normalize(glm::vec3(RotMatrix[2]));
+//     // glm::mat4 RotMatrix;
+//     // RotMatrix = glm::rotate(RotMatrix, glm::radians(Rotation[0]), glm::vec3(1, 0, 0));
+//     // RotMatrix = glm::rotate(RotMatrix, glm::radians(Rotation[1]), glm::vec3(0, 1, 0));
+//     // RotMatrix = glm::rotate(RotMatrix, glm::radians(Rotation[2]), glm::vec3(0, 0, 1));
+//     // Front_ = glm::normalize(glm::vec3(RotMatrix[2]));
 
-    // // Calculate Right, Up Vector
-    // Right_ = glm::normalize(glm::cross(Front_, WorldUp_));
-    // Up_ = glm::normalize(glm::cross(Right_, Front_));
+//     // // Calculate Right, Up Vector
+//     // Right_ = glm::normalize(glm::cross(Front_, WorldUp_));
+//     // Up_ = glm::normalize(glm::cross(Right_, Front_));
     
-    // glm::mat4 roll_mat = glm::rotate(glm::mat4(1.0f), glm::radians(Roll_), Front_);
-    // Up_ = glm::mat3(roll_mat) * Up_;
-}
+//     // glm::mat4 roll_mat = glm::rotate(glm::mat4(1.0f), glm::radians(Roll_), Front_);
+//     // Up_ = glm::mat3(roll_mat) * Up_;
+// }
 
 
 void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio) {
@@ -279,16 +279,11 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboo
         if (Rotation_.y > 89.0f) {
             Rotation_.y = 89.0f;
         }
-        if (Rotation_.yvoid ERS_STRUCT_Camera::GetMatrices(glm::mat4& perspective, glm::mat4& view){
-// 	// perspective = PerspectiveMatrix_;	
-// 	// view = glm::translate(glm::mat4_cast(orientation), Position_);;
-//     //Update();
-//     perspective = PerspectiveMatrix_;
-//     view = ViewMatrix_; 
-
-// } = -89.0f;
+        if (Rotation_.y < -89.0f) {
+            Rotation_.y = -89.0f;
         }
     }
+
 
     // Update Front, Right, Up Vectors
     Update();
