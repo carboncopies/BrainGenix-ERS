@@ -20,10 +20,8 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
     // Log Scene Processing
     SystemUtils->Logger_->Log(std::string("Processing Scene: ") + std::string(Scene->SceneName), 3);
 
-    // Create Vector Of YAML::Nodes
+    // Create List Of Scene Items
     std::vector<YAML::Node> SceneItems;
-
-    // Populate Vector With Elements From SceneData
     YAML::Node SceneDataNode = SceneData["SceneData"];
     for (YAML::const_iterator it=SceneDataNode.begin(); it!=SceneDataNode.end(); ++it) {
         SceneItems.push_back(it->second);
