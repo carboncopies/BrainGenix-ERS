@@ -44,24 +44,11 @@ public:
 
 
 
-    // Internal Camera State Information
-    float MovementSpeed_     = 0.2f; /**<Current Movement Speed*/
-    float MouseSensitivity_  = 0.05f;
-    float FOV_               = 50.0f;
-    float AspectRatio_       = 1.25f;
-
-
-    glm::vec3 Orientation_;    
-    glm::vec3 Position_;
-    
-    glm::vec3 Front_;
-    glm::vec3 Up_;
-    glm::vec3 Right_;
 
 
 
-    glm::mat4 PerspectiveMatrix_;
-    glm::mat4 ViewMatrix_;
+
+
 
 
 
@@ -92,7 +79,7 @@ public:
      * 
      */
     void Update();
-    
+
 
     /**
      * @brief Helper function, gets the projection/perspective matrix and the view matrix.
@@ -143,8 +130,21 @@ private:
     float MinMovementSpeed_  = 0.01f; /**<Slowest movement speed allowed in units per second*/
     float MaxMovementSpeed_  = 50.0f; /**<Fastest movement speed allowed in units per second*/
 
+    // Internal Camera State Information
+    float MovementSpeed_     = 0.2f; /**<Current Movement Speed*/
+    float MouseSensitivity_  = 0.05f;
+    float FOV_               = 50.0f;
+    float AspectRatio_       = 1.25f;
 
+    glm::vec3 Orientation_;         /**<Rotation of the camera in degrees. */
+    glm::vec3 Position_;            /**<Position of the camera in units */
+    
+    glm::vec3 Front_;               /**<Unit vector facing out the front of the camera. (in local space)*/
+    glm::vec3 Up_;                  /**<Unit vector facing out the top of the camera. (in local space)*/
+    glm::vec3 Right_;               /**<Unit vector facing to the right of the camera. (in local space)*/
 
+    glm::mat4 PerspectiveMatrix_;   /**<Perspective/projection matrix, updated every time the Update function is called*/
+    glm::mat4 ViewMatrix_;          /**<View matrix, updated every time the Update function is called*/
 
 
 };
