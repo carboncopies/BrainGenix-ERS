@@ -15,6 +15,8 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_Scene.h>
 
+#include <ERS_CLASS_ModelLoader.h>
+
 
 /**
  * @brief Decodes the specified version of the scene format.

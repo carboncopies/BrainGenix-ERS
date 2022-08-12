@@ -15,6 +15,8 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_Scene.h>
 
+#include <ERS_CLASS_ModelLoader.h>
+
 #include <ERS_FUNCTION_SceneDecoderV1.h>
 #include <ERS_FUNCTION_SceneDecoderV2.h>
 #include <ERS_FUNCTION_SceneDecoderV3.h>
