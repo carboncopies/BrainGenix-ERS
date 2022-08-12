@@ -3,7 +3,6 @@
 //======================================================================//
 
 #include <ERS_STRUCT_Camera.h>
-#include <iostream>
 
 
 // Constructor/Destructor
