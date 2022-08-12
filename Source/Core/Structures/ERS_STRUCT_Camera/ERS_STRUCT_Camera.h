@@ -57,15 +57,41 @@ public:
     int Priority_ = 1; // Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)
 
 
-    // Constructor With Vectors
-    ERS_STRUCT_Camera(glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f));
+    /**
+     * @brief Create the camera object.
+     * 
+     */
+    ERS_STRUCT_Camera();
+
+    /**
+     * @brief Destroy the camera object.
+     * 
+     */
     ~ERS_STRUCT_Camera();
 
-    // Proces Keyboard Input
+
+    /**
+     * @brief Processes keyboard input for the camera.
+     * 
+     * @param Direction Direction currently being pressed.
+     * @param DeltaTime Frame time used to ensure speed isn't tied to framerate
+     */
     void ProcessKeyboard(CameraMovement Direction, float DeltaTime);
 
-    // Process Mouse Input
+    /**
+     * @brief Processed mouse movement across the camera's viewport.
+     * 
+     * @param XOffset Pixels moved in the x direction
+     * @param Yoffset Pixels moved in the y direction
+     * @param ConstrainPitch Stops the camera from turning above/bleow vertical
+     */
     void ProcessMouseMovement(float XOffset, float Yoffset, GLboolean ConstrainPitch = true);
+
+    /**
+     * @brief Handles the mouse scrolling inputs
+     * 
+     * @param YOffset mouse scroll amount
+     */
     void ProcessMouseScroll(float YOffset);
 
 
