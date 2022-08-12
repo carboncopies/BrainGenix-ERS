@@ -202,6 +202,21 @@ public:
      */
     void GetPosition(glm::vec3 &Position);
 
+    /**
+     * @brief Get the camera's streaming priority.
+     * 
+     * @param Priority Int between 1-10 setting the priority. 
+     */
+    void GetStreamingPriority(int &Priority);
+    int GetStreamingPriority();
+    
+    /**
+     * @brief Set the Streaming Priority int.
+     * 
+     * @param Priority Int between 1-10 setting the priority. 
+     */
+    void SetStreamingPriority(int Priority);
+
 private:
 
     // Camea Configuration Information
