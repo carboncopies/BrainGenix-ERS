@@ -322,7 +322,10 @@ void ERS_STRUCT_Camera::Update() {
  	//ViewMatrix_ = glm::translate(glm::mat4_cast(Orientation_), Position_);;
 
     // Calculate Movement Direction Vectors
-    Front_ = Orientation * LocalFront_;
+    //Front_ = Orientation * LocalFront_;
+    Right_  = glm::vec3(ViewMatrix_[0][0], ViewMatrix_[1][0], ViewMatrix_[2][0]);
+    Up_     = glm::vec3(ViewMatrix_[0][1], ViewMatrix_[1][1], ViewMatrix_[2][1]);
+    Front_  = glm::vec3(ViewMatrix_[0][2], ViewMatrix_[1][2], ViewMatrix_[2][2]);
     // Up_    = Orientation_ * LocalUp_;
     // Right_ = Orientation_ * LocalRight_;
     
