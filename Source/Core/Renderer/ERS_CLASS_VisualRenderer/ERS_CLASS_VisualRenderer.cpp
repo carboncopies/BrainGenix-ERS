@@ -87,7 +87,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     // Generate Shadows
     //DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("Preview Shader"), &Shaders_)].get();
     if (Viewports_.size() > 0) {
-        ShadowMaps_->UpdateShadowMaps(DepthMapShader_, CubemapDepthShader_, Viewports_[0]->Camera->Position_);
+        ShadowMaps_->UpdateShadowMaps(DepthMapShader_, CubemapDepthShader_, Viewports_[0]->Camera->GetPosition());
     }
 
     // Setup Vars
