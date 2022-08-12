@@ -42,6 +42,37 @@ public:
 
 
 
+
+    // Camea Limit Information
+    float NearClip_ = 0.01f; /**<Closest distance before geometry is culled.*/
+    float FarClip_ = 100.0f; /**<Farthest distance before geometry is called*/
+    float MinMovementSpeed_ = 0.01f; /**<Slowest movement speed allowed*/
+    float MaxMovementSpeed_ = 50.0f; /**<Fastest movement speed allowed*/
+
+    // Internal Camera State Information
+    float MovementSpeed_; /**<Current Movement Speed*/
+    float MouseSensitivity_;
+    float FOV_;
+    float AspectRatio_;
+
+    glm::quat Orientation_; 
+    glm::vec3 Rotation_;
+    glm::vec3 Position_;
+    
+    // delete
+    glm::vec3 Front_;
+    glm::vec3 Up_;
+    glm::vec3 Right_;
+    // end delete
+
+    glm::vec3 WorldUp_;
+
+    glm::mat4 PerspectiveMatrix_;
+    glm::mat4 ViewMatrix_;
+
+
+
+
     // Asset Streaming Config
     int Priority_ = 1; // Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)
 
@@ -77,32 +108,7 @@ public:
 
 private:
 
-    // Camea Limit Information
-    float NearClip_ = 0.01f; /**<Closest distance before geometry is culled.*/
-    float FarClip_ = 100.0f; /**<Farthest distance before geometry is called*/
-    float MinMovementSpeed_ = 0.01f; /**<Slowest movement speed allowed*/
-    float MaxMovementSpeed_ = 50.0f; /**<Fastest movement speed allowed*/
 
-    // Internal Camera State Information
-    float MovementSpeed_; /**<Current Movement Speed*/
-    float MouseSensitivity_;
-    float FOV_;
-    float AspectRatio_;
-
-    glm::quat Orientation_; 
-    glm::vec3 Rotation_;
-    glm::vec3 Position_;
-    
-    // delete
-    glm::vec3 Front_;
-    glm::vec3 Up_;
-    glm::vec3 Right_;
-    // end delete
-
-    glm::vec3 WorldUp_;
-
-    glm::mat4 PerspectiveMatrix_;
-    glm::mat4 ViewMatrix_;
 
 
 
