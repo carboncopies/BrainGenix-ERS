@@ -92,6 +92,9 @@ public:
 private:
 
     // Internal Camera State Information
+    float NearClip_ = 0.01f; /**<Closest distance before geometry is culled.*/
+    float FarClip_ = 100.0f; /**<Farthest distance before geometry is called*/
+
     glm::quat Orientation_; 
     glm::vec3 Rotation_;
     glm::vec3 Position_;

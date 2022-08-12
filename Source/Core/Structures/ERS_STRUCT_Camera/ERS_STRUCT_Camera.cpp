@@ -313,6 +313,10 @@ void ERS_STRUCT_Camera::Update() {
     // Recalculate Orientation Quat
     Rotate(Rotation_);
 
+    // Update Matricies
+    PerspectiveMatrix_ = glm::perspective(FOV_, AspectRatio_, NearClip_, FarClip_);	
+ 	ViewMatrix_ = glm::translate(glm::mat4_cast(Orientation_), Position_);;
+
     // // Calculate New Front Vector
     // glm::vec3 NewFront;
     // NewFront.x = cos(glm::radians(Yaw_)) * cos(glm::radians(Pitch_));
