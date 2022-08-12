@@ -36,7 +36,6 @@
 #include <ERS_STRUCT_OpenGLDefaults.h>
 
 
-static ERS_STRUCT_Camera Camera_(glm::vec3(0.0f, 0.0f, 3.0f));
 
 
 /**
