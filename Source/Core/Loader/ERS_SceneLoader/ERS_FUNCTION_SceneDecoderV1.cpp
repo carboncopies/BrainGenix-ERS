@@ -6,7 +6,7 @@
 
 
 
-bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, ERS_STRUCT_SystemUtils *SystemUtils, bool LogEnable = true) {
+bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, ERS_STRUCT_SystemUtils *SystemUtils, ERS_CLASS_ModelLoader* ModelLoader, bool LogEnable = true) {
 
 
     // Grab Metadata
@@ -58,7 +58,7 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
             //Load Model 
             Scene->Models.push_back(std::make_shared<ERS_STRUCT_Model>());
             int CurrentSize = Scene->Models.size();
-            ModelLoader_->AddModelToLoadingQueue(AssetID, Scene->Models[CurrentSize-1]);
+            ModelLoader->AddModelToLoadingQueue(AssetID, Scene->Models[CurrentSize-1]);
 
             // Add Instance To Models Vector
             Scene->Models[CurrentSize-1]->IsTemplateModel = false;
@@ -263,7 +263,7 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
             }
 
         } else {
-            SystemUtils_->Logger_->Log(std::string("Unsupported/Unknown Asset Type: ") + AssetType, 9);
+            SystemUtils->Logger_->Log(std::string("Unsupported/Unknown Asset Type: ") + AssetType, 9);
         }
 
     }
