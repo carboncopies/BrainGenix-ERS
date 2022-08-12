@@ -107,11 +107,21 @@ bool ERS_FUNCTION_GetString(YAML::Node Data, std::string Name, std::string &Targ
 }
 
 // GLM Helper Functions
-bool ERS_FUNCTION_GetString(YAML::Node Data, std::string Name, std::string &Target) {
+bool ERS_FUNCTION_GetVec3(YAML::Node Data, std::string Name, glm::vec3 &Target) {
     try {
-        Target = Data[Name].as<std::string>();
+        Target = Data[Name].as<glm::vec3>();
         return true;
-    } catch (YAML::TypedBadConversion<std::string>) {
+    } catch (YAML::TypedBadConversion<glm::vec3>) {
+        return false;
+    } catch (YAML::KeyNotFound) {
+        return false;
+    }
+}
+bool ERS_FUNCTION_GetVec4(YAML::Node Data, std::string Name, glm::vec4 &Target) {
+    try {
+        Target = Data[Name].as<glm::vec4>();
+        return true;
+    } catch (YAML::TypedBadConversion<glm::vec4>) {
         return false;
     } catch (YAML::KeyNotFound) {
         return false;
