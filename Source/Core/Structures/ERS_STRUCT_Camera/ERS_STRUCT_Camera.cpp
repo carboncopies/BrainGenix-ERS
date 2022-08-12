@@ -322,37 +322,11 @@ void ERS_STRUCT_Camera::Update() {
  	//ViewMatrix_ = glm::translate(glm::mat4_cast(Orientation_), Position_);;
 
     // Calculate Movement Direction Vectors
-    //Front_ = Orientation * LocalFront_;
     Right_  =  glm::normalize(glm::vec3(ViewMatrix_[0][0], ViewMatrix_[1][0], ViewMatrix_[2][0]));
     Up_     =  glm::normalize(glm::vec3(ViewMatrix_[0][1], ViewMatrix_[1][1], ViewMatrix_[2][1]));
     Front_  = -glm::normalize(glm::vec3(ViewMatrix_[0][2], ViewMatrix_[1][2], ViewMatrix_[2][2]));
-    // Up_    = Orientation_ * LocalUp_;
-    // Right_ = Orientation_ * LocalRight_;
-    
-    // Front_ = glm::vec3();
-    // Front_.x = cos(glm::radians(Yaw_)) * cos(glm::radians(Pitch_));
-    // Front_.y = sin(glm::radians(Pitch_));
-    // Front_.z = sin(glm::radians(Yaw_)) * cos(glm::radians(Pitch_));
-    // Front_ = glm::normalize(Front_);
-
-    // Right_ = glm::normalize(glm::cross(Front_, LocalUp_));
-    // Up_ = glm::normalize(glm::cross(Right_, Front_));
-
-    // glm::mat4 roll_mat = glm::rotate(glm::mat4(1.0f), glm::radians(Rotation_.z), Front_);
-    // Up_ = glm::mat3(roll_mat) * Up_;
-
 }
 
-// void ERS_STRUCT_Camera::Rotate(float Angle, glm::vec3 Axis) {
-// 	Orientation_ *= glm::angleAxis(glm::radians(Angle), Axis * Orientation_);
-// }
-
-// void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
-//     Orientation_ = glm::quat();
-//     Rotate(Rotation.x, glm::vec3(1, 0, 0));
-//     Rotate(Rotation.y, glm::vec3(0, 1, 0));
-//     Rotate(Rotation.z, glm::vec3(0, 0, 1));
-// }
 
 void ERS_STRUCT_Camera::SetRotation(glm::vec3 Rotation) {
     Pitch_  = Rotation.x;
