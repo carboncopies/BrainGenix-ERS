@@ -7,7 +7,7 @@
 
 
 
-bool ERS_FUNCTION_DecodeScene(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, ERS_STRUCT_SystemUtils *SystemUtils, bool LogEnable) {
+bool ERS_FUNCTION_DecodeScene(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, ERS_STRUCT_SystemUtils *SystemUtils, ERS_CLASS_ModelLoader* ModelLoader, bool LogEnable) {
 
     SystemUtils->Logger_->Log("Decoding ERS Scene", 5, LogEnable);
 
@@ -23,11 +23,11 @@ bool ERS_FUNCTION_DecodeScene(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, ERS
 
     // Attempt Decoding With Known Decoding Systems
     if (Version == 1) {
-        return ERS_FUNCTION_DecodeSceneV1(SceneData, Scene, SystemUtils, LogEnable);
+        return ERS_FUNCTION_DecodeSceneV1(SceneData, Scene, SystemUtils, ModelLoader, LogEnable);
     } else if (Version == 2) {
-        return ERS_FUNCTION_DecodeSceneV2(SceneData, Scene, SystemUtils, LogEnable);        
+        return ERS_FUNCTION_DecodeSceneV2(SceneData, Scene, SystemUtils, ModelLoader, LogEnable);        
     } else if (Version == 3) {
-        return ERS_FUNCTION_DecodeSceneV3(SceneData, Scene, SystemUtils, LogEnable);
+        return ERS_FUNCTION_DecodeSceneV3(SceneData, Scene, SystemUtils, ModelLoader, LogEnable);
     }
 
 }
