@@ -98,12 +98,12 @@ void ERS_STRUCT_Camera::Update() {
 
     // Update Matricies
     PerspectiveMatrix_ = glm::perspective(FOV_, AspectRatio_, NearClip_, FarClip_);	
- 	ViewMatrix_ = glm::inverse(glm::translate(glm::mat4_cast(Orientation), Position_));
+ 	ViewMatrix_ = glm::translate(glm::mat4_cast(Orientation), Position_);
 
     // Calculate Movement Direction Vectors
-    Right_  =  glm::normalize(glm::vec3(ViewMatrix_[0][0], ViewMatrix_[1][0], ViewMatrix_[2][0]));
-    Up_     =  glm::normalize(glm::vec3(ViewMatrix_[0][1], ViewMatrix_[1][1], ViewMatrix_[2][1]));
-    Front_  = -glm::normalize(glm::vec3(ViewMatrix_[0][2], ViewMatrix_[1][2], ViewMatrix_[2][2]));
+    Right_  = -glm::normalize(glm::vec3(ViewMatrix_[0][0], ViewMatrix_[1][0], ViewMatrix_[2][0]));
+    Up_     = -glm::normalize(glm::vec3(ViewMatrix_[0][1], ViewMatrix_[1][1], ViewMatrix_[2][1]));
+    Front_  =  glm::normalize(glm::vec3(ViewMatrix_[0][2], ViewMatrix_[1][2], ViewMatrix_[2][2]));
 }
 
 
