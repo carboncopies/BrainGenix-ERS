@@ -35,7 +35,6 @@ struct ERS_STRUCT_SceneCamera {
     glm::vec3 Pos_; /**<Position of the camera object*/
     glm::vec3 Rot_; /**<Rotation of the camera object*/
 
-
     // Asset Streaming Settings
     int StreamingPriority_ = 1;                 /**< Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)*/
 
