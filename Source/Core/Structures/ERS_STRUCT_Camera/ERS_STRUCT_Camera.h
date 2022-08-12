@@ -42,11 +42,15 @@ public:
 
 
 
-    // Camea Limit Information
+    // Camea Configuration Information
     float NearClip_          = 0.01f; /**<Closest distance before geometry is culled.*/
     float FarClip_           = 100.0f; /**<Farthest distance before geometry is called*/
     float MinMovementSpeed_  = 0.01f; /**<Slowest movement speed allowed*/
     float MaxMovementSpeed_  = 50.0f; /**<Fastest movement speed allowed*/
+
+    glm::vec3 LocalFront_     = glm::vec3(0.0f, 0.0f, 1.0f); /**<Local axis defined as front*/
+    glm::vec3 LocalUp_        = glm::vec3(0.0f, 1.0f, 0.0f); /**<Local axis defined as up*/
+    glm::vec3 LocalRight_     = glm::vec3(1.0f, 0.0f, 0.0f); /**<Local axis defined as right*/
 
     // Internal Camera State Information
     float MovementSpeed_     = 0.2f; /**<Current Movement Speed*/
@@ -58,15 +62,11 @@ public:
     glm::vec3 Rotation_;
     glm::vec3 Position_;
     
-    // delete
     glm::vec3 Front_;
     glm::vec3 Up_;
     glm::vec3 Right_;
-    // end delete
 
-    glm::vec3 LocalFront_     = glm::vec3(0.0f, 0.0f, 1.0f);
-    glm::vec3 LocalUp_        = glm::vec3(0.0f, 1.0f, 0.0f);
-    glm::vec3 LocalRight_     = glm::vec3(1.0f, 0.0f, 0.0f);
+
 
     glm::mat4 PerspectiveMatrix_;
     glm::mat4 ViewMatrix_;
