@@ -17,7 +17,7 @@ bool ERS_FUNCTION_DecodeSceneV3(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
     // }
 
     // // Log Scene Processing
-    // SystemUtils->Logger_->Log(std::string("Processing Scene: ") + std::string(Scene->SceneName), 3);
+    // SystemUtils->Logger_->Log(std::string("Processing Scene: ") + std::string(Scene->SceneName), 3, LogEnable);
 
     // // Create List Of Scene Items
     // std::vector<YAML::Node> SceneItems;
