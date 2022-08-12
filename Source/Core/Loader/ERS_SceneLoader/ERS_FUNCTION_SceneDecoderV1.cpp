@@ -42,7 +42,6 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
             ERS_FUNCTION_GetBool   (Item, "ReceiveShadows",       Model.ReceiveShadows_       );
             ERS_FUNCTION_GetLong   (Item, "ShaderOverrideIndex",  Model.ShaderOverrideIndex_  );
             ERS_FUNCTION_GetString (Item, "AssetName",            Model.Name                  );
-            Model.IsTemplateModel = false;
             
            // Load Attached Scripts
             if (SceneItems[i]["AttachedScripts"]) {
