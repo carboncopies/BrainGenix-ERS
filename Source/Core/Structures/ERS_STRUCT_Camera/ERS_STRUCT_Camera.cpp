@@ -155,6 +155,9 @@ void ERS_STRUCT_Camera::SetRotation(glm::vec3 Rotation) {
 void ERS_STRUCT_Camera::GetRotation(glm::vec3 &Rotation) {
     Rotation = Orientation_;
 }
+glm::vec3 ERS_STRUCT_Camera::GetRotation() {
+    return Orientation_;
+}
 void ERS_STRUCT_Camera::SetPosition(glm::vec3 Position) {
     Position_ = Position;
 }

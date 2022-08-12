@@ -187,6 +187,7 @@ public:
      * @param Rotation Rotation in degrees (x,y,z) or (pitch, yaw, roll)
      */
     void GetRotation(glm::vec3 &Rotation);
+    glm::vec3 GetRotation();
 
     /**
      * @brief Set the position of the camera.
