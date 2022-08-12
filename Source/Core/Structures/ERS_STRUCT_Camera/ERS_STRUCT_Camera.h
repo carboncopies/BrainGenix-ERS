@@ -100,11 +100,6 @@ public:
 
     void GetMatrices(glm::mat4& perspective, glm::mat4& view);
 
-private:
-
-
-
-
 
     /**
      * @brief Updates The Following Camera Matricies/Vars:
@@ -112,6 +107,14 @@ private:
      * 
      */
     void Update();
+
+
+private:
+
+
+
+
+
 
 
     /**
