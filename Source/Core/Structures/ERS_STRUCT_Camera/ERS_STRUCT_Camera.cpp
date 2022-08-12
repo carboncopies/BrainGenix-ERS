@@ -316,31 +316,31 @@ void ERS_STRUCT_Camera::Update() {
     Orientation_ = glm::normalize(Orientation_);
 
 
-    // glm::mat4 Rotate = glm::mat4_cast(Orientation_);
-    // glm::mat4 Translate = glm::mat4(1.0f);
-    // Translate = glm::translate(Translate, -Position_);
-    // ViewMatrix_ = Rotate * Translate;
+    glm::mat4 Rotate = glm::mat4_cast(Orientation_);
+    glm::mat4 Translate = glm::mat4(1.0f);
+    Translate = glm::translate(Translate, -Position_);
+    ViewMatrix_ = Rotate * Translate;
 
     // Update Matricies
     PerspectiveMatrix_ = glm::perspective(FOV_, AspectRatio_, NearClip_, FarClip_);	
- 	ViewMatrix_ = glm::translate(glm::mat4_cast(Orientation_), Position_);;
+ 	//ViewMatrix_ = glm::translate(glm::mat4_cast(Orientation_), Position_);;
 
     // Calculate Movement Direction Vectors
-    Front_ = Orientation_ * LocalFront_;
-    Up_    = Orientation_ * LocalUp_;
-    Right_ = Orientation_ * LocalRight_;
+    // Front_ = Orientation_ * LocalFront_;
+    // Up_    = Orientation_ * LocalUp_;
+    // Right_ = Orientation_ * LocalRight_;
     
-    // Front_ = glm::vec3();
-    // Front_.x = cos(glm::radians(Rotation_.y)) * cos(glm::radians(Rotation_.x));
-    // Front_.y = sin(glm::radians(Rotation_.x));
-    // Front_.z = sin(glm::radians(Rotation_.y)) * cos(glm::radians(Rotation_.x));
-    // Front_ = glm::normalize(Front_);
+    Front_ = glm::vec3();
+    Front_.x = cos(glm::radians(Rotation_.y)) * cos(glm::radians(Rotation_.x));
+    Front_.y = sin(glm::radians(Rotation_.x));
+    Front_.z = sin(glm::radians(Rotation_.y)) * cos(glm::radians(Rotation_.x));
+    Front_ = glm::normalize(Front_);
 
-    // Right_ = glm::normalize(glm::cross(Front_, LocalUp_));
-    // Up_ = glm::normalize(glm::cross(Right_, Front_));
+    Right_ = glm::normalize(glm::cross(Front_, LocalUp_));
+    Up_ = glm::normalize(glm::cross(Right_, Front_));
 
-    // glm::mat4 roll_mat = glm::rotate(glm::mat4(1.0f), glm::radians(Rotation_.z), Front_);
-    // Up_ = glm::mat3(roll_mat) * Up_;
+    glm::mat4 roll_mat = glm::rotate(glm::mat4(1.0f), glm::radians(Rotation_.z), Front_);
+    Up_ = glm::mat3(roll_mat) * Up_;
 
 }
 
