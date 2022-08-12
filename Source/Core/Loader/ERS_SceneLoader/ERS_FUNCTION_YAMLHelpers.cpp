@@ -9,9 +9,9 @@ bool ERS_FUNCTION_GetInt(YAML::Node Data, std::string Name, int &Target) {
     try {
         Target = Data[Name].as<int>();
         return true;
-    } catch (YAML::TypedBadConversion<int>) {
+    } catch (YAML::TypedBadConversion<int>&) {
         return false;
-    } catch (YAML::KeyNotFound) {
+    } catch (YAML::KeyNotFound&) {
         return false;
     }
 }
