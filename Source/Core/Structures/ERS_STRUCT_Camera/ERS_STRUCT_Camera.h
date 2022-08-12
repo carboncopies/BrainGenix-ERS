@@ -48,9 +48,9 @@ public:
     float MinMovementSpeed_  = 0.01f; /**<Slowest movement speed allowed*/
     float MaxMovementSpeed_  = 50.0f; /**<Fastest movement speed allowed*/
 
-    glm::vec3 LocalFront_     = glm::vec3(1.0f, 0.0f, 0.0f); /**<Local axis defined as front*/
+    glm::vec3 LocalFront_     = glm::vec3(0.0f, 0.0f, 1.0f); /**<Local axis defined as front*/
     glm::vec3 LocalUp_        = glm::vec3(0.0f, 1.0f, 0.0f); /**<Local axis defined as up*/
-    glm::vec3 LocalRight_     = glm::vec3(0.0f, 0.0f, 1.0f); /**<Local axis defined as right*/
+    glm::vec3 LocalRight_     = glm::vec3(-1.0f, 0.0f, 0.0f); /**<Local axis defined as right*/
 
     // Internal Camera State Information
     float MovementSpeed_     = 0.2f; /**<Current Movement Speed*/
