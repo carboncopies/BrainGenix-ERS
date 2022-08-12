@@ -247,7 +247,7 @@ private:
 
 
     // Asset Streaming Settings
-    int StreamingPriority_ = 1;                 /**< Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)*/
+    int StreamingPriority_ = 1;        /**< Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)*/
 
 
 };
