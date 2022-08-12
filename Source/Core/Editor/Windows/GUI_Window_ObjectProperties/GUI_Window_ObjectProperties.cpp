@@ -263,8 +263,9 @@ void GUI_Window_ObjectProperties::Draw() {
                     unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
                     if (ImGui::CollapsingHeader("Camera Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
 
-                        // Get Current Camera
-                        //ERS_STRUCT_SceneCamera* Camera = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneCameras[Index].get();
+                        // Get Current Camera, Get Properties
+                        ERS_STRUCT_SceneCamera* Camera = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneCameras[Index].get();
+                        
 
                         bool Selected = (bool)SceneManager_->Scenes_[SceneManager_->ActiveScene_]->ActiveSceneCameraIndex == Index;
                         if (ImGui::Checkbox("Active Camera", &Selected)) {
@@ -272,6 +273,41 @@ void GUI_Window_ObjectProperties::Draw() {
                         }
                         ImGui::SameLine();
                         ImGui::HelpMarker("Indicates if this is the active camera or not. There can only be one active camera at a time. The system then renders the scene from the active camera's perspective on viewport 0.");
+
+
+                        ImGui::Spacing();
+                        ImGui::Separator();
+                        ImGui::Spacing();
+
+
+
+                        ImGui::DragFloat("FOV", &Camera->FOV_, 0.25f, 0.0f, 180.0f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Sets the field of view (in degrees) of the camera");
+
+                        ImGui::DragFloat("Near Clip Plane", &Camera->NearClip_, 0.25f, 0.0f, 10.0f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Sets the minimum distance before which geometry is ignored.");
+
+                        ImGui::DragFloat("Far Clip Plane", &Camera->FarClip_, 1.0f, 5.0f, 500.0f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Sets the maximum distance after which geometry is ignored.");
+
+                        ImGui::Spacing();
+
+                        ImGui::Checkbox("Enforce Aspect Ratio", &Camera->EnforceAspectRatio_);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Manually override the camera's aspect ratio. Will cause letterboxing if the ratios don't match.");
+
+                        if (!Camera->EnforceAspectRatio_) {
+                            ImGui::BeginDisabled();
+                        }
+                        ImGui::DragFloat("Aspect Ratio", &Camera->AspectRatio_, 0.05f, 0.1f, 4.0f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Aspect ratio to override the camera's automatic one with. Ratio is width/height.");
+                        if (!Camera->EnforceAspectRatio_) {
+                            ImGui::EndDisabled();
+                        }
 
                     }
 
