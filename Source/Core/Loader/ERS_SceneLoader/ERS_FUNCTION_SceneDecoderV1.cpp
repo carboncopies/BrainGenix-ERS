@@ -8,6 +8,7 @@
 
 bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, ERS_STRUCT_SystemUtils *SystemUtils, ERS_CLASS_ModelLoader* ModelLoader, bool LogEnable) {
 
+    SystemUtils->Logger_->Log(std::string("Processing Scene '") + std::string(Scene->SceneName) + "'", 3, LogEnable);
 
     // Grab Metadata
     Scene->SceneFormatVersion = 1;
@@ -15,8 +16,6 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
     ERS_FUNCTION_GetInt     (SceneData, "ActiveCameraIndex", Scene->ActiveSceneCameraIndex);
 
 
-    // Log Scene Processing
-    SystemUtils->Logger_->Log(std::string("Processing Scene: ") + std::string(Scene->SceneName), 3, LogEnable);
 
     // Create List Of Scene Items
     std::vector<YAML::Node> SceneItems;
