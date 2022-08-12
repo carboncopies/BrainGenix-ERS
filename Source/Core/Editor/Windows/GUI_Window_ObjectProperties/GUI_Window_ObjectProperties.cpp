@@ -295,7 +295,7 @@ void GUI_Window_ObjectProperties::Draw() {
 
                         ImGui::Spacing();
 
-                        bool ToggleAspectRatio = ImGui::Checkbox("Enforce Aspect Ratio", &Camera->EnforceAspectRatio_);
+                        ImGui::Checkbox("Enforce Aspect Ratio", &Camera->EnforceAspectRatio_);
 
                         if (!Camera->EnforceAspectRatio_) {
                             ImGui::BeginDisabled();
