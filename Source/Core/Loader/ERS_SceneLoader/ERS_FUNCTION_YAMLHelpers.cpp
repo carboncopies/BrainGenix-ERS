@@ -19,9 +19,9 @@ bool ERS_FUNCTION_GetFloat(YAML::Node Data, std::string Name, float &Target) {
     try {
         Target = Data[Name].as<float>();
         return true;
-    } catch (YAML::TypedBadConversion<float>) {
+    } catch (YAML::TypedBadConversion<float>&) {
         return false;
-    } catch (YAML::KeyNotFound) {
+    } catch (YAML::KeyNotFound&) {
         return false;
     }
 }
@@ -29,9 +29,9 @@ bool ERS_FUNCTION_GetBool(YAML::Node Data, std::string Name, bool &Target) {
     try {
         Target = Data[Name].as<bool>();
         return true;
-    } catch (YAML::TypedBadConversion<bool>) {
+    } catch (YAML::TypedBadConversion<bool>&) {
         return false;
-    } catch (YAML::KeyNotFound) {
+    } catch (YAML::KeyNotFound&) {
         return false;
     }
 }
@@ -39,9 +39,9 @@ bool ERS_FUNCTION_GetLong(YAML::Node Data, std::string Name, long &Target) {
     try {
         Target = Data[Name].as<long>();
         return true;
-    } catch (YAML::TypedBadConversion<long>) {
+    } catch (YAML::TypedBadConversion<long>&) {
         return false;
-    } catch (YAML::KeyNotFound) {
+    } catch (YAML::KeyNotFound&) {
         return false;
     }
 }
@@ -49,9 +49,9 @@ bool ERS_FUNCTION_GetDouble(YAML::Node Data, std::string Name, double &Target) {
     try {
         Target = Data[Name].as<double>();
         return true;
-    } catch (YAML::TypedBadConversion<double>) {
+    } catch (YAML::TypedBadConversion<double>&) {
         return false;
-    } catch (YAML::KeyNotFound) {
+    } catch (YAML::KeyNotFound&) {
         return false;
     }
 }
@@ -59,9 +59,9 @@ bool ERS_FUNCTION_GetUnsignedInt(YAML::Node Data, std::string Name, unsigned int
     try {
         Target = Data[Name].as<unsigned int>();
         return true;
-    } catch (YAML::TypedBadConversion<unsigned int>) {
+    } catch (YAML::TypedBadConversion<unsigned int>&) {
         return false;
-    } catch (YAML::KeyNotFound) {
+    } catch (YAML::KeyNotFound&) {
         return false;
     }
 }
@@ -69,9 +69,9 @@ bool ERS_FUNCTION_GetBool(YAML::Node Data, std::string Name, unsigned long &Targ
     try {
         Target = Data[Name].as<unsigned long>();
         return true;
-    } catch (YAML::TypedBadConversion<unsigned long>) {
+    } catch (YAML::TypedBadConversion<unsigned long>&) {
         return false;
-    } catch (YAML::KeyNotFound) {
+    } catch (YAML::KeyNotFound&) {
         return false;
     }
 }
@@ -79,9 +79,9 @@ bool ERS_FUNCTION_GetLongLong(YAML::Node Data, std::string Name, long long &Targ
     try {
         Target = Data[Name].as<long long>();
         return true;
-    } catch (YAML::TypedBadConversion<long long>) {
+    } catch (YAML::TypedBadConversion<long long>&) {
         return false;
-    } catch (YAML::KeyNotFound) {
+    } catch (YAML::KeyNotFound&) {
         return false;
     }
 }
@@ -89,9 +89,9 @@ bool ERS_FUNCTION_GetUnsignedLongLong(YAML::Node Data, std::string Name, unsigne
     try {
         Target = Data[Name].as<unsigned long long>();
         return true;
-    } catch (YAML::TypedBadConversion<unsigned long long>) {
+    } catch (YAML::TypedBadConversion<unsigned long long>&) {
         return false;
-    } catch (YAML::KeyNotFound) {
+    } catch (YAML::KeyNotFound&) {
         return false;
     }
 }
@@ -99,9 +99,9 @@ bool ERS_FUNCTION_GetString(YAML::Node Data, std::string Name, std::string &Targ
     try {
         Target = Data[Name].as<std::string>();
         return true;
-    } catch (YAML::TypedBadConversion<std::string>) {
+    } catch (YAML::TypedBadConversion<std::string>&) {
         return false;
-    } catch (YAML::KeyNotFound) {
+    } catch (YAML::KeyNotFound&) {
         return false;
     }
 }
@@ -111,9 +111,9 @@ bool ERS_FUNCTION_GetVec3(YAML::Node Data, std::string Name, glm::vec3 &Target) 
     try {
         Target = Data[Name].as<glm::vec3>();
         return true;
-    } catch (YAML::TypedBadConversion<glm::vec3>) {
+    } catch (YAML::TypedBadConversion<glm::vec3>&) {
         return false;
-    } catch (YAML::KeyNotFound) {
+    } catch (YAML::KeyNotFound&) {
         return false;
     }
 }
@@ -124,9 +124,9 @@ bool ERS_FUNCTION_GetVec3FromFloats(YAML::Node Data, std::string NameBase, glm::
         float Z = Data[NameBase + "Z"].as<float>();
         Target = glm::vec3(X,Y,Z);
         return true;
-    } catch (YAML::TypedBadConversion<float>) {
+    } catch (YAML::TypedBadConversion<float>&) {
         return false;
-    } catch (YAML::KeyNotFound) {
+    } catch (YAML::KeyNotFound&) {
         return false;
     }
 }
@@ -134,9 +134,9 @@ bool ERS_FUNCTION_GetVec4(YAML::Node Data, std::string Name, glm::vec4 &Target) 
     try {
         Target = Data[Name].as<glm::vec4>();
         return true;
-    } catch (YAML::TypedBadConversion<glm::vec4>) {
+    } catch (YAML::TypedBadConversion<glm::vec4>&) {
         return false;
-    } catch (YAML::KeyNotFound) {
+    } catch (YAML::KeyNotFound&) {
         return false;
     }
 }
