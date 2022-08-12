@@ -254,9 +254,9 @@ void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement Direction, float DeltaTim
     if (Direction == RIGHT)
         Position_ += Right_ * Velocity;
     if (Direction == UP)
-        Position_ += glm::vec3(0.0f, 1.0f, 0.0f) * Velocity;
+        Position_ += Up_ * Velocity;
     if (Direction == DOWN)
-        Position_ -= glm::vec3(0.0f, 1.0f, 0.0f) * Velocity;
+        Position_ -= Up_ * Velocity;
 
 }
 
@@ -313,20 +313,18 @@ void ERS_STRUCT_Camera::Update() {
     PerspectiveMatrix_ = glm::perspective(FOV_, AspectRatio_, NearClip_, FarClip_);	
  	ViewMatrix_ = glm::translate(glm::mat4_cast(Orientation_), Position_);;
 
-    // // Calculate New Front Vector
-    // glm::vec3 NewFront;
-    // NewFront.x = cos(glm::radians(Yaw_)) * cos(glm::radians(Pitch_));
-    // NewFront.y = sin(glm::radians(Pitch_));
-    // NewFront.z = sin(glm::radians(Yaw_)) * cos(glm::radians(Pitch_));
-    // Front_ = glm::normalize(NewFront);
+    // Calculate Movement Vectors
+    Front_ = glm::vec3();
+    Front_.x = cos(glm::radians(Rotation_.x)) * cos(glm::radians(Rotation_.y));
+    Front_.y = sin(glm::radians(Rotation_.y));
+    Front_.z = sin(glm::radians(Rotation_.x)) * cos(glm::radians(Rotation_.y));
+    Front_ = glm::normalize(Front_);
 
-    // // Calculate Right, Up Vector
-    // Right_ = glm::normalize(glm::cross(Front_, WorldUp_));
+    Right_ = glm::normalize(glm::cross(Front_, WorldUp_));
+    Up_ = glm::normalize(glm::cross(Right_, Front_));
 
-    // Up_ = glm::normalize(glm::cross(Right_, Front_));
-
-    // glm::mat4 roll_mat = glm::rotate(glm::mat4(1.0f), glm::radians(Roll_), Front_);
-    // Up_ = glm::mat3(roll_mat) * Up_;
+    glm::mat4 roll_mat = glm::rotate(glm::mat4(1.0f), glm::radians(Rotation_.z), Front_);
+    Up_ = glm::mat3(roll_mat) * Up_;
 
 }
 
