@@ -137,6 +137,18 @@ bool ERS_FUNCTION_GetUnsignedLongLong(YAML::Node Data, std::string Name, unsigne
  * @return true
  * @return false 
  */
+bool ERS_FUNCTION_GetString(YAML::Node Data, std::string Name, std::string &Target);
+
+/**
+ * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
+ * Returns true on success, false on fail.
+ * 
+ * @param Data YAML::Node containing the target data
+ * @param Name Name of the parameter in the yaml node
+ * @param Target Reference to the variable to be set to the decoded value
+ * @return true
+ * @return false 
+ */
 bool ERS_FUNCTION_GetVec3(YAML::Node Data, std::string Name, glm::vec3 &Target);
 
 /**
@@ -151,14 +163,3 @@ bool ERS_FUNCTION_GetVec3(YAML::Node Data, std::string Name, glm::vec3 &Target);
  */
 bool ERS_FUNCTION_GetVec4(YAML::Node Data, std::string Name, glm::vec4 &Target);
 
-/**
- * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
- * Returns true on success, false on fail.
- * 
- * @param Data YAML::Node containing the target data
- * @param Name Name of the parameter in the yaml node
- * @param Target Reference to the variable to be set to the decoded value
- * @return true
- * @return false 
- */
-bool ERS_FUNCTION_GetString(YAML::Node Data, std::string Name, std::string &Target);

@@ -55,3 +55,53 @@ bool ERS_FUNCTION_GetDouble(YAML::Node Data, std::string Name, double &Target) {
         return false;
     }
 }
+bool ERS_FUNCTION_GetUnsignedInt(YAML::Node Data, std::string Name, unsigned int &Target) {
+    try {
+        Target = Data[Name].as<unsigned int>();
+        return true;
+    } catch (YAML::TypedBadConversion<unsigned int>) {
+        return false;
+    } catch (YAML::KeyNotFound) {
+        return false;
+    }
+}
+bool ERS_FUNCTION_GetBool(YAML::Node Data, std::string Name, unsigned long &Target) {
+    try {
+        Target = Data[Name].as<unsigned long>();
+        return true;
+    } catch (YAML::TypedBadConversion<unsigned long>) {
+        return false;
+    } catch (YAML::KeyNotFound) {
+        return false;
+    }
+}
+bool ERS_FUNCTION_GetLongLong(YAML::Node Data, std::string Name, long long &Target) {
+    try {
+        Target = Data[Name].as<long long>();
+        return true;
+    } catch (YAML::TypedBadConversion<long long>) {
+        return false;
+    } catch (YAML::KeyNotFound) {
+        return false;
+    }
+}
+bool ERS_FUNCTION_GetUnsignedLongLong(YAML::Node Data, std::string Name, unsigned long long &Target) {
+    try {
+        Target = Data[Name].as<unsigned long long>();
+        return true;
+    } catch (YAML::TypedBadConversion<unsigned long long>) {
+        return false;
+    } catch (YAML::KeyNotFound) {
+        return false;
+    }
+}
+bool ERS_FUNCTION_GetString(YAML::Node Data, std::string Name, std::string &Target) {
+    try {
+        Target = Data[Name].as<std::string>();
+        return true;
+    } catch (YAML::TypedBadConversion<std::string>) {
+        return false;
+    } catch (YAML::KeyNotFound) {
+        return false;
+    }
+}
