@@ -442,7 +442,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         // Update Camera Location If System Running
         if (!IsEditorMode_ && Index == 0 && Scene->ActiveSceneCameraIndex != -1) {
-            Viewport->Camera->Position_ = Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Pos_;
+            Viewport->Camera->SetPosition(Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Pos_);
             Viewport->Camera->SetRotation(Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Rot_);
             
         }
@@ -457,7 +457,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
         if (Viewport->GridEnabled) {
-            Viewport->Grid->DrawGrid(View, Projection, Viewport->Camera->Position_);
+            Viewport->Grid->DrawGrid(View, Projection, Viewport->Camera->GetPosition());
         }
         if (Viewport->LightIcons) {
             Viewport->IconRenderer->Draw(Viewport->Camera.get(), SceneManager);
