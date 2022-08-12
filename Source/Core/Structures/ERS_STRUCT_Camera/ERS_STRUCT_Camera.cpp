@@ -90,7 +90,7 @@ void ERS_STRUCT_Camera::Update() {
     QuatOrientation = glm::normalize(QuatOrientation);
 
     // Update Matricies
-    PerspectiveMatrix_ = glm::perspective(glm::radians(FOV_), AspectRatio_, NearClip_, FarClip_);	
+    PerspectiveMatrix_          = glm::perspective(glm::radians(FOV_), AspectRatio_, NearClip_, FarClip_);	
     glm::mat4 RotationMatrix    = glm::mat4_cast(QuatOrientation);
     glm::mat4 TranslationMatrix = glm::mat4(1.0f);
     TranslationMatrix           = glm::translate(TranslationMatrix, -Position_);
