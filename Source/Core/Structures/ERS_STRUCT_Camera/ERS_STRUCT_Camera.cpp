@@ -15,10 +15,8 @@ ERS_STRUCT_Camera::~ERS_STRUCT_Camera() {
 
 }
 
-void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio) {
-    AspectRatio_ = AspectRatio;
-}
 
+// Callbacks
 void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
 
     // Calculate Velocity
@@ -39,8 +37,6 @@ void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement Direction, float DeltaTim
         Position_ -= Up_ * Velocity;
 
 }
-
-
 void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch) {
 
     // Change Offset By Sensitivity
@@ -65,8 +61,6 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboo
     }
 
 }
-
-
 void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset) {
 
     // Update Movement Speed
@@ -80,6 +74,8 @@ void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset) {
 
 }
 
+
+// Update Matricies
 void ERS_STRUCT_Camera::Update() {
     
     // Recalculate Orientation Quat
@@ -101,7 +97,6 @@ void ERS_STRUCT_Camera::Update() {
     Up_     =  glm::normalize(glm::vec3(ViewMatrix_[0][1], ViewMatrix_[1][1], ViewMatrix_[2][1]));
     Front_  = -glm::normalize(glm::vec3(ViewMatrix_[0][2], ViewMatrix_[1][2], ViewMatrix_[2][2]));
 }
-
 
 
 // Camera Parameter Helper Functions
@@ -142,6 +137,9 @@ void ERS_STRUCT_Camera::GetFOV(float &FOV) {
 }
 float ERS_STRUCT_Camera::GetFOV() {
     return FOV_;
+}
+void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio) {
+    AspectRatio_ = AspectRatio;
 }
 void ERS_STRUCT_Camera::GetMouseSensitivity(float &Sensitivity) {
     Sensitivity = MouseSensitivity_;
