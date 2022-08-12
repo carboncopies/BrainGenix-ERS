@@ -117,6 +117,19 @@ bool ERS_FUNCTION_GetVec3(YAML::Node Data, std::string Name, glm::vec3 &Target) 
         return false;
     }
 }
+bool ERS_FUNCTION_GetVec3FromFloats(YAML::Node Data, std::string NameBase, glm::vec3 &Target) {
+    try {
+        float X = Data[NameBase + "X"].as<float>();
+        float Y = Data[NameBase + "Y"].as<float>();
+        float Z = Data[NameBase + "Z"].as<float>();
+        Target = glm::vec3(X,Y,Z);
+        return true;
+    } catch (YAML::TypedBadConversion<glm::vec3>) {
+        return false;
+    } catch (YAML::KeyNotFound) {
+        return false;
+    }
+}
 bool ERS_FUNCTION_GetVec4(YAML::Node Data, std::string Name, glm::vec4 &Target) {
     try {
         Target = Data[Name].as<glm::vec4>();

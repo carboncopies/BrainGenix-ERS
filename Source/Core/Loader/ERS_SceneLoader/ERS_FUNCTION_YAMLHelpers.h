@@ -154,6 +154,20 @@ bool ERS_FUNCTION_GetVec3(YAML::Node Data, std::string Name, glm::vec3 &Target);
 /**
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
+ * Will append X,Y,Z to get the three components of the vector.
+ * 
+ * @param Data YAML::Node containing the target data
+ * @param Name Name of the parameter in the yaml node
+ * @param Target Reference to the variable to be set to the decoded value
+ * @return true
+ * @return false 
+ */
+bool ERS_FUNCTION_GetVec3FromFloats(YAML::Node Data, std::string NameBase, glm::vec3 &Target);
+
+
+/**
+ * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
+ * Returns true on success, false on fail.
  * 
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
