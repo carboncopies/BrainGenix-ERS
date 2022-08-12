@@ -27,11 +27,14 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
     for (long i = 0; (long)i < (long)SceneDataNode.size(); i++) {
 
         // Get Asset Information
-        std::string AssetName = SceneDataNode[i]["AssetName"].as<std::string>();
-        std::string AssetType = SceneDataNode[i]["AssetType"].as<std::string>();
+        YAML::Node Item = SceneDataNode[i];
+        std::string AssetName, AssetType;
+        ERS_FUNCTION_GetString(Item, "AssetName", AssetName);
+        ERS_FUNCTION_GetString(Item, "AssetType", AssetType);
+
 
         // If type Is Model
-        if (AssetType == std::string("Model")) {
+        if (AssetType == "Model") {
 
             long AssetID = SceneDataNode[i]["AssetID"].as<long>();
 
