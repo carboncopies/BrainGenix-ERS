@@ -131,6 +131,20 @@ public:
     void SetMovementSpeed(float Speed, bool EnforceSpeedBoundries = true);
     
     /**
+     * @brief Gets the mouse sensitivity multiplier.
+     * 
+     * @param Sensitivity Mouse sensitivity multiplier. 
+     */
+    void GetMouseSensitivity(float &Sensitivity);
+
+    /**
+     * @brief Sets the mouse sensitivity multiplier.
+     * 
+     * @param Sensitivity Mouse sensitivity multiplier.
+     */
+    void SetMouseSensitivity(float Sensitivity);
+
+    /**
      * @brief Gets the current field of view angle.
      * 
      * @param FOV Field of view in degrees.
