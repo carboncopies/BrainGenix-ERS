@@ -81,13 +81,12 @@ public:
 
 
     
-
-
     /**
      * @brief Updates the camera's matricies, should be called once per frame.
      * 
      */
     void Update();
+
 
 
     /**
@@ -160,7 +159,7 @@ public:
      */
     void GetFOV(float &FOV);
     float GetFOV();
-    
+
     /**
      * @brief Sets the field of view angle.
      * 

@@ -99,19 +99,16 @@ void ERS_STRUCT_Camera::Update() {
     // Calculate Movement Direction Vectors
     Right_  =  glm::normalize(glm::vec3(ViewMatrix_[0][0], ViewMatrix_[1][0], ViewMatrix_[2][0]));
     Up_     =  glm::normalize(glm::vec3(ViewMatrix_[0][1], ViewMatrix_[1][1], ViewMatrix_[2][1]));
-    Front_  = -glm::normalize(glm::cross(Right_, Up_));//-glm::normalize(glm::vec3(ViewMatrix_[0][2], ViewMatrix_[1][2], ViewMatrix_[2][2]));
+    Front_  = -glm::normalize(glm::vec3(ViewMatrix_[0][2], ViewMatrix_[1][2], ViewMatrix_[2][2]));
 }
 
 
 
-
+// Camera Parameter Helper Functions
 void ERS_STRUCT_Camera::GetMatrices(glm::mat4& Perspective, glm::mat4& View){
     Perspective = PerspectiveMatrix_;
     View = ViewMatrix_;
 }
-
-
-// Camera Parameter Helper Functions
 void ERS_STRUCT_Camera::SetClipBoundries(float NearClip, float FarClip) {
     NearClip_ = NearClip;
     FarClip_ = FarClip;
