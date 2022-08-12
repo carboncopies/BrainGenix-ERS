@@ -86,12 +86,8 @@ void ERS_STRUCT_Camera::Update() {
     glm::quat QuatPitch  = glm::angleAxis(glm::radians(Orientation_.p), glm::vec3(1, 0, 0));
     glm::quat QuatYaw    = glm::angleAxis(glm::radians(Orientation_.y), glm::vec3(0, 1, 0));
     glm::quat QuatRoll   = glm::angleAxis(glm::radians(Orientation_.r), glm::vec3(0, 0, 1));
-    
     glm::quat QuatOrientation = QuatPitch * QuatYaw * QuatRoll;
     QuatOrientation = glm::normalize(QuatOrientation);
-
-
-
 
     // Update Matricies
     PerspectiveMatrix_ = glm::perspective(FOV_, AspectRatio_, NearClip_, FarClip_);	
@@ -99,7 +95,6 @@ void ERS_STRUCT_Camera::Update() {
     glm::mat4 TranslationMatrix = glm::mat4(1.0f);
     TranslationMatrix           = glm::translate(TranslationMatrix, -Position_);
     ViewMatrix_                 = RotationMatrix * TranslationMatrix;
- 	//ViewMatrix_ = glm::translate(glm::mat4_cast(QuatOrientation), Position_);
 
     // Calculate Movement Direction Vectors
     Right_  =  glm::normalize(glm::vec3(ViewMatrix_[0][0], ViewMatrix_[1][0], ViewMatrix_[2][0]));
