@@ -268,8 +268,7 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
     // Indicate Scene Is Loaded
     Scene->IsSceneLoaded = true;
-
-
+    return true;
 
 }
 
