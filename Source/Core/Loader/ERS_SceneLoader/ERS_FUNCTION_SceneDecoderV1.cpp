@@ -8,7 +8,7 @@
 
 bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, ERS_STRUCT_SystemUtils *SystemUtils, ERS_CLASS_ModelLoader* ModelLoader, bool LogEnable) {
 
-    SystemUtils->Logger_->Log(std::string("Processing Scene '") + std::string(Scene->SceneName) + "'", 3, LogEnable);
+    SystemUtils->Logger_->Log(std::string("Processing Scene '") + Scene->SceneName + "'", 3, LogEnable);
 
     // Grab Metadata
     ERS_FUNCTION_GetLong    (SceneData, "SceneFormatVersion", Scene->SceneFormatVersion    );
