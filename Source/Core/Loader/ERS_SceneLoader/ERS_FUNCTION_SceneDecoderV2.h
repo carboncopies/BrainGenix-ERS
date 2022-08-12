@@ -17,6 +17,10 @@
 
 #include <ERS_CLASS_ModelLoader.h>
 
+#include <ERS_FUNCTION_YAMLHelpers.h>
+
+
+
 
 /**
  * @brief Decodes the specified version of the scene format.
