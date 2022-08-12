@@ -48,7 +48,7 @@ public:
     float MinMovementSpeed_  = 0.01f; /**<Slowest movement speed allowed*/
     float MaxMovementSpeed_  = 50.0f; /**<Fastest movement speed allowed*/
 
-    glm::vec3 LocalFront_     = glm::vec3(0.0f, 0.0f, 1.0f); /**<Local axis defined as front*/
+    glm::vec3 LocalFront_     = glm::vec3(0.0f, 0.0f, -1.0f); /**<Local axis defined as front*/
     glm::vec3 LocalUp_        = glm::vec3(0.0f, 1.0f, 0.0f); /**<Local axis defined as up*/
     glm::vec3 LocalRight_     = glm::vec3(-1.0f, 0.0f, 0.0f); /**<Local axis defined as right*/
 
@@ -58,7 +58,10 @@ public:
     float FOV_               = 50.0f;
     float AspectRatio_       = 1.25f;
 
-    glm::vec3 Rotation_;
+    float Yaw_               = 0.0f;
+    float Pitch_             = 0.0f;
+    float Roll_              = 0.0f;
+    
     glm::vec3 Position_;
     
     glm::vec3 Front_;
