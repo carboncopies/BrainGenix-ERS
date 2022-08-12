@@ -110,6 +110,22 @@ public:
      */
     void GetClipBoundires(float &NearClip, float &FarClip);
 
+    /**
+     * @brief Helper function, sets the camera's maximum and minimum freeflying movement speeds.
+     * 
+     * @param MinSpeed Slowest speed that the user can set the camera's keys to move in units per second.
+     * @param MaxSpeed Fastest speed that the user can set the camera's keys to move in units per second.
+     */
+    void SetMovementSpeedBoundries(float MinSpeed, float MaxSpeed);
+
+    /**
+     * @brief Helper Function, gets the camera's maximum and minimum freeflying movement speeds.
+     * 
+     * @param MinSpeed Slowest speed that the user can set the camera's keys to move in units per second.
+     * @param MaxSpeed Fastest speed that the user can set the camera's keys to move in units per second.
+     */
+    void GetMovementSpeedBoundries(float &MinSpeed, float &MaxSpeed);
+
 private:
 
     // Camea Configuration Information
