@@ -281,9 +281,17 @@ void GUI_Window_ObjectProperties::Draw() {
 
 
 
-                        ImGui::DragFloat("Camera FOV", &Camera->FOV_, 0.25f, 0.0f, 180.0f);
+                        ImGui::DragFloat("FOV", &Camera->FOV_, 0.25f, 0.0f, 180.0f);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the field of view (in degrees) of the camera");
+
+                        ImGui::DragFloat("Near Clip Plane", &Camera->NearClip_, 0.25f, 0.0f, 10.0f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Sets the minimum distance before which geometry is ignored.");
+
+                        ImGui::DragFloat("Far Clip Plane", &Camera->FarClip_, 1.0f, 5.0f, 500.0f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Sets the maximum distance after which geometry is ignored.");
 
 
 
