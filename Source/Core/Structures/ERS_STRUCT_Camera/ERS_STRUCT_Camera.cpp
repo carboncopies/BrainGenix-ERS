@@ -315,9 +315,9 @@ void ERS_STRUCT_Camera::Update() {
 
     // Calculate Movement Direction Vectors
     Front_ = glm::vec3();
-    Front_.x = cos(glm::radians(Rotation_.x)) * cos(glm::radians(Rotation_.y));
-    Front_.y = sin(glm::radians(Rotation_.y));
-    Front_.z = sin(glm::radians(Rotation_.x)) * cos(glm::radians(Rotation_.y));
+    Front_.x = cos(glm::radians(Rotation_.y)) * cos(glm::radians(Rotation_.x));
+    Front_.y = sin(glm::radians(Rotation_.x));
+    Front_.z = sin(glm::radians(Rotation_.y)) * cos(glm::radians(Rotation_.x));
     Front_ = glm::normalize(Front_);
 
     Right_ = glm::normalize(glm::cross(Front_, WorldUp_));
