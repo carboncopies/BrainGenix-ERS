@@ -125,10 +125,24 @@ public:
     /**
      * @brief Helper function, Sets the speed of the camera.
      * 
-     * @param Speed Desired speed in units per second
-     * @param EnforceSpeedBoundries
+     * @param Speed Desired speed in units per second.
+     * @param EnforceSpeedBoundries Enable/disable hard boundry enforcement.
      */
     void SetMovementSpeed(float Speed, bool EnforceSpeedBoundries = true);
+    
+    /**
+     * @brief Gets the current field of view angle.
+     * 
+     * @param FOV Field of view in degrees.
+     */
+    void GetFOV(float &FOV);
+
+    /**
+     * @brief Sets the field of view angle.
+     * 
+     * @param FOV Field of view in degrees.
+     */
+    void SetFOV(float FOV);
 
 private:
 
