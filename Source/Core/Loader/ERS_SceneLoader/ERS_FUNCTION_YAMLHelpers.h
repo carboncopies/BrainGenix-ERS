@@ -156,7 +156,6 @@ bool ERS_FUNCTION_GetNode(YAML::Node Data, std::string NameBase, YAML::Node &Tar
 /**
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
- * Will append X,Y,Z to get the three components of the vector.
  * 
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
@@ -169,7 +168,6 @@ bool ERS_FUNCTION_GetStringVector(YAML::Node Data, std::string NameBase, std::ve
 /**
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
- * Will append X,Y,Z to get the three components of the vector.
  * 
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
@@ -182,7 +180,6 @@ bool ERS_FUNCTION_GetIntVector(YAML::Node Data, std::string NameBase, std::vecto
 /**
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
- * Will append X,Y,Z to get the three components of the vector.
  * 
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
