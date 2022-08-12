@@ -308,7 +308,7 @@ void ERS_STRUCT_Camera::Update() {
     glm::quat QuatYaw    = glm::angleAxis(glm::radians(Yaw_  ), glm::vec3(0, 1, 0));
     glm::quat QuatRoll   = glm::angleAxis(glm::radians(Roll_ ), glm::vec3(1, 0, 0));
     
-    glm::quat Orientation = QuatPitch * QuatYaw;
+    glm::quat Orientation = QuatPitch * QuatYaw * QuatRoll;
     Orientation = glm::normalize(Orientation);
 
 
