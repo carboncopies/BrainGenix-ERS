@@ -124,3 +124,13 @@ void ERS_STRUCT_Camera::GetClipBoundires(float &NearClip, float &FarClip) {
     NearClip = NearClip_;
     FarClip = FarClip_;
 }
+void ERS_STRUCT_Camera::SetMovementSpeedBoundries(float MinSpeed, float MaxSpeed) {
+    MinMovementSpeed_ = MinSpeed;
+    MaxMovementSpeed_ = MaxSpeed;
+}
+void ERS_STRUCT_Camera::GetMovementSpeedBoundries(float &MinSpeed, float &MaxSpeed) {
+    MinSpeed = MinMovementSpeed_;
+    MaxSpeed = MaxMovementSpeed_;
+}
+
+
