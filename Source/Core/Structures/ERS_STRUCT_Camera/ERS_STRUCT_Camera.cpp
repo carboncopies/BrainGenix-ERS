@@ -339,8 +339,8 @@ void ERS_STRUCT_Camera::Update() {
     Right_ = glm::normalize(glm::cross(Front_, LocalUp_));
     Up_ = glm::normalize(glm::cross(Right_, Front_));
 
-    glm::mat4 roll_mat = glm::rotate(glm::mat4(1.0f), glm::radians(Rotation_.z), Front_);
-    Up_ = glm::mat3(roll_mat) * Up_;
+    // glm::mat4 roll_mat = glm::rotate(glm::mat4(1.0f), glm::radians(Rotation_.z), Front_);
+    // Up_ = glm::mat3(roll_mat) * Up_;
 
 }
 
