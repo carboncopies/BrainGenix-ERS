@@ -265,7 +265,7 @@ void GUI_Window_ObjectProperties::Draw() {
 
                         // Get Current Camera, Get Properties
                         ERS_STRUCT_SceneCamera* Camera = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneCameras[Index].get();
-                        //float FOV = Camera.
+                        
 
                         bool Selected = (bool)SceneManager_->Scenes_[SceneManager_->ActiveScene_]->ActiveSceneCameraIndex == Index;
                         if (ImGui::Checkbox("Active Camera", &Selected)) {
@@ -273,6 +273,19 @@ void GUI_Window_ObjectProperties::Draw() {
                         }
                         ImGui::SameLine();
                         ImGui::HelpMarker("Indicates if this is the active camera or not. There can only be one active camera at a time. The system then renders the scene from the active camera's perspective on viewport 0.");
+
+
+                        ImGui::Spacing();
+                        ImGui::Separator();
+                        ImGui::Spacing();
+
+
+
+                        ImGui::DragFloat("Camera FOV", &Camera->FOV_, 0.25f, 0.0f, 180.0f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Sets the field of view (in degrees) of the camera");
+
+
 
                     }
 
