@@ -60,7 +60,7 @@ void ERS_CLASS_IconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneMana
     glm::mat4 View;
     Camera->GetMatrices(Projection, View);
 
-    glm::vec3 CameraPosition = Camera->Position_;
+    glm::vec3 CameraPosition = Camera->GetPosition();
 
     ERS_STRUCT_Scene* Scene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
 
