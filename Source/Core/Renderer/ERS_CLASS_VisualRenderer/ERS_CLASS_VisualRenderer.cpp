@@ -327,7 +327,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         
 
         // Update FOV
-        Viewport->Camera->FOV_ = SystemUtils_->RendererSettings_->FOV_;
+        Viewport->Camera->SetFOV(SystemUtils_->RendererSettings_->FOV_);
 
         // Check If Input Enabled
         bool EnableCameraMovement = !Cursors3D_->IsUsing();
