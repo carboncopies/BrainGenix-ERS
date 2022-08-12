@@ -15,8 +15,6 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
     ERS_FUNCTION_GetString  (SceneData, "SceneName",          Scene->SceneName             );
     ERS_FUNCTION_GetInt     (SceneData, "ActiveCameraIndex",  Scene->ActiveSceneCameraIndex);
 
-
-
     // Create List Of Scene Items
     std::vector<YAML::Node> SceneItems;
     YAML::Node SceneDataNode = SceneData["SceneData"];
