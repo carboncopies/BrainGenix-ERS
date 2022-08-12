@@ -118,7 +118,10 @@ bool ERS_FUNCTION_GetNode(YAML::Node Data, std::string Name, YAML::Node &Target)
 // Vector Helpers
 bool ERS_FUNCTION_GetStringVector(YAML::Node Data, std::string Name, std::vector<std::string> &Target) {
     try {
-        Target = Data[Name].as<std::string>();
+        YAML::Node TargetNode = Data[Name];
+        for (YAML::const_iterator it=TargetNode.begin(); it!=TargetNode.end(); ++it) {
+            Target.push_back(it->second.as<std::string>());
+        }
         return true;
     } catch (YAML::TypedBadConversion<std::string>&) {
         return false;
