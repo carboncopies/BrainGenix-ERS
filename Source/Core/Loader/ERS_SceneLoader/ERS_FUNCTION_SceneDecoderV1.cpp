@@ -49,6 +49,15 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
             ERS_FUNCTION_GetString (Item, "AssetName",            Model.Name                 );
             Model.IsTemplateModel = false;
             
+           // Load Attached Scripts
+            if (SceneDataNode[i]["AttachedScripts"]) {
+                YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
+                for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
+                    Model.AttachedScriptIndexes_.push_back(it->second.as<long>());
+                }
+            }
+
+
             //Model.ApplyTransformations();
 
             //Load Model 
@@ -56,14 +65,7 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
             ModelLoader->AddModelToLoadingQueue(Scene->Models[Scene->Models.size()-1]);
 
 
-            // Load Attached Scripts
-            if (SceneDataNode[i]["AttachedScripts"]) {
-                YAML::Node Scripts = SceneDataNode[i]["AttachedScripts"];
-                for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
-                    Scene->Models[CurrentSize-1]->AttachedScriptIndexes_.push_back(it->second.as<long>());
-                }
-            }
-
+ 
 
 
 
