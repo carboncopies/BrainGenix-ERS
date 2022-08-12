@@ -44,16 +44,16 @@ public:
 
 
     // Camea Limit Information
-    float NearClip_ = 0.01f; /**<Closest distance before geometry is culled.*/
-    float FarClip_ = 100.0f; /**<Farthest distance before geometry is called*/
-    float MinMovementSpeed_ = 0.01f; /**<Slowest movement speed allowed*/
-    float MaxMovementSpeed_ = 50.0f; /**<Fastest movement speed allowed*/
+    float NearClip_          = 0.01f; /**<Closest distance before geometry is culled.*/
+    float FarClip_           = 100.0f; /**<Farthest distance before geometry is called*/
+    float MinMovementSpeed_  = 0.01f; /**<Slowest movement speed allowed*/
+    float MaxMovementSpeed_  = 50.0f; /**<Fastest movement speed allowed*/
 
     // Internal Camera State Information
-    float MovementSpeed_; /**<Current Movement Speed*/
-    float MouseSensitivity_;
-    float FOV_;
-    float AspectRatio_;
+    float MovementSpeed_     = 0.2f; /**<Current Movement Speed*/
+    float MouseSensitivity_  = 0.05f;
+    float FOV_               = 50.0f;
+    float AspectRatio_       = 1.25f;
 
     glm::quat Orientation_; 
     glm::vec3 Rotation_;
