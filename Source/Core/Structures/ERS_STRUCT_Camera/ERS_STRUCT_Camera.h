@@ -68,7 +68,6 @@ public:
     void ProcessMouseMovement(float XOffset, float Yoffset, GLboolean ConstrainPitch = true);
     void ProcessMouseScroll(float YOffset);
 
-    void SetAspectRatio(float AspectRatio);
     void SetRotation(glm::vec3 Rotation);
 
     
@@ -157,6 +156,14 @@ public:
      * @param FOV Field of view in degrees.
      */
     void SetFOV(float FOV);
+
+    /**
+     * @brief Set the camera's aspect ratio (width/height)
+     * 
+     * @param AspectRatio Aspect ratio (width/height)
+     */
+    void SetAspectRatio(float AspectRatio);
+
 
 private:
 
