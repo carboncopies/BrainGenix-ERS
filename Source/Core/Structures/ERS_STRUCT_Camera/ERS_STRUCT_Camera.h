@@ -74,9 +74,7 @@ public:
     }
 
 
-    // Return View Matrix
-    glm::mat4 GetViewMatrix();
-    glm::mat4 GetProjectionMatrix();
+
 
 
     // Proces Keyboard Input
@@ -87,7 +85,9 @@ public:
     void ProcessMouseScroll(float YOffset);
 
     void SetAspectRatio(float AspectRatio);
-    void Rotate(glm::vec3 Rotation);
+    void SetRotation(glm::vec3 Rotation);
+
+    void GetMatrices(glm::mat4& perspective, glm::mat4& view);
 
 private:
 
@@ -104,6 +104,9 @@ private:
 
     glm::vec3 WorldUp_;
 
+    glm::mat4 PerspectiveMatrix_;
+    glm::mat4 ViewMatrix_;
+
     /**
      * @brief Updates The Following Camera Matricies/Vars:
      * View, Projection, Orientation Quat
@@ -112,7 +115,22 @@ private:
     void Update();
 
 
+    /**
+     * @brief Updates the orientation quat for one axis (xyz)
+     * Example: Rotate(glm::radians(90.0f), glm::vec3(1,0,0)); 
+     * That would rotate the x axis 90 degrees.
+     * 
+     * @param Angle 
+     * @param Axis 
+     */
     void Rotate(float Angle, glm::vec3 Axis); 
+
+    /**
+     * @brief Applies the Rotation_ vector by calling the other overload of rotate for every axis.
+     * Also clears the orientation quat so that we start rotating from 0,0,0
+     * 
+     * @param Rotation 
+     */
     void Rotate(glm::vec3 Rotation);
 };
 

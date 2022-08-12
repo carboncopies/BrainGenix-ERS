@@ -279,8 +279,14 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboo
         if (Rotation_.y > 89.0f) {
             Rotation_.y = 89.0f;
         }
-        if (Rotation_.y < -89.0f) {
-            Rotation_.y = -89.0f;
+        if (Rotation_.yvoid ERS_STRUCT_Camera::GetMatrices(glm::mat4& perspective, glm::mat4& view){
+// 	// perspective = PerspectiveMatrix_;	
+// 	// view = glm::translate(glm::mat4_cast(orientation), Position_);;
+//     //Update();
+//     perspective = PerspectiveMatrix_;
+//     view = ViewMatrix_; 
+
+// } = -89.0f;
         }
     }
 
@@ -309,7 +315,8 @@ void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset) {
 
 void ERS_STRUCT_Camera::Update() {
     
-
+    // Recalculate Orientation Quat
+    Rotate(Rotation_);
 
     // // Calculate New Front Vector
     // glm::vec3 NewFront;
@@ -333,7 +340,17 @@ void ERS_STRUCT_Camera::Rotate(float Angle, glm::vec3 Axis) {
 }
 
 void ERS_STRUCT_Camera::Rotate(glm::vec3 Rotation) {
+    Orientation_ = glm::quat();
     Rotate(Rotation.x, glm::vec3(1, 0, 0));
     Rotate(Rotation.y, glm::vec3(0, 1, 0));
     Rotate(Rotation.z, glm::vec3(0, 0, 1));
+}
+
+void ERS_STRUCT_Camera::SetRotation(glm::vec3 Rotation) {
+    Rotation_ = Rotation;
+}
+
+void ERS_STRUCT_Camera::GetMatrices(glm::mat4& Perspective, glm::mat4& View){
+    Perspective = PerspectiveMatrix_;
+    View = ViewMatrix_;
 }
