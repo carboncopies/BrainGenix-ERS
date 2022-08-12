@@ -99,7 +99,7 @@ void ERS_STRUCT_Camera::Update() {
     // Calculate Movement Direction Vectors
     Right_  =  glm::normalize(glm::vec3(ViewMatrix_[0][0], ViewMatrix_[1][0], ViewMatrix_[2][0]));
     Up_     =  glm::normalize(glm::vec3(ViewMatrix_[0][1], ViewMatrix_[1][1], ViewMatrix_[2][1]));
-    Front_  = glm::normalize(glm::cross(Right_, Up_));//-glm::normalize(glm::vec3(ViewMatrix_[0][2], ViewMatrix_[1][2], ViewMatrix_[2][2]));
+    Front_  = -glm::normalize(glm::cross(Right_, Up_));//-glm::normalize(glm::vec3(ViewMatrix_[0][2], ViewMatrix_[1][2], ViewMatrix_[2][2]));
 }
 
 
