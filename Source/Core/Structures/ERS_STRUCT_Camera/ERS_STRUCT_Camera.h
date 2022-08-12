@@ -172,15 +172,15 @@ private:
     float FOV_               = 50.0f;  /**<Field of view in degrees*/
     float AspectRatio_       = 1.25f;  /**<Internal variable used to setup the projection matrix*/
 
-    glm::vec3 Orientation_;         /**<Rotation of the camera in degrees. */
-    glm::vec3 Position_;            /**<Position of the camera in units */
+    glm::vec3 Orientation_;            /**<Rotation of the camera in degrees. */
+    glm::vec3 Position_;               /**<Position of the camera in units */
     
-    glm::vec3 Front_;               /**<Unit vector facing out the front of the camera. (in local space)*/
-    glm::vec3 Up_;                  /**<Unit vector facing out the top of the camera. (in local space)*/
-    glm::vec3 Right_;               /**<Unit vector facing to the right of the camera. (in local space)*/
+    glm::vec3 Front_;                  /**<Unit vector facing out the front of the camera. (in local space)*/
+    glm::vec3 Up_;                     /**<Unit vector facing out the top of the camera. (in local space)*/
+    glm::vec3 Right_;                  /**<Unit vector facing to the right of the camera. (in local space)*/
 
-    glm::mat4 PerspectiveMatrix_;   /**<Perspective/projection matrix, updated every time the Update function is called*/
-    glm::mat4 ViewMatrix_;          /**<View matrix, updated every time the Update function is called*/
+    glm::mat4 PerspectiveMatrix_;      /**<Perspective/projection matrix, updated every time the Update function is called*/
+    glm::mat4 ViewMatrix_;             /**<View matrix, updated every time the Update function is called*/
 
 
 };
