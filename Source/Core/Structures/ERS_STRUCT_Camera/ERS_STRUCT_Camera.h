@@ -39,20 +39,6 @@ struct ERS_STRUCT_Camera {
 
 public:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // Asset Streaming Config
     int Priority_ = 1; // Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)
 
@@ -68,6 +54,7 @@ public:
      * 
      */
     ~ERS_STRUCT_Camera();
+
 
 
     /**
