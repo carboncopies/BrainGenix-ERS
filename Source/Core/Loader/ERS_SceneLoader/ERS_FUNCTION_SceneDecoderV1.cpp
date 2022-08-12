@@ -11,9 +11,9 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
     SystemUtils->Logger_->Log(std::string("Processing Scene '") + std::string(Scene->SceneName) + "'", 3, LogEnable);
 
     // Grab Metadata
-    Scene->SceneFormatVersion = 1;
-    ERS_FUNCTION_GetString  (SceneData, "SceneName", Scene->SceneName);
-    ERS_FUNCTION_GetInt     (SceneData, "ActiveCameraIndex", Scene->ActiveSceneCameraIndex);
+    ERS_FUNCTION_GetLong    (SceneData, "SceneFormatVersion", Scene->SceneFormatVersion);
+    ERS_FUNCTION_GetString  (SceneData, "SceneName",          Scene->SceneName);
+    ERS_FUNCTION_GetInt     (SceneData, "ActiveCameraIndex",  Scene->ActiveSceneCameraIndex);
 
 
 
