@@ -53,8 +53,7 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
             //Load Model 
             Scene->Models.push_back(std::make_shared<ERS_STRUCT_Model>(Model));
-            int CurrentSize = Scene->Models.size();
-            ModelLoader->AddModelToLoadingQueue(Scene->Models[CurrentSize-1]);
+            ModelLoader->AddModelToLoadingQueue(Scene->Models[Scene->Models.size()-1]);
 
 
             // Load Attached Scripts
