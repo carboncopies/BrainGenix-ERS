@@ -112,6 +112,8 @@ private:
     void Update();
 
 
+    void Rotate(float Angle, glm::vec3 Axis); 
+    void Rotate(glm::vec3 Rotation);
 };
 
 
