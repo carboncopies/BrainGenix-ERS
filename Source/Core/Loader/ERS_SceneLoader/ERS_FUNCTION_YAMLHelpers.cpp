@@ -155,6 +155,18 @@ bool ERS_FUNCTION_GetLongVector(YAML::Node Data, std::string Name, std::vector<l
         return false;
     }
 }
+bool ERS_FUNCTION_GetNodeVector(YAML::Node Data, std::string Name, std::vector<YAML::Node> &Target) {
+    try {
+        YAML::Node TargetNode = Data[Name];
+        for (YAML::const_iterator it=TargetNode.begin(); it!=TargetNode.end(); ++it) {
+            Target.push_back(it->second);
+        }
+        return true;
+    } catch (YAML::KeyNotFound&) {
+        return false;
+    }
+}
+
 
 // GLM Helper Functions
 bool ERS_FUNCTION_GetVec3(YAML::Node Data, std::string NameBase, glm::vec3 &Target) {

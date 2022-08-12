@@ -189,6 +189,19 @@ bool ERS_FUNCTION_GetIntVector(YAML::Node Data, std::string NameBase, std::vecto
  */
 bool ERS_FUNCTION_GetLongVector(YAML::Node Data, std::string NameBase, std::vector<long> &Target);
 
+/**
+ * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
+ * Returns true on success, false on fail.
+ * 
+ * @param Data YAML::Node containing the target data
+ * @param Name Name of the parameter in the yaml node
+ * @param Target Reference to the variable to be set to the decoded value
+ * @return true
+ * @return false 
+ */
+bool ERS_FUNCTION_GetNodeVector(YAML::Node Data, std::string NameBase, std::vector<YAML::Node> &Target);
+
+
 
 /**
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
