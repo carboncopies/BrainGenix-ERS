@@ -667,7 +667,7 @@ ERS_STRUCT_Viewport* Viewport) {
     ShaderUniformData_->FrameTime_ = DeltaTime;
     ShaderUniformData_->FrameNumber_ = FrameNumber_;
     ShaderUniformData_->ViewportRes_ = glm::vec2(RenderWidth, RenderHeight);
-    ShaderUniformData_->CameraPosition_ = Camera->Position_;
+    ShaderUniformData_->CameraPosition_ = Camera->GetPosition();
     ShaderUniformData_->ShininessOffset_ = 0.5f;
 
 
