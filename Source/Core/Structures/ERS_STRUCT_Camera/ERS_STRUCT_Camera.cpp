@@ -103,11 +103,7 @@ void ERS_STRUCT_Camera::Update() {
 }
 
 
-void ERS_STRUCT_Camera::SetRotation(glm::vec3 Rotation) {
-    Orientation_.p = Rotation.x;
-    Orientation_.y = Rotation.y;
-    Orientation_.r = Rotation.z;
-}
+
 
 void ERS_STRUCT_Camera::GetMatrices(glm::mat4& Perspective, glm::mat4& View){
     Perspective = PerspectiveMatrix_;
@@ -153,8 +149,16 @@ void ERS_STRUCT_Camera::GetMouseSensitivity(float &Sensitivity) {
 void ERS_STRUCT_Camera::SetMouseSensitivity(float Sensitivity) {
     MouseSensitivity_ = Sensitivity;
 }
-
-
-
-
+void ERS_STRUCT_Camera::SetRotation(glm::vec3 Rotation) {
+    Orientation_ = Rotation;
+}
+void ERS_STRUCT_Camera::GetRotation(glm::vec3 &Rotation) {
+    Rotation = Orientation_;
+}
+void ERS_STRUCT_Camera::SetPosition(glm::vec3 Position) {
+    Position_ = Position;
+}
+void ERS_STRUCT_Camera::GetPosition(glm::vec3 &Position) {
+    Position = Position_;
+}
 
