@@ -112,6 +112,10 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     DetectBoundingBox(&Model);
     CalculateTotalVertsIndices(&Model);
 
+    // Export Model File
+    SystemUtils_->Logger_->Log("Exporting Model Geometry To Blob", 4);
+    Assimp::Exporter Exporter;
+
     // Copy Model File
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
     ReadFile(AssetPath, Data.get());
