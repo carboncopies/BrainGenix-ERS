@@ -53,6 +53,11 @@ void ERS_CLASS_ModelImporter::DetectBoundingBox(ERS_STRUCT_Model* Model) {
     Model->BoxScale_ = ModelMaxXYZ - ModelMinXYZ;
     Model->BoxOffset_ = (Model->BoxScale_ / 2.0f) + ModelMinXYZ;
 
+    // Set Min Size For Bounding Box
+    Model->BoxScale_.x = std::max(Model->BoxScale_.x, 0.025f);
+    Model->BoxScale_.y = std::max(Model->BoxScale_.y, 0.025f);
+    Model->BoxScale_.z = std::max(Model->BoxScale_.z, 0.025f);
+
     std::string LogMsg = std::string("Calculated Model Bounding Box To Be '") 
     + std::to_string(Model->BoxScale_.x) + "X, "
     + std::to_string(Model->BoxScale_.y) + "Y, "
