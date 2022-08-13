@@ -41,7 +41,8 @@ bool ERS_FUNCTION_DecodeSceneV3(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
         Scene->Models.push_back(std::make_shared<ERS_STRUCT_Model>(Model));
         ModelLoader->AddModelToLoadingQueue(Scene->Models[Scene->Models.size()-1]);
-
+        Scene->Models[Scene->Models.size()-1]->ApplyTransformations();
+        
     }
 
     for (unsigned int i = 0; i < PointLights.size(); i++) {
