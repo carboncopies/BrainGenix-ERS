@@ -65,6 +65,7 @@ struct ERS_STRUCT_Viewport {
     std::unique_ptr<ERS_CLASS_IconRenderer> IconRenderer; /**<Light Icon Renderer Instance*/
     std::unique_ptr<ERS_CLASS_BoundingBoxRenderer> BoundingBoxRenderer; /**<Used to draw bounding boxes around objects in the scene*/
     std::unique_ptr<ERS_STRUCT_Camera> Camera; /**<Pointer To Camera Instance*/
+    std::unique_ptr<ERS_STRUCT_EditorCamera> EditorCamera; /**<Pointer to editor camera. This handles callbacks to the camera sent by the editor*/
 
     unsigned int FramebufferObject; /**<FBO OpenGL ID*/
     unsigned int FramebufferColorObject; /**<FBCO OpenGL ID*/
