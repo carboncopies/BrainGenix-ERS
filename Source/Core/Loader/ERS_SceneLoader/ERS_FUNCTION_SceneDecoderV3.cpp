@@ -23,11 +23,8 @@ bool ERS_FUNCTION_DecodeSceneV3(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
     for (unsigned int i = 0; i < Models.size(); i++) {
 
-        // Get Asset Information
         YAML::Node Item = Models[i];
         ERS_STRUCT_Model Model;
-
-        // Decode
         ERS_FUNCTION_GetLong       (Item, "AssetID",              Model.AssetID                 );
         ERS_FUNCTION_GetVec3       (Item, "AssetPosition",        Model.ModelPosition           );
         ERS_FUNCTION_GetVec3       (Item, "AssetRotation",        Model.ModelRotation           );
@@ -45,61 +42,68 @@ bool ERS_FUNCTION_DecodeSceneV3(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
     }
 
     for (unsigned int i = 0; i < PointLights.size(); i++) {
-            ERS_STRUCT_PointLight Light;
-            ERS_FUNCTION_GetString     (Item, "AssetName",            Light.UserDefinedName         );
-            ERS_FUNCTION_GetVec3Color  (Item, "Color",                Light.Color                   );
-            ERS_FUNCTION_GetVec3       (Item, "Pos",                  Light.Pos                     );
-            ERS_FUNCTION_GetFloat      (Item, "Intensity",            Light.Intensity               );
-            ERS_FUNCTION_GetFloat      (Item, "MaxDistance",          Light.MaxDistance             );
-            ERS_FUNCTION_GetBool       (Item, "CastShadows",          Light.CastsShadows_           );
-            ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Light.AttachedScriptIndexes_  );
-            Scene->PointLights.push_back(std::make_shared<ERS_STRUCT_PointLight>(Light));
+
+        YAML::Node Item = Models[i];
+        ERS_STRUCT_PointLight Light;
+        ERS_FUNCTION_GetString     (Item, "AssetName",            Light.UserDefinedName         );
+        ERS_FUNCTION_GetVec3Color  (Item, "Color",                Light.Color                   );
+        ERS_FUNCTION_GetVec3       (Item, "Pos",                  Light.Pos                     );
+        ERS_FUNCTION_GetFloat      (Item, "Intensity",            Light.Intensity               );
+        ERS_FUNCTION_GetFloat      (Item, "MaxDistance",          Light.MaxDistance             );
+        ERS_FUNCTION_GetBool       (Item, "CastShadows",          Light.CastsShadows_           );
+        ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Light.AttachedScriptIndexes_  );
+        Scene->PointLights.push_back(std::make_shared<ERS_STRUCT_PointLight>(Light));
     }
     
     for (unsigned int i = 0; i < SpotLights.size(); i++) {
-         ERS_STRUCT_SpotLight Light;
-            ERS_FUNCTION_GetString     (Item, "AssetName",            Light.UserDefinedName         );
-            ERS_FUNCTION_GetVec3Color  (Item, "Color",                Light.Color                   );
-            ERS_FUNCTION_GetVec3       (Item, "Pos",                  Light.Pos                     );
-            ERS_FUNCTION_GetVec3       (Item, "Rot",                  Light.Rot                     );
-            ERS_FUNCTION_GetFloat      (Item, "Intensity",            Light.Intensity               );
-            ERS_FUNCTION_GetFloat      (Item, "MaxDistance",          Light.MaxDistance             );
-            ERS_FUNCTION_GetFloat      (Item, "CutOff",               Light.CutOff                  );
-            ERS_FUNCTION_GetFloat      (Item, "RollOff",              Light.Rolloff                 );
-            ERS_FUNCTION_GetBool       (Item, "CastShadows",          Light.CastsShadows_           );
-            ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Light.AttachedScriptIndexes_  );
-            Scene->SpotLights.push_back(std::make_shared<ERS_STRUCT_SpotLight>(Light));
+
+        YAML::Node Item = Models[i];
+        ERS_STRUCT_SpotLight Light;
+        ERS_FUNCTION_GetString     (Item, "AssetName",            Light.UserDefinedName         );
+        ERS_FUNCTION_GetVec3Color  (Item, "Color",                Light.Color                   );
+        ERS_FUNCTION_GetVec3       (Item, "Pos",                  Light.Pos                     );
+        ERS_FUNCTION_GetVec3       (Item, "Rot",                  Light.Rot                     );
+        ERS_FUNCTION_GetFloat      (Item, "Intensity",            Light.Intensity               );
+        ERS_FUNCTION_GetFloat      (Item, "MaxDistance",          Light.MaxDistance             );
+        ERS_FUNCTION_GetFloat      (Item, "CutOff",               Light.CutOff                  );
+        ERS_FUNCTION_GetFloat      (Item, "RollOff",              Light.Rolloff                 );
+        ERS_FUNCTION_GetBool       (Item, "CastShadows",          Light.CastsShadows_           );
+        ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Light.AttachedScriptIndexes_  );
+        Scene->SpotLights.push_back(std::make_shared<ERS_STRUCT_SpotLight>(Light));
 
     }
 
-        for (unsigned int i = 0; i < DirectionalLights.size(); i++) {
+    for (unsigned int i = 0; i < DirectionalLights.size(); i++) {
 
-                    ERS_STRUCT_DirectionalLight Light;
-            ERS_FUNCTION_GetString     (Item, "AssetName",            Light.UserDefinedName         );
-            ERS_FUNCTION_GetVec3Color  (Item, "Color",                Light.Color                   );
-            ERS_FUNCTION_GetVec3       (Item, "Pos",                  Light.Pos                     );
-            ERS_FUNCTION_GetVec3       (Item, "Rot",                  Light.Rot                     );
-            ERS_FUNCTION_GetFloat      (Item, "Intensity",            Light.Intensity               );
-            ERS_FUNCTION_GetFloat      (Item, "MaxDistance",          Light.MaxDistance             );
-            ERS_FUNCTION_GetBool       (Item, "CastShadows",          Light.CastsShadows_           );
-            ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Light.AttachedScriptIndexes_  );
-            Scene->DirectionalLights.push_back(std::make_shared<ERS_STRUCT_DirectionalLight>(Light));
+        YAML::Node Item = Models[i];
+        ERS_STRUCT_DirectionalLight Light;
+        ERS_FUNCTION_GetString     (Item, "AssetName",            Light.UserDefinedName         );
+        ERS_FUNCTION_GetVec3Color  (Item, "Color",                Light.Color                   );
+        ERS_FUNCTION_GetVec3       (Item, "Pos",                  Light.Pos                     );
+        ERS_FUNCTION_GetVec3       (Item, "Rot",                  Light.Rot                     );
+        ERS_FUNCTION_GetFloat      (Item, "Intensity",            Light.Intensity               );
+        ERS_FUNCTION_GetFloat      (Item, "MaxDistance",          Light.MaxDistance             );
+        ERS_FUNCTION_GetBool       (Item, "CastShadows",          Light.CastsShadows_           );
+        ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Light.AttachedScriptIndexes_  );
+        Scene->DirectionalLights.push_back(std::make_shared<ERS_STRUCT_DirectionalLight>(Light));
 
     }
 
-        for (unsigned int i = 0; i < SceneCameras.size(); i++) {
-         ERS_STRUCT_SceneCamera Camera;
-            ERS_FUNCTION_GetString     (Item, "AssetName",            Camera.UserDefinedName_       );
-            ERS_FUNCTION_GetVec3       (Item, "Pos",                  Camera.Pos_                   );
-            ERS_FUNCTION_GetVec3       (Item, "Rot",                  Camera.Rot_                   );
-            ERS_FUNCTION_GetFloat      (Item, "NearClip",             Camera.NearClip_              );
-            ERS_FUNCTION_GetFloat      (Item, "FarClip",              Camera.FarClip_               );
-            ERS_FUNCTION_GetFloat      (Item, "FOV",                  Camera.FOV_                   );
-            ERS_FUNCTION_GetBool       (Item, "EnforceAspectRatio",   Camera.EnforceAspectRatio_    );
-            ERS_FUNCTION_GetFloat      (Item, "AspectRatio",          Camera.AspectRatio_           );
-            ERS_FUNCTION_GetInt        (Item, "StreamingPriority",    Camera.StreamingPriority_     );
-            ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Camera.AttachedScriptIndexes_ );
-            Scene->SceneCameras.push_back(std::make_shared<ERS_STRUCT_SceneCamera>(Camera));
+    for (unsigned int i = 0; i < SceneCameras.size(); i++) {
+
+        YAML::Node Item = Models[i];
+        ERS_STRUCT_SceneCamera Camera;
+        ERS_FUNCTION_GetString     (Item, "AssetName",            Camera.UserDefinedName_       );
+        ERS_FUNCTION_GetVec3       (Item, "Pos",                  Camera.Pos_                   );
+        ERS_FUNCTION_GetVec3       (Item, "Rot",                  Camera.Rot_                   );
+        ERS_FUNCTION_GetFloat      (Item, "NearClip",             Camera.NearClip_              );
+        ERS_FUNCTION_GetFloat      (Item, "FarClip",              Camera.FarClip_               );
+        ERS_FUNCTION_GetFloat      (Item, "FOV",                  Camera.FOV_                   );
+        ERS_FUNCTION_GetBool       (Item, "EnforceAspectRatio",   Camera.EnforceAspectRatio_    );
+        ERS_FUNCTION_GetFloat      (Item, "AspectRatio",          Camera.AspectRatio_           );
+        ERS_FUNCTION_GetInt        (Item, "StreamingPriority",    Camera.StreamingPriority_     );
+        ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Camera.AttachedScriptIndexes_ );
+        Scene->SceneCameras.push_back(std::make_shared<ERS_STRUCT_SceneCamera>(Camera));
 
     }
 
