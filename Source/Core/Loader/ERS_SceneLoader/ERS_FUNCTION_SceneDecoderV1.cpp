@@ -60,44 +60,15 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
         } else if (AssetType == std::string("PointLight")) {
 
-            // Setup Model Pointer In Scene To Work On
-            Scene->PointLights.push_back(std::make_shared<ERS_STRUCT_PointLight>());
-            int LightIndex = Scene->PointLights.size() - 1;
-
-            Scene->PointLights[LightIndex]->UserDefinedName = AssetName;
-            if (SceneItems[i]["Intensity"]) {
-                Scene->PointLights[LightIndex]->Intensity = SceneItems[i]["Intensity"].as<float>();
-            }
-            if (SceneItems[i]["MaxDistance"]) {
-                Scene->PointLights[LightIndex]->MaxDistance = SceneItems[i]["MaxDistance"].as<float>();
-            }
-
-            
-            if (SceneItems[i]["ColorRed"] && SceneItems[i]["ColorGreen"] && SceneItems[i]["ColorBlue"]) {
-                Scene->PointLights[LightIndex]->Color = glm::vec3(
-                    SceneItems[i]["ColorRed"].as<float>(),
-                    SceneItems[i]["ColorGreen"].as<float>(),
-                    SceneItems[i]["ColorBlue"].as<float>()
-                    );
-            }
-
-            Scene->PointLights[LightIndex]->Pos = glm::vec3(
-                SceneItems[i]["PosX"].as<float>(),
-                SceneItems[i]["PosY"].as<float>(),
-                SceneItems[i]["PosZ"].as<float>()
-                );
-
-            if (SceneItems[i]["CastShadows"]) {
-                Scene->PointLights[LightIndex]->CastsShadows_ = SceneItems[i]["CastShadows"].as<bool>();
-            }
-
-            // Load Attached Scripts
-            if (SceneItems[i]["AttachedScripts"]) {
-                YAML::Node Scripts = SceneItems[i]["AttachedScripts"];
-                for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
-                    Scene->PointLights[LightIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
-                }
-            }
+            ERS_STRUCT_PointLight Light;
+            ERS_FUNCTION_GetString     (Item, "AssetName",            Light.UserDefinedName         );
+            ERS_FUNCTION_GetVec3Color  (Item, "Color",                Light.Color                   );
+            ERS_FUNCTION_GetVec3       (Item, "Pos",                  Light.Pos                     );
+            ERS_FUNCTION_GetFloat      (Item, "Intensity",            Light.Intensity               );
+            ERS_FUNCTION_GetFloat      (Item, "MaxDistance",          Light.MaxDistance             );
+            ERS_FUNCTION_GetBool       (Item, "CastShadows",          Light.CastsShadows_           );
+            ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Light.AttachedScriptIndexes_  );
+            Scene->PointLights.push_back(std::make_shared<ERS_STRUCT_PointLight>(Light));
 
         } else if (AssetType == std::string("SpotLight")) {
 
