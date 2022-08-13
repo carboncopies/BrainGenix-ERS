@@ -132,7 +132,7 @@ void ERS_CLASS_InputProcessor::MouseCallback(double XPos, double YPos) {
 
 
     // Bound Pitch
-    if (ConstrainPitch) {
+    if (ConstrainPitch_) {
 
         if (Orientation_.p > 89.0f) {
             Orientation_.p = 89.0f;
@@ -204,4 +204,12 @@ void ERS_CLASS_InputProcessor::GetPosition(glm::vec3 &Position) {
 glm::vec3 ERS_CLASS_InputProcessor::GetPosition() {
     return Position_;
 }
-
+void ERS_CLASS_InputProcessor::GetPitchConstraint(bool &ConstrainPitch) {
+    ConstrainPitch = ConstrainPitch_;
+}
+bool ERS_CLASS_InputProcessor::GetPitchConstraint() {
+    return ConstrainPitch_;
+}
+void ERS_CLASS_InputProcessor::SetPitchConstraint(bool ConstrainPitch) {
+    ConstrainPitch_ = ConstrainPitch;
+}
