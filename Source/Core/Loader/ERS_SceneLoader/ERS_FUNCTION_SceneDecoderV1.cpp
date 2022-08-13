@@ -72,55 +72,18 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
         } else if (AssetType == std::string("SpotLight")) {
 
-            // Setup Model Pointer In Scene To Work On
-            Scene->SpotLights.push_back(std::make_shared<ERS_STRUCT_SpotLight>());
-            int LightIndex = Scene->SpotLights.size() - 1;
-
-            Scene->SpotLights[LightIndex]->UserDefinedName = AssetName;
-
-            if (SceneItems[i]["Intensity"]) {
-                Scene->SpotLights[LightIndex]->Intensity = SceneItems[i]["Intensity"].as<float>();
-            }
-            if (SceneItems[i]["MaxDistance"]) {
-                Scene->SpotLights[LightIndex]->MaxDistance = SceneItems[i]["MaxDistance"].as<float>();
-            }
-            Scene->SpotLights[LightIndex]->CutOff = SceneItems[i]["CutOff"].as<float>();
-
-            if (SceneItems[i]["RollOff"]) {
-                Scene->SpotLights[LightIndex]->Rolloff = SceneItems[i]["RollOff"].as<float>();
-            }
-            if (SceneItems[i]["ColorRed"] && SceneItems[i]["ColorGreen"] && SceneItems[i]["ColorBlue"]) {
-                Scene->SpotLights[LightIndex]->Color = glm::vec3(
-                    SceneItems[i]["ColorRed"].as<float>(),
-                    SceneItems[i]["ColorGreen"].as<float>(),
-                    SceneItems[i]["ColorBlue"].as<float>()
-                    );
-            }
-
-
-            Scene->SpotLights[LightIndex]->Pos = glm::vec3(
-                SceneItems[i]["PosX"].as<float>(),
-                SceneItems[i]["PosY"].as<float>(),
-                SceneItems[i]["PosZ"].as<float>()
-                );
-            Scene->SpotLights[LightIndex]->Rot = glm::vec3(
-                SceneItems[i]["RotX"].as<float>(),
-                SceneItems[i]["RotY"].as<float>(),
-                SceneItems[i]["RotZ"].as<float>()
-                );
-
-
-            if (SceneItems[i]["CastShadows"]) {
-                Scene->SpotLights[LightIndex]->CastsShadows_ = SceneItems[i]["CastShadows"].as<bool>();
-            }
-
-            // Load Attached Scripts
-            if (SceneItems[i]["AttachedScripts"]) {
-                YAML::Node Scripts = SceneItems[i]["AttachedScripts"];
-                for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
-                    Scene->SpotLights[LightIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
-                }
-            }
+            ERS_STRUCT_SpotLight Light;
+            ERS_FUNCTION_GetString     (Item, "AssetName",            Light.UserDefinedName         );
+            ERS_FUNCTION_GetVec3Color  (Item, "Color",                Light.Color                   );
+            ERS_FUNCTION_GetVec3       (Item, "Pos",                  Light.Pos                     );
+            ERS_FUNCTION_GetVec3       (Item, "Rot",                  Light.Rot                     );
+            ERS_FUNCTION_GetFloat      (Item, "Intensity",            Light.Intensity               );
+            ERS_FUNCTION_GetFloat      (Item, "MaxDistance",          Light.MaxDistance             );
+            ERS_FUNCTION_GetFloat      (Item, "CutOff",               Light.CutOff                  );
+            ERS_FUNCTION_GetFloat      (Item, "RollOff",              Light.Rolloff                 );
+            ERS_FUNCTION_GetBool       (Item, "CastShadows",          Light.CastsShadows_           );
+            ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Light.AttachedScriptIndexes_  );
+            Scene->SpotLights.push_back(std::make_shared<ERS_STRUCT_SpotLight>(Light));
 
         } else if (AssetType == std::string("SceneCamera")) {
 
