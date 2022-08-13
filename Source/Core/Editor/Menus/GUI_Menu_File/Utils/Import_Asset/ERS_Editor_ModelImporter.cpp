@@ -89,8 +89,11 @@ void ERS_CLASS_ModelImporter::CalculateTotalVertsIndices(ERS_STRUCT_Model* Model
 // Load Model From File
 long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
+
+
     ERS_STRUCT_Model Model;
     TextureList_ = std::vector<std::string>();
+    TextureNames_ = std::vector<std::string>();
 
     // Get Model Path
     std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
