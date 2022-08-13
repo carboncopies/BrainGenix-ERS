@@ -186,30 +186,26 @@ bool ERS_FUNCTION_GetNodeVector(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data
 
 // GLM Helper Functions
 bool ERS_FUNCTION_GetVec3(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, std::string NameBase, glm::vec3 &Target) {
-    try {
-        float X = Data[NameBase + "X"].as<float>();
-        float Y = Data[NameBase + "Y"].as<float>();
-        float Z = Data[NameBase + "Z"].as<float>();
-        Target = glm::vec3(X,Y,Z);
-        return true;
-    } catch (YAML::TypedBadConversion<float>&) {
-        return false;
-    } catch (YAML::KeyNotFound&) {
-        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
-        return false;
-    }
+
+    float X,Y,Z = 0.0f;
+    bool Status = true;
+
+    Status &= ERS_FUNCTION_GetFloat(Logger, Data, NameBase + "X", X);
+    Status &= ERS_FUNCTION_GetFloat(Logger, Data, NameBase + "Y", Y);
+    Status &= ERS_FUNCTION_GetFloat(Logger, Data, NameBase + "Z", Z);
+
+    Target = glm::vec3(X,Y,Z);
+    return Status;
+
 }
 bool ERS_FUNCTION_GetVec3Color(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, std::string NameBase, glm::vec3 &Target) {
-    try {
-        float X = Data[NameBase + "Red"].as<float>();
-        float Y = Data[NameBase + "Green"].as<float>();
-        float Z = Data[NameBase + "Blue"].as<float>();
-        Target = glm::vec3(X,Y,Z);
-        return true;
-    } catch (YAML::TypedBadConversion<float>&) {
-        return false;
-    } catch (YAML::KeyNotFound&) {
-        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
-        return false;
-    }
+    float X,Y,Z = 0.0f;
+    bool Status = true;
+
+    Status &= ERS_FUNCTION_GetFloat(Logger, Data, NameBase + "Red", X);
+    Status &= ERS_FUNCTION_GetFloat(Logger, Data, NameBase + "Green", Y);
+    Status &= ERS_FUNCTION_GetFloat(Logger, Data, NameBase + "Blue", Z);
+    
+    Target = glm::vec3(X,Y,Z);
+    return Status;
 }
