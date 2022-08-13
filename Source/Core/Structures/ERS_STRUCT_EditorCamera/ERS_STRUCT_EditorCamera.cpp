@@ -97,18 +97,6 @@ void ERS_STRUCT_EditorCamera::Update() {
 
 
 // Camera Parameter Helper Functions
-void ERS_STRUCT_EditorCamera::GetMatrices(glm::mat4& Perspective, glm::mat4& View){
-    Perspective = PerspectiveMatrix_;
-    View = ViewMatrix_;
-}
-void ERS_STRUCT_EditorCamera::SetClipBoundries(float NearClip, float FarClip) {
-    NearClip_ = NearClip;
-    FarClip_ = FarClip;
-}
-void ERS_STRUCT_EditorCamera::GetClipBoundires(float &NearClip, float &FarClip) {
-    NearClip = NearClip_;
-    FarClip = FarClip_;
-}
 void ERS_STRUCT_EditorCamera::SetMovementSpeedBoundries(float MinSpeed, float MaxSpeed) {
     MinMovementSpeed_ = MinSpeed;
     MaxMovementSpeed_ = MaxSpeed;
@@ -125,18 +113,6 @@ void ERS_STRUCT_EditorCamera::SetMovementSpeed(float Speed, bool EnforceSpeedBou
     } else {
         MovementSpeed_ = Speed;
     }
-}
-void ERS_STRUCT_EditorCamera::SetFOV(float FOV) {
-    FOV_ = FOV;
-}
-void ERS_STRUCT_EditorCamera::GetFOV(float &FOV) {
-    FOV = FOV_;
-}
-float ERS_STRUCT_EditorCamera::GetFOV() {
-    return FOV_;
-}
-void ERS_STRUCT_EditorCamera::SetAspectRatio(float AspectRatio) {
-    AspectRatio_ = AspectRatio;
 }
 void ERS_STRUCT_EditorCamera::GetMouseSensitivity(float &Sensitivity) {
     Sensitivity = MouseSensitivity_;
@@ -161,13 +137,4 @@ void ERS_STRUCT_EditorCamera::GetPosition(glm::vec3 &Position) {
 }
 glm::vec3 ERS_STRUCT_EditorCamera::GetPosition() {
     return Position_;
-}
-void ERS_STRUCT_EditorCamera::GetStreamingPriority(int &StreamingPriority) {
-    StreamingPriority = StreamingPriority_;
-}
-int ERS_STRUCT_EditorCamera::GetStreamingPriority() {
-    return StreamingPriority_;
-}
-void ERS_STRUCT_EditorCamera::SetStreamingPriority(int StreamingPriority) {
-    StreamingPriority_ = StreamingPriority;
 }
