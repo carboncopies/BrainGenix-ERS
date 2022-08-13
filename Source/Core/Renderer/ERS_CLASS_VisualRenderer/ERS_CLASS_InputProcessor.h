@@ -62,9 +62,9 @@ public:
     /**
      * @brief Construct a new Input Processor object
      * 
-     * @param EditorCamera 
+     * @param Camera 
      */
-    ERS_CLASS_InputProcessor(ERS_STRUCT_EditorCamera* EditorCamera, GLFWwindow* Window);
+    ERS_CLASS_InputProcessor(ERS_STRUCT_Camera* Camera, GLFWwindow* Window);
 
     /**
      * @brief Destroy the Input Processor object
