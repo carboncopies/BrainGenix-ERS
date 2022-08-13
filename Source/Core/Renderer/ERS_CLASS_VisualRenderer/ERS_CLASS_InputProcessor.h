@@ -12,7 +12,7 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCT_Camera.h>
+#include <ERS_STRUCT_EditorCamera.h>
 #include <ERS_CLASS_LoggingSystem.h>
 
 
@@ -28,7 +28,7 @@ private:
     bool FirstMouse = true; /**<Checks if the mouse is just being enabled.*/
     float LastX = 400; /**<Location Of Last Mouse Position. (X coord) */
     float LastY = 400; /**<Location Of Last Mouse Position. (Y Coord) */ 
-    ERS_STRUCT_Camera* Camera_; /**<Pointer To Camera Instance */
+    ERS_STRUCT_EditorCamera* EditorCamera_; /**<Pointer To EditorCamera Instance */
 
     GLFWwindow *Window_; /**<Pointer To Window Surface */
 
