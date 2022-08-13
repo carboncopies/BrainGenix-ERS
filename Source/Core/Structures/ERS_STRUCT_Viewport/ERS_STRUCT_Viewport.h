@@ -17,7 +17,7 @@
 #include <ERS_CLASS_BoundingBoxRenderer.h>
 
 #include <ERS_STRUCT_Camera.h>
-
+#include <ERS_STRUCT_EditorCamera.h>
 
 /**
  * @brief Struct containing a viewport that would allow the visualrender to be simplified.
