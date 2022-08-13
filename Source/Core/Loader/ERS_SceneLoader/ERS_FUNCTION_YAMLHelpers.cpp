@@ -46,6 +46,7 @@ bool ERS_FUNCTION_GetLong(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, std:
     } catch (YAML::TypedBadConversion<long>&) {
         return false;
     } catch (YAML::KeyNotFound&) {
+        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
         return false;
     }
 }
@@ -56,6 +57,7 @@ bool ERS_FUNCTION_GetDouble(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, st
     } catch (YAML::TypedBadConversion<double>&) {
         return false;
     } catch (YAML::KeyNotFound&) {
+        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
         return false;
     }
 }
@@ -66,6 +68,7 @@ bool ERS_FUNCTION_GetUnsignedInt(ERS_CLASS_LoggingSystem* Logger, YAML::Node Dat
     } catch (YAML::TypedBadConversion<unsigned int>&) {
         return false;
     } catch (YAML::KeyNotFound&) {
+        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
         return false;
     }
 }
@@ -76,6 +79,7 @@ bool ERS_FUNCTION_GetBool(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, std:
     } catch (YAML::TypedBadConversion<unsigned long>&) {
         return false;
     } catch (YAML::KeyNotFound&) {
+        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
         return false;
     }
 }
@@ -86,6 +90,7 @@ bool ERS_FUNCTION_GetLongLong(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, 
     } catch (YAML::TypedBadConversion<long long>&) {
         return false;
     } catch (YAML::KeyNotFound&) {
+        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
         return false;
     }
 }
@@ -96,6 +101,7 @@ bool ERS_FUNCTION_GetUnsignedLongLong(ERS_CLASS_LoggingSystem* Logger, YAML::Nod
     } catch (YAML::TypedBadConversion<unsigned long long>&) {
         return false;
     } catch (YAML::KeyNotFound&) {
+        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
         return false;
     }
 }
@@ -106,6 +112,7 @@ bool ERS_FUNCTION_GetString(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, st
     } catch (YAML::TypedBadConversion<std::string>&) {
         return false;
     } catch (YAML::KeyNotFound&) {
+        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
         return false;
     }
 }
@@ -114,6 +121,7 @@ bool ERS_FUNCTION_GetNode(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, std:
         Target = Data[Name];
         return true;
     } catch (YAML::KeyNotFound&) {
+        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
         return false;
     }
 }
@@ -130,6 +138,7 @@ bool ERS_FUNCTION_GetStringVector(ERS_CLASS_LoggingSystem* Logger, YAML::Node Da
     } catch (YAML::TypedBadConversion<std::string>&) {
         return false;
     } catch (YAML::KeyNotFound&) {
+        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
         return false;
     }
 }
@@ -143,6 +152,7 @@ bool ERS_FUNCTION_GetIntVector(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data,
     } catch (YAML::TypedBadConversion<int>&) {
         return false;
     } catch (YAML::KeyNotFound&) {
+        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
         return false;
     }
 }
@@ -156,6 +166,7 @@ bool ERS_FUNCTION_GetLongVector(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data
     } catch (YAML::TypedBadConversion<long>&) {
         return false;
     } catch (YAML::KeyNotFound&) {
+        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
         return false;
     }
 }
@@ -167,6 +178,7 @@ bool ERS_FUNCTION_GetNodeVector(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data
         }
         return true;
     } catch (YAML::KeyNotFound&) {
+        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
         return false;
     }
 }
@@ -183,6 +195,7 @@ bool ERS_FUNCTION_GetVec3(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, std:
     } catch (YAML::TypedBadConversion<float>&) {
         return false;
     } catch (YAML::KeyNotFound&) {
+        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
         return false;
     }
 }
@@ -196,6 +209,7 @@ bool ERS_FUNCTION_GetVec3Color(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data,
     } catch (YAML::TypedBadConversion<float>&) {
         return false;
     } catch (YAML::KeyNotFound&) {
+        Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
         return false;
     }
 }
