@@ -137,6 +137,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     std::cout<<"Size"<<Blob->size<<std::endl;
     Data->Data.reset(new unsigned char[Blob->size]);
     ::memcpy(Data->Data.get(), Blob->data, Blob->size);
+    Data->Size_B = Blob->size;
     long ModelID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
     SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(ModelID) + std::string("' To Model '") + AssetPath + std::string("'")).c_str(), 4);
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(ModelID, Data.get());    
