@@ -17,14 +17,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 
-
-
-
-// FOV zooming
-enum class ZoomState{
-	_IN, _OUT
-};
-
+// Camera Movement Controls
 enum CameraMovement {
     FORWARD,
     BACKWARD,
@@ -36,7 +29,7 @@ enum CameraMovement {
 
 
 // Setup Camera Options
-struct ERS_STRUCT_Camera {
+struct ERS_STRUCT_EditorCamera {
 
 public:
 
@@ -46,13 +39,13 @@ public:
      * @brief Create the camera object.
      * 
      */
-    ERS_STRUCT_Camera();
+    ERS_STRUCT_EditorCamera();
 
     /**
      * @brief Destroy the camera object.
      * 
      */
-    ~ERS_STRUCT_Camera();
+    ~ERS_STRUCT_EditorCamera();
 
 
 
@@ -83,7 +76,7 @@ public:
 
     
     /**
-     * @brief Updates the camera's matricies, should be called once per frame.
+     * @brief Updates the position and other information about the editor camera
      * 
      */
     void Update();

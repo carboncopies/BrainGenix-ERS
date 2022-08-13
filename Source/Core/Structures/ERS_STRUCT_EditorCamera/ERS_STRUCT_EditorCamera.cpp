@@ -2,19 +2,19 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_STRUCT_Camera.h>
+#include <ERS_STRUCT_EditorCamera.h>
 
 
 // Constructor/Destructor
-ERS_STRUCT_Camera::ERS_STRUCT_Camera() {
+ERS_STRUCT_EditorCamera::ERS_STRUCT_EditorCamera() {
 }
-ERS_STRUCT_Camera::~ERS_STRUCT_Camera() {
+ERS_STRUCT_EditorCamera::~ERS_STRUCT_EditorCamera() {
 
 }
 
 
 // Callbacks
-void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
+void ERS_STRUCT_EditorCamera::ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
 
     // Calculate Velocity
     float Velocity = MovementSpeed_ * DeltaTime;
@@ -34,7 +34,7 @@ void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement Direction, float DeltaTim
         Position_ -= Up_ * Velocity;
 
 }
-void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch) {
+void ERS_STRUCT_EditorCamera::ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch) {
 
     // Change Offset By Sensitivity
     XOffset *= MouseSensitivity_;
@@ -58,7 +58,7 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboo
     }
 
 }
-void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset) {
+void ERS_STRUCT_EditorCamera::ProcessMouseScroll(float YOffset) {
 
     // Update Movement Speed
     MovementSpeed_ += (MovementSpeed_*(float)YOffset/10.0f);
@@ -73,7 +73,7 @@ void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset) {
 
 
 // Update Matricies
-void ERS_STRUCT_Camera::Update() {
+void ERS_STRUCT_EditorCamera::Update() {
     
     // Recalculate Orientation Quat
     glm::quat QuatOrientation;
@@ -97,27 +97,27 @@ void ERS_STRUCT_Camera::Update() {
 
 
 // Camera Parameter Helper Functions
-void ERS_STRUCT_Camera::GetMatrices(glm::mat4& Perspective, glm::mat4& View){
+void ERS_STRUCT_EditorCamera::GetMatrices(glm::mat4& Perspective, glm::mat4& View){
     Perspective = PerspectiveMatrix_;
     View = ViewMatrix_;
 }
-void ERS_STRUCT_Camera::SetClipBoundries(float NearClip, float FarClip) {
+void ERS_STRUCT_EditorCamera::SetClipBoundries(float NearClip, float FarClip) {
     NearClip_ = NearClip;
     FarClip_ = FarClip;
 }
-void ERS_STRUCT_Camera::GetClipBoundires(float &NearClip, float &FarClip) {
+void ERS_STRUCT_EditorCamera::GetClipBoundires(float &NearClip, float &FarClip) {
     NearClip = NearClip_;
     FarClip = FarClip_;
 }
-void ERS_STRUCT_Camera::SetMovementSpeedBoundries(float MinSpeed, float MaxSpeed) {
+void ERS_STRUCT_EditorCamera::SetMovementSpeedBoundries(float MinSpeed, float MaxSpeed) {
     MinMovementSpeed_ = MinSpeed;
     MaxMovementSpeed_ = MaxSpeed;
 }
-void ERS_STRUCT_Camera::GetMovementSpeedBoundries(float &MinSpeed, float &MaxSpeed) {
+void ERS_STRUCT_EditorCamera::GetMovementSpeedBoundries(float &MinSpeed, float &MaxSpeed) {
     MinSpeed = MinMovementSpeed_;
     MaxSpeed = MaxMovementSpeed_;
 }
-void ERS_STRUCT_Camera::SetMovementSpeed(float Speed, bool EnforceSpeedBoundries) {
+void ERS_STRUCT_EditorCamera::SetMovementSpeed(float Speed, bool EnforceSpeedBoundries) {
     if (EnforceSpeedBoundries) {
         Speed = std::max(MinMovementSpeed_, Speed);
         Speed = std::min(MaxMovementSpeed_, Speed);
@@ -126,48 +126,48 @@ void ERS_STRUCT_Camera::SetMovementSpeed(float Speed, bool EnforceSpeedBoundries
         MovementSpeed_ = Speed;
     }
 }
-void ERS_STRUCT_Camera::SetFOV(float FOV) {
+void ERS_STRUCT_EditorCamera::SetFOV(float FOV) {
     FOV_ = FOV;
 }
-void ERS_STRUCT_Camera::GetFOV(float &FOV) {
+void ERS_STRUCT_EditorCamera::GetFOV(float &FOV) {
     FOV = FOV_;
 }
-float ERS_STRUCT_Camera::GetFOV() {
+float ERS_STRUCT_EditorCamera::GetFOV() {
     return FOV_;
 }
-void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio) {
+void ERS_STRUCT_EditorCamera::SetAspectRatio(float AspectRatio) {
     AspectRatio_ = AspectRatio;
 }
-void ERS_STRUCT_Camera::GetMouseSensitivity(float &Sensitivity) {
+void ERS_STRUCT_EditorCamera::GetMouseSensitivity(float &Sensitivity) {
     Sensitivity = MouseSensitivity_;
 }
-void ERS_STRUCT_Camera::SetMouseSensitivity(float Sensitivity) {
+void ERS_STRUCT_EditorCamera::SetMouseSensitivity(float Sensitivity) {
     MouseSensitivity_ = Sensitivity;
 }
-void ERS_STRUCT_Camera::SetRotation(glm::vec3 Rotation) {
+void ERS_STRUCT_EditorCamera::SetRotation(glm::vec3 Rotation) {
     Orientation_ = Rotation;
 }
-void ERS_STRUCT_Camera::GetRotation(glm::vec3 &Rotation) {
+void ERS_STRUCT_EditorCamera::GetRotation(glm::vec3 &Rotation) {
     Rotation = Orientation_;
 }
-glm::vec3 ERS_STRUCT_Camera::GetRotation() {
+glm::vec3 ERS_STRUCT_EditorCamera::GetRotation() {
     return Orientation_;
 }
-void ERS_STRUCT_Camera::SetPosition(glm::vec3 Position) {
+void ERS_STRUCT_EditorCamera::SetPosition(glm::vec3 Position) {
     Position_ = Position;
 }
-void ERS_STRUCT_Camera::GetPosition(glm::vec3 &Position) {
+void ERS_STRUCT_EditorCamera::GetPosition(glm::vec3 &Position) {
     Position = Position_;
 }
-glm::vec3 ERS_STRUCT_Camera::GetPosition() {
+glm::vec3 ERS_STRUCT_EditorCamera::GetPosition() {
     return Position_;
 }
-void ERS_STRUCT_Camera::GetStreamingPriority(int &StreamingPriority) {
+void ERS_STRUCT_EditorCamera::GetStreamingPriority(int &StreamingPriority) {
     StreamingPriority = StreamingPriority_;
 }
-int ERS_STRUCT_Camera::GetStreamingPriority() {
+int ERS_STRUCT_EditorCamera::GetStreamingPriority() {
     return StreamingPriority_;
 }
-void ERS_STRUCT_Camera::SetStreamingPriority(int StreamingPriority) {
+void ERS_STRUCT_EditorCamera::SetStreamingPriority(int StreamingPriority) {
     StreamingPriority_ = StreamingPriority;
 }
