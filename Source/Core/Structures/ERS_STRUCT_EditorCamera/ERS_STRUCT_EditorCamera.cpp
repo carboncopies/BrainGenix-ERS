@@ -23,22 +23,36 @@ void ERS_STRUCT_EditorCamera::SetupCamera(ERS_STRUCT_Camera* Camera) {
 // Callbacks
 void ERS_STRUCT_EditorCamera::ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
 
+    // Exit Early If Camera Not Setup Yet
+    if (!HasCameraAttached_) {
+        return;
+    }
+
+
+    // Calculate Movement Direction Vectors
+    glm::mat4 Perspective, ViewMatrix;
+    glm::vec3 Right, Front, Up;
+    Camera_->GetMatrices(Perspective, ViewMatrix);
+    Right  =  glm::normalize(glm::vec3(ViewMatrix[0][0], ViewMatrix[1][0], ViewMatrix[2][0]));
+    Up     =  glm::normalize(glm::vec3(ViewMatrix[0][1], ViewMatrix[1][1], ViewMatrix[2][1]));
+    Front  = -glm::normalize(glm::vec3(ViewMatrix[0][2], ViewMatrix[1][2], ViewMatrix[2][2]));
+
     // Calculate Velocity
     float Velocity = MovementSpeed_ * DeltaTime;
 
     // Update Position(s)
     if (Direction == FORWARD)
-        Position_ += Front_ * Velocity;
+        Position_ += Front  * Velocity;
     if (Direction == BACKWARD)
-        Position_ -= Front_ * Velocity;
+        Position_ -= Front  * Velocity;
     if (Direction == LEFT)
-        Position_ -= Right_ * Velocity;
+        Position_ -= Right  * Velocity;
     if (Direction == RIGHT)
-        Position_ += Right_ * Velocity;
+        Position_ += Right  * Velocity;
     if (Direction == UP)
-        Position_ += Up_ * Velocity;
+        Position_ += Up     * Velocity;
     if (Direction == DOWN)
-        Position_ -= Up_ * Velocity;
+        Position_ -= Up     * Velocity;
 
 }
 void ERS_STRUCT_EditorCamera::ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch) {
@@ -96,10 +110,7 @@ void ERS_STRUCT_EditorCamera::Update() {
     TranslationMatrix           = glm::translate(TranslationMatrix, -Position_);
     ViewMatrix_                 = RotationMatrix * TranslationMatrix;
 
-    // Calculate Movement Direction Vectors
-    Right_  =  glm::normalize(glm::vec3(ViewMatrix_[0][0], ViewMatrix_[1][0], ViewMatrix_[2][0]));
-    Up_     =  glm::normalize(glm::vec3(ViewMatrix_[0][1], ViewMatrix_[1][1], ViewMatrix_[2][1]));
-    Front_  = -glm::normalize(glm::vec3(ViewMatrix_[0][2], ViewMatrix_[1][2], ViewMatrix_[2][2]));
+
 }
 
 
