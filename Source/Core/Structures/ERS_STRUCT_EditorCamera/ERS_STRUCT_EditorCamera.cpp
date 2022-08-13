@@ -96,6 +96,11 @@ void ERS_STRUCT_EditorCamera::ProcessMouseScroll(float YOffset) {
 // Update Matricies
 void ERS_STRUCT_EditorCamera::Update() {
 
+    // Exit Early If Camera Not Setup Yet
+    if (!HasCameraAttached_) {
+        return;
+    }
+
     Camera_->SetPosition(Position_);
     Camera_->SetRotation(Orientation_);
 
