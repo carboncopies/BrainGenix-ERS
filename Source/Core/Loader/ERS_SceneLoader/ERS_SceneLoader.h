@@ -14,6 +14,8 @@
 #include <ERS_CLASS_ModelLoader.h>
 #include <ERS_CLASS_LoggingSystem.h>
 
+#include <ERS_FUNCTION_SceneDecoderManager.h>
+
 #include <ERS_STRUCT_Model.h>
 #include <ERS_STRUCT_Scene.h>
 #include <ERS_STRUCT_Mesh.h>

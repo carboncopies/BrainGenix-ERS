@@ -50,19 +50,17 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
     // Write Metadata
     Output << YAML::Key << "SceneName" << YAML::Value << InputScene->SceneName;
-    Output << YAML::Key << "SceneFormatVersion" << YAML::Value << InputScene->SceneFormatVersion;
+    Output << YAML::Key << "SceneFormatVersion" << YAML::Value << 3;
     Output << YAML::Key << "ActiveCameraIndex" << YAML::Value << InputScene->ActiveSceneCameraIndex;
     
 
-    // Write SceneData
-    Output << YAML::Key << "SceneData";
-    Output << YAML::Key << YAML::BeginMap;
-    long AssetIndex = 0;
-
     //---- Write Models ----//
+    Output << YAML::Key << "Models";
+    Output << YAML::Key << YAML::BeginMap;
     for (int i = 0; (long)i < (long)InputScene->Models.size(); i++) {
 
-        Output << YAML::Key << AssetIndex;
+
+        Output << YAML::Key << i;
         Output << YAML::BeginMap;
 
 
@@ -101,13 +99,16 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
 
         Output << YAML::EndMap;
-        AssetIndex++;
     }
+    Output << YAML::EndMap;
+
 
     //---- Write Directional Lights ----//
+    Output << YAML::Key << "DirectionalLights";
+    Output << YAML::Key << YAML::BeginMap;
     for (int i = 0; (long)i < (long)InputScene->DirectionalLights.size(); i++) {
 
-        Output << YAML::Key << AssetIndex;
+        Output << YAML::Key << i;
         Output << YAML::BeginMap;
 
 
@@ -141,13 +142,15 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output<<YAML::EndMap;
 
         Output << YAML::EndMap;
-        AssetIndex++;
     }
+    Output << YAML::EndMap;
 
     //---- Write Point Lights ----//
+    Output << YAML::Key << "PointLights";
+    Output << YAML::Key << YAML::BeginMap;
     for (int i = 0; (long)i < (long)InputScene->PointLights.size(); i++) {
 
-        Output << YAML::Key << AssetIndex;
+        Output << YAML::Key << i;
         Output << YAML::BeginMap;
 
 
@@ -181,13 +184,15 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
 
         Output << YAML::EndMap;
-        AssetIndex++;
     }
+    Output << YAML::EndMap;
 
     //---- Write Spot Lights ----//
+    Output << YAML::Key << "SpotLights";
+    Output << YAML::Key << YAML::BeginMap;
     for (int i = 0; (long)i < (long)InputScene->SpotLights.size(); i++) {
 
-        Output << YAML::Key << AssetIndex;
+        Output << YAML::Key << i;
         Output << YAML::BeginMap;
 
 
@@ -229,46 +234,51 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
 
         Output << YAML::EndMap;
-        AssetIndex++;
     }
-
+    Output << YAML::EndMap;
 
     //---- Write Scene Cameras ----//
+    Output << YAML::Key << "SceneCameras";
+    Output << YAML::Key << YAML::BeginMap;
     for (int i = 0; (long)i < (long)InputScene->SceneCameras.size(); i++) {
 
-        Output << YAML::Key << AssetIndex;
+        ERS_STRUCT_SceneCamera* SceneCamera = InputScene->SceneCameras[i].get();
+
+
+        Output << YAML::Key << i;
         Output << YAML::BeginMap;
 
 
-        Output << YAML::Key << "AssetName" << YAML::Value << InputScene->SceneCameras[i]->UserDefinedName_;
+        Output << YAML::Key << "AssetName" << YAML::Value << SceneCamera->UserDefinedName_;
         Output << YAML::Key << "AssetType" << YAML::Value << "SceneCamera";
 
+        Output << YAML::Key << "PosX" << YAML::Value << SceneCamera->Pos_[0];
+        Output << YAML::Key << "PosY" << YAML::Value << SceneCamera->Pos_[1];
+        Output << YAML::Key << "PosZ" << YAML::Value << SceneCamera->Pos_[2];
+        Output << YAML::Key << "RotX" << YAML::Value << SceneCamera->Rot_[0];
+        Output << YAML::Key << "RotY" << YAML::Value << SceneCamera->Rot_[1];
+        Output << YAML::Key << "RotZ" << YAML::Value << SceneCamera->Rot_[2];
 
-        Output << YAML::Key << "PosX" << YAML::Value << InputScene->SceneCameras[i]->Pos_[0];
-        Output << YAML::Key << "PosY" << YAML::Value << InputScene->SceneCameras[i]->Pos_[1];
-        Output << YAML::Key << "PosZ" << YAML::Value << InputScene->SceneCameras[i]->Pos_[2];
-
-        Output << YAML::Key << "RotX" << YAML::Value << InputScene->SceneCameras[i]->Rot_[0];
-        Output << YAML::Key << "RotY" << YAML::Value << InputScene->SceneCameras[i]->Rot_[1];
-        Output << YAML::Key << "RotZ" << YAML::Value << InputScene->SceneCameras[i]->Rot_[2];
-
+        Output << YAML::Key << "NearClip" << YAML::Value << SceneCamera->NearClip_;
+        Output << YAML::Key << "FarClip" << YAML::Value << SceneCamera->FarClip_;
+        Output << YAML::Key << "FOV" << YAML::Value << SceneCamera->FOV_;
+        Output << YAML::Key << "EnforceAspectRatio" << YAML::Value << SceneCamera->EnforceAspectRatio_;
+        Output << YAML::Key << "AspectRatio" << YAML::Value << SceneCamera->AspectRatio_;
+        Output << YAML::Key << "StreamingPriority" << YAML::Value << SceneCamera->StreamingPriority_;
 
         Output<<YAML::Key<<"AttachedScripts";
         Output<<YAML::Key<<YAML::BeginMap;
-        for (unsigned long x = 0; x < InputScene->SceneCameras[i]->AttachedScriptIndexes_.size(); x++) {
-            Output<<YAML::Key<<x<<YAML::Value<<InputScene->SceneCameras[i]->AttachedScriptIndexes_[x];
+        for (unsigned long x = 0; x < SceneCamera->AttachedScriptIndexes_.size(); x++) {
+            Output<<YAML::Key<<x<<YAML::Value<<SceneCamera->AttachedScriptIndexes_[x];
         }
         Output<<YAML::EndMap;
 
 
         Output << YAML::EndMap;
-        AssetIndex++;
     }
-
-
-
-    // End Writing
     Output << YAML::EndMap;
+
+
     Output << YAML::EndMap;
 
 
