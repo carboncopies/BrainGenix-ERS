@@ -13,6 +13,13 @@ ERS_STRUCT_EditorCamera::~ERS_STRUCT_EditorCamera() {
 }
 
 
+// Setup
+void ERS_STRUCT_EditorCamera::SetupCamera(ERS_STRUCT_Camera* Camera) {
+    Camera_ = Camera;
+    HasCameraAttached_ = true;
+}
+
+
 // Callbacks
 void ERS_STRUCT_EditorCamera::ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
 
