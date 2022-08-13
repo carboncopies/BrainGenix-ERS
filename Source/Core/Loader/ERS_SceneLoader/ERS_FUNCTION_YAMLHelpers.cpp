@@ -22,6 +22,7 @@ bool ERS_FUNCTION_GetFloat(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, std
         Target = Data[Name].as<float>();
         return true;
     } catch (YAML::TypedBadConversion<float>&) {
+        Logger->Log(std::string("Failed To Cast Parameter '") + Name + "' To Type 'float'", 8);
         return false;
     } catch (YAML::KeyNotFound&) {
         Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
@@ -33,6 +34,7 @@ bool ERS_FUNCTION_GetBool(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, std:
         Target = Data[Name].as<bool>();
         return true;
     } catch (YAML::TypedBadConversion<bool>&) {
+        Logger->Log(std::string("Failed To Cast Parameter '") + Name + "' To Type 'bool'", 8);
         return false;
     } catch (YAML::KeyNotFound&) {
         Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
@@ -44,6 +46,7 @@ bool ERS_FUNCTION_GetLong(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, std:
         Target = Data[Name].as<long>();
         return true;
     } catch (YAML::TypedBadConversion<long>&) {
+        Logger->Log(std::string("Failed To Cast Parameter '") + Name + "' To Type 'long'", 8);
         return false;
     } catch (YAML::KeyNotFound&) {
         Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
@@ -55,6 +58,7 @@ bool ERS_FUNCTION_GetDouble(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, st
         Target = Data[Name].as<double>();
         return true;
     } catch (YAML::TypedBadConversion<double>&) {
+        Logger->Log(std::string("Failed To Cast Parameter '") + Name + "' To Type 'double'", 8);
         return false;
     } catch (YAML::KeyNotFound&) {
         Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
@@ -66,6 +70,7 @@ bool ERS_FUNCTION_GetUnsignedInt(ERS_CLASS_LoggingSystem* Logger, YAML::Node Dat
         Target = Data[Name].as<unsigned int>();
         return true;
     } catch (YAML::TypedBadConversion<unsigned int>&) {
+        Logger->Log(std::string("Failed To Cast Parameter '") + Name + "' To Type 'unsigned int'", 8);
         return false;
     } catch (YAML::KeyNotFound&) {
         Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
@@ -77,6 +82,7 @@ bool ERS_FUNCTION_GetBool(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, std:
         Target = Data[Name].as<unsigned long>();
         return true;
     } catch (YAML::TypedBadConversion<unsigned long>&) {
+        Logger->Log(std::string("Failed To Cast Parameter '") + Name + "' To Type 'unsigned long'", 8);
         return false;
     } catch (YAML::KeyNotFound&) {
         Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
@@ -88,6 +94,7 @@ bool ERS_FUNCTION_GetLongLong(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, 
         Target = Data[Name].as<long long>();
         return true;
     } catch (YAML::TypedBadConversion<long long>&) {
+        Logger->Log(std::string("Failed To Cast Parameter '") + Name + "' To Type 'long long'", 8);
         return false;
     } catch (YAML::KeyNotFound&) {
         Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
@@ -99,6 +106,7 @@ bool ERS_FUNCTION_GetUnsignedLongLong(ERS_CLASS_LoggingSystem* Logger, YAML::Nod
         Target = Data[Name].as<unsigned long long>();
         return true;
     } catch (YAML::TypedBadConversion<unsigned long long>&) {
+        Logger->Log(std::string("Failed To Cast Parameter '") + Name + "' To Type 'unsigned long long'", 8);
         return false;
     } catch (YAML::KeyNotFound&) {
         Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
@@ -110,6 +118,7 @@ bool ERS_FUNCTION_GetString(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, st
         Target = Data[Name].as<std::string>();
         return true;
     } catch (YAML::TypedBadConversion<std::string>&) {
+        Logger->Log(std::string("Failed To Cast Parameter '") + Name + "' To Type 'std::string'", 8);
         return false;
     } catch (YAML::KeyNotFound&) {
         Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
@@ -136,6 +145,7 @@ bool ERS_FUNCTION_GetStringVector(ERS_CLASS_LoggingSystem* Logger, YAML::Node Da
         }
         return true;
     } catch (YAML::TypedBadConversion<std::string>&) {
+        Logger->Log(std::string("Failed To Cast Parameter '") + Name + "' To Type 'std::string'", 8);
         return false;
     } catch (YAML::KeyNotFound&) {
         Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
@@ -150,6 +160,7 @@ bool ERS_FUNCTION_GetIntVector(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data,
         }
         return true;
     } catch (YAML::TypedBadConversion<int>&) {
+        Logger->Log(std::string("Failed To Cast Parameter '") + Name + "' To Type 'int'", 8);
         return false;
     } catch (YAML::KeyNotFound&) {
         Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
@@ -164,6 +175,7 @@ bool ERS_FUNCTION_GetLongVector(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data
         }
         return true;
     } catch (YAML::TypedBadConversion<long>&) {
+        Logger->Log(std::string("Failed To Cast Parameter '") + Name + "' To Type 'long'", 8);
         return false;
     } catch (YAML::KeyNotFound&) {
         Logger->Log(std::string("Failed To Find Parameter '") + Name + "'", 7);
