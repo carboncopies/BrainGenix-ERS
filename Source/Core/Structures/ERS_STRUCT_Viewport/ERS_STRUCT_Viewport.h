@@ -59,19 +59,19 @@ struct ERS_STRUCT_Viewport {
 
     int ShaderIndex                    = 0;     /**<Index of the shader to be used*/
 
-    std::unique_ptr<bool> Enabled; /**<Indicates if the viewport is enabled*/
-    std::unique_ptr<ERS_CLASS_InputProcessor> Processor; /**<Pointer to Input Processor*/
-    std::unique_ptr<ERS_CLASS_Grid> Grid; /**<Pointer to grid instance*/
-    std::unique_ptr<ERS_CLASS_IconRenderer> IconRenderer; /**<Light Icon Renderer Instance*/
-    std::unique_ptr<ERS_CLASS_BoundingBoxRenderer> BoundingBoxRenderer; /**<Used to draw bounding boxes around objects in the scene*/
-    std::unique_ptr<ERS_STRUCT_Camera> Camera; /**<Pointer To Camera Instance*/
-    std::unique_ptr<ERS_STRUCT_EditorCamera> EditorCamera; /**<Pointer to editor camera. This handles callbacks to the camera sent by the editor*/
+    std::unique_ptr<bool>                            Enabled;             /**<Indicates if the viewport is enabled*/
+    std::unique_ptr<ERS_CLASS_InputProcessor>        Processor;           /**<Pointer to Input Processor*/
+    std::unique_ptr<ERS_CLASS_Grid>                  Grid;                /**<Pointer to grid instance*/
+    std::unique_ptr<ERS_CLASS_IconRenderer>          IconRenderer;        /**<Light Icon Renderer Instance*/
+    std::unique_ptr<ERS_CLASS_BoundingBoxRenderer>   BoundingBoxRenderer; /**<Used to draw bounding boxes around objects in the scene*/
+    std::unique_ptr<ERS_STRUCT_Camera>               Camera;              /**<Pointer To Camera Instance*/
+    std::unique_ptr<ERS_STRUCT_EditorCamera>         EditorCamera;        /**<Pointer to editor camera. This handles callbacks to the camera sent by the editor*/
 
-    unsigned int FramebufferObject; /**<FBO OpenGL ID*/
+    unsigned int FramebufferObject;      /**<FBO OpenGL ID*/
     unsigned int FramebufferColorObject; /**<FBCO OpenGL ID*/
-    unsigned int RenderbufferObject; /**<RBO OpenGL ID*/
+    unsigned int RenderbufferObject;     /**<RBO OpenGL ID*/
 
-    int Width = 1; /**<Viewport Width*/
+    int Width = 1;  /**<Viewport Width*/
     int Height = 1; /**<Viewport Height*/
 
 };
