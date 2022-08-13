@@ -87,29 +87,12 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
         } else if (AssetType == std::string("SceneCamera")) {
 
-            // Setup Model Pointer In Scene To Work On
-            Scene->SceneCameras.push_back(std::make_shared<ERS_STRUCT_SceneCamera>());
-            int SceneCameraIndex = Scene->SceneCameras.size() - 1;
-
-            Scene->SceneCameras[SceneCameraIndex]->UserDefinedName_ = AssetName;
-            Scene->SceneCameras[SceneCameraIndex]->Pos_ = glm::vec3(
-                SceneItems[i]["PosX"].as<float>(),
-                SceneItems[i]["PosY"].as<float>(),
-                SceneItems[i]["PosZ"].as<float>()
-                );
-            Scene->SceneCameras[SceneCameraIndex]->Rot_ = glm::vec3(
-                SceneItems[i]["RotX"].as<float>(),
-                SceneItems[i]["RotY"].as<float>(),
-                SceneItems[i]["RotZ"].as<float>()
-                );
-
-            // Load Attached Scripts
-            if (SceneItems[i]["AttachedScripts"]) {
-                YAML::Node Scripts = SceneItems[i]["AttachedScripts"];
-                for (YAML::const_iterator it=Scripts.begin(); it!=Scripts.end(); ++it) {
-                    Scene->SceneCameras[SceneCameraIndex]->AttachedScriptIndexes_.push_back(it->second.as<long>());
-                }
-            }
+            ERS_STRUCT_SceneCamera Camera;
+            ERS_FUNCTION_GetString     (Item, "AssetName",            Camera.UserDefinedName_       );
+            ERS_FUNCTION_GetVec3       (Item, "Pos",                  Camera.Pos_,                  );
+            ERS_FUNCTION_GetVec3       (Item, "Rot",                  Camera.Rot_,                  );
+            ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Camera.AttachedScriptIndexes_ );
+            Scene->SceneCameras.push_back(std::make_shared<ERS_STRUCT_SceneCamera>(Camera));
 
         } else {
             SystemUtils->Logger_->Log(std::string("Unsupported/Unknown Asset Type: ") + AssetType, 9);
