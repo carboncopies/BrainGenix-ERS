@@ -35,6 +35,7 @@ bool ERS_FUNCTION_GetInt(ERS_CLASS_LoggingSystem* Logger, YAML::Node Data, std::
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
@@ -47,6 +48,7 @@ bool ERS_FUNCTION_GetFloat(ERS_CLASS_LoggingSystem* Logger,  YAML::Node Data, st
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
@@ -59,6 +61,7 @@ bool ERS_FUNCTION_GetBool(ERS_CLASS_LoggingSystem* Logger,  YAML::Node Data, std
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
@@ -72,6 +75,7 @@ bool ERS_FUNCTION_GetLong(ERS_CLASS_LoggingSystem* Logger,  YAML::Node Data, std
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
@@ -84,6 +88,7 @@ bool ERS_FUNCTION_GetDouble(ERS_CLASS_LoggingSystem* Logger,  YAML::Node Data, s
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
@@ -96,6 +101,7 @@ bool ERS_FUNCTION_GetUnsignedInt(ERS_CLASS_LoggingSystem* Logger,  YAML::Node Da
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
@@ -108,6 +114,7 @@ bool ERS_FUNCTION_GetUnsignedLong(ERS_CLASS_LoggingSystem* Logger,  YAML::Node D
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
@@ -120,6 +127,7 @@ bool ERS_FUNCTION_GetLongLong(ERS_CLASS_LoggingSystem* Logger,  YAML::Node Data,
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
@@ -132,6 +140,7 @@ bool ERS_FUNCTION_GetUnsignedLongLong(ERS_CLASS_LoggingSystem* Logger,  YAML::No
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
@@ -144,6 +153,7 @@ bool ERS_FUNCTION_GetString(ERS_CLASS_LoggingSystem* Logger,  YAML::Node Data, s
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
@@ -158,6 +168,7 @@ bool ERS_FUNCTION_GetNode(ERS_CLASS_LoggingSystem* Logger,  YAML::Node Data, std
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
@@ -170,6 +181,7 @@ bool ERS_FUNCTION_GetStringVector(ERS_CLASS_LoggingSystem* Logger,  YAML::Node D
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
@@ -182,6 +194,7 @@ bool ERS_FUNCTION_GetIntVector(ERS_CLASS_LoggingSystem* Logger,  YAML::Node Data
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
@@ -194,6 +207,7 @@ bool ERS_FUNCTION_GetLongVector(ERS_CLASS_LoggingSystem* Logger,  YAML::Node Dat
  * @brief Helper function to the YAML::CPP Library that helps catch errors and other problems.
  * Returns true on success, false on fail.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
@@ -209,6 +223,7 @@ bool ERS_FUNCTION_GetNodeVector(ERS_CLASS_LoggingSystem* Logger,  YAML::Node Dat
  * Returns true on success, false on fail.
  * Will append X,Y,Z to get the three components of the vector.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
@@ -222,6 +237,7 @@ bool ERS_FUNCTION_GetVec3(ERS_CLASS_LoggingSystem* Logger,  YAML::Node Data, std
  * Returns true on success, false on fail.
  * Will append Red,Green,Blue to get the three components of the vector.
  * 
+ * @param Logger Pointer to ERS Logging system, used to log errors.
  * @param Data YAML::Node containing the target data
  * @param Name Name of the parameter in the yaml node
  * @param Target Reference to the variable to be set to the decoded value
