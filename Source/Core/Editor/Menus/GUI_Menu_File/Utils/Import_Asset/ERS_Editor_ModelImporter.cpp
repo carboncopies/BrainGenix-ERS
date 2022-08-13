@@ -117,7 +117,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     SystemUtils_->Logger_->Log(std::string("Exporting Model Geometry To Blob With Encoding '") + ExportFormat + "'", 4);
 
     Assimp::Exporter Exporter;
-    aiExportDataBlob* Blob = Exporter::ExportToBlob(Scene, ExportFormat);
+    aiExportDataBlob* Blob = Exporter.ExportToBlob(Scene, ExportFormat);
     
 
     // Copy Model File
