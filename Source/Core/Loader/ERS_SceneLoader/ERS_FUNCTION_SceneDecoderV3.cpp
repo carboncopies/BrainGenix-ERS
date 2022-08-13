@@ -112,6 +112,11 @@ bool ERS_FUNCTION_DecodeSceneV3(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
 
     // Indicate Scene Is Loaded
+    if (!Success) {
+        SystemUtils->Logger_->Log("Scene Decoding Failed", 8);
+    } else {
+        SystemUtils->Logger_->Log("Finished Decoding Scene", 4);
+    }
     Scene->IsSceneLoaded = Success;
     return Success;
 }
