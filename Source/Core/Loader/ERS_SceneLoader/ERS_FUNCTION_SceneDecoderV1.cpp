@@ -89,8 +89,8 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
             ERS_STRUCT_SceneCamera Camera;
             ERS_FUNCTION_GetString     (Item, "AssetName",            Camera.UserDefinedName_       );
-            ERS_FUNCTION_GetVec3       (Item, "Pos",                  Camera.Pos_,                  );
-            ERS_FUNCTION_GetVec3       (Item, "Rot",                  Camera.Rot_,                  );
+            ERS_FUNCTION_GetVec3       (Item, "Pos",                  Camera.Pos_                   );
+            ERS_FUNCTION_GetVec3       (Item, "Rot",                  Camera.Rot_                   );
             ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Camera.AttachedScriptIndexes_ );
             Scene->SceneCameras.push_back(std::make_shared<ERS_STRUCT_SceneCamera>(Camera));
 
