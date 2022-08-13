@@ -101,7 +101,6 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::EndMap;
     }
     Output << YAML::EndMap;
-    Output << YAML::EndMap;
 
 
     //---- Write Directional Lights ----//
@@ -145,7 +144,6 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::EndMap;
     }
     Output << YAML::EndMap;
-    Output << YAML::EndMap;
 
     //---- Write Point Lights ----//
     Output << YAML::Key << "PointLights";
@@ -187,7 +185,6 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
         Output << YAML::EndMap;
     }
-    Output << YAML::EndMap;
     Output << YAML::EndMap;
 
     //---- Write Spot Lights ----//
@@ -239,7 +236,6 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::EndMap;
     }
     Output << YAML::EndMap;
-    Output << YAML::EndMap;
 
     //---- Write Scene Cameras ----//
     Output << YAML::Key << "SceneCameras";
@@ -281,6 +277,8 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::EndMap;
     }
     Output << YAML::EndMap;
+
+
     Output << YAML::EndMap;
 
 
