@@ -95,21 +95,9 @@ void ERS_STRUCT_EditorCamera::ProcessMouseScroll(float YOffset) {
 
 // Update Matricies
 void ERS_STRUCT_EditorCamera::Update() {
-    
-    // Recalculate Orientation Quat
-    glm::quat QuatOrientation;
-    QuatOrientation *= glm::angleAxis(glm::radians(Orientation_.r), glm::vec3(0, 0, 1) * QuatOrientation);
-    QuatOrientation *= glm::angleAxis(glm::radians(Orientation_.y), glm::vec3(0, 1, 0) * QuatOrientation);
-    QuatOrientation *= glm::angleAxis(glm::radians(Orientation_.p), glm::vec3(1, 0, 0) * QuatOrientation);
-    QuatOrientation = glm::normalize(QuatOrientation);
 
-    // Update Matricies
-    PerspectiveMatrix_          = glm::perspective(glm::radians(FOV_), AspectRatio_, NearClip_, FarClip_);	
-    glm::mat4 RotationMatrix    = glm::mat4_cast(QuatOrientation);
-    glm::mat4 TranslationMatrix = glm::mat4(1.0f);
-    TranslationMatrix           = glm::translate(TranslationMatrix, -Position_);
-    ViewMatrix_                 = RotationMatrix * TranslationMatrix;
-
+    Camera_->SetPosition(Position_);
+    Camera_->SetRotation(Orientation_);
 
 }
 
