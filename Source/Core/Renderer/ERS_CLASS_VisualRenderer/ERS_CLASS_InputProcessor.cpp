@@ -121,13 +121,87 @@ void ERS_CLASS_InputProcessor::MouseCallback(double XPos, double YPos) {
 
 
 
-    // Process Camera Movement
-    Camera_->ProcessMouseMovement(XOffset, YOffset);
+    // Change Offset By Sensitivity
+    XOffset *= MouseSensitivity_;
+    YOffset *= MouseSensitivity_;
+
+    // Update Pitch/Yaw
+    Orientation_.y += XOffset;
+    Orientation_.p += YOffset;
+
+
+
+    // Bound Pitch
+    if (ConstrainPitch) {
+
+        if (Orientation_.p > 89.0f) {
+            Orientation_.p = 89.0f;
+        }
+        if (Orientation_.p < -89.0f) {
+            Orientation_.p = -89.0f;
+        }
+    }
+
 
 }
 
 void ERS_CLASS_InputProcessor::ScrollCallback(double YOffset) {
 
-    Camera_->ProcessMouseScroll(YOffset);
+    // Update Movement Speed
+    MovementSpeed_ += (MovementSpeed_*(float)YOffset/10.0f);
+
+    // Adjust Movement Speed
+    if (MovementSpeed_ < MinMovementSpeed_)
+        MovementSpeed_ = MinMovementSpeed_;
+    if (MovementSpeed_ > MaxMovementSpeed_)
+        MovementSpeed_ = MaxMovementSpeed_;
+
 
 }
+
+
+
+
+// Camera Parameter Helper Functions
+void ERS_CLASS_InputProcessor::SetMovementSpeedBoundries(float MinSpeed, float MaxSpeed) {
+    MinMovementSpeed_ = MinSpeed;
+    MaxMovementSpeed_ = MaxSpeed;
+}
+void ERS_CLASS_InputProcessor::GetMovementSpeedBoundries(float &MinSpeed, float &MaxSpeed) {
+    MinSpeed = MinMovementSpeed_;
+    MaxSpeed = MaxMovementSpeed_;
+}
+void ERS_CLASS_InputProcessor::SetMovementSpeed(float Speed, bool EnforceSpeedBoundries) {
+    if (EnforceSpeedBoundries) {
+        Speed = std::max(MinMovementSpeed_, Speed);
+        Speed = std::min(MaxMovementSpeed_, Speed);
+        MovementSpeed_ = Speed;
+    } else {
+        MovementSpeed_ = Speed;
+    }
+}
+void ERS_CLASS_InputProcessor::GetMouseSensitivity(float &Sensitivity) {
+    Sensitivity = MouseSensitivity_;
+}
+void ERS_CLASS_InputProcessor::SetMouseSensitivity(float Sensitivity) {
+    MouseSensitivity_ = Sensitivity;
+}
+void ERS_CLASS_InputProcessor::SetRotation(glm::vec3 Rotation) {
+    Orientation_ = Rotation;
+}
+void ERS_CLASS_InputProcessor::GetRotation(glm::vec3 &Rotation) {
+    Rotation = Orientation_;
+}
+glm::vec3 ERS_CLASS_InputProcessor::GetRotation() {
+    return Orientation_;
+}
+void ERS_CLASS_InputProcessor::SetPosition(glm::vec3 Position) {
+    Position_ = Position;
+}
+void ERS_CLASS_InputProcessor::GetPosition(glm::vec3 &Position) {
+    Position = Position_;
+}
+glm::vec3 ERS_CLASS_InputProcessor::GetPosition() {
+    return Position_;
+}
+

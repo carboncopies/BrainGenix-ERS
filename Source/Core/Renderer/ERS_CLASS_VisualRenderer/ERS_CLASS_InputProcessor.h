@@ -32,15 +32,16 @@ private:
     float MinMovementSpeed_  = 0.01f;  /**<Slowest movement speed allowed in units per second */
     float MaxMovementSpeed_  = 50.0f;  /**<Fastest movement speed allowed in units per second */
     
-    float MovementSpeed_     = 0.2f;   /**<Current Movement Speed       */
-    float MouseSensitivity_  = 0.05f;  /**<Mouse sensitivity multiplier */
+    float MovementSpeed_     = 0.2f;   /**<Current Movement Speed            */
+    float MouseSensitivity_  = 0.05f;  /**<Mouse sensitivity multiplier      */
+    bool  ConstrainPitch_    = true;   /**<Limit the camera to +- 89 degrees */
 
     glm::vec3 Orientation_;            /**<Rotation of the editor camera in degrees. */
     glm::vec3 Position_;               /**<Position of the editor camera in units    */
 
 
     ERS_STRUCT_Camera* Camera_; /**<Pointer To EditorCamera Instance */
-    GLFWwindow*        Window_; /**<Pointer To Window Surface */
+    GLFWwindow*        Window_; /**<Pointer To Window Surface        */
 
 
     /**
