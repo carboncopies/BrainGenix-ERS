@@ -184,6 +184,19 @@ public:
     void GetPosition(glm::vec3 &Position);
     glm::vec3 GetPosition();
 
+    /**
+     * @brief Check if pitch constraint is enabled or disabled
+     * 
+     * @param ConstrainEnabled 
+     */
+    void GetPitchConstraint(bool &ConstrainEnabled);
+    bool GetPitchConstraint();
 
+    /**
+     * @brief Enable or Disable Pitch Constraint
+     * 
+     * @param ConstrainEnabled 
+     */
+    void SetPitchConstraint(bool ConstrainEnabled);
 
 };
