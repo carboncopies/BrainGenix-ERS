@@ -612,7 +612,7 @@ STRUCT_SampledData SetSampledData() {
     if (HasNormals) {
         SampledData.Normal = GetNormalFromMap(texture_normals1);
     } else {
-        SampledData.Normal = vec3(0.5f, 0.5f, 1.0f);
+        SampledData.Normal = vec3(0.5f, 0.5f, 0.5f);
     }
 
     // Handle Shininess (Inverse Of Roughness)
@@ -837,6 +837,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
