@@ -10,7 +10,7 @@
 bool ERS_FUNCTION_DecodeScene(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, ERS_STRUCT_SystemUtils *SystemUtils, ERS_CLASS_ModelLoader* ModelLoader, bool LogEnable) {
 
     SystemUtils->Logger_->Log("Decoding ERS Scene", 5, LogEnable);
-
+    
     // Extract Current Version
     int Version = 0;
     SystemUtils->Logger_->Log("Identifying Scene Format Version", 4, LogEnable);
