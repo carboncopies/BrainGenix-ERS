@@ -25,12 +25,12 @@ class ERS_CLASS_InputProcessor {
 private:
 
     // Internal Vars
-    bool FirstMouse = true; /**<Checks if the mouse is just being enabled.*/
-    float LastX = 400; /**<Location Of Last Mouse Position. (X coord) */
-    float LastY = 400; /**<Location Of Last Mouse Position. (Y Coord) */ 
-    ERS_STRUCT_EditorCamera* EditorCamera_; /**<Pointer To EditorCamera Instance */
+    bool FirstMouse  = true; /**<Checks if the mouse is just being enabled. */
+    float LastX      = 400;  /**<Location Of Last Mouse Position. (X coord) */
+    float LastY      = 400;  /**<Location Of Last Mouse Position. (Y Coord) */ 
 
-    GLFWwindow *Window_; /**<Pointer To Window Surface */
+    ERS_STRUCT_EditorCamera* EditorCamera_; /**<Pointer To EditorCamera Instance */
+    GLFWwindow*              Window_;       /**<Pointer To Window Surface */
 
 
     /**
@@ -49,7 +49,6 @@ private:
      */
     void MouseCallback(double XPos, double YPos);
 
-    // FIXME: NO FUNCTION EXISTS TO GET SCROLL INPUT WITHOUT CALLBACK
     /**
      * @brief Callback for Mouse Scroll (!!!DOESN'T WORK RIGHT NOW, NEED TO BE FIXED!!!)
      * 
@@ -59,19 +58,19 @@ private:
 
 public:
 
+
     /**
      * @brief Construct a new Input Processor object
      * 
-     * @param Camera 
+     * @param EditorCamera 
      */
-    ERS_CLASS_InputProcessor(ERS_STRUCT_Camera* Camera, GLFWwindow* Window);
+    ERS_CLASS_InputProcessor(ERS_STRUCT_EditorCamera* EditorCamera, GLFWwindow* Window);
 
     /**
      * @brief Destroy the Input Processor object
      * 
      */
     ~ERS_CLASS_InputProcessor();
-
 
 
     /**
