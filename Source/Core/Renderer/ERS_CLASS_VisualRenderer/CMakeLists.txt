@@ -69,7 +69,6 @@ target_link_libraries(ERS_CLASS_VisualRenderer
 target_link_libraries(ERS_CLASS_VisualRenderer
     ERS_STRUCT_Camera
     ERS_STRUCT_SceneCamera
-    ERS_STRUCT_EditorCamera
     
     ERS_CLASS_LoggingSystem
 

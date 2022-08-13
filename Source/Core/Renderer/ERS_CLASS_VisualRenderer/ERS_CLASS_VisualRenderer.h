@@ -48,7 +48,6 @@
 
 #include <ERS_STRUCT_Camera.h>
 #include <ERS_STRUCT_SceneCamera.h>
-#include <ERS_STRUCT_EditorCamera.h>
 
 #include <ERS_FUNCTION_FindShaderByName.h>
 #include <ERS_FUNCTION_ConvertRotationToFrontVector.h>
