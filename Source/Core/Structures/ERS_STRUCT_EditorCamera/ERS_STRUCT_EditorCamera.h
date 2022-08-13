@@ -53,6 +53,16 @@ public:
 
 
     /**
+     * @brief Must be called before trying to use the editor camera or else the system won't render anything
+     * Used to pass in the viewport's camera pointer so we can manipulate it.
+     * 
+     * @param Camera 
+     */
+    void SetupCamera(ERS_STRUCT_Camera* Camera);
+
+
+
+    /**
      * @brief Processes keyboard input for the editor camera.
      * 
      * @param Direction Direction currently being pressed.
