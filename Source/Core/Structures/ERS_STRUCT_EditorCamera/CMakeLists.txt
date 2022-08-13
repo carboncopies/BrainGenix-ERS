@@ -23,6 +23,7 @@ target_link_libraries(ERS_STRUCT_EditorCamera
 
 # Link Internal Libs
 target_link_libraries(ERS_STRUCT_EditorCamera
+    ERS_STRUCT_Camera
     )
 
 target_include_directories(ERS_STRUCT_EditorCamera PUBLIC ./)

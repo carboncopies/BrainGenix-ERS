@@ -16,6 +16,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+// Internal Libraries (BG convention: use <> instead of "")
+#include <ERS_STRUCT_Camera.h>
+
 
 // Camera Movement Controls
 enum CameraMovement {
@@ -72,7 +75,6 @@ public:
      * @param YOffset mouse scroll amount
      */
     void ProcessMouseScroll(float YOffset);
-
 
     
     /**
