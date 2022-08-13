@@ -70,18 +70,18 @@ void ERS_CLASS_InputProcessor::ProcessKeyboardInput(float DeltaTime, bool Window
     // Get Keyboard Input
     if (WindowCaptureEnabled) {
 
-        if (glfwGetKey(Window_, GLFW_KEY_W) == GLFW_PRESS)
-            Camera_->ProcessKeyboard(FORWARD, DeltaTime);
-        if (glfwGetKey(Window_, GLFW_KEY_S) == GLFW_PRESS)
-            Camera_->ProcessKeyboard(BACKWARD, DeltaTime);
-        if (glfwGetKey(Window_, GLFW_KEY_A) == GLFW_PRESS)
-            Camera_->ProcessKeyboard(LEFT, DeltaTime);
-        if (glfwGetKey(Window_, GLFW_KEY_D) == GLFW_PRESS)
-            Camera_->ProcessKeyboard(RIGHT, DeltaTime);
-        if (glfwGetKey(Window_, GLFW_KEY_SPACE) == GLFW_PRESS)
-            Camera_->ProcessKeyboard(UP, DeltaTime);
+        if (glfwGetKey(Window_, GLFW_KEY_W)          == GLFW_PRESS)
+            ProcessKey(FORWARD,  DeltaTime);
+        if (glfwGetKey(Window_, GLFW_KEY_S)          == GLFW_PRESS)
+            ProcessKey(BACKWARD, DeltaTime);
+        if (glfwGetKey(Window_, GLFW_KEY_A)          == GLFW_PRESS)
+            ProcessKey(LEFT,     DeltaTime);
+        if (glfwGetKey(Window_, GLFW_KEY_D)          == GLFW_PRESS)
+            ProcessKey(RIGHT,    DeltaTime);
+        if (glfwGetKey(Window_, GLFW_KEY_SPACE)      == GLFW_PRESS)
+            ProcessKey(UP,       DeltaTime);
         if (glfwGetKey(Window_, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
-            Camera_->ProcessKeyboard(DOWN, DeltaTime);
+            ProcessKey(DOWN,     DeltaTime);
 
     }
 
