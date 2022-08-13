@@ -47,7 +47,7 @@ bool ERS_FUNCTION_DecodeSceneV3(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
     for (unsigned int i = 0; i < PointLights.size(); i++) {
 
-        YAML::Node Item = Models[i];
+        YAML::Node Item = PointLights[i];
         ERS_STRUCT_PointLight Light;
         Success &= ERS_FUNCTION_GetString     (Logger, Item, "AssetName",            Light.UserDefinedName         );
         Success &= ERS_FUNCTION_GetVec3Color  (Logger, Item, "Color",                Light.Color                   );
@@ -61,7 +61,7 @@ bool ERS_FUNCTION_DecodeSceneV3(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
     
     for (unsigned int i = 0; i < SpotLights.size(); i++) {
 
-        YAML::Node Item = Models[i];
+        YAML::Node Item = SpotLights[i];
         ERS_STRUCT_SpotLight Light;
         Success &= ERS_FUNCTION_GetString     (Logger, Item, "AssetName",            Light.UserDefinedName         );
         Success &= ERS_FUNCTION_GetVec3Color  (Logger, Item, "Color",                Light.Color                   );
@@ -79,7 +79,7 @@ bool ERS_FUNCTION_DecodeSceneV3(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
     for (unsigned int i = 0; i < DirectionalLights.size(); i++) {
 
-        YAML::Node Item = Models[i];
+        YAML::Node Item = DirectionalLights[i];
         ERS_STRUCT_DirectionalLight Light;
         Success &= ERS_FUNCTION_GetString     (Logger, Item, "AssetName",            Light.UserDefinedName         );
         Success &= ERS_FUNCTION_GetVec3Color  (Logger, Item, "Color",                Light.Color                   );
@@ -95,7 +95,7 @@ bool ERS_FUNCTION_DecodeSceneV3(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
     for (unsigned int i = 0; i < SceneCameras.size(); i++) {
 
-        YAML::Node Item = Models[i];
+        YAML::Node Item = SceneCameras[i];
         ERS_STRUCT_SceneCamera Camera;
         Success &= ERS_FUNCTION_GetString     (Logger, Item, "AssetName",            Camera.UserDefinedName_       );
         Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "Pos",                  Camera.Pos_                   );
