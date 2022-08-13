@@ -89,8 +89,11 @@ void ERS_CLASS_ModelImporter::CalculateTotalVertsIndices(ERS_STRUCT_Model* Model
 // Load Model From File
 long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
+
+
     ERS_STRUCT_Model Model;
     TextureList_ = std::vector<std::string>();
+    TextureNames_ = std::vector<std::string>();
 
     // Get Model Path
     std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
@@ -112,9 +115,27 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     DetectBoundingBox(&Model);
     CalculateTotalVertsIndices(&Model);
 
+    // Export Model File
+    std::string ExportFormat = "fbx";
+    SystemUtils_->Logger_->Log(std::string("Exporting Model Geometry To Blob With Encoding '") + ExportFormat + "'", 4);
+
+    Assimp::Exporter Exporter;
+    const aiExportDataBlob* Blob = Exporter.ExportToBlob(Scene, ExportFormat);
+
+    std::string ExportStatus = Exporter.GetErrorString();
+    if (ExportStatus == "") {
+        SystemUtils_->Logger_->Log(std::string("Finished Exporting Model Geometry To Blob"), 3);
+    } else {
+        SystemUtils_->Logger_->Log(std::string("Error Exporting Model Geometry '") + ExportStatus + "'", 7);
+    }
+
     // Copy Model File
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
-    ReadFile(AssetPath, Data.get());
+
+    Data->Data.reset(new unsigned char[Blob->size]);
+    ::memcpy(Data->Data.get(), Blob->data, Blob->size);
+    Data->Size_B = Blob->size;
+
     long ModelID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
     SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(ModelID) + std::string("' To Model '") + AssetPath + std::string("'")).c_str(), 4);
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(ModelID, Data.get());    
@@ -141,10 +162,14 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     MetadataEmitter<<YAML::Key<<YAML::BeginMap;
 
     // Iterate Over All Textures
+    SystemUtils_->Logger_->Log("Saving Texture Information To ERS Metadata Header", 4);
     for (unsigned int i = 0; i < TextureList_.size(); i++) {
 
         // Set Path For Each Texture, Iterate OVer All Levels Of This Texture
-        MetadataEmitter<<YAML::Key<<TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1))<<YAML::Value<<YAML::BeginMap;
+        std::string TexturePath = TextureNames_[i];//TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1));
+        SystemUtils_->Logger_->Log(std::string("Saving Information For Texture '") + TexturePath + "'", 3);
+        MetadataEmitter<<YAML::Key<<TexturePath<<YAML::Value<<YAML::BeginMap;
+
         for (unsigned int TextureLevel = 0; TextureLevel < TextureMemorySizes[i].size(); TextureLevel++) {
             MetadataEmitter<<YAML::Key<<(TextureMemorySizes[i].size() - 1) - TextureLevel<<YAML::Value<<YAML::BeginMap;
 
@@ -401,7 +426,7 @@ void ERS_CLASS_ModelImporter::WriteTextures(ERS_STRUCT_Model* Model, std::vector
         FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
         FreeImage_CloseMemory(FIImageData);
 
-        FreeImage_FlipVertical(RawImage);
+        //FreeImage_FlipVertical(RawImage);
 
         FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
         FreeImage_Unload(RawImage);
@@ -694,6 +719,7 @@ void ERS_CLASS_ModelImporter::AddTexture(ERS_STRUCT_Model* Model, aiMaterial *Ma
         SystemUtils_->Logger_->Log(Message, 3);
         if (std::find(TextureList_.begin(), TextureList_.end(), FilePath) == TextureList_.end()) {
             TextureList_.push_back(FilePath);
+            TextureNames_.push_back(Str.C_Str());
         }   
 
     }

@@ -446,7 +446,6 @@ void ERS_CLASS_ModelLoader::MatchTextures(ERS_STRUCT_Model* Model) {
 }
 
 
-
 long ERS_CLASS_ModelLoader::CheckIfModelAlreadyLoaded(long AssetID) {
 
     long Index = -1;    
