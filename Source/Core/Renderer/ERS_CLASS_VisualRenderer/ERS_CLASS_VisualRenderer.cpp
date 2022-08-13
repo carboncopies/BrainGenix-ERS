@@ -580,7 +580,11 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
     // Populate Viewport Struct
     Viewport->ShaderIndex = DefaultShader_;
+    
     Viewport->Camera = std::make_unique<ERS_STRUCT_Camera>();
+    Viewport->EditorCamera = std::make_unique<ERS_STRUCT_EditorCamera>();
+    Viewport->EditorCamera->SetupCamera(Viewport->Camera.get());
+
     Viewport->Grid = std::make_unique<ERS_CLASS_Grid>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_Grid"), &Shaders_)].get());
     Viewport->IconRenderer = std::make_unique<ERS_CLASS_IconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_LightIcon"), &Shaders_)].get()); //Set TO Shader 19 For Billboard Shader, Temp. Disabled As It Doesn't Work ATM
     Viewport->BoundingBoxRenderer = std::make_unique<ERS_CLASS_BoundingBoxRenderer>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_BoundingBox"), &Shaders_)].get());
