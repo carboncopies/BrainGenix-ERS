@@ -16,6 +16,8 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
 
+#include <ERS_STRUCT_Camera.h>
+
 
 /**
  * @brief The input processor reads keystrokes and mouse movement and sends them to the EditorCamera struct.
