@@ -98,6 +98,12 @@ bool ERS_FUNCTION_DecodeSceneV2(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
             ERS_FUNCTION_GetVec3       (Item, "Pos",                  Camera.Pos_                   );
             ERS_FUNCTION_GetVec3       (Item, "Rot",                  Camera.Rot_                   );
             ERS_FUNCTION_GetLongVector (Item, "AttachedScripts",      Camera.AttachedScriptIndexes_ );
+            ERS_FUNCTION_GetFloat      (Item, "NearClip",             Camera.NearClip_              );
+            ERS_FUNCTION_GetFloat      (Item, "FarClip",              Camera.FarClip_               );
+            ERS_FUNCTION_GetFloat      (Item, "FOV",                  Camera.FOV_                   );
+            ERS_FUNCTION_GetBool       (Item, "EnforceAspectRatio",   Camera.EnforceAspectRatio_    );
+            ERS_FUNCTION_GetFloat      (Item, "AspectRatio",          Camera.AspectRatio_           );
+            ERS_FUNCTION_GetInt        (Item, "StreamingPriority",    Camera.StreamingPriority_     );
             Scene->SceneCameras.push_back(std::make_shared<ERS_STRUCT_SceneCamera>(Camera));
 
         } else {
