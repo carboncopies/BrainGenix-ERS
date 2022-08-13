@@ -41,7 +41,7 @@ void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboo
     YOffset *= MouseSensitivity_;
 
     // Update Pitch/Yaw
-    Orientation_.y   += XOffset;
+    Orientation_.y += XOffset;
     Orientation_.p += YOffset;
 
 
@@ -79,7 +79,7 @@ void ERS_STRUCT_Camera::Update() {
     glm::quat QuatPitch  = glm::angleAxis(glm::radians(Orientation_.p), glm::vec3(1, 0, 0));
     glm::quat QuatYaw    = glm::angleAxis(glm::radians(Orientation_.y), glm::vec3(0, 1, 0));
     glm::quat QuatRoll   = glm::angleAxis(glm::radians(Orientation_.r), glm::vec3(0, 0, 1));
-    glm::quat QuatOrientation = QuatPitch * QuatYaw * QuatRoll;
+    glm::quat QuatOrientation = QuatRoll * QuatYaw * QuatPitch;
     QuatOrientation = glm::normalize(QuatOrientation);
 
     // Update Matricies
