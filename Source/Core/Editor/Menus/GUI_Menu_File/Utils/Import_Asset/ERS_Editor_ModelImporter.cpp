@@ -163,10 +163,10 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     for (unsigned int i = 0; i < TextureList_.size(); i++) {
 
         // Set Path For Each Texture, Iterate OVer All Levels Of This Texture
-        std::string TexturePath = TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1));
+        std::string TexturePath = TextureNames_[i];//TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1));
         SystemUtils_->Logger_->Log(std::string("Saving Information For Texture '") + TexturePath + "'", 3);
         MetadataEmitter<<YAML::Key<<TexturePath<<YAML::Value<<YAML::BeginMap;
-        
+
         for (unsigned int TextureLevel = 0; TextureLevel < TextureMemorySizes[i].size(); TextureLevel++) {
             MetadataEmitter<<YAML::Key<<(TextureMemorySizes[i].size() - 1) - TextureLevel<<YAML::Value<<YAML::BeginMap;
 
@@ -716,6 +716,7 @@ void ERS_CLASS_ModelImporter::AddTexture(ERS_STRUCT_Model* Model, aiMaterial *Ma
         SystemUtils_->Logger_->Log(Message, 3);
         if (std::find(TextureList_.begin(), TextureList_.end(), FilePath) == TextureList_.end()) {
             TextureList_.push_back(FilePath);
+            TextureNames_.push_back(Str.C_Str());
         }   
 
     }
