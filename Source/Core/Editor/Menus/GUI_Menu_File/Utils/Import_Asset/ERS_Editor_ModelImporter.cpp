@@ -113,7 +113,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     CalculateTotalVertsIndices(&Model);
 
     // Export Model File
-    std::string ExportFormat = "json";
+    std::string ExportFormat = "dae";
     SystemUtils_->Logger_->Log(std::string("Exporting Model Geometry To Blob With Encoding '") + ExportFormat + "'", 4);
 
     Assimp::Exporter Exporter;
