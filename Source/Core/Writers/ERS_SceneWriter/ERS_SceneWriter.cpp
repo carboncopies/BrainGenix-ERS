@@ -143,7 +143,6 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output<<YAML::EndMap;
 
         Output << YAML::EndMap;
-        AssetIndex++;
     }
     Output << YAML::EndMap;
     Output << YAML::EndMap;
@@ -187,7 +186,6 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
 
         Output << YAML::EndMap;
-        AssetIndex++;
     }
     Output << YAML::EndMap;
     Output << YAML::EndMap;
@@ -239,7 +237,6 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
 
         Output << YAML::EndMap;
-        AssetIndex++;
     }
     Output << YAML::EndMap;
     Output << YAML::EndMap;
