@@ -118,11 +118,13 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     Assimp::Exporter Exporter;
     const aiExportDataBlob* Blob = Exporter.ExportToBlob(Scene, ExportFormat);
+
+    std::cout<<Exporter.GetErrorString()<<std::endl;
+    SystemUtils_->Logger_->Log(std::string("Finished Exporting Model Geometry To Blob"), 3);
     
 
     // Copy Model File
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
-    //ReadFile(AssetPath, Data.get());
     Data->Data.reset(new unsigned char[Blob->size]);
     ::memcpy(Data->Data.get(), Blob->data, Blob->size);
     long ModelID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
