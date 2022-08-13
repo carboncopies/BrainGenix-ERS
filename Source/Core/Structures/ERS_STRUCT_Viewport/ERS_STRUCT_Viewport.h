@@ -71,7 +71,7 @@ struct ERS_STRUCT_Viewport {
     unsigned int FramebufferColorObject; /**<FBCO OpenGL ID*/
     unsigned int RenderbufferObject;     /**<RBO OpenGL ID*/
 
-    int Width = 1;  /**<Viewport Width*/
+    int Width  = 1; /**<Viewport Width*/
     int Height = 1; /**<Viewport Height*/
 
 };
