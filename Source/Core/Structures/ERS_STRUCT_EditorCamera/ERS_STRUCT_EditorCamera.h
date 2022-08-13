@@ -88,16 +88,16 @@ public:
 private:
 
     // Editor Camera Configuration Information
-    float MinMovementSpeed_  = 0.01f;  /**<Slowest movement speed allowed in units per second*/
-    float MaxMovementSpeed_  = 50.0f;  /**<Fastest movement speed allowed in units per second*/
+    float MinMovementSpeed_  = 0.01f;  /**<Slowest movement speed allowed in units per second */
+    float MaxMovementSpeed_  = 50.0f;  /**<Fastest movement speed allowed in units per second */
 
 
     // Internal Camera State Information
-    float MovementSpeed_     = 0.2f;   /**<Current Movement Speed*/
+    float MovementSpeed_     = 0.2f;   /**<Current Movement Speed      */
     float MouseSensitivity_  = 0.05f;  /**<Mouse sensitivity multiplier*/
 
     glm::vec3 Orientation_;            /**<Rotation of the editor camera in degrees. */
-    glm::vec3 Position_;               /**<Position of the editor camera in units */
+    glm::vec3 Position_;               /**<Position of the editor camera in units    */
     
 };
 
