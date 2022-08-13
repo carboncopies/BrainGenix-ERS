@@ -51,7 +51,6 @@ public:
     ~ERS_STRUCT_EditorCamera();
 
 
-
     /**
      * @brief Must be called before trying to use the editor camera or else the system won't render anything
      * Used to pass in the viewport's camera pointer so we can manipulate it.
@@ -59,6 +58,7 @@ public:
      * @param Camera 
      */
     void SetupCamera(ERS_STRUCT_Camera* Camera);
+
 
 
 
