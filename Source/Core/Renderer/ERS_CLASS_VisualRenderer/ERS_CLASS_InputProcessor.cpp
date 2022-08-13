@@ -86,19 +86,41 @@ void ERS_CLASS_InputProcessor::ProcessKeyboardInput(float DeltaTime, bool Window
     }
 
 }
+void ERS_CLASS_InputProcessor::ProcessKey(CameraMovement Direction, float DeltaTime) {
 
+    // Calculate Movement Direction Vectors
+    glm::mat4 Perspective, ViewMatrix;
+    glm::vec3 Right, Front, Up;
+    Camera_->GetMatrices(Perspective, ViewMatrix);
+    Right  =  glm::normalize(glm::vec3(ViewMatrix[0][0], ViewMatrix[1][0], ViewMatrix[2][0]));
+    Up     =  glm::normalize(glm::vec3(ViewMatrix[0][1], ViewMatrix[1][1], ViewMatrix[2][1]));
+    Front  = -glm::normalize(glm::vec3(ViewMatrix[0][2], ViewMatrix[1][2], ViewMatrix[2][2]));
+
+    // Calculate Velocity
+    float Velocity = MovementSpeed_ * DeltaTime;
+
+    // Update Position(s)
+    if (Direction == FORWARD)
+        Position_ += Front  * Velocity;
+    if (Direction == BACKWARD)
+        Position_ -= Front  * Velocity;
+    if (Direction == LEFT)
+        Position_ -= Right  * Velocity;
+    if (Direction == RIGHT)
+        Position_ += Right  * Velocity;
+    if (Direction == UP)
+        Position_ += Up     * Velocity;
+    if (Direction == DOWN)
+        Position_ -= Up     * Velocity;
+
+}
 void ERS_CLASS_InputProcessor::FramebufferSizeCallback(int Width, int Height) {
-
 
     // Update Viewport
     glViewport(0, 0, Width, Height);
     glScissor(0, 0, Width, Height);
 
-    // Update Framebuffer Size
-    //FramebufferManager_->ResizeFramebuffer(Width, Height);
-
 }
-
 void ERS_CLASS_InputProcessor::MouseCallback(double XPos, double YPos) {
 
     // Update Positions
@@ -144,7 +166,6 @@ void ERS_CLASS_InputProcessor::MouseCallback(double XPos, double YPos) {
 
 
 }
-
 void ERS_CLASS_InputProcessor::ScrollCallback(double YOffset) {
 
     // Update Movement Speed

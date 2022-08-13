@@ -115,6 +115,15 @@ public:
      */
     void ProcessKeyboardInput(float DeltaTime, bool WindowCaptureEnabled);
 
+    /**
+     * @brief Processes key input for the editor camera.
+     * 
+     * @param Direction Direction currently being pressed.
+     * @param DeltaTime Frame time used to ensure speed isn't tied to framerate
+     */
+    void ProcessKey(CameraMovement Direction, float DeltaTime);
+
+
 
     /**
      * @brief Helper function, sets the camera's maximum and minimum freeflying movement speeds.
