@@ -107,45 +107,45 @@ void ERS_STRUCT_EditorCamera::Update() {
 }
 
 
-// Camera Parameter Helper Functions
-void ERS_STRUCT_EditorCamera::SetMovementSpeedBoundries(float MinSpeed, float MaxSpeed) {
-    MinMovementSpeed_ = MinSpeed;
-    MaxMovementSpeed_ = MaxSpeed;
-}
-void ERS_STRUCT_EditorCamera::GetMovementSpeedBoundries(float &MinSpeed, float &MaxSpeed) {
-    MinSpeed = MinMovementSpeed_;
-    MaxSpeed = MaxMovementSpeed_;
-}
-void ERS_STRUCT_EditorCamera::SetMovementSpeed(float Speed, bool EnforceSpeedBoundries) {
-    if (EnforceSpeedBoundries) {
-        Speed = std::max(MinMovementSpeed_, Speed);
-        Speed = std::min(MaxMovementSpeed_, Speed);
-        MovementSpeed_ = Speed;
-    } else {
-        MovementSpeed_ = Speed;
-    }
-}
-void ERS_STRUCT_EditorCamera::GetMouseSensitivity(float &Sensitivity) {
-    Sensitivity = MouseSensitivity_;
-}
-void ERS_STRUCT_EditorCamera::SetMouseSensitivity(float Sensitivity) {
-    MouseSensitivity_ = Sensitivity;
-}
-void ERS_STRUCT_EditorCamera::SetRotation(glm::vec3 Rotation) {
-    Orientation_ = Rotation;
-}
-void ERS_STRUCT_EditorCamera::GetRotation(glm::vec3 &Rotation) {
-    Rotation = Orientation_;
-}
-glm::vec3 ERS_STRUCT_EditorCamera::GetRotation() {
-    return Orientation_;
-}
-void ERS_STRUCT_EditorCamera::SetPosition(glm::vec3 Position) {
-    Position_ = Position;
-}
-void ERS_STRUCT_EditorCamera::GetPosition(glm::vec3 &Position) {
-    Position = Position_;
-}
-glm::vec3 ERS_STRUCT_EditorCamera::GetPosition() {
-    return Position_;
-}
+// // Camera Parameter Helper Functions
+// void ERS_STRUCT_EditorCamera::SetMovementSpeedBoundries(float MinSpeed, float MaxSpeed) {
+//     MinMovementSpeed_ = MinSpeed;
+//     MaxMovementSpeed_ = MaxSpeed;
+// }
+// void ERS_STRUCT_EditorCamera::GetMovementSpeedBoundries(float &MinSpeed, float &MaxSpeed) {
+//     MinSpeed = MinMovementSpeed_;
+//     MaxSpeed = MaxMovementSpeed_;
+// }
+// void ERS_STRUCT_EditorCamera::SetMovementSpeed(float Speed, bool EnforceSpeedBoundries) {
+//     if (EnforceSpeedBoundries) {
+//         Speed = std::max(MinMovementSpeed_, Speed);
+//         Speed = std::min(MaxMovementSpeed_, Speed);
+//         MovementSpeed_ = Speed;
+//     } else {
+//         MovementSpeed_ = Speed;
+//     }
+// }
+// void ERS_STRUCT_EditorCamera::GetMouseSensitivity(float &Sensitivity) {
+//     Sensitivity = MouseSensitivity_;
+// }
+// void ERS_STRUCT_EditorCamera::SetMouseSensitivity(float Sensitivity) {
+//     MouseSensitivity_ = Sensitivity;
+// }
+// void ERS_STRUCT_EditorCamera::SetRotation(glm::vec3 Rotation) {
+//     Orientation_ = Rotation;
+// }
+// void ERS_STRUCT_EditorCamera::GetRotation(glm::vec3 &Rotation) {
+//     Rotation = Orientation_;
+// }
+// glm::vec3 ERS_STRUCT_EditorCamera::GetRotation() {
+//     return Orientation_;
+// }
+// void ERS_STRUCT_EditorCamera::SetPosition(glm::vec3 Position) {
+//     Position_ = Position;
+// }
+// void ERS_STRUCT_EditorCamera::GetPosition(glm::vec3 &Position) {
+//     Position = Position_;
+// }
+// glm::vec3 ERS_STRUCT_EditorCamera::GetPosition() {
+//     return Position_;
+// }
