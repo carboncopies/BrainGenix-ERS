@@ -17,7 +17,7 @@
 
 
 /**
- * @brief The input processor class handles processing window input and converting that into usable information.
+ * @brief The input processor reads keystrokes and mouse movement and sends them to the EditorCamera struct.
  * 
  */
 class ERS_CLASS_InputProcessor {
@@ -25,12 +25,12 @@ class ERS_CLASS_InputProcessor {
 private:
 
     // Internal Vars
-    bool FirstMouse  = true; /**<Checks if the mouse is just being enabled. */
-    float LastX      = 400;  /**<Location Of Last Mouse Position. (X coord) */
-    float LastY      = 400;  /**<Location Of Last Mouse Position. (Y Coord) */ 
+    bool FirstMouse    = true;  /**<Checks if the mouse is just being enabled. */
+    float LastX        = 400;   /**<Location Of Last Mouse Position. (X coord) */
+    float LastY        = 400;   /**<Location Of Last Mouse Position. (Y Coord) */ 
 
-    ERS_STRUCT_EditorCamera* EditorCamera_; /**<Pointer To EditorCamera Instance */
-    GLFWwindow*              Window_;       /**<Pointer To Window Surface */
+    ERS_STRUCT_Camera* Camera_; /**<Pointer To EditorCamera Instance */
+    GLFWwindow*        Window_; /**<Pointer To Window Surface */
 
 
     /**
