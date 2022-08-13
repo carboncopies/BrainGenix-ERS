@@ -120,7 +120,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     int Formats = Exporter.GetExportFormatCount();
     for (unsigned int i = 0; i < Formats; i++) {
-        std::cout<<Exporter.GetExportFormatDescription(i)<<std::endl;
+        std::cout<<Exporter.GetExportFormatDescription(i)->fileExtension<<std::endl;
     }
 
     const aiExportDataBlob* Blob = Exporter.ExportToBlob(Scene, ExportFormat);
