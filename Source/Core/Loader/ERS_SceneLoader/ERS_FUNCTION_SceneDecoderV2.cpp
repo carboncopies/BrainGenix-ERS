@@ -22,10 +22,10 @@ bool ERS_FUNCTION_DecodeSceneV2(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
     // Grab Metadata
     std::vector<YAML::Node> SceneItems;
-    Success &= ERS_FUNCTION_GetLong       (Logger, SceneData., "SceneFormatVersion", Scene->SceneFormatVersion      );
-    Success &= ERS_FUNCTION_GetString     (Logger, SceneData., "SceneName",          Scene->SceneName               );
-    Success &= ERS_FUNCTION_GetInt        (Logger, SceneData., "ActiveCameraIndex",  Scene->ActiveSceneCameraIndex  );
-    Success &= ERS_FUNCTION_GetNodeVector (Logger, SceneData., "SceneData",          SceneItems                     );
+    Success &= ERS_FUNCTION_GetLong       (Logger, SceneData, "SceneFormatVersion", Scene->SceneFormatVersion      );
+    Success &= ERS_FUNCTION_GetString     (Logger, SceneData, "SceneName",          Scene->SceneName               );
+    Success &= ERS_FUNCTION_GetInt        (Logger, SceneData, "ActiveCameraIndex",  Scene->ActiveSceneCameraIndex  );
+    Success &= ERS_FUNCTION_GetNodeVector (Logger, SceneData, "SceneData",          SceneItems                     );
 
     // Iterate Through Vector To Add Each Asset To Loading Queue Of Requested Type
     for (long i = 0; (long)i < (long)SceneItems.size(); i++) {
