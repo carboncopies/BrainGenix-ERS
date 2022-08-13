@@ -73,6 +73,7 @@ public:
     ~ERS_CLASS_InputProcessor();
 
 
+
     /**
      * @brief Update the framebuffer size.
      * 
