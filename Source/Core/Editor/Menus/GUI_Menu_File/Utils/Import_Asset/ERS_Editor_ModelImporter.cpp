@@ -113,16 +113,10 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     CalculateTotalVertsIndices(&Model);
 
     // Export Model File
-    std::string ExportFormat = "fbx";
+    std::string ExportFormat = "json";
     SystemUtils_->Logger_->Log(std::string("Exporting Model Geometry To Blob With Encoding '") + ExportFormat + "'", 4);
 
     Assimp::Exporter Exporter;
-
-    int Formats = Exporter.GetExportFormatCount();
-    for (unsigned int i = 0; i < Formats; i++) {
-        std::cout<<Exporter.GetExportFormatDescription(i)->fileExtension<<std::endl;
-    }
-
     const aiExportDataBlob* Blob = Exporter.ExportToBlob(Scene, ExportFormat);
 
     std::string ExportStatus = Exporter.GetErrorString();
@@ -134,10 +128,11 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     // Copy Model File
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
-    std::cout<<"Size"<<Blob->size<<std::endl;
+
     Data->Data.reset(new unsigned char[Blob->size]);
     ::memcpy(Data->Data.get(), Blob->data, Blob->size);
     Data->Size_B = Blob->size;
+
     long ModelID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
     SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(ModelID) + std::string("' To Model '") + AssetPath + std::string("'")).c_str(), 4);
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(ModelID, Data.get());    
