@@ -117,11 +117,20 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     SystemUtils_->Logger_->Log(std::string("Exporting Model Geometry To Blob With Encoding '") + ExportFormat + "'", 4);
 
     Assimp::Exporter Exporter;
+
+    int Formats = Exporter.GetExportFormatCount();
+    for (unsigned int i = 0; i < Formats; i++) {
+        std::cout<<Exporter.GetExportFormatDescription(i)<<std::endl;
+    }
+
     const aiExportDataBlob* Blob = Exporter.ExportToBlob(Scene, ExportFormat);
 
-    std::cout<<Exporter.GetErrorString()<<std::endl;
-    SystemUtils_->Logger_->Log(std::string("Finished Exporting Model Geometry To Blob"), 3);
-    
+    std::string ExportStatus = Exporter.GetErrorString();
+    if (ExportStatus == "") {
+        SystemUtils_->Logger_->Log(std::string("Finished Exporting Model Geometry To Blob"), 3);
+    } else {
+        SystemUtils_->Logger_->Log(std::string("Error Exporting Model Geometry '") + ExportStatus + "'", 7);
+    }
 
     // Copy Model File
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
