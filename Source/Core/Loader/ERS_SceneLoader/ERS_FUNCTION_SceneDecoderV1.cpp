@@ -17,7 +17,6 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
     std::vector<YAML::Node> SceneItems;
     Success &= ERS_FUNCTION_GetLong       (Logger, SceneData, "SceneFormatVersion", Scene->SceneFormatVersion      );
     Success &= ERS_FUNCTION_GetString     (Logger, SceneData, "SceneName",          Scene->SceneName               );
-    Success &= ERS_FUNCTION_GetInt        (Logger, SceneData, "ActiveCameraIndex",  Scene->ActiveSceneCameraIndex  );
     Success &= ERS_FUNCTION_GetNodeVector (Logger, SceneData, "SceneData",          SceneItems                     );
 
     // Iterate Through Vector To Add Each Asset To Loading Queue Of Requested Type
@@ -86,15 +85,6 @@ bool ERS_FUNCTION_DecodeSceneV1(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
             Success &= ERS_FUNCTION_GetBool       (Logger, Item, "CastShadows",          Light.CastsShadows_           );
             Success &= ERS_FUNCTION_GetLongVector (Logger, Item, "AttachedScripts",      Light.AttachedScriptIndexes_  );
             Scene->SpotLights.push_back(std::make_shared<ERS_STRUCT_SpotLight>(Light));
-
-        } else if (AssetType == std::string("SceneCamera")) {
-
-            ERS_STRUCT_SceneCamera Camera;
-            Success &= ERS_FUNCTION_GetString     (Logger, Item, "AssetName",            Camera.UserDefinedName_       );
-            Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "Pos",                  Camera.Pos_                   );
-            Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "Rot",                  Camera.Rot_                   );
-            Success &= ERS_FUNCTION_GetLongVector (Logger, Item, "AttachedScripts",      Camera.AttachedScriptIndexes_ );
-            Scene->SceneCameras.push_back(std::make_shared<ERS_STRUCT_SceneCamera>(Camera));
 
         } else {
             SystemUtils->Logger_->Log(std::string("Unsupported/Unknown Asset Type: ") + AssetType, 9);
