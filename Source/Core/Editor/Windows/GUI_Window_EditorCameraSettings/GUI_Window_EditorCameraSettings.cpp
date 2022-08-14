@@ -38,7 +38,7 @@ void GUI_Window_EditorCameraSettings::Draw() {
                 if (ImGui::BeginCombo("Viewport")) {
                     for (unsigned int i = 0; i < VisualRenderer_->Viewports_.size(); i++) {
                         bool IsSelected = SelectedViewportIndex_ == i;
-                        if (ImGui::Selectable(VisualRenderer_->Viewports_[i]->Name, &IsSelected)) {
+                        if (ImGui::Selectable(VisualRenderer_->Viewports_[i]->Name.c_str(), &IsSelected)) {
                             SelectedViewportIndex_ = i;
                         }
                     }
@@ -49,7 +49,7 @@ void GUI_Window_EditorCameraSettings::Draw() {
                 ImGui::Separator();
                 ImGui::Spacing();
 
-                ImGui::Text("%s", VisualRenderer_->Viewports_[SelectedViewportIndex_]->Name);
+                ImGui::Text("%s", VisualRenderer_->Viewports_[SelectedViewportIndex_]->Name.c_str());
 
 
             ImGui::EndTabBar();
