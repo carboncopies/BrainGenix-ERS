@@ -35,7 +35,7 @@ void GUI_Window_EditorCameraSettings::Draw() {
             ImGuiTabBarFlags Flags = ImGuiTabBarFlags_FittingPolicyScroll | ImGuiTabBarFlags_NoCloseWithMiddleMouseButton | ImGuiTabBarFlags_TabListPopupButton;
             if (ImGui::BeginTabBar("Viewports", Flags)) {
 
-                if (ImGui::BeginCombo("Viewport")) {
+                if (ImGui::BeginCombo("Viewport", "")) {
                     for (unsigned int i = 0; i < VisualRenderer_->Viewports_.size(); i++) {
                         bool IsSelected = SelectedViewportIndex_ == i;
                         if (ImGui::Selectable(VisualRenderer_->Viewports_[i]->Name.c_str(), &IsSelected)) {
