@@ -56,23 +56,6 @@ public:
 
 
 
-    // /**
-    //  * @brief Processed mouse movement across the camera's viewport.
-    //  * 
-    //  * @param XOffset Pixels moved in the x direction
-    //  * @param Yoffset Pixels moved in the y direction
-    //  * @param ConstrainPitch Stops the camera from turning above/bleow vertical
-    //  */
-    // void ProcessMouseMovement(float XOffset, float Yoffset, GLboolean ConstrainPitch = true);
-
-    // /**
-    //  * @brief Handles the mouse scrolling inputs
-    //  * 
-    //  * @param YOffset mouse scroll amount
-    //  */
-    // void ProcessMouseScroll(float YOffset);
-
-
     
     /**
      * @brief Updates the camera's matricies, should be called once per frame.
