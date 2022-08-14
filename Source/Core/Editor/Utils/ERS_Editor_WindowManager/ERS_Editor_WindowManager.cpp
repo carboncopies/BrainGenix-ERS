@@ -48,6 +48,7 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     Windows_->GUI_Window_ProjectSettings_        = std::make_unique<GUI_Window_ProjectSettings>(ProjectUtils, SystemUtils_);
     Windows_->GUI_Window_RAMGraph_               = std::make_unique<GUI_Window_RAMGraph>(SystemUtils_);
     Windows_->GUI_Window_RenderingSettings_      = std::make_unique<GUI_Window_RenderingSettings>(SystemUtils_);
+    Windows_->GUI_Window_EditorCameraSettings_   = std::make_unique<GUI_Window_EditorCameraSettings>();
     Windows_->GUI_Window_SceneTree_              = std::make_unique<GUI_Window_SceneTree>(SceneManager, SystemUtils_, ProjectUtils, Gizmo);
     Windows_->GUI_Window_ScriptEditor_           = std::make_unique<GUI_Window_ScriptEditor>(SystemUtils_, ProjectUtils, VisualRenderer);
     Windows_->GUI_Window_ShaderEditor_           = std::make_unique<GUI_Window_ShaderEditor>(SystemUtils_, ProjectUtils, VisualRenderer);
@@ -75,6 +76,7 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     WindowNames_.push_back("ProjectSettings");
     WindowNames_.push_back("RAMGraph");
     WindowNames_.push_back("RenderingSettings");
+    WindowNames_.push_back("EditorCameraSettings");
     WindowNames_.push_back("SceneTree");
     WindowNames_.push_back("ScriptEditor");
     WindowNames_.push_back("ShaderEditor");
@@ -109,6 +111,7 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     Windows_->GUI_Window_ProjectSettings_->Draw();
     Windows_->GUI_Window_RAMGraph_->Draw();
     Windows_->GUI_Window_RenderingSettings_->Draw();
+    Windows_->GUI_Window_EditorCameraSettings_->Draw();
     Windows_->GUI_Window_SceneTree_->Draw();
     Windows_->GUI_Window_ScriptEditor_->Draw();
     Windows_->GUI_Window_ShaderEditor_->Draw();
