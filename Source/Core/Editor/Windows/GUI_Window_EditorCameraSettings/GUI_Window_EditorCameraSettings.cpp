@@ -75,14 +75,33 @@ void GUI_Window_EditorCameraSettings::Draw() {
                 Viewport->Processor->GetPitchConstraint(ConstrainPitch);
                 Viewport->Processor->GetMouseSensitivity(MouseSensitivity);
                 ImGui::Checkbox("Constrain Pitch", &ConstrainPitch);
-                ImGui::DragFloat("Mouse Sensitivity", &MouseSensitivity);
+                ImGui::DragFloat("Mouse Sensitivity", &MouseSensitivity, 0.0025f, 0.001f, 1.0f);
                 Viewport->Processor->SetPitchConstraint(ConstrainPitch);
                 Viewport->Processor->SetMouseSensitivity(MouseSensitivity);
 
                 ImGui::Spacing();
             }
 
+            // Location/Rotation Information
+            if (ImGui::CollapsingHeader("Mouse Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
+                ImGui::Spacing();
 
+                float Colors[9] = {
+                    0.9f, 0.1f, 0.1f,
+                    0.1f, 0.9f, 0.1f,
+                    0.1f, 0.1f, 0.9f
+                };
+
+                glm::vec3 Pos, Rot;
+                Viewport->Processor->GetPosition(Pos);
+                Viewport->Processor->GetRotation(Rot);
+                ImGui::DragFloat3("Location", (float*)glm::value_ptr(Pos), 0.05f, Colors);
+                ImGui::DragFloat3("Rotation", (float*)glm::value_ptr(Rot), 0.05f, Colors);
+                Viewport->Processor->SetPosition(Pos);
+                Viewport->Processor->SetRotation(Rot);
+
+                ImGui::Spacing();
+            }
         }
 
 
