@@ -70,24 +70,6 @@ private:
      */
     void ScrollCallback(double YOffset);
 
-public:
-
-
-    /**
-     * @brief Construct a new Input Processor object
-     * 
-     * @param Camera 
-     */
-    ERS_CLASS_InputProcessor(ERS_STRUCT_Camera* Camera, GLFWwindow* Window);
-
-    /**
-     * @brief Destroy the Input Processor object
-     * 
-     */
-    ~ERS_CLASS_InputProcessor();
-
-
-
     /**
      * @brief Update the framebuffer size.
      * 
@@ -126,6 +108,35 @@ public:
      */
     void ProcessKey(CameraMovement Direction, float DeltaTime);
 
+
+
+public:
+
+
+    /**
+     * @brief Construct a new Input Processor object
+     * 
+     * @param Camera 
+     */
+    ERS_CLASS_InputProcessor(ERS_STRUCT_Camera* Camera, GLFWwindow* Window);
+
+    /**
+     * @brief Destroy the Input Processor object
+     * 
+     */
+    ~ERS_CLASS_InputProcessor();
+
+
+
+
+
+    /**
+     * @brief Processes Mouse and Keybind Inputs.
+     * 
+     * @param DeltaTime 
+     * @param WindowCaptureEnabled 
+     */
+    void Process(float DeltaTime, bool WindowCaptureEnabled);
 
 
     /**
