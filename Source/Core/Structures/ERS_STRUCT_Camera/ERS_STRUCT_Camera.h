@@ -168,7 +168,7 @@ private:
     // Internal Camera State Information
     float MovementSpeed_     = 0.2f;   /**<Current Movement Speed*/
     float MouseSensitivity_  = 0.05f;  /**<Mouse sensitivity multiplier*/
-    float FOV_               = 50.0f;  /**<Field of view in degrees*/
+    float FOV_               = 70.0f;  /**<Field of view in degrees*/
     float AspectRatio_       = 1.25f;  /**<Internal variable used to setup the projection matrix*/
 
     glm::vec3 Orientation_;            /**<Rotation of the camera in degrees. */
