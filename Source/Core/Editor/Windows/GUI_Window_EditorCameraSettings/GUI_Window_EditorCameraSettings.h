@@ -6,6 +6,8 @@
 
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <algorithm>
+#include <iostream>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glad/glad.h>
@@ -21,25 +23,20 @@
 #include <ERS_ENUM_ShadowFilteringType.h>
 #include <ERS_ENUM_ShadowUpdateMode.h>
 
+#include <ERS_CLASS_VisualRenderer.h>
 
 
 /**
- * @brief Create GUI GUI_Window "Rendering Settings"
+ * @brief Create GUI GUI_Window "EditorCamera Settings"
  * 
  */
-class GUI_Window_RenderingSettings {
+class GUI_Window_EditorCameraSettings {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointer*/
-
-    ImVec4 ClearColor_ = ImVec4(0.2f, 0.2f, 0.2f, 1.0f); /**<Background Clearing Color */
-    bool OpenGLDrawLines_ = false; /**<Default Rendering Mode */
-
-    // Variables To Store Input Data
-    int DepthMapResolution_; /**>Stores the value that the user is putting into the depth map input box*/
-    int SelectedShadowFiltering_ = 0;
-    int SelectedShadowUpdates_ = 0;
+    ERS_STRUCT_SystemUtils*    SystemUtils_;    /**<System Utils Pointer*/
+    ERS_CLASS_VisualRenderer*  VisualRenderer_; /**<Pointer to visual renderer subsystem*/
+    int SelectedViewportIndex_ = 0;            /**<Index of the viewport which is to be shown*/
 
 public:
 
@@ -47,17 +44,17 @@ public:
 
 
     /**
-     * @brief Construct a new GUI_Window_RenderingSettings object
+     * @brief Construct a new GUI_Window_EditorCameraSettings object
      * 
      * @param SystemUtils 
      */
-    GUI_Window_RenderingSettings(ERS_STRUCT_SystemUtils* SystemUtils);
+    GUI_Window_EditorCameraSettings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_VisualRenderer* VisualRenderer);
 
     /**
-     * @brief Destroy the GUI_Window_RenderingSettings object
+     * @brief Destroy the GUI_Window_EditorCameraSettings object
      * 
      */
-    ~GUI_Window_RenderingSettings();
+    ~GUI_Window_EditorCameraSettings();
 
 
     /**

@@ -33,9 +33,19 @@ void GUI_Menu_Settings::Draw() {
         ImGui::MenuItem("System Font", "", &Windows_->GUI_Window_FontSelector_->Enabled_);
 
         ImGui::Separator();
+        if (ImGui::BeginMenu("Editor Settings")) {
+            ImGui::MenuItem("Editor Camera Settings", "", &Windows_->GUI_Window_EditorCameraSettings_->Enabled_);
+        ImGui::EndMenu();
+        }
 
+        ImGui::Separator();
+        if (ImGui::BeginMenu("Engine Settings")) {
+            ImGui::MenuItem("Rendering Settings", "", &Windows_->GUI_Window_RenderingSettings_->Enabled_);
+            ImGui::MenuItem("Asset Streaming Settings", "", &Windows_->GUI_Window_AssetStreamingSettings_->Enabled_);
+        ImGui::EndMenu();
+        }
 
-        // Controller Settings
+        ImGui::Separator();
         if (ImGui::BeginMenu("Game Controllers")) {
 
             // Refresh

@@ -36,6 +36,7 @@
 #include <GUI_Window_ProjectSettings.h>
 #include <GUI_Window_RAMGraph.h>
 #include <GUI_Window_RenderingSettings.h>
+#include <GUI_Window_EditorCameraSettings.h>
 #include <GUI_Window_SceneTree.h>
 #include <GUI_Window_ScriptEditor.h>
 #include <GUI_Window_ShaderEditor.h>
