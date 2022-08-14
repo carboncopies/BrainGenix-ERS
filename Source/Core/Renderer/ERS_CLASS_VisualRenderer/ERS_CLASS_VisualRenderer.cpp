@@ -128,16 +128,16 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
         if ((CaptureIndex_ == i) && (!Cursors3D_->IsUsing())) {         
             CaptureEnabled = true;
         }
-        if (!IsEditorMode_ && i == 0) {
-            CaptureEnabled = false;
-        }
+
 
 
         // Update Viewport Camera/Position/Etc.
-        InputProcessorInstance->ProcessKeyboardInput(DeltaTime, CaptureEnabled);
-        InputProcessorInstance->UpdateFramebuffer();
-        InputProcessorInstance->UpdateMouse(CaptureEnabled);
-        InputProcessorInstance->ProcessMouseScroll(CaptureEnabled);
+        if (IsEditorMode_ || i != 0) {
+            InputProcessorInstance->Process(DeltaTime, CaptureEnabled);
+        } else {
+            CaptureEnabled = false;
+        }
+
 
     }
     CaptureCursor_ = false;
@@ -337,7 +337,12 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         bool EnableCursorCapture;
         if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | Viewport->WasSelected) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
-            CaptureCursor_ = true;
+
+            if (!IsEditorMode_ && Index == 0) {
+                CaptureCursor_ = false;
+            } else {
+                CaptureCursor_ = true;
+            }
             EnableCursorCapture = true;
             CaptureIndex_ = Index;
             Viewport->WasSelected = true;
@@ -580,7 +585,11 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
     // Populate Viewport Struct
     Viewport->ShaderIndex = DefaultShader_;
+    
     Viewport->Camera = std::make_unique<ERS_STRUCT_Camera>();
+    // Viewport->EditorCamera = std::make_unique<ERS_STRUCT_EditorCamera>();
+    // Viewport->EditorCamera->SetupCamera(Viewport->Camera.get());
+
     Viewport->Grid = std::make_unique<ERS_CLASS_Grid>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_Grid"), &Shaders_)].get());
     Viewport->IconRenderer = std::make_unique<ERS_CLASS_IconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_LightIcon"), &Shaders_)].get()); //Set TO Shader 19 For Billboard Shader, Temp. Disabled As It Doesn't Work ATM
     Viewport->BoundingBoxRenderer = std::make_unique<ERS_CLASS_BoundingBoxRenderer>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_BoundingBox"), &Shaders_)].get());

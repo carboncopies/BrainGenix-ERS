@@ -42,10 +42,11 @@
 #include <ERS_STRUCT_Viewport.h>
 #include <ERS_STRUCT_Shader.h>
 #include <ERS_STRUCT_Model.h>
-#include <ERS_STRUCT_Camera.h>
 #include <ERS_STRUCT_OpenGLDefaults.h>
 #include <ERS_STRUCT_ProjectUtils.h>
 #include <ERS_STRUCT_ShaderUniformData.h>
+
+#include <ERS_STRUCT_Camera.h>
 #include <ERS_STRUCT_SceneCamera.h>
 
 #include <ERS_FUNCTION_FindShaderByName.h>
