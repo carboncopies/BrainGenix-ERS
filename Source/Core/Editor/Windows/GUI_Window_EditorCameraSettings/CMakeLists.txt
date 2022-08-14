@@ -19,7 +19,7 @@ target_link_libraries(GUI_Window_EditorCameraSettings
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_RendererSettings
 
-    VisualRenderer
+    ERS_CLASS_VisualRenderer
 
     )
 

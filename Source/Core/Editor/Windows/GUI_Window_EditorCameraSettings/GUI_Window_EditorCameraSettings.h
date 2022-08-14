@@ -21,6 +21,7 @@
 #include <ERS_ENUM_ShadowFilteringType.h>
 #include <ERS_ENUM_ShadowUpdateMode.h>
 
+#include <ERS_CLASS_VisualRenderer.h>
 
 
 /**
