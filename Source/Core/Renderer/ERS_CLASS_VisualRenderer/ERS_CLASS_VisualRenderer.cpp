@@ -77,7 +77,9 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     if (!IsEditorMode_ && Scene->ActiveSceneCameraIndex != -1) {
         ERS_STRUCT_Camera* Camera = Viewports_[0]->Camera.get();
         ERS_STRUCT_SceneCamera* SceneCamera = Scene->SceneCameras[Scene->ActiveSceneCameraIndex].get();
-        Camera->SetAspectRatio(SceneCamera->AspectRatio_);
+        if (SceneCamera->EnforceAspectRatio_) {
+            Camera->SetAspectRatio(SceneCamera->AspectRatio_);
+        }
         Camera->SetClipBoundries(SceneCamera->NearClip_, SceneCamera->FarClip_);
         Camera->SetFOV(SceneCamera->FOV_);
         Camera->SetPosition(SceneCamera->Pos_);
