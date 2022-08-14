@@ -34,7 +34,11 @@ void GUI_Window_EditorCameraSettings::Draw() {
                 ImGui::Spacing();
                 
                 // Show Information About Every Viewport
-                //ImGui::Tab
+                ImGuiTabBarFlags Flags = ImGuiTabBarFlags_FittingPolicyScroll;
+                if (ImGui::BeginTabBar("Viewports", Flags)) {
+
+                ImGui::EndTabBar();
+                }
 
             }
 

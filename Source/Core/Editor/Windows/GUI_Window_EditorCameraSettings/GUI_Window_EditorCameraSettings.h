@@ -32,9 +32,9 @@ class GUI_Window_EditorCameraSettings {
 
 private:
 
-    ERS_STRUCT_SystemUtils*   SystemUtils_;    /**<System Utils Pointer*/
-    ERS_CLASS_VisualRenderer* VisualRenderer_; /**<Pointer to visual renderer subsystem*/
-
+    ERS_STRUCT_SystemUtils*    SystemUtils_;    /**<System Utils Pointer*/
+    ERS_CLASS_VisualRenderer*  VisualRenderer_; /**<Pointer to visual renderer subsystem*/
+    int SelectedViewportIndex_ = 0;            /**<Index of the viewport which is to be shown*/
 
 public:
 
