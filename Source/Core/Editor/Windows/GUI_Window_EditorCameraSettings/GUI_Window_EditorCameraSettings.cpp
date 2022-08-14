@@ -47,9 +47,9 @@ void GUI_Window_EditorCameraSettings::Draw() {
                         if (TabSelected) {
                             ImGui::Text(VisualRenderer_->Viewports_[i]->Name.c_str());
 
-                            
-                            ImGui::EndTabItem();
+
                         }
+                        ImGui::EndTabItem();
                         
                     
 
