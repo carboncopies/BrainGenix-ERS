@@ -62,12 +62,6 @@ float ERS_STRUCT_Camera::GetFOV() {
 void ERS_STRUCT_Camera::SetAspectRatio(float AspectRatio) {
     AspectRatio_ = AspectRatio;
 }
-// void ERS_STRUCT_Camera::GetMouseSensitivity(float &Sensitivity) {
-//     Sensitivity = MouseSensitivity_;
-// }
-// void ERS_STRUCT_Camera::SetMouseSensitivity(float Sensitivity) {
-//     MouseSensitivity_ = Sensitivity;
-// }
 void ERS_STRUCT_Camera::SetRotation(glm::vec3 Rotation) {
     Orientation_ = Rotation;
 }
