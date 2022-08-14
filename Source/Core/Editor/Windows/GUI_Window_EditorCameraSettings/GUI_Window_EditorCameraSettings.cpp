@@ -57,9 +57,9 @@ void GUI_Window_EditorCameraSettings::Draw() {
                 float MinSpeed, MaxSpeed, CurrentSpeed;
                 Viewport->Processor->GetMovementSpeedBoundries(MinSpeed, MaxSpeed);
                 Viewport->Processor->GetMovementSpeed(CurrentSpeed);
-                ImGui::DragFloat("Movement Speed", &CurrentSpeed);
-                ImGui::DragFloat("Minimum Speed", &MinSpeed);
-                ImGui::DragFloat("Maximum Speed", &MaxSpeed);
+                ImGui::DragFloat("Movement Speed", &CurrentSpeed, 0.025f, 0.0f, 100.0f);
+                ImGui::DragFloat("Minimum Speed", &MinSpeed, 0.05f, 0.0f, 10.0f);
+                ImGui::DragFloat("Maximum Speed", &MaxSpeed, 0.05f, 0.0f, 100.0f);
                 Viewport->Processor->SetMovementSpeed(CurrentSpeed);
                 Viewport->Processor->SetMovementSpeedBoundries(MinSpeed, MaxSpeed);
                 
@@ -69,7 +69,16 @@ void GUI_Window_EditorCameraSettings::Draw() {
             // Mouse Controls
             if (ImGui::CollapsingHeader("Mouse Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
                 ImGui::Spacing();
-                //Viewport->Processor->
+
+                bool ConstrainPitch;
+                float MouseSensitivity;
+                Viewport->Processor->GetPitchConstraint(ConstrainPitch);
+                Viewport->Processor->GetMouseSensitivity(MouseSensitivity);
+                ImGui::Checkbox("Constrain Pitch", &ConstrainPitch);
+                ImGui::DragFloat("Mouse Sensitivity", &MouseSensitivity);
+                Viewport->Processor->SetPitchConstraint(ConstrainPitch);
+                Viewport->Processor->SetMouseSensitivity(MouseSensitivity);
+
                 ImGui::Spacing();
             }
 
