@@ -50,23 +50,6 @@ void ERS_STRUCT_Camera::GetClipBoundires(float &NearClip, float &FarClip) {
     NearClip = NearClip_;
     FarClip = FarClip_;
 }
-// void ERS_STRUCT_Camera::SetMovementSpeedBoundries(float MinSpeed, float MaxSpeed) {
-//     MinMovementSpeed_ = MinSpeed;
-//     MaxMovementSpeed_ = MaxSpeed;
-// }
-// void ERS_STRUCT_Camera::GetMovementSpeedBoundries(float &MinSpeed, float &MaxSpeed) {
-//     MinSpeed = MinMovementSpeed_;
-//     MaxSpeed = MaxMovementSpeed_;
-// }
-// void ERS_STRUCT_Camera::SetMovementSpeed(float Speed, bool EnforceSpeedBoundries) {
-//     if (EnforceSpeedBoundries) {
-//         Speed = std::max(MinMovementSpeed_, Speed);
-//         Speed = std::min(MaxMovementSpeed_, Speed);
-//         MovementSpeed_ = Speed;
-//     } else {
-//         MovementSpeed_ = Speed;
-//     }
-// }
 void ERS_STRUCT_Camera::SetFOV(float FOV) {
     FOV_ = FOV;
 }
