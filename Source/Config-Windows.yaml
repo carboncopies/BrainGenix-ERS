@@ -1,7 +1,7 @@
 # Set Window Configuration Parameters #
 WindowEnabled: True
-WindowWidth: 800
-WindowHeight: 600
+WindowWidth: 1920
+WindowHeight: 1080
 WindowTitle: "BrainGenix-ERS"
 
 
