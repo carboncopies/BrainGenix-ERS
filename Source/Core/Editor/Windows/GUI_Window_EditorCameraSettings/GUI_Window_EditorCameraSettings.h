@@ -24,17 +24,17 @@
 
 
 /**
- * @brief Create GUI GUI_Window "Rendering Settings"
+ * @brief Create GUI GUI_Window "EditorCamera Settings"
  * 
  */
-class GUI_Window_RenderingSettings {
+class GUI_Window_EditorCameraSettings {
 
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointer*/
 
     ImVec4 ClearColor_ = ImVec4(0.2f, 0.2f, 0.2f, 1.0f); /**<Background Clearing Color */
-    bool OpenGLDrawLines_ = false; /**<Default Rendering Mode */
+    bool OpenGLDrawLines_ = false; /**<Default EditorCamera Mode */
 
     // Variables To Store Input Data
     int DepthMapResolution_; /**>Stores the value that the user is putting into the depth map input box*/
@@ -47,17 +47,17 @@ public:
 
 
     /**
-     * @brief Construct a new GUI_Window_RenderingSettings object
+     * @brief Construct a new GUI_Window_EditorCameraSettings object
      * 
      * @param SystemUtils 
      */
-    GUI_Window_RenderingSettings(ERS_STRUCT_SystemUtils* SystemUtils);
+    GUI_Window_EditorCameraSettings(ERS_STRUCT_SystemUtils* SystemUtils);
 
     /**
-     * @brief Destroy the GUI_Window_RenderingSettings object
+     * @brief Destroy the GUI_Window_EditorCameraSettings object
      * 
      */
-    ~GUI_Window_RenderingSettings();
+    ~GUI_Window_EditorCameraSettings();
 
 
     /**
