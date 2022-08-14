@@ -38,8 +38,6 @@ void GUI_Menu_Window::Draw() {
             ImGui::MenuItem("Asset Explorer", "", &Windows_->GUI_Window_AssetExplorer_->Enabled_);
             ImGui::MenuItem("Object Properties", "", &Windows_->GUI_Window_ObjectProperties_->Enabled_);
 
-                
-
             // Framerate Widgets
             if (ImGui::BeginMenu("Framerate")) {
 

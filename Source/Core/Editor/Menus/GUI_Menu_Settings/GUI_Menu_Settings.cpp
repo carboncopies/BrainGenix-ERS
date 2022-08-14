@@ -39,9 +39,13 @@ void GUI_Menu_Settings::Draw() {
         }
 
         ImGui::Separator();
+        if (ImGui::BeginMenu("Engine Settings")) {
+            ImGui::MenuItem("Rendering Settings", "", &Windows_->GUI_Window_RenderingSettings_->Enabled_);
+            ImGui::MenuItem("Asset Streaming Settings", "", &Windows_->GUI_Window_AssetStreamingSettings_->Enabled_);
+        ImGui::EndMenu();
+        }
 
-
-        // Controller Settings
+        ImGui::Separator();
         if (ImGui::BeginMenu("Game Controllers")) {
 
             // Refresh
