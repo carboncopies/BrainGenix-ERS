@@ -344,10 +344,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         bool MouseXInRange = (MousePositionX >= WindowTopLeftCornerX) && (MousePositionX < WindowBottomRightCornerX);
         bool MouseYInRange = (MousePositionY >= WindowTopLeftCornerY) && (MousePositionY < WindowBottomRightCornerY);
         bool MouseInRange = MouseXInRange && MouseYInRange;
-        
 
-        // Update FOV
-        Viewport->Camera->SetFOV(SystemUtils_->RendererSettings_->FOV_);
 
         // Check If Input Enabled
         bool EnableCameraMovement = !Cursors3D_->IsUsing();
