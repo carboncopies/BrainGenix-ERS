@@ -40,11 +40,11 @@ void GUI_Window_EditorCameraSettings::Draw() {
                     std::string Name = VisualRenderer_->Viewports_[i]->Name;
                     bool TabSelected = SelectedViewportIndex_ == (int)i;
                     bool TabStatus = ImGui::BeginTabItem(Name.c_str(), &TabSelected, ImGuiTabItemFlags_NoCloseWithMiddleMouseButton);
-                    if (TabStatus) {
+                    if (TabSelected) {
                         SelectedViewportIndex_ = i;
                     }
 
-                    if (TabSelected) {
+                    if (TabSelected && TabStatus) {
                         ImGui::Text(VisualRenderer_->Viewports_[i]->Name.c_str());
 
                         ImGui::EndTabItem();
