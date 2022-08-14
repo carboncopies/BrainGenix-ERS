@@ -115,44 +115,6 @@ public:
      */
     void GetClipBoundires(float &NearClip, float &FarClip);
 
-    // /**
-    //  * @brief Helper function, sets the camera's maximum and minimum freeflying movement speeds.
-    //  * 
-    //  * @param MinSpeed Slowest speed that the user can set the camera's keys to move in units per second.
-    //  * @param MaxSpeed Fastest speed that the user can set the camera's keys to move in units per second.
-    //  */
-    // void SetMovementSpeedBoundries(float MinSpeed, float MaxSpeed);
-
-    // /**
-    //  * @brief Helper Function, gets the camera's maximum and minimum freeflying movement speeds.
-    //  * 
-    //  * @param MinSpeed Slowest speed that the user can set the camera's keys to move in units per second.
-    //  * @param MaxSpeed Fastest speed that the user can set the camera's keys to move in units per second.
-    //  */
-    // void GetMovementSpeedBoundries(float &MinSpeed, float &MaxSpeed);
-
-    // /**
-    //  * @brief Helper function, Sets the speed of the camera.
-    //  * 
-    //  * @param Speed Desired speed in units per second.
-    //  * @param EnforceSpeedBoundries Enable/disable hard boundry enforcement.
-    //  */
-    // void SetMovementSpeed(float Speed, bool EnforceSpeedBoundries = true);
-    
-    // /**
-    //  * @brief Gets the mouse sensitivity multiplier.
-    //  * 
-    //  * @param Sensitivity Mouse sensitivity multiplier. 
-    //  */
-    // void GetMouseSensitivity(float &Sensitivity);
-
-    // /**
-    //  * @brief Sets the mouse sensitivity multiplier.
-    //  * 
-    //  * @param Sensitivity Mouse sensitivity multiplier.
-    //  */
-    // void SetMouseSensitivity(float Sensitivity);
-
     /**
      * @brief Gets the current field of view angle.
      * 
