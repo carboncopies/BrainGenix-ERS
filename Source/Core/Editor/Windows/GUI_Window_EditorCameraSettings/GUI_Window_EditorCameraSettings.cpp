@@ -37,7 +37,7 @@ void GUI_Window_EditorCameraSettings::Draw() {
 
                 if (ImGui::BeginCombo("Viewport", "")) {
                     for (unsigned int i = 0; i < VisualRenderer_->Viewports_.size(); i++) {
-                        bool IsSelected = SelectedViewportIndex_ == i;
+                        bool IsSelected = SelectedViewportIndex_ == (int)i;
                         if (ImGui::Selectable(VisualRenderer_->Viewports_[i]->Name.c_str(), &IsSelected)) {
                             SelectedViewportIndex_ = i;
                         }
