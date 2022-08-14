@@ -56,6 +56,7 @@ struct ERS_STRUCT_Windows {
     std::unique_ptr<GUI_Window_ProjectSettings> GUI_Window_ProjectSettings_;
     std::unique_ptr<GUI_Window_RAMGraph> GUI_Window_RAMGraph_;
     std::unique_ptr<GUI_Window_RenderingSettings> GUI_Window_RenderingSettings_;
+    std::unique_ptr<GUI_Window_EditorCameraSettings> GUI_Window_EditorCameraSettings_;
     std::unique_ptr<GUI_Window_SceneTree> GUI_Window_SceneTree_;
     std::unique_ptr<GUI_Window_ScriptEditor> GUI_Window_ScriptEditor_;
     std::unique_ptr<GUI_Window_ShaderEditor> GUI_Window_ShaderEditor_;
