@@ -273,7 +273,7 @@ std::map<unsigned int, int> ERS_CLASS_AssetStreamingManager::CalculateCameraMaxU
     for (unsigned int i = 0; i < Cameras.size(); i++) {
         TotalCameraPriorities += Cameras[i]->GetStreamingPriority();
     }
-    TotalCameraPriorities = std::min(1, TotalCameraPriorities);
+    TotalCameraPriorities = std::max(1, TotalCameraPriorities);
 
     // Calculate Percentage Of Total Updates Each Camera Should Have
     std::vector<float> CameraUpdatePercentages;
