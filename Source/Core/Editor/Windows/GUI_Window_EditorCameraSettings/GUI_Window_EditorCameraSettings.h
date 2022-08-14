@@ -46,7 +46,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Window_EditorCameraSettings(ERS_STRUCT_SystemUtils* SystemUtils);
+    GUI_Window_EditorCameraSettings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_VisualRenderer* VisualRenderer);
 
     /**
      * @brief Destroy the GUI_Window_EditorCameraSettings object
