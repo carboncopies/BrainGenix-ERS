@@ -66,6 +66,26 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     ProjectUtils_->ModelLoader_->AssetStreamingManager_->UpdateSceneStreamingQueue(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), Cameras);
     
     
+    // // Update Camera Location If System Running
+    // if (!IsEditorMode_ && Index == 0 && Scene->ActiveSceneCameraIndex != -1) {
+    //     Viewport->Camera->SetPosition(Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Pos_);
+    //     Viewport->Camera->SetRotation(Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Rot_);
+    // }
+    
+    // Apply Scene Camera Transforms
+    ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+    if (!IsEditorMode_ && Scene->ActiveSceneCameraIndex != -1) {
+        ERS_STRUCT_Camera* Camera = Viewports_[0]->Camera.get();
+        ERS_STRUCT_SceneCamera* SceneCamera = Scene->SceneCameras[Scene->ActiveSceneCameraIndex].get();
+        if (SceneCamera->EnforceAspectRatio_) {
+            Camera->SetAspectRatio(SceneCamera->AspectRatio_);
+        }
+        Camera->SetClipBoundries(SceneCamera->NearClip_, SceneCamera->FarClip_);
+        Camera->SetFOV(SceneCamera->FOV_);
+        Camera->SetPosition(SceneCamera->Pos_);
+        Camera->SetRotation(SceneCamera->Rot_);
+        Camera->SetStreamingPriority(SceneCamera->StreamingPriority_);
+    }
 
     // Set Depth Shader For Shadow System
     DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthMap"), &Shaders_)].get();
@@ -324,10 +344,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         bool MouseXInRange = (MousePositionX >= WindowTopLeftCornerX) && (MousePositionX < WindowBottomRightCornerX);
         bool MouseYInRange = (MousePositionY >= WindowTopLeftCornerY) && (MousePositionY < WindowBottomRightCornerY);
         bool MouseInRange = MouseXInRange && MouseYInRange;
-        
 
-        // Update FOV
-        Viewport->Camera->SetFOV(SystemUtils_->RendererSettings_->FOV_);
 
         // Check If Input Enabled
         bool EnableCameraMovement = !Cursors3D_->IsUsing();
@@ -445,12 +462,12 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
 
-        // Update Camera Location If System Running
-        if (!IsEditorMode_ && Index == 0 && Scene->ActiveSceneCameraIndex != -1) {
-            Viewport->Camera->SetPosition(Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Pos_);
-            Viewport->Camera->SetRotation(Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Rot_);
+        // // Update Camera Location If System Running
+        // if (!IsEditorMode_ && Index == 0 && Scene->ActiveSceneCameraIndex != -1) {
+        //     Viewport->Camera->SetPosition(Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Pos_);
+        //     Viewport->Camera->SetRotation(Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Rot_);
             
-        }
+        // }
 
 
         // Render

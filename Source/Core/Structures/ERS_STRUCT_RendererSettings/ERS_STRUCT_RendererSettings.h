@@ -39,7 +39,4 @@ struct ERS_STRUCT_RendererSettings {
     unsigned long long CurrentVRAMUsage_ = 0;
     unsigned long long CurrentRAMUsage_ = 0;
     
-
-    float FOV_ = 70.0f;
-
 };

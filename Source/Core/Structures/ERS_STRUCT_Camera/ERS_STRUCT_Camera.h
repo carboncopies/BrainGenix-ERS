@@ -55,32 +55,6 @@ public:
     ~ERS_STRUCT_Camera();
 
 
-
-    // /**
-    //  * @brief Processes keyboard input for the camera.
-    //  * 
-    //  * @param Direction Direction currently being pressed.
-    //  * @param DeltaTime Frame time used to ensure speed isn't tied to framerate
-    //  */
-    // void ProcessKeyboard(CameraMovement Direction, float DeltaTime);
-
-    // /**
-    //  * @brief Processed mouse movement across the camera's viewport.
-    //  * 
-    //  * @param XOffset Pixels moved in the x direction
-    //  * @param Yoffset Pixels moved in the y direction
-    //  * @param ConstrainPitch Stops the camera from turning above/bleow vertical
-    //  */
-    // void ProcessMouseMovement(float XOffset, float Yoffset, GLboolean ConstrainPitch = true);
-
-    // /**
-    //  * @brief Handles the mouse scrolling inputs
-    //  * 
-    //  * @param YOffset mouse scroll amount
-    //  */
-    // void ProcessMouseScroll(float YOffset);
-
-
     
     /**
      * @brief Updates the camera's matricies, should be called once per frame.
@@ -114,44 +88,6 @@ public:
      * @param FarClip Maximum distance in units for things to be rendered in.
      */
     void GetClipBoundires(float &NearClip, float &FarClip);
-
-    // /**
-    //  * @brief Helper function, sets the camera's maximum and minimum freeflying movement speeds.
-    //  * 
-    //  * @param MinSpeed Slowest speed that the user can set the camera's keys to move in units per second.
-    //  * @param MaxSpeed Fastest speed that the user can set the camera's keys to move in units per second.
-    //  */
-    // void SetMovementSpeedBoundries(float MinSpeed, float MaxSpeed);
-
-    // /**
-    //  * @brief Helper Function, gets the camera's maximum and minimum freeflying movement speeds.
-    //  * 
-    //  * @param MinSpeed Slowest speed that the user can set the camera's keys to move in units per second.
-    //  * @param MaxSpeed Fastest speed that the user can set the camera's keys to move in units per second.
-    //  */
-    // void GetMovementSpeedBoundries(float &MinSpeed, float &MaxSpeed);
-
-    // /**
-    //  * @brief Helper function, Sets the speed of the camera.
-    //  * 
-    //  * @param Speed Desired speed in units per second.
-    //  * @param EnforceSpeedBoundries Enable/disable hard boundry enforcement.
-    //  */
-    // void SetMovementSpeed(float Speed, bool EnforceSpeedBoundries = true);
-    
-    // /**
-    //  * @brief Gets the mouse sensitivity multiplier.
-    //  * 
-    //  * @param Sensitivity Mouse sensitivity multiplier. 
-    //  */
-    // void GetMouseSensitivity(float &Sensitivity);
-
-    // /**
-    //  * @brief Sets the mouse sensitivity multiplier.
-    //  * 
-    //  * @param Sensitivity Mouse sensitivity multiplier.
-    //  */
-    // void SetMouseSensitivity(float Sensitivity);
 
     /**
      * @brief Gets the current field of view angle.
@@ -232,7 +168,7 @@ private:
     // Internal Camera State Information
     float MovementSpeed_     = 0.2f;   /**<Current Movement Speed*/
     float MouseSensitivity_  = 0.05f;  /**<Mouse sensitivity multiplier*/
-    float FOV_               = 50.0f;  /**<Field of view in degrees*/
+    float FOV_               = 70.0f;  /**<Field of view in degrees*/
     float AspectRatio_       = 1.25f;  /**<Internal variable used to setup the projection matrix*/
 
     glm::vec3 Orientation_;            /**<Rotation of the camera in degrees. */

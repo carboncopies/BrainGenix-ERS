@@ -293,7 +293,17 @@ void GUI_Window_ObjectProperties::Draw() {
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the maximum distance after which geometry is ignored.");
 
+
                         ImGui::Spacing();
+
+
+                        ImGui::SliderInt("Asset Streaming Priority", &Camera->StreamingPriority_, 0, 10);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Sets the priority of the camera on a scale from 1-10.");
+
+
+                        ImGui::Spacing();
+
 
                         ImGui::Checkbox("Enforce Aspect Ratio", &Camera->EnforceAspectRatio_);
                         ImGui::SameLine();
@@ -368,15 +378,7 @@ void GUI_Window_ObjectProperties::Draw() {
                     }
                     ImGui::EndChild();
 
-
-
-
-
                 }
-
-
-
-
 
             }
 
@@ -384,8 +386,6 @@ void GUI_Window_ObjectProperties::Draw() {
         ImGui::End();
 
     }
-
-
 
 }
 
