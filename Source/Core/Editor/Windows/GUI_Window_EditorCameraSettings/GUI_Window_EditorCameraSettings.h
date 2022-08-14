@@ -33,13 +33,6 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointer*/
 
-    ImVec4 ClearColor_ = ImVec4(0.2f, 0.2f, 0.2f, 1.0f); /**<Background Clearing Color */
-    bool OpenGLDrawLines_ = false; /**<Default EditorCamera Mode */
-
-    // Variables To Store Input Data
-    int DepthMapResolution_; /**>Stores the value that the user is putting into the depth map input box*/
-    int SelectedShadowFiltering_ = 0;
-    int SelectedShadowUpdates_ = 0;
 
 public:
 
