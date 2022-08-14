@@ -368,15 +368,7 @@ void GUI_Window_ObjectProperties::Draw() {
                     }
                     ImGui::EndChild();
 
-
-
-
-
                 }
-
-
-
-
 
             }
 
@@ -384,8 +376,6 @@ void GUI_Window_ObjectProperties::Draw() {
         ImGui::End();
 
     }
-
-
 
 }
 
