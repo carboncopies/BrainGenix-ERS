@@ -35,24 +35,22 @@ void GUI_Window_EditorCameraSettings::Draw() {
             ImGuiTabBarFlags Flags = ImGuiTabBarFlags_FittingPolicyScroll | ImGuiTabBarFlags_NoCloseWithMiddleMouseButton | ImGuiTabBarFlags_TabListPopupButton;
             if (ImGui::BeginTabBar("Viewports", Flags)) {
 
-                for (unsigned int i = 0; i < VisualRenderer_->Viewports_.size(); i++) {
-
-                    std::string Name = VisualRenderer_->Viewports_[i]->Name;
-                    bool TabSelected = SelectedViewportIndex_ == (int)i;
-                    bool TabStatus = ImGui::BeginTabItem(Name.c_str(), &TabSelected, ImGuiTabItemFlags_NoCloseWithMiddleMouseButton);
-                    if (TabSelected) {
-                        SelectedViewportIndex_ = i;
+                if (ImGui::BeginCombo("Viewport")) {
+                    for (unsigned int i = 0; i < VisualRenderer_->Viewports_.size(); i++) {
+                        bool IsSelected = SelectedViewportIndex_ == i;
+                        if (ImGui::Selectable(VisualRenderer_->Viewports_[i]->Name, &IsSelected)) {
+                            SelectedViewportIndex_ = i;
+                        }
                     }
-
-                    if (TabSelected && TabStatus) {
-                        ImGui::Text(VisualRenderer_->Viewports_[i]->Name.c_str());
-
-                        ImGui::EndTabItem();
-                    }
-                    
-                
-
+                ImGui::EndCombo();
                 }
+
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+
+                ImGui::Text("%s", VisualRenderer_->Viewports_[SelectedViewportIndex_]->Name);
+
 
             ImGui::EndTabBar();
             }
