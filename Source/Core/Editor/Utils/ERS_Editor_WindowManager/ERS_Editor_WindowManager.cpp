@@ -98,30 +98,30 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
 void ERS_CLASS_WindowManager::UpdateAllWindows() {
 
     // Make sure to add your window here as well, again see the above mentioned readme for more info
-    Windows_->GUI_Window_About_->Draw();
-    Windows_->GUI_Window_AssetExplorer_->Draw();
-    Windows_->GUI_Window_ControllerSettings_->Draw();
-    Windows_->GUI_Window_FrameLatencyGraph_->Draw();
-    Windows_->GUI_Window_FramerateGraph_->Draw();
-    Windows_->GUI_Window_FramerateCounter_->Draw();
-    Windows_->GUI_Window_FramerateHistogram_->Draw();
-    Windows_->GUI_Window_FrameratePlot_->Draw();
-    Windows_->GUI_Window_ImportProgressBar_->Draw();
-    Windows_->GUI_Window_ObjectProperties_->Draw();
-    Windows_->GUI_Window_ProjectSettings_->Draw();
-    Windows_->GUI_Window_RAMGraph_->Draw();
-    Windows_->GUI_Window_RenderingSettings_->Draw();
-    Windows_->GUI_Window_EditorCameraSettings_->Draw();
-    Windows_->GUI_Window_SceneTree_->Draw();
-    Windows_->GUI_Window_ScriptEditor_->Draw();
-    Windows_->GUI_Window_ShaderEditor_->Draw();
-    Windows_->GUI_Window_SystemLog_->Draw();
-    Windows_->GUI_Window_TestEditor_->Draw();
-    Windows_->GUI_Window_ThemeSelector_->Draw();
-    Windows_->GUI_Window_FontSelector_->Draw();
-    Windows_->GUI_Window_OpenProject_->Draw();
-    Windows_->GUI_Window_NewProject_->Draw();
-    Windows_->GUI_Window_AssetStreamingSettings_->Draw();
+    Windows_->GUI_Window_About_                   ->Draw();
+    Windows_->GUI_Window_AssetExplorer_           ->Draw();
+    Windows_->GUI_Window_ControllerSettings_      ->Draw();
+    Windows_->GUI_Window_FrameLatencyGraph_       ->Draw();
+    Windows_->GUI_Window_FramerateGraph_          ->Draw();
+    Windows_->GUI_Window_FramerateCounter_        ->Draw();
+    Windows_->GUI_Window_FramerateHistogram_      ->Draw();
+    Windows_->GUI_Window_FrameratePlot_           ->Draw();
+    Windows_->GUI_Window_ImportProgressBar_       ->Draw();
+    Windows_->GUI_Window_ObjectProperties_        ->Draw();
+    Windows_->GUI_Window_ProjectSettings_         ->Draw();
+    Windows_->GUI_Window_RAMGraph_                ->Draw();
+    Windows_->GUI_Window_RenderingSettings_       ->Draw();
+    Windows_->GUI_Window_EditorCameraSettings_    ->Draw();
+    Windows_->GUI_Window_SceneTree_               ->Draw();
+    Windows_->GUI_Window_ScriptEditor_            ->Draw();
+    Windows_->GUI_Window_ShaderEditor_            ->Draw();
+    Windows_->GUI_Window_SystemLog_               ->Draw();
+    Windows_->GUI_Window_TestEditor_              ->Draw();
+    Windows_->GUI_Window_ThemeSelector_           ->Draw();
+    Windows_->GUI_Window_FontSelector_            ->Draw();
+    Windows_->GUI_Window_OpenProject_             ->Draw();
+    Windows_->GUI_Window_NewProject_              ->Draw();
+    Windows_->GUI_Window_AssetStreamingSettings_  ->Draw();
 
 }
 
