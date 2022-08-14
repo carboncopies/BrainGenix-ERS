@@ -32,14 +32,14 @@ void GUI_Window_EditorCameraSettings::Draw() {
         if (Visible) {
 
             // Show Information About Every Viewport
-            ImGuiTabBarFlags Flags = ImGuiTabBarFlags_FittingPolicyScroll;
+            ImGuiTabBarFlags Flags = ImGuiTabBarFlags_FittingPolicyScroll | ImGuiTabBarFlags_NoCloseWithMiddleMouseButton | ImGuiTabBarFlags_TabListPopupButton;
             if (ImGui::BeginTabBar("Viewports", Flags)) {
 
                 for (unsigned int i = 0; i < VisualRenderer_->Viewports_.size(); i++) {
 
                     std::string Name = VisualRenderer_->Viewports_[i]->Name;
                     bool TabSelected = SelectedViewportIndex_ == (int)i;
-                    bool TabStatus = ImGui::BeginTabItem(Name.c_str(), &TabSelected);
+                    bool TabStatus = ImGui::BeginTabItem(Name.c_str(), &TabSelected, ImGuiTabItemFlags_NoCloseWithMiddleMouseButton);
                     if (TabStatus) {
                         SelectedViewportIndex_ = i;
                     }
