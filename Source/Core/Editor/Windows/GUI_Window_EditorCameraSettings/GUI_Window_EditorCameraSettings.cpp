@@ -47,18 +47,31 @@ void GUI_Window_EditorCameraSettings::Draw() {
             ImGui::Spacing();
 
 
-            ERS_STRUCT_Viewport* Viewport =  VisualRenderer_->Viewports_[i].get();     
+            ERS_STRUCT_Viewport* Viewport =  VisualRenderer_->Viewports_[SelectedViewportIndex_].get();     
+
 
             // Movement Speed Controls
-            float MinSpeed, MaxSpeed, CurrentSpeed;
-            Viewport->Processor->GetMovementSpeedBoundries(MinSpeed, MaxSpeed);
-            Viewport->Processor->GetMovementSpeed(CurrentSpeed);
-            ImGui::DragFloat("Movement Speed", &CurrentSpeed);
-            ImGui::DragFloat("Minimum Speed", &MinSpeed);
-            ImGui::DragFloat("Maximum Speed", &MaxSpeed);
-            Viewport->Processor->SetMovementSpeed(CurrentSpeed);
-            Viewport->Processor->SetMovementSpeedBoundries(MinSpeed, MaxSpeed);
-            
+            if (ImGui::CollapsingHeader("Movement Speed", ImGuiTreeNodeFlags_DefaultOpen)) {
+                ImGui::Spacing();
+
+                float MinSpeed, MaxSpeed, CurrentSpeed;
+                Viewport->Processor->GetMovementSpeedBoundries(MinSpeed, MaxSpeed);
+                Viewport->Processor->GetMovementSpeed(CurrentSpeed);
+                ImGui::DragFloat("Movement Speed", &CurrentSpeed);
+                ImGui::DragFloat("Minimum Speed", &MinSpeed);
+                ImGui::DragFloat("Maximum Speed", &MaxSpeed);
+                Viewport->Processor->SetMovementSpeed(CurrentSpeed);
+                Viewport->Processor->SetMovementSpeedBoundries(MinSpeed, MaxSpeed);
+                
+                ImGui::Spacing();
+            }
+
+            // Mouse Controls
+            if (ImGui::CollapsingHeader("Mouse Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
+                ImGui::Spacing();
+                //Viewport->Processor->
+                ImGui::Spacing();
+            }
 
 
         }
