@@ -34,6 +34,20 @@ void ERS_CLASS_InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
 
 }
 
+
+void ERS_CLASS_InputProcessor::Process(float DeltaTime, bool CaptureEnabled) {
+
+    ProcessKeyboardInput (DeltaTime, CaptureEnabled);
+    UpdateFramebuffer    ();
+    UpdateMouse          (CaptureEnabled);
+    ProcessMouseScroll   (CaptureEnabled);
+
+    Camera_->SetPosition (Position_);
+    Camera_->SetRotation (Orientation_);
+    Camera_->Update      ();
+
+}
+
 void ERS_CLASS_InputProcessor::UpdateFramebuffer() {
 
     // Get Window Size
