@@ -19,6 +19,8 @@ target_link_libraries(GUI_Window_EditorCameraSettings
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_RendererSettings
 
+    VisualRenderer
+
     )
 
 target_include_directories(GUI_Window_EditorCameraSettings PUBLIC ./)
