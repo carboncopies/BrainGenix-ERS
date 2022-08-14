@@ -5,6 +5,7 @@
 #include "ERS_CLASS_InputProcessor.h"
 
 
+// Constructor / Destructor
 ERS_CLASS_InputProcessor::ERS_CLASS_InputProcessor(ERS_STRUCT_Camera* Camera, GLFWwindow *Window) {
 
     Camera_ = Camera;
@@ -12,11 +13,11 @@ ERS_CLASS_InputProcessor::ERS_CLASS_InputProcessor(ERS_STRUCT_Camera* Camera, GL
     //FramebufferManager_ = FramebufferManager;
 
 }
-
 ERS_CLASS_InputProcessor::~ERS_CLASS_InputProcessor() {
 }
 
 
+// Processing Functions
 void ERS_CLASS_InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
 
     // Get Mouse Scroll Info
@@ -33,8 +34,6 @@ void ERS_CLASS_InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
     }
 
 }
-
-
 void ERS_CLASS_InputProcessor::Process(float DeltaTime, bool CaptureEnabled) {
 
     // Update Internal State
@@ -51,7 +50,6 @@ void ERS_CLASS_InputProcessor::Process(float DeltaTime, bool CaptureEnabled) {
     }
 
 }
-
 void ERS_CLASS_InputProcessor::UpdateFramebuffer() {
 
     // Get Window Size
@@ -63,7 +61,6 @@ void ERS_CLASS_InputProcessor::UpdateFramebuffer() {
     FramebufferSizeCallback(WindowX, WindowY);
 
 }
-
 void ERS_CLASS_InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
 
     // Get Mouse Position
@@ -81,7 +78,6 @@ void ERS_CLASS_InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
     }
 
 }
-
 void ERS_CLASS_InputProcessor::ProcessKeyboardInput(float DeltaTime, bool WindowCaptureEnabled) {
 
 
