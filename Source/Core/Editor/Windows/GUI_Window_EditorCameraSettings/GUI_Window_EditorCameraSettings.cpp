@@ -26,7 +26,7 @@ void GUI_Window_EditorCameraSettings::Draw() {
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
 
             // Limit Index
-            
+            SelectedViewportIndex_ = std::max(VisualRenderer_->Viewports_.size() - 1, SelectedViewportIndex_);
 
 
             if (Visible) {
@@ -34,6 +34,23 @@ void GUI_Window_EditorCameraSettings::Draw() {
                 // Show Information About Every Viewport
                 ImGuiTabBarFlags Flags = ImGuiTabBarFlags_FittingPolicyScroll;
                 if (ImGui::BeginTabBar("Viewports", Flags)) {
+
+                    for (unsigned int i = 0; i < VisualRenderer_->Viewports_.size(); i++) {
+
+                        std::string Name = VisualRenderer_->Viewports_[i]->Name;
+                        bool TabSelected = SelectedViewportIndex_ == i;
+                        bool TabStatus = ImGui::BeginTabItem(Name.c_str(), &TabSelected);
+                        if (TabStatus) {
+                            SelectedViewportIndex_ = i;
+                        }
+
+                        if (TabSelected) {
+                            ImGui::Text(VisualRenderer_->Viewports_[i]->Name.c_str());
+                        }
+                        
+                    
+
+                    }
 
                 ImGui::EndTabBar();
                 }
