@@ -32,28 +32,23 @@ void GUI_Window_EditorCameraSettings::Draw() {
         if (Visible) {
 
             // Show Information About Every Viewport
-            ImGuiTabBarFlags Flags = ImGuiTabBarFlags_FittingPolicyScroll | ImGuiTabBarFlags_NoCloseWithMiddleMouseButton | ImGuiTabBarFlags_TabListPopupButton;
-            if (ImGui::BeginTabBar("Viewports", Flags)) {
-
-                if (ImGui::BeginCombo("Viewport", "")) {
-                    for (unsigned int i = 0; i < VisualRenderer_->Viewports_.size(); i++) {
-                        bool IsSelected = SelectedViewportIndex_ == (int)i;
-                        if (ImGui::Selectable(VisualRenderer_->Viewports_[i]->Name.c_str(), &IsSelected)) {
-                            SelectedViewportIndex_ = i;
-                        }
+            if (ImGui::BeginCombo("Viewport", "")) {
+                for (unsigned int i = 0; i < VisualRenderer_->Viewports_.size(); i++) {
+                    bool IsSelected = SelectedViewportIndex_ == (int)i;
+                    if (ImGui::Selectable(VisualRenderer_->Viewports_[i]->Name.c_str(), &IsSelected)) {
+                        SelectedViewportIndex_ = i;
                     }
-                ImGui::EndCombo();
                 }
-
-                ImGui::Spacing();
-                ImGui::Separator();
-                ImGui::Spacing();
-
-                ImGui::Text("%s", VisualRenderer_->Viewports_[SelectedViewportIndex_]->Name.c_str());
-
-
-            ImGui::EndTabBar();
+            ImGui::EndCombo();
             }
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::Text("%s", VisualRenderer_->Viewports_[SelectedViewportIndex_]->Name.c_str());
+
+
 
         }
 
