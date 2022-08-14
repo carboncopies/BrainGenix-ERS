@@ -134,6 +134,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
         // Update Viewport Camera/Position/Etc.
         if (IsEditorMode_ || i != 0) {
             InputProcessorInstance->Process(DeltaTime, CaptureEnabled);
+        } else {
+            CaptureEnabled = false;
         }
 
 
