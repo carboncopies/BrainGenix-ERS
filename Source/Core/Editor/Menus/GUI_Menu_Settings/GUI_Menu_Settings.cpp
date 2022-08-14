@@ -33,6 +33,12 @@ void GUI_Menu_Settings::Draw() {
         ImGui::MenuItem("System Font", "", &Windows_->GUI_Window_FontSelector_->Enabled_);
 
         ImGui::Separator();
+        if (ImGui::BeginMenu("Editor Settings")) {
+            ImGui::MenuItem("Editor Camera Settings", "", &Windows_->GUI_Window_EditorCameraSettings_->Enabled_);
+        ImGui::EndMenu();
+        }
+
+        ImGui::Separator();
 
 
         // Controller Settings
