@@ -87,9 +87,9 @@ void GUI_Window_EditorCameraSettings::Draw() {
                 ImGui::Spacing();
 
                 float Colors[9] = {
-                    0.9f, 0.1f, 0.1f,
-                    0.1f, 0.9f, 0.1f,
-                    0.1f, 0.1f, 0.9f
+                    0.7f, 0.1f, 0.1f,
+                    0.1f, 0.7f, 0.1f,
+                    0.1f, 0.1f, 0.7f
                 };
 
                 glm::vec3 Pos, Rot;
