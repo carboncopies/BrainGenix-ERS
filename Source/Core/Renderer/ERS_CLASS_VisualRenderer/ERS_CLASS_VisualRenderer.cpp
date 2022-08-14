@@ -337,7 +337,12 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         bool EnableCursorCapture;
         if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | Viewport->WasSelected) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
-            CaptureCursor_ = true;
+
+            if (!IsEditorMode_ && i == 0) {
+                CaptureCursor_ = false;
+            } else {
+                CaptureCursor_ = true;
+            }
             EnableCursorCapture = true;
             CaptureIndex_ = Index;
             Viewport->WasSelected = true;
