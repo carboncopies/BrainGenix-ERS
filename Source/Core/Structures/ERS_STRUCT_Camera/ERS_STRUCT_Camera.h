@@ -57,14 +57,6 @@ public:
 
 
     // /**
-    //  * @brief Processes keyboard input for the camera.
-    //  * 
-    //  * @param Direction Direction currently being pressed.
-    //  * @param DeltaTime Frame time used to ensure speed isn't tied to framerate
-    //  */
-    // void ProcessKeyboard(CameraMovement Direction, float DeltaTime);
-
-    // /**
     //  * @brief Processed mouse movement across the camera's viewport.
     //  * 
     //  * @param XOffset Pixels moved in the x direction
