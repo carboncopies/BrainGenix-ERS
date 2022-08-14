@@ -23,7 +23,7 @@ void GUI_Window_EditorCameraSettings::Draw() {
         bool Visible = ImGui::Begin("Editor Camera Settings", &Enabled_);
 
         // Set Initial Window Size
-        ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
+        ImGui::SetWindowSize(ImVec2(460,330), ImGuiCond_FirstUseEver);
 
         // Limit Index
         SelectedViewportIndex_ = std::min((int)VisualRenderer_->Viewports_.size() - 1, SelectedViewportIndex_);
