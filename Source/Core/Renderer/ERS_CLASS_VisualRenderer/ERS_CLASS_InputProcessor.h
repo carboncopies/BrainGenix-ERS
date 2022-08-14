@@ -156,6 +156,13 @@ public:
     void GetMovementSpeedBoundries(float &MinSpeed, float &MaxSpeed);
 
     /**
+     * @brief Get the current movement speed of the camera in units per second.
+     * 
+     * @param Speed Speed in units per second.
+     */
+    void GetMovementSpeed(float &Speed);
+
+    /**
      * @brief Helper function, Sets the speed of the camera.
      * 
      * @param Speed Desired speed in units per second.
