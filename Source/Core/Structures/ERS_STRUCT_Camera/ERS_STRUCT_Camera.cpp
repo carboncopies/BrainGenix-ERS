@@ -13,65 +13,6 @@ ERS_STRUCT_Camera::~ERS_STRUCT_Camera() {
 }
 
 
-// // Callbacks
-// void ERS_STRUCT_Camera::ProcessKeyboard(CameraMovement Direction, float DeltaTime) {
-
-//     // Calculate Velocity
-//     float Velocity = MovementSpeed_ * DeltaTime;
-
-//     // Update Position(s)
-//     if (Direction == FORWARD)
-//         Position_ += Front_ * Velocity;
-//     if (Direction == BACKWARD)
-//         Position_ -= Front_ * Velocity;
-//     if (Direction == LEFT)
-//         Position_ -= Right_ * Velocity;
-//     if (Direction == RIGHT)
-//         Position_ += Right_ * Velocity;
-//     if (Direction == UP)
-//         Position_ += Up_ * Velocity;
-//     if (Direction == DOWN)
-//         Position_ -= Up_ * Velocity;
-
-// }
-// void ERS_STRUCT_Camera::ProcessMouseMovement(float XOffset, float YOffset, GLboolean ConstrainPitch) {
-
-//     // Change Offset By Sensitivity
-//     XOffset *= MouseSensitivity_;
-//     YOffset *= MouseSensitivity_;
-
-//     // Update Pitch/Yaw
-//     Orientation_.y += XOffset;
-//     Orientation_.p += YOffset;
-
-
-
-//     // Bound Pitch
-//     if (ConstrainPitch) {
-
-//         if (Orientation_.p > 89.0f) {
-//             Orientation_.p = 89.0f;
-//         }
-//         if (Orientation_.p < -89.0f) {
-//             Orientation_.p = -89.0f;
-//         }
-//     }
-
-// }
-// void ERS_STRUCT_Camera::ProcessMouseScroll(float YOffset) {
-
-//     // Update Movement Speed
-//     MovementSpeed_ += (MovementSpeed_*(float)YOffset/10.0f);
-
-//     // Adjust Movement Speed
-//     if (MovementSpeed_ < MinMovementSpeed_)
-//         MovementSpeed_ = MinMovementSpeed_;
-//     if (MovementSpeed_ > MaxMovementSpeed_)
-//         MovementSpeed_ = MaxMovementSpeed_;
-
-// }
-
-
 // Update Matricies
 void ERS_STRUCT_Camera::Update() {
     
