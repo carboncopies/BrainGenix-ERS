@@ -45,17 +45,21 @@ void GUI_Window_EditorCameraSettings::Draw() {
             ImGui::Spacing();
             ImGui::Separator();
             ImGui::Spacing();
+
+
             ERS_STRUCT_Viewport* Viewport =  VisualRenderer_->Viewports_[i].get();     
-
-
 
             // Movement Speed Controls
             float MinSpeed, MaxSpeed, CurrentSpeed;
             Viewport->Processor->GetMovementSpeedBoundries(MinSpeed, MaxSpeed);
-            Viewport->Processor->
-            ImGui::DragFloat("Movement Speed", )
-
-
+            Viewport->Processor->GetMovementSpeed(CurrentSpeed);
+            ImGui::DragFloat("Movement Speed", &CurrentSpeed);
+            ImGuo::DragFloat("Minimum Speed", &MinSpeed);
+            ImGuo::DragFloat("Maximum Speed", &MaxSpeed);
+            Viewport->Processor->SetMovementSpeed(CurrentSpeed);
+            Viewport->Processor->SetMovementSpeedBoundries(MinSpeed, MaxSpeed);
+            
+            
 
         }
 
