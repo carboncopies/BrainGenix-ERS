@@ -37,8 +37,7 @@ void GUI_Menu_Window::Draw() {
             ImGui::MenuItem("System Log", "", &Windows_->GUI_Window_SystemLog_->Enabled_);
             ImGui::MenuItem("Asset Explorer", "", &Windows_->GUI_Window_AssetExplorer_->Enabled_);
             ImGui::MenuItem("Object Properties", "", &Windows_->GUI_Window_ObjectProperties_->Enabled_);
-            ImGui::MenuItem("Rendering Settings", "", &Windows_->GUI_Window_RenderingSettings_->Enabled_);
-            ImGui::MenuItem("Asset Streaming Settings", "", &Windows_->GUI_Window_AssetStreamingSettings_->Enabled_);
+
                 
 
             // Framerate Widgets
