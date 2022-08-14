@@ -43,7 +43,7 @@ private:
 
 public:
 
-    bool Enabled_ = true; /**<Show/Hide GUI_Window*/
+    bool Enabled_ = false; /**<Show/Hide GUI_Window*/
 
 
     /**
