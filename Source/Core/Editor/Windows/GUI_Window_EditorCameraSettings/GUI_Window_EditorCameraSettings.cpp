@@ -38,7 +38,7 @@ void GUI_Window_EditorCameraSettings::Draw() {
                     for (unsigned int i = 0; i < VisualRenderer_->Viewports_.size(); i++) {
 
                         std::string Name = VisualRenderer_->Viewports_[i]->Name;
-                        bool TabSelected = SelectedViewportIndex_ == i;
+                        bool TabSelected = SelectedViewportIndex_ == (int)i;
                         bool TabStatus = ImGui::BeginTabItem(Name.c_str(), &TabSelected);
                         if (TabStatus) {
                             SelectedViewportIndex_ = i;
