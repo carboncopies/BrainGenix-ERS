@@ -6,6 +6,7 @@
 
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <algorithm>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glad/glad.h>

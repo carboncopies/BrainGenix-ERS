@@ -25,14 +25,12 @@ void GUI_Window_EditorCameraSettings::Draw() {
             // Set Initial Window Size
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
 
+            // Limit Index
+            
+
 
             if (Visible) {
 
-                // Handle Modifications To Renderer Settings
-                ImGui::Spacing();
-                ImGui::Separator();
-                ImGui::Spacing();
-                
                 // Show Information About Every Viewport
                 ImGuiTabBarFlags Flags = ImGuiTabBarFlags_FittingPolicyScroll;
                 if (ImGui::BeginTabBar("Viewports", Flags)) {
