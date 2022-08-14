@@ -143,12 +143,6 @@ void GUI_Window_RenderingSettings::Draw() {
                     }
                 }
 
-                // FOV Slider
-                ImGui::SliderFloat("FOV", &Settings->FOV_, 0.0f, 180.0f);
-
-
-
-
 
                 ImGui::Separator();
                 ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "Shadow Maps");
