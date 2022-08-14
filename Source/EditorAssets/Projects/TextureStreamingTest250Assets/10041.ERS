@@ -620,7 +620,7 @@ STRUCT_SampledData SetSampledData() {
         SampledData.Roughness = texture(texture_shininess1, Object.TexCoords).r;
 
     } else {
-        SampledData.Roughness = 0.5f;
+        SampledData.Roughness = 0.0f;
     }
 
     // Handle Emissive Textures
@@ -837,6 +837,7 @@ void main() {
     
     //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
 }
+
 
 
 
