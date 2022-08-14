@@ -54,12 +54,12 @@ void GUI_Window_EditorCameraSettings::Draw() {
             Viewport->Processor->GetMovementSpeedBoundries(MinSpeed, MaxSpeed);
             Viewport->Processor->GetMovementSpeed(CurrentSpeed);
             ImGui::DragFloat("Movement Speed", &CurrentSpeed);
-            ImGuo::DragFloat("Minimum Speed", &MinSpeed);
-            ImGuo::DragFloat("Maximum Speed", &MaxSpeed);
+            ImGui::DragFloat("Minimum Speed", &MinSpeed);
+            ImGui::DragFloat("Maximum Speed", &MaxSpeed);
             Viewport->Processor->SetMovementSpeed(CurrentSpeed);
             Viewport->Processor->SetMovementSpeedBoundries(MinSpeed, MaxSpeed);
             
-            
+
 
         }
 
