@@ -32,7 +32,8 @@ class GUI_Window_EditorCameraSettings {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointer*/
+    ERS_STRUCT_SystemUtils*   SystemUtils_;    /**<System Utils Pointer*/
+    ERS_CLASS_VisualRenderer* VisualRenderer_; /**<Pointer to visual renderer subsystem*/
 
 
 public:
