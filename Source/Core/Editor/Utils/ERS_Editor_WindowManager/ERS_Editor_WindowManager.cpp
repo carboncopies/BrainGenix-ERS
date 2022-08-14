@@ -168,6 +168,9 @@ bool ERS_CLASS_WindowManager::SetWindowStatus(std::string WindowName, bool Statu
     } else if (WindowName == "RenderingSettings") {
         Windows_->GUI_Window_RenderingSettings_->Enabled_ = Status;
         return true;
+    } else if (WindowName == "EditorCameraSettings") {
+        Windows_->GUI_Window_EditorCameraSettings_->Enabled_ = Status;
+        return true;
     } else if (WindowName == "SceneTree") {
         Windows_->GUI_Window_SceneTree_->Enabled_ = Status;
         return true;
@@ -246,6 +249,9 @@ bool ERS_CLASS_WindowManager::GetWindowStatus(std::string WindowName, bool* Stat
         return true;
     } else if (WindowName == "RenderingSettings") {
         *Status = Windows_->GUI_Window_RenderingSettings_->Enabled_;
+        return true;
+    } else if (WindowName == "EditorCameraSettings") {
+        *Status = Windows_->GUI_Window_EditorCameraSettings_->Enabled_;
         return true;
     } else if (WindowName == "SceneTree") {
         *Status = Windows_->GUI_Window_SceneTree_->Enabled_;
