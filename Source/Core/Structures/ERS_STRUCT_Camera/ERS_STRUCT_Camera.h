@@ -55,7 +55,6 @@ public:
     ~ERS_STRUCT_Camera();
 
 
-
     
     /**
      * @brief Updates the camera's matricies, should be called once per frame.
