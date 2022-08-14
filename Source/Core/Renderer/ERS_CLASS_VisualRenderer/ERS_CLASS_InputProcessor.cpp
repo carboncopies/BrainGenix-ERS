@@ -37,14 +37,18 @@ void ERS_CLASS_InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
 
 void ERS_CLASS_InputProcessor::Process(float DeltaTime, bool CaptureEnabled) {
 
+    // Update Internal State
     ProcessKeyboardInput (DeltaTime, CaptureEnabled);
     UpdateFramebuffer    ();
     UpdateMouse          (CaptureEnabled);
     ProcessMouseScroll   (CaptureEnabled);
 
-    Camera_->SetPosition (Position_);
-    Camera_->SetRotation (Orientation_);
-    Camera_->Update      ();
+    // Update Associated Camera
+    if (CaptureEnabled) {
+        Camera_->SetPosition (Position_);
+        Camera_->SetRotation (Orientation_);
+        Camera_->Update      ();
+    }
 
 }
 
