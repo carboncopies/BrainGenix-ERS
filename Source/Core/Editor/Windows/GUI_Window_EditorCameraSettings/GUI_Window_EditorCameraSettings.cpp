@@ -26,7 +26,7 @@ void GUI_Window_EditorCameraSettings::Draw() {
             ImGui::SetWindowSize(ImVec2(400,250), ImGuiCond_FirstUseEver);
 
             // Limit Index
-            SelectedViewportIndex_ = std::max(VisualRenderer_->Viewports_.size() - 1, SelectedViewportIndex_);
+            SelectedViewportIndex_ = std::max((int)VisualRenderer_->Viewports_.size() - 1, SelectedViewportIndex_);
 
 
             if (Visible) {
