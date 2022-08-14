@@ -48,7 +48,7 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     Windows_->GUI_Window_ProjectSettings_        = std::make_unique<GUI_Window_ProjectSettings>(ProjectUtils, SystemUtils_);
     Windows_->GUI_Window_RAMGraph_               = std::make_unique<GUI_Window_RAMGraph>(SystemUtils_);
     Windows_->GUI_Window_RenderingSettings_      = std::make_unique<GUI_Window_RenderingSettings>(SystemUtils_);
-    Windows_->GUI_Window_EditorCameraSettings_   = std::make_unique<GUI_Window_EditorCameraSettings>();
+    Windows_->GUI_Window_EditorCameraSettings_   = std::make_unique<GUI_Window_EditorCameraSettings>(SystemUtils_, VisualRenderer);
     Windows_->GUI_Window_SceneTree_              = std::make_unique<GUI_Window_SceneTree>(SceneManager, SystemUtils_, ProjectUtils, Gizmo);
     Windows_->GUI_Window_ScriptEditor_           = std::make_unique<GUI_Window_ScriptEditor>(SystemUtils_, ProjectUtils, VisualRenderer);
     Windows_->GUI_Window_ShaderEditor_           = std::make_unique<GUI_Window_ShaderEditor>(SystemUtils_, ProjectUtils, VisualRenderer);
