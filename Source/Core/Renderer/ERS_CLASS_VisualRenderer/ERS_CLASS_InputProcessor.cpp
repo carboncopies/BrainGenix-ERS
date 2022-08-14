@@ -206,6 +206,9 @@ void ERS_CLASS_InputProcessor::GetMovementSpeedBoundries(float &MinSpeed, float 
     MinSpeed = MinMovementSpeed_;
     MaxSpeed = MaxMovementSpeed_;
 }
+void ERS_CLASS_InputProcessor::GetMovementSpeed(float &Speed) {
+    Speed = MovementSpeed_;
+}
 void ERS_CLASS_InputProcessor::SetMovementSpeed(float Speed, bool EnforceSpeedBoundries) {
     if (EnforceSpeedBoundries) {
         Speed = std::max(MinMovementSpeed_, Speed);
