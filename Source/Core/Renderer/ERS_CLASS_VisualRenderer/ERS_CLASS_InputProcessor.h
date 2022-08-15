@@ -112,36 +112,7 @@ private:
      */
     void ProcessKey(CameraMovement Direction, float DeltaTime);
 
-    /**
-     * @brief Helper function, sets the camera's clipping distance.
-     * 
-     * @param NearClip Minimum distance in units for things to be rendered in.
-     * @param FarClip Maximum distance in units for things to be rendered in.
-     */
-    void SetClipBoundries(float NearClip, float FarClip);
 
-    /**
-     * @brief Helper Function, gets the current camera clip distance.
-     * 
-     * @param NearClip Minimum distance in units for things to be rendered in.
-     * @param FarClip Maximum distance in units for things to be rendered in.
-     */
-    void GetClipBoundires(float &NearClip, float &FarClip);
-
-    /**
-     * @brief Gets the current field of view angle.
-     * 
-     * @param FOV Field of view in degrees.
-     */
-    void GetFOV(float &FOV);
-    float GetFOV();
-
-    /**
-     * @brief Sets the field of view angle.
-     * 
-     * @param FOV Field of view in degrees.
-     */
-    void SetFOV(float FOV);
 
 
 public:
@@ -263,4 +234,34 @@ public:
      */
     void SetPitchConstraint(bool ConstrainEnabled);
 
+    /**
+     * @brief Helper function, sets the camera's clipping distance.
+     * 
+     * @param NearClip Minimum distance in units for things to be rendered in.
+     * @param FarClip Maximum distance in units for things to be rendered in.
+     */
+    void SetClipBoundries(float NearClip, float FarClip);
+
+    /**
+     * @brief Helper Function, gets the current camera clip distance.
+     * 
+     * @param NearClip Minimum distance in units for things to be rendered in.
+     * @param FarClip Maximum distance in units for things to be rendered in.
+     */
+    void GetClipBoundires(float &NearClip, float &FarClip);
+
+    /**
+     * @brief Gets the current field of view angle.
+     * 
+     * @param FOV Field of view in degrees.
+     */
+    void GetFOV(float &FOV);
+    float GetFOV();
+
+    /**
+     * @brief Sets the field of view angle.
+     * 
+     * @param FOV Field of view in degrees.
+     */
+    void SetFOV(float FOV);
 };
