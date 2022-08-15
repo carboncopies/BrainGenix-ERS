@@ -28,7 +28,7 @@ class ERS_CLASS_InputProcessor {
 private:
 
     // Internal Vars
-    bool FirstMouse          = true;   /**<Checks if the mouse is just being enabled. */
+    bool  FirstMouse         = true;   /**<Checks if the mouse is just being enabled. */
     float LastX              = 400;    /**<Location Of Last Mouse Position. (X coord) */
     float LastY              = 400;    /**<Location Of Last Mouse Position. (Y Coord) */
 
