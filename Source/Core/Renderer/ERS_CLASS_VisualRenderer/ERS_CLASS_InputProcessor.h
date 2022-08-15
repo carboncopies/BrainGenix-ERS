@@ -265,4 +265,10 @@ public:
      * @param FOV Field of view in degrees.
      */
     void SetFOV(float FOV);
+
+    /**
+     * @brief Forces the camera to update next frame
+     * 
+     */
+    void SetForceUpdate();
 };
