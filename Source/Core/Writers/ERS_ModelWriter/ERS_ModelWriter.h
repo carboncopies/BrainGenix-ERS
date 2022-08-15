@@ -95,6 +95,15 @@ private:
      */
     bool WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data, std::string FormatName = "fbx");
 
+
+    /**
+     * @brief Load a file into an IOData Struct
+     * 
+     * @param Path 
+     * @param IOData 
+     */
+    bool ReadFile(std::string Path, ERS_STRUCT_IOData* IOData);
+
 public:
 
     /**

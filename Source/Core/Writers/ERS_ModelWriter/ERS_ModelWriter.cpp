@@ -53,6 +53,48 @@ bool ERS_CLASS_ModelWriter::WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data,
     return true;
 }
 
+bool ERS_CLASS_ModelWriter::ReadFile(std::string FilePath, ERS_STRUCT_IOData* OutputData) {
+
+
+    struct stat Buffer;
+    int FileStatus = stat(FilePath.c_str(), &Buffer);
+
+
+        if (FileStatus == 0) {
+
+            OutputData->Data.reset(new unsigned char[Buffer.st_size]);
+            if (OutputData->Data) {
+
+                FILE *Stream = fopen(FilePath.c_str(), "rb");
+                if (Stream) {
+
+                    fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size, Stream);
+                    OutputData->Size_B = Buffer.st_size;
+                    fclose(Stream);
+                    OutputData->HasLoaded = true;
+
+                } else {
+                    Logger_->Log(std::string(std::string("Error Loading Asset '") + FilePath + std::string("', Failed To Open Filestream")).c_str(), 9);
+                    OutputData->HasLoaded = false;
+                    return false;
+                }
+
+            } else {
+                Logger_->Log(std::string(std::string("Error Loading Asset '") + FilePath + std::string("', Memory Allocation Failed")).c_str(), 9);            
+                OutputData->HasLoaded = false;
+                return false;
+            }
+        
+        } else {
+            Logger_->Log(std::string(std::string("Error Loading Asset '") + FilePath + std::string("', File Not Found")).c_str(), 9);
+            OutputData->HasLoaded = false;
+            return false;
+        }
+
+    return true;
+
+}
+
 void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::vector<std::vector<int>>* TextureImageChannels, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
     // Create List Of Texture Files To Be Copied
