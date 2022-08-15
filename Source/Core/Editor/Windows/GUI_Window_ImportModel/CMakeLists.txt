@@ -4,25 +4,25 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_Editor_ImportAsset
+add_library(GUI_Window_ImportAsset
 
             # Add Source Files (.cpp)
-            "ERS_Editor_ImportAsset.cpp"
-            "ERS_Editor_ModelImporter.cpp"
-            "GUI_ImportAsset.cpp"
+            "GUI_Window_ImportAsset.cpp"
+            "GUI_Window_ModelImporter.cpp"
+            "GUI_Window_ImportAsset.cpp"
 
 
             # Add Header Files (.h)
-            "ERS_Editor_ImportAsset.h"
-            "ERS_Editor_ModelImporter.h"
-            "GUI_ImportAsset.h"
+            "GUI_Window_ImportAsset.h"
+            "GUI_Window_ModelImporter.h"
+            "GUI_Window_ImportAsset.h"
             
             ${BACKWARD_ENABLE}
             )
-set_property(TARGET ERS_Editor_ImportAsset PROPERTY CXX_STANDARD 17)
+set_property(TARGET GUI_Window_ImportAsset PROPERTY CXX_STANDARD 17)
             
 # Link 3rd Party Libs
-target_link_libraries(ERS_Editor_ImportAsset
+target_link_libraries(GUI_Window_ImportAsset
     yaml-cpp
     glm
     IMGUI
@@ -32,7 +32,7 @@ target_link_libraries(ERS_Editor_ImportAsset
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_Editor_ImportAsset
+target_link_libraries(GUI_Window_ImportAsset
     ERS_CLASS_LoggingSystem
 
     ERS_STRUCT_SystemUtils
@@ -45,4 +45,4 @@ target_link_libraries(ERS_Editor_ImportAsset
     GUI_Window_ImportProgressBar
     )
 
-target_include_directories(ERS_Editor_ImportAsset PUBLIC ./)
+target_include_directories(GUI_Window_ImportAsset PUBLIC ./)
