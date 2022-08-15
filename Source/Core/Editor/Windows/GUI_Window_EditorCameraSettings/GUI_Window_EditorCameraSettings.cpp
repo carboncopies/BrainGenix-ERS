@@ -120,6 +120,7 @@ void GUI_Window_EditorCameraSettings::Draw() {
             }
 
 
+            Viewport->Processor->SetForceUpdate();
 
         }
 
