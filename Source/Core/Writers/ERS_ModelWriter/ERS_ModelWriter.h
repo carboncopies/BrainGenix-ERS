@@ -42,6 +42,41 @@ private:
     std::string GenerateModelMetadata();
 
 
+    /**
+     * @brief Decodes and writes resized textures into the ERS project file.
+     * 
+     * @param Model
+     * @param TextureMemorySizes 
+     * @param ImageAssetIDs 
+     * @param ImageResolutions 
+     * @param ImageChannels
+     * @param AssetPath 
+     * @param Format 
+     * @param MipMaps 
+     */
+    void WriteTextures(ERS_STRUCT_Model* Model, std::vector<std::vector<int>>* TextureMemorySizes, std::vector<std::vector<long>>* ImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* ImageResolutions, std::vector<std::vector<int>>* ImageChannels, std::string AssetPath, FREE_IMAGE_FORMAT Format = FIF_PNG, int MipMaps = 10);
+
+    /**
+     * @brief Calculates the bounding box of the model and it's offset
+     * 
+     * @param Model
+     */
+    void DetectBoundingBox(ERS_STRUCT_Model* Model);
+
+    /**
+     * @brief Sets metadata parameters for number of vertices and indices in the model
+     * 
+     * @param Model 
+     */
+    void CalculateTotalVertsIndices(ERS_STRUCT_Model* Model);
+
+    /**
+     * @brief Here, we reduce the number of textures or convert into the expected ERS system
+     * For example, alpha maps are baked into the diffuse map.
+     * 
+     * @param Model 
+     */
+    void MergeTextures(ERS_STRUCT_Model* Model, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures);
 
 public:
 

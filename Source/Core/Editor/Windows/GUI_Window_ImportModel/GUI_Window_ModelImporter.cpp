@@ -115,6 +115,13 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     DetectBoundingBox(&Model);
     CalculateTotalVertsIndices(&Model);
 
+
+
+
+
+
+
+
     // Export Model File
     std::string ExportFormat = "fbx";
     SystemUtils_->Logger_->Log(std::string("Exporting Model Geometry To Blob With Encoding '") + ExportFormat + "'", 4);
