@@ -20,7 +20,7 @@ ERS_CLASS_ModelWriter::~ERS_CLASS_ModelWriter() {
 
 
 // Export Helpers
-bool ERS_CLASS_ModelWriter::WriteModelVertexData(ERS_STRUCT_ModelWriterData &Data, std::string ExportFormat) {
+bool ERS_CLASS_ModelWriter::WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data, std::string ExportFormat) {
 
     // Export Model File
     Logger_->Log(std::string("Exporting Model Geometry To Blob With Encoding '") + ExportFormat + "'", 4);
@@ -67,8 +67,9 @@ std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(ERS_STRUCT_Model* Model
 
 }
 
-void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_Model &Model) {
+void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_ModelWriterData &Data) {
 
+    WriteModelGeometry(Data);
 
 
 }

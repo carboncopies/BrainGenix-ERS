@@ -93,7 +93,7 @@ private:
      * @return true 
      * @return false 
      */
-    bool WriteModelVertexData(ERS_STRUCT_ModelWriterData &Data, std::string FormatName = "fbx");
+    bool WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data, std::string FormatName = "fbx");
 
 public:
 
