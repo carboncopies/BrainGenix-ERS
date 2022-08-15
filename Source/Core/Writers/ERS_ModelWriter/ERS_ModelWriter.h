@@ -88,12 +88,12 @@ private:
      * @brief Writes the model's geometry data into a binary blob for later decoding.
      * Returns true on success, false on failure.
      * 
-     * @param Model Pointer to model whose data is to be saved
+     * @param Data Pointer to ModelWriterData struct whose data is to be saved
      * @param FormatName Name of the format to be exported. If the format specified is unsupported, we'll default to fbx.
      * @return true 
      * @return false 
      */
-    bool WriteModelVertexData(ERS_STRUCT_Model* Model, std::string FormatName = "fbx");
+    bool WriteModelVertexData(ERS_STRUCT_ModelWriterData &Data, std::string FormatName = "fbx");
 
 public:
 
