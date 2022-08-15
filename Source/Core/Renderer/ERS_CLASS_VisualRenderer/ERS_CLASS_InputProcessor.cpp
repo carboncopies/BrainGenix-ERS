@@ -270,3 +270,6 @@ void ERS_CLASS_InputProcessor::GetFOV(float &FOV) {
 float ERS_CLASS_InputProcessor::GetFOV() {
     return FOV_;
 }
+void ERS_CLASS_InputProcessor::SetForceUpdate() {
+    ForceUpdate_ = true;
+}
