@@ -20,13 +20,13 @@ ERS_CLASS_ModelWriter::~ERS_CLASS_ModelWriter() {
 
 
 // Export Helpers
-bool ERS_CLASS_ModelWriter::WriteModelVertexData(ERS_STRUCT_Model* Model, std::string ExportFormat) {
+bool ERS_CLASS_ModelWriter::WriteModelVertexData(ERS_STRUCT_ModelWriterData &Data, std::string ExportFormat) {
 
     // Export Model File
     Logger_->Log(std::string("Exporting Model Geometry To Blob With Encoding '") + ExportFormat + "'", 4);
 
     Assimp::Exporter Exporter;
-    const aiExportDataBlob* Blob = Exporter.ExportToBlob(Scene, ExportFormat);
+    const aiExportDataBlob* Blob = Exporter.ExportToBlob(Data.ModelScene, ExportFormat);
 
     std::string ExportStatus = Exporter.GetErrorString();
     if (ExportStatus == "") {
@@ -35,6 +35,19 @@ bool ERS_CLASS_ModelWriter::WriteModelVertexData(ERS_STRUCT_Model* Model, std::s
         Logger_->Log(std::string("Error Exporting Model Geometry '") + ExportStatus + "'", 7);
     }
     
+
+    // Copy Model File
+    std::unique_ptr<ERS_STRUCT_IOData> IOData = std::make_unique<ERS_STRUCT_IOData>();
+    IOData->Data.reset(new unsigned char[Blob->size]);
+    ::memcpy(IOData->Data.get(), Blob->data, Blob->size);
+    IOData->Size_B = Blob->size;
+
+    long ModelID = IOSubsystem_->AllocateAssetID();
+    Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(ModelID) + std::string("' To Model '") + Data.Model->Name + std::string("'")).c_str(), 4);
+    IOSubsystem_->WriteAsset(ModelID, IOData.get());    
+
+
+
 }
 
 
