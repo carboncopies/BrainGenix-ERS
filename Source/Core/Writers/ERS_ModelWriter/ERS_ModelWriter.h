@@ -94,28 +94,12 @@ public:
     ~ERS_CLASS_ModelWriter();
 
 
-    /**
-     * 
-     * @brief Write a batch of models to storage in the ERS format
-     * 
-     * @param Models 
-     */
-    void BatchWriteModels(std::vector<std::shared_ptr<ERS_STRUCT_Model>> Models);
-
-    /**
-     * @brief Copy A Model To Insternal Storage, Does Not Re-encode model in proper format. Single Threaded.
-     * 
-     * @param InputData 
-     * @param Model 
-     * @param OverwriteExisting 
-     */
-    void WriteModel(ERS_STRUCT_IOData* InputData, std::vector<ERS_STRUCT_IOData*> TextureData, std::shared_ptr<ERS_STRUCT_Model> Model);
 
     /**
      * @brief Write a model to disk.
      * 
      * @param Model 
      */
-    void WriteModel2(ERS_STRUCT_Model &Model);
+    void WriteModel(ERS_STRUCT_Model &Model);
 
 };
