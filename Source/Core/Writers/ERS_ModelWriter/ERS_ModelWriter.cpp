@@ -17,7 +17,7 @@ ERS_CLASS_ModelWriter::~ERS_CLASS_ModelWriter() {
     Logger_->Log("ModelWriter Subsystem Destructor Invoked", 5);
 
 }
-std::string ERS_CLASS_ModelWriter::GenerateModelMetadata() {
+std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(ERS_STRUCT_Model* Model) {
 
     // Create Model Metadata, Begin Writing
     YAML::Emitter Metadata;
@@ -32,40 +32,8 @@ std::string ERS_CLASS_ModelWriter::GenerateModelMetadata() {
     return std::string(Metadata.c_str());
 
 }
-void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_IOData* ModelData, std::vector<ERS_STRUCT_IOData*> TextureData, std::shared_ptr<ERS_STRUCT_Model> Model) {
 
-
-    // Copy Model Data
-    long ModelID = IOSubsystem_->AllocateAssetID();
-    IOSubsystem_->WriteAsset(ModelID, ModelData);
-    Model->ModelDataID = ModelID;
-
-
-    // Copy Textures
-    std::vector<long> TextureIDs = IOSubsystem_->BatchAllocateIDs(TextureData.size());
-    IOSubsystem_->BatchWriteAssets(TextureIDs, TextureData);
-    Model->TextureIDs = TextureIDs;
-
-
-    // Write Model Metadata
-    std::string Metadata = GenerateModelMetadata();
-
-    std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
-    
-    // Set Metadata
-    Data->AssetTypeName = "Model";
-
-    Data->Data.reset(new unsigned char[Metadata.size()]);
-    ::memcpy(Data->Data.get(), Metadata.c_str(), Metadata.size());
-    
-    Data->Size_B = Metadata.size();
-
-    long ID = IOSubsystem_->AllocateAssetID();
-    IOSubsystem_->WriteAsset(ID, Data.get());
-
-}
-
-void ERS_CLASS_ModelWriter::WriteModel2(ERS_STRUCT_Model &Model) {
+void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_Model &Model) {
 
 
 
