@@ -115,8 +115,8 @@ public:
     /**
      * @brief Write a model to disk.
      * 
-     * @param Model 
+     * @param ModelWriterData
      */
-    void WriteModel(ERS_STRUCT_Model &Model);
+    void WriteModel(ERS_STRUCT_ModelWriterData &Data);
 
 };
