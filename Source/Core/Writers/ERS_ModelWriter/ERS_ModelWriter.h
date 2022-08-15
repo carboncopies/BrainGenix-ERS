@@ -76,4 +76,11 @@ public:
      */
     void WriteModel(ERS_STRUCT_IOData* InputData, std::vector<ERS_STRUCT_IOData*> TextureData, std::shared_ptr<ERS_STRUCT_Model> Model);
 
+    /**
+     * @brief Write a model to disk.
+     * 
+     * @param Model 
+     */
+    void WriteModel(ERS_STRUCT_Model &Model);
+
 };
