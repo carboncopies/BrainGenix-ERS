@@ -29,6 +29,7 @@ private:
 
     // Internal Vars
     bool  FirstMouse         = true;   /**<Checks if the mouse is just being enabled. */
+    bool  ForceUpdate        = false;  /**<Force an update of the viewport - done when use has changed a parameter*/
     float LastX              = 400;    /**<Location Of Last Mouse Position. (X coord) */
     float LastY              = 400;    /**<Location Of Last Mouse Position. (Y Coord) */
 
