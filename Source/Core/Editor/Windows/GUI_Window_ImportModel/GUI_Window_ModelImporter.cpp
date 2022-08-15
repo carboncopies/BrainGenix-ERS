@@ -125,12 +125,6 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
 
 
-
-
-
-
-
-
     // Generate Metadata
     YAML::Emitter MetadataEmitter;
     MetadataEmitter<<YAML::BeginMap;
