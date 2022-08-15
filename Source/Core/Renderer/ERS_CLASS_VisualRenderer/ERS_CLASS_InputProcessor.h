@@ -39,6 +39,10 @@ private:
     float MouseSensitivity_  = 0.05f;  /**<Mouse sensitivity multiplier      */
     bool  ConstrainPitch_    = true;   /**<Limit the camera to +- 89 degrees */
 
+    float NearClip_          = 0.01f;  /**<Closest distance before geometry is culled.*/
+    float FarClip_           = 100.0f; /**<Farthest distance before geometry is called*/
+    float FOV_               = 70.0f;  /**<Field of view in degrees*/
+
     glm::vec3 Orientation_;            /**<Rotation of the editor camera in degrees. */
     glm::vec3 Position_;               /**<Position of the editor camera in units    */
 
