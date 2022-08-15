@@ -10,6 +10,10 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
 
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+#include <assimp/Exporter.hpp>
+
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_STRUCT_Model.h>

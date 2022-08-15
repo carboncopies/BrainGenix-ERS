@@ -17,6 +17,27 @@ ERS_CLASS_ModelWriter::~ERS_CLASS_ModelWriter() {
     Logger_->Log("ModelWriter Subsystem Destructor Invoked", 5);
 
 }
+
+
+// Export Helpers
+bool ERS_CLASS_ModelWriter::WriteModelVertexData(ERS_STRUCT_Model* Model, std::string ExportFormat) {
+
+    // Export Model File
+    Logger_->Log(std::string("Exporting Model Geometry To Blob With Encoding '") + ExportFormat + "'", 4);
+
+    Assimp::Exporter Exporter;
+    const aiExportDataBlob* Blob = Exporter.ExportToBlob(Scene, ExportFormat);
+
+    std::string ExportStatus = Exporter.GetErrorString();
+    if (ExportStatus == "") {
+        Logger_->Log(std::string("Finished Exporting Model Geometry To Blob"), 3);
+    } else {
+        Logger_->Log(std::string("Error Exporting Model Geometry '") + ExportStatus + "'", 7);
+    }
+    
+}
+
+
 std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(ERS_STRUCT_Model* Model) {
 
     // Create Model Metadata, Begin Writing
