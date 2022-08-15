@@ -112,7 +112,6 @@ private:
      */
     void ProcessKey(CameraMovement Direction, float DeltaTime);
 
-
     /**
      * @brief Helper function, sets the camera's clipping distance.
      * 
