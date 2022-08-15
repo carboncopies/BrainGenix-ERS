@@ -110,11 +110,9 @@ void GUI_Window_EditorCameraSettings::Draw() {
                 float NearClip, FarClip, FOV;
                 Viewport->Processor->GetMovementSpeedBoundries(NearClip, FarClip);
                 Viewport->Processor->GetFOV(FOV);
-
                 ImGui::DragFloat("Near Clip", &NearClip, 0.1f, 0.0f, 10.0f);
                 ImGui::DragFloat("Far Clip", &NearClip, 0.1f, 0.0f, 500.0f);
                 ImGui::DragFloat("FOV", &NearClip, 0.05f, 0.0f, 180.0f);
-
                 Viewport->Processor->SetMovementSpeedBoundries(NearClip, FarClip);
                 Viewport->Processor->SetFOV(FOV);
 
