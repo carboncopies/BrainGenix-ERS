@@ -43,7 +43,8 @@ void ERS_CLASS_InputProcessor::Process(float DeltaTime, bool CaptureEnabled) {
     ProcessMouseScroll   (CaptureEnabled);
 
     // Update Associated Camera
-    if (CaptureEnabled) {
+    if (CaptureEnabled || ForceUpdate_) {
+        ForceUpdate_ = false;
         Camera_->SetPosition      (Position_);
         Camera_->SetRotation      (Orientation_);
         Camera_->SetFOV           (FOV_);
