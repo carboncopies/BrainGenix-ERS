@@ -21,6 +21,7 @@
 struct ERS_STRUCT_ModelWriterData {
 
 
-
+    aiScene*           ModelScene; /**<Pointer to assimp scene decoded by the importer*/
+    ERS_STRUCT_Model*  Model;      /**<Pointer to the model to be saved by the writer*/
 
 };
