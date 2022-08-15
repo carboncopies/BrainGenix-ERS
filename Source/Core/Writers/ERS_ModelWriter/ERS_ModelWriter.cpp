@@ -33,10 +33,11 @@ bool ERS_CLASS_ModelWriter::WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data,
         Logger_->Log(std::string("Finished Exporting Model Geometry To Blob"), 3);
     } else {
         Logger_->Log(std::string("Error Exporting Model Geometry '") + ExportStatus + "'", 7);
+        return false;
     }
     
 
-    // Copy Model File
+    // Write Model Geo Data
     std::unique_ptr<ERS_STRUCT_IOData> IOData = std::make_unique<ERS_STRUCT_IOData>();
     IOData->Data.reset(new unsigned char[Blob->size]);
     ::memcpy(IOData->Data.get(), Blob->data, Blob->size);
@@ -47,7 +48,9 @@ bool ERS_CLASS_ModelWriter::WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data,
     IOSubsystem_->WriteAsset(ModelID, IOData.get());    
 
 
-
+    // Update State, Finish
+    Data.ModelAssetID = ModelID;
+    return true;
 }
 
 
