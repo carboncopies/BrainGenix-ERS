@@ -81,6 +81,6 @@ public:
      * 
      * @param Model 
      */
-    void WriteModel(ERS_STRUCT_Model &Model);
+    void WriteModel2(ERS_STRUCT_Model &Model);
 
 };
