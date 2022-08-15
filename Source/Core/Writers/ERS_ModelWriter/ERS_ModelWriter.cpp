@@ -53,26 +53,26 @@ bool ERS_CLASS_ModelWriter::WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data,
     return true;
 }
 
-void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_Model* Model, std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::vector<std::vector<int>>* TextureImageChannels, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
+void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::vector<std::vector<int>>* TextureImageChannels, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
     // Create List Of Texture Files To Be Copied
-    std::vector<std::pair<std::string, std::shared_ptr<ERS_STRUCT_IOData>>> TextureFiles;
-    for (int i = 0; (long)i < (long)TextureList_.size(); i++) {
+    std::vector<std::pair<std::string, ERS_STRUCT_IOData>> TextureFiles;
+    for (int i = 0; (long)i < (long)Data.TextureList.size(); i++) {
 
-        std::shared_ptr<ERS_STRUCT_IOData> Data = std::make_shared<ERS_STRUCT_IOData>();
-        std::string TexturePath = TextureList_[i];
-        bool Success = ReadFile(TextureList_[i], Data.get());
-        Data->AssetTypeName = "Texture";
-        Data->AssetFileName = TextureList_[i].substr(AssetPath.find_last_of("/") + 1, AssetPath.size() - 1);
-        Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
+        ERS_STRUCT_IOData IOData;
+        std::string TexturePath = Data.TextureList[i];
+        bool Success = ReadFile(Data.TextureList[i], &IOData);
+        IOData.AssetTypeName = "Texture";
+        IOData.AssetFileName = Data.TextureList[i].substr(Data.ModelOriginDirectoryPath.find_last_of("/") + 1, Data.ModelOriginDirectoryPath.size() - 1);
+        IOData.AssetCreationDate = IOSubsystem_->GetCurrentTime();
 
 
         bool SecondTryStatus = false;
         if (!Success) {
-            SystemUtils_->Logger_->Log(std::string("Error Loading Texture From Given Path '") + AssetPath + std::string("', Will Search Current Directory For Texture"), 7);
+            Logger_->Log(std::string("Error Loading Texture From Given Path '") + Data.ModelOriginDirectoryPath + std::string("', Will Search Current Directory For Texture"), 7);
 
             // Strip To Last Item In Path (With Forward Slashes And Backward Slashes)
-            std::string Path = TextureList_[i];
+            std::string Path = Data.TextureList[i];
             std::replace(Path.begin(), Path.end(), '\\', '/');
             if (Path.find("/") != std::string::npos) {
                 Path = Path.substr(Path.find_last_of("/") + 1, Path.size()-1);
@@ -87,8 +87,8 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_Model* Model, std::vector<s
             }
 
             // Check Against Filesystem
-            std::replace(AssetPath.begin(), AssetPath.end(), '\\', '/');
-            for (const auto &Entry : std::filesystem::recursive_directory_iterator(AssetPath.substr(0, AssetPath.find_last_of("/")))) {
+            std::replace(Data.ModelOriginDirectoryPath.begin(), Data.ModelOriginDirectoryPath.end(), '\\', '/');
+            for (const auto &Entry : std::filesystem::recursive_directory_iterator(Data.ModelOriginDirectoryPath.substr(0, Data.ModelOriginDirectoryPath.find_last_of("/")))) {
 
                 std::string FilePath{Entry.path().u8string()};
                 std::replace(FilePath.begin(), FilePath.end(), '\\', '/');
@@ -105,7 +105,7 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_Model* Model, std::vector<s
 
                 if (FileNameWithoutExtension == RefString) {
                     Path = FilePath;
-                    SystemUtils_->Logger_->Log(std::string("Found Potential Match '") + FilePath + std::string("', Attempting To Load"), 5);
+                    Logger_->Log(std::string("Found Potential Match '") + FilePath + std::string("', Attempting To Load"), 5);
                     break;
                 }
 
@@ -117,15 +117,15 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_Model* Model, std::vector<s
             TexturePath = Path;
             
             if (!SecondTryStatus) {
-                SystemUtils_->Logger_->Log("Failed To Find Texture During Second Try Effort, Abandoning Texture", 8);
+                Logger_->Log("Failed To Find Texture During Second Try Effort, Abandoning Texture", 8);
             } else {
-                SystemUtils_->Logger_->Log("Found Probable File, However This Is Not Guarenteed To Be Correct", 6);
+                Logger_->Log("Found Probable File, However This Is Not Guarenteed To Be Correct", 6);
             }
 
         }
 
         if (Success || SecondTryStatus) {
-            TextureFiles.push_back(std::make_pair(TexturePath, Data));
+            TextureFiles.push_back(std::make_pair(TexturePath, IOData));
         }
 
     }
@@ -134,9 +134,9 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_Model* Model, std::vector<s
     std::vector<std::pair<std::string, FIBITMAP*>> ImageBytes;
     for (unsigned int i = 0; i < TextureFiles.size(); i++) {
 
-        SystemUtils_->Logger_->Log(std::string("Loading Texture Image '")  + TextureFiles[i].first + "'", 4);
+        Logger_->Log(std::string("Loading Texture Image '")  + TextureFiles[i].first + "'", 4);
         
-        ERS_STRUCT_IOData* ImageData = TextureFiles[i].second.get();
+        ERS_STRUCT_IOData* ImageData = &TextureFiles[i].second;
         FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData->Data.get(), ImageData->Size_B);
         FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
         FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
@@ -147,14 +147,14 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_Model* Model, std::vector<s
         FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
         FreeImage_Unload(RawImage);
 
-        SystemUtils_->Logger_->Log(std::string("Loaded Texture Image"), 3);
+        Logger_->Log(std::string("Loaded Texture Image"), 3);
 
 
         ImageBytes.push_back(std::make_pair(TextureFiles[i].first, Image));
     }
 
     // Remove Duplicate Stuff (Like Alpha Maps), Just Generally Consolidate Stuff
-    MergeTextures(Model, &ImageBytes);
+    MergeTextures(Data.Model, &ImageBytes);
 
     // Resize For Mipmaps, Save To New Project
     for (unsigned int i = 0; i < ImageBytes.size(); i++) {
@@ -174,7 +174,7 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_Model* Model, std::vector<s
             Y = std::max(1, Y);
             
             Resolutions.push_back(std::make_pair(X, Y));
-            SystemUtils_->Logger_->Log(std::string("Calculating Texture Level '") + std::to_string(MipMapIndex) + "' Size '" + std::to_string(X) + "," + std::to_string(Y) + "'", 4);
+            Logger_->Log(std::string("Calculating Texture Level '") + std::to_string(MipMapIndex) + "' Size '" + std::to_string(X) + "," + std::to_string(Y) + "'", 4);
 
             // Limit Sizes
             if (X > 1) {
@@ -196,7 +196,7 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_Model* Model, std::vector<s
             int TargetX, TargetY;
             TargetX = Resolutions[MipMapIndex].first;
             TargetY = Resolutions[MipMapIndex].second;
-            SystemUtils_->Logger_->Log(std::string("Resizing Texture Image To Size '") + std::to_string(TargetX) + "," + std::to_string(TargetY) + "'", 4);
+            Logger_->Log(std::string("Resizing Texture Image To Size '") + std::to_string(TargetX) + "," + std::to_string(TargetY) + "'", 4);
             FIBITMAP* NewImage = FreeImage_Rescale(Image, TargetX, TargetY);
 
             // Swap Colors From RGB To BGR
@@ -215,31 +215,31 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_Model* Model, std::vector<s
 
 
             // Save Image
-            long ImageAssetID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
-            SystemUtils_->Logger_->Log(std::string("Writing Texture Image For Layer '")
+            long ImageAssetID = IOSubsystem_->AllocateAssetID();
+            Logger_->Log(std::string("Writing Texture Image For Layer '")
             + std::to_string((MipMaps - 1) - MipMapIndex)
             + "' With ID '" + std::to_string(ImageAssetID)
-            + "' For Asset Texture '" + TextureList_[i], 3);
+            + "' For Asset Texture '" + Data.TextureList[i], 3);
             FIMEMORY* Memory = FreeImage_OpenMemory();
             FreeImage_SaveToMemory(Format, NewImage, Memory);
             FreeImage_Unload(NewImage);
 
 
-            std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
-            Data->AssetTypeName = "TextureImage";
+            ERS_STRUCT_IOData IOData;
+            IOData.AssetTypeName = "TextureImage";
             DWORD ImageCompressedSize = 0;
             BYTE *ImageCompressedBytes;
             FreeImage_AcquireMemory(Memory, &ImageCompressedBytes, &ImageCompressedSize);
-            Data->Data.reset(new unsigned char[ImageCompressedSize]);
-            ::memcpy(Data->Data.get(), ImageCompressedBytes, ImageCompressedSize);
+            IOData.Data.reset(new unsigned char[ImageCompressedSize]);
+            ::memcpy(IOData.Data.get(), ImageCompressedBytes, ImageCompressedSize);
             FreeImage_CloseMemory(Memory);
-            Data->Size_B = ImageCompressedSize;
-            Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
-            Data->AssetModificationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
-            bool WriteSuccess = SystemUtils_->ERS_IOSubsystem_->WriteAsset(ImageAssetID, Data.get());
+            IOData.Size_B = ImageCompressedSize;
+            IOData.AssetCreationDate = IOSubsystem_->GetCurrentTime();
+            IOData.AssetModificationDate = IOSubsystem_->GetCurrentTime();
+            bool WriteSuccess = IOSubsystem_->WriteAsset(ImageAssetID, &IOData);
 
             if (!WriteSuccess) {
-                SystemUtils_->Logger_->Log("Error Writing Texture File", 8);
+                Logger_->Log("Error Writing Texture File", 8);
                 ImageChannels.push_back(0);
                 ImageChannels.push_back(0);
                 ImageMemorySizes.push_back(0);
@@ -248,14 +248,14 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_Model* Model, std::vector<s
             } else {
 
                 // Test Re-Loading Image And Confirm it's all good
-                SystemUtils_->Logger_->Log(std::string("Testing Texture Image For Layer '")
+                Logger_->Log(std::string("Testing Texture Image For Layer '")
                 + std::to_string((MipMaps - 1) - MipMapIndex)
                 + "' With ID '" + std::to_string(ImageAssetID)
-                + "' For Asset Texture '" + TextureList_[i], 3);
-                bool ReadSuccess = SystemUtils_->ERS_IOSubsystem_->ReadAsset(ImageAssetID, Data.get());
+                + "' For Asset Texture '" + Data.TextureList[i], 3);
+                bool ReadSuccess = IOSubsystem_->ReadAsset(ImageAssetID, &IOData);
 
                 if (ReadSuccess) {
-                    FIMEMORY* FIImageData = FreeImage_OpenMemory(Data->Data.get(), Data->Size_B);
+                    FIMEMORY* FIImageData = FreeImage_OpenMemory(IOData.Data.get(), IOData.Size_B);
                     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
                     FIBITMAP* TestImage = FreeImage_LoadFromMemory(Format, FIImageData);
                     FreeImage_CloseMemory(FIImageData);
@@ -269,20 +269,20 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_Model* Model, std::vector<s
                     } else {
                         ImageChannels.push_back(Line / Width);
                     }
-                    SystemUtils_->Logger_->Log(std::string("Detected Number Of Channels To Be '")
-                    + std::to_string(Line/Width) + "' For " + TextureList_[i], 3);
+                    Logger_->Log(std::string("Detected Number Of Channels To Be '")
+                    + std::to_string(Line/Width) + "' For " + Data.TextureList[i], 3);
 
                     // Get Metadata Info
                     int MemorySize = FreeImage_GetMemorySize(TestImage);
                     ImageMemorySizes.push_back(MemorySize);
                     ImageAssetIDs.push_back(ImageAssetID);
-                    SystemUtils_->Logger_->Log(std::string("Generating Texture Image Metadata,  Size Is '") + std::to_string(MemorySize) + "' Bytes, ID Is '" + std::to_string(ImageAssetID) + "'", 3);
+                    Logger_->Log(std::string("Generating Texture Image Metadata,  Size Is '") + std::to_string(MemorySize) + "' Bytes, ID Is '" + std::to_string(ImageAssetID) + "'", 3);
 
                     FreeImage_Unload(TestImage);
 
 
                 } else {
-                    SystemUtils_->Logger_->Log("Error Reading Image Asset Data", 8);
+                    Logger_->Log("Error Reading Image Asset Data", 8);
                     ImageChannels.push_back(0);
                     ImageMemorySizes.push_back(0);
                     ImageAssetIDs.push_back(-1);
