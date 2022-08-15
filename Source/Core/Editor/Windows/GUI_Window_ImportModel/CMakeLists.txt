@@ -41,6 +41,7 @@ target_link_libraries(GUI_Window_ImportAsset
     ERS_STRUCT_Vertex
     ERS_STRUCT_Model
     ERS_STRUCT_IOData
+    ERS_STRUCT_ModelWriterData
 
     GUI_Window_ImportProgressBar
     )

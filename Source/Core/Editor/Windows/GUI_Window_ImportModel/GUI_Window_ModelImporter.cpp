@@ -116,7 +116,10 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     CalculateTotalVertsIndices(&Model);
 
 
-
+    ERS_STRUCT_ModelWriterData ModelWriterData = ERS_STRUCT_ModelWriterData();
+    ModelWriterData.Model                    = &Model;
+    ModelWriterData.ModelOriginDirectoryPath = AssetPath;
+    ModelWriterData.ModelScene               = Scene;
 
 
 
