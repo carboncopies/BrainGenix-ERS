@@ -44,9 +44,11 @@ void ERS_CLASS_InputProcessor::Process(float DeltaTime, bool CaptureEnabled) {
 
     // Update Associated Camera
     if (CaptureEnabled) {
-        Camera_->SetPosition (Position_);
-        Camera_->SetRotation (Orientation_);
-        Camera_->Update      ();
+        Camera_->SetPosition      (Position_);
+        Camera_->SetRotation      (Orientation_);
+        Camera_->SetFOV           (FOV_);
+        Camera_->SetClipBoundries (NearClip_, FarClip_);
+        Camera_->Update           ();
     }
 
 }
