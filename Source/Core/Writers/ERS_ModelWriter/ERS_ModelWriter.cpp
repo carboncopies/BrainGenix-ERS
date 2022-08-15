@@ -113,7 +113,7 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
             }
 
 
-            SecondTryStatus = ReadFile(Path, Data.get());
+            SecondTryStatus = ReadFile(Path, &IOData);
             TexturePath = Path;
             
             if (!SecondTryStatus) {
@@ -331,7 +331,7 @@ void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_ModelWriterData &Data) {
 
     // Write
     WriteModelGeometry(Data);
-    WriteTextures(Data.Model, &TextureMemorySizes, &ImageAssetIDs, &ImageResolutions, &ImageChannels, Data.ModelOriginDirectoryPath);
+    WriteTextures(Data, &TextureMemorySizes, &ImageAssetIDs, &ImageResolutions, &ImageChannels, Data.ModelOriginDirectoryPath);
 
 
 }
