@@ -75,6 +75,14 @@ void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_ModelWriterData &Data) {
     WriteModelGeometry(Data);
 
 
+    // Set Textures
+    std::vector<std::vector<int>> TextureMemorySizes;
+    std::vector<std::vector<long>> ImageAssetIDs;
+    std::vector<std::vector<std::pair<int, int>>> ImageResolutions;
+    std::vector<std::vector<int>> ImageChannels;
+    WriteTextures(&Data.Model, &TextureMemorySizes, &ImageAssetIDs, &ImageResolutions, &ImageChannels, AssetPath);
+
+
 }
 
 

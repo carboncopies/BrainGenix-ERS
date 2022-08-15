@@ -21,9 +21,10 @@
 struct ERS_STRUCT_ModelWriterData {
 
 
-    aiScene*           ModelScene;   /**<Pointer to assimp scene decoded by the importer*/
-    long               ModelAssetID; /**<Asset ID of model geometry*/
-    ERS_STRUCT_Model*  Model;        /**<Pointer to the model to be saved by the writer*/
+    aiScene*           ModelScene;               /**<Pointer to assimp scene decoded by the importer*/
+    long               ModelAssetID;             /**<Asset ID of model geometry*/
+    std::string        ModelOriginDirectoryPath; /**<Path to the model's original file*/
+    ERS_STRUCT_Model*  Model;                    /**<Pointer to the model to be saved by the writer*/
 
 
 };

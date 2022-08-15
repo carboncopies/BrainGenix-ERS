@@ -126,12 +126,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
 
 
-    // Set Textures
-    std::vector<std::vector<int>> TextureMemorySizes;
-    std::vector<std::vector<long>> ImageAssetIDs;
-    std::vector<std::vector<std::pair<int, int>>> ImageResolutions;
-    std::vector<std::vector<int>> ImageChannels;
-    WriteTextures(&Model, &TextureMemorySizes, &ImageAssetIDs, &ImageResolutions, &ImageChannels, AssetPath);
+
 
     // Generate Metadata
     YAML::Emitter MetadataEmitter;
