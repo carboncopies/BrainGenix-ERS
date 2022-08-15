@@ -43,10 +43,13 @@ void ERS_CLASS_InputProcessor::Process(float DeltaTime, bool CaptureEnabled) {
     ProcessMouseScroll   (CaptureEnabled);
 
     // Update Associated Camera
-    if (CaptureEnabled) {
-        Camera_->SetPosition (Position_);
-        Camera_->SetRotation (Orientation_);
-        Camera_->Update      ();
+    if (CaptureEnabled || ForceUpdate_) {
+        ForceUpdate_ = false;
+        Camera_->SetPosition      (Position_);
+        Camera_->SetRotation      (Orientation_);
+        Camera_->SetFOV           (FOV_);
+        Camera_->SetClipBoundries (NearClip_, FarClip_);
+        Camera_->Update           ();
     }
 
 }
@@ -250,4 +253,24 @@ bool ERS_CLASS_InputProcessor::GetPitchConstraint() {
 }
 void ERS_CLASS_InputProcessor::SetPitchConstraint(bool ConstrainPitch) {
     ConstrainPitch_ = ConstrainPitch;
+}
+void ERS_CLASS_InputProcessor::SetClipBoundries(float NearClip, float FarClip) {
+    NearClip_ = NearClip;
+    FarClip_ = FarClip;
+}
+void ERS_CLASS_InputProcessor::GetClipBoundires(float &NearClip, float &FarClip) {
+    NearClip = NearClip_;
+    FarClip = FarClip_;
+}
+void ERS_CLASS_InputProcessor::SetFOV(float FOV) {
+    FOV_ = FOV;
+}
+void ERS_CLASS_InputProcessor::GetFOV(float &FOV) {
+    FOV = FOV_;
+}
+float ERS_CLASS_InputProcessor::GetFOV() {
+    return FOV_;
+}
+void ERS_CLASS_InputProcessor::SetForceUpdate() {
+    ForceUpdate_ = true;
 }

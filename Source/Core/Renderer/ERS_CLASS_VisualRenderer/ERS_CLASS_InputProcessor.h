@@ -28,7 +28,8 @@ class ERS_CLASS_InputProcessor {
 private:
 
     // Internal Vars
-    bool FirstMouse          = true;   /**<Checks if the mouse is just being enabled. */
+    bool  FirstMouse         = true;   /**<Checks if the mouse is just being enabled. */
+    bool  ForceUpdate_       = false;  /**<Force an update of the viewport - done when use has changed a parameter*/
     float LastX              = 400;    /**<Location Of Last Mouse Position. (X coord) */
     float LastY              = 400;    /**<Location Of Last Mouse Position. (Y Coord) */
 
@@ -38,6 +39,10 @@ private:
     float MovementSpeed_     = 0.2f;   /**<Current Movement Speed            */
     float MouseSensitivity_  = 0.05f;  /**<Mouse sensitivity multiplier      */
     bool  ConstrainPitch_    = true;   /**<Limit the camera to +- 89 degrees */
+
+    float NearClip_          = 0.01f;  /**<Closest distance before geometry is culled.*/
+    float FarClip_           = 100.0f; /**<Farthest distance before geometry is called*/
+    float FOV_               = 70.0f;  /**<Field of view in degrees*/
 
     glm::vec3 Orientation_;            /**<Rotation of the editor camera in degrees. */
     glm::vec3 Position_;               /**<Position of the editor camera in units    */
@@ -107,6 +112,7 @@ private:
      * @param DeltaTime Frame time used to ensure speed isn't tied to framerate
      */
     void ProcessKey(CameraMovement Direction, float DeltaTime);
+
 
 
 
@@ -229,4 +235,40 @@ public:
      */
     void SetPitchConstraint(bool ConstrainEnabled);
 
+    /**
+     * @brief Helper function, sets the camera's clipping distance.
+     * 
+     * @param NearClip Minimum distance in units for things to be rendered in.
+     * @param FarClip Maximum distance in units for things to be rendered in.
+     */
+    void SetClipBoundries(float NearClip, float FarClip);
+
+    /**
+     * @brief Helper Function, gets the current camera clip distance.
+     * 
+     * @param NearClip Minimum distance in units for things to be rendered in.
+     * @param FarClip Maximum distance in units for things to be rendered in.
+     */
+    void GetClipBoundires(float &NearClip, float &FarClip);
+
+    /**
+     * @brief Gets the current field of view angle.
+     * 
+     * @param FOV Field of view in degrees.
+     */
+    void GetFOV(float &FOV);
+    float GetFOV();
+
+    /**
+     * @brief Sets the field of view angle.
+     * 
+     * @param FOV Field of view in degrees.
+     */
+    void SetFOV(float FOV);
+
+    /**
+     * @brief Forces the camera to update next frame
+     * 
+     */
+    void SetForceUpdate();
 };

@@ -83,7 +83,7 @@ void GUI_Window_EditorCameraSettings::Draw() {
             }
 
             // Location/Rotation Information
-            if (ImGui::CollapsingHeader("Mouse Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
+            if (ImGui::CollapsingHeader("LocRot Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
                 ImGui::Spacing();
 
                 float Colors[9] = {
@@ -102,6 +102,26 @@ void GUI_Window_EditorCameraSettings::Draw() {
 
                 ImGui::Spacing();
             }
+
+            // Camera Information
+            if (ImGui::CollapsingHeader("Camera Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
+                ImGui::Spacing();
+
+                float NearClip, FarClip, FOV;
+                Viewport->Processor->GetClipBoundires(NearClip, FarClip);
+                Viewport->Processor->GetFOV(FOV);
+                ImGui::DragFloat("Near Clip", &NearClip, 0.1f, 0.0f, 10.0f);
+                ImGui::DragFloat("Far Clip", &FarClip, 0.1f, 0.0f, 500.0f);
+                ImGui::DragFloat("FOV", &FOV, 0.05f, 0.0f, 180.0f);
+                Viewport->Processor->SetClipBoundries(NearClip, FarClip);
+                Viewport->Processor->SetFOV(FOV);
+
+                ImGui::Spacing();
+            }
+
+
+            Viewport->Processor->SetForceUpdate();
+
         }
 
 
