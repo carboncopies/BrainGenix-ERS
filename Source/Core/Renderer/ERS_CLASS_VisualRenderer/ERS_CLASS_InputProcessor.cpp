@@ -251,3 +251,20 @@ bool ERS_CLASS_InputProcessor::GetPitchConstraint() {
 void ERS_CLASS_InputProcessor::SetPitchConstraint(bool ConstrainPitch) {
     ConstrainPitch_ = ConstrainPitch;
 }
+void ERS_CLASS_InputProcessor::SetClipBoundries(float NearClip, float FarClip) {
+    NearClip_ = NearClip;
+    FarClip_ = FarClip;
+}
+void ERS_CLASS_InputProcessor::GetClipBoundires(float &NearClip, float &FarClip) {
+    NearClip = NearClip_;
+    FarClip = FarClip_;
+}
+void ERS_CLASS_InputProcessor::SetFOV(float FOV) {
+    FOV_ = FOV;
+}
+void ERS_CLASS_InputProcessor::GetFOV(float &FOV) {
+    FOV = FOV_;
+}
+float ERS_CLASS_InputProcessor::GetFOV() {
+    return FOV_;
+}
