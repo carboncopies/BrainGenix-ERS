@@ -17,10 +17,12 @@ add_library(ERS_STRUCT_ControllerSettings
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_STRUCT_ControllerSettings
+    assimp
     )
 
 # Link Internal Libs
 target_link_libraries(ERS_STRUCT_ControllerSettings
+    ERS_STRUCT_Model
     )
 
 target_include_directories(ERS_STRUCT_ControllerSettings PUBLIC ./)
