@@ -16,10 +16,12 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_LoggingSystem.h>
+
 #include <ERS_STRUCT_Model.h>
 #include <ERS_STRUCT_Scene.h>
 #include <ERS_STRUCT_Mesh.h>
 #include <ERS_STRUCT_Texture.h>
+#include <ERS_STRUCT_ModelWriterData.h>
 
 #include <ERS_InputOutputSubsystem.h>
 
