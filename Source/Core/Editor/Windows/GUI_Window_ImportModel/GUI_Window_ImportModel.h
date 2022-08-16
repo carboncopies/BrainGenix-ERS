@@ -15,6 +15,8 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
+#include <ERS_STRUCT_ProjectUtils.h>
+
 #include <GUI_Window_ImportProgressBar.h>
 
 
@@ -29,7 +31,6 @@ private:
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<used to get access to system utilites like IOmanager, logger, etc.*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project utils struct used to get to the model importer class*/
     std::unique_ptr<GUI_Window_ImportProgressBar> GUI_Window_ImportProgressBar_; /**<Pointer To Window Import Progres Bar*/
-    std::unique_ptr<ERS_CLASS_ImportAsset> AssetImportBackend_; /**<Backend used to handle actual importing, threads, etc.*/
 
     /**
      * @brief Open File Dialog
