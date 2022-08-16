@@ -479,10 +479,10 @@ bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_
     std::string ModelFileName = ModelPath.substr(ModelPath.find_last_of("/") + 1, ModelPath.size() - 1);
 
     // Load Via Assimp
-    Assimp::Importer Importer;
-    const aiScene* Scene = Importer.ReadFile(ModelPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_PreTransformVertices | aiProcess_JoinIdenticalVertices);
+    Data.ModelImporter = Assimp::Importer();
+    const aiScene* Scene = Data.ModelImporter.ReadFile(ModelPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_PreTransformVertices | aiProcess_JoinIdenticalVertices);
     if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
-        SystemUtils_->Logger_->Log(std::string(std::string("External Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
+        SystemUtils_->Logger_->Log(std::string(std::string("External Model Loading Error: ") + std::string(Data.ModelImporter.GetErrorString())).c_str(), 10);
         return false;
     }
     SystemUtils_->Logger_->Log("Finished Loading External Model, Processing Geometry/Textures", 3);
@@ -494,7 +494,7 @@ bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_
 
     // Update Struct
     Data.ModelOriginDirectoryPath = ModelPath;
-    Data.ModelScene               = std::make_unique<aiScene>(*Scene);
+    Data.ModelScene               = Scene;
     Data.ModelFileName            = ModelFileName;
 
     // Load Textures
