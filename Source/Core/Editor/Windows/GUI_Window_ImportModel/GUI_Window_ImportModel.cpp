@@ -41,7 +41,7 @@ void GUI_Window_ImportModel::Draw() {
 
             // Add To Queue, Launch Import
             //AssetImportBackend_->AddToImportQueue(FilePaths);
-            ProjectUtils_->
+            ProjectUtils_->ModelImporter_->AddToImportQueue(FilePaths);
             GUI_Window_ImportProgressBar_->Enabled_ = true;
 
         }

@@ -72,6 +72,8 @@ class ERS_CLASS_ModelImporter {
          */
         void AddToImportQueue(std::vector<std::string> AssetPaths);
 
+
+
         /**
          * @brief Get the Total Subitems Imported number
          * 
