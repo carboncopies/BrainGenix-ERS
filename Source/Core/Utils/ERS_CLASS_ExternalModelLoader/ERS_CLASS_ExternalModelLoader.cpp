@@ -2,21 +2,21 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_Editor_ModelImporter.h>
+#include <ERS_Editor_ExternalModelLoader.h>
 
 
-ERS_CLASS_ModelImporter::ERS_CLASS_ModelImporter(ERS_STRUCT_SystemUtils* SystemUtils) {
+ERS_CLASS_ExternalModelLoader::ERS_CLASS_ExternalModelLoader(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
 
 }
 
-ERS_CLASS_ModelImporter::~ERS_CLASS_ModelImporter() {
+ERS_CLASS_ExternalModelLoader::~ERS_CLASS_ExternalModelLoader() {
 
 }
 
 
-void ERS_CLASS_ModelImporter::DetectBoundingBox(ERS_STRUCT_Model* Model) {
+void ERS_CLASS_ExternalModelLoader::DetectBoundingBox(ERS_STRUCT_Model* Model) {
 
     // Calculate Bounding Box
     glm::vec3 ModelMinXYZ = Model->Meshes[0].Vertices[0].Position;
@@ -69,7 +69,7 @@ void ERS_CLASS_ModelImporter::DetectBoundingBox(ERS_STRUCT_Model* Model) {
 
 }
 
-void ERS_CLASS_ModelImporter::CalculateTotalVertsIndices(ERS_STRUCT_Model* Model) {
+void ERS_CLASS_ExternalModelLoader::CalculateTotalVertsIndices(ERS_STRUCT_Model* Model) {
 
     // Get Vert/Indice Metadata Info
     Model->TotalVertices_ = 0;
@@ -87,7 +87,7 @@ void ERS_CLASS_ModelImporter::CalculateTotalVertsIndices(ERS_STRUCT_Model* Model
 }
 
 // Load Model From File
-long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
+long ERS_CLASS_ExternalModelLoader::ImportModel(std::string AssetPath) {
 
 
 
@@ -126,7 +126,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
     //todo:
 
-    // move this class to it's own directory under utils or something with the name of "ERS_CLASS_ModelImporter"
+    // move this class to it's own directory under utils or something with the name of "ERS_CLASS_ExternalModelLoader"
     // the model loading part of the importer can be separated as well so we have a generic model importer system - could be very beneficial to do so
     // then, add the modelwriter to "GUI_Window_ImportAsset" so it can proeprly export things
     // then moake it write those models with this class (basically, have the importer load the model with this file, then write it with ERS_modelwriter)
@@ -144,7 +144,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
 
 
-void ERS_CLASS_ModelImporter::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory) {
+void ERS_CLASS_ExternalModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory) {
 
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
@@ -160,7 +160,7 @@ void ERS_CLASS_ModelImporter::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node,
 
 }
 
-void ERS_CLASS_ModelImporter::HandleMeshTextures(ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory) {
+void ERS_CLASS_ExternalModelLoader::HandleMeshTextures(ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory) {
 
     SystemUtils_->Logger_->Log("Identifying Mesh Textures", 3);
     AddTexture(Model, Material, aiTextureType_AMBIENT, "texture_ambient", ModelDirectory);
@@ -184,7 +184,7 @@ void ERS_CLASS_ModelImporter::HandleMeshTextures(ERS_STRUCT_Model* Model, aiMate
 
 }
 
-ERS_STRUCT_Mesh ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory) {
+ERS_STRUCT_Mesh ERS_CLASS_ExternalModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory) {
 
     // Process Materials
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
@@ -261,7 +261,7 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelImporter::ProcessMesh(ERS_STRUCT_Model* Model, ai
 
 }
 
-void ERS_CLASS_ModelImporter::AddTexture(ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory) {
+void ERS_CLASS_ExternalModelLoader::AddTexture(ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory) {
 
 
     for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {
@@ -282,7 +282,7 @@ void ERS_CLASS_ModelImporter::AddTexture(ERS_STRUCT_Model* Model, aiMaterial *Ma
 
 }
 
-bool ERS_CLASS_ModelImporter::ReadFile(std::string FilePath, ERS_STRUCT_IOData* OutputData) {
+bool ERS_CLASS_ExternalModelLoader::ReadFile(std::string FilePath, ERS_STRUCT_IOData* OutputData) {
 
 
     struct stat Buffer;

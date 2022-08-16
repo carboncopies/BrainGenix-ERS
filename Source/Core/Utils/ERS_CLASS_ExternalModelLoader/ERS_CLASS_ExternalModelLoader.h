@@ -47,7 +47,7 @@
  * @brief Class for importing models (fbx, gltx, etc.) based on the ASSIMP library
  * 
  */
-class ERS_CLASS_ModelImporter {
+class ERS_CLASS_ExternalModelLoader {
 
 
 private:
@@ -127,13 +127,13 @@ public:
      * @param Logger 
      * @param TextureLoader 
      */
-    ERS_CLASS_ModelImporter(ERS_STRUCT_SystemUtils*);
+    ERS_CLASS_ExternalModelLoader(ERS_STRUCT_SystemUtils*);
 
     /**
      * @brief Destroy the Model Loader object
      * 
      */
-    ~ERS_CLASS_ModelImporter();
+    ~ERS_CLASS_ExternalModelLoader();
 
 
     /**
