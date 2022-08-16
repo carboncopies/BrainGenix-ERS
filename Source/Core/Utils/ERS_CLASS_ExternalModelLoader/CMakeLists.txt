@@ -25,6 +25,12 @@ target_link_libraries(ERS_CLASS_ExternalModelLoader
 
 # Link Internal Libs
 target_link_libraries(ERS_CLASS_ExternalModelLoader
+    ERS_STRUCT_Mesh
+    ERS_STRUCT_Model
+    ERS_STRUCT_Vertex
+    ERS_STRUCT_ModelWriterData
+    ERS_STRUCT_SystemUtils
+    ERS_STRUCT_IOData
     )
 
 target_include_directories(ERS_CLASS_ExternalModelLoader PUBLIC ./)
