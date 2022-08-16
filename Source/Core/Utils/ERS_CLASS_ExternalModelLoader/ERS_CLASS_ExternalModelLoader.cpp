@@ -489,6 +489,10 @@ bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_
 
     // Process Geometry, Identify Textures
     ProcessNode(Data, Data.Model, Scene->mRootNode, Scene, ModelDirectory);
+    if (Data.Model->Meshes.size() == 0) {
+        Data.ModelScene = nullptr;
+        SystemUtils_->Logger_->Log(std::string("Model Has No Meshes, Aborting"), 8);
+    }
     DetectBoundingBox(Data.Model);
     CalculateTotalVertsIndices(Data.Model);
 
