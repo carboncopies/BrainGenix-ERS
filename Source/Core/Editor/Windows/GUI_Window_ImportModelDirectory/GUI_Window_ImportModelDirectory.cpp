@@ -25,8 +25,8 @@ GUI_Window_ImportModelDirectory::~GUI_Window_ImportModelDirectory() {
 
 void GUI_Window_ImportModelDirectory::Draw() {
 
-    if (Enabled_) {
-
+    if (Enabled_ && !AlreadyOpen_) {
+        OpenFileDialog();
     }
 
     // Draw File Dialog
@@ -50,6 +50,7 @@ void GUI_Window_ImportModelDirectory::Draw() {
         }
 
     ImGuiFileDialog::Instance()->Close();
+    AlreadyOpen_ = false;
     }
 
 
@@ -57,7 +58,7 @@ void GUI_Window_ImportModelDirectory::Draw() {
     if (GUI_Window_ImportProgressBar_->Enabled_ && Enabled_) {
         GUI_Window_ImportProgressBar_->UpdateTotalItems(ProjectUtils_->ModelImporter_->GetTotalItemsImported(), ProjectUtils_->ModelImporter_->GetTotalItemsToImport());
         GUI_Window_ImportProgressBar_->UpdateJobState(ProjectUtils_->ModelImporter_->HasJobFinished());
-        }
+    }
 
     
 

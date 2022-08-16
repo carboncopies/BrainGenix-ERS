@@ -25,8 +25,8 @@ GUI_Window_ImportModel::~GUI_Window_ImportModel() {
 
 void GUI_Window_ImportModel::Draw() {
 
-    if (Enabled_) {
-
+    if (Enabled_ && !AlreadyOpen_) {
+        OpenFileDialog();
     }
 
     // Draw File Dialog
@@ -50,6 +50,7 @@ void GUI_Window_ImportModel::Draw() {
         }
 
     ImGuiFileDialog::Instance()->Close();
+    AlreadyOpen_ = false;
     }
 
 
