@@ -28,7 +28,7 @@ bool ERS_CLASS_ModelWriter::WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data,
     Logger_->Log(std::string("Exporting Model Geometry To Blob With Encoding '") + ExportFormat + "'", 4);
 
     Assimp::Exporter Exporter;
-    const aiExportDataBlob* Blob = Exporter.ExportToBlob(Data.ModelScene.get(), ExportFormat);
+    const aiExportDataBlob* Blob = Exporter.ExportToBlob(Data.ModelScene, ExportFormat);
 
     std::string ExportStatus = Exporter.GetErrorString();
     if (ExportStatus == "") {
