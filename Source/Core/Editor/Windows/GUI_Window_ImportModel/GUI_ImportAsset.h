@@ -9,8 +9,6 @@
 #include <memory>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
-#include <yaml-cpp/yaml.h>
-
 #include <imgui.h>
 
 #include <ImGuiFileDialog.h>

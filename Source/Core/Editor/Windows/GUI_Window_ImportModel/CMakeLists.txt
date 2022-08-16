@@ -23,12 +23,8 @@ set_property(TARGET GUI_Window_ImportAsset PROPERTY CXX_STANDARD 17)
             
 # Link 3rd Party Libs
 target_link_libraries(GUI_Window_ImportAsset
-    yaml-cpp
-    glm
     IMGUI
     ImGuiFileDialog
-    assimp
-    FreeImage
     )
 
 # Link Internal Libs
@@ -36,12 +32,7 @@ target_link_libraries(GUI_Window_ImportAsset
     ERS_CLASS_LoggingSystem
 
     ERS_STRUCT_SystemUtils
-    ERS_STRUCT_Mesh
-    ERS_STRUCT_Texture
-    ERS_STRUCT_Vertex
-    ERS_STRUCT_Model
-    ERS_STRUCT_IOData
-    ERS_STRUCT_ModelWriterData
+    ERS_STRUCT_ProjectUtils
 
     GUI_Window_ImportProgressBar
     )
