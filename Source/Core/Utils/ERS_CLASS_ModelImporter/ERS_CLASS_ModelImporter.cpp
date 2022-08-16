@@ -102,15 +102,12 @@ void ERS_CLASS_ModelImporter::AddToImportQueue(std::vector<std::string> AssetPat
 }
 
 
-
 long ERS_CLASS_ModelImporter::GetTotalItemsToImport() {
     return TotalItemsToImport_;
 }
-
 long ERS_CLASS_ModelImporter::GetTotalItemsImported() {
     return TotalItemsProcessed_;
 }
-
 bool ERS_CLASS_ModelImporter::HasJobFinished() {
     LockAssetImportQueue_.lock();
     bool Out = HasJobFinished_;
