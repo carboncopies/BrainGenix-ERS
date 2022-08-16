@@ -68,7 +68,7 @@ void GUI_Window_ImportModelDirectory::Draw() {
 
 void GUI_Window_ImportModelDirectory::OpenFileDialog() {
 
-    ImGuiFileDialog::Instance()->OpenDialog("Import Model", "Import Model", ".*", ".", "", 0);
+    ImGuiFileDialog::Instance()->OpenDialog("Import Model Directory", "Import Model Directory", nullptr, "~", "", 0);
 
 
 }
