@@ -475,7 +475,7 @@ ERS_STRUCT_Mesh ERS_CLASS_ExternalModelLoader::ProcessMesh(ERS_STRUCT_Model* Mod
 
 }
 
-void ERS_CLASS_ExternalModelLoader::AddTexture(ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory) {
+void ERS_CLASS_ExternalModelLoader::AddTexture(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory) {
 
 
     for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {
@@ -487,9 +487,9 @@ void ERS_CLASS_ExternalModelLoader::AddTexture(ERS_STRUCT_Model* Model, aiMateri
         std::string FilePath = std::string(ModelDirectory + std::string(Model->Directory)  + std::string("/") + std::string(Str.C_Str()));
         std::string Message = std::string("Found Texture Of Type '") + TypeName + std::string("' At Path '") + FilePath + std::string("'");
         SystemUtils_->Logger_->Log(Message, 3);
-        if (std::find(TextureList_.begin(), TextureList_.end(), FilePath) == TextureList_.end()) {
-            TextureList_.push_back(FilePath);
-            TextureNames_.push_back(Str.C_Str());
+        if (std::find(Data.TextureList.begin(), Data.TextureList.end(), FilePath) == Data.TextureList.end()) {
+            Data.TextureList.push_back(FilePath);
+            Data.TextureNames.push_back(Str.C_Str());
         }   
 
     }
