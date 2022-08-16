@@ -82,7 +82,7 @@ std::pair<std::string, std::string> FindTextureMatches(ERS_STRUCT_Mesh* Mesh, st
 
 }
 
-
+// Model Loading Helpers
 void ERS_CLASS_ExternalModelLoader::DetectBoundingBox(ERS_STRUCT_Model* Model) {
 
     // Calculate Bounding Box
@@ -307,57 +307,6 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
     Data.ImageBytes = ImageBytes;
 
 }
-
-// Load Model From File
-bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_ModelWriterData &Data) {
-
-    SystemUtils_->Logger_->Log(std::string("Loading External Model '") + ModelPath + "'", 5);
-
-    // Calculate Paths
-    std::string ModelDirectory = ModelPath.substr(0, std::string(ModelPath).find_last_of("/"));
-    std::string ModelFileName = ModelPath.substr(ModelPath.find_last_of("/") + 1, ModelPath.size() - 1);
-
-    // Load Via Assimp
-    Assimp::Importer Importer;
-    const aiScene* Scene = Importer.ReadFile(ModelPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_PreTransformVertices | aiProcess_JoinIdenticalVertices);
-    if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
-        SystemUtils_->Logger_->Log(std::string(std::string("External Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
-        return false;
-    }
-    SystemUtils_->Logger_->Log("Finished Loading External Model, Processing Geometry/Textures", 3);
-
-    // Process Geometry, Identify Textures
-    ProcessNode(Data, Data.Model, Scene->mRootNode, Scene, ModelDirectory);
-    DetectBoundingBox(Data.Model);
-    CalculateTotalVertsIndices(Data.Model);
-
-    // Update Struct
-    Data.ModelOriginDirectoryPath = ModelPath;
-    Data.ModelScene               = Scene;
-    Data.ModelFileName            = ModelFileName;
-
-    // Load Textures
-    ProcessModelTextures(Data);
-
-    return true;
-}
-
-
-
-    //todo:
-    // then, add the modelwriter to "GUI_Window_ImportAsset" so it can proeprly export things
-    // then moake it write those models with this class (basically, have the importer load the model with this file, then write it with ERS_modelwriter)
-    // then make the importer class (in utils), have multithreading, and allow it to import a list of models (or something like that for batch importing)
-    // finally, add the new import button to import a batch of models and have it traverse the filesystem to find said models given a directory.
-
-
-    
-
-
-    
-    
-
-
 void ERS_CLASS_ExternalModelLoader::ProcessNode(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory) {
 
     // Process Meshes In Current Node
@@ -494,7 +443,6 @@ void ERS_CLASS_ExternalModelLoader::AddTexture(ERS_STRUCT_ModelWriterData &Data,
 }
 bool ERS_CLASS_ExternalModelLoader::ReadFile(std::string FilePath, ERS_STRUCT_IOData* OutputData) {
 
-
     struct stat Buffer;
     int FileStatus = stat(FilePath.c_str(), &Buffer);
 
@@ -533,3 +481,55 @@ bool ERS_CLASS_ExternalModelLoader::ReadFile(std::string FilePath, ERS_STRUCT_IO
     return true;
 
 }
+
+
+// Load Model From File
+bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_ModelWriterData &Data) {
+
+    SystemUtils_->Logger_->Log(std::string("Loading External Model '") + ModelPath + "'", 5);
+
+    // Calculate Paths
+    std::string ModelDirectory = ModelPath.substr(0, std::string(ModelPath).find_last_of("/"));
+    std::string ModelFileName = ModelPath.substr(ModelPath.find_last_of("/") + 1, ModelPath.size() - 1);
+
+    // Load Via Assimp
+    Assimp::Importer Importer;
+    const aiScene* Scene = Importer.ReadFile(ModelPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_PreTransformVertices | aiProcess_JoinIdenticalVertices);
+    if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
+        SystemUtils_->Logger_->Log(std::string(std::string("External Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
+        return false;
+    }
+    SystemUtils_->Logger_->Log("Finished Loading External Model, Processing Geometry/Textures", 3);
+
+    // Process Geometry, Identify Textures
+    ProcessNode(Data, Data.Model, Scene->mRootNode, Scene, ModelDirectory);
+    DetectBoundingBox(Data.Model);
+    CalculateTotalVertsIndices(Data.Model);
+
+    // Update Struct
+    Data.ModelOriginDirectoryPath = ModelPath;
+    Data.ModelScene               = Scene;
+    Data.ModelFileName            = ModelFileName;
+
+    // Load Textures
+    ProcessModelTextures(Data);
+
+    return true;
+}
+
+
+
+    //todo:
+    // then, add the modelwriter to "GUI_Window_ImportAsset" so it can proeprly export things
+    // then moake it write those models with this class (basically, have the importer load the model with this file, then write it with ERS_modelwriter)
+    // then make the importer class (in utils), have multithreading, and allow it to import a list of models (or something like that for batch importing)
+    // finally, add the new import button to import a batch of models and have it traverse the filesystem to find said models given a directory.
+
+
+    
+
+
+    
+    
+
+
