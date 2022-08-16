@@ -27,6 +27,7 @@ void GUI_Window_ImportModel::Draw() {
 
     if (Enabled_ && !AlreadyOpen_) {
         OpenFileDialog();
+        AlreadyOpen_ = true;
     }
 
     // Draw File Dialog
