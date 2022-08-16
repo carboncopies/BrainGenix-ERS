@@ -40,6 +40,9 @@ private:
 
 public:
 
+    bool Enabled_ = false; /**<Show/Hide GUI_Window*/
+
+
     /**
      * @brief Construct a new gui importasset object.
      * 

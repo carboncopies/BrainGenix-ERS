@@ -210,6 +210,12 @@ bool ERS_CLASS_WindowManager::SetWindowStatus(std::string WindowName, bool Statu
     } else if (WindowName == "AssetStreamingSettings") {
         Windows_->GUI_Window_NewProject_->Enabled_ = Status;
         return true;
+    } else if (WindowName == "ImportModel") {
+        Windows_->GUI_Window_ImportModel_->Enabled_ = Status;
+        return true;
+    } else if (WindowName == "ImportModelDirectory") {
+        Windows_->GUI_Window_ImportModelDirectory_->Enabled_ = Status;
+        return true;
     } else {
         return false;
     }
