@@ -64,13 +64,7 @@ private:
 
 
 
-    /**
-     * @brief Here, we reduce the number of textures or convert into the expected ERS system
-     * For example, alpha maps are baked into the diffuse map.
-     * 
-     * @param Model 
-     */
-    void MergeTextures(ERS_STRUCT_Model* Model, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures);
+
 
     /**
      * @brief Writes the model's geometry data into a binary blob for later decoding.

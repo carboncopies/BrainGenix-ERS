@@ -16,6 +16,73 @@ ERS_CLASS_ExternalModelLoader::~ERS_CLASS_ExternalModelLoader() {
 }
 
 
+// Image Helpers
+FIBITMAP* FindTextureBitmap(std::string TexturePath, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures) {
+
+    // Iterate Over Array, Try And Find Match
+    for (unsigned int LoadedTextureIndex = 0; LoadedTextureIndex < LoadedTextures->size(); LoadedTextureIndex++) {
+        if ((*LoadedTextures)[LoadedTextureIndex].first == TexturePath) {
+            return (*LoadedTextures)[LoadedTextureIndex].second;
+        }
+    }
+
+    // Return NULL On Failure
+    return NULL;
+}
+void DeleteTextureBitmap(std::string TexturePath, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures) {
+
+    int Index = -1;
+
+    // Iterate Over Array, Try And Find Match
+    for (unsigned int LoadedTextureIndex = 0; LoadedTextureIndex < LoadedTextures->size(); LoadedTextureIndex++) {
+        if ((*LoadedTextures)[LoadedTextureIndex].first == TexturePath) {
+            Index = LoadedTextureIndex;
+            break;
+        }
+    }
+
+    // Delete
+    if (Index != -1) {
+        LoadedTextures->erase(LoadedTextures->begin() + Index);
+    }
+
+
+}
+std::pair<std::string, std::string> FindTextureMatches(ERS_STRUCT_Mesh* Mesh, std::string Type1, std::string Type2) {
+
+    // Setup Initialization Variables
+    bool HasType1 = false;
+    std::string Type1Name;
+
+    bool HasType2 = false;
+    std::string Type2Name;
+
+    // Traverse Textures Array, Try And find Types
+    for (unsigned int i = 0; i < Mesh->Textures_.size(); i++) {
+        if (Mesh->Textures_[i]->Type == Type1) {
+            HasType1 = true;
+            Type1Name = Mesh->Textures_[i]->Path;
+            break;
+        }
+    }
+    for (unsigned int i = 0; i < Mesh->Textures_.size(); i++) {
+        if (Mesh->Textures_[i]->Type == Type2) {
+            HasType2 = true;
+            Type2Name = Mesh->Textures_[i]->Path;
+            break;
+        }
+    }
+
+    // Check That Both Are Sorted
+    if (HasType1 && HasType2) {
+        return std::make_pair(Type1Name, Type2Name);
+    } else {
+        return std::make_pair(std::string(""), std::string(""));
+    }
+
+}
+
+
 void ERS_CLASS_ExternalModelLoader::DetectBoundingBox(ERS_STRUCT_Model* Model) {
 
     // Calculate Bounding Box
@@ -83,6 +150,161 @@ void ERS_CLASS_ExternalModelLoader::CalculateTotalVertsIndices(ERS_STRUCT_Model*
         Model->TotalIndices_ += IndSize;
 
     }
+
+}
+
+void ERS_CLASS_ExternalModelLoader::MergeTextures(ERS_STRUCT_Model* Model, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures) {
+
+    // Create Pair Of All Textures With Opacity/Alpha Maps
+    std::vector<std::pair<std::string, std::string>> OpacityAlphaMaps;
+    for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
+
+        // Find Matching Types For The Same Mesh
+        std::pair<std::string, std::string> Match = FindTextureMatches(&Model->Meshes[i], "texture_opacity", "texture_diffuse");
+
+        // If Not Empty (Matching Failed) And It's Not Already In The Opacity Map, Add It
+        if (Match != std::make_pair(std::string(""), std::string(""))) {
+
+            bool InArray = false;
+            for (unsigned int x = 0; x < OpacityAlphaMaps.size(); x++) {
+                if (OpacityAlphaMaps[x] == Match) {
+                    InArray = true;
+                    break;
+                } 
+            }
+            if (!InArray) {
+
+                SystemUtils_->Logger_->Log(std::string("Found Opacity Map For Diffuse Texture '") + Match.second + "', Adding To Merge Queue", 2);
+                OpacityAlphaMaps.push_back(Match);
+            }
+
+        }
+    }
+
+    // Iterate Over All Matches, Merge The Two
+    for (unsigned int i = 0; i < OpacityAlphaMaps.size(); i++) {
+        
+        // Get Alpha, Diffuse From Real Loaded Texture Maps
+        FIBITMAP* AlphaTexture = FindTextureBitmap(OpacityAlphaMaps[i].first, LoadedTextures);
+        FIBITMAP* DiffuseTexture = FindTextureBitmap(OpacityAlphaMaps[i].second, LoadedTextures);
+
+        // Merge Together (If Images Are Not NULL)
+        if (AlphaTexture != NULL && DiffuseTexture != NULL) {
+            FIBITMAP* AlphaChannel = FreeImage_GetChannel(AlphaTexture, FICC_ALPHA);
+            FreeImage_SetChannel(DiffuseTexture, AlphaChannel, FICC_ALPHA);
+            SystemUtils_->Logger_->Log(std::string("Merging Opacity Map For Texture '") + OpacityAlphaMaps[i].second + "'", 2);
+
+        }
+
+        // Delete ALpha Texture
+        DeleteTextureBitmap(OpacityAlphaMaps[i].first, LoadedTextures);
+
+    }
+
+}
+
+void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterData &Data) {
+
+    // Create List Of Texture Files To Be Copied
+    std::vector<std::pair<std::string, ERS_STRUCT_IOData>> TextureFiles;
+    for (int i = 0; (long)i < (long)Data.TextureList.size(); i++) {
+
+        ERS_STRUCT_IOData IOData;
+        std::string TexturePath = Data.TextureList[i];
+        bool Success = ReadFile(Data.TextureList[i], &IOData);
+        IOData.AssetTypeName = "Texture";
+        IOData.AssetFileName = Data.TextureList[i].substr(Data.ModelOriginDirectoryPath.find_last_of("/") + 1, Data.ModelOriginDirectoryPath.size() - 1);
+        IOData.AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
+
+
+        bool SecondTryStatus = false;
+        if (!Success) {
+            SystemUtils_->Logger_->Log(std::string("Error Loading Texture From Given Path '") + Data.ModelOriginDirectoryPath + std::string("', Will Search Current Directory For Texture"), 7);
+
+            // Strip To Last Item In Path (With Forward Slashes And Backward Slashes)
+            std::string Path = Data.TextureList[i];
+            std::replace(Path.begin(), Path.end(), '\\', '/');
+            if (Path.find("/") != std::string::npos) {
+                Path = Path.substr(Path.find_last_of("/") + 1, Path.size()-1);
+            }
+
+            // Create Reference String To Be Tested Against
+            std::string RefString = Path.substr(0, Path.find_first_of("."));
+            size_t Pos = 0;
+            while ((Pos = RefString.find(" ", Pos)) != std::string::npos) {
+                RefString.replace(Pos, 1, "_");
+                Pos ++;
+            }
+
+            // Check Against Filesystem
+            std::replace(Data.ModelOriginDirectoryPath.begin(), Data.ModelOriginDirectoryPath.end(), '\\', '/');
+            for (const auto &Entry : std::filesystem::recursive_directory_iterator(Data.ModelOriginDirectoryPath.substr(0, Data.ModelOriginDirectoryPath.find_last_of("/")))) {
+
+                std::string FilePath{Entry.path().u8string()};
+                std::replace(FilePath.begin(), FilePath.end(), '\\', '/');
+                std::string FileName = FilePath.substr(FilePath.find_last_of('/') + 1, FilePath.size() - 1);
+                std::string FileNameWithoutExtension = FileName.substr(0, FileName.find_first_of("."));
+
+                // Remove Spaces From Filename And Replace With Underscores
+                Pos = 0;
+                while ((Pos = FileNameWithoutExtension.find(" ", Pos)) != std::string::npos) {
+                    FileNameWithoutExtension.replace(Pos, 1, "_");
+                    Pos ++;
+                }
+
+
+                if (FileNameWithoutExtension == RefString) {
+                    Path = FilePath;
+                    SystemUtils_->Logger_->Log(std::string("Found Potential Match '") + FilePath + std::string("', Attempting To Load"), 5);
+                    break;
+                }
+
+            
+            }
+
+
+            SecondTryStatus = ReadFile(Path, &IOData);
+            TexturePath = Path;
+            
+            if (!SecondTryStatus) {
+                SystemUtils_->Logger_->Log("Failed To Find Texture During Second Try Effort, Abandoning Texture", 8);
+            } else {
+                SystemUtils_->Logger_->Log("Found Probable File, However This Is Not Guarenteed To Be Correct", 6);
+            }
+
+        }
+
+        if (Success || SecondTryStatus) {
+            TextureFiles.push_back(std::make_pair(TexturePath, IOData));
+        }
+
+    }
+
+    // Load Textures Into Memory
+    std::vector<std::pair<std::string, FIBITMAP*>> ImageBytes;
+    for (unsigned int i = 0; i < TextureFiles.size(); i++) {
+
+        SystemUtils_->Logger_->Log(std::string("Loading Texture Image '")  + TextureFiles[i].first + "'", 4);
+        
+        ERS_STRUCT_IOData* ImageData = &TextureFiles[i].second;
+        FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData->Data.get(), ImageData->Size_B);
+        FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
+        FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
+        FreeImage_CloseMemory(FIImageData);
+
+        //FreeImage_FlipVertical(RawImage);
+
+        FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
+        FreeImage_Unload(RawImage);
+
+        SystemUtils_->Logger_->Log(std::string("Loaded Texture Image"), 3);
+
+
+        ImageBytes.push_back(std::make_pair(TextureFiles[i].first, Image));
+    }
+
+    // Remove Duplicate Stuff (Like Alpha Maps), Just Generally Consolidate Stuff
+    MergeTextures(Data.Model, &ImageBytes);
 
 }
 

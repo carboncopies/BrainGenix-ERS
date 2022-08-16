@@ -115,6 +115,7 @@ private:
      * @param ModelDirectory 
      */
     void HandleMeshTextures(ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory);
+    
     /**
      * @brief Finds and loads all the relevant textures into memory.
      * Cleans up textures as well (merge alpha channels together with diffuse to create 4 channel image rather than 3+!).
@@ -122,6 +123,14 @@ private:
      * @param Data 
      */
     void ProcessModelTextures(ERS_STRUCT_ModelWriterData &Data);
+
+    /**
+     * @brief Here, we reduce the number of textures or convert into the expected ERS system
+     * For example, alpha maps are baked into the diffuse map.
+     * 
+     * @param Model 
+     */
+    void MergeTextures(ERS_STRUCT_Model* Model, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures);
 
 public:
 
