@@ -473,8 +473,23 @@ bool ERS_CLASS_ExternalModelLoader::PerformModelSanityChecks(ERS_STRUCT_Model &M
     // Check For Meshes
     if (Model.Meshes.size() == 0) {
         SystemUtils_->Logger_->Log(std::string("Model Has No Meshes, Aborting"), 8);
-        return false
+        return false;
     }
+
+    // Check Meshes For Verts
+    for (unsigned int i = 0; i < Model.Meshes.size(); i++) {
+        if (Model.Meshes[i].Vertices.size() == 0) {
+            SystemUtils_->Logger_->Log(std::string("Warning, Mesh '") + std::to_string(i) + "' Has No Verts", 7);
+            return false;
+        }
+        if (Model.Meshes[i].Indices.size() == 0) {
+            SystemUtils_->Logger_->Log(std::string("Warning, Mesh '") + std::to_string(i) + "' Has No Indices", 7);
+            return false;
+        }
+    }
+
+    // Passed Check
+    return true;
 }
 
 // Load Model From File
@@ -497,7 +512,9 @@ bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_
 
     // Process Geometry, Identify Textures
     ProcessNode(Data, Data.Model, Scene->mRootNode, Scene, ModelDirectory);
-
+    if (!PerformModelSanityChecks(*Data.Model)) {
+        return false;
+    }
     DetectBoundingBox(Data.Model);
     CalculateTotalVertsIndices(Data.Model);
 
