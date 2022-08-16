@@ -22,6 +22,12 @@ GUI_Window_ImportModelDirectory::~GUI_Window_ImportModelDirectory() {
 
 }
 
+// Check String Endings (From: https://stackoverflow.com/questions/874134/find-out-if-string-ends-with-another-string-in-c)
+bool ERS_CLASS_FontManager::EndsWith(const std::string& Input, const std::string& Ending) {
+    if (Ending.size() > Input.size()) return false;
+    return std::equal(Input.begin() + Input.size() - Ending.size(), Input.end(), Ending.begin());
+}
+
 
 void GUI_Window_ImportModelDirectory::Draw() {
 
@@ -42,6 +48,13 @@ void GUI_Window_ImportModelDirectory::Draw() {
             std::string Path = ImGuiFileDialog::Instance()->GetCurrentPath();
             Path += "/";
 
+            for (const auto &Entry : std::filesystem::recursive_directory_iterator(Path)) {
+                std::string FilePath{Entry.path().u8string()};
+                if (EndsWith(FilePath, ".fbx") || EndsWith(FilePath, ".dae") || EndsWith(FilePath, ".obj") || EndsWith(FilePath, ".gltf") || EndsWith(FilePath, ".glb")) {
+                    FilePaths.push_back(FilePath);
+                }
+
+            }
             // Add To Queue, Launch Import
             ProjectUtils_->ModelImporter_->AddToImportQueue(FilePaths);
             GUI_Window_ImportProgressBar_->Enabled_ = true;
