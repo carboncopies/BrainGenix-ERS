@@ -115,6 +115,13 @@ private:
      * @param ModelDirectory 
      */
     void HandleMeshTextures(ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory);
+    /**
+     * @brief Finds and loads all the relevant textures into memory.
+     * Cleans up textures as well (merge alpha channels together with diffuse to create 4 channel image rather than 3+!).
+     * 
+     * @param Data 
+     */
+    void ProcessModelTextures(ERS_STRUCT_ModelWriterData &Data);
 
 public:
 
