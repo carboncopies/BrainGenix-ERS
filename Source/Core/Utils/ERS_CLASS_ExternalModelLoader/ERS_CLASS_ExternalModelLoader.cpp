@@ -10,7 +10,6 @@ ERS_CLASS_ExternalModelLoader::ERS_CLASS_ExternalModelLoader(ERS_STRUCT_SystemUt
     SystemUtils_ = SystemUtils;
 
 }
-
 ERS_CLASS_ExternalModelLoader::~ERS_CLASS_ExternalModelLoader() {
 
 }
@@ -81,6 +80,7 @@ std::pair<std::string, std::string> FindTextureMatches(ERS_STRUCT_Mesh* Mesh, st
     }
 
 }
+
 
 // Model Loading Helpers
 void ERS_CLASS_ExternalModelLoader::DetectBoundingBox(ERS_STRUCT_Model* Model) {
