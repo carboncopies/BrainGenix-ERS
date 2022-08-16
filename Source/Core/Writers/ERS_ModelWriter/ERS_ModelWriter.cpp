@@ -19,6 +19,73 @@ ERS_CLASS_ModelWriter::~ERS_CLASS_ModelWriter() {
 }
 
 
+// Image Helpers
+FIBITMAP* FindTextureBitmap(std::string TexturePath, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures) {
+
+    // Iterate Over Array, Try And Find Match
+    for (unsigned int LoadedTextureIndex = 0; LoadedTextureIndex < LoadedTextures->size(); LoadedTextureIndex++) {
+        if ((*LoadedTextures)[LoadedTextureIndex].first == TexturePath) {
+            return (*LoadedTextures)[LoadedTextureIndex].second;
+        }
+    }
+
+    // Return NULL On Failure
+    return NULL;
+}
+void DeleteTextureBitmap(std::string TexturePath, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures) {
+
+    int Index = -1;
+
+    // Iterate Over Array, Try And Find Match
+    for (unsigned int LoadedTextureIndex = 0; LoadedTextureIndex < LoadedTextures->size(); LoadedTextureIndex++) {
+        if ((*LoadedTextures)[LoadedTextureIndex].first == TexturePath) {
+            Index = LoadedTextureIndex;
+            break;
+        }
+    }
+
+    // Delete
+    if (Index != -1) {
+        LoadedTextures->erase(LoadedTextures->begin() + Index);
+    }
+
+
+}
+std::pair<std::string, std::string> FindTextureMatches(ERS_STRUCT_Mesh* Mesh, std::string Type1, std::string Type2) {
+
+    // Setup Initialization Variables
+    bool HasType1 = false;
+    std::string Type1Name;
+
+    bool HasType2 = false;
+    std::string Type2Name;
+
+    // Traverse Textures Array, Try And find Types
+    for (unsigned int i = 0; i < Mesh->Textures_.size(); i++) {
+        if (Mesh->Textures_[i]->Type == Type1) {
+            HasType1 = true;
+            Type1Name = Mesh->Textures_[i]->Path;
+            break;
+        }
+    }
+    for (unsigned int i = 0; i < Mesh->Textures_.size(); i++) {
+        if (Mesh->Textures_[i]->Type == Type2) {
+            HasType2 = true;
+            Type2Name = Mesh->Textures_[i]->Path;
+            break;
+        }
+    }
+
+    // Check That Both Are Sorted
+    if (HasType1 && HasType2) {
+        return std::make_pair(Type1Name, Type2Name);
+    } else {
+        return std::make_pair(std::string(""), std::string(""));
+    }
+
+}
+
+
 // Export Helpers
 bool ERS_CLASS_ModelWriter::WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data, std::string ExportFormat) {
 
@@ -52,7 +119,6 @@ bool ERS_CLASS_ModelWriter::WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data,
     Data.ModelAssetID = ModelID;
     return true;
 }
-
 bool ERS_CLASS_ModelWriter::ReadFile(std::string FilePath, ERS_STRUCT_IOData* OutputData) {
 
 
@@ -94,7 +160,6 @@ bool ERS_CLASS_ModelWriter::ReadFile(std::string FilePath, ERS_STRUCT_IOData* Ou
     return true;
 
 }
-
 void ERS_CLASS_ModelWriter::MergeTextures(ERS_STRUCT_Model* Model, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures) {
 
     // Create Pair Of All Textures With Opacity/Alpha Maps
