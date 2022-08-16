@@ -27,7 +27,6 @@ target_link_libraries(Menu_File
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
 
-    ERS_Editor_ImportAsset
     ERS_Editor_WindowManager
     
     ERS_ProjectLoader
