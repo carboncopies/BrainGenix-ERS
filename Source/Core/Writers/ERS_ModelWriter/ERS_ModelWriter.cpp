@@ -310,7 +310,7 @@ void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_ModelWriterData &Data) {
 
     // Write
     WriteModelGeometry(Data);
-    WriteTextures(Data, &Data.TextureMemorySizes, &Data.ImageAssetIDs, &Data.ImageResolutions, &Data.ImageChannels, Data.ModelOriginDirectoryPath);
+    WriteTextures(Data, &Data.TextureMemorySizes, &Data.ImageAssetIDs, &Data.ImageResolutions, &Data.ImageChannels);
     std::string Metadata = GenerateModelMetadata(Data);
 
     // Write Metadata

@@ -19,6 +19,8 @@
 #include <ERS_ProjectManager.h>
 #include <ERS_ProjectWriter.h>
 
+#include <ERS_CLASS_ModelImporter.h>
+
 
 /**
  * @brief The System utils struct contains most project mgmt utils/classes/structs.
