@@ -374,10 +374,10 @@ void ERS_CLASS_ExternalModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode 
 
 }
 
-void ERS_CLASS_ExternalModelLoader::HandleMeshTextures(ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory) {
+void ERS_CLASS_ExternalModelLoader::HandleMeshTextures(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory) {
 
     SystemUtils_->Logger_->Log("Identifying Mesh Textures", 3);
-    AddTexture(Model, Material, aiTextureType_AMBIENT, "texture_ambient", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_AMBIENT, "texture_ambient", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_AMBIENT_OCCLUSION, "texture_ambient_occlusion", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_BASE_COLOR, "texture_base_color", ModelDirectory);
     AddTexture(Model, Material, aiTextureType_DIFFUSE, "texture_diffuse", ModelDirectory);
@@ -398,11 +398,11 @@ void ERS_CLASS_ExternalModelLoader::HandleMeshTextures(ERS_STRUCT_Model* Model, 
 
 }
 
-ERS_STRUCT_Mesh ERS_CLASS_ExternalModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory) {
+ERS_STRUCT_Mesh ERS_CLASS_ExternalModelLoader::ProcessMesh(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory) {
 
     // Process Materials
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
-    HandleMeshTextures(Model, Material, ModelDirectory);
+    HandleMeshTextures(Data, Model, Material, ModelDirectory);
 
 
     // Create Data Holders
@@ -474,7 +474,6 @@ ERS_STRUCT_Mesh ERS_CLASS_ExternalModelLoader::ProcessMesh(ERS_STRUCT_Model* Mod
     return OutputMesh;
 
 }
-
 void ERS_CLASS_ExternalModelLoader::AddTexture(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory) {
 
 
@@ -495,7 +494,6 @@ void ERS_CLASS_ExternalModelLoader::AddTexture(ERS_STRUCT_ModelWriterData &Data,
     }
 
 }
-
 bool ERS_CLASS_ExternalModelLoader::ReadFile(std::string FilePath, ERS_STRUCT_IOData* OutputData) {
 
 
