@@ -368,12 +368,11 @@ void ERS_CLASS_ExternalModelLoader::ProcessNode(ERS_STRUCT_ModelWriterData &Data
 
     // Process Children Nodes
     for (unsigned int i = 0; i < Node->mNumChildren; i++) {
-        ProcessNode(Model, Node->mChildren[i], Scene, ModelDirectory);
+        ProcessNode(Data, Model, Node->mChildren[i], Scene, ModelDirectory);
     }
 
 
 }
-
 void ERS_CLASS_ExternalModelLoader::HandleMeshTextures(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory) {
 
     SystemUtils_->Logger_->Log("Identifying Mesh Textures", 3);
@@ -397,7 +396,6 @@ void ERS_CLASS_ExternalModelLoader::HandleMeshTextures(ERS_STRUCT_ModelWriterDat
     SystemUtils_->Logger_->Log("Finshed Mesh Texture Identification", 4);
 
 }
-
 ERS_STRUCT_Mesh ERS_CLASS_ExternalModelLoader::ProcessMesh(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory) {
 
     // Process Materials
