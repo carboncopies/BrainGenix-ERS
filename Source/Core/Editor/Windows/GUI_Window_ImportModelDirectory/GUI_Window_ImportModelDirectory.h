@@ -7,6 +7,7 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <memory>
+#include <string>
 #include <filesystem>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
