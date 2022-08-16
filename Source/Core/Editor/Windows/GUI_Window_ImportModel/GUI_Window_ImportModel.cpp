@@ -52,8 +52,8 @@ void GUI_Window_ImportModel::Draw() {
 
     // Update Window Stats
     if (GUI_Window_ImportProgressBar_->Enabled_) {
-        GUI_Window_ImportProgressBar_->UpdateTotalItems(AssetImportBackend_->GetTotalItemsImported(), AssetImportBackend_->GetTotalItemsToImport());
-        GUI_Window_ImportProgressBar_->UpdateJobState(AssetImportBackend_->HasJobFinished());
+        GUI_Window_ImportProgressBar_->UpdateTotalItems(ProjectUtils_->ModelImporter_->GetTotalItemsImported(), ProjectUtils_->ModelImporter_->GetTotalItemsToImport());
+        GUI_Window_ImportProgressBar_->UpdateJobState(ProjectUtils_->ModelImporter_->HasJobFinished());
     }
 
     GUI_Window_ImportProgressBar_->Draw();
