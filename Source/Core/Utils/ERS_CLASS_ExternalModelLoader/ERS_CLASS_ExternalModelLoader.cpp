@@ -345,7 +345,6 @@ bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_
 
 
     //todo:
-    // the model loading part of the importer can be separated as well so we have a generic model importer system - could be very beneficial to do so
     // then, add the modelwriter to "GUI_Window_ImportAsset" so it can proeprly export things
     // then moake it write those models with this class (basically, have the importer load the model with this file, then write it with ERS_modelwriter)
     // then make the importer class (in utils), have multithreading, and allow it to import a list of models (or something like that for batch importing)

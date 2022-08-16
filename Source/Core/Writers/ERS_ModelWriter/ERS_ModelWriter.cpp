@@ -101,10 +101,10 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
 
 
     // Resize For Mipmaps, Save To New Project
-    for (unsigned int i = 0; i < ImageBytes.size(); i++) {
+    for (unsigned int i = 0; i < Data.ImageBytes.size(); i++) {
 
         // Get Raw Source Texture Information
-        FIBITMAP* Image = ImageBytes[i].second;
+        FIBITMAP* Image = Data.ImageBytes[i].second;
         int SourceImageWidth = FreeImage_GetWidth(Image);
         int SourceImageHeight = FreeImage_GetHeight(Image);
 
