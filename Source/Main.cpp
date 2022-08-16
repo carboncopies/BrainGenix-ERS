@@ -167,7 +167,6 @@ int main(int NumArguments, char** ArguemntValues) {
     RendererManager sERSRendererManager(SystemUtils.get(), ProjectUtils.get(), HIDUtils.get());
 
 
-    
     // Log Logo Text
     SystemUtils->Logger_->Log("Starting BrainGenix-ERS Instance", 2);
     SystemUtils->Logger_->Log("", 5);
