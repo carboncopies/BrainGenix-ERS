@@ -251,6 +251,7 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
 }
 std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(ERS_STRUCT_ModelWriterData &Data) {
 
+
     // Generate Metadata
     YAML::Emitter MetadataEmitter;
     MetadataEmitter<<YAML::BeginMap;
@@ -320,6 +321,19 @@ void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_ModelWriterData &Data) {
     // Write
     WriteModelGeometry(Data);
     WriteTextures(Data, &Data.TextureMemorySizes, &Data.ImageAssetIDs, &Data.ImageResolutions, &Data.ImageChannels);
+
+    // Perform List Length Sanity Check
+    unsigned int CheckSize = Data.TextureList.size();
+    bool CheckFail = CheckSize != Data.ImageChannels.size();
+    CheckFail |= CheckSize != Data.ImageAssetIDs.size();
+    CheckFail |= CheckSize != Data.TextureMemorySizes.size();
+    CheckFail |= CheckSize != Data.ImageResolutions.size();
+
+    if (CheckFail) {
+        Logger_->Log("Model Failed List Length Sanity Check, Not All Lists Are Of Same Len, Aborting", 8);
+        return;
+    }
+
     std::string Metadata = GenerateModelMetadata(Data);
 
     // Write Metadata
