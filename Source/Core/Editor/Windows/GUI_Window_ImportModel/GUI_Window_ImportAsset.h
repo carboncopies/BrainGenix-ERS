@@ -15,7 +15,6 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_Editor_ImportAsset.h>
 #include <GUI_Window_ImportProgressBar.h>
 
 
