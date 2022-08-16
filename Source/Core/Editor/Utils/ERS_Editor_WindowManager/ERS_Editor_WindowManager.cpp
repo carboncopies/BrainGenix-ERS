@@ -59,6 +59,9 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     Windows_->GUI_Window_OpenProject_            = std::make_unique<GUI_Window_OpenProject>            (SystemUtils_);
     Windows_->GUI_Window_NewProject_             = std::make_unique<GUI_Window_NewProject>             (SystemUtils_);
     Windows_->GUI_Window_AssetStreamingSettings_ = std::make_unique<GUI_Window_AssetStreamingSettings> (SystemUtils_, ProjectUtils);
+    Windows_->GUI_Window_ImportModel_            = std::make_unique<GUI_Window_ImportModel>            (SystemUtils_, ProjectUtils);
+    Windows_->GUI_Window_ImportModelDirectory_   = std::make_unique<GUI_Window_ImportModelDirectory>   (SystemUtils_, ProjectUtils);
+    
 
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Struct", 3);
     SystemUtils_->Logger_->Log("WindowManager Subsystem Setting Up Window Index", 4);
@@ -87,6 +90,9 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     WindowNames_.push_back("OpenProject");
     WindowNames_.push_back("NewProject");
     WindowNames_.push_back("AssetStreamingSettings");
+    WindowNames_.push_back("ImportModel");
+    WindowNames_.push_back("ImportModelDirectory");
+    
     
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Index", 3);
 
@@ -122,6 +128,9 @@ void ERS_CLASS_WindowManager::UpdateAllWindows() {
     Windows_->GUI_Window_OpenProject_             ->Draw();
     Windows_->GUI_Window_NewProject_              ->Draw();
     Windows_->GUI_Window_AssetStreamingSettings_  ->Draw();
+    Windows_->GUI_Window_ImportModel_             ->Draw();
+    Windows_->GUI_Window_ImportModelDirectory_    ->Draw();
+    
 
 }
 
