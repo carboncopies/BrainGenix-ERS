@@ -132,6 +132,16 @@ private:
      */
     void MergeTextures(ERS_STRUCT_Model* Model, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures);
 
+    /**
+     * @brief Just makes sure the model has valid sata, etc.
+     * returns false if there's an issue so we can abort it
+     * 
+     * @param Model 
+     * @return true 
+     * @return false 
+     */
+    bool PerformModelSanityChecks(ERS_STRUCT_Model &Model);
+
 public:
 
 

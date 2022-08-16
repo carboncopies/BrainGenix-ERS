@@ -468,6 +468,14 @@ bool ERS_CLASS_ExternalModelLoader::ReadFile(std::string FilePath, ERS_STRUCT_IO
 
 }
 
+bool ERS_CLASS_ExternalModelLoader::PerformModelSanityChecks(ERS_STRUCT_Model &Model) {
+
+    // Check For Meshes
+    if (Model.Meshes.size() == 0) {
+        SystemUtils_->Logger_->Log(std::string("Model Has No Meshes, Aborting"), 8);
+        return false
+    }
+}
 
 // Load Model From File
 bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_ModelWriterData &Data) {
@@ -489,10 +497,7 @@ bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_
 
     // Process Geometry, Identify Textures
     ProcessNode(Data, Data.Model, Scene->mRootNode, Scene, ModelDirectory);
-    if (Data.Model->Meshes.size() == 0) {
-        Data.ModelScene = nullptr;
-        SystemUtils_->Logger_->Log(std::string("Model Has No Meshes, Aborting"), 8);
-    }
+
     DetectBoundingBox(Data.Model);
     CalculateTotalVertsIndices(Data.Model);
 
