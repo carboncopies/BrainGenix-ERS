@@ -12,7 +12,6 @@ GUI_Window_ImportModel::GUI_Window_ImportModel(ERS_STRUCT_SystemUtils* SystemUti
     SystemUtils_->Logger_->Log("Initializing Asset Importer GUI", 5);
 
     GUI_Window_ImportProgressBar_ = std::make_unique<GUI_Window_ImportProgressBar>(SystemUtils_);
-    AssetImportBackend_ = std::make_unique<ERS_CLASS_ImportAsset>(SystemUtils_);
 
 }
 
