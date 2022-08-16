@@ -148,6 +148,7 @@ public:
 
     /**
      * @brief Loads a model from the given path.
+     * We assume that the ModelData Struct has been initialized before calling this (ie: the model pointer is valid, etc.)
      * Returns false on failure, true otherwise.
      * Is thread safe.
      * 

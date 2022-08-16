@@ -87,6 +87,11 @@ void ERS_CLASS_ExternalModelLoader::CalculateTotalVertsIndices(ERS_STRUCT_Model*
 }
 
 // Load Model From File
+bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_ModelWriterData &Data) {
+
+
+
+}
 long ERS_CLASS_ExternalModelLoader::ImportModel(std::string AssetPath) {
 
 
