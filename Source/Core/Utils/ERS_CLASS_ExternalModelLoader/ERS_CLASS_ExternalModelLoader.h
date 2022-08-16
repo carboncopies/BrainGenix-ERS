@@ -145,4 +145,17 @@ public:
      */
     long ImportModel(std::string AssetPath);
 
+
+    /**
+     * @brief Loads a model from the given path.
+     * Returns false on failure, true otherwise.
+     * Is thread safe.
+     * 
+     * @param ModelFilePath String containing absolute or relative path to the model file. (.fbx/.dae/etc.)
+     * @param ModelData Reference to an instance of the model writer data struct.
+     * @return true 
+     * @return false 
+     */
+    bool LoadModel(std::string ModelFilePath, ERS_STRUCT_ModelWriterData &ModelData);
+
 };
