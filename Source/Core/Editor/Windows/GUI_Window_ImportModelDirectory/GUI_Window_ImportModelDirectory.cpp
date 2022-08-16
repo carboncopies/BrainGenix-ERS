@@ -30,7 +30,7 @@ void GUI_Window_ImportModelDirectory::Draw() {
     }
 
     // Draw File Dialog
-    if (ImGuiFileDialog::Instance()->Display("Import Model", ImGuiWindowFlags_None, ImVec2(800, 500))) {
+    if (ImGuiFileDialog::Instance()->Display("Import Model Directory", ImGuiWindowFlags_None, ImVec2(800, 500))) {
 
 
         if (ImGuiFileDialog::Instance()->IsOk())
