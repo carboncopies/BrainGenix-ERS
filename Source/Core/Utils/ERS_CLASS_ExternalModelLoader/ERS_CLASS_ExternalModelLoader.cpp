@@ -203,7 +203,7 @@ void ERS_CLASS_ExternalModelLoader::MergeTextures(ERS_STRUCT_Model* Model, std::
 void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterData &Data) {
 
     // Create List Of Texture Files To Be Copied
-    std::vector<std::pair<std::string, ERS_STRUCT_IOData>> TextureFiles;
+    std::vector<std::pair<std::string, FIBITMAP*>> ImageBytes;
     for (int i = 0; (long)i < (long)Data.TextureList.size(); i++) {
 
         ERS_STRUCT_IOData IOData;
@@ -268,36 +268,22 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
             } else {
                 SystemUtils_->Logger_->Log("Found Probable File, However This Is Not Guarenteed To Be Correct", 6);
             }
-
         }
 
         if (Success || SecondTryStatus) {
-            TextureFiles.push_back(std::make_pair(TexturePath, IOData));
+            SystemUtils_->Logger_->Log(std::string("Loading Texture Image '")  + TexturePath + "'", 4);
+            
+            FIMEMORY* FIImageData = FreeImage_OpenMemory(IOData.Data.get(), IOData.Size_B);
+            FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
+            FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
+            FreeImage_CloseMemory(FIImageData);
+
+            FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
+            FreeImage_Unload(RawImage);
+            SystemUtils_->Logger_->Log(std::string("Loaded Texture Image"), 3);
+
+            ImageBytes.push_back(std::make_pair(TexturePath, Image));
         }
-
-    }
-
-    // Load Textures Into Memory
-    std::vector<std::pair<std::string, FIBITMAP*>> ImageBytes;
-    for (unsigned int i = 0; i < TextureFiles.size(); i++) {
-
-        SystemUtils_->Logger_->Log(std::string("Loading Texture Image '")  + TextureFiles[i].first + "'", 4);
-        
-        ERS_STRUCT_IOData* ImageData = &TextureFiles[i].second;
-        FIMEMORY* FIImageData = FreeImage_OpenMemory(ImageData->Data.get(), ImageData->Size_B);
-        FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-        FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
-        FreeImage_CloseMemory(FIImageData);
-
-        //FreeImage_FlipVertical(RawImage);
-
-        FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
-        FreeImage_Unload(RawImage);
-
-        SystemUtils_->Logger_->Log(std::string("Loaded Texture Image"), 3);
-
-
-        ImageBytes.push_back(std::make_pair(TextureFiles[i].first, Image));
     }
 
     // Remove Duplicate Stuff (Like Alpha Maps), Just Generally Consolidate Stuff
