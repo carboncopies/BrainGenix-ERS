@@ -37,7 +37,7 @@ bool ERS_CLASS_ModelWriter::WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data,
         Logger_->Log(std::string("Error Exporting Model Geometry '") + ExportStatus + "'", 7);
         return false;
     }
-    
+
 
     // Write Model Geo Data
     std::unique_ptr<ERS_STRUCT_IOData> IOData = std::make_unique<ERS_STRUCT_IOData>();
