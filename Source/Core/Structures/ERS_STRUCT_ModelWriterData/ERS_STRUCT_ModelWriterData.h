@@ -25,6 +25,7 @@ struct ERS_STRUCT_ModelWriterData {
     ERS_STRUCT_Model*  Model;                    /**<Pointer to the model to be saved by the writer*/
     long               ModelAssetID;             /**<Asset ID of model geometry*/
     std::string        ModelOriginDirectoryPath; /**<Path to the model's original file*/
+    std::string        ModelFileName;            /**<Model's filename without other path info*/
 
     std::vector<std::string> TextureList; /**<Texture List Vector*/
     std::vector<std::string> TextureNames; /**<List of names of the textures*/

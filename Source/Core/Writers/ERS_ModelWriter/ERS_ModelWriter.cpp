@@ -209,8 +209,6 @@ void ERS_CLASS_ModelWriter::MergeTextures(ERS_STRUCT_Model* Model, std::vector<s
     }
 
 }
-
-
 void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::vector<std::vector<int>>* TextureImageChannels, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
     // Create List Of Texture Files To Be Copied
@@ -461,11 +459,9 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
     }
 
 }
-
-
 std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(ERS_STRUCT_ModelWriterData &Data) {
 
-// Generate Metadata
+    // Generate Metadata
     YAML::Emitter MetadataEmitter;
     MetadataEmitter<<YAML::BeginMap;
 
@@ -488,14 +484,14 @@ std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(ERS_STRUCT_ModelWriterD
         Logger_->Log(std::string("Saving Information For Texture '") + TexturePath + "'", 3);
         MetadataEmitter<<YAML::Key<<TexturePath<<YAML::Value<<YAML::BeginMap;
 
-        for (unsigned int TextureLevel = 0; TextureLevel < TextureMemorySizes[i].size(); TextureLevel++) {
-            MetadataEmitter<<YAML::Key<<(TextureMemorySizes[i].size() - 1) - TextureLevel<<YAML::Value<<YAML::BeginMap;
+        for (unsigned int TextureLevel = 0; TextureLevel < Data.TextureMemorySizes[i].size(); TextureLevel++) {
+            MetadataEmitter<<YAML::Key<<(Data.TextureMemorySizes[i].size() - 1) - TextureLevel<<YAML::Value<<YAML::BeginMap;
 
-            MetadataEmitter<<YAML::Key<<"TextureLevelAssetID"<<YAML::Value<<ImageAssetIDs[i][TextureLevel];
-            MetadataEmitter<<YAML::Key<<"TextureLevelMemorySizeBytes"<<YAML::Value<<TextureMemorySizes[i][TextureLevel];
-            MetadataEmitter<<YAML::Key<<"TextureLevelResolutionX"<<YAML::Value<<ImageResolutions[i][TextureLevel].first;
-            MetadataEmitter<<YAML::Key<<"TextureLevelResolutionY"<<YAML::Value<<ImageResolutions[i][TextureLevel].second;
-            MetadataEmitter<<YAML::Key<<"TextureLevelNumberChannels"<<YAML::Value<<ImageChannels[i][TextureLevel];
+            MetadataEmitter<<YAML::Key<<"TextureLevelAssetID"<<YAML::Value<<Data.ImageAssetIDs[i][TextureLevel];
+            MetadataEmitter<<YAML::Key<<"TextureLevelMemorySizeBytes"<<YAML::Value<<Data.TextureMemorySizes[i][TextureLevel];
+            MetadataEmitter<<YAML::Key<<"TextureLevelResolutionX"<<YAML::Value<<Data.ImageResolutions[i][TextureLevel].first;
+            MetadataEmitter<<YAML::Key<<"TextureLevelResolutionY"<<YAML::Value<<Data.ImageResolutions[i][TextureLevel].second;
+            MetadataEmitter<<YAML::Key<<"TextureLevelNumberChannels"<<YAML::Value<<Data.ImageChannels[i][TextureLevel];
 
             MetadataEmitter<<YAML::EndMap;
         }
@@ -505,29 +501,46 @@ std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(ERS_STRUCT_ModelWriterD
 
 
     // Write Vert Info
-    MetadataEmitter<<YAML::Key<<"Vertices"<<YAML::Value<<Model.TotalVertices_;
-    MetadataEmitter<<YAML::Key<<"Indices"<<YAML::Value<<Model.TotalIndices_;
+    MetadataEmitter<<YAML::Key<<"Vertices"<<YAML::Value<<Data.Model->TotalVertices_;
+    MetadataEmitter<<YAML::Key<<"Indices"<<YAML::Value<<Data.Model->TotalIndices_;
 
     // Write Bounding Box + Offset Info
-    MetadataEmitter<<YAML::Key<<"BoundingBoxX"<<YAML::Value<<Model.BoxScale_.x;
-    MetadataEmitter<<YAML::Key<<"BoundingBoxY"<<YAML::Value<<Model.BoxScale_.y;
-    MetadataEmitter<<YAML::Key<<"BoundingBoxZ"<<YAML::Value<<Model.BoxScale_.z;
-    MetadataEmitter<<YAML::Key<<"OffsetX"<<YAML::Value<<Model.BoxOffset_.x;
-    MetadataEmitter<<YAML::Key<<"OffsetY"<<YAML::Value<<Model.BoxOffset_.y;
-    MetadataEmitter<<YAML::Key<<"OffsetZ"<<YAML::Value<<Model.BoxOffset_.z;
+    MetadataEmitter<<YAML::Key<<"BoundingBoxX"<<YAML::Value<<Data.Model->BoxScale_.x;
+    MetadataEmitter<<YAML::Key<<"BoundingBoxY"<<YAML::Value<<Data.Model->BoxScale_.y;
+    MetadataEmitter<<YAML::Key<<"BoundingBoxZ"<<YAML::Value<<Data.Model->BoxScale_.z;
+    MetadataEmitter<<YAML::Key<<"OffsetX"<<YAML::Value<<Data.Model->BoxOffset_.x;
+    MetadataEmitter<<YAML::Key<<"OffsetY"<<YAML::Value<<Data.Model->BoxOffset_.y;
+    MetadataEmitter<<YAML::Key<<"OffsetZ"<<YAML::Value<<Data.Model->BoxOffset_.z;
     
     // Return Data
     MetadataEmitter<<YAML::EndMap;
-    return std::string(Metadata.c_str());
+    return std::string(MetadataEmitter.c_str());
 
 }
+
 
 void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_ModelWriterData &Data) {
 
     // Write
     WriteModelGeometry(Data);
     WriteTextures(Data, &Data.TextureMemorySizes, &Data.ImageAssetIDs, &Data.ImageResolutions, &Data.ImageChannels, Data.ModelOriginDirectoryPath);
+    std::string Metadata = GenerateModelMetadata(Data);
 
+    // Write Metadata
+    ERS_STRUCT_IOData IOData;
+    IOData.Data.reset(new unsigned char[Metadata.size()]);
+    IOData.Size_B = Metadata.size();
+    memcpy(IOData.Data.get(), Metadata.c_str(), Metadata.size());
+
+    // Set Metadata (FIXME: Save Modification Date + Creation Date Here!)
+    IOData.AssetTypeName = "Model";
+    IOData.AssetFileName = ModelFileName;
+    IOData.AssetCreationDate = IOSubsystem_->GetCurrentTime();
+
+    long MetadataID = IOSubsystem_->AllocateAssetID();
+    Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(MetadataID) + std::string("' To Model Metadata")).c_str(), 4);
+    Logger_->Log("Done Importing Model", 5);
+    IOSubsystem_->WriteAsset(MetadataID, &IOData);
 
 }
 

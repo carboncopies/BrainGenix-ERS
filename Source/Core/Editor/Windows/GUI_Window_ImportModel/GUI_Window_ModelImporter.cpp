@@ -120,6 +120,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     ModelWriterData.Model                    = &Model;
     ModelWriterData.ModelOriginDirectoryPath = AssetPath;
     ModelWriterData.ModelScene               = Scene;
+    
 
 
 
@@ -128,21 +129,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     
 
 
-    // Write Metadata
-    std::string Metadata = std::string(MetadataEmitter.c_str());
-    Data->Data.reset(new unsigned char[Metadata.size()]);
-    Data->Size_B = Metadata.size();
-    memcpy(Data->Data.get(), Metadata.c_str(), Metadata.size());
-
-    // Set Metadata (FIXME: Save Modification Date + Creation Date Here!)
-    Data->AssetTypeName = "Model";
-    Data->AssetFileName = ModelFileName;
-    Data->AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->GetCurrentTime();
-
-    long MetadataID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
-    SystemUtils_->Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(MetadataID) + std::string("' To Model Metadata")).c_str(), 4);
-    SystemUtils_->Logger_->Log("Done Importing Model", 5);
-    SystemUtils_->ERS_IOSubsystem_->WriteAsset(MetadataID, Data.get());
+    
     
     return MetadataID;
 }
