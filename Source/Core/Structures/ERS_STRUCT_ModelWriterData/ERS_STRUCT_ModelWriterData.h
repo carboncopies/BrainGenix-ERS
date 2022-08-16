@@ -21,7 +21,7 @@
 struct ERS_STRUCT_ModelWriterData {
 
 
-    aiScene*           ModelScene;               /**<Pointer to assimp scene decoded by the importer*/
+    const aiScene*           ModelScene;               /**<Pointer to assimp scene decoded by the importer*/
     ERS_STRUCT_Model*  Model;                    /**<Pointer to the model to be saved by the writer*/
     long               ModelAssetID;             /**<Asset ID of model geometry*/
     std::string        ModelOriginDirectoryPath; /**<Path to the model's original file*/
@@ -31,10 +31,10 @@ struct ERS_STRUCT_ModelWriterData {
     std::vector<std::string> TextureNames; /**<List of names of the textures*/
     std::vector<std::string> TextureTypes; /**<Types of the textures in the texture list*/
     
-    std::vector<std::vector<int>> TextureMemorySizes;
-    std::vector<std::vector<long>> ImageAssetIDs;
+    std::vector<std::vector<int>>                 TextureMemorySizes;
+    std::vector<std::vector<long>>                ImageAssetIDs;
     std::vector<std::vector<std::pair<int, int>>> ImageResolutions;
-    std::vector<std::vector<int>> ImageChannels;
+    std::vector<std::vector<int>>                 ImageChannels;
 
 
 };

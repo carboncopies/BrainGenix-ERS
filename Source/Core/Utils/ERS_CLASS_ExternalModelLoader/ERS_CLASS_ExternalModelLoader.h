@@ -136,15 +136,6 @@ public:
     ~ERS_CLASS_ExternalModelLoader();
 
 
-    /**
-     * @brief Import model from given path, return assetID of model metadata.
-     * 
-     * @param AssetPath 
-     * @param FlipTextures 
-     * @return std::vector<long> 
-     */
-    long ImportModel(std::string AssetPath);
-
 
     /**
      * @brief Loads a model from the given path.
