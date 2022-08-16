@@ -2,10 +2,10 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <GUI_Window_ImportModel.h>
+#include <GUI_Window_ImportModelDirectory.h>
 
 
-GUI_Window_ImportModel::GUI_Window_ImportModel(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+GUI_Window_ImportModelDirectory::GUI_Window_ImportModelDirectory(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
@@ -16,14 +16,14 @@ GUI_Window_ImportModel::GUI_Window_ImportModel(ERS_STRUCT_SystemUtils* SystemUti
 }
 
 
-GUI_Window_ImportModel::~GUI_Window_ImportModel() {
+GUI_Window_ImportModelDirectory::~GUI_Window_ImportModelDirectory() {
 
     SystemUtils_->Logger_->Log("Asset Importer GUI Destructor Called", 6);
 
 }
 
 
-void GUI_Window_ImportModel::Draw() {
+void GUI_Window_ImportModelDirectory::Draw() {
 
     // Draw File Dialog
     if (ImGuiFileDialog::Instance()->Display("Import Model", ImGuiWindowFlags_None, ImVec2(800, 500))) {
@@ -60,7 +60,7 @@ void GUI_Window_ImportModel::Draw() {
 
 }
 
-void GUI_Window_ImportModel::OpenFileDialog() {
+void GUI_Window_ImportModelDirectory::OpenFileDialog() {
 
     ImGuiFileDialog::Instance()->OpenDialog("Import Model", "Import Model", ".*", ".", "", 0);
 

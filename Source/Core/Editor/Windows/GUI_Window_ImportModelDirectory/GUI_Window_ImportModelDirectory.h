@@ -24,7 +24,7 @@
  * @brief This class provides the GUI to the import asset option within the file menu.
  *
  */
-class GUI_Window_ImportModel {
+class GUI_Window_ImportModelDirectory {
 
 private:
 
@@ -45,13 +45,13 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Window_ImportModel(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    GUI_Window_ImportModelDirectory(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
 
     /**
      * @brief Destroy the gui importasset object.
      * 
      */
-    ~GUI_Window_ImportModel();
+    ~GUI_Window_ImportModelDirectory();
 
     /**
      * @brief Update Any Windows
