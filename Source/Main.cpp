@@ -27,6 +27,7 @@
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_CLASS_HardwareInformation.h>
 #include <ERS_CLASS_ArgumentParser.h>
+#include <ERS_CLASS_ModelImporter.h>
 
 #include <ERS_SceneManager.h>
 
@@ -140,6 +141,9 @@ int main(int NumArguments, char** ArguemntValues) {
 
     SystemUtils->Logger_->Log("Instantiating ERS Project Manager Pointer", 4);
     ProjectUtils->ProjectManager_ = std::make_unique<ERS_CLASS_ProjectManager>(SystemUtils.get(), ProjectUtils->ProjectLoader_.get(), ProjectUtils->ProjectWriter_.get(), ProjectUtils->SceneManager_.get(), ProjectUtils->SceneLoader_.get());
+
+    SystemUtils->Logger_->Log("Instantiating ERS Model Importer", 4);
+    ProjectUtils->ProjectManager_ = std::make_unique<ERS_CLASS_ModelImporter>(SystemUtils.get());
 
 
     // Setup Human Input Devices
