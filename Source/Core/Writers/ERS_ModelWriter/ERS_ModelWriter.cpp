@@ -27,6 +27,10 @@ bool ERS_CLASS_ModelWriter::WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data,
     // Export Model File
     Logger_->Log(std::string("Exporting Model Geometry To Blob With Encoding '") + ExportFormat + "'", 4);
 
+    if (!Data.ModelScene) {
+        Logger_->Log("Error Exporting Scene, Scene Is Not Valid", 7);
+        return false;
+    }
     Assimp::Exporter Exporter;
     const aiExportDataBlob* Blob = Exporter.ExportToBlob(Data.ModelScene, ExportFormat);
 
