@@ -524,12 +524,9 @@ std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(ERS_STRUCT_ModelWriterD
 
 void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_ModelWriterData &Data) {
 
-    // Setup Vars
-
-
     // Write
     WriteModelGeometry(Data);
-    WriteTextures(Data, &TextureMemorySizes, &ImageAssetIDs, &ImageResolutions, &ImageChannels, Data.ModelOriginDirectoryPath);
+    WriteTextures(Data, &Data.TextureMemorySizes, &Data.ImageAssetIDs, &Data.ImageResolutions, &Data.ImageChannels, Data.ModelOriginDirectoryPath);
 
 
 }
