@@ -95,6 +95,57 @@ bool ERS_CLASS_ModelWriter::ReadFile(std::string FilePath, ERS_STRUCT_IOData* Ou
 
 }
 
+void ERS_CLASS_ModelWriter::MergeTextures(ERS_STRUCT_Model* Model, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures) {
+
+    // Create Pair Of All Textures With Opacity/Alpha Maps
+    std::vector<std::pair<std::string, std::string>> OpacityAlphaMaps;
+    for (unsigned int i = 0; i < Model->Meshes.size(); i++) {
+
+        // Find Matching Types For The Same Mesh
+        std::pair<std::string, std::string> Match = FindTextureMatches(&Model->Meshes[i], "texture_opacity", "texture_diffuse");
+
+        // If Not Empty (Matching Failed) And It's Not Already In The Opacity Map, Add It
+        if (Match != std::make_pair(std::string(""), std::string(""))) {
+
+            bool InArray = false;
+            for (unsigned int x = 0; x < OpacityAlphaMaps.size(); x++) {
+                if (OpacityAlphaMaps[x] == Match) {
+                    InArray = true;
+                    break;
+                } 
+            }
+            if (!InArray) {
+
+                Logger_->Log(std::string("Found Opacity Map For Diffuse Texture '") + Match.second + "', Adding To Merge Queue", 2);
+                OpacityAlphaMaps.push_back(Match);
+            }
+
+        }
+    }
+
+    // Iterate Over All Matches, Merge The Two
+    for (unsigned int i = 0; i < OpacityAlphaMaps.size(); i++) {
+        
+        // Get Alpha, Diffuse From Real Loaded Texture Maps
+        FIBITMAP* AlphaTexture = FindTextureBitmap(OpacityAlphaMaps[i].first, LoadedTextures);
+        FIBITMAP* DiffuseTexture = FindTextureBitmap(OpacityAlphaMaps[i].second, LoadedTextures);
+
+        // Merge Together (If Images Are Not NULL)
+        if (AlphaTexture != NULL && DiffuseTexture != NULL) {
+            FIBITMAP* AlphaChannel = FreeImage_GetChannel(AlphaTexture, FICC_ALPHA);
+            FreeImage_SetChannel(DiffuseTexture, AlphaChannel, FICC_ALPHA);
+            Logger_->Log(std::string("Merging Opacity Map For Texture '") + OpacityAlphaMaps[i].second + "'", 2);
+
+        }
+
+        // Delete ALpha Texture
+        DeleteTextureBitmap(OpacityAlphaMaps[i].first, LoadedTextures);
+
+    }
+
+}
+
+
 void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::vector<std::vector<int>>* TextureImageChannels, std::string AssetPath, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
     // Create List Of Texture Files To Be Copied

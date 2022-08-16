@@ -92,7 +92,19 @@ private:
      */
     bool ReadFile(std::string Path, ERS_STRUCT_IOData* IOData);
 
+    /**
+     * @brief Calculates the bounding box of the model and it's offset
+     * 
+     * @param Model
+     */
+    void DetectBoundingBox(ERS_STRUCT_Model* Model);
 
+    /**
+     * @brief Sets metadata parameters for number of vertices and indices in the model
+     * 
+     * @param Model 
+     */
+    void CalculateTotalVertsIndices(ERS_STRUCT_Model* Model);
    
 
     /**
