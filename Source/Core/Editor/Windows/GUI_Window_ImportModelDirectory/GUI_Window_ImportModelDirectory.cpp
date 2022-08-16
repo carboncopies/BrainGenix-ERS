@@ -51,6 +51,7 @@ void GUI_Window_ImportModelDirectory::Draw() {
             for (const auto &Entry : std::filesystem::recursive_directory_iterator(Path)) {
                 std::string FilePath{Entry.path().u8string()};
                 if (EndsWith(FilePath, ".fbx") || EndsWith(FilePath, ".dae") || EndsWith(FilePath, ".obj") || EndsWith(FilePath, ".gltf") || EndsWith(FilePath, ".glb")) {
+                    SystemUtils_->Logger_->Log(std::string("Adding Model '") + FilePath + "' To Import Queue", 4);
                     FilePaths.push_back(FilePath);
                 }
 
