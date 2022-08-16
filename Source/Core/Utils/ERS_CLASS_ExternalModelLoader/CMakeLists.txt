@@ -17,7 +17,10 @@ add_library(ERS_CLASS_ExternalModelLoader
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_CLASS_ExternalModelLoader
-    ERS_CLASS_LoggingSystem
+    yaml-cpp
+    glm
+    assimp
+    FreeImage
     )
 
 # Link Internal Libs
