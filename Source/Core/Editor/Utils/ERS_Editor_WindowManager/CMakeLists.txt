@@ -51,6 +51,9 @@ target_link_libraries(ERS_Editor_WindowManager
     GUI_Window_NewProject
     GUI_Window_AssetStreamingSettings
 
+    GUI_Window_ImportModel
+    GUI_Window_ImportModelDirectory
+
     )
 
 target_include_directories(ERS_Editor_WindowManager PUBLIC ./)
