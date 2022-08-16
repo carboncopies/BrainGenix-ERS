@@ -35,6 +35,10 @@
 #include <GUI_Window_NewProject.h>
 #include <GUI_Window_AssetStreamingSettings.h>
 
+#include <GUI_Window_ImportModel.h>
+#include <GUI_Window_ImportModelDirectory.h>
+
+
 /**
  * @brief This structure holds unique pointers to all windows that are instantiated by the GUI.
  * When adding a new window, add a unique_ptr here and update the WindowManager as well so that it's updated every frame.
