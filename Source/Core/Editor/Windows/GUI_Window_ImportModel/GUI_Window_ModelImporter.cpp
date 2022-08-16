@@ -125,58 +125,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
 
 
 
-    // Generate Metadata
-    YAML::Emitter MetadataEmitter;
-    MetadataEmitter<<YAML::BeginMap;
-
-    MetadataEmitter<<YAML::Key<<"Name"<<YAML::Value<<AssetPath;
-    MetadataEmitter<<YAML::Key<<"FormatVersion"<<YAML::Value<<"0.0.1";
-    MetadataEmitter<<YAML::Key<<"ModelID"<<YAML::Value<<ModelID;
-
-
-
-
-    MetadataEmitter<<YAML::Key<<"Textures";
-    MetadataEmitter<<YAML::Key<<YAML::BeginMap;
-
-    // Iterate Over All Textures
-    SystemUtils_->Logger_->Log("Saving Texture Information To ERS Metadata Header", 4);
-    for (unsigned int i = 0; i < TextureList_.size(); i++) {
-
-        // Set Path For Each Texture, Iterate OVer All Levels Of This Texture
-        std::string TexturePath = TextureNames_[i];//TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1));
-        SystemUtils_->Logger_->Log(std::string("Saving Information For Texture '") + TexturePath + "'", 3);
-        MetadataEmitter<<YAML::Key<<TexturePath<<YAML::Value<<YAML::BeginMap;
-
-        for (unsigned int TextureLevel = 0; TextureLevel < TextureMemorySizes[i].size(); TextureLevel++) {
-            MetadataEmitter<<YAML::Key<<(TextureMemorySizes[i].size() - 1) - TextureLevel<<YAML::Value<<YAML::BeginMap;
-
-            MetadataEmitter<<YAML::Key<<"TextureLevelAssetID"<<YAML::Value<<ImageAssetIDs[i][TextureLevel];
-            MetadataEmitter<<YAML::Key<<"TextureLevelMemorySizeBytes"<<YAML::Value<<TextureMemorySizes[i][TextureLevel];
-            MetadataEmitter<<YAML::Key<<"TextureLevelResolutionX"<<YAML::Value<<ImageResolutions[i][TextureLevel].first;
-            MetadataEmitter<<YAML::Key<<"TextureLevelResolutionY"<<YAML::Value<<ImageResolutions[i][TextureLevel].second;
-            MetadataEmitter<<YAML::Key<<"TextureLevelNumberChannels"<<YAML::Value<<ImageChannels[i][TextureLevel];
-
-            MetadataEmitter<<YAML::EndMap;
-        }
-        MetadataEmitter<<YAML::EndMap;
-    }
-    MetadataEmitter<<YAML::EndMap;
-
-
-    // Write Vert Info
-    MetadataEmitter<<YAML::Key<<"Vertices"<<YAML::Value<<Model.TotalVertices_;
-    MetadataEmitter<<YAML::Key<<"Indices"<<YAML::Value<<Model.TotalIndices_;
-
-    // Write Bounding Box + Offset Info
-    MetadataEmitter<<YAML::Key<<"BoundingBoxX"<<YAML::Value<<Model.BoxScale_.x;
-    MetadataEmitter<<YAML::Key<<"BoundingBoxY"<<YAML::Value<<Model.BoxScale_.y;
-    MetadataEmitter<<YAML::Key<<"BoundingBoxZ"<<YAML::Value<<Model.BoxScale_.z;
-    MetadataEmitter<<YAML::Key<<"OffsetX"<<YAML::Value<<Model.BoxOffset_.x;
-    MetadataEmitter<<YAML::Key<<"OffsetY"<<YAML::Value<<Model.BoxOffset_.y;
-    MetadataEmitter<<YAML::Key<<"OffsetZ"<<YAML::Value<<Model.BoxOffset_.z;
     
-    MetadataEmitter<<YAML::EndMap;
 
 
     // Write Metadata

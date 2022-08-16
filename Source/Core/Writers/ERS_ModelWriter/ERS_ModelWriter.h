@@ -42,10 +42,10 @@ private:
     /**
      * @brief Generate YAML metadata from the model object.
      * 
-     * @param Model 
+     * @param ModelData 
      * @return YAML::Node 
      */
-    std::string GenerateModelMetadata(ERS_STRUCT_Model* Model);
+    std::string GenerateModelMetadata(ERS_STRUCT_ModelWriterData &ModelData);
 
 
     /**
