@@ -2,42 +2,35 @@
 # This file is part of the BrainGenix-ERS Environment Rendering System #
 ########################################################################
 
+
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Menu_File
+add_library(GUI_Window_ImportModel
 
             # Add Source Files (.cpp)
-            "GUI_Menu_File.cpp"
+            "GUI_Window_ImportModel.cpp"
+
 
             # Add Header Files (.h)
-            "GUI_Menu_File.h"
-
-
+            "GUI_Window_ImportModel.h"
+            
             ${BACKWARD_ENABLE}
             )
-
+set_property(TARGET GUI_Window_ImportModel PROPERTY CXX_STANDARD 17)
+            
 # Link 3rd Party Libs
-target_link_libraries(Menu_File
+target_link_libraries(GUI_Window_ImportModel
     IMGUI
-    yaml-cpp
+    ImGuiFileDialog
     )
 
 # Link Internal Libs
-target_link_libraries(Menu_File
+target_link_libraries(GUI_Window_ImportModel
     ERS_CLASS_LoggingSystem
+
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
 
-    ERS_Editor_WindowManager
-    
-    ERS_ProjectLoader
-    ERS_SceneWriter
-    ERS_SceneManager
-
-    ERS_STRUCT_Scene
-
-    GUI_Window_ProjectSettings
-
-    ERS_CLASS_VisualRenderer
+    GUI_Window_ImportProgressBar
     )
 
-target_include_directories(Menu_File PUBLIC ./)
+target_include_directories(GUI_Window_ImportModel PUBLIC ./)

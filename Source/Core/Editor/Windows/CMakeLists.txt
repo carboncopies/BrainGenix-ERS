@@ -19,6 +19,9 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_TestEditor)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_ShaderEditor)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_ScriptEditor)
 
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_ImportModel)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_ImportModelDirectory)
+
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_OpenProject)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Window_NewProject)
 

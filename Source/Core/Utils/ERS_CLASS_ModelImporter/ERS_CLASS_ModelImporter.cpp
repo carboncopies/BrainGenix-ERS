@@ -2,22 +2,26 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_Editor_ImportAsset.h>
+#include <ERS_CLASS_ModelImporter.h>
 
 
-ERS_CLASS_ImportAsset::ERS_CLASS_ImportAsset(ERS_STRUCT_SystemUtils* SystemUtils) {
+ERS_CLASS_ModelImporter::ERS_CLASS_ModelImporter(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
-    SystemUtils_->Logger_->Log("Initializing Asset Importer Backend", 5);
+    SystemUtils_->Logger_->Log("Initializing Model Importer Subsystem", 5);
+
+    // Setup Classes
+    ModelWriter_ = std::make_unique<ERS_CLASS_ModelWriter>(SystemUtils_->Logger_.get(), SystemUtils_->ERS_IOSubsystem_.get());
+    ModelLoader_ = std::make_unique<ERS_CLASS_ExternalModelLoader>(SystemUtils_);
 
     SystemUtils_->Logger_->Log("Starting Asset Import Thread", 4);
-    ImportThread_ = std::thread(&ERS_CLASS_ImportAsset::ImportThread, this);
+    ImportThread_ = std::thread(&ERS_CLASS_ModelImporter::ImportThread, this);
     SystemUtils_->Logger_->Log("Started Asset Import Thread", 3);
 
 }
 
 
-ERS_CLASS_ImportAsset::~ERS_CLASS_ImportAsset() {
+ERS_CLASS_ModelImporter::~ERS_CLASS_ModelImporter() {
 
     SystemUtils_->Logger_->Log("Asset Importer Backend Destructor Called", 6);
 
@@ -32,10 +36,8 @@ ERS_CLASS_ImportAsset::~ERS_CLASS_ImportAsset() {
 }
 
 // Item Import Thread
-void ERS_CLASS_ImportAsset::ImportThread() {
+void ERS_CLASS_ModelImporter::ImportThread() {
 
-    // Create Importer Instance
-    std::unique_ptr<ERS_CLASS_ModelImporter> AssetImporter = std::make_unique<ERS_CLASS_ModelImporter>(SystemUtils_);
 
     while (true) {
 
@@ -57,7 +59,12 @@ void ERS_CLASS_ImportAsset::ImportThread() {
             LockAssetImportQueue_.unlock();
 
 
-            AssetImporter->ImportModel(AssetPath);
+            ERS_STRUCT_Model Model;
+            ERS_STRUCT_ModelWriterData ModelData;
+            ModelData.Model = &Model;
+            ModelLoader_->LoadModel(AssetPath, ModelData);
+            ModelWriter_->WriteModel(ModelData);
+
 
             LockAssetImportQueue_.lock();
             TotalItemsProcessed_++;
@@ -69,14 +76,15 @@ void ERS_CLASS_ImportAsset::ImportThread() {
             TotalItemsProcessed_ = 0;
             LockAssetImportQueue_.unlock();
 
-            std::this_thread::sleep_for(std::chrono::milliseconds(50));
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         }
 
     }
 
 }
 
-void ERS_CLASS_ImportAsset::AddToImportQueue(std::vector<std::string> AssetPaths) {
+
+void ERS_CLASS_ModelImporter::AddToImportQueue(std::vector<std::string> AssetPaths) {
 
     SystemUtils_->Logger_->Log("Appending Assets To Asset Import Queue", 5);
     LockAssetImportQueue_.lock();
@@ -93,18 +101,13 @@ void ERS_CLASS_ImportAsset::AddToImportQueue(std::vector<std::string> AssetPaths
     LockAssetImportQueue_.unlock();
 
 }
-
-
-
-long ERS_CLASS_ImportAsset::GetTotalItemsToImport() {
+long ERS_CLASS_ModelImporter::GetTotalItemsToImport() {
     return TotalItemsToImport_;
 }
-
-long ERS_CLASS_ImportAsset::GetTotalItemsImported() {
+long ERS_CLASS_ModelImporter::GetTotalItemsImported() {
     return TotalItemsProcessed_;
 }
-
-bool ERS_CLASS_ImportAsset::HasJobFinished() {
+bool ERS_CLASS_ModelImporter::HasJobFinished() {
     LockAssetImportQueue_.lock();
     bool Out = HasJobFinished_;
     LockAssetImportQueue_.unlock();

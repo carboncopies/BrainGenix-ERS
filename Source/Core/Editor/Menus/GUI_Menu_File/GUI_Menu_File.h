@@ -23,7 +23,6 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
 
-#include <GUI_ImportAsset.h>
 
 #include <ERS_ProjectLoader.h>
 #include <ERS_SceneWriter.h>
@@ -50,7 +49,6 @@ private:
 
     std::unique_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
     ERS_CLASS_SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
-    std::unique_ptr<GUI_ImportAsset> ImportAsset_; /**<Pointer To Asset Importer System*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer To Project Utils Instance*/
 
 

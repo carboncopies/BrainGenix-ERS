@@ -17,14 +17,16 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_Editor_ModelImporter.h>
+#include <ERS_STRUCT_ModelWriterData.h>
 
+#include <ERS_ModelWriter.h>
+#include <ERS_CLASS_ExternalModelLoader.h>
 
 /**
  * @brief This class provides the backend to the import asset option within the file menu.
  *
  */
-class ERS_CLASS_ImportAsset {
+class ERS_CLASS_ModelImporter {
 
     private:
 
@@ -35,6 +37,9 @@ class ERS_CLASS_ImportAsset {
         bool HasJobFinished_ = false; /**<Indicate If A Job Has Finished*/
         std::thread ImportThread_; /**<Import Processor Thread*/
         std::vector<std::string> AssetImportQueue_; /**<List of assets to be imported, accessed by other threads so use mutex to control access*/
+
+        std::unique_ptr<ERS_CLASS_ModelWriter>         ModelWriter_; /**<Instance of the model writer, used to save models to the ERS project*/
+        std::unique_ptr<ERS_CLASS_ExternalModelLoader> ModelLoader_; /**<Used to load models from outside the ERS project*/
 
         // Stats
         long TotalItemsToImport_ = 0; /**<Stats for the loading bar*/
@@ -51,13 +56,13 @@ class ERS_CLASS_ImportAsset {
          * 
          * @param SystemUtils 
          */
-        ERS_CLASS_ImportAsset(ERS_STRUCT_SystemUtils* SystemUtils);
+        ERS_CLASS_ModelImporter(ERS_STRUCT_SystemUtils* SystemUtils);
 
         /**
          * @brief Destroy the ers class importasset object
          * 
          */
-        ~ERS_CLASS_ImportAsset();
+        ~ERS_CLASS_ModelImporter();
 
 
         /**
@@ -66,6 +71,8 @@ class ERS_CLASS_ImportAsset {
          * @param AssetPaths 
          */
         void AddToImportQueue(std::vector<std::string> AssetPaths);
+
+
 
         /**
          * @brief Get the Total Subitems Imported number

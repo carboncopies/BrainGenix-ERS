@@ -4,31 +4,26 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_ModelWriter
+add_library(ERS_STRUCT_ModelWriterData 
 
             # Add Source Files (.cpp)
-            "ERS_ModelWriter.cpp"
+            "ERS_STRUCT_ModelWriterData.cpp"
 
             # Add Header Files (.h)
-            "ERS_ModelWriter.h"
-
+            "ERS_STRUCT_ModelWriterData.h"
+            
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_ModelWriter
+target_link_libraries(ERS_STRUCT_ModelWriterData
+    assimp
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_ModelWriter
-    ERS_CLASS_LoggingSystem
+target_link_libraries(ERS_STRUCT_ModelWriterData
     ERS_STRUCT_Model
-    ERS_STRUCT_Scene
-    ERS_STRUCT_Mesh
-    ERS_STRUCT_Texture
-    ERS_InputOutputSubsystem
-    ERS_STRUCT_ModelWriterData
     )
 
-target_include_directories(ERS_ModelWriter PUBLIC ./)
-
+target_include_directories(ERS_STRUCT_ModelWriterData PUBLIC ./)
+set_target_properties(ERS_STRUCT_ModelWriterData PROPERTIES LINKER_LANGUAGE CXX)

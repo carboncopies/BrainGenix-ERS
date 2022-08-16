@@ -35,6 +35,10 @@
 #include <GUI_Window_NewProject.h>
 #include <GUI_Window_AssetStreamingSettings.h>
 
+#include <GUI_Window_ImportModel.h>
+#include <GUI_Window_ImportModelDirectory.h>
+
+
 /**
  * @brief This structure holds unique pointers to all windows that are instantiated by the GUI.
  * When adding a new window, add a unique_ptr here and update the WindowManager as well so that it's updated every frame.
@@ -67,6 +71,9 @@ struct ERS_STRUCT_Windows {
     std::unique_ptr<GUI_Window_OpenProject>            GUI_Window_OpenProject_;
     std::unique_ptr<GUI_Window_NewProject>             GUI_Window_NewProject_;
     std::unique_ptr<GUI_Window_AssetStreamingSettings> GUI_Window_AssetStreamingSettings_;
+
+    std::unique_ptr<GUI_Window_ImportModel>            GUI_Window_ImportModel_;
+    std::unique_ptr<GUI_Window_ImportModelDirectory>   GUI_Window_ImportModelDirectory_;
     
 
 };

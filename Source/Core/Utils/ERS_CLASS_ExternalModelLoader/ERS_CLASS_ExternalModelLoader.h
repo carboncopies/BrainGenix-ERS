@@ -28,7 +28,6 @@
 #include <FreeImage.h>
 
 #include <assimp/Importer.hpp>
-#include <assimp/Exporter.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
@@ -37,6 +36,7 @@
 #include <ERS_STRUCT_Texture.h>
 #include <ERS_STRUCT_Vertex.h>
 #include <ERS_STRUCT_Model.h>
+#include <ERS_STRUCT_ModelWriterData.h>
 
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_IOData.h>
@@ -47,16 +47,14 @@
  * @brief Class for importing models (fbx, gltx, etc.) based on the ASSIMP library
  * 
  */
-class ERS_CLASS_ModelImporter {
+class ERS_CLASS_ExternalModelLoader {
 
 
 private:
 
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointers*/
-    std::vector<std::string> TextureList_; /**<Texture List Vector*/
-    std::vector<std::string> TextureNames_; /**<List of names of the textures*/
-    std::vector<std::string> TextureTypes_; /**<Types of the textures in the texture list*/
+
 
 
     /**
@@ -65,7 +63,7 @@ private:
      * @param Node 
      * @param Scene 
      */
-    void ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory);
+    void ProcessNode(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory);
 
     /**
      * @brief Process Meshes From Model.
@@ -74,7 +72,7 @@ private:
      * @param Scene 
      * @return ERS_STRUCT_Mesh 
      */
-    ERS_STRUCT_Mesh ProcessMesh(ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory);
+    ERS_STRUCT_Mesh ProcessMesh(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory);
 
     /**
      * @brief Load Textures From Model.
@@ -83,7 +81,7 @@ private:
      * @param Type 
      * @param TypeName 
      */
-    void AddTexture(ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory);
+    void AddTexture(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory);
 
 
     /**
@@ -93,20 +91,6 @@ private:
      * @param IOData 
      */
     bool ReadFile(std::string Path, ERS_STRUCT_IOData* IOData);
-
-    /**
-     * @brief Decodes and writes resized textures into the ERS project file.
-     * 
-     * @param Model
-     * @param TextureMemorySizes 
-     * @param ImageAssetIDs 
-     * @param ImageResolutions 
-     * @param ImageChannels
-     * @param AssetPath 
-     * @param Format 
-     * @param MipMaps 
-     */
-    void WriteTextures(ERS_STRUCT_Model* Model, std::vector<std::vector<int>>* TextureMemorySizes, std::vector<std::vector<long>>* ImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* ImageResolutions, std::vector<std::vector<int>>* ImageChannels, std::string AssetPath, FREE_IMAGE_FORMAT Format = FIF_PNG, int MipMaps = 10);
 
     /**
      * @brief Calculates the bounding box of the model and it's offset
@@ -121,14 +105,7 @@ private:
      * @param Model 
      */
     void CalculateTotalVertsIndices(ERS_STRUCT_Model* Model);
-
-    /**
-     * @brief Here, we reduce the number of textures or convert into the expected ERS system
-     * For example, alpha maps are baked into the diffuse map.
-     * 
-     * @param Model 
-     */
-    void MergeTextures(ERS_STRUCT_Model* Model, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures);
+   
 
     /**
      * @brief Handles sorting out the mesh's requested materials
@@ -137,7 +114,23 @@ private:
      * @param Material 
      * @param ModelDirectory 
      */
-    void HandleMeshTextures(ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory);
+    void HandleMeshTextures(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory);
+
+    /**
+     * @brief Finds and loads all the relevant textures into memory.
+     * Cleans up textures as well (merge alpha channels together with diffuse to create 4 channel image rather than 3+!).
+     * 
+     * @param Data 
+     */
+    void ProcessModelTextures(ERS_STRUCT_ModelWriterData &Data);
+
+    /**
+     * @brief Here, we reduce the number of textures or convert into the expected ERS system
+     * For example, alpha maps are baked into the diffuse map.
+     * 
+     * @param Model 
+     */
+    void MergeTextures(ERS_STRUCT_Model* Model, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures);
 
 public:
 
@@ -150,22 +143,27 @@ public:
      * @param Logger 
      * @param TextureLoader 
      */
-    ERS_CLASS_ModelImporter(ERS_STRUCT_SystemUtils*);
+    ERS_CLASS_ExternalModelLoader(ERS_STRUCT_SystemUtils*);
 
     /**
      * @brief Destroy the Model Loader object
      * 
      */
-    ~ERS_CLASS_ModelImporter();
+    ~ERS_CLASS_ExternalModelLoader();
+
 
 
     /**
-     * @brief Import model from given path, return assetID of model metadata.
+     * @brief Loads a model from the given path.
+     * We assume that the ModelData Struct has been initialized before calling this (ie: the model pointer is valid, etc.)
+     * Returns false on failure, true otherwise.
+     * Is thread safe.
      * 
-     * @param AssetPath 
-     * @param FlipTextures 
-     * @return std::vector<long> 
+     * @param ModelFilePath String containing absolute or relative path to the model file. (.fbx/.dae/etc.)
+     * @param ModelData Reference to an instance of the model writer data struct.
+     * @return true 
+     * @return false 
      */
-    long ImportModel(std::string AssetPath);
+    bool LoadModel(std::string ModelFilePath, ERS_STRUCT_ModelWriterData &ModelData);
 
 };

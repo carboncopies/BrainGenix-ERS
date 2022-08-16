@@ -57,6 +57,8 @@ add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_HardwareInformation)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_InputOutputSubsystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ArgumentParser)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_GPURequest)
+add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ExternalModelLoader)
+add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ModelImporter)
 
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_FramerateManager)
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_SceneManager)
@@ -93,6 +95,7 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_SystemUtils)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ProjectUtils)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Project)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ControllerSettings)
+add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ModelWriterData)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ShaderProgramAssetIDs)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_RGBColor)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Viewport)
@@ -132,6 +135,7 @@ target_link_libraries(${PROJECT_NAME}
   # Internal Libs
   ERS_CLASS_GPURequest
   ERS_CLASS_LoggingSystem
+  ERS_CLASS_ModelImporter
 
 
   ERS_CLASS_HardwareInformation

@@ -15,7 +15,6 @@ GUI_Menu_File::GUI_Menu_File(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_Scen
     SystemUtils_->Logger_->Log("Editor Setting Up File Menu", 4);
 
     SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_);
-    ImportAsset_ = std::make_unique<GUI_ImportAsset>(SystemUtils_);
 
 
 }
@@ -54,11 +53,12 @@ void GUI_Menu_File::Draw() {
 
         ImGui::MenuItem("Project Settings", "", &Windows_->GUI_Window_ProjectSettings_->Enabled_);
         ImGui::MenuItem("About", "", &Windows_->GUI_Window_About_->Enabled_);
+
         ImGui::Separator();
 
-        if (ImGui::MenuItem("Import Model")) {
-            ImportAsset_->OpenFileDialog();
-        }
+        ImGui::MenuItem("Import Model", "", &Windows_->GUI_Window_ImportModel_->Enabled_);
+        ImGui::MenuItem("Import Models In Directory", "", &Windows_->GUI_Window_ImportModelDirectory_->Enabled_);
+
         ImGui::Separator();
 
         // Exit Options
@@ -71,7 +71,5 @@ void GUI_Menu_File::Draw() {
     }
 
 
-    // Draw Subwindows
-    ImportAsset_->Draw();
 
 }

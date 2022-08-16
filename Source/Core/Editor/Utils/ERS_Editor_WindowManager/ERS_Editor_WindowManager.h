@@ -48,7 +48,8 @@
 #include <GUI_Window_NewProject.h>
 #include <GUI_Window_AssetStreamingSettings.h>
 
-
+#include <GUI_Window_ImportModel.h>
+#include <GUI_Window_ImportModelDirectory.h>
 
 
 /**
