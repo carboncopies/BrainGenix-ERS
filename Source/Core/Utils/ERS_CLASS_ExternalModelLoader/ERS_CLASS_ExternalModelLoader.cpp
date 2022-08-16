@@ -89,49 +89,35 @@ void ERS_CLASS_ExternalModelLoader::CalculateTotalVertsIndices(ERS_STRUCT_Model*
 // Load Model From File
 bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_ModelWriterData &Data) {
 
+    SystemUtils_->Logger_->Log(std::string("Loading External Model '") + ModelPath + "'", 5);
 
+    // Calculate Paths
+    std::string ModelDirectory = ModelPath.substr(0, std::string(ModelPath).find_last_of("/"));
+    std::string ModelFileName = ModelPath.substr(ModelPath.find_last_of("/") + 1, ModelPath.size() - 1);
 
-}
-long ERS_CLASS_ExternalModelLoader::ImportModel(std::string AssetPath) {
-
-
-
-    ERS_STRUCT_Model Model;
-    TextureList_ = std::vector<std::string>();
-    TextureNames_ = std::vector<std::string>();
-
-    // Get Model Path
-    std::string ModelDirectory = AssetPath.substr(0, std::string(AssetPath).find_last_of("/"));
-    std::string ModelFileName = AssetPath.substr(AssetPath.find_last_of("/") + 1, AssetPath.size() - 1);
-
-    // Read File
+    // Load Via Assimp
     Assimp::Importer Importer;
-    SystemUtils_->Logger_->Log(std::string(std::string("Loading Model At File Path: ") + std::string(AssetPath)).c_str(), 3);
-    const aiScene* Scene = Importer.ReadFile(AssetPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_PreTransformVertices | aiProcess_JoinIdenticalVertices);
-
-    // Log Errors
+    const aiScene* Scene = Importer.ReadFile(ModelPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_PreTransformVertices | aiProcess_JoinIdenticalVertices);
     if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
-        SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
+        SystemUtils_->Logger_->Log(std::string(std::string("External Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
         return -1;
     }
 
-    // Process Root Node Recursively, Identify Textures/Files
-    ProcessNode(&Model, Scene->mRootNode, Scene, ModelDirectory);
-    DetectBoundingBox(&Model);
-    CalculateTotalVertsIndices(&Model);
+    // Process Geometry, Identify Textures
+    ProcessNode(&Data.Model, Scene->mRootNode, Scene, ModelDirectory);
+    DetectBoundingBox(&Data.Model);
+    CalculateTotalVertsIndices(&Data.Model);
 
+    // Update Struct
+    Data.ModelOriginDirectoryPath = AssetPath;
+    Data.ModelScene               = Scene;
+    Data.ModelFileName            = ModelFileName;
 
-    ERS_STRUCT_ModelWriterData ModelWriterData = ERS_STRUCT_ModelWriterData();
-    ModelWriterData.Model                    = &Model;
-    ModelWriterData.ModelOriginDirectoryPath = AssetPath;
-    ModelWriterData.ModelScene               = Scene;
-    ModelWriterData.ModelFileName            = ModelFileName;
-    
+}
+
 
 
     //todo:
-
-    // move this class to it's own directory under utils or something with the name of "ERS_CLASS_ExternalModelLoader"
     // the model loading part of the importer can be separated as well so we have a generic model importer system - could be very beneficial to do so
     // then, add the modelwriter to "GUI_Window_ImportAsset" so it can proeprly export things
     // then moake it write those models with this class (basically, have the importer load the model with this file, then write it with ERS_modelwriter)
@@ -144,9 +130,6 @@ long ERS_CLASS_ExternalModelLoader::ImportModel(std::string AssetPath) {
 
     
     
-    return MetadataID;
-}
-
 
 
 void ERS_CLASS_ExternalModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory) {
