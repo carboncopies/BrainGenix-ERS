@@ -52,6 +52,7 @@ void GUI_Window_ImportModel::Draw() {
 
     ImGuiFileDialog::Instance()->Close();
     AlreadyOpen_ = false;
+    Enabled_ = false;
     }
 
 
