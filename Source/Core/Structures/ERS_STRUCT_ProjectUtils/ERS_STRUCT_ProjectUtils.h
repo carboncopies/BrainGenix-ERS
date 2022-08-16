@@ -33,5 +33,6 @@ struct ERS_STRUCT_ProjectUtils {
     std::unique_ptr<ERS_CLASS_ProjectLoader> ProjectLoader_; /**<Shared Pointer To Project Loader*/
     std::unique_ptr<ERS_CLASS_ProjectManager> ProjectManager_; /**<Shared Pointer To Projet Manager Instance*/
     std::unique_ptr<ERS_CLASS_ProjectWriter> ProjectWriter_; /**<Shared Pointer to project writer instance*/
+    std::unique_ptr<ERS_CLASS_ModelImporter> ModelImporter_; /**<Pointer to model importer instance*/
 
 };
