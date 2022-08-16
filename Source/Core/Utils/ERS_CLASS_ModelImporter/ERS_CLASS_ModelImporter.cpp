@@ -83,6 +83,7 @@ void ERS_CLASS_ModelImporter::ImportThread() {
 
 }
 
+
 void ERS_CLASS_ModelImporter::AddToImportQueue(std::vector<std::string> AssetPaths) {
 
     SystemUtils_->Logger_->Log("Appending Assets To Asset Import Queue", 5);
@@ -100,8 +101,6 @@ void ERS_CLASS_ModelImporter::AddToImportQueue(std::vector<std::string> AssetPat
     LockAssetImportQueue_.unlock();
 
 }
-
-
 long ERS_CLASS_ModelImporter::GetTotalItemsToImport() {
     return TotalItemsToImport_;
 }
