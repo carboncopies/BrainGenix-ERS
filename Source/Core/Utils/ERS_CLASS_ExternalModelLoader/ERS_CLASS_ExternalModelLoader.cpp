@@ -135,7 +135,6 @@ void ERS_CLASS_ExternalModelLoader::DetectBoundingBox(ERS_STRUCT_Model* Model) {
     SystemUtils_->Logger_->Log(LogMsg, 3);
 
 }
-
 void ERS_CLASS_ExternalModelLoader::CalculateTotalVertsIndices(ERS_STRUCT_Model* Model) {
 
     // Get Vert/Indice Metadata Info
@@ -152,7 +151,6 @@ void ERS_CLASS_ExternalModelLoader::CalculateTotalVertsIndices(ERS_STRUCT_Model*
     }
 
 }
-
 void ERS_CLASS_ExternalModelLoader::MergeTextures(ERS_STRUCT_Model* Model, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures) {
 
     // Create Pair Of All Textures With Opacity/Alpha Maps
@@ -202,7 +200,6 @@ void ERS_CLASS_ExternalModelLoader::MergeTextures(ERS_STRUCT_Model* Model, std::
     }
 
 }
-
 void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterData &Data) {
 
     // Create List Of Texture Files To Be Copied
@@ -306,6 +303,9 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
     // Remove Duplicate Stuff (Like Alpha Maps), Just Generally Consolidate Stuff
     MergeTextures(Data.Model, &ImageBytes);
 
+
+    Data.ImageBytes = ImageBytes;
+
 }
 
 // Load Model From File
@@ -335,6 +335,9 @@ bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_
     Data.ModelOriginDirectoryPath = ModelPath;
     Data.ModelScene               = Scene;
     Data.ModelFileName            = ModelFileName;
+
+    // Load Textures
+    ProcessModelTextures(Data);
 
     return true;
 }

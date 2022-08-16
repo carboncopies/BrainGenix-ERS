@@ -31,10 +31,11 @@ struct ERS_STRUCT_ModelWriterData {
     std::vector<std::string> TextureNames; /**<List of names of the textures*/
     std::vector<std::string> TextureTypes; /**<Types of the textures in the texture list*/
     
-    std::vector<std::vector<int>>                 TextureMemorySizes;
-    std::vector<std::vector<long>>                ImageAssetIDs;
-    std::vector<std::vector<std::pair<int, int>>> ImageResolutions;
-    std::vector<std::vector<int>>                 ImageChannels;
+    std::vector<std::pair<std::string, FIBITMAP*>> ImageBytes;
+    std::vector<std::vector<int>>                  TextureMemorySizes;
+    std::vector<std::vector<long>>                 ImageAssetIDs;
+    std::vector<std::vector<std::pair<int, int>>>  ImageResolutions;
+    std::vector<std::vector<int>>                  ImageChannels;
 
 
 };
