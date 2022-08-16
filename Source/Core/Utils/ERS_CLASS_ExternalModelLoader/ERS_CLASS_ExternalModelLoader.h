@@ -63,7 +63,7 @@ private:
      * @param Node 
      * @param Scene 
      */
-    void ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory);
+    void ProcessNode(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory);
 
     /**
      * @brief Process Meshes From Model.

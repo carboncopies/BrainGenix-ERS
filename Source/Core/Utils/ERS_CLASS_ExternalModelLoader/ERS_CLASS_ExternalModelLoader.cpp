@@ -327,7 +327,7 @@ bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_
     SystemUtils_->Logger_->Log("Finished Loading External Model, Processing Geometry/Textures", 3);
 
     // Process Geometry, Identify Textures
-    ProcessNode(Data.Model, Scene->mRootNode, Scene, ModelDirectory);
+    ProcessNode(Data, Data.Model, Scene->mRootNode, Scene, ModelDirectory);
     DetectBoundingBox(Data.Model);
     CalculateTotalVertsIndices(Data.Model);
 
@@ -358,12 +358,12 @@ bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_
     
 
 
-void ERS_CLASS_ExternalModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory) {
+void ERS_CLASS_ExternalModelLoader::ProcessNode(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory) {
 
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
-        Model->Meshes.push_back(ProcessMesh(Model, Mesh, Scene, ModelDirectory));
+        Model->Meshes.push_back(ProcessMesh(Data, Model, Mesh, Scene, ModelDirectory));
     }
 
     // Process Children Nodes
@@ -378,22 +378,22 @@ void ERS_CLASS_ExternalModelLoader::HandleMeshTextures(ERS_STRUCT_ModelWriterDat
 
     SystemUtils_->Logger_->Log("Identifying Mesh Textures", 3);
     AddTexture(Data, Model, Material, aiTextureType_AMBIENT, "texture_ambient", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_AMBIENT_OCCLUSION, "texture_ambient_occlusion", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_BASE_COLOR, "texture_base_color", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_DIFFUSE, "texture_diffuse", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_DIFFUSE_ROUGHNESS, "texture_diffuse_roughness", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_DISPLACEMENT, "texture_displacement", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_EMISSION_COLOR, "texture_emission_color", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_EMISSIVE, "texture_emissive", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_HEIGHT, "texture_height", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_LIGHTMAP, "texture_lightmap", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_METALNESS, "texture_metalness", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_NORMAL_CAMERA, "texture_normal_camera", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_NORMALS, "texture_normals", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_OPACITY, "texture_opacity", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_REFLECTION, "texture_reflection", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_SHININESS, "texture_shininess", ModelDirectory);
-    AddTexture(Model, Material, aiTextureType_SPECULAR, "texture_specular", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_AMBIENT_OCCLUSION, "texture_ambient_occlusion", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_BASE_COLOR, "texture_base_color", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_DIFFUSE, "texture_diffuse", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_DIFFUSE_ROUGHNESS, "texture_diffuse_roughness", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_DISPLACEMENT, "texture_displacement", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_EMISSION_COLOR, "texture_emission_color", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_EMISSIVE, "texture_emissive", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_HEIGHT, "texture_height", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_LIGHTMAP, "texture_lightmap", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_METALNESS, "texture_metalness", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_NORMAL_CAMERA, "texture_normal_camera", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_NORMALS, "texture_normals", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_OPACITY, "texture_opacity", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_REFLECTION, "texture_reflection", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_SHININESS, "texture_shininess", ModelDirectory);
+    AddTexture(Data, Model, Material, aiTextureType_SPECULAR, "texture_specular", ModelDirectory);
     SystemUtils_->Logger_->Log("Finshed Mesh Texture Identification", 4);
 
 }
