@@ -71,6 +71,9 @@ struct ERS_STRUCT_Windows {
     std::unique_ptr<GUI_Window_OpenProject>            GUI_Window_OpenProject_;
     std::unique_ptr<GUI_Window_NewProject>             GUI_Window_NewProject_;
     std::unique_ptr<GUI_Window_AssetStreamingSettings> GUI_Window_AssetStreamingSettings_;
+
+    std::unique_ptr<GUI_Window_ImportModel>            GUI_Window_ImportModel_;
+    std::unique_ptr<GUI_Window_ImportModelDirectory>   GUI_Window_ImportModelDirectory_;
     
 
 };
