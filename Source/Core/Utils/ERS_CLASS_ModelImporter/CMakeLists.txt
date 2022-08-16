@@ -25,12 +25,12 @@ target_link_libraries(ERS_CLASS_ModelImporter
 
 # Link Internal Libs
 target_link_libraries(ERS_CLASS_ModelImporter
-    ERS_STRUCT_Mesh
     ERS_STRUCT_Model
-    ERS_STRUCT_Vertex
     ERS_STRUCT_ModelWriterData
     ERS_STRUCT_SystemUtils
-    ERS_STRUCT_IOData
+
+    ERS_CLASS_ExternalModelLoader
+    ERS_ModelWriter
     )
 
 target_include_directories(ERS_CLASS_ModelImporter PUBLIC ./)

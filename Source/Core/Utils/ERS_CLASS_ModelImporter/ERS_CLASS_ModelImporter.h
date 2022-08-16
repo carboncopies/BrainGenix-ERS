@@ -17,8 +17,10 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_Editor_ModelImporter.h>
+#include <ERS_STRUCT_ModelWriterData.h>
 
+#include <ERS_ModelWriter.h>
+#include <ERS_CLASS_ExternalModelLoader.h>
 
 /**
  * @brief This class provides the backend to the import asset option within the file menu.
