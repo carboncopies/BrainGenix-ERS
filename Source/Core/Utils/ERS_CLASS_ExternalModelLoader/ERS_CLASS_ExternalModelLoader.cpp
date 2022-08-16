@@ -494,7 +494,7 @@ bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_
 
     // Update Struct
     Data.ModelOriginDirectoryPath = ModelPath;
-    Data.ModelScene               = std::unique_ptr<aiScene>(*Scene);
+    Data.ModelScene               = std::make_unique<aiScene>(*Scene);
     Data.ModelFileName            = ModelFileName;
 
     // Load Textures
