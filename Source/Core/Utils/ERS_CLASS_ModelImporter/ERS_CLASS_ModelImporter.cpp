@@ -10,6 +10,8 @@ ERS_CLASS_ModelImporter::ERS_CLASS_ModelImporter(ERS_STRUCT_SystemUtils* SystemU
     SystemUtils_ = SystemUtils;
     SystemUtils_->Logger_->Log("Initializing Model Importer Subsystem", 5);
 
+    // Setup Classes
+
     SystemUtils_->Logger_->Log("Starting Asset Import Thread", 4);
     ImportThread_ = std::thread(&ERS_CLASS_ModelImporter::ImportThread, this);
     SystemUtils_->Logger_->Log("Started Asset Import Thread", 3);
