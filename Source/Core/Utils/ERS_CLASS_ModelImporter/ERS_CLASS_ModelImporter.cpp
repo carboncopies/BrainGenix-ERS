@@ -76,7 +76,7 @@ void ERS_CLASS_ModelImporter::ImportThread() {
             TotalItemsProcessed_ = 0;
             LockAssetImportQueue_.unlock();
 
-            std::this_thread::sleep_for(std::chrono::milliseconds(50));
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         }
 
     }
