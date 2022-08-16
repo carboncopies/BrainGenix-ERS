@@ -27,38 +27,39 @@ void GUI_Window_ImportModelDirectory::Draw() {
 
     if (Enabled_) {
 
+    }
 
-        // Draw File Dialog
-        if (ImGuiFileDialog::Instance()->Display("Import Model", ImGuiWindowFlags_None, ImVec2(800, 500))) {
+    // Draw File Dialog
+    if (ImGuiFileDialog::Instance()->Display("Import Model", ImGuiWindowFlags_None, ImVec2(800, 500))) {
 
 
-            if (ImGuiFileDialog::Instance()->IsOk())
-            {
-                // Get List Of Files From Selection, Convert To Vector
-                std::vector<std::string> FilePaths;
-                std::map<std::string, std::string> selection = ImGuiFileDialog::Instance()->GetSelection(); // multiselection
-                for (const auto& elem:selection) {
-                    FilePaths.push_back(elem.second);
-                }
-
-                // Add To Queue, Launch Import
-                //AssetImportBackend_->AddToImportQueue(FilePaths);
-                ProjectUtils_->ModelImporter_->AddToImportQueue(FilePaths);
-                GUI_Window_ImportProgressBar_->Enabled_ = true;
-
+        if (ImGuiFileDialog::Instance()->IsOk())
+        {
+            // Get List Of Files From Selection, Convert To Vector
+            std::vector<std::string> FilePaths;
+            std::map<std::string, std::string> selection = ImGuiFileDialog::Instance()->GetSelection(); // multiselection
+            for (const auto& elem:selection) {
+                FilePaths.push_back(elem.second);
             }
 
-        ImGuiFileDialog::Instance()->Close();
+            // Add To Queue, Launch Import
+            //AssetImportBackend_->AddToImportQueue(FilePaths);
+            ProjectUtils_->ModelImporter_->AddToImportQueue(FilePaths);
+            GUI_Window_ImportProgressBar_->Enabled_ = true;
+
         }
 
-
-        // Update Window Stats
-        if (GUI_Window_ImportProgressBar_->Enabled_) {
-            GUI_Window_ImportProgressBar_->UpdateTotalItems(ProjectUtils_->ModelImporter_->GetTotalItemsImported(), ProjectUtils_->ModelImporter_->GetTotalItemsToImport());
-            GUI_Window_ImportProgressBar_->UpdateJobState(ProjectUtils_->ModelImporter_->HasJobFinished());
-        }
-
+    ImGuiFileDialog::Instance()->Close();
     }
+
+
+    // Update Window Stats
+    if (GUI_Window_ImportProgressBar_->Enabled_ && Enabled_) {
+        GUI_Window_ImportProgressBar_->UpdateTotalItems(ProjectUtils_->ModelImporter_->GetTotalItemsImported(), ProjectUtils_->ModelImporter_->GetTotalItemsToImport());
+        GUI_Window_ImportProgressBar_->UpdateJobState(ProjectUtils_->ModelImporter_->HasJobFinished());
+        }
+
+    
 
 }
 
