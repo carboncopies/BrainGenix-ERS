@@ -8,7 +8,7 @@
 ERS_CLASS_ModelImporter::ERS_CLASS_ModelImporter(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
-    SystemUtils_->Logger_->Log("Initializing Asset Importer Backend", 5);
+    SystemUtils_->Logger_->Log("Initializing Model Importer Subsystem", 5);
 
     SystemUtils_->Logger_->Log("Starting Asset Import Thread", 4);
     ImportThread_ = std::thread(&ERS_CLASS_ModelImporter::ImportThread, this);

@@ -38,6 +38,9 @@ class ERS_CLASS_ImportAsset {
         std::thread ImportThread_; /**<Import Processor Thread*/
         std::vector<std::string> AssetImportQueue_; /**<List of assets to be imported, accessed by other threads so use mutex to control access*/
 
+        ERS_CLASS_ModelWriter         ModelWriter_; /**<Instance of the model writer, used to save models to the ERS project*/
+        ERS_CLASS_ExternalModelLoader ModelLoader_; /**<Used to load models from outside the ERS project*/
+
         // Stats
         long TotalItemsToImport_ = 0; /**<Stats for the loading bar*/
         long TotalItemsProcessed_ = 0; /**<Stats for the loading bar*/
