@@ -135,6 +135,7 @@ target_link_libraries(${PROJECT_NAME}
   # Internal Libs
   ERS_CLASS_GPURequest
   ERS_CLASS_LoggingSystem
+  ERS_CLASS_ModelImporter
 
 
   ERS_CLASS_HardwareInformation
