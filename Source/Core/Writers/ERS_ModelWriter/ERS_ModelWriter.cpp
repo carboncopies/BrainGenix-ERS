@@ -519,6 +519,7 @@ std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(ERS_STRUCT_ModelWriterD
 }
 
 
+// Write Model
 void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_ModelWriterData &Data) {
 
     // Write
@@ -534,7 +535,7 @@ void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_ModelWriterData &Data) {
 
     // Set Metadata (FIXME: Save Modification Date + Creation Date Here!)
     IOData.AssetTypeName = "Model";
-    IOData.AssetFileName = ModelFileName;
+    IOData.AssetFileName = Data.ModelFileName;
     IOData.AssetCreationDate = IOSubsystem_->GetCurrentTime();
 
     long MetadataID = IOSubsystem_->AllocateAssetID();

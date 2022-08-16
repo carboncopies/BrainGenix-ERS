@@ -120,6 +120,7 @@ long ERS_CLASS_ModelImporter::ImportModel(std::string AssetPath) {
     ModelWriterData.Model                    = &Model;
     ModelWriterData.ModelOriginDirectoryPath = AssetPath;
     ModelWriterData.ModelScene               = Scene;
+    ModelWriterData.ModelFileName            = ModelFileName;
     
 
 
