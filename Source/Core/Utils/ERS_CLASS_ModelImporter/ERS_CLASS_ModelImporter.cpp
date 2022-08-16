@@ -38,8 +38,6 @@ ERS_CLASS_ModelImporter::~ERS_CLASS_ModelImporter() {
 // Item Import Thread
 void ERS_CLASS_ModelImporter::ImportThread() {
 
-    // Create Importer Instance
-    std::unique_ptr<ERS_CLASS_ModelImporter> AssetImporter = std::make_unique<ERS_CLASS_ModelImporter>(SystemUtils_);
 
     while (true) {
 
@@ -61,7 +59,12 @@ void ERS_CLASS_ModelImporter::ImportThread() {
             LockAssetImportQueue_.unlock();
 
 
-            AssetImporter->ImportModel(AssetPath);
+            ERS_STRUCT_Model Model;
+            ERS_STRUCT_ModelWriterData ModelData;
+            ModelData.Model = &Model;
+            ModelLoader_->LoadModel(AssetPath, ModelData);
+            ModelWriter_->WriteModel(ModelData);
+
 
             LockAssetImportQueue_.lock();
             TotalItemsProcessed_++;
