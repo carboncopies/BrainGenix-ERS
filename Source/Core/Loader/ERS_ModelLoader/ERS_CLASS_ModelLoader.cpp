@@ -29,7 +29,7 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(ERS_STRUCT_SystemUtils* SystemUtils
     SystemUtils_->Logger_->Log(std::string(std::string("Creating ") + std::to_string(MaxModelLoadingThreads) + std::string("Model Loading Threads")).c_str(), 4);
     for (int i = 0; i < MaxModelLoadingThreads; i++) {
         SystemUtils_->Logger_->Log(std::string(std::string("Creating Worker Thread ") + std::to_string(i)).c_str(), 3);
-        WorkerThreads_.push_back(std::thread(&ERS_CLASS_ModelLoader::WorkerThread, this));
+        WorkerThreads_.push_back(std::thread(&ERS_CLASS_ModelLoader::WorkerThread, this, i));
     }
 
     SystemUtils_->Logger_->Log("Creating Reference Loading Thread", 5);
@@ -70,7 +70,7 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 
 }
 
-void ERS_CLASS_ModelLoader::WorkerThread() {
+void ERS_CLASS_ModelLoader::WorkerThread(int WorkerThreadNumber) {
 
     bool ThreadShouldRun = true;
     while (ThreadShouldRun) {

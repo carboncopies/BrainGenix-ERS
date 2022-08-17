@@ -145,7 +145,7 @@ private:
      * @brief Thread used to load model(s) from disk/database
      * 
      */
-    void WorkerThread();
+    void WorkerThread(int WorkerThreadNumber);
 
     /**
      * @brief Used to match references from models
