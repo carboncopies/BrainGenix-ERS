@@ -31,7 +31,7 @@ bool ERS_CLASS_ModelWriter::WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data,
         Logger_->Log("Error Exporting Scene, Scene Is Not Valid", 7);
         return false;
     }
-    if (!(bool)Data.ModelScene->HasMeshes) {
+    if (!(bool)Data.ModelScene->HasMeshes()) {
         Logger_->Log("Error Exporting Scene, Scene Is Not Valid", 7);
         return false;
     }
