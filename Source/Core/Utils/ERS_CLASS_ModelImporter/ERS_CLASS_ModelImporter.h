@@ -37,6 +37,7 @@ class ERS_CLASS_ModelImporter {
         bool HasJobFinished_ = false; /**<Indicate If A Job Has Finished*/
         std::thread ImportThread_; /**<Import Processor Thread*/
         std::vector<std::string> AssetImportQueue_; /**<List of assets to be imported, accessed by other threads so use mutex to control access*/
+        std::vector<std::future<void>> ProcessingItems_; /**<List of items currently being worked on by the threads*/
 
         std::unique_ptr<ERS_CLASS_ModelWriter>         ModelWriter_; /**<Instance of the model writer, used to save models to the ERS project*/
         std::unique_ptr<ERS_CLASS_ExternalModelLoader> ModelLoader_; /**<Used to load models from outside the ERS project*/
