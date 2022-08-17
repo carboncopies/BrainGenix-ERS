@@ -49,7 +49,7 @@ void ERS_CLASS_ModelImporter::ImportThread() {
         }
         BlockThread_.unlock();
 
-        // Check Queue, Import As Needed
+        // Check Queue, Import As Needed, Empty Processing Items That Are Done
         LockAssetImportQueue_.lock();
         if (AssetImportQueue_.size() > 0) {
 
