@@ -22,7 +22,7 @@
 struct ERS_STRUCT_ModelWriterData {
 
 
-    const aiScene*     ModelScene;               /**<Pointer to assimp scene decoded by the importer*/
+    aiScene*           ModelScene;               /**<Pointer to assimp scene decoded by the importer*/
     Assimp::Importer   ModelImporter;            /**<This owns the scene, so we keep it around*/
     ERS_STRUCT_Model*  Model;                    /**<Pointer to the model to be saved by the writer*/
     long               ModelAssetID;             /**<Asset ID of model geometry*/

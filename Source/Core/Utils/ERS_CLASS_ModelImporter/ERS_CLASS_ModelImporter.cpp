@@ -49,7 +49,7 @@ void ERS_CLASS_ModelImporter::ImportThread() {
         }
         BlockThread_.unlock();
 
-        // Check Queue, Import As Needed
+        // Check Queue, Import As Needed, Empty Processing Items That Are Done
         LockAssetImportQueue_.lock();
         if (AssetImportQueue_.size() > 0) {
 
@@ -59,11 +59,12 @@ void ERS_CLASS_ModelImporter::ImportThread() {
             LockAssetImportQueue_.unlock();
 
 
-            ERS_STRUCT_Model Model;
-            ERS_STRUCT_ModelWriterData ModelData;
-            ModelData.Model = &Model;
-            ModelLoader_->LoadModel(AssetPath, ModelData);
-            ModelWriter_->WriteModel(ModelData);
+                ERS_STRUCT_Model Model;
+                ERS_STRUCT_ModelWriterData ModelData;
+                ModelData.Model = &Model;
+                ModelLoader_->LoadModel(AssetPath, ModelData);
+                ModelWriter_->WriteModel(ModelData);
+
 
 
             LockAssetImportQueue_.lock();

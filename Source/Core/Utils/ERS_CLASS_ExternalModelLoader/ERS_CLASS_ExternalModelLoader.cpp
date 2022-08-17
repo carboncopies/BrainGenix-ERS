@@ -203,7 +203,7 @@ void ERS_CLASS_ExternalModelLoader::MergeTextures(ERS_STRUCT_Model* Model, std::
 void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterData &Data) {
 
     // Create List Of Texture Files To Be Copied
-    std::vector<std::pair<std::string, FIBITMAP*>> ImageBytes;
+    std::vector<std::pair<std::string, std::future<FIBITMAP*>>> ImageFutures;
     for (int i = 0; (long)i < (long)Data.TextureList.size(); i++) {
 
         ERS_STRUCT_IOData IOData;
@@ -271,20 +271,35 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
         }
 
         if (Success || SecondTryStatus) {
-            SystemUtils_->Logger_->Log(std::string("Loading Texture Image '")  + TexturePath + "'", 4);
+            SystemUtils_->Logger_->Log(std::string("Starting Thread To Load Texture Image '")  + TexturePath + "'", 3);
             
-            FIMEMORY* FIImageData = FreeImage_OpenMemory(IOData.Data.get(), IOData.Size_B);
-            FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-            FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
-            FreeImage_CloseMemory(FIImageData);
+            ImageFutures.push_back(std::make_pair(TexturePath, std::async(std::launch::async,
+            [&IOData, StartArg = 1]() {
+                FIMEMORY* FIImageData = FreeImage_OpenMemory(IOData.Data.get(), IOData.Size_B);
+                FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
+                FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
+                FreeImage_CloseMemory(FIImageData);
 
-            FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
-            FreeImage_Unload(RawImage);
-            SystemUtils_->Logger_->Log(std::string("Loaded Texture Image"), 3);
+                FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
+                FreeImage_Unload(RawImage);
+                return Image;
+            }
+            )));
+            SystemUtils_->Logger_->Log(std::string("Created Loader Thread For Image"), 2);
 
-            ImageBytes.push_back(std::make_pair(TexturePath, Image));
+            //ImageFutures.push_back(std::make_pair(TexturePath, Image));
         }
     }
+
+    // Get Futures
+    std::vector<std::pair<std::string, FIBITMAP*>> ImageBytes;
+    for (unsigned int i = 0; i < ImageFutures.size(); i++) {
+        std::string ImagePath = ImageFutures[i].first;
+        SystemUtils_->Logger_->Log(std::string("Getting Image Bitmap From Thread For Texture '")  + ImagePath + "'", 4);
+        FIBITMAP* Image = ImageFutures[i].second.get();
+        ImageBytes.push_back(std::make_pair(ImagePath, Image));
+    }
+
 
     // Remove Duplicate Stuff (Like Alpha Maps), Just Generally Consolidate Stuff
     MergeTextures(Data.Model, &ImageBytes);
@@ -468,6 +483,29 @@ bool ERS_CLASS_ExternalModelLoader::ReadFile(std::string FilePath, ERS_STRUCT_IO
 
 }
 
+bool ERS_CLASS_ExternalModelLoader::PerformModelSanityChecks(ERS_STRUCT_Model &Model) {
+
+    // Check For Meshes
+    if (Model.Meshes.size() == 0) {
+        SystemUtils_->Logger_->Log(std::string("Model Has No Meshes, Aborting"), 8);
+        return false;
+    }
+
+    // Check Meshes For Verts
+    for (unsigned int i = 0; i < Model.Meshes.size(); i++) {
+        if (Model.Meshes[i].Vertices.size() == 0) {
+            SystemUtils_->Logger_->Log(std::string("Warning, Mesh '") + std::to_string(i) + "' Has No Verts", 7);
+            return false;
+        }
+        if (Model.Meshes[i].Indices.size() == 0) {
+            SystemUtils_->Logger_->Log(std::string("Warning, Mesh '") + std::to_string(i) + "' Has No Indices", 7);
+            return false;
+        }
+    }
+
+    // Passed Check
+    return true;
+}
 
 // Load Model From File
 bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_ModelWriterData &Data) {
@@ -482,18 +520,22 @@ bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_
     const aiScene* Scene = Data.ModelImporter.ReadFile(ModelPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_PreTransformVertices | aiProcess_JoinIdenticalVertices);
     if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
         SystemUtils_->Logger_->Log(std::string(std::string("External Model Loading Error: ") + std::string(Data.ModelImporter.GetErrorString())).c_str(), 10);
+        Data.ModelScene = nullptr;
         return false;
     }
     SystemUtils_->Logger_->Log("Finished Loading External Model, Processing Geometry/Textures", 3);
 
     // Process Geometry, Identify Textures
     ProcessNode(Data, Data.Model, Scene->mRootNode, Scene, ModelDirectory);
+    if (!PerformModelSanityChecks(*Data.Model)) {
+        return false;
+    }
     DetectBoundingBox(Data.Model);
     CalculateTotalVertsIndices(Data.Model);
 
     // Update Struct
     Data.ModelOriginDirectoryPath = ModelPath;
-    Data.ModelScene               = Scene;
+    Data.ModelScene               = (aiScene*)Scene;
     Data.ModelFileName            = ModelFileName;
 
     // Load Textures

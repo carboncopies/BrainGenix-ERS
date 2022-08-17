@@ -27,6 +27,14 @@ bool ERS_CLASS_ModelWriter::WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data,
     // Export Model File
     Logger_->Log(std::string("Exporting Model Geometry To Blob With Encoding '") + ExportFormat + "'", 4);
 
+    if (!Data.ModelScene) {
+        Logger_->Log("Error Exporting Scene, Scene Is Not Valid", 7);
+        return false;
+    }
+    if (!(bool)Data.ModelScene->HasMeshes()) {
+        Logger_->Log("Error Exporting Scene, Scene Is Not Valid", 7);
+        return false;
+    }
     Assimp::Exporter Exporter;
     const aiExportDataBlob* Blob = Exporter.ExportToBlob(Data.ModelScene, ExportFormat);
 
@@ -247,6 +255,7 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
 }
 std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(ERS_STRUCT_ModelWriterData &Data) {
 
+
     // Generate Metadata
     YAML::Emitter MetadataEmitter;
     MetadataEmitter<<YAML::BeginMap;
@@ -267,19 +276,24 @@ std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(ERS_STRUCT_ModelWriterD
 
         // Set Path For Each Texture, Iterate OVer All Levels Of This Texture
         std::string TexturePath = Data.TextureNames[i];//TextureList_[i].substr(TextureList_[i].find_last_of("/")+1, TextureList_[i].size()-(TextureList_[i].find_last_of("/")+1));
-        Logger_->Log(std::string("Saving Information For Texture '") + TexturePath + "'", 3);
-        MetadataEmitter<<YAML::Key<<TexturePath<<YAML::Value<<YAML::BeginMap;
+        if (TexturePath.find('*') != std::string::npos) {
+            Logger_->Log(std::string("Skipping Texture '") + TexturePath + "' Due To Invalid Char", 7);  
+        } else {
 
-        for (unsigned int TextureLevel = 0; TextureLevel < Data.TextureMemorySizes[i].size(); TextureLevel++) {
-            MetadataEmitter<<YAML::Key<<(Data.TextureMemorySizes[i].size() - 1) - TextureLevel<<YAML::Value<<YAML::BeginMap;
+            Logger_->Log(std::string("Saving Information For Texture '") + TexturePath + "'", 3);
+            MetadataEmitter<<YAML::Key<<TexturePath<<YAML::Value<<YAML::BeginMap;
 
-            MetadataEmitter<<YAML::Key<<"TextureLevelAssetID"<<YAML::Value<<Data.ImageAssetIDs[i][TextureLevel];
-            MetadataEmitter<<YAML::Key<<"TextureLevelMemorySizeBytes"<<YAML::Value<<Data.TextureMemorySizes[i][TextureLevel];
-            MetadataEmitter<<YAML::Key<<"TextureLevelResolutionX"<<YAML::Value<<Data.ImageResolutions[i][TextureLevel].first;
-            MetadataEmitter<<YAML::Key<<"TextureLevelResolutionY"<<YAML::Value<<Data.ImageResolutions[i][TextureLevel].second;
-            MetadataEmitter<<YAML::Key<<"TextureLevelNumberChannels"<<YAML::Value<<Data.ImageChannels[i][TextureLevel];
+            for (unsigned int TextureLevel = 0; TextureLevel < Data.TextureMemorySizes[i].size(); TextureLevel++) {
+                MetadataEmitter<<YAML::Key<<(Data.TextureMemorySizes[i].size() - 1) - TextureLevel<<YAML::Value<<YAML::BeginMap;
 
-            MetadataEmitter<<YAML::EndMap;
+                MetadataEmitter<<YAML::Key<<"TextureLevelAssetID"<<YAML::Value<<Data.ImageAssetIDs[i][TextureLevel];
+                MetadataEmitter<<YAML::Key<<"TextureLevelMemorySizeBytes"<<YAML::Value<<Data.TextureMemorySizes[i][TextureLevel];
+                MetadataEmitter<<YAML::Key<<"TextureLevelResolutionX"<<YAML::Value<<Data.ImageResolutions[i][TextureLevel].first;
+                MetadataEmitter<<YAML::Key<<"TextureLevelResolutionY"<<YAML::Value<<Data.ImageResolutions[i][TextureLevel].second;
+                MetadataEmitter<<YAML::Key<<"TextureLevelNumberChannels"<<YAML::Value<<Data.ImageChannels[i][TextureLevel];
+
+                MetadataEmitter<<YAML::EndMap;
+            }
         }
         MetadataEmitter<<YAML::EndMap;
     }
@@ -311,6 +325,19 @@ void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_ModelWriterData &Data) {
     // Write
     WriteModelGeometry(Data);
     WriteTextures(Data, &Data.TextureMemorySizes, &Data.ImageAssetIDs, &Data.ImageResolutions, &Data.ImageChannels);
+
+    // Perform List Length Sanity Check
+    unsigned int CheckSize = Data.TextureList.size();
+    bool CheckFail = CheckSize != Data.ImageChannels.size();
+    CheckFail |= CheckSize != Data.ImageAssetIDs.size();
+    CheckFail |= CheckSize != Data.TextureMemorySizes.size();
+    CheckFail |= CheckSize != Data.ImageResolutions.size();
+
+    if (CheckFail) {
+        Logger_->Log("Model Failed List Length Sanity Check, Not All Lists Are Of Same Len, Aborting", 8);
+        return;
+    }
+
     std::string Metadata = GenerateModelMetadata(Data);
 
     // Write Metadata
