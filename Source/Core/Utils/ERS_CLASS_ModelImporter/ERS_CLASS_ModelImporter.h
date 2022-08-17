@@ -10,6 +10,7 @@
 #include <string>
 #include <vector>
 #include <mutex>
+#include <future>
 #include <thread>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
