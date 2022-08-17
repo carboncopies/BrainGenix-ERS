@@ -59,8 +59,8 @@ void ERS_CLASS_ModelImporter::ImportThread() {
             LockAssetImportQueue_.unlock();
 
 
-            ProcessingItems_.push_back(std::async(std::launch::async
-            [&AssetPath]() {
+            ProcessingItems_.push_back(std::async(std::launch::async,
+            [this, AssetPath]() {
                 ERS_STRUCT_Model Model;
                 ERS_STRUCT_ModelWriterData ModelData;
                 ModelData.Model = &Model;
