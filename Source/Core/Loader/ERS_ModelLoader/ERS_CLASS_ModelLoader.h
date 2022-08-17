@@ -20,6 +20,8 @@
 #include <thread>
 #include <chrono>
 
+#include <sys/prctl.h>
+
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -93,11 +95,11 @@
 // }
 
 // #elif defined(__linux__)
-#include <sys/prctl.h>
-void SetThreadName( const char* threadName)
-{
-  prctl(PR_SET_NAME,threadName,0,0,0);
-}
+// #include <sys/prctl.h>
+// void SetThreadName( const char* threadName)
+// {
+//   prctl(PR_SET_NAME,threadName,0,0,0);
+// }
 
 // #else
 // void SetThreadName(std::thread* thread, const char* threadName)

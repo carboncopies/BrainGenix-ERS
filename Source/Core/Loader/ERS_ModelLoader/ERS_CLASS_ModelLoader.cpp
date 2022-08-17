@@ -73,7 +73,8 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 void ERS_CLASS_ModelLoader::WorkerThread(int WorkerThreadNumber) {
 
     std::string ThreadName = std::string("Mesh Loading Thread ") + std::to_string(WorkerThreadNumber);
-    SetThreadName(ThreadName.c_str());
+    //SetThreadName(ThreadName.c_str());
+    prctl(PR_SET_NAME,ThreadName.c_str(),0,0,0);
 
     bool ThreadShouldRun = true;
     while (ThreadShouldRun) {
