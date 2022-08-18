@@ -2,7 +2,7 @@
 # ERS BUILD UTIL #
 ##################
 
-ERSBuildLogger({$Green} "Setting Binary Directories")
+ERSBuildLogger(${Green} "Setting Binary Directories")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BIN_DIR})
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR})
