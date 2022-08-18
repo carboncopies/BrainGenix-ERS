@@ -38,6 +38,8 @@ ERS_CLASS_ModelImporter::~ERS_CLASS_ModelImporter() {
 // Item Import Thread
 void ERS_CLASS_ModelImporter::ImportThread() {
 
+    // Name Thread
+    SetThreadName("ERS_ImporterManager");
 
     while (true) {
 

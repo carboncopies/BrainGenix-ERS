@@ -16,6 +16,9 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
 
+#include <ThreadNamingUtils/SetThreadName.h>
+
+
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ModelWriterData.h>
