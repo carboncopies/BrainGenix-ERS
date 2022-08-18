@@ -51,7 +51,6 @@ bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model*
                 TexLevel.Level = 0;
                 Texture.TextureLevels.push_back(TexLevel);
                 Model->Textures_.push_back(Texture);
-                Model->TexturesAlreadyBeingProcessed_ = false;
                 Model->MaxTextureLevel_ = 0;
             }
         } else {

@@ -112,7 +112,6 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
                 Model->MaxTextureLevel_ = -1;
             }
 
-            Model->TexturesAlreadyBeingProcessed_ = false;
 
         } else {
             SystemUtils->Logger_->Log(std::string("Error Loading Texture Manifest From Model Metadata'") + std::to_string(AssetID) + "'", 7); 
