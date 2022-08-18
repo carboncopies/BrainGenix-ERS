@@ -452,26 +452,26 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
 
 }
 
-void ERS_CLASS_AsyncTextureUpdater::ProcessWorkItem(ERS_STRUCT_Model* Model) {
+// void ERS_CLASS_AsyncTextureUpdater::ProcessWorkItem(ERS_STRUCT_Model* Model) {
     
-    // Identify Type Of Work To Be Done
-    int TargetRAMLevel = Model->TargetTextureLevelRAM;
-    int TargetVRAMLevel = Model->TargetTextureLevelVRAM;
+//     // Identify Type Of Work To Be Done
+//     int TargetRAMLevel = Model->TargetTextureLevelRAM;
+//     int TargetVRAMLevel = Model->TargetTextureLevelVRAM;
 
 
-    // Perform RAM Updates
-    if (Model->TextureLevelInRAM_!= TargetRAMLevel) {
-        SetLevelRAM(Model, true);
-    }
+//     // Perform RAM Updates
+//     if (Model->TextureLevelInRAM_!= TargetRAMLevel) {
+//         SetLevelRAM(Model, true);
+//     }
 
-    // Perform VRAM Updates
-    if (Model->TextureLevelInVRAM_ != TargetVRAMLevel) {
-        SetLevelVRAM(Model, true);
-    }
+//     // Perform VRAM Updates
+//     if (Model->TextureLevelInVRAM_ != TargetVRAMLevel) {
+//         SetLevelVRAM(Model, true);
+//     }
        
 
 
-}
+// }
 
 void ERS_CLASS_AsyncTextureUpdater::ProcessLoadWorkItem(ERS_STRUCT_Model* Model) {
     
@@ -678,11 +678,11 @@ void ERS_CLASS_AsyncTextureUpdater::SetNumThreads(int NumThreads) {
     NumThreads_ = NumThreads;
 }
 
-void ERS_CLASS_AsyncTextureUpdater::SetupThreads() {
+void ERS_CLASS_AsyncTextureUpdater::SetupPusherThreads() {
 
     // Setup Threads
-    SystemUtils_->Logger_->Log("Starting Worker Thread Pool", 4);
-    SystemUtils_->Logger_->Log(std::string("Worker Pool Will Have ") + std::to_string(NumThreads_) + " Threads", 3);
+    SystemUtils_->Logger_->Log("Starting GPU Worker Thread Pool", 4);
+    SystemUtils_->Logger_->Log(std::string("GPU Worker Pool Will Have ") + std::to_string(NumThreads_) + " Threads", 3);
     
 
     // For some reason windows cannot handle sharing a context if it's in use by another thread so we have to do this bullshit.
@@ -693,31 +693,31 @@ void ERS_CLASS_AsyncTextureUpdater::SetupThreads() {
     for (unsigned int i = 0; i < (unsigned int)NumThreads_; i++) {
         PusherThreadReady_ = false;
         TexturePusherThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TexturePusherThread, this, i));
-        SystemUtils_->Logger_->Log(std::string("Started Worker Thread '") + std::to_string(i) + "'", 2);
+        SystemUtils_->Logger_->Log(std::string("Started GPU Worker Thread '") + std::to_string(i) + "'", 2);
         while (!PusherThreadReady_) {}
     }
 
     glfwMakeContextCurrent(MainThreadWindowContext_);
-    SystemUtils_->Logger_->Log("Setup Worker Thread Pool", 3);
+    SystemUtils_->Logger_->Log("Setup GPU Worker Thread Pool", 3);
 
 }
 
-void ERS_CLASS_AsyncTextureUpdater::TeardownThreads() {
+void ERS_CLASS_AsyncTextureUpdater::TeardownPusherThreads() {
 
     // Send Shutdown Command
-    SystemUtils_->Logger_->Log("Sending Stop Command To Worker Thread Pool", 5);
-    StopThreads_ = true;
+    SystemUtils_->Logger_->Log("Sending Stop Command To GPU Worker Thread Pool", 5);
+    StopPusherThreads_ = true;
     SystemUtils_->Logger_->Log("Stop Command Sent", 3);
 
     // Join Threads
-    SystemUtils_->Logger_->Log("Joining Texture Streaming Worker Thread Pool", 5);
-    for (unsigned int i = 0; i < TextureWorkerThreads_.size(); i++) {
-        SystemUtils_->Logger_->Log(std::string("Joining Texture Streaming Worker Thread '") + std::to_string(i) + "'", 3);
-        TextureWorkerThreads_[i].join();
+    SystemUtils_->Logger_->Log("Joining Texture Streaming GPU Worker Thread Pool", 5);
+    for (unsigned int i = 0; i < TexturePusherThreads_.size(); i++) {
+        SystemUtils_->Logger_->Log(std::string("Joining Texture Streaming GPU Worker Thread '") + std::to_string(i) + "'", 3);
+        TexturePusherThreads_[i].join();
     }
-    TextureWorkerThreads_.clear();
+    TexturePusherThreads_.clear();
 
-    SystemUtils_->Logger_->Log("Finished Joining Texture Streaming Worker Thread Pool", 4);
+    SystemUtils_->Logger_->Log("Finished Joining Texture Streaming GPU Worker Thread Pool", 4);
 
 }
 
