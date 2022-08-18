@@ -28,6 +28,7 @@ include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 
 # Include Package Addition Scripts
 include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/ThreadNamingUtils.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Python.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/YAML-CPP.cmake)
@@ -119,8 +120,6 @@ add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ControllerSettingsLoader)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_SceneWriter)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ModelWriter)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ProjectWriter)
-
-add_subdirectory(${LIB_DIR}/ThreadNamingUtils)
 
 # Add Main.cpp
 add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp ${LIB_DIR}/tracy/TracyClient.cpp ${BACKWARD_ENABLE})
