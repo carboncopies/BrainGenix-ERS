@@ -115,24 +115,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     FreeImage_CloseMemory(FIImageData);
 
 
-    // Detect Width/Height/memsize
-    int Width = FreeImage_GetWidth(Image);
-    int Height = FreeImage_GetHeight(Image);
-    if (Width <= 0) {
-        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
-        + "' Width Is <1", 8, LogEnable);
-        FreeImage_Unload(Image);
-        return false;
-    }
-    if (Height <= 0) {
-        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
-        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
-        + "' Height Is <1", 8, LogEnable);
-        FreeImage_Unload(Image);
-        return false;
-    }
-
     std::pair<int, int> TargetWidthHeight = Texture->TextureLevels[Level].LevelResolution;
     if ((TargetWidthHeight.first != Width) && (TargetWidthHeight.first != -1)) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
