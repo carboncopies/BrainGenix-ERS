@@ -34,6 +34,7 @@ target_link_libraries(ERS_ModelLoader
     glm
     assimp
     FreeImage
+    ThreadNamingUtils
     )
 
 # Link Internal Libs

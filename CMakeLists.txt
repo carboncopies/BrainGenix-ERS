@@ -120,6 +120,7 @@ add_subdirectory(${SRC_DIR}/Core/Writers/ERS_SceneWriter)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ModelWriter)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ProjectWriter)
 
+add_subdirectory(${LIB_DIR}/ThreadNamingUtils)
 
 # Add Main.cpp
 add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp ${LIB_DIR}/tracy/TracyClient.cpp ${BACKWARD_ENABLE})
