@@ -158,7 +158,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     return true;
 
 }
-
 bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
     // Check If Requested Level Exists
@@ -187,8 +186,6 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Textu
 
     return true;
 }
-
-
 bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
     // Check If Requested Level Exists
@@ -336,7 +333,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     return true;
 }
-
 bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
     
     // Check If Requested Level Exists
@@ -366,7 +362,6 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Text
     return true;
 
 }
-
 void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool LogEnable) {
 
         // NOTE: RAM UPDATES MUST BE CONSECUATIVE (you must have every level loaded consecuitively, eg: if you have level 3 loaded, you must also have 0,1,2 as well)
@@ -394,7 +389,6 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
 
 
 }
-
 void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool LogEnable) {
 
 
@@ -453,7 +447,6 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
 
 
 }
-
 void ERS_CLASS_AsyncTextureUpdater::ProcessLoadWorkItem(ERS_STRUCT_Model* Model) {
     
     // Identify Type Of Work To Be Done
@@ -465,7 +458,6 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessLoadWorkItem(ERS_STRUCT_Model* Model)
     }
 
 }
-
 void ERS_CLASS_AsyncTextureUpdater::ProcessPushWorkItem(ERS_STRUCT_Model* Model) {
     
     // Identify Type Of Work To Be Done
@@ -477,7 +469,6 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessPushWorkItem(ERS_STRUCT_Model* Model)
     }
 
 }
-
 
 void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 
