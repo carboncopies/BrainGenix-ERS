@@ -59,13 +59,13 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
     SystemUtils_->Logger_->Log("Finished Joining Worker Threads", 6);
 
 
-    SystemUtils_->Logger_->Log("Sending Join Command To Reference Thread", 5);
-    std::lock_guard<std::mutex> Deleteme(BlockRefThread_);
-    ExitRefThread_ = true;
+    // SystemUtils_->Logger_->Log("Sending Join Command To Reference Thread", 5);
+    // std::lock_guard<std::mutex> Deleteme(BlockRefThread_);
+    // ExitRefThread_ = true;
 
-    SystemUtils_->Logger_->Log("Joining Reference Loader Thread", 5);
-    ModelRefrenceThread_.join();
-    SystemUtils_->Logger_->Log("Finished Joining Reference Loader Thread", 5);
+    // SystemUtils_->Logger_->Log("Joining Reference Loader Thread", 5);
+    // ModelRefrenceThread_.join();
+    // SystemUtils_->Logger_->Log("Finished Joining Reference Loader Thread", 5);
 
 
 }
