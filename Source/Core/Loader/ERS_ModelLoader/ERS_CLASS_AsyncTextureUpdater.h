@@ -194,13 +194,15 @@ public:
      * @brief Create the threads based on the numthreads setting
      * 
      */
-    void SetupThreads();
+    void SetupPusherThreads();
+    void SetupLoaderThreads();
     
     /**
      * @brief Destroy threads, used in destructor or when changing number of threads.
      * 
      */
-    void TeardownThreads();
+    void TeardownPusherThreads();
+    void TeardownLoaderThreads();
 
 
     int GetQueueLimit();
