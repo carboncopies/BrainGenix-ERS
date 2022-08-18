@@ -828,7 +828,7 @@ void main() {
     // Apply Gamma Correction
     if (HDREnabled_) {
         vec3 Mapped = vec3(1.0f) - exp(-Color.xyz * Exposure_);
-        FragColor = GammaCorrectResult(vec4(Mapped, 1.0f), GammaCorrectionEnabled_);
+        FragColor = GammaCorrectResult(vec4(Mapped, Color.a), GammaCorrectionEnabled_);
     } else {
         FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
     }
