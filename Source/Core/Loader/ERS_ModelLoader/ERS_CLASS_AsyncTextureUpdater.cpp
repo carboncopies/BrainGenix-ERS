@@ -687,10 +687,10 @@ void ERS_CLASS_AsyncTextureUpdater::SetupPusherThreads() {
 
     // For some reason windows cannot handle sharing a context if it's in use by another thread so we have to do this bullshit.
     // thanks, windows! /s
-    StopThreads_ = false;
+    StopPusherThreads_ = false;
     glfwMakeContextCurrent(NULL);
 
-    for (unsigned int i = 0; i < (unsigned int)NumThreads_; i++) {
+    for (unsigned int i = 0; i < (unsigned int)NumPusherThreads_; i++) {
         PusherThreadReady_ = false;
         TexturePusherThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TexturePusherThread, this, i));
         SystemUtils_->Logger_->Log(std::string("Started GPU Worker Thread '") + std::to_string(i) + "'", 2);
@@ -699,6 +699,21 @@ void ERS_CLASS_AsyncTextureUpdater::SetupPusherThreads() {
 
     glfwMakeContextCurrent(MainThreadWindowContext_);
     SystemUtils_->Logger_->Log("Setup GPU Worker Thread Pool", 3);
+
+}
+
+void ERS_CLASS_AsyncTextureUpdater::SetupLoaderThreads() {
+
+    // Setup Threads
+    SystemUtils_->Logger_->Log("Starting CPU Worker Thread Pool", 4);
+    SystemUtils_->Logger_->Log(std::string("CPU Worker Pool Will Have ") + std::to_string(NumLoaderThreads_) + " Threads", 3);
+
+    StopLoaderThreads_ = false;
+    for (unsigned int i = 0; i < (unsigned int)NumLoaderThreads_; i++) {
+        TextureLoaderThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TextureLoaderThread, this, i));
+        SystemUtils_->Logger_->Log(std::string("Started CPU Worker Thread '") + std::to_string(i) + "'", 2);
+    }
+    SystemUtils_->Logger_->Log("Setup CPU Worker Thread Pool", 3);
 
 }
 
@@ -720,6 +735,26 @@ void ERS_CLASS_AsyncTextureUpdater::TeardownPusherThreads() {
     SystemUtils_->Logger_->Log("Finished Joining Texture Streaming GPU Worker Thread Pool", 4);
 
 }
+
+void ERS_CLASS_AsyncTextureUpdater::TeardownLoaderThreads() {
+
+    // Send Shutdown Command
+    SystemUtils_->Logger_->Log("Sending Stop Command To CPU Worker Thread Pool", 5);
+    StopLoaderThreads_ = true;
+    SystemUtils_->Logger_->Log("Stop Command Sent", 3);
+
+    // Join Threads
+    SystemUtils_->Logger_->Log("Joining Texture Streaming CPU Worker Thread Pool", 5);
+    for (unsigned int i = 0; i < TextureLoaderThreads_.size(); i++) {
+        SystemUtils_->Logger_->Log(std::string("Joining Texture Streaming CPU Worker Thread '") + std::to_string(i) + "'", 3);
+        TextureLoaderThreads_[i].join();
+    }
+    TextureLoaderThreads_.clear();
+
+    SystemUtils_->Logger_->Log("Finished Joining Texture Streaming CPU Worker Thread Pool", 4);
+
+}
+
 
 int ERS_CLASS_AsyncTextureUpdater::GetQueueLimit() {
     return WorkQueueLimit_;
