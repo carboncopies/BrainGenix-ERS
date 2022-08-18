@@ -575,15 +575,23 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
     RAMQueueString = "";
     VRAMQueueString = "";
 
-    BlockThreads_.lock();
-    for (unsigned int i = 0; i < WorkItems_.size(); i++) {
-        ERS_STRUCT_Model* Model = WorkItems_[i].get();
+    BlockLoaderThreads_.lock();
+    for (unsigned int i = 0; i < LoadWorkItems_.size(); i++) {
+        ERS_STRUCT_Model* Model = LoadWorkItems_[i].get();
 
         if (Model->TargetTextureLevelRAM > Model->TextureLevelInRAM_) {
             RAMQueueString += "L";
         } else if (Model->TargetTextureLevelRAM < Model->TextureLevelInRAM_) {
             RAMQueueString += "U";
         }
+    }
+    BlockLoaderThreads_.unlock();
+
+
+
+    BlockPusherThreads_.lock();
+    for (unsigned int i = 0; i < PushWorkItems_.size(); i++) {
+        ERS_STRUCT_Model* Model = PushWorkItems_[i].get();
 
         if (Model->TargetTextureLevelVRAM > Model->TextureLevelInVRAM_) {
             VRAMQueueString += "P";
@@ -591,7 +599,7 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
             VRAMQueueString += "F";
         }
     }
-    BlockThreads_.unlock();
+    BlockPusherThreads_.unlock();
 
 
 
