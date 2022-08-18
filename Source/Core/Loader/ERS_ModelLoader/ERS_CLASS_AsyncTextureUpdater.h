@@ -55,7 +55,7 @@ private:
     
     std::mutex BlockLoaderThreads_; /**<Lock this to block all the treads (Usually done to add new items to the work queue)*/
     std::mutex BlockPusherThreads_; /**<Lock this to block all the treads (Usually done to add new items to the work queue)*/
-    
+
     std::atomic_bool StopThreads_; /**<Used to start/stop threads*/
     std::atomic_bool PusherThreadReady_; /**<Causes this system to wait until the pusher thread is ready before creating another one*/
 
@@ -63,12 +63,10 @@ private:
     std::vector<std::shared_ptr<ERS_STRUCT_Model>> PushWorkItems_; /**<Models that need to have textures loaded to gpu from memory*/
 
 
-    /**
-     * @brief Method called as worker thread.
-     * 
-     */
-    void TextureModifierWorkerThread(int Index);
 
+
+    void TexturePusherThread(int Index);
+    void TextureLoaderThread(int Index);
 
 
     /**

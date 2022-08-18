@@ -556,12 +556,9 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 
 void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread(int Index) {
 
-    // Setup FreeImage
-    FreeImage_Initialise();
 
-    // Name Thread
-    std::string ThreadName = std::string("ERS_TLT-") + std::to_string(Index);
-    SetThreadName(ThreadName);
+
+ 
 
     // Setup OpenGL Shared Context
     SystemUtils_->Logger_->Log(std::string("Texture Streaming Thead '") + std::to_string(Index) + "' Creating Shared OpenGL Context", 3);
@@ -580,18 +577,18 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread(int Index) {
         BlockThreads_.lock();
         if (WorkItems_.size() > 0) {
             WorkItem = WorkItems_[0];
-            if (!WorkItem->TexturesAlreadyBeingProcessed_) {
+            //if (!WorkItem->TexturesAlreadyBeingProcessed_) {
                 HasWorkItem = true;
                 WorkItems_.erase(WorkItems_.begin());
-            }
+            //}
         }
         BlockThreads_.unlock();
 
         // Process Item, If Item Doens't Exist, Sleep Thread
         if (HasWorkItem) {
-            WorkItem->TexturesAlreadyBeingProcessed_ = true;
+            //WorkItem->TexturesAlreadyBeingProcessed_ = true;
             ProcessWorkItem(WorkItem.get());
-            WorkItem->TexturesAlreadyBeingProcessed_ = false;
+            //WorkItem->TexturesAlreadyBeingProcessed_ = false;
         } else {
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
@@ -601,8 +598,28 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread(int Index) {
     // Destroy OpenGL Context
     glfwDestroyWindow(ThreadWindow);
 
+
+
+void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
+
+    // Name Thread
+    std::string ThreadName = std::string("ERS_TPT-") + std::to_string(Index);
+    SetThreadName(ThreadName);
+
+}
+void ERS_CLASS_AsyncTextureUpdater::TextureLoaderThread(int Index) {
+
+    // Setup FreeImage
+    FreeImage_Initialise();
+
+    // Name Thread
+    std::string ThreadName = std::string("ERS_TLT-") + std::to_string(Index);
+    SetThreadName(ThreadName);
+
     // Shut Down FreeImage
     FreeImage_DeInitialise();
+}
+
 }
 
 int ERS_CLASS_AsyncTextureUpdater::GetNumThreads() {
@@ -626,10 +643,10 @@ void ERS_CLASS_AsyncTextureUpdater::SetupThreads() {
     glfwMakeContextCurrent(NULL);
 
     for (unsigned int i = 0; i < (unsigned int)NumThreads_; i++) {
-        ThreadReady_ = false;
-        TextureWorkerThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread, this, i));
+        PusherThreadReady_ = false;
+        TexturePusherThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TexturePusherThread, this, i));
         SystemUtils_->Logger_->Log(std::string("Started Worker Thread '") + std::to_string(i) + "'", 2);
-        while (!ThreadReady_) {}
+        while (!PusherThreadReady_) {}
     }
 
     glfwMakeContextCurrent(MainThreadWindowContext_);
