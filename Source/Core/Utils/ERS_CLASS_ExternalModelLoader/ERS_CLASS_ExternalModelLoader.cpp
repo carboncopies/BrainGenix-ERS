@@ -204,6 +204,7 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
 
     // Create List Of Texture Files To Be Copied
     std::vector<std::pair<std::string, std::future<FIBITMAP*>>> ImageFutures;
+    std::vector<std::pair<std::string, FIBITMAP*>> ImageBytes;
     for (int i = 0; (long)i < (long)Data.TextureList.size(); i++) {
 
         ERS_STRUCT_IOData IOData;
@@ -271,34 +272,45 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
         }
 
         if (Success || SecondTryStatus) {
-            SystemUtils_->Logger_->Log(std::string("Starting Thread To Load Texture Image '")  + TexturePath + "'", 3);
+            SystemUtils_->Logger_->Log(std::string("Starting Loading Texture '")  + TexturePath + "'", 3);
             
-            ImageFutures.push_back(std::make_pair(TexturePath, std::async(std::launch::async,
-            [&IOData, StartArg = 1]() {
-                FIMEMORY* FIImageData = FreeImage_OpenMemory(IOData.Data.get(), IOData.Size_B);
-                FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-                FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
-                FreeImage_CloseMemory(FIImageData);
+            // ImageFutures.push_back(std::make_pair(TexturePath, std::async(std::launch::async,
+            // [&IOData, StartArg = 1]() {
+            //     FIMEMORY* FIImageData = FreeImage_OpenMemory(IOData.Data.get(), IOData.Size_B);
+            //     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
+            //     FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
+            //     FreeImage_CloseMemory(FIImageData);
 
-                FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
-                FreeImage_Unload(RawImage);
-                return Image;
-            }
-            )));
-            SystemUtils_->Logger_->Log(std::string("Created Loader Thread For Image"), 2);
+            //     FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
+            //     FreeImage_Unload(RawImage);
+            //     std::cout<<FreeImage_GetWidth(Image)<<std::endl;
+            //     return Image;
+            // }
+            // )));
 
-            //ImageFutures.push_back(std::make_pair(TexturePath, Image));
+
+            FIMEMORY* FIImageData = FreeImage_OpenMemory(IOData.Data.get(), IOData.Size_B);
+            FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
+            FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
+            FreeImage_CloseMemory(FIImageData);
+
+            FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
+            FreeImage_Unload(RawImage);
+
+            SystemUtils_->Logger_->Log(std::string("Loaded Image Texture"), 2);
+
+            ImageBytes.push_back(std::make_pair(TexturePath, Image));
         }
     }
 
     // Get Futures
-    std::vector<std::pair<std::string, FIBITMAP*>> ImageBytes;
-    for (unsigned int i = 0; i < ImageFutures.size(); i++) {
-        std::string ImagePath = ImageFutures[i].first;
-        SystemUtils_->Logger_->Log(std::string("Getting Image Bitmap From Thread For Texture '")  + ImagePath + "'", 4);
-        FIBITMAP* Image = ImageFutures[i].second.get();
-        ImageBytes.push_back(std::make_pair(ImagePath, Image));
-    }
+    // std::vector<std::pair<std::string, FIBITMAP*>> ImageBytes;
+    // for (unsigned int i = 0; i < ImageFutures.size(); i++) {
+    //     std::string ImagePath = ImageFutures[i].first;
+    //     SystemUtils_->Logger_->Log(std::string("Getting Image Bitmap From Thread For Texture '")  + ImagePath + "'", 4);
+    //     FIBITMAP* Image = ImageFutures[i].second.get();
+    //     ImageBytes.push_back(std::make_pair(ImagePath, Image));
+    // }
 
 
     // Remove Duplicate Stuff (Like Alpha Maps), Just Generally Consolidate Stuff
