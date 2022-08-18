@@ -282,6 +282,7 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
 
                 FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
                 FreeImage_Unload(RawImage);
+                std::cout<<FreeImage_GetWidth(Image)<<std::endl;
                 return Image;
             }
             )));
