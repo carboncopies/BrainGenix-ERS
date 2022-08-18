@@ -560,7 +560,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread(int Index) {
     FreeImage_Initialise();
 
     // Name Thread
-    std::string ThreadName = std::string("ERS_TLT- ") + std::to_string(Index);
+    std::string ThreadName = std::string("ERS_TLT-") + std::to_string(Index);
     SetThreadName(ThreadName);
 
     // Setup OpenGL Shared Context
