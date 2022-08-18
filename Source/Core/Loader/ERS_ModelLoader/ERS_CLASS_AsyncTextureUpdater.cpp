@@ -682,7 +682,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetupPusherThreads() {
 
     // Setup Threads
     SystemUtils_->Logger_->Log("Starting GPU Worker Thread Pool", 4);
-    SystemUtils_->Logger_->Log(std::string("GPU Worker Pool Will Have ") + std::to_string(NumThreads_) + " Threads", 3);
+    SystemUtils_->Logger_->Log(std::string("GPU Worker Pool Will Have ") + std::to_string(NumPusherThreads_) + " Threads", 3);
     
 
     // For some reason windows cannot handle sharing a context if it's in use by another thread so we have to do this bullshit.

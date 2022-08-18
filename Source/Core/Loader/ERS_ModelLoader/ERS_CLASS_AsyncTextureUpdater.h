@@ -45,7 +45,8 @@ private:
     ERS_CLASS_AssetStreamingSystemResourceMonitor* ResourceMonitor_; /**<used to keep track of system resource budgets*/
     GLFWwindow* MainThreadWindowContext_; /**<GLFWWindow Object Used To Setup Shared Contexts*/
 
-    int NumThreads_ = 0; /**<Target Number of threads that we should be using*/
+    int NumPusherThreads_ = 0; /**<Target Number of threads that we should be using*/
+    int NumLoaderThreads_ = 0; /**<Target Number of threads that we should be using*/
     int WorkQueueLimit_ = 512; /**<Sets the maxinum number of itesm in the queue - won't add anything else to queue once this limit reached - prevents loading where the player already left*/
     bool PreventDuplicateWorkItems_ = true; /**<Stop Dupe Queue Entries*/
     bool PrioritizeQueueByVisualImpact_ = true; /**<Sort the queue by the texture level to be loaded*/
