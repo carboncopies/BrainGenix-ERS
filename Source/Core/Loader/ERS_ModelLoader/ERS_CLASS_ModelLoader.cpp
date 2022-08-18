@@ -32,8 +32,8 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(ERS_STRUCT_SystemUtils* SystemUtils
         WorkerThreads_.push_back(std::thread(&ERS_CLASS_ModelLoader::WorkerThread, this, i));
     }
 
-    SystemUtils_->Logger_->Log("Creating Reference Loading Thread", 5);
-    ModelRefrenceThread_ = std::thread(&ERS_CLASS_ModelLoader::ReferenceThread, this);
+    //SystemUtils_->Logger_->Log("Creating Reference Loading Thread", 5);
+    //ModelRefrenceThread_ = std::thread(&ERS_CLASS_ModelLoader::ReferenceThread, this);
 
 
 }
