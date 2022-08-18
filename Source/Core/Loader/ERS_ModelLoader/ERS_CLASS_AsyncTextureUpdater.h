@@ -126,6 +126,9 @@ private:
      */
     void ProcessWorkItem(ERS_STRUCT_Model* Model);
 
+    void ProcessLoadWorkItem(ERS_STRUCT_Model* Model);
+    void ProcessPushWorkItem(ERS_STRUCT_Model* Model);
+
     /**
      * @brief Loads/Unloads all textures in the model as needed to get the target level (For RAM).
      * 
