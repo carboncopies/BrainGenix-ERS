@@ -72,7 +72,7 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 
 void ERS_CLASS_ModelLoader::WorkerThread(int WorkerThreadNumber) {
 
-    std::string ThreadName = std::string("Mesh Loading Thread ") + std::to_string(WorkerThreadNumber);
+    std::string ThreadName = std::string("ERS_GLT- ") + std::to_string(WorkerThreadNumber);
     SetThreadName(ThreadName);
 
     bool ThreadShouldRun = true;
