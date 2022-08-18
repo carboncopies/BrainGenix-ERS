@@ -33,6 +33,8 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
+#include <ThreadNamingUtils/SetThreadName.h>
+
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_Mesh.h>
 #include <ERS_STRUCT_Texture.h>
@@ -45,6 +47,11 @@
 
 // TESTING STUFF HERE
 #include <ERS_CLASS_AssetStreamingManager.h>
+
+
+
+
+
 
 
 /**
@@ -82,7 +89,7 @@ private:
      * @brief Thread used to load model(s) from disk/database
      * 
      */
-    void WorkerThread();
+    void WorkerThread(int WorkerThreadNumber);
 
     /**
      * @brief Used to match references from models

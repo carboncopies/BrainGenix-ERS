@@ -559,6 +559,10 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread(int Index) {
     // Setup FreeImage
     FreeImage_Initialise();
 
+    // Name Thread
+    std::string ThreadName = std::string("ERS_TLT-") + std::to_string(Index);
+    SetThreadName(ThreadName);
+
     // Setup OpenGL Shared Context
     SystemUtils_->Logger_->Log(std::string("Texture Streaming Thead '") + std::to_string(Index) + "' Creating Shared OpenGL Context", 3);
     glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);

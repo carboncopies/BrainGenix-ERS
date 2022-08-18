@@ -19,6 +19,8 @@
 
 #include <FreeImage.h>
 
+#include <ThreadNamingUtils/SetThreadName.h>
+
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_CLASS_AssetStreamingSystemResourceMonitor.h>

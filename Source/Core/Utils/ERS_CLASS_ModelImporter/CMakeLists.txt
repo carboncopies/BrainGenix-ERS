@@ -21,6 +21,7 @@ target_link_libraries(ERS_CLASS_ModelImporter
     glm
     assimp
     FreeImage
+    ThreadNamingUtils
     )
 
 # Link Internal Libs
