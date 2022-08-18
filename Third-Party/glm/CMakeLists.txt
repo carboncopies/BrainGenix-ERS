@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 cmake_policy(VERSION 3.2)
+cmake_policy(SET CMP0063 NEW)
 if (NOT CMAKE_VERSION VERSION_LESS "3.1")
 	cmake_policy(SET CMP0054 NEW)
 endif()
