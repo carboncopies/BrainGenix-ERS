@@ -134,7 +134,7 @@ ERS_STRUCT_HardwareInfo ERS_CLASS_HardwareInformation::GetHWInfo() {
 void ERS_CLASS_HardwareInformation::DynamicInformationThread() {
 
     // Name Thread
-    SetThreadName("ERS_SysInfo")
+    SetThreadName("ERS_SysInfo");
 
     while (ShouldDynamicInfoThreadRun_) {
 
