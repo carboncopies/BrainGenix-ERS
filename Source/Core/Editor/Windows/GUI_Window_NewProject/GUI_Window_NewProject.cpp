@@ -71,7 +71,7 @@ void GUI_Window_NewProject::Draw() {
 #endif
                 Command += "BrainGenix-ERS -ProjectDirectory ";
                 Command += '"' + Path + '"' + " &";
-                std::system(Command.c_str());
+                (void)std::system(Command.c_str());
 
                 // Quit System
                 SystemUtils_->Logger_->Log("Shutting Down This Editor Window Now, Launching Editor For That Project", 5);
