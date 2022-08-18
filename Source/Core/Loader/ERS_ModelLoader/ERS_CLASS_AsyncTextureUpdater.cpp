@@ -469,7 +469,43 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessPushWorkItem(ERS_STRUCT_Model* Model)
     }
 
 }
+void ERS_CLASS_AsyncTextureUpdater::ProcessVRAMUpdate(int Index, ERS_STRUCT_Scene* Scene) {
 
+    BlockThreads_.lock();
+
+    bool CanAdd = true;
+
+    // Check If Queue Full
+    if (WorkItems_.size() >= (unsigned int)WorkQueueLimit_) {
+        CanAdd = false;
+    }
+
+    // Skip Checking If Already In Queue If We Can't Add
+    if (CanAdd && PreventDuplicateWorkItems_) {
+        for (unsigned int x = 0; x < WorkItems_.size(); x++) {
+            if (WorkItems_[x] == Scene->Models[Index]) {
+                CanAdd = false;
+                break;
+            }
+        }
+    }
+
+    // If We Can Actually Add It, Do SO
+    if (CanAdd) {
+
+        if (PrioritizeQueueByVisualImpact_) {
+            int HighestTargetLevel = std::max(Scene->Models[Index]->TargetTextureLevelRAM, Scene->Models[Index]->TargetTextureLevelVRAM);
+            float Priority = HighestTargetLevel / Scene->Models[Index]->MaxTextureLevel_;
+            int InsertLocationIndex = WorkItems_.size() * Priority;
+            WorkItems_.insert(WorkItems_.end() - InsertLocationIndex, Scene->Models[Index]);
+        } else {
+            WorkItems_.push_back(Scene->Models[Index]);
+        }
+    }
+
+    BlockThreads_.unlock();
+
+}
 
 // Streaming Threads
 void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
@@ -489,39 +525,7 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 
         // If There's Anything To Update, Add To Queue
         if (VRAMUpdate || RAMUpdate) {
-            BlockThreads_.lock();
-
-            bool CanAdd = true;
-
-            // Check If Queue Full
-            if (WorkItems_.size() >= (unsigned int)WorkQueueLimit_) {
-                CanAdd = false;
-            }
-
-            // Skip Checking If Already In Queue If We Can't Add
-            if (CanAdd && PreventDuplicateWorkItems_) {
-                for (unsigned int x = 0; x < WorkItems_.size(); x++) {
-                    if (WorkItems_[x] == Scene->Models[i]) {
-                        CanAdd = false;
-                        break;
-                    }
-                }
-            }
-
-            // If We Can Actually Add It, Do SO
-            if (CanAdd) {
-
-                if (PrioritizeQueueByVisualImpact_) {
-                    int HighestTargetLevel = std::max(Scene->Models[i]->TargetTextureLevelRAM, Scene->Models[i]->TargetTextureLevelVRAM);
-                    float Priority = HighestTargetLevel / Scene->Models[i]->MaxTextureLevel_;
-                    int Index = WorkItems_.size() * Priority;
-                    WorkItems_.insert(WorkItems_.end() - Index, Scene->Models[i]);
-                } else {
-                    WorkItems_.push_back(Scene->Models[i]);
-                }
-            }
-
-            BlockThreads_.unlock();
+            
         }
 
     }
