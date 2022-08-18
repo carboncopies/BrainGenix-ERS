@@ -77,7 +77,7 @@ bool ERS_CLASS_ModelWriter::ReadFile(std::string FilePath, ERS_STRUCT_IOData* Ou
                 FILE *Stream = fopen(FilePath.c_str(), "rb");
                 if (Stream) {
 
-                    fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size, Stream);
+                    [[maybe_unused]]size_t _ = fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size, Stream);
                     OutputData->Size_B = Buffer.st_size;
                     fclose(Stream);
                     OutputData->HasLoaded = true;

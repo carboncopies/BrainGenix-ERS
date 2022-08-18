@@ -292,8 +292,8 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(
         FILE *Stream = fopen(FilePath.c_str(), "rb");
         if (Stream) {
 
-          fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size,
-                Stream);
+          [[maybe_unused]]size_t _ = fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size,Stream);
+                
           OutputData->Data.get()[Buffer.st_size] = '\0';
           fclose(Stream);
           OutputData->HasLoaded = true;

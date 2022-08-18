@@ -71,12 +71,15 @@ void GUI_Window_NewProject::Draw() {
 #endif
                 Command += "BrainGenix-ERS -ProjectDirectory ";
                 Command += '"' + Path + '"' + " &";
-                std::system(Command.c_str());
+                int Status = std::system(Command.c_str());
 
                 // Quit System
-                SystemUtils_->Logger_->Log("Shutting Down This Editor Window Now, Launching Editor For That Project", 5);
-                *SystemUtils_->SystemShouldRun_ = false;
-        
+                if (Status != -1) {
+                    SystemUtils_->Logger_->Log("Shutting Down This Editor Window Now, Launching Editor For That Project", 5);
+                    *SystemUtils_->SystemShouldRun_ = false;
+                } else {
+                    SystemUtils_->Logger_->Log("Failed To Launch New ERS Instance!", 8);
+                }
 
             }
 
