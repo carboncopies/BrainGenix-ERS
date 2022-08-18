@@ -476,7 +476,7 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessVRAMUpdate(int Index, ERS_STRUCT_Scen
     bool CanAdd = true;
 
     // Check If Queue Full
-    if (WorkItems_.size() >= (unsigned int)WorkQueueLimit_) {
+    if (PushWorkItems_.size() >= (unsigned int)WorkQueueLimit_) {
         CanAdd = false;
     }
 
@@ -496,8 +496,8 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessVRAMUpdate(int Index, ERS_STRUCT_Scen
         if (PrioritizeQueueByVisualImpact_) {
             int HighestTargetLevel = Scene->Models[Index]->TargetTextureLevelVRAM;
             float Priority = HighestTargetLevel / Scene->Models[Index]->MaxTextureLevel_;
-            int InsertLocationIndex = WorkItems_.size() * Priority;
-            PushWorkItems_.insert(WorkItems_.end() - InsertLocationIndex, Scene->Models[Index]);
+            int InsertLocationIndex = PushWorkItems_.size() * Priority;
+            PushWorkItems_.insert(PushWorkItems_.end() - InsertLocationIndex, Scene->Models[Index]);
         } else {
             PushWorkItems_.push_back(Scene->Models[Index]);
         }
@@ -506,21 +506,21 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessVRAMUpdate(int Index, ERS_STRUCT_Scen
     BlockPusherThreads_.unlock();
 
 }
-void ERS_CLASS_AsyncTextureUpdater::ProcessVRAMUpdate(int Index, ERS_STRUCT_Scene* Scene) {
+void ERS_CLASS_AsyncTextureUpdater::ProcessRAMUpdate(int Index, ERS_STRUCT_Scene* Scene) {
 
-    BlockPusherThreads_.lock();
+    BlockLoaderThreads_.lock();
 
     bool CanAdd = true;
 
     // Check If Queue Full
-    if (WorkItems_.size() >= (unsigned int)WorkQueueLimit_) {
+    if (LoadWorkItems_.size() >= (unsigned int)WorkQueueLimit_) {
         CanAdd = false;
     }
 
     // Skip Checking If Already In Queue If We Can't Add
     if (CanAdd) {
-        for (unsigned int x = 0; x < PushWorkItems_.size(); x++) {
-            if (PushWorkItems_[x] == Scene->Models[Index]) {
+        for (unsigned int x = 0; x < LoadWorkItems_.size(); x++) {
+            if (LoadWorkItems_[x] == Scene->Models[Index]) {
                 CanAdd = false;
                 break;
             }
@@ -533,14 +533,14 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessVRAMUpdate(int Index, ERS_STRUCT_Scen
         if (PrioritizeQueueByVisualImpact_) {
             int HighestTargetLevel = Scene->Models[Index]->TargetTextureLevelVRAM;
             float Priority = HighestTargetLevel / Scene->Models[Index]->MaxTextureLevel_;
-            int InsertLocationIndex = WorkItems_.size() * Priority;
-            PushWorkItems_.insert(WorkItems_.end() - InsertLocationIndex, Scene->Models[Index]);
+            int InsertLocationIndex = LoadWorkItems_.size() * Priority;
+            LoadWorkItems_.insert(LoadWorkItems_.end() - InsertLocationIndex, Scene->Models[Index]);
         } else {
-            PushWorkItems_.push_back(Scene->Models[Index]);
+            LoadWorkItems_.push_back(Scene->Models[Index]);
         }
     }
 
-    BlockPusherThreads_.unlock();
+    BlockLoaderThreads_.unlock();
 
 }
 
@@ -561,9 +561,13 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
         bool VRAMUpdate = CurrentVRAMLevel!=TargetVRAMLevel;
 
         // If There's Anything To Update, Add To Queue
-        if (VRAMUpdate || RAMUpdate) {
-            
+        if (RAMUpdate) {
+            ProcessRAMUpdate(i, Scene);
         }
+        if (VRAMUpdate) {
+            ProcessVRAMUpdate(i, Scene);
+        }
+
 
     }
 
