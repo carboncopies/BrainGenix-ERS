@@ -456,12 +456,7 @@ bool ERS_CLASS_ExternalModelLoader::ReadFile(std::string FilePath, ERS_STRUCT_IO
                 FILE *Stream = fopen(FilePath.c_str(), "rb");
                 if (Stream) {
 
-                    size_t Size = fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size, Stream);
-                    if (Size == 0) {
-                        SystemUtils_->Logger_->Log(std::string(std::string("Error Loading Asset '") + FilePath + std::string("', Read 0 Bytes From File")).c_str(), 9);
-                        OutputData->HasLoaded = false;
-                        return false;
-                    }
+                    [[maybe_unused]]size_t _ = fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size, Stream);
                     OutputData->Size_B = Buffer.st_size;
                     fclose(Stream);
                     OutputData->HasLoaded = true;
