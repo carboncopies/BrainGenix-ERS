@@ -473,6 +473,31 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessWorkItem(ERS_STRUCT_Model* Model) {
 
 }
 
+void ERS_CLASS_AsyncTextureUpdater::ProcessLoadWorkItem(ERS_STRUCT_Model* Model) {
+    
+    // Identify Type Of Work To Be Done
+    int TargetRAMLevel = Model->TargetTextureLevelRAM;
+
+    // Perform RAM Updates
+    if (Model->TextureLevelInRAM_!= TargetRAMLevel) {
+        SetLevelRAM(Model, true);
+    }
+
+}
+
+void ERS_CLASS_AsyncTextureUpdater::ProcessPushWorkItem(ERS_STRUCT_Model* Model) {
+    
+    // Identify Type Of Work To Be Done
+    int TargetVRAMLevel = Model->TargetTextureLevelVRAM;
+
+    // Perform VRAM Updates
+    if (Model->TextureLevelInVRAM_ != TargetVRAMLevel) {
+        SetLevelVRAM(Model, true);
+    }
+
+}
+
+
 void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 
     // Iterate Over All Models
