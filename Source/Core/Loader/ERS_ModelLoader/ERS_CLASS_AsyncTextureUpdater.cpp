@@ -30,16 +30,17 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
     }
 
     SetNumThreads(Threads);
-    SetupThreads();
+    SetupPusherThreads();
+    SetupLoaderThreads();
 
 }
-
 ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 
     SystemUtils_->Logger_->Log("Automatic Texture Loading Subsystem Shutdown Invoked", 6);
 
 
-    TeardownThreads();
+    TeardownPusherThreads();
+    TeardownLoaderThreads();
 
     // Cleanup
     SystemUtils_->Logger_->Log("Cleaning Up OpenGL/GLFW", 6);
@@ -48,6 +49,7 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 }
 
 
+// Texture Streaming Helpers
 bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
     // Check If Requested Level Exists
@@ -156,7 +158,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     return true;
 
 }
-
 bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
     // Check If Requested Level Exists
@@ -185,8 +186,6 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Textu
 
     return true;
 }
-
-
 bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
     // Check If Requested Level Exists
@@ -334,7 +333,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
 
     return true;
 }
-
 bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
     
     // Check If Requested Level Exists
@@ -364,7 +362,6 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Text
     return true;
 
 }
-
 void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool LogEnable) {
 
         // NOTE: RAM UPDATES MUST BE CONSECUATIVE (you must have every level loaded consecuitively, eg: if you have level 3 loaded, you must also have 0,1,2 as well)
@@ -392,7 +389,6 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
 
 
 }
-
 void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool LogEnable) {
 
 
@@ -451,28 +447,104 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
 
 
 }
-
-void ERS_CLASS_AsyncTextureUpdater::ProcessWorkItem(ERS_STRUCT_Model* Model) {
+void ERS_CLASS_AsyncTextureUpdater::ProcessLoadWorkItem(ERS_STRUCT_Model* Model) {
     
     // Identify Type Of Work To Be Done
     int TargetRAMLevel = Model->TargetTextureLevelRAM;
-    int TargetVRAMLevel = Model->TargetTextureLevelVRAM;
-
 
     // Perform RAM Updates
     if (Model->TextureLevelInRAM_!= TargetRAMLevel) {
         SetLevelRAM(Model, true);
     }
 
+}
+void ERS_CLASS_AsyncTextureUpdater::ProcessPushWorkItem(ERS_STRUCT_Model* Model) {
+    
+    // Identify Type Of Work To Be Done
+    int TargetVRAMLevel = Model->TargetTextureLevelVRAM;
+
     // Perform VRAM Updates
     if (Model->TextureLevelInVRAM_ != TargetVRAMLevel) {
         SetLevelVRAM(Model, true);
     }
-       
 
+}
+void ERS_CLASS_AsyncTextureUpdater::ProcessVRAMUpdate(int Index, ERS_STRUCT_Scene* Scene) {
+
+    BlockPusherThreads_.lock();
+
+    bool CanAdd = true;
+
+    // Check If Queue Full
+    if (PushWorkItems_.size() >= (unsigned int)WorkQueueLimit_) {
+        CanAdd = false;
+    }
+
+    // Skip Checking If Already In Queue If We Can't Add
+    if (CanAdd) {
+        for (unsigned int x = 0; x < PushWorkItems_.size(); x++) {
+            if (PushWorkItems_[x] == Scene->Models[Index]) {
+                CanAdd = false;
+                break;
+            }
+        }
+    }
+
+    // If We Can Actually Add It, Do So
+    if (CanAdd) {
+
+        if (PrioritizeQueueByVisualImpact_) {
+            int HighestTargetLevel = Scene->Models[Index]->TargetTextureLevelVRAM;
+            float Priority = HighestTargetLevel / Scene->Models[Index]->MaxTextureLevel_;
+            int InsertLocationIndex = PushWorkItems_.size() * Priority;
+            PushWorkItems_.insert(PushWorkItems_.end() - InsertLocationIndex, Scene->Models[Index]);
+        } else {
+            PushWorkItems_.push_back(Scene->Models[Index]);
+        }
+    }
+
+    BlockPusherThreads_.unlock();
+
+}
+void ERS_CLASS_AsyncTextureUpdater::ProcessRAMUpdate(int Index, ERS_STRUCT_Scene* Scene) {
+
+    BlockLoaderThreads_.lock();
+
+    bool CanAdd = true;
+
+    // Check If Queue Full
+    if (LoadWorkItems_.size() >= (unsigned int)WorkQueueLimit_) {
+        CanAdd = false;
+    }
+
+    // Skip Checking If Already In Queue If We Can't Add
+    if (CanAdd) {
+        for (unsigned int x = 0; x < LoadWorkItems_.size(); x++) {
+            if (LoadWorkItems_[x] == Scene->Models[Index]) {
+                CanAdd = false;
+                break;
+            }
+        }
+    }
+
+    // If We Can Actually Add It, Do So
+    if (CanAdd) {
+
+        if (PrioritizeQueueByVisualImpact_) {
+            int HighestTargetLevel = Scene->Models[Index]->TargetTextureLevelVRAM;
+            float Priority = HighestTargetLevel / Scene->Models[Index]->MaxTextureLevel_;
+            int InsertLocationIndex = LoadWorkItems_.size() * Priority;
+            LoadWorkItems_.insert(LoadWorkItems_.end() - InsertLocationIndex, Scene->Models[Index]);
+        } else {
+            LoadWorkItems_.push_back(Scene->Models[Index]);
+        }
+    }
+
+    BlockLoaderThreads_.unlock();
 
 }
 
+// Streaming Threads
 void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 
     // Iterate Over All Models
@@ -489,41 +561,13 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
         bool VRAMUpdate = CurrentVRAMLevel!=TargetVRAMLevel;
 
         // If There's Anything To Update, Add To Queue
-        if (VRAMUpdate || RAMUpdate) {
-            BlockThreads_.lock();
-
-            bool CanAdd = true;
-
-            // Check If Queue Full
-            if (WorkItems_.size() >= (unsigned int)WorkQueueLimit_) {
-                CanAdd = false;
-            }
-
-            // Skip Checking If Already In Queue If We Can't Add
-            if (CanAdd && PreventDuplicateWorkItems_) {
-                for (unsigned int x = 0; x < WorkItems_.size(); x++) {
-                    if (WorkItems_[x] == Scene->Models[i]) {
-                        CanAdd = false;
-                        break;
-                    }
-                }
-            }
-
-            // If We Can Actually Add It, Do SO
-            if (CanAdd) {
-
-                if (PrioritizeQueueByVisualImpact_) {
-                    int HighestTargetLevel = std::max(Scene->Models[i]->TargetTextureLevelRAM, Scene->Models[i]->TargetTextureLevelVRAM);
-                    float Priority = HighestTargetLevel / Scene->Models[i]->MaxTextureLevel_;
-                    int Index = WorkItems_.size() * Priority;
-                    WorkItems_.insert(WorkItems_.end() - Index, Scene->Models[i]);
-                } else {
-                    WorkItems_.push_back(Scene->Models[i]);
-                }
-            }
-
-            BlockThreads_.unlock();
+        if (RAMUpdate) {
+            ProcessRAMUpdate(i, Scene);
         }
+        if (VRAMUpdate) {
+            ProcessVRAMUpdate(i, Scene);
+        }
+
 
     }
 
@@ -531,15 +575,23 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
     RAMQueueString = "";
     VRAMQueueString = "";
 
-    BlockThreads_.lock();
-    for (unsigned int i = 0; i < WorkItems_.size(); i++) {
-        ERS_STRUCT_Model* Model = WorkItems_[i].get();
+    BlockLoaderThreads_.lock();
+    for (unsigned int i = 0; i < LoadWorkItems_.size(); i++) {
+        ERS_STRUCT_Model* Model = LoadWorkItems_[i].get();
 
         if (Model->TargetTextureLevelRAM > Model->TextureLevelInRAM_) {
             RAMQueueString += "L";
         } else if (Model->TargetTextureLevelRAM < Model->TextureLevelInRAM_) {
             RAMQueueString += "U";
         }
+    }
+    BlockLoaderThreads_.unlock();
+
+
+
+    BlockPusherThreads_.lock();
+    for (unsigned int i = 0; i < PushWorkItems_.size(); i++) {
+        ERS_STRUCT_Model* Model = PushWorkItems_[i].get();
 
         if (Model->TargetTextureLevelVRAM > Model->TextureLevelInVRAM_) {
             VRAMQueueString += "P";
@@ -547,20 +599,17 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
             VRAMQueueString += "F";
         }
     }
-    BlockThreads_.unlock();
+    BlockPusherThreads_.unlock();
 
 
 
 
 }
 
-void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread(int Index) {
-
-    // Setup FreeImage
-    FreeImage_Initialise();
+void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
 
     // Name Thread
-    std::string ThreadName = std::string("ERS_TLT-") + std::to_string(Index);
+    std::string ThreadName = std::string("ERS_TPT-") + std::to_string(Index);
     SetThreadName(ThreadName);
 
     // Setup OpenGL Shared Context
@@ -569,29 +618,28 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread(int Index) {
     GLFWwindow* ThreadWindow = glfwCreateWindow(1, 1, std::to_string(Index).c_str(), NULL, MainThreadWindowContext_);
     glfwMakeContextCurrent(ThreadWindow);
     SystemUtils_->Logger_->Log(std::string("Texture Streaming Thead '") + std::to_string(Index) + "' Finished Creating OpenGL Context", 2);
-    ThreadReady_ = true;
-    
-    while (!StopThreads_) {
+    PusherThreadReady_ = true;
 
+    while (!StopPusherThreads_) {
 
         // Get Work Item If It Exists
         std::shared_ptr<ERS_STRUCT_Model> WorkItem;
         bool HasWorkItem = false;
-        BlockThreads_.lock();
-        if (WorkItems_.size() > 0) {
-            WorkItem = WorkItems_[0];
-            if (!WorkItem->TexturesAlreadyBeingProcessed_) {
+        BlockPusherThreads_.lock();
+        if (PushWorkItems_.size() > 0) {
+            WorkItem = PushWorkItems_[0];
+            if (!WorkItem->TexturesBeingPushed) {
                 HasWorkItem = true;
-                WorkItems_.erase(WorkItems_.begin());
+                PushWorkItems_.erase(PushWorkItems_.begin());
             }
         }
-        BlockThreads_.unlock();
+        BlockPusherThreads_.unlock();
 
         // Process Item, If Item Doens't Exist, Sleep Thread
         if (HasWorkItem) {
-            WorkItem->TexturesAlreadyBeingProcessed_ = true;
-            ProcessWorkItem(WorkItem.get());
-            WorkItem->TexturesAlreadyBeingProcessed_ = false;
+            WorkItem->TexturesBeingPushed = true;
+            ProcessPushWorkItem(WorkItem.get());
+            WorkItem->TexturesBeingPushed = false;
         } else {
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
@@ -601,223 +649,151 @@ void ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread(int Index) {
     // Destroy OpenGL Context
     glfwDestroyWindow(ThreadWindow);
 
+}
+void ERS_CLASS_AsyncTextureUpdater::TextureLoaderThread(int Index) {
+
+    // Setup FreeImage
+    FreeImage_Initialise();
+
+    // Name Thread
+    std::string ThreadName = std::string("ERS_TLT-") + std::to_string(Index);
+    SetThreadName(ThreadName);
+
+
+    while (!StopLoaderThreads_) {
+
+        // Get Work Item If It Exists
+        std::shared_ptr<ERS_STRUCT_Model> WorkItem;
+        bool HasWorkItem = false;
+        BlockLoaderThreads_.lock();
+        if (LoadWorkItems_.size() > 0) {
+            WorkItem = LoadWorkItems_[0];
+            if (!WorkItem->TexturesBeingLoaded) {
+                HasWorkItem = true;
+                LoadWorkItems_.erase(LoadWorkItems_.begin());
+            }
+        }
+        BlockLoaderThreads_.unlock();
+
+        // Process Item, If Item Doens't Exist, Sleep Thread
+        if (HasWorkItem) {
+            WorkItem->TexturesBeingLoaded = true;
+            ProcessLoadWorkItem(WorkItem.get());
+            WorkItem->TexturesBeingLoaded = false;
+        } else {
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        }
+
+    }
+
+
+
     // Shut Down FreeImage
     FreeImage_DeInitialise();
 }
 
+
+// ------------------------------------------------------------------- FIXME!!!!!!
 int ERS_CLASS_AsyncTextureUpdater::GetNumThreads() {
-    return NumThreads_;
+    return NumLoaderThreads_;
 }
 
 void ERS_CLASS_AsyncTextureUpdater::SetNumThreads(int NumThreads) {
-    NumThreads_ = NumThreads;
+    NumPusherThreads_ = 2;
+    NumLoaderThreads_ = NumThreads;
 }
 
-void ERS_CLASS_AsyncTextureUpdater::SetupThreads() {
+void ERS_CLASS_AsyncTextureUpdater::SetupPusherThreads() {
 
     // Setup Threads
-    SystemUtils_->Logger_->Log("Starting Worker Thread Pool", 4);
-    SystemUtils_->Logger_->Log(std::string("Worker Pool Will Have ") + std::to_string(NumThreads_) + " Threads", 3);
+    SystemUtils_->Logger_->Log("Starting GPU Worker Thread Pool", 4);
+    SystemUtils_->Logger_->Log(std::string("GPU Worker Pool Will Have ") + std::to_string(NumPusherThreads_) + " Threads", 3);
     
 
     // For some reason windows cannot handle sharing a context if it's in use by another thread so we have to do this bullshit.
     // thanks, windows! /s
-    StopThreads_ = false;
+    StopPusherThreads_ = false;
     glfwMakeContextCurrent(NULL);
 
-    for (unsigned int i = 0; i < (unsigned int)NumThreads_; i++) {
-        ThreadReady_ = false;
-        TextureWorkerThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TextureModifierWorkerThread, this, i));
-        SystemUtils_->Logger_->Log(std::string("Started Worker Thread '") + std::to_string(i) + "'", 2);
-        while (!ThreadReady_) {}
+    for (unsigned int i = 0; i < (unsigned int)NumPusherThreads_; i++) {
+        PusherThreadReady_ = false;
+        TexturePusherThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TexturePusherThread, this, i));
+        SystemUtils_->Logger_->Log(std::string("Started GPU Worker Thread '") + std::to_string(i) + "'", 2);
+        while (!PusherThreadReady_) {}
     }
 
     glfwMakeContextCurrent(MainThreadWindowContext_);
-    SystemUtils_->Logger_->Log("Setup Worker Thread Pool", 3);
+    SystemUtils_->Logger_->Log("Setup GPU Worker Thread Pool", 3);
 
 }
+void ERS_CLASS_AsyncTextureUpdater::SetupLoaderThreads() {
 
-void ERS_CLASS_AsyncTextureUpdater::TeardownThreads() {
+    // Setup Threads
+    SystemUtils_->Logger_->Log("Starting CPU Worker Thread Pool", 4);
+    SystemUtils_->Logger_->Log(std::string("CPU Worker Pool Will Have ") + std::to_string(NumLoaderThreads_) + " Threads", 3);
+
+    StopLoaderThreads_ = false;
+    for (unsigned int i = 0; i < (unsigned int)NumLoaderThreads_; i++) {
+        TextureLoaderThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TextureLoaderThread, this, i));
+        SystemUtils_->Logger_->Log(std::string("Started CPU Worker Thread '") + std::to_string(i) + "'", 2);
+    }
+    SystemUtils_->Logger_->Log("Setup CPU Worker Thread Pool", 3);
+
+}
+void ERS_CLASS_AsyncTextureUpdater::TeardownPusherThreads() {
 
     // Send Shutdown Command
-    SystemUtils_->Logger_->Log("Sending Stop Command To Worker Thread Pool", 5);
-    StopThreads_ = true;
+    SystemUtils_->Logger_->Log("Sending Stop Command To GPU Worker Thread Pool", 5);
+    StopPusherThreads_ = true;
     SystemUtils_->Logger_->Log("Stop Command Sent", 3);
 
     // Join Threads
-    SystemUtils_->Logger_->Log("Joining Texture Streaming Worker Thread Pool", 5);
-    for (unsigned int i = 0; i < TextureWorkerThreads_.size(); i++) {
-        SystemUtils_->Logger_->Log(std::string("Joining Texture Streaming Worker Thread '") + std::to_string(i) + "'", 3);
-        TextureWorkerThreads_[i].join();
+    SystemUtils_->Logger_->Log("Joining Texture Streaming GPU Worker Thread Pool", 5);
+    for (unsigned int i = 0; i < TexturePusherThreads_.size(); i++) {
+        SystemUtils_->Logger_->Log(std::string("Joining Texture Streaming GPU Worker Thread '") + std::to_string(i) + "'", 3);
+        TexturePusherThreads_[i].join();
     }
-    TextureWorkerThreads_.clear();
+    TexturePusherThreads_.clear();
 
-    SystemUtils_->Logger_->Log("Finished Joining Texture Streaming Worker Thread Pool", 4);
+    SystemUtils_->Logger_->Log("Finished Joining Texture Streaming GPU Worker Thread Pool", 4);
 
 }
+void ERS_CLASS_AsyncTextureUpdater::TeardownLoaderThreads() {
+
+    // Send Shutdown Command
+    SystemUtils_->Logger_->Log("Sending Stop Command To CPU Worker Thread Pool", 5);
+    StopLoaderThreads_ = true;
+    SystemUtils_->Logger_->Log("Stop Command Sent", 3);
+
+    // Join Threads
+    SystemUtils_->Logger_->Log("Joining Texture Streaming CPU Worker Thread Pool", 5);
+    for (unsigned int i = 0; i < TextureLoaderThreads_.size(); i++) {
+        SystemUtils_->Logger_->Log(std::string("Joining Texture Streaming CPU Worker Thread '") + std::to_string(i) + "'", 3);
+        TextureLoaderThreads_[i].join();
+    }
+    TextureLoaderThreads_.clear();
+
+    SystemUtils_->Logger_->Log("Finished Joining Texture Streaming CPU Worker Thread Pool", 4);
+
+}
+
 
 int ERS_CLASS_AsyncTextureUpdater::GetQueueLimit() {
     return WorkQueueLimit_;
 }
-
 void ERS_CLASS_AsyncTextureUpdater::SetQueueLimit(int QueueLimit) {
     WorkQueueLimit_ = QueueLimit;
 }
-
 bool ERS_CLASS_AsyncTextureUpdater::GetDupeQueueEntryPrevention() {
     return PreventDuplicateWorkItems_;
 }
-
 void ERS_CLASS_AsyncTextureUpdater::SetDupeQueueEntryPrevention(bool State) {
     PreventDuplicateWorkItems_ = State;
 }
-
 bool ERS_CLASS_AsyncTextureUpdater::GetQueuePrioritizationEnabled() {
     return PrioritizeQueueByVisualImpact_;
 }
-
 void ERS_CLASS_AsyncTextureUpdater::SetQueuePrioritizationEnabled(bool State) {
     PrioritizeQueueByVisualImpact_ = State;
 }
 
-
-
-
-/// OLD WORKING STUFF
-
-// // Generate OpenGL Texture ID
-//     unsigned int OpenGLTextureID;
-//     glGenTextures(1, &OpenGLTextureID);
-//     glBindTexture(GL_TEXTURE_2D, OpenGLTextureID);
-
-//     // Set Texture Properties
-//     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-//     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-//     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-//     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-//     // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
-//     // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, Level);
-
-//     // Identify Required Texture Format
-//     GLint TextureInternFormat;
-//     GLenum TextureExternFormat;
-//     if (Channels == 4) {
-//         TextureInternFormat = GL_RGBA;
-//         TextureExternFormat = GL_RGBA;
-//     } else if (Channels == 3) {
-//         TextureInternFormat = GL_RGB;
-//         TextureExternFormat = GL_RGB;
-//     } else if (Channels == 2) {
-//         TextureInternFormat = GL_RG;
-//         TextureExternFormat = GL_RG;
-//     } else if (Channels == 1) {
-//         TextureInternFormat = GL_RED;
-//         TextureExternFormat = GL_RED;
-//     } else {
-//         return false;
-//     }
-
-    
-//     // Setup Texture To Accept MipMaps
-//     int MaxLevel = Texture->LevelResolutions.size() - 1;
-//     int MaxWidth = Texture->LevelResolutions[MaxLevel - Level].first;
-//     int MaxHeight = Texture->LevelResolutions[MaxLevel - Level].second;
-//     unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[MaxLevel - Level]);
-//     glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
-//     glGenerateMipmap(GL_TEXTURE_2D);
-//     //glFlush();
-
-//     // // Load MipMaps Into Texture
-//     // for (int i = 0; i < Level; i++) {
-//     //     int Width = Texture->LevelResolutions[i].first;
-//     //     int Height = Texture->LevelResolutions[i].second;
-//     //     unsigned char* ImageBytes = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[i]);
-//     //     glTexSubImage2D(GL_TEXTURE_2D, i, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, ImageBytes);
-//     // }
-
-//     glBindTexture(GL_TEXTURE_2D, 0);
-//     glFinish();
-
-//     // Update Struct
-//     Texture->LevelTextureOpenGLIDs[Level] = OpenGLTextureID;
-//     Texture->LevelLoadedInVRAM[Level] = true;
-
-
-
-// OLD STUFF
-
-    // // Generate OpenGL Texture ID
-    // unsigned int OpenGLTextureID;
-    // glGenTextures(1, &OpenGLTextureID);
-    // glBindTexture(GL_TEXTURE_2D, OpenGLTextureID);
-
-
-    // // Set Texture Properties
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0); // disable mip maps for now
-
-    // // Identify Required Texture Format
-    // GLint TextureInternFormat;
-    // GLenum TextureExternFormat;
-    // if (Channels == 4) {
-    //     TextureInternFormat = GL_RGBA;
-    //     TextureExternFormat = GL_BGRA;
-    // } else if (Channels == 3) {
-    //     TextureInternFormat = GL_RGB;
-    //     TextureExternFormat = GL_BGR;
-    // } else if (Channels == 2) {
-    //     TextureInternFormat = GL_RG;
-    //     TextureExternFormat = GL_RG;
-    // } else if (Channels == 1) {
-    //     TextureInternFormat = GL_RED;
-    //     TextureExternFormat = GL_RED;
-    // } else {
-    //     return false;
-    // }
-
-
-    // // Setup Texture Storage
-    // int MaxLevel = Texture->LevelResolutions.size() - 1;
-    // int MaxWidth = Texture->LevelResolutions[MaxLevel - Level].first;
-    // int MaxHeight = Texture->LevelResolutions[MaxLevel - Level].second;
-    // glTexImage2D(GL_TEXTURE_2D, 0, TextureInternFormat, MaxWidth, MaxHeight, 0, TextureExternFormat, GL_UNSIGNED_BYTE, NULL);
-    // glGenerateMipmap(GL_TEXTURE_2D);
-    // glBindTexture(GL_TEXTURE_2D, 0);
-
-
-    // // Get Texture Info
-
-    // int LevelInvertedIndex = MaxLevel - Level;
-    
-    // int Width = Texture->LevelResolutions[LevelInvertedIndex].first;
-    // int Height = Texture->LevelResolutions[LevelInvertedIndex].second;
-    // int MemSize = Texture->LevelMemorySizeBytes[LevelInvertedIndex];
-    // unsigned char* ImageData = (unsigned char*)FreeImage_GetBits(Texture->LevelBitmaps[LevelInvertedIndex]);
-
-
-    // unsigned int PixelBuffers[2];
-    // glGenBuffers(2, PixelBuffers);
-    // unsigned int CurrentPBO = 0;
-
-
-    // // Send Texture Data From This Thread To PBO (CPU->PBO)
-    // glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PixelBuffers[CurrentPBO]);
-    // glBufferData(GL_PIXEL_UNPACK_BUFFER, MemSize, 0, GL_STREAM_DRAW);
-    // GLubyte* BufferPointer = (GLubyte*)glMapBufferRange(GL_PIXEL_UNPACK_BUFFER, 0, MemSize, GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT);
-    // memcpy(BufferPointer, ImageData, MemSize);
-    // glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
-
-    // // Copy Pixels From PBO To Texture (PBO->GPU)
-    // glBindTexture(GL_TEXTURE_2D, OpenGLTextureID);
-    // glBindBuffer(GL_PIXEL_UNPACK_BUFFER, PixelBuffers[1-CurrentPBO]);
-    // glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
-    // glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
-    // glBindTexture(GL_TEXTURE_2D, 0);
-
-    // CurrentPBO = 1-CurrentPBO;

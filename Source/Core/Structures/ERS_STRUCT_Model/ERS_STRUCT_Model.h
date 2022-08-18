@@ -63,7 +63,8 @@ struct ERS_STRUCT_Model {
 
 
     // Texture Streaming System
-    bool TexturesAlreadyBeingProcessed_; /**<Used to set if the system is already procesisng textures*/
+    bool TexturesBeingLoaded = false; /**<Used to set if the system is already loading textures*/
+    bool TexturesBeingPushed = false; /**<Used to set if the system is already pushing textures*/
 
     std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
 

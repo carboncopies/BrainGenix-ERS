@@ -45,24 +45,30 @@ private:
     ERS_CLASS_AssetStreamingSystemResourceMonitor* ResourceMonitor_; /**<used to keep track of system resource budgets*/
     GLFWwindow* MainThreadWindowContext_; /**<GLFWWindow Object Used To Setup Shared Contexts*/
 
-    int NumThreads_ = 0; /**<Target Number of threads that we should be using*/
+    int NumPusherThreads_ = 0; /**<Target Number of threads that we should be using*/
+    int NumLoaderThreads_ = 0; /**<Target Number of threads that we should be using*/
     int WorkQueueLimit_ = 512; /**<Sets the maxinum number of itesm in the queue - won't add anything else to queue once this limit reached - prevents loading where the player already left*/
     bool PreventDuplicateWorkItems_ = true; /**<Stop Dupe Queue Entries*/
     bool PrioritizeQueueByVisualImpact_ = true; /**<Sort the queue by the texture level to be loaded*/
 
-    std::vector<std::thread> TextureWorkerThreads_; /**<Vector containing thread objects for the worker pool*/
-    std::atomic_bool ThreadReady_; /**<Causes this system to wait until the worker is ready before creating another one*/
-    std::mutex BlockThreads_; /**<Lock this to block all the treads (Usually done to add new items to the work queue)*/
-    std::atomic_bool StopThreads_; /**<Used to start/stop threads*/
-    std::vector<std::shared_ptr<ERS_STRUCT_Model>> WorkItems_; /**<Models here have some work that needs to be done to them*/
+    std::vector<std::thread> TextureLoaderThreads_; /**<Vector containing thread objects for the texture loading pool*/
+    std::vector<std::thread> TexturePusherThreads_; /**<Vector containing thread objects for the texture pushing pool*/
+    
+    std::mutex BlockLoaderThreads_; /**<Lock this to block all the treads (Usually done to add new items to the work queue)*/
+    std::mutex BlockPusherThreads_; /**<Lock this to block all the treads (Usually done to add new items to the work queue)*/
+
+    std::atomic_bool StopPusherThreads_; /**<Used to start/stop threads*/
+    std::atomic_bool StopLoaderThreads_; /**<Used to start/stop threads*/
+    std::atomic_bool PusherThreadReady_; /**<Causes this system to wait until the pusher thread is ready before creating another one*/
+
+    std::vector<std::shared_ptr<ERS_STRUCT_Model>> LoadWorkItems_; /**<Models that need to have textures loaded from disk into memory*/
+    std::vector<std::shared_ptr<ERS_STRUCT_Model>> PushWorkItems_; /**<Models that need to have textures loaded to gpu from memory*/
 
 
-    /**
-     * @brief Method called as worker thread.
-     * 
-     */
-    void TextureModifierWorkerThread(int Index);
 
+
+    void TexturePusherThread(int Index);
+    void TextureLoaderThread(int Index);
 
 
     /**
@@ -120,7 +126,10 @@ private:
      * 
      * @param Model 
      */
-    void ProcessWorkItem(ERS_STRUCT_Model* Model);
+    //void ProcessWorkItem(ERS_STRUCT_Model* Model);
+
+    void ProcessLoadWorkItem(ERS_STRUCT_Model* Model);
+    void ProcessPushWorkItem(ERS_STRUCT_Model* Model);
 
     /**
      * @brief Loads/Unloads all textures in the model as needed to get the target level (For RAM).
@@ -138,6 +147,8 @@ private:
      */
     void SetLevelVRAM(ERS_STRUCT_Model* Model, bool LogEnable = true);
 
+    void ProcessVRAMUpdate(int Index, ERS_STRUCT_Scene* Scene);
+    void ProcessRAMUpdate(int Index, ERS_STRUCT_Scene* Scene);
 
 public:
 
@@ -186,13 +197,15 @@ public:
      * @brief Create the threads based on the numthreads setting
      * 
      */
-    void SetupThreads();
+    void SetupPusherThreads();
+    void SetupLoaderThreads();
     
     /**
      * @brief Destroy threads, used in destructor or when changing number of threads.
      * 
      */
-    void TeardownThreads();
+    void TeardownPusherThreads();
+    void TeardownLoaderThreads();
 
 
     int GetQueueLimit();

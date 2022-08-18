@@ -93,8 +93,10 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                     int LastThreadCount = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetNumThreads();
                     if (LastThreadCount != TextureStreamingThreads_) {
                         ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetNumThreads(TextureStreamingThreads_);
-                        ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->TeardownThreads();
-                        ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetupThreads();
+                        ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->TeardownLoaderThreads();
+                        ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->TeardownPusherThreads();
+                        ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetupLoaderThreads();
+                        ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetupPusherThreads();
                     }
                 }
 
