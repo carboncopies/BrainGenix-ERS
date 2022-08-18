@@ -560,9 +560,6 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 
 }
 
-
-
-
 void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
 
     // Name Thread
@@ -683,7 +680,6 @@ void ERS_CLASS_AsyncTextureUpdater::SetupPusherThreads() {
     SystemUtils_->Logger_->Log("Setup GPU Worker Thread Pool", 3);
 
 }
-
 void ERS_CLASS_AsyncTextureUpdater::SetupLoaderThreads() {
 
     // Setup Threads
@@ -698,7 +694,6 @@ void ERS_CLASS_AsyncTextureUpdater::SetupLoaderThreads() {
     SystemUtils_->Logger_->Log("Setup CPU Worker Thread Pool", 3);
 
 }
-
 void ERS_CLASS_AsyncTextureUpdater::TeardownPusherThreads() {
 
     // Send Shutdown Command
@@ -717,7 +712,6 @@ void ERS_CLASS_AsyncTextureUpdater::TeardownPusherThreads() {
     SystemUtils_->Logger_->Log("Finished Joining Texture Streaming GPU Worker Thread Pool", 4);
 
 }
-
 void ERS_CLASS_AsyncTextureUpdater::TeardownLoaderThreads() {
 
     // Send Shutdown Command
@@ -741,23 +735,18 @@ void ERS_CLASS_AsyncTextureUpdater::TeardownLoaderThreads() {
 int ERS_CLASS_AsyncTextureUpdater::GetQueueLimit() {
     return WorkQueueLimit_;
 }
-
 void ERS_CLASS_AsyncTextureUpdater::SetQueueLimit(int QueueLimit) {
     WorkQueueLimit_ = QueueLimit;
 }
-
 bool ERS_CLASS_AsyncTextureUpdater::GetDupeQueueEntryPrevention() {
     return PreventDuplicateWorkItems_;
 }
-
 void ERS_CLASS_AsyncTextureUpdater::SetDupeQueueEntryPrevention(bool State) {
     PreventDuplicateWorkItems_ = State;
 }
-
 bool ERS_CLASS_AsyncTextureUpdater::GetQueuePrioritizationEnabled() {
     return PrioritizeQueueByVisualImpact_;
 }
-
 void ERS_CLASS_AsyncTextureUpdater::SetQueuePrioritizationEnabled(bool State) {
     PrioritizeQueueByVisualImpact_ = State;
 }
