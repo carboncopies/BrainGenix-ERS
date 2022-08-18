@@ -39,7 +39,7 @@ ERS_CLASS_ModelImporter::~ERS_CLASS_ModelImporter() {
 void ERS_CLASS_ModelImporter::ImportThread() {
 
     // Name Thread
-    SetThreadName("ERS_ImporterManager");
+    SetThreadName("ERS_ImportManager");
 
     while (true) {
 
