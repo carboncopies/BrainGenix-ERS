@@ -87,8 +87,8 @@ void RendererManager::LoadEditorData() {
 
 
     // Load Default Textures
-    OpenGLDefaults_->DefaultTexture_ = LoadEditorIcon("EditorAssets/Icons/DefaultTexture/4x4/DefaultTexture1024.png");
-    OpenGLDefaults_->Loadingtexture_ = LoadEditorIcon("EditorAssets/Icons/LoadingTexture/4x4/LoadingTexture1024.png");
+    OpenGLDefaults_->DefaultTexture_ = LoadEditorIcon("EditorAssets/Icons/DefaultTexture/8x8/DefaultTexture1024.png");
+    OpenGLDefaults_->Loadingtexture_ = LoadEditorIcon("EditorAssets/Icons/LoadingTexture/8x8/LoadingTexture1024.png");
     OpenGLDefaults_->AllBlackTexture_ = LoadEditorIcon("EditorAssets/Icons/AllBlackTexture/AllBlackTexture2.png");
     OpenGLDefaults_->AllWhiteTexture_ = LoadEditorIcon("EditorAssets/Icons/AllWhiteTexture/AllWhiteTexture2.png");
 
