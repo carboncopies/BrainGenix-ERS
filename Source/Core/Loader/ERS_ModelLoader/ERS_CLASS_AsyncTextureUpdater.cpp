@@ -596,7 +596,7 @@ void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
     SystemUtils_->Logger_->Log(std::string("Texture Streaming Thead '") + std::to_string(Index) + "' Finished Creating OpenGL Context", 2);
     PusherThreadReady_ = true;
 
-    while (!StopThreads_) {
+    while (!StopPusherThreads_) {
 
         // Get Work Item If It Exists
         std::shared_ptr<ERS_STRUCT_Model> WorkItem;
@@ -636,7 +636,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureLoaderThread(int Index) {
     SetThreadName(ThreadName);
 
 
-    while (!StopThreads_) {
+    while (!StopLoaderThreads_) {
 
         // Get Work Item If It Exists
         std::shared_ptr<ERS_STRUCT_Model> WorkItem;
