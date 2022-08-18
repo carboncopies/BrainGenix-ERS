@@ -18,6 +18,7 @@ add_library(ERS_CLASS_HardwareInformation
 # Link 3rd Party Libs
 target_link_libraries(ERS_CLASS_HardwareInformation
     infoware
+    ThreadNamingUtils
     ${CMAKE_THREAD_LIBS_INIT}
     )
 
