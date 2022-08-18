@@ -77,6 +77,26 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
     FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
 
+
+    // Detect Width/Height/memsize
+    int Width = FreeImage_GetWidth(RawImage);
+    int Height = FreeImage_GetHeight(RawImage);
+    if (Width <= 0) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
+        + "' Width Is <1", 8, LogEnable);
+        FreeImage_Unload(RawImage);
+        return false;
+    }
+    if (Height <= 0) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
+        + "' Height Is <1", 8, LogEnable);
+        FreeImage_Unload(RawImage);
+        return false;
+    }
+
+
     // Force The Image Into A Constant Number Of Channels
     FIBITMAP* Image = nullptr;
     int Channels = FreeImage_GetLine(RawImage) / FreeImage_GetWidth(RawImage);
