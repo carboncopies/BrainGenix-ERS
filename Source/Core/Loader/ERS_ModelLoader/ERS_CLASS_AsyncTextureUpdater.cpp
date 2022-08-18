@@ -669,13 +669,14 @@ void ERS_CLASS_AsyncTextureUpdater::TextureLoaderThread(int Index) {
 }
 
 
-
+// ------------------------------------------------------------------- FIXME!!!!!!
 int ERS_CLASS_AsyncTextureUpdater::GetNumThreads() {
-    return NumThreads_;
+    return NumPusherThreads_;
 }
 
 void ERS_CLASS_AsyncTextureUpdater::SetNumThreads(int NumThreads) {
-    NumThreads_ = NumThreads;
+    NumPusherThreads_ = NumThreads;
+    NumLoaderThreads_ = NumThreads;
 }
 
 void ERS_CLASS_AsyncTextureUpdater::SetupPusherThreads() {
