@@ -148,6 +148,7 @@ private:
     void SetLevelVRAM(ERS_STRUCT_Model* Model, bool LogEnable = true);
 
     void ProcessVRAMUpdate(int Index, ERS_STRUCT_Scene* Scene);
+    void ProcessRAMUpdate(int Index, ERS_STRUCT_Scene* Scene);
 
 public:
 

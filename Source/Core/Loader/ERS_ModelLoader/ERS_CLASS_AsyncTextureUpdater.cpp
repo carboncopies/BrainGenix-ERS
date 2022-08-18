@@ -471,7 +471,7 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessPushWorkItem(ERS_STRUCT_Model* Model)
 }
 void ERS_CLASS_AsyncTextureUpdater::ProcessVRAMUpdate(int Index, ERS_STRUCT_Scene* Scene) {
 
-    BlockThreads_.lock();
+    BlockPusherThreads_.lock();
 
     bool CanAdd = true;
 
@@ -481,29 +481,66 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessVRAMUpdate(int Index, ERS_STRUCT_Scen
     }
 
     // Skip Checking If Already In Queue If We Can't Add
-    if (CanAdd && PreventDuplicateWorkItems_) {
-        for (unsigned int x = 0; x < WorkItems_.size(); x++) {
-            if (WorkItems_[x] == Scene->Models[Index]) {
+    if (CanAdd) {
+        for (unsigned int x = 0; x < PushWorkItems_.size(); x++) {
+            if (PushWorkItems_[x] == Scene->Models[Index]) {
                 CanAdd = false;
                 break;
             }
         }
     }
 
-    // If We Can Actually Add It, Do SO
+    // If We Can Actually Add It, Do So
     if (CanAdd) {
 
         if (PrioritizeQueueByVisualImpact_) {
-            int HighestTargetLevel = std::max(Scene->Models[Index]->TargetTextureLevelRAM, Scene->Models[Index]->TargetTextureLevelVRAM);
+            int HighestTargetLevel = Scene->Models[Index]->TargetTextureLevelVRAM;
             float Priority = HighestTargetLevel / Scene->Models[Index]->MaxTextureLevel_;
             int InsertLocationIndex = WorkItems_.size() * Priority;
-            WorkItems_.insert(WorkItems_.end() - InsertLocationIndex, Scene->Models[Index]);
+            PushWorkItems_.insert(WorkItems_.end() - InsertLocationIndex, Scene->Models[Index]);
         } else {
-            WorkItems_.push_back(Scene->Models[Index]);
+            PushWorkItems_.push_back(Scene->Models[Index]);
         }
     }
 
-    BlockThreads_.unlock();
+    BlockPusherThreads_.unlock();
+
+}
+void ERS_CLASS_AsyncTextureUpdater::ProcessVRAMUpdate(int Index, ERS_STRUCT_Scene* Scene) {
+
+    BlockPusherThreads_.lock();
+
+    bool CanAdd = true;
+
+    // Check If Queue Full
+    if (WorkItems_.size() >= (unsigned int)WorkQueueLimit_) {
+        CanAdd = false;
+    }
+
+    // Skip Checking If Already In Queue If We Can't Add
+    if (CanAdd) {
+        for (unsigned int x = 0; x < PushWorkItems_.size(); x++) {
+            if (PushWorkItems_[x] == Scene->Models[Index]) {
+                CanAdd = false;
+                break;
+            }
+        }
+    }
+
+    // If We Can Actually Add It, Do So
+    if (CanAdd) {
+
+        if (PrioritizeQueueByVisualImpact_) {
+            int HighestTargetLevel = Scene->Models[Index]->TargetTextureLevelVRAM;
+            float Priority = HighestTargetLevel / Scene->Models[Index]->MaxTextureLevel_;
+            int InsertLocationIndex = WorkItems_.size() * Priority;
+            PushWorkItems_.insert(WorkItems_.end() - InsertLocationIndex, Scene->Models[Index]);
+        } else {
+            PushWorkItems_.push_back(Scene->Models[Index]);
+        }
+    }
+
+    BlockPusherThreads_.unlock();
 
 }
 
