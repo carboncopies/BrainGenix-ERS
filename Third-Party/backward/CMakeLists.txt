@@ -21,6 +21,8 @@
 # SOFTWARE.
 
 cmake_minimum_required(VERSION 3.0)
+cmake_policy(SET CMP0063 NEW)
+
 project(backward CXX)
 
 # Introduce variables:
