@@ -614,7 +614,7 @@ void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
         // Process Item, If Item Doens't Exist, Sleep Thread
         if (HasWorkItem) {
             //WorkItem->TexturesAlreadyBeingProcessed_ = true;
-            ProcessWorkItem(WorkItem.get());
+            ProcessPushWorkItem(WorkItem.get());
             //WorkItem->TexturesAlreadyBeingProcessed_ = false;
         } else {
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
@@ -654,7 +654,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureLoaderThread(int Index) {
         // Process Item, If Item Doens't Exist, Sleep Thread
         if (HasWorkItem) {
             //WorkItem->TexturesAlreadyBeingProcessed_ = true;
-            ProcessWorkItem(WorkItem.get());
+            ProcessLoadWorkItem(WorkItem.get());
             //WorkItem->TexturesAlreadyBeingProcessed_ = false;
         } else {
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
