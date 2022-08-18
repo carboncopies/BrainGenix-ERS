@@ -30,7 +30,8 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
     }
 
     SetNumThreads(Threads);
-    SetupThreads();
+    SetupPusherThreads();
+    SetupLoaderThreads();
 
 }
 
@@ -39,7 +40,8 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
     SystemUtils_->Logger_->Log("Automatic Texture Loading Subsystem Shutdown Invoked", 6);
 
 
-    TeardownThreads();
+    TeardownPusherThreads();
+    TeardownLoaderThreads();
 
     // Cleanup
     SystemUtils_->Logger_->Log("Cleaning Up OpenGL/GLFW", 6);
