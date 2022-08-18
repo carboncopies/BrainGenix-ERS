@@ -86,6 +86,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
         + "' Width Is <1", 8, LogEnable);
         FreeImage_Unload(RawImage);
+        FreeImage_CloseMemory(FIImageData);
         return false;
     }
     if (Height <= 0) {
@@ -93,6 +94,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(LevelAssetID)
         + "' Height Is <1", 8, LogEnable);
         FreeImage_Unload(RawImage);
+        FreeImage_CloseMemory(FIImageData);
         return false;
     }
 
@@ -110,7 +112,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         Image = FreeImage_ConvertTo32Bits(RawImage);
     }
     FreeImage_Unload(RawImage);
-
     FreeImage_CloseMemory(FIImageData);
 
 
