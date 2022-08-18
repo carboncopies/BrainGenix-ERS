@@ -628,18 +628,18 @@ void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
         BlockPusherThreads_.lock();
         if (PushWorkItems_.size() > 0) {
             WorkItem = PushWorkItems_[0];
-            //if (!WorkItem->TexturesAlreadyBeingProcessed_) {
+            if (!WorkItem->TexturesBeingPushed) {
                 HasWorkItem = true;
                 PushWorkItems_.erase(PushWorkItems_.begin());
-            //}
+            }
         }
         BlockPusherThreads_.unlock();
 
         // Process Item, If Item Doens't Exist, Sleep Thread
         if (HasWorkItem) {
-            //WorkItem->TexturesAlreadyBeingProcessed_ = true;
+            WorkItem->TexturesBeingPushed = true;
             ProcessPushWorkItem(WorkItem.get());
-            //WorkItem->TexturesAlreadyBeingProcessed_ = false;
+            WorkItem->TexturesBeingPushed = false;
         } else {
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
@@ -668,18 +668,18 @@ void ERS_CLASS_AsyncTextureUpdater::TextureLoaderThread(int Index) {
         BlockLoaderThreads_.lock();
         if (LoadWorkItems_.size() > 0) {
             WorkItem = LoadWorkItems_[0];
-            //if (!WorkItem->TexturesAlreadyBeingProcessed_) {
+            if (!WorkItem->TexturesBeingLoaded) {
                 HasWorkItem = true;
                 LoadWorkItems_.erase(LoadWorkItems_.begin());
-            //}
+            }
         }
         BlockLoaderThreads_.unlock();
 
         // Process Item, If Item Doens't Exist, Sleep Thread
         if (HasWorkItem) {
-            //WorkItem->TexturesAlreadyBeingProcessed_ = true;
+            WorkItem->TexturesBeingLoaded = true;
             ProcessLoadWorkItem(WorkItem.get());
-            //WorkItem->TexturesAlreadyBeingProcessed_ = false;
+            WorkItem->TexturesBeingLoaded = false;
         } else {
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
