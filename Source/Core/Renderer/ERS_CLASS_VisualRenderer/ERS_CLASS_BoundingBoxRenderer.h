@@ -28,18 +28,16 @@ class ERS_CLASS_BoundingBoxRenderer {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Shared Pointer To System Utils*/
-    ERS_STRUCT_Shader* BoundingBoxRendererShader_; /**<Pointer To Shader With BoundingBoxRenderer*/
-    glm::mat4 BoundingBoxRendererModelArray_; /**<BoundingBoxRenderer Model Mat4*/
+    ERS_STRUCT_SystemUtils* SystemUtils_                   = nullptr;     /**<Shared Pointer To System Utils*/
+    ERS_STRUCT_Shader*      BoundingBoxRendererShader_     = nullptr;     /**<Pointer To Shader With BoundingBoxRenderer*/
+    glm::mat4               BoundingBoxRendererModelArray_ = glm::mat4(); /**<BoundingBoxRenderer Model Mat4*/
 
-    unsigned int BoundingBoxRendererVBO_; /**<OpenGL ID To BoundingBoxRenderer Vertex Buffer Object*/
-    unsigned int BoundingBoxRendererVAO_; /**<OpenGL ID To BoundingBoxRenderer Vertex Array Object*/
-    float BoundingBoxRendererScale_ = 0.1f; /**<Scale of editor icons*/
-
-    int BoundingBoxDisplayMode_ = 1; /**<Sets the type of info displayed. 0 is a solid color, 1 is RAM priority, 2, VRAM priority, 3 is ram current texture level, 4 is vram current tex level*/ 
-
-    bool DisableDepthTest_ = true; /**<Tell the renderer to disable the depth test prior to drawing the boxes*/
-    bool DrawWireframe_ = true; /**<Tell the system to enable or disable wireframe mode*/
+    unsigned int BoundingBoxRendererVBO_   = 0;    /**<OpenGL ID To BoundingBoxRenderer Vertex Buffer Object*/
+    unsigned int BoundingBoxRendererVAO_   = 0;    /**<OpenGL ID To BoundingBoxRenderer Vertex Array Object*/
+    float        BoundingBoxRendererScale_ = 0.1f; /**<Scale of editor icons*/
+    int          BoundingBoxDisplayMode_   = 1;    /**<Sets the type of info displayed. 0 is a solid color, 1 is RAM priority, 2, VRAM priority, 3 is ram current texture level, 4 is vram current tex level*/ 
+    bool         DisableDepthTest_         = true; /**<Tell the renderer to disable the depth test prior to drawing the boxes*/
+    bool         DrawWireframe_            = true; /**<Tell the system to enable or disable wireframe mode*/
 
 public:
 
