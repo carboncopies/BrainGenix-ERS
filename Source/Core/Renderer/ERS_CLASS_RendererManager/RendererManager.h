@@ -46,7 +46,7 @@ class RendererManager {
 
 private:
 
-    ERS_STRUCT_SystemUtils*           SystemUtils_  = nullptr; /**< Raw pointer to SystemUtils that is owned by the main() */
+    ERS_STRUCT_SystemUtils*           SystemUtils_  = nullptr; /**<Raw pointer to SystemUtils that is owned by the main() */
     ERS_STRUCT_ProjectUtils*          ProjectUtils_ = nullptr; /**<Copy Of Project Utils Struct*/
     ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_     = nullptr; /**<Copy Of Pointer To HIDM Struct*/
     GLFWwindow*                       Window_       = nullptr; /**<GLFW Window Instance*/
