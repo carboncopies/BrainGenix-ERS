@@ -52,20 +52,18 @@ private:
     GLFWwindow*                       Window_       = nullptr; /**<GLFW Window Instance*/
 
 
-    std::unique_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
-    std::unique_ptr<ERS_CLASS_ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
-    std::shared_ptr<ERS_STRUCT_Shader> Shader_; /**<ERS Shader Object (Main System Shader)*/
-    std::shared_ptr<GUISystem> GuiSystem_; /**<Instance of GUI System*/
-    std::unique_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
-    
-
+    std::unique_ptr<ERS_CLASS_VisualRenderer>  VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
+    std::unique_ptr<ERS_CLASS_ShaderLoader>    ShaderLoader_;   /**<Pointer To Shader Loader Instnace*/
+    std::shared_ptr<ERS_STRUCT_Shader>         Shader_;         /**<ERS Shader Object (Main System Shader)*/
+    std::shared_ptr<GUISystem>                 GuiSystem_;      /**<Instance of GUI System*/
+    std::unique_ptr<Cursors3D>                 Cursors3D_;      /**<Setup 3D Cursor Class*/
     std::unique_ptr<ERS_STRUCT_OpenGLDefaults> OpenGLDefaults_; /**<Pointer To OpenGL Default Textures/Models*/
 
 
     // Control Values
-    int WindowWidth_; /**<GLFW Window Width Varaible*/
-    int WindowHeight_; /**<GLFW Window Height Varaible*/
-    const char* WindowTitle_; /**GLFW Window Title Variable*/
+    int         WindowWidth_  = 0;       /**<GLFW Window Width Varaible*/
+    int         WindowHeight_ = 0;       /**<GLFW Window Height Varaible*/
+    const char* WindowTitle_  = nullptr; /**<GLFW Window Title Variable*/
 
 
     /**
