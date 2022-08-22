@@ -52,10 +52,9 @@ class GUI_Menu_Window {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
-
-    ERS_STRUCT_Windows* Windows_; /**<WIndows struct*/
-    ERS_CLASS_VisualRenderer* VisualRenderer_; /**<ERS_CLASS_VisualRenderer instance*/
+    ERS_STRUCT_SystemUtils*   SystemUtils_    = nullptr; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
+    ERS_STRUCT_Windows*       Windows_        = nullptr; /**<WIndows struct*/
+    ERS_CLASS_VisualRenderer* VisualRenderer_ = nullptr; /**<ERS_CLASS_VisualRenderer instance*/
 
 
 public:
