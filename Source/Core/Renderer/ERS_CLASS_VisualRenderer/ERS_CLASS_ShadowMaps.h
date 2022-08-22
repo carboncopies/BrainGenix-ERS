@@ -45,18 +45,13 @@ class ERS_CLASS_ShadowMaps {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to systemtuils resource*/
-    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to project utils instance*/
+    ERS_STRUCT_SystemUtils*                 SystemUtils_           = nullptr; /**<Pointer to systemtuils resource*/
+    ERS_STRUCT_ProjectUtils*                ProjectUtils_          = nullptr; /**<Pointer to project utils instance*/
+    ERS_CLASS_MeshRenderer*                 Renderer_              = nullptr; /**<Pointer to mesh renderer instance*/
+    std::mt19937                            MersenneTwister_;                 /**<Used to generate rnd numbers for random light updates*/
+    std::uniform_int_distribution<uint32_t> RandomNumberGenerator_;           /**<Actual class that spits out random numbers*/
 
-    ERS_CLASS_MeshRenderer* Renderer_; /**<Pointer to mesh renderer instance*/
-
-
-    std::mt19937 MersenneTwister_; /**<Used to generate rnd numbers for random light updates*/
-    uint32_t RandomSeed_ = 1; /**Seed used to set initial random generator*/
-    std::uniform_int_distribution<uint32_t> RandomNumberGenerator_; /**<Actual class that spits out random numbers*/
-
-
-
+    uint32_t     RandomSeed_      = 1; /**Seed used to set initial random generator*/
     unsigned int LastUpdateIndex_ = 0; /**<Used when updating the depth maps, indicates when the last consecuitive index was*/
 
 
