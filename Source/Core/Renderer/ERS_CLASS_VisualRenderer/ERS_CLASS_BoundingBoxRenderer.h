@@ -30,7 +30,7 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_                   = nullptr;     /**<Shared Pointer To System Utils*/
     ERS_STRUCT_Shader*      BoundingBoxRendererShader_     = nullptr;     /**<Pointer To Shader With BoundingBoxRenderer*/
-    glm::mat4               BoundingBoxRendererModelArray_ = glm::mat4(); /**<BoundingBoxRenderer Model Mat4*/
+    glm::mat4               BoundingBoxRendererModelArray_;               /**<BoundingBoxRenderer Model Mat4*/
 
     unsigned int BoundingBoxRendererVBO_   = 0;    /**<OpenGL ID To BoundingBoxRenderer Vertex Buffer Object*/
     unsigned int BoundingBoxRendererVAO_   = 0;    /**<OpenGL ID To BoundingBoxRenderer Vertex Array Object*/
