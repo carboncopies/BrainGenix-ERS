@@ -82,22 +82,18 @@ private:
 public:
     
     std::vector<std::shared_ptr<ERS_STRUCT_Viewport>> Viewports_; /**Pointer to struct of viewports*/
+    std::vector<std::unique_ptr<ERS_STRUCT_Shader>>   Shaders_; /**<Vector of shaders to be used in the system*/
 
-    std::vector<std::unique_ptr<ERS_STRUCT_Shader>> Shaders_; /**<Vector of shaders to be used in the system*/
-    int DefaultShader_ = 0; /**<Index of default shader program to be used*/
+    ERS_STRUCT_SystemUtils* SystemUtils_ = nullptr; /**<System Utils Struct Containing Pointers To Important Info*/
+    std::vector<std::string>* DebugLog_  = nullptr; /**<Script Debug Log Pointer, Sends Script Traceback/Error Info Here*/
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Struct Containing Pointers To Important Info*/
-
-
-    bool CaptureCursor_ = false; /**<Indicate if cursor should be captured*/
-    int CaptureIndex_ = 0; /**<Index where cursor was captured*/
-    
-    int SelectedScript_ = -1; /**<Set the selected script index*/
-    std::vector<std::string>* DebugLog_; /**<Script Debug Log Pointer, Sends Script Traceback/Error Info Here*/
-
-    double RunTime_; /**<Number of seconds since start of "play" mode. (other mode is editor mode)*/
-    double GameStartTime_; /**<Time when the game entered "play" mode, used to calc the runtime variable*/
-    bool IsEditorMode_; /**<Sets if in editor or play mode*/
+    bool   CaptureCursor_  = false; /**<Indicate if cursor should be captured*/
+    int    CaptureIndex_   = 0;     /**<Index where cursor was captured*/
+    int    DefaultShader_  = 0;     /**<Index of default shader program to be used*/
+    int    SelectedScript_ = -1;    /**<Set the selected script index*/
+    double RunTime_        = -1.0f; /**<Number of seconds since start of "play" mode. (other mode is editor mode)*/
+    double GameStartTime_  = -1.0f; /**<Time when the game entered "play" mode, used to calc the runtime variable*/
+    bool   IsEditorMode_   = true;  /**<Sets if in editor or play mode*/
 
 
 private:
