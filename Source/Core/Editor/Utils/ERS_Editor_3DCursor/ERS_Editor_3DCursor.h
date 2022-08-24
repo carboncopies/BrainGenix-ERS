@@ -69,25 +69,24 @@ private:
     };
 
 
-    bool IsCursorActive_; /**<Indicates If Cursor Active Or Disabled*/
-    bool EnableRotation_; /**<Enable/Disable The Rotation Gizmo*/
-    bool EnableScale_; /**<Enable/Disable The Scale Gizmo*/ 
-    float* CameraView_; /**<Camera View Matrix, Converted From GLM::Mat4*/
-    float* CameraProjection_; /**<Camera Projection Matrix, Converted From GLM::Mat4*/
+    bool   IsCursorActive_          = false;   /**<Indicates If Cursor Active Or Disabled*/
+    bool   EnableRotation_          = false;   /**<Enable/Disable The Rotation Gizmo*/
+    bool   EnableScale_             = false;   /**<Enable/Disable The Scale Gizmo*/ 
+    bool   LastFrameActiveState_    = false;   /*<If the cursor was being used in the last frame or not*/ 
+    float* CameraView_              = nullptr; /**<Camera View Matrix, Converted From GLM::Mat4*/
+    float* CameraProjection_        = nullptr; /**<Camera Projection Matrix, Converted From GLM::Mat4*/
+    float  GridSnapAmountTranslate_ = -1.0f;   /**<Unit To Snap To On Grid During Translation Mode*/
+    float  GridSnapAmountRotate_    = -1.0f;   /**<Unit To Snap To On Grid During Rotation Mode*/
+    float  GridSnapAmountScale_     = -1.0f;   /**<Unit To Snap To On Grid During Scale Mode*/
+    int    DisableGizmoForFrames_   = 0;       /**<If nonzero, will disable the gizmo*/
 
-    float GridSnapAmountTranslate_; /**<Unit To Snap To On Grid During Translation Mode*/
-    float GridSnapAmountRotate_; /**<Unit To Snap To On Grid During Rotation Mode*/
-    float GridSnapAmountScale_; /**<Unit To Snap To On Grid During Scale Mode*/
-
-    ERS_STRUCT_Camera* Camera_; /**<Camera Object Pointer*/
+    ERS_STRUCT_Camera* Camera_ = nullptr; /**<Camera Object Pointer*/
     ImGuizmo::OPERATION CurrentGizmoOperation_ = ImGuizmo::TRANSLATE; /**<Set Current Cursor Operation*/
     ImGuizmo::MODE GizmoMode_ = ImGuizmo::WORLD; /**<Set Default Coordinate Space*/
 
     glm::vec3 InitialPos_;   /**<Initial Scale, Used To Cancel Movement If Escape Is Pressed During An Operation*/
     glm::vec3 InitialRot_;   /**<Initial Scale, Used To Cancel Movement If Escape Is Pressed During An Operation*/
     glm::vec3 InitialScale_; /**<Initial Scale, Used To Cancel Movement If Escape Is Pressed During An Operation*/
-    int DisableGizmoForFrames_ = 0; /**<If nonzero, will disable the gizmo*/
-    bool LastFrameActiveState_ = false; /*<If the cursor was being used in the last frame or not*/ 
 
 public:
 
