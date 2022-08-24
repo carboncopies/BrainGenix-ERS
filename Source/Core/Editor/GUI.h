@@ -53,27 +53,26 @@ class GUISystem {
 
 private:
 
-    GLFWwindow* Window_; /**<Pointer to window instance*/
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Structure Containing Pointers To System Utilities*/
-    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**ProjectUtils Struct Pointer*/
-    Cursors3D* Cursors3D_; /**<Pointer to Cursors3D Instance*/
-    ERS_CLASS_SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
-    ERS_CLASS_VisualRenderer* VisualRenderer_; /**<Pointer to visual renderer for viewport modification*/
-    ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_; /**<Pointer To Human Device Utils Struct*/
+    GLFWwindow*                       Window_         = nullptr; /**<Pointer to window instance*/
+    ERS_STRUCT_SystemUtils*           SystemUtils_    = nullptr; /**<Structure Containing Pointers To System Utilities*/
+    ERS_STRUCT_ProjectUtils*          ProjectUtils_   = nullptr; /**ProjectUtils Struct Pointer*/
+    Cursors3D*                        Cursors3D_      = nullptr; /**<Pointer to Cursors3D Instance*/
+    ERS_CLASS_SceneManager*           SceneManager_   = nullptr; /**<Scene Manager Instance Pointer*/
+    ERS_CLASS_VisualRenderer*         VisualRenderer_ = nullptr; /**<Pointer to visual renderer for viewport modification*/
+    ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_       = nullptr; /**<Pointer To Human Device Utils Struct*/
 
-    std::unique_ptr<ERS_CLASS_FontManager> FontManager_; /**<Pointer To FontManager Instance*/
+    std::unique_ptr<ERS_CLASS_FontManager>        FontManager_;        /**<Pointer To FontManager Instance*/
     std::unique_ptr<ERS_CLASS_UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
-
-    std::unique_ptr<ERS_CLASS_WindowManager> WindowManager_; /**<Class owning all gui windows*/
+    std::unique_ptr<ERS_CLASS_WindowManager>      WindowManager_;      /**<Class owning all gui windows*/
     
 public:
 
     std::unique_ptr<ERS_CLASS_ThemeManager> ThemeManager_; /**<Pointer To ThemeManager Instance*/
 
     // Menu Items
-    std::unique_ptr<GUI_Menu_File> Menu_File_; /**<Editor Menu Entry*/
-    std::unique_ptr<GUI_Menu_Window> Menu_Window_; /**<Editor Menu Entry*/
-    std::unique_ptr<GUI_Menu_Debug> Menu_Debug_; /**<Editor Menu Entry*/
+    std::unique_ptr<GUI_Menu_File>     Menu_File_;     /**<Editor Menu Entry*/
+    std::unique_ptr<GUI_Menu_Window>   Menu_Window_;   /**<Editor Menu Entry*/
+    std::unique_ptr<GUI_Menu_Debug>    Menu_Debug_;    /**<Editor Menu Entry*/
     std::unique_ptr<GUI_Menu_Settings> Menu_Settings_; /**<Editor Menu Entry*/
 
 
