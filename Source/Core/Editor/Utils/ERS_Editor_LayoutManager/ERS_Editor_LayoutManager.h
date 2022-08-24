@@ -29,8 +29,8 @@ class ERS_CLASS_LayoutManager {
 
 private:
 
-    ERS_CLASS_LoggingSystem* Logger_; /**<ERS_CLASS_LoggingSystem Instance Pointer*/
-    std::string LayoutDirectory_; /**<This string stores the path to the editor's layout directory ending in a trailing slash*/
+    ERS_CLASS_LoggingSystem* Logger_          = nullptr; /**<ERS_CLASS_LoggingSystem Instance Pointer*/
+    std::string              LayoutDirectory_;           /**<This string stores the path to the editor's layout directory ending in a trailing slash*/
 
     std::vector<YAML::Node> LayoutFiles_; /**<List Of YAML::Node files*/
     int Index = 0; /**<The index of Layout structs*/
