@@ -100,7 +100,7 @@ struct ERS_STRUCT_Model {
     glm::vec3 ModelPosition = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::vec3 ModelRotation = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::vec3 ModelScale = glm::vec3(1.0f, 1.0f, 1.0f);
-    glm::vec3 TrueModelScale = glm::vec3(0.0f, 0,0f, 0,0f);
+    glm::vec3 TrueModelScale = glm::vec3(0.0f, 0.0f, 0.0f);
 
     glm::mat4 SourceModelLocRotScale_ = glm::mat4(1.0f);
     glm::mat4 ModelLocRotScale_ = glm::mat4(1.0f);
