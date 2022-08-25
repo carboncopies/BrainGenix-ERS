@@ -1,5 +1,5 @@
 //======================================================================//
-// This file is part of the BrainGenix-ERS Environment AssetStreaming System //
+// This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
 #include <GUI_Window_AssetStreamingSettings.h>
