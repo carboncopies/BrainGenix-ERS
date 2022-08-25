@@ -109,6 +109,32 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                 }
 
 
+                // Debug Buttons
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+
+                if (ImGui::Button("Purge RAM Texture Cache")) {
+                    ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+                    for (unsigned int i = 0; i < ActiveScene->Models.size(); i++) {
+                        ActiveScene->Models[i]->TargetTextureLevelRAM = 0;
+                    }
+                }
+                if (ImGui::Button("Purge VRAM Texture Cache")) {
+                    ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+                    for (unsigned int i = 0; i < ActiveScene->Models.size(); i++) {
+                        ActiveScene->Models[i]->TargetTextureLevelVRAM = 0;
+                    }
+                }
+                if (ImGui::Button("Purge All Texture Cache")) {
+                    ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+                    for (unsigned int i = 0; i < ActiveScene->Models.size(); i++) {
+                        ActiveScene->Models[i]->TargetTextureLevelVRAM = 0;
+                        ActiveScene->Models[i]->TargetTextureLevelRAM = 0;
+                    }
+                }
+
+
             }
 
 
