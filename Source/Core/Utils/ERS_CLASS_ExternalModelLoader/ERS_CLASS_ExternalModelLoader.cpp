@@ -294,6 +294,13 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
             FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
             FreeImage_CloseMemory(FIImageData);
 
+            int RawWidth, RawHeight;
+            RawWidth = FreeImage_GetWidth(RawImage);
+            RawHeight = FreeImage_GetHeight(RawImage);
+            if ((RawWidth < 1) || (RawHeight < 1)) {
+                SystemUtils_->Logger_->Log("Error Loading Image, Resulting Raw Image Has Invalid Size!", 7);
+            }
+
             FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
             FreeImage_Unload(RawImage);
 
