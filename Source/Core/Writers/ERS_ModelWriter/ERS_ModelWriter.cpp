@@ -201,7 +201,7 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
                 Logger_->Log(std::string("Testing Texture Image For Layer '")
                 + std::to_string((MipMaps - 1) - MipMapIndex)
                 + "' With ID '" + std::to_string(ImageAssetID)
-                + "' For Asset Texture '" + Data.TextureList[i], 3);
+                + "' For Asset Texture '" + Data.TextureList[i], 2);
                 bool ReadSuccess = IOSubsystem_->ReadAsset(ImageAssetID, &IOData);
 
                 if (ReadSuccess) {
