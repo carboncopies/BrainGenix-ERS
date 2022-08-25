@@ -74,7 +74,7 @@ bool ERS_STRUCT_Model::ApplyTransformations() {
     ModelLocRotScale_ = SourceModelLocRotScale_;
 
     // Calculate Adjusted Scale
-    glm::vec3 AdjustedScale = ModelScale / 100.0f;
+    glm::vec3 AdjustedScale = ModelScale / 1000.0f;
 
     // Apply Transforms
     ModelLocRotScale_ = glm::translate(ModelLocRotScale_, ModelPosition);
