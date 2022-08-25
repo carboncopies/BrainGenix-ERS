@@ -29,7 +29,10 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
         }
     }
 
-    SetNumThreads(Threads);
+
+
+    SetNumLoaderThreads(Threads);
+    SetNumStreamerThreads(1);
     SetupPusherThreads();
     SetupLoaderThreads();
 
