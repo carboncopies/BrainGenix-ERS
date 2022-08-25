@@ -32,13 +32,14 @@ class GUI_Window_AssetStreamingSettings {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointer*/
-    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project Utils Struct So We Can Get To The Model Loader*/
-    ERS_CLASS_ModelLoader* ModelLoader_; /**<Model Loading System, We Update This Class And It's Subcomponents To Do Stuff*/
+    ERS_STRUCT_SystemUtils*  SystemUtils_  = nullptr; /**<System Utils Pointer*/
+    ERS_STRUCT_ProjectUtils* ProjectUtils_ = nullptr; /**<Project Utils Struct So We Can Get To The Model Loader*/
+    ERS_CLASS_ModelLoader*   ModelLoader_  = nullptr; /**<Model Loading System, We Update This Class And It's Subcomponents To Do Stuff*/
 
 
     // Settings
-    int TextureStreamingThreads_ = -1;
+    int TextureStreamingThreads_    = -1;
+    int TextureLoadingThreads_      = -1;
     int TextureStreamingQueueLimit_ = -1;
 
     float VRAMBudgetMiB_ = 0;

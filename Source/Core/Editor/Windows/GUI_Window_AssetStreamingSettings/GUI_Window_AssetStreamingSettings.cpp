@@ -1,5 +1,5 @@
 //======================================================================//
-// This file is part of the BrainGenix-ERS Environment AssetStreaming System //
+// This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
 #include <GUI_Window_AssetStreamingSettings.h>
@@ -12,7 +12,8 @@ GUI_Window_AssetStreamingSettings::GUI_Window_AssetStreamingSettings(ERS_STRUCT_
     SystemUtils_->Logger_->Log("Initializing AssetStreaming Settings GUI_Window", 5);
 
     // Copy In Default Parameters
-    TextureStreamingThreads_ = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetNumThreads();
+    TextureStreamingThreads_ = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetNumStreamerThreads();
+    TextureLoadingThreads_ = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetNumLoaderThreads();
     TextureStreamingQueueLimit_ = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetQueueLimit();
     PreventDupeQueueEntries_ = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetDupeQueueEntryPrevention();
     QueuePrioritizationEnabled_ = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetQueuePrioritizationEnabled();
@@ -70,7 +71,9 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                 ImGui::Spacing();
 
 
+                ImGui::SliderInt("Texture Loading Threads", &TextureLoadingThreads_, 1, MaxThreads_);
                 ImGui::SliderInt("Texture Streaming Threads", &TextureStreamingThreads_, 1, MaxThreads_);
+                
                 ImGui::SliderInt("Queue Limit", &TextureStreamingQueueLimit_, 1, MaxThreads_ * 25);
                 ImGui::Checkbox("Prevent Duplicate Entry", &PreventDupeQueueEntries_);
                 ImGui::Checkbox("Queue Prioritization", &QueuePrioritizationEnabled_);
@@ -90,13 +93,44 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                     SystemUtils_->RendererSettings_->RAMBudget_ = RAMBudgetMiB_ * 1048576;
                     
                     // Update Threads
-                    int LastThreadCount = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetNumThreads();
-                    if (LastThreadCount != TextureStreamingThreads_) {
-                        ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetNumThreads(TextureStreamingThreads_);
+                    int LastLoaderThreadCount = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetNumLoaderThreads();
+                    if (LastLoaderThreadCount != TextureLoadingThreads_) {
+                        ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetNumLoaderThreads(TextureLoadingThreads_);
                         ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->TeardownLoaderThreads();
-                        ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->TeardownPusherThreads();
                         ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetupLoaderThreads();
+                    }
+
+                    int LastStreamerThreadCount = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetNumStreamerThreads();
+                    if (LastStreamerThreadCount != TextureStreamingThreads_) {
+                        ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetNumStreamerThreads(TextureStreamingThreads_);
+                        ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->TeardownPusherThreads();
                         ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetupPusherThreads();
+                    }
+                }
+
+
+                // Debug Buttons
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+
+                if (ImGui::Button("Purge RAM Texture Cache")) {
+                    ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+                    for (unsigned int i = 0; i < ActiveScene->Models.size(); i++) {
+                        ActiveScene->Models[i]->TargetTextureLevelRAM = 0;
+                    }
+                }
+                if (ImGui::Button("Purge VRAM Texture Cache")) {
+                    ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+                    for (unsigned int i = 0; i < ActiveScene->Models.size(); i++) {
+                        ActiveScene->Models[i]->TargetTextureLevelVRAM = 0;
+                    }
+                }
+                if (ImGui::Button("Purge All Texture Cache")) {
+                    ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+                    for (unsigned int i = 0; i < ActiveScene->Models.size(); i++) {
+                        ActiveScene->Models[i]->TargetTextureLevelVRAM = 0;
+                        ActiveScene->Models[i]->TargetTextureLevelRAM = 0;
                     }
                 }
 
