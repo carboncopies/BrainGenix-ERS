@@ -326,7 +326,7 @@ std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDista
 
         // float Distance = glm::distance(glm::vec3(0.0f), CubeDistance);
 
-        glm::vec3 CubeBoundryBox = Scene->Models[i]->BoxScale_ * Scene->Models[i]->ModelScale;
+        glm::vec3 CubeBoundryBox = Scene->Models[i]->BoxScale_ * Scene->Models[i]->TrueModelScale;
         float ApproxCubeBoundryDistance = CubeBoundryBox.x;
         if (ApproxCubeBoundryDistance < CubeBoundryBox.y) {
             ApproxCubeBoundryDistance = CubeBoundryBox.y;
