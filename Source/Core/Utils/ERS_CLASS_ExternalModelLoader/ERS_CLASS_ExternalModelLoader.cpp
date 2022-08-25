@@ -297,7 +297,8 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
             FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
             FreeImage_Unload(RawImage);
 
-            SystemUtils_->Logger_->Log(std::string("Loaded Image Texture"), 2);
+            std::string Size = "(" + std::to_string(FreeImage_GetWidth(Image)) + "x" + std::to_string(FreeImage_GetWidth(Image)) + ")";
+            SystemUtils_->Logger_->Log(std::string("Loaded Image Texture Of Size ") + Size, 2);
 
             ImageBytes.push_back(std::make_pair(TexturePath, Image));
         }
