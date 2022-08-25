@@ -36,12 +36,14 @@ void ERS_STRUCT_Model::SetScale(double X, double Y, double Z) {
 
     glm::vec3 Scale = glm::vec3(X, Y, Z);
     ModelScale = Scale;
+    TrueModelScale = ModelScale / 1000.0f;
 
 }
 
 void ERS_STRUCT_Model::SetScale(glm::vec3 Scale) {
 
     ModelScale = Scale;
+    TrueModelScale = ModelScale / 1000.0f;
 
 }
 
@@ -55,6 +57,7 @@ void ERS_STRUCT_Model::SetLocRotScale(double LocX, double LocY, double LocZ, dou
     ModelPosition = Position;
     ModelRotation = Rotation;
     ModelScale = Scale;
+    TrueModelScale = ModelScale / 1000.0f;
 
 }
 
@@ -64,7 +67,7 @@ void ERS_STRUCT_Model::SetLocRotScale(glm::vec3 Position, glm::vec3 Rotation, gl
     ModelPosition = Position;
     ModelRotation = Rotation;
     ModelScale = Scale;
-
+    TrueModelScale = ModelScale / 1000.0f;
 }
 
 
@@ -73,8 +76,7 @@ bool ERS_STRUCT_Model::ApplyTransformations() {
     // Reset ModelLocRotScale
     ModelLocRotScale_ = SourceModelLocRotScale_;
 
-    // Calculate Adjusted Scale
-    TrueModelScale = ModelScale / 1000.0f;
+
 
     // Apply Transforms
     ModelLocRotScale_ = glm::translate(ModelLocRotScale_, ModelPosition);
