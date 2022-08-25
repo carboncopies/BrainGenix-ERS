@@ -31,6 +31,9 @@ bool ERS_FUNCTION_DecodeScene(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, ERS
     } else if (Version == 3) {
         SystemUtils->Logger_->Log("Detected Scene Format To Be Version 3, Starting Decoding Process", 4, LogEnable);
         return ERS_FUNCTION_DecodeSceneV3(SceneData, Scene, SystemUtils, ModelLoader, LogEnable);
+    } else if (Version == 4) {
+        SystemUtils->Logger_->Log("Detected Scene Format To Be Version 4, Starting Decoding Process", 4, LogEnable);
+        return ERS_FUNCTION_DecodeSceneV4(SceneData, Scene, SystemUtils, ModelLoader, LogEnable);
     } else {
         SystemUtils->Logger_->Log("Scene Format Has Unknown Version, Aborting Load", 8);
         return false;

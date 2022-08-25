@@ -20,6 +20,7 @@
 #include <ERS_FUNCTION_SceneDecoderV1.h>
 #include <ERS_FUNCTION_SceneDecoderV2.h>
 #include <ERS_FUNCTION_SceneDecoderV3.h>
+#include <ERS_FUNCTION_SceneDecoderV4.h>
 
 
 /**
