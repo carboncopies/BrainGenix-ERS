@@ -184,14 +184,16 @@ public:
      * 
      * @return int 
      */
-    int GetNumThreads();
+    int GetNumLoaderThreads();
+    int GetNumStreamerThreads();
 
     /**
      * @brief Tell the system how many threads we should be using - only applies when we teardown threads and then set them up again.
      * 
      * @param NumThreads
      */
-    void SetNumThreads(int NumThreads);
+    void SetNumLoaderThreads(int NumThreads);
+    void SetNumStreamerThreads(int NumThreads);
 
     /**
      * @brief Create the threads based on the numthreads setting
