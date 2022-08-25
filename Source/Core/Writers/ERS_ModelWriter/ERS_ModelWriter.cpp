@@ -214,7 +214,7 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
                     // Detect Channels
                     int Line = FreeImage_GetLine(TestImage);
                     int Width = FreeImage_GetWidth(TestImage);
-                    if (Width == 0 || Line == 0) {
+                    if (Width < 1 || Line < 1) {
                         ImageChannels.push_back(0);
                     } else {
                         ImageChannels.push_back(Line / Width);
