@@ -50,7 +50,7 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
     // Write Metadata
     Output << YAML::Key << "SceneName" << YAML::Value << InputScene->SceneName;
-    Output << YAML::Key << "SceneFormatVersion" << YAML::Value << 3;
+    Output << YAML::Key << "SceneFormatVersion" << YAML::Value << 4;
     Output << YAML::Key << "ActiveCameraIndex" << YAML::Value << InputScene->ActiveSceneCameraIndex;
     
 
