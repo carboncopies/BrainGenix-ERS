@@ -307,7 +307,38 @@ std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDista
     // Create Sorted List Of Distances Based On Position
     std::map<float, unsigned int> Distances;        
     for (unsigned int i = 0; i < Scene->Models.size(); i++) {
-        float Distance = glm::distance(Camera->GetPosition(), Scene->Models[i]->ModelPosition);
+
+
+        float TotalDistance = glm::distance(Camera->GetPosition(), Scene->Models[i]->ModelPosition);
+        
+        // glm::vec3 UnscaledAngle = Camera->GetPosition() - Scene->Models[i]->ModelPosition;
+        // float MaxSide = UnscaledAngle.x;
+        // if (UnscaledAngle.y > MaxSide) {
+        //     MaxSide = UnscaledAngle.y;
+        // } else if (UnscaledAngle.z > MaxSide) {
+        //     MaxSide = UnscaledAngle.z;
+        // }
+        // float ScaleFactor = (MaxSide + 0.000001f);
+        // glm::vec3 ScaledAngle = UnscaledAngle / ScaleFactor;
+
+
+        // glm::vec3 CubeDistance = ScaledAngle * Scene->Models[i]->BoxScale_;
+
+        // float Distance = glm::distance(glm::vec3(0.0f), CubeDistance);
+
+        glm::vec3 CubeBoundryBox = Scene->Models[i]->BoxScale_ * Scene->Models[i]->ModelScale;
+        float ApproxCubeBoundryDistance = CubeBoundryBox.x;
+        if (ApproxCubeBoundryDistance < CubeBoundryBox.y) {
+            ApproxCubeBoundryDistance = CubeBoundryBox.y;
+        } else if (ApproxCubeBoundryDistance < CubeBoundryBox.z) {
+            ApproxCubeBoundryDistance = CubeBoundryBox.z;
+        }
+        
+
+        float Distance = TotalDistance - ApproxCubeBoundryDistance;
+        Distance = std::max(0.0f, Distance);
+        
+        std::cout<<Distance<<std::endl;
         Distances.insert(std::make_pair(Distance, i));
     }
     std::map<float, unsigned int> SortedDistances; 
