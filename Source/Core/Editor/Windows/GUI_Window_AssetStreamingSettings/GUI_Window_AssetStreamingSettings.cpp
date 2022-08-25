@@ -92,9 +92,9 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                     SystemUtils_->RendererSettings_->RAMBudget_ = RAMBudgetMiB_ * 1048576;
                     
                     // Update Threads
-                    int LastThreadCount = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetNumThreads();
+                    int LastThreadCount = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetNumLoaderThreads();
                     if (LastThreadCount != TextureStreamingThreads_) {
-                        ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetNumThreads(TextureStreamingThreads_);
+                        ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetNumLoaderThreads(TextureStreamingThreads_);
                         ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->TeardownLoaderThreads();
                         ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->TeardownPusherThreads();
                         ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SetupLoaderThreads();
