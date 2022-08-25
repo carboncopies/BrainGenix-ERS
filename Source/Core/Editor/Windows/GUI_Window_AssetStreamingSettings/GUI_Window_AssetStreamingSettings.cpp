@@ -70,7 +70,9 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                 ImGui::Spacing();
 
 
+                ImGui::SliderInt("Texture Loading Threads", &TextureLoadingThreads_, 1, MaxThreads_);
                 ImGui::SliderInt("Texture Streaming Threads", &TextureStreamingThreads_, 1, MaxThreads_);
+                
                 ImGui::SliderInt("Queue Limit", &TextureStreamingQueueLimit_, 1, MaxThreads_ * 25);
                 ImGui::Checkbox("Prevent Duplicate Entry", &PreventDupeQueueEntries_);
                 ImGui::Checkbox("Queue Prioritization", &QueuePrioritizationEnabled_);
