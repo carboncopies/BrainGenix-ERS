@@ -2,10 +2,10 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_FUNCTION_SceneDecoderV3.h>
+#include <ERS_FUNCTION_SceneDecoderV4.h>
 
 
-bool ERS_FUNCTION_DecodeSceneV3(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, ERS_STRUCT_SystemUtils *SystemUtils, ERS_CLASS_ModelLoader* ModelLoader, bool LogEnable) {
+bool ERS_FUNCTION_DecodeSceneV4(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, ERS_STRUCT_SystemUtils *SystemUtils, ERS_CLASS_ModelLoader* ModelLoader, bool LogEnable) {
 
     // Init
     bool Success = true;
@@ -39,8 +39,8 @@ bool ERS_FUNCTION_DecodeSceneV3(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
         Success &= ERS_FUNCTION_GetString     (Logger, Item, "AssetName",            Model.Name                    );
         Success &= ERS_FUNCTION_GetLongVector (Logger, Item, "AttachedScripts",      Model.AttachedScriptIndexes_  );
 
-        // Adjust Model Scale Based On New Metric Scale Parameters
-        Model.SetScale(Model.ModelScale * 100.0f);
+        // Force Scale Update
+        Model.TrueModelScale = Model.ModelScale / 100.0f;
 
         Scene->Models.push_back(std::make_shared<ERS_STRUCT_Model>(Model));
         ModelLoader->AddModelToLoadingQueue(Scene->Models[Scene->Models.size()-1]);
