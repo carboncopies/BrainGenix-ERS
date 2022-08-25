@@ -39,7 +39,7 @@ class ERS_CLASS_ViewportOverlay {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to systemtuils resource*/
+    ERS_STRUCT_SystemUtils*  SystemUtils_;  /**<Pointer to systemtuils resource*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to project utils instance*/
 
 

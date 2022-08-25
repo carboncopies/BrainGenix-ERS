@@ -28,29 +28,32 @@ class ERS_CLASS_FramerateManager {
 
 private:
 
-    std::chrono::high_resolution_clock Clock_; /**<High Res Clock Used For Frame Time Calcs*/
-    double TargetFrameTime_; /**<Target Frame Time In MS*/
+    std::chrono::high_resolution_clock Clock_;        /**<High Res Clock Used For Frame Time Calcs*/
+    std::vector<double>                FrameSamples_; /**<Sample Frame Times*/
 
-    double FrameStartTime_; /**<Starting Time Of Frame*/
-    double FrameEndTime_; /**<Ending Time Of Frame*/
-    double LastFrameTime_; /**<Non-Averaged Last Frame Time*/
-    float AverageFrameTime_; /**<Float representing the average time in ms*/
-    int NumberSamples_ = 20; /**<Set number of samples used in average*/
-    std::vector<double> FrameSamples_; /**<Sample Frame Times*/
-    bool SyncToMonitorChanged_ = true; /**<Updates If Sync To Monitor Has Changed*/
-    bool LastFrameSyncToMonitor_ = false; /**<Check If Last Sync To Monitor Changed*/
+
+    double TargetFrameTime_        = -1.0f; /**<Target Frame Time In MS*/
+    double FrameStartTime_         = -1.0f; /**<Starting Time Of Frame*/
+    double FrameEndTime_           = -1.0f; /**<Ending Time Of Frame*/
+    double LastFrameTime_          = -1.0f; /**<Non-Averaged Last Frame Time*/
+    float  AverageFrameTime_       = -1.0f; /**<Float representing the average time in ms*/
+    int    NumberSamples_          = 20;    /**<Set number of samples used in average*/
+    bool   SyncToMonitorChanged_   = true;  /**<Updates If Sync To Monitor Has Changed*/
+    bool   LastFrameSyncToMonitor_ = false; /**<Check If Last Sync To Monitor Changed*/
+
+
 
 
 public:
 
-    int TargetFrameRate_ = 60; /**<Target Frame Rate In FPS*/
-    bool UnlockFramerate_ = false; /**<Run As Fast As Possible*/
-    bool SyncToMonitor_ = true; /**<Sync To Monitor FPS*/
+    int   TargetFrameRate_ = 60;    /**<Target Frame Rate In FPS*/
+    bool  UnlockFramerate_ = false; /**<Run As Fast As Possible*/
+    bool  SyncToMonitor_   = true;  /**<Sync To Monitor FPS*/
 
 
-    std::vector<double> ActualFrameTimes_; /**<List of last thousand actual measured frame times in seconds*/
-    std::vector<double> AverageFrameTimes_; /**<List of average frame times*/
-    std::vector<float> ActualFrameTimesMS_; /**<Frame Times In MS*/
+    std::vector<double> ActualFrameTimes_;   /**<List of last thousand actual measured frame times in seconds*/
+    std::vector<double> AverageFrameTimes_;  /**<List of average frame times*/
+    std::vector<float>  ActualFrameTimesMS_; /**<Frame Times In MS*/
     
 
 

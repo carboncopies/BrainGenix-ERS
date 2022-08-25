@@ -30,14 +30,14 @@ class ERS_CLASS_IconRenderer {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Shared Pointer To System Utils*/
-    ERS_STRUCT_OpenGLDefaults* OpenGLDefaults_; /**<Pointer acquired from renderermanager*/
-    ERS_STRUCT_Shader* IconRendererShader_; /**<Pointer To Shader With IconRenderer*/
-    glm::mat4 IconRendererModelArray_; /**<IconRenderer Model Mat4*/
+    ERS_STRUCT_SystemUtils*    SystemUtils_            = nullptr; /**<Shared Pointer To System Utils*/
+    ERS_STRUCT_OpenGLDefaults* OpenGLDefaults_         = nullptr; /**<Pointer acquired from renderermanager*/
+    ERS_STRUCT_Shader*         IconRendererShader_     = nullptr; /**<Pointer To Shader With IconRenderer*/
+    glm::mat4                  IconRendererModelArray_;           /**<IconRenderer Model Mat4*/
 
-    unsigned int IconRendererVBO_; /**<OpenGL ID To IconRenderer Vertex Buffer Object*/
-    unsigned int IconRendererVAO_; /**<OpenGL ID To IconRenderer Vertex Array Object*/
-    float IconRendererScale_ = 0.1f; /**<Scale of editor icons*/
+    unsigned int IconRendererVBO_   = 0;    /**<OpenGL ID To IconRenderer Vertex Buffer Object*/
+    unsigned int IconRendererVAO_   = 0;    /**<OpenGL ID To IconRenderer Vertex Array Object*/
+    float        IconRendererScale_ = 0.1f; /**<Scale of editor icons*/
 
 
 public:

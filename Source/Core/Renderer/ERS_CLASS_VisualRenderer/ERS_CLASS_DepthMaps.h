@@ -58,10 +58,9 @@ class ERS_CLASS_DepthMaps {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to systemtuils resource*/
-    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to project utils instance*/
-
-    ERS_CLASS_MeshRenderer* Renderer_; /**<Pointer to Mesh Renderer Class Instance*/
+    ERS_STRUCT_SystemUtils*  SystemUtils_  = nullptr; /**<Pointer to systemtuils resource*/
+    ERS_STRUCT_ProjectUtils* ProjectUtils_ = nullptr; /**<Pointer to project utils instance*/
+    ERS_CLASS_MeshRenderer*  Renderer_     = nullptr; /**<Pointer to Mesh Renderer Class Instance*/
 
     unsigned int DepthMapAllocationChunkSize_ = 16; /**<Allocate Depth Map In Chunks Of 5*/
 

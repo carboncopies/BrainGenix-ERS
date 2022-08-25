@@ -33,9 +33,9 @@ class GUI_Menu_Settings {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
-    ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_; /**<HID Utils Pointer*/
-    ERS_STRUCT_Windows* Windows_; /**<Struct Containing the system's windows*/
+    ERS_STRUCT_SystemUtils*           SystemUtils_ = nullptr; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
+    ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_    = nullptr; /**<HID Utils Pointer*/
+    ERS_STRUCT_Windows*               Windows_     = nullptr; /**<Struct Containing the system's windows*/
 
 
 

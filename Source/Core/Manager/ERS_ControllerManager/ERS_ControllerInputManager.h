@@ -29,25 +29,27 @@ class ERS_CLASS_ControllerInputManager {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to SystemUtils Struct*/
+    ERS_STRUCT_SystemUtils* SystemUtils_;           /**<Pointer to SystemUtils Struct*/
+    std::vector<bool>       IsControllerSupported_; /**<Indicate If Controller Is Supported Or Not*/
 
-    int NumberInputDevices_ = 0; /**<Current Number Of "Joysticks" Connected*/
-    std::vector<bool> IsControllerSupported_; /**<Indicate If Controller Is Supported Or Not*/
-    bool FirstFrame_ = true; /**<Only True On First Frame*/
+    int NumberInputDevices_ = 0;    /**<Current Number Of "Joysticks" Connected*/
+    bool FirstFrame_        = true; /**<Only True On First Frame*/
+
 
 
 private:
 
-    void UpdateNumberInputDevices(); /**<Updates the number of Input Devices present.*/
+    void UpdateNumberInputDevices();    /**<Updates the number of Input Devices present.*/
     void CheckIfSupportedControllers(); /**<Updates ControllerSupported List*/
-    void UpdateControllerStates(); /**<Updates the values for every controller param*/
+    void UpdateControllerStates();      /**<Updates the values for every controller param*/
 
 public:
 
     int NumberControllers_ = 0; /**<Current Number Of Detected Controllers*/
-    std::vector<GLFWgamepadstate> ControllerStates_; /**<Vector Of Controller States*/
-    std::vector<std::string> ControllerNames_; /**<Human Readable Names Of Controllers*/
-    std::vector<ERS_STRUCT_ControllerSettings> ControllerSettings_; /**<List of controller settings for each controller*/
+
+    std::vector<GLFWgamepadstate>              ControllerStates_;            /**<Vector Of Controller States*/
+    std::vector<std::string>                   ControllerNames_;             /**<Human Readable Names Of Controllers*/
+    std::vector<ERS_STRUCT_ControllerSettings> ControllerSettings_;          /**<List of controller settings for each controller*/
     std::vector<ERS_STRUCT_ControllerSettings> AvailableControllerProfiles_; /**<List of different loaded profiles. Will try to pick based on correct one automatically*/
 
     // TODO: add system to apply correct controller profile by name

@@ -46,24 +46,24 @@ class RendererManager {
 
 private:
 
-    // Member Variables
-    std::unique_ptr<ERS_CLASS_VisualRenderer> VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
-    GLFWwindow* Window_; /**<GLFW Window Instance*/
-    std::unique_ptr<ERS_CLASS_ShaderLoader> ShaderLoader_; /**<Pointer To Shader Loader Instnace*/
-    std::shared_ptr<ERS_STRUCT_Shader> Shader_; /**<ERS Shader Object (Main System Shader)*/
-    std::shared_ptr<GUISystem> GuiSystem_; /**<Instance of GUI System*/
-    std::unique_ptr<Cursors3D> Cursors3D_; /**<Setup 3D Cursor Class*/
-    
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**< Raw pointer to SystemUtils that is owned by the main() */
-    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Copy Of Project Utils Struct*/
-    ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_; /**<Copy Of Pointer To HIDM Struct*/
+    ERS_STRUCT_SystemUtils*           SystemUtils_  = nullptr; /**<Raw pointer to SystemUtils that is owned by the main() */
+    ERS_STRUCT_ProjectUtils*          ProjectUtils_ = nullptr; /**<Copy Of Project Utils Struct*/
+    ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_     = nullptr; /**<Copy Of Pointer To HIDM Struct*/
+    GLFWwindow*                       Window_       = nullptr; /**<GLFW Window Instance*/
+
+
+    std::unique_ptr<ERS_CLASS_VisualRenderer>  VisualRenderer_; /**<Pointer To VisualRenderer Instance*/
+    std::unique_ptr<ERS_CLASS_ShaderLoader>    ShaderLoader_;   /**<Pointer To Shader Loader Instnace*/
+    std::shared_ptr<ERS_STRUCT_Shader>         Shader_;         /**<ERS Shader Object (Main System Shader)*/
+    std::shared_ptr<GUISystem>                 GuiSystem_;      /**<Instance of GUI System*/
+    std::unique_ptr<Cursors3D>                 Cursors3D_;      /**<Setup 3D Cursor Class*/
     std::unique_ptr<ERS_STRUCT_OpenGLDefaults> OpenGLDefaults_; /**<Pointer To OpenGL Default Textures/Models*/
 
 
     // Control Values
-    int WindowWidth_; /**<GLFW Window Width Varaible*/
-    int WindowHeight_; /**<GLFW Window Height Varaible*/
-    const char* WindowTitle_; /**GLFW Window Title Variable*/
+    int         WindowWidth_  = 0;       /**<GLFW Window Width Varaible*/
+    int         WindowHeight_ = 0;       /**<GLFW Window Height Varaible*/
+    const char* WindowTitle_  = nullptr; /**<GLFW Window Title Variable*/
 
 
     /**
