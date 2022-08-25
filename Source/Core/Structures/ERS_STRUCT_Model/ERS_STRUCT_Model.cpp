@@ -74,14 +74,14 @@ bool ERS_STRUCT_Model::ApplyTransformations() {
     ModelLocRotScale_ = SourceModelLocRotScale_;
 
     // Calculate Adjusted Scale
-    glm::vec3 AdjustedScale = ModelScale / 1000.0f;
+    TrueModelScale = ModelScale / 1000.0f;
 
     // Apply Transforms
     ModelLocRotScale_ = glm::translate(ModelLocRotScale_, ModelPosition);
     ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(ModelRotation[2]), glm::vec3(0, 0, 1));
     ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(ModelRotation[1]), glm::vec3(0, 1, 0));
     ModelLocRotScale_ = glm::rotate(ModelLocRotScale_, glm::radians(ModelRotation[0]), glm::vec3(1, 0, 0));
-    ModelLocRotScale_ = glm::scale(ModelLocRotScale_, AdjustedScale);
+    ModelLocRotScale_ = glm::scale(ModelLocRotScale_, TrueModelScale);
 
     
     return true;
