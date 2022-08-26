@@ -232,8 +232,13 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
                         ImageChannels.push_back(Line / Width);
                         NumChannels = Line/Width;
                     }
-                    Logger_->Log(std::string("Detected Number Of Channels To Be '")
-                    + std::to_string(NumChannels) + "' For " + Data.TextureList[i], 3);
+                    if (NumChannels > 0 && NumChannels < 4) {
+                        Logger_->Log(std::string("Detected Number Of Channels To Be '")
+                        + std::to_string(NumChannels) + "' For " + Data.TextureList[i], 3);
+                    } else {
+                        Logger_->Log(std::string("Detected Invalid Number Of Channels To Be '")
+                        + std::to_string(NumChannels) + "' For " + Data.TextureList[i], 8);
+                    }
 
                     // Get Metadata Info
                     int MemorySize = FreeImage_GetMemorySize(TestImage);
