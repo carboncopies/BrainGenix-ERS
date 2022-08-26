@@ -173,6 +173,9 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
                 Image = FreeImage_ConvertTo24Bits(NewImage);
             } else if (Channels == 4) {
                 Image = FreeImage_ConvertTo32Bits(NewImage);
+            } else {
+                Logger_->Log(std::string("Detected Invalid Number Of Channels To Be '")
+                + std::to_string(Channels) + "' For " + Data.TextureList[i], 8);
             }
 
 
