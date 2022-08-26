@@ -291,13 +291,21 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
 
             FIMEMORY* FIImageData = FreeImage_OpenMemory(IOData.Data.get(), IOData.Size_B);
             FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-            FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
+            FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
             FreeImage_CloseMemory(FIImageData);
 
-            FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
-            FreeImage_Unload(RawImage);
+            int Width, Height;
+            Width = FreeImage_GetWidth(Image);
+            Height = FreeImage_GetHeight(Image);
+            if ((Width < 1) || (Height < 1)) {
+                SystemUtils_->Logger_->Log("Error Loading Image, Resulting Raw Image Has Invalid Size!", 7);
+            }
 
-            SystemUtils_->Logger_->Log(std::string("Loaded Image Texture"), 2);
+            //FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
+            //FreeImage_Unload(RawImage);
+
+            std::string Size = "(" + std::to_string(FreeImage_GetWidth(Image)) + "x" + std::to_string(FreeImage_GetWidth(Image)) + ")";
+            SystemUtils_->Logger_->Log(std::string("Loaded Image Texture Of Size ") + Size, 2);
 
             ImageBytes.push_back(std::make_pair(TexturePath, Image));
         }

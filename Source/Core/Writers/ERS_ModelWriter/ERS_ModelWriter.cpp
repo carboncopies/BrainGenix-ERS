@@ -161,7 +161,7 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
             FreeImage_Unload(Red);
             FreeImage_Unload(Green);
             FreeImage_Unload(Blue);
-
+            FreeImage_Unload(Alpha);
 
 
             // Save Image
@@ -201,26 +201,44 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
                 Logger_->Log(std::string("Testing Texture Image For Layer '")
                 + std::to_string((MipMaps - 1) - MipMapIndex)
                 + "' With ID '" + std::to_string(ImageAssetID)
-                + "' For Asset Texture '" + Data.TextureList[i], 3);
+                + "' For Asset Texture '" + Data.TextureList[i], 2);
                 bool ReadSuccess = IOSubsystem_->ReadAsset(ImageAssetID, &IOData);
 
+                FIBITMAP* TestImage = nullptr;
                 if (ReadSuccess) {
                     FIMEMORY* FIImageData = FreeImage_OpenMemory(IOData.Data.get(), IOData.Size_B);
                     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-                    FIBITMAP* TestImage = FreeImage_LoadFromMemory(Format, FIImageData);
+                    TestImage = FreeImage_LoadFromMemory(Format, FIImageData);
                     FreeImage_CloseMemory(FIImageData);
-                    FreeImage_FlipVertical(TestImage);
+                    //FreeImage_FlipVertical(TestImage);
+
+                    // Check Image Loading
+                    if (TestImage == nullptr) {
+                        Logger_->Log("Error Loading Image, FreeImage_LoadFromMemory Returned Null", 9);
+                        ReadSuccess = false;
+                        
+                    }
+                }
+
+                if (ReadSuccess) {
 
                     // Detect Channels
                     int Line = FreeImage_GetLine(TestImage);
                     int Width = FreeImage_GetWidth(TestImage);
-                    if (Width == 0 || Line == 0) {
+                    int NumChannels = -1;
+                    if (Width < 1 || Line < 1) {
                         ImageChannels.push_back(0);
                     } else {
                         ImageChannels.push_back(Line / Width);
+                        NumChannels = Line/Width;
                     }
-                    Logger_->Log(std::string("Detected Number Of Channels To Be '")
-                    + std::to_string(Line/Width) + "' For " + Data.TextureList[i], 3);
+                    if (NumChannels > 0 && NumChannels < 4) {
+                        Logger_->Log(std::string("Detected Number Of Channels To Be '")
+                        + std::to_string(NumChannels) + "' For " + Data.TextureList[i], 3);
+                    } else {
+                        Logger_->Log(std::string("Detected Invalid Number Of Channels To Be '")
+                        + std::to_string(NumChannels) + "' For " + Data.TextureList[i], 8);
+                    }
 
                     // Get Metadata Info
                     int MemorySize = FreeImage_GetMemorySize(TestImage);
