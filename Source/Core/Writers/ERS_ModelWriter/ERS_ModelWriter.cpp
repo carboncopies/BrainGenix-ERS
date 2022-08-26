@@ -204,12 +204,23 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
                 + "' For Asset Texture '" + Data.TextureList[i], 2);
                 bool ReadSuccess = IOSubsystem_->ReadAsset(ImageAssetID, &IOData);
 
+                FIBITMAP* TestImage = nullptr;
                 if (ReadSuccess) {
                     FIMEMORY* FIImageData = FreeImage_OpenMemory(IOData.Data.get(), IOData.Size_B);
                     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-                    FIBITMAP* TestImage = FreeImage_LoadFromMemory(Format, FIImageData);
+                    TestImage = FreeImage_LoadFromMemory(Format, FIImageData);
                     FreeImage_CloseMemory(FIImageData);
                     FreeImage_FlipVertical(TestImage);
+
+                    // Check Image Loading
+                    if (TestImage == nullptr) {
+                        Logger_->Log("Error Loading Image, FreeImage_LoadFromMemory Returned Null", 9);
+                        ReadSuccess = false;
+                        
+                    }
+                }
+
+                if (ReadSuccess) {
 
                     // Detect Channels
                     int Line = FreeImage_GetLine(TestImage);
