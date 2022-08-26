@@ -161,6 +161,7 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
             FreeImage_Unload(Red);
             FreeImage_Unload(Green);
             FreeImage_Unload(Blue);
+            FreeImage_Unload(Alpha);
 
 
 
