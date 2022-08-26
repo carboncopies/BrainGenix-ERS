@@ -210,7 +210,7 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
                     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
                     TestImage = FreeImage_LoadFromMemory(Format, FIImageData);
                     FreeImage_CloseMemory(FIImageData);
-                    FreeImage_FlipVertical(TestImage);
+                    //FreeImage_FlipVertical(TestImage);
 
                     // Check Image Loading
                     if (TestImage == nullptr) {
