@@ -163,6 +163,18 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
             FreeImage_Unload(Blue);
             FreeImage_Unload(Alpha);
 
+            // Convert Image Size
+            int Channels = FreeImage_GetLine(NewImage) / FreeImage_GetWidth(NewImage);
+            if (Channels == 1) {
+                Image = FreeImage_ConvertTo8Bits(NewImage);
+            } else if (Channels == 2) {
+                Image = FreeImage_ConvertTo16Bits555(NewImage);
+            } else if (Channels == 3) {
+                Image = FreeImage_ConvertTo24Bits(NewImage);
+            } else if (Channels == 4) {
+                Image = FreeImage_ConvertTo32Bits(NewImage);
+            }
+
 
 
             // Save Image
