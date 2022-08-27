@@ -133,6 +133,7 @@ target_link_libraries(${PROJECT_NAME}
   glfw
   TracyClient
   ozz_animation
+  Lucifer
 
   # Internal Libs
   ERS_CLASS_GPURequest
