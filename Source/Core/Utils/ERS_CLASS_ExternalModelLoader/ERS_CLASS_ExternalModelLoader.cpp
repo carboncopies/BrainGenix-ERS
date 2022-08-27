@@ -295,8 +295,9 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
             // FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
             // FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
             // FreeImage_CloseMemory(FIImageData);
-            Lucifer::Image Image;
-
+            Lucifer::Image LuciferImage;
+            ImageProcessor_->Load(IOData.Data.get(), IOData.Size_B, LuciferImage);
+            FIBITMAP* Image = Lucifer::Lucifer_CreateFIBitmapFromImage(LuciferImage);
 
             int Width, Height;
             Width = FreeImage_GetWidth(Image);
