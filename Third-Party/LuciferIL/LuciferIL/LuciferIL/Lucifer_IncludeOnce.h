@@ -5,6 +5,9 @@
 
 #pragma once
 
+#define LUCIFER_STB_HANDLED
+
+
 
 // #ifndef LUCIFER_INCLUDEONCEDONE
 //     #define STB_IMAGE_IMPLEMENTATION
