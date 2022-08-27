@@ -10,6 +10,8 @@
 #include <sys/stat.h>
 #include <stdlib.h>
 
+#include <LuciferIL/Lucifer_IncludeOnce.h>
+
 #include <LuciferIL/Lucifer.h>
 #include <LuciferIL/Lucifer_EnumToString.h>
 

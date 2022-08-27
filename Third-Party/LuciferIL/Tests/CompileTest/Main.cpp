@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include <LuciferIL/Lucifer_IncludeOnce.h>
 #include <LuciferIL/Lucifer.h>
 
 
