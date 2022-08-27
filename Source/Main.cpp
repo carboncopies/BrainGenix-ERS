@@ -21,7 +21,7 @@
 #include <GLFW/glfw3.h>
 
 #include <LuciferIL/Lucifer_IncludeOnce.h>
-#include <LuciferIL/Lucifer.h>
+// #include <LuciferIL/Lucifer.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_GPURequest.h>

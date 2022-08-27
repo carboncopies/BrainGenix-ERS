@@ -27,7 +27,7 @@
 
 #include <FreeImage.h>
 
-#include <LuciferIL/Lucifer.h>
+// #include <LuciferIL/Lucifer.h>
 
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
