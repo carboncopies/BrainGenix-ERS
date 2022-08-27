@@ -7,7 +7,7 @@ add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 set(${PROJECT_NAME}_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(${PROJECT_NAME} PRIVATE ${${PROJECT_NAME}_INCLUDE_DIR})
 target_link_libraries(${PROJECT_NAME} PRIVATE FreeImage)
-add_dependencies(${PROJECT_NAME} FreeImage)
+add_dependencies(${PROJECT_NAME} FreeImage-Lucifer)
 
 # copy the test data
 set(${PROJECT_NAME}_TESTDATA_DIR ${CMAKE_CURRENT_SOURCE_DIR})

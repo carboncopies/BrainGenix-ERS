@@ -57,9 +57,9 @@ source_group("Resource Files" FILES ${DevIL_RSRC} )
 source_group("Text Files" FILES ${DevIL_TXT} )
 
 if(BUILD_SHARED_LIBS)
-    add_library(IL SHARED ${DevIL_SRCS} ${DevIL_INC} ${DevIL_RSRC} ${DevIL_TXT})
+    add_library(IL-Lucifer SHARED ${DevIL_SRCS} ${DevIL_INC} ${DevIL_RSRC} ${DevIL_TXT})
 else(BUILD_SHARED_LIBS)
-    add_library(IL ${DevIL_SRCS} ${DevIL_INC} ${DevIL_RSRC} ${DevIL_TXT})
+    add_library(IL-Lucifer ${DevIL_SRCS} ${DevIL_INC} ${DevIL_RSRC} ${DevIL_TXT})
 endif(BUILD_SHARED_LIBS)
 
 
@@ -161,18 +161,18 @@ set(LIBDIR "${LIBDIR}${EX_PLATFORM_NAME}")
 if(UNICODE)
 	set(LIBDIR "${LIBDIR}/unicode")
 endif(UNICODE)
-set_target_properties(IL PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${LIBDIR})
-set_target_properties(IL PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${LIBDIR})
-set_target_properties(IL PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${LIBDIR})
+set_target_properties(IL-Lucifer PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${LIBDIR})
+set_target_properties(IL-Lucifer PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${LIBDIR})
+set_target_properties(IL-Lucifer PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${LIBDIR})
 
 if(WIN32)
 	# Linux uses libIL.so, libILU.so, and libILUT.so, but Windows uses
 	#  DevIL.dll, ILU.dll, and ILUT.dll.
-	set_target_properties(IL PROPERTIES OUTPUT_NAME "DevIL")
+	set_target_properties(IL-Lucifer PROPERTIES OUTPUT_NAME "DevIL")
 endif(WIN32)
 
 if(UNICODE)
-	MESSAGE("Compiling IL Unicode")
+	MESSAGE("Compiling IL-Lucifer Unicode")
 	add_definitions(-DUNICODE -D_UNICODE)
 endif(UNICODE)
 #if(COMPILER_MSVC)
@@ -240,7 +240,7 @@ endif(IL_USE_DXTC_SQUISH)
 
 
 include_directories(${incs})
-target_link_libraries(IL ${libs})
+target_link_libraries(IL-Lucifer ${libs})
 
 # generate config.h
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/include/config.h.cmake.in ${CMAKE_CURRENT_SOURCE_DIR}/include/config.h)
@@ -256,7 +256,7 @@ configure_file( pkgconfig/IL.pc.cmake.in
 
 
 # Installation
-install (TARGETS IL
+install (TARGETS IL-Lucifer
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib
     RUNTIME DESTINATION bin
