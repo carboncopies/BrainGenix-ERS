@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 project(Lucifer)
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 
 # Include Libs
