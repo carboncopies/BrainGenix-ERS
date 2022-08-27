@@ -30,6 +30,13 @@ namespace Lucifer {
  */
 int Lucifer_GetBitsPerPixel(Image &Image);
 
-
+/**
+ * @brief Copies the image into a new FIBITMAP.
+ * You'll need to take care of destroying the returned image manually.
+ * 
+ * @param Image 
+ * @return FIBITMAP* 
+ */
+FIBITMAP* Lucifer_CreateFIBitmapFromImage(Image &Image);
 
 };

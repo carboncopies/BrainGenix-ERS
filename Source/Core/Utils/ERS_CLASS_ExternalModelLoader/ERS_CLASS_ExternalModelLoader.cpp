@@ -9,6 +9,8 @@ ERS_CLASS_ExternalModelLoader::ERS_CLASS_ExternalModelLoader(ERS_STRUCT_SystemUt
 
     SystemUtils_ = SystemUtils;
 
+    ImageProcessor_ = std::make_unique<Lucifer::Lucifer>();
+
 }
 ERS_CLASS_ExternalModelLoader::~ERS_CLASS_ExternalModelLoader() {
 
@@ -289,10 +291,12 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
             // )));
 
 
-            FIMEMORY* FIImageData = FreeImage_OpenMemory(IOData.Data.get(), IOData.Size_B);
-            FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-            FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
-            FreeImage_CloseMemory(FIImageData);
+            // FIMEMORY* FIImageData = FreeImage_OpenMemory(IOData.Data.get(), IOData.Size_B);
+            // FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
+            // FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
+            // FreeImage_CloseMemory(FIImageData);
+            Lucifer::Image Image;
+
 
             int Width, Height;
             Width = FreeImage_GetWidth(Image);

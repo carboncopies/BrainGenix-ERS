@@ -56,6 +56,7 @@ private:
 
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointers*/
+    std::unique_ptr<Lucifer::Lucifer> ImageProcessor_; /**<Instance of image processing lib*/
 
 
 
