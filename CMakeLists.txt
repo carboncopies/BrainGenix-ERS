@@ -20,6 +20,7 @@ set(CMAKE_FIND_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/FindUtils")
 set(PROJECT_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
+
 # Include Util CMake Scripts
 include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
 include(${CMAKE_UTIL_DIR}/SetBinaryDir.cmake)

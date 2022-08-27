@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.5)
 project(Lucifer)
 
 
-
 # Include Libs
 include(${PROJECT_SOURCE_DIR}/CMake/DisableTargetWarnings.cmake)
 include(${PROJECT_SOURCE_DIR}/CMake/FreeImage.cmake)
