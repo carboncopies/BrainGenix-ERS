@@ -22,8 +22,11 @@ LoadingStatus Lucifer_LoadSTB(unsigned char* ImageData, unsigned long Size, Imag
         return Lucifer_LoadingStatus_UnsupportedFormat;
     }
 
+
+    std::cout<<Image.Bytes.get()[0]<<std::endl;
+
     // Copy Image Data
-    int ImageLength;//= strlen((const char*)ImageBytes);
+    int ImageLength = Width*Height*Channels;//= strlen((const char*)ImageBytes);
     stbi_info_from_memory(ImageBytes, ImageLength, &Width, &Height, &Channels);
 
     Image.Bytes.reset(new unsigned char[ImageLength]);

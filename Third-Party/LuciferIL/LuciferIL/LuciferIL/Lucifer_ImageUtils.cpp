@@ -18,7 +18,7 @@ FIBITMAP* Lucifer_CreateFIBitmapFromImage(Image &Image) {
     
     // Allocate New Image
     int BitsPP = (Image.Size * 8) / (Image.Width * Image.Height);
-    FIBITMAP* FIImage = FreeImage_Allocate(Image.Width, Image.Height, BitsPP, 0, 0, 0);
+    FIBITMAP* FIImage = FreeImage_Allocate(Image.Width, Image.Height, BitsPP);
 
     // Copy Image Pixel Data To FIBITMAP
     int ImageMemorySize = Image.Width * Image.Height * (BitsPP / 8);

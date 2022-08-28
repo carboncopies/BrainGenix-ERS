@@ -15,10 +15,10 @@ LoadingStatus Lucifer_Load(unsigned char* ImageData, unsigned long Size, Image& 
 
     LoadingStatus Status;
 
-    // Status = Lucifer_LoadSTB(ImageData, Size, Image, MaxChannels);
-    // if (Status == Lucifer_LoadingStatus_Complete) {
-    //     return Status;
-    // }
+    Status = Lucifer_LoadSTB(ImageData, Size, Image, MaxChannels);
+    if (Status == Lucifer_LoadingStatus_Complete) {
+        return Status;
+    }
     Status = Lucifer_LoadFreeImage(ImageData, Size, Image, MaxChannels);
     if (Status == Lucifer_LoadingStatus_Complete) {
         return Status;
