@@ -275,33 +275,11 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
 
         if (Success || SecondTryStatus) {
             SystemUtils_->Logger_->Log(std::string("Starting Loading Texture '")  + TexturePath + "'", 3);
+
+            Lucifer::Image LuciferImage;
+            ImageProcessor_->Load(IOData.Data.get(), IOData.Size_B, LuciferImage);
+            FIBITMAP* Image = Lucifer::Lucifer_CreateFIBitmapFromImage(LuciferImage);
             
-            // ImageFutures.push_back(std::make_pair(TexturePath, std::async(std::launch::async,
-            // [&IOData, StartArg = 1]() {
-            //     FIMEMORY* FIImageData = FreeImage_OpenMemory(IOData.Data.get(), IOData.Size_B);
-            //     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-            //     FIBITMAP* RawImage = FreeImage_LoadFromMemory(Format, FIImageData);
-            //     FreeImage_CloseMemory(FIImageData);
-
-            //     FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
-            //     FreeImage_Unload(RawImage);
-            //     std::cout<<FreeImage_GetWidth(Image)<<std::endl;
-            //     return Image;
-            // }
-            // )));
-
-
-            // FIMEMORY* FIImageData = FreeImage_OpenMemory(IOData.Data.get(), IOData.Size_B);
-            // FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
-            // FIBITMAP* Image = FreeImage_LoadFromMemory(Format, FIImageData);
-            // FreeImage_CloseMemory(FIImageData);
-
-            FIBITMAP* Image;
-            {
-                Lucifer::Image LuciferImage;
-                ImageProcessor_->Load(IOData.Data.get(), IOData.Size_B, LuciferImage);
-                Image = Lucifer::Lucifer_CreateFIBitmapFromImage(LuciferImage);
-            }
 
             int Width, Height;
             Width = FreeImage_GetWidth(Image);
@@ -310,9 +288,6 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
                 SystemUtils_->Logger_->Log("Error Loading Image, Resulting Raw Image Has Invalid Size!", 7);
             }
 
-            //FIBITMAP* Image = FreeImage_ConvertTo32Bits(RawImage);
-            //FreeImage_Unload(RawImage);
-
             std::string Size = "(" + std::to_string(FreeImage_GetWidth(Image)) + "x" + std::to_string(FreeImage_GetWidth(Image)) + ")";
             SystemUtils_->Logger_->Log(std::string("Loaded Image Texture Of Size ") + Size, 2);
 
@@ -320,19 +295,8 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
         }
     }
 
-    // Get Futures
-    // std::vector<std::pair<std::string, FIBITMAP*>> ImageBytes;
-    // for (unsigned int i = 0; i < ImageFutures.size(); i++) {
-    //     std::string ImagePath = ImageFutures[i].first;
-    //     SystemUtils_->Logger_->Log(std::string("Getting Image Bitmap From Thread For Texture '")  + ImagePath + "'", 4);
-    //     FIBITMAP* Image = ImageFutures[i].second.get();
-    //     ImageBytes.push_back(std::make_pair(ImagePath, Image));
-    // }
-
-
     // Remove Duplicate Stuff (Like Alpha Maps), Just Generally Consolidate Stuff
     MergeTextures(Data.Model, &ImageBytes);
-
 
     Data.ImageBytes = ImageBytes;
 
