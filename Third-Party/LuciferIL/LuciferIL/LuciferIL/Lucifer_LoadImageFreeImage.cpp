@@ -25,6 +25,23 @@ LoadingStatus Lucifer_LoadFreeImage(unsigned char* ImageData, unsigned long Size
     FIBITMAP* FIImage = FreeImage_LoadFromMemory(Format, FIImageData);
     FreeImage_CloseMemory(FIImageData);
 
+
+    // Swap Colors From RGB To BGR
+    FIBITMAP* Red = FreeImage_GetChannel(FIImage, FICC_RED);
+    FIBITMAP* Green = FreeImage_GetChannel(FIImage, FICC_GREEN);
+    FIBITMAP* Blue = FreeImage_GetChannel(FIImage, FICC_BLUE);
+    FIBITMAP* Alpha = FreeImage_GetChannel(FIImage, FICC_ALPHA);
+    FreeImage_SetChannel(FIImage, Red, FICC_BLUE);
+    FreeImage_SetChannel(FIImage, Green, FICC_GREEN);
+    FreeImage_SetChannel(FIImage, Blue, FICC_RED);
+    FreeImage_SetChannel(FIImage, Alpha, FICC_ALPHA);
+    FreeImage_Unload(Red);
+    FreeImage_Unload(Green);
+    FreeImage_Unload(Blue);
+    FreeImage_Unload(Alpha);
+
+
+    // Get Metadata
     int Width, Height, Line;
     Width  = FreeImage_GetWidth(FIImage);
     Height = FreeImage_GetHeight(FIImage);
