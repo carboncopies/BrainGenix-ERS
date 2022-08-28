@@ -27,6 +27,9 @@
 
 #include <FreeImage.h>
 
+#include <LuciferIL/Lucifer.h>
+#include <LuciferIL/Lucifer_ImageUtils.h>
+
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
@@ -54,6 +57,7 @@ private:
 
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<System Utils Pointers*/
+    std::unique_ptr<Lucifer::Lucifer> ImageProcessor_; /**<Instance of image processing lib*/
 
 
 

@@ -20,6 +20,7 @@ set(CMAKE_FIND_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/FindUtils")
 set(PROJECT_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
+
 # Include Util CMake Scripts
 include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
 include(${CMAKE_UTIL_DIR}/SetBinaryDir.cmake)
@@ -27,6 +28,7 @@ include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 
 
 # Include Package Addition Scripts
+include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ThreadNamingUtils.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Python.cmake)
@@ -42,7 +44,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/ImGuiColorTextEdit.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/FreeImage.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/STB.cmake)
+#include(${CMAKE_BUILD_UTILS_DIR}/STB.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Assimp.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
 #include(${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
@@ -131,6 +133,7 @@ target_link_libraries(${PROJECT_NAME}
   glfw
   TracyClient
   ozz_animation
+  Lucifer
 
   # Internal Libs
   ERS_CLASS_GPURequest
