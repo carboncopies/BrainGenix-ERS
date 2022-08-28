@@ -42,6 +42,7 @@ LoadingStatus Lucifer_LoadFreeImage(unsigned char* ImageData, unsigned long Size
     Image.Width = Width;
     Image.Height = Height;
     Image.Size = FreeImage_GetMemorySize(FIImage);
+    Image.BitsPerPixel = (Image.Size * 8) / (Image.Width * Image.Height);
 
     if (Image.Width < 1) {
         FreeImage_Unload(FIImage);

@@ -56,6 +56,7 @@ LoadingStatus Lucifer_LoadDevIL(unsigned char* ImageData, unsigned long Size, Im
 
     Image.Size = ImageSize;
     Image.Bytes.reset(new unsigned char[ImageSize]);
+    Image.BitsPerPixel = (Image.Size * 8) / (Image.Width * Image.Height);
     memcpy(Image.Bytes.get(), ImageBytes, ImageSize);
 
 

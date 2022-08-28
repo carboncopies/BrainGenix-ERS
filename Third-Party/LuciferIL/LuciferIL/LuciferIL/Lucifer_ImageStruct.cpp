@@ -4,12 +4,3 @@
 //-----------------------//
 
 #include <Lucifer_ImageStruct.h>
-
-
-// Lucifer::Image::Image() {
-
-// }
-
-// Lucifer::Image::~Image() {
-    
-// }
