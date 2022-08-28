@@ -149,19 +149,7 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
             Logger_->Log(std::string("Resizing Texture Image To Size '") + std::to_string(TargetX) + "," + std::to_string(TargetY) + "'", 4);
             FIBITMAP* NewImage = FreeImage_Rescale(Image, TargetX, TargetY);
 
-            // Swap Colors From RGB To BGR
-            FIBITMAP* Red = FreeImage_GetChannel(NewImage, FICC_RED);
-            FIBITMAP* Green = FreeImage_GetChannel(NewImage, FICC_GREEN);
-            FIBITMAP* Blue = FreeImage_GetChannel(NewImage, FICC_BLUE);
-            FIBITMAP* Alpha = FreeImage_GetChannel(NewImage, FICC_ALPHA);
-            FreeImage_SetChannel(NewImage, Red, FICC_BLUE);
-            FreeImage_SetChannel(NewImage, Green, FICC_GREEN);
-            FreeImage_SetChannel(NewImage, Blue, FICC_RED);
-            FreeImage_SetChannel(NewImage, Alpha, FICC_ALPHA);
-            FreeImage_Unload(Red);
-            FreeImage_Unload(Green);
-            FreeImage_Unload(Blue);
-            FreeImage_Unload(Alpha);
+
 
 
             // Save Image
