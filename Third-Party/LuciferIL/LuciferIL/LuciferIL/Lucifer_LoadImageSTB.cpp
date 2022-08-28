@@ -23,9 +23,6 @@ LoadingStatus Lucifer_LoadSTB(unsigned char* ImageData, unsigned long Size, Imag
     }
 
 
-    unsigned char ImageByte = Image.Bytes[0];
-    std::cout<<ImageByte<<std::endl;
-
     // Copy Image Data
     int ImageLength = Width*Height*Channels;//= strlen((const char*)ImageBytes);
 
