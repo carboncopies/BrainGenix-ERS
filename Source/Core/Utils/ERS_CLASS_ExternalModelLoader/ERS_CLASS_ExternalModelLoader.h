@@ -29,6 +29,7 @@
 
 #include <LuciferIL/Lucifer.h>
 #include <LuciferIL/Lucifer_ImageUtils.h>
+#include <LuciferIL/Lucifer_LoadingStatusEnum.h>
 
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
