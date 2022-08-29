@@ -8,6 +8,7 @@
 
 // Based off of: https://stackoverflow.com/questions/10121560/stdthread-naming-your-thread
 #ifdef _WIN32
+#define NOMINMAX
 #include <windows.h>
 
 void SetThreadName(std::string ThreadName);
