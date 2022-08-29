@@ -10,7 +10,7 @@ void SetThreadName(std::string ThreadName) {
     SetThreadName(ThreadName.c_str());
 }
 void SetThreadName(const char* ThreadName) {
-    SetThreadName(GetCurrentThreadId(),ThreadName);
+    //SetThreadName(GetCurrentThreadId(),ThreadName);
 }
 
 #elif defined(__linux__)
