@@ -39,6 +39,8 @@ private:
     std::unique_ptr<GUI_Window_ImportProgressBar> GUI_Window_ImportProgressBar_; /**<Pointer To Window Import Progres Bar*/
     bool AlreadyOpen_ = false; /**<Keeps track of internal window state*/
 
+    ERS_STRUCT_ModelImportOptions Options_;
+
     /**
      * @brief Open File Dialog
      * 

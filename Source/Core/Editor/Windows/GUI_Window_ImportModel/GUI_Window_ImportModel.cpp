@@ -23,9 +23,13 @@ GUI_Window_ImportModel::~GUI_Window_ImportModel() {
 }
 
 
-inline void FileDialogCallback(const char *vFilter, IGFDUserDatas vUserDatas, bool *vCantContinue) 
+inline void FileDialogCallback(const char *vFilter, void* vUserDatas, bool *vCantContinue) 
 {
     ImGui::TextColored(ImVec4(0, 1, 1, 1), "Infos Pane");
+
+    ERS_STRUCT_ModelImportOptions* Options = (ERS_STRUCT_ModelImportOptions*)vUserDatas;
+
+    ImGui::Checkbox("Flip Textures", &Options->FlipTextures);
 
 }
 
@@ -47,13 +51,15 @@ void GUI_Window_ImportModel::Draw() {
         {
             // Get List Of Files From Selection, Convert To Vector
             std::vector<std::string> FilePaths;
+            std::vector<bool> FlipTextures;
             std::map<std::string, std::string> selection = ImGuiFileDialog::Instance()->GetSelection(); // multiselection
             for (const auto& elem:selection) {
                 FilePaths.push_back(elem.second);
+                FlipTextures.push_back(Options_.FlipTextures);
             }
 
             // Add To Queue, Launch Import
-            ProjectUtils_->ModelImporter_->AddToImportQueue(FilePaths);
+            ProjectUtils_->ModelImporter_->AddToImportQueue(FilePaths, FlipTextures);
             GUI_Window_ImportProgressBar_->Enabled_ = true;
 
         }
@@ -75,10 +81,9 @@ void GUI_Window_ImportModel::Draw() {
 
 void GUI_Window_ImportModel::OpenFileDialog() {
 
-
     
     ImGuiFileDialog::Instance()->OpenDialog("Import Model", "Import Model", ".*", ".", "", 
-        std::bind(&FileDialogCallback, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), 350, 1, (IGFDUserDatas)"InfosPane");
+        std::bind(&FileDialogCallback, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), 350, 1, (void*)&Options_);
 
 
 }
