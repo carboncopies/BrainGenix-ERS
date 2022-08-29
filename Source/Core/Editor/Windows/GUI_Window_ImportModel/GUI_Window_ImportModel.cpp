@@ -23,6 +23,14 @@ GUI_Window_ImportModel::~GUI_Window_ImportModel() {
 }
 
 
+inline void FileDialogCallback(const char *vFilter, IGFDUserDatas vUserDatas, bool *vCantContinue) 
+{
+    ImGui::TextColored(ImVec4(0, 1, 1, 1), "Infos Pane");
+
+}
+
+
+
 void GUI_Window_ImportModel::Draw() {
 
     if (Enabled_ && !AlreadyOpen_) {
@@ -67,7 +75,10 @@ void GUI_Window_ImportModel::Draw() {
 
 void GUI_Window_ImportModel::OpenFileDialog() {
 
-    ImGuiFileDialog::Instance()->OpenDialog("Import Model", "Import Model", ".*", ".", "", 0);
+
+    
+    ImGuiFileDialog::Instance()->OpenDialog("Import Model", "Import Model", ".*", ".", "", 
+        std::bind(&FileDialogCallback, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), 350, 1, (IGFDUserDatas)"InfosPane");
 
 
 }

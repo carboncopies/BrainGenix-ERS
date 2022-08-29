@@ -20,6 +20,12 @@
 #include <GUI_Window_ImportProgressBar.h>
 
 
+struct ERS_STRUCT_ModelImportOptions {
+
+    bool FlipTextures = false;
+
+};
+
 /**
  * @brief This class provides the GUI to the import asset option within the file menu.
  *
