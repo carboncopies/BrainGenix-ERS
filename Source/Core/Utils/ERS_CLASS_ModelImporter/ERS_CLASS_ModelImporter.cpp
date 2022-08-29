@@ -57,7 +57,10 @@ void ERS_CLASS_ModelImporter::ImportThread() {
 
             HasJobFinished_ = false;
             std::string AssetPath = AssetImportQueue_[0];
+            bool FlipTextures = AssetQueueFlipTextures_[0];
             AssetImportQueue_.erase(AssetImportQueue_.begin());
+            AssetQueueFlipTextures_.erase(AssetQueueFlipTextures_.begin());
+
             LockAssetImportQueue_.unlock();
 
 
@@ -65,7 +68,7 @@ void ERS_CLASS_ModelImporter::ImportThread() {
                 ERS_STRUCT_ModelWriterData ModelData;
                 ModelData.Model = &Model;
                 ModelLoader_->LoadModel(AssetPath, ModelData);
-                ModelWriter_->WriteModel(ModelData, AssetQueueFlipTextures_[0]);
+                ModelWriter_->WriteModel(ModelData, FlipTextures);
 
 
 
