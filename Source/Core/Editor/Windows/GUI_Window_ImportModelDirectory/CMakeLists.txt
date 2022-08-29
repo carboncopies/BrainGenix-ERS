@@ -29,6 +29,7 @@ target_link_libraries(GUI_Window_ImportModelDirectory
 
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
+    ERS_STRUCT_ModelImportOptions
 
     GUI_Window_ImportProgressBar
     )
