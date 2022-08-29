@@ -104,7 +104,8 @@ void GUI_Window_ImportModelDirectory::Draw() {
 
 void GUI_Window_ImportModelDirectory::OpenFileDialog() {
 
-    ImGuiFileDialog::Instance()->OpenDialog("Import Model Directory", "Import Model Directory", nullptr, "~", "", 0);
+    ImGuiFileDialog::Instance()->OpenDialog("Import Model Directory", "Import Model Directory", nullptr, "~", "", 
+     std::bind(&FileDialogCallback, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), 350, 1, (void*)&Options_);
 
 
 }
