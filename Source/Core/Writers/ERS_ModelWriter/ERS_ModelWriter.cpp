@@ -149,8 +149,9 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
             Logger_->Log(std::string("Resizing Texture Image To Size '") + std::to_string(TargetX) + "," + std::to_string(TargetY) + "'", 4);
             FIBITMAP* NewImage = FreeImage_Rescale(Image, TargetX, TargetY);
 
-
-
+            if (FlipTextures) {
+                FreeImage_FlipVertical(NewImage);
+            }
 
             // Save Image
             long ImageAssetID = IOSubsystem_->AllocateAssetID();
@@ -198,10 +199,7 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
                     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
                     TestImage = FreeImage_LoadFromMemory(Format, FIImageData);
                     FreeImage_CloseMemory(FIImageData);
-                    
-                    if (FlipTextures) {
-                        FreeImage_FlipVertical(TestImage);
-                    }
+
 
                     // Check Image Loading
                     if (TestImage == nullptr) {
