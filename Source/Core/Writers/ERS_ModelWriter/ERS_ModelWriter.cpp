@@ -149,7 +149,6 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
             Logger_->Log(std::string("Resizing Texture Image To Size '") + std::to_string(TargetX) + "," + std::to_string(TargetY) + "'", 4);
             FIBITMAP* NewImage = FreeImage_Rescale(Image, TargetX, TargetY);
 
-            std::cout<<FlipTextures<<std::endl;
             if (FlipTextures) {
                 FreeImage_FlipVertical(NewImage);
             }

@@ -62,6 +62,10 @@ void GUI_Window_ImportModel::Draw() {
             ERS_STRUCT_ModelImportOptions* Options = (ERS_STRUCT_ModelImportOptions*)ImGuiFileDialog::Instance()->GetUserDatas();
             Options_ = *Options;
 
+            std::cout<<Options->FlipTextures<<std::endl;
+            std::cout<<Options_.FlipTextures<<std::endl;
+
+
             for (const auto& elem:selection) {
                 FilePaths.push_back(elem.second);
                 FlipTextures.push_back(Options_.FlipTextures);
