@@ -65,7 +65,7 @@ void ERS_CLASS_ModelImporter::ImportThread() {
                 ERS_STRUCT_ModelWriterData ModelData;
                 ModelData.Model = &Model;
                 ModelLoader_->LoadModel(AssetPath, ModelData);
-                ModelWriter_->WriteModel(ModelData);
+                ModelWriter_->WriteModel(ModelData, AssetQueueFlipTextures_[0]);
 
 
 
