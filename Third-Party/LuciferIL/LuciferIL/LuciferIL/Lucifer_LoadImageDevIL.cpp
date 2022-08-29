@@ -5,6 +5,8 @@
 
 #include <Lucifer_LoadImageDevIL.h>
 
+#ifndef _WIN32
+
 namespace Lucifer {
 
 LoadingStatus Lucifer_LoadDevIL(unsigned char* ImageData, unsigned long Size, Image& Image, int MaxChannels) {
@@ -69,3 +71,5 @@ LoadingStatus Lucifer_LoadDevIL(unsigned char* ImageData, unsigned long Size, Im
 }
 
 }
+
+#endif
