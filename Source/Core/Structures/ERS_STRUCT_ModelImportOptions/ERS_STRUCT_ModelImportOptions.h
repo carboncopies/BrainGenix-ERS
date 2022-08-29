@@ -11,9 +11,6 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCT_ControllerSettings.h>
-#include <ERS_STRUCT_ShaderProgramAssetIDs.h>
-#include <ERS_STRUCT_Script.h>
 
 
 /**
