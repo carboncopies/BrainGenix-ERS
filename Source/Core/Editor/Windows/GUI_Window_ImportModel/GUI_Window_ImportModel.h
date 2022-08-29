@@ -20,11 +20,6 @@
 #include <GUI_Window_ImportProgressBar.h>
 
 
-struct ERS_STRUCT_ModelImportOptions {
-
-    bool FlipTextures = true; /**<Inverts the textures when loading - default to on*/
-
-};
 
 /**
  * @brief This class provides the GUI to the import asset option within the file menu.
