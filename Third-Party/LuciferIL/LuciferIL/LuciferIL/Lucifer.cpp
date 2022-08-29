@@ -13,7 +13,10 @@ namespace Lucifer {
 Lucifer::Lucifer() {
 
     FreeImage_Initialise();
+
+#ifndef _WIN32
     ilInit();
+#endif
 
 }
 

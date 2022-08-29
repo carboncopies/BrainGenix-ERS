@@ -14,6 +14,7 @@ add_library(ERS_CLASS_ExternalModelLoader
             
             ${BACKWARD_ENABLE}
             )
+set_property(TARGET ERS_CLASS_ExternalModelLoader PROPERTY CXX_STANDARD 17)
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_CLASS_ExternalModelLoader

@@ -23,11 +23,15 @@ LoadingStatus Lucifer_Load(unsigned char* ImageData, unsigned long Size, Image& 
     if (Status == Lucifer_LoadingStatus_Complete) {
         return Status;
     }
+
+#ifndef _WIN32
+
     Status = Lucifer_LoadDevIL(ImageData, Size, Image, MaxChannels);
     if (Status == Lucifer_LoadingStatus_Complete) {
         return Status;
     }
 
+#endif
 
     return Status;
 
