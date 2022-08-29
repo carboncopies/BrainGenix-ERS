@@ -104,7 +104,7 @@ bool ERS_CLASS_ModelWriter::ReadFile(std::string FilePath, ERS_STRUCT_IOData* Ou
 
 }
 
-void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::vector<std::vector<int>>* TextureImageChannels, FREE_IMAGE_FORMAT Format, int MipMaps) {
+void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std::vector<std::vector<int>>* TextureImageMemorySizes, std::vector<std::vector<long>>* TextureImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* TextureImageResolutions, std::vector<std::vector<int>>* TextureImageChannels, bool FlipTextures, FREE_IMAGE_FORMAT Format, int MipMaps) {
 
     // Resize For Mipmaps, Save To New Project
     for (unsigned int i = 0; i < Data.ImageBytes.size(); i++) {
@@ -198,7 +198,10 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
                     FREE_IMAGE_FORMAT Format = FreeImage_GetFileTypeFromMemory(FIImageData);
                     TestImage = FreeImage_LoadFromMemory(Format, FIImageData);
                     FreeImage_CloseMemory(FIImageData);
-                    //FreeImage_FlipVertical(TestImage);
+                    
+                    if (FlipTextures) {
+                        FreeImage_FlipVertical(TestImage);
+                    }
 
                     // Check Image Loading
                     if (TestImage == nullptr) {
@@ -326,11 +329,11 @@ std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(ERS_STRUCT_ModelWriterD
 
 
 // Write Model
-void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_ModelWriterData &Data) {
+void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_ModelWriterData &Data, bool FlipTextures) {
 
     // Write
     WriteModelGeometry(Data);
-    WriteTextures(Data, &Data.TextureMemorySizes, &Data.ImageAssetIDs, &Data.ImageResolutions, &Data.ImageChannels);
+    WriteTextures(Data, &Data.TextureMemorySizes, &Data.ImageAssetIDs, &Data.ImageResolutions, &Data.ImageChannels, FlipTextures);
 
     // Perform List Length Sanity Check
     unsigned int CheckSize = Data.TextureList.size();

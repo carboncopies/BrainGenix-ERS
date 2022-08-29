@@ -60,7 +60,7 @@ private:
      * @param Format 
      * @param MipMaps 
      */
-    void WriteTextures(ERS_STRUCT_ModelWriterData &Data, std::vector<std::vector<int>>* TextureMemorySizes, std::vector<std::vector<long>>* ImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* ImageResolutions, std::vector<std::vector<int>>* ImageChannels, FREE_IMAGE_FORMAT Format = FIF_PNG, int MipMaps = 10);
+    void WriteTextures(ERS_STRUCT_ModelWriterData &Data, std::vector<std::vector<int>>* TextureMemorySizes, std::vector<std::vector<long>>* ImageAssetIDs, std::vector<std::vector<std::pair<int, int>>>* ImageResolutions, std::vector<std::vector<int>>* ImageChannels, bool FlipTextures = false, FREE_IMAGE_FORMAT Format = FIF_PNG, int MipMaps = 10);
 
 
 
@@ -108,6 +108,6 @@ public:
      * 
      * @param ModelWriterData
      */
-    void WriteModel(ERS_STRUCT_ModelWriterData &Data);
+    void WriteModel(ERS_STRUCT_ModelWriterData &Data, bool FlipTextures = false);
 
 };
