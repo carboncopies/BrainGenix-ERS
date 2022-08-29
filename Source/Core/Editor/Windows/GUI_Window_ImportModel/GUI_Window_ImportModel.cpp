@@ -23,7 +23,7 @@ GUI_Window_ImportModel::~GUI_Window_ImportModel() {
 }
 
 
-inline void FileDialogCallback(const char *vFilter, void* vUserDatas, bool *vCantContinue) 
+inline void FileDialogCallback(const char *, void* vUserDatas, bool *) 
 {
  
     ERS_STRUCT_ModelImportOptions* Options = (ERS_STRUCT_ModelImportOptions*)vUserDatas;

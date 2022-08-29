@@ -22,7 +22,7 @@
 
 struct ERS_STRUCT_ModelImportOptions {
 
-    bool FlipTextures = false;
+    bool FlipTextures = true; /**<Inverts the textures when loading - default to on*/
 
 };
 
