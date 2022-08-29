@@ -29,6 +29,22 @@ bool EndsWith(const std::string& Input, const std::string& Ending) {
 }
 
 
+inline void FileDialogCallback(const char *, void* vUserDatas, bool *) 
+{
+ 
+    ERS_STRUCT_ModelImportOptions* Options = (ERS_STRUCT_ModelImportOptions*)vUserDatas;
+
+
+    ImGui::TextColored(ImVec4(0, 1, 1, 1), "Import Options");
+    ImGui::Separator();
+    ImGui::Spacing();
+
+    ImGui::Checkbox("Flip Textures", &Options->FlipTextures);
+
+}
+
+
+
 void GUI_Window_ImportModelDirectory::Draw() {
 
     if (Enabled_ && !AlreadyOpen_) {
@@ -45,7 +61,12 @@ void GUI_Window_ImportModelDirectory::Draw() {
         {
             // Get List Of Files From Selection, Convert To Vector
             std::vector<std::string> FilePaths;
+            std::vector<bool> FlipTextures;
+
             std::string Path = ImGuiFileDialog::Instance()->GetCurrentPath();
+            ERS_STRUCT_ModelImportOptions* Options = (ERS_STRUCT_ModelImportOptions*)ImGuiFileDialog::Instance()->GetUserDatas();
+            Options_ = *Options;
+
             Path += "/";
 
             for (const auto &Entry : std::filesystem::recursive_directory_iterator(Path)) {
@@ -53,12 +74,14 @@ void GUI_Window_ImportModelDirectory::Draw() {
                 if (EndsWith(FilePath, ".fbx") || EndsWith(FilePath, ".dae") || EndsWith(FilePath, ".obj") || EndsWith(FilePath, ".gltf") || EndsWith(FilePath, ".glb")) {
                     SystemUtils_->Logger_->Log(std::string("Adding Model '") + FilePath + "' To Import Queue", 5);
                     FilePaths.push_back(FilePath);
+                    FlipTextures.push_back(Options_.FlipTextures);
+
                 }
 
             }
 
             // Add To Queue, Launch Import
-            //ProjectUtils_->ModelImporter_->AddToImportQueue(FilePaths);
+            ProjectUtils_->ModelImporter_->AddToImportQueue(FilePaths, FlipTextures);
             GUI_Window_ImportProgressBar_->Enabled_ = true;
 
         }
