@@ -25,9 +25,13 @@ GUI_Window_ImportModel::~GUI_Window_ImportModel() {
 
 inline void FileDialogCallback(const char *vFilter, void* vUserDatas, bool *vCantContinue) 
 {
-    ImGui::TextColored(ImVec4(0, 1, 1, 1), "Infos Pane");
-
+ 
     ERS_STRUCT_ModelImportOptions* Options = (ERS_STRUCT_ModelImportOptions*)vUserDatas;
+
+
+    ImGui::TextColored(ImVec4(0, 1, 1, 1), "Import Options");
+    ImGui::Separator();
+    ImGui::Spacing();
 
     ImGui::Checkbox("Flip Textures", &Options->FlipTextures);
 
@@ -49,10 +53,15 @@ void GUI_Window_ImportModel::Draw() {
 
         if (ImGuiFileDialog::Instance()->IsOk())
         {
-            // Get List Of Files From Selection, Convert To Vector
+            // Setup
             std::vector<std::string> FilePaths;
             std::vector<bool> FlipTextures;
+
+            // Get Info  From Model Import
             std::map<std::string, std::string> selection = ImGuiFileDialog::Instance()->GetSelection(); // multiselection
+            ERS_STRUCT_ModelImportOptions* Options = (ERS_STRUCT_ModelImportOptions*)ImGuiFileDialog::Instance()->GetUserDatas();
+            Options_ = *Options;
+
             for (const auto& elem:selection) {
                 FilePaths.push_back(elem.second);
                 FlipTextures.push_back(Options_.FlipTextures);
