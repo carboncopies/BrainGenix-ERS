@@ -87,7 +87,7 @@ void ERS_CLASS_ModelImporter::ImportThread() {
 }
 
 
-void ERS_CLASS_ModelImporter::AddToImportQueue(std::vector<std::string> AssetPaths) {
+void ERS_CLASS_ModelImporter::AddToImportQueue(std::vector<std::string> AssetPaths, std::vector<bool> FlipTextures) {
 
     SystemUtils_->Logger_->Log("Appending Assets To Asset Import Queue", 5);
     LockAssetImportQueue_.lock();
@@ -97,6 +97,7 @@ void ERS_CLASS_ModelImporter::AddToImportQueue(std::vector<std::string> AssetPat
         std::string LogStr = std::string("Appending Asset: '") + AssetPaths[i] + std::string("' To Import Queue");
         SystemUtils_->Logger_->Log(LogStr.c_str(), 4);
         AssetImportQueue_.push_back(AssetPaths[i]);
+        AssetQueueFlipTextures_.push_back(FlipTextures[i]);
         TotalItemsToImport_ += 1;
 
     }
