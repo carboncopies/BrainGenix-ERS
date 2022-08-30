@@ -65,7 +65,7 @@
 
 
 
-int main(int NumArguments, char** ArguemntValues) {
+int main(int NumArguments, char** ArgumentValues) {
 
     // Initialize System Vars
     std::unique_ptr<ERS_STRUCT_SystemUtils> SystemUtils = std::make_unique<ERS_STRUCT_SystemUtils>();
@@ -80,7 +80,7 @@ int main(int NumArguments, char** ArguemntValues) {
 
     // Handle Command Line Arguments
     ERS_CLASS_ArgumentParser ArgumentParser = ERS_CLASS_ArgumentParser(SystemUtils->Logger_.get());
-    ArgumentParser.ParseArguments(NumArguments, ArguemntValues);
+    ArgumentParser.ParseArguments(NumArguments, ArgumentValues);
     SystemUtils->ArgumentString_ = ArgumentParser.GetArgumentString();
     SystemUtils->Arguments_ = ArgumentParser.GetArgumentPairs();
     
