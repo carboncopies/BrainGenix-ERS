@@ -16,7 +16,7 @@ add_library(ERS_CLASS_ModelImporter
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_CLASS_ModelImporter
+target_link_libraries(ERS_CLASS_ModelImporter PRIVATE
     yaml-cpp
     glm
     assimp
@@ -25,7 +25,7 @@ target_link_libraries(ERS_CLASS_ModelImporter
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_CLASS_ModelImporter
+target_link_libraries(ERS_CLASS_ModelImporter PRIVATE
     ERS_STRUCT_Model
     ERS_STRUCT_ModelWriterData
     ERS_STRUCT_SystemUtils
