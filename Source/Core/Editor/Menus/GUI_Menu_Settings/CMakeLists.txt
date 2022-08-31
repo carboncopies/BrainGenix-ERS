@@ -16,12 +16,12 @@ add_library(Menu_Settings
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Menu_Settings
+target_link_libraries(Menu_Settings PRIVATE
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(Menu_Settings
+target_link_libraries(Menu_Settings PRIVATE
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_HumanInputDeviceUtils
     ERS_STRUCT_ProjectUtils

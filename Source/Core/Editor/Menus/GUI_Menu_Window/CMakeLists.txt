@@ -17,12 +17,12 @@ add_library(Menu_Window
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Menu_Window
+target_link_libraries(Menu_Window PRIVATE
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(Menu_Window
+target_link_libraries(Menu_Window PRIVATE
     ERS_CLASS_VisualRenderer
 
     ERS_STRUCT_SystemUtils
