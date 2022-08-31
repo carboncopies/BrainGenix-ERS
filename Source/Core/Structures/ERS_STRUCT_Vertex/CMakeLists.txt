@@ -16,12 +16,12 @@ add_library(ERS_STRUCT_Vertex
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_Vertex
+target_link_libraries(ERS_STRUCT_Vertex PRIVATE
     glm
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_Vertex
+target_link_libraries(ERS_STRUCT_Vertex PRIVATE
     )
 
 
