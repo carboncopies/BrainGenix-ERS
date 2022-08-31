@@ -16,11 +16,11 @@ add_library(ERS_STRUCT_ProjectUtils
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_ProjectUtils
+target_link_libraries(ERS_STRUCT_ProjectUtils PRIVATE
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_ProjectUtils
+target_link_libraries(ERS_STRUCT_ProjectUtils PRIVATE
     ERS_CLASS_LoggingSystem
     ERS_SceneManager
 
