@@ -8,12 +8,12 @@ add_library(GUI_Window_FramerateHistogram
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_FramerateHistogram
+target_link_libraries(GUI_Window_FramerateHistogram PRIVATE
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_FramerateHistogram
+target_link_libraries(GUI_Window_FramerateHistogram PRIVATE
     )
 
 target_include_directories(GUI_Window_FramerateHistogram PUBLIC ./)

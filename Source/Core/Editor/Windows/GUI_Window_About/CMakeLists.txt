@@ -16,14 +16,14 @@ add_library(GUI_Window_About
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_About
+target_link_libraries(GUI_Window_About PRIVATE
     glad
     glfw
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_About
+target_link_libraries(GUI_Window_About PRIVATE
     ERS_STRUCT_SystemUtils
     )
 

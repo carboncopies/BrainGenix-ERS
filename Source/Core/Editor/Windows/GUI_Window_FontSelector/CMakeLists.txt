@@ -18,12 +18,12 @@ add_library(GUI_Window_FontSelector
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_FontSelector
+target_link_libraries(GUI_Window_FontSelector PRIVATE
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_FontSelector
+target_link_libraries(GUI_Window_FontSelector PRIVATE
     ERS_Editor_FontManager
     )
 
