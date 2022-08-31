@@ -16,11 +16,11 @@ add_library(ERS_STRUCT_SystemUtils
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_SystemUtils
+target_link_libraries(ERS_STRUCT_SystemUtils PRIVATE
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_SystemUtils
+target_link_libraries(ERS_STRUCT_SystemUtils PRIVATE
 
     ERS_InputOutputSubsystem
     ERS_FramerateManager
