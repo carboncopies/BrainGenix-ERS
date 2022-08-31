@@ -16,11 +16,11 @@ add_library(ERS_SceneWriter
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_SceneWriter
+target_link_libraries(ERS_SceneWriter PRIVATE
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_SceneWriter
+target_link_libraries(ERS_SceneWriter PRIVATE
     ERS_CLASS_LoggingSystem
     ERS_STRUCT_Model
     ERS_STRUCT_Scene
