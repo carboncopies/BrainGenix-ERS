@@ -16,12 +16,12 @@ add_library(ERS_STRUCT_ShaderUniformData
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_ShaderUniformData
+target_link_libraries(ERS_STRUCT_ShaderUniformData PRIVATE
     glm
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_ShaderUniformData
+target_link_libraries(ERS_STRUCT_ShaderUniformData PRIVATE
     )
 
 
