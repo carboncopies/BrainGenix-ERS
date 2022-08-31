@@ -8,13 +8,13 @@ add_library(GUI_Window_RAMGraph
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_RAMGraph
+target_link_libraries(GUI_Window_RAMGraph PRIVATE
     IMGUI
     ImPlot
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_RAMGraph
+target_link_libraries(GUI_Window_RAMGraph PRIVATE
     
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_HardwareInfo
