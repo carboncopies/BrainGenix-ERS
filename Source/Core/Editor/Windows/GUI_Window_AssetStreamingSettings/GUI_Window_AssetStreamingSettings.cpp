@@ -57,6 +57,7 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                 ImGui::Spacing();
                 ImGui::SliderInt("Minimum LOD", &ModelLoader_->AssetStreamingManager_->MinLOD_, 0, 99);
                 ImGui::SliderInt("Maximum LOD", &ModelLoader_->AssetStreamingManager_->MaxLOD_, 0, 99);
+                ImGui::InputInt("Max Texture Res", &ModelLoader_->AssetStreamingManager_->MaxTextureResolution_, 32, 128);
                 
 
                 ImGui::Spacing();

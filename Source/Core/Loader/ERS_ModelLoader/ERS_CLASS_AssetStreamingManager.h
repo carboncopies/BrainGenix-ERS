@@ -58,6 +58,8 @@ public:
 
     int MinLOD_ = 0; /**<Sets the minimum LOD*/
     int MaxLOD_ = 0; /**<Sets the maximum LOD*/
+
+    int MaxTextureResolution_ = 0; /**<Sets the maximum texture resolution*/
     
 
 
