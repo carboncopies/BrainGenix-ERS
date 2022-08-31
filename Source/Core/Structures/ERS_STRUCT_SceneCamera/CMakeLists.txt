@@ -22,7 +22,6 @@ target_link_libraries(ERS_STRUCT_SceneCamera PRIVATE
 # Link Internal Libs
 target_link_libraries(ERS_STRUCT_SceneCamera PRIVATE
     ERS_STRUCT_Camera
-    ERS_CLASS_VisualRenderer
     )
 
 
