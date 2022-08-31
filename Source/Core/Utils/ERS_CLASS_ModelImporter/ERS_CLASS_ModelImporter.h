@@ -47,6 +47,9 @@ class ERS_CLASS_ModelImporter {
         std::unique_ptr<ERS_CLASS_ModelWriter>         ModelWriter_; /**<Instance of the model writer, used to save models to the ERS project*/
         std::unique_ptr<ERS_CLASS_ExternalModelLoader> ModelLoader_; /**<Used to load models from outside the ERS project*/
 
+        std::unique_ptr<ERS_CLASS_ModelWriter> ERS_ModelWriter_; /**<Pointer To ERS Model Writer Instance*/
+
+
         // Stats
         long TotalItemsToImport_ = 0; /**<Stats for the loading bar*/
         long TotalItemsProcessed_ = 0; /**<Stats for the loading bar*/
