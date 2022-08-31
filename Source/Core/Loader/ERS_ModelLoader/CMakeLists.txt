@@ -29,7 +29,7 @@ add_library(ERS_ModelLoader
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_ModelLoader
+target_link_libraries(ERS_ModelLoader PRIVATE
     yaml-cpp
     glm
     assimp
@@ -38,7 +38,7 @@ target_link_libraries(ERS_ModelLoader
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_ModelLoader
+target_link_libraries(ERS_ModelLoader PRIVATE
     ERS_STRUCT_Mesh
     ERS_STRUCT_Model
     ERS_STRUCT_Texture
