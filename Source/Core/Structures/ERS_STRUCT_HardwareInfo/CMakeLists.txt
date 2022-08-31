@@ -16,11 +16,11 @@ add_library(ERS_STRUCT_HardwareInfo
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_HardwareInfo
+target_link_libraries(ERS_STRUCT_HardwareInfo PRIVATE
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_HardwareInfo
+target_link_libraries(ERS_STRUCT_HardwareInfo PRIVATE
     )
 
 
