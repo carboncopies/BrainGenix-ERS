@@ -16,11 +16,11 @@ add_library(ERS_CLASS_GPURequest
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_CLASS_GPURequest
+target_link_libraries(ERS_CLASS_GPURequest PRIVATE
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_CLASS_GPURequest
+target_link_libraries(ERS_CLASS_GPURequest PRIVATE
     )
 
 target_include_directories(ERS_CLASS_GPURequest PUBLIC ./)
