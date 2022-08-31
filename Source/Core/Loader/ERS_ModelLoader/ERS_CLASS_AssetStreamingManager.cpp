@@ -99,6 +99,14 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             }   
             
             // Cap Texture Level Range
+            if (MinLOD_ > 0) {
+                TargetTextureLevelRAM = std::max(MinLOD_, TargetTextureLevelRAM);
+                TargetTextureLevelVRAM = std::max(MinLOD_, TargetTextureLevelVRAM);
+            }
+            if (MaxLOD_ > 0) {
+                TargetTextureLevelRAM = std::min(MaxLOD_, TargetTextureLevelRAM);
+                TargetTextureLevelVRAM = std::min(MaxLOD_, TargetTextureLevelVRAM);
+            }
             if (MaxTextureResolution_ > 0 && Model->Textures_.size() > 0) {
                 while (Model->Textures_[0].TextureLevels[TargetTextureLevelRAM].LevelResolution.first > MaxTextureResolution_) {
                     TargetTextureLevelRAM -=1;
@@ -110,15 +118,6 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             } else if (MaxTextureResolution_ < 0) {
                 MaxTextureResolution_ = 0;
             }
-            if (MinLOD_ > 0) {
-                TargetTextureLevelRAM = std::max(MinLOD_, TargetTextureLevelRAM);
-                TargetTextureLevelVRAM = std::max(MinLOD_, TargetTextureLevelVRAM);
-            }
-            if (MaxLOD_ > 0) {
-                TargetTextureLevelRAM = std::min(MaxLOD_, TargetTextureLevelRAM);
-                TargetTextureLevelVRAM = std::min(MaxLOD_, TargetTextureLevelVRAM);
-            }
-
             if (TargetTextureLevelVRAM > NumberTextureLevels - 1) {
                 TargetTextureLevelVRAM = NumberTextureLevels - 1;
             } else if (TargetTextureLevelVRAM < 0) {
