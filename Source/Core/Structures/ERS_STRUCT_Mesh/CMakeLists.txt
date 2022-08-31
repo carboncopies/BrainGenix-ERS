@@ -16,12 +16,12 @@ add_library(ERS_STRUCT_Mesh
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_Mesh
+target_link_libraries(ERS_STRUCT_Mesh PRIVATE
     glm
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_Mesh
+target_link_libraries(ERS_STRUCT_Mesh PRIVATE
     ERS_STRUCT_Shader
     ERS_STRUCT_Texture
     ERS_STRUCT_Vertex

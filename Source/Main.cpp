@@ -35,7 +35,6 @@
 #include <ERS_SceneManager.h>
 
 #include <ERS_InputOutputSubsystem.h>
-#include <ERS_ModelWriter.h>
 #include <ERS_FramerateManager.h>
 #include <ERS_ProjectLoader.h>
 #include <ERS_ProjectManager.h>
@@ -104,12 +103,6 @@ int main(int NumArguments, char** ArguemntValues) {
         *SystemUtils->LocalSystemConfiguration_.get(),
         SystemUtils->Arguments_
     );
-
-    SystemUtils->ERS_ModelWriter_ = std::make_unique<ERS_CLASS_ModelWriter>(
-        SystemUtils->Logger_.get(),
-        SystemUtils->ERS_IOSubsystem_.get()
-    );
-
     SystemUtils->ERS_CLASS_HardwareInformation_ = std::make_unique<ERS_CLASS_HardwareInformation>(
         SystemUtils->Logger_.get(),
         *SystemUtils->LocalSystemConfiguration_.get()

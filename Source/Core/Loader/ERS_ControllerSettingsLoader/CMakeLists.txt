@@ -16,12 +16,12 @@ add_library(ERS_ControllerSettingsLoader
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_ControllerSettingsLoader
+target_link_libraries(ERS_ControllerSettingsLoader PRIVATE
     yaml-cpp
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_ControllerSettingsLoader
+target_link_libraries(ERS_ControllerSettingsLoader PRIVATE
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_IOData
     ERS_STRUCT_ControllerSettings

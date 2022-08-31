@@ -16,11 +16,11 @@ add_library(ERS_STRUCT_RGBColor
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_RGBColor
+target_link_libraries(ERS_STRUCT_RGBColor PRIVATE
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_RGBColor
+target_link_libraries(ERS_STRUCT_RGBColor PRIVATE
     )
 
 

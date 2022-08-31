@@ -21,13 +21,13 @@ add_library(ERS_CLASS_LoggingSystem
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_CLASS_LoggingSystem
+target_link_libraries(ERS_CLASS_LoggingSystem PRIVATE
     yaml-cpp
     glad
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_CLASS_LoggingSystem
+target_link_libraries(ERS_CLASS_LoggingSystem PRIVATE
     ERS_STRUCT_RGBColor
     ERS_STRUCT_OpenGLLogItem
     )

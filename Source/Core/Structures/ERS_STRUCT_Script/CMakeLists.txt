@@ -16,11 +16,11 @@ add_library(ERS_STRUCT_Script
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_Script
+target_link_libraries(ERS_STRUCT_Script PRIVATE
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_Script
+target_link_libraries(ERS_STRUCT_Script PRIVATE
     )
 
 

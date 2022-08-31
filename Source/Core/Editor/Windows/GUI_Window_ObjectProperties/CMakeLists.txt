@@ -8,14 +8,14 @@ add_library(GUI_Window_ObjectProperties
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_ObjectProperties
+target_link_libraries(GUI_Window_ObjectProperties PRIVATE
     glad
     glfw
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_ObjectProperties
+target_link_libraries(GUI_Window_ObjectProperties PRIVATE
         
     ERS_Editor_3DCursor
 

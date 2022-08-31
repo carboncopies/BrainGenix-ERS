@@ -16,13 +16,13 @@ add_library(GUI_Window_TestEditor
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_TestEditor
+target_link_libraries(GUI_Window_TestEditor PRIVATE
     IMGUI
     ImGuiColorTextEdit
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_TestEditor
+target_link_libraries(GUI_Window_TestEditor PRIVATE
     ERS_STRUCT_SystemUtils
     )
 

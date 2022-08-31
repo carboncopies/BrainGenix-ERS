@@ -18,12 +18,12 @@ add_library(GUI_Window_ThemeSelector
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_ThemeSelector
+target_link_libraries(GUI_Window_ThemeSelector PRIVATE
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_ThemeSelector
+target_link_libraries(GUI_Window_ThemeSelector PRIVATE
     ERS_Editor_ThemeManager
     )
 

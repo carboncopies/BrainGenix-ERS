@@ -8,14 +8,14 @@ add_library(GUI_Window_AssetStreamingSettings
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_AssetStreamingSettings
+target_link_libraries(GUI_Window_AssetStreamingSettings PRIVATE
     glad
     glfw
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_AssetStreamingSettings
+target_link_libraries(GUI_Window_AssetStreamingSettings PRIVATE
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
     ERS_ModelLoader

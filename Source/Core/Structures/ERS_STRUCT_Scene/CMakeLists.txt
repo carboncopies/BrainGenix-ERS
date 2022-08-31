@@ -16,12 +16,12 @@ add_library(ERS_STRUCT_Scene
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_Scene
+target_link_libraries(ERS_STRUCT_Scene PRIVATE
     yaml-cpp
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_Scene
+target_link_libraries(ERS_STRUCT_Scene PRIVATE
     ERS_STRUCT_Model
     ERS_STRUCT_Light
     ERS_STRUCT_SceneObject

@@ -8,12 +8,12 @@ add_library(GUI_Window_FrameratePlot
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_FrameratePlot
+target_link_libraries(GUI_Window_FrameratePlot PRIVATE
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_FrameratePlot
+target_link_libraries(GUI_Window_FrameratePlot PRIVATE
     )
 
 target_include_directories(GUI_Window_FrameratePlot PUBLIC ./)

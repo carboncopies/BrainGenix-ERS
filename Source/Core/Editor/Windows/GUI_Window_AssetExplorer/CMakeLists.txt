@@ -18,14 +18,14 @@ add_library(GUI_Window_AssetExplorer
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_AssetExplorer
+target_link_libraries(GUI_Window_AssetExplorer PRIVATE
     glad
     glfw
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_AssetExplorer
+target_link_libraries(GUI_Window_AssetExplorer PRIVATE
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
     )

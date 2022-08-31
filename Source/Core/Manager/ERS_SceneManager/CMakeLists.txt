@@ -16,12 +16,12 @@ add_library(ERS_SceneManager
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_SceneManager
+target_link_libraries(ERS_SceneManager PRIVATE
     glm
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_SceneManager
+target_link_libraries(ERS_SceneManager PRIVATE
     ERS_CLASS_LoggingSystem
 
     ERS_STRUCT_Shader

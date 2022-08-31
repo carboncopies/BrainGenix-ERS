@@ -16,11 +16,11 @@ add_library(ERS_STRUCT_HumanInputDeviceUtils
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_HumanInputDeviceUtils
+target_link_libraries(ERS_STRUCT_HumanInputDeviceUtils PRIVATE
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_HumanInputDeviceUtils
+target_link_libraries(ERS_STRUCT_HumanInputDeviceUtils PRIVATE
     ERS_ControllerInputManager
     )
 

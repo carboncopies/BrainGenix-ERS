@@ -16,12 +16,12 @@ add_library(GUI_Window_SystemLog
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_SystemLog
+target_link_libraries(GUI_Window_SystemLog PRIVATE
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_SystemLog
+target_link_libraries(GUI_Window_SystemLog PRIVATE
     ERS_STRUCT_SystemUtils
     )
 

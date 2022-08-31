@@ -17,12 +17,12 @@ add_library(ERS_Editor_UserProfileManager
 set_property(TARGET ERS_Editor_UserProfileManager PROPERTY CXX_STANDARD 17)
             
 # Link 3rd Party Libs
-target_link_libraries(ERS_Editor_UserProfileManager
+target_link_libraries(ERS_Editor_UserProfileManager PRIVATE
     yaml-cpp
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_Editor_UserProfileManager
+target_link_libraries(ERS_Editor_UserProfileManager PRIVATE
     ERS_CLASS_LoggingSystem
     )
 

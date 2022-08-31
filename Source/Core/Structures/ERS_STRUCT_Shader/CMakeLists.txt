@@ -16,14 +16,14 @@ add_library(ERS_STRUCT_Shader
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_Shader
+target_link_libraries(ERS_STRUCT_Shader PRIVATE
     glm
     glad
     glfw
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_Shader
+target_link_libraries(ERS_STRUCT_Shader PRIVATE
     ERS_CLASS_LoggingSystem
     )
 

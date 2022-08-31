@@ -21,11 +21,11 @@ add_library(ERS_STRUCT_RendererSettings
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_RendererSettings
+target_link_libraries(ERS_STRUCT_RendererSettings PRIVATE
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_RendererSettings
+target_link_libraries(ERS_STRUCT_RendererSettings PRIVATE
     )
 
 

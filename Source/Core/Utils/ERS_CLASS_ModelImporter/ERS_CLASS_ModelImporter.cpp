@@ -18,6 +18,12 @@ ERS_CLASS_ModelImporter::ERS_CLASS_ModelImporter(ERS_STRUCT_SystemUtils* SystemU
     ImportThread_ = std::thread(&ERS_CLASS_ModelImporter::ImportThread, this);
     SystemUtils_->Logger_->Log("Started Asset Import Thread", 3);
 
+    ERS_ModelWriter_ = std::make_unique<ERS_CLASS_ModelWriter>(
+        SystemUtils->Logger_.get(),
+        SystemUtils->ERS_IOSubsystem_.get()
+    );
+
+
 }
 
 

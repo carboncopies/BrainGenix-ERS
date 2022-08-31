@@ -18,11 +18,11 @@ add_library(ERS_Editor_WindowManager
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_Editor_WindowManager
+target_link_libraries(ERS_Editor_WindowManager PRIVATE
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_Editor_WindowManager
+target_link_libraries(ERS_Editor_WindowManager PRIVATE
     ERS_STRUCT_SystemUtils    
 
 

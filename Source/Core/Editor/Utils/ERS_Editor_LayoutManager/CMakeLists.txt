@@ -17,13 +17,13 @@ add_library(ERS_Editor_LayoutManager
 set_property(TARGET ERS_Editor_LayoutManager PROPERTY CXX_STANDARD 17)
             
 # Link 3rd Party Libs
-target_link_libraries(ERS_Editor_LayoutManager
+target_link_libraries(ERS_Editor_LayoutManager PRIVATE
     yaml-cpp
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_Editor_LayoutManager
+target_link_libraries(ERS_Editor_LayoutManager PRIVATE
     ERS_CLASS_LoggingSystem
     )
 

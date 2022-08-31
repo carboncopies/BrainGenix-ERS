@@ -57,7 +57,7 @@ add_library(ERS_CLASS_VisualRenderer
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_CLASS_VisualRenderer
+target_link_libraries(ERS_CLASS_VisualRenderer PRIVATE
     yaml-cpp
     glm
     glad
@@ -66,7 +66,7 @@ target_link_libraries(ERS_CLASS_VisualRenderer
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_CLASS_VisualRenderer
+target_link_libraries(ERS_CLASS_VisualRenderer PRIVATE
     ERS_STRUCT_Camera
     ERS_STRUCT_SceneCamera
     

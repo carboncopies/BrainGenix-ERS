@@ -16,11 +16,11 @@ add_library(ERS_STRUCT_LocRotScale
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_LocRotScale
+target_link_libraries(ERS_STRUCT_LocRotScale PRIVATE
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_LocRotScale
+target_link_libraries(ERS_STRUCT_LocRotScale PRIVATE
     )
 
 

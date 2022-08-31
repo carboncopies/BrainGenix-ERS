@@ -17,7 +17,7 @@ add_library(ERS_CLASS_ExternalModelLoader
 set_property(TARGET ERS_CLASS_ExternalModelLoader PROPERTY CXX_STANDARD 17)
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_CLASS_ExternalModelLoader
+target_link_libraries(ERS_CLASS_ExternalModelLoader PRIVATE
     yaml-cpp
     glm
     assimp
@@ -26,7 +26,7 @@ target_link_libraries(ERS_CLASS_ExternalModelLoader
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_CLASS_ExternalModelLoader
+target_link_libraries(ERS_CLASS_ExternalModelLoader PRIVATE
     ERS_STRUCT_Mesh
     ERS_STRUCT_Model
     ERS_STRUCT_Vertex

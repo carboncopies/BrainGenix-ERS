@@ -16,7 +16,7 @@ add_library(Renderer
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Renderer
+target_link_libraries(Renderer PRIVATE
     yaml-cpp
     glm
     glad
@@ -25,7 +25,7 @@ target_link_libraries(Renderer
     )
 
 # Link Internal Libs
-target_link_libraries(Renderer
+target_link_libraries(Renderer PRIVATE
     ERS_CLASS_LoggingSystem
     ERS_CLASS_VisualRenderer
 
