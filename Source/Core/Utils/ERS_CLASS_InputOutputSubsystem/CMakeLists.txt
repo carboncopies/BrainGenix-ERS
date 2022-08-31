@@ -22,12 +22,12 @@ add_library(ERS_InputOutputSubsystem
 set_property(TARGET ERS_InputOutputSubsystem PROPERTY CXX_STANDARD 17)
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_InputOutputSubsystem
+target_link_libraries(ERS_InputOutputSubsystem PRIVATE
     yaml-cpp
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_InputOutputSubsystem
+target_link_libraries(ERS_InputOutputSubsystem PRIVATE
     ERS_CLASS_LoggingSystem
     ERS_STRUCT_IOData
     )
