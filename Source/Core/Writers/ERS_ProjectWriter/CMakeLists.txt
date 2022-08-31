@@ -16,12 +16,12 @@ add_library(ERS_ProjectWriter
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_ProjectWriter
+target_link_libraries(ERS_ProjectWriter PRIVATE
     yaml-cpp
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_ProjectWriter
+target_link_libraries(ERS_ProjectWriter PRIVATE
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_Project
     ERS_STRUCT_IOData
