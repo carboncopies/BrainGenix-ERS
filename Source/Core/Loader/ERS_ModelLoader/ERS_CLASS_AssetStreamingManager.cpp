@@ -52,14 +52,14 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
     }
 
     // Sort All Models Based On Distance From Each Camera
-    std::vector<std::map<float, unsigned int>> DistancesFromCamera = SortModelsByDistanceFromCameras(Scene, Cameras);
+    std::vector<std::vector<std::pair<float, unsigned int>>> DistancesFromCamera = SortModelsByDistanceFromCameras(Scene, Cameras);
 
     std::map<unsigned int, int> CameraUpdateQuota = CalculateCameraMaxUpdates(100, Cameras);
     SortSceneModels(CameraUpdateQuota, DistancesFromCamera, Scene);
 
 }
 
-void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::map<float, unsigned int>> DistancesFromCamera, ERS_STRUCT_Scene* Scene) {
+void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::vector<std::pair<float, unsigned int>>> DistancesFromCamera, ERS_STRUCT_Scene* Scene) {
 
     // Iterate Over All Cameras, Make Recomendations From There
     for (unsigned int CameraIndex = 0; CameraIndex < CameraUpdatesQuota.size(); CameraIndex++) {
@@ -301,9 +301,9 @@ std::map<unsigned int, int> ERS_CLASS_AssetStreamingManager::CalculateCameraMaxU
 
 }
 
-std::vector<std::map<float, unsigned int>> ERS_CLASS_AssetStreamingManager::SortModelsByDistanceFromCameras(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras) {
+std::vector<std::vector<std::pair<float, unsigned int>>> ERS_CLASS_AssetStreamingManager::SortModelsByDistanceFromCameras(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras) {
 
-    std::vector<std::map<float, unsigned int>> DistancesFromCamera;
+    std::vector<std::vector<std::pair<float, unsigned int>>> DistancesFromCamera;
     for (unsigned int i = 0; i < Cameras.size(); i++) {
         DistancesFromCamera.push_back(SortModelsByDistanceFromCamera(Scene, Cameras[i]));
     }
@@ -311,10 +311,10 @@ std::vector<std::map<float, unsigned int>> ERS_CLASS_AssetStreamingManager::Sort
 
 }
 
-std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDistanceFromCamera(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Camera* Camera) {
+std::vector<std::pair<float, unsigned int>> ERS_CLASS_AssetStreamingManager::SortModelsByDistanceFromCamera(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Camera* Camera) {
 
     // Create Sorted List Of Distances Based On Position
-    std::map<float, unsigned int> Distances;        
+    std::vector<std::pair<float, unsigned int>> Distances;        
     for (unsigned int i = 0; i < Scene->Models.size(); i++) {
 
 
@@ -346,19 +346,23 @@ std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDista
         } else if (ApproxCubeBoundryDistance < CubeBoundryBox.z) {
             ApproxCubeBoundryDistance = CubeBoundryBox.z;
         }
-        
-
         float Distance = TotalDistance - ApproxCubeBoundryDistance;
+
+        // If Level 0 Isn't Loaded, Do So
+        if (Scene->Models[i]->TextureLevelInVRAM_ == -1) {
+            Distance = DistanceCutoffVRAM_ - 0.01f;
+        }
+
+        // Cap Distance At 0 - We don't want negative distance, that's not possible or sensible
         Distance = std::max(0.0f, Distance);
-        
-        Distances.insert(std::make_pair(Distance, i));
+        Distances.push_back(std::make_pair(Distance, i));
     }
 
 
     std::cout<<"Sorting distances\n";
-    std::map<float, unsigned int> SortedDistances; 
+    std::vector<std::pair<float, unsigned int>> SortedDistances; 
     for (std::pair<float, unsigned int> Entry : Distances) {
-        SortedDistances.insert(std::make_pair(Entry.first, Entry.second));
+        SortedDistances.push_back(std::make_pair(Entry.first, Entry.second));
         std::cout<<"Distance: "<<Entry.first<<std::endl;
     }
 
