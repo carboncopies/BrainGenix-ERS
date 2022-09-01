@@ -438,9 +438,13 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
 
                 // Detect New Level Loaded In Memory
                 if (Model->Textures_.size() > 0) {
-                    for (unsigned int i = 1; i < Model->Textures_[0].TextureLevels.size(); i++) {
-                        if (Model->Textures_[0].TextureLevels[LevelToUnload - i].LevelLoadedInVRAM) {
-                            Model->TextureLevelInVRAM_ = LevelToUnload - i;
+                    if ((Model->Textures_[0].TextureLevels.size() - LevelToUnload) < 1) {
+                        Model->TextureLevelInVRAM_ = 0;
+                    } else {
+                        for (unsigned int i = 1; i < (Model->Textures_[0].TextureLevels.size() - LevelToUnload); i++) {
+                            if (Model->Textures_[0].TextureLevels[LevelToUnload - i].LevelLoadedInVRAM) {
+                                Model->TextureLevelInVRAM_ = LevelToUnload - i;
+                            }
                         }
                     }
                 }
