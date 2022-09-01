@@ -126,6 +126,9 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             TargetTextureLevelRAM  = std::max(0, TargetTextureLevelRAM);
             TargetTextureLevelVRAM = std::max(0, TargetTextureLevelVRAM);
   
+            if (TargetTextureLevelVRAM < 0) {
+                std::cout<<"fds\n";
+            }
 
             // Calculate Texture Size
             int TextureSizeVRAM = 0;
