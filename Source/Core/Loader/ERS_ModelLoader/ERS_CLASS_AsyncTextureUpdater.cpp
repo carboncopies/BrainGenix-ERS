@@ -398,23 +398,22 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
         // Abort If Level Not Loaded Yet
         if (Model->TextureLevelInVRAM_ < Model->TargetTextureLevelVRAM) {
 
-            return;
-            // // Load This VRAM Level For All Textures
-            // int LevelToLoad = Model->TargetTextureLevelVRAM;
-            // for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
+            // Load This VRAM Level For All Textures
+            int LevelToLoad = Model->TargetTextureLevelVRAM;
+            for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
 
-            //     // Requested Level
-            //     LoadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
-            //     Model->Textures_[TextureIndex].BestAvailableOpenGLID = Model->Textures_[TextureIndex].TextureLevels[LevelToLoad].LevelTextureOpenGLID;
+                // Requested Level
+                LoadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
+                Model->Textures_[TextureIndex].BestAvailableOpenGLID = Model->Textures_[TextureIndex].TextureLevels[LevelToLoad].LevelTextureOpenGLID;
 
-            //     // Ensure That Level 0 Is Always Loaded
-            //     if (!Model->Textures_[TextureIndex].TextureLevels[0].LevelLoadedInVRAM) {
-            //         LoadImageDataVRAM(&Model->Textures_[TextureIndex], 0, LogEnable);
-            //         Model->Textures_[TextureIndex].HasAnyLevelReady = true;
-            //     }
+                // Ensure That Level 0 Is Always Loaded
+                if (!Model->Textures_[TextureIndex].TextureLevels[0].LevelLoadedInVRAM) {
+                    LoadImageDataVRAM(&Model->Textures_[TextureIndex], 0, LogEnable);
+                    Model->Textures_[TextureIndex].HasAnyLevelReady = true;
+                }
 
-            // }
-            // Model->TextureLevelInVRAM_ = LevelToLoad;
+            }
+            Model->TextureLevelInVRAM_ = LevelToLoad;
         }
 
         else if (Model->TextureLevelInVRAM_ > Model->TargetTextureLevelVRAM) {
