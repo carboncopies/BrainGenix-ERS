@@ -78,7 +78,7 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             int NumberTextureLevels = Model->MaxTextureLevel_ + 1;
 
             if (Model->Name == "ApartmentCeiling") {
-                std::cout<<ModelDistance<<std::endl;
+                std::cout<<"SceneSort: "<<ModelDistance<<std::endl;
             }
 
             // Calculate Distance Per Level Cutoff
@@ -319,6 +319,9 @@ std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDista
 
         float TotalDistance = glm::distance(Camera->GetPosition(), Scene->Models[i]->ModelPosition);
         
+        if (Scene->Models[i]->Name == "ApartmentCeiling") {
+                std::cout<<"DistSort: "<<TotalDistance<<std::endl;
+        }
 
         // glm::vec3 UnscaledAngle = Camera->GetPosition() - Scene->Models[i]->ModelPosition;
         // float MaxSide = UnscaledAngle.x;
