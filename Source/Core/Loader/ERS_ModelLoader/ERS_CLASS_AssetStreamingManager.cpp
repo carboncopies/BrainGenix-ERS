@@ -315,6 +315,9 @@ std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDista
 
         float TotalDistance = glm::distance(Camera->GetPosition(), Scene->Models[i]->ModelPosition);
         
+        if (TotalDistance <= 0.05f) {
+            std::cout<<i<<std::endl;
+        }
         // glm::vec3 UnscaledAngle = Camera->GetPosition() - Scene->Models[i]->ModelPosition;
         // float MaxSide = UnscaledAngle.x;
         // if (UnscaledAngle.y > MaxSide) {
