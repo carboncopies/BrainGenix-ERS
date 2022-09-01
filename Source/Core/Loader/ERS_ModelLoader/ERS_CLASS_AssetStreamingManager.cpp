@@ -54,7 +54,7 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
     // Sort All Models Based On Distance From Each Camera
     std::vector<std::vector<std::pair<float, unsigned int>>> DistancesFromCamera = SortModelsByDistanceFromCameras(Scene, Cameras);
 
-    std::map<unsigned int, int> CameraUpdateQuota = CalculateCameraMaxUpdates(100, Cameras);
+    std::map<unsigned int, int> CameraUpdateQuota = CalculateCameraMaxUpdates(10, Cameras);
     SortSceneModels(CameraUpdateQuota, DistancesFromCamera, Scene);
 
 }
