@@ -16,7 +16,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model*
     try {
 
 
-        if (Metadata["Name"].as<std::string>() != "Loading...") {
+        if (Metadata["Name"].as<std::string>() == "Loading...") {
             std::string Name = Metadata["Name"].as<std::string>();
             Model->Name = Name.substr(Name.find_last_of("/") + 1, Name.length()-1);
         } else {
