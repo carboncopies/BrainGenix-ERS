@@ -422,6 +422,14 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
             for (unsigned int LevelToUnload = (unsigned int)Model->TextureLevelInVRAM_; LevelToUnload > (unsigned int)Model->TargetTextureLevelVRAM; LevelToUnload--) {
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     
+                    // Ensure That The Level Prior Is Loaded
+                    int PriorLevel = LevelToUnload - 1;
+                    if (PriorLevel > 0) {
+                        if (!Model->Textures_[TextureIndex].TextureLevels[PriorLevel].LevelLoadedInVRAM) {
+                            LoadImageDataVRAM(&Model->Textures_[TextureIndex], PriorLevel, LogEnable);
+                        }
+                    }
+
                     // Check If Level Already Loaded, Otherwise, Don't Try To Unload It
                     if (Model->Textures_[TextureIndex].TextureLevels[LevelToUnload].LevelLoadedInVRAM) {
                         UnloadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToUnload, LogEnable);
