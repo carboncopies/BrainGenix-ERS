@@ -160,7 +160,7 @@ SSE3
 #define IL_NO_JP2 1
 
 /* jpeg support (JPEG is most common lossy format. libjpeg powered) */
-#define IL_NO_JPG 1
+/* #undef IL_NO_JPG */
 
 /* lcms support () */
 #define IL_NO_LCMS 1
@@ -196,7 +196,7 @@ SSE3
 
 /* png support (PNG is a smart, loseless and even open format. libpng
    powered.) */
-#define IL_NO_PNG 1
+/* #undef IL_NO_PNG */
 
 /* pnm support (PNM (Portable aNy Map format) is considered the
    least-common-denominator for converting pixmap, graymap, or bitmap files
@@ -235,7 +235,7 @@ SSE3
 
 /* tiff support (TIFF is a lossless format supporting greater color depths.
    libtiff powered) */
-#define IL_NO_TIF 1
+/* #undef IL_NO_TIF */
 
 /* tpl support (TPL is the format used by many GameCube and Wii games.) */
 #undef IL_NO_TPL

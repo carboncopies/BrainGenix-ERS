@@ -14,9 +14,9 @@ Lucifer::Lucifer() {
 
     FreeImage_Initialise();
 
-#ifndef _WIN32
-    ilInit();
-#endif
+//#ifndef _WIN32
+//    ilInit();
+//#endif
 
 }
 

@@ -5,7 +5,7 @@ project(Lucifer)
 # Include Libs
 include(${PROJECT_SOURCE_DIR}/CMake/DisableTargetWarnings.cmake)
 include(${PROJECT_SOURCE_DIR}/CMake/FreeImage.cmake)
-include(${PROJECT_SOURCE_DIR}/CMake/DevIL.cmake)
+#include(${PROJECT_SOURCE_DIR}/CMake/DevIL.cmake)
 
 
 
@@ -18,7 +18,7 @@ add_library(Lucifer
     "LuciferIL/Lucifer_LoadImage.cpp"
     "LuciferIL/Lucifer_LoadImageSTB.cpp"
     "LuciferIL/Lucifer_LoadImageFreeImage.cpp"
-    "LuciferIL/Lucifer_LoadImageDevIL.cpp"
+    #"LuciferIL/Lucifer_LoadImageDevIL.cpp"
     "LuciferIL/Lucifer_WriteImage.cpp"
 
     "LuciferIL/Lucifer_ImageUtils.cpp"
@@ -40,7 +40,7 @@ add_library(Lucifer
     "LuciferIL/Lucifer_LoadImage.h"
     "LuciferIL/Lucifer_LoadImageSTB.h"
     "LuciferIL/Lucifer_LoadImageFreeImage.h"
-    "LuciferIL/Lucifer_LoadImageDevIL.h"
+    #"LuciferIL/Lucifer_LoadImageDevIL.h"
     "LuciferIL/Lucifer_WriteImage.h"
     
     "LuciferIL/Lucifer_ImageUtils.h"
@@ -67,4 +67,4 @@ target_include_directories(Lucifer
 
 
 target_link_libraries(Lucifer FreeImage-Lucifer)
-target_link_libraries(Lucifer IL-Lucifer)
+#target_link_libraries(Lucifer IL-Lucifer)

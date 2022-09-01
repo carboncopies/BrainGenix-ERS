@@ -16,9 +16,9 @@
 // Third-Party Lib
 #include <FreeImage.h>
 
-#ifndef _WIN32
-#include <IL/il.h>
-#endif
+//#ifndef _WIN32
+//#include <IL/il.h>
+//#endif
 
 namespace Lucifer {
 
