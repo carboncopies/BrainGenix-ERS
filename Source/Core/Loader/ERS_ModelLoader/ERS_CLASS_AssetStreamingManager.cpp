@@ -77,6 +77,7 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             ERS_STRUCT_Model* Model = Scene->Models[ModelIndex].get();
             int NumberTextureLevels = Model->MaxTextureLevel_ + 1;
 
+            std::cout<<i<<std::endl;
             if (Model->Name == "ApartmentCeiling") {
                 std::cout<<"SceneSort: "<<ModelDistance<<std::endl;
             }
