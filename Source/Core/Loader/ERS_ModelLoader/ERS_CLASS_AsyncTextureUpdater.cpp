@@ -563,12 +563,12 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
         
         // Check RAM Level vs Target
         int CurrentRAMLevel = Scene->Models[i]->TextureLevelInRAM_;
-        int TargetRAMLevel = Scene->Models[i]->TargetTextureLevelRAM;
+        int TargetRAMLevel = std::max(Scene->Models[i]->TargetTextureLevelRAM, 0);
         bool RAMUpdate = CurrentRAMLevel!=TargetRAMLevel;
 
         // Check VRAM Level vs Target
         int CurrentVRAMLevel = Scene->Models[i]->TextureLevelInVRAM_;
-        int TargetVRAMLevel = Scene->Models[i]->TargetTextureLevelVRAM;
+        int TargetVRAMLevel = std::max(Scene->Models[i]->TargetTextureLevelVRAM, 0);
         bool VRAMUpdate = CurrentVRAMLevel!=TargetVRAMLevel;
 
         // If There's Anything To Update, Add To Queue
