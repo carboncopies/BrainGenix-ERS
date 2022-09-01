@@ -353,8 +353,14 @@ std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDista
         
         Distances.insert(std::make_pair(Distance, i));
     }
+
+    // std::cout<<"starting printing out distances\n";
+    // for (unsigned int i = 0; i < Distances.size(); i++) {
+    //     std::cout<<Distances[i].first<<std::endl;
+    // }
+
     std::map<float, unsigned int> SortedDistances; 
-    for (auto const& Entry : Distances) {
+    for (std::pair<float, unsigned int> Entry : Distances) {
         SortedDistances.insert(std::make_pair(Entry.first, Entry.second));
         if (Scene->Models[Entry.second]->Name == "Tartaglia") {
                 std::cout<<"Found"<<Entry.second<<std::endl;
