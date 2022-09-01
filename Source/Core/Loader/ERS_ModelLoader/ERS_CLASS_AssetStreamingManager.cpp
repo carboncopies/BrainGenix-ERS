@@ -353,7 +353,7 @@ std::vector<std::pair<float, unsigned int>> ERS_CLASS_AssetStreamingManager::Sor
             Distance = DistanceCutoffVRAM_ - 0.01f;
         }
 
-        // Cap Distance At 0 - We don't want negative distance, that's not possible or sensible
+        // Cap Distance At 0 - We don't want negative distance, (thats happens if the camera is inside the bounding box of the model)
         Distance = std::max(0.0f, Distance);
         Distances.push_back(std::make_pair(Distance, i));
     }
