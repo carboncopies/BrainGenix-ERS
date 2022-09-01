@@ -339,20 +339,21 @@ std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDista
 
         // float Distance = glm::distance(glm::vec3(0.0f), CubeDistance);
 
-        // glm::vec3 CubeBoundryBox = Scene->Models[i]->BoxScale_ * Scene->Models[i]->TrueModelScale;
-        // float ApproxCubeBoundryDistance = CubeBoundryBox.x;
-        // if (ApproxCubeBoundryDistance < CubeBoundryBox.y) {
-        //     ApproxCubeBoundryDistance = CubeBoundryBox.y;
-        // } else if (ApproxCubeBoundryDistance < CubeBoundryBox.z) {
-        //     ApproxCubeBoundryDistance = CubeBoundryBox.z;
-        // }
+        glm::vec3 CubeBoundryBox = Scene->Models[i]->BoxScale_ * Scene->Models[i]->TrueModelScale;
+        float ApproxCubeBoundryDistance = CubeBoundryBox.x;
+        if (ApproxCubeBoundryDistance < CubeBoundryBox.y) {
+            ApproxCubeBoundryDistance = CubeBoundryBox.y;
+        } else if (ApproxCubeBoundryDistance < CubeBoundryBox.z) {
+            ApproxCubeBoundryDistance = CubeBoundryBox.z;
+        }
         
 
-        // float Distance = TotalDistance - ApproxCubeBoundryDistance;
-        // Distance = std::max(0.0001f, Distance);
+        float Distance = TotalDistance - ApproxCubeBoundryDistance;
+        Distance = std::max(0.0f, Distance);
         
-        Distances.insert(std::make_pair(TotalDistance, i));
+        Distances.insert(std::make_pair(Distance, i));
     }
+
 
     std::cout<<"Sorting distances\n";
     std::map<float, unsigned int> SortedDistances; 
