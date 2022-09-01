@@ -81,7 +81,7 @@ void ERS_CLASS_ViewportMenu::AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
 
     
     Light->Intensity = 1.0f;
-    Light->MaxDistance = 20.0f;can you decompile pdb
+    Light->MaxDistance = 20.0f;
 
     Light->CutOff = 45.0f;
     Light->Rolloff = 10.0f;
@@ -411,6 +411,15 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
 
                 ImGui::Separator();
                 
+                if (ImGui::MenuItem("0.01275", nullptr, (Viewport->GridSnapAmountTranslate_ == 0.01275f))) {
+                    Viewport->GridSnapAmountTranslate_ = 0.01275f;
+                }
+                if (ImGui::MenuItem("0.025", nullptr, (Viewport->GridSnapAmountTranslate_ == 0.025f))) {
+                    Viewport->GridSnapAmountTranslate_ = 0.205f;
+                }
+                if (ImGui::MenuItem("0.05", nullptr, (Viewport->GridSnapAmountTranslate_ == 0.05f))) {
+                    Viewport->GridSnapAmountTranslate_ = 0.05f;
+                }
                 if (ImGui::MenuItem("0.1", nullptr, (Viewport->GridSnapAmountTranslate_ == 0.1f))) {
                     Viewport->GridSnapAmountTranslate_ = 0.1f;
                 }
@@ -471,6 +480,12 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
 
                 ImGui::Separator();
                 
+                if (ImGui::MenuItem("0.025", nullptr, (Viewport->GridSnapAmountScale_ == 0.025f))) {
+                    Viewport->GridSnapAmountScale_ = 0.025f;
+                }
+                if (ImGui::MenuItem("0.05", nullptr, (Viewport->GridSnapAmountScale_ == 0.05f))) {
+                    Viewport->GridSnapAmountScale_ = 0.05f;
+                }
                 if (ImGui::MenuItem("0.1", nullptr, (Viewport->GridSnapAmountScale_ == 0.1f))) {
                     Viewport->GridSnapAmountScale_ = 0.1f;
                 }
