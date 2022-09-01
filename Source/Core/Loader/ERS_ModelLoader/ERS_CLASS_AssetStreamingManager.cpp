@@ -349,7 +349,7 @@ std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDista
         
 
         float Distance = TotalDistance - ApproxCubeBoundryDistance;
-        Distance = std::max(0.0f, Distance);
+        Distance = std::max(0.0001f, Distance);
         
         Distances.insert(std::make_pair(Distance, i));
     }
