@@ -16,7 +16,7 @@ add_library(ERS_STRUCT_Texture
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_Texture PRIVATE
+target_link_libraries(ERS_STRUCT_Texture
     yaml-cpp
     glm
     glad
@@ -26,7 +26,7 @@ target_link_libraries(ERS_STRUCT_Texture PRIVATE
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_Texture PRIVATE
+target_link_libraries(ERS_STRUCT_Texture
     ERS_STRUCT_TextureLevel
     )
 

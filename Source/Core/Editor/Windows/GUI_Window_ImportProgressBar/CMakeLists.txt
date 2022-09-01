@@ -16,12 +16,12 @@ add_library(GUI_Window_ImportProgressBar
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_ImportProgressBar PRIVATE
+target_link_libraries(GUI_Window_ImportProgressBar
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_ImportProgressBar PRIVATE
+target_link_libraries(GUI_Window_ImportProgressBar
     ERS_STRUCT_SystemUtils
     )
 

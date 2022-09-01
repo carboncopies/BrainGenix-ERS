@@ -16,11 +16,11 @@ add_library(ERS_ModelWriter
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_ModelWriter PRIVATE
+target_link_libraries(ERS_ModelWriter
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_ModelWriter PRIVATE
+target_link_libraries(ERS_ModelWriter
     ERS_CLASS_LoggingSystem
     ERS_STRUCT_Model
     ERS_STRUCT_Scene

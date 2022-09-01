@@ -8,12 +8,12 @@ add_library(GUI_Window_FramerateCounter
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_FramerateCounter PRIVATE
+target_link_libraries(GUI_Window_FramerateCounter
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_FramerateCounter PRIVATE
+target_link_libraries(GUI_Window_FramerateCounter
     )
 
 target_include_directories(GUI_Window_FramerateCounter PUBLIC ./)

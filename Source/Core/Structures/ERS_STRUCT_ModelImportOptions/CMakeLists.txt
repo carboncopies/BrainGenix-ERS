@@ -16,11 +16,11 @@ add_library(ERS_STRUCT_ModelImportOptions
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_ModelImportOptions PRIVATE
+target_link_libraries(ERS_STRUCT_ModelImportOptions
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_ModelImportOptions PRIVATE
+target_link_libraries(ERS_STRUCT_ModelImportOptions
     )
 
 

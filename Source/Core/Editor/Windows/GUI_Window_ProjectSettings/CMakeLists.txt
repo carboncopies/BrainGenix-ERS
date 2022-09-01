@@ -16,12 +16,12 @@ add_library(GUI_Window_ProjectSettings
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_ProjectSettings PRIVATE
+target_link_libraries(GUI_Window_ProjectSettings
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_ProjectSettings PRIVATE
+target_link_libraries(GUI_Window_ProjectSettings
 
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils

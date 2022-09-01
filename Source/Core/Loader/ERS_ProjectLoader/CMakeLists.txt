@@ -16,11 +16,11 @@ add_library(ERS_ProjectLoader
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_ProjectLoader PRIVATE
+target_link_libraries(ERS_ProjectLoader
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_ProjectLoader PRIVATE
+target_link_libraries(ERS_ProjectLoader
     ERS_STRUCT_IOData
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_Project

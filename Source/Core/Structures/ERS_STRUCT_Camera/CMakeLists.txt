@@ -16,13 +16,13 @@ add_library(ERS_STRUCT_Camera
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_Camera PRIVATE
+target_link_libraries(ERS_STRUCT_Camera
     glm
     glad
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_Camera PRIVATE
+target_link_libraries(ERS_STRUCT_Camera
     )
 
 target_include_directories(ERS_STRUCT_Camera PUBLIC ./)

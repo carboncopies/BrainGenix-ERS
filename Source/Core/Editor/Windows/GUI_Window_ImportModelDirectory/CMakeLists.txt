@@ -18,13 +18,13 @@ add_library(GUI_Window_ImportModelDirectory
 set_property(TARGET GUI_Window_ImportModelDirectory PROPERTY CXX_STANDARD 17)
             
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_ImportModelDirectory PRIVATE
+target_link_libraries(GUI_Window_ImportModelDirectory
     IMGUI
     ImGuiFileDialog
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_ImportModelDirectory PRIVATE
+target_link_libraries(GUI_Window_ImportModelDirectory
     ERS_CLASS_LoggingSystem
 
     ERS_STRUCT_SystemUtils

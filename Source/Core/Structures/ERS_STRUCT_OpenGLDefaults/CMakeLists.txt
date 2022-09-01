@@ -16,11 +16,11 @@ add_library(ERS_STRUCT_OpenGLDefaults
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_OpenGLDefaults PRIVATE
+target_link_libraries(ERS_STRUCT_OpenGLDefaults
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_OpenGLDefaults PRIVATE
+target_link_libraries(ERS_STRUCT_OpenGLDefaults
     )
 
 target_include_directories(ERS_STRUCT_OpenGLDefaults PUBLIC ./)

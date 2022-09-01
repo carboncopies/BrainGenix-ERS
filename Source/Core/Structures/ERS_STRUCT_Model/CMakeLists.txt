@@ -16,7 +16,7 @@ add_library(ERS_STRUCT_Model
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_Model PRIVATE
+target_link_libraries(ERS_STRUCT_Model
     yaml-cpp
     glm
     glad
@@ -25,7 +25,7 @@ target_link_libraries(ERS_STRUCT_Model PRIVATE
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_Model PRIVATE
+target_link_libraries(ERS_STRUCT_Model
     ERS_STRUCT_Shader
     ERS_STRUCT_Mesh
     ERS_STRUCT_Texture

@@ -18,11 +18,11 @@ add_library(ERS_ProjectManager
 set_property(TARGET ERS_ProjectManager PROPERTY CXX_STANDARD 17)
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_ProjectManager PRIVATE
+target_link_libraries(ERS_ProjectManager
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_ProjectManager PRIVATE
+target_link_libraries(ERS_ProjectManager
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_Project
 

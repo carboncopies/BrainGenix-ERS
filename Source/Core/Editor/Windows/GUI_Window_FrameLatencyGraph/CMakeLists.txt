@@ -8,13 +8,13 @@ add_library(GUI_Window_FrameLatencyGraph
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_FrameLatencyGraph PRIVATE
+target_link_libraries(GUI_Window_FrameLatencyGraph
     IMGUI
     ImPlot
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_FrameLatencyGraph PRIVATE
+target_link_libraries(GUI_Window_FrameLatencyGraph
     ERS_STRUCT_SystemUtils
     )
 
