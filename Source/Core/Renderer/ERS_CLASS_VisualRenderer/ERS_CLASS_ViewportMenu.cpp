@@ -480,6 +480,12 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
 
                 ImGui::Separator();
                 
+                if (ImGui::MenuItem("0.025", nullptr, (Viewport->GridSnapAmountScale_ == 0.025f))) {
+                    Viewport->GridSnapAmountScale_ = 0.025f;
+                }
+                if (ImGui::MenuItem("0.05", nullptr, (Viewport->GridSnapAmountScale_ == 0.05f))) {
+                    Viewport->GridSnapAmountScale_ = 0.05f;
+                }
                 if (ImGui::MenuItem("0.1", nullptr, (Viewport->GridSnapAmountScale_ == 0.1f))) {
                     Viewport->GridSnapAmountScale_ = 0.1f;
                 }
