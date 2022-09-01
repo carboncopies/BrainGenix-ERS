@@ -16,12 +16,12 @@ add_library(ERS_STRUCT_ModelWriterData
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_ModelWriterData PRIVATE
+target_link_libraries(ERS_STRUCT_ModelWriterData
     assimp
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_ModelWriterData PRIVATE
+target_link_libraries(ERS_STRUCT_ModelWriterData
     ERS_STRUCT_Model
     )
 

@@ -16,11 +16,11 @@ add_library(ERS_STRUCT_Project
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_Project PRIVATE
+target_link_libraries(ERS_STRUCT_Project
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_Project PRIVATE
+target_link_libraries(ERS_STRUCT_Project
     ERS_STRUCT_ControllerSettings
     ERS_STRUCT_ShaderProgramAssetIDs
     ERS_STRUCT_Script

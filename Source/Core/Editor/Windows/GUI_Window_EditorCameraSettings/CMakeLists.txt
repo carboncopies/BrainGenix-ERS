@@ -8,14 +8,14 @@ add_library(GUI_Window_EditorCameraSettings
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_EditorCameraSettings PRIVATE
+target_link_libraries(GUI_Window_EditorCameraSettings
     glad
     glfw
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_EditorCameraSettings PRIVATE
+target_link_libraries(GUI_Window_EditorCameraSettings
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_RendererSettings
 

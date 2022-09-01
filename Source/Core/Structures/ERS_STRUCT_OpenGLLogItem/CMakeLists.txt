@@ -16,12 +16,12 @@ add_library(ERS_STRUCT_OpenGLLogItem
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_OpenGLLogItem PRIVATE
+target_link_libraries(ERS_STRUCT_OpenGLLogItem
     glad
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_OpenGLLogItem PRIVATE
+target_link_libraries(ERS_STRUCT_OpenGLLogItem
     )
 
 

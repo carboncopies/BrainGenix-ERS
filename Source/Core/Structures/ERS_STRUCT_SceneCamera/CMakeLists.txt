@@ -16,11 +16,11 @@ add_library(ERS_STRUCT_SceneCamera
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_SceneCamera PRIVATE
+target_link_libraries(ERS_STRUCT_SceneCamera
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_SceneCamera PRIVATE
+target_link_libraries(ERS_STRUCT_SceneCamera
     ERS_STRUCT_Camera
     )
 

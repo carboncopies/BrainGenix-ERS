@@ -16,7 +16,7 @@ add_library(VisualEditor
             )
 
 # Link 3rd Party Libs
-target_link_libraries(VisualEditor PRIVATE
+target_link_libraries(VisualEditor
     glad
     glfw
     IMGUI
@@ -25,7 +25,7 @@ target_link_libraries(VisualEditor PRIVATE
     )
 
 # Link Internal Libs
-target_link_libraries(VisualEditor PRIVATE
+target_link_libraries(VisualEditor
     ERS_CLASS_LoggingSystem
     ERS_CLASS_VisualRenderer
     

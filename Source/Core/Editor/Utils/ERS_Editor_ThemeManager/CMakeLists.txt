@@ -17,13 +17,13 @@ add_library(ERS_Editor_ThemeManager
 set_property(TARGET ERS_Editor_ThemeManager PROPERTY CXX_STANDARD 17)
             
 # Link 3rd Party Libs
-target_link_libraries(ERS_Editor_ThemeManager PRIVATE
+target_link_libraries(ERS_Editor_ThemeManager
     yaml-cpp
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_Editor_ThemeManager PRIVATE
+target_link_libraries(ERS_Editor_ThemeManager
     ERS_CLASS_LoggingSystem
     )
 

@@ -16,13 +16,13 @@ add_library(Menu_File
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Menu_File PRIVATE
+target_link_libraries(Menu_File
     IMGUI
     yaml-cpp
     )
 
 # Link Internal Libs
-target_link_libraries(Menu_File PRIVATE
+target_link_libraries(Menu_File
     ERS_CLASS_LoggingSystem
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils

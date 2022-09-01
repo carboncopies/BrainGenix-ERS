@@ -16,13 +16,13 @@ add_library(GUI_Window_ShaderEditor
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_ShaderEditor PRIVATE
+target_link_libraries(GUI_Window_ShaderEditor
     IMGUI
     ImGuiColorTextEdit
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_ShaderEditor PRIVATE
+target_link_libraries(GUI_Window_ShaderEditor
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_Shader

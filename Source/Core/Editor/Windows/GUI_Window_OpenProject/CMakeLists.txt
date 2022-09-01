@@ -16,7 +16,7 @@ add_library(GUI_Window_OpenProject
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_OpenProject PRIVATE
+target_link_libraries(GUI_Window_OpenProject
     glad
     glfw
     IMGUI
@@ -24,7 +24,7 @@ target_link_libraries(GUI_Window_OpenProject PRIVATE
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_OpenProject PRIVATE
+target_link_libraries(GUI_Window_OpenProject
     ERS_STRUCT_SystemUtils
     )
 

@@ -19,13 +19,13 @@ add_library(Menu_Debug
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Menu_Debug PRIVATE
+target_link_libraries(Menu_Debug
     glad
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(Menu_Debug PRIVATE
+target_link_libraries(Menu_Debug
 
     GUI_Window_TestEditor
     GUI_Window_ControllerSettings

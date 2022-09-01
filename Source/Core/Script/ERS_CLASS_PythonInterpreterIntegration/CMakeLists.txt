@@ -27,12 +27,12 @@ add_library(ERS_CLASS_PythonInterpreterIntegration
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_CLASS_PythonInterpreterIntegration PRIVATE
+target_link_libraries(ERS_CLASS_PythonInterpreterIntegration
     pybind11::embed
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_CLASS_PythonInterpreterIntegration PRIVATE
+target_link_libraries(ERS_CLASS_PythonInterpreterIntegration
     ERS_CLASS_LoggingSystem
 
     ERS_STRUCT_Model

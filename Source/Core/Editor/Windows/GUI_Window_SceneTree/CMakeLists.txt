@@ -48,14 +48,14 @@ add_library(GUI_Window_SceneTree
             )
 
 # Link 3rd Party Libs
-target_link_libraries(GUI_Window_SceneTree PRIVATE
+target_link_libraries(GUI_Window_SceneTree
     glad
     glfw
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(GUI_Window_SceneTree PRIVATE
+target_link_libraries(GUI_Window_SceneTree
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_SceneObject
