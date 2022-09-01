@@ -637,8 +637,8 @@ void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
             // We Need All Texture Levels In RAM To Push To VRAM, Check This Is True!
             // If It's Not, We're Going To Wait Until They Are By Moving This Item To The End Of The Queue
             if (WorkItem->TextureLevelInRAM_ <= WorkItem->TargetTextureLevelVRAM) {
-                if (Model->TargetTextureLevelRAM < Model->TargetTextureLevelVRAM) {
-                    Model->TargetTextureLevelRAM = Model->TargetTextureLevelVRAM;
+                if (WorkItem->TargetTextureLevelRAM < WorkItem->TargetTextureLevelVRAM) {
+                    WorkItem->TargetTextureLevelRAM = WorkItem->TargetTextureLevelVRAM;
                 }
                 // SetLevelRAM(Model, LogEnable);
                 BlockPusherThreads_.lock();
