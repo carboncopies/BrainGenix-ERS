@@ -81,7 +81,7 @@ void ERS_CLASS_ViewportMenu::AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
 
     
     Light->Intensity = 1.0f;
-    Light->MaxDistance = 20.0f;can you decompile pdb
+    Light->MaxDistance = 20.0f;
 
     Light->CutOff = 45.0f;
     Light->Rolloff = 10.0f;
