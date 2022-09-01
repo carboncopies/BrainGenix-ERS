@@ -395,35 +395,26 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
 }
 void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool LogEnable) {
 
-
+        // Abort If Level Not Loaded Yet
         if (Model->TextureLevelInVRAM_ < Model->TargetTextureLevelVRAM) {
 
-            // We Need All Texture Levels In RAM To Push To VRAM, Check This Is True!
-            // If It's Not, We're Going To Load Them
-            if (Model->TextureLevelInRAM_ <= Model->TargetTextureLevelVRAM) {
-                if (Model->TargetTextureLevelRAM < Model->TargetTextureLevelVRAM) {
-                    Model->TargetTextureLevelRAM = Model->TargetTextureLevelVRAM;
-                }
-                SetLevelRAM(Model, LogEnable);
-            }
+            return;
+            // // Load This VRAM Level For All Textures
+            // int LevelToLoad = Model->TargetTextureLevelVRAM;
+            // for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
 
+            //     // Requested Level
+            //     LoadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
+            //     Model->Textures_[TextureIndex].BestAvailableOpenGLID = Model->Textures_[TextureIndex].TextureLevels[LevelToLoad].LevelTextureOpenGLID;
 
-            // Load This VRAM Level For All Textures
-            int LevelToLoad = Model->TargetTextureLevelVRAM;
-            for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
+            //     // Ensure That Level 0 Is Always Loaded
+            //     if (!Model->Textures_[TextureIndex].TextureLevels[0].LevelLoadedInVRAM) {
+            //         LoadImageDataVRAM(&Model->Textures_[TextureIndex], 0, LogEnable);
+            //         Model->Textures_[TextureIndex].HasAnyLevelReady = true;
+            //     }
 
-                // Requested Level
-                LoadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
-                Model->Textures_[TextureIndex].BestAvailableOpenGLID = Model->Textures_[TextureIndex].TextureLevels[LevelToLoad].LevelTextureOpenGLID;
-
-                // Ensure That Level 0 Is Always Loaded
-                if (!Model->Textures_[TextureIndex].TextureLevels[0].LevelLoadedInVRAM) {
-                    LoadImageDataVRAM(&Model->Textures_[TextureIndex], 0, LogEnable);
-                    Model->Textures_[TextureIndex].HasAnyLevelReady = true;
-                }
-
-            }
-            Model->TextureLevelInVRAM_ = LevelToLoad;
+            // }
+            // Model->TextureLevelInVRAM_ = LevelToLoad;
         }
 
         else if (Model->TextureLevelInVRAM_ > Model->TargetTextureLevelVRAM) {
@@ -642,7 +633,22 @@ void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
         // Process Item, If Item Doens't Exist, Sleep Thread
         if (HasWorkItem) {
             WorkItem->TexturesBeingPushed = true;
-            ProcessPushWorkItem(WorkItem.get());
+
+            // We Need All Texture Levels In RAM To Push To VRAM, Check This Is True!
+            // If It's Not, We're Going To Wait Until They Are By Moving This Item To The End Of The Queue
+            if (WorkItem->TextureLevelInRAM_ <= WorkItem->TargetTextureLevelVRAM) {
+                // if (Model->TargetTextureLevelRAM < Model->TargetTextureLevelVRAM) {
+                //     Model->TargetTextureLevelRAM = Model->TargetTextureLevelVRAM;
+                // }
+                // SetLevelRAM(Model, LogEnable);
+                BlockPusherThreads_.lock();
+                PushWorkItems_.push_back(WorkItem);
+                BlockPusherThreads_.unlock();
+
+            }
+            else {
+                ProcessPushWorkItem(WorkItem.get());
+            }
             WorkItem->TexturesBeingPushed = false;
         } else {
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
