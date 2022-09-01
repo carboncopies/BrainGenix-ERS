@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_FUNCTION_ModelMetadataDecoderV0.0.0.h>
+#include <ERS_FUNCTION_ModelMetadataDecoderV0.0.1.h>
 
 
 bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model* Model, ERS_STRUCT_SystemUtils* SystemUtils, long AssetID, bool LogEnable) {
@@ -17,8 +17,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV001(YAML::Node Metadata, ERS_STRUCT_Model*
         SystemUtils->Logger_->Log("Decoding Model Metadata", 3, LogEnable);
 
         if (Metadata["Name"]) {
-            std::string Name = Metadata["Name"].as<std::string>();
-            Model->Name = Name.substr(Name.find_last_of("/") + 1, Name.length()-1);
+            Model->Directory = Metadata["Name"].as<std::string>();
         } else {
             Model->Name = "_Error_";
             SystemUtils->Logger_->Log(std::string("Error Loading Name From Model Metadata '") + std::to_string(AssetID) + "'", 7); 
