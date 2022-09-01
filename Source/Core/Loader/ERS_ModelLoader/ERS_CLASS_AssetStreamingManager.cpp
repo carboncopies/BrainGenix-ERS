@@ -348,22 +348,15 @@ std::vector<std::pair<float, unsigned int>> ERS_CLASS_AssetStreamingManager::Sor
         }
         float Distance = TotalDistance - ApproxCubeBoundryDistance;
 
-        // If Level 0 Isn't Loaded, Do So
-        if (Scene->Models[i]->TextureLevelInVRAM_ == -1) {
-            Distance = DistanceCutoffVRAM_ - 0.01f;
-        }
-
         // Cap Distance At 0 - We don't want negative distance, (thats happens if the camera is inside the bounding box of the model)
         Distance = std::max(0.0f, Distance);
         Distances.push_back(std::make_pair(Distance, i));
     }
 
 
-    std::cout<<"Sorting distances\n";
     std::vector<std::pair<float, unsigned int>> SortedDistances; 
     for (std::pair<float, unsigned int> Entry : Distances) {
         SortedDistances.push_back(std::make_pair(Entry.first, Entry.second));
-        std::cout<<"Distance: "<<Entry.first<<std::endl;
     }
 
     return SortedDistances;
