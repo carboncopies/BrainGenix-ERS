@@ -356,6 +356,9 @@ std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDista
     std::map<float, unsigned int> SortedDistances; 
     for (auto const& Entry : Distances) {
         SortedDistances.insert(std::make_pair(Entry.first, Entry.second));
+        if (Scene->Models[i]->Name == "ApartmentCeiling") {
+                std::cout<<"Found"<<i<<std::endl;
+        }
     }
 
     return SortedDistances;
