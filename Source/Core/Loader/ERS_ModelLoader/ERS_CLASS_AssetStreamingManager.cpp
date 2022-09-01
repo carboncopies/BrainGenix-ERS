@@ -144,7 +144,9 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             if (!AlreadyHasVRAMLevel && !VRAMUpdateQuotaExceeded && TextureFitsInVRAM) {
                 if (Model->TargetTextureLevelVRAM < TargetTextureLevelVRAM) {
                     Model->TargetTextureLevelVRAM = TargetTextureLevelVRAM;
-                    CameraVRAMUpdates++;
+                    if (Model->TargetTextureLevelVRAM > 0) {
+                        CameraVRAMUpdates++;
+                    }
                 }
             } else if (Model->TextureLevelInVRAM_ > TargetTextureLevelVRAM) {
                 Model->TargetTextureLevelVRAM = TargetTextureLevelVRAM;
@@ -159,7 +161,9 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             if (!AlreadyHasRAMLevel && !RAMUpdateQuotaExceeded && TextureFitsInRAM) {
                 if (Model->TargetTextureLevelRAM < TargetTextureLevelRAM) {
                     Model->TargetTextureLevelRAM = TargetTextureLevelRAM;
-                    CameraRAMUpdates++;
+                    if (Model->TargetTextureLevelRAM > 0) {
+                        CameraRAMUpdates++;
+                    }
                 }
             } else if (Model->TextureLevelInRAM_ > TargetTextureLevelRAM) {
                 Model->TargetTextureLevelRAM = TargetTextureLevelRAM;
