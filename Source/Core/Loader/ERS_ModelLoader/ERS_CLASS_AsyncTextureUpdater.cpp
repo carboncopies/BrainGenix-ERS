@@ -395,18 +395,8 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
 }
 void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool LogEnable) {
 
-
+        // Abort If Level Not Loaded Yet
         if (Model->TextureLevelInVRAM_ < Model->TargetTextureLevelVRAM) {
-
-            // We Need All Texture Levels In RAM To Push To VRAM, Check This Is True!
-            // If It's Not, We're Going To Load Them
-            if (Model->TextureLevelInRAM_ <= Model->TargetTextureLevelVRAM) {
-                if (Model->TargetTextureLevelRAM < Model->TargetTextureLevelVRAM) {
-                    Model->TargetTextureLevelRAM = Model->TargetTextureLevelVRAM;
-                }
-                SetLevelRAM(Model, LogEnable);
-            }
-
 
             // Load This VRAM Level For All Textures
             int LevelToLoad = Model->TargetTextureLevelVRAM;
@@ -432,6 +422,14 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
             for (unsigned int LevelToUnload = (unsigned int)Model->TextureLevelInVRAM_; LevelToUnload > (unsigned int)Model->TargetTextureLevelVRAM; LevelToUnload--) {
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     
+                    // Ensure That The Level Prior Is Loaded
+                    int PriorLevel = LevelToUnload - 1;
+                    if (PriorLevel > 0) {
+                        if (!Model->Textures_[TextureIndex].TextureLevels[PriorLevel].LevelLoadedInVRAM) {
+                            LoadImageDataVRAM(&Model->Textures_[TextureIndex], PriorLevel, LogEnable);
+                        }
+                    }
+
                     // Check If Level Already Loaded, Otherwise, Don't Try To Unload It
                     if (Model->Textures_[TextureIndex].TextureLevels[LevelToUnload].LevelLoadedInVRAM) {
                         UnloadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToUnload, LogEnable);
@@ -445,7 +443,16 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
                     }
 
                 }
-                Model->TextureLevelInVRAM_ = LevelToUnload - 1;
+
+            }
+
+            // Detect New Level Loaded In Memory
+            if (Model->Textures_.size() > 0) {
+                for (int i = 0; i < Model->Textures_[0].TextureLevels.size(); i++) {
+                    if (Model->Textures_[0].TextureLevels[i].LevelLoadedInVRAM) {
+                        Model->TextureLevelInVRAM_ = i;
+                    }
+                }
             }
         }
 
@@ -642,7 +649,22 @@ void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
         // Process Item, If Item Doens't Exist, Sleep Thread
         if (HasWorkItem) {
             WorkItem->TexturesBeingPushed = true;
-            ProcessPushWorkItem(WorkItem.get());
+
+            // We Need All Texture Levels In RAM To Push To VRAM, Check This Is True!
+            // If It's Not, We're Going To Wait Until They Are By Moving This Item To The End Of The Queue
+            if (WorkItem->TextureLevelInRAM_ < WorkItem->TargetTextureLevelVRAM) {
+                // if (WorkItem->TargetTextureLevelRAM < WorkItem->TargetTextureLevelVRAM) {
+                //     WorkItem->TargetTextureLevelRAM = WorkItem->TargetTextureLevelVRAM;
+                // }
+                // SetLevelRAM(Model, LogEnable);
+                // BlockPusherThreads_.lock();
+                // PushWorkItems_.push_back(WorkItem);
+                // BlockPusherThreads_.unlock();
+
+            }
+            else {
+                ProcessPushWorkItem(WorkItem.get());
+            }
             WorkItem->TexturesBeingPushed = false;
         } else {
             std::this_thread::sleep_for(std::chrono::milliseconds(1));

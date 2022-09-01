@@ -128,6 +128,7 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             } else if (MaxTextureResolution_ < 0) {
                 MaxTextureResolution_ = 0;
             }
+            TargetTextureLevelVRAM = std::min(TargetTextureLevelVRAM, Model->TargetTextureLevelRAM);
   
 
 
