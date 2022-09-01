@@ -16,8 +16,9 @@ bool ERS_FUNCTION_DecodeModelMetadataV000(YAML::Node Metadata, ERS_STRUCT_Model*
     try {
 
 
-        if (Metadata["Name"]) {
-            Model->Directory = Metadata["Name"].as<std::string>();
+        if (Metadata["Name"].as<std::string>() != "Loading...") {
+            std::string Name = Metadata["Name"].as<std::string>();
+            Model->Name = Name.substr(Name.find_last_of("/") + 1, Name.length()-1);
         } else {
             Model->Name = "_Error_";
             SystemUtils->Logger_->Log(std::string("Error Loading Name From Model Metadata '") + std::to_string(AssetID) + "'", 7); 
