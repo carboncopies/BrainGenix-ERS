@@ -81,7 +81,7 @@ void ERS_CLASS_ViewportMenu::AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
 
     
     Light->Intensity = 1.0f;
-    Light->MaxDistance = 20.0f;
+    Light->MaxDistance = 20.0f;can you decompile pdb
 
     Light->CutOff = 45.0f;
     Light->Rolloff = 10.0f;
@@ -249,6 +249,17 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
                 // Base Color
                 if (ImGui::BeginMenu("Base")) {
 
+                    if (ImGui::MenuItem("Red")) {
+                        Viewport->Grid->GridColor_ = glm::vec3(1.0f, 0.0f, 0.0f);
+                    }
+
+                    if (ImGui::MenuItem("Green")) {
+                        Viewport->Grid->GridColor_ = glm::vec3(0.0f, 1.0f, 0.0f);
+                    }
+
+                    if (ImGui::MenuItem("Blue")) {
+                        Viewport->Grid->GridColor_ = glm::vec3(0.0f, 0.0f, 1.0f);
+                    }
 
                     if (ImGui::MenuItem("White")) {
                         Viewport->Grid->GridColor_ = glm::vec3(1.0f);
