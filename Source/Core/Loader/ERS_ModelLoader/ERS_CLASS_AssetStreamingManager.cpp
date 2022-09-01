@@ -354,11 +354,6 @@ std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDista
         Distances.insert(std::make_pair(Distance, i));
     }
 
-    std::cout<<"starting printing out distances\n";
-    for (unsigned int i = 0; i < Distances.size(); i++) {
-        std::cout<<Distances[i].first<<std::endl;
-    }
-
     std::cout<<"Sorting distances\n";
     std::map<float, unsigned int> SortedDistances; 
     for (std::pair<float, unsigned int> Entry : Distances) {
