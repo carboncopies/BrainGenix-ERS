@@ -372,7 +372,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
         // Also apparenly I don't know how to spell...
         // Load New Levels Into Memory
         if (Model->TextureLevelInRAM_ < Model->TargetTextureLevelRAM) {
-            for (unsigned int LevelToLoad = (unsigned int)Model->TextureLevelInRAM_; LevelToLoad <= (unsigned int)Model->TargetTextureLevelRAM; LevelToLoad++) {
+            for (int LevelToLoad = Model->TextureLevelInRAM_; LevelToLoad <= Model->TargetTextureLevelRAM; LevelToLoad++) {
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     LoadImageDataRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
                 }
@@ -383,7 +383,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
 
         // Unload Old 
         else if (Model->TextureLevelInRAM_ > Model->TargetTextureLevelRAM) {
-            for (unsigned int LevelToUnload = (unsigned int)Model->TextureLevelInRAM_; LevelToUnload > (unsigned int)Model->TargetTextureLevelRAM; LevelToUnload--) {
+            for (int LevelToUnload = Model->TextureLevelInRAM_; LevelToUnload > Model->TargetTextureLevelRAM; LevelToUnload--) {
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     UnloadImageDataRAM(&Model->Textures_[TextureIndex], LevelToUnload, LogEnable);
                 }
@@ -419,7 +419,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
         else if (Model->TextureLevelInVRAM_ > Model->TargetTextureLevelVRAM) {
 
             // Here, we unload *all* levels that are above the target (if they're loaded)
-            for (unsigned int LevelToUnload = (unsigned int)Model->TextureLevelInVRAM_; LevelToUnload > (unsigned int)Model->TargetTextureLevelVRAM; LevelToUnload--) {
+            for (int LevelToUnload = Model->TextureLevelInVRAM_; LevelToUnload > Model->TargetTextureLevelVRAM; LevelToUnload--) {
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     
                     // Ensure That The Level Prior Is Loaded
