@@ -406,12 +406,6 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
                 LoadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
                 Model->Textures_[TextureIndex].BestAvailableOpenGLID = Model->Textures_[TextureIndex].TextureLevels[LevelToLoad].LevelTextureOpenGLID;
 
-                // Ensure That Level 0 Is Always Loaded
-                if (!Model->Textures_[TextureIndex].TextureLevels[0].LevelLoadedInVRAM) {
-                    LoadImageDataVRAM(&Model->Textures_[TextureIndex], 0, LogEnable);
-                    Model->Textures_[TextureIndex].HasAnyLevelReady = true;
-                }
-
             }
             Model->TextureLevelInVRAM_ = LevelToLoad;
         }
