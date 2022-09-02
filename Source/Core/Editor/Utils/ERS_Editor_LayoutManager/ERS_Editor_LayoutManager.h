@@ -10,6 +10,7 @@
 #include <filesystem>
 #include <imgui.h>
 #include <fstream>
+#include <map>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -25,8 +26,7 @@ struct ERS_STRUCT_EditorLayout {
     std::string name;
     std::string IniString;
 
-    std::vector<std::string> WindowNames;
-    std::vector<bool> WindowStatus;
+    std::map<std::string, bool> WindowNameStatus;
 };
 
 /**
