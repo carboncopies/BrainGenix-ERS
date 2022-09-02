@@ -3,17 +3,19 @@
 //======================================================================//
 
 #include <ERS_Editor_LayoutManager.h>
-#include <filesystem>
-#include <imgui.h>
-#include <fstream>
 
-ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(ERS_CLASS_LoggingSystem* Logger, const char* LayoutDirectory) {
 
-    Logger_ = Logger;
+ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_WindowManager* WindowManager, const char* LayoutDirectory) {
+
+    SystemUtils_ = SystemUtils;
+    Logger_ = SystemUtils_->Logger_.get();
     LayoutDirectory_ = LayoutDirectory;
+    WindowManager_ = WindowManager;
     Logger_->Log("Initializing Layout Manager", 5);
 
- }
+    LoadLayouts();
+
+}
 
 
 ERS_CLASS_LayoutManager::~ERS_CLASS_LayoutManager() {
@@ -32,7 +34,7 @@ void ERS_CLASS_LayoutManager::LoadLayouts() {
 
         // Load YAML::Node
         YAML::Node LayoutNode = YAML::LoadFile(FilePath.c_str());
-        
+
         // Build Temp Layout
         ERS_STRUCT_EditorLayout Layout;
         Layout.index = Index;
@@ -47,6 +49,18 @@ void ERS_CLASS_LayoutManager::LoadLayouts() {
         IniStr = LayoutNode["ImGuiIni"].as<std::string>();
         Layout.IniString = IniStr;
 
+        // Load the Window names and status
+        std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
+
+        for (auto i : WindowNames) {
+            if (LayoutNode[i].as<std::string>() == "False") {
+                Layout.WindowNameStatus.insert(std::make_pair(i, false));
+            }
+            else {
+                Layout.WindowNameStatus.insert(std::make_pair(i, true));
+            }
+        }
+        
         // Add To Names and Layouts Vector
         LayoutNames_.push_back(LayoutName);
         Layouts_.push_back(Layout);
@@ -84,6 +98,19 @@ void ERS_CLASS_LayoutManager::SaveLayout(std::string LayoutName) {
     Layout["ImGuiIni"] = IniStr;
     Layout["DisplayName"] = LayoutName;
 
+    // Load the Window names and status
+    std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
+
+    for (auto i : WindowNames) {
+        bool status;
+        if (WindowManager_->GetWindowStatus(i, &status)) {
+            Layout[i] = "True";
+        }
+        else {
+            Layout[i] = "False";
+        }
+    }
+
     // Export the YAML string
     YAML::Emitter LayoutYAML;
     LayoutYAML << YAML::BeginMap;
@@ -99,10 +126,16 @@ void ERS_CLASS_LayoutManager::SaveLayout(std::string LayoutName) {
     // Write the string into a YAML file in the directory
     std::ofstream file(std::string(LayoutDirectory_) + "/" + LayoutName + ".yaml");
 
-    if (!file.fail())
+    if (!file.fail()) {
         file << YAMLstring;
+    } else {
+        Logger_->Log("Failed To Open File, Is Layout Directory Valid?", 8);
+    }
 
     file.close();
+
+    // Update Active Layout String
+    ActiveLayoutName_ = LayoutName;
 
 }
 
@@ -136,4 +169,26 @@ void ERS_CLASS_LayoutManager::ApplyLayout(int LayoutID) {
 
     ImGui::LoadIniSettingsFromMemory(Layout.IniString.c_str());
 
+    for (auto i : Layout.WindowNameStatus) {
+        WindowManager_->SetWindowStatus(i.first, i.second);
+    }
+}
+
+
+std::string ERS_CLASS_LayoutManager::GetActiveLayoutName() {
+    return ActiveLayoutName_;
+}
+
+
+std::vector<std::string> ERS_CLASS_LayoutManager::GetLayoutNames() {
+    return LayoutNames_;
+}
+
+void ERS_CLASS_LayoutManager::CreateLayout(std::string Name) {
+
+    // Add Name To Layouts List
+    LayoutNames_.push_back(Name);
+
+    // Save Layout
+    SaveLayout(Name);
 }

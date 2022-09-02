@@ -32,6 +32,7 @@
 #include <ERS_Editor_UserProfileManager.h>
 #include <ERS_Editor_3DCursor.h>
 #include <ERS_Editor_WindowManager.h>
+#include <ERS_Editor_LayoutManager.h>
 
 #include <ERS_SceneManager.h>
 
@@ -63,7 +64,9 @@ private:
 
     std::unique_ptr<ERS_CLASS_FontManager>        FontManager_;        /**<Pointer To FontManager Instance*/
     std::unique_ptr<ERS_CLASS_UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
+    std::unique_ptr<ERS_CLASS_LayoutManager>      LayoutManager_;      /**<Instance of the layout manager class*/
     std::unique_ptr<ERS_CLASS_WindowManager>      WindowManager_;      /**<Class owning all gui windows*/
+
     
 public:
 
