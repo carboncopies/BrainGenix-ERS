@@ -77,11 +77,6 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             ERS_STRUCT_Model* Model = Scene->Models[ModelIndex].get();
             int NumberTextureLevels = Model->MaxTextureLevel_ + 1;
 
-            // std::cout<<ModelIndex<<std::endl;
-            // if (Model->Name == "ApartmentCeiling") {
-            //     std::cout<<"SceneSort: "<<ModelDistance<<std::endl;
-            // }
-
             // Calculate Distance Per Level Cutoff
             int TargetTextureLevelVRAM;
             int TargetTextureLevelRAM;
@@ -126,10 +121,6 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             TargetTextureLevelRAM  = std::max(0, TargetTextureLevelRAM);
             TargetTextureLevelVRAM = std::max(0, TargetTextureLevelVRAM);
   
-            if (TargetTextureLevelVRAM < 0) {
-                std::cout<<"fds\n";
-            }
-
             // Calculate Texture Size
             int TextureSizeVRAM = 0;
             int TextureSizeRAM = 0;

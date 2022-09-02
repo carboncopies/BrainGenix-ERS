@@ -197,7 +197,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     ProjectUtils_->ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SortModels(TargetScene);
 
     for (unsigned int i = 0; i < TargetScene->Models.size(); i++) {
-        TargetScene->Models[i]->TextureLevelInVRAM_ = -1;
+        TargetScene->Models[i]->TargetTextureLevelVRAM = 0;
     }
 
     // Update Window Title
