@@ -113,8 +113,6 @@ void GUISystem::UpdateGUI() {
     }
 
 
-    size_t settings_size = 0;
-    const char* settings = ImGui::SaveIniSettingsToMemory(&settings_size);
 
     // Updates all the windows, draws their content if enabled
     WindowManager_->UpdateAllWindows();
