@@ -571,7 +571,7 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
         int TargetVRAMLevel = Scene->Models[i]->TargetTextureLevelVRAM;
         bool VRAMUpdate = CurrentVRAMLevel!=TargetVRAMLevel;
 
-        if (Scene->Models[i]->TargetTextureLevelVRAM < 0) {
+        if (Scene->Models[i]->TextureLevelInVRAM_ < 0) {
             std::cout<<"test\n";
         }
 
