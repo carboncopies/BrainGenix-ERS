@@ -25,6 +25,7 @@ private:
     std::mutex Lock_; /**<Stops other threads from accessing the maps when in use*/
 
 
+public:
 
     std::map<long, std::string> AssetTypeName_; /**<Name of the type of asset, ex: Image or Model*/
     std::map<long, std::string> AssetCreationDate_; /**<Date when initially Allocated*/
