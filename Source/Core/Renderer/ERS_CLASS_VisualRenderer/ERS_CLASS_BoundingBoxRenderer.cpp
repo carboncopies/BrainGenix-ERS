@@ -155,10 +155,10 @@ void ERS_CLASS_BoundingBoxRenderer::DrawAll(ERS_STRUCT_Camera* Camera, ERS_STRUC
             }
         } else if (BoundingBoxDisplayMode_ == 4) { // Current VRAM Level
             float LevelPercentage = (float)Scene->Models[i]->TextureLevelInVRAM_ / MaxTextureLevel;
-            if (Scene->Models[i]->TextureLevelInVRAM_ == -1) {
-                ModelOutlineColor = glm::vec3(1.0f, 0.0f, 0.0f);
-            } else {
+            if (LevelPercentage >= 0.0f) {
                 ModelOutlineColor = glm::vec3(1.0f - LevelPercentage, LevelPercentage, 1.0f - LevelPercentage);
+            } else {
+                ModelOutlineColor = glm::vec3(1.0f, 0.0f, 0.0f);
             }
         }
 
