@@ -202,6 +202,10 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     }
     ProjectUtils_->ModelLoader_->AssetStreamingManager_->UpdateSceneStreamingQueue(ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get(), Cameras);
     
+    for (unsigned int i =0; i < TargetScene->Models.size(); i++) {
+        TargetScene->Models[i]->TargetTextureLevelVRAM = -1;
+    }
+
 
     // Update Window Title
     std::string SceneTitle = ProjectUtils_->ProjectManager_->Project_.ProjectName + std::string(" - BrainGenix-ERS");
