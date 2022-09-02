@@ -58,20 +58,6 @@ void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defa
 
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
 
-    // TEMPORARY____________________-------------------------------------------------------------------------------------------------------------
-    std::vector<ERS_STRUCT_Camera*> Cameras;
-    for (unsigned int i = 0; i < Viewports_.size(); i++) {
-        Cameras.push_back(Viewports_[i]->Camera.get());
-    }
-    ProjectUtils_->ModelLoader_->AssetStreamingManager_->UpdateSceneStreamingQueue(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), Cameras);
-    
-    
-    // // Update Camera Location If System Running
-    // if (!IsEditorMode_ && Index == 0 && Scene->ActiveSceneCameraIndex != -1) {
-    //     Viewport->Camera->SetPosition(Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Pos_);
-    //     Viewport->Camera->SetRotation(Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Rot_);
-    // }
-    
     // Apply Scene Camera Transforms
     ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     if (!IsEditorMode_ && Scene->ActiveSceneCameraIndex != -1) {

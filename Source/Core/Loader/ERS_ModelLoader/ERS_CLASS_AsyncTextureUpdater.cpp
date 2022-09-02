@@ -372,7 +372,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
         // Also apparenly I don't know how to spell...
         // Load New Levels Into Memory
         if (Model->TextureLevelInRAM_ < Model->TargetTextureLevelRAM) {
-            for (unsigned int LevelToLoad = (unsigned int)Model->TextureLevelInRAM_; LevelToLoad <= (unsigned int)Model->TargetTextureLevelRAM; LevelToLoad++) {
+            for (int LevelToLoad = Model->TextureLevelInRAM_; LevelToLoad <= Model->TargetTextureLevelRAM; LevelToLoad++) {
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     LoadImageDataRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
                 }
@@ -383,7 +383,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
 
         // Unload Old 
         else if (Model->TextureLevelInRAM_ > Model->TargetTextureLevelRAM) {
-            for (unsigned int LevelToUnload = (unsigned int)Model->TextureLevelInRAM_; LevelToUnload > (unsigned int)Model->TargetTextureLevelRAM; LevelToUnload--) {
+            for (int LevelToUnload = Model->TextureLevelInRAM_; LevelToUnload > Model->TargetTextureLevelRAM; LevelToUnload--) {
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     UnloadImageDataRAM(&Model->Textures_[TextureIndex], LevelToUnload, LogEnable);
                 }
@@ -405,12 +405,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
                 // Requested Level
                 LoadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
                 Model->Textures_[TextureIndex].BestAvailableOpenGLID = Model->Textures_[TextureIndex].TextureLevels[LevelToLoad].LevelTextureOpenGLID;
-
-                // Ensure That Level 0 Is Always Loaded
-                if (!Model->Textures_[TextureIndex].TextureLevels[0].LevelLoadedInVRAM) {
-                    LoadImageDataVRAM(&Model->Textures_[TextureIndex], 0, LogEnable);
-                    Model->Textures_[TextureIndex].HasAnyLevelReady = true;
-                }
+                Model->Textures_[TextureIndex].HasAnyLevelReady = true;
 
             }
             Model->TextureLevelInVRAM_ = LevelToLoad;
@@ -419,28 +414,33 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
         else if (Model->TextureLevelInVRAM_ > Model->TargetTextureLevelVRAM) {
 
             // Here, we unload *all* levels that are above the target (if they're loaded)
-            for (unsigned int LevelToUnload = (unsigned int)Model->TextureLevelInVRAM_; LevelToUnload > (unsigned int)Model->TargetTextureLevelVRAM; LevelToUnload--) {
+            for (int LevelToUnload = Model->TextureLevelInVRAM_; LevelToUnload > Model->TargetTextureLevelVRAM; LevelToUnload--) {
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     
-                    // Ensure That The Level Prior Is Loaded
+                    // Make Sure We Don't Unload Level 0
                     int PriorLevel = LevelToUnload - 1;
-                    if (PriorLevel > 0) {
+                    if (PriorLevel >= 0) {
+
+                        // Ensure Prior Level Is Loaded
                         if (!Model->Textures_[TextureIndex].TextureLevels[PriorLevel].LevelLoadedInVRAM) {
                             LoadImageDataVRAM(&Model->Textures_[TextureIndex], PriorLevel, LogEnable);
                         }
-                    }
 
-                    // Check If Level Already Loaded, Otherwise, Don't Try To Unload It
-                    if (Model->Textures_[TextureIndex].TextureLevels[LevelToUnload].LevelLoadedInVRAM) {
-                        UnloadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToUnload, LogEnable);
-                    }
-
-                    // Find New Best OpenGL ID
-                    for (unsigned int i = 0; i < Model->Textures_[TextureIndex].TextureLevels.size(); i++) {
-                        if (Model->Textures_[TextureIndex].TextureLevels[i].LevelLoadedInVRAM) {
-                            Model->Textures_[TextureIndex].BestAvailableOpenGLID = Model->Textures_[TextureIndex].TextureLevels[i].LevelTextureOpenGLID;
+                        // Check If Level Already Loaded, Otherwise, Don't Try To Unload It
+                        if (Model->Textures_[TextureIndex].TextureLevels[LevelToUnload].LevelLoadedInVRAM) {
+                            UnloadImageDataVRAM(&Model->Textures_[TextureIndex], LevelToUnload, LogEnable);
                         }
+
+                        // Find New Best OpenGL ID
+                        for (unsigned int i = 0; i < Model->Textures_[TextureIndex].TextureLevels.size(); i++) {
+                            if (Model->Textures_[TextureIndex].TextureLevels[i].LevelLoadedInVRAM) {
+                                Model->Textures_[TextureIndex].BestAvailableOpenGLID = Model->Textures_[TextureIndex].TextureLevels[i].LevelTextureOpenGLID;
+                                Model->Textures_[TextureIndex].HasAnyLevelReady = true;
+                            }
+                        }
+
                     }
+                    
 
                 }
 
@@ -448,7 +448,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool L
 
             // Detect New Level Loaded In Memory
             if (Model->Textures_.size() > 0) {
-                for (int i = 0; i < Model->Textures_[0].TextureLevels.size(); i++) {
+                for (unsigned int i = 0; i < Model->Textures_[0].TextureLevels.size(); i++) {
                     if (Model->Textures_[0].TextureLevels[i].LevelLoadedInVRAM) {
                         Model->TextureLevelInVRAM_ = i;
                     }

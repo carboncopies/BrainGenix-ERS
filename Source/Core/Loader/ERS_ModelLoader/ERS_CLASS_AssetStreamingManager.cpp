@@ -52,20 +52,14 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
     }
 
     // Sort All Models Based On Distance From Each Camera
-    std::vector<std::map<float, unsigned int>> DistancesFromCamera = SortModelsByDistanceFromCameras(Scene, Cameras);
+    std::vector<std::vector<std::pair<float, unsigned int>>> DistancesFromCamera = SortModelsByDistanceFromCameras(Scene, Cameras);
 
-    std::map<unsigned int, int> CameraUpdateQuota = CalculateCameraMaxUpdates(100, Cameras);
+    std::map<unsigned int, int> CameraUpdateQuota = CalculateCameraMaxUpdates(10, Cameras);
     SortSceneModels(CameraUpdateQuota, DistancesFromCamera, Scene);
 
 }
 
-void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::map<float, unsigned int>> DistancesFromCamera, ERS_STRUCT_Scene* Scene) {
-
-    // Reset All Target Distances
-    // for (unsigned int i = 0; i < Scene->Models.size(); i++) {
-    //     Scene->Models[i]->TargetTextureLevelVRAM = 0;
-    //     Scene->Models[i]->TargetTextureLevelRAM = 0;
-    // }
+void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::vector<std::pair<float, unsigned int>>> DistancesFromCamera, ERS_STRUCT_Scene* Scene) {
 
     // Iterate Over All Cameras, Make Recomendations From There
     for (unsigned int CameraIndex = 0; CameraIndex < CameraUpdatesQuota.size(); CameraIndex++) {
@@ -107,16 +101,9 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
                 TargetTextureLevelRAM = std::min(MaxLOD_, TargetTextureLevelRAM);
                 TargetTextureLevelVRAM = std::min(MaxLOD_, TargetTextureLevelVRAM);
             }
-            if (TargetTextureLevelVRAM > NumberTextureLevels - 1) {
-                TargetTextureLevelVRAM = NumberTextureLevels - 1;
-            } else if (TargetTextureLevelVRAM < 0) {
-                TargetTextureLevelVRAM = 0;
-            }
-            if (TargetTextureLevelRAM > NumberTextureLevels - 1) {
-                TargetTextureLevelRAM = NumberTextureLevels - 1;
-            } else if (TargetTextureLevelRAM < 0) {
-                TargetTextureLevelRAM = 0;
-            }
+            TargetTextureLevelVRAM = std::min(TargetTextureLevelVRAM, Model->TargetTextureLevelRAM);
+
+            
             if (MaxTextureResolution_ > 0 && Model->Textures_.size() > 0) {
                 while (Model->Textures_[0].TextureLevels[TargetTextureLevelRAM].LevelResolution.first > MaxTextureResolution_) {
                     TargetTextureLevelRAM -=1;
@@ -128,10 +115,12 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             } else if (MaxTextureResolution_ < 0) {
                 MaxTextureResolution_ = 0;
             }
-            TargetTextureLevelVRAM = std::min(TargetTextureLevelVRAM, Model->TargetTextureLevelRAM);
+
+            TargetTextureLevelRAM  = std::min(NumberTextureLevels - 1, TargetTextureLevelRAM);
+            TargetTextureLevelVRAM = std::min(NumberTextureLevels - 1, TargetTextureLevelVRAM);
+            TargetTextureLevelRAM  = std::max(0, TargetTextureLevelRAM);
+            TargetTextureLevelVRAM = std::max(0, TargetTextureLevelVRAM);
   
-
-
             // Calculate Texture Size
             int TextureSizeVRAM = 0;
             int TextureSizeRAM = 0;
@@ -149,7 +138,9 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             if (!AlreadyHasVRAMLevel && !VRAMUpdateQuotaExceeded && TextureFitsInVRAM) {
                 if (Model->TargetTextureLevelVRAM < TargetTextureLevelVRAM) {
                     Model->TargetTextureLevelVRAM = TargetTextureLevelVRAM;
-                    CameraVRAMUpdates++;
+                    if (Model->TargetTextureLevelVRAM > 0) {
+                        CameraVRAMUpdates++;
+                    }
                 }
             } else if (Model->TextureLevelInVRAM_ > TargetTextureLevelVRAM) {
                 Model->TargetTextureLevelVRAM = TargetTextureLevelVRAM;
@@ -164,7 +155,9 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             if (!AlreadyHasRAMLevel && !RAMUpdateQuotaExceeded && TextureFitsInRAM) {
                 if (Model->TargetTextureLevelRAM < TargetTextureLevelRAM) {
                     Model->TargetTextureLevelRAM = TargetTextureLevelRAM;
-                    CameraRAMUpdates++;
+                    if (Model->TargetTextureLevelRAM > 0) {
+                        CameraRAMUpdates++;
+                    }
                 }
             } else if (Model->TextureLevelInRAM_ > TargetTextureLevelRAM) {
                 Model->TargetTextureLevelRAM = TargetTextureLevelRAM;
@@ -303,9 +296,9 @@ std::map<unsigned int, int> ERS_CLASS_AssetStreamingManager::CalculateCameraMaxU
 
 }
 
-std::vector<std::map<float, unsigned int>> ERS_CLASS_AssetStreamingManager::SortModelsByDistanceFromCameras(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras) {
+std::vector<std::vector<std::pair<float, unsigned int>>> ERS_CLASS_AssetStreamingManager::SortModelsByDistanceFromCameras(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras) {
 
-    std::vector<std::map<float, unsigned int>> DistancesFromCamera;
+    std::vector<std::vector<std::pair<float, unsigned int>>> DistancesFromCamera;
     for (unsigned int i = 0; i < Cameras.size(); i++) {
         DistancesFromCamera.push_back(SortModelsByDistanceFromCamera(Scene, Cameras[i]));
     }
@@ -313,15 +306,19 @@ std::vector<std::map<float, unsigned int>> ERS_CLASS_AssetStreamingManager::Sort
 
 }
 
-std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDistanceFromCamera(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Camera* Camera) {
+std::vector<std::pair<float, unsigned int>> ERS_CLASS_AssetStreamingManager::SortModelsByDistanceFromCamera(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Camera* Camera) {
 
     // Create Sorted List Of Distances Based On Position
-    std::map<float, unsigned int> Distances;        
+    std::vector<std::pair<float, unsigned int>> Distances;        
     for (unsigned int i = 0; i < Scene->Models.size(); i++) {
 
 
         float TotalDistance = glm::distance(Camera->GetPosition(), Scene->Models[i]->ModelPosition);
         
+        // if (Scene->Models[i]->Name == "ApartmentCeiling") {
+        //         std::cout<<"DistSort: "<<TotalDistance<<" Index: "<<i<<std::endl;
+        // }
+
         // glm::vec3 UnscaledAngle = Camera->GetPosition() - Scene->Models[i]->ModelPosition;
         // float MaxSide = UnscaledAngle.x;
         // if (UnscaledAngle.y > MaxSide) {
@@ -344,16 +341,17 @@ std::map<float, unsigned int> ERS_CLASS_AssetStreamingManager::SortModelsByDista
         } else if (ApproxCubeBoundryDistance < CubeBoundryBox.z) {
             ApproxCubeBoundryDistance = CubeBoundryBox.z;
         }
-        
-
         float Distance = TotalDistance - ApproxCubeBoundryDistance;
+
+        // Cap Distance At 0 - We don't want negative distance, (thats happens if the camera is inside the bounding box of the model)
         Distance = std::max(0.0f, Distance);
-        
-        Distances.insert(std::make_pair(Distance, i));
+        Distances.push_back(std::make_pair(Distance, i));
     }
-    std::map<float, unsigned int> SortedDistances; 
-    for (auto const& Entry : Distances) {
-        SortedDistances.insert(std::make_pair(Entry.first, Entry.second));
+
+
+    std::vector<std::pair<float, unsigned int>> SortedDistances; 
+    for (std::pair<float, unsigned int> Entry : Distances) {
+        SortedDistances.push_back(std::make_pair(Entry.first, Entry.second));
     }
 
     return SortedDistances;

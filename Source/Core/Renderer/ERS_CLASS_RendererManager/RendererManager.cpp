@@ -193,8 +193,19 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     // Log Any Issues
     ReportOpenGLErrors();
 
+
+
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     ProjectUtils_->ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SortModels(TargetScene);
+
+    std::vector<ERS_STRUCT_Camera*> Cameras;
+    for (unsigned int i = 0; i < VisualRenderer_->Viewports_.size(); i++) {
+        Cameras.push_back(VisualRenderer_->Viewports_[i]->Camera.get());
+    }
+    ProjectUtils_->ModelLoader_->AssetStreamingManager_->UpdateSceneStreamingQueue(ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get(), Cameras);
+    
+
+
 
     // Update Window Title
     std::string SceneTitle = ProjectUtils_->ProjectManager_->Project_.ProjectName + std::string(" - BrainGenix-ERS");

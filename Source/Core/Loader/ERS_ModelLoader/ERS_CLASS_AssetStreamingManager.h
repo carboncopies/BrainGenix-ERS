@@ -90,7 +90,7 @@ private:
      * @param Camera 
      * @return std::map<float, unsigned int> 
      */
-    std::map<float, unsigned int> SortModelsByDistanceFromCamera(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Camera* Camera);
+    std::vector<std::pair<float, unsigned int>> SortModelsByDistanceFromCamera(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Camera* Camera);
 
     /**
      * @brief Sorts all models in the scene for every camera.
@@ -100,7 +100,7 @@ private:
      * @param Cameras 
      * @return std::vector<std::map<float, unsigned int>> 
      */
-    std::vector<std::map<float, unsigned int>> SortModelsByDistanceFromCameras(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras);
+    std::vector<std::vector<std::pair<float, unsigned int>>> SortModelsByDistanceFromCameras(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras);
 
     /**
      * @brief Generates a dictionary based on the camera's pointer indicating how many loads/unloads should be allowed for every camera
@@ -143,7 +143,7 @@ private:
      * @param DistancesFromCamera 
      * @param Scene 
      */
-    void SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::map<float, unsigned int>> DistancesFromCamera, ERS_STRUCT_Scene* Scene);
+    void SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::vector<std::pair<float, unsigned int>>> DistancesFromCamera, ERS_STRUCT_Scene* Scene);
 
 
 
