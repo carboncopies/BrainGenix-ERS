@@ -196,11 +196,6 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
 
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
-    
-    for (unsigned int i =0; i < TargetScene->Models.size(); i++) {
-        TargetScene->Models[i]->TargetTextureLevelVRAM = -1;
-    }
-    
     ProjectUtils_->ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SortModels(TargetScene);
 
     std::vector<ERS_STRUCT_Camera*> Cameras;
