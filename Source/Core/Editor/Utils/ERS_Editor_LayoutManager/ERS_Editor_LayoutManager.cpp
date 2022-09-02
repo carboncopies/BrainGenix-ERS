@@ -13,7 +13,7 @@ ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(ERS_STRUCT_SystemUtils* SystemU
     WindowManager_ = WindowManager;
     Logger_->Log("Initializing Layout Manager", 5);
 
-
+    LoadLayouts();
 
 }
 
