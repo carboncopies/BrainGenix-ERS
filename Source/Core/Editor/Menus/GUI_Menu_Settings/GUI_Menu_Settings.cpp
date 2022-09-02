@@ -30,7 +30,17 @@ void GUI_Menu_Settings::Draw() {
     if (ImGui::BeginMenu("Settings")) {
 
 
+
+
+
+        // Interface Config
+        ImGui::MenuItem("Color Theme", "", &Windows_->GUI_Window_ThemeSelector_->Enabled_);
+        ImGui::MenuItem("System Font", "", &Windows_->GUI_Window_FontSelector_->Enabled_);
+
+
+
         // Layout Menu
+        ImGui::Separator();
         if (ImGui::BeginMenu("Editor Layout")) {
             
             
@@ -66,10 +76,6 @@ void GUI_Menu_Settings::Draw() {
         ImGui::EndMenu();
         }
 
-
-        // Interface Config
-        ImGui::MenuItem("Color Theme", "", &Windows_->GUI_Window_ThemeSelector_->Enabled_);
-        ImGui::MenuItem("System Font", "", &Windows_->GUI_Window_FontSelector_->Enabled_);
 
         ImGui::Separator();
         if (ImGui::BeginMenu("Editor Settings")) {
