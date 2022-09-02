@@ -395,6 +395,10 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
 }
 void ERS_CLASS_AsyncTextureUpdater::SetLevelVRAM(ERS_STRUCT_Model* Model, bool LogEnable) {
 
+        if (Model->TextureLevelInVRAM_ == -1) {
+            std::cout<<"FDsafds\n";
+        }
+
         // Abort If Level Not Loaded Yet
         if (Model->TextureLevelInVRAM_ < Model->TargetTextureLevelVRAM) {
 
