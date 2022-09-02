@@ -147,7 +147,7 @@ bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, ERS_STRUCT_IOData* 
 bool ERS_CLASS_AssetIndexIOM::ReadAssetIndex(long AssetID, ERS_STRUCT_IOData* Data) {
 
     // Lookup Asset Info (If ID Not Zero)
-    if (AssetID != 0) {
+    if (AssetID > 0) {
         Data->AssetTypeName = AssetTypeName_[AssetID];
         Data->AssetCreationDate = AssetCreationDate_[AssetID];
         Data->AssetModificationDate = AssetModificationDate_[AssetID];
