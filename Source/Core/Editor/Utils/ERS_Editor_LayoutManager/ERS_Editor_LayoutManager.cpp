@@ -126,8 +126,11 @@ void ERS_CLASS_LayoutManager::SaveLayout(std::string LayoutName) {
     // Write the string into a YAML file in the directory
     std::ofstream file(std::string(LayoutDirectory_) + "/" + LayoutName + ".yaml");
 
-    if (!file.fail())
+    if (!file.fail()) {
         file << YAMLstring;
+    } else {
+        Logger_->Log("Failed To Open File, Is Layout Directory Valid?", 8);
+    }
 
     file.close();
 
