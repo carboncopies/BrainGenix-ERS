@@ -193,6 +193,10 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     // Log Any Issues
     ReportOpenGLErrors();
 
+    for (unsigned int i =0; i < TargetScene->Models.size(); i++) {
+        TargetScene->Models[i]->TargetTextureLevelVRAM = -1;
+    }
+
     ERS_STRUCT_Scene* TargetScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     ProjectUtils_->ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->SortModels(TargetScene);
 
@@ -202,9 +206,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     }
     ProjectUtils_->ModelLoader_->AssetStreamingManager_->UpdateSceneStreamingQueue(ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get(), Cameras);
     
-    for (unsigned int i =0; i < TargetScene->Models.size(); i++) {
-        TargetScene->Models[i]->TargetTextureLevelVRAM = -1;
-    }
+
 
 
     // Update Window Title
