@@ -118,15 +118,20 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(ERS_STRUCT_IOData* Data) {
 
 bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, ERS_STRUCT_IOData* Data) {
 
+
     std::string AssetType = Data->AssetTypeName;
     std::string Modified = Data->AssetModificationDate;
     std::string Created = Data->AssetCreationDate;
     std::string FileName = Data->AssetFileName;
 
+
+    Lock_.lock();
     AssetTypeName_[AssetID] = {AssetType};
     AssetCreationDate_[AssetID] = {Created};
     AssetModificationDate_[AssetID] = {Modified};
     AssetFileName_[AssetID] = {FileName};
+    Lock_.unlock();
+
 
     // Check If Already In Loaded Assets, If Not, Add
     bool AlreadyInIndex = false;
@@ -140,6 +145,7 @@ bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, ERS_STRUCT_IOData* 
         AssetIDsFound_.push_back(AssetID);
     }
 
+
     return true;
 
 }
@@ -148,9 +154,11 @@ bool ERS_CLASS_AssetIndexIOM::ReadAssetIndex(long AssetID, ERS_STRUCT_IOData* Da
 
     // Lookup Asset Info (If ID Not Zero)
     if (AssetID > 0) {
+        Lock_.lock();
         Data->AssetTypeName = AssetTypeName_[AssetID];
         Data->AssetCreationDate = AssetCreationDate_[AssetID];
         Data->AssetModificationDate = AssetModificationDate_[AssetID];
+        Lock_.unlock();
     } else {
         Data->AssetTypeName = std::string("Asset Index Metadata");
     }
