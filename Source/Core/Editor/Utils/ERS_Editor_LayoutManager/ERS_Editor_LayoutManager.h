@@ -50,7 +50,7 @@ private:
 public:
 
     std::vector<std::string> LayoutNames_; /**<List of layout display names (based on display name entry in YAML file)*/
-    std::vector<ERS_STRUCT_EditorLayout> Layouts_; /**<List of Layout structs that store the layouts/
+    std::vector<ERS_STRUCT_EditorLayout> Layouts_; /**<List of Layout structs that store the layouts*/
 
     /**
      * @brief Construct a new Layout Manager object
