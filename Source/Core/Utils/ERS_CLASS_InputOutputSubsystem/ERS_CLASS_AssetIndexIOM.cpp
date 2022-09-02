@@ -20,6 +20,9 @@ ERS_CLASS_AssetIndexIOM::~ERS_CLASS_AssetIndexIOM() {
 
 bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
 
+
+
+
     Logger_->Log("Loading Asset Index", 4);
 
     // Decode Asset Index Into YAML::Node
@@ -34,6 +37,8 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
     }
     Logger_->Log("Finished Decoding Asset Index", 4);
 
+
+    Lock_.lock();
 
     // Clear Internal Maps
     Logger_->Log("Clearing Internal Maps For Asset Metadata", 3);
@@ -70,6 +75,8 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
     }
     Logger_->Log("Finished Populating Asset Index Metadata", 4);
 
+    Lock_.unlock();
+
 
     return true;
 
@@ -90,10 +97,13 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(ERS_STRUCT_IOData* Data) {
         long CurrentIndex = AssetIDsFound_[i];
         Metadata<<YAML::Key<<CurrentIndex<<YAML::BeginMap;
         
+        
+        Lock_.lock();
         Metadata<<YAML::Key<<"AssetType"<<YAML::Value<<AssetTypeName_[CurrentIndex];
         Metadata<<YAML::Key<<"AssetCreationDate"<<YAML::Value<<AssetCreationDate_[CurrentIndex];
         Metadata<<YAML::Key<<"AssetModificationDate"<<YAML::Value<<AssetModificationDate_[CurrentIndex];
         Metadata<<YAML::Key<<"AssetFileName"<<YAML::Value<<AssetFileName_[CurrentIndex];
+        Lock_.unlock();
         
 
         Metadata<<YAML::EndMap;
