@@ -23,6 +23,8 @@
 #include <ERS_STRUCT_LocRotScale.h>
 #include <ERS_STRUCT_ProjectUtils.h>
 
+#include <ERS_CLASS_VisualRenderer.h>
+
 #include <ERS_SceneManager.h>
 
 
@@ -38,8 +40,10 @@ private:
     Cursors3D* Cursors3D_; /**<Instance pointer to cursors3d class*/
     ERS_CLASS_SceneManager* SceneManager_; /**<Pointer To Scene Manager Instance*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to projectutils struct*/
+    ERS_CLASS_VisualRenderer* VisualRenderer_; /**<Pointer to Visualrenderer used to get shader info*/
 
     std::vector<long>* ScriptIndices_; /**<variable to store script names for list box*/
+    //char ShaderNames_[32][512]; /**<List of names to be used to store shader's names*/
     int ScriptIndex_; /**<Selected index of script*/
 
 
@@ -79,7 +83,7 @@ public:
      * @brief Construct a new GUI_Window_ObjectProperties object
      * 
      */
-    GUI_Window_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    GUI_Window_ObjectProperties(Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer);
 
     /**
      * @brief Destroy the GUI_Window_ObjectProperties object

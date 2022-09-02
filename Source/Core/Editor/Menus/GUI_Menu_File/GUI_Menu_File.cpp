@@ -15,7 +15,6 @@ GUI_Menu_File::GUI_Menu_File(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_Scen
     SystemUtils_->Logger_->Log("Editor Setting Up File Menu", 4);
 
     SceneWriter_ = std::make_unique<SceneWriter>(SystemUtils_);
-    ImportAsset_ = std::make_unique<GUI_ImportAsset>(SystemUtils_);
 
 
 }
@@ -31,37 +30,12 @@ void GUI_Menu_File::Draw() {
     // File Menu
     if (ImGui::BeginMenu("File")) {
 
-        // Project Options
-        // if (ImGui::MenuItem("Save Project")) {
-        //     ProjectUtils_->ProjectManager_->WriteProject(1);
-        // }
-        if (ImGui::MenuItem("Project Settings")) {
-            Windows_->GUI_Window_ProjectSettings_->Enabled_ = !Windows_->GUI_Window_ProjectSettings_->Enabled_;
-        }
+        ImGui::MenuItem("New", "", &Windows_->GUI_Window_NewProject_->Enabled_);
+        ImGui::MenuItem("Open", "", &Windows_->GUI_Window_OpenProject_->Enabled_);
         ImGui::Separator();
 
-        if (ImGui::MenuItem("Import Model")) {
-            ImportAsset_->OpenFileDialog();
-        }
+
         ImGui::Separator();
-
-        // Scene Options
-        // if (ImGui::MenuItem("Save Active Scene")) {
-        //     SceneWriter_->ProcessScene(
-        //         SceneManager_->Scenes_[SceneManager_->ActiveScene_].get(),
-        //         SceneManager_->Scenes_[SceneManager_->ActiveScene_]->ScenePath
-        //         );
-        // }
-        // if (ImGui::MenuItem("Save All Scenes")) {
-        //     for (int i = 0; (long)i < (long)SceneManager_->Scenes_.size(); i++) {
-        //         SceneWriter_->ProcessScene(
-        //             SceneManager_->Scenes_[i].get(),
-        //             SceneManager_->Scenes_[i]->ScenePath
-        //             );
-        //     }
-        // }
-
-        // Save All
         if (ImGui::MenuItem("Save")) {
 
             SystemUtils_->Logger_->Log("Saving Project Data", 4);
@@ -77,6 +51,14 @@ void GUI_Menu_File::Draw() {
             }
         }
 
+        ImGui::MenuItem("Project Settings", "", &Windows_->GUI_Window_ProjectSettings_->Enabled_);
+        ImGui::MenuItem("About", "", &Windows_->GUI_Window_About_->Enabled_);
+
+        ImGui::Separator();
+
+        ImGui::MenuItem("Import Model", "", &Windows_->GUI_Window_ImportModel_->Enabled_);
+        ImGui::MenuItem("Import Models In Directory", "", &Windows_->GUI_Window_ImportModelDirectory_->Enabled_);
+
         ImGui::Separator();
 
         // Exit Options
@@ -89,7 +71,5 @@ void GUI_Menu_File::Draw() {
     }
 
 
-    // Draw Subwindows
-    ImportAsset_->Draw();
 
 }

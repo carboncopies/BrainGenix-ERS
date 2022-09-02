@@ -19,6 +19,7 @@
 #include <ERS_CLASS_VisualRenderer.h>
 
 #include <ERS_Editor_ThemeManager.h>
+#include <ERS_Editor_FontManager.h>
 #include <ERS_Editor_3DCursor.h>
 
 
@@ -35,14 +36,20 @@
 #include <GUI_Window_ProjectSettings.h>
 #include <GUI_Window_RAMGraph.h>
 #include <GUI_Window_RenderingSettings.h>
+#include <GUI_Window_EditorCameraSettings.h>
 #include <GUI_Window_SceneTree.h>
 #include <GUI_Window_ScriptEditor.h>
 #include <GUI_Window_ShaderEditor.h>
 #include <GUI_Window_SystemLog.h>
 #include <GUI_Window_TestEditor.h>
 #include <GUI_Window_ThemeSelector.h>
+#include <GUI_Window_FontSelector.h>
+#include <GUI_Window_OpenProject.h>
+#include <GUI_Window_NewProject.h>
+#include <GUI_Window_AssetStreamingSettings.h>
 
-
+#include <GUI_Window_ImportModel.h>
+#include <GUI_Window_ImportModelDirectory.h>
 
 
 /**
@@ -55,9 +62,9 @@ class ERS_CLASS_WindowManager {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to System utillities struct, used to get things like logger, etc.*/
-    std::unique_ptr<ERS_STRUCT_Windows> Windows_; /**<Pointer to struct containing all windows setup in this subsystem*/
-    std::vector<std::string> WindowNames_; /**<List of all understood window names, populated by constructor*/
+    ERS_STRUCT_SystemUtils*             SystemUtils_ = nullptr; /**<Pointer to System utillities struct, used to get things like logger, etc.*/
+    std::unique_ptr<ERS_STRUCT_Windows> Windows_;               /**<Pointer to struct containing all windows setup in this subsystem*/
+    std::vector<std::string>            WindowNames_;           /**<List of all understood window names, populated by constructor*/
 
 public:
 
@@ -81,7 +88,7 @@ public:
      * 
      */
     void GenerateWindowStruct(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_CLASS_VisualRenderer* VisualRenderer,
-    ERS_CLASS_ThemeManager* ThemeManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* SceneManager);
+    ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursors3D* Gizmo, ERS_CLASS_SceneManager* SceneManager);
 
 
     /**

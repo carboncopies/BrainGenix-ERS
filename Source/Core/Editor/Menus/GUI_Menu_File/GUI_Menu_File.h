@@ -23,7 +23,6 @@
 #include <ERS_STRUCT_SystemUtils.h>
 #include <ERS_STRUCT_ProjectUtils.h>
 
-#include <GUI_ImportAsset.h>
 
 #include <ERS_ProjectLoader.h>
 #include <ERS_SceneWriter.h>
@@ -44,15 +43,12 @@ class GUI_Menu_File {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
-    ERS_CLASS_VisualRenderer* VisualRenderer_; /**<shared pointer to visual renderer*/
-    ERS_STRUCT_Windows* Windows_; /**<Struct containing all windows*/
-
-    std::unique_ptr<SceneWriter> SceneWriter_; /**<Scene Writer Instance Pointer*/
-    ERS_CLASS_SceneManager* SceneManager_; /**<Scene Manager Instance Pointer*/
-    std::unique_ptr<GUI_ImportAsset> ImportAsset_; /**<Pointer To Asset Importer System*/
-    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer To Project Utils Instance*/
-
+    ERS_STRUCT_SystemUtils* SystemUtils_      = nullptr; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
+    ERS_CLASS_VisualRenderer* VisualRenderer_ = nullptr; /**<shared pointer to visual renderer*/
+    ERS_STRUCT_Windows* Windows_              = nullptr; /**<Struct containing all windows*/
+    ERS_CLASS_SceneManager* SceneManager_     = nullptr; /**<Scene Manager Instance Pointer*/
+    ERS_STRUCT_ProjectUtils* ProjectUtils_    = nullptr; /**<Pointer To Project Utils Instance*/
+    std::unique_ptr<SceneWriter> SceneWriter_;           /**<Scene Writer Instance Pointer*/
 
 public:
 

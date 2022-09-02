@@ -6,7 +6,8 @@
 
 ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
     ERS_CLASS_LoggingSystem* Logger,
-    YAML::Node SystemConfiguration) {
+    YAML::Node SystemConfiguration, 
+    std::vector<std::pair<std::string, std::string>> ArgumentPair) {
 
   Logger_ = Logger;
   Logger_->Log("Initializing Input/Output Subsystem", 5);
@@ -40,16 +41,28 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
   } else {
     Logger_->Log("Database Lading Disabled, Reading Config For Asset Path", 5);
 
-    try {
-      Logger_->Log(
-          "Reading Configuration For 'STRING' 'DefaultProjectDirectory'", 1);
-      AssetPath_ =
-          SystemConfiguration["DefaultProjectDirectory"].as<std::string>();
-    } catch (YAML::TypedBadConversion<std::string>&) {
-      Logger_->Log("Configuration Error, Parameter 'DefaultProjectDirectory' "
-                   "Is Not In Config, System Will Exit",
-                   10);
-      exit(1);
+    Logger_->Log("Traversing Arguments To Check For Project Dir", 3);
+    bool HasProjectDirectory = false;
+    for (unsigned int i = 0; i < ArgumentPair.size(); i++) {
+      std::pair<std::string, std::string> CurrentPair = ArgumentPair[i];
+      if (CurrentPair.first == "ProjectDirectory") {
+        Logger_->Log("Found Directory In Arguments, Will Use That", 4);
+        AssetPath_ = CurrentPair.second;
+        HasProjectDirectory = true;
+        break;
+      }
+
+    }
+
+
+    if (!HasProjectDirectory) {
+      try {
+        Logger_->Log("Reading Configuration For 'STRING' 'DefaultProjectDirectory'", 1);
+        AssetPath_ = SystemConfiguration["DefaultProjectDirectory"].as<std::string>();
+      } catch (YAML::TypedBadConversion<std::string>&) {
+        Logger_->Log("Configuration Error, Parameter 'DefaultProjectDirectory' Is Not In Config, System Will Exit", 10);
+        exit(1);
+      }
     }
   }
 
@@ -157,12 +170,14 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
 
         // Get File Path
         std::string FilePath{Entry.path().u8string()};
-        FilePath =
-            FilePath.substr(0, FilePath.find_last_of("."))
-                .substr(FilePath.find_last_of("/") + 1, FilePath.length());
+        int LastPeriod = FilePath.find_last_of(".");
+        int LastSlash = FilePath.find_last_of("/");
 
         // Convert To Long, Throw Log Message If Not Number
         try {
+
+          FilePath = FilePath.substr(0, LastPeriod).substr(LastSlash + 1, FilePath.length());
+
           long ID = std::stoi(FilePath.c_str());
 
           if (ID >= 0) {
@@ -279,8 +294,8 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(
         FILE *Stream = fopen(FilePath.c_str(), "rb");
         if (Stream) {
 
-          fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size,
-                Stream);
+          [[maybe_unused]]size_t _ = fread(OutputData->Data.get(), sizeof(unsigned char), Buffer.st_size,Stream);
+                
           OutputData->Data.get()[Buffer.st_size] = '\0';
           fclose(Stream);
           OutputData->HasLoaded = true;

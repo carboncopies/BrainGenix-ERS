@@ -61,7 +61,8 @@ public:
    */
   ERS_CLASS_InputOutputSubsystem(
       ERS_CLASS_LoggingSystem* Logger,
-      YAML::Node LocalSystemConfiguration);
+      YAML::Node LocalSystemConfiguration,
+      std::vector<std::pair<std::string, std::string>> ArgumentPair);
 
   /**
    * @brief Destroy the ers class inputoutputsubsystem object

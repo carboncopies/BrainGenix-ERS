@@ -8,7 +8,7 @@ add_library(ERS_CLASS_VisualRenderer
 
             # Add Source Files (.cpp)
             "ERS_CLASS_VisualRenderer.cpp"
-            "ERS_CLASS_LightIconRenderer.cpp"
+            "ERS_CLASS_IconRenderer.cpp"
             "ERS_CLASS_Grid.cpp"
             "ERS_CLASS_InputProcessor.cpp"
             "ERS_CLASS_MeshRenderer.cpp"
@@ -16,6 +16,7 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_CLASS_ShadowMaps.cpp"
             "ERS_CLASS_ViewportOverlay.cpp"
             "ERS_CLASS_ViewportMenu.cpp"
+            "ERS_CLASS_BoundingBoxRenderer.cpp"
             "ERS_FUNCTION_FindShaderByName.cpp"
             "ERS_FUNCTION_CheckForMeshTransparency.cpp"
             "ERS_FUNCTION_MeshTransparencySort.cpp"
@@ -24,12 +25,13 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_FUNCTION_ResetMeshTexture.cpp"
             "ERS_FUNCTION_ConvertRotationToFrontVector.cpp"
             "ERS_FUNCTION_MeshTransparencySortNoTextures.cpp"
+            "ERS_FUNCTION_SetShaderUniformData.cpp"
 
             
 
             # Add Header Files (.h)
             "ERS_CLASS_VisualRenderer.h"
-            "ERS_CLASS_LightIconRenderer.h"
+            "ERS_CLASS_IconRenderer.h"
             "ERS_CLASS_Grid.h"
             "ERS_CLASS_InputProcessor.h"
             "ERS_CLASS_MeshRenderer.h"
@@ -37,6 +39,7 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_CLASS_ShadowMaps.h"
             "ERS_CLASS_ViewportOverlay.h"
             "ERS_CLASS_ViewportMenu.h"
+            "ERS_CLASS_BoundingBoxRenderer.h"
             "ERS_FUNCTION_FindShaderByName.h"
             "ERS_FUNCTION_CheckForMeshTransparency.h"
             "ERS_FUNCTION_MeshTransparencySort.h"
@@ -45,6 +48,7 @@ add_library(ERS_CLASS_VisualRenderer
             "ERS_FUNCTION_ResetMeshTexture.h"
             "ERS_FUNCTION_ConvertRotationToFrontVector.h"
             "ERS_FUNCTION_MeshTransparencySortNoTextures.h"
+            "ERS_FUNCTION_SetShaderUniformData.h"
 
 
 
@@ -64,6 +68,8 @@ target_link_libraries(ERS_CLASS_VisualRenderer
 # Link Internal Libs
 target_link_libraries(ERS_CLASS_VisualRenderer
     ERS_STRUCT_Camera
+    ERS_STRUCT_SceneCamera
+    
     ERS_CLASS_LoggingSystem
 
     ERS_SceneManager
@@ -82,6 +88,7 @@ target_link_libraries(ERS_CLASS_VisualRenderer
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_OpenGLDefaults
     ERS_STRUCT_RendererSettings
+    ERS_STRUCT_ShaderUniformData
 
     )
 

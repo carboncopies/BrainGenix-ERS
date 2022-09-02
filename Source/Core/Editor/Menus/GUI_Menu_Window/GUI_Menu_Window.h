@@ -36,6 +36,7 @@
 #include <GUI_Window_FramerateHistogram.h>
 #include <GUI_Window_FrameratePlot.h>
 #include <GUI_Window_ShaderEditor.h>
+#include <GUI_Window_AssetStreamingSettings.h>
 
 
 #include <ERS_Editor_3DCursor.h>
@@ -51,10 +52,9 @@ class GUI_Menu_Window {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
-
-    ERS_STRUCT_Windows* Windows_; /**<WIndows struct*/
-    ERS_CLASS_VisualRenderer* VisualRenderer_; /**<ERS_CLASS_VisualRenderer instance*/
+    ERS_STRUCT_SystemUtils*   SystemUtils_    = nullptr; /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
+    ERS_STRUCT_Windows*       Windows_        = nullptr; /**<WIndows struct*/
+    ERS_CLASS_VisualRenderer* VisualRenderer_ = nullptr; /**<ERS_CLASS_VisualRenderer instance*/
 
 
 public:

@@ -42,11 +42,6 @@ ERS_CLASS_VisualRenderer::~ERS_CLASS_VisualRenderer() {
 
     }
 
-
-    // Cleanup
-    SystemUtils_->Logger_->Log("Cleaning Up OpenGL/GLFW", 6);
-    glfwTerminate();
-
 }
 
 
@@ -62,6 +57,21 @@ void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defa
 }
 
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
+
+    // Apply Scene Camera Transforms
+    ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+    if (!IsEditorMode_ && Scene->ActiveSceneCameraIndex != -1) {
+        ERS_STRUCT_Camera* Camera = Viewports_[0]->Camera.get();
+        ERS_STRUCT_SceneCamera* SceneCamera = Scene->SceneCameras[Scene->ActiveSceneCameraIndex].get();
+        if (SceneCamera->EnforceAspectRatio_) {
+            Camera->SetAspectRatio(SceneCamera->AspectRatio_);
+        }
+        Camera->SetClipBoundries(SceneCamera->NearClip_, SceneCamera->FarClip_);
+        Camera->SetFOV(SceneCamera->FOV_);
+        Camera->SetPosition(SceneCamera->Pos_);
+        Camera->SetRotation(SceneCamera->Rot_);
+        Camera->SetStreamingPriority(SceneCamera->StreamingPriority_);
+    }
 
     // Set Depth Shader For Shadow System
     DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthMap"), &Shaders_)].get();
@@ -79,10 +89,11 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     }
 
 
+
     // Generate Shadows
     //DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("Preview Shader"), &Shaders_)].get();
     if (Viewports_.size() > 0) {
-        ShadowMaps_->UpdateShadowMaps(DepthMapShader_, CubemapDepthShader_, Viewports_[0]->Camera->Position_);
+        ShadowMaps_->UpdateShadowMaps(DepthMapShader_, CubemapDepthShader_, Viewports_[0]->Camera->GetPosition());
     }
 
     // Setup Vars
@@ -120,15 +131,19 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
         ERS_CLASS_InputProcessor* InputProcessorInstance = Viewports_[i]->Processor.get();
 
         bool CaptureEnabled = false;
-        if ((CaptureIndex_ == i) && (!Cursors3D_->IsUsing())) {
+        if ((CaptureIndex_ == i) && (!Cursors3D_->IsUsing())) {         
             CaptureEnabled = true;
         }
 
+
+
         // Update Viewport Camera/Position/Etc.
-        InputProcessorInstance->ProcessKeyboardInput(DeltaTime, CaptureEnabled);
-        InputProcessorInstance->UpdateFramebuffer();
-        InputProcessorInstance->UpdateMouse(CaptureEnabled);
-        InputProcessorInstance->ProcessMouseScroll(CaptureEnabled);
+        if (IsEditorMode_ || i != 0) {
+            InputProcessorInstance->Process(DeltaTime, CaptureEnabled);
+        } else {
+            CaptureEnabled = false;
+        }
+
 
     }
     CaptureCursor_ = false;
@@ -256,14 +271,22 @@ void ERS_CLASS_VisualRenderer::SetScriptDebug(int Index, std::vector<std::string
 
 void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager* SceneManager, float DeltaTime, bool DrawCursor) {
 
+    //todo: check if is Viewport0. then check if the system is in running mode or editor mode. if it's both, then do the following:
+    // on transition, store the current editor position / rotation of the camera
+    // update the camera's position/rot to the scene's active scenecamera position/rot 
+    // disable user input directly through the editor system (the user will have to handle this via the scripting system)
+
+    // Get Vars
+    ERS_STRUCT_Viewport* Viewport = Viewports_[Index].get();
+    ERS_STRUCT_Scene* Scene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
 
     // Render To ImGui
     ImGuiWindowFlags Flags = ImGuiWindowFlags_None;
-    if (Viewports_[Index]->MenuEnabled) {
+    if (Viewport->MenuEnabled) {
         Flags |= ImGuiWindowFlags_MenuBar;
     }
 
-    bool Visible = ImGui::Begin(Viewports_[Index]->Name.c_str(), Viewports_[Index]->Enabled.get(), Flags);
+    bool Visible = ImGui::Begin(Viewport->Name.c_str(), Viewport->Enabled.get(), Flags);
 
     // Set Default Window Size
     ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
@@ -274,9 +297,9 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         // Handle Viewport Menu
         if (ImGui::IsKeyPressed(GLFW_KEY_GRAVE_ACCENT)) {
-            Viewports_[Index]->MenuEnabled = !Viewports_[Index]->MenuEnabled;
+            Viewport->MenuEnabled = !Viewport->MenuEnabled;
         }
-        ViewportMenu_->DrawMenu(Viewports_[Index].get(), ShadowMaps_.get());
+        ViewportMenu_->DrawMenu(Viewport, ShadowMaps_.get());
 
 
         // Calculate Window Position
@@ -307,7 +330,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         bool MouseXInRange = (MousePositionX >= WindowTopLeftCornerX) && (MousePositionX < WindowBottomRightCornerX);
         bool MouseYInRange = (MousePositionY >= WindowTopLeftCornerY) && (MousePositionY < WindowBottomRightCornerY);
         bool MouseInRange = MouseXInRange && MouseYInRange;
-        
+
 
         // Check If Input Enabled
         bool EnableCameraMovement = !Cursors3D_->IsUsing();
@@ -316,14 +339,19 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
         bool EnableCursorCapture;
-        if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | Viewports_[Index]->WasSelected) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
-            CaptureCursor_ = true;
+        if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | Viewport->WasSelected) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
+
+            if (!IsEditorMode_ && Index == 0) {
+                CaptureCursor_ = false;
+            } else {
+                CaptureCursor_ = true;
+            }
             EnableCursorCapture = true;
             CaptureIndex_ = Index;
-            Viewports_[Index]->WasSelected = true;
+            Viewport->WasSelected = true;
         } else {
             EnableCursorCapture = false;
-            Viewports_[Index]->WasSelected = false;
+            Viewport->WasSelected = false;
         }
 
 
@@ -335,50 +363,46 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
 
         // Resize Viewport If Needed
-        if ((RenderWidth != Viewports_[Index]->Width) || (RenderHeight != Viewports_[Index]->Height)) {
+        if ((RenderWidth != Viewport->Width) || (RenderHeight != Viewport->Height)) {
             ResizeViewport(Index, RenderWidth, RenderHeight);
         }
 
 
         // Bind To Framebuffer
-        glBindFramebuffer(GL_FRAMEBUFFER, Viewports_[Index]->FramebufferObject);
+        glBindFramebuffer(GL_FRAMEBUFFER, Viewport->FramebufferObject);
 
         // Rendering Commands Here
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // Update Camera
         float AspectRatio = (float)RenderWidth / (float)RenderHeight;
-        Viewports_[Index]->Camera->SetAspectRatio(AspectRatio);
-        glm::mat4 projection = Viewports_[Index]->Camera->GetProjectionMatrix();
-        glm::mat4 view = Viewports_[Index]->Camera->GetViewMatrix();
+        Viewport->Camera->Update();
+        Viewport->Camera->SetAspectRatio(AspectRatio);
+        glm::mat4 Projection;
+        glm::mat4 View;
+        Viewport->Camera->GetMatrices(Projection, View);
         
 
 
 
         // Use Shader
-        int ShaderIndex = Viewports_[Index]->ShaderIndex;
+        int ShaderIndex = Viewport->ShaderIndex;
         Shaders_[ShaderIndex]->MakeActive();
 
         // Update Shaders
-        UpdateShader(ShaderIndex, DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewports_[Index]->Camera.get());
-        Shaders_[ShaderIndex]->SetMat4("projection", projection);
-        Shaders_[ShaderIndex]->SetMat4("view", view);
-        Shaders_[ShaderIndex]->SetBool("GammaCorrectionEnabled_", Viewports_[Index]->GammaCorrection);
-        Shaders_[ShaderIndex]->SetBool("HDREnabled_", Viewports_[Index]->HDREnabled_);
-        Shaders_[ShaderIndex]->SetFloat("Exposure_", Viewports_[Index]->Exposure_);
-        Shaders_[ShaderIndex]->SetFloat("Gamma_", Viewports_[Index]->Gamma_);
+        UpdateShader(DeltaTime, RenderWidth, RenderHeight, SceneManager, Viewport->Camera.get(), Projection, View, Viewport);
+
         
 
 
         // Update Cursor If Selection Changed
-        ERS_STRUCT_Scene* ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
-        if (ActiveScene->HasSelectionChanged && DrawCursor && (ActiveScene->SceneObjects_.size() != 0)) {
+        if (Scene->HasSelectionChanged && DrawCursor && (Scene->SceneObjects_.size() != 0)) {
 
             // Get Selected Model
-            int SelectedObject = ActiveScene->SelectedObject;
-            if ((unsigned int)SelectedObject >= ActiveScene->SceneObjects_.size()) {
+            int SelectedObject = Scene->SelectedObject;
+            if ((unsigned int)SelectedObject >= Scene->SceneObjects_.size()) {
                 SelectedObject = 0;
-                ActiveScene->SelectedObject = 0;
+                Scene->SelectedObject = 0;
             }
 
             // Get LocRotScale
@@ -388,64 +412,80 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             bool HasRotation = false;
             bool HasScale = false;
 
-            if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("Model")) {
-                unsigned long Index = ActiveScene->SceneObjects_[SelectedObject].Index_;
-                Position = ActiveScene->Models[Index]->ModelPosition;        
-                Rotation = ActiveScene->Models[Index]->ModelRotation;        
-                Scale = ActiveScene->Models[Index]->ModelScale;
+            if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("Model")) {
+                unsigned long ModelIndex = Scene->SceneObjects_[SelectedObject].Index_;
+                Position = Scene->Models[ModelIndex]->ModelPosition;        
+                Rotation = Scene->Models[ModelIndex]->ModelRotation;        
+                Scale = Scene->Models[ModelIndex]->ModelScale;                
                 HasRotation = true;
                 HasScale = true;
-            } else if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("PointLight")) {
-                unsigned long Index = ActiveScene->SceneObjects_[SelectedObject].Index_;
-                Position = ActiveScene->PointLights[Index]->Pos;        
-            } else if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("DirectionalLight")) {
-                unsigned long Index = ActiveScene->SceneObjects_[SelectedObject].Index_;
-                Position = ActiveScene->DirectionalLights[Index]->Pos;        
-                Rotation = ActiveScene->DirectionalLights[Index]->Rot;    
+            } else if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("PointLight")) {
+                unsigned long Index = Scene->SceneObjects_[SelectedObject].Index_;
+                Position = Scene->PointLights[Index]->Pos;        
+            } else if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("DirectionalLight")) {
+                unsigned long Index = Scene->SceneObjects_[SelectedObject].Index_;
+                Position = Scene->DirectionalLights[Index]->Pos;        
+                Rotation = Scene->DirectionalLights[Index]->Rot;    
                 HasRotation = true;    
-            } else if (ActiveScene->SceneObjects_[SelectedObject].Type_ == std::string("SpotLight")) {
-                unsigned long Index = ActiveScene->SceneObjects_[SelectedObject].Index_;
-                Position = ActiveScene->SpotLights[Index]->Pos;        
-                Rotation = ActiveScene->SpotLights[Index]->Rot;    
+            } else if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("SpotLight")) {
+                unsigned long Index = Scene->SceneObjects_[SelectedObject].Index_;
+                Position = Scene->SpotLights[Index]->Pos;        
+                Rotation = Scene->SpotLights[Index]->Rot;    
+                HasRotation = true;    
+            } else if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("SceneCamera")) {
+                unsigned long Index = Scene->SceneObjects_[SelectedObject].Index_;
+                Position = Scene->SceneCameras[Index]->Pos_;        
+                Rotation = Scene->SceneCameras[Index]->Rot_;    
                 HasRotation = true;    
             }
+
 
             // Set Cursor Position        
             Cursors3D_->SetLocRotScale(Position, Rotation, Scale, HasRotation, HasScale);
 
             // Indicate Selection Hasn't Changed
-            ActiveScene->HasSelectionChanged = false;
+            Scene->HasSelectionChanged = false;
         }
 
 
-        // Bind To Shadow Maps
-        glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram_, "DepthMapArray"), 8);
-        glActiveTexture(GL_TEXTURE8);
-        glBindTexture(GL_TEXTURE_2D_ARRAY, ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureArrayID_);
-
-        glUniform1i(glGetUniformLocation(Shaders_[ShaderIndex]->ShaderProgram_, "DepthCubemapArray"), 9);
-        glActiveTexture(GL_TEXTURE9);
-        glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureCubemapArrayID_);
+        // // Update Camera Location If System Running
+        // if (!IsEditorMode_ && Index == 0 && Scene->ActiveSceneCameraIndex != -1) {
+        //     Viewport->Camera->SetPosition(Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Pos_);
+        //     Viewport->Camera->SetRotation(Scene->SceneCameras[Scene->ActiveSceneCameraIndex]->Rot_);
+            
+        // }
 
 
         // Render
-        
-        //MeshRenderer_->RenderSceneNoTextures(ActiveScene.get(), Shaders_[ShaderIndex].get());
-        MeshRenderer_->RenderScene(SceneManager->Scenes_[SceneManager->ActiveScene_].get(), OpenGLDefaults_, Shaders_[ShaderIndex].get());
-
-        if (Viewports_[Index]->GridEnabled) {
-            Viewports_[Index]->Grid->DrawGrid(view, projection, Viewports_[Index]->Camera->Position_);
+        std::vector<ERS_STRUCT_Shader*> ShaderPointers;
+        for (unsigned int i = 0; i < Shaders_.size(); i++) {
+            ShaderPointers.push_back(Shaders_[i].get());
         }
-        if (Viewports_[Index]->LightIcons) {
-            Viewports_[Index]->LightIconRenderer->Draw(Viewports_[Index]->Camera.get(), SceneManager);
+        MeshRenderer_->RenderScene(Scene, OpenGLDefaults_, ShaderPointers, ShaderIndex, *ShaderUniformData_);
+
+
+        if (Viewport->GridEnabled) {
+            Viewport->Grid->DrawGrid(View, Projection, Viewport->Camera->GetPosition());
+        }
+        if (Viewport->LightIcons) {
+            Viewport->IconRenderer->Draw(Viewport->Camera.get(), SceneManager);
         }
 
-
-
+        Viewport->BoundingBoxRenderer->SetDepthTest(Viewport->DisableBoundingBoxDepthTest_);
+        Viewport->BoundingBoxRenderer->SetDrawMode(Viewport->WireframeBoundingBoxes_);
+        if (Viewport->ShowBoundingBox_) {
+            Viewport->BoundingBoxRenderer->DrawAll(Viewport->Camera.get(), Scene);
+        }
+        if (Scene->SceneObjects_.size() > 0) {
+            if (Viewport->ShowBoxOnSelectedModel_ && Scene->SceneObjects_[Scene->SelectedObject].Type_ == std::string("Model")) {
+                unsigned long ModelIndex = Scene->SceneObjects_[Scene->SelectedObject].Index_;
+                Viewport->BoundingBoxRenderer->DrawModel(Viewport->Camera.get(), Scene->Models[ModelIndex].get());
+            }
+        }
 
         // Render Framebuffer To Window
         ImGui::GetWindowDrawList()->AddImage(
-            (void*)(intptr_t)Viewports_[Index]->FramebufferColorObject,
+            (void*)(intptr_t)Viewport->FramebufferColorObject,
             ImGui::GetCursorScreenPos(),
             ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x, ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
             ImVec2(0, 1),
@@ -461,7 +501,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
         bool DrawCursor;
-        Cursors3D_->SetGridSnap(Viewports_[Index]->GridSnapAmountTranslate_, Viewports_[Index]->GridSnapAmountRotate_, Viewports_[Index]->GridSnapAmountScale_);
+        Cursors3D_->SetGridSnap(Viewport->GridSnapAmountTranslate_, Viewport->GridSnapAmountRotate_, Viewport->GridSnapAmountScale_);
         if (Cursors3D_->IsUsing() && (ActiveViewportCursorIndex_ == Index)) {
             DrawCursor = true;
         } else if (!Cursors3D_->IsUsing()) {
@@ -471,9 +511,9 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
         if (DrawCursor) {
-            Cursors3D_->Draw(Viewports_[Index]->Camera.get(), EnableCursorCapture, Viewports_[Index]->ShowCube, Viewports_[Index]->GizmoEnabled);
+            Cursors3D_->Draw(Viewport->Camera.get(), EnableCursorCapture, Viewport->ShowCube, Viewport->GizmoEnabled);
         } else {
-            Cursors3D_->Draw(Viewports_[Index]->Camera.get(), false, Viewports_[Index]->ShowCube, false);
+            Cursors3D_->Draw(Viewport->Camera.get(), false, Viewport->ShowCube, false);
 
         }
 
@@ -488,7 +528,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         }
 
 
-        ViewportOverlay_->DrawOverlay(Viewports_[Index].get());
+        ViewportOverlay_->DrawOverlay(Viewport);
 
 
     }
@@ -548,9 +588,14 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
     // Populate Viewport Struct
     Viewport->ShaderIndex = DefaultShader_;
+    
     Viewport->Camera = std::make_unique<ERS_STRUCT_Camera>();
+    // Viewport->EditorCamera = std::make_unique<ERS_STRUCT_EditorCamera>();
+    // Viewport->EditorCamera->SetupCamera(Viewport->Camera.get());
+
     Viewport->Grid = std::make_unique<ERS_CLASS_Grid>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_Grid"), &Shaders_)].get());
-    Viewport->LightIconRenderer = std::make_unique<ERS_CLASS_LightIconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_LightIcon"), &Shaders_)].get()); //Set TO Shader 19 For Billboard Shader, Temp. Disabled As It Doesn't Work ATM
+    Viewport->IconRenderer = std::make_unique<ERS_CLASS_IconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_LightIcon"), &Shaders_)].get()); //Set TO Shader 19 For Billboard Shader, Temp. Disabled As It Doesn't Work ATM
+    Viewport->BoundingBoxRenderer = std::make_unique<ERS_CLASS_BoundingBoxRenderer>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_BoundingBox"), &Shaders_)].get());
     Viewport->Name = ViewportName;
     
     Viewport->Width = 1;
@@ -621,33 +666,50 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
 }
 
-void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, int RenderWidth, int RenderHeight, ERS_CLASS_SceneManager*SceneManager, ERS_STRUCT_Camera* Camera) {
+void ERS_CLASS_VisualRenderer::UpdateShader(float DeltaTime, int RenderWidth, int RenderHeight, 
+ERS_CLASS_SceneManager*SceneManager, ERS_STRUCT_Camera* Camera, glm::mat4 Projection, glm::mat4 View,
+ERS_STRUCT_Viewport* Viewport) {
 
-    /**
-
-    -- Current list of supported shader params: 
-
-    uniform float Time; // Time since program started in seconds
-    uniform float FrameTime; // Render Time Of The Frame
-    uniform int FrameNumber; // Number of the frame, counts up from zero
-    uniform vec2 ViewportRes; // XY Resolution of the viewport
-
-    **/
-
-
-    // Get Pointer to Shader
-    ERS_STRUCT_Shader* ActiveShader = Shaders_[ShaderIndex].get();
+    // Clear Shader Uniform Data
+    ShaderUniformData_ = std::make_unique<ERS_STRUCT_ShaderUniformData>();
 
     // Set Metadata Params
     float Time = glfwGetTime();
-    ActiveShader->SetFloat("Time", Time);
+    ShaderUniformData_->Time_ = Time;
+    ShaderUniformData_->FrameTime_ = DeltaTime;
+    ShaderUniformData_->FrameNumber_ = FrameNumber_;
+    ShaderUniformData_->ViewportRes_ = glm::vec2(RenderWidth, RenderHeight);
+    ShaderUniformData_->CameraPosition_ = Camera->GetPosition();
+    ShaderUniformData_->ShininessOffset_ = 0.5f;
 
-    ActiveShader->SetFloat("FrameTime", DeltaTime);
-    ActiveShader->SetInt("FrameNumber", FrameNumber_);
-    ActiveShader->SetVec2("ViewportRes", RenderWidth, RenderHeight);
-    ActiveShader->SetVec3("CameraPosition", Camera->Position_);
+
+    // Viewport Config
+    ShaderUniformData_->Projection_ = Projection;
+    ShaderUniformData_->View_ = View;
+
+    // Camera Info
+    ShaderUniformData_->GammaCorrectionEnabled_ = Viewport->GammaCorrection;
+    ShaderUniformData_->Gamma_ = Viewport->Gamma_;
+    ShaderUniformData_->HDREnabled_ = Viewport->HDREnabled_;
+    ShaderUniformData_->Exposure_ = Viewport->Exposure_;
 
 
+    // Set Shadow Filter Info
+    int ShadowFilterType = 0;
+    ERS::Renderer::ShadowFilteringType ShadowFilterEnum = SystemUtils_->RendererSettings_->ShadowFilteringType_;
+    if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED) {
+        ShadowFilterType = 0;
+    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_PCF) {
+        ShadowFilterType = 1;
+    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_POISSON_SAMPLING) {
+        ShadowFilterType = 2;
+    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING) {
+        ShadowFilterType = 3;
+    }
+    ShaderUniformData_->ShadowFilterType_ = ShadowFilterType;
+    ShaderUniformData_->ShadowFilterKernelSize_ = SystemUtils_->RendererSettings_->ShadowFilterKernelSize_;
+    ShaderUniformData_->DepthMapArray_ = ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureArrayID_;
+    ShaderUniformData_->DepthCubemapArray_ = ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureCubemapArrayID_;
 
     // ---- SEND LIGHTING INFORMATION TO SHADERS ---- //
     // NOTE: Due to limitations with shaders, the maximum number of lights is as follows (per object) 
@@ -671,115 +733,46 @@ void ERS_CLASS_VisualRenderer::UpdateShader(int ShaderIndex, float DeltaTime, in
 
     // Directional Lights
     int NumberDirectionalLights = ActiveScene->DirectionalLights.size();
-    ActiveShader->SetInt("NumberDirectionalLights", NumberDirectionalLights);
+    ShaderUniformData_->NumberDirectionalLights_ = NumberDirectionalLights;
     for (int i = 0; i < NumberDirectionalLights; i++) {
-    
-        std::string UniformName = std::string("DirectionalLights[") + std::to_string(i) + std::string("]");
-        
-        // Re-Do Rotation
-        ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->DirectionalLights[i]->Rot));
-        ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->DirectionalLights[i]->Color);
-        ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->DirectionalLights[i]->Intensity);
-
-        ActiveShader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->DirectionalLights[i]->MaxDistance);
-
-        ActiveShader->SetBool((UniformName + std::string(".CastsShadows")).c_str(), ActiveScene->DirectionalLights[i]->CastsShadows_);
-
-        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex);
-        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->DirectionalLights[i]->DepthMap.TransformationMatrix);
-    
+        ShaderUniformData_->DirectionalLights_.push_back(ERS_STRUCT_ShaderUniformDataDirectionalLight());
+        ShaderUniformData_->DirectionalLights_[i].Direction_         = ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->DirectionalLights[i]->Rot);
+        ShaderUniformData_->DirectionalLights_[i].Color_             = ActiveScene->DirectionalLights[i]->Color;
+        ShaderUniformData_->DirectionalLights_[i].Intensity_         = ActiveScene->DirectionalLights[i]->Intensity;
+        ShaderUniformData_->DirectionalLights_[i].MaxDistance_       = ActiveScene->DirectionalLights[i]->MaxDistance;
+        ShaderUniformData_->DirectionalLights_[i].CastsShadows_      = ActiveScene->DirectionalLights[i]->CastsShadows_;
+        ShaderUniformData_->DirectionalLights_[i].DepthMapIndex_     = ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex;
+        ShaderUniformData_->DirectionalLights_[i].LightSpaceMatrix_  = ActiveScene->DirectionalLights[i]->DepthMap.TransformationMatrix;
     }
 
     // Point Lights
     int NumberPointLights = ActiveScene->PointLights.size();
-    ActiveShader->SetInt("NumberPointLights", NumberPointLights);
+    ShaderUniformData_->NumberPointLights_ = NumberPointLights;
     for (int i = 0; i < NumberPointLights; i++) {
-    
-        std::string UniformName = std::string("PointLights[") + std::to_string(i) + std::string("]");
-
-        ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->PointLights[i]->Pos);
-        ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->PointLights[i]->Intensity);
-        ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->PointLights[i]->Color);
-    
-        ActiveShader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->PointLights[i]->MaxDistance);
-        
-        ActiveShader->SetBool((UniformName + std::string(".CastsShadows")).c_str(), ActiveScene->PointLights[i]->CastsShadows_);
-
-        ActiveShader->SetInt((UniformName + std::string(".DepthCubemapIndex")).c_str(), ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
-
-        //ERS_STRUCT_PointLight* Light = ActiveScene->PointLights[i].get();
-
-
-        // float NearPlane, FarPlane;
-        // NearPlane = 0.1f;
-        // FarPlane = Light->MaxDistance;
-
-        // // Calculate Project, View, Space Matrices
-        // float AspectRatio = 2048 / 2048;
-        // glm::mat4 ObjectProjection = glm::perspective(glm::radians(90.0f), AspectRatio, NearPlane, FarPlane); // Perspective models regular light source
-        
-        // std::vector<glm::mat4> ShadowTransforms;
-        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 1.0, 0.0, 0.0), glm::vec3(0.0,-1.0, 0.0)));
-        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3(-1.0, 0.0, 0.0), glm::vec3(0.0,-1.0, 0.0)));
-        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 1.0, 0.0), glm::vec3(0.0, 0.0, 1.0)));
-        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0,-1.0, 0.0), glm::vec3(0.0, 0.0,-1.0)));
-        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0, 1.0), glm::vec3(0.0,-1.0, 0.0)));
-        // ShadowTransforms.push_back(ObjectProjection * glm::lookAt(Light->Pos, Light->Pos + glm::vec3( 0.0, 0.0,-1.0), glm::vec3(0.0,-1.0, 0.0)));
-
-        // for (unsigned int x = 0; x < 6; x++) {
-
-        //     ActiveShader->SetMat4((UniformName + std::string(".Matrix") + std::to_string(x)).c_str(), ShadowTransforms[x]);
-
-        // }
-
+        ShaderUniformData_->PointLights_.push_back(ERS_STRUCT_ShaderUniformDataPointLight());
+        ShaderUniformData_->PointLights_[i].Position_           = ActiveScene->PointLights[i]->Pos;
+        ShaderUniformData_->PointLights_[i].Intensity_          = ActiveScene->PointLights[i]->Intensity;
+        ShaderUniformData_->PointLights_[i].Color_              = ActiveScene->PointLights[i]->Color;
+        ShaderUniformData_->PointLights_[i].MaxDistance_        = ActiveScene->PointLights[i]->MaxDistance;
+        ShaderUniformData_->PointLights_[i].CastsShadows_       = ActiveScene->PointLights[i]->CastsShadows_;
+        ShaderUniformData_->PointLights_[i].DepthCubemapIndex_  = ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex;
     }
-
 
     // Spot Lights
     int NumberSpotLights = ActiveScene->SpotLights.size();
-    ActiveShader->SetInt("NumberSpotLights", NumberSpotLights);
+    ShaderUniformData_->NumberSpotLights_ = NumberSpotLights;
     for (int i = 0; i < NumberSpotLights; i++) {
-    
-        std::string UniformName = std::string("SpotLights[") + std::to_string(i) + std::string("]");
-
-        // Re-Do Rotation
-        ActiveShader->SetVec3((UniformName + std::string(".Position")).c_str(), ActiveScene->SpotLights[i]->Pos);
-        ActiveShader->SetVec3((UniformName + std::string(".Direction")).c_str(), ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->SpotLights[i]->Rot));
-        ActiveShader->SetFloat((UniformName + std::string(".Intensity")).c_str(), ActiveScene->SpotLights[i]->Intensity);
-        ActiveShader->SetFloat((UniformName + std::string(".CutOff")).c_str(), 1.0f - (ActiveScene->SpotLights[i]->CutOff * (0.01745329 / 4)));
-        ActiveShader->SetFloat((UniformName + std::string(".RollOff")).c_str(), glm::radians(ActiveScene->SpotLights[i]->Rolloff));
-        ActiveShader->SetVec3((UniformName + std::string(".Color")).c_str(), ActiveScene->SpotLights[i]->Color);
-
-        ActiveShader->SetFloat((UniformName + std::string(".MaxDistance")).c_str(), ActiveScene->SpotLights[i]->MaxDistance);
-
-        ActiveShader->SetBool((UniformName + std::string(".CastsShadows")).c_str(), ActiveScene->SpotLights[i]->CastsShadows_);
-
-
-        ActiveShader->SetInt((UniformName + std::string(".DepthMapIndex")).c_str(), ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndex);
-        ActiveShader->SetMat4((UniformName + std::string(".LightSpaceMatrix")).c_str(), ActiveScene->SpotLights[i]->DepthMap.TransformationMatrix);
-
+        ShaderUniformData_->SpotLights_.push_back(ERS_STRUCT_ShaderUniformDataSpotLight());
+        ShaderUniformData_->SpotLights_[i].Position_ = ActiveScene->SpotLights[i]->Pos;
+        ShaderUniformData_->SpotLights_[i].Direction_ = ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->SpotLights[i]->Rot);
+        ShaderUniformData_->SpotLights_[i].Intensity_ = ActiveScene->SpotLights[i]->Intensity;
+        ShaderUniformData_->SpotLights_[i].CutOff_ = 1.0f - (ActiveScene->SpotLights[i]->CutOff * (0.01745329 / 4));
+        ShaderUniformData_->SpotLights_[i].RollOff_ = glm::radians(ActiveScene->SpotLights[i]->Rolloff);
+        ShaderUniformData_->SpotLights_[i].Color_ = ActiveScene->SpotLights[i]->Color;
+        ShaderUniformData_->SpotLights_[i].MaxDistance_ = ActiveScene->SpotLights[i]->MaxDistance;
+        ShaderUniformData_->SpotLights_[i].CastsShadows_ = ActiveScene->SpotLights[i]->CastsShadows_;
+        ShaderUniformData_->SpotLights_[i].DepthMapIndex_ = ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndex;
+        ShaderUniformData_->SpotLights_[i].LightSpaceMatrix_ = ActiveScene->SpotLights[i]->DepthMap.TransformationMatrix;
     }
-
-
-    // Set Shadow Filter Info
-    int ShadowFilterType = 0;
-    ERS::Renderer::ShadowFilteringType ShadowFilterEnum = SystemUtils_->RendererSettings_->ShadowFilteringType_;
-    if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED) {
-        ShadowFilterType = 0;
-    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_PCF) {
-        ShadowFilterType = 1;
-    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_POISSON_SAMPLING) {
-        ShadowFilterType = 2;
-    } else if (ShadowFilterEnum == ERS::Renderer::ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING) {
-        ShadowFilterType = 3;
-    }
-    ActiveShader->SetInt("ShadowFilterType_", ShadowFilterType);
-    ActiveShader->SetInt("ShadowFilterKernelSize_", SystemUtils_->RendererSettings_->ShadowFilterKernelSize_);
-    
-
-
-    ActiveShader->SetFloat("Shinyness", 32.0f);
-
-
 }
 

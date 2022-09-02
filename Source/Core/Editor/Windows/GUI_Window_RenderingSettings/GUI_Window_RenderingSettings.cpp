@@ -57,6 +57,33 @@ void GUI_Window_RenderingSettings::Draw() {
 
             if (Visible) {
 
+                // Handle Modifications To Renderer Settings
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+                bool Apply = false;
+                ERS_STRUCT_RendererSettings* Settings = SystemUtils_->RendererSettings_.get();
+
+                const char* ShadowFilteringNames[] = {
+                    "ERS_SHADOW_FILTERING_DISABLED",
+                    "ERS_SHADOW_FILTERING_PCF",
+                    "ERS_SHADOW_FILTERING_POISSON_SAMPLING",
+                    "ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING"
+                };
+                const char* ShadowUpdateNames[] = {
+                    "ERS_SHADOW_UPDATE_MODE_DISABLED",
+                    "ERS_SHADOW_UPDATE_MODE_RANDOM",
+                    "ERS_SHADOW_UPDATE_MODE_CONSECUTIVE",
+                    "ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED",
+                    "ERS_SHADOW_UPDATE_MODE_ALL"
+                };
+
+
+
+                ImGui::Separator();
+                ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "Basic Settings");
+                ImGui::Separator();
+
                 // Wireframe Rendering Mode
                 ImGui::Checkbox("Wireframe Rendering Mode", &OpenGLDrawLines_);
                 ImGui::NewLine();
@@ -68,7 +95,8 @@ void GUI_Window_RenderingSettings::Draw() {
 
                 // Framerate Settings
                 ImGui::Separator();
-                ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "Framerate Settings:");
+                ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "Framerate Settings");
+                ImGui::Separator();
 
                 // Framerate Cap (Linux Only, Windows Doesn't work for whatever reason)
                 if (SystemUtils_->IsLinux_) {
@@ -115,34 +143,10 @@ void GUI_Window_RenderingSettings::Draw() {
                     }
                 }
 
-                // FIXME: Add Camera Struct To Grab FOV For All Cameras
-                // FOV Slider
-                //ImGui::Separator();
-                //ImGui::SliderInt("Viewport FOV", &Camera_, 1, 360)
 
-                // Handle Modifications To Renderer Settings
-                ImGui::Spacing();
                 ImGui::Separator();
-                ImGui::Spacing();
-                bool Apply = false;
-                ERS_STRUCT_RendererSettings* Settings = SystemUtils_->RendererSettings_.get();
-
-                const char* ShadowFilteringNames[] = {
-                    "ERS_SHADOW_FILTERING_DISABLED",
-                    "ERS_SHADOW_FILTERING_PCF",
-                    "ERS_SHADOW_FILTERING_POISSON_SAMPLING",
-                    "ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING"
-                };
-                const char* ShadowUpdateNames[] = {
-                    "ERS_SHADOW_UPDATE_MODE_DISABLED",
-                    "ERS_SHADOW_UPDATE_MODE_RANDOM",
-                    "ERS_SHADOW_UPDATE_MODE_CONSECUTIVE",
-                    "ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED",
-                    "ERS_SHADOW_UPDATE_MODE_ALL"
-                };
-
-
-
+                ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "Shadow Maps");
+                ImGui::Separator();
 
                 // Draw Buttons/Input Fields
                 ImGui::InputInt("Depth Map Resolution", &DepthMapResolution_);

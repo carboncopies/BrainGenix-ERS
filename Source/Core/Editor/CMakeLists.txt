@@ -43,7 +43,6 @@ target_link_libraries(VisualEditor
     ERS_SceneManager
 
     Menu_File
-    Menu_View
     Menu_Window
     Menu_Debug
     Menu_Settings

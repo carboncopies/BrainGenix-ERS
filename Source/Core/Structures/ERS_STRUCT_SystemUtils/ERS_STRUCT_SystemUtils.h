@@ -18,7 +18,6 @@
 #include <ERS_STRUCT_RendererSettings.h>
 
 #include <ERS_InputOutputSubsystem.h>
-#include <ERS_ModelWriter.h>
 #include <ERS_FramerateManager.h>
 
 
@@ -32,12 +31,14 @@
 struct ERS_STRUCT_SystemUtils {
 
 
+    std::vector<std::pair<std::string, std::string>> Arguments_; /**<Pair of key and value arguments used to launch the program*/
+    std::string ArgumentString_; /**<String version of the argument pair*/
+
     std::unique_ptr<YAML::Node> LocalSystemConfiguration_; /**<Pointer To Config.yaml Data From Local Hard Drive*/
     std::unique_ptr<bool> SystemShouldRun_; /**<Pointer To Variable Setting If System Should Run Or Not*/
 
     std::unique_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer To BG-ERS Logging System*/
     std::unique_ptr<ERS_CLASS_InputOutputSubsystem> ERS_IOSubsystem_; /**<Pointer To ERS Input Output Subsystem*/
-    std::unique_ptr<ERS_CLASS_ModelWriter> ERS_ModelWriter_; /**<Pointer To ERS Model Writer Instance*/
     std::unique_ptr<ERS_CLASS_FramerateManager> FramerateManager_; /**<Pointer to framerate subsystem*/
     std::unique_ptr<ERS_CLASS_HardwareInformation> ERS_CLASS_HardwareInformation_; /**<Pointer to the hardware informaton class instance*/
     std::unique_ptr<ERS_CLASS_PythonInterpreterIntegration> ERS_CLASS_PythonInterpreterIntegration_; /**<Pointer to the class integrating the python interpreter*/

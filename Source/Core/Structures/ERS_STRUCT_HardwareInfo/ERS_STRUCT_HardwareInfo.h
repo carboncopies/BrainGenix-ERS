@@ -60,10 +60,10 @@ struct StaticHardwareInfo {
 struct DynamicHardwareInfo {
 
     // Memory Info
-    long PhysicalMemoryCapacity; /**<Get Amount Of Memory In System*/
-    long SwapCapacity; /**<Get Amount Of Swap In System*/
-    long PhysicalMemoryFree; /**<Get Physical Memory Free*/
-    long SwapFree; /**<Get Swap Space Free*/
+    unsigned long long PhysicalMemoryCapacity; /**<Get Amount Of Memory In System*/
+    unsigned long long SwapCapacity; /**<Get Amount Of Swap In System*/
+    unsigned long long PhysicalMemoryFree; /**<Get Physical Memory Free*/
+    unsigned long long SwapFree; /**<Get Swap Space Free*/
 
 
 

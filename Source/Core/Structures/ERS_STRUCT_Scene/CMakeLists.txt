@@ -25,6 +25,7 @@ target_link_libraries(ERS_STRUCT_Scene
     ERS_STRUCT_Model
     ERS_STRUCT_Light
     ERS_STRUCT_SceneObject
+    ERS_STRUCT_SceneCamera
     )
 
 target_include_directories(ERS_STRUCT_Scene PUBLIC ./)

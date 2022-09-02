@@ -29,6 +29,7 @@ void GUI_Menu_Settings::Draw() {
     // File Menu
     if (ImGui::BeginMenu("Settings")) {
 
+
         // Layout Menu
         if (ImGui::BeginMenu("Editor Layout")) {
             
@@ -65,6 +66,26 @@ void GUI_Menu_Settings::Draw() {
         ImGui::EndMenu();
         }
 
+
+        // Interface Config
+        ImGui::MenuItem("Color Theme", "", &Windows_->GUI_Window_ThemeSelector_->Enabled_);
+        ImGui::MenuItem("System Font", "", &Windows_->GUI_Window_FontSelector_->Enabled_);
+
+        ImGui::Separator();
+        if (ImGui::BeginMenu("Editor Settings")) {
+            ImGui::MenuItem("Editor Camera Settings", "", &Windows_->GUI_Window_EditorCameraSettings_->Enabled_);
+        ImGui::EndMenu();
+        }
+
+        ImGui::Separator();
+        if (ImGui::BeginMenu("Engine Settings")) {
+            ImGui::MenuItem("Rendering Settings", "", &Windows_->GUI_Window_RenderingSettings_->Enabled_);
+            ImGui::MenuItem("Asset Streaming Settings", "", &Windows_->GUI_Window_AssetStreamingSettings_->Enabled_);
+        ImGui::EndMenu();
+        }
+
+        ImGui::Separator();
+
         // Controller Settings
         if (ImGui::BeginMenu("Game Controllers")) {
 
@@ -74,9 +95,7 @@ void GUI_Menu_Settings::Draw() {
             }
 
             // Open Settings MEnu
-            if (ImGui::MenuItem("Game Controller Settings")) {
-                Windows_->GUI_Window_ControllerSettings_->Enabled_ = !Windows_->GUI_Window_ControllerSettings_->Enabled_;
-            }
+            ImGui::MenuItem("Game Controller Settings", "", &Windows_->GUI_Window_ControllerSettings_->Enabled_);
 
         ImGui::EndMenu();
         }

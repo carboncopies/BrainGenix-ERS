@@ -84,6 +84,7 @@ void ERS_CLASS_ShadowMaps::GetDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* Depth
             ERS_CLASS_DepthMaps_->FreeDepthMapIndexCubemap(ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex);
             ActiveScene->PointLights[i]->DepthMap.Initialized = false;
         }
+
     }
     for (unsigned int i = 0; i < ActiveScene->SpotLights.size(); i++) {
         if (ActiveScene->SpotLights[i]->CastsShadows_) {
@@ -180,11 +181,15 @@ void ERS_CLASS_ShadowMaps::PrioritizeDepthMaps(std::vector<ERS_STRUCT_DepthMap*>
 
 
             // Mark Lights To Be Updated
-            for (int i = 0; i < SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_; i++) {
-                unsigned int DepthMapIndex = SortedLightDistances[i];
+            int NumberUpdates = SystemUtils_->RendererSettings_->MaxShadowUpdatesPerFrame_;
+            NumberUpdates = std::min(NumberUpdates, (int)SortedLightDistances.size());
+            for (int i = 0; i < NumberUpdates; i++) {
+                int DepthMapIndex = SortedLightDistances[i];
                 if ((signed long)RandomNumberGenerator_(MersenneTwister_) % (signed long)(DepthMaps.size()-1) == (signed long)i) {
                     DepthMapIndex = RandomNumberGenerator_(MersenneTwister_) % (DepthMaps.size()-1);
                 }
+                DepthMapIndex = std::max(DepthMapIndex, 0);
+                DepthMapIndex = std::min(DepthMapIndex, (int)DepthMaps.size());
                 DepthMaps[DepthMapIndex]->ToBeUpdated = true;
             }
             
@@ -206,7 +211,9 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
     // Handle Updating Depth Maps
     std::vector<ERS_STRUCT_DepthMap*> DepthMaps;
     std::vector<glm::vec3> LightPositions;
+
     GetDepthMaps(&DepthMaps, &LightPositions);
+
     PrioritizeDepthMaps(DepthMaps, LightPositions, CameraPosition);
 
     // Update All Depth Maps

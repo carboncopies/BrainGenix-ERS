@@ -21,6 +21,8 @@ target_link_libraries(GUI_Window_ObjectProperties
 
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_LocRotScale
+
+    ERS_CLASS_VisualRenderer
     
     ERS_SceneManager 
 

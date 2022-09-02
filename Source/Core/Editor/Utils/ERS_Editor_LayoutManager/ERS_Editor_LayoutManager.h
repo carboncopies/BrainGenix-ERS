@@ -38,11 +38,13 @@ class ERS_CLASS_LayoutManager {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to System utillities struct, used to get things like logger, etc.*/
-    ERS_CLASS_LoggingSystem* Logger_; /**<ERS_CLASS_LoggingSystem Instance Pointer*/
-    ERS_CLASS_WindowManager* WindowManager_;
+    ERS_STRUCT_SystemUtils*  SystemUtils_   = nullptr; /**<Pointer to System utillities struct, used to get things like logger, etc.*/
+    ERS_CLASS_LoggingSystem* Logger_        = nullptr; /**<ERS_CLASS_LoggingSystem Instance Pointer*/
+    ERS_CLASS_WindowManager* WindowManager_ = nullptr; /**<Window Manager Class Instance*/
+    
     std::string LayoutDirectory_; /**<This string stores the path to the editor's layout directory ending in a trailing slash*/
     std::string ActiveLayoutName_; /**<Name of the currentl layout that's applied to the editor*/
+
 
     std::vector<YAML::Node> LayoutFiles_; /**<List Of YAML::Node files*/
     int Index = 0; /**<The index of Layout structs*/

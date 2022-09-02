@@ -1,5 +1,6 @@
-cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
-cmake_policy(VERSION 2.8)
+cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
+cmake_policy(VERSION 3.2)
+cmake_policy(SET CMP0063 NEW)
 if (NOT CMAKE_VERSION VERSION_LESS "3.1")
 	cmake_policy(SET CMP0054 NEW)
 endif()
@@ -20,20 +21,20 @@ enable_testing()
 
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
-option(GLM_STATIC_LIBRARY_ENABLE "GLM static library" On)
-if(GLM_STATIC_LIBRARY_ENABLE)
+option(GLM_STATIC_LIBRARY_ENABLE "GLM static library" ON)
+if(NOT GLM_STATIC_LIBRARY_ENABLE)
 	message(STATUS "GLM is a header only library, no need to build it. Set the option GLM_STATIC_LIBRARY_ENABLE with ON to build an optional static library")
 endif()
 
 option(GLM_DYNAMIC_LIBRARY_ENABLE "GLM static library" OFF)
-if(GLM_DYNAMIC_LIBRARY_ENABLE)
-	message(STATUS "GLM is a header only library, no need to build it. Set the option GLM_DYNAMIC_LIBRARY_ENABLE with ON to build an optional dynamic library")
-endif()
+# if(NOT GLM_DYNAMIC_LIBRARY_ENABLE OR NOT GLM_STATIC_LIBRARY_ENABLE)
+# 	message(STATUS "GLM is a header only library, no need to build it. Set the option GLM_DYNAMIC_LIBRARY_ENABLE with ON to build an optional dynamic library")
+# endif()
 
 option(GLM_TEST_ENABLE "GLM test" OFF)
-if(NOT GLM_TEST_ENABLE)
-	message(STATUS "GLM is a header only library, no need to build it. Set the option GLM_TEST_ENABLE with ON to build and run the test bench")
-endif()
+# if(NOT GLM_TEST_ENABLE)
+# 	message(STATUS "GLM is a header only library, no need to build it. Set the option GLM_TEST_ENABLE with ON to build and run the test bench")
+# endif()
 
 option(GLM_TEST_ENABLE_FAST_MATH "Enable fast math optimizations" OFF)
 

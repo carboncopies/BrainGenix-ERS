@@ -39,12 +39,20 @@ target_link_libraries(ERS_Editor_WindowManager
     GUI_Window_ProjectSettings
     GUI_Window_RAMGraph
     GUI_Window_RenderingSettings
+    GUI_Window_EditorCameraSettings
     GUI_Window_SceneTree
     GUI_Window_ScriptEditor
     GUI_Window_ShaderEditor
     GUI_Window_SystemLog
     GUI_Window_TestEditor
     GUI_Window_ThemeSelector
+    GUI_Window_FontSelector
+    GUI_Window_OpenProject
+    GUI_Window_NewProject
+    GUI_Window_AssetStreamingSettings
+
+    GUI_Window_ImportModel
+    GUI_Window_ImportModelDirectory
 
     )
 
