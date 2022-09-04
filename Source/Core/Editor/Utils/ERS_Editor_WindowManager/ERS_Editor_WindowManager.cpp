@@ -59,8 +59,8 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     Windows_->GUI_Window_OpenProject_            = std::make_unique<GUI_Window_OpenProject>            (SystemUtils_);
     Windows_->GUI_Window_NewProject_             = std::make_unique<GUI_Window_NewProject>             (SystemUtils_);
     Windows_->GUI_Window_AssetStreamingSettings_ = std::make_unique<GUI_Window_AssetStreamingSettings> (SystemUtils_, ProjectUtils);
-    Windows_->GUI_Window_ImportModel_            = std::make_unique<GUI_Window_ImportModel>            (SystemUtils_, ProjectUtils);
-    Windows_->GUI_Window_ImportModelDirectory_   = std::make_unique<GUI_Window_ImportModelDirectory>   (SystemUtils_, ProjectUtils);
+    Windows_->GUI_Window_ImportModel_            = std::make_unique<GUI_Window_ImportModel>            (SystemUtils_, ProjectUtils, Windows_->GUI_Window_ImportProgressBar_.get());
+    Windows_->GUI_Window_ImportModelDirectory_   = std::make_unique<GUI_Window_ImportModelDirectory>   (SystemUtils_, ProjectUtils, Windows_->GUI_Window_ImportProgressBar_.get());
     
 
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Struct", 3);

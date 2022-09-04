@@ -32,7 +32,7 @@ private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<used to get access to system utilites like IOmanager, logger, etc.*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Project utils struct used to get to the model importer class*/
-    std::unique_ptr<GUI_Window_ImportProgressBar> GUI_Window_ImportProgressBar_; /**<Pointer To Window Import Progres Bar*/
+    GUI_Window_ImportProgressBar* GUI_Window_ImportProgressBar_; /**<Pointer To Window Import Progres Bar*/
     bool AlreadyOpen_ = false; /**<Keeps track of internal window state*/
     bool Working_ = false; /**<Indicates if something is being imported*/ 
 
@@ -53,7 +53,7 @@ public:
      * 
      * @param SystemUtils 
      */
-    GUI_Window_ImportModel(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    GUI_Window_ImportModel(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, GUI_Window_ImportProgressBar* GUI_Window_ImportProgressBar);
 
     /**
      * @brief Destroy the gui importasset object.

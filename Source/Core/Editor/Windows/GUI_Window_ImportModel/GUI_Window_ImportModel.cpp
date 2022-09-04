@@ -5,13 +5,13 @@
 #include <GUI_Window_ImportModel.h>
 
 
-GUI_Window_ImportModel::GUI_Window_ImportModel(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+GUI_Window_ImportModel::GUI_Window_ImportModel(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, GUI_Window_ImportProgressBar* GUI_Window_ImportProgressBar) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
     SystemUtils_->Logger_->Log("Initializing Asset Importer GUI", 5);
 
-    GUI_Window_ImportProgressBar_ = std::make_unique<GUI_Window_ImportProgressBar>(SystemUtils_);
+    GUI_Window_ImportProgressBar_ = GUI_Window_ImportProgressBar;
 
 }
 
@@ -84,7 +84,7 @@ void GUI_Window_ImportModel::Draw() {
     // Update Window Stats
     if (GUI_Window_ImportProgressBar_->Enabled_ && Working_) {
         GUI_Window_ImportProgressBar_->UpdateTotalItems(ProjectUtils_->ModelImporter_->GetTotalItemsImported(), ProjectUtils_->ModelImporter_->GetTotalItemsToImport());
-        
+
         Working_ = !ProjectUtils_->ModelImporter_->HasJobFinished();
         GUI_Window_ImportProgressBar_->UpdateJobState(!Working_);
         

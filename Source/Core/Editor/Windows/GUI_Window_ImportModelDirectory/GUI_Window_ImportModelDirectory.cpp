@@ -5,13 +5,13 @@
 #include <GUI_Window_ImportModelDirectory.h>
 
 
-GUI_Window_ImportModelDirectory::GUI_Window_ImportModelDirectory(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
+GUI_Window_ImportModelDirectory::GUI_Window_ImportModelDirectory(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, GUI_Window_ImportProgressBar* GUI_Window_ImportProgressBar) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
     SystemUtils_->Logger_->Log("Initializing Asset Importer GUI", 5);
 
-    GUI_Window_ImportProgressBar_ = std::make_unique<GUI_Window_ImportProgressBar>(SystemUtils_);
+    GUI_Window_ImportProgressBar_ = GUI_Window_ImportProgressBar
 
 }
 
