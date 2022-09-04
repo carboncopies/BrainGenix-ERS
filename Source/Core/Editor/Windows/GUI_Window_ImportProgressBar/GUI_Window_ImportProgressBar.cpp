@@ -35,11 +35,7 @@ void GUI_Window_ImportProgressBar::UpdateJobState(bool JobFinished) {
         IsJobFinishing_ = false;
     }
 
-    // Hide Window After Threshold Reached
-    if (ConsecFinished_ >= ConsecFinishedThreshold_) {
-        Enabled_ = false;
-        ConsecFinished_ = 0;
-    }
+
 
 }
 
@@ -78,6 +74,15 @@ void GUI_Window_ImportProgressBar::Draw() {
         }
 
     ImGui::End();
+
+    // Hide Window After Threshold Reached
+    ConsecFinished_++;
+    if (ConsecFinished_ >= ConsecFinishedThreshold_) {
+        Enabled_ = false;
+        ConsecFinished_ = 0;
+    }
+
+
     }
 
 
