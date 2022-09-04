@@ -11,7 +11,7 @@ GUI_Window_ImportModelDirectory::GUI_Window_ImportModelDirectory(ERS_STRUCT_Syst
     ProjectUtils_ = ProjectUtils;
     SystemUtils_->Logger_->Log("Initializing Asset Importer GUI", 5);
 
-    GUI_Window_ImportProgressBar_ = GUI_Window_ImportProgressBar
+    GUI_Window_ImportProgressBar_ = GUI_Window_ImportProgressBar;
 
 }
 
