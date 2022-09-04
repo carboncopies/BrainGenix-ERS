@@ -44,7 +44,7 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     Windows_->GUI_Window_FramerateHistogram_     = std::make_unique<GUI_Window_FramerateHistogram>     ();
     Windows_->GUI_Window_FrameratePlot_          = std::make_unique<GUI_Window_FrameratePlot>          ();
     Windows_->GUI_Window_ImportProgressBar_      = std::make_unique<GUI_Window_ImportProgressBar>      (SystemUtils_);
-    Windows_->GUI_Window_ObjectProperties_       = std::make_unique<GUI_Window_ObjectProperties>       (Gizmo, SceneManager, ProjectUtils, VisualRenderer);
+    Windows_->GUI_Window_ObjectProperties_       = std::make_unique<GUI_Window_ObjectProperties>       (Gizmo,        SceneManager, ProjectUtils, VisualRenderer);
     Windows_->GUI_Window_ProjectSettings_        = std::make_unique<GUI_Window_ProjectSettings>        (ProjectUtils, SystemUtils_);
     Windows_->GUI_Window_RAMGraph_               = std::make_unique<GUI_Window_RAMGraph>               (SystemUtils_);
     Windows_->GUI_Window_RenderingSettings_      = std::make_unique<GUI_Window_RenderingSettings>      (SystemUtils_);
@@ -59,8 +59,8 @@ ERS_CLASS_ThemeManager* ThemeManager, ERS_CLASS_FontManager* FontManager, Cursor
     Windows_->GUI_Window_OpenProject_            = std::make_unique<GUI_Window_OpenProject>            (SystemUtils_);
     Windows_->GUI_Window_NewProject_             = std::make_unique<GUI_Window_NewProject>             (SystemUtils_);
     Windows_->GUI_Window_AssetStreamingSettings_ = std::make_unique<GUI_Window_AssetStreamingSettings> (SystemUtils_, ProjectUtils);
-    Windows_->GUI_Window_ImportModel_            = std::make_unique<GUI_Window_ImportModel>            (SystemUtils_, ProjectUtils);
-    Windows_->GUI_Window_ImportModelDirectory_   = std::make_unique<GUI_Window_ImportModelDirectory>   (SystemUtils_, ProjectUtils);
+    Windows_->GUI_Window_ImportModel_            = std::make_unique<GUI_Window_ImportModel>            (SystemUtils_, ProjectUtils, Windows_->GUI_Window_ImportProgressBar_.get());
+    Windows_->GUI_Window_ImportModelDirectory_   = std::make_unique<GUI_Window_ImportModelDirectory>   (SystemUtils_, ProjectUtils, Windows_->GUI_Window_ImportProgressBar_.get());
     
 
     SystemUtils_->Logger_->Log("WindowManager Subsystem Finished Setting Up Window Struct", 3);
