@@ -50,7 +50,6 @@ void GUI_Window_ImportModelDirectory::Draw() {
     if (Enabled_ && !AlreadyOpen_) {
         OpenFileDialog();
         AlreadyOpen_ = true;
-        GUI_Window_ImportProgressBar_->Enabled_ = true;
     }
 
     // Draw File Dialog
