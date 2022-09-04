@@ -93,7 +93,7 @@ void GUI_Window_ImportModelDirectory::Draw() {
 
 
     // Update Window Stats
-    if (GUI_Window_ImportProgressBar_->Enabled_ && Enabled_) {
+    if (GUI_Window_ImportProgressBar_->Enabled_ && Working_) {
         GUI_Window_ImportProgressBar_->UpdateTotalItems(ProjectUtils_->ModelImporter_->GetTotalItemsImported(), ProjectUtils_->ModelImporter_->GetTotalItemsToImport());
         
         Working_ = !ProjectUtils_->ModelImporter_->HasJobFinished();
