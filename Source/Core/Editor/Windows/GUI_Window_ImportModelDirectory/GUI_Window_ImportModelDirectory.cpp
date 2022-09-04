@@ -81,7 +81,8 @@ void GUI_Window_ImportModelDirectory::Draw() {
 
             // Add To Queue, Launch Import
             ProjectUtils_->ModelImporter_->AddToImportQueue(FilePaths, FlipTextures);
-            GUI_Window_ImportProgressBar_->Enabled_ = false;
+            GUI_Window_ImportProgressBar_->Enabled_ = true;
+            Working_ = true;
 
         }
 
@@ -94,7 +95,10 @@ void GUI_Window_ImportModelDirectory::Draw() {
     // Update Window Stats
     if (GUI_Window_ImportProgressBar_->Enabled_ && Enabled_) {
         GUI_Window_ImportProgressBar_->UpdateTotalItems(ProjectUtils_->ModelImporter_->GetTotalItemsImported(), ProjectUtils_->ModelImporter_->GetTotalItemsToImport());
-        GUI_Window_ImportProgressBar_->UpdateJobState(ProjectUtils_->ModelImporter_->HasJobFinished());
+        
+        Working_ = !ProjectUtils_->ModelImporter_->HasJobFinished();
+        GUI_Window_ImportProgressBar_->UpdateJobState(!Working_);
+        
     }
 
     
