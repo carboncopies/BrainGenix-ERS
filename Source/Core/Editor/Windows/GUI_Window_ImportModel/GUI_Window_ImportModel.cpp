@@ -71,7 +71,7 @@ void GUI_Window_ImportModel::Draw() {
 
             // Add To Queue, Launch Import
             ProjectUtils_->ModelImporter_->AddToImportQueue(FilePaths, FlipTextures);
-            GUI_Window_ImportProgressBar_->Enabled_ = true;
+            GUI_Window_ImportProgressBar_->Enabled_ = false;
 
         }
 
