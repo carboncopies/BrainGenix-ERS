@@ -33,6 +33,7 @@
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
+#include <assimp/Exceptional.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_Mesh.h>
