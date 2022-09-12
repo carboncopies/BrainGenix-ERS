@@ -16,7 +16,7 @@ void ERS_FUNCTION_Legacy_PreprocessTextureInfo(YAML::Node Metadata, ERS_STRUCT_M
     // Read Mesh
     Assimp::Importer Importer;
     std::unique_ptr<ERS_STRUCT_IOData> ModelData = std::make_unique<ERS_STRUCT_IOData>();
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(Model->ModelDataID, ModelData.get());
+    SystemUtils->ERS_IOSubsystem_->ReadAsset(Model->ModelDataID, ModelData.get());
     const aiScene* Scene = Importer.ReadFileFromMemory(ModelData->Data.get(), (int)ModelData->Size_B, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_PreTransformVertices | aiProcess_JoinIdenticalVertices, "");
 
     // Log Errors
@@ -27,7 +27,7 @@ void ERS_FUNCTION_Legacy_PreprocessTextureInfo(YAML::Node Metadata, ERS_STRUCT_M
     }
 
     // Decode Mesh, Create Texture Pointers
-    ERS_LEGACY_FUNCTION_ProcessNode(Model.get(), Scene->mRootNode, Scene);
+    ERS_LEGACY_FUNCTION_ProcessNode(Model, Scene->mRootNode, Scene);
 
 }
 
@@ -117,7 +117,6 @@ void ERS_LEGACY_FUNCTION_IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mesh* 
             bool AlreadyHasTexture = false;
             for (unsigned long x = 0; x < Mesh->Loader_RequestedTextureInformation_.size(); x++) {
                 if (Mesh->Loader_RequestedTextureInformation_[x].second == TextureIdentifier) {
-                    SystemUtils_->Logger_->Log(std::string("Found Matching Texture '") + Mesh->Loader_RequestedTextureInformation_[x].second + "'", 3);
                     AlreadyHasTexture = true;
                     break;
                 }

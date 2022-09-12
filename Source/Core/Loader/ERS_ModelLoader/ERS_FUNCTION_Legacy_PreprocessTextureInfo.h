@@ -44,20 +44,19 @@
 
 
 
-
+/**
+ * @brief Loads mesh texture information for legacy model formats that don't have this already encoded in them.
+ * 
+ * @param Metadata 
+ * @param Model 
+ * @param SystemUtils 
+ * @param AssetID 
+ * @param LogEnable 
+ */
 void ERS_FUNCTION_Legacy_PreprocessTextureInfo(YAML::Node Metadata, ERS_STRUCT_Model* Model, ERS_STRUCT_SystemUtils* SystemUtils, long AssetID, bool LogEnable);
 
 
 
-
-/**
- * @brief Load a texture given the id
- * 
- * @param ID 
- * @param FlipTextures 
- * @return ERS_STRUCT_Texture 
- */
-ERS_STRUCT_Texture ERS_LEGACY_FUNCTION_LoadTexture(long ID, bool FlipTextures = false);
 
 /**
  * @brief Populates Texture Request Information For The Mesh
@@ -67,16 +66,13 @@ ERS_STRUCT_Texture ERS_LEGACY_FUNCTION_LoadTexture(long ID, bool FlipTextures = 
  */
 void ERS_LEGACY_FUNCTION_IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mesh* Mesh);
 
-
-
-
 /**
  * @brief Function Used To Process Subnodes Of SceneFiles.
  * 
  * @param Node 
  * @param Scene 
  */
-void ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene);
+void ERS_LEGACY_FUNCTION_ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene);
 
 /**
  * @brief Process Meshes From Model.
@@ -86,20 +82,4 @@ void ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene);
  * @param Scene 
  * @return ERS_STRUCT_Mesh 
  */
-ERS_STRUCT_Mesh ProcessMesh(ERS_STRUCT_Model* Model, unsigned long PreallocVertSize, unsigned long PerallocIndSize, aiMesh *Mesh, const aiScene *Scene);
-
-
-
-
-
-
-
-
-/**
- * @brief Creates texture pointers within the model's meshes
- * 
- * @param Model 
- */
-void MatchTextures(ERS_STRUCT_Model* Model);
-
-
+ERS_STRUCT_Mesh ERS_LEGACY_FUNCTION_ProcessMesh(ERS_STRUCT_Model* Model, unsigned long PreallocVertSize, unsigned long PerallocIndSize, aiMesh *Mesh, const aiScene *Scene);
