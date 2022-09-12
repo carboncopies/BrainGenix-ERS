@@ -393,8 +393,8 @@ ERS_STRUCT_Mesh ERS_CLASS_ExternalModelLoader::ProcessMesh(ERS_STRUCT_ModelWrite
 
     // Process Materials
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
-    // HandleMeshTextures(Data, Model, Material, ModelDirectory, &OutputMesh);
-    IdentifyMeshTextures(Material, &OutputMesh);
+    HandleMeshTextures(Data, Model, Material, ModelDirectory, &OutputMesh);
+    // IdentifyMeshTextures(Material, &OutputMesh);
 
     // Iterate Through Meshes' Vertices
     for (unsigned int i = 0; i < Mesh->mNumVertices; i++) {
