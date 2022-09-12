@@ -429,6 +429,7 @@ void ERS_CLASS_ExternalModelLoader::AddTexture(ERS_STRUCT_ModelWriterData &Data,
         if (std::find(Data.TextureList.begin(), Data.TextureList.end(), FilePath) == Data.TextureList.end()) {
             Data.TextureList.push_back(FilePath);
             Data.TextureNames.push_back(Str.C_Str());
+            TargetMesh->Loader_RequestedTextureInformation_.push_back(std::make_pair(Str.C_Str(), FilePath));
         }   
 
     }
