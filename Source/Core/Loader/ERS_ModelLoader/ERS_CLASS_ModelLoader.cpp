@@ -477,7 +477,7 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
             (unsigned long)Mesh->mNumFaces*3,
             Mesh,
             Scene
-        )
+        );
 
     }
 
