@@ -495,6 +495,8 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, unsi
 
     // Create Data Holders
     ERS_STRUCT_Mesh OutputMesh;
+    OutputMesh = Model->Meshes[Model->NumMeshes_];
+
 
 
     OutputMesh.Vertices.reserve(PreallocVertSize);
@@ -569,6 +571,8 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, unsi
 
 
     // Return Populated Mesh
+    Model->Meshes[Model->NumMeshes] = OutputMesh;
+    Model->NumMeshes_++;
     return OutputMesh;
 
 }
