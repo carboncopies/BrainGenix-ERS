@@ -18,6 +18,8 @@
 #include <ERS_STRUCT_TextureLevel.h>
 #include <ERS_STRUCT_Texture.h>
 
+#include <ERS_FUNCTION_Legacy_PreprocessTextureInfo.h>
+
 #include <ERS_FUNCTION_ModelMetadataDecoderV0.0.0.h>
 #include <ERS_FUNCTION_ModelMetadataDecoderV0.0.1.h>
 #include <ERS_FUNCTION_ModelMetadataDecoderV0.0.2.h>
