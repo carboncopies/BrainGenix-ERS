@@ -576,25 +576,25 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, unsi
 void ERS_CLASS_ModelLoader::IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mesh* Mesh) {
 
     std::vector<std::pair<aiTextureType, std::string>> TextureTypes;
-    TextureTypes.push_back(std::make_pair(aiTextureType_AMBIENT, "texture_ambient"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_AMBIENT,           "texture_ambient"));
     TextureTypes.push_back(std::make_pair(aiTextureType_AMBIENT_OCCLUSION, "texture_ambient_occlusion"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_BASE_COLOR, "texture_base_color"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_DIFFUSE, "texture_diffuse"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_BASE_COLOR,        "texture_base_color"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_DIFFUSE,           "texture_diffuse"));
     TextureTypes.push_back(std::make_pair(aiTextureType_DIFFUSE_ROUGHNESS, "texture_diffuse_roughness"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_DISPLACEMENT, "texture_displacement"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_EMISSION_COLOR, "texture_emission_color"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_EMISSIVE, "texture_emissive"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_HEIGHT, "texture_height"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_LIGHTMAP, "texture_lightmap"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_METALNESS, "texture_metalness"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_NONE, "texture_none"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_NORMAL_CAMERA, "texture_normal_camera"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_NORMALS, "texture_normals"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_OPACITY, "texture_opacity"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_REFLECTION, "texture_reflection"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_SHININESS, "texture_shininess"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_SPECULAR, "texture_specular"));
-    TextureTypes.push_back(std::make_pair(aiTextureType_UNKNOWN, "texture_unknown"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_DISPLACEMENT,      "texture_displacement"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_EMISSION_COLOR,    "texture_emission_color"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_EMISSIVE,          "texture_emissive"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_HEIGHT,            "texture_height"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_LIGHTMAP,          "texture_lightmap"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_METALNESS,         "texture_metalness"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_NONE,              "texture_none"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_NORMAL_CAMERA,     "texture_normal_camera"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_NORMALS,           "texture_normals"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_OPACITY,           "texture_opacity"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_REFLECTION,        "texture_reflection"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_SHININESS,         "texture_shininess"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_SPECULAR,          "texture_specular"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_UNKNOWN,           "texture_unknown"));
 
     // Iterate Over All Texture Types
     for (unsigned int TextureTypeIndex = 0; TextureTypeIndex < TextureTypes.size(); TextureTypeIndex++) {
