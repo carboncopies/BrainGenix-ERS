@@ -471,15 +471,13 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
-        Model->Meshes.push_back(
-            ProcessMesh(
-                Model,
-                (unsigned long)Mesh->mNumVertices,
-                (unsigned long)Mesh->mNumFaces*3,
-                Mesh,
-                Scene
-            )
-        );
+        ProcessMesh(
+            Model,
+            (unsigned long)Mesh->mNumVertices,
+            (unsigned long)Mesh->mNumFaces*3,
+            Mesh,
+            Scene
+        )
 
     }
 
@@ -571,8 +569,9 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, unsi
 
 
     // Return Populated Mesh
-    Model->Meshes[Model->NumMeshes] = OutputMesh;
+    Model->Meshes[Model->NumMeshes_] = OutputMesh;
     Model->NumMeshes_++;
+
     return OutputMesh;
 
 }
