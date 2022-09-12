@@ -136,17 +136,16 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
         ProcessNode(Model, Node->mChildren[i], Scene);
     }
 
-
 }
 
-ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, unsigned long PreallocVertSize, unsigned long PreallocIndSize, aiMesh *Mesh, const aiScene *Scene) {
+ERS_STRUCT_Mesh ERS_LEGACY_FUNCTION_ProcessMesh(ERS_STRUCT_Model* Model, unsigned long PreallocVertSize, unsigned long PreallocIndSize, aiMesh *Mesh, const aiScene *Scene) {
 
     // Create Data Holders
     ERS_STRUCT_Mesh OutputMesh;
 
     // Process Materials
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
-    IdentifyMeshTextures(Material, &OutputMesh);
+    ERS_LEGACY_FUNCTION_IdentifyMeshTextures(Material, &OutputMesh);
 
 
     // Return Populated Mesh
@@ -154,7 +153,7 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, unsi
 
 }
 
-void ERS_CLASS_ModelLoader::IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mesh* Mesh) {
+void ERS_LEGACY_FUNCTION_IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mesh* Mesh) {
 
     std::vector<std::pair<aiTextureType, std::string>> TextureTypes;
     TextureTypes.push_back(std::make_pair(aiTextureType_AMBIENT,           "texture_ambient"));

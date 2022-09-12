@@ -50,67 +50,56 @@ void ERS_FUNCTION_Legacy_PreprocessTextureInfo(YAML::Node Metadata, ERS_STRUCT_M
 
 
 
+/**
+ * @brief Load a texture given the id
+ * 
+ * @param ID 
+ * @param FlipTextures 
+ * @return ERS_STRUCT_Texture 
+ */
+ERS_STRUCT_Texture ERS_LEGACY_FUNCTION_LoadTexture(long ID, bool FlipTextures = false);
+
+/**
+ * @brief Populates Texture Request Information For The Mesh
+ * 
+ * @param Mat 
+ * @param Mesh 
+ */
+void ERS_LEGACY_FUNCTION_IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mesh* Mesh);
 
 
 
 
-    /**
-     * @brief Load a texture given the id
-     * 
-     * @param ID 
-     * @param FlipTextures 
-     * @return ERS_STRUCT_Texture 
-     */
-    ERS_STRUCT_Texture LoadTexture(long ID, bool FlipTextures = false);
+/**
+ * @brief Function Used To Process Subnodes Of SceneFiles.
+ * 
+ * @param Node 
+ * @param Scene 
+ */
+void ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene);
 
-    /**
-     * @brief Function Used To Process Subnodes Of SceneFiles.
-     * 
-     * @param Node 
-     * @param Scene 
-     */
-    void ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene);
-
-    /**
-     * @brief Process Meshes From Model.
-     * 
-     * @param Model
-     * @param Mesh 
-     * @param Scene 
-     * @return ERS_STRUCT_Mesh 
-     */
-    ERS_STRUCT_Mesh ProcessMesh(ERS_STRUCT_Model* Model, unsigned long PreallocVertSize, unsigned long PerallocIndSize, aiMesh *Mesh, const aiScene *Scene);
+/**
+ * @brief Process Meshes From Model.
+ * 
+ * @param Model
+ * @param Mesh 
+ * @param Scene 
+ * @return ERS_STRUCT_Mesh 
+ */
+ERS_STRUCT_Mesh ProcessMesh(ERS_STRUCT_Model* Model, unsigned long PreallocVertSize, unsigned long PerallocIndSize, aiMesh *Mesh, const aiScene *Scene);
 
 
-    /**
-     * @brief Populates Texture Request Information For The Mesh
-     * 
-     * @param Mat 
-     * @param Mesh 
-     */
-    void IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mesh* Mesh);
 
-    /**
-     * @brief Checks if the target model has already been loaded, and returns refrences when completed.
-     * 
-     * @param AssetID 
-     * @return long 
-     */
-    long CheckIfModelAlreadyLoaded(long AssetID);
 
-    /**
-     * @brief Adds the given model to the queue of models with refs waiting to be copied
-     * 
-     * @param AssetID 
-     * @param Model 
-     */
-    void AddModelToReferenceQueue(long AssetID, std::shared_ptr<ERS_STRUCT_Model> Model);
 
-    /**
-     * @brief Creates texture pointers within the model's meshes
-     * 
-     * @param Model 
-     */
-    void MatchTextures(ERS_STRUCT_Model* Model);
+
+
+
+/**
+ * @brief Creates texture pointers within the model's meshes
+ * 
+ * @param Model 
+ */
+void MatchTextures(ERS_STRUCT_Model* Model);
 
 
