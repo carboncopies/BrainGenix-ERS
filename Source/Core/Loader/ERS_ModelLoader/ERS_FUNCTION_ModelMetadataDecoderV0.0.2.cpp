@@ -133,7 +133,7 @@ bool ERS_FUNCTION_DecodeModelMetadataV002(YAML::Node Metadata, ERS_STRUCT_Model*
                 for (YAML::const_iterator LevelIterator = MeshTextures.begin(); LevelIterator != MeshTextures.end(); ++LevelIterator) {
 
                     YAML::Node MeshTexture = LevelIterator->second;
-                    Mesh.Loader_RequestedTextureInformation_.push_back(std::make_pair(MeshTexture["Identifier"].as<std::string>(), MeshTexture["Type"].as<std::string>()));
+                    Mesh.Loader_RequestedTextureInformation_.push_back(std::make_pair(MeshTexture["Type"].as<std::string>(), MeshTexture["Identifier"].as<std::string>()));
 
 
                 }
