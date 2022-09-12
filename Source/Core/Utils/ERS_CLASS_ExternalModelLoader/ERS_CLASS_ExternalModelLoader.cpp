@@ -393,8 +393,8 @@ ERS_STRUCT_Mesh ERS_CLASS_ExternalModelLoader::ProcessMesh(ERS_STRUCT_ModelWrite
 
     // Process Materials
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
-    HandleMeshTextures(Data, Model, Material, ModelDirectory, &OutputMesh);
-    // IdentifyMeshTextures(Material, &OutputMesh);
+    // HandleMeshTextures(Data, Model, Material, ModelDirectory, &OutputMesh);
+    IdentifyMeshTextures(Material, &OutputMesh);
 
     // Iterate Through Meshes' Vertices
     for (unsigned int i = 0; i < Mesh->mNumVertices; i++) {
@@ -506,8 +506,8 @@ void ERS_CLASS_ExternalModelLoader::AddTexture(ERS_STRUCT_ModelWriterData &Data,
         if (std::find(Data.TextureList.begin(), Data.TextureList.end(), FilePath) == Data.TextureList.end()) {
             Data.TextureList.push_back(FilePath);
             Data.TextureNames.push_back(Str.C_Str());
-            TargetMesh->Loader_RequestedTextureInformation_.push_back(std::make_pair(TypeName, Str.C_Str()));
         }   
+        TargetMesh->Loader_RequestedTextureInformation_.push_back(std::make_pair(TypeName, Str.C_Str()));
 
     }
 
