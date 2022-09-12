@@ -20,6 +20,7 @@
 
 #include <ERS_FUNCTION_ModelMetadataDecoderV0.0.0.h>
 #include <ERS_FUNCTION_ModelMetadataDecoderV0.0.1.h>
+#include <ERS_FUNCTION_ModelMetadataDecoderV0.0.2.h>
 
 
 /**
