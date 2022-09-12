@@ -7,11 +7,7 @@
 
 void ERS_FUNCTION_Legacy_PreprocessTextureInfo(YAML::Node Metadata, ERS_STRUCT_Model* Model, ERS_STRUCT_SystemUtils* SystemUtils, long AssetID, bool LogEnable) {
 
-    // Read Metadata From Asset
-    std::unique_ptr<ERS_STRUCT_IOData> ModelMetadata = std::make_unique<ERS_STRUCT_IOData>();
-    SystemUtils->ERS_IOSubsystem_->ReadAsset(AssetID, ModelMetadata.get());
-    std::string ModelMetadataString = std::string((const char*)ModelMetadata->Data.get());
-    YAML::Node Metadata = YAML::Load(ModelMetadataString);
+    SystemUtils->Logger_->Log("Using Legacy Model Texture Identification", 4, LogEnable);
 
     // Read Mesh
     Assimp::Importer Importer;
@@ -21,7 +17,7 @@ void ERS_FUNCTION_Legacy_PreprocessTextureInfo(YAML::Node Metadata, ERS_STRUCT_M
 
     // Log Errors
     if (!Scene || Scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !Scene->mRootNode) {
-        SystemUtils_->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
+        SystemUtils->Logger_->Log(std::string(std::string("Model Loading Error: ") + std::string(Importer.GetErrorString())).c_str(), 10);
         Model->IsReadyForGPU = false;
         return;
     }
