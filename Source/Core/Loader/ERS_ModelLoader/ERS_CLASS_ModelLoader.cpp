@@ -563,9 +563,9 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, unsi
         }
     }
 
-    // Process Materials
-    aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
-    IdentifyMeshTextures(Material, &OutputMesh);
+    // // Process Materials
+    // aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
+    // IdentifyMeshTextures(Material, &OutputMesh);
 
 
     // Return Populated Mesh

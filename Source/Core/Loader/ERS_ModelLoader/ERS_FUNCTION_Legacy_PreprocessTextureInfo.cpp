@@ -119,12 +119,14 @@ void ERS_CLASS_ModelLoader::ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, c
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
-        ProcessMesh(
-            Model,
-            (unsigned long)Mesh->mNumVertices,
-            (unsigned long)Mesh->mNumFaces*3,
-            Mesh,
-            Scene
+        Model->Meshes_.push_back(
+            ProcessMesh(
+                Model,
+                (unsigned long)Mesh->mNumVertices,
+                (unsigned long)Mesh->mNumFaces*3,
+                Mesh,
+                Scene
+            )
         );
 
     }
@@ -141,75 +143,6 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, unsi
 
     // Create Data Holders
     ERS_STRUCT_Mesh OutputMesh;
-    OutputMesh = Model->Meshes[Model->NumMeshes_];
-
-
-
-    OutputMesh.Vertices.reserve(PreallocVertSize);
-    OutputMesh.Indices.reserve(PreallocIndSize);
-
-    // Iterate Through Meshes' Vertices
-    for (unsigned int i = 0; i < Mesh->mNumVertices; i++) {
-
-        // Hold Vertex Data
-        ERS_STRUCT_Vertex Vertex;
-        glm::vec3 Vector;
-
-
-        Vector.x = Mesh->mVertices[i].x;
-        Vector.y = Mesh->mVertices[i].y;
-        Vector.z = Mesh->mVertices[i].z;
-        Vertex.Position = Vector - Model->BoxOffset_;
-
-        if (Mesh->HasNormals())
-        {
-            Vector.x = Mesh->mNormals[i].x;
-            Vector.y = Mesh->mNormals[i].y;
-            Vector.z = Mesh->mNormals[i].z;
-            Vertex.Normal = Vector;
-        }
-
-        if (Mesh->mTextureCoords[0]) {
-
-            glm::vec2 Vec;
-
-            // Get Texture Coordinates
-            Vec.x = Mesh->mTextureCoords[0][i].x;
-            Vec.y = Mesh->mTextureCoords[0][i].y;
-            Vertex.TexCoords = Vec;
-
-            // Tangent
-            Vector.x = Mesh->mTangents[i].x;
-            Vector.y = Mesh->mTangents[i].y;
-            Vector.z = Mesh->mTangents[i].z;
-            Vertex.Tangent = Vector;
-
-            // Bitangent
-            Vector.x = Mesh->mBitangents[i].x;
-            Vector.y = Mesh->mBitangents[i].y;
-            Vector.z = Mesh->mBitangents[i].z;
-            Vertex.Bitangent = Vector;
-
-        } else {
-            Vertex.TexCoords = glm::vec2(0.0f, 0.0f);
-        }
-
-        OutputMesh.Vertices.push_back(Vertex);
-
-
-
-    }
-
-    // Iterate Through Faces
-    for (unsigned int i = 0; i < Mesh->mNumFaces; i++) {
-
-        aiFace Face = Mesh->mFaces[i];
-
-        // Get Face Indices
-        for (unsigned int j = 0; j < Face.mNumIndices; j++) {
-            OutputMesh.Indices.push_back(Face.mIndices[j]);
-        }
-    }
 
     // Process Materials
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
@@ -217,9 +150,6 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, unsi
 
 
     // Return Populated Mesh
-    Model->Meshes[Model->NumMeshes_] = OutputMesh;
-    Model->NumMeshes_++;
-
     return OutputMesh;
 
 }
