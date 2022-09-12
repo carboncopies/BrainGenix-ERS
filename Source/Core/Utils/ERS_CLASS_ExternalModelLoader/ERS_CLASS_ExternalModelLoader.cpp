@@ -316,6 +316,76 @@ void ERS_CLASS_ExternalModelLoader::ProcessNode(ERS_STRUCT_ModelWriterData &Data
 
 
 }
+
+
+
+
+void IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mesh* Mesh) {
+
+    std::vector<std::pair<aiTextureType, std::string>> TextureTypes;
+    TextureTypes.push_back(std::make_pair(aiTextureType_AMBIENT, "texture_ambient"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_AMBIENT_OCCLUSION, "texture_ambient_occlusion"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_BASE_COLOR, "texture_base_color"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_DIFFUSE, "texture_diffuse"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_DIFFUSE_ROUGHNESS, "texture_diffuse_roughness"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_DISPLACEMENT, "texture_displacement"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_EMISSION_COLOR, "texture_emission_color"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_EMISSIVE, "texture_emissive"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_HEIGHT, "texture_height"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_LIGHTMAP, "texture_lightmap"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_METALNESS, "texture_metalness"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_NONE, "texture_none"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_NORMAL_CAMERA, "texture_normal_camera"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_NORMALS, "texture_normals"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_OPACITY, "texture_opacity"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_REFLECTION, "texture_reflection"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_SHININESS, "texture_shininess"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_SPECULAR, "texture_specular"));
+    TextureTypes.push_back(std::make_pair(aiTextureType_UNKNOWN, "texture_unknown"));
+
+    // Iterate Over All Texture Types
+    for (unsigned int TextureTypeIndex = 0; TextureTypeIndex < TextureTypes.size(); TextureTypeIndex++) {
+
+        aiTextureType Type = TextureTypes[TextureTypeIndex].first;
+        std::string TypeName = TextureTypes[TextureTypeIndex].second;
+
+        // Iterate Through Textures For This Type
+        for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {
+
+
+            // Calculate Texture Path
+            aiString TextureString;
+            Mat->GetTexture(Type, i, &TextureString);
+            std::string TextureIdentifier = std::string(std::string(TextureString.C_Str()));
+
+            //std::string Message = std::string("Model Requesting Texture Of Type '") + TypeName + std::string("' With Identifier '") + TextureIdentifier + std::string("'");
+            //SystemUtils_->Logger_->Log(Message, 3);
+
+            // Search Texture List For Index Of Same Match, Add To List Of Unique Textures If Not Found
+            bool AlreadyHasTexture = false;
+            for (unsigned long x = 0; x < Mesh->Loader_RequestedTextureInformation_.size(); x++) {
+                if (Mesh->Loader_RequestedTextureInformation_[x].second == TextureIdentifier) {
+                    //SystemUtils_->Logger_->Log(std::string("Found Matching Texture '") + Mesh->Loader_RequestedTextureInformation_[x].second + "'", 3);
+                    AlreadyHasTexture = true;
+                    break;
+                }
+            }
+
+            // If It's Not Already In The List, Add IT
+            if (!AlreadyHasTexture) {
+                Mesh->Loader_RequestedTextureInformation_.push_back(std::make_pair(TypeName, TextureIdentifier));
+            }
+
+
+        }
+
+    }
+
+}
+
+
+
+
 ERS_STRUCT_Mesh ERS_CLASS_ExternalModelLoader::ProcessMesh(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory) {
 
     // Create Data Holders
@@ -323,7 +393,8 @@ ERS_STRUCT_Mesh ERS_CLASS_ExternalModelLoader::ProcessMesh(ERS_STRUCT_ModelWrite
 
     // Process Materials
     aiMaterial* Material = Scene->mMaterials[Mesh->mMaterialIndex];
-    HandleMeshTextures(Data, Model, Material, ModelDirectory, &OutputMesh);
+    // HandleMeshTextures(Data, Model, Material, ModelDirectory, &OutputMesh);
+    IdentifyMeshTextures(Material, &OutputMesh);
 
     // Iterate Through Meshes' Vertices
     for (unsigned int i = 0; i < Mesh->mNumVertices; i++) {
@@ -391,6 +462,12 @@ ERS_STRUCT_Mesh ERS_CLASS_ExternalModelLoader::ProcessMesh(ERS_STRUCT_ModelWrite
     return OutputMesh;
 
 }
+
+
+
+
+
+
 void ERS_CLASS_ExternalModelLoader::HandleMeshTextures(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory, ERS_STRUCT_Mesh* TargetMesh) {
 
     SystemUtils_->Logger_->Log("Identifying Mesh Textures", 3);
