@@ -312,11 +312,11 @@ std::string ERS_CLASS_ModelWriter::GenerateModelMetadata(ERS_STRUCT_ModelWriterD
     Logger_->Log("Saving Mesh-Texture Relationship Information To ERS Metadata Header", 4);
     for (unsigned int i = 0; i < Data.Model->Meshes.size(); i++) {
         MetadataEmitter<<YAML::Key<<std::to_string(i)<<YAML::Key<<YAML::BeginMap;
-        for (unsigned int x = 0; x < Data.Model->Meshes[i].Textures_.size(); x++) {
+        for (unsigned int x = 0; x < Data.Model->Meshes[i].Loader_RequestedTextureInformation_.size(); x++) {
             MetadataEmitter<<YAML::Key<<std::to_string(x)<<YAML::Key<<YAML::BeginMap;
 
-            MetadataEmitter<<YAML::Key<<"Identifier"<<YAML::Value<<Data.Model->Meshes[i].Textures_[x]->Path;
-            MetadataEmitter<<YAML::Key<<"Type"<<YAML::Value<<Data.Model->Meshes[i].Textures_[x]->Type;
+            MetadataEmitter<<YAML::Key<<"Identifier"<<YAML::Value<<Data.Model->Meshes[i].Loader_RequestedTextureInformation_[x].second;
+            MetadataEmitter<<YAML::Key<<"Type"<<YAML::Value<<Data.Model->Meshes[i].Loader_RequestedTextureInformation_[x].first;
             
             MetadataEmitter<<YAML::EndMap;
         }
