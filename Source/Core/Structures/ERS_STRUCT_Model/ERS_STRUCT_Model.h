@@ -35,6 +35,7 @@ struct ERS_STRUCT_Model {
     std::string Name = "Name Not Assigned";
     long ShaderOverrideIndex_ = -1; /**<If not -1, This indicates that the model is requesting a custom shader, and the value is the index of the shader in the system*/
     long AssetID;
+    int NumMeshes_ = 0; /**<Number of loaded meshes*/
 
     
 

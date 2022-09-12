@@ -58,7 +58,7 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
             Number = std::to_string(AmbientOcclusionHandle++);
             TypeID = 1;
             HasAmbientOcclusion = true;
-        } else if(Type == "texture_diffuse") {
+        } else if(Type == "texture_diffuse" || Type == "texture_base_color") {
             Number = std::to_string(DiffuseHandle++);
             TypeID = 2;
             HasDiffuse = true;

@@ -18,13 +18,18 @@ bool ERS_FUNCTION_DecodeModelMetadata(YAML::Node Metadata, ERS_STRUCT_Model* Mod
     bool Status = false;
     if (FormatVersion == "0.0.0") {
         SystemUtils->Logger_->Log("Determined Model Metadata Version To Be '0.0.0', Attempting To Decode Model Metadata", 3, LogEnable);
+        ERS_FUNCTION_Legacy_PreprocessTextureInfo(Metadata, Model, SystemUtils, AssetID, LogEnable);
         Status =  ERS_FUNCTION_DecodeModelMetadataV000(Metadata, Model, SystemUtils, AssetID, LogEnable);
     } else if (FormatVersion == "0.0.1") {
         SystemUtils->Logger_->Log("Determined Model Metadata Version To Be '0.0.1', Attempting To Decode Model Metadata", 3, LogEnable);
+        ERS_FUNCTION_Legacy_PreprocessTextureInfo(Metadata, Model, SystemUtils, AssetID, LogEnable);
         Status =  ERS_FUNCTION_DecodeModelMetadataV001(Metadata, Model, SystemUtils, AssetID, LogEnable);
+    } else if (FormatVersion == "0.0.2") {
+        SystemUtils->Logger_->Log("Determined Model Metadata Version To Be '0.0.2', Attempting To Decode Model Metadata", 3, LogEnable);
+        Status =  ERS_FUNCTION_DecodeModelMetadataV002(Metadata, Model, SystemUtils, AssetID, LogEnable);
     } else {
         // Failed To Decode Version
-        SystemUtils->Logger_->Log("Failed To Decode Metadata Version, Aborting Load", 8);
+        SystemUtils->Logger_->Log("Unsupported Format Version, Aborting Load", 8);
         return false;
     }
 

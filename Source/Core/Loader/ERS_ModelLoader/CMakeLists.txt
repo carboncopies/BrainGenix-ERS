@@ -11,8 +11,10 @@ add_library(ERS_ModelLoader
             "ERS_CLASS_AssetStreamingManager.cpp"
             "ERS_CLASS_AsyncTextureUpdater.cpp"
             "ERS_CLASS_AssetStreamingSystemResourceMonitor.cpp"
+            "ERS_FUNCTION_Legacy_PreprocessTextureInfo.cpp"
             "ERS_FUNCTION_ModelMetadataDecoderV0.0.0.cpp"
             "ERS_FUNCTION_ModelMetadataDecoderV0.0.1.cpp"
+            "ERS_FUNCTION_ModelMetadataDecoderV0.0.2.cpp"
             "ERS_FUNCTION_ModelMetadataDecoderManager.cpp"
 
             # Add Header Files (.h)
@@ -20,8 +22,10 @@ add_library(ERS_ModelLoader
             "ERS_CLASS_AssetStreamingManager.h"
             "ERS_CLASS_AsyncTextureUpdater.h"
             "ERS_CLASS_AssetStreamingSystemResourceMonitor.h"
+            "ERS_FUNCTION_Legacy_PreprocessTextureInfo.h"
             "ERS_FUNCTION_ModelMetadataDecoderV0.0.0.h"
             "ERS_FUNCTION_ModelMetadataDecoderV0.0.1.h"
+            "ERS_FUNCTION_ModelMetadataDecoderV0.0.2.h"
             "ERS_FUNCTION_ModelMetadataDecoderManager.h"
 
 

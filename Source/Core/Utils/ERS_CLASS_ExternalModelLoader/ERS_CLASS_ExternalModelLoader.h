@@ -86,7 +86,7 @@ private:
      * @param Type 
      * @param TypeName 
      */
-    void AddTexture(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory);
+    void AddTexture(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory, ERS_STRUCT_Mesh* TargetMesh);
 
 
     /**
@@ -119,7 +119,7 @@ private:
      * @param Material 
      * @param ModelDirectory 
      */
-    void HandleMeshTextures(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory);
+    void HandleMeshTextures(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory, ERS_STRUCT_Mesh* TargetMesh);
 
     /**
      * @brief Finds and loads all the relevant textures into memory.
