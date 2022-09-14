@@ -372,7 +372,7 @@ void ERS_CLASS_AsyncTextureUpdater::SetLevelRAM(ERS_STRUCT_Model* Model, bool Lo
         // Also apparenly I don't know how to spell...
         // Load New Levels Into Memory
         if (Model->TextureLevelInRAM_ < Model->TargetTextureLevelRAM) {
-            for (int LevelToLoad = Model->TextureLevelInRAM_; LevelToLoad <= Model->TargetTextureLevelRAM; LevelToLoad++) {
+            for (int LevelToLoad = std::max(Model->TextureLevelInRAM_, 0); LevelToLoad <= Model->TargetTextureLevelRAM; LevelToLoad++) {
                 for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
                     LoadImageDataRAM(&Model->Textures_[TextureIndex], LevelToLoad, LogEnable);
                 }
