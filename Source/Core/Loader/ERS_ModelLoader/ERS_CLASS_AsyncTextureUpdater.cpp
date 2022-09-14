@@ -623,7 +623,6 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 
 
 }
-
 void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
 
     // Name Thread
@@ -724,24 +723,18 @@ void ERS_CLASS_AsyncTextureUpdater::TextureLoaderThread(int Index) {
     // Shut Down FreeImage
     FreeImage_DeInitialise();
 }
-
-
 int ERS_CLASS_AsyncTextureUpdater::GetNumLoaderThreads() {
     return NumLoaderThreads_;
 }
-
 int ERS_CLASS_AsyncTextureUpdater::GetNumStreamerThreads() {
     return NumPusherThreads_;
 }
-
 void ERS_CLASS_AsyncTextureUpdater::SetNumLoaderThreads(int NumThreads) {
     NumLoaderThreads_ = NumThreads;
 }
-
 void ERS_CLASS_AsyncTextureUpdater::SetNumStreamerThreads(int NumThreads) {
     NumPusherThreads_ = NumThreads;
 }
-
 void ERS_CLASS_AsyncTextureUpdater::SetupPusherThreads() {
 
     // Setup Threads
