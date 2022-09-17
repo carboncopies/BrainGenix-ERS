@@ -60,6 +60,9 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     } else if (Level > (int)Texture->TextureLevels.size()) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Nonexistant Texture Level", 8, LogEnable);
         return false;
+    } else if (!ResourceMonitor_->TextureFitsInRAMBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes)) {
+        SystemUtils_->Logger_->Log("Cannot Load Texture Into Memory, Will Not Fit In RAM Budget", 6);
+        return false;
     }
 
     // Check If Level Already Loaded
