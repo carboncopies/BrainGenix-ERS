@@ -36,7 +36,7 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
         SystemUtils_->Logger_->Log("Reading Configuration File For RAM Margin", 4);
         long RAMMargin = SystemConfig["RAMMarginBytes"].as<long>();
         SystemUtils_->Logger_->Log(std::string("Adding RAM Margin Of ") + std::to_string(RAMMargin) + " Bytes", 4);
-        
+
         TotalSystemRAM_ -= RAMMargin;
 
     }
