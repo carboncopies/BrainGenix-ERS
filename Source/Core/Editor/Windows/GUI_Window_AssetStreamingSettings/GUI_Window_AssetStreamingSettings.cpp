@@ -93,6 +93,7 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                     SystemUtils_->RendererSettings_->VRAMBudget_ = VRAMBudgetMiB_ * 1048576;
                     SystemUtils_->RendererSettings_->RAMBudget_ = RAMBudgetMiB_ * 1048576;
                     
+                    
                     // Update Threads
                     int LastLoaderThreadCount = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetNumLoaderThreads();
                     if (LastLoaderThreadCount != TextureLoadingThreads_) {

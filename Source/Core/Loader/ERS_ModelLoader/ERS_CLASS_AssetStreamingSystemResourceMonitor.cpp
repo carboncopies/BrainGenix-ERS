@@ -65,6 +65,10 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
         SystemUtils_->Logger_->Log(std::string("Failed To Detect VRAM Size, Using Config Specified VRAM Size Of ") + std::to_string(TotalSystemVRAM_) + " Bytes", 3);
     }
 
+    // Update Renderer Setting Info Struct
+    SystemUtils_->RendererSettings_->VRAMBudget_ = TotalSystemVRAM_;
+    SystemUtils_->RendererSettings_->RAMBudget_ = TotalSystemRAM_;
+
 }
 
 ERS_CLASS_AssetStreamingSystemResourceMonitor::~ERS_CLASS_AssetStreamingSystemResourceMonitor() {
