@@ -124,7 +124,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     FreeImage_Unload(RawImage);
     FreeImage_CloseMemory(FIImageData);
 
-
     std::pair<int, int> TargetWidthHeight = Texture->TextureLevels[Level].LevelResolution;
     if ((TargetWidthHeight.first != Width) && (TargetWidthHeight.first != -1)) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
@@ -142,7 +141,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         ResourceMonitor_->DeallocateTextureRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
         return false;
     }
-    
 
     // Detect NumChannels
     if ((Channels < 1) || (Channels > 4)) {
