@@ -77,7 +77,6 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::~ERS_CLASS_AssetStreamingSystemRe
 
 }
 
-
 bool ERS_CLASS_AssetStreamingSystemResourceMonitor::TextureFitsInVRAMBudget(unsigned long Size) {
 
     BlockUpdates_.lock();
