@@ -40,6 +40,7 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
         TotalSystemRAM_ -= RAMMargin;
 
     }
+    
 
     // VRAM
     if (SystemConfig["OverrideVRAM"].as<bool>()) {
