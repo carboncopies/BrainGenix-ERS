@@ -163,9 +163,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         return false;
     }
 
-    // fix images loading incorrectly (perhaps due to broken numbers of channels?
-    // add error textures so that we can display the error on the model to make it easier to understand what the issue is - for example, display "Loading Error: Invalid Num Image Channels" for the above issue and add the same for the other issues.
-
     // Finally After Passing Sanity Checks, Populate Info.
     Texture->TextureLevels[Level].LevelBitmap = Image;
     Texture->TextureLevels[Level].LevelLoadedInRAM = true;
