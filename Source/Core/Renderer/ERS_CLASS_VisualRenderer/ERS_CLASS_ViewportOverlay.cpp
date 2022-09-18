@@ -231,7 +231,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
         ImVec4 TextColor = ImVec4(1.0f - (HWInfo.Dynamic_.PhysicalMemoryFree / FreeMemWarning), HWInfo.Dynamic_.PhysicalMemoryFree / FreeMemWarning, 0.0f, 1.0f);
         float FreeMemoryMiB = HWInfo.Dynamic_.PhysicalMemoryFree / 1048576;
         std::string WarningText = "WARNING: Free System Memory Low (" + std::to_string(FreeMemoryMiB) + "MiB)";
-        ImGui::TextColored(TextColor, WarningText.c_str());
+        ImGui::TextColored(TextColor, "%s", WarningText.c_str());
     }
 
 
