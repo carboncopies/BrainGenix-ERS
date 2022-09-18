@@ -20,16 +20,21 @@
 
 #include <GLFW/glfw3.h>
 
+#include <LuciferIL/Lucifer_IncludeOnce.h>
+#include <LuciferIL/Lucifer.h>
+
 // Internal Libraries (BG convention: use <> instead of "")
+#include <ERS_CLASS_GPURequest.h>
 #include <RendererManager.h>
+
 #include <ERS_CLASS_LoggingSystem.h>
 #include <ERS_CLASS_HardwareInformation.h>
+#include <ERS_CLASS_ArgumentParser.h>
+#include <ERS_CLASS_ModelImporter.h>
 
 #include <ERS_SceneManager.h>
 
-
 #include <ERS_InputOutputSubsystem.h>
-#include <ERS_ModelWriter.h>
 #include <ERS_FramerateManager.h>
 #include <ERS_ProjectLoader.h>
 #include <ERS_ProjectManager.h>
@@ -59,8 +64,7 @@
 
 
 
-
-int main() {
+int main(int NumArguments, char** ArguemntValues) {
 
     // Initialize System Vars
     std::unique_ptr<ERS_STRUCT_SystemUtils> SystemUtils = std::make_unique<ERS_STRUCT_SystemUtils>();
@@ -72,6 +76,13 @@ int main() {
     // Instantiate Logging Subsystem
     SystemUtils->Logger_ = std::make_unique<ERS_CLASS_LoggingSystem>(*SystemUtils->LocalSystemConfiguration_.get());
     SystemUtils->Logger_->Log("Initialized Logging System", 5);
+
+    // Handle Command Line Arguments
+    ERS_CLASS_ArgumentParser ArgumentParser = ERS_CLASS_ArgumentParser(SystemUtils->Logger_.get());
+    ArgumentParser.ParseArguments(NumArguments, ArguemntValues);
+    SystemUtils->ArgumentString_ = ArgumentParser.GetArgumentString();
+    SystemUtils->Arguments_ = ArgumentParser.GetArgumentPairs();
+    
 
     // Setup Framerate Manager
     SystemUtils->Logger_->Log("Initializing Framerate Manager Subsystem", 5);
@@ -89,14 +100,9 @@ int main() {
     // Startup IO Subsystem And Other Related Systems
     SystemUtils->ERS_IOSubsystem_ = std::make_unique<ERS_CLASS_InputOutputSubsystem>(
         SystemUtils->Logger_.get(),
-        *SystemUtils->LocalSystemConfiguration_.get()
+        *SystemUtils->LocalSystemConfiguration_.get(),
+        SystemUtils->Arguments_
     );
-
-    SystemUtils->ERS_ModelWriter_ = std::make_unique<ERS_CLASS_ModelWriter>(
-        SystemUtils->Logger_.get(),
-        SystemUtils->ERS_IOSubsystem_.get()
-    );
-
     SystemUtils->ERS_CLASS_HardwareInformation_ = std::make_unique<ERS_CLASS_HardwareInformation>(
         SystemUtils->Logger_.get(),
         *SystemUtils->LocalSystemConfiguration_.get()
@@ -132,6 +138,9 @@ int main() {
     SystemUtils->Logger_->Log("Instantiating ERS Project Manager Pointer", 4);
     ProjectUtils->ProjectManager_ = std::make_unique<ERS_CLASS_ProjectManager>(SystemUtils.get(), ProjectUtils->ProjectLoader_.get(), ProjectUtils->ProjectWriter_.get(), ProjectUtils->SceneManager_.get(), ProjectUtils->SceneLoader_.get());
 
+    SystemUtils->Logger_->Log("Instantiating ERS Model Importer", 4);
+    ProjectUtils->ModelImporter_ = std::make_unique<ERS_CLASS_ModelImporter>(SystemUtils.get());
+
 
     // Setup Human Input Devices
     SystemUtils->Logger_->Log("Setting Up Human Input Device Managers", 5);
@@ -154,7 +163,6 @@ int main() {
     RendererManager sERSRendererManager(SystemUtils.get(), ProjectUtils.get(), HIDUtils.get());
 
 
-    
     // Log Logo Text
     SystemUtils->Logger_->Log("Starting BrainGenix-ERS Instance", 2);
     SystemUtils->Logger_->Log("", 5);

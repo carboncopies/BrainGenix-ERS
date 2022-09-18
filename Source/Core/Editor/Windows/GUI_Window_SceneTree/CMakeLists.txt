@@ -3,7 +3,7 @@
 ########################################################################
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(Window_SceneTree
+add_library(GUI_Window_SceneTree
 
             # Add Source Files (.cpp)
             "GUI_Window_SceneTree.cpp"
@@ -48,14 +48,14 @@ add_library(Window_SceneTree
             )
 
 # Link 3rd Party Libs
-target_link_libraries(Window_SceneTree
+target_link_libraries(GUI_Window_SceneTree
     glad
     glfw
     IMGUI
     )
 
 # Link Internal Libs
-target_link_libraries(Window_SceneTree
+target_link_libraries(GUI_Window_SceneTree
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_SceneObject
@@ -68,4 +68,4 @@ target_link_libraries(Window_SceneTree
     ERS_SceneManager
     )
 
-target_include_directories(Window_SceneTree PUBLIC ./)
+target_include_directories(GUI_Window_SceneTree PUBLIC ./)

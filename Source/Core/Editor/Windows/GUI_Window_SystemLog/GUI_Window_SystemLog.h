@@ -22,7 +22,7 @@
  * @brief Window for the Import progress bar.
  * 
  */
-class Window_SystemLog {
+class GUI_Window_SystemLog {
 
 private:
 
@@ -42,13 +42,13 @@ public:
      * @brief Construct a new Window_SystemLog object
      * 
      */
-    Window_SystemLog(ERS_STRUCT_SystemUtils* SystemUtils);
+    GUI_Window_SystemLog(ERS_STRUCT_SystemUtils* SystemUtils);
     
     /**
      * @brief Destroy the Window_SystemLog object
      * 
      */
-    ~Window_SystemLog();
+    ~GUI_Window_SystemLog();
 
 
     /**

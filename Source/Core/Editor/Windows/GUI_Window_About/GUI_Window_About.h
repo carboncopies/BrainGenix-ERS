@@ -22,7 +22,7 @@
  * @brief Window for the Import progress bar.
  * 
  */
-class Window_About {
+class GUI_Window_About {
 
 private:
 
@@ -36,16 +36,16 @@ public:
 public:
 
     /**
-     * @brief Construct a new Window_About object
+     * @brief Construct a new GUI_Window_About object
      * 
      */
-    Window_About(ERS_STRUCT_SystemUtils* SystemUtils);
+    GUI_Window_About(ERS_STRUCT_SystemUtils* SystemUtils);
     
     /**
-     * @brief Destroy the Window_About object
+     * @brief Destroy the GUI_Window_About object
      * 
      */
-    ~Window_About();
+    ~GUI_Window_About();
 
 
     /**

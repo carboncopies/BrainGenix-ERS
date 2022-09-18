@@ -24,15 +24,20 @@ class ERS_CLASS_UserProfileManager {
 
 private:
 
-    ERS_CLASS_LoggingSystem* Logger_; /**<ERS_CLASS_LoggingSystem Instance Pointer*/
-    std::string UserProfilePath_; /**<Path To User Profile*/
-    YAML::Node UserProfile_; /**<YAML::Node Containing User Profile*/
+    ERS_CLASS_LoggingSystem* Logger_;               /**<ERS_CLASS_LoggingSystem Instance Pointer*/
+    YAML::Node               UserProfile_;          /**<YAML::Node Containing User Profile*/
+    std::string              UserColorProfileName_; /**<User Color Profile Name*/
+    std::string              UserProfilePath_;      /**<Path To User Profile*/
+    std::string              UserFont_;             /**<Name Of user fornt*/
+    int                      UserFontSize_;         /**<Size of user font*/
 
-    void LoadUserProfile(); /**<Load User Profile*/
 
-    std::string UserFont_; /**<Name Of user fornt*/
-    int UserFontSize_; /**<Size of user font*/
-    std::string UserColorProfileName_; /**<User Color Profile Name*/
+    /**
+     * @brief Loads a user profile.
+     * 
+     */
+    void LoadUserProfile();
+
 
 public:
 

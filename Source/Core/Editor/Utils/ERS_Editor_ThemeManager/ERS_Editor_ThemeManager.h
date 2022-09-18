@@ -30,11 +30,18 @@ class ERS_CLASS_ThemeManager {
 private:
 
     ERS_CLASS_LoggingSystem* Logger_; /**<ERS_CLASS_LoggingSystem Instance*/
-    const char* ThemePath_; /**<Filepath Where Themes Are Located*/
+    const char*              ThemePath_; /**<Filepath Where Themes Are Located*/
 
     std::vector<YAML::Node> ThemeFiles_; /**<List Of YAML::Node files*/
 
-    ImVec4 ReadColor(const char* NodeName, YAML::Node Target); /**<Reads A Color From The Config*/
+    /**
+     * @brief Reads a color from the configuration file.
+     * 
+     * @param NodeName 
+     * @param Target 
+     * @return ImVec4 
+     */
+    ImVec4 ReadColor(const char* NodeName, YAML::Node Target);
 
 
 public:

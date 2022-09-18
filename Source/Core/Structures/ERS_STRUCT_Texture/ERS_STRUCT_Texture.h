@@ -8,26 +8,35 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <string>
+#include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <FreeImage.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-
+#include <ERS_STRUCT_TextureLevel.h>
 
 // Structure To Hold 2D ERS Texture
 struct ERS_STRUCT_Texture {
 
-    // Set OpenGL Handles
-    unsigned int ID;
-    
+    // New Loading System Info
+    std::vector<ERS_STRUCT_TextureLevel> TextureLevels; /**<Levels in this texture*/
+
+    unsigned int BestAvailableOpenGLID = 0; /**<The current best ID we have loaded*/
+    bool HasAnyLevelReady = false; /**<Tells the mesh renderer if we have any levels ready for it*/
+
+    int TextureLevelInRAM_ = 0; /**<Determines the current texture level in RAM*/
+    int TextureLevelInVRAM_ = 0; /**<Determines the current texture level in RAM*/
+
+    int NumberChannels; /**<Shows the number of color channels in this texture*/
+
     // Set ImageData For Deferred OpenGL Loading
-    float Channels;
-    float Width;
-    float Height;
-    FIBITMAP* ImageData;
-    unsigned char* ImageBytes;
-    bool FreeImageBackend = true;
+    // float Channels;
+    // float Width;
+    // float Height;
+    // FIBITMAP* ImageData;
+    // unsigned char* ImageBytes;
+    // bool FreeImageBackend = true;
     bool HasImageData = false;
 
     // Set Metadata

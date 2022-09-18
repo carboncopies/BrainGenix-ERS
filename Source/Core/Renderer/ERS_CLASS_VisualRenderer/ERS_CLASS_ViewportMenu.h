@@ -41,14 +41,12 @@ class ERS_CLASS_ViewportMenu {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Pointer to systemtuils resource*/
-    ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<Pointer to project utils instance*/
-
-    std::vector<std::unique_ptr<ERS_STRUCT_Shader>>* Shaders_; /**<Pointer to vector containing shader information*/
-
-    bool* IsEditorMode_; /**<Pointer to bool setting editor mode to enabled or disablewd*/
-    double* GameStartTime_; /**<Pointer to float setting the glfw time when the game clock started*/
-
+    ERS_STRUCT_SystemUtils*  SystemUtils_ =   nullptr; /**<Pointer to systemtuils resource*/
+    ERS_STRUCT_ProjectUtils* ProjectUtils_ =  nullptr; /**<Pointer to project utils instance*/
+    bool*                    IsEditorMode_ =  nullptr; /**<Pointer to bool setting editor mode to enabled or disablewd*/
+    double*                  GameStartTime_ = nullptr; /**<Pointer to float setting the glfw time when the game clock started*/
+    
+    std::vector<std::unique_ptr<ERS_STRUCT_Shader>>* Shaders_ = nullptr; /**<Pointer to vector containing shader information*/
 
 public:
 
@@ -76,6 +74,8 @@ public:
     void AddPointLight(ERS_CLASS_ShadowMaps* ShadowMaps);
     void AddDirectionalLight(ERS_CLASS_ShadowMaps* ShadowMaps);
     void AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps);
+    void AddScene();
+    void AddSceneCamera();
     
 
 };

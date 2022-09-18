@@ -8,15 +8,28 @@ add_library(ERS_SceneLoader
 
             # Add Source Files (.cpp)
             "ERS_SceneLoader.cpp"
+            "ERS_FUNCTION_YAMLHelpers.cpp"
+            "ERS_FUNCTION_SceneDecoderManager.cpp"
+            "ERS_FUNCTION_SceneDecoderV1.cpp"
+            "ERS_FUNCTION_SceneDecoderV2.cpp"
+            "ERS_FUNCTION_SceneDecoderV3.cpp"
+            "ERS_FUNCTION_SceneDecoderV4.cpp"
 
             # Add Header Files (.h)
             "ERS_SceneLoader.h"
+            "ERS_FUNCTION_YAMLHelpers.h"
+            "ERS_FUNCTION_SceneDecoderManager.h"
+            "ERS_FUNCTION_SceneDecoderV1.h"
+            "ERS_FUNCTION_SceneDecoderV2.h"
+            "ERS_FUNCTION_SceneDecoderV3.h"
+            "ERS_FUNCTION_SceneDecoderV4.h"
 
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_SceneLoader
+    yaml-cpp
     )
 
 # Link Internal Libs
@@ -32,6 +45,7 @@ target_link_libraries(ERS_SceneLoader
     ERS_STRUCT_Texture
     ERS_STRUCT_Shader
     ERS_STRUCT_Light
+    ERS_STRUCT_SceneCamera
 
     )
 

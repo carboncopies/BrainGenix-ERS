@@ -27,6 +27,7 @@ target_link_libraries(ERS_ModelWriter
     ERS_STRUCT_Mesh
     ERS_STRUCT_Texture
     ERS_InputOutputSubsystem
+    ERS_STRUCT_ModelWriterData
     )
 
 target_include_directories(ERS_ModelWriter PUBLIC ./)

@@ -22,6 +22,7 @@ class ERS_CLASS_AssetIndexIOM {
 private:
 
     ERS_CLASS_LoggingSystem* Logger_; /**<Pointer To Logger Instance*/
+    std::mutex Lock_; /**<Stops other threads from accessing the maps when in use*/
 
 
 public:

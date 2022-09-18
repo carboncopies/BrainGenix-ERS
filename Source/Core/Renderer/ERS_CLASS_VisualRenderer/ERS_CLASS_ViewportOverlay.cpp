@@ -40,7 +40,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
             if (ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->Enabled) {
                 NumVerts += ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalVertices_;
                 NumIndices += ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalIndices_;
-                NumTextures += ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->OpenGLTextureIDs_.size();
+                NumTextures += ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->Textures_.size();
                 TotalModels ++;
                 if (!ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->IsTemplateModel) {
                     InstancedModels++;
@@ -151,7 +151,77 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
     }
 
+    // Show/Hide Memory Overlay Information
+    if (Viewport->ShowMemoryInfo_) {
 
+
+        float RAMMiBBudget = SystemUtils_->RendererSettings_->RAMBudget_ / 1048576.0f;
+        float VRAMMiBBudget = SystemUtils_->RendererSettings_->VRAMBudget_ / 1048576.0f;
+        float RAMMiBUsage = SystemUtils_->RendererSettings_->CurrentRAMUsage_ / 1048576.0f;
+        float VRAMMiBUsage = SystemUtils_->RendererSettings_->CurrentVRAMUsage_ / 1048576.0f;
+
+        std::string LabelText = "VRAM Budget (" + std::to_string(VRAMMiBBudget)
+        + "MiB) RAM Budget (" + std::to_string(RAMMiBBudget)
+        + "MiB) VRAM Usage (" + std::to_string(VRAMMiBUsage)
+        + "MiB) RAM Usage (" + std::to_string(RAMMiBUsage)
+        + "MiB)";
+        ImGui::TextColored(ImVec4(0.25f, 1.0f, 0.25f, 1.0f), "%s", LabelText.c_str());
+
+
+    }
+
+
+    // RAM Loading Queue
+    if (Viewport->ShowRAMLoadingInfo_) {
+
+        std::string RAMLoadingQueue = ProjectUtils_->ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->RAMQueueString;
+
+        // Detect Color
+        int QueueSize = RAMLoadingQueue.size();
+        ImVec4 Color = ImVec4(0.0f, 0.0f, 0.0f, 1.0f);
+        if (QueueSize < 15) {
+            Color = ImVec4(0.0f, 1.0f, 0.0f, 1.0f);
+        } else if (QueueSize < 30) {
+            Color = ImVec4(0.2f, 0.8f, 0.0f, 1.0f);
+        } else if (QueueSize < 45) {
+            Color = ImVec4(0.4f, 0.6f, 0.0f, 1.0f);
+        } else if (QueueSize < 60) {
+            Color = ImVec4(0.6f, 0.4f, 0.0f, 1.0f);
+        } else if (QueueSize < 75) {
+            Color = ImVec4(0.8f, 0.2f, 0.0f, 1.0f);
+        } else {
+            Color = ImVec4(1.0f, 0.0f, 0.0f, 1.0f);
+        }
+
+        ImGui::TextColored(Color, "RAM Loading Queue: %s", RAMLoadingQueue.c_str());
+
+    }
+
+    // VRAM Loading Queue
+    if (Viewport->ShowVRAMLoadingInfo_) {
+
+        std::string VRAMLoadingQueue = ProjectUtils_->ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->VRAMQueueString;
+
+        // Detect Color
+        int QueueSize = VRAMLoadingQueue.size();
+        ImVec4 Color = ImVec4(0.0f, 0.0f, 0.0f, 1.0f);
+        if (QueueSize < 5) {
+            Color = ImVec4(0.0f, 1.0f, 0.0f, 1.0f);
+        } else if (QueueSize < 10) {
+            Color = ImVec4(0.0f, 0.8f, 0.2f, 1.0f);
+        } else if (QueueSize < 15) {
+            Color = ImVec4(0.0f, 0.6f, 0.4f, 1.0f);
+        } else if (QueueSize < 25) {
+            Color = ImVec4(0.0f, 0.4f, 0.6f, 1.0f);
+        } else if (QueueSize < 25) {
+            Color = ImVec4(0.0f, 0.2f, 0.8f, 1.0f);
+        } else {
+            Color = ImVec4(0.0f, 0.0f, 1.0f, 1.0f);
+        }
+
+        ImGui::TextColored(Color, "VRAM Loading Queue: %s", VRAMLoadingQueue.c_str());
+
+    }
 
 
 }

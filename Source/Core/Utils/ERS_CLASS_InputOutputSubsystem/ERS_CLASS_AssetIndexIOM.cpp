@@ -20,6 +20,9 @@ ERS_CLASS_AssetIndexIOM::~ERS_CLASS_AssetIndexIOM() {
 
 bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
 
+
+
+
     Logger_->Log("Loading Asset Index", 4);
 
     // Decode Asset Index Into YAML::Node
@@ -34,6 +37,8 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
     }
     Logger_->Log("Finished Decoding Asset Index", 4);
 
+
+    Lock_.lock();
 
     // Clear Internal Maps
     Logger_->Log("Clearing Internal Maps For Asset Metadata", 3);
@@ -70,6 +75,8 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
     }
     Logger_->Log("Finished Populating Asset Index Metadata", 4);
 
+    Lock_.unlock();
+
 
     return true;
 
@@ -90,10 +97,13 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(ERS_STRUCT_IOData* Data) {
         long CurrentIndex = AssetIDsFound_[i];
         Metadata<<YAML::Key<<CurrentIndex<<YAML::BeginMap;
         
+        
+        Lock_.lock();
         Metadata<<YAML::Key<<"AssetType"<<YAML::Value<<AssetTypeName_[CurrentIndex];
         Metadata<<YAML::Key<<"AssetCreationDate"<<YAML::Value<<AssetCreationDate_[CurrentIndex];
         Metadata<<YAML::Key<<"AssetModificationDate"<<YAML::Value<<AssetModificationDate_[CurrentIndex];
         Metadata<<YAML::Key<<"AssetFileName"<<YAML::Value<<AssetFileName_[CurrentIndex];
+        Lock_.unlock();
         
 
         Metadata<<YAML::EndMap;
@@ -118,15 +128,20 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(ERS_STRUCT_IOData* Data) {
 
 bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, ERS_STRUCT_IOData* Data) {
 
+
     std::string AssetType = Data->AssetTypeName;
     std::string Modified = Data->AssetModificationDate;
     std::string Created = Data->AssetCreationDate;
     std::string FileName = Data->AssetFileName;
 
+
+    Lock_.lock();
     AssetTypeName_[AssetID] = {AssetType};
     AssetCreationDate_[AssetID] = {Created};
     AssetModificationDate_[AssetID] = {Modified};
     AssetFileName_[AssetID] = {FileName};
+    Lock_.unlock();
+
 
     // Check If Already In Loaded Assets, If Not, Add
     bool AlreadyInIndex = false;
@@ -140,6 +155,7 @@ bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, ERS_STRUCT_IOData* 
         AssetIDsFound_.push_back(AssetID);
     }
 
+
     return true;
 
 }
@@ -147,10 +163,12 @@ bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, ERS_STRUCT_IOData* 
 bool ERS_CLASS_AssetIndexIOM::ReadAssetIndex(long AssetID, ERS_STRUCT_IOData* Data) {
 
     // Lookup Asset Info (If ID Not Zero)
-    if (AssetID != 0) {
+    if (AssetID > 0) {
+        Lock_.lock();
         Data->AssetTypeName = AssetTypeName_[AssetID];
         Data->AssetCreationDate = AssetCreationDate_[AssetID];
         Data->AssetModificationDate = AssetModificationDate_[AssetID];
+        Lock_.unlock();
     } else {
         Data->AssetTypeName = std::string("Asset Index Metadata");
     }

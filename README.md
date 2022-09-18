@@ -17,8 +17,9 @@
 
 ## Windows:
 
-  Since we don't develop on Windows, builds aren't guarenteed to work. With that said, they *should* work most of the time. 
+  Since we don't develop on Windows, builds aren't guarenteed to work. With that said, they *should* work most of the time.   
   
+  **Note: Having windows set to a non english language seems to break includes for some reason.** We really wish that this wasn't an issue but it seems to be a problem for whatever reason. Apologies for the inconvenience.
 
   - Open Visual Stuido 2019 (Has to be this version)
   - Install python 3.9.5 (needed to link with the interpreter, embeddable version already included in project tree, also restart your machine after installing to avoid issues) (If just installing, make sure to restart after to make it show up in visual studio)
@@ -28,6 +29,13 @@
   - Set target to BrainGenix-ERS.exe
   - Hit `Build`
 
+## Mac:
+  
+  - Install one of the following:
+    - [Ubuntu](https://ubuntu.com/download)
+    - [Debian](https://www.debian.org/distrib/)
+    - [Fedora](https://getfedora.org/workstation/download/)
+  - Follow Linux build instructions
 
 # Keybinds
 
@@ -35,6 +43,7 @@
 
     "[lmb]" - (When Hovering Gizmo) - Move Gizmo
     "[left shift]" - (When Gizmo Active) - Move Camera While Moving Gizmo
+    "[esc]" - (When Gizmo Active) - Abort Current Movement
     "[s]" - Set Gizmo To Scale
     "[g]" - Set Gizmo To Translate
     "[r]" - Set Gizmo To Rotate

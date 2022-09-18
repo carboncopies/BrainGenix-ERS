@@ -25,13 +25,13 @@ class ERS_CLASS_Grid {
 
 private:
 
-    ERS_STRUCT_SystemUtils* SystemUtils_; /**<Shared Pointer To System Utils*/
-    ERS_STRUCT_Shader* GridShader_; /**<Pointer To Shader With Grid*/
-    glm::mat4 GridModelArray_; /**<Grid Model Mat4*/
+    ERS_STRUCT_SystemUtils* SystemUtils_    = nullptr;     /**<Shared Pointer To System Utils*/
+    ERS_STRUCT_Shader*      GridShader_     = nullptr;     /**<Pointer To Shader With Grid*/
+    glm::mat4               GridModelArray_;               /**<Grid Model Mat4*/
 
-    unsigned int GridVBO_; /**<OpenGL ID To Grid Vertex Buffer Object*/
-    unsigned int GridVAO_; /**<OpenGL ID To Grid Vertex Array Object*/
-    float GridScale_ = 25.0f; /**<Scale of the grid plane, does NOT set grid line scale. Use Grid Size For This Purpose.*/
+    unsigned int GridVBO_   = 0;     /**<OpenGL ID To Grid Vertex Buffer Object*/
+    unsigned int GridVAO_   = 0;     /**<OpenGL ID To Grid Vertex Array Object*/
+    float        GridScale_ = 25.0f; /**<Scale of the grid plane, does NOT set grid line scale. Use Grid Size For This Purpose.*/
 
 public:
 

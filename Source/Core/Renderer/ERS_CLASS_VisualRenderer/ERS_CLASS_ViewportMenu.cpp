@@ -95,7 +95,33 @@ void ERS_CLASS_ViewportMenu::AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps) {
 
 }
 
+void ERS_CLASS_ViewportMenu::AddScene() {
 
+    // Add Scene To List Of Scenes
+    ERS_STRUCT_Scene NewScene;
+    NewScene.ScenePath = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+    NewScene.SceneName = "New Scene";
+    NewScene.IsSceneLoaded = true;
+    NewScene.SceneFormatVersion = 1;
+    
+    ProjectUtils_->ProjectManager_->Project_.SceneIDs.push_back(NewScene.ScenePath);
+
+    ProjectUtils_->SceneManager_->AddScene(NewScene);
+
+
+}
+
+void ERS_CLASS_ViewportMenu::AddSceneCamera() {
+
+    std::shared_ptr<ERS_STRUCT_SceneCamera> SceneCamera = std::make_shared<ERS_STRUCT_SceneCamera>();
+    ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+
+    SceneCamera->UserDefinedName_ = "New Camera";
+
+    Scene->SceneCameras.push_back(SceneCamera);
+    Scene->IndexSceneObjects();
+
+}
 
 
 void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_ShadowMaps* ShadowMaps) {
@@ -113,6 +139,10 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             ImGui::MenuItem("System Resources Overlay", nullptr, &Viewport->ShowResourceInfo_);
             ImGui::MenuItem("Loading Time Overlay", nullptr, &Viewport->ShowLoadingTimeInfo_);
             ImGui::MenuItem("Light Debug Overlay", nullptr, &Viewport->ShowLightInfo_);
+            ImGui::MenuItem("Memory Info Overlay", nullptr, &Viewport->ShowMemoryInfo_);
+            ImGui::MenuItem("RAM Loading Queue Overlay", nullptr, &Viewport->ShowRAMLoadingInfo_);
+            ImGui::MenuItem("VRAM Loading Queue Overlay", nullptr, &Viewport->ShowVRAMLoadingInfo_);
+            
 
             ImGui::Separator();
 
@@ -120,6 +150,8 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             ImGui::MenuItem("Gizmo", nullptr, &Viewport->GizmoEnabled);
             ImGui::MenuItem("Grid", nullptr, &Viewport->GridEnabled);
             ImGui::MenuItem("Light Icons", nullptr, &Viewport->LightIcons);
+            ImGui::MenuItem("Outline Selected Model", nullptr, &Viewport->ShowBoxOnSelectedModel_);
+            ImGui::MenuItem("Model Bounding Boxes", nullptr, &Viewport->ShowBoundingBox_);
 
             ImGui::Separator();
 
@@ -217,6 +249,17 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
                 // Base Color
                 if (ImGui::BeginMenu("Base")) {
 
+                    if (ImGui::MenuItem("Red")) {
+                        Viewport->Grid->GridColor_ = glm::vec3(1.0f, 0.0f, 0.0f);
+                    }
+
+                    if (ImGui::MenuItem("Green")) {
+                        Viewport->Grid->GridColor_ = glm::vec3(0.0f, 1.0f, 0.0f);
+                    }
+
+                    if (ImGui::MenuItem("Blue")) {
+                        Viewport->Grid->GridColor_ = glm::vec3(0.0f, 0.0f, 1.0f);
+                    }
 
                     if (ImGui::MenuItem("White")) {
                         Viewport->Grid->GridColor_ = glm::vec3(1.0f);
@@ -346,6 +389,13 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             
             }
 
+            if (ImGui::MenuItem("Scene")) {
+                AddScene();
+            }
+            
+            if (ImGui::MenuItem("Camera")) {
+                AddSceneCamera();
+            }
 
         ImGui::EndMenu();
         }
@@ -361,6 +411,15 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
 
                 ImGui::Separator();
                 
+                if (ImGui::MenuItem("0.01275", nullptr, (Viewport->GridSnapAmountTranslate_ == 0.01275f))) {
+                    Viewport->GridSnapAmountTranslate_ = 0.01275f;
+                }
+                if (ImGui::MenuItem("0.025", nullptr, (Viewport->GridSnapAmountTranslate_ == 0.025f))) {
+                    Viewport->GridSnapAmountTranslate_ = 0.205f;
+                }
+                if (ImGui::MenuItem("0.05", nullptr, (Viewport->GridSnapAmountTranslate_ == 0.05f))) {
+                    Viewport->GridSnapAmountTranslate_ = 0.05f;
+                }
                 if (ImGui::MenuItem("0.1", nullptr, (Viewport->GridSnapAmountTranslate_ == 0.1f))) {
                     Viewport->GridSnapAmountTranslate_ = 0.1f;
                 }
@@ -421,6 +480,12 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
 
                 ImGui::Separator();
                 
+                if (ImGui::MenuItem("0.025", nullptr, (Viewport->GridSnapAmountScale_ == 0.025f))) {
+                    Viewport->GridSnapAmountScale_ = 0.025f;
+                }
+                if (ImGui::MenuItem("0.05", nullptr, (Viewport->GridSnapAmountScale_ == 0.05f))) {
+                    Viewport->GridSnapAmountScale_ = 0.05f;
+                }
                 if (ImGui::MenuItem("0.1", nullptr, (Viewport->GridSnapAmountScale_ == 0.1f))) {
                     Viewport->GridSnapAmountScale_ = 0.1f;
                 }
@@ -456,6 +521,41 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             // Stop Option
             if (ImGui::MenuItem("Stop", "Escape")) {
                 *IsEditorMode_ = !IsEditorMode_;
+            }
+
+        ImGui::EndMenu();
+        }
+
+
+        // Bounding Box Controls
+        if (ImGui::BeginMenu("Bounding Box")) {
+
+            // Options
+            ImGui::MenuItem("Depth Test", nullptr, &Viewport->DisableBoundingBoxDepthTest_);
+            ImGui::MenuItem("Wireframe", nullptr, &Viewport->WireframeBoundingBoxes_);
+
+            // Mode selector
+            if (ImGui::BeginMenu("Mode")) {
+                if (ImGui::MenuItem("Plain Color", nullptr, Viewport->BoundingBoxRenderer->GetBoundingBoxDisplayMode() == 0)) {
+                    Viewport->BoundingBoxRenderer->SetBoundingBoxDisplayMode(0);
+                }
+
+                if (ImGui::MenuItem("Target Texture Level (RAM)", nullptr, Viewport->BoundingBoxRenderer->GetBoundingBoxDisplayMode() == 1)) {
+                    Viewport->BoundingBoxRenderer->SetBoundingBoxDisplayMode(1);
+                }
+
+                if (ImGui::MenuItem("Target Texture Level (VRAM)", nullptr, Viewport->BoundingBoxRenderer->GetBoundingBoxDisplayMode() == 2)) {
+                    Viewport->BoundingBoxRenderer->SetBoundingBoxDisplayMode(2);
+                }
+
+                if (ImGui::MenuItem("Current Texture Level (RAM)", nullptr, Viewport->BoundingBoxRenderer->GetBoundingBoxDisplayMode() == 3)) {
+                    Viewport->BoundingBoxRenderer->SetBoundingBoxDisplayMode(3);
+                }
+
+                if (ImGui::MenuItem("Current Texture Level (VRAM)", nullptr, Viewport->BoundingBoxRenderer->GetBoundingBoxDisplayMode() == 4)) {
+                    Viewport->BoundingBoxRenderer->SetBoundingBoxDisplayMode(4);
+                }
+            ImGui::EndMenu();
             }
 
         ImGui::EndMenu();

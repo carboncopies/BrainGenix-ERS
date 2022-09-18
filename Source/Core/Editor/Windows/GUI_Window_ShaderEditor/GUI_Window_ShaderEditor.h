@@ -36,7 +36,7 @@
  * @brief This class provides the window for the shader editor.
  * 
  */
-class Window_ShaderEditor {
+class GUI_Window_ShaderEditor {
 
 private:
 
@@ -53,6 +53,11 @@ private:
     bool LastEnabledState_ = false; /**<Last State From Last Frame*/
     int LivePreviewShaderIndex_; /**<Index of Live Preview Shader*/
 
+
+    std::string NewShaderVertexText_;    /**<Default text in a new shader*/
+    std::string NewshaderFragmentText_;  /**<Default text in a new shader*/
+
+    
 
 private:
 
@@ -92,13 +97,13 @@ public:
      * 
      * @param SystemUtils 
      */
-    Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer);
+    GUI_Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer);
 
     /**
      * @brief Destroy the Window_ShaderEditor object
      * 
      */
-    ~Window_ShaderEditor();
+    ~GUI_Window_ShaderEditor();
 
     
     /**

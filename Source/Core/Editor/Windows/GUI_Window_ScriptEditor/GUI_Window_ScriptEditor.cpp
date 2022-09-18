@@ -5,7 +5,7 @@
 #include <GUI_Window_ScriptEditor.h>
 
 
-Window_ScriptEditor::Window_ScriptEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer) {
+GUI_Window_ScriptEditor::GUI_Window_ScriptEditor(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRenderer) {
 
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
@@ -18,14 +18,14 @@ Window_ScriptEditor::Window_ScriptEditor(ERS_STRUCT_SystemUtils* SystemUtils, ER
     ReloadEditorText(0);
 }
 
-Window_ScriptEditor::~Window_ScriptEditor() {
+GUI_Window_ScriptEditor::~GUI_Window_ScriptEditor() {
 
     SystemUtils_->Logger_->Log("GUI ScriptEditor Window Destructor Called", 6);
 
 }
 
 
-void Window_ScriptEditor::ReloadEditorText(int ScriptIndex) {
+void GUI_Window_ScriptEditor::ReloadEditorText(int ScriptIndex) {
 
     // Perform Sanity Check
     std::string Code;
@@ -41,7 +41,7 @@ void Window_ScriptEditor::ReloadEditorText(int ScriptIndex) {
 }
 
 
-void Window_ScriptEditor::SaveScript(std::string ScriptText, long AssetID) {
+void GUI_Window_ScriptEditor::SaveScript(std::string ScriptText, long AssetID) {
 
     // Write Data
     std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
@@ -56,7 +56,7 @@ void Window_ScriptEditor::SaveScript(std::string ScriptText, long AssetID) {
 
 }
 
-void Window_ScriptEditor::Draw() {
+void GUI_Window_ScriptEditor::Draw() {
 
     // // Check Enable Change
     // if (LastEnabledState_ != Enabled_) {
@@ -98,7 +98,7 @@ void Window_ScriptEditor::Draw() {
 
 
 
-void Window_ScriptEditor::DrawEditorWindow() {
+void GUI_Window_ScriptEditor::DrawEditorWindow() {
 
     bool Visible = ImGui::Begin("Script Editor", &Enabled_, ImGuiWindowFlags_MenuBar);
 
@@ -120,6 +120,9 @@ void Window_ScriptEditor::DrawEditorWindow() {
                         NewScript.Code_ = "# ERS Script\n";
                         NewScript.Name_ = "Untitled Script";
                         ProjectUtils_->ProjectManager_->Project_.Scripts.push_back(NewScript);
+
+                        SystemUtils_->Logger_->Log(std::string("Creating New Script With Asset ID '") + std::to_string(NewScript.AssetID) + std::string("'"), 0);
+                        SaveScript(NewScript.Code_, NewScript.AssetID);
 
                     }
 
@@ -145,7 +148,9 @@ void Window_ScriptEditor::DrawEditorWindow() {
                     // Save Options
                     ImGui::Separator();
                     if (ImGui::MenuItem("Save")) {
-                        SaveScript(Editor_->GetText(), ProjectUtils_->ProjectManager_->Project_.Scripts[SelectedScriptProgramIndex_].AssetID);
+                        long ScriptAssetID = ProjectUtils_->ProjectManager_->Project_.Scripts[SelectedScriptProgramIndex_].AssetID;
+                        SystemUtils_->Logger_->Log(std::string("Saving Script With Asset ID '") + std::to_string(ScriptAssetID) + std::string("'"), 0);
+                        SaveScript(Editor_->GetText(), ScriptAssetID);
                     }
 
                     // Exit Button
@@ -238,7 +243,7 @@ void Window_ScriptEditor::DrawEditorWindow() {
 }
 
 
-void Window_ScriptEditor::DrawToolsWindow() {
+void GUI_Window_ScriptEditor::DrawToolsWindow() {
 
     bool CompileVisible = ImGui::Begin("Script Tools", &Enabled_);
 

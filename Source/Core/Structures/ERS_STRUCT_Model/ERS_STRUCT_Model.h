@@ -28,23 +28,16 @@
 struct ERS_STRUCT_Model {
 
 
-    std::vector<ERS_STRUCT_Texture> TexturesToPushToGPU_;
-    std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
-    std::vector<unsigned int> OpenGLTextureIDs_;
-    double LoadingStartTime_; /**<Time that the loading started*/
-    double LoadingFinishTime_; /**<Time When Loading Was Completed*/
-    double TotalLoadingTime_; /**<The Total Time Needed To Load*/
-    unsigned long TotalVertices_; /**<Total Number Of Verts In This Model*/ 
-    unsigned long TotalIndices_; /**<Total Number Of Indices In Model*/
-
-
     // Model Data
     std::vector<ERS_STRUCT_Mesh> Meshes;
     std::vector<ERS_STRUCT_Texture> Textures_Loaded;
     std::string Directory;
     std::string Name = "Name Not Assigned";
+    long ShaderOverrideIndex_ = -1; /**<If not -1, This indicates that the model is requesting a custom shader, and the value is the index of the shader in the system*/
     long AssetID;
+    int NumMeshes_ = 0; /**<Number of loaded meshes*/
 
+    
 
 
     // Shadows Information
@@ -53,6 +46,37 @@ struct ERS_STRUCT_Model {
     bool ReceiveShadows_ = true; /**<Determines if this model is to have shadows applied to it.*/
 
 
+    // New Model Decoding System
+    std::vector<ERS_STRUCT_Texture> Textures_;
+    int TextureLevelInRAM_ = -1; /**<Determines the current texture level in RAM*/
+    int TextureLevelInVRAM_ = -1; /**<Determines the current texture level in RAM*/
+    int MaxTextureLevel_ = 0; /**<Determines the max texture level available, Only should be adjusted by the asset system*/
+    
+    int AssetLoadngStateVRAM = 0; /**<0 means nothing happening, -1 means unloading, 1 means loading next*/
+    int AssetLoadngStateRAM = 0; /**<0 means nothing happening, -1 means unloading, 1 means loading next*/
+
+    int TargetTextureLevelVRAM = 0; /**<Used in preliminary sorting to determine how much this needs to be loaded*/
+    int TargetTextureLevelRAM = 0; /**<Used in preliminary sorting to determine how much this needs to be loaded*/
+
+    // Bounding Box Info
+    glm::vec3 BoxScale_; /**<Bounding Box Size In Local Space (Multiply By Object's scale value to get true size)*/
+    glm::vec3 BoxOffset_; /**<Offset the center of the box so it's synced with the center of the model*/
+
+
+    // Texture Streaming System
+    bool TexturesBeingLoaded = false; /**<Used to set if the system is already loading textures*/
+    bool TexturesBeingPushed = false; /**<Used to set if the system is already pushing textures*/
+
+    std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
+
+    double LoadingStartTime_; /**<Time that the loading started*/
+    double LoadingFinishTime_; /**<Time When Loading Was Completed*/
+    double TotalLoadingTime_; /**<The Total Time Needed To Load*/
+    unsigned long TotalVertices_ = 0; /**<Total Number Of Verts In This Model*/ 
+    unsigned long TotalIndices_ = 0; /**<Total Number Of Indices In Model*/
+
+
+ 
 
     // Enable Config
     bool Enabled = true;
@@ -65,11 +89,10 @@ struct ERS_STRUCT_Model {
 
     // Model Config
     bool GammaCorrection = false;
-    bool FlipTextures = false;
     bool IsTemplateModel = false; /**<This indicates if the model is a the "master" copy of instanced models.*/
 
-    long MetadataID;
-    long ModelDataID;
+    long MetadataID; /**<Asset ID containing the YAML string with the model's info*/
+    long ModelDataID; /**<Asset ID containing the 3d model file used by the asset*/
     
     std::vector<long> TextureIDs;
     
@@ -78,6 +101,7 @@ struct ERS_STRUCT_Model {
     glm::vec3 ModelPosition = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::vec3 ModelRotation = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::vec3 ModelScale = glm::vec3(1.0f, 1.0f, 1.0f);
+    glm::vec3 TrueModelScale = glm::vec3(0.0f, 0.0f, 0.0f);
 
     glm::mat4 SourceModelLocRotScale_ = glm::mat4(1.0f);
     glm::mat4 ModelLocRotScale_ = glm::mat4(1.0f);

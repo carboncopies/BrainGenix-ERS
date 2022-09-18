@@ -1,17 +1,6 @@
 ﻿{
   "configurations": [
     {
-      "name": "x64-Debug",
-      "generator": "Visual Studio 16 2019 Win64",
-      "configurationType": "Debug",
-      "inheritEnvironments": [ "msvc_x64_x64" ],
-      "buildRoot": "${projectDir}\\out\\build\\${name}",
-      "installRoot": "${projectDir}/Binaries/",
-      "cmakeCommandArgs": "",
-      "buildCommandArgs": "",
-      "ctestCommandArgs": ""
-    },
-    {
       "name": "x64-Release",
       "generator": "Visual Studio 16 2019 Win64",
       "configurationType": "RelWithDebInfo",

@@ -25,7 +25,7 @@
  * @brief This class provides the window for a test editor, which doesn't actually do anything other than let you type into it to test zep.
  * 
  */
-class Window_TestEditor {
+class GUI_Window_TestEditor {
 
 
 private:
@@ -45,13 +45,13 @@ public:
      * 
      * @param SystemUtils 
      */
-    Window_TestEditor(ERS_STRUCT_SystemUtils* SystemUtils);
+    GUI_Window_TestEditor(ERS_STRUCT_SystemUtils* SystemUtils);
 
     /**
      * @brief Destroy the Window_TestEditor object
      * 
      */
-    ~Window_TestEditor();
+    ~GUI_Window_TestEditor();
 
 
     /**

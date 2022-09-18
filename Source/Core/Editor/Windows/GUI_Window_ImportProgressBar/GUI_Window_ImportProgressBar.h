@@ -21,7 +21,7 @@
  * @brief Window for the Import progress bar.
  * 
  */
-class Window_ImportProgressBar {
+class GUI_Window_ImportProgressBar {
 
 private:
 
@@ -47,13 +47,13 @@ public:
      * @brief Construct a new Window_ImportProgressBar object
      * 
      */
-    Window_ImportProgressBar(ERS_STRUCT_SystemUtils* SystemUtils);
+    GUI_Window_ImportProgressBar(ERS_STRUCT_SystemUtils* SystemUtils);
     
     /**
      * @brief Destroy the Window_ImportProgressBar object
      * 
      */
-    ~Window_ImportProgressBar();
+    ~GUI_Window_ImportProgressBar();
 
 
     /**

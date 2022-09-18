@@ -27,7 +27,7 @@
  * @brief Window for the Import progress bar.
  * 
  */
-class Window_ControllerSettings {
+class GUI_Window_ControllerSettings {
 
 private:
 
@@ -63,13 +63,13 @@ public:
      * @brief Construct a new Window_ControllerSettings object
      * 
      */
-    Window_ControllerSettings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
+    GUI_Window_ControllerSettings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_ProjectUtils* ProjectUtils);
     
     /**
      * @brief Destroy the Window_ControllerSettings object
      * 
      */
-    ~Window_ControllerSettings();
+    ~GUI_Window_ControllerSettings();
 
 
     /**

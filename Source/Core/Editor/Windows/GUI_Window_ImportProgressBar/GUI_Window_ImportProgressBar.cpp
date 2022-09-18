@@ -5,26 +5,26 @@
 #include <GUI_Window_ImportProgressBar.h>
 
 
-Window_ImportProgressBar::Window_ImportProgressBar(ERS_STRUCT_SystemUtils* SystemUtils) {
+GUI_Window_ImportProgressBar::GUI_Window_ImportProgressBar(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
 
 }
 
-Window_ImportProgressBar::~Window_ImportProgressBar() {
+GUI_Window_ImportProgressBar::~GUI_Window_ImportProgressBar() {
 
 }
 
 
 
-void Window_ImportProgressBar::UpdateTotalItems(long Current, long Total) {
+void GUI_Window_ImportProgressBar::UpdateTotalItems(long Current, long Total) {
 
     CurrentAssetNumber_ = Current;
     TotalAssetsToImport_ = Total;
 
 }
 
-void Window_ImportProgressBar::UpdateJobState(bool JobFinished) {
+void GUI_Window_ImportProgressBar::UpdateJobState(bool JobFinished) {
 
     // Set Job State
     if (JobFinished) {
@@ -35,15 +35,11 @@ void Window_ImportProgressBar::UpdateJobState(bool JobFinished) {
         IsJobFinishing_ = false;
     }
 
-    // Hide Window After Threshold Reached
-    if (ConsecFinished_ >= ConsecFinishedThreshold_) {
-        Enabled_ = false;
-        ConsecFinished_ = 0;
-    }
+
 
 }
 
-void Window_ImportProgressBar::Draw() {
+void GUI_Window_ImportProgressBar::Draw() {
 
 
     if (Enabled_) {
@@ -78,6 +74,15 @@ void Window_ImportProgressBar::Draw() {
         }
 
     ImGui::End();
+
+    // Hide Window After Threshold Reached
+    ConsecFinished_++;
+    if (ConsecFinished_ >= ConsecFinishedThreshold_) {
+        Enabled_ = false;
+        ConsecFinished_ = 0;
+    }
+
+
     }
 
 
