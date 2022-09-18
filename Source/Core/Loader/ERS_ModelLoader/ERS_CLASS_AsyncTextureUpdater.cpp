@@ -388,6 +388,7 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Text
     // Update Struct
     long MemorySize = Texture->TextureLevels[Level].LevelMemorySizeBytes;
     ResourceMonitor_->DeallocateTextureVRAMFromBudget(MemorySize);
+    Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
     Texture->TextureLevels[Level].LevelTextureOpenGLID = 0;
     Texture->TextureLevels[Level].LevelLoadedInVRAM = false;
 
