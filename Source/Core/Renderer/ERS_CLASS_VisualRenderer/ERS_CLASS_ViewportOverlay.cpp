@@ -241,5 +241,22 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
     }
 
+    // Low VRAM Warning
+    long long unsigned int FreeVRAM = SystemUtils_->RendererSettings_->VRAMBudget_ - SystemUtils_->RendererSettings_->CurrentVRAMUsage_;
+    long long unsigned int FreeVRAMWarning = 2147483648;
+
+    if (FreeVRAM < FreeMemWarning) {
+
+        ImVec4 TextColor = ImVec4(1.0f - ((double)FreeVRAM/ FreeMemWarning), (double)FreeVRAM / FreeMemWarning, 0.0f, 1.0f);
+        float FreeMemoryMiB = FreeVRAM / 1048576;
+
+        std::string WarningText = "Free System Memory Low (" + std::to_string(FreeMemoryMiB) + "MiB)";
+
+        ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "WARNING: ");
+        ImGui::SameLine();
+        ImGui::TextColored(TextColor, "%s", WarningText.c_str());
+
+    }
+
 
 }
