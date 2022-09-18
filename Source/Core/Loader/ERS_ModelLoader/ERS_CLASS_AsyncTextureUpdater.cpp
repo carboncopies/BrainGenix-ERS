@@ -194,8 +194,7 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Textu
     }
 
 
-    long MemorySize = FreeImage_GetMemorySize(Texture->TextureLevels[Level].LevelBitmap);
-    ResourceMonitor_->DeallocateTextureRAMFromBudget(MemorySize);
+    ResourceMonitor_->DeallocateTextureRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
     Texture->TextureLevels[Level].AllocatedRAMBudget = false;
 
     // Update Data
