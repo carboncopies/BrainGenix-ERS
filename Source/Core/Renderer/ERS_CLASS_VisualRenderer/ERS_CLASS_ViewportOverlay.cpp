@@ -226,7 +226,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
     // Low RAM Warning
     ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo();
-    long long int FreeMemWarning = 2147483648;
+    long long unsigned int FreeMemWarning = 2147483648;
     if (HWInfo.Dynamic_.PhysicalMemoryFree < FreeMemWarning) {
         ImVec4 TextColor = ImVec4(1.0f - (HWInfo.Dynamic_.PhysicalMemoryFree / FreeMemWarning), HWInfo.Dynamic_.PhysicalMemoryFree / FreeMemWarning, 0.0f, 1.0f);
         float FreeMemoryMiB = HWInfo.Dynamic_.PhysicalMemoryFree / 1048576;
