@@ -25,8 +25,8 @@ struct ERS_STRUCT_TextureLevel {
     bool LevelLoadedInRAM  = false; /**<True/false for every level showing if that level is loaded in RAM*/
     bool LevelLoadedInVRAM = false; /**<True/false for every level showing f that level is loaded in VRAM*/
 
-    bool AllocatedRAMBudget; /**<True/False indicating if the level has been allocated from the RAM budget*/
-    bool AllocatedVRAMBudget; /**<True/False indicating if the level has been allocated from the VRAM budget*/
+    bool AllocatedRAMBudget  = false; /**<True/False indicating if the level has been allocated from the RAM budget*/
+    bool AllocatedVRAMBudget = false; /**<True/False indicating if the level has been allocated from the VRAM budget*/
 
     std::pair<int, int> LevelResolution; /**<List of all texture level's resolutions*/
     
