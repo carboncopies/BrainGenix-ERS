@@ -56,7 +56,7 @@ void ERS_LEGACY_FUNCTION_ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, cons
 
 }
 
-ERS_STRUCT_Mesh ERS_LEGACY_FUNCTION_ProcessMesh(ERS_STRUCT_Model* Model, unsigned long PreallocVertSize, unsigned long PreallocIndSize, aiMesh *Mesh, const aiScene *Scene) {
+ERS_STRUCT_Mesh ERS_LEGACY_FUNCTION_ProcessMesh(aiMesh *Mesh, const aiScene *Scene) {
 
     // Create Data Holders
     ERS_STRUCT_Mesh OutputMesh;

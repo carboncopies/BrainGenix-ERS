@@ -82,4 +82,4 @@ void ERS_LEGACY_FUNCTION_ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, cons
  * @param Scene 
  * @return ERS_STRUCT_Mesh 
  */
-ERS_STRUCT_Mesh ERS_LEGACY_FUNCTION_ProcessMesh(ERS_STRUCT_Model* Model, unsigned long PreallocVertSize, unsigned long PerallocIndSize, aiMesh *Mesh, const aiScene *Scene);
+ERS_STRUCT_Mesh ERS_LEGACY_FUNCTION_ProcessMesh(aiMesh *Mesh, const aiScene *Scene);
