@@ -226,8 +226,9 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     }
 
     // Allocate Budget
-    ResourceMonitor_->AllocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
-
+    if (!Texture->TextureLevels[Level].AllocatedVRAMBudget) {
+        ResourceMonitor_->AllocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
+    }
 
     // Get Image Metadata, Perform Checks
     int MaxLevel = Texture->TextureLevels.size() - 1;
@@ -249,6 +250,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Channel Count <1", 8, LogEnable);
         ResourceMonitor_->DeallocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
+        Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
         return false;
     }
     if (!Texture->TextureLevels[Level].LevelLoadedInRAM) {
@@ -256,6 +258,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Not All Prior Levels Are Loaded Into RAM", 8, LogEnable);
         ResourceMonitor_->DeallocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
+        Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
         return false;
     }
     if (MaxLevel < 0) {
@@ -263,35 +266,33 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' No Levels To Load", 8, LogEnable);
         ResourceMonitor_->DeallocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
-        return false;    
+        Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
+        return false;
     }
     if (MaxWidth < 1) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Width is 0", 8, LogEnable);
         ResourceMonitor_->DeallocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
-        return false;    
+        Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
+        return false; 
     }
     if (MaxHeight < 1) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Height is 0", 8, LogEnable);
         ResourceMonitor_->DeallocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
-        return false;    
+        Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
+        return false;
     }
     if (ImageSize < 1) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Image Byte Array Has Size Of 0", 8, LogEnable);
         ResourceMonitor_->DeallocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
-        return false;    
+        Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
+        return false;
     }
-
-
-    // TODO: Fix mip map loading
-    // FIx segfaults caused when lots of loading is in the queue - unknown why this happens
-    //bool EnableMipMaps = false;
-
 
     // Setup PBO
     unsigned int PBOID;
@@ -321,8 +322,8 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         TextureInternFormat = GL_RED;
         TextureExternFormat = GL_RED;
     } else {
-        
         ResourceMonitor_->DeallocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
+        Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
         return false;
     }
     
