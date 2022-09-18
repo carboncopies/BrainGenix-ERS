@@ -39,9 +39,6 @@ void ERS_LEGACY_FUNCTION_ProcessNode(ERS_STRUCT_Model* Model, aiNode *Node, cons
         aiMesh* Mesh = Scene->mMeshes[Node->mMeshes[i]];
         Model->Meshes.push_back(
             ERS_LEGACY_FUNCTION_ProcessMesh(
-                Model,
-                (unsigned long)Mesh->mNumVertices,
-                (unsigned long)Mesh->mNumFaces*3,
                 Mesh,
                 Scene
             )
