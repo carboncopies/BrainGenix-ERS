@@ -22,8 +22,8 @@ struct ERS_STRUCT_TextureLevel {
     unsigned int LevelTextureOpenGLID; /**<List of opengl ids for every texture level*/
     unsigned int LevelTextureAssetID; /**<List of asset ids for every texture level*/
 
-    bool LevelLoadedInRAM; /**<True/false for every level showing if that level is loaded in RAM*/
-    bool LevelLoadedInVRAM; /**<True/false for every level showing f that level is loaded in VRAM*/
+    bool LevelLoadedInRAM  = false; /**<True/false for every level showing if that level is loaded in RAM*/
+    bool LevelLoadedInVRAM = false; /**<True/false for every level showing f that level is loaded in VRAM*/
 
     bool AllocatedRAMBudget; /**<True/False indicating if the level has been allocated from the RAM budget*/
     bool AllocatedVRAMBudget; /**<True/False indicating if the level has been allocated from the VRAM budget*/
