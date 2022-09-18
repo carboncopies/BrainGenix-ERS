@@ -162,7 +162,15 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             bool TextureFitsInRAM = ResourceMonitor_->TextureFitsInRAMBudget(TextureSizeRAM);
             if (!AlreadyHasRAMLevel && !RAMUpdateQuotaExceeded && TextureFitsInRAM) {
                 if (Model->TargetTextureLevelRAM < TargetTextureLevelRAM) {
+
+                    // Allocate
+                    for (unsigned int i = 0; i < Model->Textures_Loaded.size(); i++) {
+                        ResourceMonitor_->AllocateTextureRAMFromBudget(Model->Textures_Loaded[i].TextureLevels[TargetTextureLevelRAM].LevelMemorySizeBytes);
+                        Model->Textures_Loaded[i].TextureLevels[TargetTextureLevelRAM].AllocatedRAMBudget = true;
+                    }
+
                     Model->TargetTextureLevelRAM = TargetTextureLevelRAM;
+
                     if (Model->TargetTextureLevelRAM > 0) {
                         CameraRAMUpdates++;
                     }

@@ -71,9 +71,11 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     }
 
 
-    // Allocate Memory From Budget
-    ResourceMonitor_->AllocateTextureRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
-
+    // If Needed, Allocate Memory From Budget
+    if (!Texture->TextureLevels[Level].AllocatedRAMBudget) {
+        ResourceMonitor_->AllocateTextureRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
+        Texture->TextureLevels[Level].AllocatedRAMBudget = true;
+    }
 
     // Load Image Data
     ERS_STRUCT_IOData ImageData;
@@ -96,6 +98,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         FreeImage_Unload(RawImage);
         FreeImage_CloseMemory(FIImageData);
         ResourceMonitor_->DeallocateTextureRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
+        Texture->TextureLevels[Level].AllocatedRAMBudget = false;
         return false;
     }
     if (Height <= 0) {
@@ -105,6 +108,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         FreeImage_Unload(RawImage);
         FreeImage_CloseMemory(FIImageData);
         ResourceMonitor_->DeallocateTextureRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
+        Texture->TextureLevels[Level].AllocatedRAMBudget = false;
         return false;
     }
 
@@ -131,6 +135,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         + "' Width Does Not Match Metadata Target", 8, LogEnable);
         FreeImage_Unload(Image);
         ResourceMonitor_->DeallocateTextureRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
+        Texture->TextureLevels[Level].AllocatedRAMBudget = false;
         return false;
     }
     if ((TargetWidthHeight.second != Height) && (TargetWidthHeight.second != -1)) {
@@ -139,6 +144,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         + "' Height Does Not Match Metadata Target", 8, LogEnable);
         FreeImage_Unload(Image);
         ResourceMonitor_->DeallocateTextureRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
+        Texture->TextureLevels[Level].AllocatedRAMBudget = false;
         return false;
     }
 
@@ -149,6 +155,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         + "' Invalid Number Of Channels '" + std::to_string(Channels) + "'", 8, LogEnable);
         FreeImage_Unload(Image);
         ResourceMonitor_->DeallocateTextureRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
+        Texture->TextureLevels[Level].AllocatedRAMBudget = false;
         return false;
     }
     if ((Texture->TextureLevels[Level].LevelChannel != Channels) && (Texture->TextureLevels[Level].LevelChannel != -1)) {
@@ -158,6 +165,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         + std::to_string(Texture->TextureLevels[Level].LevelChannel) + "'", 8, LogEnable);
         FreeImage_Unload(Image);
         ResourceMonitor_->DeallocateTextureRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
+        Texture->TextureLevels[Level].AllocatedRAMBudget = false;
         return false;
     }
 
@@ -188,6 +196,7 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Textu
 
     long MemorySize = FreeImage_GetMemorySize(Texture->TextureLevels[Level].LevelBitmap);
     ResourceMonitor_->DeallocateTextureRAMFromBudget(MemorySize);
+    Texture->TextureLevels[Level].AllocatedRAMBudget = false;
 
     // Update Data
     FreeImage_Unload(Texture->TextureLevels[Level].LevelBitmap);
