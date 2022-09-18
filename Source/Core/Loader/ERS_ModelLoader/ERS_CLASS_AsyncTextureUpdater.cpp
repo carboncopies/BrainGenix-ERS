@@ -193,7 +193,6 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Textu
         return false;
     }
 
-
     ResourceMonitor_->DeallocateTextureRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
     Texture->TextureLevels[Level].AllocatedRAMBudget = false;
 
