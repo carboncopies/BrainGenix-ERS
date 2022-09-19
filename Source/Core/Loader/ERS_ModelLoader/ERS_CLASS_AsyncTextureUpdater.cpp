@@ -51,6 +51,9 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 
 
 // Texture Streaming Helpers
+void FreeRAMAllocation(ERS_STRUCT_TextureLevel &Level) {
+    
+}
 bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
     // Check If Requested Level Exists
@@ -64,7 +67,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     } else if (!ResourceMonitor_->TextureFitsInRAMBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes)) {
         SystemUtils_->Logger_->Log("Cannot Load Texture Into Memory, Will Not Fit In RAM Budget", 6);
         return false;
-    } else if (MemoryFree < )
+    } else if (MemoryFree < MinRAMCutoff_) {
+        SystemUtils_->Logger_->Log("Not Enough Free Memory To Load Texture", 9);
+        return false;
+    }
 
     // Check If Level Already Loaded
     if (Texture->TextureLevels[Level].LevelBitmap != nullptr) {
