@@ -60,6 +60,7 @@ void ERS_CLASS_AsyncTextureUpdater::FreeRAMAllocation(ERS_STRUCT_TextureLevel &L
 void ERS_CLASS_AsyncTextureUpdater::FreeVRAMAllocation(ERS_STRUCT_TextureLevel &Level) {
     if (Level.AllocatedVRAMBudget) {
         ResourceMonitor_->DeallocateTextureVRAMFromBudget(Level.LevelMemorySizeBytes);
+        std::cout<<Level.LevelMemorySizeBytes<<std::endl;
         Level.AllocatedVRAMBudget = false;
     }
 }
