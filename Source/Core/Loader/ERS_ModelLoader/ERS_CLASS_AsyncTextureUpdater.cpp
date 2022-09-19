@@ -396,7 +396,7 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Text
     glDeleteTextures(1, &Texture->TextureLevels[Level].LevelTextureOpenGLID);
 
     // Update Struct
-    long MemorySize = Texture->TextureLevels[Level].LevelMemorySizeBytes;
+    // long MemorySize = Texture->TextureLevels[Level].LevelMemorySizeBytes;
     FreeVRAMAllocation(Texture->TextureLevels[Level]);
     Texture->TextureLevels[Level].LevelTextureOpenGLID = 0;
     Texture->TextureLevels[Level].LevelLoadedInVRAM = false;
