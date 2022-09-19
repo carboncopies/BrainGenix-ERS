@@ -192,6 +192,10 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
 
 }
 
+
+// todo: create function to go through textures with high levels and unload them if under a certain ram/vram threshold
+// also make another function to dump loads in the queue under another crit function
+
 std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfModelsToLoadNextLevelToVRAM(std::map<unsigned int, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera) {
 
     // Create Vector Containing Models Which Should Be Pushed into RAM if possible
