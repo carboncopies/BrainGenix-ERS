@@ -219,6 +219,7 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Textu
 bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
     // Check If Requested Level Exists
+    long long unsigned int MemoryFree = SystemUtils_->RendererSettings_->VRAMBudget_ - SystemUtils_->RendererSettings_->CurrentVRAMUsage_;
     if (Level < 0) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Negative Texture Level Into VRAM", 8, LogEnable);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
@@ -233,6 +234,10 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         return false;
     } else if ((Texture->TextureLevels[Level].LevelTextureOpenGLID != 0)) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Already Loaded Image Into VRAM", 8, LogEnable);
+        FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        return false;
+    } else if (MemoryFree < MinVRAMCutoff_) {
+        SystemUtils_->Logger_->Log("Not Enough Free VRAM To Push Texture", 9);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
         return false;
     }
