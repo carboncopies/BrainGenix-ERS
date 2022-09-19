@@ -60,7 +60,6 @@ void ERS_CLASS_AsyncTextureUpdater::FreeRAMAllocation(ERS_STRUCT_TextureLevel &L
 void ERS_CLASS_AsyncTextureUpdater::FreeVRAMAllocation(ERS_STRUCT_TextureLevel &Level) {
     if (Level.AllocatedVRAMBudget) {
         ResourceMonitor_->DeallocateTextureVRAMFromBudget(Level.LevelMemorySizeBytes);
-        std::cout<<Level.LevelMemorySizeBytes<<std::endl;
         Level.AllocatedVRAMBudget = false;
     }
 }
@@ -81,7 +80,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         FreeRAMAllocation(Texture->TextureLevels[Level]);
         return false;
     } else if (MemoryFree < MinRAMCutoff_) {
-        SystemUtils_->Logger_->Log("Not Enough Free Memory To Load Texture", 9);
+        SystemUtils_->Logger_->Log("Not Enough Free RAM To Load Texture", 9);
         FreeRAMAllocation(Texture->TextureLevels[Level]);
         return false;
     }
@@ -241,7 +240,12 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         SystemUtils_->Logger_->Log("Not Enough Free VRAM To Push Texture", 9);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
         return false;
+    } else if (MemoryFree < MinRAMCutoff_) {
+        SystemUtils_->Logger_->Log("Not Enough Free RAM To Load Texture", 9);
+        FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        return false;
     }
+
 
     // Allocate Budget
     if (!Texture->TextureLevels[Level].AllocatedVRAMBudget) {
