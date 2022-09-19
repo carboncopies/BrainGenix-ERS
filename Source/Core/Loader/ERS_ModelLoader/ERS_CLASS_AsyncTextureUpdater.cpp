@@ -54,6 +54,7 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
     // Check If Requested Level Exists
+    long long unsigned int MemoryFree = SystemUtils_->RendererSettings_->RAMBudget_ - SystemUtils_->RendererSettings_->CurrentRAMUsage_;
     if (Level < 0) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Negative Texture Level", 8, LogEnable);
         return false;
@@ -63,7 +64,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     } else if (!ResourceMonitor_->TextureFitsInRAMBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes)) {
         SystemUtils_->Logger_->Log("Cannot Load Texture Into Memory, Will Not Fit In RAM Budget", 6);
         return false;
-    }
+    } else if (MemoryFree < )
 
     // Check If Level Already Loaded
     if (Texture->TextureLevels[Level].LevelBitmap != nullptr) {
