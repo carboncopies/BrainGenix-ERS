@@ -57,6 +57,12 @@ void ERS_CLASS_AsyncTextureUpdater::FreeRAMAllocation(ERS_STRUCT_TextureLevel &L
         Level.AllocatedRAMBudget = false;
     }
 }
+void ERS_CLASS_AsyncTextureUpdater::FreeVRAMAllocation(ERS_STRUCT_TextureLevel &Level) {
+    if (Level.AllocatedVRAMBudget) {
+        ResourceMonitor_->DeallocateTextureVRAMFromBudget(Level.LevelMemorySizeBytes);
+        Level.AllocatedVRAMBudget = false;
+    }
+}
 bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
     // Check If Requested Level Exists
