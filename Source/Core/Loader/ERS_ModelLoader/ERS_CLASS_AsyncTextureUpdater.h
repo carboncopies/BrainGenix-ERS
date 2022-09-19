@@ -52,7 +52,7 @@ private:
     int WorkQueueLimit_ = 512; /**<Sets the maxinum number of itesm in the queue - won't add anything else to queue once this limit reached - prevents loading where the player already left*/
     bool PreventDuplicateWorkItems_ = true; /**<Stop Dupe Queue Entries*/
     bool PrioritizeQueueByVisualImpact_ = true; /**<Sort the queue by the texture level to be loaded*/
-    
+
     long long unsigned int MinRAMCutoff_  = 268435456; /**<Set the minimum RAM cutoff value*/
     long long unsigned int MinVRAMCutoff_ = 134217728; /**<Set the minimum VRAM cutoff value*/
     
@@ -76,6 +76,10 @@ private:
     void TexturePusherThread(int Index);
     void TextureLoaderThread(int Index);
 
+
+    void FreeRAMAllocation(ERS_STRUCT_TextureLevel &Level);
+    void FreeVRAMAllocation(ERS_STRUCT_TextureLevel &Level);
+    
 
     /**
      * @brief Loads the given mip-map level fromt the texture provided as a FIBITMAP

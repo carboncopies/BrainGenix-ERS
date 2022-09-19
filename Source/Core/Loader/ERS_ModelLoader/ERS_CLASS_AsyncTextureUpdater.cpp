@@ -51,8 +51,10 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 
 
 // Texture Streaming Helpers
-void FreeRAMAllocation(ERS_STRUCT_TextureLevel &Level) {
-    
+void ERS_CLASS_AsyncTextureUpdater::FreeRAMAllocation(ERS_STRUCT_TextureLevel &Level) {
+    if (Level.AllocatedRAMBudget) {
+        
+    }
 }
 bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
