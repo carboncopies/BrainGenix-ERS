@@ -207,8 +207,7 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Textu
         return false;
     }
 
-    ResourceMonitor_->DeallocateTextureRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
-    Texture->TextureLevels[Level].AllocatedRAMBudget = false;
+    FreeRAMAllocation(Texture->TextureLevels[Level]);
 
     // Update Data
     FreeImage_Unload(Texture->TextureLevels[Level].LevelBitmap);
@@ -222,18 +221,19 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     // Check If Requested Level Exists
     if (Level < 0) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Negative Texture Level Into VRAM", 8, LogEnable);
+        FreeVRAMAllocation(Texture->TextureLevels[Level]);
         return false;
     } else if (Level > (int)Texture->TextureLevels.size()) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Nonexistant Texture Level Into VRAM", 8, LogEnable);
+        FreeVRAMAllocation(Texture->TextureLevels[Level]);
         return false;
     } else if (!ResourceMonitor_->TextureFitsInVRAMBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes)) {
         SystemUtils_->Logger_->Log("Cannot Load Texture Into Memory, Will Not Fit In VRAM Budget", 6);
+        FreeVRAMAllocation(Texture->TextureLevels[Level]);
         return false;
-    }
-
-    // Check If Level Already Loaded
-    if ((Texture->TextureLevels[Level].LevelTextureOpenGLID != 0)) {
+    } else if ((Texture->TextureLevels[Level].LevelTextureOpenGLID != 0)) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Already Loaded Image Into VRAM", 8, LogEnable);
+        FreeVRAMAllocation(Texture->TextureLevels[Level]);
         return false;
     }
 
@@ -254,55 +254,49 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Channel Count >4", 8, LogEnable);
-        ResourceMonitor_->DeallocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
+        FreeVRAMAllocation(Texture->TextureLevels[Level]);
         return false;
     }
     if (Channels < 1) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Channel Count <1", 8, LogEnable);
-        ResourceMonitor_->DeallocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
-        Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
+        FreeVRAMAllocation(Texture->TextureLevels[Level]);
         return false;
     }
     if (!Texture->TextureLevels[Level].LevelLoadedInRAM) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Not All Prior Levels Are Loaded Into RAM", 8, LogEnable);
-        ResourceMonitor_->DeallocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
-        Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
+        FreeVRAMAllocation(Texture->TextureLevels[Level]);
         return false;
     }
     if (MaxLevel < 0) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' No Levels To Load", 8, LogEnable);
-        ResourceMonitor_->DeallocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
-        Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
+        FreeVRAMAllocation(Texture->TextureLevels[Level]);
         return false;
     }
     if (MaxWidth < 1) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Width is 0", 8, LogEnable);
-        ResourceMonitor_->DeallocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
-        Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
+        FreeVRAMAllocation(Texture->TextureLevels[Level]);
         return false; 
     }
     if (MaxHeight < 1) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Height is 0", 8, LogEnable);
-        ResourceMonitor_->DeallocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
-        Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
+        FreeVRAMAllocation(Texture->TextureLevels[Level]);
         return false;
     }
     if (ImageSize < 1) {
         SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Image Byte Array Has Size Of 0", 8, LogEnable);
-        ResourceMonitor_->DeallocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
-        Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
+        FreeVRAMAllocation(Texture->TextureLevels[Level]);
         return false;
     }
 
@@ -334,8 +328,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         TextureInternFormat = GL_RED;
         TextureExternFormat = GL_RED;
     } else {
-        ResourceMonitor_->DeallocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
-        Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
+        FreeVRAMAllocation(Texture->TextureLevels[Level]);
         return false;
     }
     
@@ -399,8 +392,7 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Text
 
     // Update Struct
     long MemorySize = Texture->TextureLevels[Level].LevelMemorySizeBytes;
-    ResourceMonitor_->DeallocateTextureVRAMFromBudget(MemorySize);
-    Texture->TextureLevels[Level].AllocatedVRAMBudget = false;
+    FreeVRAMAllocation(Texture->TextureLevels[Level]);
     Texture->TextureLevels[Level].LevelTextureOpenGLID = 0;
     Texture->TextureLevels[Level].LevelLoadedInVRAM = false;
 
