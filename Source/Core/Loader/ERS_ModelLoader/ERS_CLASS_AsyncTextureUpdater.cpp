@@ -835,8 +835,6 @@ void ERS_CLASS_AsyncTextureUpdater::TeardownLoaderThreads() {
     SystemUtils_->Logger_->Log("Finished Joining Texture Streaming CPU Worker Thread Pool", 4);
 
 }
-
-
 int ERS_CLASS_AsyncTextureUpdater::GetQueueLimit() {
     return WorkQueueLimit_;
 }
