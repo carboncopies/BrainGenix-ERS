@@ -226,7 +226,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
     // Low RAM Warning
     ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo();
-    long long unsigned int FreeMemWarning = 2147483648;
+    long long unsigned int FreeMemWarning = SystemUtils_->RendererSettings_->WarningLowRAMBytes;
 
     if (HWInfo.Dynamic_.PhysicalMemoryFree < FreeMemWarning) {
 
@@ -243,7 +243,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
     // Low VRAM Warning
     long long unsigned int FreeVRAM = SystemUtils_->RendererSettings_->VRAMBudget_ - SystemUtils_->RendererSettings_->CurrentVRAMUsage_;
-    long long unsigned int FreeVRAMWarning = 2147483648;
+    long long unsigned int FreeVRAMWarning = SystemUtils_->RendererSettings_->WarningLowRAMBytes;
 
     if (FreeVRAM < FreeVRAMWarning) {
 

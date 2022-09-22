@@ -81,6 +81,11 @@ private:
     void WorkerThread();
 
 
+    /**
+     * @brief Checks to ensure that there's available hardware resources to continue loading. 
+     * 
+     */
+    void CheckHardwareLimitations();
 
     /**
      * @brief Sorts the models in the given scene based on their distance from the camera.

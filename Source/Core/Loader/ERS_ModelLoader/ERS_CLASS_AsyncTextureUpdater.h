@@ -53,6 +53,10 @@ private:
     bool PreventDuplicateWorkItems_ = true; /**<Stop Dupe Queue Entries*/
     bool PrioritizeQueueByVisualImpact_ = true; /**<Sort the queue by the texture level to be loaded*/
 
+    long long unsigned int MinRAMCutoff_  = 268435456; /**<Set the minimum RAM cutoff value*/
+    long long unsigned int MinVRAMCutoff_ = 134217728; /**<Set the minimum VRAM cutoff value*/
+    
+
     std::vector<std::thread> TextureLoaderThreads_; /**<Vector containing thread objects for the texture loading pool*/
     std::vector<std::thread> TexturePusherThreads_; /**<Vector containing thread objects for the texture pushing pool*/
     
@@ -71,6 +75,11 @@ private:
 
     void TexturePusherThread(int Index);
     void TextureLoaderThread(int Index);
+
+
+    void FreeRAMAllocation(ERS_STRUCT_TextureLevel &Level);
+    void FreeVRAMAllocation(ERS_STRUCT_TextureLevel &Level);
+    
 
 
     /**
@@ -170,6 +179,14 @@ public:
      * 
      */
     ~ERS_CLASS_AsyncTextureUpdater();
+
+
+
+    /**
+     * @brief Dumps all push items in a last-ditch effort to free memory before the sytem runs out.
+     * 
+     */
+    void QueuePanic();
 
 
     /**

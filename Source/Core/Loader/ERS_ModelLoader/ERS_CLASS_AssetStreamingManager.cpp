@@ -13,29 +13,11 @@ ERS_CLASS_AssetStreamingManager::ERS_CLASS_AssetStreamingManager(ERS_STRUCT_Syst
     // Setup Subsystems
     ResourceMonitor_ = std::make_unique<ERS_CLASS_AssetStreamingSystemResourceMonitor>(SystemUtils_);
 
-    // // Create Worker Thread
-    // SystemUtils_->Logger_->Log("Starting Asset Streaming Subsystem Sorting Thread", 4);
-    // SceneSortingThread_ = std::thread(&ERS_CLASS_AssetStreamingManager::WorkerThread, this);
-    // SystemUtils_->Logger_->Log("Launched Asset Streaming Subsystem Sorting Thread", 3);
-
 }
 
 ERS_CLASS_AssetStreamingManager::~ERS_CLASS_AssetStreamingManager() {
 
     SystemUtils_->Logger_->Log("Asset Streaming Destructor Invoked", 6);
-
-    // // Stop Thread
-    // SystemUtils_->Logger_->Log("Locking Sorting Thread Mutex", 4);
-    // SortingThreadMutex_.lock();
-
-    // SystemUtils_->Logger_->Log("Sending Sorting Thread Join Command", 3);
-    // SortingThreadShouldExit_ = true;
-    // SortingThreadMutex_.unlock();
-
-    // SystemUtils_->Logger_->Log("Joining Sorting Thread", 4);
-    // SceneSortingThread_.join();
-    // SystemUtils_->Logger_->Log("Joined Sorting Thread", 3);
-
 
 }
 
@@ -188,9 +170,25 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
     }
 
     ResourceMonitor_->UpdateTotals();
+    CheckHardwareLimitations();
 
 
 }
+
+void ERS_CLASS_AssetStreamingManager::CheckHardwareLimitations() {
+
+    // Get Current Free RAM Value
+    ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo();
+    unsigned long long int FreeRAM = HWInfo.Dynamic_.PhysicalMemoryFree;
+
+    // Hard RAM Cap (256MiB), Stops Any New Textures From Being Loaded
+    if (FreeRAM < SystemUtils_->RendererSettings_->CriticalLowRAMBytes){
+        AsyncTextureUpdater_->QueuePanic();
+    }
+
+}
+
+// todo: create function to go through textures with high levels and unload them if under a certain ram/vram threshold
 
 std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfModelsToLoadNextLevelToVRAM(std::map<unsigned int, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera) {
 
@@ -330,26 +328,7 @@ std::vector<std::pair<float, unsigned int>> ERS_CLASS_AssetStreamingManager::Sor
 
 
         float TotalDistance = glm::distance(Camera->GetPosition(), Scene->Models[i]->ModelPosition);
-        
-        // if (Scene->Models[i]->Name == "ApartmentCeiling") {
-        //         std::cout<<"DistSort: "<<TotalDistance<<" Index: "<<i<<std::endl;
-        // }
-
-        // glm::vec3 UnscaledAngle = Camera->GetPosition() - Scene->Models[i]->ModelPosition;
-        // float MaxSide = UnscaledAngle.x;
-        // if (UnscaledAngle.y > MaxSide) {
-        //     MaxSide = UnscaledAngle.y;
-        // } else if (UnscaledAngle.z > MaxSide) {
-        //     MaxSide = UnscaledAngle.z;
-        // }
-        // float ScaleFactor = (MaxSide + 0.000001f);
-        // glm::vec3 ScaledAngle = UnscaledAngle / ScaleFactor;
-
-
-        // glm::vec3 CubeDistance = ScaledAngle * Scene->Models[i]->BoxScale_;
-
-        // float Distance = glm::distance(glm::vec3(0.0f), CubeDistance);
-
+  
         glm::vec3 CubeBoundryBox = Scene->Models[i]->BoxScale_ * Scene->Models[i]->TrueModelScale;
         float ApproxCubeBoundryDistance = CubeBoundryBox.x;
         if (ApproxCubeBoundryDistance < CubeBoundryBox.y) {
