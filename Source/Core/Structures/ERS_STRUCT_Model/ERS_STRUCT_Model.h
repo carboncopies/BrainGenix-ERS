@@ -44,6 +44,7 @@ struct ERS_STRUCT_Model {
     bool CastDynamicShadows_ = true; /**<Indicate if this model is to be rendered when generating the depth maps (dynamically)*/
     bool CastStaticShadows_ = true; /**<Set if this model is rendered when building static depth maps*/
     bool ReceiveShadows_ = true; /**<Determines if this model is to have shadows applied to it.*/
+    bool TreatMissingTexturesAsTransparent_ = false; /**<Causes the renderer to bind to a transparent texture for diffuse maps*/
 
 
     // New Model Decoding System
