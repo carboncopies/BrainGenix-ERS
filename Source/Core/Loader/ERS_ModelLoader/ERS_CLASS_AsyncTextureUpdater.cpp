@@ -585,6 +585,11 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessRAMUpdate(int Index, ERS_STRUCT_Scene
         }
     }
 
+    // Memory Check
+    if (Scene->Models[Index]->TargetTextureLevelRAM > Scene->Models[Index]->TextureLevelInRAM_) {
+        if (SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo().Dynamic_.PhysicalMemoryFree < )
+    }
+
     // If We Can Actually Add It, Do So
     if (CanAdd) {
 

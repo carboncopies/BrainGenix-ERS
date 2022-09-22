@@ -182,9 +182,7 @@ void ERS_CLASS_AssetStreamingManager::CheckHardwareLimitations() {
     unsigned long long int FreeRAM = HWInfo.Dynamic_.PhysicalMemoryFree;
 
     // Hard RAM Cap (256MiB), Stops Any New Textures From Being Loaded
-
-    if (FreeRAM < 42949672960){//268435456) {
-        std::cout<<"Queue Panic\n";
+    if (FreeRAM < SystemUtils_->RendererSettings_->CriticalLowRAMBytes){
         AsyncTextureUpdater_->QueuePanic();
     }
 
