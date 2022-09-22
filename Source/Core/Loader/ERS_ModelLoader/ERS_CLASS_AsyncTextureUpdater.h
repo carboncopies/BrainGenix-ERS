@@ -81,11 +81,6 @@ private:
     void FreeVRAMAllocation(ERS_STRUCT_TextureLevel &Level);
     
 
-    /**
-     * @brief Dumps all push items in a last-ditch effort to free memory before the sytem runs out.
-     * 
-     */
-    void QueuePanic();
 
     /**
      * @brief Loads the given mip-map level fromt the texture provided as a FIBITMAP
@@ -184,6 +179,14 @@ public:
      * 
      */
     ~ERS_CLASS_AsyncTextureUpdater();
+
+
+
+    /**
+     * @brief Dumps all push items in a last-ditch effort to free memory before the sytem runs out.
+     * 
+     */
+    void QueuePanic();
 
 
     /**

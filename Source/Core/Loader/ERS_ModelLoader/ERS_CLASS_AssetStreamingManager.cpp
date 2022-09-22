@@ -194,11 +194,10 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
 
 
 // todo: create function to go through textures with high levels and unload them if under a certain ram/vram threshold
-// also make another function to dump loads in the queue under another crit function
 
 void ERS_CLASS_AssetStreamingManager::DumpPushItemsFromQueues() {
 
-    AsyncTextureUpdater_->
+    AsyncTextureUpdater_->QueuePanic();
 
 }
 
