@@ -321,26 +321,7 @@ std::vector<std::pair<float, unsigned int>> ERS_CLASS_AssetStreamingManager::Sor
 
 
         float TotalDistance = glm::distance(Camera->GetPosition(), Scene->Models[i]->ModelPosition);
-        
-        // if (Scene->Models[i]->Name == "ApartmentCeiling") {
-        //         std::cout<<"DistSort: "<<TotalDistance<<" Index: "<<i<<std::endl;
-        // }
-
-        // glm::vec3 UnscaledAngle = Camera->GetPosition() - Scene->Models[i]->ModelPosition;
-        // float MaxSide = UnscaledAngle.x;
-        // if (UnscaledAngle.y > MaxSide) {
-        //     MaxSide = UnscaledAngle.y;
-        // } else if (UnscaledAngle.z > MaxSide) {
-        //     MaxSide = UnscaledAngle.z;
-        // }
-        // float ScaleFactor = (MaxSide + 0.000001f);
-        // glm::vec3 ScaledAngle = UnscaledAngle / ScaleFactor;
-
-
-        // glm::vec3 CubeDistance = ScaledAngle * Scene->Models[i]->BoxScale_;
-
-        // float Distance = glm::distance(glm::vec3(0.0f), CubeDistance);
-
+  
         glm::vec3 CubeBoundryBox = Scene->Models[i]->BoxScale_ * Scene->Models[i]->TrueModelScale;
         float ApproxCubeBoundryDistance = CubeBoundryBox.x;
         if (ApproxCubeBoundryDistance < CubeBoundryBox.y) {
