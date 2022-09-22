@@ -170,6 +170,7 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
     }
 
     ResourceMonitor_->UpdateTotals();
+    CheckHardwareLimitations();
 
 
 }
