@@ -45,7 +45,7 @@ struct ERS_STRUCT_RendererSettings {
     unsigned long long int FatalLowRAMBytes      = 268435456;
     unsigned long long int TerminateLowRAMBytes  = 67108864;
 
-    unsigned long long int WarningLowVRAMBytes   = 1073741824;
+    unsigned long long int WarningLowVRAMBytes   = 3221225472;
     unsigned long long int CriticalLowVRAMBytes  = 536870912;
     unsigned long long int FatalLowVRAMBytes     = 268435456;
     unsigned long long int TerminateLowVRAMBytes = 67108864;
