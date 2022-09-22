@@ -13,11 +13,6 @@ ERS_CLASS_AssetStreamingManager::ERS_CLASS_AssetStreamingManager(ERS_STRUCT_Syst
     // Setup Subsystems
     ResourceMonitor_ = std::make_unique<ERS_CLASS_AssetStreamingSystemResourceMonitor>(SystemUtils_);
 
-    // // Create Worker Thread
-    // SystemUtils_->Logger_->Log("Starting Asset Streaming Subsystem Sorting Thread", 4);
-    // SceneSortingThread_ = std::thread(&ERS_CLASS_AssetStreamingManager::WorkerThread, this);
-    // SystemUtils_->Logger_->Log("Launched Asset Streaming Subsystem Sorting Thread", 3);
-
 }
 
 ERS_CLASS_AssetStreamingManager::~ERS_CLASS_AssetStreamingManager() {
