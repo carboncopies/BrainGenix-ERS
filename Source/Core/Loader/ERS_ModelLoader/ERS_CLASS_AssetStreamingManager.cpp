@@ -174,14 +174,20 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
 
 }
 
+void ERS_CLASS_AssetStreamingManager::CheckHardwareLimitations() {
 
-// todo: create function to go through textures with high levels and unload them if under a certain ram/vram threshold
+    // Get Current Free RAM Value
+    ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo();
+    unsigned long long int FreeRAM = HWInfo.Dynamic_.PhysicalMemoryFree;
 
-void ERS_CLASS_AssetStreamingManager::DumpPushItemsFromQueues() {
-
-    AsyncTextureUpdater_->QueuePanic();
+    // Hard RAM Cap (256MiB), Stops Any New Textures From Being Loaded
+    if (FreeRAM < 268435456) {
+        AsyncTextureUpdater_->QueuePanic();
+    }
 
 }
+
+// todo: create function to go through textures with high levels and unload them if under a certain ram/vram threshold
 
 std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfModelsToLoadNextLevelToVRAM(std::map<unsigned int, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera) {
 
