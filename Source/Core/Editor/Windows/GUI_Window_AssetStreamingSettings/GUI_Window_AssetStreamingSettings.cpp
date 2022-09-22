@@ -69,6 +69,9 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                 ImGui::DragFloat("VRAM Budget (MiB)", &VRAMBudgetMiB_, 64.0f, 0.0f, 1048576);
                 ImGui::DragFloat("RAM Budget (MiB)", &RAMBudgetMiB_, 128.0f, 0.0f, 536870912);
 
+                ImGui::DragFloat("VRAM Warning Threshold (MiB)", &VRAMWarningMiB_, 64.0f, 0.0f, 32768.0f);
+                ImGui::DragFloat("RAM Warning Threshold (MiB)", &RAMWarningMiB_, 64.0f, 0.0f, 65535.0f);
+
                 ImGui::Spacing();
                 ImGui::Separator();
                 ImGui::Spacing();
