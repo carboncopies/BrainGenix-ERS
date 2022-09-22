@@ -243,7 +243,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
     // Low VRAM Warning
     long long unsigned int FreeVRAM = SystemUtils_->RendererSettings_->VRAMBudget_ - SystemUtils_->RendererSettings_->CurrentVRAMUsage_;
-    long long unsigned int FreeVRAMWarning = SystemUtils_->RendererSettings_->WarningLowRAMBytes;
+    long long unsigned int FreeVRAMWarning = SystemUtils_->RendererSettings_->WarningLowVRAMBytes;
 
     if (FreeVRAM < FreeVRAMWarning) {
 
