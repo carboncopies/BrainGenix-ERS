@@ -185,9 +185,16 @@ void ERS_CLASS_AssetStreamingManager::CheckHardwareLimitations(ERS_STRUCT_Scene*
     if (FreeRAM < SystemUtils_->RendererSettings_->WarningLowRAMBytes) {
         for (unsigned int i = 0; i < Scene->Models.size(); i++) {
             if (Scene->Models[i]->Textures_.size() > 0) {
+
+                // Calculate Max Allowed Texture Level
                 int TotalLevels = Scene->Models[i]->Textures_[0].TextureLevels.size();
-                unsigned long long int WarningThreshold = HWInfo.Dynamic_.PhysicalMemoryFree;
-                
+                unsigned long long int WarningThreshold = SystemUtils_->RendererSettings_->WarningLowRAMBytes;
+                int MaxTextureLevel = FreeRAM / ((double)WarningThreshold / (double)TotalLevels);
+
+                // Enforce Limit
+                Scene->Models[i]->TargetTextureLevelRAM  = std::min(Scene->Models[i]->TargetTextureLevelRAM, MaxTextureLevel);
+                Scene->Models[i]->TargetTextureLevelVRAM = std::min(Scene->Models[i]->TargetTextureLevelVRAM, MaxTextureLevel);
+
             }
         }
     }
