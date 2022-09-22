@@ -28,16 +28,17 @@ bool ERS_FUNCTION_DecodeSceneV5(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
         YAML::Node Item = Models[i];
         ERS_STRUCT_Model Model;
-        Success &= ERS_FUNCTION_GetLong       (Logger, Item, "AssetID",              Model.AssetID                 );
-        Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "AssetPosition",        Model.ModelPosition           );
-        Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "AssetRotation",        Model.ModelRotation           );
-        Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "AssetScale",           Model.ModelScale              );
-        Success &= ERS_FUNCTION_GetBool       (Logger, Item, "CastDynamicShadows",   Model.CastDynamicShadows_     );
-        Success &= ERS_FUNCTION_GetBool       (Logger, Item, "CastStaticShadows",    Model.CastStaticShadows_      );
-        Success &= ERS_FUNCTION_GetBool       (Logger, Item, "ReceiveShadows",       Model.ReceiveShadows_         );
-        Success &= ERS_FUNCTION_GetLong       (Logger, Item, "ShaderOverrideIndex",  Model.ShaderOverrideIndex_    );
-        Success &= ERS_FUNCTION_GetString     (Logger, Item, "AssetName",            Model.Name                    );
-        Success &= ERS_FUNCTION_GetLongVector (Logger, Item, "AttachedScripts",      Model.AttachedScriptIndexes_  );
+        Success &= ERS_FUNCTION_GetLong       (Logger, Item, "AssetID",                           Model.AssetID                           );
+        Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "AssetPosition",                     Model.ModelPosition                     );
+        Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "AssetRotation",                     Model.ModelRotation                     );
+        Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "AssetScale",                        Model.ModelScale                        );
+        Success &= ERS_FUNCTION_GetBool       (Logger, Item, "CastDynamicShadows",                Model.CastDynamicShadows_               );
+        Success &= ERS_FUNCTION_GetBool       (Logger, Item, "CastStaticShadows",                 Model.CastStaticShadows_                );
+        Success &= ERS_FUNCTION_GetBool       (Logger, Item, "ReceiveShadows",                    Model.ReceiveShadows_                   );
+        Success &= ERS_FUNCTION_GetBool       (Logger, Item, "TreatMissingTexturesAsTransparent", Model.TreatMissingTexturesAsTransparent_);
+        Success &= ERS_FUNCTION_GetLong       (Logger, Item, "ShaderOverrideIndex",               Model.ShaderOverrideIndex_              );
+        Success &= ERS_FUNCTION_GetString     (Logger, Item, "AssetName",                         Model.Name                              );
+        Success &= ERS_FUNCTION_GetLongVector (Logger, Item, "AttachedScripts",                   Model.AttachedScriptIndexes_            );
 
         // Force Scale Update
         Model.TrueModelScale = Model.ModelScale / 100.0f;
