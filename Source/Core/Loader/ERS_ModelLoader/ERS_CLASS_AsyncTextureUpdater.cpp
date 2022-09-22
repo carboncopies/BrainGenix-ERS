@@ -871,6 +871,8 @@ void ERS_CLASS_AsyncTextureUpdater::SetQueuePrioritizationEnabled(bool State) {
     PrioritizeQueueByVisualImpact_ = State;
 }
 void ERS_CLASS_AsyncTextureUpdater::QueuePanic() {
+
+    // Lock Mutexes
     BlockLoaderThreads_.lock();
     BlockPusherThreads_.lock();
 
@@ -887,4 +889,20 @@ void ERS_CLASS_AsyncTextureUpdater::QueuePanic() {
     }
 
     // Strip Push Items
+    std::vector<std::shared_ptr<ERS_STRUCT_Model>> PushItemsWithUnloads;
+    for (unsigned int i = 0; i < PushWorkItems_.size(); i++) {
+        if (PushWorkItems_[i]->TargetTextureLevelVRAM < PushWorkItems_[i]->TextureLevelInVRAM_) {
+            PushItemsWithUnloads.push_back(PushWorkItems_[i]);
+        }
+    }
+    PushWorkItems_.clear();
+    for (unsigned int i = 0; i < PushItemsWithUnloads.size(); i++) {
+        PushWorkItems_.push_back(PushItemsWithUnloads[i]);
+    }
+
+
+    // Lock Mutexes
+    BlockLoaderThreads_.unlock();
+    BlockPusherThreads_.unlock();
+
 }
