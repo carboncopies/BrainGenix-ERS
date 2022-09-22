@@ -24,19 +24,6 @@ ERS_CLASS_AssetStreamingManager::~ERS_CLASS_AssetStreamingManager() {
 
     SystemUtils_->Logger_->Log("Asset Streaming Destructor Invoked", 6);
 
-    // // Stop Thread
-    // SystemUtils_->Logger_->Log("Locking Sorting Thread Mutex", 4);
-    // SortingThreadMutex_.lock();
-
-    // SystemUtils_->Logger_->Log("Sending Sorting Thread Join Command", 3);
-    // SortingThreadShouldExit_ = true;
-    // SortingThreadMutex_.unlock();
-
-    // SystemUtils_->Logger_->Log("Joining Sorting Thread", 4);
-    // SceneSortingThread_.join();
-    // SystemUtils_->Logger_->Log("Joined Sorting Thread", 3);
-
-
 }
 
 void ERS_CLASS_AssetStreamingManager::SetupTextureStreamer(GLFWwindow* Window) {
