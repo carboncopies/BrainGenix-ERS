@@ -19,7 +19,9 @@ GUI_Window_AssetStreamingSettings::GUI_Window_AssetStreamingSettings(ERS_STRUCT_
     QueuePrioritizationEnabled_ = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetQueuePrioritizationEnabled();
 
     VRAMBudgetMiB_ = SystemUtils_->RendererSettings_->VRAMBudget_ / 1048576;
-    RAMBudgetMiB_ = SystemUtils_->RendererSettings_->RAMBudget_ / 1048576;
+    RAMBudgetMiB_  = SystemUtils_->RendererSettings_->RAMBudget_  / 1048576;
+    VRAMWarningMiB_ = SystemUtils_->RendererSettings_->WarningLowVRAMBytes / 1048576;
+    RAMWarningMiB_  = SystemUtils_->RendererSettings_->WarningLowRAMBytes  / 1048576;
 
     MaxThreads_ = std::thread::hardware_concurrency();
 
@@ -67,6 +69,9 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                 ImGui::DragFloat("VRAM Budget (MiB)", &VRAMBudgetMiB_, 64.0f, 0.0f, 1048576);
                 ImGui::DragFloat("RAM Budget (MiB)", &RAMBudgetMiB_, 128.0f, 0.0f, 536870912);
 
+                ImGui::DragFloat("VRAM Warning Threshold (MiB)", &VRAMWarningMiB_, 64.0f, 0.0f, 32768.0f);
+                ImGui::DragFloat("RAM Warning Threshold (MiB)", &RAMWarningMiB_, 64.0f, 0.0f, 65535.0f);
+
                 ImGui::Spacing();
                 ImGui::Separator();
                 ImGui::Spacing();
@@ -92,6 +97,9 @@ void GUI_Window_AssetStreamingSettings::Draw() {
                     // Update Budget Info
                     SystemUtils_->RendererSettings_->VRAMBudget_ = VRAMBudgetMiB_ * 1048576;
                     SystemUtils_->RendererSettings_->RAMBudget_ = RAMBudgetMiB_ * 1048576;
+
+                    SystemUtils_->RendererSettings_->WarningLowRAMBytes = RAMWarningMiB_ * 1048576;
+                    SystemUtils_->RendererSettings_->WarningLowVRAMBytes = VRAMWarningMiB_ * 1048576;
                     
                     
                     // Update Threads
