@@ -181,7 +181,8 @@ void ERS_CLASS_AssetStreamingManager::CheckHardwareLimitations() {
     unsigned long long int FreeRAM = HWInfo.Dynamic_.PhysicalMemoryFree;
 
     // Hard RAM Cap (256MiB), Stops Any New Textures From Being Loaded
-    if (FreeRAM < 268435456) {
+
+    if (FreeRAM < 42949672960){//268435456) {
         AsyncTextureUpdater_->QueuePanic();
     }
 
