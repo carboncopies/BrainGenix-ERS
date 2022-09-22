@@ -181,7 +181,7 @@ void ERS_CLASS_AssetStreamingManager::CheckHardwareLimitations(ERS_STRUCT_Scene*
     ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo();
     unsigned long long int FreeRAM = HWInfo.Dynamic_.PhysicalMemoryFree;
 
-    // Start Reducing Target Texture Levels
+    // Start Reducing Target Texture Levels (RAM Limitation)
     if (FreeRAM < SystemUtils_->RendererSettings_->WarningLowRAMBytes) {
         for (unsigned int i = 0; i < Scene->Models.size(); i++) {
             if (Scene->Models[i]->Textures_.size() > 0) {
