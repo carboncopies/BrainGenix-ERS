@@ -85,7 +85,7 @@ private:
      * @brief Checks to ensure that there's available hardware resources to continue loading. 
      * 
      */
-    void CheckHardwareLimitations();
+    void CheckHardwareLimitations(ERS_STRUCT_Scene* Scene);
 
     /**
      * @brief Sorts the models in the given scene based on their distance from the camera.
