@@ -2,10 +2,10 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_FUNCTION_SceneDecoderV4.h>
+#include <ERS_FUNCTION_SceneDecoderV5.h>
 
 
-bool ERS_FUNCTION_DecodeSceneV4(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, ERS_STRUCT_SystemUtils *SystemUtils, ERS_CLASS_ModelLoader* ModelLoader, bool LogEnable) {
+bool ERS_FUNCTION_DecodeSceneV5(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, ERS_STRUCT_SystemUtils *SystemUtils, ERS_CLASS_ModelLoader* ModelLoader, bool LogEnable) {
 
     // Init
     bool Success = true;
