@@ -212,6 +212,12 @@ void GUI_Window_ObjectProperties::Draw() {
                         ImGui::SameLine();
                         ImGui::HelpMarker("Allow this model to have shadows cast upon it by other objects as well as itself.");
 
+
+                        ImGui::Checkbox("Treat Missing Textures As Transparent", &Model->TreatMissingTexturesAsTransparent_);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Primitive Solution to glass textures missing. ERS will replace missing diffuse textures with a transparent texture.");
+
+
                         ImGui::Checkbox("Render Model", &Model->Enabled);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Tell the rendering system to skip this model. Essentially makes it invisible.");

@@ -32,9 +32,8 @@ RAMSizeBytes: 42949672960
 RAMMarginBytes: 4294967296
 
 OverrideVRAM: False
-VRAMSizeBytes: 1073741824
+VRAMSizeBytes: 10737418240
 VRAMMarginBytes: 1073741824
-
 
 # Set Logger Configuration Parameters #
 EnablePrintOutput: True

@@ -28,6 +28,8 @@
   - Put your build config into "Release", currently debug doesn't work for some reason.
   - Set target to BrainGenix-ERS.exe
   - Hit `Build`
+  
+  If you encounter issues finding the python libraries after you've installed them, try clearing your cmake cache.
 
 ## Mac:
   
