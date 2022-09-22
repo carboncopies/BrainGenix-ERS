@@ -42,8 +42,11 @@ private:
     int TextureLoadingThreads_      = -1;
     int TextureStreamingQueueLimit_ = -1;
 
-    float VRAMBudgetMiB_ = 0;
-    float RAMBudgetMiB_ = 0;
+    float VRAMBudgetMiB_  = 0;
+    float RAMBudgetMiB_   = 0;
+    float VRAMWarningMiB_ = 0;
+    float RAMWarningMiB_  = 0;
+    
 
     bool PreventDupeQueueEntries_ = false;
     bool QueuePrioritizationEnabled_ = false;

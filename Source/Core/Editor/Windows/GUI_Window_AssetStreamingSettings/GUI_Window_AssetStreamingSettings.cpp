@@ -19,7 +19,9 @@ GUI_Window_AssetStreamingSettings::GUI_Window_AssetStreamingSettings(ERS_STRUCT_
     QueuePrioritizationEnabled_ = ModelLoader_->AssetStreamingManager_->AsyncTextureUpdater_->GetQueuePrioritizationEnabled();
 
     VRAMBudgetMiB_ = SystemUtils_->RendererSettings_->VRAMBudget_ / 1048576;
-    RAMBudgetMiB_ = SystemUtils_->RendererSettings_->RAMBudget_ / 1048576;
+    RAMBudgetMiB_  = SystemUtils_->RendererSettings_->RAMBudget_  / 1048576;
+    VRAMWarningMiB_ = SystemUtils_->RendererSettings_->WarningLowVRAMBytes / 1048576;
+    RAMWarningMiB_  = SystemUtils_->RendererSettings_->WarningLowRAMBytes  / 1048576;
 
     MaxThreads_ = std::thread::hardware_concurrency();
 
