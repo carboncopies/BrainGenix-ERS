@@ -187,7 +187,6 @@ void GUI_Window_RenderingSettings::Draw() {
 
                 }
 
-
             }
 
 
