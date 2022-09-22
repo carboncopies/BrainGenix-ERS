@@ -80,11 +80,6 @@ private:
      */
     void WorkerThread();
 
-    /**
-     * @brief Removes all push items from the queue to help free memory faster.
-     * 
-     */
-    void DumpPushItemsFromQueues();
 
     /**
      * @brief Checks to ensure that there's available hardware resources to continue loading. 
