@@ -40,12 +40,14 @@ struct ERS_STRUCT_RendererSettings {
     unsigned long long CurrentRAMUsage_ = 0;
 
     // Low Resource Thresholds
-    unsigned long long int WarningLowRAMBytes   = 4294967296;
-    unsigned long long int CriticalLowRAMBytes  = 1073741824;
-    unsigned long long int FatalLowRAMBytes     = 268435456;
-    unsigned long long int TerminateLowRAMBytes = 67108864;
+    unsigned long long int WarningLowRAMBytes    = 4294967296;
+    unsigned long long int CriticalLowRAMBytes   = 1073741824;
+    unsigned long long int FatalLowRAMBytes      = 268435456;
+    unsigned long long int TerminateLowRAMBytes  = 67108864;
 
-    unsigned long long int WarningLowVRAMBytes  = 1073741824;
-
+    unsigned long long int WarningLowVRAMBytes   = 1073741824;
+    unsigned long long int CriticalLowVRAMBytes  = 536870912;
+    unsigned long long int FatalLowVRAMBytes     = 268435456;
+    unsigned long long int TerminateLowVRAMBytes = 67108864;
     
 };

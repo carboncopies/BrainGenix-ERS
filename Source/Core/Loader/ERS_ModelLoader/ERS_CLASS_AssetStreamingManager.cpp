@@ -177,11 +177,12 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
 
 void ERS_CLASS_AssetStreamingManager::CheckHardwareLimitations(ERS_STRUCT_Scene* Scene) {
 
-    // Get Current Free RAM Value
+    // Get Current Free RAM/VRAM Value
     ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo();
     unsigned long long int FreeRAM = HWInfo.Dynamic_.PhysicalMemoryFree;
+    long long unsigned int FreeVRAM = SystemUtils_->RendererSettings_->VRAMBudget_ - SystemUtils_->RendererSettings_->CurrentVRAMUsage_;
 
-    // Start Reducing Target Texture Levels
+    // Start Reducing Target Texture Levels (RAM Limitation)
     if (FreeRAM < SystemUtils_->RendererSettings_->WarningLowRAMBytes) {
         for (unsigned int i = 0; i < Scene->Models.size(); i++) {
             if (Scene->Models[i]->Textures_.size() > 0) {
@@ -193,6 +194,23 @@ void ERS_CLASS_AssetStreamingManager::CheckHardwareLimitations(ERS_STRUCT_Scene*
 
                 // Enforce Limit
                 Scene->Models[i]->TargetTextureLevelRAM  = std::min(Scene->Models[i]->TargetTextureLevelRAM, MaxTextureLevel);
+                Scene->Models[i]->TargetTextureLevelVRAM = std::min(Scene->Models[i]->TargetTextureLevelVRAM, MaxTextureLevel);
+
+            }
+        }
+    }
+
+    // Start Limiting Texture Levels In
+    if (FreeVRAM < SystemUtils_->RendererSettings_->WarningLowVRAMBytes) {
+        for (unsigned int i = 0; i < Scene->Models.size(); i++) {
+            if (Scene->Models[i]->Textures_.size() > 0) {
+
+                // Calculate Max Allowed Texture Level
+                int TotalLevels = Scene->Models[i]->Textures_[0].TextureLevels.size();
+                unsigned long long int WarningThreshold = SystemUtils_->RendererSettings_->WarningLowVRAMBytes;
+                int MaxTextureLevel = FreeVRAM / ((double)WarningThreshold / (double)TotalLevels);
+
+                // Enforce Limit
                 Scene->Models[i]->TargetTextureLevelVRAM = std::min(Scene->Models[i]->TargetTextureLevelVRAM, MaxTextureLevel);
 
             }
