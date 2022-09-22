@@ -82,6 +82,12 @@ private:
     
 
     /**
+     * @brief Dumps all push items in a last-ditch effort to free memory before the sytem runs out.
+     * 
+     */
+    void QueuePanic();
+
+    /**
      * @brief Loads the given mip-map level fromt the texture provided as a FIBITMAP
      * Returns true on success, false otherwise
      * 

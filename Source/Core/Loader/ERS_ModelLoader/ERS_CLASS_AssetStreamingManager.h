@@ -80,7 +80,11 @@ private:
      */
     void WorkerThread();
 
-
+    /**
+     * @brief Removes all push items from the queue to help free memory faster.
+     * 
+     */
+    void DumpPushItemsFromQueues();
 
     /**
      * @brief Sorts the models in the given scene based on their distance from the camera.

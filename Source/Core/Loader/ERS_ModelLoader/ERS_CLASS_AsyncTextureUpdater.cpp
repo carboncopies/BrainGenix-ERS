@@ -870,3 +870,21 @@ bool ERS_CLASS_AsyncTextureUpdater::GetQueuePrioritizationEnabled() {
 void ERS_CLASS_AsyncTextureUpdater::SetQueuePrioritizationEnabled(bool State) {
     PrioritizeQueueByVisualImpact_ = State;
 }
+void ERS_CLASS_AsyncTextureUpdater::QueuePanic() {
+    BlockLoaderThreads_.lock();
+    BlockPusherThreads_.lock();
+
+    // Strip Load Items
+    std::vector<std::shared_ptr<ERS_STRUCT_Model>> ModelsWithUnloads;
+    for (unsigned int i = 0; i < LoadWorkItems_.size(); i++) {
+        if (LoadWorkItems_[i]->TargetTextureLevelRAM < LoadWorkItems_[i]->TextureLevelInRAM_) {
+            ModelsWithUnloads.push_back(LoadWorkItems_[i]);
+        }
+    }
+    LoadWorkItems_.clear();
+    for (unsigned int i = 0; i < ModelsWithUnloads.size(); i++) {
+        LoadWorkItems_.push_back(ModelsWithUnloads[i]);
+    }
+
+    // Strip Push Items
+}
