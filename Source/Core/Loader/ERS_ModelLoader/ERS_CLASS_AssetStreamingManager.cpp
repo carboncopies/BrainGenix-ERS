@@ -170,21 +170,33 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
     }
 
     ResourceMonitor_->UpdateTotals();
-    CheckHardwareLimitations();
+    CheckHardwareLimitations(Scene);
 
 
 }
 
-void ERS_CLASS_AssetStreamingManager::CheckHardwareLimitations() {
+void ERS_CLASS_AssetStreamingManager::CheckHardwareLimitations(ERS_STRUCT_Scene* Scene) {
 
     // Get Current Free RAM Value
     ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo();
     unsigned long long int FreeRAM = HWInfo.Dynamic_.PhysicalMemoryFree;
 
+    // Start Reducing Target Texture Levels
+    if (FreeRAM < SystemUtils_->RendererSettings_->WarningLowRAMBytes) {
+        for (unsigned int i = 0; i < Scene->Models.size(); i++) {
+            if (Scene->Models[i]->Textures_.size() > 0) {
+                int TotalLevels = Scene->Models[i]->Textures_[0].TextureLevels.size();
+                unsigned long long int WarningThreshold = HWInfo.Dynamic_.PhysicalMemoryFree;
+                
+            }
+        }
+    }
+
     // Hard RAM Cap (256MiB), Stops Any New Textures From Being Loaded
     if (FreeRAM < SystemUtils_->RendererSettings_->CriticalLowRAMBytes){
         AsyncTextureUpdater_->QueuePanic();
     }
+
 
 }
 
