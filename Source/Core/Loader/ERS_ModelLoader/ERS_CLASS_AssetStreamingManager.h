@@ -87,6 +87,12 @@ private:
     void DumpPushItemsFromQueues();
 
     /**
+     * @brief Checks to ensure that there's available hardware resources to continue loading. 
+     * 
+     */
+    void CheckHardwareLimitations();
+
+    /**
      * @brief Sorts the models in the given scene based on their distance from the camera.
      * Returns a map containing the distance as well as the index in the model list for that model.
      * 
