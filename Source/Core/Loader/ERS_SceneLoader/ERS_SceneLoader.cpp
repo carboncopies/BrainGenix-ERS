@@ -77,6 +77,7 @@ void ERS_CLASS_SceneLoader::AddModel(ERS_STRUCT_Scene* Scene, long AssetID) {
         Model->Meshes[i].CastStaticShadows_ = &Model->CastStaticShadows_;
         Model->Meshes[i].ReceiveShadows_ = &Model->ReceiveShadows_;
 
+        Model->Meshes[i].TreatMissingTexturesAsTransparent_ = &Model->TreatMissingTexturesAsTransparent_;
         
     }
 

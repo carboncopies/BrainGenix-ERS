@@ -50,7 +50,7 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
     // Write Metadata
     Output << YAML::Key << "SceneName" << YAML::Value << InputScene->SceneName;
-    Output << YAML::Key << "SceneFormatVersion" << YAML::Value << 4;
+    Output << YAML::Key << "SceneFormatVersion" << YAML::Value << 5;
     Output << YAML::Key << "ActiveCameraIndex" << YAML::Value << InputScene->ActiveSceneCameraIndex;
     
 
@@ -85,6 +85,8 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "CastDynamicShadows" << YAML::Value << InputScene->Models[i]->CastDynamicShadows_;
         Output << YAML::Key << "CastStaticShadows" << YAML::Value << InputScene->Models[i]->CastStaticShadows_;
         Output << YAML::Key << "ReceiveShadows" << YAML::Value << InputScene->Models[i]->ReceiveShadows_;
+        
+        Output << YAML::Key << "TreatMissingTexturesAsTransparent" << YAML::Value << InputScene->Models[i]->TreatMissingTexturesAsTransparent_;
 
         Output << YAML::Key << "ShaderOverrideIndex" << YAML::Value << InputScene->Models[i]->ShaderOverrideIndex_;
 

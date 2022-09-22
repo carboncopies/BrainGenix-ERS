@@ -54,6 +54,8 @@ struct ERS_STRUCT_Mesh {
     bool* CastStaticShadows_; /**<Set if this model is rendered when building static depth maps*/
     bool* ReceiveShadows_ ; /**<Determines if this model is to have shadows applied to it.*/
 
+    bool* TreatMissingTexturesAsTransparent_ = nullptr; /**<Treats missing textures as transparent.*/ 
+
 
     /**
      * @brief Setup the mesh (create opengl objects, etc.)

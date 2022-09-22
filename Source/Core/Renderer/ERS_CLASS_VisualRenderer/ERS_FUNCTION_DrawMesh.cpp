@@ -98,7 +98,11 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
 
     }
 
-
+    if ((*Mesh->TreatMissingTexturesAsTransparent_) && !HasDiffuse) {
+        glUniform1i(glGetUniformLocation(Shader->ShaderProgram_, "texture_diffuse1"), 2);
+        glActiveTexture(GL_TEXTURE0 + 2);
+        glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->TransparentTexture_);
+    }
 
     // Set Uniforms
     Shader->SetBool("HasAmbientOcclusion", HasAmbientOcclusion);
