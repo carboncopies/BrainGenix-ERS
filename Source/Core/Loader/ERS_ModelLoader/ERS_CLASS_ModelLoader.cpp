@@ -246,6 +246,8 @@ void ERS_CLASS_ModelLoader::ProcessGPU(std::shared_ptr<ERS_STRUCT_Model> Model) 
         Model->Meshes[i].CastStaticShadows_ = &Model->CastStaticShadows_;
         Model->Meshes[i].ReceiveShadows_ = &Model->ReceiveShadows_;
 
+        Model->Meshes[i].TreatMissingTexturesAsTransparent_ = &Model->TreatMissingTexturesAsTransparent_;
+
 
         // for (unsigned long Index = 0; Index < Model->Meshes[i].TextureReferences_.size(); Index++) { // IF TEXTURES DONT WORK, CHECK HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
