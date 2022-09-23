@@ -42,7 +42,7 @@ class ERS_CLASS_OpenGLLoggingSystem {
 
 private:
 
-    ERS_CLASS_LoggingSystem* Logger_; /**<Class to prettyify the opengl logs once they're extracted*/
+    ERS_LoggingSystems once they're extracted*/
     ERS_STRUCT_MessageCallbackParam UserParam_; /**<Used In Debug Callback*/
 
 public:
@@ -78,7 +78,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_OpenGLLoggingSystem(ERS_CLASS_LoggingSystem* Logger);
+    ERS_CLASS_OpenGLLoggingSystem(ERS_LoggingSystem
 
     /**
      * @brief Destroy the ers class openglloggingsystem object
