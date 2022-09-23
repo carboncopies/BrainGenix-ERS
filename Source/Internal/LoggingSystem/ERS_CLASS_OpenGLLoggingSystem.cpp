@@ -11,7 +11,7 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
 
     // Get System Pointers From User Data Void Ptr
     ERS_STRUCT_MessageCallbackParam* UserParamStruct = (ERS_STRUCT_MessageCallbackParam*)UserData;
-    ERS_CLASS_LoggingSystem* Logger = (ERS_CLASS_LoggingSystem*)UserParamStruct->Logger_;
+    ERS_LoggingSystem* Logger = (ERS_LoggingSystem*)UserParamStruct->Logger_;
     ERS_CLASS_OpenGLLoggingSystem* OpenGLLoggingSystem = (ERS_CLASS_OpenGLLoggingSystem*)UserParamStruct->OpenGLLoggingSystem_;
 
     // Convert GL Enum To Readable Strings
@@ -210,7 +210,7 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
 }
 
 
-ERS_CLASS_OpenGLLoggingSystem::ERS_CLASS_OpenGLLoggingSystem(ERS_CLASS_LoggingSystem* Logger) {
+ERS_CLASS_OpenGLLoggingSystem::ERS_CLASS_OpenGLLoggingSystem(ERS_LoggingSystem* Logger) {
 
     Logger_ = Logger;
 
