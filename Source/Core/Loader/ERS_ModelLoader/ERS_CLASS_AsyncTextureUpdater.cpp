@@ -652,6 +652,8 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
     // Reset Strings
     RAMQueueString = "";
     VRAMQueueString = "";
+    RAMBeingProcessed_.clear();
+    VRAMBeingProcessed_.clear();
 
     BlockLoaderThreads_.lock();
     for (unsigned int i = 0; i < LoadWorkItems_.size(); i++) {
@@ -662,6 +664,9 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
         } else if (Model->TargetTextureLevelRAM < Model->TextureLevelInRAM_) {
             RAMQueueString += "U";
         }
+
+        RAMBeingProcessed_.push_back(Model->TexturesBeingLoaded);
+
     }
     BlockLoaderThreads_.unlock();
 
@@ -676,6 +681,9 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
         } else if (Model->TargetTextureLevelVRAM < Model->TextureLevelInVRAM_) {
             VRAMQueueString += "F";
         }
+
+        VRAMBeingProcessed_.push_back(Model->TexturesBeingPushed);
+
     }
     BlockPusherThreads_.unlock();
 
@@ -704,10 +712,12 @@ void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
         bool HasWorkItem = false;
         BlockPusherThreads_.lock();
         for (unsigned int i = 0; i < PushWorkItems_.size(); i++) {
-            if (!PushWorkItems_[i]->TexturesBeingPushed) {
+            bool HasRAMLevel = PushWorkItems_[i]->TargetTextureLevelVRAM <= PushWorkItems_[i]->TextureLevelInRAM_;
+            if (!PushWorkItems_[i]->TexturesBeingPushed && HasRAMLevel) {
                 WorkItem = PushWorkItems_[i];
                 HasWorkItem = true;
                 PushWorkItems_.erase(PushWorkItems_.begin() + i);
+                break;
             }
         }
         BlockPusherThreads_.unlock();
@@ -763,6 +773,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureLoaderThread(int Index) {
                 WorkItem = LoadWorkItems_[i];
                 HasWorkItem = true;
                 LoadWorkItems_.erase(LoadWorkItems_.begin() + i);
+                break;
             }
         }
         BlockLoaderThreads_.unlock();

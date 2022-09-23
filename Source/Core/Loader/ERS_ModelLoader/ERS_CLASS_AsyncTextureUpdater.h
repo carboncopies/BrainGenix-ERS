@@ -163,6 +163,9 @@ private:
 
 public:
 
+    std::vector<bool>  RAMBeingProcessed_;
+    std::vector<bool> VRAMBeingProcessed_;
+    
     std::string RAMQueueString = "";
     std::string VRAMQueueString = "";
 
