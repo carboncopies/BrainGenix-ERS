@@ -7,7 +7,7 @@
 add_library(ERS_CLASS_LoggingSystem
 
             # Add Source Files (.cpp)
-            "ERS_CLASS_LoggingSystem.cpp"
+            "ERS_LoggingSystem.cpp"
             "ERS_CLASS_OpenGLLoggingSystem.cpp"
             "ERS_STRUCT_MessageCallbackUserParam.cpp"
 
@@ -21,7 +21,7 @@ add_library(ERS_CLASS_LoggingSystem
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_CLASS_LoggingSystem
+target_link_libraries(ERS_LoggingSystem
     yaml-cpp
     glad
     )
