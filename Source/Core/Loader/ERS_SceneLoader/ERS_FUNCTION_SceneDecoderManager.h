@@ -22,6 +22,7 @@
 #include <ERS_FUNCTION_SceneDecoderV3.h>
 #include <ERS_FUNCTION_SceneDecoderV4.h>
 #include <ERS_FUNCTION_SceneDecoderV5.h>
+#include <ERS_FUNCTION_SceneDecoderV6.h>
 
 
 /**
