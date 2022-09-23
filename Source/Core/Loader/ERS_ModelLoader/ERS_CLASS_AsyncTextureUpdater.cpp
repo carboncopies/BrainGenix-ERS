@@ -717,6 +717,7 @@ void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
                 WorkItem = PushWorkItems_[i];
                 HasWorkItem = true;
                 PushWorkItems_.erase(PushWorkItems_.begin() + i);
+                break
             }
         }
         BlockPusherThreads_.unlock();
@@ -772,6 +773,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureLoaderThread(int Index) {
                 WorkItem = LoadWorkItems_[i];
                 HasWorkItem = true;
                 LoadWorkItems_.erase(LoadWorkItems_.begin() + i);
+                break;
             }
         }
         BlockLoaderThreads_.unlock();
