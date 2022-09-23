@@ -700,14 +700,14 @@ void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
     while (!StopPusherThreads_) {
 
         // Get Work Item If It Exists
-        std::shared_ptr<ERS_STRUCT_Model> WorkItem;
+        std::shared_ptr<ERS_STRUCT_Model> WorkItem = nullptr;
         bool HasWorkItem = false;
         BlockPusherThreads_.lock();
-        if (PushWorkItems_.size() > 0) {
-            WorkItem = PushWorkItems_[0];
-            if (!WorkItem->TexturesBeingPushed) {
+        for (unsigned int i = 0; i < PushWorkItems_.size(); i++) {
+            if (!PushWorkItems_[i]->TexturesBeingPushed) {
+                WorkItem = PushWorkItems_[i];
                 HasWorkItem = true;
-                PushWorkItems_.erase(PushWorkItems_.begin());
+                PushWorkItems_.erase(PushWorkItems_.begin() + i);
             }
         }
         BlockPusherThreads_.unlock();
