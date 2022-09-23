@@ -53,9 +53,10 @@ include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/OZZ-Animation.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/MeshOptimizer.cmake)
 
+# Add INTERFACE SUBDIRECTORIES
+add_subdirectory(${SRC_DIR}/Interface/MeshOptimizerInterface)
 
 # ADD INTERNAL SUBDIRECTORIES
-add_subdirectory(${SRC_DIR}/Internal/MeshOptimizerInterface)
 add_subdirectory(${SRC_DIR}/Internal/LoggingSystem)
 
 # ADD CORE SUBDIRECTORIES
