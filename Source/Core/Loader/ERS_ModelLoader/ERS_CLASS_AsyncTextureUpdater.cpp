@@ -755,7 +755,7 @@ void ERS_CLASS_AsyncTextureUpdater::TextureLoaderThread(int Index) {
     while (!StopLoaderThreads_) {
 
         // Get Work Item If It Exists
-        std::shared_ptr<ERS_STRUCT_Model> WorkItem;
+        std::shared_ptr<ERS_STRUCT_Model> WorkItem = nullptr;
         bool HasWorkItem = false;
         BlockLoaderThreads_.lock();
         if (LoadWorkItems_.size() > 0) {
