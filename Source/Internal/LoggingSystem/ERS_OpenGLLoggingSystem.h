@@ -18,7 +18,7 @@
 
 
 #include <ERS_STRUCT_OpenGLLogItem.h>
-#include <ERS_STRUCT_MessageCallbackUserParam.h>
+#include <ERS_MessageCallbackUserParam.h>
 
 
 /**
