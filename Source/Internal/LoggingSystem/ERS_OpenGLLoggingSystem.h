@@ -18,7 +18,7 @@
 
 
 #include <ERS_STRUCT_OpenGLLogItem.h>
-#include <ERS_MessageCallbackUserParam.h>
+#include <ERS_STRUCT_MessageCallbackUserParam.h>
 
 
 /**
@@ -38,11 +38,11 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
  * @brief This Class Provides A System To Get OpenGL Context Issues as well as debug other things related to opengl.
  * 
  */
-class ERS_OpenGLLoggingSystem {
+class ERS_CLASS_OpenGLLoggingSystem {
 
 private:
 
-    ERS_LoggingSystems once they're extracted*/
+    ERS_LoggingSystem* Logger_; /**<Class to prettyify the opengl logs once they're extracted*/
     ERS_STRUCT_MessageCallbackParam UserParam_; /**<Used In Debug Callback*/
 
 public:
@@ -78,13 +78,13 @@ public:
      * 
      * @param Logger 
      */
-    ERS_OpenGLLoggingSystem(ERS_LoggingSystem
+    ERS_CLASS_OpenGLLoggingSystem(ERS_LoggingSystem
 
     /**
      * @brief Destroy the ers class openglloggingsystem object
      * 
      */
-    ~ERS_OpenGLLoggingSystem();
+    ~ERS_CLASS_OpenGLLoggingSystem();
 
 
     /**
