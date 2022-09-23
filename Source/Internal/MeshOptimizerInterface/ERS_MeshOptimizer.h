@@ -24,8 +24,11 @@ class MeshOptimizer {
 private:
 
 
+
 public:
 
+    MeshOptimizer();
+    ~MeshOptimizer();
 
 
 };

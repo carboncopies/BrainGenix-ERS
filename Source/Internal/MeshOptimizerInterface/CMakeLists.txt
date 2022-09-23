@@ -22,6 +22,7 @@ target_link_libraries(ERS_MeshOptimizer
 
 # Link Internal Libs
 target_link_libraries(ERS_MeshOptimizer
+    ERS_CLASS_LoggingSystem
     )
 
 target_include_directories(ERS_MeshOptimizer PUBLIC ./)
