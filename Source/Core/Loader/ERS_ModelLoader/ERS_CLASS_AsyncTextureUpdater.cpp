@@ -682,7 +682,7 @@ void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
             VRAMQueueString += "F";
         }
 
-        RAMBeingProcessed_.push_back(Model->TexturesBeingPushed);
+        VRAMBeingProcessed_.push_back(Model->TexturesBeingPushed);
 
     }
     BlockPusherThreads_.unlock();
