@@ -29,7 +29,7 @@ target_link_libraries(ERS_LoggingSystem
 # Link Internal Libs
 target_link_libraries(ERS_LoggingSystem
     ERS_STRUCT_RGBColor
-    ERS_STRUCT_OpenGLLogItem
+    ERS_OpenGLLogItem
     )
 
 if (WIN32) 

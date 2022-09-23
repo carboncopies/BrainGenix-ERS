@@ -196,7 +196,7 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
 
     
     // Create Struct
-    ERS_STRUCT_OpenGLLogItem Item;
+    ERS_OpenGLLogItem Item;
     Item.Message_ = std::string(GLMessage);
     Item.ID_ = GLID;
     Item.Severity_ = GLSeverity;

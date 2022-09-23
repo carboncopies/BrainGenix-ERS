@@ -21,7 +21,7 @@
  * @brief Struct containing renderer settings.
  * 
  */
-struct ERS_STRUCT_OpenGLLogItem {
+struct ERS_OpenGLLogItem {
 
     std::string Message_; /**<Message To Be Logged*/
     

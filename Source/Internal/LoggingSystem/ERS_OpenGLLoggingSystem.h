@@ -17,8 +17,8 @@
 
 
 
-#include <ERS_STRUCT_OpenGLLogItem.h>
-#include <ERS_STRUCT_MessageCallbackUserParam.h>
+#include <ERS_OpenGLLogItem.h>
+#include <ERS_MessageCallbackUserParam.h>
 
 
 /**
@@ -47,7 +47,7 @@ private:
 
 public:
 
-    std::vector<ERS_STRUCT_OpenGLLogItem> LogItems_; /**<List of log items as gotten from the opengl system*/
+    std::vector<ERS_OpenGLLogItem> LogItems_; /**<List of log items as gotten from the opengl system*/
     std::mutex LogItemMutex_; /**<Mutex To Enxure Thread Safety For The Log Items Vector*/
 
     bool LogSeverityHigh_ =             true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
