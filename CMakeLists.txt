@@ -112,7 +112,6 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_SceneObject)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Script)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_DepthMap)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_RendererSettings)
-add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_OpenGLLogItem)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ShaderUniformData)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ModelImportOptions)
 
