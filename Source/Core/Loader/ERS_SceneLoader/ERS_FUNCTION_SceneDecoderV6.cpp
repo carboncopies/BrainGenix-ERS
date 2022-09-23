@@ -39,6 +39,9 @@ bool ERS_FUNCTION_DecodeSceneV6(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
         Success &= ERS_FUNCTION_GetLong       (Logger, Item, "ShaderOverrideIndex",               Model.ShaderOverrideIndex_               );
         Success &= ERS_FUNCTION_GetString     (Logger, Item, "AssetName",                         Model.Name                               );
         Success &= ERS_FUNCTION_GetLongVector (Logger, Item, "AttachedScripts",                   Model.AttachedScriptIndexes_             );
+        Success &= ERS_FUNCTION_GetInt        (Logger, Item, "ModelMinLOD",                       Model.UserLimitedMinLOD_                 );
+        Success &= ERS_FUNCTION_GetInt        (Logger, Item, "ModelMaxLOD",                       Model.UserLimitedMaxLOD_                 );
+
 
         // Force Scale Update
         Model.TrueModelScale = Model.ModelScale / 100.0f;
