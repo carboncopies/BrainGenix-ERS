@@ -33,7 +33,7 @@ class ERS_CLASS_HardwareInformation {
     private:
 
         // Class Instances
-        ERS_CLASS_LoggingSystem* Logger_; /**<Instance Of Logging System*/
+        ERS_LoggingSystem* Logger_; /**<Instance Of Logging System*/
         ERS_STRUCT_HardwareInfo HardwareInfo_; /**<Internal Hardware Information Struct*/
 
         // Config
@@ -65,7 +65,7 @@ class ERS_CLASS_HardwareInformation {
          * @param Logger 
          * @param SystemConfig 
          */
-        ERS_CLASS_HardwareInformation(ERS_CLASS_LoggingSystem* Logger, YAML::Node SystemConfig);
+        ERS_CLASS_HardwareInformation(ERS_LoggingSystem* Logger, YAML::Node SystemConfig);
 
         /**
          * @brief Destroy the Hardware Information object

@@ -17,7 +17,7 @@ add_library(ERS_CLASS_ArgumentParser
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_CLASS_ArgumentParser
-    ERS_CLASS_LoggingSystem
+    ERS_LoggingSystem
     )
 
 # Link Internal Libs

@@ -22,7 +22,7 @@ target_link_libraries(ERS_SceneManager
 
 # Link Internal Libs
 target_link_libraries(ERS_SceneManager
-    ERS_CLASS_LoggingSystem
+    ERS_LoggingSystem
 
     ERS_STRUCT_Shader
     ERS_STRUCT_Scene

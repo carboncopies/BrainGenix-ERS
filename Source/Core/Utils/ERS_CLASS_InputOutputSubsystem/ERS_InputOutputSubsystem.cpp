@@ -5,7 +5,7 @@
 #include <ERS_InputOutputSubsystem.h>
 
 ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
-    ERS_CLASS_LoggingSystem* Logger,
+    ERS_LoggingSystem* Logger,
     YAML::Node SystemConfiguration, 
     std::vector<std::pair<std::string, std::string>> ArgumentPair) {
 

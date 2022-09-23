@@ -27,7 +27,7 @@ class ERS_CLASS_SceneManager{
 private:
 
     // Internal Member Pointers
-    ERS_CLASS_LoggingSystem* Logger_; /**<Pointer To Logger Instance*/
+    ERS_LoggingSystem* Logger_; /**<Pointer To Logger Instance*/
 
 
 public:
@@ -43,7 +43,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_SceneManager(ERS_CLASS_LoggingSystem* Logger);
+    ERS_CLASS_SceneManager(ERS_LoggingSystem* Logger);
     
     /**
      * @brief Destroy the Scene Manager object

@@ -37,7 +37,7 @@ struct ERS_STRUCT_SystemUtils {
     std::unique_ptr<YAML::Node> LocalSystemConfiguration_; /**<Pointer To Config.yaml Data From Local Hard Drive*/
     std::unique_ptr<bool> SystemShouldRun_; /**<Pointer To Variable Setting If System Should Run Or Not*/
 
-    std::unique_ptr<ERS_CLASS_LoggingSystem> Logger_; /**<Pointer To BG-ERS Logging System*/
+    std::unique_ptr<ERS_LoggingSystem> Logger_; /**<Pointer To BG-ERS Logging System*/
     std::unique_ptr<ERS_CLASS_InputOutputSubsystem> ERS_IOSubsystem_; /**<Pointer To ERS Input Output Subsystem*/
     std::unique_ptr<ERS_CLASS_FramerateManager> FramerateManager_; /**<Pointer to framerate subsystem*/
     std::unique_ptr<ERS_CLASS_HardwareInformation> ERS_CLASS_HardwareInformation_; /**<Pointer to the hardware informaton class instance*/

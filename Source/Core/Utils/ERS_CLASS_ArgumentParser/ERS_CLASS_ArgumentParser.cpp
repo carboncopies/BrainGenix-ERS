@@ -5,7 +5,7 @@
 #include <ERS_CLASS_ArgumentParser.h>
 
 
-ERS_CLASS_ArgumentParser::ERS_CLASS_ArgumentParser(ERS_CLASS_LoggingSystem* Logger) {
+ERS_CLASS_ArgumentParser::ERS_CLASS_ArgumentParser(ERS_LoggingSystem* Logger) {
 
     Logger_ = Logger;
     Logger_->Log("Initialiizng Argument Parser Subsystem", 4);
