@@ -11,11 +11,24 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-
+#include <ERS_CLASS_LoggingSystem.h>
 
 namespace ERS {
 
+/**
+ * @brief This class provides functionality to remesh an input mesh with various amounts of optimization.
+ * 
+ */
+class MeshOptimizer {
 
+private:
+
+
+public:
+
+
+
+};
 
 
 }
