@@ -15,7 +15,7 @@
 #include <assimp/Exporter.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_CLASS_LoggingSystem.h>
+#include <ERS_LoggingSystem.h>
 
 #include <ERS_STRUCT_Model.h>
 #include <ERS_STRUCT_Scene.h>

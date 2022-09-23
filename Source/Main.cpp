@@ -27,7 +27,7 @@
 #include <ERS_CLASS_GPURequest.h>
 #include <RendererManager.h>
 
-#include <ERS_CLASS_LoggingSystem.h>
+#include <ERS_LoggingSystem.h>
 #include <ERS_CLASS_HardwareInformation.h>
 #include <ERS_CLASS_ArgumentParser.h>
 #include <ERS_CLASS_ModelImporter.h>

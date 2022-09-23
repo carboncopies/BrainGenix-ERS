@@ -11,7 +11,7 @@
 #include <glm/glm.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_CLASS_LoggingSystem.h>
+#include <ERS_LoggingSystem.h>
 #include <ERS_STRUCT_Shader.h>
 #include <ERS_STRUCT_Scene.h>
 #include <ERS_STRUCT_LocRotScale.h>
