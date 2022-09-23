@@ -26,7 +26,7 @@
 /**
  * @brief Main Logging System, Saves Logs To Database/Text File If Configured To.
  */
-class ERS_CLASS_LoggingSystem {
+class ERS_LoggingSystem {
 
 private: 
 
@@ -86,13 +86,13 @@ public:
      * 
      * @param SystemConfiguration System configuration file in YAML::Node format from Config.yaml.
      */
-    ERS_CLASS_LoggingSystem(YAML::Node SystemConfiguration);
+    ERS_LoggingSystem(YAML::Node SystemConfiguration);
 
     /**
      * @brief Cleanup the logger class, close db connection, close file io, etc.
      * 
      */
-    ~ERS_CLASS_LoggingSystem();
+    ~ERS_LoggingSystem();
 
 
 

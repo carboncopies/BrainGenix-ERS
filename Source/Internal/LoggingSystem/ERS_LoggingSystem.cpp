@@ -6,7 +6,7 @@
 
 
 
-ERS_CLASS_LoggingSystem::ERS_CLASS_LoggingSystem(YAML::Node SystemConfiguration) {
+ERS_LoggingSystem::ERS_LoggingSystem(YAML::Node SystemConfiguration) {
 
     LocalSystemConfiguration = SystemConfiguration;
 
@@ -44,14 +44,14 @@ ERS_CLASS_LoggingSystem::ERS_CLASS_LoggingSystem(YAML::Node SystemConfiguration)
 
 }
 
-ERS_CLASS_LoggingSystem::~ERS_CLASS_LoggingSystem() {
+ERS_LoggingSystem::~ERS_LoggingSystem() {
 
     Log("System Logger Destructor Called, Logger Shutting Down", 6);
 
 }
 
 
-void ERS_CLASS_LoggingSystem::Log(std::string LogMessage, int LogLevel, bool Enable) {
+void ERS_LoggingSystem::Log(std::string LogMessage, int LogLevel, bool Enable) {
 
     if (Enable) {
         LogItem(LogMessage.c_str(), LogLevel);
@@ -59,7 +59,7 @@ void ERS_CLASS_LoggingSystem::Log(std::string LogMessage, int LogLevel, bool Ena
 
 }
 
-void ERS_CLASS_LoggingSystem::Log(const char* LogMessage, int LogLevel, bool Enable) {
+void ERS_LoggingSystem::Log(const char* LogMessage, int LogLevel, bool Enable) {
 
     if (Enable) {
         LogItem(LogMessage, LogLevel);
@@ -69,7 +69,7 @@ void ERS_CLASS_LoggingSystem::Log(const char* LogMessage, int LogLevel, bool Ena
 
 
 
-void ERS_CLASS_LoggingSystem::LogItem(const char* LogItem, int LogLevel) {
+void ERS_LoggingSystem::LogItem(const char* LogItem, int LogLevel) {
 
     // Get Current Time In YYYY-MM-DD-HH-MM-SS Format
     std::time_t RawCurrentTime;
@@ -139,7 +139,7 @@ void ERS_CLASS_LoggingSystem::LogItem(const char* LogItem, int LogLevel) {
 
 }
 
-void ERS_CLASS_LoggingSystem::ColorizeText(std::string Message, int LogLevel) {
+void ERS_LoggingSystem::ColorizeText(std::string Message, int LogLevel) {
 
     ERS_STRUCT_RGBColor ColorValue = ColorLookup_[LogLevel];
 
