@@ -4,3 +4,10 @@
 
 #include <ERS_MeshOptimizer.h>
 
+
+namespace ERS {
+
+
+
+
+}
