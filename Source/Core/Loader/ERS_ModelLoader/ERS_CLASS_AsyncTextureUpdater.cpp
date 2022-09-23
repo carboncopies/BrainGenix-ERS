@@ -717,7 +717,7 @@ void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
                 WorkItem = PushWorkItems_[i];
                 HasWorkItem = true;
                 PushWorkItems_.erase(PushWorkItems_.begin() + i);
-                break
+                break;
             }
         }
         BlockPusherThreads_.unlock();
