@@ -56,10 +56,9 @@ include(${CMAKE_BUILD_UTILS_DIR}/MeshOptimizer.cmake)
 
 # ADD INTERNAL SUBDIRECTORIES
 add_subdirectory(${SRC_DIR}/Internal/MeshOptimizerInterface)
-
+add_subdirectory(${SRC_DIR}/Internal/LoggingSystem)
 
 # ADD CORE SUBDIRECTORIES
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_LoggingSystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_HardwareInformation)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_InputOutputSubsystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ArgumentParser)
