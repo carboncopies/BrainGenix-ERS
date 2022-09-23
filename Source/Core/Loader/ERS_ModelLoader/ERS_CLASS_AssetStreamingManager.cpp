@@ -74,6 +74,14 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
                 TargetTextureLevelRAM = NumberTextureLevels - round(EquationValue / DistancePerLevelRAM);
             }   
             
+            // If User Defined LOD Settings Enabled, Use Them
+            TargetTextureLevelVRAM = std::min(TargetTextureLevelVRAM, Model->UserLimitedMinLOD_);
+            TargetTextureLevelRAM  = std::min(TargetTextureLevelRAM,  Model->UserLimitedMinLOD_);
+            TargetTextureLevelVRAM = std::max(TargetTextureLevelVRAM, Model->UserLimitedMaxLOD_);
+            TargetTextureLevelRAM  = std::max(TargetTextureLevelRAM,  Model->UserLimitedMaxLOD_);
+            
+            
+
             // Cap Texture Level Range
             if (MinLOD_ > 0) {
                 TargetTextureLevelRAM = std::max(MinLOD_, TargetTextureLevelRAM);

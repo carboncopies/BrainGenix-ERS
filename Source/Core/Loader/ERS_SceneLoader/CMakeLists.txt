@@ -15,6 +15,7 @@ add_library(ERS_SceneLoader
             "ERS_FUNCTION_SceneDecoderV3.cpp"
             "ERS_FUNCTION_SceneDecoderV4.cpp"
             "ERS_FUNCTION_SceneDecoderV5.cpp"
+            "ERS_FUNCTION_SceneDecoderV6.cpp"
 
             # Add Header Files (.h)
             "ERS_SceneLoader.h"
@@ -25,6 +26,7 @@ add_library(ERS_SceneLoader
             "ERS_FUNCTION_SceneDecoderV3.h"
             "ERS_FUNCTION_SceneDecoderV4.h"
             "ERS_FUNCTION_SceneDecoderV5.h"
+            "ERS_FUNCTION_SceneDecoderV6.h"
 
             ${BACKWARD_ENABLE}
             )

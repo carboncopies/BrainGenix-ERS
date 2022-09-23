@@ -222,6 +222,14 @@ void GUI_Window_ObjectProperties::Draw() {
                         ImGui::SameLine();
                         ImGui::HelpMarker("Tell the rendering system to skip this model. Essentially makes it invisible.");
 
+
+                        // Texture LOD Settings
+                        ImGui::Separator();
+                        ImGui::DragInt("Minimum LOD", &Model->UserLimitedMinLOD_, 1, 0, 10);
+                        ImGui::DragInt("Maximum LOD", &Model->UserLimitedMaxLOD_, 1, 0, 10);
+                        ImGui::Separator();
+
+
                         // Shader Override Settings
                         ImGui::Separator();
 

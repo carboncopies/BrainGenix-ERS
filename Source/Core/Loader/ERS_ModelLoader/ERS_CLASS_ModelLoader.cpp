@@ -374,14 +374,6 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
 
     ERS_FUNCTION_DecodeModelMetadata(Metadata, Model.get(), SystemUtils_, AssetID, false);
 
-    // Spawn Threads To Load Textures
-    // std::vector<std::future<ERS_STRUCT_Texture>> DecodedTextures;
-    // for (int i = 0; (long)i < (long)TexturePaths.size(); i++) {
-    //     SystemUtils_->Logger_->Log(std::string(std::string("Assigning Texture To Thread With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
-    //     DecodedTextures.push_back(std::async(&ERS_CLASS_ModelLoader::LoadTexture, this, TextureIDs[i], FlipTextures));
-    // }
-
-
     // Read Mesh
     Assimp::Importer Importer;
     //SystemUtils_->Logger_->Log(std::string(std::string("Loading Model With ID: ") + std::to_string(AssetID)).c_str(), 3);
@@ -399,13 +391,6 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
 
     // Decode Mesh, Create Texture Pointers
     ProcessNode(Model.get(), Scene->mRootNode, Scene);
-
-    // // Get Texture Images From Loader, Push Into Vector
-    // for (unsigned long i = 0; i < DecodedTextures.size(); i++) {
-    //     SystemUtils_->Logger_->Log(std::string(std::string("Getting Texture With ID: ") + std::to_string(TextureIDs[i])).c_str(), 4);
-    //     Model->TexturesToPushToGPU_.push_back(DecodedTextures[i].get());
-    // }
-
 
     // Math Textures To Meshes
     MatchTextures(Model.get());
