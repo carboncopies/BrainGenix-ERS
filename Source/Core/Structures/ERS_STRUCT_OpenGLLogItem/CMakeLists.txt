@@ -7,10 +7,8 @@
 add_library(ERS_OpenGLLogItem
 
             # Add Source Files (.cpp)
-            "ERS_OpenGLLogItem.cpp"
 
             # Add Header Files (.h)
-            "ERS_OpenGLLogItem.h"
             
             ${BACKWARD_ENABLE}
             )
