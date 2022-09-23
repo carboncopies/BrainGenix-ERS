@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_CLASS_OpenGLLoggingSystem.h>
+#include <ERS_OpenGLLoggingSystem.h>
 
 
 
@@ -12,7 +12,7 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
     // Get System Pointers From User Data Void Ptr
     ERS_STRUCT_MessageCallbackParam* UserParamStruct = (ERS_STRUCT_MessageCallbackParam*)UserData;
     ERS_LoggingSystem* Logger = (ERS_LoggingSystem*)UserParamStruct->Logger_;
-    ERS_CLASS_OpenGLLoggingSystem* OpenGLLoggingSystem = (ERS_CLASS_OpenGLLoggingSystem*)UserParamStruct->OpenGLLoggingSystem_;
+    ERS_OpenGLLoggingSystem* OpenGLLoggingSystem = (ERS_OpenGLLoggingSystem*)UserParamStruct->OpenGLLoggingSystem_;
 
     // Convert GL Enum To Readable Strings
     std::string Source;
@@ -210,7 +210,7 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
 }
 
 
-ERS_CLASS_OpenGLLoggingSystem::ERS_CLASS_OpenGLLoggingSystem(ERS_LoggingSystem* Logger) {
+ERS_OpenGLLoggingSystem::ERS_OpenGLLoggingSystem(ERS_LoggingSystem* Logger) {
 
     Logger_ = Logger;
 
@@ -219,7 +219,7 @@ ERS_CLASS_OpenGLLoggingSystem::ERS_CLASS_OpenGLLoggingSystem(ERS_LoggingSystem* 
 
 }
 
-ERS_CLASS_OpenGLLoggingSystem::~ERS_CLASS_OpenGLLoggingSystem() {
+ERS_OpenGLLoggingSystem::~ERS_OpenGLLoggingSystem() {
 
     Logger_->Log("OpenGL Log Collection Subsystem Destructor Called", 6);
 
@@ -228,7 +228,7 @@ ERS_CLASS_OpenGLLoggingSystem::~ERS_CLASS_OpenGLLoggingSystem() {
 
 }
 
-void ERS_CLASS_OpenGLLoggingSystem::SetCollectionStatus(bool Status) {
+void ERS_OpenGLLoggingSystem::SetCollectionStatus(bool Status) {
 
     // If Enabled, Setup Logging
     if (Status) {

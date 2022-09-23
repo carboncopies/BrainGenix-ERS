@@ -8,12 +8,12 @@ add_library(ERS_LoggingSystem
 
             # Add Source Files (.cpp)
             "ERS_LoggingSystem.cpp"
-            "ERS_CLASS_OpenGLLoggingSystem.cpp"
+            "ERS_OpenGLLoggingSystem.cpp"
             "ERS_MessageCallbackUserParam.cpp"
 
             # Add Header Files (.h)
             "ERS_LoggingSystem.h"
-            "ERS_CLASS_OpenGLLoggingSystem.h"
+            "ERS_OpenGLLoggingSystem.h"
             "ERS_MessageCallbackUserParam.h"
 
             
