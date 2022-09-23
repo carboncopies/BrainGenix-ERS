@@ -29,7 +29,7 @@ class ERS_CLASS_LayoutManager {
 
 private:
 
-    ERS_CLASS_LoggingSystem* Logger_          = nullptr; /**<ERS_CLASS_LoggingSystem Instance Pointer*/
+    ERS_LoggingSystem       = nullptr; /**<ERS_LoERS_LoERS_LoggingSystem
     std::string              LayoutDirectory_;           /**<This string stores the path to the editor's layout directory ending in a trailing slash*/
 
     std::vector<YAML::Node> LayoutFiles_; /**<List Of YAML::Node files*/
@@ -45,7 +45,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_LayoutManager(ERS_CLASS_LoggingSystem* Logger, const char* LayoutDirectory = "EditorAssets/Layouts/");
+    ERS_CLASS_LayoutManager(ERS_LoggingSystemnst char* LayoutDirectory = "EditorAssets/Layouts/");
 
     /**
      * @brief Destroy the Layout Manager object

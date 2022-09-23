@@ -24,7 +24,7 @@ target_link_libraries(ERS_Editor_LayoutManager
 
 # Link Internal Libs
 target_link_libraries(ERS_Editor_LayoutManager
-    ERS_CLASS_LoggingSystem
+    ERS_LoggingSystem
     )
 
 target_include_directories(ERS_Editor_LayoutManager PUBLIC ./)

@@ -34,7 +34,7 @@ target_link_libraries(Menu_Debug
     
     ERS_STRUCT_SystemUtils
     
-    ERS_CLASS_LoggingSystem
+    ERS_LoggingSystem
 
     )
 

@@ -7,7 +7,7 @@
 #include <imgui.h>
 #include <fstream>
 
-ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(ERS_CLASS_LoggingSystem* Logger, const char* LayoutDirectory) {
+ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(ERS_LoggingSystem* Logger, const char* LayoutDirectory) {
 
     Logger_ = Logger;
     LayoutDirectory_ = LayoutDirectory;

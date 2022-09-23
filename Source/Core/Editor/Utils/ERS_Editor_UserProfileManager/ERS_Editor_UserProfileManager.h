@@ -24,7 +24,7 @@ class ERS_CLASS_UserProfileManager {
 
 private:
 
-    ERS_CLASS_LoggingSystem* Logger_;               /**<ERS_CLASS_LoggingSystem Instance Pointer*/
+    ERS_LoggingSystem             /**<ERS_LoERS_LoERS_LoggingSystem
     YAML::Node               UserProfile_;          /**<YAML::Node Containing User Profile*/
     std::string              UserColorProfileName_; /**<User Color Profile Name*/
     std::string              UserProfilePath_;      /**<Path To User Profile*/
@@ -46,7 +46,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_UserProfileManager(ERS_CLASS_LoggingSystem* Logger, const char* UserProfilePath = "EditorAssets/Configuration/User/UserConfig.yaml");
+    ERS_CLASS_UserProfileManager(ERS_LoggingSystemnst char* UserProfilePath = "EditorAssets/Configuration/User/UserConfig.yaml");
 
     /**
      * @brief Destroy the User Profile Manager object
