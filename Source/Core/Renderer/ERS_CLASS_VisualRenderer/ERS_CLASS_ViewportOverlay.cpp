@@ -242,7 +242,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
             ImVec4 ItemColor;
             char Item = VRAMLoadingQueue[i];
             if (VRAMLoadingStatus[i]) {
-                ItemColor = ImVec4(0.0f, 1.0f, 1.0f, 1.0f);
+                ItemColor = ImVec4(1.0f, 0.0f, 1.0f, 1.0f);
             } else {
                 ItemColor = Color;
             }
