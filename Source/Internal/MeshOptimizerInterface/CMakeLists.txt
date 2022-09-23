@@ -17,6 +17,7 @@ add_library(ERS_MeshOptimizer
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_MeshOptimizer
+    MeshOptimizer
     )
 
 # Link Internal Libs
