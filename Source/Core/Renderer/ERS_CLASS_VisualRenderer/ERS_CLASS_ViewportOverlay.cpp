@@ -199,14 +199,15 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
         for (unsigned int i = 0; i < RAMLoadingQueue.length(); i++) {
 
             ImVec4 ItemColor;
-            std::string Item = std::to_string(RAMLoadingQueue[i]);
+            char Item = RAMLoadingQueue[i];
             if (RAMLoadingStatus[i]) {
                 ItemColor = ImVec4(0.0f, 1.0f, 1.0f, 1.0f);
             } else {
                 ItemColor = Color;
             }
 
-            ImGui::TextColored(ItemColor, "%s", Item.c_str());
+            ImGui::SameLine();
+            ImGui::TextColored(ItemColor, &Item);
         }
 
     }
