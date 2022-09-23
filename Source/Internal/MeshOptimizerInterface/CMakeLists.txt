@@ -17,17 +17,10 @@ add_library(ERS_MeshOptimizer
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_MeshOptimizer
-    glm
-    IMGUI
-    ImGuizmo
     )
 
 # Link Internal Libs
 target_link_libraries(ERS_MeshOptimizer
-    ERS_CLASS_LoggingSystem
-    
-    ERS_STRUCT_Camera
-    ERS_STRUCT_LocRotScale
     )
 
 target_include_directories(ERS_MeshOptimizer PUBLIC ./)
