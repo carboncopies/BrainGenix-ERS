@@ -712,7 +712,8 @@ void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
         bool HasWorkItem = false;
         BlockPusherThreads_.lock();
         for (unsigned int i = 0; i < PushWorkItems_.size(); i++) {
-            if (!PushWorkItems_[i]->TexturesBeingPushed) {
+            bool HasRAMLevel = PushWorkItems_[i]->TargetTextureLevelVRAM <= PushWorkItems_[i]->TextureLevelInRAM_;
+            if (!PushWorkItems_[i]->TexturesBeingPushed && HasRAMLevel) {
                 WorkItem = PushWorkItems_[i];
                 HasWorkItem = true;
                 PushWorkItems_.erase(PushWorkItems_.begin() + i);
