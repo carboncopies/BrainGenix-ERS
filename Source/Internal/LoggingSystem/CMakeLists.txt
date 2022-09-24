@@ -26,7 +26,6 @@ target_link_libraries(ERS_LoggingSystem
 
 # Link Internal Libs
 target_link_libraries(ERS_LoggingSystem
-    ERS_STRUCT_RGBColor
     )
 
 if (WIN32) 
