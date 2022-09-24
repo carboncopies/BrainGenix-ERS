@@ -12,7 +12,7 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_OpenGLLoggingSystem.h>
+#include <ERS_LoggingSystem.h>
 
 /**
  * @brief Create Hardware Information Class
