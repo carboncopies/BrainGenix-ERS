@@ -29,7 +29,7 @@ class ERS_CLASS_ThemeManager {
 
 private:
 
-    ERS_LoggingSystemer_; /**<ERS_LoERS_LoggingSystem
+    ERS_LoggingSystem* Logger_; /**<ERS_LoggingSystem Instance*/
     const char*              ThemePath_; /**<Filepath Where Themes Are Located*/
 
     std::vector<YAML::Node> ThemeFiles_; /**<List Of YAML::Node files*/
@@ -55,7 +55,7 @@ public:
      * @param Logger_ 
      * @param ThemePath 
      */
-    ERS_CLASS_ThemeManager(ERS_LoggingSystemer, const char* ThemePath = "EditorAssets/Configuration/Themes");
+    ERS_CLASS_ThemeManager(ERS_LoggingSystem* Logger, const char* ThemePath = "EditorAssets/Configuration/Themes");
 
     /**
      * @brief Destroy the Theme Manager object

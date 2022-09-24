@@ -5,7 +5,7 @@
 #include <ERS_Editor_FontManager.h>
 
 
-ERS_CLASS_FontManager::ERS_CLASS_FontManager(ERS_LoggingSystem
+ERS_CLASS_FontManager::ERS_CLASS_FontManager(ERS_LoggingSystem* Logger, const char* FontsDirPath) {
 
     Logger_ = Logger;
     Logger_->Log("Initializing Font Manager", 5);

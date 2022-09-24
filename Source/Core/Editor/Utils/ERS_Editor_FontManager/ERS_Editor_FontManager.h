@@ -30,7 +30,7 @@ class ERS_CLASS_FontManager {
 
 private:
 
-    ERS_LoggingSystem_LoERS_LoERS_LoERS_LoggingSystem
+    ERS_LoggingSystem* Logger_; /**<ERS_LoggingSystem Instance Pointer*/
     const char*  FontsDirectoryPath_; /**<Path where fonts are to be searched for */
 
     bool EndsWith(const std::string& Input, const std::string& Ending);
@@ -46,7 +46,7 @@ public:
 
 
 
-    ERS_CLASS_FontManager(ERS_LoggingSystemntsDirPath = "EditorAssets/Fonts");
+    ERS_CLASS_FontManager(ERS_LoggingSystem* Logger, const char* FontsDirPath = "EditorAssets/Fonts");
     ~ERS_CLASS_FontManager();
 
     void IndexFonts();

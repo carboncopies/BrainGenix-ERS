@@ -38,7 +38,7 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
  * @brief This Class Provides A System To Get OpenGL Context Issues as well as debug other things related to opengl.
  * 
  */
-class ERS_CLASS_OpenGLLoggingSystem {
+class ERS_OpenGLLoggingSystem {
 
 private:
 
