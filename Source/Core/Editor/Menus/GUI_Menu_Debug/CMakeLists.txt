@@ -35,6 +35,7 @@ target_link_libraries(Menu_Debug
     ERS_STRUCT_SystemUtils
     
     ERS_LoggingSystem
+    ERS_OpenGLLoggingSystem
 
     )
 
