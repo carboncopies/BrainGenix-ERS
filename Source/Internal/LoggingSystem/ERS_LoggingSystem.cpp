@@ -141,7 +141,7 @@ void ERS_LoggingSystem::LogItem(const char* LogItem, int LogLevel) {
 
 void ERS_LoggingSystem::ColorizeText(std::string Message, int LogLevel) {
 
-    ERS_STRUCT_RGBColor ColorValue = ColorLookup_[LogLevel];
+    ERS_RGBColor ColorValue = ColorLookup_[LogLevel];
 
     std::string RedString = std::to_string(ColorValue.Red);
     std::string GreenString = std::to_string(ColorValue.Green);
