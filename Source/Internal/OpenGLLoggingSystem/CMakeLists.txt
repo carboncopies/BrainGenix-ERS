@@ -31,4 +31,4 @@ target_link_libraries(ERS_OpenGLLoggingSystem
     ERS_LoggingSystem
     )
 
-
+target_include_directories(ERS_OpenGLLoggingSystem PUBLIC ./)
