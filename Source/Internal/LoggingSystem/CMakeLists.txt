@@ -8,9 +8,11 @@ add_library(ERS_LoggingSystem
 
             # Add Source Files (.cpp)
             "ERS_LoggingSystem.cpp"
+            "ERS_RGBColor.cpp"
 
             # Add Header Files (.h)
             "ERS_LoggingSystem.h"
+            "ERS_RGBColor.h"
 
             
             ${BACKWARD_ENABLE}
