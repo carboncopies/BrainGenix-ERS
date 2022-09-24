@@ -58,6 +58,7 @@ add_subdirectory(${SRC_DIR}/Interface/MeshOptimizerInterface)
 
 # ADD INTERNAL SUBDIRECTORIES
 add_subdirectory(${SRC_DIR}/Internal/LoggingSystem)
+add_subdirectory(${SRC_DIR}/Internal/OpenGLLoggingSystem)
 
 # ADD CORE SUBDIRECTORIES
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_HardwareInformation)
