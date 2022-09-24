@@ -46,7 +46,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_UserProfileManager(ERS_LoggingSystemnst char* UserProfilePath = "EditorAssets/Configuration/User/UserConfig.yaml");
+    ERS_CLASS_UserProfileManager(ERS_LoggingSystem* Logger, const char* UserProfilePath = "EditorAssets/Configuration/User/UserConfig.yaml");
 
     /**
      * @brief Destroy the User Profile Manager object
