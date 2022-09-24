@@ -31,12 +31,4 @@ target_link_libraries(ERS_OpenGLLoggingSystem
     ERS_LoggingSystem
     )
 
-if (WIN32) 
-    ERSBuildLogger(${BoldGreen} "Build Warnings Not Enabled")
-else ()
-    target_compile_options(ERS_OpenGLLoggingSystem PUBLIC -Wall -Wextra -Wpedantic)
-    target_compile_options(ERS_OpenGLLoggingSystem PUBLIC -Werror=uninitialized)
-endif()
-
-target_include_directories(ERS_OpenGLLoggingSystem PUBLIC ./)
 
