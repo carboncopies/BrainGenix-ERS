@@ -78,7 +78,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_OpenGLLoggingSystem(ERS_LoggingSystem
+    ERS_CLASS_OpenGLLoggingSystem(ERS_LoggingSystem* Logger);
 
     /**
      * @brief Destroy the ers class openglloggingsystem object
