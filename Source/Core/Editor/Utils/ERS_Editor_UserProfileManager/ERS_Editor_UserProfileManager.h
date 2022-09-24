@@ -24,7 +24,7 @@ class ERS_CLASS_UserProfileManager {
 
 private:
 
-    ERS_LoggingSystem             /**<ERS_LoERS_LoERS_LoggingSystem
+    ERS_LoggingSystem*       Logger_;               /**<ERS_LoERS_LoERS_LoggingSystem*/
     YAML::Node               UserProfile_;          /**<YAML::Node Containing User Profile*/
     std::string              UserColorProfileName_; /**<User Color Profile Name*/
     std::string              UserProfilePath_;      /**<Path To User Profile*/
