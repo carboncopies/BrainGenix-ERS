@@ -561,8 +561,10 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessVRAMUpdate(int Index, ERS_STRUCT_Scen
             int HighestTargetLevel = Scene->Models[Index]->TargetTextureLevelVRAM;
 
             if (HighestTargetLevel > -1) {
-                float Priority = HighestTargetLevel / Scene->Models[Index]->MaxTextureLevel_;
+                float Priority = ((double)HighestTargetLevel + 0.0001f) / Scene->Models[Index]->MaxTextureLevel_;
                 int InsertLocationIndex = PushWorkItems_.size() * Priority;
+                InsertLocationIndex = std::min(InsertLocationIndex, (int)PushWorkItems_.size());
+                InsertLocationIndex = std::max(InsertLocationIndex, 0);
                 PushWorkItems_.insert(PushWorkItems_.end() - InsertLocationIndex, Scene->Models[Index]);
             }
         } else {
@@ -608,8 +610,10 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessRAMUpdate(int Index, ERS_STRUCT_Scene
             int HighestTargetLevel = Scene->Models[Index]->TargetTextureLevelVRAM;
 
             if (HighestTargetLevel > -1) {
-                float Priority = HighestTargetLevel / Scene->Models[Index]->MaxTextureLevel_;
+                float Priority = ((double)HighestTargetLevel + 0.0001f) / Scene->Models[Index]->MaxTextureLevel_;
                 int InsertLocationIndex = LoadWorkItems_.size() * Priority;
+                InsertLocationIndex = std::min(InsertLocationIndex, (int)LoadWorkItems_.size());
+                InsertLocationIndex = std::max(InsertLocationIndex, 0);
                 LoadWorkItems_.insert(LoadWorkItems_.end() - InsertLocationIndex, Scene->Models[Index]);
             }
 
