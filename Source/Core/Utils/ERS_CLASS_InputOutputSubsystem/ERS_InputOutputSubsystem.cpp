@@ -172,6 +172,10 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
         std::string FilePath{Entry.path().u8string()};
         std::replace(FilePath.begin(), FilePath.end(), '\\', '/');
         
+        // Sanity Check For Directories
+        if (FilePath.find_last_of("/") > FilePath.find_last_of(".")) {
+            continue;
+        }
 
         // Convert To Long, Throw Log Message If Not Number
         try {
