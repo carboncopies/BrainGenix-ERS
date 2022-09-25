@@ -25,7 +25,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_AssetIndexInputOutputManager.h>
 #include <ERS_LoggingSystem.h>
-#include <ERS_FUNCTION_CompareAssetIndexDelta.h>
+#include <ERS_CompareAssetIndexDelta.h>
 #include <ERS_STRUCT_IOData.h>
 
 /**
