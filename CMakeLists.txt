@@ -78,6 +78,9 @@ add_subdirectory(${SRC_DIR}/Internal/OpenGLLoggingSystem)
 message("-- Configured Internal Library 'OpenGLLoggingSystem'")
 add_subdirectory(${SRC_DIR}/Internal/ArgumentParser)
 message("-- Configured Internal Library 'ArgumentParser'")
+add_subdirectory(${SRC_DIR}/Internal/GPURequest)
+message("-- Configured Internal Library 'GPURequest'")
+
 
 ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
 
@@ -86,7 +89,6 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
 ERSBuildLogger(${Green} "Configuring Core Subsystems")
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_HardwareInformation)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_InputOutputSubsystem)
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_GPURequest)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ExternalModelLoader)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ModelImporter)
 
