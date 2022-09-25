@@ -53,12 +53,30 @@ include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/OZZ-Animation.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/MeshOptimizer.cmake)
 
-# Add INTERFACE SUBDIRECTORIES
-add_subdirectory(${SRC_DIR}/Interface/MeshOptimizerInterface)
+
+# Add LIBRARY INTERFACE SUBDIRECTORIES
+ERSBuildLogger(${Green} "Configuring Library Interfaces")
+
+add_subdirectory(${SRC_DIR}/Interface/Library/MeshOptimizerInterface)
+message("-- Configured MeshOptimizer Interface")
+
+ERSBuildLogger(${BoldGreen} "Finished Configuring Library Interfaces")
+
+
+# ADD STRUCT INTERFACE SUBDIRECTORIES
+ERSBuildLogger(${Green} "Configuring Structure Interfaces")
+
+ERSBuildLogger(${BoldGreen} "Finished Configuring Structure Interfaces")
+
 
 # ADD INTERNAL SUBDIRECTORIES
+ERSBuildLogger(${Green} "Configuring Internal Libraries")
+
 add_subdirectory(${SRC_DIR}/Internal/LoggingSystem)
 add_subdirectory(${SRC_DIR}/Internal/OpenGLLoggingSystem)
+
+ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
+
 
 # ADD CORE SUBDIRECTORIES
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_HardwareInformation)
