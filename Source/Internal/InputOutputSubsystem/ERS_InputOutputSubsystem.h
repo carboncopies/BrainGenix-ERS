@@ -23,7 +23,7 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_CLASS_AssetIndexIOM.h>
+#include <ERS_AssetIndexInputOutputManager.h>
 #include <ERS_LoggingSystem.h>
 #include <ERS_FUNCTION_CompareAssetIndexDelta.h>
 #include <ERS_STRUCT_IOData.h>
@@ -39,7 +39,7 @@ private:
   ERS_LoggingSystem* Logger_; /**<Logging Class Pointer*/
 
 public:
-  std::unique_ptr<ERS_CLASS_AssetIndexIOM>
+  std::unique_ptr<ERS_AssetIndexInputOutputManager>
       AssetIndexIOManager_; /**<Pointer to Asset Index Metadata System*/
 
   std::string AssetPath_; /**<Relative Path To Prepend To All IO Operations,

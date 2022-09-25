@@ -2,23 +2,23 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_CLASS_AssetIndexIOM.h>
+#include <ERS_AssetIndexInputOutputManager.h>
 
 
-ERS_CLASS_AssetIndexIOM::ERS_CLASS_AssetIndexIOM(ERS_LoggingSystem* Logger) {
+ERS_AssetIndexInputOutputManager::ERS_AssetIndexInputOutputManager(ERS_LoggingSystem* Logger) {
 
     Logger_ = Logger;
     Logger_->Log("Initializing ERS Asset Index Input/Output Manager", 5);
 
 }
 
-ERS_CLASS_AssetIndexIOM::~ERS_CLASS_AssetIndexIOM() {
+ERS_AssetIndexInputOutputManager::~ERS_AssetIndexInputOutputManager() {
 
     Logger_->Log("ERS Asset Index Input/Output Manager Destructor Called", 6);
 }
 
 
-bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
+bool ERS_AssetIndexInputOutputManager::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
 
 
 
@@ -82,7 +82,7 @@ bool ERS_CLASS_AssetIndexIOM::LoadAssetIndex(ERS_STRUCT_IOData* Data) {
 
 }
 
-bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(ERS_STRUCT_IOData* Data) {
+bool ERS_AssetIndexInputOutputManager::WriteAssetIndex(ERS_STRUCT_IOData* Data) {
 
     Logger_->Log("Serializing Asset Database Metadata", 4);
 
@@ -126,7 +126,7 @@ bool ERS_CLASS_AssetIndexIOM::WriteAssetIndex(ERS_STRUCT_IOData* Data) {
 
 }
 
-bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, ERS_STRUCT_IOData* Data) {
+bool ERS_AssetIndexInputOutputManager::UpdateAssetIndex(long AssetID, ERS_STRUCT_IOData* Data) {
 
 
     std::string AssetType = Data->AssetTypeName;
@@ -160,7 +160,7 @@ bool ERS_CLASS_AssetIndexIOM::UpdateAssetIndex(long AssetID, ERS_STRUCT_IOData* 
 
 }
 
-bool ERS_CLASS_AssetIndexIOM::ReadAssetIndex(long AssetID, ERS_STRUCT_IOData* Data) {
+bool ERS_AssetIndexInputOutputManager::ReadAssetIndex(long AssetID, ERS_STRUCT_IOData* Data) {
 
     // Lookup Asset Info (If ID Not Zero)
     if (AssetID > 0) {

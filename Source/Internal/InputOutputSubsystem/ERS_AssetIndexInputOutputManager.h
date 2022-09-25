@@ -17,7 +17,7 @@
 #include <ERS_STRUCT_IOData.h>
 
 
-class ERS_CLASS_AssetIndexIOM {
+class ERS_AssetIndexInputOutputManager {
 
 private:
 
@@ -40,13 +40,13 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_AssetIndexIOM(ERS_LoggingSystem* Logger);
+    ERS_AssetIndexInputOutputManager(ERS_LoggingSystem* Logger);
 
     /**
      * @brief Destroy the ers class assetindexIOM object
      * 
      */
-    ~ERS_CLASS_AssetIndexIOM();
+    ~ERS_AssetIndexInputOutputManager();
     
     /**
      * @brief Loads the asset index data into memory which is used by the io subsystem.

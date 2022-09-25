@@ -13,7 +13,7 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
   Logger_->Log("Initializing Input/Output Subsystem", 5);
 
   // Setup Classes
-  AssetIndexIOManager_ = std::make_unique<ERS_CLASS_AssetIndexIOM>(Logger_);
+  AssetIndexIOManager_ = std::make_unique<ERS_AssetIndexInputOutputManager>(Logger_);
 
   // Get Database Loading / File Loading Config
   Logger_->Log("Reading Configuration For 'BOOL' 'UseDatabaseLoading'", 1);
