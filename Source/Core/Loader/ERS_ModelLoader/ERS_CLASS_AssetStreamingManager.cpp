@@ -75,10 +75,10 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
             }   
             
             // If User Defined LOD Settings Enabled, Use Them
-            TargetTextureLevelVRAM = std::min(TargetTextureLevelVRAM, Model->UserLimitedMinLOD_);
-            TargetTextureLevelRAM  = std::min(TargetTextureLevelRAM,  Model->UserLimitedMinLOD_);
-            TargetTextureLevelVRAM = std::max(TargetTextureLevelVRAM, Model->UserLimitedMaxLOD_);
-            TargetTextureLevelRAM  = std::max(TargetTextureLevelRAM,  Model->UserLimitedMaxLOD_);
+            TargetTextureLevelVRAM = std::max(TargetTextureLevelVRAM, Model->UserLimitedMinLOD_);
+            TargetTextureLevelRAM  = std::max(TargetTextureLevelRAM,  Model->UserLimitedMinLOD_);
+            TargetTextureLevelVRAM = std::min(TargetTextureLevelVRAM, Model->UserLimitedMaxLOD_);
+            TargetTextureLevelRAM  = std::min(TargetTextureLevelRAM,  Model->UserLimitedMaxLOD_);
             
             
 
