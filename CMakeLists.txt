@@ -94,7 +94,7 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
 
 # ADD CORE SUBDIRECTORIES
 ERSBuildLogger(${Green} "Configuring Core Subsystems")
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ModelImporter)
+add_subdirectory(${SRC_DIR}/Core/Utils/ERS_ModelImporter)
 
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_FramerateManager)
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_SceneManager)
@@ -172,7 +172,7 @@ target_link_libraries(${PROJECT_NAME}
   # Internal Libs
   ERS_GPURequest
   ERS_LoggingSystem
-  ERS_CLASS_ModelImporter
+  ERS_ModelImporter
 
 
   ERS_HardwareInformation

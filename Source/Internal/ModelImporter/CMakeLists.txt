@@ -4,19 +4,19 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_CLASS_ModelImporter
+add_library(ERS_ModelImporter
 
             # Add Source Files (.cpp)
-            "ERS_CLASS_ModelImporter.cpp"
+            "ERS_ModelImporter.cpp"
 
             # Add Header Files (.h)
-            "ERS_CLASS_ModelImporter.h"
+            "ERS_ModelImporter.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_CLASS_ModelImporter
+target_link_libraries(ERS_ModelImporter
     yaml-cpp
     glm
     assimp
@@ -25,7 +25,7 @@ target_link_libraries(ERS_CLASS_ModelImporter
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_CLASS_ModelImporter
+target_link_libraries(ERS_ModelImporter
     ERS_STRUCT_Model
     ERS_STRUCT_ModelWriterData
     ERS_STRUCT_SystemUtils
@@ -34,4 +34,4 @@ target_link_libraries(ERS_CLASS_ModelImporter
     ERS_ModelWriter
     )
 
-target_include_directories(ERS_CLASS_ModelImporter PUBLIC ./)
+target_include_directories(ERS_ModelImporter PUBLIC ./)

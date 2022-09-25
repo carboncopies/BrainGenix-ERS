@@ -30,7 +30,7 @@
  * @brief This class provides the backend to the import asset option within the file menu.
  *
  */
-class ERS_CLASS_ModelImporter {
+class ERS_ModelImporter {
 
     private:
 
@@ -65,13 +65,13 @@ class ERS_CLASS_ModelImporter {
          * 
          * @param SystemUtils 
          */
-        ERS_CLASS_ModelImporter(ERS_STRUCT_SystemUtils* SystemUtils);
+        ERS_ModelImporter(ERS_STRUCT_SystemUtils* SystemUtils);
 
         /**
          * @brief Destroy the ers class importasset object
          * 
          */
-        ~ERS_CLASS_ModelImporter();
+        ~ERS_ModelImporter();
 
 
         /**
