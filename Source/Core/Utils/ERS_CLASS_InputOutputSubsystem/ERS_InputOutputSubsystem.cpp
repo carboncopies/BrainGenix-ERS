@@ -168,20 +168,21 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
       for (const auto &Entry :
            std::filesystem::directory_iterator(std::string(AssetPath_))) {
 
-        // Get File Path
+        // Get File Path, Convert Backslashes Into Forwardslashes
         std::string FilePath{Entry.path().u8string()};
-
         std::replace(FilePath.begin(), FilePath.end(), '\\', '/');
         
-        int LastPeriod = FilePath.find_last_of(".");
 
         // Convert To Long, Throw Log Message If Not Number
         try {
 
+          int LastPeriod = FilePath.find_last_of(".");
           std::string PathWithoutExtension = FilePath.substr(0, LastPeriod);
-          FilePath = PathWithoutExtension.substr(PathWithoutExtension.find_last_of("/") + 1, PathWithoutExtension.length());
 
-          long ID = std::stoi(FilePath.c_str());
+          int LastSlash = PathWithoutExtension.find_last_of("/");
+          std::string AssetIDString = PathWithoutExtension.substr(LastSlash + 1, PathWithoutExtension.length());
+
+          long ID = std::stoi(AssetIDString.c_str());
 
           if (ID >= 0) {
             UsedAssetIDs_.push_back(ID);
