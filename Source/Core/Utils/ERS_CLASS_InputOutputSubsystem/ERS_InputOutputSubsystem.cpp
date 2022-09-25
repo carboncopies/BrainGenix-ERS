@@ -170,8 +170,13 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
 
         // Get File Path
         std::string FilePath{Entry.path().u8string()};
+
+        std::replace(FilePath.begin(), FilePath.end(), '\\', '/');
+        
         int LastPeriod = FilePath.find_last_of(".");
         int LastSlash = FilePath.find_last_of("/");
+
+        std::cout << LastPeriod << LastSlash << std::endl;
 
         // Convert To Long, Throw Log Message If Not Number
         try {
