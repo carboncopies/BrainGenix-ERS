@@ -256,7 +256,7 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
 
     // Low RAM Warning
-    ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo();
+    ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_HardwareInformation_->GetHWInfo();
     long long unsigned int FreeMemWarning = SystemUtils_->RendererSettings_->WarningLowRAMBytes;
 
     if (HWInfo.Dynamic_.PhysicalMemoryFree < FreeMemWarning) {

@@ -186,7 +186,7 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
 void ERS_CLASS_AssetStreamingManager::CheckHardwareLimitations(ERS_STRUCT_Scene* Scene) {
 
     // Get Current Free RAM/VRAM Value
-    ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo();
+    ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_HardwareInformation_->GetHWInfo();
     unsigned long long int FreeRAM = HWInfo.Dynamic_.PhysicalMemoryFree;
     long long unsigned int FreeVRAM = SystemUtils_->RendererSettings_->VRAMBudget_ - SystemUtils_->RendererSettings_->CurrentVRAMUsage_;
 

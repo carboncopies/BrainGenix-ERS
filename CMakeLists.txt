@@ -87,7 +87,7 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
 
 # ADD CORE SUBDIRECTORIES
 ERSBuildLogger(${Green} "Configuring Core Subsystems")
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_HardwareInformation)
+add_subdirectory(${SRC_DIR}/Core/Utils/ERS_HardwareInformation)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_InputOutputSubsystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ExternalModelLoader)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ModelImporter)
@@ -171,7 +171,7 @@ target_link_libraries(${PROJECT_NAME}
   ERS_CLASS_ModelImporter
 
 
-  ERS_CLASS_HardwareInformation
+  ERS_HardwareInformation
   ERS_CLASS_PythonInterpreterIntegration
   ERS_ArgumentParser
 

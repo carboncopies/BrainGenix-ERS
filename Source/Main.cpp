@@ -28,7 +28,7 @@
 #include <RendererManager.h>
 
 #include <ERS_LoggingSystem.h>
-#include <ERS_CLASS_HardwareInformation.h>
+#include <ERS_HardwareInformation.h>
 #include <ERS_ArgumentParser.h>
 #include <ERS_CLASS_ModelImporter.h>
 
@@ -103,7 +103,7 @@ int main(int NumArguments, char** ArguemntValues) {
         *SystemUtils->LocalSystemConfiguration_.get(),
         SystemUtils->Arguments_
     );
-    SystemUtils->ERS_CLASS_HardwareInformation_ = std::make_unique<ERS_CLASS_HardwareInformation>(
+    SystemUtils->ERS_HardwareInformation_ = std::make_unique<ERS_HardwareInformation>(
         SystemUtils->Logger_.get(),
         *SystemUtils->LocalSystemConfiguration_.get()
     );
