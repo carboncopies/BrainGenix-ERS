@@ -174,14 +174,12 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
         std::replace(FilePath.begin(), FilePath.end(), '\\', '/');
         
         int LastPeriod = FilePath.find_last_of(".");
-        int LastSlash = FilePath.find_last_of("/");
-
-        std::cout << LastPeriod << LastSlash << std::endl;
 
         // Convert To Long, Throw Log Message If Not Number
         try {
 
-          FilePath = FilePath.substr(0, LastPeriod).substr(LastSlash + 1, FilePath.length());
+          std::string PathWithoutExtension = FilePath.substr(0, LastPeriod);
+          FilePath = PathWithoutExtension.substr(PathWithoutExtension.find_last_of("/") + 1, PathWithoutExtension.length());
 
           long ID = std::stoi(FilePath.c_str());
 
