@@ -73,7 +73,10 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Structure Interfaces")
 ERSBuildLogger(${Green} "Configuring Internal Libraries")
 
 add_subdirectory(${SRC_DIR}/Internal/LoggingSystem)
+message("-- Configured Internal Library 'LoggingSystem'")
 add_subdirectory(${SRC_DIR}/Internal/OpenGLLoggingSystem)
+message("-- Configured Internal Library 'OpenGLLoggingSystem'")
+
 
 ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
 
