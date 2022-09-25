@@ -33,7 +33,7 @@
  * thread safe.
  *
  */
-class ERS_CLASS_InputOutputSubsystem {
+class ERS_InputOutputSubsystem {
 
 private:
   ERS_LoggingSystem* Logger_; /**<Logging Class Pointer*/
@@ -59,7 +59,7 @@ public:
    * @param Logger
    * @param LocalSystemConfiguration
    */
-  ERS_CLASS_InputOutputSubsystem(
+  ERS_InputOutputSubsystem(
       ERS_LoggingSystem* Logger,
       YAML::Node LocalSystemConfiguration,
       std::vector<std::pair<std::string, std::string>> ArgumentPair);
@@ -68,7 +68,7 @@ public:
    * @brief Destroy the ers class inputoutputsubsystem object
    *
    */
-  ~ERS_CLASS_InputOutputSubsystem();
+  ~ERS_InputOutputSubsystem();
 
   /**
    * @brief Returns an unused assetid that is guarenteed to not already exist.

@@ -98,7 +98,7 @@ int main(int NumArguments, char** ArguemntValues) {
     }
 
     // Startup IO Subsystem And Other Related Systems
-    SystemUtils->ERS_IOSubsystem_ = std::make_unique<ERS_CLASS_InputOutputSubsystem>(
+    SystemUtils->ERS_IOSubsystem_ = std::make_unique<ERS_InputOutputSubsystem>(
         SystemUtils->Logger_.get(),
         *SystemUtils->LocalSystemConfiguration_.get(),
         SystemUtils->Arguments_

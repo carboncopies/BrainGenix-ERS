@@ -4,7 +4,7 @@
 
 #include <ERS_InputOutputSubsystem.h>
 
-ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
+ERS_InputOutputSubsystem::ERS_InputOutputSubsystem(
     ERS_LoggingSystem* Logger,
     YAML::Node SystemConfiguration, 
     std::vector<std::pair<std::string, std::string>> ArgumentPair) {
@@ -70,7 +70,7 @@ ERS_CLASS_InputOutputSubsystem::ERS_CLASS_InputOutputSubsystem(
   IndexUsedAssetIDs();
 }
 
-ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
+ERS_InputOutputSubsystem::~ERS_InputOutputSubsystem() {
 
   Logger_->Log("Input/Output Subsystem Destructor Called", 6);
 
@@ -82,7 +82,7 @@ ERS_CLASS_InputOutputSubsystem::~ERS_CLASS_InputOutputSubsystem() {
   Logger_->Log("Finished Saving Asset Index Metadata", 5);
 }
 
-void ERS_CLASS_InputOutputSubsystem::UpdateAssetPath(std::string AssetPath) {
+void ERS_InputOutputSubsystem::UpdateAssetPath(std::string AssetPath) {
 
   // Update Asset Path
   Logger_->Log(
@@ -93,7 +93,7 @@ void ERS_CLASS_InputOutputSubsystem::UpdateAssetPath(std::string AssetPath) {
   AssetPath_ = AssetPath;
 }
 
-long ERS_CLASS_InputOutputSubsystem::AllocateAssetID() {
+long ERS_InputOutputSubsystem::AllocateAssetID() {
 
   // Make This Thread Safe
   std::unique_lock<std::mutex> lock(LockAssetIDAllocation_);
@@ -132,7 +132,7 @@ long ERS_CLASS_InputOutputSubsystem::AllocateAssetID() {
 }
 
 std::vector<long>
-ERS_CLASS_InputOutputSubsystem::BatchAllocateIDs(size_t NumberIDs) {
+ERS_InputOutputSubsystem::BatchAllocateIDs(size_t NumberIDs) {
 
   std::vector<long> IDs;
   IDs.reserve(NumberIDs);
@@ -151,7 +151,7 @@ ERS_CLASS_InputOutputSubsystem::BatchAllocateIDs(size_t NumberIDs) {
   return IDs;
 }
 
-void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
+void ERS_InputOutputSubsystem::IndexUsedAssetIDs() {
 
   Logger_->Log("Indexing Used Asset IDs");
   UsedAssetIDs_ = std::vector<long>();
@@ -249,7 +249,7 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
   Logger_->Log("Finished Performing Asset Metadata Sanity Check", 4);
 }
 
-bool ERS_CLASS_InputOutputSubsystem::ReadAsset(
+bool ERS_InputOutputSubsystem::ReadAsset(
     long AssetID, ERS_STRUCT_IOData* OutputData) {
 
   // Asset ID Sanity Check
@@ -354,7 +354,7 @@ bool ERS_CLASS_InputOutputSubsystem::ReadAsset(
 }
 
 
-std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchReadAssets(
+std::vector<bool> ERS_InputOutputSubsystem::BatchReadAssets(
     std::vector<long> AssetIDs,
     std::vector<ERS_STRUCT_IOData*> AssetDatas) {
 
@@ -377,7 +377,7 @@ std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchReadAssets(
 
 
 
-bool ERS_CLASS_InputOutputSubsystem::WriteAsset(
+bool ERS_InputOutputSubsystem::WriteAsset(
     long AssetID, ERS_STRUCT_IOData* InputData) {
 
   // Asset ID Sanity Check
@@ -457,7 +457,7 @@ bool ERS_CLASS_InputOutputSubsystem::WriteAsset(
   return Success;
 }
 
-std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchWriteAssets(
+std::vector<bool> ERS_InputOutputSubsystem::BatchWriteAssets(
     std::vector<long> AssetIDs,
     std::vector<ERS_STRUCT_IOData*> AssetDatas) {
 
@@ -479,7 +479,7 @@ std::vector<bool> ERS_CLASS_InputOutputSubsystem::BatchWriteAssets(
 
 
 
-std::string ERS_CLASS_InputOutputSubsystem::GetCurrentTime() {
+std::string ERS_InputOutputSubsystem::GetCurrentTime() {
 
 
   std::time_t RawCurrentTime;

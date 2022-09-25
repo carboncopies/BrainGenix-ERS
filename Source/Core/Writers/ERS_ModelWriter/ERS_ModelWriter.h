@@ -35,7 +35,7 @@ class ERS_CLASS_ModelWriter {
 private:
 
     ERS_LoggingSystem* Logger_; /**<Pointer To Logger Instance*/
-    ERS_CLASS_InputOutputSubsystem* IOSubsystem_; /**<Pointer To IOSubsystem*/
+    ERS_InputOutputSubsystem* IOSubsystem_; /**<Pointer To IOSubsystem*/
 
 private:
 
@@ -93,7 +93,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_ModelWriter(ERS_LoggingSystem* Logger, ERS_CLASS_InputOutputSubsystem* IOSubsystem);
+    ERS_CLASS_ModelWriter(ERS_LoggingSystem* Logger, ERS_InputOutputSubsystem* IOSubsystem);
     
     /**
      * @brief Destroy the ers class modelwriter object
