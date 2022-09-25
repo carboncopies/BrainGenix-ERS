@@ -250,6 +250,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     // Allocate Budget
     if (!Texture->TextureLevels[Level].AllocatedVRAMBudget) {
         ResourceMonitor_->AllocateTextureVRAMFromBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes);
+        std::cout << Texture->TextureLevels[Level].LevelMemorySizeBytes << std::endl;
         Texture->TextureLevels[Level].AllocatedVRAMBudget = true;
     }
 
