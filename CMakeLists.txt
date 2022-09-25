@@ -77,11 +77,11 @@ message("-- Configured Internal Library 'LoggingSystem'")
 add_subdirectory(${SRC_DIR}/Internal/OpenGLLoggingSystem)
 message("-- Configured Internal Library 'OpenGLLoggingSystem'")
 
-
 ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
 
 
 # ADD CORE SUBDIRECTORIES
+ERSBuildLogger(${Green} "Configuring Core Subsystems")
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_HardwareInformation)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_InputOutputSubsystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ArgumentParser)
@@ -147,6 +147,8 @@ add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ControllerSettingsLoader)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_SceneWriter)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ModelWriter)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ProjectWriter)
+ERSBuildLogger(${BoldGreen} "Finished Configuring Core Subsystems")
+
 
 # Add Main.cpp
 add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp ${LIB_DIR}/tracy/TracyClient.cpp ${BACKWARD_ENABLE})
