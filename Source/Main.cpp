@@ -29,7 +29,7 @@
 
 #include <ERS_LoggingSystem.h>
 #include <ERS_CLASS_HardwareInformation.h>
-#include <ERS_CLASS_ArgumentParser.h>
+#include <ERS_ArgumentParser.h>
 #include <ERS_CLASS_ModelImporter.h>
 
 #include <ERS_SceneManager.h>
@@ -78,7 +78,7 @@ int main(int NumArguments, char** ArguemntValues) {
     SystemUtils->Logger_->Log("Initialized Logging System", 5);
 
     // Handle Command Line Arguments
-    ERS_CLASS_ArgumentParser ArgumentParser = ERS_CLASS_ArgumentParser(SystemUtils->Logger_.get());
+    ERS_ArgumentParser ArgumentParser = ERS_ArgumentParser(SystemUtils->Logger_.get());
     ArgumentParser.ParseArguments(NumArguments, ArguemntValues);
     SystemUtils->ArgumentString_ = ArgumentParser.GetArgumentString();
     SystemUtils->Arguments_ = ArgumentParser.GetArgumentPairs();

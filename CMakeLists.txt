@@ -171,7 +171,7 @@ target_link_libraries(${PROJECT_NAME}
 
   ERS_CLASS_HardwareInformation
   ERS_CLASS_PythonInterpreterIntegration
-  ERS_CLASS_ArgumentParser
+  ERS_ArgumentParser
 
   ERS_SceneManager
   ERS_ModelLoader

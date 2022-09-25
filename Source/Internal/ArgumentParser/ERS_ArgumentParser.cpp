@@ -2,10 +2,10 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_CLASS_ArgumentParser.h>
+#include <ERS_ArgumentParser.h>
 
 
-ERS_CLASS_ArgumentParser::ERS_CLASS_ArgumentParser(ERS_LoggingSystem* Logger) {
+ERS_ArgumentParser::ERS_ArgumentParser(ERS_LoggingSystem* Logger) {
 
     Logger_ = Logger;
     Logger_->Log("Initialiizng Argument Parser Subsystem", 4);
@@ -16,13 +16,13 @@ ERS_CLASS_ArgumentParser::ERS_CLASS_ArgumentParser(ERS_LoggingSystem* Logger) {
 
 }
 
-ERS_CLASS_ArgumentParser::~ERS_CLASS_ArgumentParser() {
+ERS_ArgumentParser::~ERS_ArgumentParser() {
 
     Logger_->Log("Argument Parser Destructor Called", 6);
 
 }
 
-bool ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** ArgumentValues) {
+bool ERS_ArgumentParser::ParseArguments(int NumberArguments, char** ArgumentValues) {
 
     Logger_->Log("Argument Parser Invoked, Populating Internal State With Argument Data", 5);
     bool HasErrors = false;
@@ -86,10 +86,10 @@ bool ERS_CLASS_ArgumentParser::ParseArguments(int NumberArguments, char** Argume
 
 }
 
-std::string ERS_CLASS_ArgumentParser::GetArgumentString() {
+std::string ERS_ArgumentParser::GetArgumentString() {
     return ArgumentString_;
 }
 
-std::vector<std::pair<std::string, std::string>> ERS_CLASS_ArgumentParser::GetArgumentPairs() {
+std::vector<std::pair<std::string, std::string>> ERS_ArgumentParser::GetArgumentPairs() {
     return ArgumentPairs_;
 }

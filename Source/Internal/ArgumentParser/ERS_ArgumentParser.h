@@ -18,7 +18,7 @@
  * @brief Create Hardware Information Class
  * 
  */
-class ERS_CLASS_ArgumentParser {
+class ERS_ArgumentParser {
 
     private:
 
@@ -35,13 +35,13 @@ class ERS_CLASS_ArgumentParser {
          * 
          * @param Logger
          */
-        ERS_CLASS_ArgumentParser(ERS_LoggingSystem* Logger);
+        ERS_ArgumentParser(ERS_LoggingSystem* Logger);
 
         /**
          * @brief Destroy the Hardware Information object
          * 
          */
-        ~ERS_CLASS_ArgumentParser();
+        ~ERS_ArgumentParser();
 
 
         /**
