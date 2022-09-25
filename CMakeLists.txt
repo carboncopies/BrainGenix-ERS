@@ -80,14 +80,14 @@ add_subdirectory(${SRC_DIR}/Internal/ArgumentParser)
 message("-- Configured Internal Library 'ArgumentParser'")
 add_subdirectory(${SRC_DIR}/Internal/GPURequest)
 message("-- Configured Internal Library 'GPURequest'")
-
+add_subdirectory(${SRC_DIR}/Internal/HardwareInformation)
+message("-- Configured Internal Library 'HardwareInformation'")
 
 ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
 
 
 # ADD CORE SUBDIRECTORIES
 ERSBuildLogger(${Green} "Configuring Core Subsystems")
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_HardwareInformation)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_InputOutputSubsystem)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ExternalModelLoader)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ModelImporter)
