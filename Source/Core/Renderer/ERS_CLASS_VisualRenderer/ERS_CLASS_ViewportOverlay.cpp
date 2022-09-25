@@ -211,7 +211,6 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
             }
 
             ImGui::SameLine(0.0f, 0.0f);
-            std::cout << Item << std::endl;
             ImGui::TextColored(ItemColor, "%s", &Item);
         }
 
