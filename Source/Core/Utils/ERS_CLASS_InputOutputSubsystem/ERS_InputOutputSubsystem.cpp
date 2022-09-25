@@ -243,9 +243,12 @@ void ERS_CLASS_InputOutputSubsystem::IndexUsedAssetIDs() {
 
   // Load Asset Metadata
   Logger_->Log("Attempting To Load Asset Metadata Index", 3);
-  std::unique_ptr<ERS_STRUCT_IOData> Data =
-      std::make_unique<ERS_STRUCT_IOData>();
-  ReadAsset(0, Data.get());
+  std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
+  bool ReadStatus = ReadAsset(0, Data.get());
+  if (!ReadStatus) {
+    Logger_->Log("Failed To Load Project Index, Is The Path/Database Valid?", 10);
+    exit(EXIT_FAILURE);
+  }
   AssetIndexIOManager_->LoadAssetIndex(Data.get());
   Logger_->Log("Finished Loading Asset Metadata Index", 4);
 
