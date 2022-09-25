@@ -86,7 +86,8 @@ add_subdirectory(${SRC_DIR}/Internal/InputOutputSubsystem)
 message("-- Configured Internal Library 'InputOutputSubsystem'")
 add_subdirectory(${SRC_DIR}/Internal/ExternalModelLoader)
 message("-- Configured Internal Library 'ExternalModelLoader'")
-
+add_subdirectory(${SRC_DIR}/Internal/ModelImporter)
+message("-- Configured Internal Library 'ModelImporter'")
 
 
 ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
@@ -94,8 +95,6 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
 
 # ADD CORE SUBDIRECTORIES
 ERSBuildLogger(${Green} "Configuring Core Subsystems")
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_ModelImporter)
-
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_FramerateManager)
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_SceneManager)
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_ProjectManager)
