@@ -257,6 +257,15 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     int MaxLevel = Texture->TextureLevels.size() - 1;
     int CorrectedIndex = Level;
 
+    // Check that Pointer Is Valid
+    if (Texture->TextureLevels[CorrectedIndex].LevelBitmap == nullptr) {
+        SystemUtils_->Logger_->Log(std::string("Error Loading Texture '") + Texture->Path
+        + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
+        + "' Image Data Is Null", 9, LogEnable);
+        FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        return false;
+    }
+
     int MaxWidth = Texture->TextureLevels[CorrectedIndex].LevelResolution.first;
     int MaxHeight = Texture->TextureLevels[CorrectedIndex].LevelResolution.second;
     int ImageSize = FreeImage_GetMemorySize(Texture->TextureLevels[CorrectedIndex].LevelBitmap);//Texture->LevelMemorySizeBytes[MaxLevel - Level];
