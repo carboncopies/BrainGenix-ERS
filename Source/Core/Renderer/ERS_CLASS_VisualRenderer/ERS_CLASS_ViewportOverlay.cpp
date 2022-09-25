@@ -210,8 +210,10 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
                 ItemColor = Color;
             }
 
+            std::string CharString(1, Item);
+
             ImGui::SameLine(0.0f, 0.0f);
-            ImGui::TextColored(ItemColor, "%s", std::to_string(Item).c_str());
+            ImGui::TextColored(ItemColor, "%s", CharString .c_str());
         }
 
     }
