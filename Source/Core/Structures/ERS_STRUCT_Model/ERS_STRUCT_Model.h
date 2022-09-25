@@ -64,7 +64,7 @@ struct ERS_STRUCT_Model {
     int TargetTextureLevelRAM = 0; /**<Used in preliminary sorting to determine how much this needs to be loaded*/
 
     // Bounding Box Info
-    glm::vec3 BoxScale_; /**<Bounding Box Size In Local Space (Multiply By Object's scale value to get true size)*/
+    glm::vec3 BoxScale_;  /**<Bounding Box Size In Local Space (Multiply By Object's scale value to get true size)*/
     glm::vec3 BoxOffset_; /**<Offset the center of the box so it's synced with the center of the model*/
 
 
@@ -74,11 +74,11 @@ struct ERS_STRUCT_Model {
 
     std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
 
-    double LoadingStartTime_; /**<Time that the loading started*/
-    double LoadingFinishTime_; /**<Time When Loading Was Completed*/
-    double TotalLoadingTime_; /**<The Total Time Needed To Load*/
-    unsigned long TotalVertices_ = 0; /**<Total Number Of Verts In This Model*/ 
-    unsigned long TotalIndices_ = 0; /**<Total Number Of Indices In Model*/
+    double LoadingStartTime_     = 0.0f; /**<Time that the loading started*/
+    double LoadingFinishTime_    = 0.0f; /**<Time When Loading Was Completed*/
+    double TotalLoadingTime_     = 0.0f; /**<The Total Time Needed To Load*/
+    unsigned long TotalVertices_ = 0;    /**<Total Number Of Verts In This Model*/ 
+    unsigned long TotalIndices_  = 0;    /**<Total Number Of Indices In Model*/
 
 
  
