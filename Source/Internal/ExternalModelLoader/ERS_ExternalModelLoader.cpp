@@ -2,17 +2,17 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_CLASS_ExternalModelLoader.h>
+#include <ERS_ExternalModelLoader.h>
 
 
-ERS_CLASS_ExternalModelLoader::ERS_CLASS_ExternalModelLoader(ERS_STRUCT_SystemUtils* SystemUtils) {
+ERS_ExternalModelLoader::ERS_ExternalModelLoader(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
 
     ImageProcessor_ = std::make_unique<Lucifer::Lucifer>();
 
 }
-ERS_CLASS_ExternalModelLoader::~ERS_CLASS_ExternalModelLoader() {
+ERS_ExternalModelLoader::~ERS_ExternalModelLoader() {
 
 }
 
@@ -85,7 +85,7 @@ std::pair<std::string, std::string> FindTextureMatches(ERS_STRUCT_Mesh* Mesh, st
 
 
 // Model Loading Helpers
-void ERS_CLASS_ExternalModelLoader::DetectBoundingBox(ERS_STRUCT_Model* Model) {
+void ERS_ExternalModelLoader::DetectBoundingBox(ERS_STRUCT_Model* Model) {
 
     // Calculate Bounding Box
     glm::vec3 ModelMinXYZ = Model->Meshes[0].Vertices[0].Position;
@@ -137,7 +137,7 @@ void ERS_CLASS_ExternalModelLoader::DetectBoundingBox(ERS_STRUCT_Model* Model) {
     SystemUtils_->Logger_->Log(LogMsg, 3);
 
 }
-void ERS_CLASS_ExternalModelLoader::CalculateTotalVertsIndices(ERS_STRUCT_Model* Model) {
+void ERS_ExternalModelLoader::CalculateTotalVertsIndices(ERS_STRUCT_Model* Model) {
 
     // Get Vert/Indice Metadata Info
     Model->TotalVertices_ = 0;
@@ -153,7 +153,7 @@ void ERS_CLASS_ExternalModelLoader::CalculateTotalVertsIndices(ERS_STRUCT_Model*
     }
 
 }
-void ERS_CLASS_ExternalModelLoader::MergeTextures(ERS_STRUCT_Model* Model, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures) {
+void ERS_ExternalModelLoader::MergeTextures(ERS_STRUCT_Model* Model, std::vector<std::pair<std::string, FIBITMAP*>>* LoadedTextures) {
 
     // Create Pair Of All Textures With Opacity/Alpha Maps
     std::vector<std::pair<std::string, std::string>> OpacityAlphaMaps;
@@ -202,7 +202,7 @@ void ERS_CLASS_ExternalModelLoader::MergeTextures(ERS_STRUCT_Model* Model, std::
     }
 
 }
-void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterData &Data) {
+void ERS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterData &Data) {
 
     // Create List Of Texture Files To Be Copied
     std::vector<std::pair<std::string, std::future<FIBITMAP*>>> ImageFutures;
@@ -301,7 +301,7 @@ void ERS_CLASS_ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterD
     Data.ImageBytes = ImageBytes;
 
 }
-void ERS_CLASS_ExternalModelLoader::ProcessNode(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory) {
+void ERS_ExternalModelLoader::ProcessNode(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiNode *Node, const aiScene *Scene, std::string ModelDirectory) {
 
     // Process Meshes In Current Node
     for (unsigned int i = 0; i < Node->mNumMeshes; i++) {
@@ -386,7 +386,7 @@ void IdentifyMeshTextures(aiMaterial* Mat, ERS_STRUCT_Mesh* Mesh) {
 
 
 
-ERS_STRUCT_Mesh ERS_CLASS_ExternalModelLoader::ProcessMesh(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory) {
+ERS_STRUCT_Mesh ERS_ExternalModelLoader::ProcessMesh(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMesh *Mesh, const aiScene *Scene, std::string ModelDirectory) {
 
     // Create Data Holders
     ERS_STRUCT_Mesh OutputMesh;
@@ -468,7 +468,7 @@ ERS_STRUCT_Mesh ERS_CLASS_ExternalModelLoader::ProcessMesh(ERS_STRUCT_ModelWrite
 
 
 
-void ERS_CLASS_ExternalModelLoader::HandleMeshTextures(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory, ERS_STRUCT_Mesh* TargetMesh) {
+void ERS_ExternalModelLoader::HandleMeshTextures(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMaterial* Material, std::string ModelDirectory, ERS_STRUCT_Mesh* TargetMesh) {
 
     SystemUtils_->Logger_->Log("Identifying Mesh Textures", 3);
     AddTexture(Data, Model, Material, aiTextureType_AMBIENT,           "texture_ambient",           ModelDirectory, TargetMesh);
@@ -491,7 +491,7 @@ void ERS_CLASS_ExternalModelLoader::HandleMeshTextures(ERS_STRUCT_ModelWriterDat
     SystemUtils_->Logger_->Log("Finshed Mesh Texture Identification", 4);
 
 }
-void ERS_CLASS_ExternalModelLoader::AddTexture(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory, ERS_STRUCT_Mesh* TargetMesh) {
+void ERS_ExternalModelLoader::AddTexture(ERS_STRUCT_ModelWriterData &Data, ERS_STRUCT_Model* Model, aiMaterial *Mat, aiTextureType Type, std::string TypeName, std::string ModelDirectory, ERS_STRUCT_Mesh* TargetMesh) {
 
 
     for (unsigned int i=0; i< Mat->GetTextureCount(Type); i++) {
@@ -512,7 +512,7 @@ void ERS_CLASS_ExternalModelLoader::AddTexture(ERS_STRUCT_ModelWriterData &Data,
     }
 
 }
-bool ERS_CLASS_ExternalModelLoader::ReadFile(std::string FilePath, ERS_STRUCT_IOData* OutputData) {
+bool ERS_ExternalModelLoader::ReadFile(std::string FilePath, ERS_STRUCT_IOData* OutputData) {
 
     struct stat Buffer;
     int FileStatus = stat(FilePath.c_str(), &Buffer);
@@ -553,7 +553,7 @@ bool ERS_CLASS_ExternalModelLoader::ReadFile(std::string FilePath, ERS_STRUCT_IO
 
 }
 
-bool ERS_CLASS_ExternalModelLoader::PerformModelSanityChecks(ERS_STRUCT_Model &Model) {
+bool ERS_ExternalModelLoader::PerformModelSanityChecks(ERS_STRUCT_Model &Model) {
 
     // Check For Meshes
     if (Model.Meshes.size() == 0) {
@@ -578,7 +578,7 @@ bool ERS_CLASS_ExternalModelLoader::PerformModelSanityChecks(ERS_STRUCT_Model &M
 }
 
 // Load Model From File
-bool ERS_CLASS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_ModelWriterData &Data) {
+bool ERS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_ModelWriterData &Data) {
 
     SystemUtils_->Logger_->Log(std::string("Loading External Model '") + ModelPath + "'", 5);
 

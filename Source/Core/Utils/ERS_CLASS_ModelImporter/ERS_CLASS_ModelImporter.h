@@ -24,7 +24,7 @@
 #include <ERS_STRUCT_ModelWriterData.h>
 
 #include <ERS_ModelWriter.h>
-#include <ERS_CLASS_ExternalModelLoader.h>
+#include <ERS_ExternalModelLoader.h>
 
 /**
  * @brief This class provides the backend to the import asset option within the file menu.
@@ -45,7 +45,7 @@ class ERS_CLASS_ModelImporter {
         std::vector<std::future<void>> ProcessingItems_; /**<List of items currently being worked on by the threads*/
 
         std::unique_ptr<ERS_CLASS_ModelWriter>         ModelWriter_; /**<Instance of the model writer, used to save models to the ERS project*/
-        std::unique_ptr<ERS_CLASS_ExternalModelLoader> ModelLoader_; /**<Used to load models from outside the ERS project*/
+        std::unique_ptr<ERS_ExternalModelLoader> ModelLoader_; /**<Used to load models from outside the ERS project*/
 
         std::unique_ptr<ERS_CLASS_ModelWriter> ERS_ModelWriter_; /**<Pointer To ERS Model Writer Instance*/
 

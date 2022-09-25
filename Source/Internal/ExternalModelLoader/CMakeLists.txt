@@ -4,20 +4,20 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_CLASS_ExternalModelLoader
+add_library(ERS_ExternalModelLoader
 
             # Add Source Files (.cpp)
-            "ERS_CLASS_ExternalModelLoader.cpp"
+            "ERS_ExternalModelLoader.cpp"
 
             # Add Header Files (.h)
-            "ERS_CLASS_ExternalModelLoader.h"
+            "ERS_ExternalModelLoader.h"
             
             ${BACKWARD_ENABLE}
             )
-set_property(TARGET ERS_CLASS_ExternalModelLoader PROPERTY CXX_STANDARD 17)
+set_property(TARGET ERS_ExternalModelLoader PROPERTY CXX_STANDARD 17)
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_CLASS_ExternalModelLoader
+target_link_libraries(ERS_ExternalModelLoader
     yaml-cpp
     glm
     assimp
@@ -26,7 +26,7 @@ target_link_libraries(ERS_CLASS_ExternalModelLoader
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_CLASS_ExternalModelLoader
+target_link_libraries(ERS_ExternalModelLoader
     ERS_STRUCT_Mesh
     ERS_STRUCT_Model
     ERS_STRUCT_Vertex
@@ -35,4 +35,4 @@ target_link_libraries(ERS_CLASS_ExternalModelLoader
     ERS_STRUCT_IOData
     )
 
-target_include_directories(ERS_CLASS_ExternalModelLoader PUBLIC ./)
+target_include_directories(ERS_ExternalModelLoader PUBLIC ./)

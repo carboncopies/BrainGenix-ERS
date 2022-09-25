@@ -30,7 +30,7 @@ target_link_libraries(ERS_CLASS_ModelImporter
     ERS_STRUCT_ModelWriterData
     ERS_STRUCT_SystemUtils
 
-    ERS_CLASS_ExternalModelLoader
+    ERS_ExternalModelLoader
     ERS_ModelWriter
     )
 

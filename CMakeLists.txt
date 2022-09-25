@@ -91,7 +91,7 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
 
 # ADD CORE SUBDIRECTORIES
 ERSBuildLogger(${Green} "Configuring Core Subsystems")
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ExternalModelLoader)
+add_subdirectory(${SRC_DIR}/Core/Utils/ERS_ExternalModelLoader)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ModelImporter)
 
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_FramerateManager)
