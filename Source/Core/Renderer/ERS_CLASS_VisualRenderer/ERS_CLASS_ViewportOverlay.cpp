@@ -84,18 +84,22 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
 
         // Generate Info
         unsigned long NumModels = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models.size();
+        ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
         double LongestLoadingTime = 0;
         double ShortestLoadingTime = 65535;
         double AverageLoadingTime = 0;
 
         for (unsigned long i = 0; i < NumModels; i++) {
-            if (ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_ > LongestLoadingTime) {
-                LongestLoadingTime = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_;
+
+            if (Scene->Models[i]->FullyReady) {
+                if (Scene->Models[i]->TotalLoadingTime_ > LongestLoadingTime) {
+                    LongestLoadingTime = Scene->Models[i]->TotalLoadingTime_;
+                }
+                if (Scene->Models[i]->TotalLoadingTime_ < ShortestLoadingTime && Scene->Models[i]->TotalLoadingTime_ != 0.0f) {
+                    ShortestLoadingTime = Scene->Models[i]->TotalLoadingTime_;
+                }
+                AverageLoadingTime += Scene->Models[i]->TotalLoadingTime_;
             }
-            if (ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_ < ShortestLoadingTime && ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_ != 0.0f) {
-                ShortestLoadingTime = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_;
-            }
-            AverageLoadingTime += ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_]->Models[i]->TotalLoadingTime_;
         }
 
         AverageLoadingTime /= NumModels;
@@ -206,8 +210,10 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
                 ItemColor = Color;
             }
 
+            std::string CharString(1, Item);
+
             ImGui::SameLine(0.0f, 0.0f);
-            ImGui::TextColored(ItemColor, "%s", &Item);
+            ImGui::TextColored(ItemColor, "%s", CharString .c_str());
         }
 
     }
@@ -247,8 +253,10 @@ void ERS_CLASS_ViewportOverlay::DrawOverlay(ERS_STRUCT_Viewport* Viewport) {
                 ItemColor = Color;
             }
 
+            std::string CharString(1, Item);
+
             ImGui::SameLine(0.0f, 0.0f);
-            ImGui::TextColored(ItemColor, "%s", &Item);
+            ImGui::TextColored(ItemColor, "%s", CharString.c_str());
         }
 
 
