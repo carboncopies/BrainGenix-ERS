@@ -86,7 +86,7 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
 ERSBuildLogger(${Green} "Configuring Core Subsystems")
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_HardwareInformation)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_InputOutputSubsystem)
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_GPURequest)
+add_subdirectory(${SRC_DIR}/Core/Utils/ERS_GPURequest)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ExternalModelLoader)
 add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ModelImporter)
 
@@ -164,7 +164,7 @@ target_link_libraries(${PROJECT_NAME}
   Lucifer
 
   # Internal Libs
-  ERS_CLASS_GPURequest
+  ERS_GPURequest
   ERS_LoggingSystem
   ERS_CLASS_ModelImporter
 
