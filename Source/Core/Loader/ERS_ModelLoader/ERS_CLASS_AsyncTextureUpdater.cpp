@@ -65,39 +65,28 @@ void ERS_CLASS_AsyncTextureUpdater::FreeVRAMAllocation(ERS_STRUCT_TextureLevel &
 }
 bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
 
-    // Ensure Texture Is Free
-    if (Texture->IsBeingUsed) {
-        return false;
-    }
-    Texture->IsBeingUsed = true;
-
     // Check If Requested Level Exists
     long long unsigned int MemoryFree = SystemUtils_->RendererSettings_->RAMBudget_ - SystemUtils_->RendererSettings_->CurrentRAMUsage_;
     if (Level < 0) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Negative Texture Level", 8, LogEnable);
         FreeRAMAllocation(Texture->TextureLevels[Level]);
-        Texture->IsBeingUsed = false;
         return false;
     } else if (Level > (int)Texture->TextureLevels.size()) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Nonexistant Texture Level", 8, LogEnable);
         FreeRAMAllocation(Texture->TextureLevels[Level]);
-        Texture->IsBeingUsed = false;
         return false;
     } else if (!ResourceMonitor_->TextureFitsInRAMBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes)) {
         SystemUtils_->Logger_->Log("Cannot Load Texture Into Memory, Will Not Fit In RAM Budget", 6);
         FreeRAMAllocation(Texture->TextureLevels[Level]);
-        Texture->IsBeingUsed = false;
         return false;
     } else if (MemoryFree < MinRAMCutoff_) {
         SystemUtils_->Logger_->Log("Not Enough Free RAM To Load Texture", 9);
         FreeRAMAllocation(Texture->TextureLevels[Level]);
-        Texture->IsBeingUsed = false;
         return false;
     }
 
     // Check If Level Already Loaded
     if (Texture->TextureLevels[Level].LevelBitmap != nullptr) {
-        Texture->IsBeingUsed = false;
         return false;
     }
 
@@ -129,7 +118,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         FreeImage_Unload(RawImage);
         FreeImage_CloseMemory(FIImageData);
         FreeRAMAllocation(Texture->TextureLevels[Level]);
-        Texture->IsBeingUsed = false;
         return false;
     }
     if (Height <= 0) {
@@ -139,7 +127,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         FreeImage_Unload(RawImage);
         FreeImage_CloseMemory(FIImageData);
         FreeRAMAllocation(Texture->TextureLevels[Level]);
-        Texture->IsBeingUsed = false;
         return false;
     }
 
@@ -166,7 +153,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         + "' Width Does Not Match Metadata Target", 8, LogEnable);
         FreeImage_Unload(Image);
         FreeRAMAllocation(Texture->TextureLevels[Level]);
-        Texture->IsBeingUsed = false;
         return false;
     }
     if ((TargetWidthHeight.second != Height) && (TargetWidthHeight.second != -1)) {
@@ -175,7 +161,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         + "' Height Does Not Match Metadata Target", 8, LogEnable);
         FreeImage_Unload(Image);
         FreeRAMAllocation(Texture->TextureLevels[Level]);
-        Texture->IsBeingUsed = false;
         return false;
     }
 
@@ -186,7 +171,6 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         + "' Invalid Number Of Channels '" + std::to_string(Channels) + "'", 8, LogEnable);
         FreeImage_Unload(Image);
         FreeRAMAllocation(Texture->TextureLevels[Level]);
-        Texture->IsBeingUsed = false;
         return false;
     }
     if ((Texture->TextureLevels[Level].LevelChannel != Channels) && (Texture->TextureLevels[Level].LevelChannel != -1)) {
@@ -196,14 +180,12 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
         + std::to_string(Texture->TextureLevels[Level].LevelChannel) + "'", 8, LogEnable);
         FreeImage_Unload(Image);
         FreeRAMAllocation(Texture->TextureLevels[Level]);
-        Texture->IsBeingUsed = false;
         return false;
     }
 
     // Finally After Passing Sanity Checks, Populate Info.
     Texture->TextureLevels[Level].LevelBitmap = Image;
     Texture->TextureLevels[Level].LevelLoadedInRAM = true;
-    Texture->IsBeingUsed = false;
 
     return true;
 
