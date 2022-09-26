@@ -32,7 +32,7 @@ class ArgumentParser {
         std::vector<std::string> Arguments_; /**<Just a list of all strings In Command*/
         std::string ArgumentString_; /**<Argument String including All Arguments*/
 
-        LoggingSystem* Logger_; /**<Pointer To Logger, Allowing The System To List Argument Value Stuff*/
+        ERS_LoggingSystem* Logger_; /**<Pointer To Logger, Allowing The System To List Argument Value Stuff*/
 
     public:
 
