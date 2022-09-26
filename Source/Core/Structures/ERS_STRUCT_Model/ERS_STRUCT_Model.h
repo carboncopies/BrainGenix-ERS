@@ -52,7 +52,7 @@ struct ERS_STRUCT_Model {
     int TextureLevelInRAM_ = -1; /**<Determines the current texture level in RAM*/
     int TextureLevelInVRAM_ = -1; /**<Determines the current texture level in RAM*/
 
-    int UserLimitedMinLOD_ = 0; /**<Set the minimum LOD for this asset, as defined by the user.*/
+    int UserLimitedMinLOD_ = -1; /**<Set the minimum LOD for this asset, as defined by the user.*/
     int UserLimitedMaxLOD_ = 10; /**<Sets the maximul LOD for this asset, again as defined by the user*/
 
     int MaxTextureLevel_ = 0; /**<Determines the max texture level available, Only should be adjusted by the asset system*/
