@@ -14,6 +14,12 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_LoggingSystem.h>
 
+
+namespace BrainGenix {
+namespace ERS {
+namespace Module {
+
+
 /**
  * @brief Create Hardware Information Class
  * 
@@ -76,3 +82,9 @@ class ERS_ArgumentParser {
 
 
 };
+
+
+
+}
+}
+}
