@@ -18,7 +18,7 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
 
     // Get System Memory Size Info
     SystemUtils_->Logger_->Log("Detecting Hardware Memory Information", 4);
-    ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo();
+    ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_HardwareInformation_->GetHWInfo();
 
     YAML::Node SystemConfig = *SystemUtils_->LocalSystemConfiguration_;
 

@@ -11,7 +11,7 @@
 #include <glm/glm.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_CLASS_LoggingSystem.h>
+#include <ERS_LoggingSystem.h>
 #include <ERS_STRUCT_Shader.h>
 #include <ERS_STRUCT_Scene.h>
 #include <ERS_STRUCT_LocRotScale.h>
@@ -27,7 +27,7 @@ class ERS_CLASS_SceneManager{
 private:
 
     // Internal Member Pointers
-    ERS_CLASS_LoggingSystem* Logger_; /**<Pointer To Logger Instance*/
+    ERS_LoggingSystem* Logger_; /**<Pointer To Logger Instance*/
 
 
 public:
@@ -43,7 +43,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_SceneManager(ERS_CLASS_LoggingSystem* Logger);
+    ERS_CLASS_SceneManager(ERS_LoggingSystem* Logger);
     
     /**
      * @brief Destroy the Scene Manager object

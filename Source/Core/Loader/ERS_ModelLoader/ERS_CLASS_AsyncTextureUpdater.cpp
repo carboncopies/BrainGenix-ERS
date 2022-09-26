@@ -548,7 +548,7 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessVRAMUpdate(int Index, ERS_STRUCT_Scen
 
     // Memory Check
     if (Scene->Models[Index]->TargetTextureLevelVRAM > Scene->Models[Index]->TextureLevelInVRAM_) {
-        if (SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo().Dynamic_.PhysicalMemoryFree < SystemUtils_->RendererSettings_->CriticalLowRAMBytes) {
+        if (SystemUtils_->ERS_HardwareInformation_->GetHWInfo().Dynamic_.PhysicalMemoryFree < SystemUtils_->RendererSettings_->CriticalLowRAMBytes) {
             CanAdd = false;
         }
     }
@@ -596,7 +596,7 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessRAMUpdate(int Index, ERS_STRUCT_Scene
 
     // Memory Check
     if (Scene->Models[Index]->TargetTextureLevelRAM > Scene->Models[Index]->TextureLevelInRAM_) {
-        if (SystemUtils_->ERS_CLASS_HardwareInformation_->GetHWInfo().Dynamic_.PhysicalMemoryFree < SystemUtils_->RendererSettings_->CriticalLowRAMBytes) {
+        if (SystemUtils_->ERS_HardwareInformation_->GetHWInfo().Dynamic_.PhysicalMemoryFree < SystemUtils_->RendererSettings_->CriticalLowRAMBytes) {
             CanAdd = false;
         }
     }

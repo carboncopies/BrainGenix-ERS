@@ -24,7 +24,7 @@ target_link_libraries(ERS_STRUCT_Shader
 
 # Link Internal Libs
 target_link_libraries(ERS_STRUCT_Shader
-    ERS_CLASS_LoggingSystem
+    ERS_LoggingSystem
     )
 
 target_include_directories(ERS_STRUCT_Shader PUBLIC ./)

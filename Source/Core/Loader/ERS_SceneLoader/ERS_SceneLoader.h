@@ -12,7 +12,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_CLASS_ModelLoader.h>
-#include <ERS_CLASS_LoggingSystem.h>
+#include <ERS_LoggingSystem.h>
 
 #include <ERS_FUNCTION_SceneDecoderManager.h>
 

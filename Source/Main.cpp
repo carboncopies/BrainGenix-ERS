@@ -24,13 +24,13 @@
 #include <LuciferIL/Lucifer.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_CLASS_GPURequest.h>
+#include <ERS_GPURequest.h>
 #include <RendererManager.h>
 
-#include <ERS_CLASS_LoggingSystem.h>
-#include <ERS_CLASS_HardwareInformation.h>
-#include <ERS_CLASS_ArgumentParser.h>
-#include <ERS_CLASS_ModelImporter.h>
+#include <ERS_LoggingSystem.h>
+#include <ERS_HardwareInformation.h>
+#include <ERS_ArgumentParser.h>
+#include <ERS_ModelImporter.h>
 
 #include <ERS_SceneManager.h>
 
@@ -74,11 +74,11 @@ int main(int NumArguments, char** ArguemntValues) {
     SystemUtils->LocalSystemConfiguration_ = std::make_unique<YAML::Node>(YAML::LoadFile("Config.yaml"));
 
     // Instantiate Logging Subsystem
-    SystemUtils->Logger_ = std::make_unique<ERS_CLASS_LoggingSystem>(*SystemUtils->LocalSystemConfiguration_.get());
+    SystemUtils->Logger_ = std::make_unique<ERS_LoggingSystem>(*SystemUtils->LocalSystemConfiguration_.get());
     SystemUtils->Logger_->Log("Initialized Logging System", 5);
 
     // Handle Command Line Arguments
-    ERS_CLASS_ArgumentParser ArgumentParser = ERS_CLASS_ArgumentParser(SystemUtils->Logger_.get());
+    ERS_ArgumentParser ArgumentParser = ERS_ArgumentParser(SystemUtils->Logger_.get());
     ArgumentParser.ParseArguments(NumArguments, ArguemntValues);
     SystemUtils->ArgumentString_ = ArgumentParser.GetArgumentString();
     SystemUtils->Arguments_ = ArgumentParser.GetArgumentPairs();
@@ -98,12 +98,12 @@ int main(int NumArguments, char** ArguemntValues) {
     }
 
     // Startup IO Subsystem And Other Related Systems
-    SystemUtils->ERS_IOSubsystem_ = std::make_unique<ERS_CLASS_InputOutputSubsystem>(
+    SystemUtils->ERS_IOSubsystem_ = std::make_unique<ERS_InputOutputSubsystem>(
         SystemUtils->Logger_.get(),
         *SystemUtils->LocalSystemConfiguration_.get(),
         SystemUtils->Arguments_
     );
-    SystemUtils->ERS_CLASS_HardwareInformation_ = std::make_unique<ERS_CLASS_HardwareInformation>(
+    SystemUtils->ERS_HardwareInformation_ = std::make_unique<ERS_HardwareInformation>(
         SystemUtils->Logger_.get(),
         *SystemUtils->LocalSystemConfiguration_.get()
     );
@@ -139,7 +139,7 @@ int main(int NumArguments, char** ArguemntValues) {
     ProjectUtils->ProjectManager_ = std::make_unique<ERS_CLASS_ProjectManager>(SystemUtils.get(), ProjectUtils->ProjectLoader_.get(), ProjectUtils->ProjectWriter_.get(), ProjectUtils->SceneManager_.get(), ProjectUtils->SceneLoader_.get());
 
     SystemUtils->Logger_->Log("Instantiating ERS Model Importer", 4);
-    ProjectUtils->ModelImporter_ = std::make_unique<ERS_CLASS_ModelImporter>(SystemUtils.get());
+    ProjectUtils->ModelImporter_ = std::make_unique<ERS_ModelImporter>(SystemUtils.get());
 
 
     // Setup Human Input Devices

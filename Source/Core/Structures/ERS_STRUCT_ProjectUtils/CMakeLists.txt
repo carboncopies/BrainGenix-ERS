@@ -21,7 +21,7 @@ target_link_libraries(ERS_STRUCT_ProjectUtils
 
 # Link Internal Libs
 target_link_libraries(ERS_STRUCT_ProjectUtils
-    ERS_CLASS_LoggingSystem
+    ERS_LoggingSystem
     ERS_SceneManager
 
     ERS_InputOutputSubsystem
@@ -32,7 +32,7 @@ target_link_libraries(ERS_STRUCT_ProjectUtils
     ERS_ProjectLoader
     ERS_ProjectManager
     ERS_ProjectWriter
-    ERS_CLASS_ModelImporter
+    ERS_ModelImporter
 
     )
 

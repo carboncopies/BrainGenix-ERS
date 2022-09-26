@@ -15,7 +15,7 @@
 #include <assimp/Exporter.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_CLASS_LoggingSystem.h>
+#include <ERS_LoggingSystem.h>
 
 #include <ERS_STRUCT_Model.h>
 #include <ERS_STRUCT_Scene.h>
@@ -34,8 +34,8 @@ class ERS_CLASS_ModelWriter {
 
 private:
 
-    ERS_CLASS_LoggingSystem* Logger_; /**<Pointer To Logger Instance*/
-    ERS_CLASS_InputOutputSubsystem* IOSubsystem_; /**<Pointer To IOSubsystem*/
+    ERS_LoggingSystem* Logger_; /**<Pointer To Logger Instance*/
+    ERS_InputOutputSubsystem* IOSubsystem_; /**<Pointer To IOSubsystem*/
 
 private:
 
@@ -93,7 +93,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_ModelWriter(ERS_CLASS_LoggingSystem* Logger, ERS_CLASS_InputOutputSubsystem* IOSubsystem);
+    ERS_CLASS_ModelWriter(ERS_LoggingSystem* Logger, ERS_InputOutputSubsystem* IOSubsystem);
     
     /**
      * @brief Destroy the ers class modelwriter object

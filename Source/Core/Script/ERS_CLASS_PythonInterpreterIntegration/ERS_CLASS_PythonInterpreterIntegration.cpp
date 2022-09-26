@@ -14,7 +14,7 @@
 
 
 
-ERS_CLASS_PythonInterpreterIntegration::ERS_CLASS_PythonInterpreterIntegration(ERS_CLASS_LoggingSystem* Logger) {
+ERS_CLASS_PythonInterpreterIntegration::ERS_CLASS_PythonInterpreterIntegration(ERS_LoggingSystem* Logger) {
 
     Logger_ = Logger;
 

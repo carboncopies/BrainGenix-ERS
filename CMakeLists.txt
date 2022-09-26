@@ -54,19 +54,47 @@ include(${CMAKE_BUILD_UTILS_DIR}/OZZ-Animation.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/MeshOptimizer.cmake)
 
 
+# Add LIBRARY INTERFACE SUBDIRECTORIES
+ERSBuildLogger(${Green} "Configuring Library Interfaces")
+
+add_subdirectory(${SRC_DIR}/Interface/Library/MeshOptimizerInterface)
+message("-- Configured MeshOptimizer Interface")
+
+ERSBuildLogger(${BoldGreen} "Finished Configuring Library Interfaces")
+
+
+# ADD STRUCT INTERFACE SUBDIRECTORIES
+ERSBuildLogger(${Green} "Configuring Structure Interfaces")
+
+ERSBuildLogger(${BoldGreen} "Finished Configuring Structure Interfaces")
+
+
 # ADD INTERNAL SUBDIRECTORIES
-add_subdirectory(${SRC_DIR}/Internal/MeshOptimizerInterface)
+ERSBuildLogger(${Green} "Configuring Internal Libraries")
+
+add_subdirectory(${SRC_DIR}/Internal/LoggingSystem)
+message("-- Configured Internal Library 'LoggingSystem'")
+add_subdirectory(${SRC_DIR}/Internal/OpenGLLoggingSystem)
+message("-- Configured Internal Library 'OpenGLLoggingSystem'")
+add_subdirectory(${SRC_DIR}/Internal/ArgumentParser)
+message("-- Configured Internal Library 'ArgumentParser'")
+add_subdirectory(${SRC_DIR}/Internal/GPURequest)
+message("-- Configured Internal Library 'GPURequest'")
+add_subdirectory(${SRC_DIR}/Internal/HardwareInformation)
+message("-- Configured Internal Library 'HardwareInformation'")
+add_subdirectory(${SRC_DIR}/Internal/InputOutputSubsystem)
+message("-- Configured Internal Library 'InputOutputSubsystem'")
+add_subdirectory(${SRC_DIR}/Internal/ExternalModelLoader)
+message("-- Configured Internal Library 'ExternalModelLoader'")
+add_subdirectory(${SRC_DIR}/Internal/ModelImporter)
+message("-- Configured Internal Library 'ModelImporter'")
+
+
+ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
 
 
 # ADD CORE SUBDIRECTORIES
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_LoggingSystem)
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_HardwareInformation)
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_InputOutputSubsystem)
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ArgumentParser)
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_GPURequest)
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ExternalModelLoader)
-add_subdirectory(${SRC_DIR}/Core/Utils/ERS_CLASS_ModelImporter)
-
+ERSBuildLogger(${Green} "Configuring Core Subsystems")
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_FramerateManager)
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_SceneManager)
 add_subdirectory(${SRC_DIR}/Core/Manager/ERS_ProjectManager)
@@ -104,7 +132,6 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Project)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ControllerSettings)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ModelWriterData)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ShaderProgramAssetIDs)
-add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_RGBColor)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Viewport)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Light)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_OpenGLDefaults)
@@ -112,7 +139,6 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_SceneObject)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Script)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_DepthMap)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_RendererSettings)
-add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_OpenGLLogItem)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ShaderUniformData)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ModelImportOptions)
 
@@ -127,6 +153,8 @@ add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ControllerSettingsLoader)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_SceneWriter)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ModelWriter)
 add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ProjectWriter)
+ERSBuildLogger(${BoldGreen} "Finished Configuring Core Subsystems")
+
 
 # Add Main.cpp
 add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp ${LIB_DIR}/tracy/TracyClient.cpp ${BACKWARD_ENABLE})
@@ -141,14 +169,14 @@ target_link_libraries(${PROJECT_NAME}
   Lucifer
 
   # Internal Libs
-  ERS_CLASS_GPURequest
-  ERS_CLASS_LoggingSystem
-  ERS_CLASS_ModelImporter
+  ERS_GPURequest
+  ERS_LoggingSystem
+  ERS_ModelImporter
 
 
-  ERS_CLASS_HardwareInformation
+  ERS_HardwareInformation
   ERS_CLASS_PythonInterpreterIntegration
-  ERS_CLASS_ArgumentParser
+  ERS_ArgumentParser
 
   ERS_SceneManager
   ERS_ModelLoader
