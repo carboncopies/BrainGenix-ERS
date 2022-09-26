@@ -47,6 +47,12 @@
 
 
 
+namespace BrainGenix {
+namespace ERS {
+namespace Module {
+
+
+
 /**
  * @brief Class for importing models (fbx, gltx, etc.) based on the ASSIMP library
  * 
@@ -182,3 +188,8 @@ public:
     bool LoadModel(std::string ModelFilePath, ERS_STRUCT_ModelWriterData &ModelData);
 
 };
+
+
+}
+}
+}

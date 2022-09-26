@@ -5,6 +5,10 @@
 #include <ERS_ExternalModelLoader.h>
 
 
+namespace BrainGenix {
+namespace ERS {
+namespace Module {
+
 ERS_ExternalModelLoader::ERS_ExternalModelLoader(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
@@ -620,4 +624,9 @@ bool ERS_ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_ModelW
         return false;
     }
 
+}
+
+
+}
+}
 }
