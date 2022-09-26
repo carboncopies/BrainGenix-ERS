@@ -57,7 +57,7 @@ namespace Module {
  * @brief Class for importing models (fbx, gltx, etc.) based on the ASSIMP library
  * 
  */
-class ERS_ExternalModelLoader {
+class ExternalModelLoader {
 
 
 private:
@@ -164,13 +164,13 @@ public:
      * @param Logger 
      * @param TextureLoader 
      */
-    ERS_ExternalModelLoader(ERS_STRUCT_SystemUtils*);
+    ExternalModelLoader(ERS_STRUCT_SystemUtils*);
 
     /**
      * @brief Destroy the Model Loader object
      * 
      */
-    ~ERS_ExternalModelLoader();
+    ~ExternalModelLoader();
 
 
 
