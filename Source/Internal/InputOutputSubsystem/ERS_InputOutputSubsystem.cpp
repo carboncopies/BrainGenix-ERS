@@ -168,17 +168,25 @@ void ERS_InputOutputSubsystem::IndexUsedAssetIDs() {
       for (const auto &Entry :
            std::filesystem::directory_iterator(std::string(AssetPath_))) {
 
-        // Get File Path
+        // Get File Path, Convert Backslashes Into Forwardslashes
         std::string FilePath{Entry.path().u8string()};
-        int LastPeriod = FilePath.find_last_of(".");
-        int LastSlash = FilePath.find_last_of("/");
+        std::replace(FilePath.begin(), FilePath.end(), '\\', '/');
+        
+        // Sanity Check For Directories
+        if (FilePath.find_last_of("/") > FilePath.find_last_of(".")) {
+            continue;
+        }
 
         // Convert To Long, Throw Log Message If Not Number
         try {
 
-          FilePath = FilePath.substr(0, LastPeriod).substr(LastSlash + 1, FilePath.length());
+          int LastPeriod = FilePath.find_last_of(".");
+          std::string PathWithoutExtension = FilePath.substr(0, LastPeriod);
 
-          long ID = std::stoi(FilePath.c_str());
+          int LastSlash = PathWithoutExtension.find_last_of("/");
+          std::string AssetIDString = PathWithoutExtension.substr(LastSlash + 1, PathWithoutExtension.length());
+
+          long ID = std::stoi(AssetIDString.c_str());
 
           if (ID >= 0) {
             UsedAssetIDs_.push_back(ID);
@@ -235,9 +243,12 @@ void ERS_InputOutputSubsystem::IndexUsedAssetIDs() {
 
   // Load Asset Metadata
   Logger_->Log("Attempting To Load Asset Metadata Index", 3);
-  std::unique_ptr<ERS_STRUCT_IOData> Data =
-      std::make_unique<ERS_STRUCT_IOData>();
-  ReadAsset(0, Data.get());
+  std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
+  bool ReadStatus = ReadAsset(0, Data.get());
+  if (!ReadStatus) {
+    Logger_->Log("Failed To Load Project Index, Is The Path/Database Valid?", 10);
+    exit(EXIT_FAILURE);
+  }
   AssetIndexIOManager_->LoadAssetIndex(Data.get());
   Logger_->Log("Finished Loading Asset Metadata Index", 4);
 

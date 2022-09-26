@@ -24,6 +24,7 @@ struct ERS_STRUCT_Texture {
 
     unsigned int BestAvailableOpenGLID = 0; /**<The current best ID we have loaded*/
     bool HasAnyLevelReady = false; /**<Tells the mesh renderer if we have any levels ready for it*/
+    bool IsBeingUsed = false; /**<Prevents modifications when this is set to true. For Example, would stop the ram data being unloaded while the gpu is trying to access it.*/
 
     int TextureLevelInRAM_ = 0; /**<Determines the current texture level in RAM*/
     int TextureLevelInVRAM_ = 0; /**<Determines the current texture level in RAM*/

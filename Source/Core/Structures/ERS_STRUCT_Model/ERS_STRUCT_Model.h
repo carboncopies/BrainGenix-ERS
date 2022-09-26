@@ -52,7 +52,7 @@ struct ERS_STRUCT_Model {
     int TextureLevelInRAM_ = -1; /**<Determines the current texture level in RAM*/
     int TextureLevelInVRAM_ = -1; /**<Determines the current texture level in RAM*/
 
-    int UserLimitedMinLOD_ = 0; /**<Set the minimum LOD for this asset, as defined by the user.*/
+    int UserLimitedMinLOD_ = -1; /**<Set the minimum LOD for this asset, as defined by the user.*/
     int UserLimitedMaxLOD_ = 10; /**<Sets the maximul LOD for this asset, again as defined by the user*/
 
     int MaxTextureLevel_ = 0; /**<Determines the max texture level available, Only should be adjusted by the asset system*/
@@ -64,7 +64,7 @@ struct ERS_STRUCT_Model {
     int TargetTextureLevelRAM = 0; /**<Used in preliminary sorting to determine how much this needs to be loaded*/
 
     // Bounding Box Info
-    glm::vec3 BoxScale_; /**<Bounding Box Size In Local Space (Multiply By Object's scale value to get true size)*/
+    glm::vec3 BoxScale_;  /**<Bounding Box Size In Local Space (Multiply By Object's scale value to get true size)*/
     glm::vec3 BoxOffset_; /**<Offset the center of the box so it's synced with the center of the model*/
 
 
@@ -74,11 +74,11 @@ struct ERS_STRUCT_Model {
 
     std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
 
-    double LoadingStartTime_; /**<Time that the loading started*/
-    double LoadingFinishTime_; /**<Time When Loading Was Completed*/
-    double TotalLoadingTime_; /**<The Total Time Needed To Load*/
-    unsigned long TotalVertices_ = 0; /**<Total Number Of Verts In This Model*/ 
-    unsigned long TotalIndices_ = 0; /**<Total Number Of Indices In Model*/
+    double LoadingStartTime_     = 0.0f; /**<Time that the loading started*/
+    double LoadingFinishTime_    = 0.0f; /**<Time When Loading Was Completed*/
+    double TotalLoadingTime_     = 0.0f; /**<The Total Time Needed To Load*/
+    unsigned long TotalVertices_ = 0;    /**<Total Number Of Verts In This Model*/ 
+    unsigned long TotalIndices_  = 0;    /**<Total Number Of Indices In Model*/
 
 
  
