@@ -5,6 +5,11 @@
 #include <ERS_ArgumentParser.h>
 
 
+namespace BrainGenix {
+namespace ERS {
+namespace Module {
+
+
 ERS_ArgumentParser::ERS_ArgumentParser(ERS_LoggingSystem* Logger) {
 
     Logger_ = Logger;
@@ -92,4 +97,9 @@ std::string ERS_ArgumentParser::GetArgumentString() {
 
 std::vector<std::pair<std::string, std::string>> ERS_ArgumentParser::GetArgumentPairs() {
     return ArgumentPairs_;
+}
+
+
+}
+}
 }
