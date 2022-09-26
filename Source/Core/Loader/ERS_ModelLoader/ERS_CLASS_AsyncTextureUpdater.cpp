@@ -207,42 +207,61 @@ bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataRAM(ERS_STRUCT_Texture* Textu
         return false;
     }
 
+    // Ensure Texture Is Free
+    if (Texture->IsBeingUsed) {
+        return false;
+    }
+    Texture->IsBeingUsed = true;
+
     FreeRAMAllocation(Texture->TextureLevels[Level]);
 
     // Update Data
     FreeImage_Unload(Texture->TextureLevels[Level].LevelBitmap);
     Texture->TextureLevels[Level].LevelBitmap = nullptr;
     Texture->TextureLevels[Level].LevelLoadedInRAM = false;
+    Texture->IsBeingUsed = false;
 
     return true;
 }
 bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
+
+    // Ensure Texture Is Free
+    if (Texture->IsBeingUsed) {
+        return false;
+    }
+    Texture->IsBeingUsed = true;
 
     // Check If Requested Level Exists
     long long unsigned int MemoryFree = SystemUtils_->RendererSettings_->VRAMBudget_ - SystemUtils_->RendererSettings_->CurrentVRAMUsage_;
     if (Level < 0) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Negative Texture Level Into VRAM", 8, LogEnable);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        Texture->IsBeingUsed = false;
         return false;
     } else if (Level > (int)Texture->TextureLevels.size()) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Nonexistant Texture Level Into VRAM", 8, LogEnable);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        Texture->IsBeingUsed = false;
         return false;
     } else if (!ResourceMonitor_->TextureFitsInVRAMBudget(Texture->TextureLevels[Level].LevelMemorySizeBytes)) {
         SystemUtils_->Logger_->Log("Cannot Load Texture Into Memory, Will Not Fit In VRAM Budget", 6);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        Texture->IsBeingUsed = false;
         return false;
     } else if ((Texture->TextureLevels[Level].LevelTextureOpenGLID != 0)) {
         SystemUtils_->Logger_->Log("Texture Updater Tried To Load Already Loaded Image Into VRAM", 8, LogEnable);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        Texture->IsBeingUsed = false;
         return false;
     } else if (MemoryFree < MinVRAMCutoff_) {
         SystemUtils_->Logger_->Log("Not Enough Free VRAM To Push Texture", 9);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        Texture->IsBeingUsed = false;
         return false;
     } else if (MemoryFree < MinRAMCutoff_) {
         SystemUtils_->Logger_->Log("Not Enough Free RAM To Load Texture", 9);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        Texture->IsBeingUsed = false;
         return false;
     }
 
@@ -263,6 +282,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Image Data Is Null", 9, LogEnable);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        Texture->IsBeingUsed = false;
         return false;
     }
 
@@ -275,6 +295,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Channel Count >4", 8, LogEnable);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        Texture->IsBeingUsed = false;
         return false;
     }
     if (Channels < 1) {
@@ -282,6 +303,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Channel Count <1", 8, LogEnable);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        Texture->IsBeingUsed = false;
         return false;
     }
     if (!Texture->TextureLevels[Level].LevelLoadedInRAM) {
@@ -289,6 +311,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Not All Prior Levels Are Loaded Into RAM", 8, LogEnable);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        Texture->IsBeingUsed = false;
         return false;
     }
     if (MaxLevel < 0) {
@@ -296,6 +319,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' No Levels To Load", 8, LogEnable);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        Texture->IsBeingUsed = false;
         return false;
     }
     if (MaxWidth < 1) {
@@ -303,6 +327,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Width is 0", 8, LogEnable);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        Texture->IsBeingUsed = false;
         return false; 
     }
     if (MaxHeight < 1) {
@@ -310,6 +335,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Height is 0", 8, LogEnable);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        Texture->IsBeingUsed = false;
         return false;
     }
     if (ImageSize < 1) {
@@ -317,6 +343,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         + "', Level '" + std::to_string(Level) + "' With ID '" + std::to_string(Texture->TextureLevels[CorrectedIndex].LevelTextureAssetID)
         + "' Image Byte Array Has Size Of 0", 8, LogEnable);
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        Texture->IsBeingUsed = false;
         return false;
     }
 
@@ -349,6 +376,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
         TextureExternFormat = GL_RED;
     } else {
         FreeVRAMAllocation(Texture->TextureLevels[Level]);
+        Texture->IsBeingUsed = false;
         return false;
     }
     
@@ -388,6 +416,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     // Update Struct
     Texture->TextureLevels[CorrectedIndex].LevelTextureOpenGLID = OpenGLTextureID;
     Texture->TextureLevels[CorrectedIndex].LevelLoadedInVRAM = true;
+    Texture->IsBeingUsed = false;
     return true;
 }
 bool ERS_CLASS_AsyncTextureUpdater::UnloadImageDataVRAM(ERS_STRUCT_Texture* Texture, int Level, bool LogEnable) {
