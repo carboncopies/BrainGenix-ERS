@@ -24,7 +24,7 @@ namespace Module {
  * @brief Create Hardware Information Class
  * 
  */
-class ERS_ArgumentParser {
+class ArgumentParser {
 
     private:
 
@@ -32,7 +32,7 @@ class ERS_ArgumentParser {
         std::vector<std::string> Arguments_; /**<Just a list of all strings In Command*/
         std::string ArgumentString_; /**<Argument String including All Arguments*/
 
-        ERS_LoggingSystem* Logger_; /**<Pointer To Logger, Allowing The System To List Argument Value Stuff*/
+        LoggingSystem* Logger_; /**<Pointer To Logger, Allowing The System To List Argument Value Stuff*/
 
     public:
 
@@ -41,13 +41,13 @@ class ERS_ArgumentParser {
          * 
          * @param Logger
          */
-        ERS_ArgumentParser(ERS_LoggingSystem* Logger);
+        ArgumentParser(ERS_LoggingSystem* Logger);
 
         /**
          * @brief Destroy the Hardware Information object
          * 
          */
-        ~ERS_ArgumentParser();
+        ~ArgumentParser();
 
 
         /**

@@ -10,7 +10,7 @@ namespace ERS {
 namespace Module {
 
 
-ERS_ArgumentParser::ERS_ArgumentParser(ERS_LoggingSystem* Logger) {
+ArgumentParser::ArgumentParser(ERS_LoggingSystem* Logger) {
 
     Logger_ = Logger;
     Logger_->Log("Initialiizng Argument Parser Subsystem", 4);
@@ -21,13 +21,13 @@ ERS_ArgumentParser::ERS_ArgumentParser(ERS_LoggingSystem* Logger) {
 
 }
 
-ERS_ArgumentParser::~ERS_ArgumentParser() {
+ArgumentParser::~ArgumentParser() {
 
     Logger_->Log("Argument Parser Destructor Called", 6);
 
 }
 
-bool ERS_ArgumentParser::ParseArguments(int NumberArguments, char** ArgumentValues) {
+bool ArgumentParser::ParseArguments(int NumberArguments, char** ArgumentValues) {
 
     Logger_->Log("Argument Parser Invoked, Populating Internal State With Argument Data", 5);
     bool HasErrors = false;
@@ -91,11 +91,11 @@ bool ERS_ArgumentParser::ParseArguments(int NumberArguments, char** ArgumentValu
 
 }
 
-std::string ERS_ArgumentParser::GetArgumentString() {
+std::string ArgumentParser::GetArgumentString() {
     return ArgumentString_;
 }
 
-std::vector<std::pair<std::string, std::string>> ERS_ArgumentParser::GetArgumentPairs() {
+std::vector<std::pair<std::string, std::string>> ArgumentParser::GetArgumentPairs() {
     return ArgumentPairs_;
 }
 
