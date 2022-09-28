@@ -128,7 +128,7 @@ SceneFormatVersion: 6
 ActiveCameraIndex: -1
 Models:'''
 
-NumberAssets = 1000
+NumberAssets = 5000
 RandMin = -100
 RandMax = 100
 RandDiv = 10
