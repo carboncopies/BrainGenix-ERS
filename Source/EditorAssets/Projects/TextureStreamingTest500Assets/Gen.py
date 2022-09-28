@@ -1,6 +1,7 @@
 import random
 
-FileEnding = '''DirectionalLights:
+FileEnding = '''
+DirectionalLights:
   {}
 PointLights:
   {}
