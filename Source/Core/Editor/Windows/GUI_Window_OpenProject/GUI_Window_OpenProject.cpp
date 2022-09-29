@@ -42,7 +42,7 @@ void GUI_Window_OpenProject::Draw() {
                 std::string Command;
                 
 #if defined(_WIN32)
-                Command += "";
+                Command += "start /B ";
 #elif defined(__APPLE__)
                 Command += "./";
 #else
