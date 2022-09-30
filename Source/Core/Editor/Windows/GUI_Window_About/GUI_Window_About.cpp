@@ -40,6 +40,7 @@ void GUI_Window_About::Draw() {
 
                 ImGui::Separator();
                 ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Version:");
+                ImGui::SameLine();
                 ImGui::Text(ERS_VERSION);
 
             }
