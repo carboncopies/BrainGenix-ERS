@@ -35,18 +35,6 @@ void GUI_Window_About::Draw() {
                 "rendering system with realtime physics, cloth and more. [Note: This project"
                 " is currently in development].");
 
-            // Write Text
-            if (ImGui::CollapsingHeader("Info")) {
-
-                ImGui::Separator();
-                ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Version:");
-                ImGui::SameLine();
-                ImGui::Text(ERS_VERSION);
-
-            }
-
-            // Version Info?
-
             // Operating System Status
             ImGui::Separator();
             ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Feature Status:");
@@ -71,6 +59,21 @@ void GUI_Window_About::Draw() {
 
                         "You should have received a copy of the GNU Affero General Public License "
                         "along with this program. If not, see <https://www.gnu.org/licenses/>.");
+
+
+            // Write Text
+            if (ImGui::CollapsingHeader("Info", ImGuiTreeNodeFlags_DefaultOpen)) {
+
+                if (ImGui::BeginChild("InfoSubWindow")) {
+
+                    ImGui::Separator();
+                    ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Version:");
+                    ImGui::SameLine();
+                    ImGui::Text(ERS_VERSION);
+
+                }
+
+            }
 
 
         }
