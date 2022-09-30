@@ -26,5 +26,12 @@ void ERS_LogSystemInfo(ERS_LoggingSystem* Logger) {
     Logger->Log("", 4);
 
     Logger->Log(std::string("Version: ") + ERS_VERSION, 5);
+    Logger->Log(std::string("Compile Date: ") + ERS_COMPILE_TIME_STAMP, 5);
+    Logger->Log(std::string("Target OS: ") + ERS_TARGET_OS_NAME, 5);
+    Logger->Log(std::string("Target OS Version: ") + ERS_TARGET_OS_VERSION, 5);
+    Logger->Log(std::string("Target Processor Architecture: ") + ERS_TARGET_PROCESSOR, 5);
+    Logger->Log(std::string("Host OS: ") + ERS_HOST_OS_NAME, 5);
+    Logger->Log(std::string("Host OS Version: ") + ERS_HOST_OS_VERSION, 5);
+    Logger->Log(std::string("Host Processor Architecture:  ") + ERS_HOST_PROCESSOR, 5);
 
 }
