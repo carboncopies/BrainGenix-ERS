@@ -96,6 +96,22 @@ void GUI_Window_About::Draw() {
                     ImGui::SameLine();
                     ImGui::Text(ERS_TARGET_PROCESSOR);               
 
+                    ImGui::Separator();
+                    ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Host OS Name:");
+                    ImGui::SameLine();
+                    ImGui::Text(ERS_HOST_OS_NAME);
+
+                    ImGui::Separator();
+                    ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Host OS Version:");
+                    ImGui::SameLine();
+                    ImGui::Text(ERS_HOST_OS_VERSION);
+
+                    ImGui::Separator();
+                    ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Host CPU Architecture:");
+                    ImGui::SameLine();
+                    ImGui::Text(ERS_HOST_PROCESSOR);    
+
+
                 ImGui::EndChild();
                 }
 
