@@ -25,6 +25,6 @@ void ERS_LogSystemInfo(ERS_LoggingSystem* Logger) {
     Logger->Log("    +-----------------------------------------------------------------+", 4);
     Logger->Log("", 4);
 
-    Logger->Log("Version: " + ERS_VERSION, 5);
+    Logger->Log(std::string("Version: ") + ERS_VERSION, 5);
 
 }
