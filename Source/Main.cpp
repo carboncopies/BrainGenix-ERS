@@ -28,6 +28,7 @@
 #include <RendererManager.h>
 
 #include <ERS_LoggingSystem.h>
+#include <ERS_LogSystemInfo.h>
 #include <ERS_HardwareInformation.h>
 #include <ERS_ArgumentParser.h>
 #include <ERS_ModelImporter.h>
@@ -163,22 +164,7 @@ int main(int NumArguments, char** ArguemntValues) {
     RendererManager sERSRendererManager(SystemUtils.get(), ProjectUtils.get(), HIDUtils.get());
 
 
-    // Log Logo Text
-    SystemUtils->Logger_->Log("Starting BrainGenix-ERS Instance", 2);
-    SystemUtils->Logger_->Log("", 5);
-    SystemUtils->Logger_->Log("---------------------------------------------------------------------------", 5);
-    SystemUtils->Logger_->Log("\x1b[38;2;0;128;55m██████╗ ██████╗  █████╗ ██╗███╗   ██╗\x1b[38;2;130;68;208m ██████╗ ███████╗███╗   ██╗██╗██╗  ██╗", 5);
-    SystemUtils->Logger_->Log("\x1b[38;2;0;128;55m██╔══██╗██╔══██╗██╔══██╗██║████╗  ██║\x1b[38;2;130;68;208m██╔════╝ ██╔════╝████╗  ██║██║╚██╗██╔╝", 5);
-    SystemUtils->Logger_->Log("\x1b[38;2;0;128;55m██████╔╝██████╔╝███████║██║██╔██╗ ██║\x1b[38;2;130;68;208m██║  ███╗█████╗  ██╔██╗ ██║██║ ╚███╔╝ ", 5);
-    SystemUtils->Logger_->Log("\x1b[38;2;0;128;55m██╔══██╗██╔══██╗██╔══██║██║██║╚██╗██║\x1b[38;2;130;68;208m██║   ██║██╔══╝  ██║╚██╗██║██║ ██╔██╗ ", 5);
-    SystemUtils->Logger_->Log("\x1b[38;2;0;128;55m██████╔╝██║  ██║██║  ██║██║██║ ╚████║\x1b[38;2;130;68;208m╚██████╔╝███████╗██║ ╚████║██║██╔╝ ██╗", 5);
-    SystemUtils->Logger_->Log("\x1b[38;2;0;128;55m╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝\x1b[38;2;130;68;208m ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝", 5);
-    SystemUtils->Logger_->Log("---------------------------------------------------------------------------", 5);
-    SystemUtils->Logger_->Log("", 5);
-    SystemUtils->Logger_->Log("    +-----------------------------------------------------------------+", 4);
-    SystemUtils->Logger_->Log("    |     BrainGenix-ERS Real-Time Environment Rendering System       |", 4);
-    SystemUtils->Logger_->Log("    +-----------------------------------------------------------------+", 4);
-    SystemUtils->Logger_->Log("", 4);
+    ERS_LogSystemInfo(SystemUtils->Logger_.get());
 
 
     // Initialize Times
