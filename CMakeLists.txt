@@ -197,13 +197,7 @@ target_link_libraries(${PROJECT_NAME}
   ERS_STRUCT_RendererSettings
 
   Renderer
-
-
   )
-
-
-
-
 
 # COPY FILES TO BINARY DIR
 file(COPY "${CMAKE_ASSETS_DIR}/" DESTINATION "${BIN_DIR}/EditorAssets")
