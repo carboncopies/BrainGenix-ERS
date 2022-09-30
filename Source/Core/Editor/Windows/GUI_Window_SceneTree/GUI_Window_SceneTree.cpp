@@ -243,7 +243,7 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     bool AlreadyUsed = false;
 
                     for (unsigned int NameIndex = 0; NameIndex < AlreadyUsedNames.size(); NameIndex++) {
-                        if (AlreadyUsedNames[NameIndex] == ModelName)) {
+                        if (AlreadyUsedNames[NameIndex] == ModelName) {
                             AlreadyUsed = true;
                             break;
                         }
