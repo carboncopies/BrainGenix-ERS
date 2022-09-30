@@ -235,7 +235,30 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
             if (ImGui::MenuItem("Sort Models Alphabetically")) {
 
-                // First, Create List Of Model Names
+                // Firstly, Rename Models With Same Name To Prevent Issues
+                std::vector<std::string> AlreadyUsedNames;
+                for (unsigned int i = 0; i < SceneManager_->Scenes_[SceneIndex]->Models.size(); i++) {
+                    
+                    std::string ModelName = SceneManager_->Scenes_[SceneIndex]->Models[i]->Name;
+                    bool AlreadyUsed = false;
+
+                    for (unsigned int NameIndex = 0; NameIndex < AlreadyUsedNames.size(); NameIndex++) {
+                        if (AlreadyUsedNames[NameIndex] == ModelName) {
+                            AlreadyUsed = true;
+                            break;
+                        }
+                    }
+
+                    if (!AlreadyUsed) {
+                        AlreadyUsedNames.push_back(ModelName);
+                    } else {
+                        SceneManager_->Scenes_[SceneIndex]->Models[i]->Name += "." + std::to_string(i);
+                    }
+
+
+                }
+
+                // Secondly, Create List Of Model Names
                 std::vector<std::string> ModelNames;
                 for (unsigned int i = 0; i < SceneManager_->Scenes_[SceneIndex]->Models.size(); i++) {
                     ModelNames.push_back(SceneManager_->Scenes_[SceneIndex]->Models[i]->Name);
