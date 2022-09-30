@@ -5,4 +5,4 @@
 #pragma once
 
 
-#define ERS_COMPILE_TIME_STAMP   ""  // Timestamp when build was made
+#define ERS_COMPILE_TIME_STAMP ""  // Timestamp when build was made
