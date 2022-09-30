@@ -2,9 +2,11 @@
 # ERS Build Versioning System #
 ###############################
 
-ERSBuildLogger(${Green} "Configuring Version Header File")
+ERSBuildLogger(${Green} "Configuring Versioning System")
 
-set(TEST, "An example value")
-
+message(" -- Configuring File ERS_Version.h.in")
 configure_File(${CMAKE_SCRIPTS_DIR}/VersioningSystem/ERS_Version.h.in ${SRC_DIR}/Interface/Configuration/VersioningSystem/ERS_Version.h)
-ERSBuildLogger(${BoldGreen} "Finished Configuring Assimp Library")
+message(" -- Adding Version Header Target")
+add_subdirectory(${SRC_DIR}/Interface/Configuration/VersioningSystem)
+
+ERSBuildLogger(${BoldGreen} "Finished Configuring Versioning System")
