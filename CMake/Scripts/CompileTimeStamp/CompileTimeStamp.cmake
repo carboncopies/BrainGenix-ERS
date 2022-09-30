@@ -5,12 +5,13 @@
 ERSBuildLogger(${Green} "Configuring Timestamp Info")
 
 message(" -- Detecting Timestamp Information")
+set(COMPILE_TIME_STAMP "")
 string(COMPILE_TIME_STAMP TODAY "%Y%m%d")
 
-message(" -- Configuring File ERS_CompileTimestamp.h.in")
-configure_File(${CMAKE_SCRIPTS_DIR}/CompileTimestamp/ERS_CompileTimestamp.h.in ${SRC_DIR}/Interface/Configuration/CompileTimestamp/ERS_CompileTimestamp.h)
+message(" -- Configuring File ERS_CompileTimeStamp.h.in")
+configure_File(${CMAKE_SCRIPTS_DIR}/CompileTimestamp/ERS_CompileTimeStamp.h.in ${SRC_DIR}/Interface/Configuration/CompileTimestamp/ERS_CompileTimeStamp.h)
 
 message(" -- Adding Timestamp Header Target")
-add_subdirectory(${SRC_DIR}/Interface/Configuration/CompileTimestamp)
+add_subdirectory(${SRC_DIR}/Interface/Configuration/CompileTimeStamp)
 
 ERSBuildLogger(${BoldGreen} "Finished Configuring Timestamp Info")
