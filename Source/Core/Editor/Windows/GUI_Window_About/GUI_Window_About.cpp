@@ -71,6 +71,8 @@ void GUI_Window_About::Draw() {
                     ImGui::SameLine();
                     ImGui::Text(ERS_VERSION);
 
+
+                ImGui::EndChild();
                 }
 
             }
