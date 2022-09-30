@@ -204,8 +204,8 @@ target_link_libraries(${PROJECT_NAME}
 
 
 # COPY FILES TO BINARY DIR
-file(COPY "${SRC_DIR}/EditorAssets/" DESTINATION "${BIN_DIR}/EditorAssets")
-file(COPY "${SRC_DIR}/EditorAssets/DefaultLayout/imgui.ini" DESTINATION "${BIN_DIR}")
+file(COPY "${SRC_DIR}/" DESTINATION "${BIN_DIR}/EditorAssets")
+file(COPY "${SRC_DIR}/DefaultLayout/imgui.ini" DESTINATION "${BIN_DIR}")
 
 # Set Configuration Based On Platform
 if (WIN32 OR APPLE)
