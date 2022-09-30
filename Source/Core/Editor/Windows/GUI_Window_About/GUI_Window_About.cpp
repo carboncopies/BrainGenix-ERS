@@ -86,6 +86,15 @@ void GUI_Window_About::Draw() {
                     ImGui::SameLine();
                     ImGui::Text(ERS_TARGET_OS_NAME);
 
+                    ImGui::Separator();
+                    ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Target OS Version:");
+                    ImGui::SameLine();
+                    ImGui::Text(ERS_TARGET_OS_VERSION);
+
+                    ImGui::Separator();
+                    ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Target CPU Architecture:");
+                    ImGui::SameLine();
+                    ImGui::Text(ERS_TARGET_PROCESSOR);               
 
                 ImGui::EndChild();
                 }
