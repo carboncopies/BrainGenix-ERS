@@ -4,25 +4,25 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_CompileTimeInfo
+add_library(ERS_CompileTimeStamp
 
             # Add Source Files (.cpp)
-            "ERS_CompileTimeInfo.cpp"
+            "ERS_CompileTimeStamp.cpp"
 
             # Add Header Files (.h)
-            "ERS_CompileTimeInfo.h"
+            "ERS_CompileTimeStamp.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_CompileTimeInfo
+target_link_libraries(ERS_CompileTimeStamp
     
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_CompileTimeInfo
+target_link_libraries(ERS_CompileTimeStamp
     
     )
 
-target_include_directories(ERS_CompileTimeInfo PUBLIC ./)
+target_include_directories(ERS_CompileTimeStamp PUBLIC ./)
