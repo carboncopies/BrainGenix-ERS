@@ -4,25 +4,25 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_VersioningSystem
+add_library(ERS_ColpilePlatformInfo
 
             # Add Source Files (.cpp)
-            "ERS_Version.cpp"
+            "ERS_CompilePlatformInfo.cpp"
 
             # Add Header Files (.h)
-            "ERS_Version.h"
+            "ERS_CompilePlatformInfo.h"
             
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_VersioningSystem
+target_link_libraries(ERS_ColpilePlatformInfo
     
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_VersioningSystem
+target_link_libraries(ERS_ColpilePlatformInfo
     
     )
 
-target_include_directories(ERS_VersioningSystem PUBLIC ./)
+target_include_directories(ERS_ColpilePlatformInfo PUBLIC ./)
