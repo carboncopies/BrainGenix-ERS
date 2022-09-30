@@ -79,7 +79,7 @@ int main(int NumArguments, char** ArguemntValues) {
     SystemUtils->Logger_->Log("Initialized Logging System", 5);
 
     // Handle Command Line Arguments
-    ERS_ArgumentParser ArgumentParser = ERS_ArgumentParser(SystemUtils->Logger_.get());
+    BrainGenix::ERS::Module::ArgumentParser ArgumentParser = BrainGenix::ERS::Module::ArgumentParser(SystemUtils->Logger_.get());
     ArgumentParser.ParseArguments(NumArguments, ArguemntValues);
     SystemUtils->ArgumentString_ = ArgumentParser.GetArgumentString();
     SystemUtils->Arguments_ = ArgumentParser.GetArgumentPairs();

@@ -12,7 +12,7 @@ ERS_ModelImporter::ERS_ModelImporter(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     // Setup Classes
     ModelWriter_ = std::make_unique<ERS_CLASS_ModelWriter>(SystemUtils_->Logger_.get(), SystemUtils_->ERS_IOSubsystem_.get());
-    ModelLoader_ = std::make_unique<ERS_ExternalModelLoader>(SystemUtils_);
+    ModelLoader_ = std::make_unique<BrainGenix::ERS::Module::ExternalModelLoader>(SystemUtils_);
 
     SystemUtils_->Logger_->Log("Starting Asset Import Thread", 4);
     ImportThread_ = std::thread(&ERS_ModelImporter::ImportThread, this);
