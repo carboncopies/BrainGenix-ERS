@@ -12,6 +12,10 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_LoggingSystem.h>
 
+#include <ERS_Version.h>
+#include <ERS_CompilePlatformInfo.h>
+#include <ERS_CompileTimeStamp.h>
+
 
 /**
  * @brief Logs the system information as defined during compilation (version, target os, etc.)

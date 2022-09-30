@@ -26,6 +26,9 @@ target_link_libraries(ERS_LoggingSystem
 
 # Link Internal Libs
 target_link_libraries(ERS_LoggingSystem
+    ERS_VersioningSystem
+    ERS_CompileTimeStamp
+    ERS_CompilePlatformInfo
     )
 
 if (WIN32) 
