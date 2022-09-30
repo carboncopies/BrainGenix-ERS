@@ -80,6 +80,10 @@ void GUI_Window_About::Draw() {
                     ImGui::SameLine();
                     ImGui::Text(ERS_VERSION);
 
+                    ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Built On:");
+                    ImGui::SameLine();
+                    ImGui::Text(ERS_COMPILE_TIME_STAMP);
+
                     ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Target OS Name:");
                     ImGui::SameLine();
                     ImGui::Text(ERS_TARGET_OS_NAME);
