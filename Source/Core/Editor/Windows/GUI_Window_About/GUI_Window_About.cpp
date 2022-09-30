@@ -36,9 +36,13 @@ void GUI_Window_About::Draw() {
                 " is currently in development].");
 
             // Write Text
-            ImGui::Separator();
-            ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Version:");
-            ImGui::Text(ERS_VERSION);
+            if (ImGui::CollapsingHeader("Info")) {
+
+                ImGui::Separator();
+                ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Version:");
+                ImGui::Text(ERS_VERSION);
+
+            }
 
             // Version Info?
 
