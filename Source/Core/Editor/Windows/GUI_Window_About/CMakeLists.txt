@@ -28,6 +28,7 @@ target_link_libraries(GUI_Window_About
 
     ERS_VersioningSystem
     ERS_CompilePlatformInfo
+    ERS_CompileTimeStamp
     )
 
 target_include_directories(GUI_Window_About PUBLIC ./)

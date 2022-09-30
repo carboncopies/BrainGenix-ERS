@@ -19,6 +19,7 @@
 
 #include <ERS_Version.h>
 #include <ERS_CompilePlatformInfo.h>
+#include <ERS_CompileTimeStamp.h>
 
 
 /**
