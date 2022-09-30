@@ -28,6 +28,8 @@ include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
 include(${CMAKE_UTIL_DIR}/SetBinaryDir.cmake)
 include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 
+# Run Configuration Tools
+include(${CMAKE_SCRIPTS_DIR}/VersioningSystem/VersioningSystem.cmake)
 
 # Include Package Addition Scripts
 include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
