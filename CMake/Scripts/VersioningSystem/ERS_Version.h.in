@@ -4,4 +4,4 @@
 
 #pragma once
 
-#define ERS_VERSION "${CMAKE_CURRENT_PROJECT_VERSION}"
+#define ERS_VERSION "${TEST}"
