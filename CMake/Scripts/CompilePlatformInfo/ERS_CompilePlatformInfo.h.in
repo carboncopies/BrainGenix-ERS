@@ -1,0 +1,8 @@
+//======================================================================//
+// This file is part of the BrainGenix-ERS Environment Rendering System //
+//======================================================================//
+
+#pragma once
+
+#define ERS_COMPILER_TARGET_NAME  "${TARGET_OS_NAME}" // Name of the operating system which ERS is being built for.
+#define ERS_COMPILER_HOST_NAME    "${HOST_OS_NAME}" // Name of the operating system which is compiling ERS.
