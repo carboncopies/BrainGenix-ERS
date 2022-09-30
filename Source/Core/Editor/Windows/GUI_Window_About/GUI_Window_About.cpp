@@ -46,20 +46,30 @@ void GUI_Window_About::Draw() {
 
             // License Info
             ImGui::Separator();
-            ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "License:");
-            ImGui::TextWrapped("This program is free software: you can redistribute it and/or modify "
-                        "it under the terms of the GNU Affero General Public License as "
-                        "published by the Free Software Foundation, either version 3 of the "
-                        "License, or (at your option) any later version. "
+            ImGui::Separator();
+            ImGui::Separator();
+            if (ImGui::CollapsingHeader("License")) {
 
-                        "This program is distributed in the hope that it will be useful, "
-                        "but WITHOUT ANY WARRANTY; without even the implied warranty of "
-                        "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the "
-                        "GNU Affero General Public License for more details. "
+                if (ImGui::BeginChild("InfoSubWindow")) {
 
-                        "You should have received a copy of the GNU Affero General Public License "
-                        "along with this program. If not, see <https://www.gnu.org/licenses/>.");
+                    ImGui::Separator();
+                    ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "License:");
+                    ImGui::TextWrapped("This program is free software: you can redistribute it and/or modify "
+                                "it under the terms of the GNU Affero General Public License as "
+                                "published by the Free Software Foundation, either version 3 of the "
+                                "License, or (at your option) any later version. "
 
+                                "This program is distributed in the hope that it will be useful, "
+                                "but WITHOUT ANY WARRANTY; without even the implied warranty of "
+                                "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the "
+                                "GNU Affero General Public License for more details. "
+
+                                "You should have received a copy of the GNU Affero General Public License "
+                                "along with this program. If not, see <https://www.gnu.org/licenses/>.");
+
+                ImGui::EndChild();
+                }
+            }
 
             // Write Text
             if (ImGui::CollapsingHeader("Info", ImGuiTreeNodeFlags_DefaultOpen)) {
