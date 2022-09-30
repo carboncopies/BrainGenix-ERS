@@ -18,6 +18,7 @@ set(CMAKE_UTIL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Utils")
 set(CMAKE_BUILD_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/BuildUtils")
 set(CMAKE_FIND_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/FindUtils")
 set(CMAKE_SCRIPTS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Scripts")
+set(CMAKE_ASSETS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/EditorAssets")
 set(PROJECT_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
@@ -205,8 +206,8 @@ target_link_libraries(${PROJECT_NAME}
 
 
 # COPY FILES TO BINARY DIR
-file(COPY "${SRC_DIR}/" DESTINATION "${BIN_DIR}/EditorAssets")
-file(COPY "${SRC_DIR}/DefaultLayout/imgui.ini" DESTINATION "${BIN_DIR}")
+file(COPY "${CMAKE_ASSETS_DIR}/" DESTINATION "${BIN_DIR}/EditorAssets")
+file(COPY "${CMAKE_ASSETS_DIR}/DefaultLayout/imgui.ini" DESTINATION "${BIN_DIR}")
 
 # Set Configuration Based On Platform
 if (WIN32 OR APPLE)
