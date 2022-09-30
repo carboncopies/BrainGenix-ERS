@@ -25,7 +25,9 @@ target_link_libraries(GUI_Window_About
 # Link Internal Libs
 target_link_libraries(GUI_Window_About
     ERS_STRUCT_SystemUtils
+
     ERS_VersioningSystem
+    ERS_CompilePlatformInfo
     )
 
 target_include_directories(GUI_Window_About PUBLIC ./)

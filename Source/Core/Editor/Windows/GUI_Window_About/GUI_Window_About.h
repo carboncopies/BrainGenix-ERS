@@ -18,6 +18,7 @@
 #include <ERS_STRUCT_SystemUtils.h>
 
 #include <ERS_Version.h>
+#include <ERS_CompilePlatformInfo.h>
 
 
 /**

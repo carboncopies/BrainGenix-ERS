@@ -76,10 +76,33 @@ void GUI_Window_About::Draw() {
 
                 if (ImGui::BeginChild("InfoSubWindow")) {
 
-                    ImGui::Separator();
                     ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Version:");
                     ImGui::SameLine();
                     ImGui::Text(ERS_VERSION);
+
+                    ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Target OS Name:");
+                    ImGui::SameLine();
+                    ImGui::Text(ERS_TARGET_OS_NAME);
+
+                    ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Target OS Version:");
+                    ImGui::SameLine();
+                    ImGui::Text(ERS_TARGET_OS_VERSION);
+
+                    ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Target CPU Architecture:");
+                    ImGui::SameLine();
+                    ImGui::Text(ERS_TARGET_PROCESSOR);               
+
+                    ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Host OS Name:");
+                    ImGui::SameLine();
+                    ImGui::Text(ERS_HOST_OS_NAME);
+
+                    ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Host OS Version:");
+                    ImGui::SameLine();
+                    ImGui::Text(ERS_HOST_OS_VERSION);
+
+                    ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Host CPU Architecture:");
+                    ImGui::SameLine();
+                    ImGui::Text(ERS_HOST_PROCESSOR);    
 
 
                 ImGui::EndChild();
