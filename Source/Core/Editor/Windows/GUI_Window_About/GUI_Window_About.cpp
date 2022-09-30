@@ -37,8 +37,8 @@ void GUI_Window_About::Draw() {
 
             // Write Text
             ImGui::Separator();
-            ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Branch:");
-            ImGui::Text("Unstable-Development");
+            ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Version:");
+            ImGui::Text(ERS_VERSION);
 
             // Version Info?
 
