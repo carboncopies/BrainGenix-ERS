@@ -4,7 +4,7 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_ColpilePlatformInfo
+add_library(ERS_CompilePlatformInfo
 
             # Add Source Files (.cpp)
             "ERS_CompilePlatformInfo.cpp"
@@ -16,13 +16,13 @@ add_library(ERS_ColpilePlatformInfo
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_ColpilePlatformInfo
+target_link_libraries(ERS_CompilePlatformInfo
     
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_ColpilePlatformInfo
+target_link_libraries(ERS_CompilePlatformInfo
     
     )
 
-target_include_directories(ERS_ColpilePlatformInfo PUBLIC ./)
+target_include_directories(ERS_CompilePlatformInfo PUBLIC ./)
