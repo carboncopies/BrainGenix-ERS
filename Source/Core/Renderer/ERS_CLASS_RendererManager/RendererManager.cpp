@@ -209,7 +209,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
 
     // Update Window Title
-    std::string SceneTitle = ProjectUtils_->ProjectManager_->Project_.ProjectName + std::string(" - BrainGenix-ERS");
+    std::string SceneTitle = ProjectUtils_->ProjectManager_->Project_.ProjectName + std::string(" - BrainGenix-ERS ") + ERS_VERSION;
     glfwSetWindowTitle(Window_, SceneTitle.c_str());
 
     // Update Scene

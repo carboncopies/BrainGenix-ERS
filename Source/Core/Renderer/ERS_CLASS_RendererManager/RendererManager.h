@@ -35,6 +35,8 @@
 #include <ERS_STRUCT_HumanInputDeviceUtils.h>
 #include <ERS_STRUCT_OpenGLDefaults.h>
 
+#include <ERS_Version.h>
+
 
 
 

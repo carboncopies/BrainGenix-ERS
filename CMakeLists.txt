@@ -2,7 +2,7 @@
 cmake_minimum_required (VERSION 3.1...3.21)
 project(
 	"BrainGenix-ERS"
-	VERSION "0.3.5"
+	VERSION "0.3.9"
 	LANGUAGES CXX
 	)
 
@@ -17,6 +17,8 @@ set(BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Binaries")
 set(CMAKE_UTIL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Utils")
 set(CMAKE_BUILD_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/BuildUtils")
 set(CMAKE_FIND_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/FindUtils")
+set(CMAKE_SCRIPTS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Scripts")
+set(CMAKE_ASSETS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/EditorAssets")
 set(PROJECT_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
@@ -26,6 +28,9 @@ include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
 include(${CMAKE_UTIL_DIR}/SetBinaryDir.cmake)
 include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 
+# Run Configuration Tools
+include(${CMAKE_SCRIPTS_DIR}/VersioningSystem/VersioningSystem.cmake)
+include(${CMAKE_SCRIPTS_DIR}/CompilePlatformInfo/CompilePlatformInfo.cmake)
 
 # Include Package Addition Scripts
 include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
@@ -195,17 +200,11 @@ target_link_libraries(${PROJECT_NAME}
   ERS_STRUCT_RendererSettings
 
   Renderer
-
-
   )
 
-
-
-
-
 # COPY FILES TO BINARY DIR
-file(COPY "${SRC_DIR}/EditorAssets/" DESTINATION "${BIN_DIR}/EditorAssets")
-file(COPY "${SRC_DIR}/EditorAssets/DefaultLayout/imgui.ini" DESTINATION "${BIN_DIR}")
+file(COPY "${CMAKE_ASSETS_DIR}/" DESTINATION "${BIN_DIR}/EditorAssets")
+file(COPY "${CMAKE_ASSETS_DIR}/DefaultLayout/imgui.ini" DESTINATION "${BIN_DIR}")
 
 # Set Configuration Based On Platform
 if (WIN32 OR APPLE)
