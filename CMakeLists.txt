@@ -31,7 +31,7 @@ include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 # Run Configuration Tools
 include(${CMAKE_SCRIPTS_DIR}/VersioningSystem/VersioningSystem.cmake)
 include(${CMAKE_SCRIPTS_DIR}/CompilePlatformInfo/CompilePlatformInfo.cmake)
-include(${CMAKE_SCRIPTS_DIR}/CompileTimestamp/CompileTimestamp.cmake)
+include(${CMAKE_SCRIPTS_DIR}/CompileTimeStamp/CompileTimeStamp.cmake)
 
 # Include Package Addition Scripts
 include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
