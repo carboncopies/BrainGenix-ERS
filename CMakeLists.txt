@@ -2,7 +2,7 @@
 cmake_minimum_required (VERSION 3.1...3.21)
 project(
 	"BrainGenix-ERS"
-	VERSION "0.3.9"
+	VERSION "0.4.0"
 	LANGUAGES CXX
 	)
 
