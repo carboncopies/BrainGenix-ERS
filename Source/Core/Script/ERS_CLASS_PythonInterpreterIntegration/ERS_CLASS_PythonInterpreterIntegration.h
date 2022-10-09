@@ -25,6 +25,7 @@
 #include <ERS_STRUCT_PointLight.h>
 #include <ERS_STRUCT_DirectionalLight.h>
 #include <ERS_STRUCT_SpotLight.h>
+#include <ERS_STRUCT_SceneCamera.h>
 
 #include <PyBind11ModelClass.h>
 #include <PyBind11SystemInfo.h>

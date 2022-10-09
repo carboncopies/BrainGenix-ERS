@@ -37,6 +37,7 @@ target_link_libraries(ERS_CLASS_PythonInterpreterIntegration
 
     ERS_STRUCT_Model
     ERS_STRUCT_Light
+    ERS_STRUCT_SceneCamera
 
     )
 

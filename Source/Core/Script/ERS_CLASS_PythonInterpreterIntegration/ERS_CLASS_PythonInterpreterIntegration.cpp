@@ -34,6 +34,8 @@ ERS_CLASS_PythonInterpreterIntegration::~ERS_CLASS_PythonInterpreterIntegration(
 
 }
 
+
+
 bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model, std::vector<std::string>* ErrorMessageString) {
 
 
