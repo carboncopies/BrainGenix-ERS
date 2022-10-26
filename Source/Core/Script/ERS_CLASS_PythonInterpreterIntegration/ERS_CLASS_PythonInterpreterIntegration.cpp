@@ -178,6 +178,11 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 }
 
 
+
+PYBIND11_EMBEDDED_MODULE(Camera, m) {
+    m.doc() = "Allows the script to manipulate the Scene Camera that it's attached to.";
+}
+
 bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::string ScriptSource, ERS_STRUCT_SceneCamera* Camera, std::vector<std::string>* ErrorMessageString) {
 
 
@@ -270,7 +275,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
         CameraPosX = CameraModule.attr("PosX").cast<double>();
         CameraPosY = CameraModule.attr("PosY").cast<double>();
         CameraPosZ = CameraModule.attr("PosZ").cast<double>();
-        Camera->Rot_ = glm::vec3(CameraPosX, CameraPosY, CameraPosZ);
+        Camera->Pos_ = glm::vec3(CameraPosX, CameraPosY, CameraPosZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Camera Position CAST_ERROR");
         // Successful = false;
