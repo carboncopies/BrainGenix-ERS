@@ -27,12 +27,12 @@
 #include <ERS_STRUCT_SpotLight.h>
 #include <ERS_STRUCT_SceneCamera.h>
 
+#include <PyBind11SceneCameraClass.h>
 #include <PyBind11ModelClass.h>
 #include <PyBind11SystemInfo.h>
 #include <PyBind11PointLightClass.h>
 #include <PyBind11SpotLightClass.h>
 #include <PyBind11DirectionalLightClass.h>
-#include <PyBind11SceneCameraClass.h>
 
 
 
