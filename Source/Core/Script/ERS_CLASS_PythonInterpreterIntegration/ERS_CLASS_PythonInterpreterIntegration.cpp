@@ -268,45 +268,25 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     bool Successful = true;
 
     try {
-        CameraPosX = CameraModule.attr("CameraPosX").cast<double>();
-        CameraPosY = CameraModule.attr("CameraPosY").cast<double>();
-        CameraPosZ = CameraModule.attr("CameraPosZ").cast<double>();
-        Camera->SetPosition(glm::vec3(CameraPosX, CameraPosY, CameraPosZ));
+        CameraPosX = CameraModule.attr("PosX").cast<double>();
+        CameraPosY = CameraModule.attr("PosY").cast<double>();
+        CameraPosZ = CameraModule.attr("PosZ").cast<double>();
+        Camera->Rot_ = glm::vec3(CameraPosX, CameraPosY, CameraPosZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Camera Position CAST_ERROR");
         Successful = false;
     }
     try {
-        CameraRotX = CameraModule.attr("CameraRotX").cast<double>();
-        CameraRotY = CameraModule.attr("CameraRotY").cast<double>();
-        CameraRotZ = CameraModule.attr("CameraRotZ").cast<double>();
-        Camera->SetRotation(glm::vec3(CameraRotX, CameraRotY, CameraRotZ));
+        CameraRotX = CameraModule.attr("RotX").cast<double>();
+        CameraRotY = CameraModule.attr("RotY").cast<double>();
+        CameraRotZ = CameraModule.attr("RotZ").cast<double>();
+        Camera->Rot_ = glm::vec3(CameraRotX, CameraRotY, CameraRotZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Camera Rotation CAST_ERROR");
         Successful = false;
     }
-    try {
-        CameraScaleX = CameraModule.attr("CameraScaleX").cast<double>();
-        CameraScaleY = CameraModule.attr("CameraScaleY").cast<double>();
-        CameraScaleZ = CameraModule.attr("CameraScaleZ").cast<double>();
-        Camera->SetScale(glm::vec3(CameraScaleX, CameraScaleY, CameraScaleZ));
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("Camera Scale CAST_ERROR");
-        Successful = false;
-    }
-
-    try {
-        Camera->Enabled = CameraModule.attr("CameraEnabled").cast<bool>(); 
-    } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("Camera Enable CAST_ERROR");
-        Successful = false;
-    }
 
 
-    if (Successful) {
-        Camera->ApplyTransformations();
-    }
-    
 
 
     // Return Status
