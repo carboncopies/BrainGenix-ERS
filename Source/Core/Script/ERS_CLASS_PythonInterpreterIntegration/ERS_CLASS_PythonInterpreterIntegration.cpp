@@ -178,29 +178,25 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 }
 
 
-bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::string ScriptSource, ERS_STRUCT_SceneCamera* Model, std::vector<std::string>* ErrorMessageString) {
+bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::string ScriptSource, ERS_STRUCT_SceneCamera* Camera, std::vector<std::string>* ErrorMessageString) {
 
 
-    // Inport The Model Module, Set System Info
-    pybind11::module ModelModule = pybind11::module_::import("Model");
-    SetSystemInfoData(&ModelModule);
+    // Inport The Camera Module, Set System Info
+    pybind11::module CameraModule = pybind11::module_::import("Camera");
+    SetSystemInfoData(&CameraModule);
 
     // Set System Parameters
-    ModelModule.attr("ModelPosX") = Model->ModelPosition.x;
-    ModelModule.attr("ModelPosY") = Model->ModelPosition.y;
-    ModelModule.attr("ModelPosZ") = Model->ModelPosition.z;
-    ModelModule.attr("ModelRotX") = Model->ModelRotation.x;
-    ModelModule.attr("ModelRotY") = Model->ModelRotation.y;
-    ModelModule.attr("ModelRotZ") = Model->ModelRotation.z;
-    ModelModule.attr("ModelScaleX") = Model->ModelScale.x;
-    ModelModule.attr("ModelScaleY") = Model->ModelScale.y;
-    ModelModule.attr("ModelScaleZ") = Model->ModelScale.z;
+    CameraModule.attr("PosX") = Camera->Pos_.x;
+    CameraModule.attr("PosY") = Camera->Pos_.y;
+    CameraModule.attr("PosZ") = Camera->Pos_.z;
+    CameraModule.attr("RotX") = Camera->Rot_.x;
+    CameraModule.attr("RotY") = Camera->Rot_.y;
+    CameraModule.attr("RotZ") = Camera->Rot_.z;
 
-    ModelModule.attr("ModelEnabled") = Model->Enabled;
 
 
     // Get Local Dict
-    pybind11::dict Locals = ModelModule.attr("__dict__");
+    pybind11::dict Locals = CameraModule.attr("__dict__");
 
     // If No Message String Vec Provided, Run All At Once, Else Run Line By Line
     if (ErrorMessageString == nullptr) {
@@ -265,50 +261,50 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
 
     }
 
-    // Write Back Model Data
-    double ModelPosX, ModelPosY, ModelPosZ;
-    double ModelRotX, ModelRotY, ModelRotZ;
-    double ModelScaleX, ModelScaleY, ModelScaleZ;
+    // Write Back Camera Data
+    double CameraPosX, CameraPosY, CameraPosZ;
+    double CameraRotX, CameraRotY, CameraRotZ;
+    double CameraScaleX, CameraScaleY, CameraScaleZ;
     bool Successful = true;
 
     try {
-        ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
-        ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
-        ModelPosZ = ModelModule.attr("ModelPosZ").cast<double>();
-        Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
+        CameraPosX = CameraModule.attr("CameraPosX").cast<double>();
+        CameraPosY = CameraModule.attr("CameraPosY").cast<double>();
+        CameraPosZ = CameraModule.attr("CameraPosZ").cast<double>();
+        Camera->SetPosition(glm::vec3(CameraPosX, CameraPosY, CameraPosZ));
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("Model Position CAST_ERROR");
+        ErrorMessageString->push_back("Camera Position CAST_ERROR");
         Successful = false;
     }
     try {
-        ModelRotX = ModelModule.attr("ModelRotX").cast<double>();
-        ModelRotY = ModelModule.attr("ModelRotY").cast<double>();
-        ModelRotZ = ModelModule.attr("ModelRotZ").cast<double>();
-        Model->SetRotation(glm::vec3(ModelRotX, ModelRotY, ModelRotZ));
+        CameraRotX = CameraModule.attr("CameraRotX").cast<double>();
+        CameraRotY = CameraModule.attr("CameraRotY").cast<double>();
+        CameraRotZ = CameraModule.attr("CameraRotZ").cast<double>();
+        Camera->SetRotation(glm::vec3(CameraRotX, CameraRotY, CameraRotZ));
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("Model Rotation CAST_ERROR");
+        ErrorMessageString->push_back("Camera Rotation CAST_ERROR");
         Successful = false;
     }
     try {
-        ModelScaleX = ModelModule.attr("ModelScaleX").cast<double>();
-        ModelScaleY = ModelModule.attr("ModelScaleY").cast<double>();
-        ModelScaleZ = ModelModule.attr("ModelScaleZ").cast<double>();
-        Model->SetScale(glm::vec3(ModelScaleX, ModelScaleY, ModelScaleZ));
+        CameraScaleX = CameraModule.attr("CameraScaleX").cast<double>();
+        CameraScaleY = CameraModule.attr("CameraScaleY").cast<double>();
+        CameraScaleZ = CameraModule.attr("CameraScaleZ").cast<double>();
+        Camera->SetScale(glm::vec3(CameraScaleX, CameraScaleY, CameraScaleZ));
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("Model Scale CAST_ERROR");
+        ErrorMessageString->push_back("Camera Scale CAST_ERROR");
         Successful = false;
     }
 
     try {
-        Model->Enabled = ModelModule.attr("ModelEnabled").cast<bool>(); 
+        Camera->Enabled = CameraModule.attr("CameraEnabled").cast<bool>(); 
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("Model Enable CAST_ERROR");
+        ErrorMessageString->push_back("Camera Enable CAST_ERROR");
         Successful = false;
     }
 
 
     if (Successful) {
-        Model->ApplyTransformations();
+        Camera->ApplyTransformations();
     }
     
 
