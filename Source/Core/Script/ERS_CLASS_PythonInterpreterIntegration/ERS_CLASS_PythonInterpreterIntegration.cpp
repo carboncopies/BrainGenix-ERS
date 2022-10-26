@@ -741,7 +741,7 @@ void ERS_CLASS_PythonInterpreterIntegration::SetSystemInfoData(pybind11::module*
     Locals->attr("GameTime") = pybind11::float_(RunTime_);
 
     auto Clock = std::chrono::system_clock::now();
-    double UnixEpoch = std::chrono::duration_cast<std::chrono::seconds>(Clock.time_since_epoch()).count();
+    long double UnixEpoch = std::chrono::duration_cast<std::chrono::seconds>(Clock.time_since_epoch()).count();
     Locals->attr("SystemTime") = UnixEpoch;
 
 }
