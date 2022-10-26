@@ -264,7 +264,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     // Write Back Camera Data
     double CameraPosX, CameraPosY, CameraPosZ;
     double CameraRotX, CameraRotY, CameraRotZ;
-    double CameraScaleX, CameraScaleY, CameraScaleZ;
     bool Successful = true;
 
     try {
