@@ -98,6 +98,11 @@ public:
      */
     bool ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model, std::vector<std::string>* ErrorMessageString = nullptr);
 
+    /**
+     * @brief Runs a script attached to a model object
+     * 
+     */
+    bool ExecuteSceneCameraScript(std::string ScriptSource, ERS_STRUCT_SceneCamera* Camera, std::vector<std::string>* ErrorMessageString = nullptr);
 
     /**
      * @brief Runs a script attached to a point light
