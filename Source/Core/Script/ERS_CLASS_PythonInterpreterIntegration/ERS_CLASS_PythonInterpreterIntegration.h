@@ -32,6 +32,7 @@
 #include <PyBind11PointLightClass.h>
 #include <PyBind11SpotLightClass.h>
 #include <PyBind11DirectionalLightClass.h>
+#include <PyBind11SceneCameraClass.h>
 
 
 
