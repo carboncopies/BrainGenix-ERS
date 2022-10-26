@@ -253,6 +253,30 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
             }
         }
 
+        for (unsigned long i = 0; i < SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneCameras.size(); i++) {
+
+            // Get Model
+            ERS_STRUCT_SceneCamera* Target = SceneManager->Scenes_[SceneManager->ActiveScene_]->SceneCameras[i].get();
+
+            // Go Through All Scripts In Model
+            for (unsigned long x = 0; x < Target->AttachedScriptIndexes_.size(); x++) {
+
+                long ScriptIndex = Target->AttachedScriptIndexes_[x];
+                std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
+
+                bool Status;
+                if (x == (unsigned long)SelectedScript_) {
+                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteSceneCameraScript(Code, Target, DebugLog_);
+                } else {
+                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteSceneCameraScript(Code, Target);
+                }
+
+                if (!Status) {
+                    IsEditorMode_ = true;
+                }
+            }
+        }
+
     }
 
     // Reset Selected Script
