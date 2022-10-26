@@ -179,10 +179,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
 
 
-PYBIND11_EMBEDDED_MODULE(Camera, m) {
-    m.doc() = "Allows the script to manipulate the Scene Camera that it's attached to.";
-}
-
 bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::string ScriptSource, ERS_STRUCT_SceneCamera* Camera, std::vector<std::string>* ErrorMessageString) {
 
 
