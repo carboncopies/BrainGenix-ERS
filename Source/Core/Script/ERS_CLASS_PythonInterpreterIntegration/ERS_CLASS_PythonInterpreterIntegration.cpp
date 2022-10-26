@@ -264,7 +264,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     // Write Back Camera Data
     double CameraPosX, CameraPosY, CameraPosZ;
     double CameraRotX, CameraRotY, CameraRotZ;
-    bool Successful = true;
+    // bool Successful = true;
 
     try {
         CameraPosX = CameraModule.attr("PosX").cast<double>();
@@ -273,7 +273,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
         Camera->Rot_ = glm::vec3(CameraPosX, CameraPosY, CameraPosZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Camera Position CAST_ERROR");
-        Successful = false;
+        // Successful = false;
     }
     try {
         CameraRotX = CameraModule.attr("RotX").cast<double>();
@@ -282,7 +282,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
         Camera->Rot_ = glm::vec3(CameraRotX, CameraRotY, CameraRotZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Camera Rotation CAST_ERROR");
-        Successful = false;
+        // Successful = false;
     }
 
 
