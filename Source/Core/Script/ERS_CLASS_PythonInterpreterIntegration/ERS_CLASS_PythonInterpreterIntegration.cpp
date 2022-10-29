@@ -194,6 +194,8 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     CameraModule.attr("RotY") = Camera->Rot_.y;
     CameraModule.attr("RotZ") = Camera->Rot_.z;
 
+    CameraModule.attr("FOV") = Camera->FOV_;
+    CameraModule.attr("Priority") = Camera->StreamingPriority_;
 
 
     // Get Local Dict
@@ -263,30 +265,40 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     }
 
     // Write Back Camera Data
-    double CameraPosX, CameraPosY, CameraPosZ;
-    double CameraRotX, CameraRotY, CameraRotZ;
-    // bool Successful = true;
-
     try {
+        double CameraPosX, CameraPosY, CameraPosZ;
         CameraPosX = CameraModule.attr("PosX").cast<double>();
         CameraPosY = CameraModule.attr("PosY").cast<double>();
         CameraPosZ = CameraModule.attr("PosZ").cast<double>();
         Camera->Pos_ = glm::vec3(CameraPosX, CameraPosY, CameraPosZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Camera Position CAST_ERROR");
-        // Successful = false;
     }
     try {
+        double CameraRotX, CameraRotY, CameraRotZ;
         CameraRotX = CameraModule.attr("RotX").cast<double>();
         CameraRotY = CameraModule.attr("RotY").cast<double>();
         CameraRotZ = CameraModule.attr("RotZ").cast<double>();
         Camera->Rot_ = glm::vec3(CameraRotX, CameraRotY, CameraRotZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Camera Rotation CAST_ERROR");
-        // Successful = false;
     }
 
+    try {
+        float FOV;
+        FOV = CameraModule.attr("FOV").cast<float>();
+        Camera->FOV_ = FOV;
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("Camera FOV CAST_ERROR");
+    }
 
+    try {
+        float Priority;
+        Priority = CameraModule.attr("Priority").cast<float>();
+        Camera->StreamingPriority_ = Priority;
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("Camera Asset Streaming Priority CAST_ERROR");
+    }
 
 
     // Return Status
